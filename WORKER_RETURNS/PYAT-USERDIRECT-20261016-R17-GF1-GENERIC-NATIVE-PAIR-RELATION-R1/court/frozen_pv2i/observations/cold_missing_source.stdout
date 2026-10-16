@@ -1,0 +1,23 @@
+Traceback (most recent call last):
+  File "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/repro/cold_child.py", line 33, in <module>
+    script=RT/'candidate/repro/pv2_cold_process.py';sys.argv=[str(script),str(RT/'candidate'),str(root),mode];runpy.run_path(str(script),run_name='__main__')
+                                                                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 291, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/candidate/repro/pv2_cold_process.py", line 53, in <module>
+    fx = fixture.pv2_sourcefree_fixture(ROOT / 'ledger')
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/candidate/repro/pv2_sourcefree_fixture.py", line 260, in pv2_sourcefree_fixture
+    inputs = [sourcefree_original_inputs(ns) for ns in NAMESPACES]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/candidate/repro/pv2_sourcefree_fixture.py", line 260, in <listcomp>
+    inputs = [sourcefree_original_inputs(ns) for ns in NAMESPACES]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/candidate/repro/pv2_sourcefree_fixture.py", line 72, in sourcefree_original_inputs
+    fx = physical_fixture()
+         ^^^^^^^^^^^^^^^^^^
+  File "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/repro/cold_child.py", line 12, in missing
+    def missing(*a,**k):raise FileNotFoundError('PV2I_INDEPENDENT_SOURCE_MISSING')
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: PV2I_INDEPENDENT_SOURCE_MISSING

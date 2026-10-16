@@ -1,0 +1,1819 @@
+{
+  "schema": "PV2I_ACTUAL_INDEPENDENT_COURT@1",
+  "verdict": "RED_BOUNDED_ORIGINAL_SCOPE_TRUST_AND_CURRENT_READ_INTEGRITY",
+  "candidate": "c6ff1c3ec68d62fda478df8ceb2986b268b72dbf",
+  "sealed_reviewer_start": "51d2307e5cf8780294cc1b163d87b210ceac9577",
+  "independent_oracle_sha256": "321681bb0918e4119e3053aef8f0a6cb0d9db434eadc0a3225f897a686a55f79",
+  "pre_execution_erratum": {
+    "status": "PRE_EXECUTION_CORRECTION_ORIGINAL_ORACLE_PRESERVED",
+    "original_oracle_sha256": "321681bb0918e4119e3053aef8f0a6cb0d9db434eadc0a3225f897a686a55f79",
+    "field": "new_independent_row_mutation.respondent",
+    "original": "R1",
+    "corrected": "R2",
+    "reason": "Passive source inspection shows R2 carries X=0,Y=0 and R1 carries X=1,Y=1. The independently frozen numerical mutation and expected forward/reverse counts remain unchanged; use the zero-valued R2 row.",
+    "cut": "Before any PV2/accepted owner Python import or execution; no original oracle or candidate file edited.",
+    "source": "candidate/repro/pv2_original_scope_register.py:_register_native_inventory"
+  },
+  "suites": {
+    "pv2_33": {
+      "grade": "PV2 candidate-author acceptance controls",
+      "total": 33,
+      "counts": {
+        "PASS": 33
+      },
+      "cases": [
+        {
+          "name": "test_register_is_precommitted_and_independently_reproducible",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_register_refuses_all_held_or_insufficient_held_scope",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_positive_original_to_field_forge_consumer_witness",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_positive_replay_is_exact_with_zero_additional_durable_calls",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_coherent_foreign_issuer_ref_refused[original_U_ref]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_coherent_foreign_issuer_ref_refused[independent_E_ref]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_coherent_foreign_issuer_ref_refused[independent_custody_ref]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_coherent_foreign_issuer_ref_refused[original_operation_scope_ref]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_foreign_issuer_ref_changes_the_original_key",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_dropping_all_held_obligations_refused",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_dropping_one_held_obligation_with_identical_runnable_output_refused",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_cherry_picked_single_obligation_refused",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_cherry_picked_namespace_refused",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_reversed_semantic_role_mask_refused",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_reversed_role_mask_also_fails_the_owner_topology_check",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_declared_roles_bind_the_actual_producer_topology",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_masked_role_label_rejected_at_consumer_material",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_foreign_form_or_respondent_unit_refused[form-FOREIGN-FORM]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_foreign_form_or_respondent_unit_refused[respondent_unit-HOUSEHOLD]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_other_relabelled_identity_labels_refused[language-FOREIGN-LANGUAGE]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_other_relabelled_identity_labels_refused[instrument_release-INST-FOREIGN]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_other_relabelled_identity_labels_refused[administered_occurrence-FOREIGN-OCCURRENCE]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_other_relabelled_identity_labels_refused[option_scope-value3]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_form_and_unit_labels_discriminate_the_original_key",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_same_count_swapped_source_native_item_refused",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_foreign_replay_ref_refused",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_stale_precommitted_register_refused",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_caller_supplied_inventory_relabel_refused",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_revoked_fixture_use_blocks_execution_and_current_read",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_cold_process_replay_restores_all_six_values",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_altered_expected_digest_refused",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_unregistered_scope_key_refused",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_real_owner_artifacts_are_actual_c11_and_field_forge",
+          "state": "PASS",
+          "message": null
+        }
+      ],
+      "terminal": {
+        "argv": [
+          "/usr/local/bin/python3",
+          "-m",
+          "pytest",
+          "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/candidate/tests/test_pv2_original_scope_binding.py",
+          "-vv",
+          "--tb=short",
+          "--assert=plain",
+          "--import-mode=importlib",
+          "-p",
+          "no:cacheprovider",
+          "--basetemp=/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv2_33",
+          "--junitxml=/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/observations/pv2_33.xml"
+        ],
+        "cwd": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root",
+        "PYTHONPATH": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root:/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/candidate/repro:/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/repro",
+        "exit": 0,
+        "seconds": 2.09918475151062
+      }
+    },
+    "v2k_24": {
+      "grade": "Original historical V2K controls, not PV2 hostiles",
+      "total": 24,
+      "counts": {
+        "PASS": 24
+      },
+      "cases": [
+        {
+          "name": "test_actual_two_namespace_original_successor_consumes_all_B_and_J_only",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_independent_B_or_J_only_omission_rejected_before_any_durable_call[B]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_independent_B_or_J_only_omission_rejected_before_any_durable_call[DISCOVERY]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_original_identity_fields_distinguish_successor_keys[respondent_namespace-OTHER]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_original_identity_fields_distinguish_successor_keys[respondent_unit-HOUSEHOLD]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_original_identity_fields_distinguish_successor_keys[form-F2]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_original_identity_fields_distinguish_successor_keys[language-OTHER]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_original_identity_fields_distinguish_successor_keys[administered_occurrence-SECOND]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_original_identity_fields_distinguish_successor_keys[option_scope-value5]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_exact_query_predicate_routing_and_custody_refs_bind_successor_identity",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_actual_wrong_namespace_or_routing_rejected_before_first_scope_execution",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_local_selected_A_only_pass_cannot_replace_independent_original_B_and_J",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_foreign_original_key_same_count_and_duplicate_are_rejected",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_original_payload_digest_preimage_and_origin_tampering_rejected",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_real_source_permission_and_foreign_replay_keys_never_granted",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_legacy_original_direction_source_and_form_mismatch_rejected",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_source_release_item_operation_and_measure_identity_changes_keys",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_no_false_productive_pass_for_all_held_original_expectation",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_original_item_order_cannot_claim_other_actual_query",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_incomplete_or_unknown_original_schema_cannot_be_laundered_by_digest[missing_namespace]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_incomplete_or_unknown_original_schema_cannot_be_laundered_by_digest[unknown_original_field]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_incomplete_or_unknown_original_schema_cannot_be_laundered_by_digest[unknown_top_field]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_old_V2_schema_cannot_be_silently_rebranded_or_made_mutable",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_distinct_original_language_cannot_double_count_same_actual_owner_unit",
+          "state": "PASS",
+          "message": null
+        }
+      ],
+      "terminal": {
+        "argv": [
+          "/usr/local/bin/python3",
+          "-m",
+          "pytest",
+          "rawlsing_next/tests/test_hq295_v2k_original_identity_successor.py",
+          "-vv",
+          "--tb=short",
+          "--assert=plain",
+          "--import-mode=importlib",
+          "-p",
+          "no:cacheprovider",
+          "--basetemp=/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/v2k_24",
+          "--junitxml=/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/observations/v2k_24.xml"
+        ],
+        "cwd": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root",
+        "PYTHONPATH": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root:/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/candidate/repro:/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/repro",
+        "exit": 0,
+        "seconds": 4.163737058639526
+      }
+    },
+    "pv_21": {
+      "grade": "Historical PV diagnostics: PASS may reproduce vulnerability",
+      "total": 21,
+      "counts": {
+        "PASS": 21
+      },
+      "cases": [
+        {
+          "name": "test_independent_positive_denominators_and_replay",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_independent_omission[B]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_independent_omission[DISCOVERY]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_same_count_foreign_substitution",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_wrong_c11_binding[respondent_namespace-FOREIGN]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_wrong_c11_binding[native_item_refs-None]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_wrong_c11_binding[routing_refs-None]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_changed_preimage_and_foreign_query",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_foreign_issuer_is_not_authenticated[original_U_ref]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_foreign_issuer_is_not_authenticated[independent_E_ref]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_foreign_issuer_is_not_authenticated[independent_custody_ref]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_foreign_issuer_is_not_authenticated[original_operation_scope_ref]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_missing_all_held_rows_exposes_outer_gap",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_cherry_picked_A_only_exposes_outer_gap",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_coherent_semantic_rekey[wrong_role]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_coherent_semantic_rekey[wrong_direction]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_coherent_semantic_rekey[foreign_form]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_coherent_semantic_rekey[foreign_unit]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_foreign_replay_ref_rejected",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_all_held_no_productive_pass",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_original_namespace_and_form_key_discrimination",
+          "state": "PASS",
+          "message": null
+        }
+      ],
+      "terminal": {
+        "argv": [
+          "/usr/local/bin/python3",
+          "-m",
+          "pytest",
+          "rawlsing_next/tests/test_postastra_pv_v2k_independent.py",
+          "-vv",
+          "--tb=short",
+          "--assert=plain",
+          "--import-mode=importlib",
+          "-p",
+          "no:cacheprovider",
+          "--basetemp=/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv_21",
+          "--junitxml=/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/observations/pv_21.xml"
+        ],
+        "cwd": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root",
+        "PYTHONPATH": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root:/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/candidate/repro:/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/repro",
+        "exit": 0,
+        "seconds": 7.564471960067749
+      }
+    },
+    "owners_111": {
+      "grade": "Accepted owner suites, unchanged tests; exact retained-worker path compatibility alias disclosed",
+      "total": 111,
+      "counts": {
+        "PASS": 111
+      },
+      "cases": [
+        {
+          "name": "test_actual_field_forge_consumes_saved_durable_results_and_replays",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_missing_original_operation_refused_before_execution",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_source_mismatch_refused_before_execution",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_output_derived_expectation_refused",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_stale_consumer_ref_refused_by_real_owner",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_foreign_job_ref_and_release_ref_are_refused_before_execution",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_duplicate_expected_dispatch_is_refused_before_execution",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_deferred_and_failed_units_remain_pinned[DEFERRED]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_deferred_and_failed_units_remain_pinned[FAILED]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_custodian_hash_claim_never_grants_external_authentication",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_real_interruption_after_effect_holds_pending_head_and_never_duplicates",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_original_respondent_item_and_configuration_are_required",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_minority_values_all_item_keys_and_nonscalar_configurations_survive",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_foreign_respondent_and_incomplete_saved_input_are_refused",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_wrong_condition_order_is_refused_before_execution",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_multiple_results_are_explicitly_unsupported",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_second_integrated_writer_is_refused_before_execution",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_extra_manifest_predicate_cannot_substitute_frozen_query_predicate",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_saved_fact_must_use_frozen_predicate_and_release[predicate]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_saved_fact_must_use_frozen_predicate_and_release[release]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_field_forge_measure_is_bound_for_queries_and_discovery[QUERY]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_field_forge_measure_is_bound_for_queries_and_discovery[DISCOVERY]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_nonexistent_frozen_authority_is_refused_before_execution[QUERY]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_nonexistent_frozen_authority_is_refused_before_execution[DISCOVERY]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_different_existing_authority_cannot_replace_dispatch_authority",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_h_m00_positive_six_job_outer_join_passes_structurally",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_h_m01_q_family_partial_omission_is_exact",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_h_m02_j2_omission_is_exact_and_rest_verifies",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_h_m03_same_count_replacement_is_omission_plus_extra",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_h_m04_condition_arity_lie_fails_as_omission_plus_extra",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_h_m05fwd_weighted_through_raw_query_is_claimed_ref_mismatch",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_h_m05rev_raw_through_weighted_query_is_omission_plus_extra",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_h_m06_forged_old_key_with_changed_identity_is_key_mismatch_only",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_h_m07_consumer_only_duplicate_fails_closed_at_bind",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_h_m08_multiplicity_overclaim_fails",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_h_m09a_observed_zero_over_zero_denominator_is_not_typed",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_h_m09b_measured_null_from_unvisited_is_false_null",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_h_m10_fabricated_null_for_unexecuted_job_is_false_null",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_h_m11a_held_work_executed_via_synthetic_unit_fails",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_h_m11b_denied_row_dropped_from_export_is_visible",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_h_m12a_unvisited_discovery_unreported_still_fails",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_h_m12b_adaptive_partial_unreported_still_fails",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_h_m12c_honest_pruned_discovery_is_conserved",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_h_m13_truncated_expectation_rejected_but_self_consistent",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_h_m14a_modelled_receipt_relabelled_authenticated_still_holds",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_h_m14b_renamed_consumer_is_omitted_obligation",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_h_m15a_forward_dated_consistent_custodian_still_holds",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_h_m15b_custodian_without_timestamp_still_holds",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_h_m16a_form_swap_changes_identity",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_h_m16b_topology_swap_changes_identity",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_h_m16c_route_swap_reroutes_through_foreign_query",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_h_m16d_forged_executed_source_sha_fails_every_job",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_h_m16e_respondent_field_is_inert_and_collapses",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_h_m17_forged_release_and_unmatched_source_lie",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_direct_composition_parity_and_complete_object_graph",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_source_projection_mismatch_fails_closed_before_execution",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_missing_or_substituted_projection_authority_fails_closed",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_catalog_query_predicate_and_discovery_substitution_fail_closed",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_catalog_order_invariance",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_cache_drop_rebuild_is_semantically_invariant",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_valid_empty_and_typed_absences_survive_packaging",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_raw_and_weighted_are_distinct_and_missing_weight_never_defaults_to_one",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_risk_set_identity_and_ordered_repeated_topology_are_preserved",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_exact_replay_identity_and_tamper_fail_closed",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_no_currentness_structural_causal_v3_or_historical_stage_resurrection",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_unary_distribution_and_observed_zero_are_exact",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_observed_zero_is_not_zero_support",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_arbitrary_coordinate_conjunction_and_response_position_condition",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_response_response_xor_uses_same_respondent_incidence",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_k_way_parity_full_joint_is_not_pairwise_or_unary_synthesis",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_same_marginals_different_joint_are_distinct_source_indexed_facts",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_equal_denominator_counts_different_risk_member_sets_do_not_collapse",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_routed_common_eligibility_zero_overlap_is_typed",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_raw_and_authorized_weighted_measure_are_distinct_exact_facts",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_missing_or_invalid_weight_fails_closed_without_default_one",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_branch_cohort_membership_is_exact_and_replayable",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_simpson_reversal_preserves_pooled_and_conditioned_query_identity",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_storage_order_permutations_replay_identically",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_tampered_query_predicate_or_replay_reference_fails_closed",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_diagnostic_score_cannot_masquerade_as_empirical_fact",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_query_execution_has_zero_structural_actor_v3_v2_effect",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_authorized_composite_without_exact_relation_bundle_is_noncomparable",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_unsupported_response_topology_is_typed_unresolved_not_collapsed",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_realized_cell_outside_exact_declared_domain_is_integrity_failure",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_missing_exact_c11_release_is_typed_unavailable_without_latest_fallback",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_scalar_query_cannot_collapse_multiselect_carrier_even_with_one_event",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_exact_empty_target_domain_is_valid_empty_not_zero_support",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_exact_all_inapplicable_routing_is_not_applicable_not_zero_support",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_authorized_composite_requires_and_uses_operation_specific_positive_authority",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_sealed_release_semantic_bodies_are_deeply_immutable_and_exports_detached",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_astra002_shared_i03_rejects_allow_authority_missing_fact_family",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_astra002_shared_i03_rejects_allow_authority_excluding_actual_universe",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_astra002_shared_i03_rejects_wrong_target_use_even_with_positive_authorities",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_astra002_shared_i03_preserves_exact_lawful_target_use",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_astra002_shared_i03_preserves_nonpositive_authority_as_nonpositive[DENY]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_astra002_shared_i03_preserves_nonpositive_authority_as_nonpositive[OUT_OF_SCOPE]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_astra002_shared_i03_preserves_nonpositive_authority_as_nonpositive[SUPERSEDED_NOT_REPLAYABLE]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_rules_only_validation_authority_is_exact_and_fail_closed",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_rules_only_validation_authority_executes_only_its_literal_kind",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_xor_zero_unary_signal_is_reached_without_unary_screen",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_simpson_reversal_is_detected_from_exact_pooled_and_stratified_facts",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_supported_non_top_minority_is_not_prevalence_pruned",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_recursive_subgroup_fork_preserves_exact_parent_ancestry",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_same_respondent_cotravel_and_branch_conditioned_cotravel_both_work",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_bounded_response_x_position_cartesian_frontier_is_fully_evaluated",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_higher_order_parity_uses_exact_joint_not_lower_order_signal",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_bounded_higher_order_configuration_cells_are_individually_covered",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_valid_empty_frontier_is_typed_and_complete",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_catalog_order_does_not_change_frontier_or_receipt_identity",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_frontier_hash_mismatch_adaptive_and_score_pruning_fail_closed",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_diagnostic_validation_cannot_become_canonical_empirical_truth",
+          "state": "PASS",
+          "message": null
+        }
+      ],
+      "terminal": {
+        "argv": [
+          "/usr/local/bin/python3",
+          "-m",
+          "pytest",
+          "rawlsing_next/tests/test_pre553_v2_durable_consumer_integration_candidate.py",
+          "rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py",
+          "rawlsing_next/tests/test_pre553_route_b_production.py",
+          "rawlsing_next/tests/test_pre553_empirical_query.py",
+          "rawlsing_next/tests/test_pre553_discovery_exact.py",
+          "-vv",
+          "--tb=short",
+          "--assert=plain",
+          "--import-mode=importlib",
+          "-p",
+          "no:cacheprovider",
+          "--basetemp=/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/owners_111",
+          "--junitxml=/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/observations/owners_111.xml"
+        ],
+        "cwd": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root",
+        "PYTHONPATH": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root:/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/candidate/repro:/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/repro",
+        "exit": 0,
+        "seconds": 54.26404595375061
+      }
+    },
+    "independent": {
+      "grade": "Fresh PV2I guards, independent expectations and row mutations",
+      "total": 48,
+      "counts": {
+        "PASS": 26,
+        "FAIL": 22
+      },
+      "cases": [
+        {
+          "name": "test_exact_independent_inventory_and_six_real_consumers",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_foreign_reference_with_fixed_register_refused[original_U_ref]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_foreign_reference_with_fixed_register_refused[independent_E_ref]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_foreign_reference_with_fixed_register_refused[independent_custody_ref]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_foreign_reference_with_fixed_register_refused[original_operation_scope_ref]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_coherently_reissued_register_cannot_authenticate_itself[original_U_ref]",
+          "state": "FAIL",
+          "message": "Failed: DID NOT RAISE <class 'ValueError'>"
+        },
+        {
+          "name": "test_coherently_reissued_register_cannot_authenticate_itself[independent_E_ref]",
+          "state": "FAIL",
+          "message": "Failed: DID NOT RAISE <class 'ValueError'>"
+        },
+        {
+          "name": "test_coherently_reissued_register_cannot_authenticate_itself[independent_custody_ref]",
+          "state": "FAIL",
+          "message": "Failed: DID NOT RAISE <class 'ValueError'>"
+        },
+        {
+          "name": "test_coherently_reissued_register_cannot_authenticate_itself[original_operation_scope_ref]",
+          "state": "FAIL",
+          "message": "Failed: DID NOT RAISE <class 'ValueError'>"
+        },
+        {
+          "name": "test_fixed_register_rejects_original_metadata_mutation[form-PV2I-FOREIGN-FORM]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_fixed_register_rejects_original_metadata_mutation[respondent_unit-HOUSEHOLD]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_fixed_register_rejects_original_metadata_mutation[language-PV2I-OTHER]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_fixed_register_rejects_original_metadata_mutation[instrument_release-EDITION2]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_fixed_register_rejects_original_metadata_mutation[administered_occurrence-SECOND]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_fixed_register_rejects_original_metadata_mutation[option_scope-value5]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_two_held_omission_same_six_runnable_refused",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_A_only_scope_refused",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_equal_count_held_relabel_with_fixed_register_refused",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_equal_count_held_relabel_with_self_reissued_register_refused",
+          "state": "FAIL",
+          "message": "Failed: DID NOT RAISE <class 'ValueError'>"
+        },
+        {
+          "name": "test_complete_original_source_binding[source_release_ref]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_complete_original_source_binding[empirical_universe_ref]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_complete_original_source_binding[original_item_scope_ref]",
+          "state": "FAIL",
+          "message": "Failed: DID NOT RAISE <class 'ValueError'>"
+        },
+        {
+          "name": "test_complete_original_source_binding[routing_refs]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_swapped_actual_query_target_conditioner_refused",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_reversed_role_mask_refused",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_current_read_refuses_foreign_or_widened_fixture_grant[issuer-PV2I-SELF-ISSUER]",
+          "state": "FAIL",
+          "message": "AssertionError"
+        },
+        {
+          "name": "test_current_read_refuses_foreign_or_widened_fixture_grant[grant-SIGNED_REAL_SOURCE_GRANT]",
+          "state": "FAIL",
+          "message": "AssertionError"
+        },
+        {
+          "name": "test_current_read_refuses_foreign_or_widened_fixture_grant[ceiling-value2]",
+          "state": "FAIL",
+          "message": "AssertionError"
+        },
+        {
+          "name": "test_execution_refuses_self_rehashed_fixture_grant[issuer-PV2I-SELF-ISSUER]",
+          "state": "FAIL",
+          "message": "Failed: DID NOT RAISE <class 'ValueError'>"
+        },
+        {
+          "name": "test_execution_refuses_self_rehashed_fixture_grant[grant-SIGNED_REAL_SOURCE_GRANT]",
+          "state": "FAIL",
+          "message": "Failed: DID NOT RAISE <class 'ValueError'>"
+        },
+        {
+          "name": "test_execution_refuses_self_rehashed_fixture_grant[ceiling-value2]",
+          "state": "FAIL",
+          "message": "Failed: DID NOT RAISE <class 'ValueError'>"
+        },
+        {
+          "name": "test_explicit_revoked_register_blocks",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_historical_register_cannot_restore_current_authorization",
+          "state": "FAIL",
+          "message": "AssertionError: Old unrevoked snapshot reauthorizes after revocation; no independent current registry"
+        },
+        {
+          "name": "test_current_consumer_rejects_payload_tamper_same_ref",
+          "state": "FAIL",
+          "message": "AssertionError: Current read serves changed payload under unchanged consumer reference"
+        },
+        {
+          "name": "test_current_read_does_not_alias_historical_report",
+          "state": "FAIL",
+          "message": "AssertionError: Read result aliases original historical material"
+        },
+        {
+          "name": "test_role_validation_fails_closed_on_incomplete_material[missing_material]",
+          "state": "FAIL",
+          "message": "Failed: DID NOT RAISE <class 'ValueError'>"
+        },
+        {
+          "name": "test_role_validation_fails_closed_on_incomplete_material[missing_roles]",
+          "state": "FAIL",
+          "message": "Failed: DID NOT RAISE <class 'ValueError'>"
+        },
+        {
+          "name": "test_role_validation_fails_closed_on_incomplete_material[missing_conditioner]",
+          "state": "FAIL",
+          "message": "Failed: DID NOT RAISE <class 'ValueError'>"
+        },
+        {
+          "name": "test_generic_native_labels_not_specialized_Q86",
+          "state": "FAIL",
+          "message": "AssertionError"
+        },
+        {
+          "name": "test_independent_row_mutation_reaches_actual_consumers",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_coherent_household_relabel_cannot_reuse_respondent_fact",
+          "state": "FAIL",
+          "message": "Failed: DID NOT RAISE <class 'ValueError'>"
+        },
+        {
+          "name": "test_genuine_cold_process_preserves_journal_and_no_new_durable_units",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_changed_actual_journal_result_reference_is_not_ignored",
+          "state": "FAIL",
+          "message": "AssertionError: Changed result_refs in actual side-effect journal ignored by successful replay"
+        },
+        {
+          "name": "test_changed_checkpoint_receipt_payload_refused",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_fresh_process_current_read_refuses_self_issued_grant",
+          "state": "FAIL",
+          "message": "AssertionError: Fresh process serves persisted history under requester-created production-ceiling grant"
+        },
+        {
+          "name": "test_missing_source_and_changed_edition_never_fake_cold_success",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_real_empty_risk_I03_and_Field_Forge_typed_states",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_second_independent_row_mutation_changes_I05_winning_consumer",
+          "state": "PASS",
+          "message": null
+        }
+      ],
+      "terminal": {
+        "argv": [
+          "/usr/local/bin/python3",
+          "-m",
+          "pytest",
+          "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/tests",
+          "-vv",
+          "--tb=short",
+          "--assert=plain",
+          "--import-mode=importlib",
+          "-p",
+          "no:cacheprovider",
+          "--basetemp=/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/independent",
+          "--junitxml=/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/observations/independent.xml"
+        ],
+        "cwd": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root",
+        "PYTHONPATH": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root:/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/candidate/repro:/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/repro",
+        "exit": 1,
+        "seconds": 3.5732948780059814
+      }
+    }
+  },
+  "physical_baseline_owner_call_counts": {
+    "execute_route_b_production": 2,
+    "validate_c11_source_release": 2,
+    "execute_empirical_query": 16,
+    "execute_exact_bounded_discovery": 4,
+    "run_sourcefree_with_register": 1,
+    "run_integrated": 2,
+    "produce_exact_conditional_support_profile": 12,
+    "replay_exact_conditional_support_profile": 6
+  },
+  "actual_imports": [
+    {
+      "module": "pv2_original_scope_register",
+      "physical_file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/candidate/repro/pv2_original_scope_register.py",
+      "git_blob_sha1": "17699700239e09162d953576dcc502660e4ae6e0",
+      "sha256": "b04fa6ab40f8db39fe8b3ad20363ac245cd42b5e4091bb0aac9226739620b026"
+    },
+    {
+      "module": "pv2_sourcefree_fixture",
+      "physical_file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/candidate/repro/pv2_sourcefree_fixture.py",
+      "git_blob_sha1": "d82192e8df7177d5971c0d6d022ce21124c73e33",
+      "sha256": "fc872776e5bda337791ac7ba3c8ffd837d334cd46143b67737e8c87f7edb4188"
+    },
+    {
+      "module": "rawlsing_next._pre553_query_common",
+      "physical_file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/rawlsing_next/_pre553_query_common.py",
+      "git_blob_sha1": "938a6b03a63dd34ef4f0f63655ed8f11f65c5d92",
+      "sha256": "496320f7e089e4cc73b1a55023ed906d3f016e939f548cebc4ec59bddd4847b2"
+    },
+    {
+      "module": "rawlsing_next._pre553_query_eval",
+      "physical_file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/rawlsing_next/_pre553_query_eval.py",
+      "git_blob_sha1": "f808dfcd2008cc71e9203de3cadf1abe14223974",
+      "sha256": "c72d7d35bfa5d3cb4b406bdd90530b2822416850bba48cdd12ce784ba10cd670"
+    },
+    {
+      "module": "rawlsing_next._pre553_query_predicate",
+      "physical_file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/rawlsing_next/_pre553_query_predicate.py",
+      "git_blob_sha1": "8590bacf464b2c61f319f581820a3af76ed1e60c",
+      "sha256": "f6e5484371ce1bf15abea25a7db408ab00cf4194154358e995608e67b833cbd7"
+    },
+    {
+      "module": "rawlsing_next.field_forge_conditional_support",
+      "physical_file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/rawlsing_next/field_forge_conditional_support.py",
+      "git_blob_sha1": "a70decb20747d84cbcbe27d1280babc6de88ef33",
+      "sha256": "ec9558c68a2138de7d44796986db39df28a679ccc1506785b79929d624d32034"
+    },
+    {
+      "module": "rawlsing_next.pre553_batch_durable_checkpoint_candidate",
+      "physical_file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/rawlsing_next/pre553_batch_durable_checkpoint_candidate.py",
+      "git_blob_sha1": "719c8d878bcfb3b6c61c844c9bf974ada8365929",
+      "sha256": "349d9b2bcc8b35a8fd24eeb3300ac7d93a2d22a9334c1ca47e50895bb84cf2ce"
+    },
+    {
+      "module": "rawlsing_next.pre553_batch_runner",
+      "physical_file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/rawlsing_next/pre553_batch_runner.py",
+      "git_blob_sha1": "2d291600b9a10c56d9c6f6de7f7d619f6c52e829",
+      "sha256": "5071bde0180db05f59386884d5de2bdea503cd26db2024806a92887d2a5a1e04"
+    },
+    {
+      "module": "rawlsing_next.pre553_c11_ingest",
+      "physical_file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/rawlsing_next/pre553_c11_ingest.py",
+      "git_blob_sha1": "37cd35fa2e3420a3eea272a2902e96ab9ba38aba",
+      "sha256": "0c56a0f6f656547a096982a6adab21c9b47d749385411a5d159f2b5390eec8bf"
+    },
+    {
+      "module": "rawlsing_next.pre553_c11_integrity",
+      "physical_file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/rawlsing_next/pre553_c11_integrity.py",
+      "git_blob_sha1": "7c59aa13a2b7c8e3ab0dc90a1400df645b0b4bbd",
+      "sha256": "3963facef5c8ae2981991ffa8c5c5c9b717fb4e09f342eec277198fc5cf38a33"
+    },
+    {
+      "module": "rawlsing_next.pre553_c11_repository",
+      "physical_file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/rawlsing_next/pre553_c11_repository.py",
+      "git_blob_sha1": "67c6eb6494522cd11aab1b93d0e73f9cef6036f3",
+      "sha256": "84a71fe43307cca30f9eeaaedb269d8390468a4744a0fac251aebc2cda7b498e"
+    },
+    {
+      "module": "rawlsing_next.pre553_carrier_execution",
+      "physical_file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/rawlsing_next/pre553_carrier_execution.py",
+      "git_blob_sha1": "e7cda773e6a2426bfa12b22790fd8e005fe75153",
+      "sha256": "e4f0413c1ca4717993f6a40e0b42e8b23ae3f50b0d11eeb860625e9cc0ec6261"
+    },
+    {
+      "module": "rawlsing_next.pre553_discovery_exact",
+      "physical_file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/rawlsing_next/pre553_discovery_exact.py",
+      "git_blob_sha1": "905f24d114419dbdd93879ad2bee5b59dd2f23af",
+      "sha256": "808fd0bd8e2423c047268285c00ca43f0f4cdbff80ed1ad286e3c6c56b8f7217"
+    },
+    {
+      "module": "rawlsing_next.pre553_empirical_authority",
+      "physical_file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/rawlsing_next/pre553_empirical_authority.py",
+      "git_blob_sha1": "ca65a7fd4d52f0c44447434559b1d09412e7aa39",
+      "sha256": "c32b96cd67274d2bcb44ca509afd87e085748bd2e32565716c10313b0609a29a"
+    },
+    {
+      "module": "rawlsing_next.pre553_empirical_objects",
+      "physical_file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/rawlsing_next/pre553_empirical_objects.py",
+      "git_blob_sha1": "a61365b994e5c3c50de0f598fcf40e90abf757b6",
+      "sha256": "9cd1d71440a7e8c1861dda73274529e07211edc14335583e93ad91c0833e9ab4"
+    },
+    {
+      "module": "rawlsing_next.pre553_empirical_query",
+      "physical_file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/rawlsing_next/pre553_empirical_query.py",
+      "git_blob_sha1": "03facecf70890bfd13b80418620d274cbcd69d02",
+      "sha256": "d45ad313bc57e94c8c3652b4123c7cb03b0fc18d38d577aaaae94435664ef4cb"
+    },
+    {
+      "module": "rawlsing_next.pre553_governed_batch_checkpoint_integration_candidate",
+      "physical_file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/rawlsing_next/pre553_governed_batch_checkpoint_integration_candidate.py",
+      "git_blob_sha1": "44807c6a287145507d7332138c944cd61da363bf",
+      "sha256": "049bf788c28775ccd4d6787fd1ae8cf2e77c7dda715ab8861036a01c47f8f555"
+    },
+    {
+      "module": "rawlsing_next.pre553_original_identity_v2k_successor_candidate",
+      "physical_file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/rawlsing_next/pre553_original_identity_v2k_successor_candidate.py",
+      "git_blob_sha1": "e3ef9a2469966b8ecfbcd178b971f54c687aef22",
+      "sha256": "d1e5e3693f91b94ce934f6765fda90bc88aed22392fb06966742db9633be4d46"
+    },
+    {
+      "module": "rawlsing_next.pre553_original_workload_binder_candidate",
+      "physical_file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/rawlsing_next/pre553_original_workload_binder_candidate.py",
+      "git_blob_sha1": "7d8b3902c3f8f257637b7c07ad9feb5e096d48e5",
+      "sha256": "f5cf17bf78d656c519a83963c4f5feb08552b652ab660afcde609cd2f40838f1"
+    },
+    {
+      "module": "rawlsing_next.pre553_original_workload_contract_v2_candidate",
+      "physical_file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/rawlsing_next/pre553_original_workload_contract_v2_candidate.py",
+      "git_blob_sha1": "08bb75c431d3352cb0d17e9a65f7d855b4d35e59",
+      "sha256": "b22a0843fe21b711ceacc05dca93afd277a47d10030df935f2522ee581f5fae4"
+    },
+    {
+      "module": "rawlsing_next.pre553_original_workload_v2_verifier_candidate",
+      "physical_file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/rawlsing_next/pre553_original_workload_v2_verifier_candidate.py",
+      "git_blob_sha1": "996c8e907f2befde93af09b60154b610c1ffeb63",
+      "sha256": "63d91062f1a080c0297d21364b36492d376137c7936acacb2f0feb702cc0bf28"
+    },
+    {
+      "module": "rawlsing_next.pre553_physical_c11_bridge",
+      "physical_file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/rawlsing_next/pre553_physical_c11_bridge.py",
+      "git_blob_sha1": "3e3497a6eb730524be33bb3d453f6cc63565052c",
+      "sha256": "c1cd1d0855520b93521259cca698e9f5843402081f819adccc013d96a27afb74"
+    },
+    {
+      "module": "rawlsing_next.pre553_physical_decoder",
+      "physical_file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/rawlsing_next/pre553_physical_decoder.py",
+      "git_blob_sha1": "d2a074a41fb556a1cd5928a5fe1421ef3672a4e5",
+      "sha256": "a75a8ff72310949b84adbe682a01375c5dcf5dcee69e94e2a4a8a9b39e17017b"
+    },
+    {
+      "module": "rawlsing_next.pre553_r5_codec",
+      "physical_file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/rawlsing_next/pre553_r5_codec.py",
+      "git_blob_sha1": "72f8f3c03ed065e86fea4e76bb17f8e06c2bf540",
+      "sha256": "cdb4502e770d092c7dba792c8821eafd0180bf4922357ace8a724e6b126eb3b8"
+    },
+    {
+      "module": "rawlsing_next.pre553_route_b_production",
+      "physical_file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/rawlsing_next/pre553_route_b_production.py",
+      "git_blob_sha1": "2385cd327dced3c5b887b59085aa0d21b04d78c3",
+      "sha256": "3a677b4d7a9083ce627f9c773d8a1697f949deebc550bc8f072cff011589f18b"
+    },
+    {
+      "module": "rawlsing_next.pre553_runtime_authority",
+      "physical_file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/rawlsing_next/pre553_runtime_authority.py",
+      "git_blob_sha1": "896c7094124a4aaea23eec550178e4bf8e73ac68",
+      "sha256": "027aa551973b3ba6a560b322c9a704c4577f250d57a0c5564b8d9de71cbbb1d2"
+    },
+    {
+      "module": "rawlsing_next.pre553_runtime_context",
+      "physical_file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/rawlsing_next/pre553_runtime_context.py",
+      "git_blob_sha1": "4fc50793871e176f164442c04ef2501eba9d5dfa",
+      "sha256": "e37b8d16ea2636ad78bcd8239b3ebdc498d0528605bf32353b65415739c0de1e"
+    },
+    {
+      "module": "rawlsing_next.pre553_source_backed_c11_facade",
+      "physical_file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/rawlsing_next/pre553_source_backed_c11_facade.py",
+      "git_blob_sha1": "8a761119e4a8d68eb291fc4edfadb52e027f8284",
+      "sha256": "03b88d258d21c403542756db7316923aa392871442d99294de904b1744da1d01"
+    },
+    {
+      "module": "rawlsing_next.pre553_v2_durable_consumer_integration_candidate",
+      "physical_file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/rawlsing_next/pre553_v2_durable_consumer_integration_candidate.py",
+      "git_blob_sha1": "dc146e920909c8577b5c3c316cd9a8631e96ffd8",
+      "sha256": "ec52d15fe485b2ccb331cb44094008773702f9fed67013b77e5dbd51ee95424c"
+    },
+    {
+      "module": "rawlsing_next.tests.test_pre553_discovery_exact",
+      "physical_file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/rawlsing_next/tests/test_pre553_discovery_exact.py",
+      "git_blob_sha1": "b53039aeb95e012993c5233a7575c1dad5a14929",
+      "sha256": "bb3a403ab1f34e0b9e678d97aac2984d63e872022c4a3c669af58283a45a03db"
+    },
+    {
+      "module": "rawlsing_next.tests.test_pre553_empirical_query",
+      "physical_file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/rawlsing_next/tests/test_pre553_empirical_query.py",
+      "git_blob_sha1": "cc7d93db1f87d9c311170c229dbe3506937b404a",
+      "sha256": "eacc63ca9a067ebde53005fec9c859ce304cbedcf42b1b338b4fece49158b720"
+    },
+    {
+      "module": "rawlsing_next.tests.test_pre553_route_b_production",
+      "physical_file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/rawlsing_next/tests/test_pre553_route_b_production.py",
+      "git_blob_sha1": "d244eaaa48f878f83d77a305b54e6dcde37244c5",
+      "sha256": "19940300b016c2d0c92d6b8281f0a39c2aa396fa18e6388deba3103d033c2439"
+    }
+  ],
+  "source_integrity": {
+    "staged_files_unchanged": 74,
+    "actual_NUL_git_preimages_and_git_hash_object": true,
+    "child_audit_processes": 53,
+    "child_original_import_observations_verified": 787,
+    "child_own_observer_imports_separately_verified": 53
+  },
+  "source_to_I03_to_Field_Forge_identity": {
+    "source_reconstruction": [
+      {
+        "namespace": "PV2-ADULT-A",
+        "C11_release_ref": {
+          "kind": "C11LogicalRelease",
+          "object_id": "REL-m01",
+          "content_hash": "8b035f61971db45a0ae4e0aeee53bdda460fc9ab31a1c123ef6080201379329a"
+        },
+        "source_artifact_ref": {
+          "kind": "SOURCE_ARTIFACT",
+          "object_id": "SOURCE-m01",
+          "content_hash": "a585bd130c1a935cdef7723095483ccf228da633f58b9110c8ca21a189595b54"
+        },
+        "actual_native_responses": {
+          "X": {
+            "R3": "1",
+            "R1": "1",
+            "R2": "0"
+          },
+          "Y": {
+            "R2": "0",
+            "R1": "1",
+            "R3": "1"
+          }
+        },
+        "eligible": {
+          "X": [
+            "R1",
+            "R2",
+            "R3"
+          ],
+          "Y": [
+            "R1",
+            "R2"
+          ]
+        },
+        "joint_exact_same_people": [
+          "R1",
+          "R2"
+        ],
+        "joint_counts": [
+          {
+            "cell": [
+              "0",
+              "0"
+            ],
+            "n": 1
+          },
+          {
+            "cell": [
+              "1",
+              "1"
+            ],
+            "n": 1
+          }
+        ]
+      },
+      {
+        "namespace": "PV2-ADULT-B",
+        "C11_release_ref": {
+          "kind": "C11LogicalRelease",
+          "object_id": "REL-m01",
+          "content_hash": "96ef6b76d0dc7f518c709cd69cc47361138be7ac462f0505a5c94e432aeb8a7f"
+        },
+        "source_artifact_ref": {
+          "kind": "SOURCE_ARTIFACT",
+          "object_id": "SOURCE-m01",
+          "content_hash": "a585bd130c1a935cdef7723095483ccf228da633f58b9110c8ca21a189595b54"
+        },
+        "actual_native_responses": {
+          "X": {
+            "R2": "0",
+            "R1": "1",
+            "R3": "1"
+          },
+          "Y": {
+            "R3": "1",
+            "R2": "0",
+            "R1": "1"
+          }
+        },
+        "eligible": {
+          "X": [
+            "R1",
+            "R2",
+            "R3"
+          ],
+          "Y": [
+            "R1",
+            "R2"
+          ]
+        },
+        "joint_exact_same_people": [
+          "R1",
+          "R2"
+        ],
+        "joint_counts": [
+          {
+            "cell": [
+              "0",
+              "0"
+            ],
+            "n": 1
+          },
+          {
+            "cell": [
+              "1",
+              "1"
+            ],
+            "n": 1
+          }
+        ]
+      }
+    ],
+    "actual_distinct_consumer_refs": 6,
+    "all6_actual_I03_fact_and_Field_Forge_returns_bound": true,
+    "lexical_gap": "Participant exact refs bind X/Y; semantic projection still labels them Q86B/Q86A."
+  },
+  "original_receipts": {
+    "count": 6,
+    "actual_class": "rawlsing_next.pre553_batch_runner.UnitExecutionReceipt",
+    "all_hashes_reconstructed_and_verified": true
+  },
+  "cold": {
+    "separate_PIDs": true,
+    "same_exact_journal_checkpoint_bytes": true,
+    "same_links_and_held": true,
+    "zero_new_durable_units": true,
+    "actual_owner_replay_counts": {
+      "execute_route_b_production": 2,
+      "validate_c11_source_release": 2,
+      "execute_empirical_query": 8,
+      "execute_exact_bounded_discovery": 2,
+      "run_integrated": 2,
+      "produce_exact_conditional_support_profile": 12,
+      "replay_exact_conditional_support_profile": 6
+    },
+    "full_expected_file_already_persisted_at_first_owner": false,
+    "fixture_source_missing_exit": 1,
+    "changed_edition_exit": 1,
+    "checkpoint_receipt_payload_tamper_exit": 1,
+    "journal_actual_result_ref_tamper_exit": 0,
+    "fresh_fake_grant_current_read": {
+      "pid": 76066,
+      "grant": {
+        "grant": "FAKE_SIGNED_ORIGINAL_SOURCE",
+        "issuer": "PV2I-SELF-ISSUED-COLD",
+        "ceiling": [
+          "PRODUCTION"
+        ],
+        "scope": "sourcefree synthetic native rows only; no survey microdata",
+        "revoked": false,
+        "revocation_reason": null
+      },
+      "committed_root": "73283cfbfcbd8560b65d5b0876ed5967b3a0c72e9a8e9fce40ac058946926abf",
+      "servable": true,
+      "links": 6
+    },
+    "qualification": "Same original durable receipts/manifest replay verified. Source/owner bootstrap still reexecutes; source-independent persisted fact recovery not established."
+  },
+  "material_counterexamples": {
+    "self_reissued_E": {
+      "accepted": true,
+      "old_root": "49f0f51866d3327aca2b7d8910517c0317a85c6b7fd3f011c9ffd6634c6218bf",
+      "new_root": "3a3b13760148da3e6d8d85db949b93e1288fa0479befd9521f18fc2e78c4f77b",
+      "foreign_ref": {
+        "kind": "PV2I_FOREIGN",
+        "object_id": "urn:pv2i:independent-self-issued-E",
+        "content_hash": "145493eda25c8bfb3f52824b53814785b2fba7a6fa4b9b07cfbeecbdf83b9a07"
+      },
+      "links": 6,
+      "held": 2,
+      "same_actual_consumers": true,
+      "durable_calls": [
+        3,
+        3
+      ]
+    },
+    "equal_count_held_substitution": {
+      "accepted": true,
+      "counts": [
+        6,
+        2
+      ],
+      "actual_held_slots": [
+        [
+          "PV2-ADULT-A",
+          "PV2I-SUBSTITUTED-HELD"
+        ],
+        [
+          "PV2-ADULT-B",
+          "ORDERED"
+        ]
+      ],
+      "new_root": "956c7555db0dbddf396f0ef44e97d78d96dcced39ab0e73aff88348ebf11a595"
+    },
+    "unrecognized_original_item_scope": {
+      "accepted": true,
+      "original_item_scope_ref": {
+        "kind": "PV2I_FOREIGN",
+        "object_id": "urn:pv2i:unrecognized-original-item-scope",
+        "content_hash": "97842e61d458b68fee3c436ab3223bbd3db9ac5d2dfa65f85dc47431484d13cd"
+      },
+      "new_original_key": "c50a031dbd4ce4f9a10333a7cd20688337143620ca41f92dccdda3fc23484460",
+      "same_actual_consumers": true
+    },
+    "grant_current_read": {
+      "servable": true,
+      "returned_grant": {
+        "grant": "REAL_PERMISSION_LABEL",
+        "issuer": "PV2I-UNTRUSTED",
+        "ceiling": [
+          "PRODUCTION"
+        ],
+        "scope": "sourcefree synthetic native rows only; no survey microdata",
+        "revoked": false,
+        "revocation_reason": null
+      },
+      "actual_relation_permission_ceilings": [
+        [
+          "SOURCE_FREE_DEV"
+        ]
+      ],
+      "limit": "No actual production permission gained: downstream material retains SOURCE_FREE_DEV; foreign metadata accepted by PV2 read gate."
+    },
+    "tampered_current_material": {
+      "servable": true,
+      "unchanged_consumer_ref": {
+        "kind": "EXACT_CONDITIONAL_SUPPORT_PROFILE_WITHIN_SCOPE@1.0.0",
+        "object_id": "urn:rawlsing:field-forge:conditional-support:sha256:5c178013b6aa7cc843ecdc9d3bd92f705777332d39dcb755448f3bab9decc8b5",
+        "content_hash": "5c178013b6aa7cc843ecdc9d3bd92f705777332d39dcb755448f3bab9decc8b5"
+      },
+      "served_denominator": 999
+    },
+    "selective_revocation_limit": {
+      "read": {
+        "servable": false,
+        "revocation_reason": "PV2I_SOURCE_A_REQUEST",
+        "historical_links": 6,
+        "claim": "PV2_REVOKED_FIXTURE_USE_HISTORICAL_RECORD_ONLY"
+      },
+      "scope": "PV2-ADULT-A",
+      "limit": "API has one global revoked bit and textual scope, no per-source issuer/currentness resolver. Cannot lawfully issue selective current-source grant here; source-selective current-use remains HOLD."
+    }
+  },
+  "numeric_mutation_evidence": [
+    "observations/numeric_mutation.json",
+    "observations/numeric_I05_mutation.json"
+  ],
+  "empty_risk_actual_I03_and_Field_Forge": "observations/empty_risk_owner_consumer.json",
+  "real_Epre_gate": "HOLD; original source principals, pre-result custodian and source rights unissued",
+  "generic_native_label_transport": "HOLD; exact X/Y participant refs survive but actual specialized projection says Q86B/Q86A",
+  "reviewer_harness_limits": "Initial missing tmp parent caused errors; dynamic retained worker absent at old test-selected path then explicitly materialized identical pinned HQ282 bytes under compatibility path. An extra retry happened before that alias. All historical tests rerun unchanged and pass. Initial independent label-key/int-vs-string mistakes corrected; original frozen R1 descriptor preserved with pre-import R2 erratum. These are not candidate failures."
+}

@@ -1,0 +1,523 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.11.3, pytest-9.0.2, pluggy-1.6.0 -- /usr/local/bin/python3
+rootdir: /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root
+collecting ... collected 33 items
+
+candidate/tests/test_pv2_original_scope_binding.py::test_register_is_precommitted_and_independently_reproducible PASSED [  3%]
+candidate/tests/test_pv2_original_scope_binding.py::test_register_refuses_all_held_or_insufficient_held_scope PASSED [  6%]
+candidate/tests/test_pv2_original_scope_binding.py::test_positive_original_to_field_forge_consumer_witness ERROR [  9%]
+candidate/tests/test_pv2_original_scope_binding.py::test_positive_replay_is_exact_with_zero_additional_durable_calls ERROR [ 12%]
+candidate/tests/test_pv2_original_scope_binding.py::test_coherent_foreign_issuer_ref_refused[original_U_ref] ERROR [ 15%]
+candidate/tests/test_pv2_original_scope_binding.py::test_coherent_foreign_issuer_ref_refused[independent_E_ref] ERROR [ 18%]
+candidate/tests/test_pv2_original_scope_binding.py::test_coherent_foreign_issuer_ref_refused[independent_custody_ref] ERROR [ 21%]
+candidate/tests/test_pv2_original_scope_binding.py::test_coherent_foreign_issuer_ref_refused[original_operation_scope_ref] ERROR [ 24%]
+candidate/tests/test_pv2_original_scope_binding.py::test_foreign_issuer_ref_changes_the_original_key ERROR [ 27%]
+candidate/tests/test_pv2_original_scope_binding.py::test_dropping_all_held_obligations_refused ERROR [ 30%]
+candidate/tests/test_pv2_original_scope_binding.py::test_dropping_one_held_obligation_with_identical_runnable_output_refused ERROR [ 33%]
+candidate/tests/test_pv2_original_scope_binding.py::test_cherry_picked_single_obligation_refused ERROR [ 36%]
+candidate/tests/test_pv2_original_scope_binding.py::test_cherry_picked_namespace_refused ERROR [ 39%]
+candidate/tests/test_pv2_original_scope_binding.py::test_reversed_semantic_role_mask_refused ERROR [ 42%]
+candidate/tests/test_pv2_original_scope_binding.py::test_reversed_role_mask_also_fails_the_owner_topology_check ERROR [ 45%]
+candidate/tests/test_pv2_original_scope_binding.py::test_declared_roles_bind_the_actual_producer_topology ERROR [ 48%]
+candidate/tests/test_pv2_original_scope_binding.py::test_masked_role_label_rejected_at_consumer_material ERROR [ 51%]
+candidate/tests/test_pv2_original_scope_binding.py::test_foreign_form_or_respondent_unit_refused[form-FOREIGN-FORM] ERROR [ 54%]
+candidate/tests/test_pv2_original_scope_binding.py::test_foreign_form_or_respondent_unit_refused[respondent_unit-HOUSEHOLD] ERROR [ 57%]
+candidate/tests/test_pv2_original_scope_binding.py::test_other_relabelled_identity_labels_refused[language-FOREIGN-LANGUAGE] ERROR [ 60%]
+candidate/tests/test_pv2_original_scope_binding.py::test_other_relabelled_identity_labels_refused[instrument_release-INST-FOREIGN] ERROR [ 63%]
+candidate/tests/test_pv2_original_scope_binding.py::test_other_relabelled_identity_labels_refused[administered_occurrence-FOREIGN-OCCURRENCE] ERROR [ 66%]
+candidate/tests/test_pv2_original_scope_binding.py::test_other_relabelled_identity_labels_refused[option_scope-value3] ERROR [ 69%]
+candidate/tests/test_pv2_original_scope_binding.py::test_form_and_unit_labels_discriminate_the_original_key PASSED [ 72%]
+candidate/tests/test_pv2_original_scope_binding.py::test_same_count_swapped_source_native_item_refused ERROR [ 75%]
+candidate/tests/test_pv2_original_scope_binding.py::test_foreign_replay_ref_refused ERROR [ 78%]
+candidate/tests/test_pv2_original_scope_binding.py::test_stale_precommitted_register_refused ERROR [ 81%]
+candidate/tests/test_pv2_original_scope_binding.py::test_caller_supplied_inventory_relabel_refused ERROR [ 84%]
+candidate/tests/test_pv2_original_scope_binding.py::test_revoked_fixture_use_blocks_execution_and_current_read ERROR [ 87%]
+candidate/tests/test_pv2_original_scope_binding.py::test_cold_process_replay_restores_all_six_values ERROR [ 90%]
+candidate/tests/test_pv2_original_scope_binding.py::test_altered_expected_digest_refused ERROR [ 93%]
+candidate/tests/test_pv2_original_scope_binding.py::test_unregistered_scope_key_refused ERROR [ 96%]
+candidate/tests/test_pv2_original_scope_binding.py::test_real_owner_artifacts_are_actual_c11_and_field_forge ERROR [100%]
+
+==================================== ERRORS ====================================
+___ ERROR at setup of test_positive_original_to_field_forge_consumer_witness ___
+candidate/tests/test_pv2_original_scope_binding.py:76: in court
+    root = tmp_path_factory.mktemp('pv2-court')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:130: in mktemp
+    basename = self._ensure_relative_to_basetemp(basename)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:111: in _ensure_relative_to_basetemp
+    if (self.getbasetemp() / basename).resolve().parent != self.getbasetemp():
+        ^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:152: in getbasetemp
+    basetemp.mkdir(mode=0o700)
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1116: in mkdir
+    os.mkdir(self, mode)
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv2_33'
+_ ERROR at setup of test_positive_replay_is_exact_with_zero_additional_durable_calls _
+candidate/tests/test_pv2_original_scope_binding.py:76: in court
+    root = tmp_path_factory.mktemp('pv2-court')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:130: in mktemp
+    basename = self._ensure_relative_to_basetemp(basename)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:111: in _ensure_relative_to_basetemp
+    if (self.getbasetemp() / basename).resolve().parent != self.getbasetemp():
+        ^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:152: in getbasetemp
+    basetemp.mkdir(mode=0o700)
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1116: in mkdir
+    os.mkdir(self, mode)
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv2_33'
+__ ERROR at setup of test_coherent_foreign_issuer_ref_refused[original_U_ref] __
+candidate/tests/test_pv2_original_scope_binding.py:76: in court
+    root = tmp_path_factory.mktemp('pv2-court')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:130: in mktemp
+    basename = self._ensure_relative_to_basetemp(basename)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:111: in _ensure_relative_to_basetemp
+    if (self.getbasetemp() / basename).resolve().parent != self.getbasetemp():
+        ^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:152: in getbasetemp
+    basetemp.mkdir(mode=0o700)
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1116: in mkdir
+    os.mkdir(self, mode)
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv2_33'
+_ ERROR at setup of test_coherent_foreign_issuer_ref_refused[independent_E_ref] _
+candidate/tests/test_pv2_original_scope_binding.py:76: in court
+    root = tmp_path_factory.mktemp('pv2-court')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:130: in mktemp
+    basename = self._ensure_relative_to_basetemp(basename)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:111: in _ensure_relative_to_basetemp
+    if (self.getbasetemp() / basename).resolve().parent != self.getbasetemp():
+        ^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:152: in getbasetemp
+    basetemp.mkdir(mode=0o700)
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1116: in mkdir
+    os.mkdir(self, mode)
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv2_33'
+_ ERROR at setup of test_coherent_foreign_issuer_ref_refused[independent_custody_ref] _
+candidate/tests/test_pv2_original_scope_binding.py:76: in court
+    root = tmp_path_factory.mktemp('pv2-court')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:130: in mktemp
+    basename = self._ensure_relative_to_basetemp(basename)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:111: in _ensure_relative_to_basetemp
+    if (self.getbasetemp() / basename).resolve().parent != self.getbasetemp():
+        ^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:152: in getbasetemp
+    basetemp.mkdir(mode=0o700)
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1116: in mkdir
+    os.mkdir(self, mode)
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv2_33'
+_ ERROR at setup of test_coherent_foreign_issuer_ref_refused[original_operation_scope_ref] _
+candidate/tests/test_pv2_original_scope_binding.py:76: in court
+    root = tmp_path_factory.mktemp('pv2-court')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:130: in mktemp
+    basename = self._ensure_relative_to_basetemp(basename)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:111: in _ensure_relative_to_basetemp
+    if (self.getbasetemp() / basename).resolve().parent != self.getbasetemp():
+        ^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:152: in getbasetemp
+    basetemp.mkdir(mode=0o700)
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1116: in mkdir
+    os.mkdir(self, mode)
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv2_33'
+______ ERROR at setup of test_foreign_issuer_ref_changes_the_original_key ______
+candidate/tests/test_pv2_original_scope_binding.py:76: in court
+    root = tmp_path_factory.mktemp('pv2-court')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:130: in mktemp
+    basename = self._ensure_relative_to_basetemp(basename)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:111: in _ensure_relative_to_basetemp
+    if (self.getbasetemp() / basename).resolve().parent != self.getbasetemp():
+        ^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:152: in getbasetemp
+    basetemp.mkdir(mode=0o700)
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1116: in mkdir
+    os.mkdir(self, mode)
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv2_33'
+_________ ERROR at setup of test_dropping_all_held_obligations_refused _________
+candidate/tests/test_pv2_original_scope_binding.py:76: in court
+    root = tmp_path_factory.mktemp('pv2-court')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:130: in mktemp
+    basename = self._ensure_relative_to_basetemp(basename)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:111: in _ensure_relative_to_basetemp
+    if (self.getbasetemp() / basename).resolve().parent != self.getbasetemp():
+        ^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:152: in getbasetemp
+    basetemp.mkdir(mode=0o700)
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1116: in mkdir
+    os.mkdir(self, mode)
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv2_33'
+_ ERROR at setup of test_dropping_one_held_obligation_with_identical_runnable_output_refused _
+candidate/tests/test_pv2_original_scope_binding.py:76: in court
+    root = tmp_path_factory.mktemp('pv2-court')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:130: in mktemp
+    basename = self._ensure_relative_to_basetemp(basename)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:111: in _ensure_relative_to_basetemp
+    if (self.getbasetemp() / basename).resolve().parent != self.getbasetemp():
+        ^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:152: in getbasetemp
+    basetemp.mkdir(mode=0o700)
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1116: in mkdir
+    os.mkdir(self, mode)
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv2_33'
+________ ERROR at setup of test_cherry_picked_single_obligation_refused ________
+candidate/tests/test_pv2_original_scope_binding.py:76: in court
+    root = tmp_path_factory.mktemp('pv2-court')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:130: in mktemp
+    basename = self._ensure_relative_to_basetemp(basename)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:111: in _ensure_relative_to_basetemp
+    if (self.getbasetemp() / basename).resolve().parent != self.getbasetemp():
+        ^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:152: in getbasetemp
+    basetemp.mkdir(mode=0o700)
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1116: in mkdir
+    os.mkdir(self, mode)
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv2_33'
+____________ ERROR at setup of test_cherry_picked_namespace_refused ____________
+candidate/tests/test_pv2_original_scope_binding.py:76: in court
+    root = tmp_path_factory.mktemp('pv2-court')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:130: in mktemp
+    basename = self._ensure_relative_to_basetemp(basename)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:111: in _ensure_relative_to_basetemp
+    if (self.getbasetemp() / basename).resolve().parent != self.getbasetemp():
+        ^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:152: in getbasetemp
+    basetemp.mkdir(mode=0o700)
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1116: in mkdir
+    os.mkdir(self, mode)
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv2_33'
+__________ ERROR at setup of test_reversed_semantic_role_mask_refused __________
+candidate/tests/test_pv2_original_scope_binding.py:76: in court
+    root = tmp_path_factory.mktemp('pv2-court')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:130: in mktemp
+    basename = self._ensure_relative_to_basetemp(basename)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:111: in _ensure_relative_to_basetemp
+    if (self.getbasetemp() / basename).resolve().parent != self.getbasetemp():
+        ^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:152: in getbasetemp
+    basetemp.mkdir(mode=0o700)
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1116: in mkdir
+    os.mkdir(self, mode)
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv2_33'
+_ ERROR at setup of test_reversed_role_mask_also_fails_the_owner_topology_check _
+candidate/tests/test_pv2_original_scope_binding.py:76: in court
+    root = tmp_path_factory.mktemp('pv2-court')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:130: in mktemp
+    basename = self._ensure_relative_to_basetemp(basename)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:111: in _ensure_relative_to_basetemp
+    if (self.getbasetemp() / basename).resolve().parent != self.getbasetemp():
+        ^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:152: in getbasetemp
+    basetemp.mkdir(mode=0o700)
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1116: in mkdir
+    os.mkdir(self, mode)
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv2_33'
+___ ERROR at setup of test_declared_roles_bind_the_actual_producer_topology ____
+candidate/tests/test_pv2_original_scope_binding.py:76: in court
+    root = tmp_path_factory.mktemp('pv2-court')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:130: in mktemp
+    basename = self._ensure_relative_to_basetemp(basename)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:111: in _ensure_relative_to_basetemp
+    if (self.getbasetemp() / basename).resolve().parent != self.getbasetemp():
+        ^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:152: in getbasetemp
+    basetemp.mkdir(mode=0o700)
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1116: in mkdir
+    os.mkdir(self, mode)
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv2_33'
+____ ERROR at setup of test_masked_role_label_rejected_at_consumer_material ____
+candidate/tests/test_pv2_original_scope_binding.py:76: in court
+    root = tmp_path_factory.mktemp('pv2-court')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:130: in mktemp
+    basename = self._ensure_relative_to_basetemp(basename)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:111: in _ensure_relative_to_basetemp
+    if (self.getbasetemp() / basename).resolve().parent != self.getbasetemp():
+        ^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:152: in getbasetemp
+    basetemp.mkdir(mode=0o700)
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1116: in mkdir
+    os.mkdir(self, mode)
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv2_33'
+_ ERROR at setup of test_foreign_form_or_respondent_unit_refused[form-FOREIGN-FORM] _
+candidate/tests/test_pv2_original_scope_binding.py:76: in court
+    root = tmp_path_factory.mktemp('pv2-court')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:130: in mktemp
+    basename = self._ensure_relative_to_basetemp(basename)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:111: in _ensure_relative_to_basetemp
+    if (self.getbasetemp() / basename).resolve().parent != self.getbasetemp():
+        ^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:152: in getbasetemp
+    basetemp.mkdir(mode=0o700)
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1116: in mkdir
+    os.mkdir(self, mode)
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv2_33'
+_ ERROR at setup of test_foreign_form_or_respondent_unit_refused[respondent_unit-HOUSEHOLD] _
+candidate/tests/test_pv2_original_scope_binding.py:76: in court
+    root = tmp_path_factory.mktemp('pv2-court')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:130: in mktemp
+    basename = self._ensure_relative_to_basetemp(basename)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:111: in _ensure_relative_to_basetemp
+    if (self.getbasetemp() / basename).resolve().parent != self.getbasetemp():
+        ^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:152: in getbasetemp
+    basetemp.mkdir(mode=0o700)
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1116: in mkdir
+    os.mkdir(self, mode)
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv2_33'
+_ ERROR at setup of test_other_relabelled_identity_labels_refused[language-FOREIGN-LANGUAGE] _
+candidate/tests/test_pv2_original_scope_binding.py:76: in court
+    root = tmp_path_factory.mktemp('pv2-court')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:130: in mktemp
+    basename = self._ensure_relative_to_basetemp(basename)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:111: in _ensure_relative_to_basetemp
+    if (self.getbasetemp() / basename).resolve().parent != self.getbasetemp():
+        ^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:152: in getbasetemp
+    basetemp.mkdir(mode=0o700)
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1116: in mkdir
+    os.mkdir(self, mode)
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv2_33'
+_ ERROR at setup of test_other_relabelled_identity_labels_refused[instrument_release-INST-FOREIGN] _
+candidate/tests/test_pv2_original_scope_binding.py:76: in court
+    root = tmp_path_factory.mktemp('pv2-court')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:130: in mktemp
+    basename = self._ensure_relative_to_basetemp(basename)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:111: in _ensure_relative_to_basetemp
+    if (self.getbasetemp() / basename).resolve().parent != self.getbasetemp():
+        ^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:152: in getbasetemp
+    basetemp.mkdir(mode=0o700)
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1116: in mkdir
+    os.mkdir(self, mode)
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv2_33'
+_ ERROR at setup of test_other_relabelled_identity_labels_refused[administered_occurrence-FOREIGN-OCCURRENCE] _
+candidate/tests/test_pv2_original_scope_binding.py:76: in court
+    root = tmp_path_factory.mktemp('pv2-court')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:130: in mktemp
+    basename = self._ensure_relative_to_basetemp(basename)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:111: in _ensure_relative_to_basetemp
+    if (self.getbasetemp() / basename).resolve().parent != self.getbasetemp():
+        ^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:152: in getbasetemp
+    basetemp.mkdir(mode=0o700)
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1116: in mkdir
+    os.mkdir(self, mode)
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv2_33'
+_ ERROR at setup of test_other_relabelled_identity_labels_refused[option_scope-value3] _
+candidate/tests/test_pv2_original_scope_binding.py:76: in court
+    root = tmp_path_factory.mktemp('pv2-court')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:130: in mktemp
+    basename = self._ensure_relative_to_basetemp(basename)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:111: in _ensure_relative_to_basetemp
+    if (self.getbasetemp() / basename).resolve().parent != self.getbasetemp():
+        ^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:152: in getbasetemp
+    basetemp.mkdir(mode=0o700)
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1116: in mkdir
+    os.mkdir(self, mode)
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv2_33'
+_____ ERROR at setup of test_same_count_swapped_source_native_item_refused _____
+candidate/tests/test_pv2_original_scope_binding.py:76: in court
+    root = tmp_path_factory.mktemp('pv2-court')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:130: in mktemp
+    basename = self._ensure_relative_to_basetemp(basename)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:111: in _ensure_relative_to_basetemp
+    if (self.getbasetemp() / basename).resolve().parent != self.getbasetemp():
+        ^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:152: in getbasetemp
+    basetemp.mkdir(mode=0o700)
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1116: in mkdir
+    os.mkdir(self, mode)
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv2_33'
+______________ ERROR at setup of test_foreign_replay_ref_refused _______________
+candidate/tests/test_pv2_original_scope_binding.py:76: in court
+    root = tmp_path_factory.mktemp('pv2-court')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:130: in mktemp
+    basename = self._ensure_relative_to_basetemp(basename)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:111: in _ensure_relative_to_basetemp
+    if (self.getbasetemp() / basename).resolve().parent != self.getbasetemp():
+        ^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:152: in getbasetemp
+    basetemp.mkdir(mode=0o700)
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1116: in mkdir
+    os.mkdir(self, mode)
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv2_33'
+__________ ERROR at setup of test_stale_precommitted_register_refused __________
+candidate/tests/test_pv2_original_scope_binding.py:76: in court
+    root = tmp_path_factory.mktemp('pv2-court')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:130: in mktemp
+    basename = self._ensure_relative_to_basetemp(basename)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:111: in _ensure_relative_to_basetemp
+    if (self.getbasetemp() / basename).resolve().parent != self.getbasetemp():
+        ^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:152: in getbasetemp
+    basetemp.mkdir(mode=0o700)
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1116: in mkdir
+    os.mkdir(self, mode)
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv2_33'
+_______ ERROR at setup of test_caller_supplied_inventory_relabel_refused _______
+candidate/tests/test_pv2_original_scope_binding.py:76: in court
+    root = tmp_path_factory.mktemp('pv2-court')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:130: in mktemp
+    basename = self._ensure_relative_to_basetemp(basename)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:111: in _ensure_relative_to_basetemp
+    if (self.getbasetemp() / basename).resolve().parent != self.getbasetemp():
+        ^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:152: in getbasetemp
+    basetemp.mkdir(mode=0o700)
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1116: in mkdir
+    os.mkdir(self, mode)
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv2_33'
+_ ERROR at setup of test_revoked_fixture_use_blocks_execution_and_current_read _
+candidate/tests/test_pv2_original_scope_binding.py:76: in court
+    root = tmp_path_factory.mktemp('pv2-court')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:130: in mktemp
+    basename = self._ensure_relative_to_basetemp(basename)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:111: in _ensure_relative_to_basetemp
+    if (self.getbasetemp() / basename).resolve().parent != self.getbasetemp():
+        ^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:152: in getbasetemp
+    basetemp.mkdir(mode=0o700)
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1116: in mkdir
+    os.mkdir(self, mode)
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv2_33'
+______ ERROR at setup of test_cold_process_replay_restores_all_six_values ______
+candidate/tests/test_pv2_original_scope_binding.py:76: in court
+    root = tmp_path_factory.mktemp('pv2-court')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:130: in mktemp
+    basename = self._ensure_relative_to_basetemp(basename)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:111: in _ensure_relative_to_basetemp
+    if (self.getbasetemp() / basename).resolve().parent != self.getbasetemp():
+        ^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:152: in getbasetemp
+    basetemp.mkdir(mode=0o700)
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1116: in mkdir
+    os.mkdir(self, mode)
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv2_33'
+____________ ERROR at setup of test_altered_expected_digest_refused ____________
+candidate/tests/test_pv2_original_scope_binding.py:76: in court
+    root = tmp_path_factory.mktemp('pv2-court')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:130: in mktemp
+    basename = self._ensure_relative_to_basetemp(basename)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:111: in _ensure_relative_to_basetemp
+    if (self.getbasetemp() / basename).resolve().parent != self.getbasetemp():
+        ^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:152: in getbasetemp
+    basetemp.mkdir(mode=0o700)
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1116: in mkdir
+    os.mkdir(self, mode)
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv2_33'
+____________ ERROR at setup of test_unregistered_scope_key_refused _____________
+candidate/tests/test_pv2_original_scope_binding.py:76: in court
+    root = tmp_path_factory.mktemp('pv2-court')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:130: in mktemp
+    basename = self._ensure_relative_to_basetemp(basename)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:111: in _ensure_relative_to_basetemp
+    if (self.getbasetemp() / basename).resolve().parent != self.getbasetemp():
+        ^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:152: in getbasetemp
+    basetemp.mkdir(mode=0o700)
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1116: in mkdir
+    os.mkdir(self, mode)
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv2_33'
+__ ERROR at setup of test_real_owner_artifacts_are_actual_c11_and_field_forge __
+candidate/tests/test_pv2_original_scope_binding.py:76: in court
+    root = tmp_path_factory.mktemp('pv2-court')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:130: in mktemp
+    basename = self._ensure_relative_to_basetemp(basename)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:111: in _ensure_relative_to_basetemp
+    if (self.getbasetemp() / basename).resolve().parent != self.getbasetemp():
+        ^^^^^^^^^^^^^^^^^^
+../../../../../../Library/Python/3.11/lib/python/site-packages/_pytest/tmpdir.py:152: in getbasetemp
+    basetemp.mkdir(mode=0o700)
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1116: in mkdir
+    os.mkdir(self, mode)
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv2_33'
+- generated xml file: /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/observations/pv2_33.xml -
+=========================== short test summary info ============================
+ERROR candidate/tests/test_pv2_original_scope_binding.py::test_positive_original_to_field_forge_consumer_witness - FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv2_33'
+ERROR candidate/tests/test_pv2_original_scope_binding.py::test_positive_replay_is_exact_with_zero_additional_durable_calls - FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv2_33'
+ERROR candidate/tests/test_pv2_original_scope_binding.py::test_coherent_foreign_issuer_ref_refused[original_U_ref] - FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv2_33'
+ERROR candidate/tests/test_pv2_original_scope_binding.py::test_coherent_foreign_issuer_ref_refused[independent_E_ref] - FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv2_33'
+ERROR candidate/tests/test_pv2_original_scope_binding.py::test_coherent_foreign_issuer_ref_refused[independent_custody_ref] - FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv2_33'
+ERROR candidate/tests/test_pv2_original_scope_binding.py::test_coherent_foreign_issuer_ref_refused[original_operation_scope_ref] - FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv2_33'
+ERROR candidate/tests/test_pv2_original_scope_binding.py::test_foreign_issuer_ref_changes_the_original_key - FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv2_33'
+ERROR candidate/tests/test_pv2_original_scope_binding.py::test_dropping_all_held_obligations_refused - FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv2_33'
+ERROR candidate/tests/test_pv2_original_scope_binding.py::test_dropping_one_held_obligation_with_identical_runnable_output_refused - FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv2_33'
+ERROR candidate/tests/test_pv2_original_scope_binding.py::test_cherry_picked_single_obligation_refused - FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv2_33'
+ERROR candidate/tests/test_pv2_original_scope_binding.py::test_cherry_picked_namespace_refused - FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv2_33'
+ERROR candidate/tests/test_pv2_original_scope_binding.py::test_reversed_semantic_role_mask_refused - FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv2_33'
+ERROR candidate/tests/test_pv2_original_scope_binding.py::test_reversed_role_mask_also_fails_the_owner_topology_check - FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv2_33'
+ERROR candidate/tests/test_pv2_original_scope_binding.py::test_declared_roles_bind_the_actual_producer_topology - FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv2_33'
+ERROR candidate/tests/test_pv2_original_scope_binding.py::test_masked_role_label_rejected_at_consumer_material - FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv2_33'
+ERROR candidate/tests/test_pv2_original_scope_binding.py::test_foreign_form_or_respondent_unit_refused[form-FOREIGN-FORM] - FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv2_33'
+ERROR candidate/tests/test_pv2_original_scope_binding.py::test_foreign_form_or_respondent_unit_refused[respondent_unit-HOUSEHOLD] - FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv2_33'
+ERROR candidate/tests/test_pv2_original_scope_binding.py::test_other_relabelled_identity_labels_refused[language-FOREIGN-LANGUAGE] - FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv2_33'
+ERROR candidate/tests/test_pv2_original_scope_binding.py::test_other_relabelled_identity_labels_refused[instrument_release-INST-FOREIGN] - FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv2_33'
+ERROR candidate/tests/test_pv2_original_scope_binding.py::test_other_relabelled_identity_labels_refused[administered_occurrence-FOREIGN-OCCURRENCE] - FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv2_33'
+ERROR candidate/tests/test_pv2_original_scope_binding.py::test_other_relabelled_identity_labels_refused[option_scope-value3] - FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv2_33'
+ERROR candidate/tests/test_pv2_original_scope_binding.py::test_same_count_swapped_source_native_item_refused - FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv2_33'
+ERROR candidate/tests/test_pv2_original_scope_binding.py::test_foreign_replay_ref_refused - FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv2_33'
+ERROR candidate/tests/test_pv2_original_scope_binding.py::test_stale_precommitted_register_refused - FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv2_33'
+ERROR candidate/tests/test_pv2_original_scope_binding.py::test_caller_supplied_inventory_relabel_refused - FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv2_33'
+ERROR candidate/tests/test_pv2_original_scope_binding.py::test_revoked_fixture_use_blocks_execution_and_current_read - FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv2_33'
+ERROR candidate/tests/test_pv2_original_scope_binding.py::test_cold_process_replay_restores_all_six_values - FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv2_33'
+ERROR candidate/tests/test_pv2_original_scope_binding.py::test_altered_expected_digest_refused - FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv2_33'
+ERROR candidate/tests/test_pv2_original_scope_binding.py::test_unregistered_scope_key_refused - FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv2_33'
+ERROR candidate/tests/test_pv2_original_scope_binding.py::test_real_owner_artifacts_are_actual_c11_and_field_forge - FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv2_33'
+========================= 3 passed, 30 errors in 1.54s =========================

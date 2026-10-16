@@ -1,0 +1,126 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.11.3, pytest-9.0.2, pluggy-1.6.0 -- /usr/local/bin/python3
+rootdir: /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root
+collecting ... collected 21 items
+
+rawlsing_next/tests/test_postastra_pv_v2k_independent.py::test_independent_positive_denominators_and_replay ERROR [  4%]
+rawlsing_next/tests/test_postastra_pv_v2k_independent.py::test_independent_omission[B] ERROR [  9%]
+rawlsing_next/tests/test_postastra_pv_v2k_independent.py::test_independent_omission[DISCOVERY] ERROR [ 14%]
+rawlsing_next/tests/test_postastra_pv_v2k_independent.py::test_same_count_foreign_substitution ERROR [ 19%]
+rawlsing_next/tests/test_postastra_pv_v2k_independent.py::test_wrong_c11_binding[respondent_namespace-FOREIGN] ERROR [ 23%]
+rawlsing_next/tests/test_postastra_pv_v2k_independent.py::test_wrong_c11_binding[native_item_refs-None] ERROR [ 28%]
+rawlsing_next/tests/test_postastra_pv_v2k_independent.py::test_wrong_c11_binding[routing_refs-None] ERROR [ 33%]
+rawlsing_next/tests/test_postastra_pv_v2k_independent.py::test_changed_preimage_and_foreign_query ERROR [ 38%]
+rawlsing_next/tests/test_postastra_pv_v2k_independent.py::test_foreign_issuer_is_not_authenticated[original_U_ref] ERROR [ 42%]
+rawlsing_next/tests/test_postastra_pv_v2k_independent.py::test_foreign_issuer_is_not_authenticated[independent_E_ref] ERROR [ 47%]
+rawlsing_next/tests/test_postastra_pv_v2k_independent.py::test_foreign_issuer_is_not_authenticated[independent_custody_ref] ERROR [ 52%]
+rawlsing_next/tests/test_postastra_pv_v2k_independent.py::test_foreign_issuer_is_not_authenticated[original_operation_scope_ref] ERROR [ 57%]
+rawlsing_next/tests/test_postastra_pv_v2k_independent.py::test_missing_all_held_rows_exposes_outer_gap ERROR [ 61%]
+rawlsing_next/tests/test_postastra_pv_v2k_independent.py::test_cherry_picked_A_only_exposes_outer_gap ERROR [ 66%]
+rawlsing_next/tests/test_postastra_pv_v2k_independent.py::test_coherent_semantic_rekey[wrong_role] ERROR [ 71%]
+rawlsing_next/tests/test_postastra_pv_v2k_independent.py::test_coherent_semantic_rekey[wrong_direction] ERROR [ 76%]
+rawlsing_next/tests/test_postastra_pv_v2k_independent.py::test_coherent_semantic_rekey[foreign_form] ERROR [ 80%]
+rawlsing_next/tests/test_postastra_pv_v2k_independent.py::test_coherent_semantic_rekey[foreign_unit] ERROR [ 85%]
+rawlsing_next/tests/test_postastra_pv_v2k_independent.py::test_foreign_replay_ref_rejected ERROR [ 90%]
+rawlsing_next/tests/test_postastra_pv_v2k_independent.py::test_all_held_no_productive_pass PASSED [ 95%]
+rawlsing_next/tests/test_postastra_pv_v2k_independent.py::test_original_namespace_and_form_key_discrimination PASSED [100%]
+
+==================================== ERRORS ====================================
+_____ ERROR at setup of test_independent_positive_denominators_and_replay ______
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1116: in mkdir
+    os.mkdir(self, mode)
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv_21'
+________________ ERROR at setup of test_independent_omission[B] ________________
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1116: in mkdir
+    os.mkdir(self, mode)
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv_21'
+____________ ERROR at setup of test_independent_omission[DISCOVERY] ____________
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1116: in mkdir
+    os.mkdir(self, mode)
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv_21'
+____________ ERROR at setup of test_same_count_foreign_substitution ____________
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1116: in mkdir
+    os.mkdir(self, mode)
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv_21'
+____ ERROR at setup of test_wrong_c11_binding[respondent_namespace-FOREIGN] ____
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1116: in mkdir
+    os.mkdir(self, mode)
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv_21'
+_______ ERROR at setup of test_wrong_c11_binding[native_item_refs-None] ________
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1116: in mkdir
+    os.mkdir(self, mode)
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv_21'
+_________ ERROR at setup of test_wrong_c11_binding[routing_refs-None] __________
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1116: in mkdir
+    os.mkdir(self, mode)
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv_21'
+__________ ERROR at setup of test_changed_preimage_and_foreign_query ___________
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1116: in mkdir
+    os.mkdir(self, mode)
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv_21'
+__ ERROR at setup of test_foreign_issuer_is_not_authenticated[original_U_ref] __
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1116: in mkdir
+    os.mkdir(self, mode)
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv_21'
+_ ERROR at setup of test_foreign_issuer_is_not_authenticated[independent_E_ref] _
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1116: in mkdir
+    os.mkdir(self, mode)
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv_21'
+_ ERROR at setup of test_foreign_issuer_is_not_authenticated[independent_custody_ref] _
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1116: in mkdir
+    os.mkdir(self, mode)
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv_21'
+_ ERROR at setup of test_foreign_issuer_is_not_authenticated[original_operation_scope_ref] _
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1116: in mkdir
+    os.mkdir(self, mode)
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv_21'
+________ ERROR at setup of test_missing_all_held_rows_exposes_outer_gap ________
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1116: in mkdir
+    os.mkdir(self, mode)
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv_21'
+________ ERROR at setup of test_cherry_picked_A_only_exposes_outer_gap _________
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1116: in mkdir
+    os.mkdir(self, mode)
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv_21'
+__________ ERROR at setup of test_coherent_semantic_rekey[wrong_role] __________
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1116: in mkdir
+    os.mkdir(self, mode)
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv_21'
+_______ ERROR at setup of test_coherent_semantic_rekey[wrong_direction] ________
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1116: in mkdir
+    os.mkdir(self, mode)
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv_21'
+_________ ERROR at setup of test_coherent_semantic_rekey[foreign_form] _________
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1116: in mkdir
+    os.mkdir(self, mode)
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv_21'
+_________ ERROR at setup of test_coherent_semantic_rekey[foreign_unit] _________
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1116: in mkdir
+    os.mkdir(self, mode)
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv_21'
+______________ ERROR at setup of test_foreign_replay_ref_rejected ______________
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1116: in mkdir
+    os.mkdir(self, mode)
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv_21'
+- generated xml file: /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/observations/pv_21.xml -
+=========================== short test summary info ============================
+ERROR rawlsing_next/tests/test_postastra_pv_v2k_independent.py::test_independent_positive_denominators_and_replay - FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv_21'
+ERROR rawlsing_next/tests/test_postastra_pv_v2k_independent.py::test_independent_omission[B] - FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv_21'
+ERROR rawlsing_next/tests/test_postastra_pv_v2k_independent.py::test_independent_omission[DISCOVERY] - FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv_21'
+ERROR rawlsing_next/tests/test_postastra_pv_v2k_independent.py::test_same_count_foreign_substitution - FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv_21'
+ERROR rawlsing_next/tests/test_postastra_pv_v2k_independent.py::test_wrong_c11_binding[respondent_namespace-FOREIGN] - FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv_21'
+ERROR rawlsing_next/tests/test_postastra_pv_v2k_independent.py::test_wrong_c11_binding[native_item_refs-None] - FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv_21'
+ERROR rawlsing_next/tests/test_postastra_pv_v2k_independent.py::test_wrong_c11_binding[routing_refs-None] - FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv_21'
+ERROR rawlsing_next/tests/test_postastra_pv_v2k_independent.py::test_changed_preimage_and_foreign_query - FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv_21'
+ERROR rawlsing_next/tests/test_postastra_pv_v2k_independent.py::test_foreign_issuer_is_not_authenticated[original_U_ref] - FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv_21'
+ERROR rawlsing_next/tests/test_postastra_pv_v2k_independent.py::test_foreign_issuer_is_not_authenticated[independent_E_ref] - FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv_21'
+ERROR rawlsing_next/tests/test_postastra_pv_v2k_independent.py::test_foreign_issuer_is_not_authenticated[independent_custody_ref] - FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv_21'
+ERROR rawlsing_next/tests/test_postastra_pv_v2k_independent.py::test_foreign_issuer_is_not_authenticated[original_operation_scope_ref] - FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv_21'
+ERROR rawlsing_next/tests/test_postastra_pv_v2k_independent.py::test_missing_all_held_rows_exposes_outer_gap - FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv_21'
+ERROR rawlsing_next/tests/test_postastra_pv_v2k_independent.py::test_cherry_picked_A_only_exposes_outer_gap - FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv_21'
+ERROR rawlsing_next/tests/test_postastra_pv_v2k_independent.py::test_coherent_semantic_rekey[wrong_role] - FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv_21'
+ERROR rawlsing_next/tests/test_postastra_pv_v2k_independent.py::test_coherent_semantic_rekey[wrong_direction] - FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv_21'
+ERROR rawlsing_next/tests/test_postastra_pv_v2k_independent.py::test_coherent_semantic_rekey[foreign_form] - FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv_21'
+ERROR rawlsing_next/tests/test_postastra_pv_v2k_independent.py::test_coherent_semantic_rekey[foreign_unit] - FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv_21'
+ERROR rawlsing_next/tests/test_postastra_pv_v2k_independent.py::test_foreign_replay_ref_rejected - FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/tmp/pv_21'
+========================= 2 passed, 19 errors in 0.82s =========================

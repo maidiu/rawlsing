@@ -1,0 +1,160 @@
+{
+  "schema": "POSTASTRA_PV_INDEPENDENT_TEST_ONLY_ORACLE@1",
+  "origin": "REVIEWER_AUTHORED_BEFORE_ANY_FIXTURE_EXECUTION",
+  "source_kind": "TEST_ONLY_SYNTHETIC_NOT_OBSERVED",
+  "scopes": [
+    "PV-ADULT-A",
+    "PV-ADULT-B"
+  ],
+  "form": "F1",
+  "rows": [
+    {
+      "respondent": "R1",
+      "X": "1",
+      "Y": "1",
+      "Y_eligible": true
+    },
+    {
+      "respondent": "R2",
+      "X": "1",
+      "Y": "0",
+      "Y_eligible": true
+    },
+    {
+      "respondent": "R3",
+      "X": "1",
+      "Y": "1",
+      "Y_eligible": false
+    }
+  ],
+  "operations": [
+    {
+      "slot": "PAIR",
+      "order": [
+        "X",
+        "Y"
+      ],
+      "roles": [
+        "CONDITIONER",
+        "TARGET"
+      ],
+      "state": "RUNNABLE"
+    },
+    {
+      "slot": "B",
+      "order": [
+        "Y",
+        "X"
+      ],
+      "roles": [
+        "CONDITIONER",
+        "TARGET"
+      ],
+      "state": "RUNNABLE"
+    },
+    {
+      "slot": "DISCOVERY",
+      "order": [
+        "X",
+        "Y"
+      ],
+      "roles": [
+        "BASE"
+      ],
+      "state": "RUNNABLE"
+    },
+    {
+      "slot": "ORDERED",
+      "order": [
+        "O"
+      ],
+      "roles": [
+        "BASE"
+      ],
+      "state": "HELD",
+      "hold_reason": "ORDERED_OWNER_NOT_ISSUED"
+    }
+  ],
+  "expected_multiset": [
+    [
+      "PV-ADULT-A",
+      "PAIR"
+    ],
+    [
+      "PV-ADULT-A",
+      "B"
+    ],
+    [
+      "PV-ADULT-A",
+      "DISCOVERY"
+    ],
+    [
+      "PV-ADULT-A",
+      "ORDERED"
+    ],
+    [
+      "PV-ADULT-B",
+      "PAIR"
+    ],
+    [
+      "PV-ADULT-B",
+      "B"
+    ],
+    [
+      "PV-ADULT-B",
+      "DISCOVERY"
+    ],
+    [
+      "PV-ADULT-B",
+      "ORDERED"
+    ]
+  ],
+  "expected_consumer_counts": {
+    "PAIR": {
+      "0": {
+        "denominator": 0,
+        "targets": {
+          "0": 0,
+          "1": 0
+        }
+      },
+      "1": {
+        "denominator": 2,
+        "targets": {
+          "0": 1,
+          "1": 1
+        }
+      }
+    },
+    "B": {
+      "0": {
+        "denominator": 1,
+        "targets": {
+          "0": 0,
+          "1": 1
+        }
+      },
+      "1": {
+        "denominator": 1,
+        "targets": {
+          "0": 0,
+          "1": 1
+        }
+      }
+    }
+  },
+  "cases": {
+    "positive": "6 distinct consumer links, 2 held, raw risk denominator excludes R3",
+    "namespace_or_form_alias": "original keys distinct despite legacy key alias where allowed",
+    "same_count_substitution": "reject against frozen multiset before durable calls",
+    "foreign_issuer_refs": "external frozen oracle rejects; candidate may accept with custody HOLD",
+    "A_only": "reject independently expected B and J omissions",
+    "missing_all_held": "external frozen oracle rejects; test candidate acceptance gap",
+    "role_reversal": "correct ordered profiles; inconsistent direction rejected",
+    "wrong_role": "test coherent self-rekeying against exact C11 query",
+    "wrong_query": "reject exact-ref substitution",
+    "changed_preimage": "reject stale digest or key; coherent rekey is not issuer authority",
+    "cherry_pick": "external frozen oracle rejects; candidate local subset may pass",
+    "replay": "same exact links and zero additional durable calls; foreign consumer ref reject"
+  }
+}

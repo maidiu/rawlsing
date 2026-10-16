@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="20" skipped="0" tests="40" time="2.670" timestamp="2026-10-15T15:08:36.657918-04:00" hostname="MacBook-Pro.lan"><testcase classname="tests.test_independent" name="test_exact_independent_inventory_and_six_real_consumers" time="0.445" /><testcase classname="tests.test_independent" name="test_foreign_reference_with_fixed_register_refused[original_U_ref]" time="0.022" /><testcase classname="tests.test_independent" name="test_foreign_reference_with_fixed_register_refused[independent_E_ref]" time="0.023" /><testcase classname="tests.test_independent" name="test_foreign_reference_with_fixed_register_refused[independent_custody_ref]" time="0.022" /><testcase classname="tests.test_independent" name="test_foreign_reference_with_fixed_register_refused[original_operation_scope_ref]" time="0.022" /><testcase classname="tests.test_independent" name="test_coherently_reissued_register_cannot_authenticate_itself[original_U_ref]" time="0.089"><failure message="Failed: DID NOT RAISE &lt;class 'ValueError'&gt;">../tests/test_independent.py:37: in test_coherently_reissued_register_cannot_authenticate_itself
+    with pytest.raises(ValueError):run(fx,e,p,reg)
+E   Failed: DID NOT RAISE &lt;class 'ValueError'&gt;</failure></testcase><testcase classname="tests.test_independent" name="test_coherently_reissued_register_cannot_authenticate_itself[independent_E_ref]" time="0.101"><failure message="Failed: DID NOT RAISE &lt;class 'ValueError'&gt;">../tests/test_independent.py:37: in test_coherently_reissued_register_cannot_authenticate_itself
+    with pytest.raises(ValueError):run(fx,e,p,reg)
+E   Failed: DID NOT RAISE &lt;class 'ValueError'&gt;</failure></testcase><testcase classname="tests.test_independent" name="test_coherently_reissued_register_cannot_authenticate_itself[independent_custody_ref]" time="0.089"><failure message="Failed: DID NOT RAISE &lt;class 'ValueError'&gt;">../tests/test_independent.py:37: in test_coherently_reissued_register_cannot_authenticate_itself
+    with pytest.raises(ValueError):run(fx,e,p,reg)
+E   Failed: DID NOT RAISE &lt;class 'ValueError'&gt;</failure></testcase><testcase classname="tests.test_independent" name="test_coherently_reissued_register_cannot_authenticate_itself[original_operation_scope_ref]" time="0.091"><failure message="Failed: DID NOT RAISE &lt;class 'ValueError'&gt;">../tests/test_independent.py:37: in test_coherently_reissued_register_cannot_authenticate_itself
+    with pytest.raises(ValueError):run(fx,e,p,reg)
+E   Failed: DID NOT RAISE &lt;class 'ValueError'&gt;</failure></testcase><testcase classname="tests.test_independent" name="test_fixed_register_rejects_original_metadata_mutation[form-PV2I-FOREIGN-FORM]" time="0.024" /><testcase classname="tests.test_independent" name="test_fixed_register_rejects_original_metadata_mutation[respondent_unit-HOUSEHOLD]" time="0.020" /><testcase classname="tests.test_independent" name="test_fixed_register_rejects_original_metadata_mutation[language-PV2I-OTHER]" time="0.019" /><testcase classname="tests.test_independent" name="test_fixed_register_rejects_original_metadata_mutation[instrument_release-EDITION2]" time="0.019" /><testcase classname="tests.test_independent" name="test_fixed_register_rejects_original_metadata_mutation[administered_occurrence-SECOND]" time="0.020" /><testcase classname="tests.test_independent" name="test_fixed_register_rejects_original_metadata_mutation[option_scope-value5]" time="0.020" /><testcase classname="tests.test_independent" name="test_two_held_omission_same_six_runnable_refused" time="0.015" /><testcase classname="tests.test_independent" name="test_A_only_scope_refused" time="0.013" /><testcase classname="tests.test_independent" name="test_equal_count_held_relabel_with_fixed_register_refused" time="0.020" /><testcase classname="tests.test_independent" name="test_equal_count_held_relabel_with_self_reissued_register_refused" time="0.088"><failure message="Failed: DID NOT RAISE &lt;class 'ValueError'&gt;">../tests/test_independent.py:59: in test_equal_count_held_relabel_with_self_reissued_register_refused
+    with pytest.raises(ValueError):run(fx,e,p,reg)
+E   Failed: DID NOT RAISE &lt;class 'ValueError'&gt;</failure></testcase><testcase classname="tests.test_independent" name="test_complete_original_source_binding[source_release_ref]" time="0.035" /><testcase classname="tests.test_independent" name="test_complete_original_source_binding[empirical_universe_ref]" time="0.033" /><testcase classname="tests.test_independent" name="test_complete_original_source_binding[original_item_scope_ref]" time="0.089"><failure message="Failed: DID NOT RAISE &lt;class 'ValueError'&gt;">../tests/test_independent.py:66: in test_complete_original_source_binding
+    with pytest.raises(ValueError):run(fx,e,p)
+E   Failed: DID NOT RAISE &lt;class 'ValueError'&gt;</failure></testcase><testcase classname="tests.test_independent" name="test_complete_original_source_binding[routing_refs]" time="0.032" /><testcase classname="tests.test_independent" name="test_swapped_actual_query_target_conditioner_refused" time="0.026" /><testcase classname="tests.test_independent" name="test_reversed_role_mask_refused" time="0.020" /><testcase classname="tests.test_independent" name="test_current_read_refuses_foreign_or_widened_fixture_grant[issuer-PV2I-SELF-ISSUER]" time="0.001"><failure message="AssertionError">../tests/test_independent.py:81: in test_current_read_refuses_foreign_or_widened_fixture_grant
+    assert reading['servable'] is False
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError</failure></testcase><testcase classname="tests.test_independent" name="test_current_read_refuses_foreign_or_widened_fixture_grant[grant-SIGNED_REAL_SOURCE_GRANT]" time="0.001"><failure message="AssertionError">../tests/test_independent.py:81: in test_current_read_refuses_foreign_or_widened_fixture_grant
+    assert reading['servable'] is False
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError</failure></testcase><testcase classname="tests.test_independent" name="test_current_read_refuses_foreign_or_widened_fixture_grant[ceiling-value2]" time="0.001"><failure message="AssertionError">../tests/test_independent.py:81: in test_current_read_refuses_foreign_or_widened_fixture_grant
+    assert reading['servable'] is False
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError</failure></testcase><testcase classname="tests.test_independent" name="test_execution_refuses_self_rehashed_fixture_grant[issuer-PV2I-SELF-ISSUER]" time="0.075"><failure message="Failed: DID NOT RAISE &lt;class 'ValueError'&gt;">../tests/test_independent.py:86: in test_execution_refuses_self_rehashed_fixture_grant
+    with pytest.raises(ValueError):run(fx,register=reg)
+E   Failed: DID NOT RAISE &lt;class 'ValueError'&gt;</failure></testcase><testcase classname="tests.test_independent" name="test_execution_refuses_self_rehashed_fixture_grant[grant-SIGNED_REAL_SOURCE_GRANT]" time="0.075"><failure message="Failed: DID NOT RAISE &lt;class 'ValueError'&gt;">../tests/test_independent.py:86: in test_execution_refuses_self_rehashed_fixture_grant
+    with pytest.raises(ValueError):run(fx,register=reg)
+E   Failed: DID NOT RAISE &lt;class 'ValueError'&gt;</failure></testcase><testcase classname="tests.test_independent" name="test_execution_refuses_self_rehashed_fixture_grant[ceiling-value2]" time="0.075"><failure message="Failed: DID NOT RAISE &lt;class 'ValueError'&gt;">../tests/test_independent.py:86: in test_execution_refuses_self_rehashed_fixture_grant
+    with pytest.raises(ValueError):run(fx,register=reg)
+E   Failed: DID NOT RAISE &lt;class 'ValueError'&gt;</failure></testcase><testcase classname="tests.test_independent" name="test_explicit_revoked_register_blocks" time="0.004" /><testcase classname="tests.test_independent" name="test_historical_register_cannot_restore_current_authorization" time="0.001"><failure message="AssertionError: Old unrevoked snapshot reauthorizes after revocation; no independent current registry">../tests/test_independent.py:96: in test_historical_register_cannot_restore_current_authorization
+    assert V.read_current_consumer_material(fx['register'],r)['servable'] is False, 'Old unrevoked snapshot reauthorizes after revocation; no independent current registry'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: Old unrevoked snapshot reauthorizes after revocation; no independent current registry</failure></testcase><testcase classname="tests.test_independent" name="test_current_consumer_rejects_payload_tamper_same_ref" time="0.003"><failure message="AssertionError: Current read serves changed payload under unchanged consumer reference">../tests/test_independent.py:102: in test_current_consumer_rejects_payload_tamper_same_ref
+    assert reading['servable'] is False,'Current read serves changed payload under unchanged consumer reference'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: Current read serves changed payload under unchanged consumer reference</failure></testcase><testcase classname="tests.test_independent" name="test_current_read_does_not_alias_historical_report" time="0.003"><failure message="AssertionError: Read result aliases original historical material">../tests/test_independent.py:107: in test_current_read_does_not_alias_historical_report
+    assert history==r,'Read result aliases original historical material'
+           ^^^^^^^^^^
+E   AssertionError: Read result aliases original historical material</failure></testcase><testcase classname="tests.test_independent" name="test_role_validation_fails_closed_on_incomplete_material[missing_material]" time="0.002"><failure message="Failed: DID NOT RAISE &lt;class 'ValueError'&gt;">../tests/test_independent.py:115: in test_role_validation_fails_closed_on_incomplete_material
+    with pytest.raises(ValueError):V.validate_consumer_roles_against_declared(links,fx['register'])
+E   Failed: DID NOT RAISE &lt;class 'ValueError'&gt;</failure></testcase><testcase classname="tests.test_independent" name="test_role_validation_fails_closed_on_incomplete_material[missing_roles]" time="0.002"><failure message="Failed: DID NOT RAISE &lt;class 'ValueError'&gt;">../tests/test_independent.py:115: in test_role_validation_fails_closed_on_incomplete_material
+    with pytest.raises(ValueError):V.validate_consumer_roles_against_declared(links,fx['register'])
+E   Failed: DID NOT RAISE &lt;class 'ValueError'&gt;</failure></testcase><testcase classname="tests.test_independent" name="test_role_validation_fails_closed_on_incomplete_material[missing_conditioner]" time="0.002"><failure message="Failed: DID NOT RAISE &lt;class 'ValueError'&gt;">../tests/test_independent.py:115: in test_role_validation_fails_closed_on_incomplete_material
+    with pytest.raises(ValueError):V.validate_consumer_roles_against_declared(links,fx['register'])
+E   Failed: DID NOT RAISE &lt;class 'ValueError'&gt;</failure></testcase><testcase classname="tests.test_independent" name="test_generic_native_labels_not_specialized_Q86" time="0.001"><failure message="KeyError: 'native_variable'">../tests/test_independent.py:121: in test_generic_native_labels_not_specialized_Q86
+    assert role['CONDITIONER']['native_variable'] in ('X','Y') and role['TARGET']['native_variable'] in ('X','Y')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   KeyError: 'native_variable'</failure></testcase><testcase classname="tests.test_independent" name="test_independent_row_mutation_reaches_actual_consumers" time="0.063"><failure message="rawlsing_next.pre553_route_b_production.RouteBProductionError: exact source-backed repository composition failed: unbound response value/state; no label/frequency/missingness inference">rawlsing_next/pre553_route_b_production.py:555: in execute_route_b_production
+    binding = bind_repository_builder(
+rawlsing_next/pre553_carrier_execution.py:253: in bind_repository_builder
+    built = repository_builder(**dict(builder_kwargs))
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+rawlsing_next/pre553_source_backed_c11_facade.py:648: in build_source_backed_c11_repository
+    else build_validated_source_backed_c11_release_from_stream(source, projection)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+rawlsing_next/pre553_source_backed_c11_facade.py:600: in build_validated_source_backed_c11_release_from_stream
+    candidate = project_c11_candidate_from_physical_cells(source_sha256=stream.source_sha256, row_count=stream.row_count,
+rawlsing_next/pre553_source_backed_c11_facade.py:537: in project_c11_candidate_from_physical_cells
+    raise SourceBackedC11FacadeError("unbound response value/state; no label/frequency/missingness inference")
+E   rawlsing_next.pre553_source_backed_c11_facade.SourceBackedC11FacadeError: unbound response value/state; no label/frequency/missingness inference
+
+The above exception was the direct cause of the following exception:
+../tests/test_independent.py:124: in test_independent_row_mutation_reaches_actual_consumers
+    fx,before=court;new=make_numeric_fixture(tmp_path/'mutant');after=run(new)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../repro/common.py:37: in make_numeric_fixture
+    prepared=[F.prepare_owner_scope(root/str(i),data,g,ns) for i,(data,g,ns) in enumerate(zip(inputs,groups,F.NAMESPACES))]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../repro/common.py:37: in &lt;listcomp&gt;
+    prepared=[F.prepare_owner_scope(root/str(i),data,g,ns) for i,(data,g,ns) in enumerate(zip(inputs,groups,F.NAMESPACES))]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+candidate/repro/pv2_sourcefree_fixture.py:209: in prepare_owner_scope
+    production = execute_route_b_production(
+rawlsing_next/pre553_route_b_production.py:567: in execute_route_b_production
+    raise RouteBProductionError(
+E   rawlsing_next.pre553_route_b_production.RouteBProductionError: exact source-backed repository composition failed: unbound response value/state; no label/frequency/missingness inference</failure></testcase></testsuite></testsuites>

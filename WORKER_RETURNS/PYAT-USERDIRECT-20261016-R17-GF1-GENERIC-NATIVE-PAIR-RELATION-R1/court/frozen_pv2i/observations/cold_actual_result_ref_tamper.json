@@ -1,0 +1,24 @@
+{
+  "actual_changed_field": "journal[0].result_refs[0]",
+  "original_ref": {
+    "content_hash": "95721d3b5833366688682ade4acc82df8c5b500df03cd90d68b2b9964c64ae27",
+    "kind": "EmpiricalFact@1.0.0",
+    "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:95721d3b5833366688682ade4acc82df8c5b500df03cd90d68b2b9964c64ae27"
+  },
+  "forged_ref": {
+    "kind": "EmpiricalFact@1.0.0",
+    "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "content_hash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+  },
+  "argv": [
+    "/usr/local/bin/python3",
+    "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/repro/cold_child.py",
+    "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/runtime_root/pv2i_actual_receipt_attack",
+    "replay",
+    "cold_actual_result_ref_tamper"
+  ],
+  "exit": 0,
+  "stdout": "{\n  \"mode\": \"replay\",\n  \"ok\": true,\n  \"committed_register_root\": \"49f0f51866d3327aca2b7d8910517c0317a85c6b7fd3f011c9ffd6634c6218bf\",\n  \"source_inventory_root\": \"904f30758890a1a68e6f1ef943e01cd80434ebe6c261e16406a54e19a21ddb16\",\n  \"original_expected_work_keys\": 6,\n  \"distinct_legacy_v2_keys\": 3,\n  \"distinct_field_forge_consumers\": 6,\n  \"durable_executor_calls\": [\n    0,\n    0\n  ],\n  \"held_original_records\": 2,\n  \"expected_payload_sha256\": \"4d83bf57f8cd12c3492eb42f6d14094c53a6c33cc5e4178f1594ce6a469548f2\",\n  \"source_grade\": \"SOURCEFREE_TEST_ONLY_NOT_ISSUED\",\n  \"schema\": \"R10_PV2_ORIGINAL_SCOPE_REGISTER@1.0.0\"\n}\n",
+  "stderr": "",
+  "classification": "ACCEPTED_OR_IGNORED_NEEDS_ADJUDICATION"
+}

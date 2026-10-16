@@ -1,0 +1,186 @@
+{
+  "schema": "R17_GF1_PRECOMMITTED_GENERIC_NATIVE_PAIR_ORACLE@1.0.0",
+  "status": "FROZEN_BEFORE_ANY_GENERIC_CANDIDATE_EXECUTION",
+  "role": "GF1 bounded sourcefree generic PAIR relation candidate implementer; NOT an accepted Field Forge semantic issuer; NOT HQ; NOT an original source principal",
+  "frozen_at_sha_of_commit": "PRECOMMITTED_BEFORE_CANDIDATE_CODE",
+  "inheritance": {
+    "PV3N_independent_acceptance": "816aaac865a184e572dde10ff0802969bc51eed5",
+    "PV3H_native_science_return": "246fdf4ac51c74d13aed6a1d6376fd32967c82a6",
+    "PV3A": "c9d3271c5391c056d30e329b322fc49a2fdeacc1",
+    "PV2I": "1de1c9c57bffa8bb663edd44af744379b028f698",
+    "PV3_candidate": "5c70c7d347998907c1c8a865f833dad581777a0e",
+    "native_74_manifest_verified_by_me": "74/74 git blob SHA-1 + sha256 + byte count, re-attested from the ORIGINAL PV3 source_selector.json after PV3 repro/stage.py ran untouched"
+  },
+
+  "grain_and_scope": {
+    "instrument": "ORIGINAL source-native C11 single release (source-free fixture)",
+    "release": "one exact accepted C11 source release per namespace",
+    "form": "F1",
+    "administration": "SOURCE_FREE_DEV",
+    "language": "source-native original response domain (no invented category)",
+    "occurrence": "one original source-native joint occurrence per respondent per ordered slot",
+    "respondent_grain": "same-person joint eligibility inside one exact COMMON_ELIGIBLE_RISK_SET",
+    "target": "Y",
+    "conditioner": "X",
+    "reverse_operation": "authorized X|Y as a SEPARATE operation under a SEPARATE grant (never inferred by swapping the forward relation)",
+    "response_domain": "source-native binary domain exactly as carried by the native query component; no nonbinary category may be admitted"
+  },
+
+  "role_and_source_identity_requirements": {
+    "conditioner_role": "CONDITIONER",
+    "target_role": "TARGET",
+    "role_order": ["CONDITIONER", "TARGET"],
+    "participant_cardinality": 2,
+    "source_native_variable_must_come_from": "the ACTUAL native query target_ref object_id of each role - NEVER a hardcoded specialized label",
+    "explicitly_not_hardcoded": ["Q86A", "Q86B"],
+    "rationale": "The accepted native I03 query already carries generic urn:test:i03:question_native:m01-Y / m01-X identities. The Q86A/Q86B specialization lives ONLY in the accepted Field Forge semantic owner, never in the data. This is the exact gap GF1 addresses."
+  },
+
+  "frozen_original_rows": {
+    "R1": {"X": 1, "Y": 1, "Y_eligible": true},
+    "R2": {"X": 0, "Y": 0, "Y_eligible": true},
+    "R3": {"X": 1, "Y": 1, "Y_eligible": false, "note": "Y NOT_ELIGIBLE; must never silently become a zero"}
+  },
+  "frozen_joint_eligible_rows": ["R1", "R2"],
+  "frozen_joint_risk": "R1/R2 only; R3 is excluded from the joint risk set by Y-ineligibility, not by a zero count",
+
+  "expected_native_cell_counts": {
+    "ORIGINAL_BASELINE": {"00": 1, "01": 0, "10": 0, "11": 1,
+      "note": "cell key is [X,Y] ordered; 10=Y0 observed-zero-in-supported-risk, NOT empty and NOT ZERO_SUPPORT"},
+    "INTERVENTION_A_R2_Y0_to1": {"00": 0, "01": 1, "10": 0, "11": 1},
+    "INTERVENTION_A_R1_Y1_to0": {"00": 1, "01": 0, "10": 1, "11": 0}
+  },
+  "expected_positive_denominator": 1,
+  "expected_observed_zero_is_not_empty": true,
+  "expected_R3_Y_ineligible_never_yields_zero": true,
+
+  "expected_conditional_profiles": {
+    "ORIGINAL_BASELINE": {
+      "0": {"denominator": 1, "targets": {"0": 1, "1": 0}},
+      "1": {"denominator": 1, "targets": {"0": 0, "1": 1}}
+    },
+    "INTERVENTION_A_R2_Y0_to1": {
+      "0": {"denominator": 1, "targets": {"0": 0, "1": 1}},
+      "1": {"denominator": 1, "targets": {"0": 0, "1": 1}}
+    },
+    "INTERVENTION_A_R1_Y1_to0": {
+      "0": {"denominator": 1, "targets": {"0": 1, "1": 0}},
+      "1": {"denominator": 1, "targets": {"0": 1, "1": 0}}
+    }
+  },
+
+  "NEW_NAMESPACED_CANDIDATE_IDENTITY_FROZEN": {
+    "relation_family": "GF1_GENERIC_NATIVE_PAIR_RELATION_TEST_ONLY@1.0.0",
+    "semantic_owner": "GF1_GENERIC_PAIR_CANDIDATE_RELATION_OWNER_TEST_ONLY",
+    "consumer_id": "GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ONLY@1.0.0",
+    "consumer_output_family": "GF1_PAIR_SUPPORT_SIGNATURE_RESULT_TEST_ONLY@1.0.0",
+    "object_id_pattern": "urn:rawlsing:gf1:generic-pair-relation:sha256:<semantic digest>",
+    "grain_label": "SOURCEFREE_GENERIC_PAIR_CANDIDATE_TEST_ONLY__UNISSUED__NOT_ACCEPTED__GENERIC_NATIVE_SEMANTICS_HOLD",
+    "must_not_reuse": ["FIELD_FORGE_ACTOR_INDEPENDENT_RELATION_OWNER", "EXACT_CONDITIONAL_SUPPORT_PROFILE_WITHIN_SCOPE@1.0.0", "Q86A", "Q86B"],
+    "must_not_modify": "the accepted specialized GT2 owner module, its risk, its consumer outputs and its relation identity"
+  },
+
+  "named_consumer_downstream_value_FROZEN": {
+    "requirement": "the consumer must PHYSICALLY READ the generic relation object and produce at least one distinct downstream consequence that is NOT a copy of the relation and NOT a re-serialization of PV3H proposal dictionaries",
+    "derived_values": [
+      "separation_class in {EXACT_PAIR_SEPARATION, NO_PAIR_SEPARATION, UNDETERMINED_NO_ELIGIBLE_RISK, UNDETERMINED_ZERO_SUPPORT_RISK}",
+      "per_condition_target_support_vector",
+      "zero_cell_semantics map preserving OBSERVED_ZERO_IN_SUPPORTED_RISK_SET versus ZERO_SUPPORT distinctly",
+      "eligible_joint_risk_total",
+      "condition_states_with_positive_denominator"
+    ],
+    "expected_separation_class": {
+      "ORIGINAL_BASELINE": "EXACT_PAIR_SEPARATION",
+      "INTERVENTION_A_R2_Y0_to1": "NO_PAIR_SEPARATION",
+      "INTERVENTION_A_R1_Y1_to0": "NO_PAIR_SEPARATION"
+    },
+    "anti_inferences_required": [
+      "CONDITIONER != CAUSE",
+      "TARGET != EFFECT",
+      "PAIR_SUPPORT_PROFILE != RELATIONSHIP_OR_DYAD",
+      "PAIR_SUPPORT_PROFILE != PEER_OR_PERSON_FACT",
+      "POPULATION_FACT != ACTOR_FACT",
+      "GENERIC_CANDIDATE != ADOPTED_SEMANTICS",
+      "SEPARATION_CLASS != BEHAVIOURAL_OR_PSYCHOLOGICAL_CLAIM"
+    ]
+  },
+
+  "independence_requirements_frozen": {
+    "B_source_must_remain_bitwise_identical_under_every_A_intervention": true,
+    "A_mutation_at_current_grant_must_change_generic_producer_to_consumer": true,
+    "specialized_GT2_comparator_must_remain_present_and_unmodified": true,
+    "same_person_joint_eligibility_must_be_verified": true,
+    "zero_risk_must_be_typed_ZERO_SUPPORT_not_zero_count": true,
+    "missing_Y_and_Y_ineligible_R3_may_not_silently_become_0": true,
+    "source_native_response_options_must_be_preserved": true,
+    "exact_target_and_conditioner_permissions_must_be_enforced": true
+  },
+
+  "frozen_eight_operation_custody_unchanged": {
+    "total": 8, "runnable": 6, "held": 2, "namespaces": 2,
+    "distinct_original_consumers": 6, "legacy_keys": 3,
+    "operations": [
+      {"independent_key": "PV2-ADULT-A-PAIR", "slot": "PAIR", "native_item_order": ["X", "Y"], "roles": ["CONDITIONER", "TARGET"], "operation": "PAIR_RESPONSE_COTRAVEL", "state": "RUNNABLE", "hold_reason": null},
+      {"independent_key": "PV2-ADULT-A-B", "slot": "B", "native_item_order": ["Y", "X"], "roles": ["CONDITIONER", "TARGET"], "operation": "PAIR_RESPONSE_COTRAVEL", "state": "RUNNABLE", "hold_reason": null},
+      {"independent_key": "PV2-ADULT-A-DISCOVERY", "slot": "DISCOVERY", "native_item_order": ["X", "Y"], "roles": ["BASE"], "operation": "BOUNDED_DISCOVERY", "state": "RUNNABLE", "hold_reason": null},
+      {"independent_key": "PV2-ADULT-A-ORDERED", "slot": "ORDERED", "native_item_order": ["O"], "roles": ["BASE"], "operation": "NONSCALAR_TOPOLOGY_PRESERVATION", "state": "HELD", "hold_reason": "ORDERED_OWNER_NOT_ISSUED"},
+      {"independent_key": "PV2-ADULT-B-PAIR", "slot": "PAIR", "native_item_order": ["X", "Y"], "roles": ["CONDITIONER", "TARGET"], "operation": "PAIR_RESPONSE_COTRAVEL", "state": "RUNNABLE", "hold_reason": null},
+      {"independent_key": "PV2-ADULT-B-B", "slot": "B", "native_item_order": ["Y", "X"], "roles": ["CONDITIONER", "TARGET"], "operation": "PAIR_RESPONSE_COTRAVEL", "state": "RUNNABLE", "hold_reason": null},
+      {"independent_key": "PV2-ADULT-B-DISCOVERY", "slot": "DISCOVERY", "native_item_order": ["X", "Y"], "roles": ["BASE"], "operation": "BOUNDED_DISCOVERY", "state": "RUNNABLE", "hold_reason": null},
+      {"independent_key": "PV2-ADULT-B-ORDERED", "slot": "ORDERED", "native_item_order": ["O"], "roles": ["BASE"], "operation": "NONSCALAR_TOPOLOGY_PRESERVATION", "state": "HELD", "hold_reason": "ORDERED_OWNER_NOT_ISSUED"}
+    ]
+  },
+
+  "frozen_hostiles": [
+    "foreign U/E grant refuses against the independent trusted fixture root",
+    "self-reissued expected root refuses",
+    "foreign/self-reissued operation/item/role grant refuses",
+    "changed native item namespace refuses",
+    "changed form refuses",
+    "changed language refuses",
+    "changed response domain refuses",
+    "changed response-category refuses",
+    "changed status refuses",
+    "changed administration refuses",
+    "target/conditioner swap without own authorization refuses",
+    "changed source edition/version refuses",
+    "changed risk/universe refuses",
+    "fact/source content mutation refuses",
+    "unsupported nonbinary category refuses",
+    "source A withdrawn after a positive run => no fresh A generic consumer while B stays valid",
+    "archived A immutable without a fresh grant",
+    "SIGKILL/replay of accepted batch receipts and new generic candidate state yields exactly one stable recorded effect",
+    "no false offline fact restoration"
+  ],
+
+  "frozen_falsifiers": {
+    "F1": "generic relation object is byte-identical to the specialized GT2 relation material => nothing generic was built",
+    "F2": "consumer output is a copy or re-serialization of the relation => insufficient",
+    "F3": "A intervention does NOT change the generic producer->consumer => not conditioned on real native data",
+    "F4": "B material changes under any A intervention => independence violated",
+    "F5": "any hostiles listed above passes when it must refuse",
+    "F6": "either HELD ORDERED operation is altered, or the original raw failing generic-label assertion is suppressed/renamed/xfailed"
+  },
+
+  "semantic_boundary_UNCHANGED": "generic X/Y vs specialized Q86B/Q86A REMAINS HELD; the original raw failing label assertion MUST remain a raw FAIL and MUST NOT be xfailed, skipped, relabeled, or suppressed; PV3N qualified frozen evidence is reused rather than re-running all 74 owner regressions",
+
+  "authority_ceiling": "GENERIC_NATIVE_PAIR_RELATION_CANDIDATE_TEST_ONLY; real competent FIELD_FORGE_ACTOR_INDEPENDENT_RELATION_OWNER must separately review and issue any generic native contract before adoption or reuse by a generic original survey family. GENERIC_NATIVE_SEMANTICS_HOLD is RETAINED for public adoption even on a fully positive result. Original O1-O6/U/E_pre, licensed source SAV/DTA, all-35, N11/N12 and V3 remain unissued.",
+
+  "prohibitions": [
+    "no original SAV/DTA mutation",
+    "no original U/E_pre issuance",
+    "no canonical Field Forge change",
+    "no all-35 acceptance",
+    "no N11/N12",
+    "no V3 operation",
+    "no actor/person work",
+    "no modification of the accepted specialized GT2 owner or its outputs",
+    "no suppression of the original raw failing assertion"
+  ],
+
+  "expected_verdict_if_all_hold": "GENERIC_NATIVE_PAIR_RELATION_CANDIDATE_TEST_ONLY__GENERIC_NATIVE_SEMANTICS_HOLD_RETAINED__REQUIRES_SEPARATE_INDEPENDENT_GF1_REVIEWER",
+
+  "branch": "agent/userdirect-pyat-20261016-r17-gf1-generic-native-pair-relation-r1",
+  "sealed_startup": "e84106584d996090f940e25b91178d0fcaf764a6",
+  "write_only": "WORKER_RETURNS/PYAT-USERDIRECT-20261016-R17-GF1-GENERIC-NATIVE-PAIR-RELATION-R1/"
+}
