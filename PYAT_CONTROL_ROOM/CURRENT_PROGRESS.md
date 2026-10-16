@@ -1,4 +1,20 @@
-# Pyat — owner-verified partial progress toward 35-wave PRE-V3 finish lines
+# Pyat — active successor HQ R20, source/world/persona critical-path progress
+
+**16 October 2026 · owner revision 5 · active successor HQ, bounded existing working authority.** R19 independently accepted the frozen candidate `9e06e0d6515a9c0cff4b6fb704f73af83b9617d6` at `5286fba50a65549f9e47586b7f4c8a8265eef84d`. The accepted post-review attestation and successor-control record were remotely verified at `850f6509e81ef504ca610bcdcf23c3a7b7a6078d`; the new **single** active Pyat working branch is `agent/vozhd-pyat-r3-hq-successor-20261016-r1` and its [R20 first operative HQ decision](https://github.com/maidiu/rawlsing/blob/3194861b75286a13ff0a1645897478f177eb2a42/PYAT_CONTROL_ROOM/PYAT_HQ_ACCESSION_CANDIDATE_20261016_R1/04_R20_FIRST_OPERATIVE_CYCLE_AND_WHOLE_MACHINE_COMMAND_20261016.md) was published `@3194861b75286a13ff0a1645897478f177eb2a42`. The October13 HQ is the predecessor and independent reviewer, not a second new dispatcher. The historical sealed HQ280 pointer remains unchanged.
+
+**R20 direct origin inventory:** R18 EST1 `1ebd80e2`, F6B `645187cf`, T9B `acbb4f79`, XSP `d8c1b347`, E06I `6aea052f`, GF1I `e2667f25` remain exactly at their published commission startups. No pushed R18 return was observed; external runtime/session/host/quota state is **unknown**, not abandoned or proven running. Prior WG0P4 `c1e88fb2` remains at sealed start; WG0L sourcefree Phase A frozen 65-case independent court `1f198cb3` remains waiting for the exact candidate; SC0J, T8F3, D2P3 still at their sealed tips. WG0R independent documentary hostile review already pushed at `7b49b2af` (ten A scoped observations, fourteen C unproved source-to-consumer edges, no Python run), **not** adopted original-source work.
+
+**HQ decision:** Keep all six orthogonal R18 commissions; do not duplicate them or infer workers have started. Prioritize **original source U→independently expected E_pre→eligible operation anti-omission→accepted owner and consumer (WG0P4 with distinct EST1 oracle)**, in parallel with F6 lawful heterogeneous synthesis, V553/EE12 historical-as-of consumer, Sorok actor-independent world interface, and independent E06/GF1 reviewer courts. All are separately source/permission scoped. A sourcefree positive or a complete declared grammar is not original all35 occupancy.
+
+**Actual finish-line holds unchanged:** all35 1,890 requirement cells /151↔101 duties / F1–F8 / AT01–AT35 not materially source-executed here; original weighting remains only historically/bounded-code supported; LiTS is **not N13**. OC05 real install/consumer seam remains absent; N11 gate, independent N12, actual Sorok V3/V2 person not granted. Source/model/actor permissions unchanged. Sorok canonical progress **rev2 owner-refresh-required** read at `bdd31af540b4771b7665bb21320c78165ad62715`, Sorok working tip `7b091166ac31c0b538093007808cbbbdaccf8d6f` checked; counterpart owner acceptance not invented or overwritten.
+
+**New evidence grade:** accession and command/reporting only, **no new empirical product**, original source permission, scientific method promotion, runtime pytest, actor, canonical production change or model use. Canonical report-pair modification is this authorized owner reporting update alone; full reasoning in successor R20 record.
+
+---
+
+## Historical revision 4 report (retained as inherited evidence; older HQ identity superseded)
+
+### Pyat — owner-verified partial progress toward 35-wave PRE-V3 finish lines
 
 **R18 owner refresh, revision 4 — 16 October 2026.** STATUS: `PYAT_OWNER_R17_PARTIAL_VERIFIED__ORIGINAL_ESTATE_AND_OPERATIVE_SEAMS_UNFINISHED`. The prior revision2 14 October projection was an **INITIAL_DOCUMENTARY_BASELINE__OWNER_REFRESH_REQUIRED**, not evidence that workers stopped. This new report corrects exact local method and branch status from live GitHub returns; it does **not** certify each original 35-wave cell or update Sorok's own report.
 
