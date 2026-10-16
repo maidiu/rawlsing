@@ -1,0 +1,158 @@
+{
+  "schema": "E05H_EVIDENCE_AND_COMPETENT_HQ_STATUS@1",
+  "observed_at_utc": "2026-10-16T18:55:11.445699+00:00",
+  "status": "COMPETENT_DECISION_PENDING",
+  "sealed_startup": "d4a69e1ab4f107c647ff9990218e73bf8a50b579",
+  "direct_remote_read_cut": {
+    "refs/heads/integration/pre-main-reconciliation-r1": "0d551d36ff19dc9806e0ad490ff33a1e4c25e381",
+    "refs/heads/agent/vozhd-pyat-r3-hq-accession-reconstruction-20261013-r1": "58d1069b194fe2dc480b8df98443a2ee6be01044",
+    "refs/heads/agent/sorok-prea0-psyche-architecture-r1": "7b091166ac31c0b538093007808cbbbdaccf8d6f",
+    "refs/heads/agent/userdirect-pyat-20261016-r14-e05s-independent-selected-world-r1": "f524f60781e2e7e72278d04d6377fb1da877698a",
+    "refs/heads/agent/userdirect-pyat-20261016-r15-e05a-hq-method-accession-evidence-r1": "fb78c234b1b0895d852926dc4db96e3846c11b93"
+  },
+  "independent_method": {
+    "acceptance_commit": "f524f60781e2e7e72278d04d6377fb1da877698a",
+    "implementation_commit": "84485d32c0088995f8dc664dc0517b2d27f2563d",
+    "verdict": "ACCEPT_SOURCEFREE_NONINSTALLING_SELECTED_WORLD_ONLY",
+    "original271": 271,
+    "original_E05I55": 55,
+    "new_reviewer45": 45,
+    "author_extra32": 32,
+    "total403": 403,
+    "all11_RED_closed": true,
+    "retained_JUnit": [
+      {
+        "path": "frozen_E05S/junit/e05.xml",
+        "sha256": "46fcde6413f1d848dbd5bb08e332b1cb9d569c2e982683ff7f228f9638a75300",
+        "tests": 38,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "path": "frozen_E05S/junit/e04.xml",
+        "sha256": "de005dd6c7ff3a02acbc43d19197b593b6c1e8af2091b1b65b691559e2070afc",
+        "tests": 37,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "path": "frozen_E05S/junit/n9c.xml",
+        "sha256": "157e0c99d8e3e611ad89ccaa5acb478d32a1deedbfec42558ac70a382157fa9a",
+        "tests": 47,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "path": "frozen_E05S/junit/m4_m5.xml",
+        "sha256": "a01f8f5a5aad5b899be54c7ab21c22d0ebc83ee9009cc25914490c8f04a84890",
+        "tests": 30,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "path": "frozen_E05S/junit/empirical.xml",
+        "sha256": "e14f55af89e35f31afe35118c3647064bc776162c5ed6adefa6d5d72e0c513a3",
+        "tests": 101,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "path": "frozen_E05S/junit/e03.xml",
+        "sha256": "6dd2a89c816c9d403ee1749429ffb225f98f6e833664d3485635327a7bc8d3bb",
+        "tests": 18,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "path": "frozen_E05S/junit/reviewer.xml",
+        "sha256": "e4569c5ed691d19b6e15e7e8d7390fbe8056e68449007796e9973cf44d3f0ef7",
+        "tests": 100,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "path": "frozen_E05S/junit/author_additional.xml",
+        "sha256": "d66864e719888e49ff515372eb23742e744716bfd535c3af702c8a8decc16ef1",
+        "tests": 32,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    ],
+    "court_rerun": false
+  },
+  "handoff": {
+    "commit": "fb78c234b1b0895d852926dc4db96e3846c11b93",
+    "retained_focused_pass": 15,
+    "rebuilt": false
+  },
+  "incremental_preview": {
+    "executed": true,
+    "tests": {
+      "tests": 16,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "real_clients": [
+      "product.nonparent.consume",
+      "product.scenario.evaluate"
+    ],
+    "native_imports": 33,
+    "trace": "observations/native_imports_and_calls.json",
+    "source_objects": 401,
+    "completed_court_rerun": false
+  },
+  "hq": {
+    "historical_user_accession": {
+      "status": "ACCEPTED",
+      "reviewer_type": "USER",
+      "reviewer_identity_or_user_ack": "User direct message October 13 2026: prior HQ inaccessible; 'you are acceded ... now dispatch workers' (explicit risk acceptance)",
+      "review_artifact_ref": "PYAT_CONTROL_ROOM/PYAT_R3_HQ_ACCESSION_20261013_R1/USER_ACCESSION_AND_OPERATING_SCOPE_20261013.md",
+      "review_sha": "86716f13e07ba8c0fc9a77420f475d4908cb94b8",
+      "reviewed_candidate_sha": "1bdb5f9cdf75427aef9a21d45b380b1b3244d2aa",
+      "unresolved_challenges": [
+        "Candidate 13 proof stations remain independently ungraded, not restamped PASS",
+        "Local host/quota/worktree unobserved; 6 GitHub branches issued but no separate agent sessions instantiated",
+        "Original source E_pre, F6/F7 and selected-world numeric consumer blocked at exact scoped authority",
+        "Native B5/M2 protected-current trust and actual external issuer unqualified"
+      ]
+    },
+    "current_branch": "58d1069b194fe2dc480b8df98443a2ee6be01044",
+    "active_principal_authenticated": false,
+    "decision_sent": false,
+    "reason": "No authenticated eligible current HQ principal identified in this runtime or available recent app chat inventory. Historical user accession is respected, not revoked, fabricated or transferred to this worker.",
+    "request": "COMPETENT_HQ_DECISION_RECORD_CANDIDATE.json",
+    "signature": null
+  },
+  "cross_hq": {
+    "canonical_commit": "0d551d36ff19dc9806e0ad490ff33a1e4c25e381",
+    "working_pyat": "58d1069b194fe2dc480b8df98443a2ee6be01044",
+    "working_sorok": "7b091166ac31c0b538093007808cbbbdaccf8d6f",
+    "pyat_revision": 2,
+    "sorok_revision": 2,
+    "status": "OWNER_REFRESH_REQUIRED__RECONCILIATION_REQUIRED",
+    "last_owner_update": null,
+    "implication": "This fresh two-client sourcefree preview supplies generic world-conditioned evidence to the downstream interface. It does not establish Sorok K9/K10/actor readiness or full adoption. Exact newer working sources were read at the listed cuts; neither owner report was rewritten.",
+    "issue": "E05H-XHQ-01: owner refresh and authenticated decision required before dependent accession/installation; unrelated lawful lanes continue"
+  },
+  "advisory": {
+    "commit": "3b2d9a1b644a9fa024ed1bd895b67be5c8789531",
+    "read": [
+      "FINAL_RETURN",
+      "09",
+      "15",
+      "16"
+    ],
+    "grade": "ADVISORY_ONLY_NO_ADOPTION_OR_WAKE"
+  },
+  "authority_matrix": "AUTHORITY_MATRIX.json",
+  "proposed_decision": "COMPETENT_HQ_DECISION_RECORD_CANDIDATE.json"
+}

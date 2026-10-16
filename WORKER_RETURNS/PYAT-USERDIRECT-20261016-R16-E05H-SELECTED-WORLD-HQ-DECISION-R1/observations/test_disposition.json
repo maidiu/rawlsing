@@ -1,0 +1,22 @@
+{
+  "final": {
+    "tests": 16,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "final_exit": 0,
+  "initial_added_checks": {
+    "tests": 16,
+    "passed": 14,
+    "failed": 2,
+    "reason": "Two new E05H assertions overrequired exceptions: a withdrawn structural arm correctly returns typed partial; handoff rejects a foreign snapshot earlier with ValueError. Tests now assert typed REVOKED with absent value and direct fresh-adapter ACCEPTANCE_BINDING_MISMATCH. No accepted owner/handoff changed.",
+    "retained": [
+      "observations/initial_preview.xml",
+      "observations/initial_preview.stdout",
+      "observations/initial_preview.terminal.json"
+    ]
+  },
+  "historical403_rerun": false,
+  "prior14_check_run": "14 passed before two additional controls were added"
+}

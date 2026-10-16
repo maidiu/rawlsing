@@ -1,0 +1,405 @@
+{
+  "schema": "PYAT_R3_S06T_EXECUTION_MATRIX_CORRIGENDUM@1",
+  "status": "CANDIDATE_DOCUMENTARY_CORRECTION_NO_ORACLE_MUTATION",
+  "original_matrix": "WORKER_RETURNS/PYAT-R3-S06T-INDEPENDENT-HOSTILE-EXECUTION-R1/03_EXECUTION_MATRIX.json",
+  "original_tip": "e2cdad12228b4dc7533c8fb55a1750fb0d306e3f",
+  "frozen_review_tip": "25722ffab845c54bd5330384ca800b9e4cfcfded",
+  "frozen_test_sha256": "93ff42ddc04edceaa49acde07dbf1890373fc9dc47dbf3d538e3e393640ce59b",
+  "candidate": "4fec074c7e40a8b233055ffd1d80dbede293c9c4",
+  "author_suite": {
+    "passed": 26,
+    "failed": 0,
+    "exit": 0
+  },
+  "independent_log_summary": {
+    "collected": 21,
+    "failed": 20,
+    "passed": 1,
+    "exit": 1
+  },
+  "observed_test_outcomes": [
+    {
+      "status": "FAILED",
+      "name": "test_s06r_caller_trusted_true_must_not_act_as_external_verifier[withdraw-args0]"
+    },
+    {
+      "status": "FAILED",
+      "name": "test_s06r_caller_trusted_true_must_not_act_as_external_verifier[invalidate-args1]"
+    },
+    {
+      "status": "FAILED",
+      "name": "test_s06r_caller_trusted_true_must_not_act_as_external_verifier[supersede-args2]"
+    },
+    {
+      "status": "FAILED",
+      "name": "test_s06r_caller_trusted_true_must_not_act_as_external_verifier[revoke-args3]"
+    },
+    {
+      "status": "FAILED",
+      "name": "test_s06r_caller_trusted_true_must_not_act_as_external_verifier[invalidate_descendants-args4]"
+    },
+    {
+      "status": "FAILED",
+      "name": "test_s06r_caller_trusted_true_cannot_select_arbitrary_unpublished_release"
+    },
+    {
+      "status": "FAILED",
+      "name": "test_s06r_public_append_event_cannot_bypass_auth_gate"
+    },
+    {
+      "status": "FAILED",
+      "name": "test_s06r_arbitrary_nonempty_external_token_is_not_issuer_validation"
+    },
+    {
+      "status": "FAILED",
+      "name": "test_s06r_consistent_history_state_hash_rewrite_is_not_external_custody"
+    },
+    {
+      "status": "FAILED",
+      "name": "test_s06r_epoch_must_be_bound_to_issuer_and_replayed_events"
+    },
+    {
+      "status": "FAILED",
+      "name": "test_s06r_revocation_set_must_be_issued_and_ledger_bound"
+    },
+    {
+      "status": "FAILED",
+      "name": "test_s06r_transitive_descendants_not_one_hop"
+    },
+    {
+      "status": "FAILED",
+      "name": "test_s06r_immutable_export_not_mutable_state_alias"
+    },
+    {
+      "status": "FAILED",
+      "name": "test_s06r_event_property_is_immutable_deep_snapshot"
+    },
+    {
+      "status": "FAILED",
+      "name": "test_s06r_unknown_event_cannot_silently_enter_event_ledger"
+    },
+    {
+      "status": "FAILED",
+      "name": "test_s06r_protected_current_mode_not_unconditionally_allowed"
+    },
+    {
+      "status": "FAILED",
+      "name": "test_s06r_real_owner_checkpoint_schema_interoperation"
+    },
+    {
+      "status": "FAILED",
+      "name": "test_s06r_owner_wrapping_is_not_a_second_detached_state_machine"
+    },
+    {
+      "status": "FAILED",
+      "name": "test_s06r_without_event_signature_cold_replay_not_external_trust"
+    },
+    {
+      "status": "FAILED",
+      "name": "test_s06r_untrusted_selection_cannot_be_staged_through_public_event_api"
+    },
+    {
+      "name": "test_s06r_external_mode_without_independent_root_must_refuse",
+      "status": "PASSED",
+      "evidence_source": "S06T 00_RETURN.md and log 20 failed, 1 passed"
+    }
+  ],
+  "requirement_coverage": [
+    {
+      "id": "S06R-H01",
+      "adversary": "CALLER_TRUE_WITHDRAW",
+      "coverage": "DIRECT_FAIL",
+      "pytest_nodes": [
+        {
+          "status": "FAILED",
+          "name": "test_s06r_caller_trusted_true_must_not_act_as_external_verifier[withdraw-args0]"
+        }
+      ],
+      "scientific_security_interpretation": "No source/use/issuer or owner trust granted"
+    },
+    {
+      "id": "S06R-H02",
+      "adversary": "CALLER_TRUE_INVALIDATE",
+      "coverage": "DIRECT_FAIL",
+      "pytest_nodes": [
+        {
+          "status": "FAILED",
+          "name": "test_s06r_caller_trusted_true_must_not_act_as_external_verifier[invalidate-args1]"
+        },
+        {
+          "status": "FAILED",
+          "name": "test_s06r_caller_trusted_true_must_not_act_as_external_verifier[invalidate_descendants-args4]"
+        }
+      ],
+      "scientific_security_interpretation": "No source/use/issuer or owner trust granted"
+    },
+    {
+      "id": "S06R-H03",
+      "adversary": "CALLER_TRUE_SUPERSEDE",
+      "coverage": "DIRECT_FAIL",
+      "pytest_nodes": [
+        {
+          "status": "FAILED",
+          "name": "test_s06r_caller_trusted_true_must_not_act_as_external_verifier[supersede-args2]"
+        }
+      ],
+      "scientific_security_interpretation": "No source/use/issuer or owner trust granted"
+    },
+    {
+      "id": "S06R-H04",
+      "adversary": "CALLER_TRUE_REVOKE",
+      "coverage": "DIRECT_FAIL",
+      "pytest_nodes": [
+        {
+          "status": "FAILED",
+          "name": "test_s06r_caller_trusted_true_must_not_act_as_external_verifier[revoke-args3]"
+        }
+      ],
+      "scientific_security_interpretation": "No source/use/issuer or owner trust granted"
+    },
+    {
+      "id": "S06R-H05",
+      "adversary": "CALLER_TRUE_SELECT",
+      "coverage": "DIRECT_FAIL",
+      "pytest_nodes": [
+        {
+          "status": "FAILED",
+          "name": "test_s06r_caller_trusted_true_cannot_select_arbitrary_unpublished_release"
+        }
+      ],
+      "scientific_security_interpretation": "No source/use/issuer or owner trust granted"
+    },
+    {
+      "id": "S06R-H06",
+      "adversary": "PUBLIC_APPEND_EVENT",
+      "coverage": "DIRECT_FAIL",
+      "pytest_nodes": [
+        {
+          "status": "FAILED",
+          "name": "test_s06r_public_append_event_cannot_bypass_auth_gate"
+        }
+      ],
+      "scientific_security_interpretation": "No source/use/issuer or owner trust granted"
+    },
+    {
+      "id": "S06R-H07",
+      "adversary": "ARBITRARY_AUTH_TOKEN",
+      "coverage": "DIRECT_FAIL",
+      "pytest_nodes": [
+        {
+          "status": "FAILED",
+          "name": "test_s06r_arbitrary_nonempty_external_token_is_not_issuer_validation"
+        }
+      ],
+      "scientific_security_interpretation": "No source/use/issuer or owner trust granted"
+    },
+    {
+      "id": "S06R-H08",
+      "adversary": "CONSISTENT_FULLEVENT_FORGERY",
+      "coverage": "DIRECT_FAIL",
+      "pytest_nodes": [
+        {
+          "status": "FAILED",
+          "name": "test_s06r_consistent_history_state_hash_rewrite_is_not_external_custody"
+        }
+      ],
+      "scientific_security_interpretation": "No source/use/issuer or owner trust granted"
+    },
+    {
+      "id": "S06R-H09",
+      "adversary": "EPOCH_REWRITE",
+      "coverage": "DIRECT_FAIL",
+      "pytest_nodes": [
+        {
+          "status": "FAILED",
+          "name": "test_s06r_epoch_must_be_bound_to_issuer_and_replayed_events"
+        }
+      ],
+      "scientific_security_interpretation": "No source/use/issuer or owner trust granted"
+    },
+    {
+      "id": "S06R-H10",
+      "adversary": "REVOCATION_REWRITE",
+      "coverage": "DIRECT_FAIL",
+      "pytest_nodes": [
+        {
+          "status": "FAILED",
+          "name": "test_s06r_revocation_set_must_be_issued_and_ledger_bound"
+        }
+      ],
+      "scientific_security_interpretation": "No source/use/issuer or owner trust granted"
+    },
+    {
+      "id": "S06R-H11",
+      "adversary": "MULTI_GEN_CLOSURE",
+      "coverage": "PARTIAL_INDIRECT",
+      "pytest_nodes": [
+        {
+          "status": "FAILED",
+          "name": "test_s06r_transitive_descendants_not_one_hop"
+        }
+      ],
+      "scientific_security_interpretation": "No source/use/issuer or owner trust granted"
+    },
+    {
+      "id": "S06R-H12",
+      "adversary": "MUTABLE_GET_STATE",
+      "coverage": "DIRECT_FAIL",
+      "pytest_nodes": [
+        {
+          "status": "FAILED",
+          "name": "test_s06r_immutable_export_not_mutable_state_alias"
+        }
+      ],
+      "scientific_security_interpretation": "No source/use/issuer or owner trust granted"
+    },
+    {
+      "id": "S06R-H13",
+      "adversary": "MUTABLE_EVENTS_PROPERTY",
+      "coverage": "DIRECT_FAIL",
+      "pytest_nodes": [
+        {
+          "status": "FAILED",
+          "name": "test_s06r_event_property_is_immutable_deep_snapshot"
+        }
+      ],
+      "scientific_security_interpretation": "No source/use/issuer or owner trust granted"
+    },
+    {
+      "id": "S06R-H14",
+      "adversary": "UNKNOWN_EVENT_TYPE",
+      "coverage": "DIRECT_FAIL",
+      "pytest_nodes": [
+        {
+          "status": "FAILED",
+          "name": "test_s06r_unknown_event_cannot_silently_enter_event_ledger"
+        }
+      ],
+      "scientific_security_interpretation": "No source/use/issuer or owner trust granted"
+    },
+    {
+      "id": "S06R-H15",
+      "adversary": "UNCONDITIONAL_MODE",
+      "coverage": "DIRECT_FAIL",
+      "pytest_nodes": [
+        {
+          "status": "FAILED",
+          "name": "test_s06r_protected_current_mode_not_unconditionally_allowed"
+        }
+      ],
+      "scientific_security_interpretation": "No source/use/issuer or owner trust granted"
+    },
+    {
+      "id": "S06R-H16",
+      "adversary": "EXTERNAL_CUSTODY_MODE",
+      "coverage": "DIRECT_PASS",
+      "pytest_nodes": [
+        {
+          "name": "test_s06r_external_mode_without_independent_root_must_refuse",
+          "status": "PASSED",
+          "evidence_source": "S06T 00_RETURN.md sole named pass + frozen test source; short log only lists failed node ids"
+        }
+      ],
+      "scientific_security_interpretation": "Narrow negative refusal only: no external root means external mode refused"
+    },
+    {
+      "id": "S06R-H17",
+      "adversary": "REAL_B5_SCHEMA",
+      "coverage": "DIRECT_FAIL",
+      "pytest_nodes": [
+        {
+          "status": "FAILED",
+          "name": "test_s06r_real_owner_checkpoint_schema_interoperation"
+        }
+      ],
+      "scientific_security_interpretation": "No source/use/issuer or owner trust granted"
+    },
+    {
+      "id": "S06R-H18",
+      "adversary": "REAL_B5_M2_OWNER",
+      "coverage": "DIRECT_FAIL",
+      "pytest_nodes": [
+        {
+          "status": "FAILED",
+          "name": "test_s06r_owner_wrapping_is_not_a_second_detached_state_machine"
+        }
+      ],
+      "scientific_security_interpretation": "No source/use/issuer or owner trust granted"
+    },
+    {
+      "id": "S06R-H19",
+      "adversary": "COLD_REPLAY_AUTH_LAUNDER",
+      "coverage": "DIRECT_FAIL",
+      "pytest_nodes": [
+        {
+          "status": "FAILED",
+          "name": "test_s06r_without_event_signature_cold_replay_not_external_trust"
+        }
+      ],
+      "scientific_security_interpretation": "No source/use/issuer or owner trust granted"
+    },
+    {
+      "id": "S06R-H20",
+      "adversary": "PUBLIC_SELECTED_EVENT",
+      "coverage": "DIRECT_FAIL",
+      "pytest_nodes": [
+        {
+          "status": "FAILED",
+          "name": "test_s06r_untrusted_selection_cannot_be_staged_through_public_event_api"
+        }
+      ],
+      "scientific_security_interpretation": "No source/use/issuer or owner trust granted"
+    },
+    {
+      "id": "S06R-H21",
+      "adversary": "PREVIOUS_OVERLAY_COVERAGE",
+      "coverage": "NO_DIRECT_CASE",
+      "pytest_nodes": [],
+      "scientific_security_interpretation": "Unwrapped native owner coverage must be independently inspected, no direct named case"
+    },
+    {
+      "id": "S06R-H22",
+      "adversary": "AS_OF_AND_REVOCATION",
+      "coverage": "PARTIAL_INDIRECT",
+      "pytest_nodes": [
+        {
+          "status": "FAILED",
+          "name": "test_s06r_epoch_must_be_bound_to_issuer_and_replayed_events"
+        },
+        {
+          "status": "FAILED",
+          "name": "test_s06r_revocation_set_must_be_issued_and_ledger_bound"
+        }
+      ],
+      "scientific_security_interpretation": "No source/use/issuer or owner trust granted"
+    },
+    {
+      "id": "S06R-H23",
+      "adversary": "CHECKPOINT_SUBJECT_ID",
+      "coverage": "PARTIAL_INDIRECT",
+      "pytest_nodes": [
+        {
+          "status": "FAILED",
+          "name": "test_s06r_real_owner_checkpoint_schema_interoperation"
+        }
+      ],
+      "scientific_security_interpretation": "No source/use/issuer or owner trust granted"
+    },
+    {
+      "id": "S06R-H24",
+      "adversary": "MULTIBRANCH_DEPENDENCIES",
+      "coverage": "PARTIAL_INDIRECT",
+      "pytest_nodes": [
+        {
+          "status": "FAILED",
+          "name": "test_s06r_transitive_descendants_not_one_hop"
+        }
+      ],
+      "scientific_security_interpretation": "Failed single transitive test; multi-branch/sibling closure not separately demonstrated"
+    }
+  ],
+  "matrix_defect": "Original 16/15/1 conflicts with actual 21/20/1. Original H24 credited PASS incorrectly; only PASS is no-external-root refusal H16. Several original requirement node mappings unsupported.",
+  "grade": "SECURITY_REJECT_NO_ADOPTION",
+  "no_new_execution": true,
+  "execution_log_note": "Short pytest log names failing nodes only; sole PASS identity is supplied by S06T 00_RETURN and frozen case name. Zero additional runtime was executed."
+}

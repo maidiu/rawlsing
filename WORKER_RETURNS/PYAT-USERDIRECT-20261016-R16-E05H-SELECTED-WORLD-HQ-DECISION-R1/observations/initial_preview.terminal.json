@@ -1,0 +1,17 @@
+{
+  "argv": [
+    "python3",
+    "-m",
+    "pytest",
+    "-q",
+    "tests/test_preview.py",
+    "--import-mode=importlib",
+    "-p",
+    "no:cacheprovider",
+    "--junitxml=observations/preview.xml"
+  ],
+  "cwd": "RETURN",
+  "exit": 1,
+  "seconds": 2.4254066080320626,
+  "scope": "E05H_INCREMENTAL_PREVIEW_ONLY__403_NOT_RERUN"
+}

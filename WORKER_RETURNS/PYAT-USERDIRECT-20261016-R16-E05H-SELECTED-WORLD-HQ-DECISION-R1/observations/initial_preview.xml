@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="16" time="2.072" timestamp="2026-10-16T14:52:38.205873-04:00" hostname="MacBook-Pro.lan"><testcase classname="tests.test_preview" name="test_default_off_before_owner_access" time="0.000" /><testcase classname="tests.test_preview" name="test_actual_consumers_current_historical" time="0.055" /><testcase classname="tests.test_preview" name="test_incremental_values_and_minority" time="0.000" /><testcase classname="tests.test_preview" name="test_separate_reverse_request" time="0.000" /><testcase classname="tests.test_preview" name="test_native_units_custody_and_no_invented_persons" time="0.000" /><testcase classname="tests.test_preview" name="test_selective_current_grant_and_archive[revoke-GSS_RURAL_LIGHTING]" time="0.001" /><testcase classname="tests.test_preview" name="test_selective_current_grant_and_archive[revoke-NCA_NATIONAL_MOBILE_DATA]" time="0.001" /><testcase classname="tests.test_preview" name="test_selective_current_grant_and_archive[rekey-GSS_RURAL_LIGHTING]" time="0.001" /><testcase classname="tests.test_preview" name="test_selective_current_grant_and_archive[rekey-NCA_NATIONAL_MOBILE_DATA]" time="0.001" /><testcase classname="tests.test_preview" name="test_publication_asof_denial" time="0.000" /><testcase classname="tests.test_preview" name="test_zero_support_downstream_terminal" time="0.000" /><testcase classname="tests.test_preview" name="test_oc05_no_installation" time="0.000" /><testcase classname="tests.test_preview" name="test_native_execution_and_exact_sources" time="0.122" /><testcase classname="tests.test_preview" name="test_weak_null_products_match_actual_source" time="0.001" /><testcase classname="tests.test_preview" name="test_fresh_request_substitution_and_revoked_world" time="0.641"><failure message="Failed: DID NOT RAISE &lt;class 'e05_n9_selected_world_adapter.N9SelectedWorldRefusal'&gt;">def test_fresh_request_substitution_and_revoked_world():
+     rows=json.loads((bootstrap.RT/'WORKER_RETURNS/PYAT-R3-HQ297-N9-TWO-FIELD-VALUES-READER-R1/02_TWO_FIELD_TESTONLY_READER_AND_ASOF.json').read_text())['fields']
+     h=fixture_handoff(rows);q=E.standard_request(label='CURRENT_TEST_CLOCK').binding();p=h.prepare(q)
+     other=E.standard_request(label='HISTORICAL_AS_OF').binding()
+     with pytest.raises(ValueError,match='REQUEST_BINDING'):read_preview(h,other,enabled=True,prepared=p)
+     h.adapter.invalidate('training_access')
+&gt;    with pytest.raises(E.N9SelectedWorldRefusal):read_preview(h,q,enabled=True,prepared=p)
+E    Failed: DID NOT RAISE &lt;class 'e05_n9_selected_world_adapter.N9SelectedWorldRefusal'&gt;
+
+tests/test_preview.py:97: Failed</failure></testcase><testcase classname="tests.test_preview" name="test_archive_is_not_fresh_acceptance" time="0.852"><failure message="ValueError: UNREGISTERED_SELECTED_SNAPSHOT">def test_archive_is_not_fresh_acceptance():
+     rows=json.loads((bootstrap.RT/'WORKER_RETURNS/PYAT-R3-HQ297-N9-TWO-FIELD-VALUES-READER-R1/02_TWO_FIELD_TESTONLY_READER_AND_ASOF.json').read_text())['fields']
+     h=fixture_handoff(rows);q=E.standard_request(label='CURRENT_TEST_CLOCK').binding();p=h.prepare(q);out=h.serve(p);archive=h.archive(out)
+     assert not archive['fresh_use_authorized']
+     fresh=fixture_handoff(rows)
+&gt;    with pytest.raises(E.N9SelectedWorldRefusal):fresh.serve(p)
+                                                  ^^^^^^^^^^^^^^
+
+tests/test_preview.py:104: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+inherited_e05a/handoff.py:54: in serve
+    clients=[consume(self.adapter.service,prepared.snapshot)['material'],
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+inherited_e05a/runtime/product/nonparent.py:9: in consume
+    access=service.structural(snapshot,'training_access','NONPARENT_OPTIONS')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+inherited_e05a/runtime/product/service.py:14: in structural
+    value=self.catalog.read(snapshot,key)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;product.world.SelectedWorldCatalog object at 0x109d7b050&gt;
+snapshot = SelectedSnapshot(material={'schema': 'E04_TEST_ONLY_SELECTED_WORLD_SNAPSHOT@1', 'catalog_hash': 'e17875647e3410b40a043...: False, 'operative_CURRENT': False}, snapshot_hash='aba4c7402add71b237581b1a91ed6066f1b0918c28bc8799ac8d9db6530e9dd7')
+key = 'training_access'
+
+    def read(self,snapshot,key):
+        self.verify();snapshot.verify()
+&gt;       if self._snapshots.get(snapshot.snapshot_hash)!=snapshot.material:raise ValueError('UNREGISTERED_SELECTED_SNAPSHOT')
+                                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       ValueError: UNREGISTERED_SELECTED_SNAPSHOT
+
+inherited_e05a/runtime/product/world.py:103: ValueError</failure></testcase></testsuite></testsuites>

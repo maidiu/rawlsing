@@ -1,0 +1,106 @@
+{
+  "schema": "E05H_AUTHORITY_MATRIX@1",
+  "edges": [
+    {
+      "edge": "LOCAL_E05R_METHOD",
+      "current_state": "INDEPENDENT_ACCEPT_SOURCEFREE_ONLY",
+      "competent_role": "E05S independent reviewer; competent Pyat HQ for accession",
+      "evidence": "f524f60781e2e7e72278d04d6377fb1da877698a 00_INDEPENDENT_VERDICT.md; 403 frozen final JUnit cases",
+      "missing_or_next_decision": "Record bounded method accession to exact E05R @2 after current competent HQ review",
+      "exact_positive_gate": "Retain 403 acceptance as pinned evidence; new E05A 15 transport checks and actual two-client examples pass",
+      "needed_for_this_local_stage": true,
+      "bound_principal": null
+    },
+    {
+      "edge": "E05A_CONSUMER_TRANSPORT",
+      "current_state": "E05H_FRESH_OPT_IN_PREVIEW_EXECUTED__TWO_REAL_CLIENTS__NOT_INSTALLED",
+      "competent_role": "Prospective N9/OC05 and N10W consumer/interface owners",
+      "evidence": "02_ACTUAL_OPT_IN_SOURCEFREE_CONSUMER_PREVIEW.json; observations/preview.xml; preview.py",
+      "missing_or_next_decision": "HQ accession remains pending; this commission explicitly authorized and completed the bounded new preview",
+      "exact_positive_gate": "python3 repro/demo.py --request examples/request_current_test_clock.json --output observations/owner_trial.json; both actual clients and exact raw refs/values",
+      "needed_for_this_local_stage": true,
+      "bound_principal": null
+    },
+    {
+      "edge": "COMPETENT_HQ_CURRENTNESS",
+      "current_state": "HISTORICAL_USER_ACCESSION_PRESENT__ACTIVE_PRINCIPAL_NOT_AUTHENTICATED_HERE",
+      "competent_role": "User-accepted Pyat HQ successor or explicitly designated competent reviewer",
+      "evidence": "Fresh direct remote cut 58d1069b194fe2dc480b8df98443a2ee6be01044; retained user accession; available app inventory checked, no authenticated qualified current HQ session identified",
+      "missing_or_next_decision": "Exact next decision owner: PYAT_R3_HQ_ACCESSION_20261013_R1 user-accepted principal on agent/vozhd-pyat-r3-hq-accession-reconstruction-20261013-r1; authenticate current principal before issuing. If unavailable, user must designate competent successor; issuer slot remains null.",
+      "exact_positive_gate": "Record real reviewer identity, exact packet/implementation/review pins, decision and scope; refresh owned progress pair under its own authority",
+      "needed_for_this_local_stage": true,
+      "bound_principal": "PYAT_R3_HQ_ACCESSION_20261013_R1 historical user acceptance; live authentication pending"
+    },
+    {
+      "edge": "ORIGINAL_U_SOURCE_OPERATION",
+      "current_state": "NOT_ISSUED_BY_THIS_PACKET",
+      "competent_role": "Original source/universe custodian; operation scientist; host-use authority",
+      "evidence": "Fixture-only source identities and TEST_ONLY_NO_EXTERNAL_USE_GRANT",
+      "missing_or_next_decision": "Exact original U/E and allowed source/operation/use before real observations",
+      "exact_positive_gate": "One separately permitted source slice retains original identities through C11/I03 to named actual consumer; no synthetic substitution",
+      "needed_for_this_local_stage": false,
+      "bound_principal": null
+    },
+    {
+      "edge": "GHANA_FIELD_CUSTODY_AND_N5N6",
+      "current_state": "REAL_EDITION_PDF_ROOT_LICENCE_AND_FIELDS_NOT_ISSUED",
+      "competent_role": "GSS/NCA competent publisher/custody/licence principals and separate N5/N6 field producers",
+      "evidence": "Two exact N9C fixture refs, publisher/clock/unit/uncertainty and null real issuer/PDF roots",
+      "missing_or_next_decision": "Original edition bytes/hash/custody/licence and separately issued field artifacts",
+      "exact_positive_gate": "Exact GSS native subtypes/denominator/exclusions and NCA national subscription definition bind issued refs; one-arm mutation preserves other arm",
+      "needed_for_this_local_stage": false,
+      "bound_principal": null
+    },
+    {
+      "edge": "EE13_NONPOOLED_PAIR",
+      "current_state": "UNISSUED_REAL_RELATION",
+      "competent_role": "Competent EE13/N7 relation authority",
+      "evidence": "Receipt pooling=false, issued_EE13=false",
+      "missing_or_next_decision": "Separate exact co-presence relation over two issued fields",
+      "exact_positive_gate": "Actual owner receipt reads both native refs without pooling/person inference and selectively invalidates either arm",
+      "needed_for_this_local_stage": false,
+      "bound_principal": null
+    },
+    {
+      "edge": "OC05_INSTALLATION",
+      "current_state": "NOT_YET_APPLICABLE__SEAM_NONE",
+      "competent_role": "Competent N9/OC05 policy/installer owner and independent verifier",
+      "evidence": "02 handoff actual installation_manifest and direct NotYetApplicableConsumer",
+      "missing_or_next_decision": "Explicit prospective installation decision plus prerequisites; separate from method accession",
+      "exact_positive_gate": "Named real owner seam, exact input grants/field receipts, correct permission clocks and independently verified positive/withdrawal read; do not flip policy in this return",
+      "needed_for_this_local_stage": false,
+      "bound_principal": null
+    },
+    {
+      "edge": "N10W_EE14_JOINT_WORLD_USE",
+      "current_state": "NOT_ISSUED",
+      "competent_role": "N10W consumer and competent EE14 operation/model-use issuer",
+      "evidence": "Two sourcefree original client products; all weights None",
+      "missing_or_next_decision": "Exact selected-world/use contract and any model/calibration authority",
+      "exact_positive_gate": "Progressive actual world-conditioned evidence reaches a permitted consumer with units/risk/uncertainty, no empirical x structural probability invention",
+      "needed_for_this_local_stage": false,
+      "bound_principal": null
+    },
+    {
+      "edge": "STANDALONE_E04",
+      "current_state": "SEPARATE_E04S_RED_AND_E04T_E04U_LANE__NOT_REVIEWED_OR_ADOPTED_HERE",
+      "competent_role": "Separate E04 cache-lifecycle implementer and independent reviewer",
+      "evidence": "E04S 6549105c5757d38e15e5f52202a03e1ecad389e8; E05S acceptance explicitly bounded to E05R serving purge",
+      "missing_or_next_decision": "E04T/E04U lifecycle repair/review is a separate lane. No inference of result or global E05 block from its branch.",
+      "exact_positive_gate": "Both standalone clients with missing current query authority return typed absence/refusal, and complete native positive preserved",
+      "needed_for_this_local_stage": false,
+      "bound_principal": null
+    },
+    {
+      "edge": "N11_N12_V3",
+      "current_state": "OUT_OF_SCOPE_UNISSUED",
+      "competent_role": "Competent estate/N11 and explicit N12/weld/V3 owners",
+      "evidence": "HQD216 local/integration/estate/PREV3 distinction; Astra16 world-conditioned ordering",
+      "missing_or_next_decision": "All applicable estate and independent operative wake/actor grants remain separate",
+      "exact_positive_gate": "No new full-estate/person claim; future actor test requires its own law, not this preview",
+      "needed_for_this_local_stage": false,
+      "bound_principal": null
+    }
+  ],
+  "source_and_actor_issuer_slots_unbound": true
+}
