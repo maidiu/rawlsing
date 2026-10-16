@@ -1,0 +1,30 @@
+{
+  "issue": "E04S-A1",
+  "original_candidate": "97254d0b215b5dd45580dd94608a8ec95ff8b76f",
+  "baseline_junit": "observations/baseline4.xml",
+  "repaired_junit": "observations/new_hostiles57.xml",
+  "closures": [
+    {
+      "name": "test_current_native_authority_withdrawal_blocks_cached_fresh_use[nonparent-missing_query]",
+      "baseline": "FAIL_UNTOUCHED_E04R",
+      "repaired": "PASS_UNCHANGED_E04S_ASSERTION"
+    },
+    {
+      "name": "test_current_native_authority_withdrawal_blocks_cached_fresh_use[nonparent-empty]",
+      "baseline": "FAIL_UNTOUCHED_E04R",
+      "repaired": "PASS_UNCHANGED_E04S_ASSERTION"
+    },
+    {
+      "name": "test_current_native_authority_withdrawal_blocks_cached_fresh_use[scenario-missing_query]",
+      "baseline": "FAIL_UNTOUCHED_E04R",
+      "repaired": "PASS_UNCHANGED_E04S_ASSERTION"
+    },
+    {
+      "name": "test_current_native_authority_withdrawal_blocks_cached_fresh_use[scenario-empty]",
+      "baseline": "FAIL_UNTOUCHED_E04R",
+      "repaired": "PASS_UNCHANGED_E04S_ASSERTION"
+    }
+  ],
+  "all_four_closed_as_implementer_evidence": true,
+  "independent_acceptance": false
+}

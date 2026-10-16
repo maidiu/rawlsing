@@ -1,0 +1,29 @@
+{
+  "argv": [
+    "/usr/local/bin/python3.11",
+    "<RETURN>/repro/pytest_entry.py",
+    "-vv",
+    "--tb=short",
+    "--assert=plain",
+    "<RETURN>/tests/test_e04s_hostiles.py",
+    "--import-mode=importlib",
+    "-p",
+    "no:cacheprovider",
+    "--rootdir=<RETURN>",
+    "--confcutdir=<RETURN>",
+    "--basetemp=<RETURN>/runtime_root/tmp/baseline4",
+    "--junitxml=<RETURN>/observations/baseline4.xml",
+    "-k",
+    "current_native_authority_withdrawal"
+  ],
+  "cwd": "<RETURN>",
+  "variant": "e04r",
+  "exit": 1,
+  "seconds": 10.187032717978582,
+  "env": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+    "E04S_VARIANT": "e04r",
+    "E04S_PROCESS_AUDIT": "<RETURN>/observations/baseline4_process.json"
+  }
+}

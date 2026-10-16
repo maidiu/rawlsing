@@ -1,0 +1,111 @@
+{
+  "native_fact_ref": {
+    "kind": "EmpiricalCoordinateFact@1.0.0",
+    "object_id": "urn:rawlsing:pre553:EmpiricalCoordinateFact:sha256:021e2bb0121dbe5d317f3aa349bf528ba18aa656651db0d44df0d1e731637587",
+    "content_hash": "021e2bb0121dbe5d317f3aa349bf528ba18aa656651db0d44df0d1e731637587"
+  },
+  "before": {
+    "schema_id": "EmpiricalCoordinateFact",
+    "schema_version": "1.0.0",
+    "typed_state": "OBSERVED_COORDINATE",
+    "authority_snapshot_refs": [
+      {
+        "authority_id": "I03-AUTH-coord-e04-base-r1",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "1c7d09914c8527d14e0aa168865446b5bafed4d6e4684305a269027d6cf436e5"
+      }
+    ],
+    "dependency_refs": [],
+    "producer_replay_locator_or_reference_root": {
+      "kind": "REPLAY_ROOT",
+      "object_id": "urn:test:i03:replay_root:coord-e04-base-r1-E03-110Y04-INERT",
+      "content_hash": "d01bb4afacfbffb255f2a669e540f1ac45469f990424352148ddc3100fad75b4"
+    },
+    "semantic_fields": {
+      "empirical_universe_ref": {
+        "content_hash": "f677fb8b8478ba78b9b526d5dcd7b3aa54070d4a4b90a1d2de6dc219ec177cda",
+        "kind": "EmpiricalUniverse@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:f677fb8b8478ba78b9b526d5dcd7b3aa54070d4a4b90a1d2de6dc219ec177cda"
+      },
+      "scoped_respondent_ref": {
+        "content_hash": "1ca6965d70115b8d11658a6a098576a20dd63e4f06dea2cbba98d22041a2a8d8",
+        "kind": "C11Internal:RespondentIdentity",
+        "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:1ca6965d70115b8d11658a6a098576a20dd63e4f06dea2cbba98d22041a2a8d8"
+      },
+      "native_coordinate_ref": {
+        "content_hash": "62786b1b411b9c7d620d2b91167cddc3d4b54645245cc424ad13c44f9e2d8881",
+        "kind": "COORDINATE_NATIVE",
+        "object_id": "urn:test:i03:coordinate_native:E04_NATIVE_BINARY-INERT"
+      },
+      "canonical_coordinate_ref_if_authorized": null,
+      "raw_coordinate_value": "1",
+      "canonical_coordinate_value_if_authorized": null,
+      "unit_category_taxonomy_ref": {
+        "content_hash": "1229c1d8150286babae837adcce07a9fd6c6fd6a70a9a0c0d4d54372d4844f60",
+        "kind": "UNIT_TAXONOMY",
+        "object_id": "urn:test:i03:unit_taxonomy:E04_NATIVE_BINARY-INERT"
+      },
+      "effective_or_reference_time": "2026-01",
+      "coordinate_state": "OBSERVED_COORDINATE",
+      "normalization_crosswalk_authority_ref": null,
+      "source_semantic_authority_ref": {
+        "authority_content_hash": "1c7d09914c8527d14e0aa168865446b5bafed4d6e4684305a269027d6cf436e5",
+        "authority_id": "I03-AUTH-coord-e04-base-r1",
+        "authority_version": "1.0.0"
+      }
+    }
+  },
+  "after": {
+    "schema_id": "EmpiricalCoordinateFact",
+    "schema_version": "1.0.0",
+    "typed_state": "OBSERVED_COORDINATE",
+    "authority_snapshot_refs": [
+      {
+        "authority_id": "I03-AUTH-coord-e04-base-r1",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "1c7d09914c8527d14e0aa168865446b5bafed4d6e4684305a269027d6cf436e5"
+      }
+    ],
+    "dependency_refs": [],
+    "producer_replay_locator_or_reference_root": {
+      "kind": "REPLAY_ROOT",
+      "object_id": "urn:test:i03:replay_root:coord-e04-base-r1-E03-110Y04-INERT",
+      "content_hash": "d01bb4afacfbffb255f2a669e540f1ac45469f990424352148ddc3100fad75b4"
+    },
+    "semantic_fields": {
+      "empirical_universe_ref": {
+        "content_hash": "f677fb8b8478ba78b9b526d5dcd7b3aa54070d4a4b90a1d2de6dc219ec177cda",
+        "kind": "EmpiricalUniverse@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:f677fb8b8478ba78b9b526d5dcd7b3aa54070d4a4b90a1d2de6dc219ec177cda"
+      },
+      "scoped_respondent_ref": {
+        "content_hash": "1ca6965d70115b8d11658a6a098576a20dd63e4f06dea2cbba98d22041a2a8d8",
+        "kind": "C11Internal:RespondentIdentity",
+        "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:1ca6965d70115b8d11658a6a098576a20dd63e4f06dea2cbba98d22041a2a8d8"
+      },
+      "native_coordinate_ref": {
+        "content_hash": "62786b1b411b9c7d620d2b91167cddc3d4b54645245cc424ad13c44f9e2d8881",
+        "kind": "COORDINATE_NATIVE",
+        "object_id": "urn:test:i03:coordinate_native:E04_NATIVE_BINARY-INERT"
+      },
+      "canonical_coordinate_ref_if_authorized": null,
+      "raw_coordinate_value": "1",
+      "canonical_coordinate_value_if_authorized": null,
+      "unit_category_taxonomy_ref": {
+        "content_hash": "1229c1d8150286babae837adcce07a9fd6c6fd6a70a9a0c0d4d54372d4844f60",
+        "kind": "UNIT_TAXONOMY",
+        "object_id": "urn:test:i03:unit_taxonomy:E04_NATIVE_BINARY-INERT"
+      },
+      "effective_or_reference_time": "2026-01",
+      "coordinate_state": "OBSERVED_COORDINATE",
+      "normalization_crosswalk_authority_ref": null,
+      "source_semantic_authority_ref": {
+        "authority_content_hash": "1c7d09914c8527d14e0aa168865446b5bafed4d6e4684305a269027d6cf436e5",
+        "authority_id": "I03-AUTH-coord-e04-base-r1",
+        "authority_version": "1.0.0"
+      }
+    }
+  },
+  "normal_assignment_refused": true,
+  "detached_projection_isolated": true
+}

@@ -1,0 +1,27 @@
+{
+  "argv": [
+    "/usr/local/bin/python3.11",
+    "<RETURN>/repro/pytest_entry.py",
+    "-vv",
+    "--tb=short",
+    "--assert=plain",
+    "<RETURN>/tests/test_full_native_independent.py",
+    "--import-mode=importlib",
+    "-p",
+    "no:cacheprovider",
+    "--rootdir=<RETURN>",
+    "--confcutdir=<RETURN>",
+    "--basetemp=<RETURN>/runtime_root/tmp/independent51",
+    "--junitxml=<RETURN>/observations/independent51.xml"
+  ],
+  "cwd": "<RETURN>",
+  "variant": "repaired",
+  "exit": 0,
+  "seconds": 87.08824880898464,
+  "env": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+    "E04S_VARIANT": "repaired",
+    "E04S_PROCESS_AUDIT": "<RETURN>/observations/independent51_process.json"
+  }
+}

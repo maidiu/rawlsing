@@ -1,0 +1,35 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.11.3, pytest-9.0.2, pluggy-1.6.0 -- /usr/local/bin/python3.11
+rootdir: <RETURN>
+collecting ... collected 57 items / 53 deselected / 4 selected
+
+tests/test_e04s_hostiles.py::test_current_native_authority_withdrawal_blocks_cached_fresh_use[nonparent-missing_query] FAILED [ 25%]
+tests/test_e04s_hostiles.py::test_current_native_authority_withdrawal_blocks_cached_fresh_use[nonparent-empty] FAILED [ 50%]
+tests/test_e04s_hostiles.py::test_current_native_authority_withdrawal_blocks_cached_fresh_use[scenario-missing_query] FAILED [ 75%]
+tests/test_e04s_hostiles.py::test_current_native_authority_withdrawal_blocks_cached_fresh_use[scenario-empty] FAILED [100%]
+
+=================================== FAILURES ===================================
+_ test_current_native_authority_withdrawal_blocks_cached_fresh_use[nonparent-missing_query] _
+tests/test_e04s_hostiles.py:61: in test_current_native_authority_withdrawal_blocks_cached_fresh_use
+    pytest.fail('WITHDRAWN_NATIVE_QUERY_AUTHORITY_STILL_SERVES_CACHED_PRODUCT:'+out['material']['state'])
+E   Failed: WITHDRAWN_NATIVE_QUERY_AUTHORITY_STILL_SERVES_CACHED_PRODUCT:OPTIONS_AND_SOURCE_SUPPORT_PRODUCED
+_ test_current_native_authority_withdrawal_blocks_cached_fresh_use[nonparent-empty] _
+tests/test_e04s_hostiles.py:61: in test_current_native_authority_withdrawal_blocks_cached_fresh_use
+    pytest.fail('WITHDRAWN_NATIVE_QUERY_AUTHORITY_STILL_SERVES_CACHED_PRODUCT:'+out['material']['state'])
+E   Failed: WITHDRAWN_NATIVE_QUERY_AUTHORITY_STILL_SERVES_CACHED_PRODUCT:OPTIONS_AND_SOURCE_SUPPORT_PRODUCED
+_ test_current_native_authority_withdrawal_blocks_cached_fresh_use[scenario-missing_query] _
+tests/test_e04s_hostiles.py:61: in test_current_native_authority_withdrawal_blocks_cached_fresh_use
+    pytest.fail('WITHDRAWN_NATIVE_QUERY_AUTHORITY_STILL_SERVES_CACHED_PRODUCT:'+out['material']['state'])
+E   Failed: WITHDRAWN_NATIVE_QUERY_AUTHORITY_STILL_SERVES_CACHED_PRODUCT:FINITE_PROPOSALS_EVALUATED
+_ test_current_native_authority_withdrawal_blocks_cached_fresh_use[scenario-empty] _
+tests/test_e04s_hostiles.py:61: in test_current_native_authority_withdrawal_blocks_cached_fresh_use
+    pytest.fail('WITHDRAWN_NATIVE_QUERY_AUTHORITY_STILL_SERVES_CACHED_PRODUCT:'+out['material']['state'])
+E   Failed: WITHDRAWN_NATIVE_QUERY_AUTHORITY_STILL_SERVES_CACHED_PRODUCT:FINITE_PROPOSALS_EVALUATED
+- generated xml file: <RETURN>/observations/baseline4.xml -
+=========================== short test summary info ============================
+FAILED tests/test_e04s_hostiles.py::test_current_native_authority_withdrawal_blocks_cached_fresh_use[nonparent-missing_query] - Failed: WITHDRAWN_NATIVE_QUERY_AUTHORITY_STILL_SERVES_CACHED_PRODUCT:OPTIONS_AND_SOURCE_SUPPORT_PRODUCED
+FAILED tests/test_e04s_hostiles.py::test_current_native_authority_withdrawal_blocks_cached_fresh_use[nonparent-empty] - Failed: WITHDRAWN_NATIVE_QUERY_AUTHORITY_STILL_SERVES_CACHED_PRODUCT:OPTIONS_AND_SOURCE_SUPPORT_PRODUCED
+FAILED tests/test_e04s_hostiles.py::test_current_native_authority_withdrawal_blocks_cached_fresh_use[scenario-missing_query] - Failed: WITHDRAWN_NATIVE_QUERY_AUTHORITY_STILL_SERVES_CACHED_PRODUCT:FINITE_PROPOSALS_EVALUATED
+FAILED tests/test_e04s_hostiles.py::test_current_native_authority_withdrawal_blocks_cached_fresh_use[scenario-empty] - Failed: WITHDRAWN_NATIVE_QUERY_AUTHORITY_STILL_SERVES_CACHED_PRODUCT:FINITE_PROPOSALS_EVALUATED
+======================= 4 failed, 53 deselected in 9.32s =======================
+
