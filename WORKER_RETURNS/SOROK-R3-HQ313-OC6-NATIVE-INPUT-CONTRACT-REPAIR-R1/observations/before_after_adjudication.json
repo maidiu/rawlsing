@@ -1,0 +1,576 @@
+{
+  "claim": "SOURCEFREE_TEST_ONLY_INPUT_CONTRACT_REPAIR__349_COURT_UNCHANGED__54_OF_56_DEMONSTRATED_REDS_CLOSED__2_OC5E_INPUTS_MALFORMED__TEN_HISTORICAL_REDS_UNCHANGED__NO_ADOPTION",
+  "before": {
+    "cases": 349,
+    "passed": 283,
+    "red": 66
+  },
+  "after": {
+    "cases": 349,
+    "passed": 328,
+    "red": 21
+  },
+  "oc6_new_author_controls": {
+    "label": "oc6_author_controls",
+    "junit": "oc6_author_controls.xml",
+    "grade": "OC6 author-side targeted controls (new)",
+    "tests": 273,
+    "passed": 273,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "seconds": 0.59
+  },
+  "fixed": [
+    {
+      "court": "oc5_prior_predictions",
+      "case": "test_duplicate_normalized_keys_refused[packet0]",
+      "family": null
+    },
+    {
+      "court": "oc5_prior_predictions",
+      "case": "test_duplicate_normalized_keys_refused[packet1]",
+      "family": null
+    },
+    {
+      "court": "oc5_prior_predictions",
+      "case": "test_duplicate_normalized_keys_refused[packet2]",
+      "family": null
+    },
+    {
+      "court": "oc5_prior_predictions",
+      "case": "test_duplicate_normalized_keys_refused[packet3]",
+      "family": null
+    },
+    {
+      "court": "oc5_prior_predictions",
+      "case": "test_malformed_signature_fails_typed[12]",
+      "family": null
+    },
+    {
+      "court": "oc5_prior_predictions",
+      "case": "test_malformed_signature_fails_typed[bad0]",
+      "family": null
+    },
+    {
+      "court": "oc5_prior_predictions",
+      "case": "test_malformed_signature_fails_typed[bad2]",
+      "family": null
+    },
+    {
+      "court": "oc5e_native_hostiles",
+      "case": "test_capsule_identity_field_types_must_be_validated[content-none]",
+      "family": "A6"
+    },
+    {
+      "court": "oc5e_native_hostiles",
+      "case": "test_capsule_identity_field_types_must_be_validated[freeze-dict]",
+      "family": "A6"
+    },
+    {
+      "court": "oc5e_native_hostiles",
+      "case": "test_capsule_identity_field_types_must_be_validated[freeze-none]",
+      "family": "A6"
+    },
+    {
+      "court": "oc5e_native_hostiles",
+      "case": "test_capsule_identity_field_types_must_be_validated[freeze-str]",
+      "family": "A6"
+    },
+    {
+      "court": "oc5e_native_hostiles",
+      "case": "test_capsule_identity_field_types_must_be_validated[lawful-none]",
+      "family": "A6"
+    },
+    {
+      "court": "oc5e_native_hostiles",
+      "case": "test_capsule_identity_field_types_must_be_validated[rubric-none]",
+      "family": "A6"
+    },
+    {
+      "court": "oc5e_native_hostiles",
+      "case": "test_capsule_identity_field_types_must_be_validated[schema-none]",
+      "family": "A6"
+    },
+    {
+      "court": "oc5e_native_hostiles",
+      "case": "test_capsule_identity_field_types_must_be_validated[split-none]",
+      "family": "A6"
+    },
+    {
+      "court": "oc5e_native_hostiles",
+      "case": "test_capsule_identity_field_types_must_be_validated[version-injection]",
+      "family": "A6"
+    },
+    {
+      "court": "oc5e_native_hostiles",
+      "case": "test_capsule_identity_field_types_must_be_validated[version-none]",
+      "family": "A6"
+    },
+    {
+      "court": "oc5e_native_hostiles",
+      "case": "test_capsule_identity_field_types_must_be_validated[version-str]",
+      "family": "A6"
+    },
+    {
+      "court": "oc5e_native_hostiles",
+      "case": "test_confusable_leak_token_substitution_must_be_flagged[armenian-h]",
+      "family": "A2"
+    },
+    {
+      "court": "oc5e_native_hostiles",
+      "case": "test_confusable_leak_token_substitution_must_be_flagged[cyrillic-a]",
+      "family": "A2"
+    },
+    {
+      "court": "oc5e_native_hostiles",
+      "case": "test_confusable_leak_token_substitution_must_be_flagged[cyrillic-e]",
+      "family": "A2"
+    },
+    {
+      "court": "oc5e_native_hostiles",
+      "case": "test_confusable_leak_token_substitution_must_be_flagged[cyrillic-s]",
+      "family": "A2"
+    },
+    {
+      "court": "oc5e_native_hostiles",
+      "case": "test_malformed_signature_object_must_fail_typed[primary-bool]",
+      "family": "A3"
+    },
+    {
+      "court": "oc5e_native_hostiles",
+      "case": "test_malformed_signature_object_must_fail_typed[primary-bytes]",
+      "family": "A3"
+    },
+    {
+      "court": "oc5e_native_hostiles",
+      "case": "test_malformed_signature_object_must_fail_typed[primary-dict]",
+      "family": "A3"
+    },
+    {
+      "court": "oc5e_native_hostiles",
+      "case": "test_malformed_signature_object_must_fail_typed[primary-float]",
+      "family": "A3"
+    },
+    {
+      "court": "oc5e_native_hostiles",
+      "case": "test_malformed_signature_object_must_fail_typed[primary-int]",
+      "family": "A3"
+    },
+    {
+      "court": "oc5e_native_hostiles",
+      "case": "test_malformed_signature_object_must_fail_typed[primary-list]",
+      "family": "A3"
+    },
+    {
+      "court": "oc5e_native_hostiles",
+      "case": "test_malformed_signature_object_must_fail_typed[primary-object]",
+      "family": "A3"
+    },
+    {
+      "court": "oc5e_native_hostiles",
+      "case": "test_malformed_signature_object_must_fail_typed[primary-str]",
+      "family": "A3"
+    },
+    {
+      "court": "oc5e_native_hostiles",
+      "case": "test_malformed_signature_object_must_fail_typed[primary-tuple]",
+      "family": "A3"
+    },
+    {
+      "court": "oc5e_native_hostiles",
+      "case": "test_malformed_signature_object_must_fail_typed[second-bool]",
+      "family": "A3"
+    },
+    {
+      "court": "oc5e_native_hostiles",
+      "case": "test_malformed_signature_object_must_fail_typed[second-bytes]",
+      "family": "A3"
+    },
+    {
+      "court": "oc5e_native_hostiles",
+      "case": "test_malformed_signature_object_must_fail_typed[second-dict]",
+      "family": "A3"
+    },
+    {
+      "court": "oc5e_native_hostiles",
+      "case": "test_malformed_signature_object_must_fail_typed[second-float]",
+      "family": "A3"
+    },
+    {
+      "court": "oc5e_native_hostiles",
+      "case": "test_malformed_signature_object_must_fail_typed[second-int]",
+      "family": "A3"
+    },
+    {
+      "court": "oc5e_native_hostiles",
+      "case": "test_malformed_signature_object_must_fail_typed[second-list]",
+      "family": "A3"
+    },
+    {
+      "court": "oc5e_native_hostiles",
+      "case": "test_malformed_signature_object_must_fail_typed[second-object]",
+      "family": "A3"
+    },
+    {
+      "court": "oc5e_native_hostiles",
+      "case": "test_malformed_signature_object_must_fail_typed[second-str]",
+      "family": "A3"
+    },
+    {
+      "court": "oc5e_native_hostiles",
+      "case": "test_malformed_signature_object_must_fail_typed[second-tuple]",
+      "family": "A3"
+    },
+    {
+      "court": "oc5e_native_hostiles",
+      "case": "test_non_enum_role_string_must_fail_typed",
+      "family": "A4"
+    },
+    {
+      "court": "oc5e_native_hostiles",
+      "case": "test_normalization_equivalent_allowed_field_alias_must_be_refused[accented-context]",
+      "family": "A1"
+    },
+    {
+      "court": "oc5e_native_hostiles",
+      "case": "test_normalization_equivalent_allowed_field_alias_must_be_refused[accented-note]",
+      "family": "A1"
+    },
+    {
+      "court": "oc5e_native_hostiles",
+      "case": "test_normalization_equivalent_allowed_field_alias_must_be_refused[accented-request-id]",
+      "family": "A1"
+    },
+    {
+      "court": "oc5e_native_hostiles",
+      "case": "test_normalization_equivalent_allowed_field_alias_must_be_refused[accented-response]",
+      "family": "A1"
+    },
+    {
+      "court": "oc5e_native_hostiles",
+      "case": "test_normalization_equivalent_allowed_field_alias_must_be_refused[cgj-context]",
+      "family": "A1"
+    },
+    {
+      "court": "oc5e_native_hostiles",
+      "case": "test_normalization_equivalent_allowed_field_alias_must_be_refused[cgj-note]",
+      "family": "A1"
+    },
+    {
+      "court": "oc5e_native_hostiles",
+      "case": "test_normalization_equivalent_allowed_field_alias_must_be_refused[double-context-alias]",
+      "family": "A1"
+    },
+    {
+      "court": "oc5e_native_hostiles",
+      "case": "test_normalization_equivalent_allowed_field_alias_must_be_refused[fullwidth-context]",
+      "family": "A1"
+    },
+    {
+      "court": "oc5e_native_hostiles",
+      "case": "test_normalization_equivalent_allowed_field_alias_must_be_refused[fullwidth-menu]",
+      "family": "A1"
+    },
+    {
+      "court": "oc5e_native_hostiles",
+      "case": "test_normalization_equivalent_allowed_field_alias_must_be_refused[fullwidth-public-projection]",
+      "family": "A1"
+    },
+    {
+      "court": "oc5e_native_hostiles",
+      "case": "test_unblind_unhashable_holder_must_fail_typed[dict]",
+      "family": "A5"
+    },
+    {
+      "court": "oc5e_native_hostiles",
+      "case": "test_unblind_unhashable_holder_must_fail_typed[list]",
+      "family": "A5"
+    },
+    {
+      "court": "oc5e_native_hostiles",
+      "case": "test_unblind_unhashable_holder_must_fail_typed[set]",
+      "family": "A5"
+    }
+  ],
+  "flipped_to_red": [
+    {
+      "court": "oc5e_native_hostiles",
+      "case": "test_alias_holes_are_observed_not_theorised",
+      "before": "PASS",
+      "after": "FAIL",
+      "family": null,
+      "before_reason": null,
+      "after_reason": "AssertionError: unexpectedly flagged: {'fullwidth-context': ['duplicate_normalized_field:\uff43ontext'], 'cgj-context': ['duplicate_normalized_field:con\u034ftext'], 'accented-context': ['duplicate_normalized_f",
+      "classification": "A1 hole witness: asserted the alias holes existed"
+    },
+    {
+      "court": "oc5e_native_hostiles",
+      "case": "test_capsule_identity_field_type_hole_is_observed",
+      "before": "PASS",
+      "after": "FAIL",
+      "family": null,
+      "before_reason": null,
+      "after_reason": "TypeError: capsule version must be an integer",
+      "classification": "A6 hole witness: asserted malformed capsules commit"
+    },
+    {
+      "court": "oc5e_native_hostiles",
+      "case": "test_confusable_holes_are_observed_only_for_nfkc_invisible_scripts",
+      "before": "PASS",
+      "after": "FAIL",
+      "family": null,
+      "before_reason": null,
+      "after_reason": "assert False\n +  where False = all(<generator object test_confusable_holes_are_observed_only_for_nfkc_invisible_scripts.<locals>.<genexpr> at 0x109c07220>)",
+      "classification": "A2 hole witness: asserted the confusable holes existed"
+    },
+    {
+      "court": "oc5e_native_hostiles",
+      "case": "test_imported_module_is_the_pinned_oc4_blob",
+      "before": "PASS",
+      "after": "FAIL",
+      "family": null,
+      "before_reason": null,
+      "after_reason": "AssertionError: imported module is not the pinned OC4 blob: 4c185c18dbee57603038e97886da8fc4aa834082\nassert '4c185c18dbee...a8fc4aa834082' == 'af2b7e943018...cd67704624bec'\n  \n  - af2b7e943018077cb368",
+      "classification": "provenance pin for the UNREPAIRED blob, necessarily superseded by the repaired source"
+    },
+    {
+      "court": "oc5e_native_hostiles",
+      "case": "test_malformed_signature_holes_are_observed_as_attributeerror",
+      "before": "PASS",
+      "after": "FAIL",
+      "family": null,
+      "before_reason": null,
+      "after_reason": "custody_protocol.SignatureError: malformed primary signature: typed MockSignature required",
+      "classification": "A3 hole witness: asserted raw AttributeError"
+    },
+    {
+      "court": "oc5e_native_hostiles",
+      "case": "test_non_enum_role_string_hole_is_observed_as_attributeerror",
+      "before": "PASS",
+      "after": "FAIL",
+      "family": "A4",
+      "before_reason": null,
+      "after_reason": "custody_protocol.SignatureError: malformed primary signature role: typed Role enum required",
+      "classification": "A4 hole witness: asserted raw AttributeError"
+    },
+    {
+      "court": "oc5e_native_hostiles",
+      "case": "test_unblind_unhashable_holder_hole_is_observed_as_typeerror[dict]",
+      "before": "PASS",
+      "after": "FAIL",
+      "family": "A5",
+      "before_reason": null,
+      "after_reason": "custody_protocol.IdentityMismatchError: malformed fixture holder identity",
+      "classification": "A5 hole witness: asserted raw TypeError"
+    },
+    {
+      "court": "oc5e_native_hostiles",
+      "case": "test_unblind_unhashable_holder_hole_is_observed_as_typeerror[list]",
+      "before": "PASS",
+      "after": "FAIL",
+      "family": "A5",
+      "before_reason": null,
+      "after_reason": "custody_protocol.IdentityMismatchError: malformed fixture holder identity",
+      "classification": "A5 hole witness: asserted raw TypeError"
+    },
+    {
+      "court": "oc5e_native_hostiles",
+      "case": "test_unblind_unhashable_holder_hole_is_observed_as_typeerror[set]",
+      "before": "PASS",
+      "after": "FAIL",
+      "family": "A5",
+      "before_reason": null,
+      "after_reason": "custody_protocol.IdentityMismatchError: malformed fixture holder identity",
+      "classification": "A5 hole witness: asserted raw TypeError"
+    }
+  ],
+  "still_red": [
+    {
+      "court": "inherited_131",
+      "case": "test_A08_mismatched_holder_unblind",
+      "family": null,
+      "reason": "custody_protocol.SignatureError: full signed capsule envelope identity missing or mismatched",
+      "type": null,
+      "adjudication": "HISTORICAL_ORIGINAL_RED_UNCHANGED"
+    },
+    {
+      "court": "inherited_131",
+      "case": "test_A_capsule_unblind_permission[mod0-A01_revoked_unblind]",
+      "family": null,
+      "reason": "custody_protocol.RevocationError: cannot commit an inactive capsule",
+      "type": null,
+      "adjudication": "HISTORICAL_ORIGINAL_RED_UNCHANGED"
+    },
+    {
+      "court": "inherited_131",
+      "case": "test_A_capsule_unblind_permission[mod1-A02_expired_unblind]",
+      "family": null,
+      "reason": "custody_protocol.RevocationError: cannot commit an inactive capsule",
+      "type": null,
+      "adjudication": "HISTORICAL_ORIGINAL_RED_UNCHANGED"
+    },
+    {
+      "court": "inherited_131",
+      "case": "test_A_capsule_unblind_permission[mod2-A03_illegal_purpose_unblind]",
+      "family": null,
+      "reason": "custody_protocol.PurposeViolationError: unauthorized purpose: LIVE_MODEL_REQUEST",
+      "type": null,
+      "adjudication": "HISTORICAL_ORIGINAL_RED_UNCHANGED"
+    },
+    {
+      "court": "inherited_131",
+      "case": "test_B01_valid_countersignatures_bind_content",
+      "family": null,
+      "reason": "custody_protocol.SignatureError: full signed capsule envelope identity missing or mismatched",
+      "type": null,
+      "adjudication": "HISTORICAL_ORIGINAL_RED_UNCHANGED"
+    },
+    {
+      "court": "inherited_131",
+      "case": "test_Z03_declared_mock_roster_uses_public_derived_credentials",
+      "family": null,
+      "reason": "custody_protocol.SignatureError: full signed capsule envelope identity missing or mismatched",
+      "type": null,
+      "adjudication": "HISTORICAL_ORIGINAL_RED_UNCHANGED"
+    },
+    {
+      "court": "inherited_131",
+      "case": "test_h13_ledger_rollback_detected",
+      "family": null,
+      "reason": "custody_protocol.LedgerRollbackError: append-only: rollback requires a separate compensating event",
+      "type": null,
+      "adjudication": "HISTORICAL_ORIGINAL_RED_UNCHANGED"
+    },
+    {
+      "court": "inherited_131",
+      "case": "test_h15_missing_signature_in_capsule_refused",
+      "family": null,
+      "reason": "custody_protocol.SignatureError: real capsule argument required for fixture binding",
+      "type": null,
+      "adjudication": "HISTORICAL_ORIGINAL_RED_UNCHANGED"
+    },
+    {
+      "court": "inherited_131",
+      "case": "test_positive_full_role_separated_lifecycle",
+      "family": null,
+      "reason": "custody_protocol.SignatureError: signature does not bind capsule content",
+      "type": null,
+      "adjudication": "HISTORICAL_ORIGINAL_RED_UNCHANGED"
+    },
+    {
+      "court": "inherited_131",
+      "case": "test_signature_binds_content_and_rejects_alien_capsule",
+      "family": null,
+      "reason": "custody_protocol.SignatureError: full signed capsule envelope identity missing or mismatched",
+      "type": null,
+      "adjudication": "HISTORICAL_ORIGINAL_RED_UNCHANGED"
+    },
+    {
+      "court": "oc5e_native_hostiles",
+      "case": "test_alias_holes_are_observed_not_theorised",
+      "family": null,
+      "reason": "AssertionError: unexpectedly flagged: {'fullwidth-context': ['duplicate_normalized_field:\uff43ontext'], 'cgj-context': ['duplicate_normalized_field:con\u034ftext'], 'accented-context': ['duplicate_normalized_f",
+      "type": null,
+      "adjudication": "BY_DESIGN_HOLE_WITNESS",
+      "detail": "A1 hole witness: asserted the alias holes existed"
+    },
+    {
+      "court": "oc5e_native_hostiles",
+      "case": "test_capsule_identity_field_type_hole_is_observed",
+      "family": null,
+      "reason": "TypeError: capsule version must be an integer",
+      "type": null,
+      "adjudication": "BY_DESIGN_HOLE_WITNESS",
+      "detail": "A6 hole witness: asserted malformed capsules commit"
+    },
+    {
+      "court": "oc5e_native_hostiles",
+      "case": "test_confusable_holes_are_observed_only_for_nfkc_invisible_scripts",
+      "family": null,
+      "reason": "assert False\n +  where False = all(<generator object test_confusable_holes_are_observed_only_for_nfkc_invisible_scripts.<locals>.<genexpr> at 0x109c07220>)",
+      "type": null,
+      "adjudication": "BY_DESIGN_HOLE_WITNESS",
+      "detail": "A2 hole witness: asserted the confusable holes existed"
+    },
+    {
+      "court": "oc5e_native_hostiles",
+      "case": "test_confusable_leak_token_substitution_must_be_flagged[greek-o]",
+      "family": "A2",
+      "reason": "Failed: DID NOT RAISE LeakageError",
+      "type": null,
+      "adjudication": "MALFORMED_OC5E_INPUT",
+      "detail": "OC5E input 'l\\u03bfwful_answers' folds to 'lowful_answers': U+03BF is a homoglyph for 'o' and was placed where 'a' belongs, so it does not spell the denied token 'lawful_answers' even under a perfect fold."
+    },
+    {
+      "court": "oc5e_native_hostiles",
+      "case": "test_confusable_leak_token_substitution_must_be_flagged[mixed-cyrillic]",
+      "family": "A2",
+      "reason": "Failed: DID NOT RAISE LeakageError",
+      "type": null,
+      "adjudication": "MALFORMED_OC5E_INPUT",
+      "detail": "OC5E input '\\u0430ns\\u0435er\\u0455_key' folds to 'anseers_key': the 'w' is absent and U+0435 (homoglyph for 'e') sits where 'w' belongs, so it does not spell the denied token 'answer_key'."
+    },
+    {
+      "court": "oc5e_native_hostiles",
+      "case": "test_imported_module_is_the_pinned_oc4_blob",
+      "family": null,
+      "reason": "AssertionError: imported module is not the pinned OC4 blob: 4c185c18dbee57603038e97886da8fc4aa834082\nassert '4c185c18dbee...a8fc4aa834082' == 'af2b7e943018...cd67704624bec'\n  \n  - af2b7e943018077cb368",
+      "type": null,
+      "adjudication": "BY_DESIGN_PROVENANCE_PIN"
+    },
+    {
+      "court": "oc5e_native_hostiles",
+      "case": "test_malformed_signature_holes_are_observed_as_attributeerror",
+      "family": null,
+      "reason": "custody_protocol.SignatureError: malformed primary signature: typed MockSignature required",
+      "type": null,
+      "adjudication": "BY_DESIGN_HOLE_WITNESS",
+      "detail": "A3 hole witness: asserted raw AttributeError"
+    },
+    {
+      "court": "oc5e_native_hostiles",
+      "case": "test_non_enum_role_string_hole_is_observed_as_attributeerror",
+      "family": "A4",
+      "reason": "custody_protocol.SignatureError: malformed primary signature role: typed Role enum required",
+      "type": null,
+      "adjudication": "BY_DESIGN_HOLE_WITNESS",
+      "detail": "A4 hole witness: asserted raw AttributeError"
+    },
+    {
+      "court": "oc5e_native_hostiles",
+      "case": "test_unblind_unhashable_holder_hole_is_observed_as_typeerror[dict]",
+      "family": "A5",
+      "reason": "custody_protocol.IdentityMismatchError: malformed fixture holder identity",
+      "type": null,
+      "adjudication": "BY_DESIGN_HOLE_WITNESS",
+      "detail": "A5 hole witness: asserted raw TypeError"
+    },
+    {
+      "court": "oc5e_native_hostiles",
+      "case": "test_unblind_unhashable_holder_hole_is_observed_as_typeerror[list]",
+      "family": "A5",
+      "reason": "custody_protocol.IdentityMismatchError: malformed fixture holder identity",
+      "type": null,
+      "adjudication": "BY_DESIGN_HOLE_WITNESS",
+      "detail": "A5 hole witness: asserted raw TypeError"
+    },
+    {
+      "court": "oc5e_native_hostiles",
+      "case": "test_unblind_unhashable_holder_hole_is_observed_as_typeerror[set]",
+      "family": "A5",
+      "reason": "custody_protocol.IdentityMismatchError: malformed fixture holder identity",
+      "type": null,
+      "adjudication": "BY_DESIGN_HOLE_WITNESS",
+      "detail": "A5 hole witness: asserted raw TypeError"
+    }
+  ],
+  "totals": {
+    "demonstrated_reds_closed": 47,
+    "oc5_predicted_closed": 7,
+    "oc5e_new_closed": 47,
+    "malformed_oc5e_inputs": 2,
+    "historical_original_reds": 10,
+    "by_design_flips": 9
+  }
+}

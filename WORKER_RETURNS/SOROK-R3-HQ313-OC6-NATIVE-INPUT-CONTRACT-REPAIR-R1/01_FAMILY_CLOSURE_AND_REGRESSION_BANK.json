@@ -1,0 +1,260 @@
+{
+  "contract": "OC6_REPAIR_CANDIDATE@1",
+  "verdict": "SOURCEFREE_TEST_ONLY_INPUT_CONTRACT_REPAIR__349_COURT_UNCHANGED__54_OF_56_DEMONSTRATED_REDS_CLOSED__2_OC5E_INPUTS_MALFORMED__TEN_HISTORICAL_REDS_UNCHANGED__NO_ADOPTION",
+  "source": {
+    "imported_module": "/tmp/oc6-runtime/source/custody_protocol.py",
+    "pinned_candidate_commit": "0caaec590f6a8bf6744f22dc9c948c5fe233bc94",
+    "pinned_dir_edited": false,
+    "pinned_dir_note": "WORKER_RETURNS/SOROK-R3-HQ310-OC4-CUSTODY-TEN-RED-REPAIR-R1/ is read-only reference provenance; the repair was applied to the staged copy only",
+    "pinned_git_blob_sha1": "af2b7e943018077cb36808b5af1cd67704624bec",
+    "pinned_sha256": "447e5bb738fc49c946a39ca438126e9c2a69d93025600f053662e56f846f9e3a",
+    "repaired_bytes": 36648,
+    "repaired_git_blob_sha1": "4c185c18dbee57603038e97886da8fc4aa834082",
+    "repaired_lines": 860,
+    "repaired_sha256": "ca85b844994e5ce6fd9e7a21c0f210d08b6d5e7519c63ac09d7dd8a9516fd90b"
+  },
+  "family_closure": [
+    {
+      "family": "A1_normalization_equivalent_allowed_field_alias",
+      "before": 10,
+      "after": 0,
+      "closed": true,
+      "entrypoint": "detect_leakage / assert_no_leakage",
+      "repair": "per-dict normalized duplicate-alias gate (_normalized_duplicate_aliases + _well_formed_allowed) run at every dict level; every non-canonical raw spelling of an allowed normalized key is refused. Duplicates are reported only when otherwise well formed, so a malformed alias is still reported as exactly its value type error.",
+      "controls": [
+        "test_a1_normalization_equivalent_duplicate_alias_ref (10)",
+        "test_a1_single_and_invalid_controls_behave_exactly (10)",
+        "test_a1_duplicate_alias_value_is_never_a_second_admitted_value",
+        "test_a1_multiplicity_is_not_discarded_for_the_canonical_pair"
+      ]
+    },
+    {
+      "family": "A2_nfkc_invisible_confusable_leak_token",
+      "before": 6,
+      "after": 2,
+      "closed": 4,
+      "residual": "2 OC5E inputs are malformed spellings and cannot be flagged by any bounded fold without fabricating a match; correctly spelled author controls demonstrate the gate",
+      "entrypoint": "detect_leakage / assert_no_leakage",
+      "repair": "bounded 30-entry NFKC-invisible homoglyph fold (_CONFUSABLE_FOLD) applied to scalar values only; the field allowlist is never folded so an unrecognised key stays fail-closed. No claim of universal semantic non-leakage.",
+      "controls": [
+        "test_a2_confusable_leak_token_spell_ref (7, correctly spelled)",
+        "test_a2_nfkc_visible_and_plain_spellings_still_flagged (7)",
+        "test_a2_legitimate_multilingual_and_confusable_non_tokens_admitted (7)",
+        "test_a2_confusable_fold_is_bounded_and_enumerated",
+        "test_a2_fold_never_feeds_the_field_allowlist",
+        "test_a2_no_claim_of_universal_semantic_non_leakage"
+      ]
+    },
+    {
+      "family": "A3_malformed_signature_object_untyped",
+      "before": 18,
+      "after": 0,
+      "closed": true,
+      "entrypoint": "require_second_signature",
+      "repair": "isinstance(sig, MockSignature) guards for both positions BEFORE any attribute dereference; typed SignatureError",
+      "controls": [
+        "test_a3_malformed_signature_object_is_typed (20)",
+        "test_a3_malformed_object_never_raises_attributeerror (9)",
+        "test_a3_none_is_still_the_only_typed_none_case"
+      ]
+    },
+    {
+      "family": "A4_non_enum_role_string_untyped",
+      "before": 1,
+      "after": 0,
+      "closed": true,
+      "entrypoint": "require_second_signature / MockSigner.__init__",
+      "repair": "isinstance(sig.role, Role) checked before re-derivation; MockSigner.__init__ rejects a non-Role role with TypeError, which the existing MockSigner.verify except-clause already converts to a fail-closed False",
+      "controls": [
+        "test_a4_non_enum_role_is_typed_refusal (12)",
+        "test_a4_non_enum_role_never_raises_attributeerror",
+        "test_a4_mock_signer_rejects_non_enum_role_typed",
+        "test_a4_mock_verify_still_fails_closed_on_a_non_enum_role"
+      ]
+    },
+    {
+      "family": "A5_unblind_unhashable_holder_untyped",
+      "before": 3,
+      "after": 0,
+      "closed": true,
+      "entrypoint": "EscrowState.unblind",
+      "repair": "isinstance(holder_person_id, str) and non-blank check BEFORE the holder_roles dict access; typed IdentityMismatchError",
+      "controls": [
+        "test_a5_malformed_holder_identity_is_typed (11)",
+        "test_a5_unhashable_holder_never_raises_typeerror (3)",
+        "test_a5_authorized_holder_still_works_and_receipt_is_a_deepcopy_alias",
+        "test_a5_holder_grant_authorization_is_still_typed"
+      ]
+    },
+    {
+      "family": "A6_capsule_identity_field_types_unvalidated",
+      "before": 11,
+      "after": 0,
+      "closed": true,
+      "entrypoint": "capsule_envelope_commitment / EscrowState.commit / semantic_fingerprint",
+      "repair": "new validate_capsule_fields enforces 14 nonempty-string identity/digest fields, a positive-int version, a finite nonnegative freeze_timestamp and boolean lifecycle flags, BEFORE any commitment or any state change",
+      "controls": [
+        "test_a6_identity_and_digest_fields_require_nonempty_strings (104)",
+        "test_a6_identity_and_digest_fields_accept_valid_strings (13)",
+        "test_a6_version_requires_a_positive_integer (7)",
+        "test_a6_version_zero_and_negative_are_refused",
+        "test_a6_freeze_timestamp_requires_a_finite_nonnegative_number (5)",
+        "test_a6_freeze_timestamp_accepts_a_valid_number",
+        "test_a6_lifecycle_flags_require_booleans (12)",
+        "test_a6_invalid_declaration_leaves_no_state_and_no_ledger_entry",
+        "test_a6_mixed_type_digest_dict_is_refused_before_any_commitment",
+        "test_a6_semantic_fingerprint_requires_string_keys",
+        "test_a6_all_eighteen_capsule_fields_still_bind_the_envelope",
+        "test_a6_valid_declaration_still_commits_and_unblinds"
+      ]
+    }
+  ],
+  "oc5_predicted_closed": {
+    "count": 7,
+    "court": "oc5_prior_predictions",
+    "before": "16 PASS / 7 RED",
+    "after": "23 PASS / 0 RED",
+    "items": [
+      "fullwidth '\uff43ontext' alias packet",
+      "U+034F 'con\\u034ftext' alias packet",
+      "accented 'CONT\u00c9XT' alias packet",
+      "U+034F 'n\\u034fote' alias packet",
+      "malformed primary signature 'object()' -> typed SignatureError",
+      "malformed primary signature '12' -> typed SignatureError",
+      "malformed primary signature dict -> typed SignatureError"
+    ]
+  },
+  "malformed_oc5e_inputs": [
+    {
+      "case": "test_confusable_leak_token_substitution_must_be_flagged[greek-o]",
+      "detail": "OC5E input 'l\\u03bfwful_answers' folds to 'lowful_answers': U+03BF is a homoglyph for 'o' and was placed where 'a' belongs, so it does not spell the denied token 'lawful_answers' even under a perfect fold."
+    },
+    {
+      "case": "test_confusable_leak_token_substitution_must_be_flagged[mixed-cyrillic]",
+      "detail": "OC5E input '\\u0430ns\\u0435er\\u0455_key' folds to 'anseers_key': the 'w' is absent and U+0435 (homoglyph for 'e') sits where 'w' belongs, so it does not spell the denied token 'answer_key'."
+    }
+  ],
+  "ten_historical_original_reds_unchanged": {
+    "preserved": true,
+    "count": 10,
+    "cases": [
+      "test_A08_mismatched_holder_unblind",
+      "test_A_capsule_unblind_permission[mod0-A01_revoked_unblind]",
+      "test_A_capsule_unblind_permission[mod1-A02_expired_unblind]",
+      "test_A_capsule_unblind_permission[mod2-A03_illegal_purpose_unblind]",
+      "test_B01_valid_countersignatures_bind_content",
+      "test_Z03_declared_mock_roster_uses_public_derived_credentials",
+      "test_h13_ledger_rollback_detected",
+      "test_h15_missing_signature_in_capsule_refused",
+      "test_positive_full_role_separated_lifecycle",
+      "test_signature_binds_content_and_rejects_alien_capsule"
+    ],
+    "literal_reasons": [
+      "custody_protocol.SignatureError: full signed capsule envelope identity missing or mismatched",
+      "custody_protocol.RevocationError: cannot commit an inactive capsule",
+      "custody_protocol.RevocationError: cannot commit an inactive capsule",
+      "custody_protocol.PurposeViolationError: unauthorized purpose: LIVE_MODEL_REQUEST",
+      "custody_protocol.SignatureError: full signed capsule envelope identity missing or mismatched",
+      "custody_protocol.SignatureError: full signed capsule envelope identity missing or mismatched",
+      "custody_protocol.LedgerRollbackError: append-only: rollback requires a separate compensating event",
+      "custody_protocol.SignatureError: real capsule argument required for fixture binding",
+      "custody_protocol.SignatureError: signature does not bind capsule content",
+      "custody_protocol.SignatureError: full signed capsule envelope identity missing or mismatched"
+    ],
+    "classes": [
+      "six_procedural_or_early_refusal",
+      "four_content_only_mock_signature"
+    ],
+    "no_edit_no_xfail_no_none_capsule_path": true
+  },
+  "by_design_flips": {
+    "count": 9,
+    "reason": "OC5E hole witnesses asserted that each defect was present; a correct repair necessarily invalidates them, so they flip PASS->RED by construction, not by regression",
+    "items": [
+      {
+        "case": "test_alias_holes_are_observed_not_theorised",
+        "classification": "A1 hole witness: asserted the alias holes existed"
+      },
+      {
+        "case": "test_capsule_identity_field_type_hole_is_observed",
+        "classification": "A6 hole witness: asserted malformed capsules commit"
+      },
+      {
+        "case": "test_confusable_holes_are_observed_only_for_nfkc_invisible_scripts",
+        "classification": "A2 hole witness: asserted the confusable holes existed"
+      },
+      {
+        "case": "test_imported_module_is_the_pinned_oc4_blob",
+        "classification": "provenance pin for the UNREPAIRED blob, necessarily superseded by the repaired source"
+      },
+      {
+        "case": "test_malformed_signature_holes_are_observed_as_attributeerror",
+        "classification": "A3 hole witness: asserted raw AttributeError"
+      },
+      {
+        "case": "test_non_enum_role_string_hole_is_observed_as_attributeerror",
+        "classification": "A4 hole witness: asserted raw AttributeError"
+      },
+      {
+        "case": "test_unblind_unhashable_holder_hole_is_observed_as_typeerror[dict]",
+        "classification": "A5 hole witness: asserted raw TypeError"
+      },
+      {
+        "case": "test_unblind_unhashable_holder_hole_is_observed_as_typeerror[list]",
+        "classification": "A5 hole witness: asserted raw TypeError"
+      },
+      {
+        "case": "test_unblind_unhashable_holder_hole_is_observed_as_typeerror[set]",
+        "classification": "A5 hole witness: asserted raw TypeError"
+      }
+    ]
+  },
+  "preserved_contracts": [
+    "full-capsule commitment binding all 18 original fields (re-proved by author control)",
+    "append-only escrow: rollback_ledger always raises LedgerRollbackError",
+    "inactive capsule refused at commit before any state change",
+    "purpose discipline: ALLOWED_PURPOSES enforced",
+    "typed three-arm blind pairing",
+    "EscrowState.commit typed refusals for non-capsule inputs",
+    "the ten historical original literal REDs unchanged"
+  ],
+  "totals": {
+    "demonstrated_reds_closed": 47,
+    "oc5_predicted_closed": 7,
+    "oc5e_new_closed": 47,
+    "malformed_oc5e_inputs": 2,
+    "historical_original_reds": 10,
+    "by_design_flips": 9
+  },
+  "grand_total": {
+    "cases": 622,
+    "failed": 21,
+    "passed": 601
+  },
+  "holds": {
+    "append_only_escrow_preserved": true,
+    "author_source_repaired_in_owned_return_only": true,
+    "cross_process_c07": "NOT_REACHED absent API",
+    "distinct_independent_oc7_required": true,
+    "existing_typed_refusals_preserved": true,
+    "full_capsule_commitment_preserved": true,
+    "junit_and_stdout": true,
+    "native_execution": true,
+    "no_adoption": true,
+    "no_claim_of_universal_semantic_non_leakage": true,
+    "no_durable_external_journal": true,
+    "no_edit_xfail_or_greenwashing_of_historical_reds": true,
+    "no_external_model_calls": true,
+    "no_independent_semantic_oracle": true,
+    "no_n12": true,
+    "no_original_survey_data": true,
+    "no_product_premain_current_edit": true,
+    "no_protected_holdout": true,
+    "no_real_signer_institution": true,
+    "no_v3": true,
+    "real_python_pytest": true,
+    "ten_historical_reds_unchanged": true,
+    "test_only_scope": true
+  },
+  "next_step": "distinct independent OC7 I2 review of this candidate"
+}
