@@ -1,0 +1,40 @@
+# SOROK HQ316 M06 — Fresh independent M05 native owner-state ancestry and causal review
+
+**Repository:** maidiu/rawlsing (private).
+**Role:** fresh independent I2 source-free scientific reviewer, NOT M05 author, M04 earlier reviewer, M01/M02/M03 author, HQ or production rule issuer.
+**Branch:** agent/reviewer-sorok-r3-hq316-m06-m05-owner-ancestry-independent-r1
+**HQ316 parent:** 8af50c539bd249d6aab76bea7cf81f61579906fa
+**Exact sealed startup:** publication commit SHA issued by HQ after this file is created; verify direct GitHub remote branch HEAD and parent before work.
+**Writes exclusively:** WORKER_RETURNS/SOROK-R3-HQ316-M06-M05-OWNER-ANCESTRY-INDEPENDENT-R1/
+**Verdict ceiling:** REVIEW_PASS_SOURCEFREE_FINITE_NATIVE_ANCESTRY / REVIEW_REVISE / REVIEW_HOLD; NO_ADOPTION.
+
+## One editor, one accountable independent scientist, correct economy
+
+**MODEL:** GPT-6.1 High. **EDITOR:** Codex in one new authorized LOCAL_DOMINANT sparse worktree with authenticated Git objects and real Python/pytest/subprocess. **Reasoning:** advanced independent native-state/causal-provenance court; use economical mechanical source stage, but high I2 for conflicting ancestry/scientific interpretation. **Independence nonnegotiable:** M05 author explicitly disclosed that its SAME prior chat authored M04 I2. Do NOT use either continuing chat for M06; fresh session, fresh independent reviewer, distinct from all M01–M05 implementation/review. One agent handles entire scientific review, genuine execution, evidence and remote push, no helpers/editor/model switching. Before claim of warm environment, validate 00D marker, actual preimages/import paths and permissions. Actual spending, quota remaining and cash UNKNOWN absent live observed telemetry; no paid overage inference. On staging/import permission failure issue precise bounded HOLD; do not fabricate execution.
+
+Read in full Sorok 00_READ_ME_FIRST, 00B, 00C §§3A/3B/5A, 00D and HQ316 intake at exact parent. Native accepted CAN008_R2 blob b80dd6925066510ecbbfec7b427bf9f688475663, ADP016 c6619a286e115d060ab4830889e7fc23762167a5, ADP017 eece4f3f2f3f9288ab9bbc645dc81e20a99e1280, immutable EMPTY registry guard e0528d65215cb431196570c38bac4eae94217a1b; sourcefree permits no new issuer.
+
+## Pinned sources and tests
+
+- M05 author return at exact SHA **8b7f3ed2ad095eee060fd040dcab88e59d4ca255**, sealed startup a03927a05631f5706059a09f7a8575d63399933c; read its full 00_RETURN, candidate patch, 48 author controls, portable JUnit, 03_AUTHOR_FREEZE, source provenance 08 audit and 15/16 completion. Exact **effective repaired `cell.py` Git blob 7655867608c21eb7e40d6f51434491db380b7e4e**; **`claim_provenance.py` Git blob c1e126fd2080ef78e5e77ed96861450a75355276**. Verify native staging and actual module.__file__.
+- M04 independent `3a993abcc0a9f6bd3a1bb003d298d293be199ea6`, freeze `3b529996ddd05c3c84225d2054428ff943091aef`, original 51 independent adversaries (41 PASS/10 RED before M05) and original prior 587 PASS.
+- M03 `e1f7a74e51201b9614bcc578348b4e9db7be7bd3`, M02 `0216d9036a87e2f60f42fd5b2870556027808419`, M01 `02187a14e75ff30dd953d3c7185d689b80e62304`, original M01 prospective causal prereg `845edf5d7c9c48b192b631dacf295afa6f587137`, CAN3 independent `ef12349defe22a50e053a7a8080a67ab45673417`, CAN2 author `ee6a48b40247b113c614fe2099d4c443e8dd7bb7`.
+- The original historical CAN3 nine fail cases are a separate preserved court; DO NOT rewrite/xfail them or imply full historical 585 rerun.
+
+## First: execute literal immutable baseline, not reported totals
+
+Verify source and all frozen test identities, run actual M01/inherited413 + M02 independent100 + M03 author74 + M04 independent51 = **638 unchanged cases** against repaired M05 native source; author expectation **638/638 PASS**. Run exact M05 authored48 unchanged, author **48 PASS**. Thus **686/686 current literal main and author controls expected**, but DO NOT claim until actual Python/JUnit. Run nine historical CAN3 literal REDs as separate 9 FAIL preserved; do not manipulate original assertions. Freeze reviewer-origin NEW independent expectations BEFORE running new hostiles. Preserve causal 36-arm observation with exact actual native owner state, actor/event IDs and response stream, not merely asserted fixture labels.
+
+## Independent falsification — do not just replay original successes
+
+Investigate M05's **shadow replay reconstruction** of native ADP016/ADP017 state and commit identity against alternative coherent provenance. Exact test purposes:
+1. **Wrong-cell valid full-owner splice**: keep original E1/journal/binding and provide another Cell's valid full NONE owner or altered memory+BELIEF owner. Does descent validate actual observed E1 state and materialized first-state witness, or only self-consistent current records?
+2. **Native terminal transition authority**: real legal ADD → SUPERSEDE_EXACT_RECORD → WITHDRAW → re-ADD sequences, multiple claims, same transition ids/duplicate effects, time-ordered applicable terminal transition; try hybrid stale active/permission with latest transition retained, reordered/truncated native history, cross-claim terminal lookups and after-effective-time as-of cuts. Positive revoked/inaccessible and lawful re-add must still work; never freeze owner after E1.
+3. **False but self-consistent ancestry**: recompute apparent effect/transition IDs, hashes and snapshot permissions with a forged predecessor but no native journal predecessor; ensure exact actual native re-execution and E1-bound rule/event/actor/source receipts decide, not just recomputed hashes. Test overwritten/missing/rehashed E1 journal, omitted or borrowed native formation witness, changed accessibility input among the three recoverable categories, alternate memory IDs, repeated transitions that converge on identical output state.
+4. **Restoration and atomic rollback**: public restore, direct read, transactional later E2 admission/read/emission and exception stages. Check invalid replays refuse BEFORE productive response, no extra read or journal append, exact pre-call live state unchanged; valid whole-contract replay permitted, including legitimate NONE arm.
+5. **Rule source and canonical jurisdiction**: corrupt helper/source-body hash, falsely pin old source, stale claimant rule version, actor/world/time/provenance mismatch, K3 inaccessible origin and K5 private BELIEF/public standing membrane. Production positive authority registry stays EMPTY byte-identical.
+6. **Scientific alternative DAGs**: demonstrate the bounded prior memory/epistemic *parallel* streams and separate CAN3 history comparator persist. Test what M05 truly proves: finite provenance integrity for a constructed local Cell, not an independently protected issuer, durable multi-process store, serial ADP016→ADP017 mediation, discovered psychology or real actor modeling. If a shadow reconstruction relies on undocumented finite limits or approximation, bound them truthfully.
+
+Preserve genuine future response-time cuts, authentic native withdrawal/re-add and no-stance selected canonical claim. All NEW tests must have independently frozen expected results and honest observed PASS/RED, with negative controls and no model answer fabrication. If unable to materialize pinned sources, return exact import/custody HOLD and report any independently executed subcourt; do not silently substitute mere excerpt.
+
+**Deliverables:** all original 686 actual JUnit/stdout, new hostiles/full case IDs plus prereg freeze and receipts, nine old RED separate, native Git blob/source SHA, live Python imports, 36 factorial paired counterfactuals and actual owner-state provenance checks, independent scientific verdict with limits and owner next actions, sanitized 00D passport, owned-only changed path audit, pushed branch and direct final remote SHA verification. Distinct reviewer only; no editing M05/canonical/PRE-MAIN/CURRENT/production code or issuing ADP/CAN rule. No source survey/LLM call, real subject, real model permission, psychological validation, V3/N12 or adopted owner admission.
