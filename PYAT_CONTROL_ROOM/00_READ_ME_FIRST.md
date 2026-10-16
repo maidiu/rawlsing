@@ -1,5 +1,10 @@
 # NEW PYAT HQ: INVALID UNTIL FULL PERSONA-FIRST + INHERITED-METHOD ACCESSION
 
+## Standing HQ command check — whole machine before individual returns (16 October 2026)
+
+At first HQ orientation and **every material return intake**, read/apply [the mandatory continuous HQ-command and rabochii delegation law](HQ_CONTINUOUS_COMMAND_AND_RABOCHII_DELEGATION_LAW_20261016_R1.md). Maintain the actual 35-wave source→empirical/F6/EE12→selected historical world→Sorok persona-consumer critical path, verified owner/worker portfolio, alternatives and terminal quality effects. **HQ personally owns this synthesis and the scoped decisions; rabochiis do parallel bounded source/code recovery, implementation, original-science investigations and independent criticism.** Passing local suites and issuing more prompts are not HQ completion. An adopted local sourcefree method remains separate from an independently tested joined pipe, original U/E_pre and all35 N11/N12, or actual person/V3. Read the new law with the incoming HQ gate and 13 fresh-grok before any broad new program; no new source/semantic/actor permissions implied.
+
+
 ## Mandatory new worker dispensation — 14 October 2026
 
 Read [00D warm execution passports and money-first routing](00D_WARM_EXECUTION_PASSPORT_AND_MONEY_FIRST_AGENT_DISPENSATION_R1.md) before new/resumed Pyat dispatch. Verify live environment/session epoch/import provenance, select cheapest qualified warm model/host, use a lawful shared sparse worktree or smallest Browser sourcefree staging, and return a sanitized environment passport. Same chat or usage window does not establish persistent Python; missing clone does not establish absence of pytest. No scientific adoption, original source, model/actor, N12 or accession grant.
