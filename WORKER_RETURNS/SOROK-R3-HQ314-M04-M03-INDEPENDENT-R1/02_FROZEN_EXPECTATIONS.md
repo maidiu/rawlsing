@@ -1,0 +1,13 @@
+# M04 preregistration — independent of candidate outcomes
+
+Freeze the exact review/test_falsifiers.py bytes in Git before execution. No new falsifier has been executed or collected. Only baseline inherited tests have run. Source inspection is used to design hostile cases, not outcome peeking.
+
+Predictions: all tests pass under a conforming finite claim-provenance implementation. Unknown/foreign outer selectors refuse; same canonical claim without applied stance remains lawful NONE. A selected canonical claim's native stance cannot disappear by replacing just owner state with a different cell's NONE state while retaining its actual BELIEF first-event commitment. Native supersession/withdrawal cannot be undone by restoring active snapshot/permission/stance while retaining the later exact transition. A coherently rehashed effect and transition must still demonstrate prestate ancestry, rather than just self-consistent digest equality. Refusal can occur on restore or consumption; either is acceptable, but refusal must leave the attempted operation atomic.
+
+Invalid/naive/equal-to-source/earlier/outside-rule cuts refuse. Aware equivalent times and genuinely later response events inside the declared 1998–2000 rule scope remain valid; unrelated future native claims do not poison the selected existing NONE claim. These positive controls intentionally do not claim a new future claim can replace the cell's fixed first-event claim, or that this finite rule supplies a general future belief-revision rule.
+
+Rehashed source-receipt substitutions refuse. Later failure points restore registry, owner, history, journal, reads and selector binding; retry commits once. Native NONE/BELIEF/INACCESSIBLE/UNKNOWN distinguish AMPLIFY/REROUTE/BLOCK/refusal with memory DEFLECT. Valid complete checkpoint replay is permitted; no anti-rollback monotonic counter is assumed. Partial rollback with retained subsequent transition is distinct from restoring a complete earlier world snapshot.
+
+Duplicate event conflict and duplicate transition must not manufacture authority. Rule/version/authority substitution refuses. NO_CHANGE preserves the exact state. Existing M01/M02 factorial and CAN3 comparator are separately reproduced unchanged. Preserve all failed frozen assertions literally; any mistaken oracle/setup receives an explicit adjudication, never an edit to this frozen file.
+
+Scientific ceiling: sourcefree constructed parallel conditioning, not serial ADP016→ADP017 mediation, human calibration, accepted operative owner, or production authority. An implementation counterexample is REVIEW_REVISE; a genuine collision between accepted laws requires I3 escalation, not a local semantic patch.
