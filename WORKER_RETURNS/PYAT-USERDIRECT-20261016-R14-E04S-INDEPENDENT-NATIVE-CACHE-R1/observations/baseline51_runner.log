@@ -1,0 +1,8 @@
+baseline51 EXIT 1
+    with pytest.raises(ValueError):s.possibilities(ss)
+E   Failed: DID NOT RAISE <class 'ValueError'>
+- generated xml file: /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r14-e04s-court/WORKER_RETURNS/PYAT-USERDIRECT-20261016-R14-E04S-INDEPENDENT-NATIVE-CACHE-R1/observations/baseline51.xml -
+=========================== short test summary info ============================
+FAILED tests/test_full_native_independent.py::test_cache_payload_corruption_cannot_reach_both_consumers - AssertionError: Corrupted cache delivers999 support through real client with original evidence/content hash
+FAILED tests/test_full_native_independent.py::test_cached_foreign_release_cannot_bypass_snapshot_binding - Failed: DID NOT RAISE <class 'ValueError'>
+=================== 2 failed, 49 passed in 83.61s (0:01:23) ====================

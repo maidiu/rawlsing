@@ -1,0 +1,12 @@
+
+Traceback (most recent call last):
+  File "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r14-e04s-court/WORKER_RETURNS/PYAT-USERDIRECT-20261016-R14-E04S-INDEPENDENT-NATIVE-CACHE-R1/repro/pytest_entry.py", line 14, in <module>
+    file=sys.argv[2];sys.argv=sys.argv[2:];runpy.run_path(file,run_name='__main__');code=0
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 291, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r14-e04s-court/WORKER_RETURNS/PYAT-USERDIRECT-20261016-R14-E04S-INDEPENDENT-NATIVE-CACHE-R1/repro/scientific_probe.py", line 30, in <module>
+    assert denial['state']=='RESOLUTION_DENIED_OR_NOT_APPLICABLE'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
