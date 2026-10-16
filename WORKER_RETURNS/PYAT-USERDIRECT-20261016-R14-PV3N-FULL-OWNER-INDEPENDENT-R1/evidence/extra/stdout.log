@@ -1,0 +1,16 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.11.3, pytest-9.1.1, pluggy-1.6.0 -- /usr/local/bin/python3
+rootdir: <RETURN>
+collecting ... collected 8 items
+
+../../../repro/test_extra.py::test_actual_original_C11_ingestion_both_namespaces PASSED [ 12%]
+../../../repro/test_extra.py::test_original_abrupt_receipt_cold_attacks[none] PASSED [ 25%]
+../../../repro/test_extra.py::test_original_abrupt_receipt_cold_attacks[journal_result_refs] PASSED [ 37%]
+../../../repro/test_extra.py::test_original_abrupt_receipt_cold_attacks[journal_side_effect] PASSED [ 50%]
+../../../repro/test_extra.py::test_original_abrupt_receipt_cold_attacks[checkpoint] PASSED [ 62%]
+../../../repro/test_extra.py::test_original_abrupt_receipt_cold_attacks[expected] PASSED [ 75%]
+../../../repro/test_extra.py::test_original_abrupt_receipt_cold_attacks[edition] PASSED [ 87%]
+../../../repro/test_extra.py::test_physical_missing_pinned_source_blocks_cold_before_import PASSED [100%]
+
+- generated xml file: <RETURN>/evidence/extra/junit.xml -
+============================== 8 passed in 14.72s ==============================

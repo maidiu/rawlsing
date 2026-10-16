@@ -1,0 +1,119 @@
+{
+  "source_reconstruction": [
+    {
+      "namespace": "PV2-ADULT-A",
+      "C11_release_ref": {
+        "kind": "C11LogicalRelease",
+        "object_id": "REL-m01",
+        "content_hash": "8b035f61971db45a0ae4e0aeee53bdda460fc9ab31a1c123ef6080201379329a"
+      },
+      "source_artifact_ref": {
+        "kind": "SOURCE_ARTIFACT",
+        "object_id": "SOURCE-m01",
+        "content_hash": "a585bd130c1a935cdef7723095483ccf228da633f58b9110c8ca21a189595b54"
+      },
+      "actual_native_responses": {
+        "X": {
+          "R3": "1",
+          "R1": "1",
+          "R2": "0"
+        },
+        "Y": {
+          "R2": "0",
+          "R1": "1",
+          "R3": "1"
+        }
+      },
+      "eligible": {
+        "X": [
+          "R1",
+          "R2",
+          "R3"
+        ],
+        "Y": [
+          "R1",
+          "R2"
+        ]
+      },
+      "joint_exact_same_people": [
+        "R1",
+        "R2"
+      ],
+      "joint_counts": [
+        {
+          "cell": [
+            "0",
+            "0"
+          ],
+          "n": 1
+        },
+        {
+          "cell": [
+            "1",
+            "1"
+          ],
+          "n": 1
+        }
+      ]
+    },
+    {
+      "namespace": "PV2-ADULT-B",
+      "C11_release_ref": {
+        "kind": "C11LogicalRelease",
+        "object_id": "REL-m01",
+        "content_hash": "96ef6b76d0dc7f518c709cd69cc47361138be7ac462f0505a5c94e432aeb8a7f"
+      },
+      "source_artifact_ref": {
+        "kind": "SOURCE_ARTIFACT",
+        "object_id": "SOURCE-m01",
+        "content_hash": "a585bd130c1a935cdef7723095483ccf228da633f58b9110c8ca21a189595b54"
+      },
+      "actual_native_responses": {
+        "X": {
+          "R2": "0",
+          "R1": "1",
+          "R3": "1"
+        },
+        "Y": {
+          "R3": "1",
+          "R2": "0",
+          "R1": "1"
+        }
+      },
+      "eligible": {
+        "X": [
+          "R1",
+          "R2",
+          "R3"
+        ],
+        "Y": [
+          "R1",
+          "R2"
+        ]
+      },
+      "joint_exact_same_people": [
+        "R1",
+        "R2"
+      ],
+      "joint_counts": [
+        {
+          "cell": [
+            "0",
+            "0"
+          ],
+          "n": 1
+        },
+        {
+          "cell": [
+            "1",
+            "1"
+          ],
+          "n": 1
+        }
+      ]
+    }
+  ],
+  "actual_distinct_consumer_refs": 6,
+  "all6_actual_I03_fact_and_Field_Forge_returns_bound": true,
+  "lexical_gap": "Participant exact refs bind X/Y; semantic projection still labels them Q86B/Q86A."
+}

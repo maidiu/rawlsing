@@ -1,0 +1,20 @@
+{
+  "argv": [
+    "/usr/local/bin/python3",
+    "-m",
+    "pytest",
+    "rawlsing_next/tests/test_postastra_pv_v2k_independent.py",
+    "-vv",
+    "--tb=short",
+    "--assert=plain",
+    "--import-mode=importlib",
+    "-p",
+    "no:cacheprovider",
+    "--basetemp=<RETURN>/runtime/court/runtime_root/tmp/pv_21",
+    "--junitxml=<RETURN>/runtime/court/observations/pv_21.xml"
+  ],
+  "cwd": "<RETURN>/runtime/court/runtime_root",
+  "PYTHONPATH": "<RETURN>/runtime/court/repro:<RETURN>/runtime/court/runtime_root:<RETURN>/runtime/court/runtime_root/candidate/repro:<RETURN>/runtime/court/frozen_pv2i/repro",
+  "exit": 0,
+  "seconds": 10.45211410522461
+}

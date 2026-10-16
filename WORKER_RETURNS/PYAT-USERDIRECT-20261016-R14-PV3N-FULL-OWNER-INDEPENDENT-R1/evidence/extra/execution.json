@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "/usr/local/bin/python3",
+    "-m",
+    "pytest",
+    "<RETURN>/repro/test_extra.py",
+    "-vv",
+    "--tb=short",
+    "--import-mode=importlib",
+    "-p",
+    "no:cacheprovider",
+    "--basetemp=<RETURN>/runtime/extra_tmp",
+    "--junitxml=<RETURN>/evidence/extra/junit.xml"
+  ],
+  "exit": 0
+}

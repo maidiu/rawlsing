@@ -1,0 +1,24 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.11.3, pytest-9.1.1, pluggy-1.6.0 -- /usr/local/bin/python3
+rootdir: <RETURN>
+collecting ... collected 8 items
+
+../../../repro/test_extra.py::test_actual_original_C11_ingestion_both_namespaces PASSED [ 12%]
+../../../repro/test_extra.py::test_original_abrupt_receipt_cold_attacks[none] PASSED [ 25%]
+../../../repro/test_extra.py::test_original_abrupt_receipt_cold_attacks[journal_result_refs] PASSED [ 37%]
+../../../repro/test_extra.py::test_original_abrupt_receipt_cold_attacks[journal_side_effect] PASSED [ 50%]
+../../../repro/test_extra.py::test_original_abrupt_receipt_cold_attacks[checkpoint] FAILED [ 62%]
+../../../repro/test_extra.py::test_original_abrupt_receipt_cold_attacks[expected] PASSED [ 75%]
+../../../repro/test_extra.py::test_original_abrupt_receipt_cold_attacks[edition] PASSED [ 87%]
+../../../repro/test_extra.py::test_physical_missing_pinned_source_blocks_cold_before_import PASSED [100%]
+
+=================================== FAILURES ===================================
+____________ test_original_abrupt_receipt_cold_attacks[checkpoint] _____________
+../../../repro/test_extra.py:58: in test_original_abrupt_receipt_cold_attacks
+    d=json.loads((root/'attack_failure.json').read_text());assert d['durable_calls']==[0,0];receipt['actual_failure']=d
+                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   assert None == [0, 0]
+- generated xml file: <RETURN>/evidence/extra/junit.xml -
+=========================== short test summary info ============================
+FAILED ../../../repro/test_extra.py::test_original_abrupt_receipt_cold_attacks[checkpoint] - assert None == [0, 0]
+========================= 1 failed, 7 passed in 14.95s =========================

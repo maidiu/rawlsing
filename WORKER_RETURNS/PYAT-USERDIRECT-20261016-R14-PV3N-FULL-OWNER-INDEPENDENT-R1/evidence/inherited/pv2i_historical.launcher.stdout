@@ -1,0 +1,13 @@
+pv2i_historical EXIT 1
+FAILED ../frozen_pv2i/tests/test_independent.py::test_execution_refuses_self_rehashed_fixture_grant[ceiling-value2] - Failed: DID NOT RAISE ValueError
+FAILED ../frozen_pv2i/tests/test_independent.py::test_historical_register_cannot_restore_current_authorization - AssertionError: Old unrevoked snapshot reauthorizes after revocation; no independent current registry
+FAILED ../frozen_pv2i/tests/test_independent.py::test_current_consumer_rejects_payload_tamper_same_ref - AssertionError: Current read serves changed payload under unchanged consumer reference
+FAILED ../frozen_pv2i/tests/test_independent.py::test_current_read_does_not_alias_historical_report - AssertionError: Read result aliases original historical material
+FAILED ../frozen_pv2i/tests/test_independent.py::test_role_validation_fails_closed_on_incomplete_material[missing_material] - Failed: DID NOT RAISE ValueError
+FAILED ../frozen_pv2i/tests/test_independent.py::test_role_validation_fails_closed_on_incomplete_material[missing_roles] - Failed: DID NOT RAISE ValueError
+FAILED ../frozen_pv2i/tests/test_independent.py::test_role_validation_fails_closed_on_incomplete_material[missing_conditioner] - Failed: DID NOT RAISE ValueError
+FAILED ../frozen_pv2i/tests/test_independent.py::test_generic_native_labels_not_specialized_Q86 - AssertionError
+FAILED ../frozen_pv2i/tests/test_independent.py::test_coherent_household_relabel_cannot_reuse_respondent_fact - Failed: DID NOT RAISE ValueError
+FAILED ../frozen_pv2i/tests/test_independent.py::test_changed_actual_journal_result_reference_is_not_ignored - AssertionError: Changed result_refs in actual side-effect journal ignored by successful replay
+FAILED ../frozen_pv2i/tests/test_independent.py::test_fresh_process_current_read_refuses_self_issued_grant - AssertionError: Fresh process serves persisted history under requester-created production-ceiling grant
+======================== 22 failed, 26 passed in 3.63s =========================

@@ -1,0 +1,65 @@
+{
+  "first": {
+    "argv": [
+      "/usr/local/bin/python3",
+      "<RETURN>/runtime/court/repro/cold_child.py",
+      "<RETURN>/runtime/court/runtime_root/historical_final_cold",
+      "first",
+      "historical_first"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"mode\": \"first\",\n  \"ok\": true,\n  \"committed_register_root\": \"49f0f51866d3327aca2b7d8910517c0317a85c6b7fd3f011c9ffd6634c6218bf\",\n  \"source_inventory_root\": \"904f30758890a1a68e6f1ef943e01cd80434ebe6c261e16406a54e19a21ddb16\",\n  \"original_expected_work_keys\": 6,\n  \"distinct_legacy_v2_keys\": 3,\n  \"distinct_field_forge_consumers\": 6,\n  \"durable_executor_calls\": [\n    3,\n    3\n  ],\n  \"held_original_records\": 2,\n  \"expected_payload_sha256\": \"4d83bf57f8cd12c3492eb42f6d14094c53a6c33cc5e4178f1594ce6a469548f2\",\n  \"source_grade\": \"SOURCEFREE_TEST_ONLY_NOT_ISSUED\",\n  \"schema\": \"R10_PV2_ORIGINAL_SCOPE_REGISTER@1.0.0\"\n}\n",
+    "stderr": ""
+  },
+  "replay": {
+    "argv": [
+      "/usr/local/bin/python3",
+      "<RETURN>/runtime/court/repro/cold_child.py",
+      "<RETURN>/runtime/court/runtime_root/historical_final_cold",
+      "replay",
+      "historical_replay"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"mode\": \"replay\",\n  \"ok\": true,\n  \"committed_register_root\": \"49f0f51866d3327aca2b7d8910517c0317a85c6b7fd3f011c9ffd6634c6218bf\",\n  \"source_inventory_root\": \"904f30758890a1a68e6f1ef943e01cd80434ebe6c261e16406a54e19a21ddb16\",\n  \"original_expected_work_keys\": 6,\n  \"distinct_legacy_v2_keys\": 3,\n  \"distinct_field_forge_consumers\": 6,\n  \"durable_executor_calls\": [\n    0,\n    0\n  ],\n  \"held_original_records\": 2,\n  \"expected_payload_sha256\": \"4d83bf57f8cd12c3492eb42f6d14094c53a6c33cc5e4178f1594ce6a469548f2\",\n  \"source_grade\": \"SOURCEFREE_TEST_ONLY_NOT_ISSUED\",\n  \"schema\": \"R10_PV2_ORIGINAL_SCOPE_REGISTER@1.0.0\"\n}\n",
+    "stderr": ""
+  },
+  "distinct_pids": true,
+  "same_ledger_bytes": true,
+  "links_exact": true,
+  "held_exact": true,
+  "register_exact": true,
+  "no_new_durable_units": true,
+  "missing_source": {
+    "argv": [
+      "/usr/local/bin/python3",
+      "<RETURN>/runtime/court/repro/cold_child.py",
+      "<RETURN>/runtime/court/runtime_root/historical_final_cold",
+      "missing_source",
+      "historical_missing_source"
+    ],
+    "exit": 1,
+    "stdout": "",
+    "stderr": "Traceback (most recent call last):\n  File \"<RETURN>/runtime/court/repro/cold_child.py\", line 40, in <module>\n    exec(\n  File \"<RETURN>/runtime/court/repro/cold_child.py\", line 33, in <module>\n    try:\n         \n  File \"<frozen runpy>\", line 291, in run_path\n  File \"<frozen runpy>\", line 98, in _run_module_code\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"<RETURN>/runtime/court/runtime_root/candidate/repro/pv2_cold_process.py\", line 53, in <module>\n    fx = fixture.pv2_sourcefree_fixture(ROOT / 'ledger')\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<RETURN>/runtime/court/runtime_root/candidate/repro/pv2_sourcefree_fixture.py\", line 260, in pv2_sourcefree_fixture\n    inputs = [sourcefree_original_inputs(ns) for ns in NAMESPACES]\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<RETURN>/runtime/court/runtime_root/candidate/repro/pv2_sourcefree_fixture.py\", line 260, in <listcomp>\n    inputs = [sourcefree_original_inputs(ns) for ns in NAMESPACES]\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<RETURN>/runtime/court/runtime_root/candidate/repro/pv2_sourcefree_fixture.py\", line 72, in sourcefree_original_inputs\n    fx = physical_fixture()\n         ^^^^^^^^^^^^^^^^^^\n  File \"<RETURN>/runtime/court/repro/cold_child.py\", line 12, in missing\n    (R / \"observations\" / (sys.argv[3] + \".installation.json\")).write_text(\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nFileNotFoundError: PV2I_INDEPENDENT_SOURCE_MISSING\n"
+  },
+  "changed_edition": {
+    "argv": [
+      "/usr/local/bin/python3",
+      "<RETURN>/runtime/court/repro/cold_child.py",
+      "<RETURN>/runtime/court/runtime_root/historical_final_cold",
+      "changed_edition",
+      "historical_changed_edition"
+    ],
+    "exit": 1,
+    "stdout": "",
+    "stderr": "Traceback (most recent call last):\n  File \"<RETURN>/runtime/court/runtime_root/rawlsing_next/pre553_governed_batch_checkpoint_integration_candidate.py\", line 230, in open_session\n    store.load(identity=identity)\n  File \"<RETURN>/runtime/court/runtime_root/rawlsing_next/pre553_batch_durable_checkpoint_candidate.py\", line 543, in load\n    checkpoint.assert_bound_to(identity)\n  File \"<RETURN>/runtime/court/runtime_root/rawlsing_next/pre553_batch_durable_checkpoint_candidate.py\", line 402, in assert_bound_to\n    raise CheckpointForeignError(\nrawlsing_next.pre553_batch_durable_checkpoint_candidate.CheckpointForeignError: checkpoint is bound to a different manifest/release/scope; refusing foreign checkpoint\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"<RETURN>/runtime/court/repro/cold_child.py\", line 40, in <module>\n    exec(\n  File \"<RETURN>/runtime/court/repro/cold_child.py\", line 33, in <module>\n    try:\n         \n  File \"<frozen runpy>\", line 291, in run_path\n  File \"<frozen runpy>\", line 98, in _run_module_code\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"<RETURN>/runtime/court/runtime_root/candidate/repro/pv2_cold_process.py\", line 53, in <module>\n    fx = fixture.pv2_sourcefree_fixture(ROOT / 'ledger')\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<RETURN>/runtime/court/runtime_root/candidate/repro/pv2_sourcefree_fixture.py\", line 264, in pv2_sourcefree_fixture\n    prepared = [prepare_owner_scope(root / str(i), data, group, ns)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<RETURN>/runtime/court/runtime_root/candidate/repro/pv2_sourcefree_fixture.py\", line 264, in <listcomp>\n    prepared = [prepare_owner_scope(root / str(i), data, group, ns)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<RETURN>/runtime/court/runtime_root/candidate/repro/pv2_sourcefree_fixture.py\", line 241, in prepare_owner_scope\n    session = G.open_session(\n              ^^^^^^^^^^^^^^^\n  File \"<RETURN>/runtime/court/runtime_root/rawlsing_next/pre553_governed_batch_checkpoint_integration_candidate.py\", line 232, in open_session\n    raise IntegrationForeignError(\nrawlsing_next.pre553_governed_batch_checkpoint_integration_candidate.IntegrationForeignError: existing durable checkpoint is foreign or torn: checkpoint is bound to a different manifest/release/scope; refusing foreign checkpoint\n"
+  },
+  "actual_owner_calls_replay": {
+    "execute_route_b_production": 2,
+    "validate_c11_source_release": 2,
+    "execute_empirical_query": 8,
+    "execute_exact_bounded_discovery": 2,
+    "run_integrated": 2,
+    "produce_exact_conditional_support_profile": 12,
+    "replay_exact_conditional_support_profile": 6
+  }
+}

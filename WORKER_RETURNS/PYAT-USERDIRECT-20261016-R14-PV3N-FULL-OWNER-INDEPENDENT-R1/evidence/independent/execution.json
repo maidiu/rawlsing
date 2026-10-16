@@ -1,0 +1,16 @@
+{
+  "command": [
+    "/usr/local/bin/python3",
+    "-m",
+    "pytest",
+    "<RETURN>/repro/test_independent.py",
+    "-vv",
+    "--tb=short",
+    "--import-mode=importlib",
+    "-p",
+    "no:cacheprovider",
+    "--basetemp=<RETURN>/runtime/independent_tmp",
+    "--junitxml=<RETURN>/evidence/independent/junit.xml"
+  ],
+  "exit": 0
+}

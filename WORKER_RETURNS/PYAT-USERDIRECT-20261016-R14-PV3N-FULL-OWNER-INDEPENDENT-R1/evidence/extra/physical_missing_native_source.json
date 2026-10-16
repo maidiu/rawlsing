@@ -1,0 +1,13 @@
+{
+  "argv": [
+    "/usr/local/bin/python3",
+    "<RETURN>/repro/abrupt_child.py",
+    "<RETURN>/runtime/extra_tmp/test_physical_missing_pinned_s0/missing",
+    "attack"
+  ],
+  "exit": 1,
+  "stdout": "",
+  "stderr": "Traceback (most recent call last):\n  File \"<RETURN>/repro/abrupt_child.py\", line 2, in <module>\n    from physical import *\n  File \"<RETURN>/repro/physical.py\", line 2, in <module>\n    import bootstrap\n  File \"<RETURN>/repro/bootstrap.py\", line 12, in <module>\n    reattest()\n  File \"<RETURN>/repro/bootstrap.py\", line 9, in reattest\n    if not p.is_file():raise ValueError('MISSING_NATIVE_SOURCE_ATTESTATION:'+row['staged_path'])\n                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: MISSING_NATIVE_SOURCE_ATTESTATION:rawlsing_next/pre553_c11_ingest.py\n",
+  "scope": "ACTUAL file absent in this staged 74-object runtime; child refused before importing owner; original file restored",
+  "restored_all_74": true
+}

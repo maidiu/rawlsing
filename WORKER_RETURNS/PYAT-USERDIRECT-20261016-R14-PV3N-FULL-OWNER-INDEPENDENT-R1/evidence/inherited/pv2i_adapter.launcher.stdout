@@ -1,0 +1,13 @@
+pv2i_adapter EXIT 1
+../frozen_pv2i/tests/test_independent.py::test_second_independent_row_mutation_changes_I05_winning_consumer PASSED [100%]
+
+=================================== FAILURES ===================================
+________________ test_generic_native_labels_not_specialized_Q86 ________________
+../frozen_pv2i/tests/test_independent.py:123: in test_generic_native_labels_not_specialized_Q86
+    assert role['CONDITIONER']['source_native_variable'] in ('X','Y') and role['TARGET']['source_native_variable'] in ('X','Y')
+                                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError
+- generated xml file: <RETURN>/runtime/court/observations/pv2i_adapter.xml -
+=========================== short test summary info ============================
+FAILED ../frozen_pv2i/tests/test_independent.py::test_generic_native_labels_not_specialized_Q86 - AssertionError
+========================= 1 failed, 47 passed in 2.75s =========================

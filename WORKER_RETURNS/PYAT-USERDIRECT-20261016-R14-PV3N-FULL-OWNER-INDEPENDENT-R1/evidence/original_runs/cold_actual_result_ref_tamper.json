@@ -1,0 +1,24 @@
+{
+  "actual_changed_field": "journal[0].result_refs[0]",
+  "original_ref": {
+    "content_hash": "95721d3b5833366688682ade4acc82df8c5b500df03cd90d68b2b9964c64ae27",
+    "kind": "EmpiricalFact@1.0.0",
+    "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:95721d3b5833366688682ade4acc82df8c5b500df03cd90d68b2b9964c64ae27"
+  },
+  "forged_ref": {
+    "kind": "EmpiricalFact@1.0.0",
+    "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "content_hash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+  },
+  "argv": [
+    "/usr/local/bin/python3",
+    "<RETURN>/runtime/court/repro/cold_child.py",
+    "<RETURN>/runtime/court/runtime_root/pv3_final_receipt_attack",
+    "replay",
+    "cold_actual_result_ref_tamper"
+  ],
+  "exit": 1,
+  "stdout": "",
+  "stderr": "Traceback (most recent call last):\n  File \"<RETURN>/runtime/court/repro/cold_child.py\", line 40, in <module>\n    exec(\n  File \"<RETURN>/runtime/court/repro/cold_child.py\", line 33, in <module>\n    try:\n         \n  File \"<frozen runpy>\", line 291, in run_path\n  File \"<frozen runpy>\", line 98, in _run_module_code\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"<RETURN>/runtime/court/runtime_root/candidate/repro/pv2_cold_process.py\", line 73, in <module>\n    report = PV2.run_sourcefree_with_register(\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<RETURN>/runtime/court/repro/pv3_candidate.py\", line 164, in run_sourcefree_with_register\n    reconcile_journal(scope.p01_kwargs[\"session\"])\n  File \"<RETURN>/runtime/court/repro/pv3_candidate.py\", line 93, in reconcile_journal\n    raise CustodyError(\"JOURNAL_RECEIPT_PROVENANCE_MISMATCH\")\npv3_candidate.CustodyError: JOURNAL_RECEIPT_PROVENANCE_MISMATCH\n",
+  "classification": "REFUSED"
+}

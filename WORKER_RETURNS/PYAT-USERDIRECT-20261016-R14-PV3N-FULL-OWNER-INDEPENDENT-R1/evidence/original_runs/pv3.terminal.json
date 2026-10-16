@@ -1,0 +1,20 @@
+{
+  "argv": [
+    "/usr/local/bin/python3",
+    "-m",
+    "pytest",
+    "<RETURN>/runtime/court/tests",
+    "-vv",
+    "--tb=short",
+    "--assert=plain",
+    "--import-mode=importlib",
+    "-p",
+    "no:cacheprovider",
+    "--basetemp=<RETURN>/runtime/court/runtime_root/tmp/pv3",
+    "--junitxml=<RETURN>/runtime/court/observations/pv3.xml"
+  ],
+  "cwd": "<RETURN>/runtime/court/runtime_root",
+  "PYTHONPATH": "<RETURN>/runtime/court/repro:<RETURN>/runtime/court/runtime_root:<RETURN>/runtime/court/runtime_root/candidate/repro:<RETURN>/runtime/court/frozen_pv2i/repro",
+  "exit": 0,
+  "seconds": 24.451783895492554
+}

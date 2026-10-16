@@ -1,0 +1,36 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.11.3, pytest-9.1.1, pluggy-1.6.0 -- /usr/local/bin/python3
+rootdir: <RETURN>
+collecting ... collected 28 items
+
+../../../repro/test_independent.py::test_all_eight_exact_identities_six_actual_values_and_receipts PASSED [  3%]
+../../../repro/test_independent.py::test_independent_coherent_foreign_principal_denied[original_U_ref] PASSED [  7%]
+../../../repro/test_independent.py::test_independent_coherent_foreign_principal_denied[independent_E_ref] PASSED [ 10%]
+../../../repro/test_independent.py::test_independent_coherent_foreign_principal_denied[independent_custody_ref] PASSED [ 14%]
+../../../repro/test_independent.py::test_independent_coherent_foreign_principal_denied[original_operation_scope_ref] PASSED [ 17%]
+../../../repro/test_independent.py::test_independent_scientific_identity_denials[unknown_item] PASSED [ 21%]
+../../../repro/test_independent.py::test_independent_scientific_identity_denials[household] PASSED [ 25%]
+../../../repro/test_independent.py::test_independent_scientific_identity_denials[form] PASSED [ 28%]
+../../../repro/test_independent.py::test_independent_scientific_identity_denials[role] PASSED [ 32%]
+../../../repro/test_independent.py::test_independent_scientific_identity_denials[query] PASSED [ 35%]
+../../../repro/test_independent.py::test_independent_scientific_identity_denials[held] PASSED [ 39%]
+../../../repro/test_independent.py::test_independent_scientific_identity_denials[drop_held] PASSED [ 42%]
+../../../repro/test_independent.py::test_independent_grant_denials_do_not_mutate_owner[issuer-FOREIGN] PASSED [ 46%]
+../../../repro/test_independent.py::test_independent_grant_denials_do_not_mutate_owner[grant-REAL_ORIGINAL] PASSED [ 50%]
+../../../repro/test_independent.py::test_independent_grant_denials_do_not_mutate_owner[ceiling-value2] PASSED [ 53%]
+../../../repro/test_independent.py::test_independent_grant_denials_do_not_mutate_owner[revoked-True] PASSED [ 57%]
+../../../repro/test_independent.py::test_independent_current_payload_and_role_rejections[support999] PASSED [ 60%]
+../../../repro/test_independent.py::test_independent_current_payload_and_role_rejections[material] PASSED [ 64%]
+../../../repro/test_independent.py::test_independent_current_payload_and_role_rejections[roles] PASSED [ 67%]
+../../../repro/test_independent.py::test_independent_current_payload_and_role_rejections[conditioner] PASSED [ 71%]
+../../../repro/test_independent.py::test_independent_current_payload_and_role_rejections[query] PASSED [ 75%]
+../../../repro/test_independent.py::test_independent_current_payload_and_role_rejections[fact] PASSED [ 78%]
+../../../repro/test_independent.py::test_independent_current_payload_and_role_rejections[risk] PASSED [ 82%]
+../../../repro/test_independent.py::test_independent_current_nested_alias_and_request_owner_replacement PASSED [ 85%]
+../../../repro/test_independent.py::test_independent_real_source_counterfactuals[R2_Y1] PASSED [ 89%]
+../../../repro/test_independent.py::test_independent_real_source_counterfactuals[R1_Y0] PASSED [ 92%]
+../../../repro/test_independent.py::test_actual_installed_policy_filesystem_writer_is_outside_issuer_boundary PASSED [ 96%]
+../../../repro/test_independent.py::test_independent_edition_epoch_and_revocation_current_reads PASSED [100%]
+
+- generated xml file: <RETURN>/evidence/independent/junit.xml -
+============================= 28 passed in 12.09s ==============================

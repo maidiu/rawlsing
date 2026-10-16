@@ -1,0 +1,24 @@
+{
+  "argv": [
+    "/usr/local/bin/python3",
+    "-m",
+    "pytest",
+    "rawlsing_next/tests/test_pre553_v2_durable_consumer_integration_candidate.py",
+    "rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py",
+    "rawlsing_next/tests/test_pre553_route_b_production.py",
+    "rawlsing_next/tests/test_pre553_empirical_query.py",
+    "rawlsing_next/tests/test_pre553_discovery_exact.py",
+    "-vv",
+    "--tb=short",
+    "--assert=plain",
+    "--import-mode=importlib",
+    "-p",
+    "no:cacheprovider",
+    "--basetemp=<RETURN>/runtime/court/runtime_root/tmp/owners_111",
+    "--junitxml=<RETURN>/runtime/court/observations/owners_111.xml"
+  ],
+  "cwd": "<RETURN>/runtime/court/runtime_root",
+  "PYTHONPATH": "<RETURN>/runtime/court/repro:<RETURN>/runtime/court/runtime_root:<RETURN>/runtime/court/runtime_root/candidate/repro:<RETURN>/runtime/court/frozen_pv2i/repro",
+  "exit": 0,
+  "seconds": 75.7263867855072
+}

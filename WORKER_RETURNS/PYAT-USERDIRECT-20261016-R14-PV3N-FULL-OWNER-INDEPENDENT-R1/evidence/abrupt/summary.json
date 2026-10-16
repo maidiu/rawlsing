@@ -1,0 +1,79 @@
+{
+  "processes": [
+    {
+      "mode": "first",
+      "pid": 74020,
+      "exit": -9,
+      "signal": "SIGKILL",
+      "ready": {
+        "pid": 74020,
+        "durable_calls": [
+          3,
+          3
+        ],
+        "actual_receipts": 6
+      },
+      "command": [
+        "/usr/local/bin/python3",
+        "<RETURN>/repro/abrupt_child.py",
+        "<RETURN>/runtime/abrupt_court",
+        "first"
+      ]
+    },
+    {
+      "mode": "replay",
+      "exit": 0,
+      "command": [
+        "/usr/local/bin/python3",
+        "<RETURN>/repro/abrupt_child.py",
+        "<RETURN>/runtime/abrupt_court",
+        "replay"
+      ]
+    },
+    {
+      "mode": "offline",
+      "exit": 0,
+      "command": [
+        "/usr/local/bin/python3",
+        "<RETURN>/repro/abrupt_child.py",
+        "<RETURN>/runtime/abrupt_court",
+        "offline"
+      ]
+    }
+  ],
+  "first_pid": 74020,
+  "replay_pid": 74050,
+  "actual_abrupt_death": true,
+  "first_durable": [
+    3,
+    3
+  ],
+  "replay_durable": [
+    0,
+    0
+  ],
+  "six_original_UnitExecutionReceipt_objects_restored": true,
+  "ledger_byte_identical": true,
+  "ledger": {
+    "ledger/0/b01e_checkpoint.json": "7a6ca6bb66ea47917cf28f49a41fe3c19a396139fa20ebb78bfdc1e5d8ac83ec",
+    "ledger/0/b01e_side_effects.jsonl": "6abc5416a9067b5d082a01a8001ed2f418be86088bfc57bb8bd7b8eb93aa02ee",
+    "ledger/0/.p01.integration.lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "ledger/0/.b01e_checkpoint.json.lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "ledger/1/b01e_checkpoint.json": "dd87a7dfcb9d6c76112d8d1d7314dedb36f811cb12f3589947970aa72c654fda",
+    "ledger/1/b01e_side_effects.jsonl": "d461414557c0af4562c8133c29c63c740a758b2c01299d255e2708eca5e22659",
+    "ledger/1/.p01.integration.lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "ledger/1/.b01e_checkpoint.json.lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "source_calls_replay": {
+    "execute_route_b_production": 2,
+    "validate_c11_source_release": 2,
+    "execute_empirical_query": 8,
+    "execute_exact_bounded_discovery": 2,
+    "run_integrated": 2,
+    "produce_exact_conditional_support_profile": 18,
+    "replay_exact_conditional_support_profile": 6
+  },
+  "native_source_reattestation": 74,
+  "selective_withdrawal": "A denied B entire current value stable; historical receipts immutable",
+  "offline": "OFFLINE_FACT_RESTORATION_HOLD; no live source reattestation"
+}

@@ -1,0 +1,20 @@
+{
+  "argv": [
+    "/usr/local/bin/python3",
+    "-m",
+    "pytest",
+    "rawlsing_next/tests/test_hq295_v2k_original_identity_successor.py",
+    "-vv",
+    "--tb=short",
+    "--assert=plain",
+    "--import-mode=importlib",
+    "-p",
+    "no:cacheprovider",
+    "--basetemp=<RETURN>/runtime/court/runtime_root/tmp/v2k_24",
+    "--junitxml=<RETURN>/runtime/court/observations/v2k_24.xml"
+  ],
+  "cwd": "<RETURN>/runtime/court/runtime_root",
+  "PYTHONPATH": "<RETURN>/runtime/court/repro:<RETURN>/runtime/court/runtime_root:<RETURN>/runtime/court/runtime_root/candidate/repro:<RETURN>/runtime/court/frozen_pv2i/repro",
+  "exit": 0,
+  "seconds": 5.329542875289917
+}

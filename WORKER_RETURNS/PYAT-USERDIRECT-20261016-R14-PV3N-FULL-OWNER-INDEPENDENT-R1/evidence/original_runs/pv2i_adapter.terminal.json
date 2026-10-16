@@ -1,0 +1,22 @@
+{
+  "argv": [
+    "/usr/local/bin/python3",
+    "-m",
+    "pytest",
+    "<RETURN>/runtime/court/frozen_pv2i/tests/test_independent.py",
+    "-p",
+    "adapter_plugin",
+    "-vv",
+    "--tb=short",
+    "--assert=plain",
+    "--import-mode=importlib",
+    "-p",
+    "no:cacheprovider",
+    "--basetemp=<RETURN>/runtime/court/runtime_root/tmp/pv2i_adapter",
+    "--junitxml=<RETURN>/runtime/court/observations/pv2i_adapter.xml"
+  ],
+  "cwd": "<RETURN>/runtime/court/runtime_root",
+  "PYTHONPATH": "<RETURN>/runtime/court/repro:<RETURN>/runtime/court/runtime_root:<RETURN>/runtime/court/runtime_root/candidate/repro:<RETURN>/runtime/court/frozen_pv2i/repro",
+  "exit": 1,
+  "seconds": 3.5672640800476074
+}
