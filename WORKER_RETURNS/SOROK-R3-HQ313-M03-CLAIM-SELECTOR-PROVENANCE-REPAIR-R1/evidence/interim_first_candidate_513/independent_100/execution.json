@@ -1,0 +1,22 @@
+{
+  "command": [
+    "/usr/local/bin/python3",
+    "-m",
+    "pytest",
+    "<RETURN>/repro/test_independent.py",
+    "-p",
+    "reviewer_observer",
+    "-vv",
+    "--tb=short",
+    "--import-mode=importlib",
+    "-p",
+    "no:cacheprovider",
+    "--rootdir=<RETURN>",
+    "--confcutdir=<RETURN>",
+    "--basetemp=<RETURN>/runtime/tmp/independent",
+    "--junitxml=<RETURN>/evidence/independent/junit.xml"
+  ],
+  "cwd": "<RETURN>",
+  "exit": 0,
+  "seconds": 20.748056173324585
+}

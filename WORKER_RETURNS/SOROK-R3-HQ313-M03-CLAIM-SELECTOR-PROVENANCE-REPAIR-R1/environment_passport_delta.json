@@ -1,0 +1,205 @@
+{
+  "assignments_completed": [
+    "M03 sourcefree candidate implementation and author verification; pending final push verification"
+  ],
+  "branch": "agent/rabochii-sorok-r3-hq313-m03-claim-selector-provenance-repair-r1",
+  "candidate_and_helper_refs": "07_SOURCE_AND_IMPORT_AUDIT.json",
+  "cash": "UNKNOWN",
+  "checkout_base": "92b9fa8b29f85ad77576da39a8765a666a5ab37f",
+  "clean_dirty_state": "AUTHOR_RETURN_PENDING_COMMIT; final clean check in direct remote verification",
+  "conversation_or_account_affinity": "THIS_CHAT; no external account continuity assertion",
+  "covered_test_suites": [
+    {
+      "command_receipt": "evidence/after/independent_100/command.json",
+      "run_junit_ref": "evidence/after/independent_100/junit.xml"
+    },
+    {
+      "command_receipt": "evidence/after/original_413/author/command.json",
+      "run_junit_ref": "evidence/after/original_413/author/junit.xml"
+    },
+    {
+      "command_receipt": "evidence/after/original_413/can3/command.json",
+      "run_junit_ref": "evidence/after/original_413/can3/junit.xml"
+    },
+    {
+      "command_receipt": "evidence/after/original_413/new/command.json",
+      "run_junit_ref": "evidence/after/original_413/new/junit.xml"
+    },
+    {
+      "command_receipt": "evidence/after/original_413/owners/command.json",
+      "run_junit_ref": "evidence/after/original_413/owners/junit.xml"
+    },
+    {
+      "command_receipt": "evidence/author/command.json",
+      "run_junit_ref": "evidence/author/junit.xml"
+    },
+    {
+      "command_receipt": "evidence/historical_nine/command.json",
+      "run_junit_ref": "evidence/historical_nine/junit.xml",
+      "status": "9 literal historical FAIL, expected and separate"
+    }
+  ],
+  "credits_usage": null,
+  "dependency_closure_status": "BOUNDED",
+  "dependency_versions": {
+    "pytest": "pytest 9.1.1",
+    "python": "3.11.3"
+  },
+  "effort": "High",
+  "environment_id": "4b8effc4-1974-44cf-9648-d3a7444daf33",
+  "epoch_id": "3eaae01a-be3e-4046-b29c-57d805d497e0",
+  "filesystem": {
+    "capability": "VERIFIED",
+    "scope": "owned sparse worktree return and synthetic runtime"
+  },
+  "fixture_source_permission": "USER_COMMISSION_SOURCEFREE_TEST_ONLY",
+  "git_object_store_alias": "AUTHORIZED_EXISTING_REPO_SHARED_OBJECT_STORE",
+  "independent_review_separation": "M03_AUTHOR; previously M02 reviewer in same chat; future M04 by HQ distinct required",
+  "last_live_probe_at": "2026-10-16T05:51:57.801542+00:00",
+  "machine_alias": "LOCAL_AUTHORIZED_HOST",
+  "materialized_source_refs": [
+    {
+      "git_blob_sha1": "19b0376a064d4cb6fb2d11caba5ecfd23878c633",
+      "local_relative_staging_path": "runtime/m02/runtime/m01/repro/bootstrap.py",
+      "module": "bootstrap",
+      "module_file_verified": "runtime/m02/runtime/m01/repro/bootstrap.py",
+      "source_commit": "02187a14e75ff30dd953d3c7185d689b80e62304",
+      "source_kind": "PINNED_ORIGINAL",
+      "source_path": "WORKER_RETURNS/SOROK-R3-HQ310-M01-MEMORY-MEDIATION-CAUSAL-CELL-R1/repro/bootstrap.py"
+    },
+    {
+      "git_blob_sha1": "0581aff4ac0ea45c07387e5340e219566ce7330d",
+      "local_relative_staging_path": "runtime/m02/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/__init__.py",
+      "module": "candidate",
+      "module_file_verified": "runtime/m02/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/__init__.py",
+      "source_commit": "ee6a48b40247b113c614fe2099d4c443e8dd7bb7",
+      "source_kind": "PINNED_ORIGINAL",
+      "source_path": "WORKER_RETURNS/SOROK-R3-HQ308-CAN2-LAW-CAUSAL-REPAIR-R1/candidate/__init__.py"
+    },
+    {
+      "git_blob_sha1": "259ff9da129f7d644f8ac9fd8f739ad6041a3edf",
+      "local_relative_staging_path": "runtime/m02/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/adopted_contract.py",
+      "module": "candidate.adopted_contract",
+      "module_file_verified": "runtime/m02/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/adopted_contract.py",
+      "source_commit": "ee6a48b40247b113c614fe2099d4c443e8dd7bb7",
+      "source_kind": "PINNED_ORIGINAL",
+      "source_path": "WORKER_RETURNS/SOROK-R3-HQ308-CAN2-LAW-CAUSAL-REPAIR-R1/candidate/adopted_contract.py"
+    },
+    {
+      "git_blob_sha1": "61d933d98ffb39d553a0dbc670388fc2bd3e89d3",
+      "local_relative_staging_path": "runtime/m02/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/can008_candidate_rule.py",
+      "module": "candidate.can008_candidate_rule",
+      "module_file_verified": "runtime/m02/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/can008_candidate_rule.py",
+      "source_commit": "ee6a48b40247b113c614fe2099d4c443e8dd7bb7",
+      "source_kind": "PINNED_ORIGINAL",
+      "source_path": "WORKER_RETURNS/SOROK-R3-HQ308-CAN2-LAW-CAUSAL-REPAIR-R1/candidate/can008_candidate_rule.py"
+    },
+    {
+      "git_blob_sha1": "0d978f89fb3c5e836a52f25849240db360f97f8f",
+      "local_relative_staging_path": "runtime/m02/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/candidate_registry_fixture.py",
+      "module": "candidate.candidate_registry_fixture",
+      "module_file_verified": "runtime/m02/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/candidate_registry_fixture.py",
+      "source_commit": "ee6a48b40247b113c614fe2099d4c443e8dd7bb7",
+      "source_kind": "PINNED_ORIGINAL",
+      "source_path": "WORKER_RETURNS/SOROK-R3-HQ308-CAN2-LAW-CAUSAL-REPAIR-R1/candidate/candidate_registry_fixture.py"
+    },
+    {
+      "git_blob_sha1": "ac943d07459f68ba2e27baf05b442d9ecbddefd5",
+      "local_relative_staging_path": "runtime/m02/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/owner_transitions.py",
+      "module": "candidate.owner_transitions",
+      "module_file_verified": "runtime/m02/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/owner_transitions.py",
+      "source_commit": "ee6a48b40247b113c614fe2099d4c443e8dd7bb7",
+      "source_kind": "PINNED_ORIGINAL",
+      "source_path": "WORKER_RETURNS/SOROK-R3-HQ308-CAN2-LAW-CAUSAL-REPAIR-R1/candidate/owner_transitions.py"
+    },
+    {
+      "git_blob_sha1": "226cd42f81538f1b81ea7ea2e494776069142405",
+      "local_relative_staging_path": "runtime/m02/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/positive_chain.py",
+      "module": "candidate.positive_chain",
+      "module_file_verified": "runtime/m02/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/positive_chain.py",
+      "source_commit": "ee6a48b40247b113c614fe2099d4c443e8dd7bb7",
+      "source_kind": "PINNED_ORIGINAL",
+      "source_path": "WORKER_RETURNS/SOROK-R3-HQ308-CAN2-LAW-CAUSAL-REPAIR-R1/candidate/positive_chain.py"
+    },
+    {
+      "git_blob_sha1": "3eb2d02aee8dc840e7cac1f99230d7c69adc2f58",
+      "local_relative_staging_path": "runtime/m02/runtime/m01/repro/cell.py",
+      "module": "cell",
+      "module_file_verified": "runtime/m02/runtime/m01/repro/cell.py",
+      "source_commit": null,
+      "source_kind": "M03_OWNED_PATCH_PENDING_RETURN_COMMIT",
+      "source_path": "candidate/cell.py"
+    },
+    {
+      "git_blob_sha1": "e0528d65215cb431196570c38bac4eae94217a1b",
+      "local_relative_staging_path": "runtime/m02/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/rawlsing_next/v3_psepf_zero_positive_guard.py",
+      "module": "rawlsing_next.v3_psepf_zero_positive_guard",
+      "module_file_verified": "runtime/m02/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/rawlsing_next/v3_psepf_zero_positive_guard.py",
+      "source_commit": "189da3b54307d8731132c9a7f7baf578fee8bc96",
+      "source_kind": "PINNED_ORIGINAL",
+      "source_path": "rawlsing_next/v3_psepf_zero_positive_guard.py"
+    },
+    {
+      "git_blob_sha1": "2434bda6f4b00e6ea5881291f5422227e8045e74",
+      "local_relative_staging_path": "runtime/m02/runtime/m01/repro/claim_provenance.py",
+      "module": "claim_provenance",
+      "module_file_verified": "runtime/m02/runtime/m01/repro/claim_provenance.py",
+      "source_commit": null,
+      "source_kind": "M03_OWNED_PATCH_PENDING_RETURN_COMMIT",
+      "source_path": "candidate/claim_provenance.py"
+    }
+  ],
+  "model": "GPT-6.1 High as commissioned; no switches or helpers",
+  "model_provider": "OpenAI/Codex; user-selected model",
+  "next_good_affinity_tags": [
+    "CAN008",
+    "TEMPORAL",
+    "CLAIM_PROVENANCE",
+    "AUTHOR_REPAIR"
+  ],
+  "node": {
+    "capability": "UNKNOWN",
+    "reason": "not required; not probed"
+  },
+  "observed_head": "77707a4ce789f497e67e6ad39cab68fe11505af1",
+  "owner_session_alias": "M03_AUTHOR_SINGLE_AGENT",
+  "passport_schema": "SOROK_00D_R1",
+  "pricing_class": "UNKNOWN",
+  "privacy_source_grant": "private repository, local synthetic fixture closure only",
+  "probe_command_and_result": {
+    "git": {
+      "capability": "VERIFIED",
+      "exit": 0,
+      "result": "git version 2.39.1"
+    },
+    "pytest": {
+      "capability": "VERIFIED",
+      "exit": 0,
+      "result": "pytest 9.1.1"
+    },
+    "python": {
+      "capability": "VERIFIED",
+      "exit": 0,
+      "result": "Python 3.11.3"
+    },
+    "shell": {
+      "capability": "VERIFIED",
+      "exit": 0,
+      "result": "zsh 5.9 (x86_64-apple-darwin22.0)"
+    }
+  },
+  "quota_reset": "UNKNOWN",
+  "retire_or_rebuild_reason": null,
+  "runtime_marker_digest": "7581962fb564f1916fc0b331634faee893e84ec6b8ecf62158839eb736663bc7",
+  "science_grade": "SOURCEFREE_REPAIR_CANDIDATE_ONLY",
+  "source_family": "M01/M02/CAN3/CAN2 finite sourcefree",
+  "staged_state_preservation": {
+    "available_for_more_work": "local runtime present at probe; next worker must re-probe marker/imports",
+    "mutable_process_continuity_claim": false,
+    "reuse": "VERIFIED_WARM_M02_STATIC_SOURCE_CLOSURE; no mutable-process continuity claim",
+    "status": "WARM_STATIC_MODULES_VERIFIED; subprocess owner states reconstructed per case"
+  },
+  "status": "LIVE_VERIFIED",
+  "surface": "LOCAL_SHARED_STORE",
+  "worktree_alias": "M03_ISOLATED_SPARSE"
+}

@@ -1,0 +1,61 @@
+{
+  "baseline": {
+    "independent_100": {
+      "fail": 2,
+      "pass": 98
+    },
+    "original_413": {
+      "fail": 0,
+      "pass": 413
+    }
+  },
+  "changed_paths_within_assigned_return": true,
+  "current_candidate_source_hash": "3731d10513ac112d2675cd24636c46fa94b1ff9540909742273fd3930ae2337c",
+  "factorial_arms": 36,
+  "final": {
+    "all_current_pass": 587,
+    "historical_nine_separate": {
+      "errors": 0,
+      "fail": 9,
+      "pass": 0
+    },
+    "independent_100": {
+      "fail": 0,
+      "pass": 100
+    },
+    "literal_pass": 513,
+    "literal_total": 513,
+    "new_author": {
+      "fail": 0,
+      "pass": 74
+    },
+    "original_413": {
+      "fail": 0,
+      "pass": 413
+    }
+  },
+  "future_independent_reviewer": "HQ_M04_REQUIRED; current worker is author, also previously authored M02 review in this chat",
+  "human_calibrated_behavior": "HOLD",
+  "new_semantic_issuance": false,
+  "production_guard_empty": true,
+  "real_competent_production_owner": "HOLD",
+  "serial_mediation": "HOLD",
+  "source_owner_bytes_and_factorial_unchanged": true,
+  "two_red_closure": [
+    {
+      "after": "PASS",
+      "before": "FAIL",
+      "classname": "repro.test_independent",
+      "junit": "independent_100/junit.xml",
+      "literal_test_name": "test_lawful_future_claim_cannot_condition_an_earlier_response"
+    },
+    {
+      "after": "PASS",
+      "before": "FAIL",
+      "classname": "repro.test_independent",
+      "junit": "independent_100/junit.xml",
+      "literal_test_name": "test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence"
+    }
+  ],
+  "verdict": "SOURCEFREE_CLAIM_PROVENANCE_REPAIR_CANDIDATE_ONLY"
+}

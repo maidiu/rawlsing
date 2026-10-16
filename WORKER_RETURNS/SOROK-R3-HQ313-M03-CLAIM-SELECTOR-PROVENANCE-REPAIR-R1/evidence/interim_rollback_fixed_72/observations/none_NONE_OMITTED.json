@@ -1,0 +1,296 @@
+{
+  "owner": {
+    "actor_id": "ACTOR_SYNTH_1",
+    "memories": {},
+    "memory_transitions": {},
+    "claims": {
+      "3101e859e85e5d96de01ab83bdf8a674176380c9dea19f0ceac303d060539356": {
+        "claim_id": "3101e859e85e5d96de01ab83bdf8a674176380c9dea19f0ceac303d060539356",
+        "claim_schema_version": "1",
+        "subject_ref": "ACTOR_SYNTH_1",
+        "predicate_ref": "FIXTURE_PRIVATE_FEEDBACK_APPRAISAL",
+        "object_or_value": "RESPECTED",
+        "polarity": "POSITIVE",
+        "temporal_scope": "1998-10-03T16:00:00Z",
+        "subject_scope": "ACTOR_SYNTH_1",
+        "referent_refs": [
+          "M01_FEEDBACK"
+        ],
+        "canonical_content_hash": "1b95a2243ac2bf234ec190ca5f9539dc124a45c68dd2987fb01811f8745572a3",
+        "integrity_state": "INTACT"
+      }
+    },
+    "emissions": {
+      "3101e859e85e5d96de01ab83bdf8a674176380c9dea19f0ceac303d060539356": {
+        "event_id": "M01_FEEDBACK",
+        "event_hash": "b5d89f7188007b480b89a877708d9bd62a7aac95a9aaf574f45ba4bc3275d2a5",
+        "rule_hash": "34327f61afd18355201144b813ac0164540594fc17d7a0a3c0d9793810eb3a2a",
+        "stance_kind": "BELIEF",
+        "operations": [
+          "ADD",
+          "WITHDRAW",
+          "SUPERSEDE_EXACT_RECORD",
+          "NO_CHANGE"
+        ]
+      }
+    },
+    "stances": {},
+    "epistemic_transitions": [],
+    "state_sets": {},
+    "permissions": {}
+  },
+  "result": {
+    "status": "COMMITTED_TEST_ONLY",
+    "streams": {
+      "memory": "AMPLIFY",
+      "epistemic": "AMPLIFY"
+    },
+    "read": {
+      "actor": "ACTOR_SYNTH_1",
+      "at": "1998-11-20T09:00:00Z",
+      "state_hash": "a2aafd1afa304845549e9055d16ae92fdbe0846dd466cb64e95e8471490b036a",
+      "actual_state": {
+        "actor_id": "ACTOR_SYNTH_1",
+        "memories": {},
+        "memory_transitions": {},
+        "claims": {
+          "3101e859e85e5d96de01ab83bdf8a674176380c9dea19f0ceac303d060539356": {
+            "claim_id": "3101e859e85e5d96de01ab83bdf8a674176380c9dea19f0ceac303d060539356",
+            "claim_schema_version": "1",
+            "subject_ref": "ACTOR_SYNTH_1",
+            "predicate_ref": "FIXTURE_PRIVATE_FEEDBACK_APPRAISAL",
+            "object_or_value": "RESPECTED",
+            "polarity": "POSITIVE",
+            "temporal_scope": "1998-10-03T16:00:00Z",
+            "subject_scope": "ACTOR_SYNTH_1",
+            "referent_refs": [
+              "M01_FEEDBACK"
+            ],
+            "canonical_content_hash": "1b95a2243ac2bf234ec190ca5f9539dc124a45c68dd2987fb01811f8745572a3",
+            "integrity_state": "INTACT"
+          }
+        },
+        "emissions": {
+          "3101e859e85e5d96de01ab83bdf8a674176380c9dea19f0ceac303d060539356": {
+            "event_id": "M01_FEEDBACK",
+            "event_hash": "b5d89f7188007b480b89a877708d9bd62a7aac95a9aaf574f45ba4bc3275d2a5",
+            "rule_hash": "34327f61afd18355201144b813ac0164540594fc17d7a0a3c0d9793810eb3a2a",
+            "stance_kind": "BELIEF",
+            "operations": [
+              "ADD",
+              "WITHDRAW",
+              "SUPERSEDE_EXACT_RECORD",
+              "NO_CHANGE"
+            ]
+          }
+        },
+        "stances": {},
+        "epistemic_transitions": [],
+        "state_sets": {},
+        "permissions": {}
+      },
+      "memory_first_person": null,
+      "private_permission": null,
+      "streams": {
+        "memory": "AMPLIFY",
+        "epistemic": "AMPLIFY"
+      },
+      "claim_selection_provenance": {
+        "schema": "M03_CANONICAL_CLAIM_SELECTION@1",
+        "verified_binding": {
+          "schema": "M03_CANONICAL_CLAIM_SELECTION@1",
+          "basis": {
+            "schema": "M03_CANONICAL_CLAIM_SELECTION@1",
+            "canonical_claim_ref": "3101e859e85e5d96de01ab83bdf8a674176380c9dea19f0ceac303d060539356",
+            "canonical_claim_hash": "1b95a2243ac2bf234ec190ca5f9539dc124a45c68dd2987fb01811f8745572a3",
+            "actor": "ACTOR_SYNTH_1",
+            "world_ref": "W_SYNTH_1998",
+            "world_as_of": "1998-10-03T16:00:00Z",
+            "source_event": {
+              "event_id": "M01_FEEDBACK",
+              "event_hash": "b5d89f7188007b480b89a877708d9bd62a7aac95a9aaf574f45ba4bc3275d2a5",
+              "issuer_authority_id": "ISSUER_AUTH_WORLD_SCHED",
+              "issuer_authority_version": "1",
+              "event_kind": "EXTERNAL_RUNTIME_EVENT",
+              "effective_causal_time": "1998-10-03T16:00:00Z",
+              "actor_scope": "ACTOR_SYNTH_1",
+              "world_ref": "W_SYNTH_1998",
+              "world_as_of": "1998-10-03T16:00:00Z",
+              "admission_state": "ADMITTED",
+              "public_features": [
+                "shift_feedback_window_open",
+                "supervisor_solicits_comment"
+              ],
+              "causal_parent_event_ids": [],
+              "derived_from_future_partition": false,
+              "reverse_chronology_flag": false
+            },
+            "owning_rule_id": "CAND_R_CAN008_COUPLING_RESPONSE",
+            "owning_rule_version": "2.0.0-candidate",
+            "owning_rule_hash": "34327f61afd18355201144b813ac0164540594fc17d7a0a3c0d9793810eb3a2a",
+            "response_rule_id": "M01_PARALLEL_OWNER_READ",
+            "response_rule_version": "1.0.0-TEST_ONLY",
+            "response_source_hash": "9804576c2746ed04810e73e1d6ff596fdec67f86e8816b87df15272a12b802f7",
+            "first_response_receipt_hash": "5d1aecef16daecbf13c3ef5424ff2c057b6d72f7d53c3874de5619206ff0e9ea"
+          },
+          "first_event_entry_hash": "72a8e6ae0179707ce75a46a3a8f79dddb03f2e096f291796d8d9aa4a6b5d8fd9",
+          "first_owner_state_hash": "a2aafd1afa304845549e9055d16ae92fdbe0846dd466cb64e95e8471490b036a"
+        },
+        "selected_claim_ref": "3101e859e85e5d96de01ab83bdf8a674176380c9dea19f0ceac303d060539356",
+        "response_as_of": "1998-11-20T09:00:00Z",
+        "canonical_claim_time": "1998-10-03T16:00:00Z",
+        "actual_effect_provenance": [],
+        "disposition": "BOUND_CANONICAL_CLAIM_NO_APPLIED_STANCE",
+        "production_authority": "NOT_ISSUED_TEST_ONLY"
+      }
+    },
+    "history_stored": [],
+    "history_delivered": [],
+    "receipt": {
+      "seq": 1,
+      "kind": "M01_CAN008_CURRENT_RESPONSE_GRAPH",
+      "payload": {
+        "rule_id": "M01_PARALLEL_OWNER_READ",
+        "version": "1.0.0-TEST_ONLY",
+        "source_hash": "9804576c2746ed04810e73e1d6ff596fdec67f86e8816b87df15272a12b802f7",
+        "event": {
+          "event_id": "M01_LATER_SHIFT_REQUEST",
+          "event_hash": "dbea76c8f64b267277391a7e3bec1800eac08d0d2431aa6416ce2dcf021ee9c1",
+          "issuer_authority_id": "ISSUER_AUTH_INSTITUTION",
+          "issuer_authority_version": "1",
+          "event_kind": "EXTERNAL_RUNTIME_EVENT",
+          "effective_causal_time": "1998-11-20T09:00:00Z",
+          "actor_scope": "ACTOR_SYNTH_1",
+          "world_ref": "W_SYNTH_1998",
+          "world_as_of": "1998-10-03T16:00:00Z",
+          "admission_state": "ADMITTED",
+          "public_features": [
+            "shift_change_request_window"
+          ],
+          "causal_parent_event_ids": [
+            "M01_FEEDBACK"
+          ],
+          "derived_from_future_partition": false,
+          "reverse_chronology_flag": false
+        },
+        "read": {
+          "actor": "ACTOR_SYNTH_1",
+          "at": "1998-11-20T09:00:00Z",
+          "state_hash": "a2aafd1afa304845549e9055d16ae92fdbe0846dd466cb64e95e8471490b036a",
+          "actual_state": {
+            "actor_id": "ACTOR_SYNTH_1",
+            "memories": {},
+            "memory_transitions": {},
+            "claims": {
+              "3101e859e85e5d96de01ab83bdf8a674176380c9dea19f0ceac303d060539356": {
+                "claim_id": "3101e859e85e5d96de01ab83bdf8a674176380c9dea19f0ceac303d060539356",
+                "claim_schema_version": "1",
+                "subject_ref": "ACTOR_SYNTH_1",
+                "predicate_ref": "FIXTURE_PRIVATE_FEEDBACK_APPRAISAL",
+                "object_or_value": "RESPECTED",
+                "polarity": "POSITIVE",
+                "temporal_scope": "1998-10-03T16:00:00Z",
+                "subject_scope": "ACTOR_SYNTH_1",
+                "referent_refs": [
+                  "M01_FEEDBACK"
+                ],
+                "canonical_content_hash": "1b95a2243ac2bf234ec190ca5f9539dc124a45c68dd2987fb01811f8745572a3",
+                "integrity_state": "INTACT"
+              }
+            },
+            "emissions": {
+              "3101e859e85e5d96de01ab83bdf8a674176380c9dea19f0ceac303d060539356": {
+                "event_id": "M01_FEEDBACK",
+                "event_hash": "b5d89f7188007b480b89a877708d9bd62a7aac95a9aaf574f45ba4bc3275d2a5",
+                "rule_hash": "34327f61afd18355201144b813ac0164540594fc17d7a0a3c0d9793810eb3a2a",
+                "stance_kind": "BELIEF",
+                "operations": [
+                  "ADD",
+                  "WITHDRAW",
+                  "SUPERSEDE_EXACT_RECORD",
+                  "NO_CHANGE"
+                ]
+              }
+            },
+            "stances": {},
+            "epistemic_transitions": [],
+            "state_sets": {},
+            "permissions": {}
+          },
+          "memory_first_person": null,
+          "private_permission": null,
+          "streams": {
+            "memory": "AMPLIFY",
+            "epistemic": "AMPLIFY"
+          },
+          "claim_selection_provenance": {
+            "schema": "M03_CANONICAL_CLAIM_SELECTION@1",
+            "verified_binding": {
+              "schema": "M03_CANONICAL_CLAIM_SELECTION@1",
+              "basis": {
+                "schema": "M03_CANONICAL_CLAIM_SELECTION@1",
+                "canonical_claim_ref": "3101e859e85e5d96de01ab83bdf8a674176380c9dea19f0ceac303d060539356",
+                "canonical_claim_hash": "1b95a2243ac2bf234ec190ca5f9539dc124a45c68dd2987fb01811f8745572a3",
+                "actor": "ACTOR_SYNTH_1",
+                "world_ref": "W_SYNTH_1998",
+                "world_as_of": "1998-10-03T16:00:00Z",
+                "source_event": {
+                  "event_id": "M01_FEEDBACK",
+                  "event_hash": "b5d89f7188007b480b89a877708d9bd62a7aac95a9aaf574f45ba4bc3275d2a5",
+                  "issuer_authority_id": "ISSUER_AUTH_WORLD_SCHED",
+                  "issuer_authority_version": "1",
+                  "event_kind": "EXTERNAL_RUNTIME_EVENT",
+                  "effective_causal_time": "1998-10-03T16:00:00Z",
+                  "actor_scope": "ACTOR_SYNTH_1",
+                  "world_ref": "W_SYNTH_1998",
+                  "world_as_of": "1998-10-03T16:00:00Z",
+                  "admission_state": "ADMITTED",
+                  "public_features": [
+                    "shift_feedback_window_open",
+                    "supervisor_solicits_comment"
+                  ],
+                  "causal_parent_event_ids": [],
+                  "derived_from_future_partition": false,
+                  "reverse_chronology_flag": false
+                },
+                "owning_rule_id": "CAND_R_CAN008_COUPLING_RESPONSE",
+                "owning_rule_version": "2.0.0-candidate",
+                "owning_rule_hash": "34327f61afd18355201144b813ac0164540594fc17d7a0a3c0d9793810eb3a2a",
+                "response_rule_id": "M01_PARALLEL_OWNER_READ",
+                "response_rule_version": "1.0.0-TEST_ONLY",
+                "response_source_hash": "9804576c2746ed04810e73e1d6ff596fdec67f86e8816b87df15272a12b802f7",
+                "first_response_receipt_hash": "5d1aecef16daecbf13c3ef5424ff2c057b6d72f7d53c3874de5619206ff0e9ea"
+              },
+              "first_event_entry_hash": "72a8e6ae0179707ce75a46a3a8f79dddb03f2e096f291796d8d9aa4a6b5d8fd9",
+              "first_owner_state_hash": "a2aafd1afa304845549e9055d16ae92fdbe0846dd466cb64e95e8471490b036a"
+            },
+            "selected_claim_ref": "3101e859e85e5d96de01ab83bdf8a674176380c9dea19f0ceac303d060539356",
+            "response_as_of": "1998-11-20T09:00:00Z",
+            "canonical_claim_time": "1998-10-03T16:00:00Z",
+            "actual_effect_provenance": [],
+            "disposition": "BOUND_CANONICAL_CLAIM_NO_APPLIED_STANCE",
+            "production_authority": "NOT_ISSUED_TEST_ONLY"
+          }
+        },
+        "history_stored": [],
+        "history_delivered": [],
+        "streams": {
+          "memory": "AMPLIFY",
+          "epistemic": "AMPLIFY"
+        },
+        "durability": "NON_DURABLE_CURRENT_CONSEQUENCE",
+        "public_standing": "HOLD_NO_PUBLIC_RATIFICATION_OWNER",
+        "production_owner": "MECHANISM_IDENTIFICATION_HOLD_NO_OPERATIVE_OWNER_AUTHORITY",
+        "validated": true
+      },
+      "effective_causal_time": "1998-11-20T09:00:00Z",
+      "causal_parent_refs": [
+        "M01_LATER_SHIFT_REQUEST",
+        "M01_FEEDBACK"
+      ],
+      "prev_entry_hash": "72a8e6ae0179707ce75a46a3a8f79dddb03f2e096f291796d8d9aa4a6b5d8fd9",
+      "entry_hash": "89f951f19b67a5e45f5349a34839e6970efbb3ae745f751197c27547b7b4e151"
+    },
+    "state_hash": "a2aafd1afa304845549e9055d16ae92fdbe0846dd466cb64e95e8471490b036a"
+  }
+}
