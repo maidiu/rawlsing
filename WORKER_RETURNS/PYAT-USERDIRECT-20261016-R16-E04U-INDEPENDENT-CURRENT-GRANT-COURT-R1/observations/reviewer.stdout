@@ -1,0 +1,50 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.11.3, pytest-9.0.2, pluggy-1.6.0 -- /usr/local/bin/python3.11
+rootdir: <RETURN>
+collecting ... collected 41 items
+
+tests/test_e04u_independent.py::test_live_nested_attachment_cannot_borrow_historical_grants[empty-nonparent] PASSED [  2%]
+tests/test_e04u_independent.py::test_live_nested_attachment_cannot_borrow_historical_grants[empty-scenario] PASSED [  4%]
+tests/test_e04u_independent.py::test_live_nested_attachment_cannot_borrow_historical_grants[source_removed-nonparent] PASSED [  7%]
+tests/test_e04u_independent.py::test_live_nested_attachment_cannot_borrow_historical_grants[source_removed-scenario] PASSED [  9%]
+tests/test_e04u_independent.py::test_live_nested_attachment_cannot_borrow_historical_grants[query_operation_removed-nonparent] PASSED [ 12%]
+tests/test_e04u_independent.py::test_live_nested_attachment_cannot_borrow_historical_grants[query_operation_removed-scenario] PASSED [ 14%]
+tests/test_e04u_independent.py::test_live_nested_attachment_cannot_borrow_historical_grants[issuer_reissued-nonparent] PASSED [ 17%]
+tests/test_e04u_independent.py::test_live_nested_attachment_cannot_borrow_historical_grants[issuer_reissued-scenario] PASSED [ 19%]
+tests/test_e04u_independent.py::test_live_nested_attachment_cannot_borrow_historical_grants[edition_reissued-nonparent] PASSED [ 21%]
+tests/test_e04u_independent.py::test_live_nested_attachment_cannot_borrow_historical_grants[edition_reissued-scenario] PASSED [ 24%]
+tests/test_e04u_independent.py::test_live_nested_attachment_cannot_borrow_historical_grants[source_DENY-nonparent] PASSED [ 26%]
+tests/test_e04u_independent.py::test_live_nested_attachment_cannot_borrow_historical_grants[source_DENY-scenario] PASSED [ 29%]
+tests/test_e04u_independent.py::test_historical_world_clock_never_overrides_current_query_withdrawal[nonparent] PASSED [ 31%]
+tests/test_e04u_independent.py::test_historical_world_clock_never_overrides_current_query_withdrawal[scenario] PASSED [ 34%]
+tests/test_e04u_independent.py::test_independent_deep_coherently_rehashed_cache_corruption[minority-2-nonparent] PASSED [ 36%]
+tests/test_e04u_independent.py::test_independent_deep_coherently_rehashed_cache_corruption[minority-2-scenario] PASSED [ 39%]
+tests/test_e04u_independent.py::test_independent_deep_coherently_rehashed_cache_corruption[minority-3-nonparent] PASSED [ 41%]
+tests/test_e04u_independent.py::test_independent_deep_coherently_rehashed_cache_corruption[minority-3-scenario] PASSED [ 43%]
+tests/test_e04u_independent.py::test_independent_deep_coherently_rehashed_cache_corruption[denominator-2-nonparent] PASSED [ 46%]
+tests/test_e04u_independent.py::test_independent_deep_coherently_rehashed_cache_corruption[denominator-2-scenario] PASSED [ 48%]
+tests/test_e04u_independent.py::test_independent_deep_coherently_rehashed_cache_corruption[denominator-3-nonparent] PASSED [ 51%]
+tests/test_e04u_independent.py::test_independent_deep_coherently_rehashed_cache_corruption[denominator-3-scenario] PASSED [ 53%]
+tests/test_e04u_independent.py::test_independent_deep_coherently_rehashed_cache_corruption[authority-2-nonparent] PASSED [ 56%]
+tests/test_e04u_independent.py::test_independent_deep_coherently_rehashed_cache_corruption[authority-2-scenario] PASSED [ 58%]
+tests/test_e04u_independent.py::test_independent_deep_coherently_rehashed_cache_corruption[authority-3-nonparent] PASSED [ 60%]
+tests/test_e04u_independent.py::test_independent_deep_coherently_rehashed_cache_corruption[authority-3-scenario] PASSED [ 63%]
+tests/test_e04u_independent.py::test_independent_deep_coherently_rehashed_cache_corruption[query_ref-2-nonparent] PASSED [ 65%]
+tests/test_e04u_independent.py::test_independent_deep_coherently_rehashed_cache_corruption[query_ref-2-scenario] PASSED [ 68%]
+tests/test_e04u_independent.py::test_independent_deep_coherently_rehashed_cache_corruption[query_ref-3-nonparent] PASSED [ 70%]
+tests/test_e04u_independent.py::test_independent_deep_coherently_rehashed_cache_corruption[query_ref-3-scenario] PASSED [ 73%]
+tests/test_e04u_independent.py::test_projection_miss_with_withdrawn_native_grant_returns_typed_absence[nonparent] PASSED [ 75%]
+tests/test_e04u_independent.py::test_projection_miss_with_withdrawn_native_grant_returns_typed_absence[scenario] PASSED [ 78%]
+tests/test_e04u_independent.py::test_native_order_and_minority_follow_independently_counted_rows[conditions0] PASSED [ 80%]
+tests/test_e04u_independent.py::test_native_order_and_minority_follow_independently_counted_rows[conditions1] PASSED [ 82%]
+tests/test_e04u_independent.py::test_native_order_and_minority_follow_independently_counted_rows[conditions2] PASSED [ 85%]
+tests/test_e04u_independent.py::test_detached_nested_grant_alias_cannot_mutate_attached_native_registry[nonparent] PASSED [ 87%]
+tests/test_e04u_independent.py::test_detached_nested_grant_alias_cannot_mutate_attached_native_registry[scenario] PASSED [ 90%]
+tests/test_e04u_independent.py::test_structural_revision_is_not_empirical_revocation[nonparent] PASSED [ 92%]
+tests/test_e04u_independent.py::test_structural_revision_is_not_empirical_revocation[scenario] PASSED [ 95%]
+tests/test_e04u_independent.py::test_independent_cold_permission_hydration_before_any_native_query[withdrawn] PASSED [ 97%]
+tests/test_e04u_independent.py::test_independent_cold_permission_hydration_before_any_native_query[restored] PASSED [100%]
+
+- generated xml file: <RETURN>/observations/reviewer.xml -
+======================== 41 passed in 118.51s (0:01:58) ========================
+

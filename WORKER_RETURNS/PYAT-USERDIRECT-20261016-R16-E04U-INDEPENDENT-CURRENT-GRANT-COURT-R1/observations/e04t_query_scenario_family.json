@@ -1,0 +1,86 @@
+{
+  "error": "object family not named by exact authority",
+  "original": {
+    "schema_id": "AuthoritySnapshot",
+    "schema_version": "1.0.0",
+    "typed_state": "ALLOW",
+    "authority_snapshot_refs": [],
+    "dependency_refs": [],
+    "producer_replay_locator_or_reference_root": {
+      "kind": "REPLAY_ROOT",
+      "object_id": "urn:test:i03:replay_root:authority-e04-base-r1-query",
+      "content_hash": "b0d791f1178aaa62a6d896f5730ae72255bc6fa2107b922f5f79ec3f466a6693"
+    },
+    "semantic_fields": {
+      "authority_id": "I03-AUTH-e04-base-r1-query",
+      "authority_version": "1.0.0",
+      "authority_content_hash": "7a46272303d7956bb9615ce69a2d5d366216f3c7884ae9e900503cc50231bec4",
+      "authority_kind": "PREDICATE_GRAMMAR",
+      "decision_state": "ALLOW",
+      "governed_operations": [
+        "I03-OP-e04-base-r1-query"
+      ],
+      "governed_object_families": [
+        "EmpiricalFact@1.0.0",
+        "EmpiricalPredicate@1.0.0",
+        "EmpiricalQuerySpec@1.0.0"
+      ],
+      "scope_envelope": {
+        "source_universe_refs": "EXPLICIT_UNRESTRICTED"
+      },
+      "effective_time_or_interval": "ALL_TIME",
+      "parent_authority_refs": [],
+      "negative_limit_refs": [],
+      "supersession_refs": [],
+      "interpretation_semantics_fingerprint": "92b1edb1f48409d2d971f43d9de3c2b066453200385078676b9169be8c49a18d",
+      "replay_protocol_ref": {
+        "content_hash": "4b8040c2749a07c8fb7e9f6c70e0483ca1c36681330059f491bcf93c48bad9d8",
+        "kind": "REPLAY_PROTOCOL",
+        "object_id": "urn:test:i03:replay_protocol:e04-base-r1-query"
+      }
+    },
+    "object_id": "urn:rawlsing:pre553:AuthoritySnapshot:sha256:766a3cdaf130fd742d16f17c9f7d1b2a49a87c5f5928529a139b12b53de62765",
+    "content_hash": "766a3cdaf130fd742d16f17c9f7d1b2a49a87c5f5928529a139b12b53de62765"
+  },
+  "replacement": {
+    "schema_id": "AuthoritySnapshot",
+    "schema_version": "1.0.0",
+    "typed_state": "ALLOW",
+    "authority_snapshot_refs": [],
+    "dependency_refs": [],
+    "producer_replay_locator_or_reference_root": {
+      "kind": "REPLAY_ROOT",
+      "object_id": "urn:test:i03:replay_root:authority-e04-base-r1-query",
+      "content_hash": "b0d791f1178aaa62a6d896f5730ae72255bc6fa2107b922f5f79ec3f466a6693"
+    },
+    "semantic_fields": {
+      "authority_content_hash": "7a46272303d7956bb9615ce69a2d5d366216f3c7884ae9e900503cc50231bec4",
+      "authority_id": "I03-AUTH-e04-base-r1-query",
+      "authority_kind": "PREDICATE_GRAMMAR",
+      "authority_version": "1.0.0",
+      "decision_state": "ALLOW",
+      "effective_time_or_interval": "ALL_TIME",
+      "governed_object_families": [
+        "EmpiricalPredicate@1.0.0"
+      ],
+      "governed_operations": [
+        "I03-OP-e04-base-r1-query"
+      ],
+      "interpretation_semantics_fingerprint": "92b1edb1f48409d2d971f43d9de3c2b066453200385078676b9169be8c49a18d",
+      "negative_limit_refs": [],
+      "parent_authority_refs": [],
+      "replay_protocol_ref": {
+        "content_hash": "4b8040c2749a07c8fb7e9f6c70e0483ca1c36681330059f491bcf93c48bad9d8",
+        "kind": "REPLAY_PROTOCOL",
+        "object_id": "urn:test:i03:replay_protocol:e04-base-r1-query"
+      },
+      "scope_envelope": {
+        "source_universe_refs": "EXPLICIT_UNRESTRICTED"
+      },
+      "supersession_refs": []
+    },
+    "object_id": "urn:rawlsing:pre553:AuthoritySnapshot:sha256:6e69e014fb3a7d6491e03fd2bc4bc258981d3ba51e710c121b234f1021856787",
+    "content_hash": "6e69e014fb3a7d6491e03fd2bc4bc258981d3ba51e710c121b234f1021856787"
+  },
+  "same_exact_key": true
+}

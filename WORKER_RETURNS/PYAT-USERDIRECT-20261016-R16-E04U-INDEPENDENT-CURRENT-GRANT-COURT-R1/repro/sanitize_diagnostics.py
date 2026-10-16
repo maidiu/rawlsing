@@ -1,7 +1,7 @@
 """Portable new diagnostics only; never alter frozen original input bytes."""
 import pathlib,json,hashlib
 R=pathlib.Path(__file__).resolve().parents[1];rows=[]
-files=[*sorted((R/'observations').rglob('*.json')),*sorted((R/'observations').rglob('*.stdout')),*sorted((R/'observations').rglob('*.xml')),R/'03_TESTS_AND_ORIGINAL_JUNIT_RECONCILIATION.json',R/'07_ACTUAL_NATIVE_IMPORT_AND_CALL_PROOF.json']
+files=[*sorted((R/'observations').rglob('*.json')),*sorted((R/'observations').rglob('*.stdout')),*sorted((R/'observations').rglob('*.xml')),R/'02_REAL_OWNER_IMPORTS_E04S_A1_AND_CACHE_HOSTILES.json']
 for p in files:
  before=p.read_bytes();s=before.decode();token='&lt;RETURN&gt;' if p.suffix=='.xml' else '<RETURN>';home='&lt;USER_HOME&gt;' if p.suffix=='.xml' else '<USER_HOME>'
  after=s.replace(str(R),token).replace(str(pathlib.Path.home()),home).encode()

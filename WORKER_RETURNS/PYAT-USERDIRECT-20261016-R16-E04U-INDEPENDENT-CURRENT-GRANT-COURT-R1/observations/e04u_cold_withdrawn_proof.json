@@ -1,0 +1,984 @@
+{
+  "parent_pid": 82885,
+  "children": [
+    86316,
+    86318
+  ],
+  "fixture_sha256": "583b58b7967789525f5d55203066e6f2ea6f52d4ebb21b98ea2dc95e8c9627df",
+  "bit_identical": true,
+  "hydration_before_first_query": true,
+  "results": {
+    "state": "withdrawn",
+    "nonparent": {
+      "receipt_hash": "badb06aae325a701649c7238137224857f255dc2a80b6f4d4e998365392d4ddd",
+      "material": {
+        "consumer": "NONPARENT_OPTIONS",
+        "state": "PARTIAL_OPTIONS_OR_EMPIRICAL_SUPPORT",
+        "structural_routes": {
+          "training": {
+            "state": "ELIGIBLE",
+            "dependencies": [
+              "training_access",
+              "training_fee"
+            ],
+            "value_refs": [
+              {
+                "kind": "E04_TEST_ONLY_FIELD",
+                "object_id": "urn:test:e04:field:training_access:1",
+                "content_hash": "3b4b4859dcbe858480d097147c719ce9458d4e1d88b4f47898a0416fe01e7174"
+              },
+              {
+                "kind": "E04_TEST_ONLY_FIELD",
+                "object_id": "urn:test:e04:field:training_fee:1",
+                "content_hash": "7b81073f295d8eafe81abb7aaaac58251cd172d109325d87e2deb2f0b9b6f166"
+              }
+            ]
+          },
+          "civil": {
+            "state": "ELIGIBLE",
+            "dependencies": [
+              "civil_open",
+              "civil_sanction"
+            ],
+            "value_refs": [
+              {
+                "kind": "E04_TEST_ONLY_FIELD",
+                "object_id": "urn:test:e04:field:civil_open:1",
+                "content_hash": "704f450297cc2d79fdb4f4998bc5336c63524350a9983d378f5f500da920e27e"
+              },
+              {
+                "kind": "E04_TEST_ONLY_FIELD",
+                "object_id": "urn:test:e04:field:civil_sanction:1",
+                "content_hash": "fc9a722d4333076c338b0ad8993bac001e97de3d49ee816edebaacd85eb5154e"
+              }
+            ]
+          },
+          "exit_constraint": {
+            "state": "WITHIN_MODELED_BUDGET",
+            "dependencies": [
+              "exit_cost"
+            ],
+            "value_refs": [
+              {
+                "kind": "E04_TEST_ONLY_FIELD",
+                "object_id": "urn:test:e04:field:exit_cost:1",
+                "content_hash": "5281accc231a8cbedce249f25863bffeca0c4cc2a6fdd755c085b2e19092fbfd"
+              }
+            ]
+          }
+        },
+        "empirical": {
+          "state": "PARTIAL_TYPED_EMPIRICAL_SUPPORT",
+          "steps": [
+            {
+              "state": "UNAVAILABLE",
+              "cells": [],
+              "denominator": 0,
+              "geometry": null,
+              "uncertainty": "NO_SUPPORTED_EVIDENCE",
+              "dependencies": [
+                "empirical"
+              ],
+              "conditioners": [
+                [
+                  "A",
+                  1
+                ]
+              ],
+              "target": "Y",
+              "target_ref": {
+                "kind": "QUESTION_NATIVE",
+                "object_id": "urn:test:i03:question_native:E04_NATIVE_BINARY-Y",
+                "content_hash": "04c858ea88b4f950f32db9a0bb681c209406ce051df9ab67d85e3a69f6a4fdc2"
+              },
+              "source_universe_ref": {
+                "kind": "EmpiricalUniverse@1.0.0",
+                "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:f677fb8b8478ba78b9b526d5dcd7b3aa54070d4a4b90a1d2de6dc219ec177cda",
+                "content_hash": "f677fb8b8478ba78b9b526d5dcd7b3aa54070d4a4b90a1d2de6dc219ec177cda"
+              },
+              "release_ref": {
+                "kind": "C11LogicalRelease",
+                "object_id": "REL-e04-base-r1",
+                "content_hash": "5e795c3fd62b89aa00ca133777ff31df3cb42501d25a9b431fe0de03c54d161f"
+              },
+              "risk_set_ref": {
+                "content_hash": "92b5d73b5deb258ac67123c878d965ad07a7b3694a6830c7a010f6c0582d9fe0",
+                "kind": "RISK_SET",
+                "object_id": "urn:test:i03:risk_set:e04-base-r1-R_ALL"
+              },
+              "permission_root": "TEST_ONLY_E04_SOURCE_ROOT",
+              "producer_query_ref": {
+                "kind": "EmpiricalQuerySpec@1.0.0",
+                "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:639407e6dd446b7a5accc6b7789db34c2f2b1de183e5556ed13e43c3b26d726c",
+                "content_hash": "639407e6dd446b7a5accc6b7789db34c2f2b1de183e5556ed13e43c3b26d726c"
+              },
+              "producer_fact_ref": {
+                "kind": "EmpiricalFact@1.0.0",
+                "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:b2b5e34a9abfc79998e090fd11dc21c8ff3f01542dd32d30e2da23ccd838f3f4",
+                "content_hash": "b2b5e34a9abfc79998e090fd11dc21c8ff3f01542dd32d30e2da23ccd838f3f4"
+              },
+              "condition_witness_ref": {
+                "kind": "C1_CONDITION_VALUE_BINDING_WITNESS@2",
+                "object_id": "urn:test:e03:c7442995fc5a6361:witness",
+                "content_hash": "914546dad07e52e352892f567d75cb3cfd95a3f4faa510e8225981768b06679e"
+              },
+              "model_rule_hash": "b09145e0067d42c7f02e16277d614888db0fafec00c4362215ae884beaa2dbde"
+            },
+            {
+              "state": "UNAVAILABLE",
+              "cells": [],
+              "denominator": 0,
+              "geometry": null,
+              "uncertainty": "NO_SUPPORTED_EVIDENCE",
+              "dependencies": [
+                "empirical"
+              ],
+              "conditioners": [
+                [
+                  "A",
+                  1
+                ],
+                [
+                  "B",
+                  1
+                ]
+              ],
+              "target": "Y",
+              "target_ref": {
+                "kind": "QUESTION_NATIVE",
+                "object_id": "urn:test:i03:question_native:E04_NATIVE_BINARY-Y",
+                "content_hash": "04c858ea88b4f950f32db9a0bb681c209406ce051df9ab67d85e3a69f6a4fdc2"
+              },
+              "source_universe_ref": {
+                "kind": "EmpiricalUniverse@1.0.0",
+                "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:f677fb8b8478ba78b9b526d5dcd7b3aa54070d4a4b90a1d2de6dc219ec177cda",
+                "content_hash": "f677fb8b8478ba78b9b526d5dcd7b3aa54070d4a4b90a1d2de6dc219ec177cda"
+              },
+              "release_ref": {
+                "kind": "C11LogicalRelease",
+                "object_id": "REL-e04-base-r1",
+                "content_hash": "5e795c3fd62b89aa00ca133777ff31df3cb42501d25a9b431fe0de03c54d161f"
+              },
+              "risk_set_ref": {
+                "content_hash": "92b5d73b5deb258ac67123c878d965ad07a7b3694a6830c7a010f6c0582d9fe0",
+                "kind": "RISK_SET",
+                "object_id": "urn:test:i03:risk_set:e04-base-r1-R_ALL"
+              },
+              "permission_root": "TEST_ONLY_E04_SOURCE_ROOT",
+              "producer_query_ref": {
+                "kind": "EmpiricalQuerySpec@1.0.0",
+                "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:13904da2c25c9f742ca33825d300d3fbca784b64a1d7106bf31d7ce5f1791f9f",
+                "content_hash": "13904da2c25c9f742ca33825d300d3fbca784b64a1d7106bf31d7ce5f1791f9f"
+              },
+              "producer_fact_ref": {
+                "kind": "EmpiricalFact@1.0.0",
+                "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:cd577215d7763617fddfe9807095ced812b5e86fed30e02785155e5b6da6adfe",
+                "content_hash": "cd577215d7763617fddfe9807095ced812b5e86fed30e02785155e5b6da6adfe"
+              },
+              "condition_witness_ref": {
+                "kind": "C1_CONDITION_VALUE_BINDING_WITNESS@2",
+                "object_id": "urn:test:e03:985ce09886d07c69:witness",
+                "content_hash": "7bae190f907d52c70c04562bdec8fa1f5b72e3bd9523b651003716629d942d24"
+              },
+              "model_rule_hash": "b09145e0067d42c7f02e16277d614888db0fafec00c4362215ae884beaa2dbde"
+            },
+            {
+              "state": "UNAVAILABLE",
+              "cells": [],
+              "denominator": 0,
+              "geometry": null,
+              "uncertainty": "NO_SUPPORTED_EVIDENCE",
+              "dependencies": [
+                "empirical"
+              ],
+              "conditioners": [
+                [
+                  "A",
+                  1
+                ],
+                [
+                  "B",
+                  1
+                ],
+                [
+                  "C",
+                  1
+                ]
+              ],
+              "target": "Y",
+              "target_ref": {
+                "kind": "QUESTION_NATIVE",
+                "object_id": "urn:test:i03:question_native:E04_NATIVE_BINARY-Y",
+                "content_hash": "04c858ea88b4f950f32db9a0bb681c209406ce051df9ab67d85e3a69f6a4fdc2"
+              },
+              "source_universe_ref": {
+                "kind": "EmpiricalUniverse@1.0.0",
+                "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:f677fb8b8478ba78b9b526d5dcd7b3aa54070d4a4b90a1d2de6dc219ec177cda",
+                "content_hash": "f677fb8b8478ba78b9b526d5dcd7b3aa54070d4a4b90a1d2de6dc219ec177cda"
+              },
+              "release_ref": {
+                "kind": "C11LogicalRelease",
+                "object_id": "REL-e04-base-r1",
+                "content_hash": "5e795c3fd62b89aa00ca133777ff31df3cb42501d25a9b431fe0de03c54d161f"
+              },
+              "risk_set_ref": {
+                "content_hash": "92b5d73b5deb258ac67123c878d965ad07a7b3694a6830c7a010f6c0582d9fe0",
+                "kind": "RISK_SET",
+                "object_id": "urn:test:i03:risk_set:e04-base-r1-R_ALL"
+              },
+              "permission_root": "TEST_ONLY_E04_SOURCE_ROOT",
+              "producer_query_ref": {
+                "kind": "EmpiricalQuerySpec@1.0.0",
+                "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:2ccb337a894b76474855d615c3c14c7d74ec217f61ad4f345d2f25efe32448a3",
+                "content_hash": "2ccb337a894b76474855d615c3c14c7d74ec217f61ad4f345d2f25efe32448a3"
+              },
+              "producer_fact_ref": {
+                "kind": "EmpiricalFact@1.0.0",
+                "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:0ca4adcc80383c49b83e13cd0e7354fe002ed3d615dd62e08f1bc1eb6c6299fe",
+                "content_hash": "0ca4adcc80383c49b83e13cd0e7354fe002ed3d615dd62e08f1bc1eb6c6299fe"
+              },
+              "condition_witness_ref": {
+                "kind": "C1_CONDITION_VALUE_BINDING_WITNESS@2",
+                "object_id": "urn:test:e03:8fce7d0b5482a506:witness",
+                "content_hash": "04c814ddafd8d7740d094094c06f9e77d0cfa7b32d71481f84dfad4089af4c57"
+              },
+              "model_rule_hash": "b09145e0067d42c7f02e16277d614888db0fafec00c4362215ae884beaa2dbde"
+            }
+          ],
+          "dependencies": [
+            "empirical"
+          ],
+          "native_time": "2026-01",
+          "claim_ceiling": "SOURCE_LOCAL_EMPIRICAL_POSSIBILITY_NOT_CAUSAL_OR_PERSONAL",
+          "source_root": "TEST_ONLY_E04_SOURCE_ROOT"
+        },
+        "source_balance_reads": [
+          {
+            "target": "Y",
+            "conditioners": [
+              [
+                "A",
+                1
+              ]
+            ],
+            "denominator": 0,
+            "source_balance_count": null,
+            "all_alternatives": [],
+            "support_state": "UNAVAILABLE",
+            "source_balance_null_reason": "NO_COMPLETE_SUPPORTED_BINARY_CELLS",
+            "evidence_ref": null
+          },
+          {
+            "target": "Y",
+            "conditioners": [
+              [
+                "A",
+                1
+              ],
+              [
+                "B",
+                1
+              ]
+            ],
+            "denominator": 0,
+            "source_balance_count": null,
+            "all_alternatives": [],
+            "support_state": "UNAVAILABLE",
+            "source_balance_null_reason": "NO_COMPLETE_SUPPORTED_BINARY_CELLS",
+            "evidence_ref": null
+          },
+          {
+            "target": "Y",
+            "conditioners": [
+              [
+                "A",
+                1
+              ],
+              [
+                "B",
+                1
+              ],
+              [
+                "C",
+                1
+              ]
+            ],
+            "denominator": 0,
+            "source_balance_count": null,
+            "all_alternatives": [],
+            "support_state": "UNAVAILABLE",
+            "source_balance_null_reason": "NO_COMPLETE_SUPPORTED_BINARY_CELLS",
+            "evidence_ref": null
+          }
+        ],
+        "route_probability": null,
+        "route_probability_reason": "NO_JOINT_EMPIRICAL_STRUCTURAL_ROUTE_MODEL",
+        "dependencies": [
+          "empirical",
+          "training_access",
+          "training_fee",
+          "exit_cost",
+          "civil_open",
+          "civil_sanction"
+        ],
+        "values_read": [
+          {
+            "consumer": "NONPARENT_OPTIONS",
+            "channel": "structural",
+            "scope": "training_access",
+            "source_ref": {
+              "kind": "E04_TEST_ONLY_FIELD",
+              "object_id": "urn:test:e04:field:training_access:1",
+              "content_hash": "3b4b4859dcbe858480d097147c719ce9458d4e1d88b4f47898a0416fe01e7174"
+            },
+            "state": "SUPPORTED_TEST_ONLY",
+            "value_read": true,
+            "native_unit": "modeled policy eligibility boolean",
+            "snapshot_ref": "faf846a0ff926c42fb9360f322c344c1e57793214ab07d57bf2d41aa430bab5c"
+          },
+          {
+            "consumer": "NONPARENT_OPTIONS",
+            "channel": "structural",
+            "scope": "training_fee",
+            "source_ref": {
+              "kind": "E04_TEST_ONLY_FIELD",
+              "object_id": "urn:test:e04:field:training_fee:1",
+              "content_hash": "7b81073f295d8eafe81abb7aaaac58251cd172d109325d87e2deb2f0b9b6f166"
+            },
+            "state": "SUPPORTED_TEST_ONLY",
+            "value_read": 2,
+            "native_unit": "modeled resource tokens",
+            "snapshot_ref": "faf846a0ff926c42fb9360f322c344c1e57793214ab07d57bf2d41aa430bab5c"
+          },
+          {
+            "consumer": "NONPARENT_OPTIONS",
+            "channel": "structural",
+            "scope": "exit_cost",
+            "source_ref": {
+              "kind": "E04_TEST_ONLY_FIELD",
+              "object_id": "urn:test:e04:field:exit_cost:1",
+              "content_hash": "5281accc231a8cbedce249f25863bffeca0c4cc2a6fdd755c085b2e19092fbfd"
+            },
+            "state": "SUPPORTED_TEST_ONLY",
+            "value_read": 2,
+            "native_unit": "modeled resource tokens",
+            "snapshot_ref": "faf846a0ff926c42fb9360f322c344c1e57793214ab07d57bf2d41aa430bab5c"
+          },
+          {
+            "consumer": "NONPARENT_OPTIONS",
+            "channel": "structural",
+            "scope": "civil_open",
+            "source_ref": {
+              "kind": "E04_TEST_ONLY_FIELD",
+              "object_id": "urn:test:e04:field:civil_open:1",
+              "content_hash": "704f450297cc2d79fdb4f4998bc5336c63524350a9983d378f5f500da920e27e"
+            },
+            "state": "SUPPORTED_TEST_ONLY",
+            "value_read": true,
+            "native_unit": "modeled route eligibility boolean",
+            "snapshot_ref": "faf846a0ff926c42fb9360f322c344c1e57793214ab07d57bf2d41aa430bab5c"
+          },
+          {
+            "consumer": "NONPARENT_OPTIONS",
+            "channel": "structural",
+            "scope": "civil_sanction",
+            "source_ref": {
+              "kind": "E04_TEST_ONLY_FIELD",
+              "object_id": "urn:test:e04:field:civil_sanction:1",
+              "content_hash": "fc9a722d4333076c338b0ad8993bac001e97de3d49ee816edebaacd85eb5154e"
+            },
+            "state": "SUPPORTED_TEST_ONLY",
+            "value_read": false,
+            "native_unit": "modeled sanction boolean",
+            "snapshot_ref": "faf846a0ff926c42fb9360f322c344c1e57793214ab07d57bf2d41aa430bab5c"
+          },
+          {
+            "consumer": "NONPARENT_OPTIONS",
+            "channel": "empirical",
+            "scope": "empirical",
+            "state": "UNAVAILABLE",
+            "evidence_ref": null,
+            "source_ref": {
+              "kind": "EmpiricalUniverse@1.0.0",
+              "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:f677fb8b8478ba78b9b526d5dcd7b3aa54070d4a4b90a1d2de6dc219ec177cda",
+              "content_hash": "f677fb8b8478ba78b9b526d5dcd7b3aa54070d4a4b90a1d2de6dc219ec177cda"
+            },
+            "release_ref": {
+              "kind": "C11LogicalRelease",
+              "object_id": "REL-e04-base-r1",
+              "content_hash": "5e795c3fd62b89aa00ca133777ff31df3cb42501d25a9b431fe0de03c54d161f"
+            },
+            "value_read": [],
+            "denominator": 0,
+            "query_condition_order": [
+              [
+                "A",
+                1
+              ]
+            ],
+            "target": "Y",
+            "snapshot_ref": "faf846a0ff926c42fb9360f322c344c1e57793214ab07d57bf2d41aa430bab5c"
+          },
+          {
+            "consumer": "NONPARENT_OPTIONS",
+            "channel": "empirical",
+            "scope": "empirical",
+            "state": "UNAVAILABLE",
+            "evidence_ref": null,
+            "source_ref": {
+              "kind": "EmpiricalUniverse@1.0.0",
+              "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:f677fb8b8478ba78b9b526d5dcd7b3aa54070d4a4b90a1d2de6dc219ec177cda",
+              "content_hash": "f677fb8b8478ba78b9b526d5dcd7b3aa54070d4a4b90a1d2de6dc219ec177cda"
+            },
+            "release_ref": {
+              "kind": "C11LogicalRelease",
+              "object_id": "REL-e04-base-r1",
+              "content_hash": "5e795c3fd62b89aa00ca133777ff31df3cb42501d25a9b431fe0de03c54d161f"
+            },
+            "value_read": [],
+            "denominator": 0,
+            "query_condition_order": [
+              [
+                "A",
+                1
+              ],
+              [
+                "B",
+                1
+              ]
+            ],
+            "target": "Y",
+            "snapshot_ref": "faf846a0ff926c42fb9360f322c344c1e57793214ab07d57bf2d41aa430bab5c"
+          },
+          {
+            "consumer": "NONPARENT_OPTIONS",
+            "channel": "empirical",
+            "scope": "empirical",
+            "state": "UNAVAILABLE",
+            "evidence_ref": null,
+            "source_ref": {
+              "kind": "EmpiricalUniverse@1.0.0",
+              "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:f677fb8b8478ba78b9b526d5dcd7b3aa54070d4a4b90a1d2de6dc219ec177cda",
+              "content_hash": "f677fb8b8478ba78b9b526d5dcd7b3aa54070d4a4b90a1d2de6dc219ec177cda"
+            },
+            "release_ref": {
+              "kind": "C11LogicalRelease",
+              "object_id": "REL-e04-base-r1",
+              "content_hash": "5e795c3fd62b89aa00ca133777ff31df3cb42501d25a9b431fe0de03c54d161f"
+            },
+            "value_read": [],
+            "denominator": 0,
+            "query_condition_order": [
+              [
+                "A",
+                1
+              ],
+              [
+                "B",
+                1
+              ],
+              [
+                "C",
+                1
+              ]
+            ],
+            "target": "Y",
+            "snapshot_ref": "faf846a0ff926c42fb9360f322c344c1e57793214ab07d57bf2d41aa430bab5c"
+          }
+        ],
+        "snapshot_ref": "faf846a0ff926c42fb9360f322c344c1e57793214ab07d57bf2d41aa430bab5c",
+        "service_contract": "E04_GENERIC_SELECTED_WORLD_POSSIBILITY_SERVICE_CANDIDATE@1",
+        "grade": "TEST_ONLY_SOURCEFREE_CANDIDATE",
+        "operative_N9": false,
+        "operative_N10W": false,
+        "new_issuer": false,
+        "actor_executions": 0,
+        "model_calls": 0
+      }
+    },
+    "scenario": {
+      "receipt_hash": "576a06c9e0c29c626babe1e98f1271a3130597f339d10fc55d1fa89ab0d18941",
+      "material": {
+        "consumer": "CONCEPTION_SCENARIO_PROPOSALS",
+        "state": "PARTIAL_PROPOSALS_EVALUATED",
+        "scenarios": [
+          {
+            "scenario_id": "independent-institution",
+            "route": "institutional",
+            "feasibility": "FEASIBLE_MODELED_PREMISE",
+            "structural_value_refs": [
+              {
+                "kind": "E04_TEST_ONLY_FIELD",
+                "object_id": "urn:test:e04:field:training_access:1",
+                "content_hash": "3b4b4859dcbe858480d097147c719ce9458d4e1d88b4f47898a0416fe01e7174"
+              }
+            ],
+            "empirical_profiles": [
+              {
+                "denominator": 0,
+                "complete_native_cells": [],
+                "conditioners": [
+                  [
+                    "A",
+                    1
+                  ]
+                ],
+                "evidence_ref": null
+              },
+              {
+                "denominator": 0,
+                "complete_native_cells": [],
+                "conditioners": [
+                  [
+                    "A",
+                    1
+                  ],
+                  [
+                    "B",
+                    1
+                  ]
+                ],
+                "evidence_ref": null
+              },
+              {
+                "denominator": 0,
+                "complete_native_cells": [],
+                "conditioners": [
+                  [
+                    "A",
+                    1
+                  ],
+                  [
+                    "B",
+                    1
+                  ],
+                  [
+                    "C",
+                    1
+                  ]
+                ],
+                "evidence_ref": null
+              }
+            ],
+            "selection_weight": null,
+            "weight_reason": "NO_SCENARIO_SELECTION_MODEL_OR_ISSUER",
+            "dependencies": [
+              "training_access"
+            ]
+          },
+          {
+            "scenario_id": "independent-civil",
+            "route": "civil",
+            "feasibility": "FEASIBLE_MODELED_PREMISE",
+            "structural_value_refs": [
+              {
+                "kind": "E04_TEST_ONLY_FIELD",
+                "object_id": "urn:test:e04:field:civil_open:1",
+                "content_hash": "704f450297cc2d79fdb4f4998bc5336c63524350a9983d378f5f500da920e27e"
+              },
+              {
+                "kind": "E04_TEST_ONLY_FIELD",
+                "object_id": "urn:test:e04:field:civil_sanction:1",
+                "content_hash": "fc9a722d4333076c338b0ad8993bac001e97de3d49ee816edebaacd85eb5154e"
+              }
+            ],
+            "empirical_profiles": [
+              {
+                "denominator": 0,
+                "complete_native_cells": [],
+                "conditioners": [
+                  [
+                    "A",
+                    1
+                  ]
+                ],
+                "evidence_ref": null
+              },
+              {
+                "denominator": 0,
+                "complete_native_cells": [],
+                "conditioners": [
+                  [
+                    "A",
+                    1
+                  ],
+                  [
+                    "B",
+                    1
+                  ]
+                ],
+                "evidence_ref": null
+              },
+              {
+                "denominator": 0,
+                "complete_native_cells": [],
+                "conditioners": [
+                  [
+                    "A",
+                    1
+                  ],
+                  [
+                    "B",
+                    1
+                  ],
+                  [
+                    "C",
+                    1
+                  ]
+                ],
+                "evidence_ref": null
+              }
+            ],
+            "selection_weight": null,
+            "weight_reason": "NO_SCENARIO_SELECTION_MODEL_OR_ISSUER",
+            "dependencies": [
+              "civil_open",
+              "civil_sanction"
+            ]
+          }
+        ],
+        "empirical": {
+          "state": "PARTIAL_TYPED_EMPIRICAL_SUPPORT",
+          "steps": [
+            {
+              "state": "UNAVAILABLE",
+              "cells": [],
+              "denominator": 0,
+              "geometry": null,
+              "uncertainty": "NO_SUPPORTED_EVIDENCE",
+              "dependencies": [
+                "empirical"
+              ],
+              "conditioners": [
+                [
+                  "A",
+                  1
+                ]
+              ],
+              "target": "Y",
+              "target_ref": {
+                "kind": "QUESTION_NATIVE",
+                "object_id": "urn:test:i03:question_native:E04_NATIVE_BINARY-Y",
+                "content_hash": "04c858ea88b4f950f32db9a0bb681c209406ce051df9ab67d85e3a69f6a4fdc2"
+              },
+              "source_universe_ref": {
+                "kind": "EmpiricalUniverse@1.0.0",
+                "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:f677fb8b8478ba78b9b526d5dcd7b3aa54070d4a4b90a1d2de6dc219ec177cda",
+                "content_hash": "f677fb8b8478ba78b9b526d5dcd7b3aa54070d4a4b90a1d2de6dc219ec177cda"
+              },
+              "release_ref": {
+                "kind": "C11LogicalRelease",
+                "object_id": "REL-e04-base-r1",
+                "content_hash": "5e795c3fd62b89aa00ca133777ff31df3cb42501d25a9b431fe0de03c54d161f"
+              },
+              "risk_set_ref": {
+                "content_hash": "92b5d73b5deb258ac67123c878d965ad07a7b3694a6830c7a010f6c0582d9fe0",
+                "kind": "RISK_SET",
+                "object_id": "urn:test:i03:risk_set:e04-base-r1-R_ALL"
+              },
+              "permission_root": "TEST_ONLY_E04_SOURCE_ROOT",
+              "producer_query_ref": {
+                "kind": "EmpiricalQuerySpec@1.0.0",
+                "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:639407e6dd446b7a5accc6b7789db34c2f2b1de183e5556ed13e43c3b26d726c",
+                "content_hash": "639407e6dd446b7a5accc6b7789db34c2f2b1de183e5556ed13e43c3b26d726c"
+              },
+              "producer_fact_ref": {
+                "kind": "EmpiricalFact@1.0.0",
+                "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:b2b5e34a9abfc79998e090fd11dc21c8ff3f01542dd32d30e2da23ccd838f3f4",
+                "content_hash": "b2b5e34a9abfc79998e090fd11dc21c8ff3f01542dd32d30e2da23ccd838f3f4"
+              },
+              "condition_witness_ref": {
+                "kind": "C1_CONDITION_VALUE_BINDING_WITNESS@2",
+                "object_id": "urn:test:e03:c7442995fc5a6361:witness",
+                "content_hash": "914546dad07e52e352892f567d75cb3cfd95a3f4faa510e8225981768b06679e"
+              },
+              "model_rule_hash": "b09145e0067d42c7f02e16277d614888db0fafec00c4362215ae884beaa2dbde"
+            },
+            {
+              "state": "UNAVAILABLE",
+              "cells": [],
+              "denominator": 0,
+              "geometry": null,
+              "uncertainty": "NO_SUPPORTED_EVIDENCE",
+              "dependencies": [
+                "empirical"
+              ],
+              "conditioners": [
+                [
+                  "A",
+                  1
+                ],
+                [
+                  "B",
+                  1
+                ]
+              ],
+              "target": "Y",
+              "target_ref": {
+                "kind": "QUESTION_NATIVE",
+                "object_id": "urn:test:i03:question_native:E04_NATIVE_BINARY-Y",
+                "content_hash": "04c858ea88b4f950f32db9a0bb681c209406ce051df9ab67d85e3a69f6a4fdc2"
+              },
+              "source_universe_ref": {
+                "kind": "EmpiricalUniverse@1.0.0",
+                "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:f677fb8b8478ba78b9b526d5dcd7b3aa54070d4a4b90a1d2de6dc219ec177cda",
+                "content_hash": "f677fb8b8478ba78b9b526d5dcd7b3aa54070d4a4b90a1d2de6dc219ec177cda"
+              },
+              "release_ref": {
+                "kind": "C11LogicalRelease",
+                "object_id": "REL-e04-base-r1",
+                "content_hash": "5e795c3fd62b89aa00ca133777ff31df3cb42501d25a9b431fe0de03c54d161f"
+              },
+              "risk_set_ref": {
+                "content_hash": "92b5d73b5deb258ac67123c878d965ad07a7b3694a6830c7a010f6c0582d9fe0",
+                "kind": "RISK_SET",
+                "object_id": "urn:test:i03:risk_set:e04-base-r1-R_ALL"
+              },
+              "permission_root": "TEST_ONLY_E04_SOURCE_ROOT",
+              "producer_query_ref": {
+                "kind": "EmpiricalQuerySpec@1.0.0",
+                "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:13904da2c25c9f742ca33825d300d3fbca784b64a1d7106bf31d7ce5f1791f9f",
+                "content_hash": "13904da2c25c9f742ca33825d300d3fbca784b64a1d7106bf31d7ce5f1791f9f"
+              },
+              "producer_fact_ref": {
+                "kind": "EmpiricalFact@1.0.0",
+                "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:cd577215d7763617fddfe9807095ced812b5e86fed30e02785155e5b6da6adfe",
+                "content_hash": "cd577215d7763617fddfe9807095ced812b5e86fed30e02785155e5b6da6adfe"
+              },
+              "condition_witness_ref": {
+                "kind": "C1_CONDITION_VALUE_BINDING_WITNESS@2",
+                "object_id": "urn:test:e03:985ce09886d07c69:witness",
+                "content_hash": "7bae190f907d52c70c04562bdec8fa1f5b72e3bd9523b651003716629d942d24"
+              },
+              "model_rule_hash": "b09145e0067d42c7f02e16277d614888db0fafec00c4362215ae884beaa2dbde"
+            },
+            {
+              "state": "UNAVAILABLE",
+              "cells": [],
+              "denominator": 0,
+              "geometry": null,
+              "uncertainty": "NO_SUPPORTED_EVIDENCE",
+              "dependencies": [
+                "empirical"
+              ],
+              "conditioners": [
+                [
+                  "A",
+                  1
+                ],
+                [
+                  "B",
+                  1
+                ],
+                [
+                  "C",
+                  1
+                ]
+              ],
+              "target": "Y",
+              "target_ref": {
+                "kind": "QUESTION_NATIVE",
+                "object_id": "urn:test:i03:question_native:E04_NATIVE_BINARY-Y",
+                "content_hash": "04c858ea88b4f950f32db9a0bb681c209406ce051df9ab67d85e3a69f6a4fdc2"
+              },
+              "source_universe_ref": {
+                "kind": "EmpiricalUniverse@1.0.0",
+                "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:f677fb8b8478ba78b9b526d5dcd7b3aa54070d4a4b90a1d2de6dc219ec177cda",
+                "content_hash": "f677fb8b8478ba78b9b526d5dcd7b3aa54070d4a4b90a1d2de6dc219ec177cda"
+              },
+              "release_ref": {
+                "kind": "C11LogicalRelease",
+                "object_id": "REL-e04-base-r1",
+                "content_hash": "5e795c3fd62b89aa00ca133777ff31df3cb42501d25a9b431fe0de03c54d161f"
+              },
+              "risk_set_ref": {
+                "content_hash": "92b5d73b5deb258ac67123c878d965ad07a7b3694a6830c7a010f6c0582d9fe0",
+                "kind": "RISK_SET",
+                "object_id": "urn:test:i03:risk_set:e04-base-r1-R_ALL"
+              },
+              "permission_root": "TEST_ONLY_E04_SOURCE_ROOT",
+              "producer_query_ref": {
+                "kind": "EmpiricalQuerySpec@1.0.0",
+                "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:2ccb337a894b76474855d615c3c14c7d74ec217f61ad4f345d2f25efe32448a3",
+                "content_hash": "2ccb337a894b76474855d615c3c14c7d74ec217f61ad4f345d2f25efe32448a3"
+              },
+              "producer_fact_ref": {
+                "kind": "EmpiricalFact@1.0.0",
+                "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:0ca4adcc80383c49b83e13cd0e7354fe002ed3d615dd62e08f1bc1eb6c6299fe",
+                "content_hash": "0ca4adcc80383c49b83e13cd0e7354fe002ed3d615dd62e08f1bc1eb6c6299fe"
+              },
+              "condition_witness_ref": {
+                "kind": "C1_CONDITION_VALUE_BINDING_WITNESS@2",
+                "object_id": "urn:test:e03:8fce7d0b5482a506:witness",
+                "content_hash": "04c814ddafd8d7740d094094c06f9e77d0cfa7b32d71481f84dfad4089af4c57"
+              },
+              "model_rule_hash": "b09145e0067d42c7f02e16277d614888db0fafec00c4362215ae884beaa2dbde"
+            }
+          ],
+          "dependencies": [
+            "empirical"
+          ],
+          "native_time": "2026-01",
+          "claim_ceiling": "SOURCE_LOCAL_EMPIRICAL_POSSIBILITY_NOT_CAUSAL_OR_PERSONAL",
+          "source_root": "TEST_ONLY_E04_SOURCE_ROOT"
+        },
+        "person_generation": false,
+        "actual_conception": false,
+        "relationships_generated": false,
+        "values_read": [
+          {
+            "consumer": "CONCEPTION_SCENARIO_PROPOSALS",
+            "channel": "empirical",
+            "scope": "empirical",
+            "state": "UNAVAILABLE",
+            "evidence_ref": null,
+            "source_ref": {
+              "kind": "EmpiricalUniverse@1.0.0",
+              "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:f677fb8b8478ba78b9b526d5dcd7b3aa54070d4a4b90a1d2de6dc219ec177cda",
+              "content_hash": "f677fb8b8478ba78b9b526d5dcd7b3aa54070d4a4b90a1d2de6dc219ec177cda"
+            },
+            "release_ref": {
+              "kind": "C11LogicalRelease",
+              "object_id": "REL-e04-base-r1",
+              "content_hash": "5e795c3fd62b89aa00ca133777ff31df3cb42501d25a9b431fe0de03c54d161f"
+            },
+            "value_read": [],
+            "denominator": 0,
+            "query_condition_order": [
+              [
+                "A",
+                1
+              ]
+            ],
+            "target": "Y",
+            "snapshot_ref": "faf846a0ff926c42fb9360f322c344c1e57793214ab07d57bf2d41aa430bab5c"
+          },
+          {
+            "consumer": "CONCEPTION_SCENARIO_PROPOSALS",
+            "channel": "empirical",
+            "scope": "empirical",
+            "state": "UNAVAILABLE",
+            "evidence_ref": null,
+            "source_ref": {
+              "kind": "EmpiricalUniverse@1.0.0",
+              "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:f677fb8b8478ba78b9b526d5dcd7b3aa54070d4a4b90a1d2de6dc219ec177cda",
+              "content_hash": "f677fb8b8478ba78b9b526d5dcd7b3aa54070d4a4b90a1d2de6dc219ec177cda"
+            },
+            "release_ref": {
+              "kind": "C11LogicalRelease",
+              "object_id": "REL-e04-base-r1",
+              "content_hash": "5e795c3fd62b89aa00ca133777ff31df3cb42501d25a9b431fe0de03c54d161f"
+            },
+            "value_read": [],
+            "denominator": 0,
+            "query_condition_order": [
+              [
+                "A",
+                1
+              ],
+              [
+                "B",
+                1
+              ]
+            ],
+            "target": "Y",
+            "snapshot_ref": "faf846a0ff926c42fb9360f322c344c1e57793214ab07d57bf2d41aa430bab5c"
+          },
+          {
+            "consumer": "CONCEPTION_SCENARIO_PROPOSALS",
+            "channel": "empirical",
+            "scope": "empirical",
+            "state": "UNAVAILABLE",
+            "evidence_ref": null,
+            "source_ref": {
+              "kind": "EmpiricalUniverse@1.0.0",
+              "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:f677fb8b8478ba78b9b526d5dcd7b3aa54070d4a4b90a1d2de6dc219ec177cda",
+              "content_hash": "f677fb8b8478ba78b9b526d5dcd7b3aa54070d4a4b90a1d2de6dc219ec177cda"
+            },
+            "release_ref": {
+              "kind": "C11LogicalRelease",
+              "object_id": "REL-e04-base-r1",
+              "content_hash": "5e795c3fd62b89aa00ca133777ff31df3cb42501d25a9b431fe0de03c54d161f"
+            },
+            "value_read": [],
+            "denominator": 0,
+            "query_condition_order": [
+              [
+                "A",
+                1
+              ],
+              [
+                "B",
+                1
+              ],
+              [
+                "C",
+                1
+              ]
+            ],
+            "target": "Y",
+            "snapshot_ref": "faf846a0ff926c42fb9360f322c344c1e57793214ab07d57bf2d41aa430bab5c"
+          },
+          {
+            "consumer": "CONCEPTION_SCENARIO_PROPOSALS",
+            "channel": "structural",
+            "scope": "training_access",
+            "source_ref": {
+              "kind": "E04_TEST_ONLY_FIELD",
+              "object_id": "urn:test:e04:field:training_access:1",
+              "content_hash": "3b4b4859dcbe858480d097147c719ce9458d4e1d88b4f47898a0416fe01e7174"
+            },
+            "state": "SUPPORTED_TEST_ONLY",
+            "value_read": true,
+            "native_unit": "modeled policy eligibility boolean",
+            "snapshot_ref": "faf846a0ff926c42fb9360f322c344c1e57793214ab07d57bf2d41aa430bab5c"
+          },
+          {
+            "consumer": "CONCEPTION_SCENARIO_PROPOSALS",
+            "channel": "structural",
+            "scope": "civil_open",
+            "source_ref": {
+              "kind": "E04_TEST_ONLY_FIELD",
+              "object_id": "urn:test:e04:field:civil_open:1",
+              "content_hash": "704f450297cc2d79fdb4f4998bc5336c63524350a9983d378f5f500da920e27e"
+            },
+            "state": "SUPPORTED_TEST_ONLY",
+            "value_read": true,
+            "native_unit": "modeled route eligibility boolean",
+            "snapshot_ref": "faf846a0ff926c42fb9360f322c344c1e57793214ab07d57bf2d41aa430bab5c"
+          },
+          {
+            "consumer": "CONCEPTION_SCENARIO_PROPOSALS",
+            "channel": "structural",
+            "scope": "civil_sanction",
+            "source_ref": {
+              "kind": "E04_TEST_ONLY_FIELD",
+              "object_id": "urn:test:e04:field:civil_sanction:1",
+              "content_hash": "fc9a722d4333076c338b0ad8993bac001e97de3d49ee816edebaacd85eb5154e"
+            },
+            "state": "SUPPORTED_TEST_ONLY",
+            "value_read": false,
+            "native_unit": "modeled sanction boolean",
+            "snapshot_ref": "faf846a0ff926c42fb9360f322c344c1e57793214ab07d57bf2d41aa430bab5c"
+          }
+        ],
+        "dependencies": [
+          "civil_open",
+          "civil_sanction",
+          "empirical",
+          "training_access"
+        ],
+        "snapshot_ref": "faf846a0ff926c42fb9360f322c344c1e57793214ab07d57bf2d41aa430bab5c",
+        "service_contract": "E04_GENERIC_SELECTED_WORLD_POSSIBILITY_SERVICE_CANDIDATE@1",
+        "grade": "TEST_ONLY_SOURCEFREE_CANDIDATE",
+        "operative_N9": false,
+        "operative_N10W": false,
+        "new_issuer": false,
+        "actor_executions": 0,
+        "model_calls": 0
+      }
+    },
+    "foreign_projection_refused": "UNATTESTED_NATIVE_CACHE_ENTRY",
+    "permission_fixture_attached_before_query": true
+  }
+}

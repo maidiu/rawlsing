@@ -1,0 +1,49 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.11.3, pytest-9.0.2, pluggy-1.6.0 -- /usr/local/bin/python3.11
+rootdir: <RETURN>
+collecting ... collected 40 items
+
+tests/test_current_grant_lifecycle.py::test_each_exact_native_grant_withdrawal_and_restoration[query-nonparent] PASSED [  2%]
+tests/test_current_grant_lifecycle.py::test_each_exact_native_grant_withdrawal_and_restoration[query-scenario] PASSED [  5%]
+tests/test_current_grant_lifecycle.py::test_each_exact_native_grant_withdrawal_and_restoration[source-nonparent] PASSED [  7%]
+tests/test_current_grant_lifecycle.py::test_each_exact_native_grant_withdrawal_and_restoration[source-scenario] PASSED [ 10%]
+tests/test_current_grant_lifecycle.py::test_each_exact_native_grant_withdrawal_and_restoration[coordinate-nonparent] PASSED [ 12%]
+tests/test_current_grant_lifecycle.py::test_each_exact_native_grant_withdrawal_and_restoration[coordinate-scenario] PASSED [ 15%]
+tests/test_current_grant_lifecycle.py::test_each_exact_native_grant_withdrawal_and_restoration[routing-nonparent] PASSED [ 17%]
+tests/test_current_grant_lifecycle.py::test_each_exact_native_grant_withdrawal_and_restoration[routing-scenario] PASSED [ 20%]
+tests/test_current_grant_lifecycle.py::test_each_exact_native_grant_withdrawal_and_restoration[replay-nonparent] PASSED [ 22%]
+tests/test_current_grant_lifecycle.py::test_each_exact_native_grant_withdrawal_and_restoration[replay-scenario] PASSED [ 25%]
+tests/test_current_grant_lifecycle.py::test_replacement_registry_with_exact_grants_remains_productive[False-nonparent] PASSED [ 27%]
+tests/test_current_grant_lifecycle.py::test_replacement_registry_with_exact_grants_remains_productive[False-scenario] PASSED [ 30%]
+tests/test_current_grant_lifecycle.py::test_replacement_registry_with_exact_grants_remains_productive[True-nonparent] PASSED [ 32%]
+tests/test_current_grant_lifecycle.py::test_replacement_registry_with_exact_grants_remains_productive[True-scenario] PASSED [ 35%]
+tests/test_current_grant_lifecycle.py::test_current_query_permission_cannot_be_replaced_by_nearby_grant[operation-nonparent] PASSED [ 37%]
+tests/test_current_grant_lifecycle.py::test_current_query_permission_cannot_be_replaced_by_nearby_grant[operation-scenario] PASSED [ 40%]
+tests/test_current_grant_lifecycle.py::test_current_query_permission_cannot_be_replaced_by_nearby_grant[family-nonparent] PASSED [ 42%]
+tests/test_current_grant_lifecycle.py::test_current_query_permission_cannot_be_replaced_by_nearby_grant[family-scenario] PASSED [ 45%]
+tests/test_current_grant_lifecycle.py::test_current_query_permission_cannot_be_replaced_by_nearby_grant[source_scope-nonparent] PASSED [ 47%]
+tests/test_current_grant_lifecycle.py::test_current_query_permission_cannot_be_replaced_by_nearby_grant[source_scope-scenario] PASSED [ 50%]
+tests/test_current_grant_lifecycle.py::test_current_query_permission_cannot_be_replaced_by_nearby_grant[DENY-nonparent] PASSED [ 52%]
+tests/test_current_grant_lifecycle.py::test_current_query_permission_cannot_be_replaced_by_nearby_grant[DENY-scenario] PASSED [ 55%]
+tests/test_current_grant_lifecycle.py::test_current_query_permission_cannot_be_replaced_by_nearby_grant[DEFER-nonparent] PASSED [ 57%]
+tests/test_current_grant_lifecycle.py::test_current_query_permission_cannot_be_replaced_by_nearby_grant[DEFER-scenario] PASSED [ 60%]
+tests/test_current_grant_lifecycle.py::test_current_query_permission_cannot_be_replaced_by_nearby_grant[successor-nonparent] PASSED [ 62%]
+tests/test_current_grant_lifecycle.py::test_current_query_permission_cannot_be_replaced_by_nearby_grant[successor-scenario] PASSED [ 65%]
+tests/test_current_grant_lifecycle.py::test_current_query_permission_cannot_be_replaced_by_nearby_grant[foreign-nonparent] PASSED [ 67%]
+tests/test_current_grant_lifecycle.py::test_current_query_permission_cannot_be_replaced_by_nearby_grant[foreign-scenario] PASSED [ 70%]
+tests/test_current_grant_lifecycle.py::test_changed_source_permission_under_same_declared_ref_cannot_authorize_cache[DENY-nonparent] PASSED [ 72%]
+tests/test_current_grant_lifecycle.py::test_changed_source_permission_under_same_declared_ref_cannot_authorize_cache[DENY-scenario] PASSED [ 75%]
+tests/test_current_grant_lifecycle.py::test_changed_source_permission_under_same_declared_ref_cannot_authorize_cache[scope-nonparent] PASSED [ 77%]
+tests/test_current_grant_lifecycle.py::test_changed_source_permission_under_same_declared_ref_cannot_authorize_cache[scope-scenario] PASSED [ 80%]
+tests/test_current_grant_lifecycle.py::test_changed_source_permission_under_same_declared_ref_cannot_authorize_cache[operation-nonparent] PASSED [ 82%]
+tests/test_current_grant_lifecycle.py::test_changed_source_permission_under_same_declared_ref_cannot_authorize_cache[operation-scenario] PASSED [ 85%]
+tests/test_current_grant_lifecycle.py::test_risk_rekey_is_atomic_even_with_all_original_grants[nonparent] PASSED [ 87%]
+tests/test_current_grant_lifecycle.py::test_risk_rekey_is_atomic_even_with_all_original_grants[scenario] PASSED [ 90%]
+tests/test_current_grant_lifecycle.py::test_grant_loss_between_actual_clients_never_borrows_first_client_permission[nonparent] PASSED [ 92%]
+tests/test_current_grant_lifecycle.py::test_grant_loss_between_actual_clients_never_borrows_first_client_permission[scenario] PASSED [ 95%]
+tests/test_current_grant_lifecycle.py::test_cold_process_replay_uses_persisted_current_grants_not_fixture_defaults[withdrawn] PASSED [ 97%]
+tests/test_current_grant_lifecycle.py::test_cold_process_replay_uses_persisted_current_grants_not_fixture_defaults[restored] PASSED [100%]
+
+- generated xml file: <RETURN>/observations/lifecycle.xml -
+======================== 40 passed in 118.23s (0:01:58) ========================
+

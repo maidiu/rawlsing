@@ -1,0 +1,28 @@
+{
+  "candidate_sha256": "74b6cfb7e6cf1b9bc488732ac1a13e08b323a6b182d4ec84828254dcb0ebee7b",
+  "argv": [
+    "/usr/local/bin/python3.11",
+    "<RETURN>/repro/pytest_entry.py",
+    "-vv",
+    "--tb=short",
+    "--assert=plain",
+    "<RETURN>/tests/test_e04u_independent.py",
+    "--import-mode=importlib",
+    "-p",
+    "no:cacheprovider",
+    "--rootdir=<RETURN>",
+    "--confcutdir=<RETURN>",
+    "--basetemp=<RETURN>/runtime_root/tmp/reviewer",
+    "--junitxml=<RETURN>/observations/reviewer.xml"
+  ],
+  "cwd": "<RETURN>",
+  "variant": "repaired",
+  "exit": 0,
+  "seconds": 119.06997536902782,
+  "env": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+    "E04S_VARIANT": "repaired",
+    "E04S_PROCESS_AUDIT": "<RETURN>/observations/reviewer_process.json"
+  }
+}

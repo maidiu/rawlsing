@@ -1,6 +1,6 @@
 ============================= test session starts ==============================
 platform darwin -- Python 3.11.3, pytest-9.0.2, pluggy-1.6.0 -- /usr/local/bin/python3.11
-rootdir: /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r16-e04u-court/WORKER_RETURNS/PYAT-USERDIRECT-20261016-R16-E04U-INDEPENDENT-CURRENT-GRANT-COURT-R1
+rootdir: <RETURN>
 collecting ... collected 41 items
 
 tests/test_e04u_independent.py::test_live_nested_attachment_cannot_borrow_historical_grants[empty-nonparent] PASSED [  2%]
@@ -56,7 +56,7 @@ tests/test_e04u_independent.py:87: in test_detached_nested_grant_alias_cannot_mu
     s,ss,a,b=full();d=s.provider.world['qauth'].as_dict();d['semantic_fields']['governed_operations'].clear()
                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 E   AttributeError: 'tuple' object has no attribute 'clear'
-- generated xml file: /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r16-e04u-court/WORKER_RETURNS/PYAT-USERDIRECT-20261016-R16-E04U-INDEPENDENT-CURRENT-GRANT-COURT-R1/observations/reviewer.xml -
+- generated xml file: <RETURN>/observations/reviewer.xml -
 =========================== short test summary info ============================
 FAILED tests/test_e04u_independent.py::test_detached_nested_grant_alias_cannot_mutate_attached_native_registry[nonparent] - AttributeError: 'tuple' object has no attribute 'clear'
 FAILED tests/test_e04u_independent.py::test_detached_nested_grant_alias_cannot_mutate_attached_native_registry[scenario] - AttributeError: 'tuple' object has no attribute 'clear'
