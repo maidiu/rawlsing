@@ -1,0 +1,11 @@
+...F..F..                                                                [100%]
+=================================== FAILURES ===================================
+E   AssertionError: at least one writer must observe a typed STALE_JOURNAL_CONFLICT
+    assert []
+/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq319out12/WORKER_RETURNS/SOROK-R3-HQ319-OUT12-MULTIWITER-LOCK-CAS-R1/candidate/test_out12_multiwriter_court.py:89: AssertionError: at least one writer must observe a typed STALE_JOURNAL_CONFLICT
+E   AttributeError: 'Outbox' object has no attribute '_revoked'
+/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq319out12/WORKER_RETURNS/SOROK-R3-HQ319-OUT12-MULTIWITER-LOCK-CAS-R1/candidate/test_out12_multiwriter_court.py:125: AttributeError: 'Outbox' object has no attribute '_revoked'
+=========================== short test summary info ============================
+FAILED test_out12_multiwriter_court.py::test_C3_typed_conflict_is_raised_and_retry_is_lawful
+FAILED test_out12_multiwriter_court.py::test_C6_revocation_survives_a_competing_transaction
+2 failed, 7 passed in 3.18s

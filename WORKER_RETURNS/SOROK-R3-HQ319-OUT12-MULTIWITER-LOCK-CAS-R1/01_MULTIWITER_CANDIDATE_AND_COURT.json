@@ -1,0 +1,113 @@
+{
+ "schema": "SOROK_HQ319_OUT12_MULTIWITER_LOCK_CAS@1",
+ "branch": "agent/rabochii-sorok-r3-hq319-out12-multiwriter-lock-cas-r1",
+ "sealed_startup": "b1c0b474969b891c11da8f3a16b748568f395af5",
+ "out11_evidence": "ecc0c5c86d0b6d4aab54ace63fb2af8fb3d784dc",
+ "source": {
+  "commit": "fd58957fceca250e86ed3b1a5d06fa45ffc9ec85",
+  "path": "WORKER_RETURNS/SOROK-R3-HQ314-OUT9-OUT8-INDEPENDENT-R1/candidate/outbox_prototype.py",
+  "git_blob": "331840768ce0b5f6f73e5e93094ca0d217ddaebf",
+  "blob_matches_hq_value": true,
+  "sha256": "5c994f29a8c3cf870cb8a18ce4c300fa51d9ab45c34caabc5f10a0f1973708ed"
+ },
+ "environment": {
+  "harness": "DeepSeek-Harness",
+  "python": "3.11.3",
+  "pytest": "9.1.1",
+  "pnpm_path_issue": "RESOLVED",
+  "helpers": false,
+  "harness_switch": false
+ },
+ "closure_rerun": {
+  "passed": 270,
+  "failed": 2,
+  "exit_code": 1,
+  "historical_REDs_preserved": true,
+  "reds": [
+   "test_s27_material_move_needs_world_owner",
+   "test_replay_manual_two_writers_can_lose_first_committed_event"
+  ]
+ },
+ "candidate": {
+  "file": "candidate/multiwriter_journal.py",
+  "class": "MultiwriterJournal",
+  "mechanisms": [
+   "interprocess fcntl.flock LOCK_EX held across the whole read-modify-write",
+   "versioned compare-and-swap on a persisted monotonic writer_version"
+  ],
+  "typed_errors": [
+   "StaleJournalConflict",
+   "LockTimeoutError"
+  ],
+  "modifies_accepted_source": false,
+  "opt_in": true,
+  "backward_compatible_receipt": true
+ },
+ "court": {
+  "passed": 9,
+  "failed": 0,
+  "C0_baseline_accepted_journal_loses_committed_event": true,
+  "C1_two_process_no_lost_committed_event": {
+   "events": 2
+  },
+  "C2_three_process_no_lost_committed_event": {
+   "events": 3
+  },
+  "C3_lock_serializes_distinct_fresh_versions": true,
+  "C4_version_monotonic_and_replay_refused": true,
+  "C5_stale_reader_cannot_publish_typed_conflict": true,
+  "C6_revocation_survives_competing_transaction_byte_identical_recovery": true,
+  "C7_real_SIGKILL_before_rename_journal_byte_identical_rc79": true,
+  "C8_cold_recovery_identity_writer_version_3_events_3": true,
+  "real_os_subprocesses": true,
+  "file_synchronization_barrier": true,
+  "simulated_concurrent_calls": false
+ },
+ "self_corrections": [
+  "first run was 7P/2F and BOTH failures were author test bugs, not candidate defects",
+  "C3 wrongly demanded a conflict on a clean race; with the lock the writers legitimately serialize - rewritten to assert distinct fresh versions, CAS-firing proof left to C5",
+  "C6 referenced a non-existent private attribute Outbox._revoked; replaced with public snapshot equality"
+ ],
+ "safety_claim_scope": "2- and 3-writer local-filesystem races with lock-serialized CAS and a pre-rename SIGKILL window: no acknowledged committed event silently lost, all conflicts typed. NOT exactly-once client delivery, NOT exotic/network filesystem safety (flock is filesystem-dependent), NOT safe against a writer that bypasses the candidate and calls the accepted Journal.commit directly.",
+ "changed_paths_audit": {
+  "writes_outside_assigned_terrain": 0,
+  "accepted_out9_source_modified": false,
+  "original_test_bytes_modified": false,
+  "historical_REDs_preserved": true
+ },
+ "production_adp019_issuance": false,
+ "physical_effects": false,
+ "client_perception": false,
+ "v3_operation": false,
+ "independent_i2_required": true,
+ "self_adopted": false,
+ "deliverables": {
+  "00_RETURN.md": {
+   "sha256": "84b9ebbc286e13ae9f246b770079425fe3616615bfe11d41719cc2e0e89baf85",
+   "bytes": 5664
+  },
+  "candidate/multiwriter_journal.py": {
+   "sha256": "9df8124fff19245a1758b65ed4a426737632143504916324c289103b3a06ac18",
+   "bytes": 5940
+  },
+  "candidate/test_out12_multiwriter_court.py": {
+   "sha256": "8e0068ae91d2988eb5a6b0cdae7b2f9ceda18e77fb5d86c724a93809547460b1",
+   "bytes": 7698
+  }
+ },
+ "repro": {
+  "out12_closure_272.log": {
+   "sha256": "c9f1cf90737098794a2cc6461b431a61c39f04db1c6f08cd2916eba456a0bcf6",
+   "bytes": 601
+  },
+  "out12_court.log": {
+   "sha256": "714cf00c7b837eb84ca67bafa890c2a5d4fa34c8c87578328f992e6cea1a3d08",
+   "bytes": 1084
+  },
+  "out12_court_final.log": {
+   "sha256": "8a4d922e5c07876f327116339c7ceb440de39de3816abd7476d29ed482bfc23b",
+   "bytes": 98
+  }
+ },
+ "terminal": "SOROK_HQ319_OUT12_MULTIWITER_LOCK_CAS_COURT_RETURNED__GITHUB_PUSHED"
+}
