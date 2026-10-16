@@ -8,7 +8,8 @@ def main():
             ('g11',['sources/g11/test_g11_solver.py']),
             ('g12_controls',['test_g12_controls.py']),
             ('g12_literal_contract',['test_g12_literal_contract.py']),
-            ('g12_supplemental',['test_g12_supplemental.py'])]
+            ('g12_supplemental',['test_g12_supplemental.py']),
+            ('candidate_boundary',['test_candidate_boundary.py'])]
     requested=set(sys.argv[1:])
     if requested:
         assert requested <= {label for label,_ in suites}

@@ -1,0 +1,228 @@
+{
+  "no_claim_of_independent_mechanism_count": true,
+  "original_sgi1_cases": 24,
+  "original_sgi1_predicates": 98,
+  "overall": "GENEALOGY_ADP_OWNER_AUTHORITY_HOLD",
+  "suites": [
+    {
+      "command": [
+        "python3",
+        "-m",
+        "pytest",
+        "-q",
+        "-s",
+        "-p",
+        "no:cacheprovider",
+        "test_original_sgi1.py",
+        "--junitxml=evidence/sgi1_junit.xml"
+      ],
+      "errors": [],
+      "exit_status": 0,
+      "failures": [],
+      "junit": "evidence/sgi1_junit.xml",
+      "passed": 25,
+      "skips": [],
+      "stdout": "evidence/sgi1_stdout.txt",
+      "stdout_sha256": "5faff72a8877ffabf283ec63ecac11c56e17c9a50120b31eebfa9e583c8f59e4",
+      "suite": "sgi1",
+      "tests": 25,
+      "wall_seconds": 0.9761745480354875
+    },
+    {
+      "command": [
+        "python3",
+        "-m",
+        "pytest",
+        "-q",
+        "-s",
+        "-p",
+        "no:cacheprovider",
+        "sources/g11/test_g11_solver.py",
+        "--junitxml=evidence/g11_junit.xml"
+      ],
+      "errors": [],
+      "exit_status": 0,
+      "failures": [],
+      "junit": "evidence/g11_junit.xml",
+      "passed": 25,
+      "skips": [],
+      "stdout": "evidence/g11_stdout.txt",
+      "stdout_sha256": "7b122b889c56682f87044e974d37cdd32404e6ffd499e7b4986cb45387afaf05",
+      "suite": "g11",
+      "tests": 25,
+      "wall_seconds": 0.5053807849762961
+    },
+    {
+      "command": [
+        "python3",
+        "-m",
+        "pytest",
+        "-q",
+        "-s",
+        "-p",
+        "no:cacheprovider",
+        "test_g12_controls.py",
+        "--junitxml=evidence/g12_controls_junit.xml"
+      ],
+      "errors": [],
+      "exit_status": 0,
+      "failures": [],
+      "junit": "evidence/g12_controls_junit.xml",
+      "passed": 25,
+      "skips": [],
+      "stdout": "evidence/g12_controls_stdout.txt",
+      "stdout_sha256": "a1e853f273a4ef9558cacc91744ccad8c8631b5cdb3fc860c64f7c6c91ac8c38",
+      "suite": "g12_controls",
+      "tests": 25,
+      "wall_seconds": 0.5828955549513921
+    },
+    {
+      "command": [
+        "python3",
+        "-m",
+        "pytest",
+        "-q",
+        "-s",
+        "-p",
+        "no:cacheprovider",
+        "test_g12_literal_contract.py",
+        "--junitxml=evidence/g12_literal_contract_junit.xml"
+      ],
+      "errors": [],
+      "exit_status": 1,
+      "failures": [
+        {
+          "id": "test_forward_validator_refuses_invalid_causal_history[forged_endpoint]",
+          "message": "AssertionError: forged_endpoint\nassert not True"
+        },
+        {
+          "id": "test_forward_validator_refuses_invalid_causal_history[missing_parent]",
+          "message": "AssertionError: missing_parent\nassert not True"
+        },
+        {
+          "id": "test_forward_validator_refuses_invalid_causal_history[future_endpoint_as_root_parent]",
+          "message": "AssertionError: future_endpoint_as_root_parent\nassert not True"
+        },
+        {
+          "id": "test_forward_validator_refuses_invalid_causal_history[duplicate_effective_index]",
+          "message": "AssertionError: duplicate_effective_index\nassert not True"
+        },
+        {
+          "id": "test_forward_validator_refuses_invalid_causal_history[route_antecedent_removed]",
+          "message": "AssertionError: route_antecedent_removed\nassert not True"
+        },
+        {
+          "id": "test_model_input_membrane_blocks_future_child_metadata[target]",
+          "message": "AssertionError: target\nassert not True"
+        },
+        {
+          "id": "test_model_input_membrane_blocks_future_child_metadata[world]",
+          "message": "AssertionError: world\nassert not True"
+        },
+        {
+          "id": "test_model_input_membrane_blocks_future_child_metadata[psyche]",
+          "message": "AssertionError: psyche\nassert not True"
+        },
+        {
+          "id": "test_stopping_law_requires_actual_antecedent_closure",
+          "message": "assert not True"
+        },
+        {
+          "id": "test_project_specific_heldout_probe_refuses_unrelated_project",
+          "message": "assert not True"
+        },
+        {
+          "id": "test_same_candidate_id_changed_payload_changes_replay_identity",
+          "message": "AssertionError: assert 'sha256:9e3e10cc45bc0982d4554d0170249e6a30df91d28887b3455a81e889fb84407b' != 'sha256:9e3e10cc45bc0982d4554d0170249e6a30df91d28887b3455a81e889fb84407b'"
+        },
+        {
+          "id": "test_lab_sampler_is_accepted_adp020_algorithm",
+          "message": "AssertionError: assert 'SHA256_CONCAT_MODULO' == 'ADP020_HMAC_...ELOW_V1@1.0.0'\n  \n  - ADP020_HMAC_SHA256_UNIFORM_BELOW_V1@1.0.0\n  + SHA256_CONCAT_MODULO"
+        }
+      ],
+      "junit": "evidence/g12_literal_contract_junit.xml",
+      "passed": 0,
+      "skips": [],
+      "stdout": "evidence/g12_literal_contract_stdout.txt",
+      "stdout_sha256": "b566dbde35eb849dc5c2f53f3f3c6bbe27274d623f6ff53f291fdc19b6144f3c",
+      "suite": "g12_literal_contract",
+      "tests": 12,
+      "wall_seconds": 0.5864231920568272
+    },
+    {
+      "command": [
+        "python3",
+        "-m",
+        "pytest",
+        "-q",
+        "-s",
+        "-p",
+        "no:cacheprovider",
+        "test_g12_supplemental.py",
+        "--junitxml=evidence/g12_supplemental_junit.xml"
+      ],
+      "errors": [],
+      "exit_status": 1,
+      "failures": [
+        {
+          "id": "test_invalid_root_seed_is_refused",
+          "message": "Failed: DID NOT RAISE any of (<class 'ValueError'>, <class 'TypeError'>)"
+        },
+        {
+          "id": "test_mapping_rejects_entropy_outside_unbiased_range",
+          "message": "AssertionError: assert 1 == 2\n +  where 1 = len([('slot', 0, 0)])"
+        },
+        {
+          "id": "test_no_relationship_admission_without_second_parent_or_witness",
+          "message": "AssertionError: assert 'COMMITTED' != 'COMMITTED'"
+        },
+        {
+          "id": "test_objective_relation_binds_actual_second_parent_identity",
+          "message": "AssertionError: assert 'LAB_SECOND_PARENT_SELECTED' == 'G12_ACTUAL_SECOND_PARENT'\n  \n  - G12_ACTUAL_SECOND_PARENT\n  + LAB_SECOND_PARENT_SELECTED"
+        },
+        {
+          "id": "test_empty_parent_history_cannot_emit_paternal_world_continuation",
+          "message": "AssertionError: assert not [{'actor': 'G12_UNFORMED', 'effective_index': 1001, 'event_id': 'sha256:6aaaff08ca4cb806a8f3ea2e9e57e9500258ed7e55fc10815dffab05654f0f23', 'kind': 'PARENT_CONTINUATION', ...}]"
+        }
+      ],
+      "junit": "evidence/g12_supplemental_junit.xml",
+      "passed": 1,
+      "skips": [],
+      "stdout": "evidence/g12_supplemental_stdout.txt",
+      "stdout_sha256": "954fe5cb045872ef3754a91a85c641d32bc43667bbfd1d49c2b02f6a3d501375",
+      "suite": "g12_supplemental",
+      "tests": 6,
+      "wall_seconds": 0.7607969640521333
+    },
+    {
+      "command": [
+        "python3",
+        "-m",
+        "pytest",
+        "-q",
+        "-s",
+        "-p",
+        "no:cacheprovider",
+        "test_candidate_boundary.py",
+        "--junitxml=evidence/candidate_boundary_junit.xml"
+      ],
+      "errors": [],
+      "exit_status": 1,
+      "failures": [
+        {
+          "id": "test_changed_actual_endpoint_payload_invalidates_selection_identity",
+          "message": "AssertionError: assert 'sha256:45051863681820439f39cf261aea9f7ba62961ee61f7d8301f905fad166a0408' != 'sha256:45051863681820439f39cf261aea9f7ba62961ee61f7d8301f905fad166a0408'"
+        }
+      ],
+      "junit": "evidence/candidate_boundary_junit.xml",
+      "passed": 0,
+      "skips": [],
+      "stdout": "evidence/candidate_boundary_stdout.txt",
+      "stdout_sha256": "e1512824c7e08654c46b412bc882b24302aa292cff5bc159253fbbdfe6374f54",
+      "suite": "candidate_boundary",
+      "tests": 1,
+      "wall_seconds": 0.6396723419893533
+    }
+  ],
+  "total_failures": 18
+}

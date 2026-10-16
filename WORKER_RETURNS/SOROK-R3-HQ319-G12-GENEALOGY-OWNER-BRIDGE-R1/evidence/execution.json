@@ -93,5 +93,24 @@
     "stdout": "evidence/g12_supplemental_stdout.txt",
     "junit": "evidence/g12_supplemental_junit.xml",
     "stdout_sha256": "954fe5cb045872ef3754a91a85c641d32bc43667bbfd1d49c2b02f6a3d501375"
+  },
+  {
+    "suite": "candidate_boundary",
+    "command": [
+      "python3",
+      "-m",
+      "pytest",
+      "-q",
+      "-s",
+      "-p",
+      "no:cacheprovider",
+      "test_candidate_boundary.py",
+      "--junitxml=evidence/candidate_boundary_junit.xml"
+    ],
+    "exit_status": 1,
+    "wall_seconds": 0.6396723419893533,
+    "stdout": "evidence/candidate_boundary_stdout.txt",
+    "junit": "evidence/candidate_boundary_junit.xml",
+    "stdout_sha256": "e1512824c7e08654c46b412bc882b24302aa292cff5bc159253fbbdfe6374f54"
   }
 ]

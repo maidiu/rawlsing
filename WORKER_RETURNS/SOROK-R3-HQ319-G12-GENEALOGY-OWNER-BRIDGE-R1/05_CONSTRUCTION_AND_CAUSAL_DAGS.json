@@ -1,0 +1,190 @@
+{
+  "A": {
+    "admitted_native_actor_events": 0,
+    "birth_events": 0,
+    "child_generated_events": 0,
+    "conception": "PENDING_NONCAUSAL",
+    "conflicting_endpoint_result": {
+      "endpoint_match": false,
+      "mismatches": [
+        {
+          "have": "REMOTE_REPAIR_DEPOT",
+          "predicate": {
+            "equals": "INST_WORKSHOP_A",
+            "field": "place"
+          }
+        },
+        {
+          "have": "unavailable",
+          "predicate": {
+            "equals": "available_for_encounter",
+            "field": "availability_status"
+          }
+        }
+      ],
+      "n_events_replayed": 6,
+      "recomputed_state": {
+        "attitudes": [],
+        "availability_status": "unavailable",
+        "material_position": "independent_worker",
+        "nonmother_relations": [
+          "CO_WORKER_N"
+        ],
+        "place": "REMOTE_REPAIR_DEPOT",
+        "practices": [],
+        "projects": [
+          "night_shift_union_safety_project"
+        ]
+      },
+      "replay_seconds": 1.4e-05,
+      "status": "ENDPOINT_INFEASIBLE",
+      "temporal_inversions": 0
+    },
+    "construction_dependencies": [
+      {
+        "edge_type": "CONSTRUCTION_DEP",
+        "source": "MOTHER_CHECKPOINT_A",
+        "target": "PENDING_TARGET_A"
+      },
+      {
+        "edge_type": "CONSTRUCTION_DEP",
+        "source": "PENDING_TARGET_A",
+        "target": "ENDPOINT_CONSTRAINTS_A"
+      },
+      {
+        "edge_type": "RETROSPECTIVE_CONSTRUCTION_DEPENDS_ON",
+        "source": "ENDPOINT_CONSTRAINTS_A",
+        "target": "CHECK_PARTIAL_SECOND_PARENT_A"
+      }
+    ],
+    "independent_oracle": {
+      "accepted": true,
+      "derived_place": "REMOTE_REPAIR_DEPOT",
+      "errors": []
+    },
+    "mother_anchor": "sha256:b22e7c5569efa58a1d9414ab9412c4991981c167510ce551c6b199e059e0bd99",
+    "mother_unchanged": true,
+    "represented_causal_edges": [
+      {
+        "edge_type": "CAUSAL_PARENT",
+        "source": "G12_A_0",
+        "target": "G12_A_1"
+      },
+      {
+        "edge_type": "CAUSAL_PARENT",
+        "source": "G12_A_1",
+        "target": "G12_A_2"
+      },
+      {
+        "edge_type": "CAUSAL_PARENT",
+        "source": "G12_A_0",
+        "target": "G12_A_3"
+      },
+      {
+        "edge_type": "CAUSAL_PARENT",
+        "source": "G12_A_2",
+        "target": "G12_A_4"
+      },
+      {
+        "edge_type": "CAUSAL_PARENT",
+        "source": "G12_A_4",
+        "target": "G12_A_5"
+      }
+    ],
+    "sourcefree_test_description_only": true
+  },
+  "B": {
+    "admitted_native_actor_events": 0,
+    "birth_events": 0,
+    "child_generated_events": 0,
+    "conception": "PENDING_NONCAUSAL",
+    "conflicting_endpoint_result": {
+      "endpoint_match": false,
+      "mismatches": [
+        {
+          "have": "COASTAL_RESCUE_STATION",
+          "predicate": {
+            "equals": "INST_EVENING_CLASS_B",
+            "field": "place"
+          }
+        },
+        {
+          "have": "unavailable",
+          "predicate": {
+            "equals": "available_for_encounter",
+            "field": "availability_status"
+          }
+        }
+      ],
+      "n_events_replayed": 6,
+      "recomputed_state": {
+        "attitudes": [],
+        "availability_status": "unavailable",
+        "material_position": "independent_worker",
+        "nonmother_relations": [
+          "SIBLING_C"
+        ],
+        "place": "COASTAL_RESCUE_STATION",
+        "practices": [],
+        "projects": [
+          "coastal_flood_relief_project"
+        ]
+      },
+      "replay_seconds": 8e-06,
+      "status": "ENDPOINT_INFEASIBLE",
+      "temporal_inversions": 0
+    },
+    "construction_dependencies": [
+      {
+        "edge_type": "CONSTRUCTION_DEP",
+        "source": "MOTHER_CHECKPOINT_B",
+        "target": "PENDING_TARGET_B"
+      },
+      {
+        "edge_type": "CONSTRUCTION_DEP",
+        "source": "PENDING_TARGET_B",
+        "target": "ENDPOINT_CONSTRAINTS_B"
+      },
+      {
+        "edge_type": "RETROSPECTIVE_CONSTRUCTION_DEPENDS_ON",
+        "source": "ENDPOINT_CONSTRAINTS_B",
+        "target": "CHECK_PARTIAL_SECOND_PARENT_B"
+      }
+    ],
+    "independent_oracle": {
+      "accepted": true,
+      "derived_place": "COASTAL_RESCUE_STATION",
+      "errors": []
+    },
+    "mother_anchor": "sha256:2adbc3f040bfaa32477308cdb342be2b6946471ff534a74adb3114c72ec39ce9",
+    "mother_unchanged": true,
+    "represented_causal_edges": [
+      {
+        "edge_type": "CAUSAL_PARENT",
+        "source": "G12_B_0",
+        "target": "G12_B_1"
+      },
+      {
+        "edge_type": "CAUSAL_PARENT",
+        "source": "G12_B_1",
+        "target": "G12_B_2"
+      },
+      {
+        "edge_type": "CAUSAL_PARENT",
+        "source": "G12_B_0",
+        "target": "G12_B_3"
+      },
+      {
+        "edge_type": "CAUSAL_PARENT",
+        "source": "G12_B_2",
+        "target": "G12_B_4"
+      },
+      {
+        "edge_type": "CAUSAL_PARENT",
+        "source": "G12_B_4",
+        "target": "G12_B_5"
+      }
+    ],
+    "sourcefree_test_description_only": true
+  }
+}
