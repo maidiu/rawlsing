@@ -1,5 +1,12 @@
 # Mandatory mutual HQ grounding and progress publication
 
+## HQ judgment remains with HQ — Pyat whole-machine command amendment (2026-10-16)
+
+The user directed Pyat to remedy a **return-driven rather than end-product-driven** HQ operating pattern. Pyat must apply [its mandatory continuous command and rabochii delegation law](../PYAT_CONTROL_ROOM/HQ_CONTINUOUS_COMMAND_AND_RABOCHII_DELEGATION_LAW_20261016_R1.md) at each fresh/resumed grok, material work cycle, return intake and report refresh. Scientific/code excavation, independent tests and bounded implementation can run concurrently through rabochiis; the authorized HQ **cannot delegate its own whole-machine science, critical-path prioritization, current progress, method-adoption choices or counterpart interface judgment** to their reports. A successful worker return is first a scoped proof and then a distinct HQ-owned end-product/trajectory delta, not automatic authorization for a chain of same-lane reviews.
+
+Preserve the distinction among returned/pushed/started, local accepted method/combined implementation/original occupied estate/operative source or model authority, and genuine terminal persona effect. Current Pyat working HQ user acceptance with declared uncertainties is not source/model/V3 issuance. Existing Sorok scientific and HQ authorities are unaffected; this document establishes a cross-HQ *reporting and interface discipline*, not a Pyat command over Sorok. Neither HQ may silently rewrite the other report. Both should give the other exact source/world/actor consumer requests and protected limits, not just a percent or passing-test count.
+
+
 ## User-directed common worker-dispensation update — 14 October 2026
 
 Pyat and Sorok now additionally read their respective [Pyat 00D](../PYAT_CONTROL_ROOM/00D_WARM_EXECUTION_PASSPORT_AND_MONEY_FIRST_AGENT_DISPENSATION_R1.md) and [Sorok 00D](../SOROK_PRODUCT_CONTROL_ROOM/00D_WARM_ENVIRONMENT_PASSPORT_AND_COST_AWARE_AGENT_DISPENSATION_R1.md) before issuing new worker prompts. Maintain only non-sensitive environment passport/epoch/source-import references; distinguish user-open tabs from verified live runtimes and actual sourcefree implementation from accepted scientific world/actor gates. Prefer least expensive qualified warm execution, preserve separate reviewers and exact sparse worktrees. This is operational dispensation only; no source/model/actor/adoption rights changed.
