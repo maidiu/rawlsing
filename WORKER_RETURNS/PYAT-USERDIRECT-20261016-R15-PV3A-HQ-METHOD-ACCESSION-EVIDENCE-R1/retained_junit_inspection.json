@@ -1,0 +1,76 @@
+{
+  "owners_111.xml": {
+    "tests": 111,
+    "passed": 111,
+    "failures": [],
+    "errors": 0,
+    "skipped": 0
+  },
+  "pv2_33.xml": {
+    "tests": 33,
+    "passed": 33,
+    "failures": [],
+    "errors": 0,
+    "skipped": 0
+  },
+  "pv2i_adapter.xml": {
+    "tests": 48,
+    "passed": 47,
+    "failures": [
+      "test_generic_native_labels_not_specialized_Q86"
+    ],
+    "errors": 0,
+    "skipped": 0
+  },
+  "pv2i_historical.xml": {
+    "tests": 48,
+    "passed": 26,
+    "failures": [
+      "test_coherently_reissued_register_cannot_authenticate_itself[original_U_ref]",
+      "test_coherently_reissued_register_cannot_authenticate_itself[independent_E_ref]",
+      "test_coherently_reissued_register_cannot_authenticate_itself[independent_custody_ref]",
+      "test_coherently_reissued_register_cannot_authenticate_itself[original_operation_scope_ref]",
+      "test_equal_count_held_relabel_with_self_reissued_register_refused",
+      "test_complete_original_source_binding[original_item_scope_ref]",
+      "test_current_read_refuses_foreign_or_widened_fixture_grant[issuer-PV2I-SELF-ISSUER]",
+      "test_current_read_refuses_foreign_or_widened_fixture_grant[grant-SIGNED_REAL_SOURCE_GRANT]",
+      "test_current_read_refuses_foreign_or_widened_fixture_grant[ceiling-value2]",
+      "test_execution_refuses_self_rehashed_fixture_grant[issuer-PV2I-SELF-ISSUER]",
+      "test_execution_refuses_self_rehashed_fixture_grant[grant-SIGNED_REAL_SOURCE_GRANT]",
+      "test_execution_refuses_self_rehashed_fixture_grant[ceiling-value2]",
+      "test_historical_register_cannot_restore_current_authorization",
+      "test_current_consumer_rejects_payload_tamper_same_ref",
+      "test_current_read_does_not_alias_historical_report",
+      "test_role_validation_fails_closed_on_incomplete_material[missing_material]",
+      "test_role_validation_fails_closed_on_incomplete_material[missing_roles]",
+      "test_role_validation_fails_closed_on_incomplete_material[missing_conditioner]",
+      "test_generic_native_labels_not_specialized_Q86",
+      "test_coherent_household_relabel_cannot_reuse_respondent_fact",
+      "test_changed_actual_journal_result_reference_is_not_ignored",
+      "test_fresh_process_current_read_refuses_self_issued_grant"
+    ],
+    "errors": 0,
+    "skipped": 0
+  },
+  "pv3.xml": {
+    "tests": 28,
+    "passed": 28,
+    "failures": [],
+    "errors": 0,
+    "skipped": 0
+  },
+  "pv_21.xml": {
+    "tests": 21,
+    "passed": 21,
+    "failures": [],
+    "errors": 0,
+    "skipped": 0
+  },
+  "v2k_24.xml": {
+    "tests": 24,
+    "passed": 24,
+    "failures": [],
+    "errors": 0,
+    "skipped": 0
+  }
+}

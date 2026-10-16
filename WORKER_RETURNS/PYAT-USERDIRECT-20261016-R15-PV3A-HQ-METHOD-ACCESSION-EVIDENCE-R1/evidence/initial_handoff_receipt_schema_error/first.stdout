@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "<RETURN>/repro/handoff_child.py", line 21, in <module>
+    receipt=build(owner,report,current,original_receipts);verify(receipt)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<RETURN>/repro/method_receipt.py", line 9, in build
+    expected=json.loads(owner.installation.expected_json);links={x['original_expected_work_key']:x for x in report['links']};held={x['original_expected_work_key']:x for x in report['nonrunnable']}
+                                                                                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<RETURN>/repro/method_receipt.py", line 9, in <dictcomp>
+    expected=json.loads(owner.installation.expected_json);links={x['original_expected_work_key']:x for x in report['links']};held={x['original_expected_work_key']:x for x in report['nonrunnable']}
+                                                                                                                                   ~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'original_expected_work_key'

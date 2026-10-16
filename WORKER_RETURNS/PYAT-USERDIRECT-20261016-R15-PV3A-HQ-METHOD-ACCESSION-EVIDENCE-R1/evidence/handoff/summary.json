@@ -1,0 +1,50 @@
+{
+  "processes": [
+    {
+      "mode": "first",
+      "pid": 8174,
+      "exit": -9,
+      "signal": "SIGKILL"
+    },
+    {
+      "mode": "replay",
+      "exit": 0
+    },
+    {
+      "mode": "offline",
+      "exit": 0
+    }
+  ],
+  "first_pid": 8174,
+  "replay_pid": 8458,
+  "first_new_durable": [
+    3,
+    3
+  ],
+  "replay_new_durable": [
+    0,
+    0
+  ],
+  "recomputed_owner_calls": {
+    "execute_route_b_production": 2,
+    "validate_c11_source_release": 2,
+    "execute_empirical_query": 8,
+    "execute_exact_bounded_discovery": 2,
+    "run_integrated": 2,
+    "produce_exact_conditional_support_profile": 18,
+    "replay_exact_conditional_support_profile": 6
+  },
+  "byte_identical_journals": true,
+  "journal_sha256": {
+    "ledger/0/b01e_checkpoint.json": "7a6ca6bb66ea47917cf28f49a41fe3c19a396139fa20ebb78bfdc1e5d8ac83ec",
+    "ledger/0/b01e_side_effects.jsonl": "6abc5416a9067b5d082a01a8001ed2f418be86088bfc57bb8bd7b8eb93aa02ee",
+    "ledger/0/.p01.integration.lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "ledger/0/.b01e_checkpoint.json.lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "ledger/1/b01e_checkpoint.json": "dd87a7dfcb9d6c76112d8d1d7314dedb36f811cb12f3589947970aa72c654fda",
+    "ledger/1/b01e_side_effects.jsonl": "d461414557c0af4562c8133c29c63c740a758b2c01299d255e2708eca5e22659",
+    "ledger/1/.p01.integration.lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "ledger/1/.b01e_checkpoint.json.lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "stable_method_receipt_hash": "67b9d8226aa7ef9a6bf5081b84ddd930471f963e5832712ef5a73b5753773d35",
+  "grade": "NEW_BOUNDED_HANDOFF_DEMONSTRATION_NOT_REPEATED_PV3N_COURT"
+}

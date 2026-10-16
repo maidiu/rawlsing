@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="0.432" timestamp="2026-10-16T02:25:05.782582-04:00"><testcase classname="tests.raw_semantic_obligation" name="test_generic_native_labels_not_specialized_Q86" time="0.010"><failure message="AssertionError">court = (None, {'claim_grade': 'SOURCEFREE_SUCCESSOR_CANDIDATE_NOT_ADOPTED', 'holds': ['ORIGINAL_U_E_CUSTODY_NOT_AUTHENTICATED...upport:sha256:9ecf7ffdc4b2a3c12203bfd26fcf7f57053c3eb7fc65a34bcc26d339a1f8f544'}, ...}], 'missing_consumers': [], ...})
+
+    def test_generic_native_labels_not_specialized_Q86(court):
+     _,r=court
+     for l in r['links']:
+      role=l['consumer_material']['roles']
+&gt;     assert role['CONDITIONER']['source_native_variable'] in ('X','Y') and role['TARGET']['source_native_variable'] in ('X','Y')
+                                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E     AssertionError
+
+runtime/court/frozen_pv2i/tests/test_independent.py:123: AssertionError</failure></testcase></testsuite></testsuites>

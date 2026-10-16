@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "<RETURN>/repro/run_handoff.py", line 15, in <module>
+    child=subprocess.run(cmd+[mode],env=env,capture_output=True,text=True);(E/(mode+'.stdout')).write_text(child.stdout+child.stderr);processes.append(dict(mode=mode,exit=child.returncode));assert child.returncode==0,child.stderr
+                                                                                                                                                                                                     ^^^^^^^^^^^^^^^^^^^
+AssertionError: Traceback (most recent call last):
+  File "<RETURN>/repro/handoff_child.py", line 25, in <module>
+    assert receipt==old['method_receipt'];assert original_receipts==old['original_receipts'];assert report['links']==old['report']['links'];assert report['nonrunnable']==old['report']['nonrunnable']
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
+

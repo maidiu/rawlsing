@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "<RETURN>/repro/run_interventions.py", line 8, in <module>
+    report=api.run_sourcefree_with_register(**args(fx));current=api.read_current_consumer_material(fx['register'],report);actual=receipts(fx);receipt=build(owner,report,current,actual);verify(receipt)
+                                                                                                                                                                                         ^^^^^^^^^^^^^^^
+  File "<RETURN>/repro/method_receipt.py", line 24, in verify
+    assert r['schema']==SCHEMA and r['counts']==dict(total=8,runnable=6,held=2,distinct_original_consumers=6,legacy_keys=3)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

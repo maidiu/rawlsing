@@ -1,0 +1,14 @@
+{
+  "schema": "ORIGINAL_GT2_SCOPE_METHOD_RECEIPT@1",
+  "status": "SOURCE_FREE_DEV_ACCESSION_EVIDENCE_NOT_ADOPTED",
+  "identity": "SHA256 canonical complete receipt excluding method_receipt_hash; includes all eight original operation preimages, six exact original consumer links and original UnitExecutionReceipt projections",
+  "original_scope": {"total": 8, "runnable": 6, "held": 2, "namespaces": 2},
+  "native_semantics": "SPECIALIZED_TEST_ONLY; literal GT2 Q86B/Q86A retained; generic X/Y interpretation HELD",
+  "current_test_only_decisions": "Recorded decisions at the observed handoff, not a durable present-use authorization",
+  "fresh_use_rule": "Original RequestAPI.read_current_consumer_material must verify live source attestation, exact bound report, current namespace/edition/clock/asof and current owner policy. A receipt hash, old current_decisions or an archival report cannot authorize fresh use.",
+  "historical_rule": "Retain original content and owner history verification; denied fresh A does not erase historical A, restore permission or deny live B",
+  "cold_rule": "Exact receipt/hash may survive process death while new durable jobs are zero; original source owners still recompute and reattest before fresh use",
+  "authority": "Installed trusted-host TEST_ONLY fixture scope; no real principal, source licence, competent U/E_pre, generic semantic issuance, HQ adoption or V3 authority",
+  "issuer_signature": null,
+  "hq_adoption": null
+}
