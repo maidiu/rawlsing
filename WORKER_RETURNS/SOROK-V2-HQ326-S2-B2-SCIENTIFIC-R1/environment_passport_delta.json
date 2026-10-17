@@ -1,0 +1,88 @@
+{
+  "passport_schema": "SOROK_ENVIRONMENT_PASSPORT_DELTA_R1",
+  "owner_session_alias": "HQ326-S2-independent-review",
+  "environment_id": "BROWSER-GITHUB-S2-DOCUMENTARY-20261017",
+  "epoch_id": "HQ326-S2-R1",
+  "surface": "BROWSER_CONTAINER",
+  "status": "NOT_ACCESSIBLE",
+  "last_live_probe_at": null,
+  "runtime_marker_digest": null,
+  "probe_command_and_result": {
+    "github_remote_commit_and_exact_sha": "VERIFIED",
+    "private_git_tree_checkout": "NOT_STAGED",
+    "python": "NOT_PROBED",
+    "pytest": "NOT_RUN",
+    "sqlite": "NOT_RUN",
+    "node": "NOT_RUN",
+    "git_worktree": "NOT_ACCESSIBLE"
+  },
+  "capabilities": {
+    "github_connector": "VERIFIED_AUTHENTICATED_REPO_READ_WRITE",
+    "python": "UNKNOWN_UNNEEDED_DOCUMENTARY",
+    "pytest": "UNKNOWN_NOT_EXECUTED",
+    "node": "UNKNOWN_NOT_EXECUTED",
+    "sqlite": "UNKNOWN_NOT_EXECUTED",
+    "shell": "UNKNOWN_NOT_USED"
+  },
+  "git_object_store_alias": null,
+  "worktree_alias": null,
+  "branch": "agent/reviewer-sorok-v2-hq326-s2-b2-integrated-scientific-r1",
+  "exact_checkout_head": null,
+  "dependency_closure_status": "DOCUMENTARY_ONLY",
+  "materialized_source_refs": [],
+  "read_only_source_refs": [
+    {
+      "ref": "950ecf0b3816ea7d0dd3ab48b62c92cedfe0e883",
+      "scope": "B2 exact return and recorded traces"
+    },
+    {
+      "ref": "c0f4588c158b40c8903b4aae2f292eae5238b8a0",
+      "scope": "B1 bfirst.py"
+    },
+    {
+      "ref": "0d47fe863671d1e1d57f26102462be6595c5d7ea",
+      "scope": "S1 prior science"
+    },
+    {
+      "ref": "94dc0a565207be7e64479d6d37984d1dc8873dad",
+      "scope": "HQ326 intake"
+    },
+    {
+      "ref": "379e259c71c6e36d22a957f94e81afb83f582462",
+      "scope": "adopted CAN008 R2 HQ"
+    }
+  ],
+  "covered_test_suites": [
+    {
+      "suite": "B2 inherited 249 author-reported",
+      "result": "NOT_RUN_BY_S2"
+    },
+    {
+      "suite": "B2 new 81 author-reported",
+      "result": "NOT_RUN_BY_S2"
+    },
+    {
+      "suite": "F1 native 17 RED author-reported",
+      "result": "NOT_RUN_BY_S2; HISTORICAL_RED_PRESERVED"
+    }
+  ],
+  "science_grade": "INDEPENDENT_DOCUMENTARY_HIGH_I2_CLAIM_COURT__NO_EXECUTABLE_RERUN",
+  "model_provider": "ChatGPT Browser user-selected GPT-6 High; exact effort telemetry UNKNOWN",
+  "usage_cost": null,
+  "quota": null,
+  "privacy_grant": "PRIVATE_GITHUB_AUTHENTICATED_ONLY",
+  "independent_review_separation": "S2 independent of B1/B2; X2 native execution separately pending",
+  "assignments_completed": [
+    "HQ326-S2 scientific code-source audit and branch return"
+  ],
+  "next_good_affinity_tags": [
+    "CAN008",
+    "CAN011",
+    "ADP016",
+    "ADP017",
+    "F1_NATIVE",
+    "DEVELOPMENTAL_SCIENCE"
+  ],
+  "staged_state_preservation": "NO_IMPORTS_TO_PRESERVE",
+  "retire_or_rebuild_reason": "NO_EXECUTABLE_CLOSURE_NEEDED"
+}

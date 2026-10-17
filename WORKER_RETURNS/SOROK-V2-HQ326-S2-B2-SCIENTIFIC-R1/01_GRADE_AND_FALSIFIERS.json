@@ -1,0 +1,151 @@
+{
+  "schema": "SOROK_HQ326_S2_INDEPENDENT_SCIENCE_GRADE_R1",
+  "sealed_startup": "f417aba458f319d3deefdbfeddfc282d2a8433ad",
+  "reviewed_b2": "950ecf0b3816ea7d0dd3ab48b62c92cedfe0e883",
+  "prior_s1": "0d47fe863671d1e1d57f26102462be6595c5d7ea",
+  "hq326_intake": "94dc0a565207be7e64479d6d37984d1dc8873dad",
+  "claim_grade": "SOURCEFREE_COMPUTATION_SUPPORTED_BY_SOURCE_AND_AUTHOR_TRACES__EXECUTION_PENDING_X2",
+  "science_grade": "LABEL_CONDITIONED_AUTHOR_HYPOTHESIS_NOT_EMPIRICAL_PSYCHOLOGY",
+  "f1": {
+    "native_red_count": 17,
+    "boundary_negative_pass_count": 19,
+    "unmet_case_ids": [
+      "F01",
+      "F02",
+      "F03",
+      "F04",
+      "F05",
+      "F06",
+      "F07",
+      "F08",
+      "F10",
+      "F11",
+      "F13",
+      "F15",
+      "F16",
+      "F17",
+      "F18",
+      "F19",
+      "F21"
+    ],
+    "original_archive_unpacked_by_s2": false
+  },
+  "tests_s2": {
+    "pytest": "NOT_RUN",
+    "node": "NOT_RUN",
+    "sqlite": "NOT_RUN",
+    "f1_native": "NOT_RUN",
+    "cold_replay": "NOT_RUN",
+    "author_reported_inherited": 249,
+    "author_reported_new": 81,
+    "author_reported_f1_native_red": 17
+  },
+  "defects": [
+    {
+      "id": "S2-T01",
+      "priority": "P0",
+      "status": "SCIENTIFIC_UNQUALIFIED",
+      "source": "B1 bfirst.py:152-158,186-189,262-266",
+      "falsifier": "Author label-only relabel of identical witnessed acts must not be counted as relational recognition inference"
+    },
+    {
+      "id": "S2-T02",
+      "priority": "P0",
+      "status": "SCIENTIFIC_UNQUALIFIED",
+      "source": "B1 bfirst.py:152-158",
+      "falsifier": "Change enacted action/consent holding label fixed; require evidence-dependent distinction or uncertainty"
+    },
+    {
+      "id": "S2-T03",
+      "priority": "P0",
+      "status": "TEST_ONLY_CUSTODY_CEILING",
+      "source": "B2 bridge.py:120-152,178-206",
+      "falsifier": "Fresh sealed witness registered by caller must fail without independent authenticated producer"
+    },
+    {
+      "id": "S2-T04",
+      "priority": "P0",
+      "status": "OWNER_PERMISSION_CEILING",
+      "source": "B2 bridge.py:259-261",
+      "falsifier": "Same response lacking independently issued target grant must not commit"
+    },
+    {
+      "id": "S2-T05",
+      "priority": "P0",
+      "status": "DEVELOPMENTAL_EVIDENCE_QUALIFICATION_MISSING",
+      "source": "B2 bridge.py:78-117",
+      "falsifier": "Same actor/time/scope both PRESENT and ABSENT comparable witnesses must return qualified conflict not caller status win"
+    },
+    {
+      "id": "S2-T06",
+      "priority": "P0",
+      "status": "EPISTEMIC_OWNER_GAP",
+      "source": "B2 bridge.py:197-206,225-239",
+      "falsifier": "Utterance truth separate from observed exposure/hearing and child belief"
+    },
+    {
+      "id": "S2-T07",
+      "priority": "P0",
+      "status": "PRODUCTION_EVENT_IDENTITY_GAP",
+      "source": "B1 bfirst.py:286-302",
+      "falsifier": "Same event id/different payload cannot both pass canonical ADP019 idempotence"
+    },
+    {
+      "id": "S2-T08",
+      "priority": "P1",
+      "status": "ADP016_ADP017_GAP",
+      "source": "B1 bfirst.py:116-125,166-177,223-224",
+      "falsifier": "Inaccessible causal trace never becomes conscious first person claim"
+    },
+    {
+      "id": "S2-T09",
+      "priority": "P1",
+      "status": "MULTICHANNEL_GAP",
+      "source": "B1 bfirst.py:185-224",
+      "falsifier": "Proposition, affect, public performance and practice coexist without required winner"
+    },
+    {
+      "id": "S2-T10",
+      "priority": "P1",
+      "status": "INDEPENDENT_OTHER_GAP",
+      "source": "B1 bfirst.py:85-97; B2 bridge.py:209-231",
+      "falsifier": "Other's witnessed own history/action and private outcome cannot be focal scripted input"
+    },
+    {
+      "id": "S2-T11",
+      "priority": "P1",
+      "status": "F1_NATIVE_17_RED",
+      "source": "B2 f1_adapter.py:12-48",
+      "falsifier": "Actual native positive receipt and constant interpreter kill with frozen F1"
+    },
+    {
+      "id": "S2-T12",
+      "priority": "P1",
+      "status": "INTERPRETATION_LINEAGE_MISSING",
+      "source": "B2 bridge.py:270-301",
+      "falsifier": "Later counterwitness may reattribute but not retcon past objective event"
+    },
+    {
+      "id": "S2-T13",
+      "priority": "P2",
+      "status": "INDEPENDENT_LATER_OTHER_NOT_IMPLEMENTED",
+      "source": "F1 F15-F18",
+      "falsifier": "Counterpart independently refuses/acts; no automatic attraction-based recovery"
+    },
+    {
+      "id": "S2-T14",
+      "priority": "P2",
+      "status": "USER_FACING_OTHERNESS_NOT_IMPLEMENTED",
+      "source": "F1 F19",
+      "falsifier": "Real ongoing independent actor projects while user absent, lawful later noncompliance"
+    }
+  ],
+  "post_x2": "Recommend SOURCEFREE_BFIRST_CONNECTED_ACCEPT_SCOPED only if independent pinned reproduction green at scoped grade and 17 F1 RED preserved; psychological mechanism REVISE",
+  "unauthorized": [
+    "production actor",
+    "original surveys",
+    "canonical owner mint",
+    "model API",
+    "semantic adoption"
+  ]
+}
