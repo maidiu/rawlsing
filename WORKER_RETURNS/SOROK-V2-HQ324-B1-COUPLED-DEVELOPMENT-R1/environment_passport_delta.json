@@ -1,0 +1,80 @@
+{
+  "passport_schema": "SOROK_00D_R1",
+  "environment_id": "49632267b0964e62968ba16f01d8a107",
+  "epoch_id": "81b7cb097823458eb5480cae4df19f66",
+  "purpose": "NONCAUSAL_ENVIRONMENT_CONTINUITY_ONLY",
+  "owner_session_alias": "B1_SINGLE_IMPLEMENTER",
+  "surface": "LOCAL_SHARED_STORE",
+  "machine_alias": "LOCAL_AUTHORIZED_WORKTREE",
+  "conversation_or_account_affinity": null,
+  "status": "LIVE_VERIFIED",
+  "last_live_probe_at": "2026-10-17T18:23:45.869986+00:00",
+  "runtime_marker_digest": "df4d3efd3a885d57b0ba2cf3b8d455f7d06a7ed7747c2c715bd1cb2226a7c0cf",
+  "probe_command_and_result": {
+    "python3 --version": "3.11.3",
+    "python3 -m pytest --version": "9.1.1",
+    "git --version": "git version 2.39.1",
+    "sqlite3": "3.40.1",
+    "bfirst.__file__": "VERIFIED_EXPECTED_RETURN_SUBTREE/bfirst.py"
+  },
+  "capabilities": {
+    "python": "VERIFIED",
+    "pytest": "VERIFIED",
+    "git": "VERIFIED",
+    "filesystem": "VERIFIED",
+    "shell": "VERIFIED",
+    "node": "UNKNOWN_NOT_NEEDED"
+  },
+  "git_object_store_alias": "EXISTING_SHARED_REPOSITORY",
+  "worktree_alias": "ASSIGNED_B1_WORKTREE",
+  "branch": "agent/rabochii-sorok-v2-hq324-b1-can008-can011-coupled-positive-r1",
+  "exact_checkout_base": "65e1e3dfb1a34275ac3f8c6122419a87895eb011",
+  "checkout_head_at_packaging": "65e1e3dfb1a34275ac3f8c6122419a87895eb011",
+  "clean_dirty": "DIRTY_NEW_ASSIGNED_RETURN_ONLY",
+  "source_family": "SOURCEFREE_FIXTURE",
+  "materialized_source_refs": [
+    {
+      "path": "bfirst.py",
+      "git_commit": "RETURN_COMMIT_AT_PUBLICATION",
+      "git_blob_sha1": "e02716493ad8154301120c423797dffbb18167c2",
+      "local_relative_staging_path": "bfirst.py",
+      "imported_module_file": "bfirst.py (verified relative to return root)"
+    }
+  ],
+  "dependency_closure_status": "BOUNDED",
+  "fixture_permission": "COMMISSION_TEST_ONLY_SOURCEFREE",
+  "covered_test_suites": [
+    {
+      "command": "python3 -m pytest -q test_bfirst.py --junitxml=junit.xml",
+      "result": "PASS",
+      "tests": 39,
+      "failures": 0,
+      "skips": 0,
+      "junit": "junit.xml",
+      "log": "test.log"
+    }
+  ],
+  "science_grade": "SOURCEFREE_PROTOTYPE__PROVISIONAL_MODEL_HYPOTHESIS",
+  "model_provider": "OPENAI_CODEX_USER_SELECTED",
+  "model_effort": "GPT-6 Medium (commission selected; no switch)",
+  "pricing_class": "UNKNOWN",
+  "cash_known": false,
+  "quota_known": false,
+  "usage": null,
+  "expected_reset": null,
+  "privacy_source_grant": "PRIVATE_REPO_AND_SOURCEFREE_ONLY__NO_EXTERNAL_PROVIDER_CALLS",
+  "independent_review": "HQ_POST_RETURN_SEPARATE_HIGH_I2_PENDING",
+  "assignments_completed": [
+    "B1_CANDIDATE_IMPLEMENTATION_AND_AUTHOR_TESTS"
+  ],
+  "next_good_affinity_tags": [
+    "CAN008",
+    "CAN011",
+    "REPLAY",
+    "SOURCEFREE"
+  ],
+  "staged_state_preservation": "SOURCE_AND_EVIDENCE_PRESERVED_IN_RETURN; RECHECK_RUNTIME_ON_RESUME",
+  "retire_or_rebuild_reason": null,
+  "attestation": "00C_READ=YES;00D_WARM_PASSPORT_READ=YES;LIVE_RESOURCE_CHECK=YES;REAL_SESSION_CONTINUITY_VERIFIED_OR_NEW=YES;CHEAPEST_QUALIFIED_ROUTE_EVALUATED=YES;INDEPENDENCE_AND_AUTHORITY_PRESERVED=YES",
+  "economics": "Reuse authorized local object store and verified Python/pytest; no installer, paid API, model switch or delegation. Actual cash/quota unknown."
+}

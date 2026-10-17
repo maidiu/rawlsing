@@ -1,0 +1,196 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:rawlsing:test-only:b1-adapter:1.0.0",
+  "title": "B1_CANDIDATE_ADAPTER@1.0.0",
+  "description": "Minimal structural candidate schema. Predicate semantics and nested types are governed by bfirst.py and README, not accepted owner schema issuance. No upstream mutation authority.",
+  "$defs": {
+    "HistoryEpisode": {
+      "type": "object",
+      "required": [
+        "episode_id",
+        "actor_id",
+        "counterpart",
+        "project",
+        "time",
+        "activity",
+        "outcome",
+        "actor_access",
+        "parent_refs",
+        "provenance"
+      ],
+      "properties": {
+        "episode_id": {
+          "description": "str"
+        },
+        "actor_id": {
+          "description": "str"
+        },
+        "counterpart": {
+          "description": "str"
+        },
+        "project": {
+          "description": "str"
+        },
+        "time": {
+          "description": "int"
+        },
+        "activity": {
+          "description": "str"
+        },
+        "outcome": {
+          "description": "str"
+        },
+        "actor_access": {
+          "description": "str"
+        },
+        "parent_refs": {
+          "description": "tuple[str, ...]"
+        },
+        "provenance": {
+          "description": "str"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Participant": {
+      "type": "object",
+      "required": [
+        "actor_id",
+        "project",
+        "history"
+      ],
+      "properties": {
+        "actor_id": {
+          "description": "str"
+        },
+        "project": {
+          "description": "str"
+        },
+        "history": {
+          "description": "tuple[HistoryEpisode, ...]"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Event": {
+      "type": "object",
+      "required": [
+        "event_id",
+        "actor_id",
+        "time",
+        "world_ref",
+        "objective_occurrence",
+        "project",
+        "relation_refs",
+        "power_ref",
+        "offers",
+        "interrupted",
+        "admission_grade",
+        "provenance"
+      ],
+      "properties": {
+        "event_id": {
+          "description": "str"
+        },
+        "actor_id": {
+          "description": "str"
+        },
+        "time": {
+          "description": "int"
+        },
+        "world_ref": {
+          "description": "str"
+        },
+        "objective_occurrence": {
+          "description": "str"
+        },
+        "project": {
+          "description": "str"
+        },
+        "relation_refs": {
+          "description": "tuple[str, ...]"
+        },
+        "power_ref": {
+          "description": "str"
+        },
+        "offers": {
+          "description": "tuple[tuple[str, str, str], ...]"
+        },
+        "interrupted": {
+          "description": "bool"
+        },
+        "admission_grade": {
+          "description": "str"
+        },
+        "provenance": {
+          "description": "str"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Interpretation": {
+      "type": "object",
+      "required": [
+        "stream",
+        "counterpart",
+        "words",
+        "propositional",
+        "affective"
+      ],
+      "properties": {
+        "stream": {},
+        "counterpart": {},
+        "words": {},
+        "propositional": {},
+        "affective": {}
+      },
+      "additionalProperties": false
+    },
+    "TargetEffect": {
+      "type": "object",
+      "required": [
+        "proposal_id",
+        "actor_id",
+        "state_kind_id",
+        "target_middle_state_id",
+        "operation",
+        "proposed_effective_time",
+        "proposed_role_tags",
+        "semantic_object_ref",
+        "target_refs",
+        "proposed_payload_delta_or_replacement",
+        "causal_parent_refs",
+        "source_update_rule_ref",
+        "evaluator_or_predicate_receipts",
+        "numeric_rule_ref",
+        "stochastic_receipt_ref",
+        "provenance_refs",
+        "stream",
+        "effect_kind",
+        "hash"
+      ],
+      "properties": {
+        "proposal_id": {},
+        "actor_id": {},
+        "state_kind_id": {},
+        "target_middle_state_id": {},
+        "operation": {},
+        "proposed_effective_time": {},
+        "proposed_role_tags": {},
+        "semantic_object_ref": {},
+        "target_refs": {},
+        "proposed_payload_delta_or_replacement": {},
+        "causal_parent_refs": {},
+        "source_update_rule_ref": {},
+        "evaluator_or_predicate_receipts": {},
+        "numeric_rule_ref": {},
+        "stochastic_receipt_ref": {},
+        "provenance_refs": {},
+        "stream": {},
+        "effect_kind": {},
+        "hash": {}
+      },
+      "additionalProperties": false
+    }
+  }
+}

@@ -1,0 +1,1068 @@
+{
+  "positive": {
+    "first": {
+      "schema": "B1_CANDIDATE_ADAPTER@1.0.0",
+      "actor_id": "child",
+      "event_ref": "abe04b9e0812fd9fb23ad19c0060dae36a2ee917a5e7529e7c6b36450716df7d",
+      "time": 2,
+      "response_rule_ref": {
+        "authority_id": "TEST_ONLY_CAN008_B1",
+        "authority_version": "1",
+        "rule_id": "situated_plan_comparison",
+        "rule_version": "1",
+        "grade": "PROVISIONAL_MODEL_HYPOTHESIS",
+        "predicates": [
+          "admitted fixture occurrence; actor can compare enacted plans",
+          "interrupted active project; counterpart offers executable plan",
+          "prior enacted counterpart recognition -> joint_check",
+          "prior imposed counterpart plan -> private_check",
+          "later offer recruits ACTIVE exact project/counterpart mediator only"
+        ],
+        "composition": "independent source streams coexist; no scalar winner",
+        "effect_kind": "TRANSFORM",
+        "numeric_policy": "NONE",
+        "stochastic_policy": "NO_DRAWS",
+        "hash": "d8fef5e42dab49d6c31fcc32bbae2f15bdf27d960d22cb8a5019aa78989db754"
+      },
+      "prior_response_history_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "before_state_hash": "c28d6ccb925e39cd9ba270d9b0632c4adb00e60fe799bc558e3885838ca3e9f0",
+      "before_target_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "uptake": [
+        {
+          "stream": "d1cbc85654dd112eafb71a1b5c8650a4b2151b25739b07ece8be4fc4bbf7ce1a",
+          "counterpart": "caretaker",
+          "words": "Let us check what can be secured.",
+          "propositional": "UNDECIDED_ATTRIBUTED_ASSERTION",
+          "affective": [
+            "recognized"
+          ]
+        }
+      ],
+      "recruited": [
+        "2ed27ab77ed315917fa0388e7f9e9ceb1052eee463051a0d2fc02f470fda905b"
+      ],
+      "practical_activity": [
+        "compare_current_plan:caretaker"
+      ],
+      "target_proposals": [
+        {
+          "proposal_id": "994680cacb8f98757302ad2d6435e2c1052bd8f7cb8052aebb199efebc6df765",
+          "actor_id": "child",
+          "state_kind_id": "V3MS_MEDIATOR",
+          "target_middle_state_id": "994680cacb8f98757302ad2d6435e2c1052bd8f7cb8052aebb199efebc6df765",
+          "operation": "CREATE",
+          "proposed_effective_time": 2,
+          "proposed_role_tags": [
+            "REGULATORY_PROTECTIVE"
+          ],
+          "semantic_object_ref": "test_only:scoped_plan_comparison",
+          "target_refs": [
+            "repair_route",
+            "caretaker"
+          ],
+          "proposed_payload_delta_or_replacement": {
+            "project": "repair_route",
+            "counterpart": "caretaker",
+            "mode": "joint_check",
+            "origin_access": "INACCESSIBLE",
+            "belief_effect": "NONE"
+          },
+          "causal_parent_refs": [
+            "abe04b9e0812fd9fb23ad19c0060dae36a2ee917a5e7529e7c6b36450716df7d",
+            "2ed27ab77ed315917fa0388e7f9e9ceb1052eee463051a0d2fc02f470fda905b"
+          ],
+          "source_update_rule_ref": {
+            "authority_id": "TEST_ONLY_CAN011_B1",
+            "authority_version": "1",
+            "rule_id": "scoped_plan_mediator",
+            "rule_version": "1",
+            "grade": "PROVISIONAL_MODEL_HYPOTHESIS",
+            "predicates": [
+              "CREATE only; exact actor/project/counterpart",
+              "independently recheck interruption, offered plan and enacted history",
+              "payload joint_check or private_check from matching history",
+              "explicit TEST_ONLY owner grant; before hashes; causal parents"
+            ],
+            "state_kind_id": "V3MS_MEDIATOR",
+            "role": "REGULATORY_PROTECTIVE",
+            "hash": "661ce8b8b959ba2107193354bf37571c8d5da6ee5a9528ae007be98624864882"
+          },
+          "evaluator_or_predicate_receipts": [
+            "2ed27ab77ed315917fa0388e7f9e9ceb1052eee463051a0d2fc02f470fda905b"
+          ],
+          "numeric_rule_ref": null,
+          "stochastic_receipt_ref": null,
+          "provenance_refs": [
+            "B1_SOURCEFREE",
+            "PROVISIONAL_MODEL_HYPOTHESIS"
+          ],
+          "stream": "d1cbc85654dd112eafb71a1b5c8650a4b2151b25739b07ece8be4fc4bbf7ce1a",
+          "effect_kind": "TRANSFORM",
+          "hash": "42571ec7617a5767d03e39f17f97c690238f88e23cba31fe11fbca481045c4ec"
+        }
+      ],
+      "actor_surface": {
+        "actions": [
+          "compare_current_plan:caretaker"
+        ],
+        "origin_explanation": "NOT_ACCESSIBLE"
+      },
+      "status": "RESPONSE_TRANSACTION_COMMITTED",
+      "hash": "4bcd6ef98c05f29e2996ba8c330310c602d018293296c87d304b13eb7a49858f"
+    },
+    "first_receipt": {
+      "joint_transaction_id": "4bcd6ef98c05f29e2996ba8c330310c602d018293296c87d304b13eb7a49858f",
+      "admitted_event_ref": "abe04b9e0812fd9fb23ad19c0060dae36a2ee917a5e7529e7c6b36450716df7d",
+      "before_hash": "c28d6ccb925e39cd9ba270d9b0632c4adb00e60fe799bc558e3885838ca3e9f0",
+      "after_hash": "be3319429517fd8bd6fb2227f294692a59ad4f98a971db838e6b5d6303793a76",
+      "owner_decisions": [
+        {
+          "proposal_hash": "42571ec7617a5767d03e39f17f97c690238f88e23cba31fe11fbca481045c4ec",
+          "owner": "TEST_ONLY_CAN011",
+          "decision": "ALLOW",
+          "permission_ref": "62d13f64e48e2c0591a7367f2bddd563ffa3f70b5ea3839598af704768c787dd",
+          "rule_ref": {
+            "authority_id": "TEST_ONLY_CAN011_B1",
+            "authority_version": "1",
+            "rule_id": "scoped_plan_mediator",
+            "rule_version": "1",
+            "grade": "PROVISIONAL_MODEL_HYPOTHESIS",
+            "predicates": [
+              "CREATE only; exact actor/project/counterpart",
+              "independently recheck interruption, offered plan and enacted history",
+              "payload joint_check or private_check from matching history",
+              "explicit TEST_ONLY owner grant; before hashes; causal parents"
+            ],
+            "state_kind_id": "V3MS_MEDIATOR",
+            "role": "REGULATORY_PROTECTIVE",
+            "hash": "661ce8b8b959ba2107193354bf37571c8d5da6ee5a9528ae007be98624864882"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "authority_id": "TEST_ONLY_CAN008_B1",
+          "authority_version": "1",
+          "rule_id": "situated_plan_comparison",
+          "rule_version": "1",
+          "grade": "PROVISIONAL_MODEL_HYPOTHESIS",
+          "predicates": [
+            "admitted fixture occurrence; actor can compare enacted plans",
+            "interrupted active project; counterpart offers executable plan",
+            "prior enacted counterpart recognition -> joint_check",
+            "prior imposed counterpart plan -> private_check",
+            "later offer recruits ACTIVE exact project/counterpart mediator only"
+          ],
+          "composition": "independent source streams coexist; no scalar winner",
+          "effect_kind": "TRANSFORM",
+          "numeric_policy": "NONE",
+          "stochastic_policy": "NO_DRAWS",
+          "hash": "d8fef5e42dab49d6c31fcc32bbae2f15bdf27d960d22cb8a5019aa78989db754"
+        },
+        {
+          "authority_id": "TEST_ONLY_CAN011_B1",
+          "authority_version": "1",
+          "rule_id": "scoped_plan_mediator",
+          "rule_version": "1",
+          "grade": "PROVISIONAL_MODEL_HYPOTHESIS",
+          "predicates": [
+            "CREATE only; exact actor/project/counterpart",
+            "independently recheck interruption, offered plan and enacted history",
+            "payload joint_check or private_check from matching history",
+            "explicit TEST_ONLY owner grant; before hashes; causal parents"
+          ],
+          "state_kind_id": "V3MS_MEDIATOR",
+          "role": "REGULATORY_PROTECTIVE",
+          "hash": "661ce8b8b959ba2107193354bf37571c8d5da6ee5a9528ae007be98624864882"
+        }
+      ],
+      "status": "COMMITTED",
+      "mode": "B_FIRST",
+      "rng_draws": 0,
+      "hash": "157b59a3b43c2fbc447aebdaa16c073f6fafc5ddf3c388c6be42ed89bc5e5902"
+    },
+    "persisted_after_first": {
+      "actor_id": "child",
+      "capabilities": [
+        "compare_enacted_plans"
+      ],
+      "epistemic": {
+        "beliefs": [
+          "locking_reduces_access"
+        ],
+        "inaccessible": [
+          "shared_task"
+        ],
+        "unknown": [
+          "thief_identity",
+          "thief_motive"
+        ]
+      },
+      "history": [
+        {
+          "activity": "learn_object_check",
+          "actor_access": "EXPLICIT",
+          "actor_id": "child",
+          "counterpart": "caretaker",
+          "episode_id": "init",
+          "hash": "5dd05ecbdbb78b4952673f463585cc42891a87d3f9aa7df783e878a1f027a5ab",
+          "outcome": "check_enacted",
+          "parent_refs": [],
+          "project": "repair_route",
+          "provenance": "SYNTHETIC_PREHISTORY_FIXTURE",
+          "time": 0
+        },
+        {
+          "activity": "compare_plans_in_task",
+          "actor_access": "INACCESSIBLE",
+          "actor_id": "child",
+          "counterpart": "caretaker",
+          "episode_id": "shared_task",
+          "hash": "2ed27ab77ed315917fa0388e7f9e9ceb1052eee463051a0d2fc02f470fda905b",
+          "outcome": "recognized_plan",
+          "parent_refs": [
+            "5dd05ecbdbb78b4952673f463585cc42891a87d3f9aa7df783e878a1f027a5ab"
+          ],
+          "project": "repair_route",
+          "provenance": "SYNTHETIC_PREHISTORY_FIXTURE",
+          "time": 1
+        }
+      ],
+      "middle": [
+        {
+          "actor_id": "child",
+          "causal_parent_refs": [
+            "abe04b9e0812fd9fb23ad19c0060dae36a2ee917a5e7529e7c6b36450716df7d",
+            "2ed27ab77ed315917fa0388e7f9e9ceb1052eee463051a0d2fc02f470fda905b"
+          ],
+          "creation_or_update_rule_ref": {
+            "authority_id": "TEST_ONLY_CAN011_B1",
+            "authority_version": "1",
+            "grade": "PROVISIONAL_MODEL_HYPOTHESIS",
+            "hash": "661ce8b8b959ba2107193354bf37571c8d5da6ee5a9528ae007be98624864882",
+            "predicates": [
+              "CREATE only; exact actor/project/counterpart",
+              "independently recheck interruption, offered plan and enacted history",
+              "payload joint_check or private_check from matching history",
+              "explicit TEST_ONLY owner grant; before hashes; causal parents"
+            ],
+            "role": "REGULATORY_PROTECTIVE",
+            "rule_id": "scoped_plan_mediator",
+            "rule_version": "1",
+            "state_kind_id": "V3MS_MEDIATOR"
+          },
+          "effective_from": 2,
+          "effective_to": null,
+          "governed_payload": {
+            "belief_effect": "NONE",
+            "counterpart": "caretaker",
+            "mode": "joint_check",
+            "origin_access": "INACCESSIBLE",
+            "project": "repair_route"
+          },
+          "lifecycle_status": "ACTIVE",
+          "mediator_role_tags": [
+            "REGULATORY_PROTECTIVE"
+          ],
+          "middle_state_id": "994680cacb8f98757302ad2d6435e2c1052bd8f7cb8052aebb199efebc6df765",
+          "middle_state_record_hash": "b2954cc52efa556d086b559d869fbcf5dec3787893e8049f8ebab395fd562fba",
+          "prior_middle_state_record_hash": null,
+          "provenance_refs": [
+            "B1_SOURCEFREE",
+            "PROVISIONAL_MODEL_HYPOTHESIS"
+          ],
+          "registry_id": "V3_DEVELOPMENTAL_MIDDLE_STATE_REGISTRY",
+          "registry_snapshot_hash": "fcc53f7ef9507bdeda45ea5db44bc7db5c7f85a8bb96c9844b728dc2bdc42a0b",
+          "registry_version": "1.0.0",
+          "semantic_object_ref": "test_only:scoped_plan_comparison",
+          "source_context_receipt_refs": [
+            "abe04b9e0812fd9fb23ad19c0060dae36a2ee917a5e7529e7c6b36450716df7d"
+          ],
+          "state_kind_id": "V3MS_MEDIATOR",
+          "target_refs": [
+            "repair_route",
+            "caretaker"
+          ]
+        }
+      ],
+      "project": "repair_route",
+      "responses": [
+        {
+          "actor_id": "child",
+          "actor_surface": {
+            "actions": [
+              "compare_current_plan:caretaker"
+            ],
+            "origin_explanation": "NOT_ACCESSIBLE"
+          },
+          "before_state_hash": "c28d6ccb925e39cd9ba270d9b0632c4adb00e60fe799bc558e3885838ca3e9f0",
+          "before_target_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "event_ref": "abe04b9e0812fd9fb23ad19c0060dae36a2ee917a5e7529e7c6b36450716df7d",
+          "hash": "4bcd6ef98c05f29e2996ba8c330310c602d018293296c87d304b13eb7a49858f",
+          "practical_activity": [
+            "compare_current_plan:caretaker"
+          ],
+          "prior_response_history_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "recruited": [
+            "2ed27ab77ed315917fa0388e7f9e9ceb1052eee463051a0d2fc02f470fda905b"
+          ],
+          "response_rule_ref": {
+            "authority_id": "TEST_ONLY_CAN008_B1",
+            "authority_version": "1",
+            "composition": "independent source streams coexist; no scalar winner",
+            "effect_kind": "TRANSFORM",
+            "grade": "PROVISIONAL_MODEL_HYPOTHESIS",
+            "hash": "d8fef5e42dab49d6c31fcc32bbae2f15bdf27d960d22cb8a5019aa78989db754",
+            "numeric_policy": "NONE",
+            "predicates": [
+              "admitted fixture occurrence; actor can compare enacted plans",
+              "interrupted active project; counterpart offers executable plan",
+              "prior enacted counterpart recognition -> joint_check",
+              "prior imposed counterpart plan -> private_check",
+              "later offer recruits ACTIVE exact project/counterpart mediator only"
+            ],
+            "rule_id": "situated_plan_comparison",
+            "rule_version": "1",
+            "stochastic_policy": "NO_DRAWS"
+          },
+          "schema": "B1_CANDIDATE_ADAPTER@1.0.0",
+          "status": "RESPONSE_TRANSACTION_COMMITTED",
+          "target_proposals": [
+            {
+              "actor_id": "child",
+              "causal_parent_refs": [
+                "abe04b9e0812fd9fb23ad19c0060dae36a2ee917a5e7529e7c6b36450716df7d",
+                "2ed27ab77ed315917fa0388e7f9e9ceb1052eee463051a0d2fc02f470fda905b"
+              ],
+              "effect_kind": "TRANSFORM",
+              "evaluator_or_predicate_receipts": [
+                "2ed27ab77ed315917fa0388e7f9e9ceb1052eee463051a0d2fc02f470fda905b"
+              ],
+              "hash": "42571ec7617a5767d03e39f17f97c690238f88e23cba31fe11fbca481045c4ec",
+              "numeric_rule_ref": null,
+              "operation": "CREATE",
+              "proposal_id": "994680cacb8f98757302ad2d6435e2c1052bd8f7cb8052aebb199efebc6df765",
+              "proposed_effective_time": 2,
+              "proposed_payload_delta_or_replacement": {
+                "belief_effect": "NONE",
+                "counterpart": "caretaker",
+                "mode": "joint_check",
+                "origin_access": "INACCESSIBLE",
+                "project": "repair_route"
+              },
+              "proposed_role_tags": [
+                "REGULATORY_PROTECTIVE"
+              ],
+              "provenance_refs": [
+                "B1_SOURCEFREE",
+                "PROVISIONAL_MODEL_HYPOTHESIS"
+              ],
+              "semantic_object_ref": "test_only:scoped_plan_comparison",
+              "source_update_rule_ref": {
+                "authority_id": "TEST_ONLY_CAN011_B1",
+                "authority_version": "1",
+                "grade": "PROVISIONAL_MODEL_HYPOTHESIS",
+                "hash": "661ce8b8b959ba2107193354bf37571c8d5da6ee5a9528ae007be98624864882",
+                "predicates": [
+                  "CREATE only; exact actor/project/counterpart",
+                  "independently recheck interruption, offered plan and enacted history",
+                  "payload joint_check or private_check from matching history",
+                  "explicit TEST_ONLY owner grant; before hashes; causal parents"
+                ],
+                "role": "REGULATORY_PROTECTIVE",
+                "rule_id": "scoped_plan_mediator",
+                "rule_version": "1",
+                "state_kind_id": "V3MS_MEDIATOR"
+              },
+              "state_kind_id": "V3MS_MEDIATOR",
+              "stochastic_receipt_ref": null,
+              "stream": "d1cbc85654dd112eafb71a1b5c8650a4b2151b25739b07ece8be4fc4bbf7ce1a",
+              "target_middle_state_id": "994680cacb8f98757302ad2d6435e2c1052bd8f7cb8052aebb199efebc6df765",
+              "target_refs": [
+                "repair_route",
+                "caretaker"
+              ]
+            }
+          ],
+          "time": 2,
+          "uptake": [
+            {
+              "affective": [
+                "recognized"
+              ],
+              "counterpart": "caretaker",
+              "propositional": "UNDECIDED_ATTRIBUTED_ASSERTION",
+              "stream": "d1cbc85654dd112eafb71a1b5c8650a4b2151b25739b07ece8be4fc4bbf7ce1a",
+              "words": "Let us check what can be secured."
+            }
+          ]
+        }
+      ],
+      "schema": "B1_CANDIDATE_ADAPTER@1.0.0",
+      "transitions": [
+        {
+          "decision": {
+            "decision": "ALLOW",
+            "owner": "TEST_ONLY_CAN011",
+            "permission_ref": "62d13f64e48e2c0591a7367f2bddd563ffa3f70b5ea3839598af704768c787dd",
+            "proposal_hash": "42571ec7617a5767d03e39f17f97c690238f88e23cba31fe11fbca481045c4ec",
+            "rule_ref": {
+              "authority_id": "TEST_ONLY_CAN011_B1",
+              "authority_version": "1",
+              "grade": "PROVISIONAL_MODEL_HYPOTHESIS",
+              "hash": "661ce8b8b959ba2107193354bf37571c8d5da6ee5a9528ae007be98624864882",
+              "predicates": [
+                "CREATE only; exact actor/project/counterpart",
+                "independently recheck interruption, offered plan and enacted history",
+                "payload joint_check or private_check from matching history",
+                "explicit TEST_ONLY owner grant; before hashes; causal parents"
+              ],
+              "role": "REGULATORY_PROTECTIVE",
+              "rule_id": "scoped_plan_mediator",
+              "rule_version": "1",
+              "state_kind_id": "V3MS_MEDIATOR"
+            }
+          },
+          "proposal": {
+            "actor_id": "child",
+            "causal_parent_refs": [
+              "abe04b9e0812fd9fb23ad19c0060dae36a2ee917a5e7529e7c6b36450716df7d",
+              "2ed27ab77ed315917fa0388e7f9e9ceb1052eee463051a0d2fc02f470fda905b"
+            ],
+            "effect_kind": "TRANSFORM",
+            "evaluator_or_predicate_receipts": [
+              "2ed27ab77ed315917fa0388e7f9e9ceb1052eee463051a0d2fc02f470fda905b"
+            ],
+            "hash": "42571ec7617a5767d03e39f17f97c690238f88e23cba31fe11fbca481045c4ec",
+            "numeric_rule_ref": null,
+            "operation": "CREATE",
+            "proposal_id": "994680cacb8f98757302ad2d6435e2c1052bd8f7cb8052aebb199efebc6df765",
+            "proposed_effective_time": 2,
+            "proposed_payload_delta_or_replacement": {
+              "belief_effect": "NONE",
+              "counterpart": "caretaker",
+              "mode": "joint_check",
+              "origin_access": "INACCESSIBLE",
+              "project": "repair_route"
+            },
+            "proposed_role_tags": [
+              "REGULATORY_PROTECTIVE"
+            ],
+            "provenance_refs": [
+              "B1_SOURCEFREE",
+              "PROVISIONAL_MODEL_HYPOTHESIS"
+            ],
+            "semantic_object_ref": "test_only:scoped_plan_comparison",
+            "source_update_rule_ref": {
+              "authority_id": "TEST_ONLY_CAN011_B1",
+              "authority_version": "1",
+              "grade": "PROVISIONAL_MODEL_HYPOTHESIS",
+              "hash": "661ce8b8b959ba2107193354bf37571c8d5da6ee5a9528ae007be98624864882",
+              "predicates": [
+                "CREATE only; exact actor/project/counterpart",
+                "independently recheck interruption, offered plan and enacted history",
+                "payload joint_check or private_check from matching history",
+                "explicit TEST_ONLY owner grant; before hashes; causal parents"
+              ],
+              "role": "REGULATORY_PROTECTIVE",
+              "rule_id": "scoped_plan_mediator",
+              "rule_version": "1",
+              "state_kind_id": "V3MS_MEDIATOR"
+            },
+            "state_kind_id": "V3MS_MEDIATOR",
+            "stochastic_receipt_ref": null,
+            "stream": "d1cbc85654dd112eafb71a1b5c8650a4b2151b25739b07ece8be4fc4bbf7ce1a",
+            "target_middle_state_id": "994680cacb8f98757302ad2d6435e2c1052bd8f7cb8052aebb199efebc6df765",
+            "target_refs": [
+              "repair_route",
+              "caretaker"
+            ]
+          },
+          "record": {
+            "actor_id": "child",
+            "causal_parent_refs": [
+              "abe04b9e0812fd9fb23ad19c0060dae36a2ee917a5e7529e7c6b36450716df7d",
+              "2ed27ab77ed315917fa0388e7f9e9ceb1052eee463051a0d2fc02f470fda905b"
+            ],
+            "creation_or_update_rule_ref": {
+              "authority_id": "TEST_ONLY_CAN011_B1",
+              "authority_version": "1",
+              "grade": "PROVISIONAL_MODEL_HYPOTHESIS",
+              "hash": "661ce8b8b959ba2107193354bf37571c8d5da6ee5a9528ae007be98624864882",
+              "predicates": [
+                "CREATE only; exact actor/project/counterpart",
+                "independently recheck interruption, offered plan and enacted history",
+                "payload joint_check or private_check from matching history",
+                "explicit TEST_ONLY owner grant; before hashes; causal parents"
+              ],
+              "role": "REGULATORY_PROTECTIVE",
+              "rule_id": "scoped_plan_mediator",
+              "rule_version": "1",
+              "state_kind_id": "V3MS_MEDIATOR"
+            },
+            "effective_from": 2,
+            "effective_to": null,
+            "governed_payload": {
+              "belief_effect": "NONE",
+              "counterpart": "caretaker",
+              "mode": "joint_check",
+              "origin_access": "INACCESSIBLE",
+              "project": "repair_route"
+            },
+            "lifecycle_status": "ACTIVE",
+            "mediator_role_tags": [
+              "REGULATORY_PROTECTIVE"
+            ],
+            "middle_state_id": "994680cacb8f98757302ad2d6435e2c1052bd8f7cb8052aebb199efebc6df765",
+            "middle_state_record_hash": "b2954cc52efa556d086b559d869fbcf5dec3787893e8049f8ebab395fd562fba",
+            "prior_middle_state_record_hash": null,
+            "provenance_refs": [
+              "B1_SOURCEFREE",
+              "PROVISIONAL_MODEL_HYPOTHESIS"
+            ],
+            "registry_id": "V3_DEVELOPMENTAL_MIDDLE_STATE_REGISTRY",
+            "registry_snapshot_hash": "fcc53f7ef9507bdeda45ea5db44bc7db5c7f85a8bb96c9844b728dc2bdc42a0b",
+            "registry_version": "1.0.0",
+            "semantic_object_ref": "test_only:scoped_plan_comparison",
+            "source_context_receipt_refs": [
+              "abe04b9e0812fd9fb23ad19c0060dae36a2ee917a5e7529e7c6b36450716df7d"
+            ],
+            "state_kind_id": "V3MS_MEDIATOR",
+            "target_refs": [
+              "repair_route",
+              "caretaker"
+            ]
+          }
+        }
+      ]
+    },
+    "second": {
+      "schema": "B1_CANDIDATE_ADAPTER@1.0.0",
+      "actor_id": "child",
+      "event_ref": "77f5643cf767815b66cf7b16d706433919507654e8884bf12dc58d1bb2a5efa9",
+      "time": 3,
+      "response_rule_ref": {
+        "authority_id": "TEST_ONLY_CAN008_B1",
+        "authority_version": "1",
+        "rule_id": "situated_plan_comparison",
+        "rule_version": "1",
+        "grade": "PROVISIONAL_MODEL_HYPOTHESIS",
+        "predicates": [
+          "admitted fixture occurrence; actor can compare enacted plans",
+          "interrupted active project; counterpart offers executable plan",
+          "prior enacted counterpart recognition -> joint_check",
+          "prior imposed counterpart plan -> private_check",
+          "later offer recruits ACTIVE exact project/counterpart mediator only"
+        ],
+        "composition": "independent source streams coexist; no scalar winner",
+        "effect_kind": "TRANSFORM",
+        "numeric_policy": "NONE",
+        "stochastic_policy": "NO_DRAWS",
+        "hash": "d8fef5e42dab49d6c31fcc32bbae2f15bdf27d960d22cb8a5019aa78989db754"
+      },
+      "prior_response_history_hash": "5e2437bddb96a6d4f8dcadf8d4d88ad9ab265e75af710e8e708ddfbf2f6dd0a2",
+      "before_state_hash": "be3319429517fd8bd6fb2227f294692a59ad4f98a971db838e6b5d6303793a76",
+      "before_target_hash": "df34bdf05e232f62456624ac7c346e41d905f7e39d7284aa6b75291a6c179478",
+      "uptake": [
+        {
+          "stream": "3eef98c9fe54b1f017b21674c1a110a6d4e60e2d22c145dba2b146a6c40a1176",
+          "counterpart": "caretaker",
+          "words": "Let us check what can be secured.",
+          "propositional": "UNDECIDED_ATTRIBUTED_ASSERTION",
+          "affective": [
+            "recognized"
+          ]
+        }
+      ],
+      "recruited": [
+        "b2954cc52efa556d086b559d869fbcf5dec3787893e8049f8ebab395fd562fba"
+      ],
+      "practical_activity": [
+        "joint_check:caretaker"
+      ],
+      "target_proposals": [],
+      "actor_surface": {
+        "actions": [
+          "joint_check:caretaker"
+        ],
+        "origin_explanation": "NOT_ACCESSIBLE"
+      },
+      "status": "RESPONSE_TRANSACTION_COMMITTED",
+      "hash": "c4cf51296ee8d41dddc8b04386ccd2a03b22c7be7cb137102320b0573dc197dd"
+    },
+    "second_receipt": {
+      "joint_transaction_id": "c4cf51296ee8d41dddc8b04386ccd2a03b22c7be7cb137102320b0573dc197dd",
+      "admitted_event_ref": "77f5643cf767815b66cf7b16d706433919507654e8884bf12dc58d1bb2a5efa9",
+      "before_hash": "be3319429517fd8bd6fb2227f294692a59ad4f98a971db838e6b5d6303793a76",
+      "after_hash": "596ecae838e9a4ce460463021a8302cb26efebfa0eb845303a0061fecb65b55b",
+      "owner_decisions": [],
+      "rules": [
+        {
+          "authority_id": "TEST_ONLY_CAN008_B1",
+          "authority_version": "1",
+          "rule_id": "situated_plan_comparison",
+          "rule_version": "1",
+          "grade": "PROVISIONAL_MODEL_HYPOTHESIS",
+          "predicates": [
+            "admitted fixture occurrence; actor can compare enacted plans",
+            "interrupted active project; counterpart offers executable plan",
+            "prior enacted counterpart recognition -> joint_check",
+            "prior imposed counterpart plan -> private_check",
+            "later offer recruits ACTIVE exact project/counterpart mediator only"
+          ],
+          "composition": "independent source streams coexist; no scalar winner",
+          "effect_kind": "TRANSFORM",
+          "numeric_policy": "NONE",
+          "stochastic_policy": "NO_DRAWS",
+          "hash": "d8fef5e42dab49d6c31fcc32bbae2f15bdf27d960d22cb8a5019aa78989db754"
+        },
+        {
+          "authority_id": "TEST_ONLY_CAN011_B1",
+          "authority_version": "1",
+          "rule_id": "scoped_plan_mediator",
+          "rule_version": "1",
+          "grade": "PROVISIONAL_MODEL_HYPOTHESIS",
+          "predicates": [
+            "CREATE only; exact actor/project/counterpart",
+            "independently recheck interruption, offered plan and enacted history",
+            "payload joint_check or private_check from matching history",
+            "explicit TEST_ONLY owner grant; before hashes; causal parents"
+          ],
+          "state_kind_id": "V3MS_MEDIATOR",
+          "role": "REGULATORY_PROTECTIVE",
+          "hash": "661ce8b8b959ba2107193354bf37571c8d5da6ee5a9528ae007be98624864882"
+        }
+      ],
+      "status": "COMMITTED",
+      "mode": "B_FIRST",
+      "rng_draws": 0,
+      "hash": "c0de26763686dcc7ff98721a2c632bd2e54046907edfc41d8677bca04310427f"
+    },
+    "final_hash": "596ecae838e9a4ce460463021a8302cb26efebfa0eb845303a0061fecb65b55b"
+  },
+  "journal_only": {
+    "first": {
+      "schema": "B1_CANDIDATE_ADAPTER@1.0.0",
+      "actor_id": "child",
+      "event_ref": "abe04b9e0812fd9fb23ad19c0060dae36a2ee917a5e7529e7c6b36450716df7d",
+      "time": 2,
+      "response_rule_ref": {
+        "authority_id": "TEST_ONLY_CAN008_B1",
+        "authority_version": "1",
+        "rule_id": "situated_plan_comparison",
+        "rule_version": "1",
+        "grade": "PROVISIONAL_MODEL_HYPOTHESIS",
+        "predicates": [
+          "admitted fixture occurrence; actor can compare enacted plans",
+          "interrupted active project; counterpart offers executable plan",
+          "prior enacted counterpart recognition -> joint_check",
+          "prior imposed counterpart plan -> private_check",
+          "later offer recruits ACTIVE exact project/counterpart mediator only"
+        ],
+        "composition": "independent source streams coexist; no scalar winner",
+        "effect_kind": "TRANSFORM",
+        "numeric_policy": "NONE",
+        "stochastic_policy": "NO_DRAWS",
+        "hash": "d8fef5e42dab49d6c31fcc32bbae2f15bdf27d960d22cb8a5019aa78989db754"
+      },
+      "prior_response_history_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "before_state_hash": "c28d6ccb925e39cd9ba270d9b0632c4adb00e60fe799bc558e3885838ca3e9f0",
+      "before_target_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "uptake": [
+        {
+          "stream": "d1cbc85654dd112eafb71a1b5c8650a4b2151b25739b07ece8be4fc4bbf7ce1a",
+          "counterpart": "caretaker",
+          "words": "Let us check what can be secured.",
+          "propositional": "UNDECIDED_ATTRIBUTED_ASSERTION",
+          "affective": [
+            "recognized"
+          ]
+        }
+      ],
+      "recruited": [
+        "2ed27ab77ed315917fa0388e7f9e9ceb1052eee463051a0d2fc02f470fda905b"
+      ],
+      "practical_activity": [
+        "compare_current_plan:caretaker"
+      ],
+      "target_proposals": [
+        {
+          "proposal_id": "994680cacb8f98757302ad2d6435e2c1052bd8f7cb8052aebb199efebc6df765",
+          "actor_id": "child",
+          "state_kind_id": "V3MS_MEDIATOR",
+          "target_middle_state_id": "994680cacb8f98757302ad2d6435e2c1052bd8f7cb8052aebb199efebc6df765",
+          "operation": "CREATE",
+          "proposed_effective_time": 2,
+          "proposed_role_tags": [
+            "REGULATORY_PROTECTIVE"
+          ],
+          "semantic_object_ref": "test_only:scoped_plan_comparison",
+          "target_refs": [
+            "repair_route",
+            "caretaker"
+          ],
+          "proposed_payload_delta_or_replacement": {
+            "project": "repair_route",
+            "counterpart": "caretaker",
+            "mode": "joint_check",
+            "origin_access": "INACCESSIBLE",
+            "belief_effect": "NONE"
+          },
+          "causal_parent_refs": [
+            "abe04b9e0812fd9fb23ad19c0060dae36a2ee917a5e7529e7c6b36450716df7d",
+            "2ed27ab77ed315917fa0388e7f9e9ceb1052eee463051a0d2fc02f470fda905b"
+          ],
+          "source_update_rule_ref": {
+            "authority_id": "TEST_ONLY_CAN011_B1",
+            "authority_version": "1",
+            "rule_id": "scoped_plan_mediator",
+            "rule_version": "1",
+            "grade": "PROVISIONAL_MODEL_HYPOTHESIS",
+            "predicates": [
+              "CREATE only; exact actor/project/counterpart",
+              "independently recheck interruption, offered plan and enacted history",
+              "payload joint_check or private_check from matching history",
+              "explicit TEST_ONLY owner grant; before hashes; causal parents"
+            ],
+            "state_kind_id": "V3MS_MEDIATOR",
+            "role": "REGULATORY_PROTECTIVE",
+            "hash": "661ce8b8b959ba2107193354bf37571c8d5da6ee5a9528ae007be98624864882"
+          },
+          "evaluator_or_predicate_receipts": [
+            "2ed27ab77ed315917fa0388e7f9e9ceb1052eee463051a0d2fc02f470fda905b"
+          ],
+          "numeric_rule_ref": null,
+          "stochastic_receipt_ref": null,
+          "provenance_refs": [
+            "B1_SOURCEFREE",
+            "PROVISIONAL_MODEL_HYPOTHESIS"
+          ],
+          "stream": "d1cbc85654dd112eafb71a1b5c8650a4b2151b25739b07ece8be4fc4bbf7ce1a",
+          "effect_kind": "TRANSFORM",
+          "hash": "42571ec7617a5767d03e39f17f97c690238f88e23cba31fe11fbca481045c4ec"
+        }
+      ],
+      "actor_surface": {
+        "actions": [
+          "compare_current_plan:caretaker"
+        ],
+        "origin_explanation": "NOT_ACCESSIBLE"
+      },
+      "status": "RESPONSE_TRANSACTION_COMMITTED",
+      "hash": "4bcd6ef98c05f29e2996ba8c330310c602d018293296c87d304b13eb7a49858f"
+    },
+    "first_receipt": {
+      "joint_transaction_id": "4bcd6ef98c05f29e2996ba8c330310c602d018293296c87d304b13eb7a49858f",
+      "admitted_event_ref": "abe04b9e0812fd9fb23ad19c0060dae36a2ee917a5e7529e7c6b36450716df7d",
+      "before_hash": "c28d6ccb925e39cd9ba270d9b0632c4adb00e60fe799bc558e3885838ca3e9f0",
+      "after_hash": "4fc2d1b9b5c2d4eb8eacc786fd75105d2badff6e7e426c94dbb0d83d9d47ba0f",
+      "owner_decisions": [],
+      "rules": [
+        {
+          "authority_id": "TEST_ONLY_CAN008_B1",
+          "authority_version": "1",
+          "rule_id": "situated_plan_comparison",
+          "rule_version": "1",
+          "grade": "PROVISIONAL_MODEL_HYPOTHESIS",
+          "predicates": [
+            "admitted fixture occurrence; actor can compare enacted plans",
+            "interrupted active project; counterpart offers executable plan",
+            "prior enacted counterpart recognition -> joint_check",
+            "prior imposed counterpart plan -> private_check",
+            "later offer recruits ACTIVE exact project/counterpart mediator only"
+          ],
+          "composition": "independent source streams coexist; no scalar winner",
+          "effect_kind": "TRANSFORM",
+          "numeric_policy": "NONE",
+          "stochastic_policy": "NO_DRAWS",
+          "hash": "d8fef5e42dab49d6c31fcc32bbae2f15bdf27d960d22cb8a5019aa78989db754"
+        },
+        {
+          "authority_id": "TEST_ONLY_CAN011_B1",
+          "authority_version": "1",
+          "rule_id": "scoped_plan_mediator",
+          "rule_version": "1",
+          "grade": "PROVISIONAL_MODEL_HYPOTHESIS",
+          "predicates": [
+            "CREATE only; exact actor/project/counterpart",
+            "independently recheck interruption, offered plan and enacted history",
+            "payload joint_check or private_check from matching history",
+            "explicit TEST_ONLY owner grant; before hashes; causal parents"
+          ],
+          "state_kind_id": "V3MS_MEDIATOR",
+          "role": "REGULATORY_PROTECTIVE",
+          "hash": "661ce8b8b959ba2107193354bf37571c8d5da6ee5a9528ae007be98624864882"
+        }
+      ],
+      "status": "COMMITTED",
+      "mode": "JOURNAL_ONLY_CONTROL",
+      "rng_draws": 0,
+      "hash": "3a89507c3442e3bc014a74260840f7a15513adc821c3f13a9b1d6a30039331d1"
+    },
+    "persisted_after_first": {
+      "actor_id": "child",
+      "capabilities": [
+        "compare_enacted_plans"
+      ],
+      "epistemic": {
+        "beliefs": [
+          "locking_reduces_access"
+        ],
+        "inaccessible": [
+          "shared_task"
+        ],
+        "unknown": [
+          "thief_identity",
+          "thief_motive"
+        ]
+      },
+      "history": [
+        {
+          "activity": "learn_object_check",
+          "actor_access": "EXPLICIT",
+          "actor_id": "child",
+          "counterpart": "caretaker",
+          "episode_id": "init",
+          "hash": "5dd05ecbdbb78b4952673f463585cc42891a87d3f9aa7df783e878a1f027a5ab",
+          "outcome": "check_enacted",
+          "parent_refs": [],
+          "project": "repair_route",
+          "provenance": "SYNTHETIC_PREHISTORY_FIXTURE",
+          "time": 0
+        },
+        {
+          "activity": "compare_plans_in_task",
+          "actor_access": "INACCESSIBLE",
+          "actor_id": "child",
+          "counterpart": "caretaker",
+          "episode_id": "shared_task",
+          "hash": "2ed27ab77ed315917fa0388e7f9e9ceb1052eee463051a0d2fc02f470fda905b",
+          "outcome": "recognized_plan",
+          "parent_refs": [
+            "5dd05ecbdbb78b4952673f463585cc42891a87d3f9aa7df783e878a1f027a5ab"
+          ],
+          "project": "repair_route",
+          "provenance": "SYNTHETIC_PREHISTORY_FIXTURE",
+          "time": 1
+        }
+      ],
+      "middle": [],
+      "project": "repair_route",
+      "responses": [
+        {
+          "actor_id": "child",
+          "actor_surface": {
+            "actions": [
+              "compare_current_plan:caretaker"
+            ],
+            "origin_explanation": "NOT_ACCESSIBLE"
+          },
+          "before_state_hash": "c28d6ccb925e39cd9ba270d9b0632c4adb00e60fe799bc558e3885838ca3e9f0",
+          "before_target_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "event_ref": "abe04b9e0812fd9fb23ad19c0060dae36a2ee917a5e7529e7c6b36450716df7d",
+          "hash": "4bcd6ef98c05f29e2996ba8c330310c602d018293296c87d304b13eb7a49858f",
+          "practical_activity": [
+            "compare_current_plan:caretaker"
+          ],
+          "prior_response_history_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "recruited": [
+            "2ed27ab77ed315917fa0388e7f9e9ceb1052eee463051a0d2fc02f470fda905b"
+          ],
+          "response_rule_ref": {
+            "authority_id": "TEST_ONLY_CAN008_B1",
+            "authority_version": "1",
+            "composition": "independent source streams coexist; no scalar winner",
+            "effect_kind": "TRANSFORM",
+            "grade": "PROVISIONAL_MODEL_HYPOTHESIS",
+            "hash": "d8fef5e42dab49d6c31fcc32bbae2f15bdf27d960d22cb8a5019aa78989db754",
+            "numeric_policy": "NONE",
+            "predicates": [
+              "admitted fixture occurrence; actor can compare enacted plans",
+              "interrupted active project; counterpart offers executable plan",
+              "prior enacted counterpart recognition -> joint_check",
+              "prior imposed counterpart plan -> private_check",
+              "later offer recruits ACTIVE exact project/counterpart mediator only"
+            ],
+            "rule_id": "situated_plan_comparison",
+            "rule_version": "1",
+            "stochastic_policy": "NO_DRAWS"
+          },
+          "schema": "B1_CANDIDATE_ADAPTER@1.0.0",
+          "status": "RESPONSE_TRANSACTION_COMMITTED",
+          "target_proposals": [
+            {
+              "actor_id": "child",
+              "causal_parent_refs": [
+                "abe04b9e0812fd9fb23ad19c0060dae36a2ee917a5e7529e7c6b36450716df7d",
+                "2ed27ab77ed315917fa0388e7f9e9ceb1052eee463051a0d2fc02f470fda905b"
+              ],
+              "effect_kind": "TRANSFORM",
+              "evaluator_or_predicate_receipts": [
+                "2ed27ab77ed315917fa0388e7f9e9ceb1052eee463051a0d2fc02f470fda905b"
+              ],
+              "hash": "42571ec7617a5767d03e39f17f97c690238f88e23cba31fe11fbca481045c4ec",
+              "numeric_rule_ref": null,
+              "operation": "CREATE",
+              "proposal_id": "994680cacb8f98757302ad2d6435e2c1052bd8f7cb8052aebb199efebc6df765",
+              "proposed_effective_time": 2,
+              "proposed_payload_delta_or_replacement": {
+                "belief_effect": "NONE",
+                "counterpart": "caretaker",
+                "mode": "joint_check",
+                "origin_access": "INACCESSIBLE",
+                "project": "repair_route"
+              },
+              "proposed_role_tags": [
+                "REGULATORY_PROTECTIVE"
+              ],
+              "provenance_refs": [
+                "B1_SOURCEFREE",
+                "PROVISIONAL_MODEL_HYPOTHESIS"
+              ],
+              "semantic_object_ref": "test_only:scoped_plan_comparison",
+              "source_update_rule_ref": {
+                "authority_id": "TEST_ONLY_CAN011_B1",
+                "authority_version": "1",
+                "grade": "PROVISIONAL_MODEL_HYPOTHESIS",
+                "hash": "661ce8b8b959ba2107193354bf37571c8d5da6ee5a9528ae007be98624864882",
+                "predicates": [
+                  "CREATE only; exact actor/project/counterpart",
+                  "independently recheck interruption, offered plan and enacted history",
+                  "payload joint_check or private_check from matching history",
+                  "explicit TEST_ONLY owner grant; before hashes; causal parents"
+                ],
+                "role": "REGULATORY_PROTECTIVE",
+                "rule_id": "scoped_plan_mediator",
+                "rule_version": "1",
+                "state_kind_id": "V3MS_MEDIATOR"
+              },
+              "state_kind_id": "V3MS_MEDIATOR",
+              "stochastic_receipt_ref": null,
+              "stream": "d1cbc85654dd112eafb71a1b5c8650a4b2151b25739b07ece8be4fc4bbf7ce1a",
+              "target_middle_state_id": "994680cacb8f98757302ad2d6435e2c1052bd8f7cb8052aebb199efebc6df765",
+              "target_refs": [
+                "repair_route",
+                "caretaker"
+              ]
+            }
+          ],
+          "time": 2,
+          "uptake": [
+            {
+              "affective": [
+                "recognized"
+              ],
+              "counterpart": "caretaker",
+              "propositional": "UNDECIDED_ATTRIBUTED_ASSERTION",
+              "stream": "d1cbc85654dd112eafb71a1b5c8650a4b2151b25739b07ece8be4fc4bbf7ce1a",
+              "words": "Let us check what can be secured."
+            }
+          ]
+        }
+      ],
+      "schema": "B1_CANDIDATE_ADAPTER@1.0.0",
+      "transitions": []
+    },
+    "second": {
+      "schema": "B1_CANDIDATE_ADAPTER@1.0.0",
+      "actor_id": "child",
+      "event_ref": "77f5643cf767815b66cf7b16d706433919507654e8884bf12dc58d1bb2a5efa9",
+      "time": 3,
+      "response_rule_ref": {
+        "authority_id": "TEST_ONLY_CAN008_B1",
+        "authority_version": "1",
+        "rule_id": "situated_plan_comparison",
+        "rule_version": "1",
+        "grade": "PROVISIONAL_MODEL_HYPOTHESIS",
+        "predicates": [
+          "admitted fixture occurrence; actor can compare enacted plans",
+          "interrupted active project; counterpart offers executable plan",
+          "prior enacted counterpart recognition -> joint_check",
+          "prior imposed counterpart plan -> private_check",
+          "later offer recruits ACTIVE exact project/counterpart mediator only"
+        ],
+        "composition": "independent source streams coexist; no scalar winner",
+        "effect_kind": "TRANSFORM",
+        "numeric_policy": "NONE",
+        "stochastic_policy": "NO_DRAWS",
+        "hash": "d8fef5e42dab49d6c31fcc32bbae2f15bdf27d960d22cb8a5019aa78989db754"
+      },
+      "prior_response_history_hash": "5e2437bddb96a6d4f8dcadf8d4d88ad9ab265e75af710e8e708ddfbf2f6dd0a2",
+      "before_state_hash": "4fc2d1b9b5c2d4eb8eacc786fd75105d2badff6e7e426c94dbb0d83d9d47ba0f",
+      "before_target_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "uptake": [
+        {
+          "stream": "3eef98c9fe54b1f017b21674c1a110a6d4e60e2d22c145dba2b146a6c40a1176",
+          "counterpart": "caretaker",
+          "words": "Let us check what can be secured.",
+          "propositional": "UNDECIDED_ATTRIBUTED_ASSERTION",
+          "affective": [
+            "recognized"
+          ]
+        }
+      ],
+      "recruited": [],
+      "practical_activity": [
+        "inspect_alone:caretaker"
+      ],
+      "target_proposals": [],
+      "actor_surface": {
+        "actions": [
+          "inspect_alone:caretaker"
+        ],
+        "origin_explanation": "NOT_ACCESSIBLE"
+      },
+      "status": "RESPONSE_TRANSACTION_COMMITTED",
+      "hash": "d1aa8cbd7801614677d53f7bc5a93cf0c5659361f39f21297e6e11ba932e172c"
+    },
+    "second_receipt": {
+      "joint_transaction_id": "d1aa8cbd7801614677d53f7bc5a93cf0c5659361f39f21297e6e11ba932e172c",
+      "admitted_event_ref": "77f5643cf767815b66cf7b16d706433919507654e8884bf12dc58d1bb2a5efa9",
+      "before_hash": "4fc2d1b9b5c2d4eb8eacc786fd75105d2badff6e7e426c94dbb0d83d9d47ba0f",
+      "after_hash": "7a5f99288980b65ad969dba6a83a0137bbe766b06c5931badbf9fd77345921e3",
+      "owner_decisions": [],
+      "rules": [
+        {
+          "authority_id": "TEST_ONLY_CAN008_B1",
+          "authority_version": "1",
+          "rule_id": "situated_plan_comparison",
+          "rule_version": "1",
+          "grade": "PROVISIONAL_MODEL_HYPOTHESIS",
+          "predicates": [
+            "admitted fixture occurrence; actor can compare enacted plans",
+            "interrupted active project; counterpart offers executable plan",
+            "prior enacted counterpart recognition -> joint_check",
+            "prior imposed counterpart plan -> private_check",
+            "later offer recruits ACTIVE exact project/counterpart mediator only"
+          ],
+          "composition": "independent source streams coexist; no scalar winner",
+          "effect_kind": "TRANSFORM",
+          "numeric_policy": "NONE",
+          "stochastic_policy": "NO_DRAWS",
+          "hash": "d8fef5e42dab49d6c31fcc32bbae2f15bdf27d960d22cb8a5019aa78989db754"
+        },
+        {
+          "authority_id": "TEST_ONLY_CAN011_B1",
+          "authority_version": "1",
+          "rule_id": "scoped_plan_mediator",
+          "rule_version": "1",
+          "grade": "PROVISIONAL_MODEL_HYPOTHESIS",
+          "predicates": [
+            "CREATE only; exact actor/project/counterpart",
+            "independently recheck interruption, offered plan and enacted history",
+            "payload joint_check or private_check from matching history",
+            "explicit TEST_ONLY owner grant; before hashes; causal parents"
+          ],
+          "state_kind_id": "V3MS_MEDIATOR",
+          "role": "REGULATORY_PROTECTIVE",
+          "hash": "661ce8b8b959ba2107193354bf37571c8d5da6ee5a9528ae007be98624864882"
+        }
+      ],
+      "status": "COMMITTED",
+      "mode": "JOURNAL_ONLY_CONTROL",
+      "rng_draws": 0,
+      "hash": "8369968099272d0e3d1c3a543f396cd68e49193ed04fa3e8384cf0214dababa4"
+    },
+    "final_hash": "7a5f99288980b65ad969dba6a83a0137bbe766b06c5931badbf9fd77345921e3"
+  }
+}

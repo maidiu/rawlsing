@@ -1,0 +1,49 @@
+{
+  "status": "TEST_ONLY_BFIRST_CANDIDATE_PENDING_I2",
+  "startup": "65e1e3dfb1a34275ac3f8c6122419a87895eb011",
+  "execution_sequence": [
+    {
+      "step": 1,
+      "command": "python3 bfirst.py /tmp/bfirst-early-positive",
+      "result": "PASS_TWO_EVENT_POSITIVE_BEFORE_NEGATIVE_SUITE"
+    },
+    {
+      "step": 2,
+      "command": "python3 -m pytest -q test_bfirst.py",
+      "result": "34 passed"
+    },
+    {
+      "step": 3,
+      "command": "python3 -m pytest -q test_bfirst.py",
+      "result": "38 passed after added adversarial cases"
+    },
+    {
+      "step": 4,
+      "command": "python3 bfirst.py /tmp/bfirst-final-evidence",
+      "result": "PASS",
+      "log": "positive.log"
+    },
+    {
+      "step": 5,
+      "command": "python3 -m pytest -q test_bfirst.py --junitxml=junit.xml",
+      "result": "39 passed",
+      "log": "test.log"
+    }
+  ],
+  "observed_failures": 0,
+  "sanitation": {
+    "junit_removed_metadata": [
+      "hostname"
+    ],
+    "causal_evidence_changed": false,
+    "raw_test_totals_preserved": true
+  },
+  "not_executed": [
+    "Production V3",
+    "original survey execution",
+    "native CAN008/CAN011 actor-positive",
+    "frozen accepted suites (unchanged; no production imports)",
+    "independent High/I2 acceptance"
+  ],
+  "published_sha": "VERIFY_ASSIGNED_REMOTE_TIP_IN_FINAL_RETURN_MESSAGE"
+}
