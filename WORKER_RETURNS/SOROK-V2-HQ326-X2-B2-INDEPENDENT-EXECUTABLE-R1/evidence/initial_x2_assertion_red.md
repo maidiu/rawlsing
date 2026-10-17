@@ -1,0 +1,3 @@
+# Initial X2 assertion RED, preserved
+
+First hostile invocation exited 1: `1 failed, 15 passed`. The failing assertion in `test_cosmetic_history_label_is_actual_response_switch` expected the first immediate practical action under `recognized_plan` to be `joint_check:caretaker`. Actual was `compare_current_plan:caretaker`, while the durable mediator payload mode was `joint_check`. This was an overstrong X2 reviewer expectation about B1's first event, not an implementation regression. The assertion was narrowed to the advertised durable mediator mode. Final court: `17 passed` after adding the C02/C07 independent gate case.

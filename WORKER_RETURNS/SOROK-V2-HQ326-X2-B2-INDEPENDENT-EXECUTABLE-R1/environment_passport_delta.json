@@ -1,0 +1,43 @@
+{
+  "passport_schema": "SOROK_00D_ENVIRONMENT_PASSPORT_R1",
+  "environment_id": "hq326-x2-isolated-local-review",
+  "epoch_id": "2026-10-17-x2-r1",
+  "owner_session_alias": "HQ326_X2",
+  "surface": "LOCAL_SHARED_STORE",
+  "machine_alias": "authorized-local-host",
+  "status": "LIVE_VERIFIED_AT_RETURN",
+  "last_live_probe_at": "2026-10-17",
+  "probe_command_and_result": "python3 --version=3.11.3; python3 -m pytest --version=9.1.1; node --version=v18.14.2; git --version=2.39.1; four pinned commits cat-file=commit",
+  "capabilities": {
+    "python": "VERIFIED",
+    "pytest": "VERIFIED",
+    "sqlite_stdlib": "VERIFIED",
+    "git_object_store": "VERIFIED",
+    "node": "VERIFIED",
+    "filesystem_shell": "VERIFIED"
+  },
+  "git_object_store_alias": "shared_authorized_rawlsing_store",
+  "worktree_alias": "sorok-hq326-x2",
+  "branch": "agent/reviewer-sorok-v2-hq326-x2-b2-independent-executable-r1",
+  "checkout_base": "ce73009484d9cecd7b6217517e398c7bbe36cb87",
+  "source_family": "B2_B1_P1_D1_F1_EXACT_PINNED_SOURCEFREE",
+  "materialized_source_refs": "source_and_execution_audit.json",
+  "dependency_closure_status": "FULL_FOR_COMMISSIONED_TEST_ONLY_COURT",
+  "covered_test_suites": {
+    "inherited": "249_PASS_AT_SEPARATE_GRADES",
+    "b2": "81_PASS_WITH_17_F1_NA",
+    "x2_hostile": "17_PASS_WITH_ONE_DEFECT_DEMONSTRATION",
+    "f1_native": "EXIT_1_17_RED"
+  },
+  "science_grade": "SOURCEFREE_TEST_CUSTODY_REVIEW_REVISE",
+  "model_provider": "Codex GPT-6 Medium commission assignment",
+  "pricing_class": "UNKNOWN",
+  "observed_credits_or_cash": null,
+  "quota_window": null,
+  "privacy_source_grant": "PRIVATE_REPO_SOURCEFREE_ONLY",
+  "independent_review_separation": "X2 separate reviewer chat and worktree; no B1/B2 author role",
+  "assignments_completed": ["HQ326_X2_B2_INDEPENDENT_EXECUTABLE"],
+  "next_good_affinity_tags": ["CAN008", "CAN011", "OCCURRENCE", "F1_NATIVE"],
+  "staged_state_preservation": "Reviewer return committed; disposable exact source staging reconstructible by pinned Git objects",
+  "retire_or_rebuild_reason": null
+}

@@ -1,0 +1,197 @@
+{
+  "status": "TEST_ONLY_BFIRST_INTEGRATED_PENDING_I2",
+  "commands": [
+    {
+      "label": "b1",
+      "command": [
+        "python3",
+        "-m",
+        "pytest",
+        "-q",
+        "test_bfirst.py",
+        "--junitxml=../../evidence/b1.xml"
+      ],
+      "cwd": "imports/B1",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "log": "evidence/b1.log"
+    },
+    {
+      "label": "p1",
+      "command": [
+        "python3",
+        "-m",
+        "pytest",
+        "-q",
+        "tests/test_p1_contract.py",
+        "tests/test_p1_completion.py",
+        "--junitxml=../../evidence/p1.xml"
+      ],
+      "cwd": "imports/P1",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "log": "evidence/p1.log"
+    },
+    {
+      "label": "f1",
+      "command": [
+        "python3",
+        "-m",
+        "pytest",
+        "-q",
+        "test_frozen_contract.py",
+        "--junitxml=../../../../evidence/f1.xml"
+      ],
+      "cwd": "imports/F1/court/f1_frozen_court",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "log": "evidence/f1.log"
+    },
+    {
+      "label": "d1_original",
+      "command": [
+        "node",
+        "03_SOURCEFREE_CAPABILITY_COURT.js"
+      ],
+      "cwd": "imports/D1",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "log": "evidence/d1_original.log"
+    },
+    {
+      "label": "d1_corrected",
+      "command": [
+        "node",
+        "07_CORRECTED_ABSENCE_CONTRACT_COURT.js"
+      ],
+      "cwd": "imports/D1",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "log": "evidence/d1_corrected.log"
+    },
+    {
+      "label": "integration",
+      "command": [
+        "python3",
+        "-m",
+        "pytest",
+        "-q",
+        "test_integration.py",
+        "test_f1_adapter.py",
+        "--junitxml=evidence/integration.xml"
+      ],
+      "cwd": ".",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "log": "evidence/integration.log"
+    },
+    {
+      "label": "vertical",
+      "command": [
+        "python3",
+        "bridge.py",
+        "evidence/vertical"
+      ],
+      "cwd": ".",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "log": "evidence/vertical.log"
+    },
+    {
+      "label": "cold_replay",
+      "command": [
+        "python3",
+        "bridge.py",
+        "replay",
+        "evidence/vertical/positive/trace.json"
+      ],
+      "cwd": ".",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "log": "evidence/cold_replay.log"
+    },
+    {
+      "label": "f1_applicability",
+      "command": [
+        "python3",
+        "f1_adapter.py"
+      ],
+      "cwd": ".",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "log": "evidence/f1_applicability.log"
+    },
+    {
+      "label": "f1_native_gate",
+      "command": [
+        "python3",
+        "run_native_b1.py"
+      ],
+      "cwd": "imports/F1/court/f1_frozen_court",
+      "exit_code": 1,
+      "expected_exit": 1,
+      "log": "evidence/f1_native_gate.log",
+      "environment": {
+        "PYTHONPATH": "<B2_RETURN>",
+        "F1_NATIVE_B1_ADAPTER": "f1_adapter:run_case"
+      }
+    }
+  ],
+  "totals": {
+    "b1": {
+      "tests": 39,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "p1": {
+      "tests": 74,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "f1": {
+      "tests": 97,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "integration": {
+      "tests": 81,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "d1_original": {
+      "tests": 22,
+      "grade": "HISTORICAL_GUARD_KNOWN_ABSENCE_DEFECT"
+    },
+    "d1_corrected": {
+      "tests": 17,
+      "grade": "CORRECTED_RESEARCH_GUARD"
+    }
+  },
+  "new_tests": {
+    "connected_integration": 45,
+    "frozen_applicability_accounting": 36
+  },
+  "f1": {
+    "reference_tests": 97,
+    "dispatched_cases": 36,
+    "boundary_negative_deferral_pass": 19,
+    "native_positive_cases_passed": 0,
+    "not_applicable": 17,
+    "raw_native_exit": 1,
+    "raw_native_status": "RED",
+    "raw_native_failures": 17
+  },
+  "cold_replay": "EXACT_RECEIPTS_AND_FINAL_STATE_HASH",
+  "sanitation": "New JUnit hostname removed; new command outputs replace local root/home paths only; inherited bytes not edited.",
+  "implementation_setup_failure": "Initial materializer used Git worktree-relative paths from wrong cwd, produced zero staged inputs; corrected before source imports or tests.",
+  "unexecuted": [
+    "production actor",
+    "original survey",
+    "live LLM",
+    "independent High/I2 acceptance"
+  ]
+}
