@@ -1,0 +1,57 @@
+{
+  "schema": "T9I_GOVERNED_PUBLICATION_RECEIPT@1",
+  "verified_at_utc": "2026-10-17T03:05:06.741690+00:00",
+  "repository": "maidiu/rawlsing",
+  "private_verified": true,
+  "remote": "https://github.com/maidiu/rawlsing.git",
+  "branch": "agent/reviewer-pyat-r23-t9b-clock-custody-independent-r1",
+  "startup": "863a89c4ba03c47b6f50e5ba1144f510d8895a0b",
+  "independent_oracle_commit": "da06c084fbd51b21482bb3bbb79a0eadec901484",
+  "evidence_payload_commit": "6ee65c81066eea8e7c47ee659e86dc4388841e6f",
+  "direct_remote_readback": "6ee65c81066eea8e7c47ee659e86dc4388841e6f",
+  "payload_changed_paths": 83,
+  "all_changed_paths_within_write_terrain": true,
+  "write_terrain": "WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/",
+  "payload_hash_index_sha256": "3fdc2199346432beefcaf27d35399306bb304f1db73c69222f5452405c3f9195",
+  "payload_hashes_verified_after_push": true,
+  "tests": {
+    "author": {
+      "passed": 28,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "exit": 0
+    },
+    "original_V553": {
+      "passed": 8,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "exit": 0
+    },
+    "independent": {
+      "passed": 38,
+      "failed": 10,
+      "errors": 0,
+      "skipped": 0,
+      "exit": 1
+    }
+  },
+  "verdict": "RED_SOURCEFREE_TEMPORAL_CLOCK_CUSTODY_AND_CONSUMER",
+  "fake_PASS": false,
+  "format_checks": {
+    "authored_code_and_documents_diff_check": "PASS",
+    "raw_JUnit_and_logs": "Exact evidence preserved, including pytest trailing whitespace; excluded from whitespace cleanup"
+  },
+  "worktree_limit": "Tracked return clean at payload verification; unrelated untracked root .DS_Store left untouched and unpublished.",
+  "authority_ceiling": [
+    "no real EE12 source pair",
+    "no national inference",
+    "no OC05",
+    "no N11",
+    "no N12",
+    "no V3",
+    "no adoption"
+  ],
+  "publication_chain": "This receipt describes the already pushed evidence payload. Its own sealing commit cannot contain its self hash; final receipt-sealing SHA will be directly read from the remote and reported in the chat."
+}
