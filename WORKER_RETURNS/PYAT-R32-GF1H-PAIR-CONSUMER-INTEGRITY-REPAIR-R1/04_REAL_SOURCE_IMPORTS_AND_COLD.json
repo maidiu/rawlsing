@@ -1,0 +1,66 @@
+{
+  "source_transport": [
+    {
+      "commit": "eeb726357204653b22458dc267dd70ba0009bd77",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261016-R17-GF1-GENERIC-NATIVE-PAIR-RELATION-R1/court/runtime_root/gf1_pair_support_consumer.py",
+      "git_blob_sha1": "75670c69dc587233d462e4a636b63e7fd233c0bd",
+      "sha256": "06dd484b0e9b4b2c9fb0a1583453ac7ffa8c052135304eaaee167a34127cb402"
+    },
+    {
+      "commit": "eeb726357204653b22458dc267dd70ba0009bd77",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261016-R17-GF1-GENERIC-NATIVE-PAIR-RELATION-R1/court/repro/test_gf1_generic_pair.py",
+      "git_blob_sha1": "95d0f1aa4984fa9f86be9c4029fa555870751ef7",
+      "sha256": "2bbb54aa7b1ea990705fc6edf51895a2ea7ec6192abd90acf062940aeff87ef5"
+    },
+    {
+      "commit": "ec5dddfcb3476c01ceb8e7f5122c5e5259b936f7",
+      "path": "WORKER_RETURNS/PYAT-R29-GF1G-FRESH-I2-PAIR-CONSUMER-R1/phase_a/test_gf1g_precommitted.py",
+      "git_blob_sha1": "aa23ecd9c948a1e98fdfbd569b1b90780d9e20e8",
+      "sha256": "956f1a000823e14c807bf98c476279cd20ae1a545c99290af1e9695da0e651be"
+    },
+    {
+      "commit": "ec5dddfcb3476c01ceb8e7f5122c5e5259b936f7",
+      "path": "WORKER_RETURNS/PYAT-R29-GF1G-FRESH-I2-PAIR-CONSUMER-R1/01_FROZEN_ORACLE.json",
+      "git_blob_sha1": "12bb4c5a4b848781c07b91956646e13bd48bab63",
+      "sha256": "d66ec07f2c1d08cf9592f8a62e7bebb5ad344f17b8d0c4232a4c36d2c0ddc682"
+    },
+    {
+      "commit": "3dcc7d7dddfff4f1be8b4293cab92e5b4275007d",
+      "path": "WORKER_RETURNS/PYAT-R28-GF1F-IMPLEMENTED-NATIVE-CONSUMER-INDEPENDENT-R1/tests/test_gf1f_independent_consumer.py",
+      "git_blob_sha1": "f4931c1f3604a209a291fc84e6b083ee199a8887",
+      "sha256": "e2157329dc8222afc969dc698308cfd9a62af680cc2353033476688b5d700db2"
+    },
+    {
+      "commit": "c6a55f0dd5b327c40d64f96e0705ab5485559e90",
+      "path": "WORKER_RETURNS/PYAT-R18-GF1I-INDEPENDENT-GENERIC-PAIR-R1/court/test_gf1i_independent.py",
+      "git_blob_sha1": "18f22fe03e28bb7bf73f563f15658163b50e21c6",
+      "sha256": "4866771e2f4e98cd229beab2073c05b36891e4ea195f57140e95a972b37c93e7"
+    }
+  ],
+  "repaired_consumer_relative_import": "court/runtime_root/gf1_pair_support_consumer.py",
+  "repaired_consumer_sha256": "a4915b845853e70f9430190aebde298346ea5ad4472de8380e26182113f97c8a",
+  "native_closure": "74/74 reattested by gf1_bootstrap on actual pytest and cold imports",
+  "cold_processes": [
+    {
+      "consumer_sha256": "a4915b845853e70f9430190aebde298346ea5ad4472de8380e26182113f97c8a",
+      "pid": 21269,
+      "production_owner_commit": false,
+      "relation_hash": "74d3aaaca35aaacc4491c7e472ac38a6e69fcf0d51736b86b853ea48d10b2236",
+      "result_hash": "0b8ee8a6aa220266071800a1838ec868bb9e1b0bc688def46f6bdb2484db05f0",
+      "role_order": "FORWARD_NATIVE_ORDER",
+      "separation_class": "EXACT_PAIR_SEPARATION"
+    },
+    {
+      "consumer_sha256": "a4915b845853e70f9430190aebde298346ea5ad4472de8380e26182113f97c8a",
+      "pid": 21270,
+      "production_owner_commit": false,
+      "relation_hash": "74d3aaaca35aaacc4491c7e472ac38a6e69fcf0d51736b86b853ea48d10b2236",
+      "result_hash": "0b8ee8a6aa220266071800a1838ec868bb9e1b0bc688def46f6bdb2484db05f0",
+      "role_order": "FORWARD_NATIVE_ORDER",
+      "separation_class": "EXACT_PAIR_SEPARATION"
+    }
+  ],
+  "distinct_pid": true,
+  "identical_non_pid_receipts": true,
+  "science_grade": "SOURCEFREE_TEST_ONLY_UNISSUED"
+}

@@ -1,0 +1,141 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="9" skipped="0" tests="26" time="1.835" timestamp="2026-10-17T19:00:31.200675-04:00"><testcase classname="test_gf1g_precommitted" name="test_g01_reference_reattest_74" time="0.001" /><testcase classname="test_gf1g_precommitted" name="test_g02_genuine_relation_identity_and_cells_exact[BASELINE]" time="0.504" /><testcase classname="test_gf1g_precommitted" name="test_g02_genuine_relation_identity_and_cells_exact[R2_Y1]" time="0.448" /><testcase classname="test_gf1g_precommitted" name="test_g02_genuine_relation_identity_and_cells_exact[R1_Y0]" time="0.432" /><testcase classname="test_gf1g_precommitted" name="test_g03_reverse_identity_roles_and_grant" time="0.005" /><testcase classname="test_gf1g_precommitted" name="test_g04_forward_relation_identity_binds_native_query" time="0.003" /><testcase classname="test_gf1g_precommitted" name="test_g05_baseline_exact_separation_and_counts" time="0.003" /><testcase classname="test_gf1g_precommitted" name="test_g06_interventions_match_frozen_classes_by_orientation" time="0.025" /><testcase classname="test_gf1g_precommitted" name="test_g07_discovery_is_distinct_risk_and_not_baseline" time="0.006" /><testcase classname="test_gf1g_precommitted" name="test_g08_four_classes_present_in_oracle_semantics" time="0.000" /><testcase classname="test_gf1g_precommitted" name="test_g09_synthetic_classes[collapsed_same_point_mass-NO_PAIR_SEPARATION]" time="0.006" /><testcase classname="test_gf1g_precommitted" name="test_g09_synthetic_classes[nontrivial_partial-NO_PAIR_SEPARATION]" time="0.002" /><testcase classname="test_gf1g_precommitted" name="test_g09_synthetic_classes[nontrivial_exact-EXACT_PAIR_SEPARATION]" time="0.002" /><testcase classname="test_gf1g_precommitted" name="test_g09_synthetic_classes[all_zero_observed_zero-UNDETERMINED_ZERO_SUPPORT_RISK]" time="0.002"><failure message="AssertionError: assert 'UNDETERMINED...ELIGIBLE_RISK' == 'UNDETERMINED..._SUPPORT_RISK'&#10;  &#10;  - UNDETERMINED_ZERO_SUPPORT_RISK&#10;  + UNDETERMINED_NO_ELIGIBLE_RISK">name = 'all_zero_observed_zero', expected = 'UNDETERMINED_ZERO_SUPPORT_RISK'
+
+    @pytest.mark.parametrize("name,expected", [
+        ("collapsed_same_point_mass", NO),
+        ("nontrivial_partial", NO),
+        ("nontrivial_exact", EXACT),
+        ("all_zero_observed_zero", ZERO),
+        ("no_eligible_risk", NO_RISK),
+    ])
+    def test_g09_synthetic_classes(name, expected):
+        row = ORACLE["rehashed_test_only_relations"][name]
+        assert row["consumer"]["separation_class"] == expected
+        spec = {
+            "collapsed_same_point_mass": dict(counts={"00": 1, "10": 1}),
+            "nontrivial_partial": dict(counts={"00": 2, "01": 1, "10": 1, "11": 2},
+                                       eligible=6),
+            "nontrivial_exact": dict(counts={"00": 2, "11": 2}, eligible=4),
+            "all_zero_observed_zero": dict(counts={}, eligible=2,
+                                           zero_state="OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"),
+            "no_eligible_risk": dict(counts={}, eligible=0),
+        }[name]
+        rel = _rebuild(**spec)
+        assert rel.content_hash == row["relation_content_hash"]
+&gt;       assert CONS(rel)["separation_class"] == expected
+E       AssertionError: assert 'UNDETERMINED...ELIGIBLE_RISK' == 'UNDETERMINED..._SUPPORT_RISK'
+E         
+E         - UNDETERMINED_ZERO_SUPPORT_RISK
+E         + UNDETERMINED_NO_ELIGIBLE_RISK
+
+/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/gf1h-r32-r2d9fyzr/WORKER_RETURNS/PYAT-R29-GF1G-FRESH-I2-PAIR-CONSUMER-R1/phase_a/test_gf1g_precommitted.py:277: AssertionError</failure></testcase><testcase classname="test_gf1g_precommitted" name="test_g09_synthetic_classes[no_eligible_risk-UNDETERMINED_NO_ELIGIBLE_RISK]" time="0.004"><failure message="AssertionError: assert 'UNDETERMINED..._SUPPORT_RISK' == 'UNDETERMINED...ELIGIBLE_RISK'&#10;  &#10;  - UNDETERMINED_NO_ELIGIBLE_RISK&#10;  + UNDETERMINED_ZERO_SUPPORT_RISK">name = 'no_eligible_risk', expected = 'UNDETERMINED_NO_ELIGIBLE_RISK'
+
+    @pytest.mark.parametrize("name,expected", [
+        ("collapsed_same_point_mass", NO),
+        ("nontrivial_partial", NO),
+        ("nontrivial_exact", EXACT),
+        ("all_zero_observed_zero", ZERO),
+        ("no_eligible_risk", NO_RISK),
+    ])
+    def test_g09_synthetic_classes(name, expected):
+        row = ORACLE["rehashed_test_only_relations"][name]
+        assert row["consumer"]["separation_class"] == expected
+        spec = {
+            "collapsed_same_point_mass": dict(counts={"00": 1, "10": 1}),
+            "nontrivial_partial": dict(counts={"00": 2, "01": 1, "10": 1, "11": 2},
+                                       eligible=6),
+            "nontrivial_exact": dict(counts={"00": 2, "11": 2}, eligible=4),
+            "all_zero_observed_zero": dict(counts={}, eligible=2,
+                                           zero_state="OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"),
+            "no_eligible_risk": dict(counts={}, eligible=0),
+        }[name]
+        rel = _rebuild(**spec)
+        assert rel.content_hash == row["relation_content_hash"]
+&gt;       assert CONS(rel)["separation_class"] == expected
+E       AssertionError: assert 'UNDETERMINED..._SUPPORT_RISK' == 'UNDETERMINED...ELIGIBLE_RISK'
+E         
+E         - UNDETERMINED_NO_ELIGIBLE_RISK
+E         + UNDETERMINED_ZERO_SUPPORT_RISK
+
+/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/gf1h-r32-r2d9fyzr/WORKER_RETURNS/PYAT-R29-GF1G-FRESH-I2-PAIR-CONSUMER-R1/phase_a/test_gf1g_precommitted.py:277: AssertionError</failure></testcase><testcase classname="test_gf1g_precommitted" name="test_g10_missing_unresolved_nonresponse_hold[missing_target_state]" time="0.004"><failure message="KeyError: 'separation_class'">name = 'missing_target_state'
+
+    @pytest.mark.parametrize("name", ["missing_target_state", "unresolved_target_state",
+                                      "nonresponse"])
+    def test_g10_missing_unresolved_nonresponse_hold(name):
+        row = ORACLE["rehashed_test_only_relations"][name]
+        rel = _rebuild(counts={}, typed=row["typed_state"], eligible=0)
+        res = CONS(rel)
+&gt;       assert res["separation_class"] is None, res
+               ^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'separation_class'
+
+/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/gf1h-r32-r2d9fyzr/WORKER_RETURNS/PYAT-R29-GF1G-FRESH-I2-PAIR-CONSUMER-R1/phase_a/test_gf1g_precommitted.py:286: KeyError</failure></testcase><testcase classname="test_gf1g_precommitted" name="test_g10_missing_unresolved_nonresponse_hold[unresolved_target_state]" time="0.005"><failure message="KeyError: 'separation_class'">name = 'unresolved_target_state'
+
+    @pytest.mark.parametrize("name", ["missing_target_state", "unresolved_target_state",
+                                      "nonresponse"])
+    def test_g10_missing_unresolved_nonresponse_hold(name):
+        row = ORACLE["rehashed_test_only_relations"][name]
+        rel = _rebuild(counts={}, typed=row["typed_state"], eligible=0)
+        res = CONS(rel)
+&gt;       assert res["separation_class"] is None, res
+               ^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'separation_class'
+
+/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/gf1h-r32-r2d9fyzr/WORKER_RETURNS/PYAT-R29-GF1G-FRESH-I2-PAIR-CONSUMER-R1/phase_a/test_gf1g_precommitted.py:286: KeyError</failure></testcase><testcase classname="test_gf1g_precommitted" name="test_g10_missing_unresolved_nonresponse_hold[nonresponse]" time="0.003"><failure message="KeyError: 'separation_class'">name = 'nonresponse'
+
+    @pytest.mark.parametrize("name", ["missing_target_state", "unresolved_target_state",
+                                      "nonresponse"])
+    def test_g10_missing_unresolved_nonresponse_hold(name):
+        row = ORACLE["rehashed_test_only_relations"][name]
+        rel = _rebuild(counts={}, typed=row["typed_state"], eligible=0)
+        res = CONS(rel)
+&gt;       assert res["separation_class"] is None, res
+               ^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'separation_class'
+
+/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/gf1h-r32-r2d9fyzr/WORKER_RETURNS/PYAT-R29-GF1G-FRESH-I2-PAIR-CONSUMER-R1/phase_a/test_gf1g_precommitted.py:286: KeyError</failure></testcase><testcase classname="test_gf1g_precommitted" name="test_g11_zero_support_typed_and_observed_zero" time="0.002"><failure message="KeyError: 'separation_class'">def test_g11_zero_support_typed_and_observed_zero():
+        row = ORACLE["rehashed_test_only_relations"]["zero_support_typed"]
+        rel = _rebuild(counts={}, typed="ZERO_SUPPORT", eligible=2)
+        res = CONS(rel)
+&gt;       assert res["separation_class"] == ZERO
+               ^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'separation_class'
+
+/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/gf1h-r32-r2d9fyzr/WORKER_RETURNS/PYAT-R29-GF1G-FRESH-I2-PAIR-CONSUMER-R1/phase_a/test_gf1g_precommitted.py:295: KeyError</failure></testcase><testcase classname="test_gf1g_precommitted" name="test_g12_inconsistent_denominator_and_risk_bound_typed_reject[inconsistent_denominator]" time="0.003"><failure message="AssertionError: {'consumer_id': 'GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ONLY@1.0.0', 'consumer_output_family': 'GF1_PAIR_SUPPORT_SIG...E_RESULT_TEST_ONLY@1.0.0', 'decision_state': 'PAIR_SUPPORT_SIGNATURE_COMPUTED', 'downstream_value_produced': True, ...}&#10;assert 'EXACT_PAIR_SEPARATION' is None">name = 'inconsistent_denominator'
+
+    @pytest.mark.parametrize("name", ["inconsistent_denominator", "support_exceeds_risk"])
+    def test_g12_inconsistent_denominator_and_risk_bound_typed_reject(name):
+        row = ORACLE["rehashed_test_only_relations"][name]
+        if name == "inconsistent_denominator":
+            rel = _rebuild(counts={"00": 1, "11": 1}, denoms={"0": 2, "1": 1})
+        else:
+            rel = _rebuild(counts={"00": 1, "11": 1}, eligible=1)
+        assert rel.content_hash == row["relation_content_hash"]
+        res = CONS(rel)
+&gt;       assert res["separation_class"] is None, res
+E       AssertionError: {'consumer_id': 'GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ONLY@1.0.0', 'consumer_output_family': 'GF1_PAIR_SUPPORT_SIG...E_RESULT_TEST_ONLY@1.0.0', 'decision_state': 'PAIR_SUPPORT_SIGNATURE_COMPUTED', 'downstream_value_produced': True, ...}
+E       assert 'EXACT_PAIR_SEPARATION' is None
+
+/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/gf1h-r32-r2d9fyzr/WORKER_RETURNS/PYAT-R29-GF1G-FRESH-I2-PAIR-CONSUMER-R1/phase_a/test_gf1g_precommitted.py:314: AssertionError</failure></testcase><testcase classname="test_gf1g_precommitted" name="test_g12_inconsistent_denominator_and_risk_bound_typed_reject[support_exceeds_risk]" time="0.002"><failure message="AssertionError: {'consumer_id': 'GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ONLY@1.0.0', 'consumer_output_family': 'GF1_PAIR_SUPPORT_SIG...E_RESULT_TEST_ONLY@1.0.0', 'decision_state': 'PAIR_SUPPORT_SIGNATURE_COMPUTED', 'downstream_value_produced': True, ...}&#10;assert 'EXACT_PAIR_SEPARATION' is None">name = 'support_exceeds_risk'
+
+    @pytest.mark.parametrize("name", ["inconsistent_denominator", "support_exceeds_risk"])
+    def test_g12_inconsistent_denominator_and_risk_bound_typed_reject(name):
+        row = ORACLE["rehashed_test_only_relations"][name]
+        if name == "inconsistent_denominator":
+            rel = _rebuild(counts={"00": 1, "11": 1}, denoms={"0": 2, "1": 1})
+        else:
+            rel = _rebuild(counts={"00": 1, "11": 1}, eligible=1)
+        assert rel.content_hash == row["relation_content_hash"]
+        res = CONS(rel)
+&gt;       assert res["separation_class"] is None, res
+E       AssertionError: {'consumer_id': 'GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ONLY@1.0.0', 'consumer_output_family': 'GF1_PAIR_SUPPORT_SIG...E_RESULT_TEST_ONLY@1.0.0', 'decision_state': 'PAIR_SUPPORT_SIGNATURE_COMPUTED', 'downstream_value_produced': True, ...}
+E       assert 'EXACT_PAIR_SEPARATION' is None
+
+/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/gf1h-r32-r2d9fyzr/WORKER_RETURNS/PYAT-R29-GF1G-FRESH-I2-PAIR-CONSUMER-R1/phase_a/test_gf1g_precommitted.py:314: AssertionError</failure></testcase><testcase classname="test_gf1g_precommitted" name="test_g13_invalid_input_exact_contract_state" time="0.001"><failure message="KeyError: 'separation_class'">def test_g13_invalid_input_exact_contract_state():
+        res = CONS({"nope": 1})
+        assert res["decision_state"] == "CONSUMER_INPUT_NOT_GENERIC_PAIR_RELATION"
+&gt;       assert res["separation_class"] is None
+               ^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'separation_class'
+
+/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/gf1h-r32-r2d9fyzr/WORKER_RETURNS/PYAT-R29-GF1G-FRESH-I2-PAIR-CONSUMER-R1/phase_a/test_gf1g_precommitted.py:322: KeyError</failure></testcase><testcase classname="test_gf1g_precommitted" name="test_g14_empty_profile_contract_state" time="0.002" /><testcase classname="test_gf1g_precommitted" name="test_g15_f2_no_copied_consumer_fields" time="0.004" /><testcase classname="test_gf1g_precommitted" name="test_g16_result_hash_deterministic_and_semantically_sensitive" time="0.005" /><testcase classname="test_gf1g_precommitted" name="test_g17_fully_rehashed_self_authenticated_is_not_issuer_authenticated" time="0.002" /></testsuite></testsuites>

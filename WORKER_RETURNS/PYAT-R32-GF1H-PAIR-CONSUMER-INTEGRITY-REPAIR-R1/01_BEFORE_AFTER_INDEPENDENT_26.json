@@ -1,0 +1,106 @@
+{
+  "sealed_start": "70265e59dab9d190e736010f6afdeebe1729b396",
+  "unchanged_gf1g_phase_a_commit": "ec5dddfcb3476c01ceb8e7f5122c5e5259b936f7",
+  "original_consumer_sha256": "06dd484b0e9b4b2c9fb0a1583453ac7ffa8c052135304eaaee167a34127cb402",
+  "repaired_consumer_sha256": "a4915b845853e70f9430190aebde298346ea5ad4472de8380e26182113f97c8a",
+  "before": {
+    "tests": 26,
+    "failures": 9,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": [
+      "test_g09_synthetic_classes[all_zero_observed_zero-UNDETERMINED_ZERO_SUPPORT_RISK]",
+      "test_g09_synthetic_classes[no_eligible_risk-UNDETERMINED_NO_ELIGIBLE_RISK]",
+      "test_g10_missing_unresolved_nonresponse_hold[missing_target_state]",
+      "test_g10_missing_unresolved_nonresponse_hold[unresolved_target_state]",
+      "test_g10_missing_unresolved_nonresponse_hold[nonresponse]",
+      "test_g11_zero_support_typed_and_observed_zero",
+      "test_g12_inconsistent_denominator_and_risk_bound_typed_reject[inconsistent_denominator]",
+      "test_g12_inconsistent_denominator_and_risk_bound_typed_reject[support_exceeds_risk]",
+      "test_g13_invalid_input_exact_contract_state"
+    ]
+  },
+  "after": {
+    "tests": 26,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_cases": []
+  },
+  "all_actual_suite_results": {
+    "original44_before": {
+      "tests": 44,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "failed_cases": []
+    },
+    "original44_after": {
+      "tests": 44,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "failed_cases": []
+    },
+    "gf1g_before": {
+      "tests": 26,
+      "failures": 9,
+      "errors": 0,
+      "skipped": 0,
+      "failed_cases": [
+        "test_g09_synthetic_classes[all_zero_observed_zero-UNDETERMINED_ZERO_SUPPORT_RISK]",
+        "test_g09_synthetic_classes[no_eligible_risk-UNDETERMINED_NO_ELIGIBLE_RISK]",
+        "test_g10_missing_unresolved_nonresponse_hold[missing_target_state]",
+        "test_g10_missing_unresolved_nonresponse_hold[unresolved_target_state]",
+        "test_g10_missing_unresolved_nonresponse_hold[nonresponse]",
+        "test_g11_zero_support_typed_and_observed_zero",
+        "test_g12_inconsistent_denominator_and_risk_bound_typed_reject[inconsistent_denominator]",
+        "test_g12_inconsistent_denominator_and_risk_bound_typed_reject[support_exceeds_risk]",
+        "test_g13_invalid_input_exact_contract_state"
+      ]
+    },
+    "gf1g_after": {
+      "tests": 26,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "failed_cases": []
+    },
+    "gf1f100_before": {
+      "tests": 100,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "failed_cases": []
+    },
+    "gf1f100_after": {
+      "tests": 100,
+      "failures": 4,
+      "errors": 0,
+      "skipped": 0,
+      "failed_cases": [
+        "test_universe_class_and_derived_fields[0000]",
+        "test_named_cases[zero_supported_risk]",
+        "test_missing_suppressed_relation_is_empty_response",
+        "test_cold_process_consumer_replay_bit_identical"
+      ]
+    },
+    "gf1i19_after": {
+      "tests": 19,
+      "failures": 2,
+      "errors": 0,
+      "skipped": 0,
+      "failed_cases": [
+        "test_named_downstream_consumer_module_is_absent_from_candidate",
+        "test_candidate_frozen_44_suite_cannot_be_collected"
+      ]
+    },
+    "gf1h_new": {
+      "tests": 26,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "failed_cases": []
+    }
+  }
+}
