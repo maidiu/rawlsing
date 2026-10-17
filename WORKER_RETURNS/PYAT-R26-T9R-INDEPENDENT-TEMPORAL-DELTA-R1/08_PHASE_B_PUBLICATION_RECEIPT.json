@@ -1,0 +1,39 @@
+{
+  "schema": "T9R_FINAL_PHASE_B_PUBLICATION_RECEIPT@1",
+  "at_utc": "2026-10-17T05:19:08.951872+00:00",
+  "repository": "maidiu/rawlsing",
+  "visibility": "private",
+  "reviewer_branch": "refs/heads/agent/reviewer-pyat-r26-t9r-temporal-delta-precommitted-r1",
+  "phase_a_precommit": "68c5c2a15d234fe2589083af17e6f0dbc2f60d5a",
+  "candidate": "9a33c2dcaa7ac0d50606416ab965488c9782934b",
+  "evidence_payload": "81c0fe7f1bd6dea2f10f295e4242c4539bfe7d3e",
+  "direct_remote_readback": "81c0fe7f1bd6dea2f10f295e4242c4539bfe7d3e\trefs/heads/agent/reviewer-pyat-r26-t9r-temporal-delta-precommitted-r1",
+  "fetch_readback_same_tree": true,
+  "changed_paths_since_sealed_startup": 170,
+  "all_changed_paths_in_reviewer_scope": true,
+  "verdict": "RED_HOLD_FOR_METHOD_ACCEPTANCE",
+  "commission_execution_complete": true,
+  "court_counts": {
+    "V553": "8PASS",
+    "historical_author_against_T9C": "27PASS/1FAIL",
+    "unchanged_T9I": "47PASS/1FAIL",
+    "frozen_delta": "46PASS/4CAPABILITY_FAIL",
+    "T9C_own": "52PASS",
+    "postinspection": "0PASS/7FAIL"
+  },
+  "final_errors": 0,
+  "final_skips": 0,
+  "original_independent_reds_now_pass": 10,
+  "payload_hash_manifest_sha256": "d239226bbf12f50d4d9dd8e53ad13c46f692d07b2af322cd97caeed16930eb51",
+  "no_grants": [
+    "N9",
+    "OC05",
+    "real EE12",
+    "N11",
+    "N12",
+    "Sorok actor",
+    "V3",
+    "method adoption"
+  ],
+  "seal_note": "This receipt is sealed by a subsequent commit; its final pushed SHA is independently read back and reported in the delivery message. No file can contain its own containing-commit SHA."
+}
