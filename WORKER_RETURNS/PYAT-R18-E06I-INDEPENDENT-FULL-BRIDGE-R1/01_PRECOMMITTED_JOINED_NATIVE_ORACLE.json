@@ -1,0 +1,318 @@
+{
+ "candidate": {
+  "author_claimed_cases": 40,
+  "author_tests_sha256": "fd4e256aa1d51130225abba1c96fefc695e5389e0952f2088d87bad9226967bd",
+  "branch": "agent/userdirect-pyat-20261016-r17-e06-e04e05-native-bridge-r1",
+  "bridge_sha256": "182818d96f27a853d02bcc977c1a143ef395498fb4cabca89f9c7c85e2dcec0e",
+  "frozen_contract_git_object": "14f247b75",
+  "frozen_contract_sha256": "4a67c4adf2b02842acacd31129e732e32ade006667d5df9eb7a84621bac24cf0",
+  "pins": {
+   "E04T": "79cb8244a5291218bde17142b93fc2419eade396",
+   "E04U": "f1ca9c530f6f03053ca981b49eefc91b85be47b8",
+   "E05R": "84485d32c0088995f8dc664dc0517b2d27f2563d",
+   "E05S": "f524f60781e2e7e72278d04d6377fb1da877698a"
+  },
+  "sha": "f9c52113de38caececc450f0e54c980f64ed3981",
+  "source_manifest_len": 402
+ },
+ "excluded_from_independence": {
+  "author_40": "executed separately as regression evidence only; not counted as independent acceptance",
+  "prior_E04U_E05S": "referenced as component acceptances; neither accepted this composition"
+ },
+ "grade": "PRECOMMITTED_BEFORE_INDEPENDENT_REVIEWER_COURT_EXECUTION",
+ "independent_source_derivation": {
+  "c11_events": 232,
+  "method": "python import of rawlsing_next.pre553_n9_n10w_progressive_candidate.synthetic_world_rows() (native C11 input) with the exact build_source transforms; independent of bridge.py and of the candidate product JSON",
+  "respondents": 58,
+  "source_strata": {
+   "000": [
+    2,
+    6
+   ],
+   "001": [
+    3,
+    3
+   ],
+   "010": [
+    2,
+    4
+   ],
+   "011": [
+    4,
+    2
+   ],
+   "100": [
+    3,
+    5
+   ],
+   "101": [
+    5,
+    3
+   ],
+   "110": [
+    4,
+    4
+   ],
+   "111": [
+    6,
+    2
+   ]
+  }
+ },
+ "numerical_expectations": {
+  "Y0to1_counterfactual": [
+   [
+    19,
+    32
+   ],
+   [
+    11,
+    16
+   ],
+   [
+    7,
+    8
+   ]
+  ],
+  "current_struct": {
+   "exit_cost": 8,
+   "training_access": false
+  },
+  "forward_Y_given_A_AB_ABC": [
+   [
+    18,
+    32
+   ],
+   [
+    10,
+    16
+   ],
+   [
+    6,
+    8
+   ]
+  ],
+  "gss": {
+   "denominator": 3288063,
+   "electricity_subtypes_sum": 2388192,
+   "geography": "GHANA_RURAL",
+   "numerator": 2388192,
+   "publication": "2022-02-24",
+   "unit": "RURAL_OCCUPIED_HOUSEHOLD_MAIN_LIGHTING"
+  },
+  "historical_struct": {
+   "exit_cost": 2,
+   "training_access": true
+  },
+  "minority_cell0": [
+   [
+    14,
+    32
+   ],
+   [
+    6,
+    16
+   ],
+   [
+    2,
+    8
+   ]
+  ],
+  "nca": {
+   "active_subscriptions": 23414527,
+   "geography": "GHANA_NATIONAL",
+   "publication": "2022-07-08",
+   "unit": "ACTIVE_MOBILE_DATA_SUBSCRIPTIONS_NOT_UNIQUE_PERSONS"
+  },
+  "reverse_A_given_Y16": [
+   18,
+   29
+  ],
+  "zero_support_early": [
+   [
+    12,
+    24
+   ],
+   [
+    4,
+    8
+   ]
+  ],
+  "zero_support_terminal_denominator": 0,
+  "zero_support_terminal_state": "ZERO_SUPPORT"
+ },
+ "permission_and_clock_expectations": [
+  {
+   "hypothesis": "warm positive then remove exact query authority from the attached registry; next read on the same prepared request",
+   "id": "B01",
+   "predicted": "state DEPENDENT_EMPIRICAL_USE_REFUSED, fresh_empirical_use_authorized False, empirical_values None, both warm clients deny with fresh_receipt False, E05R partial has no cells/evidence, structural + native field readset unchanged"
+  },
+  {
+   "hypothesis": "repeat the withdrawn read (cache now cold)",
+   "id": "B02",
+   "predicted": "no positive empirical cells or evidence on the repeat either; state must not be SELECTED_WORLD_VALUES_SERVED; fresh_empirical_use_authorized must not be True"
+  },
+  {
+   "hypothesis": "brand-new bridge with the query grant never attached",
+   "id": "B03",
+   "predicted": "no positive empirical cells/evidence"
+  },
+  {
+   "hypothesis": "warm bridge, withdraw grant, then a different empirical condition key (cold cache key)",
+   "id": "B04",
+   "predicted": "no positive empirical cells/evidence; cache-miss path must not bypass the query grant"
+  },
+  {
+   "hypothesis": "restore only the exact legitimate fixture grants under the same acceptance",
+   "id": "B05",
+   "predicted": "state SELECTED_WORLD_VALUES_SERVED and selected_world_receipt byte-equal to the original positive receipt"
+  },
+  {
+   "hypothesis": "the refusal path must not auto-issue or renew authority",
+   "id": "B06",
+   "predicted": "world source authorities, qauth and attached registry contents unchanged across the refusal"
+  },
+  {
+   "hypothesis": "an old receipt is archival, not a grant",
+   "id": "B07",
+   "predicted": "archive()['archival_only'] True and ['fresh_use_authorized'] False in both states"
+  },
+  {
+   "hypothesis": "same-label successor grant (new version/content hash) substituted for qauth",
+   "id": "B08",
+   "predicted": "warm: refusal envelope or typed no-values partial; cold: no positive values"
+  },
+  {
+   "hypothesis": "same ref, forged governed_operations/decision_state/issuer",
+   "id": "B09",
+   "predicted": "warm: refusal; cold: integrity error or no positive values; never positive empirical cells"
+  },
+  {
+   "hypothesis": "a source-release authority snapshot is put in DENY",
+   "id": "B10",
+   "predicted": "no positive empirical cells/evidence"
+  },
+  {
+   "hypothesis": "one source-release authority snapshot is removed from the registry",
+   "id": "B11",
+   "predicted": "no positive empirical cells/evidence"
+  },
+  {
+   "hypothesis": "a prior-process public cache projection injected into a fresh bridge before its first prepare",
+   "id": "C01",
+   "predicted": "ValueError UNATTESTED_NATIVE_CACHE_ENTRY; never accepted as owner evidence"
+  },
+  {
+   "hypothesis": "attacker mutates a warm cache entry and recomputes its content_hash",
+   "id": "C02",
+   "predicted": "ValueError NATIVE_OWNER_CACHE_PROJECTION_MISMATCH propagates as an integrity error; it is not laundered into the grant-loss envelope"
+  },
+  {
+   "hypothesis": "a projection from a bridge with a different source binding replaces a warm entry",
+   "id": "C03",
+   "predicted": "ValueError NATIVE_OWNER_CACHE_PROJECTION_MISMATCH"
+  },
+  {
+   "hypothesis": "prepared handoff read by a different bridge instance",
+   "id": "C04",
+   "predicted": "ValueError E06_FOREIGN_PREPARED_HANDOFF"
+  },
+  {
+   "hypothesis": "release_ref replaced by a foreign ExactRef after a valid acceptance",
+   "id": "D01",
+   "predicted": "ValueError (binding changed / provider source changed), no positive values"
+  },
+  {
+   "hypothesis": "same release ref, foreign release object in the repository",
+   "id": "D02",
+   "predicted": "ValueError ACCEPTED_NATIVE_SOURCE_REPLACED"
+  },
+  {
+   "hypothesis": "risk refs or permission root mutated",
+   "id": "D03",
+   "predicted": "ValueError, no positive values"
+  },
+  {
+   "hypothesis": "supplied consumer material with a tampered native field readset",
+   "id": "D04",
+   "predicted": "N9SelectedWorldRefusal CONSUMER_MATERIAL_NOT_EXACT_ORIGINAL_OUTPUT"
+  },
+  {
+   "hypothesis": "one native field role revoked in the adapter registry",
+   "id": "D05",
+   "predicted": "typed partial, exactly one value removed, empirical/structural/consumers unchanged"
+  },
+  {
+   "hypothesis": "explicit adapter.invalidate(role)",
+   "id": "D06",
+   "predicted": "refusal reason SOURCE_REVOKED, distinct from rekey (UNKNOWN_EXACT_FIELD_REF) and from NOT_PUBLISHED_AT_SELECTED_ASOF"
+  },
+  {
+   "hypothesis": "published_asof precedes the empirical source publication",
+   "id": "E01",
+   "predicted": "no prewarm: provider cache/accepted/trace empty; empirical_steps empty; empirical_state UNAVAILABLE_PUBLICATION_OR_EFFECTIVE_CLOCK"
+  },
+  {
+   "hypothesis": "after a clock-denied request, a current request on the same bridge",
+   "id": "E02",
+   "predicted": "full positive current path (denial does not poison or pre-grant)"
+  },
+  {
+   "hypothesis": "serve a different clock's request against an existing acceptance/snapshot",
+   "id": "E03",
+   "predicted": "N9SelectedWorldRefusal, no receipt"
+  },
+  {
+   "hypothesis": "after a valid E05 acceptance, downgrade adapter.service to the original GenericSelectedWorldService (E04R factory)",
+   "id": "F01",
+   "predicted": "ValueError E06_PINNED_E04T_PROVIDER_SUBSTITUTED"
+  },
+  {
+   "hypothesis": "replace service.provider with product.empirical.GenericProgressiveProvider",
+   "id": "F02",
+   "predicted": "ValueError E06_PINNED_E04T_PROVIDER_SUBSTITUTED"
+  },
+  {
+   "hypothesis": "mutate the live catalog records in place",
+   "id": "F03",
+   "predicted": "ValueError (CATALOG_CONTENT_CHANGED / FOREIGN_SNAPSHOT_SUBSTITUTION), no positive service"
+  },
+  {
+   "hypothesis": "construct the bridge without literal enabled=True",
+   "id": "F04",
+   "predicted": "BridgeDisabled before any native source evidence is produced"
+  },
+  {
+   "hypothesis": "the imported producer is the exact E04T owner, not product.empirical",
+   "id": "G01",
+   "predicted": "e04t_empirical.__file__ == runtime/owners/e04t_empirical.py with git blob from the E04T commit; product.empirical module distinct and separately imported"
+  },
+  {
+   "hypothesis": "no installation/issuance occurs",
+   "id": "G02",
+   "predicted": "installed_OC05 current_applicability NOT_YET_APPLICABLE and consumer_seam None; issued_N5N6/issued_EE13 False; operative_N9/OC05 False"
+  },
+  {
+   "hypothesis": "two fresh cold OS processes replay a persisted restored current-grant ledger",
+   "id": "H01",
+   "predicted": "distinct PIDs, bit-identical serialized results, restored result equals the original positive selected-world receipt"
+  },
+  {
+   "hypothesis": "two fresh cold OS processes replay a persisted withdrawn ledger (stale permission)",
+   "id": "H02",
+   "predicted": "distinct PIDs, bit-identical, no positive empirical cells/evidence, and no foreign public projection accepted as owner evidence"
+  }
+ ],
+ "positive_path_expectation": {
+  "id": "A01/A05",
+  "predicted": "NativeBridge(rows,enabled=True).prepare+read returns state SELECTED_WORLD_VALUES_SERVED with exactly 2 consumers (NONPARENT_OPTIONS OPTIONS_AND_SOURCE_SUPPORT_PRODUCED, CONCEPTION_SCENARIO_PROPOSALS FINITE_PROPOSALS_EVALUATED), both over the same snapshot_hash, with the numerical expectations above and two separately native field units",
+  "rationale": "commission requires a positive current-grant joined consumer path, not refusal-only green"
+ },
+ "reviewer": {
+  "branch": "agent/reviewer-pyat-20261016-r18-e06i-full-bridge-independent-r1",
+  "commission": "WORKER_COMMISSIONS/PYAT-R18-E06I-INDEPENDENT-FULL-BRIDGE-R1/00_COMMISSION.md",
+  "role": "independent hostile cross-owner reviewer; not E06 author, issuer, HQ or installer",
+  "sealed_startup": "6aea052f09ef01205aff1c38cd8c68197b762447"
+ },
+ "schema": "E06I_INDEPENDENT_PRECOMMITTED_JOINED_NATIVE_ORACLE@1"
+}

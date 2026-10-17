@@ -1,0 +1,58 @@
+{
+ "branch": "agent/reviewer-pyat-20261016-r18-e06i-full-bridge-independent-r1",
+ "candidate": {
+  "branch": "agent/userdirect-pyat-20261016-r17-e06-e04e05-native-bridge-r1",
+  "bridge_sha256": "182818d96f27a853d02bcc977c1a143ef395498fb4cabca89f9c7c85e2dcec0e",
+  "sha": "f9c52113de38caececc450f0e54c980f64ed3981"
+ },
+ "cold_processes": 4,
+ "environment_id": "E06I_LOCAL_REVIEWER_COURT",
+ "epoch_id": "E06I_R18_INDEPENDENT_FULL_BRIDGE",
+ "git": "git version 2.39.1",
+ "independence": "reviewer did not author or modify the candidate; author 40 is regression only",
+ "installation_status": "NOT_INSTALLED; OC05 NOT_YET_APPLICABLE; no source/model/actor rights exercised",
+ "interpreter": "3.11.3",
+ "machine_alias": "LOCAL_SHARED_STORE_HOST",
+ "model": {
+  "actual_model": "deepseek-flash",
+  "actual_reasoning_effort": "NOT_EXPOSED",
+  "observed_provider": "DeepSeek Harness",
+  "requested": "Codex GPT-6.1 Sol Medium or cheaper qualified Python/pytest executor"
+ },
+ "observed_at_utc": "2026-10-17T00:31:58.624597+00:00",
+ "platform": "Darwin x86_64",
+ "privacy": "synthetic fixtures only; no original SAV/DTA/PDF, credentials or source issuance",
+ "pytest": "pytest 9.1.1",
+ "quota": {
+  "incremental_cash": "UNKNOWN",
+  "plan": "UNKNOWN"
+ },
+ "retire_or_reprobe": "runtime reset, candidate/source branch change, new rights, or unrelated task",
+ "schema": "E06I_SANITIZED_ENVIRONMENT_PASSPORT_DELTA@1",
+ "sealed_startup": "6aea052f09ef01205aff1c38cd8c68197b762447",
+ "session_alias": "E06I_R18",
+ "source_closure": {
+  "e04t_owner_commit": "79cb8244a5291218bde17142b93fc2419eade396",
+  "e05s_objects": 401,
+  "manifest_entries": 402,
+  "verified_preimages": 402
+ },
+ "status": "LIVE_VERIFIED",
+ "surface": "S2_LOCAL_HOST",
+ "tests": {
+  "author_exit": 0,
+  "author_regression": {
+   "errors": 0,
+   "failures": 0,
+   "skipped": 0,
+   "tests": 40
+  },
+  "independent_court": {
+   "errors": 0,
+   "failures": 0,
+   "skipped": 0,
+   "tests": 48
+  },
+  "independent_exit": 0
+ }
+}

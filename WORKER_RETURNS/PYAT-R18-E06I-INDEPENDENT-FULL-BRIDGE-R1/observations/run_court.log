@@ -1,0 +1,52 @@
+{
+ "schema": "E06I_COURT_EXECUTION_SUMMARY@1",
+ "candidate_sha": "f9c52113de38caececc450f0e54c980f64ed3981",
+ "author_regression": {
+  "argv": [
+   "/usr/local/bin/python3",
+   "-m",
+   "pytest",
+   "-q",
+   "tests/test_bridge.py",
+   "--import-mode=importlib",
+   "-p",
+   "no:cacheprovider",
+   "--junitxml=/private/tmp/e06i/reviewer/WORKER_RETURNS/PYAT-R18-E06I-INDEPENDENT-FULL-BRIDGE-R1/observations/author40_regression.xml"
+  ],
+  "cwd": "<CANDIDATE>",
+  "seconds": 67.47922821203247,
+  "exit": 0,
+  "junit": "author40_regression.xml",
+  "counts": {
+   "tests": 40,
+   "failures": 0,
+   "errors": 0,
+   "skipped": 0
+  }
+ },
+ "independent_court": {
+  "argv": [
+   "/usr/local/bin/python3",
+   "-m",
+   "pytest",
+   "-q",
+   "tests/test_e06i_independent_court.py",
+   "--import-mode=importlib",
+   "-p",
+   "no:cacheprovider",
+   "--junitxml=/private/tmp/e06i/reviewer/WORKER_RETURNS/PYAT-R18-E06I-INDEPENDENT-FULL-BRIDGE-R1/observations/e06i_independent_court.xml"
+  ],
+  "cwd": "/private/tmp/e06i/reviewer/WORKER_RETURNS/PYAT-R18-E06I-INDEPENDENT-FULL-BRIDGE-R1",
+  "seconds": 81.64108540606685,
+  "exit": 0,
+  "junit": "e06i_independent_court.xml",
+  "counts": {
+   "tests": 48,
+   "failures": 0,
+   "errors": 0,
+   "skipped": 0
+  }
+ },
+ "independence": "author 40 is regression only; acceptance rests on the 48 independent cases"
+}
+EXIT=0
