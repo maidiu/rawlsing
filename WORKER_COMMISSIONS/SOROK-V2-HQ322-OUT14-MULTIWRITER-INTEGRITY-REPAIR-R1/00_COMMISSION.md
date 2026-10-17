@@ -3,22 +3,26 @@
 Status: user-requested candidate commission, not adopted code, ADP019 event grant or formal Sorok HQ succession.
 Repo: maidiu/rawlsing (private).
 Role: one sourcefree bounded OUT12 author-side protocol implementer; NOT HQ, semantic issuer or independent I2 reviewer.
-Single accountable agent: HQ-recommended **Codex GPT-6 Medium**, authorized local sparse worktree; no autonomous editor, model, machine or provider switch. HQ handles distinct later I2 review after whole return.
-Intelligence: I2-aware bounded implementation, I0/I1 deterministic process tests. High independent acceptance later; I3 only if genuine accepted-owner semantics clash.
-EXECUTION SURFACE: S2 local Python/pytest/subprocess with genuine competing OS processes and filesystem.
-HQ_ENVIRONMENT_VERDICT: LOCAL_DOMINANT. Browser sufficiency SCOPED_ONLY, setup MATERIAL for true multiprocess durability and transitive source import tests. Browser Python existence alone does not make it preferred.
-PRIMARY_MODEL_AND_HOST: Codex GPT-6 Medium on verified authorized local worktree. Price/quota/use UNKNOWN; no paid-overflow authorization.
-WHY_NOT_ALTERNATIVE: repeated locking/cold subprocess repair and real file paths favor persistent local runner over re-staging a Browser Python tree. No live Browser warm state has been verified.
-WARM_REUSE_PLAN: validate any original OUT12 local worktree, runtime marker, exact source fingerprints and pytest with actual imported paths, not merely original branch. If stale use single shared-object-store sparse worktree. Adjacent future acceptance OUT15 requires independent reviewer, not same author.
-FALLBACK_TRIGGER: missing authorized local process/fs runner or unsatisfiable owner semantics after bounded preflight => exact typed HOLD; do not silently reroute.
-PHASE_MODEL_ASSIGNMENT: one Medium author does mechanical+fix+tests; independent GPT-6 High science/authority reviewer after return (separate HQ dispatch). No extra coagents.
-REVIEW_INDEPENDENCE_AND_ESCALATION: later reviewer must not have authored OUT9, OUT12 or OUT13. OUT13 reviewer explicitly disclosed OUT9 baseline authorship; don't re-use that reviewer as if pristine.
-ACTIVE_WORKER_NO_DISTURBANCE: NEW OUT14; do not alter accepted OUT9, prior OUT12, or OUT13 reviewer source.
+Single accountable agent: HQ-recommended **Browser ChatGPT GPT-6 Medium with Python/pytest/subprocess + GitHub**, one worker handles complete implementation and tests; no autonomous editor/model switch.
+Intelligence: I2-aware bounded implementation, mechanical I0/I1 actual execution. High independent I2 acceptance is HQ's later job, not this worker's coagent.
+EXECUTION SURFACE: S1 Browser with real Python/pytest/subprocess/flock, GitHub reads and exact imported-source staging.
+HQ_ENVIRONMENT_VERDICT: BROWSER_NATIVE. Browser Python 3.13.5, pytest, subprocess, git, POSIX flock were successfully tested in the current browser environment; the core OUT12 sourcefree candidate consists of two Python files (~14 KB) plus already-identified inherited closure. This is light setup for the narrow OUT14 repair, even with multiple independent OS processes; do not insist on Codex.
+BROWSER_SUFFICIENCY: FULL for sourcefree lock/CAS/multiprocess, real SIGKILL and test/replay at scoped local-filesystem grain; NOT a power-loss simulator and NOT real ADP019 production semantics.
+BROWSER_SETUP_COST: LIGHT for OUT12 primary files; stage only actual missing OUT9 baseline/inherited 272 oracle modules after inspecting exact imports; if closure unexpectedly large, record MATERIAL with precise evidence.
+PRIMARY_MODEL_AND_HOST: Browser ChatGPT GPT-6 Medium. No extra API spend or actor/model/source rights.
+WHY_NOT_ALTERNATIVE: local Codex worktree adds resource cost with no evidenced necessary capability for the narrow protocol court; file locks and OS multiprocess can run here.
+WARM_REUSE_PLAN: check same-session marker, imported source blob SHA and true Python path; else construct minimal verified source-free staging. Preserve afterward only if actual runtime continues. No assumption that tabs/chats share files.
+FALLBACK_TRIGGER: real OS process/file locks unavailable on worker's actual runtime, or materially unstageable accepted baseline closure after bounded import probe -> typed capability HOLD to HQ; no self-switch.
+PHASE_MODEL_ASSIGNMENT: one Medium Browser agent writes/runs/reports; High independent scientific review later under distinct HQ assignment; I3 only genuine accepted authority conflict.
+MODEL ECONOMICS: Browser saves finite local coding quota, uses actual built-in runtime; token/cash/quota UNKNOWN, no unauthorized paid provider.
+REVIEW_INDEPENDENCE_AND_ESCALATION: future reviewer must not have authored OUT9/OUT12/OUT13; no self-acceptance.
+ACTIVE_WORKER_NO_DISTURBANCE: NEW; preserve OUT12/OUT13 branches and historical oracle.
+NO_AUTONOMOUS_MODEL_OR_HARNESS_SWITCH: YES. POST_RETURN_INDEPENDENT_REVIEW_OWNER: HQ.
 Branch: agent/rabochii-sorok-v2-hq322-out14-multiwriter-integrity-repair-r1.
 SOURCE PARENT: OUT12 candidate c2fb389300b888b7addbe488cad30956a810094a.
 INDEPENDENT DEFECT REVIEW: OUT13 9b4392f86d942ba12eddc31c5b9ae33ba309597c.
-STARTUP: commission-bearing branch commit, exact SHA provided separately; verify direct remote tip before work.
-MUST_READ_NOW: Sorok 00C/00D; OUT12 original source and nine tests; OUT13 00_RETURN and its 23 hostile cases; accepted OUT9 original 272 as immutable historical evidence; any exact current occurrence/outbox journal owner authority if required.
+STARTUP: exact updated commission commit provided by HQ; earlier local-Codex seal is superseded, no worker had launched. Verify direct remote tip first.
+MUST_READ_NOW: Sorok 00C/00D; OUT12 `WORKER_RETURNS/SOROK-R3-HQ319-OUT12-MULTIWITER-LOCK-CAS-R1/` (actual historical spelling MULTIWITER), original candidate+9 tests, OUT13 independent 00_RETURN/23 hostile controls; accepted OUT9 original baseline/272 only where needed.
 
 MISSION: Prevent two demonstrated sourcefree multiwriter safety defects, retaining the original cooperating-writer positives. No claim of power-loss durability, exactly-once delivery or actor operation.
 
