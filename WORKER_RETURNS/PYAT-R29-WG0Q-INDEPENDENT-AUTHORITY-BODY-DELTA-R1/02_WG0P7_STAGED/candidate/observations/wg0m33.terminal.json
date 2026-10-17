@@ -1,0 +1,21 @@
+{
+  "command": [
+    "/usr/local/bin/python3",
+    "-B",
+    "-m",
+    "pytest",
+    "-c",
+    "<WORKTREE>/02_WG0P7_STAGED/candidate/court/runtime_phase_b/candidate/pytest.ini",
+    "-vv",
+    "--tb=short",
+    "--junitxml=<WORKTREE>/02_WG0P7_STAGED/candidate/observations/wg0m33.xml",
+    "<WORKTREE>/02_WG0P7_STAGED/candidate/court/tests/test_descriptor_delta_frozen.py"
+  ],
+  "exit": 0,
+  "seconds": 16.63064193725586,
+  "scope": "WG0P6_IMPLEMENTER_REGRESSION_NOT_INDEPENDENT_ACCEPTANCE",
+  "tests": 33,
+  "failures": 0,
+  "errors": 0,
+  "skips": 0
+}

@@ -1,0 +1,21 @@
+{
+  "command": [
+    "/usr/local/bin/python3",
+    "-B",
+    "-m",
+    "pytest",
+    "-c",
+    "<WORKTREE>/02_WG0P7_STAGED/candidate/court/runtime_phase_b/candidate/pytest.ini",
+    "-vv",
+    "--tb=short",
+    "--junitxml=<WORKTREE>/02_WG0P7_STAGED/candidate/observations/original3.xml",
+    "<WORKTREE>/02_WG0P7_STAGED/candidate/court/tests/p5_mapping/test_original_three_adapter_v1.py"
+  ],
+  "exit": 0,
+  "seconds": 3.605113983154297,
+  "scope": "WG0P6_IMPLEMENTER_REGRESSION_NOT_INDEPENDENT_ACCEPTANCE",
+  "tests": 3,
+  "failures": 0,
+  "errors": 0,
+  "skips": 0
+}

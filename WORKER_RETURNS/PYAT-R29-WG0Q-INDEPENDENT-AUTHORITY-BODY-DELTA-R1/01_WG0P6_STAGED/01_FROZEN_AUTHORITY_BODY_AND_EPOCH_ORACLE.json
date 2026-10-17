@@ -1,0 +1,1288 @@
+{
+  "branch": "agent/reviewer-pyat-r29-wg0q-independent-authority-body-delta-court-r1",
+  "five_wg0n_unconstructible_controls_preserved": [
+    "C3_source_artifact_revocation (owner.revoke accepts only release tags)",
+    "D3_truncated_or_empty_snapshot (ExactRef refuses empty content_hash at construction)",
+    "E1_release_issuer_not_registrar (IngestedRelease has no issuer_id field)",
+    "E2_unregistered_issuer (IngestedRelease has no issuer_id field)",
+    "E3_issuer_epoch_mismatch (IngestedRelease has no issuer_epoch field)"
+  ],
+  "frozen_before_any_wg0p7_inspection": true,
+  "law": "No altered, substituted, stale, superseded, unissued, unknown-epoch or foreign-operation authority body may serve a SUPPORTED original fact. A missing owner qualification is a typed HOLD. All negatives must produce zero new I03 calls; untyped KeyError/TypeError after I03 is a RED. Honest identical/current owner bodies must still serve exactly 42 original supported cells and four I03 calls.",
+  "new_control_count": 34,
+  "new_controls": [
+    {
+      "case": "B1_semantic_fingerprint_same_triple",
+      "deeper_semantics": false,
+      "expected": {
+        "allowed_exception_families": [
+          "IdentityError",
+          "FrontierError",
+          "RevocationError",
+          "ColdRestartError",
+          "NativeDataError",
+          "BatchIntegrityError",
+          "Pre553IntegrityError",
+          "Pre553AuthorityError",
+          "Pre553AuthorityConflict",
+          "Pre553SemanticCollapseError"
+        ],
+        "allowed_typed_tokens": [
+          "HELD",
+          "INADMISSIBLE",
+          "REVOKED",
+          "STALE",
+          "REFUSED",
+          "UNAVAILABLE",
+          "HOLD",
+          "SUPERSEDED",
+          "MISSING_REQUIRED_AUTHORITY",
+          "NOT_EXPRESSIBLE"
+        ],
+        "expected_new_I03_calls": 0,
+        "expected_served_supported_original_fact": false,
+        "kind": "NEGATIVE_TYPED_REFUSAL"
+      },
+      "expected_state": "TYPED_REFUSAL",
+      "group": "authority_body_integrity",
+      "kind": "NEGATIVE_TYPED_REFUSAL",
+      "rationale": "Same identity triple but altered interpretation_semantics_fingerprint must not authorize an original fact."
+    },
+    {
+      "case": "B2_parent_authority_refs_same_triple",
+      "deeper_semantics": false,
+      "expected": {
+        "allowed_exception_families": [
+          "IdentityError",
+          "FrontierError",
+          "RevocationError",
+          "ColdRestartError",
+          "NativeDataError",
+          "BatchIntegrityError",
+          "Pre553IntegrityError",
+          "Pre553AuthorityError",
+          "Pre553AuthorityConflict",
+          "Pre553SemanticCollapseError"
+        ],
+        "allowed_typed_tokens": [
+          "HELD",
+          "INADMISSIBLE",
+          "REVOKED",
+          "STALE",
+          "REFUSED",
+          "UNAVAILABLE",
+          "HOLD",
+          "SUPERSEDED",
+          "MISSING_REQUIRED_AUTHORITY",
+          "NOT_EXPRESSIBLE"
+        ],
+        "expected_new_I03_calls": 0,
+        "expected_served_supported_original_fact": false,
+        "kind": "NEGATIVE_TYPED_REFUSAL"
+      },
+      "expected_state": "TYPED_REFUSAL",
+      "group": "authority_body_integrity",
+      "kind": "NEGATIVE_TYPED_REFUSAL",
+      "rationale": "Foreign parent_authority_refs under the same identity triple must not be treated as the owner body."
+    },
+    {
+      "case": "B3_replay_root_same_triple",
+      "deeper_semantics": false,
+      "expected": {
+        "allowed_exception_families": [
+          "IdentityError",
+          "FrontierError",
+          "RevocationError",
+          "ColdRestartError",
+          "NativeDataError",
+          "BatchIntegrityError",
+          "Pre553IntegrityError",
+          "Pre553AuthorityError",
+          "Pre553AuthorityConflict",
+          "Pre553SemanticCollapseError"
+        ],
+        "allowed_typed_tokens": [
+          "HELD",
+          "INADMISSIBLE",
+          "REVOKED",
+          "STALE",
+          "REFUSED",
+          "UNAVAILABLE",
+          "HOLD",
+          "SUPERSEDED",
+          "MISSING_REQUIRED_AUTHORITY",
+          "NOT_EXPRESSIBLE"
+        ],
+        "expected_new_I03_calls": 0,
+        "expected_served_supported_original_fact": false,
+        "kind": "NEGATIVE_TYPED_REFUSAL"
+      },
+      "expected_state": "TYPED_REFUSAL",
+      "group": "authority_body_integrity",
+      "kind": "NEGATIVE_TYPED_REFUSAL",
+      "rationale": "Foreign producer replay locator/root under the same identity triple must not be replayed as the owner body."
+    },
+    {
+      "case": "B4_governed_family_removed",
+      "deeper_semantics": false,
+      "expected": {
+        "allowed_exception_families": [
+          "IdentityError",
+          "FrontierError",
+          "RevocationError",
+          "ColdRestartError",
+          "NativeDataError",
+          "BatchIntegrityError",
+          "Pre553IntegrityError",
+          "Pre553AuthorityError",
+          "Pre553AuthorityConflict",
+          "Pre553SemanticCollapseError"
+        ],
+        "allowed_typed_tokens": [
+          "HELD",
+          "INADMISSIBLE",
+          "REVOKED",
+          "STALE",
+          "REFUSED",
+          "UNAVAILABLE",
+          "HOLD",
+          "SUPERSEDED",
+          "MISSING_REQUIRED_AUTHORITY",
+          "NOT_EXPRESSIBLE"
+        ],
+        "expected_new_I03_calls": 0,
+        "expected_served_supported_original_fact": false,
+        "kind": "NEGATIVE_TYPED_REFUSAL"
+      },
+      "expected_state": "TYPED_REFUSAL",
+      "group": "authority_body_integrity",
+      "kind": "NEGATIVE_TYPED_REFUSAL",
+      "rationale": "Removing a required governed object family must produce a typed refusal before I03, not a late untyped KeyError."
+    },
+    {
+      "case": "B5_false_authority_kind",
+      "deeper_semantics": false,
+      "expected": {
+        "allowed_exception_families": [
+          "IdentityError",
+          "FrontierError",
+          "RevocationError",
+          "ColdRestartError",
+          "NativeDataError",
+          "BatchIntegrityError",
+          "Pre553IntegrityError",
+          "Pre553AuthorityError",
+          "Pre553AuthorityConflict",
+          "Pre553SemanticCollapseError"
+        ],
+        "allowed_typed_tokens": [
+          "HELD",
+          "INADMISSIBLE",
+          "REVOKED",
+          "STALE",
+          "REFUSED",
+          "UNAVAILABLE",
+          "HOLD",
+          "SUPERSEDED",
+          "MISSING_REQUIRED_AUTHORITY",
+          "NOT_EXPRESSIBLE"
+        ],
+        "expected_new_I03_calls": 0,
+        "expected_served_supported_original_fact": false,
+        "kind": "NEGATIVE_TYPED_REFUSAL"
+      },
+      "expected_state": "TYPED_REFUSAL",
+      "group": "authority_body_integrity",
+      "kind": "NEGATIVE_TYPED_REFUSAL",
+      "rationale": "A body claiming a different authority_kind under the same triple must not serve the predicate-grammar role."
+    },
+    {
+      "case": "B6_negative_limit_added",
+      "deeper_semantics": false,
+      "expected": {
+        "allowed_exception_families": [
+          "IdentityError",
+          "FrontierError",
+          "RevocationError",
+          "ColdRestartError",
+          "NativeDataError",
+          "BatchIntegrityError",
+          "Pre553IntegrityError",
+          "Pre553AuthorityError",
+          "Pre553AuthorityConflict",
+          "Pre553SemanticCollapseError"
+        ],
+        "allowed_typed_tokens": [
+          "HELD",
+          "INADMISSIBLE",
+          "REVOKED",
+          "STALE",
+          "REFUSED",
+          "UNAVAILABLE",
+          "HOLD",
+          "SUPERSEDED",
+          "MISSING_REQUIRED_AUTHORITY",
+          "NOT_EXPRESSIBLE"
+        ],
+        "expected_new_I03_calls": 0,
+        "expected_served_supported_original_fact": false,
+        "kind": "NEGATIVE_TYPED_REFUSAL"
+      },
+      "expected_state": "TYPED_REFUSAL",
+      "group": "authority_body_integrity",
+      "kind": "NEGATIVE_TYPED_REFUSAL",
+      "rationale": "Adding negative_limit_refs behind the same claimed body hash must not be silently ignored."
+    },
+    {
+      "case": "B7_deny_state_same_triple",
+      "deeper_semantics": false,
+      "expected": {
+        "allowed_exception_families": [
+          "IdentityError",
+          "FrontierError",
+          "RevocationError",
+          "ColdRestartError",
+          "NativeDataError",
+          "BatchIntegrityError",
+          "Pre553IntegrityError",
+          "Pre553AuthorityError",
+          "Pre553AuthorityConflict",
+          "Pre553SemanticCollapseError"
+        ],
+        "allowed_typed_tokens": [
+          "HELD",
+          "INADMISSIBLE",
+          "REVOKED",
+          "STALE",
+          "REFUSED",
+          "UNAVAILABLE",
+          "HOLD",
+          "SUPERSEDED",
+          "MISSING_REQUIRED_AUTHORITY",
+          "NOT_EXPRESSIBLE"
+        ],
+        "expected_new_I03_calls": 0,
+        "expected_served_supported_original_fact": false,
+        "kind": "NEGATIVE_TYPED_REFUSAL"
+      },
+      "expected_state": "TYPED_REFUSAL",
+      "group": "authority_body_integrity",
+      "kind": "NEGATIVE_TYPED_REFUSAL",
+      "rationale": "A DENY decision_state/typed_state under the same triple must refuse, not fail late and untyped after I03."
+    },
+    {
+      "case": "B8_false_content_hash_claim",
+      "deeper_semantics": false,
+      "expected": {
+        "allowed_exception_families": [
+          "IdentityError",
+          "FrontierError",
+          "RevocationError",
+          "ColdRestartError",
+          "NativeDataError",
+          "BatchIntegrityError",
+          "Pre553IntegrityError",
+          "Pre553AuthorityError",
+          "Pre553AuthorityConflict",
+          "Pre553SemanticCollapseError"
+        ],
+        "allowed_typed_tokens": [
+          "HELD",
+          "INADMISSIBLE",
+          "REVOKED",
+          "STALE",
+          "REFUSED",
+          "UNAVAILABLE",
+          "HOLD",
+          "SUPERSEDED",
+          "MISSING_REQUIRED_AUTHORITY",
+          "NOT_EXPRESSIBLE"
+        ],
+        "expected_new_I03_calls": 0,
+        "expected_served_supported_original_fact": false,
+        "kind": "NEGATIVE_TYPED_REFUSAL"
+      },
+      "expected_state": "TYPED_REFUSAL",
+      "group": "authority_body_integrity",
+      "kind": "NEGATIVE_TYPED_REFUSAL",
+      "rationale": "A claimed authority_content_hash that no longer matches the body must be refused before I03."
+    },
+    {
+      "case": "B9_foreign_scope_same_triple",
+      "deeper_semantics": false,
+      "expected": {
+        "allowed_exception_families": [
+          "IdentityError",
+          "FrontierError",
+          "RevocationError",
+          "ColdRestartError",
+          "NativeDataError",
+          "BatchIntegrityError",
+          "Pre553IntegrityError",
+          "Pre553AuthorityError",
+          "Pre553AuthorityConflict",
+          "Pre553SemanticCollapseError"
+        ],
+        "allowed_typed_tokens": [
+          "HELD",
+          "INADMISSIBLE",
+          "REVOKED",
+          "STALE",
+          "REFUSED",
+          "UNAVAILABLE",
+          "HOLD",
+          "SUPERSEDED",
+          "MISSING_REQUIRED_AUTHORITY",
+          "NOT_EXPRESSIBLE"
+        ],
+        "expected_new_I03_calls": 0,
+        "expected_served_supported_original_fact": false,
+        "kind": "NEGATIVE_TYPED_REFUSAL"
+      },
+      "expected_state": "TYPED_REFUSAL",
+      "group": "authority_body_integrity",
+      "kind": "NEGATIVE_TYPED_REFUSAL",
+      "rationale": "A foreign scope_envelope under the same triple must be typed-refused before I03."
+    },
+    {
+      "case": "B10_no_permitted_operation",
+      "deeper_semantics": false,
+      "expected": {
+        "allowed_exception_families": [
+          "IdentityError",
+          "FrontierError",
+          "RevocationError",
+          "ColdRestartError",
+          "NativeDataError",
+          "BatchIntegrityError",
+          "Pre553IntegrityError",
+          "Pre553AuthorityError",
+          "Pre553AuthorityConflict",
+          "Pre553SemanticCollapseError"
+        ],
+        "allowed_typed_tokens": [
+          "HELD",
+          "INADMISSIBLE",
+          "REVOKED",
+          "STALE",
+          "REFUSED",
+          "UNAVAILABLE",
+          "HOLD",
+          "SUPERSEDED",
+          "MISSING_REQUIRED_AUTHORITY",
+          "NOT_EXPRESSIBLE"
+        ],
+        "expected_new_I03_calls": 0,
+        "expected_served_supported_original_fact": false,
+        "kind": "NEGATIVE_TYPED_REFUSAL"
+      },
+      "expected_state": "TYPED_REFUSAL",
+      "group": "authority_body_integrity",
+      "kind": "NEGATIVE_TYPED_REFUSAL",
+      "rationale": "An authority body naming no governed operation cannot authorize the plan operation."
+    },
+    {
+      "case": "B11_foreign_operation_same_triple",
+      "deeper_semantics": false,
+      "expected": {
+        "allowed_exception_families": [
+          "IdentityError",
+          "FrontierError",
+          "RevocationError",
+          "ColdRestartError",
+          "NativeDataError",
+          "BatchIntegrityError",
+          "Pre553IntegrityError",
+          "Pre553AuthorityError",
+          "Pre553AuthorityConflict",
+          "Pre553SemanticCollapseError"
+        ],
+        "allowed_typed_tokens": [
+          "HELD",
+          "INADMISSIBLE",
+          "REVOKED",
+          "STALE",
+          "REFUSED",
+          "UNAVAILABLE",
+          "HOLD",
+          "SUPERSEDED",
+          "MISSING_REQUIRED_AUTHORITY",
+          "NOT_EXPRESSIBLE"
+        ],
+        "expected_new_I03_calls": 0,
+        "expected_served_supported_original_fact": false,
+        "kind": "NEGATIVE_TYPED_REFUSAL"
+      },
+      "expected_state": "TYPED_REFUSAL",
+      "group": "authority_body_integrity",
+      "kind": "NEGATIVE_TYPED_REFUSAL",
+      "rationale": "A body naming only a foreign governed operation must not have that operation inferred as the query operation."
+    },
+    {
+      "case": "B12_foreign_replay_protocol_ref",
+      "deeper_semantics": false,
+      "expected": {
+        "allowed_exception_families": [
+          "IdentityError",
+          "FrontierError",
+          "RevocationError",
+          "ColdRestartError",
+          "NativeDataError",
+          "BatchIntegrityError",
+          "Pre553IntegrityError",
+          "Pre553AuthorityError",
+          "Pre553AuthorityConflict",
+          "Pre553SemanticCollapseError"
+        ],
+        "allowed_typed_tokens": [
+          "HELD",
+          "INADMISSIBLE",
+          "REVOKED",
+          "STALE",
+          "REFUSED",
+          "UNAVAILABLE",
+          "HOLD",
+          "SUPERSEDED",
+          "MISSING_REQUIRED_AUTHORITY",
+          "NOT_EXPRESSIBLE"
+        ],
+        "expected_new_I03_calls": 0,
+        "expected_served_supported_original_fact": false,
+        "kind": "NEGATIVE_TYPED_REFUSAL"
+      },
+      "expected_state": "TYPED_REFUSAL",
+      "group": "authority_body_integrity",
+      "kind": "NEGATIVE_TYPED_REFUSAL",
+      "rationale": "A foreign replay_protocol_ref under the same triple must not serve."
+    },
+    {
+      "case": "T1_expired_interval_same_triple",
+      "deeper_semantics": false,
+      "expected": {
+        "allowed_exception_families": [
+          "IdentityError",
+          "FrontierError",
+          "RevocationError",
+          "ColdRestartError",
+          "NativeDataError",
+          "BatchIntegrityError",
+          "Pre553IntegrityError",
+          "Pre553AuthorityError",
+          "Pre553AuthorityConflict",
+          "Pre553SemanticCollapseError"
+        ],
+        "allowed_typed_tokens": [
+          "HELD",
+          "INADMISSIBLE",
+          "REVOKED",
+          "STALE",
+          "REFUSED",
+          "UNAVAILABLE",
+          "HOLD",
+          "SUPERSEDED",
+          "MISSING_REQUIRED_AUTHORITY",
+          "NOT_EXPRESSIBLE"
+        ],
+        "expected_new_I03_calls": 0,
+        "expected_served_supported_original_fact": false,
+        "kind": "NEGATIVE_TYPED_REFUSAL"
+      },
+      "expected_state": "TYPED_REFUSAL",
+      "group": "temporal_authority_status",
+      "kind": "NEGATIVE_TYPED_REFUSAL",
+      "rationale": "An expired effective interval under the same triple must be STALE/refused, not served."
+    },
+    {
+      "case": "T2_unknown_epoch_none",
+      "deeper_semantics": false,
+      "expected": {
+        "allowed_exception_families": [
+          "IdentityError",
+          "FrontierError",
+          "RevocationError",
+          "ColdRestartError",
+          "NativeDataError",
+          "BatchIntegrityError",
+          "Pre553IntegrityError",
+          "Pre553AuthorityError",
+          "Pre553AuthorityConflict",
+          "Pre553SemanticCollapseError"
+        ],
+        "allowed_typed_tokens": [
+          "HELD",
+          "INADMISSIBLE",
+          "REVOKED",
+          "STALE",
+          "REFUSED",
+          "UNAVAILABLE",
+          "HOLD",
+          "SUPERSEDED",
+          "MISSING_REQUIRED_AUTHORITY",
+          "NOT_EXPRESSIBLE"
+        ],
+        "expected_new_I03_calls": 0,
+        "expected_served_supported_original_fact": false,
+        "kind": "NEGATIVE_TYPED_REFUSAL"
+      },
+      "expected_state": "TYPED_REFUSAL",
+      "group": "temporal_authority_status",
+      "kind": "NEGATIVE_TYPED_REFUSAL",
+      "rationale": "A missing effective_time_or_interval must be an explicit unknown-epoch HOLD, not implicit ALL_TIME."
+    },
+    {
+      "case": "T3_unknown_epoch_label",
+      "deeper_semantics": false,
+      "expected": {
+        "allowed_exception_families": [
+          "IdentityError",
+          "FrontierError",
+          "RevocationError",
+          "ColdRestartError",
+          "NativeDataError",
+          "BatchIntegrityError",
+          "Pre553IntegrityError",
+          "Pre553AuthorityError",
+          "Pre553AuthorityConflict",
+          "Pre553SemanticCollapseError"
+        ],
+        "allowed_typed_tokens": [
+          "HELD",
+          "INADMISSIBLE",
+          "REVOKED",
+          "STALE",
+          "REFUSED",
+          "UNAVAILABLE",
+          "HOLD",
+          "SUPERSEDED",
+          "MISSING_REQUIRED_AUTHORITY",
+          "NOT_EXPRESSIBLE"
+        ],
+        "expected_new_I03_calls": 0,
+        "expected_served_supported_original_fact": false,
+        "kind": "NEGATIVE_TYPED_REFUSAL"
+      },
+      "expected_state": "TYPED_REFUSAL",
+      "group": "temporal_authority_status",
+      "kind": "NEGATIVE_TYPED_REFUSAL",
+      "rationale": "An UNKNOWN effective-time label must be an explicit HOLD, not treated as current."
+    },
+    {
+      "case": "T4_current_interval_unissued_body",
+      "deeper_semantics": false,
+      "expected": {
+        "allowed_exception_families": [
+          "IdentityError",
+          "FrontierError",
+          "RevocationError",
+          "ColdRestartError",
+          "NativeDataError",
+          "BatchIntegrityError",
+          "Pre553IntegrityError",
+          "Pre553AuthorityError",
+          "Pre553AuthorityConflict",
+          "Pre553SemanticCollapseError"
+        ],
+        "allowed_typed_tokens": [
+          "HELD",
+          "INADMISSIBLE",
+          "REVOKED",
+          "STALE",
+          "REFUSED",
+          "UNAVAILABLE",
+          "HOLD",
+          "SUPERSEDED",
+          "MISSING_REQUIRED_AUTHORITY",
+          "NOT_EXPRESSIBLE"
+        ],
+        "expected_new_I03_calls": 0,
+        "expected_served_supported_original_fact": false,
+        "kind": "NEGATIVE_TYPED_REFUSAL"
+      },
+      "expected_state": "TYPED_REFUSAL",
+      "group": "temporal_authority_status",
+      "kind": "NEGATIVE_TYPED_REFUSAL",
+      "rationale": "A plausible current interval on an unissued body is still not owner-qualified; refusal is required unless an owner-verifier path issues it."
+    },
+    {
+      "case": "T5_supersession_only_same_triple",
+      "deeper_semantics": false,
+      "expected": {
+        "allowed_exception_families": [
+          "IdentityError",
+          "FrontierError",
+          "RevocationError",
+          "ColdRestartError",
+          "NativeDataError",
+          "BatchIntegrityError",
+          "Pre553IntegrityError",
+          "Pre553AuthorityError",
+          "Pre553AuthorityConflict",
+          "Pre553SemanticCollapseError"
+        ],
+        "allowed_typed_tokens": [
+          "HELD",
+          "INADMISSIBLE",
+          "REVOKED",
+          "STALE",
+          "REFUSED",
+          "UNAVAILABLE",
+          "HOLD",
+          "SUPERSEDED",
+          "MISSING_REQUIRED_AUTHORITY",
+          "NOT_EXPRESSIBLE"
+        ],
+        "expected_new_I03_calls": 0,
+        "expected_served_supported_original_fact": false,
+        "kind": "NEGATIVE_TYPED_REFUSAL"
+      },
+      "expected_state": "TYPED_REFUSAL",
+      "group": "temporal_authority_status",
+      "kind": "NEGATIVE_TYPED_REFUSAL",
+      "rationale": "Non-empty supersession_refs must not be ignored merely because effective_time is ALL_TIME."
+    },
+    {
+      "case": "T6_stale_single_date",
+      "deeper_semantics": false,
+      "expected": {
+        "allowed_exception_families": [
+          "IdentityError",
+          "FrontierError",
+          "RevocationError",
+          "ColdRestartError",
+          "NativeDataError",
+          "BatchIntegrityError",
+          "Pre553IntegrityError",
+          "Pre553AuthorityError",
+          "Pre553AuthorityConflict",
+          "Pre553SemanticCollapseError"
+        ],
+        "allowed_typed_tokens": [
+          "HELD",
+          "INADMISSIBLE",
+          "REVOKED",
+          "STALE",
+          "REFUSED",
+          "UNAVAILABLE",
+          "HOLD",
+          "SUPERSEDED",
+          "MISSING_REQUIRED_AUTHORITY",
+          "NOT_EXPRESSIBLE"
+        ],
+        "expected_new_I03_calls": 0,
+        "expected_served_supported_original_fact": false,
+        "kind": "NEGATIVE_TYPED_REFUSAL"
+      },
+      "expected_state": "TYPED_REFUSAL",
+      "group": "temporal_authority_status",
+      "kind": "NEGATIVE_TYPED_REFUSAL",
+      "rationale": "A stale single-date effective_time must be refused."
+    },
+    {
+      "case": "T7_owner_known_before_explicit_interval",
+      "deeper_semantics": true,
+      "expected": {
+        "allowed_exception_families": [
+          "IdentityError",
+          "FrontierError",
+          "RevocationError",
+          "ColdRestartError",
+          "NativeDataError",
+          "BatchIntegrityError",
+          "Pre553IntegrityError",
+          "Pre553AuthorityError",
+          "Pre553AuthorityConflict",
+          "Pre553SemanticCollapseError"
+        ],
+        "allowed_typed_tokens": [
+          "HELD",
+          "INADMISSIBLE",
+          "REVOKED",
+          "STALE",
+          "REFUSED",
+          "UNAVAILABLE",
+          "HOLD",
+          "SUPERSEDED",
+          "MISSING_REQUIRED_AUTHORITY",
+          "NOT_EXPRESSIBLE"
+        ],
+        "expected_new_I03_calls": 0,
+        "expected_served_supported_original_fact": false,
+        "kind": "NEGATIVE_TYPED_REFUSAL"
+      },
+      "expected_state": "TYPED_REFUSAL",
+      "group": "temporal_authority_status",
+      "kind": "NEGATIVE_TYPED_REFUSAL",
+      "rationale": "Owner knowledge clock earlier than the authority effective time cannot qualify currentness; typed HOLD/refusal required."
+    },
+    {
+      "case": "S1_source_artifact_ref_swap",
+      "deeper_semantics": false,
+      "expected": {
+        "allowed_exception_families": [
+          "IdentityError",
+          "FrontierError",
+          "RevocationError",
+          "ColdRestartError",
+          "NativeDataError",
+          "BatchIntegrityError",
+          "Pre553IntegrityError",
+          "Pre553AuthorityError",
+          "Pre553AuthorityConflict",
+          "Pre553SemanticCollapseError"
+        ],
+        "allowed_typed_tokens": [
+          "HELD",
+          "INADMISSIBLE",
+          "REVOKED",
+          "STALE",
+          "REFUSED",
+          "UNAVAILABLE",
+          "HOLD",
+          "SUPERSEDED",
+          "MISSING_REQUIRED_AUTHORITY",
+          "NOT_EXPRESSIBLE"
+        ],
+        "expected_new_I03_calls": 0,
+        "expected_served_supported_original_fact": false,
+        "kind": "NEGATIVE_TYPED_REFUSAL"
+      },
+      "expected_state": "TYPED_REFUSAL",
+      "group": "source_item_swap",
+      "kind": "NEGATIVE_TYPED_REFUSAL",
+      "rationale": "A source_artifact_ref swapped from another genuine release must be refused, even when the repository can resolve the original release."
+    },
+    {
+      "case": "S2_source_edition_swap",
+      "deeper_semantics": false,
+      "expected": {
+        "allowed_exception_families": [
+          "IdentityError",
+          "FrontierError",
+          "RevocationError",
+          "ColdRestartError",
+          "NativeDataError",
+          "BatchIntegrityError",
+          "Pre553IntegrityError",
+          "Pre553AuthorityError",
+          "Pre553AuthorityConflict",
+          "Pre553SemanticCollapseError"
+        ],
+        "allowed_typed_tokens": [
+          "HELD",
+          "INADMISSIBLE",
+          "REVOKED",
+          "STALE",
+          "REFUSED",
+          "UNAVAILABLE",
+          "HOLD",
+          "SUPERSEDED",
+          "MISSING_REQUIRED_AUTHORITY",
+          "NOT_EXPRESSIBLE"
+        ],
+        "expected_new_I03_calls": 0,
+        "expected_served_supported_original_fact": false,
+        "kind": "NEGATIVE_TYPED_REFUSAL"
+      },
+      "expected_state": "TYPED_REFUSAL",
+      "group": "source_item_swap",
+      "kind": "NEGATIVE_TYPED_REFUSAL",
+      "rationale": "A source_edition swapped from another genuine release must be typed-refused."
+    },
+    {
+      "case": "S3_release_universe_swap",
+      "deeper_semantics": false,
+      "expected": {
+        "allowed_exception_families": [
+          "IdentityError",
+          "FrontierError",
+          "RevocationError",
+          "ColdRestartError",
+          "NativeDataError",
+          "BatchIntegrityError",
+          "Pre553IntegrityError",
+          "Pre553AuthorityError",
+          "Pre553AuthorityConflict",
+          "Pre553SemanticCollapseError"
+        ],
+        "allowed_typed_tokens": [
+          "HELD",
+          "INADMISSIBLE",
+          "REVOKED",
+          "STALE",
+          "REFUSED",
+          "UNAVAILABLE",
+          "HOLD",
+          "SUPERSEDED",
+          "MISSING_REQUIRED_AUTHORITY",
+          "NOT_EXPRESSIBLE"
+        ],
+        "expected_new_I03_calls": 0,
+        "expected_served_supported_original_fact": false,
+        "kind": "NEGATIVE_TYPED_REFUSAL"
+      },
+      "expected_state": "TYPED_REFUSAL",
+      "group": "source_item_swap",
+      "kind": "NEGATIVE_TYPED_REFUSAL",
+      "rationale": "A release_ref+universe_ref swapped from another genuine release must be typed-refused."
+    },
+    {
+      "case": "S4_item_metadata_same_cardinality",
+      "deeper_semantics": false,
+      "expected": {
+        "allowed_exception_families": [
+          "IdentityError",
+          "FrontierError",
+          "RevocationError",
+          "ColdRestartError",
+          "NativeDataError",
+          "BatchIntegrityError",
+          "Pre553IntegrityError",
+          "Pre553AuthorityError",
+          "Pre553AuthorityConflict",
+          "Pre553SemanticCollapseError"
+        ],
+        "allowed_typed_tokens": [
+          "HELD",
+          "INADMISSIBLE",
+          "REVOKED",
+          "STALE",
+          "REFUSED",
+          "UNAVAILABLE",
+          "HOLD",
+          "SUPERSEDED",
+          "MISSING_REQUIRED_AUTHORITY",
+          "NOT_EXPRESSIBLE"
+        ],
+        "expected_new_I03_calls": 0,
+        "expected_served_supported_original_fact": false,
+        "kind": "NEGATIVE_TYPED_REFUSAL"
+      },
+      "expected_state": "TYPED_REFUSAL",
+      "group": "source_item_swap",
+      "kind": "NEGATIVE_TYPED_REFUSAL",
+      "rationale": "Same-cardinality native item metadata swapped across items must be typed-refused by the frozen native-item identity check."
+    },
+    {
+      "case": "S5_qrefs_swap",
+      "deeper_semantics": false,
+      "expected": {
+        "allowed_exception_families": [
+          "IdentityError",
+          "FrontierError",
+          "RevocationError",
+          "ColdRestartError",
+          "NativeDataError",
+          "BatchIntegrityError",
+          "Pre553IntegrityError",
+          "Pre553AuthorityError",
+          "Pre553AuthorityConflict",
+          "Pre553SemanticCollapseError"
+        ],
+        "allowed_typed_tokens": [
+          "HELD",
+          "INADMISSIBLE",
+          "REVOKED",
+          "STALE",
+          "REFUSED",
+          "UNAVAILABLE",
+          "HOLD",
+          "SUPERSEDED",
+          "MISSING_REQUIRED_AUTHORITY",
+          "NOT_EXPRESSIBLE"
+        ],
+        "expected_new_I03_calls": 0,
+        "expected_served_supported_original_fact": false,
+        "kind": "NEGATIVE_TYPED_REFUSAL"
+      },
+      "expected_state": "TYPED_REFUSAL",
+      "group": "source_item_swap",
+      "kind": "NEGATIVE_TYPED_REFUSAL",
+      "rationale": "Question refs swapped from another release must be typed-refused."
+    },
+    {
+      "case": "R1_source_grant_withdrawn_after_plan",
+      "deeper_semantics": false,
+      "expected": {
+        "allowed_exception_families": [
+          "IdentityError",
+          "FrontierError",
+          "RevocationError",
+          "ColdRestartError",
+          "NativeDataError",
+          "BatchIntegrityError",
+          "Pre553IntegrityError",
+          "Pre553AuthorityError",
+          "Pre553AuthorityConflict",
+          "Pre553SemanticCollapseError"
+        ],
+        "allowed_typed_tokens": [
+          "HELD",
+          "INADMISSIBLE",
+          "REVOKED",
+          "STALE",
+          "REFUSED",
+          "UNAVAILABLE",
+          "HOLD",
+          "SUPERSEDED",
+          "MISSING_REQUIRED_AUTHORITY",
+          "NOT_EXPRESSIBLE"
+        ],
+        "expected_new_I03_calls": 0,
+        "expected_served_supported_original_fact": false,
+        "kind": "NEGATIVE_TYPED_REFUSAL"
+      },
+      "expected_state": "TYPED_REFUSAL",
+      "group": "owner_grant_and_cold",
+      "kind": "NEGATIVE_TYPED_REFUSAL",
+      "rationale": "A source grant withdrawn after plan construction must typed-refuse with zero I03."
+    },
+    {
+      "case": "R2_source_artifact_revocation_unknown",
+      "deeper_semantics": false,
+      "expected": {
+        "allowed_exception_families": [
+          "IdentityError",
+          "FrontierError",
+          "RevocationError",
+          "ColdRestartError",
+          "NativeDataError",
+          "BatchIntegrityError",
+          "Pre553IntegrityError",
+          "Pre553AuthorityError",
+          "Pre553AuthorityConflict",
+          "Pre553SemanticCollapseError"
+        ],
+        "allowed_typed_tokens": [
+          "HELD",
+          "INADMISSIBLE",
+          "REVOKED",
+          "STALE",
+          "REFUSED",
+          "UNAVAILABLE",
+          "HOLD",
+          "SUPERSEDED",
+          "MISSING_REQUIRED_AUTHORITY",
+          "NOT_EXPRESSIBLE"
+        ],
+        "expected_new_I03_calls": 0,
+        "expected_served_supported_original_fact": false,
+        "kind": "NEGATIVE_TYPED_REFUSAL"
+      },
+      "expected_state": "TYPED_REFUSAL",
+      "group": "owner_grant_and_cold",
+      "kind": "NEGATIVE_TYPED_REFUSAL",
+      "rationale": "Source-artifact revocation is not expressible in the release-tag owner; it must remain a typed UNKNOWN_RELEASE_NO_REVOCATION, not green."
+    },
+    {
+      "case": "R3_cold_forged_source_edition",
+      "deeper_semantics": false,
+      "expected": {
+        "allowed_exception_families": [
+          "IdentityError",
+          "FrontierError",
+          "RevocationError",
+          "ColdRestartError",
+          "NativeDataError",
+          "BatchIntegrityError",
+          "Pre553IntegrityError",
+          "Pre553AuthorityError",
+          "Pre553AuthorityConflict",
+          "Pre553SemanticCollapseError"
+        ],
+        "allowed_typed_tokens": [
+          "HELD",
+          "INADMISSIBLE",
+          "REVOKED",
+          "STALE",
+          "REFUSED",
+          "UNAVAILABLE",
+          "HOLD",
+          "SUPERSEDED",
+          "MISSING_REQUIRED_AUTHORITY",
+          "NOT_EXPRESSIBLE"
+        ],
+        "expected_new_I03_calls": 0,
+        "expected_served_supported_original_fact": false,
+        "kind": "NEGATIVE_TYPED_REFUSAL"
+      },
+      "expected_state": "TYPED_REFUSAL",
+      "group": "owner_grant_and_cold",
+      "kind": "NEGATIVE_TYPED_REFUSAL",
+      "rationale": "A re-signed checkpoint with an altered source_edition must be typed-refused on restore."
+    },
+    {
+      "case": "R4_cold_forged_replay_root",
+      "deeper_semantics": false,
+      "expected": {
+        "allowed_exception_families": [
+          "IdentityError",
+          "FrontierError",
+          "RevocationError",
+          "ColdRestartError",
+          "NativeDataError",
+          "BatchIntegrityError",
+          "Pre553IntegrityError",
+          "Pre553AuthorityError",
+          "Pre553AuthorityConflict",
+          "Pre553SemanticCollapseError"
+        ],
+        "allowed_typed_tokens": [
+          "HELD",
+          "INADMISSIBLE",
+          "REVOKED",
+          "STALE",
+          "REFUSED",
+          "UNAVAILABLE",
+          "HOLD",
+          "SUPERSEDED",
+          "MISSING_REQUIRED_AUTHORITY",
+          "NOT_EXPRESSIBLE"
+        ],
+        "expected_new_I03_calls": 0,
+        "expected_served_supported_original_fact": false,
+        "kind": "NEGATIVE_TYPED_REFUSAL"
+      },
+      "expected_state": "TYPED_REFUSAL",
+      "group": "owner_grant_and_cold",
+      "kind": "NEGATIVE_TYPED_REFUSAL",
+      "rationale": "A re-signed checkpoint with an altered science/replay root must be typed-refused on restore."
+    },
+    {
+      "case": "R5_cross_plan_cold",
+      "deeper_semantics": false,
+      "expected": {
+        "allowed_exception_families": [
+          "IdentityError",
+          "FrontierError",
+          "RevocationError",
+          "ColdRestartError",
+          "NativeDataError",
+          "BatchIntegrityError",
+          "Pre553IntegrityError",
+          "Pre553AuthorityError",
+          "Pre553AuthorityConflict",
+          "Pre553SemanticCollapseError"
+        ],
+        "allowed_typed_tokens": [
+          "HELD",
+          "INADMISSIBLE",
+          "REVOKED",
+          "STALE",
+          "REFUSED",
+          "UNAVAILABLE",
+          "HOLD",
+          "SUPERSEDED",
+          "MISSING_REQUIRED_AUTHORITY",
+          "NOT_EXPRESSIBLE"
+        ],
+        "expected_new_I03_calls": 0,
+        "expected_served_supported_original_fact": false,
+        "kind": "NEGATIVE_TYPED_REFUSAL"
+      },
+      "expected_state": "TYPED_REFUSAL",
+      "group": "owner_grant_and_cold",
+      "kind": "NEGATIVE_TYPED_REFUSAL",
+      "rationale": "A valid checkpoint from a different plan/owner must be typed-refused on restore."
+    },
+    {
+      "case": "P1_pristine_serves",
+      "expected": {
+        "expected_effects_sha256": "4b9d03246167c93df6dde8d590fac33c24c51ef158d60abd8ee33601ca059550",
+        "expected_exception_type": null,
+        "expected_new_I03_calls": 4,
+        "expected_supported_fact_cells_served": 42,
+        "kind": "POSITIVE_SERVE"
+      },
+      "group": "positive_current_body",
+      "kind": "POSITIVE_SERVE",
+      "rationale": "Genuine owner body and plan must still serve the 42 original supported cells and four I03 calls."
+    },
+    {
+      "case": "P2_owner_identity_rebind_serves",
+      "expected": {
+        "expected_effects_sha256": "4b9d03246167c93df6dde8d590fac33c24c51ef158d60abd8ee33601ca059550",
+        "expected_exception_type": null,
+        "expected_new_I03_calls": 4,
+        "expected_supported_fact_cells_served": 42,
+        "kind": "POSITIVE_SERVE"
+      },
+      "group": "positive_current_body",
+      "kind": "POSITIVE_SERVE",
+      "rationale": "A fresh body with the same owner identity triple and identical semantic fields must serve."
+    },
+    {
+      "case": "P3_replay_identical",
+      "expected": {
+        "expected_effects_sha256": "4b9d03246167c93df6dde8d590fac33c24c51ef158d60abd8ee33601ca059550",
+        "expected_exception_type": null,
+        "expected_replay_equal": true,
+        "expected_supported_fact_cells_served": 42
+      },
+      "group": "positive_current_body",
+      "kind": "POSITIVE_REPLAY",
+      "rationale": "Two executions of the same plan must be consumer- and receipt-identical."
+    },
+    {
+      "case": "P4_identical_body_rebind",
+      "expected": {
+        "expected_effects_sha256": "4b9d03246167c93df6dde8d590fac33c24c51ef158d60abd8ee33601ca059550",
+        "expected_exception_type": null,
+        "expected_new_I03_calls": 4,
+        "expected_supported_fact_cells_served": 42,
+        "kind": "POSITIVE_SERVE"
+      },
+      "group": "positive_current_body",
+      "kind": "POSITIVE_SERVE",
+      "rationale": "Rebinding an identical authority body (same fields and triple) must not be mistaken for a forgery."
+    },
+    {
+      "case": "R6_valid_cold_restore",
+      "expected": {
+        "expected_exception_type": null,
+        "expected_new_I03_calls": 0,
+        "expected_restored": true
+      },
+      "group": "owner_grant_and_cold",
+      "kind": "POSITIVE_COLD_RESTORE",
+      "rationale": "A valid same-plan, owner-signed checkpoint must restore without error and without new I03."
+    }
+  ],
+  "new_negative_count": 29,
+  "new_positive_count": 5,
+  "original_control_count": 14,
+  "original_negative_count": 11,
+  "original_positive_count": 3,
+  "original_wg0o_controls": [
+    {
+      "case": "A1_wrong_issuer_qauth_substitution",
+      "expected": "typed refusal or explicit typed HOLD before any supported original fact is served; served_supported_original_fact False",
+      "group": "authority_issuer_substitution",
+      "kind": "NEGATIVE_REFUSAL",
+      "rationale": "Issuance identity lives in rel.authorities/rel.qauth and is folded into _release_material authority_refs and owner-registered at ingest. A wrong issuer must not serve.",
+      "target": "REL-A-W1.qauth := REL-A-W2.qauth (genuine but DIFFERENT release issuer identity)"
+    },
+    {
+      "case": "A2_stale_issuer_epoch_same_identity",
+      "expected": "typed refusal or explicit typed HOLD before any supported original fact is served; served_supported_original_fact False",
+      "group": "authority_issuer_substitution",
+      "kind": "NEGATIVE_REFUSAL",
+      "rationale": "Epoch/currentness lives in the real authority surface (effective_time_or_interval, supersession_refs). A stale-epoch/superseded issuer body under the same identity must not positively authorize a 2026 query.",
+      "target": "REL-A-W1.qauth := same (authority_id,authority_version,authority_content_hash) body with effective_time_or_interval='2019-01-01' and non-empty supersession_refs"
+    },
+    {
+      "case": "A3_same_hash_foreign_signed_body",
+      "expected": "typed refusal or explicit typed HOLD before any supported original fact is served; served_supported_original_fact False",
+      "group": "authority_issuer_substitution",
+      "kind": "NEGATIVE_REFUSAL",
+      "rationale": "A same-hash foreign signed authority is an identity forgery: one exact authority identity must denote one immutable snapshot. The claimed authority_content_hash must not let a foreign body serve.",
+      "target": "REL-A-W1.qauth := same identity triple, ALLOW, same kind/operations/families/scope, but foreign interpretation_semantics_fingerprint, foreign producer replay root and foreign parent_authority_refs"
+    },
+    {
+      "case": "A4_foreign_governed_operations_same_hash",
+      "expected": "typed refusal or explicit typed HOLD before any supported original fact is served; served_supported_original_fact False",
+      "group": "authority_issuer_substitution",
+      "kind": "NEGATIVE_REFUSAL",
+      "rationale": "A same-hash body that does not govern this release's operation must not serve this release's facts.",
+      "target": "REL-A-W1.qauth := same identity triple but governed_operations=('WG0P3-OP-FOREIGN-ONLY',) and foreign fingerprint"
+    },
+    {
+      "case": "A5_foreign_authority_inside_authorities_tuple",
+      "expected": "typed refusal or explicit typed HOLD before any supported original fact is served; served_supported_original_fact False",
+      "group": "authority_issuer_substitution",
+      "kind": "NEGATIVE_REFUSAL",
+      "rationale": "The rel.authorities tuple is real issuance identity too; substituting one entry is a wrong-issuer attack on the same seam.",
+      "target": "REL-A-W1.authorities[0] := REL-A-W2.authorities[0] (the SOURCE_SEMANTICS_TOPOLOGY issuer of another release)"
+    },
+    {
+      "case": "B1_self_rehashed_checkpoint_foreign_signature",
+      "expected": "typed refusal or explicit typed HOLD before any supported original fact is served; served_supported_original_fact False",
+      "group": "signature_and_callback",
+      "kind": "NEGATIVE_REFUSAL",
+      "rationale": "Forged signature with proper tag: a self-rehashed checkpoint payload must not restore.",
+      "target": "ColdCheckpoint with mutated source_editions, recomputed checkpoint_hash and the OLD signature, grant_state tag left proper"
+    },
+    {
+      "case": "B2_foreign_signature_proper_tag",
+      "expected": "typed refusal or explicit typed HOLD before any supported original fact is served; served_supported_original_fact False",
+      "group": "signature_and_callback",
+      "kind": "NEGATIVE_REFUSAL",
+      "rationale": "A forged signature with the proper tag fields must not verify.",
+      "target": "ColdCheckpoint with a foreign/garbage signature over the unmodified payload, all tag fields proper"
+    },
+    {
+      "case": "B3_captured_executor_callback_fabricates_fact",
+      "expected": "typed refusal or explicit typed HOLD before any supported original fact is served; served_supported_original_fact False",
+      "group": "signature_and_callback",
+      "kind": "NEGATIVE_REFUSAL",
+      "rationale": "Callback capture: a captured execution callback must not fabricate a fact; the owner journal must refuse unissued facts.",
+      "target": "run_plan with a captured/substituted executor callback that stores a fabricated fact entry and returns it as a result ref"
+    },
+    {
+      "case": "C1_source_artifact_revocation_not_release_tag",
+      "expected": "typed refusal or explicit typed HOLD before any supported original fact is served; served_supported_original_fact False",
+      "group": "revocation_and_alias",
+      "kind": "NEGATIVE_REFUSAL",
+      "rationale": "Independent source-artifact revocation is a separate obligation from release-tag revocation. If the owner surface cannot express it, the outcome must be an explicit typed HOLD/NOT_EXPRESSIBLE, never a silent pass.",
+      "target": "FixtureOwner.revoke(rel.source_artifact_ref.object_id) - revocation of a source artifact distinct from a release tag"
+    },
+    {
+      "case": "C2_missing_independent_issuer",
+      "expected": "typed refusal or explicit typed HOLD before any supported original fact is served; served_supported_original_fact False",
+      "group": "revocation_and_alias",
+      "kind": "NEGATIVE_REFUSAL",
+      "rationale": "A missing independent issuer must produce typed HOLD/refusal, never synthetic authority.",
+      "target": "REL-A-W1.qauth := None and (second run) REL-A-W1.authorities := ()"
+    },
+    {
+      "case": "C3_alias_pointer_across_genuine_source_universes",
+      "expected": "typed refusal or explicit typed HOLD before any supported original fact is served; served_supported_original_fact False",
+      "group": "revocation_and_alias",
+      "kind": "NEGATIVE_REFUSAL",
+      "rationale": "Aliasing a pointer across genuine source universes must not serve; each release is bound to its own sealed universe lineage.",
+      "target": "REL-A-W2.universe_ref := REL-A-W1.universe_ref (aliasing across two GENUINE source universes)"
+    },
+    {
+      "case": "P1_unmodified_owner_serves",
+      "expected": "honest owner path still serves a supported original fact",
+      "group": "positive_owner",
+      "kind": "POSITIVE_SERVE",
+      "rationale": "The honest path must still serve; this is the guard against blanket refusal.",
+      "target": "pristine unmodified plan"
+    },
+    {
+      "case": "P2_own_authority_identity_rebind_serves",
+      "expected": "honest owner path still serves a supported original fact",
+      "group": "positive_owner",
+      "kind": "POSITIVE_SERVE",
+      "rationale": "An honest identity-preserving rebind must still serve; this is the control that makes A1-A5 meaningful.",
+      "target": "REL-A-W1.qauth rebuilt byte-identically via the same real constructor and rebound"
+    },
+    {
+      "case": "P3_replay_identical_consumer",
+      "expected": "honest owner path still serves a supported original fact",
+      "group": "positive_owner",
+      "kind": "POSITIVE_SERVE",
+      "rationale": "Determinism: identical consumer values and identical receipts.",
+      "target": "pristine plan executed twice"
+    }
+  ],
+  "original_wg0o_oracle_sha256": "1a57f97bc5ebcb394fd150acbfbc1e57a39039097057e310c2e8ba0078ce5656",
+  "original_wg0o_preserved_not_regraded": true,
+  "phase": "A_FROZEN_BEFORE_ANY_WG0P7_INSPECTION",
+  "pristine_expected": {
+    "effects_sha256": "4b9d03246167c93df6dde8d590fac33c24c51ef158d60abd8ee33601ca059550",
+    "new_I03_calls": 4,
+    "supported_fact_cells_served": 42
+  },
+  "repository": "maidiu/rawlsing",
+  "review_base_wg0o": "3ee5d6a4e246fca89740d4d36ab26206230c83bf",
+  "role": "independent WG0O scientific-review continuation (WG0Q); NOT WG0P7 author; NOT HQ; NOT issuer",
+  "schema": "PYAT_R29_WG0Q_PHASE_A_AUTHORITY_BODY_AND_EPOCH_ORACLE@1",
+  "sealed_startup": "81075b2db946bda2623721c431c68bd0c6a95ad4",
+  "two_historical_characterisation_failures_preserved": [
+    "test_bound_descriptor_cannot_change_served_provenance[source_edition]",
+    "test_bound_descriptor_cannot_change_served_provenance[native_item_ids]"
+  ],
+  "unrepaired_wg0p6": "e7e429c3dfb649233e74e0e5106e51ff25024806",
+  "wg0p6_module_sha256": "3807e46eec947694a1bd76afe23fd96183dd989b511584ec2ad3991ae943925e"
+}
