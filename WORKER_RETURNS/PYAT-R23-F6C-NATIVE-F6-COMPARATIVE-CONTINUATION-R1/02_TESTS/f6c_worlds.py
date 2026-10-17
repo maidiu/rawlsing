@@ -9,6 +9,7 @@ from __future__ import annotations
 
 from copy import deepcopy
 from fractions import Fraction as F
+from itertools import product
 
 CELLS = [("secure", "formal"), ("secure", "informal"),
          ("insecure", "formal"), ("insecure", "informal")]
@@ -77,19 +78,30 @@ def _source(sid: str, tag: str, target: dict, counts: dict) -> dict:
                       fieldwork_ref=target["clock"]["fieldwork_ref"])
     for z, cat in counts.items():
         n = sum(cat)
-        native = list(NATIVE_CODES[sid]["material_security"])
-        native_e = list(NATIVE_CODES[sid]["employment_position"])
+        # COMPLETE native joint domain: full cross-product of the two axes'
+        # native category codes, in declared (category_map insertion) order.
+        native0 = list(NATIVE_CODES[sid]["material_security"])
+        native1 = list(NATIVE_CODES[sid]["employment_position"])
+        grid = list(product(native0, native1))
+        # mapped (recoded) label grid, same declared order as the native grid
+        lab0 = NATIVE_LABELS["material_security"]
+        lab1 = NATIVE_LABELS["employment_position"]
+        grid_mapped = list(product(lab0, lab1))
+        assert len(grid) == len(cat), (sid, z, len(grid), len(cat))
         s["strata"][z] = {
             "eligible_n": n, "excluded_n": 0,
             "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET",
             "support_ref": f"synthetic-{tag}-{sid}-{z}-support@1",
             "cells": [{"categories": [a, b], "n": v, "mass": v}
-                      for (a, b), v in zip(zip(native, native_e), cat)],
+                      for (a, b), v in zip(grid, cat)],
             "design_variance": {
+                # The native contract requires design variances to be supplied
+                # ALREADY for the MAPPED cell probabilities, i.e. keyed by the
+                # recoded label, not by the source-native category code.
                 "method_ref": "SYNTHETIC_FIXED_STRATUM_MULTINOMIAL_PLUGIN@1",
-                "cells": [{"categories": [a, b],
+                "cells": [{"categories": [m0, m1],
                            "variance": str(F(v, n) * (1 - F(v, n)) / n)}
-                          for (a, b), v in zip(zip(native, native_e), cat)],
+                          for (n0, n1), (m0, m1), v in zip(grid, grid_mapped, cat)],
             },
         }
     return s
@@ -159,15 +171,20 @@ def naive_pooled_mixture(sources) -> list:
     """Explicit comparison computation (NOT a producer output).
 
     Equal-weight mixture of the two source POOLED joints, ignoring the target's
-    stratum composition. Used only to quantify what stratification buys.
+    stratum composition. Native category codes are recoded to mapped labels so
+    the two sources are comparable. Used only to quantify what stratum
+    conditioning buys. This is my analysis, not a native producer output.
     """
     from fractions import Fraction as Fr
+    label0 = dict(zip(NATIVE_CODES["B"]["material_security"], NATIVE_LABELS["material_security"]))
+    label1 = dict(zip(NATIVE_CODES["B"]["employment_position"], NATIVE_LABELS["employment_position"]))
     pooled = {}
     for s in sources:
         acc = {}
         for table in s["strata"].values():
             for c in table["cells"]:
-                k = tuple(c["categories"])
+                a0, a1 = c["categories"]
+                k = (label0.get(a0, a0), label1.get(a1, a1))
                 acc[k] = acc.get(k, Fr(0)) + Fr(c["mass"])
         tot = sum(acc.values(), Fr(0))
         for k, v in acc.items():

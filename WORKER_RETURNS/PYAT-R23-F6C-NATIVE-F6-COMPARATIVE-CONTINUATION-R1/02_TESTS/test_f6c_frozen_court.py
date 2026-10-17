@@ -84,8 +84,12 @@ def test_delta_omitted_native_category_is_refused_as_manufactured_zero():
     Dropping one native category cell must be refused, never silently zero-filled.
     """
     t, s, p = W.world_a()
-    s[0]["strata"]["majority"]["cells"].pop()          # remove the 4th cell
-    s[0]["strata"]["majority"]["eligible_n"] = 100     # counts unchanged: hole
+    dropped = s[0]["strata"]["majority"]["cells"].pop()   # remove the 4th cell
+    # keep DENOMINATOR conservation exact so the completeness check is the
+    # only thing that can refuse -- otherwise conservation fires first and the
+    # domain check would be untested.
+    s[0]["strata"]["majority"]["eligible_n"] -= dropped["n"]
+    s[0]["strata"]["majority"]["design_variance"]["cells"].pop()
     with pytest.raises(SynthesisError) as exc:
         synthesize(t, s, p)
     assert "incomplete native joint domain" in str(exc.value)
@@ -174,9 +178,9 @@ def test_world_a_minority_stratum_is_preserved_not_pruned():
     assert F(sup["minority"]["target_share"]) == F(
         FROZEN["world_A"]["frozen_minority_preservation"]["target_share"])
     assert all(v > 0 for v in dist(b).values()), "no cell may be pruned"
-    for src, sid in ((0, "A"), (1, "B")):
+    for idx, sid in ((0, "A"), (1, "B")):
         want = FROZEN["world_A"]["frozen_minority_preservation"][f"source_{sid}_minority_cells"]
-        got = [c["n"] for c in b["baseline"][sid]["native_summary"]["strata"]["minority"]["cells"]]
+        got = [c["n"] for c in b["baseline"][idx]["native_summary"]["strata"]["minority"]["cells"]]
         assert got == want, sid
 
 
@@ -198,8 +202,13 @@ def test_world_a_native_joint_and_identities_preserved():
 def test_world_a_replay_hash_is_stable_and_content_bound():
     b1, b2 = run_world_a(), run_world_a()
     assert b1["content_hash"] == b2["content_hash"]
-    b1["candidate"]["distribution"][0]["probability"] = "1/2"
-    assert b1["content_hash"] != run_world_a()["content_hash"]
+    # mutating the value must break the stored replay identity
+    fresh = run_world_a()
+    fresh["candidate"]["distribution"][0]["probability"] = "1/2"
+    material = {k: v for k, v in fresh.items() if k != "content_hash"}
+    assert semantic_hash(material) != fresh["content_hash"]
+    with pytest.raises(SynthesisError):
+        conditional(fresh, {"material_security": "secure"}, "employment_position")
 
 
 # ===========================================================================
@@ -275,10 +284,10 @@ def test_world_b_minority_stays_visible_despite_missing_full_joint():
     assert F(sup["minority"]["target_share"]) == F(
         FROZEN["world_B"]["frozen_minority_preservation"]["target_share"])
     assert sub(b)[("insecure", "informal")] > 0
-    for sid in ("A", "B"):
+    for idx, sid in ((0, "A"), (1, "B")):
         want = FROZEN["world_B"]["frozen_minority_preservation"][f"source_{sid}_minority_cells"]
-        got = [c["n"] for c in b["baseline"][sid]["native_summary"]["strata"]["minority"]["cells"]]
-        assert got == want
+        got = [c["n"] for c in b["baseline"][idx]["native_summary"]["strata"]["minority"]["cells"]]
+        assert got == want, sid
 
 
 # ===========================================================================
@@ -519,15 +528,21 @@ def test_negative_real_source_without_admission_refused():
 
 
 def test_negative_real_source_admission_is_not_a_grant_itself():
-    """An admit callback returning True only reaches baseline; transport still reviewed."""
+    """An admit callback returning True permits the candidate but is NOT adoption."""
     t, s, p = W.world_a()
     for src in s:
         src["test_origin"] = False
     b = synthesize(t, s, p, admit=lambda source, target, operation: True)
     assert b["test_origin"] is False
-    assert b["candidate"] is None
-    assert "TRANSPORT_PERMISSION_NOT_ADMITTED" in b["refusals"]["A"]
     assert b["real_source_qualification"] == "EXTERNAL_REVIEW_REQUIRED"
+    # the decision is explicitly NOT a commit and NOT synthetic
+    assert b["decision"] == "INFERRED_CANDIDATE_REQUIRES_REVIEW"
+    assert b["candidate"]["evidence_mode"] == "INFERRED"
+    assert b["candidate"]["sample_size"] is None
+    # refusing admission is a typed refusal at the baseline boundary, not a guess
+    with pytest.raises(SynthesisError) as exc:
+        synthesize(t, s, p, admit=lambda source, target, operation: False)
+    assert "lacks external owner admission" in str(exc.value)
 
 
 def test_negative_conditional_outside_topology_refused():
@@ -566,9 +581,13 @@ def test_negative_support_threshold_is_diagnostic_not_pruning():
     b = synthesize(t, s, p)
     assert b["candidate"]["distribution"] is None
     assert b["candidate"]["uncovered_target_mass"] == "1"
-    for sid in ("A", "B"):
-        cells = b["baseline"][sid]["native_summary"]["strata"]["majority"]["cells"]
+    for idx, sid in ((0, "A"), (1, "B")):
+        cells = b["baseline"][idx]["native_summary"]["strata"]["majority"]["cells"]
         assert len(cells) == 4, "native cells must survive a support threshold"
+    for z in ("majority", "minority"):
+        entry = b["candidate"]["support"][z]
+        assert entry["sources"] == [], f"{z} must have no eligible source"
+        assert sorted(entry["excluded_sources"]) == ["A", "B"]
 
 
 def test_negative_duplicate_joint_cell_refused():
