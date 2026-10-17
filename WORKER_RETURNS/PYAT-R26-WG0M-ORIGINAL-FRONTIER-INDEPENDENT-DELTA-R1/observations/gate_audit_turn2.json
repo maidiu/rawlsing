@@ -1,0 +1,37 @@
+{
+  "at": "2026-10-17T04:16:30.432596+00:00",
+  "classification": "UNCHANGED_EXTERNAL_DEPENDENCY_NOT_A_LIVE_PROCESS_WAIT",
+  "consecutive_goal_turn_with_same_blocker": 2,
+  "gate": {
+    "at": "2026-10-17T04:15:59.951784+00:00",
+    "branch": "agent/rabochii-pyat-r26-wg0p5-bound-descriptor-provenance-repair-r1",
+    "direct_remote_sha": "7e589c19c693c150d0cf622fc43e84bbc40d1b31",
+    "startup_sha": "7e589c19c693c150d0cf622fc43e84bbc40d1b31",
+    "return_path": "WORKER_RETURNS/PYAT-R26-WG0P5-DESCRIPTOR-PROVENANCE-REPAIR-R1/",
+    "returned_files": [],
+    "WG0P5_code_imported": false,
+    "status": "WAIT_FOR_GOVERNED_WG0P5_PUSH",
+    "reason": "Remote is the sealed commission startup and has no WG0P5 return files."
+  },
+  "frozen_file_checks": [
+    "01_FROZEN_DESCRIPTOR_EXPECTATIONS.json",
+    "tests/test_descriptor_delta_frozen.py",
+    "repro/descriptor_adapter_v1.py",
+    "01_FROZEN_EXPECTATIONS_BEFORE_WG0P4.json",
+    "tests/test_precommitted_phase_b.py",
+    "repro/precommitted_contract.py",
+    "observations/original_WG0J_oracle.json",
+    "observations/original_WG0K_oracle.json"
+  ],
+  "historical_source_files_verified": 88,
+  "historical_P4_actual_result": {
+    "tests": 36,
+    "passed": 17,
+    "failed": 19,
+    "errors": 0,
+    "skips": 0
+  },
+  "phase_b_status": "NOT_EXECUTED",
+  "goal_status": "active",
+  "next_action": "Require WG0P5 published candidate; no further dependent action authorized before its publication."
+}
