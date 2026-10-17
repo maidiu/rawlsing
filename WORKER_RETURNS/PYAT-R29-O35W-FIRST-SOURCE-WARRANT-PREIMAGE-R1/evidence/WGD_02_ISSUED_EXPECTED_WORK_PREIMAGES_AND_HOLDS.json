@@ -1,0 +1,279 @@
+{
+ "schema": "HQ280_WGD_ISSUED_EXPECTED_WORK_PREIMAGES_AND_HOLDS@1.0.0",
+ "governing_decision": "HQD-2026-10-10-280",
+ "canonical_control": "6a8c91d99dca1ae2fd3559ba3c11ee26649e3cd9",
+ "semantic_pre_main": "1f47063c3205a45888b3c55e81e7485943ed1390",
+ "issue_rule": "a scientifically_issued_expected_work_key exists only where every mandatory preimage field is proved from competent accepted evidence, frozen before projector/batch/result; otherwise the key is null and the gap is typed UNRESOLVED with a responsible issuer",
+ "issued_expected_work_count": 1,
+ "issued": [
+  {
+   "scientifically_issued_expected_work_key": "ecb7411003a96966d703fc88a28d973b",
+   "key_class": "SCIENTIFICALLY_ISSUED__EXISTING_ADOPTED_E2B_USE",
+   "scope_statement": "issued for the EXISTING adopted E2B CONTEXT use only; NOT a new consumer issuance; NOT all-35 issuer coverage; NOT a runtime execution",
+   "wgc_item_cross_reference": {
+    "note": "the WGC ledger classifies Afrobarometer R5 Q86A/Q86B as CONTEXT_ONLY_CONDITION_ELIGIBLE items; this issued operation is NOT derivable from the WGC annotation set alone - it is issued by the adopted GT12/R4A chain that predates and is independent of the WGC ledger. Item-level documentary keys are cited for traceability only; their annotation-level authorizations remain exactly as recorded in 01 (all UNRESOLVED).",
+    "q86a_item_key": "dfbdf9c788d9",
+    "q86b_item_key": "7ace0ab33071",
+    "issued_operation_id": "GT2_R5_Q86A_X_Q86B_RAW_JOINT_EXACT_RISK_SET@1",
+    "derivation_note": "per-operation issued identity comes from the adopted GT12 claim/authority chain, not from a WGC annotation label, selected manifest or result"
+   },
+   "preimage": {
+    "operation_class": "SAMERESPONDENT_CONDITIONED_JOINT__CONTEXT__F1_PUBLICATION_CHAIN",
+    "original_source_and_release": {
+     "source_family": "Afrobarometer",
+     "wave": "R5",
+     "source_release_sha256": "c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651",
+     "source_release_identity": "Data/Afro Barometer Round 5.sav (raw bytes NOT opened; historical manifest assertion per LR-A/GT2-P)",
+     "instrument_form": "native Q86 module; 6x6 response grid",
+     "administered_item_binding": {
+      "target_item": "Q86A",
+      "conditioner_item": "Q86B",
+      "semantic_component_order": [
+       "Q86B",
+       "Q86A"
+      ],
+      "binding_authority": "GT12-A-R5-Q86-SOURCE-SEMANTICS (authority_content_hash c89c04fcaeb0742e5c6248f526082f90156af78f978f44023ab75eef53e830a4)"
+     }
+    },
+    "target_and_conditioner_role": {
+     "target": "Q86A",
+     "conditioner": "Q86B",
+     "direction": "Q86B(CONDITIONER) -> Q86A(TARGET)",
+     "target_topology_arity": 2,
+     "target_cell_count": 36
+    },
+    "native_response_topology_and_code_semantics": {
+     "response_state_semantics_ref": {
+      "content_hash": "fd55863b0d1eb8f961928f0eeeec94c43dd4f6bc3b63bce141a841f0c1a9a261",
+      "kind": "RESPONSE_STATE_SEMANTICS",
+      "object_id": "Afrobarometer:R5:Q86:SOURCE_NATIVE_RESPONSE_STATES"
+     },
+     "cells": "36 native cells (13 nonzero, 23 measured zero; DKxDK=334, MISSINGxMISSING=6 per HQ221 citation; not independently recomputed here)",
+     "code_semantics_class": "Afrobarometer:R5:Q86:SOURCE_NATIVE_RESPONSE_STATES"
+    },
+    "respondent_risk_routing_denominator": {
+     "risk_set_ref": {
+      "content_hash": "0484fa5c0440c34e9b1f28b385f3ef6c3302eaeb11c3c5b663441553ea11313b",
+      "kind": "RISK_SET",
+      "object_id": "FIRST_GENUINE_CANARY_COMMON_COEXPOSURE_RISK_SET@1"
+     },
+     "risk_set_type": "COMMON_ELIGIBLE_RISK_SET",
+     "risk_set_member_count": 19210,
+     "denominator_member_refs": {
+      "count": 19210,
+      "exact_sequence_equal_to_risk_set_members": true,
+      "source": "respondent_refs"
+     },
+     "routing_refs_count": 38420,
+     "event_refs_count": 38420,
+     "numerator_support": 19210,
+     "measure_kind": "RAW",
+     "measure_basis_ref": {
+      "content_hash": "77f5cd66605ec3560fcebb748c06dfb6a5f58732897b6ffe9e4f90ccb1b05170",
+      "kind": "MEASURE_BASIS",
+      "object_id": "urn:rawlsing:gt12b:raw-measure:sha256:77f5cd66605ec3560fcebb748c06dfb6a5f58732897b6ffe9e4f90ccb1b05170"
+     },
+     "weight_design_estimand_ceiling": "RAW only; O08 default_weight_authorized=False; no design/PSU/strata/estimand grant"
+    },
+    "scientific_operation_consumer_issuer_and_permission": {
+     "query_authority_refs": [
+      {
+       "authority_content_hash": "c0ec18e231c8b934acc1fd072b8cd26d59ee2d784c9fb5b29b345b944a757a16",
+       "authority_id": "GT12-A3-GT2-I03-QUERY",
+       "authority_version": "1.0.0"
+      }
+     ],
+     "authority_snapshot_refs": [
+      {
+       "authority_content_hash": "a62630cdc2c81161bcce4c3be7f3757bb4a7e279c9cb334e0b9b013d7339a435",
+       "authority_id": "GT12-A-R5-Q86-CARRIER-REEXPRESSION",
+       "authority_version": "1.0.0"
+      },
+      {
+       "authority_content_hash": "943fa2c44710480948f1dc7a5ae2fe512b806462776e89dcd6de761c5c956d0a",
+       "authority_id": "GT12-A-R5-Q86-COMMON-RISK-ROUTING",
+       "authority_version": "1.0.0"
+      },
+      {
+       "authority_content_hash": "c89c04fcaeb0742e5c6248f526082f90156af78f978f44023ab75eef53e830a4",
+       "authority_id": "GT12-A-R5-Q86-SOURCE-SEMANTICS",
+       "authority_version": "1.0.0"
+      },
+      {
+       "authority_content_hash": "c0ec18e231c8b934acc1fd072b8cd26d59ee2d784c9fb5b29b345b944a757a16",
+       "authority_id": "GT12-A3-GT2-I03-QUERY",
+       "authority_version": "1.0.0"
+      },
+      {
+       "authority_content_hash": "8be1db868deb8b1d613495a2120d2092df2fe55aa5f8884830d7a7e85e221a0e",
+       "authority_id": "GT12-A3-GT2-TARGET-USE",
+       "authority_version": "1.0.0"
+      }
+     ],
+     "permission_ceiling": "EMPIRICAL_INPUT_TO_FROZEN_EXACT_CONDITIONAL_SUPPORT_ONLY__NO_CAUSAL_OR_ACTOR_PROMOTION",
+     "gt12_claim_id": "GT2_R5_Q86A_X_Q86B_RAW_JOINT_EXACT_RISK_SET@1",
+     "producer_permission_translation": {
+      "authority_id": "GT12_RELATION_SPECIFIC_PREV3_TO_M4_PRODUCER_PERMISSION_TRANSLATION_AUTHORITY",
+      "adopted_v558_requested_uses": [
+       "CONTEXT"
+      ],
+      "source": "rawlsing_next/gt12_permission_translation_authority.py blob 2eb1441e0ee5be3eef2567f8ffb57819fc47f0d6"
+     },
+     "publication_governance": {
+      "governed_use_id": "GT12_GT2_Q86B_CONDITIONAL_SUPPORT_Q86A_F1_CONTEXT_PUBLICATION@1",
+      "v554_rule_id": "GT12_V554_SIG004_ADMITTED_RELATION_CONTEXT_PUBLICATION_RULE",
+      "publication_authority_id": "GT12_RELATION_V554_TO_V557_F1_CONTEXT_PUBLICATION_AUTHORITY",
+      "publication_authority_hash": "1b2c1238139287e30acaa418e28967585a34a7fae9c937a9322b7c9e9a76322a",
+      "v557_authority_id": "GT12_CAN003_V557_F1_CONTEXT_ONLY_CURRENT_BINDING",
+      "v557_state": "ALLOW_CONTEXT_ONLY",
+      "v558_requested_uses": [
+       "CONTEXT"
+      ],
+      "allowed_object_families": [
+       "F1"
+      ],
+      "forbidden": [
+       "V553",
+       "V555",
+       "V556",
+       "ACTOR_INFERENCE",
+       "POSITIVE_V3_TRANSITION",
+       "V2_AUTHORITY",
+       "ACTIVE_CAUSAL",
+       "REVIEW"
+      ],
+      "bundle_content_hash": "f7d4d2313bcc70faf104cff205b0eb7aaa7d88556c895c8ea123a3725105cf14",
+      "adoption_content_hash": "ff3c0db1ee346b176f240523f36048d88beb6216722988ea087040b4840cd492"
+     },
+     "scope_and_revocation": {
+      "scope": "LOCAL CONTEXT ONLY: conditional-support empirical input to frozen exact conditional-support profile; no causal, actor, objective-world, EE14 G0b, N10W, OC05 or V3 use",
+      "revocation": "authority-scoped; any use outside CONTEXT is denied by owner (gt12_permission_translation_authority ADOPTED_V558_REQUESTED_USES check)"
+     }
+    },
+    "finite_grammar": {
+     "query_spec_ref": {
+      "content_hash": "e4ec3998664975c6a5f9e020b7815cfe6d39a212e264963d8037e6f0db87d0d0",
+      "kind": "EmpiricalQuerySpec@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:e4ec3998664975c6a5f9e020b7815cfe6d39a212e264963d8037e6f0db87d0d0"
+     },
+     "predicate_ref": {
+      "content_hash": "bd91b40575035a9ff9ad2e7c507adc2610bfebdcc7fa38ce1cd697b37559cea3",
+      "kind": "EmpiricalPredicate@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:bd91b40575035a9ff9ad2e7c507adc2610bfebdcc7fa38ce1cd697b37559cea3"
+     },
+     "replay_ref": {
+      "content_hash": "c0c23ca2bb439364756503722b60d047139d42a6128411cc19bfbd87d33c884f",
+      "kind": "PRE553_I03_QUERY_REPLAY",
+      "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:c0c23ca2bb439364756503722b60d047139d42a6128411cc19bfbd87d33c884f"
+     },
+     "empirical_universe_refs": [
+      {
+       "content_hash": "4dc56730f5c3b06838cc8a6116e0f4c78662b76d75b578918f7207cea3902dd1",
+       "kind": "EmpiricalUniverse@1.0.0",
+       "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:4dc56730f5c3b06838cc8a6116e0f4c78662b76d75b578918f7207cea3902dd1"
+      }
+     ],
+     "query_execution_contract_id": "PRE553_I03_EXACT_EMPIRICAL_QUERY@1.0.0",
+     "c11_release_ref": {
+      "content_hash": "8315b104a94ae985a3ee3d77c8c365d5fcef6b6cb51a606df5bf141434668295",
+      "kind": "C11LogicalRelease",
+      "object_id": "R5_GT12_Q86A_Q86B_FROZEN"
+     },
+     "c11_replay_manifest_ref": {
+      "content_hash": "c80d08ca9a5bb4814bdca3c0c21cb4c708da32840d6459b190cca206c3e3b4aa",
+      "kind": "C11Internal:ReplayManifest",
+      "object_id": "urn:rawlsing:pre553:c11:ReplayManifest:sha256:c80d08ca9a5bb4814bdca3c0c21cb4c708da32840d6459b190cca206c3e3b4aa"
+     },
+     "grammar_class": "I03 exact empirical query (single issued query; no I05 discovery frontier issued; no batch units issued)"
+    },
+    "intended_accepted_consumer": {
+     "consumer_identity": "rawlsing_next/tests/gt12_e2b_actual_object_consumer_harness.py::run_current_r1c_e2b_actual_objects",
+     "consumer_blob": "f86a2a368cfd427ec465fd84eb93e7736f0c51f5",
+     "consumer_chain": "harness -> gt12_d_to_m4_typed_bridge.publish_and_resolve_relation_v554_at_current_m4 -> m4_v557_v558_publication_repository build_v557_publication_bundle/build_v558_repository_bundle/resolve_v558 (legacy mode)",
+     "consumer_status": "EXISTING_ADOPTED_E2B_CONSUMER__NOT_A_NEW_CONSUMER",
+     "execution_status": "NOT_EXECUTED_BY_WGD (GT2-P runtime hold preserved; no consumer execution is claimed)"
+    },
+    "freeze_provenance": {
+     "frozen_from": "competent adopted authority chain + retained R4A constructor transport (EXTRACT_ONLY_RECOVERY_FROM_DURABLE_EXECUTE_CHECKPOINT__NO_GT2_REEXECUTION)",
+     "execution_checkpoint_commit": "43cf3df0fc9002a38d72ad57f1fe4dfe1f3736fb",
+     "frozen_before": "projector, batch manifest and any result inspection",
+     "result_independence": "preimage contains no result counts beyond the historical checkpoint identities cited as evidence"
+    },
+    "evidence_verification": {
+     "r4a_manifest_sha256": "c2d008a96ce1cf9156cd9e10ebaf513f300139853a60db5856569f1375233c89",
+     "r4a_payloads_verified_byte_exact_locally": [
+      "respondent 9c34860a...",
+      "routing 9ab1b532...",
+      "event 2fa09161..."
+     ],
+     "owner_code_verified_byte_identical_to_canonical_blobs": [
+      "rawlsing_next/gt12_permission_translation_authority.py blob 2eb1441e0ee5be3eef2567f8ffb57819fc47f0d6",
+      "rawlsing_next/gt12_e2b_publication_governance_binding.py blob 5c0e730972ca7f31c3be92564c299822c431ccc5",
+      "rawlsing_next/gt12_d_to_m4_typed_bridge.py blob ca3d6b8d832d7ca8d959bd19e19a23b08cabde76",
+      "rawlsing_next/m4_v557_v558_publication_repository.py blob 8ec5c8e1c1a3cb7e998bb6cf0972ac87f396e360",
+      "rawlsing_next/pre553_repo_native_current_payload.py (R4A transport loader; pinned manifest sha256 c2d008a9...)",
+      "rawlsing_next/tests/gt12_e2b_actual_object_consumer_harness.py blob f86a2a368cfd427ec465fd84eb93e7736f0c51f5"
+     ]
+    },
+    "scientific_issuer": {
+     "source_semantics_issuer": "GT12-A-R5-Q86-SOURCE-SEMANTICS",
+     "risk_routing_issuer": "GT12-A-R5-Q86-COMMON-RISK-ROUTING",
+     "query_issuer": "GT12-A3-GT2-I03-QUERY",
+     "target_use_issuer": "GT12-A3-GT2-TARGET-USE",
+     "carrier_reexpression_issuer": "GT12-A-R5-Q86-CARRIER-REEXPRESSION",
+     "publication_issuer": "GT12_RELATION_V554_TO_V557_F1_CONTEXT_PUBLICATION_AUTHORITY",
+     "producer_translation_issuer": "GT12_RELATION_SPECIFIC_PREV3_TO_M4_PRODUCER_PERMISSION_TRANSLATION_AUTHORITY"
+    },
+    "operation_id": "GT2_R5_Q86A_X_Q86B_RAW_JOINT_EXACT_RISK_SET@1",
+    "operation_family": "OP_SAMERESPONDENT_CONDITIONAL_PARTICIPANT"
+   }
+  }
+ ],
+ "holds": [
+  {
+   "hold_id": "HOLD-NEW-STANDALONE-CONSUMER",
+   "hold": "any NEW standalone consumer / fresh expected-work issuance beyond the existing E2B use",
+   "typed_reason": "UNRESOLVED__EXPECTED_WORK_ITEM_REF__NEW_CONSUMER_ISSUER_GRANT",
+   "evidence": "GT2-P return (branch agent/rabochii-pyat-hq280-gt2p-retained-context-consumer-positive-r1 @ acbd65ca1): expected_work_item_ref=UNRESOLVED, expected_work_independently_frozen=false, new_consumer_issuer_grant=UNRESOLVED",
+   "responsible_issuer": "competent final named consumer/request issuer + independently frozen expected-work approval at exact CONTEXT source/use scope",
+   "note": "this is a specific consumer/expected-work HOLD, not a revocation of the existing accepted E2B CONTEXT use"
+  },
+  {
+   "hold_id": "HOLD-GT2P-RUNTIME",
+   "hold": "fresh runtime execution/consumer receipt for the E2B chain",
+   "typed_reason": "RUNTIME_NOT_EXECUTED_BY_WGD",
+   "responsible_issuer": "GT2-P commission runtime (separate); WGD performs data-only overlay only"
+  }
+ ],
+ "item_level_states_preserved": {
+  "PERMITTED_AS_CANDIDATE__NO_EXECUTION_ISSUANCE": 15134,
+  "NOT_APPLICABLE": 562,
+  "HELD_SCIENCE_ISSUER": 2561,
+  "DENIED_FAIL_CLOSED": 11,
+  "PERMITTED_FOR_CONTEXT_AND_NATIVE_CANDIDATE": 8
+ },
+ "operation_level_unresolved_taxonomy": {
+  "total_annotations_unresolved": 78037,
+  "by_gap": {
+   "source-native release/instrument item binding + operation-grade issuer/use permission for a native distribution job": 15734,
+   "conditioned-operation issuer/use permission + exact position-conditioning authority beyond declared modifiers": 5539,
+   "constraint satisfied by construction at job level; no separate job issuance exists": 9790,
+   "covariate-use issuer/scope permission": 7043,
+   "exact routing/denominator issuance NOT PRESENT in WGC export; O06 carries class and rule ID only; 10,348 SOURCE_ROUTING_UNRESOLVED": 10707,
+   "weight/design/estimand authority absent estate-wide (O08 default_weight_authorized=False for all 35 waves)": 15726,
+   "participation marker only; concrete pair targets are candidate permutations (03); no independently issued same-respondent exposure/role/risk/source operation": 4681,
+   "participation marker only; bounded joint_k=2/3 syntax is candidate, not authorized; no native joint grammar issuance": 4681,
+   "topology preserve-order duty has no job issuance without an operation issuer": 3418,
+   "ordered-occurrence preservation duty has no job issuance without an operation issuer": 718
+  },
+  "not_applicable_items": 562,
+  "denied_fail_closed_items": 11,
+  "operation_specific_directional_denials": 8,
+  "science_held_items": 2561
+ },
+ "per_operation_denial_separation": {
+  "rule": "item-level deny state is inherited separately; an operation-level deny is asserted only on the operation itself (8 SIGNED_DIRECTIONAL_ATOM denials; 11 all-respondent-evidence fail-closed); no item-level signed denial is copied into unrelated native-distribution operations",
+  "eight_items_native_and_context_retained": true
+ },
+ "no_cartesian_expansion": "no arbitrary Cartesian triples; relation permutations remain candidate syntax (joint_k=2/3) with zero authorized keys in this return beyond the single existing E2B use"
+}
