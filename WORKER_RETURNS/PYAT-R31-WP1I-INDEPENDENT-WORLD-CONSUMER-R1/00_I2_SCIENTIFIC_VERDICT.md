@@ -1,43 +1,39 @@
-# PYAT R31 WP1I — Independent world-consumer scientific court
+# PYAT R31 WP1I — Final independent world-consumer scientific verdict
 
-**STATUS** `PHASE_A_FROZEN_AND_EXECUTED__PHASE_B_AUTHOR_NO_RUNNABLE_PRODUCT__HOLD` at last verified author cut. **Not HQ, WP1 author, source/semantic issuer or Sorok actor issuer.** This is an I2 independent preregistered court, **not** a WP1 implementation/adoption verdict.
+**I2 DISPOSITION: `BOUNDED_SOURCEFREE_CONSUMER_POSITIVE__PUBLIC_COMPARISON_INTEGRITY_RED__C1_N10E_N9_F6_INTEGRATION_HELD`.** This verdict supersedes the earlier preliminary `AUTHOR_NO_RUNNABLE_PRODUCT__HOLD` only for the now-returned WP1 author product. Independent reviewer; not HQ, original-source, FF, model, N11/N12 or Sorok/V3 actor issuer. **No production/semantic authority or merge issued.**
 
-## Sealed identity and independence
+## Exact independently verified identities
 
-- Reviewer branch: `agent/userdirect-pyat-20261017-r31-wp1i-independent-world-consumer-court-r1`.
-- Exact sealed startup `b8db7b1700a1e7ac70361482b477f1eaec1a3484`; direct GitHub compare was IDENTICAL (0 ahead/behind).
-- Commission read in full from this exact commit; blob `787b491f9b49fb01619924f7ef8ce63c9d2410f1`. Separate WP1 author branch start `108ea616ca186164bd43852085ac9090a95d83f2`.
-- Phase A written and independently remotely verified **BEFORE** viewing any WP1 authored result or code at commit `75f360d0f5b62d41d273bce21fae27d71e03c89b`. Phase-A exact remote oracle blob `e3efa8edfdbfbb3ecd9c965ef193a419522dc9c6`; original expectations remain frozen, never changed. Local reference implementation and 31 tests ran with Python 3.13.5, pytest 9.0.2; 31 PASS / 0 failed / 0 skipped in 0.10s. Raw JUnit uploaded as `repro/phase_a_local_pytest.junit.xml` and verified byte-identical to local original JUnit.
-- Distinguish local executed draft bytes from uploaded GitHub Python/test/oracle bytes; they embody the same expected cases but are **not assumed the same tested binaries**. Exact local and remote digests are in 02 and 06. Reproduce from GitHub bytes before any further I2 adoption.
+Reviewer seal `b8db7b1700a1e7ac70361482b477f1eaec1a3484`. Original independently frozen and verified Phase-A SHA **`75f360d0f5b62d41d273bce21fae27d71e03c89b`**. Neither `01_PHASE_A_FROZEN_ORACLE.json` nor the preregistered Python reference/test files changed. Author WP1 sealed startup `108ea616ca186164bd43852085ac9090a95d83f2`; exact final remote `9e588212158e85088247a1874f604d1bcd427e2c` was verified IDENTICAL to the named branch, **12 ahead and 0 behind**, all nine files within authorized WP1 return directory.
 
-## Preregistered falsifiers and scientific values
+Author archive Git blob `ce96e857cc9ae70d205b33101c454eb1446288b6`, SHA-256 `1398f0d024d9f73718e1469a0a62ac82933d73aae57456573e80beb9ab8d975d`. Actual imported module Git blob `062bbf6fb1fc927398e172c64863812cb3df7931`; author tests `46f8bb29eb6ab16f4a0009e368e35bfc85008155`; both independently matched using real `git hash-object`. Native accepted owners were inspected by exact read in Phase A but **not imported/executed**; don't upgrade them.
 
-Survey source A independent 100 cases: X∩Y=18; X∩¬Y=22; ¬X∩Y=12; ¬X∩¬Y=48. Therefore **P(Y|X)=18/40=45%** vs **P(X|Y)=18/30=60%**; unequal denominators are required. Source B independent 40 cases: 1,3,5,31, giving **P(Y|X)=1/4** and **P(X|Y)=1/6**; no cross-family respondent pooling, pseudo-shared person, common joint distribution or arbitrary population-weight claims. Minority: 1 out of 4 is 25%, not the 1% across 100. States OBSERVED_ZERO, UNSUPPORTED, MISSING/PARTIAL, SUPPRESSED must not be collapsed.
+## Real execution
 
-F6 World A complete 30/100 = 30%; F6 World B 18 observed positive, 60 negative, 22 unknown/100 => sharp simple arithmetic interval **[18%,40%]**, **NOT** 18/78 = 23.08% COMPLETE. Report true bounds, absent posterior and no arbitrary renormalization. Not an original source-qualified F6 posterior/confidence interval.
+In isolated Python 3.13.5 / pytest 9.0.2 / Git 2.47.3:
+- Unmodified author suite **31 passed / 0 failed**, 1.79 seconds, Git-blob-matched source and tests.
+- Independently authored Phase-B hostile/reference suite **14 passed** (including three successful reproductions of unwanted behavior).
+- Locally preregistered Phase-A reference draft **31 passed** (its exact bytes are *not* falsely called a byte-level execution of the published frozen GitHub oracle).
+- Combined test command: **76 passed / 0 failed in 3.48s**; raw JUnit and independent Python test artifact retained.
+- Exactly remote/published `03_ACTUAL_WORLD_A_B_CONSUMER_PRODUCTS.json` was recomputed by executing actual `build_products()`: canonical JSON plus final newline has **Git blob `a8a74d9f0092af61f00e526259ee3a40b34070b7`**. Two actual fresh interpreter processes with distinct `PYTHONHASHSEED` agree with warm execution. The five decisive reviewer controls are also published byte-for-byte and independently verified with raw JUnit.
+- Native C1/N10E/N9/J04, Field Forge, original35, F6M/F6N/GF1G and Sorok/actor suites: **NOT_EXECUTED**, not represented as passing.
 
-The independent two-world falsifier changes an *explicit artificial route rule*: from operational, capacity 2 (reach-clinic feasible) to closed, capacity 0 (reach-clinic not feasible), preserving remain-home. Changing only a world label or hash must not count as effect. No real historical road, infrastructure claim or actor psyche inferred. Absent competent owner means typed HOLD rather than pretend N10W/world causal ownership. Publication-before-knowledge, wrong release, stale epoch, issuer forgery, caller `admit`, source identity, revocation, cold replay and source-specific invalidation remain mandatory.
+## Scientific content accepted only at sourcefree lab grain
 
-## Accepted existing owners examined only by direct pinned source read
+Separate invented ALPHA: 36/45=80% forward, 36/48=75% reverse; partial interval [36/65,56/65]. Invented BETA: 20/30=66⅔% forward, 20/25=80% reverse; partial interval [2/5,4/5]. Eligible vs observed native counts and minority cells 12 and 5 preserved; 20 missing/special per family retained, no cross-source respondent or joint probability. Consumer directly dereferences two exact producer-owned lab refs. Explicit hypothetical World A factors (1,1) and B factors (1/2,3/4) produce actual outputs ALPHA 80%→40%, BETA 66⅔%→50%; paired same-source A–B differences 40% and 16⅔%, with exact partial intervals [18/65,28/65] and [1/10,1/5]. Label-only changed world (same factors) independently yielded **zero** numerical delta. These factors **are not empirically recovered world rules** and do not demonstrate a real historical event, causal mechanism or actually generated person's changed affordance.
 
-At canonical `7b1dcb82e0326737b4af172b17f9c2b7e25fd848` GitHub source, checked M01 Route B, C1 analytics, N10E empirical possibility, source-backed positioned subject consumer, I4 direct-learned world, J04 V557/V558 objective-position context, M4 repository and current OC05 policy. Exact blobs and signatures recorded in 02. N10E excludes caller-handwritten slice geometry and binds empirical query, predicate, exact release and condition witness; J04 permits a narrow one-proving-fact source-domain context. OC05 still has `NOT_YET_APPLICABLE` at this inspected code; this is not evidence that every other N9 service is missing. GitHub connector source read PASS; private git CLI DNS and full repo owner import NOT EXECUTED. No original SAV/DTA, source use or actor execution.
+## Public comparison/replay scientific REDs
 
-## Phase B: actual author branch status
+1. `COMPARE_ACCEPTS_MUTATED_VALUE_WITH_STALE_PRODUCT_REF`: mutate caller-side world_B center to [0,1] but keep original product_ref. Public `compare()` emits forged Alpha [4,5] instead of actual [2,5] and cites unchanged world B ref. Consumer's earlier registry dereference does validate its own data; compare does not recheck it.
+2. `COMPARE_ACCEPTS_FORGED_EARLY_ASOF`: public compare accepts caller-mutated world_B as-of=2023-01-01 (earlier than its model's 2025 effective date) with unaltered ref and emits delta; `consume()` would reject an as-of substitution.
+3. `COMPARE_LACKS_REVOCATION_EPOCH`: fresh `consume()` correctly refuses revoked source; public compare on cached pre-revocation worlds still emits Beta delta [1,6]. No declared comparison-level snapshot/lifecycle semantics settle whether older receipts remain valid after revocation, therefore maintain RED for permission-safe present-use comparisons and request policy clarification.
 
-WP1 direct remote branch at latest documentary cut `17ccf946c03f4c7bcfdb445288eb2689ab21cf35`, ahead **1** from `108ea616ca186164bd43852085ac9090a95d83f2`, changed only `WORKER_RETURNS/PYAT-R31-WP1-SOURCEFREE-WORLD-CONSUMER-R1/01_EXISTING_OWNER_METHOD_AND_SHA_COURT.md`. This is WP1's method comparison, not runnable implementation. Therefore no WP1 imported `__file__`, no WP1 new/inherited pytest results, no WP1 actual named N9/N10E/selected-world consumer calls, no changed-world substantive effect, no source-authorized F6 complete/partial conclusion, and **no I2 PASS or RED on author product**. `AUTHOR_NO_RUNNABLE_PRODUCT__HOLD` is a reviewer-phase gate status, while the worker is **EXISTING__ACTIVE_NOT_YET_RETURNED**, not failed or closed.
+These are **actual executed negative counterexamples**, not unsupported speculation, and must be retained, not silently rewritten into fixture PASS. They prevent I2 **unqualified acceptance of the public comparison/custody seam**. They do *not* erase the valid sourcefree arithmetic positive.
 
-## Required return bank
+## Distinct remaining HOLDs
 
-`01_PHASE_A_FROZEN_ORACLE.json`, `wp1i_independent_oracle.py`, `test_wp1i_independent_oracle.py`: preregistered independent test expectations.
+No actual C1/N10E/N9 direct execution, accepted selected historical world, F6 complete versus partial owner port, actual original source wave or survey estimand, objective institutional possibility mechanism, permissioned N11/N12/OC05, Sorok actor/CAN008 or V3 experience. Sourcefree prototype is not a real-person generator. The original frozen WorldA-COMPLETE / WorldB-PARTIAL F6 example is **reference-only**, not verified as an F6 owner port in WP1.
 
-`02_ACTUAL_OWNER_CUSTODY_AND_IMPORT_SHA.json`: exact source Git blob identities and execution ceiling.
+## Files and HQ motion
 
-`03_REAL_WORLDS_CONSUMER_RECOMPUTE.json`: independent numerical expectations and explicit absent WP1 consumer.
-
-`04_PARTIAL_AND_PERMISSION_BOUNDARY.md`: method, ecology, F6 bounds, owner/source and actor prohibitions.
-
-`05_HQ_ACCEPTANCE_MOTION.md`: Phase A accepted as future reviewer input only; no WP1 product acceptance.
-
-`06_LIVE_WP1_RETURN_PROGRESS_AND_EXECUTION_PASSPORT.md`, `repro/phase_a_local_pytest.junit.xml`: actual live author-cut and local runtime proof.
-
-**Decision:** retain independent Phase-A oracle; do not falsely substitute the reviewer's artificial rule or arithmetic for WP1 implementation. Resume Phase B only once exact WP1 runnable code and imported owner closure exist. Keep all failed controls (if subsequently observed) as RED. No original-source, Field Forge, F6 authority, N11/N12, OC05, Sorok actor or V3 grants.
+Full test execution, numeric/source identity, falsifying calls, owner and permission ceiling in `07_PHASE_B_I2_EXECUTION_AND_HOSTILE_VERDICT.md`. Independently executed, exact-blob matched `test_wp1i_phase_b_decisive_controls.py` and `repro/phase_b_decisive_junit.xml` accompany the original untouched Phase A files. Update `05_HQ_ACCEPTANCE_MOTION.md` separately. **HQ may bank bounded sourcefree positive only, hold public-comparison adoption pending a separate authorized fix+I2 review, and keep all native science/actor gates.**
