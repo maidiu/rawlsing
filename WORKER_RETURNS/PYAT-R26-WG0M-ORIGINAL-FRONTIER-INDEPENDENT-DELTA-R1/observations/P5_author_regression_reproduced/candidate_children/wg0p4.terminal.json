@@ -1,0 +1,29 @@
+{
+  "name": "wg0p4",
+  "command": [
+    "/usr/local/bin/python3",
+    "-m",
+    "pytest",
+    "-c",
+    "<WORKTREE>/runtime_phase_b/candidate/pytest.ini",
+    "<WORKTREE>/runtime_phase_b/candidate/tests/test_wg0p4.py",
+    "-vv",
+    "--tb=short",
+    "--junitxml=<WORKTREE>/runtime_phase_b/candidate/observations/wg0p4.xml"
+  ],
+  "cwd": "<RETURN>",
+  "pythonpath": [
+    "<WORKTREE>/runtime_phase_b/candidate/pinned",
+    "<WORKTREE>/runtime_phase_b/candidate/repro"
+  ],
+  "exit": 0,
+  "seconds": 19.066552877426147,
+  "log_redaction": "Only personal filesystem root aliases; otherwise complete real stdout/stderr. Unredacted local execution output kept ignored runtime/raw_logs.",
+  "source": "Exact frozen sources for historical modes; separately versioned implementer compatibility adapters for ported modes.",
+  "candidate_sha256": "06fadc7eb8c01fa832fa59beccfc2ea2f6e068216fdc8b04c95365065d492723",
+  "test_file_sha256": "d867d1ed02691c46314506d0cd74aa9ac27faf0af8af1182e82f1ae3aa7c12a0",
+  "tests": 69,
+  "failures": 0,
+  "errors": 0,
+  "skips": 0
+}

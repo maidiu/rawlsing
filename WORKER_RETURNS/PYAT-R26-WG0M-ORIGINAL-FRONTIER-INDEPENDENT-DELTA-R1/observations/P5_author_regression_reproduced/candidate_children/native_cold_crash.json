@@ -1,0 +1,101 @@
+{
+  "actual_calls": [
+    {
+      "function": "run",
+      "module": "pre553_batch_runner.py"
+    },
+    {
+      "function": "execute_empirical_query",
+      "module": "pre553_empirical_query.py"
+    }
+  ],
+  "exit": 23,
+  "fsync_atomic_replace_and_directory_fsync": true,
+  "manifest": "bcd255228ef35edcb9b59436b76e1eb78947c07180f2936779572f510981c140",
+  "pid": 8224,
+  "receipts": [
+    {
+      "attempt_index": 1,
+      "detail_hash": null,
+      "execution_performed": true,
+      "executor_ref": {
+        "content_hash": "900602d7ec547dc7c5eafb32f6f708569298615fddb96ca801506116acb27b76",
+        "kind": "EXECUTOR",
+        "object_id": "urn:wg0p4:test:WG0P4_QUERY_V1"
+      },
+      "failure_code": null,
+      "manifest_hash": "bcd255228ef35edcb9b59436b76e1eb78947c07180f2936779572f510981c140",
+      "provenance_refs": [
+        {
+          "content_hash": "cab5734bd77587fd442116bdf2d7648b9035c613164cf671f4915ef142ca6eba",
+          "kind": "C11LogicalRelease",
+          "object_id": "REL-REL-A-W1"
+        },
+        {
+          "content_hash": "900602d7ec547dc7c5eafb32f6f708569298615fddb96ca801506116acb27b76",
+          "kind": "EXECUTOR",
+          "object_id": "urn:wg0p4:test:WG0P4_QUERY_V1"
+        },
+        {
+          "content_hash": "ed038e8e5cb589c1b0da6ab0e2053b53a6cf4f0c0b3e974196f229a88e14ffa2",
+          "kind": "EmpiricalPredicate@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:ed038e8e5cb589c1b0da6ab0e2053b53a6cf4f0c0b3e974196f229a88e14ffa2"
+        },
+        {
+          "content_hash": "5810a0ba0dc4dd63efc7ad9c905775870c077fc3b1acb773f5b22cb305c8482c",
+          "kind": "EmpiricalQuerySpec@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:5810a0ba0dc4dd63efc7ad9c905775870c077fc3b1acb773f5b22cb305c8482c"
+        },
+        {
+          "content_hash": "96c950dc859da65f6c9bc2658d8c7acb651cbf3e155b36d2036ec556aea2a678",
+          "kind": "WG0P4_NATIVE_ITEM",
+          "object_id": "urn:wg0p4:test:native:WG0P-HH-MR-02"
+        },
+        {
+          "content_hash": "74347caa8257f09f7486e485b46c882bd9b0332e53c6ae776bbfc4cee633a665",
+          "kind": "WG0P4_SCIENTIFIC_FRONTIER",
+          "object_id": "urn:wg0p4:frontier:original25"
+        }
+      ],
+      "receipt_hash": "caac243fc25c521acc10b2e082b55bdb854921dff8f730680d82eeaf2dcabcbd",
+      "receipt_ref": {
+        "content_hash": "caac243fc25c521acc10b2e082b55bdb854921dff8f730680d82eeaf2dcabcbd",
+        "kind": "PRE553BatchExecutionReceipt@1.0.0",
+        "object_id": "urn:rawlsing:pre553:batch-receipt:sha256:caac243fc25c521acc10b2e082b55bdb854921dff8f730680d82eeaf2dcabcbd"
+      },
+      "result_refs": [
+        {
+          "content_hash": "80bcc96544eb5bfdd2d4cc9be58659a0b5fa5252291399a2eec5f97f56691c88",
+          "kind": "EmpiricalFact@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:80bcc96544eb5bfdd2d4cc9be58659a0b5fa5252291399a2eec5f97f56691c88"
+        }
+      ],
+      "state": "COMPLETED",
+      "unit_ref": {
+        "content_hash": "030cc8b9461be5ffda3f982a7c4416a807d8f7aa6dcc640769dd164b81b64274",
+        "kind": "PRE553BatchUnit@1.0.0",
+        "object_id": "urn:rawlsing:pre553:batch-unit:sha256:030cc8b9461be5ffda3f982a7c4416a807d8f7aa6dcc640769dd164b81b64274"
+      }
+    }
+  ],
+  "source_frontier_root": "74347caa8257f09f7486e485b46c882bd9b0332e53c6ae776bbfc4cee633a665",
+  "summary": {
+    "actual_execution_receipts": 1,
+    "batch_state": "IN_PROGRESS",
+    "completed_units": 1,
+    "coverage_state": "INCOMPLETE_MANIFEST_COVERAGE",
+    "deferred_units": 0,
+    "failed_units": 0,
+    "full_coverage": false,
+    "manifest_ref": {
+      "content_hash": "bcd255228ef35edcb9b59436b76e1eb78947c07180f2936779572f510981c140",
+      "kind": "PRE553BatchManifest@1.0.0",
+      "object_id": "urn:rawlsing:pre553:batch-manifest:sha256:bcd255228ef35edcb9b59436b76e1eb78947c07180f2936779572f510981c140"
+    },
+    "pending_units": 2,
+    "populated_data_execution_claim": false,
+    "receipt_set_hash": "9287d4143e47fe91a7b894cae00e22251291e55ccbe634e0fc4b08868e9e3172",
+    "total_units": 3
+  },
+  "unit_count": 3
+}
