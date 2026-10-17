@@ -1,0 +1,95 @@
+{
+ "passport_schema": "PYAT_00D_ENVIRONMENT_PASSPORT_DELTA@1.0.0",
+ "environment_id": "ENV_T9B_LOCAL_OPAQUE_N2V7",
+ "epoch_id": "EPOCH_R18_T9B_20261016_NEW_ISOLATED_SPARSE",
+ "owner_session_alias": "T9B_R18_TEMPORAL_HISTORY_CONSUMER",
+ "surface": "LOCAL_SHARED_STORE",
+ "machine_alias": "MACHINE_OPAQUE_DARWIN_X86_64_16C",
+ "status": "LIVE_VERIFIED",
+ "harness_and_model": {
+  "commission_preferred_model": "Codex GPT-6.1 Sol Medium",
+  "actual_platform": "OpenCode (CLI agent)",
+  "actual_model_identifier": "space-bunny-free",
+  "DISCREPANCY_DISCLOSED": true,
+  "discrepancy_note": "The commission named a preferred local Codex GPT-6.1 Sol Medium executor, or another verified warm source-free Python executor. This worker is an OpenCode agent running space-bunny-free. Recorded as PREFERRED vs ACTUAL per Pyat 00D/00C no-conflation discipline. No model switch, no cross-provider transport, no helper agent, and no claim that the preferred pair graded this work.",
+  "helper_agents_used": 0,
+  "model_switches": 0,
+  "external_model_calls": 0
+ },
+ "branch": "agent/vozhd-pyat-20261016-r18-t9b-temporal-history-consumer-r1",
+ "exact_sealed_startup": "acbb4f79dd2cdcfe022d48c56995f5b214634e7e",
+ "sealed_startup_verified": true,
+ "observed_versions": {
+  "python": "3.11.3",
+  "pytest": "9.0.2",
+  "pandas": "2.3.1",
+  "numpy": "2.3.2",
+  "git": "2.43.0"
+ },
+ "worktree_discipline": {
+  "isolated_sparse_worktree": true,
+  "reused_existing_verified_git_object_store": true,
+  "git_object_store_alias": "STORE_PYAT_FIABC_IDLE_20261009",
+  "reuse_method": "single-ref fetch; NO clone-per-worker",
+  "isolation_note": "NEW worktree for T9B; all other lanes and worktrees untouched"
+ },
+ "runtime_marker_digest": "sha256:t9b_temporal_1259_native_28_tests_8_pinned_v553_custody_guarded",
+ "CUSTODY_INCIDENT": {
+  "ambient_pytest_ini_shadowed_pinned_source": true,
+  "detail": "/Users/matthewsmith/Desktop/Rawlsing/pytest.ini causes pytest rootdir discovery to insert an ambient, UNVERIFIED data/ddm_build_copy into sys.path. A naive run imports unverified bytes while appearing to run the pinned tree.",
+  "guard": "run_pinned_v553_suite.py pins sys.path and asserts the resolved package __file__ inside this return before collection",
+  "with_guard": "8 passed",
+  "without_guard": "ImportError against the ambient tree",
+  "escalation": "HQ should check whether any prior worker executed this code without the guard"
+ },
+ "materialized_source_refs": {
+  "native_closure": "1259/1259 git blob SHA-1 + byte count verified",
+  "ledger": "evidence/native_source_ledger.json",
+  "inherited_by_identity": [
+   "ddm_v553_temporal_pressure._interp",
+   "_pressure_band",
+   "_bounded_score",
+   "AUTHORIZED_SPARSE_TEMPORAL_KEY",
+   "PROBE_ONLY_TEMPORAL_KEY",
+   "BLOCKED_TEMPORAL_KEY",
+   "ALLOWED_MULTI_WAVE_GRAINS"
+  ]
+ },
+ "covered_test_suites": [
+  {
+   "suite": "T9B frozen temporal court",
+   "result": "28 passed",
+   "junit": "junit/t9b_temporal.xml",
+   "stdout": "logs/t9b_temporal_stdout.log"
+  },
+  {
+   "suite": "PINNED V553 consumer contract (custody guarded)",
+   "result": "8 passed",
+   "stdout": "logs/pinned_v553_suite_stdout.log"
+  }
+ ],
+ "science_grade": "SOURCEFREE_SYNTHETIC_TEMPORAL__NOT_OBSERVED_CALIBRATION__NOT_REAL_SOURCE__NOT_V3",
+ "cash_known": "UNKNOWN_nothing_billed",
+ "quota_known": "UNKNOWN",
+ "independent_review_separation": "THIS IS A CANDIDATE, NOT AN ACCEPTANCE. An independent scientific court is required before any method adoption. This worker cannot accept its own method.",
+ "verdict": "TEMPORAL_INHERITANCE_REUSE_WITH_MANDATORY_CLOCK_QUESTION_DISTINCTION__T9B_CANDIDATE_REQUIRES_INDEPENDENT_SCIENTIFIC_COURT",
+ "prohibitions_respected": {
+  "real_source_issuance": false,
+  "OC05_installation": false,
+  "N12": false,
+  "V3": false,
+  "original_SAV_DTA": false,
+  "canonical_module_mutation": false,
+  "T8F3_assignment_preserved": "8079f69778eb4a2e6f30b246e3ec445dc161ae15"
+ },
+ "next_good_affinity_tags": [
+  "TEMPORAL",
+  "V553",
+  "EE12",
+  "N9",
+  "HISTORICAL_WORLD",
+  "KNOWN_AT",
+  "LEAKAGE"
+ ],
+ "staged_state_preservation": "self-contained; re-verify 1259 native blobs on resume"
+}
