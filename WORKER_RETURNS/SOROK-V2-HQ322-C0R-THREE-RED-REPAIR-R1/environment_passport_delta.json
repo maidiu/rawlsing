@@ -1,0 +1,95 @@
+{
+  "passport_schema": "SOROK_WARM_ENVIRONMENT_PASSPORT_R1",
+  "environment_id": "SOROK-V2-HQ322-C0R-BROWSER-BOUNDED-PREFLIGHT",
+  "epoch_id": "C0R-20261017-BOUNDED-STAGE",
+  "owner_session_alias": "HQ322-C0R-IMPLEMENTER",
+  "surface": "BROWSER_PLUS_GITHUB_CONNECTOR_AND_ISOLATED_PYTHON",
+  "status": "HOLD_INCOMPLETE_SOURCE_CLOSURE",
+  "sealed_startup": {
+    "commit": "ccf3083baab63c87ea1c89b81bf8bfc87d3c51da",
+    "branch": "agent/rabochii-sorok-v2-hq322-c0r-c0i-three-red-repair-r1",
+    "verified_against_direct_remote_head": true
+  },
+  "capabilities": {
+    "python": {
+      "status": "VERIFIED",
+      "observed": "3.13.5"
+    },
+    "pytest": {
+      "status": "VERIFIED",
+      "observed": "9.0.2"
+    },
+    "git": {
+      "status": "VERIFIED",
+      "observed": "2.47.3"
+    },
+    "subprocess": {
+      "status": "VERIFIED"
+    },
+    "filesystem": {
+      "status": "VERIFIED"
+    },
+    "github_connector": {
+      "status": "READ_VERIFIED_NO_AUTO_MOUNT"
+    },
+    "direct_git_network": {
+      "status": "UNAVAILABLE_DNS"
+    },
+    "native_module_imports": {
+      "verified": 1,
+      "required": 29
+    }
+  },
+  "dependency_closure_status": "INCOMPLETE_HOLD",
+  "closure_modules_verified": 1,
+  "closure_all_blob_verified": false,
+  "closure_resolves": false,
+  "repo_worktree_or_object_store": "ABSENT",
+  "marker": "NO_PRIOR_WARM_C0P_MARKER",
+  "sanitized_stage_path": "EPHEMERAL_BROWSER_TOOL_STAGE",
+  "covered_test_suites": [
+    {
+      "suite": "bootstrap_capability_not_acceptance",
+      "tests": 3,
+      "passed": 3,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "C0P_author49",
+      "status": "NOT_RUN"
+    },
+    {
+      "suite": "C0I_frozen50",
+      "status": "NOT_RUN"
+    }
+  ],
+  "source_permission": "source-free authorized exact Pyat public source modules only; no original respondent data; no source/issuer/model grant",
+  "science_grade": "CAPABILITY_PREFLIGHT_ONLY_NOT_NATIVE_COURT",
+  "independent_review_separation": "HQ_OWNS_POST_SUCCESSFUL_RETURN_I2",
+  "cash_known": "UNKNOWN",
+  "quota_known": "UNKNOWN",
+  "context_cache_reuse": "NONE_VERIFIED",
+  "retries": "one bounded stage attempt; three native imports unavailable",
+  "estimated_total_evidence_cost": "UNKNOWN",
+  "same_session_future_affinity": "NOT_QUALIFIED_UNTIL_FULL_CLOSURE_IS_STAGED_AND_VERIFIED",
+  "future_runtime_continuity": "NOT_CLAIMED",
+  "model_host_switch": "NONE",
+  "next_good_affinity_tags": [
+    "C0R",
+    "K9",
+    "K10"
+  ],
+  "retire_or_rebuild_reason": "Missing authenticated automatic source staging or checkout in Python tool; 28 of required 29 native modules absent",
+  "no_claims": [
+    "no 49/50 rerun",
+    "no C0R repair",
+    "no semantic adoption",
+    "no physical K9/K10",
+    "no native producer edit",
+    "no V3 actor",
+    "no original source execution",
+    "no future-session preservation assumption"
+  ]
+}

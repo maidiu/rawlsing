@@ -1,0 +1,72 @@
+{
+  "schema": "SOROK_C0R_CAPABILITY_HOLD_EVIDENCE_R1",
+  "disposition": "CAPABILITY_HOLD",
+  "parent": "ccf3083baab63c87ea1c89b81bf8bfc87d3c51da",
+  "branch": "agent/rabochii-sorok-v2-hq322-c0r-c0i-three-red-repair-r1",
+  "read_authority": [
+    "commission at exact sealed parent",
+    "Sorok 00C at exact sealed parent",
+    "Sorok 00D at exact sealed parent",
+    "C0P author 00_RETURN",
+    "C0I independent 00_RETURN and immutable tests",
+    "SC0 proposed envelope"
+  ],
+  "runtime": {
+    "python": "3.13.5",
+    "pytest": "9.0.2",
+    "git": "2.47.3",
+    "python_executable_alias": "BROWSER_TOOL_PYTHON",
+    "filesystem": true,
+    "subprocess": true,
+    "repo_checkout": false,
+    "git_object_store": false,
+    "warm_c0p_runtime_marker": false,
+    "github_connector_read": true,
+    "github_connector_auto_mount": false,
+    "direct_git_ls_remote_result": "DNS_FAIL_COULD_NOT_RESOLVE_HOST_GITHUB_COM"
+  },
+  "native_stage": {
+    "required_count": 29,
+    "required_bytes": 859712,
+    "staged_count": 1,
+    "staged_bytes": 81,
+    "stage_local_alias": "EPHEMERAL_BROWSER_C0R_RUNTIME/product/__init__.py",
+    "source_commit": "79cb8244a5291218bde17142b93fc2419eade396",
+    "source_path": "WORKER_RETURNS/PYAT-USERDIRECT-20261016-R15-E04T-NATIVE-CURRENT-GRANT-REPAIR-R1/product/__init__.py",
+    "expected_blob": "59a7e3c47435f944193ec10e82fe0e5e0fb5585f",
+    "computed_blob": "59a7e3c47435f944193ec10e82fe0e5e0fb5585f",
+    "actual_package_import_matches_stage": true,
+    "missing_imports": [
+      "product.service",
+      "product.nonparent",
+      "product.scenario"
+    ],
+    "closure_status": "HOLD_UNMATERIALIZED"
+  },
+  "fresh_execution": {
+    "bootstrap_only": {
+      "pass": 3,
+      "fail": 0,
+      "error": 0,
+      "skipped": 0,
+      "stdout": "3 passed in 0.05s"
+    },
+    "c0p_author49": "NOT_RUN",
+    "c0i_frozen50": "NOT_RUN",
+    "named_native_receipt_replays": "NOT_RUN",
+    "k9_full": "NOT_RUN",
+    "k10_full": "NOT_RUN"
+  },
+  "inherited_external_not_reproduced": {
+    "c0p_author": "49PASS",
+    "c0i_frozen": "47PASS/3RED",
+    "c0i_review_commit": "2dacd87636352a6c805e03b3d07581193a06264b"
+  },
+  "files_changed": [],
+  "tested_claim_grade": "ONE_PINNED_MODULE_BLOB_AND_RUNTIME_CAPABILITY_ONLY",
+  "prohibited_changes": [],
+  "adoption": "NONE",
+  "independent_I2": "NOT_DISPATCHED",
+  "routing": "RETURN_TO_HQ_NO_AUTONOMOUS_HOST_OR_MODEL_SWITCH",
+  "reason": "The accessible GitHub connector does not mount files into the isolated executable Python container; direct network/checkout and warm closure are absent, and the verified one-file manual transfer does not yield an executable 29-module native closure."
+}
