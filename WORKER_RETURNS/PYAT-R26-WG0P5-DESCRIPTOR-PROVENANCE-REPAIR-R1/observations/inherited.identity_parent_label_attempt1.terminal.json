@@ -1,0 +1,23 @@
+{
+  "command": [
+    "/usr/local/bin/python3",
+    "-m",
+    "pytest",
+    "-c",
+    "<WORKTREE>/WORKER_RETURNS/PYAT-R26-WG0P5-DESCRIPTOR-PROVENANCE-REPAIR-R1/review/runtime_phase_b/candidate/pytest.ini",
+    "<WORKTREE>/WORKER_RETURNS/PYAT-R26-WG0P5-DESCRIPTOR-PROVENANCE-REPAIR-R1/review/tests/phase_b/test_original_j_adapter_v1.py",
+    "<WORKTREE>/WORKER_RETURNS/PYAT-R26-WG0P5-DESCRIPTOR-PROVENANCE-REPAIR-R1/review/tests/phase_b/test_original_k_adapter_v1.py",
+    "<WORKTREE>/WORKER_RETURNS/PYAT-R26-WG0P5-DESCRIPTOR-PROVENANCE-REPAIR-R1/review/tests/phase_b/test_documented_k_contracts_v1.py",
+    "-vv",
+    "--tb=short",
+    "--junitxml=<WORKTREE>/WORKER_RETURNS/PYAT-R26-WG0P5-DESCRIPTOR-PROVENANCE-REPAIR-R1/observations/inherited.xml"
+  ],
+  "exit": 0,
+  "seconds": 45.55528712272644,
+  "candidate_sha256": "06fadc7eb8c01fa832fa59beccfc2ea2f6e068216fdc8b04c95365065d492723",
+  "claim_grade": "WG0P5_IMPLEMENTER_REPRODUCTION_ONLY_NOT_INDEPENDENT_ACCEPTANCE",
+  "tests": 74,
+  "failures": 0,
+  "errors": 0,
+  "skips": 0
+}
