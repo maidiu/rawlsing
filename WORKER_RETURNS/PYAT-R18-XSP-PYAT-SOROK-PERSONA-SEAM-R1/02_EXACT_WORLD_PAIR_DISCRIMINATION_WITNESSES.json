@@ -1,0 +1,173 @@
+{
+  "schema": "PYAT_R18_XSP_EXACT_WORLD_PAIR_DISCRIMINATION_WITNESSES@1",
+  "precommit": {
+    "file": "01_frozen_world_pairs.json",
+    "sha256": "00b91dd20cf28f44fe473b3abd010552c1190b7cd81388268f233b8fee417c09",
+    "frozen_before_test": true,
+    "grade": "SOURCEFREE_HYPOTHETICAL_HISTORICAL_CONTEXTS__NO_ORIGINAL_SURVEY_OR_ACTOR"
+  },
+  "execution": {
+    "runtime": "Python 3.13.5 + pytest 9.0.2",
+    "method": "STANDALONE_TEST_ONLY_FINITE_OPTIONS_NOT_NATIVE_OWNER",
+    "command": "python -m pytest -q --junitxml=junit.xml test_xsp_world_pair_court.py",
+    "pass": 19,
+    "fail": 0,
+    "skip": 0,
+    "source_file_sha256": "84aa6bc16edab98f114fec54c652e271de8a548030d262a65322d119afd605d2",
+    "test_file_sha256": "d45a79e36140ba6a141cc0e0888852052d33fb8cb963a2ba7fa74f0b9942e430",
+    "junit_sha256": "ae361ee1934b85656de26686e01d36d7e81af7680d72e6c67ffd07128ec567b9",
+    "result_file_sha256": "472a170eae3bd0fb9059028ba4849efb0d1586570c4562dab1db917603690bbd"
+  },
+  "pairs": [
+    {
+      "id": "P1_KNOWLEDGE_TIME",
+      "hypothetical_world": "fictive-town-2008",
+      "held_fixed": [
+        "institutional access OPEN",
+        "care time LOW",
+        "synthetic 54/6 empirical law"
+      ],
+      "baseline": {
+        "as_of": "2008-12-31",
+        "published_at": "2010-01-01",
+        "state": "HELD_NOT_KNOWN_ASOF"
+      },
+      "contrast": {
+        "as_of": "2011-01-01",
+        "state": "TEST_ONLY_CONDITIONED"
+      },
+      "actually_changed": [
+        "state",
+        "routes",
+        "empirical"
+      ],
+      "actual_person_private_knowledge": "UNKNOWN_NOT_ISSUED",
+      "meaning": "Publication awareness is not time travel or actor memory"
+    },
+    {
+      "id": "P2_ACCESS_AND_FAMILY_TIME",
+      "hypothetical_world": "fictive-town-2008",
+      "held_fixed": [
+        "as-of 2011",
+        "synthetic yes54/no6/den60",
+        "five routes"
+      ],
+      "baseline": {
+        "institution": "OPEN",
+        "care_time": "LOW",
+        "formal_schooling": "ELIGIBLE_IN_MODELED_CONTEXT"
+      },
+      "contrast": {
+        "institution": "FEE_BLOCKED",
+        "care_time": "HIGH",
+        "formal_schooling": "BLOCKED_BY_MODELED_FEE_RULE"
+      },
+      "actually_changed": [
+        "routes"
+      ],
+      "unchanged": [
+        "empirical fractions9/10 and1/10",
+        "mutual aid possible",
+        "family care is pressure, not occurrence"
+      ],
+      "minority_retained": true,
+      "route_probability": null,
+      "meaning": "Only modeled affordance/eligibility, not observed actions or generated family"
+    },
+    {
+      "id": "P3_EMPIRICAL_MINORITY",
+      "hypothetical_world": "fictive-town-2008",
+      "held_fixed": [
+        "as-of2011",
+        "institutionOPEN",
+        "care time LOW",
+        "five routes"
+      ],
+      "baseline": {
+        "yes": [
+          9,
+          10
+        ],
+        "no": [
+          1,
+          10
+        ],
+        "denominator": 60
+      },
+      "contrast": {
+        "yes": [
+          5,
+          6
+        ],
+        "no": [
+          1,
+          6
+        ],
+        "denominator": 60
+      },
+      "actually_changed": [
+        "empirical"
+      ],
+      "unchanged": [
+        "routes",
+        "all option labels"
+      ],
+      "minority_difference": [
+        1,
+        15
+      ],
+      "meaning": "Synthetic marginal/conditional fixture support changes without stereotyping an individual"
+    }
+  ],
+  "controls": [
+    {
+      "id": "N1_LABEL_ONLY",
+      "contrast": "town label changed",
+      "result": "COMPUTED_OUTPUT_IDENTICAL"
+    },
+    {
+      "id": "N2_UNRELATED_GHANA_AGGREGATE",
+      "contrast": "national mobile-data subscriptions 23414527→23414528",
+      "result": "COMPUTED_OUTPUT_IDENTICAL",
+      "forbidden_inference": "Ghana mobile subscriptions do not imply rural people or parent/person mobile access"
+    }
+  ],
+  "hard_refusal_controls": [
+    {
+      "request": "GENERATED_PERSON_BIOGRAPHY",
+      "state": "REFUSE_ACTOR_AUTHORITY"
+    },
+    {
+      "request": "PARENT_DYAD_PROBABILITY",
+      "state": "REFUSE_SAMPLING_UNIT_AUTHORITY"
+    },
+    {
+      "request": "OPERATIVE_ORIGINAL_WORLD",
+      "state": "REFUSE_UNISSUED_SOURCE_AND_N9"
+    },
+    {
+      "attack": "denominator inconsistent",
+      "state": "REFUSE_INVALID_NATIVE_GEOMETRY"
+    },
+    {
+      "attack": "WORLD_READ revoked",
+      "state": "REFUSE_WORLD_READ"
+    }
+  ],
+  "scientific_ceiling": {
+    "observed_n10e_owner_in_this_XSP": false,
+    "observed_sorok_owner_in_this_XSP": false,
+    "original_survey_reads": 0,
+    "actor_calls": 0,
+    "model_calls": 0,
+    "actor_specific_persona_quality": "NOT_MEASURED",
+    "binding_to_native_K9K10": "NOT_EXECUTED",
+    "proof_of_current_N9": "NONE",
+    "native_staging_attempt": "git ls-remote github.com exit128 DNS; GitHub connector does not mount whole private source tree"
+  },
+  "comparison_prior_executed_native_sourcefree": {
+    "W10": "3c36aa1740a008d0b876850ed47057783e820367",
+    "SC0F3_author": "4e1676afee36b79f450df874503d2f7343b62f0f",
+    "scope": "REPORTED_PREVIOUS_EXECUTION_WITH_EXACT_BRANCH__NOT_RERUN_BY_XSP"
+  }
+}
