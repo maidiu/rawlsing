@@ -1,0 +1,9 @@
+# Reviewer adapter V1, frozen before the 65-control execution
+
+The Phase A oracle and test file remain byte-exact. This interface transport calls the verified published WG0P4 module directly, without importing author common or author compatibility adapters. The original five item carriers are read from WG0L's independent Phase A oracle. A manually enumerated four-operation second frontier is registered before execution; its interface-specific identifiers are learned after candidate publication, while its expected scientific values are inherited from Phase A.
+
+Each control records its actual output and refusal, physical owner imports, and caller/callee trace. Known candidate validation exceptions are transported; unexpected harness errors fail as test errors. HELD/INADMISSIBLE enumerations are typed outcomes, not positive computations. Source/permission substitutions preserve the supplied 25-operation frontier and change the native carrier's grant. Fact aliases are tested against actual consumed native results, not only standalone dictionaries. The full source-free three-result path runs separately for each relevant non-cold control.
+
+Seven positive cold controls intentionally share one reviewer-owned two-process crash/resume experiment. Crash is literal `os._exit(23)`. File fsync, rename and directory fsync are instrumented while writing the checkpoint. The child writes the native original receipt preimage; parent independently reconstructs it. Each cold attack uses a separate copied fixture owner directory and new Python interpreter. A granted fixture is never presented as real source authority.
+
+Author regressions remain separately labelled. No original source, candidate source or original frozen test is edited. The adapter's raw call/output files and initial failing attempts are retained. Any harness repair will be recorded separately, never by modifying expected assertions.
