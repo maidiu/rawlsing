@@ -1,0 +1,66 @@
+{
+  "schema": "PYAT_R26_T9C_ENVIRONMENT_PASSPORT@1",
+  "role": "original T9B temporal adapter author continuation (R26 T9C). NOT independent T9I reviewer. NOT HQ. NOT an EE12 issuer.",
+  "repository": "maidiu/rawlsing",
+  "repository_visibility_verified": "PRIVATE",
+  "branch": "agent/rabochii-pyat-r26-t9c-temporal-adapter-seven-red-repair-r1",
+  "sealed_startup_commit": "79cf24ee615ec24bee2dc8584b31fb6b240fd3cf",
+  "write_scope": "WORKER_RETURNS/PYAT-R26-T9C-TEMPORAL-ADAPTER-SEVEN-RED-CONTINUATION-R1/ only",
+  "outside_writes_verified_absent": {
+    "WORKER_RETURNS/PYAT-R18-T9B-TEMPORAL-HISTORY-CONSUMER-R1": "unmodified (git status clean for that path)",
+    "WORKER_COMMISSIONS": "unmodified",
+    "accepted_v553_source": "unmodified; 22 staged files byte-identical to repo blobs at 79cf24ee",
+    "reviewer_assertions": "unmodified; frozen T9I test file byte-identical to git blob f624177d4980f524781c84956eb23a45bfa52a78",
+    "source35_N9_OC05_N11_N12_SorokV3": "untouched"
+  },
+  "interpreter": {
+    "python": "3.11.3",
+    "executable": "/usr/local/bin/python3",
+    "implementation": "CPython",
+    "compiler": "Clang 13.0.0",
+    "platform": "macOS-13.2.1-x86_64-i386-64bit",
+    "bytecode_disabled": true,
+    "flag": "python3 -B + PYTHONDONTWRITEBYTECODE=1"
+  },
+  "libraries": {
+    "pytest": "9.0.2",
+    "pandas": "2.3.1",
+    "numpy": "2.3.2",
+    "third_party_pins_are_owner_pins": false,
+    "note": "Third-party versions are measured facts of this machine, not independently accepted owner pins."
+  },
+  "test_runner_configuration": {
+    "rootdir_pinned_explicitly": true,
+    "config": "frozen_t9i_court/pytest_t9i_frozen.ini (addopts = --import-mode=importlib)",
+    "plugin_autoload_disabled": "PYTEST_DISABLE_PLUGIN_AUTOLOAD=1",
+    "explicitly_disabled_plugins": ["cacheprovider", "randomly"],
+    "ambient_pytest_ini_not_used": true,
+    "ambient_config_reenactment": "blocked; rootdir and -c are passed explicitly on every court"
+  },
+  "import_custody": {
+    "sys_path_pinned_against": [
+      "/Users/matthewsmith/Desktop/Rawlsing",
+      "/Users/matthewsmith/Desktop/Rawlsing/data"
+    ],
+    "trusted_roots": ["WORKER_RETURNS/PYAT-R26-T9C-TEMPORAL-ADAPTER-SEVEN-RED-CONTINUATION-R1"],
+    "per_module_guard": "guarded_runner.verify() rejects UNPINNED_PROJECT_MODULE then PREIMAGE_MISMATCH then untrusted path",
+    "loaded_project_module_receipts": 16,
+    "loaded_project_modules_inside_this_return": 16,
+    "ambient_leaks_detected": 0,
+    "receipts_file": "evidence/t9c_frozen_t9i_module_receipts.json"
+  },
+  "native_closure": {
+    "staged_python_files": 22,
+    "staged_bytes": 584404,
+    "original_t9b_copied_files": 1259,
+    "original_t9b_copied_bytes": 12332400,
+    "all_byte_identical_to_repo_at_79cf24ee": true,
+    "ledger": "evidence/t9c_native_import_ledger.json",
+    "note": "Minimal pinned 22-source imports used instead of the 1259-file copy where possible, per commission."
+  },
+  "numeric_environment": {
+    "float_repr": "IEEE-754 double via CPython 3.11 C doubles",
+    "arithmetic_verified_with": "fractions.Fraction in the frozen oracle and in the frozen independent court"
+  },
+  "clock_caveat": "There is no independent archival known-at upper bound, no effective/discovered-at revocation timestamps, and no historical-entitlement versus current-computation grant pair. A supplied retrospective archive is a caller precondition, not an authenticated dated snapshot."
+}

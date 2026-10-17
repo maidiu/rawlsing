@@ -1,0 +1,32 @@
+$ /usr/local/bin/python3 -B guarded_runner.py
+# cwd=/Users/matthewsmith/Desktop/Rawlsing/R26-T9C-temporal-wt/WORKER_RETURNS/PYAT-R26-T9C-TEMPORAL-ADAPTER-SEVEN-RED-CONTINUATION-R1
+# exit=1
+# elapsed_s=1.519
+--- stdout ---
+...............................F................                         [100%]
+=================================== FAILURES ===================================
+______ test_two_time_original_consumer_and_numerical_products_reproduced _______
+
+    def test_two_time_original_consumer_and_numerical_products_reproduced():
+        stored=json.loads((RET/'pinned_candidate/evidence/02_real_temporal_to_selected_world_two_times.json').read_text())
+        actual={str(y):T.read_selected_world(WORLD,case(),METHODS[1],y,retrospective=True).as_dict() for y in [1990,2000]}
+        values={str(y):T.evaluate(case(),METHODS[1],clock_year=y,retrospective=True).value for y in [1990,2000]}
+        observe('E6_TWO_TIME',{'reads':actual,'numerical_values':values,'structural_world':asdict(WORLD),
+           'structural_preimage_sha256':hashlib.sha256(json.dumps(asdict(WORLD),sort_keys=True).encode()).hexdigest()})
+>       assert actual==stored['two_time_reads']
+E       AssertionError: assert {'1990': {'ar...ds': [], ...}} == {'1990': {'ba...', ...}, ...}}
+E         
+E         Differing items:
+E         {'2000': {'archive_context_wave_ids': [], 'authorized_opportunity': True, 'basis_wave_ids': ['W1'], 'exploratory_route_ids': [], ...}} != {'2000': {'basis_wave_ids': ['W1'], 'opportunity_ids': ['ROUTE_PARTICIPATION', 'ROUTE_DEFERRED_REVIEW'], 'pressure_ban...ACCESS'], 'clock_question': 'RETROSPECTIVE_ARCHIVAL', 'cohort': 'COHORT_ALL', 'country': 'SYNTH_COUNTRY_A', ...}, ...}}
+E         {'1990': {'archive_context_wave_ids': [], 'authorized_opportunity': False, 'basis_wave_ids': ['W0', 'W1'], 'exploratory_route_ids': ['ROUTE_DEFERRED_REVIEW'], ...}} != {'1990': {'bas...
+E         
+E         ...Full output truncated (2 lines hidden), use '-vv' to show
+
+frozen_t9i_court/test_independent_clock_custody.py:121: AssertionError
+=========================== short test summary info ============================
+FAILED frozen_t9i_court/test_independent_clock_custody.py::test_two_time_original_consumer_and_numerical_products_reproduced
+1 failed, 47 passed in 0.78s
+FROZEN_T9I_COURT_EXIT 1
+
+--- stderr ---
+

@@ -1,0 +1,1315 @@
+{
+  "consumer": {
+    "as_of_1995_M1": {
+      "band": "low",
+      "basis_wave_ids": [
+        "W0"
+      ],
+      "detail": "no later anchor; hold last known-at value",
+      "method": "M1_LINEAR_INTERPOLATION",
+      "native_authorization": {
+        "authorized_anchor_count": 0,
+        "directionality_compatibility_status": "compatible_by_harmonizer_shared_contract",
+        "distinct_wave_count": 1,
+        "eligible_wave_count": 1,
+        "harmonization_authority_status": "multi_wave_authorized",
+        "multi_wave_authorization_reason": "insufficient_distinct_waves",
+        "multi_wave_authorization_status": "PROBE_ONLY_TEMPORAL_KEY",
+        "position_compatibility_status": "compatible_by_harmonizer_shared_contract",
+        "probe_anchor_count": 1,
+        "probe_ready_wave_count": 1,
+        "ready_for_v554": false,
+        "resolved_wave_count": 1,
+        "semantic_compatibility_status": "compatible_by_canonical_key",
+        "structural_identity_compatibility_status": "compatible_by_comparable_temporal_key"
+      },
+      "not_observed": false,
+      "refused_code": null,
+      "rupture_qualified": false,
+      "temporal_key": "PROBE_ONLY_TEMPORAL_KEY",
+      "uncertainty": "TERMINAL_NO_RIGHT_ANCHOR",
+      "value": 0.2
+    },
+    "endpoints_numerical": {
+      "1990": 0.2,
+      "2000": 0.6
+    },
+    "method_comparison_TC1": {
+      "M0_PIECEWISE_HOLD": {
+        "AS_OF": {
+          "band": "low",
+          "basis_wave_ids": [
+            "W0"
+          ],
+          "detail": "nearest prior admissible anchor",
+          "method": "M0_PIECEWISE_HOLD",
+          "native_authorization": {
+            "authorized_anchor_count": 0,
+            "directionality_compatibility_status": "compatible_by_harmonizer_shared_contract",
+            "distinct_wave_count": 1,
+            "eligible_wave_count": 1,
+            "harmonization_authority_status": "multi_wave_authorized",
+            "multi_wave_authorization_reason": "insufficient_distinct_waves",
+            "multi_wave_authorization_status": "PROBE_ONLY_TEMPORAL_KEY",
+            "position_compatibility_status": "compatible_by_harmonizer_shared_contract",
+            "probe_anchor_count": 1,
+            "probe_ready_wave_count": 1,
+            "ready_for_v554": false,
+            "resolved_wave_count": 1,
+            "semantic_compatibility_status": "compatible_by_canonical_key",
+            "structural_identity_compatibility_status": "compatible_by_comparable_temporal_key"
+          },
+          "not_observed": false,
+          "refused_code": null,
+          "rupture_qualified": false,
+          "temporal_key": "PROBE_ONLY_TEMPORAL_KEY",
+          "uncertainty": "HELD_NO_INTERPOLATION",
+          "value": 0.2
+        },
+        "RETROSPECTIVE": {
+          "band": "low",
+          "basis_wave_ids": [
+            "W0"
+          ],
+          "detail": "nearest prior admissible anchor",
+          "method": "M0_PIECEWISE_HOLD",
+          "native_authorization": {
+            "authorized_anchor_count": 2,
+            "directionality_compatibility_status": "compatible_by_harmonizer_shared_contract",
+            "distinct_wave_count": 2,
+            "eligible_wave_count": 2,
+            "harmonization_authority_status": "multi_wave_authorized",
+            "multi_wave_authorization_reason": "at_least_two_probe_ready_resolved_structural_anchors",
+            "multi_wave_authorization_status": "AUTHORIZED_SPARSE_TEMPORAL_KEY",
+            "position_compatibility_status": "compatible_by_harmonizer_shared_contract",
+            "probe_anchor_count": 0,
+            "probe_ready_wave_count": 2,
+            "ready_for_v554": true,
+            "resolved_wave_count": 2,
+            "semantic_compatibility_status": "compatible_by_canonical_key",
+            "structural_identity_compatibility_status": "compatible_by_comparable_temporal_key"
+          },
+          "not_observed": false,
+          "refused_code": null,
+          "rupture_qualified": false,
+          "temporal_key": "AUTHORIZED_SPARSE_TEMPORAL_KEY",
+          "uncertainty": "HELD_NO_INTERPOLATION",
+          "value": 0.2
+        }
+      },
+      "M1_LINEAR_INTERPOLATION": {
+        "AS_OF": {
+          "band": "low",
+          "basis_wave_ids": [
+            "W0"
+          ],
+          "detail": "no later anchor; hold last known-at value",
+          "method": "M1_LINEAR_INTERPOLATION",
+          "native_authorization": {
+            "authorized_anchor_count": 0,
+            "directionality_compatibility_status": "compatible_by_harmonizer_shared_contract",
+            "distinct_wave_count": 1,
+            "eligible_wave_count": 1,
+            "harmonization_authority_status": "multi_wave_authorized",
+            "multi_wave_authorization_reason": "insufficient_distinct_waves",
+            "multi_wave_authorization_status": "PROBE_ONLY_TEMPORAL_KEY",
+            "position_compatibility_status": "compatible_by_harmonizer_shared_contract",
+            "probe_anchor_count": 1,
+            "probe_ready_wave_count": 1,
+            "ready_for_v554": false,
+            "resolved_wave_count": 1,
+            "semantic_compatibility_status": "compatible_by_canonical_key",
+            "structural_identity_compatibility_status": "compatible_by_comparable_temporal_key"
+          },
+          "not_observed": false,
+          "refused_code": null,
+          "rupture_qualified": false,
+          "temporal_key": "PROBE_ONLY_TEMPORAL_KEY",
+          "uncertainty": "TERMINAL_NO_RIGHT_ANCHOR",
+          "value": 0.2
+        },
+        "RETROSPECTIVE": {
+          "band": "low",
+          "basis_wave_ids": [
+            "W0",
+            "W1"
+          ],
+          "detail": "linear interpolation inside an authorized gap; not a measurement; wave(s) published AFTER the query clock",
+          "method": "M1_LINEAR_INTERPOLATION",
+          "native_authorization": {
+            "authorized_anchor_count": 2,
+            "directionality_compatibility_status": "compatible_by_harmonizer_shared_contract",
+            "distinct_wave_count": 2,
+            "eligible_wave_count": 2,
+            "harmonization_authority_status": "multi_wave_authorized",
+            "multi_wave_authorization_reason": "at_least_two_probe_ready_resolved_structural_anchors",
+            "multi_wave_authorization_status": "AUTHORIZED_SPARSE_TEMPORAL_KEY",
+            "position_compatibility_status": "compatible_by_harmonizer_shared_contract",
+            "probe_anchor_count": 0,
+            "probe_ready_wave_count": 2,
+            "ready_for_v554": true,
+            "resolved_wave_count": 2,
+            "semantic_compatibility_status": "compatible_by_canonical_key",
+            "structural_identity_compatibility_status": "compatible_by_comparable_temporal_key"
+          },
+          "not_observed": true,
+          "refused_code": null,
+          "rupture_qualified": false,
+          "temporal_key": "PROBE_ONLY_TEMPORAL_KEY",
+          "uncertainty": "INTERPOLATED_NOT_OBSERVED|PUBLICATION_LAG:W1",
+          "value": 0.4
+        }
+      },
+      "M2_UNCERTAINTY_AWARE_BACKOFF": {
+        "AS_OF": {
+          "band": "low",
+          "basis_wave_ids": [
+            "W0"
+          ],
+          "detail": "uncertainty-aware nearest-anchor backoff",
+          "method": "M2_UNCERTAINTY_AWARE_BACKOFF",
+          "native_authorization": {
+            "authorized_anchor_count": 0,
+            "directionality_compatibility_status": "compatible_by_harmonizer_shared_contract",
+            "distinct_wave_count": 1,
+            "eligible_wave_count": 1,
+            "harmonization_authority_status": "multi_wave_authorized",
+            "multi_wave_authorization_reason": "insufficient_distinct_waves",
+            "multi_wave_authorization_status": "PROBE_ONLY_TEMPORAL_KEY",
+            "position_compatibility_status": "compatible_by_harmonizer_shared_contract",
+            "probe_anchor_count": 1,
+            "probe_ready_wave_count": 1,
+            "ready_for_v554": false,
+            "resolved_wave_count": 1,
+            "semantic_compatibility_status": "compatible_by_canonical_key",
+            "structural_identity_compatibility_status": "compatible_by_comparable_temporal_key"
+          },
+          "not_observed": false,
+          "refused_code": null,
+          "rupture_qualified": false,
+          "temporal_key": "PROBE_ONLY_TEMPORAL_KEY",
+          "uncertainty": "BACKOFF_SINGLE_ANCHOR",
+          "value": 0.2
+        },
+        "RETROSPECTIVE": {
+          "band": "low",
+          "basis_wave_ids": [
+            "W0"
+          ],
+          "detail": "uncertainty-aware nearest-anchor backoff",
+          "method": "M2_UNCERTAINTY_AWARE_BACKOFF",
+          "native_authorization": {
+            "authorized_anchor_count": 2,
+            "directionality_compatibility_status": "compatible_by_harmonizer_shared_contract",
+            "distinct_wave_count": 2,
+            "eligible_wave_count": 2,
+            "harmonization_authority_status": "multi_wave_authorized",
+            "multi_wave_authorization_reason": "at_least_two_probe_ready_resolved_structural_anchors",
+            "multi_wave_authorization_status": "AUTHORIZED_SPARSE_TEMPORAL_KEY",
+            "position_compatibility_status": "compatible_by_harmonizer_shared_contract",
+            "probe_anchor_count": 0,
+            "probe_ready_wave_count": 2,
+            "ready_for_v554": true,
+            "resolved_wave_count": 2,
+            "semantic_compatibility_status": "compatible_by_canonical_key",
+            "structural_identity_compatibility_status": "compatible_by_comparable_temporal_key"
+          },
+          "not_observed": false,
+          "refused_code": null,
+          "rupture_qualified": false,
+          "temporal_key": "AUTHORIZED_SPARSE_TEMPORAL_KEY",
+          "uncertainty": "BACKOFF_WIDE_GAP_UNCERTAIN",
+          "value": 0.2
+        }
+      }
+    },
+    "retrospective_1995_M1": {
+      "band": "low",
+      "basis_wave_ids": [
+        "W0",
+        "W1"
+      ],
+      "detail": "linear interpolation inside an authorized gap; not a measurement; wave(s) published AFTER the query clock",
+      "method": "M1_LINEAR_INTERPOLATION",
+      "native_authorization": {
+        "authorized_anchor_count": 2,
+        "directionality_compatibility_status": "compatible_by_harmonizer_shared_contract",
+        "distinct_wave_count": 2,
+        "eligible_wave_count": 2,
+        "harmonization_authority_status": "multi_wave_authorized",
+        "multi_wave_authorization_reason": "at_least_two_probe_ready_resolved_structural_anchors",
+        "multi_wave_authorization_status": "AUTHORIZED_SPARSE_TEMPORAL_KEY",
+        "position_compatibility_status": "compatible_by_harmonizer_shared_contract",
+        "probe_anchor_count": 0,
+        "probe_ready_wave_count": 2,
+        "ready_for_v554": true,
+        "resolved_wave_count": 2,
+        "semantic_compatibility_status": "compatible_by_canonical_key",
+        "structural_identity_compatibility_status": "compatible_by_comparable_temporal_key"
+      },
+      "not_observed": true,
+      "refused_code": null,
+      "rupture_qualified": false,
+      "temporal_key": "PROBE_ONLY_TEMPORAL_KEY",
+      "uncertainty": "INTERPOLATED_NOT_OBSERVED|PUBLICATION_LAG:W1",
+      "value": 0.4
+    },
+    "two_time_reads": {
+      "1990": {
+        "archive_context_wave_ids": [],
+        "authorized_opportunity": false,
+        "basis_wave_ids": [
+          "W0",
+          "W1"
+        ],
+        "exploratory_route_ids": [
+          "ROUTE_DEFERRED_REVIEW"
+        ],
+        "opportunity_ids": [
+          "ROUTE_BLOCKED_NO_SUPPORT"
+        ],
+        "pressure_band": "low",
+        "provenance": {
+          "access_grants": [
+            "GRANT_YOUNG_PERSON_ACCESS"
+          ],
+          "archive_context_wave_ids": [],
+          "authorized_opportunity": false,
+          "clock_question": "RETROSPECTIVE_ARCHIVAL",
+          "cohort": "COHORT_ALL",
+          "country": "SYNTH_COUNTRY_A",
+          "edition": "E1",
+          "editions": [
+            "E1"
+          ],
+          "grain": "structural_channel_exact",
+          "institution": "SYNTH_INSTITUTION",
+          "instrument": "SYNTH_INSTRUMENT",
+          "native_multi_wave_authorization_reason": "at_least_two_probe_ready_resolved_structural_anchors",
+          "native_multi_wave_authorization_status": "AUTHORIZED_SPARSE_TEMPORAL_KEY",
+          "observed_temporal_calibration": false,
+          "publication_lag_wave_ids": [
+            "W1"
+          ],
+          "query_clock": 1990,
+          "source_families": [
+            "SYNTH_FAMILY"
+          ],
+          "source_family": "SYNTH_FAMILY",
+          "structural_world_fields": {
+            "access_grants": [
+              "GRANT_YOUNG_PERSON_ACCESS"
+            ],
+            "institution": "SYNTH_INSTITUTION",
+            "structural_routes": [
+              "ROUTE_REDUCED_BURDEN",
+              "ROUTE_PARTICIPATION",
+              "ROUTE_DEFERRED_REVIEW"
+            ],
+            "world_id": "W_SYNTH_INSTITUTION"
+          },
+          "synthetic": true,
+          "t8f3_assignment_preserved": "8079f69778eb4a2e6f30b246e3ec445dc161ae15",
+          "world_id": "W_SYNTH_INSTITUTION"
+        },
+        "query_clock": 1990,
+        "refused_code": null,
+        "temporal_key": "PROBE_ONLY_TEMPORAL_KEY",
+        "temporal_method": "M1_LINEAR_INTERPOLATION",
+        "uncertainty": "INTERPOLATED_NOT_OBSERVED|PUBLICATION_LAG:W1"
+      },
+      "2000": {
+        "archive_context_wave_ids": [],
+        "authorized_opportunity": true,
+        "basis_wave_ids": [
+          "W1"
+        ],
+        "exploratory_route_ids": [],
+        "opportunity_ids": [
+          "ROUTE_PARTICIPATION",
+          "ROUTE_DEFERRED_REVIEW"
+        ],
+        "pressure_band": "medium",
+        "provenance": {
+          "access_grants": [
+            "GRANT_YOUNG_PERSON_ACCESS"
+          ],
+          "archive_context_wave_ids": [],
+          "authorized_opportunity": true,
+          "clock_question": "RETROSPECTIVE_ARCHIVAL",
+          "cohort": "COHORT_ALL",
+          "country": "SYNTH_COUNTRY_A",
+          "edition": "E1",
+          "editions": [
+            "E1"
+          ],
+          "grain": "structural_channel_exact",
+          "institution": "SYNTH_INSTITUTION",
+          "instrument": "SYNTH_INSTRUMENT",
+          "native_multi_wave_authorization_reason": "at_least_two_probe_ready_resolved_structural_anchors",
+          "native_multi_wave_authorization_status": "AUTHORIZED_SPARSE_TEMPORAL_KEY",
+          "observed_temporal_calibration": false,
+          "publication_lag_wave_ids": [],
+          "query_clock": 2000,
+          "source_families": [
+            "SYNTH_FAMILY"
+          ],
+          "source_family": "SYNTH_FAMILY",
+          "structural_world_fields": {
+            "access_grants": [
+              "GRANT_YOUNG_PERSON_ACCESS"
+            ],
+            "institution": "SYNTH_INSTITUTION",
+            "structural_routes": [
+              "ROUTE_REDUCED_BURDEN",
+              "ROUTE_PARTICIPATION",
+              "ROUTE_DEFERRED_REVIEW"
+            ],
+            "world_id": "W_SYNTH_INSTITUTION"
+          },
+          "synthetic": true,
+          "t8f3_assignment_preserved": "8079f69778eb4a2e6f30b246e3ec445dc161ae15",
+          "world_id": "W_SYNTH_INSTITUTION"
+        },
+        "query_clock": 2000,
+        "refused_code": null,
+        "temporal_key": "AUTHORIZED_SPARSE_TEMPORAL_KEY",
+        "temporal_method": "M1_LINEAR_INTERPOLATION",
+        "uncertainty": "TERMINAL_NO_RIGHT_ANCHOR"
+      }
+    }
+  },
+  "counterexamples": [
+    {
+      "assertion_count": 1,
+      "defect": "R1",
+      "original_t9b": {
+        "adapted": {
+          "band": "low",
+          "basis_wave_ids": [
+            "ONE"
+          ],
+          "detail": "nearest prior admissible anchor",
+          "method": "M0_PIECEWISE_HOLD",
+          "refused_code": null,
+          "temporal_key": "AUTHORIZED_SPARSE_TEMPORAL_KEY",
+          "uncertainty": "HELD_NO_INTERPOLATION",
+          "value": 0.2
+        },
+        "assertion": "adapted.temporal_key != AUTHORIZED_SPARSE_TEMPORAL_KEY",
+        "native_status": "PROBE_ONLY_TEMPORAL_KEY",
+        "passes": false
+      },
+      "original_t9b_failed": 1,
+      "original_t9b_passed": 0,
+      "repaired_t9c": {
+        "adapted": {
+          "band": "low",
+          "basis_wave_ids": [
+            "ONE"
+          ],
+          "detail": "nearest prior admissible anchor",
+          "method": "M0_PIECEWISE_HOLD",
+          "native_authorization": {
+            "authorized_anchor_count": 0,
+            "directionality_compatibility_status": "compatible_by_harmonizer_shared_contract",
+            "distinct_wave_count": 1,
+            "eligible_wave_count": 1,
+            "harmonization_authority_status": "multi_wave_authorized",
+            "multi_wave_authorization_reason": "insufficient_distinct_waves",
+            "multi_wave_authorization_status": "PROBE_ONLY_TEMPORAL_KEY",
+            "position_compatibility_status": "compatible_by_harmonizer_shared_contract",
+            "probe_anchor_count": 1,
+            "probe_ready_wave_count": 1,
+            "ready_for_v554": false,
+            "resolved_wave_count": 1,
+            "semantic_compatibility_status": "compatible_by_canonical_key",
+            "structural_identity_compatibility_status": "compatible_by_comparable_temporal_key"
+          },
+          "not_observed": false,
+          "refused_code": null,
+          "rupture_qualified": false,
+          "temporal_key": "PROBE_ONLY_TEMPORAL_KEY",
+          "uncertainty": "HELD_NO_INTERPOLATION",
+          "value": 0.2
+        },
+        "assertion": "adapted.temporal_key != AUTHORIZED_SPARSE_TEMPORAL_KEY",
+        "native_status": "PROBE_ONLY_TEMPORAL_KEY",
+        "passes": true
+      },
+      "repaired_t9c_failed": 0,
+      "repaired_t9c_passed": 1
+    },
+    {
+      "assertion_count": 3,
+      "defect": "R2",
+      "original_t9b": {
+        "M0_PIECEWISE_HOLD": {
+          "assertion": "value is None and refused_code is not None",
+          "observation": {
+            "band": "none",
+            "basis_wave_ids": [
+              "MISSING"
+            ],
+            "detail": "nearest prior admissible anchor",
+            "method": "M0_PIECEWISE_HOLD",
+            "refused_code": null,
+            "temporal_key": "AUTHORIZED_SPARSE_TEMPORAL_KEY",
+            "uncertainty": "HELD_NO_INTERPOLATION",
+            "value": 0.0
+          },
+          "passes": false
+        },
+        "M1_LINEAR_INTERPOLATION": {
+          "assertion": "value is None and refused_code is not None",
+          "observation": {
+            "band": "none",
+            "basis_wave_ids": [
+              "MISSING"
+            ],
+            "detail": "no later anchor; hold last known-at value",
+            "method": "M1_LINEAR_INTERPOLATION",
+            "refused_code": null,
+            "temporal_key": "AUTHORIZED_SPARSE_TEMPORAL_KEY",
+            "uncertainty": "TERMINAL_NO_RIGHT_ANCHOR",
+            "value": 0.0
+          },
+          "passes": false
+        },
+        "M2_UNCERTAINTY_AWARE_BACKOFF": {
+          "assertion": "value is None and refused_code is not None",
+          "observation": {
+            "band": "none",
+            "basis_wave_ids": [
+              "MISSING"
+            ],
+            "detail": "uncertainty-aware nearest-anchor backoff",
+            "method": "M2_UNCERTAINTY_AWARE_BACKOFF",
+            "refused_code": null,
+            "temporal_key": "AUTHORIZED_SPARSE_TEMPORAL_KEY",
+            "uncertainty": "BACKOFF_SINGLE_ANCHOR",
+            "value": 0.0
+          },
+          "passes": false
+        }
+      },
+      "original_t9b_failed": 3,
+      "original_t9b_passed": 0,
+      "repaired_t9c": {
+        "M0_PIECEWISE_HOLD": {
+          "assertion": "value is None and refused_code is not None",
+          "observation": {
+            "band": null,
+            "basis_wave_ids": [],
+            "detail": "admissible wave(s) carry no observation; this is an explicit unknown and not an observed zero",
+            "method": "M0_PIECEWISE_HOLD",
+            "native_authorization": {
+              "authorized_anchor_count": 0,
+              "directionality_compatibility_status": "blocked",
+              "distinct_wave_count": 0,
+              "eligible_wave_count": 0,
+              "harmonization_authority_status": "not_authorized",
+              "multi_wave_authorization_reason": "harmonization_not_authorized",
+              "multi_wave_authorization_status": "BLOCKED_TEMPORAL_KEY",
+              "position_compatibility_status": "blocked",
+              "probe_anchor_count": 0,
+              "probe_ready_wave_count": 0,
+              "ready_for_v554": false,
+              "resolved_wave_count": 0,
+              "semantic_compatibility_status": "blocked",
+              "structural_identity_compatibility_status": "blocked"
+            },
+            "not_observed": false,
+            "refused_code": "MISSING_OBSERVATION_NOT_ZERO",
+            "rupture_qualified": false,
+            "temporal_key": "BLOCKED_TEMPORAL_KEY",
+            "uncertainty": "UNKNOWN_NOT_OBSERVED",
+            "value": null
+          },
+          "passes": true
+        },
+        "M1_LINEAR_INTERPOLATION": {
+          "assertion": "value is None and refused_code is not None",
+          "observation": {
+            "band": null,
+            "basis_wave_ids": [],
+            "detail": "admissible wave(s) carry no observation; this is an explicit unknown and not an observed zero",
+            "method": "M1_LINEAR_INTERPOLATION",
+            "native_authorization": {
+              "authorized_anchor_count": 0,
+              "directionality_compatibility_status": "blocked",
+              "distinct_wave_count": 0,
+              "eligible_wave_count": 0,
+              "harmonization_authority_status": "not_authorized",
+              "multi_wave_authorization_reason": "harmonization_not_authorized",
+              "multi_wave_authorization_status": "BLOCKED_TEMPORAL_KEY",
+              "position_compatibility_status": "blocked",
+              "probe_anchor_count": 0,
+              "probe_ready_wave_count": 0,
+              "ready_for_v554": false,
+              "resolved_wave_count": 0,
+              "semantic_compatibility_status": "blocked",
+              "structural_identity_compatibility_status": "blocked"
+            },
+            "not_observed": false,
+            "refused_code": "MISSING_OBSERVATION_NOT_ZERO",
+            "rupture_qualified": false,
+            "temporal_key": "BLOCKED_TEMPORAL_KEY",
+            "uncertainty": "UNKNOWN_NOT_OBSERVED",
+            "value": null
+          },
+          "passes": true
+        },
+        "M2_UNCERTAINTY_AWARE_BACKOFF": {
+          "assertion": "value is None and refused_code is not None",
+          "observation": {
+            "band": null,
+            "basis_wave_ids": [],
+            "detail": "admissible wave(s) carry no observation; this is an explicit unknown and not an observed zero",
+            "method": "M2_UNCERTAINTY_AWARE_BACKOFF",
+            "native_authorization": {
+              "authorized_anchor_count": 0,
+              "directionality_compatibility_status": "blocked",
+              "distinct_wave_count": 0,
+              "eligible_wave_count": 0,
+              "harmonization_authority_status": "not_authorized",
+              "multi_wave_authorization_reason": "harmonization_not_authorized",
+              "multi_wave_authorization_status": "BLOCKED_TEMPORAL_KEY",
+              "position_compatibility_status": "blocked",
+              "probe_anchor_count": 0,
+              "probe_ready_wave_count": 0,
+              "ready_for_v554": false,
+              "resolved_wave_count": 0,
+              "semantic_compatibility_status": "blocked",
+              "structural_identity_compatibility_status": "blocked"
+            },
+            "not_observed": false,
+            "refused_code": "MISSING_OBSERVATION_NOT_ZERO",
+            "rupture_qualified": false,
+            "temporal_key": "BLOCKED_TEMPORAL_KEY",
+            "uncertainty": "UNKNOWN_NOT_OBSERVED",
+            "value": null
+          },
+          "passes": true
+        }
+      },
+      "repaired_t9c_failed": 0,
+      "repaired_t9c_passed": 3
+    },
+    {
+      "assertion_count": 1,
+      "defect": "R3",
+      "original_t9b": {
+        "assertion": "provenance source_family/edition name ACTUAL_* not WRONG_*",
+        "observation": {
+          "basis_wave_ids": [
+            "VALID"
+          ],
+          "opportunity_ids": [
+            "ROUTE_PARTICIPATION",
+            "ROUTE_DEFERRED_REVIEW"
+          ],
+          "pressure_band": "medium",
+          "provenance": {
+            "access_grants": [
+              "GRANT_YOUNG_PERSON_ACCESS"
+            ],
+            "clock_question": "AS_OF_KNOWABLE",
+            "cohort": "COHORT_ALL",
+            "country": "SYNTH_COUNTRY_A",
+            "edition": "WRONG_EDITION",
+            "grain": "structural_channel_exact",
+            "institution": "SYNTH_INSTITUTION",
+            "instrument": "SYNTH_INSTRUMENT",
+            "observed_temporal_calibration": false,
+            "publication_lag_wave_ids": [],
+            "query_clock": 1995,
+            "source_family": "WRONG_SOURCE",
+            "synthetic": true,
+            "t8f3_assignment_preserved": "8079f69778eb4a2e6f30b246e3ec445dc161ae15",
+            "world_id": "W_SYNTH_INSTITUTION"
+          },
+          "query_clock": 1995,
+          "refused_code": null,
+          "temporal_key": "AUTHORIZED_SPARSE_TEMPORAL_KEY",
+          "temporal_method": "M0_PIECEWISE_HOLD",
+          "uncertainty": "HELD_NO_INTERPOLATION"
+        },
+        "passes": false
+      },
+      "original_t9b_failed": 1,
+      "original_t9b_passed": 0,
+      "repaired_t9c": {
+        "assertion": "provenance source_family/edition name ACTUAL_* not WRONG_*",
+        "observation": {
+          "archive_context_wave_ids": [],
+          "authorized_opportunity": false,
+          "basis_wave_ids": [
+            "VALID"
+          ],
+          "exploratory_route_ids": [
+            "ROUTE_PARTICIPATION",
+            "ROUTE_DEFERRED_REVIEW"
+          ],
+          "opportunity_ids": [
+            "ROUTE_BLOCKED_NO_SUPPORT"
+          ],
+          "pressure_band": "medium",
+          "provenance": {
+            "access_grants": [
+              "GRANT_YOUNG_PERSON_ACCESS"
+            ],
+            "archive_context_wave_ids": [],
+            "authorized_opportunity": false,
+            "clock_question": "AS_OF_KNOWABLE",
+            "cohort": "COHORT_ALL",
+            "country": "SYNTH_COUNTRY_A",
+            "edition": "ACTUAL_EDITION",
+            "editions": [
+              "ACTUAL_EDITION"
+            ],
+            "grain": "structural_channel_exact",
+            "institution": "SYNTH_INSTITUTION",
+            "instrument": "SYNTH_INSTRUMENT",
+            "native_multi_wave_authorization_reason": "insufficient_distinct_waves",
+            "native_multi_wave_authorization_status": "PROBE_ONLY_TEMPORAL_KEY",
+            "observed_temporal_calibration": false,
+            "publication_lag_wave_ids": [],
+            "query_clock": 1995,
+            "source_families": [
+              "ACTUAL_SOURCE"
+            ],
+            "source_family": "ACTUAL_SOURCE",
+            "structural_world_fields": {
+              "access_grants": [
+                "GRANT_YOUNG_PERSON_ACCESS"
+              ],
+              "institution": "SYNTH_INSTITUTION",
+              "structural_routes": [
+                "ROUTE_REDUCED_BURDEN",
+                "ROUTE_PARTICIPATION",
+                "ROUTE_DEFERRED_REVIEW"
+              ],
+              "world_id": "W_SYNTH_INSTITUTION"
+            },
+            "synthetic": true,
+            "t8f3_assignment_preserved": "8079f69778eb4a2e6f30b246e3ec445dc161ae15",
+            "world_id": "W_SYNTH_INSTITUTION"
+          },
+          "query_clock": 1995,
+          "refused_code": null,
+          "temporal_key": "PROBE_ONLY_TEMPORAL_KEY",
+          "temporal_method": "M0_PIECEWISE_HOLD",
+          "uncertainty": "HELD_NO_INTERPOLATION"
+        },
+        "passes": true
+      },
+      "repaired_t9c_failed": 0,
+      "repaired_t9c_passed": 1
+    },
+    {
+      "assertion_count": 1,
+      "defect": "R4",
+      "original_t9b": {
+        "assertion": "not structurally_identical(a, b)",
+        "passes": false,
+        "read_a": {
+          "basis_wave_ids": [
+            "W1"
+          ],
+          "opportunity_ids": [
+            "ROUTE_PARTICIPATION",
+            "ROUTE_DEFERRED_REVIEW"
+          ],
+          "pressure_band": "medium",
+          "provenance": {
+            "access_grants": [
+              "GRANT_YOUNG_PERSON_ACCESS"
+            ],
+            "clock_question": "AS_OF_KNOWABLE",
+            "cohort": "COHORT_ALL",
+            "country": "SYNTH_COUNTRY_A",
+            "edition": "E1",
+            "grain": "structural_channel_exact",
+            "institution": "SYNTH_INSTITUTION",
+            "instrument": "SYNTH_INSTRUMENT",
+            "observed_temporal_calibration": false,
+            "publication_lag_wave_ids": [],
+            "query_clock": 2000,
+            "source_family": "SYNTH_FAMILY",
+            "synthetic": true,
+            "t8f3_assignment_preserved": "8079f69778eb4a2e6f30b246e3ec445dc161ae15",
+            "world_id": "W_SYNTH_INSTITUTION"
+          },
+          "query_clock": 2000,
+          "refused_code": null,
+          "temporal_key": "AUTHORIZED_SPARSE_TEMPORAL_KEY",
+          "temporal_method": "M0_PIECEWISE_HOLD",
+          "uncertainty": "HELD_NO_INTERPOLATION"
+        },
+        "read_b": {
+          "basis_wave_ids": [
+            "W1"
+          ],
+          "opportunity_ids": [
+            "ROUTE_DEFERRED_REVIEW"
+          ],
+          "pressure_band": "medium",
+          "provenance": {
+            "access_grants": [
+              "GRANT_YOUNG_PERSON_ACCESS"
+            ],
+            "clock_question": "AS_OF_KNOWABLE",
+            "cohort": "COHORT_ALL",
+            "country": "SYNTH_COUNTRY_A",
+            "edition": "E1",
+            "grain": "structural_channel_exact",
+            "institution": "SYNTH_INSTITUTION",
+            "instrument": "SYNTH_INSTRUMENT",
+            "observed_temporal_calibration": false,
+            "publication_lag_wave_ids": [],
+            "query_clock": 2000,
+            "source_family": "SYNTH_FAMILY",
+            "synthetic": true,
+            "t8f3_assignment_preserved": "8079f69778eb4a2e6f30b246e3ec445dc161ae15",
+            "world_id": "W_SYNTH_INSTITUTION"
+          },
+          "query_clock": 2000,
+          "refused_code": null,
+          "temporal_key": "AUTHORIZED_SPARSE_TEMPORAL_KEY",
+          "temporal_method": "M0_PIECEWISE_HOLD",
+          "uncertainty": "HELD_NO_INTERPOLATION"
+        },
+        "world_a": {
+          "structural_routes": [
+            "ROUTE_REDUCED_BURDEN",
+            "ROUTE_PARTICIPATION",
+            "ROUTE_DEFERRED_REVIEW"
+          ]
+        },
+        "world_b": {
+          "structural_routes": [
+            "ROUTE_DEFERRED_REVIEW"
+          ]
+        }
+      },
+      "original_t9b_failed": 1,
+      "original_t9b_passed": 0,
+      "repaired_t9c": {
+        "assertion": "not structurally_identical(a, b)",
+        "passes": true,
+        "read_a": {
+          "archive_context_wave_ids": [],
+          "authorized_opportunity": true,
+          "basis_wave_ids": [
+            "W1"
+          ],
+          "exploratory_route_ids": [],
+          "opportunity_ids": [
+            "ROUTE_PARTICIPATION",
+            "ROUTE_DEFERRED_REVIEW"
+          ],
+          "pressure_band": "medium",
+          "provenance": {
+            "access_grants": [
+              "GRANT_YOUNG_PERSON_ACCESS"
+            ],
+            "archive_context_wave_ids": [],
+            "authorized_opportunity": true,
+            "clock_question": "AS_OF_KNOWABLE",
+            "cohort": "COHORT_ALL",
+            "country": "SYNTH_COUNTRY_A",
+            "edition": "E1",
+            "editions": [
+              "E1"
+            ],
+            "grain": "structural_channel_exact",
+            "institution": "SYNTH_INSTITUTION",
+            "instrument": "SYNTH_INSTRUMENT",
+            "native_multi_wave_authorization_reason": "at_least_two_probe_ready_resolved_structural_anchors",
+            "native_multi_wave_authorization_status": "AUTHORIZED_SPARSE_TEMPORAL_KEY",
+            "observed_temporal_calibration": false,
+            "publication_lag_wave_ids": [],
+            "query_clock": 2000,
+            "source_families": [
+              "SYNTH_FAMILY"
+            ],
+            "source_family": "SYNTH_FAMILY",
+            "structural_world_fields": {
+              "access_grants": [
+                "GRANT_YOUNG_PERSON_ACCESS"
+              ],
+              "institution": "SYNTH_INSTITUTION",
+              "structural_routes": [
+                "ROUTE_REDUCED_BURDEN",
+                "ROUTE_PARTICIPATION",
+                "ROUTE_DEFERRED_REVIEW"
+              ],
+              "world_id": "W_SYNTH_INSTITUTION"
+            },
+            "synthetic": true,
+            "t8f3_assignment_preserved": "8079f69778eb4a2e6f30b246e3ec445dc161ae15",
+            "world_id": "W_SYNTH_INSTITUTION"
+          },
+          "query_clock": 2000,
+          "refused_code": null,
+          "temporal_key": "AUTHORIZED_SPARSE_TEMPORAL_KEY",
+          "temporal_method": "M0_PIECEWISE_HOLD",
+          "uncertainty": "HELD_NO_INTERPOLATION"
+        },
+        "read_b": {
+          "archive_context_wave_ids": [],
+          "authorized_opportunity": true,
+          "basis_wave_ids": [
+            "W1"
+          ],
+          "exploratory_route_ids": [],
+          "opportunity_ids": [
+            "ROUTE_DEFERRED_REVIEW"
+          ],
+          "pressure_band": "medium",
+          "provenance": {
+            "access_grants": [
+              "GRANT_YOUNG_PERSON_ACCESS"
+            ],
+            "archive_context_wave_ids": [],
+            "authorized_opportunity": true,
+            "clock_question": "AS_OF_KNOWABLE",
+            "cohort": "COHORT_ALL",
+            "country": "SYNTH_COUNTRY_A",
+            "edition": "E1",
+            "editions": [
+              "E1"
+            ],
+            "grain": "structural_channel_exact",
+            "institution": "SYNTH_INSTITUTION",
+            "instrument": "SYNTH_INSTRUMENT",
+            "native_multi_wave_authorization_reason": "at_least_two_probe_ready_resolved_structural_anchors",
+            "native_multi_wave_authorization_status": "AUTHORIZED_SPARSE_TEMPORAL_KEY",
+            "observed_temporal_calibration": false,
+            "publication_lag_wave_ids": [],
+            "query_clock": 2000,
+            "source_families": [
+              "SYNTH_FAMILY"
+            ],
+            "source_family": "SYNTH_FAMILY",
+            "structural_world_fields": {
+              "access_grants": [
+                "GRANT_YOUNG_PERSON_ACCESS"
+              ],
+              "institution": "SYNTH_INSTITUTION",
+              "structural_routes": [
+                "ROUTE_DEFERRED_REVIEW"
+              ],
+              "world_id": "W_SYNTH_INSTITUTION"
+            },
+            "synthetic": true,
+            "t8f3_assignment_preserved": "8079f69778eb4a2e6f30b246e3ec445dc161ae15",
+            "world_id": "W_SYNTH_INSTITUTION"
+          },
+          "query_clock": 2000,
+          "refused_code": null,
+          "temporal_key": "AUTHORIZED_SPARSE_TEMPORAL_KEY",
+          "temporal_method": "M0_PIECEWISE_HOLD",
+          "uncertainty": "HELD_NO_INTERPOLATION"
+        },
+        "world_a": {
+          "structural_routes": [
+            "ROUTE_REDUCED_BURDEN",
+            "ROUTE_PARTICIPATION",
+            "ROUTE_DEFERRED_REVIEW"
+          ]
+        },
+        "world_b": {
+          "structural_routes": [
+            "ROUTE_DEFERRED_REVIEW"
+          ]
+        }
+      },
+      "repaired_t9c_failed": 0,
+      "repaired_t9c_passed": 1
+    },
+    {
+      "assertion_count": 1,
+      "defect": "R5",
+      "original_t9b": {
+        "assertion": "no non-ROUTE_BLOCKED_NO_SUPPORT entry in opportunity_ids",
+        "observation": {
+          "basis_wave_ids": [
+            "W0",
+            "W1"
+          ],
+          "opportunity_ids": [
+            "ROUTE_DEFERRED_REVIEW"
+          ],
+          "pressure_band": "low",
+          "provenance": {
+            "access_grants": [
+              "GRANT_YOUNG_PERSON_ACCESS"
+            ],
+            "clock_question": "RETROSPECTIVE_ARCHIVAL",
+            "cohort": "COHORT_ALL",
+            "country": "SYNTH_COUNTRY_A",
+            "edition": "E1",
+            "grain": "structural_channel_exact",
+            "institution": "SYNTH_INSTITUTION",
+            "instrument": "SYNTH_INSTRUMENT",
+            "observed_temporal_calibration": false,
+            "publication_lag_wave_ids": [
+              "W1"
+            ],
+            "query_clock": 1995,
+            "source_family": "SYNTH_FAMILY",
+            "synthetic": true,
+            "t8f3_assignment_preserved": "8079f69778eb4a2e6f30b246e3ec445dc161ae15",
+            "world_id": "W_SYNTH_INSTITUTION"
+          },
+          "query_clock": 1995,
+          "refused_code": null,
+          "temporal_key": "PROBE_ONLY_TEMPORAL_KEY",
+          "temporal_method": "M1_LINEAR_INTERPOLATION",
+          "uncertainty": "INTERPOLATED_NOT_OBSERVED|PUBLICATION_LAG:W1"
+        },
+        "passes": false
+      },
+      "original_t9b_failed": 1,
+      "original_t9b_passed": 0,
+      "repaired_t9c": {
+        "assertion": "no non-ROUTE_BLOCKED_NO_SUPPORT entry in opportunity_ids",
+        "observation": {
+          "archive_context_wave_ids": [],
+          "authorized_opportunity": false,
+          "basis_wave_ids": [
+            "W0",
+            "W1"
+          ],
+          "exploratory_route_ids": [
+            "ROUTE_DEFERRED_REVIEW"
+          ],
+          "opportunity_ids": [
+            "ROUTE_BLOCKED_NO_SUPPORT"
+          ],
+          "pressure_band": "low",
+          "provenance": {
+            "access_grants": [
+              "GRANT_YOUNG_PERSON_ACCESS"
+            ],
+            "archive_context_wave_ids": [],
+            "authorized_opportunity": false,
+            "clock_question": "RETROSPECTIVE_ARCHIVAL",
+            "cohort": "COHORT_ALL",
+            "country": "SYNTH_COUNTRY_A",
+            "edition": "E1",
+            "editions": [
+              "E1"
+            ],
+            "grain": "structural_channel_exact",
+            "institution": "SYNTH_INSTITUTION",
+            "instrument": "SYNTH_INSTRUMENT",
+            "native_multi_wave_authorization_reason": "at_least_two_probe_ready_resolved_structural_anchors",
+            "native_multi_wave_authorization_status": "AUTHORIZED_SPARSE_TEMPORAL_KEY",
+            "observed_temporal_calibration": false,
+            "publication_lag_wave_ids": [
+              "W1"
+            ],
+            "query_clock": 1995,
+            "source_families": [
+              "SYNTH_FAMILY"
+            ],
+            "source_family": "SYNTH_FAMILY",
+            "structural_world_fields": {
+              "access_grants": [
+                "GRANT_YOUNG_PERSON_ACCESS"
+              ],
+              "institution": "SYNTH_INSTITUTION",
+              "structural_routes": [
+                "ROUTE_REDUCED_BURDEN",
+                "ROUTE_PARTICIPATION",
+                "ROUTE_DEFERRED_REVIEW"
+              ],
+              "world_id": "W_SYNTH_INSTITUTION"
+            },
+            "synthetic": true,
+            "t8f3_assignment_preserved": "8079f69778eb4a2e6f30b246e3ec445dc161ae15",
+            "world_id": "W_SYNTH_INSTITUTION"
+          },
+          "query_clock": 1995,
+          "refused_code": null,
+          "temporal_key": "PROBE_ONLY_TEMPORAL_KEY",
+          "temporal_method": "M1_LINEAR_INTERPOLATION",
+          "uncertainty": "INTERPOLATED_NOT_OBSERVED|PUBLICATION_LAG:W1"
+        },
+        "passes": true
+      },
+      "repaired_t9c_failed": 0,
+      "repaired_t9c_passed": 1
+    },
+    {
+      "assertion_count": 2,
+      "defect": "R6",
+      "original_t9b": {
+        "M0_PIECEWISE_HOLD": {
+          "assertion": "value is None or RUPTURE in uncertainty/detail",
+          "observation": {
+            "band": "low",
+            "basis_wave_ids": [
+              "W0"
+            ],
+            "detail": "nearest prior admissible anchor; wave(s) published AFTER the query clock",
+            "method": "M0_PIECEWISE_HOLD",
+            "refused_code": null,
+            "temporal_key": "AUTHORIZED_SPARSE_TEMPORAL_KEY",
+            "uncertainty": "HELD_NO_INTERPOLATION|PUBLICATION_LAG:W1",
+            "value": 0.2
+          },
+          "passes": false
+        },
+        "M2_UNCERTAINTY_AWARE_BACKOFF": {
+          "assertion": "value is None or RUPTURE in uncertainty/detail",
+          "observation": {
+            "band": "low",
+            "basis_wave_ids": [
+              "W0"
+            ],
+            "detail": "uncertainty-aware nearest-anchor backoff; wave(s) published AFTER the query clock",
+            "method": "M2_UNCERTAINTY_AWARE_BACKOFF",
+            "refused_code": null,
+            "temporal_key": "AUTHORIZED_SPARSE_TEMPORAL_KEY",
+            "uncertainty": "BACKOFF_WIDE_GAP_UNCERTAIN|PUBLICATION_LAG:W1",
+            "value": 0.2
+          },
+          "passes": false
+        }
+      },
+      "original_t9b_failed": 2,
+      "original_t9b_passed": 0,
+      "repaired_t9c": {
+        "M0_PIECEWISE_HOLD": {
+          "assertion": "value is None or RUPTURE in uncertainty/detail",
+          "observation": {
+            "band": "low",
+            "basis_wave_ids": [
+              "W0"
+            ],
+            "detail": "nearest prior admissible anchor; typed bounded hypothetical carry across a registered rupture; the post-break cohort estimand is NOT identified and no stability is assumed",
+            "method": "M0_PIECEWISE_HOLD",
+            "native_authorization": {
+              "authorized_anchor_count": 2,
+              "directionality_compatibility_status": "compatible_by_harmonizer_shared_contract",
+              "distinct_wave_count": 2,
+              "eligible_wave_count": 2,
+              "harmonization_authority_status": "multi_wave_authorized",
+              "multi_wave_authorization_reason": "at_least_two_probe_ready_resolved_structural_anchors",
+              "multi_wave_authorization_status": "AUTHORIZED_SPARSE_TEMPORAL_KEY",
+              "position_compatibility_status": "compatible_by_harmonizer_shared_contract",
+              "probe_anchor_count": 0,
+              "probe_ready_wave_count": 2,
+              "ready_for_v554": true,
+              "resolved_wave_count": 2,
+              "semantic_compatibility_status": "compatible_by_canonical_key",
+              "structural_identity_compatibility_status": "compatible_by_comparable_temporal_key"
+            },
+            "not_observed": false,
+            "refused_code": null,
+            "rupture_qualified": true,
+            "temporal_key": "PROBE_ONLY_TEMPORAL_KEY",
+            "uncertainty": "HELD_NO_INTERPOLATION|POST_RUPTURE_CARRY_HYPOTHETICAL:R1995|IDENTIFIED_SET_UNBOUNDED:STABILITY_NOT_ASSUMED",
+            "value": 0.2
+          },
+          "passes": true
+        },
+        "M2_UNCERTAINTY_AWARE_BACKOFF": {
+          "assertion": "value is None or RUPTURE in uncertainty/detail",
+          "observation": {
+            "band": "low",
+            "basis_wave_ids": [
+              "W0"
+            ],
+            "detail": "uncertainty-aware nearest-anchor backoff; typed bounded hypothetical carry across a registered rupture; the post-break cohort estimand is NOT identified and no stability is assumed",
+            "method": "M2_UNCERTAINTY_AWARE_BACKOFF",
+            "native_authorization": {
+              "authorized_anchor_count": 2,
+              "directionality_compatibility_status": "compatible_by_harmonizer_shared_contract",
+              "distinct_wave_count": 2,
+              "eligible_wave_count": 2,
+              "harmonization_authority_status": "multi_wave_authorized",
+              "multi_wave_authorization_reason": "at_least_two_probe_ready_resolved_structural_anchors",
+              "multi_wave_authorization_status": "AUTHORIZED_SPARSE_TEMPORAL_KEY",
+              "position_compatibility_status": "compatible_by_harmonizer_shared_contract",
+              "probe_anchor_count": 0,
+              "probe_ready_wave_count": 2,
+              "ready_for_v554": true,
+              "resolved_wave_count": 2,
+              "semantic_compatibility_status": "compatible_by_canonical_key",
+              "structural_identity_compatibility_status": "compatible_by_comparable_temporal_key"
+            },
+            "not_observed": false,
+            "refused_code": null,
+            "rupture_qualified": true,
+            "temporal_key": "PROBE_ONLY_TEMPORAL_KEY",
+            "uncertainty": "BACKOFF_WIDE_GAP_UNCERTAIN|POST_RUPTURE_CARRY_HYPOTHETICAL:R1995|IDENTIFIED_SET_UNBOUNDED:STABILITY_NOT_ASSUMED",
+            "value": 0.2
+          },
+          "passes": true
+        }
+      },
+      "repaired_t9c_failed": 0,
+      "repaired_t9c_passed": 2
+    },
+    {
+      "assertion_count": 1,
+      "defect": "R7",
+      "original_t9b": {
+        "assertion": "set(pub_lag_of) <= set(basis_wave_ids)",
+        "observation": {
+          "band": "low",
+          "basis_wave_ids": [
+            "W0"
+          ],
+          "detail": "nearest prior admissible anchor; wave(s) published AFTER the query clock",
+          "method": "M0_PIECEWISE_HOLD",
+          "refused_code": null,
+          "temporal_key": "AUTHORIZED_SPARSE_TEMPORAL_KEY",
+          "uncertainty": "HELD_NO_INTERPOLATION|PUBLICATION_LAG:W1",
+          "value": 0.2
+        },
+        "passes": false,
+        "pub_lag_of": [
+          "W1"
+        ]
+      },
+      "original_t9b_failed": 1,
+      "original_t9b_passed": 0,
+      "repaired_t9c": {
+        "assertion": "set(pub_lag_of) <= set(basis_wave_ids)",
+        "observation": {
+          "band": "low",
+          "basis_wave_ids": [
+            "W0"
+          ],
+          "detail": "nearest prior admissible anchor",
+          "method": "M0_PIECEWISE_HOLD",
+          "native_authorization": {
+            "authorized_anchor_count": 2,
+            "directionality_compatibility_status": "compatible_by_harmonizer_shared_contract",
+            "distinct_wave_count": 2,
+            "eligible_wave_count": 2,
+            "harmonization_authority_status": "multi_wave_authorized",
+            "multi_wave_authorization_reason": "at_least_two_probe_ready_resolved_structural_anchors",
+            "multi_wave_authorization_status": "AUTHORIZED_SPARSE_TEMPORAL_KEY",
+            "position_compatibility_status": "compatible_by_harmonizer_shared_contract",
+            "probe_anchor_count": 0,
+            "probe_ready_wave_count": 2,
+            "ready_for_v554": true,
+            "resolved_wave_count": 2,
+            "semantic_compatibility_status": "compatible_by_canonical_key",
+            "structural_identity_compatibility_status": "compatible_by_comparable_temporal_key"
+          },
+          "not_observed": false,
+          "refused_code": null,
+          "rupture_qualified": false,
+          "temporal_key": "AUTHORIZED_SPARSE_TEMPORAL_KEY",
+          "uncertainty": "HELD_NO_INTERPOLATION",
+          "value": 0.2
+        },
+        "passes": true,
+        "pub_lag_of": []
+      },
+      "repaired_t9c_failed": 0,
+      "repaired_t9c_passed": 1
+    }
+  ],
+  "generated_by": "02_counterexamples.py",
+  "independent_t9i_court_commit": "a2a7bdeda76aa008b3d620b01af71f7fd6efaaae",
+  "native_controls": {
+    "NATIVE_AUTHORIZATION_1": {
+      "authorized_anchor_count": 0,
+      "directionality_compatibility_status": "compatible_by_harmonizer_shared_contract",
+      "distinct_wave_count": 1,
+      "eligible_wave_count": 1,
+      "harmonization_authority_status": "multi_wave_authorized",
+      "multi_wave_authorization_reason": "insufficient_distinct_waves",
+      "multi_wave_authorization_status": "PROBE_ONLY_TEMPORAL_KEY",
+      "position_compatibility_status": "compatible_by_harmonizer_shared_contract",
+      "probe_anchor_count": 1,
+      "probe_ready_wave_count": 1,
+      "ready_for_v554": false,
+      "resolved_wave_count": 1,
+      "semantic_compatibility_status": "compatible_by_canonical_key",
+      "structural_identity_compatibility_status": "compatible_by_comparable_temporal_key"
+    },
+    "NATIVE_AUTHORIZATION_2": {
+      "authorized_anchor_count": 2,
+      "directionality_compatibility_status": "compatible_by_harmonizer_shared_contract",
+      "distinct_wave_count": 2,
+      "eligible_wave_count": 2,
+      "harmonization_authority_status": "multi_wave_authorized",
+      "multi_wave_authorization_reason": "at_least_two_probe_ready_resolved_structural_anchors",
+      "multi_wave_authorization_status": "AUTHORIZED_SPARSE_TEMPORAL_KEY",
+      "position_compatibility_status": "compatible_by_harmonizer_shared_contract",
+      "probe_anchor_count": 0,
+      "probe_ready_wave_count": 2,
+      "ready_for_v554": true,
+      "resolved_wave_count": 2,
+      "semantic_compatibility_status": "compatible_by_canonical_key",
+      "structural_identity_compatibility_status": "compatible_by_comparable_temporal_key"
+    },
+    "NATIVE_AUTHORIZATION_BLOCKED": {
+      "authorized_anchor_count": 0,
+      "directionality_compatibility_status": "blocked",
+      "distinct_wave_count": 0,
+      "eligible_wave_count": 0,
+      "harmonization_authority_status": "not_authorized",
+      "multi_wave_authorization_reason": "harmonization_not_authorized",
+      "multi_wave_authorization_status": "BLOCKED_TEMPORAL_KEY",
+      "position_compatibility_status": "blocked",
+      "probe_anchor_count": 0,
+      "probe_ready_wave_count": 0,
+      "ready_for_v554": false,
+      "resolved_wave_count": 0,
+      "semantic_compatibility_status": "blocked",
+      "structural_identity_compatibility_status": "blocked"
+    },
+    "NATIVE_GAP_ALLOW_INTERPOLATION_TRUE": {
+      "anchor_count": 2,
+      "compiler_version": "v553_temporal_pressure_0.2_sparse",
+      "confidence_decay": 0.1,
+      "country": "US",
+      "created_at": "2026-10-17T04:58:56.420514+00:00",
+      "gap_length_years": 9,
+      "interpolation_allowed": false,
+      "interpolation_method": "none",
+      "interpolation_reason": "no_survey_observation_preserve_unknown",
+      "interpolation_status": "unknown_gap_preserved",
+      "key_authorization_status": "AUTHORIZED_SPARSE_TEMPORAL_KEY",
+      "run_id": "t9c",
+      "schema_version": "v0.2",
+      "segment_end_year": 2000,
+      "segment_start_year": 1990,
+      "temporal_pressure_key": "k",
+      "warning_flags_json": "[\"gap_segment\"]"
+    }
+  },
+  "native_module": {
+    "author_return_path": "/Users/matthewsmith/Desktop/Rawlsing/R26-T9C-temporal-wt/WORKER_RETURNS/PYAT-R18-T9B-TEMPORAL-HISTORY-CONSUMER-R1/native/data/ddm_build_copy/ddm_v553_temporal_pressure.py",
+    "byte_identical": true,
+    "git_blob_sha1_author_return": "5304b70f9f6522c5ae3893eff215c1d445681983",
+    "git_blob_sha1_this_return": "5304b70f9f6522c5ae3893eff215c1d445681983",
+    "reused_cached_module_is_legitimate": true,
+    "sha256_author_return": "1a44a4e8b1ef989c49bb553b826c7f652acf6b6d0a0fa3886accbe8d5da42409",
+    "sha256_this_return": "1a44a4e8b1ef989c49bb553b826c7f652acf6b6d0a0fa3886accbe8d5da42409",
+    "this_return_path": "native/data/ddm_build_copy/ddm_v553_temporal_pressure.py"
+  },
+  "original_author_commit": "edf3494b1b11cb71a78540aba950aa15da900c8a",
+  "original_author_return": "PYAT-R18-T9B-TEMPORAL-HISTORY-CONSUMER-R1",
+  "prohibitions": [
+    "no real EE12 source pair",
+    "no national inference",
+    "no OC05",
+    "no N11",
+    "no N12",
+    "no V3",
+    "no method adoption"
+  ],
+  "schema": "PYAT_R26_T9C_02_ACTUAL_ORIGINAL_V553_AND_CONSUMER@1"
+}

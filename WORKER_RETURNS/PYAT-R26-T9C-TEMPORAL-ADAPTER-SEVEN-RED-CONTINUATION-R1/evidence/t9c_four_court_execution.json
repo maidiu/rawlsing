@@ -1,0 +1,921 @@
+{
+  "courts_are_separate_not_aggregated": true,
+  "executable": "/usr/local/bin/python3",
+  "pytest_version": "9.0.2",
+  "python": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]",
+  "results": [
+    {
+      "cwd": "/Users/matthewsmith/Desktop/Rawlsing/R26-T9C-temporal-wt/WORKER_RETURNS/PYAT-R26-T9C-TEMPORAL-ADAPTER-SEVEN-RED-CONTINUATION-R1",
+      "elapsed_s": 1.519,
+      "exit": 1,
+      "junit": "junit/frozen_t9i_independent_48.xml",
+      "junit_sha256": "add067428c0dd9843a21a0c2e6a2d034dca428a8bde31c4f23eef0674adda9b6",
+      "log": "logs/frozen_t9i_independent_48.log",
+      "name": "frozen_t9i_independent_48",
+      "parsed": {
+        "available": true,
+        "suites": [
+          {
+            "cases": [
+              {
+                "classname": "frozen_t9i_court.test_independent_clock_custody",
+                "name": "test_asof_excludes_2000_publication[M0_PIECEWISE_HOLD]",
+                "status": "passed",
+                "time": "0.002"
+              },
+              {
+                "classname": "frozen_t9i_court.test_independent_clock_custody",
+                "name": "test_asof_excludes_2000_publication[M1_LINEAR_INTERPOLATION]",
+                "status": "passed",
+                "time": "0.002"
+              },
+              {
+                "classname": "frozen_t9i_court.test_independent_clock_custody",
+                "name": "test_asof_excludes_2000_publication[M2_UNCERTAINTY_AWARE_BACKOFF]",
+                "status": "passed",
+                "time": "0.001"
+              },
+              {
+                "classname": "frozen_t9i_court.test_independent_clock_custody",
+                "name": "test_retrospective_method_comparison[M0_PIECEWISE_HOLD-0.2]",
+                "status": "passed",
+                "time": "0.002"
+              },
+              {
+                "classname": "frozen_t9i_court.test_independent_clock_custody",
+                "name": "test_retrospective_method_comparison[M1_LINEAR_INTERPOLATION-0.4]",
+                "status": "passed",
+                "time": "0.001"
+              },
+              {
+                "classname": "frozen_t9i_court.test_independent_clock_custody",
+                "name": "test_retrospective_method_comparison[M2_UNCERTAINTY_AWARE_BACKOFF-0.2]",
+                "status": "passed",
+                "time": "0.001"
+              },
+              {
+                "classname": "frozen_t9i_court.test_independent_clock_custody",
+                "name": "test_postclock_publication_excluded_asof_and_flagged_archival[M0_PIECEWISE_HOLD]",
+                "status": "passed",
+                "time": "0.001"
+              },
+              {
+                "classname": "frozen_t9i_court.test_independent_clock_custody",
+                "name": "test_postclock_publication_excluded_asof_and_flagged_archival[M1_LINEAR_INTERPOLATION]",
+                "status": "passed",
+                "time": "0.001"
+              },
+              {
+                "classname": "frozen_t9i_court.test_independent_clock_custody",
+                "name": "test_postclock_publication_excluded_asof_and_flagged_archival[M2_UNCERTAINTY_AWARE_BACKOFF]",
+                "status": "passed",
+                "time": "0.001"
+              },
+              {
+                "classname": "frozen_t9i_court.test_independent_clock_custody",
+                "name": "test_current_revocation_and_nonrenewal_not_resurrected[revoked-False-M0_PIECEWISE_HOLD]",
+                "status": "passed",
+                "time": "0.001"
+              },
+              {
+                "classname": "frozen_t9i_court.test_independent_clock_custody",
+                "name": "test_current_revocation_and_nonrenewal_not_resurrected[revoked-False-M1_LINEAR_INTERPOLATION]",
+                "status": "passed",
+                "time": "0.001"
+              },
+              {
+                "classname": "frozen_t9i_court.test_independent_clock_custody",
+                "name": "test_current_revocation_and_nonrenewal_not_resurrected[revoked-False-M2_UNCERTAINTY_AWARE_BACKOFF]",
+                "status": "passed",
+                "time": "0.001"
+              },
+              {
+                "classname": "frozen_t9i_court.test_independent_clock_custody",
+                "name": "test_current_revocation_and_nonrenewal_not_resurrected[revoked-True-M0_PIECEWISE_HOLD]",
+                "status": "passed",
+                "time": "0.001"
+              },
+              {
+                "classname": "frozen_t9i_court.test_independent_clock_custody",
+                "name": "test_current_revocation_and_nonrenewal_not_resurrected[revoked-True-M1_LINEAR_INTERPOLATION]",
+                "status": "passed",
+                "time": "0.001"
+              },
+              {
+                "classname": "frozen_t9i_court.test_independent_clock_custody",
+                "name": "test_current_revocation_and_nonrenewal_not_resurrected[revoked-True-M2_UNCERTAINTY_AWARE_BACKOFF]",
+                "status": "passed",
+                "time": "0.001"
+              },
+              {
+                "classname": "frozen_t9i_court.test_independent_clock_custody",
+                "name": "test_current_revocation_and_nonrenewal_not_resurrected[archived_nonrenewed-False-M0_PIECEWISE_HOLD]",
+                "status": "passed",
+                "time": "0.001"
+              },
+              {
+                "classname": "frozen_t9i_court.test_independent_clock_custody",
+                "name": "test_current_revocation_and_nonrenewal_not_resurrected[archived_nonrenewed-False-M1_LINEAR_INTERPOLATION]",
+                "status": "passed",
+                "time": "0.001"
+              },
+              {
+                "classname": "frozen_t9i_court.test_independent_clock_custody",
+                "name": "test_current_revocation_and_nonrenewal_not_resurrected[archived_nonrenewed-False-M2_UNCERTAINTY_AWARE_BACKOFF]",
+                "status": "passed",
+                "time": "0.001"
+              },
+              {
+                "classname": "frozen_t9i_court.test_independent_clock_custody",
+                "name": "test_current_revocation_and_nonrenewal_not_resurrected[archived_nonrenewed-True-M0_PIECEWISE_HOLD]",
+                "status": "passed",
+                "time": "0.001"
+              },
+              {
+                "classname": "frozen_t9i_court.test_independent_clock_custody",
+                "name": "test_current_revocation_and_nonrenewal_not_resurrected[archived_nonrenewed-True-M1_LINEAR_INTERPOLATION]",
+                "status": "passed",
+                "time": "0.001"
+              },
+              {
+                "classname": "frozen_t9i_court.test_independent_clock_custody",
+                "name": "test_current_revocation_and_nonrenewal_not_resurrected[archived_nonrenewed-True-M2_UNCERTAINTY_AWARE_BACKOFF]",
+                "status": "passed",
+                "time": "0.001"
+              },
+              {
+                "classname": "frozen_t9i_court.test_independent_clock_custody",
+                "name": "test_empty_is_unknown_and_observed_zero_is_zero[M0_PIECEWISE_HOLD]",
+                "status": "passed",
+                "time": "0.001"
+              },
+              {
+                "classname": "frozen_t9i_court.test_independent_clock_custody",
+                "name": "test_empty_is_unknown_and_observed_zero_is_zero[M1_LINEAR_INTERPOLATION]",
+                "status": "passed",
+                "time": "0.001"
+              },
+              {
+                "classname": "frozen_t9i_court.test_independent_clock_custody",
+                "name": "test_empty_is_unknown_and_observed_zero_is_zero[M2_UNCERTAINTY_AWARE_BACKOFF]",
+                "status": "passed",
+                "time": "0.001"
+              },
+              {
+                "classname": "frozen_t9i_court.test_independent_clock_custody",
+                "name": "test_mismatched_population_is_not_support[country]",
+                "status": "passed",
+                "time": "0.000"
+              },
+              {
+                "classname": "frozen_t9i_court.test_independent_clock_custody",
+                "name": "test_mismatched_population_is_not_support[instrument]",
+                "status": "passed",
+                "time": "0.000"
+              },
+              {
+                "classname": "frozen_t9i_court.test_independent_clock_custody",
+                "name": "test_mismatched_population_is_not_support[cohort]",
+                "status": "passed",
+                "time": "0.000"
+              },
+              {
+                "classname": "frozen_t9i_court.test_independent_clock_custody",
+                "name": "test_explicit_incompatible_geography_refuses",
+                "status": "passed",
+                "time": "0.001"
+              },
+              {
+                "classname": "frozen_t9i_court.test_independent_clock_custody",
+                "name": "test_registered_rupture_refuses_interpolation",
+                "status": "passed",
+                "time": "0.001"
+              },
+              {
+                "classname": "frozen_t9i_court.test_independent_clock_custody",
+                "name": "test_flat_null_trend_does_not_move",
+                "status": "passed",
+                "time": "0.003"
+              },
+              {
+                "classname": "frozen_t9i_court.test_independent_clock_custody",
+                "name": "test_independent_estimand_and_error_bounds",
+                "status": "passed",
+                "time": "0.001"
+              },
+              {
+                "classname": "frozen_t9i_court.test_independent_clock_custody",
+                "name": "test_two_time_original_consumer_and_numerical_products_reproduced",
+                "status": "failure",
+                "time": "0.005"
+              },
+              {
+                "classname": "frozen_t9i_court.test_independent_clock_custody",
+                "name": "test_probe_only_estimate_cannot_be_authorized_open_opportunity",
+                "status": "passed",
+                "time": "0.001"
+              },
+              {
+                "classname": "frozen_t9i_court.test_independent_clock_custody",
+                "name": "test_structural_route_mutation_is_detected",
+                "status": "passed",
+                "time": "0.002"
+              },
+              {
+                "classname": "frozen_t9i_court.test_independent_clock_custody",
+                "name": "test_consumer_provenance_names_actual_basis_not_excluded_first_wave",
+                "status": "passed",
+                "time": "0.001"
+              },
+              {
+                "classname": "frozen_t9i_court.test_independent_clock_custody",
+                "name": "test_postrupture_carry_is_unknown_or_explicitly_rupture_qualified[M0_PIECEWISE_HOLD]",
+                "status": "passed",
+                "time": "0.001"
+              },
+              {
+                "classname": "frozen_t9i_court.test_independent_clock_custody",
+                "name": "test_postrupture_carry_is_unknown_or_explicitly_rupture_qualified[M2_UNCERTAINTY_AWARE_BACKOFF]",
+                "status": "passed",
+                "time": "0.001"
+              },
+              {
+                "classname": "frozen_t9i_court.test_independent_clock_custody",
+                "name": "test_missing_numeric_observation_stays_typed_unknown[M0_PIECEWISE_HOLD]",
+                "status": "passed",
+                "time": "0.002"
+              },
+              {
+                "classname": "frozen_t9i_court.test_independent_clock_custody",
+                "name": "test_missing_numeric_observation_stays_typed_unknown[M1_LINEAR_INTERPOLATION]",
+                "status": "passed",
+                "time": "0.001"
+              },
+              {
+                "classname": "frozen_t9i_court.test_independent_clock_custody",
+                "name": "test_missing_numeric_observation_stays_typed_unknown[M2_UNCERTAINTY_AWARE_BACKOFF]",
+                "status": "passed",
+                "time": "0.001"
+              },
+              {
+                "classname": "frozen_t9i_court.test_independent_clock_custody",
+                "name": "test_nonbasis_future_wave_does_not_claim_to_be_product_publication_basis",
+                "status": "passed",
+                "time": "0.001"
+              },
+              {
+                "classname": "frozen_t9i_court.test_independent_clock_custody",
+                "name": "test_schema_capability_limits_are_recorded_not_inferred_as_person_memory",
+                "status": "passed",
+                "time": "0.001"
+              },
+              {
+                "classname": "frozen_t9i_court.test_independent_clock_custody",
+                "name": "test_independent_guard_rejects_untrusted_path_and_changed_preimage",
+                "status": "passed",
+                "time": "0.021"
+              },
+              {
+                "classname": "frozen_t9i_court.test_independent_clock_custody",
+                "name": "test_actual_native_authorization_positive_and_probe_controls[2-AUTHORIZED_SPARSE_TEMPORAL_KEY-True]",
+                "status": "passed",
+                "time": "0.003"
+              },
+              {
+                "classname": "frozen_t9i_court.test_independent_clock_custody",
+                "name": "test_actual_native_authorization_positive_and_probe_controls[1-PROBE_ONLY_TEMPORAL_KEY-False]",
+                "status": "passed",
+                "time": "0.001"
+              },
+              {
+                "classname": "frozen_t9i_court.test_independent_clock_custody",
+                "name": "test_actual_native_authorization_blocked_control",
+                "status": "passed",
+                "time": "0.001"
+              },
+              {
+                "classname": "frozen_t9i_court.test_independent_clock_custody",
+                "name": "test_actual_native_gap_preserves_unknown_even_when_flag_enabled",
+                "status": "passed",
+                "time": "0.004"
+              },
+              {
+                "classname": "frozen_t9i_court.test_independent_clock_custody",
+                "name": "test_adapted_single_anchor_does_not_claim_inherited_native_grant",
+                "status": "passed",
+                "time": "0.004"
+              }
+            ],
+            "errors": 0,
+            "failures": 1,
+            "name": "pytest",
+            "skipped": 0,
+            "tests": 48,
+            "time": "0.779"
+          }
+        ]
+      }
+    },
+    {
+      "cwd": "/Users/matthewsmith/Desktop/Rawlsing/R26-T9C-temporal-wt/WORKER_RETURNS/PYAT-R26-T9C-TEMPORAL-ADAPTER-SEVEN-RED-CONTINUATION-R1",
+      "elapsed_s": 1.175,
+      "exit": 0,
+      "junit": "junit/t9c_own_repair_suite.xml",
+      "junit_sha256": "a0ade6b4d4b16c56df245873c1f3c09c28871eae84874e6c82981de1a7b6e6de",
+      "log": "logs/t9c_own_repair_suite.log",
+      "name": "t9c_own_repair_suite",
+      "parsed": {
+        "available": true,
+        "suites": [
+          {
+            "cases": [
+              {
+                "classname": "test_t9c_repair",
+                "name": "test_original_v553_bytes_are_unmodified",
+                "status": "passed",
+                "time": "0.017"
+              },
+              {
+                "classname": "test_t9c_repair",
+                "name": "test_temporal_primitives_inherited_by_identity_not_reimplemented",
+                "status": "passed",
+                "time": "0.000"
+              },
+              {
+                "classname": "test_t9c_repair",
+                "name": "test_imports_land_inside_this_return_not_ambient",
+                "status": "passed",
+                "time": "0.000"
+              },
+              {
+                "classname": "test_t9c_repair",
+                "name": "test_pinned_native_closure_is_minimal_and_importable",
+                "status": "passed",
+                "time": "0.001"
+              },
+              {
+                "classname": "test_t9c_repair",
+                "name": "test_as_of_1995_is_point_twenty_and_retrospective_is_point_forty_not_observed",
+                "status": "passed",
+                "time": "0.005"
+              },
+              {
+                "classname": "test_t9c_repair",
+                "name": "test_two_time_endpoints_stay_sourcefree_point_twenty_and_point_sixty",
+                "status": "passed",
+                "time": "0.002"
+              },
+              {
+                "classname": "test_t9c_repair",
+                "name": "test_r1_status_is_returned_by_the_native_machine_not_aliased",
+                "status": "passed",
+                "time": "0.002"
+              },
+              {
+                "classname": "test_t9c_repair",
+                "name": "test_r1_two_eligible_anchors_are_natively_authorized",
+                "status": "passed",
+                "time": "0.001"
+              },
+              {
+                "classname": "test_t9c_repair",
+                "name": "test_r1_no_anchor_group_is_natively_blocked",
+                "status": "passed",
+                "time": "0.002"
+              },
+              {
+                "classname": "test_t9c_repair",
+                "name": "test_r1_gap_interpolation_stays_exploratory_even_with_authorized_anchors",
+                "status": "passed",
+                "time": "0.005"
+              },
+              {
+                "classname": "test_t9c_repair",
+                "name": "test_r2_missing_observation_is_typed_unknown_never_zero[nan-M0_PIECEWISE_HOLD]",
+                "status": "passed",
+                "time": "0.002"
+              },
+              {
+                "classname": "test_t9c_repair",
+                "name": "test_r2_missing_observation_is_typed_unknown_never_zero[nan-M1_LINEAR_INTERPOLATION]",
+                "status": "passed",
+                "time": "0.001"
+              },
+              {
+                "classname": "test_t9c_repair",
+                "name": "test_r2_missing_observation_is_typed_unknown_never_zero[nan-M2_UNCERTAINTY_AWARE_BACKOFF]",
+                "status": "passed",
+                "time": "0.001"
+              },
+              {
+                "classname": "test_t9c_repair",
+                "name": "test_r2_missing_observation_is_typed_unknown_never_zero[None-M0_PIECEWISE_HOLD]",
+                "status": "passed",
+                "time": "0.001"
+              },
+              {
+                "classname": "test_t9c_repair",
+                "name": "test_r2_missing_observation_is_typed_unknown_never_zero[None-M1_LINEAR_INTERPOLATION]",
+                "status": "passed",
+                "time": "0.001"
+              },
+              {
+                "classname": "test_t9c_repair",
+                "name": "test_r2_missing_observation_is_typed_unknown_never_zero[None-M2_UNCERTAINTY_AWARE_BACKOFF]",
+                "status": "passed",
+                "time": "0.001"
+              },
+              {
+                "classname": "test_t9c_repair",
+                "name": "test_r2_missing_observation_is_typed_unknown_never_zero[inf-M0_PIECEWISE_HOLD]",
+                "status": "passed",
+                "time": "0.001"
+              },
+              {
+                "classname": "test_t9c_repair",
+                "name": "test_r2_missing_observation_is_typed_unknown_never_zero[inf-M1_LINEAR_INTERPOLATION]",
+                "status": "passed",
+                "time": "0.001"
+              },
+              {
+                "classname": "test_t9c_repair",
+                "name": "test_r2_missing_observation_is_typed_unknown_never_zero[inf-M2_UNCERTAINTY_AWARE_BACKOFF]",
+                "status": "passed",
+                "time": "0.001"
+              },
+              {
+                "classname": "test_t9c_repair",
+                "name": "test_r2_declared_missing_support_status_is_respected[M0_PIECEWISE_HOLD]",
+                "status": "passed",
+                "time": "0.003"
+              },
+              {
+                "classname": "test_t9c_repair",
+                "name": "test_r2_declared_missing_support_status_is_respected[M1_LINEAR_INTERPOLATION]",
+                "status": "passed",
+                "time": "0.001"
+              },
+              {
+                "classname": "test_t9c_repair",
+                "name": "test_r2_declared_missing_support_status_is_respected[M2_UNCERTAINTY_AWARE_BACKOFF]",
+                "status": "passed",
+                "time": "0.001"
+              },
+              {
+                "classname": "test_t9c_repair",
+                "name": "test_r2_observed_zero_is_still_a_real_zero",
+                "status": "passed",
+                "time": "0.001"
+              },
+              {
+                "classname": "test_t9c_repair",
+                "name": "test_r2_missing_and_observed_zero_are_distinct_outcomes",
+                "status": "passed",
+                "time": "0.002"
+              },
+              {
+                "classname": "test_t9c_repair",
+                "name": "test_r2_mixed_support_drops_missing_anchor_and_discloses_it",
+                "status": "passed",
+                "time": "0.001"
+              },
+              {
+                "classname": "test_t9c_repair",
+                "name": "test_r2_native_bounded_score_default_is_untouched",
+                "status": "passed",
+                "time": "0.000"
+              },
+              {
+                "classname": "test_t9c_repair",
+                "name": "test_r3_provenance_names_the_used_basis_not_the_first_wave",
+                "status": "passed",
+                "time": "0.001"
+              },
+              {
+                "classname": "test_t9c_repair",
+                "name": "test_r3_excluded_wave_is_named_only_as_excluded_context",
+                "status": "passed",
+                "time": "0.001"
+              },
+              {
+                "classname": "test_t9c_repair",
+                "name": "test_r3_conflicting_basis_sources_are_refused_not_silently_narrows",
+                "status": "passed",
+                "time": "0.001"
+              },
+              {
+                "classname": "test_t9c_repair",
+                "name": "test_r4_route_removal_is_detected",
+                "status": "passed",
+                "time": "0.002"
+              },
+              {
+                "classname": "test_t9c_repair",
+                "name": "test_r4_institution_and_access_grant_changes_are_detected",
+                "status": "passed",
+                "time": "0.003"
+              },
+              {
+                "classname": "test_t9c_repair",
+                "name": "test_r4_identical_world_is_still_certified_identical",
+                "status": "passed",
+                "time": "0.002"
+              },
+              {
+                "classname": "test_t9c_repair",
+                "name": "test_r4_structural_fields_travel_with_the_read",
+                "status": "passed",
+                "time": "0.001"
+              },
+              {
+                "classname": "test_t9c_repair",
+                "name": "test_r5_probe_only_read_opens_no_authorized_route",
+                "status": "passed",
+                "time": "0.001"
+              },
+              {
+                "classname": "test_t9c_repair",
+                "name": "test_r5_authorized_read_still_opens_its_route",
+                "status": "passed",
+                "time": "0.001"
+              },
+              {
+                "classname": "test_t9c_repair",
+                "name": "test_r5_refused_read_opens_nothing",
+                "status": "passed",
+                "time": "0.000"
+              },
+              {
+                "classname": "test_t9c_repair",
+                "name": "test_r5_exploratory_routes_are_never_labelled_permission_valid",
+                "status": "passed",
+                "time": "0.001"
+              },
+              {
+                "classname": "test_t9c_repair",
+                "name": "test_r6_post_rupture_carry_is_a_labelled_hypothetical[M0_PIECEWISE_HOLD]",
+                "status": "passed",
+                "time": "0.001"
+              },
+              {
+                "classname": "test_t9c_repair",
+                "name": "test_r6_post_rupture_carry_is_a_labelled_hypothetical[M2_UNCERTAINTY_AWARE_BACKOFF]",
+                "status": "passed",
+                "time": "0.001"
+              },
+              {
+                "classname": "test_t9c_repair",
+                "name": "test_r6_held_value_is_preserved_for_the_accepted_author_positive",
+                "status": "passed",
+                "time": "0.001"
+              },
+              {
+                "classname": "test_t9c_repair",
+                "name": "test_r6_no_rupture_carry_is_not_labelled",
+                "status": "passed",
+                "time": "0.001"
+              },
+              {
+                "classname": "test_t9c_repair",
+                "name": "test_r6_post_rupture_carry_opens_no_route",
+                "status": "passed",
+                "time": "0.024"
+              },
+              {
+                "classname": "test_t9c_repair",
+                "name": "test_r7_publication_lag_never_names_a_nonbasis_wave",
+                "status": "passed",
+                "time": "0.002"
+              },
+              {
+                "classname": "test_t9c_repair",
+                "name": "test_r7_basis_lag_on_a_used_wave_is_still_flagged",
+                "status": "passed",
+                "time": "0.001"
+              },
+              {
+                "classname": "test_t9c_repair",
+                "name": "test_r7_archive_context_lists_the_unused_post_clock_wave",
+                "status": "passed",
+                "time": "0.002"
+              },
+              {
+                "classname": "test_t9c_repair",
+                "name": "test_r7_archive_context_is_absent_for_as_of_reads",
+                "status": "passed",
+                "time": "0.002"
+              },
+              {
+                "classname": "test_t9c_repair",
+                "name": "test_r7_two_time_reads_keep_their_basis_lag_values",
+                "status": "passed",
+                "time": "0.003"
+              },
+              {
+                "classname": "test_t9c_repair",
+                "name": "test_as_of_still_excludes_a_late_publication",
+                "status": "passed",
+                "time": "0.000"
+              },
+              {
+                "classname": "test_t9c_repair",
+                "name": "test_retrospective_still_flags_publication_lag_rather_than_pretending",
+                "status": "passed",
+                "time": "0.001"
+              },
+              {
+                "classname": "test_t9c_repair",
+                "name": "test_no_person_memory_or_exposure_claim_is_made",
+                "status": "passed",
+                "time": "0.001"
+              },
+              {
+                "classname": "test_t9c_repair",
+                "name": "test_t8f3_assignment_is_preserved_not_duplicated",
+                "status": "passed",
+                "time": "0.000"
+              },
+              {
+                "classname": "test_t9c_repair",
+                "name": "test_expected_output_contract_is_frozen_before_the_suite",
+                "status": "passed",
+                "time": "0.016"
+              }
+            ],
+            "errors": 0,
+            "failures": 0,
+            "name": "pytest",
+            "skipped": 0,
+            "tests": 52,
+            "time": "0.799"
+          }
+        ]
+      }
+    },
+    {
+      "cwd": "/Users/matthewsmith/Desktop/Rawlsing/R26-T9C-temporal-wt/WORKER_RETURNS/PYAT-R26-T9C-TEMPORAL-ADAPTER-SEVEN-RED-CONTINUATION-R1",
+      "elapsed_s": 1.033,
+      "exit": 0,
+      "junit": "junit/inherited_original_v553_native_8.xml",
+      "junit_sha256": "a823af531c4c7a51204f3159d5c7c5c50ac9beea4dfc4cc21d5c46efdc320007",
+      "log": "logs/inherited_original_v553_native_8.log",
+      "name": "inherited_original_v553_native_8",
+      "parsed": {
+        "available": true,
+        "suites": [
+          {
+            "cases": [
+              {
+                "classname": "native.data.ddm_build_copy.tests.test_postg5_v552j_v553_consumer_contract",
+                "name": "test_v553_harmonization_consumes_fully_verified_v552j_publication_without_legacy_packet",
+                "status": "passed",
+                "time": "0.036"
+              },
+              {
+                "classname": "native.data.ddm_build_copy.tests.test_postg5_v552j_v553_consumer_contract",
+                "name": "test_valid_empty_publication_is_distinct_from_missing_or_corrupt",
+                "status": "passed",
+                "time": "0.012"
+              },
+              {
+                "classname": "native.data.ddm_build_copy.tests.test_postg5_v552j_v553_consumer_contract",
+                "name": "test_incomplete_publication_missing_required_handoff_index_fails_closed",
+                "status": "passed",
+                "time": "0.015"
+              },
+              {
+                "classname": "native.data.ddm_build_copy.tests.test_postg5_v552j_v553_consumer_contract",
+                "name": "test_corrupt_canonical_input_index_fails_closed_as_unreadable",
+                "status": "passed",
+                "time": "0.013"
+              },
+              {
+                "classname": "native.data.ddm_build_copy.tests.test_postg5_v552j_v553_consumer_contract",
+                "name": "test_unreadable_canonical_handoff_index_fails_closed",
+                "status": "passed",
+                "time": "0.016"
+              },
+              {
+                "classname": "native.data.ddm_build_copy.tests.test_postg5_v552j_v553_consumer_contract",
+                "name": "test_schema_invalid_canonical_index_fails_closed_even_when_hash_and_row_count_match",
+                "status": "passed",
+                "time": "0.015"
+              },
+              {
+                "classname": "native.data.ddm_build_copy.tests.test_postg5_v552j_v553_consumer_contract",
+                "name": "test_path_existence_alone_never_marks_surface_valid",
+                "status": "passed",
+                "time": "0.007"
+              },
+              {
+                "classname": "native.data.ddm_build_copy.tests.test_postg5_v552j_v553_consumer_contract",
+                "name": "test_v553_compile_entrypoints_use_canonical_consumer_adapter",
+                "status": "passed",
+                "time": "0.001"
+              }
+            ],
+            "errors": 0,
+            "failures": 0,
+            "name": "pytest",
+            "skipped": 0,
+            "tests": 8,
+            "time": "0.673"
+          }
+        ]
+      }
+    },
+    {
+      "cwd": "/Users/matthewsmith/Desktop/Rawlsing/R26-T9C-temporal-wt/WORKER_RETURNS/PYAT-R18-T9B-TEMPORAL-HISTORY-CONSUMER-R1",
+      "elapsed_s": 1.011,
+      "exit": 0,
+      "junit": "junit/unchanged_t9b_author_28.xml",
+      "junit_sha256": "26d7af91b702379038f66975898ce129cf91432de9f9363bc8a3c7113bf1c90d",
+      "log": "logs/unchanged_t9b_author_28.log",
+      "name": "unchanged_t9b_author_28",
+      "parsed": {
+        "available": true,
+        "suites": [
+          {
+            "cases": [
+              {
+                "classname": "test_t9b_temporal",
+                "name": "test_native_closure_verified",
+                "status": "passed",
+                "time": "0.001"
+              },
+              {
+                "classname": "test_t9b_temporal",
+                "name": "test_temporal_primitives_are_inherited_verbatim_not_reimplemented",
+                "status": "passed",
+                "time": "0.001"
+              },
+              {
+                "classname": "test_t9b_temporal",
+                "name": "test_imports_land_inside_this_return",
+                "status": "passed",
+                "time": "0.000"
+              },
+              {
+                "classname": "test_t9b_temporal",
+                "name": "test_inherited_interpolation_is_exact_linear",
+                "status": "passed",
+                "time": "0.000"
+              },
+              {
+                "classname": "test_t9b_temporal",
+                "name": "test_tp1_trend_interior_value_and_hold_disagree",
+                "status": "passed",
+                "time": "0.000"
+              },
+              {
+                "classname": "test_t9b_temporal",
+                "name": "test_tp1b_strict_known_at_clock_makes_interpolation_structurally_impossible",
+                "status": "passed",
+                "time": "0.000"
+              },
+              {
+                "classname": "test_t9b_temporal",
+                "name": "test_tp2_null_path_manufactures_no_trend",
+                "status": "passed",
+                "time": "0.000"
+              },
+              {
+                "classname": "test_t9b_temporal",
+                "name": "test_tp2b_no_fake_high_resolution_signal",
+                "status": "passed",
+                "time": "0.000"
+              },
+              {
+                "classname": "test_t9b_temporal",
+                "name": "test_tp3_rupture_bracket_refuses_smooth_interpolation",
+                "status": "passed",
+                "time": "0.000"
+              },
+              {
+                "classname": "test_t9b_temporal",
+                "name": "test_tp3b_hold_still_works_across_a_rupture",
+                "status": "passed",
+                "time": "0.000"
+              },
+              {
+                "classname": "test_t9b_temporal",
+                "name": "test_tp4_incompatible_geography_is_refused_not_pooled",
+                "status": "passed",
+                "time": "0.000"
+              },
+              {
+                "classname": "test_t9b_temporal",
+                "name": "test_tp5_future_publication_never_enters_an_as_of_historical_read",
+                "status": "passed",
+                "time": "0.000"
+              },
+              {
+                "classname": "test_t9b_temporal",
+                "name": "test_tp5b_retrospective_read_flags_publication_lag_rather_than_pretending",
+                "status": "passed",
+                "time": "0.000"
+              },
+              {
+                "classname": "test_t9b_temporal",
+                "name": "test_tp8_backoff_equals_hold_and_differs_from_interpolation",
+                "status": "passed",
+                "time": "0.000"
+              },
+              {
+                "classname": "test_t9b_temporal",
+                "name": "test_tp8b_backoff_width_widens_uncertainty",
+                "status": "passed",
+                "time": "0.000"
+              },
+              {
+                "classname": "test_t9b_temporal",
+                "name": "test_tp6_two_historical_clocks_give_materially_different_opportunities",
+                "status": "passed",
+                "time": "0.000"
+              },
+              {
+                "classname": "test_t9b_temporal",
+                "name": "test_tp6b_structural_and_access_world_is_provably_unchanged",
+                "status": "passed",
+                "time": "0.000"
+              },
+              {
+                "classname": "test_t9b_temporal",
+                "name": "test_tp7_every_value_carries_full_provenance_and_no_calibration_claim",
+                "status": "passed",
+                "time": "0.000"
+              },
+              {
+                "classname": "test_t9b_temporal",
+                "name": "test_hostile_revoked_source_is_not_used",
+                "status": "passed",
+                "time": "0.000"
+              },
+              {
+                "classname": "test_t9b_temporal",
+                "name": "test_hostile_archived_nonrenewal_is_not_used",
+                "status": "passed",
+                "time": "0.000"
+              },
+              {
+                "classname": "test_t9b_temporal",
+                "name": "test_hostile_wrong_instrument_yields_no_support",
+                "status": "passed",
+                "time": "0.000"
+              },
+              {
+                "classname": "test_t9b_temporal",
+                "name": "test_hostile_wrong_cohort_yields_no_support",
+                "status": "passed",
+                "time": "0.000"
+              },
+              {
+                "classname": "test_t9b_temporal",
+                "name": "test_hostile_query_before_every_observation_is_refused_as_of_and_probe_only_archival",
+                "status": "passed",
+                "time": "0.000"
+              },
+              {
+                "classname": "test_t9b_temporal",
+                "name": "test_hostile_contradictory_causal_clock_is_refused_not_guessed",
+                "status": "passed",
+                "time": "0.000"
+              },
+              {
+                "classname": "test_t9b_temporal",
+                "name": "test_hostile_changed_temporal_source_with_same_structural_world_only_moves_the_channel",
+                "status": "passed",
+                "time": "0.000"
+              },
+              {
+                "classname": "test_t9b_temporal",
+                "name": "test_hostile_ambient_import_shadowing_is_detectable",
+                "status": "passed",
+                "time": "0.000"
+              },
+              {
+                "classname": "test_t9b_temporal",
+                "name": "test_t8f3_assignment_is_preserved_not_duplicated",
+                "status": "passed",
+                "time": "0.000"
+              },
+              {
+                "classname": "test_t9b_temporal",
+                "name": "test_oracle_is_frozen_and_all_five_cases_present",
+                "status": "passed",
+                "time": "0.000"
+              }
+            ],
+            "errors": 0,
+            "failures": 0,
+            "name": "pytest",
+            "skipped": 0,
+            "tests": 28,
+            "time": "0.644"
+          }
+        ]
+      }
+    }
+  ],
+  "schema": "PYAT_R26_T9C_FOUR_COURT_EXECUTION@1"
+}

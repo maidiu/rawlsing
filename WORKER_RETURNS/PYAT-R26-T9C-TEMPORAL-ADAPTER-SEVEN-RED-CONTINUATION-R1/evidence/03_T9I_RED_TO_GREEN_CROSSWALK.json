@@ -1,0 +1,398 @@
+{
+ "schema": "PYAT_R26_T9C_03_T9I_RED_TO_GREEN_CROSSWALK@1",
+ "independent_court_commit": "a2a7bdeda76aa008b3d620b01af71f7fd6efaaae",
+ "independent_case_count": 48,
+ "repaired_case_count": 48,
+ "t9i_passed": 38,
+ "t9i_failed": 10,
+ "t9c_passed": 47,
+ "t9c_failed": 1,
+ "red_to_green": 10,
+ "newly_red": 1,
+ "cases": [
+  {
+   "case": "test_actual_native_authorization_blocked_control",
+   "t9i_independent_court": "passed",
+   "t9c_repaired_adapter": "passed",
+   "changed": false,
+   "flipped_red_to_green": false,
+   "newly_red": false
+  },
+  {
+   "case": "test_actual_native_authorization_positive_and_probe_controls[1-PROBE_ONLY_TEMPORAL_KEY-False]",
+   "t9i_independent_court": "passed",
+   "t9c_repaired_adapter": "passed",
+   "changed": false,
+   "flipped_red_to_green": false,
+   "newly_red": false
+  },
+  {
+   "case": "test_actual_native_authorization_positive_and_probe_controls[2-AUTHORIZED_SPARSE_TEMPORAL_KEY-True]",
+   "t9i_independent_court": "passed",
+   "t9c_repaired_adapter": "passed",
+   "changed": false,
+   "flipped_red_to_green": false,
+   "newly_red": false
+  },
+  {
+   "case": "test_actual_native_gap_preserves_unknown_even_when_flag_enabled",
+   "t9i_independent_court": "passed",
+   "t9c_repaired_adapter": "passed",
+   "changed": false,
+   "flipped_red_to_green": false,
+   "newly_red": false
+  },
+  {
+   "case": "test_adapted_single_anchor_does_not_claim_inherited_native_grant",
+   "t9i_independent_court": "failure",
+   "t9c_repaired_adapter": "passed",
+   "changed": true,
+   "flipped_red_to_green": true,
+   "newly_red": false
+  },
+  {
+   "case": "test_asof_excludes_2000_publication[M0_PIECEWISE_HOLD]",
+   "t9i_independent_court": "passed",
+   "t9c_repaired_adapter": "passed",
+   "changed": false,
+   "flipped_red_to_green": false,
+   "newly_red": false
+  },
+  {
+   "case": "test_asof_excludes_2000_publication[M1_LINEAR_INTERPOLATION]",
+   "t9i_independent_court": "passed",
+   "t9c_repaired_adapter": "passed",
+   "changed": false,
+   "flipped_red_to_green": false,
+   "newly_red": false
+  },
+  {
+   "case": "test_asof_excludes_2000_publication[M2_UNCERTAINTY_AWARE_BACKOFF]",
+   "t9i_independent_court": "passed",
+   "t9c_repaired_adapter": "passed",
+   "changed": false,
+   "flipped_red_to_green": false,
+   "newly_red": false
+  },
+  {
+   "case": "test_consumer_provenance_names_actual_basis_not_excluded_first_wave",
+   "t9i_independent_court": "failure",
+   "t9c_repaired_adapter": "passed",
+   "changed": true,
+   "flipped_red_to_green": true,
+   "newly_red": false
+  },
+  {
+   "case": "test_current_revocation_and_nonrenewal_not_resurrected[archived_nonrenewed-False-M0_PIECEWISE_HOLD]",
+   "t9i_independent_court": "passed",
+   "t9c_repaired_adapter": "passed",
+   "changed": false,
+   "flipped_red_to_green": false,
+   "newly_red": false
+  },
+  {
+   "case": "test_current_revocation_and_nonrenewal_not_resurrected[archived_nonrenewed-False-M1_LINEAR_INTERPOLATION]",
+   "t9i_independent_court": "passed",
+   "t9c_repaired_adapter": "passed",
+   "changed": false,
+   "flipped_red_to_green": false,
+   "newly_red": false
+  },
+  {
+   "case": "test_current_revocation_and_nonrenewal_not_resurrected[archived_nonrenewed-False-M2_UNCERTAINTY_AWARE_BACKOFF]",
+   "t9i_independent_court": "passed",
+   "t9c_repaired_adapter": "passed",
+   "changed": false,
+   "flipped_red_to_green": false,
+   "newly_red": false
+  },
+  {
+   "case": "test_current_revocation_and_nonrenewal_not_resurrected[archived_nonrenewed-True-M0_PIECEWISE_HOLD]",
+   "t9i_independent_court": "passed",
+   "t9c_repaired_adapter": "passed",
+   "changed": false,
+   "flipped_red_to_green": false,
+   "newly_red": false
+  },
+  {
+   "case": "test_current_revocation_and_nonrenewal_not_resurrected[archived_nonrenewed-True-M1_LINEAR_INTERPOLATION]",
+   "t9i_independent_court": "passed",
+   "t9c_repaired_adapter": "passed",
+   "changed": false,
+   "flipped_red_to_green": false,
+   "newly_red": false
+  },
+  {
+   "case": "test_current_revocation_and_nonrenewal_not_resurrected[archived_nonrenewed-True-M2_UNCERTAINTY_AWARE_BACKOFF]",
+   "t9i_independent_court": "passed",
+   "t9c_repaired_adapter": "passed",
+   "changed": false,
+   "flipped_red_to_green": false,
+   "newly_red": false
+  },
+  {
+   "case": "test_current_revocation_and_nonrenewal_not_resurrected[revoked-False-M0_PIECEWISE_HOLD]",
+   "t9i_independent_court": "passed",
+   "t9c_repaired_adapter": "passed",
+   "changed": false,
+   "flipped_red_to_green": false,
+   "newly_red": false
+  },
+  {
+   "case": "test_current_revocation_and_nonrenewal_not_resurrected[revoked-False-M1_LINEAR_INTERPOLATION]",
+   "t9i_independent_court": "passed",
+   "t9c_repaired_adapter": "passed",
+   "changed": false,
+   "flipped_red_to_green": false,
+   "newly_red": false
+  },
+  {
+   "case": "test_current_revocation_and_nonrenewal_not_resurrected[revoked-False-M2_UNCERTAINTY_AWARE_BACKOFF]",
+   "t9i_independent_court": "passed",
+   "t9c_repaired_adapter": "passed",
+   "changed": false,
+   "flipped_red_to_green": false,
+   "newly_red": false
+  },
+  {
+   "case": "test_current_revocation_and_nonrenewal_not_resurrected[revoked-True-M0_PIECEWISE_HOLD]",
+   "t9i_independent_court": "passed",
+   "t9c_repaired_adapter": "passed",
+   "changed": false,
+   "flipped_red_to_green": false,
+   "newly_red": false
+  },
+  {
+   "case": "test_current_revocation_and_nonrenewal_not_resurrected[revoked-True-M1_LINEAR_INTERPOLATION]",
+   "t9i_independent_court": "passed",
+   "t9c_repaired_adapter": "passed",
+   "changed": false,
+   "flipped_red_to_green": false,
+   "newly_red": false
+  },
+  {
+   "case": "test_current_revocation_and_nonrenewal_not_resurrected[revoked-True-M2_UNCERTAINTY_AWARE_BACKOFF]",
+   "t9i_independent_court": "passed",
+   "t9c_repaired_adapter": "passed",
+   "changed": false,
+   "flipped_red_to_green": false,
+   "newly_red": false
+  },
+  {
+   "case": "test_empty_is_unknown_and_observed_zero_is_zero[M0_PIECEWISE_HOLD]",
+   "t9i_independent_court": "passed",
+   "t9c_repaired_adapter": "passed",
+   "changed": false,
+   "flipped_red_to_green": false,
+   "newly_red": false
+  },
+  {
+   "case": "test_empty_is_unknown_and_observed_zero_is_zero[M1_LINEAR_INTERPOLATION]",
+   "t9i_independent_court": "passed",
+   "t9c_repaired_adapter": "passed",
+   "changed": false,
+   "flipped_red_to_green": false,
+   "newly_red": false
+  },
+  {
+   "case": "test_empty_is_unknown_and_observed_zero_is_zero[M2_UNCERTAINTY_AWARE_BACKOFF]",
+   "t9i_independent_court": "passed",
+   "t9c_repaired_adapter": "passed",
+   "changed": false,
+   "flipped_red_to_green": false,
+   "newly_red": false
+  },
+  {
+   "case": "test_explicit_incompatible_geography_refuses",
+   "t9i_independent_court": "passed",
+   "t9c_repaired_adapter": "passed",
+   "changed": false,
+   "flipped_red_to_green": false,
+   "newly_red": false
+  },
+  {
+   "case": "test_flat_null_trend_does_not_move",
+   "t9i_independent_court": "passed",
+   "t9c_repaired_adapter": "passed",
+   "changed": false,
+   "flipped_red_to_green": false,
+   "newly_red": false
+  },
+  {
+   "case": "test_independent_estimand_and_error_bounds",
+   "t9i_independent_court": "passed",
+   "t9c_repaired_adapter": "passed",
+   "changed": false,
+   "flipped_red_to_green": false,
+   "newly_red": false
+  },
+  {
+   "case": "test_independent_guard_rejects_untrusted_path_and_changed_preimage",
+   "t9i_independent_court": "passed",
+   "t9c_repaired_adapter": "passed",
+   "changed": false,
+   "flipped_red_to_green": false,
+   "newly_red": false
+  },
+  {
+   "case": "test_mismatched_population_is_not_support[cohort]",
+   "t9i_independent_court": "passed",
+   "t9c_repaired_adapter": "passed",
+   "changed": false,
+   "flipped_red_to_green": false,
+   "newly_red": false
+  },
+  {
+   "case": "test_mismatched_population_is_not_support[country]",
+   "t9i_independent_court": "passed",
+   "t9c_repaired_adapter": "passed",
+   "changed": false,
+   "flipped_red_to_green": false,
+   "newly_red": false
+  },
+  {
+   "case": "test_mismatched_population_is_not_support[instrument]",
+   "t9i_independent_court": "passed",
+   "t9c_repaired_adapter": "passed",
+   "changed": false,
+   "flipped_red_to_green": false,
+   "newly_red": false
+  },
+  {
+   "case": "test_missing_numeric_observation_stays_typed_unknown[M0_PIECEWISE_HOLD]",
+   "t9i_independent_court": "failure",
+   "t9c_repaired_adapter": "passed",
+   "changed": true,
+   "flipped_red_to_green": true,
+   "newly_red": false
+  },
+  {
+   "case": "test_missing_numeric_observation_stays_typed_unknown[M1_LINEAR_INTERPOLATION]",
+   "t9i_independent_court": "failure",
+   "t9c_repaired_adapter": "passed",
+   "changed": true,
+   "flipped_red_to_green": true,
+   "newly_red": false
+  },
+  {
+   "case": "test_missing_numeric_observation_stays_typed_unknown[M2_UNCERTAINTY_AWARE_BACKOFF]",
+   "t9i_independent_court": "failure",
+   "t9c_repaired_adapter": "passed",
+   "changed": true,
+   "flipped_red_to_green": true,
+   "newly_red": false
+  },
+  {
+   "case": "test_nonbasis_future_wave_does_not_claim_to_be_product_publication_basis",
+   "t9i_independent_court": "failure",
+   "t9c_repaired_adapter": "passed",
+   "changed": true,
+   "flipped_red_to_green": true,
+   "newly_red": false
+  },
+  {
+   "case": "test_postclock_publication_excluded_asof_and_flagged_archival[M0_PIECEWISE_HOLD]",
+   "t9i_independent_court": "passed",
+   "t9c_repaired_adapter": "passed",
+   "changed": false,
+   "flipped_red_to_green": false,
+   "newly_red": false
+  },
+  {
+   "case": "test_postclock_publication_excluded_asof_and_flagged_archival[M1_LINEAR_INTERPOLATION]",
+   "t9i_independent_court": "passed",
+   "t9c_repaired_adapter": "passed",
+   "changed": false,
+   "flipped_red_to_green": false,
+   "newly_red": false
+  },
+  {
+   "case": "test_postclock_publication_excluded_asof_and_flagged_archival[M2_UNCERTAINTY_AWARE_BACKOFF]",
+   "t9i_independent_court": "passed",
+   "t9c_repaired_adapter": "passed",
+   "changed": false,
+   "flipped_red_to_green": false,
+   "newly_red": false
+  },
+  {
+   "case": "test_postrupture_carry_is_unknown_or_explicitly_rupture_qualified[M0_PIECEWISE_HOLD]",
+   "t9i_independent_court": "failure",
+   "t9c_repaired_adapter": "passed",
+   "changed": true,
+   "flipped_red_to_green": true,
+   "newly_red": false
+  },
+  {
+   "case": "test_postrupture_carry_is_unknown_or_explicitly_rupture_qualified[M2_UNCERTAINTY_AWARE_BACKOFF]",
+   "t9i_independent_court": "failure",
+   "t9c_repaired_adapter": "passed",
+   "changed": true,
+   "flipped_red_to_green": true,
+   "newly_red": false
+  },
+  {
+   "case": "test_probe_only_estimate_cannot_be_authorized_open_opportunity",
+   "t9i_independent_court": "failure",
+   "t9c_repaired_adapter": "passed",
+   "changed": true,
+   "flipped_red_to_green": true,
+   "newly_red": false
+  },
+  {
+   "case": "test_registered_rupture_refuses_interpolation",
+   "t9i_independent_court": "passed",
+   "t9c_repaired_adapter": "passed",
+   "changed": false,
+   "flipped_red_to_green": false,
+   "newly_red": false
+  },
+  {
+   "case": "test_retrospective_method_comparison[M0_PIECEWISE_HOLD-0.2]",
+   "t9i_independent_court": "passed",
+   "t9c_repaired_adapter": "passed",
+   "changed": false,
+   "flipped_red_to_green": false,
+   "newly_red": false
+  },
+  {
+   "case": "test_retrospective_method_comparison[M1_LINEAR_INTERPOLATION-0.4]",
+   "t9i_independent_court": "passed",
+   "t9c_repaired_adapter": "passed",
+   "changed": false,
+   "flipped_red_to_green": false,
+   "newly_red": false
+  },
+  {
+   "case": "test_retrospective_method_comparison[M2_UNCERTAINTY_AWARE_BACKOFF-0.2]",
+   "t9i_independent_court": "passed",
+   "t9c_repaired_adapter": "passed",
+   "changed": false,
+   "flipped_red_to_green": false,
+   "newly_red": false
+  },
+  {
+   "case": "test_schema_capability_limits_are_recorded_not_inferred_as_person_memory",
+   "t9i_independent_court": "passed",
+   "t9c_repaired_adapter": "passed",
+   "changed": false,
+   "flipped_red_to_green": false,
+   "newly_red": false
+  },
+  {
+   "case": "test_structural_route_mutation_is_detected",
+   "t9i_independent_court": "failure",
+   "t9c_repaired_adapter": "passed",
+   "changed": true,
+   "flipped_red_to_green": true,
+   "newly_red": false
+  },
+  {
+   "case": "test_two_time_original_consumer_and_numerical_products_reproduced",
+   "t9i_independent_court": "passed",
+   "t9c_repaired_adapter": "failure",
+   "changed": true,
+   "flipped_red_to_green": false,
+   "newly_red": true
+  }
+ ]
+}
