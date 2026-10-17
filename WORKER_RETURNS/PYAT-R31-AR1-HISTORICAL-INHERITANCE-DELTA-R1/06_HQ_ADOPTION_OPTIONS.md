@@ -1,6 +1,6 @@
 # AR1 → HQ options (all proposals; no self-adoption)
 
-**Recommend:** accept R31 AR1 as a bounded **historical-to-current scientific comparison**, not a replacement for the 44 LM / 53 inherited responsibility audits, full original35 processing, SOROK science, or the missing archive. Bank the 11-row matrix as an independent assessment at exact sealed SHA `88d025fa207b53b90aeae57c7f3d73d03d09a630`; require independent HQ adjudication of each proposed action and every source/actor permission.
+**Recommend:** accept R31 AR1 as a bounded **historical-to-current scientific comparison**, not a replacement for the 44 LM / 53 inherited responsibility audits, full original35 processing, SOROK science, or the missing archive. Bank the 12-row matrix as an independent assessment at exact sealed SHA `88d025fa207b53b90aeae57c7f3d73d03d09a630`; require independent HQ adjudication of each proposed action and every source/actor permission.
 
 **Option A — narrow science progress, fastest lawful:** uphold all existing accepted C1/I05/FF/temporal owners, reject blanket H040/H042 revival, use O35W's signed-retained-only motion and F6/GF in-flight results. Commission one independent N9 world-to-nonparent consumer contract/court **only after actual accepted field/value inputs**. No person state.
 
