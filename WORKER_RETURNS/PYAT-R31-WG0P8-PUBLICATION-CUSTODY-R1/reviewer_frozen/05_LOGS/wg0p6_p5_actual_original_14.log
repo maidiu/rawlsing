@@ -1,0 +1,58 @@
+...FFF...........                                                        [100%]
+=================================== FAILURES ===================================
+_ test_forged_or_substituted_authority_does_not_serve_supported_fact[authority_issuer_substitution/A2_stale_issuer_epoch_same_identity] _
+
+court = <authority_seam_adapter_v1.AuthoritySeamCourt object at 0x1066e8910>
+control = {'group': 'authority_issuer_substitution', 'case': 'A2_stale_issuer_epoch_same_identity', 'kind': 'NEGATIVE_REFUSAL', ...ersion,authority_content_hash) body with effective_time_or_interval='2019-01-01' and non-empty supersession_refs", ...}
+
+    @pytest.mark.parametrize("control", NEG, ids=lambda c: c["group"] + "/" + c["case"])
+    def test_forged_or_substituted_authority_does_not_serve_supported_fact(court, control):
+        e = court.execute_case(control["group"], control["case"])
+        assert e["attempted"] is True
+        assert e["raw_path"], "execution must produce a persisted raw receipt"
+        assert e["physical_modules"], "native owner modules must be physically imported/verified"
+        # the law: no SUPPORTED original fact under a forged/substituted/stale issuer
+>       assert e["served_supported_original_fact"] is False, control["case"]
+E       AssertionError: A2_stale_issuer_epoch_same_identity
+E       assert True is False
+
+WORKER_RETURNS/PYAT-R29-WG0Q-INDEPENDENT-AUTHORITY-BODY-DELTA-R1/01_WG0P6_REVIEWER/tests/test_authority_seam_court.py:82: AssertionError
+_ test_forged_or_substituted_authority_does_not_serve_supported_fact[authority_issuer_substitution/A3_same_hash_foreign_signed_body] _
+
+court = <authority_seam_adapter_v1.AuthoritySeamCourt object at 0x1066e8910>
+control = {'group': 'authority_issuer_substitution', 'case': 'A3_same_hash_foreign_signed_body', 'kind': 'NEGATIVE_REFUSAL', 'ta...but foreign interpretation_semantics_fingerprint, foreign producer replay root and foreign parent_authority_refs', ...}
+
+    @pytest.mark.parametrize("control", NEG, ids=lambda c: c["group"] + "/" + c["case"])
+    def test_forged_or_substituted_authority_does_not_serve_supported_fact(court, control):
+        e = court.execute_case(control["group"], control["case"])
+        assert e["attempted"] is True
+        assert e["raw_path"], "execution must produce a persisted raw receipt"
+        assert e["physical_modules"], "native owner modules must be physically imported/verified"
+        # the law: no SUPPORTED original fact under a forged/substituted/stale issuer
+>       assert e["served_supported_original_fact"] is False, control["case"]
+E       AssertionError: A3_same_hash_foreign_signed_body
+E       assert True is False
+
+WORKER_RETURNS/PYAT-R29-WG0Q-INDEPENDENT-AUTHORITY-BODY-DELTA-R1/01_WG0P6_REVIEWER/tests/test_authority_seam_court.py:82: AssertionError
+_ test_forged_or_substituted_authority_does_not_serve_supported_fact[authority_issuer_substitution/A4_foreign_governed_operations_same_hash] _
+
+court = <authority_seam_adapter_v1.AuthoritySeamCourt object at 0x1066e8910>
+control = {'group': 'authority_issuer_substitution', 'case': 'A4_foreign_governed_operations_same_hash', 'kind': 'NEGATIVE_REFUS...EL-A-W1.qauth := same identity triple but governed_operations=('WG0P3-OP-FOREIGN-ONLY',) and foreign fingerprint", ...}
+
+    @pytest.mark.parametrize("control", NEG, ids=lambda c: c["group"] + "/" + c["case"])
+    def test_forged_or_substituted_authority_does_not_serve_supported_fact(court, control):
+        e = court.execute_case(control["group"], control["case"])
+        assert e["attempted"] is True
+        assert e["raw_path"], "execution must produce a persisted raw receipt"
+        assert e["physical_modules"], "native owner modules must be physically imported/verified"
+        # the law: no SUPPORTED original fact under a forged/substituted/stale issuer
+>       assert e["served_supported_original_fact"] is False, control["case"]
+E       AssertionError: A4_foreign_governed_operations_same_hash
+E       assert True is False
+
+WORKER_RETURNS/PYAT-R29-WG0Q-INDEPENDENT-AUTHORITY-BODY-DELTA-R1/01_WG0P6_REVIEWER/tests/test_authority_seam_court.py:82: AssertionError
+=========================== short test summary info ============================
+FAILED WORKER_RETURNS/PYAT-R29-WG0Q-INDEPENDENT-AUTHORITY-BODY-DELTA-R1/01_WG0P6_REVIEWER/tests/test_authority_seam_court.py::test_forged_or_substituted_authority_does_not_serve_supported_fact[authority_issuer_substitution/A2_stale_issuer_epoch_same_identity]
+FAILED WORKER_RETURNS/PYAT-R29-WG0Q-INDEPENDENT-AUTHORITY-BODY-DELTA-R1/01_WG0P6_REVIEWER/tests/test_authority_seam_court.py::test_forged_or_substituted_authority_does_not_serve_supported_fact[authority_issuer_substitution/A3_same_hash_foreign_signed_body]
+FAILED WORKER_RETURNS/PYAT-R29-WG0Q-INDEPENDENT-AUTHORITY-BODY-DELTA-R1/01_WG0P6_REVIEWER/tests/test_authority_seam_court.py::test_forged_or_substituted_authority_does_not_serve_supported_fact[authority_issuer_substitution/A4_foreign_governed_operations_same_hash]
+3 failed, 14 passed in 33.85s

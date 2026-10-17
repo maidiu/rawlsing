@@ -1,0 +1,53 @@
+{
+  "adapter_sha256": "3934abb4bf6b481c5b2e3c98a7f019d089e8efb287747668d8eb67de3f891c16",
+  "artifact_sha256": {
+    "00_PHASE_A_PREREGISTRATION.md": "f057751a1b9cad6db80bb440c5299ce8f7a525e7f1ef3871e5be1db863aa2f14",
+    "01_FROZEN_AUTHORITY_BODY_AND_EPOCH_ORACLE.json": "240709efc075764abe713d73e4326887f7e11be4dd9473ca97089f8fa3afad97",
+    "01_WG0P6_STAGED/court/01_FROZEN_ACTUAL_AUTHORITY_API_CASES.json": "1a57f97bc5ebcb394fd150acbfbc1e57a39039097057e310c2e8ba0078ce5656",
+    "01_WG0P6_STAGED/court/repro/authority_body_adapter_v1.py": "3934abb4bf6b481c5b2e3c98a7f019d089e8efb287747668d8eb67de3f891c16",
+    "01_WG0P6_STAGED/court/repro/authority_seam_adapter_v1.py": "5eeea642bc749eababd10232c4db2357ea8e2121c9e8449a4c697a0909672dda",
+    "01_WG0P6_STAGED/court/runtime_phase_b/candidate/repro/wg0p4_workload.py": "c74b34d14c5a79993e7b56908ac017b2e35a97df422460f4d62beb30b63821f8",
+    "01_WG0P6_STAGED/court/tests/test_authority_body_delta_court.py": "d91bde2bfaf9f7b67f11d496d3e2673852675edb337b40cca15535d9380d8890",
+    "02_PHASE_A_WG0P6_REPRODUCTION.json": "b4976542608c87611c137574aee813bed830d4af599184ae57f62630170ede8e",
+    "04_JUNIT/wg0o_original_14_reproduction.xml": "4f91c5cb3200ed9641e79f8090fe5be01419f6b7feb4c0ca8065d79cd83a4bd1",
+    "04_JUNIT/wg0q_phase_a_new_matrix_on_wg0p6.xml": "d9a0344546bd0e27a6e9884a9416d1155aa0f37b672edd1463befe550d977cb4"
+  },
+  "branch": "agent/reviewer-pyat-r29-wg0q-independent-authority-body-delta-court-r1",
+  "commands": {
+    "wg0o_original_14": "PYTHONDONTWRITEBYTECODE=1 PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONPATH=01_WG0P6_STAGED/court/repro WG0O_WG0N_ROOT=<WG0N-return> python3 -B -m pytest ... 01_WG0P6_STAGED/court/tests/test_authority_seam_court.py",
+    "wg0q_new_matrix": "PYTHONDONTWRITEBYTECODE=1 PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONPATH=01_WG0P6_STAGED/court/repro WG0Q_RUN=phase_a_wg0p6 python3 -B -m pytest ... 01_WG0P6_STAGED/court/tests/test_authority_body_delta_court.py"
+  },
+  "control_counts": {
+    "new": 34,
+    "new_negative": 29,
+    "new_positive": 5,
+    "original": 14,
+    "original_negative": 11,
+    "original_positive": 3
+  },
+  "freeze_utc": "2026-10-17T16:56:01Z",
+  "frozen_before_any_wg0p7_inspection": true,
+  "new_oracle_sha256": "240709efc075764abe713d73e4326887f7e11be4dd9473ca97089f8fa3afad97",
+  "original_wg0o_oracle_sha256": "1a57f97bc5ebcb394fd150acbfbc1e57a39039097057e310c2e8ba0078ce5656",
+  "phase_a_commit_note": "The Phase A commit SHA is the commit that contains this receipt; exact remote readback is in 05_PUBLICATION_RECEIPT.json after push.",
+  "phase_a_wg0p6_reproduction": {
+    "new_matrix": "19 RED / 15 pass under strict typed-zero-I03 law",
+    "new_pass_count": 15,
+    "new_red_count": 19,
+    "original_14": "3 served RED A2/A3/A4; 7 typed refusals; C2 untyped AttributeError with zero served/I03; 3 positives serve",
+    "served_red_cases": [
+      "A2_stale_issuer_epoch_same_identity",
+      "A3_same_hash_foreign_signed_body",
+      "A4_foreign_governed_operations_same_hash"
+    ]
+  },
+  "review_base_wg0o": "3ee5d6a4e246fca89740d4d36ab26206230c83bf",
+  "schema": "PYAT_R29_WG0Q_PHASE_A_FREEZE_RECEIPT@1",
+  "sealed_startup": "81075b2db946bda2623721c431c68bd0c6a95ad4",
+  "test_court_sha256": "d91bde2bfaf9f7b67f11d496d3e2673852675edb337b40cca15535d9380d8890",
+  "unrepaired_wg0p6": "e7e429c3dfb649233e74e0e5106e51ff25024806",
+  "wg0p6_module_git_blob": "ef4f2b33c07596ae6c3008320f13d9f5d027b9e4",
+  "wg0p6_module_sha256": "3807e46eec947694a1bd76afe23fd96183dd989b511584ec2ad3991ae943925e",
+  "wg0p6_staged_files": 832,
+  "wg0p7_content_read_before_freeze": false
+}
