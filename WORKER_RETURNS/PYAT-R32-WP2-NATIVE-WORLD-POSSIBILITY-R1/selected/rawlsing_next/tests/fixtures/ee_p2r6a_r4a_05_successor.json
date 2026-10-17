@@ -1,0 +1,139 @@
+{
+  "schema": "EE_P2R4A_PUBLIC_PREDICATE_SUCCESSOR_AUTHORITY_CANDIDATE@1.0.0",
+  "status": "CANDIDATE__HQ_ADOPTION_REQUIRED__NOT_PRODUCTION_AUTHORITY",
+  "candidate_ref": {
+    "kind": "PublicPredicateSuccessorAuthorityCandidate@1.0.0",
+    "object_id": "urn:rawlsing:prev3:p2r4a:public-predicate-successor:sha256:b87c387f9d222c83106c8d47d369af44f5c5368b274fd85e7a08b12c20d49cae",
+    "content_hash": "b87c387f9d222c83106c8d47d369af44f5c5368b274fd85e7a08b12c20d49cae"
+  },
+  "authority_candidate_content_hash": "b87c387f9d222c83106c8d47d369af44f5c5368b274fd85e7a08b12c20d49cae",
+  "identity_material": {
+    "authority_candidate_id": "PRE553_PUBLIC_PREDICATE_AND_MIXED_COMPOSITION_SUCCESSOR_AUTHORITY_CANDIDATE_R1",
+    "scope": "EXACT_D02_F02_IDENTITY_PRESERVING_SUCCESSOR_ONLY",
+    "dialect_semantics_schema": "EE_P2R4A_F02_PREDICATE_DIALECT_SEMANTICS_MATRIX@1.0.0",
+    "respondent_binding_compatibility_ref": {
+      "kind": "RespondentBindingCompatibilityAuthorityCandidate@1.0.0",
+      "object_id": "urn:rawlsing:prev3:p2r4a:respondent-binding:sha256:3ef0317887f6910838636d3816237a81d5a56b38e07595c8cc1f7c5e7f1fae74",
+      "content_hash": "3ef0317887f6910838636d3816237a81d5a56b38e07595c8cc1f7c5e7f1fae74"
+    },
+    "mixed_grammar_authority_ref": {
+      "authority_id": "urn:rawlsing:prev3:p2r4a:pre553:mixed-predicate-grammar",
+      "authority_version": "1.0.0-candidate",
+      "authority_content_hash": "0d7cfaac1d63cd438d29b109b590cb828805bd113fc37759a6f6f4c88d3c8f55"
+    },
+    "derived_predicate_contract_ref": {
+      "kind": "DerivedPredicateAuthorityContractCandidate@1.0.0",
+      "object_id": "urn:rawlsing:prev3:p2r4a:derived-predicate-contract:sha256:225e4b80390500451834ea784d955465eb9f145a4cd1f798dace51f3a6d3baa4",
+      "content_hash": "225e4b80390500451834ea784d955465eb9f145a4cd1f798dace51f3a6d3baa4"
+    },
+    "exact_frozen_inputs": {
+      "d02": {
+        "commit": "40cb8585f076a66d9884b99022a59bb909606c03",
+        "frontier_blob": "5399a3f64642c8d9f8a0644db0adc15d38642971",
+        "workload_id": "PREV3_LEARNED_WORLD_POSITIVE_WORKLOAD_R1",
+        "candidates": 50,
+        "roles": 77,
+        "K": 3,
+        "J": 2
+      },
+      "f02": {
+        "pass": "482bb884a99e31ba77e904d0df39fffc872cbed3",
+        "selector_implementation_blob": "7b45b277164fa90c3da739aab26b516f7a8cb8dc",
+        "release_ref": {
+          "kind": "C11LogicalRelease",
+          "object_id": "LITS1-F02-C11-7cac43e2ca5b31cb-bf305bf3f169d669",
+          "content_hash": "bf305bf3f169d66954be4f39cc602880fddea6083b5bee9c0212938355cd5297"
+        },
+        "selector_hashes": [
+          "c9a0c8106d457bba7e3f3f5abb7ee7fb98482bd86af629d860e4a904ad58456a",
+          "78dbd1a899fe43ac2e2ca6985ea0eccb086989fa2c4315fa518524e7ba94a6df",
+          "c4d2dd827326b6ff29f3c02382c36fa33c47c6227bfbf8c8053c11e1089923ca",
+          "69dc59f79014a7c17190ca658e193a004e167c322c7f713f4540882fb980feb8",
+          "f63d6121776500912342ab377178a15fcf6fabf7071864f4f413d95babb43849",
+          "a6494153b4defeb13e1658b73eead7c5df6e25847708c770dad5f42142492c7d"
+        ]
+      },
+      "p2r1": {
+        "pass": "9511f44728a8469d685463ec0fc880864c9187de",
+        "generic_predicate_evaluator_blob": "902b179817f02a46fc0844971f268113123347f4",
+        "generic_i05_blob": "b2b99460cc5991bc26aa2ffe5bda129b408fc197"
+      },
+      "b12": {
+        "authority_ref": {
+          "authority_id": "urn:rawlsing:pre553:as2b:lits1:authority:i03_query",
+          "authority_version": "AS2A-BANKED-1.0.0",
+          "authority_content_hash": "6c6d2f5fb5f4165e5de19989bd456ee8c09f42ab175fa4d10572dc2b9403ca0d"
+        },
+        "predicate_identity_law": "EXACT_ACCEPTED_B12_RUNTIME_REFS_UNCHANGED",
+        "query_template_hashes": [
+          "8a7bf5bbb1c2d8d6328dc5507416931a9c12e2c76668e0fc47af8add254c5d44",
+          "deb71e653592d8bdb246f8c4d53359e290708d3875e38433f518b307f520c6f7",
+          "ef8b19744ec3c06e352f7accf75efbc216ffc454905da09948763a2c54fdc053"
+        ]
+      }
+    },
+    "evaluator_successor_contract": {
+      "frozen_f02_ast_rewrite": "FORBIDDEN",
+      "interpretation": "DIRECT_AUTHORITY_DRIVEN_INTERPRETATION_OF_FROZEN_CHILD_DIALECT",
+      "child_operation": "survey_response_EQ",
+      "required_semantics": "TRUE_IFF_SAME_ROW_GOVERNED_EVENT_HAS_EXACT_NATIVE_VALUE__MISSING_FALSE__NO_ORDERING_DISTANCE",
+      "exact_release_realization_precondition": "BOUND_RELEASE_REF_MUST_RESOLVE_AS_EXACT_PUBLIC_C11_RUNTIME_RELEASE__ELSE_FAIL_CLOSED",
+      "r4b_ownership_preserved": true
+    },
+    "composition_successor_contract": {
+      "mixed_operation": "AND_ONLY",
+      "allowed_grammar_refs": [
+        {
+          "authority_id": "urn:rawlsing:pre553:as2b:lits1:authority:i03_query",
+          "authority_version": "AS2A-BANKED-1.0.0",
+          "authority_content_hash": "6c6d2f5fb5f4165e5de19989bd456ee8c09f42ab175fa4d10572dc2b9403ca0d"
+        },
+        {
+          "authority_id": "urn:rawlsing:prev3:f02:lits1:predicate-grammar",
+          "authority_version": "1.0.0",
+          "authority_content_hash": "bc6d433ff58e67e343f1bd1d8e3e92d691b81931dca6447716b08dbf0c8eff8b"
+        }
+      ],
+      "respondent_relation": "EXACT_RELEASE_SCOPED_REFINEMENT_NOT_GLOBAL_EQUIVALENCE",
+      "derived_authority": "EXPLICIT_NEW_SUCCESSOR_AUTHORITY__NEVER_FIRST_INPUT_INHERITANCE"
+    },
+    "generic_runtime_requirements": {
+      "exact_authority_lookup_only": true,
+      "leaf_interpreter_dispatch": "Resolve exact predicate grammar authority plus governed operation to an interpreter contract; never infer from field shape.",
+      "mixed_composition_dispatch": "On differing grammar or respondent-binding fields, require one exact positive compatibility/composition authority containing every input, scope, and operation.",
+      "derived_predicate_construction": "Use the exact adopted derived-authority contract; never inherit first-input grammar or binding.",
+      "existing_equal_contract_path": "Exact-equal input grammar and binding retains current production path unchanged.",
+      "default_on_missing_authority": "FAIL_CLOSED",
+      "forbidden_generic_special_cases": [
+        "SOURCE_FAMILY_NAME",
+        "QUESTION_IDENTIFIER",
+        "SELECTOR_OBJECT_ID",
+        "SELECTOR_CONTENT_HASH",
+        "WORKLOAD_LANE_ID"
+      ]
+    },
+    "preservation_contract": {
+      "f02_selector_exactrefs": "PRESERVE_ALL_SIX",
+      "b12_predicate_exactrefs": "PRESERVE_ALL",
+      "d02_workload_semantics": "UNCHANGED",
+      "d02_candidate_and_role_counts": "50_AND_77_UNCHANGED",
+      "existing_pre553_same_grammar_same_binding_behavior": "UNCHANGED",
+      "absent_explicit_compatibility_authority": "FAIL_CLOSED",
+      "source_specific_generic_code": false
+    },
+    "candidate_c": "C_NONQUALIFYING__S02_C11_REACHABILITY__FROZEN_CACC1_STREAM_OMITS_Q310_Q311_REQUIRED_BY_F02_COMPOSITE_PROJECTION",
+    "negative_authority": [
+      "NO_GLOBAL_RESPONDENT_LAW_EQUIVALENCE",
+      "NO_CROSS_RELEASE_EQUIVALENCE",
+      "NO_ADJACENT_GRAMMAR_INFERENCE",
+      "NO_SILENT_FIELD_ALIAS",
+      "NO_SELECTOR_REMINT",
+      "NO_B12_REMINT",
+      "NO_OR_NOT_MIXED_GRAMMAR_GRANT",
+      "NO_SOURCE_SPECIFIC_GENERIC_CODE",
+      "NO_C11_REALIZATION_CLAIM",
+      "NO_P2X_OR_BE1_OR_CANDIDATE_C_ACTION",
+      "NO_EMPIRICAL_OR_PERFORMANCE_CLAIM"
+    ]
+  }
+}

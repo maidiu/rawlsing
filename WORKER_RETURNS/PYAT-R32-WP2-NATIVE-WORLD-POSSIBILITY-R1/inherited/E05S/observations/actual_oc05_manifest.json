@@ -1,0 +1,32 @@
+{
+  "OC01_PRE553_SOURCE_LOCAL_EMPIRICAL_QUERY_R1": {
+    "policy_id": "OC01_PRE553_SOURCE_LOCAL_EMPIRICAL_QUERY_R1",
+    "current_applicability": "APPLICABLE_CURRENT",
+    "consumer_seam": "rawlsing_next.pre553_empirical_query.execute_empirical_query",
+    "reason": "current exact source-local empirical query/statistic seam"
+  },
+  "OC02_LEARNED_STRUCTURAL_ADMISSION_R1": {
+    "policy_id": "OC02_LEARNED_STRUCTURAL_ADMISSION_R1",
+    "current_applicability": "APPLICABLE_CURRENT",
+    "consumer_seam": "rawlsing_next.pre553_structural_admission",
+    "reason": "current P06/I04 structural-admission decision/refusal seam"
+  },
+  "OC03_SDTF_OBJECTIVE_CONSEQUENCE_R1": {
+    "policy_id": "OC03_SDTF_OBJECTIVE_CONSEQUENCE_R1",
+    "current_applicability": "NOT_YET_APPLICABLE",
+    "consumer_seam": null,
+    "reason": "P1-P5 remain CANDIDATE_NOT_CURRENT pending W2-D04 and later admission"
+  },
+  "OC04_OCCURRENCE_NONEVENT_WORLD_FACT_R1": {
+    "policy_id": "OC04_OCCURRENCE_NONEVENT_WORLD_FACT_R1",
+    "current_applicability": "NOT_YET_APPLICABLE",
+    "consumer_seam": null,
+    "reason": "generic non-event adapter is W2-D05; real world rooting is W2-D01"
+  },
+  "OC05_TERMINAL_OBJECTIVE_WORLD_RESOLUTION_R1": {
+    "policy_id": "OC05_TERMINAL_OBJECTIVE_WORLD_RESOLUTION_R1",
+    "current_applicability": "NOT_YET_APPLICABLE",
+    "consumer_seam": null,
+    "reason": "terminal objective-world root/resolver is not current; no universal terminal may be invented"
+  }
+}

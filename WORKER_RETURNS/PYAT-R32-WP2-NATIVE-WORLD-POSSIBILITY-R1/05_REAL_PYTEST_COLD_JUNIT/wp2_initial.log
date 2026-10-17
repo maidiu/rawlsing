@@ -1,0 +1,40 @@
+....................FFF..                                                [100%]
+=================================== FAILURES ===================================
+__ test_actual_owner_refuses_law_person_or_model_promotion[requested_pooling] __
+
+flag = 'requested_pooling'
+
+    @pytest.mark.parametrize('flag',['requested_pooling','requested_person_exposure','requested_model_use'])
+    def test_actual_owner_refuses_law_person_or_model_promotion(flag):
+>    with pytest.raises(W.E.N9SelectedWorldRefusal):W.E.standard_request(**{flag:True})
+                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E    TypeError: standard_request() missing 1 required keyword-only argument: 'label'
+
+WORKER_RETURNS/PYAT-R32-WP2-NATIVE-WORLD-POSSIBILITY-R1/tests/test_wp2.py:142: TypeError
+_ test_actual_owner_refuses_law_person_or_model_promotion[requested_person_exposure] _
+
+flag = 'requested_person_exposure'
+
+    @pytest.mark.parametrize('flag',['requested_pooling','requested_person_exposure','requested_model_use'])
+    def test_actual_owner_refuses_law_person_or_model_promotion(flag):
+>    with pytest.raises(W.E.N9SelectedWorldRefusal):W.E.standard_request(**{flag:True})
+                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E    TypeError: standard_request() missing 1 required keyword-only argument: 'label'
+
+WORKER_RETURNS/PYAT-R32-WP2-NATIVE-WORLD-POSSIBILITY-R1/tests/test_wp2.py:142: TypeError
+_ test_actual_owner_refuses_law_person_or_model_promotion[requested_model_use] _
+
+flag = 'requested_model_use'
+
+    @pytest.mark.parametrize('flag',['requested_pooling','requested_person_exposure','requested_model_use'])
+    def test_actual_owner_refuses_law_person_or_model_promotion(flag):
+>    with pytest.raises(W.E.N9SelectedWorldRefusal):W.E.standard_request(**{flag:True})
+                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E    TypeError: standard_request() missing 1 required keyword-only argument: 'label'
+
+WORKER_RETURNS/PYAT-R32-WP2-NATIVE-WORLD-POSSIBILITY-R1/tests/test_wp2.py:142: TypeError
+=========================== short test summary info ============================
+FAILED WORKER_RETURNS/PYAT-R32-WP2-NATIVE-WORLD-POSSIBILITY-R1/tests/test_wp2.py::test_actual_owner_refuses_law_person_or_model_promotion[requested_pooling]
+FAILED WORKER_RETURNS/PYAT-R32-WP2-NATIVE-WORLD-POSSIBILITY-R1/tests/test_wp2.py::test_actual_owner_refuses_law_person_or_model_promotion[requested_person_exposure]
+FAILED WORKER_RETURNS/PYAT-R32-WP2-NATIVE-WORLD-POSSIBILITY-R1/tests/test_wp2.py::test_actual_owner_refuses_law_person_or_model_promotion[requested_model_use]
+3 failed, 22 passed in 0.83s

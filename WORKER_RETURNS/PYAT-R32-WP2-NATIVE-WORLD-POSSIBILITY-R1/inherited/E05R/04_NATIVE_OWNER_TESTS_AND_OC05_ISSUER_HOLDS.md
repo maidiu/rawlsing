@@ -1,0 +1,9 @@
+# Native owner tests and issuer holds
+
+All 271 original cases are rerun with frozen expectations: E05 38, E04 37, N9C 47, M4/M5 30, empirical N10E/C1/F8/I03 101, and E03 18. The original independent E05I test file is unchanged: 55 cases, previously 44 PASS / 11 FAIL. Additional E05R regressions are separate, not counted as independent review. Actual pytest exits/stdout/JUnit govern the counts in `execution_receipt.json`; no skipped case is counted as a pass.
+
+The actual import/profile evidence is `02_ACTUAL_M4_M5_N9C_E04_NATIVE_OWNER_TRACE.json`. Its conftest is the exact original E05I profiler, observing real frames without owner wrappers, doubles or monkeypatches. It verifies module blob hashes against the manifest. The E05R module is explicitly labeled versioned working candidate; other imported owners retain their exact original source commits/blobs. `observations/baseline/` preserves original owner suite results and original baseline profile. `observations/baseline_independent.{xml,log}` preserves the reproduced eleven failures. Repaired results are separate.
+
+The real `installation_manifest()` still reports OC05 `NOT_YET_APPLICABLE`, seam None. Direct OC05 evaluation still raises `NotYetApplicableConsumer`. Receipts keep operative_N9=false, operative_OC05=false, issued_N5N6=false, issued_EE13=false and new_issuer=false. All real archived GSS/NCA publisher edition/PDF byte roots, custody, licences and competent operation rights remain unadmitted. Fixture integrity hashes do not provide signer authority.
+
+No OC05 installation, N5/N6, EE13, EE14/N10W, all35/N11/N12, person or V3 activation, original survey execution, accepted-owner/CURRENT/canonical edits or HQ adoption occurred. Writes are restricted to this E05R return. E04R's separate repair/review is neither copied nor adopted. A distinct E05R independent court is still required before any acceptance or adoption.

@@ -1,0 +1,286 @@
+{
+  "r11_e05_two_fields_and_selected_snapshot_owner_trace": {
+    "contract": "R11_E05_N9_SELECTED_WORLD_INTERFACE@1",
+    "grade": "NONINSTALLING_SOURCEFREE_ADAPTER_CANDIDATE",
+    "snapshot_consistency": "one atomic snapshot carries every channel; its publication clock is the ONLY native field as-of clock",
+    "native_field_readset": {
+      "dwelling": {
+        "role": "GSS_RURAL_LIGHTING",
+        "source_family": "GH_GSS_PHC_2021",
+        "publisher": "Ghana Statistical Service",
+        "native_unit": "RURAL_OCCUPIED_HOUSEHOLD_MAIN_LIGHTING",
+        "native_geography": "GHANA_RURAL",
+        "native_measure": "ELECTRICITY_MAIN_LIGHTING_ALL_SUBTYPES",
+        "observation_period": "2021 PHC",
+        "publication_date": "2022-02-24",
+        "publication_clock_state": "PUBLISHED",
+        "uncertainty": "CENSUS_NONSAMPLING_UNQUANTIFIED",
+        "exclusions": [
+          "SECONDARY_HOUSING",
+          "VACANT_DWELLINGS"
+        ],
+        "owner": "rawlsing_next.pre553_hq297_n9c_two_field_reader.read_historical_test_only",
+        "owner_blob": "03eb46efccadd6880cb34b2e2ac609ffc9b16c59"
+      },
+      "subscription": {
+        "role": "NCA_NATIONAL_MOBILE_DATA",
+        "source_family": "GH_NCA_LICENSEE_REPORTS_2021Q4",
+        "publisher": "National Communications Authority",
+        "native_unit": "ACTIVE_MOBILE_DATA_SUBSCRIPTIONS_NOT_UNIQUE_PERSONS",
+        "native_geography": "GHANA_NATIONAL",
+        "native_measure": "ACTIVE_MOBILE_DATA_90_DAY_TRAFFIC",
+        "observation_period": "2021-Q4 (90-day activity definition)",
+        "publication_date": "2022-07-08",
+        "publication_clock_state": "PUBLISHED",
+        "uncertainty": "LICENSEE_REPORTING_ERROR_UNQUANTIFIED",
+        "unique_persons": false,
+        "rural_split": null,
+        "owner": "rawlsing_next.pre553_hq297_n9c_two_field_reader.read_historical_test_only",
+        "owner_blob": "03eb46efccadd6880cb34b2e2ac609ffc9b16c59"
+      },
+      "pooling": false,
+      "person_exposure": false,
+      "model_use": false,
+      "cross_field_arithmetic": null,
+      "cross_field_arithmetic_reason": "NATIVE_UNITS_AND_SOURCE_CLASSES_ARE_DELIBERATELY_HETEROGENEOUS"
+    },
+    "sinks": {
+      "CURRENT_TEST_CLOCK": {
+        "selection": {
+          "mode": "TEST_CURRENT",
+          "valid_at": "2027-09-01",
+          "published_asof": "2027-09-01",
+          "test_now": "2027-09-01"
+        },
+        "state": "SELECTED_WORLD_VALUES_SERVED",
+        "acceptance_state": "ACCEPTED_ATOMIC_SELECTED_SNAPSHOT",
+        "inconsistencies": [],
+        "snapshot_hash": "aba4c7402add71b237581b1a91ed6066f1b0918c28bc8799ac8d9db6530e9dd7",
+        "receipt_hash": "ea402d6f5215d7b453d48b982f47e47bd504a50add4d0372b6b220fad0c69c3b",
+        "receipt_payload_sha256": "a854df52706231b1443019862eb507708368a443a152ba34f0099e0f079de4c8",
+        "native_field_values": {
+          "GSS_RURAL_LIGHTING": {
+            "numerator": 2388192,
+            "denominator": 3288063,
+            "published_percent": 72.6,
+            "electricity_subtypes": {
+              "mains": 2288193,
+              "community_grid": 74490,
+              "generator": 3640,
+              "solar_inverter": 21512,
+              "wind": 357
+            }
+          },
+          "NCA_NATIONAL_MOBILE_DATA": {
+            "active_subscriptions": 23414527,
+            "prepaid": 23237338,
+            "postpaid": 177189
+          }
+        },
+        "empirical": [
+          [
+            "Y",
+            32,
+            {
+              "0": 14,
+              "1": 18
+            }
+          ],
+          [
+            "Y",
+            16,
+            {
+              "0": 6,
+              "1": 10
+            }
+          ],
+          [
+            "Y",
+            8,
+            {
+              "0": 2,
+              "1": 6
+            }
+          ]
+        ],
+        "structural_values": {
+          "training_access": false,
+          "training_fee": 2,
+          "exit_cost": 8,
+          "civil_open": true,
+          "civil_sanction": false
+        }
+      },
+      "HISTORICAL_AS_OF": {
+        "selection": {
+          "mode": "AS_OF",
+          "valid_at": "2026-06-01",
+          "published_asof": "2026-03-01",
+          "test_now": null
+        },
+        "state": "SELECTED_WORLD_VALUES_SERVED",
+        "acceptance_state": "ACCEPTED_ATOMIC_SELECTED_SNAPSHOT",
+        "inconsistencies": [],
+        "snapshot_hash": "4e80489a37a6e8c31acf969eb20eacbc7421a47544e6c996690dda077ba9c11b",
+        "receipt_hash": "974ac4bc6478b23b8f9990f1596ba65a54d756ad42e8259351c657e81710b1f8",
+        "receipt_payload_sha256": "b73b3e437178c3b8780770374128d004bb55492697fba47517d8f462f60e5baa",
+        "native_field_values": {
+          "GSS_RURAL_LIGHTING": {
+            "numerator": 2388192,
+            "denominator": 3288063,
+            "published_percent": 72.6,
+            "electricity_subtypes": {
+              "mains": 2288193,
+              "community_grid": 74490,
+              "generator": 3640,
+              "solar_inverter": 21512,
+              "wind": 357
+            }
+          },
+          "NCA_NATIONAL_MOBILE_DATA": {
+            "active_subscriptions": 23414527,
+            "prepaid": 23237338,
+            "postpaid": 177189
+          }
+        },
+        "empirical": [
+          [
+            "Y",
+            32,
+            {
+              "0": 14,
+              "1": 18
+            }
+          ],
+          [
+            "Y",
+            16,
+            {
+              "0": 6,
+              "1": 10
+            }
+          ],
+          [
+            "Y",
+            8,
+            {
+              "0": 2,
+              "1": 6
+            }
+          ]
+        ],
+        "structural_values": {
+          "training_access": true,
+          "training_fee": 2,
+          "exit_cost": 2,
+          "civil_open": true,
+          "civil_sanction": false
+        }
+      },
+      "TYPED_PARTIAL_PRE_NCA_PUBLICATION": {
+        "selection": {
+          "mode": "AS_OF",
+          "valid_at": "2022-06-01",
+          "published_asof": "2022-06-01",
+          "test_now": null
+        },
+        "state": "TYPED_PARTIAL_SELECTED_WORLD",
+        "acceptance_state": "ACCEPTED_WITH_TYPED_PARTIAL",
+        "refusals": [
+          {
+            "role": "NCA_NATIONAL_MOBILE_DATA",
+            "reason": "NOT_PUBLISHED_AT_SELECTED_ASOF"
+          }
+        ],
+        "dependency_readset_arms": 2,
+        "successful_value_refset_arms": 1,
+        "snapshot_hash": "7e89a34adcdfbdfa8f7ad62e64f960998c22f4ba6a24471bbf421ff32eb6e8a6",
+        "receipt_hash": "5353461a670acf7380022308d4a71b8e50c59bde189d048815afb87dbebe7358",
+        "receipt_payload_sha256": "38c0d465813fc6d3846a211087bce9a155b9aacdb6e511969a89192038efb0d5",
+        "native_field_values": {
+          "GSS_RURAL_LIGHTING": {
+            "numerator": 2388192,
+            "denominator": 3288063,
+            "published_percent": 72.6,
+            "electricity_subtypes": {
+              "mains": 2288193,
+              "community_grid": 74490,
+              "generator": 3640,
+              "solar_inverter": 21512,
+              "wind": 357
+            }
+          }
+        },
+        "empirical": [],
+        "structural_values": {
+          "training_access": null,
+          "training_fee": null,
+          "exit_cost": null,
+          "civil_open": null,
+          "civil_sanction": null
+        }
+      }
+    },
+    "owner_call_trace": [
+      {
+        "step": 1,
+        "owner": "rawlsing_next.objective_consumer_bounded_evidence.installation_manifest",
+        "result": "OC05 NOT_YET_APPLICABLE, seam None"
+      },
+      {
+        "step": 2,
+        "owner": "E04 product.world.SelectedWorldCatalog.select",
+        "result": "one atomic SelectedSnapshot over the caller's synthetic clock pair"
+      },
+      {
+        "step": 3,
+        "owner": "E04 product.world.SelectedWorldCatalog._resolve (m4.make_structural_object -> govern_v557 -> make_producer_locator -> build_v557_publication_bundle -> build_v558_repository_bundle -> resolve_v558)",
+        "result": "per-field V557/V558 selection and resolved entries"
+      },
+      {
+        "step": 4,
+        "owner": "m5.make_structural_currentness_receipt -> materialize_resolved_structural_context -> validate_resolved_structural_context",
+        "result": "per-field M5 RSC + validation receipt, CURRENT_TO_TEST_SELECTION_NOT_OPERATIVE_N9"
+      },
+      {
+        "step": 5,
+        "owner": "E04 product.world SelectedWorldCatalog producer payload read",
+        "result": "actual native modeled field value (never caller supplied)"
+      },
+      {
+        "step": 6,
+        "owner": "rawlsing_next.pre553_hq297_n9c_two_field_reader.read_historical_test_only",
+        "result": "nonpooled two-role readset; as-of clock derived from the snapshot's published clock"
+      },
+      {
+        "step": 7,
+        "owner": "E04 product.service.GenericSelectedWorldService.possibilities (provide_empirical_possibility_slice / compose_positioned_subject_possibility / evaluate_positioned_subject_possibility)",
+        "result": "exact empirical 9/16, 5/8, 3/4 over 32/16/8"
+      },
+      {
+        "step": 8,
+        "owner": "E04 product.nonparent.consume + product.scenario.evaluate",
+        "result": "the two real generic consumers, served on the accepted snapshot"
+      }
+    ],
+    "separator_of_concerns": {
+      "empirical_channel": "real N10E/C1/F8 exact conditional support; not reimplemented",
+      "structural_channel": "M4/M5 V557/V558 + M5 RSC route premises; modeled, not observed",
+      "native_field_channel": "N9C exact two-native-unit readset; not pooled, not converted",
+      "clock_discipline": "explicit synthetic clocks only; the native field as-of clock is derived from the accepted snapshot, never supplied separately"
+    },
+    "cold_replay": {
+      "separate_processes": 2,
+      "receipt_hashes_identical": {
+        "CURRENT_TEST_CLOCK": true,
+        "HISTORICAL_AS_OF": true,
+        "TYPED_PARTIAL_PRE_NCA_PUBLICATION": true
+      },
+      "payload_digests_identical": {
+        "CURRENT_TEST_CLOCK": true,
+        "HISTORICAL_AS_OF": true,
+        "TYPED_PARTIAL_PRE_NCA_PUBLICATION": true
+      }
+    }
+  }
+}

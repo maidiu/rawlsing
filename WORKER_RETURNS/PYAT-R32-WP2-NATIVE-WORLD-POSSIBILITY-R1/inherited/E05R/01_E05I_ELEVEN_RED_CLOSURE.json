@@ -1,0 +1,86 @@
+{
+  "schema": "E05R_ELEVEN_RED_EXECUTION_CLOSURE@1",
+  "baseline": {
+    "tests": 55,
+    "failures": 11,
+    "errors": 0,
+    "skipped": 0
+  },
+  "repaired": {
+    "tests": 55,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "closures": [
+    {
+      "test": "test_zero_support_stays_typed_without_numeric_fabrication",
+      "baseline": "FAIL",
+      "repaired": "PASS",
+      "frozen_expectation_modified": false
+    },
+    {
+      "test": "test_serve_must_bind_actual_request_to_acceptance[target]",
+      "baseline": "FAIL",
+      "repaired": "PASS",
+      "frozen_expectation_modified": false
+    },
+    {
+      "test": "test_serve_must_bind_actual_request_to_acceptance[readset]",
+      "baseline": "FAIL",
+      "repaired": "PASS",
+      "frozen_expectation_modified": false
+    },
+    {
+      "test": "test_serve_must_bind_actual_request_to_acceptance[clock]",
+      "baseline": "FAIL",
+      "repaired": "PASS",
+      "frozen_expectation_modified": false
+    },
+    {
+      "test": "test_accept_must_bind_snapshot_clocks_to_request",
+      "baseline": "FAIL",
+      "repaired": "PASS",
+      "frozen_expectation_modified": false
+    },
+    {
+      "test": "test_late_native_revocation_must_be_reread",
+      "baseline": "FAIL",
+      "repaired": "PASS",
+      "frozen_expectation_modified": false
+    },
+    {
+      "test": "test_native_invalidate_scope_supported",
+      "baseline": "FAIL",
+      "repaired": "PASS",
+      "frozen_expectation_modified": false
+    },
+    {
+      "test": "test_consumer_material_must_be_bound_not_copied[foreign_snapshot]",
+      "baseline": "FAIL",
+      "repaired": "PASS",
+      "frozen_expectation_modified": false
+    },
+    {
+      "test": "test_consumer_material_must_be_bound_not_copied[partial_as_complete]",
+      "baseline": "FAIL",
+      "repaired": "PASS",
+      "frozen_expectation_modified": false
+    },
+    {
+      "test": "test_consumer_material_must_be_bound_not_copied[forged_joint_probability]",
+      "baseline": "FAIL",
+      "repaired": "PASS",
+      "frozen_expectation_modified": false
+    },
+    {
+      "test": "test_native_same_value_new_release_registry_must_not_silently_use_old_acceptance",
+      "baseline": "FAIL",
+      "repaired": "PASS",
+      "frozen_expectation_modified": false
+    }
+  ],
+  "adapter_contract": "R13_E05R_N9_SELECTED_WORLD_INTERFACE@2",
+  "distinct_independent_E05R_adjudication": "REQUIRED_NOT_PERFORMED",
+  "original_tests_modified": false
+}

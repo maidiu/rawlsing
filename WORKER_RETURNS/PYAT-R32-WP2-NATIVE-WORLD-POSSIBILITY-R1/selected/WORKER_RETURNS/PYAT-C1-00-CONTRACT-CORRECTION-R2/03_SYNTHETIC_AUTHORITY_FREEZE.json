@@ -1,0 +1,366 @@
+{
+  "schema": "PYAT_C1_00_R2_SYNTHETIC_AUTHORITY_FREEZE@1",
+  "status": "FROZEN_DOCUMENTARY_ORACLE__NOT_EXECUTED",
+  "hash_law": {
+    "canonical_json": "recursive lexicographic object-key ordering; arrays order-preserving; UTF-8; no insignificant whitespace",
+    "authority_content_hash": "sha256(canonical_json(canonical_material))"
+  },
+  "authorities": [
+    {
+      "authority_class": "PRE553_AUTHORITY_SNAPSHOT::SOURCE_SEMANTICS_TOPOLOGY",
+      "canonical_material": {
+        "schema": "C1_SYNTHETIC_PRE553_AUTHORITY_PREIMAGE@1",
+        "typed_state": "ALLOW",
+        "authority_snapshot_refs": [],
+        "dependency_refs": [],
+        "producer_replay_locator_or_reference_root": {
+          "kind": "REPLAY_ROOT",
+          "object_id": "urn:test:c1:at07:replay-root:C1-AT07-SOURCE",
+          "content_hash": "4b52759c8d74ca7bc3538ecd1c369637abea7325773231f6b61bca033828bded"
+        },
+        "authority_id": "C1-AT07-SOURCE",
+        "authority_version": "1.0.0",
+        "authority_kind": "SOURCE_SEMANTICS_TOPOLOGY",
+        "decision_state": "ALLOW",
+        "governed_operations": [
+          "C1_AT07_SOURCE_SEMANTICS"
+        ],
+        "governed_object_families": [
+          "EmpiricalUniverse@1.0.0",
+          "RespondentEvent@1.0.0"
+        ],
+        "scope_envelope": {
+          "fixture_id": "AT07_BIDIRECTIONAL_100",
+          "source_family": "SYNTHETIC_SURVEY",
+          "source_seed": "C1_AT07",
+          "use": "SOURCE_FREE_C1_01_ONLY"
+        },
+        "effective_time_or_interval": "AT07_FIXTURE_ONLY",
+        "parent_authority_refs": [],
+        "negative_limit_refs": [],
+        "supersession_refs": [],
+        "interpretation_semantics_fingerprint": "bd17f5748dbdd996ad0261ca42b4c99ada16f897c71fadd57d0492505886487f",
+        "replay_protocol_ref": {
+          "kind": "REPLAY_PROTOCOL",
+          "object_id": "urn:test:c1:at07:replay-protocol:C1-AT07-SOURCE",
+          "content_hash": "ca96cd0ec14616871c0c5dde74f11624abc0def03bcee8131bb1dc8d2cc6579d"
+        },
+        "purpose": "synthetic source/question/response topology semantics",
+        "real_source_effect": false
+      },
+      "expected_authority_ref": {
+        "authority_id": "C1-AT07-SOURCE",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "4d565f1b40adb2bd3c9c3c2965226a4f9be9222338323ed6b649b8a68a973dab"
+      }
+    },
+    {
+      "authority_class": "PRE553_AUTHORITY_SNAPSHOT::ROUTING_RISK_SET",
+      "canonical_material": {
+        "schema": "C1_SYNTHETIC_PRE553_AUTHORITY_PREIMAGE@1",
+        "typed_state": "ALLOW",
+        "authority_snapshot_refs": [],
+        "dependency_refs": [],
+        "producer_replay_locator_or_reference_root": {
+          "kind": "REPLAY_ROOT",
+          "object_id": "urn:test:c1:at07:replay-root:C1-AT07-ROUTING",
+          "content_hash": "2cce23359affa430d8e211ca7aba1c97ad3f582917bc0ce7ec8db0e246c3498e"
+        },
+        "authority_id": "C1-AT07-ROUTING",
+        "authority_version": "1.0.0",
+        "authority_kind": "ROUTING_RISK_SET",
+        "decision_state": "ALLOW",
+        "governed_operations": [
+          "C1_AT07_ROUTING_RISK_SET"
+        ],
+        "governed_object_families": [
+          "RoutingEligibilityFact@1.0.0"
+        ],
+        "scope_envelope": {
+          "fixture_id": "AT07_BIDIRECTIONAL_100",
+          "source_family": "SYNTHETIC_SURVEY",
+          "source_seed": "C1_AT07",
+          "use": "SOURCE_FREE_C1_01_ONLY"
+        },
+        "effective_time_or_interval": "AT07_FIXTURE_ONLY",
+        "parent_authority_refs": [],
+        "negative_limit_refs": [],
+        "supersession_refs": [],
+        "interpretation_semantics_fingerprint": "45b0a4314f330d3a15d371939dc710377892aea4cac8e91081e4ef5e29e5da72",
+        "replay_protocol_ref": {
+          "kind": "REPLAY_PROTOCOL",
+          "object_id": "urn:test:c1:at07:replay-protocol:C1-AT07-ROUTING",
+          "content_hash": "fb0f4c6f34203e4828cbf3ca37abf4f4dc4c2d7449e6245f9e44abaeb015cf5c"
+        },
+        "purpose": "synthetic AT07 applicability and risk-set semantics",
+        "real_source_effect": false
+      },
+      "expected_authority_ref": {
+        "authority_id": "C1-AT07-ROUTING",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "a71a90ab7106f6300ced46204769fae1beba237d9a16aa3dba6f03a93c35ecc0"
+      }
+    },
+    {
+      "authority_class": "PRE553_AUTHORITY_SNAPSHOT::COORDINATE_SEMANTICS",
+      "canonical_material": {
+        "schema": "C1_SYNTHETIC_PRE553_AUTHORITY_PREIMAGE@1",
+        "typed_state": "ALLOW",
+        "authority_snapshot_refs": [],
+        "dependency_refs": [],
+        "producer_replay_locator_or_reference_root": {
+          "kind": "REPLAY_ROOT",
+          "object_id": "urn:test:c1:at07:replay-root:C1-AT07-COORDINATE",
+          "content_hash": "17bc26298d98667c19c4c66b6aa9bf3263a6f688dd77fff0ba3ffd411e480fa2"
+        },
+        "authority_id": "C1-AT07-COORDINATE",
+        "authority_version": "1.0.0",
+        "authority_kind": "COORDINATE_SEMANTICS",
+        "decision_state": "ALLOW",
+        "governed_operations": [
+          "C1_AT07_COORDINATE_SEMANTICS"
+        ],
+        "governed_object_families": [
+          "EmpiricalCoordinateFact@1.0.0"
+        ],
+        "scope_envelope": {
+          "fixture_id": "AT07_BIDIRECTIONAL_100",
+          "source_family": "SYNTHETIC_SURVEY",
+          "source_seed": "C1_AT07",
+          "use": "SOURCE_FREE_C1_01_ONLY"
+        },
+        "effective_time_or_interval": "AT07_FIXTURE_ONLY",
+        "parent_authority_refs": [],
+        "negative_limit_refs": [],
+        "supersession_refs": [],
+        "interpretation_semantics_fingerprint": "b8d9bb38c6661c4429e36470b3fd566befb22fa3c68d9c13b28700b3fda61c5f",
+        "replay_protocol_ref": {
+          "kind": "REPLAY_PROTOCOL",
+          "object_id": "urn:test:c1:at07:replay-protocol:C1-AT07-COORDINATE",
+          "content_hash": "b2bbc257f461949996a3877619701c7aa72e6d5b70fc77a30954428aede6ced5"
+        },
+        "purpose": "synthetic inert coordinate semantics required by source-free builder",
+        "real_source_effect": false
+      },
+      "expected_authority_ref": {
+        "authority_id": "C1-AT07-COORDINATE",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "fb5e0415c7ab810578156b13a36abd72fdae4e118f49ed9d66e91331eebce6cb"
+      }
+    },
+    {
+      "authority_class": "PRE553_AUTHORITY_SNAPSHOT::REPLAY_PROTOCOL",
+      "canonical_material": {
+        "schema": "C1_SYNTHETIC_PRE553_AUTHORITY_PREIMAGE@1",
+        "typed_state": "ALLOW",
+        "authority_snapshot_refs": [],
+        "dependency_refs": [],
+        "producer_replay_locator_or_reference_root": {
+          "kind": "REPLAY_ROOT",
+          "object_id": "urn:test:c1:at07:replay-root:C1-AT07-REPLAY",
+          "content_hash": "c6539cc08adc249653b01b6b1517cfd66d72339d7bd62ec97e39d41600a7bfa3"
+        },
+        "authority_id": "C1-AT07-REPLAY",
+        "authority_version": "1.0.0",
+        "authority_kind": "REPLAY_PROTOCOL",
+        "decision_state": "ALLOW",
+        "governed_operations": [
+          "C1_AT07_REPLAY"
+        ],
+        "governed_object_families": [
+          "ReplayReceipt@1.0.0"
+        ],
+        "scope_envelope": {
+          "fixture_id": "AT07_BIDIRECTIONAL_100",
+          "source_family": "SYNTHETIC_SURVEY",
+          "source_seed": "C1_AT07",
+          "use": "SOURCE_FREE_C1_01_ONLY"
+        },
+        "effective_time_or_interval": "AT07_FIXTURE_ONLY",
+        "parent_authority_refs": [],
+        "negative_limit_refs": [],
+        "supersession_refs": [],
+        "interpretation_semantics_fingerprint": "b74974f3fc67045509ef347575508ccc97c7efcc751bcd3d6f05c2397d3d316a",
+        "replay_protocol_ref": {
+          "kind": "REPLAY_PROTOCOL",
+          "object_id": "urn:test:c1:at07:replay-protocol:C1-AT07-REPLAY",
+          "content_hash": "926e58f5dd37f198c2e3843dc3b1176359825c1f413440574a8f6ab06a419425"
+        },
+        "purpose": "synthetic deterministic replay authority",
+        "real_source_effect": false
+      },
+      "expected_authority_ref": {
+        "authority_id": "C1-AT07-REPLAY",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "c75f5d105e8cdb6ac1ad8efc5bdba70eff7d083e4166e94c0d34255c27f233fa"
+      }
+    },
+    {
+      "authority_class": "PRE553_AUTHORITY_SNAPSHOT::PREDICATE_GRAMMAR",
+      "canonical_material": {
+        "schema": "C1_SYNTHETIC_PRE553_AUTHORITY_PREIMAGE@1",
+        "typed_state": "ALLOW",
+        "authority_snapshot_refs": [],
+        "dependency_refs": [],
+        "producer_replay_locator_or_reference_root": {
+          "kind": "REPLAY_ROOT",
+          "object_id": "urn:test:c1:at07:replay-root:C1-AT07-QUERY",
+          "content_hash": "9ae8711ad9d56ddb60fb5d97219e64078ccc8d44f3023143de0305d8c80c0594"
+        },
+        "authority_id": "C1-AT07-QUERY",
+        "authority_version": "1.0.0",
+        "authority_kind": "PREDICATE_GRAMMAR",
+        "decision_state": "ALLOW",
+        "governed_operations": [
+          "C1_AT07_QUERY"
+        ],
+        "governed_object_families": [
+          "EmpiricalPredicate@1.0.0",
+          "EmpiricalQuerySpec@1.0.0",
+          "EmpiricalFact@1.0.0"
+        ],
+        "scope_envelope": {
+          "fixture_id": "AT07_BIDIRECTIONAL_100",
+          "source_family": "SYNTHETIC_SURVEY",
+          "source_seed": "C1_AT07",
+          "use": "SOURCE_FREE_C1_01_ONLY"
+        },
+        "effective_time_or_interval": "AT07_FIXTURE_ONLY",
+        "parent_authority_refs": [],
+        "negative_limit_refs": [],
+        "supersession_refs": [],
+        "interpretation_semantics_fingerprint": "06e1e05a8179f861827bfb515675b15183461349bba7b8feadfd7dd0af80f9df",
+        "replay_protocol_ref": {
+          "kind": "REPLAY_PROTOCOL",
+          "object_id": "urn:test:c1:at07:replay-protocol:C1-AT07-QUERY",
+          "content_hash": "f4df42e3717302cbf67cbfa4cd2824b047b41152da870c3c6a082066b9f85a6c"
+        },
+        "purpose": "synthetic predicate/query grammar and fact-production authority",
+        "real_source_effect": false
+      },
+      "expected_authority_ref": {
+        "authority_id": "C1-AT07-QUERY",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "b485ea6ddba78b0e0ccc4c4c0b2097b783d4f9f39fede9717b716edfb5f54a45"
+      }
+    },
+    {
+      "authority_class": "FIXTURE_ONLY_CONDITION_VALUE_PAIRING",
+      "canonical_material": {
+        "schema": "C1_SYNTHETIC_TEST_ONLY_AUTHORITY_PREIMAGE@1",
+        "authority_id": "C1-AT07-COMPARABILITY",
+        "authority_version": "1.0.0",
+        "authority_class": "FIXTURE_ONLY_CONDITION_VALUE_PAIRING",
+        "purpose": "permit only the three frozen source-free value-pairing ground truths",
+        "decision_state": "ALLOW",
+        "governed_operations": [
+          "PAIR_FROZEN_SYNTHETIC_SUBJECT_VALUE_TO_PREDICATE_VALUE"
+        ],
+        "exact_scope": {
+          "fixture_id": "AT07_BIDIRECTIONAL_100",
+          "ground_truth_refs": [
+            {
+              "kind": "C1_SYNTHETIC_VALUE_PAIRING_GROUND_TRUTH",
+              "object_id": "urn:test:c1:at07:value-pairing:POSITION_P1__POSITION_EQ_P1",
+              "content_hash": "020f3f2a103a0fb7cf216b98f6965637de6ace71ebda950274c0c7987c2ec44b"
+            },
+            {
+              "kind": "C1_SYNTHETIC_VALUE_PAIRING_GROUND_TRUTH",
+              "object_id": "urn:test:c1:at07:value-pairing:POSITION_P2__POSITION_EQ_P2",
+              "content_hash": "e1a6b801c769b89c117e914c2d5877178aedb626b29d24c74d15d09feec1e7ff"
+            },
+            {
+              "kind": "C1_SYNTHETIC_VALUE_PAIRING_GROUND_TRUTH",
+              "object_id": "urn:test:c1:at07:value-pairing:ANSWER_YES__ANSWER_EQ_YES",
+              "content_hash": "bb60f094cef1f8634eaaa5220193396a270e06a336300349f74a9926dc0f4a84"
+            }
+          ],
+          "use": "SOURCE_FREE_C1_01_ONLY"
+        },
+        "effective_time_or_interval": "AT07_FIXTURE_ONLY",
+        "parent_authority_refs": [],
+        "negative_limit_refs": [],
+        "supersession_refs": [],
+        "interpretation_semantics_fingerprint": "b39109da79ebaa46c406b819358cef1cf5d61eb9e6ed8e9c3142d2edbd5158fc",
+        "real_source_effect": false
+      },
+      "expected_authority_ref": {
+        "authority_id": "C1-AT07-COMPARABILITY",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "69cb883e7ccc115da614091635f36f7eca92cc1f517732e57a37fe77afb2676f"
+      }
+    },
+    {
+      "authority_class": "FIXTURE_ONLY_POSITIONED_SUBJECT_MODEL",
+      "canonical_material": {
+        "schema": "C1_SYNTHETIC_TEST_ONLY_AUTHORITY_PREIMAGE@1",
+        "authority_id": "C1-AT07-MODEL",
+        "authority_version": "1.0.0",
+        "authority_class": "FIXTURE_ONLY_POSITIONED_SUBJECT_MODEL",
+        "purpose": "permit only the existing exact-conditional positioned-subject algorithm",
+        "decision_state": "ALLOW",
+        "governed_operations": [
+          "EVALUATE_EXISTING_EXACT_CONDITIONAL_NO_SMOOTHING"
+        ],
+        "exact_scope": {
+          "fixture_id": "AT07_BIDIRECTIONAL_100",
+          "source_family": "SYNTHETIC_SURVEY",
+          "source_seed": "C1_AT07",
+          "use": "SOURCE_FREE_C1_01_ONLY"
+        },
+        "effective_time_or_interval": "AT07_FIXTURE_ONLY",
+        "parent_authority_refs": [],
+        "negative_limit_refs": [],
+        "supersession_refs": [],
+        "interpretation_semantics_fingerprint": "2483a24da6904ec89d4ec4220443cee91cfc8dad4343214876ca33dbed6b33c3",
+        "real_source_effect": false,
+        "model_rule_id": "POSITIONED_SUBJECT_EXACT_CONDITIONAL_WITH_GOVERNED_WALKBACK@1.0.0",
+        "algorithm_id": "EXACT_CONDITIONAL_LOOKUP__NO_SMOOTHING_INTERPOLATION_OR_EXTRAPOLATION"
+      },
+      "expected_authority_ref": {
+        "authority_id": "C1-AT07-MODEL",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "2876572dcb4eba80b52361853047d409323fff0c63228d7e6a361c972e1b38bb"
+      }
+    },
+    {
+      "authority_class": "FIXTURE_ONLY_WALKBACK_POLICY",
+      "canonical_material": {
+        "schema": "C1_SYNTHETIC_TEST_ONLY_AUTHORITY_PREIMAGE@1",
+        "authority_id": "C1-AT07-WALKBACK",
+        "authority_version": "1.0.0",
+        "authority_class": "FIXTURE_ONLY_WALKBACK_POLICY",
+        "purpose": "freeze zero-step walkback for C1-01 exact-supported slice",
+        "decision_state": "ALLOW",
+        "governed_operations": [
+          "ZERO_STEP_WALKBACK_ONLY"
+        ],
+        "exact_scope": {
+          "fixture_id": "AT07_BIDIRECTIONAL_100",
+          "source_family": "SYNTHETIC_SURVEY",
+          "source_seed": "C1_AT07",
+          "use": "SOURCE_FREE_C1_01_ONLY"
+        },
+        "effective_time_or_interval": "AT07_FIXTURE_ONLY",
+        "parent_authority_refs": [],
+        "negative_limit_refs": [],
+        "supersession_refs": [],
+        "interpretation_semantics_fingerprint": "8f62bb23022919e6ad9ae424ac5e8cf10d6d5d9dd525d53e6fddb649f809b8ed",
+        "real_source_effect": false,
+        "walkback_steps": [],
+        "positive_proxy_authority_refs": []
+      },
+      "expected_authority_ref": {
+        "authority_id": "C1-AT07-WALKBACK",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "3f5dda8f607f69cefb5c3a57d8417ff9fc8abf957c87088d160d2eacc0bccbbf"
+      }
+    }
+  ],
+  "mutation_law": "Any change to canonical_material — including scope, governed operation, purpose, effective time, object families, model algorithm, or pairing-ground-truth set — must change authority_content_hash. Reusing the same human-readable authority_id with changed material and old hash is an oracle failure.",
+  "construction_law": {
+    "pre553_authorities": "For entries with authority_class PRE553_AUTHORITY_SNAPSHOT::<kind>, C1-01 constructs AuthoritySnapshot using the listed canonical_material and sets AuthoritySnapshot.authority_content_hash to expected_authority_ref.authority_content_hash. The listed material is the complete frozen fixture preimage.",
+    "fixture_only_authorities": "FIXTURE_ONLY_* entries are source-free oracle authorities represented by exact AuthorityRef only for the existing consumer primitives. They are not PRE553 AuthoritySnapshot kinds and confer no real-source permission."
+  },
+  "real_source_ceiling": "No entry creates or extends real-source subject↔survey comparability, model, semantic, pooling, or survey authority."
+}

@@ -1,0 +1,434 @@
+{
+  "hostile_oracles": {
+    "H01": {
+      "expected": "REJECT_REAL_WORLD_AUTHORITY_PROMOTION",
+      "id": "H01_promote_model_world_to_real_country",
+      "observed_code": "REJECT_REAL_WORLD_AUTHORITY_PROMOTION",
+      "observed_reason": "world grade claim is not the TEST_ONLY modeled grade; a modeled world may not be promoted to observed/real authority",
+      "pass": true
+    },
+    "H02": {
+      "expected": "REJECT_DIRECT_STATIC_TYPE_ASSIGNMENT",
+      "id": "H02_assign_type_personality_belief_from_context",
+      "observed_code": "REJECT_DIRECT_STATIC_TYPE_ASSIGNMENT",
+      "observed_reason": "requested outputs assign psyche/type/voice/biography directly: ['ENNEAGRAM_TYPE']",
+      "pass": true
+    },
+    "H03": {
+      "expected": "REJECT_UNLICENSED_DYAD_OR_RESPONSE_JOIN",
+      "id": "H03_cross_universe_household_joint_multiplication",
+      "observed_code": "REJECT_UNLICENSED_DYAD_OR_RESPONSE_JOIN",
+      "observed_reason": "cross-universe respondent/household joint multiplication is unlicensed",
+      "pass": true
+    },
+    "H04": {
+      "expected": "REJECT_UNSUPPORTED_PRECISION",
+      "id": "H04_replace_unknown_with_zero_or_exact_probability",
+      "observed_code": "REJECT_UNSUPPORTED_PRECISION",
+      "observed_reason": "UNKNOWN/UNDERPOWERED route probabilities may not be replaced by zero or exact values without an operative model-use issuer",
+      "pass": true
+    },
+    "H05": {
+      "expected": "REJECT_UNISSUED_TEMPORAL_COMPARABILITY",
+      "id": "H05_incompatible_historic_anchors_as_observed_structural_change",
+      "observed_code": "REJECT_UNISSUED_TEMPORAL_COMPARABILITY",
+      "observed_reason": "two modeled context variants are not issued observed structural/temporal change",
+      "pass": true
+    },
+    "H06": {
+      "all_pass": true,
+      "expected": "REJECT_HANDWRITTEN_PROVIDER_INPUT",
+      "findings": [
+        {
+          "check": "public_api_excludes_handwritten_slice",
+          "state": "PASS"
+        },
+        {
+          "check": "handwritten_evidence_kwarg_rejected",
+          "detail": "TypeError: provide_empirical_possibility_slice() got an unexpected keyword argument 'evidence'",
+          "state": "PASS"
+        }
+      ],
+      "oracle": "H06_REJECT_HANDWRITTEN_PROVIDER_INPUT",
+      "pass": true
+    },
+    "H07": {
+      "expected": "REJECT_MISSING_CURRENTNESS_OR_ISSUER",
+      "id": "H07_mark_fixture_current_or_adopt_issuer_from_prose",
+      "observed_code": "REJECT_MISSING_CURRENTNESS_OR_ISSUER",
+      "observed_reason": "fixture world has no currentness/model-use issuer to adopt; prose cannot issue one",
+      "pass": true
+    },
+    "H08": {
+      "expected": "NO_ACTOR_RUN_OR_MODEL_INVOCATION",
+      "id": "H08_call_v3_runtime_or_v2_renderer_during_prev3",
+      "observed_code": "NO_ACTOR_RUN_OR_MODEL_INVOCATION",
+      "observed_reason": "PRE-V3 evaluation may not invoke V3 actor runtime or V2 expressive renderer",
+      "pass": true
+    },
+    "H09": {
+      "expected": "REJECT_MINOR_ROUTE_ERASURE",
+      "id": "H09_remove_surviving_community_support_by_topk_class",
+      "observed_code": "REJECT_MINOR_ROUTE_ERASURE",
+      "observed_reason": "minority/alternative route erasure is forbidden: ['mutual_aid_participation']",
+      "pass": true
+    },
+    "H10": {
+      "all_pass": true,
+      "expected": "household support variation must not silently alter the unrelated institution rule; institution variation must not rewrite care routes",
+      "household_only_variation": {
+        "all_pass": true,
+        "changed_premise_keys": [
+          "household_care.daily_time_obligation",
+          "household_care.support_network"
+        ],
+        "changed_routes": [
+          "nonformal_peer_study",
+          "paid_apprenticeship",
+          "family_care_work"
+        ],
+        "contamination": [],
+        "oracle": "NO_NONLOCAL_CONTAMINATION_DETECTED",
+        "stage_id": "C2_PARENT_COPARENT_HOUSEHOLD_CARE_TIME_CONDITIONING"
+      },
+      "institution_only_variation": {
+        "all_pass": true,
+        "changed_premise_keys": [
+          "education_institution.public_school_seat",
+          "education_institution.fee_barrier",
+          "education_institution.administrative_access"
+        ],
+        "changed_routes": [
+          "formal_schooling"
+        ],
+        "contamination": [],
+        "oracle": "NO_NONLOCAL_CONTAMINATION_DETECTED",
+        "stage_id": "C2_PARENT_COPARENT_HOUSEHOLD_CARE_TIME_CONDITIONING"
+      },
+      "oracle": "REJECT_NONLOCAL_COUNTERFACTUAL_CONTAMINATION",
+      "pass": true
+    }
+  },
+  "positive_oracles": {
+    "AT34_SAMPLING_UNIT_FIREWALL": {
+      "dyad_claim_state": "REFUSED_NO_HOUSEHOLD_SAMPLING_UNIT_AUTHORITY",
+      "expected": "household/coparent-dyad claim refused at its grain; individual possibility remains lawful",
+      "individual_possibility_state": "PRODUCED_RETAINED",
+      "pass": true,
+      "route_table_still_produced": true
+    },
+    "CONTROLLED_EMPIRICAL_LAW_VARIATION": {
+      "computed_cells_base": [
+        {
+          "cell": "no",
+          "cell_state": "OBSERVED_POSITIVE",
+          "raw_numerator_support": 6,
+          "raw_probability_exact_fraction": {
+            "$exact_fraction": [
+              1,
+              10
+            ]
+          },
+          "weighted_numerator_support_if_authorized": null,
+          "weighted_probability_exact_fraction_if_authorized": null
+        },
+        {
+          "cell": "yes",
+          "cell_state": "OBSERVED_POSITIVE",
+          "raw_numerator_support": 54,
+          "raw_probability_exact_fraction": {
+            "$exact_fraction": [
+              9,
+              10
+            ]
+          },
+          "weighted_numerator_support_if_authorized": null,
+          "weighted_probability_exact_fraction_if_authorized": null
+        }
+      ],
+      "computed_cells_changed_law": [
+        {
+          "cell": "no",
+          "cell_state": "OBSERVED_POSITIVE",
+          "raw_numerator_support": 16,
+          "raw_probability_exact_fraction": {
+            "$exact_fraction": [
+              8,
+              35
+            ]
+          },
+          "weighted_numerator_support_if_authorized": null,
+          "weighted_probability_exact_fraction_if_authorized": null
+        },
+        {
+          "cell": "yes",
+          "cell_state": "OBSERVED_POSITIVE",
+          "raw_numerator_support": 54,
+          "raw_probability_exact_fraction": {
+            "$exact_fraction": [
+              27,
+              35
+            ]
+          },
+          "weighted_numerator_support_if_authorized": null,
+          "weighted_probability_exact_fraction_if_authorized": null
+        }
+      ],
+      "expected": "computed N10E lane identity changes with the empirical law; modeled route table does not",
+      "n10e_lane_hash_base": "88fbf5338cec5516a7ef4a8cdfd8ecb7f4cc911384fade4eb7f12e548e580dbc",
+      "n10e_lane_hash_changed_law": "9de2897200906f32334d527bf760862cbf19a567f7a90bff5bde1c91de60c387",
+      "pass": true,
+      "route_table_invariant": true
+    },
+    "V01_MODELED_CONTEXT_DIFFERENTIATION": {
+      "change_count": 1,
+      "declared_change": {
+        "A_eligibility": "ELIGIBLE_IN_MODELED_CONTEXT",
+        "A_state": "ELIGIBLE_IN_MODELED_CONTEXT",
+        "B_eligibility": "BLOCKED_BY_MODELED_ACCESS_RULE",
+        "B_state": "BLOCKED_BY_MODELED_ACCESS_RULE",
+        "oracle": "DIFFERENT_DUE_TO_ADMINISTRATIVE_AND_FEE_RULE",
+        "route_id": "formal_schooling"
+      },
+      "expected": "A and B differ on formal schooling under declared fee/administrative rules; typed reason emitted",
+      "pass": true,
+      "typed_reasons": {
+        "A": "M2_NONCONTAMINATION_HOUSEHOLD_PREMISE_DOES_NOT_REWRITE_INSTITUTION_RULE",
+        "B": "M2_NONCONTAMINATION_HOUSEHOLD_PREMISE_DOES_NOT_REWRITE_INSTITUTION_RULE"
+      }
+    },
+    "V02_STEPWISE_WORLD_CONDITIONING": {
+      "C0_to_C1_delta_A": {
+        "formal_schooling": [
+          "UNCONDITIONED_LAWFUL_POSSIBILITY",
+          "ELIGIBLE_IN_MODELED_CONTEXT"
+        ]
+      },
+      "C0_to_C1_delta_B": {
+        "formal_schooling": [
+          "UNCONDITIONED_LAWFUL_POSSIBILITY",
+          "BLOCKED_BY_MODELED_ACCESS_RULE"
+        ]
+      },
+      "C1_to_C2_delta_A": {
+        "family_care_work": [
+          "UNCONDITIONED_LAWFUL_POSSIBILITY",
+          "POSSIBLE_NOT_IMPOSED"
+        ],
+        "mutual_aid_participation": [
+          "UNCONDITIONED_LAWFUL_POSSIBILITY",
+          "POSSIBLE"
+        ],
+        "nonformal_peer_study": [
+          "UNCONDITIONED_LAWFUL_POSSIBILITY",
+          "POSSIBLE"
+        ],
+        "paid_apprenticeship": [
+          "UNCONDITIONED_LAWFUL_POSSIBILITY",
+          "CONDITIONAL_TIME_AND_OPPORTUNITY"
+        ]
+      },
+      "C1_to_C2_delta_B": {
+        "family_care_work": [
+          "UNCONDITIONED_LAWFUL_POSSIBILITY",
+          "PRESSURE_APPLICABLE_NOT_ACTUAL_EVENT"
+        ],
+        "mutual_aid_participation": [
+          "UNCONDITIONED_LAWFUL_POSSIBILITY",
+          "POSSIBLE"
+        ],
+        "nonformal_peer_study": [
+          "UNCONDITIONED_LAWFUL_POSSIBILITY",
+          "POSSIBLE_BUT_TIME_CONSTRAINED"
+        ],
+        "paid_apprenticeship": [
+          "UNCONDITIONED_LAWFUL_POSSIBILITY",
+          "CONDITIONAL_WITH_HIGHER_TIME_TRADEOFF"
+        ]
+      },
+      "conditioner_witness_ids_A": {
+        "C0_UNCONDITIONED_SUBJECT_AND_TIME": "W10CW:0f72e6473f5154c0a3ea05ae17b85e9d6069f1af273626636254fb70c8250385",
+        "C1_WORLD_INSTITUTIONAL_ACCESS_CONDITIONING": "W10CW:4da4152c5febc5f7c1f8dc414923791b7e06ebae5e77cca53df9b8a15f3a87bb",
+        "C2_PARENT_COPARENT_HOUSEHOLD_CARE_TIME_CONDITIONING": "W10CW:6e5533bbb759e566e01c4d14a1bf0f998cd6e19a1b19a37d3493ac93a4bb7874"
+      },
+      "conditioner_witness_ids_B": {
+        "C0_UNCONDITIONED_SUBJECT_AND_TIME": "W10CW:0f72e6473f5154c0a3ea05ae17b85e9d6069f1af273626636254fb70c8250385",
+        "C1_WORLD_INSTITUTIONAL_ACCESS_CONDITIONING": "W10CW:a41f687cadee220c297b4bb2e2c7c723d37a1c0466e098444b20974780bc9e9b",
+        "C2_PARENT_COPARENT_HOUSEHOLD_CARE_TIME_CONDITIONING": "W10CW:a0ce4cc3963ee344cb2acfd216109d2ca9505b2df0ad193b2b16d51a8371fd61"
+      },
+      "expected": "C0->C1 changes world-access eligibility; C1->C2 changes care/time tradeoff conditionality; unique conditioner witness per step",
+      "pass": true
+    },
+    "V03_UNALTERED_CONTROL": {
+      "canonical_bytes_equal": true,
+      "expected": "identical subject/model/world/as-of reproduces byte-stable canonical output",
+      "pass": true,
+      "receipt_replay_hash_A": "e4a85143af8b1f06fb299c2ae621ad4eef76b312f9cb2ec066f5e859d67c7330",
+      "receipt_replay_hash_A_rerun": "e4a85143af8b1f06fb299c2ae621ad4eef76b312f9cb2ec066f5e859d67c7330",
+      "world_replay_hash_A": "9300a14a453a1eb36aa6f4e198d9eaf219b13cd29cc8d6876cd0a312e2ae711e",
+      "world_replay_hash_A_rebuild": "9300a14a453a1eb36aa6f4e198d9eaf219b13cd29cc8d6876cd0a312e2ae711e"
+    },
+    "V04_MINORITY_AND_CONTRADICTION": {
+      "B_states": {
+        "family_care_work": "PRESSURE_APPLICABLE_NOT_ACTUAL_EVENT",
+        "formal_schooling": "BLOCKED_BY_MODELED_ACCESS_RULE",
+        "mutual_aid_participation": "POSSIBLE",
+        "nonformal_peer_study": "POSSIBLE_BUT_TIME_CONSTRAINED",
+        "paid_apprenticeship": "CONDITIONAL_WITH_HIGHER_TIME_TRADEOFF"
+      },
+      "expected": "B preserves nonformal study, mutual aid and conditional apprenticeship despite formal schooling block; no enforced bleak deterministic life",
+      "family_care_work_B_is_pressure_not_event": true,
+      "mutual_aid_invariant": true,
+      "pass": true,
+      "routes_present_in_B": [
+        "family_care_work",
+        "formal_schooling",
+        "mutual_aid_participation",
+        "nonformal_peer_study",
+        "paid_apprenticeship"
+      ]
+    },
+    "V05_COUNTERFACTUAL_REVERSAL": {
+      "A_states": {
+        "family_care_work": "POSSIBLE_NOT_IMPOSED",
+        "formal_schooling": "ELIGIBLE_IN_MODELED_CONTEXT",
+        "mutual_aid_participation": "POSSIBLE",
+        "nonformal_peer_study": "POSSIBLE",
+        "paid_apprenticeship": "CONDITIONAL_TIME_AND_OPPORTUNITY"
+      },
+      "exact_restoration": true,
+      "expected": "replacing only B institutional and care variables by A restores exactly A-specific route supports, no static residue",
+      "pass": true,
+      "replaced_premise_keys": [
+        "education_institution.public_school_seat",
+        "education_institution.fee_barrier",
+        "education_institution.administrative_access",
+        "household_care.daily_time_obligation",
+        "household_care.support_network",
+        "labor.paid_apprenticeship",
+        "labor.time_cost",
+        "civil_routes.peer_nonformal_study"
+      ],
+      "restored_states": {
+        "family_care_work": "POSSIBLE_NOT_IMPOSED",
+        "formal_schooling": "ELIGIBLE_IN_MODELED_CONTEXT",
+        "mutual_aid_participation": "POSSIBLE",
+        "nonformal_peer_study": "POSSIBLE",
+        "paid_apprenticeship": "CONDITIONAL_TIME_AND_OPPORTUNITY"
+      }
+    },
+    "V06_SOURCEFREE_EPISTEMIC_LABELS": {
+      "expected": "all routes tagged modeled, no OBSERVED tags, numeric probability absent rather than fabricated; only computed N10E cells carry numbers",
+      "n10e_computed_cells": [
+        {
+          "cell": "no",
+          "cell_state": "OBSERVED_POSITIVE",
+          "raw_numerator_support": 6,
+          "raw_probability_exact_fraction": {
+            "$exact_fraction": [
+              1,
+              10
+            ]
+          },
+          "weighted_numerator_support_if_authorized": null,
+          "weighted_probability_exact_fraction_if_authorized": null
+        },
+        {
+          "cell": "yes",
+          "cell_state": "OBSERVED_POSITIVE",
+          "raw_numerator_support": 54,
+          "raw_probability_exact_fraction": {
+            "$exact_fraction": [
+              9,
+              10
+            ]
+          },
+          "weighted_numerator_support_if_authorized": null,
+          "weighted_probability_exact_fraction_if_authorized": null
+        }
+      ],
+      "n10e_computed_cells_are_the_only_numbers": true,
+      "n10e_cross_grain_merge": "FORBIDDEN",
+      "pass": true,
+      "route_labels_ok": true,
+      "route_numeric_probabilities": []
+    }
+  },
+  "replay_and_invalidation": {
+    "currentness_invalidation": {
+      "adapter_refuses_non_current_world": {
+        "expected": "WORLD_CURRENTNESS_NOT_CURRENT__NO_STALE_SELECTED_TRUTH",
+        "id": "world_currentness_not_current_refuses",
+        "observed_code": "WORLD_CURRENTNESS_NOT_CURRENT__NO_STALE_SELECTED_TRUTH",
+        "observed_reason": "selected-world structural currentness is 'REFRESH_REQUIRED'; stale/invalid worlds may not be served as selected truth",
+        "pass": true
+      },
+      "as_of_bound_decision_effective_time_ref": {
+        "content_hash": "2e121bb449f3ef61faa1fff581e65468996dd86adddc387ce9dc25c1e1779895",
+        "kind": "W10_TEST_ONLY_DECISION_EFFECTIVE_TIME",
+        "object_id": "urn:test:w10:as-of:2008"
+      },
+      "materialize_on_non_current_state": "FAIL_CLOSED_ZERO_STRUCTURAL_PEER_EFFECT",
+      "pass": true,
+      "prior_currentness_hash_unchanged": true,
+      "refresh_is_prospective_new_receipt": {
+        "content_hash": "74b40bf60e94d4f266a7f1aa4bc15850240aa2a8c18d1456fed89ef7c02450d9",
+        "kind": "M5_STRUCTURAL_CURRENTNESS_RECEIPT",
+        "object_id": "M5CUR:74b40bf60e94d4f266a7f1aa4bc15850240aa2a8c18d1456fed89ef7c02450d9"
+      },
+      "validate_on_non_current_state": "FAIL_CLOSED_ZERO_STRUCTURAL_PEER_EFFECT"
+    },
+    "n10e_cold_replay": {
+      "lane_hash_expected": "88fbf5338cec5516a7ef4a8cdfd8ecb7f4cc911384fade4eb7f12e548e580dbc",
+      "lane_hash_replayed": "88fbf5338cec5516a7ef4a8cdfd8ecb7f4cc911384fade4eb7f12e548e580dbc",
+      "pass": true
+    },
+    "progressive_receipt_recompute_identity": {
+      "pass": true,
+      "receipt_replay_hash_A": "e4a85143af8b1f06fb299c2ae621ad4eef76b312f9cb2ec066f5e859d67c7330",
+      "receipt_replay_hash_A_rerun": "e4a85143af8b1f06fb299c2ae621ad4eef76b312f9cb2ec066f5e859d67c7330"
+    },
+    "public_consumer_replay": {
+      "direct_consumer_result_hash": "47b51a3b6df4ec051b5b9fb04a92760c791f4ac761f20a157966cbe1b481a4be",
+      "identical": true,
+      "pass": true,
+      "provider_consumer_result_hash": "47b51a3b6df4ec051b5b9fb04a92760c791f4ac761f20a157966cbe1b481a4be",
+      "provider_result_identity_hash": "1ab68fd8ef9849d7f1a49d98ded9b3694e98c23eab275bb945008575382f49e4"
+    },
+    "world_selection_determinism": {
+      "pass": true,
+      "world_replay_hash_A": "9300a14a453a1eb36aa6f4e198d9eaf219b13cd29cc8d6876cd0a312e2ae711e",
+      "world_replay_hash_A_rebuild": "9300a14a453a1eb36aa6f4e198d9eaf219b13cd29cc8d6876cd0a312e2ae711e"
+    }
+  },
+  "typed_refusals": [
+    {
+      "expected": "WORLD_SUBJECT_UNIT_MISMATCH",
+      "id": "wrong_original_unit_scope",
+      "observed_code": "WORLD_SUBJECT_UNIT_MISMATCH",
+      "observed_reason": "requested unit/scope does not match the declared original synthetic unit scope",
+      "pass": true
+    },
+    {
+      "expected": "WORLD_AS_OF_YEAR_MISMATCH",
+      "id": "wrong_original_year",
+      "observed_code": "WORLD_AS_OF_YEAR_MISMATCH",
+      "observed_reason": "as_of year 2009 does not match the declared original year 2008",
+      "pass": true
+    },
+    {
+      "expected": "WORLD_SCOPE_NOT_AUTHORIZED",
+      "id": "revoked_or_never_granted_scope_uses",
+      "observed_code": "WORLD_SCOPE_NOT_AUTHORIZED",
+      "observed_reason": "requested world uses ['ACTIVE_CAUSAL'] exceed the granted CONTEXT-only modeled-world scope ['CONTEXT']; revoked/never-granted scope refuses",
+      "pass": true
+    },
+    {
+      "expected": "RESOLUTION_DENIED_OR_NOT_APPLICABLE",
+      "id": "m4_selected_service_revoked_scope_resolution",
+      "observed_code": "RESOLUTION_DENIED_OR_NOT_APPLICABLE",
+      "observed_reason": "actual M4 resolver denies uses beyond the granted CONTEXT atom",
+      "pass": true
+    }
+  ]
+}

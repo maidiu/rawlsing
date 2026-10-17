@@ -1,0 +1,113 @@
+{
+  "schema": "EE_P2R4A_F02_PREDICATE_DIALECT_SEMANTICS_MATRIX@1.0.0",
+  "status": "CANDIDATE__NOT_ADOPTED",
+  "controlling_evidence": {
+    "checkpoint": "20260918T1447-0400",
+    "handoff": "980acec7e33fcff1a4280df7f7913a76a266f05c",
+    "p2r3_return": "f1ade4f6ede6a660d181a910655c363d1a03ea7f",
+    "f02_pass": "482bb884a99e31ba77e904d0df39fffc872cbed3",
+    "f02_selector_implementation_blob": "7b45b277164fa90c3da739aab26b516f7a8cb8dc"
+  },
+  "exact_scope": {
+    "source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "release_ref": {
+      "kind": "C11LogicalRelease",
+      "object_id": "LITS1-F02-C11-7cac43e2ca5b31cb-bf305bf3f169d669",
+      "content_hash": "bf305bf3f169d66954be4f39cc602880fddea6083b5bee9c0212938355cd5297"
+    },
+    "selector_predicate_hashes": [
+      "c9a0c8106d457bba7e3f3f5abb7ee7fb98482bd86af629d860e4a904ad58456a",
+      "78dbd1a899fe43ac2e2ca6985ea0eccb086989fa2c4315fa518524e7ba94a6df",
+      "c4d2dd827326b6ff29f3c02382c36fa33c47c6227bfbf8c8053c11e1089923ca",
+      "69dc59f79014a7c17190ca658e193a004e167c322c7f713f4540882fb980feb8",
+      "f63d6121776500912342ab377178a15fcf6fabf7071864f4f413d95babb43849",
+      "a6494153b4defeb13e1658b73eead7c5df6e25847708c770dad5f42142492c7d"
+    ]
+  },
+  "leaf_family": "SURVEY_RESPONSE_EVENT",
+  "operation": "survey_response_EQ",
+  "field_semantics": [
+    {
+      "field": "op",
+      "required_exact_value": "LEAF",
+      "role": "canonical predicate AST leaf envelope; no translation"
+    },
+    {
+      "field": "leaf_type",
+      "required_exact_value": "SURVEY_RESPONSE_EVENT",
+      "role": "public empirical response-event leaf family"
+    },
+    {
+      "field": "operation",
+      "required_exact_value": "survey_response_EQ",
+      "role": "F02 child-grammar operation; TRUE iff the same governed source row has the exact native response value"
+    },
+    {
+      "field": "question_ref",
+      "role": "exact F02 QUESTION_NATIVE ref; resolve under exact F02 source-semantics authority and match native question identity; no canonical or fuzzy alias"
+    },
+    {
+      "field": "response_value_ref",
+      "role": "exact F02 RESPONSE_VALUE_STATE ref for the same question/native value; selector states are substantive 1, 2, or 3 only"
+    },
+    {
+      "field": "source_native_value",
+      "role": "exact raw native value; equal to response_value_ref native value and matched event raw value; no ordering, distance, coercion, or recode"
+    },
+    {
+      "field": "release_ref",
+      "role": "exact F02 composite C11 release scope; evaluation forbidden if runtime release differs"
+    }
+  ],
+  "exact_question_value_bindings": {
+    "q310": {
+      "question_content_hash": "c4b0f76b7a37d8083a103ffd316f2eb009eeca7b5cbf5910e51d364b39641534",
+      "values": {
+        "1": "e94b7665fffc55b564c33b139bc8a1608d381f89e81b63d99db42c9129a697da",
+        "2": "23589e5578c5a80749600bb3e4385705e8ac0f8d4297c2faaac457b0ce5f0ed4",
+        "3": "fe9fc4a890814f6b2f4882fc4c4127f27091b704fc9ce1eb90392173556f60e1"
+      }
+    },
+    "q311": {
+      "question_content_hash": "8680064d936efb99d64457edc3a2385e8862a2aac6bf50efd423afe83e77aed9",
+      "values": {
+        "1": "09d12eb8563ed35b371bddc5829c3bd85b1acd0aa4a4f30fbe6795a0a0588234",
+        "2": "dc457fb064cfcab1d353ab3032a48519e5a62f003d32b6b1b240c79d51578775",
+        "3": "4492fc52c88c0a11c0ccfc45521879a53c46fab843808032cd1ccf061d995641"
+      }
+    }
+  },
+  "interpretation_law": {
+    "direct_without_predicate_rewrite": true,
+    "predicate_exact_ref_preserved": true,
+    "runtime_rule": "Authority-driven interpreter consumes frozen fields in place; exact grammar/source authority, exact question/value refs, and exact release scope must resolve before comparing raw native event value.",
+    "matched_event_requirements": [
+      "same exact runtime release",
+      "same exact respondent identity selected by query index",
+      "event native question ref equals question_ref",
+      "event carries required positive exact F02 source/topology authority",
+      "event raw response value equals source_native_value",
+      "response_value_ref binds that native value and substantive state"
+    ],
+    "operator_semantics": "TRUE_IFF_SAME_ROW_GOVERNED_EVENT_HAS_EXACT_NATIVE_VALUE",
+    "missing_is_false": true,
+    "ordering_or_distance": false
+  },
+  "fail_closed_negative_cases": [
+    "UNLISTED_GRAMMAR_AUTHORITY",
+    "UNLISTED_OPERATION",
+    "QUESTION_REF_UNRESOLVED",
+    "RESPONSE_VALUE_REF_UNRESOLVED",
+    "QUESTION_VALUE_BINDING_MISMATCH",
+    "SOURCE_NATIVE_VALUE_MISMATCH",
+    "RELEASE_REF_MISMATCH",
+    "CROSS_RELEASE_INTERPRETATION",
+    "MISSING_AS_SELECTOR",
+    "CANONICAL_OR_FUZZY_QUESTION_ALIAS",
+    "NEAREST_OR_DEFAULT_VALUE",
+    "EVENT_AUTHORITY_NOT_POSITIVE",
+    "EXACT_RELEASE_NOT_PUBLICLY_REALIZED"
+  ],
+  "semantic_ceiling": "Q310_Q311_OPAQUE_NATIVE_CONDITIONERS__NO_ORDINAL_DIRECTIONAL_STRUCTURAL_POSITION_PSYCHOLOGICAL_OR_CAUSAL_MEANING",
+  "candidate_c11_boundary": "Exact release identity is semantic scope only; public C11 realization remains EE-P2R4B-owned."
+}

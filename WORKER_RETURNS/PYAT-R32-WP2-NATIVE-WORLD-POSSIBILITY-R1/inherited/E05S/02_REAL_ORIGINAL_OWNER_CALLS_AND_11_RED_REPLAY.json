@@ -1,0 +1,716 @@
+{
+  "schema": "R14_E05S_INDEPENDENT_EXECUTION@1",
+  "candidate": "84485d32c0088995f8dc664dc0517b2d27f2563d",
+  "original_suites": {
+    "e05": {
+      "tests": 38,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "e04": {
+      "tests": 37,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "n9c": {
+      "tests": 47,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "m4_m5": {
+      "tests": 30,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "empirical": {
+      "tests": 101,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "e03": {
+      "tests": 18,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "frozen55": {
+    "tests": 55,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "new_reviewer45": {
+    "tests": 45,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "author32": {
+    "tests": 32,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "unique_final_tests": 403,
+  "closures": [
+    {
+      "test": "test_zero_support_stays_typed_without_numeric_fabrication",
+      "original_E05I": "FAIL",
+      "R14_E05R": "PASS",
+      "expectation_changed": false
+    },
+    {
+      "test": "test_serve_must_bind_actual_request_to_acceptance[target]",
+      "original_E05I": "FAIL",
+      "R14_E05R": "PASS",
+      "expectation_changed": false
+    },
+    {
+      "test": "test_serve_must_bind_actual_request_to_acceptance[readset]",
+      "original_E05I": "FAIL",
+      "R14_E05R": "PASS",
+      "expectation_changed": false
+    },
+    {
+      "test": "test_serve_must_bind_actual_request_to_acceptance[clock]",
+      "original_E05I": "FAIL",
+      "R14_E05R": "PASS",
+      "expectation_changed": false
+    },
+    {
+      "test": "test_accept_must_bind_snapshot_clocks_to_request",
+      "original_E05I": "FAIL",
+      "R14_E05R": "PASS",
+      "expectation_changed": false
+    },
+    {
+      "test": "test_late_native_revocation_must_be_reread",
+      "original_E05I": "FAIL",
+      "R14_E05R": "PASS",
+      "expectation_changed": false
+    },
+    {
+      "test": "test_native_invalidate_scope_supported",
+      "original_E05I": "FAIL",
+      "R14_E05R": "PASS",
+      "expectation_changed": false
+    },
+    {
+      "test": "test_consumer_material_must_be_bound_not_copied[foreign_snapshot]",
+      "original_E05I": "FAIL",
+      "R14_E05R": "PASS",
+      "expectation_changed": false
+    },
+    {
+      "test": "test_consumer_material_must_be_bound_not_copied[partial_as_complete]",
+      "original_E05I": "FAIL",
+      "R14_E05R": "PASS",
+      "expectation_changed": false
+    },
+    {
+      "test": "test_consumer_material_must_be_bound_not_copied[forged_joint_probability]",
+      "original_E05I": "FAIL",
+      "R14_E05R": "PASS",
+      "expectation_changed": false
+    },
+    {
+      "test": "test_native_same_value_new_release_registry_must_not_silently_use_old_acceptance",
+      "original_E05I": "FAIL",
+      "R14_E05R": "PASS",
+      "expectation_changed": false
+    }
+  ],
+  "initial_profile_scope": "Initial combined reviewer run: original55 all pass; one new reviewer budget fixture error. Final clean100 ran without conftest; dedicated probe supplies fresh independent frame evidence.",
+  "actual_imports": [
+    {
+      "module": "e05_n9_selected_world_adapter",
+      "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r14-e05s-court/WORKER_RETURNS/PYAT-USERDIRECT-20261016-R14-E05S-INDEPENDENT-SELECTED-WORLD-R1/runtime/e05_n9_selected_world_adapter.py",
+      "git_blob": "690790e81854cde363643edc64946ddc63c58dbf",
+      "sha256": "9fdd3797a989c916f472f801000df6f5fcf515fc8f41174757d8309b9373d03f",
+      "source_commit": "84485d32c0088995f8dc664dc0517b2d27f2563d",
+      "source_path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R13-E05R-SELECTED-WORLD-REPAIR-R1/candidate/e05r_selected_world_adapter.py"
+    },
+    {
+      "module": "product",
+      "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r14-e05s-court/WORKER_RETURNS/PYAT-USERDIRECT-20261016-R14-E05S-INDEPENDENT-SELECTED-WORLD-R1/runtime/product/__init__.py",
+      "git_blob": "59a7e3c47435f944193ec10e82fe0e5e0fb5585f",
+      "sha256": "bb8eda74a6d4f1bbff9127a72e058968a8c4ea01e8ace8592fc7525a6c1746c3",
+      "source_commit": "9c96f201f3530d2dae321201e9a913bb7a61800f",
+      "source_path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-E04-GENERIC-WORLD-POSSIBILITY-SERVICE-R1/product/__init__.py"
+    },
+    {
+      "module": "product.empirical",
+      "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r14-e05s-court/WORKER_RETURNS/PYAT-USERDIRECT-20261016-R14-E05S-INDEPENDENT-SELECTED-WORLD-R1/runtime/product/empirical.py",
+      "git_blob": "475feb9f9aea495c11c40a56b083f0b628c34e15",
+      "sha256": "90b98e2dda3eed535162d5115b3c2ab7597d09e46f316917bdbf2de8a7da2918",
+      "source_commit": "9c96f201f3530d2dae321201e9a913bb7a61800f",
+      "source_path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-E04-GENERIC-WORLD-POSSIBILITY-SERVICE-R1/product/empirical.py"
+    },
+    {
+      "module": "product.nonparent",
+      "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r14-e05s-court/WORKER_RETURNS/PYAT-USERDIRECT-20261016-R14-E05S-INDEPENDENT-SELECTED-WORLD-R1/runtime/product/nonparent.py",
+      "git_blob": "2181b832d3c4376d4b9428e13f4354f273be8f32",
+      "sha256": "3635f0f6ad4891718c26c99f0f9860263d5e054517059f3dfe0409ec66d6287e",
+      "source_commit": "9c96f201f3530d2dae321201e9a913bb7a61800f",
+      "source_path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-E04-GENERIC-WORLD-POSSIBILITY-SERVICE-R1/product/nonparent.py"
+    },
+    {
+      "module": "product.scenario",
+      "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r14-e05s-court/WORKER_RETURNS/PYAT-USERDIRECT-20261016-R14-E05S-INDEPENDENT-SELECTED-WORLD-R1/runtime/product/scenario.py",
+      "git_blob": "b7e568166cd277c1ba127374ea1a350d1b3841a2",
+      "sha256": "f60169b2076f32cd34b5495b570cef24984d2bd2c6e4678fe1f5710cf41cbca6",
+      "source_commit": "9c96f201f3530d2dae321201e9a913bb7a61800f",
+      "source_path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-E04-GENERIC-WORLD-POSSIBILITY-SERVICE-R1/product/scenario.py"
+    },
+    {
+      "module": "product.service",
+      "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r14-e05s-court/WORKER_RETURNS/PYAT-USERDIRECT-20261016-R14-E05S-INDEPENDENT-SELECTED-WORLD-R1/runtime/product/service.py",
+      "git_blob": "facf1c86911a8a4c37db112be51d8c7109cd9f3b",
+      "sha256": "e87049107c1de433fce81b8c45a8f31f5bd226608a2cfe8e960b96ebe0bfd868",
+      "source_commit": "9c96f201f3530d2dae321201e9a913bb7a61800f",
+      "source_path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-E04-GENERIC-WORLD-POSSIBILITY-SERVICE-R1/product/service.py"
+    },
+    {
+      "module": "product.world",
+      "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r14-e05s-court/WORKER_RETURNS/PYAT-USERDIRECT-20261016-R14-E05S-INDEPENDENT-SELECTED-WORLD-R1/runtime/product/world.py",
+      "git_blob": "06a74caebda69f7d1baa8719a99138ef57d9c07b",
+      "sha256": "40955b11bcd4872d00b4682d4b89975162559b1e4637bc7c021c56e37bbe1e65",
+      "source_commit": "9c96f201f3530d2dae321201e9a913bb7a61800f",
+      "source_path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-E04-GENERIC-WORLD-POSSIBILITY-SERVICE-R1/product/world.py"
+    },
+    {
+      "module": "rawlsing_next._pre553_query_common",
+      "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r14-e05s-court/WORKER_RETURNS/PYAT-USERDIRECT-20261016-R14-E05S-INDEPENDENT-SELECTED-WORLD-R1/runtime/rawlsing_next/_pre553_query_common.py",
+      "git_blob": "938a6b03a63dd34ef4f0f63655ed8f11f65c5d92",
+      "sha256": "496320f7e089e4cc73b1a55023ed906d3f016e939f548cebc4ec59bddd4847b2",
+      "source_commit": "e2f1b96a860d1555e072f1538eea5d913eef3b37",
+      "source_path": "rawlsing_next/_pre553_query_common.py"
+    },
+    {
+      "module": "rawlsing_next._pre553_query_eval",
+      "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r14-e05s-court/WORKER_RETURNS/PYAT-USERDIRECT-20261016-R14-E05S-INDEPENDENT-SELECTED-WORLD-R1/runtime/rawlsing_next/_pre553_query_eval.py",
+      "git_blob": "f808dfcd2008cc71e9203de3cadf1abe14223974",
+      "sha256": "c72d7d35bfa5d3cb4b406bdd90530b2822416850bba48cdd12ce784ba10cd670",
+      "source_commit": "e2f1b96a860d1555e072f1538eea5d913eef3b37",
+      "source_path": "rawlsing_next/_pre553_query_eval.py"
+    },
+    {
+      "module": "rawlsing_next._pre553_query_predicate",
+      "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r14-e05s-court/WORKER_RETURNS/PYAT-USERDIRECT-20261016-R14-E05S-INDEPENDENT-SELECTED-WORLD-R1/runtime/rawlsing_next/_pre553_query_predicate.py",
+      "git_blob": "8590bacf464b2c61f319f581820a3af76ed1e60c",
+      "sha256": "f6e5484371ce1bf15abea25a7db408ab00cf4194154358e995608e67b833cbd7",
+      "source_commit": "e2f1b96a860d1555e072f1538eea5d913eef3b37",
+      "source_path": "rawlsing_next/_pre553_query_predicate.py"
+    },
+    {
+      "module": "rawlsing_next.m1_temporal_v554_admission_dedup",
+      "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r14-e05s-court/WORKER_RETURNS/PYAT-USERDIRECT-20261016-R14-E05S-INDEPENDENT-SELECTED-WORLD-R1/runtime/rawlsing_next/m1_temporal_v554_admission_dedup.py",
+      "git_blob": "e8bd6376720a2de132b384e7771d71d8d39cf261",
+      "sha256": "5f6bf653d287dab8063696f2b81a79ab4083e44eaa9b901cfb5aa4589a098ec0",
+      "source_commit": "e2f1b96a860d1555e072f1538eea5d913eef3b37",
+      "source_path": "rawlsing_next/m1_temporal_v554_admission_dedup.py"
+    },
+    {
+      "module": "rawlsing_next.m2_v555_atomic_route",
+      "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r14-e05s-court/WORKER_RETURNS/PYAT-USERDIRECT-20261016-R14-E05S-INDEPENDENT-SELECTED-WORLD-R1/runtime/rawlsing_next/m2_v555_atomic_route.py",
+      "git_blob": "deef8a60613635a10faf7d89cd8cdf0c3b8a0710",
+      "sha256": "71fcd8b2acb0f9ce4fbed470420b38131a3b9246028b7e764bfda8ca4d04582c",
+      "source_commit": "e2f1b96a860d1555e072f1538eea5d913eef3b37",
+      "source_path": "rawlsing_next/m2_v555_atomic_route.py"
+    },
+    {
+      "module": "rawlsing_next.m3_v556_higher_order_structural",
+      "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r14-e05s-court/WORKER_RETURNS/PYAT-USERDIRECT-20261016-R14-E05S-INDEPENDENT-SELECTED-WORLD-R1/runtime/rawlsing_next/m3_v556_higher_order_structural.py",
+      "git_blob": "9a4b26b214686364a43d108dabf0d57dac0ed3b2",
+      "sha256": "736c17d8d6b6792e9befd3792f3754f7b8153fb415a2070b5628a030d44b00ed",
+      "source_commit": "e2f1b96a860d1555e072f1538eea5d913eef3b37",
+      "source_path": "rawlsing_next/m3_v556_higher_order_structural.py"
+    },
+    {
+      "module": "rawlsing_next.m4_v557_v558_publication_repository",
+      "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r14-e05s-court/WORKER_RETURNS/PYAT-USERDIRECT-20261016-R14-E05S-INDEPENDENT-SELECTED-WORLD-R1/runtime/rawlsing_next/m4_v557_v558_publication_repository.py",
+      "git_blob": "8ec5c8e1c1a3cb7e998bb6cf0972ac87f396e360",
+      "sha256": "b35581669d8a75d70972d9a6aecee9caa94e6bcef950595acc17a6c16e85f9e7",
+      "source_commit": "e2f1b96a860d1555e072f1538eea5d913eef3b37",
+      "source_path": "rawlsing_next/m4_v557_v558_publication_repository.py"
+    },
+    {
+      "module": "rawlsing_next.m5_runtime_rsc_peer_prior",
+      "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r14-e05s-court/WORKER_RETURNS/PYAT-USERDIRECT-20261016-R14-E05S-INDEPENDENT-SELECTED-WORLD-R1/runtime/rawlsing_next/m5_runtime_rsc_peer_prior.py",
+      "git_blob": "18735bdb31a220aed032aa722574d685e2bdddf5",
+      "sha256": "ffac990688f3e4596c129787f236f1c26cf4f38f829c4f9a141fc05b1611e518",
+      "source_commit": "e2f1b96a860d1555e072f1538eea5d913eef3b37",
+      "source_path": "rawlsing_next/m5_runtime_rsc_peer_prior.py"
+    },
+    {
+      "module": "rawlsing_next.objective_consumer_bounded_evidence",
+      "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r14-e05s-court/WORKER_RETURNS/PYAT-USERDIRECT-20261016-R14-E05S-INDEPENDENT-SELECTED-WORLD-R1/runtime/rawlsing_next/objective_consumer_bounded_evidence.py",
+      "git_blob": "f30fca20e7b56e00348e82765d95f974b4b6a195",
+      "sha256": "a614d4b3d0592a6116a0fcd4dbd6ead642a88642570fce7226bdd1d6baf14303",
+      "source_commit": "e2f1b96a860d1555e072f1538eea5d913eef3b37",
+      "source_path": "rawlsing_next/objective_consumer_bounded_evidence.py"
+    },
+    {
+      "module": "rawlsing_next.pre553_analytical_composition",
+      "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r14-e05s-court/WORKER_RETURNS/PYAT-USERDIRECT-20261016-R14-E05S-INDEPENDENT-SELECTED-WORLD-R1/runtime/rawlsing_next/pre553_analytical_composition.py",
+      "git_blob": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b",
+      "sha256": "d83bf9fba14ab7a3c5bb2a4fad30e4746345f29f4d10c16fbc1d2b5d0030bcfe",
+      "source_commit": "e2f1b96a860d1555e072f1538eea5d913eef3b37",
+      "source_path": "rawlsing_next/pre553_analytical_composition.py"
+    },
+    {
+      "module": "rawlsing_next.pre553_c11_ingest",
+      "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r14-e05s-court/WORKER_RETURNS/PYAT-USERDIRECT-20261016-R14-E05S-INDEPENDENT-SELECTED-WORLD-R1/runtime/rawlsing_next/pre553_c11_ingest.py",
+      "git_blob": "37cd35fa2e3420a3eea272a2902e96ab9ba38aba",
+      "sha256": "0c56a0f6f656547a096982a6adab21c9b47d749385411a5d159f2b5390eec8bf",
+      "source_commit": "e2f1b96a860d1555e072f1538eea5d913eef3b37",
+      "source_path": "rawlsing_next/pre553_c11_ingest.py"
+    },
+    {
+      "module": "rawlsing_next.pre553_c11_integrity",
+      "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r14-e05s-court/WORKER_RETURNS/PYAT-USERDIRECT-20261016-R14-E05S-INDEPENDENT-SELECTED-WORLD-R1/runtime/rawlsing_next/pre553_c11_integrity.py",
+      "git_blob": "7c59aa13a2b7c8e3ab0dc90a1400df645b0b4bbd",
+      "sha256": "3963facef5c8ae2981991ffa8c5c5c9b717fb4e09f342eec277198fc5cf38a33",
+      "source_commit": "e2f1b96a860d1555e072f1538eea5d913eef3b37",
+      "source_path": "rawlsing_next/pre553_c11_integrity.py"
+    },
+    {
+      "module": "rawlsing_next.pre553_c11_repository",
+      "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r14-e05s-court/WORKER_RETURNS/PYAT-USERDIRECT-20261016-R14-E05S-INDEPENDENT-SELECTED-WORLD-R1/runtime/rawlsing_next/pre553_c11_repository.py",
+      "git_blob": "67c6eb6494522cd11aab1b93d0e73f9cef6036f3",
+      "sha256": "84a71fe43307cca30f9eeaaedb269d8390468a4744a0fac251aebc2cda7b498e",
+      "source_commit": "e2f1b96a860d1555e072f1538eea5d913eef3b37",
+      "source_path": "rawlsing_next/pre553_c11_repository.py"
+    },
+    {
+      "module": "rawlsing_next.pre553_discovery_exact",
+      "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r14-e05s-court/WORKER_RETURNS/PYAT-USERDIRECT-20261016-R14-E05S-INDEPENDENT-SELECTED-WORLD-R1/runtime/rawlsing_next/pre553_discovery_exact.py",
+      "git_blob": "905f24d114419dbdd93879ad2bee5b59dd2f23af",
+      "sha256": "808fd0bd8e2423c047268285c00ca43f0f4cdbff80ed1ad286e3c6c56b8f7217",
+      "source_commit": "e2f1b96a860d1555e072f1538eea5d913eef3b37",
+      "source_path": "rawlsing_next/pre553_discovery_exact.py"
+    },
+    {
+      "module": "rawlsing_next.pre553_empirical_authority",
+      "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r14-e05s-court/WORKER_RETURNS/PYAT-USERDIRECT-20261016-R14-E05S-INDEPENDENT-SELECTED-WORLD-R1/runtime/rawlsing_next/pre553_empirical_authority.py",
+      "git_blob": "ca65a7fd4d52f0c44447434559b1d09412e7aa39",
+      "sha256": "c32b96cd67274d2bcb44ca509afd87e085748bd2e32565716c10313b0609a29a",
+      "source_commit": "e2f1b96a860d1555e072f1538eea5d913eef3b37",
+      "source_path": "rawlsing_next/pre553_empirical_authority.py"
+    },
+    {
+      "module": "rawlsing_next.pre553_empirical_objects",
+      "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r14-e05s-court/WORKER_RETURNS/PYAT-USERDIRECT-20261016-R14-E05S-INDEPENDENT-SELECTED-WORLD-R1/runtime/rawlsing_next/pre553_empirical_objects.py",
+      "git_blob": "a61365b994e5c3c50de0f598fcf40e90abf757b6",
+      "sha256": "9cd1d71440a7e8c1861dda73274529e07211edc14335583e93ad91c0833e9ab4",
+      "source_commit": "e2f1b96a860d1555e072f1538eea5d913eef3b37",
+      "source_path": "rawlsing_next/pre553_empirical_objects.py"
+    },
+    {
+      "module": "rawlsing_next.pre553_empirical_possibility_provider",
+      "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r14-e05s-court/WORKER_RETURNS/PYAT-USERDIRECT-20261016-R14-E05S-INDEPENDENT-SELECTED-WORLD-R1/runtime/rawlsing_next/pre553_empirical_possibility_provider.py",
+      "git_blob": "23167aa25291fb148b1e3cf210ac33fe7769b783",
+      "sha256": "99d716051f23e1ef75990a5184afec612aa7855078a67893f6436b44f57b4697",
+      "source_commit": "e2f1b96a860d1555e072f1538eea5d913eef3b37",
+      "source_path": "rawlsing_next/pre553_empirical_possibility_provider.py"
+    },
+    {
+      "module": "rawlsing_next.pre553_empirical_query",
+      "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r14-e05s-court/WORKER_RETURNS/PYAT-USERDIRECT-20261016-R14-E05S-INDEPENDENT-SELECTED-WORLD-R1/runtime/rawlsing_next/pre553_empirical_query.py",
+      "git_blob": "03facecf70890bfd13b80418620d274cbcd69d02",
+      "sha256": "d45ad313bc57e94c8c3652b4123c7cb03b0fc18d38d577aaaae94435664ef4cb",
+      "source_commit": "e2f1b96a860d1555e072f1538eea5d913eef3b37",
+      "source_path": "rawlsing_next/pre553_empirical_query.py"
+    },
+    {
+      "module": "rawlsing_next.pre553_hq297_n9c_two_field_reader",
+      "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r14-e05s-court/WORKER_RETURNS/PYAT-USERDIRECT-20261016-R14-E05S-INDEPENDENT-SELECTED-WORLD-R1/runtime/rawlsing_next/pre553_hq297_n9c_two_field_reader.py",
+      "git_blob": "03eb46efccadd6880cb34b2e2ac609ffc9b16c59",
+      "sha256": "91eedbc612d860ff2b78bdcd3364e2ef9a0d0f5a134651e9de15d3116ac67292",
+      "source_commit": "9ab4a0192b7c951bb0b387637e6c74333246766c",
+      "source_path": "rawlsing_next/pre553_hq297_n9c_two_field_reader.py"
+    },
+    {
+      "module": "rawlsing_next.pre553_n9_n10w_progressive_candidate",
+      "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r14-e05s-court/WORKER_RETURNS/PYAT-USERDIRECT-20261016-R14-E05S-INDEPENDENT-SELECTED-WORLD-R1/runtime/rawlsing_next/pre553_n9_n10w_progressive_candidate.py",
+      "git_blob": "84d404147547767be8ecd4b6e1541f5fa3a8c8a2",
+      "sha256": "78f85aea938e9a087167af2938ab11aabbf5a731e852194f021918cf21044c8d",
+      "source_commit": "0e0ed50dbce2dd1434d3a3c84b937b9a956adba9",
+      "source_path": "rawlsing_next/pre553_n9_n10w_progressive_candidate.py"
+    },
+    {
+      "module": "rawlsing_next.pre553_recursive_handoff",
+      "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r14-e05s-court/WORKER_RETURNS/PYAT-USERDIRECT-20261016-R14-E05S-INDEPENDENT-SELECTED-WORLD-R1/runtime/rawlsing_next/pre553_recursive_handoff.py",
+      "git_blob": "868f43bf9869af5501fd67c3de7a2703ba4cb1b4",
+      "sha256": "15474ae325a1712c497d473eef30aebeb2b924718a7044ef962f6ac317709185",
+      "source_commit": "e2f1b96a860d1555e072f1538eea5d913eef3b37",
+      "source_path": "rawlsing_next/pre553_recursive_handoff.py"
+    },
+    {
+      "module": "rawlsing_next.pre553_runtime_authority",
+      "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r14-e05s-court/WORKER_RETURNS/PYAT-USERDIRECT-20261016-R14-E05S-INDEPENDENT-SELECTED-WORLD-R1/runtime/rawlsing_next/pre553_runtime_authority.py",
+      "git_blob": "896c7094124a4aaea23eec550178e4bf8e73ac68",
+      "sha256": "027aa551973b3ba6a560b322c9a704c4577f250d57a0c5564b8d9de71cbbb1d2",
+      "source_commit": "e2f1b96a860d1555e072f1538eea5d913eef3b37",
+      "source_path": "rawlsing_next/pre553_runtime_authority.py"
+    },
+    {
+      "module": "rawlsing_next.pre553_runtime_context",
+      "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r14-e05s-court/WORKER_RETURNS/PYAT-USERDIRECT-20261016-R14-E05S-INDEPENDENT-SELECTED-WORLD-R1/runtime/rawlsing_next/pre553_runtime_context.py",
+      "git_blob": "4fc50793871e176f164442c04ef2501eba9d5dfa",
+      "sha256": "e37b8d16ea2636ad78bcd8239b3ebdc498d0528605bf32353b65415739c0de1e",
+      "source_commit": "e2f1b96a860d1555e072f1538eea5d913eef3b37",
+      "source_path": "rawlsing_next/pre553_runtime_context.py"
+    },
+    {
+      "module": "rawlsing_next.source_backed_positioned_subject_possibility",
+      "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r14-e05s-court/WORKER_RETURNS/PYAT-USERDIRECT-20261016-R14-E05S-INDEPENDENT-SELECTED-WORLD-R1/runtime/rawlsing_next/source_backed_positioned_subject_possibility.py",
+      "git_blob": "62e5eced47b64512f47b004e3e13a6ef3fe21de7",
+      "sha256": "9c041cb134a7b9198d12f75a1eb82a7e37cdb781adf5f68033b5ad21e62dbc01",
+      "source_commit": "e2f1b96a860d1555e072f1538eea5d913eef3b37",
+      "source_path": "rawlsing_next/source_backed_positioned_subject_possibility.py"
+    },
+    {
+      "module": "rawlsing_next.tests.c1_at08_at13_fixture",
+      "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r14-e05s-court/WORKER_RETURNS/PYAT-USERDIRECT-20261016-R14-E05S-INDEPENDENT-SELECTED-WORLD-R1/runtime/rawlsing_next/tests/c1_at08_at13_fixture.py",
+      "git_blob": "0393cc8c17a313b7944b2a5287d0406d6cbe3849",
+      "sha256": "ce88e393d107eada13e37bdceb8f956789452281a54563cf5e5aee3304337332",
+      "source_commit": "e2f1b96a860d1555e072f1538eea5d913eef3b37",
+      "source_path": "rawlsing_next/tests/c1_at08_at13_fixture.py"
+    },
+    {
+      "module": "rawlsing_next.tests.test_pre553_empirical_query",
+      "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r14-e05s-court/WORKER_RETURNS/PYAT-USERDIRECT-20261016-R14-E05S-INDEPENDENT-SELECTED-WORLD-R1/runtime/rawlsing_next/tests/test_pre553_empirical_query.py",
+      "git_blob": "cc7d93db1f87d9c311170c229dbe3506937b404a",
+      "sha256": "eacc63ca9a067ebde53005fec9c859ce304cbedcf42b1b338b4fece49158b720",
+      "source_commit": "e2f1b96a860d1555e072f1538eea5d913eef3b37",
+      "source_path": "rawlsing_next/tests/test_pre553_empirical_query.py"
+    }
+  ],
+  "dedicated_original_owner_call_counts": {
+    "ingest_c11_source_release": 4,
+    "resolve_v558": 45,
+    "materialize_resolved_structural_context": 15,
+    "validate_resolved_structural_context": 15,
+    "read_historical_test_only": 8,
+    "consume": 8,
+    "provide_empirical_possibility_slice": 6,
+    "compose_positioned_subject_possibility": 21,
+    "execute_empirical_query": 21,
+    "evaluate_positioned_subject_possibility": 32,
+    "evaluate": 8
+  },
+  "concrete_C1_evidence_objects_to_F8": 16,
+  "two_original_client_calls": [
+    {
+      "module": "product.nonparent",
+      "function": "consume",
+      "snapshot_id": 4424562704,
+      "snapshot_hash": "aba4c7402add71b237581b1a91ed6066f1b0918c28bc8799ac8d9db6530e9dd7"
+    },
+    {
+      "module": "product.scenario",
+      "function": "evaluate",
+      "snapshot_id": 4424562704,
+      "snapshot_hash": "aba4c7402add71b237581b1a91ed6066f1b0918c28bc8799ac8d9db6530e9dd7"
+    },
+    {
+      "module": "product.nonparent",
+      "function": "consume",
+      "snapshot_id": 4424562704,
+      "snapshot_hash": "aba4c7402add71b237581b1a91ed6066f1b0918c28bc8799ac8d9db6530e9dd7"
+    },
+    {
+      "module": "product.scenario",
+      "function": "evaluate",
+      "snapshot_id": 4424562704,
+      "snapshot_hash": "aba4c7402add71b237581b1a91ed6066f1b0918c28bc8799ac8d9db6530e9dd7"
+    },
+    {
+      "module": "product.nonparent",
+      "function": "consume",
+      "snapshot_id": 4426943312,
+      "snapshot_hash": "4e80489a37a6e8c31acf969eb20eacbc7421a47544e6c996690dda077ba9c11b"
+    },
+    {
+      "module": "product.scenario",
+      "function": "evaluate",
+      "snapshot_id": 4426943312,
+      "snapshot_hash": "4e80489a37a6e8c31acf969eb20eacbc7421a47544e6c996690dda077ba9c11b"
+    },
+    {
+      "module": "product.nonparent",
+      "function": "consume",
+      "snapshot_id": 4426943312,
+      "snapshot_hash": "4e80489a37a6e8c31acf969eb20eacbc7421a47544e6c996690dda077ba9c11b"
+    },
+    {
+      "module": "product.scenario",
+      "function": "evaluate",
+      "snapshot_id": 4426943312,
+      "snapshot_hash": "4e80489a37a6e8c31acf969eb20eacbc7421a47544e6c996690dda077ba9c11b"
+    },
+    {
+      "module": "product.nonparent",
+      "function": "consume",
+      "snapshot_id": 4423624528,
+      "snapshot_hash": "7e89a34adcdfbdfa8f7ad62e64f960998c22f4ba6a24471bbf421ff32eb6e8a6"
+    },
+    {
+      "module": "product.scenario",
+      "function": "evaluate",
+      "snapshot_id": 4423624528,
+      "snapshot_hash": "7e89a34adcdfbdfa8f7ad62e64f960998c22f4ba6a24471bbf421ff32eb6e8a6"
+    },
+    {
+      "module": "product.nonparent",
+      "function": "consume",
+      "snapshot_id": 4423624528,
+      "snapshot_hash": "7e89a34adcdfbdfa8f7ad62e64f960998c22f4ba6a24471bbf421ff32eb6e8a6"
+    },
+    {
+      "module": "product.scenario",
+      "function": "evaluate",
+      "snapshot_id": 4423624528,
+      "snapshot_hash": "7e89a34adcdfbdfa8f7ad62e64f960998c22f4ba6a24471bbf421ff32eb6e8a6"
+    },
+    {
+      "module": "product.nonparent",
+      "function": "consume",
+      "snapshot_id": 4422797904,
+      "snapshot_hash": "d6ca4f77dbf9d95a41f876725365a56e3ae3225476d1b171ecc82e88b04a7593"
+    },
+    {
+      "module": "product.scenario",
+      "function": "evaluate",
+      "snapshot_id": 4422797904,
+      "snapshot_hash": "d6ca4f77dbf9d95a41f876725365a56e3ae3225476d1b171ecc82e88b04a7593"
+    },
+    {
+      "module": "product.nonparent",
+      "function": "consume",
+      "snapshot_id": 4422797904,
+      "snapshot_hash": "d6ca4f77dbf9d95a41f876725365a56e3ae3225476d1b171ecc82e88b04a7593"
+    },
+    {
+      "module": "product.scenario",
+      "function": "evaluate",
+      "snapshot_id": 4422797904,
+      "snapshot_hash": "d6ca4f77dbf9d95a41f876725365a56e3ae3225476d1b171ecc82e88b04a7593"
+    }
+  ],
+  "C11_preimage_reconstruction": {
+    "cases": [
+      {
+        "label": "CURRENT_TEST_CLOCK",
+        "respondents": 58,
+        "events": 232,
+        "counts": [
+          [
+            18,
+            32
+          ],
+          [
+            10,
+            16
+          ],
+          [
+            6,
+            8
+          ]
+        ],
+        "reverse": [
+          18,
+          29
+        ],
+        "strata": {
+          "000:Y1": 2,
+          "000:Y0": 6,
+          "001:Y1": 3,
+          "001:Y0": 3,
+          "010:Y1": 2,
+          "010:Y0": 4,
+          "011:Y1": 4,
+          "011:Y0": 2,
+          "100:Y1": 3,
+          "100:Y0": 5,
+          "101:Y1": 5,
+          "101:Y0": 3,
+          "110:Y1": 4,
+          "110:Y0": 4,
+          "111:Y1": 6,
+          "111:Y0": 2
+        }
+      },
+      {
+        "label": "HISTORICAL_AS_OF",
+        "respondents": 58,
+        "events": 232,
+        "counts": [
+          [
+            18,
+            32
+          ],
+          [
+            10,
+            16
+          ],
+          [
+            6,
+            8
+          ]
+        ],
+        "reverse": [
+          18,
+          29
+        ],
+        "strata": {
+          "000:Y1": 2,
+          "000:Y0": 6,
+          "001:Y1": 3,
+          "001:Y0": 3,
+          "010:Y1": 2,
+          "010:Y0": 4,
+          "011:Y1": 4,
+          "011:Y0": 2,
+          "100:Y1": 3,
+          "100:Y0": 5,
+          "101:Y1": 5,
+          "101:Y0": 3,
+          "110:Y1": 4,
+          "110:Y0": 4,
+          "111:Y1": 6,
+          "111:Y0": 2
+        }
+      },
+      {
+        "label": "TYPED_PARTIAL_PRE_NCA_PUBLICATION",
+        "respondents": 58,
+        "events": 232,
+        "counts": [
+          [
+            18,
+            32
+          ],
+          [
+            10,
+            16
+          ],
+          [
+            6,
+            8
+          ]
+        ],
+        "reverse": [
+          18,
+          29
+        ],
+        "strata": {
+          "000:Y1": 2,
+          "000:Y0": 6,
+          "001:Y1": 3,
+          "001:Y0": 3,
+          "010:Y1": 2,
+          "010:Y0": 4,
+          "011:Y1": 4,
+          "011:Y0": 2,
+          "100:Y1": 3,
+          "100:Y0": 5,
+          "101:Y1": 5,
+          "101:Y0": 3,
+          "110:Y1": 4,
+          "110:Y0": 4,
+          "111:Y1": 6,
+          "111:Y0": 2
+        }
+      },
+      {
+        "label": "ZERO_SUPPORT",
+        "respondents": 50,
+        "events": 200,
+        "counts": [
+          [
+            12,
+            24
+          ],
+          [
+            4,
+            8
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "reverse": [
+          12,
+          23
+        ],
+        "strata": {
+          "000:Y1": 2,
+          "000:Y0": 6,
+          "001:Y1": 3,
+          "001:Y0": 3,
+          "010:Y1": 2,
+          "010:Y0": 4,
+          "011:Y1": 4,
+          "011:Y0": 2,
+          "100:Y1": 3,
+          "100:Y0": 5,
+          "101:Y1": 5,
+          "101:Y0": 3,
+          "110:Y1": 4,
+          "110:Y0": 4
+        }
+      }
+    ],
+    "concrete_C1_to_F8_and_actual_I03_fact_binding": true
+  },
+  "native_probe": "observations/r14_actual_native_probe.json",
+  "cold": {
+    "first_pid": 75685,
+    "replay_pid": 75972,
+    "bit_identical": true,
+    "persisted_ledger_preparation_pid": 82554,
+    "persisted_ledger_restart_pid": 82839,
+    "native_candidate_durable_store": false
+  },
+  "OC05": {
+    "OC01_PRE553_SOURCE_LOCAL_EMPIRICAL_QUERY_R1": {
+      "policy_id": "OC01_PRE553_SOURCE_LOCAL_EMPIRICAL_QUERY_R1",
+      "current_applicability": "APPLICABLE_CURRENT",
+      "consumer_seam": "rawlsing_next.pre553_empirical_query.execute_empirical_query",
+      "reason": "current exact source-local empirical query/statistic seam"
+    },
+    "OC02_LEARNED_STRUCTURAL_ADMISSION_R1": {
+      "policy_id": "OC02_LEARNED_STRUCTURAL_ADMISSION_R1",
+      "current_applicability": "APPLICABLE_CURRENT",
+      "consumer_seam": "rawlsing_next.pre553_structural_admission",
+      "reason": "current P06/I04 structural-admission decision/refusal seam"
+    },
+    "OC03_SDTF_OBJECTIVE_CONSEQUENCE_R1": {
+      "policy_id": "OC03_SDTF_OBJECTIVE_CONSEQUENCE_R1",
+      "current_applicability": "NOT_YET_APPLICABLE",
+      "consumer_seam": null,
+      "reason": "P1-P5 remain CANDIDATE_NOT_CURRENT pending W2-D04 and later admission"
+    },
+    "OC04_OCCURRENCE_NONEVENT_WORLD_FACT_R1": {
+      "policy_id": "OC04_OCCURRENCE_NONEVENT_WORLD_FACT_R1",
+      "current_applicability": "NOT_YET_APPLICABLE",
+      "consumer_seam": null,
+      "reason": "generic non-event adapter is W2-D05; real world rooting is W2-D01"
+    },
+    "OC05_TERMINAL_OBJECTIVE_WORLD_RESOLUTION_R1": {
+      "policy_id": "OC05_TERMINAL_OBJECTIVE_WORLD_RESOLUTION_R1",
+      "current_applicability": "NOT_YET_APPLICABLE",
+      "consumer_seam": null,
+      "reason": "terminal objective-world root/resolver is not current; no universal terminal may be invented"
+    }
+  }
+}

@@ -1,0 +1,190 @@
+{
+  "python": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]",
+  "executable": "/usr/local/bin/python3",
+  "platform": "macOS-13.2.1-x86_64-i386-64bit",
+  "env": {
+    "PYTHONPATH": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r13-e05r-repair/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R13-E05R-SELECTED-WORLD-REPAIR-R1/runtime:/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r13-e05r-repair/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R13-E05R-SELECTED-WORLD-REPAIR-R1/runtime/rawlsing_next/tests:/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r13-e05r-repair/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R13-E05R-SELECTED-WORLD-REPAIR-R1/runtime/rawlsing_next",
+    "PV2_RUNTIME_ROOT": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r13-e05r-repair/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R13-E05R-SELECTED-WORLD-REPAIR-R1/runtime",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "suites": [
+    {
+      "label": "e05",
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "pytest",
+        "-q",
+        "_e05/tests/test_e05_n9_selected_world.py",
+        "--import-mode=importlib",
+        "-p",
+        "no:cacheprovider",
+        "--junitxml=/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r13-e05r-repair/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R13-E05R-SELECTED-WORLD-REPAIR-R1/observations/e05.xml"
+      ],
+      "cwd": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r13-e05r-repair/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R13-E05R-SELECTED-WORLD-REPAIR-R1/runtime",
+      "exit": 0,
+      "elapsed_seconds": 14.538365069078282,
+      "junit": [
+        {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "0",
+          "skipped": "0",
+          "tests": "38",
+          "time": "13.869",
+          "timestamp": "2026-10-15T19:12:52.818077-04:00",
+          "hostname": "MacBook-Pro.lan"
+        }
+      ]
+    },
+    {
+      "label": "e04",
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "pytest",
+        "-q",
+        "_e04-candidate/repro/test_product.py",
+        "--import-mode=importlib",
+        "-p",
+        "no:cacheprovider",
+        "--junitxml=/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r13-e05r-repair/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R13-E05R-SELECTED-WORLD-REPAIR-R1/observations/e04.xml"
+      ],
+      "cwd": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r13-e05r-repair/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R13-E05R-SELECTED-WORLD-REPAIR-R1/runtime",
+      "exit": 0,
+      "elapsed_seconds": 16.51167161494959,
+      "junit": [
+        {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "0",
+          "skipped": "0",
+          "tests": "37",
+          "time": "16.116",
+          "timestamp": "2026-10-15T19:13:07.089731-04:00",
+          "hostname": "MacBook-Pro.lan"
+        }
+      ]
+    },
+    {
+      "label": "n9c",
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "pytest",
+        "-q",
+        "tests/test_hq297_n9c_two_field_reader.py",
+        "--import-mode=importlib",
+        "-p",
+        "no:cacheprovider",
+        "--junitxml=/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r13-e05r-repair/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R13-E05R-SELECTED-WORLD-REPAIR-R1/observations/n9c.xml"
+      ],
+      "cwd": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r13-e05r-repair/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R13-E05R-SELECTED-WORLD-REPAIR-R1/runtime",
+      "exit": 0,
+      "elapsed_seconds": 0.5189943489385769,
+      "junit": [
+        {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "0",
+          "skipped": "0",
+          "tests": "47",
+          "time": "0.123",
+          "timestamp": "2026-10-15T19:13:23.583298-04:00",
+          "hostname": "MacBook-Pro.lan"
+        }
+      ]
+    },
+    {
+      "label": "m4_m5",
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "pytest",
+        "-q",
+        "rawlsing_next/tests/test_m4_v557_v558_publication_repository.py",
+        "rawlsing_next/tests/test_m5_runtime_rsc_peer_prior.py",
+        "--import-mode=importlib",
+        "-p",
+        "no:cacheprovider",
+        "--junitxml=/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r13-e05r-repair/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R13-E05R-SELECTED-WORLD-REPAIR-R1/observations/m4_m5.xml"
+      ],
+      "cwd": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r13-e05r-repair/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R13-E05R-SELECTED-WORLD-REPAIR-R1/runtime",
+      "exit": 0,
+      "elapsed_seconds": 0.7579057429684326,
+      "junit": [
+        {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "0",
+          "skipped": "0",
+          "tests": "30",
+          "time": "0.340",
+          "timestamp": "2026-10-15T19:13:24.139248-04:00",
+          "hostname": "MacBook-Pro.lan"
+        }
+      ]
+    },
+    {
+      "label": "empirical",
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "pytest",
+        "-q",
+        "rawlsing_next/tests/test_pre553_empirical_possibility_provider.py",
+        "rawlsing_next/tests/test_pre553_analytical_composition.py",
+        "rawlsing_next/tests/test_source_backed_positioned_subject_possibility.py",
+        "rawlsing_next/tests/test_pre553_empirical_query.py",
+        "--import-mode=importlib",
+        "-p",
+        "no:cacheprovider",
+        "--junitxml=/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r13-e05r-repair/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R13-E05R-SELECTED-WORLD-REPAIR-R1/observations/empirical.xml"
+      ],
+      "cwd": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r13-e05r-repair/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R13-E05R-SELECTED-WORLD-REPAIR-R1/runtime",
+      "exit": 0,
+      "elapsed_seconds": 22.89452098601032,
+      "junit": [
+        {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "0",
+          "skipped": "0",
+          "tests": "101",
+          "time": "22.514",
+          "timestamp": "2026-10-15T19:13:24.861809-04:00",
+          "hostname": "MacBook-Pro.lan"
+        }
+      ]
+    },
+    {
+      "label": "e03",
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "pytest",
+        "-q",
+        "rawlsing_next/tests/test_pre553_n9_n10w_progressive_candidate.py",
+        "--import-mode=importlib",
+        "-p",
+        "no:cacheprovider",
+        "--junitxml=/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r13-e05r-repair/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R13-E05R-SELECTED-WORLD-REPAIR-R1/observations/e03.xml"
+      ],
+      "cwd": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r13-e05r-repair/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R13-E05R-SELECTED-WORLD-REPAIR-R1/runtime",
+      "exit": 0,
+      "elapsed_seconds": 6.085185859934427,
+      "junit": [
+        {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "0",
+          "skipped": "0",
+          "tests": "18",
+          "time": "5.662",
+          "timestamp": "2026-10-15T19:13:47.814867-04:00",
+          "hostname": "MacBook-Pro.lan"
+        }
+      ]
+    }
+  ]
+}

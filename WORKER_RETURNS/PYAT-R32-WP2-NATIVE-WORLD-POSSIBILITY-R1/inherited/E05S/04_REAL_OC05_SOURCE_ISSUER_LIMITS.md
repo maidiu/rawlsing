@@ -1,0 +1,9 @@
+# OC05 and source authority limits
+
+The exact original installed policy module is imported from the 401-object closure. Its live installation_manifest reports OC05 NOT_YET_APPLICABLE with consumer_seam=None. Direct evaluate_current_consumer refuses OC05. All receipts retain operative_N9=false, operative_OC05=false, issued_N5N6=false, issued_EE13=false and new_issuer=false. No installation or canonical/CURRENT owner edit occurred.
+
+GSS remains 2021 PHC rural occupied dwelling/household main-lighting electricity: 2,388,192/3,288,063, published decimal 72.6, five separate subtypes, the original exclusions and February 24, 2022 publication. The literal owner unit RURAL_OCCUPIED_HOUSEHOLD_MAIN_LIGHTING is preserved without issuing a new real-source unit determination. NCA remains national 2021Q4 active mobile-data subscriptions under a 90-day activity definition, 23,414,527, published July 8, 2022. These are distinct geographies, units, observation/publication clocks, publishers, families, refs and unquantified uncertainty states. No shared denominator, rural phone-person exposure, person/dyad probability or pooled product is warranted.
+
+Original publisher full-PDF bytes, edition roots, custody, licences, competent U/source/operation grants and real issuer refs remain unadmitted. Fixture records explicitly retain fixture_only=true, issued=false, source_pdf_sha256=None, issuer_ref=None and TEST_ONLY_NO_EXTERNAL_USE_GRANT. Hash integrity and persisted fixture grant bytes supply no competent signature or renewal.
+
+The maximum decision here is ACCEPT_SOURCEFREE_NONINSTALLING_SELECTED_WORLD_ONLY. It covers this exact E05R @2 candidate and its executed source-free serving boundary. It does not accept standalone E04 or E04R, issue N5/N6 or EE13, establish operative N9/N10W/EE14 or original all35 completion, or authorize N11/N12, person generation, source adoption or V3. Adoption remains a separate competent owner decision.

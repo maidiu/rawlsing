@@ -1,0 +1,14 @@
+# Minimal separate owner work — value-bearing world sources
+
+**Proposal, not permission or implementation grant.**
+
+1. **Two independently encoded source-free N9 fixture providers**, without one copying the other's normalized output. Provider A may serialize tagged semantic objects; B may build independently from normalized row, relation and temporal tables. Both must dereference actual, authored **value-bearing** synthetic world objects, not mere digest echo.
+2. **World-selection contract** `GENERIC_WORLD_SELECTION@1.0.0`: typed request `(demand_ref, native_scope, effective/asof/currentness clocks, allowed-use, generated-binding query-echo)` to selection result with native sampling unit and strata, independent AH, ordered n-ary roles, F1/F2 requirement topology, public objective rule/sanction, contradicting alternatives, epistemic status algebra, use/issuer and immutable source+values-read receipts.
+3. **Ordered-possibility contract** `GENERIC_ORDERED_POSSIBILITY@1.0.0`: typed request `(selected_world_ref, source_population/risk/routing refs, ordered conditioner steps, target+role direction, issuer-scoped operation, required model-use)` to exact selected respondent-grain geometry or typed refusal with independent numerator/denominator/step chain. Reverse demand must not be inferred from forward geometry.
+4. **Lossless adapter**: validate SC0 proposed Draft 2020-12 schema `610ac870fde6cfe63796592b3c6b1e1bf1e37150` on both physical providers, enforce semantic ID/reference roundtrip and normalize only explicitly allowed physical lineage fields. Reject missing sponsor, AH→stratum coalescence, absent F2/history, missing minority, status collapses, extra actor psyche, temporal knowledge leakage, revoked use, copied unqualified authority or hash-only receipts.
+5. **Two generic consumers**: finite `CONCEPTION_SCENARIO_PROPOSAL_INPUT_ONLY` returns proposed constraints and no parent/actor; `NONPARENT_APPRENTICESHIP_ENTRY` returns route constraints with no genealogy selectors or synthesized person. Independently compare effects and read-sets.
+6. **Two independent refreshes**: new generated binding changes selection/query fingerprint without source promotion; new publication/effective boundary changes structural receipt/version without reinterpreting event time. Prior receipts remain immutable.
+
+**Acceptance court:** re-run frozen K9 8, K10 28, strict independent PE 13, PE owner 21, N10E 43 on *identical verified imports* with actual JUnit and typed RED intact. The local 36-case helper is only a minimal proof that source-free computation is possible, and is not this acceptance court.
+
+**Ceilings:** no original respondent access, no real N9 science/currentness, no permission to issue model-use or role-reversal warrants, no N10W joint route probability, no N12/V3 actor and no canonical merge. Commission these separately to the appropriate owners.
