@@ -1,0 +1,71 @@
+{
+  "phase": "A_BEFORE_ANY_WG0P5_REF_OR_SOURCE_READ",
+  "at": "2026-10-17T04:14:02.667498+00:00",
+  "start": "b809dd46e4c0003cbef271fdb7490e93714e36fb",
+  "preregistration_pushed_sha": "17a71b27221a3334cd43358429c3ee1561f70f87",
+  "candidate_under_test": "20d781c8502662bf788b60b828e46df55898d687",
+  "WG0P5_candidate_sha": null,
+  "pytest": {
+    "tests": 36,
+    "passed": 17,
+    "failed": 19,
+    "errors": 0,
+    "skipped": 0,
+    "exit": 1,
+    "junit": "observations/phase_a_previous_P4.xml",
+    "stdout": "observations/phase_a_previous_P4.stdout",
+    "failed_cases": [
+      "test_frozen_descriptor_source_integrity[descriptor/source_edition]",
+      "test_frozen_descriptor_source_integrity[descriptor/native_item_ids]",
+      "test_frozen_descriptor_source_integrity[descriptor/release_tag]",
+      "test_frozen_descriptor_source_integrity[descriptor/risk_name]",
+      "test_frozen_descriptor_source_integrity[descriptor/targets_other_form]",
+      "test_frozen_descriptor_source_integrity[descriptor/member_ids_same_cardinality]",
+      "test_frozen_descriptor_source_integrity[descriptor/member_ids_denominator_drop]",
+      "test_frozen_descriptor_source_integrity[descriptor/grant_withdrawn]",
+      "test_frozen_descriptor_source_integrity[descriptor/grant_foreign]",
+      "test_frozen_descriptor_source_integrity[descriptor/disposition_HELD]",
+      "test_frozen_descriptor_source_integrity[descriptor/full_identity_hash]",
+      "test_frozen_descriptor_source_integrity[descriptor/op_id]",
+      "test_frozen_descriptor_source_integrity[descriptor/target_domain_same_cardinality]",
+      "test_frozen_descriptor_source_integrity[source/release_source_artifact]",
+      "test_frozen_descriptor_source_integrity[copy/shallow_copied_plan]",
+      "test_frozen_descriptor_source_integrity[copy/copied_mapping]",
+      "test_bound_descriptor_cannot_change_served_provenance[source_edition-FORGED_CALLER_EDITION]",
+      "test_bound_descriptor_cannot_change_served_provenance[native_item_ids-forged1]",
+      "test_copied_release_descriptor_refused_before_native_query"
+    ]
+  },
+  "physical_imports": {
+    "pre553_c11_repository": {
+      "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r26-wg0m-court/WORKER_RETURNS/PYAT-R26-WG0M-ORIGINAL-FRONTIER-INDEPENDENT-DELTA-R1/runtime_phase_b/candidate/pinned/rawlsing_next/pre553_c11_repository.py",
+      "sha256": "84a71fe43307cca30f9eeaaedb269d8390468a4744a0fac251aebc2cda7b498e"
+    },
+    "pre553_c11_ingest": {
+      "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r26-wg0m-court/WORKER_RETURNS/PYAT-R26-WG0M-ORIGINAL-FRONTIER-INDEPENDENT-DELTA-R1/runtime_phase_b/candidate/pinned/rawlsing_next/pre553_c11_ingest.py",
+      "sha256": "0c56a0f6f656547a096982a6adab21c9b47d749385411a5d159f2b5390eec8bf"
+    },
+    "pre553_empirical_query": {
+      "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r26-wg0m-court/WORKER_RETURNS/PYAT-R26-WG0M-ORIGINAL-FRONTIER-INDEPENDENT-DELTA-R1/runtime_phase_b/candidate/pinned/rawlsing_next/pre553_empirical_query.py",
+      "sha256": "d45ad313bc57e94c8c3652b4123c7cb03b0fc18d38d577aaaae94435664ef4cb"
+    },
+    "pre553_batch_runner": {
+      "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r26-wg0m-court/WORKER_RETURNS/PYAT-R26-WG0M-ORIGINAL-FRONTIER-INDEPENDENT-DELTA-R1/runtime_phase_b/candidate/pinned/rawlsing_next/pre553_batch_runner.py",
+      "sha256": "5071bde0180db05f59386884d5de2bdea503cd26db2024806a92887d2a5a1e04"
+    },
+    "pre553_empirical_objects": {
+      "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r26-wg0m-court/WORKER_RETURNS/PYAT-R26-WG0M-ORIGINAL-FRONTIER-INDEPENDENT-DELTA-R1/runtime_phase_b/candidate/pinned/rawlsing_next/pre553_empirical_objects.py",
+      "sha256": "9cd1d71440a7e8c1861dda73274529e07211edc14335583e93ad91c0833e9ab4"
+    },
+    "pre553_c11_integrity": {
+      "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r26-wg0m-court/WORKER_RETURNS/PYAT-R26-WG0M-ORIGINAL-FRONTIER-INDEPENDENT-DELTA-R1/runtime_phase_b/candidate/pinned/rawlsing_next/pre553_c11_integrity.py",
+      "sha256": "3963facef5c8ae2981991ffa8c5c5c9b717fb4e09f342eec277198fc5cf38a33"
+    }
+  },
+  "frozen_roots": [
+    "observations/DESCRIPTOR_PREREGISTRATION_ROOT.json",
+    "observations/PRECOMMITTED_TEST_ROOT.json"
+  ],
+  "inherited_source_selector": "observations/inheritance_source_selector.json",
+  "scope": "Only historical WG0P4 native synthetic execution; no WG0P5 source inspected and no repaired-candidate conclusion."
+}

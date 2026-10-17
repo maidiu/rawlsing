@@ -1,0 +1,11 @@
+# WG0M Phase A — independent descriptor court preregistered
+
+**PHASE_A_ORACLE_READY_NOT_WG0P5_ADJUDICATED.** The33 additional descriptor/source controls were committed and pushed at `17a71b27221a3334cd43358429c3ee1561f70f87` before any WG0P5 ref or source inspection. No WG0P5 verdict is issued here.
+
+At exact original WG0P4 `20d781c8502662bf788b60b828e46df55898d687`, the actual isolated full-module run produced **17 PASS /19 RED /0 ERROR /0 SKIP** across36 cases: all three inherited WG0L counterexamples remain RED, and16 of33 new descriptor controls expose adjacent failures. This is measured historical-candidate behavior, never a repaired-candidate result. Full stdout/JUnit and raw stimuli, actual native module paths/hashes and caller/callee traces are retained.
+
+The unchanged original65 and assertions, original WG0J44/K11 source closure, exact inherited three-RED tests and native80 original tests are preserved with exact source SHA256/Git blobs. The80 tests are staged here for Phase B; their inherited earlier pass is not represented as a new WG0M execution. The original25 expectation remains exact3 PRODUCED/16 HELD/6 INADMISSIBLE. The separate lawful conditional remains yes1/no1 over exactly R2/R3; cold recovery must retain the original3-unit manifest and genuine prior receipt with actual exit23, different PID and1+2 I03 calls.
+
+New controls require typed refusal before a new I03 call and no supported forged descriptor. They cover copied plans/mappings/contracts, source edition, item IDs, release/risk/form/domain, membership/denominator, grants/disposition, semantic description, same-cardinality substitutions, current clock/epoch/revocation and forged fact projections. An untyped KeyError is a RED, not a refusal pass. Baseline native computations used to construct a genuine fact are separated from attack-time calls.
+
+Phase B may start only after an exact governed WG0P5 return is pushed, its SHA/read scope frozen, and its actual source independently staged. Read-only exact original owner modules and tests must remain unchanged. Source-free fixture permission supplies no original survey, semantic issuer, N11/N12, production/canonical, HQ adoption or operative V3 authority. The reviewer does not repair author code.

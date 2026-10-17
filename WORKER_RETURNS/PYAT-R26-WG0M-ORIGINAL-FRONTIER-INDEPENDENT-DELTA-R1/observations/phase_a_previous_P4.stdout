@@ -1,0 +1,175 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.11.3, pytest-9.0.2, pluggy-1.6.0 -- /usr/local/bin/python3
+rootdir: /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r26-wg0m-court/WORKER_RETURNS/PYAT-R26-WG0M-ORIGINAL-FRONTIER-INDEPENDENT-DELTA-R1/runtime_phase_b/candidate
+configfile: pytest.ini
+plugins: anyio-4.12.1
+collecting ... collected 36 items
+
+runtime_phase_b/candidate::test_frozen_descriptor_source_integrity[descriptor/source_edition] <- ../../tests/test_descriptor_delta_frozen.py FAILED [  2%]
+runtime_phase_b/candidate::test_frozen_descriptor_source_integrity[descriptor/native_item_ids] <- ../../tests/test_descriptor_delta_frozen.py FAILED [  5%]
+runtime_phase_b/candidate::test_frozen_descriptor_source_integrity[descriptor/release_tag] <- ../../tests/test_descriptor_delta_frozen.py FAILED [  8%]
+runtime_phase_b/candidate::test_frozen_descriptor_source_integrity[descriptor/risk_name] <- ../../tests/test_descriptor_delta_frozen.py FAILED [ 11%]
+runtime_phase_b/candidate::test_frozen_descriptor_source_integrity[descriptor/targets_other_form] <- ../../tests/test_descriptor_delta_frozen.py FAILED [ 13%]
+runtime_phase_b/candidate::test_frozen_descriptor_source_integrity[descriptor/member_ids_same_cardinality] <- ../../tests/test_descriptor_delta_frozen.py FAILED [ 16%]
+runtime_phase_b/candidate::test_frozen_descriptor_source_integrity[descriptor/member_ids_denominator_drop] <- ../../tests/test_descriptor_delta_frozen.py FAILED [ 19%]
+runtime_phase_b/candidate::test_frozen_descriptor_source_integrity[descriptor/grant_withdrawn] <- ../../tests/test_descriptor_delta_frozen.py FAILED [ 22%]
+runtime_phase_b/candidate::test_frozen_descriptor_source_integrity[descriptor/grant_foreign] <- ../../tests/test_descriptor_delta_frozen.py FAILED [ 25%]
+runtime_phase_b/candidate::test_frozen_descriptor_source_integrity[descriptor/disposition_HELD] <- ../../tests/test_descriptor_delta_frozen.py FAILED [ 27%]
+runtime_phase_b/candidate::test_frozen_descriptor_source_integrity[descriptor/full_identity_hash] <- ../../tests/test_descriptor_delta_frozen.py FAILED [ 30%]
+runtime_phase_b/candidate::test_frozen_descriptor_source_integrity[descriptor/op_id] <- ../../tests/test_descriptor_delta_frozen.py FAILED [ 33%]
+runtime_phase_b/candidate::test_frozen_descriptor_source_integrity[descriptor/swapped_complete_spec] <- ../../tests/test_descriptor_delta_frozen.py PASSED [ 36%]
+runtime_phase_b/candidate::test_frozen_descriptor_source_integrity[descriptor/target_domain_same_cardinality] <- ../../tests/test_descriptor_delta_frozen.py FAILED [ 38%]
+runtime_phase_b/candidate::test_frozen_descriptor_source_integrity[descriptor/foreign_release_tag] <- ../../tests/test_descriptor_delta_frozen.py PASSED [ 41%]
+runtime_phase_b/candidate::test_frozen_descriptor_source_integrity[source/release_source_edition] <- ../../tests/test_descriptor_delta_frozen.py PASSED [ 44%]
+runtime_phase_b/candidate::test_frozen_descriptor_source_integrity[source/release_source_artifact] <- ../../tests/test_descriptor_delta_frozen.py FAILED [ 47%]
+runtime_phase_b/candidate::test_frozen_descriptor_source_integrity[source/release_universe] <- ../../tests/test_descriptor_delta_frozen.py PASSED [ 50%]
+runtime_phase_b/candidate::test_frozen_descriptor_source_integrity[source/release_risk_ref] <- ../../tests/test_descriptor_delta_frozen.py PASSED [ 52%]
+runtime_phase_b/candidate::test_frozen_descriptor_source_integrity[source/release_form_ref] <- ../../tests/test_descriptor_delta_frozen.py PASSED [ 55%]
+runtime_phase_b/candidate::test_frozen_descriptor_source_integrity[source/owner_revocation] <- ../../tests/test_descriptor_delta_frozen.py PASSED [ 58%]
+runtime_phase_b/candidate::test_frozen_descriptor_source_integrity[source/owner_clock_change] <- ../../tests/test_descriptor_delta_frozen.py PASSED [ 61%]
+runtime_phase_b/candidate::test_frozen_descriptor_source_integrity[source/owner_epoch_change] <- ../../tests/test_descriptor_delta_frozen.py PASSED [ 63%]
+runtime_phase_b/candidate::test_frozen_descriptor_source_integrity[fact/denominator_rehash] <- ../../tests/test_descriptor_delta_frozen.py PASSED [ 66%]
+runtime_phase_b/candidate::test_frozen_descriptor_source_integrity[fact/numerator_same_total_swap] <- ../../tests/test_descriptor_delta_frozen.py PASSED [ 69%]
+runtime_phase_b/candidate::test_frozen_descriptor_source_integrity[fact/membership_same_cardinality] <- ../../tests/test_descriptor_delta_frozen.py PASSED [ 72%]
+runtime_phase_b/candidate::test_frozen_descriptor_source_integrity[fact/native_item_ids_projection] <- ../../tests/test_descriptor_delta_frozen.py PASSED [ 75%]
+runtime_phase_b/candidate::test_frozen_descriptor_source_integrity[fact/source_edition_projection] <- ../../tests/test_descriptor_delta_frozen.py PASSED [ 77%]
+runtime_phase_b/candidate::test_frozen_descriptor_source_integrity[copy/shallow_copied_plan] <- ../../tests/test_descriptor_delta_frozen.py FAILED [ 80%]
+runtime_phase_b/candidate::test_frozen_descriptor_source_integrity[copy/copied_mapping] <- ../../tests/test_descriptor_delta_frozen.py FAILED [ 83%]
+runtime_phase_b/candidate::test_frozen_descriptor_source_integrity[copy/self_rehashed_contract] <- ../../tests/test_descriptor_delta_frozen.py PASSED [ 86%]
+runtime_phase_b/candidate::test_frozen_descriptor_source_integrity[copy/changed_semantic_description] <- ../../tests/test_descriptor_delta_frozen.py PASSED [ 88%]
+runtime_phase_b/candidate::test_frozen_descriptor_source_integrity[copy/same_cardinality_spec_swap] <- ../../tests/test_descriptor_delta_frozen.py PASSED [ 91%]
+runtime_phase_b/candidate::test_bound_descriptor_cannot_change_served_provenance[source_edition-FORGED_CALLER_EDITION] <- ../../tests/phase_b/test_additional_descriptor_binding_red.py FAILED [ 94%]
+runtime_phase_b/candidate::test_bound_descriptor_cannot_change_served_provenance[native_item_ids-forged1] <- ../../tests/phase_b/test_additional_descriptor_binding_red.py FAILED [ 97%]
+runtime_phase_b/candidate::test_copied_release_descriptor_refused_before_native_query <- ../../tests/phase_b/test_additional_descriptor_binding_red.py FAILED [100%]
+
+=================================== FAILURES ===================================
+______ test_frozen_descriptor_source_integrity[descriptor/source_edition] ______
+tests/test_descriptor_delta_frozen.py:15: in test_frozen_descriptor_source_integrity
+    assert e['exception_type'] in control['allowed_exceptions'] or e['typed_refusal'] in ('HELD','INADMISSIBLE','REVOKED','STALE','REFUSED','UNAVAILABLE')
+E   AssertionError: assert (None in ['IdentityError', 'FrontierError', 'RevocationError', 'ColdRestartError', 'NativeDataError', 'BatchIntegrityError'] or None in ('HELD', 'INADMISSIBLE', 'REVOKED', 'STALE', 'REFUSED', 'UNAVAILABLE'))
+_____ test_frozen_descriptor_source_integrity[descriptor/native_item_ids] ______
+tests/test_descriptor_delta_frozen.py:15: in test_frozen_descriptor_source_integrity
+    assert e['exception_type'] in control['allowed_exceptions'] or e['typed_refusal'] in ('HELD','INADMISSIBLE','REVOKED','STALE','REFUSED','UNAVAILABLE')
+E   AssertionError: assert (None in ['IdentityError', 'FrontierError', 'RevocationError', 'ColdRestartError', 'NativeDataError', 'BatchIntegrityError'] or None in ('HELD', 'INADMISSIBLE', 'REVOKED', 'STALE', 'REFUSED', 'UNAVAILABLE'))
+_______ test_frozen_descriptor_source_integrity[descriptor/release_tag] ________
+tests/test_descriptor_delta_frozen.py:15: in test_frozen_descriptor_source_integrity
+    assert e['exception_type'] in control['allowed_exceptions'] or e['typed_refusal'] in ('HELD','INADMISSIBLE','REVOKED','STALE','REFUSED','UNAVAILABLE')
+E   AssertionError: assert ('KeyError' in ['IdentityError', 'FrontierError', 'RevocationError', 'ColdRestartError', 'NativeDataError', 'BatchIntegrityError'] or None in ('HELD', 'INADMISSIBLE', 'REVOKED', 'STALE', 'REFUSED', 'UNAVAILABLE'))
+________ test_frozen_descriptor_source_integrity[descriptor/risk_name] _________
+tests/test_descriptor_delta_frozen.py:17: in test_frozen_descriptor_source_integrity
+    assert e['new_I03_calls']==0
+E   assert 1 == 0
+____ test_frozen_descriptor_source_integrity[descriptor/targets_other_form] ____
+tests/test_descriptor_delta_frozen.py:15: in test_frozen_descriptor_source_integrity
+    assert e['exception_type'] in control['allowed_exceptions'] or e['typed_refusal'] in ('HELD','INADMISSIBLE','REVOKED','STALE','REFUSED','UNAVAILABLE')
+E   AssertionError: assert (None in ['IdentityError', 'FrontierError', 'RevocationError', 'ColdRestartError', 'NativeDataError', 'BatchIntegrityError'] or None in ('HELD', 'INADMISSIBLE', 'REVOKED', 'STALE', 'REFUSED', 'UNAVAILABLE'))
+_ test_frozen_descriptor_source_integrity[descriptor/member_ids_same_cardinality] _
+tests/test_descriptor_delta_frozen.py:15: in test_frozen_descriptor_source_integrity
+    assert e['exception_type'] in control['allowed_exceptions'] or e['typed_refusal'] in ('HELD','INADMISSIBLE','REVOKED','STALE','REFUSED','UNAVAILABLE')
+E   AssertionError: assert (None in ['IdentityError', 'FrontierError', 'RevocationError', 'ColdRestartError', 'NativeDataError', 'BatchIntegrityError'] or None in ('HELD', 'INADMISSIBLE', 'REVOKED', 'STALE', 'REFUSED', 'UNAVAILABLE'))
+_ test_frozen_descriptor_source_integrity[descriptor/member_ids_denominator_drop] _
+tests/test_descriptor_delta_frozen.py:15: in test_frozen_descriptor_source_integrity
+    assert e['exception_type'] in control['allowed_exceptions'] or e['typed_refusal'] in ('HELD','INADMISSIBLE','REVOKED','STALE','REFUSED','UNAVAILABLE')
+E   AssertionError: assert (None in ['IdentityError', 'FrontierError', 'RevocationError', 'ColdRestartError', 'NativeDataError', 'BatchIntegrityError'] or None in ('HELD', 'INADMISSIBLE', 'REVOKED', 'STALE', 'REFUSED', 'UNAVAILABLE'))
+_____ test_frozen_descriptor_source_integrity[descriptor/grant_withdrawn] ______
+tests/test_descriptor_delta_frozen.py:15: in test_frozen_descriptor_source_integrity
+    assert e['exception_type'] in control['allowed_exceptions'] or e['typed_refusal'] in ('HELD','INADMISSIBLE','REVOKED','STALE','REFUSED','UNAVAILABLE')
+E   AssertionError: assert (None in ['IdentityError', 'FrontierError', 'RevocationError', 'ColdRestartError', 'NativeDataError', 'BatchIntegrityError'] or None in ('HELD', 'INADMISSIBLE', 'REVOKED', 'STALE', 'REFUSED', 'UNAVAILABLE'))
+______ test_frozen_descriptor_source_integrity[descriptor/grant_foreign] _______
+tests/test_descriptor_delta_frozen.py:15: in test_frozen_descriptor_source_integrity
+    assert e['exception_type'] in control['allowed_exceptions'] or e['typed_refusal'] in ('HELD','INADMISSIBLE','REVOKED','STALE','REFUSED','UNAVAILABLE')
+E   AssertionError: assert (None in ['IdentityError', 'FrontierError', 'RevocationError', 'ColdRestartError', 'NativeDataError', 'BatchIntegrityError'] or None in ('HELD', 'INADMISSIBLE', 'REVOKED', 'STALE', 'REFUSED', 'UNAVAILABLE'))
+_____ test_frozen_descriptor_source_integrity[descriptor/disposition_HELD] _____
+tests/test_descriptor_delta_frozen.py:15: in test_frozen_descriptor_source_integrity
+    assert e['exception_type'] in control['allowed_exceptions'] or e['typed_refusal'] in ('HELD','INADMISSIBLE','REVOKED','STALE','REFUSED','UNAVAILABLE')
+E   AssertionError: assert (None in ['IdentityError', 'FrontierError', 'RevocationError', 'ColdRestartError', 'NativeDataError', 'BatchIntegrityError'] or None in ('HELD', 'INADMISSIBLE', 'REVOKED', 'STALE', 'REFUSED', 'UNAVAILABLE'))
+____ test_frozen_descriptor_source_integrity[descriptor/full_identity_hash] ____
+tests/test_descriptor_delta_frozen.py:15: in test_frozen_descriptor_source_integrity
+    assert e['exception_type'] in control['allowed_exceptions'] or e['typed_refusal'] in ('HELD','INADMISSIBLE','REVOKED','STALE','REFUSED','UNAVAILABLE')
+E   AssertionError: assert (None in ['IdentityError', 'FrontierError', 'RevocationError', 'ColdRestartError', 'NativeDataError', 'BatchIntegrityError'] or None in ('HELD', 'INADMISSIBLE', 'REVOKED', 'STALE', 'REFUSED', 'UNAVAILABLE'))
+__________ test_frozen_descriptor_source_integrity[descriptor/op_id] ___________
+tests/test_descriptor_delta_frozen.py:17: in test_frozen_descriptor_source_integrity
+    assert e['new_I03_calls']==0
+E   assert 1 == 0
+_ test_frozen_descriptor_source_integrity[descriptor/target_domain_same_cardinality] _
+tests/test_descriptor_delta_frozen.py:15: in test_frozen_descriptor_source_integrity
+    assert e['exception_type'] in control['allowed_exceptions'] or e['typed_refusal'] in ('HELD','INADMISSIBLE','REVOKED','STALE','REFUSED','UNAVAILABLE')
+E   AssertionError: assert (None in ['IdentityError', 'FrontierError', 'RevocationError', 'ColdRestartError', 'NativeDataError', 'BatchIntegrityError'] or None in ('HELD', 'INADMISSIBLE', 'REVOKED', 'STALE', 'REFUSED', 'UNAVAILABLE'))
+___ test_frozen_descriptor_source_integrity[source/release_source_artifact] ____
+tests/test_descriptor_delta_frozen.py:15: in test_frozen_descriptor_source_integrity
+    assert e['exception_type'] in control['allowed_exceptions'] or e['typed_refusal'] in ('HELD','INADMISSIBLE','REVOKED','STALE','REFUSED','UNAVAILABLE')
+E   AssertionError: assert (None in ['IdentityError', 'FrontierError', 'RevocationError', 'ColdRestartError', 'NativeDataError', 'BatchIntegrityError'] or None in ('HELD', 'INADMISSIBLE', 'REVOKED', 'STALE', 'REFUSED', 'UNAVAILABLE'))
+______ test_frozen_descriptor_source_integrity[copy/shallow_copied_plan] _______
+tests/test_descriptor_delta_frozen.py:15: in test_frozen_descriptor_source_integrity
+    assert e['exception_type'] in control['allowed_exceptions'] or e['typed_refusal'] in ('HELD','INADMISSIBLE','REVOKED','STALE','REFUSED','UNAVAILABLE')
+E   AssertionError: assert (None in ['IdentityError', 'FrontierError', 'RevocationError', 'ColdRestartError', 'NativeDataError', 'BatchIntegrityError'] or None in ('HELD', 'INADMISSIBLE', 'REVOKED', 'STALE', 'REFUSED', 'UNAVAILABLE'))
+_________ test_frozen_descriptor_source_integrity[copy/copied_mapping] _________
+tests/test_descriptor_delta_frozen.py:15: in test_frozen_descriptor_source_integrity
+    assert e['exception_type'] in control['allowed_exceptions'] or e['typed_refusal'] in ('HELD','INADMISSIBLE','REVOKED','STALE','REFUSED','UNAVAILABLE')
+E   AssertionError: assert (None in ['IdentityError', 'FrontierError', 'RevocationError', 'ColdRestartError', 'NativeDataError', 'BatchIntegrityError'] or None in ('HELD', 'INADMISSIBLE', 'REVOKED', 'STALE', 'REFUSED', 'UNAVAILABLE'))
+_ test_bound_descriptor_cannot_change_served_provenance[source_edition-FORGED_CALLER_EDITION] _
+tests/phase_b/test_additional_descriptor_binding_red.py:16: in test_bound_descriptor_cannot_change_served_provenance
+    assert actual==expected, 'Caller copied a plan with unbound descriptor metadata; native issued result carries forged provenance'
+E   AssertionError: Caller copied a plan with unbound descriptor metadata; native issued result carries forged provenance
+E   assert 'FORGED_CALLER_EDITION' == 'SRC-EDITION-REL-A-W1-W1-v1'
+E     
+E     - SRC-EDITION-REL-A-W1-W1-v1
+E     + FORGED_CALLER_EDITION
+_ test_bound_descriptor_cannot_change_served_provenance[native_item_ids-forged1] _
+tests/phase_b/test_additional_descriptor_binding_red.py:16: in test_bound_descriptor_cannot_change_served_provenance
+    assert actual==expected, 'Caller copied a plan with unbound descriptor metadata; native issued result carries forged provenance'
+E   AssertionError: Caller copied a plan with unbound descriptor metadata; native issued result carries forged provenance
+E   assert ['FOREIGN_NATIVE_ITEM'] == ['WG0P-ORD-01']
+E     
+E     At index 0 diff: 'FOREIGN_NATIVE_ITEM' != 'WG0P-ORD-01'
+E     
+E     Full diff:
+E       [
+E     -     'WG0P-ORD-01',
+E     +     'FOREIGN_NATIVE_ITEM',
+E       ]
+__________ test_copied_release_descriptor_refused_before_native_query __________
+tests/phase_b/test_additional_descriptor_binding_red.py:27: in test_copied_release_descriptor_refused_before_native_query
+    assert isinstance(error,w.IdentityError) and not any(c['name']=='execute_empirical_query' for c in calls), 'Unbound release tag reaches native query and fails later with a topology KeyError'
+E   AssertionError: Unbound release tag reaches native query and fails later with a topology KeyError
+E   assert (False)
+E    +  where False = isinstance(KeyError('complete_cell_semantic_projection'), <class 'wg0p4_workload.IdentityError'>)
+E    +    where <class 'wg0p4_workload.IdentityError'> = w.IdentityError
+- generated xml file: /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r26-wg0m-court/WORKER_RETURNS/PYAT-R26-WG0M-ORIGINAL-FRONTIER-INDEPENDENT-DELTA-R1/observations/phase_a_previous_P4.xml -
+=========================== short test summary info ============================
+FAILED runtime_phase_b/candidate::test_frozen_descriptor_source_integrity[descriptor/source_edition] - AssertionError: assert (None in ['IdentityError', 'FrontierError', 'RevocationError', 'ColdRestartError', 'NativeDataError', 'BatchIntegrityError'] or None in ('HELD', 'INADMISSIBLE', 'REVOKED', 'STALE', 'REFUSED', 'UNAVAILABLE'))
+FAILED runtime_phase_b/candidate::test_frozen_descriptor_source_integrity[descriptor/native_item_ids] - AssertionError: assert (None in ['IdentityError', 'FrontierError', 'RevocationError', 'ColdRestartError', 'NativeDataError', 'BatchIntegrityError'] or None in ('HELD', 'INADMISSIBLE', 'REVOKED', 'STALE', 'REFUSED', 'UNAVAILABLE'))
+FAILED runtime_phase_b/candidate::test_frozen_descriptor_source_integrity[descriptor/release_tag] - AssertionError: assert ('KeyError' in ['IdentityError', 'FrontierError', 'RevocationError', 'ColdRestartError', 'NativeDataError', 'BatchIntegrityError'] or None in ('HELD', 'INADMISSIBLE', 'REVOKED', 'STALE', 'REFUSED', 'UNAVAILABLE'))
+FAILED runtime_phase_b/candidate::test_frozen_descriptor_source_integrity[descriptor/risk_name] - assert 1 == 0
+FAILED runtime_phase_b/candidate::test_frozen_descriptor_source_integrity[descriptor/targets_other_form] - AssertionError: assert (None in ['IdentityError', 'FrontierError', 'RevocationError', 'ColdRestartError', 'NativeDataError', 'BatchIntegrityError'] or None in ('HELD', 'INADMISSIBLE', 'REVOKED', 'STALE', 'REFUSED', 'UNAVAILABLE'))
+FAILED runtime_phase_b/candidate::test_frozen_descriptor_source_integrity[descriptor/member_ids_same_cardinality] - AssertionError: assert (None in ['IdentityError', 'FrontierError', 'RevocationError', 'ColdRestartError', 'NativeDataError', 'BatchIntegrityError'] or None in ('HELD', 'INADMISSIBLE', 'REVOKED', 'STALE', 'REFUSED', 'UNAVAILABLE'))
+FAILED runtime_phase_b/candidate::test_frozen_descriptor_source_integrity[descriptor/member_ids_denominator_drop] - AssertionError: assert (None in ['IdentityError', 'FrontierError', 'RevocationError', 'ColdRestartError', 'NativeDataError', 'BatchIntegrityError'] or None in ('HELD', 'INADMISSIBLE', 'REVOKED', 'STALE', 'REFUSED', 'UNAVAILABLE'))
+FAILED runtime_phase_b/candidate::test_frozen_descriptor_source_integrity[descriptor/grant_withdrawn] - AssertionError: assert (None in ['IdentityError', 'FrontierError', 'RevocationError', 'ColdRestartError', 'NativeDataError', 'BatchIntegrityError'] or None in ('HELD', 'INADMISSIBLE', 'REVOKED', 'STALE', 'REFUSED', 'UNAVAILABLE'))
+FAILED runtime_phase_b/candidate::test_frozen_descriptor_source_integrity[descriptor/grant_foreign] - AssertionError: assert (None in ['IdentityError', 'FrontierError', 'RevocationError', 'ColdRestartError', 'NativeDataError', 'BatchIntegrityError'] or None in ('HELD', 'INADMISSIBLE', 'REVOKED', 'STALE', 'REFUSED', 'UNAVAILABLE'))
+FAILED runtime_phase_b/candidate::test_frozen_descriptor_source_integrity[descriptor/disposition_HELD] - AssertionError: assert (None in ['IdentityError', 'FrontierError', 'RevocationError', 'ColdRestartError', 'NativeDataError', 'BatchIntegrityError'] or None in ('HELD', 'INADMISSIBLE', 'REVOKED', 'STALE', 'REFUSED', 'UNAVAILABLE'))
+FAILED runtime_phase_b/candidate::test_frozen_descriptor_source_integrity[descriptor/full_identity_hash] - AssertionError: assert (None in ['IdentityError', 'FrontierError', 'RevocationError', 'ColdRestartError', 'NativeDataError', 'BatchIntegrityError'] or None in ('HELD', 'INADMISSIBLE', 'REVOKED', 'STALE', 'REFUSED', 'UNAVAILABLE'))
+FAILED runtime_phase_b/candidate::test_frozen_descriptor_source_integrity[descriptor/op_id] - assert 1 == 0
+FAILED runtime_phase_b/candidate::test_frozen_descriptor_source_integrity[descriptor/target_domain_same_cardinality] - AssertionError: assert (None in ['IdentityError', 'FrontierError', 'RevocationError', 'ColdRestartError', 'NativeDataError', 'BatchIntegrityError'] or None in ('HELD', 'INADMISSIBLE', 'REVOKED', 'STALE', 'REFUSED', 'UNAVAILABLE'))
+FAILED runtime_phase_b/candidate::test_frozen_descriptor_source_integrity[source/release_source_artifact] - AssertionError: assert (None in ['IdentityError', 'FrontierError', 'RevocationError', 'ColdRestartError', 'NativeDataError', 'BatchIntegrityError'] or None in ('HELD', 'INADMISSIBLE', 'REVOKED', 'STALE', 'REFUSED', 'UNAVAILABLE'))
+FAILED runtime_phase_b/candidate::test_frozen_descriptor_source_integrity[copy/shallow_copied_plan] - AssertionError: assert (None in ['IdentityError', 'FrontierError', 'RevocationError', 'ColdRestartError', 'NativeDataError', 'BatchIntegrityError'] or None in ('HELD', 'INADMISSIBLE', 'REVOKED', 'STALE', 'REFUSED', 'UNAVAILABLE'))
+FAILED runtime_phase_b/candidate::test_frozen_descriptor_source_integrity[copy/copied_mapping] - AssertionError: assert (None in ['IdentityError', 'FrontierError', 'RevocationError', 'ColdRestartError', 'NativeDataError', 'BatchIntegrityError'] or None in ('HELD', 'INADMISSIBLE', 'REVOKED', 'STALE', 'REFUSED', 'UNAVAILABLE'))
+FAILED runtime_phase_b/candidate::test_bound_descriptor_cannot_change_served_provenance[source_edition-FORGED_CALLER_EDITION] - AssertionError: Caller copied a plan with unbound descriptor metadata; native issued result carries forged provenance
+assert 'FORGED_CALLER_EDITION' == 'SRC-EDITION-REL-A-W1-W1-v1'
+  
+  - SRC-EDITION-REL-A-W1-W1-v1
+  + FORGED_CALLER_EDITION
+FAILED runtime_phase_b/candidate::test_bound_descriptor_cannot_change_served_provenance[native_item_ids-forged1] - AssertionError: Caller copied a plan with unbound descriptor metadata; native issued result carries forged provenance
+assert ['FOREIGN_NATIVE_ITEM'] == ['WG0P-ORD-01']
+  
+  At index 0 diff: 'FOREIGN_NATIVE_ITEM' != 'WG0P-ORD-01'
+  
+  Full diff:
+    [
+  -     'WG0P-ORD-01',
+  +     'FOREIGN_NATIVE_ITEM',
+    ]
+FAILED runtime_phase_b/candidate::test_copied_release_descriptor_refused_before_native_query - AssertionError: Unbound release tag reaches native query and fails later with a topology KeyError
+assert (False)
+ +  where False = isinstance(KeyError('complete_cell_semantic_projection'), <class 'wg0p4_workload.IdentityError'>)
+ +    where <class 'wg0p4_workload.IdentityError'> = w.IdentityError
+======================== 19 failed, 17 passed in 32.83s ========================
