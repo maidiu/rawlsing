@@ -1,0 +1,67 @@
+{
+  "schema": "T9R_PHASE_A_IMMUTABLE_EXPECTATIONS@1",
+  "files": [
+    {
+      "path": "01_T9R_PRECOMMITTED_DELTA_ORACLE.json",
+      "sha256": "ebf325687b4fb4c840508d331d13c92202a980ed04435e34989dae37f9425bdc",
+      "bytes": 8530
+    },
+    {
+      "path": "01B_FROZEN_COUPLED_BINDING_VECTORS.json",
+      "sha256": "05cc4784d534e9db5ed0a5979fa01c2818e46d60eef8228798e767c1ee13eb2a",
+      "bytes": 2471
+    },
+    {
+      "path": "tests/test_t9r_delta.py",
+      "sha256": "70bf3320673f3b3d50d517d8a866ee39553c427cdf71c9023f310c61ee8c2907",
+      "bytes": 9683
+    },
+    {
+      "path": "tests/test_independent_clock_custody.py",
+      "sha256": "1a5c12e64933c78c546c7663af74700eab6975f4e356a0899fd9ac3b3f001bca",
+      "bytes": 13391
+    },
+    {
+      "path": "inherited/tests/test_independent_clock_custody.py",
+      "sha256": "1a5c12e64933c78c546c7663af74700eab6975f4e356a0899fd9ac3b3f001bca",
+      "bytes": 13391
+    },
+    {
+      "path": "inherited_evidence_manifest.json",
+      "sha256": "d50e9d16daaa50813fda2c58bfaf73459e1dfd1c46e0de913e04bb134c52507c",
+      "bytes": 26099
+    },
+    {
+      "path": "guarded_runner.py",
+      "sha256": "c2eddcf1054e020b8649e49b8795caaef43e96cc3771964844011cbf94d589cb",
+      "bytes": 6418
+    },
+    {
+      "path": "pytest.ini",
+      "sha256": "ca4b82760538130959a0fbe25c21fc5d28cd46fb7a63b1209def6d19e2b40a62",
+      "bytes": 43
+    },
+    {
+      "path": "shadow_probe.py",
+      "sha256": "16f3be3baf1c398f6430bed15a3c3d256692fd194f7bd98eb9040e0beb86f90c",
+      "bytes": 2459
+    },
+    {
+      "path": "01_PRECOMMITTED_CLOCK_ESTIMAND_ORACLE.json",
+      "sha256": "4646107ef1b0eae7f5aed3cd4fdb193e361fc7594924aea423dccb9734150aa3",
+      "bytes": 4069
+    },
+    {
+      "path": "evidence/staged_source_manifest.json",
+      "sha256": "ae1a9a03839d5c12427042bc4da5b267868bcacf87aef3f8a581c00b385137de",
+      "bytes": 10582
+    }
+  ],
+  "expected_new_delta_cases": 50,
+  "new_delta_execution": "DEFERRED_UNTIL_PHASE_B",
+  "candidate_implementation_unread": true,
+  "candidate_results_unread": true,
+  "immutable_original_48_cases": true,
+  "binding_limit": "Only disclosed direct API signature mapping may be added after candidate inspection; frozen values and assertions stay unchanged.",
+  "frozen_at_utc": "2026-10-17T04:24:22.362642+00:00"
+}

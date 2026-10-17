@@ -1,0 +1,136 @@
+{
+  "schema": "PYAT_R18_T9B_PREDECLARED_SERIES_CLOCK_ORACLE@1.0.0",
+  "status": "FROZEN_BEFORE_ANY_T9B_EXPERIMENT_OR_NEW_TEMPORAL_METHOD",
+  "role": "Independent sourcefree temporal scientific investigator; NOT source EE12/EE14 issuer, model actor or HQ",
+  "branch": "agent/vozhd-pyat-20261016-r18-t9b-temporal-history-consumer-r1",
+  "sealed_startup": "acbb4f79dd2cdcfe022d48c56995f5b214634e7e",
+  "write_terrain": "WORKER_RETURNS/PYAT-R18-T9B-TEMPORAL-HISTORY-CONSUMER-R1/",
+
+  "custody_incident_frozen_first": {
+    "finding": "HOST_PYTEST_INI_SHADOWED_PINNED_SOURCE",
+    "detail": "This host contains an AMBIENT /Users/matthewsmith/Desktop/Rawlsing/ with pytest.ini and an unverified data/ddm_build_copy/. Plain pytest rootdir discovery inserted that ambient directory into sys.path, so a naive run imports UNVERIFIED bytes while appearing to import the pinned tree.",
+    "consequence": "Any worker that does not pin sys.path would report evidence from bytes it never verified.",
+    "mandatory_guard": "run_pinned_v553_suite.py pins sys.path to the staged tree and asserts the resolved data.ddm_build_copy.__file__ lies inside this return BEFORE collection.",
+    "control_observed_with_guard": "PINNED_V553_CONSUMER_CONTRACT: 8 passed",
+    "control_observed_without_guard": "ImportError against the ambient tree"
+  },
+
+  "inherited_capital_frozen": {
+    "V553_temporal_pressure_blob": "5304b70f9f",
+    "V553_canonical_harmonization_blob": "1951ada5cb",
+    "V553_harmonization_legacy_blob": "153f3dbeab",
+    "V553_temporal_identity_blob": "bbbef13111",
+    "V553_schema_blob": "b41b448583",
+    "pinned_consumer_contract_test_blob": "3e75c2df92",
+    "native_closure_verified": "1259/1259 git blob SHA-1 (NUL preimage) + byte count",
+    "inherited_temporal_state_machine": {
+      "AUTHORIZED_SPARSE_TEMPORAL_KEY": "three-state authorization, not a boolean",
+      "PROBE_ONLY_TEMPORAL_KEY": "probe only, never a product value",
+      "BLOCKED_TEMPORAL_KEY": "explicit refusal",
+      "ALLOWED_MULTI_WAVE_GRAINS": ["structural_channel_exact", "horizon_exact", "relation_target_driver_semantic", "relation_target_driver"],
+      "inherited_methods_present": [
+        "_interp (linear interpolation)",
+        "_build_source_wave_anchor_manifest (known-at vs wave anchor)",
+        "_build_interpolation_policy_ledger",
+        "_build_interpolation_manifest(allow_interpolation=...) (explicit gate)",
+        "_build_rupture_event_slot_ledger (discontinuity)",
+        "_build_rupture_block_audit",
+        "_build_cohort_window_requirement_index (cohort comparability)",
+        "_build_absence_noncomparability_register",
+        "_pressure_band / _bounded_score (bounded, no fake resolution)",
+        "_build_downstream_v554_handoff_index (affordance consumer handoff)"
+      ]
+    }
+  },
+
+  "frozen_temporal_cases": {
+    "TC1_TREND": {
+      "description": "two source-specific observations bounding a target historical interval",
+      "grain": "structural_channel_exact",
+      "country": "SYNTH_COUNTRY_A",
+      "anchors": [[1990, 0.20], [2000, 0.60]],
+      "target_intervals": [[1995, 0.40]],
+      "oracle_expectation": "monotone increasing across the interval; interior points strictly between anchors",
+      "must_not": "invent high-resolution measured signal between anchors"
+    },
+    "TC2_NULL_STABILITY": {
+      "description": "two equal-value observations; no change",
+      "grain": "structural_channel_exact",
+      "country": "SYNTH_COUNTRY_A",
+      "anchors": [[1990, 0.50], [2000, 0.50]],
+      "target_intervals": [[1995, 0.50]],
+      "oracle_expectation": "exactly stable; zero difference; must NOT manufacture movement",
+      "must_not": "introduce synthetic trend from noise"
+    },
+    "TC3_DISCONTINUITY_COHORT": {
+      "description": "cohort shift between waves",
+      "grain": "structural_channel_exact",
+      "country": "SYNTH_COUNTRY_A",
+      "anchors": [[1990, 0.30], [2000, 0.80]],
+      "rupture_year": 1995,
+      "cohort_window_required": true,
+      "oracle_expectation": "rupture is registered; interpolation across the rupture must NOT be treated as a smooth continuous measurement",
+      "must_not": "silently smooth a cohort discontinuity"
+    },
+    "TC4_INCOMPATIBLE_GEOGRAPHY": {
+      "description": "two source series that cannot be harmonized",
+      "grain": "structural_channel_exact",
+      "countries": ["SYNTH_COUNTRY_B", "SYNTH_COUNTRY_C"],
+      "oracle_expectation": "non-harmonizable; must NOT be pooled into a synthetic single series",
+      "must_not": "average incompatible geographies or cohorts into a fictitious aggregate"
+    },
+    "TC5_FUTURE_LEAK": {
+      "description": "publication-before-available / forward-information leak",
+      "grain": "structural_channel_exact",
+      "country": "SYNTH_COUNTRY_A",
+      "anchor_observation_year": 2010,
+      "published_after_query_year": 2015,
+      "target_query_year": 2012,
+      "oracle_expectation": "REFUSED: a wave not yet PUBLISHED at the query clock is not known-at and must never enter a historical read",
+      "must_not": "leak future publication into a historical consumer"
+    }
+  },
+
+  "frozen_methods_to_compare": {
+    "M0_PIECEWISE_HOLD": "inherit the most recent anchor without interpolation (lawful everywhere)",
+    "M1_LINEAR_INTERPOLATION": "inherit _interp; lawful ONLY inside an authorized gap without rupture/cohort break",
+    "M2_UNCERTAINTY_AWARE_BACKOFF": "prefer the nearest authorized anchor and carry an explicit uncertainty/typology class instead of asserting a midpoint"
+  },
+
+  "frozen_predictions": {
+    "TP1": "TC1 yields a strictly interior interpolated value under M1 and a nearest-anchor value under M0; M0 and M1 disagree in the interior.",
+    "TP2": "TC2 yields identical values under M0 and M1 (0.50), proving no synthetic trend is manufactured.",
+    "TP3": "TC3 registers a rupture and forbids smooth interpolation across the rupture year; M1 must be refused or back off inside the rupture window.",
+    "TP4": "TC4 is refused as non-harmonizable; no pooled series is produced.",
+    "TP5": "TC5 is refused: the future-published wave never enters a historical read at the earlier query clock.",
+    "TP6": "The two-time selected-world consumer yields MATERIALLY DIFFERENT opportunity sets for the same actor at two historical query clocks, with the structural/access world held constant.",
+    "TP7": "Every consumer value carries its source, edition, grain, method and uncertainty class; no value claims observed temporal calibration.",
+    "TP8": "M2 (uncertainty-aware backoff) equals M0 where the gap is unresolvable and differs from M1 there, giving a lawful third alternative."
+  },
+
+  "frozen_hostiles": [
+    "unauthorized future publication",
+    "wrong instrument/cohort/geography",
+    "stale source use",
+    "source revocation and archival non-renewal",
+    "no support at all",
+    "contradictory causal clock",
+    "changed temporal source but same structural world",
+    "ambient/unpinned import shadowing"
+  ],
+
+  "prohibitions": {
+    "no_real_source_issuance": true,
+    "no_OC05_installation": true,
+    "no_N12": true,
+    "no_V3": true,
+    "no_original_SAV_or_DTA_use": true,
+    "no_canonical_or_accepted_module_mutation": true,
+    "no_pooling_unknown_respondents_into_fictitious_longitudinal_individuals": true,
+    "no_claiming_real_observed_temporal_calibration_from_synthetic_cases": true,
+    "T8F3_source_claim_assignment_preserved": "8079f69778eb4a2e6f30b246e3ec445dc161ae15 - NOT duplicated, NOT modified, NOT re-run",
+    "independent_scientific_court_required_before_new_method_adoption": true
+  },
+
+  "freeze_declaration": "Written and committed BEFORE any T9B experiment or new temporal method. Predictions may be reported as falsified; they may not be edited after execution."
+}

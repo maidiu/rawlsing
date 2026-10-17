@@ -1,0 +1,123 @@
+{
+  "schema": "T9R_PHASE_A_BASELINE_RECEIPT@1",
+  "parent_T9I": "a2a7bdeda76aa008b3d620b01af71f7fd6efaaae",
+  "T9B_candidate": "edf3494b1b11cb71a78540aba950aa15da900c8a",
+  "original_test_bytes_identical": true,
+  "original_red_node_ids_identical": true,
+  "original_red_nodes": [
+    "test_probe_only_estimate_cannot_be_authorized_open_opportunity",
+    "test_structural_route_mutation_is_detected",
+    "test_consumer_provenance_names_actual_basis_not_excluded_first_wave",
+    "test_postrupture_carry_is_unknown_or_explicitly_rupture_qualified[M0_PIECEWISE_HOLD]",
+    "test_postrupture_carry_is_unknown_or_explicitly_rupture_qualified[M2_UNCERTAINTY_AWARE_BACKOFF]",
+    "test_missing_numeric_observation_stays_typed_unknown[M0_PIECEWISE_HOLD]",
+    "test_missing_numeric_observation_stays_typed_unknown[M1_LINEAR_INTERPOLATION]",
+    "test_missing_numeric_observation_stays_typed_unknown[M2_UNCERTAINTY_AWARE_BACKOFF]",
+    "test_nonbasis_future_wave_does_not_claim_to_be_product_publication_basis",
+    "test_adapted_single_anchor_does_not_claim_inherited_native_grant"
+  ],
+  "suites": {
+    "author": {
+      "tests": 28,
+      "passed": 28,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "exit": 0,
+      "native_project_module_count": 16,
+      "all_runtime_module_count": 782,
+      "receipt_sha256": "b05bdb9ed555c044936ed98240d47fd68257b94adbba6ac5a7fd3472db698b46",
+      "junit_sha256": "c7560eae924042074fe76b495598e20ae1333d363f9807529ad52996e60847b5",
+      "log_sha256": "c7991613b4b80cdab4f81935b8ba21a715f679543e6564423bdb7d821c2d86b2"
+    },
+    "legacy": {
+      "tests": 8,
+      "passed": 8,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "exit": 0,
+      "native_project_module_count": 10,
+      "all_runtime_module_count": 784,
+      "receipt_sha256": "691464ba30fe02b3bb4a805fca2f495d019dfe3da3d57db191530f29f1686f16",
+      "junit_sha256": "55d29127290137ff016b007ec555ede2d7f4ccd25cc605af3ec35e89ae553143",
+      "log_sha256": "7e26e6766f8b2b505c8aed82577b527d2ceb5ed92692ea1fb7a6e14d11777ab3"
+    },
+    "independent": {
+      "tests": 48,
+      "passed": 38,
+      "failed": 10,
+      "errors": 0,
+      "skipped": 0,
+      "exit": 1,
+      "native_project_module_count": 16,
+      "all_runtime_module_count": 785,
+      "receipt_sha256": "31a9e4dc1e4b1ca9957c83c407f772c84a53036b0a40f5c12189966064b2dfaf",
+      "junit_sha256": "d803e1a7a0e2eb81f31849b2664b61673e0824eabff29f9bba01f743ddf387bc",
+      "log_sha256": "5ad5bc099dd5dae210638f276946e06e1bd0dc56a8845eab017d98be5e7cbfb4"
+    }
+  },
+  "new_delta_tests_executed": false,
+  "T9C_implementation_or_results_read": false,
+  "archival_audit": {
+    "candidate": "edf3494b1b11cb71a78540aba950aa15da900c8a",
+    "independent_base": "646ac11ab8f1d49d56464c484ec5e0f4eba8f34e",
+    "full_copied_count": 1259,
+    "total_bytes": 12332400,
+    "all_sha1_NUL_preimages_and_ledger_lengths_verified": true,
+    "pre_main_identical_count": 1259,
+    "extensions": {
+      ".py": 339,
+      ".json": 920
+    },
+    "risk_findings": [],
+    "static_minimal_stage_native_files": 22,
+    "json_structures_inspected": 920,
+    "unneeded_copied_files_not_materialized": 1237,
+    "limits": "Static name/content-pattern audit is not exhaustive DLP or permission certification. No raw binary/data containers staged. Unrelated executable cargo retained only as Git evidence, not run.",
+    "source_map_sha256": "ae1a9a03839d5c12427042bc4da5b267868bcacf87aef3f8a581c00b385137de"
+  },
+  "ambient_shadow_controls": {
+    "documented-bare-relative": {
+      "mode": "documented-bare-relative",
+      "cwd": "/Users/matthewsmith/Desktop/Rawlsing",
+      "selections": [],
+      "ambient_execution_permitted": false,
+      "argv": [
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "data/ddm_build_copy/tests/test_postg5_v552j_v553_consumer_contract.py"
+      ],
+      "rootdir": "/Users/matthewsmith/Desktop/Rawlsing",
+      "configfile": "/Users/matthewsmith/Desktop/Rawlsing/pytest.ini",
+      "selected_package_without_execution": "/Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/__init__.py",
+      "blocked_untrusted_origin": "/Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/__init__.py",
+      "exit": 4
+    },
+    "ambient-config-reenactment": {
+      "mode": "ambient-config-reenactment",
+      "cwd": "/Users/matthewsmith/Desktop/Rawlsing",
+      "selections": [
+        {
+          "module": "data.ddm_build_copy",
+          "origin": "/Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/__init__.py"
+        }
+      ],
+      "ambient_execution_permitted": false,
+      "argv": [
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "-c",
+        "/Users/matthewsmith/Desktop/Rawlsing/pytest.ini",
+        "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r26-t9r-court/WORKER_RETURNS/PYAT-R26-T9R-INDEPENDENT-TEMPORAL-DELTA-R1/pinned_candidate/native/data/ddm_build_copy/tests/test_postg5_v552j_v553_consumer_contract.py"
+      ],
+      "rootdir": "/Users/matthewsmith/Desktop/Rawlsing",
+      "configfile": "/Users/matthewsmith/Desktop/Rawlsing/pytest.ini",
+      "blocked_untrusted_origin": "/Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/__init__.py",
+      "exit": 2
+    }
+  },
+  "phase_b_gate": "Not opened; requires actual pushed final T9C candidate after this Phase A freeze is published."
+}

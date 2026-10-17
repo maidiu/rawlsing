@@ -1,0 +1,38 @@
+
+==================================== ERRORS ====================================
+________________________ ERROR collecting test session _________________________
+ImportError while importing test module '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r26-t9r-court/WORKER_RETURNS/PYAT-R26-T9R-INDEPENDENT-TEMPORAL-DELTA-R1/pinned_candidate/native/data/ddm_build_copy/tests/test_postg5_v552j_v553_consumer_contract.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+../Rawlsing_Worktrees/r26-t9r-court/WORKER_RETURNS/PYAT-R26-T9R-INDEPENDENT-TEMPORAL-DELTA-R1/pinned_candidate/native/data/ddm_build_copy/tests/test_postg5_v552j_v553_consumer_contract.py:10: in <module>
+    from data.ddm_build_copy import ddm_pipeline_boundary_contract as boundary
+../Rawlsing_Worktrees/r26-t9r-court/WORKER_RETURNS/PYAT-R26-T9R-INDEPENDENT-TEMPORAL-DELTA-R1/shadow_probe.py:27: in find_spec
+    raise ImportError('T9I_BLOCK_BEFORE_AMBIENT_EXECUTION '+origin)
+E   ImportError: T9I_BLOCK_BEFORE_AMBIENT_EXECUTION /Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/__init__.py
+=========================== short test summary info ============================
+ERROR 
+!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+1 error in 0.69s
+{
+  "mode": "ambient-config-reenactment",
+  "cwd": "/Users/matthewsmith/Desktop/Rawlsing",
+  "selections": [
+    {
+      "module": "data.ddm_build_copy",
+      "origin": "/Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/__init__.py"
+    }
+  ],
+  "ambient_execution_permitted": false,
+  "argv": [
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "-c",
+    "/Users/matthewsmith/Desktop/Rawlsing/pytest.ini",
+    "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r26-t9r-court/WORKER_RETURNS/PYAT-R26-T9R-INDEPENDENT-TEMPORAL-DELTA-R1/pinned_candidate/native/data/ddm_build_copy/tests/test_postg5_v552j_v553_consumer_contract.py"
+  ],
+  "rootdir": "/Users/matthewsmith/Desktop/Rawlsing",
+  "configfile": "/Users/matthewsmith/Desktop/Rawlsing/pytest.ini",
+  "blocked_untrusted_origin": "/Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/__init__.py",
+  "exit": 2
+}
