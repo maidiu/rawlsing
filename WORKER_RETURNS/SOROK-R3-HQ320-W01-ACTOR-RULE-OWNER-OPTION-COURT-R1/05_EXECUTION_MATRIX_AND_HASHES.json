@@ -1,0 +1,44 @@
+{
+  "schema": "W01_PREFLIGHT_EVIDENCE_R1",
+  "grain": "DOCUMENTARY_STRUCTURAL_PREFLIGHT_NOT_CAN008_V3_ACTOR",
+  "prereg_sealed_commit": "424b19185ac09dfb9b1d365038358c3fbeb41799",
+  "prereg_oracle_blob": "a3bd02ed5f8e64754ba67860690089de610a88e6",
+  "python": "3.13.5",
+  "pytest": "9.0.2",
+  "test_command": "cd return && python -m pytest -q test_w01_contract_preflight.py --junitxml=../execution/w01_documentary_preflight.xml",
+  "result": {
+    "passed": 54,
+    "failed": 0,
+    "skipped": 0
+  },
+  "initial_unfrozen_harness_red": "initial 53P/1FAIL from synthetic E2 dated before W0, corrected E2 timestamp 1998-11-10 < E1 and > W0; no native bug",
+  "LIFE1_16_DEFER": "NOT_RERUN; preserved upstream primary evidence",
+  "CAN008_REAL_POSITIVE": "NOT_RUN_NO_OWNER_ISSUANCE",
+  "evidence_local_archive_sha256": "286f3dffa34a8095ee84041e2741dcb07e749d2c47818192064b131a7d92d0a6",
+  "files": [
+    {
+      "relative_path": "return/w01_contract_preflight.py",
+      "bytes": 5462,
+      "sha256": "8e41671c8863451c17768a714010f7180c30ff6f7ca1b7d40a7ea53478524424",
+      "git_blob_sha1": "3a944feea1ee1a9e31cebb0b01c7406bb4d16761"
+    },
+    {
+      "relative_path": "return/test_w01_contract_preflight.py",
+      "bytes": 4076,
+      "sha256": "cad2416168815f25cfcb582045d24ec80dc7636e61e4e43242a83aefdd977d89",
+      "git_blob_sha1": "1f15d182934e1429749496f88c3cbd6e1f8376d8"
+    },
+    {
+      "relative_path": "execution/w01_documentary_preflight.xml",
+      "bytes": 7451,
+      "sha256": "d517f6284f7e40c9c0ae6a3e629183038bb0af5bdb422d0d16c6bd7e64b9aca0",
+      "git_blob_sha1": "e19c4a6536016de6ee3f03a42fa6701e76a5b323"
+    },
+    {
+      "relative_path": "execution/w01_documentary_preflight.log",
+      "bytes": 99,
+      "sha256": "aa68f0ee5faf8ae27ee893082ece61fb3f94e2323868fc15238ac71dcacf1afd",
+      "git_blob_sha1": "31918eebe9dba423b6d7023f3c422d179a299e6d"
+    }
+  ]
+}

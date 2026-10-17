@@ -1,0 +1,56 @@
+{
+  "passport_schema": "SOROK_00D_W01_RESOURCE_PASSPORT_R1",
+  "environment_id": "w01-container-new-20261016",
+  "owner_session_alias": "W01_INDEPENDENT_I2",
+  "surface": "BROWSER_CONTAINER",
+  "status": "LIVE_VERIFIED_AT_RUN_NOT_PERSISTENCE_PROMISE",
+  "branch": "agent/rabochii-sorok-r3-hq320-w01-actor-rule-owner-option-court-r1",
+  "startup_sha": "ad17934b137cda8ee7743b9de90aeed351f2c3fb",
+  "prereg_commit": "424b19185ac09dfb9b1d365038358c3fbeb41799",
+  "capabilities": {
+    "python": "3.13.5 VERIFIED",
+    "pytest": "9.0.2 VERIFIED",
+    "git": "2.47.3 VERIFIED",
+    "filesystem": "VERIFIED",
+    "subprocess": "VERIFIED",
+    "raw_github_dns": "UNAVAILABLE",
+    "authenticated_connector": "VERIFIED",
+    "production_V3": "NOT_GRANTED",
+    "original_35_source": "NOT_READ_NOT_GRANTED",
+    "external_model": "NOT_CALLED"
+  },
+  "covered_tests": {
+    "W01_documentary_preflight": {
+      "command": "python -m pytest -q test_w01_contract_preflight.py --junitxml=../execution/w01_documentary_preflight.xml",
+      "passed": 54,
+      "failed": 0,
+      "skipped": 0,
+      "science_grade": "DOCUMENTARY_STRUCTURAL_PREFLIGHT_NOT_ISSUANCE"
+    },
+    "LIFE1_original_native_16": {
+      "status": "NOT_RERUN_THIS_SESSION",
+      "reported_result": "16/16 DEFER from primary LIFE1 Git return"
+    }
+  },
+  "verified_native_git_evidence": {
+    "LIFE1_code_modules": "139 published LIFE1 ledger; relied on signed exact Git blobs, not staged/imported in W01",
+    "PSEPF_guard": "e0528d65215cb431196570c38bac4eae94217a1b",
+    "CAN008_v1_semantic": "976c59086b938992114f68621f149687670e306d"
+  },
+  "dependency_closure_status": "DOCUMENTARY_COMPLETE__NATIVE_SOURCE_NOT_STAGED",
+  "test_only": true,
+  "review_independence": "W01 is independent of LIFE1 but not an accepting issuer",
+  "model_provider": "OpenAI",
+  "model": "GPT-6",
+  "requested_effort": "High",
+  "observed_effort": "UNKNOWN",
+  "money_and_quota_usage": null,
+  "cold_process_actor_use": "NOT_ATTEMPTED",
+  "sourcefree_pytest_host": "VERIFIED",
+  "handoff_affinity": [
+    "CAN008_RULE_OWNER",
+    "PYAT_R22_XSP",
+    "V3_ACTOR_ADP019"
+  ],
+  "session_persistence": "UNKNOWN_UNTIL_REPROBE"
+}
