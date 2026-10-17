@@ -1,0 +1,15 @@
+{
+  "schema":"PYAT_R18_XSP_WORLD_PAIR_PRECOMMIT@1",
+  "grade":"TEST_ONLY_HYPOTHETICAL_HISTORICAL_SCOPES__NO_ORIGINAL_SOURCE_OR_ACTOR",
+  "source_of_fixture_shapes":["W10_HQ295_N10E_AND_MODELED_WORLD", "SC0F3_TEST_ONLY_NATIVE_54_6_50_10", "N9C_GHANA_UNRELATED_AGGREGATE_NEGATIVE"],
+  "pairs":[
+    {"id":"P1_KNOWLEDGE_TIME","axes":["historical_as_of","source_publication"],"base":{"world_key":"fictive-town-2008","label":"fictive town","as_of":"2008-12-31","publication":"2010-01-01","world_read":true,"institutional_access":"OPEN","care_time":"LOW","empirical":{"yes":54,"no":6,"denominator":60},"ghana_subscription_aggregate":23414527},"contrast":{"as_of":"2011-01-01"},"expected":{"baseline_state":"HELD_NOT_KNOWN_ASOF","contrast_state":"TEST_ONLY_CONDITIONED","route_label_change_required":false}},
+    {"id":"P2_ACCESS_AND_FAMILY_TIME","axes":["material_institutional_access","household_care_time"],"base":{"world_key":"fictive-town-2008","label":"fictive town","as_of":"2011-01-01","publication":"2010-01-01","world_read":true,"institutional_access":"OPEN","care_time":"LOW","empirical":{"yes":54,"no":6,"denominator":60},"ghana_subscription_aggregate":23414527},"contrast":{"institutional_access":"FEE_BLOCKED","care_time":"HIGH"},"expected":{"formal_schooling":"ELIGIBLE_TO_BLOCKED","minority_empirical_invariant":true,"mutual_aid_invariant":true}},
+    {"id":"P3_EMPIRICAL_MINORITY","axes":["source_free_response_geometry"],"base":{"world_key":"fictive-town-2008","label":"fictive town","as_of":"2011-01-01","publication":"2010-01-01","world_read":true,"institutional_access":"OPEN","care_time":"LOW","empirical":{"yes":54,"no":6,"denominator":60},"ghana_subscription_aggregate":23414527},"contrast":{"empirical":{"yes":50,"no":10,"denominator":60}},"expected":{"baseline_minority_fraction":[1,10],"contrast_minority_fraction":[1,6],"world_routes_invariant":true,"no_person_fact":true}}
+  ],
+  "negative_controls":[
+    {"id":"N1_LABEL_ONLY","base_pair":"P2_ACCESS_AND_FAMILY_TIME","contrast":{"label":"renamed town"},"expected":"UNCHANGED_COMPUTED_OPTION_FIELD"},
+    {"id":"N2_UNRELATED_GHANA_AGGREGATE","base_pair":"P2_ACCESS_AND_FAMILY_TIME","contrast":{"ghana_subscription_aggregate":23414528},"expected":"UNCHANGED_COMPUTED_OPTION_FIELD_AND_NO_PERSON_MOBILE_INFERENCE"}
+  ],
+  "hard_refusals":["ACTOR_BIOGRAPHY_REQUEST","PARENT_DYAD_JOINT_FROM_INDIVIDUAL_STATISTIC","OPERATIVE_N9_ORIGINAL_SOURCE_ASSERTION","UNKNOWN_PERMISSION","CURRENTNESS_NOT_MET"]
+}
