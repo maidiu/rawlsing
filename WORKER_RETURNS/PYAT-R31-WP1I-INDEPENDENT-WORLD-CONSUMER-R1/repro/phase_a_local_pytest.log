@@ -1,0 +1,11 @@
+$ cd /mnt/data/wp1i_independent && python -m pytest -q --junitxml=phase_a.junit.xml
+...............................                                          [100%]
+31 passed in 0.10s
+$ python --version
+Python 3.13.5
+$ python -m pytest --version
+pytest 9.0.2
+$ git --version
+git version 2.47.3
+$ git ls-remote https://github.com/maidiu/rawlsing.git HEAD
+fatal: unable to access 'https://github.com/maidiu/rawlsing.git/': Could not resolve host: github.com
