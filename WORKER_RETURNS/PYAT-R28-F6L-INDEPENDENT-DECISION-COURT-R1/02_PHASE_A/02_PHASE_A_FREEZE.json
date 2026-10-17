@@ -1,0 +1,52 @@
+{
+  "artifacts": {
+    "00_COMMISSION_RECEIPT.md": "5a7026beb3c9e65bafbaf666891783f2e1232df97c3fab85c4d7568f0ec2f6cb",
+    "01_SOURCE_TRANSPORT/F6C_AUTHOR/f6c_worlds.py": "f1a06c8dfb3ae77b4b11b41dd589132b1c55ce3fa02f71fec4487d1c1b1dbc9a",
+    "01_STAGED_NATIVE/rawlsing_next/pre553_empirical_objects.py": "9cd1d71440a7e8c1861dda73274529e07211edc14335583e93ad91c0833e9ab4",
+    "01_STAGED_NATIVE/rawlsing_next/pre553_heterogeneous_synthesis.py": "ef76ee4f48cc74cc38e0dcf55a3190362d4b55975d3a367ddb43fbadd43a9869",
+    "02_PHASE_A/00_PREREGISTRATION.md": "edfac31947700bfe1d357463947bee84471043e38331f215f8bc87c5ddc2d18b",
+    "02_PHASE_A/01_WORLDS_AND_EXACT_EXPECTATIONS.json": "b1364300a356a7b3ef222b4162fc816c28370ac865d3b86ac8d30926aa4dc5f4",
+    "02_PHASE_A/03_SCRIPTS/build_prereg.py": "0afda874bdf60949fefd6169d03c2b9ae8cd08b33c6d628e1f21bdfcec66383e",
+    "02_PHASE_A/03_SCRIPTS/f6l_expectations.py": "d1a8e1ea85a53be18709680fd7941b346fa66a96f50afaeb370fb9ea3e6bdd8e",
+    "02_PHASE_A/03_SCRIPTS/f6l_worlds.py": "2342b6446f670856d832350371402c5e25bf4928fcbf2d7f3c4db9f03d4756e6",
+    "02_PHASE_A/04_TESTS/test_f6l_phase_a.py": "a9a2a0513a421804ebda13a45c18b466375426a0134bd0063e2f7ae3a4ddfa9e"
+  },
+  "branch": "agent/reviewer-pyat-r28-f6l-independent-f6k-frozen-consumer-court-r1",
+  "freeze_parent_head": "31123f370af50bdf036cab32dd6d7594b36a5f22",
+  "freeze_utc": "2026-10-17T08:26:35Z",
+  "native_identity": {
+    "empirical_objects_git_blob": "a61365b994e5c3c50de0f598fcf40e90abf757b6",
+    "empirical_objects_sha256": "9cd1d71440a7e8c1861dda73274529e07211edc14335583e93ad91c0833e9ab4",
+    "producer_git_blob": "fc5e37fa5b2f0eb689593b42d95479d1327cb94c",
+    "producer_sha256": "ef76ee4f48cc74cc38e0dcf55a3190362d4b55975d3a367ddb43fbadd43a9869",
+    "source_commit": "1428c2e92bce1a49efd87378cb23df936d646dc5"
+  },
+  "ordering_attestation": {
+    "f6k_commit_message_or_file_list_seen": true,
+    "f6k_report_or_code_read_before_freeze": false,
+    "native_executed_by_build_script": false,
+    "native_imported_by_expectation_engine": false,
+    "phase_a_tests_executed_against_original_candidate": true,
+    "phase_a_tests_executed_before_freeze": true
+  },
+  "phase_a_pre_repair_execution": {
+    "command": "python3 -B -m pytest -q -p no:cacheprovider -p no:randomly 02_PHASE_A/04_TESTS/test_f6l_phase_a.py",
+    "failed": 11,
+    "failed_cases": [
+      "P1 null decision",
+      "P2 null decision",
+      "P3 null decision",
+      "P4 unverified real-use authority",
+      "P5 test-only real-use ceiling",
+      "P5B mixed-origin contamination",
+      "P7 missing mapped ceilings (x3)",
+      "P8c silent renormalization",
+      "P9 decision-only null consumption"
+    ],
+    "failures_are_expected_unsafe_behavior_not_test_errors": true,
+    "passed": 15,
+    "tests": 26
+  },
+  "schema": "PYAT_R28_F6L_PHASE_A_FREEZE@1",
+  "sealed_startup": "31123f370af50bdf036cab32dd6d7594b36a5f22"
+}
