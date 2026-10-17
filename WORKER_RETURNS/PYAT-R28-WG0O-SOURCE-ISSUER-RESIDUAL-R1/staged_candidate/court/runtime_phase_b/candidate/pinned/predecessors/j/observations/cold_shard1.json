@@ -1,0 +1,459 @@
+{
+  "pid": 42339,
+  "receipts": [
+    "44385f57d21f2fb3e441e8a16ff01cc2aa6cb3025d9885d57046437fd149b583"
+  ],
+  "receipt_projections": [
+    {
+      "manifest_hash": "d41efd458cfbaa1ee0aa2e67d47072e670b0d6dd56967e8f7cbd75b0486ee3fa",
+      "unit_ref": {
+        "kind": "PRE553BatchUnit@1.0.0",
+        "object_id": "urn:rawlsing:pre553:batch-unit:sha256:3a4e2a8eb821c6bc9d6175f01697e3c2c93cf213a207142c4e968a8c30f3bb46",
+        "content_hash": "3a4e2a8eb821c6bc9d6175f01697e3c2c93cf213a207142c4e968a8c30f3bb46"
+      },
+      "attempt_index": 1,
+      "state": "COMPLETED",
+      "execution_performed": true,
+      "executor_ref": {
+        "kind": "EXECUTOR",
+        "object_id": "urn:wg0p2:test:executor:wg0p2-query",
+        "content_hash": "c642960e14adfc51038fd5654edaa7460d0dd7728085bf9bb84efbb246cc931d"
+      },
+      "result_refs": [
+        {
+          "kind": "EmpiricalFact@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:4e08cf34ced687a814ca3387aa803be2558e95301cba13718dc6f868d1a733ed",
+          "content_hash": "4e08cf34ced687a814ca3387aa803be2558e95301cba13718dc6f868d1a733ed"
+        }
+      ],
+      "provenance_refs": [
+        {
+          "kind": "C11LogicalRelease",
+          "object_id": "REL-REL-A-W2",
+          "content_hash": "44d128e24c898483de89f5d7b8ad58b01edc30a3b0966086b1f3ddea97962280"
+        },
+        {
+          "kind": "EXECUTOR",
+          "object_id": "urn:wg0p2:test:executor:wg0p2-query",
+          "content_hash": "c642960e14adfc51038fd5654edaa7460d0dd7728085bf9bb84efbb246cc931d"
+        },
+        {
+          "kind": "EmpiricalPredicate@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:14e05b79543c60c8d829ac25aa8651180998d6605c6162f98b6875d359579228",
+          "content_hash": "14e05b79543c60c8d829ac25aa8651180998d6605c6162f98b6875d359579228"
+        },
+        {
+          "kind": "EmpiricalQuerySpec@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:12144893954e6c0dab5540165eef3aad4cf472630c6968733799abff5cb89958",
+          "content_hash": "12144893954e6c0dab5540165eef3aad4cf472630c6968733799abff5cb89958"
+        },
+        {
+          "kind": "EmpiricalQuerySpec@1.0.0",
+          "object_id": "urn:wg0p2:test:empiricalqueryspec@1.0.0:OP-WG0P-ORD-05-MARGINAL",
+          "content_hash": "4061cc1ddc122d7503166b107c59004ee92c6d2dc03fc1651c28d9fba4e5478b"
+        },
+        {
+          "kind": "WG0P2_NATIVE_ITEM",
+          "object_id": "urn:wg0p2:test:native-item:WG0P-ORD-05",
+          "content_hash": "7b4405b8983125e531471559cdc0db7abd4cc5b3f39d2148c5879fc6a2290879"
+        }
+      ],
+      "failure_code": null,
+      "detail_hash": null
+    }
+  ],
+  "summary": {
+    "manifest_ref": {
+      "kind": "PRE553BatchManifest@1.0.0",
+      "object_id": "urn:rawlsing:pre553:batch-manifest:sha256:d41efd458cfbaa1ee0aa2e67d47072e670b0d6dd56967e8f7cbd75b0486ee3fa",
+      "content_hash": "d41efd458cfbaa1ee0aa2e67d47072e670b0d6dd56967e8f7cbd75b0486ee3fa"
+    },
+    "batch_state": "COMPLETED",
+    "coverage_state": "FULL_MANIFEST_COVERAGE",
+    "full_coverage": true,
+    "total_units": 1,
+    "completed_units": 1,
+    "failed_units": 0,
+    "deferred_units": 0,
+    "pending_units": 0,
+    "actual_execution_receipts": 1,
+    "receipt_set_hash": "2c5a333cd21dec7edb50086daf1555464f115fb20c5e904a73d2c5730a849084",
+    "populated_data_execution_claim": false
+  },
+  "frontier": [
+    {
+      "op_id": "OP-WG0P-HH-MR-02-GIVEN-WG0P-ORD-01",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-HH-MR-02",
+      "conditioners": [
+        "WG0P-ORD-01"
+      ],
+      "disposition": "INADMISSIBLE",
+      "disposition_reason": "CROSS_UNIT_NOT_SAME_PERSON",
+      "item_ids": [
+        "WG0P-HH-MR-02",
+        "WG0P-ORD-01"
+      ]
+    },
+    {
+      "op_id": "OP-WG0P-HH-MR-02-GIVEN-WG0P-ORD-04",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-HH-MR-02",
+      "conditioners": [
+        "WG0P-ORD-04"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "CONDITIONER_GRANT_WITHDRAWN",
+      "item_ids": [
+        "WG0P-HH-MR-02",
+        "WG0P-ORD-04"
+      ]
+    },
+    {
+      "op_id": "OP-WG0P-HH-MR-02-GIVEN-WG0P-ORD-05",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-HH-MR-02",
+      "conditioners": [
+        "WG0P-ORD-05"
+      ],
+      "disposition": "INADMISSIBLE",
+      "disposition_reason": "CROSS_UNIT_NOT_SAME_PERSON",
+      "item_ids": [
+        "WG0P-HH-MR-02",
+        "WG0P-ORD-05"
+      ]
+    },
+    {
+      "op_id": "OP-WG0P-HH-MR-02-GIVEN-WG0P-ROUTED-03",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-HH-MR-02",
+      "conditioners": [
+        "WG0P-ROUTED-03"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "CONDITIONER_ROUTE_EVIDENCE_MISSING",
+      "item_ids": [
+        "WG0P-HH-MR-02",
+        "WG0P-ROUTED-03"
+      ]
+    },
+    {
+      "op_id": "OP-WG0P-HH-MR-02-MARGINAL",
+      "op_class": "MARGINAL",
+      "target": "WG0P-HH-MR-02",
+      "conditioners": [],
+      "disposition": "PRODUCED",
+      "disposition_reason": "ELIGIBLE",
+      "item_ids": [
+        "WG0P-HH-MR-02"
+      ]
+    },
+    {
+      "op_id": "OP-WG0P-ORD-01-GIVEN-WG0P-HH-MR-02",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ORD-01",
+      "conditioners": [
+        "WG0P-HH-MR-02"
+      ],
+      "disposition": "INADMISSIBLE",
+      "disposition_reason": "CROSS_UNIT_NOT_SAME_PERSON",
+      "item_ids": [
+        "WG0P-ORD-01",
+        "WG0P-HH-MR-02"
+      ]
+    },
+    {
+      "op_id": "OP-WG0P-ORD-01-GIVEN-WG0P-ORD-04",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ORD-01",
+      "conditioners": [
+        "WG0P-ORD-04"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "CONDITIONER_GRANT_WITHDRAWN",
+      "item_ids": [
+        "WG0P-ORD-01",
+        "WG0P-ORD-04"
+      ]
+    },
+    {
+      "op_id": "OP-WG0P-ORD-01-GIVEN-WG0P-ORD-05",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ORD-01",
+      "conditioners": [
+        "WG0P-ORD-05"
+      ],
+      "disposition": "INADMISSIBLE",
+      "disposition_reason": "CROSS_WAVE_NOT_SAME_PERSON",
+      "item_ids": [
+        "WG0P-ORD-01",
+        "WG0P-ORD-05"
+      ]
+    },
+    {
+      "op_id": "OP-WG0P-ORD-01-GIVEN-WG0P-ROUTED-03",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ORD-01",
+      "conditioners": [
+        "WG0P-ROUTED-03"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "CONDITIONER_ROUTE_EVIDENCE_MISSING",
+      "item_ids": [
+        "WG0P-ORD-01",
+        "WG0P-ROUTED-03"
+      ]
+    },
+    {
+      "op_id": "OP-WG0P-ORD-01-MARGINAL",
+      "op_class": "MARGINAL",
+      "target": "WG0P-ORD-01",
+      "conditioners": [],
+      "disposition": "PRODUCED",
+      "disposition_reason": "ELIGIBLE",
+      "item_ids": [
+        "WG0P-ORD-01"
+      ]
+    },
+    {
+      "op_id": "OP-WG0P-ORD-04-GIVEN-WG0P-HH-MR-02",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ORD-04",
+      "conditioners": [
+        "WG0P-HH-MR-02"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "TARGET_GRANT_WITHDRAWN",
+      "item_ids": [
+        "WG0P-ORD-04",
+        "WG0P-HH-MR-02"
+      ]
+    },
+    {
+      "op_id": "OP-WG0P-ORD-04-GIVEN-WG0P-ORD-01",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ORD-04",
+      "conditioners": [
+        "WG0P-ORD-01"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "TARGET_GRANT_WITHDRAWN",
+      "item_ids": [
+        "WG0P-ORD-04",
+        "WG0P-ORD-01"
+      ]
+    },
+    {
+      "op_id": "OP-WG0P-ORD-04-GIVEN-WG0P-ORD-05",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ORD-04",
+      "conditioners": [
+        "WG0P-ORD-05"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "TARGET_GRANT_WITHDRAWN",
+      "item_ids": [
+        "WG0P-ORD-04",
+        "WG0P-ORD-05"
+      ]
+    },
+    {
+      "op_id": "OP-WG0P-ORD-04-GIVEN-WG0P-ROUTED-03",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ORD-04",
+      "conditioners": [
+        "WG0P-ROUTED-03"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "TARGET_GRANT_WITHDRAWN",
+      "item_ids": [
+        "WG0P-ORD-04",
+        "WG0P-ROUTED-03"
+      ]
+    },
+    {
+      "op_id": "OP-WG0P-ORD-04-MARGINAL",
+      "op_class": "MARGINAL",
+      "target": "WG0P-ORD-04",
+      "conditioners": [],
+      "disposition": "HELD",
+      "disposition_reason": "GRANT_WITHDRAWN",
+      "item_ids": [
+        "WG0P-ORD-04"
+      ]
+    },
+    {
+      "op_id": "OP-WG0P-ORD-05-GIVEN-WG0P-HH-MR-02",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ORD-05",
+      "conditioners": [
+        "WG0P-HH-MR-02"
+      ],
+      "disposition": "INADMISSIBLE",
+      "disposition_reason": "CROSS_UNIT_NOT_SAME_PERSON",
+      "item_ids": [
+        "WG0P-ORD-05",
+        "WG0P-HH-MR-02"
+      ]
+    },
+    {
+      "op_id": "OP-WG0P-ORD-05-GIVEN-WG0P-ORD-01",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ORD-05",
+      "conditioners": [
+        "WG0P-ORD-01"
+      ],
+      "disposition": "INADMISSIBLE",
+      "disposition_reason": "CROSS_WAVE_NOT_SAME_PERSON",
+      "item_ids": [
+        "WG0P-ORD-05",
+        "WG0P-ORD-01"
+      ]
+    },
+    {
+      "op_id": "OP-WG0P-ORD-05-GIVEN-WG0P-ORD-04",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ORD-05",
+      "conditioners": [
+        "WG0P-ORD-04"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "CONDITIONER_GRANT_WITHDRAWN",
+      "item_ids": [
+        "WG0P-ORD-05",
+        "WG0P-ORD-04"
+      ]
+    },
+    {
+      "op_id": "OP-WG0P-ORD-05-GIVEN-WG0P-ROUTED-03",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ORD-05",
+      "conditioners": [
+        "WG0P-ROUTED-03"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "CONDITIONER_ROUTE_EVIDENCE_MISSING",
+      "item_ids": [
+        "WG0P-ORD-05",
+        "WG0P-ROUTED-03"
+      ]
+    },
+    {
+      "op_id": "OP-WG0P-ORD-05-MARGINAL",
+      "op_class": "MARGINAL",
+      "target": "WG0P-ORD-05",
+      "conditioners": [],
+      "disposition": "PRODUCED",
+      "disposition_reason": "ELIGIBLE",
+      "item_ids": [
+        "WG0P-ORD-05"
+      ]
+    },
+    {
+      "op_id": "OP-WG0P-ROUTED-03-GIVEN-WG0P-HH-MR-02",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ROUTED-03",
+      "conditioners": [
+        "WG0P-HH-MR-02"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "TARGET_ROUTE_EVIDENCE_MISSING",
+      "item_ids": [
+        "WG0P-ROUTED-03",
+        "WG0P-HH-MR-02"
+      ]
+    },
+    {
+      "op_id": "OP-WG0P-ROUTED-03-GIVEN-WG0P-ORD-01",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ROUTED-03",
+      "conditioners": [
+        "WG0P-ORD-01"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "TARGET_ROUTE_EVIDENCE_MISSING",
+      "item_ids": [
+        "WG0P-ROUTED-03",
+        "WG0P-ORD-01"
+      ]
+    },
+    {
+      "op_id": "OP-WG0P-ROUTED-03-GIVEN-WG0P-ORD-04",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ROUTED-03",
+      "conditioners": [
+        "WG0P-ORD-04"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "CONDITIONER_GRANT_WITHDRAWN",
+      "item_ids": [
+        "WG0P-ROUTED-03",
+        "WG0P-ORD-04"
+      ]
+    },
+    {
+      "op_id": "OP-WG0P-ROUTED-03-GIVEN-WG0P-ORD-05",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ROUTED-03",
+      "conditioners": [
+        "WG0P-ORD-05"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "TARGET_ROUTE_EVIDENCE_MISSING",
+      "item_ids": [
+        "WG0P-ROUTED-03",
+        "WG0P-ORD-05"
+      ]
+    },
+    {
+      "op_id": "OP-WG0P-ROUTED-03-MARGINAL",
+      "op_class": "MARGINAL",
+      "target": "WG0P-ROUTED-03",
+      "conditioners": [],
+      "disposition": "HELD",
+      "disposition_reason": "ROUTE_EVIDENCE_MISSING",
+      "item_ids": [
+        "WG0P-ROUTED-03"
+      ]
+    }
+  ],
+  "unit_keys": [
+    "PRE553BatchUnit@1.0.0|urn:rawlsing:pre553:batch-unit:sha256:3a4e2a8eb821c6bc9d6175f01697e3c2c93cf213a207142c4e968a8c30f3bb46|3a4e2a8eb821c6bc9d6175f01697e3c2c93cf213a207142c4e968a8c30f3bb46"
+  ],
+  "fact_registry_size": 1,
+  "values": {
+    "OP-WG0P-ORD-05-MARGINAL": [
+      {
+        "denominator": 4,
+        "typed_state": "SUPPORTED",
+        "cells": [
+          {
+            "cell": "0",
+            "n": 0,
+            "state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+          },
+          {
+            "cell": "1",
+            "n": 2,
+            "state": "OBSERVED_POSITIVE"
+          },
+          {
+            "cell": "2",
+            "n": 1,
+            "state": "OBSERVED_POSITIVE"
+          },
+          {
+            "cell": "3",
+            "n": 1,
+            "state": "OBSERVED_POSITIVE"
+          },
+          {
+            "cell": "9",
+            "n": 0,
+            "state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+          }
+        ]
+      }
+    ]
+  }
+}
