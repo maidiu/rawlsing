@@ -1,0 +1,59 @@
+{
+  "schema": "SOROK_HQ326_M1_SOURCEFREE_RETURN_MANIFEST_R1",
+  "grade": "TEST_ONLY_INTERPRETATION_LINEAGE_CANDIDATE",
+  "sealed_startup": "cde03493c2e45f388c9142d1d3223e3e0da4885b",
+  "source_tar": {
+    "path": "M1_source_tests.tar.gz",
+    "size_bytes": 6315,
+    "git_blob_sha1": "37174efcf6689f87110ef97023e91cc83786fe2a",
+    "sha256": "30b820eda81089c89d9e2df8145860386d33b973f5c7f6a028e7e16b21dbe7b4",
+    "contents": [
+      {
+        "path": "kernel.py",
+        "sha256": "c86a38ad5ceec387937effa9eca42da8f0b6f0eccbc7652d8fc6ef033578892f"
+      },
+      {
+        "path": "test_kernel.py",
+        "sha256": "3d80d47b70cb8b5450a36d67559293aacad0cb08f4dfdef6ca18e9c32044242c"
+      }
+    ]
+  },
+  "evidence_tar": {
+    "path": "M1_execution_evidence.tar.gz",
+    "size_bytes": 2961,
+    "git_blob_sha1": "5c4cdb9692a1c5a066d808e5b34864dad6ba1cae",
+    "sha256": "dc15893dcc082f0ab0dc5d606fa04760109baa1f69d423767b7473ca0507d87b",
+    "contents": [
+      {
+        "path": "sample_receipt.json",
+        "sha256": "ee1ba25cbb1fb0b196773965f346bb3cb86ad68b06b564b9232928754f218b10"
+      },
+      {
+        "path": "junit.xml",
+        "sha256": "9c5148c68e52d3804b9eeff684201df23d5e53fb607da6c3fa116444ac0b65ae"
+      },
+      {
+        "path": "test.log",
+        "observed": "37 passed in 0.11s"
+      }
+    ]
+  },
+  "execution": {
+    "python": "3.13.5",
+    "pytest": "9.0.2",
+    "command": "python -m pytest -q --junitxml=junit.xml",
+    "pass": 37,
+    "fail": 0,
+    "error": 0,
+    "skipped": 0,
+    "independent_review": "NOT_RUN",
+    "native_owner": "NOT_RUN",
+    "original_surveys": "NOT_RUN"
+  },
+  "sample": {
+    "event_sha256": "44acaa126ce66265d37543271b139939588f2156602b45ba7e079a7161e65797",
+    "two_event_state_sha256": "41ad588612a5f9838504d4b56e7c687f38260abf12c1efcaa2072dff7dfc6e2e",
+    "first_event_candidate_count": 8,
+    "interpretation_versions": 2
+  }
+}
