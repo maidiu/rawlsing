@@ -2,7 +2,7 @@
   "cases": [
     {
       "actual_evidence_refs": [
-        "ledger:sha256:a695762a64b4f207e869677948744ce74cdb9f5cf664926657995921baeb6ce9",
+        "ledger:sha256:fb8f4971ca23ff950845033e5c73f0c1aea0e1bee57b1499ee4e6ead147ff057",
         "proposal:sha256:e5728da3758c7e7b1db8d721ff279d878723f6b9cea0a05df71dc7dc3ca5eacd"
       ],
       "assertion_names_contract": [
@@ -40,7 +40,7 @@
         }
       },
       "case_id": "K11-BASE-LOCAL",
-      "case_wall_seconds": 0.01071,
+      "case_wall_seconds": 0.010949,
       "cost_report": {
         "actor_events": 19,
         "causal_state_changes": 0,
@@ -51,10 +51,10 @@
         "prompt_tokens": 0,
         "rejected_candidates": 0,
         "replay_ledger_bytes": 4461,
-        "replay_seconds": 3.7e-05,
+        "replay_seconds": 4.9e-05,
         "rng_draws": 1,
         "total_tokens": 0,
-        "wall_seconds": 0.004066
+        "wall_seconds": 0.004325
       },
       "expected_status": "PASS_IF_AUTHORIZED_RUN",
       "fixture_hash": "sha256:4c10ea65b3ac1fb22b943e34f19f3557c194e3f768687fc8543471885fea26af",
@@ -107,7 +107,7 @@
     },
     {
       "actual_evidence_refs": [
-        "ledger:sha256:e451f0237c73c60398c55335eb0cc0f15d271110c9d775dc556d3f43e0f77141"
+        "ledger:sha256:52859a158baf90456e8bd2f7282e034d5924dd17f205f19674a7843138ba0c45"
       ],
       "assertion_names_contract": [
         "contrast_in_typed_candidates_and_eligibility",
@@ -132,7 +132,7 @@
         }
       },
       "case_id": "K11-ROUTE-DISCORDANT",
-      "case_wall_seconds": 0.015119,
+      "case_wall_seconds": 0.013611,
       "cost_report": {
         "actor_events": 19,
         "causal_state_changes": 0,
@@ -146,7 +146,7 @@
         "replay_seconds": 2.9e-05,
         "rng_draws": 1,
         "total_tokens": 0,
-        "wall_seconds": 0.003761
+        "wall_seconds": 0.003227
       },
       "expected_status": "PASS_IF_AUTHORIZED_RUN",
       "fixture_hash": "sha256:4c10ea65b3ac1fb22b943e34f19f3557c194e3f768687fc8543471885fea26af",
@@ -193,7 +193,7 @@
     },
     {
       "actual_evidence_refs": [
-        "ledger:sha256:712da34180141b698a14ad166f82853147f31d6bc682f1a05ac752059116d2cb"
+        "ledger:sha256:736716908ec0dbc1a7a702c0a9638330f0134bdb79d619a3ec94a061e40be4d9"
       ],
       "assertion_names_contract": [
         "no_backdated_mother_mobility",
@@ -218,7 +218,7 @@
         }
       },
       "case_id": "K11-ROUTE-MOBILITY",
-      "case_wall_seconds": 0.006883,
+      "case_wall_seconds": 0.006248,
       "cost_report": {
         "actor_events": 19,
         "causal_state_changes": 0,
@@ -228,11 +228,11 @@
         "model_calls": 0,
         "prompt_tokens": 0,
         "rejected_candidates": 0,
-        "replay_ledger_bytes": 4460,
-        "replay_seconds": 2.9e-05,
+        "replay_ledger_bytes": 4458,
+        "replay_seconds": 3e-05,
         "rng_draws": 1,
         "total_tokens": 0,
-        "wall_seconds": 0.004547
+        "wall_seconds": 0.004242
       },
       "expected_status": "PASS_IF_AUTHORIZED_RUN",
       "fixture_hash": "sha256:4c10ea65b3ac1fb22b943e34f19f3557c194e3f768687fc8543471885fea26af",
@@ -265,7 +265,7 @@
     },
     {
       "actual_evidence_refs": [
-        "ledger:sha256:cdfad56f4ff4713b5d333c7c683b1e5b5f1fecc579cccd0a580f9c53c82a240c"
+        "ledger:sha256:fc0cbea0359d9321a153835c05bde0d9289c8f982ef832ad11210c18a2967343"
       ],
       "assertion_names_contract": [
         "no_typicality_mandate",
@@ -290,7 +290,7 @@
         }
       },
       "case_id": "K11-ROUTE-UNCONVENTIONAL",
-      "case_wall_seconds": 0.009252,
+      "case_wall_seconds": 0.009889,
       "cost_report": {
         "actor_events": 19,
         "causal_state_changes": 0,
@@ -300,11 +300,11 @@
         "model_calls": 0,
         "prompt_tokens": 0,
         "rejected_candidates": 0,
-        "replay_ledger_bytes": 4470,
-        "replay_seconds": 2.8e-05,
+        "replay_ledger_bytes": 4468,
+        "replay_seconds": 3e-05,
         "rng_draws": 1,
         "total_tokens": 0,
-        "wall_seconds": 0.003175
+        "wall_seconds": 0.003362
       },
       "expected_status": "PASS_IF_AUTHORIZED_RUN",
       "fixture_hash": "sha256:4c10ea65b3ac1fb22b943e34f19f3557c194e3f768687fc8543471885fea26af",
@@ -332,7 +332,7 @@
     },
     {
       "actual_evidence_refs": [
-        "ledger:sha256:9a27aae8e21e7c60616959dfb6fd4a8b5f39aa47832a55ed426098fbdc7266a1"
+        "ledger:sha256:fe6e9b47c3c13b5fb6e868931350e7366173d56211e57a49922fcd7fb5050afd"
       ],
       "assertion_names_contract": [
         "candidate_set_hash_equal",
@@ -361,7 +361,7 @@
         }
       },
       "case_id": "K11-A-FUTURE-CHILD-EMBARGO",
-      "case_wall_seconds": 0.010693,
+      "case_wall_seconds": 0.011883,
       "cost_report": {
         "run_a": {
           "actor_events": 19,
@@ -372,11 +372,11 @@
           "model_calls": 0,
           "prompt_tokens": 0,
           "rejected_candidates": 0,
-          "replay_ledger_bytes": 4461,
-          "replay_seconds": 2.8e-05,
+          "replay_ledger_bytes": 4459,
+          "replay_seconds": 3e-05,
           "rng_draws": 1,
           "total_tokens": 0,
-          "wall_seconds": 0.004066
+          "wall_seconds": 0.003942
         },
         "run_b": {
           "actor_events": 19,
@@ -387,11 +387,11 @@
           "model_calls": 0,
           "prompt_tokens": 0,
           "rejected_candidates": 0,
-          "replay_ledger_bytes": 4461,
-          "replay_seconds": 2.7e-05,
+          "replay_ledger_bytes": 4459,
+          "replay_seconds": 3e-05,
           "rng_draws": 1,
           "total_tokens": 0,
-          "wall_seconds": 0.003794
+          "wall_seconds": 0.004785
         }
       },
       "expected_status": "REFUSE_OR_INVARIANT",
@@ -441,7 +441,7 @@
     },
     {
       "actual_evidence_refs": [
-        "ledger:sha256:2d12ebfe41114a52739e77683b31dfb323e11fc4afba81aa0d1d9612a6ca44b1"
+        "ledger:sha256:2d9c4f43b4610a998c80fb867d8f8792998ffe09d71b8c8c941f18ffa9927d02"
       ],
       "assertion_names_contract": [
         "no_father_abuse_generated_as_function_of_label",
@@ -464,7 +464,7 @@
         }
       },
       "case_id": "K11-A2-DESIRED-WOUND-COUNTERFACTUAL",
-      "case_wall_seconds": 0.009647,
+      "case_wall_seconds": 0.010677,
       "cost_report": {
         "run_a": {
           "actor_events": 19,
@@ -475,11 +475,11 @@
           "model_calls": 0,
           "prompt_tokens": 0,
           "rejected_candidates": 0,
-          "replay_ledger_bytes": 4460,
-          "replay_seconds": 2.6e-05,
+          "replay_ledger_bytes": 4458,
+          "replay_seconds": 3e-05,
           "rng_draws": 1,
           "total_tokens": 0,
-          "wall_seconds": 0.003435
+          "wall_seconds": 0.003826
         },
         "run_b": {
           "actor_events": 19,
@@ -491,10 +491,10 @@
           "prompt_tokens": 0,
           "rejected_candidates": 0,
           "replay_ledger_bytes": 4460,
-          "replay_seconds": 2.7e-05,
+          "replay_seconds": 2.8e-05,
           "rng_draws": 1,
           "total_tokens": 0,
-          "wall_seconds": 0.003466
+          "wall_seconds": 0.003813
         }
       },
       "expected_status": "REFUSE_OR_INVARIANT",
@@ -525,7 +525,7 @@
     },
     {
       "actual_evidence_refs": [
-        "ledger:sha256:efa855a4399d505b8797d78cab0cfd9f710b7d513c0048b2683a52581cd06319"
+        "ledger:sha256:99fe10bdaccbd42cbd3e1a593e3d0df5233c1e9b5975b65f0ff069a68a498593"
       ],
       "assertion_names_contract": [
         "at_least_two_endpoint_valid_distinct_nonendpoint_causal_histories_where_fixture_supports_alternatives",
@@ -552,7 +552,7 @@
         }
       },
       "case_id": "K11-B-INDEPENDENT-HISTORY",
-      "case_wall_seconds": 0.010033,
+      "case_wall_seconds": 0.009863,
       "cost_report": {
         "run_a": {
           "actor_events": 19,
@@ -564,10 +564,10 @@
           "prompt_tokens": 0,
           "rejected_candidates": 0,
           "replay_ledger_bytes": 4171,
-          "replay_seconds": 2.6e-05,
+          "replay_seconds": 2.8e-05,
           "rng_draws": 1,
           "total_tokens": 0,
-          "wall_seconds": 0.003502
+          "wall_seconds": 0.003668
         },
         "run_b": {
           "actor_events": 19,
@@ -578,11 +578,11 @@
           "model_calls": 0,
           "prompt_tokens": 0,
           "rejected_candidates": 0,
-          "replay_ledger_bytes": 4177,
-          "replay_seconds": 3e-05,
+          "replay_ledger_bytes": 4179,
+          "replay_seconds": 2.8e-05,
           "rng_draws": 1,
           "total_tokens": 0,
-          "wall_seconds": 0.00438
+          "wall_seconds": 0.003795
         }
       },
       "expected_status": "PASS_IF_AUTHORIZED_RUN",
@@ -619,7 +619,7 @@
     },
     {
       "actual_evidence_refs": [
-        "ledger:sha256:95ebdd1f18753c25b0d1bece517166d84ed53794ea00bf01254b2c2a92904a93"
+        "ledger:sha256:d11d1eb27b60672bbdcd9d6cd3e86d60c9d0e3cccc810cf1f52c0978d1158fc8"
       ],
       "assertion_names_contract": [
         "existing_actor_reused_or_exact_contradiction_HOLD",
@@ -644,7 +644,7 @@
         }
       },
       "case_id": "K11-C-EXISTING-PARTNER",
-      "case_wall_seconds": 0.00284,
+      "case_wall_seconds": 0.003516,
       "cost_report": {
         "actor_events": 0,
         "causal_state_changes": 0,
@@ -658,7 +658,7 @@
         "replay_seconds": 0.0,
         "rng_draws": 0,
         "total_tokens": 0,
-        "wall_seconds": 0.001633
+        "wall_seconds": 0.002212
       },
       "expected_status": "REFUSE_OR_INVARIANT",
       "fixture_hash": "sha256:84e1e6675891a90d3b641fafb0624a6123fe001c1def1f461970532e1b1b5396",
@@ -700,7 +700,7 @@
     },
     {
       "actual_evidence_refs": [
-        "ledger:sha256:9b8bc8cc2f964aa60e04f1f29d19af47af59cf845f83d6a118aa575dcc1fff31"
+        "ledger:sha256:90b67521e75c66195a564891405e64c68031e39bd484d89a60c4f585a2595d0b"
       ],
       "assertion_names_contract": [
         "HOLD_before_any_new_shared_event",
@@ -723,7 +723,7 @@
         }
       },
       "case_id": "K11-C2-EXISTING-SHARED-EVENT",
-      "case_wall_seconds": 0.002509,
+      "case_wall_seconds": 0.003239,
       "cost_report": {
         "actor_events": 0,
         "causal_state_changes": 0,
@@ -737,7 +737,7 @@
         "replay_seconds": 0.0,
         "rng_draws": 0,
         "total_tokens": 0,
-        "wall_seconds": 0.001628
+        "wall_seconds": 0.00227
       },
       "expected_status": "REFUSE_OR_INVARIANT",
       "fixture_hash": "sha256:84e1e6675891a90d3b641fafb0624a6123fe001c1def1f461970532e1b1b5396",
@@ -779,7 +779,7 @@
     },
     {
       "actual_evidence_refs": [
-        "ledger:sha256:b4d78419168cf119eabd4822f059363ea0274c83d906d6b5c38eb06008a535ae"
+        "ledger:sha256:2b62884b4c73d07367d132b3851cb9c384b53e1564ffaabdecdd1c6c41406e03"
       ],
       "assertion_names_contract": [
         "older_child_actor_id_unchanged",
@@ -806,7 +806,7 @@
         }
       },
       "case_id": "K11-D-PARITY",
-      "case_wall_seconds": 0.010887,
+      "case_wall_seconds": 0.011584,
       "cost_report": {
         "route_a": {
           "actor_events": 19,
@@ -817,11 +817,11 @@
           "model_calls": 0,
           "prompt_tokens": 0,
           "rejected_candidates": 0,
-          "replay_ledger_bytes": 4460,
-          "replay_seconds": 2.8e-05,
+          "replay_ledger_bytes": 4458,
+          "replay_seconds": 3e-05,
           "rng_draws": 1,
           "total_tokens": 0,
-          "wall_seconds": 0.003739
+          "wall_seconds": 0.004
         },
         "route_b": {
           "actor_events": 19,
@@ -832,11 +832,11 @@
           "model_calls": 0,
           "prompt_tokens": 0,
           "rejected_candidates": 0,
-          "replay_ledger_bytes": 4492,
-          "replay_seconds": 2.7e-05,
+          "replay_ledger_bytes": 4490,
+          "replay_seconds": 3e-05,
           "rng_draws": 1,
           "total_tokens": 0,
-          "wall_seconds": 0.003802
+          "wall_seconds": 0.004206
         }
       },
       "expected_status": "PASS_IF_AUTHORIZED_RUN",
@@ -869,7 +869,7 @@
     },
     {
       "actual_evidence_refs": [
-        "ledger:sha256:1666641aaaf89e422460b1aba18e2cbd58362fea0eebf50fddbee754c8116520"
+        "ledger:sha256:98eb6539ff8ffcaf1b46788da7c407fe5e63c4ad4ea3f8ab966bacdae8e42b0b"
       ],
       "assertion_names_contract": [
         "nonmother_project_has_causal_effect_record",
@@ -896,7 +896,7 @@
         }
       },
       "case_id": "K11-E-INDEPENDENT-PROJECT",
-      "case_wall_seconds": 0.009298,
+      "case_wall_seconds": 0.010763,
       "cost_report": {
         "actor_events": 19,
         "causal_state_changes": 0,
@@ -907,10 +907,10 @@
         "prompt_tokens": 0,
         "rejected_candidates": 0,
         "replay_ledger_bytes": 4466,
-        "replay_seconds": 2.7e-05,
+        "replay_seconds": 3.4e-05,
         "rng_draws": 1,
         "total_tokens": 0,
-        "wall_seconds": 0.003449
+        "wall_seconds": 0.004659
       },
       "expected_status": "PASS_IF_AUTHORIZED_RUN",
       "fixture_hash": "sha256:4c10ea65b3ac1fb22b943e34f19f3557c194e3f768687fc8543471885fea26af",
@@ -1044,7 +1044,7 @@
         }
       },
       "case_id": "K11-GRAPH-CONSTRUCTION-VS-CAUSAL",
-      "case_wall_seconds": 0.004691,
+      "case_wall_seconds": 0.005372,
       "cost_report": {
         "actor_events": 19,
         "causal_state_changes": 0,
@@ -1054,11 +1054,11 @@
         "model_calls": 0,
         "prompt_tokens": 0,
         "rejected_candidates": 0,
-        "replay_ledger_bytes": 4466,
-        "replay_seconds": 2.6e-05,
+        "replay_ledger_bytes": 4464,
+        "replay_seconds": 3e-05,
         "rng_draws": 1,
         "total_tokens": 0,
-        "wall_seconds": 0.003773
+        "wall_seconds": 0.004022
       },
       "expected_status": "PASS_IF_AUTHORIZED_RUN",
       "fixture_hash": "sha256:4c10ea65b3ac1fb22b943e34f19f3557c194e3f768687fc8543471885fea26af",
@@ -1086,7 +1086,7 @@
     },
     {
       "actual_evidence_refs": [
-        "ledger:sha256:4f5a820741688f2e9b268295473a59f14129c98137ce2be1666ccc43f31a3852"
+        "ledger:sha256:1f2218e4a626708d2946b702ab1397d96325b4afae4f0cd837f4b6d42ba01207"
       ],
       "assertion_names_contract": [
         "dedup_equivalence_class_count_unchanged",
@@ -1111,7 +1111,7 @@
         }
       },
       "case_id": "K11-DEDUPE",
-      "case_wall_seconds": 0.009634,
+      "case_wall_seconds": 0.008309,
       "cost_report": {
         "clean": {
           "actor_events": 19,
@@ -1123,10 +1123,10 @@
           "prompt_tokens": 0,
           "rejected_candidates": 0,
           "replay_ledger_bytes": 4466,
-          "replay_seconds": 3.9e-05,
+          "replay_seconds": 2.9e-05,
           "rng_draws": 1,
           "total_tokens": 0,
-          "wall_seconds": 0.003136
+          "wall_seconds": 0.00343
         },
         "dup": {
           "actor_events": 19,
@@ -1138,10 +1138,10 @@
           "prompt_tokens": 0,
           "rejected_candidates": 0,
           "replay_ledger_bytes": 4466,
-          "replay_seconds": 3.7e-05,
+          "replay_seconds": 2.9e-05,
           "rng_draws": 1,
           "total_tokens": 0,
-          "wall_seconds": 0.004499
+          "wall_seconds": 0.003204
         }
       },
       "expected_status": "REFUSE_OR_INVARIANT",
@@ -1225,7 +1225,7 @@
         }
       },
       "case_id": "K11-EMPIRICAL-CEILING",
-      "case_wall_seconds": 0.005816,
+      "case_wall_seconds": 0.005285,
       "cost_report": {
         "actor_events": 19,
         "causal_state_changes": 0,
@@ -1235,11 +1235,11 @@
         "model_calls": 0,
         "prompt_tokens": 0,
         "rejected_candidates": 0,
-        "replay_ledger_bytes": 4462,
-        "replay_seconds": 2.9e-05,
+        "replay_ledger_bytes": 4460,
+        "replay_seconds": 3e-05,
         "rng_draws": 1,
         "total_tokens": 0,
-        "wall_seconds": 0.004529
+        "wall_seconds": 0.004114
       },
       "expected_status": "REFUSE_OR_INVARIANT",
       "fixture_hash": "sha256:4c10ea65b3ac1fb22b943e34f19f3557c194e3f768687fc8543471885fea26af",
@@ -1274,7 +1274,7 @@
     },
     {
       "actual_evidence_refs": [
-        "ledger:sha256:5d97d0d1879aeba619ab7e5506f4ed8248464cee93eb2ee766a438a1f0f5dfce"
+        "ledger:sha256:76676544e5ee2b3ce8d6d5213bb7c2f063e697f90d7785213399c942b0b6eab0"
       ],
       "assertion_names_contract": [
         "SELECTION_AUTHORITY_UNBOUND",
@@ -1297,7 +1297,7 @@
         }
       },
       "case_id": "K11-WEIGHT-ORDINAL",
-      "case_wall_seconds": 0.002713,
+      "case_wall_seconds": 0.00263,
       "cost_report": {
         "actor_events": 0,
         "causal_state_changes": 0,
@@ -1311,7 +1311,7 @@
         "replay_seconds": 0.0,
         "rng_draws": 0,
         "total_tokens": 0,
-        "wall_seconds": 0.002295
+        "wall_seconds": 0.002236
       },
       "expected_status": "REFUSE_OR_INVARIANT",
       "fixture_hash": "sha256:4c10ea65b3ac1fb22b943e34f19f3557c194e3f768687fc8543471885fea26af",
@@ -1342,7 +1342,7 @@
     },
     {
       "actual_evidence_refs": [
-        "ledger:sha256:ae8830b9f02ddb7f1ad6471839ba3237429681a186fc6665bec9fa3b15bfeb4a"
+        "ledger:sha256:82de529801b9932ce12c3145cafa09ccb8e71412a38eeda1e22bb5203eacda91"
       ],
       "assertion_names_contract": [
         "each_policy_hash_unique",
@@ -1367,7 +1367,7 @@
         }
       },
       "case_id": "K11-WEIGHT-SENSITIVITY",
-      "case_wall_seconds": 0.029419,
+      "case_wall_seconds": 0.0306,
       "cost_report": {
         "SIM_INTEGER_WEIGHT_A": {
           "actor_events": 19,
@@ -1378,11 +1378,11 @@
           "model_calls": 0,
           "prompt_tokens": 0,
           "rejected_candidates": 0,
-          "replay_ledger_bytes": 4461,
-          "replay_seconds": 2.7e-05,
+          "replay_ledger_bytes": 4459,
+          "replay_seconds": 3e-05,
           "rng_draws": 1,
           "total_tokens": 0,
-          "wall_seconds": 0.003871
+          "wall_seconds": 0.003801
         },
         "SIM_INTEGER_WEIGHT_B": {
           "actor_events": 19,
@@ -1397,7 +1397,7 @@
           "replay_seconds": 2.9e-05,
           "rng_draws": 1,
           "total_tokens": 0,
-          "wall_seconds": 0.003765
+          "wall_seconds": 0.003753
         },
         "SIM_UNIFORM_CLASSES": {
           "actor_events": 19,
@@ -1408,11 +1408,11 @@
           "model_calls": 0,
           "prompt_tokens": 0,
           "rejected_candidates": 0,
-          "replay_ledger_bytes": 4459,
-          "replay_seconds": 3e-05,
+          "replay_ledger_bytes": 4461,
+          "replay_seconds": 2.9e-05,
           "rng_draws": 1,
           "total_tokens": 0,
-          "wall_seconds": 0.003625
+          "wall_seconds": 0.003892
         }
       },
       "expected_status": "PASS_IF_AUTHORIZED_RUN",
@@ -1449,7 +1449,7 @@
     },
     {
       "actual_evidence_refs": [
-        "ledger:sha256:4f0a423b6cc98939383093fe6217c18ac67d59bdb820a82b281d4d27b0d50b64"
+        "ledger:sha256:701cf6d9a8d0eb2e7ad015fe8a7fd97aa1465253cecdece0cadab92380d11cdf"
       ],
       "assertion_names_contract": [
         "failed_attempt_receipt_persisted",
@@ -1474,7 +1474,7 @@
         }
       },
       "case_id": "K11-RETRY-BIAS",
-      "case_wall_seconds": 0.010334,
+      "case_wall_seconds": 0.011157,
       "cost_report": {
         "feasible_run": {
           "actor_events": 19,
@@ -1486,10 +1486,10 @@
           "prompt_tokens": 0,
           "rejected_candidates": 0,
           "replay_ledger_bytes": 4462,
-          "replay_seconds": 2.7e-05,
+          "replay_seconds": 2.9e-05,
           "rng_draws": 1,
           "total_tokens": 0,
-          "wall_seconds": 0.003664
+          "wall_seconds": 0.003752
         },
         "forced_fail": {
           "actor_events": 76,
@@ -1501,10 +1501,10 @@
           "prompt_tokens": 0,
           "rejected_candidates": 0,
           "replay_ledger_bytes": 18053,
-          "replay_seconds": 9.9e-05,
+          "replay_seconds": 0.000118,
           "rng_draws": 0,
           "total_tokens": 0,
-          "wall_seconds": 0.004589
+          "wall_seconds": 0.005081
         }
       },
       "expected_status": "REFUSE_OR_INVARIANT",
@@ -1588,7 +1588,7 @@
     },
     {
       "actual_evidence_refs": [
-        "ledger:sha256:edd7892aa09f28f16238099b0e12e8e43cb46e0e3842d05cdc7408f1ee9be07e"
+        "ledger:sha256:0c4a5b6e1d8c80cf88019163e58e17463bfca9c47444ed9dc80be8e4351a39ad"
       ],
       "assertion_names_contract": [
         "typed_SCENARIOS_VALID_EMPTY_or_INFEASIBLE",
@@ -1613,7 +1613,7 @@
         }
       },
       "case_id": "K11-VALID-EMPTY",
-      "case_wall_seconds": 0.00318,
+      "case_wall_seconds": 0.002292,
       "cost_report": {
         "actor_events": 0,
         "causal_state_changes": 0,
@@ -1627,7 +1627,7 @@
         "replay_seconds": 0.0,
         "rng_draws": 0,
         "total_tokens": 0,
-        "wall_seconds": 0.002785
+        "wall_seconds": 0.001947
       },
       "expected_status": "REFUSE_OR_INVARIANT",
       "fixture_hash": "sha256:4c10ea65b3ac1fb22b943e34f19f3557c194e3f768687fc8543471885fea26af",
@@ -1655,7 +1655,7 @@
     },
     {
       "actual_evidence_refs": [
-        "ledger:sha256:246e75c80e788f941321ff9141a5e6ec385d64f1be5d72918ddd8be40ef6b47b"
+        "ledger:sha256:dddea54c3e60ebba5f75b81b13a4fc91fe8ad8a31fc9e6d5793ff2dc05d1ad45"
       ],
       "assertion_names_contract": [
         "HOLD_not_INFEASIBLE",
@@ -1678,7 +1678,7 @@
         }
       },
       "case_id": "K11-UNKNOWN-REQUIRED",
-      "case_wall_seconds": 0.003075,
+      "case_wall_seconds": 0.002271,
       "cost_report": {
         "actor_events": 0,
         "causal_state_changes": 0,
@@ -1692,7 +1692,7 @@
         "replay_seconds": 0.0,
         "rng_draws": 0,
         "total_tokens": 0,
-        "wall_seconds": 0.002552
+        "wall_seconds": 0.001908
       },
       "expected_status": "REFUSE_OR_INVARIANT",
       "fixture_hash": "sha256:4c10ea65b3ac1fb22b943e34f19f3557c194e3f768687fc8543471885fea26af",
@@ -1725,7 +1725,7 @@
     },
     {
       "actual_evidence_refs": [
-        "ledger:sha256:3ff196bb05ba98286d03e0943a2cc100042553703462fb7d5347adc14c5faa50"
+        "ledger:sha256:4313af48d794764c3b0f4780209f50f4ce673618a3c476fe4ac565996f0b8f10"
       ],
       "assertion_names_contract": [
         "one_objective_relation_event",
@@ -1752,7 +1752,7 @@
         }
       },
       "case_id": "K11-RELATION-ASYMMETRY",
-      "case_wall_seconds": 0.012005,
+      "case_wall_seconds": 0.009936,
       "cost_report": {
         "actor_events": 19,
         "causal_state_changes": 0,
@@ -1762,11 +1762,11 @@
         "model_calls": 0,
         "prompt_tokens": 0,
         "rejected_candidates": 0,
-        "replay_ledger_bytes": 4458,
-        "replay_seconds": 3e-05,
+        "replay_ledger_bytes": 4460,
+        "replay_seconds": 3.1e-05,
         "rng_draws": 1,
         "total_tokens": 0,
-        "wall_seconds": 0.005184
+        "wall_seconds": 0.004169
       },
       "expected_status": "PASS_IF_AUTHORIZED_RUN",
       "fixture_hash": "sha256:4c10ea65b3ac1fb22b943e34f19f3557c194e3f768687fc8543471885fea26af",
@@ -1821,7 +1821,7 @@
     },
     {
       "actual_evidence_refs": [
-        "ledger:sha256:1faddf7cf408325f6d9eb439e67b3c7b9ef022de038c121f6192616c1e372c7a"
+        "ledger:sha256:5472944e804c7829ee73f3fb4e884f7ae5b9fd4c808a9acfe451ab85a47465ab"
       ],
       "assertion_names_contract": [
         "PENDING_not_ADMITTED_CONCEPTION",
@@ -1846,7 +1846,7 @@
         }
       },
       "case_id": "K11-CONCEPTION-CHILDGEN-BOUNDARY",
-      "case_wall_seconds": 0.006764,
+      "case_wall_seconds": 0.004811,
       "cost_report": {
         "actor_events": 19,
         "causal_state_changes": 0,
@@ -1857,10 +1857,10 @@
         "prompt_tokens": 0,
         "rejected_candidates": 0,
         "replay_ledger_bytes": 4462,
-        "replay_seconds": 3.2e-05,
+        "replay_seconds": 2.9e-05,
         "rng_draws": 1,
         "total_tokens": 0,
-        "wall_seconds": 0.005297
+        "wall_seconds": 0.003894
       },
       "expected_status": "REFUSE_OR_INVARIANT",
       "fixture_hash": "sha256:4c10ea65b3ac1fb22b943e34f19f3557c194e3f768687fc8543471885fea26af",
@@ -1896,7 +1896,7 @@
     },
     {
       "actual_evidence_refs": [
-        "ledger:sha256:4c7abe955009e7fdbb813ad755cb199410d5160e26764b8283c22cedbed2afdd"
+        "ledger:sha256:62219adb35f3c0b34dfed9749bb83194ed37c8876887aa83cb79f0c150660d41"
       ],
       "assertion_names_contract": [
         "INDEPENDENT_PROJECT_PROOF_MISSING_or_PREHISTORY_OWNER_RULE_MISSING",
@@ -1917,7 +1917,7 @@
         }
       },
       "case_id": "K11-MISSING-HISTORY",
-      "case_wall_seconds": 0.005092,
+      "case_wall_seconds": 0.003244,
       "cost_report": {
         "actor_events": 0,
         "causal_state_changes": 0,
@@ -1931,7 +1931,7 @@
         "replay_seconds": 0.0,
         "rng_draws": 1,
         "total_tokens": 0,
-        "wall_seconds": 0.004009
+        "wall_seconds": 0.002603
       },
       "expected_status": "REFUSE_OR_INVARIANT",
       "fixture_hash": "sha256:4c10ea65b3ac1fb22b943e34f19f3557c194e3f768687fc8543471885fea26af",
@@ -1961,7 +1961,7 @@
     },
     {
       "actual_evidence_refs": [
-        "ledger:sha256:b9e081a9da4197ef1d02d7c6600c425b8dc1cfae5ff46ee710598e3568949934"
+        "ledger:sha256:dd6afc8c9719eac8c5d6e9c32114606e126c4850c95367dd96b1e6e6f3ac9e49"
       ],
       "assertion_names_contract": [
         "AMBIGUOUS_SAME_TIME_CAUSAL_ORDER",
@@ -1984,7 +1984,7 @@
         }
       },
       "case_id": "K11-SCHEDULER-SAME-TIME",
-      "case_wall_seconds": 0.00754,
+      "case_wall_seconds": 0.004742,
       "cost_report": {
         "actor_events": 19,
         "causal_state_changes": 0,
@@ -1995,10 +1995,10 @@
         "prompt_tokens": 0,
         "rejected_candidates": 0,
         "replay_ledger_bytes": 4461,
-        "replay_seconds": 4.8e-05,
+        "replay_seconds": 3.1e-05,
         "rng_draws": 1,
         "total_tokens": 0,
-        "wall_seconds": 0.006258
+        "wall_seconds": 0.003818
       },
       "expected_status": "REFUSE_OR_INVARIANT",
       "fixture_hash": "sha256:4c10ea65b3ac1fb22b943e34f19f3557c194e3f768687fc8543471885fea26af",
@@ -2050,7 +2050,7 @@
         }
       },
       "case_id": "K11-REPLAY-ALTER-SUBJECT",
-      "case_wall_seconds": 0.005673,
+      "case_wall_seconds": 0.004913,
       "cost_report": {
         "actor_events": 19,
         "causal_state_changes": 0,
@@ -2061,10 +2061,10 @@
         "prompt_tokens": 0,
         "rejected_candidates": 0,
         "replay_ledger_bytes": 4461,
-        "replay_seconds": 2.7e-05,
+        "replay_seconds": 2.9e-05,
         "rng_draws": 1,
         "total_tokens": 0,
-        "wall_seconds": 0.004132
+        "wall_seconds": 0.00394
       },
       "expected_status": "REFUSE_OR_INVARIANT",
       "fixture_hash": "sha256:4c10ea65b3ac1fb22b943e34f19f3557c194e3f768687fc8543471885fea26af",
@@ -2154,205 +2154,132 @@
         ],
         "dedup": {
           "canonical_order": [
-            "sha256:41af0c02f7ef9909449b904ffa29891eee7f2f879f207e16ee7d38924c53983c",
-            "sha256:533cd1bd129f2d5694e6076f4aca8e1b0d5ca25828500727fa213ca3bac0556e",
-            "sha256:6e79cf1682eca0fbe57a6d53de1e33c642825359015e4b17a5f1b7f719dadf7d",
-            "sha256:d4bfb4d87a639ab3d5fb14b51ed8915ec8188a5abb9e858b961c51be89917665",
-            "sha256:e5b942d8832fb4e347132109892f7b58035d5acce012336b7e405902b114f18f",
-            "sha256:eed137e6d3471256f2d428f91494e854a30cc7006a62419bce92e80e290f7ff1"
+            "sha256:3c26a14ae4eaafaf61b1027fe5ac9f26828fa61c4ea8f714a10dcb4fd02f8187",
+            "sha256:d3bfc9e67a1b134e842088e95c0282556819655e29358ab6cffae113f756a7f0",
+            "sha256:f5c9110d6e56741f29f7889fb2287e8c26a9c256d7c32da1719ed68f330fae3b"
           ],
           "class_member_index": {
-            "sha256:41af0c02f7ef9909449b904ffa29891eee7f2f879f207e16ee7d38924c53983c": [
+            "sha256:3c26a14ae4eaafaf61b1027fe5ac9f26828fa61c4ea8f714a10dcb4fd02f8187": [
+              "CANDIDATE_001",
               "CANDIDATE_005"
             ],
-            "sha256:533cd1bd129f2d5694e6076f4aca8e1b0d5ca25828500727fa213ca3bac0556e": [
-              "CANDIDATE_003"
-            ],
-            "sha256:6e79cf1682eca0fbe57a6d53de1e33c642825359015e4b17a5f1b7f719dadf7d": [
+            "sha256:d3bfc9e67a1b134e842088e95c0282556819655e29358ab6cffae113f756a7f0": [
+              "CANDIDATE_002",
               "CANDIDATE_004"
             ],
-            "sha256:d4bfb4d87a639ab3d5fb14b51ed8915ec8188a5abb9e858b961c51be89917665": [
-              "CANDIDATE_001"
-            ],
-            "sha256:e5b942d8832fb4e347132109892f7b58035d5acce012336b7e405902b114f18f": [
-              "CANDIDATE_002"
-            ],
-            "sha256:eed137e6d3471256f2d428f91494e854a30cc7006a62419bce92e80e290f7ff1": [
+            "sha256:f5c9110d6e56741f29f7889fb2287e8c26a9c256d7c32da1719ed68f330fae3b": [
+              "CANDIDATE_003",
               "CANDIDATE_006"
             ]
           },
-          "class_set_hash": "sha256:9e2a09ccd43544b775d233652ba89387f1aa1a4d11b5d58a823671ec32d42ecf",
+          "class_set_hash": "sha256:bcabc44784359b108f429a7a5133c4e8a45d7e7287529e30d62814c863f23823",
           "classes": [
             {
               "candidate": {
                 "assumptions": [
-                  "dual_engagement_in_workshop_and_class"
-                ],
-                "candidate_kind": "KNOWN_COUNTERPART",
-                "candidate_local_id": "CANDIDATE_005",
-                "candidate_origin": "LLM_PROPOSAL",
-                "endpoint_constraints": {
-                  "second_parent_structure_and_position_constraints": [
-                    "INST_WORKSHOP_A",
-                    "INST_EVENING_CLASS_B"
-                  ]
-                },
-                "falsifiers": [
-                  "course_cancellation_records"
-                ],
-                "model_relative_plausibility_NOT_frequency": true,
-                "plausibility_rank_ordinal": 5,
-                "route_kind_id": "ROUTE_INSTITUTIONAL"
-              },
-              "class_key": "sha256:41af0c02f7ef9909449b904ffa29891eee7f2f879f207e16ee7d38924c53983c",
-              "member_count": 1,
-              "member_ids": [
-                "CANDIDATE_005"
-              ],
-              "representative_id": "CLS_41af0c02f7ef9909449b904f"
-            },
-            {
-              "candidate": {
-                "assumptions": [
-                  "routine_commuter_interaction"
-                ],
-                "candidate_kind": "NONOCCURRENCE",
-                "candidate_local_id": "CANDIDATE_003",
-                "candidate_origin": "LLM_PROPOSAL",
-                "endpoint_constraints": {
-                  "second_parent_structure_and_position_constraints": [
-                    "INST_TRANSIT_E"
-                  ]
-                },
-                "falsifiers": [
-                  "non_overlapping_commute_times"
-                ],
-                "model_relative_plausibility_NOT_frequency": true,
-                "plausibility_rank_ordinal": 3,
-                "route_kind_id": "ROUTE_MOBILITY"
-              },
-              "class_key": "sha256:533cd1bd129f2d5694e6076f4aca8e1b0d5ca25828500727fa213ca3bac0556e",
-              "member_count": 1,
-              "member_ids": [
-                "CANDIDATE_003"
-              ],
-              "representative_id": "CLS_533cd1bd129f2d5694e6076f"
-            },
-            {
-              "candidate": {
-                "assumptions": [
-                  "emergency_committee_contact"
-                ],
-                "candidate_kind": "PROVISIONAL_COUNTERPART",
-                "candidate_local_id": "CANDIDATE_004",
-                "candidate_origin": "LLM_PROPOSAL",
-                "endpoint_constraints": {
-                  "second_parent_structure_and_position_constraints": [
-                    "INST_COMMUNITY_D"
-                  ]
-                },
-                "falsifiers": [
-                  "no_record_of_emergency_callout"
-                ],
-                "model_relative_plausibility_NOT_frequency": true,
-                "plausibility_rank_ordinal": 4,
-                "route_kind_id": "ROUTE_UNCONVENTIONAL"
-              },
-              "class_key": "sha256:6e79cf1682eca0fbe57a6d53de1e33c642825359015e4b17a5f1b7f719dadf7d",
-              "member_count": 1,
-              "member_ids": [
-                "CANDIDATE_004"
-              ],
-              "representative_id": "CLS_6e79cf1682eca0fbe57a6d53"
-            },
-            {
-              "candidate": {
-                "assumptions": [
-                  "shared_enrollment_evening_class"
+                  "shared interest in technical certifications",
+                  "consistent attendance at evening classes"
                 ],
                 "candidate_kind": "KNOWN_COUNTERPART",
                 "candidate_local_id": "CANDIDATE_001",
                 "candidate_origin": "LLM_PROPOSAL",
                 "endpoint_constraints": {
-                  "second_parent_structure_and_position_constraints": [
-                    "INST_EVENING_CLASS_B"
-                  ]
+                  "inst_id": "INST_EVENING_CLASS_B"
                 },
                 "falsifiers": [
-                  "absence_from_enrollment_records"
+                  "absence from evening classes during key periods"
                 ],
                 "model_relative_plausibility_NOT_frequency": true,
                 "plausibility_rank_ordinal": 1,
                 "route_kind_id": "ROUTE_INSTITUTIONAL"
               },
-              "class_key": "sha256:d4bfb4d87a639ab3d5fb14b51ed8915ec8188a5abb9e858b961c51be89917665",
-              "member_count": 1,
+              "class_key": "sha256:3c26a14ae4eaafaf61b1027fe5ac9f26828fa61c4ea8f714a10dcb4fd02f8187",
+              "member_count": 2,
               "member_ids": [
-                "CANDIDATE_001"
+                "CANDIDATE_001",
+                "CANDIDATE_005"
               ],
-              "representative_id": "CLS_d4bfb4d87a639ab3d5fb14b5"
+              "representative_id": "CLS_3c26a14ae4eaafaf61b1027f"
             },
             {
               "candidate": {
                 "assumptions": [
-                  "workplace_proximity"
+                  "participation in community group events",
+                  "interaction during workshop-like activities"
                 ],
                 "candidate_kind": "PROVISIONAL_COUNTERPART",
                 "candidate_local_id": "CANDIDATE_002",
                 "candidate_origin": "LLM_PROPOSAL",
                 "endpoint_constraints": {
-                  "second_parent_structure_and_position_constraints": [
-                    "INST_WORKSHOP_A"
-                  ]
+                  "inst_id": "INST_COMMUNITY_D"
                 },
                 "falsifiers": [
-                  "confirmed_different_shifts"
+                  "non-participation in community events"
                 ],
                 "model_relative_plausibility_NOT_frequency": true,
                 "plausibility_rank_ordinal": 2,
-                "route_kind_id": "ROUTE_LOCAL_CLOSED"
+                "route_kind_id": "ROUTE_INSTITUTIONAL"
               },
-              "class_key": "sha256:e5b942d8832fb4e347132109892f7b58035d5acce012336b7e405902b114f18f",
-              "member_count": 1,
+              "class_key": "sha256:d3bfc9e67a1b134e842088e95c0282556819655e29358ab6cffae113f756a7f0",
+              "member_count": 2,
               "member_ids": [
-                "CANDIDATE_002"
+                "CANDIDATE_002",
+                "CANDIDATE_004"
               ],
-              "representative_id": "CLS_e5b942d8832fb4e347132109"
+              "representative_id": "CLS_d3bfc9e67a1b134e842088e9"
             },
             {
               "candidate": {
                 "assumptions": [
-                  "unplanned_meeting_transit"
+                  "transit hub used only for mobility, not interaction"
                 ],
                 "candidate_kind": "NONOCCURRENCE",
-                "candidate_local_id": "CANDIDATE_006",
+                "candidate_local_id": "CANDIDATE_003",
                 "candidate_origin": "LLM_PROPOSAL",
                 "endpoint_constraints": {
-                  "second_parent_structure_and_position_constraints": [
-                    "INST_TRANSIT_E"
-                  ]
+                  "inst_id": "INST_TRANSIT_E"
                 },
                 "falsifiers": [
-                  "no_shared_transit_timetable"
+                  "evidence of social interaction during transit"
                 ],
                 "model_relative_plausibility_NOT_frequency": true,
-                "plausibility_rank_ordinal": 6,
-                "route_kind_id": "ROUTE_UNCONVENTIONAL"
+                "plausibility_rank_ordinal": 3,
+                "route_kind_id": "ROUTE_INSTITUTIONAL"
               },
-              "class_key": "sha256:eed137e6d3471256f2d428f91494e854a30cc7006a62419bce92e80e290f7ff1",
-              "member_count": 1,
+              "class_key": "sha256:f5c9110d6e56741f29f7889fb2287e8c26a9c256d7c32da1719ed68f330fae3b",
+              "member_count": 2,
               "member_ids": [
+                "CANDIDATE_003",
                 "CANDIDATE_006"
               ],
-              "representative_id": "CLS_eed137e6d3471256f2d428f9"
+              "representative_id": "CLS_f5c9110d6e56741f29f7889f"
             }
           ],
           "coverage_receipt": {
             "OTHER_UNRESOLVED": true,
             "note": "unenumerated scenarios may exist; completeness NOT claimed"
           },
-          "merge_receipts": [],
-          "n_classes": 6,
+          "merge_receipts": [
+            {
+              "action": "MERGE_INTO_CLASS",
+              "class_key": "sha256:d3bfc9e67a1b134e842088e95c0282556819655e29358ab6cffae113f756a7f0",
+              "member": "CANDIDATE_004",
+              "representative": "CLS_d3bfc9e67a1b134e842088e9"
+            },
+            {
+              "action": "MERGE_INTO_CLASS",
+              "class_key": "sha256:3c26a14ae4eaafaf61b1027fe5ac9f26828fa61c4ea8f714a10dcb4fd02f8187",
+              "member": "CANDIDATE_005",
+              "representative": "CLS_3c26a14ae4eaafaf61b1027f"
+            },
+            {
+              "action": "MERGE_INTO_CLASS",
+              "class_key": "sha256:f5c9110d6e56741f29f7889fb2287e8c26a9c256d7c32da1719ed68f330fae3b",
+              "member": "CANDIDATE_006",
+              "representative": "CLS_f5c9110d6e56741f29f7889f"
+            }
+          ],
+          "n_classes": 3,
           "n_input_candidates": 6
         },
         "fixture_id": "FIX_M0",
@@ -2362,18 +2289,17 @@
         "parsed_candidates": [
           {
             "assumptions": [
-              "shared_enrollment_evening_class"
+              "shared interest in technical certifications",
+              "consistent attendance at evening classes"
             ],
             "candidate_kind": "KNOWN_COUNTERPART",
             "candidate_local_id": "CANDIDATE_001",
             "candidate_origin": "LLM_PROPOSAL",
             "endpoint_constraints": {
-              "second_parent_structure_and_position_constraints": [
-                "INST_EVENING_CLASS_B"
-              ]
+              "inst_id": "INST_EVENING_CLASS_B"
             },
             "falsifiers": [
-              "absence_from_enrollment_records"
+              "absence from evening classes during key periods"
             ],
             "model_relative_plausibility_NOT_frequency": true,
             "plausibility_rank_ordinal": 1,
@@ -2381,76 +2307,69 @@
           },
           {
             "assumptions": [
-              "workplace_proximity"
+              "participation in community group events",
+              "interaction during workshop-like activities"
             ],
             "candidate_kind": "PROVISIONAL_COUNTERPART",
             "candidate_local_id": "CANDIDATE_002",
             "candidate_origin": "LLM_PROPOSAL",
             "endpoint_constraints": {
-              "second_parent_structure_and_position_constraints": [
-                "INST_WORKSHOP_A"
-              ]
+              "inst_id": "INST_COMMUNITY_D"
             },
             "falsifiers": [
-              "confirmed_different_shifts"
+              "non-participation in community events"
             ],
             "model_relative_plausibility_NOT_frequency": true,
             "plausibility_rank_ordinal": 2,
-            "route_kind_id": "ROUTE_LOCAL_CLOSED"
+            "route_kind_id": "ROUTE_INSTITUTIONAL"
           },
           {
             "assumptions": [
-              "routine_commuter_interaction"
+              "transit hub used only for mobility, not interaction"
             ],
             "candidate_kind": "NONOCCURRENCE",
             "candidate_local_id": "CANDIDATE_003",
             "candidate_origin": "LLM_PROPOSAL",
             "endpoint_constraints": {
-              "second_parent_structure_and_position_constraints": [
-                "INST_TRANSIT_E"
-              ]
+              "inst_id": "INST_TRANSIT_E"
             },
             "falsifiers": [
-              "non_overlapping_commute_times"
+              "evidence of social interaction during transit"
             ],
             "model_relative_plausibility_NOT_frequency": true,
             "plausibility_rank_ordinal": 3,
-            "route_kind_id": "ROUTE_MOBILITY"
+            "route_kind_id": "ROUTE_INSTITUTIONAL"
           },
           {
             "assumptions": [
-              "emergency_committee_contact"
+              "collaboration in workshop projects",
+              "shared discipline in workshop practices"
             ],
             "candidate_kind": "PROVISIONAL_COUNTERPART",
             "candidate_local_id": "CANDIDATE_004",
             "candidate_origin": "LLM_PROPOSAL",
             "endpoint_constraints": {
-              "second_parent_structure_and_position_constraints": [
-                "INST_COMMUNITY_D"
-              ]
+              "inst_id": "INST_WORKSHOP_A"
             },
             "falsifiers": [
-              "no_record_of_emergency_callout"
+              "lack of collaborative project involvement"
             ],
             "model_relative_plausibility_NOT_frequency": true,
             "plausibility_rank_ordinal": 4,
-            "route_kind_id": "ROUTE_UNCONVENTIONAL"
+            "route_kind_id": "ROUTE_INSTITUTIONAL"
           },
           {
             "assumptions": [
-              "dual_engagement_in_workshop_and_class"
+              "prior acquaintance through community events"
             ],
             "candidate_kind": "KNOWN_COUNTERPART",
             "candidate_local_id": "CANDIDATE_005",
             "candidate_origin": "LLM_PROPOSAL",
             "endpoint_constraints": {
-              "second_parent_structure_and_position_constraints": [
-                "INST_WORKSHOP_A",
-                "INST_EVENING_CLASS_B"
-              ]
+              "inst_id": "INST_COMMUNITY_D"
             },
             "falsifiers": [
-              "course_cancellation_records"
+              "no records of prior acquaintance"
             ],
             "model_relative_plausibility_NOT_frequency": true,
             "plausibility_rank_ordinal": 5,
@@ -2458,43 +2377,41 @@
           },
           {
             "assumptions": [
-              "unplanned_meeting_transit"
+              "workshop used for individual work only"
             ],
             "candidate_kind": "NONOCCURRENCE",
             "candidate_local_id": "CANDIDATE_006",
             "candidate_origin": "LLM_PROPOSAL",
             "endpoint_constraints": {
-              "second_parent_structure_and_position_constraints": [
-                "INST_TRANSIT_E"
-              ]
+              "inst_id": "INST_WORKSHOP_A"
             },
             "falsifiers": [
-              "no_shared_transit_timetable"
+              "records of joint workshop activities"
             ],
             "model_relative_plausibility_NOT_frequency": true,
             "plausibility_rank_ordinal": 6,
-            "route_kind_id": "ROUTE_UNCONVENTIONAL"
+            "route_kind_id": "ROUTE_INSTITUTIONAL"
           }
         ],
-        "prompt_hash": "sha256:9c438357610a28ef872c30c20e6ad184e6e69de8d93e8d0f79b568586c6c7f6a",
-        "prompt_text": "{\"hard_rules\": [\"candidate_kind in {KNOWN_COUNTERPART, PROVISIONAL_COUNTERPART, NONOCCURRENCE}\", \"plausibility_rank_ordinal is an ordinal rank only, never a frequency\", \"no future-child outcome may be referenced anywhere\"], \"instruction\": \"Propose finite conception-scenario encounter candidates for the pending target.\", \"max_proposals\": 6, \"mother_anchor_visible_fields\": {\"actor_id\": \"LAB_MOTHER_M0\", \"already_generated_child_refs\": [], \"known_counterpart_identity_ref_or_null\": null, \"mobility_history_present\": false, \"psyche\": {\"attitudes\": [{\"attitude\": \"self_reliance_under_deadline\", \"causal_event_refs\": [\"sha256:8adf0e9a6b0766412658b4ca3823acdea0b2d186de3b85407e6f833e1e0fb2d3\", \"sha256:a610a7868905cedbf89b6fb7c94d1cb7d2d97ee1a905b799adcf870e59610885\", \"sha256:a0832ec66870ad8c83dc97d18807e29371b0cf01553bbce9f70cefc678be5b1f\"]}], \"practices\": [{\"causal_event_refs\": [\"sha256:a0832ec66870ad8c83dc97d18807e29371b0cf01553bbce9f70cefc678be5b1f\", \"sha256:a610a7868905cedbf89b6fb7c94d1cb7d2d97ee1a905b799adcf870e59610885\"], \"practice\": \"measure_twice_cut_once_workshop_discipline\"}], \"strivings\": [{\"causal_event_refs\": [\"sha256:ce8a5de77bc75eb1284e3c675dd49a0a53dae714573273257ec0500ebd67ead4\", \"sha256:a610a7868905cedbf89b6fb7c94d1cb7d2d97ee1a905b799adcf870e59610885\", \"sha256:8adf0e9a6b0766412658b4ca3823acdea0b2d186de3b85407e6f833e1e0fb2d3\"], \"striving\": \"complete_evening_technical_certificate\"}]}, \"route_availability\": [\"ROUTE_INSTITUTIONAL\", \"ROUTE_LOCAL_CLOSED\", \"ROUTE_MOBILITY\", \"ROUTE_UNCONVENTIONAL\"], \"t_preconception\": \"T_PRECONCEPTION_LAB_BOUNDARY\", \"variant\": \"M0\"}, \"pending_target\": {\"candidate_generation_policy_ref\": \"LAB_FINITE_SCENARIO_PROPOSAL\", \"cursor_increments\": 0, \"focal_slot_ref\": \"FOCAL_CHILD_SLOT_0\", \"known_counterpart_ref_or_null\": null, \"mother_anchor_hash\": \"sha256:4c10ea65b3ac1fb22b943e34f19f3557c194e3f768687fc8543471885fea26af\", \"planned_boundary_time_or_interval\": \"T_PRECONCEPTION_LAB_BOUNDARY\", \"target_id\": \"sha256:3b854096ad5e79c0d4386bc298747b6e1ae0fb5c534448a4c387f03fa60004b1\", \"target_status\": \"TARGET_PENDING\"}, \"required_candidate_fields\": [\"candidate_local_id\", \"candidate_kind\", \"route_kind_id\", \"endpoint_constraints\", \"assumptions\", \"falsifiers\", \"plausibility_rank_ordinal\"], \"route_filter\": null, \"scenario_grammar_version\": \"SCENARIO_CANDIDATE_GRAMMAR@1.0-LAB\", \"world_summary\": {\"institutions\": [{\"inst_id\": \"INST_WORKSHOP_A\", \"kind\": \"WORKPLACE\"}, {\"inst_id\": \"INST_EVENING_CLASS_B\", \"kind\": \"EVENING_CLASS\"}, {\"inst_id\": \"INST_COMMUNITY_D\", \"kind\": \"COMMUNITY_GROUP\"}, {\"inst_id\": \"INST_TRANSIT_E\", \"kind\": \"TRANSIT_HUB\"}], \"premise_version\": \"SYNTH_WORLD@1.0.0\", \"routes\": [{\"premise_note\": \"workplace adjacency\", \"route_id\": \"ROUTE_LOCAL_CLOSED\", \"route_kind\": \"LOCAL_CLOSED\"}, {\"premise_note\": \"evening class\", \"route_id\": \"ROUTE_INSTITUTIONAL\", \"route_kind\": \"INSTITUTIONAL\"}, {\"premise_note\": \"regional interchange\", \"route_id\": \"ROUTE_MOBILITY\", \"route_kind\": \"MOBILITY\"}, {\"premise_note\": \"water committee emergency callout\", \"route_id\": \"ROUTE_UNCONVENTIONAL\", \"route_kind\": \"UNCONVENTIONAL\"}], \"world_id\": \"WORLD_SYNTHTIC_LAB_001\"}}",
-        "proposal_hash": "sha256:cb86005deda9310ae9dd254e19c9ca77a30cea6f25367f169a57ff62a706acb8",
+        "prompt_hash": "sha256:e2521966d1967120c59ae124a8991ff671ad1ed84434c69f10802d7093beb637",
+        "prompt_text": "{\"hard_rules\": [\"candidate_kind in {KNOWN_COUNTERPART, PROVISIONAL_COUNTERPART, NONOCCURRENCE}\", \"plausibility_rank_ordinal is an ordinal rank only, never a frequency\", \"no future-child outcome may be referenced anywhere\"], \"instruction\": \"Propose finite conception-scenario encounter candidates for the pending target.\", \"max_proposals\": 6, \"mother_anchor_visible_fields\": {\"actor_id\": \"LAB_MOTHER_M0\", \"already_generated_child_refs\": [], \"known_counterpart_identity_ref_or_null\": null, \"mobility_history_present\": false, \"psyche\": {\"attitudes\": [{\"attitude\": \"self_reliance_under_deadline\", \"causal_event_refs\": [\"sha256:8adf0e9a6b0766412658b4ca3823acdea0b2d186de3b85407e6f833e1e0fb2d3\", \"sha256:a610a7868905cedbf89b6fb7c94d1cb7d2d97ee1a905b799adcf870e59610885\", \"sha256:a0832ec66870ad8c83dc97d18807e29371b0cf01553bbce9f70cefc678be5b1f\"]}], \"practices\": [{\"causal_event_refs\": [\"sha256:a0832ec66870ad8c83dc97d18807e29371b0cf01553bbce9f70cefc678be5b1f\", \"sha256:a610a7868905cedbf89b6fb7c94d1cb7d2d97ee1a905b799adcf870e59610885\"], \"practice\": \"measure_twice_cut_once_workshop_discipline\"}], \"strivings\": [{\"causal_event_refs\": [\"sha256:ce8a5de77bc75eb1284e3c675dd49a0a53dae714573273257ec0500ebd67ead4\", \"sha256:a610a7868905cedbf89b6fb7c94d1cb7d2d97ee1a905b799adcf870e59610885\", \"sha256:8adf0e9a6b0766412658b4ca3823acdea0b2d186de3b85407e6f833e1e0fb2d3\"], \"striving\": \"complete_evening_technical_certificate\"}]}, \"route_availability\": [\"ROUTE_INSTITUTIONAL\", \"ROUTE_LOCAL_CLOSED\", \"ROUTE_MOBILITY\", \"ROUTE_UNCONVENTIONAL\"], \"t_preconception\": \"T_PRECONCEPTION_LAB_BOUNDARY\", \"variant\": \"M0\"}, \"pending_target\": {\"candidate_generation_policy_ref\": \"LAB_FINITE_SCENARIO_PROPOSAL\", \"cursor_increments\": 0, \"focal_slot_ref\": \"FOCAL_CHILD_SLOT_0\", \"known_counterpart_ref_or_null\": null, \"mother_anchor_hash\": \"sha256:4c10ea65b3ac1fb22b943e34f19f3557c194e3f768687fc8543471885fea26af\", \"planned_boundary_time_or_interval\": \"T_PRECONCEPTION_LAB_BOUNDARY\", \"target_id\": \"sha256:3b854096ad5e79c0d4386bc298747b6e1ae0fb5c534448a4c387f03fa60004b1\", \"target_status\": \"TARGET_PENDING\"}, \"required_candidate_fields\": [\"candidate_local_id\", \"candidate_kind\", \"route_kind_id\", \"endpoint_constraints\", \"assumptions\", \"falsifiers\", \"plausibility_rank_ordinal\"], \"route_filter\": \"ROUTE_INSTITUTIONAL\", \"scenario_grammar_version\": \"SCENARIO_CANDIDATE_GRAMMAR@1.0-LAB\", \"world_summary\": {\"institutions\": [{\"inst_id\": \"INST_WORKSHOP_A\", \"kind\": \"WORKPLACE\"}, {\"inst_id\": \"INST_EVENING_CLASS_B\", \"kind\": \"EVENING_CLASS\"}, {\"inst_id\": \"INST_COMMUNITY_D\", \"kind\": \"COMMUNITY_GROUP\"}, {\"inst_id\": \"INST_TRANSIT_E\", \"kind\": \"TRANSIT_HUB\"}], \"premise_version\": \"SYNTH_WORLD@1.0.0\", \"routes\": [{\"premise_note\": \"workplace adjacency\", \"route_id\": \"ROUTE_LOCAL_CLOSED\", \"route_kind\": \"LOCAL_CLOSED\"}, {\"premise_note\": \"evening class\", \"route_id\": \"ROUTE_INSTITUTIONAL\", \"route_kind\": \"INSTITUTIONAL\"}, {\"premise_note\": \"regional interchange\", \"route_id\": \"ROUTE_MOBILITY\", \"route_kind\": \"MOBILITY\"}, {\"premise_note\": \"water committee emergency callout\", \"route_id\": \"ROUTE_UNCONVENTIONAL\", \"route_kind\": \"UNCONVENTIONAL\"}], \"world_id\": \"WORLD_SYNTHTIC_LAB_001\"}}",
+        "proposal_hash": "sha256:738bbf796471e7a3eb882867a117270f260018efb432ac9740dc4c8af5586503",
         "provider": "openai",
-        "raw_output": "```json\n[\n    {\n        \"candidate_local_id\": \"CANDIDATE_001\",\n        \"candidate_kind\": \"KNOWN_COUNTERPART\",\n        \"route_kind_id\": \"ROUTE_INSTITUTIONAL\",\n        \"endpoint_constraints\": [\"INST_EVENING_CLASS_B\"],\n        \"assumptions\": [\"shared_enrollment_evening_class\"],\n        \"falsifiers\": [\"absence_from_enrollment_records\"],\n        \"plausibility_rank_ordinal\": 1\n    },\n    {\n        \"candidate_local_id\": \"CANDIDATE_002\",\n        \"candidate_kind\": \"PROVISIONAL_COUNTERPART\",\n        \"route_kind_id\": \"ROUTE_LOCAL_CLOSED\",\n        \"endpoint_constraints\": [\"INST_WORKSHOP_A\"],\n        \"assumptions\": [\"workplace_proximity\"],\n        \"falsifiers\": [\"confirmed_different_shifts\"],\n        \"plausibility_rank_ordinal\": 2\n    },\n    {\n        \"candidate_local_id\": \"CANDIDATE_003\",\n        \"candidate_kind\": \"NONOCCURRENCE\",\n        \"route_kind_id\": \"ROUTE_MOBILITY\",\n        \"endpoint_constraints\": [\"INST_TRANSIT_E\"],\n        \"assumptions\": [\"routine_commuter_interaction\"],\n        \"falsifiers\": [\"non_overlapping_commute_times\"],\n        \"plausibility_rank_ordinal\": 3\n    },\n    {\n        \"candidate_local_id\": \"CANDIDATE_004\",\n        \"candidate_kind\": \"PROVISIONAL_COUNTERPART\",\n        \"route_kind_id\": \"ROUTE_UNCONVENTIONAL\",\n        \"endpoint_constraints\": [\"INST_COMMUNITY_D\"],\n        \"assumptions\": [\"emergency_committee_contact\"],\n        \"falsifiers\": [\"no_record_of_emergency_callout\"],\n        \"plausibility_rank_ordinal\": 4\n    },\n    {\n        \"candidate_local_id\": \"CANDIDATE_005\",\n        \"candidate_kind\": \"KNOWN_COUNTERPART\",\n        \"route_kind_id\": \"ROUTE_INSTITUTIONAL\",\n        \"endpoint_constraints\": [\"INST_WORKSHOP_A\", \"INST_EVENING_CLASS_B\"],\n        \"assumptions\": [\"dual_engagement_in_workshop_and_class\"],\n        \"falsifiers\": [\"course_cancellation_records\"],\n        \"plausibility_rank_ordinal\": 5\n    },\n    {\n        \"candidate_local_id\": \"CANDIDATE_006\",\n        \"candidate_kind\": \"NONOCCURRENCE\",\n        \"route_kind_id\": \"ROUTE_UNCONVENTIONAL\",\n        \"endpoint_constraints\": [\"INST_TRANSIT_E\"],\n        \"assumptions\": [\"unplanned_meeting_transit\"],\n        \"falsifiers\": [\"no_shared_transit_timetable\"],\n        \"plausibility_rank_ordinal\": 6\n    }\n]\n```",
-        "raw_output_hash": "sha256:4c7ba833ec9958a9e44dc1d46f1d8ff3b978ef90ee25f2f09a8fa986ea5a7665",
-        "record_id": "sha256:9c1e69d4b52147293f7ff91f398be50c7b37ef03e3d2497510a5cd56fc3d4de0",
-        "route_filter": null,
+        "raw_output": "```json\n[\n    {\n        \"candidate_local_id\": \"CANDIDATE_001\",\n        \"candidate_kind\": \"KNOWN_COUNTERPART\",\n        \"route_kind_id\": \"ROUTE_INSTITUTIONAL\",\n        \"endpoint_constraints\": {\n            \"inst_id\": \"INST_EVENING_CLASS_B\"\n        },\n        \"assumptions\": [\n            \"shared interest in technical certifications\",\n            \"consistent attendance at evening classes\"\n        ],\n        \"falsifiers\": [\n            \"absence from evening classes during key periods\"\n        ],\n        \"plausibility_rank_ordinal\": 1\n    },\n    {\n        \"candidate_local_id\": \"CANDIDATE_002\",\n        \"candidate_kind\": \"PROVISIONAL_COUNTERPART\",\n        \"route_kind_id\": \"ROUTE_INSTITUTIONAL\",\n        \"endpoint_constraints\": {\n            \"inst_id\": \"INST_COMMUNITY_D\"\n        },\n        \"assumptions\": [\n            \"participation in community group events\",\n            \"interaction during workshop-like activities\"\n        ],\n        \"falsifiers\": [\n            \"non-participation in community events\"\n        ],\n        \"plausibility_rank_ordinal\": 2\n    },\n    {\n        \"candidate_local_id\": \"CANDIDATE_003\",\n        \"candidate_kind\": \"NONOCCURRENCE\",\n        \"route_kind_id\": \"ROUTE_INSTITUTIONAL\",\n        \"endpoint_constraints\": {\n            \"inst_id\": \"INST_TRANSIT_E\"\n        },\n        \"assumptions\": [\n            \"transit hub used only for mobility, not interaction\"\n        ],\n        \"falsifiers\": [\n            \"evidence of social interaction during transit\"\n        ],\n        \"plausibility_rank_ordinal\": 3\n    },\n    {\n        \"candidate_local_id\": \"CANDIDATE_004\",\n        \"candidate_kind\": \"PROVISIONAL_COUNTERPART\",\n        \"route_kind_id\": \"ROUTE_INSTITUTIONAL\",\n        \"endpoint_constraints\": {\n            \"inst_id\": \"INST_WORKSHOP_A\"\n        },\n        \"assumptions\": [\n            \"collaboration in workshop projects\",\n            \"shared discipline in workshop practices\"\n        ],\n        \"falsifiers\": [\n            \"lack of collaborative project involvement\"\n        ],\n        \"plausibility_rank_ordinal\": 4\n    },\n    {\n        \"candidate_local_id\": \"CANDIDATE_005\",\n        \"candidate_kind\": \"KNOWN_COUNTERPART\",\n        \"route_kind_id\": \"ROUTE_INSTITUTIONAL\",\n        \"endpoint_constraints\": {\n            \"inst_id\": \"INST_COMMUNITY_D\"\n        },\n        \"assumptions\": [\n            \"prior acquaintance through community events\"\n        ],\n        \"falsifiers\": [\n            \"no records of prior acquaintance\"\n        ],\n        \"plausibility_rank_ordinal\": 5\n    },\n    {\n        \"candidate_local_id\": \"CANDIDATE_006\",\n        \"candidate_kind\": \"NONOCCURRENCE\",\n        \"route_kind_id\": \"ROUTE_INSTITUTIONAL\",\n        \"endpoint_constraints\": {\n            \"inst_id\": \"INST_WORKSHOP_A\"\n        },\n        \"assumptions\": [\n            \"workshop used for individual work only\"\n        ],\n        \"falsifiers\": [\n            \"records of joint workshop activities\"\n        ],\n        \"plausibility_rank_ordinal\": 6\n    }\n]\n```",
+        "raw_output_hash": "sha256:88d54fd810457b9eae4bc93be655710f78bc080e7b2b068d4cb471315ec4532b",
+        "record_id": "sha256:474f5d3128dc00b7d9dd86f1db2715112b2bd7eb1481869a05d9d4943e16668b",
+        "route_filter": "ROUTE_INSTITUTIONAL",
         "system_hash": "sha256:379ef382e34f9b9a47c4fb0f69e76f9b31f1dcf2a91a3873ff338fa64f2943ec",
         "system_text": "You are a scenario proposal component inside a SOURCE-FREE SYNTHETIC GENEALOGY LAB. You may propose FINITE encounter/scenario candidates ONLY. You may NOT set empirical probabilities, may NOT write causal actor state, may NOT mint an admitted father, may NOT write memories as fact, may NOT use or reference any future-child outcome. Proposals must be machine-readable JSON only.",
         "usage": {
-          "completion_tokens": 577,
-          "prompt_tokens": 1167,
-          "total_tokens": 1744
+          "completion_tokens": 698,
+          "prompt_tokens": 1173,
+          "total_tokens": 1871
         },
-        "wall_seconds": 5.6073
+        "wall_seconds": 6.2384
       },
-      "record_key": "M0_GENERAL",
-      "route_filter": null
+      "record_key": "M0_INST",
+      "route_filter": "ROUTE_INSTITUTIONAL"
     },
     {
       "fixture": "FIX_MP",
@@ -3238,6 +3155,361 @@
       "fixture": "FIX_M0",
       "record": {
         "candidate_ids": [
+          "CANDIDATE_001",
+          "CANDIDATE_002",
+          "CANDIDATE_003",
+          "CANDIDATE_004",
+          "CANDIDATE_005",
+          "CANDIDATE_006"
+        ],
+        "dedup": {
+          "canonical_order": [
+            "sha256:41af0c02f7ef9909449b904ffa29891eee7f2f879f207e16ee7d38924c53983c",
+            "sha256:533cd1bd129f2d5694e6076f4aca8e1b0d5ca25828500727fa213ca3bac0556e",
+            "sha256:6e79cf1682eca0fbe57a6d53de1e33c642825359015e4b17a5f1b7f719dadf7d",
+            "sha256:d4bfb4d87a639ab3d5fb14b51ed8915ec8188a5abb9e858b961c51be89917665",
+            "sha256:e5b942d8832fb4e347132109892f7b58035d5acce012336b7e405902b114f18f",
+            "sha256:eed137e6d3471256f2d428f91494e854a30cc7006a62419bce92e80e290f7ff1"
+          ],
+          "class_member_index": {
+            "sha256:41af0c02f7ef9909449b904ffa29891eee7f2f879f207e16ee7d38924c53983c": [
+              "CANDIDATE_005"
+            ],
+            "sha256:533cd1bd129f2d5694e6076f4aca8e1b0d5ca25828500727fa213ca3bac0556e": [
+              "CANDIDATE_003"
+            ],
+            "sha256:6e79cf1682eca0fbe57a6d53de1e33c642825359015e4b17a5f1b7f719dadf7d": [
+              "CANDIDATE_004"
+            ],
+            "sha256:d4bfb4d87a639ab3d5fb14b51ed8915ec8188a5abb9e858b961c51be89917665": [
+              "CANDIDATE_001"
+            ],
+            "sha256:e5b942d8832fb4e347132109892f7b58035d5acce012336b7e405902b114f18f": [
+              "CANDIDATE_002"
+            ],
+            "sha256:eed137e6d3471256f2d428f91494e854a30cc7006a62419bce92e80e290f7ff1": [
+              "CANDIDATE_006"
+            ]
+          },
+          "class_set_hash": "sha256:9e2a09ccd43544b775d233652ba89387f1aa1a4d11b5d58a823671ec32d42ecf",
+          "classes": [
+            {
+              "candidate": {
+                "assumptions": [
+                  "dual_engagement_in_workshop_and_class"
+                ],
+                "candidate_kind": "KNOWN_COUNTERPART",
+                "candidate_local_id": "CANDIDATE_005",
+                "candidate_origin": "LLM_PROPOSAL",
+                "endpoint_constraints": {
+                  "second_parent_structure_and_position_constraints": [
+                    "INST_WORKSHOP_A",
+                    "INST_EVENING_CLASS_B"
+                  ]
+                },
+                "falsifiers": [
+                  "course_cancellation_records"
+                ],
+                "model_relative_plausibility_NOT_frequency": true,
+                "plausibility_rank_ordinal": 5,
+                "route_kind_id": "ROUTE_INSTITUTIONAL"
+              },
+              "class_key": "sha256:41af0c02f7ef9909449b904ffa29891eee7f2f879f207e16ee7d38924c53983c",
+              "member_count": 1,
+              "member_ids": [
+                "CANDIDATE_005"
+              ],
+              "representative_id": "CLS_41af0c02f7ef9909449b904f"
+            },
+            {
+              "candidate": {
+                "assumptions": [
+                  "routine_commuter_interaction"
+                ],
+                "candidate_kind": "NONOCCURRENCE",
+                "candidate_local_id": "CANDIDATE_003",
+                "candidate_origin": "LLM_PROPOSAL",
+                "endpoint_constraints": {
+                  "second_parent_structure_and_position_constraints": [
+                    "INST_TRANSIT_E"
+                  ]
+                },
+                "falsifiers": [
+                  "non_overlapping_commute_times"
+                ],
+                "model_relative_plausibility_NOT_frequency": true,
+                "plausibility_rank_ordinal": 3,
+                "route_kind_id": "ROUTE_MOBILITY"
+              },
+              "class_key": "sha256:533cd1bd129f2d5694e6076f4aca8e1b0d5ca25828500727fa213ca3bac0556e",
+              "member_count": 1,
+              "member_ids": [
+                "CANDIDATE_003"
+              ],
+              "representative_id": "CLS_533cd1bd129f2d5694e6076f"
+            },
+            {
+              "candidate": {
+                "assumptions": [
+                  "emergency_committee_contact"
+                ],
+                "candidate_kind": "PROVISIONAL_COUNTERPART",
+                "candidate_local_id": "CANDIDATE_004",
+                "candidate_origin": "LLM_PROPOSAL",
+                "endpoint_constraints": {
+                  "second_parent_structure_and_position_constraints": [
+                    "INST_COMMUNITY_D"
+                  ]
+                },
+                "falsifiers": [
+                  "no_record_of_emergency_callout"
+                ],
+                "model_relative_plausibility_NOT_frequency": true,
+                "plausibility_rank_ordinal": 4,
+                "route_kind_id": "ROUTE_UNCONVENTIONAL"
+              },
+              "class_key": "sha256:6e79cf1682eca0fbe57a6d53de1e33c642825359015e4b17a5f1b7f719dadf7d",
+              "member_count": 1,
+              "member_ids": [
+                "CANDIDATE_004"
+              ],
+              "representative_id": "CLS_6e79cf1682eca0fbe57a6d53"
+            },
+            {
+              "candidate": {
+                "assumptions": [
+                  "shared_enrollment_evening_class"
+                ],
+                "candidate_kind": "KNOWN_COUNTERPART",
+                "candidate_local_id": "CANDIDATE_001",
+                "candidate_origin": "LLM_PROPOSAL",
+                "endpoint_constraints": {
+                  "second_parent_structure_and_position_constraints": [
+                    "INST_EVENING_CLASS_B"
+                  ]
+                },
+                "falsifiers": [
+                  "absence_from_enrollment_records"
+                ],
+                "model_relative_plausibility_NOT_frequency": true,
+                "plausibility_rank_ordinal": 1,
+                "route_kind_id": "ROUTE_INSTITUTIONAL"
+              },
+              "class_key": "sha256:d4bfb4d87a639ab3d5fb14b51ed8915ec8188a5abb9e858b961c51be89917665",
+              "member_count": 1,
+              "member_ids": [
+                "CANDIDATE_001"
+              ],
+              "representative_id": "CLS_d4bfb4d87a639ab3d5fb14b5"
+            },
+            {
+              "candidate": {
+                "assumptions": [
+                  "workplace_proximity"
+                ],
+                "candidate_kind": "PROVISIONAL_COUNTERPART",
+                "candidate_local_id": "CANDIDATE_002",
+                "candidate_origin": "LLM_PROPOSAL",
+                "endpoint_constraints": {
+                  "second_parent_structure_and_position_constraints": [
+                    "INST_WORKSHOP_A"
+                  ]
+                },
+                "falsifiers": [
+                  "confirmed_different_shifts"
+                ],
+                "model_relative_plausibility_NOT_frequency": true,
+                "plausibility_rank_ordinal": 2,
+                "route_kind_id": "ROUTE_LOCAL_CLOSED"
+              },
+              "class_key": "sha256:e5b942d8832fb4e347132109892f7b58035d5acce012336b7e405902b114f18f",
+              "member_count": 1,
+              "member_ids": [
+                "CANDIDATE_002"
+              ],
+              "representative_id": "CLS_e5b942d8832fb4e347132109"
+            },
+            {
+              "candidate": {
+                "assumptions": [
+                  "unplanned_meeting_transit"
+                ],
+                "candidate_kind": "NONOCCURRENCE",
+                "candidate_local_id": "CANDIDATE_006",
+                "candidate_origin": "LLM_PROPOSAL",
+                "endpoint_constraints": {
+                  "second_parent_structure_and_position_constraints": [
+                    "INST_TRANSIT_E"
+                  ]
+                },
+                "falsifiers": [
+                  "no_shared_transit_timetable"
+                ],
+                "model_relative_plausibility_NOT_frequency": true,
+                "plausibility_rank_ordinal": 6,
+                "route_kind_id": "ROUTE_UNCONVENTIONAL"
+              },
+              "class_key": "sha256:eed137e6d3471256f2d428f91494e854a30cc7006a62419bce92e80e290f7ff1",
+              "member_count": 1,
+              "member_ids": [
+                "CANDIDATE_006"
+              ],
+              "representative_id": "CLS_eed137e6d3471256f2d428f9"
+            }
+          ],
+          "coverage_receipt": {
+            "OTHER_UNRESOLVED": true,
+            "note": "unenumerated scenarios may exist; completeness NOT claimed"
+          },
+          "merge_receipts": [],
+          "n_classes": 6,
+          "n_input_candidates": 6
+        },
+        "fixture_id": "FIX_M0",
+        "lmm_automated_status": "AUTOMATED_LLM_PROPOSAL_EXECUTED",
+        "model_requested": "gpt-4o",
+        "model_returned": "gpt-4o-2024-08-06",
+        "parsed_candidates": [
+          {
+            "assumptions": [
+              "shared_enrollment_evening_class"
+            ],
+            "candidate_kind": "KNOWN_COUNTERPART",
+            "candidate_local_id": "CANDIDATE_001",
+            "candidate_origin": "LLM_PROPOSAL",
+            "endpoint_constraints": {
+              "second_parent_structure_and_position_constraints": [
+                "INST_EVENING_CLASS_B"
+              ]
+            },
+            "falsifiers": [
+              "absence_from_enrollment_records"
+            ],
+            "model_relative_plausibility_NOT_frequency": true,
+            "plausibility_rank_ordinal": 1,
+            "route_kind_id": "ROUTE_INSTITUTIONAL"
+          },
+          {
+            "assumptions": [
+              "workplace_proximity"
+            ],
+            "candidate_kind": "PROVISIONAL_COUNTERPART",
+            "candidate_local_id": "CANDIDATE_002",
+            "candidate_origin": "LLM_PROPOSAL",
+            "endpoint_constraints": {
+              "second_parent_structure_and_position_constraints": [
+                "INST_WORKSHOP_A"
+              ]
+            },
+            "falsifiers": [
+              "confirmed_different_shifts"
+            ],
+            "model_relative_plausibility_NOT_frequency": true,
+            "plausibility_rank_ordinal": 2,
+            "route_kind_id": "ROUTE_LOCAL_CLOSED"
+          },
+          {
+            "assumptions": [
+              "routine_commuter_interaction"
+            ],
+            "candidate_kind": "NONOCCURRENCE",
+            "candidate_local_id": "CANDIDATE_003",
+            "candidate_origin": "LLM_PROPOSAL",
+            "endpoint_constraints": {
+              "second_parent_structure_and_position_constraints": [
+                "INST_TRANSIT_E"
+              ]
+            },
+            "falsifiers": [
+              "non_overlapping_commute_times"
+            ],
+            "model_relative_plausibility_NOT_frequency": true,
+            "plausibility_rank_ordinal": 3,
+            "route_kind_id": "ROUTE_MOBILITY"
+          },
+          {
+            "assumptions": [
+              "emergency_committee_contact"
+            ],
+            "candidate_kind": "PROVISIONAL_COUNTERPART",
+            "candidate_local_id": "CANDIDATE_004",
+            "candidate_origin": "LLM_PROPOSAL",
+            "endpoint_constraints": {
+              "second_parent_structure_and_position_constraints": [
+                "INST_COMMUNITY_D"
+              ]
+            },
+            "falsifiers": [
+              "no_record_of_emergency_callout"
+            ],
+            "model_relative_plausibility_NOT_frequency": true,
+            "plausibility_rank_ordinal": 4,
+            "route_kind_id": "ROUTE_UNCONVENTIONAL"
+          },
+          {
+            "assumptions": [
+              "dual_engagement_in_workshop_and_class"
+            ],
+            "candidate_kind": "KNOWN_COUNTERPART",
+            "candidate_local_id": "CANDIDATE_005",
+            "candidate_origin": "LLM_PROPOSAL",
+            "endpoint_constraints": {
+              "second_parent_structure_and_position_constraints": [
+                "INST_WORKSHOP_A",
+                "INST_EVENING_CLASS_B"
+              ]
+            },
+            "falsifiers": [
+              "course_cancellation_records"
+            ],
+            "model_relative_plausibility_NOT_frequency": true,
+            "plausibility_rank_ordinal": 5,
+            "route_kind_id": "ROUTE_INSTITUTIONAL"
+          },
+          {
+            "assumptions": [
+              "unplanned_meeting_transit"
+            ],
+            "candidate_kind": "NONOCCURRENCE",
+            "candidate_local_id": "CANDIDATE_006",
+            "candidate_origin": "LLM_PROPOSAL",
+            "endpoint_constraints": {
+              "second_parent_structure_and_position_constraints": [
+                "INST_TRANSIT_E"
+              ]
+            },
+            "falsifiers": [
+              "no_shared_transit_timetable"
+            ],
+            "model_relative_plausibility_NOT_frequency": true,
+            "plausibility_rank_ordinal": 6,
+            "route_kind_id": "ROUTE_UNCONVENTIONAL"
+          }
+        ],
+        "prompt_hash": "sha256:9c438357610a28ef872c30c20e6ad184e6e69de8d93e8d0f79b568586c6c7f6a",
+        "prompt_text": "{\"hard_rules\": [\"candidate_kind in {KNOWN_COUNTERPART, PROVISIONAL_COUNTERPART, NONOCCURRENCE}\", \"plausibility_rank_ordinal is an ordinal rank only, never a frequency\", \"no future-child outcome may be referenced anywhere\"], \"instruction\": \"Propose finite conception-scenario encounter candidates for the pending target.\", \"max_proposals\": 6, \"mother_anchor_visible_fields\": {\"actor_id\": \"LAB_MOTHER_M0\", \"already_generated_child_refs\": [], \"known_counterpart_identity_ref_or_null\": null, \"mobility_history_present\": false, \"psyche\": {\"attitudes\": [{\"attitude\": \"self_reliance_under_deadline\", \"causal_event_refs\": [\"sha256:8adf0e9a6b0766412658b4ca3823acdea0b2d186de3b85407e6f833e1e0fb2d3\", \"sha256:a610a7868905cedbf89b6fb7c94d1cb7d2d97ee1a905b799adcf870e59610885\", \"sha256:a0832ec66870ad8c83dc97d18807e29371b0cf01553bbce9f70cefc678be5b1f\"]}], \"practices\": [{\"causal_event_refs\": [\"sha256:a0832ec66870ad8c83dc97d18807e29371b0cf01553bbce9f70cefc678be5b1f\", \"sha256:a610a7868905cedbf89b6fb7c94d1cb7d2d97ee1a905b799adcf870e59610885\"], \"practice\": \"measure_twice_cut_once_workshop_discipline\"}], \"strivings\": [{\"causal_event_refs\": [\"sha256:ce8a5de77bc75eb1284e3c675dd49a0a53dae714573273257ec0500ebd67ead4\", \"sha256:a610a7868905cedbf89b6fb7c94d1cb7d2d97ee1a905b799adcf870e59610885\", \"sha256:8adf0e9a6b0766412658b4ca3823acdea0b2d186de3b85407e6f833e1e0fb2d3\"], \"striving\": \"complete_evening_technical_certificate\"}]}, \"route_availability\": [\"ROUTE_INSTITUTIONAL\", \"ROUTE_LOCAL_CLOSED\", \"ROUTE_MOBILITY\", \"ROUTE_UNCONVENTIONAL\"], \"t_preconception\": \"T_PRECONCEPTION_LAB_BOUNDARY\", \"variant\": \"M0\"}, \"pending_target\": {\"candidate_generation_policy_ref\": \"LAB_FINITE_SCENARIO_PROPOSAL\", \"cursor_increments\": 0, \"focal_slot_ref\": \"FOCAL_CHILD_SLOT_0\", \"known_counterpart_ref_or_null\": null, \"mother_anchor_hash\": \"sha256:4c10ea65b3ac1fb22b943e34f19f3557c194e3f768687fc8543471885fea26af\", \"planned_boundary_time_or_interval\": \"T_PRECONCEPTION_LAB_BOUNDARY\", \"target_id\": \"sha256:3b854096ad5e79c0d4386bc298747b6e1ae0fb5c534448a4c387f03fa60004b1\", \"target_status\": \"TARGET_PENDING\"}, \"required_candidate_fields\": [\"candidate_local_id\", \"candidate_kind\", \"route_kind_id\", \"endpoint_constraints\", \"assumptions\", \"falsifiers\", \"plausibility_rank_ordinal\"], \"route_filter\": null, \"scenario_grammar_version\": \"SCENARIO_CANDIDATE_GRAMMAR@1.0-LAB\", \"world_summary\": {\"institutions\": [{\"inst_id\": \"INST_WORKSHOP_A\", \"kind\": \"WORKPLACE\"}, {\"inst_id\": \"INST_EVENING_CLASS_B\", \"kind\": \"EVENING_CLASS\"}, {\"inst_id\": \"INST_COMMUNITY_D\", \"kind\": \"COMMUNITY_GROUP\"}, {\"inst_id\": \"INST_TRANSIT_E\", \"kind\": \"TRANSIT_HUB\"}], \"premise_version\": \"SYNTH_WORLD@1.0.0\", \"routes\": [{\"premise_note\": \"workplace adjacency\", \"route_id\": \"ROUTE_LOCAL_CLOSED\", \"route_kind\": \"LOCAL_CLOSED\"}, {\"premise_note\": \"evening class\", \"route_id\": \"ROUTE_INSTITUTIONAL\", \"route_kind\": \"INSTITUTIONAL\"}, {\"premise_note\": \"regional interchange\", \"route_id\": \"ROUTE_MOBILITY\", \"route_kind\": \"MOBILITY\"}, {\"premise_note\": \"water committee emergency callout\", \"route_id\": \"ROUTE_UNCONVENTIONAL\", \"route_kind\": \"UNCONVENTIONAL\"}], \"world_id\": \"WORLD_SYNTHTIC_LAB_001\"}}",
+        "proposal_hash": "sha256:cb86005deda9310ae9dd254e19c9ca77a30cea6f25367f169a57ff62a706acb8",
+        "provider": "openai",
+        "raw_output": "```json\n[\n    {\n        \"candidate_local_id\": \"CANDIDATE_001\",\n        \"candidate_kind\": \"KNOWN_COUNTERPART\",\n        \"route_kind_id\": \"ROUTE_INSTITUTIONAL\",\n        \"endpoint_constraints\": [\"INST_EVENING_CLASS_B\"],\n        \"assumptions\": [\"shared_enrollment_evening_class\"],\n        \"falsifiers\": [\"absence_from_enrollment_records\"],\n        \"plausibility_rank_ordinal\": 1\n    },\n    {\n        \"candidate_local_id\": \"CANDIDATE_002\",\n        \"candidate_kind\": \"PROVISIONAL_COUNTERPART\",\n        \"route_kind_id\": \"ROUTE_LOCAL_CLOSED\",\n        \"endpoint_constraints\": [\"INST_WORKSHOP_A\"],\n        \"assumptions\": [\"workplace_proximity\"],\n        \"falsifiers\": [\"confirmed_different_shifts\"],\n        \"plausibility_rank_ordinal\": 2\n    },\n    {\n        \"candidate_local_id\": \"CANDIDATE_003\",\n        \"candidate_kind\": \"NONOCCURRENCE\",\n        \"route_kind_id\": \"ROUTE_MOBILITY\",\n        \"endpoint_constraints\": [\"INST_TRANSIT_E\"],\n        \"assumptions\": [\"routine_commuter_interaction\"],\n        \"falsifiers\": [\"non_overlapping_commute_times\"],\n        \"plausibility_rank_ordinal\": 3\n    },\n    {\n        \"candidate_local_id\": \"CANDIDATE_004\",\n        \"candidate_kind\": \"PROVISIONAL_COUNTERPART\",\n        \"route_kind_id\": \"ROUTE_UNCONVENTIONAL\",\n        \"endpoint_constraints\": [\"INST_COMMUNITY_D\"],\n        \"assumptions\": [\"emergency_committee_contact\"],\n        \"falsifiers\": [\"no_record_of_emergency_callout\"],\n        \"plausibility_rank_ordinal\": 4\n    },\n    {\n        \"candidate_local_id\": \"CANDIDATE_005\",\n        \"candidate_kind\": \"KNOWN_COUNTERPART\",\n        \"route_kind_id\": \"ROUTE_INSTITUTIONAL\",\n        \"endpoint_constraints\": [\"INST_WORKSHOP_A\", \"INST_EVENING_CLASS_B\"],\n        \"assumptions\": [\"dual_engagement_in_workshop_and_class\"],\n        \"falsifiers\": [\"course_cancellation_records\"],\n        \"plausibility_rank_ordinal\": 5\n    },\n    {\n        \"candidate_local_id\": \"CANDIDATE_006\",\n        \"candidate_kind\": \"NONOCCURRENCE\",\n        \"route_kind_id\": \"ROUTE_UNCONVENTIONAL\",\n        \"endpoint_constraints\": [\"INST_TRANSIT_E\"],\n        \"assumptions\": [\"unplanned_meeting_transit\"],\n        \"falsifiers\": [\"no_shared_transit_timetable\"],\n        \"plausibility_rank_ordinal\": 6\n    }\n]\n```",
+        "raw_output_hash": "sha256:4c7ba833ec9958a9e44dc1d46f1d8ff3b978ef90ee25f2f09a8fa986ea5a7665",
+        "record_id": "sha256:9c1e69d4b52147293f7ff91f398be50c7b37ef03e3d2497510a5cd56fc3d4de0",
+        "route_filter": null,
+        "system_hash": "sha256:379ef382e34f9b9a47c4fb0f69e76f9b31f1dcf2a91a3873ff338fa64f2943ec",
+        "system_text": "You are a scenario proposal component inside a SOURCE-FREE SYNTHETIC GENEALOGY LAB. You may propose FINITE encounter/scenario candidates ONLY. You may NOT set empirical probabilities, may NOT write causal actor state, may NOT mint an admitted father, may NOT write memories as fact, may NOT use or reference any future-child outcome. Proposals must be machine-readable JSON only.",
+        "usage": {
+          "completion_tokens": 577,
+          "prompt_tokens": 1167,
+          "total_tokens": 1744
+        },
+        "wall_seconds": 5.6073
+      },
+      "record_key": "M0_GENERAL",
+      "route_filter": null
+    },
+    {
+      "fixture": "FIX_M0",
+      "record": {
+        "candidate_ids": [
           "CANDIDATE_1",
           "CANDIDATE_2",
           "CANDIDATE_3",
@@ -3917,278 +4189,6 @@
       },
       "record_key": "M0_MOBILITY",
       "route_filter": "ROUTE_MOBILITY"
-    },
-    {
-      "fixture": "FIX_M0",
-      "record": {
-        "candidate_ids": [
-          "CANDIDATE_001",
-          "CANDIDATE_002",
-          "CANDIDATE_003",
-          "CANDIDATE_004",
-          "CANDIDATE_005",
-          "CANDIDATE_006"
-        ],
-        "dedup": {
-          "canonical_order": [
-            "sha256:3c26a14ae4eaafaf61b1027fe5ac9f26828fa61c4ea8f714a10dcb4fd02f8187",
-            "sha256:d3bfc9e67a1b134e842088e95c0282556819655e29358ab6cffae113f756a7f0",
-            "sha256:f5c9110d6e56741f29f7889fb2287e8c26a9c256d7c32da1719ed68f330fae3b"
-          ],
-          "class_member_index": {
-            "sha256:3c26a14ae4eaafaf61b1027fe5ac9f26828fa61c4ea8f714a10dcb4fd02f8187": [
-              "CANDIDATE_001",
-              "CANDIDATE_005"
-            ],
-            "sha256:d3bfc9e67a1b134e842088e95c0282556819655e29358ab6cffae113f756a7f0": [
-              "CANDIDATE_002",
-              "CANDIDATE_004"
-            ],
-            "sha256:f5c9110d6e56741f29f7889fb2287e8c26a9c256d7c32da1719ed68f330fae3b": [
-              "CANDIDATE_003",
-              "CANDIDATE_006"
-            ]
-          },
-          "class_set_hash": "sha256:bcabc44784359b108f429a7a5133c4e8a45d7e7287529e30d62814c863f23823",
-          "classes": [
-            {
-              "candidate": {
-                "assumptions": [
-                  "shared interest in technical certifications",
-                  "consistent attendance at evening classes"
-                ],
-                "candidate_kind": "KNOWN_COUNTERPART",
-                "candidate_local_id": "CANDIDATE_001",
-                "candidate_origin": "LLM_PROPOSAL",
-                "endpoint_constraints": {
-                  "inst_id": "INST_EVENING_CLASS_B"
-                },
-                "falsifiers": [
-                  "absence from evening classes during key periods"
-                ],
-                "model_relative_plausibility_NOT_frequency": true,
-                "plausibility_rank_ordinal": 1,
-                "route_kind_id": "ROUTE_INSTITUTIONAL"
-              },
-              "class_key": "sha256:3c26a14ae4eaafaf61b1027fe5ac9f26828fa61c4ea8f714a10dcb4fd02f8187",
-              "member_count": 2,
-              "member_ids": [
-                "CANDIDATE_001",
-                "CANDIDATE_005"
-              ],
-              "representative_id": "CLS_3c26a14ae4eaafaf61b1027f"
-            },
-            {
-              "candidate": {
-                "assumptions": [
-                  "participation in community group events",
-                  "interaction during workshop-like activities"
-                ],
-                "candidate_kind": "PROVISIONAL_COUNTERPART",
-                "candidate_local_id": "CANDIDATE_002",
-                "candidate_origin": "LLM_PROPOSAL",
-                "endpoint_constraints": {
-                  "inst_id": "INST_COMMUNITY_D"
-                },
-                "falsifiers": [
-                  "non-participation in community events"
-                ],
-                "model_relative_plausibility_NOT_frequency": true,
-                "plausibility_rank_ordinal": 2,
-                "route_kind_id": "ROUTE_INSTITUTIONAL"
-              },
-              "class_key": "sha256:d3bfc9e67a1b134e842088e95c0282556819655e29358ab6cffae113f756a7f0",
-              "member_count": 2,
-              "member_ids": [
-                "CANDIDATE_002",
-                "CANDIDATE_004"
-              ],
-              "representative_id": "CLS_d3bfc9e67a1b134e842088e9"
-            },
-            {
-              "candidate": {
-                "assumptions": [
-                  "transit hub used only for mobility, not interaction"
-                ],
-                "candidate_kind": "NONOCCURRENCE",
-                "candidate_local_id": "CANDIDATE_003",
-                "candidate_origin": "LLM_PROPOSAL",
-                "endpoint_constraints": {
-                  "inst_id": "INST_TRANSIT_E"
-                },
-                "falsifiers": [
-                  "evidence of social interaction during transit"
-                ],
-                "model_relative_plausibility_NOT_frequency": true,
-                "plausibility_rank_ordinal": 3,
-                "route_kind_id": "ROUTE_INSTITUTIONAL"
-              },
-              "class_key": "sha256:f5c9110d6e56741f29f7889fb2287e8c26a9c256d7c32da1719ed68f330fae3b",
-              "member_count": 2,
-              "member_ids": [
-                "CANDIDATE_003",
-                "CANDIDATE_006"
-              ],
-              "representative_id": "CLS_f5c9110d6e56741f29f7889f"
-            }
-          ],
-          "coverage_receipt": {
-            "OTHER_UNRESOLVED": true,
-            "note": "unenumerated scenarios may exist; completeness NOT claimed"
-          },
-          "merge_receipts": [
-            {
-              "action": "MERGE_INTO_CLASS",
-              "class_key": "sha256:d3bfc9e67a1b134e842088e95c0282556819655e29358ab6cffae113f756a7f0",
-              "member": "CANDIDATE_004",
-              "representative": "CLS_d3bfc9e67a1b134e842088e9"
-            },
-            {
-              "action": "MERGE_INTO_CLASS",
-              "class_key": "sha256:3c26a14ae4eaafaf61b1027fe5ac9f26828fa61c4ea8f714a10dcb4fd02f8187",
-              "member": "CANDIDATE_005",
-              "representative": "CLS_3c26a14ae4eaafaf61b1027f"
-            },
-            {
-              "action": "MERGE_INTO_CLASS",
-              "class_key": "sha256:f5c9110d6e56741f29f7889fb2287e8c26a9c256d7c32da1719ed68f330fae3b",
-              "member": "CANDIDATE_006",
-              "representative": "CLS_f5c9110d6e56741f29f7889f"
-            }
-          ],
-          "n_classes": 3,
-          "n_input_candidates": 6
-        },
-        "fixture_id": "FIX_M0",
-        "lmm_automated_status": "AUTOMATED_LLM_PROPOSAL_EXECUTED",
-        "model_requested": "gpt-4o",
-        "model_returned": "gpt-4o-2024-08-06",
-        "parsed_candidates": [
-          {
-            "assumptions": [
-              "shared interest in technical certifications",
-              "consistent attendance at evening classes"
-            ],
-            "candidate_kind": "KNOWN_COUNTERPART",
-            "candidate_local_id": "CANDIDATE_001",
-            "candidate_origin": "LLM_PROPOSAL",
-            "endpoint_constraints": {
-              "inst_id": "INST_EVENING_CLASS_B"
-            },
-            "falsifiers": [
-              "absence from evening classes during key periods"
-            ],
-            "model_relative_plausibility_NOT_frequency": true,
-            "plausibility_rank_ordinal": 1,
-            "route_kind_id": "ROUTE_INSTITUTIONAL"
-          },
-          {
-            "assumptions": [
-              "participation in community group events",
-              "interaction during workshop-like activities"
-            ],
-            "candidate_kind": "PROVISIONAL_COUNTERPART",
-            "candidate_local_id": "CANDIDATE_002",
-            "candidate_origin": "LLM_PROPOSAL",
-            "endpoint_constraints": {
-              "inst_id": "INST_COMMUNITY_D"
-            },
-            "falsifiers": [
-              "non-participation in community events"
-            ],
-            "model_relative_plausibility_NOT_frequency": true,
-            "plausibility_rank_ordinal": 2,
-            "route_kind_id": "ROUTE_INSTITUTIONAL"
-          },
-          {
-            "assumptions": [
-              "transit hub used only for mobility, not interaction"
-            ],
-            "candidate_kind": "NONOCCURRENCE",
-            "candidate_local_id": "CANDIDATE_003",
-            "candidate_origin": "LLM_PROPOSAL",
-            "endpoint_constraints": {
-              "inst_id": "INST_TRANSIT_E"
-            },
-            "falsifiers": [
-              "evidence of social interaction during transit"
-            ],
-            "model_relative_plausibility_NOT_frequency": true,
-            "plausibility_rank_ordinal": 3,
-            "route_kind_id": "ROUTE_INSTITUTIONAL"
-          },
-          {
-            "assumptions": [
-              "collaboration in workshop projects",
-              "shared discipline in workshop practices"
-            ],
-            "candidate_kind": "PROVISIONAL_COUNTERPART",
-            "candidate_local_id": "CANDIDATE_004",
-            "candidate_origin": "LLM_PROPOSAL",
-            "endpoint_constraints": {
-              "inst_id": "INST_WORKSHOP_A"
-            },
-            "falsifiers": [
-              "lack of collaborative project involvement"
-            ],
-            "model_relative_plausibility_NOT_frequency": true,
-            "plausibility_rank_ordinal": 4,
-            "route_kind_id": "ROUTE_INSTITUTIONAL"
-          },
-          {
-            "assumptions": [
-              "prior acquaintance through community events"
-            ],
-            "candidate_kind": "KNOWN_COUNTERPART",
-            "candidate_local_id": "CANDIDATE_005",
-            "candidate_origin": "LLM_PROPOSAL",
-            "endpoint_constraints": {
-              "inst_id": "INST_COMMUNITY_D"
-            },
-            "falsifiers": [
-              "no records of prior acquaintance"
-            ],
-            "model_relative_plausibility_NOT_frequency": true,
-            "plausibility_rank_ordinal": 5,
-            "route_kind_id": "ROUTE_INSTITUTIONAL"
-          },
-          {
-            "assumptions": [
-              "workshop used for individual work only"
-            ],
-            "candidate_kind": "NONOCCURRENCE",
-            "candidate_local_id": "CANDIDATE_006",
-            "candidate_origin": "LLM_PROPOSAL",
-            "endpoint_constraints": {
-              "inst_id": "INST_WORKSHOP_A"
-            },
-            "falsifiers": [
-              "records of joint workshop activities"
-            ],
-            "model_relative_plausibility_NOT_frequency": true,
-            "plausibility_rank_ordinal": 6,
-            "route_kind_id": "ROUTE_INSTITUTIONAL"
-          }
-        ],
-        "prompt_hash": "sha256:e2521966d1967120c59ae124a8991ff671ad1ed84434c69f10802d7093beb637",
-        "prompt_text": "{\"hard_rules\": [\"candidate_kind in {KNOWN_COUNTERPART, PROVISIONAL_COUNTERPART, NONOCCURRENCE}\", \"plausibility_rank_ordinal is an ordinal rank only, never a frequency\", \"no future-child outcome may be referenced anywhere\"], \"instruction\": \"Propose finite conception-scenario encounter candidates for the pending target.\", \"max_proposals\": 6, \"mother_anchor_visible_fields\": {\"actor_id\": \"LAB_MOTHER_M0\", \"already_generated_child_refs\": [], \"known_counterpart_identity_ref_or_null\": null, \"mobility_history_present\": false, \"psyche\": {\"attitudes\": [{\"attitude\": \"self_reliance_under_deadline\", \"causal_event_refs\": [\"sha256:8adf0e9a6b0766412658b4ca3823acdea0b2d186de3b85407e6f833e1e0fb2d3\", \"sha256:a610a7868905cedbf89b6fb7c94d1cb7d2d97ee1a905b799adcf870e59610885\", \"sha256:a0832ec66870ad8c83dc97d18807e29371b0cf01553bbce9f70cefc678be5b1f\"]}], \"practices\": [{\"causal_event_refs\": [\"sha256:a0832ec66870ad8c83dc97d18807e29371b0cf01553bbce9f70cefc678be5b1f\", \"sha256:a610a7868905cedbf89b6fb7c94d1cb7d2d97ee1a905b799adcf870e59610885\"], \"practice\": \"measure_twice_cut_once_workshop_discipline\"}], \"strivings\": [{\"causal_event_refs\": [\"sha256:ce8a5de77bc75eb1284e3c675dd49a0a53dae714573273257ec0500ebd67ead4\", \"sha256:a610a7868905cedbf89b6fb7c94d1cb7d2d97ee1a905b799adcf870e59610885\", \"sha256:8adf0e9a6b0766412658b4ca3823acdea0b2d186de3b85407e6f833e1e0fb2d3\"], \"striving\": \"complete_evening_technical_certificate\"}]}, \"route_availability\": [\"ROUTE_INSTITUTIONAL\", \"ROUTE_LOCAL_CLOSED\", \"ROUTE_MOBILITY\", \"ROUTE_UNCONVENTIONAL\"], \"t_preconception\": \"T_PRECONCEPTION_LAB_BOUNDARY\", \"variant\": \"M0\"}, \"pending_target\": {\"candidate_generation_policy_ref\": \"LAB_FINITE_SCENARIO_PROPOSAL\", \"cursor_increments\": 0, \"focal_slot_ref\": \"FOCAL_CHILD_SLOT_0\", \"known_counterpart_ref_or_null\": null, \"mother_anchor_hash\": \"sha256:4c10ea65b3ac1fb22b943e34f19f3557c194e3f768687fc8543471885fea26af\", \"planned_boundary_time_or_interval\": \"T_PRECONCEPTION_LAB_BOUNDARY\", \"target_id\": \"sha256:3b854096ad5e79c0d4386bc298747b6e1ae0fb5c534448a4c387f03fa60004b1\", \"target_status\": \"TARGET_PENDING\"}, \"required_candidate_fields\": [\"candidate_local_id\", \"candidate_kind\", \"route_kind_id\", \"endpoint_constraints\", \"assumptions\", \"falsifiers\", \"plausibility_rank_ordinal\"], \"route_filter\": \"ROUTE_INSTITUTIONAL\", \"scenario_grammar_version\": \"SCENARIO_CANDIDATE_GRAMMAR@1.0-LAB\", \"world_summary\": {\"institutions\": [{\"inst_id\": \"INST_WORKSHOP_A\", \"kind\": \"WORKPLACE\"}, {\"inst_id\": \"INST_EVENING_CLASS_B\", \"kind\": \"EVENING_CLASS\"}, {\"inst_id\": \"INST_COMMUNITY_D\", \"kind\": \"COMMUNITY_GROUP\"}, {\"inst_id\": \"INST_TRANSIT_E\", \"kind\": \"TRANSIT_HUB\"}], \"premise_version\": \"SYNTH_WORLD@1.0.0\", \"routes\": [{\"premise_note\": \"workplace adjacency\", \"route_id\": \"ROUTE_LOCAL_CLOSED\", \"route_kind\": \"LOCAL_CLOSED\"}, {\"premise_note\": \"evening class\", \"route_id\": \"ROUTE_INSTITUTIONAL\", \"route_kind\": \"INSTITUTIONAL\"}, {\"premise_note\": \"regional interchange\", \"route_id\": \"ROUTE_MOBILITY\", \"route_kind\": \"MOBILITY\"}, {\"premise_note\": \"water committee emergency callout\", \"route_id\": \"ROUTE_UNCONVENTIONAL\", \"route_kind\": \"UNCONVENTIONAL\"}], \"world_id\": \"WORLD_SYNTHTIC_LAB_001\"}}",
-        "proposal_hash": "sha256:738bbf796471e7a3eb882867a117270f260018efb432ac9740dc4c8af5586503",
-        "provider": "openai",
-        "raw_output": "```json\n[\n    {\n        \"candidate_local_id\": \"CANDIDATE_001\",\n        \"candidate_kind\": \"KNOWN_COUNTERPART\",\n        \"route_kind_id\": \"ROUTE_INSTITUTIONAL\",\n        \"endpoint_constraints\": {\n            \"inst_id\": \"INST_EVENING_CLASS_B\"\n        },\n        \"assumptions\": [\n            \"shared interest in technical certifications\",\n            \"consistent attendance at evening classes\"\n        ],\n        \"falsifiers\": [\n            \"absence from evening classes during key periods\"\n        ],\n        \"plausibility_rank_ordinal\": 1\n    },\n    {\n        \"candidate_local_id\": \"CANDIDATE_002\",\n        \"candidate_kind\": \"PROVISIONAL_COUNTERPART\",\n        \"route_kind_id\": \"ROUTE_INSTITUTIONAL\",\n        \"endpoint_constraints\": {\n            \"inst_id\": \"INST_COMMUNITY_D\"\n        },\n        \"assumptions\": [\n            \"participation in community group events\",\n            \"interaction during workshop-like activities\"\n        ],\n        \"falsifiers\": [\n            \"non-participation in community events\"\n        ],\n        \"plausibility_rank_ordinal\": 2\n    },\n    {\n        \"candidate_local_id\": \"CANDIDATE_003\",\n        \"candidate_kind\": \"NONOCCURRENCE\",\n        \"route_kind_id\": \"ROUTE_INSTITUTIONAL\",\n        \"endpoint_constraints\": {\n            \"inst_id\": \"INST_TRANSIT_E\"\n        },\n        \"assumptions\": [\n            \"transit hub used only for mobility, not interaction\"\n        ],\n        \"falsifiers\": [\n            \"evidence of social interaction during transit\"\n        ],\n        \"plausibility_rank_ordinal\": 3\n    },\n    {\n        \"candidate_local_id\": \"CANDIDATE_004\",\n        \"candidate_kind\": \"PROVISIONAL_COUNTERPART\",\n        \"route_kind_id\": \"ROUTE_INSTITUTIONAL\",\n        \"endpoint_constraints\": {\n            \"inst_id\": \"INST_WORKSHOP_A\"\n        },\n        \"assumptions\": [\n            \"collaboration in workshop projects\",\n            \"shared discipline in workshop practices\"\n        ],\n        \"falsifiers\": [\n            \"lack of collaborative project involvement\"\n        ],\n        \"plausibility_rank_ordinal\": 4\n    },\n    {\n        \"candidate_local_id\": \"CANDIDATE_005\",\n        \"candidate_kind\": \"KNOWN_COUNTERPART\",\n        \"route_kind_id\": \"ROUTE_INSTITUTIONAL\",\n        \"endpoint_constraints\": {\n            \"inst_id\": \"INST_COMMUNITY_D\"\n        },\n        \"assumptions\": [\n            \"prior acquaintance through community events\"\n        ],\n        \"falsifiers\": [\n            \"no records of prior acquaintance\"\n        ],\n        \"plausibility_rank_ordinal\": 5\n    },\n    {\n        \"candidate_local_id\": \"CANDIDATE_006\",\n        \"candidate_kind\": \"NONOCCURRENCE\",\n        \"route_kind_id\": \"ROUTE_INSTITUTIONAL\",\n        \"endpoint_constraints\": {\n            \"inst_id\": \"INST_WORKSHOP_A\"\n        },\n        \"assumptions\": [\n            \"workshop used for individual work only\"\n        ],\n        \"falsifiers\": [\n            \"records of joint workshop activities\"\n        ],\n        \"plausibility_rank_ordinal\": 6\n    }\n]\n```",
-        "raw_output_hash": "sha256:88d54fd810457b9eae4bc93be655710f78bc080e7b2b068d4cb471315ec4532b",
-        "record_id": "sha256:474f5d3128dc00b7d9dd86f1db2715112b2bd7eb1481869a05d9d4943e16668b",
-        "route_filter": "ROUTE_INSTITUTIONAL",
-        "system_hash": "sha256:379ef382e34f9b9a47c4fb0f69e76f9b31f1dcf2a91a3873ff338fa64f2943ec",
-        "system_text": "You are a scenario proposal component inside a SOURCE-FREE SYNTHETIC GENEALOGY LAB. You may propose FINITE encounter/scenario candidates ONLY. You may NOT set empirical probabilities, may NOT write causal actor state, may NOT mint an admitted father, may NOT write memories as fact, may NOT use or reference any future-child outcome. Proposals must be machine-readable JSON only.",
-        "usage": {
-          "completion_tokens": 698,
-          "prompt_tokens": 1173,
-          "total_tokens": 1871
-        },
-        "wall_seconds": 6.2384
-      },
-      "record_key": "M0_INST",
-      "route_filter": "ROUTE_INSTITUTIONAL"
     },
     {
       "fixture": "FIX_M0",
@@ -5516,7 +5516,7 @@
       },
       "case_id": "K11-BASE-LOCAL",
       "terminal_grade": "K11_CASE_PASS",
-      "wall_seconds": 0.01071
+      "wall_seconds": 0.010949
     },
     {
       "all_pass": true,
@@ -5528,7 +5528,7 @@
       },
       "case_id": "K11-ROUTE-DISCORDANT",
       "terminal_grade": "K11_CASE_PASS",
-      "wall_seconds": 0.015119
+      "wall_seconds": 0.013611
     },
     {
       "all_pass": true,
@@ -5540,7 +5540,7 @@
       },
       "case_id": "K11-ROUTE-MOBILITY",
       "terminal_grade": "K11_CASE_PASS",
-      "wall_seconds": 0.006883
+      "wall_seconds": 0.006248
     },
     {
       "all_pass": true,
@@ -5552,7 +5552,7 @@
       },
       "case_id": "K11-ROUTE-UNCONVENTIONAL",
       "terminal_grade": "K11_CASE_PASS",
-      "wall_seconds": 0.009252
+      "wall_seconds": 0.009889
     },
     {
       "all_pass": true,
@@ -5566,7 +5566,7 @@
       },
       "case_id": "K11-A-FUTURE-CHILD-EMBARGO",
       "terminal_grade": "K11_CASE_INVARIANT_HELD",
-      "wall_seconds": 0.010693
+      "wall_seconds": 0.011883
     },
     {
       "all_pass": true,
@@ -5577,7 +5577,7 @@
       },
       "case_id": "K11-A2-DESIRED-WOUND-COUNTERFACTUAL",
       "terminal_grade": "K11_CASE_INVARIANT_HELD",
-      "wall_seconds": 0.009647
+      "wall_seconds": 0.010677
     },
     {
       "all_pass": true,
@@ -5590,7 +5590,7 @@
       },
       "case_id": "K11-B-INDEPENDENT-HISTORY",
       "terminal_grade": "K11_CASE_PASS",
-      "wall_seconds": 0.010033
+      "wall_seconds": 0.009863
     },
     {
       "all_pass": true,
@@ -5602,7 +5602,7 @@
       },
       "case_id": "K11-C-EXISTING-PARTNER",
       "terminal_grade": "K11_CASE_INVARIANT_HELD",
-      "wall_seconds": 0.00284
+      "wall_seconds": 0.003516
     },
     {
       "all_pass": true,
@@ -5613,7 +5613,7 @@
       },
       "case_id": "K11-C2-EXISTING-SHARED-EVENT",
       "terminal_grade": "K11_CASE_INVARIANT_HELD",
-      "wall_seconds": 0.002509
+      "wall_seconds": 0.003239
     },
     {
       "all_pass": true,
@@ -5626,7 +5626,7 @@
       },
       "case_id": "K11-D-PARITY",
       "terminal_grade": "K11_CASE_PASS",
-      "wall_seconds": 0.010887
+      "wall_seconds": 0.011584
     },
     {
       "all_pass": true,
@@ -5639,7 +5639,7 @@
       },
       "case_id": "K11-E-INDEPENDENT-PROJECT",
       "terminal_grade": "K11_CASE_PASS",
-      "wall_seconds": 0.009298
+      "wall_seconds": 0.010763
     },
     {
       "all_pass": true,
@@ -5651,7 +5651,7 @@
       },
       "case_id": "K11-GRAPH-CONSTRUCTION-VS-CAUSAL",
       "terminal_grade": "K11_CASE_PASS",
-      "wall_seconds": 0.004691
+      "wall_seconds": 0.005372
     },
     {
       "all_pass": true,
@@ -5663,7 +5663,7 @@
       },
       "case_id": "K11-DEDUPE",
       "terminal_grade": "K11_CASE_INVARIANT_HELD",
-      "wall_seconds": 0.009634
+      "wall_seconds": 0.008309
     },
     {
       "all_pass": true,
@@ -5674,7 +5674,7 @@
       },
       "case_id": "K11-EMPIRICAL-CEILING",
       "terminal_grade": "K11_CASE_INVARIANT_HELD",
-      "wall_seconds": 0.005816
+      "wall_seconds": 0.005285
     },
     {
       "all_pass": true,
@@ -5685,7 +5685,7 @@
       },
       "case_id": "K11-WEIGHT-ORDINAL",
       "terminal_grade": "K11_CASE_INVARIANT_HELD",
-      "wall_seconds": 0.002713
+      "wall_seconds": 0.00263
     },
     {
       "all_pass": true,
@@ -5697,7 +5697,7 @@
       },
       "case_id": "K11-WEIGHT-SENSITIVITY",
       "terminal_grade": "K11_CASE_PASS",
-      "wall_seconds": 0.029419
+      "wall_seconds": 0.0306
     },
     {
       "all_pass": true,
@@ -5709,7 +5709,7 @@
       },
       "case_id": "K11-RETRY-BIAS",
       "terminal_grade": "K11_CASE_INVARIANT_HELD",
-      "wall_seconds": 0.010334
+      "wall_seconds": 0.011157
     },
     {
       "all_pass": true,
@@ -5721,7 +5721,7 @@
       },
       "case_id": "K11-VALID-EMPTY",
       "terminal_grade": "K11_CASE_INVARIANT_HELD",
-      "wall_seconds": 0.00318
+      "wall_seconds": 0.002292
     },
     {
       "all_pass": true,
@@ -5732,7 +5732,7 @@
       },
       "case_id": "K11-UNKNOWN-REQUIRED",
       "terminal_grade": "K11_CASE_INVARIANT_HELD",
-      "wall_seconds": 0.003075
+      "wall_seconds": 0.002271
     },
     {
       "all_pass": true,
@@ -5745,7 +5745,7 @@
       },
       "case_id": "K11-RELATION-ASYMMETRY",
       "terminal_grade": "K11_CASE_PASS",
-      "wall_seconds": 0.012005
+      "wall_seconds": 0.009936
     },
     {
       "all_pass": true,
@@ -5757,7 +5757,7 @@
       },
       "case_id": "K11-CONCEPTION-CHILDGEN-BOUNDARY",
       "terminal_grade": "K11_CASE_INVARIANT_HELD",
-      "wall_seconds": 0.006764
+      "wall_seconds": 0.004811
     },
     {
       "all_pass": true,
@@ -5767,7 +5767,7 @@
       },
       "case_id": "K11-MISSING-HISTORY",
       "terminal_grade": "K11_CASE_INVARIANT_HELD",
-      "wall_seconds": 0.005092
+      "wall_seconds": 0.003244
     },
     {
       "all_pass": true,
@@ -5778,7 +5778,7 @@
       },
       "case_id": "K11-SCHEDULER-SAME-TIME",
       "terminal_grade": "K11_CASE_INVARIANT_HELD",
-      "wall_seconds": 0.00754
+      "wall_seconds": 0.004742
     },
     {
       "all_pass": true,
@@ -5788,9 +5788,9 @@
       },
       "case_id": "K11-REPLAY-ALTER-SUBJECT",
       "terminal_grade": "K11_CASE_INVARIANT_HELD",
-      "wall_seconds": 0.005673
+      "wall_seconds": 0.004913
     }
   ],
   "total_tokens": 12183,
-  "total_wall_seconds": 0.203931
+  "total_wall_seconds": 0.197893
 }

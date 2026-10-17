@@ -276,6 +276,21 @@ class ScopedRNG:
         self._ensure_classified()
         return self._legacy_mode
 
+    @property
+    def root_seed_sha256(self) -> str:
+        self._ensure_classified()
+        return self._root_seed_sha256
+
+    @property
+    def scope_seed_sha256(self) -> str:
+        self._ensure_classified()
+        return self._scope_seed_sha256
+
+    @property
+    def stream_seed_sha256(self) -> str:
+        self._ensure_classified()
+        return self._stream_seed_sha256
+
     def _ensure_classified(self) -> None:
         """Classify the root seed and derive its lineage exactly once."""
         if self._classification is not None:

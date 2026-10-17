@@ -169,6 +169,9 @@ def adp020_select(policy_name: str, eligible_classes: List[Dict[str, Any]],
 
     try:
         rng = ScopedRNG(root_seed, STREAM, scope)
+        # Classify eagerly inside the guard: an unlawful root is refused here,
+        # BEFORE any draw and BEFORE any selection identity is published.
+        rng.classification
     except RngAuthorityError as exc:
         return typed(
             S.NOT_EXECUTED_AUTHORITY_HOLD,

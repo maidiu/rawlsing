@@ -1,0 +1,104 @@
+{
+ "schema": "SOROK_G13_EXECUTION_RECEIPT@1",
+ "observed_at_utc": "2026-10-17T01:29:01Z",
+ "python": "Python 3.11.3",
+ "pytest": "pytest 9.1.1",
+ "git": "git version 2.39.1",
+ "network_attempts": [],
+ "new_provider_calls": 0,
+ "frozen_historical_model_records_reused": 7,
+ "courts": {
+  "g13_author_court": {
+   "tests": 59,
+   "failures": 0,
+   "errors": 0,
+   "skipped": 0,
+   "junit": "05_EXECUTION/junit/g13_author_court.xml",
+   "junit_sha256": "5a557d991861c9fb6aaa4d723db9bc274474cfe44b0b325437167784afa2e58e"
+  },
+  "g13_postrepair_original": {
+   "tests": 28,
+   "failures": 0,
+   "errors": 0,
+   "skipped": 0,
+   "junit": "05_EXECUTION/junit/g13_postrepair_original.xml",
+   "junit_sha256": "70c7019867a72ff64c7d191cf7a78171c5ece163d6c0f58f215fab1dd6ed785f"
+  },
+  "inherited_sgi1": {
+   "tests": 25,
+   "failures": 4,
+   "errors": 0,
+   "skipped": 0,
+   "junit": "05_EXECUTION/junit/sgi1_junit.xml",
+   "junit_sha256": "f586a21b0839decf2ba2204b6e97f2bc61503510fcb60793d3d6e9056bce83c1",
+   "pre_repair": {
+    "tests": 25,
+    "failures": 0
+   }
+  },
+  "inherited_g11": {
+   "tests": 25,
+   "failures": 0,
+   "errors": 0,
+   "skipped": 0,
+   "junit": "05_EXECUTION/junit/g11_junit.xml",
+   "junit_sha256": "9fb3464f80df3ba2c7300f41b29c2fc995cd69a437f40e8941ceccc17f046456",
+   "pre_repair": {
+    "tests": 25,
+    "failures": 0
+   }
+  },
+  "inherited_g12_controls": {
+   "tests": 25,
+   "failures": 12,
+   "errors": 0,
+   "skipped": 0,
+   "junit": "05_EXECUTION/junit/g12_controls_junit.xml",
+   "junit_sha256": "089fa4c4208b54dc2f8febea23cc979fbd72a4763a771cb00d778b2126592ac1",
+   "pre_repair": {
+    "tests": 25,
+    "failures": 0
+   }
+  },
+  "inherited_g12_literal": {
+   "tests": 12,
+   "failures": 1,
+   "errors": 0,
+   "skipped": 0,
+   "junit": "05_EXECUTION/junit/g12_literal_contract_junit.xml",
+   "junit_sha256": "9971367e39a02c5ee93c47900d9d3b907f66311f87333df7471e60ce13c9d7a9",
+   "pre_repair": {
+    "tests": 12,
+    "failures": 12
+   }
+  },
+  "inherited_g12_supplemental": {
+   "tests": 6,
+   "failures": 0,
+   "errors": 0,
+   "skipped": 0,
+   "junit": "05_EXECUTION/junit/g12_supplemental_junit.xml",
+   "junit_sha256": "17e2e2b4db37d7d40e54de97fdd4de633bc2c6fbac5d2514ccc30586890dd6e2",
+   "pre_repair": {
+    "tests": 6,
+    "failures": 5
+   }
+  },
+  "inherited_candidate_boundary": {
+   "tests": 1,
+   "failures": 0,
+   "errors": 0,
+   "skipped": 0,
+   "junit": "05_EXECUTION/junit/candidate_boundary_junit.xml",
+   "junit_sha256": "2905b42efa1757357d089ef7272b006d54336d485bd55b0b0f1cf2810a61ccf0",
+   "pre_repair": {
+    "tests": 1,
+    "failures": 1
+   }
+  }
+ },
+ "totals": {
+  "tests": 181,
+  "failures_or_errors": 17
+ }
+}
