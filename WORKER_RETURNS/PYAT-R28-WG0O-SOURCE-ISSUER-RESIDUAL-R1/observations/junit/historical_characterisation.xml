@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="3" time="1.411" timestamp="2026-10-17T04:59:04.360101-04:00" hostname="MacBook-Pro.lan"><testcase classname="R28-WG0O-issuer-wt.WORKER_RETURNS.PYAT-R28-WG0O-SOURCE-ISSUER-RESIDUAL-R1.staged_candidate.court.tests.phase_b.test_additional_descriptor_binding_red" name="test_bound_descriptor_cannot_change_served_provenance[source_edition-FORGED_CALLER_EDITION]" time="0.372"><failure message="wg0p4_workload.IdentityError: COMPLETE_BOUND_SOURCE_DESCRIPTOR_CHANGED">field = 'source_edition', forged = 'FORGED_CALLER_EDITION'
+
+    @pytest.mark.parametrize('field,forged',[('source_edition','FORGED_CALLER_EDITION'),('native_item_ids',('FOREIGN_NATIVE_ITEM',))])
+    def test_bound_descriptor_cannot_change_served_provenance(field,forged):
+     p=plan();specs=dict(p.op_specs);specs[OP]=replace(specs[OP],**{field:forged});altered=replace(p,op_specs=specs)
+     assert altered.contract==p.contract
+&gt;    runner,receipts,effects=execute(altered)
+                             ^^^^^^^^^^^^^^^^
+
+staged_candidate/court/tests/phase_b/test_additional_descriptor_binding_red.py:12: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+staged_candidate/court/repro/phase_b_support_v1.py:35: in execute
+    runner,rs=w.run_plan(p,w.make_executor(p));return runner,rs,w.consumer_effects(p,rs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+staged_candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/repro/wg0p4_workload.py:407: in run_plan
+    _check_plan(plan)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+plan = ExecutablePlan(manifest=BatchManifest(units=(BatchUnitSpec(job_kind='QUERY', job_ref=ExactRef(kind='EmpiricalQuerySpec...9b0332e53c6ae776bbfc4cee633a665"}', fact_custody=&lt;wg0p4_workload.FactCustody object at 0x10f218250&gt;, prior_receipts=())
+
+    def _check_plan(plan):
+        plan.fixture_owner.assert_plan_issued(plan)
+        contract=_registered_contract(plan.manifest,plan.science_root,plan.freeze_hash,plan.units_by_op,plan.op_specs)
+&gt;       if canonical(contract)!=plan.contract:raise IdentityError('COMPLETE_BOUND_SOURCE_DESCRIPTOR_CHANGED')
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       wg0p4_workload.IdentityError: COMPLETE_BOUND_SOURCE_DESCRIPTOR_CHANGED
+
+staged_candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/repro/wg0p4_workload.py:365: IdentityError</failure></testcase><testcase classname="R28-WG0O-issuer-wt.WORKER_RETURNS.PYAT-R28-WG0O-SOURCE-ISSUER-RESIDUAL-R1.staged_candidate.court.tests.phase_b.test_additional_descriptor_binding_red" name="test_bound_descriptor_cannot_change_served_provenance[native_item_ids-forged1]" time="0.321"><failure message="wg0p4_workload.IdentityError: COMPLETE_BOUND_SOURCE_DESCRIPTOR_CHANGED">field = 'native_item_ids', forged = ('FOREIGN_NATIVE_ITEM',)
+
+    @pytest.mark.parametrize('field,forged',[('source_edition','FORGED_CALLER_EDITION'),('native_item_ids',('FOREIGN_NATIVE_ITEM',))])
+    def test_bound_descriptor_cannot_change_served_provenance(field,forged):
+     p=plan();specs=dict(p.op_specs);specs[OP]=replace(specs[OP],**{field:forged});altered=replace(p,op_specs=specs)
+     assert altered.contract==p.contract
+&gt;    runner,receipts,effects=execute(altered)
+                             ^^^^^^^^^^^^^^^^
+
+staged_candidate/court/tests/phase_b/test_additional_descriptor_binding_red.py:12: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+staged_candidate/court/repro/phase_b_support_v1.py:35: in execute
+    runner,rs=w.run_plan(p,w.make_executor(p));return runner,rs,w.consumer_effects(p,rs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+staged_candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/repro/wg0p4_workload.py:407: in run_plan
+    _check_plan(plan)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+plan = ExecutablePlan(manifest=BatchManifest(units=(BatchUnitSpec(job_kind='QUERY', job_ref=ExactRef(kind='EmpiricalQuerySpec...9b0332e53c6ae776bbfc4cee633a665"}', fact_custody=&lt;wg0p4_workload.FactCustody object at 0x10f3e2f90&gt;, prior_receipts=())
+
+    def _check_plan(plan):
+        plan.fixture_owner.assert_plan_issued(plan)
+        contract=_registered_contract(plan.manifest,plan.science_root,plan.freeze_hash,plan.units_by_op,plan.op_specs)
+&gt;       if canonical(contract)!=plan.contract:raise IdentityError('COMPLETE_BOUND_SOURCE_DESCRIPTOR_CHANGED')
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       wg0p4_workload.IdentityError: COMPLETE_BOUND_SOURCE_DESCRIPTOR_CHANGED
+
+staged_candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/repro/wg0p4_workload.py:365: IdentityError</failure></testcase><testcase classname="R28-WG0O-issuer-wt.WORKER_RETURNS.PYAT-R28-WG0O-SOURCE-ISSUER-RESIDUAL-R1.staged_candidate.court.tests.phase_b.test_additional_descriptor_binding_red" name="test_copied_release_descriptor_refused_before_native_query" time="0.327" /></testsuite></testsuites>

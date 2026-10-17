@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="5" skipped="0" tests="20" time="17.626" timestamp="2026-10-17T05:02:06.749257-04:00" hostname="MacBook-Pro.lan"><testcase classname="R28-WG0O-issuer-wt.WORKER_RETURNS.PYAT-R28-WG0O-SOURCE-ISSUER-RESIDUAL-R1.inherited_wg0n_court.tests.test_hostile_source_view_court" name="test_phase_a_oracle_is_self_consistent" time="0.001" /><testcase classname="R28-WG0O-issuer-wt.WORKER_RETURNS.PYAT-R28-WG0O-SOURCE-ISSUER-RESIDUAL-R1.inherited_wg0n_court.tests.test_hostile_source_view_court" name="test_inherited_suites_are_present_and_unmodified" time="0.001" /><testcase classname="R28-WG0O-issuer-wt.WORKER_RETURNS.PYAT-R28-WG0O-SOURCE-ISSUER-RESIDUAL-R1.inherited_wg0n_court.tests.test_hostile_source_view_court" name="test_hostile_source_view_is_refused[release_source_view_substitution/A1_genuine_foreign_pointer]" time="0.320" /><testcase classname="R28-WG0O-issuer-wt.WORKER_RETURNS.PYAT-R28-WG0O-SOURCE-ISSUER-RESIDUAL-R1.inherited_wg0n_court.tests.test_hostile_source_view_court" name="test_hostile_source_view_is_refused[release_source_view_substitution/A2_coherent_full_source_view]" time="0.296" /><testcase classname="R28-WG0O-issuer-wt.WORKER_RETURNS.PYAT-R28-WG0O-SOURCE-ISSUER-RESIDUAL-R1.inherited_wg0n_court.tests.test_hostile_source_view_court" name="test_hostile_source_view_is_refused[release_source_view_substitution/A3_pointer_and_edition_foreign_universe_own]" time="0.287" /><testcase classname="R28-WG0O-issuer-wt.WORKER_RETURNS.PYAT-R28-WG0O-SOURCE-ISSUER-RESIDUAL-R1.inherited_wg0n_court.tests.test_hostile_source_view_court" name="test_hostile_source_view_is_refused[reused_source_pointer/B1_one_pointer_two_releases]" time="0.663" /><testcase classname="R28-WG0O-issuer-wt.WORKER_RETURNS.PYAT-R28-WG0O-SOURCE-ISSUER-RESIDUAL-R1.inherited_wg0n_court.tests.test_hostile_source_view_court" name="test_hostile_source_view_is_refused[reused_source_pointer/B2_pointer_reused_across_universes]" time="0.589" /><testcase classname="R28-WG0O-issuer-wt.WORKER_RETURNS.PYAT-R28-WG0O-SOURCE-ISSUER-RESIDUAL-R1.inherited_wg0n_court.tests.test_hostile_source_view_court" name="test_hostile_source_view_is_refused[source_epoch_and_revocation/C1_epoch_advance_after_binding]" time="0.298" /><testcase classname="R28-WG0O-issuer-wt.WORKER_RETURNS.PYAT-R28-WG0O-SOURCE-ISSUER-RESIDUAL-R1.inherited_wg0n_court.tests.test_hostile_source_view_court" name="test_hostile_source_view_is_refused[source_epoch_and_revocation/C2_release_revocation_after_binding]" time="0.287" /><testcase classname="R28-WG0O-issuer-wt.WORKER_RETURNS.PYAT-R28-WG0O-SOURCE-ISSUER-RESIDUAL-R1.inherited_wg0n_court.tests.test_hostile_source_view_court" name="test_hostile_source_view_is_refused[source_epoch_and_revocation/C3_source_artifact_revocation]" time="0.268"><failure message="wg0p4_workload.RevocationError: UNKNOWN_RELEASE_NO_REVOCATION">court = &lt;hostile_source_view_adapter_v1.HostileSourceViewCourt object at 0x1122e6210&gt;
+control = {'case': 'C3_source_artifact_revocation', 'expected': 'typed refusal / REVOKED, no new I03 call, no served positive', 'group': 'source_epoch_and_revocation', 'kind': 'NEGATIVE_REFUSAL', ...}
+
+    @pytest.mark.parametrize("control", NEG, ids=lambda c: c["group"] + "/" + c["case"])
+    def test_hostile_source_view_is_refused(court, control):
+&gt;       e = court.execute_case(control["group"], control["case"])
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+inherited_wg0n_court/tests/test_hostile_source_view_court.py:78: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+inherited_wg0n_court/repro/hostile_source_view_adapter_v1.py:129: in execute_case
+    owner.revoke(rel1.source_artifact_ref.object_id)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;wg0p4_workload.FixtureOwner object at 0x1123ad910&gt;
+tag = 'urn:wg0p3:test:source-snapshot:REL-A-W1'
+
+    def revoke(self,tag):
+        d=self.state()
+&gt;       if tag not in d['grants']:raise RevocationError('UNKNOWN_RELEASE_NO_REVOCATION')
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       wg0p4_workload.RevocationError: UNKNOWN_RELEASE_NO_REVOCATION
+
+staged_candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/repro/wg0p4_workload.py:150: RevocationError</failure></testcase><testcase classname="R28-WG0O-issuer-wt.WORKER_RETURNS.PYAT-R28-WG0O-SOURCE-ISSUER-RESIDUAL-R1.inherited_wg0n_court.tests.test_hostile_source_view_court" name="test_hostile_source_view_is_refused[altered_snapshot/D1_content_hash_mismatch_on_pointer]" time="0.284" /><testcase classname="R28-WG0O-issuer-wt.WORKER_RETURNS.PYAT-R28-WG0O-SOURCE-ISSUER-RESIDUAL-R1.inherited_wg0n_court.tests.test_hostile_source_view_court" name="test_hostile_source_view_is_refused[altered_snapshot/D2_rehashed_snapshot_registered_digest_unchanged]" time="0.286" /><testcase classname="R28-WG0O-issuer-wt.WORKER_RETURNS.PYAT-R28-WG0O-SOURCE-ISSUER-RESIDUAL-R1.inherited_wg0n_court.tests.test_hostile_source_view_court" name="test_hostile_source_view_is_refused[altered_snapshot/D3_truncated_or_empty_snapshot]" time="0.271"><failure message="rawlsing_next.pre553_empirical_objects.Pre553IntegrityError: content_hash must be a non-empty string">court = &lt;hostile_source_view_adapter_v1.HostileSourceViewCourt object at 0x1122e6210&gt;
+control = {'case': 'D3_truncated_or_empty_snapshot', 'expected': 'typed refusal, no new I03 call, no served positive', 'group': 'altered_snapshot', 'kind': 'NEGATIVE_REFUSAL', ...}
+
+    @pytest.mark.parametrize("control", NEG, ids=lambda c: c["group"] + "/" + c["case"])
+    def test_hostile_source_view_is_refused(court, control):
+&gt;       e = court.execute_case(control["group"], control["case"])
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+inherited_wg0n_court/tests/test_hostile_source_view_court.py:78: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+inherited_wg0n_court/repro/hostile_source_view_adapter_v1.py:150: in execute_case
+    forged = replace(ref, content_hash="")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/dataclasses.py:1494: in replace
+    return obj.__class__(**changes)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+&lt;string&gt;:6: in __init__
+    ???
+staged_candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/pinned/rawlsing_next/pre553_empirical_objects.py:288: in __post_init__
+    object.__setattr__(self, "content_hash", _sha256(self.content_hash, "content_hash"))
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+staged_candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/pinned/rawlsing_next/pre553_empirical_objects.py:165: in _sha256
+    value = _text(value, name)
+            ^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+value = '', name = 'content_hash'
+
+    def _text(value: Any, name: str) -&gt; str:
+        if not isinstance(value, str) or not value.strip():
+&gt;           raise Pre553IntegrityError(f"{name} must be a non-empty string")
+E           rawlsing_next.pre553_empirical_objects.Pre553IntegrityError: content_hash must be a non-empty string
+
+staged_candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/pinned/rawlsing_next/pre553_empirical_objects.py:160: Pre553IntegrityError</failure></testcase><testcase classname="R28-WG0O-issuer-wt.WORKER_RETURNS.PYAT-R28-WG0O-SOURCE-ISSUER-RESIDUAL-R1.inherited_wg0n_court.tests.test_hostile_source_view_court" name="test_hostile_source_view_is_refused[issuer_mismatch/E1_release_issuer_not_registrar]" time="0.267"><failure message="TypeError: IngestedRelease.__init__() got an unexpected keyword argument 'issuer_id'">court = &lt;hostile_source_view_adapter_v1.HostileSourceViewCourt object at 0x1122e6210&gt;
+control = {'case': 'E1_release_issuer_not_registrar', 'expected': 'typed refusal, no new I03 call, no served positive', 'group': 'issuer_mismatch', 'kind': 'NEGATIVE_REFUSAL', ...}
+
+    @pytest.mark.parametrize("control", NEG, ids=lambda c: c["group"] + "/" + c["case"])
+    def test_hostile_source_view_is_refused(court, control):
+&gt;       e = court.execute_case(control["group"], control["case"])
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+inherited_wg0n_court/tests/test_hostile_source_view_court.py:78: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+inherited_wg0n_court/repro/hostile_source_view_adapter_v1.py:159: in execute_case
+    p2 = _mutate_source_view(p, REL1, issuer_id="ISSUER_NOT_THE_REGISTRAR")
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+inherited_wg0n_court/repro/hostile_source_view_adapter_v1.py:57: in _mutate_source_view
+    rel = replace(rel, **fields)
+          ^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+obj = IngestedRelease(release_tag='REL-A-W1', repo=&lt;rawlsing_next.pre553_c11_repository.C11Repository object at 0x112110e50&gt;...wg0p3:test:source-snapshot:REL-A-W1', content_hash='1c7f1339ef1e7844b1eb8c93bba678f4e00cb6eb76c5698e3806ca8812b2c90f'))
+changes = {'authorities': (AuthoritySnapshot(object_id='urn:rawlsing:pre553:AuthoritySnapshot:sha256:d41984f856e36c26022cd7d5c43...ion_native:aw1-Q-HH-none', content_hash='7ce9d83fbdf55d1416b24073ce6dfa58a0b512926c3a37064e8abbb9d00fb884'), ...}, ...}
+f = Field(name='source_artifact_ref',type='Any',default=None,default_factory=&lt;dataclasses._MISSING_TYPE object at 0x11040df90&gt;,init=True,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD)
+
+    def replace(obj, /, **changes):
+        """Return a new object replacing specified fields with new values.
+    
+        This is especially useful for frozen classes.  Example usage::
+    
+          @dataclass(frozen=True)
+          class C:
+              x: int
+              y: int
+    
+          c = C(1, 2)
+          c1 = replace(c, x=3)
+          assert c1.x == 3 and c1.y == 2
+        """
+    
+        # We're going to mutate 'changes', but that's okay because it's a
+        # new dict, even if called with 'replace(obj, **my_changes)'.
+    
+        if not _is_dataclass_instance(obj):
+            raise TypeError("replace() should be called on dataclass instances")
+    
+        # It's an error to have init=False fields in 'changes'.
+        # If a field is not in 'changes', read its value from the provided obj.
+    
+        for f in getattr(obj, _FIELDS).values():
+            # Only consider normal fields or InitVars.
+            if f._field_type is _FIELD_CLASSVAR:
+                continue
+    
+            if not f.init:
+                # Error if this field is specified in changes.
+                if f.name in changes:
+                    raise ValueError(f'field {f.name} is declared with '
+                                     'init=False, it cannot be specified with '
+                                     'replace()')
+                continue
+    
+            if f.name not in changes:
+                if f._field_type is _FIELD_INITVAR and f.default is MISSING:
+                    raise ValueError(f"InitVar {f.name!r} "
+                                     'must be specified with replace()')
+                changes[f.name] = getattr(obj, f.name)
+    
+        # Create the new object, which calls __init__() and
+        # __post_init__() (if defined), using all of the init fields we've
+        # added and/or left in 'changes'.  If there are values supplied in
+        # changes that aren't fields, this will correctly raise a
+        # TypeError.
+&gt;       return obj.__class__(**changes)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: IngestedRelease.__init__() got an unexpected keyword argument 'issuer_id'
+
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/dataclasses.py:1494: TypeError</failure></testcase><testcase classname="R28-WG0O-issuer-wt.WORKER_RETURNS.PYAT-R28-WG0O-SOURCE-ISSUER-RESIDUAL-R1.inherited_wg0n_court.tests.test_hostile_source_view_court" name="test_hostile_source_view_is_refused[issuer_mismatch/E2_unregistered_issuer]" time="0.282"><failure message="TypeError: IngestedRelease.__init__() got an unexpected keyword argument 'issuer_id'">court = &lt;hostile_source_view_adapter_v1.HostileSourceViewCourt object at 0x1122e6210&gt;
+control = {'case': 'E2_unregistered_issuer', 'expected': 'typed refusal, no new I03 call, no served positive', 'group': 'issuer_mismatch', 'kind': 'NEGATIVE_REFUSAL', ...}
+
+    @pytest.mark.parametrize("control", NEG, ids=lambda c: c["group"] + "/" + c["case"])
+    def test_hostile_source_view_is_refused(court, control):
+&gt;       e = court.execute_case(control["group"], control["case"])
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+inherited_wg0n_court/tests/test_hostile_source_view_court.py:78: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+inherited_wg0n_court/repro/hostile_source_view_adapter_v1.py:162: in execute_case
+    p2 = _mutate_source_view(p, REL1, issuer_id="ISSUER_UNKNOWN_UNREGISTERED")
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+inherited_wg0n_court/repro/hostile_source_view_adapter_v1.py:57: in _mutate_source_view
+    rel = replace(rel, **fields)
+          ^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+obj = IngestedRelease(release_tag='REL-A-W1', repo=&lt;rawlsing_next.pre553_c11_repository.C11Repository object at 0x112905d90&gt;...wg0p3:test:source-snapshot:REL-A-W1', content_hash='1c7f1339ef1e7844b1eb8c93bba678f4e00cb6eb76c5698e3806ca8812b2c90f'))
+changes = {'authorities': (AuthoritySnapshot(object_id='urn:rawlsing:pre553:AuthoritySnapshot:sha256:d41984f856e36c26022cd7d5c43...ion_native:aw1-Q-HH-none', content_hash='7ce9d83fbdf55d1416b24073ce6dfa58a0b512926c3a37064e8abbb9d00fb884'), ...}, ...}
+f = Field(name='source_artifact_ref',type='Any',default=None,default_factory=&lt;dataclasses._MISSING_TYPE object at 0x11040df90&gt;,init=True,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD)
+
+    def replace(obj, /, **changes):
+        """Return a new object replacing specified fields with new values.
+    
+        This is especially useful for frozen classes.  Example usage::
+    
+          @dataclass(frozen=True)
+          class C:
+              x: int
+              y: int
+    
+          c = C(1, 2)
+          c1 = replace(c, x=3)
+          assert c1.x == 3 and c1.y == 2
+        """
+    
+        # We're going to mutate 'changes', but that's okay because it's a
+        # new dict, even if called with 'replace(obj, **my_changes)'.
+    
+        if not _is_dataclass_instance(obj):
+            raise TypeError("replace() should be called on dataclass instances")
+    
+        # It's an error to have init=False fields in 'changes'.
+        # If a field is not in 'changes', read its value from the provided obj.
+    
+        for f in getattr(obj, _FIELDS).values():
+            # Only consider normal fields or InitVars.
+            if f._field_type is _FIELD_CLASSVAR:
+                continue
+    
+            if not f.init:
+                # Error if this field is specified in changes.
+                if f.name in changes:
+                    raise ValueError(f'field {f.name} is declared with '
+                                     'init=False, it cannot be specified with '
+                                     'replace()')
+                continue
+    
+            if f.name not in changes:
+                if f._field_type is _FIELD_INITVAR and f.default is MISSING:
+                    raise ValueError(f"InitVar {f.name!r} "
+                                     'must be specified with replace()')
+                changes[f.name] = getattr(obj, f.name)
+    
+        # Create the new object, which calls __init__() and
+        # __post_init__() (if defined), using all of the init fields we've
+        # added and/or left in 'changes'.  If there are values supplied in
+        # changes that aren't fields, this will correctly raise a
+        # TypeError.
+&gt;       return obj.__class__(**changes)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: IngestedRelease.__init__() got an unexpected keyword argument 'issuer_id'
+
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/dataclasses.py:1494: TypeError</failure></testcase><testcase classname="R28-WG0O-issuer-wt.WORKER_RETURNS.PYAT-R28-WG0O-SOURCE-ISSUER-RESIDUAL-R1.inherited_wg0n_court.tests.test_hostile_source_view_court" name="test_hostile_source_view_is_refused[issuer_mismatch/E3_issuer_epoch_mismatch]" time="0.279"><failure message="TypeError: IngestedRelease.__init__() got an unexpected keyword argument 'issuer_epoch'">court = &lt;hostile_source_view_adapter_v1.HostileSourceViewCourt object at 0x1122e6210&gt;
+control = {'case': 'E3_issuer_epoch_mismatch', 'expected': 'typed refusal / STALE, no new I03 call', 'group': 'issuer_mismatch', 'kind': 'NEGATIVE_REFUSAL', ...}
+
+    @pytest.mark.parametrize("control", NEG, ids=lambda c: c["group"] + "/" + c["case"])
+    def test_hostile_source_view_is_refused(court, control):
+&gt;       e = court.execute_case(control["group"], control["case"])
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+inherited_wg0n_court/tests/test_hostile_source_view_court.py:78: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+inherited_wg0n_court/repro/hostile_source_view_adapter_v1.py:165: in execute_case
+    p2 = _mutate_source_view(p, REL1, issuer_epoch="WG0N_OTHER_EPOCH")
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+inherited_wg0n_court/repro/hostile_source_view_adapter_v1.py:57: in _mutate_source_view
+    rel = replace(rel, **fields)
+          ^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+obj = IngestedRelease(release_tag='REL-A-W1', repo=&lt;rawlsing_next.pre553_c11_repository.C11Repository object at 0x112501e90&gt;...wg0p3:test:source-snapshot:REL-A-W1', content_hash='1c7f1339ef1e7844b1eb8c93bba678f4e00cb6eb76c5698e3806ca8812b2c90f'))
+changes = {'authorities': (AuthoritySnapshot(object_id='urn:rawlsing:pre553:AuthoritySnapshot:sha256:d41984f856e36c26022cd7d5c43...ion_native:aw1-Q-HH-none', content_hash='7ce9d83fbdf55d1416b24073ce6dfa58a0b512926c3a37064e8abbb9d00fb884'), ...}, ...}
+f = Field(name='source_artifact_ref',type='Any',default=None,default_factory=&lt;dataclasses._MISSING_TYPE object at 0x11040df90&gt;,init=True,repr=True,hash=None,compare=True,metadata=mappingproxy({}),kw_only=False,_field_type=_FIELD)
+
+    def replace(obj, /, **changes):
+        """Return a new object replacing specified fields with new values.
+    
+        This is especially useful for frozen classes.  Example usage::
+    
+          @dataclass(frozen=True)
+          class C:
+              x: int
+              y: int
+    
+          c = C(1, 2)
+          c1 = replace(c, x=3)
+          assert c1.x == 3 and c1.y == 2
+        """
+    
+        # We're going to mutate 'changes', but that's okay because it's a
+        # new dict, even if called with 'replace(obj, **my_changes)'.
+    
+        if not _is_dataclass_instance(obj):
+            raise TypeError("replace() should be called on dataclass instances")
+    
+        # It's an error to have init=False fields in 'changes'.
+        # If a field is not in 'changes', read its value from the provided obj.
+    
+        for f in getattr(obj, _FIELDS).values():
+            # Only consider normal fields or InitVars.
+            if f._field_type is _FIELD_CLASSVAR:
+                continue
+    
+            if not f.init:
+                # Error if this field is specified in changes.
+                if f.name in changes:
+                    raise ValueError(f'field {f.name} is declared with '
+                                     'init=False, it cannot be specified with '
+                                     'replace()')
+                continue
+    
+            if f.name not in changes:
+                if f._field_type is _FIELD_INITVAR and f.default is MISSING:
+                    raise ValueError(f"InitVar {f.name!r} "
+                                     'must be specified with replace()')
+                changes[f.name] = getattr(obj, f.name)
+    
+        # Create the new object, which calls __init__() and
+        # __post_init__() (if defined), using all of the init fields we've
+        # added and/or left in 'changes'.  If there are values supplied in
+        # changes that aren't fields, this will correctly raise a
+        # TypeError.
+&gt;       return obj.__class__(**changes)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: IngestedRelease.__init__() got an unexpected keyword argument 'issuer_epoch'
+
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/dataclasses.py:1494: TypeError</failure></testcase><testcase classname="R28-WG0O-issuer-wt.WORKER_RETURNS.PYAT-R28-WG0O-SOURCE-ISSUER-RESIDUAL-R1.inherited_wg0n_court.tests.test_hostile_source_view_court" name="test_legitimate_owner_still_serves[positive_legitimate_owner/F1_unmodified_legitimate_owner_serves]" time="5.638" /><testcase classname="R28-WG0O-issuer-wt.WORKER_RETURNS.PYAT-R28-WG0O-SOURCE-ISSUER-RESIDUAL-R1.inherited_wg0n_court.tests.test_hostile_source_view_court" name="test_legitimate_owner_still_serves[positive_legitimate_owner/F2_replay_identical_receipts]" time="1.263" /><testcase classname="R28-WG0O-issuer-wt.WORKER_RETURNS.PYAT-R28-WG0O-SOURCE-ISSUER-RESIDUAL-R1.inherited_wg0n_court.tests.test_hostile_source_view_court" name="test_legitimate_owner_still_serves[positive_legitimate_owner/F3_own_pointer_serves]" time="5.739" /><testcase classname="R28-WG0O-issuer-wt.WORKER_RETURNS.PYAT-R28-WG0O-SOURCE-ISSUER-RESIDUAL-R1.inherited_wg0n_court.tests.test_hostile_source_view_court" name="test_preregistration_is_hashed_and_pushed" time="0.001" /></testsuite></testsuites>

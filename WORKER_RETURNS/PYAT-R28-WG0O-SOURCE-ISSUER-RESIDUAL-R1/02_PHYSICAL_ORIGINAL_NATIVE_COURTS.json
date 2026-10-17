@@ -1,0 +1,310 @@
+{
+  "schema": "PYAT_R28_WG0O_02_PHYSICAL_ORIGINAL_NATIVE_COURTS@1",
+  "runtime": {
+    "python": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]",
+    "executable": "/usr/local/bin/python3",
+    "pytest": "9.0.2",
+    "execution": "fresh processes; PYTHONPATH=<staged_candidate>/court/bootstrap_p6 (candidate identity bootstrap verifies all 195 staged files before execution and refuses hard on mismatch)",
+    "candidate_module": "staged_candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/repro/wg0p4_workload.py",
+    "candidate_module_sha256": "3807e46eec947694a1bd76afe23fd96183dd989b511584ec2ad3991ae943925e",
+    "candidate_module_git_blob_sha1": "ef4f2b33c07596ae6c3008320f13d9f5d027b9e4",
+    "candidate_version": "WG0P6_RELEASE_VIEW_SOURCE_SNAPSHOT_BINDING@1"
+  },
+  "new_authority_seam_court": {
+    "frozen_oracle": "01_FROZEN_ACTUAL_AUTHORITY_API_CASES.json",
+    "frozen_oracle_sha256": "1a57f97bc5ebcb394fd150acbfbc1e57a39039097057e310c2e8ba0078ce5656",
+    "controls": 14,
+    "negatives": 11,
+    "positives": 3,
+    "negatives_typed_refusal": 8,
+    "negatives_REAL_RED_served_supported_fact": 3,
+    "positives_served": 3,
+    "cases": [
+      {
+        "group": "authority_issuer_substitution",
+        "case": "A1_wrong_issuer_qauth_substitution",
+        "exception_type": "IdentityError",
+        "exception_reason": "SOURCE_C11_READSET_CHANGED",
+        "typed_refusal": "REFUSED",
+        "served_supported_original_fact": false,
+        "supported_fact_cells_served": 0,
+        "new_I03_calls": 0,
+        "stimulus": {
+          "foreign_authority_id": "WG0P3-AUTH-wg0p3-REL-A-W2",
+          "from": "REL-A-W2",
+          "swap": "qauth",
+          "to": "REL-A-W1"
+        }
+      },
+      {
+        "group": "authority_issuer_substitution",
+        "case": "A2_stale_issuer_epoch_same_identity",
+        "exception_type": null,
+        "exception_reason": null,
+        "typed_refusal": null,
+        "served_supported_original_fact": true,
+        "supported_fact_cells_served": 42,
+        "new_I03_calls": 4,
+        "stimulus": {
+          "effective_time_or_interval": "2019-01-01",
+          "identity_triple_preserved": true,
+          "supersession_refs": [
+            "urn:wg0p4:test:supersession:SUCCESSOR-AUTH-2"
+          ]
+        }
+      },
+      {
+        "group": "authority_issuer_substitution",
+        "case": "A3_same_hash_foreign_signed_body",
+        "exception_type": null,
+        "exception_reason": null,
+        "typed_refusal": null,
+        "served_supported_original_fact": true,
+        "supported_fact_cells_served": 42,
+        "new_I03_calls": 4,
+        "stimulus": {
+          "foreign_body": [
+            "interpretation_semantics_fingerprint",
+            "producer_replay_locator_or_reference_root",
+            "parent_authority_refs"
+          ],
+          "identity_triple_preserved": true
+        }
+      },
+      {
+        "group": "authority_issuer_substitution",
+        "case": "A4_foreign_governed_operations_same_hash",
+        "exception_type": null,
+        "exception_reason": null,
+        "typed_refusal": null,
+        "served_supported_original_fact": true,
+        "supported_fact_cells_served": 42,
+        "new_I03_calls": 4,
+        "stimulus": {
+          "governed_operations": [
+            "WG0P3-OP-FOREIGN-ONLY"
+          ],
+          "identity_triple_preserved": true
+        }
+      },
+      {
+        "group": "authority_issuer_substitution",
+        "case": "A5_foreign_authority_inside_authorities_tuple",
+        "exception_type": "IdentityError",
+        "exception_reason": "SOURCE_C11_READSET_CHANGED",
+        "typed_refusal": "REFUSED",
+        "served_supported_original_fact": false,
+        "supported_fact_cells_served": 0,
+        "new_I03_calls": 0,
+        "stimulus": {
+          "foreign_authority_id": "WG0P3-AUTH-source-REL-A-W2",
+          "from": "REL-A-W2",
+          "swap": "authorities[0]",
+          "to": "REL-A-W1"
+        }
+      },
+      {
+        "group": "positive_owner",
+        "case": "P1_unmodified_owner_serves",
+        "exception_type": null,
+        "exception_reason": null,
+        "typed_refusal": null,
+        "served_supported_original_fact": true,
+        "supported_fact_cells_served": 42,
+        "new_I03_calls": 4,
+        "stimulus": {
+          "control": "pristine_unmodified"
+        }
+      },
+      {
+        "group": "positive_owner",
+        "case": "P2_own_authority_identity_rebind_serves",
+        "exception_type": null,
+        "exception_reason": null,
+        "typed_refusal": null,
+        "served_supported_original_fact": true,
+        "supported_fact_cells_served": 42,
+        "new_I03_calls": 4,
+        "stimulus": {
+          "authority_id": "WG0P3-AUTH-wg0p3-REL-A-W1",
+          "control": "own_authority_identity_rebind"
+        }
+      },
+      {
+        "group": "positive_owner",
+        "case": "P3_replay_identical_consumer",
+        "exception_type": null,
+        "exception_reason": null,
+        "typed_refusal": null,
+        "served_supported_original_fact": true,
+        "supported_fact_cells_served": 42,
+        "new_I03_calls": 0,
+        "stimulus": {
+          "control": "pristine_replay",
+          "second_run_equal_consumer": true,
+          "second_run_equal_receipts": true
+        }
+      },
+      {
+        "group": "revocation_and_alias",
+        "case": "C1_source_artifact_revocation_not_release_tag",
+        "exception_type": "RevocationError",
+        "exception_reason": "UNKNOWN_RELEASE_NO_REVOCATION",
+        "typed_refusal": "REFUSED",
+        "served_supported_original_fact": false,
+        "supported_fact_cells_served": 0,
+        "new_I03_calls": 0,
+        "stimulus": {
+          "distinct_from_release_tag": true,
+          "object_id": "urn:wg0p3:test:source-snapshot:REL-A-W1",
+          "revoke_target": "source_artifact object_id"
+        }
+      },
+      {
+        "group": "revocation_and_alias",
+        "case": "C2_missing_independent_issuer",
+        "exception_type": "IdentityError",
+        "exception_reason": "RELEASE_VIEW_SOURCE_BINDING_UNRESOLVABLE",
+        "typed_refusal": "REFUSED",
+        "served_supported_original_fact": false,
+        "supported_fact_cells_served": 0,
+        "new_I03_calls": 0,
+        "stimulus": {
+          "missing_issuer_flavor": "qauth_none"
+        }
+      },
+      {
+        "group": "revocation_and_alias",
+        "case": "C3_alias_pointer_across_genuine_source_universes",
+        "exception_type": "IdentityError",
+        "exception_reason": "SOURCE_C11_READSET_CHANGED",
+        "typed_refusal": "REFUSED",
+        "served_supported_original_fact": false,
+        "supported_fact_cells_served": 0,
+        "new_I03_calls": 0,
+        "stimulus": {
+          "alias": "universe_ref",
+          "aliased_universe": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:506ad5f8f472313797d2c1460bebcd1e350c3cbcbea1aa30c3698b38edaaba1f",
+          "both_universes_genuine": true,
+          "from": "REL-A-W1",
+          "to": "REL-A-W2"
+        }
+      },
+      {
+        "group": "signature_and_callback",
+        "case": "B1_self_rehashed_checkpoint_foreign_signature",
+        "exception_type": "ColdRestartError",
+        "exception_reason": "UNTRUSTED_OR_SELF_REHASHED_CHECKPOINT",
+        "typed_refusal": "REFUSED",
+        "served_supported_original_fact": false,
+        "supported_fact_cells_served": 0,
+        "new_I03_calls": 0,
+        "stimulus": {
+          "forge": "self_rehashed_payload_with_old_signature",
+          "tag_fields_proper": true
+        }
+      },
+      {
+        "group": "signature_and_callback",
+        "case": "B2_foreign_signature_proper_tag",
+        "exception_type": "ColdRestartError",
+        "exception_reason": "UNTRUSTED_OR_SELF_REHASHED_CHECKPOINT",
+        "typed_refusal": "REFUSED",
+        "served_supported_original_fact": false,
+        "supported_fact_cells_served": 0,
+        "new_I03_calls": 0,
+        "stimulus": {
+          "forge": "foreign_signature_over_unmodified_payload",
+          "tag_fields_proper": true
+        }
+      },
+      {
+        "group": "signature_and_callback",
+        "case": "B3_captured_executor_callback_fabricates_fact",
+        "exception_type": "IdentityError",
+        "exception_reason": "INVALID_NATIVE_FACT_PAYLOAD:'native_fact'",
+        "typed_refusal": "REFUSED",
+        "served_supported_original_fact": false,
+        "supported_fact_cells_served": 0,
+        "new_I03_calls": 0,
+        "stimulus": {
+          "capture": "executor_callback",
+          "fabricated_fact_ref": {
+            "content_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+            "kind": "WG0P4_NATIVE_ITEM",
+            "object_id": "urn:wg0p4:test:forged-fact"
+          },
+          "native_call_made_by_callback": false
+        }
+      }
+    ]
+  },
+  "regression_courts_physically_executed": {
+    "WG0M_frozen_33": {
+      "junit": "observations/junit/wg0m33_regression.xml",
+      "tests": 33,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "note": "includes the retained WG0M RED control source/release_source_artifact, now green on real imported code"
+    },
+    "WG0L_precommitted_65": {
+      "junit": "observations/junit/wg0l65_regression.xml",
+      "tests": 65,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "contains": [
+        "conditional/original25_unchanged",
+        "conditional/ordinary_full_chain_yes1_no1_over2",
+        "conditional/second_frontier_exact_no_drop",
+        "cold/actual_abrupt_exit23_after_one",
+        "cold/fresh_process_exactly_two_I03_calls",
+        "cold/three_original_consumer_values",
+        "cold/full_frontier25_retained"
+      ]
+    },
+    "WG0N_hostiles": {
+      "junit": "observations/junit/wg0n_hostiles_regression.xml",
+      "tests": 20,
+      "failures": 5,
+      "errors": 0,
+      "skipped": 0,
+      "status": "12 executed controls PASS / 5 unconstructible controls NOT GREEN (preserved) / 0 RED",
+      "inherited_court_root": "inherited_wg0n_court (byte-identical copies incl. the parent Phase A receipt)"
+    },
+    "historical_characterisation_unmodified": {
+      "junit": "observations/junit/historical_characterisation.xml",
+      "tests": 3,
+      "failures": 2,
+      "errors": 0,
+      "skipped": 0,
+      "status": "1 PASS / 2 FAILED; the 2 failures reproduce unmodified and fail on IdentityError COMPLETE_BOUND_SOURCE_DESCRIPTOR_CHANGED"
+    },
+    "WG0L_original3_provenance_negatives": {
+      "junit": "observations/junit/original3_regression.xml",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "banked_not_rebuilt": "WG0N mandatory 236 PASS / 0 RED (parent reviewer); my regressions reproduce the physical 65 + 33 + 12-executed courts and the original25/cold/conditional nodes, not a new whole-estate claim",
+  "junit_hashes": {
+    "historical_characterisation.xml": "7fceca0dcfdc20433cf4776935a2cc750833804ed6c37713a7ad23c3047f2fd0",
+    "original3_regression.xml": "c517836ef596b38be5e2867f95d151301174612cb7a24dd2e8381691f45576d2",
+    "wg0l65_regression.xml": "649c63e3e4d6466440c0336db1ecde8b4bc1574925a43f178682828c0ceed695",
+    "wg0m33_regression.xml": "2e1f1aa8f50f7c3b2b0518964e61dbaad6b17d05e6a067a8bfd636afa4498e53",
+    "wg0n_hostiles_regression.xml": "9cab72b8bc405d39b2e4db122abc3a4250fea4f01518e792a3dad259ba600945"
+  },
+  "grants_made_here": {
+    "original35_rights": false,
+    "external_authenticated_issuer": false,
+    "I05": false,
+    "N11": false,
+    "N12": false,
+    "Sorok_V3": false,
+    "method_adoption": false,
+    "hq_adoption": false
+  }
+}

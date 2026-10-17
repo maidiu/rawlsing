@@ -1,0 +1,60 @@
+{
+  "schema": "PYAT_WARM_ENVIRONMENT_PASSPORT_DELTA@1",
+  "environment_id": "ENV_RAWLSING_LOCAL_WITNESS_R28WG0O",
+  "epoch_id": "EPOCH_20261017_WG0O_LAUNCH",
+  "session_alias": "SESSION_WG0O_INDEPENDENT_ISSUER_SEAM_COURT",
+  "surface": "S2_GOVERNED_LOCAL_OPENCODE_WORKTREE",
+  "machine_alias": "MACHINE_DESKTOP_LOCAL",
+  "status": "LIVE_VERIFIED",
+  "last_live_probe_at": "2026-10-17T07:40:00Z",
+  "role": "independent WG0N reviewer continuation; NOT WG0P6 author; NOT HQ",
+  "interpreter_probe": {
+    "command": "python3 --version && python3 -c 'import pytest'",
+    "status": "OK",
+    "python": "3.11.3",
+    "executable": "/usr/local/bin/python3",
+    "pytest": "9.0.2"
+  },
+  "git_probe": {
+    "status": "OK",
+    "repository": "https://github.com/maidiu/rawlsing.git",
+    "repository_visibility": "PRIVATE",
+    "topology": "ONE shared git object store; ONE isolated worktree for this reviewer branch",
+    "worktree_alias": "R28-WG0O-issuer-wt",
+    "branch": "agent/reviewer-pyat-r28-wg0o-source-issuer-authority-seam-court-r1",
+    "startup_head": "0533516fe939bb1d91be108b4bf05249639afbae"
+  },
+  "writable_marker": {
+    "path_inside_return": "WORKER_RETURNS/PYAT-R28-WG0O-SOURCE-ISSUER-RESIDUAL-R1/",
+    "status": "WRITABLE",
+    "terrain_respected": "only this worker's own WORKER_RETURNS directory was written; no author code, no inherited expectation, no other return modified"
+  },
+  "pinned_candidate_identity": {
+    "transport": "staged_candidate/court/bootstrap_p6/sitecustomize.py verifies all 195 expected files (SOURCE_INPUTS.json + CANDIDATE_CODE_PIN.json precedence) before execution and refuses with exit 86 on any mismatch",
+    "candidate_module_sha256": "3807e46eec947694a1bd76afe23fd96183dd989b511584ec2ad3991ae943925e",
+    "candidate_module_git_blob_sha1": "ef4f2b33c07596ae6c3008320f13d9f5d027b9e4",
+    "native_owner_modules_verified_physically": [
+      "pre553_c11_repository", "pre553_c11_ingest", "pre553_empirical_query",
+      "pre553_batch_runner", "pre553_empirical_objects", "pre553_c11_integrity"]
+  },
+  "sourcefree_execution": {
+    "command": "PYTHONPATH=staged_candidate/court/bootstrap_p6:repro python3 -m pytest ...",
+    "new_court": "tests/test_authority_seam_court.py (14 frozen controls)",
+    "regressions": ["WG0M 33/33", "WG0L 65/65 (incl. original25, cold 1+2, conditional yes1/no1 over 2)", "WG0N hostiles 12 executed / 5 unconstructible preserved", "historical characterisation 1 PASS / 2 FAILED unmodified", "WG0L original3 3/3"],
+    "raw_logs": "observations/junit/*.xml and observations/authority_seam_runs/"
+  },
+  "provider_observation": {
+    "surface": "OpenCode local CLI, single session",
+    "model": "opencode-go/mimo-v2.6-pro",
+    "money_or_quota_class": "subscription allowance; incremental billed value UNKNOWN",
+    "retries_observed": 0
+  },
+  "privacy_and_rights_gates": {
+    "raw_survey_bytes": "NOT USED",
+    "third_party_or_unauthorized_data": "NOT USED",
+    "credentials_or_tokens_in_repo": "NONE",
+    "private_repo_to_unapproved_provider": "NONE"
+  },
+  "assignments_completed": ["PYAT-R28-WG0O-SOURCE-ISSUER-RESIDUAL-R1"],
+  "independent_review_conflicts": "this worker is the independent reviewer; HQ acceptance is a separate act and is not claimed"
+}
