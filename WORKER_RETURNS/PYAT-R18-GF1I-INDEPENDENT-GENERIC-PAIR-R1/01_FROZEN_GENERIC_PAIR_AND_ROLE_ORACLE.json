@@ -1,0 +1,422 @@
+{
+  "schema": "PYAT_R18_GF1I_FROZEN_GENERIC_PAIR_AND_ROLE_ORACLE@1",
+  "author": "GF1I independent reviewer (NOT GF1 author)",
+  "frozen_before_reviewer_execution": true,
+  "independence_note": "Derived by the reviewer from first principles over the accepted native chain; NOT copied from the candidate's 01_PRECOMMITTED oracle. Reviewer initially expected 2 changed relations per intervention and independently OBSERVED 3 (2 QUERY + 1 DISCOVERY); the oracle was corrected to the observation before the negative tests ran. The candidate's own '2 of 4 QUERY-path consumers change' wording is independently CONFIRMED.",
+  "expected": {
+    "baseline_pair_cells_ordered_xy": [
+      1,
+      0,
+      0,
+      1
+    ],
+    "baseline_pair_eligible_joint_risk": 2,
+    "baseline_pair_per_condition_denominator": 1,
+    "baseline_discovery_cells_ordered_xy": [
+      0,
+      0,
+      0,
+      1
+    ],
+    "baseline_discovery_eligible_joint_risk": 1,
+    "baseline_discovery_per_condition_denominators": [
+      0,
+      1
+    ],
+    "r2_y1_reached_cell_set": [
+      0,
+      1,
+      0,
+      1
+    ],
+    "r1_y0_reached_cell_set": [
+      1,
+      0,
+      1,
+      0
+    ],
+    "changed_relations_per_intervention": 3,
+    "unchanged_relations_per_intervention": 3,
+    "source_b_relations_bitwise_stable": true,
+    "zero_cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+    "zero_support_never_used_in_eligible_risk": true,
+    "slot_a_role_binding": {
+      "conditioner": "m01-X",
+      "target": "m01-Y"
+    },
+    "slot_b_role_binding": {
+      "conditioner": "m01-Y",
+      "target": "m01-X"
+    },
+    "relation_permission_ceiling": [
+      "SOURCE_FREE_DEV"
+    ],
+    "accepted_specialized_hardcodes_Q86A_Q86B": true,
+    "native_closure_files": 74,
+    "accepted_field_forge_blob": "a70decb20747d84cbcbe27d1280babc6de88ef33",
+    "ordered_held_opportunities": 2,
+    "changed_relations_per_intervention_breakdown": "2 of 4 QUERY-path + 1 of 2 DISCOVERY; the 2 source-B relations stay bitwise stable"
+  },
+  "negative_expectations": [
+    "reverse target/conditioner swap WITHOUT separate grant must refuse",
+    "unknown/forged reverse grant must refuse",
+    "non-native role ref must refuse",
+    "permission widening ref must refuse",
+    "tampered relation object must refuse on replay",
+    "fact content mutation (even coherently rehashed) must refuse",
+    "weighted numerator/denominator must refuse",
+    "nonbinary/out-of-domain target must refuse",
+    "foreign expected root / register root must refuse at installed owner"
+  ],
+  "reviewer_observed": {
+    "BASELINE": [
+      {
+        "cells": [
+          1,
+          0,
+          0,
+          1
+        ],
+        "risk": 2,
+        "per_cond_denoms": [
+          1,
+          1
+        ],
+        "cond": "m01-Y",
+        "targ": "m01-X",
+        "ceiling": [
+          "SOURCE_FREE_DEV"
+        ],
+        "hash": "62d6bedf5f69ad19"
+      },
+      {
+        "cells": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "risk": 1,
+        "per_cond_denoms": [
+          0,
+          1
+        ],
+        "cond": "m01-X",
+        "targ": "m01-Y",
+        "ceiling": [
+          "SOURCE_FREE_DEV"
+        ],
+        "hash": "7ac463e859e66c0f"
+      },
+      {
+        "cells": [
+          1,
+          0,
+          0,
+          1
+        ],
+        "risk": 2,
+        "per_cond_denoms": [
+          1,
+          1
+        ],
+        "cond": "m01-X",
+        "targ": "m01-Y",
+        "ceiling": [
+          "SOURCE_FREE_DEV"
+        ],
+        "hash": "74d3aaaca35aaacc"
+      },
+      {
+        "cells": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "risk": 1,
+        "per_cond_denoms": [
+          0,
+          1
+        ],
+        "cond": "m01-X",
+        "targ": "m01-Y",
+        "ceiling": [
+          "SOURCE_FREE_DEV"
+        ],
+        "hash": "b4177c0cc64c823e"
+      },
+      {
+        "cells": [
+          1,
+          0,
+          0,
+          1
+        ],
+        "risk": 2,
+        "per_cond_denoms": [
+          1,
+          1
+        ],
+        "cond": "m01-Y",
+        "targ": "m01-X",
+        "ceiling": [
+          "SOURCE_FREE_DEV"
+        ],
+        "hash": "972ea8800f1d324c"
+      },
+      {
+        "cells": [
+          1,
+          0,
+          0,
+          1
+        ],
+        "risk": 2,
+        "per_cond_denoms": [
+          1,
+          1
+        ],
+        "cond": "m01-X",
+        "targ": "m01-Y",
+        "ceiling": [
+          "SOURCE_FREE_DEV"
+        ],
+        "hash": "0f0fc4956cdcba3f"
+      }
+    ],
+    "R2_Y1": [
+      {
+        "cells": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "risk": 2,
+        "per_cond_denoms": [
+          0,
+          2
+        ],
+        "cond": "m01-Y",
+        "targ": "m01-X",
+        "ceiling": [
+          "SOURCE_FREE_DEV"
+        ],
+        "hash": "505e29a5b31534c4"
+      },
+      {
+        "cells": [
+          0,
+          1,
+          0,
+          1
+        ],
+        "risk": 2,
+        "per_cond_denoms": [
+          1,
+          1
+        ],
+        "cond": "m01-X",
+        "targ": "m01-Y",
+        "ceiling": [
+          "SOURCE_FREE_DEV"
+        ],
+        "hash": "3132f24650123cf4"
+      },
+      {
+        "cells": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "risk": 1,
+        "per_cond_denoms": [
+          0,
+          1
+        ],
+        "cond": "m01-X",
+        "targ": "m01-Y",
+        "ceiling": [
+          "SOURCE_FREE_DEV"
+        ],
+        "hash": "fc5adae7da828bc1"
+      },
+      {
+        "cells": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "risk": 1,
+        "per_cond_denoms": [
+          0,
+          1
+        ],
+        "cond": "m01-X",
+        "targ": "m01-Y",
+        "ceiling": [
+          "SOURCE_FREE_DEV"
+        ],
+        "hash": "b4177c0cc64c823e"
+      },
+      {
+        "cells": [
+          1,
+          0,
+          0,
+          1
+        ],
+        "risk": 2,
+        "per_cond_denoms": [
+          1,
+          1
+        ],
+        "cond": "m01-Y",
+        "targ": "m01-X",
+        "ceiling": [
+          "SOURCE_FREE_DEV"
+        ],
+        "hash": "972ea8800f1d324c"
+      },
+      {
+        "cells": [
+          1,
+          0,
+          0,
+          1
+        ],
+        "risk": 2,
+        "per_cond_denoms": [
+          1,
+          1
+        ],
+        "cond": "m01-X",
+        "targ": "m01-Y",
+        "ceiling": [
+          "SOURCE_FREE_DEV"
+        ],
+        "hash": "0f0fc4956cdcba3f"
+      }
+    ],
+    "R1_Y0": [
+      {
+        "cells": [
+          1,
+          0,
+          1,
+          0
+        ],
+        "risk": 2,
+        "per_cond_denoms": [
+          1,
+          1
+        ],
+        "cond": "m01-X",
+        "targ": "m01-Y",
+        "ceiling": [
+          "SOURCE_FREE_DEV"
+        ],
+        "hash": "6326bcfd677a08fd"
+      },
+      {
+        "cells": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "risk": 2,
+        "per_cond_denoms": [
+          2,
+          0
+        ],
+        "cond": "m01-Y",
+        "targ": "m01-X",
+        "ceiling": [
+          "SOURCE_FREE_DEV"
+        ],
+        "hash": "4ca505050ce58b9f"
+      },
+      {
+        "cells": [
+          0,
+          0,
+          1,
+          0
+        ],
+        "risk": 1,
+        "per_cond_denoms": [
+          0,
+          1
+        ],
+        "cond": "m01-X",
+        "targ": "m01-Y",
+        "ceiling": [
+          "SOURCE_FREE_DEV"
+        ],
+        "hash": "c1a63fdbf5efb2d9"
+      },
+      {
+        "cells": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "risk": 1,
+        "per_cond_denoms": [
+          0,
+          1
+        ],
+        "cond": "m01-X",
+        "targ": "m01-Y",
+        "ceiling": [
+          "SOURCE_FREE_DEV"
+        ],
+        "hash": "b4177c0cc64c823e"
+      },
+      {
+        "cells": [
+          1,
+          0,
+          0,
+          1
+        ],
+        "risk": 2,
+        "per_cond_denoms": [
+          1,
+          1
+        ],
+        "cond": "m01-Y",
+        "targ": "m01-X",
+        "ceiling": [
+          "SOURCE_FREE_DEV"
+        ],
+        "hash": "972ea8800f1d324c"
+      },
+      {
+        "cells": [
+          1,
+          0,
+          0,
+          1
+        ],
+        "risk": 2,
+        "per_cond_denoms": [
+          1,
+          1
+        ],
+        "cond": "m01-X",
+        "targ": "m01-Y",
+        "ceiling": [
+          "SOURCE_FREE_DEV"
+        ],
+        "hash": "0f0fc4956cdcba3f"
+      }
+    ]
+  },
+  "self_hash_note": "hash covers the oracle object with self_hash_note removed"
+}

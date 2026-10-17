@@ -1,0 +1,56 @@
+{
+  "schema": "PYAT_R18_GF1I_ENVIRONMENT_PASSPORT_DELTA@1",
+  "sanitized": true,
+  "note": "No credentials, no personal home paths, no respondent bytes, no source data.",
+  "epoch_marker": "EPOCH_PYAT_R18_GF1I_20261016T2020Z_NEW",
+  "observed_at_utc": "2026-10-17T00:25:26Z",
+  "branch": "agent/reviewer-pyat-20261016-r18-gf1i-generic-relation-independent-r1",
+  "sealed_startup": "e2667f25794ba00070f0437197b943483a69e7f7",
+  "candidate_reviewed": "9f4a23cef1482e0a81afb1e7a65df90879931465",
+  "runner": {
+    "python": "Python 3.11.3",
+    "pytest": "pytest 9.1.1",
+    "git": "git version 2.39.1"
+  },
+  "worktree": {
+    "kind": "independent sparse worktree in the shared object store",
+    "dirty_outside_return": "NO"
+  },
+  "permission_grades": {
+    "original_survey_sav_dta": "NOT_USED_NOT_SEEKED",
+    "model_behavioral_calls": "NOT_USED_NOT_SEEKED",
+    "actor_runtime": "NOT_USED_NOT_SEEKED",
+    "source_or_epre_issuance": "NONE",
+    "canonical_or_current_writes": "NONE",
+    "semantic_owner_role": "REVIEWER_NOT_ISSUER",
+    "private_repo_read": "GRANTED_READONLY"
+  },
+  "imports_verified": {
+    "method": "git blob SHA-1 (NUL preimage) + sha256 + byte count re-derived from actual staged bytes",
+    "native_closure_files": 74,
+    "drift": 0,
+    "missing": 0,
+    "accepted_field_forge_blob": "a70decb20747d84cbcbe27d1280babc6de88ef33",
+    "generic_relation_module": "746d669314ddd114ec21d3a35c13c452666863fe",
+    "reviewer_driver": "35cfe92462a2353fded02b1476e525f33c687aa6"
+  },
+  "executed_tests": {
+    "suite": "court/test_gf1i_independent.py",
+    "tests": 19,
+    "passed": 19,
+    "failed": 0,
+    "junit": "junit/gf1i_independent.xml",
+    "candidate_44_suite": "NOT_COLLECTABLE__MISSING_gf1_pair_support_consumer"
+  },
+  "cost_quota": {
+    "model_calls": 0,
+    "actor_runs": 0,
+    "source_operations": 0,
+    "billable": "NONE_OBSERVED",
+    "cash": "UNKNOWN_NOTHING_BILLED"
+  },
+  "next_session_affinity": {
+    "warm_reusable": "74-file native closure re-attests 74/74; reuse for the consumer re-review",
+    "do_not_infer": "passport is not a grant for source/model/actor work or semantic issuance"
+  }
+}

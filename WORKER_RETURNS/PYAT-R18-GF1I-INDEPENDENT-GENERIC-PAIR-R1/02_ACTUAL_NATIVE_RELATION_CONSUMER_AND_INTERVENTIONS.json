@@ -1,0 +1,564 @@
+{
+  "schema": "PYAT_R18_GF1I_ACTUAL_NATIVE_RELATION_CONSUMER_AND_INTERVENTIONS@1",
+  "executed_at_utc": "2026-10-17T00:24:11Z",
+  "driver": "court/gf1i_driver.py (reviewer-authored; does NOT import the candidate's absent consumer)",
+  "native_closure_reattested_files": 74,
+  "profiles": {
+    "BASELINE": {
+      "p01_links": 6,
+      "link_kinds": [
+        "QUERY",
+        "DISCOVERY",
+        "QUERY",
+        "DISCOVERY",
+        "QUERY",
+        "QUERY"
+      ],
+      "relations": [
+        {
+          "index": 0,
+          "kind": "QUERY",
+          "ordered_xy_cells": [
+            1,
+            0,
+            0,
+            1
+          ],
+          "eligible_joint_risk_total": 2,
+          "per_condition_denominators": [
+            1,
+            1
+          ],
+          "native_component_order": [
+            "m01-Y",
+            "m01-X"
+          ],
+          "conditioner": "m01-Y",
+          "target": "m01-X",
+          "relation_permission_ceiling": [
+            "SOURCE_FREE_DEV"
+          ],
+          "zero_cell_states": [
+            "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+          ],
+          "content_hash": "62d6bedf5f69ad19be3899ddc98523cbbb9b6aaa840bdd598e68ed14adb3002d"
+        },
+        {
+          "index": 1,
+          "kind": "DISCOVERY",
+          "ordered_xy_cells": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "eligible_joint_risk_total": 1,
+          "per_condition_denominators": [
+            0,
+            1
+          ],
+          "native_component_order": [
+            "m01-X",
+            "m01-Y"
+          ],
+          "conditioner": "m01-X",
+          "target": "m01-Y",
+          "relation_permission_ceiling": [
+            "SOURCE_FREE_DEV"
+          ],
+          "zero_cell_states": [
+            "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+          ],
+          "content_hash": "7ac463e859e66c0f7e92ffcbd964f88f8e55524beeadc587d4ecc7032bcc6903"
+        },
+        {
+          "index": 2,
+          "kind": "QUERY",
+          "ordered_xy_cells": [
+            1,
+            0,
+            0,
+            1
+          ],
+          "eligible_joint_risk_total": 2,
+          "per_condition_denominators": [
+            1,
+            1
+          ],
+          "native_component_order": [
+            "m01-X",
+            "m01-Y"
+          ],
+          "conditioner": "m01-X",
+          "target": "m01-Y",
+          "relation_permission_ceiling": [
+            "SOURCE_FREE_DEV"
+          ],
+          "zero_cell_states": [
+            "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+          ],
+          "content_hash": "74d3aaaca35aaacc4491c7e472ac38a6e69fcf0d51736b86b853ea48d10b2236"
+        },
+        {
+          "index": 3,
+          "kind": "DISCOVERY",
+          "ordered_xy_cells": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "eligible_joint_risk_total": 1,
+          "per_condition_denominators": [
+            0,
+            1
+          ],
+          "native_component_order": [
+            "m01-X",
+            "m01-Y"
+          ],
+          "conditioner": "m01-X",
+          "target": "m01-Y",
+          "relation_permission_ceiling": [
+            "SOURCE_FREE_DEV"
+          ],
+          "zero_cell_states": [
+            "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+          ],
+          "content_hash": "b4177c0cc64c823e4a97eaa98c370fedd767d3d4e219659ab3a4edd8e4a336dc"
+        },
+        {
+          "index": 4,
+          "kind": "QUERY",
+          "ordered_xy_cells": [
+            1,
+            0,
+            0,
+            1
+          ],
+          "eligible_joint_risk_total": 2,
+          "per_condition_denominators": [
+            1,
+            1
+          ],
+          "native_component_order": [
+            "m01-Y",
+            "m01-X"
+          ],
+          "conditioner": "m01-Y",
+          "target": "m01-X",
+          "relation_permission_ceiling": [
+            "SOURCE_FREE_DEV"
+          ],
+          "zero_cell_states": [
+            "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+          ],
+          "content_hash": "972ea8800f1d324ce964b1424979789ec8c6cbe9171712cc7206bf1dd073be76"
+        },
+        {
+          "index": 5,
+          "kind": "QUERY",
+          "ordered_xy_cells": [
+            1,
+            0,
+            0,
+            1
+          ],
+          "eligible_joint_risk_total": 2,
+          "per_condition_denominators": [
+            1,
+            1
+          ],
+          "native_component_order": [
+            "m01-X",
+            "m01-Y"
+          ],
+          "conditioner": "m01-X",
+          "target": "m01-Y",
+          "relation_permission_ceiling": [
+            "SOURCE_FREE_DEV"
+          ],
+          "zero_cell_states": [
+            "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+          ],
+          "content_hash": "0f0fc4956cdcba3f7bbf8cee70b1f897a6361fce96a17732443ba230e55afbe2"
+        }
+      ]
+    },
+    "R2_Y1": {
+      "p01_links": 6,
+      "link_kinds": [
+        "QUERY",
+        "QUERY",
+        "DISCOVERY",
+        "DISCOVERY",
+        "QUERY",
+        "QUERY"
+      ],
+      "relations": [
+        {
+          "index": 0,
+          "kind": "QUERY",
+          "ordered_xy_cells": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "eligible_joint_risk_total": 2,
+          "per_condition_denominators": [
+            0,
+            2
+          ],
+          "native_component_order": [
+            "m01-Y",
+            "m01-X"
+          ],
+          "conditioner": "m01-Y",
+          "target": "m01-X",
+          "relation_permission_ceiling": [
+            "SOURCE_FREE_DEV"
+          ],
+          "zero_cell_states": [
+            "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+          ],
+          "content_hash": "505e29a5b31534c45d53c155a367c5151b1d982682a23356a193c5c8c0e563a4"
+        },
+        {
+          "index": 1,
+          "kind": "QUERY",
+          "ordered_xy_cells": [
+            0,
+            1,
+            0,
+            1
+          ],
+          "eligible_joint_risk_total": 2,
+          "per_condition_denominators": [
+            1,
+            1
+          ],
+          "native_component_order": [
+            "m01-X",
+            "m01-Y"
+          ],
+          "conditioner": "m01-X",
+          "target": "m01-Y",
+          "relation_permission_ceiling": [
+            "SOURCE_FREE_DEV"
+          ],
+          "zero_cell_states": [
+            "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+          ],
+          "content_hash": "3132f24650123cf4670d96bc8c91d13591f9d36a8f13f90b669e52122f118763"
+        },
+        {
+          "index": 2,
+          "kind": "DISCOVERY",
+          "ordered_xy_cells": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "eligible_joint_risk_total": 1,
+          "per_condition_denominators": [
+            0,
+            1
+          ],
+          "native_component_order": [
+            "m01-X",
+            "m01-Y"
+          ],
+          "conditioner": "m01-X",
+          "target": "m01-Y",
+          "relation_permission_ceiling": [
+            "SOURCE_FREE_DEV"
+          ],
+          "zero_cell_states": [
+            "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+          ],
+          "content_hash": "fc5adae7da828bc1dda1de616402de7c53e36feb0ad5a3ff4d9235fd61876637"
+        },
+        {
+          "index": 3,
+          "kind": "DISCOVERY",
+          "ordered_xy_cells": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "eligible_joint_risk_total": 1,
+          "per_condition_denominators": [
+            0,
+            1
+          ],
+          "native_component_order": [
+            "m01-X",
+            "m01-Y"
+          ],
+          "conditioner": "m01-X",
+          "target": "m01-Y",
+          "relation_permission_ceiling": [
+            "SOURCE_FREE_DEV"
+          ],
+          "zero_cell_states": [
+            "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+          ],
+          "content_hash": "b4177c0cc64c823e4a97eaa98c370fedd767d3d4e219659ab3a4edd8e4a336dc"
+        },
+        {
+          "index": 4,
+          "kind": "QUERY",
+          "ordered_xy_cells": [
+            1,
+            0,
+            0,
+            1
+          ],
+          "eligible_joint_risk_total": 2,
+          "per_condition_denominators": [
+            1,
+            1
+          ],
+          "native_component_order": [
+            "m01-Y",
+            "m01-X"
+          ],
+          "conditioner": "m01-Y",
+          "target": "m01-X",
+          "relation_permission_ceiling": [
+            "SOURCE_FREE_DEV"
+          ],
+          "zero_cell_states": [
+            "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+          ],
+          "content_hash": "972ea8800f1d324ce964b1424979789ec8c6cbe9171712cc7206bf1dd073be76"
+        },
+        {
+          "index": 5,
+          "kind": "QUERY",
+          "ordered_xy_cells": [
+            1,
+            0,
+            0,
+            1
+          ],
+          "eligible_joint_risk_total": 2,
+          "per_condition_denominators": [
+            1,
+            1
+          ],
+          "native_component_order": [
+            "m01-X",
+            "m01-Y"
+          ],
+          "conditioner": "m01-X",
+          "target": "m01-Y",
+          "relation_permission_ceiling": [
+            "SOURCE_FREE_DEV"
+          ],
+          "zero_cell_states": [
+            "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+          ],
+          "content_hash": "0f0fc4956cdcba3f7bbf8cee70b1f897a6361fce96a17732443ba230e55afbe2"
+        }
+      ],
+      "changed_indices_vs_baseline": [
+        0,
+        1,
+        2
+      ],
+      "source_b_indices_stable": true
+    },
+    "R1_Y0": {
+      "p01_links": 6,
+      "link_kinds": [
+        "QUERY",
+        "QUERY",
+        "DISCOVERY",
+        "DISCOVERY",
+        "QUERY",
+        "QUERY"
+      ],
+      "relations": [
+        {
+          "index": 0,
+          "kind": "QUERY",
+          "ordered_xy_cells": [
+            1,
+            0,
+            1,
+            0
+          ],
+          "eligible_joint_risk_total": 2,
+          "per_condition_denominators": [
+            1,
+            1
+          ],
+          "native_component_order": [
+            "m01-X",
+            "m01-Y"
+          ],
+          "conditioner": "m01-X",
+          "target": "m01-Y",
+          "relation_permission_ceiling": [
+            "SOURCE_FREE_DEV"
+          ],
+          "zero_cell_states": [
+            "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+          ],
+          "content_hash": "6326bcfd677a08fdf28ac4a48656eb0568b4ebee6402fe8b67d563be0c4f37b5"
+        },
+        {
+          "index": 1,
+          "kind": "QUERY",
+          "ordered_xy_cells": [
+            1,
+            1,
+            0,
+            0
+          ],
+          "eligible_joint_risk_total": 2,
+          "per_condition_denominators": [
+            2,
+            0
+          ],
+          "native_component_order": [
+            "m01-Y",
+            "m01-X"
+          ],
+          "conditioner": "m01-Y",
+          "target": "m01-X",
+          "relation_permission_ceiling": [
+            "SOURCE_FREE_DEV"
+          ],
+          "zero_cell_states": [
+            "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+          ],
+          "content_hash": "4ca505050ce58b9facdf3885c1ada0662605f27d0b6e8f5f0d25c88b22ea629d"
+        },
+        {
+          "index": 2,
+          "kind": "DISCOVERY",
+          "ordered_xy_cells": [
+            0,
+            0,
+            1,
+            0
+          ],
+          "eligible_joint_risk_total": 1,
+          "per_condition_denominators": [
+            0,
+            1
+          ],
+          "native_component_order": [
+            "m01-X",
+            "m01-Y"
+          ],
+          "conditioner": "m01-X",
+          "target": "m01-Y",
+          "relation_permission_ceiling": [
+            "SOURCE_FREE_DEV"
+          ],
+          "zero_cell_states": [
+            "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+          ],
+          "content_hash": "c1a63fdbf5efb2d905ec556c5690b22a2888c2ce687d47032451831b74a73fc9"
+        },
+        {
+          "index": 3,
+          "kind": "DISCOVERY",
+          "ordered_xy_cells": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "eligible_joint_risk_total": 1,
+          "per_condition_denominators": [
+            0,
+            1
+          ],
+          "native_component_order": [
+            "m01-X",
+            "m01-Y"
+          ],
+          "conditioner": "m01-X",
+          "target": "m01-Y",
+          "relation_permission_ceiling": [
+            "SOURCE_FREE_DEV"
+          ],
+          "zero_cell_states": [
+            "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+          ],
+          "content_hash": "b4177c0cc64c823e4a97eaa98c370fedd767d3d4e219659ab3a4edd8e4a336dc"
+        },
+        {
+          "index": 4,
+          "kind": "QUERY",
+          "ordered_xy_cells": [
+            1,
+            0,
+            0,
+            1
+          ],
+          "eligible_joint_risk_total": 2,
+          "per_condition_denominators": [
+            1,
+            1
+          ],
+          "native_component_order": [
+            "m01-Y",
+            "m01-X"
+          ],
+          "conditioner": "m01-Y",
+          "target": "m01-X",
+          "relation_permission_ceiling": [
+            "SOURCE_FREE_DEV"
+          ],
+          "zero_cell_states": [
+            "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+          ],
+          "content_hash": "972ea8800f1d324ce964b1424979789ec8c6cbe9171712cc7206bf1dd073be76"
+        },
+        {
+          "index": 5,
+          "kind": "QUERY",
+          "ordered_xy_cells": [
+            1,
+            0,
+            0,
+            1
+          ],
+          "eligible_joint_risk_total": 2,
+          "per_condition_denominators": [
+            1,
+            1
+          ],
+          "native_component_order": [
+            "m01-X",
+            "m01-Y"
+          ],
+          "conditioner": "m01-X",
+          "target": "m01-Y",
+          "relation_permission_ceiling": [
+            "SOURCE_FREE_DEV"
+          ],
+          "zero_cell_states": [
+            "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+          ],
+          "content_hash": "0f0fc4956cdcba3f7bbf8cee70b1f897a6361fce96a17732443ba230e55afbe2"
+        }
+      ],
+      "changed_indices_vs_baseline": [
+        0,
+        1,
+        2
+      ],
+      "source_b_indices_stable": true
+    }
+  },
+  "consumer_note": "GF1's named consumer gf1_pair_support_consumer is ABSENT; separation_class/support_vectors NOT independently observable"
+}
