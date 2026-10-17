@@ -1,0 +1,67 @@
+{
+  "branch": "agent/rabochii-sorok-v2-hq323-c0r2-git-backed-repair-r1",
+  "git_object_access": {
+    "E03": "0e0ed50dbce2dd1434d3a3c84b937b9a956adba9",
+    "E03_present": true,
+    "E04T": "79cb8244a5291218bde17142b93fc2419eade396",
+    "E04T_present": true,
+    "genuine_object_store": true,
+    "probe": "git cat-file -e",
+    "repo_toplevel": "/Users/matthewsmith/Desktop/Rawlsing/R323-C0R2-wt"
+  },
+  "host": "AUTHORIZED_LOCAL_GIT_BACKED_WORKTREE",
+  "interpreter": {
+    "bytecode_disabled": true,
+    "executable": "/usr/local/bin/python3",
+    "flag": "python3 -B",
+    "implementation": "CPython",
+    "platform": "macOS-13.2.1-x86_64-i386-64bit",
+    "python": "3.11.3"
+  },
+  "libraries": {
+    "pandas": "2.3.1",
+    "pytest": "9.0.2",
+    "third_party_pins_are_owner_pins": false
+  },
+  "native_closure": {
+    "all_blob_sha1_match": true,
+    "all_imported_file_inside_pinned_runtime": true,
+    "ambient_import_leaks": 0,
+    "bytes_expected": 859712,
+    "bytes_verified": 859712,
+    "modules_expected": 29,
+    "modules_verified": 29
+  },
+  "note": "runtime continuity across chats is NOT assumed; capability was re-verified from Git objects in this session",
+  "parent_capability_hold": "aac6d7d13ce386598d6e1c147687d9ed64e188b7",
+  "prohibitions": [
+    "no original waves",
+    "no model invocation",
+    "no V3 actor",
+    "no Pyat production owner change",
+    "no PRE-MAIN/CURRENT change",
+    "no N11/N12",
+    "no semantic adoption",
+    "no K9/K10 auto-dispatch",
+    "no self-acceptance"
+  ],
+  "repository": "maidiu/rawlsing",
+  "role": "bounded source-free implementation worker; NOT HQ, NOT Pyat owner, NOT independent acceptance reviewer",
+  "runtime_binding": {
+    "hardcoded_tmp_removed": true,
+    "relocation_required": false,
+    "resolved_from": "product.nonparent.__file__ package root"
+  },
+  "sanitization": {
+    "actor_state": false,
+    "helper_dispatch": 0,
+    "model_calls": 0,
+    "network_calls": 0,
+    "personal_data": false,
+    "survey_bytes": false
+  },
+  "schema": "SOROK_V2_HQ323_C0R2_ENVIRONMENT_PASSPORT@1",
+  "sealed_startup": "be2822596fc34a3d9e6d04dfb5b4071c1e28184e",
+  "warm_runtime_assumed": false,
+  "write_scope": "WORKER_RETURNS/SOROK-V2-HQ323-C0R2-GIT-BACKED-REPAIR-R1/ and the sourcefree C0P facade + its bounded author-side tests/helpers only"
+}
