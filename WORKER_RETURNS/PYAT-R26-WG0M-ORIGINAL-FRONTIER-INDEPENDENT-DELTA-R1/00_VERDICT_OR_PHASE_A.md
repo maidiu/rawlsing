@@ -9,3 +9,7 @@ The unchanged original65 and assertions, original WG0J44/K11 source closure, exa
 New controls require typed refusal before a new I03 call and no supported forged descriptor. They cover copied plans/mappings/contracts, source edition, item IDs, release/risk/form/domain, membership/denominator, grants/disposition, semantic description, same-cardinality substitutions, current clock/epoch/revocation and forged fact projections. An untyped KeyError is a RED, not a refusal pass. Baseline native computations used to construct a genuine fact are separated from attack-time calls.
 
 Phase B may start only after an exact governed WG0P5 return is pushed, its SHA/read scope frozen, and its actual source independently staged. Read-only exact original owner modules and tests must remain unchanged. Source-free fixture permission supplies no original survey, semantic issuer, N11/N12, production/canonical, HQ adoption or operative V3 authority. The reviewer does not repair author code.
+
+## Published candidate gate
+
+After Phase A publication, the WG0P5 remote was resolved directly to **7e589c19c693c150d0cf622fc43e84bbc40d1b31**, its sealed commission startup. The exact WG0P5 return directory has no files at that commit. Current state is **WAIT_FOR_GOVERNED_WG0P5_PUSH**. No repaired candidate was imported/executed. The full goal is not complete. `observations/WG0P5_publication_gate.json` retains the exact branch, SHA, expected return directory and timestamp. `repro/check_wg0p5_gate.py` performs one bounded read-only check for a continuation.
