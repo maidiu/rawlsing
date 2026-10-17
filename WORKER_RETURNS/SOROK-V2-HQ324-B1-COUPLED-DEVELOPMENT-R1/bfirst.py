@@ -43,6 +43,16 @@ UPDATE_RULE = sealed(dict(authority_id='TEST_ONLY_CAN011_B1', authority_version=
                 'payload joint_check or private_check from matching history',
                 'explicit TEST_ONLY owner grant; before hashes; causal parents'],
     state_kind_id='V3MS_MEDIATOR', role='REGULATORY_PROTECTIVE'))
+def rule_reference(spec):
+    """Bind canonical authority/rule hash names to this test-only content specification."""
+    authority = dict(authority_id=spec['authority_id'], authority_version=spec['authority_version'],
+                     permission_ceiling='COMMISSION_AUTHORIZED_TEST_ONLY', grade=GRADE)
+    return sealed(dict({k: v for k, v in spec.items() if k != 'hash'},
+                       authority_content_hash=digest(authority), rule_content_hash=spec['hash']))
+
+
+RESPONSE_RULE = rule_reference(RESPONSE_RULE)
+UPDATE_RULE = rule_reference(UPDATE_RULE)
 REGISTRY = sealed(dict(registry_id='V3_DEVELOPMENTAL_MIDDLE_STATE_REGISTRY',
     registry_version='1.0.0', candidate_scope='TEST_ONLY',
     state_kinds=['V3MS_MEDIATOR'], roles=['REGULATORY_PROTECTIVE']))
