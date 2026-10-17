@@ -1,0 +1,81 @@
+{
+  "schema": "T9I_INDEPENDENT_ORACLE@1",
+  "frozen_at_utc": "2026-10-17T02:55:18.739398+00:00",
+  "before_candidate_source_or_outputs": true,
+  "startup": "863a89c4ba03c47b6f50e5ba1144f510d8895a0b",
+  "candidate": "edf3494b1b11cb71a78540aba950aa15da900c8a",
+  "cases": [
+    {
+      "id": "C1_ASOF_1995",
+      "input": "1990=.20, published 1990; 2000=.60, published 2000; query known-at 1995, valid-at 1995",
+      "expected": "Exclude 2000 in as-of mode. .40 is forbidden. Prior .20 may only be labelled carried/estimated with unsupported constancy disclosed, otherwise typed unknown."
+    },
+    {
+      "id": "C2_RETRO_1995",
+      "input": "same endpoints, retrospective archival knowledge after 2000",
+      "expected_value": 0.4,
+      "label": "INTERPOLATED_NOT_OBSERVED",
+      "derivation": ".20+(1995-1990)/(2000-1990)*(.60-.20)",
+      "uncertainty": "Linear model assumption only; no design/sample uncertainty identified. With only proportion range [0,1], identification set [0,1], maximum absolute error .60; monotonicity assumption gives [.20,.60], max absolute error .20. No unconditional tight error claim."
+    },
+    {
+      "id": "C3_NULL_NO_SUPPORT",
+      "expected": "No endpoints/support => typed unknown, never fabricated value or successful empty inference; explicit zero remains zero, null is not zero."
+    },
+    {
+      "id": "C4_RUPTURE",
+      "input": "declared break between endpoints",
+      "expected": "No interpolation across break; typed unknown or model separated by regime. Smooth TC trend not proof of no break."
+    },
+    {
+      "id": "C5_GEOGRAPHY",
+      "input": "endpoints incompatible population, geography or units",
+      "expected": "No pooled interpolation absent explicit valid crosswalk; typed incompatibility."
+    }
+  ],
+  "extensions": [
+    {
+      "id": "E1_POSTCLOCK_PUBLICATION",
+      "expected": "Observation before query but publication after known-at excluded in AS_OF; archival may use only with disclosed later knowledge."
+    },
+    {
+      "id": "E2_REVOCATION",
+      "expected": "Present use requires currently valid source rights in either mode; historical valid-at is not a current grant. Historical state reconstructs effective and discovered timestamps separately."
+    },
+    {
+      "id": "E3_NONRENEWAL",
+      "expected": "Expired access never resurrected by old query clock; distinguish historical entitlement evidence from current lawful computation."
+    },
+    {
+      "id": "E4_COHORT",
+      "expected": "Historical world access/publication is not proof of person knowledge, exposure, remembered exposure or cohort estimand. Require explicit actor evidence."
+    },
+    {
+      "id": "E5_TC_TREND",
+      "expected": "Coherent linear sourcefree series returns slope .04/year for .20 to .60 over 10 years, estimated only; no national inference."
+    },
+    {
+      "id": "E6_STRUCTURAL_WORLD",
+      "expected": "Temporal consumer values may change at two times; controlled structural/access world identical across times."
+    },
+    {
+      "id": "E7_NATIVE_PROVENANCE",
+      "expected": "28 adapted and 8 original legacy tests must actually execute with zero skip; all imported project files match pinned bytes, __file__, module identities and git blobs. Wrong ambient import is rejected."
+    },
+    {
+      "id": "E8_CLOSURE",
+      "expected": "Verify all 1259 declared copied files and SHA1 NUL blob preimages; inspect for raw/respondent/private executable cargo before execution. Materialize only minimal scientific closure after static audit."
+    }
+  ],
+  "decision_rule": "ACCEPT only at explicitly tested sourcefree grain if obligations demonstrated. Reproducible scientific/custody failure => RED; missing evidence => HOLD, never fake PASS. Author green alone insufficient.",
+  "authority_ceiling": [
+    "no EE12 real source pair",
+    "no national inference",
+    "no OC05",
+    "no N11",
+    "no N12",
+    "no V3",
+    "no canonical code writes"
+  ],
+  "executor": "Direct local Python under accountable reviewer; no DeepSeek delegation or qualification claimed."
+}
