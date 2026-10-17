@@ -1,0 +1,132 @@
+{
+  "schema": "O35E_PROSPECTIVE_EXPECTATIONS@1",
+  "original_permission": "HOLD_NO_VERIFIED_SIGNED_WARRANT",
+  "original_eligible_item_count": null,
+  "original_native_negative_status": "UNCONSTRUCTIBLE_WITHOUT_COMPETENT_U_E_PRE",
+  "metadata_census_count": 18259,
+  "metadata_keys_sha256": "f4303e015ab6d971ffc4074b81cf72d5d9942574b0bdad530f1d0fb9b98b506c",
+  "metadata_keys_file": "frozen_metadata_keys.json",
+  "five_preserved_relation_item_omission_controls": [
+    {
+      "source": "Afrobarometer",
+      "wave": "R1",
+      "canonical_source": "Afrobarometer",
+      "canonical_wave": "R1",
+      "country_code_scope": "LS",
+      "question_id": "Afrobarometer:R1:demele",
+      "var_code": "demele",
+      "governed_row_payload_hash": "cbe0f845893015cb0c030006f31ffa7bc717ef0824b558b2ed9ea39077d627d8"
+    },
+    {
+      "source": "Arab Barometer",
+      "wave": "W1",
+      "canonical_source": "Arab Barometer",
+      "canonical_wave": "I",
+      "country_code_scope": "YE",
+      "question_id": "Arab Barometer:W1:q101",
+      "var_code": "q101",
+      "governed_row_payload_hash": "90e060c1e4b9a4fbe54169d07cb3989e6d6bc39f92d262217859d0b278c918fc"
+    },
+    {
+      "source": "GSS",
+      "wave": "1972",
+      "canonical_source": "GSS",
+      "canonical_wave": "1972",
+      "country_code_scope": "US",
+      "question_id": "GSS:1972:abdefect",
+      "var_code": "abdefect",
+      "governed_row_payload_hash": "704ecf81ab96aa9254816a94dc623e2c8810b10bae259651ad3af03955aff80b"
+    },
+    {
+      "source": "LiTS",
+      "wave": "2006",
+      "canonical_source": "LiTS",
+      "canonical_wave": "2006",
+      "country_code_scope": "BY",
+      "question_id": "LiTS:2006:q302_1",
+      "var_code": "q302_1",
+      "governed_row_payload_hash": "8795cdde4c50c0bace60f227b958e686708108319eb182c38d8d65bcc01a6aef"
+    },
+    {
+      "source": "WVS",
+      "wave": "W1",
+      "canonical_source": "WVS",
+      "canonical_wave": "W1",
+      "country_code_scope": "SE",
+      "question_id": "WVS:W1:V10",
+      "var_code": "V10",
+      "governed_row_payload_hash": "a00a30ea3e02846b7669d3ac9f3bca92af9386cccc05b958b4263ca6906df952"
+    }
+  ],
+  "metadata_negative_controls": [
+    "omit_each_of_five",
+    "extra_inactive_asian_W6",
+    "source_swap",
+    "edition_swap",
+    "revoked_testonly_grant",
+    "same_count_partition_substitution"
+  ],
+  "metadata_claim_ceiling": "Loss from preserved QRA metadata only; NOT proof of original eligibility/completeness.",
+  "testonly_native_positive": {
+    "fixture": "rawlsing_next.tests.test_pre553_route_b_production._fixture",
+    "source_kind": "ExactPhysicalCellStream in memory; no actual SAV/DTA decoder or survey source",
+    "roles": [
+      "raw Y query",
+      "governed weighted Y query",
+      "exact bounded discovery"
+    ],
+    "physical_rows": 3,
+    "raw_Y_denominator": 2,
+    "raw_Y_numerators": {
+      "0": 1,
+      "1": 1
+    },
+    "weighted_Y_denominator": 3,
+    "weighted_Y_numerators": {
+      "0": 1,
+      "1": 2
+    },
+    "R3_Y": "NOT_ELIGIBLE; never denominator 3",
+    "consumer": "actual OC01 SOURCE_LOCAL_STATISTIC policy, TEST_ONLY refs",
+    "positive_requirements": [
+      "actual C11 release",
+      "actual I03/I05 calls inside Batch callbacks",
+      "exact result-ref outer join",
+      "literal fact payload retained",
+      "fresh-process identical semantic receipts"
+    ]
+  },
+  "native_hostiles": [
+    "omit_raw_query",
+    "omit_weighted_query",
+    "extra_query",
+    "source_swap_before_I03",
+    "projection_authority_removed",
+    "same_count_query_partition_swap",
+    "missing_weight_never_value",
+    "valid_empty_not_positive_discovery",
+    "receipt_result_ref_substitution",
+    "missing_discovery_before_consumer"
+  ],
+  "unexecuted_original_controls": [
+    "missing_original_B_1",
+    "missing_original_B_2",
+    "missing_original_B_3",
+    "missing_original_B_4",
+    "missing_original_B_5",
+    "extra_ineligible_original",
+    "wrong_original_source",
+    "wrong_original_edition",
+    "original_warrant_revocation",
+    "same_count_original_partition_swap"
+  ],
+  "no_promotions": [
+    "original_source_pass",
+    "original_U_E_pre",
+    "N9_grant",
+    "OC05",
+    "N11",
+    "N12",
+    "V3"
+  ]
+}
