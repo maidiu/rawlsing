@@ -10,7 +10,7 @@ class Adapter:
  def __init__(self,oracle):
   self.oracle=oracle;self.physical=verified_modules()
   self.owner_source_hashes_verified=True;self.actual_imports_verified=True
-  self.out=R/'observations/phase_b/controls_v1_attempt3';self.out.mkdir(parents=True,exist_ok=True)
+  self.out=R/'observations/phase_b/controls_v1_final';self.out.mkdir(parents=True,exist_ok=True)
   self.cold_folder=None
  def refusal(self,fn):
   try:
