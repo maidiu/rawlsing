@@ -17,10 +17,14 @@ def items():
  return [w.NativeItem(**{k:tuple(v) if k in ('options','missing_codes') else v for k,v in row.items() if k in names}) for row in O['original_items']]
 def joint_items():
  return [w.NativeItem(item_id='WG0P4-JOINT-'+suffix,form_id=form,source_id='WG0P-SRC-A',wave='W1',unit='respondent',response_kind=kind,options=domain,missing_codes=missing,route_evidence=route,grant='GRANTED_FIXTURE',version='v1') for suffix,form,kind,domain,missing,route in [('ORD','Q-ORD-A','ORDINAL',('0','1','2','3','9'),('9','997','998'),None),('RT','Q-RT-C','ROUTED',('yes','no'),('9',),'TESTONLY_R1_R6_JOINT_ROUTING')]]
+class AdmissionRefused(Exception):
+ def __init__(self,value):self.value=value;super().__init__(value)
 def builder(its=None,joint=False):
  b=w.WorkloadBuilder()
  for i in items() if its is None else its:
-  if b.add_item(i)!='OK':raise RuntimeError('reviewer input duplicated')
+  outcome=b.add_item(i)
+  if outcome=='CONFLICTING_NATIVE_ITEM_IDENTITY':raise AdmissionRefused(outcome)
+  if outcome!='OK':raise RuntimeError('unexpected reviewer admission return '+str(outcome))
  if joint:b.add_joint_risk_authority(w.joint_risk_authority())
  return b
 def plan(its=None,joint=False,releases=None,ops=None):

@@ -10,12 +10,14 @@ class Adapter:
  def __init__(self,oracle):
   self.oracle=oracle;self.physical=verified_modules()
   self.owner_source_hashes_verified=True;self.actual_imports_verified=True
-  self.out=R/'observations/phase_b/controls_v1';self.out.mkdir(parents=True,exist_ok=True)
+  self.out=R/'observations/phase_b/controls_v1_attempt3';self.out.mkdir(parents=True,exist_ok=True)
   self.cold_folder=None
  def refusal(self,fn):
   try:
    value=fn()
    return {'attempted':True,'exception_type':None,'typed_state':None,'served_positive':True,'returned':w._plain(value)}
+  except AdmissionRefused as e:
+   return {'attempted':True,'exception_type':None,'typed_state':'HELD','served_positive':False,'actual_admission_return':e.value,'mapping':'Candidate add_item returned CONFLICTING_NATIVE_ITEM_IDENTITY; no executable plan or positive result was admitted.'}
   except (w.IdentityError,w.FrontierError,w.RevocationError,w.ColdRestartError,w.NativeDataError,w.BatchIntegrityError,KeyError,ValueError,TypeError) as e:
    return {'attempted':True,'exception_type':type(e).__name__,'reason':str(e),'typed_state':None,'served_positive':False}
  def execute_case(self,group,case):
