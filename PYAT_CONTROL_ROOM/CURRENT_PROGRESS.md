@@ -1,3 +1,21 @@
+# Pyat R26 — five returns adjudicated, original frontier RED at provenance, six parallel work lanes
+
+**Existing independently accepted HQ working decision:** `f37d3f04cfc85961559e71d71f1bec6e0e6295e1` (`PYAT_CONTROL_ROOM/PYAT_HQ_ACCESSION_CANDIDATE_20261016_R1/10_R26_FIVE_RETURN_INTAKE_SCIENTIFIC_DISPOSITIONS_AND_SIX_PARALLEL_COMMISSIONS_20261016.md`). Canonical revision 10 (new report) inherits R25 sealed checkpoint packet `e0ffa87fb10fbdca9da7570cbf7e7f3ff7e6c64d`, last LATEST `f1a1a7a0b2b7bef90115f9f6d22b1cb001d156b2`. This R26 packet does not become sealed until committed + exact LATEST pointer advanced and remote checked.
+
+**Actual returns:** WG0P4 `20d781c8502662bf788b60b828e46df55898d687` native sourcefree positive, WG0L `bec9a128922e4e431ce2ed862aa7802c902813ed` **3 independent source-descriptor REDs despite all65 prior controls pass**; F6C `9aa0e7d3a0cf9ab7654ce8e3d5cb15060235a48f` 92 author tests real sourcefree producer-to-consumer science pending independent F6I; GF1C `fdc659ebe3ff6060df30bbce4e0138f90472e8c7` HOLD no consumer authored, GF1I old RED retained; T9I `a2a7bdeda76aa008b3d620b01af71f7fd6efaaae` **38 PASS10 RED independent, original28/V5538 PASS** seven sourcefree temporal defects.
+
+**New branch sealed startups (NOT external agent sessions):**
+- **WG0P5** agent/rabochii-pyat-r26-wg0p5-bound-descriptor-provenance-repair-r1 @ 7e589c19c693c150d0cf622fc43e84bbc40d1b31 — Original WG0P4 productive owner closes WG0L three descriptor provenance REDs; WORKER_COMMISSIONS/PYAT-R26-WG0P5-DESCRIPTOR-PROVENANCE-REPAIR-R1/00_COMMISSION.md
+- **WG0M** agent/reviewer-pyat-r26-wg0m-descriptor-independent-delta-r1 @ b809dd46e4c0003cbef271fdb7490e93714e36fb — Independent Phase A hostiles now, Phase B after WG0P5 pushed; WORKER_COMMISSIONS/PYAT-R26-WG0M-ORIGINAL-FRONTIER-INDEPENDENT-DELTA-R1/00_COMMISSION.md
+- **F6I** agent/reviewer-pyat-r26-f6c-heterogeneous-synthesis-independent-r1 @ d8c0fc08d3b1ebfda69fccd5f2310c3e217afac7 — Independent F6C native nonpooled-standardized-bounded consumer method review; WORKER_COMMISSIONS/PYAT-R26-F6I-HETEROGENEOUS-COMPARATIVE-INDEPENDENT-R1/00_COMMISSION.md
+- **GF1D** agent/rabochii-pyat-r26-gf1d-consumer-actual-completion-r1 @ 7cfd8b0aa91439df03eddff68d1e6c4091ccbe0c — Original GF1 author actually implements missing computed downstream consumer and frozen44; WORKER_COMMISSIONS/PYAT-R26-GF1D-MISSING-CONSUMER-PRODUCTIVE-COMPLETION-R1/00_COMMISSION.md
+- **T9C** agent/rabochii-pyat-r26-t9c-temporal-adapter-seven-red-repair-r1 @ 79cf24ee615ec24bee2dc8584b31fb6b240fd3cf — Original temporal T9B adapter author repairs ten REDs in seven classes; WORKER_COMMISSIONS/PYAT-R26-T9C-TEMPORAL-ADAPTER-SEVEN-RED-CONTINUATION-R1/00_COMMISSION.md
+- **T9R** agent/reviewer-pyat-r26-t9r-temporal-delta-precommitted-r1 @ f243c89ff4ccbe1eae3815fac5f46625b13c421d — Independent T9I reviewer Phase A freeze immediately, Phase B after T9C; WORKER_COMMISSIONS/PYAT-R26-T9R-INDEPENDENT-TEMPORAL-DELTA-R1/00_COMMISSION.md
+
+All five original-worker returns and six new starts are serially represented in CURRENT.json and owner report revision10; complete scientific adjudication preserved in working R26 decision. Original all35 U→competent E_pre→real source native C11/I03/I05/batch/F1–F8→N11 and separate Sorok N12 developing actors remain unissued. Sourcefree native success is not original survey measurement or actor. Sorok canonical revision4 is untouched. Previous R25 and all historical packets remain intact. No EE14/OC05 or new model/source/semantic/actor grants.
+
+## Inherited R25 complete control report for traceability
+
 # Pyat R25 — R24 seal verified, native F6 blob repaired, Sorok C0I bounded independent receipt
 Owner revision **9** (October 17, 2026 UTC). Accepted working successor `agent/vozhd-pyat-r3-hq-successor-20261016-r1@f51121764436bc88f316e6b63703a7b99c919a5c`.
 
