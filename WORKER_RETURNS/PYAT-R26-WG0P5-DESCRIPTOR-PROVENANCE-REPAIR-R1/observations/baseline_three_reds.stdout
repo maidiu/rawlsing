@@ -1,0 +1,61 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.11.3, pytest-9.1.1, pluggy-1.6.0 -- /usr/local/bin/python3
+rootdir: <WORKTREE>/WORKER_RETURNS/PYAT-R26-WG0P5-DESCRIPTOR-PROVENANCE-REPAIR-R1/review/runtime_phase_b/candidate
+configfile: pytest.ini
+collecting ... collected 3 items
+
+WORKER_RETURNS/PYAT-R26-WG0P5-DESCRIPTOR-PROVENANCE-REPAIR-R1/review/runtime_phase_b/candidate::test_bound_descriptor_cannot_change_served_provenance[source_edition-FORGED_CALLER_EDITION] <- ../../tests/phase_b/test_additional_descriptor_binding_red.py FAILED [ 33%]
+WORKER_RETURNS/PYAT-R26-WG0P5-DESCRIPTOR-PROVENANCE-REPAIR-R1/review/runtime_phase_b/candidate::test_bound_descriptor_cannot_change_served_provenance[native_item_ids-forged1] <- ../../tests/phase_b/test_additional_descriptor_binding_red.py FAILED [ 66%]
+WORKER_RETURNS/PYAT-R26-WG0P5-DESCRIPTOR-PROVENANCE-REPAIR-R1/review/runtime_phase_b/candidate::test_copied_release_descriptor_refused_before_native_query <- ../../tests/phase_b/test_additional_descriptor_binding_red.py FAILED [100%]
+
+=================================== FAILURES ===================================
+_ test_bound_descriptor_cannot_change_served_provenance[source_edition-FORGED_CALLER_EDITION] _
+WORKER_RETURNS/PYAT-R26-WG0P5-DESCRIPTOR-PROVENANCE-REPAIR-R1/review/tests/phase_b/test_additional_descriptor_binding_red.py:16: in test_bound_descriptor_cannot_change_served_provenance
+    assert actual==expected, 'Caller copied a plan with unbound descriptor metadata; native issued result carries forged provenance'
+E   AssertionError: Caller copied a plan with unbound descriptor metadata; native issued result carries forged provenance
+E   assert 'FORGED_CALLER_EDITION' == 'SRC-EDITION-REL-A-W1-W1-v1'
+E     
+E     - SRC-EDITION-REL-A-W1-W1-v1
+E     + FORGED_CALLER_EDITION
+_ test_bound_descriptor_cannot_change_served_provenance[native_item_ids-forged1] _
+WORKER_RETURNS/PYAT-R26-WG0P5-DESCRIPTOR-PROVENANCE-REPAIR-R1/review/tests/phase_b/test_additional_descriptor_binding_red.py:16: in test_bound_descriptor_cannot_change_served_provenance
+    assert actual==expected, 'Caller copied a plan with unbound descriptor metadata; native issued result carries forged provenance'
+E   AssertionError: Caller copied a plan with unbound descriptor metadata; native issued result carries forged provenance
+E   assert ['FOREIGN_NATIVE_ITEM'] == ['WG0P-ORD-01']
+E     
+E     At index 0 diff: 'FOREIGN_NATIVE_ITEM' != 'WG0P-ORD-01'
+E     
+E     Full diff:
+E       [
+E     -     'WG0P-ORD-01',
+E     +     'FOREIGN_NATIVE_ITEM',
+E       ]
+__________ test_copied_release_descriptor_refused_before_native_query __________
+WORKER_RETURNS/PYAT-R26-WG0P5-DESCRIPTOR-PROVENANCE-REPAIR-R1/review/tests/phase_b/test_additional_descriptor_binding_red.py:27: in test_copied_release_descriptor_refused_before_native_query
+    assert isinstance(error,w.IdentityError) and not any(c['name']=='execute_empirical_query' for c in calls), 'Unbound release tag reaches native query and fails later with a topology KeyError'
+E   AssertionError: Unbound release tag reaches native query and fails later with a topology KeyError
+E   assert (False)
+E    +  where False = isinstance(KeyError('complete_cell_semantic_projection'), <class 'wg0p4_workload.IdentityError'>)
+E    +    where <class 'wg0p4_workload.IdentityError'> = w.IdentityError
+- generated xml file: <WORKTREE>/WORKER_RETURNS/PYAT-R26-WG0P5-DESCRIPTOR-PROVENANCE-REPAIR-R1/observations/baseline_three_reds.xml -
+=========================== short test summary info ============================
+FAILED WORKER_RETURNS/PYAT-R26-WG0P5-DESCRIPTOR-PROVENANCE-REPAIR-R1/review/runtime_phase_b/candidate::test_bound_descriptor_cannot_change_served_provenance[source_edition-FORGED_CALLER_EDITION] - AssertionError: Caller copied a plan with unbound descriptor metadata; native issued result carries forged provenance
+assert 'FORGED_CALLER_EDITION' == 'SRC-EDITION-REL-A-W1-W1-v1'
+  
+  - SRC-EDITION-REL-A-W1-W1-v1
+  + FORGED_CALLER_EDITION
+FAILED WORKER_RETURNS/PYAT-R26-WG0P5-DESCRIPTOR-PROVENANCE-REPAIR-R1/review/runtime_phase_b/candidate::test_bound_descriptor_cannot_change_served_provenance[native_item_ids-forged1] - AssertionError: Caller copied a plan with unbound descriptor metadata; native issued result carries forged provenance
+assert ['FOREIGN_NATIVE_ITEM'] == ['WG0P-ORD-01']
+  
+  At index 0 diff: 'FOREIGN_NATIVE_ITEM' != 'WG0P-ORD-01'
+  
+  Full diff:
+    [
+  -     'WG0P-ORD-01',
+  +     'FOREIGN_NATIVE_ITEM',
+    ]
+FAILED WORKER_RETURNS/PYAT-R26-WG0P5-DESCRIPTOR-PROVENANCE-REPAIR-R1/review/runtime_phase_b/candidate::test_copied_release_descriptor_refused_before_native_query - AssertionError: Unbound release tag reaches native query and fails later with a topology KeyError
+assert (False)
+ +  where False = isinstance(KeyError('complete_cell_semantic_projection'), <class 'wg0p4_workload.IdentityError'>)
+ +    where <class 'wg0p4_workload.IdentityError'> = w.IdentityError
+============================== 3 failed in 3.07s ===============================

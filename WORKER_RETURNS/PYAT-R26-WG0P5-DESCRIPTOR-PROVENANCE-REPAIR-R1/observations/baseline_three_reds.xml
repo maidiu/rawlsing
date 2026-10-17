@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="3" skipped="0" tests="3" time="3.070" timestamp="2026-10-17T00:12:27.748607-04:00" hostname="Matthews-MBP.lan"><testcase classname="" name="test_bound_descriptor_cannot_change_served_provenance[source_edition-FORGED_CALLER_EDITION]" time="1.307"><failure message="AssertionError: Caller copied a plan with unbound descriptor metadata; native issued result carries forged provenance&#10;assert 'FORGED_CALLER_EDITION' == 'SRC-EDITION-REL-A-W1-W1-v1'&#10;  &#10;  - SRC-EDITION-REL-A-W1-W1-v1&#10;  + FORGED_CALLER_EDITION">WORKER_RETURNS/PYAT-R26-WG0P5-DESCRIPTOR-PROVENANCE-REPAIR-R1/review/tests/phase_b/test_additional_descriptor_binding_red.py:16: in test_bound_descriptor_cannot_change_served_provenance
+    assert actual==expected, 'Caller copied a plan with unbound descriptor metadata; native issued result carries forged provenance'
+E   AssertionError: Caller copied a plan with unbound descriptor metadata; native issued result carries forged provenance
+E   assert 'FORGED_CALLER_EDITION' == 'SRC-EDITION-REL-A-W1-W1-v1'
+E     
+E     - SRC-EDITION-REL-A-W1-W1-v1
+E     + FORGED_CALLER_EDITION</failure></testcase><testcase classname="" name="test_bound_descriptor_cannot_change_served_provenance[native_item_ids-forged1]" time="0.921"><failure message="AssertionError: Caller copied a plan with unbound descriptor metadata; native issued result carries forged provenance&#10;assert ['FOREIGN_NATIVE_ITEM'] == ['WG0P-ORD-01']&#10;  &#10;  At index 0 diff: 'FOREIGN_NATIVE_ITEM' != 'WG0P-ORD-01'&#10;  &#10;  Full diff:&#10;    [&#10;  -     'WG0P-ORD-01',&#10;  +     'FOREIGN_NATIVE_ITEM',&#10;    ]">WORKER_RETURNS/PYAT-R26-WG0P5-DESCRIPTOR-PROVENANCE-REPAIR-R1/review/tests/phase_b/test_additional_descriptor_binding_red.py:16: in test_bound_descriptor_cannot_change_served_provenance
+    assert actual==expected, 'Caller copied a plan with unbound descriptor metadata; native issued result carries forged provenance'
+E   AssertionError: Caller copied a plan with unbound descriptor metadata; native issued result carries forged provenance
+E   assert ['FOREIGN_NATIVE_ITEM'] == ['WG0P-ORD-01']
+E     
+E     At index 0 diff: 'FOREIGN_NATIVE_ITEM' != 'WG0P-ORD-01'
+E     
+E     Full diff:
+E       [
+E     -     'WG0P-ORD-01',
+E     +     'FOREIGN_NATIVE_ITEM',
+E       ]</failure></testcase><testcase classname="" name="test_copied_release_descriptor_refused_before_native_query" time="0.614"><failure message="AssertionError: Unbound release tag reaches native query and fails later with a topology KeyError&#10;assert (False)&#10; +  where False = isinstance(KeyError('complete_cell_semantic_projection'), &lt;class 'wg0p4_workload.IdentityError'&gt;)&#10; +    where &lt;class 'wg0p4_workload.IdentityError'&gt; = w.IdentityError">WORKER_RETURNS/PYAT-R26-WG0P5-DESCRIPTOR-PROVENANCE-REPAIR-R1/review/tests/phase_b/test_additional_descriptor_binding_red.py:27: in test_copied_release_descriptor_refused_before_native_query
+    assert isinstance(error,w.IdentityError) and not any(c['name']=='execute_empirical_query' for c in calls), 'Unbound release tag reaches native query and fails later with a topology KeyError'
+E   AssertionError: Unbound release tag reaches native query and fails later with a topology KeyError
+E   assert (False)
+E    +  where False = isinstance(KeyError('complete_cell_semantic_projection'), &lt;class 'wg0p4_workload.IdentityError'&gt;)
+E    +    where &lt;class 'wg0p4_workload.IdentityError'&gt; = w.IdentityError</failure></testcase></testsuite></testsuites>
