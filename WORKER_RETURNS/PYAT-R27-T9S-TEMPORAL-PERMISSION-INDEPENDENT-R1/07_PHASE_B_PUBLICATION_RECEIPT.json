@@ -1,0 +1,31 @@
+{
+ "schema": "T9S_PHASE_B_PUBLICATION_RECEIPT@1",
+ "repository": "maidiu/rawlsing",
+ "branch": "agent/reviewer-pyat-r27-t9s-independent-native-authority-court-r1",
+ "sealed_startup": "b6e6f64f01d339956d8140777eab7f0c4a45e1af",
+ "phase_a_commit": "597450f0c7bdbf38c2a58c1edbac97dad550c576",
+ "phase_b_commit": "4f0c453b1b8c40c73a1b70cb58801587479b7e40",
+ "candidate_under_review": {
+  "branch": "agent/rabochii-pyat-r27-t9d-native-authority-provenance-correction-r1",
+  "sha": "d4969f513be0b3691f1bbf45813d17fc171a51a7",
+  "repair_payload": "5c76591bd",
+  "sealed_startup": "7603c4761"
+ },
+ "verdict": "ACCEPT_SOURCEFREE_TEMPORAL_AUTHORITY_PROVENANCE_REPAIR",
+ "independent_courts": {
+  "frozen_preregistered_17": "17/0/0/0 exit 0 (was 6/11 on T9C)",
+  "postinspection_controls_12": "12/0/0/0 exit 0",
+  "t9r_frozen_delta_50": "50/0/0/0 exit 0",
+  "t9r_postinspection_hostiles_7": "7/0/0/0 exit 0",
+  "frozen_t9i_48": "47/1 exit 1 (historical two-time artifact, safety-correct)",
+  "author_28": "27/1 exit 1 (historical safety-blocked route lists, safety-correct)",
+  "t9c_52": "52/0/0/0 exit 0",
+  "v553_8": "8/0/0/0 exit 0",
+  "t9d_own_22": "22/0/0/0 exit 0"
+ },
+ "remote_readback": {
+  "method": "git ls-remote origin + git fetch origin <branch> + git rev-parse FETCH_HEAD",
+  "candidate_sha_verified": "d4969f513be0b3691f1bbf45813d17fc171a51a7"
+ },
+ "final_containing_sha": "REPORTED_ON_DELIVERY_BY_DIRECT_REMOTE_READBACK"
+}
