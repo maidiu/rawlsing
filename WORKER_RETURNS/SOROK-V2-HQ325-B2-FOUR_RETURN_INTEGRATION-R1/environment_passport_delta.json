@@ -1,0 +1,126 @@
+{
+  "passport_schema": "SOROK_00D_R1",
+  "environment_id": "dfcc0df8a3f447b09c82140f20fdf504",
+  "epoch_id": "496212acf76846b584f6e1410a32c4b5",
+  "purpose": "NONCAUSAL_SESSION_CONTINUITY",
+  "owner_session_alias": "B2_SINGLE_IMPLEMENTER",
+  "surface": "LOCAL_SHARED_STORE",
+  "machine_alias": "AUTHORIZED_LOCAL_WORKTREE",
+  "conversation_or_account_affinity": null,
+  "status": "LIVE_VERIFIED",
+  "last_live_probe_at": "2026-10-17T22:27:55.205606+00:00",
+  "runtime_marker_digest": "33ca7359fdb6ae45a41bafc73047f6eba61525a2975cfddc4664848fc776b15b",
+  "probe_command_and_result": {
+    "python3 --version": "3.11.3",
+    "python3 -m pytest --version": "9.1.1",
+    "git --version": "git version 2.39.1",
+    "node --version": "v18.14.2",
+    "SQLite": "3.40.1",
+    "imports.__file__": "VERIFIED_EXACT_PINNED_PATHS"
+  },
+  "capabilities": {
+    "python": "VERIFIED",
+    "pytest": "VERIFIED",
+    "git": "VERIFIED",
+    "node": "VERIFIED",
+    "sqlite": "VERIFIED",
+    "filesystem": "VERIFIED",
+    "shell": "VERIFIED"
+  },
+  "git_object_store_alias": "EXISTING_SHARED_REPO",
+  "worktree_alias": "ASSIGNED_B2",
+  "branch": "agent/rabochii-sorok-v2-hq325-b2-four-return-executable-integration-r1",
+  "exact_checkout_base": "a464515f008e3ae75472ef895a315274b0cb193b",
+  "head_at_packaging": "a464515f008e3ae75472ef895a315274b0cb193b",
+  "clean_dirty": "ONLY_NEW_B2_TRACKED_WORK; unrelated pre-existing untracked artifacts preserved",
+  "materialized_source_refs": [
+    {
+      "component": "B1",
+      "commit": "c0f4588c158b40c8903b4aae2f292eae5238b8a0",
+      "source_path": "WORKER_RETURNS/SOROK-V2-HQ324-B1-COUPLED-DEVELOPMENT-R1/bfirst.py",
+      "git_blob_sha1": "94ffc52847e4c8ae760212d1bc8543594ba793fa",
+      "sha256": "478b989730f49a5def41a367b6f53e4aae9c80961f7f466fe669c7dbd92201a3",
+      "materialized_path": "imports/B1/bfirst.py",
+      "verified_module_file": "imports/B1/bfirst.py"
+    },
+    {
+      "component": "P1",
+      "commit": "fb4fa049b6e3dd9df8d25a4f42a2b41e9d737c60",
+      "source_path": "WORKER_RETURNS/SOROK-V2-HQ324-P1-PROPOSAL-ADMISSION-R1/p1_contract.py",
+      "git_blob_sha1": "84120f234d8df01d73874cb8aef920258950a004",
+      "sha256": "df31a147ab037385c5488801b5fa7413f9bcf5c63c97ba6328f859c8fcd92d38",
+      "materialized_path": "imports/P1/p1_contract.py",
+      "verified_module_file": "imports/P1/p1_contract.py"
+    },
+    {
+      "component": "D1",
+      "commit": "2e3f3e48293bdcd5774b9465909f16d537e48e35",
+      "source_path": "WORKER_RETURNS/SOROK-V2-HQ324-D1-DEVELOPMENTAL-SCIENCE-R1/07_CORRECTED_ABSENCE_CONTRACT_COURT.js",
+      "git_blob_sha1": "24de3e21a5dcaad18bc67427aad1373a170efca3",
+      "sha256": "f1fcb0f753e4fbea034f6b78bf7b5fbef5b67d8be0ebabf503248571306a4c29",
+      "materialized_path": "imports/D1/07_CORRECTED_ABSENCE_CONTRACT_COURT.js",
+      "verified_module_file": "Node VM exact source, SHA256 echoed in vertical receipt"
+    }
+  ],
+  "all_source_identity_manifest": "imported_sources.json",
+  "dependency_closure_status": "BOUNDED_FULL_FOR_COMMISSIONED_COURTS",
+  "fixture_source_permission": "SOURCEFREE_SYNTHETIC_TEST_ONLY",
+  "covered_test_suites": {
+    "b1": {
+      "tests": 39,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "p1": {
+      "tests": 74,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "f1": {
+      "tests": 97,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "integration": {
+      "tests": 81,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "d1_original": {
+      "tests": 22,
+      "grade": "HISTORICAL_GUARD_KNOWN_ABSENCE_DEFECT"
+    },
+    "d1_corrected": {
+      "tests": 17,
+      "grade": "CORRECTED_RESEARCH_GUARD"
+    }
+  },
+  "science_grade": "TEST_ONLY_BFIRST_INTEGRATED_PENDING_I2",
+  "model_provider": "OPENAI_CODEX",
+  "model_effort": "GPT-6 Medium per commission, no autonomous switch",
+  "pricing_class": "UNKNOWN",
+  "cash": null,
+  "quota": null,
+  "expected_reset": null,
+  "privacy_source_grant": "PRIVATE_REPO_SOURCEFREE_ONLY; NO_EXTERNAL_MODEL_TRANSPORT",
+  "independent_review": "HQ_POST_RETURN_HIGH_I2_PENDING",
+  "assignments_completed": [
+    "B2_AUTHOR_INTEGRATION_AND_TESTS"
+  ],
+  "next_good_affinity_tags": [
+    "CAN008",
+    "CAN011",
+    "P1",
+    "D1",
+    "F1",
+    "REPLAY"
+  ],
+  "staged_state_preservation": "SOURCE_AND_EVIDENCE_PRESERVED; REPROBE_RUNTIME_AFTER_RESUME",
+  "retire_or_rebuild_reason": null,
+  "economics": "Reused selected local Git/Python/pytest/Node. No delegation, package installation, paid call or model/host switch; cash/quota unknown.",
+  "attestation": "00C_READ=YES;00D_WARM_PASSPORT_READ=YES;LIVE_RESOURCE_CHECK=YES;REAL_SESSION_CONTINUITY_VERIFIED_OR_NEW=YES;CHEAPEST_QUALIFIED_ROUTE_EVALUATED=YES;INDEPENDENCE_AND_AUTHORITY_PRESERVED=YES"
+}
