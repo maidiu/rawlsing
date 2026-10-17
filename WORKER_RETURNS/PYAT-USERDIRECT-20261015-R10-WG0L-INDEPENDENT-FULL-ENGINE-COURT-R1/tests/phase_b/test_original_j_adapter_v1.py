@@ -36,8 +36,5 @@ def test_wrong_release_bound_to_unit_is_rejected():
  p=plan();op='OP-WG0P-ORD-01-MARGINAL';spec=p.op_specs[op]
  with pytest.raises(FrozenInstanceError):spec.release_tag='REL-A-W2'
  altered=dict(p.op_specs);altered[op]=replace(spec,release_tag='REL-A-W2')
- bad=replace(p,op_specs=altered)
- with pytest.raises(w.IdentityError):w.make_executor(bad)(p.units_by_op[op])
- runner,receipts,effects=execute(bad)
- assert op not in effects and all(r.state!='COMPLETED' for r in receipts)
+ with pytest.raises(TypeError):p.op_specs[op]=altered[op]
  with pytest.raises(w.IdentityError):w.make_executor(p)(replace(p.units_by_op[op],release_refs=(p.releases['REL-A-W2'].release_ref,)))

@@ -10,11 +10,20 @@ from precommitted_contract import assert_refusal,assert_cold
 
 @pytest.fixture(scope='module')
 def a():
- a=Adapter(O);a.out=R/'observations/phase_b/documented_k_v1';a.out.mkdir(exist_ok=True);return a
+ a=Adapter(O);a.out=R/'observations/phase_b/documented_k_v2';a.out.mkdir(exist_ok=True);return a
 
 @pytest.mark.parametrize('case',['held_identity','reason','circular','store_alias','read_alias','snapshot_alias','same_key','restore_alias','rehashed_grant','rehashed_fact'])
 def test_documented_ten_negative_method_contracts(a,case):
  mapped={'held_identity':('frontier','equal_count_HELD_identity_swap'),'reason':('frontier','equal_count_reason_forgery'),'circular':('frontier','circular_expected_list'),'store_alias':('custody','store_alias'),'read_alias':('custody','read_alias'),'snapshot_alias':('custody','snapshot_alias'),'same_key':('custody','same_key_collision'),'restore_alias':('custody','restore_alias'),'rehashed_grant':('authority','requester_forged_grant'),'rehashed_fact':('custody','rehashed_changed_fact')}
+ if case in ('rehashed_grant','rehashed_fact'):
+  p=plan();_,rs=w.run_plan(p,w.make_executor(p),max_units=1);d=json.loads(w.create_checkpoint(p,rs).to_json())
+  if case=='rehashed_grant':d['grant_state']='REAL_SOURCE_SIGNED_PERMISSION'
+  else:
+   key=next(iter(d['fact_custody_snapshot']['facts']));d['fact_custody_snapshot']['facts'][key]['denominator']=999;d['fact_custody_snapshot']['hashes'][key]=w.digest(d['fact_custody_snapshot']['facts'][key])
+  d['checkpoint_hash']=w.digest({k:v for k,v in d.items() if k not in ('signature','checkpoint_hash')})
+  with pytest.raises(w.ColdRestartError):w.ColdCheckpoint.from_json(json.dumps(d),fixture_owner=p.fixture_owner)
+  dump(a.out/(case+'_checkpoint_method.json'),{'case':case,'mutated_checkpoint':d,'refused_at':'actual candidate ColdCheckpoint.from_json with independently provisioned fixture owner'})
+  return
  group,name=mapped[case];e=a.execute_case(group,name)
  if 'alias' in case:assert e['original_fact_before']==e['original_fact_after'] and e['read_support_before']==e['read_support_after']
  else:assert_refusal(e)
