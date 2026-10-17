@@ -1,0 +1,110 @@
+{
+  "schema": "PYAT_R18_XSP_SOURCE_AND_EXECUTION_MANIFEST@1",
+  "role": "INDEPENDENT_CROSS_HQ_NONISSUER",
+  "repo": "maidiu/rawlsing",
+  "sealed_startup": "d8c1b3475f6b0dbaae5a3a9b0a7c53169656c7de",
+  "write_scope": "WORKER_RETURNS/PYAT-R18-XSP-PYAT-SOROK-PERSONA-SEAM-R1/",
+  "sorok_files_mutated": [],
+  "production_files_mutated": [],
+  "canonical_files_mutated": [],
+  "verified_source_code": [
+    {
+      "path": "rawlsing_next/pre553_empirical_possibility_provider.py",
+      "commit": "d8c1b3475f6b0dbaae5a3a9b0a7c53169656c7de",
+      "git_blob": "23167aa25291fb148b1e3cf210ac33fe7769b783",
+      "owner": "N10E"
+    },
+    {
+      "path": "rawlsing_next/pre553_analytical_composition.py",
+      "commit": "d8c1b3475f6b0dbaae5a3a9b0a7c53169656c7de",
+      "git_blob": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b",
+      "owner": "C1"
+    },
+    {
+      "path": "rawlsing_next/source_backed_positioned_subject_possibility.py",
+      "commit": "d8c1b3475f6b0dbaae5a3a9b0a7c53169656c7de",
+      "git_blob": "62e5eced47b64512f47b004e3e13a6ef3fe21de7",
+      "owner": "public possibility consumer"
+    },
+    {
+      "path": "rawlsing_next/m4_v557_v558_publication_repository.py",
+      "commit": "d8c1b3475f6b0dbaae5a3a9b0a7c53169656c7de",
+      "git_blob": "8ec5c8e1c1a3cb7e998bb6cf0972ac87f396e360",
+      "owner": "M4 selected world"
+    },
+    {
+      "path": "rawlsing_next/m5_runtime_rsc_peer_prior.py",
+      "commit": "d8c1b3475f6b0dbaae5a3a9b0a7c53169656c7de",
+      "git_blob": "18735bdb31a220aed032aa722574d685e2bdddf5",
+      "owner": "M5 currentness"
+    },
+    {
+      "path": "rawlsing_next/objective_consumer_bounded_evidence.py",
+      "commit": "d8c1b3475f6b0dbaae5a3a9b0a7c53169656c7de",
+      "git_blob": "f30fca20e7b56e00348e82765d95f974b4b6a195",
+      "owner": "OC05 NOT_YET_APPLICABLE"
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/sc0f3/adapter.py",
+      "commit": "4e1676afee36b79f450df874503d2f7343b62f0f",
+      "git_blob": "a154091f5d3b55ef90615f146d6b3d107a5e5cf7",
+      "owner": "SC0F3 unadopted two-contract"
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/sc0f3/fixture_owner.py",
+      "commit": "4e1676afee36b79f450df874503d2f7343b62f0f",
+      "git_blob": "631262244e727b028ac62f5d37e6d06f9f5e0a15",
+      "owner": "TEST_ONLY synthetic authority"
+    }
+  ],
+  "independent_or_worker_return_sha": {
+    "W10": "3c36aa1740a008d0b876850ed47057783e820367",
+    "SC0F3": "4e1676afee36b79f450df874503d2f7343b62f0f",
+    "RSC0": "385891d8da0c704875d877f77ef765fa86fbfa71",
+    "N9C": "9ab4a0192b7c951bb0b387637e6c74333246766c",
+    "G12": "e5d356fd53e132565b1e0b66abb617085f4142ed",
+    "LIFE1": "7ffc20ddb30f71034abf8d02c224d13d6952e11f"
+  },
+  "xsp_own_sourcefree_execution": {
+    "status": "EXECUTED_STANDALONE_SOURCEFREE_ONLY",
+    "artifacts": [
+      {
+        "file": "01_frozen_world_pairs.json",
+        "sha256": "00b91dd20cf28f44fe473b3abd010552c1190b7cd81388268f233b8fee417c09",
+        "git_blob_verified": "50897a1963c6ce5f7137c513dedbc041169eebf2"
+      },
+      {
+        "file": "xsp_world_pair_court.py",
+        "sha256": "84aa6bc16edab98f114fec54c652e271de8a548030d262a65322d119afd605d2",
+        "git_blob_verified": "bc15162ff277ab41738c694c9149efc095c0c86f"
+      },
+      {
+        "file": "test_xsp_world_pair_court.py",
+        "sha256": "d45a79e36140ba6a141cc0e0888852052d33fb8cb963a2ba7fa74f0b9942e430",
+        "git_blob_verified": "a52035dbcf623469f1545b480dbdf66adf38c752"
+      },
+      {
+        "file": "junit.xml",
+        "sha256": "ae361ee1934b85656de26686e01d36d7e81af7680d72e6c67ffd07128ec567b9",
+        "git_blob_verified": "39ea928ed6c092b36d6db875e09ca2300e7dcefb"
+      },
+      {
+        "file": "02_world_pair_court_actual_results.json",
+        "sha256": "472a170eae3bd0fb9059028ba4849efb0d1586570c4562dab1db917603690bbd",
+        "git_blob_verified": null,
+        "status": "LOCAL_EXACT_RESULT_AVAILABLE_IN_SANDBOX;_SUMMARIZED_IN_RETURN_02"
+      }
+    ],
+    "test_command": "python -m pytest -q --junitxml=junit.xml test_xsp_world_pair_court.py",
+    "passed": 19,
+    "failed": 0,
+    "skipped": 0,
+    "native_pyat_import_execution": false,
+    "native_sorok_import_execution": false,
+    "source_rows_read": 0,
+    "actors_generated": 0,
+    "model_calls": 0
+  },
+  "authority": "NO_SOURCE_NO_ORIGINAL_N9_NO_MODEL_USE_NO_V3_NO_WELD",
+  "summary": "Original code hashes verified with GitHub connector; not a complete native Python module.__file__ and import-tree witness; Sorok authority unchanged."
+}
