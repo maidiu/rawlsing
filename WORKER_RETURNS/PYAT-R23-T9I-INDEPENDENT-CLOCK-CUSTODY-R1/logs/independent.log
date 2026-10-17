@@ -1,0 +1,174 @@
+................................FFFFFFFFF......F                         [100%]
+=================================== FAILURES ===================================
+________ test_probe_only_estimate_cannot_be_authorized_open_opportunity ________
+
+    def test_probe_only_estimate_cannot_be_authorized_open_opportunity():
+        x=T.read_selected_world(WORLD,case(),METHODS[1],1995,retrospective=True);observe('RED_PROBE_OPENS_ROUTE',x)
+        assert x.temporal_key==T.PROBE_ONLY_TEMPORAL_KEY
+>       assert not [r for r in x.opportunity_ids if r!='ROUTE_BLOCKED_NO_SUPPORT'], 'probe-only estimate opened a claimed lawful route'
+E       AssertionError: probe-only estimate opened a claimed lawful route
+E       assert not ['ROUTE_DEFERRED_REVIEW']
+
+WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/tests/test_independent_clock_custody.py:129: AssertionError
+__________________ test_structural_route_mutation_is_detected __________________
+
+    def test_structural_route_mutation_is_detected():
+        changed=replace(WORLD,structural_routes=('ROUTE_DEFERRED_REVIEW',))
+        a=T.read_selected_world(WORLD,case(),METHODS[0],2000)
+        b=T.read_selected_world(changed,case(),METHODS[0],2000)
+        observe('RED_STRUCTURAL_EQUALITY',{'world_a':asdict(WORLD),'world_b':asdict(changed),
+            'read_a':a.as_dict(),'read_b':b.as_dict(),'claims_identical':T.structurally_identical(a,b)})
+>       assert not T.structurally_identical(a,b), 'different structural route sets falsely certified identical'
+E       AssertionError: different structural route sets falsely certified identical
+E       assert not True
+E        +  where True = <function structurally_identical at 0x11fa1ea20>(OpportunitySet(query_clock=2000, temporal_method='M0_PIECEWISE_HOLD', opportunity_ids=('ROUTE_PARTICIPATION', 'ROUTE_D...poral_calibration': False, 't8f3_assignment_preserved': '8079f69778eb4a2e6f30b246e3ec445dc161ae15'}, refused_code=None), OpportunitySet(query_clock=2000, temporal_method='M0_PIECEWISE_HOLD', opportunity_ids=('ROUTE_DEFERRED_REVIEW',), pres...poral_calibration': False, 't8f3_assignment_preserved': '8079f69778eb4a2e6f30b246e3ec445dc161ae15'}, refused_code=None))
+E        +    where <function structurally_identical at 0x11fa1ea20> = T.structurally_identical
+
+WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/tests/test_independent_clock_custody.py:137: AssertionError
+_____ test_consumer_provenance_names_actual_basis_not_excluded_first_wave ______
+
+    def test_consumer_provenance_names_actual_basis_not_excluded_first_wave():
+        wrong=wave('EXCLUDED',1980,.1,country='OTHER',source_family='WRONG_SOURCE',edition='WRONG_EDITION')
+        valid=wave('VALID',1990,.6,source_family='ACTUAL_SOURCE',edition='ACTUAL_EDITION')
+        x=T.read_selected_world(WORLD,case([wrong,valid]),METHODS[0],1995);observe('RED_BASIS_PROVENANCE',x)
+        assert x.basis_wave_ids==('VALID',)
+>       assert x.provenance['source_family']=='ACTUAL_SOURCE'
+E       AssertionError: assert 'WRONG_SOURCE' == 'ACTUAL_SOURCE'
+E         
+E         - ACTUAL_SOURCE
+E         + WRONG_SOURCE
+
+WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/tests/test_independent_clock_custody.py:144: AssertionError
+_ test_postrupture_carry_is_unknown_or_explicitly_rupture_qualified[M0_PIECEWISE_HOLD] _
+
+method = 'M0_PIECEWISE_HOLD'
+
+    @pytest.mark.parametrize('method',[METHODS[0],METHODS[2]])
+    def test_postrupture_carry_is_unknown_or_explicitly_rupture_qualified(method):
+        x=T.evaluate(case(ruptures=(1995,)),method,clock_year=1997,retrospective=True)
+        observe('RED_POSTRUPTURE_'+method,x)
+>       assert x.value is None or 'RUPTURE' in x.uncertainty or 'RUPTURE' in x.detail.upper(), 'pre-break population carried past declared rupture without a rupture caveat'
+E       AssertionError: pre-break population carried past declared rupture without a rupture caveat
+E       assert (0.2 is None or 'RUPTURE' in 'HELD_NO_INTERPOLATION|PUBLICATION_LAG:W1' or 'RUPTURE' in 'NEAREST PRIOR ADMISSIBLE ANCHOR; WAVE(S) PUBLISHED AFTER THE QUERY CLOCK')
+E        +  where 0.2 = TemporalValue(method='M0_PIECEWISE_HOLD', value=0.2, band='low', uncertainty='HELD_NO_INTERPOLATION|PUBLICATION_LAG:W1...wave_ids=('W0',), detail='nearest prior admissible anchor; wave(s) published AFTER the query clock', refused_code=None).value
+E        +  and   'HELD_NO_INTERPOLATION|PUBLICATION_LAG:W1' = TemporalValue(method='M0_PIECEWISE_HOLD', value=0.2, band='low', uncertainty='HELD_NO_INTERPOLATION|PUBLICATION_LAG:W1...wave_ids=('W0',), detail='nearest prior admissible anchor; wave(s) published AFTER the query clock', refused_code=None).uncertainty
+E        +  and   'NEAREST PRIOR ADMISSIBLE ANCHOR; WAVE(S) PUBLISHED AFTER THE QUERY CLOCK' = <built-in method upper of str object at 0x11fa17c30>()
+E        +    where <built-in method upper of str object at 0x11fa17c30> = 'nearest prior admissible anchor; wave(s) published AFTER the query clock'.upper
+E        +      where 'nearest prior admissible anchor; wave(s) published AFTER the query clock' = TemporalValue(method='M0_PIECEWISE_HOLD', value=0.2, band='low', uncertainty='HELD_NO_INTERPOLATION|PUBLICATION_LAG:W1...wave_ids=('W0',), detail='nearest prior admissible anchor; wave(s) published AFTER the query clock', refused_code=None).detail
+
+WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/tests/test_independent_clock_custody.py:151: AssertionError
+_ test_postrupture_carry_is_unknown_or_explicitly_rupture_qualified[M2_UNCERTAINTY_AWARE_BACKOFF] _
+
+method = 'M2_UNCERTAINTY_AWARE_BACKOFF'
+
+    @pytest.mark.parametrize('method',[METHODS[0],METHODS[2]])
+    def test_postrupture_carry_is_unknown_or_explicitly_rupture_qualified(method):
+        x=T.evaluate(case(ruptures=(1995,)),method,clock_year=1997,retrospective=True)
+        observe('RED_POSTRUPTURE_'+method,x)
+>       assert x.value is None or 'RUPTURE' in x.uncertainty or 'RUPTURE' in x.detail.upper(), 'pre-break population carried past declared rupture without a rupture caveat'
+E       AssertionError: pre-break population carried past declared rupture without a rupture caveat
+E       assert (0.2 is None or 'RUPTURE' in 'BACKOFF_WIDE_GAP_UNCERTAIN|PUBLICATION_LAG:W1' or 'RUPTURE' in 'UNCERTAINTY-AWARE NEAREST-ANCHOR BACKOFF; WAVE(S) PUBLISHED AFTER THE QUERY CLOCK')
+E        +  where 0.2 = TemporalValue(method='M2_UNCERTAINTY_AWARE_BACKOFF', value=0.2, band='low', uncertainty='BACKOFF_WIDE_GAP_UNCERTAIN|PU...('W0',), detail='uncertainty-aware nearest-anchor backoff; wave(s) published AFTER the query clock', refused_code=None).value
+E        +  and   'BACKOFF_WIDE_GAP_UNCERTAIN|PUBLICATION_LAG:W1' = TemporalValue(method='M2_UNCERTAINTY_AWARE_BACKOFF', value=0.2, band='low', uncertainty='BACKOFF_WIDE_GAP_UNCERTAIN|PU...('W0',), detail='uncertainty-aware nearest-anchor backoff; wave(s) published AFTER the query clock', refused_code=None).uncertainty
+E        +  and   'UNCERTAINTY-AWARE NEAREST-ANCHOR BACKOFF; WAVE(S) PUBLISHED AFTER THE QUERY CLOCK' = <built-in method upper of str object at 0x11fa10b70>()
+E        +    where <built-in method upper of str object at 0x11fa10b70> = 'uncertainty-aware nearest-anchor backoff; wave(s) published AFTER the query clock'.upper
+E        +      where 'uncertainty-aware nearest-anchor backoff; wave(s) published AFTER the query clock' = TemporalValue(method='M2_UNCERTAINTY_AWARE_BACKOFF', value=0.2, band='low', uncertainty='BACKOFF_WIDE_GAP_UNCERTAIN|PU...('W0',), detail='uncertainty-aware nearest-anchor backoff; wave(s) published AFTER the query clock', refused_code=None).detail
+
+WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/tests/test_independent_clock_custody.py:151: AssertionError
+___ test_missing_numeric_observation_stays_typed_unknown[M0_PIECEWISE_HOLD] ____
+
+method = 'M0_PIECEWISE_HOLD'
+
+    @pytest.mark.parametrize('method',METHODS)
+    def test_missing_numeric_observation_stays_typed_unknown(method):
+        c=case([wave('MISSING',1990,float('nan'))])
+        try:
+            x=T.evaluate(c,method)
+        except Exception as exc:
+            observe('RED_NULL_'+method,{'exception':type(exc).__name__,'message':str(exc)})
+            pytest.fail('missing observation raised instead of returning a typed unknown')
+        observe('RED_NULL_'+method,x)
+>       assert x.value is None and x.refused_code is not None, 'NaN observation converted into authorized observed zero'
+E       AssertionError: NaN observation converted into authorized observed zero
+E       assert (0.0 is None)
+E        +  where 0.0 = TemporalValue(method='M0_PIECEWISE_HOLD', value=0.0, band='none', uncertainty='HELD_NO_INTERPOLATION', temporal_key='AUTHORIZED_SPARSE_TEMPORAL_KEY', basis_wave_ids=('MISSING',), detail='nearest prior admissible anchor', refused_code=None).value
+
+WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/tests/test_independent_clock_custody.py:162: AssertionError
+_ test_missing_numeric_observation_stays_typed_unknown[M1_LINEAR_INTERPOLATION] _
+
+method = 'M1_LINEAR_INTERPOLATION'
+
+    @pytest.mark.parametrize('method',METHODS)
+    def test_missing_numeric_observation_stays_typed_unknown(method):
+        c=case([wave('MISSING',1990,float('nan'))])
+        try:
+            x=T.evaluate(c,method)
+        except Exception as exc:
+            observe('RED_NULL_'+method,{'exception':type(exc).__name__,'message':str(exc)})
+            pytest.fail('missing observation raised instead of returning a typed unknown')
+        observe('RED_NULL_'+method,x)
+>       assert x.value is None and x.refused_code is not None, 'NaN observation converted into authorized observed zero'
+E       AssertionError: NaN observation converted into authorized observed zero
+E       assert (0.0 is None)
+E        +  where 0.0 = TemporalValue(method='M1_LINEAR_INTERPOLATION', value=0.0, band='none', uncertainty='TERMINAL_NO_RIGHT_ANCHOR', tempor...ARSE_TEMPORAL_KEY', basis_wave_ids=('MISSING',), detail='no later anchor; hold last known-at value', refused_code=None).value
+
+WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/tests/test_independent_clock_custody.py:162: AssertionError
+_ test_missing_numeric_observation_stays_typed_unknown[M2_UNCERTAINTY_AWARE_BACKOFF] _
+
+method = 'M2_UNCERTAINTY_AWARE_BACKOFF'
+
+    @pytest.mark.parametrize('method',METHODS)
+    def test_missing_numeric_observation_stays_typed_unknown(method):
+        c=case([wave('MISSING',1990,float('nan'))])
+        try:
+            x=T.evaluate(c,method)
+        except Exception as exc:
+            observe('RED_NULL_'+method,{'exception':type(exc).__name__,'message':str(exc)})
+            pytest.fail('missing observation raised instead of returning a typed unknown')
+        observe('RED_NULL_'+method,x)
+>       assert x.value is None and x.refused_code is not None, 'NaN observation converted into authorized observed zero'
+E       AssertionError: NaN observation converted into authorized observed zero
+E       assert (0.0 is None)
+E        +  where 0.0 = TemporalValue(method='M2_UNCERTAINTY_AWARE_BACKOFF', value=0.0, band='none', uncertainty='BACKOFF_SINGLE_ANCHOR', temp...PARSE_TEMPORAL_KEY', basis_wave_ids=('MISSING',), detail='uncertainty-aware nearest-anchor backoff', refused_code=None).value
+
+WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/tests/test_independent_clock_custody.py:162: AssertionError
+___ test_nonbasis_future_wave_does_not_claim_to_be_product_publication_basis ___
+
+    def test_nonbasis_future_wave_does_not_claim_to_be_product_publication_basis():
+        x=T.evaluate(case(),METHODS[0],retrospective=True);observe('RED_NONBASIS_PUBLICATION_LAG',x)
+>       assert set(T.pub_lag_of(x))<=set(x.basis_wave_ids), 'publication provenance falsely names a wave not used by this method'
+E       AssertionError: publication provenance falsely names a wave not used by this method
+E       assert {'W1'} <= {'W0'}
+E         
+E         Extra items in the left set:
+E         'W1'
+
+WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/tests/test_independent_clock_custody.py:166: AssertionError
+_______ test_adapted_single_anchor_does_not_claim_inherited_native_grant _______
+
+    def test_adapted_single_anchor_does_not_claim_inherited_native_grant():
+        native=T.V553._authorize_v553_multi_wave_key(native_report(),native_group(1))
+        adapted=T.evaluate(case([wave('ONE',1990,.2)]),METHODS[0])
+        observe('RED_NATIVE_VS_ADAPTED_AUTHORITY',{'native':native,'adapted':adapted.as_dict(),
+            'limit':'Different APIs; this challenges the claim of inherited authorization semantics, not arithmetic equivalence.'})
+        assert native['multi_wave_authorization_status']==T.PROBE_ONLY_TEMPORAL_KEY
+>       assert adapted.temporal_key!=T.AUTHORIZED_SPARSE_TEMPORAL_KEY, 'adapter authorizes a single synthetic wave without native grant inputs'
+E       AssertionError: adapter authorizes a single synthetic wave without native grant inputs
+E       assert 'AUTHORIZED_SPARSE_TEMPORAL_KEY' != 'AUTHORIZED_SPARSE_TEMPORAL_KEY'
+E        +  where 'AUTHORIZED_SPARSE_TEMPORAL_KEY' = TemporalValue(method='M0_PIECEWISE_HOLD', value=0.2, band='low', uncertainty='HELD_NO_INTERPOLATION', temporal_key='AUTHORIZED_SPARSE_TEMPORAL_KEY', basis_wave_ids=('ONE',), detail='nearest prior admissible anchor', refused_code=None).temporal_key
+E        +  and   'AUTHORIZED_SPARSE_TEMPORAL_KEY' = T.AUTHORIZED_SPARSE_TEMPORAL_KEY
+
+WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/tests/test_independent_clock_custody.py:240: AssertionError
+=========================== short test summary info ============================
+FAILED WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/tests/test_independent_clock_custody.py::test_probe_only_estimate_cannot_be_authorized_open_opportunity
+FAILED WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/tests/test_independent_clock_custody.py::test_structural_route_mutation_is_detected
+FAILED WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/tests/test_independent_clock_custody.py::test_consumer_provenance_names_actual_basis_not_excluded_first_wave
+FAILED WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/tests/test_independent_clock_custody.py::test_postrupture_carry_is_unknown_or_explicitly_rupture_qualified[M0_PIECEWISE_HOLD]
+FAILED WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/tests/test_independent_clock_custody.py::test_postrupture_carry_is_unknown_or_explicitly_rupture_qualified[M2_UNCERTAINTY_AWARE_BACKOFF]
+FAILED WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/tests/test_independent_clock_custody.py::test_missing_numeric_observation_stays_typed_unknown[M0_PIECEWISE_HOLD]
+FAILED WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/tests/test_independent_clock_custody.py::test_missing_numeric_observation_stays_typed_unknown[M1_LINEAR_INTERPOLATION]
+FAILED WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/tests/test_independent_clock_custody.py::test_missing_numeric_observation_stays_typed_unknown[M2_UNCERTAINTY_AWARE_BACKOFF]
+FAILED WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/tests/test_independent_clock_custody.py::test_nonbasis_future_wave_does_not_claim_to_be_product_publication_basis
+FAILED WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/tests/test_independent_clock_custody.py::test_adapted_single_anchor_does_not_claim_inherited_native_grant
+10 failed, 38 passed in 1.35s
+T9I_independent_EXIT=1 VERIFIED_PROJECT_MODULES=16

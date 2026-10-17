@@ -1,0 +1,519 @@
+{
+  "schema": "T9I_PINNED_NATIVE_REPRO@1",
+  "candidate": "edf3494b1b11cb71a78540aba950aa15da900c8a",
+  "independent_base": "646ac11ab8f1d49d56464c484ec5e0f4eba8f34e",
+  "startup": "863a89c4ba03c47b6f50e5ba1144f510d8895a0b",
+  "original_oracle_freeze_commit": "da06c084fbd51b21482bb3bbb79a0eadec901484",
+  "original_oracle_sha256": "4646107ef1b0eae7f5aed3cd4fdb193e361fc7594924aea423dccb9734150aa3",
+  "original_oracle_unchanged_against_freeze_commit": true,
+  "copied_source_audit": {
+    "candidate": "edf3494b1b11cb71a78540aba950aa15da900c8a",
+    "independent_base": "646ac11ab8f1d49d56464c484ec5e0f4eba8f34e",
+    "full_copied_count": 1259,
+    "total_bytes": 12332400,
+    "all_sha1_NUL_preimages_and_ledger_lengths_verified": true,
+    "pre_main_identical_count": 1259,
+    "extensions": {
+      ".py": 339,
+      ".json": 920
+    },
+    "risk_findings": [],
+    "static_minimal_stage_native_files": 22,
+    "json_structures_inspected": 920,
+    "unneeded_copied_files_not_materialized": 1237,
+    "limits": "Static name/content-pattern audit is not exhaustive DLP or permission certification. No raw binary/data containers staged. Unrelated executable cargo retained only as Git evidence, not run.",
+    "source_map_sha256": "ae1a9a03839d5c12427042bc4da5b267868bcacf87aef3f8a581c00b385137de"
+  },
+  "full_immutable_source_manifest": {
+    "path": "evidence/immutable_copied_source_manifest.json",
+    "sha256": "d68fb0df586442a3d59ac23f2468a845991fbda5c1df583161bc18aa9f9026ca"
+  },
+  "staged_source_manifest": {
+    "path": "evidence/staged_source_manifest.json",
+    "sha256": "ae1a9a03839d5c12427042bc4da5b267868bcacf87aef3f8a581c00b385137de"
+  },
+  "suites": {
+    "author": {
+      "actual_counts": {
+        "collected": 28,
+        "passed": 28,
+        "failed": 0,
+        "errors": 0,
+        "skips": 0
+      },
+      "process_exit": 0,
+      "rootdir": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1",
+      "configfile": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pytest.ini",
+      "named_loaded_project_modules": 16,
+      "candidate_pinned_file_module_inventory_entries": 17,
+      "all_loaded_runtime_modules": 782,
+      "execution_receipt": "evidence/author_execution.json",
+      "execution_receipt_sha256": "17eec4779122a6bfe0931e94a40ad88ed62404e762f71121a43df1e9d95b06a5",
+      "junit": "junit/author.xml",
+      "junit_sha256": "012d200624dd391c4eb09bb02bec8fdf32c3eb9ea628f12979d57734e4e0f4d7",
+      "stdout_stderr": "logs/author.log",
+      "log_sha256": "15cfb6affac6fb3d7f2ba077c79c7038c1b330ce132df515a6a5e209fd3ce6a4",
+      "loaded_project_modules": [
+        {
+          "module": "data.ddm_build_copy",
+          "__file__": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/native/data/ddm_build_copy/__init__.py",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+        },
+        {
+          "module": "data.ddm_build_copy.ddm_path_utils",
+          "__file__": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/native/data/ddm_build_copy/ddm_path_utils.py",
+          "sha256": "8d87f206d60fad342ea85ace500d3da94f2641820ed229c407950ec8c372c68d",
+          "git_blob_sha1": "01da8d1758293a9e3e2e9bda8191ab5ca08c9858"
+        },
+        {
+          "module": "data.ddm_build_copy.ddm_run_provenance",
+          "__file__": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/native/data/ddm_build_copy/ddm_run_provenance.py",
+          "sha256": "dfe494a654ce4f7bf39c8d4aef666b074203696096b556398765f3fa7cfb8db2",
+          "git_blob_sha1": "52cc76a978c82590a411fc3f5d323981757919e4"
+        },
+        {
+          "module": "data.ddm_build_copy.ddm_survey_identity",
+          "__file__": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/native/data/ddm_build_copy/ddm_survey_identity.py",
+          "sha256": "18333b59b82f8faef7459b873f819e2cf4a38312bdd0ec68b1cdc7c172297158",
+          "git_blob_sha1": "617e2b4fff72133dac623d5d0afb0e9446a15122"
+        },
+        {
+          "module": "data.ddm_build_copy.ddm_v550_family_overlay",
+          "__file__": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/native/data/ddm_build_copy/ddm_v550_family_overlay.py",
+          "sha256": "ae263f580107c40dafc5e60acd805f0b83fb4bb1555b34307e2d97d94a1e2b3a",
+          "git_blob_sha1": "c5b7e0cf94b7ae91034d1e325214da1ca6359d17"
+        },
+        {
+          "module": "data.ddm_build_copy.ddm_v550_manifest",
+          "__file__": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/native/data/ddm_build_copy/ddm_v550_manifest.py",
+          "sha256": "6dc4748cee35940f49fe474b2e719befc2d855728dc2cf8986ee254354a589df",
+          "git_blob_sha1": "161f3244b7d13fece83c200a3aa42570eacda1e5"
+        },
+        {
+          "module": "data.ddm_build_copy.ddm_v550_schema",
+          "__file__": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/native/data/ddm_build_copy/ddm_v550_schema.py",
+          "sha256": "2a9c55f74fab98449ebd12239463476409e1768810357b0d13a27d9585a6711a",
+          "git_blob_sha1": "487b392b79a77f5e1d2e2949072bdea8d2bc63b4"
+        },
+        {
+          "module": "data.ddm_build_copy.ddm_v550_storage",
+          "__file__": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/native/data/ddm_build_copy/ddm_v550_storage.py",
+          "sha256": "42887558300be4da44bceee6db63b7b56c7250c70c652ff7d05a2a16d5386014",
+          "git_blob_sha1": "d042415d7bd02a20086274524af8aacde70fff91"
+        },
+        {
+          "module": "data.ddm_build_copy.ddm_v551j_io",
+          "__file__": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/native/data/ddm_build_copy/ddm_v551j_io.py",
+          "sha256": "da3fc13030ac7f36db7b63488f23e06e50533db5be3afcb4ed61f69eff160668",
+          "git_blob_sha1": "258314dd0246c5bfe56d3864cc42d590a0a978dd"
+        },
+        {
+          "module": "data.ddm_build_copy.ddm_v552j_handoff",
+          "__file__": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/native/data/ddm_build_copy/ddm_v552j_handoff.py",
+          "sha256": "6c305f9fb77d1825c62f31ec55d220c71c28f3e4d5782a88d394d7cb92140429",
+          "git_blob_sha1": "476e617370e8947ee1f38b0718243ecfc5ba9e5c"
+        },
+        {
+          "module": "data.ddm_build_copy.ddm_v553_repo_discovery",
+          "__file__": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/native/data/ddm_build_copy/ddm_v553_repo_discovery.py",
+          "sha256": "e2a97e51c63911350f0d7adf9b6d48ef4d481f04d6250da92bde7982531cb55f",
+          "git_blob_sha1": "41e0c85d4179a49b71560d1a55de351f2fe18ec7"
+        },
+        {
+          "module": "data.ddm_build_copy.ddm_v553_schema",
+          "__file__": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/native/data/ddm_build_copy/ddm_v553_schema.py",
+          "sha256": "40b95a30c2b37c28870b88cd82cc3679ee2e79aa425cfd12d591e0da6ed21565",
+          "git_blob_sha1": "b41b4485839fcdfe9c0203627940fcc2ff3853df"
+        },
+        {
+          "module": "data.ddm_build_copy.ddm_v553_temporal_identity",
+          "__file__": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/native/data/ddm_build_copy/ddm_v553_temporal_identity.py",
+          "sha256": "3a239399d5e81ee116494b60601b46726ed323709735f850ee5d1f7b65045421",
+          "git_blob_sha1": "bbbef13111ed80d015a8f3fa47dec06b8cdf4e67"
+        },
+        {
+          "module": "data.ddm_build_copy.ddm_v553_temporal_pressure",
+          "__file__": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/native/data/ddm_build_copy/ddm_v553_temporal_pressure.py",
+          "sha256": "1a44a4e8b1ef989c49bb553b826c7f652acf6b6d0a0fa3886accbe8d5da42409",
+          "git_blob_sha1": "5304b70f9f6522c5ae3893eff215c1d445681983"
+        },
+        {
+          "module": "data.ddm_build_copy.ddm_v5_build_standard",
+          "__file__": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/native/data/ddm_build_copy/ddm_v5_build_standard.py",
+          "sha256": "321e8c4ff7cb462b7bf96ed82bdf3015604d3c3c2dd49882811b0c94377abe41",
+          "git_blob_sha1": "519e0350f2d5ba5d2035da410f9155278921120b"
+        },
+        {
+          "module": "t9b_temporal",
+          "__file__": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/t9b_temporal.py",
+          "sha256": "0e097e03b3533b45afd4c79339aba2df117acb63295a39e9db2ade4aff090e92",
+          "git_blob_sha1": "e63c08b093e76aea4bb5597ee11beb8d3806cf43"
+        }
+      ]
+    },
+    "legacy": {
+      "actual_counts": {
+        "collected": 8,
+        "passed": 8,
+        "failed": 0,
+        "errors": 0,
+        "skips": 0
+      },
+      "process_exit": 0,
+      "rootdir": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1",
+      "configfile": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pytest.ini",
+      "named_loaded_project_modules": 10,
+      "candidate_pinned_file_module_inventory_entries": 13,
+      "all_loaded_runtime_modules": 784,
+      "execution_receipt": "evidence/legacy_execution.json",
+      "execution_receipt_sha256": "1f2e9e43df565e98dc9daeaddadcf700116d1520d5c0794cbda45c06a9cada78",
+      "junit": "junit/legacy.xml",
+      "junit_sha256": "7abe1f5d06b03f9579540871e69e62d78d43df32776a30e711bf59cd9855ac76",
+      "stdout_stderr": "logs/legacy.log",
+      "log_sha256": "4b2bf47f024bd60b94a4a1885e0d8ee3c6b78e058bbd71e9296a416d86865d62",
+      "loaded_project_modules": [
+        {
+          "module": "data.ddm_build_copy",
+          "__file__": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/native/data/ddm_build_copy/__init__.py",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+        },
+        {
+          "module": "data.ddm_build_copy.ddm_path_utils",
+          "__file__": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/native/data/ddm_build_copy/ddm_path_utils.py",
+          "sha256": "8d87f206d60fad342ea85ace500d3da94f2641820ed229c407950ec8c372c68d",
+          "git_blob_sha1": "01da8d1758293a9e3e2e9bda8191ab5ca08c9858"
+        },
+        {
+          "module": "data.ddm_build_copy.ddm_pipeline_boundary_contract",
+          "__file__": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/native/data/ddm_build_copy/ddm_pipeline_boundary_contract.py",
+          "sha256": "c9e885b22c51790812b62783c271be8aceea3c4267017bf33d1f0d92d1f8bc6c",
+          "git_blob_sha1": "1edcb454662f1955d6d19f17bd4dc147db33473b"
+        },
+        {
+          "module": "data.ddm_build_copy.ddm_survey_identity",
+          "__file__": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/native/data/ddm_build_copy/ddm_survey_identity.py",
+          "sha256": "18333b59b82f8faef7459b873f819e2cf4a38312bdd0ec68b1cdc7c172297158",
+          "git_blob_sha1": "617e2b4fff72133dac623d5d0afb0e9446a15122"
+        },
+        {
+          "module": "data.ddm_build_copy.ddm_v550_authority_contract",
+          "__file__": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/native/data/ddm_build_copy/ddm_v550_authority_contract.py",
+          "sha256": "63b3e9ad16bc93ee3f0adc0ba3ef399fea98d3aa9e6d26ddfb7c1adc41120dd4",
+          "git_blob_sha1": "0d02f2876f84b8c4081177b75e8df9d7c15cfd05"
+        },
+        {
+          "module": "data.ddm_build_copy.ddm_v550_family_overlay",
+          "__file__": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/native/data/ddm_build_copy/ddm_v550_family_overlay.py",
+          "sha256": "ae263f580107c40dafc5e60acd805f0b83fb4bb1555b34307e2d97d94a1e2b3a",
+          "git_blob_sha1": "c5b7e0cf94b7ae91034d1e325214da1ca6359d17"
+        },
+        {
+          "module": "data.ddm_build_copy.ddm_v550_manifest",
+          "__file__": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/native/data/ddm_build_copy/ddm_v550_manifest.py",
+          "sha256": "6dc4748cee35940f49fe474b2e719befc2d855728dc2cf8986ee254354a589df",
+          "git_blob_sha1": "161f3244b7d13fece83c200a3aa42570eacda1e5"
+        },
+        {
+          "module": "data.ddm_build_copy.ddm_v552j_handoff",
+          "__file__": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/native/data/ddm_build_copy/ddm_v552j_handoff.py",
+          "sha256": "6c305f9fb77d1825c62f31ec55d220c71c28f3e4d5782a88d394d7cb92140429",
+          "git_blob_sha1": "476e617370e8947ee1f38b0718243ecfc5ba9e5c"
+        },
+        {
+          "module": "data.ddm_build_copy.ddm_v553_canonical_harmonization",
+          "__file__": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/native/data/ddm_build_copy/ddm_v553_canonical_harmonization.py",
+          "sha256": "bbec3f4c3ad387a835b5b1a99a7fc8feccebd417d6b143886f94df90d444c510",
+          "git_blob_sha1": "1951ada5cb7453108939eae9af91fcbfc90ad517"
+        },
+        {
+          "module": "data.ddm_build_copy.ddm_v553_harmonization",
+          "__file__": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/native/data/ddm_build_copy/ddm_v553_harmonization.py",
+          "sha256": "775b1246e46c68dd2560544c1a3d472c5154b9e4cb361e38d3db7f441ba5c000",
+          "git_blob_sha1": "153f3dbeab19e6be15947f7bcbb5377dae1dfc8a"
+        }
+      ]
+    },
+    "independent": {
+      "actual_counts": {
+        "collected": 48,
+        "passed": 38,
+        "failed": 10,
+        "errors": 0,
+        "skips": 0
+      },
+      "process_exit": 1,
+      "rootdir": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1",
+      "configfile": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pytest.ini",
+      "named_loaded_project_modules": 16,
+      "candidate_pinned_file_module_inventory_entries": 16,
+      "all_loaded_runtime_modules": 785,
+      "execution_receipt": "evidence/independent_execution.json",
+      "execution_receipt_sha256": "ff1cff318c4890d9aa0efe244c75d4014a62cf005037109fa2d76525f114b792",
+      "junit": "junit/independent.xml",
+      "junit_sha256": "abb9339e3d88aea29a1839a58d02d83534e4bfe0ce46d2106b9804275dce40bc",
+      "stdout_stderr": "logs/independent.log",
+      "log_sha256": "83c24487183bb098ba66d7c45db652b23d4be4c91b36d91dba61bed0bb64b489",
+      "loaded_project_modules": [
+        {
+          "module": "data.ddm_build_copy",
+          "__file__": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/native/data/ddm_build_copy/__init__.py",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+        },
+        {
+          "module": "data.ddm_build_copy.ddm_path_utils",
+          "__file__": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/native/data/ddm_build_copy/ddm_path_utils.py",
+          "sha256": "8d87f206d60fad342ea85ace500d3da94f2641820ed229c407950ec8c372c68d",
+          "git_blob_sha1": "01da8d1758293a9e3e2e9bda8191ab5ca08c9858"
+        },
+        {
+          "module": "data.ddm_build_copy.ddm_run_provenance",
+          "__file__": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/native/data/ddm_build_copy/ddm_run_provenance.py",
+          "sha256": "dfe494a654ce4f7bf39c8d4aef666b074203696096b556398765f3fa7cfb8db2",
+          "git_blob_sha1": "52cc76a978c82590a411fc3f5d323981757919e4"
+        },
+        {
+          "module": "data.ddm_build_copy.ddm_survey_identity",
+          "__file__": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/native/data/ddm_build_copy/ddm_survey_identity.py",
+          "sha256": "18333b59b82f8faef7459b873f819e2cf4a38312bdd0ec68b1cdc7c172297158",
+          "git_blob_sha1": "617e2b4fff72133dac623d5d0afb0e9446a15122"
+        },
+        {
+          "module": "data.ddm_build_copy.ddm_v550_family_overlay",
+          "__file__": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/native/data/ddm_build_copy/ddm_v550_family_overlay.py",
+          "sha256": "ae263f580107c40dafc5e60acd805f0b83fb4bb1555b34307e2d97d94a1e2b3a",
+          "git_blob_sha1": "c5b7e0cf94b7ae91034d1e325214da1ca6359d17"
+        },
+        {
+          "module": "data.ddm_build_copy.ddm_v550_manifest",
+          "__file__": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/native/data/ddm_build_copy/ddm_v550_manifest.py",
+          "sha256": "6dc4748cee35940f49fe474b2e719befc2d855728dc2cf8986ee254354a589df",
+          "git_blob_sha1": "161f3244b7d13fece83c200a3aa42570eacda1e5"
+        },
+        {
+          "module": "data.ddm_build_copy.ddm_v550_schema",
+          "__file__": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/native/data/ddm_build_copy/ddm_v550_schema.py",
+          "sha256": "2a9c55f74fab98449ebd12239463476409e1768810357b0d13a27d9585a6711a",
+          "git_blob_sha1": "487b392b79a77f5e1d2e2949072bdea8d2bc63b4"
+        },
+        {
+          "module": "data.ddm_build_copy.ddm_v550_storage",
+          "__file__": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/native/data/ddm_build_copy/ddm_v550_storage.py",
+          "sha256": "42887558300be4da44bceee6db63b7b56c7250c70c652ff7d05a2a16d5386014",
+          "git_blob_sha1": "d042415d7bd02a20086274524af8aacde70fff91"
+        },
+        {
+          "module": "data.ddm_build_copy.ddm_v551j_io",
+          "__file__": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/native/data/ddm_build_copy/ddm_v551j_io.py",
+          "sha256": "da3fc13030ac7f36db7b63488f23e06e50533db5be3afcb4ed61f69eff160668",
+          "git_blob_sha1": "258314dd0246c5bfe56d3864cc42d590a0a978dd"
+        },
+        {
+          "module": "data.ddm_build_copy.ddm_v552j_handoff",
+          "__file__": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/native/data/ddm_build_copy/ddm_v552j_handoff.py",
+          "sha256": "6c305f9fb77d1825c62f31ec55d220c71c28f3e4d5782a88d394d7cb92140429",
+          "git_blob_sha1": "476e617370e8947ee1f38b0718243ecfc5ba9e5c"
+        },
+        {
+          "module": "data.ddm_build_copy.ddm_v553_repo_discovery",
+          "__file__": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/native/data/ddm_build_copy/ddm_v553_repo_discovery.py",
+          "sha256": "e2a97e51c63911350f0d7adf9b6d48ef4d481f04d6250da92bde7982531cb55f",
+          "git_blob_sha1": "41e0c85d4179a49b71560d1a55de351f2fe18ec7"
+        },
+        {
+          "module": "data.ddm_build_copy.ddm_v553_schema",
+          "__file__": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/native/data/ddm_build_copy/ddm_v553_schema.py",
+          "sha256": "40b95a30c2b37c28870b88cd82cc3679ee2e79aa425cfd12d591e0da6ed21565",
+          "git_blob_sha1": "b41b4485839fcdfe9c0203627940fcc2ff3853df"
+        },
+        {
+          "module": "data.ddm_build_copy.ddm_v553_temporal_identity",
+          "__file__": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/native/data/ddm_build_copy/ddm_v553_temporal_identity.py",
+          "sha256": "3a239399d5e81ee116494b60601b46726ed323709735f850ee5d1f7b65045421",
+          "git_blob_sha1": "bbbef13111ed80d015a8f3fa47dec06b8cdf4e67"
+        },
+        {
+          "module": "data.ddm_build_copy.ddm_v553_temporal_pressure",
+          "__file__": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/native/data/ddm_build_copy/ddm_v553_temporal_pressure.py",
+          "sha256": "1a44a4e8b1ef989c49bb553b826c7f652acf6b6d0a0fa3886accbe8d5da42409",
+          "git_blob_sha1": "5304b70f9f6522c5ae3893eff215c1d445681983"
+        },
+        {
+          "module": "data.ddm_build_copy.ddm_v5_build_standard",
+          "__file__": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/native/data/ddm_build_copy/ddm_v5_build_standard.py",
+          "sha256": "321e8c4ff7cb462b7bf96ed82bdf3015604d3c3c2dd49882811b0c94377abe41",
+          "git_blob_sha1": "519e0350f2d5ba5d2035da410f9155278921120b"
+        },
+        {
+          "module": "t9b_temporal",
+          "__file__": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/t9b_temporal.py",
+          "sha256": "0e097e03b3533b45afd4c79339aba2df117acb63295a39e9db2ade4aff090e92",
+          "git_blob_sha1": "e63c08b093e76aea4bb5597ee11beb8d3806cf43"
+        }
+      ]
+    }
+  },
+  "shadow_controls": {
+    "documented-bare-relative": {
+      "mode": "documented-bare-relative",
+      "cwd": "/Users/matthewsmith/Desktop/Rawlsing",
+      "selections": [],
+      "ambient_execution_permitted": false,
+      "argv": [
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "data/ddm_build_copy/tests/test_postg5_v552j_v553_consumer_contract.py"
+      ],
+      "rootdir": "/Users/matthewsmith/Desktop/Rawlsing",
+      "configfile": "/Users/matthewsmith/Desktop/Rawlsing/pytest.ini",
+      "selected_package_without_execution": "/Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/__init__.py",
+      "blocked_untrusted_origin": "/Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/__init__.py",
+      "exit": 4
+    },
+    "ambient-config-reenactment": {
+      "mode": "ambient-config-reenactment",
+      "cwd": "/Users/matthewsmith/Desktop/Rawlsing",
+      "selections": [
+        {
+          "module": "data.ddm_build_copy",
+          "origin": "/Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/__init__.py"
+        }
+      ],
+      "ambient_execution_permitted": false,
+      "argv": [
+        "--import-mode=importlib",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "-c",
+        "/Users/matthewsmith/Desktop/Rawlsing/pytest.ini",
+        "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/native/data/ddm_build_copy/tests/test_postg5_v552j_v553_consumer_contract.py"
+      ],
+      "rootdir": "/Users/matthewsmith/Desktop/Rawlsing",
+      "configfile": "/Users/matthewsmith/Desktop/Rawlsing/pytest.ini",
+      "blocked_untrusted_origin": "/Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/__init__.py",
+      "exit": 2
+    },
+    "bare": {
+      "mode": "bare",
+      "cwd": "/Users/matthewsmith/Desktop/Rawlsing",
+      "selections": [
+        {
+          "module": "data.ddm_build_copy",
+          "origin": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/native/data/ddm_build_copy/__init__.py"
+        },
+        {
+          "module": "data.ddm_build_copy.ddm_pipeline_boundary_contract",
+          "origin": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/native/data/ddm_build_copy/ddm_pipeline_boundary_contract.py"
+        },
+        {
+          "module": "data.ddm_build_copy.ddm_v553_canonical_harmonization",
+          "origin": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/native/data/ddm_build_copy/ddm_v553_canonical_harmonization.py"
+        },
+        {
+          "module": "data.ddm_build_copy.ddm_v553_harmonization",
+          "origin": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/native/data/ddm_build_copy/ddm_v553_harmonization.py"
+        },
+        {
+          "module": "data.ddm_build_copy.ddm_path_utils",
+          "origin": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/native/data/ddm_build_copy/ddm_path_utils.py"
+        },
+        {
+          "module": "data.ddm_build_copy.ddm_survey_identity",
+          "origin": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/native/data/ddm_build_copy/ddm_survey_identity.py"
+        },
+        {
+          "module": "data.ddm_build_copy.ddm_v550_family_overlay",
+          "origin": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/native/data/ddm_build_copy/ddm_v550_family_overlay.py"
+        },
+        {
+          "module": "data.ddm_build_copy.ddm_v550_authority_contract",
+          "origin": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/native/data/ddm_build_copy/ddm_v550_authority_contract.py"
+        },
+        {
+          "module": "data.ddm_build_copy.ddm_v550_manifest",
+          "origin": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/native/data/ddm_build_copy/ddm_v550_manifest.py"
+        },
+        {
+          "module": "data.ddm_build_copy.ddm_v552j_handoff",
+          "origin": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/native/data/ddm_build_copy/ddm_v552j_handoff.py"
+        }
+      ],
+      "ambient_execution_permitted": false,
+      "argv": [
+        "--import-mode=importlib",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/native/data/ddm_build_copy/tests/test_postg5_v552j_v553_consumer_contract.py"
+      ],
+      "rootdir": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1",
+      "configfile": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pytest.ini",
+      "exit": 0
+    },
+    "bare-without-local-config": {
+      "mode": "bare-without-local-config",
+      "cwd": "/Users/matthewsmith/Desktop/Rawlsing",
+      "selections": [
+        {
+          "module": "data.ddm_build_copy",
+          "origin": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/native/data/ddm_build_copy/__init__.py"
+        },
+        {
+          "module": "data.ddm_build_copy.ddm_pipeline_boundary_contract",
+          "origin": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/native/data/ddm_build_copy/ddm_pipeline_boundary_contract.py"
+        },
+        {
+          "module": "data.ddm_build_copy.ddm_v553_canonical_harmonization",
+          "origin": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/native/data/ddm_build_copy/ddm_v553_canonical_harmonization.py"
+        },
+        {
+          "module": "data.ddm_build_copy.ddm_v553_harmonization",
+          "origin": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/native/data/ddm_build_copy/ddm_v553_harmonization.py"
+        },
+        {
+          "module": "data.ddm_build_copy.ddm_path_utils",
+          "origin": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/native/data/ddm_build_copy/ddm_path_utils.py"
+        },
+        {
+          "module": "data.ddm_build_copy.ddm_survey_identity",
+          "origin": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/native/data/ddm_build_copy/ddm_survey_identity.py"
+        },
+        {
+          "module": "data.ddm_build_copy.ddm_v550_family_overlay",
+          "origin": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/native/data/ddm_build_copy/ddm_v550_family_overlay.py"
+        },
+        {
+          "module": "data.ddm_build_copy.ddm_v550_authority_contract",
+          "origin": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/native/data/ddm_build_copy/ddm_v550_authority_contract.py"
+        },
+        {
+          "module": "data.ddm_build_copy.ddm_v550_manifest",
+          "origin": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/native/data/ddm_build_copy/ddm_v550_manifest.py"
+        },
+        {
+          "module": "data.ddm_build_copy.ddm_v552j_handoff",
+          "origin": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/native/data/ddm_build_copy/ddm_v552j_handoff.py"
+        }
+      ],
+      "ambient_execution_permitted": false,
+      "argv": [
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/native/data/ddm_build_copy/tests/test_postg5_v552j_v553_consumer_contract.py"
+      ],
+      "rootdir": "/Users/matthewsmith/Desktop",
+      "configfile": "None",
+      "exit": 0
+    }
+  },
+  "custody_scope": "All copied source hashes verified; all runtime module preimages inventoried. Expected native/candidate preimages checked before module/test exec. Third-party inventory is measured, not independently accepted owner pins.",
+  "original_runner_limit": "Original guard checks package prefix only, not each module or test preimage. This review supplies the stronger per-module guard.",
+  "reproduce": "python3 -B WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/run_review.py",
+  "expected_reproduction_exit": 1,
+  "exit_meaning": "RED independent court; author and legacy each exit 0. No xfail/skip laundering."
+}

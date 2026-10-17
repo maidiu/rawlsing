@@ -1,0 +1,24 @@
+
+==================================== ERRORS ====================================
+____________ ERROR collecting pinned_candidate/test_t9b_temporal.py ____________
+WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/test_t9b_temporal.py:18: in <module>
+    import t9b_temporal as T                                   # noqa: E402
+    ^^^^^^^^^^^^^^^^^^^^^^^^
+WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/t9b_temporal.py:28: in <module>
+    from data.ddm_build_copy import ddm_v553_temporal_pressure as V553  # noqa: E402
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1178: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1140: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:1080: in _find_spec
+    ???
+WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/guarded_runner.py:39: in find_spec
+    assert locations == [str(NATIVE/'data')], locations
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: ['/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/native/data', '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r23-t9i-court/WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/native/data']
+=========================== short test summary info ============================
+ERROR WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1/pinned_candidate/test_t9b_temporal.py
+!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+1 error in 0.20s
+T9I_author_EXIT=2 VERIFIED_PROJECT_MODULES=0
