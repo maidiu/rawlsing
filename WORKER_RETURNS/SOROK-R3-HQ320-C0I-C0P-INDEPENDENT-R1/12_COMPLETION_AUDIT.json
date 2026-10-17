@@ -1,0 +1,63 @@
+{
+  "verdict": "REVIEW_REVISE",
+  "review_complete": true,
+  "candidate_pass": false,
+  "requirements": {
+    "literal49": {
+      "status": "PROVED",
+      "evidence": "evidence/author49/junit.xml"
+    },
+    "native29": {
+      "status": "PROVED",
+      "evidence": "06_NATIVE29_ACTUAL_IMPORT_IDENTITIES.json"
+    },
+    "both_real_named_consumers": {
+      "status": "PROVED",
+      "evidence": "evidence/positive/native_named_receipts.json"
+    },
+    "fresh_preregistered_hostiles": {
+      "status": "EXECUTED_47PASS_3RED",
+      "freeze_commit": "72cc80eb93b4ddf55bb473db40aa3640ceb1e5b4",
+      "evidence": "evidence/hostile/junit.xml"
+    },
+    "full_K9": {
+      "status": "NOT_RUN_EXPLICITLY_ADJUDICATED",
+      "evidence": "05_K9_K10_EXECUTION_LEDGER.json"
+    },
+    "full_K10_28": {
+      "status": "NOT_RUN_EXPLICITLY_ADJUDICATED",
+      "evidence": "05_K9_K10_EXECUTION_LEDGER.json"
+    },
+    "E06_discrepancy": {
+      "status": "REPRODUCED_AND_SCOPE_CORRECTED",
+      "evidence": "evidence/pyat/source_api_audit.json"
+    },
+    "R22_E06I": {
+      "status": "CURRENT_PYAT_ACCEPTED_NONINSTALLING_METHOD_ONLY; PRIMARY_AUDITED_NOT_REEXECUTED",
+      "evidence": "08_PYAT_INTERFACE_PACKET.json"
+    },
+    "GF1I": {
+      "status": "NAMED_CONSUMER_ABSENCE_CONFIRMED; NO_RECONSTRUCTION",
+      "evidence": "evidence/pyat/source_api_audit.json"
+    },
+    "native_contracts": {
+      "status": "VALUES_POSITIVE; FACade_CONTRACT_RED",
+      "evidence": "07_FINDINGS_AND_OWNER_NEXT_EDGE.md"
+    },
+    "scope_and_permissions": {
+      "status": "NO_PROTECTED_OR_ORIGINAL_ACTOR_SEMANTIC_CHANGES",
+      "evidence": "15_OWNED_PATH_AUDIT.json"
+    }
+  },
+  "native_source_mutations": false,
+  "original_oracle_mutations": false,
+  "frozen50_mutations": false,
+  "originals_read": false,
+  "helpers": false,
+  "model_switches": false,
+  "production_changes": false,
+  "semantic_adoption": false,
+  "Pyat_interface_packet": "08_PYAT_INTERFACE_PACKET.json",
+  "completion_basis": "All requested review operations/evidence/adjudications done; candidate defects are findings, not unperformed reviewer work",
+  "publication": "Content commit plus directly verified receipt-only child; remote SHA reported outside own tree"
+}

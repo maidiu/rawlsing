@@ -1,0 +1,203 @@
+{
+  "case": "repro/test_c0i.py::test_unavailable_clocks_cannot_become_positive_routes[mother-2026-02-01-2026-02-01]",
+  "observations": [
+    {
+      "snapshot": {
+        "schema": "E04_TEST_ONLY_SELECTED_WORLD_SNAPSHOT@1",
+        "catalog_hash": "6df7d203d258ad751ba1f487f29ca87310b2077c8c581f6dc1cf864a253b9dca",
+        "mode": "AS_OF",
+        "valid_at": "2026-02-01",
+        "published_asof": "2026-02-01",
+        "purpose": "TEST_ONLY_CONTEXT",
+        "source_permission_root": "TEST_ONLY_E04_SOURCE_ROOT",
+        "fields": {
+          "civil_open": {
+            "state": "UNAVAILABLE_PUBLICATION_OR_EFFECTIVE_CLOCK",
+            "attempted_refs": [
+              {
+                "kind": "E04_TEST_ONLY_FIELD",
+                "object_id": "urn:test:e04:field:civil_open:1",
+                "content_hash": "704f450297cc2d79fdb4f4998bc5336c63524350a9983d378f5f500da920e27e"
+              }
+            ]
+          },
+          "civil_sanction": {
+            "state": "UNAVAILABLE_PUBLICATION_OR_EFFECTIVE_CLOCK",
+            "attempted_refs": [
+              {
+                "kind": "E04_TEST_ONLY_FIELD",
+                "object_id": "urn:test:e04:field:civil_sanction:1",
+                "content_hash": "fc9a722d4333076c338b0ad8993bac001e97de3d49ee816edebaacd85eb5154e"
+              }
+            ]
+          },
+          "exit_cost": {
+            "state": "UNAVAILABLE_PUBLICATION_OR_EFFECTIVE_CLOCK",
+            "attempted_refs": [
+              {
+                "kind": "E04_TEST_ONLY_FIELD",
+                "object_id": "urn:test:e04:field:exit_cost:1",
+                "content_hash": "5281accc231a8cbedce249f25863bffeca0c4cc2a6fdd755c085b2e19092fbfd"
+              }
+            ]
+          },
+          "training_access": {
+            "state": "UNAVAILABLE_PUBLICATION_OR_EFFECTIVE_CLOCK",
+            "attempted_refs": [
+              {
+                "kind": "E04_TEST_ONLY_FIELD",
+                "object_id": "urn:test:e04:field:training_access:1",
+                "content_hash": "3b4b4859dcbe858480d097147c719ce9458d4e1d88b4f47898a0416fe01e7174"
+              }
+            ]
+          },
+          "training_fee": {
+            "state": "UNAVAILABLE_PUBLICATION_OR_EFFECTIVE_CLOCK",
+            "attempted_refs": [
+              {
+                "kind": "E04_TEST_ONLY_FIELD",
+                "object_id": "urn:test:e04:field:training_fee:1",
+                "content_hash": "7b81073f295d8eafe81abb7aaaac58251cd172d109325d87e2deb2f0b9b6f166"
+              }
+            ]
+          }
+        },
+        "empirical": {
+          "source_universe_ref": {
+            "kind": "EmpiricalUniverse@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:f677fb8b8478ba78b9b526d5dcd7b3aa54070d4a4b90a1d2de6dc219ec177cda",
+            "content_hash": "f677fb8b8478ba78b9b526d5dcd7b3aa54070d4a4b90a1d2de6dc219ec177cda"
+          },
+          "release_ref": {
+            "kind": "C11LogicalRelease",
+            "object_id": "REL-e04-base-r1",
+            "content_hash": "5e795c3fd62b89aa00ca133777ff31df3cb42501d25a9b431fe0de03c54d161f"
+          },
+          "risk_set_ref": {
+            "kind": "RISK_SET",
+            "object_id": "urn:test:i03:risk_set:e04-base-r1-R_ALL",
+            "content_hash": "92b5d73b5deb258ac67123c878d965ad07a7b3694a6830c7a010f6c0582d9fe0"
+          },
+          "rows_hash": "4320b3a505478c274fc756ce0e025e36685e0742e940072aae80ce11286e4c02",
+          "permission_root": "TEST_ONLY_E04_SOURCE_ROOT",
+          "publication": "2026-03-01",
+          "field_time": "2026-01",
+          "native_geography": "US-NATIONAL",
+          "native_unit": "SYNTHETIC_INDIVIDUAL_RESPONDENT",
+          "grade": "SYNTHETIC_NOT_OBSERVED",
+          "state": "UNAVAILABLE_PUBLICATION_OR_EFFECTIVE_CLOCK"
+        },
+        "operative_N9": false,
+        "operative_CURRENT": false
+      },
+      "receipt": {
+        "receipt_hash": "b9c70b855b6535730a8cf164b8fc6fcc0d8165307da12d603f6eff46eba36ece",
+        "material": {
+          "consumer": "CONCEPTION_SCENARIO_PROPOSALS",
+          "state": "PARTIAL_PROPOSALS_EVALUATED",
+          "scenarios": [
+            {
+              "scenario_id": "MS",
+              "route": "institutional",
+              "feasibility": "UNKNOWN_PREMISE",
+              "structural_value_refs": [
+                null
+              ],
+              "empirical_profiles": [],
+              "selection_weight": null,
+              "weight_reason": "NO_SCENARIO_SELECTION_MODEL_OR_ISSUER",
+              "dependencies": [
+                "training_access"
+              ]
+            },
+            {
+              "scenario_id": "CIV",
+              "route": "civil",
+              "feasibility": "UNKNOWN_PREMISE",
+              "structural_value_refs": [
+                null,
+                null
+              ],
+              "empirical_profiles": [],
+              "selection_weight": null,
+              "weight_reason": "NO_SCENARIO_SELECTION_MODEL_OR_ISSUER",
+              "dependencies": [
+                "civil_open",
+                "civil_sanction"
+              ]
+            }
+          ],
+          "empirical": {
+            "state": "UNAVAILABLE_PUBLICATION_OR_EFFECTIVE_CLOCK",
+            "steps": [],
+            "dependencies": [
+              "empirical"
+            ],
+            "source_ref": {
+              "kind": "EmpiricalUniverse@1.0.0",
+              "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:f677fb8b8478ba78b9b526d5dcd7b3aa54070d4a4b90a1d2de6dc219ec177cda",
+              "content_hash": "f677fb8b8478ba78b9b526d5dcd7b3aa54070d4a4b90a1d2de6dc219ec177cda"
+            }
+          },
+          "person_generation": false,
+          "actual_conception": false,
+          "relationships_generated": false,
+          "values_read": [
+            {
+              "consumer": "CONCEPTION_SCENARIO_PROPOSALS",
+              "channel": "empirical",
+              "scope": "empirical",
+              "state": "UNAVAILABLE_PUBLICATION_OR_EFFECTIVE_CLOCK",
+              "value_read": null,
+              "snapshot_ref": "5dfdcc24ba653bf10f115af6b0f5f1d2fecf4ccaaecef8753e88a0db54273c62"
+            },
+            {
+              "consumer": "CONCEPTION_SCENARIO_PROPOSALS",
+              "channel": "structural",
+              "scope": "training_access",
+              "source_ref": null,
+              "state": "UNAVAILABLE_PUBLICATION_OR_EFFECTIVE_CLOCK",
+              "value_read": null,
+              "native_unit": null,
+              "snapshot_ref": "5dfdcc24ba653bf10f115af6b0f5f1d2fecf4ccaaecef8753e88a0db54273c62"
+            },
+            {
+              "consumer": "CONCEPTION_SCENARIO_PROPOSALS",
+              "channel": "structural",
+              "scope": "civil_open",
+              "source_ref": null,
+              "state": "UNAVAILABLE_PUBLICATION_OR_EFFECTIVE_CLOCK",
+              "value_read": null,
+              "native_unit": null,
+              "snapshot_ref": "5dfdcc24ba653bf10f115af6b0f5f1d2fecf4ccaaecef8753e88a0db54273c62"
+            },
+            {
+              "consumer": "CONCEPTION_SCENARIO_PROPOSALS",
+              "channel": "structural",
+              "scope": "civil_sanction",
+              "source_ref": null,
+              "state": "UNAVAILABLE_PUBLICATION_OR_EFFECTIVE_CLOCK",
+              "value_read": null,
+              "native_unit": null,
+              "snapshot_ref": "5dfdcc24ba653bf10f115af6b0f5f1d2fecf4ccaaecef8753e88a0db54273c62"
+            }
+          ],
+          "dependencies": [
+            "civil_open",
+            "civil_sanction",
+            "empirical",
+            "training_access"
+          ],
+          "snapshot_ref": "5dfdcc24ba653bf10f115af6b0f5f1d2fecf4ccaaecef8753e88a0db54273c62",
+          "service_contract": "E04_GENERIC_SELECTED_WORLD_POSSIBILITY_SERVICE_CANDIDATE@1",
+          "grade": "TEST_ONLY_SOURCEFREE_CANDIDATE",
+          "operative_N9": false,
+          "operative_N10W": false,
+          "new_issuer": false,
+          "actor_executions": 0,
+          "model_calls": 0
+        }
+      }
+    }
+  ]
+}

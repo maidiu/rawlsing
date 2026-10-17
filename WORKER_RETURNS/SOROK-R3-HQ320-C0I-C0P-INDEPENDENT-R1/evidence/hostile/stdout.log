@@ -1,0 +1,117 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.11.3, pytest-9.1.1, pluggy-1.6.0 -- /usr/local/bin/python3
+rootdir: ${C0I_WORKTREE}/WORKER_RETURNS/SOROK-R3-HQ320-C0I-C0P-INDEPENDENT-R1
+collecting ... collected 50 items
+
+repro/test_c0i.py::test_named_clients_read_exact_native_support_and_preserve_no_parent[nonparent] PASSED [  2%]
+repro/test_c0i.py::test_named_clients_read_exact_native_support_and_preserve_no_parent[mother] PASSED [  4%]
+repro/test_c0i.py::test_both_asof_clocks_control_revision_independently[2027-09-01-2026-06-01-True] PASSED [  6%]
+repro/test_c0i.py::test_both_asof_clocks_control_revision_independently[2026-06-01-2027-09-01-True] PASSED [  8%]
+repro/test_c0i.py::test_both_asof_clocks_control_revision_independently[2027-09-01-2027-09-01-False] PASSED [ 10%]
+repro/test_c0i.py::test_unavailable_clocks_cannot_become_positive_routes[nonparent-2026-02-01-2026-02-01] PASSED [ 12%]
+repro/test_c0i.py::test_unavailable_clocks_cannot_become_positive_routes[nonparent-2029-01-01-2029-01-01] PASSED [ 14%]
+repro/test_c0i.py::test_unavailable_clocks_cannot_become_positive_routes[mother-2026-02-01-2026-02-01] PASSED [ 16%]
+repro/test_c0i.py::test_unavailable_clocks_cannot_become_positive_routes[mother-2029-01-01-2029-01-01] PASSED [ 18%]
+repro/test_c0i.py::test_revoked_training_read_removes_only_its_dependent_routes[nonparent] PASSED [ 20%]
+repro/test_c0i.py::test_revoked_training_read_removes_only_its_dependent_routes[mother] PASSED [ 22%]
+repro/test_c0i.py::test_empirical_revocation_is_not_zero_or_renormalization[nonparent] PASSED [ 24%]
+repro/test_c0i.py::test_empirical_revocation_is_not_zero_or_renormalization[mother] PASSED [ 26%]
+repro/test_c0i.py::test_native_query_grant_loss_cannot_serve_fresh_cells[nonparent-False] PASSED [ 28%]
+repro/test_c0i.py::test_native_query_grant_loss_cannot_serve_fresh_cells[nonparent-True] PASSED [ 30%]
+repro/test_c0i.py::test_native_query_grant_loss_cannot_serve_fresh_cells[mother-False] PASSED [ 32%]
+repro/test_c0i.py::test_native_query_grant_loss_cannot_serve_fresh_cells[mother-True] PASSED [ 34%]
+repro/test_c0i.py::test_native_forward_and_separately_granted_reverse_have_distinct_denominators PASSED [ 36%]
+repro/test_c0i.py::test_unsupported_reverse_roles_household_dyad_and_mixed_identity_refuse[A-conditions0] PASSED [ 38%]
+repro/test_c0i.py::test_unsupported_reverse_roles_household_dyad_and_mixed_identity_refuse[B-conditions1] PASSED [ 40%]
+repro/test_c0i.py::test_unsupported_reverse_roles_household_dyad_and_mixed_identity_refuse[HOUSEHOLD-conditions2] PASSED [ 42%]
+repro/test_c0i.py::test_unsupported_reverse_roles_household_dyad_and_mixed_identity_refuse[DYAD-conditions3] PASSED [ 44%]
+repro/test_c0i.py::test_unsupported_reverse_roles_household_dyad_and_mixed_identity_refuse[Y-conditions4] PASSED [ 46%]
+repro/test_c0i.py::test_unsupported_reverse_roles_household_dyad_and_mixed_identity_refuse[Y-conditions5] PASSED [ 48%]
+repro/test_c0i.py::test_unsupported_reverse_roles_household_dyad_and_mixed_identity_refuse[Y-conditions6] PASSED [ 50%]
+repro/test_c0i.py::test_reverse_without_existing_separate_permit_refuses_while_forward_survives PASSED [ 52%]
+repro/test_c0i.py::test_condition_order_is_preserved_not_sorted_away PASSED [ 54%]
+repro/test_c0i.py::test_null_support_remains_typed_with_no_invented_weight[nonparent] PASSED [ 56%]
+repro/test_c0i.py::test_null_support_remains_typed_with_no_invented_weight[mother] PASSED [ 58%]
+repro/test_c0i.py::test_rehashed_cached_provenance_cannot_override_native_owner[cells] PASSED [ 60%]
+repro/test_c0i.py::test_rehashed_cached_provenance_cannot_override_native_owner[conditioners] PASSED [ 62%]
+repro/test_c0i.py::test_rehashed_cached_provenance_cannot_override_native_owner[permission_root] PASSED [ 64%]
+repro/test_c0i.py::test_rehashed_cached_provenance_cannot_override_native_owner[evidence_ref] PASSED [ 66%]
+repro/test_c0i.py::test_rehashed_cached_provenance_cannot_override_native_owner[uncertainty] PASSED [ 68%]
+repro/test_c0i.py::test_source_and_snapshot_identity_refuse_coherent_outer_hashes[foreign_source] PASSED [ 70%]
+repro/test_c0i.py::test_source_and_snapshot_identity_refuse_coherent_outer_hashes[row_hash] PASSED [ 72%]
+repro/test_c0i.py::test_source_and_snapshot_identity_refuse_coherent_outer_hashes[model_rule] PASSED [ 74%]
+repro/test_c0i.py::test_source_and_snapshot_identity_refuse_coherent_outer_hashes[rehashed_snapshot] PASSED [ 76%]
+repro/test_c0i.py::test_source_and_snapshot_identity_refuse_coherent_outer_hashes[unregistered_snapshot] PASSED [ 78%]
+repro/test_c0i.py::test_mother_input_refuses_unissued_people_joints_psyche_weights[father-PERSON] PASSED [ 80%]
+repro/test_c0i.py::test_mother_input_refuses_unissued_people_joints_psyche_weights[partner_actor-PERSON] PASSED [ 82%]
+repro/test_c0i.py::test_mother_input_refuses_unissued_people_joints_psyche_weights[household-value2] PASSED [ 84%]
+repro/test_c0i.py::test_mother_input_refuses_unissued_people_joints_psyche_weights[dyad-value3] PASSED [ 86%]
+repro/test_c0i.py::test_mother_input_refuses_unissued_people_joints_psyche_weights[weight-0.25] PASSED [ 88%]
+repro/test_c0i.py::test_mother_input_refuses_unissued_people_joints_psyche_weights[psychological_memory-value5] PASSED [ 90%]
+repro/test_c0i.py::test_changed_empirical_version_changes_source_not_unrelated_structural_truth PASSED [ 92%]
+repro/test_c0i.py::test_port_runtime_binding_uses_actual_imported_native_module_tree FAILED [ 94%]
+repro/test_c0i.py::test_port_relocation_preserves_exact_original_consumers_and_values PASSED [ 96%]
+repro/test_c0i.py::test_facade_exposes_two_distinct_owner_contract_receipts_not_two_N9_clients FAILED [ 98%]
+repro/test_c0i.py::test_facade_receipt_roundtrips_frozen_SC0_envelope_not_only_a_consumer_hash FAILED [100%]
+
+=================================== FAILURES ===================================
+______ test_port_runtime_binding_uses_actual_imported_native_module_tree _______
+repro/test_c0i.py:165: in test_port_runtime_binding_uses_actual_imported_native_module_tree
+    assert p.RUNTIME.resolve()==Path(nonparent.__file__).resolve().parent.parent,'Hardcoded /tmp path is not the fresh imported native runtime'
+E   AssertionError: Hardcoded /tmp path is not the fresh imported native runtime
+E   assert PosixPath('/private/tmp/c0p-runtime') == PosixPath('${C0I_WORKTREE}/WORKER_RETURNS/SOROK-R3-HQ320-C0I-C0P-INDEPENDENT-R1/staging/runtime')
+E    +  where PosixPath('/private/tmp/c0p-runtime') = resolve()
+E    +    where resolve = PosixPath('/tmp/c0p-runtime').resolve
+E    +      where PosixPath('/tmp/c0p-runtime') = <module 'c0p_port_under_review' from '${C0I_WORKTREE}/WORKER_RETURNS/SOROK-R3-HQ320-C0I-C0P-INDEPENDENT-R1/staging/c0p/repro/c0p_two_contract_port.py'>.RUNTIME
+E    +  and   PosixPath('${C0I_WORKTREE}/WORKER_RETURNS/SOROK-R3-HQ320-C0I-C0P-INDEPENDENT-R1/staging/runtime') = PosixPath('${C0I_WORKTREE}/WORKER_RETURNS/SOROK-R3-HQ320-C0I-C0P-INDEPENDENT-R1/staging/runtime/product').parent
+E    +    where PosixPath('${C0I_WORKTREE}/WORKER_RETURNS/SOROK-R3-HQ320-C0I-C0P-INDEPENDENT-R1/staging/runtime/product') = PosixPath('${C0I_WORKTREE}/WORKER_RETURNS/SOROK-R3-HQ320-C0I-C0P-INDEPENDENT-R1/staging/runtime/product/nonparent.py').parent
+E    +      where PosixPath('${C0I_WORKTREE}/WORKER_RETURNS/SOROK-R3-HQ320-C0I-C0P-INDEPENDENT-R1/staging/runtime/product/nonparent.py') = resolve()
+E    +        where resolve = PosixPath('${C0I_WORKTREE}/WORKER_RETURNS/SOROK-R3-HQ320-C0I-C0P-INDEPENDENT-R1/staging/runtime/product/nonparent.py').resolve
+E    +          where PosixPath('${C0I_WORKTREE}/WORKER_RETURNS/SOROK-R3-HQ320-C0I-C0P-INDEPENDENT-R1/staging/runtime/product/nonparent.py') = Path('${C0I_WORKTREE}/WORKER_RETURNS/SOROK-R3-HQ320-C0I-C0P-INDEPENDENT-R1/staging/runtime/product/nonparent.py')
+E    +            where '${C0I_WORKTREE}/WORKER_RETURNS/SOROK-R3-HQ320-C0I-C0P-INDEPENDENT-R1/staging/runtime/product/nonparent.py' = nonparent.__file__
+_ test_facade_exposes_two_distinct_owner_contract_receipts_not_two_N9_clients __
+repro/test_c0i.py:178: in test_facade_exposes_two_distinct_owner_contract_receipts_not_two_N9_clients
+    assert {a.contract,b.contract}=={port.CONTRACT_N9,port.CONTRACT_N10},'Two consumer hashes do not demonstrate two separately exposed owner contracts'
+E   AssertionError: Two consumer hashes do not demonstrate two separately exposed owner contracts
+E   assert {'N9'} == {'N10E_N10W', 'N9'}
+E     
+E     Extra items in the right set:
+E     'N10E_N10W'
+E     
+E     Full diff:
+E       {
+E     -     'N10E_N10W',
+E           'N9',
+E       }
+_ test_facade_receipt_roundtrips_frozen_SC0_envelope_not_only_a_consumer_hash __
+repro/test_c0i.py:184: in test_facade_receipt_roundtrips_frozen_SC0_envelope_not_only_a_consumer_hash
+    assert not missing and out['contract']=='GENERIC_WORLD_SELECTION@1.0.0','Claimed literal SC0 envelope is not provided'
+E   AssertionError: Claimed literal SC0 envelope is not provided
+E   assert (not ['clock', 'demand_ref', 'dependency_closure', 'generated_criteria_echo', 'grade', 'issuer_and_use', 'native_scopes', 'payloads', 'receipt_ref', 'refresh', 'repository_refs', 'request_id', 'selection', 'snapshot_ref', 'state', 'values_read_refs'])
+- generated xml file: ${C0I_WORKTREE}/WORKER_RETURNS/SOROK-R3-HQ320-C0I-C0P-INDEPENDENT-R1/evidence/hostile/junit.xml -
+=========================== short test summary info ============================
+FAILED repro/test_c0i.py::test_port_runtime_binding_uses_actual_imported_native_module_tree - AssertionError: Hardcoded /tmp path is not the fresh imported native runtime
+assert PosixPath('/private/tmp/c0p-runtime') == PosixPath('${C0I_WORKTREE}/WORKER_RETURNS/SOROK-R3-HQ320-C0I-C0P-INDEPENDENT-R1/staging/runtime')
+ +  where PosixPath('/private/tmp/c0p-runtime') = resolve()
+ +    where resolve = PosixPath('/tmp/c0p-runtime').resolve
+ +      where PosixPath('/tmp/c0p-runtime') = <module 'c0p_port_under_review' from '${C0I_WORKTREE}/WORKER_RETURNS/SOROK-R3-HQ320-C0I-C0P-INDEPENDENT-R1/staging/c0p/repro/c0p_two_contract_port.py'>.RUNTIME
+ +  and   PosixPath('${C0I_WORKTREE}/WORKER_RETURNS/SOROK-R3-HQ320-C0I-C0P-INDEPENDENT-R1/staging/runtime') = PosixPath('${C0I_WORKTREE}/WORKER_RETURNS/SOROK-R3-HQ320-C0I-C0P-INDEPENDENT-R1/staging/runtime/product').parent
+ +    where PosixPath('${C0I_WORKTREE}/WORKER_RETURNS/SOROK-R3-HQ320-C0I-C0P-INDEPENDENT-R1/staging/runtime/product') = PosixPath('${C0I_WORKTREE}/WORKER_RETURNS/SOROK-R3-HQ320-C0I-C0P-INDEPENDENT-R1/staging/runtime/product/nonparent.py').parent
+ +      where PosixPath('${C0I_WORKTREE}/WORKER_RETURNS/SOROK-R3-HQ320-C0I-C0P-INDEPENDENT-R1/staging/runtime/product/nonparent.py') = resolve()
+ +        where resolve = PosixPath('${C0I_WORKTREE}/WORKER_RETURNS/SOROK-R3-HQ320-C0I-C0P-INDEPENDENT-R1/staging/runtime/product/nonparent.py').resolve
+ +          where PosixPath('${C0I_WORKTREE}/WORKER_RETURNS/SOROK-R3-HQ320-C0I-C0P-INDEPENDENT-R1/staging/runtime/product/nonparent.py') = Path('${C0I_WORKTREE}/WORKER_RETURNS/SOROK-R3-HQ320-C0I-C0P-INDEPENDENT-R1/staging/runtime/product/nonparent.py')
+ +            where '${C0I_WORKTREE}/WORKER_RETURNS/SOROK-R3-HQ320-C0I-C0P-INDEPENDENT-R1/staging/runtime/product/nonparent.py' = nonparent.__file__
+FAILED repro/test_c0i.py::test_facade_exposes_two_distinct_owner_contract_receipts_not_two_N9_clients - AssertionError: Two consumer hashes do not demonstrate two separately exposed owner contracts
+assert {'N9'} == {'N10E_N10W', 'N9'}
+  
+  Extra items in the right set:
+  'N10E_N10W'
+  
+  Full diff:
+    {
+  -     'N10E_N10W',
+        'N9',
+    }
+FAILED repro/test_c0i.py::test_facade_receipt_roundtrips_frozen_SC0_envelope_not_only_a_consumer_hash - AssertionError: Claimed literal SC0 envelope is not provided
+assert (not ['clock', 'demand_ref', 'dependency_closure', 'generated_criteria_echo', 'grade', 'issuer_and_use', 'native_scopes', 'payloads', 'receipt_ref', 'refresh', 'repository_refs', 'request_id', 'selection', 'snapshot_ref', 'state', 'values_read_refs'])
+======================== 3 failed, 47 passed in 40.55s =========================

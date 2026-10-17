@@ -1,0 +1,414 @@
+{
+  "K9": {
+    "full_provider_swap": "NOT_RUN",
+    "reason": "Only one native provider encoding used; native single/multi/reverse query routes and cold imports are not a second provider",
+    "SC0_cases": [
+      {
+        "id": "K9_01_TWO_PROVIDERS_SAME_MEANING",
+        "procedure": [
+          "load A then B under identical use ceiling",
+          "resolve same world demand with same four clocks",
+          "query three ordered empirical steps",
+          "dereference all semantic objects",
+          "invoke each of two consumers under same rule version"
+        ],
+        "assertions": [
+          "schema_valid(A) && schema_valid(B)",
+          "semantic_world_projection(A)==semantic_world_projection(B)",
+          "ordered_possibility_projection(A)==ordered_possibility_projection(B)",
+          "both_consumer_effects(A)==both_consumer_effects(B)",
+          "physical_provider_id(A)!=physical_provider_id(B)"
+        ],
+        "expected": "EQUIVALENT_EXCEPT_DECLARED_PHYSICAL_LINEAGE"
+      },
+      {
+        "id": "K9_02_INDEPENDENT_NONPARENT",
+        "procedure": [
+          "use NONPARENT_APPRENTICESHIP_ENTRY",
+          "exclude genealogical selectors from request"
+        ],
+        "assertions": [
+          "requires_no_parent_or_coparent_tag",
+          "selected_apprenticeship_routes_equal",
+          "no_person_generation"
+        ],
+        "expected": "GENERIC_API_CONSUMED_WITHOUT_GENEALOGY"
+      },
+      {
+        "id": "K9_03_ID_REORDER_AND_STAGE_RENAME",
+        "procedure": [
+          "B shuffles physical record order and renames all stage-shaped files",
+          "semantic refs and values preserved"
+        ],
+        "assertions": [
+          "no_stage_name_dependency",
+          "all roles/order unchanged",
+          "semantic projections equal"
+        ],
+        "expected": "EQUIVALENT"
+      },
+      {
+        "id": "K9_04_NOT_EQUIVALENT_CONTRAST",
+        "procedure": [
+          "B omits sponsor participant or converts triad into dyads"
+        ],
+        "assertions": [
+          "world_projection_inequality_detected",
+          "port must reject lost role"
+        ],
+        "expected": "FAIL_NON_EQUIVALENT_PROVIDER_NOT_PERMITTED_NORMALIZATION"
+      },
+      {
+        "id": "K9_05_MODELLED_VS_OBSERVED",
+        "procedure": [
+          "B marks fixture synthetic route as observed source fact"
+        ],
+        "assertions": [
+          "epistemic_grade_difference_detected",
+          "reject promotion"
+        ],
+        "expected": "REFUSE_GRADE_PROMOTION"
+      },
+      {
+        "id": "K9_06_FORWARD_REVERSE",
+        "procedure": [
+          "request reversal from B without separate target risk-set issuer"
+        ],
+        "assertions": [
+          "no_calculation_of_reverse_from_forward",
+          "forward_legal_slice_preserved"
+        ],
+        "expected": "HELD_AUTHORITY_REVERSE_ROLE"
+      },
+      {
+        "id": "K9_07_PERMISSIONS",
+        "procedure": [
+          "B drops dependency use atom while preserving bytes"
+        ],
+        "assertions": [
+          "denied_requested_slice",
+          "no cached A bypass"
+        ],
+        "expected": "DENIED_USE"
+      },
+      {
+        "id": "K9_08_TWO_CHANNEL_REFRESH",
+        "procedure": [
+          "same timestamp, generated location binding changes",
+          "next run crosses publication boundary independently"
+        ],
+        "assertions": [
+          "binding_change_causes_new_query",
+          "publication_boundary_causes_separate_successor",
+          "prior_receipts_immutable"
+        ],
+        "expected": "TWO_INDEPENDENT_SUCCESSORS"
+      }
+    ],
+    "minimum_legitimate_comparator": "A Pyat-supplied or explicitly authorized independently encoded transport/read adapter over the SAME native owner outputs. Preserve every semantic field, source/risk/unit/order/clock/permission/refusal and both clients; independently freeze equivalent/non-equivalent cases. Reversible encoding/locator differences only; no new estimator, provider model, source grant or owner. Not implemented here."
+  },
+  "K10": {
+    "full_28_mutation_court": "NOT_RUN",
+    "cases": [
+      {
+        "id": "K10_01",
+        "mutation": "DROP_AH",
+        "original_expected": "REJECT_SEMANTIC_LOSS",
+        "full_SC0_upstream_mutation": "NOT_RUN",
+        "C0I_status": "NOT_RUN",
+        "related_tests": [],
+        "ceiling": "Different native sourcefree fixture; not an execution of frozen upstream mutation. K10_28 checks zero actor calls only, not an attempted V3/wake."
+      },
+      {
+        "id": "K10_02",
+        "mutation": "STRATUM_TRANSLATION",
+        "original_expected": "REJECT_NONINJECTIVE_COORDINATE",
+        "full_SC0_upstream_mutation": "NOT_RUN",
+        "C0I_status": "NOT_RUN",
+        "related_tests": [],
+        "ceiling": "Different native sourcefree fixture; not an execution of frozen upstream mutation. K10_28 checks zero actor calls only, not an attempted V3/wake."
+      },
+      {
+        "id": "K10_03",
+        "mutation": "DYADIZE_NARY",
+        "original_expected": "REJECT_CARDINALITY_ROLE_TOPOLOGY_LOSS",
+        "full_SC0_upstream_mutation": "NOT_RUN",
+        "C0I_status": "NOT_RUN",
+        "related_tests": [],
+        "ceiling": "Different native sourcefree fixture; not an execution of frozen upstream mutation. K10_28 checks zero actor calls only, not an attempted V3/wake."
+      },
+      {
+        "id": "K10_04",
+        "mutation": "DROP_F2_HISTORY_REQUIREMENT",
+        "original_expected": "REJECT_F2_PREREQUISITE_LOSS",
+        "full_SC0_upstream_mutation": "NOT_RUN",
+        "C0I_status": "NOT_RUN",
+        "related_tests": [],
+        "ceiling": "Different native sourcefree fixture; not an execution of frozen upstream mutation. K10_28 checks zero actor calls only, not an attempted V3/wake."
+      },
+      {
+        "id": "K10_05",
+        "mutation": "PREDICATE_BECOMES_EXPERIENCE",
+        "original_expected": "REJECT_ACTOR_FIREWALL",
+        "full_SC0_upstream_mutation": "NOT_RUN",
+        "C0I_status": "PARTIAL_BOUNDARY_NATIVE",
+        "related_tests": [
+          "test_mother_input_refuses_unissued_people_joints_psyche_weights"
+        ],
+        "ceiling": "Different native sourcefree fixture; not an execution of frozen upstream mutation. K10_28 checks zero actor calls only, not an attempted V3/wake."
+      },
+      {
+        "id": "K10_06",
+        "mutation": "CONTRADICTION_DOMINANT_ONLY",
+        "original_expected": "REJECT_ALTERNATIVE_ERASURE",
+        "full_SC0_upstream_mutation": "NOT_RUN",
+        "C0I_status": "NOT_RUN",
+        "related_tests": [],
+        "ceiling": "Different native sourcefree fixture; not an execution of frozen upstream mutation. K10_28 checks zero actor calls only, not an attempted V3/wake."
+      },
+      {
+        "id": "K10_07",
+        "mutation": "MINORITY_ERASE",
+        "original_expected": "REJECT_SUPPORT_ERASURE",
+        "full_SC0_upstream_mutation": "NOT_RUN",
+        "C0I_status": "PARTIAL_BOUNDARY_NATIVE",
+        "related_tests": [
+          "test_named_clients_read_exact_native_support_and_preserve_no_parent",
+          "test_rehashed_cached_provenance_cannot_override_native_owner"
+        ],
+        "ceiling": "Different native sourcefree fixture; not an execution of frozen upstream mutation. K10_28 checks zero actor calls only, not an attempted V3/wake."
+      },
+      {
+        "id": "K10_08",
+        "mutation": "ZERO_MISSING_COLLAPSE",
+        "original_expected": "REJECT_NEGATIVE_ALGEBRA_COLLAPSE",
+        "full_SC0_upstream_mutation": "NOT_RUN",
+        "C0I_status": "PARTIAL_BOUNDARY_NATIVE",
+        "related_tests": [
+          "test_null_support_remains_typed_with_no_invented_weight",
+          "test_empirical_revocation_is_not_zero_or_renormalization",
+          "test_unavailable_clocks_cannot_become_positive_routes"
+        ],
+        "ceiling": "Different native sourcefree fixture; not an execution of frozen upstream mutation. K10_28 checks zero actor calls only, not an attempted V3/wake."
+      },
+      {
+        "id": "K10_09",
+        "mutation": "UNDERPOWERED_AS_EMPTY",
+        "original_expected": "REJECT_UNDERPOWERED_ERASURE",
+        "full_SC0_upstream_mutation": "NOT_RUN",
+        "C0I_status": "NOT_RUN",
+        "related_tests": [],
+        "ceiling": "Different native sourcefree fixture; not an execution of frozen upstream mutation. K10_28 checks zero actor calls only, not an attempted V3/wake."
+      },
+      {
+        "id": "K10_10",
+        "mutation": "NOT_ASKED_AS_NO",
+        "original_expected": "REJECT_ROUTING_NONRESPONSE_LOSS",
+        "full_SC0_upstream_mutation": "NOT_RUN",
+        "C0I_status": "NOT_RUN",
+        "related_tests": [],
+        "ceiling": "Different native sourcefree fixture; not an execution of frozen upstream mutation. K10_28 checks zero actor calls only, not an attempted V3/wake."
+      },
+      {
+        "id": "K10_11",
+        "mutation": "CROSS_UNIT_POOL",
+        "original_expected": "REFUSE_SAMPLING_UNIT_JOINT",
+        "full_SC0_upstream_mutation": "NOT_RUN",
+        "C0I_status": "PARTIAL_BOUNDARY_NATIVE",
+        "related_tests": [
+          "test_unsupported_reverse_roles_household_dyad_and_mixed_identity_refuse"
+        ],
+        "ceiling": "Different native sourcefree fixture; not an execution of frozen upstream mutation. K10_28 checks zero actor calls only, not an attempted V3/wake."
+      },
+      {
+        "id": "K10_12",
+        "mutation": "DIRECTION_REVERSE",
+        "original_expected": "HELD_AUTHORITY",
+        "full_SC0_upstream_mutation": "NOT_RUN",
+        "C0I_status": "PARTIAL_BOUNDARY_NATIVE",
+        "related_tests": [
+          "test_native_forward_and_separately_granted_reverse_have_distinct_denominators",
+          "test_reverse_without_existing_separate_permit_refuses_while_forward_survives"
+        ],
+        "ceiling": "Different native sourcefree fixture; not an execution of frozen upstream mutation. K10_28 checks zero actor calls only, not an attempted V3/wake."
+      },
+      {
+        "id": "K10_13",
+        "mutation": "CONDITION_SET_SORT",
+        "original_expected": "REJECT_ORDERED_PATH_LOSS",
+        "full_SC0_upstream_mutation": "NOT_RUN",
+        "C0I_status": "PARTIAL_BOUNDARY_NATIVE",
+        "related_tests": [
+          "test_condition_order_is_preserved_not_sorted_away"
+        ],
+        "ceiling": "Different native sourcefree fixture; not an execution of frozen upstream mutation. K10_28 checks zero actor calls only, not an attempted V3/wake."
+      },
+      {
+        "id": "K10_14",
+        "mutation": "UNCERTAIN_TO_POINT",
+        "original_expected": "REJECT_MODEL_PRECISION_INVENTION",
+        "full_SC0_upstream_mutation": "NOT_RUN",
+        "C0I_status": "PARTIAL_BOUNDARY_NATIVE",
+        "related_tests": [
+          "test_rehashed_cached_provenance_cannot_override_native_owner"
+        ],
+        "ceiling": "Different native sourcefree fixture; not an execution of frozen upstream mutation. K10_28 checks zero actor calls only, not an attempted V3/wake."
+      },
+      {
+        "id": "K10_15",
+        "mutation": "CLOCK_CONFLATION",
+        "original_expected": "NO_CURRENT_OR_NOT_KNOWN_ASOF",
+        "full_SC0_upstream_mutation": "NOT_RUN",
+        "C0I_status": "PARTIAL_BOUNDARY_NATIVE",
+        "related_tests": [
+          "test_both_asof_clocks_control_revision_independently",
+          "test_unavailable_clocks_cannot_become_positive_routes"
+        ],
+        "ceiling": "Different native sourcefree fixture; not an execution of frozen upstream mutation. K10_28 checks zero actor calls only, not an attempted V3/wake."
+      },
+      {
+        "id": "K10_16",
+        "mutation": "LAG_INTERPOLATION",
+        "original_expected": "HELD_AUTHORITY",
+        "full_SC0_upstream_mutation": "NOT_RUN",
+        "C0I_status": "NOT_RUN",
+        "related_tests": [],
+        "ceiling": "Different native sourcefree fixture; not an execution of frozen upstream mutation. K10_28 checks zero actor calls only, not an attempted V3/wake."
+      },
+      {
+        "id": "K10_17",
+        "mutation": "BINDING_AS_OBSERVATION",
+        "original_expected": "REJECT_GENERATED_FACT_PROMOTION",
+        "full_SC0_upstream_mutation": "NOT_RUN",
+        "C0I_status": "NOT_RUN",
+        "related_tests": [],
+        "ceiling": "Different native sourcefree fixture; not an execution of frozen upstream mutation. K10_28 checks zero actor calls only, not an attempted V3/wake."
+      },
+      {
+        "id": "K10_18",
+        "mutation": "CHANGE_BINDING_NO_REFRESH",
+        "original_expected": "REJECT_STALE_BINDING_CONTEXT",
+        "full_SC0_upstream_mutation": "NOT_RUN",
+        "C0I_status": "PARTIAL_BOUNDARY_NATIVE",
+        "related_tests": [
+          "test_source_and_snapshot_identity_refuse_coherent_outer_hashes"
+        ],
+        "ceiling": "Different native sourcefree fixture; not an execution of frozen upstream mutation. K10_28 checks zero actor calls only, not an attempted V3/wake."
+      },
+      {
+        "id": "K10_19",
+        "mutation": "PUBLISH_BOUNDARY_NO_REFRESH",
+        "original_expected": "REJECT_STALE_REPOSITORY_CONTEXT",
+        "full_SC0_upstream_mutation": "NOT_RUN",
+        "C0I_status": "PARTIAL_BOUNDARY_NATIVE",
+        "related_tests": [
+          "test_both_asof_clocks_control_revision_independently",
+          "test_changed_empirical_version_changes_source_not_unrelated_structural_truth"
+        ],
+        "ceiling": "Different native sourcefree fixture; not an execution of frozen upstream mutation. K10_28 checks zero actor calls only, not an attempted V3/wake."
+      },
+      {
+        "id": "K10_20",
+        "mutation": "PERMISSION_REVOKED",
+        "original_expected": "DENIED_USE",
+        "full_SC0_upstream_mutation": "NOT_RUN",
+        "C0I_status": "PARTIAL_BOUNDARY_NATIVE",
+        "related_tests": [
+          "test_revoked_training_read_removes_only_its_dependent_routes",
+          "test_empirical_revocation_is_not_zero_or_renormalization",
+          "test_native_query_grant_loss_cannot_serve_fresh_cells"
+        ],
+        "ceiling": "Different native sourcefree fixture; not an execution of frozen upstream mutation. K10_28 checks zero actor calls only, not an attempted V3/wake."
+      },
+      {
+        "id": "K10_21",
+        "mutation": "PARTIAL_AS_COMPLETE",
+        "original_expected": "PARTIAL_DEFERRED",
+        "full_SC0_upstream_mutation": "NOT_RUN",
+        "C0I_status": "PARTIAL_BOUNDARY_NATIVE",
+        "related_tests": [
+          "test_unavailable_clocks_cannot_become_positive_routes"
+        ],
+        "ceiling": "Different native sourcefree fixture; not an execution of frozen upstream mutation. K10_28 checks zero actor calls only, not an attempted V3/wake."
+      },
+      {
+        "id": "K10_22",
+        "mutation": "PROXY_AS_OBSERVED",
+        "original_expected": "REJECT_EPISTEMIC_PROMOTION",
+        "full_SC0_upstream_mutation": "NOT_RUN",
+        "C0I_status": "NOT_RUN",
+        "related_tests": [],
+        "ceiling": "Different native sourcefree fixture; not an execution of frozen upstream mutation. K10_28 checks zero actor calls only, not an attempted V3/wake."
+      },
+      {
+        "id": "K10_23",
+        "mutation": "OPAQUE_HASH_NO_VALUES",
+        "original_expected": "REJECT_UNVERIFIABLE_CONSUMER_USE",
+        "full_SC0_upstream_mutation": "NOT_RUN",
+        "C0I_status": "PARTIAL_BOUNDARY_RED",
+        "related_tests": [
+          "test_facade_receipt_roundtrips_frozen_SC0_envelope_not_only_a_consumer_hash"
+        ],
+        "ceiling": "Different native sourcefree fixture; not an execution of frozen upstream mutation. K10_28 checks zero actor calls only, not an attempted V3/wake."
+      },
+      {
+        "id": "K10_24",
+        "mutation": "IMPLICIT_MODEL_CROSSPRODUCT",
+        "original_expected": "REFUSE_UNAUTHORIZED_COMPOSITION",
+        "full_SC0_upstream_mutation": "NOT_RUN",
+        "C0I_status": "PARTIAL_BOUNDARY_NATIVE",
+        "related_tests": [
+          "test_unsupported_reverse_roles_household_dyad_and_mixed_identity_refuse",
+          "test_mother_input_refuses_unissued_people_joints_psyche_weights"
+        ],
+        "ceiling": "Different native sourcefree fixture; not an execution of frozen upstream mutation. K10_28 checks zero actor calls only, not an attempted V3/wake."
+      },
+      {
+        "id": "K10_25",
+        "mutation": "UPSTREAM_PSYCHIC_FIELDS",
+        "original_expected": "REJECT_ACTOR_JURISDICTION",
+        "full_SC0_upstream_mutation": "NOT_RUN",
+        "C0I_status": "PARTIAL_BOUNDARY_NATIVE",
+        "related_tests": [
+          "test_mother_input_refuses_unissued_people_joints_psyche_weights"
+        ],
+        "ceiling": "Different native sourcefree fixture; not an execution of frozen upstream mutation. K10_28 checks zero actor calls only, not an attempted V3/wake."
+      },
+      {
+        "id": "K10_26",
+        "mutation": "F2_PUBLIC_SANCTION",
+        "original_expected": "REJECT_PUBLIC_RULE_AND_OWNER_LOSS",
+        "full_SC0_upstream_mutation": "NOT_RUN",
+        "C0I_status": "NOT_RUN",
+        "related_tests": [],
+        "ceiling": "Different native sourcefree fixture; not an execution of frozen upstream mutation. K10_28 checks zero actor calls only, not an attempted V3/wake."
+      },
+      {
+        "id": "K10_27",
+        "mutation": "NONPARENT_CONSUMER",
+        "original_expected": "PRODUCE_GENERIC_OBJECTIVE_POSSIBILITY_ONLY",
+        "full_SC0_upstream_mutation": "NOT_RUN",
+        "C0I_status": "PARTIAL_BOUNDARY_NATIVE",
+        "related_tests": [
+          "test_named_clients_read_exact_native_support_and_preserve_no_parent"
+        ],
+        "ceiling": "Different native sourcefree fixture; not an execution of frozen upstream mutation. K10_28 checks zero actor calls only, not an attempted V3/wake."
+      },
+      {
+        "id": "K10_28",
+        "mutation": "NO_ACTOR_WELD",
+        "original_expected": "REFUSE_UNGRANTED_ACTOR_USE",
+        "full_SC0_upstream_mutation": "NOT_RUN",
+        "C0I_status": "PARTIAL_BOUNDARY_NATIVE",
+        "related_tests": [
+          "test_named_clients_read_exact_native_support_and_preserve_no_parent"
+        ],
+        "ceiling": "Different native sourcefree fixture; not an execution of frozen upstream mutation. K10_28 checks zero actor calls only, not an attempted V3/wake."
+      }
+    ],
+    "C0P_four_boundary_annotations": "Static dictionary strings only; not four executed mutations",
+    "full_physical_C0_freeze": "NOT_PROVED"
+  },
+  "C0I_claim": "49 literal author regressions plus50 genuinely new native boundary/contract tests; not full K9/K10",
+  "schema_envelope": "Commissioned PROPOSED_TEST_SPECIFICATION acceptance target; not adopted Pyat semantic law"
+}
