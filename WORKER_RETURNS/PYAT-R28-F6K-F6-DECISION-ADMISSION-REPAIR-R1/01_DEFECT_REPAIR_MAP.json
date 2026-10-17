@@ -1,0 +1,110 @@
+{
+ "schema": "PYAT_R28_F6K_DECISION_ADMISSION_REPAIR@1",
+ "branch": "agent/rabochii-pyat-r28-f6k-decision-admission-consumer-contract-repair-r1",
+ "sealed_startup": "813742d970d5484a53b7eac2fa3ba2fa76297432",
+ "f6c_candidate": "9aa0e7d3a0cf9ab7654ce8e3d5cb15060235a48f",
+ "f6j_verdict": "825b2d8050b550f1d52d3129883584fee2ef36c2",
+ "outcome": "F6K_TYPED_HOLD__SIX_DEFECTS_LOCATED_AND_MAPPED__NO_REPAIR_CODE_SHIPPED",
+ "repair_code_shipped": false,
+ "suites_executed": false,
+ "f6j_split": {
+  "CONFIRMED_PRESERVE": [
+   "quantitative arithmetic",
+   "genuine native producer recomputation",
+   "correct incomplete-coverage bounds",
+   "genuinely separate target/source worlds",
+   "Frechet dependence limitations",
+   "uncertainty is NOT a confidence interval"
+  ],
+  "FALSIFIED_REPAIR": [
+   "decision vocabulary",
+   "admission seam"
+  ]
+ },
+ "f6j_evidence_paths": [
+  "00_VERDICT.md",
+  "01_STAGED_NATIVE/rawlsing_next/pre553_heterogeneous_synthesis.py",
+  "02_FROZEN/01_NEW_FROZEN_INDEPENDENT_WORLDS.json",
+  "02_RATIONAL_RECOMPUTATION.json",
+  "03_NATIVE_TESTS_AND_CONSUMER_ATTACKS.md"
+ ],
+ "f6j_commit_is_delta_only": "825b2d80 carries only 05_REMOTE_VERIFICATION.json as delta; stage the TREE",
+ "native_producer_in_rawlsing_next_at_R28_startup": false,
+ "native_producer_staged_at": "PYAT-R23-F6C.../01_STAGED_NATIVE/pre553_heterogeneous_synthesis.py",
+ "repair_map": [
+  {
+   "id": 1,
+   "defect": "unsafe complete-candidate decision when target distribution is null",
+   "file": "PYAT-R23-F6C.../02_TESTS/f6c_worlds.py",
+   "fix": "null distribution must refuse/degrade to bounds, never a complete-candidate verdict"
+  },
+  {
+   "id": 2,
+   "defect": "unverified admit=True owner claims",
+   "file": "F6C consumer/admission seam",
+   "fix": "admit must be owner-verified, not a caller boolean; external callback is not authentication"
+  },
+  {
+   "id": 3,
+   "defect": "caller-controlled test_origin authority bypass",
+   "file": "F6C consumer",
+   "fix": "test_origin must not be caller-settable for authority; derive from pinned native provenance"
+  },
+  {
+   "id": 4,
+   "defect": "missing mapped-evidence authority ceilings",
+   "file": "F6C consumer",
+   "fix": "mapped/proxy evidence must carry and enforce its ceiling, not inherit measured authority"
+  },
+  {
+   "id": 5,
+   "defect": "incorrect minority-support claims",
+   "file": "f6c_worlds.py / court",
+   "fix": "minority support preserved and reported honestly, no-drop"
+  },
+  {
+   "id": 6,
+   "defect": "machine-absolute fixture dependency",
+   "file": "test_f6c_frozen_court.py custody case",
+   "fix": "resolve the pinned blob by identity (blob/sha) not by machine-specific path; this is the assertion that produced the 56P/1F in F6I"
+  }
+ ],
+ "successor_plan": [
+  "stage F6C tree and F6J tree (not deltas)",
+  "run inherited native 35",
+  "run F6C author 57 after repairing the path-pinned custody case",
+  "run F6J frozen scientific/adversarial suites as falsification baseline",
+  "implement the six repairs",
+  "re-run all three suites plus new downstream consumer attacks on defects 1 and 2",
+  "produce changed-world/unchanged-world receipts: World B null must CHANGE, World A arithmetic must stay BYTE-STABLE"
+ ],
+ "must_preserve": [
+  "verified quantitative arithmetic",
+  "genuine native producer",
+  "incomplete-coverage bounds",
+  "separate target/source worlds",
+  "Frechet dependence limitations",
+  "uncertainty not a CI",
+  "equiweight 1/1 and bias radius 3/50 remain policy/hypothesis not calibrated weights"
+ ],
+ "authority": {
+  "new_original_f6_source_authority": false,
+  "semantic_issuer": false,
+  "n9": false,
+  "oc05": false,
+  "n11_n12": false,
+  "actor_grant": false,
+  "frozen_oracle_modified": false,
+  "self_accepted": false
+ },
+ "independent_f6l_review_required": true,
+ "hq_method_adjudication": true,
+ "deliverables": {
+  "00_REPAIR_STATUS.md": {
+   "sha256": "478ff51db17c0beb5749650b552d27fe6993fcae278cf1a4c64999883feb3461",
+   "bytes": 5827
+  }
+ },
+ "repro": {},
+ "terminal": "PYAT_R28_F6K_DECISION_ADMISSION_REPAIR_HOLD__GITHUB_PUSHED"
+}

@@ -1,0 +1,120 @@
+{
+  "schema": "PYAT_R27_F6J_05_REMOTE_VERIFICATION@1",
+  "verification": "DIRECT_REMOTE_SHA_AND_CHANGED_PATH_AUDIT",
+  "repository": "maidiu/rawlsing",
+  "repository_visibility_verified": "PRIVATE",
+  "branch": "agent/reviewer-pyat-r27-f6j-independent-heterogeneous-science-completion-r1",
+  "sealed_startup": "09a87efc87110cc50c129b02033730ed8feca4e8",
+  "parent_canonical_R26F": "2f8a7b4d4aadd7f58e87201b738565962ca49d7b",
+  "candidate_F6C": "9aa0e7d3a0cf9ab7654ce8e3d5cb15060235a48f",
+  "prior_reviewer_F6I": "6d99650bed01eed8365ec38bd888741a88888a45",
+
+  "independent_freeze_commit": "e476ccc090ae0175a540e94c5c382d7e2a8453f0",
+  "freeze_pushed_before_candidate_test_output_inspection": true,
+  "freeze_verified_remote_at_push": "e476ccc090ae0175a540e94c5c382d7e2a8453f0",
+
+  "evidence_payload_commit": "6498bd9a8b3b389597fd3d4290ce2824ac490601",
+  "verified_remote_head_at_evidence_payload": "6498bd9a8b3b389597fd3d4290ce2824ac490601",
+  "sha_match": true,
+  "readback_method": "git ls-remote origin refs/heads/<branch>, then git fetch of the same ref into refs/remotes/origin/f6j-readback and comparison of the full tree",
+  "readback_trees_identical": true,
+  "note": "This receipt is sealed by a subsequent commit. Its own sealing SHA is reported in the delivery message, because a file cannot contain the hash of the commit that contains it.",
+
+  "changed_path_scope_clean": true,
+  "changed_path_audit": {
+    "added": 40,
+    "modified": 0,
+    "removed": 0,
+    "out_of_scope_paths": [],
+    "out_of_scope_count": 0,
+    "scope_rule": "every changed path is inside WORKER_RETURNS/PYAT-R27-F6J-INDEPENDENT-F6-EXPERIMENT-COMPLETION-R1/"
+  },
+
+  "role": {
+    "is_F6C_author": false,
+    "is_F6I_reviewer": false,
+    "is_distinct_new_independent_reviewer": true,
+    "same_session_as_GF1": false
+  },
+
+  "native_identity": {
+    "S03FO_git_blob": "fc5e37fa5b2f0eb689593b42d95479d1327cb94c",
+    "verified_at_commit": "1428c2e92bce1a49efd87378cb23df936d646dc5",
+    "older_182cc797_used": false,
+    "byte_identical_to_candidate_05_NATIVE_STAGE": true,
+    "commission_blob_matches": true
+  },
+
+  "science_executed": {
+    "new_preregistered_worlds": 10,
+    "post_disclosure_replication_worlds": 2,
+    "perturbation_axes_covered": ["target_share_changes", "source_weights",
+      "domain_category_exclusion", "minority_representation", "no_positivity",
+      "source_swaps"],
+    "independent_rational_comparisons": "82/82 match against the real native producer",
+    "numeric_type": "fractions.Fraction",
+    "expectation_engine_imports_native": false
+  },
+
+  "courts": {
+    "f6j_independent_frozen_courts": "12 worlds, 82/82 comparisons",
+    "f6j_pre_registered_falsifiers": "7 findings: 5 falsified, 2 correctly refused",
+    "f6j_admission_and_consumer_attacks": "7 findings: 3 falsified, 4 preserved",
+    "f6j_new_adversarial_tests": "53 passed / 53",
+    "inherited_s03fo_suite": "35 passed / 35 (24 tests + 11 subtests)",
+    "f6c_author_court_pinned": "56 passed / 57 (1 = custody path-suffix control)",
+    "f6c_author_court_candidate_shaped_path": "57 passed / 57",
+    "courts_aggregated_into_one_percentage": false
+  },
+
+  "falsified": [
+    "F1/F1b decision 'SYNTHETIC_CANDIDATE' emitted while candidate.distribution is None (two independent worlds)",
+    "F2/A1/A3 admit=True is not authentication; gate is a boolean seam and is bypassed entirely for test_origin=True",
+    "F3 two-source equiweights are not scientific calibration (weight-scale invariance)",
+    "F4 sensitivity halfwidth 3/50 is not a confidence interval",
+    "G1 minimum_raw_support is a stratum-level total, not a minority-representation guard"
+  ],
+
+  "preserved_correctly": [
+    "F5 no cross-survey person invented; Fréchet independence scenario labelled scenario_is_measured=False",
+    "F6 conditional variance unidentified; self-conditioning refused as OUTCOME_LEAKAGE_TAUTOLOGY",
+    "sample/clock/risk/geo/mapping/overlap refusals all fire",
+    "standardization arithmetic on all 12 worlds",
+    "inherited 24 + 11"
+  ],
+
+  "commission_reference_values_independently_derived": {
+    "pooled_baseline_L1": "0 (author's 6/25 is an arithmetic defect)",
+    "conditional": "26/31 on the author's public World A; 4/5 on the F6J new world; two different worlds, not interchangeable",
+    "null_distribution_covered_sum": "4/5",
+    "null_distribution_widened_upper": "19/25 and 7/25",
+    "arithmetic_correction_1": "14/25 -> 19/25 (add uncovered share 1/5)",
+    "arithmetic_correction_2": "31/50 -> 41/50 and 7/50 -> 17/50 (add uncovered share 1/5)"
+  },
+
+  "additional_findings_not_pre_registered": [
+    "G1 minimum_raw_support is stratum-level, not a minority cell guard",
+    "G2 transformed 'mapped:*' evidence nodes carry no authority_ceiling",
+    "G3 inherited-fixture transport resolves through a machine-absolute git symlink and is not reproducible from the repo alone"
+  ],
+
+  "verdict": "SCIENCE_EXECUTED__ARITHMETIC_AND_NATIVE_RECOMPUTATION_CONFIRMED__DECISION_VOCABULARY_AND_ADMISSION_SEAM_FALSIFIED__SOURCEFREE_ONLY__HQ_METHOD_DECISION_WITHHELD",
+  "prepared_recommendation": "CONDITIONAL_RECOMMENDATION__REJECT_AS_IS__RECOMMEND_ACCEPT_AFTER_DECISION_AND_ADMISSION_REPAIR",
+
+  "preregistration_strength": "WEAKER THAN A BLIND PRE-REGISTRATION. Author headline values were publicly disclosed and are used only as POST_DISCLOSURE_REPLICATION. Author corrected frozen expectations post-freeze (14/25->19/25, 31/50->41/50, 7/50->17/50); the correction is arithmetically right but weakens the preregistration. Mitigated by 10 genuinely new worlds frozen and pushed before candidate test output inspection.",
+
+  "original_F6_semantic_issuer": false,
+  "N9": false,
+  "OC05": false,
+  "N11": false,
+  "N12": false,
+  "actor_authority": false,
+  "real_survey_bytes": false,
+  "cross_survey_person": false,
+  "HQ_method_decision": false,
+  "grant_35_wave": false,
+  "national_inference": false,
+  "person_or_cohort_claim": false,
+  "self_acceptance": false,
+  "independent_review_and_HQ_acceptance_separate": true
+}
