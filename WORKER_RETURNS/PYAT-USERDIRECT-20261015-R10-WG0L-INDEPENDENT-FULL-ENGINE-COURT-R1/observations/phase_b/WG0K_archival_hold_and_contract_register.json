@@ -1,0 +1,53 @@
+{
+  "source_commit": "c506293e31ea8f9e490de0369169005f52f81033",
+  "source_path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R8-WG0K-INDEPENDENT-CUSTODY-COURT-R1/02_ACTUAL_EXECUTION_AND_HOSTILES.json",
+  "source_sha256": "b2dfbcb51769ca7b207756be1a8108831417fc13516a2cfca0545da68adfd718",
+  "original_scripts_in_published_tree": false,
+  "original_exact_replay_status": "HOLD_ORIGINAL_CONTAINER_LOCAL_SCRIPT_BYTES_NOT_PUBLISHED",
+  "original_scripts": [
+    {
+      "path": "/mnt/data/wg0k_court/test_wg0k_exact_excerpts.py",
+      "sha256": "b16802008a2894cd9725ea4f99849755ed546fd3fad8935a8916cc5b99e993d3",
+      "bytes": 12486
+    },
+    {
+      "path": "/mnt/data/wg0k_court/test_wg0k_real_cold_process.py",
+      "sha256": "1b75c7ef68ca1464f61f168992bbddfcf1fd756014508858b6a50963417412a4",
+      "bytes": 3224
+    }
+  ],
+  "executed_instead": "All15 documented method expectations plus4 OS-cold expectations reconstructed explicitly against complete source-verified WG0P4 imports; not called original-source replay. Retained original11 full-module tests separately mapped and executed.",
+  "expected_contracts": [
+    {
+      "negative_10": [
+        "equal-count HELD substitution accepted by validate_frontier",
+        "equal-count reason substitution accepted by validate_frontier",
+        "candidate-mirrored expected_ops receipts accepted even with forged opportunity",
+        "caller dict alias mutation corrupts archived fact rather than immutable read",
+        "returned dict alias mutation corrupts archived fact",
+        "snapshot nested alias mutation corrupts archived fact",
+        "same ref key accepts replacement with unrelated numerical contents",
+        "restored snapshot alias mutation changes restored fact",
+        "self-rehashed checkpoint with fabricated external-grant string passes verification",
+        "self-rehashed checkpoint with changed fact accepts checkpoint preimage; fact contents may still fail when actually read"
+      ],
+      "positive_5": [
+        "independently frozen 25 keys =3/16/6 counts validated",
+        "valid exact candidate receipts match the expected-op list",
+        "simple one-record omission changes counts and refuses",
+        "unmodified stored fact hash checks at read",
+        "tampering original serialized checkpoint without recomputing hash is rejected"
+      ]
+    },
+    {
+      "positive_3": [
+        "first Python interpreter durably writes checkpoint and os._exit(23), second independent interpreter reads original payload",
+        "non-rehashed mutation rejected by second process",
+        "rehashed forged fact checkpoint can pass checkpoint hash but independently hashed fact rejects on read"
+      ],
+      "negative_1": [
+        "self-rehashed forged grant_state='REAL_SOURCE_SIGNED_PERMISSION' accepted by fresh subprocess as a field label with no issuer check"
+      ]
+    }
+  ]
+}
