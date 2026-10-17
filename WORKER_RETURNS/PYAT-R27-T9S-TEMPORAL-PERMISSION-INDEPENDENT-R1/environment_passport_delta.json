@@ -1,0 +1,39 @@
+{
+ "schema": "T9S_SANITIZED_ENVIRONMENT_PASSPORT_DELTA@1",
+ "environment_id": "T9S_LOCAL_REVIEWER",
+ "epoch_id": "T9S_R27_PHASE_A",
+ "session_alias": "T9S_R27",
+ "surface": "S2_LOCAL_HOST",
+ "machine_alias": "LOCAL_SHARED_STORE_HOST",
+ "status": "LIVE_VERIFIED",
+ "branch": "agent/reviewer-pyat-r27-t9s-independent-native-authority-court-r1",
+ "sealed_startup": "b6e6f64f01d339956d8140777eab7f0c4a45e1af",
+ "platform_engine": {
+  "commissioned": "OpenCode CLI + DeepSeek V4 Pro (HQ-authorized) or comparably qualified high-reasoning model",
+  "actual_engine": "DeepSeek Harness web session",
+  "actual_model": "deepseek-v4-pro",
+  "reasoning_effort_observed": "NOT_EXPOSED",
+  "note": "Model label recorded from the harness session; no provider billing/metrics API was available to independently confirm the model string."
+ },
+ "runtime": {
+  "interpreter": "python3.11.3 (CPython)",
+  "pandas": "3.0.6",
+  "numpy": "2.4.6",
+  "pytest": "9.1.1",
+  "note": "pandas/numpy installed locally for the native V553 DataFrame authorization path; exact runtime modules measured, not asserted to be authorized source pins."
+ },
+ "phase_a_execution": {
+  "preregistered_falsifiers": "17 cases -> 6 pass / 11 fail / 0 error / 0 skip, exit 1",
+  "reproduced_reds": ["F1_unused_future_upgrade", "F2_empty_actor_grants", "F3_lag_pipe_rupture_suffix", "F4_duplicate_wave_id"],
+  "capability_reds": ["F5_archive_known_at", "F6_source_edition_currentness_owner"],
+  "candidate_pin": "9a33c2dcaa7ac0d50606416ab965488c9782934b"
+ },
+ "privacy": "synthetic fixtures only; no original SAV/DTA, respondents, credentials, or actor/source grant exercised",
+ "authority_boundaries": {
+  "self_accepted": false,
+  "source_rights": false,
+  "n9_oc05_n11_n12_v3_ee12_sorok_actor": false,
+  "method_adoption": false
+ },
+ "retire_or_reprobe": "Phase B begins only after the exact pushed T9D candidate is read back; runtime reset, branch change or new rights triggers re-probe"
+}

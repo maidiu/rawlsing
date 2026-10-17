@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="11" skipped="0" tests="17" time="0.832" timestamp="2026-10-17T02:43:18.437811-04:00" hostname="Matthews-MBP.lan"><testcase classname="tests.test_t9s_permission_falsifiers" name="test_F1_unused_future_wave_cannot_upgrade_held_product_authority[M0_PIECEWISE_HOLD]" time="0.009"><failure message="AttributeError: 'OpportunitySet' object has no attribute 'value'">method = 'M0_PIECEWISE_HOLD'
+
+    @pytest.mark.parametrize('method', [T.METHOD_M0_HOLD, T.METHOD_M2_BACKOFF])
+    def test_F1_unused_future_wave_cannot_upgrade_held_product_authority(method):
+        before = T.read_selected_world(GRANTED_WORLD, case([wave('W0', 1990, .2)]),
+                                       method, 1995, retrospective=True)
+        after = T.read_selected_world(
+            GRANTED_WORLD, case([wave('W0', 1990, .2), wave('W1', 2000, .6)]),
+            method, 1995, retrospective=True)
+&gt;       assert after.value == before.value == 0.2
+               ^^^^^^^^^^^
+E       AttributeError: 'OpportunitySet' object has no attribute 'value'
+
+tests/test_t9s_permission_falsifiers.py:49: AttributeError</failure></testcase><testcase classname="tests.test_t9s_permission_falsifiers" name="test_F1_unused_future_wave_cannot_upgrade_held_product_authority[M2_UNCERTAINTY_AWARE_BACKOFF]" time="0.003"><failure message="AttributeError: 'OpportunitySet' object has no attribute 'value'">method = 'M2_UNCERTAINTY_AWARE_BACKOFF'
+
+    @pytest.mark.parametrize('method', [T.METHOD_M0_HOLD, T.METHOD_M2_BACKOFF])
+    def test_F1_unused_future_wave_cannot_upgrade_held_product_authority(method):
+        before = T.read_selected_world(GRANTED_WORLD, case([wave('W0', 1990, .2)]),
+                                       method, 1995, retrospective=True)
+        after = T.read_selected_world(
+            GRANTED_WORLD, case([wave('W0', 1990, .2), wave('W1', 2000, .6)]),
+            method, 1995, retrospective=True)
+&gt;       assert after.value == before.value == 0.2
+               ^^^^^^^^^^^
+E       AttributeError: 'OpportunitySet' object has no attribute 'value'
+
+tests/test_t9s_permission_falsifiers.py:49: AttributeError</failure></testcase><testcase classname="tests.test_t9s_permission_falsifiers" name="test_F2_empty_actor_grants_cannot_authorize[M0_PIECEWISE_HOLD]" time="0.002"><failure message="AssertionError: assert not True&#10; +  where True = OpportunitySet(query_clock=1995, temporal_method='M0_PIECEWISE_HOLD', opportunity_ids=('ROUTE_PARTICIPATION', 'ROUTE_D...c445dc161ae15'}, refused_code=None, authorized_opportunity=True, exploratory_route_ids=(), archive_context_wave_ids=()).authorized_opportunity">method = 'M0_PIECEWISE_HOLD'
+
+    @pytest.mark.parametrize('method', METHODS)
+    def test_F2_empty_actor_grants_cannot_authorize(method):
+        x = T.read_selected_world(WORLD, case([wave('OLD', 1980, .2), wave('RECENT', 1990, .6)]),
+                                  method, 1995)
+&gt;       assert not x.authorized_opportunity
+E       AssertionError: assert not True
+E        +  where True = OpportunitySet(query_clock=1995, temporal_method='M0_PIECEWISE_HOLD', opportunity_ids=('ROUTE_PARTICIPATION', 'ROUTE_D...c445dc161ae15'}, refused_code=None, authorized_opportunity=True, exploratory_route_ids=(), archive_context_wave_ids=()).authorized_opportunity
+
+tests/test_t9s_permission_falsifiers.py:65: AssertionError</failure></testcase><testcase classname="tests.test_t9s_permission_falsifiers" name="test_F2_empty_actor_grants_cannot_authorize[M1_LINEAR_INTERPOLATION]" time="0.002"><failure message="AssertionError: assert not True&#10; +  where True = OpportunitySet(query_clock=1995, temporal_method='M1_LINEAR_INTERPOLATION', opportunity_ids=('ROUTE_PARTICIPATION', 'R...c445dc161ae15'}, refused_code=None, authorized_opportunity=True, exploratory_route_ids=(), archive_context_wave_ids=()).authorized_opportunity">method = 'M1_LINEAR_INTERPOLATION'
+
+    @pytest.mark.parametrize('method', METHODS)
+    def test_F2_empty_actor_grants_cannot_authorize(method):
+        x = T.read_selected_world(WORLD, case([wave('OLD', 1980, .2), wave('RECENT', 1990, .6)]),
+                                  method, 1995)
+&gt;       assert not x.authorized_opportunity
+E       AssertionError: assert not True
+E        +  where True = OpportunitySet(query_clock=1995, temporal_method='M1_LINEAR_INTERPOLATION', opportunity_ids=('ROUTE_PARTICIPATION', 'R...c445dc161ae15'}, refused_code=None, authorized_opportunity=True, exploratory_route_ids=(), archive_context_wave_ids=()).authorized_opportunity
+
+tests/test_t9s_permission_falsifiers.py:65: AssertionError</failure></testcase><testcase classname="tests.test_t9s_permission_falsifiers" name="test_F2_empty_actor_grants_cannot_authorize[M2_UNCERTAINTY_AWARE_BACKOFF]" time="0.002"><failure message="AssertionError: assert not True&#10; +  where True = OpportunitySet(query_clock=1995, temporal_method='M2_UNCERTAINTY_AWARE_BACKOFF', opportunity_ids=('ROUTE_PARTICIPATION...c445dc161ae15'}, refused_code=None, authorized_opportunity=True, exploratory_route_ids=(), archive_context_wave_ids=()).authorized_opportunity">method = 'M2_UNCERTAINTY_AWARE_BACKOFF'
+
+    @pytest.mark.parametrize('method', METHODS)
+    def test_F2_empty_actor_grants_cannot_authorize(method):
+        x = T.read_selected_world(WORLD, case([wave('OLD', 1980, .2), wave('RECENT', 1990, .6)]),
+                                  method, 1995)
+&gt;       assert not x.authorized_opportunity
+E       AssertionError: assert not True
+E        +  where True = OpportunitySet(query_clock=1995, temporal_method='M2_UNCERTAINTY_AWARE_BACKOFF', opportunity_ids=('ROUTE_PARTICIPATION...c445dc161ae15'}, refused_code=None, authorized_opportunity=True, exploratory_route_ids=(), archive_context_wave_ids=()).authorized_opportunity
+
+tests/test_t9s_permission_falsifiers.py:65: AssertionError</failure></testcase><testcase classname="tests.test_t9s_permission_falsifiers" name="test_F3_lag_parser_does_not_swallow_rupture_suffix_as_wave_identity" time="0.002"><failure message="AssertionError: assert ('DELAYED|POS...NOT_ASSUMED',) == ('DELAYED',)&#10;  &#10;  At index 0 diff: 'DELAYED|POST_RUPTURE_CARRY_HYPOTHETICAL:R1995|IDENTIFIED_SET_UNBOUNDED:STABILITY_NOT_ASSUMED' != 'DELAYED'&#10;  Use -v to get more diff">def test_F3_lag_parser_does_not_swallow_rupture_suffix_as_wave_identity():
+        c = case([wave('DELAYED', 1990, .8, published_year=2000)], ruptures=(1995,))
+        x = T.evaluate(c, T.METHOD_M0_HOLD, clock_year=1997, retrospective=True)
+        parsed = T.pub_lag_of(x)
+&gt;       assert parsed == ('DELAYED',)
+E       AssertionError: assert ('DELAYED|POS...NOT_ASSUMED',) == ('DELAYED',)
+E         
+E         At index 0 diff: 'DELAYED|POST_RUPTURE_CARRY_HYPOTHETICAL:R1995|IDENTIFIED_SET_UNBOUNDED:STABILITY_NOT_ASSUMED' != 'DELAYED'
+E         Use -v to get more diff
+
+tests/test_t9s_permission_falsifiers.py:76: AssertionError</failure></testcase><testcase classname="tests.test_t9s_permission_falsifiers" name="test_F4_duplicate_wave_id_cannot_rebind_provenance_to_excluded_source" time="0.002"><failure message="AssertionError: assert (None is not None or ('WRONG_SOURCE' == 'ACTUAL_SOURCE'&#10; +  where None = OpportunitySet(query_clock=1995, temporal_method='M0_PIECEWISE_HOLD', opportunity_ids=('ROUTE_BLOCKED_NO_SUPPORT',), p...opportunity=False, exploratory_route_ids=('ROUTE_PARTICIPATION', 'ROUTE_DEFERRED_REVIEW'), archive_context_wave_ids=()).refused_code&#10;  &#10;  - ACTUAL_SOURCE&#10;  + WRONG_SOURCE))">def test_F4_duplicate_wave_id_cannot_rebind_provenance_to_excluded_source():
+        c = case([wave('DUPLICATE', 1990, .6),
+                  wave('DUPLICATE', 1980, .1, country='OTHER',
+                       source_family='WRONG_SOURCE', edition='WRONG_EDITION')])
+        x = T.read_selected_world(WORLD, c, T.METHOD_M0_HOLD, 1995)
+&gt;       assert x.refused_code is not None or (
+            x.provenance['source_family'] == 'ACTUAL_SOURCE' and x.provenance['edition'] == 'E1')
+E       AssertionError: assert (None is not None or ('WRONG_SOURCE' == 'ACTUAL_SOURCE'
+E        +  where None = OpportunitySet(query_clock=1995, temporal_method='M0_PIECEWISE_HOLD', opportunity_ids=('ROUTE_BLOCKED_NO_SUPPORT',), p...opportunity=False, exploratory_route_ids=('ROUTE_PARTICIPATION', 'ROUTE_DEFERRED_REVIEW'), archive_context_wave_ids=()).refused_code
+E         
+E         - ACTUAL_SOURCE
+E         + WRONG_SOURCE))
+
+tests/test_t9s_permission_falsifiers.py:88: AssertionError</failure></testcase><testcase classname="tests.test_t9s_permission_falsifiers" name="test_F5_archive_known_at_2020_cannot_use_2030_published" time="0.000"><failure message="TypeError: t9b_temporal.TemporalCase() got multiple values for keyword argument 'target_year'">def test_F5_archive_known_at_2020_cannot_use_2030_published():
+        w = wave('W2030', 2020, .7, published_year=2030)
+&gt;       c = case([w], target_year=2020)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_t9s_permission_falsifiers.py:97: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+waves = [Wave(wave_id='W2030', source_family='ACTUAL_SOURCE', country='SYNTH_COUNTRY_A', instrument='SYNTH_INSTRUMENT', editio..._input_count=1, comparable_key_grain='structural_channel_exact', fact_lane='temporal_fact', support_status='OBSERVED')]
+kw = {'target_year': 2020}
+
+    def case(waves, **kw):
+&gt;       return T.TemporalCase(case_id='T9S', country='SYNTH_COUNTRY_A',
+                              waves=tuple(waves), target_year=1995, **kw)
+E       TypeError: t9b_temporal.TemporalCase() got multiple values for keyword argument 'target_year'
+
+tests/test_t9s_permission_falsifiers.py:31: TypeError</failure></testcase><testcase classname="tests.test_t9s_permission_falsifiers" name="test_F6_wrong_edition_grant_refuses" time="0.001"><failure message="t9s_binding.CapabilityUnavailable: D16/D17/D17_WRONG_OWNER: source-edition/currentness/owner grant pair has no candidate API representation; refusing to invent a permission gate">def test_F6_wrong_edition_grant_refuses():
+        c = case([wave('VALID', 1990, .6)])
+&gt;       x = granted_source_read(T, c, T.METHOD_M0_HOLD, 1995,
+                                grant_edition='E2', grant_current=True, grant_owner='OWNER')
+
+tests/test_t9s_permission_falsifiers.py:108: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+T = &lt;module 't9b_temporal' from '/private/tmp/t9s/WORKER_RETURNS/PYAT-R26-T9R-INDEPENDENT-TEMPORAL-DELTA-R1/phase_b/pinned_candidate/t9b_temporal.py'&gt;
+case = TemporalCase(case_id='T9S', country='SYNTH_COUNTRY_A', waves=(Wave(wave_id='VALID', source_family='ACTUAL_SOURCE', cou...RVED'),), ruptures=(), target_year=1995, instrument='SYNTH_INSTRUMENT', cohort='COHORT_ALL', harmonize_countries=False)
+method = 'M0_PIECEWISE_HOLD', clock_year = 1995, grant_edition = 'E2'
+grant_current = True, grant_owner = 'OWNER'
+
+    def granted_source_read(T, case, method, clock_year, *, grant_edition=None,
+                            grant_current=True, grant_owner=None):
+        """A read carrying an explicit source-edition / currentness / owner grant.
+    
+        D16/D17/D17_WRONG_OWNER: a grant for a different edition, an expired grant,
+        or a wrong owner must refuse; a clock flag must not resurrect it.  If the
+        candidate exposes no grant-pair representation, the capability is unavailable.
+        """
+        sig = inspect.signature(T.read_selected_world)
+        candidates = (
+            ("source_grant", dict(source_grant=dict(
+                edition=grant_edition, current=grant_current, owner=grant_owner))),
+            ("source_edition_grant", dict(source_edition_grant=dict(
+                edition=grant_edition, current=grant_current, owner=grant_owner))),
+            ("grant", dict(grant=dict(edition=grant_edition, current=grant_current,
+                                      owner=grant_owner))),
+        )
+        for name, payload in candidates:
+            if name in sig.parameters:
+                return T.read_selected_world(
+                    T.StructuralWorld("W_SYNTH", ("ROUTE_PARTICIPATION",), (),
+                                      "SYNTH_INSTITUTION"),
+                    case, method, clock_year, **payload)
+&gt;       raise CapabilityUnavailable(
+            "D16/D17/D17_WRONG_OWNER: source-edition/currentness/owner grant pair "
+            "has no candidate API representation; refusing to invent a permission gate")
+E       t9s_binding.CapabilityUnavailable: D16/D17/D17_WRONG_OWNER: source-edition/currentness/owner grant pair has no candidate API representation; refusing to invent a permission gate
+
+repro/t9s_binding.py:58: CapabilityUnavailable</failure></testcase><testcase classname="tests.test_t9s_permission_falsifiers" name="test_F6_expired_grant_refuses" time="0.001"><failure message="t9s_binding.CapabilityUnavailable: D16/D17/D17_WRONG_OWNER: source-edition/currentness/owner grant pair has no candidate API representation; refusing to invent a permission gate">def test_F6_expired_grant_refuses():
+        c = case([wave('VALID', 1990, .6)])
+&gt;       x = granted_source_read(T, c, T.METHOD_M0_HOLD, 1995,
+                                grant_edition='E1', grant_current=False, grant_owner='OWNER')
+
+tests/test_t9s_permission_falsifiers.py:115: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+T = &lt;module 't9b_temporal' from '/private/tmp/t9s/WORKER_RETURNS/PYAT-R26-T9R-INDEPENDENT-TEMPORAL-DELTA-R1/phase_b/pinned_candidate/t9b_temporal.py'&gt;
+case = TemporalCase(case_id='T9S', country='SYNTH_COUNTRY_A', waves=(Wave(wave_id='VALID', source_family='ACTUAL_SOURCE', cou...RVED'),), ruptures=(), target_year=1995, instrument='SYNTH_INSTRUMENT', cohort='COHORT_ALL', harmonize_countries=False)
+method = 'M0_PIECEWISE_HOLD', clock_year = 1995, grant_edition = 'E1'
+grant_current = False, grant_owner = 'OWNER'
+
+    def granted_source_read(T, case, method, clock_year, *, grant_edition=None,
+                            grant_current=True, grant_owner=None):
+        """A read carrying an explicit source-edition / currentness / owner grant.
+    
+        D16/D17/D17_WRONG_OWNER: a grant for a different edition, an expired grant,
+        or a wrong owner must refuse; a clock flag must not resurrect it.  If the
+        candidate exposes no grant-pair representation, the capability is unavailable.
+        """
+        sig = inspect.signature(T.read_selected_world)
+        candidates = (
+            ("source_grant", dict(source_grant=dict(
+                edition=grant_edition, current=grant_current, owner=grant_owner))),
+            ("source_edition_grant", dict(source_edition_grant=dict(
+                edition=grant_edition, current=grant_current, owner=grant_owner))),
+            ("grant", dict(grant=dict(edition=grant_edition, current=grant_current,
+                                      owner=grant_owner))),
+        )
+        for name, payload in candidates:
+            if name in sig.parameters:
+                return T.read_selected_world(
+                    T.StructuralWorld("W_SYNTH", ("ROUTE_PARTICIPATION",), (),
+                                      "SYNTH_INSTITUTION"),
+                    case, method, clock_year, **payload)
+&gt;       raise CapabilityUnavailable(
+            "D16/D17/D17_WRONG_OWNER: source-edition/currentness/owner grant pair "
+            "has no candidate API representation; refusing to invent a permission gate")
+E       t9s_binding.CapabilityUnavailable: D16/D17/D17_WRONG_OWNER: source-edition/currentness/owner grant pair has no candidate API representation; refusing to invent a permission gate
+
+repro/t9s_binding.py:58: CapabilityUnavailable</failure></testcase><testcase classname="tests.test_t9s_permission_falsifiers" name="test_F6_wrong_owner_refuses" time="0.000"><failure message="t9s_binding.CapabilityUnavailable: D16/D17/D17_WRONG_OWNER: source-edition/currentness/owner grant pair has no candidate API representation; refusing to invent a permission gate">def test_F6_wrong_owner_refuses():
+        c = case([wave('VALID', 1990, .6)])
+&gt;       x = granted_source_read(T, c, T.METHOD_M0_HOLD, 1995,
+                                grant_edition='E1', grant_current=True, grant_owner='WRONG_OWNER')
+
+tests/test_t9s_permission_falsifiers.py:122: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+T = &lt;module 't9b_temporal' from '/private/tmp/t9s/WORKER_RETURNS/PYAT-R26-T9R-INDEPENDENT-TEMPORAL-DELTA-R1/phase_b/pinned_candidate/t9b_temporal.py'&gt;
+case = TemporalCase(case_id='T9S', country='SYNTH_COUNTRY_A', waves=(Wave(wave_id='VALID', source_family='ACTUAL_SOURCE', cou...RVED'),), ruptures=(), target_year=1995, instrument='SYNTH_INSTRUMENT', cohort='COHORT_ALL', harmonize_countries=False)
+method = 'M0_PIECEWISE_HOLD', clock_year = 1995, grant_edition = 'E1'
+grant_current = True, grant_owner = 'WRONG_OWNER'
+
+    def granted_source_read(T, case, method, clock_year, *, grant_edition=None,
+                            grant_current=True, grant_owner=None):
+        """A read carrying an explicit source-edition / currentness / owner grant.
+    
+        D16/D17/D17_WRONG_OWNER: a grant for a different edition, an expired grant,
+        or a wrong owner must refuse; a clock flag must not resurrect it.  If the
+        candidate exposes no grant-pair representation, the capability is unavailable.
+        """
+        sig = inspect.signature(T.read_selected_world)
+        candidates = (
+            ("source_grant", dict(source_grant=dict(
+                edition=grant_edition, current=grant_current, owner=grant_owner))),
+            ("source_edition_grant", dict(source_edition_grant=dict(
+                edition=grant_edition, current=grant_current, owner=grant_owner))),
+            ("grant", dict(grant=dict(edition=grant_edition, current=grant_current,
+                                      owner=grant_owner))),
+        )
+        for name, payload in candidates:
+            if name in sig.parameters:
+                return T.read_selected_world(
+                    T.StructuralWorld("W_SYNTH", ("ROUTE_PARTICIPATION",), (),
+                                      "SYNTH_INSTITUTION"),
+                    case, method, clock_year, **payload)
+&gt;       raise CapabilityUnavailable(
+            "D16/D17/D17_WRONG_OWNER: source-edition/currentness/owner grant pair "
+            "has no candidate API representation; refusing to invent a permission gate")
+E       t9s_binding.CapabilityUnavailable: D16/D17/D17_WRONG_OWNER: source-edition/currentness/owner grant pair has no candidate API representation; refusing to invent a permission gate
+
+repro/t9s_binding.py:58: CapabilityUnavailable</failure></testcase><testcase classname="tests.test_t9s_permission_falsifiers" name="test_P1_asof_single_anchor_is_probe_without_future_knowledge" time="0.002" /><testcase classname="tests.test_t9s_permission_falsifiers" name="test_P2_asof_endpoint_with_two_anchors_is_authorized" time="0.001" /><testcase classname="tests.test_t9s_permission_falsifiers" name="test_P3_retrospective_interpolation_is_probe_and_not_observed" time="0.002" /><testcase classname="tests.test_t9s_permission_falsifiers" name="test_P4_missing_is_not_zero" time="0.002" /><testcase classname="tests.test_t9s_permission_falsifiers" name="test_P5_excluded_first_distinct_id_keeps_valid_provenance" time="0.001" /><testcase classname="tests.test_t9s_permission_falsifiers" name="test_P6_structural_route_removal_is_material" time="0.002" /></testsuite></testsuites>

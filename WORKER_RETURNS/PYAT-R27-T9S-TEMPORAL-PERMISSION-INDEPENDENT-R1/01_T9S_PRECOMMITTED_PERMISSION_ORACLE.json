@@ -1,0 +1,112 @@
+{
+  "schema": "T9S_INDEPENDENT_TEMPORAL_PERMISSION_ORACLE@1",
+  "phase": "A_BEFORE_T9D_INSPECTION_OR_RESULTS",
+  "role": "independent temporal scientific reviewer; not T9B/T9C/T9D author, issuer or HQ",
+  "startup": "b6e6f64f01d339956d8140777eab7f0c4a45e1af",
+  "branch": "agent/reviewer-pyat-r27-t9s-independent-native-authority-court-r1",
+  "preserved_parent_review": "299dbf0d3a54fa76e36e524c553662f60090fe72",
+  "candidate_pins": {
+    "T9C_candidate": "9a33c2dcaa7ac0d50606416ab965488c9782934b",
+    "T9C_repair_payload": "d6e062684ca34b99ee9713c8c0affa0ed5c27f25",
+    "T9D_target": "FUTURE_NOT_YET_RETURNED__DO_NOT_INSPECT_BEFORE_PHASE_A_PUSH",
+    "adapter_under_test": "WORKER_RETURNS/PYAT-R26-T9R-INDEPENDENT-TEMPORAL-DELTA-R1/phase_b/pinned_candidate/t9b_temporal.py (T9C repaired adapter, pinned by T9R)"
+  },
+  "freeze_rule": "This oracle plus its executable counterexample tests are committed and pushed BEFORE inspecting any T9D candidate code or output. Public T9R values are inherited historic evidence, not blind preregistration. Never edit these expectations to fit a candidate.",
+  "inherited_dispositions_preserved_until_physically_resolved": {
+    "original_V553_eight": "PASS (8/0/0/0)",
+    "historical_author_28": "T9C target: 27 PASS / 1 historical-compatibility FAIL (old unsafe open-route assertion must not be restored)",
+    "independent_T9I_48": "T9C target: 47 PASS / 1 historical-compatibility FAIL (two-time artifact disclosure diff)",
+    "T9R_frozen_delta_50": "46 PASS / 4 unavailable-capability FAIL (D04, D16, D17, D17_WRONG_OWNER)",
+    "T9C_author_52": "PASS (52/0/0/0) — author's own repair suite only, not acceptance",
+    "T9R_new_7": "0 PASS / 7 FAIL (post-inspection falsifiers, NOT preregistered — this court preregisters them)"
+  },
+  "material_falsifiers": {
+    "F1_unused_future_upgrade": {
+      "hypothesis": "An unused future wave must not upgrade a W0-only held product's native authority or open a route.",
+      "input": "retrospective 1995; M0_HOLD and M2_BACKOFF; W0=(1990, value 0.20, pub 1990); optional W1=(2000, value 0.60, pub 2000) added afterwards",
+      "expected": {
+        "value": 0.20,
+        "basis_wave_ids": ["W0"],
+        "temporal_key_not": "AUTHORIZED_SPARSE_TEMPORAL_KEY",
+        "authorized_opportunity": false,
+        "opportunity_ids": ["ROUTE_BLOCKED_NO_SUPPORT"],
+        "unused_W1": "must appear only as archive context, never as product basis or authority"
+      },
+      "t9r_failed_node": "test_unused_future_archive_wave_cannot_upgrade_same_held_product_authority"
+    },
+    "F2_empty_actor_grants": {
+      "hypothesis": "access_grants=() must never open an authorized actor opportunity, even with two native anchors.",
+      "input": "AS_OF 1995; all three methods; anchors 1980=(0.20) and 1990=(0.60); StructuralWorld access_grants=()",
+      "expected": {
+        "authorized_opportunity": false,
+        "opportunity_ids": ["ROUTE_BLOCKED_NO_SUPPORT"],
+        "no_open_route": true
+      },
+      "t9r_failed_node": "test_two_synthetic_anchors_and_no_actor_grants_cannot_authorize"
+    },
+    "F3_lag_pipe_rupture_suffix": {
+      "hypothesis": "A publication-lag parser must return only real basis wave ids; a rupture/identified-set suffix must never become a wave identity.",
+      "input": "M0_HOLD retrospective 1997; wave DELAYED=(1990, value 0.80, pub 2000); rupture 1995",
+      "expected": {
+        "pub_lag_of_returns": ["DELAYED"],
+        "every_lag_id_is_a_basis_wave_id": true,
+        "no_rupture_suffix_in_wave_identity": true
+      },
+      "t9r_failed_node": "test_lag_parser_does_not_swallow_rupture_qualifiers_as_wave_identity"
+    },
+    "F4_duplicate_wave_id": {
+      "hypothesis": "A wrong-country/wrong-source wave sharing a valid wave's id must not rebind provenance to the excluded input.",
+      "input": "M0_HOLD AS_OF 1995; wave DUPLICATE=(1990, ACTUAL_SOURCE, E1, SYNTH_COUNTRY_A); wave DUPLICATE=(1980, WRONG_SOURCE, WRONG_EDITION, OTHER) excluded by country",
+      "expected": {
+        "refused_or_valid_provenance": true,
+        "source_family_if_named": "ACTUAL_SOURCE",
+        "edition_if_named": "E1",
+        "basis_must_never_name": "WRONG_SOURCE/WRONG_EDITION"
+      },
+      "t9r_failed_node": "test_duplicate_wave_id_cannot_rebind_provenance_to_excluded_source"
+    },
+    "F5_archive_known_at_vs_publication": {
+      "hypothesis": "A retrospective archive snapshot whose known-at bound is 2020 cannot use 2030-published evidence as observed-at-2020.",
+      "input": "wave=(observation 2020, publication 2030, value .7); retrospective with archival known-at upper bound 2020",
+      "expected": {
+        "unpublished_at_bound": "must be excluded or typed unavailable",
+        "no_retrospective_observed_claim": true,
+        "capability": "a typed CapabilityUnavailable is acceptable ONLY if no known-at parameter exists; a silent inclusion is a RED"
+      },
+      "t9r_failed_node": "frozen D04 unavailable capability"
+    },
+    "F6_source_currentness_edition_owner": {
+      "hypothesis": "Source-edition, currentness and owner grants must be actual qualified inputs; a wrong edition, expired grant or wrong owner must refuse, never resurrect.",
+      "input": [
+        "D16: valid source/edition but grant belongs to a different edition",
+        "D17: correct edition but grant expired / not current",
+        "D17_WRONG_OWNER: correct edition/currentness but wrong source owner"
+      ],
+      "expected": {
+        "wrong_edition_grant": "refuse product use",
+        "expired_grant": "refuse product use, no clock-flag resurrection",
+        "wrong_owner": "refuse product use",
+        "capability": "typed CapabilityUnavailable acceptable ONLY if the grant pair has no API representation; never a silent green"
+      },
+      "t9r_failed_node": "frozen D16 / D17 / D17_WRONG_OWNER unavailable capabilities"
+    }
+  },
+  "positive_controls": {
+    "P1_asof_single_anchor": "AS_OF 1995 with only W0=(1990,0.20) -> 0.20 PROBE_ONLY, no future knowledge, ROUTE_BLOCKED_NO_SUPPORT",
+    "P2_asof_endpoint": "AS_OF 2000 with W0+W1 -> 0.60 AUTHORIZED (two eligible anchors at/before clock)",
+    "P3_retrospective_interpolation": "RETROSPECTIVE 1995 M1 -> 0.40 INTERPOLATED_NOT_OBSERVED PROBE_ONLY, basis [W0,W1]",
+    "P4_missing_vs_zero": "NaN -> typed UNKNOWN MISSING_OBSERVATION_NOT_ZERO; observed 0.0 -> real zero",
+    "P5_excluded_first_distinct_id": "excluded-first distinct-id -> provenance ACTUAL_SOURCE/E1",
+    "P6_structural_route_removal": "removing a structural route makes structurally_identical False"
+  },
+  "arithmetic_anchors": {
+    "endpoints": [0.20, 0.60],
+    "asof_1995": 0.20,
+    "retrospective_M1_1995": 0.40,
+    "monotone_identification": [0.20, 0.60],
+    "unconditioned_identification": [0.0, 1.0],
+    "sampling_uncertainty": "unidentified — no sample design or variance"
+  },
+  "no_grants": ["new N9", "OC05", "real EE12", "N11", "N12", "Sorok actor", "V3", "source35 U/Epre", "method self-adoption"],
+  "acceptance": "Sourcefree independent scientific verdict only after the exact pushed T9D candidate is pinned and every preregistered falsifier and preserved obligation is physically reconciled."
+}
