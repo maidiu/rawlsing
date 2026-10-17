@@ -1,0 +1,27 @@
+# PYAT R27 T9S — HQ OpenCode / DeepSeek V4 Pro execution-model dispensation
+
+**Authority:** Existing scoped Pyat HQ scientific control; **only** execution platform and model qualification are amended. Original 00_COMMISSION.md, T9R independent inherited obligations, Phase-A-before-author-code freeze, Phase B and science/authority limits remain fully binding. New scientific, source, semantic, historical actor, or product permission: **NONE**.
+
+**Branch:** `agent/reviewer-pyat-r27-t9s-independent-native-authority-court-r1`
+**Prior fresh-launch startup (superseded):** `a7aa9582e11763160469428586c5b5534e149c58`
+**New startup:** EXACT direct origin HEAD containing this 01 addendum. Confirm remote SHA before running. If an independently authorized T9S session was already active at the old startup, reconcile without resetting/losing the frozen Phase A; do not claim old work was executed on a new model.
+
+## Authorized alternatives to original preferred Codex GPT-6 High
+
+**OpenCode CLI + DeepSeek V4 Pro** is qualified as a *permitted choice*, subject to real execution capability and provider-authorized private repository exposure. It may be the sole accountable independent source-free T9S scientific-method reviewer and test executor; no separate Codex inference is intrinsically mandatory.
+
+**OpenCode CLI + GPT-6 High/other comparably qualified high-reasoning model** is also permitted if actually available through the user's configured provider. A less expensive OpenCode model is NOT automatically disqualified by its price or product name, but must clear the acceptance-capability gates below. Do not infer an unavailable model is present. Do not claim a specific model ran without a real environment passport.
+
+**Model/engine should not be selected purely from marketing benchmarks.** The true standard is whether the chosen executor can inspect original source, distinguish authentic grants from test-only labels, design preregistered counterexamples independently, run authentic Python/Git/pytest/subprocess tests, and refuse unsupported scientific/actor conclusions. If platform/model cannot perform any part, issue exact bounded HOLD; do not fabricate success or silently outsource independent thinking back to T9D author.
+
+## Non-negotiable operational gates
+
+1. **Independence:** Reviewer is distinct from T9B/T9C/T9D productive author; separate session/worktree. Review T9R frozen counterexamples as source, but own additional Phase A science-oracle must be committed + pushed **BEFORE reading T9D candidate code or outputs**. Public T9R values already known are inherited historic evidence, *not* blind independent preregistration.
+2. **Phase A immediately:** physically reproduce original T9R sourcefree four current REDs and the four unavailable capabilities on existing T9C; freeze additional independently devised positive + hostile input vectors, event/clock/scenario expected returns, and manifest hashes; publish remote Phase-A SHA.
+3. **Material falsifiers:** unused future W1 cannot upgrade a W0-only product or authorize route; access_grants=() must never open actor opportunity despite two native anchors; publication lag and rupture qualifier must not contaminate basis wave ID; duplicate wave IDs must not remap supported output to excluded WRONG_SOURCE/WRONG_EDITION; archival as-of snapshot date 2020 cannot use 2030-published evidence; source edition/currentness/wrong-owner grant must be actual qualified input or typed unavailable. Distinguish native temporal source-key from actor permission, and historical known-at from present retrospective model.
+4. **Actual runtime:** require isolated verified Git checkout/sparse worktree, real Python interpreter, pytest, subprocess, project dependency imports, raw JUnit/logs/exit status, exact imported `__file__`, Git NUL-blob SHA, source-owner identity and no ambient `pytest.ini` root shadow. Original native V553 eight, original independent T9I 48, historical T9B 28, T9C author 52, T9R frozen fifty and new independent controls must be accounted for without pretending an unavailable test is a green PASS.
+5. **Phase B only after T9D remote push** and exact candidate/source readback: run independent suite against genuine T9D code, annotate safety-correct historical compatibility failures without modifying immutable oracle, report genuinely unclosed RED/HOLD and separate physical/scientific judgments. Preserve sourcefree .20/.40/.60 and AS_OF versus RETROSPECTIVE MODEL distinctions; interpolation never becomes observed or actor-known history.
+6. **Privacy/permission:** private repo transfer to OpenCode-configured provider requires owner's authorization. Do not expose original SAV/DTA source, respondents, credentials, unauthorized third-party code or private survey data. No new original EE12/N9/OC05/N11/N12/V3 authority.
+7. **Return evidence:** all original 00 deliverables, actual Phase A and Phase B commit SHAs, independent scientific disposition, complete test accounting, clean custody/passport, source/provenance ledger and verified pushed branch HEAD. Pyat HQ alone accepts or rejects the bounded method.
+
+**Only amended clause:** 00_COMMISSION.md's preference for Codex GPT-6 High is superseded: OpenCode with DeepSeek V4 Pro (or independently qualified high-reasoning model actually available) is approved. Neither the T9S objective nor its scientific burden is lowered, and issuing this addendum does not launch a worker.
