@@ -6,6 +6,8 @@ ROOT=R.parents[1]
 M='b91642ce98ec2c74b6d0c5d06ec8b83f67f02e86'
 MP='WORKER_RETURNS/PYAT-R26-WG0M-ORIGINAL-FRONTIER-INDEPENDENT-DELTA-R1/'
 COURT=R/'court'
+if (R/'CANDIDATE_CODE_PIN.json').exists():
+ raise SystemExit('REFUSE_RESTAGING_OVER_P6: use committed source and verify custody; this constructor stages the historical P5 baseline only')
 rows={}
 def git(*a):return subprocess.check_output(['git','-C',str(ROOT),'-c','gc.auto=0',*a])
 def stage(commit,source,dest,expected=None):
