@@ -1,0 +1,497 @@
+{
+  "candidate": {
+    "implementation_version": "F6M_NATIVE_DECISION_ADMISSION_REPAIR@1",
+    "original_producer_git_blob": "fc5e37fa5b2f0eb689593b42d95479d1327cb94c",
+    "producer_git_blob": "2df811d76db258d98d89ffb43c830cb221ff9a7d",
+    "producer_sha256": "2930b5cd15c899146e9552b2e6b0efa3fc5835e57e58a6c16d756093e21d3871"
+  },
+  "changes": [
+    {
+      "after_ceilings": {
+        "mapped:A": "TEST_ONLY",
+        "mapped:B": "TEST_ONLY",
+        "native:A": "TEST_ONLY",
+        "native:B": "TEST_ONLY",
+        "target_joint": "TEST_ONLY"
+      },
+      "after_conditional": {
+        "bundle_hash": "9a295f1e9488342c320bb6e4490b6a934ad7d965a1959417ab5527baa2708f94",
+        "conditions": {
+          "material_security": "secure"
+        },
+        "evidence_mode": "INFERRED",
+        "model_denominator_mass": "31/50",
+        "observed_denominator": null,
+        "outcome": "employment_position",
+        "output_hash": "df8a645c648436c3155662941ee1d0f965ffe3ca0c1f14978d91080054e5789e",
+        "owner_admission_status": "UNVERIFIED_INTEGRATION_BOUNDARY",
+        "probabilities": {
+          "formal": "26/31",
+          "informal": "5/31"
+        },
+        "real_use_authorized": false,
+        "state": "SUPPORTED_MODEL",
+        "uncertainty": "CONDITIONAL_UNCERTAINTY_NOT_IDENTIFIED",
+        "use_scope": "SOURCEFREE_EXPERIMENT_ONLY",
+        "values_read_hash": "00dc0fb7c4708ced24be81e4c6c5ffb1300fcba682be596b1d51bb7b7bec1303"
+      },
+      "after_decision": "SYNTHETIC_CANDIDATE",
+      "after_decision_consumer": "COMPLETE_DECISION_ACCEPTED",
+      "after_uncovered": "0",
+      "before_ceilings": {
+        "mapped:A": null,
+        "mapped:B": null,
+        "native:A": "EXTERNAL_OWNER_ADMISSION_FOR_REAL_USE",
+        "native:B": "EXTERNAL_OWNER_ADMISSION_FOR_REAL_USE",
+        "target_joint": "DESCRIPTIVE_SOCIOLOGICAL_MODEL_ONLY"
+      },
+      "before_conditional": {
+        "bundle_hash": "fb5f2815b994bde47cb58e13f505ad9790486f6c0fe74f2a56142af42c00a948",
+        "conditions": {
+          "material_security": "secure"
+        },
+        "evidence_mode": "INFERRED",
+        "model_denominator_mass": "31/50",
+        "observed_denominator": null,
+        "outcome": "employment_position",
+        "output_hash": "c39caeb4cc94d9bf72eabcd415409554ff10ab794a99663f1ef08d5d4d59559d",
+        "probabilities": {
+          "formal": "26/31",
+          "informal": "5/31"
+        },
+        "state": "SUPPORTED_MODEL",
+        "uncertainty": "CONDITIONAL_UNCERTAINTY_NOT_IDENTIFIED",
+        "values_read_hash": "00dc0fb7c4708ced24be81e4c6c5ffb1300fcba682be596b1d51bb7b7bec1303"
+      },
+      "before_decision": "SYNTHETIC_CANDIDATE",
+      "before_decision_consumer": "COMPLETE_DECISION_ACCEPTED",
+      "before_uncovered": "0",
+      "case": "world_a",
+      "input_hash": "181f07c28169b932b5ba91ff535be90be62b430aac964e53bd34e6f4ef094e4a",
+      "real_use": {
+        "bundle_hash": "9a295f1e9488342c320bb6e4490b6a934ad7d965a1959417ab5527baa2708f94",
+        "real_use_authorized": false,
+        "reason": "UNVERIFIED_OWNER_ADMISSION",
+        "state": "UNAVAILABLE"
+      }
+    },
+    {
+      "after_ceilings": {
+        "mapped:A": "TEST_ONLY",
+        "mapped:B": "TEST_ONLY",
+        "native:A": "TEST_ONLY",
+        "native:B": "TEST_ONLY",
+        "target_joint": "TEST_ONLY"
+      },
+      "after_conditional": {
+        "bundle_hash": "98bdd44ff5d9ea921178555caf7ef7eb6fe0a9a9843a122628af0154bb262c9e",
+        "reason": "NO_COMPLETE_TARGET_JOINT",
+        "state": "UNAVAILABLE"
+      },
+      "after_decision": "PARTIAL_IDENTIFICATION_ONLY",
+      "after_decision_consumer": "REFUSED",
+      "after_uncovered": "1/5",
+      "before_ceilings": {
+        "mapped:A": null,
+        "mapped:B": null,
+        "native:A": "EXTERNAL_OWNER_ADMISSION_FOR_REAL_USE",
+        "native:B": "EXTERNAL_OWNER_ADMISSION_FOR_REAL_USE",
+        "target_joint": "DESCRIPTIVE_SOCIOLOGICAL_MODEL_ONLY"
+      },
+      "before_conditional": {
+        "bundle_hash": "2d88f5e9797219d1411081f6c4e8b51a833b25d4f43dd946aa3625e6a0dc71ff",
+        "reason": "NO_COMPLETE_TARGET_JOINT",
+        "state": "UNAVAILABLE"
+      },
+      "before_decision": "SYNTHETIC_CANDIDATE",
+      "before_decision_consumer": "COMPLETE_DECISION_ACCEPTED",
+      "before_uncovered": "1/5",
+      "case": "world_b",
+      "input_hash": "a3c51fdb72e3452ef15aff5ff3856d2457c09b31666bdf68c6b5e162b003d5d5",
+      "real_use": {
+        "bundle_hash": "98bdd44ff5d9ea921178555caf7ef7eb6fe0a9a9843a122628af0154bb262c9e",
+        "real_use_authorized": false,
+        "reason": "UNVERIFIED_OWNER_ADMISSION",
+        "state": "UNAVAILABLE"
+      }
+    },
+    {
+      "after_ceilings": {
+        "mapped:S1": "UNVERIFIED",
+        "mapped:S2": "UNVERIFIED",
+        "native:S1": "UNVERIFIED",
+        "native:S2": "UNVERIFIED",
+        "target_joint": "UNVERIFIED"
+      },
+      "after_conditional": {
+        "bundle_hash": "d293c06432397e0a620604615723754cb1f7446a5863afad3544c5854664970d",
+        "conditions": {
+          "F6L_MATERIAL": "LOW"
+        },
+        "evidence_mode": "INFERRED",
+        "model_denominator_mass": "1/2",
+        "observed_denominator": null,
+        "outcome": "F6L_ACTION",
+        "output_hash": "bfa1698442644d0fbcdeeb04ac4f2ff0a7ce3c175217bf51f1a999b90ef0e069",
+        "owner_admission_status": "UNVERIFIED_INTEGRATION_BOUNDARY",
+        "probabilities": {
+          "NO": "2/3",
+          "YES": "1/3"
+        },
+        "real_use_authorized": false,
+        "state": "SUPPORTED_MODEL",
+        "uncertainty": "CONDITIONAL_UNCERTAINTY_NOT_IDENTIFIED",
+        "use_scope": "SOURCEFREE_EXPERIMENT_ONLY",
+        "values_read_hash": "3eac8ff1c71818ba94db94003c58a2cae588ed7c55a09b8630f9dc94225b55d0"
+      },
+      "after_decision": "INFERRED_CANDIDATE_REQUIRES_REVIEW",
+      "after_decision_consumer": "REFUSED",
+      "after_uncovered": "0",
+      "before_ceilings": {
+        "mapped:S1": null,
+        "mapped:S2": null,
+        "native:S1": "EXTERNAL_OWNER_ADMISSION_FOR_REAL_USE",
+        "native:S2": "EXTERNAL_OWNER_ADMISSION_FOR_REAL_USE",
+        "target_joint": "DESCRIPTIVE_SOCIOLOGICAL_MODEL_ONLY"
+      },
+      "before_conditional": {
+        "bundle_hash": "4c9b41bdd838eb28f0fb5fd831e48a34990dc60d361a1bb75def4144dc15c950",
+        "conditions": {
+          "F6L_MATERIAL": "LOW"
+        },
+        "evidence_mode": "INFERRED",
+        "model_denominator_mass": "1/2",
+        "observed_denominator": null,
+        "outcome": "F6L_ACTION",
+        "output_hash": "e50474a9d085191db19d9e960772431628d002844ab57df0157fbde44bbcb466",
+        "probabilities": {
+          "NO": "2/3",
+          "YES": "1/3"
+        },
+        "state": "SUPPORTED_MODEL",
+        "uncertainty": "CONDITIONAL_UNCERTAINTY_NOT_IDENTIFIED",
+        "values_read_hash": "3eac8ff1c71818ba94db94003c58a2cae588ed7c55a09b8630f9dc94225b55d0"
+      },
+      "before_decision": "INFERRED_CANDIDATE_REQUIRES_REVIEW",
+      "before_decision_consumer": "REFUSED",
+      "before_uncovered": "0",
+      "case": "forged_owner",
+      "input_hash": "96fccf66709dcaef010904c14bd4dee6048ce6e37bd1137bf27d11428c32c97c",
+      "real_use": {
+        "bundle_hash": "d293c06432397e0a620604615723754cb1f7446a5863afad3544c5854664970d",
+        "real_use_authorized": false,
+        "reason": "UNVERIFIED_OWNER_ADMISSION",
+        "state": "UNAVAILABLE"
+      }
+    },
+    {
+      "after_ceilings": {
+        "mapped:S1": "UNVERIFIED",
+        "mapped:S2": "TEST_ONLY",
+        "native:S1": "UNVERIFIED",
+        "native:S2": "TEST_ONLY",
+        "target_joint": "UNVERIFIED"
+      },
+      "after_conditional": {
+        "bundle_hash": "500896f48326ff5b42de934e532dae7ad039faad3bcb5e5eec067067041d6002",
+        "conditions": {
+          "F6L_MATERIAL": "LOW"
+        },
+        "evidence_mode": "INFERRED",
+        "model_denominator_mass": "1/2",
+        "observed_denominator": null,
+        "outcome": "F6L_ACTION",
+        "output_hash": "24a3a9c413ab2f9538337346a052cfde52b1a89819863bfc28e37027909b5903",
+        "owner_admission_status": "UNVERIFIED_INTEGRATION_BOUNDARY",
+        "probabilities": {
+          "NO": "2/3",
+          "YES": "1/3"
+        },
+        "real_use_authorized": false,
+        "state": "SUPPORTED_MODEL",
+        "uncertainty": "CONDITIONAL_UNCERTAINTY_NOT_IDENTIFIED",
+        "use_scope": "SOURCEFREE_EXPERIMENT_ONLY",
+        "values_read_hash": "3eac8ff1c71818ba94db94003c58a2cae588ed7c55a09b8630f9dc94225b55d0"
+      },
+      "after_decision": "INFERRED_CANDIDATE_REQUIRES_REVIEW",
+      "after_decision_consumer": "REFUSED",
+      "after_uncovered": "0",
+      "before_ceilings": {
+        "mapped:S1": null,
+        "mapped:S2": null,
+        "native:S1": "EXTERNAL_OWNER_ADMISSION_FOR_REAL_USE",
+        "native:S2": "EXTERNAL_OWNER_ADMISSION_FOR_REAL_USE",
+        "target_joint": "DESCRIPTIVE_SOCIOLOGICAL_MODEL_ONLY"
+      },
+      "before_conditional": {
+        "bundle_hash": "d8012c7da0de69b74d992d44026833661727c37608e652017216b1fa9605974b",
+        "conditions": {
+          "F6L_MATERIAL": "LOW"
+        },
+        "evidence_mode": "INFERRED",
+        "model_denominator_mass": "1/2",
+        "observed_denominator": null,
+        "outcome": "F6L_ACTION",
+        "output_hash": "ee823dc570e34be692d1dc42fb4ffeedc18dafe295e52395151d2bf9db4f3b3d",
+        "probabilities": {
+          "NO": "2/3",
+          "YES": "1/3"
+        },
+        "state": "SUPPORTED_MODEL",
+        "uncertainty": "CONDITIONAL_UNCERTAINTY_NOT_IDENTIFIED",
+        "values_read_hash": "3eac8ff1c71818ba94db94003c58a2cae588ed7c55a09b8630f9dc94225b55d0"
+      },
+      "before_decision": "INFERRED_CANDIDATE_REQUIRES_REVIEW",
+      "before_decision_consumer": "REFUSED",
+      "before_uncovered": "0",
+      "case": "mixed_origin",
+      "input_hash": "b2f1b7abc3aa438d89173c0d577e1f874d59fadc2a9f22f6496cb4ef4d772800",
+      "real_use": {
+        "bundle_hash": "500896f48326ff5b42de934e532dae7ad039faad3bcb5e5eec067067041d6002",
+        "real_use_authorized": false,
+        "reason": "UNVERIFIED_OWNER_ADMISSION",
+        "state": "UNAVAILABLE"
+      }
+    },
+    {
+      "after_ceilings": {
+        "mapped:A": "TEST_ONLY",
+        "mapped:B": "TEST_ONLY",
+        "native:A": "TEST_ONLY",
+        "native:B": "TEST_ONLY",
+        "target_joint": "TEST_ONLY"
+      },
+      "after_conditional": {
+        "bundle_hash": "4669fef09ead51f5ad4b4663bf8024fd162ad3bbeb4945759079869629c4df2f",
+        "reason": "NO_COMPLETE_TARGET_JOINT",
+        "state": "UNAVAILABLE"
+      },
+      "after_decision": "PARTIAL_IDENTIFICATION_ONLY",
+      "after_decision_consumer": "REFUSED",
+      "after_uncovered": "1/3",
+      "before_ceilings": {
+        "mapped:A": null,
+        "mapped:B": null,
+        "native:A": "EXTERNAL_OWNER_ADMISSION_FOR_REAL_USE",
+        "native:B": "EXTERNAL_OWNER_ADMISSION_FOR_REAL_USE",
+        "target_joint": "DESCRIPTIVE_SOCIOLOGICAL_MODEL_ONLY"
+      },
+      "before_conditional": {
+        "bundle_hash": "95c933d128f4eb291445ac11657665fb430db4b099efec264eba02279a307283",
+        "reason": "NO_COMPLETE_TARGET_JOINT",
+        "state": "UNAVAILABLE"
+      },
+      "before_decision": "SYNTHETIC_CANDIDATE",
+      "before_decision_consumer": "COMPLETE_DECISION_ACCEPTED",
+      "before_uncovered": "1/3",
+      "case": "novel_2x2_no_positivity",
+      "input_hash": "6f38f95ff6c47eab55700df4ac3139a42a129a6675cb244242da03caa46615aa",
+      "real_use": {
+        "bundle_hash": "4669fef09ead51f5ad4b4663bf8024fd162ad3bbeb4945759079869629c4df2f",
+        "real_use_authorized": false,
+        "reason": "UNVERIFIED_OWNER_ADMISSION",
+        "state": "UNAVAILABLE"
+      }
+    },
+    {
+      "after_ceilings": {
+        "mapped:A3": "TEST_ONLY",
+        "mapped:B3": "TEST_ONLY",
+        "native:A3": "TEST_ONLY",
+        "native:B3": "TEST_ONLY",
+        "target_joint": "TEST_ONLY"
+      },
+      "after_conditional": {
+        "bundle_hash": "50bdb3b299b2fa0b701b953d3e64cb98ef281aa3d05c7083f127dcb7f8dbd61c",
+        "reason": "NO_COMPLETE_TARGET_JOINT",
+        "state": "UNAVAILABLE"
+      },
+      "after_decision": "PARTIAL_IDENTIFICATION_ONLY",
+      "after_decision_consumer": "REFUSED",
+      "after_uncovered": "1/4",
+      "before_ceilings": {
+        "mapped:A3": null,
+        "mapped:B3": null,
+        "native:A3": "EXTERNAL_OWNER_ADMISSION_FOR_REAL_USE",
+        "native:B3": "EXTERNAL_OWNER_ADMISSION_FOR_REAL_USE",
+        "target_joint": "DESCRIPTIVE_SOCIOLOGICAL_MODEL_ONLY"
+      },
+      "before_conditional": {
+        "bundle_hash": "26bdb1945b91112c96edbe363feeddb744e46538123a9f8554d794691d6cfdaa",
+        "reason": "NO_COMPLETE_TARGET_JOINT",
+        "state": "UNAVAILABLE"
+      },
+      "before_decision": "SYNTHETIC_CANDIDATE",
+      "before_decision_consumer": "COMPLETE_DECISION_ACCEPTED",
+      "before_uncovered": "1/4",
+      "case": "novel_3category_no_positivity",
+      "input_hash": "6baeff2e704df43cd0b7feb0227f9b8ee5fc845975cbb61236f285888069b6e5",
+      "real_use": {
+        "bundle_hash": "50bdb3b299b2fa0b701b953d3e64cb98ef281aa3d05c7083f127dcb7f8dbd61c",
+        "real_use_authorized": false,
+        "reason": "UNVERIFIED_OWNER_ADMISSION",
+        "state": "UNAVAILABLE"
+      }
+    },
+    {
+      "after_ceilings": {
+        "mapped:S1": "TEST_ONLY",
+        "mapped:S2": "TEST_ONLY",
+        "native:S1": "TEST_ONLY",
+        "native:S2": "TEST_ONLY",
+        "target_joint": "TEST_ONLY"
+      },
+      "after_conditional": {
+        "bundle_hash": "63e343f6da8595433a15696ea90dc98265d9adb5b674d70ba20fffbbc7bab7f9",
+        "conditions": {
+          "F6L_MATERIAL": "LOW"
+        },
+        "evidence_mode": "INFERRED",
+        "model_denominator_mass": "1/2",
+        "observed_denominator": null,
+        "outcome": "F6L_ACTION",
+        "output_hash": "414aba24b82f0dd6b199c8c0b527d23fb30bbe594dfee6430a1c2742cd196015",
+        "owner_admission_status": "UNVERIFIED_INTEGRATION_BOUNDARY",
+        "probabilities": {
+          "NO": "7/25",
+          "YES": "18/25"
+        },
+        "real_use_authorized": false,
+        "state": "SUPPORTED_MODEL",
+        "uncertainty": "CONDITIONAL_UNCERTAINTY_NOT_IDENTIFIED",
+        "use_scope": "SOURCEFREE_EXPERIMENT_ONLY",
+        "values_read_hash": "bf1e6f282d481c246484005886e2891f1ec6cf43e073000ef1358fe9ee0e894c"
+      },
+      "after_decision": "SYNTHETIC_CANDIDATE",
+      "after_decision_consumer": "COMPLETE_DECISION_ACCEPTED",
+      "after_uncovered": "0",
+      "before_ceilings": {
+        "mapped:S1": null,
+        "mapped:S2": null,
+        "native:S1": "EXTERNAL_OWNER_ADMISSION_FOR_REAL_USE",
+        "native:S2": "EXTERNAL_OWNER_ADMISSION_FOR_REAL_USE",
+        "target_joint": "DESCRIPTIVE_SOCIOLOGICAL_MODEL_ONLY"
+      },
+      "before_conditional": {
+        "bundle_hash": "bb00c49634f444528a3f4785aa24e197b0bc5f568bb6d3ba762348ef245854c0",
+        "conditions": {
+          "F6L_MATERIAL": "LOW"
+        },
+        "evidence_mode": "INFERRED",
+        "model_denominator_mass": "1/2",
+        "observed_denominator": null,
+        "outcome": "F6L_ACTION",
+        "output_hash": "29dc28a8c000cf899872002bafc9cd85561e705500956bf5b6f47df4ee8ae972",
+        "probabilities": {
+          "NO": "7/25",
+          "YES": "18/25"
+        },
+        "state": "SUPPORTED_MODEL",
+        "uncertainty": "CONDITIONAL_UNCERTAINTY_NOT_IDENTIFIED",
+        "values_read_hash": "bf1e6f282d481c246484005886e2891f1ec6cf43e073000ef1358fe9ee0e894c"
+      },
+      "before_decision": "SYNTHETIC_CANDIDATE",
+      "before_decision_consumer": "COMPLETE_DECISION_ACCEPTED",
+      "before_uncovered": "0",
+      "case": "minority_cell_threshold5",
+      "input_hash": "72273adca6c0be1007a4b7596d44f1fbf021532c69b51491812407393e10eb58",
+      "real_use": {
+        "bundle_hash": "63e343f6da8595433a15696ea90dc98265d9adb5b674d70ba20fffbbc7bab7f9",
+        "real_use_authorized": false,
+        "reason": "UNVERIFIED_OWNER_ADMISSION",
+        "state": "UNAVAILABLE"
+      }
+    },
+    {
+      "after_ceilings": {
+        "mapped:S1": "TEST_ONLY",
+        "mapped:S2": "TEST_ONLY",
+        "native:S1": "TEST_ONLY",
+        "native:S2": "TEST_ONLY",
+        "target_joint": "TEST_ONLY"
+      },
+      "after_conditional": {
+        "bundle_hash": "98e7359c962d4e3047a8efd3038d0c32db084536592bbbf97eade9d5b92c4f4a",
+        "reason": "NO_COMPLETE_TARGET_JOINT",
+        "state": "UNAVAILABLE"
+      },
+      "after_decision": "PARTIAL_IDENTIFICATION_ONLY",
+      "after_decision_consumer": "REFUSED",
+      "after_uncovered": "1/2",
+      "before_ceilings": {
+        "mapped:S1": null,
+        "mapped:S2": null,
+        "native:S1": "EXTERNAL_OWNER_ADMISSION_FOR_REAL_USE",
+        "native:S2": "EXTERNAL_OWNER_ADMISSION_FOR_REAL_USE",
+        "target_joint": "DESCRIPTIVE_SOCIOLOGICAL_MODEL_ONLY"
+      },
+      "before_conditional": {
+        "bundle_hash": "7810bbe490f80a94e38c7a7ff25f48782ebc699c36e03afa132b2afe23ee6277",
+        "conditions": {
+          "F6L_MATERIAL": "LOW"
+        },
+        "evidence_mode": "INFERRED",
+        "model_denominator_mass": "1/2",
+        "observed_denominator": null,
+        "outcome": "F6L_ACTION",
+        "output_hash": "ea093ffeb076c71a26e1dd8d273884d8191eb190a57e2b8e1ced60b85352eba5",
+        "probabilities": {
+          "NO": "1/2",
+          "YES": "1/2"
+        },
+        "state": "SUPPORTED_MODEL",
+        "uncertainty": "CONDITIONAL_UNCERTAINTY_NOT_IDENTIFIED",
+        "values_read_hash": "3d78a5e348a4824200c948368b923fb8808ed7cdebf4a22621fbb3ef36bff475"
+      },
+      "before_decision": "SYNTHETIC_CANDIDATE",
+      "before_decision_consumer": "COMPLETE_DECISION_ACCEPTED",
+      "before_uncovered": "0",
+      "case": "minority_source_exclusion150",
+      "input_hash": "18f42c7ab51e0778ede760f1882a0aa6ae7bb5e60c753bac16331f26387b0ec2",
+      "real_use": {
+        "bundle_hash": "98e7359c962d4e3047a8efd3038d0c32db084536592bbbf97eade9d5b92c4f4a",
+        "real_use_authorized": false,
+        "reason": "UNVERIFIED_OWNER_ADMISSION",
+        "state": "UNAVAILABLE"
+      }
+    }
+  ],
+  "f6n_review_required": true,
+  "native_diff": "custody/native_repair.diff",
+  "schema": "F6M_ACTUAL_NATIVE_DIFF@1",
+  "source_path": "candidate/rawlsing_next/pre553_heterogeneous_synthesis.py",
+  "startup": "1a6096f263623e57b77c7b70b5fcfb23cdebdad8",
+  "support_repair": "Planned weights over present source strata; failed aggregate-support contributions remain uncovered instead of survivor renormalization.",
+  "unchanged_numerical_and_uncertainty_projections": {
+    "minority_cell_threshold5": {
+      "covered_subprobability": true,
+      "distribution": true,
+      "uncertainty": true,
+      "uncovered_target_mass": true
+    },
+    "novel_2x2_no_positivity": {
+      "covered_subprobability": true,
+      "distribution": true,
+      "uncertainty": true,
+      "uncovered_target_mass": true
+    },
+    "novel_3category_no_positivity": {
+      "covered_subprobability": true,
+      "distribution": true,
+      "uncertainty": true,
+      "uncovered_target_mass": true
+    },
+    "world_a": {
+      "covered_subprobability": true,
+      "distribution": true,
+      "uncertainty": true,
+      "uncovered_target_mass": true
+    },
+    "world_b": {
+      "covered_subprobability": true,
+      "distribution": true,
+      "uncertainty": true,
+      "uncovered_target_mass": true
+    }
+  }
+}

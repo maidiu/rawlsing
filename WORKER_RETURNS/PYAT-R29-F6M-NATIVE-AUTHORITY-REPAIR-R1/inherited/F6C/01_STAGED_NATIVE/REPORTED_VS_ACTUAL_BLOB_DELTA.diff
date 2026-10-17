@@ -1,0 +1,96 @@
+--- pre553_REPORTED_OLD.py	2026-10-16 22:55:58
++++ pre553_heterogeneous_synthesis.py	2026-10-16 22:55:58
+@@ -113,6 +113,19 @@
+                 raise SynthesisError("weighted/raw zero support mismatch")
+         if sum(c["n"] for c in table["cells"]) + table["excluded_n"] != table["eligible_n"]:
+             raise SynthesisError("denominator/exclusion conservation failed")
++        # S03F Fix 1: require complete categorical joint domain.  An omitted
++        # original category must not silently become an observed zero.  The
++        # producer must issue either a complete cross-product of native
++        # category values or an explicit sparse-zero coverage proof.
++        domain_size = 1
++        for a in axes:
++            domain_size *= len(a["category_map"])
++        if len(seen) != domain_size:
++            raise SynthesisError(
++                "incomplete native joint domain; omitted category cannot be "
++                "silently manufactured as zero (domain_size=%d, observed=%d)"
++                % (domain_size, len(seen))
++            )
+ 
+ 
+ def _mapping_reasons(source):
+@@ -136,8 +149,13 @@
+     return tables
+ 
+ 
+-def _cells(table):
+-    return [{"categories": list(k), "probability": str(v)} for k, v in sorted(table.items())]
++def _cells(table, category_order=None):
++    if category_order is not None:
++        index = {k: i for i, k in enumerate(category_order)}
++        items = sorted(table.items(), key=lambda kv: index.get(kv[0], len(index)))
++    else:
++        items = sorted(table.items())
++    return [{"categories": list(k), "probability": str(v)} for k, v in items]
+ 
+ 
+ def _baseline(source, expected_mapping_hash):
+@@ -214,6 +232,8 @@
+                 overlap.append({"pair": pair, "reason": "DUPLICATE_SAMPLE" if duplicate else "OVERLAP_UNRESOLVED"})
+     topology = [a["construct_ref"] for a in sources[0]["axes"]]
+     category_sets = [set(a["category_map"].values()) for a in sources[0]["axes"]]
++    # S03FO: declared category order from category_map insertion order
++    declared_order = [list(dict.fromkeys(a["category_map"].values())) for a in sources[0]["axes"]]
+     domain_size = 1
+     for cats in category_sets:
+         domain_size *= len(cats)
+@@ -245,7 +265,7 @@
+         out["content_hash"] = semantic_hash(out)
+         return out
+     mapped = {s["source_id"]: _mapped(s) for s in sources}
+-    keys = sorted(product(*(sorted(cats) for cats in category_sets)))
++    keys = list(product(*declared_order))
+     joint = {k: F(0) for k in keys}
+     lower = {k: F(0) for k in keys}
+     upper = {k: F(0) for k in keys}
+@@ -303,8 +323,9 @@
+     radius = sum(_q(policy[k]) for k in ("mapping_bias_radius", "transport_bias_radius", "target_share_bias_radius"))
+     candidate = {"evidence_mode": "INFERRED", "method": METHOD, "construct_topology": topology,
+                  "parent_refs": [s["product_ref"] for s in sources], "assumptions_ref": policy["policy_ref"],
+-                 "distribution": _cells(joint) if uncovered == 0 else None,
+-                 "covered_subprobability": _cells(joint), "uncovered_target_mass": str(uncovered),
++                 "ordered_categories": [list(k) for k in keys],
++                 "distribution": _cells(joint, keys) if uncovered == 0 else None,
++                 "covered_subprobability": _cells(joint, keys), "uncovered_target_mass": str(uncovered),
+                  "support": coverage, "sample_size": None,
+                  "dependence": "SOURCE_JOINTS_TRANSPORTED_AND_MIXED; NO_CROSS_SURVEY_RESPONDENT_LINKS",
+                  "uncertainty": {"sampling_variance": None if unknown_variance else [{"categories": list(k), "variance": str(v)} for k, v in sorted(variances.items())],
+@@ -348,11 +369,26 @@
+     for cell in selected:
+         v = cell["categories"][axes.index(outcome)]
+         table[v] = table.get(v, F(0)) + _q(cell["probability"])
+-    result = {"state": "SUPPORTED_MODEL" if denom else "ZERO_MODEL_SUPPORT",
++    # S03F Fix 2: outcome-as-conditioning-predicate must not masquerade as
++    # a nontrivial predictive conditional.  Return a strictly descriptive
++    # self-conditioning status, not generic predictive SUPPORTED_MODEL.
++    self_conditioning = outcome in conditions
++    if self_conditioning and denom:
++        state = "DESCRIPTIVE_SELF_CONDITIONING"
++        self_cond_status = "OUTCOME_LEAKAGE_TAUTOLOGY"
++    elif self_conditioning:
++        state = "ZERO_MODEL_SUPPORT"
++        self_cond_status = "OUTCOME_LEAKAGE_TAUTOLOGY"
++    else:
++        state = "SUPPORTED_MODEL" if denom else "ZERO_MODEL_SUPPORT"
++        self_cond_status = None
++    result = {"state": state,
+               "evidence_mode": "INFERRED", "conditions": conditions, "outcome": outcome,
+               "probabilities": _distribution(table), "model_denominator_mass": str(denom),
+               "observed_denominator": None, "uncertainty": "CONDITIONAL_UNCERTAINTY_NOT_IDENTIFIED",
+               "bundle_hash": bundle["content_hash"], "values_read_hash": semantic_hash(c["distribution"])}
++    if self_cond_status is not None:
++        result["self_conditioning_status"] = self_cond_status
+     result["output_hash"] = semantic_hash(result)
+     return result
+ 

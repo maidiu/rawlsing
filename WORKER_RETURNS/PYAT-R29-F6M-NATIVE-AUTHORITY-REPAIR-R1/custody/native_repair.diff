@@ -1,0 +1,169 @@
+--- original/rawlsing_next/pre553_heterogeneous_synthesis.py
++++ F6M/candidate/rawlsing_next/pre553_heterogeneous_synthesis.py
+@@ -2,8 +2,10 @@
+ 
+ No source reader, respondent linker, semantic issuer, or selected-world adapter.
+ Inputs retain source-native tables; standardization is a separately inferred
+-distribution. Real use requires an external owner admission callback, including
+-scope/operation/permissions verification. Hashes are replay identities, not rights.
++distribution. This source-free implementation has NO authenticated owner issuer.
++An admission callback is only an unverified integration predicate, never rights.
++All output is experimental only, even when callers declare real source origin.
++Hashes are replay identities, not rights.
+ All identity-bearing numeric inputs are integers or rational strings.
+ """
+ from __future__ import annotations
+@@ -16,6 +18,9 @@
+ from rawlsing_next.pre553_empirical_objects import semantic_hash
+ 
+ METHOD = "PRE553_TARGET_JOINT_STANDARDIZATION@1"
++IMPLEMENTATION_VERSION = "F6M_NATIVE_DECISION_ADMISSION_REPAIR@1"
++REAL_USE_STATUS = "UNVERIFIED_INTEGRATION_BOUNDARY"
++ORIGINAL_PRODUCER_BLOB = "fc5e37fa5b2f0eb689593b42d95479d1327cb94c"
+ 
+ 
+ class SynthesisError(ValueError):
+@@ -182,9 +187,10 @@
+                admit: Callable[[dict, dict, str], bool] | None = None) -> dict:
+     """Return native baseline plus one optional inferred target mixture.
+ 
+-    Real summaries need owner-verified admission for baseline AND transport. A
+-    callback is an integration boundary, not an authentication implementation.
+-    Unknown overlap excludes the candidate, while lawful baselines survive.
++    The callback may veto baseline or transport computations but cannot grant
++    real-use rights. Caller origin labels are declarations only. Numerical
++    output is source-free experimental evidence; real use always fails closed.
++    Unknown overlap excludes the candidate, while native baselines survive.
+     """
+     target, sources, policy = deepcopy((target, sources, policy))
+     strata = _target_check(target)
+@@ -245,7 +251,15 @@
+     out = {"contract_version": METHOD, "world_scope": target, "baseline": baseline,
+            "candidate": None, "refusals": diagnostics, "overlap_diagnostics": overlap,
+            "test_origin": all(s["test_origin"] for s in sources),
+-           "real_source_qualification": "EXTERNAL_REVIEW_REQUIRED",
++           "real_source_qualification": REAL_USE_STATUS,
++           "implementation_version": IMPLEMENTATION_VERSION,
++           "owner_admission_status": REAL_USE_STATUS,
++           "real_use_authorized": False,
++           "use_scope": "SOURCEFREE_EXPERIMENT_ONLY",
++           "origin_classification": ("DECLARED_TEST_ONLY" if all(s["test_origin"] for s in sources)
++                                     else "MIXED_TEST_AND_UNVERIFIED" if any(s["test_origin"] for s in sources)
++                                     else "UNVERIFIED_SOURCE_INPUT"),
++           "support_gate_semantics": "AGGREGATE_SOURCE_STRATUM_RAW_COUNT_NOT_MINORITY_CELL_PROTECTION",
+            "replay": {"target": target, "sources": sources, "policy": policy},
+            "consumer_requirements_ref": "S03_CONSUMER_REQUIREMENTS@1"}
+     out["evidence_graph"] = []
+@@ -254,11 +268,16 @@
+         out["evidence_graph"].append({"node_id": native_id, "evidence_mode": "MEASURED",
+             "test_origin": s["test_origin"], "producer_ref": s["product_ref"], "parents": [],
+             "value_ref": "baseline/" + s["source_id"] + "/native_summary", "value_hash": b["input_hash"],
+-            "authority_ceiling": "EXTERNAL_OWNER_ADMISSION_FOR_REAL_USE"})
++            "source_id": s["source_id"], "source_hash": b["input_hash"],
++            "authority_ceiling": "TEST_ONLY" if s["test_origin"] else "UNVERIFIED"})
+         if b["mapped_joint"] is not None:
+             out["evidence_graph"].append({"node_id": "mapped:" + s["source_id"],
+                 "evidence_mode": "TRANSFORMED", "test_origin": s["test_origin"], "parents": [native_id],
+                 "method": "REVIEWED_CATEGORY_RECODING@1", "mapping_hash": semantic_hash(s["axes"]),
++                "producer_ref": s["product_ref"], "source_id": s["source_id"],
++                "source_hash": b["input_hash"],
++                "authority_ceiling": "TEST_ONLY" if s["test_origin"] else "UNVERIFIED",
++                "value_hash": semantic_hash(b["mapped_joint"]),
+                 "value_ref": "baseline/" + s["source_id"] + "/mapped_joint"})
+     if overlap or any(diagnostics.values()):
+         out["decision"] = "SOURCE_INDEXED_BACKOFF"
+@@ -281,13 +300,30 @@
+             t = s["strata"].get(z)
+             if t and sum(c["n"] for c in t["cells"]) >= policy["minimum_raw_support"] and sum(mapped[sid][z].values()) > 0:
+                 eligible.append(s)
+-        denom = sum(weights[s["source_id"]] for s in eligible)
+-        coverage[z] = {"target_share": str(share), "sources": [], "excluded_sources": [s["source_id"] for s in sources if s not in eligible]}
+-        if not denom:
+-            uncovered += share
++        # Preserve the planned mixture contribution of a PRESENT source stratum
++        # failing the aggregate support gate. Renormalizing its weight onto
++        # survivors would silently change the estimand. A source with no table
++        # remains outside the inherited stratum-specific mixture definition.
++        planned = [s for s in sources if z in s["strata"]]
++        denom = sum(weights[s["source_id"]] for s in planned)
++        eligible_weight = sum(weights[s["source_id"]] for s in eligible)
++        missing_share = share * (1 - eligible_weight / denom) if denom else share
++        covered_share = share - missing_share
++        uncovered += missing_share
++        coverage[z] = {"target_share": str(share), "sources": [],
++                       "excluded_sources": [s["source_id"] for s in sources if s not in eligible],
++                       "uncovered_target_share": str(missing_share),
++                       "support_gate": "AGGREGATE_SOURCE_STRATUM_RAW_COUNT",
++                       "minority_cell_protection": False,
++                       "exclusion_reasons": {
++                           s["source_id"]: ("NO_SOURCE_STRATUM" if z not in s["strata"]
++                                            else "AGGREGATE_SUPPORT_OR_MASS_INSUFFICIENT")
++                           for s in sources if s not in eligible}}
++        if missing_share:
+             unknown_variance = True
+             for k in keys:
+-                upper[k] += share
++                upper[k] += missing_share
++        if not eligible_weight:
+             continue
+         distributions = []
+         for s in eligible:
+@@ -318,8 +354,8 @@
+             for k in keys:
+                 joint[k] += share * alpha * p[k]
+         for k in keys:
+-            lower[k] += share * min(p[k] for p in distributions)
+-            upper[k] += share * max(p[k] for p in distributions)
++            lower[k] += covered_share * min(p[k] for p in distributions)
++            upper[k] += covered_share * max(p[k] for p in distributions)
+     radius = sum(_q(policy[k]) for k in ("mapping_bias_radius", "transport_bias_radius", "target_share_bias_radius"))
+     candidate = {"evidence_mode": "INFERRED", "method": METHOD, "construct_topology": topology,
+                  "parent_refs": [s["product_ref"] for s in sources], "assumptions_ref": policy["policy_ref"],
+@@ -339,13 +375,19 @@
+         "test_origin": out["test_origin"], "parents": ["mapped:" + s["source_id"] for s in sources],
+         "method": METHOD, "parameters_hash": semantic_hash(policy),
+         "value_ref": "candidate", "value_hash": semantic_hash(candidate),
+-        "authority_ceiling": "DESCRIPTIVE_SOCIOLOGICAL_MODEL_ONLY"})
+-    out["decision"] = "SYNTHETIC_CANDIDATE" if out["test_origin"] else "INFERRED_CANDIDATE_REQUIRES_REVIEW"
++        "source_hashes": {b["source_id"]: b["input_hash"] for b in baseline},
++        "authority_ceiling": "TEST_ONLY" if out["test_origin"] else "UNVERIFIED"})
++    out["decision"] = ("PARTIAL_IDENTIFICATION_ONLY" if candidate["distribution"] is None or uncovered > 0
++                       else "SYNTHETIC_CANDIDATE" if out["test_origin"]
++                       else "INFERRED_CANDIDATE_REQUIRES_REVIEW")
++    out["target_joint_status"] = ("NO_COMPLETE_TARGET_JOINT" if candidate["distribution"] is None
++                                  else "COMPLETE_EXPERIMENTAL_TARGET_JOINT")
+     out["content_hash"] = semantic_hash(out)
+     return out
+ 
+ 
+-def conditional(bundle: dict, conditions: dict[str, str], outcome: str) -> dict:
++def conditional(bundle: dict, conditions: dict[str, str], outcome: str,
++                *, use: str = "SOURCEFREE_EXPERIMENT") -> dict:
+     """Value-reading sociological consumer; cumulative predicates on one joint.
+ 
+     This is a contract consumer only, not Worker 1's selected-world service.
+@@ -354,8 +396,14 @@
+     material = {k: v for k, v in bundle.items() if k != "content_hash"}
+     if bundle.get("content_hash") != semantic_hash(material):
+         raise SynthesisError("bundle replay hash mismatch")
++    if use not in ("SOURCEFREE_EXPERIMENT", "REAL_USE"):
++        raise SynthesisError("unknown consumer use scope")
++    # No bundle field, origin flag, hash or callback authenticates an issuer.
++    if use == "REAL_USE":
++        return {"state": "UNAVAILABLE", "reason": "UNVERIFIED_OWNER_ADMISSION",
++                "real_use_authorized": False, "bundle_hash": bundle["content_hash"]}
+     c = bundle.get("candidate")
+-    if c is None or c["distribution"] is None:
++    if c is None or c["distribution"] is None or _q(c["uncovered_target_mass"]) > 0:
+         return {"state": "UNAVAILABLE", "reason": "NO_COMPLETE_TARGET_JOINT", "bundle_hash": bundle["content_hash"]}
+     axes = c["construct_topology"]
+     if outcome not in axes or any(k not in axes for k in conditions):
+@@ -384,6 +432,8 @@
+         self_cond_status = None
+     result = {"state": state,
+               "evidence_mode": "INFERRED", "conditions": conditions, "outcome": outcome,
++              "use_scope": "SOURCEFREE_EXPERIMENT_ONLY", "real_use_authorized": False,
++              "owner_admission_status": REAL_USE_STATUS,
+               "probabilities": _distribution(table), "model_denominator_mass": str(denom),
+               "observed_denominator": None, "uncertainty": "CONDITIONAL_UNCERTAINTY_NOT_IDENTIFIED",
+               "bundle_hash": bundle["content_hash"], "values_read_hash": semantic_hash(c["distribution"])}

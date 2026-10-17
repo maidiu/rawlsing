@@ -1,0 +1,151 @@
+{
+  "frozen_commit": "e476ccc090ae0175a540e94c5c382d7e2a8453f0",
+  "independent_engine_imports_native": false,
+  "native_git_blob": "fc5e37fa5b2f0eb689593b42d95479d1327cb94c",
+  "native_vs_frozen_comparisons": 82,
+  "native_vs_frozen_total": 82,
+  "numeric_type": "fractions.Fraction only",
+  "role": "new distinct independent F6 scientific reviewer (F6J)",
+  "schema": "PYAT_R27_F6J_02_RATIONAL_RECOMPUTATION@1",
+  "sections": {
+    "arithmetic_correction_14_over_25_to_19_over_25": {
+      "commission_reference": "postfreeze corrected old 14/25 to 19/25",
+      "corrected_upper_cell_XU": "19/25",
+      "difference": "1/5",
+      "old_unwiden_upper_cell_XU": "14/25",
+      "rule": "corrected = covered contribution + uncovered share; the uncovered share is 1/5 = 5/25 and must be added to EVERY cell upper",
+      "verdict": "CONFIRMED. 14/25 + 1/5 = 19/25 exactly. Omitting the uncovered share understates every upper bound and is not a conservative error.",
+      "world": "N5_NO_POSITIVITY_UNCOVERED_MASS"
+    },
+    "arithmetic_correction_31_50_to_41_50_and_7_50_to_17_50": {
+      "commission_reference": "postfreeze corrected old 31/50 to 41/50, 17/50",
+      "construction": "unary 3-category axis, source p = (31/40, 7/40, 2/40); target Z1=4/5 covered, Z2=1/5 uncovered",
+      "corrected_upper_P": "41/50",
+      "corrected_upper_Q": "17/50",
+      "covered_sum": "4/5",
+      "difference_P": "1/5",
+      "difference_Q": "1/5",
+      "old_unwiden_upper_P": "31/50",
+      "old_unwiden_upper_Q": "7/50",
+      "verdict": "CONFIRMED exactly. 31/50 + 1/5 = 41/50 and 7/50 + 1/5 = 17/50, and the covered subprobability sums to 4/5. The same rule as the 4-cell world, on an independent axis topology, so the correction is a general property of uncovered mass and not a fixture artefact.",
+      "world": "N6_PARALLEL_ARITHMETIC_CORRECTION"
+    },
+    "author_preregistration_strength": {
+      "commission_reference": "assess weaker author prereg",
+      "observations": [
+        "The commission itself discloses the author's headline values (World A 13/25, 1/10, 1/10, 7/25 and World B 1/5 mass). Those values are therefore PUBLIC and can never be re-used as blind pre-freeze preregistration. This court labels every use of them POST_DISCLOSURE_REPLICATION.",
+        "The commission records that the author corrected frozen expectations post-freeze (14/25 -> 19/25, 31/50 -> 41/50 and 7/50 -> 17/50). Amending a frozen expectation after observing output weakens the preregistration: the amended value is no longer a prediction but a post-hoc description.",
+        "F6J independently re-derives BOTH the old and the corrected values and shows the correction is arithmetically RIGHT (the uncovered share must be added). So the correction improves the arithmetic while weakening the preregistration. These are two different judgements and both are recorded.",
+        "F6J mitigates this by constructing 10 genuinely new worlds whose values were fixed and pushed before any candidate test output was read. Those are the genuinely preregistered science in this court."
+      ],
+      "verdict": "WEAKER THAN A BLIND PRE-REGISTRATION but not valueless: the author's public headline numbers are still usable as REPLICATION targets, and the corrected arithmetic is verified correct by independent derivation. What cannot be claimed is that those numbers were predictions."
+    },
+    "conditional_26_31_vs_4_over_5": {
+      "commission_reference": "conditional 26/31 vs 4/5",
+      "resolution": "these are TWO DIFFERENT WORLDS and are not interchangeable",
+      "verdict": "Both values are arithmetically CORRECT for their own world. The author's public World A yields 26/31; the F6J new world yields 4/5. Presenting 26/31 as if it were a 4/5 quantity (or vice versa) would be an estimand conflation. This court reports both, bound to their own worlds.",
+      "world_A_author_public_headline": {
+        "agrees": true,
+        "independent_P_U_given_X": "26/31",
+        "independent_denominator_P_X": "31/50",
+        "joint": {
+          "('X', 'U')": "13/25",
+          "('X', 'V')": "1/10",
+          "('Y', 'U')": "1/10",
+          "('Y', 'V')": "7/25"
+        },
+        "native_P_U_given_X": "26/31",
+        "native_denominator": "31/50",
+        "origin": "POST_DISCLOSURE_REPLICATION"
+      },
+      "world_B_f6j_new": {
+        "agrees": true,
+        "independent_P_U_given_X": "4/5",
+        "independent_denominator_P_X": "1/2",
+        "joint": {
+          "('X', 'U')": "2/5",
+          "('X', 'V')": "1/10",
+          "('Y', 'U')": "1/10",
+          "('Y', 'V')": "2/5"
+        },
+        "native_P_U_given_X": "4/5",
+        "native_denominator": "1/2",
+        "origin": "PREREGISTERED_NEW_F6J"
+      }
+    },
+    "frechet_cross_channel_bounds": {
+      "agrees": true,
+      "independent": {
+        "independence_scenario": "1/4",
+        "lower": "0",
+        "upper": "1/2"
+      },
+      "native": {
+        "dependence": "UNIDENTIFIED",
+        "evidence_mode": "INFERRED",
+        "independence_scenario": "1/4",
+        "lower": "0",
+        "scenario_is_measured": false,
+        "upper": "1/2"
+      },
+      "verdict": "Native is CORRECT. Bounds agree exactly with independent derivation. The independence scenario p*q is explicitly labelled scenario_is_measured=False and must never be quoted as an observed joint; no cross-survey respondent link exists."
+    },
+    "incomplete_target_distribution_null": {
+      "agrees_with_independent": {
+        "covered_sum_is_4_over_5": true,
+        "uncovered_is_1_over_5": true,
+        "upper_XU_is_19_over_25": true,
+        "upper_XV_is_7_over_25": true
+      },
+      "commission_reference": "incomplete target distribution null covered sum 4/5 and widened upper 19/25, 7/25",
+      "construction": "target strata Z1=4/5 (covered by one source) and Z2=1/5 (NO eligible source); source p = (7/10, 1/10, 1/10, 1/10)",
+      "covered_subprobability": {
+        "('X', 'U')": "14/25",
+        "('X', 'V')": "2/25",
+        "('Y', 'U')": "2/25",
+        "('Y', 'V')": "2/25"
+      },
+      "covered_sum": "4/5",
+      "lower": {
+        "('X', 'U')": "14/25",
+        "('X', 'V')": "2/25",
+        "('Y', 'U')": "2/25",
+        "('Y', 'V')": "2/25"
+      },
+      "native_distribution_is_null": true,
+      "origin": "PREREGISTERED_NEW_F6J",
+      "uncovered_target_mass": "1/5",
+      "verdict": "CONFIRMED exactly. distribution is null, covered subprobability sums to 4/5, and the widened uppers are 19/25 and 7/25.",
+      "widened_upper": {
+        "('X', 'U')": "19/25",
+        "('X', 'V')": "7/25",
+        "('Y', 'U')": "7/25",
+        "('Y', 'V')": "7/25"
+      },
+      "world": "N5_NO_POSITIVITY_UNCOVERED_MASS"
+    },
+    "pooled_baseline_L1": {
+      "agrees_with_native": true,
+      "argument": "with a single source and single stratum, alpha = w/w = 1 and the target share is 1, so the standardized joint IS the source mapped joint; the distance must therefore be exactly zero",
+      "author_claimed_L1": "6/25",
+      "commission_reference": "pooled baseline L1 6/25 vs correct 0",
+      "construction": "one source, one target stratum, share 1, weight 1",
+      "independent_L1": "0",
+      "native_baseline_mapped_joint": {
+        "('X', 'U')": "5/16",
+        "('X', 'V')": "3/16",
+        "('Y', 'U')": "1/16",
+        "('Y', 'V')": "7/16"
+      },
+      "native_candidate": {
+        "('X', 'U')": "5/16",
+        "('X', 'V')": "3/16",
+        "('Y', 'U')": "1/16",
+        "('Y', 'V')": "7/16"
+      },
+      "origin": "PREREGISTERED_NEW_F6J",
+      "verdict": "CORRECT_VALUE_IS_0; the 6/25 figure is an arithmetic defect",
+      "world": "N1_SINGLE_SOURCE_IDENTITY"
+    }
+  }
+}

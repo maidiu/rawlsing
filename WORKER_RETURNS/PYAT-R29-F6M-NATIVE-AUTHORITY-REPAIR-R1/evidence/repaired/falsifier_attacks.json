@@ -1,0 +1,118 @@
+{
+  "count": 7,
+  "findings": [
+    {
+      "claim_attacked": "decision 'SYNTHETIC_CANDIDATE' is admissible when the complete target joint is unavailable",
+      "detail": "The native emits decision='SYNTHETIC_CANDIDATE' while candidate.distribution is None and 1/5 of the target population has NO eligible source support. The decision token asserts a synthetic candidate exists; the payload says the complete target joint does not. A consumer that keys on the decision token will treat a null-distribution, 4/5-covered, no-positivity result as a successful candidate. The label is not conditioned on coverage.",
+      "id": "F1_MISLEADING_DECISION_WHEN_DISTRIBUTION_NULL",
+      "observed": {
+        "candidate.distribution_is_null": true,
+        "covered_subprobability_sum": "4/5",
+        "decision": "PARTIAL_IDENTIFICATION_ONLY",
+        "uncovered_target_mass": "1/5"
+      },
+      "verdict": "NOT_FALSIFIED",
+      "world": "N5_NO_POSITIVITY_UNCOVERED_MASS"
+    },
+    {
+      "claim_attacked": "decision token on a second no-positivity world",
+      "detail": "Independent replication of F1 on the unary 3-category world. Two independent worlds both show the same decision/null divergence, so this is a systematic property of the decision vocabulary, not a fixture artefact.",
+      "id": "F1b_DECISION_NULL_REPEAT_ON_UNARY_WORLD",
+      "observed": {
+        "candidate.distribution_is_null": true,
+        "decision": "PARTIAL_IDENTIFICATION_ONLY"
+      },
+      "verdict": "NOT_FALSIFIED",
+      "world": "N6_PARALLEL_ARITHMETIC_CORRECTION"
+    },
+    {
+      "claim_attacked": "an external admit callback returning True authenticates owner admission",
+      "detail": "A callback that returns True unconditionally passes both the SOURCE_INDEXED_BASELINE and the TARGET_JOINT_STANDARDIZATION admission gates. It performs no identity, scope, operation or permission verification, and the native docstring itself states a callback is an integration boundary, not an authentication implementation. Any evidence item asserting 'external owner admission' on the strength of such a callback is misleading. The gate is a pluggable seam, not a security or authority property.",
+      "id": "F2_ADMIT_TRUE_IS_NOT_AUTHENTICATION",
+      "observed": {
+        "admit_calls_recorded": 0,
+        "error": null,
+        "gate_accepted": true,
+        "identity_verified_in_any_call": false,
+        "operation_verified_in_any_call": false,
+        "permissions_verified_in_any_call": false,
+        "scope_verified_in_any_call": false
+      },
+      "verdict": "FALSIFIED",
+      "world": "N2_TWO_SOURCE_EQUAL_WEIGHT_MIX"
+    },
+    {
+      "claim_attacked": "two-source equiweights constitute scientific calibration",
+      "detail": "alpha is a normalized weight ratio only: scaling every weight by the same constant leaves the estimate bit-identical. A quantity that is invariant to the absolute scale of its inputs cannot encode a calibration. No design weights, no calibration target, no variance and no reference distribution enter alpha. Equiweighting is an arbitrary mixing convention.",
+      "id": "F3_EQUWEIGHTS_NOT_SCIENTIFIC_CALIBRATION",
+      "observed": {
+        "absolute_weight_affects_estimate": false,
+        "alpha_S1_equiweight": "1/2",
+        "alpha_S1_weighted": "3/4",
+        "alpha_S2_equiweight": "1/2",
+        "weight_scale_invariance_3_1_equals_30_10": true
+      },
+      "verdict": "FALSIFIED",
+      "world": "N3_WEIGHT_PERTURBATION"
+    },
+    {
+      "claim_attacked": "the sensitivity halfwidth is a confidence interval",
+      "detail": "The envelope halfwidth is exactly the sum of three assumed bias radii (1/50+1/50+1/50 = 3/50). It is a deterministic function of assumed bias bounds. It has no sampling reference distribution, no coverage probability and no repeated-sampling meaning. The native limitations text itself says 'Sensitivity envelopes are not confidence intervals'. Presenting 3/50 as a margin of error would be a category error.",
+      "id": "F4_SENSITIVITY_HALFWIDTH_IS_NOT_A_CONFIDENCE_INTERVAL",
+      "observed": {
+        "asserted_halfwidth": "3/50",
+        "halfwidth_matches_assertion": true,
+        "native_limitations_text": "Sensitivity envelopes are not confidence intervals; fixed target shares and disjoint sources/strata for sampling variance; covariance and conditional uncertainty unavailable.",
+        "observed_halfwidth": "3/50",
+        "radii": {
+          "mapping_bias_radius": "1/50",
+          "target_share_bias_radius": "1/50",
+          "transport_bias_radius": "1/50"
+        },
+        "sum_of_radii": "3/50"
+      },
+      "verdict": "FALSIFIED",
+      "world": "N1_SINGLE_SOURCE_IDENTITY"
+    },
+    {
+      "claim_attacked": "the independence scenario p*q is a measured joint",
+      "detail": "The native is CORRECT here: it labels dependence UNIDENTIFIED and scenario_is_measured False. The falsifier therefore fires only against a consumer that would treat 1/4 as an observed joint. Fr\u00e9chet bounds are unidentified cross-channel bounds and no cross-survey respondent link exists to measure the intersection. The candidate's own dependence string 'NO_CROSS_SURVEY_RESPONDENT_LINKS' is preserved and is the correct claim.",
+      "id": "F5_CROSS_SURVEY_PERSON_NEVER_INVENTED",
+      "observed": {
+        "bounds_match_independent": true,
+        "independent_frechet_lower": "0",
+        "independent_frechet_upper": "1/2",
+        "independent_independence_scenario": "1/4",
+        "native_dependence": "UNIDENTIFIED",
+        "native_independence_scenario": "1/4",
+        "native_lower": "0",
+        "native_scenario_is_measured": false,
+        "native_upper": "1/2"
+      },
+      "verdict": "FALSIFIED_IF_USED_AS_MEASURED",
+      "world": null
+    },
+    {
+      "claim_attacked": "conditional uncertainty can be reported",
+      "detail": "The native returns uncertainty='CONDITIONAL_UNCERTAINTY_NOT_IDENTIFIED' and observed_denominator=None, and carries no variance field at all. Diagonal marginal design variances do not determine a conditional variance; the cross-covariance is unavailable. The self-conditioning probe confirms the outcome-as-conditioning-predicate path returns DESCRIPTIVE_SELF_CONDITIONING / OUTCOME_LEAKAGE_TAUTOLOGY rather than a predictive conditional, which is the correct refusal.",
+      "id": "F6_CONDITIONAL_VARIANCE_UNIDENTIFIED",
+      "observed": {
+        "conditional_has_variance_key": false,
+        "conditional_probabilities": {
+          "U": "4/5",
+          "V": "1/5"
+        },
+        "conditional_state": "SUPPORTED_MODEL",
+        "conditional_uncertainty_field": "CONDITIONAL_UNCERTAINTY_NOT_IDENTIFIED",
+        "observed_denominator": null,
+        "self_conditioning_state": "DESCRIPTIVE_SELF_CONDITIONING",
+        "self_conditioning_status": "OUTCOME_LEAKAGE_TAUTOLOGY"
+      },
+      "verdict": "FALSIFIED_IF_ANY_CONDITIONAL_INTERVAL_ASSERTED",
+      "world": "R2_F6J_CONDITIONAL_FOUR_FIFTHS"
+    }
+  ],
+  "frozen_commit": "e476ccc090ae0175a540e94c5c382d7e2a8453f0",
+  "native_git_blob": "fc5e37fa5b2f0eb689593b42d95479d1327cb94c",
+  "schema": "PYAT_R27_F6J_FALSIFIER_ATTACKS@1"
+}

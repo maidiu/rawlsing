@@ -1,0 +1,198 @@
+{
+  "branch": "agent/reviewer-pyat-r27-f6j-independent-heterogeneous-science-completion-r1",
+  "candidate_commit": "9aa0e7d3a0cf9ab7654ce8e3d5cb15060235a48f",
+  "independent_freeze_commit": "e476ccc090ae0175a540e94c5c382d7e2a8453f0",
+  "inherited_fixture": {
+    "byte_identical_to_candidate": true,
+    "candidate_repo_blob": "8e4902df9ef9e6fa63e8e28617543257b8d40b28",
+    "git_blob_sha1": "8e4902df9ef9e6fa63e8e28617543257b8d40b28",
+    "sha256": "8bf85df84ef11982f7e182bce307da4f2bca799762c8faba1247e5f673267b06",
+    "staged_path": "04_TESTS/run/WORKER_RETURNS/PYAT-R3-S03-F6-HETEROGENEOUS-SYNTHESIS-R1/repro/fixtures.py",
+    "transport_defect": "the candidate resolves this fixture through a git SYMLINK whose target is the machine-absolute path /Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-r23-f6c/WORKER_RETURNS/PYAT-R23-F6C-NATIVE-F6-COMPARATIVE-CONTINUATION-R1/00_SOURCES/S03; the repo alone therefore cannot reproduce the inherited suite. F6J stages the real fixture bytes instead."
+  },
+  "native_producer": {
+    "blob_matches_commission": true,
+    "byte_identical_to_candidate_05_NATIVE_STAGE": true,
+    "bytes": 22257,
+    "candidate_01_STAGED_NATIVE_blob": "fc5e37fa5b2f0eb689593b42d95479d1327cb94c",
+    "candidate_05_NATIVE_STAGE_blob": "fc5e37fa5b2f0eb689593b42d95479d1327cb94c",
+    "commit_1428c2e92bce1a49efd87378cb23df936d646dc5_verified": true,
+    "expected_commission_blob": "fc5e37fa5b2f0eb689593b42d95479d1327cb94c",
+    "git_blob_sha1": "fc5e37fa5b2f0eb689593b42d95479d1327cb94c",
+    "note": "the commission names S03FO@1428c2e92bce1a49efd87378cb23df936d646dc5 with blob fc5e37fa5b2f0eb689593b42d95479d1327cb94c and warns that the older 182cc797 differs; only the fc5e37fa bytes are executed here",
+    "sha256": "ef76ee4f48cc74cc38e0dcf55a3190362d4b55975d3a367ddb43fbadd43a9869",
+    "staged_path": "01_STAGED_NATIVE/rawlsing_next/pre553_heterogeneous_synthesis.py"
+  },
+  "prior_reviewer_commit": "6d99650bed01eed8365ec38bd888741a88888a45",
+  "repository": "maidiu/rawlsing",
+  "role": "new distinct independent F6 scientific reviewer (F6J)",
+  "schema": "PYAT_R27_F6J_SOURCE_IDENTITIES@1",
+  "sealed_startup": "09a87efc87110cc50c129b02033730ed8feca4e8",
+  "semantic_hash_module": {
+    "byte_identical_to_repo": true,
+    "git_blob_sha1": "a61365b994e5c3c50de0f598fcf40e90abf757b6",
+    "repo_blob_at_startup": "a61365b994e5c3c50de0f598fcf40e90abf757b6",
+    "sha256": "9cd1d71440a7e8c1861dda73274529e07211edc14335583e93ad91c0833e9ab4",
+    "staged_path": "01_STAGED_NATIVE/rawlsing_next/pre553_empirical_objects.py"
+  },
+  "staged_file_count": 25,
+  "staged_file_ledger": [
+    {
+      "bytes": 19,
+      "git_blob_sha1": "7a60b85e148f80966a550e5ab6a762a907c69ca6",
+      "path": ".gitignore",
+      "sha256": "862263fa1f46c20f0d1e4dac5ffcc75abd55c08211b2c3864c5f8764b9d87793"
+    },
+    {
+      "bytes": 10565,
+      "git_blob_sha1": "831a88eff8598f1a1669474fc1651259ed739ed2",
+      "path": "00_VERDICT.md",
+      "sha256": "6e40c511469c3837f3bf305ae298d71320a4c7c429d14718718c1c4623eb3d05"
+    },
+    {
+      "bytes": 42711,
+      "git_blob_sha1": "a61365b994e5c3c50de0f598fcf40e90abf757b6",
+      "path": "01_STAGED_NATIVE/rawlsing_next/pre553_empirical_objects.py",
+      "sha256": "9cd1d71440a7e8c1861dda73274529e07211edc14335583e93ad91c0833e9ab4"
+    },
+    {
+      "bytes": 22257,
+      "git_blob_sha1": "fc5e37fa5b2f0eb689593b42d95479d1327cb94c",
+      "path": "01_STAGED_NATIVE/rawlsing_next/pre553_heterogeneous_synthesis.py",
+      "sha256": "ef76ee4f48cc74cc38e0dcf55a3190362d4b55975d3a367ddb43fbadd43a9869"
+    },
+    {
+      "bytes": 98991,
+      "git_blob_sha1": "ef56d78d585b9cdb4ee2f0d4119b47edbb2c3a85",
+      "path": "02_FROZEN/01_NEW_FROZEN_INDEPENDENT_WORLDS.json",
+      "sha256": "a3c0457f1020df4aa55770e0e94e037ff4a84527e921db636a94e5b8967f9880"
+    },
+    {
+      "bytes": 7690,
+      "git_blob_sha1": "2e0ff1ccbba1079048b952a46043252adb2f0b84",
+      "path": "02_RATIONAL_RECOMPUTATION.json",
+      "sha256": "a0ecc64c878219449865f1b65bc5f2f30daa01dd2080899df6d4a0f0c9a4eab2"
+    },
+    {
+      "bytes": 9140,
+      "git_blob_sha1": "a5cf2c22c167702a0f0dc87c7a855783d2b95833",
+      "path": "03_NATIVE_TESTS_AND_CONSUMER_ATTACKS.md",
+      "sha256": "74dd026cd2a4054e2180c22372d0ba61e930b209834e002550dfd8de66397ac9"
+    },
+    {
+      "bytes": 10030,
+      "git_blob_sha1": "7c0a429932f8d7d9c348d21aede49b1a7a2a6043",
+      "path": "03_SCRIPTS/admission_and_consumer_attacks.py",
+      "sha256": "1c4ade38bfb2c214e99446ccf92e01629003508c6b6c75dc5dbf038aa0bcdebc"
+    },
+    {
+      "bytes": 6077,
+      "git_blob_sha1": "d0befd9c8d4cac052253acf63fb529bde0343a6f",
+      "path": "03_SCRIPTS/execute_native_vs_frozen.py",
+      "sha256": "9ed9da9a0f3fb33fccdf2b8de583fc33f252a1e6ba238b1e653d5eabf7b096f2"
+    },
+    {
+      "bytes": 3588,
+      "git_blob_sha1": "2fdd6868a74566a378a4ab37ce057886cea9205e",
+      "path": "03_SCRIPTS/expectations_engine.py",
+      "sha256": "90b74a7287fca76638d6d6676c9c10be8516079bd283d9cb43fa0a7db9f32e0e"
+    },
+    {
+      "bytes": 12690,
+      "git_blob_sha1": "36dcd2b2a00346bf1931378ae3b4d670066846c0",
+      "path": "03_SCRIPTS/falsifier_attacks.py",
+      "sha256": "1d247152125fb3795192fb16a8b470c94a95ca0a9e122e33ca7c71f6c9d4e9ef"
+    },
+    {
+      "bytes": 25304,
+      "git_blob_sha1": "f081718b7404226c37efef6e59bb7b48a877fe57",
+      "path": "03_SCRIPTS/freeze_new_worlds.py",
+      "sha256": "9109ca8f59d762a12b6f9d9f7ce533023efda517c5dc780333bdf64131a7000c"
+    },
+    {
+      "bytes": 12053,
+      "git_blob_sha1": "9882cd3e55c5cfff8a7f3f59d25dc1275d2b8b4d",
+      "path": "03_SCRIPTS/rational_recomputation.py",
+      "sha256": "161aacf0320a0d723a269c238930cc689cb9cdceb1c59dfd6d7ef60697bbbc24"
+    },
+    {
+      "bytes": 6596,
+      "git_blob_sha1": "c12e42858b6776b5ef586d431c1663251ce69dad",
+      "path": "03_SCRIPTS/run_all_courts.py",
+      "sha256": "b988417f319aa626bbe61d05aef08e87a7d0b179566013c8099b0a11d2e76350"
+    },
+    {
+      "bytes": 7925,
+      "git_blob_sha1": "a3309a04f43f8bd85b82402bef9ab052111bef14",
+      "path": "03_SCRIPTS/source_identity.py",
+      "sha256": "813f8fc9ae9209a917a973997a64641877dc3d2ed5d078a707315f08ac4a38bd"
+    },
+    {
+      "bytes": 7122,
+      "git_blob_sha1": "8716bb974970c72a9745a397816444675002dbb7",
+      "path": "03_SCRIPTS/world_builders.py",
+      "sha256": "f03d3c5ae2347d180cea5658de31c8f99d12a7effbbb168a5b8c07fc0d0cda79"
+    },
+    {
+      "bytes": 7393,
+      "git_blob_sha1": "c642517bacb752234b533c786f80a9db199cec43",
+      "path": "04_METHOD_DECISION.md",
+      "sha256": "fef5b3edad882845c8d3346fc6022d76a5fbf76128f2103ea528e6d8a020c769"
+    },
+    {
+      "bytes": 11803,
+      "git_blob_sha1": "85d142c0e431457545ed1788e936614e01585525",
+      "path": "04_TESTS/01_FROZEN_SOURCEFREE_STUDY_WORLDS.json",
+      "sha256": "8bac2980ebc55326511d0fcc87c0ed94b95216eb20a4783de7f656344b280b1e"
+    },
+    {
+      "bytes": 9487,
+      "git_blob_sha1": "52c3dfe30dd807d79a67761a37c7d79214caacdd",
+      "path": "04_TESTS/candidate_transport/f6c_worlds.py",
+      "sha256": "f1a06c8dfb3ae77b4b11b41dd589132b1c55ce3fa02f71fec4487d1c1b1dbc9a"
+    },
+    {
+      "bytes": 23831,
+      "git_blob_sha1": "3cbb15f7a7d0a2edea09c2ee26709c3afb769344",
+      "path": "04_TESTS/candidate_transport/test_f6c_frozen_court.py",
+      "sha256": "213c04c4e9c16fde7192028dfb7c08e1229df840a941cd796b735c9f76b9148f"
+    },
+    {
+      "bytes": 12606,
+      "git_blob_sha1": "07f405033e4703b1a0ddc710cffd529383561d1f",
+      "path": "04_TESTS/candidate_transport/test_pre553_heterogeneous_synthesis.py",
+      "sha256": "d00fc77583d0e3fe042c9d948936e6789838dbf3be7764e6ed42bb3ad821d837"
+    },
+    {
+      "bytes": 4895,
+      "git_blob_sha1": "8e4902df9ef9e6fa63e8e28617543257b8d40b28",
+      "path": "04_TESTS/run/WORKER_RETURNS/PYAT-R3-S03-F6-HETEROGENEOUS-SYNTHESIS-R1/repro/fixtures.py",
+      "sha256": "8bf85df84ef11982f7e182bce307da4f2bca799762c8faba1247e5f673267b06"
+    },
+    {
+      "bytes": 12606,
+      "git_blob_sha1": "07f405033e4703b1a0ddc710cffd529383561d1f",
+      "path": "04_TESTS/run/rawlsing_next/tests/test_pre553_heterogeneous_synthesis.py",
+      "sha256": "d00fc77583d0e3fe042c9d948936e6789838dbf3be7764e6ed42bb3ad821d837"
+    },
+    {
+      "bytes": 23905,
+      "git_blob_sha1": "eb37a82991480ec57ee547efc63a1090d0306e3d",
+      "path": "04_TESTS/test_f6j_adversarial.py",
+      "sha256": "f79effeb66ae72ab7d9026bcfb77db6d5bfeeb851f1260de32293524de71e513"
+    },
+    {
+      "bytes": 1931,
+      "git_blob_sha1": "e7a6bdd7f6da11d475abe96a0b816848878e541f",
+      "path": "environment_passport.json",
+      "sha256": "57a5351c82d505d3030342b7146d63de58bda4b4fb7b65ffaa26bf63996a2860"
+    }
+  ],
+  "staged_total_bytes": 391215,
+  "transported_test_blobs": {
+    "01_FROZEN_SOURCEFREE_STUDY_WORLDS.json": "85d142c0e431457545ed1788e936614e01585525",
+    "f6c_worlds.py": "52c3dfe30dd807d79a67761a37c7d79214caacdd",
+    "test_f6c_frozen_court.py": "3cbb15f7a7d0a2edea09c2ee26709c3afb769344",
+    "test_pre553_heterogeneous_synthesis.py": "07f405033e4703b1a0ddc710cffd529383561d1f"
+  }
+}

@@ -1,0 +1,275 @@
+{
+  "schema": "F6M_COLD_RELOCATION@1",
+  "repo_present": false,
+  "symlink_count": 0,
+  "path_contains_spaces": true,
+  "temporary_stage_removed_on_exit": true,
+  "runs": [
+    {
+      "argv": [
+        "/usr/local/bin/python3",
+        "-B",
+        "$COLD_RETURN/scripts/build_candidate.py"
+      ],
+      "exit": 0,
+      "stdout": "Built candidate/rawlsing_next\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/usr/local/bin/python3",
+        "-B",
+        "$COLD_RETURN/scripts/run_courts.py",
+        "compat"
+      ],
+      "exit": 0,
+      "stdout": "consumer20 {'tests': 20, 'failures': 0, 'errors': 0, 'skipped': 0} exit 0\ninherited35 {'tests': 35, 'failures': 0, 'errors': 0, 'skipped': 0} exit 0\nf6c57 {'tests': 57, 'failures': 0, 'errors': 0, 'skipped': 0} exit 0\nf6j53 {'tests': 53, 'failures': 0, 'errors': 0, 'skipped': 0} exit 0\nf6l26 {'tests': 26, 'failures': 0, 'errors': 0, 'skipped': 0} exit 0\nrational82 script exit 0\nrational_analysis script exit 0\nf6j_falsifiers script exit 0\nf6j_admission script exit 0\n",
+      "stderr": ""
+    }
+  ],
+  "courts": [
+    {
+      "name": "consumer20",
+      "kind": "pytest",
+      "exit": 0,
+      "argv": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-c",
+        "import sys,runpy,json,hashlib,atexit\nfrom pathlib import Path\nstage,receipt,kind,path,*args=sys.argv[1:]\nsys.path.insert(0,stage)\nimport rawlsing_next.pre553_heterogeneous_synthesis as m\nimport rawlsing_next.pre553_empirical_objects as e\nroot=Path(stage).resolve().parents[4]\ndef identity():\n out={}\n for module in (m,e):\n  p=Path(module.__file__).resolve();raw=p.read_bytes()\n  out[module.__name__]={\"module_file\":str(p).replace(str(root),\"$RETURN\"),\"sha256\":hashlib.sha256(raw).hexdigest(),\"git_blob\":hashlib.sha1(b'blob '+str(len(raw)).encode()+bytes([0])+raw).hexdigest()}\n Path(receipt).write_text(json.dumps(out,indent=2)+'\\n')\natexit.register(identity)\nif kind=='pytest':\n import pytest\n sys.exit(pytest.main(args+[path]))\nelse:\n sys.argv=[path]+args\n runpy.run_path(path,run_name='__main__')\n",
+        "$RETURN/runtime/compat/F6C/05_NATIVE_STAGE",
+        "$RETURN/evidence/compat/consumer20.imports.json",
+        "pytest",
+        "$RETURN/tests/test_consumer_repair.py",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--import-mode=importlib",
+        "--rootdir",
+        "$RETURN/runtime/compat",
+        "--junitxml=$RETURN/evidence/compat/consumer20.xml"
+      ],
+      "cwd": "$RETURN",
+      "log_sha256": "614c77f9cec888bb4212f8b259f51f5090c9bd98d27f0bc1164d51eeb436c6b0",
+      "log": "evidence/compat/consumer20.log",
+      "imports": "evidence/compat/consumer20.imports.json",
+      "counts": {
+        "tests": 20,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "failures": []
+    },
+    {
+      "name": "inherited35",
+      "kind": "pytest",
+      "exit": 0,
+      "argv": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-c",
+        "import sys,runpy,json,hashlib,atexit\nfrom pathlib import Path\nstage,receipt,kind,path,*args=sys.argv[1:]\nsys.path.insert(0,stage)\nimport rawlsing_next.pre553_heterogeneous_synthesis as m\nimport rawlsing_next.pre553_empirical_objects as e\nroot=Path(stage).resolve().parents[4]\ndef identity():\n out={}\n for module in (m,e):\n  p=Path(module.__file__).resolve();raw=p.read_bytes()\n  out[module.__name__]={\"module_file\":str(p).replace(str(root),\"$RETURN\"),\"sha256\":hashlib.sha256(raw).hexdigest(),\"git_blob\":hashlib.sha1(b'blob '+str(len(raw)).encode()+bytes([0])+raw).hexdigest()}\n Path(receipt).write_text(json.dumps(out,indent=2)+'\\n')\natexit.register(identity)\nif kind=='pytest':\n import pytest\n sys.exit(pytest.main(args+[path]))\nelse:\n sys.argv=[path]+args\n runpy.run_path(path,run_name='__main__')\n",
+        "$RETURN/runtime/compat/F6C/05_NATIVE_STAGE",
+        "$RETURN/evidence/compat/inherited35.imports.json",
+        "pytest",
+        "$RETURN/runtime/compat/F6J/04_TESTS/run/rawlsing_next/tests/test_pre553_heterogeneous_synthesis.py",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--import-mode=importlib",
+        "--rootdir",
+        "$RETURN/runtime/compat",
+        "--junitxml=$RETURN/evidence/compat/inherited35.xml"
+      ],
+      "cwd": "$RETURN",
+      "log_sha256": "47504dd7b629103e06eb1a9f8daca0e7464c4ea7a23dfd867b4240ba76d92505",
+      "log": "evidence/compat/inherited35.log",
+      "imports": "evidence/compat/inherited35.imports.json",
+      "counts": {
+        "tests": 35,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "failures": []
+    },
+    {
+      "name": "f6c57",
+      "kind": "pytest",
+      "exit": 0,
+      "argv": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-c",
+        "import sys,runpy,json,hashlib,atexit\nfrom pathlib import Path\nstage,receipt,kind,path,*args=sys.argv[1:]\nsys.path.insert(0,stage)\nimport rawlsing_next.pre553_heterogeneous_synthesis as m\nimport rawlsing_next.pre553_empirical_objects as e\nroot=Path(stage).resolve().parents[4]\ndef identity():\n out={}\n for module in (m,e):\n  p=Path(module.__file__).resolve();raw=p.read_bytes()\n  out[module.__name__]={\"module_file\":str(p).replace(str(root),\"$RETURN\"),\"sha256\":hashlib.sha256(raw).hexdigest(),\"git_blob\":hashlib.sha1(b'blob '+str(len(raw)).encode()+bytes([0])+raw).hexdigest()}\n Path(receipt).write_text(json.dumps(out,indent=2)+'\\n')\natexit.register(identity)\nif kind=='pytest':\n import pytest\n sys.exit(pytest.main(args+[path]))\nelse:\n sys.argv=[path]+args\n runpy.run_path(path,run_name='__main__')\n",
+        "$RETURN/runtime/compat/F6C/05_NATIVE_STAGE",
+        "$RETURN/evidence/compat/f6c57.imports.json",
+        "pytest",
+        "$RETURN/runtime/compat/F6C/02_TESTS/test_f6c_frozen_court.py",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--import-mode=importlib",
+        "--rootdir",
+        "$RETURN/runtime/compat",
+        "--junitxml=$RETURN/evidence/compat/f6c57.xml"
+      ],
+      "cwd": "$RETURN",
+      "log_sha256": "c163e37b51d66a544fb067328c0c2778971eea86d86d4241398b579b18ef73e3",
+      "log": "evidence/compat/f6c57.log",
+      "imports": "evidence/compat/f6c57.imports.json",
+      "counts": {
+        "tests": 57,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "failures": []
+    },
+    {
+      "name": "f6j53",
+      "kind": "pytest",
+      "exit": 0,
+      "argv": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-c",
+        "import sys,runpy,json,hashlib,atexit\nfrom pathlib import Path\nstage,receipt,kind,path,*args=sys.argv[1:]\nsys.path.insert(0,stage)\nimport rawlsing_next.pre553_heterogeneous_synthesis as m\nimport rawlsing_next.pre553_empirical_objects as e\nroot=Path(stage).resolve().parents[4]\ndef identity():\n out={}\n for module in (m,e):\n  p=Path(module.__file__).resolve();raw=p.read_bytes()\n  out[module.__name__]={\"module_file\":str(p).replace(str(root),\"$RETURN\"),\"sha256\":hashlib.sha256(raw).hexdigest(),\"git_blob\":hashlib.sha1(b'blob '+str(len(raw)).encode()+bytes([0])+raw).hexdigest()}\n Path(receipt).write_text(json.dumps(out,indent=2)+'\\n')\natexit.register(identity)\nif kind=='pytest':\n import pytest\n sys.exit(pytest.main(args+[path]))\nelse:\n sys.argv=[path]+args\n runpy.run_path(path,run_name='__main__')\n",
+        "$RETURN/runtime/compat/F6C/05_NATIVE_STAGE",
+        "$RETURN/evidence/compat/f6j53.imports.json",
+        "pytest",
+        "$RETURN/runtime/compat/F6J/04_TESTS/test_f6j_adversarial.py",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--import-mode=importlib",
+        "--rootdir",
+        "$RETURN/runtime/compat",
+        "--junitxml=$RETURN/evidence/compat/f6j53.xml"
+      ],
+      "cwd": "$RETURN",
+      "log_sha256": "df6c2755df5f6ebd4b387c103289425300993ba434e85132699aaf9c5344b99e",
+      "log": "evidence/compat/f6j53.log",
+      "imports": "evidence/compat/f6j53.imports.json",
+      "counts": {
+        "tests": 53,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "failures": []
+    },
+    {
+      "name": "f6l26",
+      "kind": "pytest",
+      "exit": 0,
+      "argv": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-c",
+        "import sys,runpy,json,hashlib,atexit\nfrom pathlib import Path\nstage,receipt,kind,path,*args=sys.argv[1:]\nsys.path.insert(0,stage)\nimport rawlsing_next.pre553_heterogeneous_synthesis as m\nimport rawlsing_next.pre553_empirical_objects as e\nroot=Path(stage).resolve().parents[4]\ndef identity():\n out={}\n for module in (m,e):\n  p=Path(module.__file__).resolve();raw=p.read_bytes()\n  out[module.__name__]={\"module_file\":str(p).replace(str(root),\"$RETURN\"),\"sha256\":hashlib.sha256(raw).hexdigest(),\"git_blob\":hashlib.sha1(b'blob '+str(len(raw)).encode()+bytes([0])+raw).hexdigest()}\n Path(receipt).write_text(json.dumps(out,indent=2)+'\\n')\natexit.register(identity)\nif kind=='pytest':\n import pytest\n sys.exit(pytest.main(args+[path]))\nelse:\n sys.argv=[path]+args\n runpy.run_path(path,run_name='__main__')\n",
+        "$RETURN/runtime/compat/F6C/05_NATIVE_STAGE",
+        "$RETURN/evidence/compat/f6l26.imports.json",
+        "pytest",
+        "$RETURN/runtime/compat/F6L/02_PHASE_A/04_TESTS/test_f6l_phase_a.py",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--import-mode=importlib",
+        "--rootdir",
+        "$RETURN/runtime/compat",
+        "--junitxml=$RETURN/evidence/compat/f6l26.xml"
+      ],
+      "cwd": "$RETURN",
+      "log_sha256": "59df1499a1509feb6c938e365f41cd7e1a5ee6a412f20daccca4e61d61f04dee",
+      "log": "evidence/compat/f6l26.log",
+      "imports": "evidence/compat/f6l26.imports.json",
+      "counts": {
+        "tests": 26,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "failures": []
+    },
+    {
+      "name": "rational82",
+      "kind": "script",
+      "exit": 0,
+      "argv": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-c",
+        "import sys,runpy,json,hashlib,atexit\nfrom pathlib import Path\nstage,receipt,kind,path,*args=sys.argv[1:]\nsys.path.insert(0,stage)\nimport rawlsing_next.pre553_heterogeneous_synthesis as m\nimport rawlsing_next.pre553_empirical_objects as e\nroot=Path(stage).resolve().parents[4]\ndef identity():\n out={}\n for module in (m,e):\n  p=Path(module.__file__).resolve();raw=p.read_bytes()\n  out[module.__name__]={\"module_file\":str(p).replace(str(root),\"$RETURN\"),\"sha256\":hashlib.sha256(raw).hexdigest(),\"git_blob\":hashlib.sha1(b'blob '+str(len(raw)).encode()+bytes([0])+raw).hexdigest()}\n Path(receipt).write_text(json.dumps(out,indent=2)+'\\n')\natexit.register(identity)\nif kind=='pytest':\n import pytest\n sys.exit(pytest.main(args+[path]))\nelse:\n sys.argv=[path]+args\n runpy.run_path(path,run_name='__main__')\n",
+        "$RETURN/runtime/compat/F6C/05_NATIVE_STAGE",
+        "$RETURN/evidence/compat/rational82.imports.json",
+        "script",
+        "$RETURN/runtime/compat/F6J/03_SCRIPTS/execute_native_vs_frozen.py"
+      ],
+      "cwd": "$RETURN",
+      "log_sha256": "dd39adfcb9e4692f38f7bb8f6d52b4f9790e8326ab368741316ad47a76bfd605",
+      "log": "evidence/compat/rational82.log",
+      "imports": "evidence/compat/rational82.imports.json"
+    },
+    {
+      "name": "rational_analysis",
+      "kind": "script",
+      "exit": 0,
+      "argv": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-c",
+        "import sys,runpy,json,hashlib,atexit\nfrom pathlib import Path\nstage,receipt,kind,path,*args=sys.argv[1:]\nsys.path.insert(0,stage)\nimport rawlsing_next.pre553_heterogeneous_synthesis as m\nimport rawlsing_next.pre553_empirical_objects as e\nroot=Path(stage).resolve().parents[4]\ndef identity():\n out={}\n for module in (m,e):\n  p=Path(module.__file__).resolve();raw=p.read_bytes()\n  out[module.__name__]={\"module_file\":str(p).replace(str(root),\"$RETURN\"),\"sha256\":hashlib.sha256(raw).hexdigest(),\"git_blob\":hashlib.sha1(b'blob '+str(len(raw)).encode()+bytes([0])+raw).hexdigest()}\n Path(receipt).write_text(json.dumps(out,indent=2)+'\\n')\natexit.register(identity)\nif kind=='pytest':\n import pytest\n sys.exit(pytest.main(args+[path]))\nelse:\n sys.argv=[path]+args\n runpy.run_path(path,run_name='__main__')\n",
+        "$RETURN/runtime/compat/F6C/05_NATIVE_STAGE",
+        "$RETURN/evidence/compat/rational_analysis.imports.json",
+        "script",
+        "$RETURN/runtime/compat/F6J/03_SCRIPTS/rational_recomputation.py"
+      ],
+      "cwd": "$RETURN",
+      "log_sha256": "c46281fc46ca26566627632f78222bc5b11f25f9084aa53c399c6f4bcccdca64",
+      "log": "evidence/compat/rational_analysis.log",
+      "imports": "evidence/compat/rational_analysis.imports.json"
+    },
+    {
+      "name": "f6j_falsifiers",
+      "kind": "script",
+      "exit": 0,
+      "argv": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-c",
+        "import sys,runpy,json,hashlib,atexit\nfrom pathlib import Path\nstage,receipt,kind,path,*args=sys.argv[1:]\nsys.path.insert(0,stage)\nimport rawlsing_next.pre553_heterogeneous_synthesis as m\nimport rawlsing_next.pre553_empirical_objects as e\nroot=Path(stage).resolve().parents[4]\ndef identity():\n out={}\n for module in (m,e):\n  p=Path(module.__file__).resolve();raw=p.read_bytes()\n  out[module.__name__]={\"module_file\":str(p).replace(str(root),\"$RETURN\"),\"sha256\":hashlib.sha256(raw).hexdigest(),\"git_blob\":hashlib.sha1(b'blob '+str(len(raw)).encode()+bytes([0])+raw).hexdigest()}\n Path(receipt).write_text(json.dumps(out,indent=2)+'\\n')\natexit.register(identity)\nif kind=='pytest':\n import pytest\n sys.exit(pytest.main(args+[path]))\nelse:\n sys.argv=[path]+args\n runpy.run_path(path,run_name='__main__')\n",
+        "$RETURN/runtime/compat/F6C/05_NATIVE_STAGE",
+        "$RETURN/evidence/compat/f6j_falsifiers.imports.json",
+        "script",
+        "$RETURN/runtime/compat/F6J/03_SCRIPTS/falsifier_attacks.py"
+      ],
+      "cwd": "$RETURN",
+      "log_sha256": "00f90723d2faf91a07fdf93c09dc7f3841e777f96c1c90e837bb8932a8b2e53f",
+      "log": "evidence/compat/f6j_falsifiers.log",
+      "imports": "evidence/compat/f6j_falsifiers.imports.json"
+    },
+    {
+      "name": "f6j_admission",
+      "kind": "script",
+      "exit": 0,
+      "argv": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-c",
+        "import sys,runpy,json,hashlib,atexit\nfrom pathlib import Path\nstage,receipt,kind,path,*args=sys.argv[1:]\nsys.path.insert(0,stage)\nimport rawlsing_next.pre553_heterogeneous_synthesis as m\nimport rawlsing_next.pre553_empirical_objects as e\nroot=Path(stage).resolve().parents[4]\ndef identity():\n out={}\n for module in (m,e):\n  p=Path(module.__file__).resolve();raw=p.read_bytes()\n  out[module.__name__]={\"module_file\":str(p).replace(str(root),\"$RETURN\"),\"sha256\":hashlib.sha256(raw).hexdigest(),\"git_blob\":hashlib.sha1(b'blob '+str(len(raw)).encode()+bytes([0])+raw).hexdigest()}\n Path(receipt).write_text(json.dumps(out,indent=2)+'\\n')\natexit.register(identity)\nif kind=='pytest':\n import pytest\n sys.exit(pytest.main(args+[path]))\nelse:\n sys.argv=[path]+args\n runpy.run_path(path,run_name='__main__')\n",
+        "$RETURN/runtime/compat/F6C/05_NATIVE_STAGE",
+        "$RETURN/evidence/compat/f6j_admission.imports.json",
+        "script",
+        "$RETURN/runtime/compat/F6J/03_SCRIPTS/admission_and_consumer_attacks.py"
+      ],
+      "cwd": "$RETURN",
+      "log_sha256": "bd275529da97cdec23d4750f8b809bc66b51261bf256af36f6bc619e1ec67463",
+      "log": "evidence/compat/f6j_admission.log",
+      "imports": "evidence/compat/f6j_admission.imports.json"
+    }
+  ],
+  "rational_comparisons": 82,
+  "producer_sha256": "2930b5cd15c899146e9552b2e6b0efa3fc5835e57e58a6c16d756093e21d3871"
+}

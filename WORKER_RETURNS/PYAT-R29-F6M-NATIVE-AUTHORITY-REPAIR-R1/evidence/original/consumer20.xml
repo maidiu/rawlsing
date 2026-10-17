@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="17" skipped="0" tests="20" time="0.399" timestamp="2026-10-17T15:19:31.498617-04:00" hostname="MacBook-Pro.lan"><testcase classname="" name="test_unchanged_world_a_value_reading_positive" time="0.006"><failure message="TypeError: conditional() got an unexpected keyword argument 'use'">def test_unchanged_world_a_value_reading_positive():
+     out=M.synthesize(*C.world_a())
+&gt;    receipt=point_consumer(out,{'material_security':'secure'},'employment_position')
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_consumer_repair.py:29: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+bundle = {'baseline': [{'design_uncertainty': 'EXTERNAL_DESIGN_VARIANCE_ONLY_OR_UNKNOWN', 'evidence_mode': 'TRANSFORMED', 'inpu...'S03_CONSUMER_REQUIREMENTS@1', 'content_hash': 'fb5f2815b994bde47cb58e13f505ad9790486f6c0fe74f2a56142af42c00a948', ...}
+conditions = {'material_security': 'secure'}, outcome = 'employment_position'
+
+    def point_consumer(bundle,conditions,outcome,*,real_use=False):
+     # A genuine decision-only gate cannot turn a partial artifact into a point.
+     if bundle['decision']=='PARTIAL_IDENTIFICATION_ONLY':return {'state':'REFUSED_PARTIAL'}
+&gt;    return M.conditional(bundle,conditions,outcome,use='REAL_USE' if real_use else 'SOURCEFREE_EXPERIMENT')
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E    TypeError: conditional() got an unexpected keyword argument 'use'
+
+tests/test_consumer_repair.py:23: TypeError</failure></testcase><testcase classname="" name="test_null_joint_refused_by_decision_and_value_consumers[P1_ORIGINAL_UNCOVERED_WORLD]" time="0.005"><failure message="AssertionError: assert 'SYNTHETIC_CANDIDATE' == 'PARTIAL_IDENTIFICATION_ONLY'&#10;  &#10;  - PARTIAL_IDENTIFICATION_ONLY&#10;  + SYNTHETIC_CANDIDATE">case = 'P1_ORIGINAL_UNCOVERED_WORLD'
+
+    @pytest.mark.parametrize('case',['P1_ORIGINAL_UNCOVERED_WORLD','P2_NOVEL_2X2_NO_POSITIVITY','P3_NOVEL_3_CATEGORY_NO_POSITIVITY'])
+    def test_null_joint_refused_by_decision_and_value_consumers(case):
+     out=run(case);cand=out['candidate'];axis=cand['construct_topology']
+&gt;    assert out['decision']=='PARTIAL_IDENTIFICATION_ONLY'
+E    AssertionError: assert 'SYNTHETIC_CANDIDATE' == 'PARTIAL_IDENTIFICATION_ONLY'
+E      
+E      - PARTIAL_IDENTIFICATION_ONLY
+E      + SYNTHETIC_CANDIDATE
+
+tests/test_consumer_repair.py:39: AssertionError</failure></testcase><testcase classname="" name="test_null_joint_refused_by_decision_and_value_consumers[P2_NOVEL_2X2_NO_POSITIVITY]" time="0.005"><failure message="AssertionError: assert 'SYNTHETIC_CANDIDATE' == 'PARTIAL_IDENTIFICATION_ONLY'&#10;  &#10;  - PARTIAL_IDENTIFICATION_ONLY&#10;  + SYNTHETIC_CANDIDATE">case = 'P2_NOVEL_2X2_NO_POSITIVITY'
+
+    @pytest.mark.parametrize('case',['P1_ORIGINAL_UNCOVERED_WORLD','P2_NOVEL_2X2_NO_POSITIVITY','P3_NOVEL_3_CATEGORY_NO_POSITIVITY'])
+    def test_null_joint_refused_by_decision_and_value_consumers(case):
+     out=run(case);cand=out['candidate'];axis=cand['construct_topology']
+&gt;    assert out['decision']=='PARTIAL_IDENTIFICATION_ONLY'
+E    AssertionError: assert 'SYNTHETIC_CANDIDATE' == 'PARTIAL_IDENTIFICATION_ONLY'
+E      
+E      - PARTIAL_IDENTIFICATION_ONLY
+E      + SYNTHETIC_CANDIDATE
+
+tests/test_consumer_repair.py:39: AssertionError</failure></testcase><testcase classname="" name="test_null_joint_refused_by_decision_and_value_consumers[P3_NOVEL_3_CATEGORY_NO_POSITIVITY]" time="0.004"><failure message="AssertionError: assert 'SYNTHETIC_CANDIDATE' == 'PARTIAL_IDENTIFICATION_ONLY'&#10;  &#10;  - PARTIAL_IDENTIFICATION_ONLY&#10;  + SYNTHETIC_CANDIDATE">case = 'P3_NOVEL_3_CATEGORY_NO_POSITIVITY'
+
+    @pytest.mark.parametrize('case',['P1_ORIGINAL_UNCOVERED_WORLD','P2_NOVEL_2X2_NO_POSITIVITY','P3_NOVEL_3_CATEGORY_NO_POSITIVITY'])
+    def test_null_joint_refused_by_decision_and_value_consumers(case):
+     out=run(case);cand=out['candidate'];axis=cand['construct_topology']
+&gt;    assert out['decision']=='PARTIAL_IDENTIFICATION_ONLY'
+E    AssertionError: assert 'SYNTHETIC_CANDIDATE' == 'PARTIAL_IDENTIFICATION_ONLY'
+E      
+E      - PARTIAL_IDENTIFICATION_ONLY
+E      + SYNTHETIC_CANDIDATE
+
+tests/test_consumer_repair.py:39: AssertionError</failure></testcase><testcase classname="" name="test_origin_declarations_and_fake_callback_never_authenticate_real_use[flags0]" time="0.004"><failure message="KeyError: 'real_use_authorized'">flags = (True, True)
+
+    @pytest.mark.parametrize('flags',[(True,True),(False,False),(False,True),(True,False)])
+    def test_origin_declarations_and_fake_callback_never_authenticate_real_use(flags):
+     out=run('P11_GENUINE_COMPLETE_TARGET_POSITIVE',flags)
+     assert out['candidate']['distribution'] is not None # numerical feasibility survives
+&gt;    assert out['real_use_authorized'] is False
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+E    KeyError: 'real_use_authorized'
+
+tests/test_consumer_repair.py:50: KeyError</failure></testcase><testcase classname="" name="test_origin_declarations_and_fake_callback_never_authenticate_real_use[flags1]" time="0.005"><failure message="KeyError: 'real_use_authorized'">flags = (False, False)
+
+    @pytest.mark.parametrize('flags',[(True,True),(False,False),(False,True),(True,False)])
+    def test_origin_declarations_and_fake_callback_never_authenticate_real_use(flags):
+     out=run('P11_GENUINE_COMPLETE_TARGET_POSITIVE',flags)
+     assert out['candidate']['distribution'] is not None # numerical feasibility survives
+&gt;    assert out['real_use_authorized'] is False
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+E    KeyError: 'real_use_authorized'
+
+tests/test_consumer_repair.py:50: KeyError</failure></testcase><testcase classname="" name="test_origin_declarations_and_fake_callback_never_authenticate_real_use[flags2]" time="0.004"><failure message="KeyError: 'real_use_authorized'">flags = (False, True)
+
+    @pytest.mark.parametrize('flags',[(True,True),(False,False),(False,True),(True,False)])
+    def test_origin_declarations_and_fake_callback_never_authenticate_real_use(flags):
+     out=run('P11_GENUINE_COMPLETE_TARGET_POSITIVE',flags)
+     assert out['candidate']['distribution'] is not None # numerical feasibility survives
+&gt;    assert out['real_use_authorized'] is False
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+E    KeyError: 'real_use_authorized'
+
+tests/test_consumer_repair.py:50: KeyError</failure></testcase><testcase classname="" name="test_origin_declarations_and_fake_callback_never_authenticate_real_use[flags3]" time="0.004"><failure message="KeyError: 'real_use_authorized'">flags = (True, False)
+
+    @pytest.mark.parametrize('flags',[(True,True),(False,False),(False,True),(True,False)])
+    def test_origin_declarations_and_fake_callback_never_authenticate_real_use(flags):
+     out=run('P11_GENUINE_COMPLETE_TARGET_POSITIVE',flags)
+     assert out['candidate']['distribution'] is not None # numerical feasibility survives
+&gt;    assert out['real_use_authorized'] is False
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+E    KeyError: 'real_use_authorized'
+
+tests/test_consumer_repair.py:50: KeyError</failure></testcase><testcase classname="" name="test_mapped_values_and_provenance_are_bound_and_never_promoted[flags0]" time="0.004"><failure message="KeyError: 'authority_ceiling'">flags = (True, True)
+
+    @pytest.mark.parametrize('flags',[(True,True),(False,False),(True,False)])
+    def test_mapped_values_and_provenance_are_bound_and_never_promoted(flags):
+     out=run('P11_GENUINE_COMPLETE_TARGET_POSITIVE',flags)
+     nodes={n['node_id']:n for n in out['evidence_graph']};base={b['source_id']:b for b in out['baseline']}
+     rank={'UNVERIFIED':0,'TEST_ONLY':1}
+     for n in nodes.values():
+&gt;     assert all(rank[n['authority_ceiling']]&lt;=rank[nodes[p]['authority_ceiling']] for p in n['parents'])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_consumer_repair.py:62: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+.0 = &lt;list_iterator object at 0x103fd2b90&gt;
+
+&gt;   assert all(rank[n['authority_ceiling']]&lt;=rank[nodes[p]['authority_ceiling']] for p in n['parents'])
+                    ^^^^^^^^^^^^^^^^^^^^^^
+E   KeyError: 'authority_ceiling'
+
+tests/test_consumer_repair.py:62: KeyError</failure></testcase><testcase classname="" name="test_mapped_values_and_provenance_are_bound_and_never_promoted[flags1]" time="0.004"><failure message="KeyError: 'authority_ceiling'">flags = (False, False)
+
+    @pytest.mark.parametrize('flags',[(True,True),(False,False),(True,False)])
+    def test_mapped_values_and_provenance_are_bound_and_never_promoted(flags):
+     out=run('P11_GENUINE_COMPLETE_TARGET_POSITIVE',flags)
+     nodes={n['node_id']:n for n in out['evidence_graph']};base={b['source_id']:b for b in out['baseline']}
+     rank={'UNVERIFIED':0,'TEST_ONLY':1}
+     for n in nodes.values():
+&gt;     assert all(rank[n['authority_ceiling']]&lt;=rank[nodes[p]['authority_ceiling']] for p in n['parents'])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_consumer_repair.py:62: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+.0 = &lt;list_iterator object at 0x103cf59f0&gt;
+
+&gt;   assert all(rank[n['authority_ceiling']]&lt;=rank[nodes[p]['authority_ceiling']] for p in n['parents'])
+                    ^^^^^^^^^^^^^^^^^^^^^^
+E   KeyError: 'authority_ceiling'
+
+tests/test_consumer_repair.py:62: KeyError</failure></testcase><testcase classname="" name="test_mapped_values_and_provenance_are_bound_and_never_promoted[flags2]" time="0.004"><failure message="KeyError: 'authority_ceiling'">flags = (True, False)
+
+    @pytest.mark.parametrize('flags',[(True,True),(False,False),(True,False)])
+    def test_mapped_values_and_provenance_are_bound_and_never_promoted(flags):
+     out=run('P11_GENUINE_COMPLETE_TARGET_POSITIVE',flags)
+     nodes={n['node_id']:n for n in out['evidence_graph']};base={b['source_id']:b for b in out['baseline']}
+     rank={'UNVERIFIED':0,'TEST_ONLY':1}
+     for n in nodes.values():
+&gt;     assert all(rank[n['authority_ceiling']]&lt;=rank[nodes[p]['authority_ceiling']] for p in n['parents'])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_consumer_repair.py:62: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+.0 = &lt;list_iterator object at 0x103d01570&gt;
+
+&gt;   assert all(rank[n['authority_ceiling']]&lt;=rank[nodes[p]['authority_ceiling']] for p in n['parents'])
+                    ^^^^^^^^^^^^^^^^^^^^^^
+E   KeyError: 'authority_ceiling'
+
+tests/test_consumer_repair.py:62: KeyError</failure></testcase><testcase classname="" name="test_minor_cell_survives_aggregate_threshold_and_is_not_called_protected" time="0.005"><failure message="KeyError: 'minority_cell_protection'">def test_minor_cell_survives_aggregate_threshold_and_is_not_called_protected():
+     a=run('P8_DISTRIBUTED_SUPPORT_MIN_1',threshold=1)
+     b=run('P8_DISTRIBUTED_SUPPORT_MIN_5_CELL_NOT_GATE',threshold=5)
+     assert a['candidate']['distribution']==b['candidate']['distribution']
+     assert cells(b['candidate']['distribution'])[('LOW','NO')]==F(7,50)
+&gt;    assert b['candidate']['support']['Z1']['minority_cell_protection'] is False
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E    KeyError: 'minority_cell_protection'
+
+tests/test_consumer_repair.py:76: KeyError</failure></testcase><testcase classname="" name="test_dropped_source_retains_its_planned_share_as_unknown_and_preserves_native" time="0.003"><failure message="AssertionError: assert Fraction(1, 1) == Fraction(1, 2)&#10; +  where Fraction(1, 1) = F('1')&#10; +  and   Fraction(1, 2) = F(1, 2)">def test_dropped_source_retains_its_planned_share_as_unknown_and_preserves_native():
+     out=run('P8_DISTRIBUTED_SUPPORT_MIN_150_SOURCE_EXCLUDED',threshold=150)
+     c=out['candidate'];sup=c['support']['Z1']
+     assert sup['excluded_sources']==['S1']
+     assert [s['source_id'] for s in sup['sources']]==['S2']
+&gt;    assert F(sup['sources'][0]['conditional_source_weight'])==F(1,2)
+E    AssertionError: assert Fraction(1, 1) == Fraction(1, 2)
+E     +  where Fraction(1, 1) = F('1')
+E     +  and   Fraction(1, 2) = F(1, 2)
+
+tests/test_consumer_repair.py:85: AssertionError</failure></testcase><testcase classname="" name="test_forged_bundle_rights_and_recomputed_hash_do_not_issue_authority" time="0.005"><failure message="TypeError: conditional() got an unexpected keyword argument 'use'">def test_forged_bundle_rights_and_recomputed_hash_do_not_issue_authority():
+     out=run('P11_GENUINE_COMPLETE_TARGET_POSITIVE',(False,True))
+     out['owner_admission_status']='VERIFIED';out['real_use_authorized']=True
+     for n in out['evidence_graph']:n['authority_ceiling']='EXTERNAL_OWNER_ADMISSION_FOR_REAL_USE'
+     rehash(out)
+&gt;    assert M.conditional(out,{},out['candidate']['construct_topology'][-1],use='REAL_USE')['reason']=='UNVERIFIED_OWNER_ADMISSION'
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E    TypeError: conditional() got an unexpected keyword argument 'use'
+
+tests/test_consumer_repair.py:100: TypeError</failure></testcase><testcase classname="" name="test_partial_artifact_with_forged_complete_status_still_refuses_value_reading" time="0.006" /><testcase classname="" name="test_positive_mass_cannot_be_hidden_by_a_forged_non_null_distribution" time="0.008"><failure message="KeyError: 'reason'">def test_positive_mass_cannot_be_hidden_by_a_forged_non_null_distribution():
+     out=run('P1_ORIGINAL_UNCOVERED_WORLD');out['candidate']['distribution']=copy.deepcopy(out['candidate']['covered_subprobability']);rehash(out)
+&gt;    assert M.conditional(out,{},out['candidate']['construct_topology'][-1])['reason']=='NO_COMPLETE_TARGET_JOINT'
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E    KeyError: 'reason'
+
+tests/test_consumer_repair.py:110: KeyError</failure></testcase><testcase classname="" name="test_no_complete_support_still_preserves_all_native_cells" time="0.002" /><testcase classname="" name="test_missing_or_false_integration_callback_preserves_refusal" time="0.002" /><testcase classname="" name="test_backoff_graph_still_carries_complete_provenance_and_safe_ceiling" time="0.003"><failure message="KeyError: 'real_use_authorized'">def test_backoff_graph_still_carries_complete_provenance_and_safe_ceiling():
+     t,s,p=C.world_a();t['geography']='OTHER'
+     out=M.synthesize(t,s,p)
+     assert out['candidate'] is None
+     assert out['decision']=='SOURCE_INDEXED_BACKOFF'
+&gt;    assert out['real_use_authorized'] is False
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+E    KeyError: 'real_use_authorized'
+
+tests/test_consumer_repair.py:133: KeyError</failure></testcase><testcase classname="" name="test_unknown_use_scope_is_not_a_permission_bypass" time="0.005"><failure message="TypeError: conditional() got an unexpected keyword argument 'use'">def test_unknown_use_scope_is_not_a_permission_bypass():
+     out=M.synthesize(*C.world_a())
+&gt;    with pytest.raises(M.SynthesisError):M.conditional(out,{},out['candidate']['construct_topology'][-1],use='OWNER_APPROVED')
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E    TypeError: conditional() got an unexpected keyword argument 'use'
+
+tests/test_consumer_repair.py:139: TypeError</failure></testcase></testsuite></testsuites>

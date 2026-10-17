@@ -1,0 +1,31 @@
+exit=1
+--- stdout ---
+F............F............                                               [100%]
+=================================== FAILURES ===================================
+___________ test_native_producer_is_the_pinned_corrected_s03fo_blob ____________
+
+    def test_native_producer_is_the_pinned_corrected_s03fo_blob():
+        raw = Path(PRODUCER.__file__).read_bytes()
+        blob = hashlib.sha1(b"blob " + str(len(raw)).encode() + b"\0" + raw).hexdigest()
+>       assert blob == "fc5e37fa5b2f0eb689593b42d95479d1327cb94c"
+E       AssertionError: assert '2df811d76db2...30cb221ff9a7d' == 'fc5e37fa5b2f...479d1327cb94c'
+E         
+E         - fc5e37fa5b2f0eb689593b42d95479d1327cb94c
+E         + 2df811d76db258d98d89ffb43c830cb221ff9a7d
+
+runtime/repaired/F6L/02_PHASE_A/04_TESTS/test_f6l_phase_a.py:109: AssertionError
+_ test_p5b_mixed_origin_does_not_launder_an_unverified_source_into_real_output _
+
+    def test_p5b_mixed_origin_does_not_launder_an_unverified_source_into_real_output():
+        calls = []
+>       entry = WORLDS["P5B_MIXED_ORIGIN_CONTAMINATION"]
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'P5B_MIXED_ORIGIN_CONTAMINATION'
+
+runtime/repaired/F6L/02_PHASE_A/04_TESTS/test_f6l_phase_a.py:232: KeyError
+=========================== short test summary info ============================
+FAILED runtime/repaired/F6L/02_PHASE_A/04_TESTS/test_f6l_phase_a.py::test_native_producer_is_the_pinned_corrected_s03fo_blob
+FAILED runtime/repaired/F6L/02_PHASE_A/04_TESTS/test_f6l_phase_a.py::test_p5b_mixed_origin_does_not_launder_an_unverified_source_into_real_output
+2 failed, 24 passed in 0.25s
+
+--- stderr ---

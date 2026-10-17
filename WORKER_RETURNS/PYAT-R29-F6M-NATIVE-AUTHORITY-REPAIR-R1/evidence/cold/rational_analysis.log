@@ -1,0 +1,12 @@
+exit=0
+--- stdout ---
+wrote 02_RATIONAL_RECOMPUTATION.json
+ - pooled_baseline_L1 -> CORRECT_VALUE_IS_0; the 6/25 figure is an arithmetic defect
+ - conditional_26_31_vs_4_over_5 -> Both values are arithmetically CORRECT for their own world. The author's public 
+ - incomplete_target_distribution_null -> CONFIRMED exactly. distribution is null, covered subprobability sums to 4/5, and
+ - arithmetic_correction_14_over_25_to_19_over_25 -> CONFIRMED. 14/25 + 1/5 = 19/25 exactly. Omitting the uncovered share understates
+ - arithmetic_correction_31_50_to_41_50_and_7_50_to_17_50 -> CONFIRMED exactly. 31/50 + 1/5 = 41/50 and 7/50 + 1/5 = 17/50, and the covered s
+ - author_preregistration_strength -> WEAKER THAN A BLIND PRE-REGISTRATION but not valueless: the author's public head
+ - frechet_cross_channel_bounds -> Native is CORRECT. Bounds agree exactly with independent derivation. The indepen
+
+--- stderr ---

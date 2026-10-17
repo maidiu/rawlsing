@@ -1,0 +1,20 @@
+{
+  "original_s03_tests": {
+    "cmd": "/usr/local/bin/python3 -m pytest rawlsing_next/tests/test_pre553_heterogeneous_synthesis.py -q",
+    "exit_code": 0,
+    "elapsed_seconds": 0.679,
+    "stdout_tail": "........................                                      [100%]\n24 passed, 11 subtests passed in 0.25s\n"
+  },
+  "s03fo_court": {
+    "cmd": "/usr/local/bin/python3 -m pytest rawlsing_next/tests/test_hq287_s03fo_f6_canonical_order_court.py -v",
+    "exit_code": 0,
+    "elapsed_seconds": 0.391,
+    "stdout_tail": "_hq287_s03fo_f6_canonical_order_court.py::S03FOCanonicalOrderCourt::test_11_zero_support_is_not_confident_prediction PASSED [ 84%]\nrawlsing_next/tests/test_hq287_s03fo_f6_canonical_order_court.py::S03FOCanonicalOrderCourt::test_12_no_new_original_source_issuer PASSED [ 92%]\nrawlsing_next/tests/test_hq287_s03fo_f6_canonical_order_court.py::S03FOCanonicalOrderCourt::test_13_category_keys_not_reassigned PASSED [100%]\n\n============================== 13 passed in 0.14s ==============================\n"
+  },
+  "combined": {
+    "cmd": "/usr/local/bin/python3 -m pytest rawlsing_next/tests/test_pre553_heterogeneous_synthesis.py rawlsing_next/tests/test_hq287_s03fo_f6_canonical_order_court.py -q",
+    "exit_code": 0,
+    "elapsed_seconds": 0.634,
+    "stdout_tail": ".....................................                         [100%]\n37 passed, 11 subtests passed in 0.32s\n"
+  }
+}

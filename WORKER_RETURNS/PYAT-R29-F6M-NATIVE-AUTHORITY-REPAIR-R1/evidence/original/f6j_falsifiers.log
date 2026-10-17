@@ -1,0 +1,20 @@
+exit=0
+--- stdout ---
+[FALSIFIED] F1_MISLEADING_DECISION_WHEN_DISTRIBUTION_NULL
+        observed: {'decision': 'SYNTHETIC_CANDIDATE', 'candidate.distribution_is_null': True, 'uncovered_target_mass': '1/5', 'covered_subprobability_sum': '4/5'}
+[FALSIFIED] F1b_DECISION_NULL_REPEAT_ON_UNARY_WORLD
+        observed: {'decision': 'SYNTHETIC_CANDIDATE', 'candidate.distribution_is_null': True}
+[FALSIFIED] F2_ADMIT_TRUE_IS_NOT_AUTHENTICATION
+        observed: {'gate_accepted': True, 'admit_calls_recorded': 0, 'identity_verified_in_any_call': False, 'scope_verified_in_any_call': False, 'operation_verified_in_any_call': False, 'permissions_verified_in_any_call': False, 'error': None}
+[FALSIFIED] F3_EQUWEIGHTS_NOT_SCIENTIFIC_CALIBRATION
+        observed: {'alpha_S1_equiweight': '1/2', 'alpha_S2_equiweight': '1/2', 'alpha_S1_weighted': '3/4', 'weight_scale_invariance_3_1_equals_30_10': True, 'absolute_weight_affects_estimate': False}
+[FALSIFIED] F4_SENSITIVITY_HALFWIDTH_IS_NOT_A_CONFIDENCE_INTERVAL
+        observed: {'radii': {'mapping_bias_radius': '1/50', 'transport_bias_radius': '1/50', 'target_share_bias_radius': '1/50'}, 'sum_of_radii': '3/50', 'observed_halfwidth': '3/50', 'asserted_halfwidth': '3/50', 'halfwidth_matches_assertion': True, 'native_limitations_text': 'Sensitivity envelopes are not confidence intervals; fixed target shares and disjoint sources/strata for sampling variance; covariance and conditional uncertainty unavailable.'}
+[FALSIFIED_IF_USED_AS_MEASURED] F5_CROSS_SURVEY_PERSON_NEVER_INVENTED
+        observed: {'native_lower': '0', 'native_upper': '1/2', 'native_independence_scenario': '1/4', 'native_scenario_is_measured': False, 'native_dependence': 'UNIDENTIFIED', 'independent_frechet_lower': '0', 'independent_frechet_upper': '1/2', 'independent_independence_scenario': '1/4', 'bounds_match_independent': True}
+[FALSIFIED_IF_ANY_CONDITIONAL_INTERVAL_ASSERTED] F6_CONDITIONAL_VARIANCE_UNIDENTIFIED
+        observed: {'conditional_state': 'SUPPORTED_MODEL', 'conditional_probabilities': {'U': '4/5', 'V': '1/5'}, 'conditional_uncertainty_field': 'CONDITIONAL_UNCERTAINTY_NOT_IDENTIFIED', 'conditional_has_variance_key': False, 'observed_denominator': None, 'self_conditioning_state': 'DESCRIPTIVE_SELF_CONDITIONING', 'self_conditioning_status': 'OUTCOME_LEAKAGE_TAUTOLOGY'}
+
+recorded 7 falsifier findings
+
+--- stderr ---

@@ -1,0 +1,17 @@
+exit=0
+--- stdout ---
+native vs frozen: 82/82 comparisons match
+  OK  N1_SINGLE_SOURCE_IDENTITY                            decision=SYNTHETIC_CANDIDATE
+  OK  N2_TWO_SOURCE_EQUAL_WEIGHT_MIX                       decision=SYNTHETIC_CANDIDATE
+  OK  N3_WEIGHT_PERTURBATION                               decision=SYNTHETIC_CANDIDATE
+  OK  N4_TARGET_SHARE_SHIFT                                decision=SYNTHETIC_CANDIDATE
+  OK  N5_NO_POSITIVITY_UNCOVERED_MASS                      decision=PARTIAL_IDENTIFICATION_ONLY
+  OK  N6_PARALLEL_ARITHMETIC_CORRECTION                    decision=PARTIAL_IDENTIFICATION_ONLY
+  OK  N7_COMPLETE_DOMAIN_CONTROL                           decision=SYNTHETIC_CANDIDATE
+  OK  N8_MINORITY_REPRESENTATION_AND_SUPPORT_THRESHOLD     decision=SYNTHETIC_CANDIDATE
+  OK  N9_SOURCE_SWAP                                       decision=SYNTHETIC_CANDIDATE
+  OK  R1_AUTHOR_WORLD_A_PUBLIC_HEADLINE                    decision=SYNTHETIC_CANDIDATE
+  OK  R2_F6J_CONDITIONAL_FOUR_FIFTHS                       decision=SYNTHETIC_CANDIDATE
+  OK  R3_AUTHOR_WORLD_B_MASS_ONE_FIFTH                     decision=SYNTHETIC_CANDIDATE
+
+--- stderr ---

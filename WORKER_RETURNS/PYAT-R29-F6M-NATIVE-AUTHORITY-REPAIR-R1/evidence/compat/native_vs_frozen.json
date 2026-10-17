@@ -1,0 +1,1446 @@
+{
+  "admit_callback": "lambda *a: True  (deliberately unqualified; see falsifier F2)",
+  "candidate_commit": "9aa0e7d3a0cf9ab7654ce8e3d5cb15060235a48f",
+  "comparisons_failed": 0,
+  "comparisons_passed": 82,
+  "comparisons_total": 82,
+  "frozen_commit": "e476ccc090ae0175a540e94c5c382d7e2a8453f0",
+  "native_git_blob": "fc5e37fa5b2f0eb689593b42d95479d1327cb94c",
+  "native_method": "PRE553_TARGET_JOINT_STANDARDIZATION@1",
+  "schema": "PYAT_R27_F6J_NATIVE_VS_FROZEN_EXECUTION@1",
+  "worlds": [
+    {
+      "candidate": {
+        "bias_sensitivity": {
+          "('X', 'U')": [
+            "1/80",
+            "49/80"
+          ],
+          "('X', 'V')": [
+            "0",
+            "39/80"
+          ],
+          "('Y', 'U')": [
+            "0",
+            "29/80"
+          ],
+          "('Y', 'V')": [
+            "11/80",
+            "59/80"
+          ]
+        },
+        "covered_subprobability": {
+          "('X', 'U')": "5/16",
+          "('X', 'V')": "3/16",
+          "('Y', 'U')": "1/16",
+          "('Y', 'V')": "7/16"
+        },
+        "dependence": "SOURCE_JOINTS_TRANSPORTED_AND_MIXED; NO_CROSS_SURVEY_RESPONDENT_LINKS",
+        "distribution": {
+          "('X', 'U')": "5/16",
+          "('X', 'V')": "3/16",
+          "('Y', 'U')": "1/16",
+          "('Y', 'V')": "7/16"
+        },
+        "limitations": "Sensitivity envelopes are not confidence intervals; fixed target shares and disjoint sources/strata for sampling variance; covariance and conditional uncertainty unavailable.",
+        "lower": {
+          "('X', 'U')": "5/16",
+          "('X', 'V')": "3/16",
+          "('Y', 'U')": "1/16",
+          "('Y', 'V')": "7/16"
+        },
+        "ordered_categories": [
+          [
+            "X",
+            "U"
+          ],
+          [
+            "X",
+            "V"
+          ],
+          [
+            "Y",
+            "U"
+          ],
+          [
+            "Y",
+            "V"
+          ]
+        ],
+        "sample_size": null,
+        "sampling_status": "UNKNOWN_DESIGN",
+        "sampling_variance": null,
+        "uncovered_target_mass": "0",
+        "upper": {
+          "('X', 'U')": "5/16",
+          "('X', 'V')": "3/16",
+          "('Y', 'U')": "1/16",
+          "('Y', 'V')": "7/16"
+        }
+      },
+      "checks": [
+        {
+          "expected": true,
+          "name": "joint_matches_frozen",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "uncovered_matches_frozen",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "lower_matches_frozen",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "upper_matches_frozen",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "distribution_null_matches_frozen",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "distribution_equals_covered_when_fully_covered",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "covered_sum_matches_frozen",
+          "observed": true,
+          "pass": true
+        }
+      ],
+      "decision": "SYNTHETIC_CANDIDATE",
+      "origin": "PREREGISTERED_NEW_F6J",
+      "overlap_diagnostics": [],
+      "refusals": {
+        "S1": []
+      },
+      "test_origin": true,
+      "world_id": "N1_SINGLE_SOURCE_IDENTITY"
+    },
+    {
+      "candidate": {
+        "bias_sensitivity": {
+          "('X', 'U')": [
+            "0",
+            "4/5"
+          ],
+          "('X', 'V')": [
+            "0",
+            "11/20"
+          ],
+          "('Y', 'U')": [
+            "0",
+            "11/20"
+          ],
+          "('Y', 'V')": [
+            "0",
+            "4/5"
+          ]
+        },
+        "covered_subprobability": {
+          "('X', 'U')": "5/16",
+          "('X', 'V')": "3/16",
+          "('Y', 'U')": "3/16",
+          "('Y', 'V')": "5/16"
+        },
+        "dependence": "SOURCE_JOINTS_TRANSPORTED_AND_MIXED; NO_CROSS_SURVEY_RESPONDENT_LINKS",
+        "distribution": {
+          "('X', 'U')": "5/16",
+          "('X', 'V')": "3/16",
+          "('Y', 'U')": "3/16",
+          "('Y', 'V')": "5/16"
+        },
+        "limitations": "Sensitivity envelopes are not confidence intervals; fixed target shares and disjoint sources/strata for sampling variance; covariance and conditional uncertainty unavailable.",
+        "lower": {
+          "('X', 'U')": "1/8",
+          "('X', 'V')": "1/8",
+          "('Y', 'U')": "1/8",
+          "('Y', 'V')": "1/8"
+        },
+        "ordered_categories": [
+          [
+            "X",
+            "U"
+          ],
+          [
+            "X",
+            "V"
+          ],
+          [
+            "Y",
+            "U"
+          ],
+          [
+            "Y",
+            "V"
+          ]
+        ],
+        "sample_size": null,
+        "sampling_status": "UNKNOWN_DESIGN",
+        "sampling_variance": null,
+        "uncovered_target_mass": "0",
+        "upper": {
+          "('X', 'U')": "1/2",
+          "('X', 'V')": "1/4",
+          "('Y', 'U')": "1/4",
+          "('Y', 'V')": "1/2"
+        }
+      },
+      "checks": [
+        {
+          "expected": true,
+          "name": "joint_matches_frozen",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "uncovered_matches_frozen",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "lower_matches_frozen",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "upper_matches_frozen",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "distribution_null_matches_frozen",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "distribution_equals_covered_when_fully_covered",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "covered_sum_matches_frozen",
+          "observed": true,
+          "pass": true
+        }
+      ],
+      "decision": "SYNTHETIC_CANDIDATE",
+      "origin": "PREREGISTERED_NEW_F6J",
+      "overlap_diagnostics": [],
+      "refusals": {
+        "S1": [],
+        "S2": []
+      },
+      "test_origin": true,
+      "world_id": "N2_TWO_SOURCE_EQUAL_WEIGHT_MIX"
+    },
+    {
+      "candidate": {
+        "bias_sensitivity": {
+          "('X', 'U')": [
+            "0",
+            "4/5"
+          ],
+          "('X', 'V')": [
+            "0",
+            "11/20"
+          ],
+          "('Y', 'U')": [
+            "0",
+            "11/20"
+          ],
+          "('Y', 'V')": [
+            "0",
+            "4/5"
+          ]
+        },
+        "covered_subprobability": {
+          "('X', 'U')": "13/32",
+          "('X', 'V')": "7/32",
+          "('Y', 'U')": "5/32",
+          "('Y', 'V')": "7/32"
+        },
+        "dependence": "SOURCE_JOINTS_TRANSPORTED_AND_MIXED; NO_CROSS_SURVEY_RESPONDENT_LINKS",
+        "distribution": {
+          "('X', 'U')": "13/32",
+          "('X', 'V')": "7/32",
+          "('Y', 'U')": "5/32",
+          "('Y', 'V')": "7/32"
+        },
+        "limitations": "Sensitivity envelopes are not confidence intervals; fixed target shares and disjoint sources/strata for sampling variance; covariance and conditional uncertainty unavailable.",
+        "lower": {
+          "('X', 'U')": "1/8",
+          "('X', 'V')": "1/8",
+          "('Y', 'U')": "1/8",
+          "('Y', 'V')": "1/8"
+        },
+        "ordered_categories": [
+          [
+            "X",
+            "U"
+          ],
+          [
+            "X",
+            "V"
+          ],
+          [
+            "Y",
+            "U"
+          ],
+          [
+            "Y",
+            "V"
+          ]
+        ],
+        "sample_size": null,
+        "sampling_status": "UNKNOWN_DESIGN",
+        "sampling_variance": null,
+        "uncovered_target_mass": "0",
+        "upper": {
+          "('X', 'U')": "1/2",
+          "('X', 'V')": "1/4",
+          "('Y', 'U')": "1/4",
+          "('Y', 'V')": "1/2"
+        }
+      },
+      "checks": [
+        {
+          "expected": true,
+          "name": "joint_matches_frozen",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "uncovered_matches_frozen",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "lower_matches_frozen",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "upper_matches_frozen",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "distribution_null_matches_frozen",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "distribution_equals_covered_when_fully_covered",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "covered_sum_matches_frozen",
+          "observed": true,
+          "pass": true
+        }
+      ],
+      "decision": "SYNTHETIC_CANDIDATE",
+      "origin": "PREREGISTERED_NEW_F6J",
+      "overlap_diagnostics": [],
+      "refusals": {
+        "S1": [],
+        "S2": []
+      },
+      "test_origin": true,
+      "world_id": "N3_WEIGHT_PERTURBATION"
+    },
+    {
+      "candidate": {
+        "bias_sensitivity": {
+          "('X', 'U')": [
+            "17/160",
+            "113/160"
+          ],
+          "('X', 'V')": [
+            "0",
+            "83/160"
+          ],
+          "('Y', 'U')": [
+            "0",
+            "73/160"
+          ],
+          "('Y', 'V')": [
+            "0",
+            "83/160"
+          ]
+        },
+        "covered_subprobability": {
+          "('X', 'U')": "13/32",
+          "('X', 'V')": "7/32",
+          "('Y', 'U')": "5/32",
+          "('Y', 'V')": "7/32"
+        },
+        "dependence": "SOURCE_JOINTS_TRANSPORTED_AND_MIXED; NO_CROSS_SURVEY_RESPONDENT_LINKS",
+        "distribution": {
+          "('X', 'U')": "13/32",
+          "('X', 'V')": "7/32",
+          "('Y', 'U')": "5/32",
+          "('Y', 'V')": "7/32"
+        },
+        "limitations": "Sensitivity envelopes are not confidence intervals; fixed target shares and disjoint sources/strata for sampling variance; covariance and conditional uncertainty unavailable.",
+        "lower": {
+          "('X', 'U')": "13/32",
+          "('X', 'V')": "7/32",
+          "('Y', 'U')": "5/32",
+          "('Y', 'V')": "7/32"
+        },
+        "ordered_categories": [
+          [
+            "X",
+            "U"
+          ],
+          [
+            "X",
+            "V"
+          ],
+          [
+            "Y",
+            "U"
+          ],
+          [
+            "Y",
+            "V"
+          ]
+        ],
+        "sample_size": null,
+        "sampling_status": "UNKNOWN_DESIGN",
+        "sampling_variance": null,
+        "uncovered_target_mass": "0",
+        "upper": {
+          "('X', 'U')": "13/32",
+          "('X', 'V')": "7/32",
+          "('Y', 'U')": "5/32",
+          "('Y', 'V')": "7/32"
+        }
+      },
+      "checks": [
+        {
+          "expected": true,
+          "name": "joint_matches_frozen",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "uncovered_matches_frozen",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "lower_matches_frozen",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "upper_matches_frozen",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "distribution_null_matches_frozen",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "distribution_equals_covered_when_fully_covered",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "covered_sum_matches_frozen",
+          "observed": true,
+          "pass": true
+        }
+      ],
+      "decision": "SYNTHETIC_CANDIDATE",
+      "origin": "PREREGISTERED_NEW_F6J",
+      "overlap_diagnostics": [],
+      "refusals": {
+        "S1": [],
+        "S2": []
+      },
+      "test_origin": true,
+      "world_id": "N4_TARGET_SHARE_SHIFT"
+    },
+    {
+      "candidate": {
+        "bias_sensitivity": {
+          "('X', 'U')": [
+            "13/50",
+            "1"
+          ],
+          "('X', 'V')": [
+            "0",
+            "29/50"
+          ],
+          "('Y', 'U')": [
+            "0",
+            "29/50"
+          ],
+          "('Y', 'V')": [
+            "0",
+            "29/50"
+          ]
+        },
+        "covered_subprobability": {
+          "('X', 'U')": "14/25",
+          "('X', 'V')": "2/25",
+          "('Y', 'U')": "2/25",
+          "('Y', 'V')": "2/25"
+        },
+        "dependence": "SOURCE_JOINTS_TRANSPORTED_AND_MIXED; NO_CROSS_SURVEY_RESPONDENT_LINKS",
+        "distribution": null,
+        "limitations": "Sensitivity envelopes are not confidence intervals; fixed target shares and disjoint sources/strata for sampling variance; covariance and conditional uncertainty unavailable.",
+        "lower": {
+          "('X', 'U')": "14/25",
+          "('X', 'V')": "2/25",
+          "('Y', 'U')": "2/25",
+          "('Y', 'V')": "2/25"
+        },
+        "ordered_categories": [
+          [
+            "X",
+            "U"
+          ],
+          [
+            "X",
+            "V"
+          ],
+          [
+            "Y",
+            "U"
+          ],
+          [
+            "Y",
+            "V"
+          ]
+        ],
+        "sample_size": null,
+        "sampling_status": "UNKNOWN_DESIGN",
+        "sampling_variance": null,
+        "uncovered_target_mass": "1/5",
+        "upper": {
+          "('X', 'U')": "19/25",
+          "('X', 'V')": "7/25",
+          "('Y', 'U')": "7/25",
+          "('Y', 'V')": "7/25"
+        }
+      },
+      "checks": [
+        {
+          "expected": true,
+          "name": "joint_matches_frozen",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "uncovered_matches_frozen",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "lower_matches_frozen",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "upper_matches_frozen",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "distribution_null_matches_frozen",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "covered_sum_matches_frozen",
+          "observed": true,
+          "pass": true
+        }
+      ],
+      "decision": "PARTIAL_IDENTIFICATION_ONLY",
+      "origin": "PREREGISTERED_NEW_F6J",
+      "overlap_diagnostics": [],
+      "refusals": {
+        "S1": []
+      },
+      "test_origin": true,
+      "world_id": "N5_NO_POSITIVITY_UNCOVERED_MASS"
+    },
+    {
+      "candidate": {
+        "bias_sensitivity": {
+          "('P',)": [
+            "8/25",
+            "1"
+          ],
+          "('Q',)": [
+            "0",
+            "16/25"
+          ],
+          "('R',)": [
+            "0",
+            "27/50"
+          ]
+        },
+        "covered_subprobability": {
+          "('P',)": "31/50",
+          "('Q',)": "7/50",
+          "('R',)": "1/25"
+        },
+        "dependence": "SOURCE_JOINTS_TRANSPORTED_AND_MIXED; NO_CROSS_SURVEY_RESPONDENT_LINKS",
+        "distribution": null,
+        "limitations": "Sensitivity envelopes are not confidence intervals; fixed target shares and disjoint sources/strata for sampling variance; covariance and conditional uncertainty unavailable.",
+        "lower": {
+          "('P',)": "31/50",
+          "('Q',)": "7/50",
+          "('R',)": "1/25"
+        },
+        "ordered_categories": [
+          [
+            "P"
+          ],
+          [
+            "Q"
+          ],
+          [
+            "R"
+          ]
+        ],
+        "sample_size": null,
+        "sampling_status": "UNKNOWN_DESIGN",
+        "sampling_variance": null,
+        "uncovered_target_mass": "1/5",
+        "upper": {
+          "('P',)": "41/50",
+          "('Q',)": "17/50",
+          "('R',)": "6/25"
+        }
+      },
+      "checks": [
+        {
+          "expected": true,
+          "name": "joint_matches_frozen",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "uncovered_matches_frozen",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "lower_matches_frozen",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "upper_matches_frozen",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "distribution_null_matches_frozen",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "covered_sum_matches_frozen",
+          "observed": true,
+          "pass": true
+        }
+      ],
+      "decision": "PARTIAL_IDENTIFICATION_ONLY",
+      "origin": "PREREGISTERED_NEW_F6J",
+      "overlap_diagnostics": [],
+      "refusals": {
+        "S1": []
+      },
+      "test_origin": true,
+      "world_id": "N6_PARALLEL_ARITHMETIC_CORRECTION"
+    },
+    {
+      "candidate": {
+        "bias_sensitivity": {
+          "('X', 'U')": [
+            "1/5",
+            "4/5"
+          ],
+          "('X', 'V')": [
+            "0",
+            "11/20"
+          ],
+          "('Y', 'U')": [
+            "0",
+            "9/20"
+          ],
+          "('Y', 'V')": [
+            "0",
+            "2/5"
+          ]
+        },
+        "covered_subprobability": {
+          "('X', 'U')": "1/2",
+          "('X', 'V')": "1/4",
+          "('Y', 'U')": "3/20",
+          "('Y', 'V')": "1/10"
+        },
+        "dependence": "SOURCE_JOINTS_TRANSPORTED_AND_MIXED; NO_CROSS_SURVEY_RESPONDENT_LINKS",
+        "distribution": {
+          "('X', 'U')": "1/2",
+          "('X', 'V')": "1/4",
+          "('Y', 'U')": "3/20",
+          "('Y', 'V')": "1/10"
+        },
+        "limitations": "Sensitivity envelopes are not confidence intervals; fixed target shares and disjoint sources/strata for sampling variance; covariance and conditional uncertainty unavailable.",
+        "lower": {
+          "('X', 'U')": "1/2",
+          "('X', 'V')": "1/4",
+          "('Y', 'U')": "3/20",
+          "('Y', 'V')": "1/10"
+        },
+        "ordered_categories": [
+          [
+            "X",
+            "U"
+          ],
+          [
+            "X",
+            "V"
+          ],
+          [
+            "Y",
+            "U"
+          ],
+          [
+            "Y",
+            "V"
+          ]
+        ],
+        "sample_size": null,
+        "sampling_status": "UNKNOWN_DESIGN",
+        "sampling_variance": null,
+        "uncovered_target_mass": "0",
+        "upper": {
+          "('X', 'U')": "1/2",
+          "('X', 'V')": "1/4",
+          "('Y', 'U')": "3/20",
+          "('Y', 'V')": "1/10"
+        }
+      },
+      "checks": [
+        {
+          "expected": true,
+          "name": "joint_matches_frozen",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "uncovered_matches_frozen",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "lower_matches_frozen",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "upper_matches_frozen",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "distribution_null_matches_frozen",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "distribution_equals_covered_when_fully_covered",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "covered_sum_matches_frozen",
+          "observed": true,
+          "pass": true
+        }
+      ],
+      "decision": "SYNTHETIC_CANDIDATE",
+      "origin": "PREREGISTERED_NEW_F6J",
+      "overlap_diagnostics": [],
+      "refusals": {
+        "S1": []
+      },
+      "test_origin": true,
+      "world_id": "N7_COMPLETE_DOMAIN_CONTROL"
+    },
+    {
+      "candidate": {
+        "bias_sensitivity": {
+          "('X', 'U')": [
+            "0",
+            "11/20"
+          ],
+          "('X', 'V')": [
+            "0",
+            "11/20"
+          ],
+          "('Y', 'U')": [
+            "0",
+            "11/20"
+          ],
+          "('Y', 'V')": [
+            "0",
+            "1"
+          ]
+        },
+        "covered_subprobability": {
+          "('X', 'U')": "7/50",
+          "('X', 'V')": "13/100",
+          "('Y', 'U')": "49/200",
+          "('Y', 'V')": "97/200"
+        },
+        "dependence": "SOURCE_JOINTS_TRANSPORTED_AND_MIXED; NO_CROSS_SURVEY_RESPONDENT_LINKS",
+        "distribution": {
+          "('X', 'U')": "7/50",
+          "('X', 'V')": "13/100",
+          "('Y', 'U')": "49/200",
+          "('Y', 'V')": "97/200"
+        },
+        "limitations": "Sensitivity envelopes are not confidence intervals; fixed target shares and disjoint sources/strata for sampling variance; covariance and conditional uncertainty unavailable.",
+        "lower": {
+          "('X', 'U')": "3/100",
+          "('X', 'V')": "1/100",
+          "('Y', 'U')": "6/25",
+          "('Y', 'V')": "1/4"
+        },
+        "ordered_categories": [
+          [
+            "X",
+            "U"
+          ],
+          [
+            "X",
+            "V"
+          ],
+          [
+            "Y",
+            "U"
+          ],
+          [
+            "Y",
+            "V"
+          ]
+        ],
+        "sample_size": null,
+        "sampling_status": "UNKNOWN_DESIGN",
+        "sampling_variance": null,
+        "uncovered_target_mass": "0",
+        "upper": {
+          "('X', 'U')": "1/4",
+          "('X', 'V')": "1/4",
+          "('Y', 'U')": "1/4",
+          "('Y', 'V')": "18/25"
+        }
+      },
+      "checks": [
+        {
+          "expected": true,
+          "name": "joint_matches_frozen",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "uncovered_matches_frozen",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "lower_matches_frozen",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "upper_matches_frozen",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "distribution_null_matches_frozen",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "distribution_equals_covered_when_fully_covered",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "covered_sum_matches_frozen",
+          "observed": true,
+          "pass": true
+        }
+      ],
+      "decision": "SYNTHETIC_CANDIDATE",
+      "origin": "PREREGISTERED_NEW_F6J",
+      "overlap_diagnostics": [],
+      "refusals": {
+        "S1": [],
+        "S2": []
+      },
+      "test_origin": true,
+      "world_id": "N8_MINORITY_REPRESENTATION_AND_SUPPORT_THRESHOLD"
+    },
+    {
+      "candidate": {
+        "bias_sensitivity": {
+          "('X', 'U')": [
+            "0",
+            "4/5"
+          ],
+          "('X', 'V')": [
+            "0",
+            "11/20"
+          ],
+          "('Y', 'U')": [
+            "0",
+            "11/20"
+          ],
+          "('Y', 'V')": [
+            "0",
+            "4/5"
+          ]
+        },
+        "covered_subprobability": {
+          "('X', 'U')": "5/16",
+          "('X', 'V')": "3/16",
+          "('Y', 'U')": "3/16",
+          "('Y', 'V')": "5/16"
+        },
+        "dependence": "SOURCE_JOINTS_TRANSPORTED_AND_MIXED; NO_CROSS_SURVEY_RESPONDENT_LINKS",
+        "distribution": {
+          "('X', 'U')": "5/16",
+          "('X', 'V')": "3/16",
+          "('Y', 'U')": "3/16",
+          "('Y', 'V')": "5/16"
+        },
+        "limitations": "Sensitivity envelopes are not confidence intervals; fixed target shares and disjoint sources/strata for sampling variance; covariance and conditional uncertainty unavailable.",
+        "lower": {
+          "('X', 'U')": "1/8",
+          "('X', 'V')": "1/8",
+          "('Y', 'U')": "1/8",
+          "('Y', 'V')": "1/8"
+        },
+        "ordered_categories": [
+          [
+            "X",
+            "U"
+          ],
+          [
+            "X",
+            "V"
+          ],
+          [
+            "Y",
+            "U"
+          ],
+          [
+            "Y",
+            "V"
+          ]
+        ],
+        "sample_size": null,
+        "sampling_status": "UNKNOWN_DESIGN",
+        "sampling_variance": null,
+        "uncovered_target_mass": "0",
+        "upper": {
+          "('X', 'U')": "1/2",
+          "('X', 'V')": "1/4",
+          "('Y', 'U')": "1/4",
+          "('Y', 'V')": "1/2"
+        }
+      },
+      "checks": [
+        {
+          "expected": true,
+          "name": "joint_matches_frozen",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "uncovered_matches_frozen",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "lower_matches_frozen",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "upper_matches_frozen",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "distribution_null_matches_frozen",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "distribution_equals_covered_when_fully_covered",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "covered_sum_matches_frozen",
+          "observed": true,
+          "pass": true
+        }
+      ],
+      "decision": "SYNTHETIC_CANDIDATE",
+      "origin": "PREREGISTERED_NEW_F6J",
+      "overlap_diagnostics": [],
+      "refusals": {
+        "S1": [],
+        "S2": []
+      },
+      "test_origin": true,
+      "world_id": "N9_SOURCE_SWAP"
+    },
+    {
+      "candidate": {
+        "bias_sensitivity": {
+          "('X', 'U')": [
+            "11/50",
+            "41/50"
+          ],
+          "('X', 'V')": [
+            "0",
+            "2/5"
+          ],
+          "('Y', 'U')": [
+            "0",
+            "2/5"
+          ],
+          "('Y', 'V')": [
+            "0",
+            "29/50"
+          ]
+        },
+        "covered_subprobability": {
+          "('X', 'U')": "13/25",
+          "('X', 'V')": "1/10",
+          "('Y', 'U')": "1/10",
+          "('Y', 'V')": "7/25"
+        },
+        "dependence": "SOURCE_JOINTS_TRANSPORTED_AND_MIXED; NO_CROSS_SURVEY_RESPONDENT_LINKS",
+        "distribution": {
+          "('X', 'U')": "13/25",
+          "('X', 'V')": "1/10",
+          "('Y', 'U')": "1/10",
+          "('Y', 'V')": "7/25"
+        },
+        "limitations": "Sensitivity envelopes are not confidence intervals; fixed target shares and disjoint sources/strata for sampling variance; covariance and conditional uncertainty unavailable.",
+        "lower": {
+          "('X', 'U')": "13/25",
+          "('X', 'V')": "1/10",
+          "('Y', 'U')": "1/10",
+          "('Y', 'V')": "7/25"
+        },
+        "ordered_categories": [
+          [
+            "X",
+            "U"
+          ],
+          [
+            "X",
+            "V"
+          ],
+          [
+            "Y",
+            "U"
+          ],
+          [
+            "Y",
+            "V"
+          ]
+        ],
+        "sample_size": null,
+        "sampling_status": "UNKNOWN_DESIGN",
+        "sampling_variance": null,
+        "uncovered_target_mass": "0",
+        "upper": {
+          "('X', 'U')": "13/25",
+          "('X', 'V')": "1/10",
+          "('Y', 'U')": "1/10",
+          "('Y', 'V')": "7/25"
+        }
+      },
+      "checks": [
+        {
+          "expected": true,
+          "name": "joint_matches_frozen",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "uncovered_matches_frozen",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "lower_matches_frozen",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "upper_matches_frozen",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "distribution_null_matches_frozen",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "distribution_equals_covered_when_fully_covered",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "covered_sum_matches_frozen",
+          "observed": true,
+          "pass": true
+        }
+      ],
+      "decision": "SYNTHETIC_CANDIDATE",
+      "origin": "POST_DISCLOSURE_REPLICATION",
+      "overlap_diagnostics": [],
+      "refusals": {
+        "S1": []
+      },
+      "test_origin": true,
+      "world_id": "R1_AUTHOR_WORLD_A_PUBLIC_HEADLINE"
+    },
+    {
+      "candidate": {
+        "bias_sensitivity": {
+          "('X', 'U')": [
+            "1/10",
+            "7/10"
+          ],
+          "('X', 'V')": [
+            "0",
+            "2/5"
+          ],
+          "('Y', 'U')": [
+            "0",
+            "2/5"
+          ],
+          "('Y', 'V')": [
+            "1/10",
+            "7/10"
+          ]
+        },
+        "covered_subprobability": {
+          "('X', 'U')": "2/5",
+          "('X', 'V')": "1/10",
+          "('Y', 'U')": "1/10",
+          "('Y', 'V')": "2/5"
+        },
+        "dependence": "SOURCE_JOINTS_TRANSPORTED_AND_MIXED; NO_CROSS_SURVEY_RESPONDENT_LINKS",
+        "distribution": {
+          "('X', 'U')": "2/5",
+          "('X', 'V')": "1/10",
+          "('Y', 'U')": "1/10",
+          "('Y', 'V')": "2/5"
+        },
+        "limitations": "Sensitivity envelopes are not confidence intervals; fixed target shares and disjoint sources/strata for sampling variance; covariance and conditional uncertainty unavailable.",
+        "lower": {
+          "('X', 'U')": "2/5",
+          "('X', 'V')": "1/10",
+          "('Y', 'U')": "1/10",
+          "('Y', 'V')": "2/5"
+        },
+        "ordered_categories": [
+          [
+            "X",
+            "U"
+          ],
+          [
+            "X",
+            "V"
+          ],
+          [
+            "Y",
+            "U"
+          ],
+          [
+            "Y",
+            "V"
+          ]
+        ],
+        "sample_size": null,
+        "sampling_status": "UNKNOWN_DESIGN",
+        "sampling_variance": null,
+        "uncovered_target_mass": "0",
+        "upper": {
+          "('X', 'U')": "2/5",
+          "('X', 'V')": "1/10",
+          "('Y', 'U')": "1/10",
+          "('Y', 'V')": "2/5"
+        }
+      },
+      "checks": [
+        {
+          "expected": true,
+          "name": "joint_matches_frozen",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "uncovered_matches_frozen",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "lower_matches_frozen",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "upper_matches_frozen",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "distribution_null_matches_frozen",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "distribution_equals_covered_when_fully_covered",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "covered_sum_matches_frozen",
+          "observed": true,
+          "pass": true
+        }
+      ],
+      "decision": "SYNTHETIC_CANDIDATE",
+      "origin": "PREREGISTERED_NEW_F6J",
+      "overlap_diagnostics": [],
+      "refusals": {
+        "S1": []
+      },
+      "test_origin": true,
+      "world_id": "R2_F6J_CONDITIONAL_FOUR_FIFTHS"
+    },
+    {
+      "candidate": {
+        "bias_sensitivity": {
+          "('X', 'U')": [
+            "1/30",
+            "19/30"
+          ],
+          "('X', 'V')": [
+            "1/30",
+            "19/30"
+          ],
+          "('Y', 'U')": [
+            "0",
+            "7/15"
+          ],
+          "('Y', 'V')": [
+            "0",
+            "7/15"
+          ]
+        },
+        "covered_subprobability": {
+          "('X', 'U')": "1/3",
+          "('X', 'V')": "1/3",
+          "('Y', 'U')": "1/6",
+          "('Y', 'V')": "1/6"
+        },
+        "dependence": "SOURCE_JOINTS_TRANSPORTED_AND_MIXED; NO_CROSS_SURVEY_RESPONDENT_LINKS",
+        "distribution": {
+          "('X', 'U')": "1/3",
+          "('X', 'V')": "1/3",
+          "('Y', 'U')": "1/6",
+          "('Y', 'V')": "1/6"
+        },
+        "limitations": "Sensitivity envelopes are not confidence intervals; fixed target shares and disjoint sources/strata for sampling variance; covariance and conditional uncertainty unavailable.",
+        "lower": {
+          "('X', 'U')": "1/3",
+          "('X', 'V')": "1/3",
+          "('Y', 'U')": "1/6",
+          "('Y', 'V')": "1/6"
+        },
+        "ordered_categories": [
+          [
+            "X",
+            "U"
+          ],
+          [
+            "X",
+            "V"
+          ],
+          [
+            "Y",
+            "U"
+          ],
+          [
+            "Y",
+            "V"
+          ]
+        ],
+        "sample_size": null,
+        "sampling_status": "UNKNOWN_DESIGN",
+        "sampling_variance": null,
+        "uncovered_target_mass": "0",
+        "upper": {
+          "('X', 'U')": "1/3",
+          "('X', 'V')": "1/3",
+          "('Y', 'U')": "1/6",
+          "('Y', 'V')": "1/6"
+        }
+      },
+      "checks": [
+        {
+          "expected": true,
+          "name": "joint_matches_frozen",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "uncovered_matches_frozen",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "lower_matches_frozen",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "upper_matches_frozen",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "distribution_null_matches_frozen",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "distribution_equals_covered_when_fully_covered",
+          "observed": true,
+          "pass": true
+        },
+        {
+          "expected": true,
+          "name": "covered_sum_matches_frozen",
+          "observed": true,
+          "pass": true
+        }
+      ],
+      "decision": "SYNTHETIC_CANDIDATE",
+      "origin": "POST_DISCLOSURE_REPLICATION",
+      "overlap_diagnostics": [],
+      "refusals": {
+        "S1": []
+      },
+      "test_origin": true,
+      "world_id": "R3_AUTHOR_WORLD_B_MASS_ONE_FIFTH"
+    }
+  ]
+}
