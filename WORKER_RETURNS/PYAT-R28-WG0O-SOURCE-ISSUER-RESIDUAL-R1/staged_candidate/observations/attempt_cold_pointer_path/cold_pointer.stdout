@@ -1,0 +1,24 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.11.3, pytest-9.1.1, pluggy-1.6.0 -- /usr/local/bin/python3
+rootdir: <WORKTREE>/WORKER_RETURNS/PYAT-R27-WG0P6-RELEASE-VIEW-SOURCE-ARTIFACT-BINDING-R1/court/runtime_phase_b/candidate
+configfile: pytest.ini
+collecting ... collected 1 item
+
+runtime_phase_b/candidate::test_fresh_process_pointer_substitution_cannot_restore_signed_prior_facts <- ../../../tests/test_cold_pointer_process.py FAILED [100%]
+
+=================================== FAILURES ===================================
+__ test_fresh_process_pointer_substitution_cannot_restore_signed_prior_facts ___
+../tests/test_cold_pointer_process.py:6: in test_fresh_process_pointer_substitution_cannot_restore_signed_prior_facts
+    summary=json.loads((R/'court/observations/phase_b/inherited_v1/cold_comparison.json').read_text())
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1058: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1044: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '<WORKTREE>/WORKER_RETURNS/PYAT-R27-WG0P6-RELEASE-VIEW-SOURCE-ARTIFACT-BINDING-R1/court/observations/phase_b/inherited_v1/cold_comparison.json'
+- generated xml file: <WORKTREE>/WORKER_RETURNS/PYAT-R27-WG0P6-RELEASE-VIEW-SOURCE-ARTIFACT-BINDING-R1/observations/cold_pointer.xml -
+=========================== short test summary info ============================
+FAILED runtime_phase_b/candidate::test_fresh_process_pointer_substitution_cannot_restore_signed_prior_facts - FileNotFoundError: [Errno 2] No such file or directory: '<WORKTREE>/WORKER_RETURNS/PYAT-R27-WG0P6-RELEASE-VIEW-SOURCE-ARTIFACT-BINDING-R1/court/observations/phase_b/inherited_v1/cold_comparison.json'
+============================== 1 failed in 0.11s ===============================

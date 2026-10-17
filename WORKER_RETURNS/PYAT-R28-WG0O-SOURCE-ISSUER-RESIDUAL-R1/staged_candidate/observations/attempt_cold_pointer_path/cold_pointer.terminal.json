@@ -1,0 +1,21 @@
+{
+  "command": [
+    "/usr/local/bin/python3",
+    "-B",
+    "-m",
+    "pytest",
+    "-c",
+    "<WORKTREE>/WORKER_RETURNS/PYAT-R27-WG0P6-RELEASE-VIEW-SOURCE-ARTIFACT-BINDING-R1/court/runtime_phase_b/candidate/pytest.ini",
+    "-vv",
+    "--tb=short",
+    "--junitxml=<WORKTREE>/WORKER_RETURNS/PYAT-R27-WG0P6-RELEASE-VIEW-SOURCE-ARTIFACT-BINDING-R1/observations/cold_pointer.xml",
+    "<WORKTREE>/WORKER_RETURNS/PYAT-R27-WG0P6-RELEASE-VIEW-SOURCE-ARTIFACT-BINDING-R1/tests/test_cold_pointer_process.py"
+  ],
+  "exit": 1,
+  "seconds": 1.5489468574523926,
+  "scope": "WG0P6_IMPLEMENTER_REGRESSION_NOT_INDEPENDENT_ACCEPTANCE",
+  "tests": 1,
+  "failures": 1,
+  "errors": 0,
+  "skips": 0
+}

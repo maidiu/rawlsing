@@ -1,0 +1,17 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.11.3, pytest-9.1.1, pluggy-1.6.0 -- /usr/local/bin/python3
+rootdir: <WORKTREE>/WORKER_RETURNS/PYAT-R27-WG0P6-RELEASE-VIEW-SOURCE-ARTIFACT-BINDING-R1/court/runtime_phase_b/candidate
+configfile: pytest.ini
+collecting ... collected 33 items / 32 deselected / 1 selected
+
+runtime_phase_b/candidate::test_frozen_descriptor_source_integrity[source/release_source_artifact] <- ../../tests/test_descriptor_delta_frozen.py FAILED [100%]
+
+=================================== FAILURES ===================================
+___ test_frozen_descriptor_source_integrity[source/release_source_artifact] ____
+tests/test_descriptor_delta_frozen.py:15: in test_frozen_descriptor_source_integrity
+    assert e['exception_type'] in control['allowed_exceptions'] or e['typed_refusal'] in ('HELD','INADMISSIBLE','REVOKED','STALE','REFUSED','UNAVAILABLE')
+E   AssertionError: assert (None in ['IdentityError', 'FrontierError', 'RevocationError', 'ColdRestartError', 'NativeDataError', 'BatchIntegrityError'] or None in ('HELD', 'INADMISSIBLE', 'REVOKED', 'STALE', 'REFUSED', 'UNAVAILABLE'))
+- generated xml file: <WORKTREE>/WORKER_RETURNS/PYAT-R27-WG0P6-RELEASE-VIEW-SOURCE-ARTIFACT-BINDING-R1/observations/baseline33.xml -
+=========================== short test summary info ============================
+FAILED runtime_phase_b/candidate::test_frozen_descriptor_source_integrity[source/release_source_artifact] - AssertionError: assert (None in ['IdentityError', 'FrontierError', 'RevocationError', 'ColdRestartError', 'NativeDataError', 'BatchIntegrityError'] or None in ('HELD', 'INADMISSIBLE', 'REVOKED', 'STALE', 'REFUSED', 'UNAVAILABLE'))
+======================= 1 failed, 32 deselected in 5.95s =======================
