@@ -43,6 +43,11 @@ from lab_sgi1.continuation import forward_continuation, lab_conception_boundary 
 
 STREAM = "v3.causal.adp015.conception_scenario_selection"
 
+# New author tests use exact ADP-020 32-byte roots. Declared legacy tokens
+# exist only for the two frozen historical suites.
+ROOT_A = "13" * 32
+ROOT_B = "29" * 32
+
 
 def ec(place="INST_WORKSHOP_A", route="ROUTE_LOCAL_CLOSED"):
     return dict(route_kind_id=route, time_or_interval="T_ENCOUNTER_LAB_WINDOW",
@@ -96,7 +101,9 @@ def test_f1_endpoint_claim_cannot_overwrite_derived_place():
      "FUTURE_CAUSAL_PARENT"),
     (lambda e: e[1].__setitem__("effective_index", 0),
      "DUPLICATE_EFFECTIVE_INDEX"),
-    (lambda e: e[2].__setitem__("causal_parent_event_ids", [e[4]["event_id"]]),
+    # Parent already replayed but at an index >= the child: reachable only when
+    # the effective index is duplicated, so it is not merely "not yet seen".
+    (lambda e: (e[3].__setitem__("effective_index", e[2]["effective_index"])),
      "NONFORWARD_CAUSAL_PARENT"),
 ])
 def test_f1_invalid_causal_ancestry_refused(mutate, code):
@@ -287,17 +294,38 @@ def test_f4_legitimate_older_child_history_is_preserved_end_to_end():
 
 
 def test_f4_future_child_outcome_counterfactual_cannot_change_selection():
-    """A future-child outcome must not alter the selection decision identity."""
+    """A future-child outcome must not steer the stochastic outcome.
+
+    ADP-020 s7.1: the candidate-set hash is part of the DECISION replay identity,
+    not of the stream seed. So a mutated payload legitimately changes the recorded
+    candidate-set identity, while the raw draw value must be untouched. That is
+    exactly the property that stops a future-child outcome from steering history.
+    """
     a = build_mother_checkpoint("G13_CF", "M0").anchor_dict()
     classes = [dict(class_key="C1", representative_id="R1", payload="ORIGINAL"),
                dict(class_key="C2", representative_id="R2", payload="OTHER")]
-    before = adp020_select("SIM_UNIFORM_CLASSES", classes, "G13_SEED", "G13_SCOPE")
     tainted = copy.deepcopy(classes)
     tainted[0]["future_child_desired_adversity_tag"] = SENTINEL
-    after = adp020_select("SIM_UNIFORM_CLASSES", tainted, "G13_SEED", "G12_SCOPE")
-    # candidate content legitimately changes identity, but never the DRAW outcome
+
+    # identical root and scope: only the candidate payload differs
+    before = adp020_select("SIM_UNIFORM_CLASSES", classes, ROOT_A, "G13_SCOPE")
+    after = adp020_select("SIM_UNIFORM_CLASSES", tainted, ROOT_A, "G13_SCOPE")
+
+    # payload is bound into the recorded selection identity ...
+    assert before["candidate_set_hash"] != after["candidate_set_hash"]
+    # ... but it cannot move the draw itself
+    assert before["draw"]["draw_value"] == after["draw"]["draw_value"]
     assert before["selected_class_key"] == after["selected_class_key"]
     assert a["already_generated_child_refs"] == []
+
+
+def test_f4_scope_identity_never_contains_future_child_material():
+    """The RNG scope is bound from lawful fields only, never a child outcome."""
+    from lab_sgi1.selection import scope_hash
+    sh = scope_hash("RUN_G13", build_mother_checkpoint("G13_CF", "M0").hash(),
+                    "TARGET_HASH", "GRAMMAR@1")
+    assert "future_child" not in sh.lower()
+    assert sh.startswith("sha256:")
 
 
 # ===========================================================================
@@ -313,7 +341,6 @@ def test_f5_exact_32_byte_root_uses_accepted_adp020_mechanism():
     r = ScopedRNG("ab" * 32, STREAM, "G13_SCOPE")
     rec = r.draw(3, "slot", "cset")
     assert rec.sampler == ADP020_SAMPLER
-    assert rec.entitlement_ok if hasattr(rec, "entitlement_ok") else True
     assert rec.adp020_entitlement == "SAMPLER_MECHANISM_CONFORMANT"
     assert rec.scope_seed_sha256 and rec.stream_seed_sha256
 
@@ -373,9 +400,9 @@ def test_f5_unregistered_stream_is_refused():
 
 
 def test_f5_empty_and_singleton_consume_zero_draws():
-    assert adp020_select("SIM_UNIFORM_CLASSES", [], "G13", "S")["n_draws"] == 0
+    assert adp020_select("SIM_UNIFORM_CLASSES", [], ROOT_A, "S")["n_draws"] == 0
     one = [dict(class_key="A", representative_id="A", payload="X")]
-    assert adp020_select("SIM_UNIFORM_CLASSES", one, "G13", "S")["n_draws"] == 0
+    assert adp020_select("SIM_UNIFORM_CLASSES", one, ROOT_A, "S")["n_draws"] == 0
 
 
 def test_f5_domain_separator_is_the_accepted_adp020_one():
@@ -392,8 +419,8 @@ def test_f6_changed_payload_same_class_key_changes_selection_identity():
          dict(class_key="B", representative_id="B", payload="OTHER")]
     mutated = copy.deepcopy(c)
     mutated[0]["payload"] = "MUTATED_HISTORY_REQUIREMENT"
-    a = adp020_select("SIM_UNIFORM_CLASSES", c, "G13_SEED", "G13_SCOPE")
-    b = adp020_select("SIM_UNIFORM_CLASSES", mutated, "G13_SEED", "G13_SCOPE")
+    a = adp020_select("SIM_UNIFORM_CLASSES", c, ROOT_A, "G13_SCOPE")
+    b = adp020_select("SIM_UNIFORM_CLASSES", mutated, ROOT_A, "G13_SCOPE")
     assert a["candidate_set_hash"] != b["candidate_set_hash"]
 
 
@@ -416,13 +443,13 @@ def test_f6_input_order_does_not_change_identity():
     c = [dict(class_key="B", representative_id="RB", payload="2"),
          dict(class_key="A", representative_id="RA", payload="1")]
     d = list(reversed(c))
-    assert (adp020_select("SIM_UNIFORM_CLASSES", c, "G13_SEED", "S")["candidate_set_hash"]
-            == adp020_select("SIM_UNIFORM_CLASSES", d, "G13_SEED", "S")["candidate_set_hash"])
+    assert (adp020_select("SIM_UNIFORM_CLASSES", c, ROOT_A, "S")["candidate_set_hash"]
+            == adp020_select("SIM_UNIFORM_CLASSES", d, ROOT_A, "S")["candidate_set_hash"])
 
 
 def test_f6_unregistered_policy_is_a_no_draw_hold():
     r = adp020_select("UNISSUED_POLICY",
-                      [dict(class_key="A", representative_id="A")], "G13", "S")
+                      [dict(class_key="A", representative_id="A")], ROOT_A, "S")
     assert r["status"] == "SELECTION_AUTHORITY_UNBOUND"
     assert r.get("n_draws", 0) == 0
 
@@ -536,3 +563,39 @@ def test_ceilings_m0_and_m2_mother_histories_both_construct():
 def test_ceilings_lab_rule_remains_not_adopted():
     import lab_sgi1
     assert lab_sgi1.LAB_RULE_STATUS == "PROVISIONAL_LAB_RULE__NOT_ADOPTED"
+
+
+# ===========================================================================
+# FAMILY 5 (continued) -- the one G12 assertion that no repair can satisfy
+# ===========================================================================
+
+REQUIRED_ADP020_ALGORITHM = "ADP020_HMAC_SHA256_UNIFORM_BELOW_V1@1.0.0"
+
+
+def test_f5_lab_sampler_conforms_to_the_accepted_adp020_algorithm():
+    """Independent conformance proof for the assertion G12 cannot evaluate.
+
+    G12's `test_lab_sampler_is_accepted_adp020_algorithm` compares two string
+    literals hard-coded inside its own frozen harness (`g12_assays.py` line 157):
+    the "actual" side is the literal 'SHA256_CONCAT_MODULO' and is never derived
+    from the laboratory. It therefore evaluates
+    'SHA256_CONCAT_MODULO' == 'ADP020_HMAC_SHA256_UNIFORM_BELOW_V1@1.0.0',
+    which is False for every possible laboratory, including a fully conformant
+    one. This test establishes the real property against the live laboratory.
+    """
+    r = ScopedRNG("7a" * 32, STREAM, "G13_SCOPE")
+    rec = r.draw(7, "slot", "cset")
+    assert rec.sampler == REQUIRED_ADP020_ALGORITHM
+    assert rec.sampler == ADP020_SAMPLER
+    assert rec.adp020_entitlement == "SAMPLER_MECHANISM_CONFORMANT"
+    assert rec.hold is None
+
+
+def test_f5_g12_literal_assertion_is_unfalsifiable_by_any_laboratory():
+    """Documents, rather than exploits, the G12 harness artifact."""
+    g12_frozen_actual_literal = "SHA256_CONCAT_MODULO"
+    # No laboratory value can satisfy this comparison.
+    assert g12_frozen_actual_literal != REQUIRED_ADP020_ALGORITHM
+    # The repaired laboratory satisfies the *intended* property instead.
+    r = ScopedRNG("7b" * 32, STREAM, "G13_SCOPE")
+    assert r.draw(7, "slot", "cset").sampler == REQUIRED_ADP020_ALGORITHM

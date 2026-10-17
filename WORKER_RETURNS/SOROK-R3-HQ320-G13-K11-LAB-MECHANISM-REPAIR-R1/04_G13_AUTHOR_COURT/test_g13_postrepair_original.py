@@ -23,6 +23,7 @@ sys.dont_write_bytecode = True
 sys.path.insert(0, str(COURT))
 
 from replay_sgi1 import execute  # noqa: E402
+from lab_sgi1.core import h_obj  # noqa: E402
 
 RESULT, SUMMARY = execute()
 REPAIRED_FINGERPRINTS = json.loads(
@@ -48,8 +49,19 @@ def test_postrepair_denominators_complete_and_offline():
     assert SUMMARY["new_provider_calls"] == 0
 
 
+def _actual_fingerprint(case):
+    """Recompute the case fingerprint exactly as the original court did."""
+    obs = case["observed_state"]
+    sel = (obs.get("selection") or obs.get("selection_a")
+           or obs.get("selection_discordant") or obs.get("selection_base"))
+    dad = obs.get("dad_event_hash") or obs.get("dad_hash_a")
+    return h_obj(dict(assertions=case["assertion_results"],
+                      grade=case["terminal_grade"], selection=sel, dad=dad))
+
+
 def test_postrepair_fingerprints_match_repaired_manifest():
-    mismatched = [c for c, v in SUMMARY["comparison"].items() if not v["equal"]]
+    mismatched = [c["case_id"] for c in RESULT["cases"]
+                  if _actual_fingerprint(c) != REPAIRED_FINGERPRINTS[c["case_id"]]["fingerprint"]]
     assert not mismatched, mismatched
 
 
