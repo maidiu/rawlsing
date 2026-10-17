@@ -1,3 +1,28 @@
+# Pyat — R22 six R18 returns independently adjudicated; full original-world machine still open
+
+**16 October 2026 · canonical owner revision 6 · successor HQ R22 decision.** The six R18 branches have now ALL pushed independently sealed-start-descendant returns. Pyat successor working HQ own decision [R22](https://github.com/maidiu/rawlsing/blob/ecb5de4f5f90015e5f10b9f3b12e76ee145fee58/PYAT_CONTROL_ROOM/PYAT_HQ_ACCESSION_CANDIDATE_20261016_R1/07_R22_SIX_WORKER_FANIN_AND_SCIENTIFIC_DECISIONS_20261016.md) @ecb5de4f5f90015e5f10b9f3b12e76ee145fee58 personally adjudicated their **different grades**. One narrow E06 method promoted, GF1 RED, F6B HOLD; **six returns do not equal six accepted products**. No native original all35 or actor.
+
+| Lane | Verified return | HQ actual disposition |
+|---|---|---|
+| EST1 | d800848bbff502658c9f1ed50fce73f1fc7dcad7 | 14/14 Python standalone omission-oracle PASS; no native C11/I03/I05/batch calls, no source U/E_pre or real world; **scoped testonly method accepted** |
+| F6B | c23fd5a4ffbfa4da089331c5ab05096e89a3c572 | **HOLD**: exact F6 owner exists on S03FO separate branch, but no comparative population, F6 producer-to-world or independent admissibility tests; fix same implementer setup |
+| T9B | edf3494b1b11cb71a78540aba950aa15da900c8a | Author **28/28** and pinned V553 **8/8** positive, as-of vs retrospective sourcefree historical change; **independent scientific/custody court pending**; ambient pytest import shadow found |
+| XSP | 50e711167fcf4a6d461f8287dbfd3e9fe3afa35b | 19/19 standalone synthetic world-pair discriminate; Pyat/Sorok native calls 0; **testonly interface expectation**, NOT actual weld |
+| E06I | b3ebd8a0ce49ba2b96e1adae5cff3f65a90b17a1 | Independent **48/48** full actual E04T→E05R two-client sourcefree joined bridge; author40/40 regression; **HQ ACCEPT_SOURCEFREE_NONINSTALLING_JOINED_BRIDGE_METHOD_ONLY**, NOT installed N9/OC05 |
+| GF1I | c6a55f0dd5b327c40d64f96e0705ab5485559e90 | **RED**: 19/19 relation tests pass, but GF1 author omitted gf1_pair_support_consumer; 44-case author chain cannot collect; GF1 consumer-method NOT adopted; Field Forge generic S1–S9 unissued |
+
+**HQ R21 deep-law correction:** original WG0-C/L/R static lineage independently adjudicated by HQ, 10 A scoped current/historical owners and 14 C unproved source→original expected-work→consumer; no B/D/E scientifically proved. [Full R21 record](https://github.com/maidiu/rawlsing/blob/ad4c7704d88e58a80ac62dfafabbce66f1518608/PYAT_CONTROL_ROOM/PYAT_HQ_ACCESSION_CANDIDATE_20261016_R1/05_R21_DEEP_HQ_LAW_RECOVERY_AND_WG0CLR_ADJUDICATION_20261016.md).
+
+**Critical original science remains unchanged:** all 35 wave identities, 1,890 requirements, 151↔101 workclasses, source-native U, independent expected E_pre, exact original eligible operations, actual native runtime/consumer no-drop, F1–F8 full original world and AT01–AT35, EE12, signed model/EE14, operative OC05, N11 and N12 are NOT established by this sourcefree batch. WG0P4 @c1e88fb2 and independent WG0L frozen65 @1f198cb3 still at origin; preserve their worker autonomy. E06 sourcefree bridge grants do not issue original U/E_pre or source/actor permissions.
+
+**Next unblocked parallel portfolio:** same F6B owner productive correction with exact S03FO native owner and preregistered comparative two-population consumer; GF1 same original author restores omitted named consumer then independently reviewed 44+ cold; independent scientific T9B clock/pin/custody review; EST1 original issued U/E_pre to native positive value/consumer when competent sources lawful; Sorok-owned actual C0/K9/K10 two-client native port with strict actor-independent no-issuance. Avoid duplicating WG0P4 and precommitted WG0L. Use qualified warm inexpensive host (DeepSeek Harness/OpenCode acceptable) with real Python and separate reviewers.
+
+**Handoff issue still OPEN:** `HQ_HANDOFF/LATEST.json` still points to immutable HQ280 (October 10). R19 accession and R20/R21/R22 successor decisions are real bounded working-HQ authority; rev6 report is not the protected immutable handoff seal. No canonical semantically changed code or protected checkpoint rewrite, no fictitious accepted V3 person.
+
+---
+
+## Inherited revision 5 report (historical, corrected above)
+
 # Pyat — active successor HQ R20, source/world/persona critical-path progress
 
 **16 October 2026 · owner revision 5 · active successor HQ, bounded existing working authority.** R19 independently accepted the frozen candidate `9e06e0d6515a9c0cff4b6fb704f73af83b9617d6` at `5286fba50a65549f9e47586b7f4c8a8265eef84d`. The accepted post-review attestation and successor-control record were remotely verified at `850f6509e81ef504ca610bcdcf23c3a7b7a6078d`; the new **single** active Pyat working branch is `agent/vozhd-pyat-r3-hq-successor-20261016-r1` and its [R20 first operative HQ decision](https://github.com/maidiu/rawlsing/blob/3194861b75286a13ff0a1645897478f177eb2a42/PYAT_CONTROL_ROOM/PYAT_HQ_ACCESSION_CANDIDATE_20261016_R1/04_R20_FIRST_OPERATIVE_CYCLE_AND_WHOLE_MACHINE_COMMAND_20261016.md) was published `@3194861b75286a13ff0a1645897478f177eb2a42`. The October13 HQ is the predecessor and independent reviewer, not a second new dispatcher. The historical sealed HQ280 pointer remains unchanged.
@@ -66,3 +91,4 @@ Sorok report was read at counterpart **revision2** on canonical `0d551d36ff19dc9
 **Full confidence grade:** exact sourcefree current native/consumer and original specialized GT2 method accepted. New joined E06 and generic GF1 only AUTHOR_POSITIVE. Original 35-wave/productive measured source estate, operative N9/N10W, actor/person/v3 remain UNATTESTED. All statuses are edge-local; a source right HOLD is not an argument to refuse unrelated valid sourcefree positive science.
 
 See the [machine-readable revision3 report](CURRENT_PROGRESS.json), [Astra R3 advisory index](../CROSS_HQ_CONTROL_ROOM/ASTRA_R3_ADVISORY_INDEX_R1.md), [Sorok report](../SOROK_PRODUCT_CONTROL_ROOM/CURRENT_PROGRESS.md), and current [shared grok/progress law](../CROSS_HQ_CONTROL_ROOM/HQ_GROK_AND_PROGRESS_PROTOCOL_R1.md).
+
