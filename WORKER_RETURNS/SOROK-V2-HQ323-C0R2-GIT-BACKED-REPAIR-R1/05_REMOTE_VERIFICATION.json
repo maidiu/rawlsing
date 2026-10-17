@@ -1,0 +1,100 @@
+{
+  "schema": "SOROK_V2_HQ323_C0R2_05_REMOTE_VERIFICATION@1",
+  "verification": "DIRECT_REMOTE_SHA_AND_CHANGED_PATH_AUDIT",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/rabochii-sorok-v2-hq323-c0r2-git-backed-repair-r1",
+  "sealed_startup": "be2822596fc34a3d9e6d04dfb5b4071c1e28184e",
+  "parent_capability_hold": "aac6d7d13ce386598d6e1c147687d9ed64e188b7",
+
+  "evidence_payload_commit": "bb19d78b6adabb1ae592da6d233e7dc7ac712201",
+  "verified_remote_head_at_evidence_payload": "bb19d78b6adabb1ae592da6d233e7dc7ac712201",
+  "sha_match": true,
+  "readback_method": "git ls-remote origin refs/heads/<branch>, then git fetch of the same ref into refs/remotes/origin/c0r2-rb and full tree comparison",
+  "readback_trees_identical": true,
+  "note": "This receipt is sealed by a subsequent commit whose SHA is reported in the delivery message, because a file cannot contain the hash of the commit that contains it.",
+
+  "changed_path_scope_clean": true,
+  "changed_path_audit": {
+    "added": 13,
+    "modified": 1,
+    "removed": 0,
+    "out_of_scope_count": 0,
+    "modified_paths": ["WORKER_RETURNS/SOROK-R3-HQ319-C0P-GENERIC-PORT-POSITIVE-R1/repro/c0p_two_contract_port.py"],
+    "scope_rule": "only WORKER_RETURNS/SOROK-V2-HQ323-C0R2-GIT-BACKED-REPAIR-R1/ and the sourcefree C0P facade"
+  },
+
+  "pre_implementation_capability_gate": {
+    "remote_head_equals_supplied_seal": true,
+    "parent_chain_includes_C0R_HOLD": true,
+    "python_version": "3.11.3",
+    "pytest_version": "9.0.2",
+    "git_toplevel_resolves": true,
+    "E03_present_in_object_database": true,
+    "E04T_present_in_object_database": true,
+    "genuine_git_object_store": true,
+    "native29_staged": "29/29",
+    "native29_crosscheck_vs_C0I_manifest": "29/29 all fields match",
+    "closure_bytes": 859712,
+    "closure_bytes_expected": 859712,
+    "imported_file_identity": "29/29 inside pinned runtime, 0 ambient leaks",
+    "frozen_C0I_court_loaded_unedited": true,
+    "frozen_C0I_blob": "419f5cf1e82fb3f5817f78d48fce79265dd8d3f7",
+    "both_courts_executable_before_change": true,
+    "capability_hold_triggered": false
+  },
+
+  "three_REDs_reproduced_before_repair": {
+    "R1_portability": "RED",
+    "R2_two_contracts": "RED",
+    "R3_SC0_transport": "RED (16 missing WorldReceipt fields)",
+    "frozen_C0I_baseline": "47 PASS / 3 RED / 50",
+    "author_baseline": "49 / 49"
+  },
+
+  "execution_after_repair": {
+    "author_49_unchanged": "49 / 49",
+    "frozen_C0I_50_unchanged": "50 / 50",
+    "adversarial_new": "23 / 23",
+    "courts_aggregated_into_one_percentage": false
+  },
+
+  "preservation": {
+    "nonparent_receipt_hash": "52e10a2fd0ce21b30f535b2786d45d4bd88817f174caa006e5ba7f0589d851ec",
+    "nonparent_preserved": true,
+    "scenario_receipt_hash": "33251a740daff14a0920c4375b0b8577842cf812f5444e07b8313f5730fc3fde",
+    "scenario_preserved": true,
+    "native29_identities_preserved": true,
+    "source_ceilings_preserved": true,
+    "reverse_query_permission_boundaries_preserved": true,
+    "frozen_independent_tests_unmodified": true,
+    "accepted_Pyat_source_unmodified": true,
+    "original_survey_data_unmodified": true,
+    "V3_actors_unmodified": true,
+    "production_semantic_law_unmodified": true,
+    "PRE_MAIN_unmodified": true,
+    "prior_C0R_HOLD_contents_unmodified": true
+  },
+
+  "repairs": {
+    "R1": "RUNTIME derived from the actual imported native module tree; hardcoded /tmp/c0p-runtime removed; AST scan finds no /tmp literal binding; no relocation harness edit required",
+    "R2": "N9 -> GENERIC_WORLD_SELECTION@1.0.0 (WorldReceipt) and N10E_N10W -> GENERIC_ORDERED_POSSIBILITY@1.0.0 (PossibilityReceipt) exposed as genuinely distinct owner-contract outputs to BOTH consumers; not mere tagging",
+    "R3": "literal SC0 WorldReceipt with all 17 required fields (16 were missing) and PossibilityReceipt with all 20; every field derived from genuine native output or typed HOLD; no producer or issuer semantics invented"
+  },
+
+  "typed_holds": {
+    "generated_criteria_echo": "empty array by typed HOLD: adopted law issues no GENERATED_RUNTIME_FACT_REF here",
+    "same_respondent_joint_ref": "null; no cross-source respondent joint exists and none is invented",
+    "composition_mode": "REFUSED",
+    "four_clock_proof": "graded structural only; adopted law supplies valid_at/published_asof/field_time/publication but no independent archival known-at upper bound and no effective/discovered-at revocation timestamps",
+    "K9_K10": "NOT_RUN; not a prerequisite to three-RED repair and not claimed"
+  },
+
+  "verdict": "C0R2_SOURCEFREE_REPAIR_CANDIDATE_PENDING_I2",
+  "self_acceptance": false,
+  "K9_K10_auto_dispatch": false,
+  "semantic_adoption": false,
+  "model_calls": 0,
+  "helper_dispatch": 0,
+  "network_calls": 0,
+  "independent_review": "High/I2 review requested; follows this author return"
+}
