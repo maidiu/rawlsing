@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="8" time="0.449" timestamp="2026-10-17T15:16:18.020277-04:00" hostname="Matthews-MBP.lan"><testcase classname="02_PHASE_A.04_TESTS.test_f6n_phase_a" name="test_n1_rare_category_not_silently_renormalized_into_false_complete" time="0.034"><failure message="AssertionError: rare-category source excluded but a complete S2-only population point was still issued&#10;assert not True">def test_n1_rare_category_not_silently_renormalized_into_false_complete():
+        world = N.rare_renormalization(150)
+        out = run(world)
+        cand = out["candidate"]
+        assert cand is not None
+        support = cand["support"]["Z1"]
+        assert support["excluded_sources"] == ["R1"]
+        full_complete = (cand["distribution"] is not None
+                         and F(cand["uncovered_target_mass"]) == 0
+                         and out["decision"] in COMPLETE_ALLOWED)
+&gt;       assert not full_complete, (
+            "rare-category source excluded but a complete S2-only population point "
+            "was still issued")
+E       AssertionError: rare-category source excluded but a complete S2-only population point was still issued
+E       assert not True
+
+WORKER_RETURNS/PYAT-R29-F6N-INDEPENDENT-NATIVE-F6-COURT-R1/02_PHASE_A/04_TESTS/test_f6n_phase_a.py:62: AssertionError</failure></testcase><testcase classname="02_PHASE_A.04_TESTS.test_f6n_phase_a" name="test_n2_source_scope_risk_substitution_is_refused" time="0.003" /><testcase classname="02_PHASE_A.04_TESTS.test_f6n_phase_a" name="test_n3_mapping_hash_substitution_is_refused" time="0.003" /><testcase classname="02_PHASE_A.04_TESTS.test_f6n_phase_a" name="test_n4_product_ref_substitution_binds_current_source_identity" time="0.009" /><testcase classname="02_PHASE_A.04_TESTS.test_f6n_phase_a" name="test_n5_duplicate_source_identity_is_refused" time="0.003" /><testcase classname="02_PHASE_A.04_TESTS.test_f6n_phase_a" name="test_n6_producer_hash_substitution_is_detectable" time="0.002" /><testcase classname="02_PHASE_A.04_TESTS.test_f6n_phase_a" name="test_n7_machine_independent_relative_staging_is_reproducible" time="0.237" /><testcase classname="02_PHASE_A.04_TESTS.test_f6n_phase_a" name="test_n8_positive_complete_sourcefree_world_is_preserved" time="0.006" /></testsuite></testsuites>

@@ -1,0 +1,31 @@
+{
+  "artifact_sha256": {
+    "01_INHERITED_F6L/02_PHASE_A/01_WORLDS_AND_EXACT_EXPECTATIONS.json": "b1364300a356a7b3ef222b4162fc816c28370ac865d3b86ac8d30926aa4dc5f4",
+    "01_INHERITED_F6L/02_PHASE_A/04_TESTS/test_f6l_phase_a.py": "a9a2a0513a421804ebda13a45c18b466375426a0134bd0063e2f7ae3a4ddfa9e",
+    "02_PHASE_A/00_PREREGISTRATION.md": "fece7e74017a3991be4cbe4f01fa97f8597f9801dc7a4b12c41006d3179d3a64",
+    "02_PHASE_A/01_FROZEN_CONSUMER_CASES.json": "30b32020e7b83d2a2f0fd03d76c200a811dd439fda6e39b9b797531e9015345b",
+    "02_PHASE_A/03_SCRIPTS/build_f6n_cases.py": "aa02ddf25008cf0748973e704579904551ac8291d193ba2fbc6cdf5141e5af26",
+    "02_PHASE_A/03_SCRIPTS/f6n_worlds.py": "06c3e12088a6f06949861d02128a96d3718ca405b1a0352f6abbdb63e258b682",
+    "02_PHASE_A/04_TESTS/test_f6n_phase_a.py": "d4c19695446fc74648fdab78efe6dc71462f5c31d97adb89afeb9f6b49597473",
+    "04_JUNIT/f6l_inherited_phase_a_on_original.xml": "196450ddb0ea6f7c1bd628b15b6edf60d2eb64f5d6b9b5b516f8f29b5ff33879",
+    "04_JUNIT/f6n_phase_a_new_falsifiers_on_original.xml": "bddf91b625b735f51ce4b059dbbbdb726648e293ca6b11e5be83d1a37059fcf4"
+  },
+  "branch": "agent/reviewer-pyat-r29-f6n-independent-f6m-native-consumer-court-r1",
+  "f6m_content_read_before_freeze": false,
+  "f6m_tip_observed_at_freeze": "1a6096f263623e57b77c7b70b5fcfb23cdebdad8",
+  "freeze_utc": "2026-10-17T19:16:37Z",
+  "frozen_before_f6m_content_read": true,
+  "inherited_f6l": "6060adfac10f80020ed8e52cf2736467112d57c1",
+  "note": "Exact remote Phase-A SHA is reported after push; this receipt is committed with the freeze.",
+  "original_producer_blob": "fc5e37fa5b2f0eb689593b42d95479d1327cb94c",
+  "phase_a_original_reproduction": {
+    "f6l_inherited": "15 PASS / 11 RED (preserved)",
+    "f6n_new": "7 PASS / 1 RED (N1 rare renormalization; expected unsafe on original)",
+    "junit": [
+      "04_JUNIT/f6l_inherited_phase_a_on_original.xml",
+      "04_JUNIT/f6n_phase_a_new_falsifiers_on_original.xml"
+    ]
+  },
+  "schema": "PYAT_R29_F6N_PHASE_A_FREEZE_RECEIPT@1",
+  "sealed_startup": "44700b0445673fad11c4f9779345d2920aeddd56"
+}

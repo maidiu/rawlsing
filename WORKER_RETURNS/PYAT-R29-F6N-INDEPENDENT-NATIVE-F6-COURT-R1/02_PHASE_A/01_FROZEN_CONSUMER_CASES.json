@@ -1,0 +1,144 @@
+{
+  "cases": [
+    {
+      "expected_actual_is_unsafe": true,
+      "expected_actual_pre_repair": {
+        "candidate_distribution_present": true,
+        "decision": "SYNTHETIC_CANDIDATE",
+        "excluded_source": "R1",
+        "s2_only_distribution": [
+          "1/8",
+          "1/8",
+          "1/8",
+          "1/8",
+          "1/4",
+          "1/4"
+        ],
+        "uncovered_target_mass": "0"
+      },
+      "expected_safe": "candidate.distribution is None, or uncovered_target_mass > 0, or a typed partial/no-complete decision; R1 exclusion remains visible; no complete renormalized population point",
+      "id": "N1_RARE_CATEGORY_RENORMALIZATION",
+      "question": "A rare-category source is excluded by aggregate support. Does the producer avoid a false complete S2-only population estimate?",
+      "world_id": "F6N_RARE_CATEGORY_RENORMALIZATION"
+    },
+    {
+      "expected_actual_is_unsafe": false,
+      "expected_actual_pre_repair": {
+        "candidate_none": true,
+        "decision": "SOURCE_INDEXED_BACKOFF",
+        "refusal": "TARGET_SCOPE_MISMATCH"
+      },
+      "expected_safe": "decision SOURCE_INDEXED_BACKOFF; candidate None; refusal TARGET_SCOPE_MISMATCH; no supported target joint",
+      "id": "N2_SCOPE_RISK_SUBSTITUTION",
+      "question": "A source population scope substituted away from the target must produce a typed source-indexed refusal, not a complete target joint.",
+      "world_id": "F6N_SCOPE_MISMATCH"
+    },
+    {
+      "expected_actual_is_unsafe": false,
+      "expected_actual_pre_repair": {
+        "candidate_none": true,
+        "decision": "SOURCE_INDEXED_BACKOFF",
+        "refusal": "MAPPING_REVIEW_PREIMAGE_MISMATCH"
+      },
+      "expected_safe": "decision SOURCE_INDEXED_BACKOFF; candidate None; MAPPING_REVIEW_PREIMAGE_MISMATCH; no supported target joint",
+      "id": "N3_MAPPING_HASH_SUBSTITUTION",
+      "question": "Changing source mapping material while leaving the policy mapping hash stale must refuse the source.",
+      "world_id": "F6N_MAPPING_HASH_SUBSTITUTION"
+    },
+    {
+      "expected_actual_is_unsafe": false,
+      "expected_actual_pre_repair": {
+        "content_hash_changes": true,
+        "input_hashes_match_current_sources": true,
+        "measured_parent_refs": [
+          "F6L_PRODUCT_S2",
+          "F6L_PRODUCT_S1"
+        ]
+      },
+      "expected_safe": "measured_parent_ref follows the substituted product_ref; baseline input_hash equals semantic_hash(current source); content hash changes versus pristine",
+      "id": "N4_PRODUCT_REF_SUBSTITUTION",
+      "question": "A same-cardinality product_ref swap between two sources must bind each measured parent identity to the current source, not a stale identity.",
+      "world_id": "F6N_PRODUCT_REF_SUBSTITUTION"
+    },
+    {
+      "expected_actual_is_unsafe": false,
+      "expected_actual_pre_repair": {
+        "candidate_none": true,
+        "decision": "SOURCE_INDEXED_BACKOFF",
+        "overlap_reason": "DUPLICATE_SAMPLE"
+      },
+      "expected_safe": "decision SOURCE_INDEXED_BACKOFF; candidate None; overlap reason DUPLICATE_SAMPLE; no supported target joint",
+      "id": "N5_DUPLICATE_SOURCE_IDENTITY",
+      "question": "Two sources with the same product/survey/sample identity must be refused as a duplicate sample.",
+      "world_id": "F6N_DUPLICATE_SOURCE_IDENTITY"
+    },
+    {
+      "expected_actual_is_unsafe": false,
+      "expected_actual_pre_repair": {
+        "guard_accepts_pinned": true,
+        "guard_rejects_mutated": true
+      },
+      "expected_safe": "guard accepts the exact pinned producer and rejects a mutated copy; no mutated producer is executed",
+      "id": "N6_PRODUCER_HASH_SUBSTITUTION_GUARD",
+      "question": "A one-byte producer mutation must be detectable by an independent blob/hash guard before import.",
+      "world_id": "PRODUCER_IDENTITY_GUARD"
+    },
+    {
+      "expected_actual_is_unsafe": false,
+      "expected_actual_pre_repair": {
+        "content_hashes_equal": true,
+        "symlink_free_stage": true
+      },
+      "expected_safe": "two subprocess roots import their own producer and produce byte-identical content_hash; no machine-absolute symlink",
+      "id": "N7_MACHINE_INDEPENDENT_STAGING",
+      "question": "The same pinned source and worlds copied to two independent relative roots must produce the same content hash.",
+      "world_id": "F6N_POSITIVE_COMPLETE_SOURCEFREE"
+    },
+    {
+      "expected_actual_is_unsafe": false,
+      "expected_actual_pre_repair": {
+        "conditional_yes_given_low": "1/3",
+        "decision": "SYNTHETIC_CANDIDATE",
+        "distribution_present": true,
+        "joint": [
+          "1/3",
+          "1/6",
+          "1/6",
+          "1/3"
+        ]
+      },
+      "expected_safe": "distribution present; sum 1; exact joint 1/3,1/6,1/6,1/3; conditional P(YES|LOW)=1/3; decision complete",
+      "id": "N8_POSITIVE_COMPLETE_SOURCEFREE",
+      "question": "A valid complete sourcefree target world must remain an exact complete positive with a usable consumer.",
+      "world_id": "F6N_POSITIVE_COMPLETE_SOURCEFREE"
+    }
+  ],
+  "decision_law": {
+    "complete_token_only_when": "candidate.distribution is not None and uncovered_target_mass == 0",
+    "incomplete_tokens": [
+      "PARTIAL",
+      "NO_COMPLETE",
+      "INCOMPLETE",
+      "BACKOFF",
+      "UNIDENTIFIED"
+    ],
+    "no_new_original_source_right": true,
+    "test_only_never_real_use": true
+  },
+  "inherited_f6l_oracle_sha256": "b1364300a356a7b3ef222b4162fc816c28370ac865d3b86ac8d30926aa4dc5f4",
+  "inherited_f6l_tip": "6060adfac10f80020ed8e52cf2736467112d57c1",
+  "native_under_test": {
+    "method": "PRE553_TARGET_JOINT_STANDARDIZATION@1",
+    "producer_blob": "fc5e37fa5b2f0eb689593b42d95479d1327cb94c",
+    "source_commit": "1428c2e92bce1a49efd87378cb23df936d646dc5"
+  },
+  "ordering_attestation": {
+    "f6j_freeze_preserved": true,
+    "f6l_phase_a_preserved": true,
+    "f6m_candidate_read_before_this_freeze": false,
+    "f6m_report_read_before_this_freeze": false
+  },
+  "role": "independent F6L scientific-review continuation; NOT F6M/F6C author or HQ",
+  "schema": "PYAT_R29_F6N_FROZEN_CONSUMER_CASES@1",
+  "sealed_startup": "44700b0445673fad11c4f9779345d2920aeddd56"
+}

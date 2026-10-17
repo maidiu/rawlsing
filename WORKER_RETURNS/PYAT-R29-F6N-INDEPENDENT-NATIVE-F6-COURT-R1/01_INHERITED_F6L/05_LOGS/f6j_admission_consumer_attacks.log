@@ -1,0 +1,16 @@
+[FALSIFIED] A1_REAL_SOURCE_UNQUALIFIED_ADMIT_LAMBDA
+        observed: {'accepted': True, 'error': None, 'admit_invocations': 4, 'any_identity_check': False, 'any_scope_check': False, 'any_operation_check': False, 'any_permission_check': False, 'phases': ['SOURCE_INDEXED_BASELINE', 'SOURCE_INDEXED_BASELINE', 'TARGET_JOINT_STANDARDIZATION', 'TARGET_JOINT_STANDARDIZATION']}
+[PRESERVED_CORRECTLY] A2_REAL_SOURCE_WITHOUT_ADMIT_REFUSES
+        observed: {'refused': True, 'error': 'real source baseline lacks external owner admission'}
+[FALSIFIED] A3_SYNTHETIC_SOURCE_BYPASSES_ADMISSION_GATE_ENTIRELY
+        observed: {'admit_invocations': 0, 'gate_applied_to_synthetic_sources': False}
+[PRESERVED_CORRECTLY] C1_CONSUMER_CONDITIONAL_CONTRACT
+        observed: {'normal': {'state': 'SUPPORTED_MODEL', 'probabilities': {'U': '4/5', 'V': '1/5'}, 'model_denominator_mass': '1/2', 'observed_denominator': None, 'uncertainty': 'CONDITIONAL_UNCERTAINTY_NOT_IDENTIFIED'}, 'self_conditioning': {'state': 'DESCRIPTIVE_SELF_CONDITIONING', 'self_conditioning_status': 'OUTCOME_LEAKAGE_TAUTOLOGY'}, 'category_outside_support': {'refused': False}}
+[PRESERVED_CORRECTLY] C2_FRECHET_UNIDENTIFIED_CROSS_CHANNEL
+        observed: {'evidence_mode': 'INFERRED', 'dependence': 'UNIDENTIFIED', 'lower': '0', 'upper': '1/2', 'independence_scenario': '1/4', 'scenario_is_measured': False}
+[PRESERVED_CORRECTLY] C3_SENSITIVITY_ENVELOPE_HAS_NO_COVERAGE_PROBABILITY
+        observed: {'lower': '13/200', 'upper': '14/25', 'halfwidth': '99/400', 'point_estimate': '5/16', 'coverage_probability_available': False, 'sampling_status': 'UNKNOWN_DESIGN', 'sampling_variance_present': False}
+[PRESERVED_CORRECTLY] C4_REPLAY_AND_CONTENT_HASH_PRESERVED
+        observed: {'content_hash_present': True, 'content_hash_len': 64, 'replay_keys': ['policy', 'sources', 'target'], 'evidence_graph_nodes': 3}
+
+recorded 7 attack findings

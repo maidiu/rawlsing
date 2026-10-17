@@ -1,0 +1,3482 @@
+{
+  "branch": "agent/reviewer-pyat-r28-f6l-independent-f6k-frozen-consumer-court-r1",
+  "cases": [
+    {
+      "expected_actual_is_unsafe": true,
+      "expected_actual_pre_repair": {
+        "candidate_distribution": null,
+        "consumer_reason": "NO_COMPLETE_TARGET_JOINT",
+        "consumer_state": "UNAVAILABLE",
+        "decision": "SYNTHETIC_CANDIDATE",
+        "uncovered_target_mass": "1/5"
+      },
+      "expected_good_conditional_result": {
+        "consumer": "UNAVAILABLE/NO_COMPLETE_TARGET_JOINT",
+        "covered_subprobability": [
+          "8/25",
+          "2/25",
+          "2/25",
+          "8/25"
+        ],
+        "covered_sum": "4/5",
+        "distribution": null,
+        "lower": [
+          "2/25",
+          "2/25",
+          "2/25",
+          "2/25"
+        ],
+        "uncovered_target_mass": "1/5",
+        "upper": [
+          "19/25",
+          "7/25",
+          "7/25",
+          "19/25"
+        ]
+      },
+      "expected_safe_status": "decision must not assert a complete synthetic target joint; partial/no-complete typed status required; covered bounds must remain readable",
+      "id": "P1_ORIGINAL_UNCOVERED_WORLD",
+      "question": "Does the original uncovered-mass world keep null distribution, 4/5 covered mass and widened upper bounds without issuing a complete-target decision?",
+      "world": "F6L_P1_ORIGINAL_F6C_WORLD_B_UNCOVERED"
+    },
+    {
+      "expected_actual_is_unsafe": true,
+      "expected_actual_pre_repair": {
+        "candidate_distribution": null,
+        "decision": "SYNTHETIC_CANDIDATE",
+        "uncovered_target_mass": "1/3"
+      },
+      "expected_good_conditional_result": {
+        "covered_subprobability_sum": "2/3",
+        "distribution": null,
+        "exact_joint_covered_subprobability": "3/20, 11/60, 11/60, 3/20",
+        "exact_lower": "1/15, 1/10, 1/6, 2/15",
+        "exact_upper": "17/30, 3/5, 8/15, 1/2",
+        "uncovered_target_mass": "1/3"
+      },
+      "expected_safe_status": "no complete-target token; typed partial/no-complete status; conditional consumer UNAVAILABLE",
+      "id": "P2_NOVEL_2X2_NO_POSITIVITY",
+      "question": "A novel 2x2 world whose second target stratum is covered by no source: are exact covered masses preserved and is a null distribution never served as a complete joint?",
+      "world": "F6L_P2_NOVEL_2X2_UNCOVERED_THIRD"
+    },
+    {
+      "expected_actual_is_unsafe": true,
+      "expected_actual_pre_repair": {
+        "candidate_distribution": null,
+        "decision": "SYNTHETIC_CANDIDATE",
+        "uncovered_target_mass": "1/4"
+      },
+      "expected_good_conditional_result": {
+        "covered_subprobability_sum": "3/4",
+        "distribution": null,
+        "exact_joint_covered_subprobability": "9/80, 9/80, 3/20, 3/16, 9/80, 3/40",
+        "exact_lower": "3/40, 3/40, 3/40, 3/20, 3/40, 3/40",
+        "exact_upper": "2/5, 2/5, 19/40, 19/40, 2/5, 13/40",
+        "uncovered_target_mass": "1/4"
+      },
+      "expected_safe_status": "no complete-target token; typed partial/no-complete status; six covered bounds preserved",
+      "id": "P3_NOVEL_3_CATEGORY_NO_POSITIVITY",
+      "question": "A novel 3x2 world with a 1/4 uncovered target stratum: are six covered cells and bounds exact and is the decision partial?",
+      "world": "F6L_P3_NOVEL_3X2_UNCOVERED_QUARTER"
+    },
+    {
+      "expected_actual_is_unsafe": true,
+      "expected_actual_pre_repair": {
+        "admission_required": true,
+        "callback_identity_scope_operation_permission_checks": 0,
+        "callback_invocations": 4,
+        "decision": "INFERRED_CANDIDATE_REQUIRES_REVIEW",
+        "mapped_authority_ceiling": "ABSENT",
+        "native_authority_ceiling": "EXTERNAL_OWNER_ADMISSION_FOR_REAL_USE"
+      },
+      "expected_good_conditional_result": {
+        "unchanged_arithmetic": "P11 exact joint remains available; arithmetic is not the contested object"
+      },
+      "expected_safe_status": "no EXTERNAL_OWNER_ADMISSION_FOR_REAL_USE claim from an unverified boolean; either refuse or ceiling UNVERIFIED/TEST_ONLY; owner boundary remains UNVERIFIED",
+      "id": "P4_FORGED_REAL_SOURCE_ADMIT_TRUE",
+      "question": "Can a caller-supplied admit=lambda True forge EXTERNAL_OWNER_ADMISSION_FOR_REAL_USE for two real sources?",
+      "world": "F6L_P11_COMPLETE_POSITIVE"
+    },
+    {
+      "expected_actual_is_unsafe": true,
+      "expected_actual_pre_repair": {
+        "callback_invocations": 0,
+        "decision": "SYNTHETIC_CANDIDATE",
+        "mapped_authority_ceiling": "ABSENT",
+        "native_authority_ceiling": "EXTERNAL_OWNER_ADMISSION_FOR_REAL_USE",
+        "test_origin": true
+      },
+      "expected_good_conditional_result": {
+        "arithmetic": "complete positive joint remains exact"
+      },
+      "expected_safe_status": "test-only output may remain complete synthetic test output, but no node may claim real-source authority; test flag is not authentication",
+      "id": "P5_TEST_ORIGIN_BYPASS",
+      "question": "Does caller-declared test_origin=True bypass admission entirely and still let test-only nodes claim real-use authority?",
+      "world": "F6L_P11_COMPLETE_POSITIVE"
+    },
+    {
+      "expected_actual_is_unsafe": true,
+      "expected_actual_pre_repair": {
+        "accepted": true,
+        "callback_invocations_for_declared_test_source": 0,
+        "callback_invocations_for_real_source": 2,
+        "decision": "INFERRED_CANDIDATE_REQUIRES_REVIEW",
+        "native_authority_ceiling": "EXTERNAL_OWNER_ADMISSION_FOR_REAL_USE",
+        "test_origin": false
+      },
+      "expected_good_conditional_result": {
+        "arithmetic": "exact joint for the declared tables"
+      },
+      "expected_safe_status": "refuse mixed-origin real output, or keep whole output test-only/unverified; never emit real-use authority for an unverified source",
+      "id": "P5B_MIXED_ORIGIN_CONTAMINATION",
+      "question": "Can one caller-declared test source bypass admission while a genuinely real source is admitted, producing a real-looking output that contains unverified test data?",
+      "world": "F6L_P11_COMPLETE_POSITIVE"
+    },
+    {
+      "expected_actual_is_unsafe": false,
+      "expected_actual_pre_repair": {
+        "raises_SynthesisError": true
+      },
+      "expected_good_conditional_result": {
+        "arithmetic": "no output; refusal is correct"
+      },
+      "expected_safe_status": "SynthesisError, no candidate, no authority graph",
+      "id": "P6_MISSING_OWNER_FAIL_CLOSED",
+      "question": "With real sources and admit=None, does the producer still fail closed?",
+      "world": "F6L_P11_COMPLETE_POSITIVE"
+    },
+    {
+      "expected_actual_is_unsafe": true,
+      "expected_actual_pre_repair": {
+        "mapped_nodes_missing_authority_ceiling": true,
+        "mapped_nodes_missing_value_hash": true,
+        "test_only_native_ceiling": "EXTERNAL_OWNER_ADMISSION_FOR_REAL_USE"
+      },
+      "expected_good_conditional_result": {
+        "arithmetic": "complete positive joint remains exact"
+      },
+      "expected_safe_status": "every node has authority_ceiling + provenance; mapped ceiling <= native; target_joint <= parents; test-only output never claims real use",
+      "id": "P7_MAPPED_NODE_AUTHORITY_CEILING",
+      "question": "Does every mapped:* graph node retain authority_ceiling/provenance and no more privilege than its native parent?",
+      "world": "F6L_P11_COMPLETE_POSITIVE"
+    },
+    {
+      "expected_actual_is_unsafe": true,
+      "expected_actual_pre_repair": {
+        "min_150_decision": "SYNTHETIC_CANDIDATE",
+        "min_150_distribution": "1/4,1/4,1/4,1/4",
+        "min_150_excluded_sources": [
+          "S1"
+        ],
+        "min_150_uncovered_target_mass": "0",
+        "min_1_decision": "SYNTHETIC_CANDIDATE",
+        "min_5_decision": "SYNTHETIC_CANDIDATE"
+      },
+      "expected_good_conditional_result": {
+        "min_150_excludes": "S1",
+        "min_150_silent_renormalization_is_unsafe": true,
+        "min_1_joint": "7/50, 9/25, 1/4, 1/4",
+        "min_5_joint_equals_min_1": true,
+        "minority_cell_n": 3,
+        "minority_cell_survives_threshold_5": true
+      },
+      "expected_safe_status": "truthful total-stratum naming; when S1 is excluded, do not present the S2-only complete joint as a complete target joint without a bound/status consequence",
+      "id": "P8_DISTRIBUTED_SUPPORT_MINORITY",
+      "question": "Is minimum_raw_support a total-stratum gate rather than a minority-cell guard, and when it excludes a source is the exclusion surfaced as bounded/partial consequence instead of silent renormalization?",
+      "world": "F6L_P8_DISTRIBUTED_SUPPORT_MINORITY"
+    },
+    {
+      "expected_actual_is_unsafe": true,
+      "expected_actual_pre_repair": {
+        "decision": "SYNTHETIC_CANDIDATE",
+        "decision_only_consumer": "CONSUMED_AS_COMPLETE",
+        "distribution_reader_consumer": "NO_COMPLETE_TARGET_JOINT"
+      },
+      "expected_good_conditional_result": {
+        "covered_subprobability_sum": "2/3",
+        "distribution": null
+      },
+      "expected_safe_status": "decision-only consumer must not read a complete candidate; status must agree with candidate.distribution is None",
+      "id": "P9_STATUS_VS_ACTUAL_DISTRIBUTION",
+      "question": "Can a decision-only downstream consumer mistake a null distribution for a complete candidate?",
+      "world": "F6L_P2_NOVEL_2X2_UNCOVERED_THIRD"
+    },
+    {
+      "expected_actual_is_unsafe": false,
+      "expected_actual_pre_repair": {
+        "expected_to_match": true
+      },
+      "expected_good_conditional_result": {
+        "differs_from_P11": true,
+        "exact_joint": "5/16, 3/16, 3/16, 5/16"
+      },
+      "expected_safe_status": "exact rational arithmetic follows the actual substituted source bytes; no stale/overwritten table",
+      "id": "P10_ARITHMETIC_SOURCE_SUBSTITUTION",
+      "question": "Does substituting one source table move the exact joint to the independently recomputed target without moving identities or weights?",
+      "world": "F6L_P10_SOURCE_SUBSTITUTION"
+    },
+    {
+      "expected_actual_is_unsafe": false,
+      "expected_actual_pre_repair": {
+        "consumer_state": "SUPPORTED_MODEL",
+        "decision": "SYNTHETIC_CANDIDATE",
+        "distribution_present": true
+      },
+      "expected_good_conditional_result": {
+        "conditional_yes_given_low": "1/3",
+        "consumer_state": "SUPPORTED_MODEL",
+        "covered_sum": "1",
+        "exact_joint": "1/3, 1/6, 1/6, 1/3",
+        "exact_lower": "1/6, 1/6, 1/6, 1/6",
+        "exact_upper": "1/2, 1/6, 1/6, 1/2",
+        "uncovered_target_mass": "0"
+      },
+      "expected_safe_status": "complete target joint remains available; useful positive result must not be suppressed",
+      "id": "P11_GENUINE_COMPLETE_TARGET_POSITIVE",
+      "question": "Does a genuinely positive complete target still yield a complete exact joint, supported consumer and non-null distribution?",
+      "world": "F6L_P11_COMPLETE_POSITIVE"
+    }
+  ],
+  "decision_policy_preregistered": {
+    "complete_allowed_only_when": "candidate.distribution is not None and uncovered_target_mass == 0",
+    "forbidden_on_null_distribution": [
+      "SYNTHETIC_CANDIDATE"
+    ],
+    "real_source_authority_from_unverified_callback": "FORBIDDEN",
+    "safe_incomplete_markers": [
+      "PARTIAL",
+      "NO_COMPLETE",
+      "INCOMPLETE",
+      "BACKOFF",
+      "UNIDENTIFIED"
+    ],
+    "test_origin_self_declaration": "NEVER_AUTHENTICATES_REAL_SOURCE"
+  },
+  "method_boundary": {
+    "no_N9_OC05_N11_N12_actor": true,
+    "no_original_measured_f6": true,
+    "no_person_or_cross_survey_link": true,
+    "sourcefree_only": true
+  },
+  "native_under_test": {
+    "candidate_context": "9aa0e7d3a0cf9ab7654ce8e3d5cb15060235a48f",
+    "commit": "1428c2e92bce1a49efd87378cb23df936d646dc5",
+    "empirical_objects_blob": "a61365b994e5c3c50de0f598fcf40e90abf757b6",
+    "f6j_freeze": "e476ccc090ae0175a540e94c5c382d7e2a8453f0",
+    "f6j_review": "825b2d8050b550f1d52d3129883584fee2ef36c2",
+    "producer_blob": "fc5e37fa5b2f0eb689593b42d95479d1327cb94c"
+  },
+  "ordering_attestation": {
+    "basis": "F6J/F6C public returns and the pinned native bytes only",
+    "f6k_candidate_read_before_this_freeze": false,
+    "f6k_report_read_before_this_freeze": false,
+    "native_executed_by_build_script": false,
+    "native_imported_by_expectation_engine": false
+  },
+  "repository": "maidiu/rawlsing",
+  "role": "independent F6J scientific reviewer continuation (F6L); not F6K author, not HQ",
+  "schema": "PYAT_R28_F6L_PHASE_A_PREREGISTRATION@1",
+  "sealed_startup": "31123f370af50bdf036cab32dd6d7594b36a5f22",
+  "worlds": [
+    {
+      "axes": [
+        "material_security",
+        "employment_position"
+      ],
+      "case": "P1_ORIGINAL_UNCOVERED_WORLD",
+      "exact_expectations": {
+        "coverage": {
+          "majority": {
+            "eligible": [
+              "A",
+              "B"
+            ],
+            "excluded": [],
+            "target_share": "3/5"
+          },
+          "minority": {
+            "eligible": [
+              "A",
+              "B"
+            ],
+            "excluded": [],
+            "target_share": "1/5"
+          },
+          "remote_territory": {
+            "eligible": [],
+            "excluded": [
+              "A",
+              "B"
+            ],
+            "target_share": "1/5"
+          }
+        },
+        "covered_subprobability_sum": "4/5",
+        "distribution_is_complete": false,
+        "exact_bias_sensitivity": {
+          "lower": {
+            "('insecure', 'formal')": "1/50",
+            "('insecure', 'informal')": "1/50",
+            "('secure', 'formal')": "1/50",
+            "('secure', 'informal')": "1/50"
+          },
+          "radius": "3/50",
+          "upper": {
+            "('insecure', 'formal')": "17/50",
+            "('insecure', 'informal')": "41/50",
+            "('secure', 'formal')": "41/50",
+            "('secure', 'informal')": "17/50"
+          }
+        },
+        "exact_joint_covered_subprobability": {
+          "('insecure', 'formal')": "2/25",
+          "('insecure', 'informal')": "8/25",
+          "('secure', 'formal')": "8/25",
+          "('secure', 'informal')": "2/25"
+        },
+        "exact_lower": {
+          "('insecure', 'formal')": "2/25",
+          "('insecure', 'informal')": "2/25",
+          "('secure', 'formal')": "2/25",
+          "('secure', 'informal')": "2/25"
+        },
+        "exact_upper": {
+          "('insecure', 'formal')": "7/25",
+          "('insecure', 'informal')": "19/25",
+          "('secure', 'formal')": "19/25",
+          "('secure', 'informal')": "7/25"
+        },
+        "keys_in_declared_order": [
+          [
+            "secure",
+            "formal"
+          ],
+          [
+            "secure",
+            "informal"
+          ],
+          [
+            "insecure",
+            "formal"
+          ],
+          [
+            "insecure",
+            "informal"
+          ]
+        ],
+        "uncovered_target_mass": "1/5"
+      },
+      "labels": [
+        [
+          "secure",
+          "insecure"
+        ],
+        [
+          "formal",
+          "informal"
+        ]
+      ],
+      "origin": "ORIGINAL_F6C_AUTHOR_WORLD_B",
+      "policy": {
+        "conditional_invariance_ref": "synthetic-F6CB-equal-risk-set-law-assumption@1",
+        "conditional_invariance_status": "REVIEWED_ASSUMPTION",
+        "mapping_bias_radius": "1/100",
+        "mapping_hashes": {
+          "A": "33bd3679026c3f37be921f2f0eb844b3e4e8262dab2cdfeee5fc0cf66ff4c778",
+          "B": "c91fbef41da2bb90d84a17a72c5ff187ca2661f5ccf4a768770f60e4662220e0"
+        },
+        "maximum_joint_cells": 64,
+        "minimum_raw_support": 1,
+        "overlap_reviews": {
+          "A|B": {
+            "review_ref": "synthetic-independent-sampling-B@1",
+            "status": "DISJOINT"
+          }
+        },
+        "policy_ref": "synthetic-F6CB-standardization-decision@1",
+        "scope_review_ref": "synthetic-F6CB-scope-review@1",
+        "source_weights": {
+          "A": 1,
+          "B": 1
+        },
+        "target_share_bias_radius": 0,
+        "target_support_ref": "synthetic-population-register-B@1",
+        "transport_bias_radius": "1/20"
+      },
+      "sources": [
+        {
+          "axes": [
+            {
+              "category_map": {
+                "insecure": "insecure",
+                "secure": "secure"
+              },
+              "construct_ref": "material_security",
+              "instrument_ref": "synthetic-A-instrument@1",
+              "item_ref": "synthetic-A-item-0@1",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "synthetic-A-mapping-0@1",
+              "polarity_ref": "categories-not-score@1",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "synthetic-A-named-response-meanings@1",
+              "review_status": "REVIEWED",
+              "scale_ref": "named-categories@1",
+              "scale_status": "REVIEWED"
+            },
+            {
+              "category_map": {
+                "formal": "formal",
+                "informal": "informal"
+              },
+              "construct_ref": "employment_position",
+              "instrument_ref": "synthetic-A-instrument@1",
+              "item_ref": "synthetic-A-item-1@1",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "synthetic-A-mapping-1@1",
+              "polarity_ref": "categories-not-score@1",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "synthetic-A-named-response-meanings@1",
+              "review_status": "REVIEWED",
+              "scale_ref": "named-categories@1",
+              "scale_status": "REVIEWED"
+            }
+          ],
+          "coadministration_ref": "synthetic-F6CB-A-coadministration@1",
+          "dependence_kind": "MEASURED_SAME_SURVEY_JOINT",
+          "design_ref": "synthetic-F6CB-A-stratified-SRS-fixed-n@1",
+          "joint_frontier_ref": "synthetic-F6CB-two-item-complete@1",
+          "measure_basis": "UNWEIGHTED",
+          "missingness_ref": "synthetic-no-missing@1",
+          "permission_ref": "SYNTHETIC_ONLY",
+          "product_ref": "synthetic-F6CB-A-joint-product@1",
+          "risk_set_ref": "synthetic-F6CB-A-eligible-asked-complete@1",
+          "routing_ref": "synthetic-F6CB-shared-eligibility@1",
+          "sample_id": "independent-F6CB-A",
+          "sampling_limitations": "Invented fixed-stratum SRS tables; no real-source design/coverage validation",
+          "scope": {
+            "boundary_ref": "synthetic-boundary-B@1",
+            "end_year": 2012,
+            "fieldwork_ref": "synthetic-2012-B@1",
+            "geography": "Synthetic Region B",
+            "population": "resident adults in shared eligible/asked work risk set",
+            "start_year": 2012,
+            "unit": "adult respondent"
+          },
+          "source_id": "A",
+          "strata": {
+            "majority": {
+              "cells": [
+                {
+                  "categories": [
+                    "secure",
+                    "formal"
+                  ],
+                  "mass": 70,
+                  "n": 70
+                },
+                {
+                  "categories": [
+                    "secure",
+                    "informal"
+                  ],
+                  "mass": 10,
+                  "n": 10
+                },
+                {
+                  "categories": [
+                    "insecure",
+                    "formal"
+                  ],
+                  "mass": 10,
+                  "n": 10
+                },
+                {
+                  "categories": [
+                    "insecure",
+                    "informal"
+                  ],
+                  "mass": 10,
+                  "n": 10
+                }
+              ],
+              "design_variance": {
+                "cells": [
+                  {
+                    "categories": [
+                      "secure",
+                      "formal"
+                    ],
+                    "variance": "21/10000"
+                  },
+                  {
+                    "categories": [
+                      "secure",
+                      "informal"
+                    ],
+                    "variance": "9/10000"
+                  },
+                  {
+                    "categories": [
+                      "insecure",
+                      "formal"
+                    ],
+                    "variance": "9/10000"
+                  },
+                  {
+                    "categories": [
+                      "insecure",
+                      "informal"
+                    ],
+                    "variance": "9/10000"
+                  }
+                ],
+                "method_ref": "SYNTHETIC_FIXED_STRATUM_MULTINOMIAL_PLUGIN@1"
+              },
+              "eligible_n": 100,
+              "excluded_n": 0,
+              "support_ref": "synthetic-F6CB-A-majority-support@1",
+              "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET"
+            },
+            "minority": {
+              "cells": [
+                {
+                  "categories": [
+                    "secure",
+                    "formal"
+                  ],
+                  "mass": 10,
+                  "n": 10
+                },
+                {
+                  "categories": [
+                    "secure",
+                    "informal"
+                  ],
+                  "mass": 10,
+                  "n": 10
+                },
+                {
+                  "categories": [
+                    "insecure",
+                    "formal"
+                  ],
+                  "mass": 10,
+                  "n": 10
+                },
+                {
+                  "categories": [
+                    "insecure",
+                    "informal"
+                  ],
+                  "mass": 70,
+                  "n": 70
+                }
+              ],
+              "design_variance": {
+                "cells": [
+                  {
+                    "categories": [
+                      "secure",
+                      "formal"
+                    ],
+                    "variance": "9/10000"
+                  },
+                  {
+                    "categories": [
+                      "secure",
+                      "informal"
+                    ],
+                    "variance": "9/10000"
+                  },
+                  {
+                    "categories": [
+                      "insecure",
+                      "formal"
+                    ],
+                    "variance": "9/10000"
+                  },
+                  {
+                    "categories": [
+                      "insecure",
+                      "informal"
+                    ],
+                    "variance": "21/10000"
+                  }
+                ],
+                "method_ref": "SYNTHETIC_FIXED_STRATUM_MULTINOMIAL_PLUGIN@1"
+              },
+              "eligible_n": 100,
+              "excluded_n": 0,
+              "support_ref": "synthetic-F6CB-A-minority-support@1",
+              "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET"
+            }
+          },
+          "survey_lineage": "synthetic-survey-F6CB-A",
+          "test_origin": true,
+          "weight_ref": "unit-weight@1"
+        },
+        {
+          "axes": [
+            {
+              "category_map": {
+                "C1": "secure",
+                "C2": "insecure"
+              },
+              "construct_ref": "material_security",
+              "instrument_ref": "synthetic-B-instrument@1",
+              "item_ref": "synthetic-B-item-0@1",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "synthetic-B-mapping-0@1",
+              "polarity_ref": "categories-not-score@1",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "synthetic-B-named-response-meanings@1",
+              "review_status": "REVIEWED",
+              "scale_ref": "named-categories@1",
+              "scale_status": "REVIEWED"
+            },
+            {
+              "category_map": {
+                "E1": "formal",
+                "E2": "informal"
+              },
+              "construct_ref": "employment_position",
+              "instrument_ref": "synthetic-B-instrument@1",
+              "item_ref": "synthetic-B-item-1@1",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "synthetic-B-mapping-1@1",
+              "polarity_ref": "categories-not-score@1",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "synthetic-B-named-response-meanings@1",
+              "review_status": "REVIEWED",
+              "scale_ref": "named-categories@1",
+              "scale_status": "REVIEWED"
+            }
+          ],
+          "coadministration_ref": "synthetic-F6CB-B-coadministration@1",
+          "dependence_kind": "MEASURED_SAME_SURVEY_JOINT",
+          "design_ref": "synthetic-F6CB-B-stratified-SRS-fixed-n@1",
+          "joint_frontier_ref": "synthetic-F6CB-two-item-complete@1",
+          "measure_basis": "UNWEIGHTED",
+          "missingness_ref": "synthetic-no-missing@1",
+          "permission_ref": "SYNTHETIC_ONLY",
+          "product_ref": "synthetic-F6CB-B-joint-product@1",
+          "risk_set_ref": "synthetic-F6CB-B-eligible-asked-complete@1",
+          "routing_ref": "synthetic-F6CB-shared-eligibility@1",
+          "sample_id": "independent-F6CB-B",
+          "sampling_limitations": "Invented fixed-stratum SRS tables; no real-source design/coverage validation",
+          "scope": {
+            "boundary_ref": "synthetic-boundary-B@1",
+            "end_year": 2012,
+            "fieldwork_ref": "synthetic-2012-B@1",
+            "geography": "Synthetic Region B",
+            "population": "resident adults in shared eligible/asked work risk set",
+            "start_year": 2012,
+            "unit": "adult respondent"
+          },
+          "source_id": "B",
+          "strata": {
+            "majority": {
+              "cells": [
+                {
+                  "categories": [
+                    "C1",
+                    "E1"
+                  ],
+                  "mass": 10,
+                  "n": 10
+                },
+                {
+                  "categories": [
+                    "C1",
+                    "E2"
+                  ],
+                  "mass": 10,
+                  "n": 10
+                },
+                {
+                  "categories": [
+                    "C2",
+                    "E1"
+                  ],
+                  "mass": 10,
+                  "n": 10
+                },
+                {
+                  "categories": [
+                    "C2",
+                    "E2"
+                  ],
+                  "mass": 70,
+                  "n": 70
+                }
+              ],
+              "design_variance": {
+                "cells": [
+                  {
+                    "categories": [
+                      "secure",
+                      "formal"
+                    ],
+                    "variance": "9/10000"
+                  },
+                  {
+                    "categories": [
+                      "secure",
+                      "informal"
+                    ],
+                    "variance": "9/10000"
+                  },
+                  {
+                    "categories": [
+                      "insecure",
+                      "formal"
+                    ],
+                    "variance": "9/10000"
+                  },
+                  {
+                    "categories": [
+                      "insecure",
+                      "informal"
+                    ],
+                    "variance": "21/10000"
+                  }
+                ],
+                "method_ref": "SYNTHETIC_FIXED_STRATUM_MULTINOMIAL_PLUGIN@1"
+              },
+              "eligible_n": 100,
+              "excluded_n": 0,
+              "support_ref": "synthetic-F6CB-B-majority-support@1",
+              "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET"
+            },
+            "minority": {
+              "cells": [
+                {
+                  "categories": [
+                    "C1",
+                    "E1"
+                  ],
+                  "mass": 70,
+                  "n": 70
+                },
+                {
+                  "categories": [
+                    "C1",
+                    "E2"
+                  ],
+                  "mass": 10,
+                  "n": 10
+                },
+                {
+                  "categories": [
+                    "C2",
+                    "E1"
+                  ],
+                  "mass": 10,
+                  "n": 10
+                },
+                {
+                  "categories": [
+                    "C2",
+                    "E2"
+                  ],
+                  "mass": 10,
+                  "n": 10
+                }
+              ],
+              "design_variance": {
+                "cells": [
+                  {
+                    "categories": [
+                      "secure",
+                      "formal"
+                    ],
+                    "variance": "21/10000"
+                  },
+                  {
+                    "categories": [
+                      "secure",
+                      "informal"
+                    ],
+                    "variance": "9/10000"
+                  },
+                  {
+                    "categories": [
+                      "insecure",
+                      "formal"
+                    ],
+                    "variance": "9/10000"
+                  },
+                  {
+                    "categories": [
+                      "insecure",
+                      "informal"
+                    ],
+                    "variance": "9/10000"
+                  }
+                ],
+                "method_ref": "SYNTHETIC_FIXED_STRATUM_MULTINOMIAL_PLUGIN@1"
+              },
+              "eligible_n": 100,
+              "excluded_n": 0,
+              "support_ref": "synthetic-F6CB-B-minority-support@1",
+              "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET"
+            }
+          },
+          "survey_lineage": "synthetic-survey-F6CB-B",
+          "test_origin": true,
+          "weight_ref": "unit-weight@1"
+        }
+      ],
+      "target": {
+        "boundary_ref": "synthetic-boundary-B@1",
+        "clock": {
+          "end_year": 2012,
+          "fieldwork_ref": "synthetic-2012-B@1",
+          "start_year": 2012
+        },
+        "geography": "Synthetic Region B",
+        "population": "resident adults in shared eligible/asked work risk set",
+        "strata": {
+          "majority": "3/5",
+          "minority": "1/5",
+          "remote_territory": "1/5"
+        },
+        "strata_ref": "synthetic-population-register-B@1",
+        "target_id": "SYNTHETIC_F6C_WORLD_B_2012_ADULT_WORK_RISK_SET",
+        "unit": "adult respondent",
+        "year": 2012
+      },
+      "world_id": "F6L_P1_ORIGINAL_F6C_WORLD_B_UNCOVERED"
+    },
+    {
+      "axes": [
+        "F6L_MATERIAL",
+        "F6L_ACTION"
+      ],
+      "case": "P2_NOVEL_2X2_NO_POSITIVITY",
+      "exact_expectations": {
+        "coverage": {
+          "Z1": {
+            "eligible": [
+              "A",
+              "B"
+            ],
+            "excluded": [],
+            "target_share": "2/3"
+          },
+          "Z2": {
+            "eligible": [],
+            "excluded": [
+              "A",
+              "B"
+            ],
+            "target_share": "1/3"
+          }
+        },
+        "covered_subprobability_sum": "2/3",
+        "distribution_is_complete": false,
+        "exact_bias_sensitivity": {
+          "lower": {
+            "('HIGH', 'NO')": "0",
+            "('HIGH', 'YES')": "0",
+            "('LOW', 'NO')": "0",
+            "('LOW', 'YES')": "0"
+          },
+          "radius": "3/10",
+          "upper": {
+            "('HIGH', 'NO')": "5/6",
+            "('HIGH', 'YES')": "4/5",
+            "('LOW', 'NO')": "13/15",
+            "('LOW', 'YES')": "9/10"
+          }
+        },
+        "exact_joint_covered_subprobability": {
+          "('HIGH', 'NO')": "11/60",
+          "('HIGH', 'YES')": "3/20",
+          "('LOW', 'NO')": "3/20",
+          "('LOW', 'YES')": "11/60"
+        },
+        "exact_lower": {
+          "('HIGH', 'NO')": "1/6",
+          "('HIGH', 'YES')": "2/15",
+          "('LOW', 'NO')": "1/15",
+          "('LOW', 'YES')": "1/10"
+        },
+        "exact_upper": {
+          "('HIGH', 'NO')": "8/15",
+          "('HIGH', 'YES')": "1/2",
+          "('LOW', 'NO')": "17/30",
+          "('LOW', 'YES')": "3/5"
+        },
+        "keys_in_declared_order": [
+          [
+            "LOW",
+            "NO"
+          ],
+          [
+            "LOW",
+            "YES"
+          ],
+          [
+            "HIGH",
+            "NO"
+          ],
+          [
+            "HIGH",
+            "YES"
+          ]
+        ],
+        "uncovered_target_mass": "1/3"
+      },
+      "labels": [
+        [
+          "LOW",
+          "HIGH"
+        ],
+        [
+          "NO",
+          "YES"
+        ]
+      ],
+      "origin": "F6L_PREREGISTERED_NEW",
+      "policy": {
+        "conditional_invariance_ref": "F6L_CONDITIONAL_INVARIANCE_REF",
+        "conditional_invariance_status": "REVIEWED_ASSUMPTION",
+        "mapping_bias_radius": "1/10",
+        "mapping_hashes": {
+          "A": "32b97ff26ed38be3d3a49e6172ae95eeb4b0bb631addf17e67be209321927058",
+          "B": "32b97ff26ed38be3d3a49e6172ae95eeb4b0bb631addf17e67be209321927058"
+        },
+        "maximum_joint_cells": 64,
+        "minimum_raw_support": 1,
+        "overlap_reviews": {
+          "A|B": {
+            "review_ref": "F6L_OVERLAP_REVIEW_REF",
+            "status": "DISJOINT"
+          }
+        },
+        "policy_ref": "F6L_POLICY_REF",
+        "scope_review_ref": "F6L_SCOPE_REVIEW_REF",
+        "source_weights": {
+          "A": "1",
+          "B": "1"
+        },
+        "target_share_bias_radius": "1/10",
+        "target_support_ref": "F6L_SYN_STRATA_REF",
+        "transport_bias_radius": "1/10"
+      },
+      "sources": [
+        {
+          "axes": [
+            {
+              "category_map": {
+                "m0": "LOW",
+                "m1": "HIGH"
+              },
+              "construct_ref": "F6L_MATERIAL",
+              "instrument_ref": "F6L_INSTR_A",
+              "item_ref": "F6L_ITEM_A",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "F6L_MAP_A",
+              "polarity_ref": "F6L_POL_A",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "F6L_RESP_A",
+              "review_status": "REVIEWED",
+              "scale_ref": "F6L_SCALE_A",
+              "scale_status": "REVIEWED"
+            },
+            {
+              "category_map": {
+                "a0": "NO",
+                "a1": "YES"
+              },
+              "construct_ref": "F6L_ACTION",
+              "instrument_ref": "F6L_INSTR_B",
+              "item_ref": "F6L_ITEM_B",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "F6L_MAP_B",
+              "polarity_ref": "F6L_POL_B",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "F6L_RESP_B",
+              "review_status": "REVIEWED",
+              "scale_ref": "F6L_SCALE_B",
+              "scale_status": "REVIEWED"
+            }
+          ],
+          "coadministration_ref": "F6L_COADMIN_A",
+          "dependence_kind": "MEASURED_SAME_SURVEY_JOINT",
+          "design_ref": "F6L_DESIGN_A",
+          "joint_frontier_ref": "F6L_FRONTIER_A",
+          "measure_basis": "UNWEIGHTED",
+          "missingness_ref": "F6L_MISSING_A",
+          "permission_ref": "F6L_PERMISSION_A",
+          "product_ref": "F6L_PRODUCT_A",
+          "risk_set_ref": "F6L_RISK_A",
+          "routing_ref": "F6L_ROUTING_A",
+          "sample_id": "F6L_SAMPLE_A",
+          "sampling_limitations": "F6L_SYNTHETIC_SOURCEFREE_ONLY",
+          "scope": {
+            "boundary_ref": "F6L_SYN_BOUNDARY",
+            "end_year": 2005,
+            "fieldwork_ref": "F6L_FIELDWORK_A",
+            "geography": "F6L_SYN_GEO",
+            "population": "F6L_SYN_POP",
+            "start_year": 1995,
+            "unit": "F6L_SYN_PERSON_UNIT"
+          },
+          "source_id": "A",
+          "strata": {
+            "Z1": {
+              "cells": [
+                {
+                  "categories": [
+                    "m0",
+                    "a0"
+                  ],
+                  "mass": 7,
+                  "n": 7
+                },
+                {
+                  "categories": [
+                    "m0",
+                    "a1"
+                  ],
+                  "mass": 3,
+                  "n": 3
+                },
+                {
+                  "categories": [
+                    "m1",
+                    "a0"
+                  ],
+                  "mass": 5,
+                  "n": 5
+                },
+                {
+                  "categories": [
+                    "m1",
+                    "a1"
+                  ],
+                  "mass": 5,
+                  "n": 5
+                }
+              ],
+              "eligible_n": 20,
+              "excluded_n": 0,
+              "support_ref": "F6L_SUPPORT_A_Z1",
+              "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET"
+            }
+          },
+          "survey_lineage": "F6L_LINEAGE_A",
+          "test_origin": true,
+          "weight_ref": "F6L_WEIGHT_A"
+        },
+        {
+          "axes": [
+            {
+              "category_map": {
+                "m0": "LOW",
+                "m1": "HIGH"
+              },
+              "construct_ref": "F6L_MATERIAL",
+              "instrument_ref": "F6L_INSTR_A",
+              "item_ref": "F6L_ITEM_A",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "F6L_MAP_A",
+              "polarity_ref": "F6L_POL_A",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "F6L_RESP_A",
+              "review_status": "REVIEWED",
+              "scale_ref": "F6L_SCALE_A",
+              "scale_status": "REVIEWED"
+            },
+            {
+              "category_map": {
+                "a0": "NO",
+                "a1": "YES"
+              },
+              "construct_ref": "F6L_ACTION",
+              "instrument_ref": "F6L_INSTR_B",
+              "item_ref": "F6L_ITEM_B",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "F6L_MAP_B",
+              "polarity_ref": "F6L_POL_B",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "F6L_RESP_B",
+              "review_status": "REVIEWED",
+              "scale_ref": "F6L_SCALE_B",
+              "scale_status": "REVIEWED"
+            }
+          ],
+          "coadministration_ref": "F6L_COADMIN_B",
+          "dependence_kind": "MEASURED_SAME_SURVEY_JOINT",
+          "design_ref": "F6L_DESIGN_B",
+          "joint_frontier_ref": "F6L_FRONTIER_B",
+          "measure_basis": "UNWEIGHTED",
+          "missingness_ref": "F6L_MISSING_B",
+          "permission_ref": "F6L_PERMISSION_B",
+          "product_ref": "F6L_PRODUCT_B",
+          "risk_set_ref": "F6L_RISK_B",
+          "routing_ref": "F6L_ROUTING_B",
+          "sample_id": "F6L_SAMPLE_B",
+          "sampling_limitations": "F6L_SYNTHETIC_SOURCEFREE_ONLY",
+          "scope": {
+            "boundary_ref": "F6L_SYN_BOUNDARY",
+            "end_year": 2005,
+            "fieldwork_ref": "F6L_FIELDWORK_B",
+            "geography": "F6L_SYN_GEO",
+            "population": "F6L_SYN_POP",
+            "start_year": 1995,
+            "unit": "F6L_SYN_PERSON_UNIT"
+          },
+          "source_id": "B",
+          "strata": {
+            "Z1": {
+              "cells": [
+                {
+                  "categories": [
+                    "m0",
+                    "a0"
+                  ],
+                  "mass": 2,
+                  "n": 2
+                },
+                {
+                  "categories": [
+                    "m0",
+                    "a1"
+                  ],
+                  "mass": 8,
+                  "n": 8
+                },
+                {
+                  "categories": [
+                    "m1",
+                    "a0"
+                  ],
+                  "mass": 6,
+                  "n": 6
+                },
+                {
+                  "categories": [
+                    "m1",
+                    "a1"
+                  ],
+                  "mass": 4,
+                  "n": 4
+                }
+              ],
+              "eligible_n": 20,
+              "excluded_n": 0,
+              "support_ref": "F6L_SUPPORT_B_Z1",
+              "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET"
+            }
+          },
+          "survey_lineage": "F6L_LINEAGE_B",
+          "test_origin": true,
+          "weight_ref": "F6L_WEIGHT_B"
+        }
+      ],
+      "target": {
+        "boundary_ref": "F6L_SYN_BOUNDARY",
+        "geography": "F6L_SYN_GEO",
+        "population": "F6L_SYN_POP",
+        "strata": {
+          "Z1": "2/3",
+          "Z2": "1/3"
+        },
+        "strata_ref": "F6L_SYN_STRATA_REF",
+        "target_id": "F6L_SYN_TARGET",
+        "unit": "F6L_SYN_PERSON_UNIT",
+        "year": 2001
+      },
+      "world_id": "F6L_P2_NOVEL_2X2_UNCOVERED_THIRD"
+    },
+    {
+      "axes": [
+        "F6L_MATERIAL3",
+        "F6L_ACTION3"
+      ],
+      "case": "P3_NOVEL_3_CATEGORY_NO_POSITIVITY",
+      "exact_expectations": {
+        "coverage": {
+          "Z1": {
+            "eligible": [
+              "A3",
+              "B3"
+            ],
+            "excluded": [],
+            "target_share": "3/4"
+          },
+          "Z2": {
+            "eligible": [],
+            "excluded": [
+              "A3",
+              "B3"
+            ],
+            "target_share": "1/4"
+          }
+        },
+        "covered_subprobability_sum": "3/4",
+        "distribution_is_complete": false,
+        "exact_bias_sensitivity": {
+          "lower": {
+            "('HIGH', 'NO')": "0",
+            "('HIGH', 'YES')": "0",
+            "('LOW', 'NO')": "0",
+            "('LOW', 'YES')": "0",
+            "('MID', 'NO')": "0",
+            "('MID', 'YES')": "0"
+          },
+          "radius": "3/10",
+          "upper": {
+            "('HIGH', 'NO')": "7/10",
+            "('HIGH', 'YES')": "5/8",
+            "('LOW', 'NO')": "7/10",
+            "('LOW', 'YES')": "7/10",
+            "('MID', 'NO')": "31/40",
+            "('MID', 'YES')": "31/40"
+          }
+        },
+        "exact_joint_covered_subprobability": {
+          "('HIGH', 'NO')": "9/80",
+          "('HIGH', 'YES')": "3/40",
+          "('LOW', 'NO')": "9/80",
+          "('LOW', 'YES')": "9/80",
+          "('MID', 'NO')": "3/20",
+          "('MID', 'YES')": "3/16"
+        },
+        "exact_lower": {
+          "('HIGH', 'NO')": "3/40",
+          "('HIGH', 'YES')": "3/40",
+          "('LOW', 'NO')": "3/40",
+          "('LOW', 'YES')": "3/40",
+          "('MID', 'NO')": "3/40",
+          "('MID', 'YES')": "3/20"
+        },
+        "exact_upper": {
+          "('HIGH', 'NO')": "2/5",
+          "('HIGH', 'YES')": "13/40",
+          "('LOW', 'NO')": "2/5",
+          "('LOW', 'YES')": "2/5",
+          "('MID', 'NO')": "19/40",
+          "('MID', 'YES')": "19/40"
+        },
+        "keys_in_declared_order": [
+          [
+            "LOW",
+            "NO"
+          ],
+          [
+            "LOW",
+            "YES"
+          ],
+          [
+            "MID",
+            "NO"
+          ],
+          [
+            "MID",
+            "YES"
+          ],
+          [
+            "HIGH",
+            "NO"
+          ],
+          [
+            "HIGH",
+            "YES"
+          ]
+        ],
+        "uncovered_target_mass": "1/4"
+      },
+      "labels": [
+        [
+          "LOW",
+          "MID",
+          "HIGH"
+        ],
+        [
+          "NO",
+          "YES"
+        ]
+      ],
+      "origin": "F6L_PREREGISTERED_NEW",
+      "policy": {
+        "conditional_invariance_ref": "F6L_CONDITIONAL_INVARIANCE_REF",
+        "conditional_invariance_status": "REVIEWED_ASSUMPTION",
+        "mapping_bias_radius": "1/10",
+        "mapping_hashes": {
+          "A3": "ad35da52d60711a5f0c7e21e4a5feebb448817b65ea00a92ba2a1555ddc40cb8",
+          "B3": "ad35da52d60711a5f0c7e21e4a5feebb448817b65ea00a92ba2a1555ddc40cb8"
+        },
+        "maximum_joint_cells": 64,
+        "minimum_raw_support": 1,
+        "overlap_reviews": {
+          "A3|B3": {
+            "review_ref": "F6L_OVERLAP_REVIEW_REF",
+            "status": "DISJOINT"
+          }
+        },
+        "policy_ref": "F6L_POLICY_REF",
+        "scope_review_ref": "F6L_SCOPE_REVIEW_REF",
+        "source_weights": {
+          "A3": "1",
+          "B3": "1"
+        },
+        "target_share_bias_radius": "1/10",
+        "target_support_ref": "F6L_SYN_STRATA_REF",
+        "transport_bias_radius": "1/10"
+      },
+      "sources": [
+        {
+          "axes": [
+            {
+              "category_map": {
+                "m0": "LOW",
+                "m1": "MID",
+                "m2": "HIGH"
+              },
+              "construct_ref": "F6L_MATERIAL3",
+              "instrument_ref": "F6L_INSTR_A",
+              "item_ref": "F6L_ITEM_A",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "F6L_MAP_A",
+              "polarity_ref": "F6L_POL_A",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "F6L_RESP_A",
+              "review_status": "REVIEWED",
+              "scale_ref": "F6L_SCALE_A",
+              "scale_status": "REVIEWED"
+            },
+            {
+              "category_map": {
+                "a0": "NO",
+                "a1": "YES"
+              },
+              "construct_ref": "F6L_ACTION3",
+              "instrument_ref": "F6L_INSTR_B",
+              "item_ref": "F6L_ITEM_B",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "F6L_MAP_B",
+              "polarity_ref": "F6L_POL_B",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "F6L_RESP_B",
+              "review_status": "REVIEWED",
+              "scale_ref": "F6L_SCALE_B",
+              "scale_status": "REVIEWED"
+            }
+          ],
+          "coadministration_ref": "F6L_COADMIN_A3",
+          "dependence_kind": "MEASURED_SAME_SURVEY_JOINT",
+          "design_ref": "F6L_DESIGN_A3",
+          "joint_frontier_ref": "F6L_FRONTIER_A3",
+          "measure_basis": "UNWEIGHTED",
+          "missingness_ref": "F6L_MISSING_A3",
+          "permission_ref": "F6L_PERMISSION_A3",
+          "product_ref": "F6L_PRODUCT_A3",
+          "risk_set_ref": "F6L_RISK_A3",
+          "routing_ref": "F6L_ROUTING_A3",
+          "sample_id": "F6L_SAMPLE_A3",
+          "sampling_limitations": "F6L_SYNTHETIC_SOURCEFREE_ONLY",
+          "scope": {
+            "boundary_ref": "F6L_SYN_BOUNDARY",
+            "end_year": 2005,
+            "fieldwork_ref": "F6L_FIELDWORK_A3",
+            "geography": "F6L_SYN_GEO",
+            "population": "F6L_SYN_POP",
+            "start_year": 1995,
+            "unit": "F6L_SYN_PERSON_UNIT"
+          },
+          "source_id": "A3",
+          "strata": {
+            "Z1": {
+              "cells": [
+                {
+                  "categories": [
+                    "m0",
+                    "a0"
+                  ],
+                  "mass": 10,
+                  "n": 10
+                },
+                {
+                  "categories": [
+                    "m0",
+                    "a1"
+                  ],
+                  "mass": 5,
+                  "n": 5
+                },
+                {
+                  "categories": [
+                    "m1",
+                    "a0"
+                  ],
+                  "mass": 15,
+                  "n": 15
+                },
+                {
+                  "categories": [
+                    "m1",
+                    "a1"
+                  ],
+                  "mass": 10,
+                  "n": 10
+                },
+                {
+                  "categories": [
+                    "m2",
+                    "a0"
+                  ],
+                  "mass": 5,
+                  "n": 5
+                },
+                {
+                  "categories": [
+                    "m2",
+                    "a1"
+                  ],
+                  "mass": 5,
+                  "n": 5
+                }
+              ],
+              "eligible_n": 50,
+              "excluded_n": 0,
+              "support_ref": "F6L_SUPPORT_A3_Z1",
+              "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET"
+            }
+          },
+          "survey_lineage": "F6L_LINEAGE_A3",
+          "test_origin": true,
+          "weight_ref": "F6L_WEIGHT_A3"
+        },
+        {
+          "axes": [
+            {
+              "category_map": {
+                "m0": "LOW",
+                "m1": "MID",
+                "m2": "HIGH"
+              },
+              "construct_ref": "F6L_MATERIAL3",
+              "instrument_ref": "F6L_INSTR_A",
+              "item_ref": "F6L_ITEM_A",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "F6L_MAP_A",
+              "polarity_ref": "F6L_POL_A",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "F6L_RESP_A",
+              "review_status": "REVIEWED",
+              "scale_ref": "F6L_SCALE_A",
+              "scale_status": "REVIEWED"
+            },
+            {
+              "category_map": {
+                "a0": "NO",
+                "a1": "YES"
+              },
+              "construct_ref": "F6L_ACTION3",
+              "instrument_ref": "F6L_INSTR_B",
+              "item_ref": "F6L_ITEM_B",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "F6L_MAP_B",
+              "polarity_ref": "F6L_POL_B",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "F6L_RESP_B",
+              "review_status": "REVIEWED",
+              "scale_ref": "F6L_SCALE_B",
+              "scale_status": "REVIEWED"
+            }
+          ],
+          "coadministration_ref": "F6L_COADMIN_B3",
+          "dependence_kind": "MEASURED_SAME_SURVEY_JOINT",
+          "design_ref": "F6L_DESIGN_B3",
+          "joint_frontier_ref": "F6L_FRONTIER_B3",
+          "measure_basis": "UNWEIGHTED",
+          "missingness_ref": "F6L_MISSING_B3",
+          "permission_ref": "F6L_PERMISSION_B3",
+          "product_ref": "F6L_PRODUCT_B3",
+          "risk_set_ref": "F6L_RISK_B3",
+          "routing_ref": "F6L_ROUTING_B3",
+          "sample_id": "F6L_SAMPLE_B3",
+          "sampling_limitations": "F6L_SYNTHETIC_SOURCEFREE_ONLY",
+          "scope": {
+            "boundary_ref": "F6L_SYN_BOUNDARY",
+            "end_year": 2005,
+            "fieldwork_ref": "F6L_FIELDWORK_B3",
+            "geography": "F6L_SYN_GEO",
+            "population": "F6L_SYN_POP",
+            "start_year": 1995,
+            "unit": "F6L_SYN_PERSON_UNIT"
+          },
+          "source_id": "B3",
+          "strata": {
+            "Z1": {
+              "cells": [
+                {
+                  "categories": [
+                    "m0",
+                    "a0"
+                  ],
+                  "mass": 5,
+                  "n": 5
+                },
+                {
+                  "categories": [
+                    "m0",
+                    "a1"
+                  ],
+                  "mass": 10,
+                  "n": 10
+                },
+                {
+                  "categories": [
+                    "m1",
+                    "a0"
+                  ],
+                  "mass": 5,
+                  "n": 5
+                },
+                {
+                  "categories": [
+                    "m1",
+                    "a1"
+                  ],
+                  "mass": 15,
+                  "n": 15
+                },
+                {
+                  "categories": [
+                    "m2",
+                    "a0"
+                  ],
+                  "mass": 10,
+                  "n": 10
+                },
+                {
+                  "categories": [
+                    "m2",
+                    "a1"
+                  ],
+                  "mass": 5,
+                  "n": 5
+                }
+              ],
+              "eligible_n": 50,
+              "excluded_n": 0,
+              "support_ref": "F6L_SUPPORT_B3_Z1",
+              "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET"
+            }
+          },
+          "survey_lineage": "F6L_LINEAGE_B3",
+          "test_origin": true,
+          "weight_ref": "F6L_WEIGHT_B3"
+        }
+      ],
+      "target": {
+        "boundary_ref": "F6L_SYN_BOUNDARY",
+        "geography": "F6L_SYN_GEO",
+        "population": "F6L_SYN_POP",
+        "strata": {
+          "Z1": "3/4",
+          "Z2": "1/4"
+        },
+        "strata_ref": "F6L_SYN_STRATA_REF",
+        "target_id": "F6L_SYN_TARGET",
+        "unit": "F6L_SYN_PERSON_UNIT",
+        "year": 2001
+      },
+      "world_id": "F6L_P3_NOVEL_3X2_UNCOVERED_QUARTER"
+    },
+    {
+      "axes": [
+        "F6L_MATERIAL",
+        "F6L_ACTION"
+      ],
+      "case": "P11_GENUINE_COMPLETE_TARGET_POSITIVE",
+      "exact_expectations": {
+        "coverage": {
+          "Z1": {
+            "eligible": [
+              "S1",
+              "S2"
+            ],
+            "excluded": [],
+            "target_share": "1/2"
+          },
+          "Z2": {
+            "eligible": [
+              "S1",
+              "S2"
+            ],
+            "excluded": [],
+            "target_share": "1/2"
+          }
+        },
+        "covered_subprobability_sum": "1",
+        "distribution_is_complete": true,
+        "exact_bias_sensitivity": {
+          "lower": {
+            "('HIGH', 'NO')": "0",
+            "('HIGH', 'YES')": "0",
+            "('LOW', 'NO')": "0",
+            "('LOW', 'YES')": "0"
+          },
+          "radius": "3/10",
+          "upper": {
+            "('HIGH', 'NO')": "7/15",
+            "('HIGH', 'YES')": "4/5",
+            "('LOW', 'NO')": "4/5",
+            "('LOW', 'YES')": "7/15"
+          }
+        },
+        "exact_conditional_yes_given_low": {
+          "model_denominator_mass": "1/2",
+          "probabilities": {
+            "NO": "2/3",
+            "YES": "1/3"
+          }
+        },
+        "exact_joint_covered_subprobability": {
+          "('HIGH', 'NO')": "1/6",
+          "('HIGH', 'YES')": "1/3",
+          "('LOW', 'NO')": "1/3",
+          "('LOW', 'YES')": "1/6"
+        },
+        "exact_lower": {
+          "('HIGH', 'NO')": "1/6",
+          "('HIGH', 'YES')": "1/6",
+          "('LOW', 'NO')": "1/6",
+          "('LOW', 'YES')": "1/6"
+        },
+        "exact_upper": {
+          "('HIGH', 'NO')": "1/6",
+          "('HIGH', 'YES')": "1/2",
+          "('LOW', 'NO')": "1/2",
+          "('LOW', 'YES')": "1/6"
+        },
+        "keys_in_declared_order": [
+          [
+            "LOW",
+            "NO"
+          ],
+          [
+            "LOW",
+            "YES"
+          ],
+          [
+            "HIGH",
+            "NO"
+          ],
+          [
+            "HIGH",
+            "YES"
+          ]
+        ],
+        "uncovered_target_mass": "0"
+      },
+      "labels": [
+        [
+          "LOW",
+          "HIGH"
+        ],
+        [
+          "NO",
+          "YES"
+        ]
+      ],
+      "origin": "F6L_PREREGISTERED_NEW",
+      "policy": {
+        "conditional_invariance_ref": "F6L_CONDITIONAL_INVARIANCE_REF",
+        "conditional_invariance_status": "REVIEWED_ASSUMPTION",
+        "mapping_bias_radius": "1/10",
+        "mapping_hashes": {
+          "S1": "32b97ff26ed38be3d3a49e6172ae95eeb4b0bb631addf17e67be209321927058",
+          "S2": "32b97ff26ed38be3d3a49e6172ae95eeb4b0bb631addf17e67be209321927058"
+        },
+        "maximum_joint_cells": 64,
+        "minimum_raw_support": 1,
+        "overlap_reviews": {
+          "S1|S2": {
+            "review_ref": "F6L_OVERLAP_REVIEW_REF",
+            "status": "DISJOINT"
+          }
+        },
+        "policy_ref": "F6L_POLICY_REF",
+        "scope_review_ref": "F6L_SCOPE_REVIEW_REF",
+        "source_weights": {
+          "S1": "3",
+          "S2": "1"
+        },
+        "target_share_bias_radius": "1/10",
+        "target_support_ref": "F6L_SYN_STRATA_REF",
+        "transport_bias_radius": "1/10"
+      },
+      "sources": [
+        {
+          "axes": [
+            {
+              "category_map": {
+                "m0": "LOW",
+                "m1": "HIGH"
+              },
+              "construct_ref": "F6L_MATERIAL",
+              "instrument_ref": "F6L_INSTR_A",
+              "item_ref": "F6L_ITEM_A",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "F6L_MAP_A",
+              "polarity_ref": "F6L_POL_A",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "F6L_RESP_A",
+              "review_status": "REVIEWED",
+              "scale_ref": "F6L_SCALE_A",
+              "scale_status": "REVIEWED"
+            },
+            {
+              "category_map": {
+                "a0": "NO",
+                "a1": "YES"
+              },
+              "construct_ref": "F6L_ACTION",
+              "instrument_ref": "F6L_INSTR_B",
+              "item_ref": "F6L_ITEM_B",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "F6L_MAP_B",
+              "polarity_ref": "F6L_POL_B",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "F6L_RESP_B",
+              "review_status": "REVIEWED",
+              "scale_ref": "F6L_SCALE_B",
+              "scale_status": "REVIEWED"
+            }
+          ],
+          "coadministration_ref": "F6L_COADMIN_S1",
+          "dependence_kind": "MEASURED_SAME_SURVEY_JOINT",
+          "design_ref": "F6L_DESIGN_S1",
+          "joint_frontier_ref": "F6L_FRONTIER_S1",
+          "measure_basis": "UNWEIGHTED",
+          "missingness_ref": "F6L_MISSING_S1",
+          "permission_ref": "F6L_PERMISSION_S1",
+          "product_ref": "F6L_PRODUCT_S1",
+          "risk_set_ref": "F6L_RISK_S1",
+          "routing_ref": "F6L_ROUTING_S1",
+          "sample_id": "F6L_SAMPLE_S1",
+          "sampling_limitations": "F6L_SYNTHETIC_SOURCEFREE_ONLY",
+          "scope": {
+            "boundary_ref": "F6L_SYN_BOUNDARY",
+            "end_year": 2005,
+            "fieldwork_ref": "F6L_FIELDWORK_S1",
+            "geography": "F6L_SYN_GEO",
+            "population": "F6L_SYN_POP",
+            "start_year": 1995,
+            "unit": "F6L_SYN_PERSON_UNIT"
+          },
+          "source_id": "S1",
+          "strata": {
+            "Z1": {
+              "cells": [
+                {
+                  "categories": [
+                    "m0",
+                    "a0"
+                  ],
+                  "mass": 3,
+                  "n": 3
+                },
+                {
+                  "categories": [
+                    "m0",
+                    "a1"
+                  ],
+                  "mass": 1,
+                  "n": 1
+                },
+                {
+                  "categories": [
+                    "m1",
+                    "a0"
+                  ],
+                  "mass": 1,
+                  "n": 1
+                },
+                {
+                  "categories": [
+                    "m1",
+                    "a1"
+                  ],
+                  "mass": 1,
+                  "n": 1
+                }
+              ],
+              "eligible_n": 6,
+              "excluded_n": 0,
+              "support_ref": "F6L_SUPPORT_S1_Z1",
+              "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET"
+            },
+            "Z2": {
+              "cells": [
+                {
+                  "categories": [
+                    "m0",
+                    "a0"
+                  ],
+                  "mass": 1,
+                  "n": 1
+                },
+                {
+                  "categories": [
+                    "m0",
+                    "a1"
+                  ],
+                  "mass": 1,
+                  "n": 1
+                },
+                {
+                  "categories": [
+                    "m1",
+                    "a0"
+                  ],
+                  "mass": 1,
+                  "n": 1
+                },
+                {
+                  "categories": [
+                    "m1",
+                    "a1"
+                  ],
+                  "mass": 3,
+                  "n": 3
+                }
+              ],
+              "eligible_n": 6,
+              "excluded_n": 0,
+              "support_ref": "F6L_SUPPORT_S1_Z2",
+              "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET"
+            }
+          },
+          "survey_lineage": "F6L_LINEAGE_S1",
+          "test_origin": true,
+          "weight_ref": "F6L_WEIGHT_S1"
+        },
+        {
+          "axes": [
+            {
+              "category_map": {
+                "m0": "LOW",
+                "m1": "HIGH"
+              },
+              "construct_ref": "F6L_MATERIAL",
+              "instrument_ref": "F6L_INSTR_A",
+              "item_ref": "F6L_ITEM_A",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "F6L_MAP_A",
+              "polarity_ref": "F6L_POL_A",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "F6L_RESP_A",
+              "review_status": "REVIEWED",
+              "scale_ref": "F6L_SCALE_A",
+              "scale_status": "REVIEWED"
+            },
+            {
+              "category_map": {
+                "a0": "NO",
+                "a1": "YES"
+              },
+              "construct_ref": "F6L_ACTION",
+              "instrument_ref": "F6L_INSTR_B",
+              "item_ref": "F6L_ITEM_B",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "F6L_MAP_B",
+              "polarity_ref": "F6L_POL_B",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "F6L_RESP_B",
+              "review_status": "REVIEWED",
+              "scale_ref": "F6L_SCALE_B",
+              "scale_status": "REVIEWED"
+            }
+          ],
+          "coadministration_ref": "F6L_COADMIN_S2",
+          "dependence_kind": "MEASURED_SAME_SURVEY_JOINT",
+          "design_ref": "F6L_DESIGN_S2",
+          "joint_frontier_ref": "F6L_FRONTIER_S2",
+          "measure_basis": "UNWEIGHTED",
+          "missingness_ref": "F6L_MISSING_S2",
+          "permission_ref": "F6L_PERMISSION_S2",
+          "product_ref": "F6L_PRODUCT_S2",
+          "risk_set_ref": "F6L_RISK_S2",
+          "routing_ref": "F6L_ROUTING_S2",
+          "sample_id": "F6L_SAMPLE_S2",
+          "sampling_limitations": "F6L_SYNTHETIC_SOURCEFREE_ONLY",
+          "scope": {
+            "boundary_ref": "F6L_SYN_BOUNDARY",
+            "end_year": 2005,
+            "fieldwork_ref": "F6L_FIELDWORK_S2",
+            "geography": "F6L_SYN_GEO",
+            "population": "F6L_SYN_POP",
+            "start_year": 1995,
+            "unit": "F6L_SYN_PERSON_UNIT"
+          },
+          "source_id": "S2",
+          "strata": {
+            "Z1": {
+              "cells": [
+                {
+                  "categories": [
+                    "m0",
+                    "a0"
+                  ],
+                  "mass": 1,
+                  "n": 1
+                },
+                {
+                  "categories": [
+                    "m0",
+                    "a1"
+                  ],
+                  "mass": 1,
+                  "n": 1
+                },
+                {
+                  "categories": [
+                    "m1",
+                    "a0"
+                  ],
+                  "mass": 1,
+                  "n": 1
+                },
+                {
+                  "categories": [
+                    "m1",
+                    "a1"
+                  ],
+                  "mass": 3,
+                  "n": 3
+                }
+              ],
+              "eligible_n": 6,
+              "excluded_n": 0,
+              "support_ref": "F6L_SUPPORT_S2_Z1",
+              "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET"
+            },
+            "Z2": {
+              "cells": [
+                {
+                  "categories": [
+                    "m0",
+                    "a0"
+                  ],
+                  "mass": 3,
+                  "n": 3
+                },
+                {
+                  "categories": [
+                    "m0",
+                    "a1"
+                  ],
+                  "mass": 1,
+                  "n": 1
+                },
+                {
+                  "categories": [
+                    "m1",
+                    "a0"
+                  ],
+                  "mass": 1,
+                  "n": 1
+                },
+                {
+                  "categories": [
+                    "m1",
+                    "a1"
+                  ],
+                  "mass": 1,
+                  "n": 1
+                }
+              ],
+              "eligible_n": 6,
+              "excluded_n": 0,
+              "support_ref": "F6L_SUPPORT_S2_Z2",
+              "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET"
+            }
+          },
+          "survey_lineage": "F6L_LINEAGE_S2",
+          "test_origin": true,
+          "weight_ref": "F6L_WEIGHT_S2"
+        }
+      ],
+      "target": {
+        "boundary_ref": "F6L_SYN_BOUNDARY",
+        "geography": "F6L_SYN_GEO",
+        "population": "F6L_SYN_POP",
+        "strata": {
+          "Z1": "1/2",
+          "Z2": "1/2"
+        },
+        "strata_ref": "F6L_SYN_STRATA_REF",
+        "target_id": "F6L_SYN_TARGET",
+        "unit": "F6L_SYN_PERSON_UNIT",
+        "year": 2001
+      },
+      "world_id": "F6L_P11_COMPLETE_POSITIVE"
+    },
+    {
+      "axes": [
+        "F6L_MATERIAL",
+        "F6L_ACTION"
+      ],
+      "case": "P10_ARITHMETIC_SOURCE_SUBSTITUTION",
+      "exact_expectations": {
+        "coverage": {
+          "Z1": {
+            "eligible": [
+              "S1",
+              "S2"
+            ],
+            "excluded": [],
+            "target_share": "1/2"
+          },
+          "Z2": {
+            "eligible": [
+              "S1",
+              "S2"
+            ],
+            "excluded": [],
+            "target_share": "1/2"
+          }
+        },
+        "covered_subprobability_sum": "1",
+        "distribution_is_complete": true,
+        "exact_bias_sensitivity": {
+          "lower": {
+            "('HIGH', 'NO')": "0",
+            "('HIGH', 'YES')": "0",
+            "('LOW', 'NO')": "0",
+            "('LOW', 'YES')": "0"
+          },
+          "radius": "3/10",
+          "upper": {
+            "('HIGH', 'NO')": "11/20",
+            "('HIGH', 'YES')": "19/30",
+            "('LOW', 'NO')": "19/30",
+            "('LOW', 'YES')": "19/30"
+          }
+        },
+        "exact_conditional_yes_given_low": {
+          "model_denominator_mass": "25/48",
+          "probabilities": {
+            "NO": "3/5",
+            "YES": "2/5"
+          }
+        },
+        "exact_joint_covered_subprobability": {
+          "('HIGH', 'NO')": "3/16",
+          "('HIGH', 'YES')": "7/24",
+          "('LOW', 'NO')": "5/16",
+          "('LOW', 'YES')": "5/24"
+        },
+        "exact_lower": {
+          "('HIGH', 'NO')": "1/6",
+          "('HIGH', 'YES')": "1/6",
+          "('LOW', 'NO')": "1/4",
+          "('LOW', 'YES')": "1/6"
+        },
+        "exact_upper": {
+          "('HIGH', 'NO')": "1/4",
+          "('HIGH', 'YES')": "1/3",
+          "('LOW', 'NO')": "1/3",
+          "('LOW', 'YES')": "1/3"
+        },
+        "keys_in_declared_order": [
+          [
+            "LOW",
+            "NO"
+          ],
+          [
+            "LOW",
+            "YES"
+          ],
+          [
+            "HIGH",
+            "NO"
+          ],
+          [
+            "HIGH",
+            "YES"
+          ]
+        ],
+        "uncovered_target_mass": "0"
+      },
+      "labels": [
+        [
+          "LOW",
+          "HIGH"
+        ],
+        [
+          "NO",
+          "YES"
+        ]
+      ],
+      "origin": "F6L_PREREGISTERED_NEW",
+      "policy": {
+        "conditional_invariance_ref": "F6L_CONDITIONAL_INVARIANCE_REF",
+        "conditional_invariance_status": "REVIEWED_ASSUMPTION",
+        "mapping_bias_radius": "1/10",
+        "mapping_hashes": {
+          "S1": "32b97ff26ed38be3d3a49e6172ae95eeb4b0bb631addf17e67be209321927058",
+          "S2": "32b97ff26ed38be3d3a49e6172ae95eeb4b0bb631addf17e67be209321927058"
+        },
+        "maximum_joint_cells": 64,
+        "minimum_raw_support": 1,
+        "overlap_reviews": {
+          "S1|S2": {
+            "review_ref": "F6L_OVERLAP_REVIEW_REF",
+            "status": "DISJOINT"
+          }
+        },
+        "policy_ref": "F6L_POLICY_REF",
+        "scope_review_ref": "F6L_SCOPE_REVIEW_REF",
+        "source_weights": {
+          "S1": "3",
+          "S2": "1"
+        },
+        "target_share_bias_radius": "1/10",
+        "target_support_ref": "F6L_SYN_STRATA_REF",
+        "transport_bias_radius": "1/10"
+      },
+      "sources": [
+        {
+          "axes": [
+            {
+              "category_map": {
+                "m0": "LOW",
+                "m1": "HIGH"
+              },
+              "construct_ref": "F6L_MATERIAL",
+              "instrument_ref": "F6L_INSTR_A",
+              "item_ref": "F6L_ITEM_A",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "F6L_MAP_A",
+              "polarity_ref": "F6L_POL_A",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "F6L_RESP_A",
+              "review_status": "REVIEWED",
+              "scale_ref": "F6L_SCALE_A",
+              "scale_status": "REVIEWED"
+            },
+            {
+              "category_map": {
+                "a0": "NO",
+                "a1": "YES"
+              },
+              "construct_ref": "F6L_ACTION",
+              "instrument_ref": "F6L_INSTR_B",
+              "item_ref": "F6L_ITEM_B",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "F6L_MAP_B",
+              "polarity_ref": "F6L_POL_B",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "F6L_RESP_B",
+              "review_status": "REVIEWED",
+              "scale_ref": "F6L_SCALE_B",
+              "scale_status": "REVIEWED"
+            }
+          ],
+          "coadministration_ref": "F6L_COADMIN_S1",
+          "dependence_kind": "MEASURED_SAME_SURVEY_JOINT",
+          "design_ref": "F6L_DESIGN_S1",
+          "joint_frontier_ref": "F6L_FRONTIER_S1",
+          "measure_basis": "UNWEIGHTED",
+          "missingness_ref": "F6L_MISSING_S1",
+          "permission_ref": "F6L_PERMISSION_S1",
+          "product_ref": "F6L_PRODUCT_S1",
+          "risk_set_ref": "F6L_RISK_S1",
+          "routing_ref": "F6L_ROUTING_S1",
+          "sample_id": "F6L_SAMPLE_S1",
+          "sampling_limitations": "F6L_SYNTHETIC_SOURCEFREE_ONLY",
+          "scope": {
+            "boundary_ref": "F6L_SYN_BOUNDARY",
+            "end_year": 2005,
+            "fieldwork_ref": "F6L_FIELDWORK_S1",
+            "geography": "F6L_SYN_GEO",
+            "population": "F6L_SYN_POP",
+            "start_year": 1995,
+            "unit": "F6L_SYN_PERSON_UNIT"
+          },
+          "source_id": "S1",
+          "strata": {
+            "Z1": {
+              "cells": [
+                {
+                  "categories": [
+                    "m0",
+                    "a0"
+                  ],
+                  "mass": 3,
+                  "n": 3
+                },
+                {
+                  "categories": [
+                    "m0",
+                    "a1"
+                  ],
+                  "mass": 1,
+                  "n": 1
+                },
+                {
+                  "categories": [
+                    "m1",
+                    "a0"
+                  ],
+                  "mass": 1,
+                  "n": 1
+                },
+                {
+                  "categories": [
+                    "m1",
+                    "a1"
+                  ],
+                  "mass": 1,
+                  "n": 1
+                }
+              ],
+              "eligible_n": 6,
+              "excluded_n": 0,
+              "support_ref": "F6L_SUPPORT_S1_Z1",
+              "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET"
+            },
+            "Z2": {
+              "cells": [
+                {
+                  "categories": [
+                    "m0",
+                    "a0"
+                  ],
+                  "mass": 1,
+                  "n": 1
+                },
+                {
+                  "categories": [
+                    "m0",
+                    "a1"
+                  ],
+                  "mass": 1,
+                  "n": 1
+                },
+                {
+                  "categories": [
+                    "m1",
+                    "a0"
+                  ],
+                  "mass": 1,
+                  "n": 1
+                },
+                {
+                  "categories": [
+                    "m1",
+                    "a1"
+                  ],
+                  "mass": 3,
+                  "n": 3
+                }
+              ],
+              "eligible_n": 6,
+              "excluded_n": 0,
+              "support_ref": "F6L_SUPPORT_S1_Z2",
+              "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET"
+            }
+          },
+          "survey_lineage": "F6L_LINEAGE_S1",
+          "test_origin": true,
+          "weight_ref": "F6L_WEIGHT_S1"
+        },
+        {
+          "axes": [
+            {
+              "category_map": {
+                "m0": "LOW",
+                "m1": "HIGH"
+              },
+              "construct_ref": "F6L_MATERIAL",
+              "instrument_ref": "F6L_INSTR_A",
+              "item_ref": "F6L_ITEM_A",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "F6L_MAP_A",
+              "polarity_ref": "F6L_POL_A",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "F6L_RESP_A",
+              "review_status": "REVIEWED",
+              "scale_ref": "F6L_SCALE_A",
+              "scale_status": "REVIEWED"
+            },
+            {
+              "category_map": {
+                "a0": "NO",
+                "a1": "YES"
+              },
+              "construct_ref": "F6L_ACTION",
+              "instrument_ref": "F6L_INSTR_B",
+              "item_ref": "F6L_ITEM_B",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "F6L_MAP_B",
+              "polarity_ref": "F6L_POL_B",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "F6L_RESP_B",
+              "review_status": "REVIEWED",
+              "scale_ref": "F6L_SCALE_B",
+              "scale_status": "REVIEWED"
+            }
+          ],
+          "coadministration_ref": "F6L_COADMIN_S2",
+          "dependence_kind": "MEASURED_SAME_SURVEY_JOINT",
+          "design_ref": "F6L_DESIGN_S2",
+          "joint_frontier_ref": "F6L_FRONTIER_S2",
+          "measure_basis": "UNWEIGHTED",
+          "missingness_ref": "F6L_MISSING_S2",
+          "permission_ref": "F6L_PERMISSION_S2",
+          "product_ref": "F6L_PRODUCT_S2",
+          "risk_set_ref": "F6L_RISK_S2",
+          "routing_ref": "F6L_ROUTING_S2",
+          "sample_id": "F6L_SAMPLE_S2",
+          "sampling_limitations": "F6L_SYNTHETIC_SOURCEFREE_ONLY",
+          "scope": {
+            "boundary_ref": "F6L_SYN_BOUNDARY",
+            "end_year": 2005,
+            "fieldwork_ref": "F6L_FIELDWORK_S2",
+            "geography": "F6L_SYN_GEO",
+            "population": "F6L_SYN_POP",
+            "start_year": 1995,
+            "unit": "F6L_SYN_PERSON_UNIT"
+          },
+          "source_id": "S2",
+          "strata": {
+            "Z1": {
+              "cells": [
+                {
+                  "categories": [
+                    "m0",
+                    "a0"
+                  ],
+                  "mass": 2,
+                  "n": 2
+                },
+                {
+                  "categories": [
+                    "m0",
+                    "a1"
+                  ],
+                  "mass": 2,
+                  "n": 2
+                },
+                {
+                  "categories": [
+                    "m1",
+                    "a0"
+                  ],
+                  "mass": 1,
+                  "n": 1
+                },
+                {
+                  "categories": [
+                    "m1",
+                    "a1"
+                  ],
+                  "mass": 1,
+                  "n": 1
+                }
+              ],
+              "eligible_n": 6,
+              "excluded_n": 0,
+              "support_ref": "F6L_SUPPORT_S2_Z1",
+              "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET"
+            },
+            "Z2": {
+              "cells": [
+                {
+                  "categories": [
+                    "m0",
+                    "a0"
+                  ],
+                  "mass": 1,
+                  "n": 1
+                },
+                {
+                  "categories": [
+                    "m0",
+                    "a1"
+                  ],
+                  "mass": 2,
+                  "n": 2
+                },
+                {
+                  "categories": [
+                    "m1",
+                    "a0"
+                  ],
+                  "mass": 2,
+                  "n": 2
+                },
+                {
+                  "categories": [
+                    "m1",
+                    "a1"
+                  ],
+                  "mass": 1,
+                  "n": 1
+                }
+              ],
+              "eligible_n": 6,
+              "excluded_n": 0,
+              "support_ref": "F6L_SUPPORT_S2_Z2",
+              "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET"
+            }
+          },
+          "survey_lineage": "F6L_LINEAGE_S2",
+          "test_origin": true,
+          "weight_ref": "F6L_WEIGHT_S2"
+        }
+      ],
+      "target": {
+        "boundary_ref": "F6L_SYN_BOUNDARY",
+        "geography": "F6L_SYN_GEO",
+        "population": "F6L_SYN_POP",
+        "strata": {
+          "Z1": "1/2",
+          "Z2": "1/2"
+        },
+        "strata_ref": "F6L_SYN_STRATA_REF",
+        "target_id": "F6L_SYN_TARGET",
+        "unit": "F6L_SYN_PERSON_UNIT",
+        "year": 2001
+      },
+      "world_id": "F6L_P10_SOURCE_SUBSTITUTION"
+    },
+    {
+      "axes": [
+        "F6L_MATERIAL",
+        "F6L_ACTION"
+      ],
+      "case": "P8_DISTRIBUTED_SUPPORT_MIN_1",
+      "exact_expectations": {
+        "coverage": {
+          "Z1": {
+            "eligible": [
+              "S1",
+              "S2"
+            ],
+            "excluded": [],
+            "target_share": "1"
+          }
+        },
+        "covered_subprobability_sum": "1",
+        "distribution_is_complete": true,
+        "exact_bias_sensitivity": {
+          "lower": {
+            "('HIGH', 'NO')": "0",
+            "('HIGH', 'YES')": "0",
+            "('LOW', 'NO')": "0",
+            "('LOW', 'YES')": "0"
+          },
+          "radius": "3/10",
+          "upper": {
+            "('HIGH', 'NO')": "11/20",
+            "('HIGH', 'YES')": "11/20",
+            "('LOW', 'NO')": "11/20",
+            "('LOW', 'YES')": "77/100"
+          }
+        },
+        "exact_conditional_yes_given_low": {
+          "model_denominator_mass": "1/2",
+          "probabilities": {
+            "NO": "7/25",
+            "YES": "18/25"
+          }
+        },
+        "exact_joint_covered_subprobability": {
+          "('HIGH', 'NO')": "1/4",
+          "('HIGH', 'YES')": "1/4",
+          "('LOW', 'NO')": "7/50",
+          "('LOW', 'YES')": "9/25"
+        },
+        "exact_lower": {
+          "('HIGH', 'NO')": "1/4",
+          "('HIGH', 'YES')": "1/4",
+          "('LOW', 'NO')": "3/100",
+          "('LOW', 'YES')": "1/4"
+        },
+        "exact_upper": {
+          "('HIGH', 'NO')": "1/4",
+          "('HIGH', 'YES')": "1/4",
+          "('LOW', 'NO')": "1/4",
+          "('LOW', 'YES')": "47/100"
+        },
+        "keys_in_declared_order": [
+          [
+            "LOW",
+            "NO"
+          ],
+          [
+            "LOW",
+            "YES"
+          ],
+          [
+            "HIGH",
+            "NO"
+          ],
+          [
+            "HIGH",
+            "YES"
+          ]
+        ],
+        "uncovered_target_mass": "0"
+      },
+      "labels": [
+        [
+          "LOW",
+          "HIGH"
+        ],
+        [
+          "NO",
+          "YES"
+        ]
+      ],
+      "origin": "F6L_PREREGISTERED_NEW",
+      "policy": {
+        "conditional_invariance_ref": "F6L_CONDITIONAL_INVARIANCE_REF",
+        "conditional_invariance_status": "REVIEWED_ASSUMPTION",
+        "mapping_bias_radius": "1/10",
+        "mapping_hashes": {
+          "S1": "32b97ff26ed38be3d3a49e6172ae95eeb4b0bb631addf17e67be209321927058",
+          "S2": "32b97ff26ed38be3d3a49e6172ae95eeb4b0bb631addf17e67be209321927058"
+        },
+        "maximum_joint_cells": 64,
+        "minimum_raw_support": 1,
+        "overlap_reviews": {
+          "S1|S2": {
+            "review_ref": "F6L_OVERLAP_REVIEW_REF",
+            "status": "DISJOINT"
+          }
+        },
+        "policy_ref": "F6L_POLICY_REF",
+        "scope_review_ref": "F6L_SCOPE_REVIEW_REF",
+        "source_weights": {
+          "S1": "1",
+          "S2": "1"
+        },
+        "target_share_bias_radius": "1/10",
+        "target_support_ref": "F6L_SYN_STRATA_REF",
+        "transport_bias_radius": "1/10"
+      },
+      "sources": [
+        {
+          "axes": [
+            {
+              "category_map": {
+                "m0": "LOW",
+                "m1": "HIGH"
+              },
+              "construct_ref": "F6L_MATERIAL",
+              "instrument_ref": "F6L_INSTR_A",
+              "item_ref": "F6L_ITEM_A",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "F6L_MAP_A",
+              "polarity_ref": "F6L_POL_A",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "F6L_RESP_A",
+              "review_status": "REVIEWED",
+              "scale_ref": "F6L_SCALE_A",
+              "scale_status": "REVIEWED"
+            },
+            {
+              "category_map": {
+                "a0": "NO",
+                "a1": "YES"
+              },
+              "construct_ref": "F6L_ACTION",
+              "instrument_ref": "F6L_INSTR_B",
+              "item_ref": "F6L_ITEM_B",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "F6L_MAP_B",
+              "polarity_ref": "F6L_POL_B",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "F6L_RESP_B",
+              "review_status": "REVIEWED",
+              "scale_ref": "F6L_SCALE_B",
+              "scale_status": "REVIEWED"
+            }
+          ],
+          "coadministration_ref": "F6L_COADMIN_S1",
+          "dependence_kind": "MEASURED_SAME_SURVEY_JOINT",
+          "design_ref": "F6L_DESIGN_S1",
+          "joint_frontier_ref": "F6L_FRONTIER_S1",
+          "measure_basis": "UNWEIGHTED",
+          "missingness_ref": "F6L_MISSING_S1",
+          "permission_ref": "F6L_PERMISSION_S1",
+          "product_ref": "F6L_PRODUCT_S1",
+          "risk_set_ref": "F6L_RISK_S1",
+          "routing_ref": "F6L_ROUTING_S1",
+          "sample_id": "F6L_SAMPLE_S1",
+          "sampling_limitations": "F6L_SYNTHETIC_SOURCEFREE_ONLY",
+          "scope": {
+            "boundary_ref": "F6L_SYN_BOUNDARY",
+            "end_year": 2005,
+            "fieldwork_ref": "F6L_FIELDWORK_S1",
+            "geography": "F6L_SYN_GEO",
+            "population": "F6L_SYN_POP",
+            "start_year": 1995,
+            "unit": "F6L_SYN_PERSON_UNIT"
+          },
+          "source_id": "S1",
+          "strata": {
+            "Z1": {
+              "cells": [
+                {
+                  "categories": [
+                    "m0",
+                    "a0"
+                  ],
+                  "mass": 3,
+                  "n": 3
+                },
+                {
+                  "categories": [
+                    "m0",
+                    "a1"
+                  ],
+                  "mass": 47,
+                  "n": 47
+                },
+                {
+                  "categories": [
+                    "m1",
+                    "a0"
+                  ],
+                  "mass": 25,
+                  "n": 25
+                },
+                {
+                  "categories": [
+                    "m1",
+                    "a1"
+                  ],
+                  "mass": 25,
+                  "n": 25
+                }
+              ],
+              "eligible_n": 100,
+              "excluded_n": 0,
+              "support_ref": "F6L_SUPPORT_S1_Z1",
+              "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET"
+            }
+          },
+          "survey_lineage": "F6L_LINEAGE_S1",
+          "test_origin": true,
+          "weight_ref": "F6L_WEIGHT_S1"
+        },
+        {
+          "axes": [
+            {
+              "category_map": {
+                "m0": "LOW",
+                "m1": "HIGH"
+              },
+              "construct_ref": "F6L_MATERIAL",
+              "instrument_ref": "F6L_INSTR_A",
+              "item_ref": "F6L_ITEM_A",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "F6L_MAP_A",
+              "polarity_ref": "F6L_POL_A",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "F6L_RESP_A",
+              "review_status": "REVIEWED",
+              "scale_ref": "F6L_SCALE_A",
+              "scale_status": "REVIEWED"
+            },
+            {
+              "category_map": {
+                "a0": "NO",
+                "a1": "YES"
+              },
+              "construct_ref": "F6L_ACTION",
+              "instrument_ref": "F6L_INSTR_B",
+              "item_ref": "F6L_ITEM_B",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "F6L_MAP_B",
+              "polarity_ref": "F6L_POL_B",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "F6L_RESP_B",
+              "review_status": "REVIEWED",
+              "scale_ref": "F6L_SCALE_B",
+              "scale_status": "REVIEWED"
+            }
+          ],
+          "coadministration_ref": "F6L_COADMIN_S2",
+          "dependence_kind": "MEASURED_SAME_SURVEY_JOINT",
+          "design_ref": "F6L_DESIGN_S2",
+          "joint_frontier_ref": "F6L_FRONTIER_S2",
+          "measure_basis": "UNWEIGHTED",
+          "missingness_ref": "F6L_MISSING_S2",
+          "permission_ref": "F6L_PERMISSION_S2",
+          "product_ref": "F6L_PRODUCT_S2",
+          "risk_set_ref": "F6L_RISK_S2",
+          "routing_ref": "F6L_ROUTING_S2",
+          "sample_id": "F6L_SAMPLE_S2",
+          "sampling_limitations": "F6L_SYNTHETIC_SOURCEFREE_ONLY",
+          "scope": {
+            "boundary_ref": "F6L_SYN_BOUNDARY",
+            "end_year": 2005,
+            "fieldwork_ref": "F6L_FIELDWORK_S2",
+            "geography": "F6L_SYN_GEO",
+            "population": "F6L_SYN_POP",
+            "start_year": 1995,
+            "unit": "F6L_SYN_PERSON_UNIT"
+          },
+          "source_id": "S2",
+          "strata": {
+            "Z1": {
+              "cells": [
+                {
+                  "categories": [
+                    "m0",
+                    "a0"
+                  ],
+                  "mass": 50,
+                  "n": 50
+                },
+                {
+                  "categories": [
+                    "m0",
+                    "a1"
+                  ],
+                  "mass": 50,
+                  "n": 50
+                },
+                {
+                  "categories": [
+                    "m1",
+                    "a0"
+                  ],
+                  "mass": 50,
+                  "n": 50
+                },
+                {
+                  "categories": [
+                    "m1",
+                    "a1"
+                  ],
+                  "mass": 50,
+                  "n": 50
+                }
+              ],
+              "eligible_n": 200,
+              "excluded_n": 0,
+              "support_ref": "F6L_SUPPORT_S2_Z1",
+              "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET"
+            }
+          },
+          "survey_lineage": "F6L_LINEAGE_S2",
+          "test_origin": true,
+          "weight_ref": "F6L_WEIGHT_S2"
+        }
+      ],
+      "target": {
+        "boundary_ref": "F6L_SYN_BOUNDARY",
+        "geography": "F6L_SYN_GEO",
+        "population": "F6L_SYN_POP",
+        "strata": {
+          "Z1": "1"
+        },
+        "strata_ref": "F6L_SYN_STRATA_REF",
+        "target_id": "F6L_SYN_TARGET",
+        "unit": "F6L_SYN_PERSON_UNIT",
+        "year": 2001
+      },
+      "world_id": "F6L_P8_DISTRIBUTED_SUPPORT_MINORITY"
+    },
+    {
+      "axes": [
+        "F6L_MATERIAL",
+        "F6L_ACTION"
+      ],
+      "case": "P8_DISTRIBUTED_SUPPORT_MIN_5_CELL_NOT_GATE",
+      "exact_expectations": {
+        "coverage": {
+          "Z1": {
+            "eligible": [
+              "S1",
+              "S2"
+            ],
+            "excluded": [],
+            "target_share": "1"
+          }
+        },
+        "covered_subprobability_sum": "1",
+        "distribution_is_complete": true,
+        "exact_bias_sensitivity": {
+          "lower": {
+            "('HIGH', 'NO')": "0",
+            "('HIGH', 'YES')": "0",
+            "('LOW', 'NO')": "0",
+            "('LOW', 'YES')": "0"
+          },
+          "radius": "3/10",
+          "upper": {
+            "('HIGH', 'NO')": "11/20",
+            "('HIGH', 'YES')": "11/20",
+            "('LOW', 'NO')": "11/20",
+            "('LOW', 'YES')": "77/100"
+          }
+        },
+        "exact_conditional_yes_given_low": {
+          "model_denominator_mass": "1/2",
+          "probabilities": {
+            "NO": "7/25",
+            "YES": "18/25"
+          }
+        },
+        "exact_joint_covered_subprobability": {
+          "('HIGH', 'NO')": "1/4",
+          "('HIGH', 'YES')": "1/4",
+          "('LOW', 'NO')": "7/50",
+          "('LOW', 'YES')": "9/25"
+        },
+        "exact_lower": {
+          "('HIGH', 'NO')": "1/4",
+          "('HIGH', 'YES')": "1/4",
+          "('LOW', 'NO')": "3/100",
+          "('LOW', 'YES')": "1/4"
+        },
+        "exact_upper": {
+          "('HIGH', 'NO')": "1/4",
+          "('HIGH', 'YES')": "1/4",
+          "('LOW', 'NO')": "1/4",
+          "('LOW', 'YES')": "47/100"
+        },
+        "keys_in_declared_order": [
+          [
+            "LOW",
+            "NO"
+          ],
+          [
+            "LOW",
+            "YES"
+          ],
+          [
+            "HIGH",
+            "NO"
+          ],
+          [
+            "HIGH",
+            "YES"
+          ]
+        ],
+        "uncovered_target_mass": "0"
+      },
+      "labels": [
+        [
+          "LOW",
+          "HIGH"
+        ],
+        [
+          "NO",
+          "YES"
+        ]
+      ],
+      "origin": "F6L_PREREGISTERED_NEW",
+      "policy": {
+        "conditional_invariance_ref": "F6L_CONDITIONAL_INVARIANCE_REF",
+        "conditional_invariance_status": "REVIEWED_ASSUMPTION",
+        "mapping_bias_radius": "1/10",
+        "mapping_hashes": {
+          "S1": "32b97ff26ed38be3d3a49e6172ae95eeb4b0bb631addf17e67be209321927058",
+          "S2": "32b97ff26ed38be3d3a49e6172ae95eeb4b0bb631addf17e67be209321927058"
+        },
+        "maximum_joint_cells": 64,
+        "minimum_raw_support": 5,
+        "overlap_reviews": {
+          "S1|S2": {
+            "review_ref": "F6L_OVERLAP_REVIEW_REF",
+            "status": "DISJOINT"
+          }
+        },
+        "policy_ref": "F6L_POLICY_REF",
+        "scope_review_ref": "F6L_SCOPE_REVIEW_REF",
+        "source_weights": {
+          "S1": "1",
+          "S2": "1"
+        },
+        "target_share_bias_radius": "1/10",
+        "target_support_ref": "F6L_SYN_STRATA_REF",
+        "transport_bias_radius": "1/10"
+      },
+      "sources": [
+        {
+          "axes": [
+            {
+              "category_map": {
+                "m0": "LOW",
+                "m1": "HIGH"
+              },
+              "construct_ref": "F6L_MATERIAL",
+              "instrument_ref": "F6L_INSTR_A",
+              "item_ref": "F6L_ITEM_A",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "F6L_MAP_A",
+              "polarity_ref": "F6L_POL_A",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "F6L_RESP_A",
+              "review_status": "REVIEWED",
+              "scale_ref": "F6L_SCALE_A",
+              "scale_status": "REVIEWED"
+            },
+            {
+              "category_map": {
+                "a0": "NO",
+                "a1": "YES"
+              },
+              "construct_ref": "F6L_ACTION",
+              "instrument_ref": "F6L_INSTR_B",
+              "item_ref": "F6L_ITEM_B",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "F6L_MAP_B",
+              "polarity_ref": "F6L_POL_B",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "F6L_RESP_B",
+              "review_status": "REVIEWED",
+              "scale_ref": "F6L_SCALE_B",
+              "scale_status": "REVIEWED"
+            }
+          ],
+          "coadministration_ref": "F6L_COADMIN_S1",
+          "dependence_kind": "MEASURED_SAME_SURVEY_JOINT",
+          "design_ref": "F6L_DESIGN_S1",
+          "joint_frontier_ref": "F6L_FRONTIER_S1",
+          "measure_basis": "UNWEIGHTED",
+          "missingness_ref": "F6L_MISSING_S1",
+          "permission_ref": "F6L_PERMISSION_S1",
+          "product_ref": "F6L_PRODUCT_S1",
+          "risk_set_ref": "F6L_RISK_S1",
+          "routing_ref": "F6L_ROUTING_S1",
+          "sample_id": "F6L_SAMPLE_S1",
+          "sampling_limitations": "F6L_SYNTHETIC_SOURCEFREE_ONLY",
+          "scope": {
+            "boundary_ref": "F6L_SYN_BOUNDARY",
+            "end_year": 2005,
+            "fieldwork_ref": "F6L_FIELDWORK_S1",
+            "geography": "F6L_SYN_GEO",
+            "population": "F6L_SYN_POP",
+            "start_year": 1995,
+            "unit": "F6L_SYN_PERSON_UNIT"
+          },
+          "source_id": "S1",
+          "strata": {
+            "Z1": {
+              "cells": [
+                {
+                  "categories": [
+                    "m0",
+                    "a0"
+                  ],
+                  "mass": 3,
+                  "n": 3
+                },
+                {
+                  "categories": [
+                    "m0",
+                    "a1"
+                  ],
+                  "mass": 47,
+                  "n": 47
+                },
+                {
+                  "categories": [
+                    "m1",
+                    "a0"
+                  ],
+                  "mass": 25,
+                  "n": 25
+                },
+                {
+                  "categories": [
+                    "m1",
+                    "a1"
+                  ],
+                  "mass": 25,
+                  "n": 25
+                }
+              ],
+              "eligible_n": 100,
+              "excluded_n": 0,
+              "support_ref": "F6L_SUPPORT_S1_Z1",
+              "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET"
+            }
+          },
+          "survey_lineage": "F6L_LINEAGE_S1",
+          "test_origin": true,
+          "weight_ref": "F6L_WEIGHT_S1"
+        },
+        {
+          "axes": [
+            {
+              "category_map": {
+                "m0": "LOW",
+                "m1": "HIGH"
+              },
+              "construct_ref": "F6L_MATERIAL",
+              "instrument_ref": "F6L_INSTR_A",
+              "item_ref": "F6L_ITEM_A",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "F6L_MAP_A",
+              "polarity_ref": "F6L_POL_A",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "F6L_RESP_A",
+              "review_status": "REVIEWED",
+              "scale_ref": "F6L_SCALE_A",
+              "scale_status": "REVIEWED"
+            },
+            {
+              "category_map": {
+                "a0": "NO",
+                "a1": "YES"
+              },
+              "construct_ref": "F6L_ACTION",
+              "instrument_ref": "F6L_INSTR_B",
+              "item_ref": "F6L_ITEM_B",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "F6L_MAP_B",
+              "polarity_ref": "F6L_POL_B",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "F6L_RESP_B",
+              "review_status": "REVIEWED",
+              "scale_ref": "F6L_SCALE_B",
+              "scale_status": "REVIEWED"
+            }
+          ],
+          "coadministration_ref": "F6L_COADMIN_S2",
+          "dependence_kind": "MEASURED_SAME_SURVEY_JOINT",
+          "design_ref": "F6L_DESIGN_S2",
+          "joint_frontier_ref": "F6L_FRONTIER_S2",
+          "measure_basis": "UNWEIGHTED",
+          "missingness_ref": "F6L_MISSING_S2",
+          "permission_ref": "F6L_PERMISSION_S2",
+          "product_ref": "F6L_PRODUCT_S2",
+          "risk_set_ref": "F6L_RISK_S2",
+          "routing_ref": "F6L_ROUTING_S2",
+          "sample_id": "F6L_SAMPLE_S2",
+          "sampling_limitations": "F6L_SYNTHETIC_SOURCEFREE_ONLY",
+          "scope": {
+            "boundary_ref": "F6L_SYN_BOUNDARY",
+            "end_year": 2005,
+            "fieldwork_ref": "F6L_FIELDWORK_S2",
+            "geography": "F6L_SYN_GEO",
+            "population": "F6L_SYN_POP",
+            "start_year": 1995,
+            "unit": "F6L_SYN_PERSON_UNIT"
+          },
+          "source_id": "S2",
+          "strata": {
+            "Z1": {
+              "cells": [
+                {
+                  "categories": [
+                    "m0",
+                    "a0"
+                  ],
+                  "mass": 50,
+                  "n": 50
+                },
+                {
+                  "categories": [
+                    "m0",
+                    "a1"
+                  ],
+                  "mass": 50,
+                  "n": 50
+                },
+                {
+                  "categories": [
+                    "m1",
+                    "a0"
+                  ],
+                  "mass": 50,
+                  "n": 50
+                },
+                {
+                  "categories": [
+                    "m1",
+                    "a1"
+                  ],
+                  "mass": 50,
+                  "n": 50
+                }
+              ],
+              "eligible_n": 200,
+              "excluded_n": 0,
+              "support_ref": "F6L_SUPPORT_S2_Z1",
+              "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET"
+            }
+          },
+          "survey_lineage": "F6L_LINEAGE_S2",
+          "test_origin": true,
+          "weight_ref": "F6L_WEIGHT_S2"
+        }
+      ],
+      "target": {
+        "boundary_ref": "F6L_SYN_BOUNDARY",
+        "geography": "F6L_SYN_GEO",
+        "population": "F6L_SYN_POP",
+        "strata": {
+          "Z1": "1"
+        },
+        "strata_ref": "F6L_SYN_STRATA_REF",
+        "target_id": "F6L_SYN_TARGET",
+        "unit": "F6L_SYN_PERSON_UNIT",
+        "year": 2001
+      },
+      "world_id": "F6L_P8_DISTRIBUTED_SUPPORT_MINORITY"
+    },
+    {
+      "axes": [
+        "F6L_MATERIAL",
+        "F6L_ACTION"
+      ],
+      "case": "P8_DISTRIBUTED_SUPPORT_MIN_150_SOURCE_EXCLUDED",
+      "exact_expectations": {
+        "coverage": {
+          "Z1": {
+            "eligible": [
+              "S2"
+            ],
+            "excluded": [
+              "S1"
+            ],
+            "target_share": "1"
+          }
+        },
+        "covered_subprobability_sum": "1",
+        "distribution_is_complete": true,
+        "exact_bias_sensitivity": {
+          "lower": {
+            "('HIGH', 'NO')": "0",
+            "('HIGH', 'YES')": "0",
+            "('LOW', 'NO')": "0",
+            "('LOW', 'YES')": "0"
+          },
+          "radius": "3/10",
+          "upper": {
+            "('HIGH', 'NO')": "11/20",
+            "('HIGH', 'YES')": "11/20",
+            "('LOW', 'NO')": "11/20",
+            "('LOW', 'YES')": "11/20"
+          }
+        },
+        "exact_conditional_yes_given_low": {
+          "model_denominator_mass": "1/2",
+          "probabilities": {
+            "NO": "1/2",
+            "YES": "1/2"
+          }
+        },
+        "exact_joint_covered_subprobability": {
+          "('HIGH', 'NO')": "1/4",
+          "('HIGH', 'YES')": "1/4",
+          "('LOW', 'NO')": "1/4",
+          "('LOW', 'YES')": "1/4"
+        },
+        "exact_lower": {
+          "('HIGH', 'NO')": "1/4",
+          "('HIGH', 'YES')": "1/4",
+          "('LOW', 'NO')": "1/4",
+          "('LOW', 'YES')": "1/4"
+        },
+        "exact_upper": {
+          "('HIGH', 'NO')": "1/4",
+          "('HIGH', 'YES')": "1/4",
+          "('LOW', 'NO')": "1/4",
+          "('LOW', 'YES')": "1/4"
+        },
+        "keys_in_declared_order": [
+          [
+            "LOW",
+            "NO"
+          ],
+          [
+            "LOW",
+            "YES"
+          ],
+          [
+            "HIGH",
+            "NO"
+          ],
+          [
+            "HIGH",
+            "YES"
+          ]
+        ],
+        "uncovered_target_mass": "0"
+      },
+      "labels": [
+        [
+          "LOW",
+          "HIGH"
+        ],
+        [
+          "NO",
+          "YES"
+        ]
+      ],
+      "origin": "F6L_PREREGISTERED_NEW",
+      "policy": {
+        "conditional_invariance_ref": "F6L_CONDITIONAL_INVARIANCE_REF",
+        "conditional_invariance_status": "REVIEWED_ASSUMPTION",
+        "mapping_bias_radius": "1/10",
+        "mapping_hashes": {
+          "S1": "32b97ff26ed38be3d3a49e6172ae95eeb4b0bb631addf17e67be209321927058",
+          "S2": "32b97ff26ed38be3d3a49e6172ae95eeb4b0bb631addf17e67be209321927058"
+        },
+        "maximum_joint_cells": 64,
+        "minimum_raw_support": 150,
+        "overlap_reviews": {
+          "S1|S2": {
+            "review_ref": "F6L_OVERLAP_REVIEW_REF",
+            "status": "DISJOINT"
+          }
+        },
+        "policy_ref": "F6L_POLICY_REF",
+        "scope_review_ref": "F6L_SCOPE_REVIEW_REF",
+        "source_weights": {
+          "S1": "1",
+          "S2": "1"
+        },
+        "target_share_bias_radius": "1/10",
+        "target_support_ref": "F6L_SYN_STRATA_REF",
+        "transport_bias_radius": "1/10"
+      },
+      "sources": [
+        {
+          "axes": [
+            {
+              "category_map": {
+                "m0": "LOW",
+                "m1": "HIGH"
+              },
+              "construct_ref": "F6L_MATERIAL",
+              "instrument_ref": "F6L_INSTR_A",
+              "item_ref": "F6L_ITEM_A",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "F6L_MAP_A",
+              "polarity_ref": "F6L_POL_A",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "F6L_RESP_A",
+              "review_status": "REVIEWED",
+              "scale_ref": "F6L_SCALE_A",
+              "scale_status": "REVIEWED"
+            },
+            {
+              "category_map": {
+                "a0": "NO",
+                "a1": "YES"
+              },
+              "construct_ref": "F6L_ACTION",
+              "instrument_ref": "F6L_INSTR_B",
+              "item_ref": "F6L_ITEM_B",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "F6L_MAP_B",
+              "polarity_ref": "F6L_POL_B",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "F6L_RESP_B",
+              "review_status": "REVIEWED",
+              "scale_ref": "F6L_SCALE_B",
+              "scale_status": "REVIEWED"
+            }
+          ],
+          "coadministration_ref": "F6L_COADMIN_S1",
+          "dependence_kind": "MEASURED_SAME_SURVEY_JOINT",
+          "design_ref": "F6L_DESIGN_S1",
+          "joint_frontier_ref": "F6L_FRONTIER_S1",
+          "measure_basis": "UNWEIGHTED",
+          "missingness_ref": "F6L_MISSING_S1",
+          "permission_ref": "F6L_PERMISSION_S1",
+          "product_ref": "F6L_PRODUCT_S1",
+          "risk_set_ref": "F6L_RISK_S1",
+          "routing_ref": "F6L_ROUTING_S1",
+          "sample_id": "F6L_SAMPLE_S1",
+          "sampling_limitations": "F6L_SYNTHETIC_SOURCEFREE_ONLY",
+          "scope": {
+            "boundary_ref": "F6L_SYN_BOUNDARY",
+            "end_year": 2005,
+            "fieldwork_ref": "F6L_FIELDWORK_S1",
+            "geography": "F6L_SYN_GEO",
+            "population": "F6L_SYN_POP",
+            "start_year": 1995,
+            "unit": "F6L_SYN_PERSON_UNIT"
+          },
+          "source_id": "S1",
+          "strata": {
+            "Z1": {
+              "cells": [
+                {
+                  "categories": [
+                    "m0",
+                    "a0"
+                  ],
+                  "mass": 3,
+                  "n": 3
+                },
+                {
+                  "categories": [
+                    "m0",
+                    "a1"
+                  ],
+                  "mass": 47,
+                  "n": 47
+                },
+                {
+                  "categories": [
+                    "m1",
+                    "a0"
+                  ],
+                  "mass": 25,
+                  "n": 25
+                },
+                {
+                  "categories": [
+                    "m1",
+                    "a1"
+                  ],
+                  "mass": 25,
+                  "n": 25
+                }
+              ],
+              "eligible_n": 100,
+              "excluded_n": 0,
+              "support_ref": "F6L_SUPPORT_S1_Z1",
+              "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET"
+            }
+          },
+          "survey_lineage": "F6L_LINEAGE_S1",
+          "test_origin": true,
+          "weight_ref": "F6L_WEIGHT_S1"
+        },
+        {
+          "axes": [
+            {
+              "category_map": {
+                "m0": "LOW",
+                "m1": "HIGH"
+              },
+              "construct_ref": "F6L_MATERIAL",
+              "instrument_ref": "F6L_INSTR_A",
+              "item_ref": "F6L_ITEM_A",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "F6L_MAP_A",
+              "polarity_ref": "F6L_POL_A",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "F6L_RESP_A",
+              "review_status": "REVIEWED",
+              "scale_ref": "F6L_SCALE_A",
+              "scale_status": "REVIEWED"
+            },
+            {
+              "category_map": {
+                "a0": "NO",
+                "a1": "YES"
+              },
+              "construct_ref": "F6L_ACTION",
+              "instrument_ref": "F6L_INSTR_B",
+              "item_ref": "F6L_ITEM_B",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "F6L_MAP_B",
+              "polarity_ref": "F6L_POL_B",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "F6L_RESP_B",
+              "review_status": "REVIEWED",
+              "scale_ref": "F6L_SCALE_B",
+              "scale_status": "REVIEWED"
+            }
+          ],
+          "coadministration_ref": "F6L_COADMIN_S2",
+          "dependence_kind": "MEASURED_SAME_SURVEY_JOINT",
+          "design_ref": "F6L_DESIGN_S2",
+          "joint_frontier_ref": "F6L_FRONTIER_S2",
+          "measure_basis": "UNWEIGHTED",
+          "missingness_ref": "F6L_MISSING_S2",
+          "permission_ref": "F6L_PERMISSION_S2",
+          "product_ref": "F6L_PRODUCT_S2",
+          "risk_set_ref": "F6L_RISK_S2",
+          "routing_ref": "F6L_ROUTING_S2",
+          "sample_id": "F6L_SAMPLE_S2",
+          "sampling_limitations": "F6L_SYNTHETIC_SOURCEFREE_ONLY",
+          "scope": {
+            "boundary_ref": "F6L_SYN_BOUNDARY",
+            "end_year": 2005,
+            "fieldwork_ref": "F6L_FIELDWORK_S2",
+            "geography": "F6L_SYN_GEO",
+            "population": "F6L_SYN_POP",
+            "start_year": 1995,
+            "unit": "F6L_SYN_PERSON_UNIT"
+          },
+          "source_id": "S2",
+          "strata": {
+            "Z1": {
+              "cells": [
+                {
+                  "categories": [
+                    "m0",
+                    "a0"
+                  ],
+                  "mass": 50,
+                  "n": 50
+                },
+                {
+                  "categories": [
+                    "m0",
+                    "a1"
+                  ],
+                  "mass": 50,
+                  "n": 50
+                },
+                {
+                  "categories": [
+                    "m1",
+                    "a0"
+                  ],
+                  "mass": 50,
+                  "n": 50
+                },
+                {
+                  "categories": [
+                    "m1",
+                    "a1"
+                  ],
+                  "mass": 50,
+                  "n": 50
+                }
+              ],
+              "eligible_n": 200,
+              "excluded_n": 0,
+              "support_ref": "F6L_SUPPORT_S2_Z1",
+              "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET"
+            }
+          },
+          "survey_lineage": "F6L_LINEAGE_S2",
+          "test_origin": true,
+          "weight_ref": "F6L_WEIGHT_S2"
+        }
+      ],
+      "target": {
+        "boundary_ref": "F6L_SYN_BOUNDARY",
+        "geography": "F6L_SYN_GEO",
+        "population": "F6L_SYN_POP",
+        "strata": {
+          "Z1": "1"
+        },
+        "strata_ref": "F6L_SYN_STRATA_REF",
+        "target_id": "F6L_SYN_TARGET",
+        "unit": "F6L_SYN_PERSON_UNIT",
+        "year": 2001
+      },
+      "world_id": "F6L_P8_DISTRIBUTED_SUPPORT_MINORITY"
+    }
+  ]
+}
