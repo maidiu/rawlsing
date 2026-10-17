@@ -3,7 +3,7 @@
   "candidate_accepted": false,
   "completion_interpretation": "Commission is independent execution and precise scientific disposition; a retained RED prevents candidate acceptance, not completion of this review commission.",
   "execution_complete": true,
-  "publication_complete": false,
+  "publication_complete": true,
   "requirements": [
     {
       "evidence": "environment_passport_delta + b809 ancestry + return-only diff",
@@ -86,10 +86,11 @@
       "status": "PROVED"
     },
     {
-      "evidence": "PENDING_PUBLICATION",
+      "evidence": "observations/phase_b_publication_receipt.json exact scientific return SHA 6d5a3c258896447553756af3b62a76c67d7ede18",
       "requirement": "Push reviewer result and verify full remote SHA",
-      "status": "PENDING_PUBLICATION"
+      "status": "PROVED"
     }
   ],
-  "scientific_verdict": "RED_ONE_PREREGISTERED_RELEASE_VIEW_SOURCE_REFERENCE_ADMISSION_GAP"
+  "scientific_verdict": "RED_ONE_PREREGISTERED_RELEASE_VIEW_SOURCE_REFERENCE_ADMISSION_GAP",
+  "verified_scientific_return_commit": "6d5a3c258896447553756af3b62a76c67d7ede18"
 }

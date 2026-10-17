@@ -23,6 +23,8 @@ Source custody proves all78 staged WG0P5 inputs, all88 retained historical input
 
 Report02 contains exact commands, exits, actual source identities, physical module paths, all result accounting and the remaining counterexample. Report03 details native cold/conditional/currentness evidence. Report04 gives the precise next contract edge. The review commission is executed; **candidate full acceptance remains RED**. No HQ adoption, original source science, semantic issuer, N11/N12 or operative V3 authority is issued.
 
+Scientific return pushed and directly verified at **6d5a3c258896447553756af3b62a76c67d7ede18**. The publication receipt carrier is separately committed and its final remote SHA is returned to the user.
+
 ---
 
 # Historical Phase A and publication dependency records
