@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="11" skipped="0" tests="26" time="0.406" timestamp="2026-10-17T04:28:20.473097-04:00" hostname="Matthews-MBP.lan"><testcase classname="02_PHASE_A.04_TESTS.test_f6l_phase_a" name="test_native_producer_is_the_pinned_corrected_s03fo_blob" time="0.001" /><testcase classname="02_PHASE_A.04_TESTS.test_f6l_phase_a" name="test_p1_original_world_arithmetic_and_widened_bounds_are_preserved" time="0.007" /><testcase classname="02_PHASE_A.04_TESTS.test_f6l_phase_a" name="test_p1_original_world_does_not_assert_a_complete_candidate_when_null" time="0.006"><failure message="AssertionError: null distribution advertised as 'SYNTHETIC_CANDIDATE'&#10;assert False&#10; +  where False = decision_is_partial('SYNTHETIC_CANDIDATE')">def test_p1_original_world_does_not_assert_a_complete_candidate_when_null():
+        out = run_case("P1_ORIGINAL_UNCOVERED_WORLD")
+        assert out["candidate"]["distribution"] is None
+&gt;       assert decision_is_partial(out["decision"]), (
+            f"null distribution advertised as {out['decision']!r}")
+E       AssertionError: null distribution advertised as 'SYNTHETIC_CANDIDATE'
+E       assert False
+E        +  where False = decision_is_partial('SYNTHETIC_CANDIDATE')
+
+WORKER_RETURNS/PYAT-R28-F6L-INDEPENDENT-DECISION-COURT-R1/02_PHASE_A/04_TESTS/test_f6l_phase_a.py:133: AssertionError</failure></testcase><testcase classname="02_PHASE_A.04_TESTS.test_f6l_phase_a" name="test_novel_no_positivity_arithmetic_is_exact[P2_NOVEL_2X2_NO_POSITIVITY]" time="0.004" /><testcase classname="02_PHASE_A.04_TESTS.test_f6l_phase_a" name="test_novel_no_positivity_arithmetic_is_exact[P3_NOVEL_3_CATEGORY_NO_POSITIVITY]" time="0.005" /><testcase classname="02_PHASE_A.04_TESTS.test_f6l_phase_a" name="test_novel_no_positivity_is_not_served_as_complete[P2_NOVEL_2X2_NO_POSITIVITY]" time="0.004"><failure message="AssertionError: distribution=None but decision='SYNTHETIC_CANDIDATE'&#10;assert False&#10; +  where False = decision_is_partial('SYNTHETIC_CANDIDATE')">case = 'P2_NOVEL_2X2_NO_POSITIVITY'
+
+    @pytest.mark.parametrize("case", ["P2_NOVEL_2X2_NO_POSITIVITY",
+                                      "P3_NOVEL_3_CATEGORY_NO_POSITIVITY"])
+    def test_novel_no_positivity_is_not_served_as_complete(case):
+        out = run_case(case)
+        assert out["candidate"]["distribution"] is None
+&gt;       assert decision_is_partial(out["decision"]), (
+            f"distribution=None but decision={out['decision']!r}")
+E       AssertionError: distribution=None but decision='SYNTHETIC_CANDIDATE'
+E       assert False
+E        +  where False = decision_is_partial('SYNTHETIC_CANDIDATE')
+
+WORKER_RETURNS/PYAT-R28-F6L-INDEPENDENT-DECISION-COURT-R1/02_PHASE_A/04_TESTS/test_f6l_phase_a.py:160: AssertionError</failure></testcase><testcase classname="02_PHASE_A.04_TESTS.test_f6l_phase_a" name="test_novel_no_positivity_is_not_served_as_complete[P3_NOVEL_3_CATEGORY_NO_POSITIVITY]" time="0.004"><failure message="AssertionError: distribution=None but decision='SYNTHETIC_CANDIDATE'&#10;assert False&#10; +  where False = decision_is_partial('SYNTHETIC_CANDIDATE')">case = 'P3_NOVEL_3_CATEGORY_NO_POSITIVITY'
+
+    @pytest.mark.parametrize("case", ["P2_NOVEL_2X2_NO_POSITIVITY",
+                                      "P3_NOVEL_3_CATEGORY_NO_POSITIVITY"])
+    def test_novel_no_positivity_is_not_served_as_complete(case):
+        out = run_case(case)
+        assert out["candidate"]["distribution"] is None
+&gt;       assert decision_is_partial(out["decision"]), (
+            f"distribution=None but decision={out['decision']!r}")
+E       AssertionError: distribution=None but decision='SYNTHETIC_CANDIDATE'
+E       assert False
+E        +  where False = decision_is_partial('SYNTHETIC_CANDIDATE')
+
+WORKER_RETURNS/PYAT-R28-F6L-INDEPENDENT-DECISION-COURT-R1/02_PHASE_A/04_TESTS/test_f6l_phase_a.py:160: AssertionError</failure></testcase><testcase classname="02_PHASE_A.04_TESTS.test_f6l_phase_a" name="test_novel_no_positivity_consumer_refuses_and_bounds_not_suppressed[P2_NOVEL_2X2_NO_POSITIVITY]" time="0.004" /><testcase classname="02_PHASE_A.04_TESTS.test_f6l_phase_a" name="test_novel_no_positivity_consumer_refuses_and_bounds_not_suppressed[P3_NOVEL_3_CATEGORY_NO_POSITIVITY]" time="0.005" /><testcase classname="02_PHASE_A.04_TESTS.test_f6l_phase_a" name="test_p4_unverified_admit_true_cannot_issue_real_source_authority" time="0.005"><failure message="AssertionError: a caller-controlled boolean produced EXTERNAL_OWNER_ADMISSION_FOR_REAL_USE&#10;assert 'EXTERNAL_OWNER_ADMISSION_FOR_REAL_USE' not in ['EXTERNAL_OWNER_ADMISSION_FOR_REAL_USE', None, 'EXTERNAL_OWNER_ADMISSION_FOR_REAL_USE', None, 'DESCRIPTIVE_SOCIOLOGICAL_MODEL_ONLY']">def test_p4_unverified_admit_true_cannot_issue_real_source_authority():
+        calls = []
+        out = run_case("P4_FORGED_REAL_SOURCE_ADMIT_TRUE", test_origin=False, calls=calls)
+        assert out["candidate"] is not None
+        assert len(calls) == 4
+        assert {c["phase"] for c in calls} == {
+            "SOURCE_INDEXED_BASELINE", "TARGET_JOINT_STANDARDIZATION"}
+        ceilings = [n.get("authority_ceiling") for n in out["evidence_graph"]]
+&gt;       assert REAL_USE not in ceilings, (
+            "a caller-controlled boolean produced EXTERNAL_OWNER_ADMISSION_FOR_REAL_USE")
+E       AssertionError: a caller-controlled boolean produced EXTERNAL_OWNER_ADMISSION_FOR_REAL_USE
+E       assert 'EXTERNAL_OWNER_ADMISSION_FOR_REAL_USE' not in ['EXTERNAL_OWNER_ADMISSION_FOR_REAL_USE', None, 'EXTERNAL_OWNER_ADMISSION_FOR_REAL_USE', None, 'DESCRIPTIVE_SOCIOLOGICAL_MODEL_ONLY']
+
+WORKER_RETURNS/PYAT-R28-F6L-INDEPENDENT-DECISION-COURT-R1/02_PHASE_A/04_TESTS/test_f6l_phase_a.py:188: AssertionError</failure></testcase><testcase classname="02_PHASE_A.04_TESTS.test_f6l_phase_a" name="test_p4_admission_callback_is_not_identity_authentication" time="0.005" /><testcase classname="02_PHASE_A.04_TESTS.test_f6l_phase_a" name="test_p5_test_origin_true_bypasses_admission_entirely" time="0.004" /><testcase classname="02_PHASE_A.04_TESTS.test_f6l_phase_a" name="test_p5_test_origin_output_never_claims_real_source_authority" time="0.005"><failure message="AssertionError: test-only data advertised with real-use authority&#10;assert 'EXTERNAL_OWNER_ADMISSION_FOR_REAL_USE' not in ['EXTERNAL_OWNER_ADMISSION_FOR_REAL_USE', None, 'EXTERNAL_OWNER_ADMISSION_FOR_REAL_USE', None, 'DESCRIPTIVE_SOCIOLOGICAL_MODEL_ONLY']">def test_p5_test_origin_output_never_claims_real_source_authority():
+        out = run_case("P5_TEST_ORIGIN_BYPASS", test_origin=True)
+        ceilings = [n.get("authority_ceiling") for n in out["evidence_graph"]]
+        assert out["test_origin"] is True
+&gt;       assert REAL_USE not in ceilings, (
+            "test-only data advertised with real-use authority")
+E       AssertionError: test-only data advertised with real-use authority
+E       assert 'EXTERNAL_OWNER_ADMISSION_FOR_REAL_USE' not in ['EXTERNAL_OWNER_ADMISSION_FOR_REAL_USE', None, 'EXTERNAL_OWNER_ADMISSION_FOR_REAL_USE', None, 'DESCRIPTIVE_SOCIOLOGICAL_MODEL_ONLY']
+
+WORKER_RETURNS/PYAT-R28-F6L-INDEPENDENT-DECISION-COURT-R1/02_PHASE_A/04_TESTS/test_f6l_phase_a.py:226: AssertionError</failure></testcase><testcase classname="02_PHASE_A.04_TESTS.test_f6l_phase_a" name="test_p5b_mixed_origin_does_not_launder_an_unverified_source_into_real_output" time="0.001"><failure message="KeyError: 'P5B_MIXED_ORIGIN_CONTAMINATION'">def test_p5b_mixed_origin_does_not_launder_an_unverified_source_into_real_output():
+        calls = []
+&gt;       entry = WORLDS["P5B_MIXED_ORIGIN_CONTAMINATION"]
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'P5B_MIXED_ORIGIN_CONTAMINATION'
+
+WORKER_RETURNS/PYAT-R28-F6L-INDEPENDENT-DECISION-COURT-R1/02_PHASE_A/04_TESTS/test_f6l_phase_a.py:232: KeyError</failure></testcase><testcase classname="02_PHASE_A.04_TESTS.test_f6l_phase_a" name="test_p6_missing_owner_refuses_real_source" time="0.001" /><testcase classname="02_PHASE_A.04_TESTS.test_f6l_phase_a" name="test_p6_false_admission_refuses_real_source" time="0.001" /><testcase classname="02_PHASE_A.04_TESTS.test_f6l_phase_a" name="test_p7_every_evidence_node_has_authority_ceiling_and_provenance" time="0.004"><failure message="AssertionError: mapped:S1 lacks authority_ceiling&#10;assert 'authority_ceiling' in {'node_id': 'mapped:S1', 'evidence_mode': 'TRANSFORMED', 'test_origin': True, 'parents': ['native:S1'], ...}">def test_p7_every_evidence_node_has_authority_ceiling_and_provenance():
+        out = run_case("P7_MAPPED_NODE_AUTHORITY_CEILING", test_origin=True)
+        for node in out["evidence_graph"]:
+&gt;           assert "authority_ceiling" in node, f"{node['node_id']} lacks authority_ceiling"
+E           AssertionError: mapped:S1 lacks authority_ceiling
+E           assert 'authority_ceiling' in {'node_id': 'mapped:S1', 'evidence_mode': 'TRANSFORMED', 'test_origin': True, 'parents': ['native:S1'], ...}
+
+WORKER_RETURNS/PYAT-R28-F6L-INDEPENDENT-DECISION-COURT-R1/02_PHASE_A/04_TESTS/test_f6l_phase_a.py:273: AssertionError</failure></testcase><testcase classname="02_PHASE_A.04_TESTS.test_f6l_phase_a" name="test_p7_no_node_exceeds_its_native_parent_authority" time="0.005"><failure message="KeyError: 'authority_ceiling'">def test_p7_no_node_exceeds_its_native_parent_authority():
+        out = run_case("P7_MAPPED_NODE_AUTHORITY_CEILING", test_origin=True)
+        by_id = {n["node_id"]: n for n in out["evidence_graph"]}
+        for node in out["evidence_graph"]:
+            if node["node_id"].startswith("mapped:"):
+                parent = by_id[node["parents"][0]]
+                assert node_rank(node.get("authority_ceiling")) &lt;= node_rank(
+                    parent.get("authority_ceiling"))
+        target = by_id["target_joint"]
+        for parent_id in target["parents"]:
+            assert node_rank(target["authority_ceiling"]) &lt;= node_rank(
+&gt;               by_id[parent_id]["authority_ceiling"])
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           KeyError: 'authority_ceiling'
+
+WORKER_RETURNS/PYAT-R28-F6L-INDEPENDENT-DECISION-COURT-R1/02_PHASE_A/04_TESTS/test_f6l_phase_a.py:291: KeyError</failure></testcase><testcase classname="02_PHASE_A.04_TESTS.test_f6l_phase_a" name="test_p7_test_only_graph_has_no_real_use_ceiling" time="0.005"><failure message="assert False&#10; +  where False = all(&lt;generator object test_p7_test_only_graph_has_no_real_use_ceiling.&lt;locals&gt;.&lt;genexpr&gt; at 0x108254740&gt;)">def test_p7_test_only_graph_has_no_real_use_ceiling():
+        out = run_case("P7_MAPPED_NODE_AUTHORITY_CEILING", test_origin=True)
+        assert out["test_origin"] is True
+&gt;       assert all(n.get("authority_ceiling") != REAL_USE for n in out["evidence_graph"])
+E       assert False
+E        +  where False = all(&lt;generator object test_p7_test_only_graph_has_no_real_use_ceiling.&lt;locals&gt;.&lt;genexpr&gt; at 0x108254740&gt;)
+
+WORKER_RETURNS/PYAT-R28-F6L-INDEPENDENT-DECISION-COURT-R1/02_PHASE_A/04_TESTS/test_f6l_phase_a.py:297: AssertionError</failure></testcase><testcase classname="02_PHASE_A.04_TESTS.test_f6l_phase_a" name="test_p8_minimum_raw_support_does_not_protect_a_minority_cell" time="0.007" /><testcase classname="02_PHASE_A.04_TESTS.test_f6l_phase_a" name="test_p8_source_exclusion_must_not_be_silent_complete_renormalization" time="0.003"><failure message="AssertionError: excluded source's target mass was renormalized away and the result still advertised as a complete target joint&#10;assert not True">def test_p8_source_exclusion_must_not_be_silent_complete_renormalization():
+        out = run_case("P8_DISTRIBUTED_SUPPORT_MIN_150_SOURCE_EXCLUDED",
+                       min_raw_support=150)
+        support = out["candidate"]["support"]["Z1"]
+        assert support["excluded_sources"] == ["S1"]
+        assert [s["source_id"] for s in support["sources"]] == ["S2"]
+        distribution_is_full = (out["candidate"]["distribution"] is not None
+                                and F(out["candidate"]["uncovered_target_mass"]) == 0)
+&gt;       assert not distribution_is_full, (
+            "excluded source's target mass was renormalized away and the result "
+            "still advertised as a complete target joint")
+E       AssertionError: excluded source's target mass was renormalized away and the result still advertised as a complete target joint
+E       assert not True
+
+WORKER_RETURNS/PYAT-R28-F6L-INDEPENDENT-DECISION-COURT-R1/02_PHASE_A/04_TESTS/test_f6l_phase_a.py:319: AssertionError</failure></testcase><testcase classname="02_PHASE_A.04_TESTS.test_f6l_phase_a" name="test_p9_decision_only_consumer_cannot_consume_null_as_complete" time="0.004"><failure message="AssertionError: assert 'CONSUMED_AS_COMPLETE' == 'REFUSED'&#10;  &#10;  - REFUSED&#10;  + CONSUMED_AS_COMPLETE">def test_p9_decision_only_consumer_cannot_consume_null_as_complete():
+        out = run_case("P9_STATUS_VS_ACTUAL_DISTRIBUTION")
+    
+        def decision_only_consumer(bundle):
+            if bundle["decision"] in COMPLETE_TOKENS:
+                return "CONSUMED_AS_COMPLETE"
+            return "REFUSED"
+    
+        assert out["candidate"]["distribution"] is None
+&gt;       assert decision_only_consumer(out) == "REFUSED"
+E       AssertionError: assert 'CONSUMED_AS_COMPLETE' == 'REFUSED'
+E         
+E         - REFUSED
+E         + CONSUMED_AS_COMPLETE
+
+WORKER_RETURNS/PYAT-R28-F6L-INDEPENDENT-DECISION-COURT-R1/02_PHASE_A/04_TESTS/test_f6l_phase_a.py:340: AssertionError</failure></testcase><testcase classname="02_PHASE_A.04_TESTS.test_f6l_phase_a" name="test_p10_source_substitution_moves_exact_joint_to_recomputed_value" time="0.011" /><testcase classname="02_PHASE_A.04_TESTS.test_f6l_phase_a" name="test_p11_complete_positive_remains_exact_and_usable" time="0.008" /><testcase classname="02_PHASE_A.04_TESTS.test_f6l_phase_a" name="test_p11_complete_positive_does_not_invent_variance_or_confidence_interval" time="0.006" /><testcase classname="02_PHASE_A.04_TESTS.test_f6l_phase_a" name="test_preserved_frechet_bounds_are_not_a_person_and_not_a_measured_joint" time="0.001" /></testsuite></testsuites>

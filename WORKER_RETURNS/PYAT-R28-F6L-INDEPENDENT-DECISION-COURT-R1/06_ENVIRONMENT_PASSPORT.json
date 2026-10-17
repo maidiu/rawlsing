@@ -1,0 +1,63 @@
+{
+  "artifacts": {
+    "00_VERDICT.md": {
+      "sha256": "a569ec7e4fede3a20468d4a77a4870bd34b6c84d9d75b4dde673b4ad294a2290"
+    },
+    "01_PREREGISTERED_OWNER_AND_DECISION_CASES.json": {
+      "sha256": "bca5ab09b2173957421ee08a3ed13c08fa7e08b8a692099bd45f3d9d1b1e503b"
+    },
+    "02_PHASE_A/01_WORLDS_AND_EXACT_EXPECTATIONS.json": {
+      "sha256": "b1364300a356a7b3ef222b4162fc816c28370ac865d3b86ac8d30926aa4dc5f4"
+    },
+    "02_PHASE_A/02_PHASE_A_FREEZE.json": {
+      "sha256": "8d046df36a566b4f11871ea7b06d39107a7b6b6458f7fd33a9ce980bd424bbc2"
+    },
+    "02_REAL_PYTEST_RATIONAL_RESULTS.json": {
+      "sha256": "6de711f8e84cd9b4dc1d0566d51f8467f3d0af095e90dbdf114a1ea782bb967f"
+    },
+    "03_METHOD_CEILING.md": {
+      "sha256": "1759ab93dc7a20479f3975ed9cf1279384f475b94959e1c45fa8ffc1325ee2d2"
+    },
+    "03_PHASE_B/00_F6K_RETURN_AUDIT.json": {
+      "sha256": "41aefaaa3ee57b1fe269e379f4614cef1cc283e9787b94f52c8729c6c0087144"
+    },
+    "03_PHASE_B/02_CHANGED_UNCHANGED_RECEIPTS.json": {
+      "sha256": "7f06df3eda4daa83704c188ec7cde1d926fba94242d9359e99bcc8f927e862a1"
+    }
+  },
+  "branch": "agent/reviewer-pyat-r28-f6l-independent-f6k-frozen-consumer-court-r1",
+  "commands": {
+    "author_57": "python3 -B -m pytest -q ... F6C_RUNTIME/02_TESTS/test_f6c_frozen_court.py (PYTHONPATH=F6C_RUNTIME/05_NATIVE_STAGE)",
+    "f6j_53": "python3 -B -m pytest -q ... F6J/04_TESTS/test_f6j_adversarial.py",
+    "f6j_82": "python3 -B 03_SCRIPTS/execute_native_vs_frozen.py (copied F6J runtime)",
+    "inherited_35": "python3 -B -m pytest -q ... F6J/04_TESTS/run/rawlsing_next/tests/test_pre553_heterogeneous_synthesis.py",
+    "phase_a": "python3 -B -m pytest -q ... 02_PHASE_A/04_TESTS/test_f6l_phase_a.py"
+  },
+  "execution_policy": {
+    "author_code_modified": false,
+    "byte_pinned_relative_transport": true,
+    "bytecode_writes_disabled": true,
+    "frozen_expectations_modified": false,
+    "machine_absolute_symlink_used": false,
+    "native_module_file_receipts_recorded": true,
+    "pytest_plugin_autoload_disabled": true
+  },
+  "git_version": "git version 2.39.1",
+  "machine": "x86_64",
+  "native_identity": {
+    "empirical_objects_git_blob": "a61365b994e5c3c50de0f598fcf40e90abf757b6",
+    "empirical_objects_sha256": "9cd1d71440a7e8c1861dda73274529e07211edc14335583e93ad91c0833e9ab4",
+    "producer_git_blob": "fc5e37fa5b2f0eb689593b42d95479d1327cb94c",
+    "producer_sha256": "ef76ee4f48cc74cc38e0dcf55a3190362d4b55975d3a367ddb43fbadd43a9869",
+    "source_commit": "1428c2e92bce1a49efd87378cb23df936d646dc5"
+  },
+  "phase_a_freeze_commit": "f1dfcc5363aed5c4eef42f938ea1a90971d49175",
+  "platform": "macOS-13.7.8-x86_64-i386-64bit",
+  "processor": "i386",
+  "pytest": "pytest 9.1.1",
+  "python": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]",
+  "python_executable": "/usr/local/bin/python3",
+  "repository": "maidiu/rawlsing",
+  "schema": "PYAT_R28_F6L_ENVIRONMENT_PASSPORT@1",
+  "sealed_startup": "31123f370af50bdf036cab32dd6d7594b36a5f22"
+}

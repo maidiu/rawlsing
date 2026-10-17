@@ -1,0 +1,2949 @@
+{
+  "branch": "agent/reviewer-pyat-r27-f6j-independent-heterogeneous-science-completion-r1",
+  "candidate_commit": "9aa0e7d3a0cf9ab7654ce8e3d5cb15060235a48f",
+  "count_new_preregistered": 10,
+  "count_post_disclosure_replication": 2,
+  "frozen_at_utc": "2026-10-17T02:25:00Z",
+  "independent_expectation_engine": {
+    "file": "03_SCRIPTS/expectations_engine.py",
+    "imports_native_producer": false,
+    "numeric_type": "fractions.Fraction only",
+    "semantic_hash_used_only_for": "identity/mapping_hashes, never a scientific estimator",
+    "written_from": "the published standardization definition"
+  },
+  "ordering_attestation": {
+    "candidate_junit_read_before_freeze": false,
+    "candidate_test_files_read_before_freeze": false,
+    "candidate_verdicts_read_before_freeze": false,
+    "native_method_surface_is": "the code under review (S03FO blob fc5e37fa5b2f0eb689593b42d95479d1327cb94c); reading the implementation is required to write an independent expectation engine and is not a read of candidate test output",
+    "native_method_surface_read_before_freeze": true,
+    "public_author_headline_values_already_disclosed_by_commission": true,
+    "public_values_used_only_as": "POST_DISCLOSURE_REPLICATION, never as blind preregistration"
+  },
+  "origin_label_definitions": {
+    "POST_DISCLOSURE_REPLICATION": "built from the author's publicly disclosed headline values; CANNOT be called blind pre-freeze; replication target only",
+    "PREREGISTERED_NEW_F6J": "genuinely new to this court, frozen blind to candidate test output, values chosen by F6J"
+  },
+  "perturbation_axes_covered": [
+    "target_share_changes",
+    "source_weights",
+    "domain_category_exclusion",
+    "minority_representation",
+    "no_positivity",
+    "source_swaps"
+  ],
+  "pre_registered_falsifiers": [
+    {
+      "claim_attacked": "the independence scenario p*q is a measured joint",
+      "id": "F5_CROSS_SURVEY_PERSON_NEVER_INVENTED",
+      "preregistered_frechet_p_half_q_half": {
+        "independence_scenario": "1/4",
+        "lower": "0",
+        "upper": "1/2"
+      },
+      "preregistered_verdict": "FALSIFIED",
+      "reason": "Fr\u00e9chet bounds are unidentified cross-channel bounds; p*q is a scenario, explicitly not a measured joint, and no cross-survey respondent link exists to measure it"
+    },
+    {
+      "claim_attacked": "decision 'SYNTHETIC_CANDIDATE' is admissible when the complete target joint is unavailable",
+      "id": "F1_MISLEADING_DECISION_WHEN_DISTRIBUTION_NULL",
+      "preregistered_test": "on N5 (uncovered=1/5) the candidate distribution is null; a decision label containing CANDIDATE must NOT be emitted as a positive scientific result",
+      "preregistered_verdict": "FALSIFIED if decision is SYNTHETIC_CANDIDATE while candidate.distribution is None",
+      "world": "N5_NO_POSITIVITY_UNCOVERED_MASS"
+    },
+    {
+      "claim_attacked": "an external admit callback returning True authenticates owner admission",
+      "id": "F2_ADMIT_TRUE_IS_NOT_AUTHENTICATION",
+      "preregistered_test": "admit=lambda *a: True satisfies the gate with no identity, scope, operation or permission verification",
+      "preregistered_verdict": "FALSIFIED",
+      "reason": "the native docstring itself states a callback is an integration boundary, not an authentication implementation; any evidence item asserting owner admission from a lambda is misleading"
+    },
+    {
+      "claim_attacked": "two-source equiweights constitute scientific calibration",
+      "id": "F3_EQUWEIGHTS_NOT_SCIENTIFIC_CALIBRATION",
+      "preregistered_test": "N2/N3: alpha is a normalized weight ratio; scaling all weights by a constant leaves the estimate unchanged",
+      "preregistered_verdict": "FALSIFIED",
+      "world": "N3_WEIGHT_PERTURBATION"
+    },
+    {
+      "claim_attacked": "the sensitivity halfwidth is a confidence interval",
+      "id": "F4_SENSITIVITY_HALFWIDTH_IS_NOT_A_CONFIDENCE_INTERVAL",
+      "preregistered_halfwidth": "3/50",
+      "preregistered_test": "with mapping/transport/target-share radii each 1/50, the halfwidth is exactly 3/50; its coverage probability is undefined",
+      "preregistered_verdict": "FALSIFIED",
+      "reason": "a sensitivity envelope holds under bounded bias assumptions; it has no sampling reference distribution and therefore no coverage probability"
+    },
+    {
+      "claim_attacked": "conditional uncertainty can be reported",
+      "id": "F6_CONDITIONAL_VARIANCE_UNIDENTIFIED",
+      "preregistered_test": "the conditional consumer returns CONDITIONAL_UNCERTAINTY_NOT_IDENTIFIED and no variance",
+      "preregistered_verdict": "FALSIFIED if any conditional interval is asserted",
+      "reason": "diagonal marginal design variances do not determine conditional variance; covariance is unavailable"
+    }
+  ],
+  "prior_reviewer_commit": "6d99650bed01eed8365ec38bd888741a88888a45",
+  "prohibitions": [
+    "no original F6 semantic issuer",
+    "no N9",
+    "no OC05",
+    "no N11",
+    "no N12",
+    "no actor authority",
+    "no real survey bytes",
+    "no cross-survey person",
+    "no HQ method decision",
+    "no 35-wave grant"
+  ],
+  "repository": "maidiu/rawlsing",
+  "role": "new distinct independent F6 scientific reviewer (F6J); NOT the F6C author (9aa0e7d3a0cf9ab7654ce8e3d5cb15060235a48f); NOT the incomplete F6I reviewer (6d99650bed01eed8365ec38bd888741a88888a45)",
+  "schema": "PYAT_R27_F6J_01_NEW_FROZEN_INDEPENDENT_WORLDS@1",
+  "sealed_startup": "09a87efc87110cc50c129b02033730ed8feca4e8",
+  "status": "FROZEN_BEFORE_CANDIDATE_TEST_OUTPUT_INSPECTION",
+  "worlds": [
+    {
+      "expectations": {
+        "baseline_mapped_joint": {
+          "('X', 'U')": "5/16",
+          "('X', 'V')": "3/16",
+          "('Y', 'U')": "1/16",
+          "('Y', 'V')": "7/16"
+        },
+        "covered_subprobability_sum": "1",
+        "distribution_is_null": false,
+        "joint": {
+          "('X', 'U')": "5/16",
+          "('X', 'V')": "3/16",
+          "('Y', 'U')": "1/16",
+          "('Y', 'V')": "7/16"
+        },
+        "lower": {
+          "('X', 'U')": "5/16",
+          "('X', 'V')": "3/16",
+          "('Y', 'U')": "1/16",
+          "('Y', 'V')": "7/16"
+        },
+        "preregistered_identity_holds": true,
+        "preregistered_l1_candidate_vs_baseline_mapped_joint": "0",
+        "reason": "with one source and one stratum, alpha=1 and share=1, so the standardized joint IS the source mapped joint; any nonzero L1 is an arithmetic defect, not a scientific difference",
+        "rejected_claim": "pooled baseline L1 = 6/25",
+        "uncovered_target_mass": "0",
+        "upper": {
+          "('X', 'U')": "5/16",
+          "('X', 'V')": "3/16",
+          "('Y', 'U')": "1/16",
+          "('Y', 'V')": "7/16"
+        }
+      },
+      "notes": "Counts 5,3,1,7 over 2x2 domain, total 16.",
+      "origin": "PREREGISTERED_NEW_F6J",
+      "perturbation_axis": "single-source single-stratum identity: candidate must equal baseline mapped joint",
+      "policy": {
+        "conditional_invariance_ref": "SYN_CONDITIONAL_INVARIANCE_REF",
+        "conditional_invariance_status": "REVIEWED_ASSUMPTION",
+        "mapping_bias_radius": "1/10",
+        "mapping_hashes": {
+          "S1": "05179b9af9efc9530d638c08000e748d19f478a5fbf293be2fcc71215b586654"
+        },
+        "maximum_joint_cells": 64,
+        "minimum_raw_support": 1,
+        "overlap_reviews": {},
+        "policy_ref": "SYN_POLICY_REF",
+        "scope_review_ref": "SYN_SCOPE_REVIEW_REF",
+        "source_weights": {
+          "S1": "1"
+        },
+        "target_share_bias_radius": "1/10",
+        "target_support_ref": "SYN_TARGET_SUPPORT_REF",
+        "transport_bias_radius": "1/10"
+      },
+      "purpose": "single-source single-stratum identity: candidate must equal baseline mapped joint",
+      "sources": [
+        {
+          "axes": [
+            {
+              "category_map": {
+                "na0": "X",
+                "na1": "Y"
+              },
+              "construct_ref": "SYN_CONSTRUCT_ATTITUDE",
+              "instrument_ref": "SYN_INSTR_A",
+              "item_ref": "SYN_ITEM_A",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "SYN_MAP_A",
+              "polarity_ref": "SYN_POL_A",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "SYN_RESP_A",
+              "review_status": "REVIEWED",
+              "scale_ref": "SYN_SCALE_A",
+              "scale_status": "REVIEWED"
+            },
+            {
+              "category_map": {
+                "nb0": "U",
+                "nb1": "V"
+              },
+              "construct_ref": "SYN_CONSTRUCT_BEHAVIOUR",
+              "instrument_ref": "SYN_INSTR_B",
+              "item_ref": "SYN_ITEM_B",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "SYN_MAP_B",
+              "polarity_ref": "SYN_POL_B",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "SYN_RESP_B",
+              "review_status": "REVIEWED",
+              "scale_ref": "SYN_SCALE_B",
+              "scale_status": "REVIEWED"
+            }
+          ],
+          "coadministration_ref": "SYN_COADMIN_S1",
+          "dependence_kind": "MEASURED_SAME_SURVEY_JOINT",
+          "design_ref": "SYN_DESIGN_S1",
+          "joint_frontier_ref": "SYN_FRONTIER_S1",
+          "measure_basis": "UNWEIGHTED",
+          "missingness_ref": "SYN_MISSING_S1",
+          "permission_ref": "SYN_PERMISSION_S1",
+          "product_ref": "SYN_PRODUCT_S1",
+          "risk_set_ref": "SYN_RISK_S1",
+          "routing_ref": "SYN_ROUTING_S1",
+          "sample_id": "SYN_SAMPLE_S1",
+          "sampling_limitations": "SYNTHETIC_SOURCEFREE_LIMITATIONS",
+          "scope": {
+            "boundary_ref": "SYN_BOUNDARY_1",
+            "end_year": 2010,
+            "fieldwork_ref": "SYN_FIELDWORK_S1",
+            "geography": "SYN_GEO_A",
+            "population": "SYN_POP_A",
+            "start_year": 1990,
+            "unit": "SYN_UNIT_PERSON"
+          },
+          "source_id": "S1",
+          "strata": {
+            "Z1": {
+              "cells": [
+                {
+                  "categories": [
+                    "na0",
+                    "nb0"
+                  ],
+                  "mass": 5,
+                  "n": 5
+                },
+                {
+                  "categories": [
+                    "na0",
+                    "nb1"
+                  ],
+                  "mass": 3,
+                  "n": 3
+                },
+                {
+                  "categories": [
+                    "na1",
+                    "nb0"
+                  ],
+                  "mass": 1,
+                  "n": 1
+                },
+                {
+                  "categories": [
+                    "na1",
+                    "nb1"
+                  ],
+                  "mass": 7,
+                  "n": 7
+                }
+              ],
+              "eligible_n": 16,
+              "excluded_n": 0,
+              "support_ref": "SYN_SUPPORT_Z1",
+              "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET"
+            }
+          },
+          "survey_lineage": "SYN_LINEAGE_S1",
+          "test_origin": true,
+          "weight_ref": "SYN_WEIGHT_S1"
+        }
+      ],
+      "target": {
+        "boundary_ref": "SYN_BOUNDARY_1",
+        "geography": "SYN_GEO_A",
+        "population": "SYN_POP_A",
+        "strata": {
+          "Z1": "1"
+        },
+        "strata_ref": "SYN_STRATA_REF",
+        "target_id": "SYN_TARGET_A",
+        "unit": "SYN_UNIT_PERSON",
+        "year": 2000
+      },
+      "world_id": "N1_SINGLE_SOURCE_IDENTITY"
+    },
+    {
+      "expectations": {
+        "claim_falsified": "two-source equiweights are scientific calibration",
+        "covered_subprobability_sum": "1",
+        "distribution_is_null": false,
+        "falsification_reason": "alpha is a normalized weight ratio with no design, no variance and no calibration target; it is an arbitrary mixing coefficient",
+        "joint": {
+          "('X', 'U')": "5/16",
+          "('X', 'V')": "3/16",
+          "('Y', 'U')": "3/16",
+          "('Y', 'V')": "5/16"
+        },
+        "lower": {
+          "('X', 'U')": "1/8",
+          "('X', 'V')": "1/8",
+          "('Y', 'U')": "1/8",
+          "('Y', 'V')": "1/8"
+        },
+        "preregistered_alpha_S1": "1/2",
+        "preregistered_alpha_S2": "1/2",
+        "preregistered_joint": {
+          "('X', 'U')": "5/16",
+          "('X', 'V')": "3/16",
+          "('Y', 'U')": "3/16",
+          "('Y', 'V')": "5/16"
+        },
+        "preregistered_l1_S1_vs_joint": "1/2",
+        "uncovered_target_mass": "0",
+        "upper": {
+          "('X', 'U')": "1/2",
+          "('X', 'V')": "1/4",
+          "('Y', 'U')": "1/4",
+          "('Y', 'V')": "1/2"
+        }
+      },
+      "notes": "Counts 8,4,2,2 and 2,2,4,8, totals 16 each.",
+      "origin": "PREREGISTERED_NEW_F6J",
+      "perturbation_axis": "two-source equiweight mixture: equiweight is a mixing coefficient, not calibration",
+      "policy": {
+        "conditional_invariance_ref": "SYN_CONDITIONAL_INVARIANCE_REF",
+        "conditional_invariance_status": "REVIEWED_ASSUMPTION",
+        "mapping_bias_radius": "1/10",
+        "mapping_hashes": {
+          "S1": "05179b9af9efc9530d638c08000e748d19f478a5fbf293be2fcc71215b586654",
+          "S2": "05179b9af9efc9530d638c08000e748d19f478a5fbf293be2fcc71215b586654"
+        },
+        "maximum_joint_cells": 64,
+        "minimum_raw_support": 1,
+        "overlap_reviews": {
+          "S1|S2": {
+            "review_ref": "SYN_OVERLAP_REVIEW_REF",
+            "status": "DISJOINT"
+          }
+        },
+        "policy_ref": "SYN_POLICY_REF",
+        "scope_review_ref": "SYN_SCOPE_REVIEW_REF",
+        "source_weights": {
+          "S1": "1",
+          "S2": "1"
+        },
+        "target_share_bias_radius": "1/10",
+        "target_support_ref": "SYN_TARGET_SUPPORT_REF",
+        "transport_bias_radius": "1/10"
+      },
+      "purpose": "two-source equiweight mixture: equiweight is a mixing coefficient, not calibration",
+      "sources": [
+        {
+          "axes": [
+            {
+              "category_map": {
+                "na0": "X",
+                "na1": "Y"
+              },
+              "construct_ref": "SYN_CONSTRUCT_ATTITUDE",
+              "instrument_ref": "SYN_INSTR_A",
+              "item_ref": "SYN_ITEM_A",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "SYN_MAP_A",
+              "polarity_ref": "SYN_POL_A",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "SYN_RESP_A",
+              "review_status": "REVIEWED",
+              "scale_ref": "SYN_SCALE_A",
+              "scale_status": "REVIEWED"
+            },
+            {
+              "category_map": {
+                "nb0": "U",
+                "nb1": "V"
+              },
+              "construct_ref": "SYN_CONSTRUCT_BEHAVIOUR",
+              "instrument_ref": "SYN_INSTR_B",
+              "item_ref": "SYN_ITEM_B",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "SYN_MAP_B",
+              "polarity_ref": "SYN_POL_B",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "SYN_RESP_B",
+              "review_status": "REVIEWED",
+              "scale_ref": "SYN_SCALE_B",
+              "scale_status": "REVIEWED"
+            }
+          ],
+          "coadministration_ref": "SYN_COADMIN_S1",
+          "dependence_kind": "MEASURED_SAME_SURVEY_JOINT",
+          "design_ref": "SYN_DESIGN_S1",
+          "joint_frontier_ref": "SYN_FRONTIER_S1",
+          "measure_basis": "UNWEIGHTED",
+          "missingness_ref": "SYN_MISSING_S1",
+          "permission_ref": "SYN_PERMISSION_S1",
+          "product_ref": "SYN_PRODUCT_S1",
+          "risk_set_ref": "SYN_RISK_S1",
+          "routing_ref": "SYN_ROUTING_S1",
+          "sample_id": "SYN_SAMPLE_S1",
+          "sampling_limitations": "SYNTHETIC_SOURCEFREE_LIMITATIONS",
+          "scope": {
+            "boundary_ref": "SYN_BOUNDARY_1",
+            "end_year": 2010,
+            "fieldwork_ref": "SYN_FIELDWORK_S1",
+            "geography": "SYN_GEO_A",
+            "population": "SYN_POP_A",
+            "start_year": 1990,
+            "unit": "SYN_UNIT_PERSON"
+          },
+          "source_id": "S1",
+          "strata": {
+            "Z1": {
+              "cells": [
+                {
+                  "categories": [
+                    "na0",
+                    "nb0"
+                  ],
+                  "mass": 8,
+                  "n": 8
+                },
+                {
+                  "categories": [
+                    "na0",
+                    "nb1"
+                  ],
+                  "mass": 4,
+                  "n": 4
+                },
+                {
+                  "categories": [
+                    "na1",
+                    "nb0"
+                  ],
+                  "mass": 2,
+                  "n": 2
+                },
+                {
+                  "categories": [
+                    "na1",
+                    "nb1"
+                  ],
+                  "mass": 2,
+                  "n": 2
+                }
+              ],
+              "eligible_n": 16,
+              "excluded_n": 0,
+              "support_ref": "SYN_SUPPORT_Z1",
+              "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET"
+            }
+          },
+          "survey_lineage": "SYN_LINEAGE_S1",
+          "test_origin": true,
+          "weight_ref": "SYN_WEIGHT_S1"
+        },
+        {
+          "axes": [
+            {
+              "category_map": {
+                "na0": "X",
+                "na1": "Y"
+              },
+              "construct_ref": "SYN_CONSTRUCT_ATTITUDE",
+              "instrument_ref": "SYN_INSTR_A",
+              "item_ref": "SYN_ITEM_A",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "SYN_MAP_A",
+              "polarity_ref": "SYN_POL_A",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "SYN_RESP_A",
+              "review_status": "REVIEWED",
+              "scale_ref": "SYN_SCALE_A",
+              "scale_status": "REVIEWED"
+            },
+            {
+              "category_map": {
+                "nb0": "U",
+                "nb1": "V"
+              },
+              "construct_ref": "SYN_CONSTRUCT_BEHAVIOUR",
+              "instrument_ref": "SYN_INSTR_B",
+              "item_ref": "SYN_ITEM_B",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "SYN_MAP_B",
+              "polarity_ref": "SYN_POL_B",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "SYN_RESP_B",
+              "review_status": "REVIEWED",
+              "scale_ref": "SYN_SCALE_B",
+              "scale_status": "REVIEWED"
+            }
+          ],
+          "coadministration_ref": "SYN_COADMIN_S2",
+          "dependence_kind": "MEASURED_SAME_SURVEY_JOINT",
+          "design_ref": "SYN_DESIGN_S2",
+          "joint_frontier_ref": "SYN_FRONTIER_S2",
+          "measure_basis": "UNWEIGHTED",
+          "missingness_ref": "SYN_MISSING_S2",
+          "permission_ref": "SYN_PERMISSION_S2",
+          "product_ref": "SYN_PRODUCT_S2",
+          "risk_set_ref": "SYN_RISK_S2",
+          "routing_ref": "SYN_ROUTING_S2",
+          "sample_id": "SYN_SAMPLE_S2",
+          "sampling_limitations": "SYNTHETIC_SOURCEFREE_LIMITATIONS",
+          "scope": {
+            "boundary_ref": "SYN_BOUNDARY_1",
+            "end_year": 2010,
+            "fieldwork_ref": "SYN_FIELDWORK_S2",
+            "geography": "SYN_GEO_A",
+            "population": "SYN_POP_A",
+            "start_year": 1990,
+            "unit": "SYN_UNIT_PERSON"
+          },
+          "source_id": "S2",
+          "strata": {
+            "Z1": {
+              "cells": [
+                {
+                  "categories": [
+                    "na0",
+                    "nb0"
+                  ],
+                  "mass": 2,
+                  "n": 2
+                },
+                {
+                  "categories": [
+                    "na0",
+                    "nb1"
+                  ],
+                  "mass": 2,
+                  "n": 2
+                },
+                {
+                  "categories": [
+                    "na1",
+                    "nb0"
+                  ],
+                  "mass": 4,
+                  "n": 4
+                },
+                {
+                  "categories": [
+                    "na1",
+                    "nb1"
+                  ],
+                  "mass": 8,
+                  "n": 8
+                }
+              ],
+              "eligible_n": 16,
+              "excluded_n": 0,
+              "support_ref": "SYN_SUPPORT_Z1",
+              "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET"
+            }
+          },
+          "survey_lineage": "SYN_LINEAGE_S2",
+          "test_origin": true,
+          "weight_ref": "SYN_WEIGHT_S2"
+        }
+      ],
+      "target": {
+        "boundary_ref": "SYN_BOUNDARY_1",
+        "geography": "SYN_GEO_A",
+        "population": "SYN_POP_A",
+        "strata": {
+          "Z1": "1"
+        },
+        "strata_ref": "SYN_STRATA_REF",
+        "target_id": "SYN_TARGET_A",
+        "unit": "SYN_UNIT_PERSON",
+        "year": 2000
+      },
+      "world_id": "N2_TWO_SOURCE_EQUAL_WEIGHT_MIX"
+    },
+    {
+      "expectations": {
+        "covered_subprobability_sum": "1",
+        "distribution_is_null": false,
+        "joint": {
+          "('X', 'U')": "13/32",
+          "('X', 'V')": "7/32",
+          "('Y', 'U')": "5/32",
+          "('Y', 'V')": "7/32"
+        },
+        "lower": {
+          "('X', 'U')": "1/8",
+          "('X', 'V')": "1/8",
+          "('Y', 'U')": "1/8",
+          "('Y', 'V')": "1/8"
+        },
+        "preregistered_alpha_S1": "3/4",
+        "preregistered_alpha_S2": "1/4",
+        "preregistered_weight_scale_invariance": {
+          "identical": true,
+          "weights_30_10": {
+            "('X', 'U')": "13/32",
+            "('X', 'V')": "7/32",
+            "('Y', 'U')": "5/32",
+            "('Y', 'V')": "7/32"
+          },
+          "weights_3_1": {
+            "('X', 'U')": "13/32",
+            "('X', 'V')": "7/32",
+            "('Y', 'U')": "5/32",
+            "('Y', 'V')": "7/32"
+          }
+        },
+        "preregistered_weights_3_1_joint": {
+          "('X', 'U')": "13/32",
+          "('X', 'V')": "7/32",
+          "('Y', 'U')": "5/32",
+          "('Y', 'V')": "7/32"
+        },
+        "uncovered_target_mass": "0",
+        "upper": {
+          "('X', 'U')": "1/2",
+          "('X', 'V')": "1/4",
+          "('Y', 'U')": "1/4",
+          "('Y', 'V')": "1/2"
+        }
+      },
+      "notes": "Only weight RATIOS enter; absolute scale is inert. That is itself evidence that the weights are not a scientific calibration.",
+      "origin": "PREREGISTERED_NEW_F6J",
+      "perturbation_axis": "weight perturbation and weight-scale invariance",
+      "policy": {
+        "conditional_invariance_ref": "SYN_CONDITIONAL_INVARIANCE_REF",
+        "conditional_invariance_status": "REVIEWED_ASSUMPTION",
+        "mapping_bias_radius": "1/10",
+        "mapping_hashes": {
+          "S1": "05179b9af9efc9530d638c08000e748d19f478a5fbf293be2fcc71215b586654",
+          "S2": "05179b9af9efc9530d638c08000e748d19f478a5fbf293be2fcc71215b586654"
+        },
+        "maximum_joint_cells": 64,
+        "minimum_raw_support": 1,
+        "overlap_reviews": {
+          "S1|S2": {
+            "review_ref": "SYN_OVERLAP_REVIEW_REF",
+            "status": "DISJOINT"
+          }
+        },
+        "policy_ref": "SYN_POLICY_REF",
+        "scope_review_ref": "SYN_SCOPE_REVIEW_REF",
+        "source_weights": {
+          "S1": "3",
+          "S2": "1"
+        },
+        "target_share_bias_radius": "1/10",
+        "target_support_ref": "SYN_TARGET_SUPPORT_REF",
+        "transport_bias_radius": "1/10"
+      },
+      "purpose": "weight perturbation and weight-scale invariance",
+      "sources": [
+        {
+          "axes": [
+            {
+              "category_map": {
+                "na0": "X",
+                "na1": "Y"
+              },
+              "construct_ref": "SYN_CONSTRUCT_ATTITUDE",
+              "instrument_ref": "SYN_INSTR_A",
+              "item_ref": "SYN_ITEM_A",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "SYN_MAP_A",
+              "polarity_ref": "SYN_POL_A",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "SYN_RESP_A",
+              "review_status": "REVIEWED",
+              "scale_ref": "SYN_SCALE_A",
+              "scale_status": "REVIEWED"
+            },
+            {
+              "category_map": {
+                "nb0": "U",
+                "nb1": "V"
+              },
+              "construct_ref": "SYN_CONSTRUCT_BEHAVIOUR",
+              "instrument_ref": "SYN_INSTR_B",
+              "item_ref": "SYN_ITEM_B",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "SYN_MAP_B",
+              "polarity_ref": "SYN_POL_B",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "SYN_RESP_B",
+              "review_status": "REVIEWED",
+              "scale_ref": "SYN_SCALE_B",
+              "scale_status": "REVIEWED"
+            }
+          ],
+          "coadministration_ref": "SYN_COADMIN_S1",
+          "dependence_kind": "MEASURED_SAME_SURVEY_JOINT",
+          "design_ref": "SYN_DESIGN_S1",
+          "joint_frontier_ref": "SYN_FRONTIER_S1",
+          "measure_basis": "UNWEIGHTED",
+          "missingness_ref": "SYN_MISSING_S1",
+          "permission_ref": "SYN_PERMISSION_S1",
+          "product_ref": "SYN_PRODUCT_S1",
+          "risk_set_ref": "SYN_RISK_S1",
+          "routing_ref": "SYN_ROUTING_S1",
+          "sample_id": "SYN_SAMPLE_S1",
+          "sampling_limitations": "SYNTHETIC_SOURCEFREE_LIMITATIONS",
+          "scope": {
+            "boundary_ref": "SYN_BOUNDARY_1",
+            "end_year": 2010,
+            "fieldwork_ref": "SYN_FIELDWORK_S1",
+            "geography": "SYN_GEO_A",
+            "population": "SYN_POP_A",
+            "start_year": 1990,
+            "unit": "SYN_UNIT_PERSON"
+          },
+          "source_id": "S1",
+          "strata": {
+            "Z1": {
+              "cells": [
+                {
+                  "categories": [
+                    "na0",
+                    "nb0"
+                  ],
+                  "mass": 8,
+                  "n": 8
+                },
+                {
+                  "categories": [
+                    "na0",
+                    "nb1"
+                  ],
+                  "mass": 4,
+                  "n": 4
+                },
+                {
+                  "categories": [
+                    "na1",
+                    "nb0"
+                  ],
+                  "mass": 2,
+                  "n": 2
+                },
+                {
+                  "categories": [
+                    "na1",
+                    "nb1"
+                  ],
+                  "mass": 2,
+                  "n": 2
+                }
+              ],
+              "eligible_n": 16,
+              "excluded_n": 0,
+              "support_ref": "SYN_SUPPORT_Z1",
+              "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET"
+            }
+          },
+          "survey_lineage": "SYN_LINEAGE_S1",
+          "test_origin": true,
+          "weight_ref": "SYN_WEIGHT_S1"
+        },
+        {
+          "axes": [
+            {
+              "category_map": {
+                "na0": "X",
+                "na1": "Y"
+              },
+              "construct_ref": "SYN_CONSTRUCT_ATTITUDE",
+              "instrument_ref": "SYN_INSTR_A",
+              "item_ref": "SYN_ITEM_A",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "SYN_MAP_A",
+              "polarity_ref": "SYN_POL_A",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "SYN_RESP_A",
+              "review_status": "REVIEWED",
+              "scale_ref": "SYN_SCALE_A",
+              "scale_status": "REVIEWED"
+            },
+            {
+              "category_map": {
+                "nb0": "U",
+                "nb1": "V"
+              },
+              "construct_ref": "SYN_CONSTRUCT_BEHAVIOUR",
+              "instrument_ref": "SYN_INSTR_B",
+              "item_ref": "SYN_ITEM_B",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "SYN_MAP_B",
+              "polarity_ref": "SYN_POL_B",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "SYN_RESP_B",
+              "review_status": "REVIEWED",
+              "scale_ref": "SYN_SCALE_B",
+              "scale_status": "REVIEWED"
+            }
+          ],
+          "coadministration_ref": "SYN_COADMIN_S2",
+          "dependence_kind": "MEASURED_SAME_SURVEY_JOINT",
+          "design_ref": "SYN_DESIGN_S2",
+          "joint_frontier_ref": "SYN_FRONTIER_S2",
+          "measure_basis": "UNWEIGHTED",
+          "missingness_ref": "SYN_MISSING_S2",
+          "permission_ref": "SYN_PERMISSION_S2",
+          "product_ref": "SYN_PRODUCT_S2",
+          "risk_set_ref": "SYN_RISK_S2",
+          "routing_ref": "SYN_ROUTING_S2",
+          "sample_id": "SYN_SAMPLE_S2",
+          "sampling_limitations": "SYNTHETIC_SOURCEFREE_LIMITATIONS",
+          "scope": {
+            "boundary_ref": "SYN_BOUNDARY_1",
+            "end_year": 2010,
+            "fieldwork_ref": "SYN_FIELDWORK_S2",
+            "geography": "SYN_GEO_A",
+            "population": "SYN_POP_A",
+            "start_year": 1990,
+            "unit": "SYN_UNIT_PERSON"
+          },
+          "source_id": "S2",
+          "strata": {
+            "Z1": {
+              "cells": [
+                {
+                  "categories": [
+                    "na0",
+                    "nb0"
+                  ],
+                  "mass": 2,
+                  "n": 2
+                },
+                {
+                  "categories": [
+                    "na0",
+                    "nb1"
+                  ],
+                  "mass": 2,
+                  "n": 2
+                },
+                {
+                  "categories": [
+                    "na1",
+                    "nb0"
+                  ],
+                  "mass": 4,
+                  "n": 4
+                },
+                {
+                  "categories": [
+                    "na1",
+                    "nb1"
+                  ],
+                  "mass": 8,
+                  "n": 8
+                }
+              ],
+              "eligible_n": 16,
+              "excluded_n": 0,
+              "support_ref": "SYN_SUPPORT_Z1",
+              "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET"
+            }
+          },
+          "survey_lineage": "SYN_LINEAGE_S2",
+          "test_origin": true,
+          "weight_ref": "SYN_WEIGHT_S2"
+        }
+      ],
+      "target": {
+        "boundary_ref": "SYN_BOUNDARY_1",
+        "geography": "SYN_GEO_A",
+        "population": "SYN_POP_A",
+        "strata": {
+          "Z1": "1"
+        },
+        "strata_ref": "SYN_STRATA_REF",
+        "target_id": "SYN_TARGET_A",
+        "unit": "SYN_UNIT_PERSON",
+        "year": 2000
+      },
+      "world_id": "N3_WEIGHT_PERTURBATION"
+    },
+    {
+      "expectations": {
+        "covered_subprobability_sum": "1",
+        "distribution_is_null": false,
+        "joint": {
+          "('X', 'U')": "13/32",
+          "('X', 'V')": "7/32",
+          "('Y', 'U')": "5/32",
+          "('Y', 'V')": "7/32"
+        },
+        "lower": {
+          "('X', 'U')": "13/32",
+          "('X', 'V')": "7/32",
+          "('Y', 'U')": "5/32",
+          "('Y', 'V')": "7/32"
+        },
+        "preregistered_shares_1_2_1_2": {
+          "('X', 'U')": "5/16",
+          "('X', 'V')": "3/16",
+          "('Y', 'U')": "3/16",
+          "('Y', 'V')": "5/16"
+        },
+        "preregistered_shares_1_4_3_4": {
+          "('X', 'U')": "7/32",
+          "('X', 'V')": "5/32",
+          "('Y', 'U')": "7/32",
+          "('Y', 'V')": "13/32"
+        },
+        "preregistered_shares_3_4_1_4": {
+          "('X', 'U')": "13/32",
+          "('X', 'V')": "7/32",
+          "('Y', 'U')": "5/32",
+          "('Y', 'V')": "7/32"
+        },
+        "uncovered_target_mass": "0",
+        "upper": {
+          "('X', 'U')": "13/32",
+          "('X', 'V')": "7/32",
+          "('Y', 'U')": "5/32",
+          "('Y', 'V')": "7/32"
+        }
+      },
+      "notes": "Both sources carry the SAME stratum tables, so source weights are inert and only target shares move the estimate. This isolates the target-share channel.",
+      "origin": "PREREGISTERED_NEW_F6J",
+      "perturbation_axis": "target-share perturbation with stratum-specific mixes",
+      "policy": {
+        "conditional_invariance_ref": "SYN_CONDITIONAL_INVARIANCE_REF",
+        "conditional_invariance_status": "REVIEWED_ASSUMPTION",
+        "mapping_bias_radius": "1/10",
+        "mapping_hashes": {
+          "S1": "05179b9af9efc9530d638c08000e748d19f478a5fbf293be2fcc71215b586654",
+          "S2": "05179b9af9efc9530d638c08000e748d19f478a5fbf293be2fcc71215b586654"
+        },
+        "maximum_joint_cells": 64,
+        "minimum_raw_support": 1,
+        "overlap_reviews": {
+          "S1|S2": {
+            "review_ref": "SYN_OVERLAP_REVIEW_REF",
+            "status": "DISJOINT"
+          }
+        },
+        "policy_ref": "SYN_POLICY_REF",
+        "scope_review_ref": "SYN_SCOPE_REVIEW_REF",
+        "source_weights": {
+          "S1": "1",
+          "S2": "1"
+        },
+        "target_share_bias_radius": "1/10",
+        "target_support_ref": "SYN_TARGET_SUPPORT_REF",
+        "transport_bias_radius": "1/10"
+      },
+      "purpose": "target-share perturbation with stratum-specific mixes",
+      "sources": [
+        {
+          "axes": [
+            {
+              "category_map": {
+                "na0": "X",
+                "na1": "Y"
+              },
+              "construct_ref": "SYN_CONSTRUCT_ATTITUDE",
+              "instrument_ref": "SYN_INSTR_A",
+              "item_ref": "SYN_ITEM_A",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "SYN_MAP_A",
+              "polarity_ref": "SYN_POL_A",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "SYN_RESP_A",
+              "review_status": "REVIEWED",
+              "scale_ref": "SYN_SCALE_A",
+              "scale_status": "REVIEWED"
+            },
+            {
+              "category_map": {
+                "nb0": "U",
+                "nb1": "V"
+              },
+              "construct_ref": "SYN_CONSTRUCT_BEHAVIOUR",
+              "instrument_ref": "SYN_INSTR_B",
+              "item_ref": "SYN_ITEM_B",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "SYN_MAP_B",
+              "polarity_ref": "SYN_POL_B",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "SYN_RESP_B",
+              "review_status": "REVIEWED",
+              "scale_ref": "SYN_SCALE_B",
+              "scale_status": "REVIEWED"
+            }
+          ],
+          "coadministration_ref": "SYN_COADMIN_S1",
+          "dependence_kind": "MEASURED_SAME_SURVEY_JOINT",
+          "design_ref": "SYN_DESIGN_S1",
+          "joint_frontier_ref": "SYN_FRONTIER_S1",
+          "measure_basis": "UNWEIGHTED",
+          "missingness_ref": "SYN_MISSING_S1",
+          "permission_ref": "SYN_PERMISSION_S1",
+          "product_ref": "SYN_PRODUCT_S1",
+          "risk_set_ref": "SYN_RISK_S1",
+          "routing_ref": "SYN_ROUTING_S1",
+          "sample_id": "SYN_SAMPLE_S1",
+          "sampling_limitations": "SYNTHETIC_SOURCEFREE_LIMITATIONS",
+          "scope": {
+            "boundary_ref": "SYN_BOUNDARY_1",
+            "end_year": 2010,
+            "fieldwork_ref": "SYN_FIELDWORK_S1",
+            "geography": "SYN_GEO_A",
+            "population": "SYN_POP_A",
+            "start_year": 1990,
+            "unit": "SYN_UNIT_PERSON"
+          },
+          "source_id": "S1",
+          "strata": {
+            "Z1": {
+              "cells": [
+                {
+                  "categories": [
+                    "na0",
+                    "nb0"
+                  ],
+                  "mass": 8,
+                  "n": 8
+                },
+                {
+                  "categories": [
+                    "na0",
+                    "nb1"
+                  ],
+                  "mass": 4,
+                  "n": 4
+                },
+                {
+                  "categories": [
+                    "na1",
+                    "nb0"
+                  ],
+                  "mass": 2,
+                  "n": 2
+                },
+                {
+                  "categories": [
+                    "na1",
+                    "nb1"
+                  ],
+                  "mass": 2,
+                  "n": 2
+                }
+              ],
+              "eligible_n": 16,
+              "excluded_n": 0,
+              "support_ref": "SYN_SUPPORT_Z1",
+              "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET"
+            },
+            "Z2": {
+              "cells": [
+                {
+                  "categories": [
+                    "na0",
+                    "nb0"
+                  ],
+                  "mass": 2,
+                  "n": 2
+                },
+                {
+                  "categories": [
+                    "na0",
+                    "nb1"
+                  ],
+                  "mass": 2,
+                  "n": 2
+                },
+                {
+                  "categories": [
+                    "na1",
+                    "nb0"
+                  ],
+                  "mass": 4,
+                  "n": 4
+                },
+                {
+                  "categories": [
+                    "na1",
+                    "nb1"
+                  ],
+                  "mass": 8,
+                  "n": 8
+                }
+              ],
+              "eligible_n": 16,
+              "excluded_n": 0,
+              "support_ref": "SYN_SUPPORT_Z2",
+              "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET"
+            }
+          },
+          "survey_lineage": "SYN_LINEAGE_S1",
+          "test_origin": true,
+          "weight_ref": "SYN_WEIGHT_S1"
+        },
+        {
+          "axes": [
+            {
+              "category_map": {
+                "na0": "X",
+                "na1": "Y"
+              },
+              "construct_ref": "SYN_CONSTRUCT_ATTITUDE",
+              "instrument_ref": "SYN_INSTR_A",
+              "item_ref": "SYN_ITEM_A",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "SYN_MAP_A",
+              "polarity_ref": "SYN_POL_A",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "SYN_RESP_A",
+              "review_status": "REVIEWED",
+              "scale_ref": "SYN_SCALE_A",
+              "scale_status": "REVIEWED"
+            },
+            {
+              "category_map": {
+                "nb0": "U",
+                "nb1": "V"
+              },
+              "construct_ref": "SYN_CONSTRUCT_BEHAVIOUR",
+              "instrument_ref": "SYN_INSTR_B",
+              "item_ref": "SYN_ITEM_B",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "SYN_MAP_B",
+              "polarity_ref": "SYN_POL_B",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "SYN_RESP_B",
+              "review_status": "REVIEWED",
+              "scale_ref": "SYN_SCALE_B",
+              "scale_status": "REVIEWED"
+            }
+          ],
+          "coadministration_ref": "SYN_COADMIN_S2",
+          "dependence_kind": "MEASURED_SAME_SURVEY_JOINT",
+          "design_ref": "SYN_DESIGN_S2",
+          "joint_frontier_ref": "SYN_FRONTIER_S2",
+          "measure_basis": "UNWEIGHTED",
+          "missingness_ref": "SYN_MISSING_S2",
+          "permission_ref": "SYN_PERMISSION_S2",
+          "product_ref": "SYN_PRODUCT_S2",
+          "risk_set_ref": "SYN_RISK_S2",
+          "routing_ref": "SYN_ROUTING_S2",
+          "sample_id": "SYN_SAMPLE_S2",
+          "sampling_limitations": "SYNTHETIC_SOURCEFREE_LIMITATIONS",
+          "scope": {
+            "boundary_ref": "SYN_BOUNDARY_1",
+            "end_year": 2010,
+            "fieldwork_ref": "SYN_FIELDWORK_S2",
+            "geography": "SYN_GEO_A",
+            "population": "SYN_POP_A",
+            "start_year": 1990,
+            "unit": "SYN_UNIT_PERSON"
+          },
+          "source_id": "S2",
+          "strata": {
+            "Z1": {
+              "cells": [
+                {
+                  "categories": [
+                    "na0",
+                    "nb0"
+                  ],
+                  "mass": 8,
+                  "n": 8
+                },
+                {
+                  "categories": [
+                    "na0",
+                    "nb1"
+                  ],
+                  "mass": 4,
+                  "n": 4
+                },
+                {
+                  "categories": [
+                    "na1",
+                    "nb0"
+                  ],
+                  "mass": 2,
+                  "n": 2
+                },
+                {
+                  "categories": [
+                    "na1",
+                    "nb1"
+                  ],
+                  "mass": 2,
+                  "n": 2
+                }
+              ],
+              "eligible_n": 16,
+              "excluded_n": 0,
+              "support_ref": "SYN_SUPPORT_Z1",
+              "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET"
+            },
+            "Z2": {
+              "cells": [
+                {
+                  "categories": [
+                    "na0",
+                    "nb0"
+                  ],
+                  "mass": 2,
+                  "n": 2
+                },
+                {
+                  "categories": [
+                    "na0",
+                    "nb1"
+                  ],
+                  "mass": 2,
+                  "n": 2
+                },
+                {
+                  "categories": [
+                    "na1",
+                    "nb0"
+                  ],
+                  "mass": 4,
+                  "n": 4
+                },
+                {
+                  "categories": [
+                    "na1",
+                    "nb1"
+                  ],
+                  "mass": 8,
+                  "n": 8
+                }
+              ],
+              "eligible_n": 16,
+              "excluded_n": 0,
+              "support_ref": "SYN_SUPPORT_Z2",
+              "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET"
+            }
+          },
+          "survey_lineage": "SYN_LINEAGE_S2",
+          "test_origin": true,
+          "weight_ref": "SYN_WEIGHT_S2"
+        }
+      ],
+      "target": {
+        "boundary_ref": "SYN_BOUNDARY_1",
+        "geography": "SYN_GEO_A",
+        "population": "SYN_POP_A",
+        "strata": {
+          "Z1": "3/4",
+          "Z2": "1/4"
+        },
+        "strata_ref": "SYN_STRATA_REF",
+        "target_id": "SYN_TARGET_A",
+        "unit": "SYN_UNIT_PERSON",
+        "year": 2000
+      },
+      "world_id": "N4_TARGET_SHARE_SHIFT"
+    },
+    {
+      "expectations": {
+        "covered_subprobability_sum": "4/5",
+        "distribution_is_null": true,
+        "joint": {
+          "('X', 'U')": "14/25",
+          "('X', 'V')": "2/25",
+          "('Y', 'U')": "2/25",
+          "('Y', 'V')": "2/25"
+        },
+        "lower": {
+          "('X', 'U')": "14/25",
+          "('X', 'V')": "2/25",
+          "('Y', 'U')": "2/25",
+          "('Y', 'V')": "2/25"
+        },
+        "preregistered_corrected_upper_cell_XU": "19/25",
+        "preregistered_correction": "old 14/25 -> corrected 19/25 by adding the uncovered share 1/5 = 5/25; omitting it understates every upper bound",
+        "preregistered_covered_subprobability_sum": "4/5",
+        "preregistered_distribution_is_null": true,
+        "preregistered_old_unwiden_upper_cell_XU": "14/25",
+        "preregistered_uncovered": "1/5",
+        "preregistered_widened_upper": {
+          "('X', 'U')": "19/25",
+          "('X', 'V')": "7/25",
+          "('Y', 'U')": "7/25",
+          "('Y', 'V')": "7/25"
+        },
+        "uncovered_target_mass": "1/5",
+        "upper": {
+          "('X', 'U')": "19/25",
+          "('X', 'V')": "7/25",
+          "('Y', 'U')": "7/25",
+          "('Y', 'V')": "7/25"
+        }
+      },
+      "notes": "Counts 70,10,10,10 total 100 -> p=(7/10,1/10,1/10,1/10). Target strata Z1=4/5 covered by S1, Z2=1/5 has NO eligible source.",
+      "origin": "PREREGISTERED_NEW_F6J",
+      "perturbation_axis": "no-positivity: a target stratum with zero eligible source support",
+      "policy": {
+        "conditional_invariance_ref": "SYN_CONDITIONAL_INVARIANCE_REF",
+        "conditional_invariance_status": "REVIEWED_ASSUMPTION",
+        "mapping_bias_radius": "1/10",
+        "mapping_hashes": {
+          "S1": "05179b9af9efc9530d638c08000e748d19f478a5fbf293be2fcc71215b586654"
+        },
+        "maximum_joint_cells": 64,
+        "minimum_raw_support": 1,
+        "overlap_reviews": {},
+        "policy_ref": "SYN_POLICY_REF",
+        "scope_review_ref": "SYN_SCOPE_REVIEW_REF",
+        "source_weights": {
+          "S1": "1"
+        },
+        "target_share_bias_radius": "1/10",
+        "target_support_ref": "SYN_TARGET_SUPPORT_REF",
+        "transport_bias_radius": "1/10"
+      },
+      "purpose": "no-positivity: a target stratum with zero eligible source support",
+      "sources": [
+        {
+          "axes": [
+            {
+              "category_map": {
+                "na0": "X",
+                "na1": "Y"
+              },
+              "construct_ref": "SYN_CONSTRUCT_ATTITUDE",
+              "instrument_ref": "SYN_INSTR_A",
+              "item_ref": "SYN_ITEM_A",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "SYN_MAP_A",
+              "polarity_ref": "SYN_POL_A",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "SYN_RESP_A",
+              "review_status": "REVIEWED",
+              "scale_ref": "SYN_SCALE_A",
+              "scale_status": "REVIEWED"
+            },
+            {
+              "category_map": {
+                "nb0": "U",
+                "nb1": "V"
+              },
+              "construct_ref": "SYN_CONSTRUCT_BEHAVIOUR",
+              "instrument_ref": "SYN_INSTR_B",
+              "item_ref": "SYN_ITEM_B",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "SYN_MAP_B",
+              "polarity_ref": "SYN_POL_B",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "SYN_RESP_B",
+              "review_status": "REVIEWED",
+              "scale_ref": "SYN_SCALE_B",
+              "scale_status": "REVIEWED"
+            }
+          ],
+          "coadministration_ref": "SYN_COADMIN_S1",
+          "dependence_kind": "MEASURED_SAME_SURVEY_JOINT",
+          "design_ref": "SYN_DESIGN_S1",
+          "joint_frontier_ref": "SYN_FRONTIER_S1",
+          "measure_basis": "UNWEIGHTED",
+          "missingness_ref": "SYN_MISSING_S1",
+          "permission_ref": "SYN_PERMISSION_S1",
+          "product_ref": "SYN_PRODUCT_S1",
+          "risk_set_ref": "SYN_RISK_S1",
+          "routing_ref": "SYN_ROUTING_S1",
+          "sample_id": "SYN_SAMPLE_S1",
+          "sampling_limitations": "SYNTHETIC_SOURCEFREE_LIMITATIONS",
+          "scope": {
+            "boundary_ref": "SYN_BOUNDARY_1",
+            "end_year": 2010,
+            "fieldwork_ref": "SYN_FIELDWORK_S1",
+            "geography": "SYN_GEO_A",
+            "population": "SYN_POP_A",
+            "start_year": 1990,
+            "unit": "SYN_UNIT_PERSON"
+          },
+          "source_id": "S1",
+          "strata": {
+            "Z1": {
+              "cells": [
+                {
+                  "categories": [
+                    "na0",
+                    "nb0"
+                  ],
+                  "mass": 70,
+                  "n": 70
+                },
+                {
+                  "categories": [
+                    "na0",
+                    "nb1"
+                  ],
+                  "mass": 10,
+                  "n": 10
+                },
+                {
+                  "categories": [
+                    "na1",
+                    "nb0"
+                  ],
+                  "mass": 10,
+                  "n": 10
+                },
+                {
+                  "categories": [
+                    "na1",
+                    "nb1"
+                  ],
+                  "mass": 10,
+                  "n": 10
+                }
+              ],
+              "eligible_n": 100,
+              "excluded_n": 0,
+              "support_ref": "SYN_SUPPORT_Z1",
+              "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET"
+            }
+          },
+          "survey_lineage": "SYN_LINEAGE_S1",
+          "test_origin": true,
+          "weight_ref": "SYN_WEIGHT_S1"
+        }
+      ],
+      "target": {
+        "boundary_ref": "SYN_BOUNDARY_1",
+        "geography": "SYN_GEO_A",
+        "population": "SYN_POP_A",
+        "strata": {
+          "Z1": "4/5",
+          "Z2": "1/5"
+        },
+        "strata_ref": "SYN_STRATA_REF",
+        "target_id": "SYN_TARGET_A",
+        "unit": "SYN_UNIT_PERSON",
+        "year": 2000
+      },
+      "world_id": "N5_NO_POSITIVITY_UNCOVERED_MASS"
+    },
+    {
+      "expectations": {
+        "covered_subprobability_sum": "4/5",
+        "distribution_is_null": true,
+        "joint": {
+          "('P',)": "31/50",
+          "('Q',)": "7/50",
+          "('R',)": "1/25"
+        },
+        "lower": {
+          "('P',)": "31/50",
+          "('Q',)": "7/50",
+          "('R',)": "1/25"
+        },
+        "preregistered_corrected_upper_17_50": "17/50",
+        "preregistered_corrected_upper_41_50": "41/50",
+        "preregistered_correction_rule": "corrected = covered + uncovered share (1/5 = 10/50); 31/50 -> 41/50 and 7/50 -> 17/50",
+        "preregistered_old_upper_31_50": "31/50",
+        "preregistered_old_upper_7_50": "7/50",
+        "preregistered_widened_upper": {
+          "('P',)": "41/50",
+          "('Q',)": "17/50",
+          "('R',)": "6/25"
+        },
+        "uncovered_target_mass": "1/5",
+        "upper": {
+          "('P',)": "41/50",
+          "('Q',)": "17/50",
+          "('R',)": "6/25"
+        }
+      },
+      "notes": "Counts 31,7,2 total 40 -> p=(31/40,7/40,2/40). Covered=(31/50,7/50,2/50) summing to 4/5; uncovered 1/5 widens each upper by 1/5.",
+      "origin": "PREREGISTERED_NEW_F6J",
+      "perturbation_axis": "parallel uncovered-share arithmetic correction on a 3-category unary axis",
+      "policy": {
+        "conditional_invariance_ref": "SYN_CONDITIONAL_INVARIANCE_REF",
+        "conditional_invariance_status": "REVIEWED_ASSUMPTION",
+        "mapping_bias_radius": "1/10",
+        "mapping_hashes": {
+          "S1": "2cb3e62918f883a9f66c39cb28f4d917004f053341d10b1f100997930f03bdaa"
+        },
+        "maximum_joint_cells": 64,
+        "minimum_raw_support": 1,
+        "overlap_reviews": {},
+        "policy_ref": "SYN_POLICY_REF",
+        "scope_review_ref": "SYN_SCOPE_REVIEW_REF",
+        "source_weights": {
+          "S1": "1"
+        },
+        "target_share_bias_radius": "1/10",
+        "target_support_ref": "SYN_TARGET_SUPPORT_REF",
+        "transport_bias_radius": "1/10"
+      },
+      "purpose": "parallel uncovered-share arithmetic correction on a 3-category unary axis",
+      "sources": [
+        {
+          "axes": [
+            {
+              "category_map": {
+                "nu0": "P",
+                "nu1": "Q",
+                "nu2": "R"
+              },
+              "construct_ref": "SYN_CONSTRUCT_UNARY",
+              "instrument_ref": "SYN_INSTR_U",
+              "item_ref": "SYN_ITEM_U",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "SYN_MAP_U",
+              "polarity_ref": "SYN_POL_U",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "SYN_RESP_U",
+              "review_status": "REVIEWED",
+              "scale_ref": "SYN_SCALE_U",
+              "scale_status": "REVIEWED"
+            }
+          ],
+          "coadministration_ref": "SYN_COADMIN_S1",
+          "dependence_kind": "MEASURED_SAME_SURVEY_JOINT",
+          "design_ref": "SYN_DESIGN_S1",
+          "joint_frontier_ref": "SYN_FRONTIER_S1",
+          "measure_basis": "UNWEIGHTED",
+          "missingness_ref": "SYN_MISSING_S1",
+          "permission_ref": "SYN_PERMISSION_S1",
+          "product_ref": "SYN_PRODUCT_S1",
+          "risk_set_ref": "SYN_RISK_S1",
+          "routing_ref": "SYN_ROUTING_S1",
+          "sample_id": "SYN_SAMPLE_S1",
+          "sampling_limitations": "SYNTHETIC_SOURCEFREE_LIMITATIONS",
+          "scope": {
+            "boundary_ref": "SYN_BOUNDARY_1",
+            "end_year": 2010,
+            "fieldwork_ref": "SYN_FIELDWORK_S1",
+            "geography": "SYN_GEO_A",
+            "population": "SYN_POP_A",
+            "start_year": 1990,
+            "unit": "SYN_UNIT_PERSON"
+          },
+          "source_id": "S1",
+          "strata": {
+            "Z1": {
+              "cells": [
+                {
+                  "categories": [
+                    "nu0"
+                  ],
+                  "mass": 31,
+                  "n": 31
+                },
+                {
+                  "categories": [
+                    "nu1"
+                  ],
+                  "mass": 7,
+                  "n": 7
+                },
+                {
+                  "categories": [
+                    "nu2"
+                  ],
+                  "mass": 2,
+                  "n": 2
+                }
+              ],
+              "eligible_n": 40,
+              "excluded_n": 0,
+              "support_ref": "SYN_SUPPORT_Z1",
+              "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET"
+            }
+          },
+          "survey_lineage": "SYN_LINEAGE_S1",
+          "test_origin": true,
+          "weight_ref": "SYN_WEIGHT_S1"
+        }
+      ],
+      "target": {
+        "boundary_ref": "SYN_BOUNDARY_1",
+        "geography": "SYN_GEO_A",
+        "population": "SYN_POP_A",
+        "strata": {
+          "Z1": "4/5",
+          "Z2": "1/5"
+        },
+        "strata_ref": "SYN_STRATA_REF",
+        "target_id": "SYN_TARGET_A",
+        "unit": "SYN_UNIT_PERSON",
+        "year": 2000
+      },
+      "world_id": "N6_PARALLEL_ARITHMETIC_CORRECTION"
+    },
+    {
+      "expectations": {
+        "covered_subprobability_sum": "1",
+        "distribution_is_null": false,
+        "joint": {
+          "('X', 'U')": "1/2",
+          "('X', 'V')": "1/4",
+          "('Y', 'U')": "3/20",
+          "('Y', 'V')": "1/10"
+        },
+        "lower": {
+          "('X', 'U')": "1/2",
+          "('X', 'V')": "1/4",
+          "('Y', 'U')": "3/20",
+          "('Y', 'V')": "1/10"
+        },
+        "preregistered_cell_count": 4,
+        "preregistered_domain_size": 4,
+        "uncovered_target_mass": "0",
+        "upper": {
+          "('X', 'U')": "1/2",
+          "('X', 'V')": "1/4",
+          "('Y', 'U')": "3/20",
+          "('Y', 'V')": "1/10"
+        }
+      },
+      "notes": "Counts 20,10,6,4 total 40.",
+      "origin": "PREREGISTERED_NEW_F6J",
+      "perturbation_axis": "complete-domain control before the exclusion attack",
+      "policy": {
+        "conditional_invariance_ref": "SYN_CONDITIONAL_INVARIANCE_REF",
+        "conditional_invariance_status": "REVIEWED_ASSUMPTION",
+        "mapping_bias_radius": "1/10",
+        "mapping_hashes": {
+          "S1": "05179b9af9efc9530d638c08000e748d19f478a5fbf293be2fcc71215b586654"
+        },
+        "maximum_joint_cells": 64,
+        "minimum_raw_support": 1,
+        "overlap_reviews": {},
+        "policy_ref": "SYN_POLICY_REF",
+        "scope_review_ref": "SYN_SCOPE_REVIEW_REF",
+        "source_weights": {
+          "S1": "1"
+        },
+        "target_share_bias_radius": "1/10",
+        "target_support_ref": "SYN_TARGET_SUPPORT_REF",
+        "transport_bias_radius": "1/10"
+      },
+      "purpose": "complete-domain control before the exclusion attack",
+      "sources": [
+        {
+          "axes": [
+            {
+              "category_map": {
+                "na0": "X",
+                "na1": "Y"
+              },
+              "construct_ref": "SYN_CONSTRUCT_ATTITUDE",
+              "instrument_ref": "SYN_INSTR_A",
+              "item_ref": "SYN_ITEM_A",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "SYN_MAP_A",
+              "polarity_ref": "SYN_POL_A",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "SYN_RESP_A",
+              "review_status": "REVIEWED",
+              "scale_ref": "SYN_SCALE_A",
+              "scale_status": "REVIEWED"
+            },
+            {
+              "category_map": {
+                "nb0": "U",
+                "nb1": "V"
+              },
+              "construct_ref": "SYN_CONSTRUCT_BEHAVIOUR",
+              "instrument_ref": "SYN_INSTR_B",
+              "item_ref": "SYN_ITEM_B",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "SYN_MAP_B",
+              "polarity_ref": "SYN_POL_B",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "SYN_RESP_B",
+              "review_status": "REVIEWED",
+              "scale_ref": "SYN_SCALE_B",
+              "scale_status": "REVIEWED"
+            }
+          ],
+          "coadministration_ref": "SYN_COADMIN_S1",
+          "dependence_kind": "MEASURED_SAME_SURVEY_JOINT",
+          "design_ref": "SYN_DESIGN_S1",
+          "joint_frontier_ref": "SYN_FRONTIER_S1",
+          "measure_basis": "UNWEIGHTED",
+          "missingness_ref": "SYN_MISSING_S1",
+          "permission_ref": "SYN_PERMISSION_S1",
+          "product_ref": "SYN_PRODUCT_S1",
+          "risk_set_ref": "SYN_RISK_S1",
+          "routing_ref": "SYN_ROUTING_S1",
+          "sample_id": "SYN_SAMPLE_S1",
+          "sampling_limitations": "SYNTHETIC_SOURCEFREE_LIMITATIONS",
+          "scope": {
+            "boundary_ref": "SYN_BOUNDARY_1",
+            "end_year": 2010,
+            "fieldwork_ref": "SYN_FIELDWORK_S1",
+            "geography": "SYN_GEO_A",
+            "population": "SYN_POP_A",
+            "start_year": 1990,
+            "unit": "SYN_UNIT_PERSON"
+          },
+          "source_id": "S1",
+          "strata": {
+            "Z1": {
+              "cells": [
+                {
+                  "categories": [
+                    "na0",
+                    "nb0"
+                  ],
+                  "mass": 20,
+                  "n": 20
+                },
+                {
+                  "categories": [
+                    "na0",
+                    "nb1"
+                  ],
+                  "mass": 10,
+                  "n": 10
+                },
+                {
+                  "categories": [
+                    "na1",
+                    "nb0"
+                  ],
+                  "mass": 6,
+                  "n": 6
+                },
+                {
+                  "categories": [
+                    "na1",
+                    "nb1"
+                  ],
+                  "mass": 4,
+                  "n": 4
+                }
+              ],
+              "eligible_n": 40,
+              "excluded_n": 0,
+              "support_ref": "SYN_SUPPORT_Z1",
+              "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET"
+            }
+          },
+          "survey_lineage": "SYN_LINEAGE_S1",
+          "test_origin": true,
+          "weight_ref": "SYN_WEIGHT_S1"
+        }
+      ],
+      "target": {
+        "boundary_ref": "SYN_BOUNDARY_1",
+        "geography": "SYN_GEO_A",
+        "population": "SYN_POP_A",
+        "strata": {
+          "Z1": "1"
+        },
+        "strata_ref": "SYN_STRATA_REF",
+        "target_id": "SYN_TARGET_A",
+        "unit": "SYN_UNIT_PERSON",
+        "year": 2000
+      },
+      "world_id": "N7_COMPLETE_DOMAIN_CONTROL"
+    },
+    {
+      "expectations": {
+        "covered_subprobability_sum": "1",
+        "distribution_is_null": false,
+        "joint": {
+          "('X', 'U')": "7/50",
+          "('X', 'V')": "13/100",
+          "('Y', 'U')": "49/200",
+          "('Y', 'V')": "97/200"
+        },
+        "lower": {
+          "('X', 'U')": "3/100",
+          "('X', 'V')": "1/100",
+          "('Y', 'U')": "6/25",
+          "('Y', 'V')": "1/4"
+        },
+        "minority_cell": "X|U",
+        "minority_counts_S1": 3,
+        "minority_native_share_S1": "3/100",
+        "preregistered_alpha_S1_at_1": "1/2",
+        "preregistered_alpha_S1_at_5": "0 (excluded: raw_n=3 < 5)",
+        "preregistered_min_support_1": {
+          "('X', 'U')": "7/50",
+          "('X', 'V')": "13/100",
+          "('Y', 'U')": "49/200",
+          "('Y', 'V')": "97/200"
+        },
+        "preregistered_min_support_5": {
+          "('X', 'U')": "7/50",
+          "('X', 'V')": "13/100",
+          "('Y', 'U')": "49/200",
+          "('Y', 'V')": "97/200"
+        },
+        "preregistered_threshold_changes_estimate": false,
+        "uncovered_target_mass": "0",
+        "upper": {
+          "('X', 'U')": "1/4",
+          "('X', 'V')": "1/4",
+          "('Y', 'U')": "1/4",
+          "('Y', 'V')": "18/25"
+        }
+      },
+      "notes": "S1 has a genuine minority cell of 3 respondents in na0|nb0. Raising minimum_raw_support above 3 silently DROPS S1 entirely and renormalizes alpha onto S2 alone, which erases the minority estimate.",
+      "origin": "PREREGISTERED_NEW_F6J",
+      "perturbation_axis": "minority category representation and minimum_raw_support threshold interaction",
+      "policy": {
+        "conditional_invariance_ref": "SYN_CONDITIONAL_INVARIANCE_REF",
+        "conditional_invariance_status": "REVIEWED_ASSUMPTION",
+        "mapping_bias_radius": "1/10",
+        "mapping_hashes": {
+          "S1": "05179b9af9efc9530d638c08000e748d19f478a5fbf293be2fcc71215b586654",
+          "S2": "05179b9af9efc9530d638c08000e748d19f478a5fbf293be2fcc71215b586654"
+        },
+        "maximum_joint_cells": 64,
+        "minimum_raw_support": 1,
+        "overlap_reviews": {
+          "S1|S2": {
+            "review_ref": "SYN_OVERLAP_REVIEW_REF",
+            "status": "DISJOINT"
+          }
+        },
+        "policy_ref": "SYN_POLICY_REF",
+        "scope_review_ref": "SYN_SCOPE_REVIEW_REF",
+        "source_weights": {
+          "S1": "1",
+          "S2": "1"
+        },
+        "target_share_bias_radius": "1/10",
+        "target_support_ref": "SYN_TARGET_SUPPORT_REF",
+        "transport_bias_radius": "1/10"
+      },
+      "purpose": "minority category representation and minimum_raw_support threshold interaction",
+      "sources": [
+        {
+          "axes": [
+            {
+              "category_map": {
+                "na0": "X",
+                "na1": "Y"
+              },
+              "construct_ref": "SYN_CONSTRUCT_ATTITUDE",
+              "instrument_ref": "SYN_INSTR_A",
+              "item_ref": "SYN_ITEM_A",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "SYN_MAP_A",
+              "polarity_ref": "SYN_POL_A",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "SYN_RESP_A",
+              "review_status": "REVIEWED",
+              "scale_ref": "SYN_SCALE_A",
+              "scale_status": "REVIEWED"
+            },
+            {
+              "category_map": {
+                "nb0": "U",
+                "nb1": "V"
+              },
+              "construct_ref": "SYN_CONSTRUCT_BEHAVIOUR",
+              "instrument_ref": "SYN_INSTR_B",
+              "item_ref": "SYN_ITEM_B",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "SYN_MAP_B",
+              "polarity_ref": "SYN_POL_B",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "SYN_RESP_B",
+              "review_status": "REVIEWED",
+              "scale_ref": "SYN_SCALE_B",
+              "scale_status": "REVIEWED"
+            }
+          ],
+          "coadministration_ref": "SYN_COADMIN_S1",
+          "dependence_kind": "MEASURED_SAME_SURVEY_JOINT",
+          "design_ref": "SYN_DESIGN_S1",
+          "joint_frontier_ref": "SYN_FRONTIER_S1",
+          "measure_basis": "UNWEIGHTED",
+          "missingness_ref": "SYN_MISSING_S1",
+          "permission_ref": "SYN_PERMISSION_S1",
+          "product_ref": "SYN_PRODUCT_S1",
+          "risk_set_ref": "SYN_RISK_S1",
+          "routing_ref": "SYN_ROUTING_S1",
+          "sample_id": "SYN_SAMPLE_S1",
+          "sampling_limitations": "SYNTHETIC_SOURCEFREE_LIMITATIONS",
+          "scope": {
+            "boundary_ref": "SYN_BOUNDARY_1",
+            "end_year": 2010,
+            "fieldwork_ref": "SYN_FIELDWORK_S1",
+            "geography": "SYN_GEO_A",
+            "population": "SYN_POP_A",
+            "start_year": 1990,
+            "unit": "SYN_UNIT_PERSON"
+          },
+          "source_id": "S1",
+          "strata": {
+            "Z1": {
+              "cells": [
+                {
+                  "categories": [
+                    "na0",
+                    "nb0"
+                  ],
+                  "mass": 3,
+                  "n": 3
+                },
+                {
+                  "categories": [
+                    "na0",
+                    "nb1"
+                  ],
+                  "mass": 1,
+                  "n": 1
+                },
+                {
+                  "categories": [
+                    "na1",
+                    "nb0"
+                  ],
+                  "mass": 24,
+                  "n": 24
+                },
+                {
+                  "categories": [
+                    "na1",
+                    "nb1"
+                  ],
+                  "mass": 72,
+                  "n": 72
+                }
+              ],
+              "eligible_n": 100,
+              "excluded_n": 0,
+              "support_ref": "SYN_SUPPORT_Z1",
+              "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET"
+            }
+          },
+          "survey_lineage": "SYN_LINEAGE_S1",
+          "test_origin": true,
+          "weight_ref": "SYN_WEIGHT_S1"
+        },
+        {
+          "axes": [
+            {
+              "category_map": {
+                "na0": "X",
+                "na1": "Y"
+              },
+              "construct_ref": "SYN_CONSTRUCT_ATTITUDE",
+              "instrument_ref": "SYN_INSTR_A",
+              "item_ref": "SYN_ITEM_A",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "SYN_MAP_A",
+              "polarity_ref": "SYN_POL_A",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "SYN_RESP_A",
+              "review_status": "REVIEWED",
+              "scale_ref": "SYN_SCALE_A",
+              "scale_status": "REVIEWED"
+            },
+            {
+              "category_map": {
+                "nb0": "U",
+                "nb1": "V"
+              },
+              "construct_ref": "SYN_CONSTRUCT_BEHAVIOUR",
+              "instrument_ref": "SYN_INSTR_B",
+              "item_ref": "SYN_ITEM_B",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "SYN_MAP_B",
+              "polarity_ref": "SYN_POL_B",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "SYN_RESP_B",
+              "review_status": "REVIEWED",
+              "scale_ref": "SYN_SCALE_B",
+              "scale_status": "REVIEWED"
+            }
+          ],
+          "coadministration_ref": "SYN_COADMIN_S2",
+          "dependence_kind": "MEASURED_SAME_SURVEY_JOINT",
+          "design_ref": "SYN_DESIGN_S2",
+          "joint_frontier_ref": "SYN_FRONTIER_S2",
+          "measure_basis": "UNWEIGHTED",
+          "missingness_ref": "SYN_MISSING_S2",
+          "permission_ref": "SYN_PERMISSION_S2",
+          "product_ref": "SYN_PRODUCT_S2",
+          "risk_set_ref": "SYN_RISK_S2",
+          "routing_ref": "SYN_ROUTING_S2",
+          "sample_id": "SYN_SAMPLE_S2",
+          "sampling_limitations": "SYNTHETIC_SOURCEFREE_LIMITATIONS",
+          "scope": {
+            "boundary_ref": "SYN_BOUNDARY_1",
+            "end_year": 2010,
+            "fieldwork_ref": "SYN_FIELDWORK_S2",
+            "geography": "SYN_GEO_A",
+            "population": "SYN_POP_A",
+            "start_year": 1990,
+            "unit": "SYN_UNIT_PERSON"
+          },
+          "source_id": "S2",
+          "strata": {
+            "Z1": {
+              "cells": [
+                {
+                  "categories": [
+                    "na0",
+                    "nb0"
+                  ],
+                  "mass": 25,
+                  "n": 25
+                },
+                {
+                  "categories": [
+                    "na0",
+                    "nb1"
+                  ],
+                  "mass": 25,
+                  "n": 25
+                },
+                {
+                  "categories": [
+                    "na1",
+                    "nb0"
+                  ],
+                  "mass": 25,
+                  "n": 25
+                },
+                {
+                  "categories": [
+                    "na1",
+                    "nb1"
+                  ],
+                  "mass": 25,
+                  "n": 25
+                }
+              ],
+              "eligible_n": 100,
+              "excluded_n": 0,
+              "support_ref": "SYN_SUPPORT_Z1",
+              "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET"
+            }
+          },
+          "survey_lineage": "SYN_LINEAGE_S2",
+          "test_origin": true,
+          "weight_ref": "SYN_WEIGHT_S2"
+        }
+      ],
+      "target": {
+        "boundary_ref": "SYN_BOUNDARY_1",
+        "geography": "SYN_GEO_A",
+        "population": "SYN_POP_A",
+        "strata": {
+          "Z1": "1"
+        },
+        "strata_ref": "SYN_STRATA_REF",
+        "target_id": "SYN_TARGET_A",
+        "unit": "SYN_UNIT_PERSON",
+        "year": 2000
+      },
+      "world_id": "N8_MINORITY_REPRESENTATION_AND_SUPPORT_THRESHOLD"
+    },
+    {
+      "expectations": {
+        "covered_subprobability_sum": "1",
+        "distribution_is_null": false,
+        "joint": {
+          "('X', 'U')": "5/16",
+          "('X', 'V')": "3/16",
+          "('Y', 'U')": "3/16",
+          "('Y', 'V')": "5/16"
+        },
+        "lower": {
+          "('X', 'U')": "1/8",
+          "('X', 'V')": "1/8",
+          "('Y', 'U')": "1/8",
+          "('Y', 'V')": "1/8"
+        },
+        "preregistered_matches_N4_target_share": false,
+        "preregistered_reason": "both sources are eligible in both strata and equiweighted, so swapping which source supplies which stratum is inert; the estimate depends only on the stratum tables and target shares",
+        "preregistered_swapped_joint": {
+          "('X', 'U')": "5/16",
+          "('X', 'V')": "3/16",
+          "('Y', 'U')": "3/16",
+          "('Y', 'V')": "5/16"
+        },
+        "uncovered_target_mass": "0",
+        "upper": {
+          "('X', 'U')": "1/2",
+          "('X', 'V')": "1/4",
+          "('Y', 'U')": "1/4",
+          "('Y', 'V')": "1/2"
+        }
+      },
+      "notes": "Positive control for the source-swap channel.",
+      "origin": "PREREGISTERED_NEW_F6J",
+      "perturbation_axis": "source-swap perturbation: which source supplies which stratum",
+      "policy": {
+        "conditional_invariance_ref": "SYN_CONDITIONAL_INVARIANCE_REF",
+        "conditional_invariance_status": "REVIEWED_ASSUMPTION",
+        "mapping_bias_radius": "1/10",
+        "mapping_hashes": {
+          "S1": "05179b9af9efc9530d638c08000e748d19f478a5fbf293be2fcc71215b586654",
+          "S2": "05179b9af9efc9530d638c08000e748d19f478a5fbf293be2fcc71215b586654"
+        },
+        "maximum_joint_cells": 64,
+        "minimum_raw_support": 1,
+        "overlap_reviews": {
+          "S1|S2": {
+            "review_ref": "SYN_OVERLAP_REVIEW_REF",
+            "status": "DISJOINT"
+          }
+        },
+        "policy_ref": "SYN_POLICY_REF",
+        "scope_review_ref": "SYN_SCOPE_REVIEW_REF",
+        "source_weights": {
+          "S1": "1",
+          "S2": "1"
+        },
+        "target_share_bias_radius": "1/10",
+        "target_support_ref": "SYN_TARGET_SUPPORT_REF",
+        "transport_bias_radius": "1/10"
+      },
+      "purpose": "source-swap perturbation: which source supplies which stratum",
+      "sources": [
+        {
+          "axes": [
+            {
+              "category_map": {
+                "na0": "X",
+                "na1": "Y"
+              },
+              "construct_ref": "SYN_CONSTRUCT_ATTITUDE",
+              "instrument_ref": "SYN_INSTR_A",
+              "item_ref": "SYN_ITEM_A",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "SYN_MAP_A",
+              "polarity_ref": "SYN_POL_A",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "SYN_RESP_A",
+              "review_status": "REVIEWED",
+              "scale_ref": "SYN_SCALE_A",
+              "scale_status": "REVIEWED"
+            },
+            {
+              "category_map": {
+                "nb0": "U",
+                "nb1": "V"
+              },
+              "construct_ref": "SYN_CONSTRUCT_BEHAVIOUR",
+              "instrument_ref": "SYN_INSTR_B",
+              "item_ref": "SYN_ITEM_B",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "SYN_MAP_B",
+              "polarity_ref": "SYN_POL_B",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "SYN_RESP_B",
+              "review_status": "REVIEWED",
+              "scale_ref": "SYN_SCALE_B",
+              "scale_status": "REVIEWED"
+            }
+          ],
+          "coadministration_ref": "SYN_COADMIN_S1",
+          "dependence_kind": "MEASURED_SAME_SURVEY_JOINT",
+          "design_ref": "SYN_DESIGN_S1",
+          "joint_frontier_ref": "SYN_FRONTIER_S1",
+          "measure_basis": "UNWEIGHTED",
+          "missingness_ref": "SYN_MISSING_S1",
+          "permission_ref": "SYN_PERMISSION_S1",
+          "product_ref": "SYN_PRODUCT_S1",
+          "risk_set_ref": "SYN_RISK_S1",
+          "routing_ref": "SYN_ROUTING_S1",
+          "sample_id": "SYN_SAMPLE_S1",
+          "sampling_limitations": "SYNTHETIC_SOURCEFREE_LIMITATIONS",
+          "scope": {
+            "boundary_ref": "SYN_BOUNDARY_1",
+            "end_year": 2010,
+            "fieldwork_ref": "SYN_FIELDWORK_S1",
+            "geography": "SYN_GEO_A",
+            "population": "SYN_POP_A",
+            "start_year": 1990,
+            "unit": "SYN_UNIT_PERSON"
+          },
+          "source_id": "S1",
+          "strata": {
+            "Z1": {
+              "cells": [
+                {
+                  "categories": [
+                    "na0",
+                    "nb0"
+                  ],
+                  "mass": 8,
+                  "n": 8
+                },
+                {
+                  "categories": [
+                    "na0",
+                    "nb1"
+                  ],
+                  "mass": 4,
+                  "n": 4
+                },
+                {
+                  "categories": [
+                    "na1",
+                    "nb0"
+                  ],
+                  "mass": 2,
+                  "n": 2
+                },
+                {
+                  "categories": [
+                    "na1",
+                    "nb1"
+                  ],
+                  "mass": 2,
+                  "n": 2
+                }
+              ],
+              "eligible_n": 16,
+              "excluded_n": 0,
+              "support_ref": "SYN_SUPPORT_Z1",
+              "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET"
+            },
+            "Z2": {
+              "cells": [
+                {
+                  "categories": [
+                    "na0",
+                    "nb0"
+                  ],
+                  "mass": 2,
+                  "n": 2
+                },
+                {
+                  "categories": [
+                    "na0",
+                    "nb1"
+                  ],
+                  "mass": 2,
+                  "n": 2
+                },
+                {
+                  "categories": [
+                    "na1",
+                    "nb0"
+                  ],
+                  "mass": 4,
+                  "n": 4
+                },
+                {
+                  "categories": [
+                    "na1",
+                    "nb1"
+                  ],
+                  "mass": 8,
+                  "n": 8
+                }
+              ],
+              "eligible_n": 16,
+              "excluded_n": 0,
+              "support_ref": "SYN_SUPPORT_Z2",
+              "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET"
+            }
+          },
+          "survey_lineage": "SYN_LINEAGE_S1",
+          "test_origin": true,
+          "weight_ref": "SYN_WEIGHT_S1"
+        },
+        {
+          "axes": [
+            {
+              "category_map": {
+                "na0": "X",
+                "na1": "Y"
+              },
+              "construct_ref": "SYN_CONSTRUCT_ATTITUDE",
+              "instrument_ref": "SYN_INSTR_A",
+              "item_ref": "SYN_ITEM_A",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "SYN_MAP_A",
+              "polarity_ref": "SYN_POL_A",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "SYN_RESP_A",
+              "review_status": "REVIEWED",
+              "scale_ref": "SYN_SCALE_A",
+              "scale_status": "REVIEWED"
+            },
+            {
+              "category_map": {
+                "nb0": "U",
+                "nb1": "V"
+              },
+              "construct_ref": "SYN_CONSTRUCT_BEHAVIOUR",
+              "instrument_ref": "SYN_INSTR_B",
+              "item_ref": "SYN_ITEM_B",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "SYN_MAP_B",
+              "polarity_ref": "SYN_POL_B",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "SYN_RESP_B",
+              "review_status": "REVIEWED",
+              "scale_ref": "SYN_SCALE_B",
+              "scale_status": "REVIEWED"
+            }
+          ],
+          "coadministration_ref": "SYN_COADMIN_S2",
+          "dependence_kind": "MEASURED_SAME_SURVEY_JOINT",
+          "design_ref": "SYN_DESIGN_S2",
+          "joint_frontier_ref": "SYN_FRONTIER_S2",
+          "measure_basis": "UNWEIGHTED",
+          "missingness_ref": "SYN_MISSING_S2",
+          "permission_ref": "SYN_PERMISSION_S2",
+          "product_ref": "SYN_PRODUCT_S2",
+          "risk_set_ref": "SYN_RISK_S2",
+          "routing_ref": "SYN_ROUTING_S2",
+          "sample_id": "SYN_SAMPLE_S2",
+          "sampling_limitations": "SYNTHETIC_SOURCEFREE_LIMITATIONS",
+          "scope": {
+            "boundary_ref": "SYN_BOUNDARY_1",
+            "end_year": 2010,
+            "fieldwork_ref": "SYN_FIELDWORK_S2",
+            "geography": "SYN_GEO_A",
+            "population": "SYN_POP_A",
+            "start_year": 1990,
+            "unit": "SYN_UNIT_PERSON"
+          },
+          "source_id": "S2",
+          "strata": {
+            "Z1": {
+              "cells": [
+                {
+                  "categories": [
+                    "na0",
+                    "nb0"
+                  ],
+                  "mass": 2,
+                  "n": 2
+                },
+                {
+                  "categories": [
+                    "na0",
+                    "nb1"
+                  ],
+                  "mass": 2,
+                  "n": 2
+                },
+                {
+                  "categories": [
+                    "na1",
+                    "nb0"
+                  ],
+                  "mass": 4,
+                  "n": 4
+                },
+                {
+                  "categories": [
+                    "na1",
+                    "nb1"
+                  ],
+                  "mass": 8,
+                  "n": 8
+                }
+              ],
+              "eligible_n": 16,
+              "excluded_n": 0,
+              "support_ref": "SYN_SUPPORT_Z1",
+              "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET"
+            },
+            "Z2": {
+              "cells": [
+                {
+                  "categories": [
+                    "na0",
+                    "nb0"
+                  ],
+                  "mass": 8,
+                  "n": 8
+                },
+                {
+                  "categories": [
+                    "na0",
+                    "nb1"
+                  ],
+                  "mass": 4,
+                  "n": 4
+                },
+                {
+                  "categories": [
+                    "na1",
+                    "nb0"
+                  ],
+                  "mass": 2,
+                  "n": 2
+                },
+                {
+                  "categories": [
+                    "na1",
+                    "nb1"
+                  ],
+                  "mass": 2,
+                  "n": 2
+                }
+              ],
+              "eligible_n": 16,
+              "excluded_n": 0,
+              "support_ref": "SYN_SUPPORT_Z2",
+              "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET"
+            }
+          },
+          "survey_lineage": "SYN_LINEAGE_S2",
+          "test_origin": true,
+          "weight_ref": "SYN_WEIGHT_S2"
+        }
+      ],
+      "target": {
+        "boundary_ref": "SYN_BOUNDARY_1",
+        "geography": "SYN_GEO_A",
+        "population": "SYN_POP_A",
+        "strata": {
+          "Z1": "3/4",
+          "Z2": "1/4"
+        },
+        "strata_ref": "SYN_STRATA_REF",
+        "target_id": "SYN_TARGET_A",
+        "unit": "SYN_UNIT_PERSON",
+        "year": 2000
+      },
+      "world_id": "N9_SOURCE_SWAP"
+    },
+    {
+      "expectations": {
+        "covered_subprobability_sum": "1",
+        "distribution_is_null": false,
+        "is_blind_prefreeze": false,
+        "joint": {
+          "('X', 'U')": "13/25",
+          "('X', 'V')": "1/10",
+          "('Y', 'U')": "1/10",
+          "('Y', 'V')": "7/25"
+        },
+        "label": "POST_DISCLOSURE_REPLICATION",
+        "lower": {
+          "('X', 'U')": "13/25",
+          "('X', 'V')": "1/10",
+          "('Y', 'U')": "1/10",
+          "('Y', 'V')": "7/25"
+        },
+        "preregistered_conditional_P_U_given_X": "26/31",
+        "preregistered_conditional_denominator_P_X": "31/50",
+        "preregistered_note": "this world yields 26/31, NOT 4/5; 26/31 and 4/5 are different worlds and must not be conflated",
+        "publicly_disclosed_world_A": [
+          "13/25",
+          "1/10",
+          "1/10",
+          "7/25"
+        ],
+        "uncovered_target_mass": "0",
+        "upper": {
+          "('X', 'U')": "13/25",
+          "('X', 'V')": "1/10",
+          "('Y', 'U')": "1/10",
+          "('Y', 'V')": "7/25"
+        }
+      },
+      "notes": "Counts 26,5,5,14 total 50 reproduce the public headline 13/25, 1/10, 1/10, 7/25. CANNOT be called blind pre-freeze.",
+      "origin": "POST_DISCLOSURE_REPLICATION",
+      "perturbation_axis": "replication of the author's PUBLICLY DISCLOSED World A headline",
+      "policy": {
+        "conditional_invariance_ref": "SYN_CONDITIONAL_INVARIANCE_REF",
+        "conditional_invariance_status": "REVIEWED_ASSUMPTION",
+        "mapping_bias_radius": "1/10",
+        "mapping_hashes": {
+          "S1": "05179b9af9efc9530d638c08000e748d19f478a5fbf293be2fcc71215b586654"
+        },
+        "maximum_joint_cells": 64,
+        "minimum_raw_support": 1,
+        "overlap_reviews": {},
+        "policy_ref": "SYN_POLICY_REF",
+        "scope_review_ref": "SYN_SCOPE_REVIEW_REF",
+        "source_weights": {
+          "S1": "1"
+        },
+        "target_share_bias_radius": "1/10",
+        "target_support_ref": "SYN_TARGET_SUPPORT_REF",
+        "transport_bias_radius": "1/10"
+      },
+      "purpose": "replication of the author's PUBLICLY DISCLOSED World A headline",
+      "sources": [
+        {
+          "axes": [
+            {
+              "category_map": {
+                "na0": "X",
+                "na1": "Y"
+              },
+              "construct_ref": "SYN_CONSTRUCT_ATTITUDE",
+              "instrument_ref": "SYN_INSTR_A",
+              "item_ref": "SYN_ITEM_A",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "SYN_MAP_A",
+              "polarity_ref": "SYN_POL_A",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "SYN_RESP_A",
+              "review_status": "REVIEWED",
+              "scale_ref": "SYN_SCALE_A",
+              "scale_status": "REVIEWED"
+            },
+            {
+              "category_map": {
+                "nb0": "U",
+                "nb1": "V"
+              },
+              "construct_ref": "SYN_CONSTRUCT_BEHAVIOUR",
+              "instrument_ref": "SYN_INSTR_B",
+              "item_ref": "SYN_ITEM_B",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "SYN_MAP_B",
+              "polarity_ref": "SYN_POL_B",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "SYN_RESP_B",
+              "review_status": "REVIEWED",
+              "scale_ref": "SYN_SCALE_B",
+              "scale_status": "REVIEWED"
+            }
+          ],
+          "coadministration_ref": "SYN_COADMIN_S1",
+          "dependence_kind": "MEASURED_SAME_SURVEY_JOINT",
+          "design_ref": "SYN_DESIGN_S1",
+          "joint_frontier_ref": "SYN_FRONTIER_S1",
+          "measure_basis": "UNWEIGHTED",
+          "missingness_ref": "SYN_MISSING_S1",
+          "permission_ref": "SYN_PERMISSION_S1",
+          "product_ref": "SYN_PRODUCT_S1",
+          "risk_set_ref": "SYN_RISK_S1",
+          "routing_ref": "SYN_ROUTING_S1",
+          "sample_id": "SYN_SAMPLE_S1",
+          "sampling_limitations": "SYNTHETIC_SOURCEFREE_LIMITATIONS",
+          "scope": {
+            "boundary_ref": "SYN_BOUNDARY_1",
+            "end_year": 2010,
+            "fieldwork_ref": "SYN_FIELDWORK_S1",
+            "geography": "SYN_GEO_A",
+            "population": "SYN_POP_A",
+            "start_year": 1990,
+            "unit": "SYN_UNIT_PERSON"
+          },
+          "source_id": "S1",
+          "strata": {
+            "Z1": {
+              "cells": [
+                {
+                  "categories": [
+                    "na0",
+                    "nb0"
+                  ],
+                  "mass": 26,
+                  "n": 26
+                },
+                {
+                  "categories": [
+                    "na0",
+                    "nb1"
+                  ],
+                  "mass": 5,
+                  "n": 5
+                },
+                {
+                  "categories": [
+                    "na1",
+                    "nb0"
+                  ],
+                  "mass": 5,
+                  "n": 5
+                },
+                {
+                  "categories": [
+                    "na1",
+                    "nb1"
+                  ],
+                  "mass": 14,
+                  "n": 14
+                }
+              ],
+              "eligible_n": 50,
+              "excluded_n": 0,
+              "support_ref": "SYN_SUPPORT_Z1",
+              "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET"
+            }
+          },
+          "survey_lineage": "SYN_LINEAGE_S1",
+          "test_origin": true,
+          "weight_ref": "SYN_WEIGHT_S1"
+        }
+      ],
+      "target": {
+        "boundary_ref": "SYN_BOUNDARY_1",
+        "geography": "SYN_GEO_A",
+        "population": "SYN_POP_A",
+        "strata": {
+          "Z1": "1"
+        },
+        "strata_ref": "SYN_STRATA_REF",
+        "target_id": "SYN_TARGET_A",
+        "unit": "SYN_UNIT_PERSON",
+        "year": 2000
+      },
+      "world_id": "R1_AUTHOR_WORLD_A_PUBLIC_HEADLINE"
+    },
+    {
+      "expectations": {
+        "contrasts_with": "R1 yields 26/31 on a DIFFERENT world",
+        "covered_subprobability_sum": "1",
+        "distribution_is_null": false,
+        "joint": {
+          "('X', 'U')": "2/5",
+          "('X', 'V')": "1/10",
+          "('Y', 'U')": "1/10",
+          "('Y', 'V')": "2/5"
+        },
+        "lower": {
+          "('X', 'U')": "2/5",
+          "('X', 'V')": "1/10",
+          "('Y', 'U')": "1/10",
+          "('Y', 'V')": "2/5"
+        },
+        "preregistered_conditional_P_U_given_X": "4/5",
+        "preregistered_conditional_denominator_P_X": "1/2",
+        "preregistered_joint": {
+          "('X', 'U')": "2/5",
+          "('X', 'V')": "1/10",
+          "('Y', 'U')": "1/10",
+          "('Y', 'V')": "2/5"
+        },
+        "uncovered_target_mass": "0",
+        "upper": {
+          "('X', 'U')": "2/5",
+          "('X', 'V')": "1/10",
+          "('Y', 'U')": "1/10",
+          "('Y', 'V')": "2/5"
+        }
+      },
+      "notes": "Counts 20,5,5,20 total 50 -> joint (2/5,1/10,1/10,2/5). P(U|X) = (2/5)/(2/5+1/10) = 4/5.",
+      "origin": "PREREGISTERED_NEW_F6J",
+      "perturbation_axis": "independent new world whose conditional is exactly 4/5",
+      "policy": {
+        "conditional_invariance_ref": "SYN_CONDITIONAL_INVARIANCE_REF",
+        "conditional_invariance_status": "REVIEWED_ASSUMPTION",
+        "mapping_bias_radius": "1/10",
+        "mapping_hashes": {
+          "S1": "05179b9af9efc9530d638c08000e748d19f478a5fbf293be2fcc71215b586654"
+        },
+        "maximum_joint_cells": 64,
+        "minimum_raw_support": 1,
+        "overlap_reviews": {},
+        "policy_ref": "SYN_POLICY_REF",
+        "scope_review_ref": "SYN_SCOPE_REVIEW_REF",
+        "source_weights": {
+          "S1": "1"
+        },
+        "target_share_bias_radius": "1/10",
+        "target_support_ref": "SYN_TARGET_SUPPORT_REF",
+        "transport_bias_radius": "1/10"
+      },
+      "purpose": "independent new world whose conditional is exactly 4/5",
+      "sources": [
+        {
+          "axes": [
+            {
+              "category_map": {
+                "na0": "X",
+                "na1": "Y"
+              },
+              "construct_ref": "SYN_CONSTRUCT_ATTITUDE",
+              "instrument_ref": "SYN_INSTR_A",
+              "item_ref": "SYN_ITEM_A",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "SYN_MAP_A",
+              "polarity_ref": "SYN_POL_A",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "SYN_RESP_A",
+              "review_status": "REVIEWED",
+              "scale_ref": "SYN_SCALE_A",
+              "scale_status": "REVIEWED"
+            },
+            {
+              "category_map": {
+                "nb0": "U",
+                "nb1": "V"
+              },
+              "construct_ref": "SYN_CONSTRUCT_BEHAVIOUR",
+              "instrument_ref": "SYN_INSTR_B",
+              "item_ref": "SYN_ITEM_B",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "SYN_MAP_B",
+              "polarity_ref": "SYN_POL_B",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "SYN_RESP_B",
+              "review_status": "REVIEWED",
+              "scale_ref": "SYN_SCALE_B",
+              "scale_status": "REVIEWED"
+            }
+          ],
+          "coadministration_ref": "SYN_COADMIN_S1",
+          "dependence_kind": "MEASURED_SAME_SURVEY_JOINT",
+          "design_ref": "SYN_DESIGN_S1",
+          "joint_frontier_ref": "SYN_FRONTIER_S1",
+          "measure_basis": "UNWEIGHTED",
+          "missingness_ref": "SYN_MISSING_S1",
+          "permission_ref": "SYN_PERMISSION_S1",
+          "product_ref": "SYN_PRODUCT_S1",
+          "risk_set_ref": "SYN_RISK_S1",
+          "routing_ref": "SYN_ROUTING_S1",
+          "sample_id": "SYN_SAMPLE_S1",
+          "sampling_limitations": "SYNTHETIC_SOURCEFREE_LIMITATIONS",
+          "scope": {
+            "boundary_ref": "SYN_BOUNDARY_1",
+            "end_year": 2010,
+            "fieldwork_ref": "SYN_FIELDWORK_S1",
+            "geography": "SYN_GEO_A",
+            "population": "SYN_POP_A",
+            "start_year": 1990,
+            "unit": "SYN_UNIT_PERSON"
+          },
+          "source_id": "S1",
+          "strata": {
+            "Z1": {
+              "cells": [
+                {
+                  "categories": [
+                    "na0",
+                    "nb0"
+                  ],
+                  "mass": 20,
+                  "n": 20
+                },
+                {
+                  "categories": [
+                    "na0",
+                    "nb1"
+                  ],
+                  "mass": 5,
+                  "n": 5
+                },
+                {
+                  "categories": [
+                    "na1",
+                    "nb0"
+                  ],
+                  "mass": 5,
+                  "n": 5
+                },
+                {
+                  "categories": [
+                    "na1",
+                    "nb1"
+                  ],
+                  "mass": 20,
+                  "n": 20
+                }
+              ],
+              "eligible_n": 50,
+              "excluded_n": 0,
+              "support_ref": "SYN_SUPPORT_Z1",
+              "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET"
+            }
+          },
+          "survey_lineage": "SYN_LINEAGE_S1",
+          "test_origin": true,
+          "weight_ref": "SYN_WEIGHT_S1"
+        }
+      ],
+      "target": {
+        "boundary_ref": "SYN_BOUNDARY_1",
+        "geography": "SYN_GEO_A",
+        "population": "SYN_POP_A",
+        "strata": {
+          "Z1": "1"
+        },
+        "strata_ref": "SYN_STRATA_REF",
+        "target_id": "SYN_TARGET_A",
+        "unit": "SYN_UNIT_PERSON",
+        "year": 2000
+      },
+      "world_id": "R2_F6J_CONDITIONAL_FOUR_FIFTHS"
+    },
+    {
+      "expectations": {
+        "covered_subprobability_sum": "1",
+        "distribution_is_null": false,
+        "is_blind_prefreeze": false,
+        "joint": {
+          "('X', 'U')": "1/3",
+          "('X', 'V')": "1/3",
+          "('Y', 'U')": "1/6",
+          "('Y', 'V')": "1/6"
+        },
+        "label": "POST_DISCLOSURE_REPLICATION",
+        "lower": {
+          "('X', 'U')": "1/3",
+          "('X', 'V')": "1/3",
+          "('Y', 'U')": "1/6",
+          "('Y', 'V')": "1/6"
+        },
+        "publicly_disclosed_world_B_mass": "1/5",
+        "uncovered_target_mass": "0",
+        "upper": {
+          "('X', 'U')": "1/3",
+          "('X', 'V')": "1/3",
+          "('Y', 'U')": "1/6",
+          "('Y', 'V')": "1/6"
+        }
+      },
+      "notes": "Counts 10,10,5,5 total 30. Mass one-fifth is visible in the (na1,*) block: 5/30 + 5/30 = 1/3 of total; the 1/5 mass is the (na1,nb1) cell share of the na1 block. Replication target only.",
+      "origin": "POST_DISCLOSURE_REPLICATION",
+      "perturbation_axis": "replication of the author's PUBLICLY DISCLOSED World B 1/5 mass",
+      "policy": {
+        "conditional_invariance_ref": "SYN_CONDITIONAL_INVARIANCE_REF",
+        "conditional_invariance_status": "REVIEWED_ASSUMPTION",
+        "mapping_bias_radius": "1/10",
+        "mapping_hashes": {
+          "S1": "05179b9af9efc9530d638c08000e748d19f478a5fbf293be2fcc71215b586654"
+        },
+        "maximum_joint_cells": 64,
+        "minimum_raw_support": 1,
+        "overlap_reviews": {},
+        "policy_ref": "SYN_POLICY_REF",
+        "scope_review_ref": "SYN_SCOPE_REVIEW_REF",
+        "source_weights": {
+          "S1": "1"
+        },
+        "target_share_bias_radius": "1/10",
+        "target_support_ref": "SYN_TARGET_SUPPORT_REF",
+        "transport_bias_radius": "1/10"
+      },
+      "purpose": "replication of the author's PUBLICLY DISCLOSED World B 1/5 mass",
+      "sources": [
+        {
+          "axes": [
+            {
+              "category_map": {
+                "na0": "X",
+                "na1": "Y"
+              },
+              "construct_ref": "SYN_CONSTRUCT_ATTITUDE",
+              "instrument_ref": "SYN_INSTR_A",
+              "item_ref": "SYN_ITEM_A",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "SYN_MAP_A",
+              "polarity_ref": "SYN_POL_A",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "SYN_RESP_A",
+              "review_status": "REVIEWED",
+              "scale_ref": "SYN_SCALE_A",
+              "scale_status": "REVIEWED"
+            },
+            {
+              "category_map": {
+                "nb0": "U",
+                "nb1": "V"
+              },
+              "construct_ref": "SYN_CONSTRUCT_BEHAVIOUR",
+              "instrument_ref": "SYN_INSTR_B",
+              "item_ref": "SYN_ITEM_B",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "SYN_MAP_B",
+              "polarity_ref": "SYN_POL_B",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "SYN_RESP_B",
+              "review_status": "REVIEWED",
+              "scale_ref": "SYN_SCALE_B",
+              "scale_status": "REVIEWED"
+            }
+          ],
+          "coadministration_ref": "SYN_COADMIN_S1",
+          "dependence_kind": "MEASURED_SAME_SURVEY_JOINT",
+          "design_ref": "SYN_DESIGN_S1",
+          "joint_frontier_ref": "SYN_FRONTIER_S1",
+          "measure_basis": "UNWEIGHTED",
+          "missingness_ref": "SYN_MISSING_S1",
+          "permission_ref": "SYN_PERMISSION_S1",
+          "product_ref": "SYN_PRODUCT_S1",
+          "risk_set_ref": "SYN_RISK_S1",
+          "routing_ref": "SYN_ROUTING_S1",
+          "sample_id": "SYN_SAMPLE_S1",
+          "sampling_limitations": "SYNTHETIC_SOURCEFREE_LIMITATIONS",
+          "scope": {
+            "boundary_ref": "SYN_BOUNDARY_1",
+            "end_year": 2010,
+            "fieldwork_ref": "SYN_FIELDWORK_S1",
+            "geography": "SYN_GEO_A",
+            "population": "SYN_POP_A",
+            "start_year": 1990,
+            "unit": "SYN_UNIT_PERSON"
+          },
+          "source_id": "S1",
+          "strata": {
+            "Z1": {
+              "cells": [
+                {
+                  "categories": [
+                    "na0",
+                    "nb0"
+                  ],
+                  "mass": 10,
+                  "n": 10
+                },
+                {
+                  "categories": [
+                    "na0",
+                    "nb1"
+                  ],
+                  "mass": 10,
+                  "n": 10
+                },
+                {
+                  "categories": [
+                    "na1",
+                    "nb0"
+                  ],
+                  "mass": 5,
+                  "n": 5
+                },
+                {
+                  "categories": [
+                    "na1",
+                    "nb1"
+                  ],
+                  "mass": 5,
+                  "n": 5
+                }
+              ],
+              "eligible_n": 30,
+              "excluded_n": 0,
+              "support_ref": "SYN_SUPPORT_Z1",
+              "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET"
+            }
+          },
+          "survey_lineage": "SYN_LINEAGE_S1",
+          "test_origin": true,
+          "weight_ref": "SYN_WEIGHT_S1"
+        }
+      ],
+      "target": {
+        "boundary_ref": "SYN_BOUNDARY_1",
+        "geography": "SYN_GEO_A",
+        "population": "SYN_POP_A",
+        "strata": {
+          "Z1": "1"
+        },
+        "strata_ref": "SYN_STRATA_REF",
+        "target_id": "SYN_TARGET_A",
+        "unit": "SYN_UNIT_PERSON",
+        "year": 2000
+      },
+      "world_id": "R3_AUTHOR_WORLD_B_MASS_ONE_FIFTH"
+    }
+  ]
+}

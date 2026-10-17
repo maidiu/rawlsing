@@ -1,0 +1,101 @@
+{
+  "exact_code_sites": {
+    "author_path_suffix_control": {
+      "code": "assert PRODUCER.__file__.endswith(\"05_NATIVE_STAGE/rawlsing_next/pre553_heterogeneous_synthesis.py\")",
+      "file": "WORKER_RETURNS/PYAT-R23-F6C-NATIVE-F6-COMPARATIVE-CONTINUATION-R1/02_TESTS/test_f6c_frozen_court.py",
+      "line": 69
+    },
+    "baseline_admission_bypass": {
+      "code": "if not s[\"test_origin\"] and (admit is None or admit(deepcopy(s), deepcopy(target), \"SOURCE_INDEXED_BASELINE\") is not True):",
+      "file": "rawlsing_next/pre553_heterogeneous_synthesis.py",
+      "line": 210
+    },
+    "decision_null_defect": {
+      "code": "out[\"decision\"] = \"SYNTHETIC_CANDIDATE\" if out[\"test_origin\"] else \"INFERRED_CANDIDATE_REQUIRES_REVIEW\"",
+      "file": "rawlsing_next/pre553_heterogeneous_synthesis.py",
+      "line": 343
+    },
+    "mapped_node_missing_ceiling": {
+      "code": "out[\"evidence_graph\"].append({\"node_id\": \"mapped:\" + s[\"source_id\"],\n                \"evidence_mode\": \"TRANSFORMED\", \"test_origin\": s[\"test_origin\"], \"parents\": [native_id],\n                \"method\": \"REVIEWED_CATEGORY_RECODING@1\", \"mapping_hash\": semantic_hash(s[\"axes\"]),\n                \"value_ref\": \"baseline/\" + s[\"source_id\"] + \"/mapped_joint\"})",
+      "file": "rawlsing_next/pre553_heterogeneous_synthesis.py",
+      "line": 259
+    },
+    "stratum_total_support_gate": {
+      "code": "if t and sum(c[\"n\"] for c in t[\"cells\"]) >= policy[\"minimum_raw_support\"] and sum(mapped[sid][z].values()) > 0:",
+      "file": "rawlsing_next/pre553_heterogeneous_synthesis.py",
+      "line": 282
+    },
+    "transport_admission_bypass": {
+      "code": "if not s[\"test_origin\"] and admit(deepcopy(s), deepcopy(target), \"TARGET_JOINT_STANDARDIZATION\") is not True:",
+      "file": "rawlsing_next/pre553_heterogeneous_synthesis.py",
+      "line": 221
+    }
+  },
+  "f6j_commit_delta_only": [
+    "WORKER_RETURNS/PYAT-R27-F6J-INDEPENDENT-F6-EXPERIMENT-COMPLETION-R1/05_REMOTE_VERIFICATION.json"
+  ],
+  "f6j_freeze_is_ancestor": true,
+  "f6k_attribution_errors": [
+    {
+      "actual_file": "rawlsing_next/pre553_heterogeneous_synthesis.py",
+      "claimed_file": "PYAT-R23-F6C.../02_TESTS/f6c_worlds.py",
+      "defect": "unsafe complete-candidate decision when target distribution is null",
+      "id": 1
+    },
+    {
+      "actual_file": "rawlsing_next/pre553_heterogeneous_synthesis.py",
+      "claimed_file": "F6C consumer/admission seam",
+      "defect": "unverified admit=True owner claims",
+      "id": 2
+    },
+    {
+      "actual_file": "rawlsing_next/pre553_heterogeneous_synthesis.py",
+      "claimed_file": "F6C consumer",
+      "defect": "caller-controlled test_origin authority bypass",
+      "id": 3
+    },
+    {
+      "actual_file": "rawlsing_next/pre553_heterogeneous_synthesis.py",
+      "claimed_file": "F6C consumer",
+      "defect": "missing mapped-evidence authority ceilings",
+      "id": 4
+    },
+    {
+      "actual_file": "rawlsing_next/pre553_heterogeneous_synthesis.py",
+      "claimed_file": "f6c_worlds.py / court",
+      "defect": "incorrect minority-support claims",
+      "id": 5
+    },
+    {
+      "actual_file": "WORKER_RETURNS/PYAT-R23-F6C-NATIVE-F6-COMPARATIVE-CONTINUATION-R1/02_TESTS/test_f6c_frozen_court.py",
+      "claimed_file": "test_f6c_frozen_court.py custody case",
+      "defect": "machine-absolute fixture dependency",
+      "id": 6
+    }
+  ],
+  "f6k_branch": "agent/rabochii-pyat-r28-f6k-decision-admission-consumer-contract-repair-r1",
+  "f6k_changed_native_producer": [],
+  "f6k_has_repair_code": false,
+  "f6k_repair_code_shipped": false,
+  "f6k_return_file_hashes": {
+    "WORKER_RETURNS/PYAT-R28-F6K-F6-DECISION-ADMISSION-REPAIR-R1/00_REPAIR_STATUS.md": "478ff51db17c0beb5749650b552d27fe6993fcae278cf1a4c64999883feb3461",
+    "WORKER_RETURNS/PYAT-R28-F6K-F6-DECISION-ADMISSION-REPAIR-R1/01_DEFECT_REPAIR_MAP.json": "665dbd367d1ab333cf4a58f5cdc0df95ea380aeb5a3670c8ff61156910676b23"
+  },
+  "f6k_return_files": [
+    "WORKER_RETURNS/PYAT-R28-F6K-F6-DECISION-ADMISSION-REPAIR-R1/00_REPAIR_STATUS.md",
+    "WORKER_RETURNS/PYAT-R28-F6K-F6-DECISION-ADMISSION-REPAIR-R1/01_DEFECT_REPAIR_MAP.json"
+  ],
+  "f6k_return_python_files": [],
+  "f6k_startup": "813742d970d5484a53b7eac2fa3ba2fa76297432",
+  "f6k_status_outcome": "F6K_TYPED_HOLD__SIX_DEFECTS_LOCATED_AND_MAPPED__NO_REPAIR_CODE_SHIPPED",
+  "f6k_status_terminal": "PYAT_R28_F6K_DECISION_ADMISSION_REPAIR_HOLD__GITHUB_PUSHED",
+  "f6k_suites_executed": false,
+  "f6k_tip": "537cb5195bf4f51ee4abc0ce097155c3a3a69291",
+  "map_text_sha256": "665dbd367d1ab333cf4a58f5cdc0df95ea380aeb5a3670c8ff61156910676b23",
+  "native_producer_absent_at_f6l_startup": true,
+  "native_producer_git_blob": "fc5e37fa5b2f0eb689593b42d95479d1327cb94c",
+  "native_source_commit": "1428c2e92bce1a49efd87378cb23df936d646dc5",
+  "review_conclusion": "F6K is a typed hold with no repair code and no executed suite. Its split of F6J findings is directionally correct, but its defect map attributes producer defects to fixture/consumer files and is not a code-accurate repair plan. No repaired candidate exists for Phase-B acceptance.",
+  "schema": "PYAT_R28_F6L_F6K_RETURN_AUDIT@1",
+  "status_text_sha256": "478ff51db17c0beb5749650b552d27fe6993fcae278cf1a4c64999883feb3461"
+}

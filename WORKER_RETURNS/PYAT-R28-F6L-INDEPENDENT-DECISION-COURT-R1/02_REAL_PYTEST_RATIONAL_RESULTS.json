@@ -1,0 +1,252 @@
+{
+  "branch": "agent/reviewer-pyat-r28-f6l-independent-f6k-frozen-consumer-court-r1",
+  "changed_unchanged_receipts": {
+    "all_confirmed_arithmetic_exact": true,
+    "changed_worlds": [],
+    "decision_admission_defects_unchanged": true,
+    "f6j_82_of_82": true,
+    "unchanged_worlds": [
+      "P1",
+      "P2",
+      "P3",
+      "P10",
+      "P11",
+      "P8"
+    ]
+  },
+  "courts": [
+    {
+      "exit_success": true,
+      "failed": 0,
+      "kind": "rational",
+      "name": "f6j_independent_frozen_courts_82",
+      "note": "F6J 12-world exact rational court; 82/82 comparisons",
+      "passed": 82,
+      "path": "01_SOURCE_TRANSPORT/F6J_RUNTIME/07_EVIDENCE/native_vs_frozen.json",
+      "sha256": "500edb0168f665f483eb105e9c538de8f4ce6c1c6338d75426cddd22ff98a7c8",
+      "tests": 82
+    },
+    {
+      "errors": 0,
+      "failed_cases": [],
+      "failures": 0,
+      "kind": "pytest",
+      "name": "f6j_new_adversarial_53",
+      "note": "F6J 53 new adversarial tests; all pass on unrepaired native",
+      "passed": 53,
+      "path": "04_JUNIT/f6j_adversarial_53.xml",
+      "sha256": "47735ee2eb5bc51a8e9c883eb9ea3240b0c11a4cc4207444276490ff897c0e8a",
+      "skipped": 0,
+      "tests": 53
+    },
+    {
+      "errors": 0,
+      "failed_cases": [],
+      "failures": 0,
+      "kind": "pytest",
+      "name": "inherited_s03fo_35",
+      "note": "inherited original S03FO: 24 tests + 11 subtests",
+      "passed": 35,
+      "path": "04_JUNIT/inherited_s03fo_35.xml",
+      "sha256": "b28641522b905f441b7b578f3d08012fdd923ed3080935165a03c079375f2bcd",
+      "skipped": 0,
+      "tests": 35
+    },
+    {
+      "errors": 0,
+      "failed_cases": [],
+      "failures": 0,
+      "kind": "pytest",
+      "name": "f6c_author_57_candidate_shaped",
+      "note": "author 57/57 at candidate-shaped relative 05_NATIVE_STAGE transport",
+      "passed": 57,
+      "path": "04_JUNIT/f6c_author_57.xml",
+      "sha256": "ab0986e01ab07322e4abb84dae505e60ec2b5b5398951e5c2d7cbc16f3511671",
+      "skipped": 0,
+      "tests": 57
+    },
+    {
+      "errors": 0,
+      "failed_cases": [
+        {
+          "classname": "01_SOURCE_TRANSPORT.F6C_RUNTIME.02_TESTS.test_f6c_frozen_court",
+          "detail": "AssertionError: assert False\n +  where False = <built-in method endswith of str object at 0x1115bd8b0>('05_NATIVE_STAGE/rawlsing_next/pre553_heterogeneous_synthesis.py')\n +    where <built-in method endswith of str object at 0x1115bd8b0> = '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f6l/WORKER_R",
+          "name": "test_custody_imported_module_is_the_corrected_pinned_blob",
+          "status": "failure"
+        }
+      ],
+      "failures": 1,
+      "kind": "pytest",
+      "name": "f6c_author_57_foreign_stage",
+      "note": "author 56/57 at F6L staging; only the path-suffix custody control fails",
+      "passed": 56,
+      "path": "04_JUNIT/f6c_author_57_foreign_stage.xml",
+      "sha256": "85d691fc146a1d65bb12e96223908f3f747cf48843bb0eefacdf9078519a0d67",
+      "skipped": 0,
+      "tests": 57
+    },
+    {
+      "errors": 0,
+      "failed_cases": [
+        {
+          "classname": "02_PHASE_A.04_TESTS.test_f6l_phase_a",
+          "detail": "AssertionError: null distribution advertised as 'SYNTHETIC_CANDIDATE'\nassert False\n +  where False = decision_is_partial('SYNTHETIC_CANDIDATE')",
+          "name": "test_p1_original_world_does_not_assert_a_complete_candidate_when_null",
+          "status": "failure"
+        },
+        {
+          "classname": "02_PHASE_A.04_TESTS.test_f6l_phase_a",
+          "detail": "AssertionError: distribution=None but decision='SYNTHETIC_CANDIDATE'\nassert False\n +  where False = decision_is_partial('SYNTHETIC_CANDIDATE')",
+          "name": "test_novel_no_positivity_is_not_served_as_complete[P2_NOVEL_2X2_NO_POSITIVITY]",
+          "status": "failure"
+        },
+        {
+          "classname": "02_PHASE_A.04_TESTS.test_f6l_phase_a",
+          "detail": "AssertionError: distribution=None but decision='SYNTHETIC_CANDIDATE'\nassert False\n +  where False = decision_is_partial('SYNTHETIC_CANDIDATE')",
+          "name": "test_novel_no_positivity_is_not_served_as_complete[P3_NOVEL_3_CATEGORY_NO_POSITIVITY]",
+          "status": "failure"
+        },
+        {
+          "classname": "02_PHASE_A.04_TESTS.test_f6l_phase_a",
+          "detail": "AssertionError: a caller-controlled boolean produced EXTERNAL_OWNER_ADMISSION_FOR_REAL_USE\nassert 'EXTERNAL_OWNER_ADMISSION_FOR_REAL_USE' not in ['EXTERNAL_OWNER_ADMISSION_FOR_REAL_USE', None, 'EXTERNAL_OWNER_ADMISSION_FOR_REAL_USE', None, 'DESCRIPTIVE_SOCIOLOGICAL_MODEL_ONLY']",
+          "name": "test_p4_unverified_admit_true_cannot_issue_real_source_authority",
+          "status": "failure"
+        },
+        {
+          "classname": "02_PHASE_A.04_TESTS.test_f6l_phase_a",
+          "detail": "AssertionError: test-only data advertised with real-use authority\nassert 'EXTERNAL_OWNER_ADMISSION_FOR_REAL_USE' not in ['EXTERNAL_OWNER_ADMISSION_FOR_REAL_USE', None, 'EXTERNAL_OWNER_ADMISSION_FOR_REAL_USE', None, 'DESCRIPTIVE_SOCIOLOGICAL_MODEL_ONLY']",
+          "name": "test_p5_test_origin_output_never_claims_real_source_authority",
+          "status": "failure"
+        },
+        {
+          "classname": "02_PHASE_A.04_TESTS.test_f6l_phase_a",
+          "detail": "KeyError: 'P5B_MIXED_ORIGIN_CONTAMINATION'",
+          "name": "test_p5b_mixed_origin_does_not_launder_an_unverified_source_into_real_output",
+          "status": "failure"
+        },
+        {
+          "classname": "02_PHASE_A.04_TESTS.test_f6l_phase_a",
+          "detail": "AssertionError: mapped:S1 lacks authority_ceiling\nassert 'authority_ceiling' in {'node_id': 'mapped:S1', 'evidence_mode': 'TRANSFORMED', 'test_origin': True, 'parents': ['native:S1'], ...}",
+          "name": "test_p7_every_evidence_node_has_authority_ceiling_and_provenance",
+          "status": "failure"
+        },
+        {
+          "classname": "02_PHASE_A.04_TESTS.test_f6l_phase_a",
+          "detail": "KeyError: 'authority_ceiling'",
+          "name": "test_p7_no_node_exceeds_its_native_parent_authority",
+          "status": "failure"
+        },
+        {
+          "classname": "02_PHASE_A.04_TESTS.test_f6l_phase_a",
+          "detail": "assert False\n +  where False = all(<generator object test_p7_test_only_graph_has_no_real_use_ceiling.<locals>.<genexpr> at 0x108254740>)",
+          "name": "test_p7_test_only_graph_has_no_real_use_ceiling",
+          "status": "failure"
+        },
+        {
+          "classname": "02_PHASE_A.04_TESTS.test_f6l_phase_a",
+          "detail": "AssertionError: excluded source's target mass was renormalized away and the result still advertised as a complete target joint\nassert not True",
+          "name": "test_p8_source_exclusion_must_not_be_silent_complete_renormalization",
+          "status": "failure"
+        },
+        {
+          "classname": "02_PHASE_A.04_TESTS.test_f6l_phase_a",
+          "detail": "AssertionError: assert 'CONSUMED_AS_COMPLETE' == 'REFUSED'\n  \n  - REFUSED\n  + CONSUMED_AS_COMPLETE",
+          "name": "test_p9_decision_only_consumer_cannot_consume_null_as_complete",
+          "status": "failure"
+        }
+      ],
+      "failures": 11,
+      "kind": "pytest",
+      "name": "f6l_phase_a_attacks",
+      "note": "F6L preregistered safe-behavior attacks against unrepaired native",
+      "passed": 15,
+      "path": "04_JUNIT/f6l_phase_a_attacks.xml",
+      "sha256": "eef2fedd641db74fe922504535ade6f12d076a7089d54f539d7bb7262088f28c",
+      "skipped": 0,
+      "tests": 26
+    }
+  ],
+  "courts_are_separate_and_not_averaged": true,
+  "f6j_attack_scripts": {
+    "admission_consumer_findings": {
+      "count": 7,
+      "ids": [
+        "A1_REAL_SOURCE_UNQUALIFIED_ADMIT_LAMBDA",
+        "A2_REAL_SOURCE_WITHOUT_ADMIT_REFUSES",
+        "A3_SYNTHETIC_SOURCE_BYPASSES_ADMISSION_GATE_ENTIRELY",
+        "C1_CONSUMER_CONDITIONAL_CONTRACT",
+        "C2_FRECHET_UNIDENTIFIED_CROSS_CHANNEL",
+        "C3_SENSITIVITY_ENVELOPE_HAS_NO_COVERAGE_PROBABILITY",
+        "C4_REPLAY_AND_CONTENT_HASH_PRESERVED"
+      ]
+    },
+    "falsifier_findings": {
+      "count": 7,
+      "ids": [
+        "F1_MISLEADING_DECISION_WHEN_DISTRIBUTION_NULL",
+        "F1b_DECISION_NULL_REPEAT_ON_UNARY_WORLD",
+        "F2_ADMIT_TRUE_IS_NOT_AUTHENTICATION",
+        "F3_EQUWEIGHTS_NOT_SCIENTIFIC_CALIBRATION",
+        "F4_SENSITIVITY_HALFWIDTH_IS_NOT_A_CONFIDENCE_INTERVAL",
+        "F5_CROSS_SURVEY_PERSON_NEVER_INVENTED",
+        "F6_CONDITIONAL_VARIANCE_UNIDENTIFIED"
+      ]
+    }
+  },
+  "f6k_return_audit": {
+    "attribution_errors": [
+      {
+        "actual_file": "rawlsing_next/pre553_heterogeneous_synthesis.py",
+        "claimed_file": "PYAT-R23-F6C.../02_TESTS/f6c_worlds.py",
+        "defect": "unsafe complete-candidate decision when target distribution is null",
+        "id": 1
+      },
+      {
+        "actual_file": "rawlsing_next/pre553_heterogeneous_synthesis.py",
+        "claimed_file": "F6C consumer/admission seam",
+        "defect": "unverified admit=True owner claims",
+        "id": 2
+      },
+      {
+        "actual_file": "rawlsing_next/pre553_heterogeneous_synthesis.py",
+        "claimed_file": "F6C consumer",
+        "defect": "caller-controlled test_origin authority bypass",
+        "id": 3
+      },
+      {
+        "actual_file": "rawlsing_next/pre553_heterogeneous_synthesis.py",
+        "claimed_file": "F6C consumer",
+        "defect": "missing mapped-evidence authority ceilings",
+        "id": 4
+      },
+      {
+        "actual_file": "rawlsing_next/pre553_heterogeneous_synthesis.py",
+        "claimed_file": "f6c_worlds.py / court",
+        "defect": "incorrect minority-support claims",
+        "id": 5
+      },
+      {
+        "actual_file": "WORKER_RETURNS/PYAT-R23-F6C-NATIVE-F6-COMPARATIVE-CONTINUATION-R1/02_TESTS/test_f6c_frozen_court.py",
+        "claimed_file": "test_f6c_frozen_court.py custody case",
+        "defect": "machine-absolute fixture dependency",
+        "id": 6
+      }
+    ],
+    "changed_native_producer": [],
+    "has_repair_code": false,
+    "repair_code_shipped": false,
+    "suites_executed": false,
+    "tip": "537cb5195bf4f51ee4abc0ce097155c3a3a69291"
+  },
+  "phase_a_freeze": "f1dfcc536",
+  "schema": "PYAT_R28_F6L_REAL_PYTEST_RATIONAL_RESULTS@1",
+  "summary": {
+    "author_57_at_candidate_shape": "57/57",
+    "author_57_at_foreign_stage": "56/57 (path-suffix custody control only)",
+    "f6j_arithmetic_confirmed": true,
+    "f6l_phase_a_safe_attacks": "15 passed / 11 failed (failures are the unresolved defects)",
+    "genuine_native_producer_confirmed": true,
+    "phase_b_acceptance_possible": false,
+    "repaired_candidate_present": false
+  }
+}

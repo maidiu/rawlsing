@@ -1,0 +1,673 @@
+{
+  "branch": "agent/reviewer-pyat-r28-f6l-independent-f6k-frozen-consumer-court-r1",
+  "cases": [
+    {
+      "expected_actual_is_unsafe": true,
+      "expected_actual_pre_repair": {
+        "candidate_distribution": null,
+        "consumer_reason": "NO_COMPLETE_TARGET_JOINT",
+        "consumer_state": "UNAVAILABLE",
+        "decision": "SYNTHETIC_CANDIDATE",
+        "uncovered_target_mass": "1/5"
+      },
+      "expected_good_conditional_result": {
+        "consumer": "UNAVAILABLE/NO_COMPLETE_TARGET_JOINT",
+        "covered_subprobability": [
+          "8/25",
+          "2/25",
+          "2/25",
+          "8/25"
+        ],
+        "covered_sum": "4/5",
+        "distribution": null,
+        "lower": [
+          "2/25",
+          "2/25",
+          "2/25",
+          "2/25"
+        ],
+        "uncovered_target_mass": "1/5",
+        "upper": [
+          "19/25",
+          "7/25",
+          "7/25",
+          "19/25"
+        ]
+      },
+      "expected_safe_status": "decision must not assert a complete synthetic target joint; partial/no-complete typed status required; covered bounds must remain readable",
+      "id": "P1_ORIGINAL_UNCOVERED_WORLD",
+      "question": "Does the original uncovered-mass world keep null distribution, 4/5 covered mass and widened upper bounds without issuing a complete-target decision?",
+      "world": "F6L_P1_ORIGINAL_F6C_WORLD_B_UNCOVERED"
+    },
+    {
+      "expected_actual_is_unsafe": true,
+      "expected_actual_pre_repair": {
+        "candidate_distribution": null,
+        "decision": "SYNTHETIC_CANDIDATE",
+        "uncovered_target_mass": "1/3"
+      },
+      "expected_good_conditional_result": {
+        "covered_subprobability_sum": "2/3",
+        "distribution": null,
+        "exact_joint_covered_subprobability": "3/20, 11/60, 11/60, 3/20",
+        "exact_lower": "1/15, 1/10, 1/6, 2/15",
+        "exact_upper": "17/30, 3/5, 8/15, 1/2",
+        "uncovered_target_mass": "1/3"
+      },
+      "expected_safe_status": "no complete-target token; typed partial/no-complete status; conditional consumer UNAVAILABLE",
+      "id": "P2_NOVEL_2X2_NO_POSITIVITY",
+      "question": "A novel 2x2 world whose second target stratum is covered by no source: are exact covered masses preserved and is a null distribution never served as a complete joint?",
+      "world": "F6L_P2_NOVEL_2X2_UNCOVERED_THIRD"
+    },
+    {
+      "expected_actual_is_unsafe": true,
+      "expected_actual_pre_repair": {
+        "candidate_distribution": null,
+        "decision": "SYNTHETIC_CANDIDATE",
+        "uncovered_target_mass": "1/4"
+      },
+      "expected_good_conditional_result": {
+        "covered_subprobability_sum": "3/4",
+        "distribution": null,
+        "exact_joint_covered_subprobability": "9/80, 9/80, 3/20, 3/16, 9/80, 3/40",
+        "exact_lower": "3/40, 3/40, 3/40, 3/20, 3/40, 3/40",
+        "exact_upper": "2/5, 2/5, 19/40, 19/40, 2/5, 13/40",
+        "uncovered_target_mass": "1/4"
+      },
+      "expected_safe_status": "no complete-target token; typed partial/no-complete status; six covered bounds preserved",
+      "id": "P3_NOVEL_3_CATEGORY_NO_POSITIVITY",
+      "question": "A novel 3x2 world with a 1/4 uncovered target stratum: are six covered cells and bounds exact and is the decision partial?",
+      "world": "F6L_P3_NOVEL_3X2_UNCOVERED_QUARTER"
+    },
+    {
+      "expected_actual_is_unsafe": true,
+      "expected_actual_pre_repair": {
+        "admission_required": true,
+        "callback_identity_scope_operation_permission_checks": 0,
+        "callback_invocations": 4,
+        "decision": "INFERRED_CANDIDATE_REQUIRES_REVIEW",
+        "mapped_authority_ceiling": "ABSENT",
+        "native_authority_ceiling": "EXTERNAL_OWNER_ADMISSION_FOR_REAL_USE"
+      },
+      "expected_good_conditional_result": {
+        "unchanged_arithmetic": "P11 exact joint remains available; arithmetic is not the contested object"
+      },
+      "expected_safe_status": "no EXTERNAL_OWNER_ADMISSION_FOR_REAL_USE claim from an unverified boolean; either refuse or ceiling UNVERIFIED/TEST_ONLY; owner boundary remains UNVERIFIED",
+      "id": "P4_FORGED_REAL_SOURCE_ADMIT_TRUE",
+      "question": "Can a caller-supplied admit=lambda True forge EXTERNAL_OWNER_ADMISSION_FOR_REAL_USE for two real sources?",
+      "world": "F6L_P11_COMPLETE_POSITIVE"
+    },
+    {
+      "expected_actual_is_unsafe": true,
+      "expected_actual_pre_repair": {
+        "callback_invocations": 0,
+        "decision": "SYNTHETIC_CANDIDATE",
+        "mapped_authority_ceiling": "ABSENT",
+        "native_authority_ceiling": "EXTERNAL_OWNER_ADMISSION_FOR_REAL_USE",
+        "test_origin": true
+      },
+      "expected_good_conditional_result": {
+        "arithmetic": "complete positive joint remains exact"
+      },
+      "expected_safe_status": "test-only output may remain complete synthetic test output, but no node may claim real-source authority; test flag is not authentication",
+      "id": "P5_TEST_ORIGIN_BYPASS",
+      "question": "Does caller-declared test_origin=True bypass admission entirely and still let test-only nodes claim real-use authority?",
+      "world": "F6L_P11_COMPLETE_POSITIVE"
+    },
+    {
+      "expected_actual_is_unsafe": true,
+      "expected_actual_pre_repair": {
+        "accepted": true,
+        "callback_invocations_for_declared_test_source": 0,
+        "callback_invocations_for_real_source": 2,
+        "decision": "INFERRED_CANDIDATE_REQUIRES_REVIEW",
+        "native_authority_ceiling": "EXTERNAL_OWNER_ADMISSION_FOR_REAL_USE",
+        "test_origin": false
+      },
+      "expected_good_conditional_result": {
+        "arithmetic": "exact joint for the declared tables"
+      },
+      "expected_safe_status": "refuse mixed-origin real output, or keep whole output test-only/unverified; never emit real-use authority for an unverified source",
+      "id": "P5B_MIXED_ORIGIN_CONTAMINATION",
+      "question": "Can one caller-declared test source bypass admission while a genuinely real source is admitted, producing a real-looking output that contains unverified test data?",
+      "world": "F6L_P11_COMPLETE_POSITIVE"
+    },
+    {
+      "expected_actual_is_unsafe": false,
+      "expected_actual_pre_repair": {
+        "raises_SynthesisError": true
+      },
+      "expected_good_conditional_result": {
+        "arithmetic": "no output; refusal is correct"
+      },
+      "expected_safe_status": "SynthesisError, no candidate, no authority graph",
+      "id": "P6_MISSING_OWNER_FAIL_CLOSED",
+      "question": "With real sources and admit=None, does the producer still fail closed?",
+      "world": "F6L_P11_COMPLETE_POSITIVE"
+    },
+    {
+      "expected_actual_is_unsafe": true,
+      "expected_actual_pre_repair": {
+        "mapped_nodes_missing_authority_ceiling": true,
+        "mapped_nodes_missing_value_hash": true,
+        "test_only_native_ceiling": "EXTERNAL_OWNER_ADMISSION_FOR_REAL_USE"
+      },
+      "expected_good_conditional_result": {
+        "arithmetic": "complete positive joint remains exact"
+      },
+      "expected_safe_status": "every node has authority_ceiling + provenance; mapped ceiling <= native; target_joint <= parents; test-only output never claims real use",
+      "id": "P7_MAPPED_NODE_AUTHORITY_CEILING",
+      "question": "Does every mapped:* graph node retain authority_ceiling/provenance and no more privilege than its native parent?",
+      "world": "F6L_P11_COMPLETE_POSITIVE"
+    },
+    {
+      "expected_actual_is_unsafe": true,
+      "expected_actual_pre_repair": {
+        "min_150_decision": "SYNTHETIC_CANDIDATE",
+        "min_150_distribution": "1/4,1/4,1/4,1/4",
+        "min_150_excluded_sources": [
+          "S1"
+        ],
+        "min_150_uncovered_target_mass": "0",
+        "min_1_decision": "SYNTHETIC_CANDIDATE",
+        "min_5_decision": "SYNTHETIC_CANDIDATE"
+      },
+      "expected_good_conditional_result": {
+        "min_150_excludes": "S1",
+        "min_150_silent_renormalization_is_unsafe": true,
+        "min_1_joint": "7/50, 9/25, 1/4, 1/4",
+        "min_5_joint_equals_min_1": true,
+        "minority_cell_n": 3,
+        "minority_cell_survives_threshold_5": true
+      },
+      "expected_safe_status": "truthful total-stratum naming; when S1 is excluded, do not present the S2-only complete joint as a complete target joint without a bound/status consequence",
+      "id": "P8_DISTRIBUTED_SUPPORT_MINORITY",
+      "question": "Is minimum_raw_support a total-stratum gate rather than a minority-cell guard, and when it excludes a source is the exclusion surfaced as bounded/partial consequence instead of silent renormalization?",
+      "world": "F6L_P8_DISTRIBUTED_SUPPORT_MINORITY"
+    },
+    {
+      "expected_actual_is_unsafe": true,
+      "expected_actual_pre_repair": {
+        "decision": "SYNTHETIC_CANDIDATE",
+        "decision_only_consumer": "CONSUMED_AS_COMPLETE",
+        "distribution_reader_consumer": "NO_COMPLETE_TARGET_JOINT"
+      },
+      "expected_good_conditional_result": {
+        "covered_subprobability_sum": "2/3",
+        "distribution": null
+      },
+      "expected_safe_status": "decision-only consumer must not read a complete candidate; status must agree with candidate.distribution is None",
+      "id": "P9_STATUS_VS_ACTUAL_DISTRIBUTION",
+      "question": "Can a decision-only downstream consumer mistake a null distribution for a complete candidate?",
+      "world": "F6L_P2_NOVEL_2X2_UNCOVERED_THIRD"
+    },
+    {
+      "expected_actual_is_unsafe": false,
+      "expected_actual_pre_repair": {
+        "expected_to_match": true
+      },
+      "expected_good_conditional_result": {
+        "differs_from_P11": true,
+        "exact_joint": "5/16, 3/16, 3/16, 5/16"
+      },
+      "expected_safe_status": "exact rational arithmetic follows the actual substituted source bytes; no stale/overwritten table",
+      "id": "P10_ARITHMETIC_SOURCE_SUBSTITUTION",
+      "question": "Does substituting one source table move the exact joint to the independently recomputed target without moving identities or weights?",
+      "world": "F6L_P10_SOURCE_SUBSTITUTION"
+    },
+    {
+      "expected_actual_is_unsafe": false,
+      "expected_actual_pre_repair": {
+        "consumer_state": "SUPPORTED_MODEL",
+        "decision": "SYNTHETIC_CANDIDATE",
+        "distribution_present": true
+      },
+      "expected_good_conditional_result": {
+        "conditional_yes_given_low": "1/3",
+        "consumer_state": "SUPPORTED_MODEL",
+        "covered_sum": "1",
+        "exact_joint": "1/3, 1/6, 1/6, 1/3",
+        "exact_lower": "1/6, 1/6, 1/6, 1/6",
+        "exact_upper": "1/2, 1/6, 1/6, 1/2",
+        "uncovered_target_mass": "0"
+      },
+      "expected_safe_status": "complete target joint remains available; useful positive result must not be suppressed",
+      "id": "P11_GENUINE_COMPLETE_TARGET_POSITIVE",
+      "question": "Does a genuinely positive complete target still yield a complete exact joint, supported consumer and non-null distribution?",
+      "world": "F6L_P11_COMPLETE_POSITIVE"
+    }
+  ],
+  "decision_policy_preregistered": {
+    "complete_allowed_only_when": "candidate.distribution is not None and uncovered_target_mass == 0",
+    "forbidden_on_null_distribution": [
+      "SYNTHETIC_CANDIDATE"
+    ],
+    "real_source_authority_from_unverified_callback": "FORBIDDEN",
+    "safe_incomplete_markers": [
+      "PARTIAL",
+      "NO_COMPLETE",
+      "INCOMPLETE",
+      "BACKOFF",
+      "UNIDENTIFIED"
+    ],
+    "test_origin_self_declaration": "NEVER_AUTHENTICATES_REAL_SOURCE"
+  },
+  "method_ceiling": "bounded sourcefree F6 method only; no original measured F6, no source authority, no N9/OC05/N11/N12, no CI",
+  "native_under_test": {
+    "candidate_context": "9aa0e7d3a0cf9ab7654ce8e3d5cb15060235a48f",
+    "commit": "1428c2e92bce1a49efd87378cb23df936d646dc5",
+    "empirical_objects_blob": "a61365b994e5c3c50de0f598fcf40e90abf757b6",
+    "f6j_freeze": "e476ccc090ae0175a540e94c5c382d7e2a8453f0",
+    "f6j_review": "825b2d8050b550f1d52d3129883584fee2ef36c2",
+    "producer_blob": "fc5e37fa5b2f0eb689593b42d95479d1327cb94c"
+  },
+  "ordering_attestation": {
+    "basis": "F6J/F6C public returns and the pinned native bytes only",
+    "f6k_candidate_read_before_this_freeze": false,
+    "f6k_report_read_before_this_freeze": false,
+    "native_executed_by_build_script": false,
+    "native_imported_by_expectation_engine": false
+  },
+  "phase_a_freeze_commit": "f1dfcc5363aed5c4eef42f938ea1a90971d49175",
+  "phase_a_frozen_file": "02_PHASE_A/01_WORLDS_AND_EXACT_EXPECTATIONS.json",
+  "phase_a_frozen_sha256": "b1364300a356a7b3ef222b4162fc816c28370ac865d3b86ac8d30926aa4dc5f4",
+  "phase_b_actuals": {
+    "changed_worlds": [],
+    "confirmed_arithmetic": {
+      "all_exact": true,
+      "cases": [
+        {
+          "actual_decision": "SYNTHETIC_CANDIDATE",
+          "all_exact": true,
+          "candidate_distribution_is_none": true,
+          "case": "P1_ORIGINAL_UNCOVERED_WORLD",
+          "checks": {
+            "covered_subprobability_exact": true,
+            "distribution_null_matches": true,
+            "lower_exact": true,
+            "uncovered_target_mass_exact": true,
+            "upper_exact": true
+          },
+          "covered_subprobability_sum": "4/5",
+          "uncovered_target_mass": "1/5",
+          "world": "F6L_P1_ORIGINAL_F6C_WORLD_B_UNCOVERED"
+        },
+        {
+          "actual_decision": "SYNTHETIC_CANDIDATE",
+          "all_exact": true,
+          "candidate_distribution_is_none": true,
+          "case": "P2_NOVEL_2X2_NO_POSITIVITY",
+          "checks": {
+            "covered_subprobability_exact": true,
+            "distribution_null_matches": true,
+            "lower_exact": true,
+            "uncovered_target_mass_exact": true,
+            "upper_exact": true
+          },
+          "covered_subprobability_sum": "2/3",
+          "uncovered_target_mass": "1/3",
+          "world": "F6L_P2_NOVEL_2X2_UNCOVERED_THIRD"
+        },
+        {
+          "actual_decision": "SYNTHETIC_CANDIDATE",
+          "all_exact": true,
+          "candidate_distribution_is_none": true,
+          "case": "P3_NOVEL_3_CATEGORY_NO_POSITIVITY",
+          "checks": {
+            "covered_subprobability_exact": true,
+            "distribution_null_matches": true,
+            "lower_exact": true,
+            "uncovered_target_mass_exact": true,
+            "upper_exact": true
+          },
+          "covered_subprobability_sum": "3/4",
+          "uncovered_target_mass": "1/4",
+          "world": "F6L_P3_NOVEL_3X2_UNCOVERED_QUARTER"
+        },
+        {
+          "actual_decision": "SYNTHETIC_CANDIDATE",
+          "all_exact": true,
+          "candidate_distribution_is_none": false,
+          "case": "P10_ARITHMETIC_SOURCE_SUBSTITUTION",
+          "checks": {
+            "covered_subprobability_exact": true,
+            "distribution_null_matches": true,
+            "lower_exact": true,
+            "uncovered_target_mass_exact": true,
+            "upper_exact": true
+          },
+          "covered_subprobability_sum": "1",
+          "uncovered_target_mass": "0",
+          "world": "F6L_P10_SOURCE_SUBSTITUTION"
+        },
+        {
+          "actual_decision": "SYNTHETIC_CANDIDATE",
+          "all_exact": true,
+          "candidate_distribution_is_none": false,
+          "case": "P11_GENUINE_COMPLETE_TARGET_POSITIVE",
+          "checks": {
+            "covered_subprobability_exact": true,
+            "distribution_null_matches": true,
+            "lower_exact": true,
+            "uncovered_target_mass_exact": true,
+            "upper_exact": true
+          },
+          "covered_subprobability_sum": "1",
+          "uncovered_target_mass": "0",
+          "world": "F6L_P11_COMPLETE_POSITIVE"
+        }
+      ],
+      "f6j_82_of_82": true,
+      "f6j_comparisons_passed": 82,
+      "f6j_comparisons_total": 82
+    },
+    "court_results": [
+      {
+        "exit_success": true,
+        "failed": 0,
+        "kind": "rational",
+        "name": "f6j_independent_frozen_courts_82",
+        "note": "F6J 12-world exact rational court; 82/82 comparisons",
+        "passed": 82,
+        "path": "01_SOURCE_TRANSPORT/F6J_RUNTIME/07_EVIDENCE/native_vs_frozen.json",
+        "sha256": "500edb0168f665f483eb105e9c538de8f4ce6c1c6338d75426cddd22ff98a7c8",
+        "tests": 82
+      },
+      {
+        "errors": 0,
+        "failed_cases": [],
+        "failures": 0,
+        "kind": "pytest",
+        "name": "f6j_new_adversarial_53",
+        "note": "F6J 53 new adversarial tests; all pass on unrepaired native",
+        "passed": 53,
+        "path": "04_JUNIT/f6j_adversarial_53.xml",
+        "sha256": "47735ee2eb5bc51a8e9c883eb9ea3240b0c11a4cc4207444276490ff897c0e8a",
+        "skipped": 0,
+        "tests": 53
+      },
+      {
+        "errors": 0,
+        "failed_cases": [],
+        "failures": 0,
+        "kind": "pytest",
+        "name": "inherited_s03fo_35",
+        "note": "inherited original S03FO: 24 tests + 11 subtests",
+        "passed": 35,
+        "path": "04_JUNIT/inherited_s03fo_35.xml",
+        "sha256": "b28641522b905f441b7b578f3d08012fdd923ed3080935165a03c079375f2bcd",
+        "skipped": 0,
+        "tests": 35
+      },
+      {
+        "errors": 0,
+        "failed_cases": [],
+        "failures": 0,
+        "kind": "pytest",
+        "name": "f6c_author_57_candidate_shaped",
+        "note": "author 57/57 at candidate-shaped relative 05_NATIVE_STAGE transport",
+        "passed": 57,
+        "path": "04_JUNIT/f6c_author_57.xml",
+        "sha256": "ab0986e01ab07322e4abb84dae505e60ec2b5b5398951e5c2d7cbc16f3511671",
+        "skipped": 0,
+        "tests": 57
+      },
+      {
+        "errors": 0,
+        "failed_cases": [
+          {
+            "classname": "01_SOURCE_TRANSPORT.F6C_RUNTIME.02_TESTS.test_f6c_frozen_court",
+            "detail": "AssertionError: assert False\n +  where False = <built-in method endswith of str object at 0x1115bd8b0>('05_NATIVE_STAGE/rawlsing_next/pre553_heterogeneous_synthesis.py')\n +    where <built-in method endswith of str object at 0x1115bd8b0> = '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f6l/WORKER_R",
+            "name": "test_custody_imported_module_is_the_corrected_pinned_blob",
+            "status": "failure"
+          }
+        ],
+        "failures": 1,
+        "kind": "pytest",
+        "name": "f6c_author_57_foreign_stage",
+        "note": "author 56/57 at F6L staging; only the path-suffix custody control fails",
+        "passed": 56,
+        "path": "04_JUNIT/f6c_author_57_foreign_stage.xml",
+        "sha256": "85d691fc146a1d65bb12e96223908f3f747cf48843bb0eefacdf9078519a0d67",
+        "skipped": 0,
+        "tests": 57
+      },
+      {
+        "errors": 0,
+        "failed_cases": [
+          {
+            "classname": "02_PHASE_A.04_TESTS.test_f6l_phase_a",
+            "detail": "AssertionError: null distribution advertised as 'SYNTHETIC_CANDIDATE'\nassert False\n +  where False = decision_is_partial('SYNTHETIC_CANDIDATE')",
+            "name": "test_p1_original_world_does_not_assert_a_complete_candidate_when_null",
+            "status": "failure"
+          },
+          {
+            "classname": "02_PHASE_A.04_TESTS.test_f6l_phase_a",
+            "detail": "AssertionError: distribution=None but decision='SYNTHETIC_CANDIDATE'\nassert False\n +  where False = decision_is_partial('SYNTHETIC_CANDIDATE')",
+            "name": "test_novel_no_positivity_is_not_served_as_complete[P2_NOVEL_2X2_NO_POSITIVITY]",
+            "status": "failure"
+          },
+          {
+            "classname": "02_PHASE_A.04_TESTS.test_f6l_phase_a",
+            "detail": "AssertionError: distribution=None but decision='SYNTHETIC_CANDIDATE'\nassert False\n +  where False = decision_is_partial('SYNTHETIC_CANDIDATE')",
+            "name": "test_novel_no_positivity_is_not_served_as_complete[P3_NOVEL_3_CATEGORY_NO_POSITIVITY]",
+            "status": "failure"
+          },
+          {
+            "classname": "02_PHASE_A.04_TESTS.test_f6l_phase_a",
+            "detail": "AssertionError: a caller-controlled boolean produced EXTERNAL_OWNER_ADMISSION_FOR_REAL_USE\nassert 'EXTERNAL_OWNER_ADMISSION_FOR_REAL_USE' not in ['EXTERNAL_OWNER_ADMISSION_FOR_REAL_USE', None, 'EXTERNAL_OWNER_ADMISSION_FOR_REAL_USE', None, 'DESCRIPTIVE_SOCIOLOGICAL_MODEL_ONLY']",
+            "name": "test_p4_unverified_admit_true_cannot_issue_real_source_authority",
+            "status": "failure"
+          },
+          {
+            "classname": "02_PHASE_A.04_TESTS.test_f6l_phase_a",
+            "detail": "AssertionError: test-only data advertised with real-use authority\nassert 'EXTERNAL_OWNER_ADMISSION_FOR_REAL_USE' not in ['EXTERNAL_OWNER_ADMISSION_FOR_REAL_USE', None, 'EXTERNAL_OWNER_ADMISSION_FOR_REAL_USE', None, 'DESCRIPTIVE_SOCIOLOGICAL_MODEL_ONLY']",
+            "name": "test_p5_test_origin_output_never_claims_real_source_authority",
+            "status": "failure"
+          },
+          {
+            "classname": "02_PHASE_A.04_TESTS.test_f6l_phase_a",
+            "detail": "KeyError: 'P5B_MIXED_ORIGIN_CONTAMINATION'",
+            "name": "test_p5b_mixed_origin_does_not_launder_an_unverified_source_into_real_output",
+            "status": "failure"
+          },
+          {
+            "classname": "02_PHASE_A.04_TESTS.test_f6l_phase_a",
+            "detail": "AssertionError: mapped:S1 lacks authority_ceiling\nassert 'authority_ceiling' in {'node_id': 'mapped:S1', 'evidence_mode': 'TRANSFORMED', 'test_origin': True, 'parents': ['native:S1'], ...}",
+            "name": "test_p7_every_evidence_node_has_authority_ceiling_and_provenance",
+            "status": "failure"
+          },
+          {
+            "classname": "02_PHASE_A.04_TESTS.test_f6l_phase_a",
+            "detail": "KeyError: 'authority_ceiling'",
+            "name": "test_p7_no_node_exceeds_its_native_parent_authority",
+            "status": "failure"
+          },
+          {
+            "classname": "02_PHASE_A.04_TESTS.test_f6l_phase_a",
+            "detail": "assert False\n +  where False = all(<generator object test_p7_test_only_graph_has_no_real_use_ceiling.<locals>.<genexpr> at 0x108254740>)",
+            "name": "test_p7_test_only_graph_has_no_real_use_ceiling",
+            "status": "failure"
+          },
+          {
+            "classname": "02_PHASE_A.04_TESTS.test_f6l_phase_a",
+            "detail": "AssertionError: excluded source's target mass was renormalized away and the result still advertised as a complete target joint\nassert not True",
+            "name": "test_p8_source_exclusion_must_not_be_silent_complete_renormalization",
+            "status": "failure"
+          },
+          {
+            "classname": "02_PHASE_A.04_TESTS.test_f6l_phase_a",
+            "detail": "AssertionError: assert 'CONSUMED_AS_COMPLETE' == 'REFUSED'\n  \n  - REFUSED\n  + CONSUMED_AS_COMPLETE",
+            "name": "test_p9_decision_only_consumer_cannot_consume_null_as_complete",
+            "status": "failure"
+          }
+        ],
+        "failures": 11,
+        "kind": "pytest",
+        "name": "f6l_phase_a_attacks",
+        "note": "F6L preregistered safe-behavior attacks against unrepaired native",
+        "passed": 15,
+        "path": "04_JUNIT/f6l_phase_a_attacks.xml",
+        "sha256": "eef2fedd641db74fe922504535ade6f12d076a7089d54f539d7bb7262088f28c",
+        "skipped": 0,
+        "tests": 26
+      }
+    ],
+    "f6k_return": {
+      "attribution_errors": [
+        {
+          "actual_file": "rawlsing_next/pre553_heterogeneous_synthesis.py",
+          "claimed_file": "PYAT-R23-F6C.../02_TESTS/f6c_worlds.py",
+          "defect": "unsafe complete-candidate decision when target distribution is null",
+          "id": 1
+        },
+        {
+          "actual_file": "rawlsing_next/pre553_heterogeneous_synthesis.py",
+          "claimed_file": "F6C consumer/admission seam",
+          "defect": "unverified admit=True owner claims",
+          "id": 2
+        },
+        {
+          "actual_file": "rawlsing_next/pre553_heterogeneous_synthesis.py",
+          "claimed_file": "F6C consumer",
+          "defect": "caller-controlled test_origin authority bypass",
+          "id": 3
+        },
+        {
+          "actual_file": "rawlsing_next/pre553_heterogeneous_synthesis.py",
+          "claimed_file": "F6C consumer",
+          "defect": "missing mapped-evidence authority ceilings",
+          "id": 4
+        },
+        {
+          "actual_file": "rawlsing_next/pre553_heterogeneous_synthesis.py",
+          "claimed_file": "f6c_worlds.py / court",
+          "defect": "incorrect minority-support claims",
+          "id": 5
+        },
+        {
+          "actual_file": "WORKER_RETURNS/PYAT-R23-F6C-NATIVE-F6-COMPARATIVE-CONTINUATION-R1/02_TESTS/test_f6c_frozen_court.py",
+          "claimed_file": "test_f6c_frozen_court.py custody case",
+          "defect": "machine-absolute fixture dependency",
+          "id": 6
+        }
+      ],
+      "has_repair_code": false,
+      "repair_code_shipped": false,
+      "suites_executed": false,
+      "tip": "537cb5195bf4f51ee4abc0ce097155c3a3a69291"
+    },
+    "unchanged_falsified_behavior": {
+      "P1_consumer": {
+        "reason": "NO_COMPLETE_TARGET_JOINT",
+        "state": "UNAVAILABLE"
+      },
+      "P1_null_candidate": true,
+      "P1_null_decision": "SYNTHETIC_CANDIDATE",
+      "P4_ceilings": [
+        "EXTERNAL_OWNER_ADMISSION_FOR_REAL_USE",
+        null,
+        "EXTERNAL_OWNER_ADMISSION_FOR_REAL_USE",
+        null,
+        "DESCRIPTIVE_SOCIOLOGICAL_MODEL_ONLY"
+      ],
+      "P4_unverified_admit_calls": 4,
+      "P5B_accepted": true,
+      "P5B_callback_sources": [
+        "S1"
+      ],
+      "P5B_ceilings": [
+        "EXTERNAL_OWNER_ADMISSION_FOR_REAL_USE",
+        null,
+        "EXTERNAL_OWNER_ADMISSION_FOR_REAL_USE",
+        null,
+        "DESCRIPTIVE_SOCIOLOGICAL_MODEL_ONLY"
+      ],
+      "P5B_real_output": true,
+      "P5_ceilings": [
+        "EXTERNAL_OWNER_ADMISSION_FOR_REAL_USE",
+        null,
+        "EXTERNAL_OWNER_ADMISSION_FOR_REAL_USE",
+        null,
+        "DESCRIPTIVE_SOCIOLOGICAL_MODEL_ONLY"
+      ],
+      "P5_test_origin_calls": 0,
+      "P5_test_origin_flag": true,
+      "P6_fail_closed": {
+        "admit_false_raises": true,
+        "admit_none_raises": true
+      },
+      "P7_nodes": [
+        {
+          "authority_ceiling": "EXTERNAL_OWNER_ADMISSION_FOR_REAL_USE",
+          "missing_ceiling": false,
+          "missing_value_hash": false,
+          "node_id": "native:S1"
+        },
+        {
+          "authority_ceiling": null,
+          "missing_ceiling": true,
+          "missing_value_hash": true,
+          "node_id": "mapped:S1"
+        },
+        {
+          "authority_ceiling": "EXTERNAL_OWNER_ADMISSION_FOR_REAL_USE",
+          "missing_ceiling": false,
+          "missing_value_hash": false,
+          "node_id": "native:S2"
+        },
+        {
+          "authority_ceiling": null,
+          "missing_ceiling": true,
+          "missing_value_hash": true,
+          "node_id": "mapped:S2"
+        },
+        {
+          "authority_ceiling": "DESCRIPTIVE_SOCIOLOGICAL_MODEL_ONLY",
+          "missing_ceiling": false,
+          "missing_value_hash": false,
+          "node_id": "target_joint"
+        }
+      ],
+      "P8_150_consumer_state": "SUPPORTED_MODEL",
+      "P8_150_decision": "SYNTHETIC_CANDIDATE",
+      "P8_150_distribution": {
+        "('HIGH', 'NO')": "1/4",
+        "('HIGH', 'YES')": "1/4",
+        "('LOW', 'NO')": "1/4",
+        "('LOW', 'YES')": "1/4"
+      },
+      "P8_150_excluded": [
+        "S1"
+      ],
+      "P8_150_uncovered": "0",
+      "P8_threshold_1_joint": {
+        "('HIGH', 'NO')": "1/4",
+        "('HIGH', 'YES')": "1/4",
+        "('LOW', 'NO')": "7/50",
+        "('LOW', 'YES')": "9/25"
+      },
+      "P8_threshold_5_joint": {
+        "('HIGH', 'NO')": "1/4",
+        "('HIGH', 'YES')": "1/4",
+        "('LOW', 'NO')": "7/50",
+        "('LOW', 'YES')": "9/25"
+      },
+      "P9_decision": "SYNTHETIC_CANDIDATE",
+      "P9_decision_only_consumer": "CONSUMED_AS_COMPLETE"
+    },
+    "unchanged_worlds": [
+      "P1",
+      "P2",
+      "P3",
+      "P10",
+      "P11",
+      "P8"
+    ]
+  },
+  "repository": "maidiu/rawlsing",
+  "role": "independent F6J scientific reviewer continuation (F6L); not F6K author, not HQ",
+  "schema": "PYAT_R28_F6L_PREREGISTERED_OWNER_AND_DECISION_CASES@1",
+  "sealed_startup": "31123f370af50bdf036cab32dd6d7594b36a5f22",
+  "verdict": "F6L_TYPED_HOLD__NO_REPAIRED_CANDIDATE__F6J_ARITHMETIC_AND_NATIVE_CONFIRMED__DECISION_ADMISSION_DEFECTS_REMAIN__SOURCEFREE_ONLY"
+}
