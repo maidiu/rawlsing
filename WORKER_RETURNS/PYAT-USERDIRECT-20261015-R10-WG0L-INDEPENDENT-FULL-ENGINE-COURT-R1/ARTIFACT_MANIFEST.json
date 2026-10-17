@@ -1,6 +1,10 @@
 {
-  "schema": "WG0L_PHASE_A_ARTIFACTS@1",
+  "schema": "WG0L_PHASE_A_ARTIFACTS@2",
   "self_excluded": true,
+  "additional_excluded": [
+    "observations/resume_20261016/publication_receipt.json"
+  ],
+  "scope": "PUBLISHED_REVIEWER_ARTIFACTS; runtime_root separately pinned in source_selector_phase_a.json",
   "files": [
     {
       "path": ".gitignore",
@@ -9,8 +13,8 @@
     },
     {
       "path": "00_VERDICT_OR_PHASE_A.md",
-      "bytes": 6852,
-      "sha256": "9085bba4cc08753487886583695a060e6b27a71f62237285a09ef7bbde4c9ca4"
+      "bytes": 9396,
+      "sha256": "b95b425d19f782ef8ca9356d55089aa730352e1c519bae42a7a43ec7333395c7"
     },
     {
       "path": "01_FROZEN_EXPECTATIONS_BEFORE_WG0P4.json",
@@ -34,8 +38,8 @@
     },
     {
       "path": "environment_passport_delta.json",
-      "bytes": 2220,
-      "sha256": "a00db040224533de2f5016efa46833cdbb87e0ced61b14e771d6d573623540a8"
+      "bytes": 3420,
+      "sha256": "eb4065a8147dabd797916df53f58e679f149419bf40d4a4f62b71d4820fea96e"
     },
     {
       "path": "observations/PRECOMMITTED_TEST_ROOT.json",
@@ -133,6 +137,21 @@
       "sha256": "11a1dba2ba98c3ab0f458628657d95ef739aad3939a6a6ab0ad58bd63a20f3d2"
     },
     {
+      "path": "observations/resume_20261016/collection.stdout",
+      "bytes": 6116,
+      "sha256": "11a1dba2ba98c3ab0f458628657d95ef739aad3939a6a6ab0ad58bd63a20f3d2"
+    },
+    {
+      "path": "observations/resume_20261016/completion_audit.json",
+      "bytes": 3395,
+      "sha256": "60b480c7f8f95b097c308b3af7c52aed5fc3680a9ad1c0fcaf6fe3879a9ff2ab"
+    },
+    {
+      "path": "observations/resume_20261016/verification.json",
+      "bytes": 21425,
+      "sha256": "865cd8634abe19df04f51308365673ae86167cc558e32327d91f829d950f45c4"
+    },
+    {
       "path": "observations/runtime_marker.json",
       "bytes": 279,
       "sha256": "efcb2484c0439b4629c5e1c5df12d27f1398ba42d5443e6c5fbfd0a34717c348"
@@ -186,6 +205,11 @@
       "path": "repro/stage_phase_a.py",
       "bytes": 4174,
       "sha256": "aec2fc78028e70761147a8c73621cdd4179fdeaf5b56d6ee9d089969aa914a4f"
+    },
+    {
+      "path": "repro/verify_resume.py",
+      "bytes": 6577,
+      "sha256": "07076a279b150b2eb34c38ea7593a508f45f093623a5a9b883826326d19f4d21"
     },
     {
       "path": "source_selector_phase_a.json",

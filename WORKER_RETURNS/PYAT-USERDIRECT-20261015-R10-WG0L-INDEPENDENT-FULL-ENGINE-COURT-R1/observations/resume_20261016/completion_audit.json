@@ -1,0 +1,76 @@
+{
+  "schema": "WG0L_RESUME_COMPLETION_AUDIT@1",
+  "overall_complete": false,
+  "state": "WAIT_FOR_CANDIDATE_PUSH",
+  "requirements": [
+    {
+      "requirement": "Exact commissioned reviewer branch/seal and return-only scope",
+      "status": "VERIFIED",
+      "evidence": "verification.json branch/sealed_resume; direct remote publication receipt"
+    },
+    {
+      "requirement": "Independent original25 source-native expectation inventory with3/16/6 and values/reasons/provenance",
+      "status": "VERIFIED_UNCHANGED",
+      "evidence": "01_FROZEN_EXPECTATIONS_BEFORE_WG0P4.json; five frozen file hashes in verification.json"
+    },
+    {
+      "requirement": "All65 original anticipated controls frozen/published before candidate source read",
+      "status": "VERIFIED_COLLECTED_NOT_CANDIDATE_EXECUTED",
+      "count": 65,
+      "groups": {
+        "frontier": 9,
+        "native": 14,
+        "binding": 9,
+        "custody": 8,
+        "authority": 7,
+        "conditional": 7,
+        "cold": 11
+      },
+      "evidence": "PRECOMMITTED_TEST_ROOT.json; original Phase A Git ancestry; current collection.stdout"
+    },
+    {
+      "requirement": "Actual native C11/I03/Batch source identities and module.__file__",
+      "status": "LIVE_VERIFIED",
+      "sources": 56,
+      "owner_imports": 6,
+      "evidence": "verification.json actual_native_imports/verified_staged_sources"
+    },
+    {
+      "requirement": "Preserve WG0J/WG0K failures and inherited executable history",
+      "status": "VERIFIED_PRESERVED_NOT_SILENTLY_RERUN",
+      "evidence": "verification.json inherited_junit; exact staged WG0J/WG0K reports; original frozen oracles"
+    },
+    {
+      "requirement": "Publish Phase A ready checkpoint without WG0P4 candidate import",
+      "status": "PREVIOUSLY_PUBLISHED_AND_NOW_REVERIFIED",
+      "checkpoint": "aa4e361e9fbed79c395cb986c51798354bb3d6cd",
+      "candidate_source_read": false
+    },
+    {
+      "requirement": "Phase B only after WG0P4 verified governed pushed return",
+      "status": "GATE_UNSATISFIED",
+      "observed_remote": "c1e88fb26f3ef757f13bad7cf901cd6529a368c8",
+      "evidence": "verification.json candidate_remote_ref_output"
+    },
+    {
+      "requirement": "Complete original/candidate imports, author29/36, WG0J44, WG0K hostiles and65 controls against final candidate",
+      "status": "NOT_EXECUTED_PHASE_B_GATE",
+      "evidence": "No candidate source or Phase B JUnit exists or is claimed"
+    },
+    {
+      "requirement": "Actual final-candidate original-manifest cold recovery and normal positive conditional consumer",
+      "status": "NOT_EXECUTED_PHASE_B_GATE",
+      "evidence": "Historical owner rehearsal retained as rehearsal only"
+    },
+    {
+      "requirement": "Final full-engine adjudication, verified pushed reviewer SHA and HQ return",
+      "status": "PHASE_A_CONTINUATION_ONLY",
+      "evidence": "Current publication receipt; no final candidate scientific verdict"
+    }
+  ],
+  "next_action": "Wait for an actual moved WG0P4 assigned ref with governed return, then independently freeze and execute Phase B; no helper, source issuance or self-adoption",
+  "goal_turn_classification": "PROGRESS_REVALIDATION_AND_PUBLISHED_EVIDENCE",
+  "same_blocker_audit": "First continuation audit in this resumed run; no blocked status asserted",
+  "no_automation_created": true,
+  "no_original_source_or_owner_mutation": true
+}
