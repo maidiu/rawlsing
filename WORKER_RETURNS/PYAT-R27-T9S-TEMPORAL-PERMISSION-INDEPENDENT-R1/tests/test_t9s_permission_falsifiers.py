@@ -29,7 +29,7 @@ def wave(name, year, value, **kw):
 
 def case(waves, **kw):
     return T.TemporalCase(case_id='T9S', country='SYNTH_COUNTRY_A',
-                          waves=tuple(waves), target_year=1995, **kw)
+                          waves=tuple(waves), **kw)
 
 
 def open_routes(x):
@@ -46,7 +46,11 @@ def test_F1_unused_future_wave_cannot_upgrade_held_product_authority(method):
     after = T.read_selected_world(
         GRANTED_WORLD, case([wave('W0', 1990, .2), wave('W1', 2000, .6)]),
         method, 1995, retrospective=True)
-    assert after.value == before.value == 0.2
+    num_before = T.evaluate(case([wave('W0', 1990, .2)]), method,
+                            clock_year=1995, retrospective=True)
+    num_after = T.evaluate(case([wave('W0', 1990, .2), wave('W1', 2000, .6)]),
+                           method, clock_year=1995, retrospective=True)
+    assert num_before.value == num_after.value == 0.2
     assert after.basis_wave_ids == before.basis_wave_ids == ('W0',)
     assert after.temporal_key != T.AUTHORIZED_SPARSE_TEMPORAL_KEY
     assert not after.authorized_opportunity

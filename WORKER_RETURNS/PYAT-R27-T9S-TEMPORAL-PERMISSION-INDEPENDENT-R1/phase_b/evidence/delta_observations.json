@@ -1,0 +1,2877 @@
+[
+  {
+    "id": "D01_D02_M0_PIECEWISE_HOLD_False",
+    "actual": {
+      "method": "M0_PIECEWISE_HOLD",
+      "value": 0.2,
+      "band": "low",
+      "uncertainty": "HELD_NO_INTERPOLATION",
+      "temporal_key": "PROBE_ONLY_TEMPORAL_KEY",
+      "basis_wave_ids": [
+        "W0"
+      ],
+      "detail": "nearest prior admissible anchor",
+      "refused_code": null,
+      "native_authorization": {
+        "multi_wave_authorization_status": "PROBE_ONLY_TEMPORAL_KEY",
+        "multi_wave_authorization_reason": "insufficient_distinct_waves",
+        "harmonization_authority_status": "multi_wave_authorized",
+        "semantic_compatibility_status": "compatible_by_canonical_key",
+        "directionality_compatibility_status": "compatible_by_harmonizer_shared_contract",
+        "position_compatibility_status": "compatible_by_harmonizer_shared_contract",
+        "structural_identity_compatibility_status": "compatible_by_comparable_temporal_key",
+        "ready_for_v554": false,
+        "eligible_wave_count": 1,
+        "distinct_wave_count": 1,
+        "probe_ready_wave_count": 1,
+        "resolved_wave_count": 1,
+        "authorized_anchor_count": 0,
+        "probe_anchor_count": 1
+      },
+      "not_observed": false,
+      "rupture_qualified": false,
+      "publication_lag_wave_ids": [],
+      "archive_context_wave_ids": [],
+      "rupture_crossed_year": null,
+      "missing_excluded_wave_ids": [],
+      "basis_source_refs": [
+        [
+          "SYNTH_FAMILY",
+          "E1"
+        ]
+      ],
+      "product_observation_status": "HELD_ESTIMATE_NOT_OBSERVATION_AT_CLOCK"
+    }
+  },
+  {
+    "id": "D01_D02_M1_LINEAR_INTERPOLATION_False",
+    "actual": {
+      "method": "M1_LINEAR_INTERPOLATION",
+      "value": 0.2,
+      "band": "low",
+      "uncertainty": "TERMINAL_NO_RIGHT_ANCHOR",
+      "temporal_key": "PROBE_ONLY_TEMPORAL_KEY",
+      "basis_wave_ids": [
+        "W0"
+      ],
+      "detail": "no later anchor; hold last known-at value",
+      "refused_code": null,
+      "native_authorization": {
+        "multi_wave_authorization_status": "PROBE_ONLY_TEMPORAL_KEY",
+        "multi_wave_authorization_reason": "insufficient_distinct_waves",
+        "harmonization_authority_status": "multi_wave_authorized",
+        "semantic_compatibility_status": "compatible_by_canonical_key",
+        "directionality_compatibility_status": "compatible_by_harmonizer_shared_contract",
+        "position_compatibility_status": "compatible_by_harmonizer_shared_contract",
+        "structural_identity_compatibility_status": "compatible_by_comparable_temporal_key",
+        "ready_for_v554": false,
+        "eligible_wave_count": 1,
+        "distinct_wave_count": 1,
+        "probe_ready_wave_count": 1,
+        "resolved_wave_count": 1,
+        "authorized_anchor_count": 0,
+        "probe_anchor_count": 1
+      },
+      "not_observed": false,
+      "rupture_qualified": false,
+      "publication_lag_wave_ids": [],
+      "archive_context_wave_ids": [],
+      "rupture_crossed_year": null,
+      "missing_excluded_wave_ids": [],
+      "basis_source_refs": [
+        [
+          "SYNTH_FAMILY",
+          "E1"
+        ]
+      ],
+      "product_observation_status": "HELD_ESTIMATE_NOT_OBSERVATION_AT_CLOCK"
+    }
+  },
+  {
+    "id": "D01_D02_M2_UNCERTAINTY_AWARE_BACKOFF_False",
+    "actual": {
+      "method": "M2_UNCERTAINTY_AWARE_BACKOFF",
+      "value": 0.2,
+      "band": "low",
+      "uncertainty": "BACKOFF_SINGLE_ANCHOR",
+      "temporal_key": "PROBE_ONLY_TEMPORAL_KEY",
+      "basis_wave_ids": [
+        "W0"
+      ],
+      "detail": "uncertainty-aware nearest-anchor backoff",
+      "refused_code": null,
+      "native_authorization": {
+        "multi_wave_authorization_status": "PROBE_ONLY_TEMPORAL_KEY",
+        "multi_wave_authorization_reason": "insufficient_distinct_waves",
+        "harmonization_authority_status": "multi_wave_authorized",
+        "semantic_compatibility_status": "compatible_by_canonical_key",
+        "directionality_compatibility_status": "compatible_by_harmonizer_shared_contract",
+        "position_compatibility_status": "compatible_by_harmonizer_shared_contract",
+        "structural_identity_compatibility_status": "compatible_by_comparable_temporal_key",
+        "ready_for_v554": false,
+        "eligible_wave_count": 1,
+        "distinct_wave_count": 1,
+        "probe_ready_wave_count": 1,
+        "resolved_wave_count": 1,
+        "authorized_anchor_count": 0,
+        "probe_anchor_count": 1
+      },
+      "not_observed": false,
+      "rupture_qualified": false,
+      "publication_lag_wave_ids": [],
+      "archive_context_wave_ids": [],
+      "rupture_crossed_year": null,
+      "missing_excluded_wave_ids": [],
+      "basis_source_refs": [
+        [
+          "SYNTH_FAMILY",
+          "E1"
+        ]
+      ],
+      "product_observation_status": "HELD_ESTIMATE_NOT_OBSERVATION_AT_CLOCK"
+    }
+  },
+  {
+    "id": "D01_D02_M0_PIECEWISE_HOLD_True",
+    "actual": {
+      "method": "M0_PIECEWISE_HOLD",
+      "value": 0.2,
+      "band": "low",
+      "uncertainty": "HELD_NO_INTERPOLATION",
+      "temporal_key": "AUTHORIZED_SPARSE_TEMPORAL_KEY",
+      "basis_wave_ids": [
+        "W0"
+      ],
+      "detail": "nearest prior admissible anchor",
+      "refused_code": null,
+      "native_authorization": {
+        "multi_wave_authorization_status": "AUTHORIZED_SPARSE_TEMPORAL_KEY",
+        "multi_wave_authorization_reason": "at_least_two_probe_ready_resolved_structural_anchors",
+        "harmonization_authority_status": "multi_wave_authorized",
+        "semantic_compatibility_status": "compatible_by_canonical_key",
+        "directionality_compatibility_status": "compatible_by_harmonizer_shared_contract",
+        "position_compatibility_status": "compatible_by_harmonizer_shared_contract",
+        "structural_identity_compatibility_status": "compatible_by_comparable_temporal_key",
+        "ready_for_v554": true,
+        "eligible_wave_count": 2,
+        "distinct_wave_count": 2,
+        "probe_ready_wave_count": 2,
+        "resolved_wave_count": 2,
+        "authorized_anchor_count": 2,
+        "probe_anchor_count": 0
+      },
+      "not_observed": false,
+      "rupture_qualified": false,
+      "publication_lag_wave_ids": [],
+      "archive_context_wave_ids": [
+        "W1"
+      ],
+      "rupture_crossed_year": null,
+      "missing_excluded_wave_ids": [],
+      "basis_source_refs": [
+        [
+          "SYNTH_FAMILY",
+          "E1"
+        ]
+      ],
+      "product_observation_status": "HELD_ESTIMATE_NOT_OBSERVATION_AT_CLOCK"
+    }
+  },
+  {
+    "id": "D01_D02_M1_LINEAR_INTERPOLATION_True",
+    "actual": {
+      "method": "M1_LINEAR_INTERPOLATION",
+      "value": 0.4,
+      "band": "low",
+      "uncertainty": "INTERPOLATED_NOT_OBSERVED|PUBLICATION_LAG:W1",
+      "temporal_key": "PROBE_ONLY_TEMPORAL_KEY",
+      "basis_wave_ids": [
+        "W0",
+        "W1"
+      ],
+      "detail": "linear interpolation inside an authorized gap; not a measurement; wave(s) published AFTER the query clock",
+      "refused_code": null,
+      "native_authorization": {
+        "multi_wave_authorization_status": "AUTHORIZED_SPARSE_TEMPORAL_KEY",
+        "multi_wave_authorization_reason": "at_least_two_probe_ready_resolved_structural_anchors",
+        "harmonization_authority_status": "multi_wave_authorized",
+        "semantic_compatibility_status": "compatible_by_canonical_key",
+        "directionality_compatibility_status": "compatible_by_harmonizer_shared_contract",
+        "position_compatibility_status": "compatible_by_harmonizer_shared_contract",
+        "structural_identity_compatibility_status": "compatible_by_comparable_temporal_key",
+        "ready_for_v554": true,
+        "eligible_wave_count": 2,
+        "distinct_wave_count": 2,
+        "probe_ready_wave_count": 2,
+        "resolved_wave_count": 2,
+        "authorized_anchor_count": 2,
+        "probe_anchor_count": 0
+      },
+      "not_observed": true,
+      "rupture_qualified": false,
+      "publication_lag_wave_ids": [
+        "W1"
+      ],
+      "archive_context_wave_ids": [],
+      "rupture_crossed_year": null,
+      "missing_excluded_wave_ids": [],
+      "basis_source_refs": [
+        [
+          "SYNTH_FAMILY",
+          "E1"
+        ],
+        [
+          "SYNTH_FAMILY",
+          "E1"
+        ]
+      ],
+      "product_observation_status": "INTERPOLATED_NOT_OBSERVED"
+    }
+  },
+  {
+    "id": "D01_D02_M2_UNCERTAINTY_AWARE_BACKOFF_True",
+    "actual": {
+      "method": "M2_UNCERTAINTY_AWARE_BACKOFF",
+      "value": 0.2,
+      "band": "low",
+      "uncertainty": "BACKOFF_WIDE_GAP_UNCERTAIN",
+      "temporal_key": "AUTHORIZED_SPARSE_TEMPORAL_KEY",
+      "basis_wave_ids": [
+        "W0"
+      ],
+      "detail": "uncertainty-aware nearest-anchor backoff",
+      "refused_code": null,
+      "native_authorization": {
+        "multi_wave_authorization_status": "AUTHORIZED_SPARSE_TEMPORAL_KEY",
+        "multi_wave_authorization_reason": "at_least_two_probe_ready_resolved_structural_anchors",
+        "harmonization_authority_status": "multi_wave_authorized",
+        "semantic_compatibility_status": "compatible_by_canonical_key",
+        "directionality_compatibility_status": "compatible_by_harmonizer_shared_contract",
+        "position_compatibility_status": "compatible_by_harmonizer_shared_contract",
+        "structural_identity_compatibility_status": "compatible_by_comparable_temporal_key",
+        "ready_for_v554": true,
+        "eligible_wave_count": 2,
+        "distinct_wave_count": 2,
+        "probe_ready_wave_count": 2,
+        "resolved_wave_count": 2,
+        "authorized_anchor_count": 2,
+        "probe_anchor_count": 0
+      },
+      "not_observed": false,
+      "rupture_qualified": false,
+      "publication_lag_wave_ids": [],
+      "archive_context_wave_ids": [
+        "W1"
+      ],
+      "rupture_crossed_year": null,
+      "missing_excluded_wave_ids": [],
+      "basis_source_refs": [
+        [
+          "SYNTH_FAMILY",
+          "E1"
+        ]
+      ],
+      "product_observation_status": "HELD_ESTIMATE_NOT_OBSERVATION_AT_CLOCK"
+    }
+  },
+  {
+    "id": "D05_M0_PIECEWISE_HOLD_None",
+    "actual": {
+      "method": "M0_PIECEWISE_HOLD",
+      "value": null,
+      "band": null,
+      "uncertainty": "UNKNOWN_NOT_OBSERVED",
+      "temporal_key": "BLOCKED_TEMPORAL_KEY",
+      "basis_wave_ids": [],
+      "detail": "admissible wave(s) carry no observation; this is an explicit unknown and not an observed zero",
+      "refused_code": "MISSING_OBSERVATION_NOT_ZERO",
+      "native_authorization": {
+        "multi_wave_authorization_status": "BLOCKED_TEMPORAL_KEY",
+        "multi_wave_authorization_reason": "harmonization_not_authorized",
+        "harmonization_authority_status": "not_authorized",
+        "semantic_compatibility_status": "blocked",
+        "directionality_compatibility_status": "blocked",
+        "position_compatibility_status": "blocked",
+        "structural_identity_compatibility_status": "blocked",
+        "ready_for_v554": false,
+        "eligible_wave_count": 0,
+        "distinct_wave_count": 0,
+        "probe_ready_wave_count": 0,
+        "resolved_wave_count": 0,
+        "authorized_anchor_count": 0,
+        "probe_anchor_count": 0
+      },
+      "not_observed": false,
+      "rupture_qualified": false,
+      "publication_lag_wave_ids": [],
+      "archive_context_wave_ids": [],
+      "rupture_crossed_year": null,
+      "missing_excluded_wave_ids": [
+        "MISSING"
+      ],
+      "basis_source_refs": [],
+      "product_observation_status": "REFUSED_NO_PRODUCT"
+    }
+  },
+  {
+    "id": "D05_M1_LINEAR_INTERPOLATION_None",
+    "actual": {
+      "method": "M1_LINEAR_INTERPOLATION",
+      "value": null,
+      "band": null,
+      "uncertainty": "UNKNOWN_NOT_OBSERVED",
+      "temporal_key": "BLOCKED_TEMPORAL_KEY",
+      "basis_wave_ids": [],
+      "detail": "admissible wave(s) carry no observation; this is an explicit unknown and not an observed zero",
+      "refused_code": "MISSING_OBSERVATION_NOT_ZERO",
+      "native_authorization": {
+        "multi_wave_authorization_status": "BLOCKED_TEMPORAL_KEY",
+        "multi_wave_authorization_reason": "harmonization_not_authorized",
+        "harmonization_authority_status": "not_authorized",
+        "semantic_compatibility_status": "blocked",
+        "directionality_compatibility_status": "blocked",
+        "position_compatibility_status": "blocked",
+        "structural_identity_compatibility_status": "blocked",
+        "ready_for_v554": false,
+        "eligible_wave_count": 0,
+        "distinct_wave_count": 0,
+        "probe_ready_wave_count": 0,
+        "resolved_wave_count": 0,
+        "authorized_anchor_count": 0,
+        "probe_anchor_count": 0
+      },
+      "not_observed": false,
+      "rupture_qualified": false,
+      "publication_lag_wave_ids": [],
+      "archive_context_wave_ids": [],
+      "rupture_crossed_year": null,
+      "missing_excluded_wave_ids": [
+        "MISSING"
+      ],
+      "basis_source_refs": [],
+      "product_observation_status": "REFUSED_NO_PRODUCT"
+    }
+  },
+  {
+    "id": "D05_M2_UNCERTAINTY_AWARE_BACKOFF_None",
+    "actual": {
+      "method": "M2_UNCERTAINTY_AWARE_BACKOFF",
+      "value": null,
+      "band": null,
+      "uncertainty": "UNKNOWN_NOT_OBSERVED",
+      "temporal_key": "BLOCKED_TEMPORAL_KEY",
+      "basis_wave_ids": [],
+      "detail": "admissible wave(s) carry no observation; this is an explicit unknown and not an observed zero",
+      "refused_code": "MISSING_OBSERVATION_NOT_ZERO",
+      "native_authorization": {
+        "multi_wave_authorization_status": "BLOCKED_TEMPORAL_KEY",
+        "multi_wave_authorization_reason": "harmonization_not_authorized",
+        "harmonization_authority_status": "not_authorized",
+        "semantic_compatibility_status": "blocked",
+        "directionality_compatibility_status": "blocked",
+        "position_compatibility_status": "blocked",
+        "structural_identity_compatibility_status": "blocked",
+        "ready_for_v554": false,
+        "eligible_wave_count": 0,
+        "distinct_wave_count": 0,
+        "probe_ready_wave_count": 0,
+        "resolved_wave_count": 0,
+        "authorized_anchor_count": 0,
+        "probe_anchor_count": 0
+      },
+      "not_observed": false,
+      "rupture_qualified": false,
+      "publication_lag_wave_ids": [],
+      "archive_context_wave_ids": [],
+      "rupture_crossed_year": null,
+      "missing_excluded_wave_ids": [
+        "MISSING"
+      ],
+      "basis_source_refs": [],
+      "product_observation_status": "REFUSED_NO_PRODUCT"
+    }
+  },
+  {
+    "id": "D05_M0_PIECEWISE_HOLD_nan",
+    "actual": {
+      "method": "M0_PIECEWISE_HOLD",
+      "value": null,
+      "band": null,
+      "uncertainty": "UNKNOWN_NOT_OBSERVED",
+      "temporal_key": "BLOCKED_TEMPORAL_KEY",
+      "basis_wave_ids": [],
+      "detail": "admissible wave(s) carry no observation; this is an explicit unknown and not an observed zero",
+      "refused_code": "MISSING_OBSERVATION_NOT_ZERO",
+      "native_authorization": {
+        "multi_wave_authorization_status": "BLOCKED_TEMPORAL_KEY",
+        "multi_wave_authorization_reason": "harmonization_not_authorized",
+        "harmonization_authority_status": "not_authorized",
+        "semantic_compatibility_status": "blocked",
+        "directionality_compatibility_status": "blocked",
+        "position_compatibility_status": "blocked",
+        "structural_identity_compatibility_status": "blocked",
+        "ready_for_v554": false,
+        "eligible_wave_count": 0,
+        "distinct_wave_count": 0,
+        "probe_ready_wave_count": 0,
+        "resolved_wave_count": 0,
+        "authorized_anchor_count": 0,
+        "probe_anchor_count": 0
+      },
+      "not_observed": false,
+      "rupture_qualified": false,
+      "publication_lag_wave_ids": [],
+      "archive_context_wave_ids": [],
+      "rupture_crossed_year": null,
+      "missing_excluded_wave_ids": [
+        "MISSING"
+      ],
+      "basis_source_refs": [],
+      "product_observation_status": "REFUSED_NO_PRODUCT"
+    }
+  },
+  {
+    "id": "D05_M1_LINEAR_INTERPOLATION_nan",
+    "actual": {
+      "method": "M1_LINEAR_INTERPOLATION",
+      "value": null,
+      "band": null,
+      "uncertainty": "UNKNOWN_NOT_OBSERVED",
+      "temporal_key": "BLOCKED_TEMPORAL_KEY",
+      "basis_wave_ids": [],
+      "detail": "admissible wave(s) carry no observation; this is an explicit unknown and not an observed zero",
+      "refused_code": "MISSING_OBSERVATION_NOT_ZERO",
+      "native_authorization": {
+        "multi_wave_authorization_status": "BLOCKED_TEMPORAL_KEY",
+        "multi_wave_authorization_reason": "harmonization_not_authorized",
+        "harmonization_authority_status": "not_authorized",
+        "semantic_compatibility_status": "blocked",
+        "directionality_compatibility_status": "blocked",
+        "position_compatibility_status": "blocked",
+        "structural_identity_compatibility_status": "blocked",
+        "ready_for_v554": false,
+        "eligible_wave_count": 0,
+        "distinct_wave_count": 0,
+        "probe_ready_wave_count": 0,
+        "resolved_wave_count": 0,
+        "authorized_anchor_count": 0,
+        "probe_anchor_count": 0
+      },
+      "not_observed": false,
+      "rupture_qualified": false,
+      "publication_lag_wave_ids": [],
+      "archive_context_wave_ids": [],
+      "rupture_crossed_year": null,
+      "missing_excluded_wave_ids": [
+        "MISSING"
+      ],
+      "basis_source_refs": [],
+      "product_observation_status": "REFUSED_NO_PRODUCT"
+    }
+  },
+  {
+    "id": "D05_M2_UNCERTAINTY_AWARE_BACKOFF_nan",
+    "actual": {
+      "method": "M2_UNCERTAINTY_AWARE_BACKOFF",
+      "value": null,
+      "band": null,
+      "uncertainty": "UNKNOWN_NOT_OBSERVED",
+      "temporal_key": "BLOCKED_TEMPORAL_KEY",
+      "basis_wave_ids": [],
+      "detail": "admissible wave(s) carry no observation; this is an explicit unknown and not an observed zero",
+      "refused_code": "MISSING_OBSERVATION_NOT_ZERO",
+      "native_authorization": {
+        "multi_wave_authorization_status": "BLOCKED_TEMPORAL_KEY",
+        "multi_wave_authorization_reason": "harmonization_not_authorized",
+        "harmonization_authority_status": "not_authorized",
+        "semantic_compatibility_status": "blocked",
+        "directionality_compatibility_status": "blocked",
+        "position_compatibility_status": "blocked",
+        "structural_identity_compatibility_status": "blocked",
+        "ready_for_v554": false,
+        "eligible_wave_count": 0,
+        "distinct_wave_count": 0,
+        "probe_ready_wave_count": 0,
+        "resolved_wave_count": 0,
+        "authorized_anchor_count": 0,
+        "probe_anchor_count": 0
+      },
+      "not_observed": false,
+      "rupture_qualified": false,
+      "publication_lag_wave_ids": [],
+      "archive_context_wave_ids": [],
+      "rupture_crossed_year": null,
+      "missing_excluded_wave_ids": [
+        "MISSING"
+      ],
+      "basis_source_refs": [],
+      "product_observation_status": "REFUSED_NO_PRODUCT"
+    }
+  },
+  {
+    "id": "D05_M0_PIECEWISE_HOLD_inf",
+    "actual": {
+      "method": "M0_PIECEWISE_HOLD",
+      "value": null,
+      "band": null,
+      "uncertainty": "UNKNOWN_NOT_OBSERVED",
+      "temporal_key": "BLOCKED_TEMPORAL_KEY",
+      "basis_wave_ids": [],
+      "detail": "admissible wave(s) carry no observation; this is an explicit unknown and not an observed zero",
+      "refused_code": "MISSING_OBSERVATION_NOT_ZERO",
+      "native_authorization": {
+        "multi_wave_authorization_status": "BLOCKED_TEMPORAL_KEY",
+        "multi_wave_authorization_reason": "harmonization_not_authorized",
+        "harmonization_authority_status": "not_authorized",
+        "semantic_compatibility_status": "blocked",
+        "directionality_compatibility_status": "blocked",
+        "position_compatibility_status": "blocked",
+        "structural_identity_compatibility_status": "blocked",
+        "ready_for_v554": false,
+        "eligible_wave_count": 0,
+        "distinct_wave_count": 0,
+        "probe_ready_wave_count": 0,
+        "resolved_wave_count": 0,
+        "authorized_anchor_count": 0,
+        "probe_anchor_count": 0
+      },
+      "not_observed": false,
+      "rupture_qualified": false,
+      "publication_lag_wave_ids": [],
+      "archive_context_wave_ids": [],
+      "rupture_crossed_year": null,
+      "missing_excluded_wave_ids": [
+        "MISSING"
+      ],
+      "basis_source_refs": [],
+      "product_observation_status": "REFUSED_NO_PRODUCT"
+    }
+  },
+  {
+    "id": "D05_M1_LINEAR_INTERPOLATION_inf",
+    "actual": {
+      "method": "M1_LINEAR_INTERPOLATION",
+      "value": null,
+      "band": null,
+      "uncertainty": "UNKNOWN_NOT_OBSERVED",
+      "temporal_key": "BLOCKED_TEMPORAL_KEY",
+      "basis_wave_ids": [],
+      "detail": "admissible wave(s) carry no observation; this is an explicit unknown and not an observed zero",
+      "refused_code": "MISSING_OBSERVATION_NOT_ZERO",
+      "native_authorization": {
+        "multi_wave_authorization_status": "BLOCKED_TEMPORAL_KEY",
+        "multi_wave_authorization_reason": "harmonization_not_authorized",
+        "harmonization_authority_status": "not_authorized",
+        "semantic_compatibility_status": "blocked",
+        "directionality_compatibility_status": "blocked",
+        "position_compatibility_status": "blocked",
+        "structural_identity_compatibility_status": "blocked",
+        "ready_for_v554": false,
+        "eligible_wave_count": 0,
+        "distinct_wave_count": 0,
+        "probe_ready_wave_count": 0,
+        "resolved_wave_count": 0,
+        "authorized_anchor_count": 0,
+        "probe_anchor_count": 0
+      },
+      "not_observed": false,
+      "rupture_qualified": false,
+      "publication_lag_wave_ids": [],
+      "archive_context_wave_ids": [],
+      "rupture_crossed_year": null,
+      "missing_excluded_wave_ids": [
+        "MISSING"
+      ],
+      "basis_source_refs": [],
+      "product_observation_status": "REFUSED_NO_PRODUCT"
+    }
+  },
+  {
+    "id": "D05_M2_UNCERTAINTY_AWARE_BACKOFF_inf",
+    "actual": {
+      "method": "M2_UNCERTAINTY_AWARE_BACKOFF",
+      "value": null,
+      "band": null,
+      "uncertainty": "UNKNOWN_NOT_OBSERVED",
+      "temporal_key": "BLOCKED_TEMPORAL_KEY",
+      "basis_wave_ids": [],
+      "detail": "admissible wave(s) carry no observation; this is an explicit unknown and not an observed zero",
+      "refused_code": "MISSING_OBSERVATION_NOT_ZERO",
+      "native_authorization": {
+        "multi_wave_authorization_status": "BLOCKED_TEMPORAL_KEY",
+        "multi_wave_authorization_reason": "harmonization_not_authorized",
+        "harmonization_authority_status": "not_authorized",
+        "semantic_compatibility_status": "blocked",
+        "directionality_compatibility_status": "blocked",
+        "position_compatibility_status": "blocked",
+        "structural_identity_compatibility_status": "blocked",
+        "ready_for_v554": false,
+        "eligible_wave_count": 0,
+        "distinct_wave_count": 0,
+        "probe_ready_wave_count": 0,
+        "resolved_wave_count": 0,
+        "authorized_anchor_count": 0,
+        "probe_anchor_count": 0
+      },
+      "not_observed": false,
+      "rupture_qualified": false,
+      "publication_lag_wave_ids": [],
+      "archive_context_wave_ids": [],
+      "rupture_crossed_year": null,
+      "missing_excluded_wave_ids": [
+        "MISSING"
+      ],
+      "basis_source_refs": [],
+      "product_observation_status": "REFUSED_NO_PRODUCT"
+    }
+  },
+  {
+    "id": "D05_M0_PIECEWISE_HOLD_-inf",
+    "actual": {
+      "method": "M0_PIECEWISE_HOLD",
+      "value": null,
+      "band": null,
+      "uncertainty": "UNKNOWN_NOT_OBSERVED",
+      "temporal_key": "BLOCKED_TEMPORAL_KEY",
+      "basis_wave_ids": [],
+      "detail": "admissible wave(s) carry no observation; this is an explicit unknown and not an observed zero",
+      "refused_code": "MISSING_OBSERVATION_NOT_ZERO",
+      "native_authorization": {
+        "multi_wave_authorization_status": "BLOCKED_TEMPORAL_KEY",
+        "multi_wave_authorization_reason": "harmonization_not_authorized",
+        "harmonization_authority_status": "not_authorized",
+        "semantic_compatibility_status": "blocked",
+        "directionality_compatibility_status": "blocked",
+        "position_compatibility_status": "blocked",
+        "structural_identity_compatibility_status": "blocked",
+        "ready_for_v554": false,
+        "eligible_wave_count": 0,
+        "distinct_wave_count": 0,
+        "probe_ready_wave_count": 0,
+        "resolved_wave_count": 0,
+        "authorized_anchor_count": 0,
+        "probe_anchor_count": 0
+      },
+      "not_observed": false,
+      "rupture_qualified": false,
+      "publication_lag_wave_ids": [],
+      "archive_context_wave_ids": [],
+      "rupture_crossed_year": null,
+      "missing_excluded_wave_ids": [
+        "MISSING"
+      ],
+      "basis_source_refs": [],
+      "product_observation_status": "REFUSED_NO_PRODUCT"
+    }
+  },
+  {
+    "id": "D05_M1_LINEAR_INTERPOLATION_-inf",
+    "actual": {
+      "method": "M1_LINEAR_INTERPOLATION",
+      "value": null,
+      "band": null,
+      "uncertainty": "UNKNOWN_NOT_OBSERVED",
+      "temporal_key": "BLOCKED_TEMPORAL_KEY",
+      "basis_wave_ids": [],
+      "detail": "admissible wave(s) carry no observation; this is an explicit unknown and not an observed zero",
+      "refused_code": "MISSING_OBSERVATION_NOT_ZERO",
+      "native_authorization": {
+        "multi_wave_authorization_status": "BLOCKED_TEMPORAL_KEY",
+        "multi_wave_authorization_reason": "harmonization_not_authorized",
+        "harmonization_authority_status": "not_authorized",
+        "semantic_compatibility_status": "blocked",
+        "directionality_compatibility_status": "blocked",
+        "position_compatibility_status": "blocked",
+        "structural_identity_compatibility_status": "blocked",
+        "ready_for_v554": false,
+        "eligible_wave_count": 0,
+        "distinct_wave_count": 0,
+        "probe_ready_wave_count": 0,
+        "resolved_wave_count": 0,
+        "authorized_anchor_count": 0,
+        "probe_anchor_count": 0
+      },
+      "not_observed": false,
+      "rupture_qualified": false,
+      "publication_lag_wave_ids": [],
+      "archive_context_wave_ids": [],
+      "rupture_crossed_year": null,
+      "missing_excluded_wave_ids": [
+        "MISSING"
+      ],
+      "basis_source_refs": [],
+      "product_observation_status": "REFUSED_NO_PRODUCT"
+    }
+  },
+  {
+    "id": "D05_M2_UNCERTAINTY_AWARE_BACKOFF_-inf",
+    "actual": {
+      "method": "M2_UNCERTAINTY_AWARE_BACKOFF",
+      "value": null,
+      "band": null,
+      "uncertainty": "UNKNOWN_NOT_OBSERVED",
+      "temporal_key": "BLOCKED_TEMPORAL_KEY",
+      "basis_wave_ids": [],
+      "detail": "admissible wave(s) carry no observation; this is an explicit unknown and not an observed zero",
+      "refused_code": "MISSING_OBSERVATION_NOT_ZERO",
+      "native_authorization": {
+        "multi_wave_authorization_status": "BLOCKED_TEMPORAL_KEY",
+        "multi_wave_authorization_reason": "harmonization_not_authorized",
+        "harmonization_authority_status": "not_authorized",
+        "semantic_compatibility_status": "blocked",
+        "directionality_compatibility_status": "blocked",
+        "position_compatibility_status": "blocked",
+        "structural_identity_compatibility_status": "blocked",
+        "ready_for_v554": false,
+        "eligible_wave_count": 0,
+        "distinct_wave_count": 0,
+        "probe_ready_wave_count": 0,
+        "resolved_wave_count": 0,
+        "authorized_anchor_count": 0,
+        "probe_anchor_count": 0
+      },
+      "not_observed": false,
+      "rupture_qualified": false,
+      "publication_lag_wave_ids": [],
+      "archive_context_wave_ids": [],
+      "rupture_crossed_year": null,
+      "missing_excluded_wave_ids": [
+        "MISSING"
+      ],
+      "basis_source_refs": [],
+      "product_observation_status": "REFUSED_NO_PRODUCT"
+    }
+  },
+  {
+    "id": "D06_M0_PIECEWISE_HOLD",
+    "actual": {
+      "method": "M0_PIECEWISE_HOLD",
+      "value": 0.0,
+      "band": "none",
+      "uncertainty": "HELD_NO_INTERPOLATION",
+      "temporal_key": "PROBE_ONLY_TEMPORAL_KEY",
+      "basis_wave_ids": [
+        "ZERO"
+      ],
+      "detail": "nearest prior admissible anchor",
+      "refused_code": null,
+      "native_authorization": {
+        "multi_wave_authorization_status": "PROBE_ONLY_TEMPORAL_KEY",
+        "multi_wave_authorization_reason": "insufficient_distinct_waves",
+        "harmonization_authority_status": "multi_wave_authorized",
+        "semantic_compatibility_status": "compatible_by_canonical_key",
+        "directionality_compatibility_status": "compatible_by_harmonizer_shared_contract",
+        "position_compatibility_status": "compatible_by_harmonizer_shared_contract",
+        "structural_identity_compatibility_status": "compatible_by_comparable_temporal_key",
+        "ready_for_v554": false,
+        "eligible_wave_count": 1,
+        "distinct_wave_count": 1,
+        "probe_ready_wave_count": 1,
+        "resolved_wave_count": 1,
+        "authorized_anchor_count": 0,
+        "probe_anchor_count": 1
+      },
+      "not_observed": false,
+      "rupture_qualified": false,
+      "publication_lag_wave_ids": [],
+      "archive_context_wave_ids": [],
+      "rupture_crossed_year": null,
+      "missing_excluded_wave_ids": [],
+      "basis_source_refs": [
+        [
+          "SYNTH_FAMILY",
+          "E1"
+        ]
+      ],
+      "product_observation_status": "HELD_ESTIMATE_NOT_OBSERVATION_AT_CLOCK"
+    }
+  },
+  {
+    "id": "D06_M1_LINEAR_INTERPOLATION",
+    "actual": {
+      "method": "M1_LINEAR_INTERPOLATION",
+      "value": 0.0,
+      "band": "none",
+      "uncertainty": "TERMINAL_NO_RIGHT_ANCHOR",
+      "temporal_key": "PROBE_ONLY_TEMPORAL_KEY",
+      "basis_wave_ids": [
+        "ZERO"
+      ],
+      "detail": "no later anchor; hold last known-at value",
+      "refused_code": null,
+      "native_authorization": {
+        "multi_wave_authorization_status": "PROBE_ONLY_TEMPORAL_KEY",
+        "multi_wave_authorization_reason": "insufficient_distinct_waves",
+        "harmonization_authority_status": "multi_wave_authorized",
+        "semantic_compatibility_status": "compatible_by_canonical_key",
+        "directionality_compatibility_status": "compatible_by_harmonizer_shared_contract",
+        "position_compatibility_status": "compatible_by_harmonizer_shared_contract",
+        "structural_identity_compatibility_status": "compatible_by_comparable_temporal_key",
+        "ready_for_v554": false,
+        "eligible_wave_count": 1,
+        "distinct_wave_count": 1,
+        "probe_ready_wave_count": 1,
+        "resolved_wave_count": 1,
+        "authorized_anchor_count": 0,
+        "probe_anchor_count": 1
+      },
+      "not_observed": false,
+      "rupture_qualified": false,
+      "publication_lag_wave_ids": [],
+      "archive_context_wave_ids": [],
+      "rupture_crossed_year": null,
+      "missing_excluded_wave_ids": [],
+      "basis_source_refs": [
+        [
+          "SYNTH_FAMILY",
+          "E1"
+        ]
+      ],
+      "product_observation_status": "HELD_ESTIMATE_NOT_OBSERVATION_AT_CLOCK"
+    }
+  },
+  {
+    "id": "D06_M2_UNCERTAINTY_AWARE_BACKOFF",
+    "actual": {
+      "method": "M2_UNCERTAINTY_AWARE_BACKOFF",
+      "value": 0.0,
+      "band": "none",
+      "uncertainty": "BACKOFF_SINGLE_ANCHOR",
+      "temporal_key": "PROBE_ONLY_TEMPORAL_KEY",
+      "basis_wave_ids": [
+        "ZERO"
+      ],
+      "detail": "uncertainty-aware nearest-anchor backoff",
+      "refused_code": null,
+      "native_authorization": {
+        "multi_wave_authorization_status": "PROBE_ONLY_TEMPORAL_KEY",
+        "multi_wave_authorization_reason": "insufficient_distinct_waves",
+        "harmonization_authority_status": "multi_wave_authorized",
+        "semantic_compatibility_status": "compatible_by_canonical_key",
+        "directionality_compatibility_status": "compatible_by_harmonizer_shared_contract",
+        "position_compatibility_status": "compatible_by_harmonizer_shared_contract",
+        "structural_identity_compatibility_status": "compatible_by_comparable_temporal_key",
+        "ready_for_v554": false,
+        "eligible_wave_count": 1,
+        "distinct_wave_count": 1,
+        "probe_ready_wave_count": 1,
+        "resolved_wave_count": 1,
+        "authorized_anchor_count": 0,
+        "probe_anchor_count": 1
+      },
+      "not_observed": false,
+      "rupture_qualified": false,
+      "publication_lag_wave_ids": [],
+      "archive_context_wave_ids": [],
+      "rupture_crossed_year": null,
+      "missing_excluded_wave_ids": [],
+      "basis_source_refs": [
+        [
+          "SYNTH_FAMILY",
+          "E1"
+        ]
+      ],
+      "product_observation_status": "HELD_ESTIMATE_NOT_OBSERVATION_AT_CLOCK"
+    }
+  },
+  {
+    "id": "D07_D08_True",
+    "actual": {
+      "query_clock": 1995,
+      "temporal_method": "M0_PIECEWISE_HOLD",
+      "opportunity_ids": [
+        "ROUTE_BLOCKED_NO_SUPPORT"
+      ],
+      "pressure_band": "medium",
+      "temporal_key": "PROBE_ONLY_TEMPORAL_KEY",
+      "uncertainty": "HELD_NO_INTERPOLATION",
+      "basis_wave_ids": [
+        "VALID"
+      ],
+      "provenance": {
+        "structural_world_fields": {
+          "world_id": "W_SYNTH_INSTITUTION",
+          "structural_routes": [
+            "ROUTE_REDUCED_BURDEN",
+            "ROUTE_PARTICIPATION",
+            "ROUTE_DEFERRED_REVIEW"
+          ],
+          "access_grants": [
+            "GRANT_YOUNG_PERSON_ACCESS"
+          ],
+          "institution": "SYNTH_INSTITUTION"
+        },
+        "world_id": "W_SYNTH_INSTITUTION",
+        "institution": "SYNTH_INSTITUTION",
+        "access_grants": [
+          "GRANT_YOUNG_PERSON_ACCESS"
+        ],
+        "grain": "structural_channel_exact",
+        "source_family": "ACTUAL_SOURCE",
+        "source_families": [
+          "ACTUAL_SOURCE"
+        ],
+        "instrument": "SYNTH_INSTRUMENT",
+        "cohort": "COHORT_ALL",
+        "country": "SYNTH_COUNTRY_A",
+        "edition": "ACTUAL_EDITION",
+        "editions": [
+          "ACTUAL_EDITION"
+        ],
+        "basis_source_refs": [
+          [
+            "ACTUAL_SOURCE",
+            "ACTUAL_EDITION"
+          ]
+        ],
+        "query_clock": 1995,
+        "clock_question": "AS_OF_KNOWABLE",
+        "publication_lag_wave_ids": [],
+        "archive_context_wave_ids": [],
+        "native_multi_wave_authorization_status": "PROBE_ONLY_TEMPORAL_KEY",
+        "native_multi_wave_authorization_reason": "insufficient_distinct_waves",
+        "product_observation_status": "HELD_ESTIMATE_NOT_OBSERVATION_AT_CLOCK",
+        "product_temporal_key": "PROBE_ONLY_TEMPORAL_KEY",
+        "actor_opportunity_entitlement": "GRANTED_BY_PRESENT_CURRENT_ACCESS_GRANT",
+        "archival_known_at_upper_year": null,
+        "source_grant_claimed": false,
+        "source_grant_status": "NO_SOURCE_QUALIFIED_CLAIM",
+        "synthetic": true,
+        "observed_temporal_calibration": false,
+        "authorized_opportunity": false,
+        "t8f3_assignment_preserved": "8079f69778eb4a2e6f30b246e3ec445dc161ae15"
+      },
+      "refused_code": null,
+      "authorized_opportunity": false,
+      "exploratory_route_ids": [
+        "ROUTE_PARTICIPATION",
+        "ROUTE_DEFERRED_REVIEW"
+      ],
+      "archive_context_wave_ids": [],
+      "actor_opportunity_entitlement": "GRANTED_BY_PRESENT_CURRENT_ACCESS_GRANT",
+      "product_observation_status": "HELD_ESTIMATE_NOT_OBSERVATION_AT_CLOCK"
+    }
+  },
+  {
+    "id": "D07_D08_False",
+    "actual": {
+      "query_clock": 1995,
+      "temporal_method": "M0_PIECEWISE_HOLD",
+      "opportunity_ids": [
+        "ROUTE_BLOCKED_NO_SUPPORT"
+      ],
+      "pressure_band": "medium",
+      "temporal_key": "PROBE_ONLY_TEMPORAL_KEY",
+      "uncertainty": "HELD_NO_INTERPOLATION",
+      "basis_wave_ids": [
+        "VALID"
+      ],
+      "provenance": {
+        "structural_world_fields": {
+          "world_id": "W_SYNTH_INSTITUTION",
+          "structural_routes": [
+            "ROUTE_REDUCED_BURDEN",
+            "ROUTE_PARTICIPATION",
+            "ROUTE_DEFERRED_REVIEW"
+          ],
+          "access_grants": [
+            "GRANT_YOUNG_PERSON_ACCESS"
+          ],
+          "institution": "SYNTH_INSTITUTION"
+        },
+        "world_id": "W_SYNTH_INSTITUTION",
+        "institution": "SYNTH_INSTITUTION",
+        "access_grants": [
+          "GRANT_YOUNG_PERSON_ACCESS"
+        ],
+        "grain": "structural_channel_exact",
+        "source_family": "ACTUAL_SOURCE",
+        "source_families": [
+          "ACTUAL_SOURCE"
+        ],
+        "instrument": "SYNTH_INSTRUMENT",
+        "cohort": "COHORT_ALL",
+        "country": "SYNTH_COUNTRY_A",
+        "edition": "ACTUAL_EDITION",
+        "editions": [
+          "ACTUAL_EDITION"
+        ],
+        "basis_source_refs": [
+          [
+            "ACTUAL_SOURCE",
+            "ACTUAL_EDITION"
+          ]
+        ],
+        "query_clock": 1995,
+        "clock_question": "AS_OF_KNOWABLE",
+        "publication_lag_wave_ids": [],
+        "archive_context_wave_ids": [],
+        "native_multi_wave_authorization_status": "PROBE_ONLY_TEMPORAL_KEY",
+        "native_multi_wave_authorization_reason": "insufficient_distinct_waves",
+        "product_observation_status": "HELD_ESTIMATE_NOT_OBSERVATION_AT_CLOCK",
+        "product_temporal_key": "PROBE_ONLY_TEMPORAL_KEY",
+        "actor_opportunity_entitlement": "GRANTED_BY_PRESENT_CURRENT_ACCESS_GRANT",
+        "archival_known_at_upper_year": null,
+        "source_grant_claimed": false,
+        "source_grant_status": "NO_SOURCE_QUALIFIED_CLAIM",
+        "synthetic": true,
+        "observed_temporal_calibration": false,
+        "authorized_opportunity": false,
+        "t8f3_assignment_preserved": "8079f69778eb4a2e6f30b246e3ec445dc161ae15"
+      },
+      "refused_code": null,
+      "authorized_opportunity": false,
+      "exploratory_route_ids": [
+        "ROUTE_PARTICIPATION",
+        "ROUTE_DEFERRED_REVIEW"
+      ],
+      "archive_context_wave_ids": [],
+      "actor_opportunity_entitlement": "GRANTED_BY_PRESENT_CURRENT_ACCESS_GRANT",
+      "product_observation_status": "HELD_ESTIMATE_NOT_OBSERVATION_AT_CLOCK"
+    }
+  },
+  {
+    "id": "D09",
+    "actual": {
+      "before": {
+        "world_id": "W_SYNTH_INSTITUTION",
+        "structural_routes": [
+          "ROUTE_REDUCED_BURDEN",
+          "ROUTE_PARTICIPATION",
+          "ROUTE_DEFERRED_REVIEW"
+        ],
+        "access_grants": [
+          "GRANT_YOUNG_PERSON_ACCESS"
+        ],
+        "institution": "SYNTH_INSTITUTION"
+      },
+      "after": {
+        "world_id": "W_SYNTH_INSTITUTION",
+        "structural_routes": [
+          "ROUTE_DEFERRED_REVIEW"
+        ],
+        "access_grants": [
+          "GRANT_YOUNG_PERSON_ACCESS"
+        ],
+        "institution": "SYNTH_INSTITUTION"
+      },
+      "claims_identical": false
+    }
+  },
+  {
+    "id": "D09",
+    "actual": {
+      "before": {
+        "world_id": "W_SYNTH_INSTITUTION",
+        "structural_routes": [
+          "ROUTE_REDUCED_BURDEN",
+          "ROUTE_PARTICIPATION",
+          "ROUTE_DEFERRED_REVIEW"
+        ],
+        "access_grants": [
+          "GRANT_YOUNG_PERSON_ACCESS"
+        ],
+        "institution": "SYNTH_INSTITUTION"
+      },
+      "after": {
+        "world_id": "W_SYNTH_INSTITUTION",
+        "structural_routes": [
+          "ROUTE_REDUCED_BURDEN",
+          "ROUTE_PARTICIPATION",
+          "ROUTE_DEFERRED_REVIEW",
+          "MATERIAL_NEW_ROUTE"
+        ],
+        "access_grants": [
+          "GRANT_YOUNG_PERSON_ACCESS"
+        ],
+        "institution": "SYNTH_INSTITUTION"
+      },
+      "claims_identical": false
+    }
+  },
+  {
+    "id": "D11_1990",
+    "actual": {
+      "query_clock": 1990,
+      "temporal_method": "M1_LINEAR_INTERPOLATION",
+      "opportunity_ids": [
+        "ROUTE_BLOCKED_NO_SUPPORT"
+      ],
+      "pressure_band": "low",
+      "temporal_key": "PROBE_ONLY_TEMPORAL_KEY",
+      "uncertainty": "INTERPOLATED_NOT_OBSERVED|PUBLICATION_LAG:W1",
+      "basis_wave_ids": [
+        "W0",
+        "W1"
+      ],
+      "provenance": {
+        "structural_world_fields": {
+          "world_id": "W_SYNTH_INSTITUTION",
+          "structural_routes": [
+            "ROUTE_REDUCED_BURDEN",
+            "ROUTE_PARTICIPATION",
+            "ROUTE_DEFERRED_REVIEW"
+          ],
+          "access_grants": [
+            "GRANT_YOUNG_PERSON_ACCESS"
+          ],
+          "institution": "SYNTH_INSTITUTION"
+        },
+        "world_id": "W_SYNTH_INSTITUTION",
+        "institution": "SYNTH_INSTITUTION",
+        "access_grants": [
+          "GRANT_YOUNG_PERSON_ACCESS"
+        ],
+        "grain": "structural_channel_exact",
+        "source_family": "SYNTH_FAMILY",
+        "source_families": [
+          "SYNTH_FAMILY"
+        ],
+        "instrument": "SYNTH_INSTRUMENT",
+        "cohort": "COHORT_ALL",
+        "country": "SYNTH_COUNTRY_A",
+        "edition": "E1",
+        "editions": [
+          "E1"
+        ],
+        "basis_source_refs": [
+          [
+            "SYNTH_FAMILY",
+            "E1"
+          ],
+          [
+            "SYNTH_FAMILY",
+            "E1"
+          ]
+        ],
+        "query_clock": 1990,
+        "clock_question": "RETROSPECTIVE_ARCHIVAL",
+        "publication_lag_wave_ids": [
+          "W1"
+        ],
+        "archive_context_wave_ids": [],
+        "native_multi_wave_authorization_status": "AUTHORIZED_SPARSE_TEMPORAL_KEY",
+        "native_multi_wave_authorization_reason": "at_least_two_probe_ready_resolved_structural_anchors",
+        "product_observation_status": "INTERPOLATED_NOT_OBSERVED",
+        "product_temporal_key": "PROBE_ONLY_TEMPORAL_KEY",
+        "actor_opportunity_entitlement": "GRANTED_BY_PRESENT_CURRENT_ACCESS_GRANT",
+        "archival_known_at_upper_year": null,
+        "source_grant_claimed": false,
+        "source_grant_status": "NO_SOURCE_QUALIFIED_CLAIM",
+        "synthetic": true,
+        "observed_temporal_calibration": false,
+        "authorized_opportunity": false,
+        "t8f3_assignment_preserved": "8079f69778eb4a2e6f30b246e3ec445dc161ae15"
+      },
+      "refused_code": null,
+      "authorized_opportunity": false,
+      "exploratory_route_ids": [
+        "ROUTE_DEFERRED_REVIEW"
+      ],
+      "archive_context_wave_ids": [],
+      "actor_opportunity_entitlement": "GRANTED_BY_PRESENT_CURRENT_ACCESS_GRANT",
+      "product_observation_status": "INTERPOLATED_NOT_OBSERVED"
+    }
+  },
+  {
+    "id": "D11_1995",
+    "actual": {
+      "query_clock": 1995,
+      "temporal_method": "M1_LINEAR_INTERPOLATION",
+      "opportunity_ids": [
+        "ROUTE_BLOCKED_NO_SUPPORT"
+      ],
+      "pressure_band": "low",
+      "temporal_key": "PROBE_ONLY_TEMPORAL_KEY",
+      "uncertainty": "INTERPOLATED_NOT_OBSERVED|PUBLICATION_LAG:W1",
+      "basis_wave_ids": [
+        "W0",
+        "W1"
+      ],
+      "provenance": {
+        "structural_world_fields": {
+          "world_id": "W_SYNTH_INSTITUTION",
+          "structural_routes": [
+            "ROUTE_REDUCED_BURDEN",
+            "ROUTE_PARTICIPATION",
+            "ROUTE_DEFERRED_REVIEW"
+          ],
+          "access_grants": [
+            "GRANT_YOUNG_PERSON_ACCESS"
+          ],
+          "institution": "SYNTH_INSTITUTION"
+        },
+        "world_id": "W_SYNTH_INSTITUTION",
+        "institution": "SYNTH_INSTITUTION",
+        "access_grants": [
+          "GRANT_YOUNG_PERSON_ACCESS"
+        ],
+        "grain": "structural_channel_exact",
+        "source_family": "SYNTH_FAMILY",
+        "source_families": [
+          "SYNTH_FAMILY"
+        ],
+        "instrument": "SYNTH_INSTRUMENT",
+        "cohort": "COHORT_ALL",
+        "country": "SYNTH_COUNTRY_A",
+        "edition": "E1",
+        "editions": [
+          "E1"
+        ],
+        "basis_source_refs": [
+          [
+            "SYNTH_FAMILY",
+            "E1"
+          ],
+          [
+            "SYNTH_FAMILY",
+            "E1"
+          ]
+        ],
+        "query_clock": 1995,
+        "clock_question": "RETROSPECTIVE_ARCHIVAL",
+        "publication_lag_wave_ids": [
+          "W1"
+        ],
+        "archive_context_wave_ids": [],
+        "native_multi_wave_authorization_status": "AUTHORIZED_SPARSE_TEMPORAL_KEY",
+        "native_multi_wave_authorization_reason": "at_least_two_probe_ready_resolved_structural_anchors",
+        "product_observation_status": "INTERPOLATED_NOT_OBSERVED",
+        "product_temporal_key": "PROBE_ONLY_TEMPORAL_KEY",
+        "actor_opportunity_entitlement": "GRANTED_BY_PRESENT_CURRENT_ACCESS_GRANT",
+        "archival_known_at_upper_year": null,
+        "source_grant_claimed": false,
+        "source_grant_status": "NO_SOURCE_QUALIFIED_CLAIM",
+        "synthetic": true,
+        "observed_temporal_calibration": false,
+        "authorized_opportunity": false,
+        "t8f3_assignment_preserved": "8079f69778eb4a2e6f30b246e3ec445dc161ae15"
+      },
+      "refused_code": null,
+      "authorized_opportunity": false,
+      "exploratory_route_ids": [
+        "ROUTE_DEFERRED_REVIEW"
+      ],
+      "archive_context_wave_ids": [],
+      "actor_opportunity_entitlement": "GRANTED_BY_PRESENT_CURRENT_ACCESS_GRANT",
+      "product_observation_status": "INTERPOLATED_NOT_OBSERVED"
+    }
+  },
+  {
+    "id": "D11_1999",
+    "actual": {
+      "query_clock": 1999,
+      "temporal_method": "M1_LINEAR_INTERPOLATION",
+      "opportunity_ids": [
+        "ROUTE_BLOCKED_NO_SUPPORT"
+      ],
+      "pressure_band": "medium",
+      "temporal_key": "PROBE_ONLY_TEMPORAL_KEY",
+      "uncertainty": "INTERPOLATED_NOT_OBSERVED|PUBLICATION_LAG:W1",
+      "basis_wave_ids": [
+        "W0",
+        "W1"
+      ],
+      "provenance": {
+        "structural_world_fields": {
+          "world_id": "W_SYNTH_INSTITUTION",
+          "structural_routes": [
+            "ROUTE_REDUCED_BURDEN",
+            "ROUTE_PARTICIPATION",
+            "ROUTE_DEFERRED_REVIEW"
+          ],
+          "access_grants": [
+            "GRANT_YOUNG_PERSON_ACCESS"
+          ],
+          "institution": "SYNTH_INSTITUTION"
+        },
+        "world_id": "W_SYNTH_INSTITUTION",
+        "institution": "SYNTH_INSTITUTION",
+        "access_grants": [
+          "GRANT_YOUNG_PERSON_ACCESS"
+        ],
+        "grain": "structural_channel_exact",
+        "source_family": "SYNTH_FAMILY",
+        "source_families": [
+          "SYNTH_FAMILY"
+        ],
+        "instrument": "SYNTH_INSTRUMENT",
+        "cohort": "COHORT_ALL",
+        "country": "SYNTH_COUNTRY_A",
+        "edition": "E1",
+        "editions": [
+          "E1"
+        ],
+        "basis_source_refs": [
+          [
+            "SYNTH_FAMILY",
+            "E1"
+          ],
+          [
+            "SYNTH_FAMILY",
+            "E1"
+          ]
+        ],
+        "query_clock": 1999,
+        "clock_question": "RETROSPECTIVE_ARCHIVAL",
+        "publication_lag_wave_ids": [
+          "W1"
+        ],
+        "archive_context_wave_ids": [],
+        "native_multi_wave_authorization_status": "AUTHORIZED_SPARSE_TEMPORAL_KEY",
+        "native_multi_wave_authorization_reason": "at_least_two_probe_ready_resolved_structural_anchors",
+        "product_observation_status": "INTERPOLATED_NOT_OBSERVED",
+        "product_temporal_key": "PROBE_ONLY_TEMPORAL_KEY",
+        "actor_opportunity_entitlement": "GRANTED_BY_PRESENT_CURRENT_ACCESS_GRANT",
+        "archival_known_at_upper_year": null,
+        "source_grant_claimed": false,
+        "source_grant_status": "NO_SOURCE_QUALIFIED_CLAIM",
+        "synthetic": true,
+        "observed_temporal_calibration": false,
+        "authorized_opportunity": false,
+        "t8f3_assignment_preserved": "8079f69778eb4a2e6f30b246e3ec445dc161ae15"
+      },
+      "refused_code": null,
+      "authorized_opportunity": false,
+      "exploratory_route_ids": [
+        "ROUTE_PARTICIPATION",
+        "ROUTE_DEFERRED_REVIEW"
+      ],
+      "archive_context_wave_ids": [],
+      "actor_opportunity_entitlement": "GRANTED_BY_PRESENT_CURRENT_ACCESS_GRANT",
+      "product_observation_status": "INTERPOLATED_NOT_OBSERVED"
+    }
+  },
+  {
+    "id": "D12_M0_PIECEWISE_HOLD",
+    "actual": {
+      "method": "M0_PIECEWISE_HOLD",
+      "value": 0.2,
+      "band": "low",
+      "uncertainty": "HELD_NO_INTERPOLATION|POST_RUPTURE_CARRY_HYPOTHETICAL:R1995|IDENTIFIED_SET_UNBOUNDED:STABILITY_NOT_ASSUMED",
+      "temporal_key": "PROBE_ONLY_TEMPORAL_KEY",
+      "basis_wave_ids": [
+        "W0"
+      ],
+      "detail": "nearest prior admissible anchor; typed bounded hypothetical carry across a registered rupture; the post-break cohort estimand is NOT identified and no stability is assumed",
+      "refused_code": null,
+      "native_authorization": {
+        "multi_wave_authorization_status": "AUTHORIZED_SPARSE_TEMPORAL_KEY",
+        "multi_wave_authorization_reason": "at_least_two_probe_ready_resolved_structural_anchors",
+        "harmonization_authority_status": "multi_wave_authorized",
+        "semantic_compatibility_status": "compatible_by_canonical_key",
+        "directionality_compatibility_status": "compatible_by_harmonizer_shared_contract",
+        "position_compatibility_status": "compatible_by_harmonizer_shared_contract",
+        "structural_identity_compatibility_status": "compatible_by_comparable_temporal_key",
+        "ready_for_v554": true,
+        "eligible_wave_count": 2,
+        "distinct_wave_count": 2,
+        "probe_ready_wave_count": 2,
+        "resolved_wave_count": 2,
+        "authorized_anchor_count": 2,
+        "probe_anchor_count": 0
+      },
+      "not_observed": false,
+      "rupture_qualified": true,
+      "publication_lag_wave_ids": [],
+      "archive_context_wave_ids": [
+        "W1"
+      ],
+      "rupture_crossed_year": 1995,
+      "missing_excluded_wave_ids": [],
+      "basis_source_refs": [
+        [
+          "SYNTH_FAMILY",
+          "E1"
+        ]
+      ],
+      "product_observation_status": "HELD_ESTIMATE_NOT_OBSERVATION_AT_CLOCK"
+    }
+  },
+  {
+    "id": "D12_M2_UNCERTAINTY_AWARE_BACKOFF",
+    "actual": {
+      "method": "M2_UNCERTAINTY_AWARE_BACKOFF",
+      "value": 0.2,
+      "band": "low",
+      "uncertainty": "BACKOFF_WIDE_GAP_UNCERTAIN|POST_RUPTURE_CARRY_HYPOTHETICAL:R1995|IDENTIFIED_SET_UNBOUNDED:STABILITY_NOT_ASSUMED",
+      "temporal_key": "PROBE_ONLY_TEMPORAL_KEY",
+      "basis_wave_ids": [
+        "W0"
+      ],
+      "detail": "uncertainty-aware nearest-anchor backoff; typed bounded hypothetical carry across a registered rupture; the post-break cohort estimand is NOT identified and no stability is assumed",
+      "refused_code": null,
+      "native_authorization": {
+        "multi_wave_authorization_status": "AUTHORIZED_SPARSE_TEMPORAL_KEY",
+        "multi_wave_authorization_reason": "at_least_two_probe_ready_resolved_structural_anchors",
+        "harmonization_authority_status": "multi_wave_authorized",
+        "semantic_compatibility_status": "compatible_by_canonical_key",
+        "directionality_compatibility_status": "compatible_by_harmonizer_shared_contract",
+        "position_compatibility_status": "compatible_by_harmonizer_shared_contract",
+        "structural_identity_compatibility_status": "compatible_by_comparable_temporal_key",
+        "ready_for_v554": true,
+        "eligible_wave_count": 2,
+        "distinct_wave_count": 2,
+        "probe_ready_wave_count": 2,
+        "resolved_wave_count": 2,
+        "authorized_anchor_count": 2,
+        "probe_anchor_count": 0
+      },
+      "not_observed": false,
+      "rupture_qualified": true,
+      "publication_lag_wave_ids": [],
+      "archive_context_wave_ids": [
+        "W1"
+      ],
+      "rupture_crossed_year": 1995,
+      "missing_excluded_wave_ids": [],
+      "basis_source_refs": [
+        [
+          "SYNTH_FAMILY",
+          "E1"
+        ]
+      ],
+      "product_observation_status": "HELD_ESTIMATE_NOT_OBSERVATION_AT_CLOCK"
+    }
+  },
+  {
+    "id": "D13_M0_PIECEWISE_HOLD",
+    "actual": {
+      "method": "M0_PIECEWISE_HOLD",
+      "value": 0.2,
+      "band": "low",
+      "uncertainty": "HELD_NO_INTERPOLATION",
+      "temporal_key": "AUTHORIZED_SPARSE_TEMPORAL_KEY",
+      "basis_wave_ids": [
+        "W0"
+      ],
+      "detail": "nearest prior admissible anchor",
+      "refused_code": null,
+      "native_authorization": {
+        "multi_wave_authorization_status": "AUTHORIZED_SPARSE_TEMPORAL_KEY",
+        "multi_wave_authorization_reason": "at_least_two_probe_ready_resolved_structural_anchors",
+        "harmonization_authority_status": "multi_wave_authorized",
+        "semantic_compatibility_status": "compatible_by_canonical_key",
+        "directionality_compatibility_status": "compatible_by_harmonizer_shared_contract",
+        "position_compatibility_status": "compatible_by_harmonizer_shared_contract",
+        "structural_identity_compatibility_status": "compatible_by_comparable_temporal_key",
+        "ready_for_v554": true,
+        "eligible_wave_count": 2,
+        "distinct_wave_count": 2,
+        "probe_ready_wave_count": 2,
+        "resolved_wave_count": 2,
+        "authorized_anchor_count": 2,
+        "probe_anchor_count": 0
+      },
+      "not_observed": false,
+      "rupture_qualified": false,
+      "publication_lag_wave_ids": [],
+      "archive_context_wave_ids": [
+        "W1"
+      ],
+      "rupture_crossed_year": null,
+      "missing_excluded_wave_ids": [],
+      "basis_source_refs": [
+        [
+          "SYNTH_FAMILY",
+          "E1"
+        ]
+      ],
+      "product_observation_status": "HELD_ESTIMATE_NOT_OBSERVATION_AT_CLOCK"
+    }
+  },
+  {
+    "id": "D13_M2_UNCERTAINTY_AWARE_BACKOFF",
+    "actual": {
+      "method": "M2_UNCERTAINTY_AWARE_BACKOFF",
+      "value": 0.2,
+      "band": "low",
+      "uncertainty": "BACKOFF_WIDE_GAP_UNCERTAIN",
+      "temporal_key": "AUTHORIZED_SPARSE_TEMPORAL_KEY",
+      "basis_wave_ids": [
+        "W0"
+      ],
+      "detail": "uncertainty-aware nearest-anchor backoff",
+      "refused_code": null,
+      "native_authorization": {
+        "multi_wave_authorization_status": "AUTHORIZED_SPARSE_TEMPORAL_KEY",
+        "multi_wave_authorization_reason": "at_least_two_probe_ready_resolved_structural_anchors",
+        "harmonization_authority_status": "multi_wave_authorized",
+        "semantic_compatibility_status": "compatible_by_canonical_key",
+        "directionality_compatibility_status": "compatible_by_harmonizer_shared_contract",
+        "position_compatibility_status": "compatible_by_harmonizer_shared_contract",
+        "structural_identity_compatibility_status": "compatible_by_comparable_temporal_key",
+        "ready_for_v554": true,
+        "eligible_wave_count": 2,
+        "distinct_wave_count": 2,
+        "probe_ready_wave_count": 2,
+        "resolved_wave_count": 2,
+        "authorized_anchor_count": 2,
+        "probe_anchor_count": 0
+      },
+      "not_observed": false,
+      "rupture_qualified": false,
+      "publication_lag_wave_ids": [],
+      "archive_context_wave_ids": [
+        "W1"
+      ],
+      "rupture_crossed_year": null,
+      "missing_excluded_wave_ids": [],
+      "basis_source_refs": [
+        [
+          "SYNTH_FAMILY",
+          "E1"
+        ]
+      ],
+      "product_observation_status": "HELD_ESTIMATE_NOT_OBSERVATION_AT_CLOCK"
+    }
+  },
+  {
+    "id": "D15_revoked_False",
+    "actual": {
+      "before": {
+        "method": "M0_PIECEWISE_HOLD",
+        "value": 0.8,
+        "band": "high",
+        "uncertainty": "HELD_NO_INTERPOLATION",
+        "temporal_key": "PROBE_ONLY_TEMPORAL_KEY",
+        "basis_wave_ids": [
+          "SOURCE"
+        ],
+        "detail": "nearest prior admissible anchor",
+        "refused_code": null,
+        "native_authorization": {
+          "multi_wave_authorization_status": "PROBE_ONLY_TEMPORAL_KEY",
+          "multi_wave_authorization_reason": "insufficient_distinct_waves",
+          "harmonization_authority_status": "multi_wave_authorized",
+          "semantic_compatibility_status": "compatible_by_canonical_key",
+          "directionality_compatibility_status": "compatible_by_harmonizer_shared_contract",
+          "position_compatibility_status": "compatible_by_harmonizer_shared_contract",
+          "structural_identity_compatibility_status": "compatible_by_comparable_temporal_key",
+          "ready_for_v554": false,
+          "eligible_wave_count": 1,
+          "distinct_wave_count": 1,
+          "probe_ready_wave_count": 1,
+          "resolved_wave_count": 1,
+          "authorized_anchor_count": 0,
+          "probe_anchor_count": 1
+        },
+        "not_observed": false,
+        "rupture_qualified": false,
+        "publication_lag_wave_ids": [],
+        "archive_context_wave_ids": [],
+        "rupture_crossed_year": null,
+        "missing_excluded_wave_ids": [],
+        "basis_source_refs": [
+          [
+            "SYNTH_FAMILY",
+            "E1"
+          ]
+        ],
+        "product_observation_status": "HELD_ESTIMATE_NOT_OBSERVATION_AT_CLOCK"
+      },
+      "after": {
+        "method": "M0_PIECEWISE_HOLD",
+        "value": null,
+        "band": null,
+        "uncertainty": "NO_SUPPORT",
+        "temporal_key": "BLOCKED_TEMPORAL_KEY",
+        "basis_wave_ids": [],
+        "detail": "no source wave is admissible at this clock",
+        "refused_code": "NO_TEMPORAL_SUPPORT",
+        "native_authorization": {},
+        "not_observed": false,
+        "rupture_qualified": false,
+        "publication_lag_wave_ids": [],
+        "archive_context_wave_ids": [],
+        "rupture_crossed_year": null,
+        "missing_excluded_wave_ids": [],
+        "basis_source_refs": [],
+        "product_observation_status": "REFUSED_NO_PRODUCT"
+      }
+    }
+  },
+  {
+    "id": "D15_archived_nonrenewed_False",
+    "actual": {
+      "before": {
+        "method": "M0_PIECEWISE_HOLD",
+        "value": 0.8,
+        "band": "high",
+        "uncertainty": "HELD_NO_INTERPOLATION",
+        "temporal_key": "PROBE_ONLY_TEMPORAL_KEY",
+        "basis_wave_ids": [
+          "SOURCE"
+        ],
+        "detail": "nearest prior admissible anchor",
+        "refused_code": null,
+        "native_authorization": {
+          "multi_wave_authorization_status": "PROBE_ONLY_TEMPORAL_KEY",
+          "multi_wave_authorization_reason": "insufficient_distinct_waves",
+          "harmonization_authority_status": "multi_wave_authorized",
+          "semantic_compatibility_status": "compatible_by_canonical_key",
+          "directionality_compatibility_status": "compatible_by_harmonizer_shared_contract",
+          "position_compatibility_status": "compatible_by_harmonizer_shared_contract",
+          "structural_identity_compatibility_status": "compatible_by_comparable_temporal_key",
+          "ready_for_v554": false,
+          "eligible_wave_count": 1,
+          "distinct_wave_count": 1,
+          "probe_ready_wave_count": 1,
+          "resolved_wave_count": 1,
+          "authorized_anchor_count": 0,
+          "probe_anchor_count": 1
+        },
+        "not_observed": false,
+        "rupture_qualified": false,
+        "publication_lag_wave_ids": [],
+        "archive_context_wave_ids": [],
+        "rupture_crossed_year": null,
+        "missing_excluded_wave_ids": [],
+        "basis_source_refs": [
+          [
+            "SYNTH_FAMILY",
+            "E1"
+          ]
+        ],
+        "product_observation_status": "HELD_ESTIMATE_NOT_OBSERVATION_AT_CLOCK"
+      },
+      "after": {
+        "method": "M0_PIECEWISE_HOLD",
+        "value": null,
+        "band": null,
+        "uncertainty": "NO_SUPPORT",
+        "temporal_key": "BLOCKED_TEMPORAL_KEY",
+        "basis_wave_ids": [],
+        "detail": "no source wave is admissible at this clock",
+        "refused_code": "NO_TEMPORAL_SUPPORT",
+        "native_authorization": {},
+        "not_observed": false,
+        "rupture_qualified": false,
+        "publication_lag_wave_ids": [],
+        "archive_context_wave_ids": [],
+        "rupture_crossed_year": null,
+        "missing_excluded_wave_ids": [],
+        "basis_source_refs": [],
+        "product_observation_status": "REFUSED_NO_PRODUCT"
+      }
+    }
+  },
+  {
+    "id": "D15_revoked_True",
+    "actual": {
+      "before": {
+        "method": "M0_PIECEWISE_HOLD",
+        "value": 0.8,
+        "band": "high",
+        "uncertainty": "HELD_NO_INTERPOLATION",
+        "temporal_key": "PROBE_ONLY_TEMPORAL_KEY",
+        "basis_wave_ids": [
+          "SOURCE"
+        ],
+        "detail": "nearest prior admissible anchor",
+        "refused_code": null,
+        "native_authorization": {
+          "multi_wave_authorization_status": "PROBE_ONLY_TEMPORAL_KEY",
+          "multi_wave_authorization_reason": "insufficient_distinct_waves",
+          "harmonization_authority_status": "multi_wave_authorized",
+          "semantic_compatibility_status": "compatible_by_canonical_key",
+          "directionality_compatibility_status": "compatible_by_harmonizer_shared_contract",
+          "position_compatibility_status": "compatible_by_harmonizer_shared_contract",
+          "structural_identity_compatibility_status": "compatible_by_comparable_temporal_key",
+          "ready_for_v554": false,
+          "eligible_wave_count": 1,
+          "distinct_wave_count": 1,
+          "probe_ready_wave_count": 1,
+          "resolved_wave_count": 1,
+          "authorized_anchor_count": 0,
+          "probe_anchor_count": 1
+        },
+        "not_observed": false,
+        "rupture_qualified": false,
+        "publication_lag_wave_ids": [],
+        "archive_context_wave_ids": [],
+        "rupture_crossed_year": null,
+        "missing_excluded_wave_ids": [],
+        "basis_source_refs": [
+          [
+            "SYNTH_FAMILY",
+            "E1"
+          ]
+        ],
+        "product_observation_status": "HELD_ESTIMATE_NOT_OBSERVATION_AT_CLOCK"
+      },
+      "after": {
+        "method": "M0_PIECEWISE_HOLD",
+        "value": null,
+        "band": null,
+        "uncertainty": "NO_SUPPORT",
+        "temporal_key": "BLOCKED_TEMPORAL_KEY",
+        "basis_wave_ids": [],
+        "detail": "no source wave is admissible at this clock",
+        "refused_code": "NO_TEMPORAL_SUPPORT",
+        "native_authorization": {},
+        "not_observed": false,
+        "rupture_qualified": false,
+        "publication_lag_wave_ids": [],
+        "archive_context_wave_ids": [],
+        "rupture_crossed_year": null,
+        "missing_excluded_wave_ids": [],
+        "basis_source_refs": [],
+        "product_observation_status": "REFUSED_NO_PRODUCT"
+      }
+    }
+  },
+  {
+    "id": "D15_archived_nonrenewed_True",
+    "actual": {
+      "before": {
+        "method": "M0_PIECEWISE_HOLD",
+        "value": 0.8,
+        "band": "high",
+        "uncertainty": "HELD_NO_INTERPOLATION",
+        "temporal_key": "PROBE_ONLY_TEMPORAL_KEY",
+        "basis_wave_ids": [
+          "SOURCE"
+        ],
+        "detail": "nearest prior admissible anchor",
+        "refused_code": null,
+        "native_authorization": {
+          "multi_wave_authorization_status": "PROBE_ONLY_TEMPORAL_KEY",
+          "multi_wave_authorization_reason": "insufficient_distinct_waves",
+          "harmonization_authority_status": "multi_wave_authorized",
+          "semantic_compatibility_status": "compatible_by_canonical_key",
+          "directionality_compatibility_status": "compatible_by_harmonizer_shared_contract",
+          "position_compatibility_status": "compatible_by_harmonizer_shared_contract",
+          "structural_identity_compatibility_status": "compatible_by_comparable_temporal_key",
+          "ready_for_v554": false,
+          "eligible_wave_count": 1,
+          "distinct_wave_count": 1,
+          "probe_ready_wave_count": 1,
+          "resolved_wave_count": 1,
+          "authorized_anchor_count": 0,
+          "probe_anchor_count": 1
+        },
+        "not_observed": false,
+        "rupture_qualified": false,
+        "publication_lag_wave_ids": [],
+        "archive_context_wave_ids": [],
+        "rupture_crossed_year": null,
+        "missing_excluded_wave_ids": [],
+        "basis_source_refs": [
+          [
+            "SYNTH_FAMILY",
+            "E1"
+          ]
+        ],
+        "product_observation_status": "HELD_ESTIMATE_NOT_OBSERVATION_AT_CLOCK"
+      },
+      "after": {
+        "method": "M0_PIECEWISE_HOLD",
+        "value": null,
+        "band": null,
+        "uncertainty": "NO_SUPPORT",
+        "temporal_key": "BLOCKED_TEMPORAL_KEY",
+        "basis_wave_ids": [],
+        "detail": "no source wave is admissible at this clock",
+        "refused_code": "NO_TEMPORAL_SUPPORT",
+        "native_authorization": {},
+        "not_observed": false,
+        "rupture_qualified": false,
+        "publication_lag_wave_ids": [],
+        "archive_context_wave_ids": [],
+        "rupture_crossed_year": null,
+        "missing_excluded_wave_ids": [],
+        "basis_source_refs": [],
+        "product_observation_status": "REFUSED_NO_PRODUCT"
+      }
+    }
+  },
+  {
+    "id": "D18_M0_PIECEWISE_HOLD",
+    "actual": {
+      "method": "M0_PIECEWISE_HOLD",
+      "value": null,
+      "band": null,
+      "uncertainty": "NO_SUPPORT",
+      "temporal_key": "BLOCKED_TEMPORAL_KEY",
+      "basis_wave_ids": [],
+      "detail": "no source wave is admissible at this clock",
+      "refused_code": "NO_TEMPORAL_SUPPORT",
+      "native_authorization": {},
+      "not_observed": false,
+      "rupture_qualified": false,
+      "publication_lag_wave_ids": [],
+      "archive_context_wave_ids": [],
+      "rupture_crossed_year": null,
+      "missing_excluded_wave_ids": [],
+      "basis_source_refs": [],
+      "product_observation_status": "REFUSED_NO_PRODUCT"
+    }
+  },
+  {
+    "id": "D18_M1_LINEAR_INTERPOLATION",
+    "actual": {
+      "method": "M1_LINEAR_INTERPOLATION",
+      "value": null,
+      "band": null,
+      "uncertainty": "NO_SUPPORT",
+      "temporal_key": "BLOCKED_TEMPORAL_KEY",
+      "basis_wave_ids": [],
+      "detail": "no source wave is admissible at this clock",
+      "refused_code": "NO_TEMPORAL_SUPPORT",
+      "native_authorization": {},
+      "not_observed": false,
+      "rupture_qualified": false,
+      "publication_lag_wave_ids": [],
+      "archive_context_wave_ids": [],
+      "rupture_crossed_year": null,
+      "missing_excluded_wave_ids": [],
+      "basis_source_refs": [],
+      "product_observation_status": "REFUSED_NO_PRODUCT"
+    }
+  },
+  {
+    "id": "D18_M2_UNCERTAINTY_AWARE_BACKOFF",
+    "actual": {
+      "method": "M2_UNCERTAINTY_AWARE_BACKOFF",
+      "value": null,
+      "band": null,
+      "uncertainty": "NO_SUPPORT",
+      "temporal_key": "BLOCKED_TEMPORAL_KEY",
+      "basis_wave_ids": [],
+      "detail": "no source wave is admissible at this clock",
+      "refused_code": "NO_TEMPORAL_SUPPORT",
+      "native_authorization": {},
+      "not_observed": false,
+      "rupture_qualified": false,
+      "publication_lag_wave_ids": [],
+      "archive_context_wave_ids": [],
+      "rupture_crossed_year": null,
+      "missing_excluded_wave_ids": [],
+      "basis_source_refs": [],
+      "product_observation_status": "REFUSED_NO_PRODUCT"
+    }
+  },
+  {
+    "id": "D21_M0_PIECEWISE_HOLD",
+    "actual": {
+      "method": "M0_PIECEWISE_HOLD",
+      "value": 0.5,
+      "band": "medium",
+      "uncertainty": "HELD_NO_INTERPOLATION",
+      "temporal_key": "AUTHORIZED_SPARSE_TEMPORAL_KEY",
+      "basis_wave_ids": [
+        "F0"
+      ],
+      "detail": "nearest prior admissible anchor",
+      "refused_code": null,
+      "native_authorization": {
+        "multi_wave_authorization_status": "AUTHORIZED_SPARSE_TEMPORAL_KEY",
+        "multi_wave_authorization_reason": "at_least_two_probe_ready_resolved_structural_anchors",
+        "harmonization_authority_status": "multi_wave_authorized",
+        "semantic_compatibility_status": "compatible_by_canonical_key",
+        "directionality_compatibility_status": "compatible_by_harmonizer_shared_contract",
+        "position_compatibility_status": "compatible_by_harmonizer_shared_contract",
+        "structural_identity_compatibility_status": "compatible_by_comparable_temporal_key",
+        "ready_for_v554": true,
+        "eligible_wave_count": 2,
+        "distinct_wave_count": 2,
+        "probe_ready_wave_count": 2,
+        "resolved_wave_count": 2,
+        "authorized_anchor_count": 2,
+        "probe_anchor_count": 0
+      },
+      "not_observed": false,
+      "rupture_qualified": false,
+      "publication_lag_wave_ids": [],
+      "archive_context_wave_ids": [
+        "F1"
+      ],
+      "rupture_crossed_year": null,
+      "missing_excluded_wave_ids": [],
+      "basis_source_refs": [
+        [
+          "SYNTH_FAMILY",
+          "E1"
+        ]
+      ],
+      "product_observation_status": "HELD_ESTIMATE_NOT_OBSERVATION_AT_CLOCK"
+    }
+  },
+  {
+    "id": "D21_M1_LINEAR_INTERPOLATION",
+    "actual": {
+      "method": "M1_LINEAR_INTERPOLATION",
+      "value": 0.5,
+      "band": "medium",
+      "uncertainty": "INTERPOLATED_NOT_OBSERVED|PUBLICATION_LAG:F1",
+      "temporal_key": "PROBE_ONLY_TEMPORAL_KEY",
+      "basis_wave_ids": [
+        "F0",
+        "F1"
+      ],
+      "detail": "linear interpolation inside an authorized gap; not a measurement; wave(s) published AFTER the query clock",
+      "refused_code": null,
+      "native_authorization": {
+        "multi_wave_authorization_status": "AUTHORIZED_SPARSE_TEMPORAL_KEY",
+        "multi_wave_authorization_reason": "at_least_two_probe_ready_resolved_structural_anchors",
+        "harmonization_authority_status": "multi_wave_authorized",
+        "semantic_compatibility_status": "compatible_by_canonical_key",
+        "directionality_compatibility_status": "compatible_by_harmonizer_shared_contract",
+        "position_compatibility_status": "compatible_by_harmonizer_shared_contract",
+        "structural_identity_compatibility_status": "compatible_by_comparable_temporal_key",
+        "ready_for_v554": true,
+        "eligible_wave_count": 2,
+        "distinct_wave_count": 2,
+        "probe_ready_wave_count": 2,
+        "resolved_wave_count": 2,
+        "authorized_anchor_count": 2,
+        "probe_anchor_count": 0
+      },
+      "not_observed": true,
+      "rupture_qualified": false,
+      "publication_lag_wave_ids": [
+        "F1"
+      ],
+      "archive_context_wave_ids": [],
+      "rupture_crossed_year": null,
+      "missing_excluded_wave_ids": [],
+      "basis_source_refs": [
+        [
+          "SYNTH_FAMILY",
+          "E1"
+        ],
+        [
+          "SYNTH_FAMILY",
+          "E1"
+        ]
+      ],
+      "product_observation_status": "INTERPOLATED_NOT_OBSERVED"
+    }
+  },
+  {
+    "id": "D21_M2_UNCERTAINTY_AWARE_BACKOFF",
+    "actual": {
+      "method": "M2_UNCERTAINTY_AWARE_BACKOFF",
+      "value": 0.5,
+      "band": "medium",
+      "uncertainty": "BACKOFF_WIDE_GAP_UNCERTAIN",
+      "temporal_key": "AUTHORIZED_SPARSE_TEMPORAL_KEY",
+      "basis_wave_ids": [
+        "F0"
+      ],
+      "detail": "uncertainty-aware nearest-anchor backoff",
+      "refused_code": null,
+      "native_authorization": {
+        "multi_wave_authorization_status": "AUTHORIZED_SPARSE_TEMPORAL_KEY",
+        "multi_wave_authorization_reason": "at_least_two_probe_ready_resolved_structural_anchors",
+        "harmonization_authority_status": "multi_wave_authorized",
+        "semantic_compatibility_status": "compatible_by_canonical_key",
+        "directionality_compatibility_status": "compatible_by_harmonizer_shared_contract",
+        "position_compatibility_status": "compatible_by_harmonizer_shared_contract",
+        "structural_identity_compatibility_status": "compatible_by_comparable_temporal_key",
+        "ready_for_v554": true,
+        "eligible_wave_count": 2,
+        "distinct_wave_count": 2,
+        "probe_ready_wave_count": 2,
+        "resolved_wave_count": 2,
+        "authorized_anchor_count": 2,
+        "probe_anchor_count": 0
+      },
+      "not_observed": false,
+      "rupture_qualified": false,
+      "publication_lag_wave_ids": [],
+      "archive_context_wave_ids": [
+        "F1"
+      ],
+      "rupture_crossed_year": null,
+      "missing_excluded_wave_ids": [],
+      "basis_source_refs": [
+        [
+          "SYNTH_FAMILY",
+          "E1"
+        ]
+      ],
+      "product_observation_status": "HELD_ESTIMATE_NOT_OBSERVATION_AT_CLOCK"
+    }
+  },
+  {
+    "id": "D22",
+    "actual": {
+      "values": [
+        0.2,
+        0.6
+      ],
+      "complete_world": {
+        "world_id": "W_SYNTH_INSTITUTION",
+        "structural_routes": [
+          "ROUTE_REDUCED_BURDEN",
+          "ROUTE_PARTICIPATION",
+          "ROUTE_DEFERRED_REVIEW"
+        ],
+        "access_grants": [
+          "GRANT_YOUNG_PERSON_ACCESS"
+        ],
+        "institution": "SYNTH_INSTITUTION"
+      },
+      "reads": [
+        {
+          "query_clock": 1990,
+          "temporal_method": "M1_LINEAR_INTERPOLATION",
+          "opportunity_ids": [
+            "ROUTE_BLOCKED_NO_SUPPORT"
+          ],
+          "pressure_band": "low",
+          "temporal_key": "PROBE_ONLY_TEMPORAL_KEY",
+          "uncertainty": "INTERPOLATED_NOT_OBSERVED|PUBLICATION_LAG:W1",
+          "basis_wave_ids": [
+            "W0",
+            "W1"
+          ],
+          "provenance": {
+            "structural_world_fields": {
+              "world_id": "W_SYNTH_INSTITUTION",
+              "structural_routes": [
+                "ROUTE_REDUCED_BURDEN",
+                "ROUTE_PARTICIPATION",
+                "ROUTE_DEFERRED_REVIEW"
+              ],
+              "access_grants": [
+                "GRANT_YOUNG_PERSON_ACCESS"
+              ],
+              "institution": "SYNTH_INSTITUTION"
+            },
+            "world_id": "W_SYNTH_INSTITUTION",
+            "institution": "SYNTH_INSTITUTION",
+            "access_grants": [
+              "GRANT_YOUNG_PERSON_ACCESS"
+            ],
+            "grain": "structural_channel_exact",
+            "source_family": "SYNTH_FAMILY",
+            "source_families": [
+              "SYNTH_FAMILY"
+            ],
+            "instrument": "SYNTH_INSTRUMENT",
+            "cohort": "COHORT_ALL",
+            "country": "SYNTH_COUNTRY_A",
+            "edition": "E1",
+            "editions": [
+              "E1"
+            ],
+            "basis_source_refs": [
+              [
+                "SYNTH_FAMILY",
+                "E1"
+              ],
+              [
+                "SYNTH_FAMILY",
+                "E1"
+              ]
+            ],
+            "query_clock": 1990,
+            "clock_question": "RETROSPECTIVE_ARCHIVAL",
+            "publication_lag_wave_ids": [
+              "W1"
+            ],
+            "archive_context_wave_ids": [],
+            "native_multi_wave_authorization_status": "AUTHORIZED_SPARSE_TEMPORAL_KEY",
+            "native_multi_wave_authorization_reason": "at_least_two_probe_ready_resolved_structural_anchors",
+            "product_observation_status": "INTERPOLATED_NOT_OBSERVED",
+            "product_temporal_key": "PROBE_ONLY_TEMPORAL_KEY",
+            "actor_opportunity_entitlement": "GRANTED_BY_PRESENT_CURRENT_ACCESS_GRANT",
+            "archival_known_at_upper_year": null,
+            "source_grant_claimed": false,
+            "source_grant_status": "NO_SOURCE_QUALIFIED_CLAIM",
+            "synthetic": true,
+            "observed_temporal_calibration": false,
+            "authorized_opportunity": false,
+            "t8f3_assignment_preserved": "8079f69778eb4a2e6f30b246e3ec445dc161ae15"
+          },
+          "refused_code": null,
+          "authorized_opportunity": false,
+          "exploratory_route_ids": [
+            "ROUTE_DEFERRED_REVIEW"
+          ],
+          "archive_context_wave_ids": [],
+          "actor_opportunity_entitlement": "GRANTED_BY_PRESENT_CURRENT_ACCESS_GRANT",
+          "product_observation_status": "INTERPOLATED_NOT_OBSERVED"
+        },
+        {
+          "query_clock": 2000,
+          "temporal_method": "M1_LINEAR_INTERPOLATION",
+          "opportunity_ids": [
+            "ROUTE_PARTICIPATION",
+            "ROUTE_DEFERRED_REVIEW"
+          ],
+          "pressure_band": "medium",
+          "temporal_key": "AUTHORIZED_SPARSE_TEMPORAL_KEY",
+          "uncertainty": "TERMINAL_NO_RIGHT_ANCHOR",
+          "basis_wave_ids": [
+            "W1"
+          ],
+          "provenance": {
+            "structural_world_fields": {
+              "world_id": "W_SYNTH_INSTITUTION",
+              "structural_routes": [
+                "ROUTE_REDUCED_BURDEN",
+                "ROUTE_PARTICIPATION",
+                "ROUTE_DEFERRED_REVIEW"
+              ],
+              "access_grants": [
+                "GRANT_YOUNG_PERSON_ACCESS"
+              ],
+              "institution": "SYNTH_INSTITUTION"
+            },
+            "world_id": "W_SYNTH_INSTITUTION",
+            "institution": "SYNTH_INSTITUTION",
+            "access_grants": [
+              "GRANT_YOUNG_PERSON_ACCESS"
+            ],
+            "grain": "structural_channel_exact",
+            "source_family": "SYNTH_FAMILY",
+            "source_families": [
+              "SYNTH_FAMILY"
+            ],
+            "instrument": "SYNTH_INSTRUMENT",
+            "cohort": "COHORT_ALL",
+            "country": "SYNTH_COUNTRY_A",
+            "edition": "E1",
+            "editions": [
+              "E1"
+            ],
+            "basis_source_refs": [
+              [
+                "SYNTH_FAMILY",
+                "E1"
+              ]
+            ],
+            "query_clock": 2000,
+            "clock_question": "RETROSPECTIVE_ARCHIVAL",
+            "publication_lag_wave_ids": [],
+            "archive_context_wave_ids": [],
+            "native_multi_wave_authorization_status": "AUTHORIZED_SPARSE_TEMPORAL_KEY",
+            "native_multi_wave_authorization_reason": "at_least_two_probe_ready_resolved_structural_anchors",
+            "product_observation_status": "OBSERVED_AT_CLOCK",
+            "product_temporal_key": "AUTHORIZED_SPARSE_TEMPORAL_KEY",
+            "actor_opportunity_entitlement": "GRANTED_BY_PRESENT_CURRENT_ACCESS_GRANT",
+            "archival_known_at_upper_year": null,
+            "source_grant_claimed": false,
+            "source_grant_status": "NO_SOURCE_QUALIFIED_CLAIM",
+            "synthetic": true,
+            "observed_temporal_calibration": false,
+            "authorized_opportunity": true,
+            "t8f3_assignment_preserved": "8079f69778eb4a2e6f30b246e3ec445dc161ae15"
+          },
+          "refused_code": null,
+          "authorized_opportunity": true,
+          "exploratory_route_ids": [],
+          "archive_context_wave_ids": [],
+          "actor_opportunity_entitlement": "GRANTED_BY_PRESENT_CURRENT_ACCESS_GRANT",
+          "product_observation_status": "OBSERVED_AT_CLOCK"
+        }
+      ]
+    }
+  },
+  {
+    "id": "D04",
+    "actual": {
+      "trace": {
+        "actual_candidate_call": true,
+        "output_rewritten": false,
+        "module_file": "/tmp/t9s/WORKER_RETURNS/PYAT-R27-T9S-TEMPORAL-PERMISSION-INDEPENDENT-R1/phase_b/pinned_candidate/t9b_temporal.py",
+        "function": "evaluate",
+        "arguments": {
+          "method": "M0_PIECEWISE_HOLD",
+          "clock_year": 1995,
+          "retrospective": true,
+          "archival_known_at_upper_year": 2020
+        },
+        "wave_fields": {
+          "wave_id": "FUTURE_PUBLICATION",
+          "source_family": "SYNTH_FAMILY",
+          "country": "SYNTH_COUNTRY_A",
+          "instrument": "SYNTH_INSTRUMENT",
+          "edition": "E1",
+          "cohort": "COHORT_ALL",
+          "observation_year": 1990,
+          "published_year": 2030,
+          "value": 0.8,
+          "revoked": false,
+          "archived_nonrenewed": false,
+          "native_packet_ids": [
+            "SYNTHETIC_PACKET_PROVENANCE"
+          ],
+          "canonical_semantic_signature": "synthetic_semantic_signature",
+          "structural_dimension_status": "resolved",
+          "probe_ready_input_count": 1,
+          "comparable_key_grain": "structural_channel_exact",
+          "fact_lane": "temporal_fact",
+          "support_status": "OBSERVED"
+        },
+        "case_fields": {
+          "case_id": "D04",
+          "target_year": 1995
+        },
+        "limit": "D04 uses the frozen archival-known-at vector; the bound is typed candidate metadata and is enforced by the candidate, not filtered here"
+      },
+      "actual": {
+        "method": "M0_PIECEWISE_HOLD",
+        "value": null,
+        "band": null,
+        "uncertainty": "NO_SUPPORT",
+        "temporal_key": "BLOCKED_TEMPORAL_KEY",
+        "basis_wave_ids": [],
+        "detail": "no source wave is knowable inside the declared archival known-at bound 2020; target valid time and archival snapshot known-at time are separate clocks and no snapshot knowledge is synthesized",
+        "refused_code": "ARCHIVAL_KNOWN_AT_BOUND_EXCEEDED",
+        "native_authorization": {},
+        "not_observed": false,
+        "rupture_qualified": false,
+        "publication_lag_wave_ids": [],
+        "archive_context_wave_ids": [],
+        "rupture_crossed_year": null,
+        "missing_excluded_wave_ids": [],
+        "basis_source_refs": [],
+        "product_observation_status": "REFUSED_NO_PRODUCT"
+      }
+    }
+  },
+  {
+    "id": "D10",
+    "actual": {
+      "trace": {
+        "actual_candidate_call": true,
+        "output_rewritten": false,
+        "module_file": "/tmp/t9s/WORKER_RETURNS/PYAT-R27-T9S-TEMPORAL-PERMISSION-INDEPENDENT-R1/phase_b/pinned_candidate/t9b_temporal.py",
+        "function": "read_selected_world",
+        "wave_fields": {
+          "wave_id": "VALID",
+          "source_family": "SYNTH_FAMILY",
+          "country": "SYNTH_COUNTRY_A",
+          "instrument": "SYNTH_INSTRUMENT",
+          "edition": "E1",
+          "cohort": "COHORT_ALL",
+          "observation_year": 1990,
+          "published_year": 1990,
+          "value": 0.6,
+          "revoked": false,
+          "archived_nonrenewed": false,
+          "native_packet_ids": [
+            "SYNTHETIC_PACKET_PROVENANCE"
+          ],
+          "canonical_semantic_signature": "synthetic_semantic_signature",
+          "structural_dimension_status": "resolved",
+          "probe_ready_input_count": 1,
+          "comparable_key_grain": "structural_channel_exact",
+          "fact_lane": "temporal_fact",
+          "support_status": "OBSERVED"
+        },
+        "case_fields": {
+          "case_id": "D10",
+          "target_year": 1995
+        },
+        "world_fields": {
+          "world_id": "W_SYNTH_INSTITUTION",
+          "structural_routes": [
+            "ROUTE_REDUCED_BURDEN",
+            "ROUTE_PARTICIPATION",
+            "ROUTE_DEFERRED_REVIEW"
+          ],
+          "access_grants": [],
+          "institution": "SYNTH_INSTITUTION"
+        },
+        "clock_year": 1995,
+        "retrospective": false,
+        "limit": "D10 uses the frozen single-wave vector; passing cannot establish a two-anchor actor-permission gate"
+      },
+      "actual": {
+        "query_clock": 1995,
+        "temporal_method": "M0_PIECEWISE_HOLD",
+        "opportunity_ids": [
+          "ROUTE_BLOCKED_NO_SUPPORT"
+        ],
+        "pressure_band": "medium",
+        "temporal_key": "PROBE_ONLY_TEMPORAL_KEY",
+        "uncertainty": "HELD_NO_INTERPOLATION",
+        "basis_wave_ids": [
+          "VALID"
+        ],
+        "provenance": {
+          "structural_world_fields": {
+            "world_id": "W_SYNTH_INSTITUTION",
+            "structural_routes": [
+              "ROUTE_REDUCED_BURDEN",
+              "ROUTE_PARTICIPATION",
+              "ROUTE_DEFERRED_REVIEW"
+            ],
+            "access_grants": [],
+            "institution": "SYNTH_INSTITUTION"
+          },
+          "world_id": "W_SYNTH_INSTITUTION",
+          "institution": "SYNTH_INSTITUTION",
+          "access_grants": [],
+          "grain": "structural_channel_exact",
+          "source_family": "SYNTH_FAMILY",
+          "source_families": [
+            "SYNTH_FAMILY"
+          ],
+          "instrument": "SYNTH_INSTRUMENT",
+          "cohort": "COHORT_ALL",
+          "country": "SYNTH_COUNTRY_A",
+          "edition": "E1",
+          "editions": [
+            "E1"
+          ],
+          "basis_source_refs": [
+            [
+              "SYNTH_FAMILY",
+              "E1"
+            ]
+          ],
+          "query_clock": 1995,
+          "clock_question": "AS_OF_KNOWABLE",
+          "publication_lag_wave_ids": [],
+          "archive_context_wave_ids": [],
+          "native_multi_wave_authorization_status": "PROBE_ONLY_TEMPORAL_KEY",
+          "native_multi_wave_authorization_reason": "insufficient_distinct_waves",
+          "product_observation_status": "HELD_ESTIMATE_NOT_OBSERVATION_AT_CLOCK",
+          "product_temporal_key": "PROBE_ONLY_TEMPORAL_KEY",
+          "actor_opportunity_entitlement": "WITHHELD_NO_CURRENT_ACCESS_GRANT",
+          "archival_known_at_upper_year": null,
+          "source_grant_claimed": false,
+          "source_grant_status": "NO_SOURCE_QUALIFIED_CLAIM",
+          "synthetic": true,
+          "observed_temporal_calibration": false,
+          "authorized_opportunity": false,
+          "t8f3_assignment_preserved": "8079f69778eb4a2e6f30b246e3ec445dc161ae15"
+        },
+        "refused_code": null,
+        "authorized_opportunity": false,
+        "exploratory_route_ids": [
+          "ROUTE_PARTICIPATION",
+          "ROUTE_DEFERRED_REVIEW"
+        ],
+        "archive_context_wave_ids": [],
+        "actor_opportunity_entitlement": "WITHHELD_NO_CURRENT_ACCESS_GRANT",
+        "product_observation_status": "HELD_ESTIMATE_NOT_OBSERVATION_AT_CLOCK"
+      }
+    }
+  },
+  {
+    "id": "D16",
+    "actual": {
+      "trace": {
+        "actual_candidate_call": true,
+        "output_rewritten": false,
+        "module_file": "/tmp/t9s/WORKER_RETURNS/PYAT-R27-T9S-TEMPORAL-PERMISSION-INDEPENDENT-R1/phase_b/pinned_candidate/t9b_temporal.py",
+        "function": "read_selected_world",
+        "arguments": {
+          "method": "M0_PIECEWISE_HOLD",
+          "clock_year": 1995,
+          "retrospective": false,
+          "source_grant": {
+            "grant_source_family": "ACTUAL_SOURCE",
+            "grant_edition": "E1",
+            "grant_current": true
+          }
+        },
+        "wave_fields": {
+          "wave_id": "VALID",
+          "source_family": "ACTUAL_SOURCE",
+          "country": "SYNTH_COUNTRY_A",
+          "instrument": "SYNTH_INSTRUMENT",
+          "edition": "E2",
+          "cohort": "COHORT_ALL",
+          "observation_year": 1990,
+          "published_year": 1990,
+          "value": 0.6,
+          "revoked": false,
+          "archived_nonrenewed": false,
+          "native_packet_ids": [
+            "SYNTHETIC_PACKET_PROVENANCE"
+          ],
+          "canonical_semantic_signature": "synthetic_semantic_signature",
+          "structural_dimension_status": "resolved",
+          "probe_ready_input_count": 1,
+          "comparable_key_grain": "structural_channel_exact",
+          "fact_lane": "temporal_fact",
+          "support_status": "OBSERVED"
+        },
+        "case_fields": {
+          "case_id": "D16",
+          "target_year": 1995
+        },
+        "world_fields": {
+          "world_id": "W_SYNTH_INSTITUTION",
+          "structural_routes": [
+            "ROUTE_REDUCED_BURDEN",
+            "ROUTE_PARTICIPATION",
+            "ROUTE_DEFERRED_REVIEW"
+          ],
+          "access_grants": [],
+          "institution": "SYNTH_INSTITUTION"
+        },
+        "limit": "the frozen source-epoch/owner/currentness vector; the candidate checks the claimed issuer grant against the used basis and returns explicit UNAVAILABLE; no clearance is synthesized"
+      },
+      "actual": {
+        "query_clock": 1995,
+        "temporal_method": "M0_PIECEWISE_HOLD",
+        "opportunity_ids": [
+          "ROUTE_BLOCKED_NO_SUPPORT"
+        ],
+        "pressure_band": "medium",
+        "temporal_key": "PROBE_ONLY_TEMPORAL_KEY",
+        "uncertainty": "HELD_NO_INTERPOLATION",
+        "basis_wave_ids": [
+          "VALID"
+        ],
+        "provenance": {
+          "structural_world_fields": {
+            "world_id": "W_SYNTH_INSTITUTION",
+            "structural_routes": [
+              "ROUTE_REDUCED_BURDEN",
+              "ROUTE_PARTICIPATION",
+              "ROUTE_DEFERRED_REVIEW"
+            ],
+            "access_grants": [],
+            "institution": "SYNTH_INSTITUTION"
+          },
+          "world_id": "W_SYNTH_INSTITUTION",
+          "institution": "SYNTH_INSTITUTION",
+          "access_grants": [],
+          "grain": "structural_channel_exact",
+          "source_family": "ACTUAL_SOURCE",
+          "source_families": [
+            "ACTUAL_SOURCE"
+          ],
+          "instrument": "SYNTH_INSTRUMENT",
+          "cohort": "COHORT_ALL",
+          "country": "SYNTH_COUNTRY_A",
+          "edition": "E2",
+          "editions": [
+            "E2"
+          ],
+          "basis_source_refs": [
+            [
+              "ACTUAL_SOURCE",
+              "E2"
+            ]
+          ],
+          "query_clock": 1995,
+          "clock_question": "AS_OF_KNOWABLE",
+          "publication_lag_wave_ids": [],
+          "archive_context_wave_ids": [],
+          "native_multi_wave_authorization_status": "PROBE_ONLY_TEMPORAL_KEY",
+          "native_multi_wave_authorization_reason": "insufficient_distinct_waves",
+          "product_observation_status": "HELD_ESTIMATE_NOT_OBSERVATION_AT_CLOCK",
+          "product_temporal_key": "PROBE_ONLY_TEMPORAL_KEY",
+          "actor_opportunity_entitlement": "WITHHELD_NO_CURRENT_ACCESS_GRANT",
+          "archival_known_at_upper_year": null,
+          "source_grant_claimed": true,
+          "source_grant_status": "SOURCE_GRANT_UNAVAILABLE_SOURCE_OR_EDITION_MISMATCH",
+          "synthetic": true,
+          "observed_temporal_calibration": false,
+          "authorized_opportunity": false,
+          "t8f3_assignment_preserved": "8079f69778eb4a2e6f30b246e3ec445dc161ae15"
+        },
+        "refused_code": "SOURCE_GRANT_UNAVAILABLE_SOURCE_OR_EDITION_MISMATCH",
+        "authorized_opportunity": false,
+        "exploratory_route_ids": [],
+        "archive_context_wave_ids": [],
+        "actor_opportunity_entitlement": "WITHHELD_NO_CURRENT_ACCESS_GRANT",
+        "product_observation_status": "HELD_ESTIMATE_NOT_OBSERVATION_AT_CLOCK"
+      }
+    }
+  },
+  {
+    "id": "D17",
+    "actual": {
+      "trace": {
+        "actual_candidate_call": true,
+        "output_rewritten": false,
+        "module_file": "/tmp/t9s/WORKER_RETURNS/PYAT-R27-T9S-TEMPORAL-PERMISSION-INDEPENDENT-R1/phase_b/pinned_candidate/t9b_temporal.py",
+        "function": "read_selected_world",
+        "arguments": {
+          "method": "M0_PIECEWISE_HOLD",
+          "clock_year": 1995,
+          "retrospective": true,
+          "source_grant": {
+            "grant_source_family": "ACTUAL_SOURCE",
+            "grant_edition": "E1",
+            "grant_current": false
+          }
+        },
+        "wave_fields": {
+          "wave_id": "VALID",
+          "source_family": "ACTUAL_SOURCE",
+          "country": "SYNTH_COUNTRY_A",
+          "instrument": "SYNTH_INSTRUMENT",
+          "edition": "E1",
+          "cohort": "COHORT_ALL",
+          "observation_year": 1990,
+          "published_year": 1990,
+          "value": 0.6,
+          "revoked": false,
+          "archived_nonrenewed": false,
+          "native_packet_ids": [
+            "SYNTHETIC_PACKET_PROVENANCE"
+          ],
+          "canonical_semantic_signature": "synthetic_semantic_signature",
+          "structural_dimension_status": "resolved",
+          "probe_ready_input_count": 1,
+          "comparable_key_grain": "structural_channel_exact",
+          "fact_lane": "temporal_fact",
+          "support_status": "OBSERVED"
+        },
+        "case_fields": {
+          "case_id": "D17",
+          "target_year": 1995
+        },
+        "world_fields": {
+          "world_id": "W_SYNTH_INSTITUTION",
+          "structural_routes": [
+            "ROUTE_REDUCED_BURDEN",
+            "ROUTE_PARTICIPATION",
+            "ROUTE_DEFERRED_REVIEW"
+          ],
+          "access_grants": [],
+          "institution": "SYNTH_INSTITUTION"
+        },
+        "limit": "the frozen source-epoch/owner/currentness vector; the candidate checks the claimed issuer grant against the used basis and returns explicit UNAVAILABLE; no clearance is synthesized"
+      },
+      "actual": {
+        "query_clock": 1995,
+        "temporal_method": "M0_PIECEWISE_HOLD",
+        "opportunity_ids": [
+          "ROUTE_BLOCKED_NO_SUPPORT"
+        ],
+        "pressure_band": "medium",
+        "temporal_key": "PROBE_ONLY_TEMPORAL_KEY",
+        "uncertainty": "HELD_NO_INTERPOLATION",
+        "basis_wave_ids": [
+          "VALID"
+        ],
+        "provenance": {
+          "structural_world_fields": {
+            "world_id": "W_SYNTH_INSTITUTION",
+            "structural_routes": [
+              "ROUTE_REDUCED_BURDEN",
+              "ROUTE_PARTICIPATION",
+              "ROUTE_DEFERRED_REVIEW"
+            ],
+            "access_grants": [],
+            "institution": "SYNTH_INSTITUTION"
+          },
+          "world_id": "W_SYNTH_INSTITUTION",
+          "institution": "SYNTH_INSTITUTION",
+          "access_grants": [],
+          "grain": "structural_channel_exact",
+          "source_family": "ACTUAL_SOURCE",
+          "source_families": [
+            "ACTUAL_SOURCE"
+          ],
+          "instrument": "SYNTH_INSTRUMENT",
+          "cohort": "COHORT_ALL",
+          "country": "SYNTH_COUNTRY_A",
+          "edition": "E1",
+          "editions": [
+            "E1"
+          ],
+          "basis_source_refs": [
+            [
+              "ACTUAL_SOURCE",
+              "E1"
+            ]
+          ],
+          "query_clock": 1995,
+          "clock_question": "RETROSPECTIVE_ARCHIVAL",
+          "publication_lag_wave_ids": [],
+          "archive_context_wave_ids": [],
+          "native_multi_wave_authorization_status": "PROBE_ONLY_TEMPORAL_KEY",
+          "native_multi_wave_authorization_reason": "insufficient_distinct_waves",
+          "product_observation_status": "HELD_ESTIMATE_NOT_OBSERVATION_AT_CLOCK",
+          "product_temporal_key": "PROBE_ONLY_TEMPORAL_KEY",
+          "actor_opportunity_entitlement": "WITHHELD_NO_CURRENT_ACCESS_GRANT",
+          "archival_known_at_upper_year": null,
+          "source_grant_claimed": true,
+          "source_grant_status": "SOURCE_GRANT_UNAVAILABLE_NOT_CURRENT",
+          "synthetic": true,
+          "observed_temporal_calibration": false,
+          "authorized_opportunity": false,
+          "t8f3_assignment_preserved": "8079f69778eb4a2e6f30b246e3ec445dc161ae15"
+        },
+        "refused_code": "SOURCE_GRANT_UNAVAILABLE_NOT_CURRENT",
+        "authorized_opportunity": false,
+        "exploratory_route_ids": [],
+        "archive_context_wave_ids": [],
+        "actor_opportunity_entitlement": "WITHHELD_NO_CURRENT_ACCESS_GRANT",
+        "product_observation_status": "HELD_ESTIMATE_NOT_OBSERVATION_AT_CLOCK"
+      }
+    }
+  },
+  {
+    "id": "D17_WRONG_OWNER",
+    "actual": {
+      "trace": {
+        "actual_candidate_call": true,
+        "output_rewritten": false,
+        "module_file": "/tmp/t9s/WORKER_RETURNS/PYAT-R27-T9S-TEMPORAL-PERMISSION-INDEPENDENT-R1/phase_b/pinned_candidate/t9b_temporal.py",
+        "function": "read_selected_world",
+        "arguments": {
+          "method": "M0_PIECEWISE_HOLD",
+          "clock_year": 1995,
+          "retrospective": false,
+          "source_grant": {
+            "grant_source_family": "OTHER_SOURCE",
+            "grant_edition": "E1",
+            "grant_current": true
+          }
+        },
+        "wave_fields": {
+          "wave_id": "VALID",
+          "source_family": "ACTUAL_SOURCE",
+          "country": "SYNTH_COUNTRY_A",
+          "instrument": "SYNTH_INSTRUMENT",
+          "edition": "E1",
+          "cohort": "COHORT_ALL",
+          "observation_year": 1990,
+          "published_year": 1990,
+          "value": 0.6,
+          "revoked": false,
+          "archived_nonrenewed": false,
+          "native_packet_ids": [
+            "SYNTHETIC_PACKET_PROVENANCE"
+          ],
+          "canonical_semantic_signature": "synthetic_semantic_signature",
+          "structural_dimension_status": "resolved",
+          "probe_ready_input_count": 1,
+          "comparable_key_grain": "structural_channel_exact",
+          "fact_lane": "temporal_fact",
+          "support_status": "OBSERVED"
+        },
+        "case_fields": {
+          "case_id": "D17_WRONG_OWNER",
+          "target_year": 1995
+        },
+        "world_fields": {
+          "world_id": "W_SYNTH_INSTITUTION",
+          "structural_routes": [
+            "ROUTE_REDUCED_BURDEN",
+            "ROUTE_PARTICIPATION",
+            "ROUTE_DEFERRED_REVIEW"
+          ],
+          "access_grants": [],
+          "institution": "SYNTH_INSTITUTION"
+        },
+        "limit": "the frozen source-epoch/owner/currentness vector; the candidate checks the claimed issuer grant against the used basis and returns explicit UNAVAILABLE; no clearance is synthesized"
+      },
+      "actual": {
+        "query_clock": 1995,
+        "temporal_method": "M0_PIECEWISE_HOLD",
+        "opportunity_ids": [
+          "ROUTE_BLOCKED_NO_SUPPORT"
+        ],
+        "pressure_band": "medium",
+        "temporal_key": "PROBE_ONLY_TEMPORAL_KEY",
+        "uncertainty": "HELD_NO_INTERPOLATION",
+        "basis_wave_ids": [
+          "VALID"
+        ],
+        "provenance": {
+          "structural_world_fields": {
+            "world_id": "W_SYNTH_INSTITUTION",
+            "structural_routes": [
+              "ROUTE_REDUCED_BURDEN",
+              "ROUTE_PARTICIPATION",
+              "ROUTE_DEFERRED_REVIEW"
+            ],
+            "access_grants": [],
+            "institution": "SYNTH_INSTITUTION"
+          },
+          "world_id": "W_SYNTH_INSTITUTION",
+          "institution": "SYNTH_INSTITUTION",
+          "access_grants": [],
+          "grain": "structural_channel_exact",
+          "source_family": "ACTUAL_SOURCE",
+          "source_families": [
+            "ACTUAL_SOURCE"
+          ],
+          "instrument": "SYNTH_INSTRUMENT",
+          "cohort": "COHORT_ALL",
+          "country": "SYNTH_COUNTRY_A",
+          "edition": "E1",
+          "editions": [
+            "E1"
+          ],
+          "basis_source_refs": [
+            [
+              "ACTUAL_SOURCE",
+              "E1"
+            ]
+          ],
+          "query_clock": 1995,
+          "clock_question": "AS_OF_KNOWABLE",
+          "publication_lag_wave_ids": [],
+          "archive_context_wave_ids": [],
+          "native_multi_wave_authorization_status": "PROBE_ONLY_TEMPORAL_KEY",
+          "native_multi_wave_authorization_reason": "insufficient_distinct_waves",
+          "product_observation_status": "HELD_ESTIMATE_NOT_OBSERVATION_AT_CLOCK",
+          "product_temporal_key": "PROBE_ONLY_TEMPORAL_KEY",
+          "actor_opportunity_entitlement": "WITHHELD_NO_CURRENT_ACCESS_GRANT",
+          "archival_known_at_upper_year": null,
+          "source_grant_claimed": true,
+          "source_grant_status": "SOURCE_GRANT_UNAVAILABLE_WRONG_SOURCE_OWNER",
+          "synthetic": true,
+          "observed_temporal_calibration": false,
+          "authorized_opportunity": false,
+          "t8f3_assignment_preserved": "8079f69778eb4a2e6f30b246e3ec445dc161ae15"
+        },
+        "refused_code": "SOURCE_GRANT_UNAVAILABLE_WRONG_SOURCE_OWNER",
+        "authorized_opportunity": false,
+        "exploratory_route_ids": [],
+        "archive_context_wave_ids": [],
+        "actor_opportunity_entitlement": "WITHHELD_NO_CURRENT_ACCESS_GRANT",
+        "product_observation_status": "HELD_ESTIMATE_NOT_OBSERVATION_AT_CLOCK"
+      }
+    }
+  },
+  {
+    "id": "D19",
+    "actual": {
+      "trace": {
+        "actual_candidate_call": true,
+        "output_rewritten": false,
+        "module_file": "/tmp/t9s/WORKER_RETURNS/PYAT-R27-T9S-TEMPORAL-PERMISSION-INDEPENDENT-R1/phase_b/pinned_candidate/t9b_temporal.py",
+        "function": "read_selected_world",
+        "wave_fields": {
+          "wave_id": "VALID",
+          "source_family": "SYNTH_FAMILY",
+          "country": "SYNTH_COUNTRY_A",
+          "instrument": "SYNTH_INSTRUMENT",
+          "edition": "E1",
+          "cohort": "COHORT_ALL",
+          "observation_year": 1990,
+          "published_year": 1990,
+          "value": 0.6,
+          "revoked": false,
+          "archived_nonrenewed": false,
+          "native_packet_ids": [
+            "SYNTHETIC_PACKET_PROVENANCE"
+          ],
+          "canonical_semantic_signature": "synthetic_semantic_signature",
+          "structural_dimension_status": "resolved",
+          "probe_ready_input_count": 1,
+          "comparable_key_grain": "structural_channel_exact",
+          "fact_lane": "temporal_fact",
+          "support_status": "OBSERVED"
+        },
+        "case_fields": {
+          "case_id": "D19",
+          "target_year": 1995
+        },
+        "world_fields": {
+          "world_id": "W_SYNTH_INSTITUTION",
+          "structural_routes": [
+            "ROUTE_REDUCED_BURDEN",
+            "ROUTE_PARTICIPATION",
+            "ROUTE_DEFERRED_REVIEW"
+          ],
+          "access_grants": [],
+          "institution": "SYNTH_INSTITUTION"
+        },
+        "clock_year": 1995,
+        "retrospective": false,
+        "limit": "D10 uses the frozen single-wave vector; passing cannot establish a two-anchor actor-permission gate"
+      },
+      "actual": {
+        "query_clock": 1995,
+        "temporal_method": "M0_PIECEWISE_HOLD",
+        "opportunity_ids": [
+          "ROUTE_BLOCKED_NO_SUPPORT"
+        ],
+        "pressure_band": "medium",
+        "temporal_key": "PROBE_ONLY_TEMPORAL_KEY",
+        "uncertainty": "HELD_NO_INTERPOLATION",
+        "basis_wave_ids": [
+          "VALID"
+        ],
+        "provenance": {
+          "structural_world_fields": {
+            "world_id": "W_SYNTH_INSTITUTION",
+            "structural_routes": [
+              "ROUTE_REDUCED_BURDEN",
+              "ROUTE_PARTICIPATION",
+              "ROUTE_DEFERRED_REVIEW"
+            ],
+            "access_grants": [],
+            "institution": "SYNTH_INSTITUTION"
+          },
+          "world_id": "W_SYNTH_INSTITUTION",
+          "institution": "SYNTH_INSTITUTION",
+          "access_grants": [],
+          "grain": "structural_channel_exact",
+          "source_family": "SYNTH_FAMILY",
+          "source_families": [
+            "SYNTH_FAMILY"
+          ],
+          "instrument": "SYNTH_INSTRUMENT",
+          "cohort": "COHORT_ALL",
+          "country": "SYNTH_COUNTRY_A",
+          "edition": "E1",
+          "editions": [
+            "E1"
+          ],
+          "basis_source_refs": [
+            [
+              "SYNTH_FAMILY",
+              "E1"
+            ]
+          ],
+          "query_clock": 1995,
+          "clock_question": "AS_OF_KNOWABLE",
+          "publication_lag_wave_ids": [],
+          "archive_context_wave_ids": [],
+          "native_multi_wave_authorization_status": "PROBE_ONLY_TEMPORAL_KEY",
+          "native_multi_wave_authorization_reason": "insufficient_distinct_waves",
+          "product_observation_status": "HELD_ESTIMATE_NOT_OBSERVATION_AT_CLOCK",
+          "product_temporal_key": "PROBE_ONLY_TEMPORAL_KEY",
+          "actor_opportunity_entitlement": "WITHHELD_NO_CURRENT_ACCESS_GRANT",
+          "archival_known_at_upper_year": null,
+          "source_grant_claimed": false,
+          "source_grant_status": "NO_SOURCE_QUALIFIED_CLAIM",
+          "synthetic": true,
+          "observed_temporal_calibration": false,
+          "authorized_opportunity": false,
+          "t8f3_assignment_preserved": "8079f69778eb4a2e6f30b246e3ec445dc161ae15"
+        },
+        "refused_code": null,
+        "authorized_opportunity": false,
+        "exploratory_route_ids": [
+          "ROUTE_PARTICIPATION",
+          "ROUTE_DEFERRED_REVIEW"
+        ],
+        "archive_context_wave_ids": [],
+        "actor_opportunity_entitlement": "WITHHELD_NO_CURRENT_ACCESS_GRANT",
+        "product_observation_status": "HELD_ESTIMATE_NOT_OBSERVATION_AT_CLOCK"
+      }
+    }
+  },
+  {
+    "id": "D14_CURRENT_AUTHORITY_WITHDRAWN",
+    "actual": {
+      "multi_wave_authorization_status": "BLOCKED_TEMPORAL_KEY",
+      "multi_wave_authorization_reason": "harmonization_not_authorized",
+      "harmonization_authority_status": "not_authorized",
+      "semantic_compatibility_status": "blocked",
+      "directionality_compatibility_status": "blocked",
+      "position_compatibility_status": "blocked",
+      "structural_identity_compatibility_status": "blocked",
+      "ready_for_v554": false,
+      "eligible_wave_count": 2,
+      "distinct_wave_count": 2,
+      "probe_ready_wave_count": 2,
+      "resolved_wave_count": 2,
+      "authorized_anchor_count": 0,
+      "probe_anchor_count": 0
+    }
+  }
+]
