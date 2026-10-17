@@ -1,0 +1,20 @@
+{
+  "schema": "O35E_STAGING_LIMITS@1",
+  "pinned_input_files": 33,
+  "native_core_imports": "BOUNDED_COMPLETE_OBSERVED_AND_BYTE_VERIFIED",
+  "optional_D07_author_suite": {
+    "status": "PARTIAL_MISSING_FIXTURE",
+    "missing_import": "rawlsing_next.tests.d07_bounded_loss_harness",
+    "tracked_in_canonical_pin": false,
+    "actual_attempt": "observations/native_d07_missing_fixture.stdout",
+    "junit": "observations/native_d07_missing_fixture.xml",
+    "production_consumer_function_actually_tested": true
+  },
+  "initial_return_test_repair": {
+    "failure": "Python tuples compared directly with JSON list transport",
+    "repair": "Compare exact serialized JSON transport, preserving all values, refs and hashes",
+    "native_source_changed": false,
+    "original_expectations_changed": false,
+    "retained_junit": "observations/o35e_combined.xml"
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "at_utc": "2026-10-17T08:34:28.968401+00:00",
+  "runs": [
+    {
+      "label": "o35e_final",
+      "command": [
+        "python3",
+        "$RETURN/repro/run_pytest.py",
+        "o35e_final",
+        "$RETURN/tests/test_o35e_native.py",
+        "$RETURN/tests/test_o35e_metadata.py"
+      ],
+      "exit_code": 0,
+      "stdout": "observations/o35e_final.stdout",
+      "junit": "observations/o35e_final.xml",
+      "stdout_raw_sha256": "826bfde26f383bd5cd8741631734c999c3d22eb4a4913fdc59851281c02583e4",
+      "published_paths_normalized": true
+    },
+    {
+      "label": "o35e_cold",
+      "command": [
+        "python3",
+        "$RETURN/repro/run_pytest.py",
+        "o35e_cold",
+        "$RETURN/tests/test_o35e_native.py",
+        "$RETURN/tests/test_o35e_metadata.py"
+      ],
+      "exit_code": 0,
+      "stdout": "observations/o35e_cold.stdout",
+      "junit": "observations/o35e_cold.xml",
+      "stdout_raw_sha256": "4a5e41d60314f7ffaf8ba063caa254c66b7c513b8d3ef0735c72cdb64b6fed04",
+      "published_paths_normalized": true
+    },
+    {
+      "label": "native_c11_route_batch",
+      "command": [
+        "python3",
+        "$RETURN/repro/run_pytest.py",
+        "native_c11_route_batch",
+        "$RETURN/runtime/pinned/rawlsing_next/tests/test_pre553_route_b_production.py",
+        "$RETURN/runtime/pinned/rawlsing_next/tests/test_pre553_batch_runner.py"
+      ],
+      "exit_code": 0,
+      "stdout": "observations/native_c11_route_batch.stdout",
+      "junit": "observations/native_c11_route_batch.xml",
+      "stdout_raw_sha256": "11ef2e2572832390845b82eeb4823157da458ef8a983b1d7a1bb4af18d0a42ff",
+      "published_paths_normalized": true
+    },
+    {
+      "label": "native_d07_missing_fixture",
+      "command": [
+        "python3",
+        "$RETURN/repro/run_pytest.py",
+        "native_d07_missing_fixture",
+        "$RETURN/runtime/pinned/rawlsing_next/tests/test_objective_consumer_bounded_evidence_d07.py"
+      ],
+      "exit_code": 2,
+      "stdout": "observations/native_d07_missing_fixture.stdout",
+      "junit": "observations/native_d07_missing_fixture.xml",
+      "stdout_raw_sha256": "a78f424f1099c90cfdb5be6bb6584051b26995e5e3cfd352840cac25bd339e8c",
+      "published_paths_normalized": true
+    }
+  ]
+}
