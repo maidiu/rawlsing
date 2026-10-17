@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="5" skipped="0" tests="5" time="0.799" timestamp="2026-10-17T01:14:45.923208-04:00" hostname="Matthews-MBP.lan"><testcase classname="tests.test_postinspection_hostiles" name="test_two_synthetic_anchors_and_no_actor_grants_cannot_authorize[M0_PIECEWISE_HOLD]" time="0.003"><failure message="AssertionError: assert not True&#10; +  where True = OpportunitySet(query_clock=1995, temporal_method='M0_PIECEWISE_HOLD', opportunity_ids=('ROUTE_PARTICIPATION', 'ROUTE_D...c445dc161ae15'}, refused_code=None, authorized_opportunity=True, exploratory_route_ids=(), archive_context_wave_ids=()).authorized_opportunity">method = 'M0_PIECEWISE_HOLD'
+
+    @pytest.mark.parametrize('method', METHODS)
+    def test_two_synthetic_anchors_and_no_actor_grants_cannot_authorize(method):
+        c = case([wave('OLD',1980,.2),wave('RECENT',1990,.6)])
+        x = T.read_selected_world(WORLD,c,method,1995)
+        EVENTS.append(dict(id='TWO_ANCHORS_EMPTY_GRANTS',method=method,actual=x.as_dict(),world=WORLD.__dict__))
+&gt;       assert not x.authorized_opportunity
+E       AssertionError: assert not True
+E        +  where True = OpportunitySet(query_clock=1995, temporal_method='M0_PIECEWISE_HOLD', opportunity_ids=('ROUTE_PARTICIPATION', 'ROUTE_D...c445dc161ae15'}, refused_code=None, authorized_opportunity=True, exploratory_route_ids=(), archive_context_wave_ids=()).authorized_opportunity
+
+tests/test_postinspection_hostiles.py:37: AssertionError</failure></testcase><testcase classname="tests.test_postinspection_hostiles" name="test_two_synthetic_anchors_and_no_actor_grants_cannot_authorize[M1_LINEAR_INTERPOLATION]" time="0.002"><failure message="AssertionError: assert not True&#10; +  where True = OpportunitySet(query_clock=1995, temporal_method='M1_LINEAR_INTERPOLATION', opportunity_ids=('ROUTE_PARTICIPATION', 'R...c445dc161ae15'}, refused_code=None, authorized_opportunity=True, exploratory_route_ids=(), archive_context_wave_ids=()).authorized_opportunity">method = 'M1_LINEAR_INTERPOLATION'
+
+    @pytest.mark.parametrize('method', METHODS)
+    def test_two_synthetic_anchors_and_no_actor_grants_cannot_authorize(method):
+        c = case([wave('OLD',1980,.2),wave('RECENT',1990,.6)])
+        x = T.read_selected_world(WORLD,c,method,1995)
+        EVENTS.append(dict(id='TWO_ANCHORS_EMPTY_GRANTS',method=method,actual=x.as_dict(),world=WORLD.__dict__))
+&gt;       assert not x.authorized_opportunity
+E       AssertionError: assert not True
+E        +  where True = OpportunitySet(query_clock=1995, temporal_method='M1_LINEAR_INTERPOLATION', opportunity_ids=('ROUTE_PARTICIPATION', 'R...c445dc161ae15'}, refused_code=None, authorized_opportunity=True, exploratory_route_ids=(), archive_context_wave_ids=()).authorized_opportunity
+
+tests/test_postinspection_hostiles.py:37: AssertionError</failure></testcase><testcase classname="tests.test_postinspection_hostiles" name="test_two_synthetic_anchors_and_no_actor_grants_cannot_authorize[M2_UNCERTAINTY_AWARE_BACKOFF]" time="0.002"><failure message="AssertionError: assert not True&#10; +  where True = OpportunitySet(query_clock=1995, temporal_method='M2_UNCERTAINTY_AWARE_BACKOFF', opportunity_ids=('ROUTE_PARTICIPATION...c445dc161ae15'}, refused_code=None, authorized_opportunity=True, exploratory_route_ids=(), archive_context_wave_ids=()).authorized_opportunity">method = 'M2_UNCERTAINTY_AWARE_BACKOFF'
+
+    @pytest.mark.parametrize('method', METHODS)
+    def test_two_synthetic_anchors_and_no_actor_grants_cannot_authorize(method):
+        c = case([wave('OLD',1980,.2),wave('RECENT',1990,.6)])
+        x = T.read_selected_world(WORLD,c,method,1995)
+        EVENTS.append(dict(id='TWO_ANCHORS_EMPTY_GRANTS',method=method,actual=x.as_dict(),world=WORLD.__dict__))
+&gt;       assert not x.authorized_opportunity
+E       AssertionError: assert not True
+E        +  where True = OpportunitySet(query_clock=1995, temporal_method='M2_UNCERTAINTY_AWARE_BACKOFF', opportunity_ids=('ROUTE_PARTICIPATION...c445dc161ae15'}, refused_code=None, authorized_opportunity=True, exploratory_route_ids=(), archive_context_wave_ids=()).authorized_opportunity
+
+tests/test_postinspection_hostiles.py:37: AssertionError</failure></testcase><testcase classname="tests.test_postinspection_hostiles" name="test_lag_parser_does_not_swallow_rupture_qualifiers_as_wave_identity" time="0.002"><failure message="AssertionError: assert {'DELAYED|POS..._NOT_ASSUMED'} &lt;= {'DELAYED'}&#10;  &#10;  Extra items in the left set:&#10;  'DELAYED|POST_RUPTURE_CARRY_HYPOTHETICAL:R1995|IDENTIFIED_SET_UNBOUNDED:STABILITY_NOT_ASSUMED'">def test_lag_parser_does_not_swallow_rupture_qualifiers_as_wave_identity():
+        c = case([wave('DELAYED',1990,.8,published_year=2000)],ruptures=(1995,))
+        x = T.evaluate(c,T.METHOD_M0_HOLD,clock_year=1997,retrospective=True)
+        EVENTS.append(dict(id='LAG_PLUS_RUPTURE',actual=x.as_dict(),parsed=list(T.pub_lag_of(x))))
+&gt;       assert set(T.pub_lag_of(x)) &lt;= set(x.basis_wave_ids)
+E       AssertionError: assert {'DELAYED|POS..._NOT_ASSUMED'} &lt;= {'DELAYED'}
+E         
+E         Extra items in the left set:
+E         'DELAYED|POST_RUPTURE_CARRY_HYPOTHETICAL:R1995|IDENTIFIED_SET_UNBOUNDED:STABILITY_NOT_ASSUMED'
+
+tests/test_postinspection_hostiles.py:44: AssertionError</failure></testcase><testcase classname="tests.test_postinspection_hostiles" name="test_duplicate_wave_id_cannot_rebind_provenance_to_excluded_source" time="0.002"><failure message="AssertionError: assert (None is not None or ('WRONG_SOURCE' == 'ACTUAL_SOURCE'&#10; +  where None = OpportunitySet(query_clock=1995, temporal_method='M0_PIECEWISE_HOLD', opportunity_ids=('ROUTE_BLOCKED_NO_SUPPORT',), p...opportunity=False, exploratory_route_ids=('ROUTE_PARTICIPATION', 'ROUTE_DEFERRED_REVIEW'), archive_context_wave_ids=()).refused_code&#10;  &#10;  - ACTUAL_SOURCE&#10;  + WRONG_SOURCE))">def test_duplicate_wave_id_cannot_rebind_provenance_to_excluded_source():
+        c = case([wave('DUPLICATE',1990,.6),
+                  wave('DUPLICATE',1980,.1,country='OTHER',source_family='WRONG_SOURCE',edition='WRONG_EDITION')])
+        x = T.read_selected_world(WORLD,c,T.METHOD_M0_HOLD,1995)
+        EVENTS.append(dict(id='DUPLICATE_EXCLUDED_BASIS',actual=x.as_dict()))
+&gt;       assert x.refused_code is not None or (x.provenance['source_family']=='ACTUAL_SOURCE' and x.provenance['edition']=='E1')
+E       AssertionError: assert (None is not None or ('WRONG_SOURCE' == 'ACTUAL_SOURCE'
+E        +  where None = OpportunitySet(query_clock=1995, temporal_method='M0_PIECEWISE_HOLD', opportunity_ids=('ROUTE_BLOCKED_NO_SUPPORT',), p...opportunity=False, exploratory_route_ids=('ROUTE_PARTICIPATION', 'ROUTE_DEFERRED_REVIEW'), archive_context_wave_ids=()).refused_code
+E         
+E         - ACTUAL_SOURCE
+E         + WRONG_SOURCE))
+
+tests/test_postinspection_hostiles.py:51: AssertionError</failure></testcase></testsuite></testsuites>

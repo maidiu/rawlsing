@@ -1,0 +1,116 @@
+{
+  "schema": "PYAT_R26_T9C_05_REMOTE_VERIFICATION@1",
+  "verification": "DIRECT_REMOTE_SHA_AND_CHANGED_PATH_AUDIT",
+  "repository": "maidiu/rawlsing",
+  "repository_visibility_verified": "PRIVATE",
+  "branch": "agent/rabochii-pyat-r26-t9c-temporal-adapter-seven-red-repair-r1",
+  "sealed_startup": "79cf24ee615ec24bee2dc8584b31fb6b240fd3cf",
+  "original_author_commit": "edf3494b1b11cb71a78540aba950aa15da900c8a",
+  "independent_t9i_court_commit": "a2a7bdeda76aa008b3d620b01af71f7fd6efaaae",
+
+  "evidence_payload_commit": "d6e062684ca34b99ee9713c8c0affa0ed5c27f25",
+  "verified_remote_head_at_evidence_payload": "d6e062684ca34b99ee9713c8c0affa0ed5c27f25",
+  "sha_match": true,
+  "readback_method": "git ls-remote origin refs/heads/<branch>, then git fetch of the same ref into refs/remotes/origin/readback-verify and tree comparison",
+  "readback_trees_identical": true,
+  "note": "This receipt is sealed by a subsequent commit. Its own sealing SHA is reported in the delivery message, because a file cannot contain the hash of the commit that contains it.",
+
+  "changed_path_scope_clean": true,
+  "changed_path_audit": {
+    "added": 52,
+    "modified": 0,
+    "removed": 0,
+    "out_of_scope_paths": [],
+    "out_of_scope_count": 0,
+    "scope_rule": "every changed path is inside WORKER_RETURNS/PYAT-R26-T9C-TEMPORAL-ADAPTER-SEVEN-RED-CONTINUATION-R1/"
+  },
+
+  "outside_writes_verified_absent": {
+    "WORKER_RETURNS/PYAT-R18-T9B-TEMPORAL-HISTORY-CONSUMER-R1": "unmodified",
+    "WORKER_RETURNS/PYAT-R23-T9I-INDEPENDENT-CLOCK-CUSTODY-R1": "unmodified",
+    "WORKER_COMMISSIONS": "unmodified",
+    "accepted_v553_source": "unmodified"
+  },
+
+  "native_closure": {
+    "staged_python_files": 22,
+    "staged_bytes": 584404,
+    "byte_identical_to_repo_at_sealed_startup": "22/22",
+    "original_t9b_copied_files": 1259,
+    "minimal_pinned_imports_used_instead_of_1259_file_copy": true
+  },
+
+  "tests": {
+    "frozen_independent_t9i_suite": "48 cases: 47 passed, 1 failed, 0 errors, 0 skipped",
+    "own_t9c_repair_suite": "52 cases: 52 passed",
+    "inherited_original_v553_native_suite": "8 cases: 8 passed",
+    "unchanged_original_t9b_author_suite": "28 cases: 28 passed",
+    "courts_aggregated_into_one_percentage": false
+  },
+
+  "independent_red_repair": {
+    "t9i_independent_court": "38 passed / 10 failed",
+    "t9c_repaired_adapter": "47 passed / 1 failed",
+    "red_to_green": 10,
+    "newly_red": 1,
+    "ten_red_assertions_repaired": true,
+    "defect_classes": ["R1", "R2", "R3", "R4", "R5", "R6", "R7"],
+    "per_class_failed_assertions": {"R1": 1, "R2": 3, "R3": 1, "R4": 1, "R5": 1, "R6": 2, "R7": 1},
+    "counterexample_tally_matches_independent_court": true
+  },
+
+  "disclosed_residual": {
+    "case": "test_two_time_original_consumer_and_numerical_products_reproduced",
+    "cause": "defect R5 repair; a PROBE_ONLY read must not present a route as a permission-valid open opportunity, and the original T9B published two-time artifact recorded opportunity_ids=[ROUTE_DEFERRED_REVIEW] for the 1990 PROBE_ONLY read",
+    "semantic_fields_changed": 1,
+    "semantic_field": "1990.opportunity_ids",
+    "unchanged": ["numerical values 0.20/0.60", "pressure_band", "basis_wave_ids", "uncertainty", "temporal_key", "refused_code", "entire provenance block"],
+    "other_differences": "purely additive disclosure fields introduced by the repairs",
+    "is_an_unhidden_regression": true
+  },
+
+  "frozen_cases_executed": [
+    "TC1_TREND",
+    "TC2_NULL_STABILITY",
+    "TC3_DISCONTINUITY_COHORT",
+    "TC4_INCOMPATIBLE_GEOGRAPHY",
+    "TC5_FUTURE_LEAK"
+  ],
+  "commission_mandated_arithmetic_preserved": {
+    "AS_OF_1995": "0.20 using W0 alone",
+    "RETROSPECTIVE_1995_M1": "0.40 INTERPOLATED_NOT_OBSERVED",
+    "endpoint_1990": "0.20 sourcefree",
+    "endpoint_2000": "0.60 sourcefree"
+  },
+  "predictions_falsified": [],
+
+  "central_finding": "The adapter's arithmetic was never in dispute; what failed was what it was allowed to CLAIM. Temporal-key status is now RETURNED BY the original _authorize_v553_multi_wave_key rather than aliased, a missing observation is a typed UNKNOWN rather than an authorized zero, consumer provenance is bound to the waves actually used, the structural equality certificate covers the complete world including structural_routes, an exploratory estimate no longer opens a permission-valid route, a post-rupture carry is a labelled bounded hypothetical rather than the post-break cohort estimand, and publication-lag provenance is restricted to the basis while unused post-clock archive context is published as separate lineage.",
+
+  "verdict": "SEVEN_DEFECT_CLASSES_REPAIRED__TEN_INDEPENDENT_REDS_GREEN__ONE_DISCLOSED_RESIDUAL__T9C_CANDIDATE_REQUIRES_INDEPENDENT_T9R_COURT_BEFORE_HQ_METHOD_ACCEPTANCE",
+
+  "original_SAV_DTA_used": false,
+  "canonical_module_mutation": false,
+  "reviewer_assertion_mutation": false,
+  "T8F3_assignment_preserved": "8079f69778eb4a2e6f30b246e3ec445dc161ae15",
+  "custody_incident": "none during this return; ambient pytest.ini and ambient data/ddm_build_copy shadowing is structurally blocked by explicit --rootdir and -c on every court, and guarded_runner.verify rejects unpinned paths and changed preimages",
+
+  "real_source_issuance": false,
+  "EE12": false,
+  "EE14": false,
+  "national_inference": false,
+  "OC05_installation": false,
+  "N9": false,
+  "N11": false,
+  "N12": false,
+  "V3": false,
+  "method_adoption": false,
+  "N8E_N8S_N9_execution": false,
+  "actor_exposure_or_memory_proved": false,
+  "observed_temporal_calibration": false,
+  "self_acceptance": false,
+  "independent_T9R_review_required_before_HQ_method_acceptance": true,
+
+  "model_calls": 0,
+  "helpers": 0,
+  "t9c_assignment_preserved": "PYAT R26 T9C TEMPORAL ADAPTER SEVEN RED REPAIR"
+}

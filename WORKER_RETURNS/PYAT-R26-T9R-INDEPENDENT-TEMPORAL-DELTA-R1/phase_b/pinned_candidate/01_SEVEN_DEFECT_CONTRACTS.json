@@ -1,0 +1,173 @@
+{
+  "schema": "PYAT_R26_T9C_01_SEVEN_DEFECT_CONTRACTS@1",
+  "status": "FROZEN_BEFORE_T9C_ADAPTED_SUITE_EXECUTION",
+  "frozen_at_utc": "2026-10-17T04:10:00Z",
+  "role": "original T9B temporal adapter author continuation; NOT independent T9I reviewer; NOT HQ; NOT an EE12 issuer",
+  "repository": "maidiu/rawlsing",
+  "repository_visibility_verified": "PRIVATE",
+  "branch": "agent/rabochii-pyat-r26-t9c-temporal-adapter-seven-red-repair-r1",
+  "sealed_startup_commit": "79cf24ee615ec24bee2dc8584b31fb6b240fd3cf",
+  "original_author_commit": "edf3494b1b11cb71a78540aba950aa15da900c8a",
+  "independent_t9i_court_commit": "a2a7bdeda76aa008b3d620b01af71f7fd6efaaae",
+  "commission": "WORKER_COMMISSIONS/PYAT-R26-T9C-TEMPORAL-ADAPTER-SEVEN-RED-CONTINUATION-R1/00_COMMISSION.md",
+  "grain": "SOURCEFREE_SYNTHETIC",
+  "prohibitions": [
+    "no real EE12 source pair",
+    "no national statistical inference",
+    "no OC05",
+    "no N11",
+    "no N12",
+    "no V3",
+    "no method adoption",
+    "no N8E/N8S/N9 execution",
+    "no actor exposure or remembered-exposure claim",
+    "no modification of accepted V553 source",
+    "no modification of reviewer assertions",
+    "no modification of source35, N9, OC05, N11/N12, Sorok V3"
+  ],
+
+  "commission_mandated_arithmetic": {
+    "AS_OF_1995_all_methods": "0.20 using W0 alone",
+    "RETROSPECTIVE_1995_M1_estimate": "0.40 labelled INTERPOLATED_NOT_OBSERVED",
+    "RETROSPECTIVE_1995_M1_NOT_OBSERVED": true,
+    "endpoint_1990": "0.20 sourcefree",
+    "endpoint_2000": "0.60 sourcefree",
+    "linear_slope_per_year": "1/25",
+    "midpoint": "2/5",
+    "unconditioned_identification_set": "[0,1]",
+    "unconditioned_max_absolute_error": "3/5",
+    "monotonicity_assumed_set": "[1/5,3/5]",
+    "monotonicity_max_absolute_error": "1/5",
+    "sampling_error": "UNIDENTIFIED; no sample design or variance supplied"
+  },
+
+  "frozen_expected_outputs": {
+    "METHOD_M0_HOLD|AS_OF|1990": {"value": 0.2, "temporal_key": "PROBE_ONLY_TEMPORAL_KEY", "basis_wave_ids": ["W0"]},
+    "METHOD_M0_HOLD|AS_OF|1995": {"value": 0.2, "temporal_key": "PROBE_ONLY_TEMPORAL_KEY", "basis_wave_ids": ["W0"]},
+    "METHOD_M0_HOLD|AS_OF|2000": {"value": 0.6, "temporal_key": "AUTHORIZED_SPARSE_TEMPORAL_KEY", "basis_wave_ids": ["W1"]},
+    "METHOD_M0_HOLD|RETROSPECTIVE|1990": {"value": 0.2, "temporal_key": "AUTHORIZED_SPARSE_TEMPORAL_KEY", "basis_wave_ids": ["W0"]},
+    "METHOD_M0_HOLD|RETROSPECTIVE|1995": {"value": 0.2, "temporal_key": "AUTHORIZED_SPARSE_TEMPORAL_KEY", "basis_wave_ids": ["W0"]},
+    "METHOD_M0_HOLD|RETROSPECTIVE|2000": {"value": 0.6, "temporal_key": "AUTHORIZED_SPARSE_TEMPORAL_KEY", "basis_wave_ids": ["W1"]},
+    "METHOD_M1_INTERP|AS_OF|1990": {"value": 0.2, "temporal_key": "PROBE_ONLY_TEMPORAL_KEY", "basis_wave_ids": ["W0"]},
+    "METHOD_M1_INTERP|AS_OF|1995": {"value": 0.2, "temporal_key": "PROBE_ONLY_TEMPORAL_KEY", "basis_wave_ids": ["W0"]},
+    "METHOD_M1_INTERP|AS_OF|2000": {"value": 0.6, "temporal_key": "AUTHORIZED_SPARSE_TEMPORAL_KEY", "basis_wave_ids": ["W1"]},
+    "METHOD_M1_INTERP|RETROSPECTIVE|1990": {"value": 0.2, "temporal_key": "PROBE_ONLY_TEMPORAL_KEY", "basis_wave_ids": ["W0", "W1"]},
+    "METHOD_M1_INTERP|RETROSPECTIVE|1995": {"value": 0.4, "temporal_key": "PROBE_ONLY_TEMPORAL_KEY", "basis_wave_ids": ["W0", "W1"]},
+    "METHOD_M1_INTERP|RETROSPECTIVE|2000": {"value": 0.6, "temporal_key": "AUTHORIZED_SPARSE_TEMPORAL_KEY", "basis_wave_ids": ["W1"]},
+    "METHOD_M2_BACKOFF|AS_OF|1990": {"value": 0.2, "temporal_key": "PROBE_ONLY_TEMPORAL_KEY", "basis_wave_ids": ["W0"]},
+    "METHOD_M2_BACKOFF|AS_OF|1995": {"value": 0.2, "temporal_key": "PROBE_ONLY_TEMPORAL_KEY", "basis_wave_ids": ["W0"]},
+    "METHOD_M2_BACKOFF|AS_OF|2000": {"value": 0.6, "temporal_key": "AUTHORIZED_SPARSE_TEMPORAL_KEY", "basis_wave_ids": ["W1"]},
+    "METHOD_M2_BACKOFF|RETROSPECTIVE|1990": {"value": 0.2, "temporal_key": "AUTHORIZED_SPARSE_TEMPORAL_KEY", "basis_wave_ids": ["W0"]},
+    "METHOD_M2_BACKOFF|RETROSPECTIVE|1995": {"value": 0.2, "temporal_key": "AUTHORIZED_SPARSE_TEMPORAL_KEY", "basis_wave_ids": ["W0"]},
+    "METHOD_M2_BACKOFF|RETROSPECTIVE|2000": {"value": 0.6, "temporal_key": "AUTHORIZED_SPARSE_TEMPORAL_KEY", "basis_wave_ids": ["W1"]}
+  },
+
+  "defects": {
+    "R1": {
+      "class": "false_native_authorization",
+      "t9i_failed_assertions": 1,
+      "t9i_events": ["RED_NATIVE_VS_ADAPTED_AUTHORITY"],
+      "defect": "The adapter aliased AUTHORIZED_SPARSE_TEMPORAL_KEY and stamped it on results without ever calling the original _authorize_v553_multi_wave_key, which requires a harmonized key plus two qualified anchors.",
+      "repair": "temporal_key is now RETURNED BY the original _authorize_v553_multi_wave_key, called on the qualified anchor group at the clock. Single eligible anchor can only yield PROBE_ONLY_TEMPORAL_KEY (native reason insufficient_distinct_waves). Native may only DOWNGRADE: an INTERPOLATED_NOT_OBSERVED value stays exploratory even when its anchors are natively AUTHORIZED, mirroring the native gap-segment control that keeps unknown_gap_preserved and interpolation_allowed=false even when the caller passes allow_interpolation=True.",
+      "preserved": "the original V553 authorization function is not modified; its three-way AUTHORIZED/PROBE/BLOCKED outcomes are reproduced by direct native calls as controls",
+      "expected_after_repair": {
+        "single_eligible_anchor": "PROBE_ONLY_TEMPORAL_KEY",
+        "two_eligible_anchors": "AUTHORIZED_SPARSE_TEMPORAL_KEY",
+        "zero_eligible_anchors": "BLOCKED_TEMPORAL_KEY",
+        "interpolated_year_with_two_authorized_anchors": "PROBE_ONLY_TEMPORAL_KEY",
+        "native_gap_allow_interpolation_true": "unknown_gap_preserved / interpolation_allowed=false"
+      }
+    },
+    "R2": {
+      "class": "missing_as_zero",
+      "t9i_failed_assertions": 3,
+      "t9i_events": ["RED_NULL_M0_PIECEWISE_HOLD", "RED_NULL_M1_LINEAR_INTERPOLATION", "RED_NULL_M2_UNCERTAINTY_AWARE_BACKOFF"],
+      "defect": "A floating-point NaN wave produced value=0.0, band=none, AUTHORIZED, no refusal under M0/M1/M2, because _bounded_score was called on an unsupported observation.",
+      "repair": "Upstream native support validation runs BEFORE any numeric use. Non-finite, non-numeric, None or declared support_status=MISSING observations are typed UNKNOWN with refused_code MISSING_OBSERVATION_NOT_ZERO and temporal_key BLOCKED_TEMPORAL_KEY. Observed zero remains a real zero. Mixed support drops the missing anchor and names it in MISSING_SUPPORT_EXCLUDED.",
+      "preserved": "the accepted original V553 _bounded_score default-to-0.0 behaviour is untouched and covered by its own control; this is an adapter-contract repair only",
+      "expected_after_repair": {
+        "nan_observation_all_methods": "value=None, refused_code=MISSING_OBSERVATION_NOT_ZERO, temporal_key=BLOCKED_TEMPORAL_KEY, band=None",
+        "observed_zero": "value=0.0, refused_code=None, band=none",
+        "missing_vs_zero": "distinct outcomes, never interchangeable"
+      }
+    },
+    "R3": {
+      "class": "excluded_source_provenance",
+      "t9i_failed_assertions": 1,
+      "t9i_events": ["RED_BASIS_PROVENANCE"],
+      "defect": "Consumer provenance named case.waves[0].source_family and .edition even when that first wave was filtered out as WRONG_SOURCE/WRONG_EDITION, so an excluded source was reported as the supported consumer provenance.",
+      "repair": "provenance source_family/edition/source_families/editions are bound to the waves actually named in basis_wave_ids. A basis whose (source_family, edition) disagree is refused with BASIS_SOURCE_CONFLICT rather than silently narrowed.",
+      "expected_after_repair": {
+        "excluded_first_wave_then_admissible": "provenance source_family == ACTUAL_SOURCE and edition == ACTUAL_EDITION",
+        "conflicting_basis_sources": "refused_code=BASIS_SOURCE_CONFLICT, opportunity_ids=[ROUTE_BLOCKED_NO_SUPPORT]"
+      }
+    },
+    "R4": {
+      "class": "incomplete_structural_equality",
+      "t9i_failed_assertions": 1,
+      "t9i_events": ["RED_STRUCTURAL_EQUALITY"],
+      "defect": "structurally_identical ignored ROUTE_PARTICIPATION and the rest of the structural-world opportunity inventory, so removing ROUTE_PARTICIPATION from the supplied world at the same clock still returned true while the output changed.",
+      "repair": "structurally_identical compares the COMPLETE structural/access world identity, carried in provenance.structural_world_fields (world_id, structural_routes, access_grants, institution) plus grain.",
+      "expected_after_repair": {
+        "route_removal": "structurally_identical == False",
+        "institution_change": "structurally_identical == False",
+        "access_grant_change": "structurally_identical == False",
+        "same_world_two_clocks": "structurally_identical == True"
+      }
+    },
+    "R5": {
+      "class": "probe_based_opportunity_authorization",
+      "t9i_failed_assertions": 1,
+      "t9i_events": ["RED_PROBE_OPENS_ROUTE"],
+      "defect": "At retrospective 1995 the honest .40 PROBE/NOT_OBSERVED estimate nonetheless emitted ROUTE_DEFERRED_REVIEW with no refusal and described its result as a permission-valid open route.",
+      "repair": "A PROBE_ONLY/exploratory read reports opportunity_ids=[ROUTE_BLOCKED_NO_SUPPORT] and authorized_opportunity=False, and lists the band-implied routes separately in exploratory_route_ids. Only a natively AUTHORIZED observation may present an open permission-valid route.",
+      "consequence_disclosed": "The original T9B published two-time artifact recorded opportunity_ids=[ROUTE_DEFERRED_REVIEW] for the 1990 PROBE_ONLY read. Repairing R5 necessarily changes that single field. This is a deliberate, disclosed residual deviation from the rejected artifact, not an undisclosed regression. Arithmetic, band, basis, uncertainty and all provenance values are unchanged.",
+      "expected_after_repair": {
+        "probe_only_read": "opportunity_ids == [ROUTE_BLOCKED_NO_SUPPORT], authorized_opportunity == False, exploratory_route_ids == band-implied routes",
+        "authorized_read": "opportunity_ids == band-implied routes, authorized_opportunity == True, exploratory_route_ids == []",
+        "refused_read": "opportunity_ids == [ROUTE_BLOCKED_NO_SUPPORT], authorized_opportunity == False"
+      }
+    },
+    "R6": {
+      "class": "post_rupture_carry_and_estimand_qualification",
+      "t9i_failed_assertions": 2,
+      "t9i_events": ["RED_POSTRUPTURE_M0_PIECEWISE_HOLD", "RED_POSTRUPTURE_M2_UNCERTAINTY_AWARE_BACKOFF"],
+      "defect": "Query 1997 across the declared 1995 population break carried the pre-break .20 as AUTHORIZED with no rupture caveat, implying the post-break cohort estimand.",
+      "repair": "A carry that crosses a registered rupture is kept as a TYPED BOUNDED HYPOTHETICAL: value preserved, refused_code still None (so the accepted author positive that a hold still works across a rupture survives), but uncertainty gains POST_RUPTURE_CARRY_HYPOTHETICAL:R1995|IDENTIFIED_SET_UNBOUNDED:STABILITY_NOT_ASSUMED, detail states the post-break cohort estimand is NOT identified, rupture_qualified is True, and temporal_key is downgraded to PROBE_ONLY_TEMPORAL_KEY so no route is opened.",
+      "expected_after_repair": {
+        "post_rupture_M0_M2": "value preserved, refused_code None, POST_RUPTURE_CARRY_HYPOTHETICAL in uncertainty, RUPTURE in detail, temporal_key PROBE_ONLY",
+        "pre_rupture_query": "rupture_qualified False, no POST_RUPTURE marker",
+        "author_positive_hold_across_rupture": "value 0.30 preserved, refused_code None"
+      }
+    },
+    "R7": {
+      "class": "archive_context_vs_basis_publication_lag",
+      "t9i_failed_assertions": 1,
+      "t9i_events": ["RED_NONBASIS_PUBLICATION_LAG"],
+      "defect": "Retrospective M0 used only W0 yet flagged future W1 as a publication lag on that value, over-inclusive and ambiguous provenance.",
+      "repair": "publication_lag_wave_ids and pub_lag_of are computed over the BASIS waves only. The unused post-clock archive inventory is published separately as archive_context_wave_ids and is never presented as product publication basis. AS_OF reads carry no archive context at all.",
+      "expected_after_repair": {
+        "M0_retrospective_1995": "pub_lag_of == (), basis == [W0], archive_context == [W1]",
+        "M0_retrospective_on_late_publication": "pub_lag_of == (DELAYED,) since that wave IS the basis",
+        "AS_OF": "archive_context_wave_ids == []"
+      }
+    }
+  },
+
+  "frozen_native_controls": {
+    "NATIVE_AUTHORIZATION_2": "AUTHORIZED_SPARSE_TEMPORAL_KEY / ready_for_v554 true / authorized_anchor_count 2",
+    "NATIVE_AUTHORIZATION_1": "PROBE_ONLY_TEMPORAL_KEY / ready_for_v554 false / reason insufficient_distinct_waves",
+    "NATIVE_AUTHORIZATION_BLOCKED": "BLOCKED_TEMPORAL_KEY / ready_for_v554 false",
+    "NATIVE_GAP_ALLOW_INTERPOLATION_TRUE": "interpolation_status unknown_gap_preserved / interpolation_allowed false"
+  },
+
+  "preservation_contract": {
+    "original_v553_source_unmodified": true,
+    "author_positive_count": 28,
+    "inherited_native_test_count": 8,
+    "independent_t9i_test_transport": "frozen_t9i_court/test_independent_clock_custody.py, byte-identical to git blob f624177d4980f524781c84956eb23a45bfa52a78 at a2a7bdeda76aa008b3d620b01af71f7fd6efaaae",
+    "independent_t9i_case_count": 48,
+    "independent_t9i_red_count_at_court": 10,
+    "as_of_versus_retrospective_distinction_preserved": true
+  }
+}

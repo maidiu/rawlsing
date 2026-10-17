@@ -1,0 +1,163 @@
+{
+  "differences": [
+    {
+      "path": "/1990/archive_context_wave_ids",
+      "kind": "additive",
+      "repaired": []
+    },
+    {
+      "path": "/1990/authorized_opportunity",
+      "kind": "additive",
+      "repaired": false
+    },
+    {
+      "path": "/1990/exploratory_route_ids",
+      "kind": "additive",
+      "repaired": [
+        "ROUTE_DEFERRED_REVIEW"
+      ]
+    },
+    {
+      "path": "/1990/opportunity_ids",
+      "kind": "changed",
+      "original": [
+        "ROUTE_DEFERRED_REVIEW"
+      ],
+      "repaired": [
+        "ROUTE_BLOCKED_NO_SUPPORT"
+      ]
+    },
+    {
+      "path": "/1990/provenance/archive_context_wave_ids",
+      "kind": "additive",
+      "repaired": []
+    },
+    {
+      "path": "/1990/provenance/authorized_opportunity",
+      "kind": "additive",
+      "repaired": false
+    },
+    {
+      "path": "/1990/provenance/editions",
+      "kind": "additive",
+      "repaired": [
+        "E1"
+      ]
+    },
+    {
+      "path": "/1990/provenance/native_multi_wave_authorization_reason",
+      "kind": "additive",
+      "repaired": "at_least_two_probe_ready_resolved_structural_anchors"
+    },
+    {
+      "path": "/1990/provenance/native_multi_wave_authorization_status",
+      "kind": "additive",
+      "repaired": "AUTHORIZED_SPARSE_TEMPORAL_KEY"
+    },
+    {
+      "path": "/1990/provenance/source_families",
+      "kind": "additive",
+      "repaired": [
+        "SYNTH_FAMILY"
+      ]
+    },
+    {
+      "path": "/1990/provenance/structural_world_fields",
+      "kind": "additive",
+      "repaired": {
+        "world_id": "W_SYNTH_INSTITUTION",
+        "structural_routes": [
+          "ROUTE_REDUCED_BURDEN",
+          "ROUTE_PARTICIPATION",
+          "ROUTE_DEFERRED_REVIEW"
+        ],
+        "access_grants": [
+          "GRANT_YOUNG_PERSON_ACCESS"
+        ],
+        "institution": "SYNTH_INSTITUTION"
+      }
+    },
+    {
+      "path": "/2000/archive_context_wave_ids",
+      "kind": "additive",
+      "repaired": []
+    },
+    {
+      "path": "/2000/authorized_opportunity",
+      "kind": "additive",
+      "repaired": true
+    },
+    {
+      "path": "/2000/exploratory_route_ids",
+      "kind": "additive",
+      "repaired": []
+    },
+    {
+      "path": "/2000/provenance/archive_context_wave_ids",
+      "kind": "additive",
+      "repaired": []
+    },
+    {
+      "path": "/2000/provenance/authorized_opportunity",
+      "kind": "additive",
+      "repaired": true
+    },
+    {
+      "path": "/2000/provenance/editions",
+      "kind": "additive",
+      "repaired": [
+        "E1"
+      ]
+    },
+    {
+      "path": "/2000/provenance/native_multi_wave_authorization_reason",
+      "kind": "additive",
+      "repaired": "at_least_two_probe_ready_resolved_structural_anchors"
+    },
+    {
+      "path": "/2000/provenance/native_multi_wave_authorization_status",
+      "kind": "additive",
+      "repaired": "AUTHORIZED_SPARSE_TEMPORAL_KEY"
+    },
+    {
+      "path": "/2000/provenance/source_families",
+      "kind": "additive",
+      "repaired": [
+        "SYNTH_FAMILY"
+      ]
+    },
+    {
+      "path": "/2000/provenance/structural_world_fields",
+      "kind": "additive",
+      "repaired": {
+        "world_id": "W_SYNTH_INSTITUTION",
+        "structural_routes": [
+          "ROUTE_REDUCED_BURDEN",
+          "ROUTE_PARTICIPATION",
+          "ROUTE_DEFERRED_REVIEW"
+        ],
+        "access_grants": [
+          "GRANT_YOUNG_PERSON_ACCESS"
+        ],
+        "institution": "SYNTH_INSTITUTION"
+      }
+    }
+  ],
+  "actual_values": {
+    "1990": 0.2,
+    "2000": 0.6
+  },
+  "structural_world": {
+    "world_id": "W_SYNTH_INSTITUTION",
+    "structural_routes": [
+      "ROUTE_REDUCED_BURDEN",
+      "ROUTE_PARTICIPATION",
+      "ROUTE_DEFERRED_REVIEW"
+    ],
+    "access_grants": [
+      "GRANT_YOUNG_PERSON_ACCESS"
+    ],
+    "institution": "SYNTH_INSTITUTION"
+  },
+  "adjudication": "1990 opportunity removal is safety-correct; additive provenance is disclosed, not byte-identical"
+}

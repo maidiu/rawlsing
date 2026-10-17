@@ -1,0 +1,20 @@
+........................F...                                             [100%]
+=================================== FAILURES ===================================
+_ test_hostile_changed_temporal_source_with_same_structural_world_only_moves_the_channel _
+
+    def test_hostile_changed_temporal_source_with_same_structural_world_only_moves_the_channel():
+        alt = T.TemporalCase("ALT", C, (wave(0, 1990, 0.90), wave(1, 2000, 0.95)), target_year=1995)
+        a = T.read_selected_world(STRUCT, TC1, T.METHOD_M1_INTERP, 1995, retrospective=True)
+        b = T.read_selected_world(STRUCT, alt, T.METHOD_M1_INTERP, 1995, retrospective=True)
+        assert T.structurally_identical(a, b)
+>       assert a.opportunity_ids != b.opportunity_ids
+E       AssertionError: assert ('ROUTE_BLOCKED_NO_SUPPORT',) != ('ROUTE_BLOCKED_NO_SUPPORT',)
+E        +  where ('ROUTE_BLOCKED_NO_SUPPORT',) = OpportunitySet(query_clock=1995, temporal_method='M1_LINEAR_INTERPOLATION', opportunity_ids=('ROUTE_BLOCKED_NO_SUPPORT...code=None, authorized_opportunity=False, exploratory_route_ids=('ROUTE_DEFERRED_REVIEW',), archive_context_wave_ids=()).opportunity_ids
+E        +  and   ('ROUTE_BLOCKED_NO_SUPPORT',) = OpportunitySet(query_clock=1995, temporal_method='M1_LINEAR_INTERPOLATION', opportunity_ids=('ROUTE_BLOCKED_NO_SUPPORT..._opportunity=False, exploratory_route_ids=('ROUTE_REDUCED_BURDEN', 'ROUTE_PARTICIPATION'), archive_context_wave_ids=()).opportunity_ids
+
+WORKER_RETURNS/PYAT-R26-T9R-INDEPENDENT-TEMPORAL-DELTA-R1/phase_b/pinned_candidate/test_t9b_temporal.py:234: AssertionError
+- generated xml file: /Users/matthewsmith/.codex/worktrees/a0a8/Rawlsing/WORKER_RETURNS/PYAT-R26-T9R-INDEPENDENT-TEMPORAL-DELTA-R1/phase_b/junit/author.xml -
+=========================== short test summary info ============================
+FAILED WORKER_RETURNS/PYAT-R26-T9R-INDEPENDENT-TEMPORAL-DELTA-R1/phase_b/pinned_candidate/test_t9b_temporal.py::test_hostile_changed_temporal_source_with_same_structural_world_only_moves_the_channel
+1 failed, 27 passed in 1.32s
+T9R_PHASE_B_author_EXIT=1 VERIFIED_PROJECT_MODULES=16

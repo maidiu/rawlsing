@@ -1,0 +1,12 @@
+{
+  "schema": "T9R_PREIMPLEMENTATION_SEMANTIC_CALL_VECTORS@1",
+  "rule": "These values are frozen before T9C inspection. A later binding maps signatures only and returns the actual unmodified candidate result. It must record concrete fields/calls. Inexpressible inputs are CAPABILITY_UNAVAILABLE/HOLD or RED, never passed/skipped. A reviewer-supplied external filter or authorization gate is forbidden.",
+  "vectors": {
+    "D04": {"operation":"evaluate","method":"M0_PIECEWISE_HOLD","target_valid_year":1995,"retrospective":true,"archival_known_at_upper_year":2020,"waves":[{"wave_id":"FUTURE_PUBLICATION","observation_year":1990,"published_year":2030,"value":0.8}],"expected":"No product basis from FUTURE_PUBLICATION; no .80 assertion as known by snapshot2020"},
+    "D10": {"operation":"read_selected_world","method":"M0_PIECEWISE_HOLD","query_year":1995,"waves":[{"wave_id":"VALID","observation_year":1990,"published_year":1990,"value":0.6}],"world_access_grants":[],"expected":"No authorized open opportunity; no automatic actor grant from world identity"},
+    "D16": {"operation":"read_selected_world","method":"M0_PIECEWISE_HOLD","query_year":1995,"source_family":"ACTUAL_SOURCE","wave_edition":"E2","wave_value":0.6,"grant_source_family":"ACTUAL_SOURCE","grant_edition":"E1","grant_current":true,"expected":"Edition-mismatched source grant cannot authorize E2 product"},
+    "D17": {"operation":"read_selected_world","method":"M0_PIECEWISE_HOLD","query_year":1995,"retrospective":true,"source_family":"ACTUAL_SOURCE","wave_edition":"E1","wave_value":0.6,"grant_source_family":"ACTUAL_SOURCE","grant_edition":"E1","grant_current":false,"expected":"Historical valid-at clock/archival acquisition cannot resurrect expired current permission"},
+    "D17_WRONG_OWNER": {"operation":"read_selected_world","method":"M0_PIECEWISE_HOLD","query_year":1995,"source_family":"ACTUAL_SOURCE","wave_edition":"E1","wave_value":0.6,"grant_source_family":"OTHER_SOURCE","grant_edition":"E1","grant_current":true,"expected":"Wrong source owner grant cannot authorize this source/edition"},
+    "D19": {"operation":"read_selected_world","method":"M0_PIECEWISE_HOLD","query_year":1995,"world_publication_available":true,"wave_value":0.6,"actor_id":null,"actor_exposure_evidence":null,"remembered_exposure_evidence":null,"expected":"No invented actor identity, knowledge, memory or remembered exposure. Numeric/world publication data alone does not establish a person event."}
+  }
+}

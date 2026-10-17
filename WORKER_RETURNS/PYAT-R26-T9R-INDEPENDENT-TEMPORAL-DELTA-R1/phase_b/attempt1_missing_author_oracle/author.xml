@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="1" failures="0" skipped="0" tests="1" time="0.990" timestamp="2026-10-17T01:14:37.355848-04:00" hostname="Matthews-MBP.lan"><testcase classname="" name="pinned_candidate.test_t9b_temporal" time="0.000"><error message="collection failure">pinned_candidate/test_t9b_temporal.py:20: in &lt;module&gt;
+    ORACLE = json.loads((RET / "01_PREDECLARED_SERIES_CLOCK_ORACLE.json").read_text())
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Users/matthewsmith/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py:1027: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Users/matthewsmith/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py:1013: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/.codex/worktrees/a0a8/Rawlsing/WORKER_RETURNS/PYAT-R26-T9R-INDEPENDENT-TEMPORAL-DELTA-R1/phase_b/pinned_candidate/01_PREDECLARED_SERIES_CLOCK_ORACLE.json'</error></testcase></testsuite></testsuites>

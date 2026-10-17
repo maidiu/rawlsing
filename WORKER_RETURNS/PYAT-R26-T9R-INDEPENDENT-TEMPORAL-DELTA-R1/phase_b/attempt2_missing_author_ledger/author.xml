@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="1" failures="0" skipped="0" tests="1" time="1.073" timestamp="2026-10-17T01:15:11.259245-04:00" hostname="Matthews-MBP.lan"><testcase classname="" name="pinned_candidate.test_t9b_temporal" time="0.000"><error message="collection failure">WORKER_RETURNS/PYAT-R26-T9R-INDEPENDENT-TEMPORAL-DELTA-R1/phase_b/pinned_candidate/test_t9b_temporal.py:21: in &lt;module&gt;
+    LEDGER = json.loads((RET / "evidence/native_source_ledger.json").read_text())
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py:1027: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py:1013: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/.codex/worktrees/a0a8/Rawlsing/WORKER_RETURNS/PYAT-R26-T9R-INDEPENDENT-TEMPORAL-DELTA-R1/phase_b/pinned_candidate/evidence/native_source_ledger.json'</error></testcase></testsuite></testsuites>

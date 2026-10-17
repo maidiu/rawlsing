@@ -1,0 +1,188 @@
+{
+ "schema": "PYAT_R18_T9B_02_REAL_TEMPORAL_TO_SELECTED_WORLD_TWO_TIMES@1",
+ "producer": {
+  "module": "data.ddm_build_copy/ddm_v553_temporal_pressure.py",
+  "blob": "5304b70f9f",
+  "inherited_by_identity": [
+   "_interp",
+   "_pressure_band",
+   "_bounded_score",
+   "AUTHORIZED_SPARSE_TEMPORAL_KEY",
+   "PROBE_ONLY_TEMPORAL_KEY",
+   "BLOCKED_TEMPORAL_KEY",
+   "ALLOWED_MULTI_WAVE_GRAINS"
+  ]
+ },
+ "consumer": {
+  "module": "t9b_temporal.read_selected_world",
+  "blob": null,
+  "grain": "structural_channel_exact",
+  "structural_world": "W_SYNTH_INSTITUTION",
+  "structural_routes": [
+   "ROUTE_REDUCED_BURDEN",
+   "ROUTE_PARTICIPATION",
+   "ROUTE_DEFERRED_REVIEW"
+  ],
+  "access_grants": [
+   "GRANT_YOUNG_PERSON_ACCESS"
+  ]
+ },
+ "structural_world_held_constant": true,
+ "method_comparison_TC1": {
+  "M0_PIECEWISE_HOLD": {
+   "AS_OF": {
+    "method": "M0_PIECEWISE_HOLD",
+    "value": 0.2,
+    "band": "low",
+    "uncertainty": "HELD_NO_INTERPOLATION",
+    "temporal_key": "AUTHORIZED_SPARSE_TEMPORAL_KEY",
+    "basis_wave_ids": [
+     "W0"
+    ],
+    "detail": "nearest prior admissible anchor",
+    "refused_code": null
+   },
+   "RETROSPECTIVE": {
+    "method": "M0_PIECEWISE_HOLD",
+    "value": 0.2,
+    "band": "low",
+    "uncertainty": "HELD_NO_INTERPOLATION|PUBLICATION_LAG:W1",
+    "temporal_key": "AUTHORIZED_SPARSE_TEMPORAL_KEY",
+    "basis_wave_ids": [
+     "W0"
+    ],
+    "detail": "nearest prior admissible anchor; wave(s) published AFTER the query clock",
+    "refused_code": null
+   }
+  },
+  "M1_LINEAR_INTERPOLATION": {
+   "AS_OF": {
+    "method": "M1_LINEAR_INTERPOLATION",
+    "value": 0.2,
+    "band": "low",
+    "uncertainty": "TERMINAL_NO_RIGHT_ANCHOR",
+    "temporal_key": "AUTHORIZED_SPARSE_TEMPORAL_KEY",
+    "basis_wave_ids": [
+     "W0"
+    ],
+    "detail": "no later anchor; hold last known-at value",
+    "refused_code": null
+   },
+   "RETROSPECTIVE": {
+    "method": "M1_LINEAR_INTERPOLATION",
+    "value": 0.4,
+    "band": "low",
+    "uncertainty": "INTERPOLATED_NOT_OBSERVED|PUBLICATION_LAG:W1",
+    "temporal_key": "PROBE_ONLY_TEMPORAL_KEY",
+    "basis_wave_ids": [
+     "W0",
+     "W1"
+    ],
+    "detail": "linear interpolation inside an authorized gap; not a measurement; wave(s) published AFTER the query clock",
+    "refused_code": null
+   }
+  },
+  "M2_UNCERTAINTY_AWARE_BACKOFF": {
+   "AS_OF": {
+    "method": "M2_UNCERTAINTY_AWARE_BACKOFF",
+    "value": 0.2,
+    "band": "low",
+    "uncertainty": "BACKOFF_SINGLE_ANCHOR",
+    "temporal_key": "AUTHORIZED_SPARSE_TEMPORAL_KEY",
+    "basis_wave_ids": [
+     "W0"
+    ],
+    "detail": "uncertainty-aware nearest-anchor backoff",
+    "refused_code": null
+   },
+   "RETROSPECTIVE": {
+    "method": "M2_UNCERTAINTY_AWARE_BACKOFF",
+    "value": 0.2,
+    "band": "low",
+    "uncertainty": "BACKOFF_WIDE_GAP_UNCERTAIN|PUBLICATION_LAG:W1",
+    "temporal_key": "AUTHORIZED_SPARSE_TEMPORAL_KEY",
+    "basis_wave_ids": [
+     "W0"
+    ],
+    "detail": "uncertainty-aware nearest-anchor backoff; wave(s) published AFTER the query clock",
+    "refused_code": null
+   }
+  }
+ },
+ "two_time_reads": {
+  "1990": {
+   "query_clock": 1990,
+   "temporal_method": "M1_LINEAR_INTERPOLATION",
+   "opportunity_ids": [
+    "ROUTE_DEFERRED_REVIEW"
+   ],
+   "pressure_band": "low",
+   "temporal_key": "PROBE_ONLY_TEMPORAL_KEY",
+   "uncertainty": "INTERPOLATED_NOT_OBSERVED|PUBLICATION_LAG:W1",
+   "basis_wave_ids": [
+    "W0",
+    "W1"
+   ],
+   "provenance": {
+    "world_id": "W_SYNTH_INSTITUTION",
+    "institution": "SYNTH_INSTITUTION",
+    "access_grants": [
+     "GRANT_YOUNG_PERSON_ACCESS"
+    ],
+    "grain": "structural_channel_exact",
+    "source_family": "SYNTH_FAMILY",
+    "instrument": "SYNTH_INSTRUMENT",
+    "cohort": "COHORT_ALL",
+    "country": "SYNTH_COUNTRY_A",
+    "edition": "E1",
+    "query_clock": 1990,
+    "clock_question": "RETROSPECTIVE_ARCHIVAL",
+    "publication_lag_wave_ids": [
+     "W1"
+    ],
+    "synthetic": true,
+    "observed_temporal_calibration": false,
+    "t8f3_assignment_preserved": "8079f69778eb4a2e6f30b246e3ec445dc161ae15"
+   },
+   "refused_code": null
+  },
+  "2000": {
+   "query_clock": 2000,
+   "temporal_method": "M1_LINEAR_INTERPOLATION",
+   "opportunity_ids": [
+    "ROUTE_PARTICIPATION",
+    "ROUTE_DEFERRED_REVIEW"
+   ],
+   "pressure_band": "medium",
+   "temporal_key": "AUTHORIZED_SPARSE_TEMPORAL_KEY",
+   "uncertainty": "TERMINAL_NO_RIGHT_ANCHOR",
+   "basis_wave_ids": [
+    "W1"
+   ],
+   "provenance": {
+    "world_id": "W_SYNTH_INSTITUTION",
+    "institution": "SYNTH_INSTITUTION",
+    "access_grants": [
+     "GRANT_YOUNG_PERSON_ACCESS"
+    ],
+    "grain": "structural_channel_exact",
+    "source_family": "SYNTH_FAMILY",
+    "instrument": "SYNTH_INSTRUMENT",
+    "cohort": "COHORT_ALL",
+    "country": "SYNTH_COUNTRY_A",
+    "edition": "E1",
+    "query_clock": 2000,
+    "clock_question": "RETROSPECTIVE_ARCHIVAL",
+    "publication_lag_wave_ids": [],
+    "synthetic": true,
+    "observed_temporal_calibration": false,
+    "t8f3_assignment_preserved": "8079f69778eb4a2e6f30b246e3ec445dc161ae15"
+   },
+   "refused_code": null
+  }
+ },
+ "materially_different": true,
+ "structural_identical": true,
+ "no_observed_temporal_calibration_claimed": true,
+ "t8f3_preserved": "8079f69778eb4a2e6f30b246e3ec445dc161ae15"
+}

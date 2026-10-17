@@ -1,0 +1,66 @@
+{
+  "runs": [
+    {
+      "suite": "legacy",
+      "exit": 0,
+      "junit": "junit/legacy.xml",
+      "log": "logs/legacy.log",
+      "loaded_project_modules": 10,
+      "python_executable": "/Users/matthewsmith/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "python_version": "3.12.14 (main, Aug 25 2026, 13:50:22) [Clang 22.1.3 ]"
+    },
+    {
+      "suite": "author",
+      "exit": 1,
+      "junit": "junit/author.xml",
+      "log": "logs/author.log",
+      "loaded_project_modules": 16,
+      "python_executable": "/Users/matthewsmith/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "python_version": "3.12.14 (main, Aug 25 2026, 13:50:22) [Clang 22.1.3 ]"
+    },
+    {
+      "suite": "independent",
+      "exit": 1,
+      "junit": "junit/independent.xml",
+      "log": "logs/independent.log",
+      "loaded_project_modules": 16,
+      "python_executable": "/Users/matthewsmith/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "python_version": "3.12.14 (main, Aug 25 2026, 13:50:22) [Clang 22.1.3 ]"
+    },
+    {
+      "suite": "delta",
+      "exit": 1,
+      "junit": "junit/delta.xml",
+      "log": "logs/delta.log",
+      "loaded_project_modules": 16,
+      "python_executable": "/Users/matthewsmith/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "python_version": "3.12.14 (main, Aug 25 2026, 13:50:22) [Clang 22.1.3 ]"
+    },
+    {
+      "suite": "candidate_own",
+      "exit": 0,
+      "junit": "junit/candidate_own.xml",
+      "log": "logs/candidate_own.log",
+      "loaded_project_modules": 16,
+      "python_executable": "/Users/matthewsmith/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "python_version": "3.12.14 (main, Aug 25 2026, 13:50:22) [Clang 22.1.3 ]"
+    },
+    {
+      "suite": "postinspection",
+      "exit": 1,
+      "junit": "junit/postinspection.xml",
+      "log": "logs/postinspection.log",
+      "loaded_project_modules": 16,
+      "python_executable": "/Users/matthewsmith/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "python_version": "3.12.14 (main, Aug 25 2026, 13:50:22) [Clang 22.1.3 ]"
+    }
+  ],
+  "transport_attempts_retained": [
+    "attempt0_missing_pytest_path",
+    "attempt1_missing_author_oracle",
+    "attempt2_missing_author_ledger"
+  ],
+  "transport_shell_typo": "One author rerun redirection had a nonexistent path; process did not start; corrected.",
+  "runtime_differs_from_phase_a": true,
+  "third_party_inventory_measured_not_source_authorized": true
+}

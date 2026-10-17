@@ -1,0 +1,73 @@
+{
+  "at_utc": "2026-10-17T05:14:28.168678+00:00",
+  "runs": [
+    {
+      "suite": "legacy",
+      "command": [
+        "/Users/matthewsmith/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-B",
+        "/Users/matthewsmith/.codex/worktrees/a0a8/Rawlsing/WORKER_RETURNS/PYAT-R26-T9R-INDEPENDENT-TEMPORAL-DELTA-R1/phase_b/guarded_runner.py",
+        "legacy"
+      ],
+      "cwd": "/Users/matthewsmith/.codex/worktrees/a0a8/Rawlsing/WORKER_RETURNS/PYAT-R26-T9R-INDEPENDENT-TEMPORAL-DELTA-R1/phase_b",
+      "exit": 1
+    },
+    {
+      "suite": "author",
+      "command": [
+        "/Users/matthewsmith/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-B",
+        "/Users/matthewsmith/.codex/worktrees/a0a8/Rawlsing/WORKER_RETURNS/PYAT-R26-T9R-INDEPENDENT-TEMPORAL-DELTA-R1/phase_b/guarded_runner.py",
+        "author"
+      ],
+      "cwd": "/Users/matthewsmith/.codex/worktrees/a0a8/Rawlsing/WORKER_RETURNS/PYAT-R26-T9R-INDEPENDENT-TEMPORAL-DELTA-R1/phase_b",
+      "exit": 1
+    },
+    {
+      "suite": "independent",
+      "command": [
+        "/Users/matthewsmith/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-B",
+        "/Users/matthewsmith/.codex/worktrees/a0a8/Rawlsing/WORKER_RETURNS/PYAT-R26-T9R-INDEPENDENT-TEMPORAL-DELTA-R1/phase_b/guarded_runner.py",
+        "independent"
+      ],
+      "cwd": "/Users/matthewsmith/.codex/worktrees/a0a8/Rawlsing/WORKER_RETURNS/PYAT-R26-T9R-INDEPENDENT-TEMPORAL-DELTA-R1/phase_b",
+      "exit": 1
+    },
+    {
+      "suite": "delta",
+      "command": [
+        "/Users/matthewsmith/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-B",
+        "/Users/matthewsmith/.codex/worktrees/a0a8/Rawlsing/WORKER_RETURNS/PYAT-R26-T9R-INDEPENDENT-TEMPORAL-DELTA-R1/phase_b/guarded_runner.py",
+        "delta"
+      ],
+      "cwd": "/Users/matthewsmith/.codex/worktrees/a0a8/Rawlsing/WORKER_RETURNS/PYAT-R26-T9R-INDEPENDENT-TEMPORAL-DELTA-R1/phase_b",
+      "exit": 1
+    },
+    {
+      "suite": "candidate_own",
+      "command": [
+        "/Users/matthewsmith/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-B",
+        "/Users/matthewsmith/.codex/worktrees/a0a8/Rawlsing/WORKER_RETURNS/PYAT-R26-T9R-INDEPENDENT-TEMPORAL-DELTA-R1/phase_b/guarded_runner.py",
+        "candidate_own"
+      ],
+      "cwd": "/Users/matthewsmith/.codex/worktrees/a0a8/Rawlsing/WORKER_RETURNS/PYAT-R26-T9R-INDEPENDENT-TEMPORAL-DELTA-R1/phase_b",
+      "exit": 1
+    },
+    {
+      "suite": "postinspection",
+      "command": [
+        "/Users/matthewsmith/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-B",
+        "/Users/matthewsmith/.codex/worktrees/a0a8/Rawlsing/WORKER_RETURNS/PYAT-R26-T9R-INDEPENDENT-TEMPORAL-DELTA-R1/phase_b/guarded_runner.py",
+        "postinspection"
+      ],
+      "cwd": "/Users/matthewsmith/.codex/worktrees/a0a8/Rawlsing/WORKER_RETURNS/PYAT-R26-T9R-INDEPENDENT-TEMPORAL-DELTA-R1/phase_b",
+      "exit": 1
+    }
+  ],
+  "runtime": "bundled Python 3.12; pandas/numpy from bundled runtime; locally pinned pytest8.4.2",
+  "differs_from_phase_a_runtime": true
+}
