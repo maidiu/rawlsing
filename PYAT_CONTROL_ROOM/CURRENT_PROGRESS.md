@@ -1,3 +1,16 @@
+# Pyat R25 — R24 seal verified, native F6 blob repaired, Sorok C0I bounded independent receipt
+Owner revision **9** (October 17, 2026 UTC). Accepted working successor `agent/vozhd-pyat-r3-hq-successor-20261016-r1@f51121764436bc88f316e6b63703a7b99c919a5c`.
+
+- **Control-plane completion:** canonical R24 `23286e7145a0b7333c5d9dab2eead9735bfae880` points to immutable R24 packet `5b831af7dcfb8ddc5ef38de19dea71ac529e4633`, actual MD/JSON blob identities match manifest and old ledger is append-only. This fixed the old stale HQ280 LATEST; no N11/N12 or actor issued.
+- **Source science pin:** original F6C scientific module pinned to S03FO commit `1428c2e9...` physically has blob `fc5e37fa5b2f0eb689593b42d95479d1327cb94c` (not the older historically misquoted `182cc797...`). Mandatory provenance/no-drop addendum has been committed. **Fresh F6C sealed branch HEAD is `11f5fd5710cf974dd1a2a399f3d1254011189b4b`**. Its R23 `802950...` launcher is superseded ONLY for fresh launch. Retain F6B HOLD until actual comparative native consumer and separate science review.
+- **Sorok C0I new return:** distinct Sorok reviewer `2dacd87636352a6c805e03b3d07581193a06264b` reproduced C0P author49 and 47/50 preregistered independent tests. 3 RED: runtime path hardcoding, no distinct N9/N10E owner receipts, omitted16-field literal SC0 two-contract roundtrip. Exact native consumers and E06 remain independently positive at their original method grades; full K9/K10 unexecuted. **Sorok HQ owns disposition and facade author repair**; no Pyat semantic or actor wake.
+- **Parallel immediate science:** existing WG0P4 original25 and independent frozen65 WG0L; corrected F6C, original author GF1C and independent T9I. No new unexecuted branch count from R25 beyond one bounded F6C addendum. Do not duplicate under unverified local session state.
+- **Terminal end-product:** all35 original scientific eligibility→E_pre→real C11/I03/I05/batch→weighted empirical F1–F8/learned/objective/temporal N9/N10E/N10W→N11→separate N12 and Sorok causal developing V3/V2 remains unproved.
+
+Current whole-estate R24 detailed report follows for audit lineage. R25 is a source-identity and cross-owner receipt update, not an all35 occupancy result.
+
+---
+
 # Pyat current progress — existing HQ state and R24 control publication
 
 Revision **8** · verified 2026-10-17T01:39:11.098041+00:00.
