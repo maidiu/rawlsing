@@ -1,0 +1,31 @@
+# Top three: exact inheritance, defect class, falsifier and action
+
+## 1. Original U/E_pre + source/use issuer, not a cosmetic corpus gap (AR1-01)
+
+**Lineage:** Historical V550 automatic question distributions and determinants `04f3a3646d8b468660385087d92541f03f860cb0` → governed C11 `03facecf70890bfd13b80418620d274cbcd69d02` / I05 `905f24d114419dbdd93879ad2bee5b59dd2f23af` / N10E `23167aa25291fb148b1e3cf210ac33fe7769b783`; inherited LM39 `9cc69780e8ece14884989ef3482dc051ecd0ec47` and O35W `6c66c8e2d86a8cae7d429079d25f6ef5e0e20ca6`. O35W identifies **only a narrow historical Afrobarometer R5 GT2 Q86A/B CONTEXT route** at risk denominator **19,210**, raw unweighted, 36-cell target grammar and V557 `ALLOW_CONTEXT_ONLY`; no signed current warrant for fresh SAV/DTA processing and no accepted prospective original E_pre for new work.
+
+**Competing methods:** (A) best lawful narrow positive: signed custodian acceptance for retained R5 CONTEXT replay, no new original read. (B) if true new native original product is demanded, independently competent source+semantic issuer seals exact administered U/operation/risk/design, E_pre **before** output and source-use warrant. **Neither method** allows post-result E_pre reconstruction or claiming entire 35-wave closure from a canary.
+
+**Counterfactual test:** two equal-age persons in same polity differ by whether a question was administered to their proper route/scope. An answer-based moral disposition must be unavailable for the NOT_ASKED person; recorded missing is not NO/zero. Audit the path U→eligibility→risk→conditioner→I03→consumer at one actually permitted native original role. For all35, require item/operation anti-join at original admissible eligible frontier and SCIENCE_INAPPLICABLE vs HOLD separation.
+
+**Acceptance owner:** original-source custodian + U/E_pre issuer, not R31; consume returned O35W without resurrecting duplicate archaeology. Expected person-error: plausible but unadministered group attitudes assigned as lived beliefs.
+
+## 2. Selected value-bearing historical world rather than world-ref identity (AR1-05/06/08/09)
+
+**Lineage:** Historic multi-field world and nine finite power strata in `588cf3954c33417665c5f9bac04e8b27e75d7f7c`; F6 `228440a2428641fada9fdf496f18c29ba2fce063`; F7 `f1d85fb8fa61139711ddcb2aacab6613536d5ed7`; FF constitution `1a7b4ae0f280085acc3289407dbf47152ed158f2`. Modern source relations `5b67e3f98a5faf95a6c82700af2346fef6e306a5`, learned composition `4a8e27a226a9c06606f5ba493d2cc7356d491a7b`, release `f76c390665f06ef126968ccf1a6b2d816f43ae92`, temporal `69a740fa8f6a213fed1df5b0a5686651b8b6a6f8`, and N10E `23167aa25291fb148b1e3cf210ac33fe7769b783` have actual owner functions. Their existence does **not** prove an accepted N9 selected world dereferenced into both N10E and N10W with two independently value-bearing physical providers.
+
+**Scientific choice:** preserve strict nonpooling, exact source-native grades, independent structural law, four-clock effective/publication/actor/request distinctions and native minority/negative states. Prefer composing the existing real owners, not minting a replacement field ontology or concatenating survey rows. H040/H042 blanket homology and causal promotion were correctly retired. Actual family-specific causal claims remain issuer-demanded.
+
+**Falsifier:** create two authorized *sourcefree* historical worlds identical except one public apprenticeship/licensing/landlord rule or truly dated publication, plus a nonparent consumer. With equal empirical conditional support, exact `route_constraints`, eligibility and downstream permitted possibility must differ; a pure hash/ref change without a changed consumer effect is RED. A generated caller-location fact must stay query echo, not source observation. Multi-field test must preserve unknown/uncovered mass and no respondent-pooling. Repeat under one revoked-use source and one later-known publication: reject affected descendant only, preserve lawful unrelated values. No actor belief inferred.
+
+**Acceptance owner:** independent actual N9 world service/FF/F6/F7 and N10W scope issuer; F6M/F6N and GF1G results consumed, not duplicated; WP1 remains in its lane. Expected person-error: a child is afforded schooling that the historical rule actually denied, or treated as knowing institutional change before its publication.
+
+## 3. Mediated life-course agency and irreducibly plural trajectories (AR1-11)
+
+**Lineage:** V3.4 recursive aspiration is superseded by the historical `RAWLSING_GOVERNING_SPIRIT.md` `588cf3954c33417665c5f9bac04e8b27e75d7f7c`; LM031 `e7e9e63b3d69fca883de364c1cef7826fe4629b0` retains developmental relational palimpsest; N12 `ac83e3adc83120cbd5b30d5af6d42ebcfaab78ee` defers actor wake. The world constrains lived possibilities; it cannot issue memories, longings, moral agency or an already-finished psyche.
+
+**Competing explanatory methods (not pre-approved algorithms):** activity-mediation and lived practices; context-conditional plural dispositions with inhibited/released capacities; life-course turning-points/reproduction work; reflexive deliberation under objective limits. Compare their finite testable predictions against age-stage fixed vector updates and unconstrained stochastic narrative. A model that merely decorates a type with politics is a scientific regression.
+
+**Falsifier to preregister without executing V3:** same initial childhood and bounded material field, then historically possible differing relations: one adolescent gains mutual-aid organizing contact, the other punitive institutional exclusion. Required traces: independent event occurrence and timing; contradictory retained prior dispositions; genuinely restructured practical capacity/opportunity; reversible/inhibited context expression; opaque-to-self beliefs; two later histories that are distinguishable **without** deterministic inevitability. Prevent an actor from knowing unencountered future state and avoid moral-hero optimization.
+
+**Acceptance owner:** competent Sorok developmental/actor scientific authority, only *after* N11/N12 and actual world-to-actor interface acceptance. R31 issues no actor grant. Expected person-error: all similarly classified people become identical moral dispositions, or historical oppression guarantees either heroic rebellion or submission by trait.
