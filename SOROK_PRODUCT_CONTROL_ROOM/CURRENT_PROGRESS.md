@@ -1,6 +1,6 @@
 # Sorok — current progress toward a historically generated person
 
-**Sorok HQ320 owner revision 3 · 2026-10-16.** `SOROK_HQ320_OWNER_ACTIVE__SCOPED_RECEIPTS_BANKED__PRODUCT_POSITIVE_OWNER_RULE_HELD`. Working HQ `2a7b5a81950ec17052365d44a1887666c9b9728f`. PRE-MAIN prior cut `8bf154b5d927007a4fe8d5c1fde55faa0e7859d4`. No semantic/source/actor issuance; original N11/N12/C11–C12/A0–A5 held.
+**Sorok HQ320 owner revision 4 · 2026-10-16.** `SOROK_HQ320_OWNER_ACTIVE__SCOPED_RECEIPTS_BANKED__PRODUCT_POSITIVE_OWNER_RULE_HELD`. Working HQ `3c423a0f74915a01911197b0023de9f85fd74aff`. PRE-MAIN prior cut `abfdcd3f0d870a868c06d5b9f61ada47b406a735`. No semantic/source/actor issuance; original N11/N12/C11–C12/A0–A5 held.
 
 ## Finished product and proof limits
 Historically situated PRE-V3 empirical/world possibilites → genuinely generated V3 parent/person histories → relation-dependent native CAN008 person×event owner, private epistemic/memory and actual world effects → lawful expression and independent life. Current sourcefree prototypes do not cross the actor-bound positive rule or original all35 source/OC05/N12 gates.
@@ -36,7 +36,7 @@ Historically situated PRE-V3 empirical/world possibilites → genuinely generate
 - Sorok working registers census 128 questions, 257 decisions, 214 risks (65 critical), broad alpha blockers 51 at original 7b091166; do not reopen historical decisions wholesale.
 
 ## New HQ320 workers: commission does not equal launch
-- **C0I** `9bad184701b6bb964055d5d6257545f8d28ef142` — `COMMISSION_PUBLISHED__NOT_AUTOLAUNCHED`
+- **C0I `8ee67a94ed9617cd013e1c1f335e6d45362b2a9c`` — `COMMISSION_PUBLISHED__NOT_AUTOLAUNCHED`
 - **W01** `ad17934b137cda8ee7743b9de90aeed351f2c3fb` — `COMMISSION_PUBLISHED__NOT_AUTOLAUNCHED`
 - **G13** `8d99a4a08d39c870da596b23ccbb5c34e268c470` — `BRANCH_ONLY__COMMISSION_SUBMISSION_BLOCKED`
 - **OUT13** `8d99a4a08d39c870da596b23ccbb5c34e268c470` — `BRANCH_ONLY__COMMISSION_SUBMISSION_BLOCKED`
