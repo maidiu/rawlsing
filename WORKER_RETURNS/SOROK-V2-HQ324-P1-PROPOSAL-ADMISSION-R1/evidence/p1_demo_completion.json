@@ -1,0 +1,140 @@
+{
+  "evaluation": {
+    "candidate_set_hash": "055976b2c9b8b96817423ba50fcf74d43511def18a5a01368419aebfcf422741",
+    "candidates": [
+      {
+        "candidate_id": "ALT-CARE",
+        "candidate_replay_hash": "db705729597b88f6ec37a67b4db66bc76e7c5888ff72b572b67bfcb279b7b6b1",
+        "code": "PROPOSAL_CANDIDATE_ONLY_NOT_CAUSAL",
+        "decision": "ADMIT"
+      },
+      {
+        "candidate_id": "ALT-CHILD-SEARCH",
+        "candidate_replay_hash": "c7430728ffc1e5cb43b3de94de54924cee324cac4e43a3c32d3700a29e7ce3cd",
+        "code": "PROPOSAL_CANDIDATE_ONLY_NOT_CAUSAL",
+        "decision": "ADMIT"
+      },
+      {
+        "candidate_id": "ALT-NONE",
+        "candidate_replay_hash": "1168cf4a1c7de50160ce3a164ea305f75a0463b6c3e382c5808d84f6ea11dcda",
+        "code": "PROPOSAL_CANDIDATE_ONLY_NOT_CAUSAL",
+        "decision": "ADMIT"
+      },
+      {
+        "candidate_id": "ALT-PEER",
+        "candidate_replay_hash": "2be3d91fbec99e212b2cd12856b26baf365c436f86d1fca8fa6bb24f98d50543",
+        "code": "PROPOSAL_CANDIDATE_ONLY_NOT_CAUSAL",
+        "decision": "ADMIT"
+      }
+    ],
+    "code": "P1_NONCAUSAL_ELIGIBILITY_COURT",
+    "consumption": null,
+    "context_hash": "454a9dcb46c4d201ae71a168cb2ede2a0c29a8991d9aead5d6a8c47b48ef92c0",
+    "decision": "ADMIT",
+    "eligible_entries": [
+      {
+        "candidate_authority_id": "P1_CANDIDATE_ELIGIBILITY_TEST_ONLY@1.0.0",
+        "candidate_authority_version": "1.0.0",
+        "candidate_id": "ALT-CARE",
+        "candidate_replay_hash": "db705729597b88f6ec37a67b4db66bc76e7c5888ff72b572b67bfcb279b7b6b1",
+        "eligibility_or_admission_receipt_hash": "1bcba7eb5261d70378d2a44a30a3420795d11eb05dc610e70ead331ccaa96800"
+      },
+      {
+        "candidate_authority_id": "P1_CANDIDATE_ELIGIBILITY_TEST_ONLY@1.0.0",
+        "candidate_authority_version": "1.0.0",
+        "candidate_id": "ALT-CHILD-SEARCH",
+        "candidate_replay_hash": "c7430728ffc1e5cb43b3de94de54924cee324cac4e43a3c32d3700a29e7ce3cd",
+        "eligibility_or_admission_receipt_hash": "85b192f7dcfe5f1541e9d4fc41959a28be9379721a1c38d0ec26b03417952d2e"
+      },
+      {
+        "candidate_authority_id": "P1_CANDIDATE_ELIGIBILITY_TEST_ONLY@1.0.0",
+        "candidate_authority_version": "1.0.0",
+        "candidate_id": "ALT-NONE",
+        "candidate_replay_hash": "1168cf4a1c7de50160ce3a164ea305f75a0463b6c3e382c5808d84f6ea11dcda",
+        "eligibility_or_admission_receipt_hash": "a2616f7cff250672af76e8a105e0c7a3e834f6bb8028b2187c6b28bf04aafd53"
+      },
+      {
+        "candidate_authority_id": "P1_CANDIDATE_ELIGIBILITY_TEST_ONLY@1.0.0",
+        "candidate_authority_version": "1.0.0",
+        "candidate_id": "ALT-PEER",
+        "candidate_replay_hash": "2be3d91fbec99e212b2cd12856b26baf365c436f86d1fca8fa6bb24f98d50543",
+        "eligibility_or_admission_receipt_hash": "af4e1022dfadc50199c09642dcecb1cfc4cb61d1a273b5c58da1f3bc5be807e7"
+      }
+    ],
+    "evaluation_hash": "8e58146a0c2a93577f9bcf3169fe993a650b9699c1696c25fc462048e286dcd0",
+    "event_admission": "NOT_PERFORMED",
+    "proposal_hash": "cfbdc9acf9fb3b69515ecc48d78e5d730e722fc6329b9bde5a7e4afc007e3768",
+    "proposal_id": "MODEL-PACKET-1",
+    "rule_hash": "2a5814d3d867ca8a4c25138eaa0e2def57e70400245d9402bde96918d59f5c1e",
+    "rule_ref": "P1_CANDIDATE_ELIGIBILITY_TEST_ONLY@1.0.0"
+  },
+  "selection": {
+    "code": "TEST_ONLY_SELECTED_NONCAUSAL_ALTERNATIVE",
+    "consumption": {
+      "actor_response_rule_ref": null,
+      "candidate_id": "ALT-PEER",
+      "competing_influence_refs": [],
+      "contract": "BFirstCandidateDecision_PROVISIONAL_P1",
+      "event_admission": "NOT_PERFORMED",
+      "model_proposal_provenance": "cfbdc9acf9fb3b69515ecc48d78e5d730e722fc6329b9bde5a7e4afc007e3768",
+      "negatives": [],
+      "no_world_or_actor_mutation": true,
+      "probability_grade": "PROVISIONAL_NOT_CALIBRATED",
+      "recruited_source_refs": [],
+      "response_effect_proposals": [],
+      "rng_receipt": {
+        "algorithm": "ADP020_COMPATIBILITY_MOCK_TEST_ONLY",
+        "candidate_set_hash": "055976b2c9b8b96817423ba50fcf74d43511def18a5a01368419aebfcf422741",
+        "coordinate": 11,
+        "draw": {
+          "counter_attempt": 0,
+          "entropy_sha256": "b5385b6147cdb307d524fa77df7b24d7ec3325afc147262b428fca34215e7d29",
+          "uniform_below": 9
+        },
+        "draw_consumed": true,
+        "parameter_source": "AUTHORED_DESIGN_HYPOTHESIS_TEST_ONLY",
+        "policy_hash": "804932a0861570f6fd4b9a8b945d8d7260ba1be0679bfbef4e8f0ea4f4a8315d",
+        "probability_grade": "PROVISIONAL_NOT_CALIBRATED",
+        "seed_sha256": "9b68d49bb092f71292ad76ab8fb8750d710aae5af70e43b8ec0a901d048c0030",
+        "seed_source": "EXPLICIT_TEST_ONLY_SEED",
+        "static_stream": "p1.test.causal.alternative",
+        "total_weight_units": 10,
+        "weight_units": {
+          "ALT-CARE": 3,
+          "ALT-CHILD-SEARCH": 4,
+          "ALT-NONE": 1,
+          "ALT-PEER": 2
+        }
+      },
+      "target_CAN011_update_proposals": []
+    },
+    "decision": "ADMIT",
+    "draw_consumed": true,
+    "replay_identity": "2517037177f3ed9227770b7ece6c9eb87e918489dc35a44dafb8889b58e4edcb",
+    "rng_receipt": {
+      "algorithm": "ADP020_COMPATIBILITY_MOCK_TEST_ONLY",
+      "candidate_set_hash": "055976b2c9b8b96817423ba50fcf74d43511def18a5a01368419aebfcf422741",
+      "coordinate": 11,
+      "draw": {
+        "counter_attempt": 0,
+        "entropy_sha256": "b5385b6147cdb307d524fa77df7b24d7ec3325afc147262b428fca34215e7d29",
+        "uniform_below": 9
+      },
+      "draw_consumed": true,
+      "parameter_source": "AUTHORED_DESIGN_HYPOTHESIS_TEST_ONLY",
+      "policy_hash": "804932a0861570f6fd4b9a8b945d8d7260ba1be0679bfbef4e8f0ea4f4a8315d",
+      "probability_grade": "PROVISIONAL_NOT_CALIBRATED",
+      "seed_sha256": "9b68d49bb092f71292ad76ab8fb8750d710aae5af70e43b8ec0a901d048c0030",
+      "seed_source": "EXPLICIT_TEST_ONLY_SEED",
+      "static_stream": "p1.test.causal.alternative",
+      "total_weight_units": 10,
+      "weight_units": {
+        "ALT-CARE": 3,
+        "ALT-CHILD-SEARCH": 4,
+        "ALT-NONE": 1,
+        "ALT-PEER": 2
+      }
+    },
+    "selected_candidate_id": "ALT-PEER"
+  }
+}

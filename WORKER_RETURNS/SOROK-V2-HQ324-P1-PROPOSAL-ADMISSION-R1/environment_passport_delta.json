@@ -5,7 +5,7 @@
     "fcntl_flock": "VERIFIED",
     "filesystem": "VERIFIED",
     "git": "VERIFIED 2.47.3",
-    "github_connector": "VERIFIED_READ_WRITE_PENDING_PUSH",
+    "github_connector": "VERIFIED_READ_WRITE_REMOTE_VERIFICATION_REQUIRED",
     "private_git_https": "UNAVAILABLE_DNS",
     "pytest": "VERIFIED 9.0.2",
     "python": "VERIFIED 3.13.5",
@@ -21,7 +21,23 @@
       "SKIP": 0,
       "command": "python -m pytest -q tests/test_p1_contract.py --junitxml=evidence/p1_junit.xml",
       "junit_ref": "evidence/p1_junit.xml",
-      "name": "P1 authored hostile pytest"
+      "name": "P1 original frozen authored hostile pytest"
+    },
+    {
+      "FAIL": 0,
+      "NOT_RUN": 0,
+      "PASS": 74,
+      "SKIP": 0,
+      "command": "python -m pytest -q tests/test_p1_contract.py tests/test_p1_completion.py --junitxml=evidence/p1_junit_completion.xml",
+      "junit_ref": "evidence/p1_junit_completion.xml",
+      "name": "P1 full original+completion author court"
+    },
+    {
+      "FAIL": 5,
+      "NOT_RUN": 0,
+      "PASS": 3,
+      "log_ref": "evidence/p1_completion_initial_red.log",
+      "name": "completion prerepair reproduction"
     },
     {
       "FAIL": 0,
@@ -43,11 +59,11 @@
   "exact_startup": "44f17132110274b07701bd4fea5bb1cbd10a5287",
   "git_object_store_alias": null,
   "independent_review_separation": "I2_NOT_STARTED_HQ_OWNS_DISPATCH",
-  "last_live_probe_at": "2026-10-17T18:35:36.329418+00:00",
+  "last_live_probe_at": "2026-10-17T19:21:47.141702+00:00",
   "machine_alias": null,
   "materialized_source_refs": [
     {
-      "content_sha256": "5812fb8e9e1f4f5c1830f95634c7186b282c6a4c47da964ef12302f10f318517",
+      "content_sha256": "df31a147ab037385c5488801b5fa7413f9bcf5c63c97ba6328f859c8fcd92d38",
       "kind": "NEW_AUTHOR_SOURCEFREE",
       "local_relative_path": "p1_contract.py",
       "module_import_path": "/mnt/data/p1_hq324/p1_contract.py"
@@ -69,6 +85,12 @@
       "kind": "NEW_AUTHOR_SOURCEFREE",
       "local_relative_path": "run_demo.py",
       "module_import_path": "/mnt/data/p1_hq324/run_demo.py"
+    },
+    {
+      "content_sha256": "20f863cc0bd598a31e3c9044aa7fb46d4eb6b87b948777f09fc12ca08b0a8eda",
+      "kind": "NEW_AUTHOR_SOURCEFREE",
+      "local_relative_path": "tests/test_p1_completion.py",
+      "module_import_path": "p1_hq324/tests/test_p1_completion.py"
     }
   ],
   "model_provider": "ChatGPT Browser GPT-6",
@@ -83,7 +105,7 @@
   "probe_command_and_result": "python --version:3.13.5; python -m pytest --version:9.0.2; git --version:2.47.3; subprocess and POSIX file lock verified",
   "quota_known": null,
   "retire_or_rebuild_reason": null,
-  "retries": 1,
+  "retries": 2,
   "runtime_marker_digest": "14d80b35a9988b8fe101d9b556f383d8067e951e57345529a55bd1d983e47a27",
   "science_grade": "SOURCEFREE_SYNTHETIC_AUTHOR_PROTOTYPE_ONLY",
   "source_permission": "SYNTHETIC_ONLY",

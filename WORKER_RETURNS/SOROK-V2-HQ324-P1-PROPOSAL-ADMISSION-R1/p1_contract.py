@@ -105,7 +105,10 @@ def _check_context(ctx: dict) -> None:
     for actor,person in ctx['people'].items():
         if not _valid_id(actor): raise ValueError('CONTEXT_ACTOR_ID')
         if not isinstance(person,dict) or set(person)!={'role','history_ref'}:raise ValueError('CONTEXT_PERSON')
-        if person['history_ref'] not in ctx['histories']:raise ValueError('HISTORY_REFERENCE_MISSING')
+        history = ctx['histories'].get(person['history_ref'])
+        if history is None:raise ValueError('HISTORY_REFERENCE_MISSING')
+        if not isinstance(history, dict) or history.get('owner') != actor:
+            raise ValueError('CONTEXT_HISTORY_OWNER_MISMATCH')
     for actor,access in ctx['actor_access'].items():
         if actor not in ctx['people'] or not _strings(access):raise ValueError('CONTEXT_ACCESS')
     for key,op in ctx['action_opportunities'].items():
@@ -194,13 +197,13 @@ def _candidate(c: dict, ctx:dict, p:dict) -> dict:
         if c['action_refs'] or c['courses'] or c['interpretations'] or c['possible_effects']:
             return reject('NONOCCURRENCE_WITH_CAUSAL_PAYLOAD')
     elif not c['action_refs']:return reject('NO_INDEPENDENT_ACTION_OPPORTUNITY')
-    seen=set()
+    seen={}
     for action in c['action_refs']:
         try:_exact(action,_ACTION,'action')
         except ValueError:return reject('BAD_ACTION_SCHEMA')
         a=action['actor_ref']; opportunity=action['opportunity_ref']
         if a not in c['participants'] or opportunity in seen:return reject('ACTION_ACTOR_OR_DUPLICATE')
-        seen.add(opportunity)
+        seen[opportunity]=a
         op=ctx['action_opportunities'].get(opportunity)
         if op is None:return defer('ACTION_OPPORTUNITY_UNRESOLVED')
         if op != {'actor_ref':a,'act_kind':action['act_kind'],
@@ -217,6 +220,8 @@ def _candidate(c: dict, ctx:dict, p:dict) -> dict:
             actor,history=r.split('|',1)
             if actor not in c['participants']:return reject('FOREIGN_PRIVATE_HISTORY')
             if history not in ctx['histories']:return defer('HISTORY_NOT_AVAILABLE')
+            if ctx['histories'][history].get('owner') != actor:
+                return reject('FOREIGN_ACTOR_HISTORY_OWNERSHIP')
             if ctx['people'][actor]['history_ref']!=history:return reject('HISTORY_BINDING_FALSE')
             continue
         if kind=='ACTOR_ACCESS':
@@ -234,6 +239,9 @@ def _candidate(c: dict, ctx:dict, p:dict) -> dict:
             continue
         if r not in ctx['facts']:return defer('FACT_PREREQUISITE_UNRESOLVED')
         actual=bool(ctx['facts'][r].get('occurred'))
+        if kind in ('WORLD_FACT_TRUE','WORLD_FACT_FALSE') and (ctx['facts'][r].get('epistemic_class') != 'ADMITTED_OBJECTIVE_EVENT'
+           or type(ctx['facts'][r].get('occurred')) is not bool):
+            return reject('PREREQUISITE_NOT_OBJECTIVE_WORLD_FACT')
         if (kind=='WORLD_FACT_TRUE' and not actual) or (kind=='WORLD_FACT_FALSE' and actual):
             return reject('WORLD_PREREQUISITE_FALSE')
     if not isinstance(c['courses'],list):return reject('COURSES_NOT_LIST')
@@ -245,6 +253,8 @@ def _candidate(c: dict, ctx:dict, p:dict) -> dict:
         courses.add(course['course_id'])
         if course['actor_ref'] not in c['participants'] or course['action_ref'] not in seen:
             return reject('UNAUTHORIZED_COURSE_ACTION')
+        if seen[course['action_ref']] != course['actor_ref']:
+            return reject('CROSS_ACTOR_COURSE_ACTION_FORBIDDEN')
         if not _nonempty_string(course['description']):return reject('EMPTY_COURSE')
     if not isinstance(c['interpretations'],list):return reject('INTERPRETATIONS_NOT_LIST')
     speaking_actors={act['actor_ref'] for act in c['action_refs'] if act['act_kind'].startswith('SPEAK_')}
@@ -297,20 +307,47 @@ def evaluate(packet: dict, context: dict, *, prior_proposals:dict|None=None) -> 
     set_hash=hashlib.sha256(b'P1_CANDIDATE_SET_V1\0'+canonical(entries)).hexdigest()
     status=('DEFER' if any(d['decision']=='DEFER' for d in decisions) else
             'VALID_EMPTY' if not admitted else 'ADMIT')
-    return {'decision':status,'code':'P1_NONCAUSAL_ELIGIBILITY_COURT',
+    result={'decision':status,'code':'P1_NONCAUSAL_ELIGIBILITY_COURT',
             'proposal_id':p['proposal_id'],'proposal_hash':p['proposal_hash'],
             'context_hash':ctx['context_hash'],'rule_ref':RULE_REF,'rule_hash':RULE_HASH,
             'candidates':decisions,'eligible_entries':entries,'candidate_set_hash':set_hash,
             'consumption':None,'event_admission':'NOT_PERFORMED'}
+    # Detect accidental/downstream modification of the pure evaluation before
+    # test selection; this is an unkeyed test-only receipt, not an owner grant.
+    result['evaluation_hash']=digest(result)
+    return result
 
 
 def select_test_only(evaluation:dict, policy:dict, *,seed_hex:str, coordinate:int) -> dict:
     """Synthetic deterministic draw; never native ADP020 and never causal admission."""
+    if not isinstance(evaluation,dict) or not isinstance(evaluation.get('decision'),str):
+        return {'decision':'REJECT','reason':'EVALUATION_RECEIPT_INTEGRITY_FAILURE',
+                'consumption':None}
     if evaluation['decision']!='ADMIT':
         return {'decision':evaluation['decision'],'selected_candidate_id':None,
                 'draw_consumed':False,'reason':'NO_COMPLETE_LAWFUL_CANDIDATE_SET',
                 'consumption':None}
-    ids=[x['candidate_id'] for x in evaluation['eligible_entries']]
+    try:
+        provided=evaluation['evaluation_hash']
+        recomputed=digest({k:v for k,v in evaluation.items() if k!='evaluation_hash'})
+        entries=evaluation['eligible_entries']
+        admitted=evaluation['candidates']
+        expected=[{'candidate_id':d['candidate_id'],'candidate_replay_hash':d['candidate_replay_hash'],
+                   'candidate_authority_id':RULE_REF,'candidate_authority_version':'1.0.0',
+                   'eligibility_or_admission_receipt_hash':digest(d)} for d in admitted if d['decision']=='ADMIT']
+        expected.sort(key=lambda x:x['candidate_id'].encode('utf-8'))
+        set_hash=hashlib.sha256(b'P1_CANDIDATE_SET_V1\0'+canonical(entries)).hexdigest()
+        good=(isinstance(provided,str) and bool(_HEX.fullmatch(provided)) and
+              provided==recomputed and entries==expected and bool(entries) and
+              set_hash==evaluation['candidate_set_hash'] and
+              evaluation['event_admission']=='NOT_PERFORMED' and
+              evaluation['consumption'] is None and
+              evaluation['rule_ref']==RULE_REF and evaluation['rule_hash']==RULE_HASH)
+        if not good:raise ValueError('EVALUATION_NOT_COHERENT')
+    except (ValueError,KeyError,TypeError,OverflowError):
+        return {'decision':'REJECT','reason':'EVALUATION_RECEIPT_INTEGRITY_FAILURE',
+                'consumption':None}
+    ids=[x['candidate_id'] for x in entries]
     if not isinstance(policy,dict) or set(policy)!={'schema','policy_id','policy_version','parameter_source',
         'calibration_grade','candidate_set_hash','weight_units','policy_hash'}:
         return {'decision':'DEFER','reason':'SELECTION_POLICY_SCHEMA_MISSING','consumption':None}
@@ -326,6 +363,8 @@ def select_test_only(evaluation:dict, policy:dict, *,seed_hex:str, coordinate:in
     if not isinstance(weights,dict) or set(weights)!=set(ids) or any(type(v)!=int or v<0 for v in weights.values()):
         return {'decision':'DEFER','reason':'UNLICENSED_OR_INCOMPLETE_WEIGHT_UNITS','consumption':None}
     total=sum(weights.values())
+    if total > (1 << 256):
+        return {'decision':'DEFER','reason':'TEST_ONLY_WEIGHT_DOMAIN_EXCEEDED','consumption':None}
     if not total:return {'decision':'VALID_EMPTY','reason':'ALL_ZERO_TEST_WEIGHTS_NO_DRAW','consumption':None,
                          'draw_consumed':False,'selected_candidate_id':None}
     if type(coordinate)!=int or coordinate<0 or not isinstance(seed_hex,str) or not _HEX.fullmatch(seed_hex):
@@ -373,6 +412,6 @@ def select_test_only(evaluation:dict, policy:dict, *,seed_hex:str, coordinate:in
 
 def replay_test_only(previous:dict, evaluation:dict, policy:dict, *,seed_hex:str,coordinate:int)->dict:
     current=select_test_only(evaluation,policy,seed_hex=seed_hex,coordinate=coordinate)
-    if previous.get('replay_identity')!=current.get('replay_identity') or previous.get('selected_candidate_id')!=current.get('selected_candidate_id'):
+    if not isinstance(previous,dict) or previous != current:
         return {'decision':'REJECT','reason':'TEST_ONLY_REPLAY_DIVERGENCE'}
     return current

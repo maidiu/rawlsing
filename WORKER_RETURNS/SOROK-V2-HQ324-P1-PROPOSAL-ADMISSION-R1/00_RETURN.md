@@ -36,3 +36,18 @@ An authored external policy makes reproducible seed/coordinate-dependent **TEST_
 **Next owner:** HQ to obtain independent High I2 review and B1 adapter/owner adjudication. **Self-adoption denied**. No autonomous host/model/harness switch and no private source disclosure or paid LLM calls.
 
 Remote commit SHA and direct remote proof supplied in the user-visible final return after the pushed ref is checked; a commit cannot honestly embed its own SHA in its own preimage.
+
+
+## Post-return completion extension (17 October 2026, same assigned branch)
+
+An independent-in-time **author-side** audit reexecuted the original frozen 66 tests, then added eight hostile completion controls without altering the original test file or the 13 frozen JSON fixtures. Five controls were reproducible RED against the preceding branch revision (`a9c4398346dee7eefa47fa2fa944d5330deac5c4`): (i) one actor's course claimed another actor's permitted action, (ii) a private caregiver state passed as a world-fact prerequisite, (iii) caregiver falsely bound a child's independent history to themselves, (iv) a downstream mutated/forged eligibility set was selected, and (v) replay accepted an incomplete non-positive receipt by comparing absent identity fields. Three completion controls passed initially.
+
+Code repair: bind courses to their own action actor, enforce objective epistemic class on WORLD_FACT prerequisites, require contextual history owner equality, detect post-evaluation edits and incoherent eligible-entry/set projections with a canonical unkeyed `evaluation_hash`, and compare full recomputed receipts on replay. Explicitly bound mock weight arithmetic to supported 256-bit tickets. **The evaluation hash is corruption/coherence protection only; it is not a key, owner signature or adversarial identity grant.**
+
+* `python -m pytest -q tests/test_p1_contract.py tests/test_p1_completion.py --junitxml=evidence/p1_junit_completion.xml` — **74 PASS, 0 FAIL, 0 SKIP**, stdout in `evidence/p1_pytest_completion.log`.
+* Prior rejected behavior — **5 RED / 3 PASS**, preserved in `evidence/p1_completion_initial_red.log`; failures were neither silenced nor xfailed.
+* `python -m compileall -q p1_contract.py run_demo.py make_fixtures.py tests/test_p1_contract.py tests/test_p1_completion.py` — PASS.
+* `python run_demo.py --coordinate 11` — PASS, selection object byte-identical to the original committed demo receipt (evaluation adds the new evaluation_hash).
+* Native B1, CAN008, CAN011, ADP019, ADP020, live LLM and empirical/actor grants — **NOT_RUN**. No new production rule or scientific adoption follows.
+
+**Return-grade remains SOURCEFREE_IMPLEMENTATION_AUTHOR_TEST_PASS, I2_PENDING.** The actual remote follow-up SHA and direct branch read must be recorded outside the commit (self-hash cannot be inserted into its own preimage).

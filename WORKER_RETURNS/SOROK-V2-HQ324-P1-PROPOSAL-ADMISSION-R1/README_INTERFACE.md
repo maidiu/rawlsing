@@ -100,3 +100,17 @@ The B1 source-free handshake is an **unadopted interface proposal** from the `03
 **Open owner questions:** ADP019 vs local P1 canonicalization profiles; ADP020-native candidate owner/eligibility receipt and seed lineage; whether multiple independent other-actor alternatives require mutually consistent joint opportunity evaluation at a new causal grain; how B1 reconciles deferred possible actors without manufactured life histories; accepted CAN008 positive actor rule still absent. These are HQ questions, not locally invented permissions.
 
 **Authority and scope:** source-free research implementation only, no production V3 installation, original 35-source access, real model evaluation, native CAN008-positive effect, CAN011 mutation, actual ADP019 issuer, validated parameter calibration, real human psychology, or independent reviewer acceptance.
+
+
+## Completion extension: integrity of source-free alternatives
+
+The completion court (`tests/test_p1_completion.py`) adds cross-person action attribution, actual ownership of history references, private-state/world-prerequisite separation, evaluation-receipt coherence and strict replay receipts. The source-free `evaluate()` now provides `evaluation_hash` over its complete JSON result minus that field. `select_test_only()` verifies that checksum together with a recomputation of sorted admitted-entry identities, candidate-set hash and noncausal result boundaries before honoring an authored mock policy. This prevents accidental mutation/repackaging of the evaluation, not a cryptographic forgery by a writer able to rewrite and rehash the entire input. Only an exact owner-issued admission receipt could establish a production trust boundary.
+
+To reproduce both original and additional courts:
+
+```bash
+python -m pytest -q tests/test_p1_contract.py tests/test_p1_completion.py --junitxml=evidence/p1_junit_completion.xml
+python run_demo.py --coordinate 11
+```
+
+The original baseline and fabricated contexts/packets are byte-unchanged. A selected event remains **only a proposal**. The earlier distinct warnings remain: local `ADMIT` is not ADP019 event admission; the mock sampler is not ADP020; no real CAN008 response or CAN011 effect owner is invoked.
