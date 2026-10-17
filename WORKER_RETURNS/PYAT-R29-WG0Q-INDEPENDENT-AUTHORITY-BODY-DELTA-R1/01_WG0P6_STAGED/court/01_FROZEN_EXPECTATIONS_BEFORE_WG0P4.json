@@ -1,0 +1,713 @@
+{
+  "schema": "WG0L_EXPECTATION_FIRST_PRECOMMITTED_FULL_ENGINE_COURT@1",
+  "created_at": "2026-10-15T16:17:09.441022+00:00",
+  "phase": "A_BEFORE_ANY_WG0P4_CANDIDATE_INSPECTION_OR_EXECUTION",
+  "sealed_start": "dc16f0b4807d13c4c17d38d05ccdc6bb006f9668",
+  "WG0P4_final_sha": null,
+  "independence": "WG0L independent of implementer. Same chat authored WG0J; not a new institutional signer or source issuer. Original WG0J/WG0K oracles retained byte-for-byte.",
+  "original_items": [
+    {
+      "item_id": "WG0P-ORD-01",
+      "form_id": "Q-ORD-A",
+      "source_id": "WG0P-SRC-A",
+      "wave": "W1",
+      "unit": "respondent",
+      "response_kind": "ORDINAL",
+      "options": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "9"
+      ],
+      "missing_codes": [
+        "9",
+        "997",
+        "998"
+      ],
+      "route_evidence": null,
+      "grant": "GRANTED_FIXTURE",
+      "version": "v1",
+      "release": "REL-A-W1",
+      "risk": "R_ORD",
+      "members": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5",
+        "R6"
+      ]
+    },
+    {
+      "item_id": "WG0P-HH-MR-02",
+      "form_id": "Q-HH-MR-B",
+      "source_id": "WG0P-SRC-A",
+      "wave": "W1",
+      "unit": "household",
+      "response_kind": "MULTIPLE_RESPONSE",
+      "options": [
+        "food",
+        "rent",
+        "health",
+        "education",
+        "none"
+      ],
+      "missing_codes": [
+        "997",
+        "998"
+      ],
+      "route_evidence": "household_size>0",
+      "grant": "GRANTED_FIXTURE",
+      "version": "v1",
+      "release": "REL-A-W1",
+      "risk": "R_HH",
+      "members": [
+        "H1",
+        "H2",
+        "H3",
+        "H4"
+      ]
+    },
+    {
+      "item_id": "WG0P-ROUTED-03",
+      "form_id": "Q-RT-C",
+      "source_id": "WG0P-SRC-A",
+      "wave": "W1",
+      "unit": "respondent",
+      "response_kind": "ROUTED",
+      "options": [
+        "yes",
+        "no"
+      ],
+      "missing_codes": [
+        "9"
+      ],
+      "route_evidence": null,
+      "grant": "GRANTED_FIXTURE",
+      "version": "v1",
+      "release": "REL-A-W1",
+      "risk": "R_RT",
+      "members": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5",
+        "R6"
+      ]
+    },
+    {
+      "item_id": "WG0P-ORD-04",
+      "form_id": "Q-ORD-A",
+      "source_id": "WG0P-SRC-B",
+      "wave": "W2",
+      "unit": "respondent",
+      "response_kind": "ORDINAL",
+      "options": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "9"
+      ],
+      "missing_codes": [
+        "9",
+        "997",
+        "998"
+      ],
+      "route_evidence": null,
+      "grant": "WITHDRAWN",
+      "version": "v1",
+      "release": "REL-B-W2",
+      "risk": "R_ORDB",
+      "members": [
+        "RB1",
+        "RB2",
+        "RB3"
+      ]
+    },
+    {
+      "item_id": "WG0P-ORD-05",
+      "form_id": "Q-ORD-A",
+      "source_id": "WG0P-SRC-A",
+      "wave": "W2",
+      "unit": "respondent",
+      "response_kind": "ORDINAL",
+      "options": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "9"
+      ],
+      "missing_codes": [
+        "9",
+        "997",
+        "998"
+      ],
+      "route_evidence": null,
+      "grant": "GRANTED_FIXTURE",
+      "version": "v1",
+      "release": "REL-A-W2",
+      "risk": "R_ORD2",
+      "members": [
+        "R11",
+        "R12",
+        "R13",
+        "R14"
+      ]
+    }
+  ],
+  "operations": [
+    {
+      "op_id": "OP-WG0P-HH-MR-02-GIVEN-WG0P-ORD-01",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-HH-MR-02",
+      "conditioners": [
+        "WG0P-ORD-01"
+      ],
+      "item_ids": [
+        "WG0P-HH-MR-02",
+        "WG0P-ORD-01"
+      ],
+      "disposition": "INADMISSIBLE",
+      "disposition_reason": "CROSS_UNIT_NOT_SAME_PERSON"
+    },
+    {
+      "op_id": "OP-WG0P-HH-MR-02-GIVEN-WG0P-ORD-04",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-HH-MR-02",
+      "conditioners": [
+        "WG0P-ORD-04"
+      ],
+      "item_ids": [
+        "WG0P-HH-MR-02",
+        "WG0P-ORD-04"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "CONDITIONER_GRANT_WITHDRAWN"
+    },
+    {
+      "op_id": "OP-WG0P-HH-MR-02-GIVEN-WG0P-ORD-05",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-HH-MR-02",
+      "conditioners": [
+        "WG0P-ORD-05"
+      ],
+      "item_ids": [
+        "WG0P-HH-MR-02",
+        "WG0P-ORD-05"
+      ],
+      "disposition": "INADMISSIBLE",
+      "disposition_reason": "CROSS_UNIT_NOT_SAME_PERSON"
+    },
+    {
+      "op_id": "OP-WG0P-HH-MR-02-GIVEN-WG0P-ROUTED-03",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-HH-MR-02",
+      "conditioners": [
+        "WG0P-ROUTED-03"
+      ],
+      "item_ids": [
+        "WG0P-HH-MR-02",
+        "WG0P-ROUTED-03"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "CONDITIONER_ROUTE_EVIDENCE_MISSING"
+    },
+    {
+      "op_id": "OP-WG0P-HH-MR-02-MARGINAL",
+      "op_class": "MARGINAL",
+      "target": "WG0P-HH-MR-02",
+      "conditioners": [],
+      "item_ids": [
+        "WG0P-HH-MR-02"
+      ],
+      "disposition": "PRODUCED",
+      "disposition_reason": "ELIGIBLE"
+    },
+    {
+      "op_id": "OP-WG0P-ORD-01-GIVEN-WG0P-HH-MR-02",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ORD-01",
+      "conditioners": [
+        "WG0P-HH-MR-02"
+      ],
+      "item_ids": [
+        "WG0P-ORD-01",
+        "WG0P-HH-MR-02"
+      ],
+      "disposition": "INADMISSIBLE",
+      "disposition_reason": "CROSS_UNIT_NOT_SAME_PERSON"
+    },
+    {
+      "op_id": "OP-WG0P-ORD-01-GIVEN-WG0P-ORD-04",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ORD-01",
+      "conditioners": [
+        "WG0P-ORD-04"
+      ],
+      "item_ids": [
+        "WG0P-ORD-01",
+        "WG0P-ORD-04"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "CONDITIONER_GRANT_WITHDRAWN"
+    },
+    {
+      "op_id": "OP-WG0P-ORD-01-GIVEN-WG0P-ORD-05",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ORD-01",
+      "conditioners": [
+        "WG0P-ORD-05"
+      ],
+      "item_ids": [
+        "WG0P-ORD-01",
+        "WG0P-ORD-05"
+      ],
+      "disposition": "INADMISSIBLE",
+      "disposition_reason": "CROSS_WAVE_NOT_SAME_PERSON"
+    },
+    {
+      "op_id": "OP-WG0P-ORD-01-GIVEN-WG0P-ROUTED-03",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ORD-01",
+      "conditioners": [
+        "WG0P-ROUTED-03"
+      ],
+      "item_ids": [
+        "WG0P-ORD-01",
+        "WG0P-ROUTED-03"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "CONDITIONER_ROUTE_EVIDENCE_MISSING"
+    },
+    {
+      "op_id": "OP-WG0P-ORD-01-MARGINAL",
+      "op_class": "MARGINAL",
+      "target": "WG0P-ORD-01",
+      "conditioners": [],
+      "item_ids": [
+        "WG0P-ORD-01"
+      ],
+      "disposition": "PRODUCED",
+      "disposition_reason": "ELIGIBLE"
+    },
+    {
+      "op_id": "OP-WG0P-ORD-04-GIVEN-WG0P-HH-MR-02",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ORD-04",
+      "conditioners": [
+        "WG0P-HH-MR-02"
+      ],
+      "item_ids": [
+        "WG0P-ORD-04",
+        "WG0P-HH-MR-02"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "TARGET_GRANT_WITHDRAWN"
+    },
+    {
+      "op_id": "OP-WG0P-ORD-04-GIVEN-WG0P-ORD-01",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ORD-04",
+      "conditioners": [
+        "WG0P-ORD-01"
+      ],
+      "item_ids": [
+        "WG0P-ORD-04",
+        "WG0P-ORD-01"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "TARGET_GRANT_WITHDRAWN"
+    },
+    {
+      "op_id": "OP-WG0P-ORD-04-GIVEN-WG0P-ORD-05",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ORD-04",
+      "conditioners": [
+        "WG0P-ORD-05"
+      ],
+      "item_ids": [
+        "WG0P-ORD-04",
+        "WG0P-ORD-05"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "TARGET_GRANT_WITHDRAWN"
+    },
+    {
+      "op_id": "OP-WG0P-ORD-04-GIVEN-WG0P-ROUTED-03",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ORD-04",
+      "conditioners": [
+        "WG0P-ROUTED-03"
+      ],
+      "item_ids": [
+        "WG0P-ORD-04",
+        "WG0P-ROUTED-03"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "TARGET_GRANT_WITHDRAWN"
+    },
+    {
+      "op_id": "OP-WG0P-ORD-04-MARGINAL",
+      "op_class": "MARGINAL",
+      "target": "WG0P-ORD-04",
+      "conditioners": [],
+      "item_ids": [
+        "WG0P-ORD-04"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "GRANT_WITHDRAWN"
+    },
+    {
+      "op_id": "OP-WG0P-ORD-05-GIVEN-WG0P-HH-MR-02",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ORD-05",
+      "conditioners": [
+        "WG0P-HH-MR-02"
+      ],
+      "item_ids": [
+        "WG0P-ORD-05",
+        "WG0P-HH-MR-02"
+      ],
+      "disposition": "INADMISSIBLE",
+      "disposition_reason": "CROSS_UNIT_NOT_SAME_PERSON"
+    },
+    {
+      "op_id": "OP-WG0P-ORD-05-GIVEN-WG0P-ORD-01",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ORD-05",
+      "conditioners": [
+        "WG0P-ORD-01"
+      ],
+      "item_ids": [
+        "WG0P-ORD-05",
+        "WG0P-ORD-01"
+      ],
+      "disposition": "INADMISSIBLE",
+      "disposition_reason": "CROSS_WAVE_NOT_SAME_PERSON"
+    },
+    {
+      "op_id": "OP-WG0P-ORD-05-GIVEN-WG0P-ORD-04",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ORD-05",
+      "conditioners": [
+        "WG0P-ORD-04"
+      ],
+      "item_ids": [
+        "WG0P-ORD-05",
+        "WG0P-ORD-04"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "CONDITIONER_GRANT_WITHDRAWN"
+    },
+    {
+      "op_id": "OP-WG0P-ORD-05-GIVEN-WG0P-ROUTED-03",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ORD-05",
+      "conditioners": [
+        "WG0P-ROUTED-03"
+      ],
+      "item_ids": [
+        "WG0P-ORD-05",
+        "WG0P-ROUTED-03"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "CONDITIONER_ROUTE_EVIDENCE_MISSING"
+    },
+    {
+      "op_id": "OP-WG0P-ORD-05-MARGINAL",
+      "op_class": "MARGINAL",
+      "target": "WG0P-ORD-05",
+      "conditioners": [],
+      "item_ids": [
+        "WG0P-ORD-05"
+      ],
+      "disposition": "PRODUCED",
+      "disposition_reason": "ELIGIBLE"
+    },
+    {
+      "op_id": "OP-WG0P-ROUTED-03-GIVEN-WG0P-HH-MR-02",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ROUTED-03",
+      "conditioners": [
+        "WG0P-HH-MR-02"
+      ],
+      "item_ids": [
+        "WG0P-ROUTED-03",
+        "WG0P-HH-MR-02"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "TARGET_ROUTE_EVIDENCE_MISSING"
+    },
+    {
+      "op_id": "OP-WG0P-ROUTED-03-GIVEN-WG0P-ORD-01",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ROUTED-03",
+      "conditioners": [
+        "WG0P-ORD-01"
+      ],
+      "item_ids": [
+        "WG0P-ROUTED-03",
+        "WG0P-ORD-01"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "TARGET_ROUTE_EVIDENCE_MISSING"
+    },
+    {
+      "op_id": "OP-WG0P-ROUTED-03-GIVEN-WG0P-ORD-04",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ROUTED-03",
+      "conditioners": [
+        "WG0P-ORD-04"
+      ],
+      "item_ids": [
+        "WG0P-ROUTED-03",
+        "WG0P-ORD-04"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "CONDITIONER_GRANT_WITHDRAWN"
+    },
+    {
+      "op_id": "OP-WG0P-ROUTED-03-GIVEN-WG0P-ORD-05",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ROUTED-03",
+      "conditioners": [
+        "WG0P-ORD-05"
+      ],
+      "item_ids": [
+        "WG0P-ROUTED-03",
+        "WG0P-ORD-05"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "TARGET_ROUTE_EVIDENCE_MISSING"
+    },
+    {
+      "op_id": "OP-WG0P-ROUTED-03-MARGINAL",
+      "op_class": "MARGINAL",
+      "target": "WG0P-ROUTED-03",
+      "conditioners": [],
+      "item_ids": [
+        "WG0P-ROUTED-03"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "ROUTE_EVIDENCE_MISSING"
+    }
+  ],
+  "counts": {
+    "PRODUCED": 3,
+    "HELD": 16,
+    "INADMISSIBLE": 6,
+    "total": 25
+  },
+  "source_native_values": {
+    "ORD01": {
+      "counts": {
+        "0": 1,
+        "1": 2,
+        "2": 2,
+        "3": 1,
+        "9": 0
+      },
+      "denominator": 6
+    },
+    "ORD05": {
+      "counts": {
+        "0": 0,
+        "1": 2,
+        "2": 1,
+        "3": 1,
+        "9": 0
+      },
+      "denominator": 4
+    },
+    "household_MR": {
+      "profiles": [
+        [
+          "food",
+          "rent"
+        ],
+        [
+          "rent",
+          "health"
+        ],
+        [
+          "food",
+          "health",
+          "education"
+        ],
+        [
+          "none"
+        ]
+      ],
+      "denominator": 4,
+      "indicator_totals": {
+        "food": 2,
+        "rent": 2,
+        "health": 2,
+        "education": 1,
+        "none": 1
+      }
+    },
+    "measure": "RAW; weight absent typed NOT_APPLICABLE"
+  },
+  "read_states": {
+    "observed_zero": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET with positive denominator",
+    "zero_risk": "ZERO_SUPPORT, denominator0, no invented positive probability",
+    "missing": "not SUBSTANTIVE_RESPONSE",
+    "revoked": "historical retained, current consumer unavailable",
+    "unknown_or_unissued": "typed HOLD/refusal, never fabricated fraction",
+    "trust": "TEST_ONLY fixture owner decision independent of requester; no original-source grant"
+  },
+  "required_provenance": [
+    "native_item",
+    "source_bytes_hash",
+    "C11_release_ref",
+    "universe_wave_unit",
+    "risk_ref_and_members",
+    "query_ref",
+    "predicate_ref",
+    "EmpiricalFact_ref_and_canonical_projection",
+    "unit_all_semantic_input_refs",
+    "original_manifest",
+    "UnitExecutionReceipt_preimage",
+    "current_existing_fixture_grant_issuer_version_edition_clock"
+  ],
+  "ordinary_conditional_case": {
+    "conditioner": "Q-ORD-A == 1",
+    "target": "Q-RT-C",
+    "source": "REL-A-W1",
+    "wave": "W1",
+    "unit": "respondent",
+    "same_scoped_respondents": [
+      "R2",
+      "R3"
+    ],
+    "joint_risk": "R_JOINT_ORD_RT",
+    "counts": {
+      "yes": 1,
+      "no": 1
+    },
+    "denominator": 2,
+    "required_path": [
+      "WorkloadBuilder",
+      "build_executable_plan",
+      "make_executor",
+      "run_plan",
+      "accepted_BatchExecutionRunner",
+      "consumer_effects"
+    ],
+    "second_frontier_rule": "Separate immutable item/opportunity register with exact item identities, reason/risk/current fixture permission. Original25 unchanged. Only independently qualified directed conditional may be PRODUCED; reverse unissued opportunity must retain typed HOLD. Interface-specific names can be mapped explicitly, never scientific expectations weakened."
+  },
+  "hostiles": {
+    "frontier": [
+      "omit_HELD",
+      "omit_INADMISSIBLE",
+      "equal_count_HELD_identity_swap",
+      "equal_count_reason_forgery",
+      "equal_count_target_swap",
+      "equal_count_source_permission_swap",
+      "circular_expected_list",
+      "consumer_frontier_mutation",
+      "duplicate_changed_semantics"
+    ],
+    "native": [
+      "options",
+      "missing_codes",
+      "routing",
+      "wave",
+      "unit",
+      "response_kind",
+      "source_id",
+      "form_id",
+      "MR_indicator_disagreement",
+      "invalid_negative",
+      "invalid_foreign",
+      "missing_observation",
+      "missing9_not_substantive",
+      "zero_risk_vs_observed_zero"
+    ],
+    "binding": [
+      "wrong_unit_release",
+      "wrong_unit_job_ref",
+      "wrong_unit_semantic_input",
+      "query_predicate_swap",
+      "result_reference_swap",
+      "source_leaf_mutation",
+      "source_authority_change",
+      "W2_wave_identity",
+      "unrelated_W2_exact_stability"
+    ],
+    "custody": [
+      "store_alias",
+      "read_alias",
+      "snapshot_alias",
+      "restore_alias",
+      "same_key_collision",
+      "fact_projection_ref_hash",
+      "rehashed_changed_fact",
+      "immediate_restore_validation"
+    ],
+    "authority": [
+      "requester_forged_grant",
+      "self_rehashed_issuer",
+      "historical_snapshot_after_revocation",
+      "fresh_process_revocation",
+      "stale_source_edition",
+      "stale_knowledge_clock",
+      "current_grant_independent_of_plan"
+    ],
+    "conditional": [
+      "ordinary_full_chain_yes1_no1_over2",
+      "original25_unchanged",
+      "second_frontier_exact_no_drop",
+      "same_grain_without_person_HOLD",
+      "split_ballot_HOLD",
+      "cross_wave_HOLD",
+      "household_person_INADMISSIBLE"
+    ],
+    "cold": [
+      "actual_abrupt_exit23_after_one",
+      "same_original_manifest",
+      "original_UnitExecutionReceipt_preimage",
+      "fresh_process_exactly_two_I03_calls",
+      "three_original_consumer_values",
+      "prior_receipt_hash_retained",
+      "missing_fact_refuse",
+      "changed_receipt_provenance_refuse",
+      "self_rehashed_checkpoint_refuse",
+      "source_edition_currentness_refuse",
+      "full_frontier25_retained"
+    ]
+  },
+  "cold_protocol": {
+    "first_process": "Real accepted runner, original3unit manifest, exactly1 completed actualI03, atomic write+file+directory fsync, then os._exit(23)",
+    "second_process": "Fresh Python, same manifest/UnitExecutionReceipt exact prior preimage/facts/source currentness, exactly2 new I03 calls, same original prior receipt hash,3 readable original facts",
+    "reject": [
+      "missing_fact",
+      "changed_receipt_or_provenance",
+      "self_rehashed_fake_grant",
+      "changed_source_leaf",
+      "stale_edition_or_clock",
+      "revoked_grant"
+    ],
+    "not_equivalent": [
+      "in_process_clone",
+      "remaining_only_manifest",
+      "completed_op_names",
+      "newly_invented_receipt",
+      "recompute_all_three"
+    ]
+  },
+  "permissions": "Local read/import/build/test synthetic historical fixtures authorized; no original SAV/DTA, issuer issuance, canonical adoption, all35/N11/N12/V3",
+  "required_owner_blobs": {
+    "rawlsing_next/pre553_c11_repository.py": "67c6eb6494522cd11aab1b93d0e73f9cef6036f3",
+    "rawlsing_next/pre553_empirical_query.py": "03facecf70890bfd13b80418620d274cbcd69d02",
+    "rawlsing_next/pre553_batch_runner.py": "2d291600b9a10c56d9c6f6de7f7d619f6c52e829",
+    "rawlsing_next/pre553_empirical_objects.py": "a61365b994e5c3c50de0f598fcf40e90abf757b6",
+    "rawlsing_next/pre553_c11_ingest.py": "37cd35fa2e3420a3eea272a2902e96ab9ba38aba"
+  },
+  "source_freeze": "Accepted owners from exact WG0P2 tree with six explicit pinned blobs and verified transitive closure; WG0P4 source not read."
+}

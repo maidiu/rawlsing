@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="3" skipped="0" tests="17" time="27.388" timestamp="2026-10-17T12:48:51.424287-04:00" hostname="Matthews-MBP.lan"><testcase classname="tests.test_authority_seam_court" name="test_phase_a_oracle_is_self_consistent" time="0.000" /><testcase classname="tests.test_authority_seam_court" name="test_inherited_wg0n_status_preserved_not_regraded" time="0.001" /><testcase classname="tests.test_authority_seam_court" name="test_forged_or_substituted_authority_does_not_serve_supported_fact[authority_issuer_substitution/A1_wrong_issuer_qauth_substitution]" time="0.690" /><testcase classname="tests.test_authority_seam_court" name="test_forged_or_substituted_authority_does_not_serve_supported_fact[authority_issuer_substitution/A2_stale_issuer_epoch_same_identity]" time="2.042"><failure message="AssertionError: A2_stale_issuer_epoch_same_identity&#10;assert True is False">court = &lt;authority_seam_adapter_v1.AuthoritySeamCourt object at 0x10d329d90&gt;
+control = {'group': 'authority_issuer_substitution', 'case': 'A2_stale_issuer_epoch_same_identity', 'kind': 'NEGATIVE_REFUSAL', ...ersion,authority_content_hash) body with effective_time_or_interval='2019-01-01' and non-empty supersession_refs", ...}
+
+    @pytest.mark.parametrize("control", NEG, ids=lambda c: c["group"] + "/" + c["case"])
+    def test_forged_or_substituted_authority_does_not_serve_supported_fact(court, control):
+        e = court.execute_case(control["group"], control["case"])
+        assert e["attempted"] is True
+        assert e["raw_path"], "execution must produce a persisted raw receipt"
+        assert e["physical_modules"], "native owner modules must be physically imported/verified"
+        # the law: no SUPPORTED original fact under a forged/substituted/stale issuer
+&gt;       assert e["served_supported_original_fact"] is False, control["case"]
+E       AssertionError: A2_stale_issuer_epoch_same_identity
+E       assert True is False
+
+WORKER_RETURNS/PYAT-R29-WG0Q-INDEPENDENT-AUTHORITY-BODY-DELTA-R1/01_WG0P6_STAGED/court/tests/test_authority_seam_court.py:82: AssertionError</failure></testcase><testcase classname="tests.test_authority_seam_court" name="test_forged_or_substituted_authority_does_not_serve_supported_fact[authority_issuer_substitution/A3_same_hash_foreign_signed_body]" time="2.670"><failure message="AssertionError: A3_same_hash_foreign_signed_body&#10;assert True is False">court = &lt;authority_seam_adapter_v1.AuthoritySeamCourt object at 0x10d329d90&gt;
+control = {'group': 'authority_issuer_substitution', 'case': 'A3_same_hash_foreign_signed_body', 'kind': 'NEGATIVE_REFUSAL', 'ta...but foreign interpretation_semantics_fingerprint, foreign producer replay root and foreign parent_authority_refs', ...}
+
+    @pytest.mark.parametrize("control", NEG, ids=lambda c: c["group"] + "/" + c["case"])
+    def test_forged_or_substituted_authority_does_not_serve_supported_fact(court, control):
+        e = court.execute_case(control["group"], control["case"])
+        assert e["attempted"] is True
+        assert e["raw_path"], "execution must produce a persisted raw receipt"
+        assert e["physical_modules"], "native owner modules must be physically imported/verified"
+        # the law: no SUPPORTED original fact under a forged/substituted/stale issuer
+&gt;       assert e["served_supported_original_fact"] is False, control["case"]
+E       AssertionError: A3_same_hash_foreign_signed_body
+E       assert True is False
+
+WORKER_RETURNS/PYAT-R29-WG0Q-INDEPENDENT-AUTHORITY-BODY-DELTA-R1/01_WG0P6_STAGED/court/tests/test_authority_seam_court.py:82: AssertionError</failure></testcase><testcase classname="tests.test_authority_seam_court" name="test_forged_or_substituted_authority_does_not_serve_supported_fact[authority_issuer_substitution/A4_foreign_governed_operations_same_hash]" time="2.860"><failure message="AssertionError: A4_foreign_governed_operations_same_hash&#10;assert True is False">court = &lt;authority_seam_adapter_v1.AuthoritySeamCourt object at 0x10d329d90&gt;
+control = {'group': 'authority_issuer_substitution', 'case': 'A4_foreign_governed_operations_same_hash', 'kind': 'NEGATIVE_REFUS...EL-A-W1.qauth := same identity triple but governed_operations=('WG0P3-OP-FOREIGN-ONLY',) and foreign fingerprint", ...}
+
+    @pytest.mark.parametrize("control", NEG, ids=lambda c: c["group"] + "/" + c["case"])
+    def test_forged_or_substituted_authority_does_not_serve_supported_fact(court, control):
+        e = court.execute_case(control["group"], control["case"])
+        assert e["attempted"] is True
+        assert e["raw_path"], "execution must produce a persisted raw receipt"
+        assert e["physical_modules"], "native owner modules must be physically imported/verified"
+        # the law: no SUPPORTED original fact under a forged/substituted/stale issuer
+&gt;       assert e["served_supported_original_fact"] is False, control["case"]
+E       AssertionError: A4_foreign_governed_operations_same_hash
+E       assert True is False
+
+WORKER_RETURNS/PYAT-R29-WG0Q-INDEPENDENT-AUTHORITY-BODY-DELTA-R1/01_WG0P6_STAGED/court/tests/test_authority_seam_court.py:82: AssertionError</failure></testcase><testcase classname="tests.test_authority_seam_court" name="test_forged_or_substituted_authority_does_not_serve_supported_fact[authority_issuer_substitution/A5_foreign_authority_inside_authorities_tuple]" time="0.453" /><testcase classname="tests.test_authority_seam_court" name="test_forged_or_substituted_authority_does_not_serve_supported_fact[signature_and_callback/B1_self_rehashed_checkpoint_foreign_signature]" time="1.450" /><testcase classname="tests.test_authority_seam_court" name="test_forged_or_substituted_authority_does_not_serve_supported_fact[signature_and_callback/B2_foreign_signature_proper_tag]" time="1.257" /><testcase classname="tests.test_authority_seam_court" name="test_forged_or_substituted_authority_does_not_serve_supported_fact[signature_and_callback/B3_captured_executor_callback_fabricates_fact]" time="0.659" /><testcase classname="tests.test_authority_seam_court" name="test_forged_or_substituted_authority_does_not_serve_supported_fact[revocation_and_alias/C1_source_artifact_revocation_not_release_tag]" time="0.603" /><testcase classname="tests.test_authority_seam_court" name="test_forged_or_substituted_authority_does_not_serve_supported_fact[revocation_and_alias/C2_missing_independent_issuer]" time="0.548" /><testcase classname="tests.test_authority_seam_court" name="test_forged_or_substituted_authority_does_not_serve_supported_fact[revocation_and_alias/C3_alias_pointer_across_genuine_source_universes]" time="0.623" /><testcase classname="tests.test_authority_seam_court" name="test_legitimate_owner_still_serves_supported_fact[positive_owner/P1_unmodified_owner_serves]" time="3.768" /><testcase classname="tests.test_authority_seam_court" name="test_legitimate_owner_still_serves_supported_fact[positive_owner/P2_own_authority_identity_rebind_serves]" time="5.372" /><testcase classname="tests.test_authority_seam_court" name="test_legitimate_owner_still_serves_supported_fact[positive_owner/P3_replay_identical_consumer]" time="4.248" /><testcase classname="tests.test_authority_seam_court" name="test_phase_a_artifacts_are_frozen_and_identified" time="0.003" /></testsuite></testsuites>
