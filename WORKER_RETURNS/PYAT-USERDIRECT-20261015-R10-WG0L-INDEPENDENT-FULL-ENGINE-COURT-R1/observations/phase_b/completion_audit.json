@@ -1,9 +1,10 @@
 {
   "at": "2026-10-17T03:34:10.035397+00:00",
   "candidate_accepted": false,
+  "court_delivery_verdict": "COMPLETE_BOUNDED_REVIEW_RETURN; candidate RED; exact unavailable excerpt replay explicitly HELD; all documented expectations exercised on full imports.",
   "court_execution_complete": true,
   "held_item_handling": "Explicit dependency HOLD is delivered as required; exact excerpt replay is not certified. Full imported source tests independently exercise every documented expectation.",
-  "publication_complete": false,
+  "publication_complete": true,
   "requirements": [
     {
       "evidence": "git ancestry/direct origin and return-only diff",
@@ -81,11 +82,12 @@
       "status": "PROVED"
     },
     {
-      "evidence": "publication_receipt.json plus final tool readback",
+      "evidence": "publication_receipt.json: direct remote SHA ecf4b844e6172a46b5b8c9aaf0d755dc1cd2ffe2",
       "requirement": "push exact reviewer branch and direct SHA readback",
-      "status": "PENDING_PUBLICATION"
+      "status": "PROVED"
     }
   ],
+  "verified_scientific_return_commit": "ecf4b844e6172a46b5b8c9aaf0d755dc1cd2ffe2",
   "write_scope": [
     "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/.gitignore",
     "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/00_VERDICT_OR_PHASE_A.md",

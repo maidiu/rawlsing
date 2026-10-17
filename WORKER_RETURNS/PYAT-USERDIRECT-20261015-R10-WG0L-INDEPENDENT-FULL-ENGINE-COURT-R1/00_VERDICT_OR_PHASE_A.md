@@ -27,6 +27,8 @@ Actual crash/recovery exits23 after one native unit, restores the original accep
 
 Report02 contains exact commands, module paths/hashes, source identities, raw evidence indexes, exits and result accounting. Report04 gives the repair edge and authority ceiling. The candidate remains **RED**, with no HQ/source/semantic-issuer/adopter authority granted. Publish this reviewer return only; obtain author repair and fresh independent scientific acceptance before any later adoption claim.
 
+Scientific return pushed and directly verified at **ecf4b844e6172a46b5b8c9aaf0d755dc1cd2ffe2**. The publication receipt and requirement audit are committed separately; the final receipt-carrier SHA is returned after direct remote verification.
+
 ---
 
 # Historical Phase A checkpoint and continuation records
