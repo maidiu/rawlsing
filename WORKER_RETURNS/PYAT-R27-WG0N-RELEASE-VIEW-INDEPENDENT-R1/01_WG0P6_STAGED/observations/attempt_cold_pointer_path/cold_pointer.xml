@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="0.113" timestamp="2026-10-17T02:09:50.328983-04:00" hostname="Matthews-MBP.lan"><testcase classname="" name="test_fresh_process_pointer_substitution_cannot_restore_signed_prior_facts" time="0.002"><failure message="FileNotFoundError: [Errno 2] No such file or directory: '<WORKTREE>/WORKER_RETURNS/PYAT-R27-WG0P6-RELEASE-VIEW-SOURCE-ARTIFACT-BINDING-R1/court/observations/phase_b/inherited_v1/cold_comparison.json'">../tests/test_cold_pointer_process.py:6: in test_fresh_process_pointer_substitution_cannot_restore_signed_prior_facts
+    summary=json.loads((R/'court/observations/phase_b/inherited_v1/cold_comparison.json').read_text())
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1058: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1044: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '<WORKTREE>/WORKER_RETURNS/PYAT-R27-WG0P6-RELEASE-VIEW-SOURCE-ARTIFACT-BINDING-R1/court/observations/phase_b/inherited_v1/cold_comparison.json'</failure></testcase></testsuite></testsuites>

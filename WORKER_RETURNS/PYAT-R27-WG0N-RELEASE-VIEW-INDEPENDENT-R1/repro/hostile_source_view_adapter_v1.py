@@ -20,9 +20,10 @@ import sys
 from dataclasses import replace
 
 R = pathlib.Path(__file__).resolve().parents[1]
-WG0M = R.parent / "PYAT-R26-WG0M-ORIGINAL-FRONTIER-INDEPENDENT-DELTA-R1"
-sys.path.insert(0, str(WG0M / "repro"))
 
+# The reviewer transport is resolved from sys.path so that the candidate's own
+# identity bootstrap (sitecustomize) can wire it first. Nothing here forces a
+# specific source root: the physical owner verification is the bootstrap's job.
 import phase_b_support_v1 as S  # noqa: E402
 from phase_b_support_v1 import plan, execute, profile_calls, dump  # noqa: E402
 

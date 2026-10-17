@@ -19,7 +19,7 @@ import sys
 import pytest
 
 R = pathlib.Path(__file__).resolve().parents[1]
-WG0M = R.parent / "PYAT-R26-WG0M-ORIGINAL-FRONTIER-INDEPENDENT-DELTA-R1"
+WG0M = pathlib.Path(os.environ.get("WG0N_PRESERVED_ROOT", R.parent / "PYAT-R26-WG0M-ORIGINAL-FRONTIER-INDEPENDENT-DELTA-R1"))
 O = json.loads((R / "01_PREREGISTERED_HOSTILE_SOURCE_VIEW_ORACLE.json").read_text())
 
 # The parent's own suites must still be present and byte-exact: nothing here may

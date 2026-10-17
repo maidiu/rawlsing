@@ -1,0 +1,189 @@
+[
+ {
+  "group": "release_source_view_substitution",
+  "case": "A1_genuine_foreign_pointer",
+  "kind": "NEGATIVE_REFUSAL",
+  "verdict": "PASS",
+  "exception_type": "IdentityError",
+  "typed_refusal": "REFUSED",
+  "served_positive": false,
+  "new_I03_calls": 0,
+  "note": ""
+ },
+ {
+  "group": "release_source_view_substitution",
+  "case": "A2_coherent_full_source_view",
+  "kind": "NEGATIVE_REFUSAL",
+  "verdict": "PASS",
+  "exception_type": "IdentityError",
+  "typed_refusal": "REFUSED",
+  "served_positive": false,
+  "new_I03_calls": 0,
+  "note": ""
+ },
+ {
+  "group": "release_source_view_substitution",
+  "case": "A3_pointer_and_edition_foreign_universe_own",
+  "kind": "NEGATIVE_REFUSAL",
+  "verdict": "PASS",
+  "exception_type": "IdentityError",
+  "typed_refusal": "REFUSED",
+  "served_positive": false,
+  "new_I03_calls": 0,
+  "note": ""
+ },
+ {
+  "group": "reused_source_pointer",
+  "case": "B1_one_pointer_two_releases",
+  "kind": "NEGATIVE_REFUSAL",
+  "verdict": "PASS",
+  "exception_type": "IdentityError",
+  "typed_refusal": "REFUSED",
+  "served_positive": false,
+  "new_I03_calls": 0,
+  "note": ""
+ },
+ {
+  "group": "reused_source_pointer",
+  "case": "B2_pointer_reused_across_universes",
+  "kind": "NEGATIVE_REFUSAL",
+  "verdict": "PASS",
+  "exception_type": "IdentityError",
+  "typed_refusal": "REFUSED",
+  "served_positive": false,
+  "new_I03_calls": 0,
+  "note": ""
+ },
+ {
+  "group": "source_epoch_and_revocation",
+  "case": "C1_epoch_advance_after_binding",
+  "kind": "NEGATIVE_REFUSAL",
+  "verdict": "PASS",
+  "exception_type": "RevocationError",
+  "typed_refusal": "REFUSED",
+  "served_positive": false,
+  "new_I03_calls": 0,
+  "note": ""
+ },
+ {
+  "group": "source_epoch_and_revocation",
+  "case": "C2_release_revocation_after_binding",
+  "kind": "NEGATIVE_REFUSAL",
+  "verdict": "PASS",
+  "exception_type": "RevocationError",
+  "typed_refusal": "REFUSED",
+  "served_positive": false,
+  "new_I03_calls": 0,
+  "note": ""
+ },
+ {
+  "group": "source_epoch_and_revocation",
+  "case": "C3_source_artifact_revocation",
+  "kind": "NEGATIVE_REFUSAL",
+  "verdict": "NOT_CONSTRUCTIBLE",
+  "exception_type": "CONSTRUCTION:RevocationError",
+  "typed_refusal": null,
+  "served_positive": null,
+  "new_I03_calls": null,
+  "note": "UNKNOWN_RELEASE_NO_REVOCATION"
+ },
+ {
+  "group": "altered_snapshot",
+  "case": "D1_content_hash_mismatch_on_pointer",
+  "kind": "NEGATIVE_REFUSAL",
+  "verdict": "PASS",
+  "exception_type": "IdentityError",
+  "typed_refusal": "REFUSED",
+  "served_positive": false,
+  "new_I03_calls": 0,
+  "note": ""
+ },
+ {
+  "group": "altered_snapshot",
+  "case": "D2_rehashed_snapshot_registered_digest_unchanged",
+  "kind": "NEGATIVE_REFUSAL",
+  "verdict": "PASS",
+  "exception_type": "IdentityError",
+  "typed_refusal": "REFUSED",
+  "served_positive": false,
+  "new_I03_calls": 0,
+  "note": ""
+ },
+ {
+  "group": "altered_snapshot",
+  "case": "D3_truncated_or_empty_snapshot",
+  "kind": "NEGATIVE_REFUSAL",
+  "verdict": "NOT_CONSTRUCTIBLE",
+  "exception_type": "CONSTRUCTION:Pre553IntegrityError",
+  "typed_refusal": null,
+  "served_positive": null,
+  "new_I03_calls": null,
+  "note": "content_hash must be a non-empty string"
+ },
+ {
+  "group": "issuer_mismatch",
+  "case": "E1_release_issuer_not_registrar",
+  "kind": "NEGATIVE_REFUSAL",
+  "verdict": "NOT_CONSTRUCTIBLE",
+  "exception_type": "CONSTRUCTION:TypeError",
+  "typed_refusal": null,
+  "served_positive": null,
+  "new_I03_calls": null,
+  "note": "IngestedRelease.__init__() got an unexpected keyword argument 'issuer_"
+ },
+ {
+  "group": "issuer_mismatch",
+  "case": "E2_unregistered_issuer",
+  "kind": "NEGATIVE_REFUSAL",
+  "verdict": "NOT_CONSTRUCTIBLE",
+  "exception_type": "CONSTRUCTION:TypeError",
+  "typed_refusal": null,
+  "served_positive": null,
+  "new_I03_calls": null,
+  "note": "IngestedRelease.__init__() got an unexpected keyword argument 'issuer_"
+ },
+ {
+  "group": "issuer_mismatch",
+  "case": "E3_issuer_epoch_mismatch",
+  "kind": "NEGATIVE_REFUSAL",
+  "verdict": "NOT_CONSTRUCTIBLE",
+  "exception_type": "CONSTRUCTION:TypeError",
+  "typed_refusal": null,
+  "served_positive": null,
+  "new_I03_calls": null,
+  "note": "IngestedRelease.__init__() got an unexpected keyword argument 'issuer_"
+ },
+ {
+  "group": "positive_legitimate_owner",
+  "case": "F1_unmodified_legitimate_owner_serves",
+  "kind": "POSITIVE_SERVE",
+  "verdict": "PASS",
+  "exception_type": null,
+  "typed_refusal": null,
+  "served_positive": true,
+  "new_I03_calls": 4,
+  "note": ""
+ },
+ {
+  "group": "positive_legitimate_owner",
+  "case": "F2_replay_identical_receipts",
+  "kind": "POSITIVE_SERVE",
+  "verdict": "PASS",
+  "exception_type": null,
+  "typed_refusal": null,
+  "served_positive": true,
+  "new_I03_calls": 0,
+  "note": ""
+ },
+ {
+  "group": "positive_legitimate_owner",
+  "case": "F3_own_pointer_serves",
+  "kind": "POSITIVE_SERVE",
+  "verdict": "PASS",
+  "exception_type": null,
+  "typed_refusal": null,
+  "served_positive": true,
+  "new_I03_calls": 4,
+  "note": ""
+ }
+]

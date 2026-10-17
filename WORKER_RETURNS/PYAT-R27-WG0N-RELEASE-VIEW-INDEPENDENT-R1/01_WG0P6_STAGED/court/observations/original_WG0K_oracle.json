@@ -1,0 +1,373 @@
+{
+  "schema": "WG0K_PRE_RUN_FROZEN_INDEPENDENT_SOURCE_OPPORTUNITY_COURT@1",
+  "sealed_sha": "af2d50caf668163383d87d79091dbd15d2d9f99d",
+  "candidate": "16584e2f5b6ab43652063797d30c59465b1f66bb",
+  "role": "WG0K different from WG0J and WG0P3 author; same conversation as earlier WG0I, disclosure for independence boundary",
+  "frozen_stage": "BEFORE_WG0P3_PYTHON_SOURCE_OR_AUTHOR_TEST_INSPECTION_AND_BEFORE_ANY_CANDIDATE_EXECUTION",
+  "input_items": [
+    {
+      "item_id": "WG0P-ORD-01",
+      "source": "A",
+      "wave": "W1",
+      "unit": "respondent",
+      "grant": "GRANTED_FIXTURE",
+      "kind": "ORDINAL",
+      "route": true
+    },
+    {
+      "item_id": "WG0P-HH-MR-02",
+      "source": "A",
+      "wave": "W1",
+      "unit": "household",
+      "grant": "GRANTED_FIXTURE",
+      "kind": "MULTIPLE_RESPONSE",
+      "route": true
+    },
+    {
+      "item_id": "WG0P-ROUTED-03",
+      "source": "A",
+      "wave": "W1",
+      "unit": "respondent",
+      "grant": "GRANTED_FIXTURE",
+      "kind": "ROUTED",
+      "route": false
+    },
+    {
+      "item_id": "WG0P-ORD-04",
+      "source": "B",
+      "wave": "W2",
+      "unit": "respondent",
+      "grant": "WITHDRAWN",
+      "kind": "ORDINAL",
+      "route": true
+    },
+    {
+      "item_id": "WG0P-ORD-05",
+      "source": "A",
+      "wave": "W2",
+      "unit": "respondent",
+      "grant": "GRANTED_FIXTURE",
+      "kind": "ORDINAL",
+      "route": true
+    }
+  ],
+  "expected_opportunity_inventory": [
+    {
+      "id": "OP-WG0P-HH-MR-02-GIVEN-WG0P-ORD-01",
+      "class": "CONDITIONAL",
+      "item_ids": [
+        "WG0P-HH-MR-02",
+        "WG0P-ORD-01"
+      ],
+      "disposition": "INADMISSIBLE",
+      "reason": "CROSS_UNIT_NOT_SAME_PERSON"
+    },
+    {
+      "id": "OP-WG0P-HH-MR-02-GIVEN-WG0P-ORD-04",
+      "class": "CONDITIONAL",
+      "item_ids": [
+        "WG0P-HH-MR-02",
+        "WG0P-ORD-04"
+      ],
+      "disposition": "HELD",
+      "reason": "CONDITIONER_GRANT_WITHDRAWN"
+    },
+    {
+      "id": "OP-WG0P-HH-MR-02-GIVEN-WG0P-ORD-05",
+      "class": "CONDITIONAL",
+      "item_ids": [
+        "WG0P-HH-MR-02",
+        "WG0P-ORD-05"
+      ],
+      "disposition": "INADMISSIBLE",
+      "reason": "CROSS_UNIT_NOT_SAME_PERSON"
+    },
+    {
+      "id": "OP-WG0P-HH-MR-02-GIVEN-WG0P-ROUTED-03",
+      "class": "CONDITIONAL",
+      "item_ids": [
+        "WG0P-HH-MR-02",
+        "WG0P-ROUTED-03"
+      ],
+      "disposition": "HELD",
+      "reason": "CONDITIONER_ROUTE_EVIDENCE_MISSING"
+    },
+    {
+      "id": "OP-WG0P-HH-MR-02-MARGINAL",
+      "class": "MARGINAL",
+      "item_ids": [
+        "WG0P-HH-MR-02"
+      ],
+      "disposition": "PRODUCED",
+      "reason": "ELIGIBLE"
+    },
+    {
+      "id": "OP-WG0P-ORD-01-GIVEN-WG0P-HH-MR-02",
+      "class": "CONDITIONAL",
+      "item_ids": [
+        "WG0P-ORD-01",
+        "WG0P-HH-MR-02"
+      ],
+      "disposition": "INADMISSIBLE",
+      "reason": "CROSS_UNIT_NOT_SAME_PERSON"
+    },
+    {
+      "id": "OP-WG0P-ORD-01-GIVEN-WG0P-ORD-04",
+      "class": "CONDITIONAL",
+      "item_ids": [
+        "WG0P-ORD-01",
+        "WG0P-ORD-04"
+      ],
+      "disposition": "HELD",
+      "reason": "CONDITIONER_GRANT_WITHDRAWN"
+    },
+    {
+      "id": "OP-WG0P-ORD-01-GIVEN-WG0P-ORD-05",
+      "class": "CONDITIONAL",
+      "item_ids": [
+        "WG0P-ORD-01",
+        "WG0P-ORD-05"
+      ],
+      "disposition": "INADMISSIBLE",
+      "reason": "CROSS_WAVE_NOT_SAME_PERSON"
+    },
+    {
+      "id": "OP-WG0P-ORD-01-GIVEN-WG0P-ROUTED-03",
+      "class": "CONDITIONAL",
+      "item_ids": [
+        "WG0P-ORD-01",
+        "WG0P-ROUTED-03"
+      ],
+      "disposition": "HELD",
+      "reason": "CONDITIONER_ROUTE_EVIDENCE_MISSING"
+    },
+    {
+      "id": "OP-WG0P-ORD-01-MARGINAL",
+      "class": "MARGINAL",
+      "item_ids": [
+        "WG0P-ORD-01"
+      ],
+      "disposition": "PRODUCED",
+      "reason": "ELIGIBLE"
+    },
+    {
+      "id": "OP-WG0P-ORD-04-GIVEN-WG0P-HH-MR-02",
+      "class": "CONDITIONAL",
+      "item_ids": [
+        "WG0P-ORD-04",
+        "WG0P-HH-MR-02"
+      ],
+      "disposition": "HELD",
+      "reason": "TARGET_GRANT_WITHDRAWN"
+    },
+    {
+      "id": "OP-WG0P-ORD-04-GIVEN-WG0P-ORD-01",
+      "class": "CONDITIONAL",
+      "item_ids": [
+        "WG0P-ORD-04",
+        "WG0P-ORD-01"
+      ],
+      "disposition": "HELD",
+      "reason": "TARGET_GRANT_WITHDRAWN"
+    },
+    {
+      "id": "OP-WG0P-ORD-04-GIVEN-WG0P-ORD-05",
+      "class": "CONDITIONAL",
+      "item_ids": [
+        "WG0P-ORD-04",
+        "WG0P-ORD-05"
+      ],
+      "disposition": "HELD",
+      "reason": "TARGET_GRANT_WITHDRAWN"
+    },
+    {
+      "id": "OP-WG0P-ORD-04-GIVEN-WG0P-ROUTED-03",
+      "class": "CONDITIONAL",
+      "item_ids": [
+        "WG0P-ORD-04",
+        "WG0P-ROUTED-03"
+      ],
+      "disposition": "HELD",
+      "reason": "TARGET_GRANT_WITHDRAWN"
+    },
+    {
+      "id": "OP-WG0P-ORD-04-MARGINAL",
+      "class": "MARGINAL",
+      "item_ids": [
+        "WG0P-ORD-04"
+      ],
+      "disposition": "HELD",
+      "reason": "GRANT_WITHDRAWN"
+    },
+    {
+      "id": "OP-WG0P-ORD-05-GIVEN-WG0P-HH-MR-02",
+      "class": "CONDITIONAL",
+      "item_ids": [
+        "WG0P-ORD-05",
+        "WG0P-HH-MR-02"
+      ],
+      "disposition": "INADMISSIBLE",
+      "reason": "CROSS_UNIT_NOT_SAME_PERSON"
+    },
+    {
+      "id": "OP-WG0P-ORD-05-GIVEN-WG0P-ORD-01",
+      "class": "CONDITIONAL",
+      "item_ids": [
+        "WG0P-ORD-05",
+        "WG0P-ORD-01"
+      ],
+      "disposition": "INADMISSIBLE",
+      "reason": "CROSS_WAVE_NOT_SAME_PERSON"
+    },
+    {
+      "id": "OP-WG0P-ORD-05-GIVEN-WG0P-ORD-04",
+      "class": "CONDITIONAL",
+      "item_ids": [
+        "WG0P-ORD-05",
+        "WG0P-ORD-04"
+      ],
+      "disposition": "HELD",
+      "reason": "CONDITIONER_GRANT_WITHDRAWN"
+    },
+    {
+      "id": "OP-WG0P-ORD-05-GIVEN-WG0P-ROUTED-03",
+      "class": "CONDITIONAL",
+      "item_ids": [
+        "WG0P-ORD-05",
+        "WG0P-ROUTED-03"
+      ],
+      "disposition": "HELD",
+      "reason": "CONDITIONER_ROUTE_EVIDENCE_MISSING"
+    },
+    {
+      "id": "OP-WG0P-ORD-05-MARGINAL",
+      "class": "MARGINAL",
+      "item_ids": [
+        "WG0P-ORD-05"
+      ],
+      "disposition": "PRODUCED",
+      "reason": "ELIGIBLE"
+    },
+    {
+      "id": "OP-WG0P-ROUTED-03-GIVEN-WG0P-HH-MR-02",
+      "class": "CONDITIONAL",
+      "item_ids": [
+        "WG0P-ROUTED-03",
+        "WG0P-HH-MR-02"
+      ],
+      "disposition": "HELD",
+      "reason": "TARGET_ROUTE_EVIDENCE_MISSING"
+    },
+    {
+      "id": "OP-WG0P-ROUTED-03-GIVEN-WG0P-ORD-01",
+      "class": "CONDITIONAL",
+      "item_ids": [
+        "WG0P-ROUTED-03",
+        "WG0P-ORD-01"
+      ],
+      "disposition": "HELD",
+      "reason": "TARGET_ROUTE_EVIDENCE_MISSING"
+    },
+    {
+      "id": "OP-WG0P-ROUTED-03-GIVEN-WG0P-ORD-04",
+      "class": "CONDITIONAL",
+      "item_ids": [
+        "WG0P-ROUTED-03",
+        "WG0P-ORD-04"
+      ],
+      "disposition": "HELD",
+      "reason": "CONDITIONER_GRANT_WITHDRAWN"
+    },
+    {
+      "id": "OP-WG0P-ROUTED-03-GIVEN-WG0P-ORD-05",
+      "class": "CONDITIONAL",
+      "item_ids": [
+        "WG0P-ROUTED-03",
+        "WG0P-ORD-05"
+      ],
+      "disposition": "HELD",
+      "reason": "TARGET_ROUTE_EVIDENCE_MISSING"
+    },
+    {
+      "id": "OP-WG0P-ROUTED-03-MARGINAL",
+      "class": "MARGINAL",
+      "item_ids": [
+        "WG0P-ROUTED-03"
+      ],
+      "disposition": "HELD",
+      "reason": "ROUTE_EVIDENCE_MISSING"
+    }
+  ],
+  "expected_count": {
+    "total": 25,
+    "produced": 3,
+    "held": 16,
+    "inadmissible": 6
+  },
+  "source_value_expectations": {
+    "ORD01": {
+      "0": 1,
+      "1": 2,
+      "2": 2,
+      "3": 1,
+      "9": 0,
+      "denominator": 6
+    },
+    "ORD05": {
+      "0": 0,
+      "1": 2,
+      "2": 1,
+      "3": 1,
+      "9": 0,
+      "denominator": 4
+    },
+    "MR": {
+      "profiles": [
+        [
+          "food",
+          "rent"
+        ],
+        [
+          "rent",
+          "health"
+        ],
+        [
+          "food",
+          "health",
+          "education"
+        ],
+        [
+          "none"
+        ]
+      ],
+      "denominator": 4,
+      "indicators": {
+        "food": 2,
+        "rent": 2,
+        "health": 2,
+        "education": 1,
+        "none": 1
+      }
+    }
+  },
+  "planned_counterexamples": [
+    "remove one HELD and insert alternate HELD while preserving 3/16/6/25; must fail exact source-independent 25-ID ledger",
+    "equal-count reason swap, class swap, target swap and carrier identity substitution",
+    "after FactCustody.store mutate caller-provided dict, after read mutate returned dict and after snapshot mutate nested dict; accepted archived fact must be unchanged, not just next-read failure",
+    "independent reconstructed I02/C11/I03 frozen source stats and predicate/permission refs",
+    "native options, missing codes, source version, wave, kind, unit or source identity change must lead to corrected query/source or lawful HOLD, no identical stale numeric observation",
+    "positive conditional through the *ordinary* enumerator, plan, executor, batch and consumer, not isolated demonstration",
+    "one-unit receipt+fact checkpoint physically written to disk, process SIGKILL/os._exit then fresh subprocess rehydrate exact immutable receipts and values, with original manifest FULL_MANIFEST_COVERAGE",
+    "mutated checkpoint preimage, self-rehashed unsigned checkpoint, stale grant, stale release, swapped receipt, changed source row must refuse/supersede",
+    "multiple-response native indicator agreement, missing9 excluded from substantive, zero support and observed zero distinct",
+    "freeze current source grant from independently pinned trust/authority state, not merely plan dict"
+  ],
+  "owner_source_blobs": {
+    "c11repo": "67c6eb6494522cd11aab1b93d0e73f9cef6036f3",
+    "i03": "03facecf70890bfd13b80418620d274cbcd69d02",
+    "batch": "2d291600b9a10c56d9c6f6de7f7d619f6c52e829",
+    "objects": "a61365b994e5c3c50de0f598fcf40e90abf757b6",
+    "c11ingest": "37cd35fa2e3420a3eea272a2902e96ab9ba38aba"
+  },
+  "scope": "Synthetic-only; never a grant to original survey data, I05/Route B, all35 or V3."
+}
