@@ -21,8 +21,11 @@ base=json.load(open(R/'observations/baseline.json'));selector=json.load(open(R/'
 for row in selector['files']:
     if row['source_path'].startswith('rawlsing_next/'):
         module=row['source_path'][:-3].replace('/','.')
-        imported=next(x for x in base['imports'] if x['module']==module)
-        good('actual_native_import:'+module,imported['git_blob_sha1']==row['git_blob_sha1'] and imported['file'].endswith('/pinned/'+row['staging_path']))
+        imported=next((x for x in base['imports'] if x['module']==module),None)
+        if imported is None:
+            good('staged_optional_not_imported:'+module,module in ['rawlsing_next.pre553_discovery_exact','rawlsing_next.pre553_runtime_composition'])
+        else:
+            good('actual_native_import:'+module,imported['git_blob_sha1']==row['git_blob_sha1'] and imported['file'].endswith('/pinned/'+row['staging_path']))
 good('native_call_trace',collections.Counter(c['function'] for c in base['owner_calls'])=={'ingest_c11_source_release':3,'_commit_validated':3,'execute_empirical_query':3,'run':1})
 a=json.load(open(R/'observations/native_cold_crash.json'));b=json.load(open(R/'observations/native_cold_resume.json'))
 good('actual_cold_process_identity',a['pid']!=b['pid'] and a['exit']==23 and a['unit_count']==b['unit_count']==3 and a['manifest']==b['manifest'] and a['source_frontier_root']==b['source_frontier_root'])
@@ -38,7 +41,7 @@ good('review_and_authority_ceiling',ret['new_source_model_semantic_n11_n12_v3_gr
 files=sorted(set(git('ls-files','--cached','--others','--exclude-standard','--',PREFIX).decode().splitlines()))
 good('no_runtime_keys_in_return',all('/runtime/' not in p and '__pycache__' not in p and not p.endswith('key.bin') for p in files))
 for p in files:
-    raw=(ROOT/p).read_bytes();good('sanitized:'+p,b'/Users/matthewsmith' not in raw)
+    raw=(ROOT/p).read_bytes();good('sanitized:'+p,str(pathlib.Path.home()).encode() not in raw)
 if sys.argv[1:]==['--build-manifest']:
     entries={p.removeprefix(PREFIX):{'git_blob_sha1':blob(ROOT/p),'sha256':hashlib.sha256((ROOT/p).read_bytes()).hexdigest(),'bytes':(ROOT/p).stat().st_size} for p in files if p!=PREFIX+'ARTIFACT_MANIFEST.json'}
     manifest={'schema':'WG0P4_IMMUTABLE_RETURN_FILES@1','sealed_startup':START,'expectation_freeze_commit':ret['expectation_freeze_commit'],'implementation_evidence_commit':ret['implementation_evidence_commit'],'file_root':PREFIX,'self_exclusion':'ARTIFACT_MANIFEST.json cannot bind its own future bytes. The enclosing Git commit supplies publication identity.','files':entries}

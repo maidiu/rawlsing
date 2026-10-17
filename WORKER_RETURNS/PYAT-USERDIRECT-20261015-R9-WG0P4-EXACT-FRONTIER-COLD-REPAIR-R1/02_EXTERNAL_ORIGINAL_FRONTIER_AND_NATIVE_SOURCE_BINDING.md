@@ -24,3 +24,5 @@ Original accepted owner blobs:
 - `pre553_runtime_authority.py` `896c7094124a4aaea23eec550178e4bf8e73ac68`
 - `pre553_runtime_composition.py` `3753c183ddb25b1b0eb0ce84db1868f39f50d3fa`
 - `pre553_runtime_context.py` `4fc50793871e176f164442c04ef2501eba9d5dfa`
+
+Import accounting:14 native modules are statically staged and Git-blob verified;12 are actually imported in the native baseline, including all required C11/I02/I03/Batch/objects/integrity owners. Discovery_exact and runtime_composition are staged optional dependencies, not claimed imported or executed. The final structural verifier initially conflated staging with imports; this was corrected without changing the candidate or scientific test results.

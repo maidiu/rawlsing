@@ -41,3 +41,5 @@ Remaining holds:
 - No real source/semantic/model/OC05/N11/N12/V3 rights, protected code change or self-adoption.
 
 Return to existing Pyat HQ, then existing independent WG0L branch `agent/userdirect-pyat-20261015-r10-wg0l-precommitted-full-engine-court-r1` (original frozen startup `1f198cb397d1602d0450f8bac60610ebfcaf5b3a`) for a separately pinned Phase B court. This author neither launches nor acts as WG0L and cannot self-accept the method.
+
+Import accounting:14 native modules are statically staged and Git-blob verified;12 are actually imported in the native baseline, including all required C11/I02/I03/Batch/objects/integrity owners. Discovery_exact and runtime_composition are staged optional dependencies, not claimed imported or executed. The final structural verifier initially conflated staging with imports; this was corrected without changing the candidate or scientific test results.
