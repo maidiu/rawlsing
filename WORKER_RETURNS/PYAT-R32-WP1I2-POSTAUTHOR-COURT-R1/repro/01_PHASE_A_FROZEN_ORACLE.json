@@ -1,0 +1,221 @@
+{
+  "schema": "PYAT_R31_WP1I_PREWP1_FROZEN_ORACLE_R1",
+  "grade": "INDEPENDENT_SYNTHETIC_SCIENTIFIC_EXPECTATIONS_NOT_SOURCE_AUTHORITY",
+  "independence": {
+    "WP1_code_read_before_freeze": false,
+    "WP1_return_read_before_freeze": false,
+    "author_tests_inspected": false
+  },
+  "sample_A": {
+    "source_family": "INDEPENDENT_SYNTHETIC_SURVEY_A",
+    "release": "A_2020_R1",
+    "eligible_n": 100,
+    "two_by_two": {
+      "X1_Y1": 18,
+      "X1_Y0": 22,
+      "X0_Y1": 12,
+      "X0_Y0": 48
+    },
+    "expected": {
+      "P_Y1_given_X1": "9/20",
+      "P_X1_given_Y1": "3/5",
+      "P_Y1_given_X0": "1/5",
+      "P_X1_given_Y0": "11/35",
+      "P_X1": "2/5",
+      "P_Y1": "3/10"
+    }
+  },
+  "sample_B": {
+    "source_family": "INDEPENDENT_SYNTHETIC_SURVEY_B",
+    "release": "B_2021_R1",
+    "eligible_n": 40,
+    "two_by_two": {
+      "X1_Y1": 1,
+      "X1_Y0": 3,
+      "X0_Y1": 5,
+      "X0_Y0": 31
+    },
+    "expected": {
+      "P_Y1_given_X1": "1/4",
+      "P_X1_given_Y1": "1/6"
+    }
+  },
+  "support_cases": [
+    {
+      "id": "OBSERVED_ZERO",
+      "positive": 0,
+      "negative": 20,
+      "missing": 0,
+      "suppressed": false,
+      "expected_status": "OBSERVED_ZERO",
+      "value": "0/1"
+    },
+    {
+      "id": "UNSUPPORTED_NO_DENOMINATOR",
+      "positive": 0,
+      "negative": 0,
+      "missing": 0,
+      "suppressed": false,
+      "expected_status": "UNSUPPORTED",
+      "value": null
+    },
+    {
+      "id": "MISSING_OUTCOME",
+      "positive": 9,
+      "negative": 11,
+      "missing": 5,
+      "suppressed": false,
+      "expected_status": "PARTIAL_IDENTIFICATION",
+      "bounds": [
+        "9/25",
+        "14/25"
+      ]
+    },
+    {
+      "id": "SUPPRESSED_PUBLISHER",
+      "positive": null,
+      "negative": null,
+      "missing": null,
+      "suppressed": true,
+      "expected_status": "SUPPRESSED",
+      "value": null
+    }
+  ],
+  "minority_case": {
+    "eligible_n": 100,
+    "minority_n": 4,
+    "event_within_minority": 1,
+    "expected_conditional": "1/4",
+    "forbid_majority_overwrite": true
+  },
+  "F6": {
+    "WorldA": {
+      "positive": 30,
+      "negative": 70,
+      "missing": 0,
+      "expected_bounds": [
+        "3/10",
+        "3/10"
+      ],
+      "expected_status": "COMPLETE"
+    },
+    "WorldB": {
+      "positive": 18,
+      "negative": 60,
+      "missing": 22,
+      "expected_bounds": [
+        "9/50",
+        "2/5"
+      ],
+      "expected_status": "PARTIAL_IDENTIFICATION"
+    },
+    "null_distribution_may_be_complete": false,
+    "normalize_known_cases_forbidden": true
+  },
+  "worlds": {
+    "A": {
+      "world_id": "WORLD_A_ROUTE_OPERATIVE",
+      "as_of": "2021-04-02",
+      "rule_version": "route_v1",
+      "route_operational": true,
+      "capacity": 2,
+      "eligible_location": "DISTRICT_WEST",
+      "possible_actions": [
+        "remain_home",
+        "reach_clinic"
+      ]
+    },
+    "B": {
+      "world_id": "WORLD_B_ROUTE_CLOSED",
+      "as_of": "2021-04-02",
+      "rule_version": "route_v2",
+      "route_operational": false,
+      "capacity": 0,
+      "eligible_location": "DISTRICT_WEST",
+      "possible_actions": [
+        "remain_home"
+      ]
+    },
+    "A_label_only_changed": {
+      "world_id": "WORLD_A_LABEL_DIFFERENT",
+      "as_of": "2021-04-02",
+      "rule_version": "route_v1",
+      "route_operational": true,
+      "capacity": 2,
+      "eligible_location": "DISTRICT_WEST",
+      "possible_actions": [
+        "remain_home",
+        "reach_clinic"
+      ]
+    },
+    "A_unchanged": {
+      "world_id": "WORLD_A_ROUTE_OPERATIVE",
+      "as_of": "2021-04-02",
+      "rule_version": "route_v1",
+      "route_operational": true,
+      "capacity": 2,
+      "eligible_location": "DISTRICT_WEST",
+      "possible_actions": [
+        "remain_home",
+        "reach_clinic"
+      ]
+    }
+  },
+  "publication_clock": {
+    "observed_at": "2020-12-31",
+    "release_at": "2021-04-01",
+    "valid_asof": "2021-04-02",
+    "invalid_before_publication": "2021-03-31",
+    "invalid_future_world_asof": "2022-04-02",
+    "require_exact_epoch_and_release": true
+  },
+  "hostile_cases": [
+    "REVERSED_CONDITIONAL_DENOMINATOR",
+    "UNSUPPORTED_AS_ZERO",
+    "MISSING_AS_ZERO_OR_COMPLETE",
+    "SUPPRESSED_AS_VALUE",
+    "MINORITY_ERASURE",
+    "CROSS_SURVEY_ROW_POOLING",
+    "SOURCE_FAMILY_MISMATCH",
+    "UNSIGNED_SOURCE_IDENTITY",
+    "WRONG_RELEASE",
+    "FUTURE_ASOF",
+    "STALE_EPOCH",
+    "FORGED_ISSUER",
+    "CALLER_ADMIT_FLAG",
+    "LATEST_FALLBACK",
+    "NULL_F6_COMPLETE",
+    "RENORMALIZE_MISSING_MASS",
+    "PERSON_KNOWLEDGE_FROM_AGGREGATE",
+    "ACTOR_TRAITS_FROM_CENSUS",
+    "WORLD_LABEL_AS_EFFECT",
+    "NO_QUALIFIED_RULE_INVENTED_EFFECT",
+    "REVOKED_SOURCE_REPLAY",
+    "CHANGED_WORLD_STALE_OUTPUT",
+    "UNRELATED_SOURCE_MUTATION_CHANGES_OTHER_SOURCE"
+  ],
+  "cross_source_relation": {
+    "valid_kind": "NONPOOLED_CONTEXTUAL_COPRESENCE_ONLY",
+    "respondent_matching": false,
+    "shared_denominator": false,
+    "correlation_from_marginals": false,
+    "numeric_join": false
+  },
+  "authority": {
+    "real_survey_data": false,
+    "sourcefree_owner_acceptance": false,
+    "N11": false,
+    "N12": false,
+    "OC05": false,
+    "actor_execution": false,
+    "LLM_execution": false
+  },
+  "phase_B_criteria": {
+    "actual_dereference_required": true,
+    "actual_imported_module_files_required": true,
+    "author_oracle_must_not_replace_this_oracle": true,
+    "hold_if_WP1_not_runnable": true,
+    "prove_changed_world_changes_feasible_action_not_only_label": true,
+    "preserve_independent_test_expectations": true
+  }
+}

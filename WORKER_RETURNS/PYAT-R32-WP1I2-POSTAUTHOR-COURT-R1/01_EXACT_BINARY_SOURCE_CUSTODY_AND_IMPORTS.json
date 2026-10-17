@@ -1,0 +1,85 @@
+{
+  "schema": "PYAT_R32_WP1I2_EXACT_SOURCE_BINARY_AND_EXECUTION@1",
+  "repo": "maidiu/rawlsing",
+  "seal": "ee0990e75ac7825397ea0da5d57cc832af9d9b5c",
+  "author_final": "9e588212158e85088247a1874f604d1bcd427e2c",
+  "earlier_frozen": "75f360d0f5b62d41d273bce21fae27d71e03c89b",
+  "reviewer_prior_final": "891ccc40980b7f2f13062dc37e8711d533c31aa8",
+  "uploaded_zip_sha256": "c629e9cbdec2801653f03c5ed6eb00bbb28404afb3d87d73f4f8c4347fd01031",
+  "source_archive": {
+    "sha256": "1398f0d024d9f73718e1469a0a62ac82933d73aae57456573e80beb9ab8d975d",
+    "git_blob_sha1": "ce96e857cc9ae70d205b33101c454eb1446288b6",
+    "in_author_remote_tree": true,
+    "tar_inner_source_and_test_byte_exact": true
+  },
+  "source": {
+    "git_blob_sha1": "062bbf6fb1fc927398e172c64863812cb3df7931",
+    "sha256": "2d62d5961ba0cc0c5403342554568b66040b4bfa7f9bc3e9d602253f6af29d6a"
+  },
+  "author_test": {
+    "git_blob_sha1": "46f8bb29eb6ab16f4a0009e368e35bfc85008155",
+    "sha256": "de03eeda2f914cf878cc78d0a02c14d9f0f84e217878228a6d2433b50fe531d6"
+  },
+  "prior_frozen": [
+    {
+      "name": "01_PHASE_A_FROZEN_ORACLE.json",
+      "git_blob_sha1": "e3efa8edfdbfbb3ecd9c965ef193a419522dc9c6",
+      "sha256": "7d4da7b28138b1bf6bf5a66f6fdc175612d2c2cd7e275335987773aba0ba5fb5"
+    },
+    {
+      "name": "wp1i_independent_oracle.py",
+      "git_blob_sha1": "4c68b929d35ddfd9c57b374088856900cd230006",
+      "sha256": "7178fe798b180281d7082cdae1b32c65ffc79e6b565c77ef55a360f14b30a140"
+    },
+    {
+      "name": "test_wp1i_independent_oracle.py",
+      "git_blob_sha1": "9641881e75588a56747512b598e9e817b273c196",
+      "sha256": "fdaea65cce44b3445d291b99d844145319417c5a249d8ceb7af1e22c9b38b2e5"
+    }
+  ],
+  "prior_phase_B": {
+    "hostile_source_git_blob_sha1_local_verified": "f595151f40cc1e1b6cf745058b5a12114b635d43",
+    "hostile_source_status": "SOURCE_IN_USER_UPLOADED_VERIFIED_ZIP_NOT_IN_REVIEWER_FINAL_REMOTE_TREE",
+    "decisive_git_blob_sha1": "aa98fdf9465c5cf632323c5d760967cb5bf2b8e1"
+  },
+  "imported_module_file_suffix": "WP1_author/repro/wp1_world_consumer.py",
+  "source_archive_module_digest_matched_import": true,
+  "execution": {
+    "python": "3.13.5",
+    "pytest": "9.0.2",
+    "author": 31,
+    "frozen": 31,
+    "hostiles": 14,
+    "decisive": 5,
+    "additional_R32": 13,
+    "total": 94,
+    "failures": 0,
+    "skips": 0,
+    "all_exit_zero": true
+  },
+  "junit_bundle": {
+    "path": "02_PRIOR_FROZEN_AND_AUTHOR_FRESH_JUNIT/fresh_real_junit.tar.gz",
+    "sha256": "28dc7bb4c521b9d2dd30c3ba3ef18147244e150e7489c48bc115cdf70605d4aa",
+    "git_blob_sha1": "d35a8e8cdc37498c6e3ec8da40399654200b013d",
+    "contains_six_xml_receipts": true,
+    "source": "ACTUAL_NEW_PYTEST_RUNS"
+  },
+  "four_seed_replay": {
+    "seeds": [
+      0,
+      1,
+      11,
+      977
+    ],
+    "exit_codes": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "all_stdout_sha256": "fa5b30636eceb59cff67d69dd9d1e32c9072d8c715a3a2a68181013e2c5428a7",
+    "identical": true
+  },
+  "native_owner_import": "BLOCKED_AFTER_ATTEMPT_NOT_MOUNTED",
+  "no_native_owner_acceptance": true
+}

@@ -1,0 +1,138 @@
+{
+  "schema": "PYAT_R32_WP1I2_INDEPENDENT_FRACTION_ORACLES@1",
+  "independent_method": "Python standard fractions.Fraction directly over literal supplied 2x2 native cell counts and missing mass; independent of WP1's _conditional or compare implementations.",
+  "source_local": {
+    "LAB_SOURCE_ALPHA": {
+      "cells": {
+        "X1Y1": 36,
+        "X1Y0": 9,
+        "X0Y1": 12,
+        "X0Y0": 23
+      },
+      "eligible": 100,
+      "valid": 80,
+      "specials": {
+        "DK": 9,
+        "REFUSED": 5,
+        "NOT_ASKED": 6,
+        "SUPPRESSED": 0
+      },
+      "minority_X0Y1": 12,
+      "forward_observed": "36/45=4/5",
+      "reverse_observed": "36/48=3/4",
+      "ignorance_bound": [
+        "36/65",
+        "56/65"
+      ],
+      "world_A": {
+        "multiplier": "1",
+        "observed": "4/5",
+        "bounds": [
+          "36/65",
+          "56/65"
+        ]
+      },
+      "world_B": {
+        "multiplier": "1/2",
+        "observed": "2/5",
+        "bounds": [
+          "18/65",
+          "28/65"
+        ]
+      },
+      "paired_difference": {
+        "observed": "2/5",
+        "bounds": [
+          "18/65",
+          "28/65"
+        ]
+      }
+    },
+    "LAB_SOURCE_BETA": {
+      "cells": {
+        "X1Y1": 20,
+        "X1Y0": 10,
+        "X0Y1": 5,
+        "X0Y0": 15
+      },
+      "eligible": 70,
+      "valid": 50,
+      "specials": {
+        "DK": 6,
+        "REFUSED": 2,
+        "NOT_ASKED": 9,
+        "SUPPRESSED": 3
+      },
+      "minority_X0Y1": 5,
+      "forward_observed": "20/30=2/3",
+      "reverse_observed": "20/25=4/5",
+      "ignorance_bound": [
+        "2/5",
+        "4/5"
+      ],
+      "world_A": {
+        "multiplier": "1",
+        "observed": "2/3",
+        "bounds": [
+          "2/5",
+          "4/5"
+        ]
+      },
+      "world_B": {
+        "multiplier": "3/4",
+        "observed": "1/2",
+        "bounds": [
+          "3/10",
+          "3/5"
+        ]
+      },
+      "paired_difference": {
+        "observed": "1/6",
+        "bounds": [
+          "1/10",
+          "1/5"
+        ]
+      }
+    }
+  },
+  "formulae": {
+    "conditional": "a/(a+b)",
+    "reverse": "a/(a+c)",
+    "ignorance_if_missing_m": "[a/(a+b+m), (a+m)/(a+b+m)]",
+    "world_output": "p_source*m_world",
+    "paired_difference": "p_source*(m_A-m_B), not unrelated bound subtraction"
+  },
+  "frozen_independent_oracle_not_substituted": {
+    "sample_A": {
+      "cells": [
+        18,
+        22,
+        12,
+        48
+      ],
+      "forward": "9/20",
+      "reverse": "3/5"
+    },
+    "sample_B": {
+      "cells": [
+        1,
+        3,
+        5,
+        31
+      ],
+      "forward": "1/4",
+      "reverse": "1/6"
+    },
+    "world_action_set": "route access vs closure, separate standalone conceptual oracle, not WP1's installed route semantics"
+  },
+  "invalid_or_unissued": [
+    "sourcefree_alpha_beta_pooled_probability",
+    "person_level_effect",
+    "real_historical_causal_effect",
+    "survey_confidence_interval",
+    "accepted_N9_N10W_world_rule"
+  ],
+  "readset_identical_across_two_worlds": true,
+  "synthetic_label_only_control_zero": true,
+  "source_mutation_only_local_branch": true
+}
