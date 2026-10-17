@@ -1,66 +1,51 @@
-# Sorok — current progress toward its finish lines
+# Sorok — current progress toward a historically generated person
 
-**INITIAL_DOCUMENTARY_BASELINE__OWNER_REFRESH_REQUIRED · revision 2.** Source verification: 2026-10-14T13:53:10.447Z. Last owner update: unknown. This initial projection does not claim that Sorok has performed the new mutual grok cycle.
+**Sorok HQ320 owner revision 3 · 2026-10-16.** `SOROK_HQ320_OWNER_ACTIVE__SCOPED_RECEIPTS_BANKED__PRODUCT_POSITIVE_OWNER_RULE_HELD`. Working HQ `2a7b5a81950ec17052365d44a1887666c9b9728f`. PRE-MAIN prior cut `8bf154b5d927007a4fe8d5c1fde55faa0e7859d4`. No semantic/source/actor issuance; original N11/N12/C11–C12/A0–A5 held.
 
-[Shared update/grok protocol](../CROSS_HQ_CONTROL_ROOM/HQ_GROK_AND_PROGRESS_PROTOCOL_R1.md) · [fixed Astra advisory](../CROSS_HQ_CONTROL_ROOM/ASTRA_R3_ADVISORY_INDEX_R1.md) · [Pyat current progress](../PYAT_CONTROL_ROOM/CURRENT_PROGRESS.md) · [own machine-readable report](CURRENT_PROGRESS.json)
+## Finished product and proof limits
+Historically situated PRE-V3 empirical/world possibilites → genuinely generated V3 parent/person histories → relation-dependent native CAN008 person×event owner, private epistemic/memory and actual world effects → lawful expression and independent life. Current sourcefree prototypes do not cross the actor-bound positive rule or original all35 source/OC05/N12 gates.
 
-## Purpose and finish lines
+## Whole-program C0–C12 / A0–A5
+- **C0** — C0P dual-owner two named sourcefree consumers AUTHOR_POSITIVE_49__C0I_PENDING_FULL_K9_K10_HELD
+- **C1** — OWNER_RECONCILIATION_REQUIRED
+- **C2** — LIFE1_NATIVE_ALL16_DEFER__CONCRETE_ACTOR_BOUND_RULE_MISSING
+- **C3** — MS4_FINITE_SYNTHETIC_PROVENANCE_I2_PASS__P3B_FAIL__NO_SERIAL_ISSUER
+- **C4** — SGI1_24_98_REPRODUCED__G12_SEVEN_SUBSTANTIVE_LAB_DEFECT_CLASSES__OWNER_HELD
+- **C5** — OWNER_RECONCILIATION_REQUIRED
+- **C6** — LIFE1_EPOCHAL_RELATION_RESPONSE_BLOCKED_ACTOR_RULE
+- **C7** — MS4_INDEPENDENT_NATIVE_PROVENANCE__SERIAL_RESPONSE_NOT_COMMITTED
+- **C8** — OUT12_AUTHOR_9PASS_MULTIPROCESS_CANDIDATE__OUT13_I2_PENDING__ORIGINAL_LOST_EVENT_RED
+- **C9** — PRODUCT_WHITE_WHALE__NATIVE_CAN008_ACTOR_POSITIVE_RULE_NOT_ISSUED
+- **C10** — C0P_SOURCEFREE_UPSTREAM_DUAL_OWNER_AUTHOR_POSITIVE__REAL_WELD_NOT_READY
+- **C11** — OWNER_RECONCILIATION_REQUIRED
+- **C12** — OWNER_RECONCILIATION_REQUIRED
+- **A0** — OWNER_RECONCILIATION_REQUIRED
+- **A1** — OWNER_RECONCILIATION_REQUIRED
+- **A2** — OWNER_RECONCILIATION_REQUIRED
+- **A3** — OWNER_RECONCILIATION_REQUIRED
+- **A4** — OWNER_RECONCILIATION_REQUIRED
+- **A5** — OWNER_RECONCILIATION_REQUIRED
 
-Produce a historically situated pipeline-generated whole person and durable relational human experience, preserving focal depth with bounded world/social width.
+## Five HQ319 returns, HQ decisions
+- MS4 independent finite serial state-provenance PASS; inherited171=169P/2 historical CAN2 RED, author59 PASS, reviewer85 75P/10 adjudicated RED and prospective P3b FAIL; no committed response/operative content-mediated rule.
+- G12 independently reproduced SGI1 K11 sourcefree 24/98 but found seven genealogy mechanism defect classes, lab RNG, causality, embargo and relation concerns; native actor/selection/biological owner HOLD.
+- C0P sourcefree dual-owner two genuine named positive consumers 49/49 author PASS; full K9 provider swap, full K10 28 and E06 bridge integration unexecuted; C0I fresh I2 commissioned.
+- LIFE1 30/30 and native156/156 but all sixteen K1–K6 product-arm experiments DEFER absent actor-bound concrete CAN008 mechanism/target owner; product white-whale present.
+- OUT12 nine author cases sourcefree 2/3 process lock/CAS green; original 272=270P/2 historical RED, OUT11 real lost committed event preserved, OUT13 independent review needed.
+- R20 Pyat accepted successor now active at 3194861b75286a13ff0a1645897478f177eb2a42; Pyat canonical revision5 and six R18 published commissions; N11/N12/OC05/original 35 estate held.
+- Sorok working registers census 128 questions, 257 decisions, 214 risks (65 critical), broad alpha blockers 51 at original 7b091166; do not reopen historical decisions wholesale.
 
-1. C0–C9 bounded design/authority/laboratory proofs at their actual grain
-2. C10 exact service readiness and C11 separately granted physical weld after N11/N12
-3. C12 real generated person→A0 continuity and A1 bounded live engine
-4. A2 history reentry→A3 independent life→A4 generalization→A5 authorized human alpha
+## New HQ320 workers: commission does not equal launch
+- **C0I** `9bad184701b6bb964055d5d6257545f8d28ef142` — `COMMISSION_PUBLISHED__NOT_AUTOLAUNCHED`
+- **W01** `ad17934b137cda8ee7743b9de90aeed351f2c3fb` — `COMMISSION_PUBLISHED__NOT_AUTOLAUNCHED`
+- **G13** `8d99a4a08d39c870da596b23ccbb5c34e268c470` — `BRANCH_ONLY__COMMISSION_SUBMISSION_BLOCKED`
+- **OUT13** `8d99a4a08d39c870da596b23ccbb5c34e268c470` — `BRANCH_ONLY__COMMISSION_SUBMISSION_BLOCKED`
 
-Preserve trajectory identities: **C0, C1, C2, C3, C4, C5, C6, C7, C8, C9, C10, C11, C12, A0, A1, A2, A3, A4, A5**. Their individual current states/evidence are in the JSON; every row requires initial owner reconciliation. Advisory baseline: [joint program](https://github.com/maidiu/rawlsing/blob/3b2d9a1b644a9fa024ed1bd895b67be5c8789531/WORKER_RETURNS/ASTRA-R3-PREA0-PYAT-JOINT-MAXIMUM-DEPTH-WELD-R1/08_JOINT_PROGRAM.md). A planned node is not an implementation result.
+## Pyat reciprocal review
+Pyat owner revision6 R22, active accepted successor `agent/vozhd-pyat-r3-hq-successor-20261016-r1 @ecb5de4f5f90015e5f10b9f3b12e76ee145fee58`. E06I independent48/48 joined E04T→E05R bridge accepted NONINSTALLING; EST1 standalone14 testonly; GF1I RED missing named consumer; F6B HOLD; T9B 28+8 author pending independent; XSP19 standalone zero native calls. All original35/N11/N12/OC05/actor still held. C0P needs independent science and must not present GF1 as accepted.
 
-## Verified read cut and actual known movement
+## Open owner gates and next irreversible action
+CAN008 actor-bound concrete rule/target-owner/response journal; ADP015/020 genealogy selection and conception/birth/actor authority; C0 full sourcefree K9/K10; C8 ACK semantics, lock/CAS independent acceptance, escrow time/revoke/external signer. Prioritize positive actor/owner **competent decision**, not a sixth blocked LIFE1 run.
 
-Own working HQ: agent/sorok-prea0-psyche-architecture-r1 at **6275cd86b7864da830ef8044e1a4f234ca9ce2c3**. Canonical before this documentary update: 7f29aec36d24f16da52d84f17c00f08db3a55434. Fixed completed advisory: 3b2d9a1b644a9fa024ed1bd895b67be5c8789531. Direct refs and selected records were inspected; no complete worker/source re-audit was performed.
-
-- The working front door has received the completed advisory and explicitly qualifies older pending-Astra language.
-- Four post-Astra branch tips publish documentary commission scopes SC0, SG, SM and SR; their execution, local work, returns and independent acceptance were not checked by this bootstrap.
-- state/CURRENT_STATE.md ends its dated headings at R15 on 12 October; PRE_A0 corrections and the newer advisory handoff must also be read.
-
-Published post-Astra scopes (execution/return/independent acceptance unknown):
-
-- SC0 (C0): agent/rabochii-sorok-r3-postastra-sc0-generic-port-r1 at d228734dbdad205e2832fda5d3f20e94e5040c6b.
-- SG (C4/C6): agent/rabochii-sorok-r3-postastra-sg-genealogy-k11-authority-r1 at 1767ba41625025a0423a980f9fb4be390900dcbd.
-- SM (C1/C2/C3): agent/rabochii-sorok-r3-postastra-sm-situated-causal-cell-r1 at 3e5e5cdc04a1d026bb23922210ad0a47d74fe721.
-- SR (C8): agent/rabochii-sorok-r3-postastra-sr-occurrence-surface-r1 at b6753dbb6a8993b50702a3fe6fbad6496fb5c98a.
-
-The working tip now includes the reciprocal grounding directives. Progress evidence remains pinned to 48d9f0559d35c23e605d1dc0c0021a252f14b3cc; that documentary wiring is not a new productive/scientific result.
-
-## Last recorded trajectory position
-
-| Scope | Last recorded state |
-|---|---|
-| C0 | SC0 documentary port/K9-K10 commission published |
-| C1/C2/C3 | SM situated causal-cell comparative method commission published |
-| C4/C6 | SG genealogy/K11 authority-extension science commission published |
-| C8 | SR occurrence/surface authority investigation commission published |
-| C5 | Optional attractor research; incremental value still needs a court |
-| C7/C9–C12/A0–A5 | Trajectory retained; current achievement requires owner evidence |
-
-These are linked last-recorded assessments, not fresh owner certifications of every node. Verify later returns/adoptions before making current readiness claims. Sealed Pyat control pointer remains HQ280 at 2936ccaca35d8a0414869efdd2870f1ea244f1c2; semantic PRE-MAIN 1f47063c3205a45888b3c55e81e7485943ed1390. Later working evidence is separate.
-
-## Maturity, blockers and next actions
-
-Local-stage, integration, estate and operative-use maturity remain distinct. The seed links prior evidence and does not requalify it. Source/model/scientific/actor/weld rights are not supplied by this report. Owner must record exact current scientific, authority, implementation and custody gaps, positive endpoint evidence, last productive deltas and bounded next actions in the next paired refresh. No invented global readiness percentage.
-
-## Reciprocal dependencies and review
-
-Need from Pyat: Pyat source/world/service positive progress, current/historical/as-of and generic query scope; N11/N12 and exact actor/model/source/weld grant state; Terminal starvation/port losses and model/denominator/source limitations.
-
-Supply to Pyat: Exact consumer demand, structural-world primacy and corrected V3 genealogy requirements; Concrete owner/occurrence/access boundaries and discriminating K courts.
-
-**Counterpart-review receipt pending:** report enclosing commit/revision, date, working cut, actual implications and issue disposition must be filled by Sorok. Open issue XHQ-BOOTSTRAP-01: reconcile own trajectory and the other's current report before relying on cross-HQ readiness. An older report is an affected decision's reconciliation gap, not permission to stall all unrelated work.
-
-## Evidence and maintenance
-
-- [Exact source 1](https://github.com/maidiu/rawlsing/blob/48d9f0559d35c23e605d1dc0c0021a252f14b3cc/SOROK_PRODUCT_CONTROL_ROOM/ASTRA_R3_JOINT_WELD_ADVISORY_HANDOFF_20261014_R1.md)
-- [Exact source 2](https://github.com/maidiu/rawlsing/blob/48d9f0559d35c23e605d1dc0c0021a252f14b3cc/SOROK_PRODUCT_CONTROL_ROOM/PRE_A0_PSYCHIC_ARCHITECTURE_R1/README.md)
-- [Exact source 3](https://github.com/maidiu/rawlsing/blob/48d9f0559d35c23e605d1dc0c0021a252f14b3cc/SOROK_PRODUCT_CONTROL_ROOM/state/CURRENT_STATE.md)
-
-Update MD and JSON atomically after each material result/decision/blocker, before dependent planning and at session handoff; verify at least daily while actively working. Record inactive/paused mode honestly. Follow the shared protocol for exact refs, issue escalation and narrow canonical publication. Existing detailed ledgers remain authoritative at their stated grains.
+## Source, cadence and audit
+HQ320 return fanin `8d99a4a08d39c870da596b23ccbb5c34e268c470`, owner docket and Pyat reciprocal `2a7b5a81950ec17052365d44a1887666c9b9728f`. 128 questions/257 decisions/214 risks are historical working-register scope, not all live blocking owner motions. Worker tests independently reviewed only where expressly marked. Refresh owner pair after material changes; no numeric readiness fraction.
