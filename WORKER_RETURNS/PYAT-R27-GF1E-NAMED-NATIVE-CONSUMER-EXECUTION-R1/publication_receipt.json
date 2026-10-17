@@ -1,0 +1,19 @@
+{
+ "schema": "PYAT_R27_GF1E_PUBLICATION_RECEIPT@1",
+ "repository": "maidiu/rawlsing",
+ "branch": "agent/rabochii-pyat-r27-gf1e-actual-native-consumer-implementation-r1",
+ "sealed_startup": "e9867879a0f0b3ac8d8afe21fced9e18a8a0a1fb",
+ "evidence_commit": "4640a9e5036986979d939b00d0aea6c858ba2881",
+ "remote_readback": {
+  "ref": "refs/heads/agent/rabochii-pyat-r27-gf1e-actual-native-consumer-implementation-r1",
+  "sha": "4640a9e5036986979d939b00d0aea6c858ba2881",
+  "method": "git ls-remote origin + git fetch origin <branch> + git rev-parse FETCH_HEAD",
+  "consumer_module_in_remote_tree": "WORKER_RETURNS/PYAT-USERDIRECT-20261016-R17-GF1-GENERIC-NATIVE-PAIR-RELATION-R1/court/runtime_root/gf1_pair_support_consumer.py",
+  "frozen44_test_sha256_at_remote_head": "2bbb54aa7b1ea990705fc6edf51895a2ea7ec6192abd90acf062940aeff87ef5",
+  "frozen_oracle_sha256": "c5bdc14aec82e7df042594d8f2df1d8130b89345d305de5f73830828a0257790"
+ },
+ "outcome": "GF1E_CONSUMER_IMPLEMENTED__FROZEN44_GREEN__DIFFERENTIAL_AND_COLD_REPLAY_COMPLETE",
+ "courts": {"frozen44": "44/0/0/0 exit 0", "gf1e_differential": "9/0/0/0 exit 0"},
+ "final_containing_sha": "REPORTED_ON_DELIVERY_BY_DIRECT_REMOTE_READBACK",
+ "note": "This receipt binds the directly verified evidence commit. The final containing branch tip is read back after the receipt commit and reported on delivery."
+}
