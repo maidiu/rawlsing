@@ -1,0 +1,190 @@
+{
+  "schema": "PYAT_R28_WG0O_01_FROZEN_ACTUAL_AUTHORITY_API_CASES@1",
+  "phase": "A_FROZEN_BEFORE_ANY_CANDIDATE_EXECUTION",
+  "role": "independent WG0N reviewer continuation; NOT WG0P6 author; NOT HQ; NOT source/semantic issuer",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/reviewer-pyat-r28-wg0o-source-issuer-authority-seam-court-r1",
+  "sealed_startup": "0533516fe939bb1d91be108b4bf05249639afbae",
+  "parent_reviewer": "WG0N@6cd28b429504ad47e1bbc0fbcc6c4ef91db59ccd",
+  "parent_verdict": "WG0N_INDEPENDENT_SOURCE_VIEW_COURT_PASS__ONE_INHERITED_CHARACTERISATION_SHAPED_RED__HQ_ACCEPTANCE_STILL_REQUIRED",
+  "candidate_author": "WG0P6@e7e429c3dfb649233e74e0e5106e51ff25024806",
+  "candidate_module_pin": {
+    "staged_path": "staged_candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/repro/wg0p4_workload.py",
+    "sha256": "3807e46eec947694a1bd76afe23fd96183dd989b511584ec2ad3991ae943925e",
+    "git_blob_sha1": "ef4f2b33c07596ae6c3008320f13d9f5d027b9e4",
+    "VERSION": "WG0P6_RELEASE_VIEW_SOURCE_SNAPSHOT_BINDING@1"
+  },
+  "real_api_target": "the ACTUAL rel.authorities and rel.qauth fields of base.IngestedRelease (issuance identity folded into _release_material authority_refs), plus the actual owner interfaces FixtureOwner.revoke / _sign / verify / assert_native_sources / _register_native_sources / compute_native. The nonexistent IngestedRelease.issuer_id and issuer_epoch fields are NOT targeted. The five WG0N unconstructible controls are preserved as unconstructible and are NOT silently re-targeted here.",
+  "frozen_before_any_candidate_execution": true,
+  "frozen_science_not_re_derived": true,
+  "law": "No forged, substituted, stale-epoch, superseded, same-identity-different-body, unissued or cross-universe authority may serve a SUPPORTED original fact. A missing independent issuer or an inexpressible revocation obligation must produce an explicit typed refusal or typed HOLD, never synthetic authority and never an untyped KeyError/TypeError. Honest positives must still serve.",
+  "allowed_refusal_exceptions": [
+    "IdentityError",
+    "FrontierError",
+    "RevocationError",
+    "ColdRestartError",
+    "NativeDataError",
+    "BatchIntegrityError",
+    "Pre553IntegrityError",
+    "Pre553AuthorityError",
+    "Pre553AuthorityConflict",
+    "Pre553SemanticCollapseError"
+  ],
+  "allowed_refusal_exception_note": "the adapter law's five typed families plus BatchIntegrityError and the native PRE553 owner's typed integrity/authority family, declared here BEFORE execution; an untyped KeyError/TypeError/AttributeError is always a RED",
+  "allowed_typed_refusals": [
+    "HELD",
+    "INADMISSIBLE",
+    "REVOKED",
+    "STALE",
+    "REFUSED",
+    "UNAVAILABLE",
+    "HOLD",
+    "SUPERSEDED",
+    "MISSING_REQUIRED_AUTHORITY",
+    "NOT_EXPRESSIBLE"
+  ],
+  "supported_fact_definition": "a served effect entry whose cells carry a supported cell state (OBSERVED_POSITIVE or OBSERVED_ZERO_IN_SUPPORTED_RISK_SET); served_supported_original_fact means at least one such supported original fact was served",
+  "uniform_negative_invariants": [
+    "served_supported_original_fact is False",
+    "no supported original fact is served even if an in-band typed UNAVAILABLE state is returned",
+    "refusal is typed (allowed exception family or allowed typed token)",
+    "no inherited expectation file is edited"
+  ],
+  "uniform_positive_invariants": [
+    "exception_type is None",
+    "served_supported_original_fact is True",
+    "consumer effects non-empty"
+  ],
+  "preserved_inherited_status": {
+    "WG0N_mandatory_236": "BANKED by the parent reviewer; not rebuilt and not re-claimed as new research",
+    "WG0N_five_unconstructible_controls": [
+      "C3_source_artifact_revocation (owner.revoke accepts only release tags)",
+      "D3_truncated_or_empty_snapshot (ExactRef refuses empty content_hash at construction)",
+      "E1_release_issuer_not_registrar (IngestedRelease has no issuer_id field)",
+      "E2_unregistered_issuer (IngestedRelease has no issuer_id field)",
+      "E3_issuer_epoch_mismatch (IngestedRelease has no issuer_epoch field)"
+    ],
+    "WG0N_two_historical_characterisation_failures": [
+      "test_bound_descriptor_cannot_change_served_provenance[source_edition]",
+      "test_bound_descriptor_cannot_change_served_provenance[native_item_ids]"
+    ],
+    "note": "these remain NOT green and are NOT retroactively counted as green; the two characterisation tests must be reproduced unmodified"
+  },
+  "controls": [
+    {
+      "group": "authority_issuer_substitution",
+      "case": "A1_wrong_issuer_qauth_substitution",
+      "kind": "NEGATIVE_REFUSAL",
+      "target": "REL-A-W1.qauth := REL-A-W2.qauth (genuine but DIFFERENT release issuer identity)",
+      "rationale": "Issuance identity lives in rel.authorities/rel.qauth and is folded into _release_material authority_refs and owner-registered at ingest. A wrong issuer must not serve.",
+      "expected": "typed refusal or explicit typed HOLD before any supported original fact is served; served_supported_original_fact False"
+    },
+    {
+      "group": "authority_issuer_substitution",
+      "case": "A2_stale_issuer_epoch_same_identity",
+      "kind": "NEGATIVE_REFUSAL",
+      "target": "REL-A-W1.qauth := same (authority_id,authority_version,authority_content_hash) body with effective_time_or_interval='2019-01-01' and non-empty supersession_refs",
+      "rationale": "Epoch/currentness lives in the real authority surface (effective_time_or_interval, supersession_refs). A stale-epoch/superseded issuer body under the same identity must not positively authorize a 2026 query.",
+      "expected": "typed refusal or explicit typed HOLD before any supported original fact is served; served_supported_original_fact False"
+    },
+    {
+      "group": "authority_issuer_substitution",
+      "case": "A3_same_hash_foreign_signed_body",
+      "kind": "NEGATIVE_REFUSAL",
+      "target": "REL-A-W1.qauth := same identity triple, ALLOW, same kind/operations/families/scope, but foreign interpretation_semantics_fingerprint, foreign producer replay root and foreign parent_authority_refs",
+      "rationale": "A same-hash foreign signed authority is an identity forgery: one exact authority identity must denote one immutable snapshot. The claimed authority_content_hash must not let a foreign body serve.",
+      "expected": "typed refusal or explicit typed HOLD before any supported original fact is served; served_supported_original_fact False"
+    },
+    {
+      "group": "authority_issuer_substitution",
+      "case": "A4_foreign_governed_operations_same_hash",
+      "kind": "NEGATIVE_REFUSAL",
+      "target": "REL-A-W1.qauth := same identity triple but governed_operations=('WG0P3-OP-FOREIGN-ONLY',) and foreign fingerprint",
+      "rationale": "A same-hash body that does not govern this release's operation must not serve this release's facts.",
+      "expected": "typed refusal or explicit typed HOLD before any supported original fact is served; served_supported_original_fact False"
+    },
+    {
+      "group": "authority_issuer_substitution",
+      "case": "A5_foreign_authority_inside_authorities_tuple",
+      "kind": "NEGATIVE_REFUSAL",
+      "target": "REL-A-W1.authorities[0] := REL-A-W2.authorities[0] (the SOURCE_SEMANTICS_TOPOLOGY issuer of another release)",
+      "rationale": "The rel.authorities tuple is real issuance identity too; substituting one entry is a wrong-issuer attack on the same seam.",
+      "expected": "typed refusal or explicit typed HOLD before any supported original fact is served; served_supported_original_fact False"
+    },
+    {
+      "group": "signature_and_callback",
+      "case": "B1_self_rehashed_checkpoint_foreign_signature",
+      "kind": "NEGATIVE_REFUSAL",
+      "target": "ColdCheckpoint with mutated source_editions, recomputed checkpoint_hash and the OLD signature, grant_state tag left proper",
+      "rationale": "Forged signature with proper tag: a self-rehashed checkpoint payload must not restore.",
+      "expected": "typed refusal or explicit typed HOLD before any supported original fact is served; served_supported_original_fact False"
+    },
+    {
+      "group": "signature_and_callback",
+      "case": "B2_foreign_signature_proper_tag",
+      "kind": "NEGATIVE_REFUSAL",
+      "target": "ColdCheckpoint with a foreign/garbage signature over the unmodified payload, all tag fields proper",
+      "rationale": "A forged signature with the proper tag fields must not verify.",
+      "expected": "typed refusal or explicit typed HOLD before any supported original fact is served; served_supported_original_fact False"
+    },
+    {
+      "group": "signature_and_callback",
+      "case": "B3_captured_executor_callback_fabricates_fact",
+      "kind": "NEGATIVE_REFUSAL",
+      "target": "run_plan with a captured/substituted executor callback that stores a fabricated fact entry and returns it as a result ref",
+      "rationale": "Callback capture: a captured execution callback must not fabricate a fact; the owner journal must refuse unissued facts.",
+      "expected": "typed refusal or explicit typed HOLD before any supported original fact is served; served_supported_original_fact False"
+    },
+    {
+      "group": "revocation_and_alias",
+      "case": "C1_source_artifact_revocation_not_release_tag",
+      "kind": "NEGATIVE_REFUSAL",
+      "target": "FixtureOwner.revoke(rel.source_artifact_ref.object_id) - revocation of a source artifact distinct from a release tag",
+      "rationale": "Independent source-artifact revocation is a separate obligation from release-tag revocation. If the owner surface cannot express it, the outcome must be an explicit typed HOLD/NOT_EXPRESSIBLE, never a silent pass.",
+      "expected": "typed refusal or explicit typed HOLD before any supported original fact is served; served_supported_original_fact False"
+    },
+    {
+      "group": "revocation_and_alias",
+      "case": "C2_missing_independent_issuer",
+      "kind": "NEGATIVE_REFUSAL",
+      "target": "REL-A-W1.qauth := None and (second run) REL-A-W1.authorities := ()",
+      "rationale": "A missing independent issuer must produce typed HOLD/refusal, never synthetic authority.",
+      "expected": "typed refusal or explicit typed HOLD before any supported original fact is served; served_supported_original_fact False"
+    },
+    {
+      "group": "revocation_and_alias",
+      "case": "C3_alias_pointer_across_genuine_source_universes",
+      "kind": "NEGATIVE_REFUSAL",
+      "target": "REL-A-W2.universe_ref := REL-A-W1.universe_ref (aliasing across two GENUINE source universes)",
+      "rationale": "Aliasing a pointer across genuine source universes must not serve; each release is bound to its own sealed universe lineage.",
+      "expected": "typed refusal or explicit typed HOLD before any supported original fact is served; served_supported_original_fact False"
+    },
+    {
+      "group": "positive_owner",
+      "case": "P1_unmodified_owner_serves",
+      "kind": "POSITIVE_SERVE",
+      "target": "pristine unmodified plan",
+      "rationale": "The honest path must still serve; this is the guard against blanket refusal.",
+      "expected": "honest owner path still serves a supported original fact"
+    },
+    {
+      "group": "positive_owner",
+      "case": "P2_own_authority_identity_rebind_serves",
+      "kind": "POSITIVE_SERVE",
+      "target": "REL-A-W1.qauth rebuilt byte-identically via the same real constructor and rebound",
+      "rationale": "An honest identity-preserving rebind must still serve; this is the control that makes A1-A5 meaningful.",
+      "expected": "honest owner path still serves a supported original fact"
+    },
+    {
+      "group": "positive_owner",
+      "case": "P3_replay_identical_consumer",
+      "kind": "POSITIVE_SERVE",
+      "target": "pristine plan executed twice",
+      "rationale": "Determinism: identical consumer values and identical receipts.",
+      "expected": "honest owner path still serves a supported original fact"
+    }
+  ],
+  "control_count": 14,
+  "negative_count": 11,
+  "positive_count": 3
+}

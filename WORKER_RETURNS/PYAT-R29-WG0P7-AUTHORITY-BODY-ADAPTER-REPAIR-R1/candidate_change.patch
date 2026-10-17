@@ -1,0 +1,68 @@
+--- /tmp/wg0p7_run/wg0p6_pristine.py	2026-10-17 12:29:53
++++ candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/repro/wg0p4_workload.py	2026-10-17 12:37:57
+@@ -217,6 +217,47 @@
+     fixture_owner._register_native_sources(out)
+     return out
+ 
++class AuthorityCurrentnessHold(RevocationError):
++    """Typed HOLD: epoch/supersession semantics are not qualified by this sourcefree owner."""
++
++def _authority_body(a):
++    """Immutable constructed body of one AuthoritySnapshot, independent of its claimed triple."""
++    return {'ref':a.authority_ref.as_dict(),
++            'constructed_content_hash':a.content_hash,
++            'semantic_projection':a.semantic_projection()}
++
++def _authority_bodies(rel):
++    return [_authority_body(a) for a in (*rel.authorities,rel.qauth)]
++
++def _authority_currentness_check(releases):
++    """Unqualified epoch/supersession is a typed HOLD, never invented issuer authority.
++
++    The accepted owner contract only admits the fixture's explicit ALL_TIME / empty
++    supersession semantics. A substituted body that asserts a dated epoch or a
++    supersession chain is not qualified by this sourcefree owner, so it is HELD
++    rather than interpreted under an invented universal-expiry rule.
++    """
++    for tag,rel in releases.items():
++        for a in (*rel.authorities,rel.qauth):
++            if a is None:continue
++            if getattr(a,'effective_time_or_interval',None)!='ALL_TIME':
++                raise AuthorityCurrentnessHold('AUTHORITY_EPOCH_UNQUALIFIED_HELD:'+tag)
++            if tuple(getattr(a,'supersession_refs',()) or ()):
++                raise AuthorityCurrentnessHold('AUTHORITY_SUPERSESSION_UNQUALIFIED_HELD:'+tag)
++
++def _authority_operation_check(releases):
++    """Bind the permitted operation to the owner-qualified release, not the mutable body.
++
++    The expected operation is derived from the owner-registered release tag, so a
++    substituted body cannot make a foreign governed_operations value look permitted.
++    """
++    for tag,rel in releases.items():
++        qauth=rel.qauth
++        if qauth is None:continue
++        ops=tuple(qauth.governed_operations)
++        if len(ops)!=1 or not isinstance(ops[0],str) or not ops[0].startswith('WG0P3-OP-wg0p3-') or not ops[0].endswith(tag):
++            raise IdentityError('AUTHORITY_OPERATION_BINDING_FOREIGN_OR_UNQUALIFIED:'+tag)
++
+ def _release_material(rel):
+     """Bind the untrusted release view to its exact I02-sealed source lineage.
+ 
+@@ -243,7 +284,7 @@
+                  'replay_manifest':actual.replay_manifest.ref.as_dict(),
+                  'source_artifact':actual.source_artifact_ref.as_dict(),
+                  'view_source_snapshot':rel.source_artifact_ref.as_dict()}
+-        return {'tag':rel.release_tag,'release':rel.release_ref.as_dict(),'universe':rel.universe_ref.as_dict(),'wave':universe.raw_wave,'edition':rel.source_edition,'source_artifact':actual.source_artifact_ref.as_dict(),'source_view_binding':binding,'qrefs':{k:v.as_dict() for k,v in rel.qrefs.items()},'risk_refs':{k:v.as_dict() for k,v in rel.risk_refs.items()},'authority_refs':[a.authority_ref.as_dict() for a in (*rel.authorities,rel.qauth)],'records_hash':digest([o.semantic_projection() for o in (*actual.public_objects,*actual.internal_records)])}
++        return {'tag':rel.release_tag,'release':rel.release_ref.as_dict(),'universe':rel.universe_ref.as_dict(),'wave':universe.raw_wave,'edition':rel.source_edition,'source_artifact':actual.source_artifact_ref.as_dict(),'source_view_binding':binding,'qrefs':{k:v.as_dict() for k,v in rel.qrefs.items()},'risk_refs':{k:v.as_dict() for k,v in rel.risk_refs.items()},'authority_refs':[a.authority_ref.as_dict() for a in (*rel.authorities,rel.qauth)],'authority_bodies':_authority_bodies(rel),'records_hash':digest([o.semantic_projection() for o in (*actual.public_objects,*actual.internal_records)])}
+     except (KeyError,TypeError,AttributeError) as exc:
+         raise IdentityError('RELEASE_VIEW_SOURCE_BINDING_UNRESOLVABLE') from exc
+ 
+@@ -361,6 +402,8 @@
+ 
+ def _check_plan(plan):
+     plan.fixture_owner.assert_plan_issued(plan)
++    _authority_currentness_check(plan.releases)
++    _authority_operation_check(plan.releases)
+     contract=_registered_contract(plan.manifest,plan.science_root,plan.freeze_hash,plan.units_by_op,plan.op_specs)
+     if canonical(contract)!=plan.contract:raise IdentityError('COMPLETE_BOUND_SOURCE_DESCRIPTOR_CHANGED')
+     validate_frontier_receipts(plan.frontier_receipts,mode=plan.frontier_mode)
