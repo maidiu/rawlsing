@@ -1,0 +1,19 @@
+{
+ "schema": "E06I_PUBLICATION_RECEIPT@1",
+ "repository": "maidiu/rawlsing",
+ "branch": "agent/reviewer-pyat-20261016-r18-e06i-full-bridge-independent-r1",
+ "sealed_startup": "6aea052f09ef01205aff1c38cd8c68197b762447",
+ "evidence_commit": "bd94c1bc7ebbd2b6397a94fbfb0815ee9ea0dd9b",
+ "remote_readback": {
+  "ref": "refs/heads/agent/reviewer-pyat-20261016-r18-e06i-full-bridge-independent-r1",
+  "sha": "bd94c1bc7ebbd2b6397a94fbfb0815ee9ea0dd9b",
+  "method": "git ls-remote origin + git fetch origin <branch> + git rev-parse FETCH_HEAD",
+  "return_files_in_remote_tree": 30,
+  "candidate_branch": "agent/userdirect-pyat-20261016-r17-e06-e04e05-native-bridge-r1",
+  "candidate_branch_head_at_readback": "f9c52113de38caececc450f0e54c980f64ed3981",
+  "candidate_unchanged": true
+ },
+ "verdict": "ACCEPT_SOURCEFREE_NONINSTALLING_JOINED_BRIDGE_METHOD_ONLY",
+ "final_containing_sha": "REPORTED_ON_DELIVERY_BY_DIRECT_REMOTE_READBACK",
+ "note": "This receipt binds the directly verified evidence commit. The final containing branch tip is read back after the receipt commit and reported on delivery; the file is not rewritten to contain its own hash."
+}
