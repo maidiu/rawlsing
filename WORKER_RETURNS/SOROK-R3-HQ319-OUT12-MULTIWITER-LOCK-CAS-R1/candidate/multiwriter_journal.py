@@ -18,14 +18,17 @@ Two mechanisms, both required together for safety:
    compare-and-swap atomic; the CAS makes a stale holder's publish impossible
    even if it is released by a crash or a non-cooperating writer.
 
-The added top-level `writer_version` key is backward compatible: the accepted
-`Journal.recover()` validates `schema` and a digest over `state` only, so a
-receipt carrying the extra key still loads. Running the accepted `Journal`
-against such a file simply ignores the version and re-exposes the original
-last-writer-wins hazard -- which is exactly the defect this candidate closes.
+OUT14 adds a canonical full-envelope version digest and fail-closed validation
+for missing, malformed, tampered or legacy-overwritten metadata. It is an
+UNKEYED integrity check, not cryptographic authentication of writers. The
+accepted Journal.commit remains independently callable and BYPASSES this
+facade: this module CANNOT claim system-wide multiwriter authorization until
+a competent owner removes or denies that legacy write path. Replay of an
+entire authentic old receipt also needs an external trusted monotonic anchor.
+The accepted Journal source, its semantics, and frozen tests are not modified.
 """
 from __future__ import annotations
-import errno, fcntl, json, os, tempfile, time
+import errno, fcntl, json, os, signal, tempfile, time
 from pathlib import Path
 
 from outbox_prototype import Journal, _canonical, _hash
@@ -41,6 +44,15 @@ class StaleJournalConflict(Exception):
         self.expected = expected
         self.actual = actual
         self.code = "STALE_JOURNAL_CONFLICT"
+
+
+class VersionStateUnreadable(ValueError):
+    """No silent version-zero coercion. Does not confer ADP019 authority."""
+
+    def __init__(self, path, reason: str) -> None:
+        super().__init__(f"VERSION_STATE_UNREADABLE reason={reason} path={path}")
+        self.code = "VERSION_STATE_UNREADABLE"
+        self.reason = reason
 
 
 class LockTimeoutError(Exception):
@@ -86,18 +98,50 @@ class MultiwriterJournal:
 
     # ---------------- read ----------------
     def _read_version(self) -> int:
+        """Validate one exact version-bound canonical receipt or reject.
+
+        A nonexistent file is the ONLY valid genesis version 0. An existing
+        unversioned/legacy, truncated, injected, or malformed file is NOT a
+        fresh journal. An unkeyed digest cannot authenticate the writer or
+        detect replay of an entirely previous valid receipt; owner grants
+        and trusted anti-rollback custody remain separate prerequisites.
+        """
         if not self.path.exists():
             return 0
         try:
-            return int(json.loads(self.path.read_text()).get("writer_version", 0))
-        except (ValueError, TypeError):
-            return 0
+            contents = self.path.read_text(encoding="utf8")
+            receipt = json.loads(contents)
+            if not isinstance(receipt, dict):
+                raise ValueError("NON_OBJECT")
+            required = {"schema", "state", "state_digest",
+                        "writer_version", "version_state_digest"}
+            if set(receipt) != required:
+                raise ValueError("MISSING_OR_UNKNOWN_ENVELOPE_FIELDS")
+            if receipt["schema"] != SCHEMA:
+                raise ValueError("UNSUPPORTED_SCHEMA")
+            ver = receipt["writer_version"]
+            if type(ver) is not int or ver < 1:
+                raise ValueError("VERSION_NOT_POSITIVE_INTEGER")
+            if not isinstance(receipt["state"], dict):
+                raise ValueError("STATE_NOT_OBJECT")
+            if receipt["state_digest"] != _hash(receipt["state"]):
+                raise ValueError("STATE_DIGEST_MISMATCH")
+            sealed = {"schema": SCHEMA, "state": receipt["state"],
+                      "writer_version": ver}
+            if receipt["version_state_digest"] != _hash(sealed):
+                raise ValueError("VERSION_STATE_DIGEST_MISMATCH")
+            if _canonical(receipt) != contents:
+                raise ValueError("NONCANONICAL_RECEIPT")
+            return ver
+        except (OSError, UnicodeError, ValueError, TypeError, KeyError) as exc:
+            raise VersionStateUnreadable(self.path, type(exc).__name__ + ":" + str(exc)) from exc
 
     def recover(self):
         """Return (prototype, version). Reads under the lock for a coherent snapshot."""
         fd = self._acquire()
         try:
-            return self._base.recover(), self._read_version()
+            version = self._read_version()
+            return self._base.recover(), version
         finally:
             self._release(fd)
 
@@ -110,6 +154,8 @@ class MultiwriterJournal:
         """
         fd = self._acquire()
         try:
+            if type(expected_version) is not int or expected_version < 0:
+                raise VersionStateUnreadable(self.path, "NOT_GRANTED_EXPECTED_VERSION")
             actual = self._read_version()
             if actual != expected_version:
                 raise StaleJournalConflict(expected_version, actual, self.path)
@@ -117,15 +163,23 @@ class MultiwriterJournal:
                 raise ValueError("WORLD_STATE_REQUIRES_EXTERNAL_OWNER")
             p.validate_state()
             state = p.snapshot()
-            receipt = {"schema": SCHEMA, "state": state, "state_digest": _hash(state),
-                       "writer_version": actual + 1}
+            prior = self._base.recover().snapshot()
+            old_events = prior["ledger"]
+            if state["ledger"][:len(old_events)] != old_events:
+                raise ValueError("ACKNOWLEDGED_LEDGER_PREFIX_REWRITE_NOT_GRANTED")
+            versioned = {"schema": SCHEMA, "state": state,
+                         "writer_version": actual + 1}
+            receipt = {**versioned, "state_digest": _hash(state),
+                       "version_state_digest": _hash(versioned)}
             self.path.parent.mkdir(parents=True, exist_ok=True)
             tfd, temp = tempfile.mkstemp(prefix=".outbox-pending-", dir=str(self.path.parent))
             try:
                 with os.fdopen(tfd, "w", encoding="utf8") as f:
                     f.write(_canonical(receipt)); f.flush(); os.fsync(f.fileno())
                 if crash_boundary == "BEFORE_RENAME":
-                    os._exit(79)
+                    os._exit(79)  # abrupt exit, NOT SIGKILL
+                if crash_boundary == "SIGKILL_BEFORE_RENAME":
+                    os.kill(os.getpid(), signal.SIGKILL)
                 os.replace(temp, self.path)
                 dfd = os.open(str(self.path.parent), os.O_RDONLY)
                 try:
@@ -133,7 +187,9 @@ class MultiwriterJournal:
                 finally:
                     os.close(dfd)
                 if crash_boundary == "AFTER_COMMIT":
-                    os._exit(79)
+                    os._exit(79)  # abrupt exit after fsync, NOT SIGKILL
+                if crash_boundary == "SIGKILL_AFTER_COMMIT":
+                    os.kill(os.getpid(), signal.SIGKILL)
             finally:
                 if os.path.exists(temp):
                     try:
