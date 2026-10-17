@@ -1,0 +1,15 @@
+# GF1J actual execution and inherited court evidence
+
+**Actually executed in GF1J isolated Python environment:** `cd /mnt/data/gf1j_phase_a && python -m pytest -q test_independent_math_reference.py --junitxml=phase_a_math_junit.xml`: `16 passed in 0.04s`, exit 0. Python 3.13.5, pytest 9.0.2, git 2.47.3. Source SHA256 `1acee99f4da5ead5de0dcb1d949b725870a9ab8acd383b66f8d59bd9e9a2d2` Git blob `cbd958b6f63bf7c8ff5535aa223fb83fc79adc5b`. Actual JUnit SHA256 `5c98d46bff686a4ba59dfa13fa789197397e0b862a886cca97a4e95914a77f67`, blob `aded4d87b62608f79c382ae0a153edac901bf728`. Locally packaged runnable bundle with receipt `/mnt/data/gf1j_phase_a/GF1J_PHASE_A_INDEPENDENT_MATH_AND_JUNIT.zip`, ZIP SHA256 `3c0cfe56dba62a0db2e8ee95e502d921c7eda1efac3705cea23104e804c06572`. Independent mathematical benchmark, NOT physical GF1H import.
+
+**Remote frozen executable for later actual GF1H I2:** `repro/test_gf1j_preregistered.py` frozen at `634745412fccba6b4ffc8f1030f5a5e0c39ba4b7`; `repro/test_gf1j_postfreeze_native_identity_hostiles.py` subsequent new scientific hostile frozen separately. Neither has been run against the GF1H code in this host. Core imported dependencies require 74 exact historical Python/test blobs in a verified filesystem, and local GitHub DNS was unavailable. Do not present a synthetic producer stand-in as that closure.
+
+**Authentic GF1H author-return JUnit and logs READ on GitHub, not rerun:** `gf1h_after` original44 44/44; GF1G 26/26; GF1F 96/100; GF1I 17/19; GF1H 26/26. Exact paths under `WORKER_RETURNS/PYAT-R32-GF1H-PAIR-CONSUMER-INTEGRITY-REPAIR-R1/02_FROZEN44_GF1F100_GF1I19_AND_NEW_JUNIT/`. Two reported distinct cold PIDs 21269/21270 matched consumer hash `a4915b84...`, native relation `74d3aaac...`, result `0b8ee8a6...`. GF1J **did not start those cold processes**.
+
+**GF1F substantive vs stale:** four original cases fail: `test_universe_class_and_derived_fields[0000]`, `test_named_cases[zero_supported_risk]`, `test_missing_suppressed_relation_is_empty_response`, and `test_cold_process_consumer_replay_bit_identical`. Last fails on old `class_counts` set after asserting cross-process results match. These failures remain visible and are **not** silently greened.
+
+**GF1I stale:** two tests `test_named_downstream_consumer_module_is_absent_from_candidate`, `test_candidate_frozen_44_suite_cannot_be_collected` retain the old absent-module premise. They fail with consumer now present and collectible, not a broken actual 44.
+
+**Independent original44/G26/F100/I19/new + original imported repaired SHA and separate cold process:** `NOT_EXECUTED_IN_GF1J`. This is a mandatory unmet part of the commission. No qualified I2 acceptance claim.
+
+**New source-identity hostile:** exact repaired code uses `str()` for domain + row/cell comparison; generic producer constructor validates a rehashed projection but not original native category Python type equality. Test script supplies rehashed int `0` under string `"0"` domain and requires typed refusal; marked `CODE_REVIEW_RED_PENDING_EXECUTION` rather than physical pytest RED.
