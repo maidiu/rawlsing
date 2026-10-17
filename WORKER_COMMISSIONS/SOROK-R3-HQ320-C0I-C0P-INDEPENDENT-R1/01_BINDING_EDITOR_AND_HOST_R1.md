@@ -1,0 +1,7 @@
+# C0I HQ320 binding prelaunch execution correction
+
+The original 00_COMMISSION has the correct scientific mission and return-only terrain, but its model/editor sentence listed two possible execution surfaces. **For actual launch the binding selection is: CODEX EDITOR + GPT-6 HIGH, one fresh independent local authenticated sparse worktree, real Python 3 / pytest / Git.** It is NOT an agent choice between Browser and Codex. No model/host switching or helper agents, no approved paid overage assumed.
+
+00C §3A/3B/5A and 00D mandatory decision: independent I2 structural/empirical two-owner native rule review requires actual Python and exact preimages; local Codex qualified, deterministic staging reuses existing verified Git objects. Step 5/OpenCode is economical for mechanical implementation but this review must establish source law and conditional inversion without reviewer–author overlap; High is assigned only to this science court. Pricing, current quota and warm runtime are UNKNOWN until actual passport preflight. Missing local Git/Python, privacy or model permit produces typed HOLD rather than imaginary execution. Original C0P author was OpenCode Step 5 and must not review its own work.
+
+This is a documentary launch binding, NOT an edit to any science oracle. Read original 00_COMMISSION.md AND this 01 addendum. Starting commit for a human-launched reviewer is the direct remote branch HEAD after publication of this addendum; HQ must provide its exact SHA and verify it. No source/semantic/CURRENT/PRE-MAIN/actor permissions added.
