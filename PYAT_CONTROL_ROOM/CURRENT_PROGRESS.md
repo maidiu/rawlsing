@@ -1,24 +1,23 @@
-# Pyat R27 — full six-return intake; one WG0 source-view RED; temporal authorization RED; GF1/F6 delivery HOLDS
+# PYAT R28 — six actual R27 returns adjudicated; five original-science next lanes; canonical progress revision 13
 
-**Canonical Pyat progress revision 12**. Existing scoped working HQ accepted decision `817b6d46f1f45b282f2b08e447fb4c400f391db7`, sourcefree methods not source35 N11/N12 grant. **Parent R26F sealed packet:** `b8679a316a24384e45540aaf43bc8e6141f829f6`. R27 own seal requires subsequent remote manifest and pointer proof.
+**Existing accepted Pyat working HQ decision:** `03c3c31baed41265a8111d8a6a1b18c9cad562da`. **Previous sealed PRE-MAIN:** `15d677e9c3ac3c260ec18e72edb68c523085faee`, predecessor `20261017-PYAT-HQ-R27-SIX-RETURN-FANIN-SIX-COMMISSIONS-R1` packet `8c913fa7676deca6eeb419d180c571c6b8aacffb`. R28 packet becomes sealed ONLY after exact new LATEST remote pointer publication.
 
-## Six original R26 governed returns
-- WG0P5 @9fa1098dfbcdb011d3624eb2dbc8a7cd9578fa34 => AUTHOR_ALL_OLD3_RED_CLOSED__NO_INDEPENDENT_ACCEPTANCE
-- WG0M @b91642ce98ec2c74b6d0c5d06ec8b83f67f02e86 => I2_235_PASS_1_NEW_RELEASE_SOURCE_ARTIFACT_VIEW_RED
-- F6I @6d99650bed01eed8365ec38bd888741a88888a45 => INDEPENDENT_ONLY_AUTHOR57_CUSTODY__SCIENCE_FALSIFICATION_NOT_PERFORMED__HOLD
-- GF1D @b9f3fbefe8ec0c873d47745688bffe1c21e9d940 => HOLD_MISSING_REAL_CONSUMER_SECOND_PRODUCTIVE_FAILURE
-- T9C @9a33c2dcaa7ac0d50606416ab965488c9782934b => AUTHOR_OLD10_T9I_RED_CLOSED__INDEPENDENT_REVIEW_NEW_RED
-- T9R @299dbf0d3a54fa76e36e524c553662f60090fe72 => I2_RETAIN_RED_UNUSED_FUTURE_AUTHORITY_EMPTY_ACTOR_GRANTS_DUPLICATE_PROVENANCE_AND_ARCHIVE_CAPABILITY_HOLDS
+## Six return judgements
+- **WG0P6** `e7e429c3dfb649233e74e0e5106e51ff25024806`: AUTHOR_NATIVE_RELEASE_SNAPSHOT_SOURCE_BIND_POSITIVE__I2_236_REQUIRED_GREEN_PENDING_5_NEW_UNCONSTRUCTIBLE
+- **WG0N** `6cd28b429504ad47e1bbc0fbcc6c4ef91db59ccd`: HQ_ACCEPT_SOURCEFREE_NATIVE_ORIGINAL25_METHOD_ONLY__MANDATORY236_PASS0_RED__OWN12_RUN5_UNCONSTRUCTIBLE_2_HISTORIC_COMPAT_FAIL
+- **F6J** `825b2d8050b550f1d52d3129883584fee2ef36c2`: INDEPENDENT_RATIONAL82_82_INHERITED35_AUTHOR57_SOURCEFREE_ARITHMETIC_ACCEPT__DECISION_ADMISSION_AUTHORITY_RED
+- **GF1E** `eeb726357204653b22458dc267dd70ba0009bd77`: ACTUAL_CONSUMER_MODULE_IMPLEMENTED_AUTHOR44_44_PLUS9__INDEPENDENT_GF1F_PENDING
+- **T9D** `d4969f513be0b3691f1bbf45813d17fc171a51a7`: TEMPORAL_AUTHOR_NEW_AUTHORITY_PROVENANCE_REPAIRED__T9S_FULL_I2_CONFIRMED
+- **T9S** `16f0c84e6cf36eb2dba9b7288c92e37f2b3b1762`: HQ_ACCEPT_SOURCEFREE_TEMPORAL_METHOD_ONLY__17PREREG12NEW50DELTA7HOSTILE8V553__2_OLD_SAFETY_COMPAT_FAIL
+**Scope:** WG0N sourcefree native core mandatory236 PASS/0 RED with own new12 runnable PASS/5 nonconstructible plus 2 historical stale characterization FAIL; bounded HQ method accepted at observed sourcefree grain, NOT full source issuer. T9S 17 frozen and 12 additional PASS; two old scientifically unsafe opportunity-route byte-contract failures remain unmodified; bounded temporal clock method accepted only sourcefree. F6J 82 exact rational comparisons and 35 inherited/53 new adversarial; arithmetic retained, decision/admit source-authority REAL RED, no complete F6 adoption. GF1E 44 frozen+9 author positive actual module, GF1F independent pending.
 
-## Six issued exact R27 startups (not externally launched)
-- WG0P6 @c25eadb2d2c11dc97035bf9f4666d8917d069c50 — Close WG0M one source-view snapshot pointer RED — WORKER_COMMISSIONS/PYAT-R27-WG0P6-RELEASE-VIEW-SOURCE-ARTIFACT-BINDING-R1/00_COMMISSION.md
-- WG0N @e97bf40029bf4c1b3493670c6c63882b97228a19 — Independent prereg now, full original native court after WG0P6 — WORKER_COMMISSIONS/PYAT-R27-WG0N-RELEASE-VIEW-INDEPENDENT-R1/00_COMMISSION.md
-- F6J @09a87efc87110cc50c129b02033730ed8feca4e8 — Distinct actual quantitative I2 F6 world A/B method and consumer — WORKER_COMMISSIONS/PYAT-R27-F6J-INDEPENDENT-F6-EXPERIMENT-COMPLETION-R1/00_COMMISSION.md
-- GF1E @e9867879a0f0b3ac8d8afe21fced9e18a8a0a1fb — Actual missing GF1 native computed consumer and frozen44, Codex high — WORKER_COMMISSIONS/PYAT-R27-GF1E-NAMED-NATIVE-CONSUMER-EXECUTION-R1/00_COMMISSION.md
-- T9D @7603c47610c01937e48b07f7fc69531964182911 — Fix T9R temporal authority/provenance and unavailable-capability honesty — WORKER_COMMISSIONS/PYAT-R27-T9D-TEMPORAL-AUTHORITY-PROVENANCE-REPAIR-R1/00_COMMISSION.md
-- T9S @a7aa9582e11763160469428586c5b5534e149c58 — Independent temporal prereg now, Phase B after T9D — WORKER_COMMISSIONS/PYAT-R27-T9S-TEMPORAL-PERMISSION-INDEPENDENT-R1/00_COMMISSION.md
+## Five published next starts (not external running sessions)
+- **WG0O** `agent/reviewer-pyat-r28-wg0o-source-issuer-authority-seam-court-r1@0533516fe939bb1d91be108b4bf05249639afbae` — Real release rel.authorities/qauth test-only issuer and source revocation residual, preserve 236; `WORKER_COMMISSIONS/PYAT-R28-WG0O-RELEASE-AUTHORITY-RESIDUAL-COURT-R1/00_COMMISSION.md`
+- **F6K** `agent/rabochii-pyat-r28-f6k-decision-admission-consumer-contract-repair-r1@813742d970d5484a53b7eac2fa3ba2fa76297432` — Repair F6 full-target null decision and unverified admit callback/authority propagation, preserve native arithmetic; `WORKER_COMMISSIONS/PYAT-R28-F6K-F6-DECISION-ADMISSION-REPAIR-R1/00_COMMISSION.md`
+- **F6L** `agent/reviewer-pyat-r28-f6l-independent-f6k-frozen-consumer-court-r1@31123f370af50bdf036cab32dd6d7594b36a5f22` — Independent F6J reviewer Phase A freeze now, Phase B after F6K source; `WORKER_COMMISSIONS/PYAT-R28-F6L-INDEPENDENT-DECISION-AUTHORITY-COURT-R1/00_COMMISSION.md`
+- **GF1F** `agent/reviewer-pyat-r28-gf1f-implemented-consumer-independent-r1@3686021a0f1c79e5e14c94fc736e1c36f51fddca` — Independent actual GF1 pair-support native44 computed consumer I2; `WORKER_COMMISSIONS/PYAT-R28-GF1F-NAMED-CONSUMER-INDEPENDENT-COURT-R1/00_COMMISSION.md`
+- **O35E** `agent/rabochii-pyat-r28-o35e-original-wave-eligibility-native-positive-r1@246fcdf7b25c6b160c0a167e4284e08d04194505` — P0 original35 eligibility U/E_pre competent rights and truly source-native real consumer or exact qualified HOLD; `WORKER_COMMISSIONS/PYAT-R28-O35E-ORIGINAL35-ELIGIBILITY-NATIVE-CRITICAL-PATH-R1/00_COMMISSION.md`
 
-**Scientific blockers:** original U/E_pre 35-wave item/operation eligibility and true source-native I05/Route B/batch all-source F1–F8 measured N11 world and separate Sorok N12/V3 UNISSUED. WG0P5's authentic original synthetic25 is working except one WG0M preregistered source-view contradiction; canonical 35 originals not covered. Sourcefree F6C author science still requires actual F6J I2, not fake F6I acceptance; Field Forge GF1 consumed method requires actual missing consumer and distinct review; retrospective temporal numeric model does not issue temporal authority nor person knowledge/actor grants. Sorok 3 transport RED are separate owner.
+**Critical end product:** source-original35 U/E_pre original item/op eligibility and competent grants → permitted C11/I03/I05/Batch true empirical F1–F8, N9/N10E/N10W and independently qualified whole-N11 → separate Sorok N12 V3/V2 historically developing person. Original source authority, generic Field Forge S1–S9 and OC05, source-original F6 and person memory not issued. Sorok rev4 report preserved.
 
-## Predecessor R26F provenance
-R26F operative sealed checkpoint `20261017-PYAT-HQ-R26F-F6I-DEEPSEEK-HARNESS-DISPENSATION-R1` @ packet `b8679a316a24384e45540aaf43bc8e6141f829f6`. All inherited 19 worker entries, 18 dependency nodes and original source rights are retained in this R27 CURRENT.json; previous immutable files unchanged.
+**Full previous R27 packet immutable:** `8c913fa7676deca6eeb419d180c571c6b8aacffb:HQ_HANDOFF/checkpoints/20261017-PYAT-HQ-R27-SIX-RETURN-FANIN-SIX-COMMISSIONS-R1/CURRENT.md`; new CURRENT.json retains entire inherited worker+dependency inventory.
