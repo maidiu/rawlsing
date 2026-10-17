@@ -1,0 +1,107 @@
+{
+ "schema": "WG0N_PHASE_A_FREEZE_RECEIPT@1",
+ "phase": "A",
+ "frozen_before_reading_WG0P6": true,
+ "wg0p6_code_opened_before_freeze": false,
+ "observed_at_utc": "2026-10-17T06:16:09Z",
+ "sealed_startup": "e97bf40029bf4c1b3493670c6c63882b97228a19",
+ "parent_reviewer": "WG0M@b91642ce98ec2c74b6d0c5d06ec8b83f67f02e86",
+ "retained_RED": "source/release_source_artifact",
+ "oracle_sha256": "9fb0f8c93bca0301dfda5aa8a8a8cf38eb09818731d851ba86642a348c3bf495",
+ "frozen_files": [
+  {
+   "path": "01_PREREGISTERED_HOSTILE_SOURCE_VIEW_ORACLE.json",
+   "sha256": "9fb0f8c93bca0301dfda5aa8a8a8cf38eb09818731d851ba86642a348c3bf495",
+   "git_blob_sha1": "e634515b59e5f7ac445b6cc759b85e08b0eab373",
+   "bytes": 9075
+  },
+  {
+   "path": "tests/test_hostile_source_view_court.py",
+   "sha256": "fc95e034f5caea791760b872d129413b03701e0347f018856496b124482e897c",
+   "git_blob_sha1": "884b601d3d0d08aa8c189d9a85b271ea1fdf6ea0",
+   "bytes": 4815
+  },
+  {
+   "path": "repro/hostile_source_view_adapter_v1.py",
+   "sha256": "e224da96a79c4a2165939d1a78701859124e980696f6672802338b535ce4f2f5",
+   "git_blob_sha1": "6c07213a912fdb62e1b4ba9866cf223454c4612d",
+   "bytes": 11511
+  }
+ ],
+ "preserved_inherited_files": [
+  {
+   "path": "PYAT-R26-WG0M-ORIGINAL-FRONTIER-INDEPENDENT-DELTA-R1/tests/test_descriptor_delta_frozen.py",
+   "sha256": "0be482bd7c1c6db2daf3cfca6ddfa78273630d2216d82ffc51c44b264d4a4579",
+   "git_blob_sha1": "db1613b7bd4b75eebd8cc29db3e6c70142a8fb39",
+   "bytes": 1038
+  },
+  {
+   "path": "PYAT-R26-WG0M-ORIGINAL-FRONTIER-INDEPENDENT-DELTA-R1/tests/test_precommitted_phase_b.py",
+   "sha256": "a4404f365485ad15609042944421a864dc3d69ec114bda18766252e016307f7c",
+   "git_blob_sha1": "217241868a827d2d27fd272f6650f9cc5f7b9e7c",
+   "bytes": 3350
+  },
+  {
+   "path": "PYAT-R26-WG0M-ORIGINAL-FRONTIER-INDEPENDENT-DELTA-R1/tests/phase_b/test_additional_descriptor_binding_red.py",
+   "sha256": "436d8c1dd5a1fe18f10a08d6d520071e451065592f560525ab1afb45691e3ddf",
+   "git_blob_sha1": "6c4657e083b5a28c274e7a7254592f259743cb40",
+   "bytes": 2091
+  },
+  {
+   "path": "PYAT-R26-WG0M-ORIGINAL-FRONTIER-INDEPENDENT-DELTA-R1/tests/phase_b/test_original_j_adapter_v1.py",
+   "sha256": "bbd28a7443eb8d6e236b9c654ced702c757451d8d2458eaed9c815087f423e3a",
+   "git_blob_sha1": "35756e0199d51f113aa7144e315a4a4860c0d128",
+   "bytes": 2109
+  },
+  {
+   "path": "PYAT-R26-WG0M-ORIGINAL-FRONTIER-INDEPENDENT-DELTA-R1/tests/phase_b/test_original_k_adapter_v1.py",
+   "sha256": "ac71ebf5636fcbb4ebdeeac77feb518b35760f41cbdf15b7469b12ce597716f2",
+   "git_blob_sha1": "4000d61832a17d9b4f5f2014c48f2221e5a20c9d",
+   "bytes": 691
+  },
+  {
+   "path": "PYAT-R26-WG0M-ORIGINAL-FRONTIER-INDEPENDENT-DELTA-R1/tests/p5_mapping/test_original_three_adapter_v1.py",
+   "sha256": "0164ed89a0bda6de7ebf6ff0241554bd7e02bb277ce1a7963b246273b94eb9d2",
+   "git_blob_sha1": "a031e8c84607e58b583c913690a9e3106e152a34",
+   "bytes": 1455
+  },
+  {
+   "path": "PYAT-R26-WG0M-ORIGINAL-FRONTIER-INDEPENDENT-DELTA-R1/01_FROZEN_DESCRIPTOR_EXPECTATIONS.json",
+   "sha256": "58cde6197fe070545580e6608f1da8c4b4a489948357805879a4f75bc78ca475",
+   "git_blob_sha1": "c1f61238c629b6c0455e556dcfbf211e3b1fa4db",
+   "bytes": 20271
+  },
+  {
+   "path": "PYAT-R26-WG0M-ORIGINAL-FRONTIER-INDEPENDENT-DELTA-R1/01_FROZEN_EXPECTATIONS_BEFORE_WG0P4.json",
+   "sha256": "4261fbc277d446dccc8311962ff1aa003dabef9f8bebe86b5c0d14796078944e",
+   "git_blob_sha1": "4928e9761d43dcf1b97654ff3f2c3e58343d7599",
+   "bytes": 18327
+  },
+  {
+   "path": "PYAT-R26-WG0M-ORIGINAL-FRONTIER-INDEPENDENT-DELTA-R1/repro/descriptor_adapter_v1.py",
+   "sha256": "3695d2c403c8b91d7fc0afa25aad64ea62d4bdb615597b80c8c71d46a8e84f03",
+   "git_blob_sha1": "1d8bdcd77036e11d38bbd48fba49e8bd6e36e7cd",
+   "bytes": 5483
+  },
+  {
+   "path": "PYAT-R26-WG0M-ORIGINAL-FRONTIER-INDEPENDENT-DELTA-R1/repro/phase_b_support_v1.py",
+   "sha256": "1e94397a7881ba6c015217a3bae0e660bd6114cab52d81ef8b4fc9bece8c2234",
+   "git_blob_sha1": "1da5df6aff3928ef9cd29f4e0347824aac29e2db",
+   "bytes": 3966
+  },
+  {
+   "path": "PYAT-R26-WG0M-ORIGINAL-FRONTIER-INDEPENDENT-DELTA-R1/repro/phase_b_adapter_v1.py",
+   "sha256": "6f7914973845ccfbe91954e7282d58a964ad024b0633153f781f05b8f8132fa2",
+   "git_blob_sha1": "dc56c5f5c122e21f80aea663fa7626e2bb4087cb",
+   "bytes": 19393
+  }
+ ],
+ "n_preserved": 11,
+ "n_new_controls": 17,
+ "n_negative": 14,
+ "n_positive": 3,
+ "wg0p6_branch_observed_on_remote_without_opening": "agent/rabochii-pyat-r27-wg0p6-release-view-artifact-source-binding-r1",
+ "wg0p6_read_cut": "NOT_APPLIED_IN_PHASE_A",
+ "phase_b_status": "BLOCKED_PENDING_WG0P6_READ_AND_EXECUTION",
+ "note": "Phase A freezes expectations only. No candidate was imported, executed or adjudicated here. The 17 controls are independent of any author implementation and were written from the declared law and the visible contract surface of the already-published WG0M parent return."
+}
