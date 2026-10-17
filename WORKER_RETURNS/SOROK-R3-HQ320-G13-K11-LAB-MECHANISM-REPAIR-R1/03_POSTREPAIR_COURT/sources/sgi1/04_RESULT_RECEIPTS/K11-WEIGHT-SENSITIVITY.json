@@ -1,0 +1,107 @@
+{
+ "actual_evidence_refs": [
+  "ledger:sha256:3a41582952f3adade2b526b4f803e1cfeb25ce2e71f471d6e084e0028eaf447a"
+ ],
+ "assertion_names_contract": [
+  "each_policy_hash_unique",
+  "outcomes_replay_exact",
+  "sensitivity_distribution_reported_without_population_claim",
+  "no_best_child_based_policy_choice"
+ ],
+ "assertion_results": {
+  "each_policy_hash_unique": true,
+  "no_best_child_based_policy_choice": true,
+  "outcomes_replay_exact": true,
+  "sensitivity_distribution_reported_without_population_claim": true
+ },
+ "authority_versions": {
+  "contract": "V3_CONCEPTION_CONDITIONED_RETROSPECTIVE_CONSTRUCTION_RULE@0.1-PROPOSAL",
+  "k11_contract": "SOROK_SG_K11_GENEALOGY_EXECUTION_CONTRACT@1.0.0",
+  "lab_rule": "PROVISIONAL_LAB_RULE__NOT_ADOPTED",
+  "read_cuts": {
+   "astra_official": "3b2d9a1b644a9fa024ed1bd895b67be5c8789531",
+   "s_g_return": "aec8fecc1ae2e3438ff70c44ce5ce7845d1a4829",
+   "sorok_corrected": "bace7640777098732d425e9368cf28ada0e57aeb"
+  }
+ },
+ "case_id": "K11-WEIGHT-SENSITIVITY",
+ "case_wall_seconds": 0.020677,
+ "cost_report": {
+  "SIM_INTEGER_WEIGHT_A": {
+   "actor_events": 19,
+   "causal_state_changes": 0,
+   "completion_tokens": 0,
+   "generic_queries": 6,
+   "history_attempts": 1,
+   "model_calls": 0,
+   "prompt_tokens": 0,
+   "rejected_candidates": 0,
+   "replay_ledger_bytes": 3617,
+   "replay_seconds": 9e-06,
+   "rng_draws": 1,
+   "total_tokens": 0,
+   "wall_seconds": 0.002415
+  },
+  "SIM_INTEGER_WEIGHT_B": {
+   "actor_events": 19,
+   "causal_state_changes": 0,
+   "completion_tokens": 0,
+   "generic_queries": 6,
+   "history_attempts": 1,
+   "model_calls": 0,
+   "prompt_tokens": 0,
+   "rejected_candidates": 0,
+   "replay_ledger_bytes": 3617,
+   "replay_seconds": 9e-06,
+   "rng_draws": 1,
+   "total_tokens": 0,
+   "wall_seconds": 0.00246
+  },
+  "SIM_UNIFORM_CLASSES": {
+   "actor_events": 19,
+   "causal_state_changes": 0,
+   "completion_tokens": 0,
+   "generic_queries": 6,
+   "history_attempts": 1,
+   "model_calls": 0,
+   "prompt_tokens": 0,
+   "rejected_candidates": 0,
+   "replay_ledger_bytes": 3617,
+   "replay_seconds": 9e-06,
+   "rng_draws": 1,
+   "total_tokens": 0,
+   "wall_seconds": 0.002337
+  }
+ },
+ "expected_status": "PASS_IF_AUTHORIZED_RUN",
+ "fixture_hash": "sha256:4c10ea65b3ac1fb22b943e34f19f3557c194e3f768687fc8543471885fea26af",
+ "input_hashes": {
+  "mother_anchor": "sha256:4c10ea65b3ac1fb22b943e34f19f3557c194e3f768687fc8543471885fea26af"
+ },
+ "intervention": {
+  "policies": 3,
+  "same_classes_and_seed": true
+ },
+ "intervention_hash": "sha256:426071718fde558db55722af3147a4e21f9b9d194403b2704a48e0b74fb05a25",
+ "missing_authority": [],
+ "model_version_if_used": "gpt-4o-2024-08-06",
+ "n_assertions": 4,
+ "observed_state": {
+  "policy_hashes": {
+   "SIM_INTEGER_WEIGHT_A": "sha256:9654603fa1efb6eb6b51d1d6cc5c8738abf8b90cebf3119a59fba6cbca4f5bb4",
+   "SIM_INTEGER_WEIGHT_B": "sha256:f26ec9f1763070a70e01cfe7a189b29f520398505f8de92a8df29d228b96755b",
+   "SIM_UNIFORM_CLASSES": "sha256:bb8fff7da303849fc090918ddb1f2458edeca5f424a2ce70d1998c9f61d028b7"
+  },
+  "selected_class_per_policy": {
+   "SIM_INTEGER_WEIGHT_A": "sha256:41af0c02f7ef99094",
+   "SIM_INTEGER_WEIGHT_B": "sha256:41af0c02f7ef99094",
+   "SIM_UNIFORM_CLASSES": "sha256:41af0c02f7ef99094"
+  }
+ },
+ "receipt_hash": "sha256:5c17655f8dc3b88cd50fbd1ce209bba0c4684ef0471de762f24c5c11eb761506",
+ "replay_result": {
+  "each_policy_replay_exact": true
+ },
+ "source_use_scope": "SOURCE_FREE_SYNTHETIC_LAB_ONLY__NO_ORIGINAL_SURVEY__NO_REAL_PERSON__NO_PRODUCTION_CURRENTNESS",
+ "terminal_grade": "K11_CASE_PASS"
+}

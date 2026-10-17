@@ -1,0 +1,68 @@
+{
+ "actual_evidence_refs": [
+  "ledger:sha256:df91841814c53d1edcf4ed88be12cb2b10427e25d5c0576e88188ebbad789f45"
+ ],
+ "assertion_names_contract": [
+  "SELECTION_AUTHORITY_UNBOUND",
+  "RNG_draw_count_zero",
+  "no_ordinal_to_weight_normalization"
+ ],
+ "assertion_results": {
+  "RNG_draw_count_zero": true,
+  "SELECTION_AUTHORITY_UNBOUND": true,
+  "no_ordinal_to_weight_normalization": true
+ },
+ "authority_versions": {
+  "contract": "V3_CONCEPTION_CONDITIONED_RETROSPECTIVE_CONSTRUCTION_RULE@0.1-PROPOSAL",
+  "k11_contract": "SOROK_SG_K11_GENEALOGY_EXECUTION_CONTRACT@1.0.0",
+  "lab_rule": "PROVISIONAL_LAB_RULE__NOT_ADOPTED",
+  "read_cuts": {
+   "astra_official": "3b2d9a1b644a9fa024ed1bd895b67be5c8789531",
+   "s_g_return": "aec8fecc1ae2e3438ff70c44ce5ce7845d1a4829",
+   "sorok_corrected": "bace7640777098732d425e9368cf28ada0e57aeb"
+  }
+ },
+ "case_id": "K11-WEIGHT-ORDINAL",
+ "case_wall_seconds": 0.00187,
+ "cost_report": {
+  "actor_events": 0,
+  "causal_state_changes": 0,
+  "completion_tokens": 0,
+  "generic_queries": 6,
+  "history_attempts": 0,
+  "model_calls": 0,
+  "prompt_tokens": 0,
+  "rejected_candidates": 0,
+  "replay_ledger_bytes": 2,
+  "replay_seconds": 0.0,
+  "rng_draws": 0,
+  "total_tokens": 0,
+  "wall_seconds": 0.001595
+ },
+ "expected_status": "REFUSE_OR_INVARIANT",
+ "fixture_hash": "sha256:4c10ea65b3ac1fb22b943e34f19f3557c194e3f768687fc8543471885fea26af",
+ "input_hashes": {
+  "mother_anchor": "sha256:4c10ea65b3ac1fb22b943e34f19f3557c194e3f768687fc8543471885fea26af"
+ },
+ "intervention": {
+  "adopted_numeric_policy": false,
+  "only_ordinal_model_rankings": true
+ },
+ "intervention_hash": "sha256:92f9c250a91784bf8bdc298d15ea31e24f1961061cdd0dbcba966082a95cb51d",
+ "missing_authority": [],
+ "model_version_if_used": "gpt-4o-2024-08-06",
+ "n_assertions": 3,
+ "observed_state": {
+  "terminal": {
+   "lab_rule": "PROVISIONAL_LAB_RULE__NOT_ADOPTED",
+   "no_ordinal_to_weight_normalization": true,
+   "reason": "only model ordinal rankings present; no adopted numeric/equiprobable simulation policy owner",
+   "rng_draw_count": 0,
+   "status": "SELECTION_AUTHORITY_UNBOUND"
+  }
+ },
+ "receipt_hash": "sha256:9840471fe246c94231042d2a147e54e0d2c2959a069e31696b214ac8d4225708",
+ "replay_result": {},
+ "source_use_scope": "SOURCE_FREE_SYNTHETIC_LAB_ONLY__NO_ORIGINAL_SURVEY__NO_REAL_PERSON__NO_PRODUCTION_CURRENTNESS",
+ "terminal_grade": "K11_CASE_INVARIANT_HELD"
+}

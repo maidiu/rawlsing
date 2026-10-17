@@ -1,0 +1,22 @@
+{
+ "assertion_results": {
+  "both_graphs_acyclic": true,
+  "causal_childhood_to_endpoint_chronology": true,
+  "construction_E_to_H_edge_allowed_and_typed_only": true,
+  "zero_causal_endpoint_to_childhood_edges": true
+ },
+ "case": "K11-GRAPH-CONSTRUCTION-VS-CAUSAL",
+ "observed": {
+  "acyclic": true,
+  "causal_endpoint_to_childhood_edges": [],
+  "n_edges": 41,
+  "n_nodes": 40,
+  "zero_causal_endpoint_to_childhood_edges": true
+ },
+ "two_dag_contract": {
+  "E_to_H_edge_type": "RETROSPECTIVE_CONSTRUCTION_DEPENDS_ON",
+  "algorithm_time_not_causal_parent": true,
+  "causal_edges_namespace": "CAUSAL_PARENT",
+  "construction_edges_namespace": "CONSTRUCTION_DEP"
+ }
+}

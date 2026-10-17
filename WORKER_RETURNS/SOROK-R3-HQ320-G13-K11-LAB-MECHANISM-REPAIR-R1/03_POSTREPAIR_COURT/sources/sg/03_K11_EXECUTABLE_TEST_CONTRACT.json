@@ -1,0 +1,485 @@
+{
+  "schema": "SOROK_SG_K11_GENEALOGY_EXECUTION_CONTRACT@1.0.0",
+  "status": "DOCUMENTARY_SPECIFICATION_ONLY__NO_LAB_MODEL_ACTOR_EXECUTION_GRANT",
+  "authority_grade": "PROPOSAL_NOT_ADOPTED",
+  "read_cuts": {
+    "sorok": "bace7640777098732d425e9368cf28ada0e57aeb",
+    "astra": "3b2d9a1b644a9fa024ed1bd895b67be5c8789531"
+  },
+  "prerequisites": [
+    "exact competent V3 genealogy construction and reproduction/timing semantics",
+    "specific synthetic actor/model lab grant",
+    "adopted scenario-generation grammar/proposal use ceiling",
+    "adopted ADP020 decision kind, static stream and selection policy",
+    "exact V3 developmental owners including memory, encounter, relationship, response",
+    "known source-use scope for any empirical queries or explicitly synthetic no-empirical fixture",
+    "independent expected-case custodian and review plan",
+    "pinned runtime/repository/semantic registry and replay implementation"
+  ],
+  "execution_status": "NOT_EXECUTED",
+  "commands_executed": [],
+  "model_calls_executed": 0,
+  "immutable_fixtures": {
+    "M0": {
+      "kind": "PIPELINE_GENERATED_MOTHER_REQUIRED",
+      "checkpoint": "SAME_FULL_MOTHER_CHECKPOINT",
+      "children_preexisting": 0,
+      "source": "authorized synthetic actor run; no manual demographic-shell substitute",
+      "exact_hash": "TO_BE_FILLED_BY_AUTHORIZED_RUN"
+    },
+    "MP": {
+      "kind": "PIPELINE_GENERATED_MOTHER_WITH_EXISTING_IDENTIFIED_PARTNER",
+      "checkpoint": "HAS_ADMITTED_PARTNER_HISTORY",
+      "exact_hash": "TO_BE_FILLED_BY_AUTHORIZED_RUN"
+    },
+    "M2": {
+      "kind": "PIPELINE_GENERATED_MOTHER_WITH_OLDER_CHILD",
+      "checkpoint": "HAS_PRIOR_CHILD_AND_HOUSEHOLD_EVENTS",
+      "exact_hash": "TO_BE_FILLED_BY_AUTHORIZED_RUN"
+    }
+  },
+  "preregistration": {
+    "scenarios_min": 2,
+    "scenarios_max": 6,
+    "variants_per_mother_min": 2,
+    "seeds": [
+      "R0",
+      "R1",
+      "R2"
+    ],
+    "selection_policies": [
+      "SIM_UNIFORM_CLASSES",
+      "SIM_INTEGER_WEIGHT_A",
+      "SIM_INTEGER_WEIGHT_B"
+    ],
+    "initial_max_history_attempts_per_selected_endpoint": 4,
+    "initial_max_scenario_proposals_per_route": 6,
+    "initial_max_forward_replay_attempts": 4,
+    "initial_max_generic_query_requests_per_scenario": 8,
+    "initial_max_model_proposal_calls_per_route": 2,
+    "budget_status": "EXAMPLE_LIMITS_REQUIRING_PRECOMMIT_AND_COMPETENT_APPROVAL; never dynamically enlarged to force a pass",
+    "rerun_rules": "Use same committed proposal records, receipts, root seed, registry; do not recall stochastic LLM for replay",
+    "hold_if_missing_any_required_input": true
+  },
+  "harness_contract": {
+    "run_interface": "genealogy_k11.evaluate(fixture_ref, intervention_ref, rule_registry_ref, policy_ref, seed_ref, expected_oracle_ref)",
+    "must_persist": [
+      "mother_anchor",
+      "world_snapshot",
+      "candidate_proposals",
+      "dedup_receipts",
+      "generic_query_receipts",
+      "eligibility_rejections",
+      "selection_policy",
+      "adp020_candidate_set",
+      "adp020_decision_draw_receipts",
+      "construction_graph",
+      "father_root_and_full_event_history",
+      "forward_endpoint_validation",
+      "represented_causal_graph",
+      "shared_relationship_admissions",
+      "child_developmental_exposure",
+      "exact_replay_hashes",
+      "all_attempts_and_costs",
+      "independent_heldout_action_results"
+    ],
+    "no_hidden_data": [
+      "future_child_outcomes",
+      "target_child_personality",
+      "desired_wounds",
+      "undeclared_source_data",
+      "V2_rendered_prose_as_actor_truth"
+    ],
+    "compare": "typed machine objects/events/checkpoint hashes FIRST; independent semantic reviewer only for held-out judgments",
+    "receipt_schema": [
+      "case_id",
+      "fixture_hash",
+      "intervention_hash",
+      "authority_versions",
+      "source_use_scope",
+      "model_version_if_used",
+      "input_hashes",
+      "actual_evidence_refs",
+      "observed_state",
+      "assertion_results",
+      "missing_authority",
+      "cost_report",
+      "replay_result",
+      "terminal_grade"
+    ],
+    "read_access_trace_required": true
+  },
+  "gates": [
+    {
+      "id": "G0",
+      "pass": "verified lab/model/science grants plus pinned artifacts and independent oracle before calls",
+      "fail": "NOT_EXECUTED_AUTHORITY_HOLD"
+    },
+    {
+      "id": "G1",
+      "pass": "all source-owner/permission/semantic graph invariants (including no PREV3 parent) pass",
+      "fail": "NO_GO"
+    },
+    {
+      "id": "G2",
+      "pass": "full mother and father owner-generated histories, endpoint validated; no teleology and no duplicate shared event",
+      "fail": "K11_FAIL_OR_HOLD"
+    },
+    {
+      "id": "G3",
+      "pass": "two genuinely different lawful family outputs in deliberately nondegenerate run, replay exact, parity and independent project controls pass",
+      "fail": "K11_FAIL_OR_NONDISCRIMINATING_HOLD"
+    },
+    {
+      "id": "G4",
+      "pass": "sensitivity and all attempted/failed history draws disclosed; cost within preregistered ceiling",
+      "fail": "QUALIFIED_HOLD"
+    },
+    {
+      "id": "G5",
+      "pass": "postconception objective relation and separately actor-processed child exposure; no fixed personality-from-parent shortcut",
+      "fail": "K11_FAIL"
+    }
+  ],
+  "acceptance_rule": "ALL_MANDATORY_CASES_PASS_AND_ALL_GATES_PASS_WITH_EXACT_RECEIPTS; any missing execution = HOLD; source-free positive cannot claim real population or production currentness",
+  "cases": [
+    {
+      "id": "K11-BASE-LOCAL",
+      "fixture": "M0",
+      "intervention": "Mother M0 complete historical world/actor checkpoint T-, local closed route, seed R0; generate bounded candidate set and select governed semantic class, construct father whole prehistory and validate",
+      "assertions": [
+        "mother_checkpoint_byte_identity_unchanged",
+        "proposal_set_finite",
+        "generic_query_receipts_exact",
+        "selection_policy_labeled",
+        "father_whole_domains_valid",
+        "forward_endpoint_match",
+        "shared_occurrence_once",
+        "post_conception_both_continue",
+        "child_exposure_changes_only_after_admission",
+        "exact_replay_hash_equal"
+      ],
+      "expected_status": "PASS_IF_AUTHORIZED_RUN",
+      "observed_status": "NOT_EXECUTED",
+      "evidence_refs": []
+    },
+    {
+      "id": "K11-ROUTE-DISCORDANT",
+      "fixture": "M0",
+      "intervention": "Same M0; alter only independently lawful local contact route/institution and seed R1; preserve world premise version",
+      "assertions": [
+        "contrast_in_typed_candidates_and_eligibility",
+        "qualified_route_truth",
+        "candidate_set_hash_binding",
+        "deterministic_replay_per_route"
+      ],
+      "expected_status": "PASS_IF_AUTHORIZED_RUN",
+      "observed_status": "NOT_EXECUTED",
+      "evidence_refs": []
+    },
+    {
+      "id": "K11-ROUTE-MOBILITY",
+      "fixture": "M0",
+      "intervention": "Same immutable M0 pre-boundary checkpoint; vary a route parameter only where checkpoint actually contains past mobility or a lawful reachable opportunity",
+      "assertions": [
+        "no_backdated_mother_mobility",
+        "permitted_route_expansion",
+        "source_uses_generic_not_parent_specific",
+        "invariant_unrelated_history"
+      ],
+      "expected_status": "PASS_IF_AUTHORIZED_RUN",
+      "observed_status": "NOT_EXECUTED",
+      "evidence_refs": []
+    },
+    {
+      "id": "K11-ROUTE-UNCONVENTIONAL",
+      "fixture": "M0",
+      "intervention": "Same M0; test unconventional encounter only if admitted mother route and world permits",
+      "assertions": [
+        "no_typicality_mandate",
+        "actual_route_constraint_preserved",
+        "no_stereotype_mapping",
+        "exact_replay"
+      ],
+      "expected_status": "PASS_IF_AUTHORIZED_RUN",
+      "observed_status": "NOT_EXECUTED",
+      "evidence_refs": []
+    },
+    {
+      "id": "K11-A-FUTURE-CHILD-EMBARGO",
+      "fixture": "M0",
+      "intervention": "Change only sealed child-outcome shadow metadata from label L0 to conflicting label L1; keep visible pre-boundary inputs/policy/seed identical",
+      "assertions": [
+        "candidate_set_hash_equal",
+        "generic_query_request_hashes_equal",
+        "selection_decision_identity_equal",
+        "father_history_event_hashes_equal",
+        "endpoint_same",
+        "no_future_metadata_read"
+      ],
+      "expected_status": "REFUSE_OR_INVARIANT",
+      "observed_status": "NOT_EXECUTED",
+      "evidence_refs": []
+    },
+    {
+      "id": "K11-A2-DESIRED-WOUND-COUNTERFACTUAL",
+      "fixture": "M0",
+      "intervention": "Change only future child desired adversity/trauma tag; no new world fact or past parent event",
+      "assertions": [
+        "no_father_abuse_generated_as_function_of_label",
+        "byte_equal_father_ledger",
+        "no_child_future_key_in_model_prompt_or_seed"
+      ],
+      "expected_status": "REFUSE_OR_INVARIANT",
+      "observed_status": "NOT_EXECUTED",
+      "evidence_refs": []
+    },
+    {
+      "id": "K11-B-INDEPENDENT-HISTORY",
+      "fixture": "M0",
+      "intervention": "Keep necessary endpoint constraints and exact selected scenario fixed; vary separately governed second-parent past seed/initial lawful conditions",
+      "assertions": [
+        "at_least_two_endpoint_valid_distinct_nonendpoint_causal_histories_where_fixture_supports_alternatives",
+        "nonmother_projects_distinct",
+        "identity_or_histories_not_merely_prose",
+        "endpoint_hash_constraints_equal",
+        "no_hidden_backdating"
+      ],
+      "expected_status": "PASS_IF_AUTHORIZED_RUN",
+      "observed_status": "NOT_EXECUTED",
+      "evidence_refs": []
+    },
+    {
+      "id": "K11-C-EXISTING-PARTNER",
+      "fixture": "MP",
+      "intervention": "Mother checkpoint already identifies father actor F_existing through admitted history, propose conflicting F_new",
+      "assertions": [
+        "existing_actor_reused_or_exact_contradiction_HOLD",
+        "no_duplicate_actor_or_event",
+        "mother_history_unchanged",
+        "zero_unapproved_RNG"
+      ],
+      "expected_status": "REFUSE_OR_INVARIANT",
+      "observed_status": "NOT_EXECUTED",
+      "evidence_refs": []
+    },
+    {
+      "id": "K11-C2-EXISTING-SHARED-EVENT",
+      "fixture": "MP",
+      "intervention": "Existing objective contact/relationship event E_pre is bound to father known; back-generation proposes mismatched E_pre",
+      "assertions": [
+        "HOLD_before_any_new_shared_event",
+        "unchanged_existing_E_pre_hash",
+        "no_retroactive_repair"
+      ],
+      "expected_status": "REFUSE_OR_INVARIANT",
+      "observed_status": "NOT_EXECUTED",
+      "evidence_refs": []
+    },
+    {
+      "id": "K11-D-PARITY",
+      "fixture": "M2",
+      "intervention": "Already-generated mother has older child, prior household and prior partner trajectory; reproduce same checkpoint across two routes",
+      "assertions": [
+        "older_child_actor_id_unchanged",
+        "older_child_actor_stream_unchanged",
+        "historical_membership_unchanged",
+        "new_target_not_assumed_first_child",
+        "no_ancestral_rewrite"
+      ],
+      "expected_status": "PASS_IF_AUTHORIZED_RUN",
+      "observed_status": "NOT_EXECUTED",
+      "evidence_refs": []
+    },
+    {
+      "id": "K11-E-INDEPENDENT-PROJECT",
+      "fixture": "M0",
+      "intervention": "Father must have governed third-party relation/project P independent of Mom/child; run held-out event that affects P with neither present in prompt",
+      "assertions": [
+        "nonmother_project_has_causal_effect_record",
+        "third_party_relationship_remains_actor_specific",
+        "father_can_act_without_mother_prompt",
+        "exact_forward_replay",
+        "not_biography_prose"
+      ],
+      "expected_status": "PASS_IF_AUTHORIZED_RUN",
+      "observed_status": "NOT_EXECUTED",
+      "evidence_refs": []
+    },
+    {
+      "id": "K11-GRAPH-CONSTRUCTION-VS-CAUSAL",
+      "fixture": "M0",
+      "intervention": "Save both DAGs including endpoint constraining prior construction and actual childhood/encounter chronology",
+      "assertions": [
+        "construction_E_to_H_edge_allowed_and_typed_only",
+        "causal_childhood_to_endpoint_chronology",
+        "zero_causal_endpoint_to_childhood_edges",
+        "both_graphs_acyclic"
+      ],
+      "expected_status": "PASS_IF_AUTHORIZED_RUN",
+      "observed_status": "NOT_EXECUTED",
+      "evidence_refs": []
+    },
+    {
+      "id": "K11-DEDUPE",
+      "fixture": "M0",
+      "intervention": "Duplicate semantic candidate C0 under ten unrelated phrasings, reorder input and repeat same seed",
+      "assertions": [
+        "dedup_equivalence_class_count_unchanged",
+        "candidate_set_hash_equal",
+        "selection_receipt_equal",
+        "no_probability_multiplication"
+      ],
+      "expected_status": "REFUSE_OR_INVARIANT",
+      "observed_status": "NOT_EXECUTED",
+      "evidence_refs": []
+    },
+    {
+      "id": "K11-EMPIRICAL-CEILING",
+      "fixture": "M0",
+      "intervention": "Supply only single-person marginal source evidence; candidate wants joint two-person encounter propensity",
+      "assertions": [
+        "generic_empirical_receipt_NOT_ESTIMABLE_or_ceiling_limited",
+        "no_population_coupling_inferred",
+        "selection_no_frequency_claim"
+      ],
+      "expected_status": "REFUSE_OR_INVARIANT",
+      "observed_status": "NOT_EXECUTED",
+      "evidence_refs": []
+    },
+    {
+      "id": "K11-WEIGHT-ORDINAL",
+      "fixture": "M0",
+      "intervention": "Supply only LLM ordinal candidates, no adopted numeric/equiprobable simulation policy",
+      "assertions": [
+        "SELECTION_AUTHORITY_UNBOUND",
+        "RNG_draw_count_zero",
+        "no_ordinal_to_weight_normalization"
+      ],
+      "expected_status": "REFUSE_OR_INVARIANT",
+      "observed_status": "NOT_EXECUTED",
+      "evidence_refs": []
+    },
+    {
+      "id": "K11-WEIGHT-SENSITIVITY",
+      "fixture": "M0",
+      "intervention": "Three preregistered authorized simulation-policy integer weight sets on identical admitted classes/seeds",
+      "assertions": [
+        "each_policy_hash_unique",
+        "outcomes_replay_exact",
+        "sensitivity_distribution_reported_without_population_claim",
+        "no_best_child_based_policy_choice"
+      ],
+      "expected_status": "PASS_IF_AUTHORIZED_RUN",
+      "observed_status": "NOT_EXECUTED",
+      "evidence_refs": []
+    },
+    {
+      "id": "K11-RETRY-BIAS",
+      "fixture": "M0",
+      "intervention": "Force selected scenario C1 into endpoint infeasible after forward replay, leave C2 feasible",
+      "assertions": [
+        "failed_attempt_receipt_persisted",
+        "no_silent_resample",
+        "effective_selection_bias_report_or_HOLD",
+        "no_causal_commit_for_C1"
+      ],
+      "expected_status": "REFUSE_OR_INVARIANT",
+      "observed_status": "NOT_EXECUTED",
+      "evidence_refs": []
+    },
+    {
+      "id": "K11-VALID-EMPTY",
+      "fixture": "M0",
+      "intervention": "All proposed routes impossible under immutable world and M0 facts",
+      "assertions": [
+        "typed_SCENARIOS_VALID_EMPTY_or_INFEASIBLE",
+        "no_unsupported_father_created",
+        "zero_RNG_draws",
+        "zero_genealogy_events"
+      ],
+      "expected_status": "REFUSE_OR_INVARIANT",
+      "observed_status": "NOT_EXECUTED",
+      "evidence_refs": []
+    },
+    {
+      "id": "K11-UNKNOWN-REQUIRED",
+      "fixture": "M0",
+      "intervention": "Essential external rule/denominator/organismic witness unknown",
+      "assertions": [
+        "HOLD_not_INFEASIBLE",
+        "no_filler_fact_or_event",
+        "exact_missing_authority_list"
+      ],
+      "expected_status": "REFUSE_OR_INVARIANT",
+      "observed_status": "NOT_EXECUTED",
+      "evidence_refs": []
+    },
+    {
+      "id": "K11-RELATION-ASYMMETRY",
+      "fixture": "M0",
+      "intervention": "Rule-bound shared relationship with Mom affectionate and father nonreciprocal/unknown, controlled household absence",
+      "assertions": [
+        "one_objective_relation_event",
+        "two_distinct_perspective_states_where_admitted",
+        "no_reciprocity_inference",
+        "zero_auto_household_membership",
+        "both_continuations_replay"
+      ],
+      "expected_status": "PASS_IF_AUTHORIZED_RUN",
+      "observed_status": "NOT_EXECUTED",
+      "evidence_refs": []
+    },
+    {
+      "id": "K11-CONCEPTION-CHILDGEN-BOUNDARY",
+      "fixture": "M0",
+      "intervention": "Conception target selected, biologic/timing owner not authorized",
+      "assertions": [
+        "PENDING_not_ADMITTED_CONCEPTION",
+        "zero_CHILD_GENERATED_events",
+        "no_birth_alias",
+        "CONCEPTION_BIOLOGY_AUTHORITY_HOLD"
+      ],
+      "expected_status": "REFUSE_OR_INVARIANT",
+      "observed_status": "NOT_EXECUTED",
+      "evidence_refs": []
+    },
+    {
+      "id": "K11-MISSING-HISTORY",
+      "fixture": "M0",
+      "intervention": "Father only demographic profile, with no independently causal projects/memory/owner events",
+      "assertions": [
+        "INDEPENDENT_PROJECT_PROOF_MISSING_or_PREHISTORY_OWNER_RULE_MISSING",
+        "no_child_generation_commit"
+      ],
+      "expected_status": "REFUSE_OR_INVARIANT",
+      "observed_status": "NOT_EXECUTED",
+      "evidence_refs": []
+    },
+    {
+      "id": "K11-SCHEDULER-SAME-TIME",
+      "fixture": "M0",
+      "intervention": "Conflicting same-effective-time encounter/relationship proposals without admitted precedence",
+      "assertions": [
+        "AMBIGUOUS_SAME_TIME_CAUSAL_ORDER",
+        "no_lexicographic_priority",
+        "zero_fictitious_events"
+      ],
+      "expected_status": "REFUSE_OR_INVARIANT",
+      "observed_status": "NOT_EXECUTED",
+      "evidence_refs": []
+    },
+    {
+      "id": "K11-REPLAY-ALTER-SUBJECT",
+      "fixture": "M0",
+      "intervention": "Change frozen father exact generation subject hash without changing reference, rerun frozen receipts",
+      "assertions": [
+        "ACTOR_ID_COLLISION_OR_SUBJECT_REUSE_INTEGRITY_FAILURE",
+        "no_reconstructed_history_pass"
+      ],
+      "expected_status": "REFUSE_OR_INVARIANT",
+      "observed_status": "NOT_EXECUTED",
+      "evidence_refs": []
+    }
+  ]
+}

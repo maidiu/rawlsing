@@ -1,0 +1,39 @@
+{
+ "assertion_results": {
+  "candidate_set_hash_equal": true,
+  "endpoint_same": true,
+  "father_history_event_hashes_equal": true,
+  "generic_query_request_hashes_equal": true,
+  "no_future_metadata_read": true,
+  "selection_decision_identity_equal": true
+ },
+ "case_id": "K11-A-FUTURE-CHILD-EMBARGO",
+ "expected": "REFUSE_OR_INVARIANT",
+ "hard_failure_rule": "ANY difference in father selection or father history under changed hidden future-child metadata is a hard failure",
+ "observed": {
+  "dad_hash_a": "sha256:53193bdd2185590b3b0771034a59163d14287227c2f2ec3716d886d910daae01",
+  "dad_hash_b": "sha256:53193bdd2185590b3b0771034a59163d14287227c2f2ec3716d886d910daae01",
+  "guard_a": "LAB_PASS_AT_DECLARED_GRAIN",
+  "guard_b": "LAB_PASS_AT_DECLARED_GRAIN",
+  "selection_a": {
+   "candidate_set_hash": "sha256:45051863681820439f39cf261aea9f7ba62961ee61f7d8301f905fad166a0408",
+   "draw_mode": "SCOPED_DETERMINISTIC_STREAM",
+   "n_draws": 1,
+   "policy_hash": "sha256:bb8fff7da303849fc090918ddb1f2458edeca5f424a2ce70d1998c9f61d028b7",
+   "scope_hash": "sha256:8e0fcc648b5cb592e538cf40a2111012aee39e4ea38c066d9a5c8bf42b4f848b",
+   "selected_class_key": "sha256:d4bfb4d87a639ab3d5fb14b51ed8915ec8188a5abb9e858b961c51be89917665"
+  },
+  "selection_b": {
+   "candidate_set_hash": "sha256:45051863681820439f39cf261aea9f7ba62961ee61f7d8301f905fad166a0408",
+   "draw_mode": "SCOPED_DETERMINISTIC_STREAM",
+   "n_draws": 1,
+   "policy_hash": "sha256:bb8fff7da303849fc090918ddb1f2458edeca5f424a2ce70d1998c9f61d028b7",
+   "scope_hash": "sha256:8e0fcc648b5cb592e538cf40a2111012aee39e4ea38c066d9a5c8bf42b4f848b",
+   "selected_class_key": "sha256:d4bfb4d87a639ab3d5fb14b51ed8915ec8188a5abb9e858b961c51be89917665"
+  },
+  "shadow_a": "sealed L0",
+  "shadow_b": "sealed L1"
+ },
+ "result": "INVARIANT_HELD",
+ "terminal_grade": "K11_CASE_INVARIANT_HELD"
+}

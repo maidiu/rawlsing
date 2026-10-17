@@ -1,0 +1,56 @@
+{
+  "schema": "hq297_g11_independent_k11_frozen_r1",
+  "grade": "TEST_ONLY_SOURCEFREE_PREDECLARED",
+  "freeze_sequence": "Created before opening SG/03_K11_FROZEN_PROTOCOL_AND_ORACLES.json",
+  "not_claimed": ["statistical_parent_probabilities", "model_or_actor_use", "V3 developmental or psychological validity", "independently_generated_person", "ADP adoption"],
+  "clock": "ISO-8601 dates, Gregorian UTC date ordinal, fixed 280 day synthetic gestation assumption (no biological calibration)",
+  "graph": {
+    "nodes": ["mother_history", "mother_checkpoint", "father_history", "father_checkpoint", "scenario_proposal", "eligibility", "conception", "gestation", "birth", "child_provenance"],
+    "edges": [["mother_history", "mother_checkpoint"], ["father_history", "father_checkpoint"], ["mother_checkpoint", "eligibility"], ["father_checkpoint", "eligibility"], ["scenario_proposal", "eligibility"], ["eligibility", "conception"], ["conception", "gestation"], ["gestation", "birth"], ["birth", "child_provenance"]],
+    "forbidden_edges": [["birth", "mother_history"], ["birth", "father_history"], ["child_provenance", "scenario_proposal"], ["conception", "mother_checkpoint"]]
+  },
+  "fixed_preconception": {
+    "checkpoint": "2020-01-01",
+    "mothers": [
+      {"id": "M0", "born": "1990-01-01", "history": [{"date":"2018-01-01", "event":"synthetic_education_completion"}], "prior_child": null, "eligible_windows": [["2020-05-01", "2020-12-31"]]},
+      {"id": "M1", "born": "1990-01-01", "history": [{"date":"2015-05-20", "event":"older_child_conception"}, {"date":"2016-02-24", "event":"older_child_birth"}, {"date":"2018-01-01", "event":"synthetic_education_completion"}], "prior_child": {"conceived":"2015-05-20", "born":"2016-02-24"}, "eligible_windows": [["2020-05-01", "2020-12-31"]]}
+    ],
+    "fathers": [
+      {"id":"F0", "born":"1987-04-02", "history":[{"date":"2016-08-01","event":"synthetic_trade_training"},{"date":"2019-04-01","event":"synthetic_relocation_A"}], "eligible_windows":[["2020-05-01","2020-12-31"]]},
+      {"id":"F1", "born":"1991-08-08", "history":[{"date":"2016-09-01","event":"synthetic_academic_training"},{"date":"2019-06-01","event":"synthetic_relocation_B"}], "eligible_windows":[["2020-05-01","2020-12-31"]]}
+    ]
+  },
+  "proposals": [
+    {"id":"C0","conception":"2020-06-01", "birth_rule_days":280},
+    {"id":"C1","conception":"2020-11-01", "birth_rule_days":280}
+  ],
+  "oracle": {
+    "baseline_feasible_count": 8,
+    "baseline_all_same_mother_history_across_candidate_combinations": true,
+    "baseline_all_same_father_history_across_candidate_combinations": true,
+    "baseline_each_mother_variant_has_two_distinct_fathers_and_both_scenarios": true,
+    "baseline_distinct_valid_witnesses_at_least": 2,
+    "baseline_all_forward_valid": true,
+    "baseline_no_child_outcome_wish_allowed_at_selection": true,
+    "baseline_no_real_distribution_or_rng_weight_claim": true,
+    "baseline_terminated_max_candidates":8,
+    "hostiles": {
+      "cycle_birth_to_mother_history": "REJECT_CYCLE",
+      "cycle_mother_father_mutual_conditioning": "REJECT_CYCLE",
+      "mother_checkpoint_mutation": "REJECT_FIXED_HISTORY_MUTATION",
+      "father_retrospective_history_insertion": "REJECT_FIXED_HISTORY_MUTATION",
+      "later_event_inserted_into_preconception_checkpoint": "REJECT_TEMPORAL_ORDER",
+      "conception_before_checkpoint": "REJECT_TEMPORAL_ORDER",
+      "birth_before_conception": "REJECT_TEMPORAL_ORDER",
+      "child_provenance_before_birth": "REJECT_TEMPORAL_ORDER",
+      "age_ineligible_parent": "REJECT_AGE",
+      "parent_unavailable_at_conception": "REJECT_SUPPORT",
+      "nonexistent_conception_window": "REJECT_SUPPORT",
+      "select_baby_by_desired_child_outcome": "REJECT_CHILD_OUTCOME_LEAKAGE",
+      "rank_valid_solutions_by_ideal_child": "REJECT_CHERRY_PICK",
+      "sourcefree_rng_as_empirical_probabilities": "REJECT_UNISSUED_PROBABILITY"
+    }
+  },
+  "branching": {"mother_variants":2,"second_parent_histories":2,"conception_scenarios":2,"cartesian_upper_bound":8,"complexity":"O(M*F*C*(H+E)) for fixed histories H and edges E; exponential possible for unbounded causal-branch narrative modeling, not tested"},
+  "policy": {"adopted_owner_changed":false,"actor_invocations":0,"llm_invocations":0,"original_survey_rows":0}
+}
