@@ -1,0 +1,136 @@
+--- WG0P4_original/repro/wg0p4_workload.py
++++ WG0P5/review/runtime_phase_b/candidate/repro/wg0p4_workload.py
+@@ -8,7 +8,7 @@
+ from __future__ import annotations
+ import copy, hashlib, hmac, importlib.util, json, os, pathlib, secrets, sys
+ from collections import Counter
+-from dataclasses import dataclass, field, replace
++from dataclasses import dataclass, field, fields, replace
+ from types import MappingProxyType
+ from typing import Any
+ 
+@@ -23,14 +23,14 @@
+ _sp=importlib.util.spec_from_file_location('_wg0p3_original',PINNED/'predecessors/p3/repro/wg0p3_workload.py')
+ base=importlib.util.module_from_spec(_sp);sys.modules[_sp.name]=base;_sp.loader.exec_module(base)
+ from rawlsing_next.pre553_batch_runner import BatchExecutionRunner,BatchManifest,BatchUnitSpec,ExecutionOutcome,ExecutorBinding,UnitExecutionReceipt,BatchIntegrityError
+-from rawlsing_next.pre553_empirical_objects import ExactRef,EmpiricalFact,EmpiricalQuerySpec,canonicalize,semantic_hash
++from rawlsing_next.pre553_empirical_objects import ExactRef,EmpiricalFact,EmpiricalQuerySpec,EmpiricalPredicate,canonicalize,semantic_hash
+ from rawlsing_next.pre553_empirical_query import execute_empirical_query
+ from rawlsing_next.pre553_c11_repository import C11Repository
+ 
+ NativeItem=base.NativeItem;OperationCandidate=base.OperationCandidate;Disposition=base.Disposition
+ AuthoritySnapshot=base.AuthoritySnapshot
+ PERMITTED_GRANT='GRANTED_FIXTURE'
+-VERSION='WG0P4_NATIVE_FRONTIER_COLD@1'
++VERSION='WG0P5_COMPLETE_NATIVE_DESCRIPTOR_PROVENANCE@1'
+ class IdentityError(ValueError): pass
+ class FrontierError(ValueError): pass
+ class RevocationError(PermissionError): pass
+@@ -140,7 +140,7 @@
+         atomic_write(owner.directory/'key.bin',secrets.token_bytes(32))
+         state={'owner':'WG0P4_TESTONLY_FIXTURE_OWNER','epoch':secrets.token_hex(16),'version':1,'scope':'SOURCEFREE_ONLY','known_at':'2026-01-01','source_digests':{k:digest(v) for k,v in cohorts.items()},'grants':{'REL-A-W1':'GRANTED_FIXTURE','REL-A-W2':'GRANTED_FIXTURE','REL-B-W2':'WITHDRAWN'},'generation':0}
+         atomic_write(owner.directory/'current.json',canonical(state))
+-        atomic_write(owner.directory/'issued.json',canonical({'facts':{},'receipts':{},'plans':{}}));return owner
++        atomic_write(owner.directory/'issued.json',canonical({'facts':{},'receipts':{},'plans':{},'native_sources':{}}));return owner
+     def state(self):
+         d=json.loads((self.directory/'current.json').read_bytes())
+         if d['owner']!='WG0P4_TESTONLY_FIXTURE_OWNER' or d['scope']!='SOURCEFREE_ONLY':raise RevocationError('UNTRUSTED_FIXTURE_OWNER')
+@@ -153,6 +153,21 @@
+     def verify(self,payload,signature):
+         if not isinstance(signature,str) or not hmac.compare_digest(self._sign(payload),signature):raise ColdRestartError('UNTRUSTED_OR_SELF_REHASHED_CHECKPOINT')
+     def _issued(self):return json.loads((self.directory/'issued.json').read_bytes())
++    def _register_native_sources(self,releases):
++        # Called only by the real native fixture-ingest factory, before plans.
++        journal=self._issued()
++        for tag,release in releases.items():
++            material=_release_material(release)
++            expected_wave='W1' if tag.endswith('W1') else 'W2'
++            if release.release_tag!=tag or material['wave']!=expected_wave or release.source_edition!=f'SRC-EDITION-{tag}-{expected_wave}-v1':raise IdentityError('NATIVE_SOURCE_DESCRIPTOR_NOT_INGESTED_IDENTITY')
++            key=release.release_ref.key;value=digest(material)
++            if key in journal['native_sources'] and journal['native_sources'][key]!=value:raise IdentityError('NATIVE_SOURCE_DESCRIPTOR_COLLISION')
++            journal['native_sources'][key]=value
++        atomic_write(self.directory/'issued.json',canonical(journal))
++    def assert_native_sources(self,releases):
++        known=self._issued()['native_sources']
++        for tag,release in releases.items():
++            if release.release_tag!=tag or known.get(release.release_ref.key)!=digest(_release_material(release)):raise IdentityError('NATIVE_SOURCE_DESCRIPTOR_NOT_OWNER_REGISTERED')
+     def _register_compiled_plan(self,plan):
+         journal=self._issued()
+         journal['plans'][hashlib.sha256(plan.contract).hexdigest()]={'source_material':hashlib.sha256(plan.source_material).hexdigest(),'owner_snapshot':hashlib.sha256(plan.owner_snapshot).hexdigest(),'science':plan.science_root}
+@@ -168,6 +183,7 @@
+         # Public computation API takes no caller-supplied fact or numeric answer.
+         _check_plan(plan)
+         result=execute_empirical_query(repository=release.repo,query=spec.query,predicate=spec.predicate,authority_registry=_registry_for(release),release_refs=(release.release_ref,))
++        _check_plan(plan)  # Recheck before publishing fact provenance after native call.
+         entries=[(f.ref,_plain(_fact_entry(spec.op_id,spec,f))) for f in result.facts]
+         for f,e in entries:_validate_entry(f.key,e,plan)
+         journal=self._issued()
+@@ -198,6 +214,7 @@
+     if fixture_owner.state()['source_digests']!={k:digest(v) for k,v in COHORTS.items()}:raise IdentityError('OWNER_SOURCE_EDITION_MISMATCH')
+     repo=C11Repository()
+     out=Releases({tag:_ingest_native_fixture_release(tag,ns,repo=repo) for tag,ns in [('REL-A-W1','aw1'),('REL-A-W2','aw2'),('REL-B-W2','bw2')]});out.fixture_owner=fixture_owner
++    fixture_owner._register_native_sources(out)
+     return out
+ 
+ def _release_material(rel):
+@@ -227,6 +244,26 @@
+ @dataclass(frozen=True)
+ class BoundSpec:
+     op_id:str;release_tag:str;risk_name:str;targets:tuple;member_ids:tuple;grant:str;disposition:Disposition;native_item_ids:tuple;source_edition:str;full_identity_hash:str;query:Any;predicate:Any
++
++def _bound_descriptor(spec):
++    """Closed immutable preimage of every BoundSpec field, including provenance.
++
++    Native query/predicate references and complete projections are both bound.
++    Dataclass field iteration prevents a later field from being silently omitted.
++    """
++    if type(spec) is not BoundSpec:raise IdentityError('BOUND_DESCRIPTOR_TYPE_REQUIRED')
++    for name in ('targets','member_ids','native_item_ids'):
++        if not isinstance(getattr(spec,name),tuple):raise IdentityError('BOUND_DESCRIPTOR_NOT_IMMUTABLE:'+name)
++    if type(spec.query) is not EmpiricalQuerySpec or type(spec.predicate) is not EmpiricalPredicate:raise IdentityError('EXACT_NATIVE_QUERY_PREDICATE_REQUIRED')
++    out={}
++    for descriptor_field in fields(BoundSpec):
++        value=getattr(spec,descriptor_field.name)
++        out[descriptor_field.name]=({'ref':value.ref.as_dict(),'semantic_projection':value.semantic_projection()} if descriptor_field.name in ('query','predicate') else _plain(value))
++    return out
++
++def _registered_contract(manifest,science,freeze,units,specs):
++    if set(units)!=set(specs):raise IdentityError('BOUND_DESCRIPTOR_UNIT_KEYSET_MISMATCH')
++    return {'manifest':manifest.semantic_projection(),'science':science,'freeze':freeze,'bindings':{key:{'unit':unit.semantic_projection(),'query':specs[key].query.semantic_projection(),'predicate':specs[key].predicate.semantic_projection(),'descriptor':_bound_descriptor(specs[key])} for key,unit in units.items()}}
+ 
+ class FactCustody:
+     """Canonical bytes, detached exports and immediate atomic restore validation."""
+@@ -270,7 +307,7 @@
+     if freeze_hash!=b.freeze():raise IdentityError('BUILDER_FREEZE_DOES_NOT_BIND_NATIVE_ITEMS_AND_JOINT_AUTHORITY')
+     owner=getattr(releases,'fixture_owner',None)
+     if not isinstance(owner,FixtureOwner):raise IdentityError('INDEPENDENT_TESTONLY_FIXTURE_OWNER_REQUIRED')
+-    snapshot=owner.state();owner.check_current(snapshot,[])
++    snapshot=owner.state();owner.check_current(snapshot,[]);owner.assert_native_sources(releases)
+     science=frontier_root(mode);rootref=ExactRef('WG0P4_SCIENTIFIC_FRONTIER','urn:wg0p4:frontier:'+mode,science)
+     units={};specs={}
+     for o in sorted(ops,key=lambda x:x.op_id):
+@@ -292,20 +329,21 @@
+     manifest=BatchManifest(tuple(units.values()));repo=next(iter(releases.values())).repo
+     if any(r.repo is not repo for r in releases.values()):raise IdentityError('RELEASES_NOT_ONE_ACCEPTED_REPOSITORY')
+     source={k:_release_material(v) for k,v in releases.items()}
+-    contract={'manifest':manifest.semantic_projection(),'science':science,'freeze':freeze_hash,'bindings':{k:dict(unit=u.semantic_projection(),query=specs[k].query.semantic_projection(),predicate=specs[k].predicate.semantic_projection()) for k,u in units.items()}}
++    contract=_registered_contract(manifest,science,freeze_hash,units,specs)
+     plan=ExecutablePlan(manifest,MappingProxyType(units),MappingProxyType(specs),MappingProxyType(dict(releases)),MappingProxyType({k:r.release_ref for k,r in releases.items()}),repo,tuple(expected_rows(mode)),{'grant':PERMITTED_GRANT,'scope':'TEST_ONLY_HINT_CANNOT_ISSUE_PERMISSION'},freeze_hash,mode,science,owner,canonical(snapshot),canonical(source),canonical(contract))
+     owner._register_compiled_plan(plan)
+     return plan
+ 
+ def _check_plan(plan):
+     plan.fixture_owner.assert_plan_issued(plan)
++    contract=_registered_contract(plan.manifest,plan.science_root,plan.freeze_hash,plan.units_by_op,plan.op_specs)
++    if canonical(contract)!=plan.contract:raise IdentityError('COMPLETE_BOUND_SOURCE_DESCRIPTOR_CHANGED')
+     validate_frontier_receipts(plan.frontier_receipts,mode=plan.frontier_mode)
+     if plan.science_root!=frontier_root(plan.frontier_mode):raise FrontierError('STALE_OR_ALTERED_EXTERNAL_FRONTIER')
+     if plan.source_issuer_grant!={'grant':PERMITTED_GRANT,'scope':'TEST_ONLY_HINT_CANNOT_ISSUE_PERMISSION'}:raise RevocationError('CALLER_GRANT_HINT_MUTATED; NOT_AUTHORITY')
+     plan.fixture_owner.check_current(json.loads(plan.owner_snapshot),[s.release_tag for s in plan.op_specs.values()])
+     if canonical({k:_release_material(r) for k,r in plan.releases.items()})!=plan.source_material:raise IdentityError('SOURCE_C11_READSET_CHANGED')
+-    contract={'manifest':plan.manifest.semantic_projection(),'science':plan.science_root,'freeze':plan.freeze_hash,'bindings':{k:dict(unit=u.semantic_projection(),query=plan.op_specs[k].query.semantic_projection(),predicate=plan.op_specs[k].predicate.semantic_projection()) for k,u in plan.units_by_op.items()}}
+-    if canonical(contract)!=plan.contract:raise IdentityError('UNIT_QUERY_PREDICATE_OR_SOURCE_BINDING_CHANGED')
++    plan.fixture_owner.assert_native_sources(plan.releases)
+ 
+ def _fact_entry(op,spec,fact):
+     return {'op_id':op,'fact_ref':fact.ref.as_dict(),'typed_state':fact.typed_state,'denominator':fact.raw_denominator_support,'cells':[{'cell':c['cell'],'n':c['raw_numerator_support'],'state':c['cell_state']} for c in fact.target_topology['complete_cell_semantic_projection']],'source_edition':spec.source_edition,'native_item_ids':list(spec.native_item_ids),'full_identity_hash':spec.full_identity_hash,'native_fact':fact.semantic_projection(),'query_ref':spec.query.ref.as_dict(),'predicate_ref':spec.predicate.ref.as_dict()}
