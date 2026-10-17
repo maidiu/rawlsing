@@ -1,7 +1,7 @@
 # Pyat current progress — existing HQ state and R24 control publication
 
-Revision **7** · verified 2026-10-17T01:36:30.642692+00:00.
-Status: `R23_EXISTING_QUALIFIED_HQ_STATE__R24_PACKET_PHASE__POINTER_TRANSACTION_REQUIRED`.
+Revision **8** · verified 2026-10-17T01:39:11.098041+00:00.
+Status: `R24_POINTER_BOUND_TO_PUBLISHED_IMMUTABLE_PACKET__EXISTING_R23_SCIENTIFIC_GATES_HELD`.
 
 Complete the general all-35 source→empirical/learned→objective/temporal world→generic possibility machine, serving historically plausible V3 lives.
 
@@ -9,7 +9,7 @@ Working HQ `2bfd6b6b3eef6f2080b05dcf535f9af577908fbc`. Canonical control read cu
 
 ## Handoff transaction
 
-{"checkpoint_id": "20261016-PYAT-HQ-R24-R23-IMMUTABLE-HANDOFF-RECOVERY-R1", "status": "PACKET_PHASE; exact packet SHA must be set in separate pointer-publication commit.", "publication_protocol": "HQ_HANDOFF/PROTOCOL.md", "no_new_scientific_authority": true}
+{"checkpoint_id": "20261016-PYAT-HQ-R24-R23-IMMUTABLE-HANDOFF-RECOVERY-R1", "packet_commit": "5b831af7dcfb8ddc5ef38de19dea71ac529e4633", "status": "EXACT_POINTER_BOUND_TO_REMOTELY_VERIFIED_PACKET", "pointer_publication_identity": "Enclosing subsequent Git commit; no self-referential SHA in report.", "verification_law": "Re-resolve actual canonical pointer and manifest after normal FF push before external final seal assertion.", "publication_protocol": "HQ_HANDOFF/PROTOCOL.md", "no_new_scientific_authority": true}
 
 `HQ_HANDOFF/LATEST.json` is the sole seal pointer. The enclosing commit supplies report publication identity. Sorok revision4 MD/JSON are preserved byte-for-byte.
 
@@ -38,6 +38,7 @@ Working HQ `2bfd6b6b3eef6f2080b05dcf535f9af577908fbc`. Canonical control read cu
 - R24 audited unpublished report/packet candidates; corrected stale reciprocal receipt and R23 inventory, preserved old semantic marker and all historical checkpoints. Two-phase publication is complete only when actual canonical LATEST points to the blob-bound immutable packet.
 - Sorok C0I branch now has a governed return at 2dacd87636352a6c805e03b3d07581193a06264b after startup 8ee67a94ed9617cd013e1c1f335e6d45362b2a9c; Sorok HQ disposition remains pending input, not Pyat adoption or a new launch.
 - R24 documentary source-pin verification: S03FO1428c2e9 at rawlsing_next/pre553_heterogeneous_synthesis.py actually resolves fc5e37fa5b2f0eb689593b42d95479d1327cb94c, while R22/R23/F6C report182cc7970d7624f6614015f5a51d0602e1630d52. Mismatch unresolved; no replacement/adoption or commission change by R24.
+- R24 normal Git publication and fetch confirmed immutable packet 5b831af7dcfb8ddc5ef38de19dea71ac529e4633 descending from 646ac11ab8f1d49d56464c484ec5e0f4eba8f34e. The subsequent containing commit binds LATEST to this actual packet, preserves full old pointer history, and closes only the control-publication gap subject to direct remote pointer verification.
 
 ## Fifteen terminal milestones
 
@@ -104,13 +105,13 @@ Read canonical owner revision4 at `646ac11ab8f1d49d56464c484ec5e0f4eba8f34e`; wo
 - `PYAT-R22-F6B-INPUT-TREE` OPEN — Exact F6 owner not in sealed commission tree and scientific comparative sourcefree study not executed Next: Stage exact S03FO module on qualified already allowed worktree, run comparative native F6-to-consumer test
 - `PYAT-R22-GF1-CONSUMER-ABSENT` OPEN_RED — gf1_pair_support_consumer module omitted; original 44-case test chain uncollectable; 19 independent relation controls pass Next: Original author same branch return missing module with frozen tests and consumer proof, then separate independent delta court
 - `PYAT-R22-T9B-COURT-NEEDED` OPEN — T9B 28+8 sourcefree positives author-only, ambient pytest.ini original native import shadowing; extra copied 1259 native files Next: Independent clock/estimator review with source identity guard and no unrelated broad copying
-- `PYAT-R22-HANDOFF-STALE` R24_PACKET_PHASE_POINTER_PENDING — R24 explicit user-authorized recovery uses normal Git FF publication. Candidate32a4 remains unpublished historical draft; prior update_ref safety rejection retained as history. Next: Only close after actual packet commit is on canonical and subsequent exact LATEST/manifest is re-resolved; do not bypass a current rejection.
+- `PYAT-R22-HANDOFF-STALE` RESOLVED_BY_EXACT_POINTER_AND_PACKET_IDENTITY — R24 explicit user-authorized normal Git FF recovery published and fetched immutable packet 5b831af7dcfb8ddc5ef38de19dea71ac529e4633; this containing commit binds exact LATEST paths and packet. Old API safety rejection is historical; no current rejection bypassed. Next: Fetch actual remote containing pointer commit and verify packet/manifest/ancestry before final SEALED_AND_REMOTE_VERIFIED report. Keep scientific holds separate.
 - `PYAT-R23-SOROK-RECIPROCAL-REV4` COUNTERPART_READ_AND_RECONCILED — Sorok rev4 C0P author49 C0I pending, LIFE1 all16 defer on absent actual actor rule; previously stale rev2 superseded Next: Keep C0I Sorok-owned; compare actual two-client return with E06 tested noninstalling sourcefree, no actor authority inferred
 - `PYAT-R24-F6-PIN-DOCUMENTARY-MISMATCH` OPEN_EXACT_IDENTITY_RECONCILIATION — Reported S03FO expected blob 182cc7970d7624f6614015f5a51d0602e1630d52 differs from actual stated commit/path blob fc5e37fa5b2f0eb689593b42d95479d1327cb94c. Both objects exist; identity is not interchangeable. Next: Competent existing HQ/F6C reconcile exact intended frozen owner before claiming expected-producer execution; retain F6B HOLD. No new scientific decision by R24.
 
 ## Existing next actions and publication limits
 
-- R24 finish packet→actual commit→separate exact pointer→remote blob verification. Scientific continuation belongs to existing competent HQ/worker scopes; R24 launches none.
+- Re-resolve canonical LATEST and immutable packet/manifest; sealed checkpoint serializes existing R23 HQ state only. Continue existing scopes via competent owners; R24 launches no workers and adjudicates no new science.
 - Immediately use qualified cheapest warm host to run already published R23 F6C sourcefree true native two-world F6-to-consumer and GF1C own missing-consumer44 correction; independent T9I temporal scientific/custody court separately. Published commission does not launch an agent.
 - Preserve original WG0P4 @c1e88fb2 and separately frozen WG0L65 @1f198cb3; do not duplicate. Original U/E_pre and expected work source issuer, permission, real native consumer remain top whole35 critical path.
 - E06 independent48 HQ accepted only SOURCEFREE_NONINSTALLING_METHOD; no OC05 installed or EE14 V3 grant; GF1 original consumer RED until author+independent returned.
@@ -128,6 +129,7 @@ No scientific tests rerun, original source data read, production code change, mo
 - {"revision": 5, "kind": "R19_REVIEWED_SUCCESSOR_FORMALLY_ACTIVE__R20_WHOLE_MACHINE_HQ_FIRST_CYCLE", "at_utc": "2026-10-16T22:18:27.018Z", "previous_revision": 4, "working_commit": "3194861b75286a13ff0a1645897478f177eb2a42", "productive_change": false, "canonical_source_cut": "bdd31af540b4771b7665bb21320c78165ad62715", "independent_acceptance_commit": "5286fba50a65549f9e47586b7f4c8a8265eef84d", "meaning": "Bounded accession and nondelegable R20 priority; six published R18 origins unchanged, no original-source/test/actor grant; Sorok rev2 stale."}
 - {"revision": 6, "kind": "R22_HQ_ALL_SIX_R18_RETURN_FANIN_AND_BOUNDED_E06_ADOPTION", "at_utc": "2026-10-17T00:46:29Z", "previous_revision": 5, "working_commit": "ecb5de4f5f90015e5f10b9f3b12e76ee145fee58", "productive_change": true, "proof_ceiling": "SOURCEFREE_NONINSTALLING_METHOD_ONLY", "source_original": "NONE", "notice": "R21 actual WG0C/L/R HQ scope; R22 EST1 testonly, F6B HOLD, T9B candidate, XSP standalone, E06 accepted method 48 independent, GF1 RED; no N11/N12 or checkpoint"}
 - {"revision": 7, "previous_revision": 6, "at_utc": "2026-10-17T01:36:30.642692+00:00", "kind": "R23_STATE_AND_SOROK_REV4_AUDITED_R24_PACKET_PHASE", "working_commit": "2bfd6b6b3eef6f2080b05dcf535f9af577908fbc", "productive_change": false, "candidate_report_object_audited": "32a8799c116704308eb5be67b40b3f58b89e6c39", "meaning": "Metadata recovery only; sourcefree results remain exact R22 scope; seal completion requires subsequent real pointer."}
+- {"revision": 8, "previous_revision": 7, "at_utc": "2026-10-17T01:39:11.098041+00:00", "kind": "R24_EXACT_POINTER_BINDING_TO_ALREADY_REMOTE_VERIFIED_PACKET", "packet_commit": "5b831af7dcfb8ddc5ef38de19dea71ac529e4633", "productive_change": false, "meaning": "Closes historical control-publication gap only. Separate remote re-resolution required; no scientific/source/model/actor gate changed."}
 
 ## Source evidence
 

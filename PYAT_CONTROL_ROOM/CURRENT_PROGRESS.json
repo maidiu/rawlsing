@@ -1,11 +1,11 @@
 {
   "schema": "RAWLSING_CROSS_HQ_PROGRESS@1",
   "owner": "Pyat",
-  "revision": 7,
-  "report_status": "R23_EXISTING_QUALIFIED_HQ_STATE__R24_PACKET_PHASE__POINTER_TRANSACTION_REQUIRED",
+  "revision": 8,
+  "report_status": "R24_POINTER_BOUND_TO_PUBLISHED_IMMUTABLE_PACKET__EXISTING_R23_SCIENTIFIC_GATES_HELD",
   "activity_mode": "BOUNDED_R24_CONTROL_PLANE_PUBLICATION_OF_EXISTING_HQ_DECISIONS",
-  "last_owner_update_at_utc": "2026-10-17T01:36:30.642692+00:00",
-  "last_source_verified_at_utc": "2026-10-17T01:36:30.642692+00:00",
+  "last_owner_update_at_utc": "2026-10-17T01:39:11.098041+00:00",
+  "last_source_verified_at_utc": "2026-10-17T01:39:11.098041+00:00",
   "initialization_authority": "User request dated 2026-10-14: amend both grok cycles and reciprocal progress publication",
   "publication_branch": "integration/pre-main-reconciliation-r1",
   "working_hq": {
@@ -52,7 +52,8 @@
     "R23 reciprocal Sorok canonical owner revision4 @646ac11ab8f1d49d56464c484ec5e0f4eba8f34e (working HQ320 @3c423a0f74915a01911197b0023de9f85fd74aff): C0P author49 dual sourcefree, independent C0I startup 8ee67a; actual actor-bound CAN008 rule absent after LIFE1 16 DEFER. Pyat avoids duplicate Sorok native C0 commission.",
     "R24 audited unpublished report/packet candidates; corrected stale reciprocal receipt and R23 inventory, preserved old semantic marker and all historical checkpoints. Two-phase publication is complete only when actual canonical LATEST points to the blob-bound immutable packet.",
     "Sorok C0I branch now has a governed return at 2dacd87636352a6c805e03b3d07581193a06264b after startup 8ee67a94ed9617cd013e1c1f335e6d45362b2a9c; Sorok HQ disposition remains pending input, not Pyat adoption or a new launch.",
-    "R24 documentary source-pin verification: S03FO1428c2e9 at rawlsing_next/pre553_heterogeneous_synthesis.py actually resolves fc5e37fa5b2f0eb689593b42d95479d1327cb94c, while R22/R23/F6C report182cc7970d7624f6614015f5a51d0602e1630d52. Mismatch unresolved; no replacement/adoption or commission change by R24."
+    "R24 documentary source-pin verification: S03FO1428c2e9 at rawlsing_next/pre553_heterogeneous_synthesis.py actually resolves fc5e37fa5b2f0eb689593b42d95479d1327cb94c, while R22/R23/F6C report182cc7970d7624f6614015f5a51d0602e1630d52. Mismatch unresolved; no replacement/adoption or commission change by R24.",
+    "R24 normal Git publication and fetch confirmed immutable packet 5b831af7dcfb8ddc5ef38de19dea71ac529e4633 descending from 646ac11ab8f1d49d56464c484ec5e0f4eba8f34e. The subsequent containing commit binds LATEST to this actual packet, preserves full old pointer history, and closes only the control-publication gap subject to direct remote pointer verification."
   ],
   "milestones": [
     {
@@ -344,7 +345,7 @@
     "production_or_wake": "NOT_GRANTED; installed OC05 seam None, EE14, N11/N12/V3 remain held, temporal T9B candidate no original source"
   },
   "next_actions": [
-    "R24 finish packet→actual commit→separate exact pointer→remote blob verification. Scientific continuation belongs to existing competent HQ/worker scopes; R24 launches none.",
+    "Re-resolve canonical LATEST and immutable packet/manifest; sealed checkpoint serializes existing R23 HQ state only. Continue existing scopes via competent owners; R24 launches no workers and adjudicates no new science.",
     "Immediately use qualified cheapest warm host to run already published R23 F6C sourcefree true native two-world F6-to-consumer and GF1C own missing-consumer44 correction; independent T9I temporal scientific/custody court separately. Published commission does not launch an agent.",
     "Preserve original WG0P4 @c1e88fb2 and separately frozen WG0L65 @1f198cb3; do not duplicate. Original U/E_pre and expected work source issuer, permission, real native consumer remain top whole35 critical path.",
     "E06 independent48 HQ accepted only SOURCEFREE_NONINSTALLING_METHOD; no OC05 installed or EE14 V3 grant; GF1 original consumer RED until author+independent returned.",
@@ -448,11 +449,11 @@
     },
     {
       "id": "PYAT-R22-HANDOFF-STALE",
-      "state": "R24_PACKET_PHASE_POINTER_PENDING",
+      "state": "RESOLVED_BY_EXACT_POINTER_AND_PACKET_IDENTITY",
       "severity": "CONTROL_CHECKPOINT_SEAL",
       "owner": "Authorized_Pyat_HQ_publisher",
-      "problem": "R24 explicit user-authorized recovery uses normal Git FF publication. Candidate32a4 remains unpublished historical draft; prior update_ref safety rejection retained as history.",
-      "next_action": "Only close after actual packet commit is on canonical and subsequent exact LATEST/manifest is re-resolved; do not bypass a current rejection."
+      "problem": "R24 explicit user-authorized normal Git FF recovery published and fetched immutable packet 5b831af7dcfb8ddc5ef38de19dea71ac529e4633; this containing commit binds exact LATEST paths and packet. Old API safety rejection is historical; no current rejection bypassed.",
+      "next_action": "Fetch actual remote containing pointer commit and verify packet/manifest/ancestry before final SEALED_AND_REMOTE_VERIFIED report. Keep scientific holds separate."
     },
     {
       "id": "PYAT-R23-SOROK-RECIPROCAL-REV4",
@@ -555,18 +556,30 @@
       "productive_change": false,
       "candidate_report_object_audited": "32a8799c116704308eb5be67b40b3f58b89e6c39",
       "meaning": "Metadata recovery only; sourcefree results remain exact R22 scope; seal completion requires subsequent real pointer."
+    },
+    {
+      "revision": 8,
+      "previous_revision": 7,
+      "at_utc": "2026-10-17T01:39:11.098041+00:00",
+      "kind": "R24_EXACT_POINTER_BINDING_TO_ALREADY_REMOTE_VERIFIED_PACKET",
+      "packet_commit": "5b831af7dcfb8ddc5ef38de19dea71ac529e4633",
+      "productive_change": false,
+      "meaning": "Closes historical control-publication gap only. Separate remote re-resolution required; no scientific/source/model/actor gate changed."
     }
   ],
   "unexecuted": "No scientific tests rerun, original source data read, production code change, model switch, new worker launch or source/semantic/model/OC05/N11/N12/V3 authority issued by R24.",
   "pyat_sealed_control": {
-    "checkpoint_id": "20261010-PYAT-HQ280-WG0-C-L-RETURN-INTAKE-AND-INDEPENDENT-WG0-R-REVIEW-COMMISSION-R1",
-    "handoff_commit": "2936ccaca35d8a0414869efdd2870f1ea244f1c2",
+    "checkpoint_id": "20261016-PYAT-HQ-R24-R23-IMMUTABLE-HANDOFF-RECOVERY-R1",
+    "handoff_commit": "5b831af7dcfb8ddc5ef38de19dea71ac529e4633",
     "semantic_pre_main_tip": "1f47063c3205a45888b3c55e81e7485943ed1390",
-    "scope": "Last sealed predecessor during packet phase; subsequent canonical LATEST resolves R24 completion. This report is not an alternative pointer."
+    "scope": "Exact immutable R23-qualified packet already pushed/fetched; this containing commit publishes pointer. Control metadata only; remote pointer publication must independently be fetched and verified."
   },
   "handoff_recovery": {
     "checkpoint_id": "20261016-PYAT-HQ-R24-R23-IMMUTABLE-HANDOFF-RECOVERY-R1",
-    "status": "PACKET_PHASE; exact packet SHA must be set in separate pointer-publication commit.",
+    "packet_commit": "5b831af7dcfb8ddc5ef38de19dea71ac529e4633",
+    "status": "EXACT_POINTER_BOUND_TO_REMOTELY_VERIFIED_PACKET",
+    "pointer_publication_identity": "Enclosing subsequent Git commit; no self-referential SHA in report.",
+    "verification_law": "Re-resolve actual canonical pointer and manifest after normal FF push before external final seal assertion.",
     "publication_protocol": "HQ_HANDOFF/PROTOCOL.md",
     "no_new_scientific_authority": true
   }
