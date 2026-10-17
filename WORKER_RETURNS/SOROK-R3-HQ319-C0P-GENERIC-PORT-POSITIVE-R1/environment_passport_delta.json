@@ -1,0 +1,134 @@
+{
+  "passport_schema": "SOROK_WARM_ENVIRONMENT_PASSPORT_R1",
+  "environment_id": "SOROK-HQ319-C0P-GENERIC-PORT-POSITIVE",
+  "epoch_id": "C0P-EPOCH-1",
+  "owner_session_alias": "HQ319-C0P-IMPLEMENTER",
+  "surface": "LOCAL_SHARED_STORE",
+  "machine_alias": "MBP-LOCAL-DOMINANT",
+  "conversation_or_account_affinity": "OPENCODE_STEP_5_PREVIEW_USER_SELECTED_PAIR",
+  "status": "LIVE_VERIFIED",
+  "generated_at": "2026-10-16T20:38:33",
+  "role": "bounded C0 generic structural-world consumer implementer; NOT HQ, NOT Pyat issuer, NOT an independent I2 reviewer, NOT a V3 actor",
+  "sealed_startup": {
+    "commit": "b1c0b474969b891c11da8f3a16b748568f395af5",
+    "branch": "agent/rabochii-sorok-r3-hq319-c0p-generic-port-positive-r1",
+    "verified_against_direct_remote_head": true
+  },
+  "isolation": "one authorized isolated local sparse worktree; no other agent shared this worktree for this commission; Pyat source was staged read-only and never edited",
+  "last_live_probe_at": "2026-10-16T20:38:33",
+  "probe_command_and_result": "python3 -m pytest --version; git hash-object on every staged module; iterative import-closure resolution against the pinned Pyat commit",
+  "capabilities": {
+    "python": {
+      "observed": "3.11.3",
+      "status": "VERIFIED"
+    },
+    "pytest": {
+      "observed": "9.1.1",
+      "status": "VERIFIED"
+    },
+    "git": {
+      "observed": "git version 2.39.1",
+      "status": "VERIFIED"
+    },
+    "subprocess": {
+      "observed": "used for closure resolution probes",
+      "status": "VERIFIED"
+    },
+    "node": {
+      "observed": null,
+      "status": "NOT_NEEDED_FOR_THIS_COMMISSION"
+    }
+  },
+  "git_object_store_alias": "RAWLSING-SINGLE-SHARED-STORE",
+  "worktree_alias": "C0P-WT (isolated authorized local sparse worktree)",
+  "branch": "agent/rabochii-sorok-r3-hq319-c0p-generic-port-positive-r1",
+  "materialized_source_refs": {
+    "sc0_two_contract_contract": {
+      "commit": "241d35fa8a13ea03c68fbe55554ce81c210b745f",
+      "grade": "independent documentary proposal, SPEC_ONLY"
+    },
+    "pyat_e04t_accessible_machinery": {
+      "commit": "79cb8244a5291218bde17142b93fc2419eade396",
+      "modules": 28,
+      "edited_by_this_commission": false
+    },
+    "pyat_e03_progressive_candidate": {
+      "commit": "0e0ed50dbce2dd1434d3a3c84b937b9a956adba9",
+      "module": "rawlsing_next/pre553_n9_n10w_progressive_candidate.py",
+      "blob": "84d404147547767be8ecd4b6e1541f5fa3a8c8a2",
+      "edited_by_this_commission": false
+    },
+    "pyat_e06_bridge_under_review": {
+      "commit": "9b51422d9e4a23b5f036f5fd8e81866a5745ac0f",
+      "importable": false,
+      "note": "unimportable; two modules absent. Not routed through."
+    },
+    "pyat_gf1_under_review": {
+      "commit": "894808d946c431d9b0105e04514cf1a7c9afe395",
+      "edited_by_this_commission": false
+    }
+  },
+  "dependency_closure_status": "FULL",
+  "closure_modules_verified": 29,
+  "closure_all_blob_verified": true,
+  "closure_resolves": true,
+  "closure_composed_from_commits": [
+    "0e0ed50dbce2dd1434d3a3c84b937b9a956adba9",
+    "79cb8244a5291218bde17142b93fc2419eade396"
+  ],
+  "blobs_matching_sc0_published_identities": 6,
+  "document_objects_staged_and_verified": 19,
+  "fixture_query_source_permission": "source-free synthetic fixtures only; NO original respondent data, NO protected holdout, NO real institutional roster",
+  "science_grade": "sourcefree prototype candidate",
+  "covered_test_suites": [
+    {
+      "suite": "c0p_generic_port_v1",
+      "tests": 49,
+      "passed": 49,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  ],
+  "consumer_receipts": {
+    "A_NONPARENT_APPRENTICESHIP": "52e10a2fd0ce21b30f535b2786d45d4bd88817f174caa006e5ba7f0589d851ec",
+    "B_CONCEPTION_CONTEXT_PROPOSALS": "33251a740daff14a0920c4375b0b8577842cf812f5444e07b8313f5730fc3fde",
+    "distinct": true
+  },
+  "model_provider": "user-selected: Step 5 Preview in OpenCode",
+  "effort": "as configured by the owner; not inferred",
+  "observed_credits_or_usage": null,
+  "cash_known": "UNKNOWN",
+  "quota_known": "UNKNOWN",
+  "context_cache_reuse": "fresh separate conversation",
+  "retries": "one self-correction: an initial reachability probe silently failed because `timeout` does not exist on macOS, producing a false 'orphaned blob' finding; corrected, and the correction is disclosed in the return and the discrepancy packet",
+  "independent_review_separation": "THIS IS AN AUTHOR CANDIDATE, NOT AN ACCEPTANCE. A distinct independent I2 review is mandatory; the author does not accept its own work and claims no Pyat acceptance.",
+  "privacy_source_grant": "private repository access granted to the owner-selected editor/model pair only",
+  "assignments_completed": [
+    "HQ319 C0P generic two-contract world port positives"
+  ],
+  "next_good_affinity_tags": [
+    "TWO_CONTRACT",
+    "N9_SELECTED_WORLD",
+    "N10E_POSSIBILITY",
+    "NONPARENT_CONSUMER",
+    "CONCEPTION_SCENARIO"
+  ],
+  "staged_state_preservation": "runtime under /tmp/c0p-runtime is disposable scratch; the committed return tree plus the pinned blob ledger is the durable artifact",
+  "retire_or_rebuild_reason": null,
+  "open_items": [
+    "K9 two-provider swap NOT executed (only one provider exists in the accessible closure)",
+    "K10 full 28-oracle pipeline mutation NOT executed",
+    "Pyat E06 bridge unimportable; interface discrepancy reported, not worked around"
+  ],
+  "no_claims": [
+    "no Pyat semantic change or acceptance of E06I/GF1I/XSP",
+    "no N9 production installation",
+    "no N10W service owner adoption",
+    "no real institutional signer, custodian or issuer",
+    "no original respondent data, protected holdout or human perception",
+    "no semantic issuance or adoption",
+    "no V3/N12/CURRENT/PRE-MAIN operation",
+    "no adoption; independent I2 review mandatory"
+  ]
+}
