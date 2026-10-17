@@ -1,0 +1,100 @@
+{
+  "schema": "C01_AC11_SELECTIVE_INVALIDATION_REPAIR_RECEIPT@1.0.0",
+  "prior_failure_receipt_blob": "7c5eeec3ee49568bb464c03664f21bfbf80c011c",
+  "prior_failure_code": "IRRELEVANT_DETERMINANT_INVALIDATED_UNRELATED_TOPOLOGY",
+  "prior_failure_cause": "SOURCE_RELEASE_IDENTITY_PROPAGATES_INTO_DEPENDENCY_ADDRESSABLE_ARTIFACT_REFS",
+  "repair_contract": "PRE553_AUTH45_FRACTUREMAP_SELECTIVE_INVALIDATION@1.0.0",
+  "controlled_mutation": {
+    "fixture_atom": "SYN-R035",
+    "determinant": "R",
+    "before": "0",
+    "after": "1",
+    "semantic_support_before": {
+      "r0": 14,
+      "r1": 6
+    },
+    "semantic_support_after": {
+      "r0": 13,
+      "r1": 7
+    }
+  },
+  "dependency_graph": {
+    "ROOT": [
+      "TARGET"
+    ],
+    "P_CONFORMER": [
+      "ROOT",
+      "P"
+    ],
+    "P_DEVIANT": [
+      "ROOT",
+      "P"
+    ],
+    "ALT_CONVERGER": [
+      "ROOT",
+      "P"
+    ],
+    "ALT_MINORITY": [
+      "ROOT",
+      "P"
+    ],
+    "Q_CHILD": [
+      "P_DEVIANT",
+      "Q"
+    ],
+    "S_CHILD": [
+      "Q_CHILD",
+      "S"
+    ],
+    "R_TOPO": [
+      "ROOT",
+      "R"
+    ],
+    "COSIG": [
+      "Q_CHILD"
+    ],
+    "J3": [
+      "ROOT"
+    ]
+  },
+  "exact_result": {
+    "expected_invalidated": [
+      "R_TOPO"
+    ],
+    "observed_invalidated": [
+      "R_TOPO"
+    ],
+    "stable": [
+      "ROOT",
+      "P_CONFORMER",
+      "P_DEVIANT",
+      "ALT_CONVERGER",
+      "ALT_MINORITY",
+      "Q_CHILD",
+      "S_CHILD",
+      "COSIG",
+      "J3"
+    ],
+    "over_invalidated": [],
+    "under_invalidated": [],
+    "status": "PASS"
+  },
+  "identity_law": {
+    "identity_bearing": [
+      "artifact-local semantic projection",
+      "direct determinant dependency values",
+      "direct artifact dependency identities"
+    ],
+    "preserved_but_not_selective_identity_bearing": [
+      "source release refs",
+      "source empirical provenance refs",
+      "replay refs",
+      "producer replay roots",
+      "content/object address fields"
+    ],
+    "dependency_graph_mutation": "FAIL_CLOSED"
+  },
+  "runtime": "6 passed in 0.04s",
+  "production_blob": "56eb9883cd447fc3cc8431835ca20d23f2fa3712",
+  "test_blob": "85adaceb7a19f39a63848f44a3b33621bd95769d"
+}

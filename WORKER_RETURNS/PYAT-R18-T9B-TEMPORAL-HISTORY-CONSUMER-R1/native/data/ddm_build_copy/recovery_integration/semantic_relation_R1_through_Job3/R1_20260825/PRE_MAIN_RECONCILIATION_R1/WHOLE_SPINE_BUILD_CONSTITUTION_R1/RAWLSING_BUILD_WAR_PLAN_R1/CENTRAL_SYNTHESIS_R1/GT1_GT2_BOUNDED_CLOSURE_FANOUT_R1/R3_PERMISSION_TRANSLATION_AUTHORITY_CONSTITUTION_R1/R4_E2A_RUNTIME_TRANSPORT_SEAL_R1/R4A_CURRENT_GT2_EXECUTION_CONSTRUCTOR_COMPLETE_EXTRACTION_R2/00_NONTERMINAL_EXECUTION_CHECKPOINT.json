@@ -1,0 +1,40 @@
+{
+  "schema": "GT12_R4A_NONTERMINAL_EXECUTION_CHECKPOINT@1",
+  "checkpoint_state": "NONTERMINAL_EXECUTION_CHECKPOINT",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/rabochii-gt12-r4a-current-genuine-gt2-execution-r2",
+  "starting_head": "a6e587e2a99bc949155eb677611d78f5649510b6",
+  "completed_through": "EXECUTE",
+  "stages_completed": ["MATERIALIZE", "HASH_VERIFY", "PROJECT", "VALIDATE", "INDEX", "EXECUTE"],
+  "actual_current_objects_obtained": true,
+  "identities": {
+    "predicate": "bd91b40575035a9ff9ad2e7c507adc2610bfebdcc7fa38ce1cd697b37559cea3",
+    "query": "e4ec3998664975c6a5f9e020b7815cfe6d39a212e264963d8037e6f0db87d0d0",
+    "fact": "540236d533e9123f6d7b4d1edd4cf0951277154e72c7667deb09fb6550f11f46",
+    "replay": "c0c23ca2bb439364756503722b60d047139d42a6128411cc19bfbd87d33c884f"
+  },
+  "execution": {
+    "typed_state": "SUPPORTED",
+    "raw_denominator_support": 19210,
+    "raw_resolved_target_support": 19210,
+    "semantic_component_order": ["Q86B", "Q86A"],
+    "deterministic_replay_exact_equality_obtained": true
+  },
+  "frozen_release": {
+    "content_hash": "8315b104a94ae985a3ee3d77c8c365d5fcef6b6cb51a606df5bf141434668295",
+    "replay_manifest_hash": "c80d08ca9a5bb4814bdca3c0c21cb4c708da32840d6459b190cca206c3e3b4aa",
+    "risk_set_count": 19210,
+    "risk_set_semantic_sha256": "0484fa5c0440c34e9b1f28b385f3ef6c3302eaeb11c3c5b663441553ea11313b"
+  },
+  "repair_evidence": {
+    "production_repair_commit": "2d0c15712503f01e75d8563e5b8f4e8da5723d06",
+    "focused_hostile_court_commit": "41af893d809f3125e8d3cb707c88a2c8095292c6",
+    "inherited_exact_head_court_run": 33928486367,
+    "inherited_exact_head_court_result": "57 passed / 0 failed"
+  },
+  "pending": ["EXTRACT payload bytes if absent", "SEAL_INPUT", "terminal return"],
+  "recovery_law": "DO_NOT_REEXECUTE_COMPLETED_EXPENSIVE_STAGES_IF_THIS_CHECKPOINT_REMAINS_INTEGRITY_VALID",
+  "terminal_pass_issued": false,
+  "final_r4_transport_seal_pass_issued": false,
+  "e2b_executed": false
+}

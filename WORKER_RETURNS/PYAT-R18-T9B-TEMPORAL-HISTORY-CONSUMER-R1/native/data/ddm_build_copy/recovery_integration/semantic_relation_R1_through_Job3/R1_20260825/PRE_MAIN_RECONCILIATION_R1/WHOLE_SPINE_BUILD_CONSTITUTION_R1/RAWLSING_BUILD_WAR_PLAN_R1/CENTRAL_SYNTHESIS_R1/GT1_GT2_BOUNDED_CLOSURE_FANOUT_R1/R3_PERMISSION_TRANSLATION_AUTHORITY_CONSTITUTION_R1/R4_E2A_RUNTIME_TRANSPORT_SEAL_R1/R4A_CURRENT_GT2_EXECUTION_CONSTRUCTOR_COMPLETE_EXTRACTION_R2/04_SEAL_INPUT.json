@@ -1,0 +1,38 @@
+{
+  "constructor_manifest": {
+    "path": "02_CONSTRUCTOR_COMPLETE_MANIFEST.json",
+    "sha256": "c2d008a96ce1cf9156cd9e10ebaf513f300139853a60db5856569f1375233c89"
+  },
+  "identity": {
+    "fact": "540236d533e9123f6d7b4d1edd4cf0951277154e72c7667deb09fb6550f11f46",
+    "predicate": "bd91b40575035a9ff9ad2e7c507adc2610bfebdcc7fa38ce1cd697b37559cea3",
+    "query": "e4ec3998664975c6a5f9e020b7815cfe6d39a212e264963d8037e6f0db87d0d0",
+    "replay": "c0c23ca2bb439364756503722b60d047139d42a6128411cc19bfbd87d33c884f"
+  },
+  "not_final_r4_transport_seal": true,
+  "payload_shards": [
+    {
+      "bytes": 614720,
+      "count": 19210,
+      "path": "payload/respondent_ref_hashes.bin",
+      "sha256": "9c34860a8a2a474e667e72ec5141e199b853672efb851bddebbd2dcde0d7a80b",
+      "start_index": 0
+    },
+    {
+      "bytes": 1229440,
+      "count": 38420,
+      "path": "payload/routing_ref_hashes.bin",
+      "sha256": "9ab1b53264a159d9446c8cfaef4c63c7c9786cd12e6e96d143ee57e6ad894825",
+      "start_index": 0
+    },
+    {
+      "bytes": 1229440,
+      "count": 38420,
+      "path": "payload/event_ref_hashes.bin",
+      "sha256": "2fa09161ad457750dc3c80865811731908bdeb1c82dfdd36e958f178ede041b1",
+      "start_index": 0
+    }
+  ],
+  "permission_ceiling": "EMPIRICAL_INPUT_TO_FROZEN_EXACT_CONDITIONAL_SUPPORT_ONLY__NO_CAUSAL_OR_ACTOR_PROMOTION",
+  "schema": "GT12_R4A_SEAL_INPUT@3"
+}

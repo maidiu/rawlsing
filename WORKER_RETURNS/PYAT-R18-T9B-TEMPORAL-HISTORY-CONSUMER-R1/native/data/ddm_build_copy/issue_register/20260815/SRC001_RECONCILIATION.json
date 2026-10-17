@@ -1,0 +1,36 @@
+{
+  "schema": "rawlsing_src001_reconciliation_v1",
+  "issue_id": "SRC-001",
+  "status": "RESOLVED",
+  "main_base": "dc3980af6c45d1b6cbb41ea03c62f25dc2b7365a",
+  "functional_integration_head": "cc2f301d70906fd9017cd0197d49b4c8ef3e3f9d",
+  "compare_status": "ahead",
+  "compare_ahead_by": 139,
+  "reconciliation_law": "Branch from main; reconcile touched V550-V552J files against accepted runtime/checkpoint semantics; never wholesale-copy main or runtime.",
+  "ordered_file_classification_rules": [
+    {"match":"data/ddm_build_copy/authority/**","classification":"KEEP_RUNTIME","basis":"restore exact pinned governed authority bytes; do not regenerate"},
+    {"match":"data/ddm_registries/**","classification":"KEEP_RUNTIME","basis":"restore governed association authority/threshold contract omitted from curated main"},
+    {"match":"data/ddm_build_copy/ddm_v550_* or compile_v550j_*","classification":"MERGE_BOTH","basis":"preserve main shared respondent/response substrate while retaining runtime denominator and governed authority fixes"},
+    {"match":"data/ddm_build_copy/ddm_v551_* or compile_v551_*","classification":"FIX_SHARED_DEFECT","basis":"canonical V551 v3 rebuild preserves accepted exact scale authority while removing both main fabricated projection and runtime family fallback"},
+    {"match":"data/ddm_build_copy/ddm_v551j_* or compile_v551j_*","classification":"MERGE_BOTH","basis":"preserve accepted V551J signed-component/compatibility behavior plus producer-bound V550J/V551 verification and final singleton-country scope repair"},
+    {"match":"data/ddm_build_copy/ddm_v552_* or compile_v552_*","classification":"FIX_SHARED_DEFECT","basis":"producer-bound V552 v3 eliminates overlapping state machine, ghost contract, absence/zero collapse, and invocation/readiness conflation"},
+    {"match":"data/ddm_build_copy/ddm_v552j_* or compile_v552j_*","classification":"IMPLEMENT_NEW_REQUIREMENT","basis":"exact producer-bound V551J+V552 join with no synthetic unknown/absence-to-zero and exact scope before semantic matching"},
+    {"match":"data/ddm_build_copy/ddm_pipeline_* or resolve_pipeline_lineage* or compile_v5_paired_wave_preflight.py or run_20var_allwaves_v550_552j_smoke*","classification":"FIX_SHARED_DEFECT","basis":"shared typed boundary, hash/version/run binding, stale-safe publication and CLOSED_35_WAVES orchestration"},
+    {"match":"data/ddm_build_copy/run_v550_552_extraction_audit.py or data/ddm_build_copy/v550_552_extraction_audit.py","classification":"FIX_SHARED_DEFECT","basis":"replace row-count readiness with typed integrity/evidence/permission diagnostics"},
+    {"match":"section85/**","classification":"FIX_SHARED_DEFECT","basis":"replace obsolete package paths/readiness booleans with exact merged producer contracts"},
+    {"match":"data/ddm_build_copy/test_* or data/ddm_build_copy/tests/** or section85/tests/**","classification":"IMPLEMENT_NEW_REQUIREMENT","basis":"focused regression and fail-closed coverage for repaired contracts"},
+    {"match":"data/ddm_build_copy/issue_register/20260815/G*.md or GATE_STATUS.json or RESOLUTION_LEDGER.json or SRC001_RECONCILIATION.json","classification":"IMPLEMENT_NEW_REQUIREMENT","basis":"execution governance, gate evidence, reconciliation and terminal accounting"}
+  ],
+  "classification_coverage": "Every file returned by the main-base to functional-integration compare is covered by exactly one ordered rule above; bookkeeping files added after the functional head are covered by the final governance rule.",
+  "preservation_decisions": {
+    "main": ["shared V550/V550J respondent substrate", "strict draft-nonexecutability semantics", "main-only response relation/shared substrate/registry contract modules when compatible"],
+    "runtime": ["CLOSED_35_WAVES with Asian Barometer W6 excluded", "pinned scale-v5 authority", "accepted low-support fixes", "V551J signed component/compatibility behavior", "runtime V550J denominator fixes"],
+    "removed_regressions": ["main missing-intensity signed fallback to 1.0", "runtime V551 response-family authority fallback", "cross-run newest-mtime lineage selection", "row-count/readiness-boolean semantic gates", "stale reused-run artifact discovery"]
+  },
+  "final_integration_corrections": [
+    {"pr":22,"effect":"V551J preserves already-verified singleton country_code alongside shard_id"},
+    {"commit":"4f2c0f85378444f18850b1782fef4b6032c53181","effect":"V552J rejects mismatched declared shard IDs even when country matches and preserves shard scope when exact"},
+    {"commit":"cc2f301d70906fd9017cd0197d49b4c8ef3e3f9d","effect":"regression exercises actual V552J _coherent_scope comparator"}
+  ],
+  "validation_limitation": "No respondent-backed EVS end-to-end execution or generated real-data CLOSED_35_WAVES producer sweep was available in connected worker environments; those runs are not claimed."
+}

@@ -1,0 +1,141 @@
+{
+  "schema": "RAWLSING_EXISTING_SEMANTIC_RESOURCE_INVENTORY@1.0.0",
+  "status": "HQ_PRESERVATION_INVENTORY__NOT_NEW_SEMANTIC_AUTHORITY",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "purpose": "Preserve exact discovered semantic-capital resources and workload findings for PSC01-PSC03 so successor HQ reconciles existing authority instead of restarting semantic interpretation from question text.",
+  "core_findings": {
+    "blank_slate_semantic_mapping_required": false,
+    "primary_work_class": "RECONCILIATION_ADJUDICATION_AND_COMPILATION_OF_EXISTING_SEMANTIC_CAPITAL",
+    "r7g_relational_semantic_units": 3331,
+    "r7g_classes": {
+      "A_CURRENT_GOVERNED_QRA_ANCHOR": 190,
+      "B_FULL_HISTORICAL_STRUCTURAL_REVIEW_NO_FALLBACK": 954,
+      "C_FULL_HISTORICAL_STRUCTURAL_REVIEW_WITH_FALLBACK": 2098,
+      "D_PARTIAL_STRUCTURAL_REVIEW": 4,
+      "E_LEGACY_QSM_ONLY": 77,
+      "F_COLD_NO_LEGACY_QSM_NO_LOCATED_STRUCTURAL_REVIEW": 8
+    },
+    "cold_count_interpretation": "8_COLD_DOES_NOT_MEAN_8_TOTAL_HUMAN_JUDGMENTS__MOST_WORK_IS_RECONCILIATION_NOT_FIRST_PASS_DISCOVERY"
+  },
+  "library_resources": [
+    {
+      "name": "DDM_SEMANTIC_SALVAGE_WORKLOAD_AUDIT_R7G.md",
+      "file_id": "file_000000003dfc81f7b5d21a40d47ac9dd",
+      "version_id": 1,
+      "role": "SEMANTIC_SALVAGE_WORKLOAD_AUDIT"
+    },
+    {
+      "name": "AUTHORITY_OBJECT_MODEL.md",
+      "file_id": "file_000000005fb0820d84693fada1207929",
+      "version_id": 1,
+      "role": "AUTHORITY_LAYER_JURISDICTION_MODEL"
+    },
+    {
+      "name": "AUTHORITY_OBJECT_CENSUS.csv",
+      "file_id": "file_00000000364c822fa90c6077300d0260",
+      "version_id": 1,
+      "role": "AUTHORITY_OBJECT_CENSUS__PSC01_SEED_INVENTORY"
+    },
+    {
+      "name": "EXISTING_AUTHORITY_REFERENCE_MAP.csv",
+      "file_id": "file_000000001ccc81f5b233fc06ceee33aa",
+      "version_id": 1,
+      "role": "EXACT_AUTHORITY_LOCATOR_AND_PROVENANCE_MAP"
+    },
+    {
+      "name": "P10_G1A_MANUAL_AUTHORITY_PRESERVATION_RECLOSURE_RETURN.md",
+      "file_id": "file_000000006040822fa6ee9d9ff7ed58f4",
+      "version_id": 1,
+      "role": "MANUAL_HISTORICAL_AUTHORITY_PRESERVATION_AND_SUCCESSION_STATUS"
+    },
+    {
+      "name": "04_ACCEPTANCE_TESTS.md",
+      "file_id": "file_0000000087c881f58be2ccba28274646",
+      "version_id": 1,
+      "role": "RECOVERED_TYPED_SEMANTIC_RELATION_ACCEPTANCE_INVARIANTS"
+    }
+  ],
+  "verified_github_resources": [
+    {
+      "path": "data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+      "blob_sha": "e4f79f47417077c840f985d37e9341f068e3cf8f",
+      "role": "FULL_QUESTION_RELATION_AUTHORITY_R1"
+    },
+    {
+      "path": "data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSMV2_INTEGRATED_UNIT_AUTHORITY_3196_R1.csv",
+      "blob_sha": "1b4b1991136814ce475502a941253f7a3724a8db",
+      "role": "QSMV2_UNIT_AUTHORITY"
+    },
+    {
+      "path": "data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSMV2_INTEGRATED_IMPLEMENTATION_BLOCKS_4438_R1.csv",
+      "blob_sha": "8af5550f5b51d4bc7288351e44f8f03a9adad3f6",
+      "role": "QSMV2_IMPLEMENTATION_AUTHORITY"
+    },
+    {
+      "path": "data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/BLOCKED_QSMV2_UNITS_21_R1.csv",
+      "blob_sha": "8c1c8ca2d0ee37a28a247464b69f7891ded3cccf",
+      "role": "NEGATIVE_BLOCKED_UNIT_AUTHORITY"
+    },
+    {
+      "path": "data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/BLOCKED_QSMV2_IMPLEMENTATIONS_41_R1.csv",
+      "blob_sha": "8bb58c4a65381689c15831cd0fc9c3da1ec9c63d",
+      "role": "NEGATIVE_BLOCKED_IMPLEMENTATION_AUTHORITY"
+    },
+    {
+      "path": "data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/CANONICAL_COORDINATE_REGISTRY_FINAL_R1.csv",
+      "blob_sha": "796e94947240cc1200d6c70c0822695407f99c85",
+      "role": "CANONICAL_COORDINATE_AUTHORITY"
+    },
+    {
+      "path": "data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/GOVERNING_PROVENANCE_R1.csv",
+      "blob_sha": "08e07a74e2b58a1e72bf55a215780f57175e3d8a",
+      "role": "FQRA_PROVENANCE"
+    },
+    {
+      "path": "data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/FINAL_HOSTILE_QA_R1.json",
+      "blob_sha": "2aa8a71e73ab2b4fc976ee4e81605aaf2f79b386",
+      "role": "FQRA_HOSTILE_QA"
+    },
+    {
+      "path": "data/ddm_build_copy/authority/v550_v551_response_semantics_contract_binding_v1.csv",
+      "blob_sha": "ef77bcbe61385a10fe28b67c15a13f4f794e58e0",
+      "role": "V550_V551_RESPONSE_SEMANTICS_BINDING"
+    },
+    {
+      "path": "data/ddm_build_copy/authority/response_scale_encoding_registry_35wave_active_v1.csv",
+      "blob_sha": "2a45215854d1feb4ba0a779edcb29479143ab613",
+      "role": "RESPONSE_SCALE_AUTHORITY"
+    }
+  ],
+  "historical_and_recovered_surface_counts": {
+    "question_structure_register_rows": 18792,
+    "question_structure_family_wave_pairs": 35,
+    "fqra_rows": 18518,
+    "qsmv2_units": 3196,
+    "qsmv2_implementations": 4438,
+    "job3_terminal_positive_typed_relations": 1190,
+    "job3_new_accepts": 552,
+    "job3_rejects": 697,
+    "job3_blocks": 15,
+    "o12_parent_positives": 638,
+    "r16f_positives": 144,
+    "strict_source_first_t06_positives": 64,
+    "t15_positives": 188,
+    "r16f_wave_rule_cells": 315
+  },
+  "mandatory_laws": [
+    "KNOWN_SEMANTIC_CAPITAL_NE_BLANK_SLATE_QUESTION_TEXT",
+    "HISTORICAL_OR_RECOVERED_AUTHORITY_NE_AUTOMATICALLY_CURRENT_AUTHORITY",
+    "EXECUTION_ARTIFACT_NE_UPSTREAM_SEMANTIC_AUTHORITY",
+    "SOURCE_DOCUMENTATION_NE_RAWLSING_SEMANTIC_AUTHORITY",
+    "PORTABLE_SOURCE_EXECUTION_NE_AUTOMATIC_SEMANTIC_AUTHORITY",
+    "FQRA_JURISDICTION_NE_COMPLETE_HISTORICAL_SEMANTIC_RELATION_JURISDICTION",
+    "SALVAGE_LINEAGE_NE_AUTOMATIC_PROMOTION",
+    "RECONCILE_AND_PRESERVE_BEFORE_REINVENTING"
+  ],
+  "psc_use": {
+    "PSC01": "MUST_CONSUME_CENSUS_REFERENCE_MAP_AND_THIS_INVENTORY_AS_SEED_EVIDENCE__VERIFY_CURRENTNESS_AND_JURISDICTION",
+    "PSC02": "COMPILE_ONLY_CURRENT_ACCEPTED_AUTHORITY__PRESERVE_NEGATIVE_BLOCK_REVIEW_AND_PROVENANCE",
+    "PSC03": "CREATE_FINITE_REVIEW_QUEUES_FOR_UNRESOLVED_SUCCESSION_OR_DOCUMENTARY_AUTHORITY__NO_TEXT_BASED_REGENERATION"
+  }
+}

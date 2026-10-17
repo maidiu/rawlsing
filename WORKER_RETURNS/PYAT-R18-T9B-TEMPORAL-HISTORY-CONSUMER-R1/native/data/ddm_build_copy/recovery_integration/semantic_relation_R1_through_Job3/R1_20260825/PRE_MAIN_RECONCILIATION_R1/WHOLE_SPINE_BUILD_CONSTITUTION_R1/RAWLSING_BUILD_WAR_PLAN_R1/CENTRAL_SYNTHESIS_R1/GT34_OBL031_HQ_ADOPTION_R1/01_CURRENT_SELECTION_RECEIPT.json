@@ -1,0 +1,40 @@
+{
+  "schema_id": "GT34_OBL031_HQ_CURRENT_SELECTION_RECEIPT@1.0.0",
+  "status": "CURRENT_ACCEPTED",
+  "obligation": "OBL031",
+  "authority_ref": {
+    "authority_id": "GT34_OBL031_ADP010_Q69B_FIELD_SPECIFIC_COMPARATOR_AUTHORITY",
+    "authority_version": "1.1.3",
+    "authority_content_hash": "e080f7089f27f5851152dfb2ea9b9765159cd647be995a1f41fa65945d27c87c"
+  },
+  "implementation": {
+    "path": "rawlsing_next/gt34_obl031_q69b_comparator_resolver_r4.py",
+    "blob": "ff7e13d99aa1ee6b16d4533bd8b1aa19e4dc979e"
+  },
+  "hq_adoption_evidence": {
+    "adoption_commit": "d8da0f554ba2dcb9cce81496b6111fa759462489",
+    "adoption_markdown_git_blob": "e101b41071ec91352df017b9a9d40e03cb0cef50",
+    "adoption_json_git_blob": "ca7fbfb87032b2135babfa7d166181c26be37ba2"
+  },
+  "exact_runtime_state": {
+    "real_first_canary_actor_encounter": "ABSENT",
+    "current_real_invocation": "ACTOR_FACT_MISSING_OR_UNAUTHORIZED",
+    "current_predicate": "NOT_CREATED"
+  },
+  "consumer_requirements": [
+    "PIN_EXACT_OBL031_AUTHORITY_ID_VERSION_CONTENT_HASH",
+    "PIN_EXACT_HQ_OBL031_ADOPTION_COMMIT",
+    "PIN_EXACT_HQ_OBL031_ADOPTION_ARTIFACT",
+    "PIN_THIS_CURRENT_SELECTION_RECEIPT",
+    "PIN_EXACT_OBL057_D08_GRAMMAR_CURRENT_SELECTION",
+    "NO_LATEST_DEFAULT_FUZZY_FALLBACK"
+  ],
+  "nonimplications": [
+    "NO_ACTOR_FACT_CREATION",
+    "NO_ENCOUNTER_CREATION",
+    "NO_POSITIVE_OBL056_ENTRY",
+    "NO_PSEPF",
+    "NO_OBL032_EXECUTION",
+    "NO_POSITIVE_V3_EXECUTION"
+  ]
+}

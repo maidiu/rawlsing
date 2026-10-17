@@ -1,0 +1,48 @@
+{
+  "worker_id": "W05",
+  "assigned_source_families": [
+    "Arab Barometer"
+  ],
+  "assigned_waves": [
+    {
+      "source_family": "Arab Barometer",
+      "wave": "I"
+    },
+    {
+      "source_family": "Arab Barometer",
+      "wave": "II"
+    },
+    {
+      "source_family": "Arab Barometer",
+      "wave": "V"
+    },
+    {
+      "source_family": "Arab Barometer",
+      "wave": "VIII"
+    }
+  ],
+  "candidate_count": 102,
+  "candidate_id_sha256": "6d72bef45bb676442eedbd221df114d231210816add1bcd0eed7ca2e4f557520",
+  "unique_member_implementation_count": 352,
+  "member_instances": 363,
+  "pair_load_proxy": 785,
+  "review_burden_class": {
+    "low": 58,
+    "medium": 33,
+    "high": 11
+  },
+  "rule_histogram": {
+    "S14-T01": 87,
+    "S14-T02": 5,
+    "S14-T12": 1,
+    "S14-T13": 9
+  },
+  "orientation_r5_sha256": "66972be2737b9fd524b48d0f33c94c1a739ed640fa704b18ddb4052559e0b3cc",
+  "o12_r3_release_sha256": "33a56598f66f1e8d4596ddc4fec3ad686ec4cc7920ab76266b05470e1c7a3757",
+  "o10_t15_release_sha256": "4575eb80995ea08625209acfdc82a1d5cf5bc9960b8184331e2949db2f2e4b65",
+  "source_native_authority_sha256": "e88cc035ca1d846e68ee208ec991f61f636d67ebbd19312057c8e44c37ff740d",
+  "candidate_membership_law": "ASSIGNED_O12_R3_CANDIDATES.csv is immutable membership. No pre-R3 candidate row or pack may be imported.",
+  "semantic_authority_law": "Native official questionnaire/codebook text governs source meaning/structure; current O10 grammar governs relation semantics; machine IDs bind but do not manufacture meaning.",
+  "return_filename": "JOB3_ADJUDICATION_RETURN.csv",
+  "return_validator": "validate_job3_return.py"
+}

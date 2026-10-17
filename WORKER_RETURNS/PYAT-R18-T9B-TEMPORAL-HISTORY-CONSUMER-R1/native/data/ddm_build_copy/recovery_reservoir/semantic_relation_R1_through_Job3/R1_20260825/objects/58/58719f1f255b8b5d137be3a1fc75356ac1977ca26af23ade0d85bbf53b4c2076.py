@@ -1,0 +1,3 @@
+from pathlib import Path
+import pandas as pd,json,sys
+r=Path(sys.argv[1]);p=pd.read_csv(r/'RESOLUTION/C3B2_QRA_PERMISSION_POSITIVE_RR_NORM_AUTHORITY_R16C_C.csv');x=pd.read_csv(r/'QUEUE/C3B2_QRA_PERMISSION_T06_LINK_OBLIGATION_ROWS_R16C_C.csv.gz');rem=pd.read_csv(r/'QUEUE/C3B_RESIDUAL_RR_NORM_REVIEW_SHORE_R16C_C.csv');q=pd.read_csv(r/'QUEUE/R16C_C_VOZHD_CENTRAL_QUEUE_SUCCESSOR.csv');c={'p50':len(p)==50,'x4259':len(x)==4259,'r1560':len(rem)==1560,'q104':len(q)==104,'atoms':int(q.decision_atom_count.sum())==33600,'job3':json.load(open(r/'CURRENT_STATUS_R16C_C.json'))['job3_authorized'] is False};c={k:bool(v) for k,v in c.items()};print(json.dumps({'passed':all(c.values()),'checks':c},indent=2));sys.exit(0 if all(c.values()) else 1)

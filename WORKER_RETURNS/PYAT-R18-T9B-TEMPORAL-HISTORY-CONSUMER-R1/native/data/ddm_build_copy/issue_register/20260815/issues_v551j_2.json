@@ -1,0 +1,31 @@
+{
+  "schema": "rawlsing_issue_group_v2",
+  "freeze_date": "2026-08-15",
+  "base_register_sha256": "5004f95a7f2505b109b9ffe1aebc34693e44407c8d2bf2d54dc422aaf816c0f6",
+  "issues": [
+    {
+      "id": "V551J-005",
+      "title": "Current main V551J producer cannot satisfy the V551J artifacts required by current consumers",
+      "group": "V551J / producer-consumer closure",
+      "severity": "CRITICAL",
+      "affected": "main compile_v551j_joint_evidence_packets.py -> V552J/lineage compatibility contract",
+      "defect": "Current main V551J writes the current review surface and certified packet index but does not emit several compatibility artifacts that current V552J/lineage code names as required, including `v551j_reviewable_evidence_sidecar.parquet`, `v551j_certification_readiness_report.json`, and `v551j_review_readiness_report.json`. The August runtime donor added these adapters.",
+      "evidence": "Producer/consumer artifact closure comparison across main and runtime.",
+      "consequence": "As committed, current main cannot satisfy its own downstream V551J contract; reconciliation that ignores the runtime adapters leaves the pipeline structurally broken.",
+      "required": "Preserve the useful runtime compatibility adapters while migrating to the new typed V551J contract, or update every consumer atomically to the new canonical artifacts. There must be no interval where producer and consumer inventories disagree.",
+      "tests": [
+        "Fresh V551J run emits every artifact its immediate consumers require, or consumers are versioned to the new canonical set.",
+        "No stale compatibility artifact name is required without a producer."
+      ],
+      "source_refs": [
+        "data/ddm_build_copy/compile_v551j_joint_evidence_packets.py",
+        "data/ddm_build_copy/ddm_v552j_handoff.py",
+        "data/ddm_build_copy/resolve_pipeline_lineage.py"
+      ],
+      "note": "",
+      "origin_id": "AUD2-V551J-001",
+      "origin_fingerprint": "26e0ceee1c1e00bf782b79881d59d87f733ac7c40453f55dd553c0facbeb691c",
+      "fingerprint": "ce8af7a9d64d5a4a54c0fda553b0b5c226ff9e52ed4c4d5322f99058935654ea"
+    }
+  ]
+}

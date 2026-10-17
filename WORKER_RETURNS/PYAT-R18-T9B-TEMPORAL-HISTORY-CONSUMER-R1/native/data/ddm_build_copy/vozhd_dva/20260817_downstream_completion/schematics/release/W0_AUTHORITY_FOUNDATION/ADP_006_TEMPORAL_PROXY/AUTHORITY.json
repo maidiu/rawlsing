@@ -1,0 +1,357 @@
+{
+  "authority_cell": "W0-02_ADP-006",
+  "ra_r00_blocker": "MUST-006",
+  "authority_id": "RA-MUST-006-TEMPORAL-PROXY-ELIGIBILITY",
+  "authority_version": "1.0.0",
+  "status": "AUTHORITY_CREATED",
+  "whole_machine_architecture": "CLOSED_UNCHANGED",
+  "production_implementation_performed": false,
+  "historical_archive": {
+    "authorized": false,
+    "used": false
+  },
+  "final_token": "ADP_006_TEMPORAL_PROXY_AUTHORITY = PASS",
+  "consumer_release_sufficiency": "SUFFICIENT",
+  "consumer_release_sufficiency_scope": "Sufficient to discharge MUST-006 only. V557-P2, V558-P3 and V558-P4 remain subject to all other accepted CAN/EXT/implementation dependencies and Vozhd adjudication.",
+  "jurisdiction": {
+    "creates": "Versioned eligibility authority for use of already-authorized V553 temporal observations as prior or earliest-post runtime structural-context proxies.",
+    "does_not_create": [
+      "resolver temporal-mode precedence",
+      "V557 runtime-use permission or CAN-003 semantics",
+      "V553 evidence time or direct-support intervals",
+      "interpolation",
+      "nearest-wave fallback",
+      "actor history, memory, biography or lived exposure",
+      "new V554/V555/V556 semantic families",
+      "V3 developmental-phase taxonomy",
+      "numeric fidelity thresholds"
+    ],
+    "binding_existing_precedence": [
+      "DIRECT_TEMPORAL_SUPPORT",
+      "LATEST_PRIOR_OBSERVATION_PROXY_if_authorized",
+      "EARLIEST_POST_QUERY_PROXY_if_authorized",
+      "NO_LAWFUL_TEMPORAL_ANCHOR"
+    ],
+    "birth_specialization": "EARLIEST_POST_BIRTH_ANCHOR is a reporting specialization of EARLIEST_POST_QUERY_PROXY and never a separate algorithm."
+  },
+  "direct_consumers": [
+    {
+      "consumer": "V557-P2",
+      "use": "Bind exact proxy-eligibility rule ref or explicit missing/denied eligibility on item authorization records; remain separate from CAN-003 item-use governance."
+    },
+    {
+      "consumer": "V558-P3",
+      "use": "Evaluate eligibility before applying already-bound resolver precedence and tie law."
+    },
+    {
+      "consumer": "V558-P4",
+      "use": "Emit SelectionRecord, CoverageFidelityProfile and related replay/refresh metadata."
+    }
+  ],
+  "indirect_consumers": [
+    {
+      "consumer": "V3",
+      "use": "Consume ResolvedStructuralContext and immutable selection/provenance receipts only; no direct proxy override."
+    }
+  ],
+  "eligible_anchor_object_classes": [
+    {
+      "object_class": "V553_TEMPORAL_OBSERVATION",
+      "latest_prior_allowed": true,
+      "earliest_post_allowed": true,
+      "constraints": "Exact lawful value/status/lineage, same governed semantic resolution key, compatible time granularity, permissions/negative authority/integrity all pass."
+    }
+  ],
+  "object_class_matrix": [
+    {"object_class":"V553_TEMPORAL_OBSERVATION","prior_proxy":"ELIGIBLE_UNDER_R001","forward_proxy":"ELIGIBLE_UNDER_R002_PRECOVERAGE_ONLY","role":"SOLE_FIRST_RELEASE_PROXY_ANCHOR_CLASS"},
+    {"object_class":"V553_TEMPORAL_KEY","prior_proxy":"NO","forward_proxy":"NO","role":"GROUPING_RESOLUTION_IDENTITY_ONLY"},
+    {"object_class":"V553_TEMPORAL_RELATION","prior_proxy":"NO","forward_proxy":"NO","role":"EXPLANATORY_OR_CONSTRAINT_METADATA_ONLY"},
+    {"object_class":"V553_TEMPORAL_LIMIT_NEGATIVE_AUTHORITY","prior_proxy":"NO","forward_proxy":"NO","role":"CONSTRAINT_OR_NEGATIVE_AUTHORITY_ONLY"},
+    {"object_class":"V552_STRUCTURAL_FACT","prior_proxy":"NO_INDEPENDENT_PROXY","forward_proxy":"NO_INDEPENDENT_PROXY","role":"REACHED_THROUGH_SELECTED_V553_OBSERVATION_LINEAGE"},
+    {"object_class":"V554_AFFORDANCE_OR_CONDITION","prior_proxy":"NO","forward_proxy":"NO","role":"DEPENDENT_OBJECT_TEMPORAL_PREREQUISITES_RESOLVE_THROUGH_V553"},
+    {"object_class":"V555_ROUTE_OR_CONDITION","prior_proxy":"NO","forward_proxy":"NO","role":"DEPENDENT_OBJECT_TEMPORAL_PREREQUISITES_RESOLVE_THROUGH_V553"},
+    {"object_class":"V556_F1_OR_F2","prior_proxy":"NO","forward_proxy":"NO","role":"DEPENDENT_OBJECT_TEMPORAL_PREREQUISITES_RESOLVE_THROUGH_V553"},
+    {"object_class":"STATIC_POSITION_STRATUM_GEOGRAPHY_HORIZON_AH_REF","prior_proxy":"NO","forward_proxy":"NO","role":"NOT_TEMPORAL_MEASUREMENT"},
+    {"object_class":"NEGATIVE_VALID_EMPTY_INTEGRITY_OBJECT","prior_proxy":"NO","forward_proxy":"NO","role":"STATE_OR_CONSTRAINT_AUTHORITY"},
+    {"object_class":"GENERATED_RUNTIME_FACT_OR_ACTOR_HISTORY","prior_proxy":"FORBIDDEN","forward_proxy":"FORBIDDEN","role":"V3_GENERATED_TRUTH"},
+    {"object_class":"RENDERED_EXPRESSION_OR_SESSION_MATERIAL","prior_proxy":"FORBIDDEN","forward_proxy":"FORBIDDEN","role":"NONCAUSAL_PRESENTATION"}
+  ],
+  "query_purpose_matrix": [
+    {
+      "query_purpose": "STRUCTURAL_CONTEXT_PHASE_A",
+      "resolver_role": "environmental_position_generation_context",
+      "latest_prior": "ALLOW_R001",
+      "earliest_post": "ALLOW_R002_ONLY_IF_PRECOVERAGE"
+    },
+    {
+      "query_purpose": "STRUCTURAL_CONTEXT_PHASE_B",
+      "resolver_role": "position_bound_structural_context",
+      "latest_prior": "ALLOW_R001",
+      "earliest_post": "ALLOW_R002_ONLY_IF_PRECOVERAGE"
+    },
+    {
+      "query_purpose": "STRUCTURAL_CONTEXT_REFRESH",
+      "resolver_role": "prospective_life_course_structural_reresolution",
+      "latest_prior": "ALLOW_R001",
+      "earliest_post": "ALLOW_R002_ONLY_WHILE_KEY_REMAINS_PRECOVERAGE"
+    },
+    {
+      "query_purpose": "REPLAY_AUDIT_EXPLANATION",
+      "resolver_role": "reproduce_prior_decision_only",
+      "latest_prior": "REPLAY_ONLY_NO_NEW_SELECTION",
+      "earliest_post": "REPLAY_ONLY_NO_NEW_SELECTION"
+    },
+    {
+      "query_purpose": "BIOGRAPHY_MEMORY_PERSONALITY_ENNEAGRAM_OR_V2_RENDERING",
+      "resolver_role": "forbidden_proxy_purpose",
+      "latest_prior": "DENY",
+      "earliest_post": "DENY"
+    },
+    {
+      "query_purpose": "UNSPECIFIED_AD_HOC_DEBUG_CONVENIENCE",
+      "resolver_role": "unrecognized",
+      "latest_prior": "DENY",
+      "earliest_post": "DENY"
+    }
+  ],
+  "phase_law": {
+    "categories_are_existing_resolver_roles_not_adp008_taxonomy": true,
+    "categories": ["PHASE_A_ENVIRONMENTAL_CONTEXT","PHASE_B_POSITION_BOUND_CONTEXT","LIFE_COURSE_STRUCTURAL_REFRESH"],
+    "genealogy_special_privilege": false,
+    "generated_bindings_may_widen_proxy_permission": false,
+    "later_detailed_v3_phase_may": "NARROW_ONLY"
+  },
+  "rules": [
+    {
+      "rule_id": "ADP006-R001-LATEST-PRIOR-STRUCTURAL-CONTEXT",
+      "rule_version": "1.0.0",
+      "mode": "LATEST_PRIOR_OBSERVATION_PROXY",
+      "object_class": "V553_TEMPORAL_OBSERVATION",
+      "eligible_query_purposes": ["STRUCTURAL_CONTEXT_PHASE_A","STRUCTURAL_CONTEXT_PHASE_B","STRUCTURAL_CONTEXT_REFRESH"],
+      "required_temporal_relation_to_query": "anchor_reference_time < query_time",
+      "requires_no_selected_direct_support": true,
+      "requires_precoverage": false,
+      "producer_permission_must_allow": true,
+      "v557_item_use_must_allow": true,
+      "negative_authority_must_not_block_proxy_use": true,
+      "integrity_and_reference_closure_required": true,
+      "maximum_lag_policy": "NO_NUMERIC_CAP_EXPLICIT",
+      "asserts_persistence": false,
+      "historical_observation_at_query_time": false
+    },
+    {
+      "rule_id": "ADP006-R002-EARLIEST-POST-PRECOVERAGE",
+      "rule_version": "1.0.0",
+      "mode": "EARLIEST_POST_QUERY_PROXY",
+      "object_class": "V553_TEMPORAL_OBSERVATION",
+      "eligible_query_purposes": ["STRUCTURAL_CONTEXT_PHASE_A","STRUCTURAL_CONTEXT_PHASE_B","STRUCTURAL_CONTEXT_REFRESH"],
+      "required_temporal_relation_to_query": "anchor_reference_time > query_time",
+      "requires_no_direct_support": true,
+      "requires_no_lawful_latest_prior": true,
+      "requires_precoverage": true,
+      "precoverage_definition": "No lawful at-or-before temporal anchor exists for the exact semantic resolution key after permission, negative-authority, eligibility and integrity filtering.",
+      "producer_permission_must_allow": true,
+      "v557_item_use_must_allow": true,
+      "negative_authority_must_not_block_forward_proxy_use": true,
+      "integrity_and_reference_closure_required": true,
+      "maximum_lag_policy": "NO_NUMERIC_CAP_EXPLICIT",
+      "birth_reporting_specialization": "EARLIEST_POST_BIRTH_ANCHOR",
+      "historical_observation_at_query_time": false,
+      "lived_history_claim": false
+    }
+  ],
+  "lag_law": {
+    "first_release_maximum_lag_policy": "NO_NUMERIC_CAP_EXPLICIT",
+    "reason": "No inspected authority governs a universal numeric lag ceiling and accepted architecture permits an explicit no-cap token while requiring fidelity reporting.",
+    "signed_lag_definition": "selected_anchor_reference_time - query_time",
+    "prior_sign": "NEGATIVE",
+    "forward_sign": "POSITIVE",
+    "direct_sign": "ZERO_ONLY_FOR_REAL_DIRECT_SUPPORT",
+    "absolute_lag_required": true,
+    "lag_unit": "DETERMINISTICALLY_NORMALIZED_DECLARED_QUERY_TIME_GRANULARITY",
+    "granularity_failure": "TEMPORAL_GRANULARITY_INCOMPATIBLE",
+    "coverage_fidelity_must_report_lag_distribution": true,
+    "no_cap_is_equal_fidelity_claim": false,
+    "future_numeric_cap_requires_new_authority_version": true
+  },
+  "historical_observation_at_query_time_semantics": {
+    "DIRECT_TEMPORAL_SUPPORT": true,
+    "LATEST_PRIOR_OBSERVATION_PROXY": false,
+    "EARLIEST_POST_QUERY_PROXY": false,
+    "EARLIEST_POST_BIRTH_ANCHOR": false,
+    "NO_SELECTION_OR_INTEGRITY_FAILURE": null,
+    "meaning": "True only when producer-governed support contains query time at declared granularity."
+  },
+  "eligibility_filtering_order": [
+    "INTEGRITY_HASH_REFERENCE_VERSION_VALIDATION",
+    "PRODUCER_PERMISSION",
+    "V557_ITEM_USE_GOVERNANCE_CAN003_SEPARATE",
+    "PRODUCER_NEGATIVE_LIMIT_AFFECTED_USE",
+    "AUTHORITATIVE_OBSERVATION_VALUE_STATUS",
+    "ADP006_OBJECT_PURPOSE_DIRECTION_RULE_MATCH",
+    "EXISTING_AEX004_TEMPORAL_MODE_PRECEDENCE_AND_TIE_LAW"
+  ],
+  "negative_authority_law": {
+    "integrity_failure_is_semantic_no_anchor": false,
+    "producer_or_v557_denial_can_be_widened_by_adp006": false,
+    "negative_limit_with_explicit_proxy_affected_use_blocks": true,
+    "absence_noncomparability_missing_authoritative_value_is_anchor": false,
+    "observed_zero_is_missing": false,
+    "generic_negative_metadata_is_silently_upgraded_to_proxy_barrier": false,
+    "observation_specific_denial_denies_other_observations_by_default": false,
+    "key_use_level_denial_may_be_bypassed_by_other_observation": false
+  },
+  "tie_and_multiplicity_law": {
+    "source": "AEX-004_BINDING_EXISTING_LAW",
+    "exact_id_and_hash_storage_duplicate_may_dedupe": true,
+    "lexicographic_order_semantic_precedence": false,
+    "singular_key_nonidentical_equal_rank_result": "AMBIGUOUS_EQUAL_RANK_AUTHORITY",
+    "set_valued_tie_allowed_only_if_explicitly_producer_reference_contract_authorized": true,
+    "lawful_set_valued_result": "RETURN_COMPLETE_TIED_SET_CANONICAL_STABLE_SERIALIZATION_ORDER",
+    "distinct_simultaneous_pressure_keys_are_one_tie_group": false
+  },
+  "dependent_object_temporal_closure": {
+    "applies_to": ["V554","V555","V556"],
+    "rule": "Every indispensable temporal dependency must resolve lawfully. The dependent producer object is never proxied wholesale.",
+    "one_unresolved_indispensable_temporal_dependency": "DEPENDENT_TEMPORAL_PREREQUISITE_UNRESOLVED",
+    "resolver_may_create_new_route_interaction_topology": false
+  },
+  "selection_record_required_fields": [
+    "repository_bundle_id",
+    "context_query_id_or_hash",
+    "resolver_policy_version",
+    "adp006_authority_id_version_hash",
+    "matched_proxy_rule_id_version_or_NO_MATCHING_PROXY_RULE",
+    "semantic_resolution_key",
+    "candidate_object_class",
+    "authoritative_object_id_hash",
+    "v553_temporal_key_and_observation_refs",
+    "producer_permission_state",
+    "v557_item_use_state",
+    "query_purpose_and_resolver_role",
+    "query_time_and_granularity",
+    "producer_evidence_support_start_end",
+    "selected_observation_reference_time",
+    "temporal_resolution_mode_and_birth_specialization",
+    "signed_lag",
+    "absolute_lag",
+    "lag_unit",
+    "lag_policy_and_ceiling_status",
+    "historical_observation_at_query_time",
+    "future_evidence_used_as_proxy",
+    "negative_limit_refs_and_filtering_outcome",
+    "tie_group_rank_multiplicity_outcome",
+    "caller_generated_binding_refs_used_as_criteria",
+    "decision_reason",
+    "provenance_refs",
+    "selection_record_hash"
+  ],
+  "future_proxy_selection_record_invariants": {
+    "future_evidence_used_as_proxy": true,
+    "historical_observation_at_query_time": false,
+    "lived_history_claim": false,
+    "future_dependent_metadata_default_class": "NONCAUSAL_EXPLANATORY_ONLY_UNLESS_SEPARATELY_AUTHORIZED"
+  },
+  "fail_closed_states": [
+    "PROXY_ELIGIBLE_LATEST_PRIOR",
+    "PROXY_ELIGIBLE_EARLIEST_POST_PRECOVERAGE",
+    "PROXY_OBJECT_CLASS_NOT_AUTHORIZED",
+    "PROXY_QUERY_PURPOSE_NOT_AUTHORIZED",
+    "PROXY_DIRECTION_NOT_AUTHORIZED",
+    "PROXY_ELIGIBILITY_RULE_MISSING",
+    "PROXY_BLOCKED_BY_PRODUCER_PERMISSION",
+    "PROXY_BLOCKED_BY_V557_ITEM_USE",
+    "PROXY_BLOCKED_BY_NEGATIVE_AUTHORITY",
+    "CANDIDATE_NOT_AUTHORITATIVE_OBSERVATION",
+    "TEMPORAL_GRANULARITY_INCOMPATIBLE",
+    "AMBIGUOUS_EQUAL_RANK_AUTHORITY",
+    "DEPENDENT_TEMPORAL_PREREQUISITE_UNRESOLVED",
+    "NO_LAWFUL_TEMPORAL_ANCHOR",
+    "INTEGRITY_FAILURE"
+  ],
+  "forbidden_proxy_laundering": [
+    "rewrite V553 evidence/support time to query time",
+    "prior proxy becomes direct support or asserted persistence",
+    "future proxy becomes historical evidence at query time",
+    "future proxy becomes lived childhood exposure, parent belief, memory, biography, event or route traversal",
+    "point observation silently becomes interval",
+    "interpolation",
+    "nearest-wave selection",
+    "future candidate wins because numerically closer than lawful prior",
+    "mutable latest/filesystem/lexicographic arbitrary semantic selection",
+    "V554/V555/V556 object proxied wholesale",
+    "generated binding/geography/query convenience widens producer or V557 permission",
+    "absence or noncomparability coerced to zero/neutral",
+    "V2 session/render material creates proxy authority",
+    "later evidence or binding mutates old SelectionRecord"
+  ],
+  "versioning_and_replay": {
+    "authority_ref": "RA-MUST-006-TEMPORAL-PROXY-ELIGIBILITY@1.0.0",
+    "rule_refs": [
+      "ADP006-R001-LATEST-PRIOR-STRUCTURAL-CONTEXT@1.0.0",
+      "ADP006-R002-EARLIEST-POST-PRECOVERAGE@1.0.0"
+    ],
+    "semantic_change_requires_new_version": [
+      "eligible object classes",
+      "query purposes",
+      "prior/forward permission",
+      "precoverage condition",
+      "lag policy",
+      "negative-use treatment",
+      "multiplicity declaration"
+    ],
+    "v557_p2_binds_rule_refs": true,
+    "v558_manifest_binds_registry_hash": true,
+    "old_bundle_and_selection_receipts_remain_replayable": true,
+    "determinism_inputs": [
+      "immutable repository bundle",
+      "ContextQuery",
+      "generated bindings",
+      "resolver policy version",
+      "ADP006 registry version",
+      "item-use state"
+    ]
+  },
+  "hostile_fixtures": [
+    {"id":"HF-01","case":"direct producer support contains query time","expected":"DIRECT_TEMPORAL_SUPPORT; proxy rule unnecessary; historical_observation_at_query_time=true"},
+    {"id":"HF-02","case":"1985 observation, 1988 Phase-A query","expected":"R001 latest-prior; signed_lag=-3; historical flag=false"},
+    {"id":"HF-03","case":"parent birth/query 1961, first observation 1990","expected":"R002 earliest-post if permissions pass; signed_lag=+29; EARLIEST_POST_BIRTH_ANCHOR tag; no-cap token; lived_history_claim=false"},
+    {"id":"HF-04","case":"same future observation requested for V2 biography/rendering","expected":"PROXY_QUERY_PURPOSE_NOT_AUTHORIZED and no lawful anchor absent direct support"},
+    {"id":"HF-05","case":"1985 prior and 1990 future at query 1988","expected":"prior lane wins under existing precedence even if future is closer"},
+    {"id":"HF-06","case":"no matching eligibility rule","expected":"PROXY_ELIGIBILITY_RULE_MISSING; NO_LAWFUL_TEMPORAL_ANCHOR if no direct support"},
+    {"id":"HF-07","case":"eligible 40-year precoverage lag","expected":"record signed/absolute lag under NO_NUMERIC_CAP_EXPLICIT; no equal-fidelity claim"},
+    {"id":"HF-08","case":"two nonidentical equal-rank singular candidates","expected":"AMBIGUOUS_EQUAL_RANK_AUTHORITY; no winner"},
+    {"id":"HF-09","case":"producer explicitly authorizes set-valued equal-rank multiplicity","expected":"return complete tied set in stable serialization order"},
+    {"id":"HF-10","case":"same authoritative ID+hash duplicated in storage","expected":"deduplicate"},
+    {"id":"HF-11","case":"1994 point observation queried at 1995","expected":"not direct support; evaluate proxy eligibility"},
+    {"id":"HF-12","case":"producer or V557 item-use denial plus matching proxy rule","expected":"deny; ADP006 cannot widen"},
+    {"id":"HF-13","case":"authorized observed zero","expected":"valid temporal observation candidate; not missing"},
+    {"id":"HF-14","case":"negative/limit authority explicitly blocks proxy affected-use","expected":"PROXY_BLOCKED_BY_NEGATIVE_AUTHORITY"},
+    {"id":"HF-15","case":"V555 route has two indispensable temporal dependencies and one has no anchor","expected":"DEPENDENT_TEMPORAL_PREREQUISITE_UNRESOLVED; no whole-route proxy"},
+    {"id":"HF-16","case":"future proxy offered as childhood exposure or memory","expected":"reject laundering; structural context only"},
+    {"id":"HF-17","case":"Phase-B generated binding changes applicability","expected":"may expose conditioned objects but never widen proxy rule or rewrite V553 evidence time"},
+    {"id":"HF-18","case":"same semantic ID published with changed evidence time/hash under unchanged bundle","expected":"INTEGRITY_FAILURE; no silent reselection"}
+  ],
+  "present_terrain": {
+    "current_v553": "Contains superseded interpolation/aggregate and latest-run convenience machinery; not proxy authority.",
+    "current_v558_plus": "Governance/readiness review terrain, not accepted standalone repository/resolver and no canonical ADP-006 registry.",
+    "promoted_from_current_code": []
+  },
+  "evidence_inspected": [
+    "state/CURRENT_STATE.md",
+    "integration/WHOLE_MACHINE_ARCHITECTURE_CLOSURE_RULING.md",
+    "integration/IMPLEMENTATION_RELEASE_SYNTHESIS_RULING.md",
+    "schematics/release/RA_R00_RULE_AUTHORITY_IMPLEMENTATION_RELEASE/RESULT.md",
+    "schematics/release/RA_R00_RULE_AUTHORITY_IMPLEMENTATION_RELEASE/RESULT.json",
+    "integration/V553_COMPLETION_IMPLEMENTATION_RULING.md",
+    "schematics/recalibration/TD_R04_V557_V558/RESULT.md",
+    "integration/V557_V558_COMPLETION_IMPLEMENTATION_RULING.md",
+    "schematics/synthesis/RUNTIME_PRIOR_RESOLUTION_EXPLORATION.md",
+    "schematics/seam_integrity/SI_R04_V557_V558/RESULT.md",
+    "schematics/seam_integrity/SI_R05_V558_V3/RESULT.md",
+    "integration/SEAM_INTEGRITY_CLOSURE_RULING.md",
+    "schematics/closure/TD_R07_WHOLE_MACHINE_SYNTHETIC_LIFE/RESULT.md",
+    "data/ddm_build_copy/ddm_v553_temporal_pressure.py",
+    "data/ddm_build_copy/ddm_v558_plus_governance.py"
+  ]
+}

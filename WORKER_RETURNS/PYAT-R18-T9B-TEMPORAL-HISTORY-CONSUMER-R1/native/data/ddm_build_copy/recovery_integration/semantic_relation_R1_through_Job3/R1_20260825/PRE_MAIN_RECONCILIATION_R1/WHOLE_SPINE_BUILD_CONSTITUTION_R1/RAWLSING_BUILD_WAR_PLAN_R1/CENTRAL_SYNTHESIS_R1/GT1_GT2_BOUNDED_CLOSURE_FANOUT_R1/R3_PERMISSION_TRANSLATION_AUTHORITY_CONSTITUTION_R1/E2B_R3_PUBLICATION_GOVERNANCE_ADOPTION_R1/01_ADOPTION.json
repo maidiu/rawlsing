@@ -1,0 +1,287 @@
+{
+  "schema": "GT12_E2B_R3_PUBLICATION_GOVERNANCE_AUTHORITY_ADOPTION_RECORD@1.0.0",
+  "status": "ADOPTED_CURRENT",
+  "accepted_central_parent": "734a7af889ceec822f049652a706ed15dc373c3b",
+  "governed_use_id": "GT12_GT2_Q86B_CONDITIONAL_SUPPORT_Q86A_F1_CONTEXT_PUBLICATION@1",
+  "v554_rule": {
+    "material": {
+      "schema": "GT12_E2B_R3_V554_SIG004_RULE@1.0.0",
+      "rule_id": "GT12_V554_SIG004_ADMITTED_RELATION_CONTEXT_PUBLICATION_RULE",
+      "rule_version": "1.0.0",
+      "jurisdiction": {
+        "relation_m1_contract": "M1_ADMITTED_FIELD_FORGE_RELATION_V554_INGRESS@1.0.0",
+        "basis_kind": "ADMITTED_FIELD_FORGE_RELATION",
+        "signature_id": "V554-SIG-004-NONTEMPORAL-ADMITTED-RELATION-EXACT",
+        "target_use": "STRUCTURAL_MEDIATION_INPUT",
+        "focal_structural_proposition_ref": "GT2_Q86B_CONDITIONAL_SUPPORT_Q86A_COUNT_PROFILE_WITHIN_SCOPE",
+        "conditions_exact": [],
+        "direct_route": "V554_TO_V557_DIRECT",
+        "publication_object_families_exact": [
+          "F1"
+        ]
+      },
+      "semantic_derivation": {
+        "creates_new_relation_semantics": false,
+        "creates_new_empirical_semantics": false,
+        "binds_existing_sig004_contract": true
+      },
+      "forbidden": [
+        "V553",
+        "V555",
+        "V556",
+        "F2",
+        "B1",
+        "REVIEW",
+        "ACTIVE_CAUSAL",
+        "ACTOR_INFERENCE",
+        "POSITIVE_V3_TRANSITION",
+        "V2_AUTHORITY"
+      ]
+    },
+    "ref": {
+      "id": "GT12_V554_SIG004_ADMITTED_RELATION_CONTEXT_PUBLICATION_RULE",
+      "version": "1.0.0",
+      "hash": "da431544e57ed4b418cd746be3f0a9aa486cd3c2fb2007a022005821b25e194b"
+    }
+  },
+  "publication_authority": {
+    "material": {
+      "schema": "GT12_E2B_R3_V554_TO_V557_PUBLICATION_AUTHORITY@1.0.0",
+      "authority_id": "GT12_RELATION_V554_TO_V557_F1_CONTEXT_PUBLICATION_AUTHORITY",
+      "authority_version": "1.0.0",
+      "producer": "V554",
+      "publisher": "V557",
+      "governed_use_id": "GT12_GT2_Q86B_CONDITIONAL_SUPPORT_Q86A_F1_CONTEXT_PUBLICATION@1",
+      "rule_ref": {
+        "id": "GT12_V554_SIG004_ADMITTED_RELATION_CONTEXT_PUBLICATION_RULE",
+        "version": "1.0.0",
+        "hash": "da431544e57ed4b418cd746be3f0a9aa486cd3c2fb2007a022005821b25e194b"
+      },
+      "decision": "AUTHORIZED",
+      "allowed_object_families": [
+        "F1"
+      ],
+      "jurisdiction": {
+        "relation_m1_contract": "M1_ADMITTED_FIELD_FORGE_RELATION_V554_INGRESS@1.0.0",
+        "basis_kind": "ADMITTED_FIELD_FORGE_RELATION",
+        "signature_id": "V554-SIG-004-NONTEMPORAL-ADMITTED-RELATION-EXACT",
+        "target_use": "STRUCTURAL_MEDIATION_INPUT",
+        "focal_structural_proposition_ref": "GT2_Q86B_CONDITIONAL_SUPPORT_Q86A_COUNT_PROFILE_WITHIN_SCOPE",
+        "conditions_exact": [],
+        "direct_route": "V554_TO_V557_DIRECT",
+        "inherited_downstream_use_exact": [
+          "CONTEXT"
+        ]
+      },
+      "authority_exclusions": [
+        "EMPIRICAL_MEANING",
+        "FIELD_FORGE_PRODUCTION",
+        "PREV3_ADMISSION",
+        "NEW_PERMISSION_ATOMS",
+        "REVIEW",
+        "ACTIVE_CAUSAL",
+        "V553",
+        "V555",
+        "V556",
+        "F2_PUBLICATION",
+        "B1_PUBLICATION",
+        "ACTOR_INFERENCE",
+        "POSITIVE_V3_TRANSITION",
+        "V2_AUTHORITY"
+      ]
+    },
+    "ref": {
+      "id": "GT12_RELATION_V554_TO_V557_F1_CONTEXT_PUBLICATION_AUTHORITY",
+      "version": "1.0.0",
+      "hash": "1b2c1238139287e30acaa418e28967585a34a7fae9c937a9322b7c9e9a76322a"
+    }
+  },
+  "v557_current_binding": {
+    "material": {
+      "schema": "GT12_E2B_R3_CAN003_V557_CURRENT_BINDING@1.0.0",
+      "authority_id": "GT12_CAN003_V557_F1_CONTEXT_ONLY_CURRENT_BINDING",
+      "authority_version": "1.0.0",
+      "semantic_source": {
+        "authority_id": "CAN-003",
+        "authority_version": "CAN-003.v1",
+        "contract_id": "CAN_003_V557_RUNTIME_USE",
+        "accepted_artifact_path": "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/release/W0_AUTHORITY_FOUNDATION/CAN_003_V557_RUNTIME_USE/AUTHORITY.json",
+        "accepted_git_blob": "64fb18f01a1caa69fd3553dc62b056c0efe1ff47",
+        "classification": "CANONICALIZED_EXISTING_AUTHORITY"
+      },
+      "narrowed_jurisdiction": {
+        "producer_family": "V554",
+        "semantic_class": "F1",
+        "source_stage": "M1_RELATION_V554_TO_V557",
+        "governed_use_id": "GT12_GT2_Q86B_CONDITIONAL_SUPPORT_Q86A_F1_CONTEXT_PUBLICATION@1",
+        "decision_state": "ALLOW_CONTEXT_ONLY",
+        "v557_allowed_uses_exact": [
+          "CONTEXT"
+        ],
+        "exception_state": "NO_EXCEPTION_STATE"
+      },
+      "inheritance_law": {
+        "creates_new_v557_semantics": false,
+        "only_current_selects_and_narrows_can003": true,
+        "producer_permission_created_here": false
+      },
+      "forbidden": [
+        "REVIEW",
+        "ACTIVE_CAUSAL",
+        "V553",
+        "V555",
+        "V556",
+        "ACTOR_INFERENCE",
+        "POSITIVE_V3_TRANSITION",
+        "V2_AUTHORITY",
+        "FUZZY_CURRENT_SELECTION"
+      ]
+    },
+    "ref": {
+      "id": "GT12_CAN003_V557_F1_CONTEXT_ONLY_CURRENT_BINDING",
+      "version": "1.0.0",
+      "hash": "b071d9b34825b2c73fefa47cdef0ba23003d79cf5a2fa78cab802e02ee0cd6f4"
+    }
+  },
+  "bundle": {
+    "material": {
+      "schema": "GT12_E2B_R3_MINIMAL_V554_V557_PUBLICATION_GOVERNANCE_BINDING@1.0.0",
+      "bundle_id": "GT12_E2B_R3_CURRENT_V554_V557_PUBLICATION_GOVERNANCE_BINDING",
+      "bundle_version": "1.0.0",
+      "jurisdiction": {
+        "program": "GT1_GT2_WAVE1_FROZEN_CANARY",
+        "relation_m1_contract": "M1_ADMITTED_FIELD_FORGE_RELATION_V554_INGRESS@1.0.0",
+        "basis_kind": "ADMITTED_FIELD_FORGE_RELATION",
+        "signature_id": "V554-SIG-004-NONTEMPORAL-ADMITTED-RELATION-EXACT",
+        "target_use": "STRUCTURAL_MEDIATION_INPUT",
+        "focal_structural_proposition_ref": "GT2_Q86B_CONDITIONAL_SUPPORT_Q86A_COUNT_PROFILE_WITHIN_SCOPE",
+        "producer_family": "V554",
+        "publication_target": "V557",
+        "conditions_exact": [],
+        "publication_object_families_exact": [
+          "F1"
+        ],
+        "required_v557_state": "ALLOW_CONTEXT_ONLY",
+        "required_v557_uses_exact": [
+          "CONTEXT"
+        ]
+      },
+      "publication_authority": {
+        "schema": "GT12_E2B_R3_V554_TO_V557_PUBLICATION_AUTHORITY@1.0.0",
+        "authority_id": "GT12_RELATION_V554_TO_V557_F1_CONTEXT_PUBLICATION_AUTHORITY",
+        "authority_version": "1.0.0",
+        "producer": "V554",
+        "publisher": "V557",
+        "governed_use_id": "GT12_GT2_Q86B_CONDITIONAL_SUPPORT_Q86A_F1_CONTEXT_PUBLICATION@1",
+        "rule_ref": {
+          "id": "GT12_V554_SIG004_ADMITTED_RELATION_CONTEXT_PUBLICATION_RULE",
+          "version": "1.0.0",
+          "hash": "da431544e57ed4b418cd746be3f0a9aa486cd3c2fb2007a022005821b25e194b"
+        },
+        "decision": "AUTHORIZED",
+        "allowed_object_families": [
+          "F1"
+        ],
+        "jurisdiction": {
+          "relation_m1_contract": "M1_ADMITTED_FIELD_FORGE_RELATION_V554_INGRESS@1.0.0",
+          "basis_kind": "ADMITTED_FIELD_FORGE_RELATION",
+          "signature_id": "V554-SIG-004-NONTEMPORAL-ADMITTED-RELATION-EXACT",
+          "target_use": "STRUCTURAL_MEDIATION_INPUT",
+          "focal_structural_proposition_ref": "GT2_Q86B_CONDITIONAL_SUPPORT_Q86A_COUNT_PROFILE_WITHIN_SCOPE",
+          "conditions_exact": [],
+          "direct_route": "V554_TO_V557_DIRECT",
+          "inherited_downstream_use_exact": [
+            "CONTEXT"
+          ]
+        },
+        "authority_exclusions": [
+          "EMPIRICAL_MEANING",
+          "FIELD_FORGE_PRODUCTION",
+          "PREV3_ADMISSION",
+          "NEW_PERMISSION_ATOMS",
+          "REVIEW",
+          "ACTIVE_CAUSAL",
+          "V553",
+          "V555",
+          "V556",
+          "F2_PUBLICATION",
+          "B1_PUBLICATION",
+          "ACTOR_INFERENCE",
+          "POSITIVE_V3_TRANSITION",
+          "V2_AUTHORITY"
+        ],
+        "authority_hash": "1b2c1238139287e30acaa418e28967585a34a7fae9c937a9322b7c9e9a76322a"
+      },
+      "v557_authority_ref": {
+        "authority_id": "GT12_CAN003_V557_F1_CONTEXT_ONLY_CURRENT_BINDING",
+        "authority_version": "1.0.0",
+        "authority_hash": "b071d9b34825b2c73fefa47cdef0ba23003d79cf5a2fa78cab802e02ee0cd6f4"
+      },
+      "external_prerequisites": {
+        "permission_translation_authority": {
+          "authority_id": "GT12_RELATION_SPECIFIC_PREV3_TO_M4_PRODUCER_PERMISSION_TRANSLATION_AUTHORITY",
+          "authority_version": "1.0.0",
+          "authority_hash": "d052e299206b837292225853fca7ffcf8a3c02b6479c53065ad3aca135be489c"
+        },
+        "producer_allowed_uses_exact": [
+          "CONTEXT"
+        ],
+        "v557_allowed_uses_exact": [
+          "CONTEXT"
+        ],
+        "v558_requested_uses_exact": [
+          "CONTEXT"
+        ]
+      },
+      "derived_api_projection": {
+        "governed_use_id": "publication_authority.governed_use_id",
+        "v554_rule_ref": "publication_authority.rule_ref",
+        "publication_authority": "publication_authority",
+        "v557_authority_ref": "v557_authority_ref"
+      },
+      "current_selection": {
+        "caller_selectable": false,
+        "fuzzy_selection_forbidden": true
+      }
+    },
+    "ref": {
+      "id": "GT12_E2B_R3_CURRENT_V554_V557_PUBLICATION_GOVERNANCE_BINDING",
+      "version": "1.0.0",
+      "content_hash": "f7d4d2313bcc70faf104cff205b0eb7aaa7d88556c895c8ea123a3725105cf14"
+    }
+  },
+  "adoption": {
+    "material": {
+      "schema": "GT12_E2B_R3_PUBLICATION_GOVERNANCE_ADOPTION@1.0.0",
+      "decision": "ADOPTED_CURRENT",
+      "accepted_central_parent": "734a7af889ceec822f049652a706ed15dc373c3b",
+      "bundle_ref": {
+        "id": "GT12_E2B_R3_CURRENT_V554_V557_PUBLICATION_GOVERNANCE_BINDING",
+        "version": "1.0.0",
+        "content_hash": "f7d4d2313bcc70faf104cff205b0eb7aaa7d88556c895c8ea123a3725105cf14"
+      },
+      "evidence": {
+        "h1_terminal_sha": "fa03c40f827a4e9636f9360e2ec5791c71a5d433",
+        "h1_terminal": "PASS__GT12_E2B_R3_NO_EXISTING_COMPETENT_PUBLICATION_AUTHORITY_BUNDLE__EXACT_GAP_PROVED",
+        "h2_terminal_sha": "e5ff4d7669d12c5c58c57258b0045e27ba1c8eb3",
+        "h2_terminal": "PASS__GT12_E2B_R3_MINIMAL_PUBLICATION_AUTHORITY_BUNDLE_CONTRACT_DEFINED__NO_ADOPTION"
+      },
+      "authority_ceiling": {
+        "publication_object_families_exact": [
+          "F1"
+        ],
+        "v557_state": "ALLOW_CONTEXT_ONLY",
+        "v557_uses_exact": [
+          "CONTEXT"
+        ],
+        "v558_requested_uses_exact": [
+          "CONTEXT"
+        ],
+        "v3_positive_authority": false,
+        "actor_authority": false,
+        "v2_authority": false
+      }
+    },
+    "content_hash": "ff3c0db1ee346b176f240523f36048d88beb6216722988ea087040b4840cd492"
+  }
+}

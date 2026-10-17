@@ -1,0 +1,25 @@
+{
+  "node": "D5_Z07",
+  "source_sha": "e635d6415b281f5a28e011ec1083df7e37a7c23b",
+  "admission_sha": "7903da023039d4c6165acd329c812bb153f0d6e0",
+  "source_files": ["rawlsing_next/pre553_discovery_adaptive.py", "rawlsing_next/tests/test_pre553_discovery_adaptive.py"],
+  "admission_test": "rawlsing_next/tests/test_pre553_discovery_adaptive_admission.py",
+  "byte_status": "BYTE_IDENTICAL",
+  "production_blob": "58e32770381fa8d901701d6a2c676f28261aa3e3",
+  "dependency_changes": [],
+  "final_base_interface_compatibility": {
+    "status":"PASS_EXACT",
+    "pre553_empirical_objects.py":"91974c52ce8c0acafa939be0d7d83f4a5c8085b7",
+    "pre553_empirical_authority.py":"6714340facfe186c6cc521884cc85ab6340ad989",
+    "pre553_discovery_exact.py":"b2b99460cc5991bc26aa2ffe5bda129b408fc197"
+  },
+  "tests_run": [
+    {"scope":"direct Z07 source+admission","tests":11,"passed":11,"failed":0,"errors":0},
+    {"scope":"exact accepted A04 repository-native command","tests":63,"passed":63,"failed":0,"errors":0}
+  ],
+  "documentary_reconciliation": "W23/W26 shorthand says 27 tests; the exact accepted A04 receipt records a stronger 63-test command. W32 reran the exact accepted command rather than reducing it to 27.",
+  "semantic_equivalence": "EXACT_ADMITTED_BYTES_AND_EXACT_FINAL_BASE_API",
+  "authority_ceiling": "search order/replay policy only; partial negative forbidden; no empirical/structural/V3 truth effect; exact I05 unchanged",
+  "collateral_change_check": "PASS",
+  "node_disposition": "PASS_READY_FOR_W35"
+}
