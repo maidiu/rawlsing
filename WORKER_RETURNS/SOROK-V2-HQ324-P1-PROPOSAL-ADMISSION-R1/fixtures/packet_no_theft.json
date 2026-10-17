@@ -1,0 +1,242 @@
+{
+  "as_of": "2026-10-17T10:00:00Z",
+  "candidates": [
+    {
+      "action_refs": [
+        {
+          "act_kind": "SPEAK_TO_CHILD",
+          "actor_ref": "CARE-1",
+          "opportunity_ref": "OP-CARE-SPEAK"
+        }
+      ],
+      "candidate_id": "ALT-CARE",
+      "courses": [
+        {
+          "action_ref": "OP-CARE-SPEAK",
+          "actor_ref": "CARE-1",
+          "course_id": "COURSE-CARE-SPEAK",
+          "description": "Caregiver considers reassurance or practical protective speech"
+        }
+      ],
+      "family": "OBSERVABLE_UTTERANCE",
+      "interpretations": [
+        {
+          "accessible_source_refs": [
+            "THEFT-1"
+          ],
+          "claim": "A careful response could reduce future loss; I am worried.",
+          "claim_kind": "ATTRIBUTED_UNVERIFIED_ASSERTION",
+          "claim_world_fact_ref": null,
+          "speaker_actor_ref": "CARE-1",
+          "utterance": "We should report this and see what can be secured."
+        }
+      ],
+      "parent_event_ref": "THEFT-1",
+      "participants": [
+        "CHILD-1",
+        "CARE-1"
+      ],
+      "place_ref": "GARAGE-1",
+      "possible_effects": [
+        {
+          "description": "Child may perceive factual prudence yet feel emotionally unheard",
+          "effect_kind": "MAY_RETAIN_CONTRADICTION",
+          "epistemic_class": "HYPOTHESIS_ONLY",
+          "owner_required": "CAN011_EXTERNAL_OWNER",
+          "target_actor_ref": "CHILD-1"
+        }
+      ],
+      "prerequisites": [
+        {
+          "kind": "WORLD_FACT_TRUE",
+          "ref": "THEFT-1"
+        },
+        {
+          "kind": "ACTOR_ACCESS",
+          "ref": "CARE-1|THEFT-1"
+        },
+        {
+          "kind": "HISTORY_PRESENT",
+          "ref": "CARE-1|H-CARE-PROTECT"
+        }
+      ],
+      "prospective_participants": [],
+      "readset": [
+        "THEFT-1"
+      ],
+      "time": "2026-10-17T10:00:00Z",
+      "uncertainty": "Competing possible receptions, no privileged insight or fixed psychological consequence",
+      "visibility": [
+        "CHILD-1",
+        "CARE-1"
+      ]
+    },
+    {
+      "action_refs": [
+        {
+          "act_kind": "SPEAK_TO_CHILD",
+          "actor_ref": "PEER-1",
+          "opportunity_ref": "OP-PEER-SPEAK"
+        }
+      ],
+      "candidate_id": "ALT-PEER",
+      "courses": [
+        {
+          "action_ref": "OP-PEER-SPEAK",
+          "actor_ref": "PEER-1",
+          "course_id": "COURSE-PEER-SPEAK",
+          "description": "Peer might circulate unsupported scapegoating rumor"
+        }
+      ],
+      "family": "OBSERVABLE_UTTERANCE",
+      "interpretations": [
+        {
+          "accessible_source_refs": [
+            "THEFT-1"
+          ],
+          "claim": "Unsubstantiated blame of neighbors in a peer rumor",
+          "claim_kind": "ATTRIBUTED_UNVERIFIED_ASSERTION",
+          "claim_world_fact_ref": null,
+          "speaker_actor_ref": "PEER-1",
+          "utterance": "People from that block always take things."
+        }
+      ],
+      "parent_event_ref": "THEFT-1",
+      "participants": [
+        "CHILD-1",
+        "PEER-1"
+      ],
+      "place_ref": "GARAGE-1",
+      "possible_effects": [
+        {
+          "description": "Child could reject or absorb peer narrative, unknown",
+          "effect_kind": "MAY_RETAIN_CONTRADICTION",
+          "epistemic_class": "HYPOTHESIS_ONLY",
+          "owner_required": "CAN011_EXTERNAL_OWNER",
+          "target_actor_ref": "CHILD-1"
+        }
+      ],
+      "prerequisites": [
+        {
+          "kind": "WORLD_FACT_TRUE",
+          "ref": "THEFT-1"
+        },
+        {
+          "kind": "ACTOR_ACCESS",
+          "ref": "PEER-1|THEFT-1"
+        },
+        {
+          "kind": "HISTORY_PRESENT",
+          "ref": "PEER-1|H-PEER-BELONGING"
+        }
+      ],
+      "prospective_participants": [],
+      "readset": [
+        "THEFT-1"
+      ],
+      "time": "2026-10-17T10:00:00Z",
+      "uncertainty": "Competing possible receptions, no privileged insight or fixed psychological consequence",
+      "visibility": [
+        "CHILD-1",
+        "PEER-1"
+      ]
+    },
+    {
+      "action_refs": [
+        {
+          "act_kind": "CHECK_GARAGE",
+          "actor_ref": "CHILD-1",
+          "opportunity_ref": "OP-CHILD-SEARCH"
+        }
+      ],
+      "candidate_id": "ALT-CHILD-SEARCH",
+      "courses": [
+        {
+          "action_ref": "OP-CHILD-SEARCH",
+          "actor_ref": "CHILD-1",
+          "course_id": "COURSE-CHILD-SEARCH",
+          "description": "Child might look for lock marks before deciding what happened"
+        }
+      ],
+      "family": "MATERIAL_ACTION_PROPOSAL",
+      "interpretations": [],
+      "parent_event_ref": "THEFT-1",
+      "participants": [
+        "CHILD-1"
+      ],
+      "place_ref": "GARAGE-1",
+      "possible_effects": [
+        {
+          "description": "No durable response is required",
+          "effect_kind": "NO_CHANGE",
+          "epistemic_class": "HYPOTHESIS_ONLY",
+          "owner_required": "CAN011_EXTERNAL_OWNER",
+          "target_actor_ref": "CHILD-1"
+        }
+      ],
+      "prerequisites": [
+        {
+          "kind": "WORLD_FACT_TRUE",
+          "ref": "THEFT-1"
+        },
+        {
+          "kind": "MATERIAL_AFFORDANCE",
+          "ref": "GARAGE_ACCESS"
+        }
+      ],
+      "prospective_participants": [],
+      "readset": [
+        "THEFT-1"
+      ],
+      "time": "2026-10-17T10:00:00Z",
+      "uncertainty": "Competing possible receptions, no privileged insight or fixed psychological consequence",
+      "visibility": [
+        "CHILD-1"
+      ]
+    },
+    {
+      "action_refs": [],
+      "candidate_id": "ALT-NONE",
+      "courses": [],
+      "family": "NONOCCURRENCE",
+      "interpretations": [],
+      "parent_event_ref": "THEFT-1",
+      "participants": [
+        "CHILD-1"
+      ],
+      "place_ref": "GARAGE-1",
+      "possible_effects": [],
+      "prerequisites": [
+        {
+          "kind": "WORLD_FACT_TRUE",
+          "ref": "THEFT-1"
+        }
+      ],
+      "prospective_participants": [],
+      "readset": [
+        "THEFT-1"
+      ],
+      "time": "2026-10-17T10:00:00Z",
+      "uncertainty": "Competing possible receptions, no privileged insight or fixed psychological consequence",
+      "visibility": [
+        "CHILD-1"
+      ]
+    }
+  ],
+  "context_hash": "4a8281885a1407b6cf32786f6873302501e0f31ded3cd186ffb32db34574787a",
+  "epistemic_class": "LLM_PROPOSAL",
+  "model": {
+    "model_version": "SYNTH-1",
+    "prompt_sha256": "09c625dda784aa41702a734b8c2141b520726e69809e3f20aa053c231413dae6",
+    "prompt_version": "P1-PROMPT-1",
+    "provider_label": "FROZEN_FABRICATED_PACKET_NO_LIVE_MODEL",
+    "sampling_record": {
+      "kind": "FROZEN_AUTHOR_SYNTHETIC",
+      "model_draws": "NOT_RECORDED_NOT_CAUSAL"
+    }
+  },
+  "proposal_hash": "ff6623249e549b66d20ad74e24f5d9e80c1cc9eaf0a14b9b1597daee104baaa4",
+  "proposal_id": "MODEL-PACKET-NO-THEFT",
+  "schema": "P1_LLM_ALTERNATIVES_PROPOSAL_V1",
+  "world_ref": "WORLD-BIKE-1"
+}

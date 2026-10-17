@@ -1,0 +1,127 @@
+{
+  "action_opportunities": {
+    "OP-CARE-REPORT": {
+      "act_kind": "REPORT_MISSING_BIKE",
+      "actor_ref": "CARE-1",
+      "place_ref": "GARAGE-1",
+      "time": "2026-10-17T10:00:00Z"
+    },
+    "OP-CARE-SPEAK": {
+      "act_kind": "SPEAK_TO_CHILD",
+      "actor_ref": "CARE-1",
+      "place_ref": "GARAGE-1",
+      "time": "2026-10-17T10:00:00Z"
+    },
+    "OP-CHILD-SEARCH": {
+      "act_kind": "CHECK_GARAGE",
+      "actor_ref": "CHILD-1",
+      "place_ref": "GARAGE-1",
+      "time": "2026-10-17T10:00:00Z"
+    },
+    "OP-PEER-SPEAK": {
+      "act_kind": "SPEAK_TO_CHILD",
+      "actor_ref": "PEER-1",
+      "place_ref": "GARAGE-1",
+      "time": "2026-10-17T10:00:00Z"
+    }
+  },
+  "actor_access": {
+    "CARE-1": [
+      "THEFT-1"
+    ],
+    "CHILD-1": [
+      "THEFT-1"
+    ],
+    "NEIGHBOR-1": [],
+    "PEER-1": []
+  },
+  "allowed_role_refs": [
+    "CHILD",
+    "CAREGIVER",
+    "PEER",
+    "NEIGHBOR"
+  ],
+  "as_of": "2026-10-17T10:00:00Z",
+  "context_hash": "d325c61c1e7ec03f5d7c3fc165004022e3f66536dcf45a83a51168c8d9f85f6c",
+  "facts": {
+    "DENIED-PAST-THEFT": {
+      "epistemic_class": "ADMITTED_OBJECTIVE_EVENT",
+      "kind": "OTHER_THEFT",
+      "occurred": false,
+      "time": "2026-10-16T09:00:00Z"
+    },
+    "PRIVATE-CAREGIVER-1": {
+      "epistemic_class": "PRIVATE_ACTOR_STATE",
+      "kind": "UNREADABLE_CAREGIVER_CONCERN",
+      "occurred": true,
+      "time": "2026-10-17T08:00:00Z"
+    },
+    "THEFT-1": {
+      "epistemic_class": "ADMITTED_OBJECTIVE_EVENT",
+      "kind": "BIKE_STOLEN",
+      "known_culprit": null,
+      "material_object_ref": "BIKE-CHILD-1",
+      "occurred": true,
+      "time": "2026-10-17T09:00:00Z"
+    }
+  },
+  "histories": {
+    "H-CARE-CONTROL": {
+      "owner": "CARE-1",
+      "source": "SYNTHETIC_HISTORY",
+      "summary": "caregiver has history of intrusive scrutiny and material safety concern"
+    },
+    "H-CARE-PROTECT": {
+      "owner": "CARE-1",
+      "source": "SYNTHETIC_HISTORY",
+      "summary": "caregiver works changing shifts, has protected child without always attending emotion"
+    },
+    "H-CHILD-1": {
+      "owner": "CHILD-1",
+      "source": "SYNTHETIC_HISTORY",
+      "summary": "child acquired bicycle through repair work; prior adult recognition varied"
+    },
+    "H-CHILD-2": {
+      "owner": "CHILD-1",
+      "source": "SYNTHETIC_HISTORY",
+      "summary": "child bicycle gift and repeated arbitrary searches; reacts to control with caution"
+    },
+    "H-NEIGHBOR-INDEPENDENT": {
+      "owner": "NEIGHBOR-1",
+      "source": "SYNTHETIC_HISTORY",
+      "summary": "neighbor has independent daily schedule unrelated to theft"
+    },
+    "H-PEER-BELONGING": {
+      "owner": "PEER-1",
+      "source": "SYNTHETIC_HISTORY",
+      "summary": "peer once repeated a false rumor to earn group belonging"
+    }
+  },
+  "material_affordances": [
+    "GARAGE_ACCESS",
+    "PHONE_AVAILABLE"
+  ],
+  "people": {
+    "CARE-1": {
+      "history_ref": "H-CARE-PROTECT",
+      "role": "CAREGIVER"
+    },
+    "CHILD-1": {
+      "history_ref": "H-CHILD-1",
+      "role": "CHILD"
+    },
+    "NEIGHBOR-1": {
+      "history_ref": "H-NEIGHBOR-INDEPENDENT",
+      "role": "NEIGHBOR"
+    },
+    "PEER-1": {
+      "history_ref": "H-PEER-BELONGING",
+      "role": "PEER"
+    }
+  },
+  "places": [
+    "GARAGE-1"
+  ],
+  "schema": "P1_SYNTHETIC_CONTEXT_V1",
+  "world_ref": "WORLD-BIKE-1"
+}
