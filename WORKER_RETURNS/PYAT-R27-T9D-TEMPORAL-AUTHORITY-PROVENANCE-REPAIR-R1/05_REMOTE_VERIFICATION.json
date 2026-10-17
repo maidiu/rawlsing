@@ -1,0 +1,52 @@
+{
+  "schema": "PYAT_R27_T9D_05_REMOTE_VERIFICATION@1",
+  "repository": "https://github.com/maidiu/rawlsing.git",
+  "repository_visibility": "PRIVATE",
+  "branch": "agent/rabochii-pyat-r27-t9d-native-authority-provenance-correction-r1",
+  "sealed_startup_commit": "7603c47610c01937e48b07f7fc69531964182911",
+  "repair_publication_commit": "5c76591bd699a2be83a13ad7c7575a0bd1575bc8",
+  "repair_publication_commit_subject": "Pyat R27 T9D: repair temporal authority, actor entitlement and provenance identity",
+  "direct_remote_readback": {
+    "command": "git ls-remote origin refs/heads/agent/rabochii-pyat-r27-t9d-native-authority-provenance-correction-r1",
+    "observed": "5c76591bd699a2be83a13ad7c7575a0bd1575bc8\trefs/heads/agent/rabochii-pyat-r27-t9d-native-authority-provenance-correction-r1",
+    "matches_local_head": true,
+    "verified_at_utc": "2026-10-17T06:35:00Z"
+  },
+  "changed_paths_all_inside_own_return": true,
+  "changed_path_prefix": "WORKER_RETURNS/PYAT-R27-T9D-TEMPORAL-AUTHORITY-PROVENANCE-REPAIR-R1/",
+  "lineage": {
+    "original_t9b_author_commit": "edf3494b1b11cb71a78540aba950aa15da900c8a",
+    "original_t9c_author_commit": "9a33c2dcaa7ac0d50606416ab965488c9782934b",
+    "original_t9c_repair_payload": "d6e062684ca34b99ee9713c8c0affa0ed5c27f25",
+    "independent_t9i_court_commit": "a2a7bdeda76aa008b3d620b01af71f7fd6efaaae",
+    "independent_t9r_commit": "299dbf0d3a54fa76e36e524c553662f60090fe72"
+  },
+  "adapter_identity": {
+    "path": "WORKER_RETURNS/PYAT-R27-T9D-TEMPORAL-AUTHORITY-PROVENANCE-REPAIR-R1/t9b_temporal.py",
+    "sha256": "77a4d25d9a6338cf747ca89185790a6d51b0ecbc0c450697a2e30215d92073ef",
+    "git_blob_sha1_NUL_preimage": "d6710868d72d73f0b711224f18c8792c8b666666",
+    "real_diff_vs_t9c": "07_REAL_DIFF_T9C_TO_T9D.patch"
+  },
+  "junit_sha256": {
+    "frozen_t9i_independent_48.xml": "68d22ce5a7f5c847a0b158cd386e584f15912d98b01867eae1d97d83aaa5f1f7",
+    "t9c_own_repair_52.xml": "3bd32941338ca42cd60e6a1ef0e063110a455de63b6694b5f462a53c94346be4",
+    "inherited_original_v553_native_8.xml": "66ef2005135843ef13375aa94e60b0520e5f1f2b472f3d4aa66ad8f5c890ca0f",
+    "unchanged_t9b_author_28.xml": "05ddaa31c0e241a90ff67278d330b645897c75cb7b4ca55d11cab5282bff9196",
+    "t9r_frozen_delta_50.xml": "edc2a6c113dc897f4cbe3442ae256e42f2409efdb7b69ae3f8bf8e24e88e99a7",
+    "t9r_postinspection_hostiles_7.xml": "65ab2f24b149a2f59f1448619f4e98a054bd907810f97dd73bef64b5e5f251f6",
+    "t9d_own_authority_provenance.xml": "61f37702d781f2e7e3ca3f2160d23a6dd1af07b03bb71b0bb6ed67c38502be55"
+  },
+  "grants_made_here": {
+    "N9": false,
+    "OC05": false,
+    "EE12": false,
+    "N11": false,
+    "N12": false,
+    "Sorok_actor": false,
+    "V3": false,
+    "method_adoption": false,
+    "hq_adoption": false
+  },
+  "disposition": "published for independent T9S review; this worker is the productive adapter author and makes no acceptance claim",
+  "publication_note": "repair payload is commit 5c76591bd699a2be83a13ad7c7575a0bd1575bc8; this receipt commit completes the publication; the exact remote SHA for independent T9S review is the branch head after this commit, re-read directly with git ls-remote"
+}
