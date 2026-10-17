@@ -1,0 +1,82 @@
+{
+ "schema": "PYAT_R32_WG0P9_PUBLICATION_RECEIPT@1",
+ "repository": "maidiu/rawlsing (PRIVATE)",
+ "branch": "agent/userdirect-pyat-20261017-r32-wg0p9-independent-clean-native-replay-r1",
+ "sealed_startup": "32b867444a9a466768d00ea31ef249394a5253f3",
+ "clean_checkout_commit": "e1d82971f8c07147550ce53ef3c4bc52f349fed3",
+ "evidence_commit": "712da0e7b2cbeeb206d6dc9abeffe4a50332df3f",
+ "remote_verified_sha": "712da0e7b2cbeeb206d6dc9abeffe4a50332df3f",
+ "remote_ref": "refs/heads/agent/userdirect-pyat-20261017-r32-wg0p9-independent-clean-native-replay-r1",
+ "verified_by": "git ls-remote origin <ref> after push",
+ "verified_at": "2026-10-17T23:21:52Z",
+ "p5_sha256": "89fed0a6078b5bb2ced8ce930ef6f56364acf2a4a9b24ab6210adfe90d89a643",
+ "source_inputs_sha256": "2e7d47d2a14fe1fec12fd574c1183fadf50ee25b6f10a62ffae8858e29885418",
+ "results": {
+  "transport9": 9,
+  "wg0o17_as_published": {
+   "passed": 16,
+   "failed": 1
+  },
+  "wg0o17_restored": {
+   "passed": 17,
+   "failed": 0
+  },
+  "wg0q36": 36,
+  "inherited236": 236,
+  "fresh42": 42,
+  "cold_pointer": 1,
+  "cold": {
+   "crash_pid": 22473,
+   "resume_pid": 22474,
+   "first_I03": 1,
+   "second_I03": 2,
+   "manifest": "bcd255228ef35edcb9b59436b76e1eb78947c07180f2936779572f510981c140",
+   "receipt": "caac243fc25c521acc10b2e082b55bdb854921dff8f730680d82eeaf2dcabcbd"
+  },
+  "positive": {
+   "cells": 42,
+   "i03": 4,
+   "effects_sha256": "4b9d03246167c93df6dde8d590fac33c24c51ef158d60abd8ee33601ca059550"
+  }
+ },
+ "verdict": "HOLD",
+ "disposition": "native courts physically reproduced; published P8 transport not self-contained",
+ "transport_defects": [
+  "D1 stale VERSION expectation rejects correct repaired P5",
+  "D2 missing bootstrap receipt dir",
+  "D3 missing candidate observations/runtime dirs",
+  "D4 cold_directory placeholder and missing cold owner/",
+  "D5 omitted WG0N 02_PHASE_B_VERDICT.md"
+ ],
+ "artifact_sha256": {
+  "00_INDEPENDENT_NATIVE_COLD_VERDICT.md": "347902aad4f7dee0833e98853553d5b9e373978959e3da821faafc5f2f1012fe",
+  "01_CLEAN_IMPORT_AND_INPUT_SHA_MATRIX.json": "29fd458af2a0f713cba0155e13eec90fc37066ef50a2e7fd1f8369334b34333b",
+  "02_REAL_FROZEN_COURTS_AND_JUNIT": {
+   "cold_pointer.xml": "0eabc54c4b4912af2dd518211b1352c53a161a1e894165dea70c7c179d1d8b2e",
+   "fresh42.xml": "afc222cb4092d03301a9d8f9239eafa30c24c2733379f3b43224574f8fb83f3f",
+   "original3_j44_k11.xml": "4553f9d1f0a87a3131147e1d1e925aa1435177cc4233daba46d462b9c37a5eda",
+   "original65.xml": "4435d5ccaeae5e6edd2b44d8e3b918c2ecce33e355ce919853a4ab3d7202ce1a",
+   "owners80.xml": "061729b11f0c5eb2e941f86b767889aea5a1ccbaf46ee87fbde552d203eefa95",
+   "transport9.xml": "da3b1c9a636febc37205ec4fa83dc76c1f292f43c71fcfb1ae72f2477264a270",
+   "wg0m33.xml": "8ff3ac2c906f8f70e46902a9d49d0fac2b6bc35d10f399c9384f80ed96113d2d",
+   "wg0o17_as_published.xml": "320d65e5559b0d4de16ccb3f35453e61d068d31abe63c40d8244249436164ac9",
+   "wg0o17_restored_inherited_verdict.xml": "b5e99b83cab19bdbb89d23d3082a6632875ad97f3c938a456d4481288a5345a9",
+   "wg0q36.xml": "1ef00fbe1bb5c100b8ca0d6b77f8af008263be9c59f9cbaa0df872daed66ad19"
+  },
+  "03_HOSTILE_WRONG_IMPORT_AND_COLD_RECOVERY.json": "e892a998a9ae7dc7e20b969165c0fdfa4447a590c074ef2e376a7732aa0de877",
+  "04_PUBLICATION_SCOPE_AND_OWNER_HOLDS.md": "b5f599ff84792308ceba512ec44a30378a1e2d0a93cdda11c49ae70b2da9a96a"
+ },
+ "non_grants": [
+  "original SAV/DTA",
+  "U/E_pre",
+  "issuer",
+  "independent revocation",
+  "temporal semantics",
+  "N11/N12",
+  "V3/actor",
+  "Field Forge S1-S9",
+  "OC05",
+  "HQ acceptance",
+  "method adoption"
+ ]
+}
