@@ -1,0 +1,141 @@
+{
+  "schema": "WG0P4_SEPARATELY_FROZEN_JOINT_FRONTIER@1",
+  "native_items": [
+    {
+      "item_id": "WG0P4-JOINT-ORD",
+      "form_id": "Q-ORD-A",
+      "source_id": "WG0P-SRC-A",
+      "wave": "W1",
+      "unit": "respondent",
+      "response_kind": "ORDINAL",
+      "options": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "9"
+      ],
+      "missing_codes": [
+        "9",
+        "997",
+        "998"
+      ],
+      "route_evidence": null,
+      "grant": "GRANTED_FIXTURE",
+      "version": "v1"
+    },
+    {
+      "item_id": "WG0P4-JOINT-RT",
+      "form_id": "Q-RT-C",
+      "source_id": "WG0P-SRC-A",
+      "wave": "W1",
+      "unit": "respondent",
+      "response_kind": "ROUTED",
+      "options": [
+        "yes",
+        "no"
+      ],
+      "missing_codes": [
+        "9"
+      ],
+      "route_evidence": "TESTONLY_R1_R6_JOINT_ROUTING",
+      "grant": "GRANTED_FIXTURE",
+      "version": "v1"
+    }
+  ],
+  "operations": [
+    {
+      "op_id": "OP-WG0P4-JOINT-ORD-MARGINAL",
+      "op_class": "MARGINAL",
+      "target": "WG0P4-JOINT-ORD",
+      "conditioners": [],
+      "item_ids": [
+        "WG0P4-JOINT-ORD"
+      ],
+      "disposition": "PRODUCED",
+      "disposition_reason": "ELIGIBLE"
+    },
+    {
+      "op_id": "OP-WG0P4-JOINT-RT-MARGINAL",
+      "op_class": "MARGINAL",
+      "target": "WG0P4-JOINT-RT",
+      "conditioners": [],
+      "item_ids": [
+        "WG0P4-JOINT-RT"
+      ],
+      "disposition": "PRODUCED",
+      "disposition_reason": "ELIGIBLE"
+    },
+    {
+      "op_id": "OP-WG0P4-JOINT-ORD-GIVEN-WG0P4-JOINT-RT",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P4-JOINT-ORD",
+      "conditioners": [
+        "WG0P4-JOINT-RT"
+      ],
+      "item_ids": [
+        "WG0P4-JOINT-ORD",
+        "WG0P4-JOINT-RT"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "JOINT_RISK_SET_UNPROVED"
+    },
+    {
+      "op_id": "OP-WG0P4-JOINT-RT-GIVEN-WG0P4-JOINT-ORD",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P4-JOINT-RT",
+      "conditioners": [
+        "WG0P4-JOINT-ORD"
+      ],
+      "item_ids": [
+        "WG0P4-JOINT-RT",
+        "WG0P4-JOINT-ORD"
+      ],
+      "disposition": "PRODUCED",
+      "disposition_reason": "QUALIFIED_TESTONLY_JOINT_RISK"
+    }
+  ],
+  "release": "REL-A-W1",
+  "risk_set": "R_JOINT_ORD_RT",
+  "grant": "GRANTED_FIXTURE",
+  "authority": "INDEPENDENT_TESTONLY_FIXTURE_OWNER; not caller plan grant",
+  "members": [
+    "R1",
+    "R2",
+    "R3",
+    "R4",
+    "R5",
+    "R6"
+  ],
+  "condition": {
+    "form": "Q-ORD-A",
+    "value": "1"
+  },
+  "target": {
+    "form": "Q-RT-C",
+    "domain": [
+      "yes",
+      "no"
+    ]
+  },
+  "expected_conditional": {
+    "denominator": 2,
+    "yes": 1,
+    "no": 1,
+    "members": [
+      "R2",
+      "R3"
+    ]
+  },
+  "must_use_path": [
+    "WorkloadBuilder.add_joint_risk_authority",
+    "WorkloadBuilder.enumerate",
+    "build_executable_plan",
+    "make_executor",
+    "BatchExecutionRunner.run",
+    "consumer_effects"
+  ],
+  "unsupported_reverse": "HELD_JOINT_RISK_SET_UNPROVED",
+  "original_25_unchanged": true,
+  "rights_ceiling": "SOURCEFREE_ONLY_NO_N11_N12_SOURCE_OR_ACTOR"
+}

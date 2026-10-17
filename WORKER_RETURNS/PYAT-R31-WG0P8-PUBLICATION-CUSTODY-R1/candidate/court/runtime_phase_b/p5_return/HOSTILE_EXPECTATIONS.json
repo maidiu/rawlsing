@@ -1,0 +1,141 @@
+{
+  "schema": "WG0P5_PROSPECTIVE_DESCRIPTOR_HOSTILES@1",
+  "frozen_at_utc": "2026-10-17T04:11:33.277599+00:00",
+  "stage": "BEFORE_WG0P5_IMPLEMENTATION_OR_CANDIDATE_EXECUTION",
+  "baseline_candidate": "20d781c8502662bf788b60b828e46df55898d687",
+  "independent_review": "bec9a128922e4e431ce2ed862aa7802c902813ed",
+  "descriptor_fields": [
+    "op_id",
+    "release_tag",
+    "risk_name",
+    "targets",
+    "member_ids",
+    "grant",
+    "disposition",
+    "native_item_ids",
+    "source_edition",
+    "full_identity_hash",
+    "query",
+    "predicate"
+  ],
+  "attacks": [
+    {
+      "field": "op_id",
+      "replacement": "FOREIGN_OP",
+      "stimulus": "copied plan with altered BoundSpec and unchanged original registered contract",
+      "expected": "IdentityError BEFORE native execute_empirical_query; zero I03 calls; no new native-issued fact or receipt; no positive consumer publication"
+    },
+    {
+      "field": "release_tag",
+      "replacement": "REL-A-W2",
+      "stimulus": "copied plan with altered BoundSpec and unchanged original registered contract",
+      "expected": "IdentityError BEFORE native execute_empirical_query; zero I03 calls; no new native-issued fact or receipt; no positive consumer publication"
+    },
+    {
+      "field": "risk_name",
+      "replacement": "R_ORD2",
+      "stimulus": "copied plan with altered BoundSpec and unchanged original registered contract",
+      "expected": "IdentityError BEFORE native execute_empirical_query; zero I03 calls; no new native-issued fact or receipt; no positive consumer publication"
+    },
+    {
+      "field": "targets",
+      "replacement": [
+        [
+          "Q-FOREIGN",
+          [
+            "yes",
+            "no"
+          ]
+        ]
+      ],
+      "stimulus": "copied plan with altered BoundSpec and unchanged original registered contract",
+      "expected": "IdentityError BEFORE native execute_empirical_query; zero I03 calls; no new native-issued fact or receipt; no positive consumer publication"
+    },
+    {
+      "field": "member_ids",
+      "replacement": [
+        "R11",
+        "R12"
+      ],
+      "stimulus": "copied plan with altered BoundSpec and unchanged original registered contract",
+      "expected": "IdentityError BEFORE native execute_empirical_query; zero I03 calls; no new native-issued fact or receipt; no positive consumer publication"
+    },
+    {
+      "field": "grant",
+      "replacement": "FORGED_GRANT",
+      "stimulus": "copied plan with altered BoundSpec and unchanged original registered contract",
+      "expected": "IdentityError BEFORE native execute_empirical_query; zero I03 calls; no new native-issued fact or receipt; no positive consumer publication"
+    },
+    {
+      "field": "disposition",
+      "replacement": "HELD",
+      "stimulus": "copied plan with altered BoundSpec and unchanged original registered contract",
+      "expected": "IdentityError BEFORE native execute_empirical_query; zero I03 calls; no new native-issued fact or receipt; no positive consumer publication"
+    },
+    {
+      "field": "native_item_ids",
+      "replacement": [
+        "FOREIGN_NATIVE_ITEM"
+      ],
+      "stimulus": "copied plan with altered BoundSpec and unchanged original registered contract",
+      "expected": "IdentityError BEFORE native execute_empirical_query; zero I03 calls; no new native-issued fact or receipt; no positive consumer publication"
+    },
+    {
+      "field": "source_edition",
+      "replacement": "FORGED_CALLER_EDITION",
+      "stimulus": "copied plan with altered BoundSpec and unchanged original registered contract",
+      "expected": "IdentityError BEFORE native execute_empirical_query; zero I03 calls; no new native-issued fact or receipt; no positive consumer publication"
+    },
+    {
+      "field": "full_identity_hash",
+      "replacement": "0000000000000000000000000000000000000000000000000000000000000000",
+      "stimulus": "copied plan with altered BoundSpec and unchanged original registered contract",
+      "expected": "IdentityError BEFORE native execute_empirical_query; zero I03 calls; no new native-issued fact or receipt; no positive consumer publication"
+    },
+    {
+      "field": "query",
+      "replacement": "OTHER_NATIVE_QUERY",
+      "stimulus": "copied plan with altered BoundSpec and unchanged original registered contract",
+      "expected": "IdentityError BEFORE native execute_empirical_query; zero I03 calls; no new native-issued fact or receipt; no positive consumer publication"
+    },
+    {
+      "field": "predicate",
+      "replacement": "OTHER_NATIVE_PREDICATE",
+      "stimulus": "copied plan with altered BoundSpec and unchanged original registered contract",
+      "expected": "IdentityError BEFORE native execute_empirical_query; zero I03 calls; no new native-issued fact or receipt; no positive consumer publication"
+    }
+  ],
+  "additional_attacks": [
+    "copied descriptor plus recomputed caller contract cannot register itself",
+    "mutated native release view before compilation must not be self-signed",
+    "same-count member/native item/source field substitutions",
+    "source edition/release/risk/query/domain/current grant/knowledge-clock swap at call or read",
+    "cold saved descriptor or source identity changed then outer checksum recomputed"
+  ],
+  "preserved_positives": {
+    "original_frontier": {
+      "total": 25,
+      "PRODUCED": 3,
+      "HELD": 16,
+      "INADMISSIBLE": 6
+    },
+    "ordinary_conditional": {
+      "yes": 1,
+      "no": 1,
+      "denominator": 2,
+      "members": [
+        "R2",
+        "R3"
+      ]
+    },
+    "cold": "one actual native I03 unit; os._exit23; same original3-unit manifest; fresh process restores exact receipt/fact and executes only2 further I03 units"
+  },
+  "required_unchanged_suites": {
+    "WG0L": 65,
+    "WG0J": 44,
+    "WG0K_full": 11,
+    "native_owners": 80,
+    "author_P4": 69
+  },
+  "adoption": "IMPLEMENTER_REPAIR_ONLY; independent WG0M and HQ acceptance required"
+}
