@@ -1,0 +1,117 @@
+{
+  "schema": "PYAT_R31_WP1_EXACT_PRODUCER_CONSUMER_CLOSURE@1",
+  "sealed_startup": "108ea616ca186164bd43852085ac9090a95d83f2",
+  "sourcefree_grade": "LOCAL_SOURCEFREE_LAB_POSITIVE__ACCEPTED_C1_N10E_N9_N10W_UNEXECUTED",
+  "source_code_git_blob": "062bbf6fb1fc927398e172c64863812cb3df7931",
+  "source_test_git_blob": "46f8bb29eb6ab16f4a0009e368e35bfc85008155",
+  "producer": {
+    "class": "produce_field",
+    "registry": "TestOnlyRegistry",
+    "derived_ref_scheme": "WP1_TESTONLY_FIELD:SHA256(canonical_content)",
+    "recomputed_on_dereference": true,
+    "defensive_copy": true,
+    "external_custody": false,
+    "accepted_c1": false,
+    "accepted_n10e": false,
+    "sources": [
+      {
+        "family": "LAB_SOURCE_ALPHA",
+        "release": "2024-03-01",
+        "observed": "2023-10",
+        "eligible": 100,
+        "valid": 80,
+        "missing": 20,
+        "forward_denom": 45,
+        "reverse_denom": 48,
+        "field_ref": "WP1_TESTONLY_FIELD:767db531a5739bf6727d9175a9a80bfe6568ac07659eb4662af599fb1861b283"
+      },
+      {
+        "family": "LAB_SOURCE_BETA",
+        "release": "2024-06-01",
+        "observed": "2024-Q1",
+        "eligible": 70,
+        "valid": 50,
+        "missing": 20,
+        "forward_denom": 30,
+        "reverse_denom": 25,
+        "field_ref": "WP1_TESTONLY_FIELD:9b690118d8605712cdcae3c07f20ac44c2eff47430134a0cd84c1c3757cb9783"
+      }
+    ]
+  },
+  "consumer": {
+    "named": "HistoricalWorldPossibilityConsumer.consume",
+    "method": "exact selected field ref -> registered defensive copy -> content hash checked -> recomputed conditional -> frozen model rule -> numerical read",
+    "worlds": [
+      {
+        "name": "WORLD_A",
+        "asof": "2025-04-01",
+        "rule": "WP1_TESTONLY_RULE:0e02f182ec64441170729b376467100d9f585dec34db0bd6cba117af5cba680c",
+        "product_ref": "WP1_TESTONLY_PRODUCT:08195a5d7e2c7d0d6a87e84ed68a2e0dc7cc94ec1892ffdeab203ffbda86ae2b"
+      },
+      {
+        "name": "WORLD_B",
+        "asof": "2025-08-01",
+        "rule": "WP1_TESTONLY_RULE:1261186ceac23a317db04c5ff73a802727fb47c47899d2ac7ce632750c498aab",
+        "product_ref": "WP1_TESTONLY_PRODUCT:6d604cb95f3cceb301199b23db7bc17498677022400d1f0acf5f263a4216972f"
+      }
+    ],
+    "consumer_readset_identity": "EXACT_SAME_TWO_PRODUCER_OWNED_FIELD_REFS__NO_PARALLEL_REGISTRY",
+    "counterworld_effect_ref": "WP1_TESTONLY_COMPARISON:147f16a3aff5c6875f4302857058f14af485813e1aef16b9224b9bba6bd6ba54",
+    "alpha_delta": {
+      "center": [
+        2,
+        5
+      ],
+      "interval": [
+        [
+          18,
+          65
+        ],
+        [
+          28,
+          65
+        ]
+      ]
+    },
+    "beta_delta": {
+      "center": [
+        1,
+        6
+      ],
+      "interval": [
+        [
+          1,
+          10
+        ],
+        [
+          1,
+          5
+        ]
+      ]
+    },
+    "unknown_mass_not_renormalized": true,
+    "negative_controls": [
+      "SOURCE_REVOKED",
+      "WORLD_ASOF_SUBSTITUTION",
+      "STRUCTURAL_RULE_INCOMPLETE_HOLD",
+      "FORGED_WORLD_OR_FIELD_ISSUER",
+      "CROSS_FAMILY_OR_PERSON_INFERENCE_FORBIDDEN",
+      "UNKNOWN_FIELD_REF",
+      "SOURCE_RELEASE_POPULATION_OR_CLOCK_SUBSTITUTION"
+    ]
+  },
+  "not_issued": {
+    "F6N": true,
+    "GF1G": true,
+    "original_source": true,
+    "C1_accepted_real_receipt": true,
+    "N10E": true,
+    "N9_OC05": true,
+    "FF": true,
+    "N10W": true,
+    "N11": true,
+    "N12": true,
+    "V3": true
+  },
+  "downstream_port": "READ_ONLY_CONTEXTUAL_OPPORTUNITY_ENVELOPE__PERSON_INDEPENDENT"
+}
