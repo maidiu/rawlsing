@@ -1,0 +1,56 @@
+{
+ "schema": "PYAT_R23_F6C_NATIVE_SOURCE_IDENTITY@1",
+ "observed_at_utc": "2026-10-17T02:56:45Z",
+ "purpose": "HQ R24 S03FO exact-blob custody correction, applied BEFORE first native import",
+ "pinned_commit": "1428c2e92bce1a49efd87378cb23df936d646dc5",
+ "pinned_branch": "agent/rabochii-pyat-r3-hq287-s03fo-f6-canonical-order-repair-r1",
+ "path": "rawlsing_next/pre553_heterogeneous_synthesis.py",
+ "blob_sha1_method": "hashlib.sha1(b\"blob \"+str(len(bytes)).encode()+b\"\\0\"+bytes).hexdigest()",
+ "ACTUAL": {
+  "blob_sha1": "fc5e37fa5b2f0eb689593b42d95479d1327cb94c",
+  "bytes": 22257,
+  "git_ls_tree_reported": "100644 blob fc5e37fa5b2f0eb689593b42d95479d1327cb94c\trawlsing_next/pre553_heterogeneous_synthesis.py",
+  "matches_HQ_required_fc5e37fa5b2f0eb689593b42d95479d1327cb94c": true
+ },
+ "SUPERSEDED_REPORTED": {
+  "blob_sha1": "182cc7970d7624f6614015f5a51d0602e1630d52",
+  "bytes": 20443,
+  "reported_in": "original 00_COMMISSION.md and R22/R23 narrative as 182cc7970d7624f6614015f5a51d0602e1630d52",
+  "byte_identical_to_actual": false,
+  "status": "HISTORICALLY_MODIFIED_TEXT_SUPERSEDED_AT_THIS_ONE_SOURCE_PIN_BY_HQ_R24_CORRECTION"
+ },
+ "custody_verdict": "CORRECTION_CONFIRMED: the 00_COMMISSION/R22/R23 reported blob is a genuinely different, older preimage; the actual pinned Git file is fc5e37fa5b2f0eb689593b42d95479d1327cb94c.",
+ "transplant_or_suppression_performed": false,
+ "scientific_invariants_present_only_in_ACTUAL_fc5e37fa": [
+  {
+   "id": "S03F_FIX1_COMPLETE_NATIVE_JOINT_DOMAIN",
+   "statement": "Producer refuses an incomplete native categorical joint domain: observed cells must equal the full cross-product size (product of len(category_map) per axis), else SynthesisError 'incomplete native joint domain; omitted category cannot be silently manufactured as zero (domain_size=%d, observed=%d)'.",
+   "why_it_matters": "Prevents an omitted original category from becoming an observed ZERO."
+  },
+  {
+   "id": "S03FO_DECLARED_CATEGORY_ORDER",
+   "statement": "Cell ordering and the key cross-product follow category_map insertion order (declared_order), not lexical sort; output carries ordered_categories.",
+   "why_it_matters": "Canonical order is a producer invariant; lexical re-sorting would break category order identity."
+  },
+  {
+   "id": "S03F_FIX2_SELF_CONDITIONING_TAUTOLOGY",
+   "statement": "If the outcome appears among the conditioning predicates, conditional() returns state DESCRIPTIVE_SELF_CONDITIONING with self_conditioning_status OUTCOME_LEAKAGE_TAUTOLOGY instead of generic SUPPORTED_MODEL.",
+   "why_it_matters": "Prevents an outcome-as-predicate tautology masquerading as a nontrivial predictive conditional."
+  },
+  {
+   "id": "ORDERED_CELLS_HELPER",
+   "statement": "_cells(table, category_order=None) emits cells in declared order when an order is supplied.",
+   "why_it_matters": "Ordering is carried, not recomputed by sort."
+  }
+ ],
+ "absolute_holds_observed": [
+  "no raw surveys",
+  "no original U/E_pre",
+  "no F6 issuer",
+  "no N9/OC05",
+  "no N11/N12",
+  "no Sorok V3",
+  "no protected branch or previous worker source change"
+ ],
+ "note": "This correction supersedes ONLY the erroneous blob SHA. It is a custody repair and is NOT evidence that the later module is adopted production science."
+}

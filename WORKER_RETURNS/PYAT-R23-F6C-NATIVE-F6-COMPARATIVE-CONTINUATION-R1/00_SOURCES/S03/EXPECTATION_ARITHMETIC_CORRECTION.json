@@ -1,0 +1,27 @@
+{
+  "status": "WRITER_ARITHMETIC_ERRATUM_NOT_INDEPENDENT_REVIEW",
+  "original_record_preserved": "ISSUANCE_AND_FROZEN_EXPECTATIONS.json",
+  "reason": "First test run exposed hand arithmetic error in secure/informal and insecure/informal expectations. Corrected by explicit rational derivation from frozen stratum laws, not by changing the estimator.",
+  "equal_mixture_derivation": {
+    "secure/informal": "(4/5)*(1/2)*(1/10+1/5)+(1/5)*(1/2)*(1/10+1/5)=3/20",
+    "insecure/informal": "(4/5)*(1/2)*(1/10+1/10)+(1/5)*(1/2)*(7/10+1/2)=1/5"
+  },
+  "corrected_equal_cells": [
+    "27/50",
+    "3/20",
+    "11/100",
+    "1/5"
+  ],
+  "corrected_triple_A_cells": [
+    "14/25",
+    "1/8",
+    "21/200",
+    "21/100"
+  ],
+  "corrected_formal_given_secure": [
+    "29/34",
+    "18/23",
+    "112/137"
+  ],
+  "independent_reviewer": null
+}

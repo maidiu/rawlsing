@@ -1,0 +1,58 @@
+// Browser-reviewer source-free arithmetic court; independent of S03 Python implementation.
+// Run: node run_s03r_bounded_science_court.mjs (authorized independent JS host only).
+// The function is exactly the implementation executed by the browser JS sandbox.
+const court = function () {
+  const G=(a,b)=>{a=a<0n?-a:a;b=b<0n?-b:b;while(b!==0n){const t=a%b;a=b;b=t;}return a};
+  const Q=(a,b=1n)=>{if(typeof a==="string" && a.includes("/")){const [n,d]=a.split("/");return Q(BigInt(n),BigInt(d));}if(typeof a==="string")return Q(BigInt(a),b);a=BigInt(a);b=BigInt(b);if(b===0n)throw Error("zero denominator");if(b<0n){a=-a;b=-b;}const g=G(a,b);return [a/g,b/g];};
+  const plus=(x,y)=>Q(x[0]*y[1]+y[0]*x[1],x[1]*y[1]);
+  const minus=(x,y)=>Q(x[0]*y[1]-y[0]*x[1],x[1]*y[1]);
+  const times=(x,y)=>Q(x[0]*y[0],x[1]*y[1]);
+  const divide=(x,y)=>Q(x[0]*y[1],x[1]*y[0]);
+  const absolute=(x)=>Q(x[0]<0n?-x[0]:x[0],x[1]);
+  const S=x=>x[1]===1n?x[0].toString():x[0]+"/"+x[1];
+  const arr=xs=>xs.map(Q=>typeof Q==="string"?Q.split("/").map(BigInt):[BigInt(Q),1n]).map(x=>Q(x[0],x[1]));
+  const mixture=(a,b,w)=>a.map((v,i)=>plus(times(minus(Q(1),w),v),times(w,b[i])));
+  const tv=(a,b)=>divide(a.reduce((s,x,i)=>plus(s,absolute(minus(x,b[i]))),Q(0)),Q(2));
+  const sum=x=>x.reduce(plus,Q(0));
+  const unif=(x,y)=>x.map((a,i)=>divide(plus(a,y[i]),Q(2)));
+  const AM=arr(["7/10","1/10","1/10","1/10"]), Am=arr(["1/10","1/10","1/10","7/10"]);
+  const BM=arr(["3/5","1/5","1/10","1/10"]), Bm=arr(["1/10","1/5","1/5","1/2"]);
+  const A=mixture(AM,Am,Q("1/10")),B=mixture(BM,Bm,Q("4/5"));
+  const At=mixture(AM,Am,Q("1/5")),Bt=mixture(BM,Bm,Q("1/5"));
+  const e=unif(At,Bt),tri=mixture(At,Bt,Q("1/4"));
+  const val=arr(["27/50","3/20","11/100","1/5"]), adverse=arr(["1/10","1/10","1/10","7/10"]);
+  const held=arr(["1/5","1/5","9/50","21/50"]), tr=mixture(AM,Am,Q("4/5"));
+  const cases=[];
+  const check=(id,obs,expect)=>{const o=Array.isArray(obs)?obs.map(S):S(obs);const e=Array.isArray(expect)?expect.map(S):S(expect);const pass=JSON.stringify(o)===JSON.stringify(e);cases.push({id, status:pass?"PASS":"FAIL", observed:o, expected:e});};
+  check("NATIVE_A",A,arr(["16/25","1/10","1/10","4/25"]));
+  check("NATIVE_B",B,held);
+  check("TARGET_STANDARDIZED_A",At,arr(["29/50","1/10","1/10","11/50"]));
+  check("TARGET_STANDARDIZED_B",Bt,arr(["1/2","1/5","3/25","9/50"]));
+  check("EQUAL_MIX_TARGET",e,val);
+  check("TRIPLE_A_WEIGHT_TARGET",tri,arr(["14/25","1/8","21/200","21/100"]));
+  check("IDEALIZED_NATIVE_A_TV",tv(A,val),Q("1/10"));
+  check("IDEALIZED_NATIVE_B_TV",tv(B,val),Q("17/50"));
+  check("IDEALIZED_CANDIDATE_TV",tv(e,val),Q(0));
+  check("LEAVE_B_OUT_NATIVE_A_TV",tv(A,held),Q("11/25"));
+  check("LEAVE_B_OUT_A_TRANSPORT_TV",tv(tr,held),Q("9/50"));
+  check("ADVERSE_A_TV",tv(A,adverse),Q("27/50"));
+  check("ADVERSE_B_TV",tv(B,adverse),Q("7/25"));
+  check("ADVERSE_CANDIDATE_TV",tv(e,adverse),Q("1/2"));
+  check("INVARIANT_STRATUM_MAJORITY_DISAGREEMENT",tv(AM,BM),Q("1/10"));
+  check("INVARIANT_STRATUM_MINORITY_DISAGREEMENT",tv(Am,Bm),Q("1/5"));
+  check("CONDITIONAL_EQUAL_P_FORMAL_GIVEN_SECURE",divide(e[0],plus(e[0],e[1])),Q("18/23"));
+  check("CONDITIONAL_TRIPLE_A_P_FORMAL_GIVEN_SECURE",divide(tri[0],plus(tri[0],tri[1])),Q("112/137"));
+  const aligned=arr(["1/2","0","0","1/2"]),anti=arr(["0","1/2","1/2","0"]);
+  check("OPPOSITE_JOINT_IDENTICAL_FORMAL_MARGINAL",plus(aligned[0],aligned[2]),plus(anti[0],anti[2]));
+  check("OPPOSITE_JOINT_CONDITIONAL_GAP",minus(divide(aligned[0],plus(aligned[0],aligned[1])),divide(anti[0],plus(anti[0],anti[1]))),Q(1));
+  const totalCovered=sum(AM.map(v=>times(Q("4/5"),v)));
+  check("ZERO_TARGET_STRATUM_SUBPROB_NOT_RENORM",totalCovered,Q("4/5"));
+  const radius=Q("3/50");const boundMin=minus(plus(times(Q("4/5"),Q("3/5")),times(Q("1/5"),Q("1/10"))),radius);
+  const boundMax=plus(plus(times(Q("4/5"),Q("7/10")),times(Q("1/5"),Q("1/10"))),radius);
+  check("DECLARED_UNCALIBRATED_BIAS_MIN",boundMin,Q("11/25"));
+  check("DECLARED_UNCALIBRATED_BIAS_MAX",boundMax,Q("16/25"));
+  return {schema:"S03R_BOUNDED_JS_COURT@1", authority:"INDEPENDENT_SYNTHETIC_ARITHMETIC_ONLY_NOT_S03_PYTHON_RUNTIME",count:cases.length,passed:cases.filter(c=>c.status==="PASS").length,failed:cases.filter(c=>c.status==="FAIL").length,cases};
+};
+const result = court();
+console.log(JSON.stringify(result, null, 2));
+if (result.failed) process.exitCode = 1;

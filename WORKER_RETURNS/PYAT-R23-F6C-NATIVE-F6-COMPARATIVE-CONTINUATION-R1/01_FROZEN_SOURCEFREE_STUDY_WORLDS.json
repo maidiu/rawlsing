@@ -1,0 +1,133 @@
+{
+ "schema": "PYAT_R23_F6C_FROZEN_SOURCEFREE_STUDY_WORLDS@1",
+ "frozen_before_any_producer_execution": true,
+ "producer_executed_only_after_this_file_was_committed": true,
+ "purpose": "Two separately indexed, nonoverlapping sourcefree synthetic study worlds with predeclared risk/strata/clock and independent expected target estimand, for F6 comparative continuation.",
+ "authority_ceilings": {
+  "invented_material": "All tables, strata, counts, variances and the target ground truth below are INVENTED synthetic fixtures. They are not a proxy for any real survey, respondent, wave or empirical distribution.",
+  "no_person_level_joint": "No person-level cross-survey joint is created. Each source is its own independent universe; only stratum-level published joints are mixed.",
+  "no_country_average_personality": "No country-average, regional or personality aggregate appears anywhere. Constructs are material_security and employment_position only.",
+  "no_fake_observed_uncertainty": "design_variance fixtures are synthetic multinomial plug-ins explicitly labelled as not qualifying any real survey design. Conditional uncertainty is never inferred from diagonal marginal variances.",
+  "numeric_contract": "All identity-bearing numerics are integers or rational strings. Floats are forbidden (this is the documented cause of the prior F6B smoke SynthesisError).",
+  "target_id_required": "Every target carries target_id (documented cause of the prior F6B smoke KeyError)."
+ },
+ "shared_structure": {
+  "constructs": ["material_security", "employment_position"],
+  "category_maps_source_native": {
+   "A": {"material_security": {"secure": "secure", "insecure": "insecure"}, "employment_position": {"formal": "formal", "informal": "informal"}},
+   "B": {"material_security": {"C1": "secure", "C2": "insecure"}, "employment_position": {"E1": "formal", "E2": "informal"}}
+  },
+  "note": "Source B uses different NATIVE category codes mapping onto the same constructs. This exercises REVIEWED_CATEGORY_RECODING and makes the recoding observable rather than trivial.",
+  "declared_category_order_axis0": ["secure", "insecure"],
+  "declared_category_order_axis1": ["formal", "informal"],
+  "cells": [["secure", "formal"], ["secure", "informal"], ["insecure", "formal"], ["insecure", "informal"]]
+ },
+ "world_A": {
+  "world_id": "F6C_WORLD_A_LEGITIMATE_OVERLAPPING_STRATUM_STANDARDIZATION",
+  "design_intent": "Two independent universes whose POOLED joints agree but whose STRATUM joints are reversed. The naive pooled mixture therefore looks stable while stratum-conditional standardization to the target's own strata recovers a strongly different target joint. Standardization must be shown to improve target prediction.",
+  "nonoverlap_evidence": {
+   "distinct_product_ref": ["synthetic-F6CA-joint-product@1", "synthetic-F6CB-joint-product@1"],
+   "distinct_survey_lineage": ["synthetic-survey-F6CA", "synthetic-survey-F6CB"],
+   "distinct_sample_id": ["independent-F6CA", "independent-F6CB"],
+   "overlap_review_status": "DISJOINT",
+   "overlap_review_ref": "synthetic-independent-sampling@1",
+   "assertion": "duplicate sample/lineage/product would be rejected as DUPLICATE_SAMPLE; no person-level link is ever formed"
+  },
+  "predeclared_target": {
+   "target_id": "SYNTHETIC_F6C_WORLD_A_2012_ADULT_WORK_RISK_SET",
+   "geography": "Synthetic Region A", "boundary_ref": "synthetic-boundary-A@1",
+   "year": 2012, "population": "resident adults in shared eligible/asked work risk set",
+   "unit": "adult respondent", "strata_ref": "synthetic-population-register-A@1",
+   "strata": {"majority": "4/5", "minority": "1/5"},
+   "clock": {"start_year": 2012, "end_year": 2012, "fieldwork_ref": "synthetic-2012-A@1"}
+  },
+  "source_stratum_counts": {
+   "A": {"majority": [64, 10, 10, 16], "minority": [16, 10, 10, 64]},
+   "B": {"majority": [56, 10, 10, 24], "minority": [24, 10, 10, 56]}
+  },
+  "independent_expected_target_estimand": {
+    "ground_truth_joint": ["13/25", "1/10", "1/10", "7/25"],
+    "derivation": "Per-stratum truth is the equal-weight mean of the two source stratum joints: majority (.64+.56)/2=.60,.10,.10,.20 and minority (.16+.24)/2=.20,.10,.10,.60. Weighting by target shares 4/5 and 1/5 gives (.48+.04, .08+.02, .08+.02, .16+.12) = (13/25, 1/10, 1/10, 7/25).",
+    "predeclared_truth_p_formal_given_secure": "26/31",
+    "independence_of_predeclaration": "This estimand is fixed here BEFORE execution and is NOT read from any producer output."
+  },
+  "frozen_expected_native_standardized_joint": ["13/25", "1/10", "1/10", "7/25"],
+  "frozen_expected_naive_pooled_mixture": ["2/5", "1/10", "1/10", "2/5"],
+  "frozen_expected_comparison": {
+   "naive_mixture_L1_error_vs_truth": "6/25",
+   "standardized_L1_error_vs_truth": "0",
+   "naive_P_formal_given_secure": "4/5",
+   "standardized_P_formal_given_secure": "26/31",
+   "claim": "Stratum-conditional standardization is EXACT here and the naive pooled mixture is wrong by 6/25 L1. This is the legitimate-improvement case."
+  },
+  "frozen_minority_preservation": {
+   "target_share": "1/5",
+   "source_A_minority_cells": [16, 10, 10, 64],
+   "source_B_minority_cells": [24, 10, 10, 56],
+   "requirement": "No minority cell may be pruned or renormalized; every minority cell count must survive verbatim in the native baseline."
+  },
+  "expected_decision": "SYNTHETIC_CANDIDATE",
+  "expected_uncovered_target_mass": "0"
+ },
+ "world_B": {
+  "world_id": "F6C_WORLD_B_POSITIVITY_VIOLATION_AND_SOURCE_INCOMPATIBILITY",
+  "design_intent": "The target declares a stratum that NO source covers, and the two sources disagree in opposite directions by stratum. A false point estimate is therefore unavailable; the honest outputs are the covered subprobability, the uncovered target mass, the source-disagreement bounds and a Fréchet complementary-channel bound. Refusal/bounds must be preferred to any point.",
+  "nonoverlap_evidence": {
+   "distinct_product_ref": ["synthetic-F6CB1-joint-product@1", "synthetic-F6CB2-joint-product@1"],
+   "distinct_survey_lineage": ["synthetic-survey-F6CB1", "synthetic-survey-F6CB2"],
+   "distinct_sample_id": ["independent-F6CB1", "independent-F6CB2"],
+   "overlap_review_status": "DISJOINT",
+   "overlap_review_ref": "synthetic-independent-sampling-B@1"
+  },
+  "predeclared_target": {
+   "target_id": "SYNTHETIC_F6C_WORLD_B_2012_ADULT_WORK_RISK_SET",
+   "geography": "Synthetic Region B", "boundary_ref": "synthetic-boundary-B@1",
+   "year": 2012, "population": "resident adults in shared eligible/asked work risk set",
+   "unit": "adult respondent", "strata_ref": "synthetic-population-register-B@1",
+   "strata": {"majority": "3/5", "minority": "1/5", "remote_territory": "1/5"},
+   "clock": {"start_year": 2012, "end_year": 2012, "fieldwork_ref": "synthetic-2012-B@1"},
+   "positivity_violation": "remote_territory (share 1/5) is declared by the target and covered by NEITHER source. This is a genuine support/positivity violation, not a modelling choice."
+  },
+  "source_stratum_counts": {
+   "A": {"majority": [70, 10, 10, 10], "minority": [10, 10, 10, 70]},
+   "B": {"majority": [10, 10, 10, 70], "minority": [70, 10, 10, 10]}
+  },
+  "frozen_expected_covered_subprobability": ["8/25", "2/25", "2/25", "8/25"],
+  "frozen_expected_uncovered_target_mass": "1/5",
+  "frozen_expected_distribution": null,
+  "frozen_expected_source_disagreement_bounds": {
+   "secure_formal": {"lower": "2/25", "upper": "14/25"},
+   "secure_informal": {"lower": "2/25", "upper": "2/25"},
+   "insecure_formal": {"lower": "2/25", "upper": "2/25"},
+   "insecure_informal": {"lower": "2/25", "upper": "14/25"}
+  },
+  "frozen_expected_bias_sensitivity_bounds": {
+   "radius_sum": "3/50",
+   "secure_formal": {"lower": "1/50", "upper": "31/50"},
+   "secure_informal": {"lower": "1/50", "upper": "7/50"},
+   "insecure_formal": {"lower": "1/50", "upper": "7/50"},
+   "insecure_informal": {"lower": "1/50", "upper": "31/50"}
+  },
+  "frozen_expected_complementary_binary_bounds": {
+   "arguments": {"p": "2/5", "q": "2/5"},
+   "lower": "0", "upper": "2/5", "independence_scenario": "4/25", "scenario_is_measured": false
+  },
+  "expected_decision": "SYNTHETIC_CANDIDATE",
+  "expected_consumer_state": "UNAVAILABLE",
+  "expected_consumer_reason": "NO_COMPLETE_TARGET_JOINT",
+  "frozen_minority_preservation": {
+   "target_share": "1/5",
+   "source_A_minority_cells": [10, 10, 10, 70],
+   "source_B_minority_cells": [70, 10, 10, 10],
+   "requirement": "The minority stratum must remain visible in the covered subprobability and in the support receipt even though the overall target joint is unavailable. Absence of a full joint must NOT be laundered into a zero."
+  }
+ },
+ "explicitly_not_claimed": [
+  "no real survey, wave, respondent or observed empirical distribution",
+  "no calibrated posterior, acceptance rate or population frequency",
+  "no confidence interval anywhere (sensitivity envelopes are not CIs)",
+  "no person-level cross-survey joint and no respondent linkage",
+  "no original source use, grant or permission",
+  "no production ADP issuance, no N9/OC05, no N11/N12, no Sorok V3"
+ ]
+}
