@@ -1,0 +1,101 @@
+{
+  "courts": {
+    "f6c_author_57_baseline.xml": {
+      "errors": 0,
+      "failures": 0,
+      "file": "f6c_author_57_baseline.xml",
+      "skipped": 0,
+      "tests": 57
+    },
+    "f6j_adversarial_53_baseline.xml": {
+      "errors": 0,
+      "failures": 0,
+      "file": "f6j_adversarial_53_baseline.xml",
+      "skipped": 0,
+      "tests": 53
+    },
+    "f6l_inherited_phase_a_on_original.xml": {
+      "errors": 0,
+      "failures": 11,
+      "file": "f6l_inherited_phase_a_on_original.xml",
+      "skipped": 0,
+      "tests": 26
+    },
+    "f6n_phase_a_new_falsifiers_on_original.xml": {
+      "errors": 0,
+      "failures": 1,
+      "file": "f6n_phase_a_new_falsifiers_on_original.xml",
+      "skipped": 0,
+      "tests": 8
+    },
+    "inherited_s03fo_35_baseline.xml": {
+      "errors": 0,
+      "failures": 0,
+      "file": "inherited_s03fo_35_baseline.xml",
+      "skipped": 0,
+      "tests": 35
+    }
+  },
+  "f6j_82": {
+    "evidence": "05_LOGS/f6j_native_vs_frozen_82_baseline.log",
+    "evidence_path": "05_PHASE_B/f6j_native_vs_frozen_82.json",
+    "evidence_sha256": "500edb0168f665f483eb105e9c538de8f4ce6c1c6338d75426cddd22ff98a7c8",
+    "failed": 0,
+    "passed": 82,
+    "total": 82
+  },
+  "f6m_return": {
+    "conclusion": "F6M published no worker return and no runnable implementation; only its launch commission is present. Phase B repaired execution is impossible. The inherited original baseline remains unchanged.",
+    "f6m_branch": "agent/rabochii-pyat-r29-f6m-native-decision-admission-executable-repair-r1",
+    "f6m_changed_paths": [
+      "A\tWORKER_COMMISSIONS/PYAT-R29-F6M-ACTUAL-F6-NATIVE-AUTHORITY-REPAIR-R1/00_COMMISSION.md"
+    ],
+    "f6m_commission_path": "WORKER_COMMISSIONS/PYAT-R29-F6M-ACTUAL-F6-NATIVE-AUTHORITY-REPAIR-R1/00_COMMISSION.md",
+    "f6m_commission_sha256": "8a602343316e3dfc9c0ac0a3600e19ab8b8a0211fde1065fc3141c17ac25c62e",
+    "f6m_only_launch_commission": true,
+    "f6m_parent": "537cb5195bf4f51ee4abc0ce097155c3a3a69291",
+    "f6m_repaired_producer_present": false,
+    "f6m_runnable_code_present": false,
+    "f6m_tests_executed_by_author": false,
+    "f6m_tip": "1a6096f263623e57b77c7b70b5fcfb23cdebdad8",
+    "f6m_worker_return_paths": [
+      "WORKER_COMMISSIONS/PYAT-R29-F6M-ACTUAL-F6-NATIVE-AUTHORITY-REPAIR-R1/00_COMMISSION.md"
+    ],
+    "f6m_worker_return_present": false,
+    "original_producer_absent_at_f6m": true,
+    "original_producer_path": "rawlsing_next/pre553_heterogeneous_synthesis.py",
+    "schema": "PYAT_R29_F6N_F6M_RETURN_AUDIT@1"
+  },
+  "inherited_f6l": "6060adfac10f80020ed8e52cf2736467112d57c1",
+  "phase_a_expected": {
+    "f6l": "15 PASS / 11 RED",
+    "f6n": "7 PASS / 1 RED (N1 rare renormalization unsafe)"
+  },
+  "phase_a_freeze": "dbe7bedee0bc64f65916c4f21a83d26baf97274c",
+  "phase_b": {
+    "acceptance_possible": false,
+    "changed_behavior": [],
+    "changed_worlds": [],
+    "reason": "F6M published no worker return, no repaired producer, no runnable tests; only its launch commission is in the branch.",
+    "repaired_candidate_present": false,
+    "unchanged_baseline": [
+      "F6J 82/82",
+      "F6J 53/53",
+      "inherited S03FO 35/35",
+      "F6C author 57/57",
+      "F6L 15/11",
+      "F6N 7/8"
+    ]
+  },
+  "producer_identity": {
+    "expected_blob": "fc5e37fa5b2f0eb689593b42d95479d1327cb94c",
+    "git_blob": "fc5e37fa5b2f0eb689593b42d95479d1327cb94c",
+    "method": "PRE553_TARGET_JOINT_STANDARDIZATION@1",
+    "module_file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f6n/WORKER_RETURNS/PYAT-R29-F6N-INDEPENDENT-NATIVE-F6-COURT-R1/01_INHERITED_F6L/01_STAGED_NATIVE/rawlsing_next/pre553_heterogeneous_synthesis.py",
+    "sha256": "ef76ee4f48cc74cc38e0dcf55a3190362d4b55975d3a367ddb43fbadd43a9869"
+  },
+  "role": "independent F6L scientific-review continuation; not F6M/F6C author or HQ",
+  "schema": "PYAT_R29_F6N_REAL_SOURCE_AND_PYTEST@1",
+  "sealed_startup": "44700b0445673fad11c4f9779345d2920aeddd56",
+  "verdict": "F6N_TYPED_HOLD__NO_F6M_IMPLEMENTATION__INHERITED_BASELINE_UNCHANGED__ORIGINAL_PRODUCER_11_RED_PLUS_N1_RED"
+}
