@@ -1,11 +1,40 @@
-# OUT14 — implementation-candidate evidence, authorization HOLD
+# SOROK VOZHD-2 HQ322 OUT14 — Bounded implementation candidate / typed HOLD
 
-Sealed startup: `ddf7f1550d76c8b94661f089631ba67432c37ee1`; branch `agent/rabochii-sorok-v2-hq322-out14-multiwriter-integrity-repair-r1`.
+## Identity, custody and governing law
 
-This source-free, return-local candidate binds writer_version to state via `version_state_digest` over canonical `schema/state/writer_version`, rejects malformed/missing/noncanonical journal versions without zero-coercion, checks accepted-ledger preservation and provides *actual* SIGKILL injection hooks alongside the historical os._exit(79) controls. The accepted OUT9 source and frozen OUT12/OUT13 tests are untouched.
+- Repository: private `maidiu/rawlsing`.
+- Sealed startup and exact branch HEAD at launch: `ddf7f1550d76c8b94661f089631ba67432c37ee1`.
+- Worker branch: `agent/rabochii-sorok-v2-hq322-out14-multiwriter-integrity-repair-r1`.
+- Governing docs: complete sealed OUT14 commission; `SOROK_PRODUCT_CONTROL_ROOM/00C_*`, `00D_*`.
+- Source provenance: original OUT12 candidate blob `99217d390a452f22fc1a470abc411c6ca84b86ba`; original OUT9 accepted baseline `331840768ce0b5f6f73e5e93094ca0d217ddaebf`; OUT13 review `9b4392f86d942ba12eddc31c5b9ae33ba309597c`.
+- Writes restricted to the original OUT12 **candidate** Python module and the new OUT14 return directory; no OUT9 source, frozen author or independent tests, shared control, ADP019, PRE-MAIN, CURRENT or canonical history modified.
 
-**Binding limitation:** the accepted original Journal.commit remains independently callable without locking/version checking. Existing accepted/legacy writers can overwrite an earlier version and remove the version envelope. Subsequent candidate recovery now detects the incompatible receipt, but **cannot prevent the prior unauthorized overwrite**. The unkeyed envelope hash is integrity checking, not writer authentication; full valid-envelope replay/forgery requires an external trusted version anchor/authority. Hence `SOURCEFREE_AUTHORIZATION_BYPASS_UNCLOSED`: **NOT ACCEPTED; OWNER_REQUIRED** to close all legally callable writer paths.
+## Implemented but NOT qualified
 
-**Execution evidence status:** Python 3.13.5, pytest 9.0.2, POSIX flock, subprocess verified locally. GitHub connector reads pinned sources but does not mount them in this Python sandbox; private GitHub cannot be directly cloned here (DNS unavailable). Neither the original 272, OUT12 nine, OUT13 23, nor new OUT14 tests have been claimed as executed in this return. Their inherited historical results remain documentary ONLY: OUT13 reported 270 PASS / 2 historical RED; 9 PASS; 23 PASS. No freshly invented counts. The new test file is unexecuted candidate code and requires a qualified exact pinned source staging before acceptance.
+The OUT12 candidate now seals `schema/state/writer_version` together into a deterministic `version_state_digest`, in addition to the accepted state digest; refuses missing/corrupt/unknown/noncanonical version fields with typed `VERSION_STATE_UNREADABLE`; permits genesis version zero **only** when the journal file is absent; enforces an unchanged acknowledged-ledger prefix on replacement; and separates `os._exit(79)` from actual `SIGKILL_BEFORE_RENAME` and `SIGKILL_AFTER_COMMIT` hooks.
 
-No power-loss, production ADP019, actor execution, exactly-once delivery, V3 or I2 adoption is claimed. Separate I2 review belongs to HQ after an executable repair, and owner resolution of the legacy write-grant is still required.
+New independent-of-OUT13 *author* tests cover malformed/deleted version, unversioned legacy overwrite, noncanonical metadata, stale CAS, prefix preservation, 2/3/5 process barrier races, lock timeout, pre-/post-rename exit and signal boundaries, and unkeyed forged-version counterexample. These tests are **UNEXECUTED**; do not treat them as verification.
+
+## Real runtime and acquisition receipts
+
+- Actual Browser Python: 3.13.5; pytest 9.0.2; git 2.47.3; subprocess and `fcntl.flock` verified.
+- Browser-generated identical files were byte-checked against the GitHub blob SHA-1, including the NUL byte in `blob <size>\0<contents>`.
+- `python -m py_compile multiwriter_journal.py test_out14_integrity.py`: **PASS**, syntax only, two exact SHA-verified sources.
+- `pytest -q --disable-warnings test_out14_integrity.py`: **exit 2 / collection ERROR** `ModuleNotFoundError: No module named 'outbox_prototype'` (NOT_RUN, 0 tests executed). Consult `out14_collection.log` in this return.
+- `python -c 'import os,signal,subprocess,sys;...'` delivered real `SIGKILL` to a child: **-9**. Separate `os._exit(79)` child: **79**. This is a runtime capability preflight, NOT proof a journal write survived a signal.
+- The GitHub connector read the exact private source, but it did not mount the checkout or inherited imports into Browser Python. Direct GitHub `git ls-remote` failed `Could not resolve host: github.com`. Missing pinned closure is `MISSING_SOURCE_STAGING`, not missing Python/pytest.
+- Original inherited 272: **NOT_RUN**; historically OUT13 reported 270 PASS / 2 historical RED. OUT12 nine: **NOT_RUN** (historically 9 PASS). OUT13 frozen 23: **NOT_RUN** (historically 23 PASS). OUT14 new court: **NOT_RUN / collection ERROR**. No JUnit created; no artificial green counts.
+
+## Binding authorization and scientific HOLD
+
+**Disposition: `SOURCEFREE_AUTHORIZATION_BYPASS_UNCLOSED`; `OWNER_REQUIRED`; `EXECUTABLE_BASELINE_NOT_STAGED`.**
+
+1. Original accepted `Journal.commit` remains directly callable and can overwrite the journal without version enforcement or locking. The new wrapper detects that older writer's unversioned receipt **after** the bypass, but cannot prevent already-erased data or withdraw the old writer's permission. Only an accepted owner can close every legally callable writer path and grant the facade exclusivity.
+2. The seal is an **unkeyed hash**, not keyed writer authentication. Any actor allowed to rewrite the file can recompute the digest; replacing it with an entire old valid receipt can roll back the version. A trusted external anchor or owner-managed capability is necessary for anti-rollback and writer authenticity. This candidate expressly includes a falsifying test exposing recomputation.
+3. Because the required genuine pinned test closure was not staged, no operating integrity verdict or independent I2 acceptance follows from the syntax checks.
+
+No claims of power-loss durability, exactly-once client delivery, real actors, ADP019 event issuance, product V3, or semantic adoption. Independent I2 review must be separately commissioned by HQ after a qualified executable court and authorization-owner adjudication.
+
+## Return and next authorized work
+
+Reconstruct only missing **pinned source-free** module closure with verified Git blob SHA-1 and actual imported path; rerun unchanged 272 + 9 + 23 and added author court; preserve 2 historical REDs. Obtain formal old-writer restriction from competent owner. Do not green multiwriter security while the bypass is a legal path. The branch records an unaccepted candidate plus concrete HOLD, not HQ adoption.

@@ -7,9 +7,9 @@ separate, explicitly-selected concurrency discipline on top of it.
 Two mechanisms, both required together for safety:
 
 1. INTERPROCESS TRANSACTION LOCK -- an exclusive `fcntl.flock` on
-   `<journal>.lock` is held across the ENTIRE read-modify-write, so two
-   processes cannot interleave their read of the on-disk state with their
-   publish of a replacement snapshot.
+   `<journal>.lock` is held across version check, validation and publication.
+   Caller-side snapshot mutation occurs outside this lock; CAS rejects stale
+   snapshots before the atomic replacement write.
 
 2. VERSIONED COMPARE-AND-SWAP -- a monotonically increasing `writer_version`
    is persisted in the journal receipt. `recover()` returns the version it

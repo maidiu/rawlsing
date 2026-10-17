@@ -1,0 +1,89 @@
+{
+  "passport_schema": "SOROK_00D_R1",
+  "environment_id": "out14-browser-5f4bd7f1",
+  "epoch_id": "5f4bd7f1132643669c40664679ae6fcf",
+  "owner_session_alias": "SOROK_OUT14_BROWSER",
+  "surface": "BROWSER_CONTAINER",
+  "machine_alias": "browser-python-session",
+  "status": "LIVE_VERIFIED",
+  "last_live_probe_at": "2026-10-17T08:36:07.892626+00:00",
+  "runtime_marker_digest": "sha256:4e49b009e6bdd7fe00d69c6824a6205604b2512480665c4c8a4f4cb02273d289",
+  "probe_command_and_result": "python -V; pytest --version; git --version; fcntl.flock; subprocess; python -m py_compile: verified",
+  "capabilities": {
+    "python": "VERIFIED 3.13.5",
+    "pytest": "VERIFIED 9.0.2",
+    "git": "VERIFIED 2.47.3",
+    "subprocess": "VERIFIED",
+    "filesystem": "VERIFIED",
+    "posix_flock": "VERIFIED",
+    "sigkill": "VERIFIED -9",
+    "node": "UNKNOWN",
+    "private_git_https": "UNAVAILABLE DNS"
+  },
+  "branch": "agent/rabochii-sorok-v2-hq322-out14-multiwriter-integrity-repair-r1",
+  "checkout_head": null,
+  "git_object_store_alias": null,
+  "worktree_alias": null,
+  "materialized_source_refs": [
+    {
+      "commit": "9937c8df038959e38c90a248ec0c0fc19b2363ee",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ319-OUT12-MULTIWITER-LOCK-CAS-R1/candidate/multiwriter_journal.py",
+      "git_blob_sha1": "108de2ef168b8744a23f65ff3b30d58b5ecbfd0d",
+      "staging": "out14-runtime/multiwriter_journal.py",
+      "imported_module_file": null,
+      "syntax_checked": true
+    },
+    {
+      "commit": "9937c8df038959e38c90a248ec0c0fc19b2363ee",
+      "path": "WORKER_RETURNS/SOROK-V2-HQ322-OUT14-MULTIWRITER-INTEGRITY-REPAIR-R1/test_out14_integrity.py",
+      "git_blob_sha1": "5ffb12ed857d1639b410544a08748a0ec1e736a8",
+      "staging": "out14-runtime/test_out14_integrity.py",
+      "imported_module_file": null,
+      "syntax_checked": true
+    }
+  ],
+  "dependency_closure_status": "PARTIAL_MISSING_PINNED_OUT9_IMPORT",
+  "covered_test_suites": [
+    {
+      "suite": "original272",
+      "status": "NOT_RUN",
+      "reason": "MISSING_PINNED_IMPORTS"
+    },
+    {
+      "suite": "out12_nine",
+      "status": "NOT_RUN",
+      "reason": "MISSING_PINNED_IMPORTS"
+    },
+    {
+      "suite": "out13_23",
+      "status": "NOT_RUN",
+      "reason": "MISSING_PINNED_IMPORTS"
+    },
+    {
+      "suite": "out14_new",
+      "status": "NOT_RUN_COLLECTION_ERROR",
+      "reason": "ModuleNotFoundError: outbox_prototype"
+    },
+    {
+      "suite": "python_compile_two_exact_candidate_sources",
+      "status": "PASS_SYNTAX_ONLY"
+    }
+  ],
+  "science_grade": "UNACCEPTED_SOURCEFREE_IMPLEMENTATION_CANDIDATE",
+  "model_provider": "ChatGPT Browser GPT-6",
+  "effort": "Medium requested; configuration not independently verified",
+  "usage_observed": null,
+  "cash_known": null,
+  "quota_known": null,
+  "retries": 0,
+  "source_permission": "SOURCEFREE_ONLY",
+  "review_independence": "I2_REVIEW_NOT_PERFORMED",
+  "assignments_completed": 0,
+  "next_good_affinity_tags": [
+    "OCCURRENCE",
+    "OUTBOX",
+    "SOURCEFREE_MULTIWRITER"
+  ],
+  "staged_state_preservation": "EPHEMERAL_RUNTIME_RECHECK_REQUIRED",
+  "retire_or_rebuild_reason": "exact OUT9 source not staged; owner bypass not closed"
+}

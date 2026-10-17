@@ -5,7 +5,7 @@ Known residual: direct accepted Journal.commit remains a legal bypass. Owner HOL
 import json, os, signal, subprocess, sys, time
 from pathlib import Path
 import pytest
-from outbox_prototype import Journal, _canonical, _hash
+from outbox_prototype import Journal, make_prototype, _canonical, _hash
 from test_rto_hostile import legacy
 from multiwriter_journal import MultiwriterJournal, VersionStateUnreadable, StaleJournalConflict, LockTimeoutError
 from test_out12_multiwriter_court import _run
@@ -88,8 +88,8 @@ def test_barrier_writers_no_lost_acknowledged_event_and_monotonic(n,tmp_path):
 
 def test_ledger_prefix_cannot_be_rolled_back_by_fresh_expected_version(tmp_path):
     path=tmp_path/"journal.json";j=_seed(path)
-    p,v=j.recover()
-    p.ledger._events.clear()
+    _snap,v=j.recover()
+    p=make_prototype()
     with pytest.raises(ValueError,match="ACKNOWLEDGED_LEDGER_PREFIX_REWRITE_NOT_GRANTED"):
         j.commit(p,v)
     assert j.recover()[0].ledger.count()==1

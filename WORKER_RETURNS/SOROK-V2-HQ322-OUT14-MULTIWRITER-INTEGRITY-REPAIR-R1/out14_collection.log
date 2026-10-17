@@ -1,0 +1,15 @@
+$ python -m py_compile multiwriter_journal.py test_out14_integrity.py
+PASS (two byte-identical Git blobs; pre-doc/test correction blobs 108de2ef... and 5ffb12ed...; follow-up replacements syntax-PASS)
+
+$ cd /mnt/data/out14-runtime && pytest -q --disable-warnings test_out14_integrity.py
+ImportError while importing test module 'test_out14_integrity.py'
+from outbox_prototype import Journal, _canonical, _hash
+E   ModuleNotFoundError: No module named 'outbox_prototype'
+ERROR test_out14_integrity.py
+1 error in 0.15s
+exit_code=2; test_cases_executed=0; status=NOT_RUN
+
+$ python -c '... child os.kill(os.getpid(), signal.SIGKILL) ...'
+GENUINE_SIGKILL_SUBPROCESS_RETURN_CODE -9
+$ python -c '... child os._exit(79) ...'
+ABRUPT_PROCESS_EXIT_RETURN_CODE 79
