@@ -1,0 +1,71 @@
+{
+ "schema": "PYAT_R26_GF1D_CONSUMER_COMPLETION@1",
+ "branch": "agent/rabochii-pyat-r26-gf1d-consumer-actual-completion-r1",
+ "sealed_startup": "7cfd8b0aa91439df03eddff68d1e6c4091ccbe0c",
+ "gf1_parent": "9f4a23cef1482e0a81afb1e7a65df90879931465",
+ "outcome": "GF1D_IMPLEMENTATION_INCOMPLETE__EXACT_FIELD_BLUEPRINT_RECOVERED__NO_PROBE_STUB_COMMITTED",
+ "consumer_implemented": false,
+ "frozen_44_passing": false,
+ "probe_stub_committed": false,
+ "progress_achieved": {
+  "circular_import_unblocked": "gf1_native.py:45 imports the missing consumer, so nothing in the GF1 court imports until a module exists; proved by bootstrap then deleted",
+  "relation_api_exposed": [
+   "GenericNativePairRelation",
+   "produce_generic_native_pair_relation",
+   "collect_link_material",
+   "prepare",
+   "profile_of",
+   "run_native",
+   "GENERIC_CONSUMER_ID",
+   "GENERIC_RELATION_OWNER"
+  ],
+  "relation_schema_enumerated_by_dataclasses_fields": true
+ },
+ "relation_fields_the_consumer_must_read": {
+  "conditional_count_profile": "tuple \u2014 the 2x2 support counts, primary input for separation_class and support_vectors",
+  "eligible_joint_risk_total": "int \u2014 denominator basis for UNDETERMINED_NO_ELIGIBLE_RISK",
+  "excluded_ineligible_target_count": "int \u2014 exclusion that must be surfaced not silently dropped",
+  "operation_role_order": "str \u2014 X|Y vs Y|X separate authority, directional handling",
+  "native_component_order": "tuple \u2014 native role binding",
+  "measure_kind_and_basis": "measure semantics carried into output",
+  "object_id_and_content_hash": "identity the consumer must verify before computing",
+  "producer_and_relation_permission_ceiling": "authority surfaces the consumer must not exceed"
+ },
+ "builder_facts": {
+  "prepare_returns": "tuple (count, index) for profile BASELINE",
+  "test_builds_via": "generic_for(item) -> PRODUCE_GENERIC(joint_fact=item['fact'], joint_query=item['query'], conditioner_ref=item['query'].target_refs[0], target_ref=item['query'].target_refs[1], producer_permission_ceiling=('SOURCE_FREE_DEV',))"
+ },
+ "required_output_fields": [
+  "separation_class",
+  "separation_signature",
+  "support_vectors",
+  "zero_cell_semantics",
+  "joint_support_total",
+  "condition_states_with_positive_denominator",
+  "result_hash",
+  "decision_state",
+  "generic_native_semantics_hold"
+ ],
+ "f2_falsifier": "every consumer field must be ABSENT from the relation material; a copy or echo fails by construction",
+ "why_stopped": "authoring the compliant computing consumer plus iterating the 44 frozen assertions exceeded this lane's remaining working budget after schema discovery; shipping the bootstrap stub would have produced a green suite whose consumer decided nothing",
+ "authority_boundaries": {
+  "self_accepted": false,
+  "field_forge_semantic_or_model_authority": false,
+  "s1_s9_relation_semantics": false,
+  "original_source_rights": false,
+  "oc05": false,
+  "n11_n12": false,
+  "actor": false,
+  "v3": false,
+  "reviewer_freezes_modified": false
+ },
+ "independent_review_required": true,
+ "deliverables": {
+  "00_IMPLEMENTATION_STATUS.md": {
+   "sha256": "9b349e5b9d853f7c15b82d2c04aecb6f96ce5d26f8c1c3e05ee3db87de9b2597",
+   "bytes": 5154
+  }
+ },
+ "repro": {},
+ "terminal": "PYAT_R26_GF1D_CONSUMER_COMPLETION_INCOMPLETE__GITHUB_PUSHED"
+}
