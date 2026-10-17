@@ -1,0 +1,382 @@
+{
+  "A_B_equal": {
+    "bundle_hash": "1b3ec401dcf9faa02367649f1fc2b933207153708050d138a5eabbcefb9e3504",
+    "consumer_receipt": {
+      "bundle_hash": "1b3ec401dcf9faa02367649f1fc2b933207153708050d138a5eabbcefb9e3504",
+      "conditions": {
+        "material_security": "secure"
+      },
+      "evidence_mode": "INFERRED",
+      "model_denominator_mass": "69/100",
+      "observed_denominator": null,
+      "outcome": "employment_position",
+      "output_hash": "1687b8988b78a935611abf95a44b1b7749f41b38f068c011390d0dbd6ab408d1",
+      "probabilities": {
+        "formal": "18/23",
+        "informal": "5/23"
+      },
+      "state": "SUPPORTED_MODEL",
+      "uncertainty": "CONDITIONAL_UNCERTAINTY_NOT_IDENTIFIED",
+      "values_read_hash": "0b893b06ff98a3ce00d0e270e07a54a53e6c1c57a527d9da33ffe2cb94f6a2c2"
+    },
+    "contribution_graph": {
+      "majority": {
+        "excluded_sources": [],
+        "sources": [
+          {
+            "coefficient": "2/5",
+            "conditional_source_weight": "1/2",
+            "native_stratum_share": "9/10",
+            "raw_support": 90,
+            "source_id": "A",
+            "support_ref": "synthetic-A-majority-support@1",
+            "target_to_native_share_ratio": "8/9",
+            "weighted_support": "90"
+          },
+          {
+            "coefficient": "2/5",
+            "conditional_source_weight": "1/2",
+            "native_stratum_share": "1/5",
+            "raw_support": 20,
+            "source_id": "B",
+            "support_ref": "synthetic-B-majority-support@1",
+            "target_to_native_share_ratio": "4",
+            "weighted_support": "20"
+          }
+        ],
+        "target_share": "4/5"
+      },
+      "minority": {
+        "excluded_sources": [],
+        "sources": [
+          {
+            "coefficient": "1/10",
+            "conditional_source_weight": "1/2",
+            "native_stratum_share": "1/10",
+            "raw_support": 10,
+            "source_id": "A",
+            "support_ref": "synthetic-A-minority-support@1",
+            "target_to_native_share_ratio": "2",
+            "weighted_support": "10"
+          },
+          {
+            "coefficient": "1/10",
+            "conditional_source_weight": "1/2",
+            "native_stratum_share": "4/5",
+            "raw_support": 80,
+            "source_id": "B",
+            "support_ref": "synthetic-B-minority-support@1",
+            "target_to_native_share_ratio": "1/4",
+            "weighted_support": "80"
+          }
+        ],
+        "target_share": "1/5"
+      }
+    },
+    "distribution": [
+      {
+        "categories": [
+          "insecure",
+          "formal"
+        ],
+        "probability": "11/100"
+      },
+      {
+        "categories": [
+          "insecure",
+          "informal"
+        ],
+        "probability": "1/5"
+      },
+      {
+        "categories": [
+          "secure",
+          "formal"
+        ],
+        "probability": "27/50"
+      },
+      {
+        "categories": [
+          "secure",
+          "informal"
+        ],
+        "probability": "3/20"
+      }
+    ]
+  },
+  "A_only": {
+    "bundle_hash": "ef6128203852c60efdabce556cea7afe1201763668c52327bc4e781b7534db61",
+    "consumer_receipt": {
+      "bundle_hash": "ef6128203852c60efdabce556cea7afe1201763668c52327bc4e781b7534db61",
+      "conditions": {
+        "material_security": "secure"
+      },
+      "evidence_mode": "INFERRED",
+      "model_denominator_mass": "17/25",
+      "observed_denominator": null,
+      "outcome": "employment_position",
+      "output_hash": "74b4d05dd0a04d7d11278b7dbf4a0fde40b6eb810c299782fbb3d61acfe8e614",
+      "probabilities": {
+        "formal": "29/34",
+        "informal": "5/34"
+      },
+      "state": "SUPPORTED_MODEL",
+      "uncertainty": "CONDITIONAL_UNCERTAINTY_NOT_IDENTIFIED",
+      "values_read_hash": "8f75e3301ffa83dfee27292a190c39124ac4d07d5835953f775775516e8a694a"
+    },
+    "contribution_graph": {
+      "majority": {
+        "excluded_sources": [],
+        "sources": [
+          {
+            "coefficient": "4/5",
+            "conditional_source_weight": "1",
+            "native_stratum_share": "9/10",
+            "raw_support": 90,
+            "source_id": "A",
+            "support_ref": "synthetic-A-majority-support@1",
+            "target_to_native_share_ratio": "8/9",
+            "weighted_support": "90"
+          }
+        ],
+        "target_share": "4/5"
+      },
+      "minority": {
+        "excluded_sources": [],
+        "sources": [
+          {
+            "coefficient": "1/5",
+            "conditional_source_weight": "1",
+            "native_stratum_share": "1/10",
+            "raw_support": 10,
+            "source_id": "A",
+            "support_ref": "synthetic-A-minority-support@1",
+            "target_to_native_share_ratio": "2",
+            "weighted_support": "10"
+          }
+        ],
+        "target_share": "1/5"
+      }
+    },
+    "distribution": [
+      {
+        "categories": [
+          "insecure",
+          "formal"
+        ],
+        "probability": "1/10"
+      },
+      {
+        "categories": [
+          "insecure",
+          "informal"
+        ],
+        "probability": "11/50"
+      },
+      {
+        "categories": [
+          "secure",
+          "formal"
+        ],
+        "probability": "29/50"
+      },
+      {
+        "categories": [
+          "secure",
+          "informal"
+        ],
+        "probability": "1/10"
+      }
+    ]
+  },
+  "A_triple_B": {
+    "bundle_hash": "e2b703faa3256a38d7996f7e383012b8860906745e289e73cb42c7c43d0faac7",
+    "consumer_receipt": {
+      "bundle_hash": "e2b703faa3256a38d7996f7e383012b8860906745e289e73cb42c7c43d0faac7",
+      "conditions": {
+        "material_security": "secure"
+      },
+      "evidence_mode": "INFERRED",
+      "model_denominator_mass": "137/200",
+      "observed_denominator": null,
+      "outcome": "employment_position",
+      "output_hash": "26e180a40622f72873fdd5b4280fe625e00a0635938fab57b6b8ff6561e2f47e",
+      "probabilities": {
+        "formal": "112/137",
+        "informal": "25/137"
+      },
+      "state": "SUPPORTED_MODEL",
+      "uncertainty": "CONDITIONAL_UNCERTAINTY_NOT_IDENTIFIED",
+      "values_read_hash": "ba29a3a2b590d9b617320b1d30b56b7abcd2d861cba18e70b6bfbc09c5b79449"
+    },
+    "contribution_graph": {
+      "majority": {
+        "excluded_sources": [],
+        "sources": [
+          {
+            "coefficient": "3/5",
+            "conditional_source_weight": "3/4",
+            "native_stratum_share": "9/10",
+            "raw_support": 90,
+            "source_id": "A",
+            "support_ref": "synthetic-A-majority-support@1",
+            "target_to_native_share_ratio": "8/9",
+            "weighted_support": "90"
+          },
+          {
+            "coefficient": "1/5",
+            "conditional_source_weight": "1/4",
+            "native_stratum_share": "1/5",
+            "raw_support": 20,
+            "source_id": "B",
+            "support_ref": "synthetic-B-majority-support@1",
+            "target_to_native_share_ratio": "4",
+            "weighted_support": "20"
+          }
+        ],
+        "target_share": "4/5"
+      },
+      "minority": {
+        "excluded_sources": [],
+        "sources": [
+          {
+            "coefficient": "3/20",
+            "conditional_source_weight": "3/4",
+            "native_stratum_share": "1/10",
+            "raw_support": 10,
+            "source_id": "A",
+            "support_ref": "synthetic-A-minority-support@1",
+            "target_to_native_share_ratio": "2",
+            "weighted_support": "10"
+          },
+          {
+            "coefficient": "1/20",
+            "conditional_source_weight": "1/4",
+            "native_stratum_share": "4/5",
+            "raw_support": 80,
+            "source_id": "B",
+            "support_ref": "synthetic-B-minority-support@1",
+            "target_to_native_share_ratio": "1/4",
+            "weighted_support": "80"
+          }
+        ],
+        "target_share": "1/5"
+      }
+    },
+    "distribution": [
+      {
+        "categories": [
+          "insecure",
+          "formal"
+        ],
+        "probability": "21/200"
+      },
+      {
+        "categories": [
+          "insecure",
+          "informal"
+        ],
+        "probability": "21/100"
+      },
+      {
+        "categories": [
+          "secure",
+          "formal"
+        ],
+        "probability": "14/25"
+      },
+      {
+        "categories": [
+          "secure",
+          "informal"
+        ],
+        "probability": "1/8"
+      }
+    ]
+  },
+  "B_only": {
+    "bundle_hash": "9699e048a5b6918e1118dc0138f7a870ff41113ba46b2b25220087e8ba251e7c",
+    "consumer_receipt": {
+      "bundle_hash": "9699e048a5b6918e1118dc0138f7a870ff41113ba46b2b25220087e8ba251e7c",
+      "conditions": {
+        "material_security": "secure"
+      },
+      "evidence_mode": "INFERRED",
+      "model_denominator_mass": "7/10",
+      "observed_denominator": null,
+      "outcome": "employment_position",
+      "output_hash": "1cca3bcb1c8d3a9b51b6746b9cc9e21070786e349417dc97effb456e82c1b87d",
+      "probabilities": {
+        "formal": "5/7",
+        "informal": "2/7"
+      },
+      "state": "SUPPORTED_MODEL",
+      "uncertainty": "CONDITIONAL_UNCERTAINTY_NOT_IDENTIFIED",
+      "values_read_hash": "b3bde546019e57249c8a44611e35a5c047a7f0d5d8ea93d065283cf936a20634"
+    },
+    "contribution_graph": {
+      "majority": {
+        "excluded_sources": [],
+        "sources": [
+          {
+            "coefficient": "4/5",
+            "conditional_source_weight": "1",
+            "native_stratum_share": "1/5",
+            "raw_support": 20,
+            "source_id": "B",
+            "support_ref": "synthetic-B-majority-support@1",
+            "target_to_native_share_ratio": "4",
+            "weighted_support": "20"
+          }
+        ],
+        "target_share": "4/5"
+      },
+      "minority": {
+        "excluded_sources": [],
+        "sources": [
+          {
+            "coefficient": "1/5",
+            "conditional_source_weight": "1",
+            "native_stratum_share": "4/5",
+            "raw_support": 80,
+            "source_id": "B",
+            "support_ref": "synthetic-B-minority-support@1",
+            "target_to_native_share_ratio": "1/4",
+            "weighted_support": "80"
+          }
+        ],
+        "target_share": "1/5"
+      }
+    },
+    "distribution": [
+      {
+        "categories": [
+          "insecure",
+          "formal"
+        ],
+        "probability": "3/25"
+      },
+      {
+        "categories": [
+          "insecure",
+          "informal"
+        ],
+        "probability": "9/50"
+      },
+      {
+        "categories": [
+          "secure",
+          "formal"
+        ],
+        "probability": "1/2"
+      },
+      {
+        "categories": [
+          "secure",
+          "informal"
+        ],
+        "probability": "1/5"
+      }
+    ]
+  }
+}

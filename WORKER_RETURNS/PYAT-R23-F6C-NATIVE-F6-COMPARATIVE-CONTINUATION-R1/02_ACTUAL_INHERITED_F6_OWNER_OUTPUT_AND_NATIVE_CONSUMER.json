@@ -1,0 +1,807 @@
+{
+ "schema": "PYAT_R23_F6C_ACTUAL_INHERITED_F6_OWNER_OUTPUT_AND_NATIVE_CONSUMER@1",
+ "observed_at_utc": "2026-10-17T03:10:09Z",
+ "executable_native_output": true,
+ "this_is_not_a_table_of_inferred_expected_results": true,
+ "native_producer": {
+  "module_file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-r23-f6c/WORKER_RETURNS/PYAT-R23-F6C-NATIVE-F6-COMPARATIVE-CONTINUATION-R1/05_NATIVE_STAGE/rawlsing_next/pre553_heterogeneous_synthesis.py",
+  "git_blob_sha1": "fc5e37fa5b2f0eb689593b42d95479d1327cb94c",
+  "contract_version": "PRE553_TARGET_JOINT_STANDARDIZATION@1"
+ },
+ "native_consumer": {
+  "conditional": "conditional",
+  "complementary_binary_bounds": "complementary_binary_bounds",
+  "note": "conditional() is the value-reading sociological consumer; its docstring states it is a contract consumer only, not a selected-world service."
+ },
+ "worlds": {
+  "A": {
+   "target": {
+    "target_id": "SYNTHETIC_F6C_WORLD_A_2012_ADULT_WORK_RISK_SET",
+    "geography": "Synthetic Region A",
+    "boundary_ref": "synthetic-boundary-A@1",
+    "year": 2012,
+    "population": "resident adults in shared eligible/asked work risk set",
+    "unit": "adult respondent",
+    "strata_ref": "synthetic-population-register-A@1",
+    "strata": {
+     "majority": "4/5",
+     "minority": "1/5"
+    },
+    "clock": {
+     "start_year": 2012,
+     "end_year": 2012,
+     "fieldwork_ref": "synthetic-2012-A@1"
+    }
+   },
+   "decision": "SYNTHETIC_CANDIDATE",
+   "contract_version": "PRE553_TARGET_JOINT_STANDARDIZATION@1",
+   "consumer_requirements_ref": "S03_CONSUMER_REQUIREMENTS@1",
+   "test_origin": true,
+   "real_source_qualification": "EXTERNAL_REVIEW_REQUIRED",
+   "content_hash": "fb5f2815b994bde47cb58e13f505ad9790486f6c0fe74f2a56142af42c00a948",
+   "overlap_diagnostics": [],
+   "refusals": {
+    "A": [],
+    "B": []
+   },
+   "baseline_sources": [
+    {
+     "source_id": "A",
+     "input_hash": "9b127ffbdd2b267de6777bbda4619b96966328d1d67cd8e8f447b01540efe46f",
+     "evidence_mode": "TRANSFORMED",
+     "mapped_joint": [
+      {
+       "categories": [
+        "insecure",
+        "formal"
+       ],
+       "probability": "1/10"
+      },
+      {
+       "categories": [
+        "insecure",
+        "informal"
+       ],
+       "probability": "2/5"
+      },
+      {
+       "categories": [
+        "secure",
+        "formal"
+       ],
+       "probability": "2/5"
+      },
+      {
+       "categories": [
+        "secure",
+        "informal"
+       ],
+       "probability": "1/10"
+      }
+     ],
+     "mapping_uncertainty": "REVIEWED_NOT_ERROR_FREE",
+     "mapping_refusals": [],
+     "native_counts_majority": [
+      64,
+      10,
+      10,
+      16
+     ],
+     "native_counts_minority": [
+      16,
+      10,
+      10,
+      64
+     ]
+    },
+    {
+     "source_id": "B",
+     "input_hash": "0fa3f605097ef88c6c0ed69b76b9f36b91801b3cb41e5cf4263575f72a9955b8",
+     "evidence_mode": "TRANSFORMED",
+     "mapped_joint": [
+      {
+       "categories": [
+        "insecure",
+        "formal"
+       ],
+       "probability": "1/10"
+      },
+      {
+       "categories": [
+        "insecure",
+        "informal"
+       ],
+       "probability": "2/5"
+      },
+      {
+       "categories": [
+        "secure",
+        "formal"
+       ],
+       "probability": "2/5"
+      },
+      {
+       "categories": [
+        "secure",
+        "informal"
+       ],
+       "probability": "1/10"
+      }
+     ],
+     "mapping_uncertainty": "REVIEWED_NOT_ERROR_FREE",
+     "mapping_refusals": [],
+     "native_counts_majority": [
+      56,
+      10,
+      10,
+      24
+     ],
+     "native_counts_minority": [
+      24,
+      10,
+      10,
+      56
+     ]
+    }
+   ],
+   "candidate": {
+    "distribution": [
+     {
+      "categories": [
+       "secure",
+       "formal"
+      ],
+      "probability": "13/25"
+     },
+     {
+      "categories": [
+       "secure",
+       "informal"
+      ],
+      "probability": "1/10"
+     },
+     {
+      "categories": [
+       "insecure",
+       "formal"
+      ],
+      "probability": "1/10"
+     },
+     {
+      "categories": [
+       "insecure",
+       "informal"
+      ],
+      "probability": "7/25"
+     }
+    ],
+    "covered_subprobability": [
+     {
+      "categories": [
+       "secure",
+       "formal"
+      ],
+      "probability": "13/25"
+     },
+     {
+      "categories": [
+       "secure",
+       "informal"
+      ],
+      "probability": "1/10"
+     },
+     {
+      "categories": [
+       "insecure",
+       "formal"
+      ],
+      "probability": "1/10"
+     },
+     {
+      "categories": [
+       "insecure",
+       "informal"
+      ],
+      "probability": "7/25"
+     }
+    ],
+    "ordered_categories": [
+     [
+      "secure",
+      "formal"
+     ],
+     [
+      "secure",
+      "informal"
+     ],
+     [
+      "insecure",
+      "formal"
+     ],
+     [
+      "insecure",
+      "informal"
+     ]
+    ],
+    "uncovered_target_mass": "0",
+    "support": {
+     "majority": {
+      "target_share": "4/5",
+      "sources": [
+       {
+        "source_id": "A",
+        "coefficient": "2/5",
+        "conditional_source_weight": "1/2",
+        "raw_support": 100,
+        "weighted_support": "100",
+        "support_ref": "synthetic-F6CA-A-majority-support@1",
+        "native_stratum_share": "1/2",
+        "target_to_native_share_ratio": "8/5"
+       },
+       {
+        "source_id": "B",
+        "coefficient": "2/5",
+        "conditional_source_weight": "1/2",
+        "raw_support": 100,
+        "weighted_support": "100",
+        "support_ref": "synthetic-F6CA-B-majority-support@1",
+        "native_stratum_share": "1/2",
+        "target_to_native_share_ratio": "8/5"
+       }
+      ],
+      "excluded_sources": []
+     },
+     "minority": {
+      "target_share": "1/5",
+      "sources": [
+       {
+        "source_id": "A",
+        "coefficient": "1/10",
+        "conditional_source_weight": "1/2",
+        "raw_support": 100,
+        "weighted_support": "100",
+        "support_ref": "synthetic-F6CA-A-minority-support@1",
+        "native_stratum_share": "1/2",
+        "target_to_native_share_ratio": "2/5"
+       },
+       {
+        "source_id": "B",
+        "coefficient": "1/10",
+        "conditional_source_weight": "1/2",
+        "raw_support": 100,
+        "weighted_support": "100",
+        "support_ref": "synthetic-F6CA-B-minority-support@1",
+        "native_stratum_share": "1/2",
+        "target_to_native_share_ratio": "2/5"
+       }
+      ],
+      "excluded_sources": []
+     }
+    },
+    "sample_size": null,
+    "evidence_mode": "INFERRED",
+    "dependence": "SOURCE_JOINTS_TRANSPORTED_AND_MIXED; NO_CROSS_SURVEY_RESPONDENT_LINKS",
+    "uncertainty": {
+     "sampling_variance": [
+      {
+       "categories": [
+        "insecure",
+        "formal"
+       ],
+       "variance": "153/500000"
+      },
+      {
+       "categories": [
+        "insecure",
+        "informal"
+       ],
+       "variance": "1733/3125000"
+      },
+      {
+       "categories": [
+        "secure",
+        "formal"
+       ],
+       "variance": "2483/3125000"
+      },
+      {
+       "categories": [
+        "secure",
+        "informal"
+       ],
+       "variance": "153/500000"
+      }
+     ],
+     "sampling_status": "EXTERNAL_DESIGN_DIAGONAL_ONLY",
+     "source_disagreement_and_uncovered_bounds": [
+      {
+       "categories": [
+        "secure",
+        "formal"
+       ],
+       "lower": "12/25",
+       "upper": "14/25"
+      },
+      {
+       "categories": [
+        "secure",
+        "informal"
+       ],
+       "lower": "1/10",
+       "upper": "1/10"
+      },
+      {
+       "categories": [
+        "insecure",
+        "formal"
+       ],
+       "lower": "1/10",
+       "upper": "1/10"
+      },
+      {
+       "categories": [
+        "insecure",
+        "informal"
+       ],
+       "lower": "6/25",
+       "upper": "8/25"
+      }
+     ],
+     "bias_sensitivity_bounds": [
+      {
+       "categories": [
+        "secure",
+        "formal"
+       ],
+       "lower": "21/50",
+       "upper": "31/50"
+      },
+      {
+       "categories": [
+        "secure",
+        "informal"
+       ],
+       "lower": "1/25",
+       "upper": "4/25"
+      },
+      {
+       "categories": [
+        "insecure",
+        "formal"
+       ],
+       "lower": "1/25",
+       "upper": "4/25"
+      },
+      {
+       "categories": [
+        "insecure",
+        "informal"
+       ],
+       "lower": "9/50",
+       "upper": "19/50"
+      }
+     ],
+     "radii": {
+      "mapping_bias_radius": "1/100",
+      "transport_bias_radius": "1/20",
+      "target_share_bias_radius": 0
+     },
+     "limitations": "Sensitivity envelopes are not confidence intervals; fixed target shares and disjoint sources/strata for sampling variance; covariance and conditional uncertainty unavailable."
+    }
+   },
+   "actual_consumer_receipts": {
+    "conditional_secure_given": {
+     "state": "SUPPORTED_MODEL",
+     "evidence_mode": "INFERRED",
+     "conditions": {
+      "material_security": "secure"
+     },
+     "outcome": "employment_position",
+     "probabilities": {
+      "formal": "26/31",
+      "informal": "5/31"
+     },
+     "model_denominator_mass": "31/50",
+     "observed_denominator": null,
+     "uncertainty": "CONDITIONAL_UNCERTAINTY_NOT_IDENTIFIED",
+     "bundle_hash": "fb5f2815b994bde47cb58e13f505ad9790486f6c0fe74f2a56142af42c00a948",
+     "values_read_hash": "00dc0fb7c4708ced24be81e4c6c5ffb1300fcba682be596b1d51bb7b7bec1303",
+     "output_hash": "c39caeb4cc94d9bf72eabcd415409554ff10ab794a99663f1ef08d5d4d59559d"
+    },
+    "complementary_binary_bounds": {
+     "evidence_mode": "INFERRED",
+     "dependence": "UNIDENTIFIED",
+     "lower": "0",
+     "upper": "2/5",
+     "independence_scenario": "4/25",
+     "scenario_is_measured": false
+    }
+   },
+   "comparison": {
+    "naive_pooled_mixture_MY_ANALYSIS_NOT_PRODUCER_OUTPUT": [
+     "2/5",
+     "1/10",
+     "1/10",
+     "2/5"
+    ],
+    "native_standardized": [
+     "13/25",
+     "1/10",
+     "1/10",
+     "7/25"
+    ],
+    "predeclared_truth": [
+     "13/25",
+     "1/10",
+     "1/10",
+     "7/25"
+    ],
+    "L1_error_naive": "6/25",
+    "L1_error_native_standardized": "0",
+    "P_formal_given_secure_naive": "4/5",
+    "P_formal_given_secure_native": "26/31",
+    "standardization_improves_target_prediction": true
+   }
+  },
+  "B": {
+   "target": {
+    "target_id": "SYNTHETIC_F6C_WORLD_B_2012_ADULT_WORK_RISK_SET",
+    "geography": "Synthetic Region B",
+    "boundary_ref": "synthetic-boundary-B@1",
+    "year": 2012,
+    "population": "resident adults in shared eligible/asked work risk set",
+    "unit": "adult respondent",
+    "strata_ref": "synthetic-population-register-B@1",
+    "strata": {
+     "majority": "3/5",
+     "minority": "1/5",
+     "remote_territory": "1/5"
+    },
+    "clock": {
+     "start_year": 2012,
+     "end_year": 2012,
+     "fieldwork_ref": "synthetic-2012-B@1"
+    }
+   },
+   "decision": "SYNTHETIC_CANDIDATE",
+   "contract_version": "PRE553_TARGET_JOINT_STANDARDIZATION@1",
+   "consumer_requirements_ref": "S03_CONSUMER_REQUIREMENTS@1",
+   "test_origin": true,
+   "real_source_qualification": "EXTERNAL_REVIEW_REQUIRED",
+   "content_hash": "2d88f5e9797219d1411081f6c4e8b51a833b25d4f43dd946aa3625e6a0dc71ff",
+   "overlap_diagnostics": [],
+   "refusals": {
+    "A": [],
+    "B": []
+   },
+   "baseline_sources": [
+    {
+     "source_id": "A",
+     "input_hash": "20a341c458454178b0888d5f63138d5494e84fb703e363ae71b16841da2b3b7b",
+     "evidence_mode": "TRANSFORMED",
+     "mapped_joint": [
+      {
+       "categories": [
+        "insecure",
+        "formal"
+       ],
+       "probability": "1/10"
+      },
+      {
+       "categories": [
+        "insecure",
+        "informal"
+       ],
+       "probability": "2/5"
+      },
+      {
+       "categories": [
+        "secure",
+        "formal"
+       ],
+       "probability": "2/5"
+      },
+      {
+       "categories": [
+        "secure",
+        "informal"
+       ],
+       "probability": "1/10"
+      }
+     ],
+     "mapping_uncertainty": "REVIEWED_NOT_ERROR_FREE",
+     "mapping_refusals": [],
+     "native_counts_majority": [
+      70,
+      10,
+      10,
+      10
+     ],
+     "native_counts_minority": [
+      10,
+      10,
+      10,
+      70
+     ]
+    },
+    {
+     "source_id": "B",
+     "input_hash": "4fd9f301bbfc98bd41eb068f232143339ae65254625de3db158bbee63060350f",
+     "evidence_mode": "TRANSFORMED",
+     "mapped_joint": [
+      {
+       "categories": [
+        "insecure",
+        "formal"
+       ],
+       "probability": "1/10"
+      },
+      {
+       "categories": [
+        "insecure",
+        "informal"
+       ],
+       "probability": "2/5"
+      },
+      {
+       "categories": [
+        "secure",
+        "formal"
+       ],
+       "probability": "2/5"
+      },
+      {
+       "categories": [
+        "secure",
+        "informal"
+       ],
+       "probability": "1/10"
+      }
+     ],
+     "mapping_uncertainty": "REVIEWED_NOT_ERROR_FREE",
+     "mapping_refusals": [],
+     "native_counts_majority": [
+      10,
+      10,
+      10,
+      70
+     ],
+     "native_counts_minority": [
+      70,
+      10,
+      10,
+      10
+     ]
+    }
+   ],
+   "candidate": {
+    "distribution": null,
+    "covered_subprobability": [
+     {
+      "categories": [
+       "secure",
+       "formal"
+      ],
+      "probability": "8/25"
+     },
+     {
+      "categories": [
+       "secure",
+       "informal"
+      ],
+      "probability": "2/25"
+     },
+     {
+      "categories": [
+       "insecure",
+       "formal"
+      ],
+      "probability": "2/25"
+     },
+     {
+      "categories": [
+       "insecure",
+       "informal"
+      ],
+      "probability": "8/25"
+     }
+    ],
+    "ordered_categories": [
+     [
+      "secure",
+      "formal"
+     ],
+     [
+      "secure",
+      "informal"
+     ],
+     [
+      "insecure",
+      "formal"
+     ],
+     [
+      "insecure",
+      "informal"
+     ]
+    ],
+    "uncovered_target_mass": "1/5",
+    "support": {
+     "majority": {
+      "target_share": "3/5",
+      "sources": [
+       {
+        "source_id": "A",
+        "coefficient": "3/10",
+        "conditional_source_weight": "1/2",
+        "raw_support": 100,
+        "weighted_support": "100",
+        "support_ref": "synthetic-F6CB-A-majority-support@1",
+        "native_stratum_share": "1/2",
+        "target_to_native_share_ratio": "6/5"
+       },
+       {
+        "source_id": "B",
+        "coefficient": "3/10",
+        "conditional_source_weight": "1/2",
+        "raw_support": 100,
+        "weighted_support": "100",
+        "support_ref": "synthetic-F6CB-B-majority-support@1",
+        "native_stratum_share": "1/2",
+        "target_to_native_share_ratio": "6/5"
+       }
+      ],
+      "excluded_sources": []
+     },
+     "minority": {
+      "target_share": "1/5",
+      "sources": [
+       {
+        "source_id": "A",
+        "coefficient": "1/10",
+        "conditional_source_weight": "1/2",
+        "raw_support": 100,
+        "weighted_support": "100",
+        "support_ref": "synthetic-F6CB-A-minority-support@1",
+        "native_stratum_share": "1/2",
+        "target_to_native_share_ratio": "2/5"
+       },
+       {
+        "source_id": "B",
+        "coefficient": "1/10",
+        "conditional_source_weight": "1/2",
+        "raw_support": 100,
+        "weighted_support": "100",
+        "support_ref": "synthetic-F6CB-B-minority-support@1",
+        "native_stratum_share": "1/2",
+        "target_to_native_share_ratio": "2/5"
+       }
+      ],
+      "excluded_sources": []
+     },
+     "remote_territory": {
+      "target_share": "1/5",
+      "sources": [],
+      "excluded_sources": [
+       "A",
+       "B"
+      ]
+     }
+    },
+    "sample_size": null,
+    "evidence_mode": "INFERRED",
+    "dependence": "SOURCE_JOINTS_TRANSPORTED_AND_MIXED; NO_CROSS_SURVEY_RESPONDENT_LINKS",
+    "uncertainty": {
+     "sampling_variance": null,
+     "sampling_status": "UNKNOWN_DESIGN",
+     "source_disagreement_and_uncovered_bounds": [
+      {
+       "categories": [
+        "secure",
+        "formal"
+       ],
+       "lower": "2/25",
+       "upper": "19/25"
+      },
+      {
+       "categories": [
+        "secure",
+        "informal"
+       ],
+       "lower": "2/25",
+       "upper": "7/25"
+      },
+      {
+       "categories": [
+        "insecure",
+        "formal"
+       ],
+       "lower": "2/25",
+       "upper": "7/25"
+      },
+      {
+       "categories": [
+        "insecure",
+        "informal"
+       ],
+       "lower": "2/25",
+       "upper": "19/25"
+      }
+     ],
+     "bias_sensitivity_bounds": [
+      {
+       "categories": [
+        "secure",
+        "formal"
+       ],
+       "lower": "1/50",
+       "upper": "41/50"
+      },
+      {
+       "categories": [
+        "secure",
+        "informal"
+       ],
+       "lower": "1/50",
+       "upper": "17/50"
+      },
+      {
+       "categories": [
+        "insecure",
+        "formal"
+       ],
+       "lower": "1/50",
+       "upper": "17/50"
+      },
+      {
+       "categories": [
+        "insecure",
+        "informal"
+       ],
+       "lower": "1/50",
+       "upper": "41/50"
+      }
+     ],
+     "radii": {
+      "mapping_bias_radius": "1/100",
+      "transport_bias_radius": "1/20",
+      "target_share_bias_radius": 0
+     },
+     "limitations": "Sensitivity envelopes are not confidence intervals; fixed target shares and disjoint sources/strata for sampling variance; covariance and conditional uncertainty unavailable."
+    }
+   },
+   "actual_consumer_receipts": {
+    "conditional_secure_given": {
+     "state": "UNAVAILABLE",
+     "reason": "NO_COMPLETE_TARGET_JOINT",
+     "bundle_hash": "2d88f5e9797219d1411081f6c4e8b51a833b25d4f43dd946aa3625e6a0dc71ff"
+    },
+    "complementary_binary_bounds": {
+     "evidence_mode": "INFERRED",
+     "dependence": "UNIDENTIFIED",
+     "lower": "0",
+     "upper": "2/5",
+     "independence_scenario": "4/25",
+     "scenario_is_measured": false
+    }
+   },
+   "comparison": {
+    "naive_pooled_mixture_MY_ANALYSIS_NOT_PRODUCER_OUTPUT": [
+     "2/5",
+     "1/10",
+     "1/10",
+     "2/5"
+    ],
+    "native_standardized": null
+   }
+  }
+ },
+ "identity_receipts": {
+  "world_A_content_hash": "fb5f2815b994bde47cb58e13f505ad9790486f6c0fe74f2a56142af42c00a948",
+  "world_B_content_hash": "2d88f5e9797219d1411081f6c4e8b51a833b25d4f43dd946aa3625e6a0dc71ff",
+  "note": "content_hash is a replay identity, not a right or permission."
+ },
+ "disclosed_post_freeze_corrections": [
+  "Fixture-builder bugs of mine, fixed after first execution and disclosed: (a) joint cells built with zip instead of the 2x2 cross-product (2 cells per stratum); (b) design_variance keyed by native codes instead of the contract-required mapped labels. Both defects were in MY fixture code; the native producer was NOT modified.",
+  "Frozen World B upper bounds corrected 14/25 -> 19/25 and bias upper 31/50 -> 41/50 / 17/50 after first execution; see _frozen_expectation_correction_disclosed in 01_FROZEN_SOURCEFREE_STUDY_WORLDS.json. I had omitted the uncovered stratum share from every cell's upper bound. The producer was unchanged and no test was relaxed."
+ ]
+}

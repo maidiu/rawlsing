@@ -1,0 +1,48 @@
+{
+  "baseline": "separate native mapped source joints; scores at same declared validation target",
+  "decision": {
+    "full_F6": "NOT_ESTABLISHED",
+    "independent_review": "PENDING",
+    "real": "NO_REPLACEMENT; no S00/rights/metadata qualification or empirical comparison",
+    "synthetic": "Candidate improves composition-shift behavior, fails unmeasured law shift; retain native baseline alongside any candidate."
+  },
+  "idealized_target_validation": {
+    "baseline_TV_by_source": {
+      "A": "1/10",
+      "B": "17/50"
+    },
+    "candidate_TV": "0",
+    "origin": "fixed synthetic holdout counts, not survey calibration"
+  },
+  "leave_B_out_transfer": {
+    "fitted_sources": [
+      "A"
+    ],
+    "heldout_source": "B",
+    "native_A_TV": "11/25",
+    "real_source_validation": false,
+    "standardized_A_TV": "9/50",
+    "subgroups": {
+      "majority": {
+        "TV_before_and_after": "1/10",
+        "interpretation": "No within-stratum model improvement is claimed."
+      },
+      "minority": {
+        "TV_before_and_after": "1/5",
+        "interpretation": "No within-stratum model improvement is claimed."
+      }
+    }
+  },
+  "method": "one candidate: target-stratum joint standardization",
+  "protocol_hash": "9b8c3f31b3f10864792cf474583001f52dff6d0ce092550a2fc827a1aebf1f27",
+  "schema": "S03_COMPARISON@1",
+  "test_origin": true,
+  "unmeasured_source_shift_adversary": {
+    "baseline_TV_by_source": {
+      "A": "27/50",
+      "B": "7/25"
+    },
+    "candidate_TV": "1/2",
+    "implication": "Target share adjustment cannot repair noninvariant conditional joint laws."
+  }
+}
