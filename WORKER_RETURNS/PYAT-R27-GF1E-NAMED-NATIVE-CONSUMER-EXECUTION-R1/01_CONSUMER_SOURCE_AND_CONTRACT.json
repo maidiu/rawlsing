@@ -1,0 +1,76 @@
+{
+ "schema": "PYAT_R27_GF1E_01_CONSUMER_SOURCE_AND_CONTRACT@1",
+ "branch": "agent/rabochii-pyat-r27-gf1e-actual-native-consumer-implementation-r1",
+ "sealed_startup": "e9867879a0f0b3ac8d8afe21fced9e18a8a0a1fb",
+ "delivered_module": {
+  "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261016-R17-GF1-GENERIC-NATIVE-PAIR-RELATION-R1/court/runtime_root/gf1_pair_support_consumer.py",
+  "symbol": "compute_pair_support_signature",
+  "sha256": "06dd484b0e9b4b2c9fb0a1583453ac7ffa8c052135304eaaee167a34127cb402",
+  "git_blob_sha1": "75670c69dc58"
+ },
+ "import_sites_restored": [
+  "court/repro/gf1_native.py:45",
+  "court/repro/test_gf1_generic_pair.py:33"
+ ],
+ "contract": {
+  "consumer_id": "GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ONLY@1.0.0",
+  "output_family": "GF1_PAIR_SUPPORT_SIGNATURE_RESULT_TEST_ONLY@1.0.0",
+  "separation_class_enum": [
+   "EXACT_PAIR_SEPARATION",
+   "NO_PAIR_SEPARATION",
+   "UNDETERMINED_NO_ELIGIBLE_RISK",
+   "UNDETERMINED_ZERO_SUPPORT_RISK"
+  ],
+  "decision_states": [
+   "PAIR_SUPPORT_SIGNATURE_COMPUTED",
+   "CONSUMER_INPUT_NOT_GENERIC_PAIR_RELATION",
+   "RESPONSE_INPUTS_VALID_EMPTY"
+  ],
+  "computed_fields": [
+   "separation_class",
+   "separation_signature",
+   "support_vectors",
+   "zero_cell_semantics",
+   "joint_support_total",
+   "condition_states_with_positive_denominator",
+   "result_hash"
+  ],
+  "carried_fields": [
+   "eligible_joint_risk_total",
+   "excluded_ineligible_target_count",
+   "measure_kind",
+   "measure_basis_ref",
+   "operation_role_order",
+   "native_component_order",
+   "permission_ceilings"
+  ],
+  "anti_inference_commitments": {
+   "is_population_evidence_not_actor_fact": true,
+   "makes_no_causal_or_psychological_claim": true,
+   "production_owner_commit": false,
+   "generic_native_semantics_hold": "RETAINED"
+  },
+  "baseline_native_2x2": {"00": 1, "01": 0, "10": 0, "11": 1},
+  "baseline_separation_class": "EXACT_PAIR_SEPARATION"
+ },
+ "preserved_unchanged": {
+  "frozen_test_file_sha256": "2bbb54aa7b1ea990705fc6edf51895a2ea7ec6192abd90acf062940aeff87ef5",
+  "frozen_oracle_sha256": "c5bdc14aec82e7df042594d8f2df1d8130b89345d305de5f73830828a0257790",
+  "relation_owner_module_sha256": "e5ac3d003bfe3a4e00cf1da1ca0c4cacab706391f4b9ab71f101e64a4b2cfc04",
+  "accepted_gt2_owner_untouched": true,
+  "two_HELD_ORDERED_ops_untouched": true
+ },
+ "authority_boundaries": {
+  "self_accepted": false,
+  "field_forge_semantic_or_model_authority": false,
+  "s1_s9_relation_semantics": false,
+  "original_source_rights": false,
+  "oc05": false,
+  "n11_n12": false,
+  "actor": false,
+  "v3": false,
+  "reviewer_freezes_modified": false,
+  "baseline_module_not_found_preserved_in_history": true
+ },
+ "independent_review_required": true
+}

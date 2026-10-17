@@ -1,0 +1,6 @@
+$ python3 -m pytest -q test_gf1_generic_pair.py --collect-only
+...ModuleNotFoundError: No module named 'gf1_pair_support_consumer'
+gf1_native.py:45: in <module>
+    from gf1_pair_support_consumer import compute_pair_support_signature
+ERROR test_gf1_generic_pair.py (1 error during collection)
+no tests collected, 1 error, EXIT 2
