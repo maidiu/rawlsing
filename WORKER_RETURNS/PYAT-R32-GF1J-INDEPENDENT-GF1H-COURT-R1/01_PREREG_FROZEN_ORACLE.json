@@ -1,0 +1,400 @@
+{
+  "schema": "PYAT_R32_GF1J_PRE_GF1H_INDEPENDENT_FALSIFIERS@1",
+  "phase": "A_FREEZE_BEFORE_GF1H_PATCH_SOURCE",
+  "startup": "e5237351d1a51f43dd3192b04044b68171ca8462",
+  "commission_blob": "d0cee11f049f9a1fadf50f1f6a8b833b47a70e88",
+  "input_evidence": {
+    "GF1E": "eeb726357204653b22458dc267dd70ba0009bd77",
+    "GF1G_phaseA": "ecd975ad5b424f952ac248dfcf1b7a83aa867a6a",
+    "GF1G_terminal": "ec5dddfcb3476c01ceb8e7f5122c5e5259b936f7",
+    "GF1G_oracle_blob": "12bb4c5a4b848781c07b91956646e13bd48bab63",
+    "GF1G_precommitted_tests_blob": "aa23ecd9c948a1e98fdfbd569b1b90780d9e20e8",
+    "producer_source_blob": "746d669314ddd114ec21d3a35c13c452666863fe",
+    "reference_consumer_blob": "b1d4b130460bd3b641acc17a7783cfd70271ffe2"
+  },
+  "frozen_expected_cases": [
+    {
+      "id": "A01_baseline",
+      "counts": [
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "risk": 4,
+      "denoms": [
+        2,
+        2
+      ],
+      "state": "SUPPORTED",
+      "expected_class": "EXACT_PAIR_SEPARATION",
+      "produced": true
+    },
+    {
+      "id": "A02_asymmetric_minorities",
+      "counts": [
+        [
+          3,
+          1
+        ],
+        [
+          2,
+          4
+        ]
+      ],
+      "risk": 10,
+      "denoms": [
+        4,
+        6
+      ],
+      "state": "SUPPORTED",
+      "expected_class": "NO_PAIR_SEPARATION",
+      "produced": true,
+      "forward_P_Y1_given_X0": "1/4",
+      "reverse_P_X0_given_Y1": "1/5"
+    },
+    {
+      "id": "A03_unequal_target_risk_conditioning",
+      "counts": [
+        [
+          5,
+          1
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "risk": 10,
+      "denoms": [
+        6,
+        4
+      ],
+      "state": "SUPPORTED",
+      "expected_class": "NO_PAIR_SEPARATION",
+      "produced": true
+    },
+    {
+      "id": "A04_inconsistent_denominator",
+      "counts": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "risk": 2,
+      "denoms": [
+        2,
+        1
+      ],
+      "state": "SUPPORTED",
+      "expected": "TYPED_REJECTION",
+      "produced": false
+    },
+    {
+      "id": "A05_support_exceeds_eligible",
+      "counts": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "risk": 1,
+      "denoms": [
+        1,
+        1
+      ],
+      "state": "SUPPORTED",
+      "expected": "TYPED_REJECTION",
+      "produced": false
+    },
+    {
+      "id": "A06_negative_count",
+      "counts": [
+        [
+          -1,
+          2
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "risk": 2,
+      "denoms": [
+        1,
+        1
+      ],
+      "state": "SUPPORTED",
+      "expected": "TYPED_REJECTION",
+      "produced": false
+    },
+    {
+      "id": "A07_bool_count",
+      "counts": [
+        [
+          true,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "risk": 2,
+      "denoms": [
+        1,
+        1
+      ],
+      "state": "SUPPORTED",
+      "expected": "TYPED_REJECTION",
+      "produced": false
+    },
+    {
+      "id": "A08_float_count",
+      "counts": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "risk": 2,
+      "denoms": [
+        1,
+        1
+      ],
+      "state": "SUPPORTED",
+      "expected": "TYPED_REJECTION",
+      "produced": false,
+      "note": "JSON cannot distinguish 1.0 from 1; Python test uses float(1) and verifies exact type"
+    },
+    {
+      "id": "A09_zero_as_positive_state",
+      "counts": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "risk": 1,
+      "denoms": [
+        0,
+        1
+      ],
+      "state": "SUPPORTED",
+      "tamper": "cell 00 OBSERVED_POSITIVE",
+      "expected": "TYPED_REJECTION",
+      "produced": false
+    },
+    {
+      "id": "A10_positive_as_zero_state",
+      "counts": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "risk": 2,
+      "denoms": [
+        1,
+        1
+      ],
+      "state": "SUPPORTED",
+      "tamper": "cell 00 ZERO_SUPPORT",
+      "expected": "TYPED_REJECTION",
+      "produced": false
+    },
+    {
+      "id": "A11_no_eligible",
+      "counts": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "risk": 0,
+      "denoms": [
+        0,
+        0
+      ],
+      "state": "SUPPORTED",
+      "expected_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+      "produced": true
+    },
+    {
+      "id": "A12_eligible_but_zero_support",
+      "counts": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "risk": 2,
+      "denoms": [
+        0,
+        0
+      ],
+      "state": "SUPPORTED",
+      "expected_class": "UNDETERMINED_ZERO_SUPPORT_RISK",
+      "produced": true
+    },
+    {
+      "id": "A13_missing_blocker",
+      "counts": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "risk": 0,
+      "denoms": [
+        0,
+        0
+      ],
+      "state": "MISSING_TARGET_STATE",
+      "blocking": true,
+      "expected": "PRODUCER_TYPED_STATE_BLOCKING",
+      "class": null,
+      "produced": false
+    },
+    {
+      "id": "A14_unresolved_blocker",
+      "counts": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "risk": 0,
+      "denoms": [
+        0,
+        0
+      ],
+      "state": "UNRESOLVED_TARGET_STATE",
+      "blocking": true,
+      "expected": "PRODUCER_TYPED_STATE_BLOCKING",
+      "class": null,
+      "produced": false
+    },
+    {
+      "id": "A15_nonresponse_blocker",
+      "counts": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "risk": 0,
+      "denoms": [
+        0,
+        0
+      ],
+      "state": "NONRESPONSE",
+      "blocking": true,
+      "expected": "PRODUCER_TYPED_STATE_BLOCKING",
+      "class": null,
+      "produced": false
+    },
+    {
+      "id": "A16_zero_support_blocker",
+      "counts": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "risk": 0,
+      "denoms": [
+        0,
+        0
+      ],
+      "state": "ZERO_SUPPORT",
+      "blocking": true,
+      "expected": "PRODUCER_TYPED_STATE_ZERO_SUPPORT",
+      "class": "UNDETERMINED_ZERO_SUPPORT_RISK",
+      "produced": false
+    },
+    {
+      "id": "A17_supported_valid_empty",
+      "profile": [],
+      "risk": 0,
+      "state": "SUPPORTED",
+      "blocking": false,
+      "expected": "RESPONSE_INPUTS_VALID_EMPTY",
+      "produced": false
+    }
+  ],
+  "invariants": [
+    "Per conditioner denominator equals exact sum of all native target-state counts, not merely reported numerator or positive support.",
+    "Total joint observed support <= native eligible joint risk set. Do not invent unmeasured mass or renormalize denominators.",
+    "All support counts and denominators must be exact int (not bool, float, string, negative); no silent int() coercion.",
+    "OBSERVED_POSITIVE iff support >0; zero support must retain native observed-zero/zero-support state without upgrading missingness.",
+    "Explicit producer blocker and non-SUPPORTED typed state examined before empty-profile interpretation; zero-support typed refusal is NOT positive.",
+    "NO_ELIGIBLE_RISK when eligible risk exactly zero, distinct from eligible positive but zero observed support => ZERO_SUPPORT_RISK.",
+    "Only EXACT separation if every positively supported conditioner row is one target point mass and distinct targets across conditioner rows; preserve nontrivial minority / non-separation.",
+    "Forward and reverse have different denominators and only producer-granted native role swaps; never infer inverse probability as forward probability.",
+    "Content-hash/object-id validation is tamper detection, not external issuer authentication; production_owner_commit remains false and semantics retained TEST_ONLY.",
+    "Consumer computes downstream signature/geometry from relation not copied caller fields; cold-process bytes/result hash stable with pinned source imports.",
+    "Original 44, GF1G 26 and GF1F 100 remain UNCHANGED. GF1I two old absence assertions may remain RED as stale historical characterization, not edited to green."
+  ],
+  "precedence": "Substantive malformed-input and permission refusal outrank any asserted exact separation; blocking producer outranks empty valid; empty valid requires SUPPORTED and nonblocking.",
+  "no_Gf1H_patch_inspected": true,
+  "non_authority": [
+    "ORIGINAL35",
+    "FF",
+    "N11",
+    "N12",
+    "V3",
+    "ACTOR",
+    "SOURCE_ISSUER",
+    "HQ_ADOPTION"
+  ]
+}
