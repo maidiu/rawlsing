@@ -1,0 +1,20 @@
+
+==================================== ERRORS ====================================
+__________________ ERROR collecting test_gf1_generic_pair.py ___________________
+ImportError while importing test module '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/gf1c/WORKER_RETURNS/PYAT-USERDIRECT-20261016-R17-GF1-GENERIC-NATIVE-PAIR-RELATION-R1/court/repro/test_gf1_generic_pair.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+../../../../../../Rawlsing/LOCAL_COURTS/tooling/python/cpython-3.11.3-macos-x86_64-none/lib/python3.11/importlib/__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+test_gf1_generic_pair.py:22: in <module>
+    import gf1_native as N                                        # noqa: E402
+    ^^^^^^^^^^^^^^^^^^^^^^
+gf1_native.py:45: in <module>
+    from gf1_pair_support_consumer import compute_pair_support_signature  # noqa: E402
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   ModuleNotFoundError: No module named 'gf1_pair_support_consumer'
+=========================== short test summary info ============================
+ERROR test_gf1_generic_pair.py
+!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+1 error in 0.76s

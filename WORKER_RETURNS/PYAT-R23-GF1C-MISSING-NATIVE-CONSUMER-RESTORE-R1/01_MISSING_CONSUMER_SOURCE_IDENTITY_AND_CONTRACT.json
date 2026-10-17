@@ -1,0 +1,94 @@
+{
+ "schema": "PYAT_R23_GF1C_MISSING_CONSUMER_RESTORE@1",
+ "branch": "agent/rabochii-pyat-r23-gf1-missing-consumer-restoration-r1",
+ "sealed_startup": "9be568ca2f30e3da28efb91b832e12a760cec1a4",
+ "gf1_parent": "9f4a23cef1482e0a81afb1e7a65df90879931465",
+ "gf1i_reviewer": "c6a55f0dd5b327c40d64f96e0705ab5485559e90",
+ "root_cause": {
+  "missing_module": "gf1_pair_support_consumer",
+  "occurrences_in_parent_tree": 0,
+  "required_symbol": "compute_pair_support_signature",
+  "import_sites": [
+   "court/repro/gf1_native.py:45",
+   "court/repro/test_gf1_generic_pair.py:33"
+  ],
+  "name_assertion": "test_gf1_generic_pair.py:140 asserts 'gf1_pair_support_consumer' in names",
+  "reproduced": "ModuleNotFoundError at collection, 1 error, EXIT 2 \u2014 the absent module suppresses the entire suite before any assertion runs",
+  "RED_preserved": true,
+  "RED_suppressed": false
+ },
+ "recovered_contract": {
+  "identity": "GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ONLY@1.0.0",
+  "symbol": "compute_pair_support_signature(relation)->dict",
+  "fields": [
+   "separation_class",
+   "separation_signature",
+   "support_vectors",
+   "zero_cell_semantics",
+   "joint_support_total",
+   "condition_states_with_positive_denominator",
+   "result_hash",
+   "decision_state",
+   "generic_native_semantics_hold"
+  ],
+  "separation_class_enum": [
+   "EXACT_PAIR_SEPARATION",
+   "NO_PAIR_SEPARATION",
+   "UNDETERMINED_NO_ELIGIBLE_RISK",
+   "UNDETERMINED_ZERO_SUPPORT_RISK"
+  ],
+  "f2_falsifier": "each consumer field must be ABSENT from the relation material \u2014 a copy or echo fails by construction; the module must genuinely COMPUTE the decision",
+  "behavioural_commitments": {
+   "invalid_input": "decision_state == CONSUMER_INPUT_NOT_GENERIC_PAIR_RELATION",
+   "valid": "generic_native_semantics_hold == RETAINED",
+   "baseline_00_01_10_11_1_0_0_1": "EXACT_PAIR_SEPARATION",
+   "collapsed": "NO_PAIR_SEPARATION",
+   "split_changed": "UNDETERMINED_NO_ELIGIBLE_RISK",
+   "support_vectors": "must differ across distinct pairs, not a constant",
+   "baseline_must_match": "01_PRECOMMITTED_GENERIC_NATIVE_PAIR_ORACLE.json"
+  }
+ },
+ "consumer_authored": false,
+ "frozen_44_collectable": false,
+ "frozen_44_passing_claimed": false,
+ "why_not_authored": "authoring a compliant computing consumer requires deriving the decision from the actual relation structure and getting all 44 frozen assertions green without touching the oracle; the lane budget was exhausted after root cause and contract recovery. A module that only made collection succeed would have converted a visible honest ModuleNotFoundError into a possibly-non-computing green \u2014 the exact oracle-output circularity and RED suppression the commission forbids.",
+ "not_delivered": [
+  "gf1_pair_support_consumer.py",
+  "44 collectable and passing cases",
+  "consumer-vs-direct-relation differential",
+  "new own-identity cold-process replay",
+  "native consumer output proof",
+  "JUnit"
+ ],
+ "authority_boundaries": {
+  "self_accepted": false,
+  "generic_field_forge_S1_S9_issued": false,
+  "original_source_rights": false,
+  "oc05": false,
+  "n11_n12": false,
+  "actor": false,
+  "v3": false,
+  "reviewer_freezes_modified": false,
+  "gt2_q86b_q86a_owner_touched": false,
+  "two_HELD_ORDERED_ops_claimed": false
+ },
+ "environment": {
+  "python": "3.11.3",
+  "host": "local source-free",
+  "model_identity_asserted": false,
+  "usage_asserted": false
+ },
+ "deliverables": {
+  "00_AUTHOR_CORRECTION_AND_ROOT_CAUSE.md": {
+   "sha256": "cf81235bbc74a282fe3265e85aeeb5a238854853b8ac5f9225ca08f22cc33de4",
+   "bytes": 6825
+  }
+ },
+ "repro": {
+  "collection_failure.log": {
+   "sha256": "8f62e47dd59dee2a93c24132eac97881dbeff077323a6d60659a2a7c9c4eeb75",
+   "bytes": 1345
+  }
+ },
+ "terminal": "PYAT_R23_GF1C_MISSING_CONSUMER_RESTORE_HOLD__GITHUB_PUSHED"
+}
