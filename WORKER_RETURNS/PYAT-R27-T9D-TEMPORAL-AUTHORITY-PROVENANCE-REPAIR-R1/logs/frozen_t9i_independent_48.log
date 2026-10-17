@@ -1,0 +1,32 @@
+$ /usr/local/bin/python3 -B /Users/matthewsmith/Desktop/Rawlsing/R27-T9D-temporal-wt/WORKER_RETURNS/PYAT-R27-T9D-TEMPORAL-AUTHORITY-PROVENANCE-REPAIR-R1/guarded_runner_t9d.py frozen_t9i_independent_48
+# cwd=/Users/matthewsmith/Desktop/Rawlsing/R27-T9D-temporal-wt/WORKER_RETURNS/PYAT-R27-T9D-TEMPORAL-AUTHORITY-PROVENANCE-REPAIR-R1
+# exit=1
+# elapsed_s=1.925
+--- stdout ---
+...............................F................                         [100%]
+=================================== FAILURES ===================================
+______ test_two_time_original_consumer_and_numerical_products_reproduced _______
+
+    def test_two_time_original_consumer_and_numerical_products_reproduced():
+        stored=json.loads((RET/'pinned_candidate/evidence/02_real_temporal_to_selected_world_two_times.json').read_text())
+        actual={str(y):T.read_selected_world(WORLD,case(),METHODS[1],y,retrospective=True).as_dict() for y in [1990,2000]}
+        values={str(y):T.evaluate(case(),METHODS[1],clock_year=y,retrospective=True).value for y in [1990,2000]}
+        observe('E6_TWO_TIME',{'reads':actual,'numerical_values':values,'structural_world':asdict(WORLD),
+           'structural_preimage_sha256':hashlib.sha256(json.dumps(asdict(WORLD),sort_keys=True).encode()).hexdigest()})
+>       assert actual==stored['two_time_reads']
+E       AssertionError: assert {'1990': {'ac... ['W1'], ...}} == {'1990': {'ba...', ...}, ...}}
+E         
+E         Differing items:
+E         {'1990': {'actor_opportunity_entitlement': 'GRANTED_BY_PRESENT_CURRENT_ACCESS_GRANT', 'archive_context_wave_ids': [], 'authorized_opportunity': False, 'basis_wave_ids': ['W0', 'W1'], ...}} != {'1990': {'basis_wave_ids': ['W0', 'W1'], 'opportunity_ids': ['ROUTE_DEFERRED_REVIEW'], 'pressure_band': 'low', 'prove...ACCESS'], 'clock_question': 'RETROSPECTIVE_ARCHIVAL', 'cohort': 'COHORT_ALL', 'country': 'SYNTH_COUNTRY_A', ...}, ...}}
+E         {'2000': {'actor_opportunity_entitlement': 'GRANTED_BY_PRESENT_CURRENT_ACCESS_GRANT', 'archive_context_wave_ids': [], 'authorize...
+E         
+E         ...Full output truncated (2 lines hidden), use '-vv' to show
+
+staging/tests/test_independent_clock_custody.py:121: AssertionError
+=========================== short test summary info ============================
+FAILED staging/tests/test_independent_clock_custody.py::test_two_time_original_consumer_and_numerical_products_reproduced
+1 failed, 47 passed in 1.36s
+T9D_COURT_frozen_t9i_independent_48_EXIT=1 VERIFIED_PROJECT_MODULES=16
+
+--- stderr ---
+

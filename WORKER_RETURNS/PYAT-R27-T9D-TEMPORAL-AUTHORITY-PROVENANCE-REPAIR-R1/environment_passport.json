@@ -1,0 +1,91 @@
+{
+  "schema": "PYAT_WARM_ENVIRONMENT_PASSPORT_DELTA@1",
+  "environment_id": "ENV_RAWLSING_LOCAL_WT_R27T9D",
+  "epoch_id": "EPOCH_20261017_T9D_LAUNCH",
+  "session_alias": "SESSION_T9D_PRODUCTIVE_CONTINUATION",
+  "surface": "S2_GOVERNED_LOCAL_OPENCODE_WORKTREE",
+  "machine_alias": "MACHINE_DESKTOP_LOCAL",
+  "status": "LIVE_VERIFIED",
+  "last_live_probe_at": "2026-10-17T06:20:00Z",
+  "role": "original T9B/T9C productive adapter continuation; NOT independent reviewer; NOT HQ",
+  "interpreter_probe": {
+    "command": "python3 --version && python3 -c 'import pytest,pandas,numpy'",
+    "status": "OK",
+    "python": "3.11.3",
+    "executable": "/usr/local/bin/python3",
+    "pytest": "9.0.2",
+    "pandas": "2.3.1",
+    "numpy": "2.3.2"
+  },
+  "git_probe": {
+    "command": "git -C <worktree> rev-parse HEAD && git -C <worktree> branch --show-current",
+    "status": "OK",
+    "repository": "https://github.com/maidiu/rawlsing.git",
+    "repository_visibility": "PRIVATE",
+    "topology": "ONE shared git object store; ONE isolated worktree for this branch; no duplicate clone",
+    "worktree_alias": "R27-T9D-temporal-wt",
+    "branch": "agent/rabochii-pyat-r27-t9d-native-authority-provenance-correction-r1",
+    "startup_head": "7603c47610c01937e48b07f7fc69531964182911"
+  },
+  "writable_marker": {
+    "path_inside_return": "WORKER_RETURNS/PYAT-R27-T9D-TEMPORAL-AUTHORITY-PROVENANCE-REPAIR-R1/",
+    "status": "WRITABLE",
+    "terrain_respected": "only the worker's own WORKER_RETURNS directory was written; no other branch, checkout or return was modified; no reset/force pull"
+  },
+  "pinned_import_closure": {
+    "grade": "SOURCEFREE_SYNTHETIC",
+    "authorization_grade": "NO_ORIGINAL_SOURCE_GRANT; no EE12/N9/OC05/N11/N12/V3",
+    "dependency_closure": "BOUNDED_MINIMAL",
+    "modules": [
+      {
+        "module": "t9b_temporal",
+        "commit": "WORKER_RETURN_T9D",
+        "path": "WORKER_RETURNS/PYAT-R27-T9D-TEMPORAL-AUTHORITY-PROVENANCE-REPAIR-R1/staging/pinned_candidate/t9b_temporal.py",
+        "git_blob_sha1_NUL_preimage": "d6710868d72d73f0b711224f18c8792c8b666666",
+        "sha256": "77a4d25d9a6338cf747ca89185790a6d51b0ecbc0c450697a2e30215d92073ef",
+        "note": "T9D repaired adapter; real diff vs T9C in 07_REAL_DIFF_T9C_TO_T9D.patch"
+      },
+      {
+        "module": "data.ddm_build_copy.ddm_v553_temporal_pressure",
+        "commit": "7603c47610c01937e48b07f7fc69531964182911",
+        "path": "WORKER_RETURNS/PYAT-R27-T9D-TEMPORAL-AUTHORITY-PROVENANCE-REPAIR-R1/staging/pinned_candidate/native/data/ddm_build_copy/ddm_v553_temporal_pressure.py",
+        "byte_identical_to_accepted_original": true
+      }
+    ],
+    "native_closure_files": 22,
+    "native_closure_all_byte_identical": true,
+    "full_manifest": "06_EVIDENCE_FILE_HASHES.json"
+  },
+  "sourcefree_execution": {
+    "command": "python3 -B run_all_t9d.py",
+    "suites": 7,
+    "results_vs_original_integrated": "separately reported, never aggregated; see evidence/t9d_seven_court_execution.json",
+    "counts": {
+      "frozen_t9i_independent_48": "47 PASS / 1 FAIL (expected historical compatibility)",
+      "t9c_own_repair_52": "52 PASS / 0 FAIL",
+      "inherited_original_v553_native_8": "8 PASS / 0 FAIL",
+      "unchanged_t9b_author_28": "27 PASS / 1 FAIL (expected historical compatibility)",
+      "t9r_frozen_delta_50": "50 PASS / 0 FAIL",
+      "t9r_postinspection_hostiles_7": "7 PASS / 0 FAIL",
+      "t9d_own_authority_provenance": "22 PASS / 0 FAIL"
+    }
+  },
+  "provider_observation": {
+    "surface": "OpenCode local CLI, single session",
+    "model": "opencode-go/mimo-v2.6-pro",
+    "effort": "default",
+    "money_or_quota_class": "subscription allowance; incremental billed value UNKNOWN",
+    "retries_observed": 0
+  },
+  "privacy_and_rights_gates": {
+    "raw_survey_bytes": "NOT USED",
+    "third_party_or_unauthorized_data": "NOT USED",
+    "respondent_or_person_data": "NOT USED",
+    "credentials_or_tokens_in_repo": "NONE",
+    "personal_filesystem_paths_in_github": "NONE (absolute machine paths appear only inside local test receipts, which are not personal data)"
+  },
+  "assignments_completed": ["PYAT-R27-T9D-TEMPORAL-AUTHORITY-PROVENANCE-REPAIR-R1"],
+  "eligibility_for_continuation": "ELIGIBLE for related temporal-authority follow-ups in this warm window after a live re-probe",
+  "expiry_or_rebuild_trigger": "runtime reset, context saturation, unrelated requirements, or reviewer-independence conflict",
+  "independent_review_conflicts": "T9S must be a different agent; this worker is the productive adapter author and may not self-accept"
+}

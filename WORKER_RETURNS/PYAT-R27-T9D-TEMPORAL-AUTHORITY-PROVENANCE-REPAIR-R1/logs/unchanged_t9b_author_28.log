@@ -1,0 +1,27 @@
+$ /usr/local/bin/python3 -B /Users/matthewsmith/Desktop/Rawlsing/R27-T9D-temporal-wt/WORKER_RETURNS/PYAT-R27-T9D-TEMPORAL-AUTHORITY-PROVENANCE-REPAIR-R1/guarded_runner_t9d.py unchanged_t9b_author_28
+# cwd=/Users/matthewsmith/Desktop/Rawlsing/R27-T9D-temporal-wt/WORKER_RETURNS/PYAT-R27-T9D-TEMPORAL-AUTHORITY-PROVENANCE-REPAIR-R1
+# exit=1
+# elapsed_s=1.476
+--- stdout ---
+........................F...                                             [100%]
+=================================== FAILURES ===================================
+_ test_hostile_changed_temporal_source_with_same_structural_world_only_moves_the_channel _
+
+    def test_hostile_changed_temporal_source_with_same_structural_world_only_moves_the_channel():
+        alt = T.TemporalCase("ALT", C, (wave(0, 1990, 0.90), wave(1, 2000, 0.95)), target_year=1995)
+        a = T.read_selected_world(STRUCT, TC1, T.METHOD_M1_INTERP, 1995, retrospective=True)
+        b = T.read_selected_world(STRUCT, alt, T.METHOD_M1_INTERP, 1995, retrospective=True)
+        assert T.structurally_identical(a, b)
+>       assert a.opportunity_ids != b.opportunity_ids
+E       AssertionError: assert ('ROUTE_BLOCKED_NO_SUPPORT',) != ('ROUTE_BLOCKED_NO_SUPPORT',)
+E        +  where ('ROUTE_BLOCKED_NO_SUPPORT',) = OpportunitySet(query_clock=1995, temporal_method='M1_LINEAR_INTERPOLATION', opportunity_ids=('ROUTE_BLOCKED_NO_SUPPORT...ortunity_entitlement='GRANTED_BY_PRESENT_CURRENT_ACCESS_GRANT', product_observation_status='INTERPOLATED_NOT_OBSERVED').opportunity_ids
+E        +  and   ('ROUTE_BLOCKED_NO_SUPPORT',) = OpportunitySet(query_clock=1995, temporal_method='M1_LINEAR_INTERPOLATION', opportunity_ids=('ROUTE_BLOCKED_NO_SUPPORT...ortunity_entitlement='GRANTED_BY_PRESENT_CURRENT_ACCESS_GRANT', product_observation_status='INTERPOLATED_NOT_OBSERVED').opportunity_ids
+
+staging/pinned_candidate/test_t9b_temporal.py:234: AssertionError
+=========================== short test summary info ============================
+FAILED staging/pinned_candidate/test_t9b_temporal.py::test_hostile_changed_temporal_source_with_same_structural_world_only_moves_the_channel
+1 failed, 27 passed in 1.01s
+T9D_COURT_unchanged_t9b_author_28_EXIT=1 VERIFIED_PROJECT_MODULES=16
+
+--- stderr ---
+

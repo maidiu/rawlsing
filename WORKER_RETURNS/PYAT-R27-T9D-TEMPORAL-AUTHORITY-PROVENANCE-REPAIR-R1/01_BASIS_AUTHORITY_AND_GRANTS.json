@@ -1,0 +1,88 @@
+{
+  "schema": "PYAT_R27_T9D_01_BASIS_AUTHORITY_AND_GRANTS@1",
+  "status": "REPAIRED_UNDER_BOUNDED_SOURCEFREE_ADAPTER",
+  "role": "original T9B/T9C productive adapter continuation; NOT independent reviewer; NOT HQ; NOT an EE12/N9/OC05/N11/N12/V3 issuer",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/rabochii-pyat-r27-t9d-native-authority-provenance-correction-r1",
+  "sealed_startup_commit": "7603c47610c01937e48b07f7fc69531964182911",
+  "original_t9c_author_commit": "9a33c2dcaa7ac0d50606416ab965488c9782934b",
+  "original_t9c_repair_payload": "d6e062684ca34b99ee9713c8c0affa0ed5c27f25",
+  "independent_t9r_commit": "299dbf0d3a54fa76e36e524c553662f60090fe72",
+  "grain": "SOURCEFREE_SYNTHETIC",
+  "authority_layers": {
+    "native_temporal_source_grant": {
+      "field": "provenance.native_multi_wave_authorization_status / TemporalValue.temporal_key (evaluate)",
+      "meaning": "the ORIGINAL V553 _authorize_v553_multi_wave_key verdict on the qualified anchor group at the clock; source-side temporal status only",
+      "unchanged_from_t9c": true
+    },
+    "product_authorization": {
+      "field": "OpportunitySet.temporal_key / product_observation_status / authorized_opportunity",
+      "meaning": "whether THIS product at THIS clock may present a permission-valid route",
+      "rule": "AUTHORIZED only when the native source grant is AUTHORIZED AND the product IS the observation at the query clock (used basis observation_year == clock) AND the actor entitlement is present; a held estimate or interpolated stand-in is never an authorized observation of the query year",
+      "t9d_repair": "T9D-1"
+    },
+    "actor_opportunity_entitlement": {
+      "field": "actor_opportunity_entitlement",
+      "values": ["GRANTED_BY_PRESENT_CURRENT_ACCESS_GRANT", "WITHHELD_NO_CURRENT_ACCESS_GRANT"],
+      "rule": "no route opens without an actual present current independently provided actor grant in StructuralWorld.access_grants; missing/invalid grant => held, never an open route",
+      "t9d_repair": "T9D-2",
+      "distinct_from_native_temporal_source_grant": true
+    },
+    "source_qualified_issuer_grant": {
+      "field": "source_grant (typed SourceGrant) / provenance.source_grant_status",
+      "rule": "typed test-only caller metadata; presence is never itself a grant. CHECKED against the used basis: source family, source owner, edition and currentness must all cover the product basis. Missing/mismatched/wrong-owner/non-current claims return explicit UNAVAILABLE refusals; no production original issuer or clearance is ever synthesized",
+      "refusals": [
+        "SOURCE_GRANT_UNAVAILABLE_MISSING_ISSUER",
+        "SOURCE_GRANT_UNAVAILABLE_SOURCE_OR_EDITION_MISMATCH",
+        "SOURCE_GRANT_UNAVAILABLE_NOT_CURRENT",
+        "SOURCE_GRANT_UNAVAILABLE_WRONG_SOURCE_OWNER"
+      ],
+      "t9d_repair": "T9D-5"
+    }
+  },
+  "product_observation_status_values": {
+    "OBSERVED_AT_CLOCK": "the used basis is a wave observed exactly at the query clock and the value is not an interpolated stand-in",
+    "HELD_ESTIMATE_NOT_OBSERVATION_AT_CLOCK": "a held/carried estimate for a year that was not observed; never an observation of the query year",
+    "INTERPOLATED_NOT_OBSERVED": "an interpolated stand-in inside a gap",
+    "REFUSED_NO_PRODUCT": "no product was produced"
+  },
+  "t9d_1_unused_future_context": {
+    "t9r_counterexample": "UNUSED_FUTURE_AUTHORITY_UPGRADE (M0, M2)",
+    "before": "archive {W0@1990}; product at retrospective 1995: basis W0, key PROBE_ONLY, no route",
+    "after_t9c_defect": "archive {W0@1990, W1@2000}; same value 0.20 and basis W0, but key became AUTHORIZED and ROUTE_DEFERRED_REVIEW opened",
+    "after_t9d_repair": "same value 0.20 and basis W0; product_observation_status=HELD_ESTIMATE_NOT_OBSERVATION_AT_CLOCK; product key PROBE_ONLY; authorized_opportunity=false; opportunity_ids=[ROUTE_BLOCKED_NO_SUPPORT]; only archive_context_wave_ids discloses W1",
+    "rule": "permission/product authority is determined per the actually USED basis at the clock, not per all supplied archive context",
+    "preserved_honest_estimates": {
+      "AS_OF_1995_all_methods": "0.20 using W0 alone",
+      "RETROSPECTIVE_1995_M1": "0.40 INTERPOLATED_NOT_OBSERVED",
+      "endpoints": {"1990": 0.2, "2000": 0.6}
+    }
+  },
+  "t9d_2_empty_actor_grants": {
+    "t9r_counterexample": "TWO_ANCHORS_EMPTY_GRANTS (M0, M1, M2)",
+    "t9c_defect": "two synthetic prior anchors with access_grants=() still returned authorized_opportunity=true and open participation/deferred-review routes",
+    "t9d_repair": "empty access_grants => actor_opportunity_entitlement=WITHHELD_NO_CURRENT_ACCESS_GRANT; opportunity_ids=[ROUTE_BLOCKED_NO_SUPPORT]; authorized_opportunity=false; band-implied routes appear only in exploratory_route_ids",
+    "note": "synthetic packet defaults and a hard-coded affirmative harmonization report can obtain a native temporal status but cannot establish source rights or actor authority"
+  },
+  "t9d_3_publication_lag_identity": {
+    "t9r_counterexample": "LAG_PLUS_RUPTURE",
+    "t9c_defect": "pub_lag_of parsed the pipe-suffixed rupture caveat as a fake source-wave identity: 'DELAYED|POST_RUPTURE_CARRY_HYPOTHETICAL:R1995|IDENTIFIED_SET_UNBOUNDED:STABILITY_NOT_ASSUMED'",
+    "t9d_repair": "typed fields publication_lag_wave_ids / archive_context_wave_ids / rupture_crossed_year / missing_excluded_wave_ids are the ONLY identity sources; pub_lag_of returns the typed basis-lag field; the uncertainty string is disclosure only and is never parsed for identity",
+    "invariant": "set(pub_lag_of(x)) <= set(x.basis_wave_ids) even with rupture qualifiers"
+  },
+  "t9d_4_duplicate_wave_ids": {
+    "t9r_counterexample": "DUPLICATE_EXCLUDED_BASIS",
+    "t9c_defect": "a valid 1990 wave followed by an excluded WRONG_SOURCE/WRONG_EDITION wave with the same id returned the valid value but labelled its basis WRONG_SOURCE/WRONG_EDITION via a last-wins dictionary over all input waves",
+    "t9d_repair": "duplicate wave_id in the supplied series is REFUSED BEFORE any source/country filtering with DUPLICATE_WAVE_ID_REFUSED; additionally basis_source_refs is captured from the exact selected wave objects, so product identity can never be rebound to an excluded input",
+    "order_invariance": "excluded-first and excluded-last produce the same valid basis, source and edition"
+  },
+  "preservation": {
+    "v553_original_imports": "T._interp / _pressure_band / _bounded_score / key constants / _authorize_v553_multi_wave_key remain identity-inherited from the byte-identical staged V553 closure (22 files, all byte-identical to T9C native)",
+    "ten_original_t9i_reds": "all ten remain green (frozen T9I court 47 PASS / 1 FAIL, the single failure being the stored two-time byte-artifact comparison)",
+    "as_of_vs_retrospective": "preserved; no unsafe old opportunity behavior restored to make historical byte-comparison assertions green"
+  },
+  "grants_made_here": {
+    "N9": false, "OC05": false, "EE12": false, "N11": false, "N12": false,
+    "Sorok_actor": false, "V3": false, "method_adoption": false
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "schema": "PYAT_R27_T9D_02_ARCHIVAL_SOURCE_KNOWN_AT@1",
+  "status": "CAPABILITIES_EXPRESSED_AND_ENFORCED; MISSING_ISSUER_RETURNS_HOLD_OR_UNAVAILABLE",
+  "role": "bounded adapter capability record; NOT a production original issuer, NOT a clearance, NOT an actor installation",
+  "capabilities": {
+    "archival_known_at_upper_year": {
+      "kind": "typed caller metadata on evaluate / read_selected_world",
+      "meaning": "a dated archive snapshot bound: a wave is knowable in that snapshot only if published_year <= bound",
+      "separation": "target valid time (observation/valid-at clock) and archival snapshot known-at time are separate clocks",
+      "enforcement": "waves published after the bound are excluded from admissibility in BOTH AS_OF and RETROSPECTIVE modes; when no support remains the adapter returns explicit no-support with refused_code=ARCHIVAL_KNOWN_AT_BOUND_EXCEEDED; it never synthesizes snapshot knowledge",
+      "absent_bound": "no snapshot is claimed; the supplied archive remains a caller precondition and is disclosed as such"
+    },
+    "source_grant": {
+      "kind": "typed caller metadata (SourceGrant: grant_source_family, grant_edition, grant_current, grant_source_owner)",
+      "meaning": "an asserted issuer grant for a source-family/edition",
+      "presence_is_not_a_grant": true,
+      "checks": ["grant_source_family covers the used basis", "grant_source_owner covers the used basis when supplied", "grant_edition covers the used basis", "grant_current is true"],
+      "outcomes": {
+        "missing_issuer_claim_when_required": "SOURCE_GRANT_UNAVAILABLE_MISSING_ISSUER",
+        "source_or_edition_mismatch": "SOURCE_GRANT_UNAVAILABLE_SOURCE_OR_EDITION_MISMATCH",
+        "non_current": "SOURCE_GRANT_UNAVAILABLE_NOT_CURRENT",
+        "wrong_source_owner": "SOURCE_GRANT_UNAVAILABLE_WRONG_SOURCE_OWNER",
+        "verified": "SOURCE_GRANT_VERIFIED (recorded; never inferred from metadata presence)"
+      },
+      "no_synthetic_authority": "the adapter never fabricates a production original issuer or a faked clearance; a missing issuer produces HOLD/UNAVAILABLE"
+    }
+  },
+  "frozen_vector_results": {
+    "D04": {
+      "vector": "evaluate M0 retrospective 1995, wave FUTURE_PUBLICATION observed 1990 published 2030, archival_known_at_upper_year 2020",
+      "expected": "No product basis from FUTURE_PUBLICATION; no .80 assertion as known by snapshot 2020",
+      "observed": {
+        "value": null,
+        "refused_code": "ARCHIVAL_KNOWN_AT_BOUND_EXCEEDED",
+        "temporal_key": "BLOCKED_TEMPORAL_KEY",
+        "basis_wave_ids": [],
+        "product_observation_status": "REFUSED_NO_PRODUCT"
+      },
+      "frozen_assertion": "result.value is None or FUTURE_PUBLICATION not in result.basis_wave_ids",
+      "status": "PASS"
+    },
+    "D16": {
+      "vector": "read_selected_world M0 query 1995, wave source ACTUAL_SOURCE edition E2, claimed grant ACTUAL_SOURCE/E1 current",
+      "expected": "Edition-mismatched source grant cannot authorize E2 product",
+      "observed": {
+        "refused_code": "SOURCE_GRANT_UNAVAILABLE_SOURCE_OR_EDITION_MISMATCH",
+        "opportunity_ids": ["ROUTE_BLOCKED_NO_SUPPORT"],
+        "source_grant_status": "SOURCE_GRANT_UNAVAILABLE_SOURCE_OR_EDITION_MISMATCH"
+      },
+      "status": "PASS"
+    },
+    "D17": {
+      "vector": "read_selected_world M0 query 1995 retrospective, wave ACTUAL_SOURCE/E1, claimed grant ACTUAL_SOURCE/E1 not current",
+      "expected": "Historical valid-at clock/archival acquisition cannot resurrect expired current permission",
+      "observed": {
+        "refused_code": "SOURCE_GRANT_UNAVAILABLE_NOT_CURRENT",
+        "opportunity_ids": ["ROUTE_BLOCKED_NO_SUPPORT"],
+        "source_grant_status": "SOURCE_GRANT_UNAVAILABLE_NOT_CURRENT"
+      },
+      "status": "PASS"
+    },
+    "D17_WRONG_OWNER": {
+      "vector": "read_selected_world M0 query 1995, wave ACTUAL_SOURCE/E1, claimed grant OTHER_SOURCE/E1 current",
+      "expected": "Wrong source owner grant cannot authorize this source/edition",
+      "observed": {
+        "refused_code": "SOURCE_GRANT_UNAVAILABLE_WRONG_SOURCE_OWNER",
+        "opportunity_ids": ["ROUTE_BLOCKED_NO_SUPPORT"],
+        "source_grant_status": "SOURCE_GRANT_UNAVAILABLE_WRONG_SOURCE_OWNER"
+      },
+      "status": "PASS"
+    }
+  },
+  "boolean_only_limitations_disclosed": {
+    "revoked_and_nonrenewed": "boolean revoked / archived_nonrenewed flags refuse both clock modes (unchanged); the adapter still has NO effective/discovered-at revocation timestamps, NO historical-entitlement-versus-present-use representation and NO dated archive custody beyond the typed archival_known_at_upper_year bound",
+    "actor_memory": "no actor identity, knowledge, memory or remembered-exposure evidence is ever produced"
+  },
+  "court": "T9R frozen delta50 executed against the pinned T9D adapter with T9D direct capability bindings: 50 PASS / 0 FAIL / 0 ERROR / 0 SKIP; raw traces in evidence/delta_observations.json",
+  "grants_made_here": {
+    "N9": false, "OC05": false, "EE12": false, "N11": false, "N12": false,
+    "Sorok_actor": false, "V3": false, "method_adoption": false
+  }
+}
