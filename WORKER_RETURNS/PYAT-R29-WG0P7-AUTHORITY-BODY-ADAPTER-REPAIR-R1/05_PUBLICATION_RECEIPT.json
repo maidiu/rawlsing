@@ -1,33 +1,29 @@
 {
- "schema": "WG0P7_PUBLICATION_RECEIPT@1",
- "repository": "maidiu/rawlsing",
  "branch": "agent/rabochii-pyat-r29-wg0p7-immutable-authority-body-binding-r1",
- "sealed_startup": "a72e75a011468a1f0ea7b251f5b07969f59488e0",
- "parent_implementation": "WG0P6 e7e429c3dfb649233e74e0e5106e51ff25024806",
- "independent_court_answered": "WG0O 3ee5d6a4e246fca89740d4d36ab26206230c83bf",
- "repair_commit": "fceab3b2f4dbbe26e5c4af442cd4b8d4f6a7b03a",
- "repair_commit_verified_remote": "fceab3b2f4dbbe26e5c4af442cd4b8d4f6a7b03a",
- "pristine_module_sha256": "3807e46eec947694a1bd76afe23fd96183dd989b511584ec2ad3991ae943925e",
- "repaired_module_sha256": "89fed0a6078b5bb2ced8ce930ef6f56364acf2a4a9b24ab6210adfe90d89a643",
- "repaired_module_git_blob_sha1": "62895078908ff748771da9a9fbcec6b36d34a803",
- "repaired_module_path": "candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/repro/wg0p4_workload.py",
+ "courts": {
+  "author26": "26/0/0/0",
+  "mandatory_236": "236/0/0/0 (33+3+80+55+65)",
+  "wg0p6_source_view_boundary": "42/0/0/0",
+  "wg0p7_frozen14_pytest": "15/0/0/0"
+ },
+ "final_containing_sha": "67058a94b53c4bf1d449dabc8dd5a59a650916b2",
+ "final_containing_sha_note": "third commit force-adds the runtime closure that candidate/court/.gitignore hid; the repaired module at the final remote is sha256 89fed0a6...",
  "frozen_14": {
-  "oracle_unchanged": true,
-  "adapter_unchanged": true,
   "A2": "AuthorityCurrentnessHold HELD, 0 cells, 0 I03",
   "A3": "IdentityError REFUSED, 0 cells, 0 I03",
   "A4": "IdentityError REFUSED, 0 cells, 0 I03",
+  "adapter_unchanged": true,
+  "oracle_unchanged": true,
   "other_negatives_typed": 8,
-  "positives_served": 3,
-  "positive_consumer_byte_identical_to_WG0O": true
+  "positive_consumer_byte_identical_to_WG0O": true,
+  "positives_served": 3
  },
- "courts": {
-  "mandatory_236": "236/0/0/0 (33+3+80+55+65)",
-  "wg0p7_frozen14_pytest": "15/0/0/0",
-  "wg0p6_source_view_boundary": "42/0/0/0",
-  "author26": "26/0/0/0"
- },
- "verdict": "IMPLEMENTER_REPAIR_RETURNED; INDEPENDENT WG0Q REVIEW AND PYAT HQ ACCEPTANCE PENDING",
+ "independent_court_answered": "WG0O 3ee5d6a4e246fca89740d4d36ab26206230c83bf",
+ "known_gaps": [
+  "WG0N hostiles 20 not re-executed (separate WG0M return absent from this lineage)",
+  "cold_pointer not runnable from committed evidence (literal <WORKTREE> placeholder and missing owner tree)",
+  "author69 historical 29/36 not re-claimed"
+ ],
  "not_claimed": [
   "independent verdict",
   "HQ acceptance",
@@ -37,9 +33,15 @@
   "OC05 / N11 / N12 / Sorok V3",
   "method adoption"
  ],
- "known_gaps": [
-  "WG0N hostiles 20 not re-executed (separate WG0M return absent from this lineage)",
-  "cold_pointer not runnable from committed evidence (literal <WORKTREE> placeholder and missing owner tree)",
-  "author69 historical 29/36 not re-claimed"
- ]
+ "parent_implementation": "WG0P6 e7e429c3dfb649233e74e0e5106e51ff25024806",
+ "pristine_module_sha256": "3807e46eec947694a1bd76afe23fd96183dd989b511584ec2ad3991ae943925e",
+ "repair_commit": "fceab3b2f4dbbe26e5c4af442cd4b8d4f6a7b03a",
+ "repair_commit_verified_remote": "fceab3b2f4dbbe26e5c4af442cd4b8d4f6a7b03a",
+ "repaired_module_git_blob_sha1": "62895078908ff748771da9a9fbcec6b36d34a803",
+ "repaired_module_path": "candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/repro/wg0p4_workload.py",
+ "repaired_module_sha256": "89fed0a6078b5bb2ced8ce930ef6f56364acf2a4a9b24ab6210adfe90d89a643",
+ "repository": "maidiu/rawlsing",
+ "schema": "WG0P7_PUBLICATION_RECEIPT@1",
+ "sealed_startup": "a72e75a011468a1f0ea7b251f5b07969f59488e0",
+ "verdict": "IMPLEMENTER_REPAIR_RETURNED; INDEPENDENT WG0Q REVIEW AND PYAT HQ ACCEPTANCE PENDING"
 }
