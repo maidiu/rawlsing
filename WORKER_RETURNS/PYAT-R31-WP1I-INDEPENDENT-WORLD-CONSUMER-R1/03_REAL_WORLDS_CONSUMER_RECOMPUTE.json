@@ -1,0 +1,115 @@
+{
+  "schema": "PYAT_R31_WP1I_PHASE_A_INDEPENDENT_RECOMPUTE_AND_PHASE_B_UNREACHED_R1",
+  "grade": "INDEPENDENT_SYNTHETIC_REFERENCE_NOT_AUTHOR_OUTPUT",
+  "WP1_run_state": "AUTHOR_NO_RUNNABLE_PRODUCT__HOLD",
+  "WP1_remote_cut": "108ea616ca186164bd43852085ac9090a95d83f2",
+  "frozen_pre_WP1_ref": "75f360d0f5b62d41d273bce21fae27d71e03c89b",
+  "independent_exact_fraction_recompute": {
+    "source_A": {
+      "independent_universe_n": 100,
+      "cells": {
+        "X1Y1": 18,
+        "X1Y0": 22,
+        "X0Y1": 12,
+        "X0Y0": 48
+      },
+      "P_Y_given_X": "9/20",
+      "P_X_given_Y": "3/5",
+      "P_Y_given_not_X": "1/5",
+      "P_X_given_not_Y": "11/35",
+      "raw_counts_not_population_estimate": true
+    },
+    "source_B": {
+      "independent_universe_n": 40,
+      "cells": {
+        "X1Y1": 1,
+        "X1Y0": 3,
+        "X0Y1": 5,
+        "X0Y0": 31
+      },
+      "P_Y_given_X": "1/4",
+      "P_X_given_Y": "1/6",
+      "no_cross_source_person_join": true
+    },
+    "zero_vs_missing": {
+      "observed_zero": "0/20=0 exact",
+      "unsupported": "0/0 undefined",
+      "missing": "9 positive, 11 negative, 5 unknown => [9/25,14/25]",
+      "suppressed": "no numerical disclosure"
+    },
+    "minority": {
+      "minority_size": 4,
+      "total_size": 100,
+      "within_minority_positive": 1,
+      "within_minority_rate": "1/4",
+      "invalid_overall_substitution": "1/100"
+    },
+    "F6": {
+      "WorldA": {
+        "positive": 30,
+        "negative": 70,
+        "unknown": 0,
+        "identified_interval": [
+          "3/10",
+          "3/10"
+        ],
+        "complete": true
+      },
+      "WorldB": {
+        "positive": 18,
+        "negative": 60,
+        "unknown": 22,
+        "identified_interval": [
+          "9/50",
+          "2/5"
+        ],
+        "complete": false
+      },
+      "forbidden_known_only_renormalization": "18/78=3/13, not unique legitimate completion"
+    },
+    "synthetic_material_world_test": {
+      "A": {
+        "route_operational": true,
+        "capacity": 2,
+        "feasible_actions": [
+          "remain_home",
+          "reach_clinic"
+        ]
+      },
+      "B": {
+        "route_operational": false,
+        "capacity": 0,
+        "feasible_actions": [
+          "remain_home"
+        ]
+      },
+      "difference": [
+        "reach_clinic"
+      ],
+      "label_only_control": "no feasibility change",
+      "unchanged_world_control": "identical action set",
+      "owner_authorization": "NOT_A_REAL_WORLD_RULE_OR_HISTORICAL_N10W_ISSUANCE"
+    },
+    "publication": {
+      "observation": "2020-12-31",
+      "release": "2021-04-01",
+      "asof_2021_03_31": "REFUSE",
+      "asof_2021_04_02": "ALLOWED_ONLY_SYNTHETIC",
+      "future_selected_world": "REFUSE",
+      "stale_epoch": "REFUSE"
+    }
+  },
+  "author_integration": {
+    "WP1_candidate_imported": false,
+    "WP1_actual_C1_N10E_generated_slice_executed": false,
+    "WP1_actual_two_field_historical_selected_world_reader_executed": false,
+    "WP1_owner_N9_selected_world_resolver_executed": false,
+    "WP1_author_tests_executed": false,
+    "native_owner_inherited_tests_executed": false,
+    "cold_WP1_process_replay_executed": false,
+    "publication_or_source_rights_granted": false,
+    "reason": "As of last exact direct GitHub compare WP1 branch remained identical to assigned 108ea616 startup, ahead=0; no authored runnable product, source files, provenance or tests exist on branch."
+  },
+  "scientific_decision": "Independent positive numbers/negative controls are frozen and locally runnable; they are NOT a WP1 forward material effect or a real source-conditional inference. Phase B not reached: no WP1 source or actual consumer output to compare.",
+  "no_interpretive_substitution": true
+}
