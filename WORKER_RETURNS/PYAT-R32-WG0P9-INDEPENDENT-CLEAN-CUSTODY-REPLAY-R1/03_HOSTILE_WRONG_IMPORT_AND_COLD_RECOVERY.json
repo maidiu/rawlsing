@@ -1,0 +1,596 @@
+{
+ "schema": "PYAT_R32_WG0P9_HOSTILE_AND_COLD_EVIDENCE@1",
+ "generated_at": "2026-10-17T23:19:37Z",
+ "verifier_fail_closed": {
+  "verify_baseline": "}",
+  "verify_missing_file": "WG0P8_PRE_I03_REFUSE:MISSING_OR_SYMLINK:/private/tmp/wg0p9_hostile/WORKER_RETURNS/PYAT-R31-WG0P8-PUBLICATION-CUSTODY-R1/candidate/court/.gitignore",
+  "verify_modified_sha": "WG0P8_PRE_I03_REFUSE:INPUT_HASH_OR_BLOB_CHANGED:/private/tmp/wg0p9_hostile/WORKER_RETURNS/PYAT-R31-WG0P8-PUBLICATION-CUSTODY-R1/candidate/court/.gitignore",
+  "verify_stale_source_inputs": "WG0P8_PRE_I03_REFUSE:STALE_SOURCE_INPUT_HASH_ALIAS",
+  "verify_swapped_p5": "WG0P8_PRE_I03_REFUSE:INPUT_HASH_OR_BLOB_CHANGED:/private/tmp/wg0p9_hostile/WORKER_RETURNS/PYAT-R31-WG0P8-PUBLICATION-CUSTODY-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/repro/wg0p4_workload.py",
+  "probe_import_as_published": "WG0P8_PRE_I03_REFUSE:WRONG_DIRECT_OR_UNREPAIRED_RUNTIME_MODULE",
+  "import_baseline": "OK WG0P6_RELEASE_VIEW_SOURCE_SNAPSHOT_BINDING@1",
+  "import_omitted_predecessor": "WG0P6_BOOTSTRAP_REFUSE:FileNotFoundError:[Errno 2] No such file or directory: '/private/tmp/wg0p9_hostile/WORKER_RETURNS/PYAT-R31-WG0P8-PUBLICATION-CUSTODY-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/pinned/rawlsing_next/pre553_empirical_query.py'",
+  "import_swapped_p5": "WG0P6_BOOTSTRAP_REFUSE:ImportError:SOURCE_PREIMAGE_CHANGED:/private/tmp/wg0p9_hostile/WORKER_RETURNS/PYAT-R31-WG0P8-PUBLICATION-CUSTODY-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/repro/wg0p4_workload.py"
+ },
+ "authority_seam": {
+  "authority_issuer_substitution__A1_wrong_issuer_qauth_substitution": {
+   "group": "authority_issuer_substitution",
+   "case": "A1_wrong_issuer_qauth_substitution",
+   "exception_type": "IdentityError",
+   "typed_refusal": "REFUSED",
+   "served_supported_original_fact": false,
+   "served_positive": false,
+   "new_I03_calls": 0,
+   "effects_sha256": null
+  },
+  "authority_issuer_substitution__A2_stale_issuer_epoch_same_identity": {
+   "group": "authority_issuer_substitution",
+   "case": "A2_stale_issuer_epoch_same_identity",
+   "exception_type": "AuthorityCurrentnessHold",
+   "typed_refusal": "HELD",
+   "served_supported_original_fact": false,
+   "served_positive": false,
+   "new_I03_calls": 0,
+   "effects_sha256": null
+  },
+  "authority_issuer_substitution__A3_same_hash_foreign_signed_body": {
+   "group": "authority_issuer_substitution",
+   "case": "A3_same_hash_foreign_signed_body",
+   "exception_type": "IdentityError",
+   "typed_refusal": "REFUSED",
+   "served_supported_original_fact": false,
+   "served_positive": false,
+   "new_I03_calls": 0,
+   "effects_sha256": null
+  },
+  "authority_issuer_substitution__A4_foreign_governed_operations_same_hash": {
+   "group": "authority_issuer_substitution",
+   "case": "A4_foreign_governed_operations_same_hash",
+   "exception_type": "IdentityError",
+   "typed_refusal": "REFUSED",
+   "served_supported_original_fact": false,
+   "served_positive": false,
+   "new_I03_calls": 0,
+   "effects_sha256": null
+  },
+  "authority_issuer_substitution__A5_foreign_authority_inside_authorities_tuple": {
+   "group": "authority_issuer_substitution",
+   "case": "A5_foreign_authority_inside_authorities_tuple",
+   "exception_type": "IdentityError",
+   "typed_refusal": "REFUSED",
+   "served_supported_original_fact": false,
+   "served_positive": false,
+   "new_I03_calls": 0,
+   "effects_sha256": null
+  },
+  "positive_owner__P1_unmodified_owner_serves": {
+   "group": "positive_owner",
+   "case": "P1_unmodified_owner_serves",
+   "exception_type": null,
+   "typed_refusal": null,
+   "served_supported_original_fact": true,
+   "served_positive": true,
+   "new_I03_calls": 4,
+   "effects_sha256": null
+  },
+  "positive_owner__P2_own_authority_identity_rebind_serves": {
+   "group": "positive_owner",
+   "case": "P2_own_authority_identity_rebind_serves",
+   "exception_type": null,
+   "typed_refusal": null,
+   "served_supported_original_fact": true,
+   "served_positive": true,
+   "new_I03_calls": 4,
+   "effects_sha256": null
+  },
+  "positive_owner__P3_replay_identical_consumer": {
+   "group": "positive_owner",
+   "case": "P3_replay_identical_consumer",
+   "exception_type": null,
+   "typed_refusal": null,
+   "served_supported_original_fact": true,
+   "served_positive": true,
+   "new_I03_calls": 0,
+   "effects_sha256": null
+  },
+  "revocation_and_alias__C1_source_artifact_revocation_not_release_tag": {
+   "group": "revocation_and_alias",
+   "case": "C1_source_artifact_revocation_not_release_tag",
+   "exception_type": "RevocationError",
+   "typed_refusal": "REFUSED",
+   "served_supported_original_fact": false,
+   "served_positive": false,
+   "new_I03_calls": 0,
+   "effects_sha256": null
+  },
+  "revocation_and_alias__C2_missing_independent_issuer": {
+   "group": "revocation_and_alias",
+   "case": "C2_missing_independent_issuer",
+   "exception_type": "IdentityError",
+   "typed_refusal": "REFUSED",
+   "served_supported_original_fact": false,
+   "served_positive": false,
+   "new_I03_calls": 0,
+   "effects_sha256": null
+  },
+  "revocation_and_alias__C3_alias_pointer_across_genuine_source_universes": {
+   "group": "revocation_and_alias",
+   "case": "C3_alias_pointer_across_genuine_source_universes",
+   "exception_type": "IdentityError",
+   "typed_refusal": "REFUSED",
+   "served_supported_original_fact": false,
+   "served_positive": false,
+   "new_I03_calls": 0,
+   "effects_sha256": null
+  },
+  "signature_and_callback__B1_self_rehashed_checkpoint_foreign_signature": {
+   "group": "signature_and_callback",
+   "case": "B1_self_rehashed_checkpoint_foreign_signature",
+   "exception_type": "ColdRestartError",
+   "typed_refusal": "REFUSED",
+   "served_supported_original_fact": false,
+   "served_positive": false,
+   "new_I03_calls": 0,
+   "effects_sha256": null
+  },
+  "signature_and_callback__B2_foreign_signature_proper_tag": {
+   "group": "signature_and_callback",
+   "case": "B2_foreign_signature_proper_tag",
+   "exception_type": "ColdRestartError",
+   "typed_refusal": "REFUSED",
+   "served_supported_original_fact": false,
+   "served_positive": false,
+   "new_I03_calls": 0,
+   "effects_sha256": null
+  },
+  "signature_and_callback__B3_captured_executor_callback_fabricates_fact": {
+   "group": "signature_and_callback",
+   "case": "B3_captured_executor_callback_fabricates_fact",
+   "exception_type": "IdentityError",
+   "typed_refusal": "REFUSED",
+   "served_supported_original_fact": false,
+   "served_positive": false,
+   "new_I03_calls": 0,
+   "effects_sha256": null
+  }
+ },
+ "authority_body": {
+  "authority_body_integrity__B10_no_permitted_operation": {
+   "group": "authority_body_integrity",
+   "case": "B10_no_permitted_operation",
+   "exception_type": "IdentityError",
+   "typed_refusal": "REFUSED",
+   "served_supported_original_fact": false,
+   "served_positive": false,
+   "new_I03_calls": 0,
+   "effects_sha256": null
+  },
+  "authority_body_integrity__B11_foreign_operation_same_triple": {
+   "group": "authority_body_integrity",
+   "case": "B11_foreign_operation_same_triple",
+   "exception_type": "IdentityError",
+   "typed_refusal": "REFUSED",
+   "served_supported_original_fact": false,
+   "served_positive": false,
+   "new_I03_calls": 0,
+   "effects_sha256": null
+  },
+  "authority_body_integrity__B12_foreign_replay_protocol_ref": {
+   "group": "authority_body_integrity",
+   "case": "B12_foreign_replay_protocol_ref",
+   "exception_type": "IdentityError",
+   "typed_refusal": "REFUSED",
+   "served_supported_original_fact": false,
+   "served_positive": false,
+   "new_I03_calls": 0,
+   "effects_sha256": null
+  },
+  "authority_body_integrity__B1_semantic_fingerprint_same_triple": {
+   "group": "authority_body_integrity",
+   "case": "B1_semantic_fingerprint_same_triple",
+   "exception_type": "IdentityError",
+   "typed_refusal": "REFUSED",
+   "served_supported_original_fact": false,
+   "served_positive": false,
+   "new_I03_calls": 0,
+   "effects_sha256": null
+  },
+  "authority_body_integrity__B2_parent_authority_refs_same_triple": {
+   "group": "authority_body_integrity",
+   "case": "B2_parent_authority_refs_same_triple",
+   "exception_type": "IdentityError",
+   "typed_refusal": "REFUSED",
+   "served_supported_original_fact": false,
+   "served_positive": false,
+   "new_I03_calls": 0,
+   "effects_sha256": null
+  },
+  "authority_body_integrity__B3_replay_root_same_triple": {
+   "group": "authority_body_integrity",
+   "case": "B3_replay_root_same_triple",
+   "exception_type": "IdentityError",
+   "typed_refusal": "REFUSED",
+   "served_supported_original_fact": false,
+   "served_positive": false,
+   "new_I03_calls": 0,
+   "effects_sha256": null
+  },
+  "authority_body_integrity__B4_governed_family_removed": {
+   "group": "authority_body_integrity",
+   "case": "B4_governed_family_removed",
+   "exception_type": "IdentityError",
+   "typed_refusal": "REFUSED",
+   "served_supported_original_fact": false,
+   "served_positive": false,
+   "new_I03_calls": 0,
+   "effects_sha256": null
+  },
+  "authority_body_integrity__B5_false_authority_kind": {
+   "group": "authority_body_integrity",
+   "case": "B5_false_authority_kind",
+   "exception_type": "IdentityError",
+   "typed_refusal": "REFUSED",
+   "served_supported_original_fact": false,
+   "served_positive": false,
+   "new_I03_calls": 0,
+   "effects_sha256": null
+  },
+  "authority_body_integrity__B6_negative_limit_added": {
+   "group": "authority_body_integrity",
+   "case": "B6_negative_limit_added",
+   "exception_type": "IdentityError",
+   "typed_refusal": "REFUSED",
+   "served_supported_original_fact": false,
+   "served_positive": false,
+   "new_I03_calls": 0,
+   "effects_sha256": null
+  },
+  "authority_body_integrity__B7_deny_state_same_triple": {
+   "group": "authority_body_integrity",
+   "case": "B7_deny_state_same_triple",
+   "exception_type": "IdentityError",
+   "typed_refusal": "REFUSED",
+   "served_supported_original_fact": false,
+   "served_positive": false,
+   "new_I03_calls": 0,
+   "effects_sha256": null
+  },
+  "authority_body_integrity__B8_false_content_hash_claim": {
+   "group": "authority_body_integrity",
+   "case": "B8_false_content_hash_claim",
+   "exception_type": "IdentityError",
+   "typed_refusal": "REFUSED",
+   "served_supported_original_fact": false,
+   "served_positive": false,
+   "new_I03_calls": 0,
+   "effects_sha256": null
+  },
+  "authority_body_integrity__B9_foreign_scope_same_triple": {
+   "group": "authority_body_integrity",
+   "case": "B9_foreign_scope_same_triple",
+   "exception_type": "IdentityError",
+   "typed_refusal": "REFUSED",
+   "served_supported_original_fact": false,
+   "served_positive": false,
+   "new_I03_calls": 0,
+   "effects_sha256": null
+  },
+  "owner_grant_and_cold__R1_source_grant_withdrawn_after_plan": {
+   "group": "owner_grant_and_cold",
+   "case": "R1_source_grant_withdrawn_after_plan",
+   "exception_type": "RevocationError",
+   "typed_refusal": "REFUSED",
+   "served_supported_original_fact": false,
+   "served_positive": false,
+   "new_I03_calls": 0,
+   "effects_sha256": null
+  },
+  "owner_grant_and_cold__R2_source_artifact_revocation_unknown": {
+   "group": "owner_grant_and_cold",
+   "case": "R2_source_artifact_revocation_unknown",
+   "exception_type": "RevocationError",
+   "typed_refusal": "REFUSED",
+   "served_supported_original_fact": false,
+   "served_positive": false,
+   "new_I03_calls": 0,
+   "effects_sha256": null
+  },
+  "owner_grant_and_cold__R3_cold_forged_source_edition": {
+   "group": "owner_grant_and_cold",
+   "case": "R3_cold_forged_source_edition",
+   "exception_type": "ColdRestartError",
+   "typed_refusal": "REFUSED",
+   "served_supported_original_fact": false,
+   "served_positive": false,
+   "new_I03_calls": 0,
+   "effects_sha256": null
+  },
+  "owner_grant_and_cold__R4_cold_forged_replay_root": {
+   "group": "owner_grant_and_cold",
+   "case": "R4_cold_forged_replay_root",
+   "exception_type": "ColdRestartError",
+   "typed_refusal": "REFUSED",
+   "served_supported_original_fact": false,
+   "served_positive": false,
+   "new_I03_calls": 0,
+   "effects_sha256": null
+  },
+  "owner_grant_and_cold__R5_cross_plan_cold": {
+   "group": "owner_grant_and_cold",
+   "case": "R5_cross_plan_cold",
+   "exception_type": "ColdRestartError",
+   "typed_refusal": "REFUSED",
+   "served_supported_original_fact": false,
+   "served_positive": false,
+   "new_I03_calls": 0,
+   "effects_sha256": null
+  },
+  "owner_grant_and_cold__R6_valid_cold_restore": {
+   "group": "owner_grant_and_cold",
+   "case": "R6_valid_cold_restore",
+   "exception_type": null,
+   "typed_refusal": null,
+   "served_supported_original_fact": false,
+   "served_positive": false,
+   "new_I03_calls": 0,
+   "effects_sha256": null
+  },
+  "positive_current_body__P1_pristine_serves": {
+   "group": "positive_current_body",
+   "case": "P1_pristine_serves",
+   "exception_type": null,
+   "typed_refusal": null,
+   "served_supported_original_fact": true,
+   "served_positive": true,
+   "new_I03_calls": 4,
+   "effects_sha256": "4b9d03246167c93df6dde8d590fac33c24c51ef158d60abd8ee33601ca059550"
+  },
+  "positive_current_body__P2_owner_identity_rebind_serves": {
+   "group": "positive_current_body",
+   "case": "P2_owner_identity_rebind_serves",
+   "exception_type": null,
+   "typed_refusal": null,
+   "served_supported_original_fact": true,
+   "served_positive": true,
+   "new_I03_calls": 4,
+   "effects_sha256": "4b9d03246167c93df6dde8d590fac33c24c51ef158d60abd8ee33601ca059550"
+  },
+  "positive_current_body__P3_replay_identical": {
+   "group": "positive_current_body",
+   "case": "P3_replay_identical",
+   "exception_type": null,
+   "typed_refusal": null,
+   "served_supported_original_fact": true,
+   "served_positive": true,
+   "new_I03_calls": 0,
+   "effects_sha256": "4b9d03246167c93df6dde8d590fac33c24c51ef158d60abd8ee33601ca059550"
+  },
+  "positive_current_body__P4_identical_body_rebind": {
+   "group": "positive_current_body",
+   "case": "P4_identical_body_rebind",
+   "exception_type": null,
+   "typed_refusal": null,
+   "served_supported_original_fact": true,
+   "served_positive": true,
+   "new_I03_calls": 4,
+   "effects_sha256": "4b9d03246167c93df6dde8d590fac33c24c51ef158d60abd8ee33601ca059550"
+  },
+  "source_item_swap__S1_source_artifact_ref_swap": {
+   "group": "source_item_swap",
+   "case": "S1_source_artifact_ref_swap",
+   "exception_type": "IdentityError",
+   "typed_refusal": "REFUSED",
+   "served_supported_original_fact": false,
+   "served_positive": false,
+   "new_I03_calls": 0,
+   "effects_sha256": null
+  },
+  "source_item_swap__S2_source_edition_swap": {
+   "group": "source_item_swap",
+   "case": "S2_source_edition_swap",
+   "exception_type": "IdentityError",
+   "typed_refusal": "REFUSED",
+   "served_supported_original_fact": false,
+   "served_positive": false,
+   "new_I03_calls": 0,
+   "effects_sha256": null
+  },
+  "source_item_swap__S3_release_universe_swap": {
+   "group": "source_item_swap",
+   "case": "S3_release_universe_swap",
+   "exception_type": "IdentityError",
+   "typed_refusal": "REFUSED",
+   "served_supported_original_fact": false,
+   "served_positive": false,
+   "new_I03_calls": 0,
+   "effects_sha256": null
+  },
+  "source_item_swap__S4_item_metadata_same_cardinality": {
+   "group": "source_item_swap",
+   "case": "S4_item_metadata_same_cardinality",
+   "exception_type": "FrontierError",
+   "typed_refusal": "REFUSED",
+   "served_supported_original_fact": false,
+   "served_positive": false,
+   "new_I03_calls": 0,
+   "effects_sha256": null
+  },
+  "source_item_swap__S5_qrefs_swap": {
+   "group": "source_item_swap",
+   "case": "S5_qrefs_swap",
+   "exception_type": "IdentityError",
+   "typed_refusal": "REFUSED",
+   "served_supported_original_fact": false,
+   "served_positive": false,
+   "new_I03_calls": 0,
+   "effects_sha256": null
+  },
+  "temporal_authority_status__T1_expired_interval_same_triple": {
+   "group": "temporal_authority_status",
+   "case": "T1_expired_interval_same_triple",
+   "exception_type": "AuthorityCurrentnessHold",
+   "typed_refusal": "HELD",
+   "served_supported_original_fact": false,
+   "served_positive": false,
+   "new_I03_calls": 0,
+   "effects_sha256": null
+  },
+  "temporal_authority_status__T2_unknown_epoch_none": {
+   "group": "temporal_authority_status",
+   "case": "T2_unknown_epoch_none",
+   "exception_type": "AuthorityCurrentnessHold",
+   "typed_refusal": "HELD",
+   "served_supported_original_fact": false,
+   "served_positive": false,
+   "new_I03_calls": 0,
+   "effects_sha256": null
+  },
+  "temporal_authority_status__T3_unknown_epoch_label": {
+   "group": "temporal_authority_status",
+   "case": "T3_unknown_epoch_label",
+   "exception_type": "AuthorityCurrentnessHold",
+   "typed_refusal": "HELD",
+   "served_supported_original_fact": false,
+   "served_positive": false,
+   "new_I03_calls": 0,
+   "effects_sha256": null
+  },
+  "temporal_authority_status__T4_current_interval_unissued_body": {
+   "group": "temporal_authority_status",
+   "case": "T4_current_interval_unissued_body",
+   "exception_type": "AuthorityCurrentnessHold",
+   "typed_refusal": "HELD",
+   "served_supported_original_fact": false,
+   "served_positive": false,
+   "new_I03_calls": 0,
+   "effects_sha256": null
+  },
+  "temporal_authority_status__T5_supersession_only_same_triple": {
+   "group": "temporal_authority_status",
+   "case": "T5_supersession_only_same_triple",
+   "exception_type": "AuthorityCurrentnessHold",
+   "typed_refusal": "HELD",
+   "served_supported_original_fact": false,
+   "served_positive": false,
+   "new_I03_calls": 0,
+   "effects_sha256": null
+  },
+  "temporal_authority_status__T6_stale_single_date": {
+   "group": "temporal_authority_status",
+   "case": "T6_stale_single_date",
+   "exception_type": "AuthorityCurrentnessHold",
+   "typed_refusal": "HELD",
+   "served_supported_original_fact": false,
+   "served_positive": false,
+   "new_I03_calls": 0,
+   "effects_sha256": null
+  },
+  "temporal_authority_status__T7_owner_known_before_explicit_interval": {
+   "group": "temporal_authority_status",
+   "case": "T7_owner_known_before_explicit_interval",
+   "exception_type": "IdentityError",
+   "typed_refusal": "REFUSED",
+   "served_supported_original_fact": false,
+   "served_positive": false,
+   "new_I03_calls": 0,
+   "effects_sha256": null
+  }
+ },
+ "cold": {
+  "crash": {
+   "pid": 22473,
+   "exit": 23,
+   "i03": 1,
+   "manifest": "bcd255228ef35edcb9b59436b76e1eb78947c07180f2936779572f510981c140",
+   "units": 3,
+   "receipt_hash": "caac243fc25c521acc10b2e082b55bdb854921dff8f730680d82eeaf2dcabcbd",
+   "receipt_class": "rawlsing_next.pre553_batch_runner.UnitExecutionReceipt",
+   "durability": [
+    {
+     "call": "fsync",
+     "kind": "file"
+    },
+    {
+     "call": "replace",
+     "source": "/tmp/wg0p9_run/cold_replay/checkpoint.json.tmp-97f8a24e911a819e",
+     "target": "/tmp/wg0p9_run/cold_replay/checkpoint.json"
+    },
+    {
+     "call": "fsync",
+     "kind": "directory"
+    }
+   ]
+  },
+  "resume": {
+   "pid": 22474,
+   "exit": 0,
+   "i03": 2,
+   "manifest": "bcd255228ef35edcb9b59436b76e1eb78947c07180f2936779572f510981c140",
+   "units": 3,
+   "restored_receipt": "caac243fc25c521acc10b2e082b55bdb854921dff8f730680d82eeaf2dcabcbd",
+   "receipt_class": "rawlsing_next.pre553_batch_runner.UnitExecutionReceipt",
+   "consumer_served": true
+  },
+  "distinct_pids": true,
+  "same_manifest": true,
+  "pointer": {
+   "pid": 22501,
+   "same_original_manifest": true,
+   "manifest_units": 3,
+   "checkpoint_original_receipts": 1,
+   "error": {
+    "type": "IdentityError",
+    "message": "RELEASE_VIEW_SOURCE_SNAPSHOT_NOT_SEALED_C11_LINEAGE"
+   },
+   "new_I03_calls": 0,
+   "owner_journal_unchanged": true,
+   "custody_unchanged": true,
+   "restored_receipts": 0,
+   "candidate_sha256": "89fed0a6078b5bb2ced8ce930ef6f56364acf2a4a9b24ab6210adfe90d89a643"
+  }
+ },
+ "positive": {
+  "cells": 42,
+  "i03": 4,
+  "effects_sha256": "4b9d03246167c93df6dde8d590fac33c24c51ef158d60abd8ee33601ca059550",
+  "served": true,
+  "consumer_ops": [
+   "OP-WG0P-HH-MR-02-MARGINAL",
+   "OP-WG0P-ORD-01-MARGINAL",
+   "OP-WG0P-ORD-05-MARGINAL"
+  ]
+ },
+ "preserved": {
+  "wg0n_unconstructible": 5,
+  "wg0n_two_historical_characterisation_failures": 2,
+  "wg0n_verdict_restored_sha256": "839adc7508fcd81bd0a59af8f0fc8793b8ea075c80661683b776124cb90a228b",
+  "wg0n_verdict_present_in_p8": false
+ },
+ "transport_defects": [
+  {
+   "id": "D1",
+   "what": "probe_import requires VERSION WG0P4_NATIVE_FRONTIER_COLD@1 on repaired P5 whose VERSION is WG0P6_RELEASE_VIEW_SOURCE_SNAPSHOT_BINDING@1",
+   "effect": "run/probe-import refuse correct module exit 86"
+  },
+  {
+   "id": "D2",
+   "what": "bootstrap_p6 atexit receipt writes candidate/observations/imports; parent dir absent; mkdir lacks parents",
+   "effect": "no import-audit receipt; error swallowed"
+  },
+  {
+   "id": "D3",
+   "what": "candidate/observations and candidate/runtime directories absent",
+   "effect": "fresh42 teardown error and cold-pointer mkdir failure in pristine P8 tree"
+  },
+  {
+   "id": "D4",
+   "what": "cold_comparison.json cold_directory sanitized to <WORKTREE>/... and inherited cold dir lacks owner/",
+   "effect": "cold pointer test cannot run as published"
+  },
+  {
+   "id": "D5",
+   "what": "reviewer_frozen/03_INHERITED/WG0N/02_PHASE_B_VERDICT.md omitted",
+   "effect": "WG0O 17 is 16/17 as published; exact Git restore 839adc... gives 17/17"
+  }
+ ]
+}

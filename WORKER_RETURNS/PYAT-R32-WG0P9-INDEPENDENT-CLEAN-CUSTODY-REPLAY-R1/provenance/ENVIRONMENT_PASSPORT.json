@@ -1,0 +1,44 @@
+{
+ "schema": "PYAT_00D_ENVIRONMENT_PASSPORT_DELTA@1",
+ "environment_id": "dsh-local-macos-wg0p9-01",
+ "epoch_id": "wg0p9-2026-10-17",
+ "session_alias": "wg0p9-independent-native-replay",
+ "surface": "DSH harness local shell",
+ "machine_alias": "reviewer-mbp-macos-13.7.8-x86_64",
+ "status": "LIVE_VERIFIED",
+ "last_live_probe_at": "2026-10-17T23:20:28Z",
+ "interpreter": "Python 3.11.3",
+ "pytest": "9.1.1",
+ "git": "git version 2.39.5 (Apple Git-154)",
+ "clean_checkout_path": "/tmp/wg0p9_p8",
+ "clean_checkout_commit": "e1d82971f8c07147550ce53ef3c4bc52f349fed3",
+ "clean_checkout_state": "detached; source files clean",
+ "deliverables_worktree": "/tmp/wg0p9_fresh",
+ "branch": "agent/userdirect-pyat-20261017-r32-wg0p9-independent-clean-native-replay-r1",
+ "sealed_startup": "32b867444a9a466768d00ea31ef249394a5253f3",
+ "observed_model": "deepseek-flash (harness model alias; not externally attested)",
+ "source_identity": {
+  "p8_commit": "e1d82971f8c07147550ce53ef3c4bc52f349fed3",
+  "p5_sha256": "89fed0a6078b5bb2ced8ce930ef6f56364acf2a4a9b24ab6210adfe90d89a643",
+  "p5_git_blob": "62895078908ff748771da9a9fbcec6b36d34a803",
+  "source_inputs_sha256": "2e7d47d2a14fe1fec12fd574c1183fadf50ee25b6f10a62ffae8858e29885418",
+  "source_inputs_count": 187,
+  "restored_eleven": 11,
+  "symlinks": 0
+ },
+ "privacy_gate": {
+  "original_sav_dta": "NOT_ACCESSED",
+  "u_epre": "NOT_ISSUED_NOT_ACCESSED",
+  "private_source_to_third_party": "NONE",
+  "actor_v3": "NOT_ACCESSED"
+ },
+ "assignments_completed": [
+  "WG0P9 clean checkout custody verification",
+  "WG0P9 actual native courts",
+  "WG0P9 cold crash/resume and pointer hostile",
+  "WG0P9 hostile transport verification"
+ ],
+ "eligibility_for_continuation": "LIVE for bounded WG0P10 repair rerun",
+ "expiry_trigger": "session reset or context saturation",
+ "conflicts": "none; independent reviewer"
+}
