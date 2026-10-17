@@ -1,0 +1,69 @@
+{
+  "schema": "PYAT_R31_AR1_ARCHIVE_CUSTODY@1",
+  "sealed_git_commit": "88d025fa207b53b90aeae57c7f3d73d03d09a630",
+  "target": {
+    "name": "Rawlsing_authority_census_exports.zip",
+    "status": "ARCHIVE_BYTES_NOT_AVAILABLE_TO_THIS_WORKER",
+    "byte_length": null,
+    "sha256": null,
+    "zip_members": null,
+    "member_hashes_verified": false,
+    "claim": "No known ZIP content inspected; no 11-family completeness/copy/supersession conclusion"
+  },
+  "surfaces_checked": [
+    {
+      "surface": "sealed GitHub full recursive tree",
+      "method": "GET git/trees/88d025...?recursive=1",
+      "entries": 8949,
+      "truncated": false,
+      "zip_blobs": 0,
+      "exact_filename_hits": 0,
+      "tree_txt_exact_name_hits": 0
+    },
+    {
+      "surface": "accessible local /mnt/data",
+      "method": "find -maxdepth 2 for named archive/tree + file listing",
+      "status": "no matching target",
+      "permission_scope": "provided attachment working set only"
+    },
+    {
+      "surface": "Project and Library filename search",
+      "method": "files.search named archive and tree.txt",
+      "status": "exact archive not found; separate differently named tree listing identified"
+    },
+    {
+      "surface": "connected Google Drive",
+      "method": "filename searches for Rawlsing_authority_census_exports and tree.txt",
+      "status": "no matches on accessible Drive search; not proof absent from owner's inaccessible storage"
+    }
+  ],
+  "related_verified_file": {
+    "name": "rawlsing-g8-runtime-237508.JNnkoC-tree.txt",
+    "surface": "accessible Library file materialized to isolated scratch",
+    "byte_length": 111035,
+    "sha256": "f8b01e9e1bb98f729b429ea8fca952720c16066bf646e6d6a327f458a4a8b54c",
+    "line_count": 1377,
+    "first_line": "[1.3G]  /private/tmp/rawlsing-g8-runtime-237508.JNnkoC",
+    "identity_relation": "RELATED_TREE_LISTING_ONLY__NOT_PROVED_USER_REFERENCED_TREE_TXT",
+    "archive_filename_references_in_tree": 0
+  },
+  "historical_known_custody": {
+    "master_campaign": {
+      "path": "data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/CONTROL_ROOM_AUTHORITY_PRESERVATION_AND_DEDUP/AUTHORITY_CENSUS_CAMPAIGN/00_MASTER_CAMPAIGN_AUTHORITY.md",
+      "blob": "d1bc3698721c41703f52d044b089145ce3c55cec",
+      "commit": "88d025fa207b53b90aeae57c7f3d73d03d09a630"
+    },
+    "parent_long_memory": {
+      "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/39_LONG_MEMORY_INHERITANCE_AND_CURRENT_MACHINE_ZERO_LOSS_DELTA_RECONCILIATION_AUTHORITY.md",
+      "blob": "9cc69780e8ece14884989ef3482dc051ecd0ec47",
+      "commit": "88d025fa207b53b90aeae57c7f3d73d03d09a630"
+    },
+    "continuity_bank": {
+      "path": "PYAT_CONTROL_ROOM/20261017_LAST_CHAT_CONTINUITY_BANK_R1/01_NONREDUNDANT_DECISIONS_AND_CUSTODY.md",
+      "blob": "a67e2a2cec61b98d3256ee3150c498703e931b33",
+      "commit": "29339f298c81aa3e3d96160246322920575e15ff"
+    }
+  },
+  "handoff_exact_request": "Competent archive custodian: provide exact Rawlsing_authority_census_exports.zip bytes or a content-addressed authorized readable ZIP artifact with SHA256, size, manifest, original path and custody authority, plus the specifically user-referenced tree.txt if distinct. Do not reconstruct missing archive from retrospective prose.",
+  "no_global_absence_claim": true
+}
