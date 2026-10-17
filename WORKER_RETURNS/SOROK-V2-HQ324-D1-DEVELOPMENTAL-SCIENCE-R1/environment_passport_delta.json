@@ -1,0 +1,43 @@
+{
+  "passport_schema": "SOROK_WARM_ENVIRONMENT_PASSPORT_R1",
+  "environment_id": "SOROK-D1-RESEARCH-V8-EPHEMERAL",
+  "epoch_id": "HQ324-D1-20261017",
+  "owner_session_alias": "D1-SCIENCE-WORKER",
+  "surface": "BROWSER_GITHUB_PLUS_ISOLATED_JAVASCRIPT",
+  "status": "RETURNED_NO_RUNTIME_CONTINUITY_CLAIM",
+  "sealed_startup": {
+    "commit": "713f4aabaf872866d990a5f74a59cd92253b33ae",
+    "branch": "agent/research-sorok-v2-hq324-d1-developmental-capability-constraints-r1",
+    "verified_against_direct_remote_head": true
+  },
+  "capabilities": {
+    "github_connector_read": "VERIFIED",
+    "github_write": "VERIFIED_IF_PUSH_CONFIRMED",
+    "javascript": "VERIFIED",
+    "python": "NOT_REQUIRED",
+    "pytest": "NOT_REQUIRED",
+    "git_worktree": "NOT_AVAILABLE"
+  },
+  "dependency_closure_status": "SELF_CONTAINED_SOURCEFREE_NO_NATIVE_IMPORTS",
+  "science_grade": "RESEARCH_CANDIDATE_AND_SYNTHETIC_LOGIC_ONLY",
+  "test_suites": [
+    {
+      "name": "D1_SYNTHETIC_CAPABILITY_BOUNDARY",
+      "pass": 22,
+      "fail": 0,
+      "skipped": 0,
+      "runner": "functions V8; exact judge code and fixtures published"
+    }
+  ],
+  "original_surveys": "NOT_RUN",
+  "actor_models": "NOT_RUN",
+  "model": "user-selected Browser GPT-6 High",
+  "cash_known": "UNKNOWN",
+  "quota_known": "UNKNOWN",
+  "future_same_runtime": "NOT_ASSUMED",
+  "independent_I2": "HQ_OWNED_NOT_PERFORMED",
+  "next_affinity": [
+    "B_FIRST",
+    "DEVELOPMENTAL_CONSTRAINTS"
+  ]
+}

@@ -1,0 +1,567 @@
+{
+  "schema": "SOROK_D1_CAPABILITY_PREDICATES@0.1.0",
+  "grade": "SOURCE_GRADED_RESEARCH_ONLY",
+  "accepted_phase_authority": "V3_DEVELOPMENTAL_PHASE_RULE@1.1.0",
+  "optional_phase_segment_count": 0,
+  "statuses": {
+    "CAPABILITY_PRESENT": "positive actor-scoped witness; candidate possibility only, no action certainty",
+    "CAPABILITY_ABSENT": "positive counterevidence in same relevant scope, not missing data/age",
+    "CAPABILITY_UNKNOWN": "unestablished; no positive capability-dependent proposal",
+    "CAPABILITY_CONDITIONED": "positive when all named contextual facts currently verified; reevaluate"
+  },
+  "required_instance_keys": [
+    "actor_id",
+    "capability_id",
+    "status",
+    "scope_ref",
+    "effective_from",
+    "effective_to",
+    "witness_refs",
+    "conditions",
+    "evidence_grade",
+    "source_refs",
+    "actor_access_refs",
+    "candidate_version"
+  ],
+  "restrictions": [
+    "not ADP008 phase segment",
+    "no age-only booleans",
+    "no demographic or typology→trait",
+    "no calibrated individual outcome probability",
+    "no inferred belief from exposure",
+    "no effect-owner grant",
+    "no third-party private inference",
+    "no retrocausal past rewrite"
+  ],
+  "predicates": [
+    {
+      "id": "C01",
+      "name": "EMBODIED_OBJECT_ACTION",
+      "definition": "body/tool/setting-specific capacity for object manipulation",
+      "science_grade": "EVIDENCE_CONSTRAINED_PROPOSAL",
+      "evidence_source_ids": [
+        "S01"
+      ],
+      "studied_domain": "body/tool/setting-specific capacity for object manipulation",
+      "required_generated_actor_facts": [
+        "body_ref",
+        "practice_ref",
+        "object_access_ref",
+        "setting_ref"
+      ],
+      "observable_behavior": "ride/lock/retrieve with specific equipment",
+      "permitted_computational_use": "only physically feasible proposal",
+      "negative_cases": "no age-to-riding or free property",
+      "individual_population_cultural_and_time_limits": "assistive devices, disability, environment, schooling",
+      "actor_awareness": "No fact is actor-accessible merely because an analyst stores it; actor_access_refs must be separately admitted, third-party private states are not inferred.",
+      "falsifier": "Swapping only chronological age must not change this predicate; withdrawing exact material skill/access/ability witness may change its eligibility; no respondent-level probability is supplied.",
+      "age_only_gate": false,
+      "status_grammar": [
+        "CAPABILITY_PRESENT",
+        "CAPABILITY_ABSENT",
+        "CAPABILITY_UNKNOWN",
+        "CAPABILITY_CONDITIONED"
+      ]
+    },
+    {
+      "id": "C02",
+      "name": "AFFECTIVE_BID",
+      "definition": "bodily emotion signal or request for accessible co-regulation without verbal ideology",
+      "science_grade": "EVIDENCE_CONSTRAINED_PROPOSAL",
+      "evidence_source_ids": [
+        "S02",
+        "S14"
+      ],
+      "studied_domain": "bodily emotion signal or request for accessible co-regulation without verbal ideology",
+      "required_generated_actor_facts": [
+        "affect_signal_ref",
+        "care_access_ref",
+        "relation_history_ref"
+      ],
+      "observable_behavior": "cry, withdraw, protest or seek support",
+      "permitted_computational_use": "affective response or bid, not others' uptake",
+      "negative_cases": "no secure attachment type or political theory from feeling",
+      "individual_population_cultural_and_time_limits": "care culture, ability, threat, labor time",
+      "actor_awareness": "No fact is actor-accessible merely because an analyst stores it; actor_access_refs must be separately admitted, third-party private states are not inferred.",
+      "falsifier": "Swapping only chronological age must not change this predicate; withdrawing exact material skill/access/ability witness may change its eligibility; no respondent-level probability is supplied.",
+      "age_only_gate": false,
+      "status_grammar": [
+        "CAPABILITY_PRESENT",
+        "CAPABILITY_ABSENT",
+        "CAPABILITY_UNKNOWN",
+        "CAPABILITY_CONDITIONED"
+      ]
+    },
+    {
+      "id": "C03",
+      "name": "SITUATED_SELF_REGULATION",
+      "definition": "learned regulation/inhibition for a concrete goal under concrete load",
+      "science_grade": "EVIDENCE_CONSTRAINED_PROPOSAL",
+      "evidence_source_ids": [
+        "S03",
+        "S04",
+        "S05"
+      ],
+      "studied_domain": "learned regulation/inhibition for a concrete goal under concrete load",
+      "required_generated_actor_facts": [
+        "goal_ref",
+        "practice_ref",
+        "load_ref",
+        "context_ref"
+      ],
+      "observable_behavior": "pauses, reorients, asks help, or cannot inhibit",
+      "permitted_computational_use": "situated alternative response proposal",
+      "negative_cases": "no global self-control or morality rank",
+      "individual_population_cultural_and_time_limits": "stress, sleep, neurodiversity, material precarity",
+      "actor_awareness": "No fact is actor-accessible merely because an analyst stores it; actor_access_refs must be separately admitted, third-party private states are not inferred.",
+      "falsifier": "Swapping only chronological age must not change this predicate; withdrawing exact material skill/access/ability witness may change its eligibility; no respondent-level probability is supplied.",
+      "age_only_gate": false,
+      "status_grammar": [
+        "CAPABILITY_PRESENT",
+        "CAPABILITY_ABSENT",
+        "CAPABILITY_UNKNOWN",
+        "CAPABILITY_CONDITIONED"
+      ]
+    },
+    {
+      "id": "C04",
+      "name": "SYMBOLIC_EVENT_EXPRESSION",
+      "definition": "actual acquired linguistic/sign/visual/performative expression for an event",
+      "science_grade": "EVIDENCE_CONSTRAINED_PROPOSAL",
+      "evidence_source_ids": [
+        "S06",
+        "S13"
+      ],
+      "studied_domain": "actual acquired linguistic/sign/visual/performative expression for an event",
+      "required_generated_actor_facts": [
+        "symbolic_mode_ref",
+        "repertoire_ref",
+        "interlocutor_ref"
+      ],
+      "observable_behavior": "gesture, sign, draw, narrate, repeat words",
+      "permitted_computational_use": "expression form, not adoption or truth",
+      "negative_cases": "no unsupported adult ideological fluency; no speech=thought equivalence",
+      "individual_population_cultural_and_time_limits": "AAC, multilingual, oral and nonliterate practices",
+      "actor_awareness": "No fact is actor-accessible merely because an analyst stores it; actor_access_refs must be separately admitted, third-party private states are not inferred.",
+      "falsifier": "Swapping only chronological age must not change this predicate; withdrawing exact material skill/access/ability witness may change its eligibility; no respondent-level probability is supplied.",
+      "age_only_gate": false,
+      "status_grammar": [
+        "CAPABILITY_PRESENT",
+        "CAPABILITY_ABSENT",
+        "CAPABILITY_UNKNOWN",
+        "CAPABILITY_CONDITIONED"
+      ]
+    },
+    {
+      "id": "C05",
+      "name": "AUTOBIOGRAPHICAL_ACCESS",
+      "definition": "current explicit episode retrieval distinct from immutable history and procedural trace",
+      "science_grade": "EVIDENCE_CONSTRAINED_PROPOSAL",
+      "evidence_source_ids": [
+        "S06",
+        "S07",
+        "S08",
+        "S09"
+      ],
+      "studied_domain": "current explicit episode retrieval distinct from immutable history and procedural trace",
+      "required_generated_actor_facts": [
+        "history_event_ref",
+        "current_cue_ref",
+        "actor_retrieval_ref",
+        "mode_ref"
+      ],
+      "observable_behavior": "recalls event, or no explicit recall despite changed habit",
+      "permitted_computational_use": "only actor-accessible first-person remembrance",
+      "negative_cases": "no automatic I-remember from event log; no zero-effect from no recall",
+      "individual_population_cultural_and_time_limits": "reminiscing, later reconstruction, cultures",
+      "actor_awareness": "No fact is actor-accessible merely because an analyst stores it; actor_access_refs must be separately admitted, third-party private states are not inferred.",
+      "falsifier": "Swapping only chronological age must not change this predicate; withdrawing exact material skill/access/ability witness may change its eligibility; no respondent-level probability is supplied.",
+      "age_only_gate": false,
+      "status_grammar": [
+        "CAPABILITY_PRESENT",
+        "CAPABILITY_ABSENT",
+        "CAPABILITY_UNKNOWN",
+        "CAPABILITY_CONDITIONED"
+      ]
+    },
+    {
+      "id": "C06",
+      "name": "SITUATED_PERSPECTIVE_TAKING",
+      "definition": "domain-specific recognition of others' potentially distinct beliefs",
+      "science_grade": "EVIDENCE_CONSTRAINED_PROPOSAL",
+      "evidence_source_ids": [
+        "S10",
+        "S11",
+        "S12"
+      ],
+      "studied_domain": "domain-specific recognition of others' potentially distinct beliefs",
+      "required_generated_actor_facts": [
+        "practiced_social_reasoning_ref",
+        "heard_speech_ref",
+        "access_ref"
+      ],
+      "observable_behavior": "attributes parent's stated interpretation while disagreeing",
+      "permitted_computational_use": "source-attributed account, not mindreading",
+      "negative_cases": "no thief identity, no exact fifth birthday unlock",
+      "individual_population_cultural_and_time_limits": "task language, community history and variation",
+      "actor_awareness": "No fact is actor-accessible merely because an analyst stores it; actor_access_refs must be separately admitted, third-party private states are not inferred.",
+      "falsifier": "Swapping only chronological age must not change this predicate; withdrawing exact material skill/access/ability witness may change its eligibility; no respondent-level probability is supplied.",
+      "age_only_gate": false,
+      "status_grammar": [
+        "CAPABILITY_PRESENT",
+        "CAPABILITY_ABSENT",
+        "CAPABILITY_UNKNOWN",
+        "CAPABILITY_CONDITIONED"
+      ]
+    },
+    {
+      "id": "C07",
+      "name": "COMPETING_ACCOUNT_REFLEXIVITY",
+      "definition": "represents at least two conflicting accessible explanations without endorsing either",
+      "science_grade": "INDIRECT_EVIDENCE_ENGINEERING_BRIDGE",
+      "evidence_source_ids": [
+        "S03",
+        "S04",
+        "S15"
+      ],
+      "studied_domain": "represents at least two conflicting accessible explanations without endorsing either",
+      "required_generated_actor_facts": [
+        "two_source_refs",
+        "comparison_practice_ref",
+        "conflict_witness_ref"
+      ],
+      "observable_behavior": "notices parent-peer disagreement or suspends judgment",
+      "permitted_computational_use": "allow explicit contest/refusal/suspension",
+      "negative_cases": "no ideology switch, obligatory synthesis or number-of-beliefs score",
+      "individual_population_cultural_and_time_limits": "indirect evidence/engineering extrapolation, stress, language",
+      "actor_awareness": "No fact is actor-accessible merely because an analyst stores it; actor_access_refs must be separately admitted, third-party private states are not inferred.",
+      "falsifier": "Swapping only chronological age must not change this predicate; withdrawing exact material skill/access/ability witness may change its eligibility; no respondent-level probability is supplied.",
+      "age_only_gate": false,
+      "status_grammar": [
+        "CAPABILITY_PRESENT",
+        "CAPABILITY_ABSENT",
+        "CAPABILITY_UNKNOWN",
+        "CAPABILITY_CONDITIONED"
+      ]
+    },
+    {
+      "id": "C08",
+      "name": "MATERIAL_GOAL_PLANNING",
+      "definition": "implements a learned goal via actual resources, permissions and temporal opportunity",
+      "science_grade": "EVIDENCE_CONSTRAINED_PROPOSAL",
+      "evidence_source_ids": [
+        "S03",
+        "S04"
+      ],
+      "studied_domain": "implements a learned goal via actual resources, permissions and temporal opportunity",
+      "required_generated_actor_facts": [
+        "goal_ref",
+        "practiced_plan_ref",
+        "route_ref",
+        "resource_ref"
+      ],
+      "observable_behavior": "plans securing property, asks for repairs, or stops when unable",
+      "permitted_computational_use": "feasible concrete act candidate",
+      "negative_cases": "no invented money, legal right, or execution",
+      "individual_population_cultural_and_time_limits": "class/working time, access, disability and constraint",
+      "actor_awareness": "No fact is actor-accessible merely because an analyst stores it; actor_access_refs must be separately admitted, third-party private states are not inferred.",
+      "falsifier": "Swapping only chronological age must not change this predicate; withdrawing exact material skill/access/ability witness may change its eligibility; no respondent-level probability is supplied.",
+      "age_only_gate": false,
+      "status_grammar": [
+        "CAPABILITY_PRESENT",
+        "CAPABILITY_ABSENT",
+        "CAPABILITY_UNKNOWN",
+        "CAPABILITY_CONDITIONED"
+      ]
+    },
+    {
+      "id": "C09",
+      "name": "PARTICIPATORY_PRACTICAL_AUTONOMY",
+      "definition": "collaborative or individual initiative in acquired activities",
+      "science_grade": "EVIDENCE_CONSTRAINED_PROPOSAL",
+      "evidence_source_ids": [
+        "S13",
+        "S01",
+        "S14"
+      ],
+      "studied_domain": "collaborative or individual initiative in acquired activities",
+      "required_generated_actor_facts": [
+        "work_role_ref",
+        "participation_ref",
+        "permission_ref",
+        "skill_ref"
+      ],
+      "observable_behavior": "cooperatively repairs bike, assists caregiver",
+      "permitted_computational_use": "role-specific competent action proposal",
+      "negative_cases": "solitary independent choice not universal adulthood/maturity",
+      "individual_population_cultural_and_time_limits": "Indigenous/community practices; child labor and segregation",
+      "actor_awareness": "No fact is actor-accessible merely because an analyst stores it; actor_access_refs must be separately admitted, third-party private states are not inferred.",
+      "falsifier": "Swapping only chronological age must not change this predicate; withdrawing exact material skill/access/ability witness may change its eligibility; no respondent-level probability is supplied.",
+      "age_only_gate": false,
+      "status_grammar": [
+        "CAPABILITY_PRESENT",
+        "CAPABILITY_ABSENT",
+        "CAPABILITY_UNKNOWN",
+        "CAPABILITY_CONDITIONED"
+      ]
+    },
+    {
+      "id": "C10",
+      "name": "PEER_NORM_NEGOTIATION",
+      "definition": "perceived actual peer norm can be performed, resisted, ignored or interpreted",
+      "science_grade": "EVIDENCE_CONSTRAINED_PROPOSAL",
+      "evidence_source_ids": [
+        "S17",
+        "S15",
+        "S16"
+      ],
+      "studied_domain": "perceived actual peer norm can be performed, resisted, ignored or interpreted",
+      "required_generated_actor_facts": [
+        "peer_encounter_ref",
+        "utterance_ref",
+        "relationship_ref",
+        "reply_channel_ref"
+      ],
+      "observable_behavior": "public performance contradicts private doubt",
+      "permitted_computational_use": "peer message becomes candidate influence only",
+      "negative_cases": "no stereotype as fact, ethnicity→opinion or inevitable conformity",
+      "individual_population_cultural_and_time_limits": "peer stratification, safety, social-network context",
+      "actor_awareness": "No fact is actor-accessible merely because an analyst stores it; actor_access_refs must be separately admitted, third-party private states are not inferred.",
+      "falsifier": "Swapping only chronological age must not change this predicate; withdrawing exact material skill/access/ability witness may change its eligibility; no respondent-level probability is supplied.",
+      "age_only_gate": false,
+      "status_grammar": [
+        "CAPABILITY_PRESENT",
+        "CAPABILITY_ABSENT",
+        "CAPABILITY_UNKNOWN",
+        "CAPABILITY_CONDITIONED"
+      ]
+    },
+    {
+      "id": "C11",
+      "name": "CAREGIVER_SITUATED_RESPONSE",
+      "definition": "independent caregiver can help, attune, constrain or coerce under their own changing conditions",
+      "science_grade": "EVIDENCE_CONSTRAINED_PROPOSAL",
+      "evidence_source_ids": [
+        "S02",
+        "S19",
+        "S14",
+        "S05"
+      ],
+      "studied_domain": "independent caregiver can help, attune, constrain or coerce under their own changing conditions",
+      "required_generated_actor_facts": [
+        "caregiver_actor_ref",
+        "work_time_ref",
+        "own_state_ref",
+        "child_signal_access_ref",
+        "relation_history_ref"
+      ],
+      "observable_behavior": "consoles, threatens, protects, lacks time or misunderstands",
+      "permitted_computational_use": "only independently admitted caregiver action",
+      "negative_cases": "no class→abusive, goodness scalar or private omniscience",
+      "individual_population_cultural_and_time_limits": "work shift/poverty can constrain time not establish motive",
+      "actor_awareness": "No fact is actor-accessible merely because an analyst stores it; actor_access_refs must be separately admitted, third-party private states are not inferred.",
+      "falsifier": "Swapping only chronological age must not change this predicate; withdrawing exact material skill/access/ability witness may change its eligibility; no respondent-level probability is supplied.",
+      "age_only_gate": false,
+      "status_grammar": [
+        "CAPABILITY_PRESENT",
+        "CAPABILITY_ABSENT",
+        "CAPABILITY_UNKNOWN",
+        "CAPABILITY_CONDITIONED"
+      ]
+    },
+    {
+      "id": "C12",
+      "name": "DESIRE_AND_RELATIONAL_REAPPRAISAL",
+      "definition": "independently generated person can elicit possible attraction/recognition tension with prior practice",
+      "science_grade": "INDIRECT_EVIDENCE_ENGINEERING_BRIDGE",
+      "evidence_source_ids": [
+        "S18",
+        "S15",
+        "S16"
+      ],
+      "studied_domain": "independently generated person can elicit possible attraction/recognition tension with prior practice",
+      "required_generated_actor_facts": [
+        "own_interest_ref",
+        "real_other_actor_ref",
+        "actual_contact_ref",
+        "old_trace_ref",
+        "current_access_ref"
+      ],
+      "observable_behavior": "approach, refuse, retreat, differentiate, persist",
+      "permitted_computational_use": "permit contingent later relational conflict proposal",
+      "negative_cases": "no obligatory romance, heterosexual template, parent-trait return, healer lover",
+      "individual_population_cultural_and_time_limits": "puberty, orientation/asexuality, culturally variable roles and power",
+      "actor_awareness": "No fact is actor-accessible merely because an analyst stores it; actor_access_refs must be separately admitted, third-party private states are not inferred.",
+      "falsifier": "Swapping only chronological age must not change this predicate; withdrawing exact material skill/access/ability witness may change its eligibility; no respondent-level probability is supplied.",
+      "age_only_gate": false,
+      "status_grammar": [
+        "CAPABILITY_PRESENT",
+        "CAPABILITY_ABSENT",
+        "CAPABILITY_UNKNOWN",
+        "CAPABILITY_CONDITIONED"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "S01",
+      "title": "Adolph & Hoch 2019, Motor Development",
+      "url": "https://doi.org/10.1146/annurev-psych-010418-102836",
+      "ref": "10.1146/annurev-psych-010418-102836",
+      "method": "embodied/enculturated infant motor review",
+      "population_and_inference_limit": "not a fixed age motor milestone"
+    },
+    {
+      "id": "S02",
+      "title": "Morris et al. 2007, Family Context and Emotion Regulation",
+      "url": "https://doi.org/10.1111/j.1467-9507.2007.00389.x",
+      "ref": "10.1111/j.1467-9507.2007.00389.x",
+      "method": "child/adolescent family-regulation review",
+      "population_and_inference_limit": "associations, not specific parent causation"
+    },
+    {
+      "id": "S03",
+      "title": "Diamond 2013, Executive Functions",
+      "url": "https://doi.org/10.1146/annurev-psych-113011-143750",
+      "ref": "10.1146/annurev-psych-113011-143750",
+      "method": "developmental EF review",
+      "population_and_inference_limit": "task measure not individual action"
+    },
+    {
+      "id": "S04",
+      "title": "Doebel 2020, Rethinking Executive Function",
+      "url": "https://doi.org/10.1177/1745691620904771",
+      "ref": "10.1177/1745691620904771",
+      "method": "critical goal-based EF theory",
+      "population_and_inference_limit": "competing interpretation, not calibration"
+    },
+    {
+      "id": "S05",
+      "title": "Blair & Raver 2016, Poverty Stress and Brain Development",
+      "url": "https://doi.org/10.1016/j.acap.2016.01.010",
+      "ref": "10.1016/j.acap.2016.01.010",
+      "method": "poverty/stress/plasticity review",
+      "population_and_inference_limit": "no class→deficit"
+    },
+    {
+      "id": "S06",
+      "title": "Nelson & Fivush 2004, Emergence of Autobiographical Memory",
+      "url": "https://doi.org/10.1037/0033-295X.111.2.486",
+      "ref": "10.1037/0033-295X.111.2.486",
+      "method": "preschool multicomponent sociocultural theory/review",
+      "population_and_inference_limit": "no memory-at-birthday switch"
+    },
+    {
+      "id": "S07",
+      "title": "Fivush 2011, Development of Autobiographical Memory",
+      "url": "https://doi.org/10.1146/annurev.psych.121208.131702",
+      "ref": "10.1146/annurev.psych.121208.131702",
+      "method": "childhood/adolescent development review",
+      "population_and_inference_limit": "cultural reminiscing differences"
+    },
+    {
+      "id": "S08",
+      "title": "Fivush Haden Reese 2006, Elaborating on Elaborations",
+      "url": "https://doi.org/10.1111/j.1467-8624.2006.00960.x",
+      "ref": "10.1111/j.1467-8624.2006.00960.x",
+      "method": "mother-child conversation review",
+      "population_and_inference_limit": "caregiver and language sampling limitations"
+    },
+    {
+      "id": "S09",
+      "title": "Wang 2001, Culture Effects on Earliest Recollection",
+      "url": "https://doi.org/10.1037/0022-3514.81.2.220",
+      "ref": "10.1037/0022-3514.81.2.220",
+      "method": "US/Chinese adult retrospective comparison n=256",
+      "population_and_inference_limit": "recalled earliest age is not exact observed onset"
+    },
+    {
+      "id": "S10",
+      "title": "Wellman Cross Watson 2001, Theory of Mind Meta-analysis",
+      "url": "https://doi.org/10.1111/1467-8624.00304",
+      "ref": "10.1111/1467-8624.00304",
+      "method": "178-study false-belief meta-analysis",
+      "population_and_inference_limit": "false belief task not general mindreading"
+    },
+    {
+      "id": "S11",
+      "title": "Callaghan et al. 2005, Synchrony in Five Cultures",
+      "url": "https://doi.org/10.1111/j.0956-7976.2005.01544.x",
+      "ref": "10.1111/j.0956-7976.2005.01544.x",
+      "method": "standardized Canada India Peru Samoa Thailand comparison",
+      "population_and_inference_limit": "approximate group milestone not exact individual age threshold"
+    },
+    {
+      "id": "S12",
+      "title": "Wellman et al. 2006, Chinese Theory-of-Mind Scale",
+      "url": "https://doi.org/10.1111/j.1467-9280.2006.01830.x",
+      "ref": "10.1111/j.1467-9280.2006.01830.x",
+      "method": "Beijing n=140 vs USA/Australia n=135 comparative",
+      "population_and_inference_limit": "cultural sequence and language differences"
+    },
+    {
+      "id": "S13",
+      "title": "Rogoff et al. 2003, Firsthand Learning Through Intent Participation",
+      "url": "https://doi.org/10.1146/annurev.psych.54.101601.145118",
+      "ref": "10.1146/annurev.psych.54.101601.145118",
+      "method": "cross-cultural observation/participation review",
+      "population_and_inference_limit": "Western school segregation not universal"
+    },
+    {
+      "id": "S14",
+      "title": "Keller 2007, Cultures of Infancy",
+      "url": "https://www.routledge.com/Cultures-of-Infancy/Keller/p/book/9780805848953",
+      "ref": "ISBN 9780805848953",
+      "method": "ethnographic/quantitative comparative theory book",
+      "population_and_inference_limit": "do not map national identity to caregiving type"
+    },
+    {
+      "id": "S15",
+      "title": "Crone & Dahl 2012, Adolescent Social-Affective Engagement",
+      "url": "https://doi.org/10.1038/nrn3313",
+      "ref": "10.1038/nrn3313",
+      "method": "neurodevelopmental review",
+      "population_and_inference_limit": "not an immature-brain or risk stereotype"
+    },
+    {
+      "id": "S16",
+      "title": "Dahl et al. 2018, Investing in Adolescence",
+      "url": "https://doi.org/10.1038/nature25770",
+      "ref": "10.1038/nature25770",
+      "method": "developmental neuroscience and policy review",
+      "population_and_inference_limit": "opportunity not required romantic timeline"
+    },
+    {
+      "id": "S17",
+      "title": "Gardner & Steinberg 2005, Peer Influence on Risk",
+      "url": "https://doi.org/10.1037/0012-1649.41.4.625",
+      "ref": "10.1037/0012-1649.41.4.625",
+      "method": "peer present experiment n=306; 13–16/18–22/24+",
+      "population_and_inference_limit": "not automatic conformity"
+    },
+    {
+      "id": "S18",
+      "title": "Collins 2003, More than Myth: Adolescent Romance",
+      "url": "https://doi.org/10.1111/1532-7795.1301001",
+      "ref": "10.1111/1532-7795.1301001",
+      "method": "developmental romance review",
+      "population_and_inference_limit": "not obligatory attraction or partner-as-therapy"
+    },
+    {
+      "id": "S19",
+      "title": "Gershoff & Grogan-Kaylor 2016, Spanking and Outcomes",
+      "url": "https://doi.org/10.1037/fam0000191",
+      "ref": "10.1037/fam0000191",
+      "method": "physical discipline meta-analysis",
+      "population_and_inference_limit": "not deterministic caregiver prediction"
+    },
+    {
+      "id": "S20",
+      "title": "Henrich Heine Norenzayan 2010, WEIRD Samples",
+      "url": "https://doi.org/10.1017/S0140525X0999152X",
+      "ref": "10.1017/S0140525X0999152X",
+      "method": "external validity and population bias critique",
+      "population_and_inference_limit": "method caution, not ability evidence"
+    }
+  ]
+}

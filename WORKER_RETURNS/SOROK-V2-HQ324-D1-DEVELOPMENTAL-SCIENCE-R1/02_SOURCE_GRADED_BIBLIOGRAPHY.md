@@ -1,0 +1,26 @@
+# D1 source-graded bibliography — 2026-10-17
+
+Evidence is source-specific; no DOI supplies an individual psychological probability or ADP008 developmental-stage authority. Study methods, geography and age limits must accompany every use.
+
+- **S01: Adolph & Hoch 2019, Motor Development.** https://doi.org/10.1146/annurev-psych-010418-102836. Method/population: embodied/enculturated infant motor review. Limit: not a fixed age motor milestone.
+- **S02: Morris et al. 2007, Family Context and Emotion Regulation.** https://doi.org/10.1111/j.1467-9507.2007.00389.x. Method/population: child/adolescent family-regulation review. Limit: associations, not specific parent causation.
+- **S03: Diamond 2013, Executive Functions.** https://doi.org/10.1146/annurev-psych-113011-143750. Method/population: developmental EF review. Limit: task measure not individual action.
+- **S04: Doebel 2020, Rethinking Executive Function.** https://doi.org/10.1177/1745691620904771. Method/population: critical goal-based EF theory. Limit: competing interpretation, not calibration.
+- **S05: Blair & Raver 2016, Poverty Stress and Brain Development.** https://doi.org/10.1016/j.acap.2016.01.010. Method/population: poverty/stress/plasticity review. Limit: no class→deficit.
+- **S06: Nelson & Fivush 2004, Emergence of Autobiographical Memory.** https://doi.org/10.1037/0033-295X.111.2.486. Method/population: preschool multicomponent sociocultural theory/review. Limit: no memory-at-birthday switch.
+- **S07: Fivush 2011, Development of Autobiographical Memory.** https://doi.org/10.1146/annurev.psych.121208.131702. Method/population: childhood/adolescent development review. Limit: cultural reminiscing differences.
+- **S08: Fivush Haden Reese 2006, Elaborating on Elaborations.** https://doi.org/10.1111/j.1467-8624.2006.00960.x. Method/population: mother-child conversation review. Limit: caregiver and language sampling limitations.
+- **S09: Wang 2001, Culture Effects on Earliest Recollection.** https://doi.org/10.1037/0022-3514.81.2.220. Method/population: US/Chinese adult retrospective comparison n=256. Limit: recalled earliest age is not exact observed onset.
+- **S10: Wellman Cross Watson 2001, Theory of Mind Meta-analysis.** https://doi.org/10.1111/1467-8624.00304. Method/population: 178-study false-belief meta-analysis. Limit: false belief task not general mindreading.
+- **S11: Callaghan et al. 2005, Synchrony in Five Cultures.** https://doi.org/10.1111/j.0956-7976.2005.01544.x. Method/population: standardized Canada India Peru Samoa Thailand comparison. Limit: approximate group milestone not exact individual age threshold.
+- **S12: Wellman et al. 2006, Chinese Theory-of-Mind Scale.** https://doi.org/10.1111/j.1467-9280.2006.01830.x. Method/population: Beijing n=140 vs USA/Australia n=135 comparative. Limit: cultural sequence and language differences.
+- **S13: Rogoff et al. 2003, Firsthand Learning Through Intent Participation.** https://doi.org/10.1146/annurev.psych.54.101601.145118. Method/population: cross-cultural observation/participation review. Limit: Western school segregation not universal.
+- **S14: Keller 2007, Cultures of Infancy.** https://www.routledge.com/Cultures-of-Infancy/Keller/p/book/9780805848953. Method/population: ethnographic/quantitative comparative theory book. Limit: do not map national identity to caregiving type.
+- **S15: Crone & Dahl 2012, Adolescent Social-Affective Engagement.** https://doi.org/10.1038/nrn3313. Method/population: neurodevelopmental review. Limit: not an immature-brain or risk stereotype.
+- **S16: Dahl et al. 2018, Investing in Adolescence.** https://doi.org/10.1038/nature25770. Method/population: developmental neuroscience and policy review. Limit: opportunity not required romantic timeline.
+- **S17: Gardner & Steinberg 2005, Peer Influence on Risk.** https://doi.org/10.1037/0012-1649.41.4.625. Method/population: peer present experiment n=306; 13–16/18–22/24+. Limit: not automatic conformity.
+- **S18: Collins 2003, More than Myth: Adolescent Romance.** https://doi.org/10.1111/1532-7795.1301001. Method/population: developmental romance review. Limit: not obligatory attraction or partner-as-therapy.
+- **S19: Gershoff & Grogan-Kaylor 2016, Spanking and Outcomes.** https://doi.org/10.1037/fam0000191. Method/population: physical discipline meta-analysis. Limit: not deterministic caregiver prediction.
+- **S20: Henrich Heine Norenzayan 2010, WEIRD Samples.** https://doi.org/10.1017/S0140525X0999152X. Method/population: external validity and population bias critique. Limit: method caution, not ability evidence.
+
+**Important tensions:** S11's approximate five-culture standardized false-belief synchrony is compatible with S12's variation in broader task sequencing; neither fixes an individual child at age five. S03's EF taxonomy faces S04's goal-dependent critique; no universal executive scalar follows. Maternal reminiscing studies (S06–08) show socially scaffolded memory but not literal capture of private past states. S13/S14 contextualize practical competence outside Western age-graded school norms. S17 peer presence experiment cannot prove endorsement of racist speech. S19 discipline associations are not a caregiver-specific motive classifier. S20 flags sampling overgeneralization; it is not positive evidence for a given ability.
