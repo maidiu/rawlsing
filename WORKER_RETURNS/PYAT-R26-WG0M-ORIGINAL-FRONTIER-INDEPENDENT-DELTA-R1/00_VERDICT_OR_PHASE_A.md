@@ -13,3 +13,5 @@ Phase B may start only after an exact governed WG0P5 return is pushed, its SHA/r
 ## Published candidate gate
 
 After Phase A publication, the WG0P5 remote was resolved directly to **7e589c19c693c150d0cf622fc43e84bbc40d1b31**, its sealed commission startup. The exact WG0P5 return directory has no files at that commit. Current state is **WAIT_FOR_GOVERNED_WG0P5_PUSH**. No repaired candidate was imported/executed. The full goal is not complete. `observations/WG0P5_publication_gate.json` retains the exact branch, SHA, expected return directory and timestamp. `repro/check_wg0p5_gate.py` performs one bounded read-only check for a continuation.
+
+The third consecutive goal-turn audit again found the exact sealed WG0P5 startup and zero returned files. Phase A is complete; Phase B remains unexecuted. The goal is blocked pending a governed WG0P5 push. See `observations/gate_audit_turn3_blocked.json`; the full scientific objective and frozen assertions remain unchanged.
