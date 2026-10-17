@@ -1,0 +1,60 @@
+{
+  "schema": "PYAT_XSP_SANITIZED_ENVIRONMENT_PASSPORT_DELTA@1",
+  "environment_id": "XSP_ISOLATED_CONTAINER_SOURCEFREE_R1",
+  "epoch_id": "XSP_20261016_EPOCH1",
+  "session_alias": "XSP_R18_BROWSER",
+  "surface": "ChatGPT container Python and GitHub authorized connector",
+  "machine_alias": "ISOLATED_CONTAINER_NO_USER_LOCAL_MACHINE",
+  "status": "LIVE_VERIFIED_FOR_STANDALONE_PYTHON_ONLY",
+  "host_source_status": "PRIVATE_GITHUB_FULL_IMPORT_NOT_ACCESSIBLE_IN_CONTAINER",
+  "sourcefree_workspace": "/mnt/data/xsp_stage",
+  "repo": "maidiu/rawlsing",
+  "commissioned_branch": "agent/vozhd-pyat-20261016-r18-xsp-sorok-persona-seam-r1",
+  "sealed_startup": "d8c1b3475f6b0dbaae5a3a9b0a7c53169656c7de",
+  "git_source_access": "GitHub connector authenticated private file/commit/ref reads",
+  "git_clone_preflight": {
+    "command": "timeout 8 git ls-remote https://github.com/maidiu/rawlsing.git HEAD",
+    "exit_code": 128,
+    "reason": "DNS github.com not resolvable in container"
+  },
+  "runtime": {
+    "python": "3.13.5",
+    "pytest": "9.0.2",
+    "git": "2.47.3",
+    "node": "NOT_PROBED_NOT_REQUIRED",
+    "writable_marker": "YES_ISOLATED_SANDBOX_AND_AUTHORIZED_RETURN_ONLY_GITHUB"
+  },
+  "execution": {
+    "suite": "test_xsp_world_pair_court.py",
+    "exact_source_sha256": "d45a79e36140ba6a141cc0e0888852052d33fb8cb963a2ba7fa74f0b9942e430",
+    "command": "python -m pytest -q --junitxml=junit.xml test_xsp_world_pair_court.py",
+    "passed": 19,
+    "failed": 0,
+    "skipped": 0,
+    "exit_code": 0,
+    "junit_sha256": "ae361ee1934b85656de26686e01d36d7e81af7680d72e6c67ffd07128ec567b9",
+    "standalone_mode": true,
+    "native_Pyat_owner_calls": 0,
+    "native_Sorok_owner_calls": 0,
+    "original_survey_source_calls": 0,
+    "actor_calls": 0,
+    "LLM_model_calls": 0
+  },
+  "source_staging": {
+    "dependency_closure": "STANDALONE_PYTHON_ONLY",
+    "native_owner_imports": [],
+    "native_module_files": "NOT_EXECUTED",
+    "source_manifest": "source_manifest.json",
+    "github_code_blobs": "VERIFIED_BY_CONNECTOR_NOT_LOCAL_GIT_HASH_OBJECT"
+  },
+  "model_resource": {
+    "requested": "Browser GPT-6 High",
+    "model_used": "GPT-6",
+    "effort": "UNKNOWN_NOT_DIRECTLY_TELEMETRIED",
+    "incremental_cash": "UNKNOWN",
+    "usage_tier": "UNKNOWN",
+    "no_source_rights_observed": true
+  },
+  "independence": "Worker did not write Sorok or nominate itself as issuer/adopter/actor",
+  "further_runtime": "Qualified separate host/import-proven full native tests needed for actual two-contract accepted Pyat↔Sorok interface"
+}
