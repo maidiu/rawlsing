@@ -1,0 +1,42 @@
+{
+ "schema": "PYAT_00D_ENVIRONMENT_PASSPORT_DELTA@1",
+ "environment_id": "dsh-local-macos-gf1g-fresh-01",
+ "epoch_id": "gf1g-fresh-2026-10-17",
+ "session_alias": "gf1g-fresh-independent-session",
+ "surface": "DSH harness local shell (workspace-write elevated to danger-full-access by user runtime policy)",
+ "machine_alias": "reviewer-mbp-macos-13.7.8-x86_64",
+ "status": "LIVE_VERIFIED",
+ "last_live_probe_at": "2026-10-17T22:03:27Z",
+ "interpreter": "Python 3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]",
+ "pytest": "9.1.1",
+ "git": "git version 2.39.1",
+ "writable_marker": "/tmp/gf1g_fresh (session worktree) and /tmp/gf1g_pre* (staging)",
+ "worktree": "/tmp/gf1g_fresh",
+ "branch": "agent/reviewer-pyat-r29-gf1g-fresh-session-consumer-court-r1",
+ "sealed_startup": "96aec964c5118fa38345c255b8780a8ba369a6ad",
+ "remote": "https://github.com/maidiu/rawlsing.git",
+ "observed_model": "deepseek-flash (harness model alias; not externally attested)",
+ "authorization_grade": "SOURCEFREE_COMPUTED_CONSUMER_REVIEW_ONLY",
+ "source_identity": {
+  "pre_gf1e_court_commit": "9f4a23cef1482e0a81afb1e7a65df90879931465",
+  "native_74_reattested": 74,
+  "gf1e_target_commit": "eeb726357204653b22458dc267dd70ba0009bd77",
+  "gf1e_consumer_git_blob_sha1": "75670c69dc587233d462e4a636b63e7fd233c0bd",
+  "gf1e_consumer_sha256_verified": "06dd484b0e9b4b2c9fb0a1583453ac7ffa8c052135304eaaee167a34127cb402",
+  "gf1e_consumer_declared_sha256": "06dd484b0e9b4b2c9fb0a1583453ac7ffa8c052135304eaaee167a34127cb402",
+  "gf1e_content_inspected_before_freeze": false,
+  "gf1f_commit": "3dcc7d7dddfff4f1be8b4293cab92e5b4275007d",
+  "gf1f_content_inspected_before_freeze": false
+ },
+ "privacy_gate": {
+  "original_sav_dta": "NOT_ACCESSED",
+  "u_epre": "NOT_ISSUED_NOT_ACCESSED",
+  "private_source_to_third_party": "NONE",
+  "actor_v3": "NOT_ACCESSED"
+ },
+ "packages": ["python 3.11.3 stdlib", "pytest 9.1.1"],
+ "assignments_completed": ["GF1G Phase A independent oracle freeze"],
+ "eligibility_for_continuation": "LIVE for Phase B in the same local session",
+ "expiry_trigger": "session reset or context saturation",
+ "conflicts": "none; this is a fresh independent reviewer session"
+}

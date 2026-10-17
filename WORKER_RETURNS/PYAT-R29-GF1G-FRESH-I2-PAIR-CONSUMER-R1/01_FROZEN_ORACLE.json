@@ -1,0 +1,4233 @@
+{
+ "schema": "PYAT_R29_GF1G_PHASE_A_FROZEN_ORACLE@1",
+ "status": "FROZEN_BEFORE_GF1E_INSPECTION",
+ "author_class": "FRESH_INDEPENDENT_REVIEWER_NOT_GF1E_NOT_GF1F",
+ "derivation": {
+  "authority": [
+   "R17 precommitted generic native pair oracle (contract level)",
+   "R23 GF1C recovered consumer contract GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ONLY@1.0.0",
+   "unchanged original 44 frozen specification",
+   "pre-GF1E generic producer generic_native_pair_relation.py",
+   "GF1G independent reference consumer implemented from the above"
+  ],
+  "not_used": [
+   "GF1E implementation source",
+   "GF1E executed evidence",
+   "GF1F expected results",
+   "GF1E/GF1F conversation"
+  ],
+  "reference_44_result": "44 passed with the GF1G reference consumer in a pre-GF1E court copy (9f4a23cef + reference consumer only)"
+ },
+ "provenance": {
+  "pre_gf1e_commit": "9f4a23cef1482e0a81afb1e7a65df90879931465",
+  "court_root": "/private/tmp/gf1g_pre_run",
+  "native_reattested": 74,
+  "python": "3.11.3",
+  "implementation": "CPython",
+  "imports": [
+   {
+    "module": "common",
+    "file": "court/frozen_pv2i/repro/common.py",
+    "blob_sha1": "f0b05c92809657e335ed0c7b3f9b6a6d7befdb95",
+    "sha256": "01fbd6128d1a738a65e1dc4f5e2c5bef3794b5abcace327de683334b458a277f"
+   },
+   {
+    "module": "fixture_owner",
+    "file": "court/repro/fixture_owner.py",
+    "blob_sha1": "c05ec3b96d69e393de03f4dc76f59c79ed50b965",
+    "sha256": "6a1c89cdd23ab31f53b97b6e20173f7f03b5b8a590d2dec9a29fe85ba3b941fd"
+   },
+   {
+    "module": "generic_native_pair_relation",
+    "file": "court/runtime_root/generic_native_pair_relation.py",
+    "blob_sha1": "746d669314ddd114ec21d3a35c13c452666863fe",
+    "sha256": "e5ac3d003bfe3a4e00cf1da1ca0c4cacab706391f4b9ab71f101e64a4b2cfc04"
+   },
+   {
+    "module": "gf1_bootstrap",
+    "file": "court/repro/gf1_bootstrap.py",
+    "blob_sha1": "a4400dd92ed5af350ceeaad3ea7421d591b285a2",
+    "sha256": "f0e60616257dd78bbe73dde245946e5fa1cf5323020b4cbc560f5fabe312ce88"
+   },
+   {
+    "module": "gf1_native",
+    "file": "court/repro/gf1_native.py",
+    "blob_sha1": "1225b687c0d80145c5a990c76eb6e444166b0066",
+    "sha256": "43dd09b7b06f85ffafc22d7071896f223b0a1999f25654a3b56627f663c4a03d"
+   },
+   {
+    "module": "gf1_pair_support_consumer",
+    "file": "court/runtime_root/gf1_pair_support_consumer.py",
+    "blob_sha1": "b1d4b130460bd3b641acc17a7783cfd70271ffe2",
+    "sha256": "1bcff006e37c1e29eafa073b65d70e805176c40ce97d2f737cdb4b7864d1aa43"
+   },
+   {
+    "module": "pv2_original_scope_register",
+    "file": "court/runtime_root/candidate/repro/pv2_original_scope_register.py",
+    "blob_sha1": "17699700239e09162d953576dcc502660e4ae6e0",
+    "sha256": "b04fa6ab40f8db39fe8b3ad20363ac245cd42b5e4091bb0aac9226739620b026"
+   },
+   {
+    "module": "pv2_sourcefree_fixture",
+    "file": "court/runtime_root/candidate/repro/pv2_sourcefree_fixture.py",
+    "blob_sha1": "d82192e8df7177d5971c0d6d022ce21124c73e33",
+    "sha256": "fc872776e5bda337791ac7ba3c8ffd837d334cd46143b67737e8c87f7edb4188"
+   },
+   {
+    "module": "pv3_candidate",
+    "file": "court/repro/pv3_candidate.py",
+    "blob_sha1": "ae7cae7fb8849d0014b1d53ddd08777a9da30cdf",
+    "sha256": "d0de0ac250fc224167898de36f5c4fc8cdb957cdf338bb33aad7197fadb304c3"
+   },
+   {
+    "module": "rawlsing_next._pre553_query_common",
+    "file": "court/runtime_root/rawlsing_next/_pre553_query_common.py",
+    "blob_sha1": "938a6b03a63dd34ef4f0f63655ed8f11f65c5d92",
+    "sha256": "496320f7e089e4cc73b1a55023ed906d3f016e939f548cebc4ec59bddd4847b2"
+   },
+   {
+    "module": "rawlsing_next._pre553_query_eval",
+    "file": "court/runtime_root/rawlsing_next/_pre553_query_eval.py",
+    "blob_sha1": "f808dfcd2008cc71e9203de3cadf1abe14223974",
+    "sha256": "c72d7d35bfa5d3cb4b406bdd90530b2822416850bba48cdd12ce784ba10cd670"
+   },
+   {
+    "module": "rawlsing_next._pre553_query_predicate",
+    "file": "court/runtime_root/rawlsing_next/_pre553_query_predicate.py",
+    "blob_sha1": "8590bacf464b2c61f319f581820a3af76ed1e60c",
+    "sha256": "f6e5484371ce1bf15abea25a7db408ab00cf4194154358e995608e67b833cbd7"
+   },
+   {
+    "module": "rawlsing_next.field_forge_conditional_support",
+    "file": "court/runtime_root/rawlsing_next/field_forge_conditional_support.py",
+    "blob_sha1": "a70decb20747d84cbcbe27d1280babc6de88ef33",
+    "sha256": "ec9558c68a2138de7d44796986db39df28a679ccc1506785b79929d624d32034"
+   },
+   {
+    "module": "rawlsing_next.pre553_batch_durable_checkpoint_candidate",
+    "file": "court/runtime_root/rawlsing_next/pre553_batch_durable_checkpoint_candidate.py",
+    "blob_sha1": "719c8d878bcfb3b6c61c844c9bf974ada8365929",
+    "sha256": "349d9b2bcc8b35a8fd24eeb3300ac7d93a2d22a9334c1ca47e50895bb84cf2ce"
+   },
+   {
+    "module": "rawlsing_next.pre553_batch_runner",
+    "file": "court/runtime_root/rawlsing_next/pre553_batch_runner.py",
+    "blob_sha1": "2d291600b9a10c56d9c6f6de7f7d619f6c52e829",
+    "sha256": "5071bde0180db05f59386884d5de2bdea503cd26db2024806a92887d2a5a1e04"
+   },
+   {
+    "module": "rawlsing_next.pre553_c11_ingest",
+    "file": "court/runtime_root/rawlsing_next/pre553_c11_ingest.py",
+    "blob_sha1": "37cd35fa2e3420a3eea272a2902e96ab9ba38aba",
+    "sha256": "0c56a0f6f656547a096982a6adab21c9b47d749385411a5d159f2b5390eec8bf"
+   },
+   {
+    "module": "rawlsing_next.pre553_c11_integrity",
+    "file": "court/runtime_root/rawlsing_next/pre553_c11_integrity.py",
+    "blob_sha1": "7c59aa13a2b7c8e3ab0dc90a1400df645b0b4bbd",
+    "sha256": "3963facef5c8ae2981991ffa8c5c5c9b717fb4e09f342eec277198fc5cf38a33"
+   },
+   {
+    "module": "rawlsing_next.pre553_c11_repository",
+    "file": "court/runtime_root/rawlsing_next/pre553_c11_repository.py",
+    "blob_sha1": "67c6eb6494522cd11aab1b93d0e73f9cef6036f3",
+    "sha256": "84a71fe43307cca30f9eeaaedb269d8390468a4744a0fac251aebc2cda7b498e"
+   },
+   {
+    "module": "rawlsing_next.pre553_carrier_execution",
+    "file": "court/runtime_root/rawlsing_next/pre553_carrier_execution.py",
+    "blob_sha1": "e7cda773e6a2426bfa12b22790fd8e005fe75153",
+    "sha256": "e4f0413c1ca4717993f6a40e0b42e8b23ae3f50b0d11eeb860625e9cc0ec6261"
+   },
+   {
+    "module": "rawlsing_next.pre553_discovery_exact",
+    "file": "court/runtime_root/rawlsing_next/pre553_discovery_exact.py",
+    "blob_sha1": "905f24d114419dbdd93879ad2bee5b59dd2f23af",
+    "sha256": "808fd0bd8e2423c047268285c00ca43f0f4cdbff80ed1ad286e3c6c56b8f7217"
+   },
+   {
+    "module": "rawlsing_next.pre553_empirical_authority",
+    "file": "court/runtime_root/rawlsing_next/pre553_empirical_authority.py",
+    "blob_sha1": "ca65a7fd4d52f0c44447434559b1d09412e7aa39",
+    "sha256": "c32b96cd67274d2bcb44ca509afd87e085748bd2e32565716c10313b0609a29a"
+   },
+   {
+    "module": "rawlsing_next.pre553_empirical_objects",
+    "file": "court/runtime_root/rawlsing_next/pre553_empirical_objects.py",
+    "blob_sha1": "a61365b994e5c3c50de0f598fcf40e90abf757b6",
+    "sha256": "9cd1d71440a7e8c1861dda73274529e07211edc14335583e93ad91c0833e9ab4"
+   },
+   {
+    "module": "rawlsing_next.pre553_empirical_query",
+    "file": "court/runtime_root/rawlsing_next/pre553_empirical_query.py",
+    "blob_sha1": "03facecf70890bfd13b80418620d274cbcd69d02",
+    "sha256": "d45ad313bc57e94c8c3652b4123c7cb03b0fc18d38d577aaaae94435664ef4cb"
+   },
+   {
+    "module": "rawlsing_next.pre553_governed_batch_checkpoint_integration_candidate",
+    "file": "court/runtime_root/rawlsing_next/pre553_governed_batch_checkpoint_integration_candidate.py",
+    "blob_sha1": "44807c6a287145507d7332138c944cd61da363bf",
+    "sha256": "049bf788c28775ccd4d6787fd1ae8cf2e77c7dda715ab8861036a01c47f8f555"
+   },
+   {
+    "module": "rawlsing_next.pre553_original_identity_v2k_successor_candidate",
+    "file": "court/runtime_root/rawlsing_next/pre553_original_identity_v2k_successor_candidate.py",
+    "blob_sha1": "e3ef9a2469966b8ecfbcd178b971f54c687aef22",
+    "sha256": "d1e5e3693f91b94ce934f6765fda90bc88aed22392fb06966742db9633be4d46"
+   },
+   {
+    "module": "rawlsing_next.pre553_original_workload_binder_candidate",
+    "file": "court/runtime_root/rawlsing_next/pre553_original_workload_binder_candidate.py",
+    "blob_sha1": "7d8b3902c3f8f257637b7c07ad9feb5e096d48e5",
+    "sha256": "f5cf17bf78d656c519a83963c4f5feb08552b652ab660afcde609cd2f40838f1"
+   },
+   {
+    "module": "rawlsing_next.pre553_original_workload_contract_v2_candidate",
+    "file": "court/runtime_root/rawlsing_next/pre553_original_workload_contract_v2_candidate.py",
+    "blob_sha1": "08bb75c431d3352cb0d17e9a65f7d855b4d35e59",
+    "sha256": "b22a0843fe21b711ceacc05dca93afd277a47d10030df935f2522ee581f5fae4"
+   },
+   {
+    "module": "rawlsing_next.pre553_original_workload_v2_verifier_candidate",
+    "file": "court/runtime_root/rawlsing_next/pre553_original_workload_v2_verifier_candidate.py",
+    "blob_sha1": "996c8e907f2befde93af09b60154b610c1ffeb63",
+    "sha256": "63d91062f1a080c0297d21364b36492d376137c7936acacb2f0feb702cc0bf28"
+   },
+   {
+    "module": "rawlsing_next.pre553_physical_c11_bridge",
+    "file": "court/runtime_root/rawlsing_next/pre553_physical_c11_bridge.py",
+    "blob_sha1": "3e3497a6eb730524be33bb3d453f6cc63565052c",
+    "sha256": "c1cd1d0855520b93521259cca698e9f5843402081f819adccc013d96a27afb74"
+   },
+   {
+    "module": "rawlsing_next.pre553_physical_decoder",
+    "file": "court/runtime_root/rawlsing_next/pre553_physical_decoder.py",
+    "blob_sha1": "d2a074a41fb556a1cd5928a5fe1421ef3672a4e5",
+    "sha256": "a75a8ff72310949b84adbe682a01375c5dcf5dcee69e94e2a4a8a9b39e17017b"
+   },
+   {
+    "module": "rawlsing_next.pre553_r5_codec",
+    "file": "court/runtime_root/rawlsing_next/pre553_r5_codec.py",
+    "blob_sha1": "72f8f3c03ed065e86fea4e76bb17f8e06c2bf540",
+    "sha256": "cdb4502e770d092c7dba792c8821eafd0180bf4922357ace8a724e6b126eb3b8"
+   },
+   {
+    "module": "rawlsing_next.pre553_route_b_production",
+    "file": "court/runtime_root/rawlsing_next/pre553_route_b_production.py",
+    "blob_sha1": "2385cd327dced3c5b887b59085aa0d21b04d78c3",
+    "sha256": "3a677b4d7a9083ce627f9c773d8a1697f949deebc550bc8f072cff011589f18b"
+   },
+   {
+    "module": "rawlsing_next.pre553_runtime_authority",
+    "file": "court/runtime_root/rawlsing_next/pre553_runtime_authority.py",
+    "blob_sha1": "896c7094124a4aaea23eec550178e4bf8e73ac68",
+    "sha256": "027aa551973b3ba6a560b322c9a704c4577f250d57a0c5564b8d9de71cbbb1d2"
+   },
+   {
+    "module": "rawlsing_next.pre553_runtime_context",
+    "file": "court/runtime_root/rawlsing_next/pre553_runtime_context.py",
+    "blob_sha1": "4fc50793871e176f164442c04ef2501eba9d5dfa",
+    "sha256": "e37b8d16ea2636ad78bcd8239b3ebdc498d0528605bf32353b65415739c0de1e"
+   },
+   {
+    "module": "rawlsing_next.pre553_source_backed_c11_facade",
+    "file": "court/runtime_root/rawlsing_next/pre553_source_backed_c11_facade.py",
+    "blob_sha1": "8a761119e4a8d68eb291fc4edfadb52e027f8284",
+    "sha256": "03b88d258d21c403542756db7316923aa392871442d99294de904b1744da1d01"
+   },
+   {
+    "module": "rawlsing_next.pre553_v2_durable_consumer_integration_candidate",
+    "file": "court/runtime_root/rawlsing_next/pre553_v2_durable_consumer_integration_candidate.py",
+    "blob_sha1": "dc146e920909c8577b5c3c316cd9a8631e96ffd8",
+    "sha256": "ec52d15fe485b2ccb331cb44094008773702f9fed67013b77e5dbd51ee95424c"
+   },
+   {
+    "module": "rawlsing_next.tests.test_pre553_discovery_exact",
+    "file": "court/runtime_root/rawlsing_next/tests/test_pre553_discovery_exact.py",
+    "blob_sha1": "b53039aeb95e012993c5233a7575c1dad5a14929",
+    "sha256": "bb3a403ab1f34e0b9e678d97aac2984d63e872022c4a3c669af58283a45a03db"
+   },
+   {
+    "module": "rawlsing_next.tests.test_pre553_empirical_query",
+    "file": "court/runtime_root/rawlsing_next/tests/test_pre553_empirical_query.py",
+    "blob_sha1": "cc7d93db1f87d9c311170c229dbe3506937b404a",
+    "sha256": "eacc63ca9a067ebde53005fec9c859ce304cbedcf42b1b338b4fece49158b720"
+   },
+   {
+    "module": "rawlsing_next.tests.test_pre553_route_b_production",
+    "file": "court/runtime_root/rawlsing_next/tests/test_pre553_route_b_production.py",
+    "blob_sha1": "d244eaaa48f878f83d77a305b54e6dcde37244c5",
+    "sha256": "19940300b016c2d0c92d6b8281f0a39c2aa396fa18e6388deba3103d033c2439"
+   }
+  ],
+  "reference_consumer_sha256": "1bcff006e37c1e29eafa073b65d70e805176c40ce97d2f737cdb4b7864d1aa43",
+  "reference_consumer_git_blob_sha1_of_pre_gf1e_court": "746d669314ddd114ec21d3a35c13c452666863fe",
+  "producer_sha256": "e5ac3d003bfe3a4e00cf1da1ca0c4cacab706391f4b9ab71f101e64a4b2cfc04",
+  "frozen_spec_sha256": "2bbb54aa7b1ea990705fc6edf51895a2ea7ec6192abd90acf062940aeff87ef5",
+  "accepted_owner_sha256": "ec9558c68a2138de7d44796986db39df28a679ccc1506785b79929d624d32034"
+ },
+ "separation_class_definition_frozen": {
+  "EXACT_PAIR_SEPARATION": "every condition state with a positive denominator is a point mass on one target state and the point-mass targets differ across states",
+  "NO_PAIR_SEPARATION": "positive risk and support exist but the profile is not an exact deterministic separation (identical or partial conditional distributions)",
+  "UNDETERMINED_NO_ELIGIBLE_RISK": "at least one condition state has zero eligible denominator (and no zero-support determination takes precedence)",
+  "UNDETERMINED_ZERO_SUPPORT_RISK": "eligible risk exists but observed joint support is zero, or the producer typed state is a zero state; a zero count is never silently promoted and never confused with missing/unresolved",
+  "typed_refusals": "inconsistent per-condition denominator vs sum(target_counts), support exceeding eligible risk, negative/noninteger counts, zero/positive cell-state inconsistency => typed rejection before any separation_class is computed"
+ },
+ "genuine_native_relations": {
+  "BASELINE": [
+   {
+    "label": "BASELINE::QUERY::20136e61b5e197b3aadfe3dba75a18fd96b0190d4c11da21038f1f142dfe0830",
+    "relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:62d6bedf5f69ad19be3899ddc98523cbbb9b6aaa840bdd598e68ed14adb3002d",
+    "relation_content_hash": "62d6bedf5f69ad19be3899ddc98523cbbb9b6aaa840bdd598e68ed14adb3002d",
+    "typed_state": "SUPPORTED",
+    "producer_state_blocking": false,
+    "operation_role_order": "FORWARD_NATIVE_ORDER",
+    "roles": {
+     "CONDITIONER": {
+      "source_native_variable": "m01-Y",
+      "ref_object_id": "urn:test:i03:question_native:m01-Y",
+      "domain": [
+       "0",
+       "1"
+      ]
+     },
+     "TARGET": {
+      "source_native_variable": "m01-X",
+      "ref_object_id": "urn:test:i03:question_native:m01-X",
+      "domain": [
+       "0",
+       "1"
+      ]
+     }
+    },
+    "native_component_order": [
+     "urn:test:i03:question_native:m01-Y",
+     "urn:test:i03:question_native:m01-X"
+    ],
+    "target_domain_identity": "e0fbd72cda06ce4a71bd58b699776d597ff200abcf7a4b9e80698867c105849c",
+    "cells_00_01_10_11": {
+     "00": 1,
+     "01": 0,
+     "10": 0,
+     "11": 1
+    },
+    "conditional_profile": [
+     {
+      "condition_state": "0",
+      "condition_denominator_support": 1,
+      "targets": {
+       "0": 1,
+       "1": 0
+      },
+      "states": {
+       "0": "OBSERVED_POSITIVE",
+       "1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+      }
+     },
+     {
+      "condition_state": "1",
+      "condition_denominator_support": 1,
+      "targets": {
+       "0": 0,
+       "1": 1
+      },
+      "states": {
+       "0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+       "1": "OBSERVED_POSITIVE"
+      }
+     }
+    ],
+    "eligible_joint_risk_total": 2,
+    "excluded_ineligible_target_count": 0,
+    "joint_support_total": 2,
+    "zero_cell_semantics": {
+     "0|1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+     "1|0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+    },
+    "relation_permission_ceiling": [
+     "SOURCE_FREE_DEV"
+    ],
+    "consumer": {
+     "decision_state": "PAIR_SUPPORT_SIGNATURE_COMPUTED",
+     "separation_class": "EXACT_PAIR_SEPARATION",
+     "separation_signature": "\"0\":1,0@1|\"1\":0,1@1",
+     "support_vectors": [
+      {
+       "condition_state": "0",
+       "condition_denominator_support": 1,
+       "target_counts": [
+        {
+         "target_state": "0",
+         "joint_support_count": 1,
+         "joint_cell_state": "OBSERVED_POSITIVE"
+        },
+        {
+         "target_state": "1",
+         "joint_support_count": 0,
+         "joint_cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+        }
+       ]
+      },
+      {
+       "condition_state": "1",
+       "condition_denominator_support": 1,
+       "target_counts": [
+        {
+         "target_state": "0",
+         "joint_support_count": 0,
+         "joint_cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+        },
+        {
+         "target_state": "1",
+         "joint_support_count": 1,
+         "joint_cell_state": "OBSERVED_POSITIVE"
+        }
+       ]
+      }
+     ],
+     "zero_cell_semantics": {
+      "\"0\":\"1\"": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+      "\"1\":\"0\"": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+     },
+     "joint_support_total": 2,
+     "condition_states_with_positive_denominator": [
+      "0",
+      "1"
+     ],
+     "eligible_joint_risk_total": 2,
+     "result_hash": "da5f98ec0166baed981ca959a1b28795f04abb2ce3c13115213d4cb744b91bd1",
+     "generic_native_semantics_hold": "RETAINED",
+     "downstream_value_produced": true,
+     "read_relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:62d6bedf5f69ad19be3899ddc98523cbbb9b6aaa840bdd598e68ed14adb3002d",
+     "read_relation_content_hash": "62d6bedf5f69ad19be3899ddc98523cbbb9b6aaa840bdd598e68ed14adb3002d",
+     "read_relation_owner": "GF1_GENERIC_PAIR_CANDIDATE_RELATION_OWNER_TEST_ONLY",
+     "is_population_evidence_not_actor_fact": true,
+     "makes_no_causal_or_psychological_claim": true,
+     "production_owner_commit": false
+    },
+    "work_key": "20136e61b5e197b3aadfe3dba75a18fd96b0190d4c11da21038f1f142dfe0830",
+    "consumer_kind": "QUERY"
+   },
+   {
+    "label": "BASELINE::DISCOVERY::3b1ca98feb9c8b34be6f277743894405b1db69104d507d1a82a74c223e321142",
+    "relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:7ac463e859e66c0f7e92ffcbd964f88f8e55524beeadc587d4ecc7032bcc6903",
+    "relation_content_hash": "7ac463e859e66c0f7e92ffcbd964f88f8e55524beeadc587d4ecc7032bcc6903",
+    "typed_state": "SUPPORTED",
+    "producer_state_blocking": false,
+    "operation_role_order": "FORWARD_NATIVE_ORDER",
+    "roles": {
+     "CONDITIONER": {
+      "source_native_variable": "m01-X",
+      "ref_object_id": "urn:test:i03:question_native:m01-X",
+      "domain": [
+       "0",
+       "1"
+      ]
+     },
+     "TARGET": {
+      "source_native_variable": "m01-Y",
+      "ref_object_id": "urn:test:i03:question_native:m01-Y",
+      "domain": [
+       "0",
+       "1"
+      ]
+     }
+    },
+    "native_component_order": [
+     "urn:test:i03:question_native:m01-X",
+     "urn:test:i03:question_native:m01-Y"
+    ],
+    "target_domain_identity": "2a1db449e32b29e968935c642cbe67f71231424c638fca146409278d1affc7c4",
+    "cells_00_01_10_11": {
+     "00": 0,
+     "01": 0,
+     "10": 0,
+     "11": 1
+    },
+    "conditional_profile": [
+     {
+      "condition_state": "0",
+      "condition_denominator_support": 0,
+      "targets": {
+       "0": 0,
+       "1": 0
+      },
+      "states": {
+       "0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+       "1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+      }
+     },
+     {
+      "condition_state": "1",
+      "condition_denominator_support": 1,
+      "targets": {
+       "0": 0,
+       "1": 1
+      },
+      "states": {
+       "0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+       "1": "OBSERVED_POSITIVE"
+      }
+     }
+    ],
+    "eligible_joint_risk_total": 1,
+    "excluded_ineligible_target_count": 0,
+    "joint_support_total": 1,
+    "zero_cell_semantics": {
+     "0|0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+     "0|1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+     "1|0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+    },
+    "relation_permission_ceiling": [
+     "SOURCE_FREE_DEV"
+    ],
+    "consumer": {
+     "decision_state": "PAIR_SUPPORT_SIGNATURE_COMPUTED",
+     "separation_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+     "separation_signature": "\"0\":0,0@0|\"1\":0,1@1",
+     "support_vectors": [
+      {
+       "condition_state": "0",
+       "condition_denominator_support": 0,
+       "target_counts": [
+        {
+         "target_state": "0",
+         "joint_support_count": 0,
+         "joint_cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+        },
+        {
+         "target_state": "1",
+         "joint_support_count": 0,
+         "joint_cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+        }
+       ]
+      },
+      {
+       "condition_state": "1",
+       "condition_denominator_support": 1,
+       "target_counts": [
+        {
+         "target_state": "0",
+         "joint_support_count": 0,
+         "joint_cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+        },
+        {
+         "target_state": "1",
+         "joint_support_count": 1,
+         "joint_cell_state": "OBSERVED_POSITIVE"
+        }
+       ]
+      }
+     ],
+     "zero_cell_semantics": {
+      "\"0\":\"0\"": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+      "\"0\":\"1\"": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+      "\"1\":\"0\"": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+     },
+     "joint_support_total": 1,
+     "condition_states_with_positive_denominator": [
+      "1"
+     ],
+     "eligible_joint_risk_total": 1,
+     "result_hash": "86253b9ed26cf8c082b2382713823576ac0cecb8eed805c521074a3d3cfa9589",
+     "generic_native_semantics_hold": "RETAINED",
+     "downstream_value_produced": true,
+     "read_relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:7ac463e859e66c0f7e92ffcbd964f88f8e55524beeadc587d4ecc7032bcc6903",
+     "read_relation_content_hash": "7ac463e859e66c0f7e92ffcbd964f88f8e55524beeadc587d4ecc7032bcc6903",
+     "read_relation_owner": "GF1_GENERIC_PAIR_CANDIDATE_RELATION_OWNER_TEST_ONLY",
+     "is_population_evidence_not_actor_fact": true,
+     "makes_no_causal_or_psychological_claim": true,
+     "production_owner_commit": false
+    },
+    "work_key": "3b1ca98feb9c8b34be6f277743894405b1db69104d507d1a82a74c223e321142",
+    "consumer_kind": "DISCOVERY"
+   },
+   {
+    "label": "BASELINE::QUERY::9fb3f6c645377703bf08f538f318d44d4d886512545a726ca0493c9c9f826c8e",
+    "relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:74d3aaaca35aaacc4491c7e472ac38a6e69fcf0d51736b86b853ea48d10b2236",
+    "relation_content_hash": "74d3aaaca35aaacc4491c7e472ac38a6e69fcf0d51736b86b853ea48d10b2236",
+    "typed_state": "SUPPORTED",
+    "producer_state_blocking": false,
+    "operation_role_order": "FORWARD_NATIVE_ORDER",
+    "roles": {
+     "CONDITIONER": {
+      "source_native_variable": "m01-X",
+      "ref_object_id": "urn:test:i03:question_native:m01-X",
+      "domain": [
+       "0",
+       "1"
+      ]
+     },
+     "TARGET": {
+      "source_native_variable": "m01-Y",
+      "ref_object_id": "urn:test:i03:question_native:m01-Y",
+      "domain": [
+       "0",
+       "1"
+      ]
+     }
+    },
+    "native_component_order": [
+     "urn:test:i03:question_native:m01-X",
+     "urn:test:i03:question_native:m01-Y"
+    ],
+    "target_domain_identity": "2a1db449e32b29e968935c642cbe67f71231424c638fca146409278d1affc7c4",
+    "cells_00_01_10_11": {
+     "00": 1,
+     "01": 0,
+     "10": 0,
+     "11": 1
+    },
+    "conditional_profile": [
+     {
+      "condition_state": "0",
+      "condition_denominator_support": 1,
+      "targets": {
+       "0": 1,
+       "1": 0
+      },
+      "states": {
+       "0": "OBSERVED_POSITIVE",
+       "1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+      }
+     },
+     {
+      "condition_state": "1",
+      "condition_denominator_support": 1,
+      "targets": {
+       "0": 0,
+       "1": 1
+      },
+      "states": {
+       "0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+       "1": "OBSERVED_POSITIVE"
+      }
+     }
+    ],
+    "eligible_joint_risk_total": 2,
+    "excluded_ineligible_target_count": 0,
+    "joint_support_total": 2,
+    "zero_cell_semantics": {
+     "0|1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+     "1|0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+    },
+    "relation_permission_ceiling": [
+     "SOURCE_FREE_DEV"
+    ],
+    "consumer": {
+     "decision_state": "PAIR_SUPPORT_SIGNATURE_COMPUTED",
+     "separation_class": "EXACT_PAIR_SEPARATION",
+     "separation_signature": "\"0\":1,0@1|\"1\":0,1@1",
+     "support_vectors": [
+      {
+       "condition_state": "0",
+       "condition_denominator_support": 1,
+       "target_counts": [
+        {
+         "target_state": "0",
+         "joint_support_count": 1,
+         "joint_cell_state": "OBSERVED_POSITIVE"
+        },
+        {
+         "target_state": "1",
+         "joint_support_count": 0,
+         "joint_cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+        }
+       ]
+      },
+      {
+       "condition_state": "1",
+       "condition_denominator_support": 1,
+       "target_counts": [
+        {
+         "target_state": "0",
+         "joint_support_count": 0,
+         "joint_cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+        },
+        {
+         "target_state": "1",
+         "joint_support_count": 1,
+         "joint_cell_state": "OBSERVED_POSITIVE"
+        }
+       ]
+      }
+     ],
+     "zero_cell_semantics": {
+      "\"0\":\"1\"": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+      "\"1\":\"0\"": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+     },
+     "joint_support_total": 2,
+     "condition_states_with_positive_denominator": [
+      "0",
+      "1"
+     ],
+     "eligible_joint_risk_total": 2,
+     "result_hash": "132f86d7d922f643b9a9eb5f9df60fe6541c1d58f9c9888eef586b0f18af02e3",
+     "generic_native_semantics_hold": "RETAINED",
+     "downstream_value_produced": true,
+     "read_relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:74d3aaaca35aaacc4491c7e472ac38a6e69fcf0d51736b86b853ea48d10b2236",
+     "read_relation_content_hash": "74d3aaaca35aaacc4491c7e472ac38a6e69fcf0d51736b86b853ea48d10b2236",
+     "read_relation_owner": "GF1_GENERIC_PAIR_CANDIDATE_RELATION_OWNER_TEST_ONLY",
+     "is_population_evidence_not_actor_fact": true,
+     "makes_no_causal_or_psychological_claim": true,
+     "production_owner_commit": false
+    },
+    "work_key": "9fb3f6c645377703bf08f538f318d44d4d886512545a726ca0493c9c9f826c8e",
+    "consumer_kind": "QUERY"
+   },
+   {
+    "label": "BASELINE::DISCOVERY::481bb22e24b496251d44084ea40e0b95d266a33353502a5b41c38b41c009587c",
+    "relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:b4177c0cc64c823e4a97eaa98c370fedd767d3d4e219659ab3a4edd8e4a336dc",
+    "relation_content_hash": "b4177c0cc64c823e4a97eaa98c370fedd767d3d4e219659ab3a4edd8e4a336dc",
+    "typed_state": "SUPPORTED",
+    "producer_state_blocking": false,
+    "operation_role_order": "FORWARD_NATIVE_ORDER",
+    "roles": {
+     "CONDITIONER": {
+      "source_native_variable": "m01-X",
+      "ref_object_id": "urn:test:i03:question_native:m01-X",
+      "domain": [
+       "0",
+       "1"
+      ]
+     },
+     "TARGET": {
+      "source_native_variable": "m01-Y",
+      "ref_object_id": "urn:test:i03:question_native:m01-Y",
+      "domain": [
+       "0",
+       "1"
+      ]
+     }
+    },
+    "native_component_order": [
+     "urn:test:i03:question_native:m01-X",
+     "urn:test:i03:question_native:m01-Y"
+    ],
+    "target_domain_identity": "2a1db449e32b29e968935c642cbe67f71231424c638fca146409278d1affc7c4",
+    "cells_00_01_10_11": {
+     "00": 0,
+     "01": 0,
+     "10": 0,
+     "11": 1
+    },
+    "conditional_profile": [
+     {
+      "condition_state": "0",
+      "condition_denominator_support": 0,
+      "targets": {
+       "0": 0,
+       "1": 0
+      },
+      "states": {
+       "0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+       "1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+      }
+     },
+     {
+      "condition_state": "1",
+      "condition_denominator_support": 1,
+      "targets": {
+       "0": 0,
+       "1": 1
+      },
+      "states": {
+       "0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+       "1": "OBSERVED_POSITIVE"
+      }
+     }
+    ],
+    "eligible_joint_risk_total": 1,
+    "excluded_ineligible_target_count": 0,
+    "joint_support_total": 1,
+    "zero_cell_semantics": {
+     "0|0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+     "0|1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+     "1|0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+    },
+    "relation_permission_ceiling": [
+     "SOURCE_FREE_DEV"
+    ],
+    "consumer": {
+     "decision_state": "PAIR_SUPPORT_SIGNATURE_COMPUTED",
+     "separation_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+     "separation_signature": "\"0\":0,0@0|\"1\":0,1@1",
+     "support_vectors": [
+      {
+       "condition_state": "0",
+       "condition_denominator_support": 0,
+       "target_counts": [
+        {
+         "target_state": "0",
+         "joint_support_count": 0,
+         "joint_cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+        },
+        {
+         "target_state": "1",
+         "joint_support_count": 0,
+         "joint_cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+        }
+       ]
+      },
+      {
+       "condition_state": "1",
+       "condition_denominator_support": 1,
+       "target_counts": [
+        {
+         "target_state": "0",
+         "joint_support_count": 0,
+         "joint_cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+        },
+        {
+         "target_state": "1",
+         "joint_support_count": 1,
+         "joint_cell_state": "OBSERVED_POSITIVE"
+        }
+       ]
+      }
+     ],
+     "zero_cell_semantics": {
+      "\"0\":\"0\"": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+      "\"0\":\"1\"": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+      "\"1\":\"0\"": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+     },
+     "joint_support_total": 1,
+     "condition_states_with_positive_denominator": [
+      "1"
+     ],
+     "eligible_joint_risk_total": 1,
+     "result_hash": "06b24a29a19f114aa7d5f64e123886c5860ed04b40cf2ea9f9c3248d43f48ca8",
+     "generic_native_semantics_hold": "RETAINED",
+     "downstream_value_produced": true,
+     "read_relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:b4177c0cc64c823e4a97eaa98c370fedd767d3d4e219659ab3a4edd8e4a336dc",
+     "read_relation_content_hash": "b4177c0cc64c823e4a97eaa98c370fedd767d3d4e219659ab3a4edd8e4a336dc",
+     "read_relation_owner": "GF1_GENERIC_PAIR_CANDIDATE_RELATION_OWNER_TEST_ONLY",
+     "is_population_evidence_not_actor_fact": true,
+     "makes_no_causal_or_psychological_claim": true,
+     "production_owner_commit": false
+    },
+    "work_key": "481bb22e24b496251d44084ea40e0b95d266a33353502a5b41c38b41c009587c",
+    "consumer_kind": "DISCOVERY"
+   },
+   {
+    "label": "BASELINE::QUERY::d508b44c3db46c091534d9bcc71cfb00bb249e11900b6647a302b8ae71a29aa4",
+    "relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:972ea8800f1d324ce964b1424979789ec8c6cbe9171712cc7206bf1dd073be76",
+    "relation_content_hash": "972ea8800f1d324ce964b1424979789ec8c6cbe9171712cc7206bf1dd073be76",
+    "typed_state": "SUPPORTED",
+    "producer_state_blocking": false,
+    "operation_role_order": "FORWARD_NATIVE_ORDER",
+    "roles": {
+     "CONDITIONER": {
+      "source_native_variable": "m01-Y",
+      "ref_object_id": "urn:test:i03:question_native:m01-Y",
+      "domain": [
+       "0",
+       "1"
+      ]
+     },
+     "TARGET": {
+      "source_native_variable": "m01-X",
+      "ref_object_id": "urn:test:i03:question_native:m01-X",
+      "domain": [
+       "0",
+       "1"
+      ]
+     }
+    },
+    "native_component_order": [
+     "urn:test:i03:question_native:m01-Y",
+     "urn:test:i03:question_native:m01-X"
+    ],
+    "target_domain_identity": "e0fbd72cda06ce4a71bd58b699776d597ff200abcf7a4b9e80698867c105849c",
+    "cells_00_01_10_11": {
+     "00": 1,
+     "01": 0,
+     "10": 0,
+     "11": 1
+    },
+    "conditional_profile": [
+     {
+      "condition_state": "0",
+      "condition_denominator_support": 1,
+      "targets": {
+       "0": 1,
+       "1": 0
+      },
+      "states": {
+       "0": "OBSERVED_POSITIVE",
+       "1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+      }
+     },
+     {
+      "condition_state": "1",
+      "condition_denominator_support": 1,
+      "targets": {
+       "0": 0,
+       "1": 1
+      },
+      "states": {
+       "0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+       "1": "OBSERVED_POSITIVE"
+      }
+     }
+    ],
+    "eligible_joint_risk_total": 2,
+    "excluded_ineligible_target_count": 0,
+    "joint_support_total": 2,
+    "zero_cell_semantics": {
+     "0|1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+     "1|0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+    },
+    "relation_permission_ceiling": [
+     "SOURCE_FREE_DEV"
+    ],
+    "consumer": {
+     "decision_state": "PAIR_SUPPORT_SIGNATURE_COMPUTED",
+     "separation_class": "EXACT_PAIR_SEPARATION",
+     "separation_signature": "\"0\":1,0@1|\"1\":0,1@1",
+     "support_vectors": [
+      {
+       "condition_state": "0",
+       "condition_denominator_support": 1,
+       "target_counts": [
+        {
+         "target_state": "0",
+         "joint_support_count": 1,
+         "joint_cell_state": "OBSERVED_POSITIVE"
+        },
+        {
+         "target_state": "1",
+         "joint_support_count": 0,
+         "joint_cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+        }
+       ]
+      },
+      {
+       "condition_state": "1",
+       "condition_denominator_support": 1,
+       "target_counts": [
+        {
+         "target_state": "0",
+         "joint_support_count": 0,
+         "joint_cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+        },
+        {
+         "target_state": "1",
+         "joint_support_count": 1,
+         "joint_cell_state": "OBSERVED_POSITIVE"
+        }
+       ]
+      }
+     ],
+     "zero_cell_semantics": {
+      "\"0\":\"1\"": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+      "\"1\":\"0\"": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+     },
+     "joint_support_total": 2,
+     "condition_states_with_positive_denominator": [
+      "0",
+      "1"
+     ],
+     "eligible_joint_risk_total": 2,
+     "result_hash": "1e1dcbff7ee898c3566c7777ccb5b071535a35e8ccb990004c98470352fe012f",
+     "generic_native_semantics_hold": "RETAINED",
+     "downstream_value_produced": true,
+     "read_relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:972ea8800f1d324ce964b1424979789ec8c6cbe9171712cc7206bf1dd073be76",
+     "read_relation_content_hash": "972ea8800f1d324ce964b1424979789ec8c6cbe9171712cc7206bf1dd073be76",
+     "read_relation_owner": "GF1_GENERIC_PAIR_CANDIDATE_RELATION_OWNER_TEST_ONLY",
+     "is_population_evidence_not_actor_fact": true,
+     "makes_no_causal_or_psychological_claim": true,
+     "production_owner_commit": false
+    },
+    "work_key": "d508b44c3db46c091534d9bcc71cfb00bb249e11900b6647a302b8ae71a29aa4",
+    "consumer_kind": "QUERY"
+   },
+   {
+    "label": "BASELINE::QUERY::d673e586264356f14a19e4adf128dd3ac2b0be5dcaf4d14bbcf849ffd587e4da",
+    "relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:0f0fc4956cdcba3f7bbf8cee70b1f897a6361fce96a17732443ba230e55afbe2",
+    "relation_content_hash": "0f0fc4956cdcba3f7bbf8cee70b1f897a6361fce96a17732443ba230e55afbe2",
+    "typed_state": "SUPPORTED",
+    "producer_state_blocking": false,
+    "operation_role_order": "FORWARD_NATIVE_ORDER",
+    "roles": {
+     "CONDITIONER": {
+      "source_native_variable": "m01-X",
+      "ref_object_id": "urn:test:i03:question_native:m01-X",
+      "domain": [
+       "0",
+       "1"
+      ]
+     },
+     "TARGET": {
+      "source_native_variable": "m01-Y",
+      "ref_object_id": "urn:test:i03:question_native:m01-Y",
+      "domain": [
+       "0",
+       "1"
+      ]
+     }
+    },
+    "native_component_order": [
+     "urn:test:i03:question_native:m01-X",
+     "urn:test:i03:question_native:m01-Y"
+    ],
+    "target_domain_identity": "2a1db449e32b29e968935c642cbe67f71231424c638fca146409278d1affc7c4",
+    "cells_00_01_10_11": {
+     "00": 1,
+     "01": 0,
+     "10": 0,
+     "11": 1
+    },
+    "conditional_profile": [
+     {
+      "condition_state": "0",
+      "condition_denominator_support": 1,
+      "targets": {
+       "0": 1,
+       "1": 0
+      },
+      "states": {
+       "0": "OBSERVED_POSITIVE",
+       "1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+      }
+     },
+     {
+      "condition_state": "1",
+      "condition_denominator_support": 1,
+      "targets": {
+       "0": 0,
+       "1": 1
+      },
+      "states": {
+       "0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+       "1": "OBSERVED_POSITIVE"
+      }
+     }
+    ],
+    "eligible_joint_risk_total": 2,
+    "excluded_ineligible_target_count": 0,
+    "joint_support_total": 2,
+    "zero_cell_semantics": {
+     "0|1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+     "1|0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+    },
+    "relation_permission_ceiling": [
+     "SOURCE_FREE_DEV"
+    ],
+    "consumer": {
+     "decision_state": "PAIR_SUPPORT_SIGNATURE_COMPUTED",
+     "separation_class": "EXACT_PAIR_SEPARATION",
+     "separation_signature": "\"0\":1,0@1|\"1\":0,1@1",
+     "support_vectors": [
+      {
+       "condition_state": "0",
+       "condition_denominator_support": 1,
+       "target_counts": [
+        {
+         "target_state": "0",
+         "joint_support_count": 1,
+         "joint_cell_state": "OBSERVED_POSITIVE"
+        },
+        {
+         "target_state": "1",
+         "joint_support_count": 0,
+         "joint_cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+        }
+       ]
+      },
+      {
+       "condition_state": "1",
+       "condition_denominator_support": 1,
+       "target_counts": [
+        {
+         "target_state": "0",
+         "joint_support_count": 0,
+         "joint_cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+        },
+        {
+         "target_state": "1",
+         "joint_support_count": 1,
+         "joint_cell_state": "OBSERVED_POSITIVE"
+        }
+       ]
+      }
+     ],
+     "zero_cell_semantics": {
+      "\"0\":\"1\"": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+      "\"1\":\"0\"": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+     },
+     "joint_support_total": 2,
+     "condition_states_with_positive_denominator": [
+      "0",
+      "1"
+     ],
+     "eligible_joint_risk_total": 2,
+     "result_hash": "78c2f650609b6a0658731f152124cd91b45852c7c937b207db1a9382ff004dcf",
+     "generic_native_semantics_hold": "RETAINED",
+     "downstream_value_produced": true,
+     "read_relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:0f0fc4956cdcba3f7bbf8cee70b1f897a6361fce96a17732443ba230e55afbe2",
+     "read_relation_content_hash": "0f0fc4956cdcba3f7bbf8cee70b1f897a6361fce96a17732443ba230e55afbe2",
+     "read_relation_owner": "GF1_GENERIC_PAIR_CANDIDATE_RELATION_OWNER_TEST_ONLY",
+     "is_population_evidence_not_actor_fact": true,
+     "makes_no_causal_or_psychological_claim": true,
+     "production_owner_commit": false
+    },
+    "work_key": "d673e586264356f14a19e4adf128dd3ac2b0be5dcaf4d14bbcf849ffd587e4da",
+    "consumer_kind": "QUERY"
+   }
+  ],
+  "R2_Y1": [
+   {
+    "label": "R2_Y1::QUERY::047ed34f06ac325c0a4e1635b186a0220a76ea13e163fb8b0f797381942445ad",
+    "relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:505e29a5b31534c45d53c155a367c5151b1d982682a23356a193c5c8c0e563a4",
+    "relation_content_hash": "505e29a5b31534c45d53c155a367c5151b1d982682a23356a193c5c8c0e563a4",
+    "typed_state": "SUPPORTED",
+    "producer_state_blocking": false,
+    "operation_role_order": "FORWARD_NATIVE_ORDER",
+    "roles": {
+     "CONDITIONER": {
+      "source_native_variable": "m01-Y",
+      "ref_object_id": "urn:test:i03:question_native:m01-Y",
+      "domain": [
+       "0",
+       "1"
+      ]
+     },
+     "TARGET": {
+      "source_native_variable": "m01-X",
+      "ref_object_id": "urn:test:i03:question_native:m01-X",
+      "domain": [
+       "0",
+       "1"
+      ]
+     }
+    },
+    "native_component_order": [
+     "urn:test:i03:question_native:m01-Y",
+     "urn:test:i03:question_native:m01-X"
+    ],
+    "target_domain_identity": "e0fbd72cda06ce4a71bd58b699776d597ff200abcf7a4b9e80698867c105849c",
+    "cells_00_01_10_11": {
+     "00": 0,
+     "01": 0,
+     "10": 1,
+     "11": 1
+    },
+    "conditional_profile": [
+     {
+      "condition_state": "0",
+      "condition_denominator_support": 0,
+      "targets": {
+       "0": 0,
+       "1": 0
+      },
+      "states": {
+       "0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+       "1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+      }
+     },
+     {
+      "condition_state": "1",
+      "condition_denominator_support": 2,
+      "targets": {
+       "0": 1,
+       "1": 1
+      },
+      "states": {
+       "0": "OBSERVED_POSITIVE",
+       "1": "OBSERVED_POSITIVE"
+      }
+     }
+    ],
+    "eligible_joint_risk_total": 2,
+    "excluded_ineligible_target_count": 0,
+    "joint_support_total": 2,
+    "zero_cell_semantics": {
+     "0|0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+     "0|1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+    },
+    "relation_permission_ceiling": [
+     "SOURCE_FREE_DEV"
+    ],
+    "consumer": {
+     "decision_state": "PAIR_SUPPORT_SIGNATURE_COMPUTED",
+     "separation_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+     "separation_signature": "\"0\":0,0@0|\"1\":1,1@2",
+     "support_vectors": [
+      {
+       "condition_state": "0",
+       "condition_denominator_support": 0,
+       "target_counts": [
+        {
+         "target_state": "0",
+         "joint_support_count": 0,
+         "joint_cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+        },
+        {
+         "target_state": "1",
+         "joint_support_count": 0,
+         "joint_cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+        }
+       ]
+      },
+      {
+       "condition_state": "1",
+       "condition_denominator_support": 2,
+       "target_counts": [
+        {
+         "target_state": "0",
+         "joint_support_count": 1,
+         "joint_cell_state": "OBSERVED_POSITIVE"
+        },
+        {
+         "target_state": "1",
+         "joint_support_count": 1,
+         "joint_cell_state": "OBSERVED_POSITIVE"
+        }
+       ]
+      }
+     ],
+     "zero_cell_semantics": {
+      "\"0\":\"0\"": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+      "\"0\":\"1\"": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+     },
+     "joint_support_total": 2,
+     "condition_states_with_positive_denominator": [
+      "1"
+     ],
+     "eligible_joint_risk_total": 2,
+     "result_hash": "681d1da5c06af82bf7da53cce642cd13e861ee41f3a89d3a01668ef2c067a1ed",
+     "generic_native_semantics_hold": "RETAINED",
+     "downstream_value_produced": true,
+     "read_relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:505e29a5b31534c45d53c155a367c5151b1d982682a23356a193c5c8c0e563a4",
+     "read_relation_content_hash": "505e29a5b31534c45d53c155a367c5151b1d982682a23356a193c5c8c0e563a4",
+     "read_relation_owner": "GF1_GENERIC_PAIR_CANDIDATE_RELATION_OWNER_TEST_ONLY",
+     "is_population_evidence_not_actor_fact": true,
+     "makes_no_causal_or_psychological_claim": true,
+     "production_owner_commit": false
+    },
+    "work_key": "047ed34f06ac325c0a4e1635b186a0220a76ea13e163fb8b0f797381942445ad",
+    "consumer_kind": "QUERY"
+   },
+   {
+    "label": "R2_Y1::QUERY::38f41ec47f4fbbcd57923a0eb1f9d048b57e175891104a955b6d4b5cc382cd2c",
+    "relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:3132f24650123cf4670d96bc8c91d13591f9d36a8f13f90b669e52122f118763",
+    "relation_content_hash": "3132f24650123cf4670d96bc8c91d13591f9d36a8f13f90b669e52122f118763",
+    "typed_state": "SUPPORTED",
+    "producer_state_blocking": false,
+    "operation_role_order": "FORWARD_NATIVE_ORDER",
+    "roles": {
+     "CONDITIONER": {
+      "source_native_variable": "m01-X",
+      "ref_object_id": "urn:test:i03:question_native:m01-X",
+      "domain": [
+       "0",
+       "1"
+      ]
+     },
+     "TARGET": {
+      "source_native_variable": "m01-Y",
+      "ref_object_id": "urn:test:i03:question_native:m01-Y",
+      "domain": [
+       "0",
+       "1"
+      ]
+     }
+    },
+    "native_component_order": [
+     "urn:test:i03:question_native:m01-X",
+     "urn:test:i03:question_native:m01-Y"
+    ],
+    "target_domain_identity": "2a1db449e32b29e968935c642cbe67f71231424c638fca146409278d1affc7c4",
+    "cells_00_01_10_11": {
+     "00": 0,
+     "01": 1,
+     "10": 0,
+     "11": 1
+    },
+    "conditional_profile": [
+     {
+      "condition_state": "0",
+      "condition_denominator_support": 1,
+      "targets": {
+       "0": 0,
+       "1": 1
+      },
+      "states": {
+       "0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+       "1": "OBSERVED_POSITIVE"
+      }
+     },
+     {
+      "condition_state": "1",
+      "condition_denominator_support": 1,
+      "targets": {
+       "0": 0,
+       "1": 1
+      },
+      "states": {
+       "0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+       "1": "OBSERVED_POSITIVE"
+      }
+     }
+    ],
+    "eligible_joint_risk_total": 2,
+    "excluded_ineligible_target_count": 0,
+    "joint_support_total": 2,
+    "zero_cell_semantics": {
+     "0|0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+     "1|0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+    },
+    "relation_permission_ceiling": [
+     "SOURCE_FREE_DEV"
+    ],
+    "consumer": {
+     "decision_state": "PAIR_SUPPORT_SIGNATURE_COMPUTED",
+     "separation_class": "NO_PAIR_SEPARATION",
+     "separation_signature": "\"0\":0,1@1|\"1\":0,1@1",
+     "support_vectors": [
+      {
+       "condition_state": "0",
+       "condition_denominator_support": 1,
+       "target_counts": [
+        {
+         "target_state": "0",
+         "joint_support_count": 0,
+         "joint_cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+        },
+        {
+         "target_state": "1",
+         "joint_support_count": 1,
+         "joint_cell_state": "OBSERVED_POSITIVE"
+        }
+       ]
+      },
+      {
+       "condition_state": "1",
+       "condition_denominator_support": 1,
+       "target_counts": [
+        {
+         "target_state": "0",
+         "joint_support_count": 0,
+         "joint_cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+        },
+        {
+         "target_state": "1",
+         "joint_support_count": 1,
+         "joint_cell_state": "OBSERVED_POSITIVE"
+        }
+       ]
+      }
+     ],
+     "zero_cell_semantics": {
+      "\"0\":\"0\"": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+      "\"1\":\"0\"": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+     },
+     "joint_support_total": 2,
+     "condition_states_with_positive_denominator": [
+      "0",
+      "1"
+     ],
+     "eligible_joint_risk_total": 2,
+     "result_hash": "edf768db29861352eb1974fd12c6d4cb8ca362b50963683a472ad8d78241692c",
+     "generic_native_semantics_hold": "RETAINED",
+     "downstream_value_produced": true,
+     "read_relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:3132f24650123cf4670d96bc8c91d13591f9d36a8f13f90b669e52122f118763",
+     "read_relation_content_hash": "3132f24650123cf4670d96bc8c91d13591f9d36a8f13f90b669e52122f118763",
+     "read_relation_owner": "GF1_GENERIC_PAIR_CANDIDATE_RELATION_OWNER_TEST_ONLY",
+     "is_population_evidence_not_actor_fact": true,
+     "makes_no_causal_or_psychological_claim": true,
+     "production_owner_commit": false
+    },
+    "work_key": "38f41ec47f4fbbcd57923a0eb1f9d048b57e175891104a955b6d4b5cc382cd2c",
+    "consumer_kind": "QUERY"
+   },
+   {
+    "label": "R2_Y1::DISCOVERY::ed2502bda66b87d3afc4b4b92cf7d72c89b7eab97d3567bdeb8ba867d137ca24",
+    "relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:fc5adae7da828bc1dda1de616402de7c53e36feb0ad5a3ff4d9235fd61876637",
+    "relation_content_hash": "fc5adae7da828bc1dda1de616402de7c53e36feb0ad5a3ff4d9235fd61876637",
+    "typed_state": "SUPPORTED",
+    "producer_state_blocking": false,
+    "operation_role_order": "FORWARD_NATIVE_ORDER",
+    "roles": {
+     "CONDITIONER": {
+      "source_native_variable": "m01-X",
+      "ref_object_id": "urn:test:i03:question_native:m01-X",
+      "domain": [
+       "0",
+       "1"
+      ]
+     },
+     "TARGET": {
+      "source_native_variable": "m01-Y",
+      "ref_object_id": "urn:test:i03:question_native:m01-Y",
+      "domain": [
+       "0",
+       "1"
+      ]
+     }
+    },
+    "native_component_order": [
+     "urn:test:i03:question_native:m01-X",
+     "urn:test:i03:question_native:m01-Y"
+    ],
+    "target_domain_identity": "2a1db449e32b29e968935c642cbe67f71231424c638fca146409278d1affc7c4",
+    "cells_00_01_10_11": {
+     "00": 0,
+     "01": 0,
+     "10": 0,
+     "11": 1
+    },
+    "conditional_profile": [
+     {
+      "condition_state": "0",
+      "condition_denominator_support": 0,
+      "targets": {
+       "0": 0,
+       "1": 0
+      },
+      "states": {
+       "0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+       "1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+      }
+     },
+     {
+      "condition_state": "1",
+      "condition_denominator_support": 1,
+      "targets": {
+       "0": 0,
+       "1": 1
+      },
+      "states": {
+       "0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+       "1": "OBSERVED_POSITIVE"
+      }
+     }
+    ],
+    "eligible_joint_risk_total": 1,
+    "excluded_ineligible_target_count": 0,
+    "joint_support_total": 1,
+    "zero_cell_semantics": {
+     "0|0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+     "0|1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+     "1|0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+    },
+    "relation_permission_ceiling": [
+     "SOURCE_FREE_DEV"
+    ],
+    "consumer": {
+     "decision_state": "PAIR_SUPPORT_SIGNATURE_COMPUTED",
+     "separation_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+     "separation_signature": "\"0\":0,0@0|\"1\":0,1@1",
+     "support_vectors": [
+      {
+       "condition_state": "0",
+       "condition_denominator_support": 0,
+       "target_counts": [
+        {
+         "target_state": "0",
+         "joint_support_count": 0,
+         "joint_cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+        },
+        {
+         "target_state": "1",
+         "joint_support_count": 0,
+         "joint_cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+        }
+       ]
+      },
+      {
+       "condition_state": "1",
+       "condition_denominator_support": 1,
+       "target_counts": [
+        {
+         "target_state": "0",
+         "joint_support_count": 0,
+         "joint_cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+        },
+        {
+         "target_state": "1",
+         "joint_support_count": 1,
+         "joint_cell_state": "OBSERVED_POSITIVE"
+        }
+       ]
+      }
+     ],
+     "zero_cell_semantics": {
+      "\"0\":\"0\"": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+      "\"0\":\"1\"": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+      "\"1\":\"0\"": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+     },
+     "joint_support_total": 1,
+     "condition_states_with_positive_denominator": [
+      "1"
+     ],
+     "eligible_joint_risk_total": 1,
+     "result_hash": "3dae6a9c6658a8ace6be958893420526fc6ef3ad92e5dba48c209c5029ac745a",
+     "generic_native_semantics_hold": "RETAINED",
+     "downstream_value_produced": true,
+     "read_relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:fc5adae7da828bc1dda1de616402de7c53e36feb0ad5a3ff4d9235fd61876637",
+     "read_relation_content_hash": "fc5adae7da828bc1dda1de616402de7c53e36feb0ad5a3ff4d9235fd61876637",
+     "read_relation_owner": "GF1_GENERIC_PAIR_CANDIDATE_RELATION_OWNER_TEST_ONLY",
+     "is_population_evidence_not_actor_fact": true,
+     "makes_no_causal_or_psychological_claim": true,
+     "production_owner_commit": false
+    },
+    "work_key": "ed2502bda66b87d3afc4b4b92cf7d72c89b7eab97d3567bdeb8ba867d137ca24",
+    "consumer_kind": "DISCOVERY"
+   },
+   {
+    "label": "R2_Y1::DISCOVERY::481bb22e24b496251d44084ea40e0b95d266a33353502a5b41c38b41c009587c",
+    "relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:b4177c0cc64c823e4a97eaa98c370fedd767d3d4e219659ab3a4edd8e4a336dc",
+    "relation_content_hash": "b4177c0cc64c823e4a97eaa98c370fedd767d3d4e219659ab3a4edd8e4a336dc",
+    "typed_state": "SUPPORTED",
+    "producer_state_blocking": false,
+    "operation_role_order": "FORWARD_NATIVE_ORDER",
+    "roles": {
+     "CONDITIONER": {
+      "source_native_variable": "m01-X",
+      "ref_object_id": "urn:test:i03:question_native:m01-X",
+      "domain": [
+       "0",
+       "1"
+      ]
+     },
+     "TARGET": {
+      "source_native_variable": "m01-Y",
+      "ref_object_id": "urn:test:i03:question_native:m01-Y",
+      "domain": [
+       "0",
+       "1"
+      ]
+     }
+    },
+    "native_component_order": [
+     "urn:test:i03:question_native:m01-X",
+     "urn:test:i03:question_native:m01-Y"
+    ],
+    "target_domain_identity": "2a1db449e32b29e968935c642cbe67f71231424c638fca146409278d1affc7c4",
+    "cells_00_01_10_11": {
+     "00": 0,
+     "01": 0,
+     "10": 0,
+     "11": 1
+    },
+    "conditional_profile": [
+     {
+      "condition_state": "0",
+      "condition_denominator_support": 0,
+      "targets": {
+       "0": 0,
+       "1": 0
+      },
+      "states": {
+       "0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+       "1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+      }
+     },
+     {
+      "condition_state": "1",
+      "condition_denominator_support": 1,
+      "targets": {
+       "0": 0,
+       "1": 1
+      },
+      "states": {
+       "0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+       "1": "OBSERVED_POSITIVE"
+      }
+     }
+    ],
+    "eligible_joint_risk_total": 1,
+    "excluded_ineligible_target_count": 0,
+    "joint_support_total": 1,
+    "zero_cell_semantics": {
+     "0|0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+     "0|1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+     "1|0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+    },
+    "relation_permission_ceiling": [
+     "SOURCE_FREE_DEV"
+    ],
+    "consumer": {
+     "decision_state": "PAIR_SUPPORT_SIGNATURE_COMPUTED",
+     "separation_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+     "separation_signature": "\"0\":0,0@0|\"1\":0,1@1",
+     "support_vectors": [
+      {
+       "condition_state": "0",
+       "condition_denominator_support": 0,
+       "target_counts": [
+        {
+         "target_state": "0",
+         "joint_support_count": 0,
+         "joint_cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+        },
+        {
+         "target_state": "1",
+         "joint_support_count": 0,
+         "joint_cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+        }
+       ]
+      },
+      {
+       "condition_state": "1",
+       "condition_denominator_support": 1,
+       "target_counts": [
+        {
+         "target_state": "0",
+         "joint_support_count": 0,
+         "joint_cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+        },
+        {
+         "target_state": "1",
+         "joint_support_count": 1,
+         "joint_cell_state": "OBSERVED_POSITIVE"
+        }
+       ]
+      }
+     ],
+     "zero_cell_semantics": {
+      "\"0\":\"0\"": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+      "\"0\":\"1\"": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+      "\"1\":\"0\"": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+     },
+     "joint_support_total": 1,
+     "condition_states_with_positive_denominator": [
+      "1"
+     ],
+     "eligible_joint_risk_total": 1,
+     "result_hash": "06b24a29a19f114aa7d5f64e123886c5860ed04b40cf2ea9f9c3248d43f48ca8",
+     "generic_native_semantics_hold": "RETAINED",
+     "downstream_value_produced": true,
+     "read_relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:b4177c0cc64c823e4a97eaa98c370fedd767d3d4e219659ab3a4edd8e4a336dc",
+     "read_relation_content_hash": "b4177c0cc64c823e4a97eaa98c370fedd767d3d4e219659ab3a4edd8e4a336dc",
+     "read_relation_owner": "GF1_GENERIC_PAIR_CANDIDATE_RELATION_OWNER_TEST_ONLY",
+     "is_population_evidence_not_actor_fact": true,
+     "makes_no_causal_or_psychological_claim": true,
+     "production_owner_commit": false
+    },
+    "work_key": "481bb22e24b496251d44084ea40e0b95d266a33353502a5b41c38b41c009587c",
+    "consumer_kind": "DISCOVERY"
+   },
+   {
+    "label": "R2_Y1::QUERY::d508b44c3db46c091534d9bcc71cfb00bb249e11900b6647a302b8ae71a29aa4",
+    "relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:972ea8800f1d324ce964b1424979789ec8c6cbe9171712cc7206bf1dd073be76",
+    "relation_content_hash": "972ea8800f1d324ce964b1424979789ec8c6cbe9171712cc7206bf1dd073be76",
+    "typed_state": "SUPPORTED",
+    "producer_state_blocking": false,
+    "operation_role_order": "FORWARD_NATIVE_ORDER",
+    "roles": {
+     "CONDITIONER": {
+      "source_native_variable": "m01-Y",
+      "ref_object_id": "urn:test:i03:question_native:m01-Y",
+      "domain": [
+       "0",
+       "1"
+      ]
+     },
+     "TARGET": {
+      "source_native_variable": "m01-X",
+      "ref_object_id": "urn:test:i03:question_native:m01-X",
+      "domain": [
+       "0",
+       "1"
+      ]
+     }
+    },
+    "native_component_order": [
+     "urn:test:i03:question_native:m01-Y",
+     "urn:test:i03:question_native:m01-X"
+    ],
+    "target_domain_identity": "e0fbd72cda06ce4a71bd58b699776d597ff200abcf7a4b9e80698867c105849c",
+    "cells_00_01_10_11": {
+     "00": 1,
+     "01": 0,
+     "10": 0,
+     "11": 1
+    },
+    "conditional_profile": [
+     {
+      "condition_state": "0",
+      "condition_denominator_support": 1,
+      "targets": {
+       "0": 1,
+       "1": 0
+      },
+      "states": {
+       "0": "OBSERVED_POSITIVE",
+       "1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+      }
+     },
+     {
+      "condition_state": "1",
+      "condition_denominator_support": 1,
+      "targets": {
+       "0": 0,
+       "1": 1
+      },
+      "states": {
+       "0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+       "1": "OBSERVED_POSITIVE"
+      }
+     }
+    ],
+    "eligible_joint_risk_total": 2,
+    "excluded_ineligible_target_count": 0,
+    "joint_support_total": 2,
+    "zero_cell_semantics": {
+     "0|1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+     "1|0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+    },
+    "relation_permission_ceiling": [
+     "SOURCE_FREE_DEV"
+    ],
+    "consumer": {
+     "decision_state": "PAIR_SUPPORT_SIGNATURE_COMPUTED",
+     "separation_class": "EXACT_PAIR_SEPARATION",
+     "separation_signature": "\"0\":1,0@1|\"1\":0,1@1",
+     "support_vectors": [
+      {
+       "condition_state": "0",
+       "condition_denominator_support": 1,
+       "target_counts": [
+        {
+         "target_state": "0",
+         "joint_support_count": 1,
+         "joint_cell_state": "OBSERVED_POSITIVE"
+        },
+        {
+         "target_state": "1",
+         "joint_support_count": 0,
+         "joint_cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+        }
+       ]
+      },
+      {
+       "condition_state": "1",
+       "condition_denominator_support": 1,
+       "target_counts": [
+        {
+         "target_state": "0",
+         "joint_support_count": 0,
+         "joint_cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+        },
+        {
+         "target_state": "1",
+         "joint_support_count": 1,
+         "joint_cell_state": "OBSERVED_POSITIVE"
+        }
+       ]
+      }
+     ],
+     "zero_cell_semantics": {
+      "\"0\":\"1\"": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+      "\"1\":\"0\"": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+     },
+     "joint_support_total": 2,
+     "condition_states_with_positive_denominator": [
+      "0",
+      "1"
+     ],
+     "eligible_joint_risk_total": 2,
+     "result_hash": "1e1dcbff7ee898c3566c7777ccb5b071535a35e8ccb990004c98470352fe012f",
+     "generic_native_semantics_hold": "RETAINED",
+     "downstream_value_produced": true,
+     "read_relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:972ea8800f1d324ce964b1424979789ec8c6cbe9171712cc7206bf1dd073be76",
+     "read_relation_content_hash": "972ea8800f1d324ce964b1424979789ec8c6cbe9171712cc7206bf1dd073be76",
+     "read_relation_owner": "GF1_GENERIC_PAIR_CANDIDATE_RELATION_OWNER_TEST_ONLY",
+     "is_population_evidence_not_actor_fact": true,
+     "makes_no_causal_or_psychological_claim": true,
+     "production_owner_commit": false
+    },
+    "work_key": "d508b44c3db46c091534d9bcc71cfb00bb249e11900b6647a302b8ae71a29aa4",
+    "consumer_kind": "QUERY"
+   },
+   {
+    "label": "R2_Y1::QUERY::d673e586264356f14a19e4adf128dd3ac2b0be5dcaf4d14bbcf849ffd587e4da",
+    "relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:0f0fc4956cdcba3f7bbf8cee70b1f897a6361fce96a17732443ba230e55afbe2",
+    "relation_content_hash": "0f0fc4956cdcba3f7bbf8cee70b1f897a6361fce96a17732443ba230e55afbe2",
+    "typed_state": "SUPPORTED",
+    "producer_state_blocking": false,
+    "operation_role_order": "FORWARD_NATIVE_ORDER",
+    "roles": {
+     "CONDITIONER": {
+      "source_native_variable": "m01-X",
+      "ref_object_id": "urn:test:i03:question_native:m01-X",
+      "domain": [
+       "0",
+       "1"
+      ]
+     },
+     "TARGET": {
+      "source_native_variable": "m01-Y",
+      "ref_object_id": "urn:test:i03:question_native:m01-Y",
+      "domain": [
+       "0",
+       "1"
+      ]
+     }
+    },
+    "native_component_order": [
+     "urn:test:i03:question_native:m01-X",
+     "urn:test:i03:question_native:m01-Y"
+    ],
+    "target_domain_identity": "2a1db449e32b29e968935c642cbe67f71231424c638fca146409278d1affc7c4",
+    "cells_00_01_10_11": {
+     "00": 1,
+     "01": 0,
+     "10": 0,
+     "11": 1
+    },
+    "conditional_profile": [
+     {
+      "condition_state": "0",
+      "condition_denominator_support": 1,
+      "targets": {
+       "0": 1,
+       "1": 0
+      },
+      "states": {
+       "0": "OBSERVED_POSITIVE",
+       "1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+      }
+     },
+     {
+      "condition_state": "1",
+      "condition_denominator_support": 1,
+      "targets": {
+       "0": 0,
+       "1": 1
+      },
+      "states": {
+       "0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+       "1": "OBSERVED_POSITIVE"
+      }
+     }
+    ],
+    "eligible_joint_risk_total": 2,
+    "excluded_ineligible_target_count": 0,
+    "joint_support_total": 2,
+    "zero_cell_semantics": {
+     "0|1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+     "1|0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+    },
+    "relation_permission_ceiling": [
+     "SOURCE_FREE_DEV"
+    ],
+    "consumer": {
+     "decision_state": "PAIR_SUPPORT_SIGNATURE_COMPUTED",
+     "separation_class": "EXACT_PAIR_SEPARATION",
+     "separation_signature": "\"0\":1,0@1|\"1\":0,1@1",
+     "support_vectors": [
+      {
+       "condition_state": "0",
+       "condition_denominator_support": 1,
+       "target_counts": [
+        {
+         "target_state": "0",
+         "joint_support_count": 1,
+         "joint_cell_state": "OBSERVED_POSITIVE"
+        },
+        {
+         "target_state": "1",
+         "joint_support_count": 0,
+         "joint_cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+        }
+       ]
+      },
+      {
+       "condition_state": "1",
+       "condition_denominator_support": 1,
+       "target_counts": [
+        {
+         "target_state": "0",
+         "joint_support_count": 0,
+         "joint_cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+        },
+        {
+         "target_state": "1",
+         "joint_support_count": 1,
+         "joint_cell_state": "OBSERVED_POSITIVE"
+        }
+       ]
+      }
+     ],
+     "zero_cell_semantics": {
+      "\"0\":\"1\"": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+      "\"1\":\"0\"": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+     },
+     "joint_support_total": 2,
+     "condition_states_with_positive_denominator": [
+      "0",
+      "1"
+     ],
+     "eligible_joint_risk_total": 2,
+     "result_hash": "78c2f650609b6a0658731f152124cd91b45852c7c937b207db1a9382ff004dcf",
+     "generic_native_semantics_hold": "RETAINED",
+     "downstream_value_produced": true,
+     "read_relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:0f0fc4956cdcba3f7bbf8cee70b1f897a6361fce96a17732443ba230e55afbe2",
+     "read_relation_content_hash": "0f0fc4956cdcba3f7bbf8cee70b1f897a6361fce96a17732443ba230e55afbe2",
+     "read_relation_owner": "GF1_GENERIC_PAIR_CANDIDATE_RELATION_OWNER_TEST_ONLY",
+     "is_population_evidence_not_actor_fact": true,
+     "makes_no_causal_or_psychological_claim": true,
+     "production_owner_commit": false
+    },
+    "work_key": "d673e586264356f14a19e4adf128dd3ac2b0be5dcaf4d14bbcf849ffd587e4da",
+    "consumer_kind": "QUERY"
+   }
+  ],
+  "R1_Y0": [
+   {
+    "label": "R1_Y0::QUERY::34db4da415e028608dd3adf7c01f0286f6bf5106e31c7f8fb22220e0a6b74a05",
+    "relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:6326bcfd677a08fdf28ac4a48656eb0568b4ebee6402fe8b67d563be0c4f37b5",
+    "relation_content_hash": "6326bcfd677a08fdf28ac4a48656eb0568b4ebee6402fe8b67d563be0c4f37b5",
+    "typed_state": "SUPPORTED",
+    "producer_state_blocking": false,
+    "operation_role_order": "FORWARD_NATIVE_ORDER",
+    "roles": {
+     "CONDITIONER": {
+      "source_native_variable": "m01-X",
+      "ref_object_id": "urn:test:i03:question_native:m01-X",
+      "domain": [
+       "0",
+       "1"
+      ]
+     },
+     "TARGET": {
+      "source_native_variable": "m01-Y",
+      "ref_object_id": "urn:test:i03:question_native:m01-Y",
+      "domain": [
+       "0",
+       "1"
+      ]
+     }
+    },
+    "native_component_order": [
+     "urn:test:i03:question_native:m01-X",
+     "urn:test:i03:question_native:m01-Y"
+    ],
+    "target_domain_identity": "2a1db449e32b29e968935c642cbe67f71231424c638fca146409278d1affc7c4",
+    "cells_00_01_10_11": {
+     "00": 1,
+     "01": 0,
+     "10": 1,
+     "11": 0
+    },
+    "conditional_profile": [
+     {
+      "condition_state": "0",
+      "condition_denominator_support": 1,
+      "targets": {
+       "0": 1,
+       "1": 0
+      },
+      "states": {
+       "0": "OBSERVED_POSITIVE",
+       "1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+      }
+     },
+     {
+      "condition_state": "1",
+      "condition_denominator_support": 1,
+      "targets": {
+       "0": 1,
+       "1": 0
+      },
+      "states": {
+       "0": "OBSERVED_POSITIVE",
+       "1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+      }
+     }
+    ],
+    "eligible_joint_risk_total": 2,
+    "excluded_ineligible_target_count": 0,
+    "joint_support_total": 2,
+    "zero_cell_semantics": {
+     "0|1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+     "1|1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+    },
+    "relation_permission_ceiling": [
+     "SOURCE_FREE_DEV"
+    ],
+    "consumer": {
+     "decision_state": "PAIR_SUPPORT_SIGNATURE_COMPUTED",
+     "separation_class": "NO_PAIR_SEPARATION",
+     "separation_signature": "\"0\":1,0@1|\"1\":1,0@1",
+     "support_vectors": [
+      {
+       "condition_state": "0",
+       "condition_denominator_support": 1,
+       "target_counts": [
+        {
+         "target_state": "0",
+         "joint_support_count": 1,
+         "joint_cell_state": "OBSERVED_POSITIVE"
+        },
+        {
+         "target_state": "1",
+         "joint_support_count": 0,
+         "joint_cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+        }
+       ]
+      },
+      {
+       "condition_state": "1",
+       "condition_denominator_support": 1,
+       "target_counts": [
+        {
+         "target_state": "0",
+         "joint_support_count": 1,
+         "joint_cell_state": "OBSERVED_POSITIVE"
+        },
+        {
+         "target_state": "1",
+         "joint_support_count": 0,
+         "joint_cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+        }
+       ]
+      }
+     ],
+     "zero_cell_semantics": {
+      "\"0\":\"1\"": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+      "\"1\":\"1\"": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+     },
+     "joint_support_total": 2,
+     "condition_states_with_positive_denominator": [
+      "0",
+      "1"
+     ],
+     "eligible_joint_risk_total": 2,
+     "result_hash": "c5bf3ec4f46e6685459f21985e315559ae54fd43609a79ff0cbfc340aca44b7e",
+     "generic_native_semantics_hold": "RETAINED",
+     "downstream_value_produced": true,
+     "read_relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:6326bcfd677a08fdf28ac4a48656eb0568b4ebee6402fe8b67d563be0c4f37b5",
+     "read_relation_content_hash": "6326bcfd677a08fdf28ac4a48656eb0568b4ebee6402fe8b67d563be0c4f37b5",
+     "read_relation_owner": "GF1_GENERIC_PAIR_CANDIDATE_RELATION_OWNER_TEST_ONLY",
+     "is_population_evidence_not_actor_fact": true,
+     "makes_no_causal_or_psychological_claim": true,
+     "production_owner_commit": false
+    },
+    "work_key": "34db4da415e028608dd3adf7c01f0286f6bf5106e31c7f8fb22220e0a6b74a05",
+    "consumer_kind": "QUERY"
+   },
+   {
+    "label": "R1_Y0::QUERY::d0795cebaf40127c457f3c4a492fea76e9efa9b851065a9337226bbb0d88d8b7",
+    "relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:4ca505050ce58b9facdf3885c1ada0662605f27d0b6e8f5f0d25c88b22ea629d",
+    "relation_content_hash": "4ca505050ce58b9facdf3885c1ada0662605f27d0b6e8f5f0d25c88b22ea629d",
+    "typed_state": "SUPPORTED",
+    "producer_state_blocking": false,
+    "operation_role_order": "FORWARD_NATIVE_ORDER",
+    "roles": {
+     "CONDITIONER": {
+      "source_native_variable": "m01-Y",
+      "ref_object_id": "urn:test:i03:question_native:m01-Y",
+      "domain": [
+       "0",
+       "1"
+      ]
+     },
+     "TARGET": {
+      "source_native_variable": "m01-X",
+      "ref_object_id": "urn:test:i03:question_native:m01-X",
+      "domain": [
+       "0",
+       "1"
+      ]
+     }
+    },
+    "native_component_order": [
+     "urn:test:i03:question_native:m01-Y",
+     "urn:test:i03:question_native:m01-X"
+    ],
+    "target_domain_identity": "e0fbd72cda06ce4a71bd58b699776d597ff200abcf7a4b9e80698867c105849c",
+    "cells_00_01_10_11": {
+     "00": 1,
+     "01": 1,
+     "10": 0,
+     "11": 0
+    },
+    "conditional_profile": [
+     {
+      "condition_state": "0",
+      "condition_denominator_support": 2,
+      "targets": {
+       "0": 1,
+       "1": 1
+      },
+      "states": {
+       "0": "OBSERVED_POSITIVE",
+       "1": "OBSERVED_POSITIVE"
+      }
+     },
+     {
+      "condition_state": "1",
+      "condition_denominator_support": 0,
+      "targets": {
+       "0": 0,
+       "1": 0
+      },
+      "states": {
+       "0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+       "1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+      }
+     }
+    ],
+    "eligible_joint_risk_total": 2,
+    "excluded_ineligible_target_count": 0,
+    "joint_support_total": 2,
+    "zero_cell_semantics": {
+     "1|0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+     "1|1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+    },
+    "relation_permission_ceiling": [
+     "SOURCE_FREE_DEV"
+    ],
+    "consumer": {
+     "decision_state": "PAIR_SUPPORT_SIGNATURE_COMPUTED",
+     "separation_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+     "separation_signature": "\"0\":1,1@2|\"1\":0,0@0",
+     "support_vectors": [
+      {
+       "condition_state": "0",
+       "condition_denominator_support": 2,
+       "target_counts": [
+        {
+         "target_state": "0",
+         "joint_support_count": 1,
+         "joint_cell_state": "OBSERVED_POSITIVE"
+        },
+        {
+         "target_state": "1",
+         "joint_support_count": 1,
+         "joint_cell_state": "OBSERVED_POSITIVE"
+        }
+       ]
+      },
+      {
+       "condition_state": "1",
+       "condition_denominator_support": 0,
+       "target_counts": [
+        {
+         "target_state": "0",
+         "joint_support_count": 0,
+         "joint_cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+        },
+        {
+         "target_state": "1",
+         "joint_support_count": 0,
+         "joint_cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+        }
+       ]
+      }
+     ],
+     "zero_cell_semantics": {
+      "\"1\":\"0\"": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+      "\"1\":\"1\"": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+     },
+     "joint_support_total": 2,
+     "condition_states_with_positive_denominator": [
+      "0"
+     ],
+     "eligible_joint_risk_total": 2,
+     "result_hash": "f3def9570cd3eed50851160302b99a490018656f2925547bcda5af3b6da9897d",
+     "generic_native_semantics_hold": "RETAINED",
+     "downstream_value_produced": true,
+     "read_relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:4ca505050ce58b9facdf3885c1ada0662605f27d0b6e8f5f0d25c88b22ea629d",
+     "read_relation_content_hash": "4ca505050ce58b9facdf3885c1ada0662605f27d0b6e8f5f0d25c88b22ea629d",
+     "read_relation_owner": "GF1_GENERIC_PAIR_CANDIDATE_RELATION_OWNER_TEST_ONLY",
+     "is_population_evidence_not_actor_fact": true,
+     "makes_no_causal_or_psychological_claim": true,
+     "production_owner_commit": false
+    },
+    "work_key": "d0795cebaf40127c457f3c4a492fea76e9efa9b851065a9337226bbb0d88d8b7",
+    "consumer_kind": "QUERY"
+   },
+   {
+    "label": "R1_Y0::DISCOVERY::db1bb0bad4f0bc11a469ef92f3adf030f0e1b308e74e8eda0eea2dbaf2d185fd",
+    "relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:c1a63fdbf5efb2d905ec556c5690b22a2888c2ce687d47032451831b74a73fc9",
+    "relation_content_hash": "c1a63fdbf5efb2d905ec556c5690b22a2888c2ce687d47032451831b74a73fc9",
+    "typed_state": "SUPPORTED",
+    "producer_state_blocking": false,
+    "operation_role_order": "FORWARD_NATIVE_ORDER",
+    "roles": {
+     "CONDITIONER": {
+      "source_native_variable": "m01-X",
+      "ref_object_id": "urn:test:i03:question_native:m01-X",
+      "domain": [
+       "0",
+       "1"
+      ]
+     },
+     "TARGET": {
+      "source_native_variable": "m01-Y",
+      "ref_object_id": "urn:test:i03:question_native:m01-Y",
+      "domain": [
+       "0",
+       "1"
+      ]
+     }
+    },
+    "native_component_order": [
+     "urn:test:i03:question_native:m01-X",
+     "urn:test:i03:question_native:m01-Y"
+    ],
+    "target_domain_identity": "2a1db449e32b29e968935c642cbe67f71231424c638fca146409278d1affc7c4",
+    "cells_00_01_10_11": {
+     "00": 0,
+     "01": 0,
+     "10": 1,
+     "11": 0
+    },
+    "conditional_profile": [
+     {
+      "condition_state": "0",
+      "condition_denominator_support": 0,
+      "targets": {
+       "0": 0,
+       "1": 0
+      },
+      "states": {
+       "0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+       "1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+      }
+     },
+     {
+      "condition_state": "1",
+      "condition_denominator_support": 1,
+      "targets": {
+       "0": 1,
+       "1": 0
+      },
+      "states": {
+       "0": "OBSERVED_POSITIVE",
+       "1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+      }
+     }
+    ],
+    "eligible_joint_risk_total": 1,
+    "excluded_ineligible_target_count": 0,
+    "joint_support_total": 1,
+    "zero_cell_semantics": {
+     "0|0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+     "0|1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+     "1|1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+    },
+    "relation_permission_ceiling": [
+     "SOURCE_FREE_DEV"
+    ],
+    "consumer": {
+     "decision_state": "PAIR_SUPPORT_SIGNATURE_COMPUTED",
+     "separation_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+     "separation_signature": "\"0\":0,0@0|\"1\":1,0@1",
+     "support_vectors": [
+      {
+       "condition_state": "0",
+       "condition_denominator_support": 0,
+       "target_counts": [
+        {
+         "target_state": "0",
+         "joint_support_count": 0,
+         "joint_cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+        },
+        {
+         "target_state": "1",
+         "joint_support_count": 0,
+         "joint_cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+        }
+       ]
+      },
+      {
+       "condition_state": "1",
+       "condition_denominator_support": 1,
+       "target_counts": [
+        {
+         "target_state": "0",
+         "joint_support_count": 1,
+         "joint_cell_state": "OBSERVED_POSITIVE"
+        },
+        {
+         "target_state": "1",
+         "joint_support_count": 0,
+         "joint_cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+        }
+       ]
+      }
+     ],
+     "zero_cell_semantics": {
+      "\"0\":\"0\"": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+      "\"0\":\"1\"": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+      "\"1\":\"1\"": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+     },
+     "joint_support_total": 1,
+     "condition_states_with_positive_denominator": [
+      "1"
+     ],
+     "eligible_joint_risk_total": 1,
+     "result_hash": "e7e2ad231fd66cc35b03c98f806d931f9be76165fd5ddc1e8eddd7d35cc7b899",
+     "generic_native_semantics_hold": "RETAINED",
+     "downstream_value_produced": true,
+     "read_relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:c1a63fdbf5efb2d905ec556c5690b22a2888c2ce687d47032451831b74a73fc9",
+     "read_relation_content_hash": "c1a63fdbf5efb2d905ec556c5690b22a2888c2ce687d47032451831b74a73fc9",
+     "read_relation_owner": "GF1_GENERIC_PAIR_CANDIDATE_RELATION_OWNER_TEST_ONLY",
+     "is_population_evidence_not_actor_fact": true,
+     "makes_no_causal_or_psychological_claim": true,
+     "production_owner_commit": false
+    },
+    "work_key": "db1bb0bad4f0bc11a469ef92f3adf030f0e1b308e74e8eda0eea2dbaf2d185fd",
+    "consumer_kind": "DISCOVERY"
+   },
+   {
+    "label": "R1_Y0::DISCOVERY::481bb22e24b496251d44084ea40e0b95d266a33353502a5b41c38b41c009587c",
+    "relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:b4177c0cc64c823e4a97eaa98c370fedd767d3d4e219659ab3a4edd8e4a336dc",
+    "relation_content_hash": "b4177c0cc64c823e4a97eaa98c370fedd767d3d4e219659ab3a4edd8e4a336dc",
+    "typed_state": "SUPPORTED",
+    "producer_state_blocking": false,
+    "operation_role_order": "FORWARD_NATIVE_ORDER",
+    "roles": {
+     "CONDITIONER": {
+      "source_native_variable": "m01-X",
+      "ref_object_id": "urn:test:i03:question_native:m01-X",
+      "domain": [
+       "0",
+       "1"
+      ]
+     },
+     "TARGET": {
+      "source_native_variable": "m01-Y",
+      "ref_object_id": "urn:test:i03:question_native:m01-Y",
+      "domain": [
+       "0",
+       "1"
+      ]
+     }
+    },
+    "native_component_order": [
+     "urn:test:i03:question_native:m01-X",
+     "urn:test:i03:question_native:m01-Y"
+    ],
+    "target_domain_identity": "2a1db449e32b29e968935c642cbe67f71231424c638fca146409278d1affc7c4",
+    "cells_00_01_10_11": {
+     "00": 0,
+     "01": 0,
+     "10": 0,
+     "11": 1
+    },
+    "conditional_profile": [
+     {
+      "condition_state": "0",
+      "condition_denominator_support": 0,
+      "targets": {
+       "0": 0,
+       "1": 0
+      },
+      "states": {
+       "0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+       "1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+      }
+     },
+     {
+      "condition_state": "1",
+      "condition_denominator_support": 1,
+      "targets": {
+       "0": 0,
+       "1": 1
+      },
+      "states": {
+       "0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+       "1": "OBSERVED_POSITIVE"
+      }
+     }
+    ],
+    "eligible_joint_risk_total": 1,
+    "excluded_ineligible_target_count": 0,
+    "joint_support_total": 1,
+    "zero_cell_semantics": {
+     "0|0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+     "0|1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+     "1|0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+    },
+    "relation_permission_ceiling": [
+     "SOURCE_FREE_DEV"
+    ],
+    "consumer": {
+     "decision_state": "PAIR_SUPPORT_SIGNATURE_COMPUTED",
+     "separation_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+     "separation_signature": "\"0\":0,0@0|\"1\":0,1@1",
+     "support_vectors": [
+      {
+       "condition_state": "0",
+       "condition_denominator_support": 0,
+       "target_counts": [
+        {
+         "target_state": "0",
+         "joint_support_count": 0,
+         "joint_cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+        },
+        {
+         "target_state": "1",
+         "joint_support_count": 0,
+         "joint_cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+        }
+       ]
+      },
+      {
+       "condition_state": "1",
+       "condition_denominator_support": 1,
+       "target_counts": [
+        {
+         "target_state": "0",
+         "joint_support_count": 0,
+         "joint_cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+        },
+        {
+         "target_state": "1",
+         "joint_support_count": 1,
+         "joint_cell_state": "OBSERVED_POSITIVE"
+        }
+       ]
+      }
+     ],
+     "zero_cell_semantics": {
+      "\"0\":\"0\"": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+      "\"0\":\"1\"": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+      "\"1\":\"0\"": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+     },
+     "joint_support_total": 1,
+     "condition_states_with_positive_denominator": [
+      "1"
+     ],
+     "eligible_joint_risk_total": 1,
+     "result_hash": "06b24a29a19f114aa7d5f64e123886c5860ed04b40cf2ea9f9c3248d43f48ca8",
+     "generic_native_semantics_hold": "RETAINED",
+     "downstream_value_produced": true,
+     "read_relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:b4177c0cc64c823e4a97eaa98c370fedd767d3d4e219659ab3a4edd8e4a336dc",
+     "read_relation_content_hash": "b4177c0cc64c823e4a97eaa98c370fedd767d3d4e219659ab3a4edd8e4a336dc",
+     "read_relation_owner": "GF1_GENERIC_PAIR_CANDIDATE_RELATION_OWNER_TEST_ONLY",
+     "is_population_evidence_not_actor_fact": true,
+     "makes_no_causal_or_psychological_claim": true,
+     "production_owner_commit": false
+    },
+    "work_key": "481bb22e24b496251d44084ea40e0b95d266a33353502a5b41c38b41c009587c",
+    "consumer_kind": "DISCOVERY"
+   },
+   {
+    "label": "R1_Y0::QUERY::d508b44c3db46c091534d9bcc71cfb00bb249e11900b6647a302b8ae71a29aa4",
+    "relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:972ea8800f1d324ce964b1424979789ec8c6cbe9171712cc7206bf1dd073be76",
+    "relation_content_hash": "972ea8800f1d324ce964b1424979789ec8c6cbe9171712cc7206bf1dd073be76",
+    "typed_state": "SUPPORTED",
+    "producer_state_blocking": false,
+    "operation_role_order": "FORWARD_NATIVE_ORDER",
+    "roles": {
+     "CONDITIONER": {
+      "source_native_variable": "m01-Y",
+      "ref_object_id": "urn:test:i03:question_native:m01-Y",
+      "domain": [
+       "0",
+       "1"
+      ]
+     },
+     "TARGET": {
+      "source_native_variable": "m01-X",
+      "ref_object_id": "urn:test:i03:question_native:m01-X",
+      "domain": [
+       "0",
+       "1"
+      ]
+     }
+    },
+    "native_component_order": [
+     "urn:test:i03:question_native:m01-Y",
+     "urn:test:i03:question_native:m01-X"
+    ],
+    "target_domain_identity": "e0fbd72cda06ce4a71bd58b699776d597ff200abcf7a4b9e80698867c105849c",
+    "cells_00_01_10_11": {
+     "00": 1,
+     "01": 0,
+     "10": 0,
+     "11": 1
+    },
+    "conditional_profile": [
+     {
+      "condition_state": "0",
+      "condition_denominator_support": 1,
+      "targets": {
+       "0": 1,
+       "1": 0
+      },
+      "states": {
+       "0": "OBSERVED_POSITIVE",
+       "1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+      }
+     },
+     {
+      "condition_state": "1",
+      "condition_denominator_support": 1,
+      "targets": {
+       "0": 0,
+       "1": 1
+      },
+      "states": {
+       "0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+       "1": "OBSERVED_POSITIVE"
+      }
+     }
+    ],
+    "eligible_joint_risk_total": 2,
+    "excluded_ineligible_target_count": 0,
+    "joint_support_total": 2,
+    "zero_cell_semantics": {
+     "0|1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+     "1|0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+    },
+    "relation_permission_ceiling": [
+     "SOURCE_FREE_DEV"
+    ],
+    "consumer": {
+     "decision_state": "PAIR_SUPPORT_SIGNATURE_COMPUTED",
+     "separation_class": "EXACT_PAIR_SEPARATION",
+     "separation_signature": "\"0\":1,0@1|\"1\":0,1@1",
+     "support_vectors": [
+      {
+       "condition_state": "0",
+       "condition_denominator_support": 1,
+       "target_counts": [
+        {
+         "target_state": "0",
+         "joint_support_count": 1,
+         "joint_cell_state": "OBSERVED_POSITIVE"
+        },
+        {
+         "target_state": "1",
+         "joint_support_count": 0,
+         "joint_cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+        }
+       ]
+      },
+      {
+       "condition_state": "1",
+       "condition_denominator_support": 1,
+       "target_counts": [
+        {
+         "target_state": "0",
+         "joint_support_count": 0,
+         "joint_cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+        },
+        {
+         "target_state": "1",
+         "joint_support_count": 1,
+         "joint_cell_state": "OBSERVED_POSITIVE"
+        }
+       ]
+      }
+     ],
+     "zero_cell_semantics": {
+      "\"0\":\"1\"": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+      "\"1\":\"0\"": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+     },
+     "joint_support_total": 2,
+     "condition_states_with_positive_denominator": [
+      "0",
+      "1"
+     ],
+     "eligible_joint_risk_total": 2,
+     "result_hash": "1e1dcbff7ee898c3566c7777ccb5b071535a35e8ccb990004c98470352fe012f",
+     "generic_native_semantics_hold": "RETAINED",
+     "downstream_value_produced": true,
+     "read_relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:972ea8800f1d324ce964b1424979789ec8c6cbe9171712cc7206bf1dd073be76",
+     "read_relation_content_hash": "972ea8800f1d324ce964b1424979789ec8c6cbe9171712cc7206bf1dd073be76",
+     "read_relation_owner": "GF1_GENERIC_PAIR_CANDIDATE_RELATION_OWNER_TEST_ONLY",
+     "is_population_evidence_not_actor_fact": true,
+     "makes_no_causal_or_psychological_claim": true,
+     "production_owner_commit": false
+    },
+    "work_key": "d508b44c3db46c091534d9bcc71cfb00bb249e11900b6647a302b8ae71a29aa4",
+    "consumer_kind": "QUERY"
+   },
+   {
+    "label": "R1_Y0::QUERY::d673e586264356f14a19e4adf128dd3ac2b0be5dcaf4d14bbcf849ffd587e4da",
+    "relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:0f0fc4956cdcba3f7bbf8cee70b1f897a6361fce96a17732443ba230e55afbe2",
+    "relation_content_hash": "0f0fc4956cdcba3f7bbf8cee70b1f897a6361fce96a17732443ba230e55afbe2",
+    "typed_state": "SUPPORTED",
+    "producer_state_blocking": false,
+    "operation_role_order": "FORWARD_NATIVE_ORDER",
+    "roles": {
+     "CONDITIONER": {
+      "source_native_variable": "m01-X",
+      "ref_object_id": "urn:test:i03:question_native:m01-X",
+      "domain": [
+       "0",
+       "1"
+      ]
+     },
+     "TARGET": {
+      "source_native_variable": "m01-Y",
+      "ref_object_id": "urn:test:i03:question_native:m01-Y",
+      "domain": [
+       "0",
+       "1"
+      ]
+     }
+    },
+    "native_component_order": [
+     "urn:test:i03:question_native:m01-X",
+     "urn:test:i03:question_native:m01-Y"
+    ],
+    "target_domain_identity": "2a1db449e32b29e968935c642cbe67f71231424c638fca146409278d1affc7c4",
+    "cells_00_01_10_11": {
+     "00": 1,
+     "01": 0,
+     "10": 0,
+     "11": 1
+    },
+    "conditional_profile": [
+     {
+      "condition_state": "0",
+      "condition_denominator_support": 1,
+      "targets": {
+       "0": 1,
+       "1": 0
+      },
+      "states": {
+       "0": "OBSERVED_POSITIVE",
+       "1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+      }
+     },
+     {
+      "condition_state": "1",
+      "condition_denominator_support": 1,
+      "targets": {
+       "0": 0,
+       "1": 1
+      },
+      "states": {
+       "0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+       "1": "OBSERVED_POSITIVE"
+      }
+     }
+    ],
+    "eligible_joint_risk_total": 2,
+    "excluded_ineligible_target_count": 0,
+    "joint_support_total": 2,
+    "zero_cell_semantics": {
+     "0|1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+     "1|0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+    },
+    "relation_permission_ceiling": [
+     "SOURCE_FREE_DEV"
+    ],
+    "consumer": {
+     "decision_state": "PAIR_SUPPORT_SIGNATURE_COMPUTED",
+     "separation_class": "EXACT_PAIR_SEPARATION",
+     "separation_signature": "\"0\":1,0@1|\"1\":0,1@1",
+     "support_vectors": [
+      {
+       "condition_state": "0",
+       "condition_denominator_support": 1,
+       "target_counts": [
+        {
+         "target_state": "0",
+         "joint_support_count": 1,
+         "joint_cell_state": "OBSERVED_POSITIVE"
+        },
+        {
+         "target_state": "1",
+         "joint_support_count": 0,
+         "joint_cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+        }
+       ]
+      },
+      {
+       "condition_state": "1",
+       "condition_denominator_support": 1,
+       "target_counts": [
+        {
+         "target_state": "0",
+         "joint_support_count": 0,
+         "joint_cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+        },
+        {
+         "target_state": "1",
+         "joint_support_count": 1,
+         "joint_cell_state": "OBSERVED_POSITIVE"
+        }
+       ]
+      }
+     ],
+     "zero_cell_semantics": {
+      "\"0\":\"1\"": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+      "\"1\":\"0\"": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+     },
+     "joint_support_total": 2,
+     "condition_states_with_positive_denominator": [
+      "0",
+      "1"
+     ],
+     "eligible_joint_risk_total": 2,
+     "result_hash": "78c2f650609b6a0658731f152124cd91b45852c7c937b207db1a9382ff004dcf",
+     "generic_native_semantics_hold": "RETAINED",
+     "downstream_value_produced": true,
+     "read_relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:0f0fc4956cdcba3f7bbf8cee70b1f897a6361fce96a17732443ba230e55afbe2",
+     "read_relation_content_hash": "0f0fc4956cdcba3f7bbf8cee70b1f897a6361fce96a17732443ba230e55afbe2",
+     "read_relation_owner": "GF1_GENERIC_PAIR_CANDIDATE_RELATION_OWNER_TEST_ONLY",
+     "is_population_evidence_not_actor_fact": true,
+     "makes_no_causal_or_psychological_claim": true,
+     "production_owner_commit": false
+    },
+    "work_key": "d673e586264356f14a19e4adf128dd3ac2b0be5dcaf4d14bbcf849ffd587e4da",
+    "consumer_kind": "QUERY"
+   }
+  ]
+ },
+ "reverse_x_given_y": {
+  "label": "BASELINE::REVERSE_X_GIVEN_Y",
+  "relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:652052461e95c276f27764f58aa6311e6cd3f3a9c357e08f7ce4941dc1a91d38",
+  "relation_content_hash": "652052461e95c276f27764f58aa6311e6cd3f3a9c357e08f7ce4941dc1a91d38",
+  "typed_state": "SUPPORTED",
+  "producer_state_blocking": false,
+  "operation_role_order": "REVERSE_GRANTED",
+  "roles": {
+   "CONDITIONER": {
+    "source_native_variable": "m01-Y",
+    "ref_object_id": "urn:test:i03:question_native:m01-Y",
+    "domain": [
+     "0",
+     "1"
+    ]
+   },
+   "TARGET": {
+    "source_native_variable": "m01-X",
+    "ref_object_id": "urn:test:i03:question_native:m01-X",
+    "domain": [
+     "0",
+     "1"
+    ]
+   }
+  },
+  "native_component_order": [
+   "urn:test:i03:question_native:m01-X",
+   "urn:test:i03:question_native:m01-Y"
+  ],
+  "target_domain_identity": "2a1db449e32b29e968935c642cbe67f71231424c638fca146409278d1affc7c4",
+  "cells_00_01_10_11": {
+   "00": 1,
+   "01": 0,
+   "10": 0,
+   "11": 1
+  },
+  "conditional_profile": [
+   {
+    "condition_state": "0",
+    "condition_denominator_support": 1,
+    "targets": {
+     "0": 1,
+     "1": 0
+    },
+    "states": {
+     "0": "OBSERVED_POSITIVE",
+     "1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+    }
+   },
+   {
+    "condition_state": "1",
+    "condition_denominator_support": 1,
+    "targets": {
+     "0": 0,
+     "1": 1
+    },
+    "states": {
+     "0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+     "1": "OBSERVED_POSITIVE"
+    }
+   }
+  ],
+  "eligible_joint_risk_total": 2,
+  "excluded_ineligible_target_count": 0,
+  "joint_support_total": 2,
+  "zero_cell_semantics": {
+   "0|1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+   "1|0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+  },
+  "relation_permission_ceiling": [
+   "SOURCE_FREE_DEV"
+  ],
+  "consumer": {
+   "decision_state": "PAIR_SUPPORT_SIGNATURE_COMPUTED",
+   "separation_class": "EXACT_PAIR_SEPARATION",
+   "separation_signature": "\"0\":1,0@1|\"1\":0,1@1",
+   "support_vectors": [
+    {
+     "condition_state": "0",
+     "condition_denominator_support": 1,
+     "target_counts": [
+      {
+       "target_state": "0",
+       "joint_support_count": 1,
+       "joint_cell_state": "OBSERVED_POSITIVE"
+      },
+      {
+       "target_state": "1",
+       "joint_support_count": 0,
+       "joint_cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+      }
+     ]
+    },
+    {
+     "condition_state": "1",
+     "condition_denominator_support": 1,
+     "target_counts": [
+      {
+       "target_state": "0",
+       "joint_support_count": 0,
+       "joint_cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+      },
+      {
+       "target_state": "1",
+       "joint_support_count": 1,
+       "joint_cell_state": "OBSERVED_POSITIVE"
+      }
+     ]
+    }
+   ],
+   "zero_cell_semantics": {
+    "\"0\":\"1\"": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+    "\"1\":\"0\"": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+   },
+   "joint_support_total": 2,
+   "condition_states_with_positive_denominator": [
+    "0",
+    "1"
+   ],
+   "eligible_joint_risk_total": 2,
+   "result_hash": "b6f6e65406006e3db45ec57dfae1e1ad5c7ec33b6b8ac8717d5c16a2474fb902",
+   "generic_native_semantics_hold": "RETAINED",
+   "downstream_value_produced": true,
+   "read_relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:652052461e95c276f27764f58aa6311e6cd3f3a9c357e08f7ce4941dc1a91d38",
+   "read_relation_content_hash": "652052461e95c276f27764f58aa6311e6cd3f3a9c357e08f7ce4941dc1a91d38",
+   "read_relation_owner": "GF1_GENERIC_PAIR_CANDIDATE_RELATION_OWNER_TEST_ONLY",
+   "is_population_evidence_not_actor_fact": true,
+   "makes_no_causal_or_psychological_claim": true,
+   "production_owner_commit": false
+  },
+  "forward_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:74d3aaaca35aaacc4491c7e472ac38a6e69fcf0d51736b86b853ea48d10b2236",
+  "forward_roles": {
+   "CONDITIONER": {
+    "source_native_variable": "m01-X",
+    "ref_object_id": "urn:test:i03:question_native:m01-X",
+    "domain": [
+     "0",
+     "1"
+    ]
+   },
+   "TARGET": {
+    "source_native_variable": "m01-Y",
+    "ref_object_id": "urn:test:i03:question_native:m01-Y",
+    "domain": [
+     "0",
+     "1"
+    ]
+   }
+  },
+  "forward_operation_role_order": "FORWARD_NATIVE_ORDER",
+  "roles_are_swapped": true,
+  "object_id_differs_from_forward": true
+ },
+ "rehashed_test_only_relations": {
+  "collapsed_same_point_mass": {
+   "label": "SYNTHETIC::collapsed_same_point_mass",
+   "relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:38b436d2e00e8f30a9ec7a4efe02ec2a13dc0ca21e8636c9598c24c12ee6785d",
+   "relation_content_hash": "38b436d2e00e8f30a9ec7a4efe02ec2a13dc0ca21e8636c9598c24c12ee6785d",
+   "typed_state": "SUPPORTED",
+   "producer_state_blocking": false,
+   "operation_role_order": "FORWARD_NATIVE_ORDER",
+   "roles": {
+    "CONDITIONER": {
+     "source_native_variable": "m01-X",
+     "ref_object_id": "urn:test:i03:question_native:m01-X",
+     "domain": [
+      "0",
+      "1"
+     ]
+    },
+    "TARGET": {
+     "source_native_variable": "m01-Y",
+     "ref_object_id": "urn:test:i03:question_native:m01-Y",
+     "domain": [
+      "0",
+      "1"
+     ]
+    }
+   },
+   "native_component_order": [
+    "urn:test:i03:question_native:m01-X",
+    "urn:test:i03:question_native:m01-Y"
+   ],
+   "target_domain_identity": "2a1db449e32b29e968935c642cbe67f71231424c638fca146409278d1affc7c4",
+   "cells_00_01_10_11": {
+    "00": 1,
+    "01": 0,
+    "10": 1,
+    "11": 0
+   },
+   "conditional_profile": [
+    {
+     "condition_state": "0",
+     "condition_denominator_support": 1,
+     "targets": {
+      "0": 1,
+      "1": 0
+     },
+     "states": {
+      "0": "OBSERVED_POSITIVE",
+      "1": "ZERO_SUPPORT"
+     }
+    },
+    {
+     "condition_state": "1",
+     "condition_denominator_support": 1,
+     "targets": {
+      "0": 1,
+      "1": 0
+     },
+     "states": {
+      "0": "OBSERVED_POSITIVE",
+      "1": "ZERO_SUPPORT"
+     }
+    }
+   ],
+   "eligible_joint_risk_total": 2,
+   "excluded_ineligible_target_count": 0,
+   "joint_support_total": 2,
+   "zero_cell_semantics": {
+    "0|1": "ZERO_SUPPORT",
+    "1|1": "ZERO_SUPPORT"
+   },
+   "relation_permission_ceiling": [
+    "SOURCE_FREE_DEV"
+   ],
+   "consumer": {
+    "decision_state": "PAIR_SUPPORT_SIGNATURE_COMPUTED",
+    "separation_class": "NO_PAIR_SEPARATION",
+    "separation_signature": "\"0\":1,0@1|\"1\":1,0@1",
+    "support_vectors": [
+     {
+      "condition_state": "0",
+      "condition_denominator_support": 1,
+      "target_counts": [
+       {
+        "target_state": "0",
+        "joint_support_count": 1,
+        "joint_cell_state": "OBSERVED_POSITIVE"
+       },
+       {
+        "target_state": "1",
+        "joint_support_count": 0,
+        "joint_cell_state": "ZERO_SUPPORT"
+       }
+      ]
+     },
+     {
+      "condition_state": "1",
+      "condition_denominator_support": 1,
+      "target_counts": [
+       {
+        "target_state": "0",
+        "joint_support_count": 1,
+        "joint_cell_state": "OBSERVED_POSITIVE"
+       },
+       {
+        "target_state": "1",
+        "joint_support_count": 0,
+        "joint_cell_state": "ZERO_SUPPORT"
+       }
+      ]
+     }
+    ],
+    "zero_cell_semantics": {
+     "\"0\":\"1\"": "ZERO_SUPPORT",
+     "\"1\":\"1\"": "ZERO_SUPPORT"
+    },
+    "joint_support_total": 2,
+    "condition_states_with_positive_denominator": [
+     "0",
+     "1"
+    ],
+    "eligible_joint_risk_total": 2,
+    "result_hash": "df204299fd54c0785f575d5d3d3c1ccff13aebc08ade06288675ed2cf4cf6f21",
+    "generic_native_semantics_hold": "RETAINED",
+    "downstream_value_produced": true,
+    "read_relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:38b436d2e00e8f30a9ec7a4efe02ec2a13dc0ca21e8636c9598c24c12ee6785d",
+    "read_relation_content_hash": "38b436d2e00e8f30a9ec7a4efe02ec2a13dc0ca21e8636c9598c24c12ee6785d",
+    "read_relation_owner": "GF1_GENERIC_PAIR_CANDIDATE_RELATION_OWNER_TEST_ONLY",
+    "is_population_evidence_not_actor_fact": true,
+    "makes_no_causal_or_psychological_claim": true,
+    "production_owner_commit": false
+   }
+  },
+  "nontrivial_partial": {
+   "label": "SYNTHETIC::nontrivial_partial",
+   "relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:c9be3fe13417add07e6bbcc6a480c22ef47627c738e3389f263230986f774918",
+   "relation_content_hash": "c9be3fe13417add07e6bbcc6a480c22ef47627c738e3389f263230986f774918",
+   "typed_state": "SUPPORTED",
+   "producer_state_blocking": false,
+   "operation_role_order": "FORWARD_NATIVE_ORDER",
+   "roles": {
+    "CONDITIONER": {
+     "source_native_variable": "m01-X",
+     "ref_object_id": "urn:test:i03:question_native:m01-X",
+     "domain": [
+      "0",
+      "1"
+     ]
+    },
+    "TARGET": {
+     "source_native_variable": "m01-Y",
+     "ref_object_id": "urn:test:i03:question_native:m01-Y",
+     "domain": [
+      "0",
+      "1"
+     ]
+    }
+   },
+   "native_component_order": [
+    "urn:test:i03:question_native:m01-X",
+    "urn:test:i03:question_native:m01-Y"
+   ],
+   "target_domain_identity": "2a1db449e32b29e968935c642cbe67f71231424c638fca146409278d1affc7c4",
+   "cells_00_01_10_11": {
+    "00": 2,
+    "01": 1,
+    "10": 1,
+    "11": 2
+   },
+   "conditional_profile": [
+    {
+     "condition_state": "0",
+     "condition_denominator_support": 3,
+     "targets": {
+      "0": 2,
+      "1": 1
+     },
+     "states": {
+      "0": "OBSERVED_POSITIVE",
+      "1": "OBSERVED_POSITIVE"
+     }
+    },
+    {
+     "condition_state": "1",
+     "condition_denominator_support": 3,
+     "targets": {
+      "0": 1,
+      "1": 2
+     },
+     "states": {
+      "0": "OBSERVED_POSITIVE",
+      "1": "OBSERVED_POSITIVE"
+     }
+    }
+   ],
+   "eligible_joint_risk_total": 6,
+   "excluded_ineligible_target_count": 0,
+   "joint_support_total": 6,
+   "zero_cell_semantics": {},
+   "relation_permission_ceiling": [
+    "SOURCE_FREE_DEV"
+   ],
+   "consumer": {
+    "decision_state": "PAIR_SUPPORT_SIGNATURE_COMPUTED",
+    "separation_class": "NO_PAIR_SEPARATION",
+    "separation_signature": "\"0\":2,1@3|\"1\":1,2@3",
+    "support_vectors": [
+     {
+      "condition_state": "0",
+      "condition_denominator_support": 3,
+      "target_counts": [
+       {
+        "target_state": "0",
+        "joint_support_count": 2,
+        "joint_cell_state": "OBSERVED_POSITIVE"
+       },
+       {
+        "target_state": "1",
+        "joint_support_count": 1,
+        "joint_cell_state": "OBSERVED_POSITIVE"
+       }
+      ]
+     },
+     {
+      "condition_state": "1",
+      "condition_denominator_support": 3,
+      "target_counts": [
+       {
+        "target_state": "0",
+        "joint_support_count": 1,
+        "joint_cell_state": "OBSERVED_POSITIVE"
+       },
+       {
+        "target_state": "1",
+        "joint_support_count": 2,
+        "joint_cell_state": "OBSERVED_POSITIVE"
+       }
+      ]
+     }
+    ],
+    "zero_cell_semantics": {},
+    "joint_support_total": 6,
+    "condition_states_with_positive_denominator": [
+     "0",
+     "1"
+    ],
+    "eligible_joint_risk_total": 6,
+    "result_hash": "abd079c38e367edcf52b5b278cf1ce21cc555fcf86eaf7fb4081d6a0e3f73b19",
+    "generic_native_semantics_hold": "RETAINED",
+    "downstream_value_produced": true,
+    "read_relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:c9be3fe13417add07e6bbcc6a480c22ef47627c738e3389f263230986f774918",
+    "read_relation_content_hash": "c9be3fe13417add07e6bbcc6a480c22ef47627c738e3389f263230986f774918",
+    "read_relation_owner": "GF1_GENERIC_PAIR_CANDIDATE_RELATION_OWNER_TEST_ONLY",
+    "is_population_evidence_not_actor_fact": true,
+    "makes_no_causal_or_psychological_claim": true,
+    "production_owner_commit": false
+   }
+  },
+  "nontrivial_exact": {
+   "label": "SYNTHETIC::nontrivial_exact",
+   "relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:5c4c27e9ffc7d9ef7cbbc8b27365a35c7d6681b1e1bb74fb75c57a395d91acfa",
+   "relation_content_hash": "5c4c27e9ffc7d9ef7cbbc8b27365a35c7d6681b1e1bb74fb75c57a395d91acfa",
+   "typed_state": "SUPPORTED",
+   "producer_state_blocking": false,
+   "operation_role_order": "FORWARD_NATIVE_ORDER",
+   "roles": {
+    "CONDITIONER": {
+     "source_native_variable": "m01-X",
+     "ref_object_id": "urn:test:i03:question_native:m01-X",
+     "domain": [
+      "0",
+      "1"
+     ]
+    },
+    "TARGET": {
+     "source_native_variable": "m01-Y",
+     "ref_object_id": "urn:test:i03:question_native:m01-Y",
+     "domain": [
+      "0",
+      "1"
+     ]
+    }
+   },
+   "native_component_order": [
+    "urn:test:i03:question_native:m01-X",
+    "urn:test:i03:question_native:m01-Y"
+   ],
+   "target_domain_identity": "2a1db449e32b29e968935c642cbe67f71231424c638fca146409278d1affc7c4",
+   "cells_00_01_10_11": {
+    "00": 2,
+    "01": 0,
+    "10": 0,
+    "11": 2
+   },
+   "conditional_profile": [
+    {
+     "condition_state": "0",
+     "condition_denominator_support": 2,
+     "targets": {
+      "0": 2,
+      "1": 0
+     },
+     "states": {
+      "0": "OBSERVED_POSITIVE",
+      "1": "ZERO_SUPPORT"
+     }
+    },
+    {
+     "condition_state": "1",
+     "condition_denominator_support": 2,
+     "targets": {
+      "0": 0,
+      "1": 2
+     },
+     "states": {
+      "0": "ZERO_SUPPORT",
+      "1": "OBSERVED_POSITIVE"
+     }
+    }
+   ],
+   "eligible_joint_risk_total": 4,
+   "excluded_ineligible_target_count": 0,
+   "joint_support_total": 4,
+   "zero_cell_semantics": {
+    "0|1": "ZERO_SUPPORT",
+    "1|0": "ZERO_SUPPORT"
+   },
+   "relation_permission_ceiling": [
+    "SOURCE_FREE_DEV"
+   ],
+   "consumer": {
+    "decision_state": "PAIR_SUPPORT_SIGNATURE_COMPUTED",
+    "separation_class": "EXACT_PAIR_SEPARATION",
+    "separation_signature": "\"0\":2,0@2|\"1\":0,2@2",
+    "support_vectors": [
+     {
+      "condition_state": "0",
+      "condition_denominator_support": 2,
+      "target_counts": [
+       {
+        "target_state": "0",
+        "joint_support_count": 2,
+        "joint_cell_state": "OBSERVED_POSITIVE"
+       },
+       {
+        "target_state": "1",
+        "joint_support_count": 0,
+        "joint_cell_state": "ZERO_SUPPORT"
+       }
+      ]
+     },
+     {
+      "condition_state": "1",
+      "condition_denominator_support": 2,
+      "target_counts": [
+       {
+        "target_state": "0",
+        "joint_support_count": 0,
+        "joint_cell_state": "ZERO_SUPPORT"
+       },
+       {
+        "target_state": "1",
+        "joint_support_count": 2,
+        "joint_cell_state": "OBSERVED_POSITIVE"
+       }
+      ]
+     }
+    ],
+    "zero_cell_semantics": {
+     "\"0\":\"1\"": "ZERO_SUPPORT",
+     "\"1\":\"0\"": "ZERO_SUPPORT"
+    },
+    "joint_support_total": 4,
+    "condition_states_with_positive_denominator": [
+     "0",
+     "1"
+    ],
+    "eligible_joint_risk_total": 4,
+    "result_hash": "6caa3fbf56460d865bc35d85fcfc80907121400a42ea97fcebda785ba770edb4",
+    "generic_native_semantics_hold": "RETAINED",
+    "downstream_value_produced": true,
+    "read_relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:5c4c27e9ffc7d9ef7cbbc8b27365a35c7d6681b1e1bb74fb75c57a395d91acfa",
+    "read_relation_content_hash": "5c4c27e9ffc7d9ef7cbbc8b27365a35c7d6681b1e1bb74fb75c57a395d91acfa",
+    "read_relation_owner": "GF1_GENERIC_PAIR_CANDIDATE_RELATION_OWNER_TEST_ONLY",
+    "is_population_evidence_not_actor_fact": true,
+    "makes_no_causal_or_psychological_claim": true,
+    "production_owner_commit": false
+   }
+  },
+  "observed_zeros_supported": {
+   "label": "SYNTHETIC::observed_zeros_supported",
+   "relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:3f01febe7ad1df203d903b7dfb5adc2ef8d5b57b7197ee557eeb8f59d434f67c",
+   "relation_content_hash": "3f01febe7ad1df203d903b7dfb5adc2ef8d5b57b7197ee557eeb8f59d434f67c",
+   "typed_state": "SUPPORTED",
+   "producer_state_blocking": false,
+   "operation_role_order": "FORWARD_NATIVE_ORDER",
+   "roles": {
+    "CONDITIONER": {
+     "source_native_variable": "m01-X",
+     "ref_object_id": "urn:test:i03:question_native:m01-X",
+     "domain": [
+      "0",
+      "1"
+     ]
+    },
+    "TARGET": {
+     "source_native_variable": "m01-Y",
+     "ref_object_id": "urn:test:i03:question_native:m01-Y",
+     "domain": [
+      "0",
+      "1"
+     ]
+    }
+   },
+   "native_component_order": [
+    "urn:test:i03:question_native:m01-X",
+    "urn:test:i03:question_native:m01-Y"
+   ],
+   "target_domain_identity": "2a1db449e32b29e968935c642cbe67f71231424c638fca146409278d1affc7c4",
+   "cells_00_01_10_11": {
+    "00": 1,
+    "01": 0,
+    "10": 0,
+    "11": 1
+   },
+   "conditional_profile": [
+    {
+     "condition_state": "0",
+     "condition_denominator_support": 1,
+     "targets": {
+      "0": 1,
+      "1": 0
+     },
+     "states": {
+      "0": "OBSERVED_POSITIVE",
+      "1": "ZERO_SUPPORT"
+     }
+    },
+    {
+     "condition_state": "1",
+     "condition_denominator_support": 1,
+     "targets": {
+      "0": 0,
+      "1": 1
+     },
+     "states": {
+      "0": "ZERO_SUPPORT",
+      "1": "OBSERVED_POSITIVE"
+     }
+    }
+   ],
+   "eligible_joint_risk_total": 2,
+   "excluded_ineligible_target_count": 0,
+   "joint_support_total": 2,
+   "zero_cell_semantics": {
+    "0|1": "ZERO_SUPPORT",
+    "1|0": "ZERO_SUPPORT"
+   },
+   "relation_permission_ceiling": [
+    "SOURCE_FREE_DEV"
+   ],
+   "consumer": {
+    "decision_state": "PAIR_SUPPORT_SIGNATURE_COMPUTED",
+    "separation_class": "EXACT_PAIR_SEPARATION",
+    "separation_signature": "\"0\":1,0@1|\"1\":0,1@1",
+    "support_vectors": [
+     {
+      "condition_state": "0",
+      "condition_denominator_support": 1,
+      "target_counts": [
+       {
+        "target_state": "0",
+        "joint_support_count": 1,
+        "joint_cell_state": "OBSERVED_POSITIVE"
+       },
+       {
+        "target_state": "1",
+        "joint_support_count": 0,
+        "joint_cell_state": "ZERO_SUPPORT"
+       }
+      ]
+     },
+     {
+      "condition_state": "1",
+      "condition_denominator_support": 1,
+      "target_counts": [
+       {
+        "target_state": "0",
+        "joint_support_count": 0,
+        "joint_cell_state": "ZERO_SUPPORT"
+       },
+       {
+        "target_state": "1",
+        "joint_support_count": 1,
+        "joint_cell_state": "OBSERVED_POSITIVE"
+       }
+      ]
+     }
+    ],
+    "zero_cell_semantics": {
+     "\"0\":\"1\"": "ZERO_SUPPORT",
+     "\"1\":\"0\"": "ZERO_SUPPORT"
+    },
+    "joint_support_total": 2,
+    "condition_states_with_positive_denominator": [
+     "0",
+     "1"
+    ],
+    "eligible_joint_risk_total": 2,
+    "result_hash": "89dcd859f36fe102f37c6b539e97dbc6179ddb01e96002deb1e558e9fdfcc8ad",
+    "generic_native_semantics_hold": "RETAINED",
+    "downstream_value_produced": true,
+    "read_relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:3f01febe7ad1df203d903b7dfb5adc2ef8d5b57b7197ee557eeb8f59d434f67c",
+    "read_relation_content_hash": "3f01febe7ad1df203d903b7dfb5adc2ef8d5b57b7197ee557eeb8f59d434f67c",
+    "read_relation_owner": "GF1_GENERIC_PAIR_CANDIDATE_RELATION_OWNER_TEST_ONLY",
+    "is_population_evidence_not_actor_fact": true,
+    "makes_no_causal_or_psychological_claim": true,
+    "production_owner_commit": false
+   }
+  },
+  "all_zero_observed_zero": {
+   "label": "SYNTHETIC::all_zero_observed_zero",
+   "relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:0173d8b7d5455d9a47e16d1f4f08dab4fb48dd610ef296295d816f7f0904f569",
+   "relation_content_hash": "0173d8b7d5455d9a47e16d1f4f08dab4fb48dd610ef296295d816f7f0904f569",
+   "typed_state": "SUPPORTED",
+   "producer_state_blocking": false,
+   "operation_role_order": "FORWARD_NATIVE_ORDER",
+   "roles": {
+    "CONDITIONER": {
+     "source_native_variable": "m01-X",
+     "ref_object_id": "urn:test:i03:question_native:m01-X",
+     "domain": [
+      "0",
+      "1"
+     ]
+    },
+    "TARGET": {
+     "source_native_variable": "m01-Y",
+     "ref_object_id": "urn:test:i03:question_native:m01-Y",
+     "domain": [
+      "0",
+      "1"
+     ]
+    }
+   },
+   "native_component_order": [
+    "urn:test:i03:question_native:m01-X",
+    "urn:test:i03:question_native:m01-Y"
+   ],
+   "target_domain_identity": "2a1db449e32b29e968935c642cbe67f71231424c638fca146409278d1affc7c4",
+   "cells_00_01_10_11": {
+    "00": 0,
+    "01": 0,
+    "10": 0,
+    "11": 0
+   },
+   "conditional_profile": [
+    {
+     "condition_state": "0",
+     "condition_denominator_support": 0,
+     "targets": {
+      "0": 0,
+      "1": 0
+     },
+     "states": {
+      "0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+      "1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+     }
+    },
+    {
+     "condition_state": "1",
+     "condition_denominator_support": 0,
+     "targets": {
+      "0": 0,
+      "1": 0
+     },
+     "states": {
+      "0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+      "1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+     }
+    }
+   ],
+   "eligible_joint_risk_total": 2,
+   "excluded_ineligible_target_count": 0,
+   "joint_support_total": 0,
+   "zero_cell_semantics": {
+    "0|0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+    "0|1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+    "1|0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+    "1|1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+   },
+   "relation_permission_ceiling": [
+    "SOURCE_FREE_DEV"
+   ],
+   "consumer": {
+    "decision_state": "PAIR_SUPPORT_SIGNATURE_COMPUTED",
+    "separation_class": "UNDETERMINED_ZERO_SUPPORT_RISK",
+    "separation_signature": "\"0\":0,0@0|\"1\":0,0@0",
+    "support_vectors": [
+     {
+      "condition_state": "0",
+      "condition_denominator_support": 0,
+      "target_counts": [
+       {
+        "target_state": "0",
+        "joint_support_count": 0,
+        "joint_cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+       },
+       {
+        "target_state": "1",
+        "joint_support_count": 0,
+        "joint_cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+       }
+      ]
+     },
+     {
+      "condition_state": "1",
+      "condition_denominator_support": 0,
+      "target_counts": [
+       {
+        "target_state": "0",
+        "joint_support_count": 0,
+        "joint_cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+       },
+       {
+        "target_state": "1",
+        "joint_support_count": 0,
+        "joint_cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+       }
+      ]
+     }
+    ],
+    "zero_cell_semantics": {
+     "\"0\":\"0\"": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+     "\"0\":\"1\"": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+     "\"1\":\"0\"": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+     "\"1\":\"1\"": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+    },
+    "joint_support_total": 0,
+    "condition_states_with_positive_denominator": [],
+    "eligible_joint_risk_total": 2,
+    "result_hash": "4a58b6e2f8861a8062eb5cc3ab5ab0539febb796d6eecc88580c839cc3dbe071",
+    "generic_native_semantics_hold": "RETAINED",
+    "downstream_value_produced": true,
+    "read_relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:0173d8b7d5455d9a47e16d1f4f08dab4fb48dd610ef296295d816f7f0904f569",
+    "read_relation_content_hash": "0173d8b7d5455d9a47e16d1f4f08dab4fb48dd610ef296295d816f7f0904f569",
+    "read_relation_owner": "GF1_GENERIC_PAIR_CANDIDATE_RELATION_OWNER_TEST_ONLY",
+    "is_population_evidence_not_actor_fact": true,
+    "makes_no_causal_or_psychological_claim": true,
+    "production_owner_commit": false
+   }
+  },
+  "zero_support_typed": {
+   "label": "SYNTHETIC::zero_support_typed",
+   "relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:e94c75731c352723dce41d15b267aa4296214d464fca0fa4e01056ca372a2ffe",
+   "relation_content_hash": "e94c75731c352723dce41d15b267aa4296214d464fca0fa4e01056ca372a2ffe",
+   "typed_state": "ZERO_SUPPORT",
+   "producer_state_blocking": true,
+   "operation_role_order": "FORWARD_NATIVE_ORDER",
+   "roles": {
+    "CONDITIONER": {
+     "source_native_variable": "m01-X",
+     "ref_object_id": "urn:test:i03:question_native:m01-X",
+     "domain": [
+      "0",
+      "1"
+     ]
+    },
+    "TARGET": {
+     "source_native_variable": "m01-Y",
+     "ref_object_id": "urn:test:i03:question_native:m01-Y",
+     "domain": [
+      "0",
+      "1"
+     ]
+    }
+   },
+   "native_component_order": [
+    "urn:test:i03:question_native:m01-X",
+    "urn:test:i03:question_native:m01-Y"
+   ],
+   "target_domain_identity": "2a1db449e32b29e968935c642cbe67f71231424c638fca146409278d1affc7c4",
+   "cells_00_01_10_11": {},
+   "conditional_profile": [],
+   "eligible_joint_risk_total": 2,
+   "excluded_ineligible_target_count": 0,
+   "joint_support_total": 0,
+   "zero_cell_semantics": {},
+   "relation_permission_ceiling": [
+    "SOURCE_FREE_DEV"
+   ],
+   "consumer": {
+    "decision_state": "PRODUCER_TYPED_STATE_ZERO_SUPPORT",
+    "separation_class": "UNDETERMINED_ZERO_SUPPORT_RISK",
+    "separation_signature": "BLOCKING::ZERO_SUPPORT",
+    "support_vectors": [],
+    "zero_cell_semantics": {},
+    "joint_support_total": 0,
+    "condition_states_with_positive_denominator": [],
+    "eligible_joint_risk_total": 2,
+    "result_hash": "bf6b887df36dec0f40513d8b2a6998ee7ce6420677c2805dd2312f3675c59153",
+    "generic_native_semantics_hold": "RETAINED",
+    "downstream_value_produced": false,
+    "read_relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:e94c75731c352723dce41d15b267aa4296214d464fca0fa4e01056ca372a2ffe",
+    "read_relation_content_hash": "e94c75731c352723dce41d15b267aa4296214d464fca0fa4e01056ca372a2ffe",
+    "read_relation_owner": "GF1_GENERIC_PAIR_CANDIDATE_RELATION_OWNER_TEST_ONLY",
+    "is_population_evidence_not_actor_fact": true,
+    "makes_no_causal_or_psychological_claim": true,
+    "production_owner_commit": false
+   }
+  },
+  "no_eligible_risk": {
+   "label": "SYNTHETIC::no_eligible_risk",
+   "relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:1fee31a2bdb7f84efdf91a89f6a4aad12033d0963cdc8aea680196bc260af9c0",
+   "relation_content_hash": "1fee31a2bdb7f84efdf91a89f6a4aad12033d0963cdc8aea680196bc260af9c0",
+   "typed_state": "SUPPORTED",
+   "producer_state_blocking": false,
+   "operation_role_order": "FORWARD_NATIVE_ORDER",
+   "roles": {
+    "CONDITIONER": {
+     "source_native_variable": "m01-X",
+     "ref_object_id": "urn:test:i03:question_native:m01-X",
+     "domain": [
+      "0",
+      "1"
+     ]
+    },
+    "TARGET": {
+     "source_native_variable": "m01-Y",
+     "ref_object_id": "urn:test:i03:question_native:m01-Y",
+     "domain": [
+      "0",
+      "1"
+     ]
+    }
+   },
+   "native_component_order": [
+    "urn:test:i03:question_native:m01-X",
+    "urn:test:i03:question_native:m01-Y"
+   ],
+   "target_domain_identity": "2a1db449e32b29e968935c642cbe67f71231424c638fca146409278d1affc7c4",
+   "cells_00_01_10_11": {
+    "00": 0,
+    "01": 0,
+    "10": 0,
+    "11": 0
+   },
+   "conditional_profile": [
+    {
+     "condition_state": "0",
+     "condition_denominator_support": 0,
+     "targets": {
+      "0": 0,
+      "1": 0
+     },
+     "states": {
+      "0": "ZERO_SUPPORT",
+      "1": "ZERO_SUPPORT"
+     }
+    },
+    {
+     "condition_state": "1",
+     "condition_denominator_support": 0,
+     "targets": {
+      "0": 0,
+      "1": 0
+     },
+     "states": {
+      "0": "ZERO_SUPPORT",
+      "1": "ZERO_SUPPORT"
+     }
+    }
+   ],
+   "eligible_joint_risk_total": 0,
+   "excluded_ineligible_target_count": 0,
+   "joint_support_total": 0,
+   "zero_cell_semantics": {
+    "0|0": "ZERO_SUPPORT",
+    "0|1": "ZERO_SUPPORT",
+    "1|0": "ZERO_SUPPORT",
+    "1|1": "ZERO_SUPPORT"
+   },
+   "relation_permission_ceiling": [
+    "SOURCE_FREE_DEV"
+   ],
+   "consumer": {
+    "decision_state": "PAIR_SUPPORT_SIGNATURE_COMPUTED",
+    "separation_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+    "separation_signature": "\"0\":0,0@0|\"1\":0,0@0",
+    "support_vectors": [
+     {
+      "condition_state": "0",
+      "condition_denominator_support": 0,
+      "target_counts": [
+       {
+        "target_state": "0",
+        "joint_support_count": 0,
+        "joint_cell_state": "ZERO_SUPPORT"
+       },
+       {
+        "target_state": "1",
+        "joint_support_count": 0,
+        "joint_cell_state": "ZERO_SUPPORT"
+       }
+      ]
+     },
+     {
+      "condition_state": "1",
+      "condition_denominator_support": 0,
+      "target_counts": [
+       {
+        "target_state": "0",
+        "joint_support_count": 0,
+        "joint_cell_state": "ZERO_SUPPORT"
+       },
+       {
+        "target_state": "1",
+        "joint_support_count": 0,
+        "joint_cell_state": "ZERO_SUPPORT"
+       }
+      ]
+     }
+    ],
+    "zero_cell_semantics": {
+     "\"0\":\"0\"": "ZERO_SUPPORT",
+     "\"0\":\"1\"": "ZERO_SUPPORT",
+     "\"1\":\"0\"": "ZERO_SUPPORT",
+     "\"1\":\"1\"": "ZERO_SUPPORT"
+    },
+    "joint_support_total": 0,
+    "condition_states_with_positive_denominator": [],
+    "eligible_joint_risk_total": 0,
+    "result_hash": "e076a2ee3d4f403da7aa89895b0cf882a0207d99959a195c3d7b6a101de887d9",
+    "generic_native_semantics_hold": "RETAINED",
+    "downstream_value_produced": true,
+    "read_relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:1fee31a2bdb7f84efdf91a89f6a4aad12033d0963cdc8aea680196bc260af9c0",
+    "read_relation_content_hash": "1fee31a2bdb7f84efdf91a89f6a4aad12033d0963cdc8aea680196bc260af9c0",
+    "read_relation_owner": "GF1_GENERIC_PAIR_CANDIDATE_RELATION_OWNER_TEST_ONLY",
+    "is_population_evidence_not_actor_fact": true,
+    "makes_no_causal_or_psychological_claim": true,
+    "production_owner_commit": false
+   }
+  },
+  "missing_target_state": {
+   "label": "SYNTHETIC::missing_target_state",
+   "relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:9ee4fec392c43aee02be247553dbe9f086936dde3296cca362941f1a9d0fde8d",
+   "relation_content_hash": "9ee4fec392c43aee02be247553dbe9f086936dde3296cca362941f1a9d0fde8d",
+   "typed_state": "MISSING_TARGET_STATE",
+   "producer_state_blocking": true,
+   "operation_role_order": "FORWARD_NATIVE_ORDER",
+   "roles": {
+    "CONDITIONER": {
+     "source_native_variable": "m01-X",
+     "ref_object_id": "urn:test:i03:question_native:m01-X",
+     "domain": [
+      "0",
+      "1"
+     ]
+    },
+    "TARGET": {
+     "source_native_variable": "m01-Y",
+     "ref_object_id": "urn:test:i03:question_native:m01-Y",
+     "domain": [
+      "0",
+      "1"
+     ]
+    }
+   },
+   "native_component_order": [
+    "urn:test:i03:question_native:m01-X",
+    "urn:test:i03:question_native:m01-Y"
+   ],
+   "target_domain_identity": "2a1db449e32b29e968935c642cbe67f71231424c638fca146409278d1affc7c4",
+   "cells_00_01_10_11": {},
+   "conditional_profile": [],
+   "eligible_joint_risk_total": 0,
+   "excluded_ineligible_target_count": 0,
+   "joint_support_total": 0,
+   "zero_cell_semantics": {},
+   "relation_permission_ceiling": [
+    "SOURCE_FREE_DEV"
+   ],
+   "consumer": {
+    "decision_state": "PRODUCER_TYPED_STATE_BLOCKING",
+    "separation_class": null,
+    "separation_signature": "BLOCKING::MISSING_TARGET_STATE",
+    "support_vectors": [],
+    "zero_cell_semantics": {},
+    "joint_support_total": 0,
+    "condition_states_with_positive_denominator": [],
+    "eligible_joint_risk_total": 0,
+    "result_hash": "26553ee78ba1214fd20645d1c3d14c5a67a6688d368949562e89f9e96551f1ab",
+    "generic_native_semantics_hold": "RETAINED",
+    "downstream_value_produced": false,
+    "read_relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:9ee4fec392c43aee02be247553dbe9f086936dde3296cca362941f1a9d0fde8d",
+    "read_relation_content_hash": "9ee4fec392c43aee02be247553dbe9f086936dde3296cca362941f1a9d0fde8d",
+    "read_relation_owner": "GF1_GENERIC_PAIR_CANDIDATE_RELATION_OWNER_TEST_ONLY",
+    "is_population_evidence_not_actor_fact": true,
+    "makes_no_causal_or_psychological_claim": true,
+    "production_owner_commit": false
+   }
+  },
+  "unresolved_target_state": {
+   "label": "SYNTHETIC::unresolved_target_state",
+   "relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:13edbcae09089149cb2c61caa581b064139e6844245dc24bea913a9a937d925a",
+   "relation_content_hash": "13edbcae09089149cb2c61caa581b064139e6844245dc24bea913a9a937d925a",
+   "typed_state": "UNRESOLVED_TARGET_STATE",
+   "producer_state_blocking": true,
+   "operation_role_order": "FORWARD_NATIVE_ORDER",
+   "roles": {
+    "CONDITIONER": {
+     "source_native_variable": "m01-X",
+     "ref_object_id": "urn:test:i03:question_native:m01-X",
+     "domain": [
+      "0",
+      "1"
+     ]
+    },
+    "TARGET": {
+     "source_native_variable": "m01-Y",
+     "ref_object_id": "urn:test:i03:question_native:m01-Y",
+     "domain": [
+      "0",
+      "1"
+     ]
+    }
+   },
+   "native_component_order": [
+    "urn:test:i03:question_native:m01-X",
+    "urn:test:i03:question_native:m01-Y"
+   ],
+   "target_domain_identity": "2a1db449e32b29e968935c642cbe67f71231424c638fca146409278d1affc7c4",
+   "cells_00_01_10_11": {},
+   "conditional_profile": [],
+   "eligible_joint_risk_total": 0,
+   "excluded_ineligible_target_count": 0,
+   "joint_support_total": 0,
+   "zero_cell_semantics": {},
+   "relation_permission_ceiling": [
+    "SOURCE_FREE_DEV"
+   ],
+   "consumer": {
+    "decision_state": "PRODUCER_TYPED_STATE_BLOCKING",
+    "separation_class": null,
+    "separation_signature": "BLOCKING::UNRESOLVED_TARGET_STATE",
+    "support_vectors": [],
+    "zero_cell_semantics": {},
+    "joint_support_total": 0,
+    "condition_states_with_positive_denominator": [],
+    "eligible_joint_risk_total": 0,
+    "result_hash": "b974e7bfb7eb0c9de9fbe165594c52df521c02ffa3079ae006fdc1c904f68159",
+    "generic_native_semantics_hold": "RETAINED",
+    "downstream_value_produced": false,
+    "read_relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:13edbcae09089149cb2c61caa581b064139e6844245dc24bea913a9a937d925a",
+    "read_relation_content_hash": "13edbcae09089149cb2c61caa581b064139e6844245dc24bea913a9a937d925a",
+    "read_relation_owner": "GF1_GENERIC_PAIR_CANDIDATE_RELATION_OWNER_TEST_ONLY",
+    "is_population_evidence_not_actor_fact": true,
+    "makes_no_causal_or_psychological_claim": true,
+    "production_owner_commit": false
+   }
+  },
+  "nonresponse": {
+   "label": "SYNTHETIC::nonresponse",
+   "relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:af08f4cc71485424d79ff6eb33a4c0f0ebc3389e1875b818eca85b0680d07f26",
+   "relation_content_hash": "af08f4cc71485424d79ff6eb33a4c0f0ebc3389e1875b818eca85b0680d07f26",
+   "typed_state": "NONRESPONSE",
+   "producer_state_blocking": true,
+   "operation_role_order": "FORWARD_NATIVE_ORDER",
+   "roles": {
+    "CONDITIONER": {
+     "source_native_variable": "m01-X",
+     "ref_object_id": "urn:test:i03:question_native:m01-X",
+     "domain": [
+      "0",
+      "1"
+     ]
+    },
+    "TARGET": {
+     "source_native_variable": "m01-Y",
+     "ref_object_id": "urn:test:i03:question_native:m01-Y",
+     "domain": [
+      "0",
+      "1"
+     ]
+    }
+   },
+   "native_component_order": [
+    "urn:test:i03:question_native:m01-X",
+    "urn:test:i03:question_native:m01-Y"
+   ],
+   "target_domain_identity": "2a1db449e32b29e968935c642cbe67f71231424c638fca146409278d1affc7c4",
+   "cells_00_01_10_11": {},
+   "conditional_profile": [],
+   "eligible_joint_risk_total": 0,
+   "excluded_ineligible_target_count": 0,
+   "joint_support_total": 0,
+   "zero_cell_semantics": {},
+   "relation_permission_ceiling": [
+    "SOURCE_FREE_DEV"
+   ],
+   "consumer": {
+    "decision_state": "PRODUCER_TYPED_STATE_BLOCKING",
+    "separation_class": null,
+    "separation_signature": "BLOCKING::NONRESPONSE",
+    "support_vectors": [],
+    "zero_cell_semantics": {},
+    "joint_support_total": 0,
+    "condition_states_with_positive_denominator": [],
+    "eligible_joint_risk_total": 0,
+    "result_hash": "49ea5fa9e1518b2c746758be5a6d368712235786c79292cfd7617d198f7c35c3",
+    "generic_native_semantics_hold": "RETAINED",
+    "downstream_value_produced": false,
+    "read_relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:af08f4cc71485424d79ff6eb33a4c0f0ebc3389e1875b818eca85b0680d07f26",
+    "read_relation_content_hash": "af08f4cc71485424d79ff6eb33a4c0f0ebc3389e1875b818eca85b0680d07f26",
+    "read_relation_owner": "GF1_GENERIC_PAIR_CANDIDATE_RELATION_OWNER_TEST_ONLY",
+    "is_population_evidence_not_actor_fact": true,
+    "makes_no_causal_or_psychological_claim": true,
+    "production_owner_commit": false
+   }
+  },
+  "inconsistent_denominator": {
+   "label": "SYNTHETIC::inconsistent_denominator",
+   "relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:d5aa00ef321170c27684000026bdf822d244e652a64f0d12d493163fc103d3b6",
+   "relation_content_hash": "d5aa00ef321170c27684000026bdf822d244e652a64f0d12d493163fc103d3b6",
+   "typed_state": "SUPPORTED",
+   "producer_state_blocking": false,
+   "operation_role_order": "FORWARD_NATIVE_ORDER",
+   "roles": {
+    "CONDITIONER": {
+     "source_native_variable": "m01-X",
+     "ref_object_id": "urn:test:i03:question_native:m01-X",
+     "domain": [
+      "0",
+      "1"
+     ]
+    },
+    "TARGET": {
+     "source_native_variable": "m01-Y",
+     "ref_object_id": "urn:test:i03:question_native:m01-Y",
+     "domain": [
+      "0",
+      "1"
+     ]
+    }
+   },
+   "native_component_order": [
+    "urn:test:i03:question_native:m01-X",
+    "urn:test:i03:question_native:m01-Y"
+   ],
+   "target_domain_identity": "2a1db449e32b29e968935c642cbe67f71231424c638fca146409278d1affc7c4",
+   "cells_00_01_10_11": {
+    "00": 1,
+    "01": 0,
+    "10": 0,
+    "11": 1
+   },
+   "conditional_profile": [
+    {
+     "condition_state": "0",
+     "condition_denominator_support": 2,
+     "targets": {
+      "0": 1,
+      "1": 0
+     },
+     "states": {
+      "0": "OBSERVED_POSITIVE",
+      "1": "ZERO_SUPPORT"
+     }
+    },
+    {
+     "condition_state": "1",
+     "condition_denominator_support": 1,
+     "targets": {
+      "0": 0,
+      "1": 1
+     },
+     "states": {
+      "0": "ZERO_SUPPORT",
+      "1": "OBSERVED_POSITIVE"
+     }
+    }
+   ],
+   "eligible_joint_risk_total": 2,
+   "excluded_ineligible_target_count": 0,
+   "joint_support_total": 2,
+   "zero_cell_semantics": {
+    "0|1": "ZERO_SUPPORT",
+    "1|0": "ZERO_SUPPORT"
+   },
+   "relation_permission_ceiling": [
+    "SOURCE_FREE_DEV"
+   ],
+   "consumer": {
+    "decision_state": "CONSUMER_INPUT_INCONSISTENT_DENOMINATOR",
+    "separation_class": null,
+    "separation_signature": null,
+    "support_vectors": [],
+    "zero_cell_semantics": {},
+    "joint_support_total": null,
+    "condition_states_with_positive_denominator": [],
+    "eligible_joint_risk_total": 2,
+    "result_hash": "6aeb16c17dcdbf7e15b33deb444464297d7aeaf9189a226e4bb5e32a0b929392",
+    "generic_native_semantics_hold": "RETAINED",
+    "downstream_value_produced": false,
+    "read_relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:d5aa00ef321170c27684000026bdf822d244e652a64f0d12d493163fc103d3b6",
+    "read_relation_content_hash": "d5aa00ef321170c27684000026bdf822d244e652a64f0d12d493163fc103d3b6",
+    "read_relation_owner": "GF1_GENERIC_PAIR_CANDIDATE_RELATION_OWNER_TEST_ONLY",
+    "is_population_evidence_not_actor_fact": true,
+    "makes_no_causal_or_psychological_claim": true,
+    "production_owner_commit": false
+   }
+  },
+  "support_exceeds_risk": {
+   "label": "SYNTHETIC::support_exceeds_risk",
+   "relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:3099bf92dba9a53cd7f7844b3bcef19b4a52d76d4e5688652549e40a6bef1745",
+   "relation_content_hash": "3099bf92dba9a53cd7f7844b3bcef19b4a52d76d4e5688652549e40a6bef1745",
+   "typed_state": "SUPPORTED",
+   "producer_state_blocking": false,
+   "operation_role_order": "FORWARD_NATIVE_ORDER",
+   "roles": {
+    "CONDITIONER": {
+     "source_native_variable": "m01-X",
+     "ref_object_id": "urn:test:i03:question_native:m01-X",
+     "domain": [
+      "0",
+      "1"
+     ]
+    },
+    "TARGET": {
+     "source_native_variable": "m01-Y",
+     "ref_object_id": "urn:test:i03:question_native:m01-Y",
+     "domain": [
+      "0",
+      "1"
+     ]
+    }
+   },
+   "native_component_order": [
+    "urn:test:i03:question_native:m01-X",
+    "urn:test:i03:question_native:m01-Y"
+   ],
+   "target_domain_identity": "2a1db449e32b29e968935c642cbe67f71231424c638fca146409278d1affc7c4",
+   "cells_00_01_10_11": {
+    "00": 1,
+    "01": 0,
+    "10": 0,
+    "11": 1
+   },
+   "conditional_profile": [
+    {
+     "condition_state": "0",
+     "condition_denominator_support": 1,
+     "targets": {
+      "0": 1,
+      "1": 0
+     },
+     "states": {
+      "0": "OBSERVED_POSITIVE",
+      "1": "ZERO_SUPPORT"
+     }
+    },
+    {
+     "condition_state": "1",
+     "condition_denominator_support": 1,
+     "targets": {
+      "0": 0,
+      "1": 1
+     },
+     "states": {
+      "0": "ZERO_SUPPORT",
+      "1": "OBSERVED_POSITIVE"
+     }
+    }
+   ],
+   "eligible_joint_risk_total": 1,
+   "excluded_ineligible_target_count": 0,
+   "joint_support_total": 2,
+   "zero_cell_semantics": {
+    "0|1": "ZERO_SUPPORT",
+    "1|0": "ZERO_SUPPORT"
+   },
+   "relation_permission_ceiling": [
+    "SOURCE_FREE_DEV"
+   ],
+   "consumer": {
+    "decision_state": "CONSUMER_INPUT_SUPPORT_EXCEEDS_ELIGIBLE_RISK",
+    "separation_class": null,
+    "separation_signature": "\"0\":1,0@1|\"1\":0,1@1",
+    "support_vectors": [
+     {
+      "condition_state": "0",
+      "condition_denominator_support": 1,
+      "target_counts": [
+       {
+        "target_state": "0",
+        "joint_support_count": 1,
+        "joint_cell_state": "OBSERVED_POSITIVE"
+       },
+       {
+        "target_state": "1",
+        "joint_support_count": 0,
+        "joint_cell_state": "ZERO_SUPPORT"
+       }
+      ]
+     },
+     {
+      "condition_state": "1",
+      "condition_denominator_support": 1,
+      "target_counts": [
+       {
+        "target_state": "0",
+        "joint_support_count": 0,
+        "joint_cell_state": "ZERO_SUPPORT"
+       },
+       {
+        "target_state": "1",
+        "joint_support_count": 1,
+        "joint_cell_state": "OBSERVED_POSITIVE"
+       }
+      ]
+     }
+    ],
+    "zero_cell_semantics": {
+     "\"0\":\"1\"": "ZERO_SUPPORT",
+     "\"1\":\"0\"": "ZERO_SUPPORT"
+    },
+    "joint_support_total": 2,
+    "condition_states_with_positive_denominator": [
+     "0",
+     "1"
+    ],
+    "eligible_joint_risk_total": 1,
+    "result_hash": "7b60993e45fc033cee214271a90ab994b175e7e030927e20e1eb95dfe065e7dd",
+    "generic_native_semantics_hold": "RETAINED",
+    "downstream_value_produced": false,
+    "read_relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:3099bf92dba9a53cd7f7844b3bcef19b4a52d76d4e5688652549e40a6bef1745",
+    "read_relation_content_hash": "3099bf92dba9a53cd7f7844b3bcef19b4a52d76d4e5688652549e40a6bef1745",
+    "read_relation_owner": "GF1_GENERIC_PAIR_CANDIDATE_RELATION_OWNER_TEST_ONLY",
+    "is_population_evidence_not_actor_fact": true,
+    "makes_no_causal_or_psychological_claim": true,
+    "production_owner_commit": false
+   }
+  }
+ },
+ "fully_rehashed_unauthenticated": {
+  "label": "SYNTHETIC::fully_rehashed_self_authenticated",
+  "relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:28f3ae0226d6885b9d99814dd02f1f9eb8a01d531874c1b5390b9d8ba9b739c6",
+  "relation_content_hash": "28f3ae0226d6885b9d99814dd02f1f9eb8a01d531874c1b5390b9d8ba9b739c6",
+  "typed_state": "SUPPORTED",
+  "producer_state_blocking": false,
+  "operation_role_order": "FORWARD_NATIVE_ORDER",
+  "roles": {
+   "CONDITIONER": {
+    "source_native_variable": "m01-X",
+    "ref_object_id": "urn:test:i03:question_native:m01-X",
+    "domain": [
+     "0",
+     "1"
+    ]
+   },
+   "TARGET": {
+    "source_native_variable": "m01-Y",
+    "ref_object_id": "urn:test:i03:question_native:m01-Y",
+    "domain": [
+     "0",
+     "1"
+    ]
+   }
+  },
+  "native_component_order": [
+   "urn:test:i03:question_native:m01-X",
+   "urn:test:i03:question_native:m01-Y"
+  ],
+  "target_domain_identity": "2a1db449e32b29e968935c642cbe67f71231424c638fca146409278d1affc7c4",
+  "cells_00_01_10_11": {
+   "00": 1,
+   "01": 0,
+   "10": 0,
+   "11": 1
+  },
+  "conditional_profile": [
+   {
+    "condition_state": "0",
+    "condition_denominator_support": 1,
+    "targets": {
+     "0": 1,
+     "1": 0
+    },
+    "states": {
+     "0": "OBSERVED_POSITIVE",
+     "1": "ZERO_SUPPORT"
+    }
+   },
+   {
+    "condition_state": "1",
+    "condition_denominator_support": 1,
+    "targets": {
+     "0": 0,
+     "1": 1
+    },
+    "states": {
+     "0": "ZERO_SUPPORT",
+     "1": "OBSERVED_POSITIVE"
+    }
+   }
+  ],
+  "eligible_joint_risk_total": 2,
+  "excluded_ineligible_target_count": 0,
+  "joint_support_total": 2,
+  "zero_cell_semantics": {
+   "0|1": "ZERO_SUPPORT",
+   "1|0": "ZERO_SUPPORT"
+  },
+  "relation_permission_ceiling": [
+   "SOURCE_FREE_DEV"
+  ],
+  "consumer": {
+   "decision_state": "PAIR_SUPPORT_SIGNATURE_COMPUTED",
+   "separation_class": "EXACT_PAIR_SEPARATION",
+   "separation_signature": "\"0\":1,0@1|\"1\":0,1@1",
+   "support_vectors": [
+    {
+     "condition_state": "0",
+     "condition_denominator_support": 1,
+     "target_counts": [
+      {
+       "target_state": "0",
+       "joint_support_count": 1,
+       "joint_cell_state": "OBSERVED_POSITIVE"
+      },
+      {
+       "target_state": "1",
+       "joint_support_count": 0,
+       "joint_cell_state": "ZERO_SUPPORT"
+      }
+     ]
+    },
+    {
+     "condition_state": "1",
+     "condition_denominator_support": 1,
+     "target_counts": [
+      {
+       "target_state": "0",
+       "joint_support_count": 0,
+       "joint_cell_state": "ZERO_SUPPORT"
+      },
+      {
+       "target_state": "1",
+       "joint_support_count": 1,
+       "joint_cell_state": "OBSERVED_POSITIVE"
+      }
+     ]
+    }
+   ],
+   "zero_cell_semantics": {
+    "\"0\":\"1\"": "ZERO_SUPPORT",
+    "\"1\":\"0\"": "ZERO_SUPPORT"
+   },
+   "joint_support_total": 2,
+   "condition_states_with_positive_denominator": [
+    "0",
+    "1"
+   ],
+   "eligible_joint_risk_total": 2,
+   "result_hash": "21ee6767f4657c83e01bd058f3a15f658044007eacd35cf07a74d7eeaa65675c",
+   "generic_native_semantics_hold": "RETAINED",
+   "downstream_value_produced": true,
+   "read_relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:28f3ae0226d6885b9d99814dd02f1f9eb8a01d531874c1b5390b9d8ba9b739c6",
+   "read_relation_content_hash": "28f3ae0226d6885b9d99814dd02f1f9eb8a01d531874c1b5390b9d8ba9b739c6",
+   "read_relation_owner": "GF1_GENERIC_PAIR_CANDIDATE_RELATION_OWNER_TEST_ONLY",
+   "is_population_evidence_not_actor_fact": true,
+   "makes_no_causal_or_psychological_claim": true,
+   "production_owner_commit": false
+  },
+  "forged_identity": {
+   "producer_provenance_is_self_declared": true,
+   "producer_authority_is_self_declared": true,
+   "external_signature_present": false,
+   "content_hash_recomputed_by_attacker": true,
+   "required_consumer_privilege": "TEST_ONLY__NO_REAL_SOURCE_PRIVILEGE"
+  }
+ },
+ "frozen_expectations": {
+  "baseline_forward": "EXACT_PAIR_SEPARATION, cells 00/01/10/11 = 1/0/0/1, per-condition denominators 1/1, joint eligible risk 2, joint support total 2, zero cells stay OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+  "baseline_reverse": "EXACT_PAIR_SEPARATION under REVERSE_GRANTED with roles swapped and a DIFFERENT relation object identity; same counts",
+  "intervention_R2_Y0_to_1": "PAIR slot NO_ELIGIBLE_RISK (one condition has no eligible denominator); B slot reaches the frozen intervention cell set and is NO_PAIR_SEPARATION",
+  "intervention_R1_Y1_to_0": "PAIR slot reaches frozen intervention cell set and is NO_PAIR_SEPARATION; B slot NO_ELIGIBLE_RISK",
+  "discovery": "distinct eligible risk 1, different cells, not oracle constrained",
+  "missing_unresolved_nonresponse": "typed HOLD, no separation class computed, no downstream value, generic hold retained",
+  "zero_support": "UNDETERMINED_ZERO_SUPPORT_RISK, no positive promotion",
+  "inconsistent_denominator": "typed rejection before classification",
+  "support_exceeds_risk": "typed rejection before classification",
+  "fully_rehashed": "structurally acceptable self-authenticated TEST_ONLY relation; consumer MUST NOT grant real-source privilege; external issuer authentication is NOT expressible in the relation schema"
+ },
+ "normative_scope": {
+  "relation_identity_hashes": "NORMATIVE \u2014 derived from the pre-GF1E producer and real native chain; GF1E must reproduce bit-identical content_hash/object_id for the same inputs",
+  "consumer_result_hashes": "REFERENCE_RELATIVE \u2014 the frozen contract does not fix a cross-implementation canonical result payload; GF1E must be deterministic, self-consistent and distinct across distinct semantics, but equality to the GF1G reference hash is not required",
+  "separation_classes_and_counts": "NORMATIVE \u2014 fixed by the frozen spec and the pre-GF1E oracle, independently recomputed here"
+ }
+}
