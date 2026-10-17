@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "<string>", line 4, in <module>
+  File "/private/tmp/f6src/rawlsing_next/pre553_heterogeneous_synthesis.py", line 362, in complementary_binary_bounds
+    p, q = _number(p, high=1), _number(q, high=1)
+           ^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/f6src/rawlsing_next/pre553_heterogeneous_synthesis.py", line 35, in _number
+    q = _q(value)
+        ^^^^^^^^^
+  File "/private/tmp/f6src/rawlsing_next/pre553_heterogeneous_synthesis.py", line 27, in _q
+    raise SynthesisError("numeric inputs must be integers or rational strings")
+rawlsing_next.pre553_heterogeneous_synthesis.SynthesisError: numeric inputs must be integers or rational strings
+synthesize refuses malformed input: KeyError 'target_id'
