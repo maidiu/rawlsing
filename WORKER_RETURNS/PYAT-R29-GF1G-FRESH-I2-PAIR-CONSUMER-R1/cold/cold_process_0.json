@@ -1,0 +1,57 @@
+{
+ "pid": 18527,
+ "python": "3.11.3",
+ "consumer_module_file": "/private/tmp/gf1g_stage_gf1e/WORKER_RETURNS/PYAT-USERDIRECT-20261016-R17-GF1-GENERIC-NATIVE-PAIR-RELATION-R1/court/runtime_root/gf1_pair_support_consumer.py",
+ "consumer_module_sha256": "06dd484b0e9b4b2c9fb0a1583453ac7ffa8c052135304eaaee167a34127cb402",
+ "producer_module_file": "/private/tmp/gf1g_stage_gf1e/WORKER_RETURNS/PYAT-USERDIRECT-20261016-R17-GF1-GENERIC-NATIVE-PAIR-RELATION-R1/court/runtime_root/generic_native_pair_relation.py",
+ "producer_sha256": "e5ac3d003bfe3a4e00cf1da1ca0c4cacab706391f4b9ab71f101e64a4b2cfc04",
+ "native_reattested": 74,
+ "relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:74d3aaaca35aaacc4491c7e472ac38a6e69fcf0d51736b86b853ea48d10b2236",
+ "relation_content_hash": "74d3aaaca35aaacc4491c7e472ac38a6e69fcf0d51736b86b853ea48d10b2236",
+ "roles": {
+  "conditioner": "m01-X",
+  "target": "m01-Y"
+ },
+ "operation_role_order": "FORWARD_NATIVE_ORDER",
+ "cells": {
+  "00": 1,
+  "01": 0,
+  "10": 0,
+  "11": 1
+ },
+ "denominators": {
+  "0": 1,
+  "1": 1
+ },
+ "separation_class": "EXACT_PAIR_SEPARATION",
+ "decision_state": "PAIR_SUPPORT_SIGNATURE_COMPUTED",
+ "support_vectors": {
+  "0": {
+   "0": 1,
+   "1": 0
+  },
+  "1": {
+   "0": 0,
+   "1": 1
+  }
+ },
+ "zero_cell_semantics": {
+  "0": {
+   "0": "OBSERVED_POSITIVE",
+   "1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+  },
+  "1": {
+   "0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+   "1": "OBSERVED_POSITIVE"
+  }
+ },
+ "joint_support_total": 2,
+ "condition_states_with_positive_denominator": [
+  "0",
+  "1"
+ ],
+ "result_hash": "0b8ee8a6aa220266071800a1838ec868bb9e1b0bc688def46f6bdb2484db05f0",
+ "read_relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:74d3aaaca35aaacc4491c7e472ac38a6e69fcf0d51736b86b853ea48d10b2236",
+ "generic_native_semantics_hold": "RETAINED",
+ "production_owner_commit": false
+}

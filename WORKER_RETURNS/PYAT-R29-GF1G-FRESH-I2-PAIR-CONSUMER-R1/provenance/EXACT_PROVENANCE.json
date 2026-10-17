@@ -1,0 +1,111 @@
+{
+ "schema": "PYAT_R29_GF1G_EXACT_PROVENANCE@1",
+ "generated_at": "2026-10-17T22:33:25Z",
+ "repository": "maidiu/rawlsing (PRIVATE)",
+ "branch": "agent/reviewer-pyat-r29-gf1g-fresh-session-consumer-court-r1",
+ "sealed_startup": "96aec964c5118fa38345c255b8780a8ba369a6ad",
+ "phase_a_freeze_commit": "ecd975ad5b424f952ac248dfcf1b7a83aa867a6a",
+ "phase_a_freeze_remote_sha": "ecd975ad5b424f952ac248dfcf1b7a83aa867a6a",
+ "source_commits": {
+  "pre_gf1e_court": "9f4a23cef1482e0a81afb1e7a65df90879931465",
+  "gf1e_author": "eeb726357204653b22458dc267dd70ba0009bd77",
+  "gf1f_prior_reviewer": "3dcc7d7dddfff4f1be8b4293cab92e5b4275007d",
+  "gf1i_inherited": "c6a55f0dd5b327c40d64f96e0705ab5485559e90"
+ },
+ "gf1e_consumer": {
+  "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261016-R17-GF1-GENERIC-NATIVE-PAIR-RELATION-R1/court/runtime_root/gf1_pair_support_consumer.py",
+  "git_blob_sha1": "75670c69dc587233d462e4a636b63e7fd233c0bd",
+  "sha256": "06dd484b0e9b4b2c9fb0a1583453ac7ffa8c052135304eaaee167a34127cb402",
+  "declared_sha256": "06dd484b0e9b4b2c9fb0a1583453ac7ffa8c052135304eaaee167a34127cb402",
+  "verified": true,
+  "mutated": false
+ },
+ "execution": {
+  "original44": {
+   "command": "python3 -m pytest test_gf1_generic_pair.py -q",
+   "cwd": "/tmp/gf1g_stage_gf1e/WORKER_RETURNS/PYAT-USERDIRECT-20261016-R17-GF1-GENERIC-NATIVE-PAIR-RELATION-R1/court/repro",
+   "exit_code": 0,
+   "passed": 44,
+   "failed": 0
+  },
+  "precommitted": {
+   "command": "python3 -m pytest phase_a/test_gf1g_precommitted.py -q",
+   "cwd": "same staged GF1E court/repro",
+   "exit_code": 1,
+   "passed": 17,
+   "failed": 9
+  },
+  "gf1i": {
+   "command": "python3 -m pytest test_gf1i_independent.py -q",
+   "cwd": "/tmp/gf1g_gf1i_run/court",
+   "exit_code": 1,
+   "passed": 17,
+   "failed": 2,
+   "note": "the two failures are the stale consumer-absence expectations; correct new behaviour, never green"
+  },
+  "gf1f_regression": {
+   "command": "python3 -m pytest tests -q",
+   "cwd": "/tmp/gf1g_gf1f/WORKER_RETURNS/PYAT-R28-GF1F-IMPLEMENTED-NATIVE-CONSUMER-INDEPENDENT-R1",
+   "exit_code": 0,
+   "passed": 100,
+   "failed": 0,
+   "note": "regression only; GF1F was the same persisted session as GF1E"
+  },
+  "cold": {
+   "command": "python3 cold/cold_child.py <staged GF1E return>",
+   "pids": [
+    18527,
+    18528
+   ],
+   "distinct": true,
+   "exit_codes": [
+    0,
+    0
+   ]
+  }
+ },
+ "file_sha256": {
+  "00_TRULY_INDEPENDENT_VERDICT.md": "eb4b9981305f81652a0dc89edb6db8822691764afcb16fcf4fe546db78cf587b",
+  "01_FROZEN_ORACLE.json": "d66ec07f2c1d08cf9592f8a62e7bebb5ad344f17b8d0c4232a4c36d2c0ddc682",
+  "02_PHYSICAL_ORIGINAL44_AND_NEW.json": "18a0a46fe8e9d79c0995d347529d9d5c0d6dedea0df9be3f38a4046418d3f133",
+  "03_ISSUER_DENOMINATOR_REVERSE_COLD.md": "7dffaf9a3fa74eecb216b45f22115e68451d85f0fa48c4b0a9f204b75461bf10",
+  "cold/cold_child.py": "b27a4c3608945cf9b6bce5cad96898e29d62d0e92da63cb16ac5e53d89bc8d42",
+  "cold/cold_process_0.json": "75e4dc0407e441c2dd56f89379904162ddb9d959e913b1b6b60309b9b33e002d",
+  "cold/cold_process_0.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "cold/cold_process_1.json": "a1ce0d4c24f0e3bfc33450dce2d881e71568e725a8aef2b06e225351da848e27",
+  "cold/cold_process_1.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "junit/phase_a_reference_original44.xml": "56ca398f99541944f387295b9cfa4a29e6cb03162a076744e8719bf9ccc560a8",
+  "junit/phase_a_reference_precommitted.xml": "65e003adf3c9ba1579f09b8d3fdbec6653a5f3e4c85b1c52b8984ce63d984f4f",
+  "junit/phase_b_gf1e_original44.xml": "336139b22aafb7f2cb82517fcc43586d17509782563ec3ab190b00269e46026a",
+  "junit/phase_b_gf1e_precommitted.xml": "8b7b763ddd42d049f534851c4e4a151fba150d3f623a468b9473aa4efc6c64f4",
+  "junit/phase_b_gf1f100_regression.xml": "36f34b59e6981b74cf58ea45ff714e41e93f550d885879abab6d1bff0db67632",
+  "junit/phase_b_gf1i19.xml": "dff0a92e2866918abad29da179d871b455557e0a39368b6c1ffda8caa81f5d0e",
+  "logs/phase_a_reference_original44.stdout": "c73a2715152ff304f502c92c7892c636fc4636a02d178706b112e4dd456476cd",
+  "logs/phase_a_reference_precommitted.stdout": "fa0555005317dae68ce4406a497b32ae7e97e0bba6fd5857d738c85eedddb25d",
+  "logs/phase_b_gf1e_original44.stdout": "79dfb4922d20f9a3cf9717a080ba7fa0cf35d98ef0281fe1dd56beea460b3373",
+  "logs/phase_b_gf1e_precommitted.stdout": "fcb496c2700645f085a1df3fed54e801d0525c2b7f2329733e9bf0624fe9db76",
+  "logs/phase_b_gf1f100_regression.stdout": "7c66b5d8d80a9e4e37912b1889f9a7e65ccd6adfa05f208f71fb7b9cc33e2a65",
+  "logs/phase_b_gf1i19.stdout": "82f95da5d1680f7604dfb93721d0c21d7cb9e1dabdd54e69fd7599664a25041d",
+  "phase_a/.pytest_cache/.gitignore": "3ed731b65d06150c138e2dadb0be0697550888a6b47eb8c45ecc9adba8b8e9bd",
+  "phase_a/.pytest_cache/CACHEDIR.TAG": "37dc88ef9a0abeddbe81053a6dd8fdfb13afb613045ea1eb4a5c815a74a3bde4",
+  "phase_a/.pytest_cache/README.md": "73fd6fccdd802c419a6b2d983d6c3173b7da97558ac4b589edec2dfe443db9ad",
+  "phase_a/.pytest_cache/v/cache/lastfailed": "4db858044fa973493307b8a5b55e54268825b896bc4e47eec56cb01425ae5d2d",
+  "phase_a/.pytest_cache/v/cache/nodeids": "18c87368160c26152e04b93c325ee93b058defe6cf38caa72d9320e89c65bc94",
+  "phase_a/README_FREEZE.md": "7f59db5329a2cddbf4ad8ff4e7f0b8dcf113cb5fa95db1445779f1c3c087ae66",
+  "phase_a/derive_oracle.py": "ef7709ad9d16ddf393ad26f99df15d435382e7fe3ddabdbc5f293b20518688f5",
+  "phase_a/environment_passport_delta.json": "6002ac0dea2a8ad5a10ea68ffff057411da34654733c21013ae8ebd79322048e",
+  "phase_a/reference_consumer/gf1_pair_support_consumer.py": "1bcff006e37c1e29eafa073b65d70e805176c40ce97d2f737cdb4b7864d1aa43",
+  "phase_a/test_gf1g_precommitted.py": "956f1a000823e14c807bf98c476279cd20ae1a545c99290af1e9695da0e651be",
+  "provenance/hostile_outcomes.json": "00b3b6f5fcde564263573e1d59c681987961024e3673324ca5f164c803556d0a"
+ },
+ "non_grants": [
+  "original35",
+  "Field Forge S1-S9",
+  "OC05",
+  "N11",
+  "N12",
+  "V3",
+  "HQ acceptance",
+  "method adoption"
+ ]
+}

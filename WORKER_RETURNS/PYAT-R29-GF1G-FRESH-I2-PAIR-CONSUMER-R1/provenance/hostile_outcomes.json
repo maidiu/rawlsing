@@ -1,0 +1,275 @@
+{
+ "inconsistent_denominator_2_vs_sum1": {
+  "decision_state": "PAIR_SUPPORT_SIGNATURE_COMPUTED",
+  "separation_class": "EXACT_PAIR_SEPARATION",
+  "downstream_value_produced": true,
+  "joint_support_total": 2,
+  "condition_states_with_positive_denominator": [
+   "0",
+   "1"
+  ],
+  "support_vectors": {
+   "0": {
+    "0": 1,
+    "1": 0
+   },
+   "1": {
+    "0": 0,
+    "1": 1
+   }
+  },
+  "zero_cell_semantics": {
+   "0": {
+    "0": "OBSERVED_POSITIVE",
+    "1": "ZERO_SUPPORT"
+   },
+   "1": {
+    "0": "ZERO_SUPPORT",
+    "1": "OBSERVED_POSITIVE"
+   }
+  },
+  "result_hash": "f7ff213f793bea504c57641751da451da7fd28ec293f7ef8349c7ef339c5f884",
+  "relation_content_hash": "d5aa00ef321170c27684000026bdf822d244e652a64f0d12d493163fc103d3b6",
+  "eligible_joint_risk_total": 2,
+  "denominators": {
+   "0": 2,
+   "1": 1
+  },
+  "counts": {
+   "00": 1,
+   "01": 0,
+   "10": 0,
+   "11": 1
+  },
+  "typed_state": "SUPPORTED"
+ },
+ "support_exceeds_eligible_risk_2_vs_1": {
+  "decision_state": "PAIR_SUPPORT_SIGNATURE_COMPUTED",
+  "separation_class": "EXACT_PAIR_SEPARATION",
+  "downstream_value_produced": true,
+  "joint_support_total": 2,
+  "condition_states_with_positive_denominator": [
+   "0",
+   "1"
+  ],
+  "support_vectors": {
+   "0": {
+    "0": 1,
+    "1": 0
+   },
+   "1": {
+    "0": 0,
+    "1": 1
+   }
+  },
+  "zero_cell_semantics": {
+   "0": {
+    "0": "OBSERVED_POSITIVE",
+    "1": "ZERO_SUPPORT"
+   },
+   "1": {
+    "0": "ZERO_SUPPORT",
+    "1": "OBSERVED_POSITIVE"
+   }
+  },
+  "result_hash": "d59a93148bb041d79be0aaa0cb38f51b8f308942b93f102f3f2aae6fca2beac6",
+  "relation_content_hash": "3099bf92dba9a53cd7f7844b3bcef19b4a52d76d4e5688652549e40a6bef1745",
+  "eligible_joint_risk_total": 1,
+  "denominators": {
+   "0": 1,
+   "1": 1
+  },
+  "counts": {
+   "00": 1,
+   "01": 0,
+   "10": 0,
+   "11": 1
+  },
+  "typed_state": "SUPPORTED"
+ },
+ "negative_support_minus1_plus2": {
+  "decision_state": "PAIR_SUPPORT_SIGNATURE_COMPUTED",
+  "separation_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+  "downstream_value_produced": true,
+  "joint_support_total": 1,
+  "condition_states_with_positive_denominator": [
+   "1"
+  ],
+  "support_vectors": {
+   "0": {
+    "0": -1,
+    "1": 0
+   },
+   "1": {
+    "0": 0,
+    "1": 2
+   }
+  },
+  "zero_cell_semantics": {
+   "0": {
+    "0": "OBSERVED_POSITIVE",
+    "1": "ZERO_SUPPORT"
+   },
+   "1": {
+    "0": "ZERO_SUPPORT",
+    "1": "OBSERVED_POSITIVE"
+   }
+  },
+  "result_hash": "df3ae4c25dcd993119938c66c49a5b88b9ad88d90320ba3e40261396ad71376a",
+  "relation_content_hash": "6c1c9e5aaf1bdb2506fc4365a9ee2e6ceeeec849390f9ced211dedfa30f97ef9",
+  "eligible_joint_risk_total": 2,
+  "denominators": {
+   "0": -1,
+   "1": 2
+  },
+  "counts": {
+   "00": -1,
+   "01": 0,
+   "10": 0,
+   "11": 2
+  },
+  "typed_state": "SUPPORTED"
+ },
+ "eligible_zero_all_zero": {
+  "decision_state": "PAIR_SUPPORT_SIGNATURE_COMPUTED",
+  "separation_class": "UNDETERMINED_ZERO_SUPPORT_RISK",
+  "downstream_value_produced": true,
+  "joint_support_total": 0,
+  "condition_states_with_positive_denominator": [],
+  "support_vectors": {
+   "0": {
+    "0": 0,
+    "1": 0
+   },
+   "1": {
+    "0": 0,
+    "1": 0
+   }
+  },
+  "zero_cell_semantics": {
+   "0": {
+    "0": "ZERO_SUPPORT",
+    "1": "ZERO_SUPPORT"
+   },
+   "1": {
+    "0": "ZERO_SUPPORT",
+    "1": "ZERO_SUPPORT"
+   }
+  },
+  "result_hash": "96c4f97e6839f6b94149685f2a66dd80b26b2cf4ad7f0c078266d886fecf9257",
+  "relation_content_hash": "1fee31a2bdb7f84efdf91a89f6a4aad12033d0963cdc8aea680196bc260af9c0",
+  "eligible_joint_risk_total": 0,
+  "denominators": {
+   "0": 0,
+   "1": 0
+  },
+  "counts": {
+   "00": 0,
+   "01": 0,
+   "10": 0,
+   "11": 0
+  },
+  "typed_state": "SUPPORTED"
+ },
+ "eligible_two_all_zero_observed_zero": {
+  "decision_state": "PAIR_SUPPORT_SIGNATURE_COMPUTED",
+  "separation_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+  "downstream_value_produced": true,
+  "joint_support_total": 0,
+  "condition_states_with_positive_denominator": [],
+  "support_vectors": {
+   "0": {
+    "0": 0,
+    "1": 0
+   },
+   "1": {
+    "0": 0,
+    "1": 0
+   }
+  },
+  "zero_cell_semantics": {
+   "0": {
+    "0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+    "1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+   },
+   "1": {
+    "0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+    "1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+   }
+  },
+  "result_hash": "5f5a167a303b1aebe831b174a21f95f55cd21cbc7bc21540eea3e9011e998a03",
+  "relation_content_hash": "0173d8b7d5455d9a47e16d1f4f08dab4fb48dd610ef296295d816f7f0904f569",
+  "eligible_joint_risk_total": 2,
+  "denominators": {
+   "0": 0,
+   "1": 0
+  },
+  "counts": {
+   "00": 0,
+   "01": 0,
+   "10": 0,
+   "11": 0
+  },
+  "typed_state": "SUPPORTED"
+ },
+ "typed_zero_support_empty_profile": {
+  "decision_state": "RESPONSE_INPUTS_VALID_EMPTY",
+  "separation_class": null,
+  "downstream_value_produced": false,
+  "joint_support_total": null,
+  "condition_states_with_positive_denominator": null,
+  "support_vectors": null,
+  "zero_cell_semantics": null,
+  "result_hash": null,
+  "relation_content_hash": "e94c75731c352723dce41d15b267aa4296214d464fca0fa4e01056ca372a2ffe",
+  "eligible_joint_risk_total": 2,
+  "denominators": {},
+  "counts": {},
+  "typed_state": "ZERO_SUPPORT"
+ },
+ "typed_MISSING_TARGET_STATE_empty_profile": {
+  "decision_state": "RESPONSE_INPUTS_VALID_EMPTY",
+  "separation_class": null,
+  "downstream_value_produced": false,
+  "joint_support_total": null,
+  "condition_states_with_positive_denominator": null,
+  "support_vectors": null,
+  "zero_cell_semantics": null,
+  "result_hash": null,
+  "relation_content_hash": "9ee4fec392c43aee02be247553dbe9f086936dde3296cca362941f1a9d0fde8d",
+  "eligible_joint_risk_total": 0,
+  "denominators": {},
+  "counts": {},
+  "typed_state": "MISSING_TARGET_STATE"
+ },
+ "typed_UNRESOLVED_TARGET_STATE_empty_profile": {
+  "decision_state": "RESPONSE_INPUTS_VALID_EMPTY",
+  "separation_class": null,
+  "downstream_value_produced": false,
+  "joint_support_total": null,
+  "condition_states_with_positive_denominator": null,
+  "support_vectors": null,
+  "zero_cell_semantics": null,
+  "result_hash": null,
+  "relation_content_hash": "13edbcae09089149cb2c61caa581b064139e6844245dc24bea913a9a937d925a",
+  "eligible_joint_risk_total": 0,
+  "denominators": {},
+  "counts": {},
+  "typed_state": "UNRESOLVED_TARGET_STATE"
+ },
+ "typed_NONRESPONSE_empty_profile": {
+  "decision_state": "RESPONSE_INPUTS_VALID_EMPTY",
+  "separation_class": null,
+  "downstream_value_produced": false,
+  "joint_support_total": null,
+  "condition_states_with_positive_denominator": null,
+  "support_vectors": null,
+  "zero_cell_semantics": null,
+  "result_hash": null,
+  "relation_content_hash": "af08f4cc71485424d79ff6eb33a4c0f0ebc3389e1875b818eca85b0680d07f26",
+  "eligible_joint_risk_total": 0,
+  "denominators": {},
+  "counts": {},
+  "typed_state": "NONRESPONSE"
+ }
+}

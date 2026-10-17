@@ -1,0 +1,414 @@
+{
+ "schema": "PYAT_R29_GF1G_PHASE_B_PHYSICAL_RESULTS@1",
+ "generated_at": "2026-10-17T22:33:00Z",
+ "reviewer": "fresh independent session; not GF1E author; not GF1F prior reviewer; not HQ",
+ "provenance": {
+  "repository": "maidiu/rawlsing (PRIVATE)",
+  "branch": "agent/reviewer-pyat-r29-gf1g-fresh-session-consumer-court-r1",
+  "sealed_startup": "96aec964c5118fa38345c255b8780a8ba369a6ad",
+  "phase_a_freeze_commit": "ecd975ad5b424f952ac248dfcf1b7a83aa867a6a",
+  "phase_a_freeze_remote_sha": "ecd975ad5b424f952ac248dfcf1b7a83aa867a6a",
+  "phase_a_oracle_sha256": "d66ec07f2c1d08cf9592f8a62e7bebb5ad344f17b8d0c4232a4c36d2c0ddc682",
+  "phase_a_reference_consumer_sha256": "1bcff006e37c1e29eafa073b65d70e805176c40ce97d2f737cdb4b7864d1aa43",
+  "gf1e_target_commit": "eeb726357204653b22458dc267dd70ba0009bd77",
+  "gf1e_consumer_git_blob_sha1": "75670c69dc587233d462e4a636b63e7fd233c0bd",
+  "gf1e_consumer_sha256": "06dd484b0e9b4b2c9fb0a1583453ac7ffa8c052135304eaaee167a34127cb402",
+  "gf1f_commit": "3dcc7d7dddfff4f1be8b4293cab92e5b4275007d",
+  "gf1i_commit": "c6a55f0dd5b327c40d64f96e0705ab5485559e90",
+  "pre_gf1e_court_commit": "9f4a23cef1482e0a81afb1e7a65df90879931465",
+  "native_74_reattested": 74
+ },
+ "suites": {
+  "original44": {
+   "passed": 44,
+   "failed": 0,
+   "junit": "WORKER_RETURNS/PYAT-R29-GF1G-FRESH-I2-PAIR-CONSUMER-R1/junit/phase_b_gf1e_original44.xml",
+   "junit_sha256": "336139b22aafb7f2cb82517fcc43586d17509782563ec3ab190b00269e46026a",
+   "note": "unchanged GF1E court; no edits"
+  },
+  "precommitted_independent": {
+   "passed": 17,
+   "failed": 9,
+   "total": 26,
+   "junit": "WORKER_RETURNS/PYAT-R29-GF1G-FRESH-I2-PAIR-CONSUMER-R1/junit/phase_b_gf1e_precommitted.xml",
+   "junit_sha256": "8b7b763ddd42d049f534851c4e4a151fba150d3f623a468b9473aa4efc6c64f4",
+   "failed_ids": [
+    "test_g09_synthetic_classes[all_zero_observed_zero-UNDETERMINED_ZERO_SUPPORT_RISK]",
+    "test_g09_synthetic_classes[no_eligible_risk-UNDETERMINED_NO_ELIGIBLE_RISK]",
+    "test_g10_missing_unresolved_nonresponse_hold[missing_target_state]",
+    "test_g10_missing_unresolved_nonresponse_hold[unresolved_target_state]",
+    "test_g10_missing_unresolved_nonresponse_hold[nonresponse]",
+    "test_g11_zero_support_typed_and_observed_zero",
+    "test_g12_inconsistent_denominator_and_risk_bound_typed_reject[inconsistent_denominator]",
+    "test_g12_inconsistent_denominator_and_risk_bound_typed_reject[support_exceeds_risk]",
+    "test_g13_invalid_input_exact_contract_state"
+   ],
+   "classification": {
+    "substantive_red": [
+     "test_g12_inconsistent_denominator_and_risk_bound_typed_reject[inconsistent_denominator]",
+     "test_g12_inconsistent_denominator_and_risk_bound_typed_reject[support_exceeds_risk]"
+    ],
+    "hold_level": [
+     "test_g09_synthetic_classes[all_zero_observed_zero-UNDETERMINED_ZERO_SUPPORT_RISK]",
+     "test_g09_synthetic_classes[no_eligible_risk-UNDETERMINED_NO_ELIGIBLE_RISK]",
+     "test_g10_missing_unresolved_nonresponse_hold[missing_target_state]",
+     "test_g10_missing_unresolved_nonresponse_hold[unresolved_target_state]",
+     "test_g10_missing_unresolved_nonresponse_hold[nonresponse]",
+     "test_g11_zero_support_typed_and_observed_zero"
+    ],
+    "shape_only": [
+     "test_g13_invalid_input_exact_contract_state"
+    ]
+   }
+  },
+  "gf1i_inherited": {
+   "passed": 17,
+   "failed": 2,
+   "total": 19,
+   "junit": "WORKER_RETURNS/PYAT-R29-GF1G-FRESH-I2-PAIR-CONSUMER-R1/junit/phase_b_gf1i19.xml",
+   "junit_sha256": "dff0a92e2866918abad29da179d871b455557e0a39368b6c1ffda8caa81f5d0e",
+   "failed_ids": [
+    "test_named_downstream_consumer_module_is_absent_from_candidate",
+    "test_candidate_frozen_44_suite_cannot_be_collected"
+   ],
+   "note": "the two historical 'consumer absent' expectations are correct new behaviour and are NEVER green"
+  },
+  "gf1f_regression": {
+   "passed": 100,
+   "failed": 0,
+   "total": 100,
+   "junit": "WORKER_RETURNS/PYAT-R29-GF1G-FRESH-I2-PAIR-CONSUMER-R1/junit/phase_b_gf1f100_regression.xml",
+   "junit_sha256": "36f34b59e6981b74cf58ea45ff714e41e93f550d885879abab6d1bff0db67632",
+   "note": "REGRESSION ONLY; GF1F was the same persisted session as GF1E, not independent evidence"
+  }
+ },
+ "cold_processes": {
+  "pids": [
+   18527,
+   18528
+  ],
+  "distinct_pids": true,
+  "consumer_module_file": "/private/tmp/gf1g_stage_gf1e/WORKER_RETURNS/PYAT-USERDIRECT-20261016-R17-GF1-GENERIC-NATIVE-PAIR-RELATION-R1/court/runtime_root/gf1_pair_support_consumer.py",
+  "consumer_module_sha256": "06dd484b0e9b4b2c9fb0a1583453ac7ffa8c052135304eaaee167a34127cb402",
+  "same_module_sha": true,
+  "relation_content_hash": "74d3aaaca35aaacc4491c7e472ac38a6e69fcf0d51736b86b853ea48d10b2236",
+  "same_relation_identity": true,
+  "result_hash": "0b8ee8a6aa220266071800a1838ec868bb9e1b0bc688def46f6bdb2484db05f0",
+  "same_result_hash": true,
+  "separation_class": "EXACT_PAIR_SEPARATION",
+  "joint_support_total": 2,
+  "roles": {
+   "conditioner": "m01-X",
+   "target": "m01-Y"
+  },
+  "operation_role_order": "FORWARD_NATIVE_ORDER",
+  "cells": {
+   "00": 1,
+   "01": 0,
+   "10": 0,
+   "11": 1
+  },
+  "denominators": {
+   "0": 1,
+   "1": 1
+  }
+ },
+ "exact_identity_crosscheck": {
+  "oracle_baseline_m01X_relation_content_hash": "74d3aaaca35aaacc4491c7e472ac38a6e69fcf0d51736b86b853ea48d10b2236",
+  "gf1e_cold_relation_content_hash": "74d3aaaca35aaacc4491c7e472ac38a6e69fcf0d51736b86b853ea48d10b2236",
+  "match": true,
+  "oracle_reverse_relation_content_hash": "652052461e95c276f27764f58aa6311e6cd3f3a9c357e08f7ce4941dc1a91d38",
+  "gf1e_own_evidence_real_native_relation_content_hash": "62d6bedf5f69ad19be3899ddc98523cbbb9b6aaa840bdd598e68ed14adb3002d",
+  "note": "GF1E reproduces producer identities exactly; consumer result_hash is implementation-relative and was not required to equal the GF1G reference hash"
+ },
+ "hostile_outcomes_gf1e": {
+  "inconsistent_denominator_2_vs_sum1": {
+   "decision_state": "PAIR_SUPPORT_SIGNATURE_COMPUTED",
+   "separation_class": "EXACT_PAIR_SEPARATION",
+   "downstream_value_produced": true,
+   "joint_support_total": 2,
+   "condition_states_with_positive_denominator": [
+    "0",
+    "1"
+   ],
+   "support_vectors": {
+    "0": {
+     "0": 1,
+     "1": 0
+    },
+    "1": {
+     "0": 0,
+     "1": 1
+    }
+   },
+   "zero_cell_semantics": {
+    "0": {
+     "0": "OBSERVED_POSITIVE",
+     "1": "ZERO_SUPPORT"
+    },
+    "1": {
+     "0": "ZERO_SUPPORT",
+     "1": "OBSERVED_POSITIVE"
+    }
+   },
+   "result_hash": "f7ff213f793bea504c57641751da451da7fd28ec293f7ef8349c7ef339c5f884",
+   "relation_content_hash": "d5aa00ef321170c27684000026bdf822d244e652a64f0d12d493163fc103d3b6",
+   "eligible_joint_risk_total": 2,
+   "denominators": {
+    "0": 2,
+    "1": 1
+   },
+   "counts": {
+    "00": 1,
+    "01": 0,
+    "10": 0,
+    "11": 1
+   },
+   "typed_state": "SUPPORTED"
+  },
+  "support_exceeds_eligible_risk_2_vs_1": {
+   "decision_state": "PAIR_SUPPORT_SIGNATURE_COMPUTED",
+   "separation_class": "EXACT_PAIR_SEPARATION",
+   "downstream_value_produced": true,
+   "joint_support_total": 2,
+   "condition_states_with_positive_denominator": [
+    "0",
+    "1"
+   ],
+   "support_vectors": {
+    "0": {
+     "0": 1,
+     "1": 0
+    },
+    "1": {
+     "0": 0,
+     "1": 1
+    }
+   },
+   "zero_cell_semantics": {
+    "0": {
+     "0": "OBSERVED_POSITIVE",
+     "1": "ZERO_SUPPORT"
+    },
+    "1": {
+     "0": "ZERO_SUPPORT",
+     "1": "OBSERVED_POSITIVE"
+    }
+   },
+   "result_hash": "d59a93148bb041d79be0aaa0cb38f51b8f308942b93f102f3f2aae6fca2beac6",
+   "relation_content_hash": "3099bf92dba9a53cd7f7844b3bcef19b4a52d76d4e5688652549e40a6bef1745",
+   "eligible_joint_risk_total": 1,
+   "denominators": {
+    "0": 1,
+    "1": 1
+   },
+   "counts": {
+    "00": 1,
+    "01": 0,
+    "10": 0,
+    "11": 1
+   },
+   "typed_state": "SUPPORTED"
+  },
+  "negative_support_minus1_plus2": {
+   "decision_state": "PAIR_SUPPORT_SIGNATURE_COMPUTED",
+   "separation_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+   "downstream_value_produced": true,
+   "joint_support_total": 1,
+   "condition_states_with_positive_denominator": [
+    "1"
+   ],
+   "support_vectors": {
+    "0": {
+     "0": -1,
+     "1": 0
+    },
+    "1": {
+     "0": 0,
+     "1": 2
+    }
+   },
+   "zero_cell_semantics": {
+    "0": {
+     "0": "OBSERVED_POSITIVE",
+     "1": "ZERO_SUPPORT"
+    },
+    "1": {
+     "0": "ZERO_SUPPORT",
+     "1": "OBSERVED_POSITIVE"
+    }
+   },
+   "result_hash": "df3ae4c25dcd993119938c66c49a5b88b9ad88d90320ba3e40261396ad71376a",
+   "relation_content_hash": "6c1c9e5aaf1bdb2506fc4365a9ee2e6ceeeec849390f9ced211dedfa30f97ef9",
+   "eligible_joint_risk_total": 2,
+   "denominators": {
+    "0": -1,
+    "1": 2
+   },
+   "counts": {
+    "00": -1,
+    "01": 0,
+    "10": 0,
+    "11": 2
+   },
+   "typed_state": "SUPPORTED"
+  },
+  "eligible_zero_all_zero": {
+   "decision_state": "PAIR_SUPPORT_SIGNATURE_COMPUTED",
+   "separation_class": "UNDETERMINED_ZERO_SUPPORT_RISK",
+   "downstream_value_produced": true,
+   "joint_support_total": 0,
+   "condition_states_with_positive_denominator": [],
+   "support_vectors": {
+    "0": {
+     "0": 0,
+     "1": 0
+    },
+    "1": {
+     "0": 0,
+     "1": 0
+    }
+   },
+   "zero_cell_semantics": {
+    "0": {
+     "0": "ZERO_SUPPORT",
+     "1": "ZERO_SUPPORT"
+    },
+    "1": {
+     "0": "ZERO_SUPPORT",
+     "1": "ZERO_SUPPORT"
+    }
+   },
+   "result_hash": "96c4f97e6839f6b94149685f2a66dd80b26b2cf4ad7f0c078266d886fecf9257",
+   "relation_content_hash": "1fee31a2bdb7f84efdf91a89f6a4aad12033d0963cdc8aea680196bc260af9c0",
+   "eligible_joint_risk_total": 0,
+   "denominators": {
+    "0": 0,
+    "1": 0
+   },
+   "counts": {
+    "00": 0,
+    "01": 0,
+    "10": 0,
+    "11": 0
+   },
+   "typed_state": "SUPPORTED"
+  },
+  "eligible_two_all_zero_observed_zero": {
+   "decision_state": "PAIR_SUPPORT_SIGNATURE_COMPUTED",
+   "separation_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+   "downstream_value_produced": true,
+   "joint_support_total": 0,
+   "condition_states_with_positive_denominator": [],
+   "support_vectors": {
+    "0": {
+     "0": 0,
+     "1": 0
+    },
+    "1": {
+     "0": 0,
+     "1": 0
+    }
+   },
+   "zero_cell_semantics": {
+    "0": {
+     "0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+     "1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+    },
+    "1": {
+     "0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+     "1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+    }
+   },
+   "result_hash": "5f5a167a303b1aebe831b174a21f95f55cd21cbc7bc21540eea3e9011e998a03",
+   "relation_content_hash": "0173d8b7d5455d9a47e16d1f4f08dab4fb48dd610ef296295d816f7f0904f569",
+   "eligible_joint_risk_total": 2,
+   "denominators": {
+    "0": 0,
+    "1": 0
+   },
+   "counts": {
+    "00": 0,
+    "01": 0,
+    "10": 0,
+    "11": 0
+   },
+   "typed_state": "SUPPORTED"
+  },
+  "typed_zero_support_empty_profile": {
+   "decision_state": "RESPONSE_INPUTS_VALID_EMPTY",
+   "separation_class": null,
+   "downstream_value_produced": false,
+   "joint_support_total": null,
+   "condition_states_with_positive_denominator": null,
+   "support_vectors": null,
+   "zero_cell_semantics": null,
+   "result_hash": null,
+   "relation_content_hash": "e94c75731c352723dce41d15b267aa4296214d464fca0fa4e01056ca372a2ffe",
+   "eligible_joint_risk_total": 2,
+   "denominators": {},
+   "counts": {},
+   "typed_state": "ZERO_SUPPORT"
+  },
+  "typed_MISSING_TARGET_STATE_empty_profile": {
+   "decision_state": "RESPONSE_INPUTS_VALID_EMPTY",
+   "separation_class": null,
+   "downstream_value_produced": false,
+   "joint_support_total": null,
+   "condition_states_with_positive_denominator": null,
+   "support_vectors": null,
+   "zero_cell_semantics": null,
+   "result_hash": null,
+   "relation_content_hash": "9ee4fec392c43aee02be247553dbe9f086936dde3296cca362941f1a9d0fde8d",
+   "eligible_joint_risk_total": 0,
+   "denominators": {},
+   "counts": {},
+   "typed_state": "MISSING_TARGET_STATE"
+  },
+  "typed_UNRESOLVED_TARGET_STATE_empty_profile": {
+   "decision_state": "RESPONSE_INPUTS_VALID_EMPTY",
+   "separation_class": null,
+   "downstream_value_produced": false,
+   "joint_support_total": null,
+   "condition_states_with_positive_denominator": null,
+   "support_vectors": null,
+   "zero_cell_semantics": null,
+   "result_hash": null,
+   "relation_content_hash": "13edbcae09089149cb2c61caa581b064139e6844245dc24bea913a9a937d925a",
+   "eligible_joint_risk_total": 0,
+   "denominators": {},
+   "counts": {},
+   "typed_state": "UNRESOLVED_TARGET_STATE"
+  },
+  "typed_NONRESPONSE_empty_profile": {
+   "decision_state": "RESPONSE_INPUTS_VALID_EMPTY",
+   "separation_class": null,
+   "downstream_value_produced": false,
+   "joint_support_total": null,
+   "condition_states_with_positive_denominator": null,
+   "support_vectors": null,
+   "zero_cell_semantics": null,
+   "result_hash": null,
+   "relation_content_hash": "af08f4cc71485424d79ff6eb33a4c0f0ebc3389e1875b818eca85b0680d07f26",
+   "eligible_joint_risk_total": 0,
+   "denominators": {},
+   "counts": {},
+   "typed_state": "NONRESPONSE"
+  }
+ },
+ "verdict": {
+  "disposition": "HOLD",
+  "bounded_red": "inconsistent denominator, support>eligible-risk, negative support, blocking-state conflation",
+  "independently_established": "genuine computed 2x2 core, exact producer identity, roles/reverse grant, F2 non-copy, cold determinism",
+  "issuer_authority_expressed": false,
+  "hq_accepted": false,
+  "method_adopted": false,
+  "required_patch": [
+   "denominator == sum(target_counts) typed rejection",
+   "joint_support_total <= eligible_joint_risk_total",
+   "exact nonnegative integer + cell-state validation",
+   "typed HOLD for typed_state != SUPPORTED before the empty-profile branch",
+   "correct or owner-adjudicate the NO_ELIGIBLE_RISK vs ZERO_SUPPORT_RISK boundary"
+  ]
+ }
+}
