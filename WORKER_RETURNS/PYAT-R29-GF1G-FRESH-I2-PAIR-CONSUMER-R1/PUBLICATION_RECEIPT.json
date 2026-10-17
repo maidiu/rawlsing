@@ -1,0 +1,76 @@
+{
+ "schema": "PYAT_R29_GF1G_PUBLICATION_RECEIPT@1",
+ "repository": "maidiu/rawlsing (PRIVATE)",
+ "branch": "agent/reviewer-pyat-r29-gf1g-fresh-session-consumer-court-r1",
+ "sealed_startup": "96aec964c5118fa38345c255b8780a8ba369a6ad",
+ "phase_a_freeze_commit": "ecd975ad5b424f952ac248dfcf1b7a83aa867a6a",
+ "evidence_commit": "bccfbd58b7768270799daeab31fe682135c89657",
+ "remote_verified_sha": "bccfbd58b7768270799daeab31fe682135c89657",
+ "remote_ref": "refs/heads/agent/reviewer-pyat-r29-gf1g-fresh-session-consumer-court-r1",
+ "verified_by": "git ls-remote origin <ref> after push",
+ "verified_at": "2026-10-17T22:34:03Z",
+ "gf1e_consumer_sha256": "06dd484b0e9b4b2c9fb0a1583453ac7ffa8c052135304eaaee167a34127cb402",
+ "gf1e_consumer_git_blob_sha1": "75670c69dc587233d462e4a636b63e7fd233c0bd",
+ "artifact_sha256": {
+  "00_TRULY_INDEPENDENT_VERDICT.md": "eb4b9981305f81652a0dc89edb6db8822691764afcb16fcf4fe546db78cf587b",
+  "01_FROZEN_ORACLE.json": "d66ec07f2c1d08cf9592f8a62e7bebb5ad344f17b8d0c4232a4c36d2c0ddc682",
+  "02_PHYSICAL_ORIGINAL44_AND_NEW.json": "18a0a46fe8e9d79c0995d347529d9d5c0d6dedea0df9be3f38a4046418d3f133",
+  "03_ISSUER_DENOMINATOR_REVERSE_COLD.md": "7dffaf9a3fa74eecb216b45f22115e68451d85f0fa48c4b0a9f204b75461bf10"
+ },
+ "results": {
+  "original44": {
+   "passed": 44,
+   "failed": 0
+  },
+  "precommitted_independent": {
+   "passed": 17,
+   "failed": 9
+  },
+  "gf1i_inherited": {
+   "passed": 17,
+   "failed": 2,
+   "note": "stale consumer-absence tests; correct new behaviour"
+  },
+  "gf1f_regression": {
+   "passed": 100,
+   "failed": 0,
+   "note": "same-session regression only"
+  },
+  "cold_pids": [
+   18527,
+   18528
+  ],
+  "cold_consumer_sha256": "06dd484b0e9b4b2c9fb0a1583453ac7ffa8c052135304eaaee167a34127cb402",
+  "cold_relation_content_hash": "74d3aaaca35aaacc4491c7e472ac38a6e69fcf0d51736b86b853ea48d10b2236",
+  "cold_result_hash": "0b8ee8a6aa220266071800a1838ec868bb9e1b0bc688def46f6bdb2484db05f0"
+ },
+ "verdict": "HOLD",
+ "bounded_red": [
+  "inconsistent denominator accepted as EXACT_PAIR_SEPARATION",
+  "support exceeding eligible risk accepted as EXACT_PAIR_SEPARATION",
+  "negative support accepted/corrupted",
+  "blocking typed states mislabelled RESPONSE_INPUTS_VALID_EMPTY",
+  "eligible-empty vs zero-support class inversion"
+ ],
+ "independently_established": [
+  "genuine 2x2 computed core",
+  "exact producer identity",
+  "role/reverse grant",
+  "F2 non-copy",
+  "result-hash determinism",
+  "cold-process reproducibility"
+ ],
+ "issuer_authority_expressed": false,
+ "non_grants": [
+  "original35",
+  "Field Forge S1-S9",
+  "OC05",
+  "N11",
+  "N12",
+  "V3",
+  "HQ acceptance",
+  "method adoption",
+  "U/E_pre",
+  "source permission"
+ ]
+}
