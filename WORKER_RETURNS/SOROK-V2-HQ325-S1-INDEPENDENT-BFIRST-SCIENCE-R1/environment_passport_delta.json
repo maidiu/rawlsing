@@ -1,0 +1,74 @@
+{
+  "passport_schema": "SOROK_00D_ENVIRONMENT_PASSPORT_DELTA_R1",
+  "environment_id": "S1-BROWSER-GITHUB-REVIEW-EPHEMERAL",
+  "epoch_id": "S1-20261017-REVIEW",
+  "owner_session_alias": "SOROK_HQ325_S1_INDEPENDENT_REVIEW",
+  "surface": "BROWSER_GITHUB_DOCUMENTARY",
+  "machine_alias": null,
+  "conversation_or_account_affinity": "THIS_REVIEW_ONLY",
+  "status": "RECHECK_REQUIRED",
+  "last_live_probe_at": null,
+  "runtime_marker_digest": null,
+  "probe_command_and_result": "Authenticated GitHub exact branch/commit/file reads verified. No Python/pytest/node runtime test attempted; not needed for documentary I2 court.",
+  "capabilities": {
+    "github_read": "VERIFIED",
+    "github_write": "PENDING_COMMIT_VERIFICATION",
+    "python": "NOT_PROBED",
+    "pytest": "NOT_PROBED",
+    "git_worktree": "UNAVAILABLE_IN_DOCUMENTARY_SURFACE",
+    "shell": "NOT_PROBED",
+    "filesystem": "NOT_PROBED"
+  },
+  "git_object_store_alias": null,
+  "worktree_alias": null,
+  "branch": "agent/reviewer-sorok-v2-hq325-s1-bfirst-independent-scientific-court-r1",
+  "startup_sha": "2a3f5980c57064c8ca62de4d027d5cf627ae15a7",
+  "materialized_source_refs": [],
+  "dependency_closure_status": "NOT_REQUIRED_FOR_STATIC_REVIEW",
+  "covered_test_suites": [
+    {
+      "name": "B1_AUTHOR_39",
+      "claim": "39 PASS",
+      "S1_actual": "NOT_RUN"
+    },
+    {
+      "name": "P1_AUTHOR_74",
+      "claim": "74 PASS",
+      "S1_actual": "NOT_RUN"
+    },
+    {
+      "name": "D1_AUTHOR_22_PLUS_17",
+      "claim": "22 and 17 PASS separately",
+      "S1_actual": "NOT_RUN"
+    },
+    {
+      "name": "F1_REFERENCE_AUTHOR_97",
+      "claim": "97 PASS, native 0",
+      "S1_actual": "NOT_RUN"
+    },
+    {
+      "name": "F1_NATIVE_B1",
+      "claim": "0 run",
+      "S1_actual": "NOT_RUN"
+    }
+  ],
+  "science_grade": "INDEPENDENT_I2_CODE_FORENSICS_AND_PUBLIC_PAPER_SCOPE_REVIEW_NOT_EXECUTABLE_ACCEPTANCE",
+  "original_source": "NOT_ACCESSED",
+  "production_actor": "NOT_ISSUED",
+  "model_provider": "OpenAI ChatGPT",
+  "model": "GPT-6 High (commission-selected)",
+  "observed_cash": null,
+  "observed_quota": null,
+  "independent_review_separation": "Fresh S1 reviewer; post-B2 execution needs distinct reviewer",
+  "assignments_completed": [
+    "HQ325_S1_PREINTEGRATION_SCIENTIFIC_REVIEW"
+  ],
+  "next_good_affinity_tags": [
+    "CAN008",
+    "CAN011",
+    "B_FIRST",
+    "DEVELOPMENTAL_CAPABILITY"
+  ],
+  "staged_state_preservation": "NO_RUNTIME_STAGING",
+  "retire_or_rebuild_reason": "No data/module runtime staged; source texts in pinned repository"
+}
