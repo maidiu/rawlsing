@@ -1,0 +1,23 @@
+{
+ "schema": "T9S_PHASE_A_PUBLICATION_RECEIPT@1",
+ "repository": "maidiu/rawlsing",
+ "branch": "agent/reviewer-pyat-r27-t9s-independent-native-authority-court-r1",
+ "sealed_startup": "b6e6f64f01d339956d8140777eab7f0c4a45e1af",
+ "phase_a_commit": "597450f0c7bdbf38c2a58c1edbac97dad550c576",
+ "remote_readback": {
+  "ref": "refs/heads/agent/reviewer-pyat-r27-t9s-independent-native-authority-court-r1",
+  "sha": "597450f0c7bdbf38c2a58c1edbac97dad550c576",
+  "method": "git ls-remote origin + git fetch origin <branch> + git rev-parse FETCH_HEAD",
+  "return_files": 14
+ },
+ "t9d_gate_check": {
+  "target_branch": "agent/rabochii-pyat-r27-t9d-native-authority-provenance-correction-r1",
+  "target_head": "7603c47610c01937e48b07f7fc69531964182911",
+  "target_head_subject": "Pyat R27 T9D scoped exact repair or independent test commission",
+  "parent": "9a33c2dca7ac0d50606416ab965488c9782934b",
+  "repair_returned": false,
+  "disposition": "WAIT — Phase B gated until the exact T9D repair is pushed and read back"
+ },
+ "preregistered_suite": {"passed": 6, "failed": 11, "errors": 0, "skipped": 0, "exit": 1},
+ "final_containing_sha": "REPORTED_ON_DELIVERY_BY_DIRECT_REMOTE_READBACK"
+}
