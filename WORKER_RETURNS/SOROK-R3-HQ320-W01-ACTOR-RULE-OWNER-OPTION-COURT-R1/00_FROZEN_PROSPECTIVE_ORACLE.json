@@ -1,0 +1,169 @@
+{
+  "schema": "SOROK_HQ320_W01_FROZEN_PROSPECTIVE_ACCEPTANCE_ORACLE_R1",
+  "status": "PREEXECUTION_FREEZE__DOCUMENTARY_CONTRACT__NOT_ISSUANCE",
+  "epistemic_scope": "PROSPECTIVE_SOURCEFREE_PRECONDITION_COURT_ONLY",
+  "already_observed_LIFE1": "16_of_16_DEFER_MISSING_RULE_OR_AUTHORITY__MUST_REMAIN",
+  "baseline_rule_authority": "MISSING_CONCRETE_ISSUED_CAN008_R2_RULE_AND_ACCEPTING_DURABLE_TARGET",
+  "no_fake_actor": true,
+  "precommit_time_source": "sealed Git change chronology, not an externally witnessed preregistration",
+  "proposed_grain": "F2_PROSPECTIVE_SOURCEFREE_RULE_GRANT__NOT_V3_ACTOR",
+  "mandatory_identity_fields": [
+    "rule_id",
+    "rule_version",
+    "rule_body_hash",
+    "adopting_semantic_owner_ref",
+    "actor_registry_ref",
+    "actor_id",
+    "source_authority_ref",
+    "precipitating_event_id",
+    "precipitating_event_hash",
+    "event_authority_ref",
+    "event_effective_time",
+    "world_snapshot_id",
+    "world_snapshot_hash",
+    "world_as_of_time",
+    "conditioning_owner_ref",
+    "conditioning_actor_id",
+    "conditioning_state_hash",
+    "conditioning_as_of_time",
+    "target_owner_ref",
+    "target_operation",
+    "target_before_hash",
+    "target_after_hash",
+    "target_effect_receipt_hash",
+    "response_journal_predecessor",
+    "response_journal_new_head",
+    "actor_access_envelope_ref",
+    "claim_access_ceiling",
+    "permission_grant_ref"
+  ],
+  "rule_classes": [
+    {
+      "id": "A_CAN008_RESPONSE_HISTORY_ONLY",
+      "effect_target": "CAN008-owned immutable response/effect history",
+      "allows_foreign_durable_effect": false,
+      "can_test_K1": true,
+      "can_test_K2_through_K6": "only if separately issued concrete rule + source-owner bindings",
+      "requires": "new accepted exact rule, accepted actor binding, accepted event, atomic response-ledger commit, later read"
+    },
+    {
+      "id": "B_FOREIGN_OWNER_EFFECT",
+      "effect_target": "an expressly consenting CAN011/ADP015/ADP016/ADP017/CAN010 target owner (exact choice is owner decision)",
+      "allows_foreign_durable_effect": true,
+      "requires": "all A requirements + target typed effect schema/authorization/admission/replay + special target authority"
+    },
+    {
+      "id": "C_NO_NEW_SOURCEFREE_ISSUANCE",
+      "effect_target": "none",
+      "allows_foreign_durable_effect": false,
+      "requires": "no positive; redesign C6/C9 and defer operative life"
+    }
+  ],
+  "one_event": {
+    "positive_prospective": "E1 admitted, actor bound, exact current rule, sourcefree grant, eligible world/conditioning read, target owner atomic response-history receipt; status only SOURCEFREE_RESPONSE_EFFECT_COMMITTED",
+    "fail_when": [
+      "no_concrete_rule",
+      "GT0_NO_ACTOR_BOUND",
+      "event_not_admitted",
+      "event_future_or_stale",
+      "raw_structural_profile_as_actor",
+      "reverse_P_A_given_D",
+      "actor_private_leak",
+      "target_owner_unissued",
+      "source_rights_missing",
+      "withdrawn_permission",
+      "partial_commit"
+    ],
+    "never_claims": [
+      "human_felt_state",
+      "real_actor",
+      "V3_wake",
+      "V2_expression",
+      "third_party_action",
+      "new_belief",
+      "psychological_calibration"
+    ]
+  },
+  "two_event": {
+    "positive_prospective": "E1 owner-committed response effect with immutable previous-head receipt; E2 separately admitted later under same actor/world permission, reads E1 prior-response hash through exact history predicate; counterfactual no-E1 differs in typed response under same current world and issued deterministic rule",
+    "invalid_if": [
+      "E2_read_precedes_E1_commit",
+      "different_actor_without_grant",
+      "E2_uses_future_W1_as_past",
+      "stale_world_version",
+      "missing_E1_history",
+      "replayed_duplicate_changes_state",
+      "unissued_dyad_or_third_party_owner",
+      "no_admitted_E2_event"
+    ]
+  },
+  "K1_K6": [
+    {
+      "id": "K1",
+      "discriminant": "same world, authorized A/B histories; later response changes only from committed prior-response or exact conditioning history",
+      "negative": "fake E1 journal or history rewrites"
+    },
+    {
+      "id": "K2",
+      "discriminant": "same actors with altered directed n-ary relation; require ADP015 owner state and scope",
+      "negative": "unissued dyad/observer becomes binding chair"
+    },
+    {
+      "id": "K3",
+      "discriminant": "causal trace affects response without narrated/recalled origin",
+      "negative": "inaccessible ADP016 trace promoted to ADP017 first-person memory"
+    },
+    {
+      "id": "K4",
+      "discriminant": "credible correction vs weak recurrence vs unresolved contradiction preserve different legal owner state",
+      "negative": "compulsory cure/coherence or missing owner effect"
+    },
+    {
+      "id": "K5",
+      "discriminant": "institutional authority and felt-recognition axes remain separate; felt axis only from lawful owner state",
+      "negative": "status implies feeling"
+    },
+    {
+      "id": "K6",
+      "discriminant": "internalization vs external sanction capacity/opportunity, no action if no lawful route",
+      "negative": "opportunityless action or invented external world consequence"
+    }
+  ],
+  "mandatory_negative_cases": [
+    "NO_CURRENT_RULE",
+    "NO_ACTOR_BINDING",
+    "MISSING_EVENT",
+    "RAW_STRUCTURAL_PARENT",
+    "FUTURE_CONDITIONING",
+    "REVERSE_CAUSAL_INFERENCE",
+    "EXPIRED_WORLD",
+    "HIDDEN_FUTURE_CHILD",
+    "USER_ABSENT_UNTRUSTED_CLOCK",
+    "GRANT_REVOKED",
+    "UNRECOGNIZED_ACTION",
+    "UNISSUED_DYAD",
+    "TARGET_OWNER_REFUSAL",
+    "CROSS_OWNER_WRITE",
+    "PRIVATE_CLAIM_LEAK",
+    "E2_BEFORE_E1",
+    "DUPLICATE_REPLAY",
+    "DRAFT_RENDER_SELF_FEEDBACK",
+    "MISSING_TARGET_JOURNAL",
+    "UNAUTHORIZED_V2_PROJECTION"
+  ],
+  "acceptance_bands": {
+    "today": "HOLD_MISSING_ISSUER_AND_ACTOR__DO_NOT_EXECUTE_POSITIVE",
+    "conditional_F2": "sourcefree authorized one/two event contract passes first/second owner independent run at exact sourcefree grain only",
+    "conditional_F3": "native pinned owner implementation and event+effect+later owner read with genuine subprocess replay/independent I2",
+    "conditional_F4": "composition across live V3 actor and objective world with independent science+consent/source/model grants and multi-epoch effects",
+    "F5": "production/privacy/resource/scale/runtime/operational readiness separately shown"
+  },
+  "explicit_nonimplications": [
+    "one positive sourcefree rule does not prove all K1-K6",
+    "accepted CAN008 R2 schema not concrete issued mapping",
+    "subject_ref materializer not generated actor",
+    "GT0 blocked is correct under present authority",
+    "Pyat XSP is a standalone oracle not operative V3"
+  ],
+  "proposed_owner_decision": "UNKNOWN_UNTIL_COMPETENT_ISSUER_ADOPTS_EXACT_RULE_AND_TARGET"
+}
