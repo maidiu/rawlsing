@@ -1,0 +1,2265 @@
+{
+ "candidate": "eeb726357204653b22458dc267dd70ba0009bd77",
+ "imports": [
+  {
+   "file": "gf1_pair_support_consumer.py",
+   "git_blob_sha1": "75670c69dc587233d462e4a636b63e7fd233c0bd",
+   "module": "gf1_pair_support_consumer",
+   "sha256": "06dd484b0e9b4b2c9fb0a1583453ac7ffa8c052135304eaaee167a34127cb402"
+  },
+  {
+   "file": "generic_native_pair_relation.py",
+   "git_blob_sha1": "746d669314ddd114ec21d3a35c13c452666863fe",
+   "module": "generic_native_pair_relation",
+   "sha256": "e5ac3d003bfe3a4e00cf1da1ca0c4cacab706391f4b9ab71f101e64a4b2cfc04"
+  }
+ ],
+ "named_cases": {
+  "anti_diagonal": {
+   "actual_class": "EXACT_PAIR_SEPARATION",
+   "cells": {
+    "00": 0,
+    "01": 1,
+    "10": 1,
+    "11": 0
+   },
+   "expected_class": "EXACT_PAIR_SEPARATION",
+   "result_hash": "061352b8b391ee2c58b24489b4aeef02b98dca3052117a3bf39a2efee35ae94c"
+  },
+  "baseline_diagonal": {
+   "actual_class": "EXACT_PAIR_SEPARATION",
+   "cells": {
+    "00": 1,
+    "01": 0,
+    "10": 0,
+    "11": 1
+   },
+   "expected_class": "EXACT_PAIR_SEPARATION",
+   "result_hash": "2029fc4593e98b1242f425b5786e9ace010246daf96779221e84dbd1ab2a2c16"
+  },
+  "mixed_row_not_deterministic": {
+   "actual_class": "NO_PAIR_SEPARATION",
+   "cells": {
+    "00": 1,
+    "01": 1,
+    "10": 1,
+    "11": 0
+   },
+   "expected_class": "NO_PAIR_SEPARATION",
+   "result_hash": "5588c5ad0dfea6a072ad893a056dfb9962f5f3c39237d2723f2de94f59cbef0b"
+  },
+  "no_eligible_risk_row0_empty": {
+   "actual_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+   "cells": {
+    "00": 0,
+    "01": 0,
+    "10": 0,
+    "11": 1
+   },
+   "expected_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+   "result_hash": "820a3ca26a6f9a690ade3e4d5cf85d3b7e67a1ea146057e367c6d5a828404727"
+  },
+  "no_eligible_risk_row1_empty": {
+   "actual_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+   "cells": {
+    "00": 1,
+    "01": 0,
+    "10": 0,
+    "11": 0
+   },
+   "expected_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+   "result_hash": "2e37770705df05fec1b831cdae2dd1b065fcc60c8eaf98bcf40d2cf4c3b0f729"
+  },
+  "target_collapsed_to_0": {
+   "actual_class": "NO_PAIR_SEPARATION",
+   "cells": {
+    "00": 1,
+    "01": 0,
+    "10": 1,
+    "11": 0
+   },
+   "expected_class": "NO_PAIR_SEPARATION",
+   "result_hash": "a0121758196b243024c1cad15ef2bd3c84a055562addbd9a474b15f0663bbb94"
+  },
+  "target_collapsed_to_1": {
+   "actual_class": "NO_PAIR_SEPARATION",
+   "cells": {
+    "00": 0,
+    "01": 1,
+    "10": 0,
+    "11": 1
+   },
+   "expected_class": "NO_PAIR_SEPARATION",
+   "result_hash": "5fa4f6f0c63fc1b7f1d4038e6483ed64a8e54d727d6919dd227c51ccb9de1e4d"
+  },
+  "zero_supported_risk": {
+   "actual_class": "UNDETERMINED_ZERO_SUPPORT_RISK",
+   "cells": {
+    "00": 0,
+    "01": 0,
+    "10": 0,
+    "11": 0
+   },
+   "expected_class": "UNDETERMINED_ZERO_SUPPORT_RISK",
+   "result_hash": "3050164b5bbde96a68c7877ca8d74242d1b325477d8a2957a28b33ed85164b17"
+  }
+ },
+ "real_native_baseline": {
+  "consumer": {
+   "condition_states_with_positive_denominator": [
+    "0",
+    "1"
+   ],
+   "consumer_id": "GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ONLY@1.0.0",
+   "consumer_output_family": "GF1_PAIR_SUPPORT_SIGNATURE_RESULT_TEST_ONLY@1.0.0",
+   "decision_state": "PAIR_SUPPORT_SIGNATURE_COMPUTED",
+   "downstream_value_produced": true,
+   "eligible_joint_risk_total": 2,
+   "excluded_ineligible_target_count": 0,
+   "generic_native_semantics_hold": "RETAINED",
+   "is_population_evidence_not_actor_fact": true,
+   "joint_support_total": 2,
+   "makes_no_causal_or_psychological_claim": true,
+   "measure_basis_ref": {
+    "content_hash": "c552e0c978466b790e06f4eb30ba5286c77b1781ec0b57907f5743f04e955bda",
+    "kind": "MEASURE_BASIS",
+    "object_id": "urn:test:i03:measure_basis:RAW"
+   },
+   "measure_kind": "RAW",
+   "native_component_order": [
+    "urn:test:i03:question_native:m01-Y",
+    "urn:test:i03:question_native:m01-X"
+   ],
+   "operation_role_order": "FORWARD_NATIVE_ORDER",
+   "permission_ceilings": {
+    "producer": [
+     "SOURCE_FREE_DEV"
+    ],
+    "relation": [
+     "SOURCE_FREE_DEV"
+    ]
+   },
+   "production_owner_commit": false,
+   "read_relation_content_hash": "62d6bedf5f69ad19be3899ddc98523cbbb9b6aaa840bdd598e68ed14adb3002d",
+   "read_relation_family": "GF1_GENERIC_NATIVE_PAIR_RELATION_TEST_ONLY@1.0.0",
+   "read_relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:62d6bedf5f69ad19be3899ddc98523cbbb9b6aaa840bdd598e68ed14adb3002d",
+   "read_relation_owner": "GF1_GENERIC_PAIR_CANDIDATE_RELATION_OWNER_TEST_ONLY",
+   "result_hash": "8dda934d50c7107e08fb329cb50942e6337a93e8d0fdbb2f3acd6ef398e143c4",
+   "separation_class": "EXACT_PAIR_SEPARATION",
+   "separation_signature": "m01-Y|m01-X|FORWARD_NATIVE_ORDER|EXACT_PAIR_SEPARATION|00=1.01=0.10=0.11=1",
+   "support_vectors": {
+    "0": {
+     "0": 1,
+     "1": 0
+    },
+    "1": {
+     "0": 0,
+     "1": 1
+    }
+   },
+   "zero_cell_semantics": {
+    "0": {
+     "0": "OBSERVED_POSITIVE",
+     "1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+    },
+    "1": {
+     "0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+     "1": "OBSERVED_POSITIVE"
+    }
+   }
+  },
+  "eligible_joint_risk_total": 2,
+  "relation_content_hash": "62d6bedf5f69ad19be3899ddc98523cbbb9b6aaa840bdd598e68ed14adb3002d",
+  "relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:62d6bedf5f69ad19be3899ddc98523cbbb9b6aaa840bdd598e68ed14adb3002d"
+ },
+ "schema": "GF1F_REAL_FROZEN44_AND_CONSUMER_VALUES@1",
+ "universe": [
+  {
+   "actual_class": "UNDETERMINED_ZERO_SUPPORT_RISK",
+   "cells": {
+    "00": 0,
+    "01": 0,
+    "10": 0,
+    "11": 0
+   },
+   "condition_states_with_positive_denominator": [],
+   "expected_class": "UNDETERMINED_ZERO_SUPPORT_RISK",
+   "joint_support_total": 0,
+   "result_hash": "3050164b5bbde96a68c7877ca8d74242d1b325477d8a2957a28b33ed85164b17",
+   "support_vectors": {
+    "0": {
+     "0": 0,
+     "1": 0
+    },
+    "1": {
+     "0": 0,
+     "1": 0
+    }
+   }
+  },
+  {
+   "actual_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+   "cells": {
+    "00": 0,
+    "01": 0,
+    "10": 0,
+    "11": 1
+   },
+   "condition_states_with_positive_denominator": [
+    "1"
+   ],
+   "expected_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+   "joint_support_total": 1,
+   "result_hash": "820a3ca26a6f9a690ade3e4d5cf85d3b7e67a1ea146057e367c6d5a828404727",
+   "support_vectors": {
+    "0": {
+     "0": 0,
+     "1": 0
+    },
+    "1": {
+     "0": 0,
+     "1": 1
+    }
+   }
+  },
+  {
+   "actual_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+   "cells": {
+    "00": 0,
+    "01": 0,
+    "10": 0,
+    "11": 2
+   },
+   "condition_states_with_positive_denominator": [
+    "1"
+   ],
+   "expected_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+   "joint_support_total": 2,
+   "result_hash": "0ab2074185c8ccfcd4247ead59b885f981105014a73c25d7e99974fb2ff6ecd4",
+   "support_vectors": {
+    "0": {
+     "0": 0,
+     "1": 0
+    },
+    "1": {
+     "0": 0,
+     "1": 2
+    }
+   }
+  },
+  {
+   "actual_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+   "cells": {
+    "00": 0,
+    "01": 0,
+    "10": 1,
+    "11": 0
+   },
+   "condition_states_with_positive_denominator": [
+    "1"
+   ],
+   "expected_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+   "joint_support_total": 1,
+   "result_hash": "8e3d29af4067d55975c711021cbd64a04d746cd9ee9b586609ad2909113e9831",
+   "support_vectors": {
+    "0": {
+     "0": 0,
+     "1": 0
+    },
+    "1": {
+     "0": 1,
+     "1": 0
+    }
+   }
+  },
+  {
+   "actual_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+   "cells": {
+    "00": 0,
+    "01": 0,
+    "10": 1,
+    "11": 1
+   },
+   "condition_states_with_positive_denominator": [
+    "1"
+   ],
+   "expected_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+   "joint_support_total": 2,
+   "result_hash": "d10a9ab5a3c966a0bed710fa0336a04a623a60cd99f8469299767111c9ec78e9",
+   "support_vectors": {
+    "0": {
+     "0": 0,
+     "1": 0
+    },
+    "1": {
+     "0": 1,
+     "1": 1
+    }
+   }
+  },
+  {
+   "actual_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+   "cells": {
+    "00": 0,
+    "01": 0,
+    "10": 1,
+    "11": 2
+   },
+   "condition_states_with_positive_denominator": [
+    "1"
+   ],
+   "expected_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+   "joint_support_total": 3,
+   "result_hash": "f486c3ae342ed3d7e2ddedfee437c7bd7dc85c825a6bb46986d1fb953025c62b",
+   "support_vectors": {
+    "0": {
+     "0": 0,
+     "1": 0
+    },
+    "1": {
+     "0": 1,
+     "1": 2
+    }
+   }
+  },
+  {
+   "actual_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+   "cells": {
+    "00": 0,
+    "01": 0,
+    "10": 2,
+    "11": 0
+   },
+   "condition_states_with_positive_denominator": [
+    "1"
+   ],
+   "expected_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+   "joint_support_total": 2,
+   "result_hash": "5c5ce50664576178d531dc0e278e4bc54e40f345770d76f8b35eb74b10429d28",
+   "support_vectors": {
+    "0": {
+     "0": 0,
+     "1": 0
+    },
+    "1": {
+     "0": 2,
+     "1": 0
+    }
+   }
+  },
+  {
+   "actual_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+   "cells": {
+    "00": 0,
+    "01": 0,
+    "10": 2,
+    "11": 1
+   },
+   "condition_states_with_positive_denominator": [
+    "1"
+   ],
+   "expected_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+   "joint_support_total": 3,
+   "result_hash": "61fe9633f16f65206e3100db57481daa6f2a8348947b8e234efd1f41d748a793",
+   "support_vectors": {
+    "0": {
+     "0": 0,
+     "1": 0
+    },
+    "1": {
+     "0": 2,
+     "1": 1
+    }
+   }
+  },
+  {
+   "actual_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+   "cells": {
+    "00": 0,
+    "01": 0,
+    "10": 2,
+    "11": 2
+   },
+   "condition_states_with_positive_denominator": [
+    "1"
+   ],
+   "expected_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+   "joint_support_total": 4,
+   "result_hash": "8ce792f4aa3cfd0b3a23959a7c74ba86274c485309bc5261c797221398f4fcc0",
+   "support_vectors": {
+    "0": {
+     "0": 0,
+     "1": 0
+    },
+    "1": {
+     "0": 2,
+     "1": 2
+    }
+   }
+  },
+  {
+   "actual_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+   "cells": {
+    "00": 0,
+    "01": 1,
+    "10": 0,
+    "11": 0
+   },
+   "condition_states_with_positive_denominator": [
+    "0"
+   ],
+   "expected_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+   "joint_support_total": 1,
+   "result_hash": "ee07e4976f664868d97460a7ca90eb48ff74e212bce6b52153eed560ad3bd2e8",
+   "support_vectors": {
+    "0": {
+     "0": 0,
+     "1": 1
+    },
+    "1": {
+     "0": 0,
+     "1": 0
+    }
+   }
+  },
+  {
+   "actual_class": "NO_PAIR_SEPARATION",
+   "cells": {
+    "00": 0,
+    "01": 1,
+    "10": 0,
+    "11": 1
+   },
+   "condition_states_with_positive_denominator": [
+    "0",
+    "1"
+   ],
+   "expected_class": "NO_PAIR_SEPARATION",
+   "joint_support_total": 2,
+   "result_hash": "5fa4f6f0c63fc1b7f1d4038e6483ed64a8e54d727d6919dd227c51ccb9de1e4d",
+   "support_vectors": {
+    "0": {
+     "0": 0,
+     "1": 1
+    },
+    "1": {
+     "0": 0,
+     "1": 1
+    }
+   }
+  },
+  {
+   "actual_class": "NO_PAIR_SEPARATION",
+   "cells": {
+    "00": 0,
+    "01": 1,
+    "10": 0,
+    "11": 2
+   },
+   "condition_states_with_positive_denominator": [
+    "0",
+    "1"
+   ],
+   "expected_class": "NO_PAIR_SEPARATION",
+   "joint_support_total": 3,
+   "result_hash": "3f87fde85cba0a5ca0f174f476f3fbcc739834467997bdd6a0298e82c02ea073",
+   "support_vectors": {
+    "0": {
+     "0": 0,
+     "1": 1
+    },
+    "1": {
+     "0": 0,
+     "1": 2
+    }
+   }
+  },
+  {
+   "actual_class": "EXACT_PAIR_SEPARATION",
+   "cells": {
+    "00": 0,
+    "01": 1,
+    "10": 1,
+    "11": 0
+   },
+   "condition_states_with_positive_denominator": [
+    "0",
+    "1"
+   ],
+   "expected_class": "EXACT_PAIR_SEPARATION",
+   "joint_support_total": 2,
+   "result_hash": "061352b8b391ee2c58b24489b4aeef02b98dca3052117a3bf39a2efee35ae94c",
+   "support_vectors": {
+    "0": {
+     "0": 0,
+     "1": 1
+    },
+    "1": {
+     "0": 1,
+     "1": 0
+    }
+   }
+  },
+  {
+   "actual_class": "NO_PAIR_SEPARATION",
+   "cells": {
+    "00": 0,
+    "01": 1,
+    "10": 1,
+    "11": 1
+   },
+   "condition_states_with_positive_denominator": [
+    "0",
+    "1"
+   ],
+   "expected_class": "NO_PAIR_SEPARATION",
+   "joint_support_total": 3,
+   "result_hash": "9d12c231995d1215dd84d3c4bf46963f1602a0728739eb6b6fae6d2907ae9d89",
+   "support_vectors": {
+    "0": {
+     "0": 0,
+     "1": 1
+    },
+    "1": {
+     "0": 1,
+     "1": 1
+    }
+   }
+  },
+  {
+   "actual_class": "NO_PAIR_SEPARATION",
+   "cells": {
+    "00": 0,
+    "01": 1,
+    "10": 1,
+    "11": 2
+   },
+   "condition_states_with_positive_denominator": [
+    "0",
+    "1"
+   ],
+   "expected_class": "NO_PAIR_SEPARATION",
+   "joint_support_total": 4,
+   "result_hash": "73d4b30c88daf1f0aa3e11fe13d02da9d23d9671df6cae908742ac4edb510919",
+   "support_vectors": {
+    "0": {
+     "0": 0,
+     "1": 1
+    },
+    "1": {
+     "0": 1,
+     "1": 2
+    }
+   }
+  },
+  {
+   "actual_class": "EXACT_PAIR_SEPARATION",
+   "cells": {
+    "00": 0,
+    "01": 1,
+    "10": 2,
+    "11": 0
+   },
+   "condition_states_with_positive_denominator": [
+    "0",
+    "1"
+   ],
+   "expected_class": "EXACT_PAIR_SEPARATION",
+   "joint_support_total": 3,
+   "result_hash": "ad66f1db1721f07fa82eb7acacfc16460be98568329c89f16da7e87dd9177d1e",
+   "support_vectors": {
+    "0": {
+     "0": 0,
+     "1": 1
+    },
+    "1": {
+     "0": 2,
+     "1": 0
+    }
+   }
+  },
+  {
+   "actual_class": "NO_PAIR_SEPARATION",
+   "cells": {
+    "00": 0,
+    "01": 1,
+    "10": 2,
+    "11": 1
+   },
+   "condition_states_with_positive_denominator": [
+    "0",
+    "1"
+   ],
+   "expected_class": "NO_PAIR_SEPARATION",
+   "joint_support_total": 4,
+   "result_hash": "60fd4ba1cb7fb873296397c719bef7ab7ead2f820d3aa3bbb264d69aa75c9d16",
+   "support_vectors": {
+    "0": {
+     "0": 0,
+     "1": 1
+    },
+    "1": {
+     "0": 2,
+     "1": 1
+    }
+   }
+  },
+  {
+   "actual_class": "NO_PAIR_SEPARATION",
+   "cells": {
+    "00": 0,
+    "01": 1,
+    "10": 2,
+    "11": 2
+   },
+   "condition_states_with_positive_denominator": [
+    "0",
+    "1"
+   ],
+   "expected_class": "NO_PAIR_SEPARATION",
+   "joint_support_total": 5,
+   "result_hash": "84316530df6f68de816b3edf99e1bf52ef6ebabf0955ee7d1c80f924890ad034",
+   "support_vectors": {
+    "0": {
+     "0": 0,
+     "1": 1
+    },
+    "1": {
+     "0": 2,
+     "1": 2
+    }
+   }
+  },
+  {
+   "actual_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+   "cells": {
+    "00": 0,
+    "01": 2,
+    "10": 0,
+    "11": 0
+   },
+   "condition_states_with_positive_denominator": [
+    "0"
+   ],
+   "expected_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+   "joint_support_total": 2,
+   "result_hash": "70be21fdfb7343b2e7ff307d657a5e09fd9383efc64f42f3b12a8147ae145465",
+   "support_vectors": {
+    "0": {
+     "0": 0,
+     "1": 2
+    },
+    "1": {
+     "0": 0,
+     "1": 0
+    }
+   }
+  },
+  {
+   "actual_class": "NO_PAIR_SEPARATION",
+   "cells": {
+    "00": 0,
+    "01": 2,
+    "10": 0,
+    "11": 1
+   },
+   "condition_states_with_positive_denominator": [
+    "0",
+    "1"
+   ],
+   "expected_class": "NO_PAIR_SEPARATION",
+   "joint_support_total": 3,
+   "result_hash": "9b84f74c206a4e64cf2decf460c884d85b6b83ce1969077c0f16c5417eae5477",
+   "support_vectors": {
+    "0": {
+     "0": 0,
+     "1": 2
+    },
+    "1": {
+     "0": 0,
+     "1": 1
+    }
+   }
+  },
+  {
+   "actual_class": "NO_PAIR_SEPARATION",
+   "cells": {
+    "00": 0,
+    "01": 2,
+    "10": 0,
+    "11": 2
+   },
+   "condition_states_with_positive_denominator": [
+    "0",
+    "1"
+   ],
+   "expected_class": "NO_PAIR_SEPARATION",
+   "joint_support_total": 4,
+   "result_hash": "fa230aad4294b3d3771674670c4cb02ce293ac8830f918bc70d921c792497364",
+   "support_vectors": {
+    "0": {
+     "0": 0,
+     "1": 2
+    },
+    "1": {
+     "0": 0,
+     "1": 2
+    }
+   }
+  },
+  {
+   "actual_class": "EXACT_PAIR_SEPARATION",
+   "cells": {
+    "00": 0,
+    "01": 2,
+    "10": 1,
+    "11": 0
+   },
+   "condition_states_with_positive_denominator": [
+    "0",
+    "1"
+   ],
+   "expected_class": "EXACT_PAIR_SEPARATION",
+   "joint_support_total": 3,
+   "result_hash": "7864733be0dea6fb4398ed2b699015ed755e24366203896e469241954000d642",
+   "support_vectors": {
+    "0": {
+     "0": 0,
+     "1": 2
+    },
+    "1": {
+     "0": 1,
+     "1": 0
+    }
+   }
+  },
+  {
+   "actual_class": "NO_PAIR_SEPARATION",
+   "cells": {
+    "00": 0,
+    "01": 2,
+    "10": 1,
+    "11": 1
+   },
+   "condition_states_with_positive_denominator": [
+    "0",
+    "1"
+   ],
+   "expected_class": "NO_PAIR_SEPARATION",
+   "joint_support_total": 4,
+   "result_hash": "8b91820a740b4632da9d452ec55bbaaaf54e6578b3fdac2e1baabd816bddaa25",
+   "support_vectors": {
+    "0": {
+     "0": 0,
+     "1": 2
+    },
+    "1": {
+     "0": 1,
+     "1": 1
+    }
+   }
+  },
+  {
+   "actual_class": "NO_PAIR_SEPARATION",
+   "cells": {
+    "00": 0,
+    "01": 2,
+    "10": 1,
+    "11": 2
+   },
+   "condition_states_with_positive_denominator": [
+    "0",
+    "1"
+   ],
+   "expected_class": "NO_PAIR_SEPARATION",
+   "joint_support_total": 5,
+   "result_hash": "af9cec52672dbd8f4de70b7da0e6b379648bc693025e3e0dcc6ceac867da2fb6",
+   "support_vectors": {
+    "0": {
+     "0": 0,
+     "1": 2
+    },
+    "1": {
+     "0": 1,
+     "1": 2
+    }
+   }
+  },
+  {
+   "actual_class": "EXACT_PAIR_SEPARATION",
+   "cells": {
+    "00": 0,
+    "01": 2,
+    "10": 2,
+    "11": 0
+   },
+   "condition_states_with_positive_denominator": [
+    "0",
+    "1"
+   ],
+   "expected_class": "EXACT_PAIR_SEPARATION",
+   "joint_support_total": 4,
+   "result_hash": "20b26f97d9aa8120dd4de3cb4354cb595df01ccf8d46a519c1c706d86f8286bd",
+   "support_vectors": {
+    "0": {
+     "0": 0,
+     "1": 2
+    },
+    "1": {
+     "0": 2,
+     "1": 0
+    }
+   }
+  },
+  {
+   "actual_class": "NO_PAIR_SEPARATION",
+   "cells": {
+    "00": 0,
+    "01": 2,
+    "10": 2,
+    "11": 1
+   },
+   "condition_states_with_positive_denominator": [
+    "0",
+    "1"
+   ],
+   "expected_class": "NO_PAIR_SEPARATION",
+   "joint_support_total": 5,
+   "result_hash": "c1b4ff52d5bba5594e910660336812cdd562863885672a1f24d95af2182341b9",
+   "support_vectors": {
+    "0": {
+     "0": 0,
+     "1": 2
+    },
+    "1": {
+     "0": 2,
+     "1": 1
+    }
+   }
+  },
+  {
+   "actual_class": "NO_PAIR_SEPARATION",
+   "cells": {
+    "00": 0,
+    "01": 2,
+    "10": 2,
+    "11": 2
+   },
+   "condition_states_with_positive_denominator": [
+    "0",
+    "1"
+   ],
+   "expected_class": "NO_PAIR_SEPARATION",
+   "joint_support_total": 6,
+   "result_hash": "3b08598091e382a4324e3965bdfd3e4e3890166ccb6a07d3cfa0b711627832df",
+   "support_vectors": {
+    "0": {
+     "0": 0,
+     "1": 2
+    },
+    "1": {
+     "0": 2,
+     "1": 2
+    }
+   }
+  },
+  {
+   "actual_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+   "cells": {
+    "00": 1,
+    "01": 0,
+    "10": 0,
+    "11": 0
+   },
+   "condition_states_with_positive_denominator": [
+    "0"
+   ],
+   "expected_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+   "joint_support_total": 1,
+   "result_hash": "2e37770705df05fec1b831cdae2dd1b065fcc60c8eaf98bcf40d2cf4c3b0f729",
+   "support_vectors": {
+    "0": {
+     "0": 1,
+     "1": 0
+    },
+    "1": {
+     "0": 0,
+     "1": 0
+    }
+   }
+  },
+  {
+   "actual_class": "EXACT_PAIR_SEPARATION",
+   "cells": {
+    "00": 1,
+    "01": 0,
+    "10": 0,
+    "11": 1
+   },
+   "condition_states_with_positive_denominator": [
+    "0",
+    "1"
+   ],
+   "expected_class": "EXACT_PAIR_SEPARATION",
+   "joint_support_total": 2,
+   "result_hash": "2029fc4593e98b1242f425b5786e9ace010246daf96779221e84dbd1ab2a2c16",
+   "support_vectors": {
+    "0": {
+     "0": 1,
+     "1": 0
+    },
+    "1": {
+     "0": 0,
+     "1": 1
+    }
+   }
+  },
+  {
+   "actual_class": "EXACT_PAIR_SEPARATION",
+   "cells": {
+    "00": 1,
+    "01": 0,
+    "10": 0,
+    "11": 2
+   },
+   "condition_states_with_positive_denominator": [
+    "0",
+    "1"
+   ],
+   "expected_class": "EXACT_PAIR_SEPARATION",
+   "joint_support_total": 3,
+   "result_hash": "2979bc0b9646e1b9332855fff84cbfa1760ce5c6f6f13af38742a3eca1f70606",
+   "support_vectors": {
+    "0": {
+     "0": 1,
+     "1": 0
+    },
+    "1": {
+     "0": 0,
+     "1": 2
+    }
+   }
+  },
+  {
+   "actual_class": "NO_PAIR_SEPARATION",
+   "cells": {
+    "00": 1,
+    "01": 0,
+    "10": 1,
+    "11": 0
+   },
+   "condition_states_with_positive_denominator": [
+    "0",
+    "1"
+   ],
+   "expected_class": "NO_PAIR_SEPARATION",
+   "joint_support_total": 2,
+   "result_hash": "a0121758196b243024c1cad15ef2bd3c84a055562addbd9a474b15f0663bbb94",
+   "support_vectors": {
+    "0": {
+     "0": 1,
+     "1": 0
+    },
+    "1": {
+     "0": 1,
+     "1": 0
+    }
+   }
+  },
+  {
+   "actual_class": "NO_PAIR_SEPARATION",
+   "cells": {
+    "00": 1,
+    "01": 0,
+    "10": 1,
+    "11": 1
+   },
+   "condition_states_with_positive_denominator": [
+    "0",
+    "1"
+   ],
+   "expected_class": "NO_PAIR_SEPARATION",
+   "joint_support_total": 3,
+   "result_hash": "dff35e958b36c59d8086cfbc19113105d26c4c28680a079494b63e6b93a5b1d5",
+   "support_vectors": {
+    "0": {
+     "0": 1,
+     "1": 0
+    },
+    "1": {
+     "0": 1,
+     "1": 1
+    }
+   }
+  },
+  {
+   "actual_class": "NO_PAIR_SEPARATION",
+   "cells": {
+    "00": 1,
+    "01": 0,
+    "10": 1,
+    "11": 2
+   },
+   "condition_states_with_positive_denominator": [
+    "0",
+    "1"
+   ],
+   "expected_class": "NO_PAIR_SEPARATION",
+   "joint_support_total": 4,
+   "result_hash": "16084263bd3f4078d7f0c125d23c4d7a4ff260c3af370374e7132c0751561935",
+   "support_vectors": {
+    "0": {
+     "0": 1,
+     "1": 0
+    },
+    "1": {
+     "0": 1,
+     "1": 2
+    }
+   }
+  },
+  {
+   "actual_class": "NO_PAIR_SEPARATION",
+   "cells": {
+    "00": 1,
+    "01": 0,
+    "10": 2,
+    "11": 0
+   },
+   "condition_states_with_positive_denominator": [
+    "0",
+    "1"
+   ],
+   "expected_class": "NO_PAIR_SEPARATION",
+   "joint_support_total": 3,
+   "result_hash": "37a72aae5f70f131c9e1ddd76117a80f318f1ce08a63a8eb7ac5cfbfdb48d435",
+   "support_vectors": {
+    "0": {
+     "0": 1,
+     "1": 0
+    },
+    "1": {
+     "0": 2,
+     "1": 0
+    }
+   }
+  },
+  {
+   "actual_class": "NO_PAIR_SEPARATION",
+   "cells": {
+    "00": 1,
+    "01": 0,
+    "10": 2,
+    "11": 1
+   },
+   "condition_states_with_positive_denominator": [
+    "0",
+    "1"
+   ],
+   "expected_class": "NO_PAIR_SEPARATION",
+   "joint_support_total": 4,
+   "result_hash": "aa14e92bfd5d7c0492da0ecb26b48752fda81bcbfb24a55f6fba054fa49f44de",
+   "support_vectors": {
+    "0": {
+     "0": 1,
+     "1": 0
+    },
+    "1": {
+     "0": 2,
+     "1": 1
+    }
+   }
+  },
+  {
+   "actual_class": "NO_PAIR_SEPARATION",
+   "cells": {
+    "00": 1,
+    "01": 0,
+    "10": 2,
+    "11": 2
+   },
+   "condition_states_with_positive_denominator": [
+    "0",
+    "1"
+   ],
+   "expected_class": "NO_PAIR_SEPARATION",
+   "joint_support_total": 5,
+   "result_hash": "39a43070956f0fe4d94c8fd71ea54bc716a50eb3a4e2956dd78b93a234dad1da",
+   "support_vectors": {
+    "0": {
+     "0": 1,
+     "1": 0
+    },
+    "1": {
+     "0": 2,
+     "1": 2
+    }
+   }
+  },
+  {
+   "actual_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+   "cells": {
+    "00": 1,
+    "01": 1,
+    "10": 0,
+    "11": 0
+   },
+   "condition_states_with_positive_denominator": [
+    "0"
+   ],
+   "expected_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+   "joint_support_total": 2,
+   "result_hash": "1adad817e3f1a28a2ecd666f31e1ffb1d1e9271f59eebba955aef2f4f128cd6e",
+   "support_vectors": {
+    "0": {
+     "0": 1,
+     "1": 1
+    },
+    "1": {
+     "0": 0,
+     "1": 0
+    }
+   }
+  },
+  {
+   "actual_class": "NO_PAIR_SEPARATION",
+   "cells": {
+    "00": 1,
+    "01": 1,
+    "10": 0,
+    "11": 1
+   },
+   "condition_states_with_positive_denominator": [
+    "0",
+    "1"
+   ],
+   "expected_class": "NO_PAIR_SEPARATION",
+   "joint_support_total": 3,
+   "result_hash": "24bb43f48573d12a38018572de24dd637897caa2efc6150a5bf9df983760a084",
+   "support_vectors": {
+    "0": {
+     "0": 1,
+     "1": 1
+    },
+    "1": {
+     "0": 0,
+     "1": 1
+    }
+   }
+  },
+  {
+   "actual_class": "NO_PAIR_SEPARATION",
+   "cells": {
+    "00": 1,
+    "01": 1,
+    "10": 0,
+    "11": 2
+   },
+   "condition_states_with_positive_denominator": [
+    "0",
+    "1"
+   ],
+   "expected_class": "NO_PAIR_SEPARATION",
+   "joint_support_total": 4,
+   "result_hash": "2337bffa1c443a39dcf4a4adaa626e6a66e584a2822d73bfbb9a7c495478c3e8",
+   "support_vectors": {
+    "0": {
+     "0": 1,
+     "1": 1
+    },
+    "1": {
+     "0": 0,
+     "1": 2
+    }
+   }
+  },
+  {
+   "actual_class": "NO_PAIR_SEPARATION",
+   "cells": {
+    "00": 1,
+    "01": 1,
+    "10": 1,
+    "11": 0
+   },
+   "condition_states_with_positive_denominator": [
+    "0",
+    "1"
+   ],
+   "expected_class": "NO_PAIR_SEPARATION",
+   "joint_support_total": 3,
+   "result_hash": "5588c5ad0dfea6a072ad893a056dfb9962f5f3c39237d2723f2de94f59cbef0b",
+   "support_vectors": {
+    "0": {
+     "0": 1,
+     "1": 1
+    },
+    "1": {
+     "0": 1,
+     "1": 0
+    }
+   }
+  },
+  {
+   "actual_class": "NO_PAIR_SEPARATION",
+   "cells": {
+    "00": 1,
+    "01": 1,
+    "10": 1,
+    "11": 1
+   },
+   "condition_states_with_positive_denominator": [
+    "0",
+    "1"
+   ],
+   "expected_class": "NO_PAIR_SEPARATION",
+   "joint_support_total": 4,
+   "result_hash": "3181d2fd295f745583f0e38ce58bac1c9553a992a15d122445ab29fe1411543b",
+   "support_vectors": {
+    "0": {
+     "0": 1,
+     "1": 1
+    },
+    "1": {
+     "0": 1,
+     "1": 1
+    }
+   }
+  },
+  {
+   "actual_class": "NO_PAIR_SEPARATION",
+   "cells": {
+    "00": 1,
+    "01": 1,
+    "10": 1,
+    "11": 2
+   },
+   "condition_states_with_positive_denominator": [
+    "0",
+    "1"
+   ],
+   "expected_class": "NO_PAIR_SEPARATION",
+   "joint_support_total": 5,
+   "result_hash": "2a7ad2219a8107c6f69feb7957566105afe03be7032bf9818308fd7d75762d3e",
+   "support_vectors": {
+    "0": {
+     "0": 1,
+     "1": 1
+    },
+    "1": {
+     "0": 1,
+     "1": 2
+    }
+   }
+  },
+  {
+   "actual_class": "NO_PAIR_SEPARATION",
+   "cells": {
+    "00": 1,
+    "01": 1,
+    "10": 2,
+    "11": 0
+   },
+   "condition_states_with_positive_denominator": [
+    "0",
+    "1"
+   ],
+   "expected_class": "NO_PAIR_SEPARATION",
+   "joint_support_total": 4,
+   "result_hash": "c94af363306dc528924a3e9594acd7b400313d19ebbf78d88d05c3620c5f1695",
+   "support_vectors": {
+    "0": {
+     "0": 1,
+     "1": 1
+    },
+    "1": {
+     "0": 2,
+     "1": 0
+    }
+   }
+  },
+  {
+   "actual_class": "NO_PAIR_SEPARATION",
+   "cells": {
+    "00": 1,
+    "01": 1,
+    "10": 2,
+    "11": 1
+   },
+   "condition_states_with_positive_denominator": [
+    "0",
+    "1"
+   ],
+   "expected_class": "NO_PAIR_SEPARATION",
+   "joint_support_total": 5,
+   "result_hash": "9a0e15dc4256e8ea006f8ee6d8e91a9f452825b2001dc26fda0f166117797096",
+   "support_vectors": {
+    "0": {
+     "0": 1,
+     "1": 1
+    },
+    "1": {
+     "0": 2,
+     "1": 1
+    }
+   }
+  },
+  {
+   "actual_class": "NO_PAIR_SEPARATION",
+   "cells": {
+    "00": 1,
+    "01": 1,
+    "10": 2,
+    "11": 2
+   },
+   "condition_states_with_positive_denominator": [
+    "0",
+    "1"
+   ],
+   "expected_class": "NO_PAIR_SEPARATION",
+   "joint_support_total": 6,
+   "result_hash": "ce450274823c1277680217dc0daf5758d1a60d89f246eea0504273f021073ffb",
+   "support_vectors": {
+    "0": {
+     "0": 1,
+     "1": 1
+    },
+    "1": {
+     "0": 2,
+     "1": 2
+    }
+   }
+  },
+  {
+   "actual_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+   "cells": {
+    "00": 1,
+    "01": 2,
+    "10": 0,
+    "11": 0
+   },
+   "condition_states_with_positive_denominator": [
+    "0"
+   ],
+   "expected_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+   "joint_support_total": 3,
+   "result_hash": "0ac15bf35009d38391bba49d99fd979e24b7c3fe857c6a0adf65c71f606577e4",
+   "support_vectors": {
+    "0": {
+     "0": 1,
+     "1": 2
+    },
+    "1": {
+     "0": 0,
+     "1": 0
+    }
+   }
+  },
+  {
+   "actual_class": "NO_PAIR_SEPARATION",
+   "cells": {
+    "00": 1,
+    "01": 2,
+    "10": 0,
+    "11": 1
+   },
+   "condition_states_with_positive_denominator": [
+    "0",
+    "1"
+   ],
+   "expected_class": "NO_PAIR_SEPARATION",
+   "joint_support_total": 4,
+   "result_hash": "093b88f4a25d0c13315295a4cdb66183d13479f0eb63020a69d7fb88cb589f85",
+   "support_vectors": {
+    "0": {
+     "0": 1,
+     "1": 2
+    },
+    "1": {
+     "0": 0,
+     "1": 1
+    }
+   }
+  },
+  {
+   "actual_class": "NO_PAIR_SEPARATION",
+   "cells": {
+    "00": 1,
+    "01": 2,
+    "10": 0,
+    "11": 2
+   },
+   "condition_states_with_positive_denominator": [
+    "0",
+    "1"
+   ],
+   "expected_class": "NO_PAIR_SEPARATION",
+   "joint_support_total": 5,
+   "result_hash": "d5e7eb22b6932ead3444e98b8d9440dcbf43318f04a9d99252dc3825360c2c0a",
+   "support_vectors": {
+    "0": {
+     "0": 1,
+     "1": 2
+    },
+    "1": {
+     "0": 0,
+     "1": 2
+    }
+   }
+  },
+  {
+   "actual_class": "NO_PAIR_SEPARATION",
+   "cells": {
+    "00": 1,
+    "01": 2,
+    "10": 1,
+    "11": 0
+   },
+   "condition_states_with_positive_denominator": [
+    "0",
+    "1"
+   ],
+   "expected_class": "NO_PAIR_SEPARATION",
+   "joint_support_total": 4,
+   "result_hash": "12e14357177b9de81cca6187b792960c3f4482e3e44dc8296c4c8f19a281f971",
+   "support_vectors": {
+    "0": {
+     "0": 1,
+     "1": 2
+    },
+    "1": {
+     "0": 1,
+     "1": 0
+    }
+   }
+  },
+  {
+   "actual_class": "NO_PAIR_SEPARATION",
+   "cells": {
+    "00": 1,
+    "01": 2,
+    "10": 1,
+    "11": 1
+   },
+   "condition_states_with_positive_denominator": [
+    "0",
+    "1"
+   ],
+   "expected_class": "NO_PAIR_SEPARATION",
+   "joint_support_total": 5,
+   "result_hash": "305f0b59d927029b13f1f61a40b8e3eba54350e51b7282f90a47f4487457cf39",
+   "support_vectors": {
+    "0": {
+     "0": 1,
+     "1": 2
+    },
+    "1": {
+     "0": 1,
+     "1": 1
+    }
+   }
+  },
+  {
+   "actual_class": "NO_PAIR_SEPARATION",
+   "cells": {
+    "00": 1,
+    "01": 2,
+    "10": 1,
+    "11": 2
+   },
+   "condition_states_with_positive_denominator": [
+    "0",
+    "1"
+   ],
+   "expected_class": "NO_PAIR_SEPARATION",
+   "joint_support_total": 6,
+   "result_hash": "33671b8fb001ebe80b2b870273cccb8bffa8750b3ff577afa1231508d3275f23",
+   "support_vectors": {
+    "0": {
+     "0": 1,
+     "1": 2
+    },
+    "1": {
+     "0": 1,
+     "1": 2
+    }
+   }
+  },
+  {
+   "actual_class": "NO_PAIR_SEPARATION",
+   "cells": {
+    "00": 1,
+    "01": 2,
+    "10": 2,
+    "11": 0
+   },
+   "condition_states_with_positive_denominator": [
+    "0",
+    "1"
+   ],
+   "expected_class": "NO_PAIR_SEPARATION",
+   "joint_support_total": 5,
+   "result_hash": "595e07592e93b1d959de8bbd2fa927a0738f8530f2ef5d5ce7b03be3ca26547e",
+   "support_vectors": {
+    "0": {
+     "0": 1,
+     "1": 2
+    },
+    "1": {
+     "0": 2,
+     "1": 0
+    }
+   }
+  },
+  {
+   "actual_class": "NO_PAIR_SEPARATION",
+   "cells": {
+    "00": 1,
+    "01": 2,
+    "10": 2,
+    "11": 1
+   },
+   "condition_states_with_positive_denominator": [
+    "0",
+    "1"
+   ],
+   "expected_class": "NO_PAIR_SEPARATION",
+   "joint_support_total": 6,
+   "result_hash": "9467e30c0625a1b1c878237769520d49e52bdacba56e47be1d3b96f17981e1b2",
+   "support_vectors": {
+    "0": {
+     "0": 1,
+     "1": 2
+    },
+    "1": {
+     "0": 2,
+     "1": 1
+    }
+   }
+  },
+  {
+   "actual_class": "NO_PAIR_SEPARATION",
+   "cells": {
+    "00": 1,
+    "01": 2,
+    "10": 2,
+    "11": 2
+   },
+   "condition_states_with_positive_denominator": [
+    "0",
+    "1"
+   ],
+   "expected_class": "NO_PAIR_SEPARATION",
+   "joint_support_total": 7,
+   "result_hash": "acad1ed21655675616c8dcf8f0bb1747a038ba5bf5836984a52715424f664a34",
+   "support_vectors": {
+    "0": {
+     "0": 1,
+     "1": 2
+    },
+    "1": {
+     "0": 2,
+     "1": 2
+    }
+   }
+  },
+  {
+   "actual_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+   "cells": {
+    "00": 2,
+    "01": 0,
+    "10": 0,
+    "11": 0
+   },
+   "condition_states_with_positive_denominator": [
+    "0"
+   ],
+   "expected_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+   "joint_support_total": 2,
+   "result_hash": "b8a8ab04ec7426bd186c1a14ff75d9c82e6b64734012fba8b3e293bcdf8c9628",
+   "support_vectors": {
+    "0": {
+     "0": 2,
+     "1": 0
+    },
+    "1": {
+     "0": 0,
+     "1": 0
+    }
+   }
+  },
+  {
+   "actual_class": "EXACT_PAIR_SEPARATION",
+   "cells": {
+    "00": 2,
+    "01": 0,
+    "10": 0,
+    "11": 1
+   },
+   "condition_states_with_positive_denominator": [
+    "0",
+    "1"
+   ],
+   "expected_class": "EXACT_PAIR_SEPARATION",
+   "joint_support_total": 3,
+   "result_hash": "a6b7cf9cd99f0a9e4c13d8aa18aa4d05eab3e04c4bb24b40e0c6cb08fbbcd9f8",
+   "support_vectors": {
+    "0": {
+     "0": 2,
+     "1": 0
+    },
+    "1": {
+     "0": 0,
+     "1": 1
+    }
+   }
+  },
+  {
+   "actual_class": "EXACT_PAIR_SEPARATION",
+   "cells": {
+    "00": 2,
+    "01": 0,
+    "10": 0,
+    "11": 2
+   },
+   "condition_states_with_positive_denominator": [
+    "0",
+    "1"
+   ],
+   "expected_class": "EXACT_PAIR_SEPARATION",
+   "joint_support_total": 4,
+   "result_hash": "a272dbf455c4d7447a12a72f411b5e25da97c099f8909f968924a792732c741e",
+   "support_vectors": {
+    "0": {
+     "0": 2,
+     "1": 0
+    },
+    "1": {
+     "0": 0,
+     "1": 2
+    }
+   }
+  },
+  {
+   "actual_class": "NO_PAIR_SEPARATION",
+   "cells": {
+    "00": 2,
+    "01": 0,
+    "10": 1,
+    "11": 0
+   },
+   "condition_states_with_positive_denominator": [
+    "0",
+    "1"
+   ],
+   "expected_class": "NO_PAIR_SEPARATION",
+   "joint_support_total": 3,
+   "result_hash": "290bc9f36c5e92acca4991f4f5b5feac8a19f6163b5bb7330d6adbf13802d6d8",
+   "support_vectors": {
+    "0": {
+     "0": 2,
+     "1": 0
+    },
+    "1": {
+     "0": 1,
+     "1": 0
+    }
+   }
+  },
+  {
+   "actual_class": "NO_PAIR_SEPARATION",
+   "cells": {
+    "00": 2,
+    "01": 0,
+    "10": 1,
+    "11": 1
+   },
+   "condition_states_with_positive_denominator": [
+    "0",
+    "1"
+   ],
+   "expected_class": "NO_PAIR_SEPARATION",
+   "joint_support_total": 4,
+   "result_hash": "8e17d2a58777c5bf73066abb5e4a0dbce77e91b129ff798ff43422520b9a2de9",
+   "support_vectors": {
+    "0": {
+     "0": 2,
+     "1": 0
+    },
+    "1": {
+     "0": 1,
+     "1": 1
+    }
+   }
+  },
+  {
+   "actual_class": "NO_PAIR_SEPARATION",
+   "cells": {
+    "00": 2,
+    "01": 0,
+    "10": 1,
+    "11": 2
+   },
+   "condition_states_with_positive_denominator": [
+    "0",
+    "1"
+   ],
+   "expected_class": "NO_PAIR_SEPARATION",
+   "joint_support_total": 5,
+   "result_hash": "cd6f942025b3c144dfd2ddeb6454aa69651b3b4c5d9383f57cecc0e269fca61c",
+   "support_vectors": {
+    "0": {
+     "0": 2,
+     "1": 0
+    },
+    "1": {
+     "0": 1,
+     "1": 2
+    }
+   }
+  },
+  {
+   "actual_class": "NO_PAIR_SEPARATION",
+   "cells": {
+    "00": 2,
+    "01": 0,
+    "10": 2,
+    "11": 0
+   },
+   "condition_states_with_positive_denominator": [
+    "0",
+    "1"
+   ],
+   "expected_class": "NO_PAIR_SEPARATION",
+   "joint_support_total": 4,
+   "result_hash": "7500746aad645ffbc524b5cf61229af2df5aea026fcb76ee4b52cbd15b922f47",
+   "support_vectors": {
+    "0": {
+     "0": 2,
+     "1": 0
+    },
+    "1": {
+     "0": 2,
+     "1": 0
+    }
+   }
+  },
+  {
+   "actual_class": "NO_PAIR_SEPARATION",
+   "cells": {
+    "00": 2,
+    "01": 0,
+    "10": 2,
+    "11": 1
+   },
+   "condition_states_with_positive_denominator": [
+    "0",
+    "1"
+   ],
+   "expected_class": "NO_PAIR_SEPARATION",
+   "joint_support_total": 5,
+   "result_hash": "4990312106db52dc6950d9c2b5fbcd5f248bed8024b1784d96652b80b5c46aac",
+   "support_vectors": {
+    "0": {
+     "0": 2,
+     "1": 0
+    },
+    "1": {
+     "0": 2,
+     "1": 1
+    }
+   }
+  },
+  {
+   "actual_class": "NO_PAIR_SEPARATION",
+   "cells": {
+    "00": 2,
+    "01": 0,
+    "10": 2,
+    "11": 2
+   },
+   "condition_states_with_positive_denominator": [
+    "0",
+    "1"
+   ],
+   "expected_class": "NO_PAIR_SEPARATION",
+   "joint_support_total": 6,
+   "result_hash": "000fbca64a401e46e713a4f91b4db1ddead849deaf01e76c226dfdf77aae00e9",
+   "support_vectors": {
+    "0": {
+     "0": 2,
+     "1": 0
+    },
+    "1": {
+     "0": 2,
+     "1": 2
+    }
+   }
+  },
+  {
+   "actual_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+   "cells": {
+    "00": 2,
+    "01": 1,
+    "10": 0,
+    "11": 0
+   },
+   "condition_states_with_positive_denominator": [
+    "0"
+   ],
+   "expected_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+   "joint_support_total": 3,
+   "result_hash": "dfdbf7d8e2867c05965fb0c1582429dd5c55375ef99a88ac986dcb3cd213873f",
+   "support_vectors": {
+    "0": {
+     "0": 2,
+     "1": 1
+    },
+    "1": {
+     "0": 0,
+     "1": 0
+    }
+   }
+  },
+  {
+   "actual_class": "NO_PAIR_SEPARATION",
+   "cells": {
+    "00": 2,
+    "01": 1,
+    "10": 0,
+    "11": 1
+   },
+   "condition_states_with_positive_denominator": [
+    "0",
+    "1"
+   ],
+   "expected_class": "NO_PAIR_SEPARATION",
+   "joint_support_total": 4,
+   "result_hash": "40ff8619d818c4594a815f986ed12b7648e22cabebb7cebf0c88381190f83c64",
+   "support_vectors": {
+    "0": {
+     "0": 2,
+     "1": 1
+    },
+    "1": {
+     "0": 0,
+     "1": 1
+    }
+   }
+  },
+  {
+   "actual_class": "NO_PAIR_SEPARATION",
+   "cells": {
+    "00": 2,
+    "01": 1,
+    "10": 0,
+    "11": 2
+   },
+   "condition_states_with_positive_denominator": [
+    "0",
+    "1"
+   ],
+   "expected_class": "NO_PAIR_SEPARATION",
+   "joint_support_total": 5,
+   "result_hash": "6bf0d34d3e077373e9fe32062ab1d987179927106a163b28846720e99a0b834d",
+   "support_vectors": {
+    "0": {
+     "0": 2,
+     "1": 1
+    },
+    "1": {
+     "0": 0,
+     "1": 2
+    }
+   }
+  },
+  {
+   "actual_class": "NO_PAIR_SEPARATION",
+   "cells": {
+    "00": 2,
+    "01": 1,
+    "10": 1,
+    "11": 0
+   },
+   "condition_states_with_positive_denominator": [
+    "0",
+    "1"
+   ],
+   "expected_class": "NO_PAIR_SEPARATION",
+   "joint_support_total": 4,
+   "result_hash": "7bc69cf8407434169fce8bfe28f70254d9957895d52f3f1700a4b56a00e85c1d",
+   "support_vectors": {
+    "0": {
+     "0": 2,
+     "1": 1
+    },
+    "1": {
+     "0": 1,
+     "1": 0
+    }
+   }
+  },
+  {
+   "actual_class": "NO_PAIR_SEPARATION",
+   "cells": {
+    "00": 2,
+    "01": 1,
+    "10": 1,
+    "11": 1
+   },
+   "condition_states_with_positive_denominator": [
+    "0",
+    "1"
+   ],
+   "expected_class": "NO_PAIR_SEPARATION",
+   "joint_support_total": 5,
+   "result_hash": "490e2cacfb041dd2a1f3ce6489b02ec40907850a34b6581d39d9abaca5c16c14",
+   "support_vectors": {
+    "0": {
+     "0": 2,
+     "1": 1
+    },
+    "1": {
+     "0": 1,
+     "1": 1
+    }
+   }
+  },
+  {
+   "actual_class": "NO_PAIR_SEPARATION",
+   "cells": {
+    "00": 2,
+    "01": 1,
+    "10": 1,
+    "11": 2
+   },
+   "condition_states_with_positive_denominator": [
+    "0",
+    "1"
+   ],
+   "expected_class": "NO_PAIR_SEPARATION",
+   "joint_support_total": 6,
+   "result_hash": "820c0281ab75b8d4266c2681fea5540235a9acaf910647280469ce3851afb45a",
+   "support_vectors": {
+    "0": {
+     "0": 2,
+     "1": 1
+    },
+    "1": {
+     "0": 1,
+     "1": 2
+    }
+   }
+  },
+  {
+   "actual_class": "NO_PAIR_SEPARATION",
+   "cells": {
+    "00": 2,
+    "01": 1,
+    "10": 2,
+    "11": 0
+   },
+   "condition_states_with_positive_denominator": [
+    "0",
+    "1"
+   ],
+   "expected_class": "NO_PAIR_SEPARATION",
+   "joint_support_total": 5,
+   "result_hash": "f50377277704cadf4fb5b25dc700fb144d90dbdd37490bcb718fa8f5094a2e25",
+   "support_vectors": {
+    "0": {
+     "0": 2,
+     "1": 1
+    },
+    "1": {
+     "0": 2,
+     "1": 0
+    }
+   }
+  },
+  {
+   "actual_class": "NO_PAIR_SEPARATION",
+   "cells": {
+    "00": 2,
+    "01": 1,
+    "10": 2,
+    "11": 1
+   },
+   "condition_states_with_positive_denominator": [
+    "0",
+    "1"
+   ],
+   "expected_class": "NO_PAIR_SEPARATION",
+   "joint_support_total": 6,
+   "result_hash": "2843cd87ab11f74e2a51dff507ce604bff036982a88d1de4ee2ddc1c6043603b",
+   "support_vectors": {
+    "0": {
+     "0": 2,
+     "1": 1
+    },
+    "1": {
+     "0": 2,
+     "1": 1
+    }
+   }
+  },
+  {
+   "actual_class": "NO_PAIR_SEPARATION",
+   "cells": {
+    "00": 2,
+    "01": 1,
+    "10": 2,
+    "11": 2
+   },
+   "condition_states_with_positive_denominator": [
+    "0",
+    "1"
+   ],
+   "expected_class": "NO_PAIR_SEPARATION",
+   "joint_support_total": 7,
+   "result_hash": "531b933022e1fb19dd4fe4338573c1059fc7d7f305271844bd6a6e92d77efdb8",
+   "support_vectors": {
+    "0": {
+     "0": 2,
+     "1": 1
+    },
+    "1": {
+     "0": 2,
+     "1": 2
+    }
+   }
+  },
+  {
+   "actual_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+   "cells": {
+    "00": 2,
+    "01": 2,
+    "10": 0,
+    "11": 0
+   },
+   "condition_states_with_positive_denominator": [
+    "0"
+   ],
+   "expected_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+   "joint_support_total": 4,
+   "result_hash": "740b73bd6909f5e1329e190015d0e4db80678869872dffa8e324d37ed429e76b",
+   "support_vectors": {
+    "0": {
+     "0": 2,
+     "1": 2
+    },
+    "1": {
+     "0": 0,
+     "1": 0
+    }
+   }
+  },
+  {
+   "actual_class": "NO_PAIR_SEPARATION",
+   "cells": {
+    "00": 2,
+    "01": 2,
+    "10": 0,
+    "11": 1
+   },
+   "condition_states_with_positive_denominator": [
+    "0",
+    "1"
+   ],
+   "expected_class": "NO_PAIR_SEPARATION",
+   "joint_support_total": 5,
+   "result_hash": "e95bd5677a6d626e3ed2db5680ccd911ba24ccd36e183072cbfe175d95e2f82c",
+   "support_vectors": {
+    "0": {
+     "0": 2,
+     "1": 2
+    },
+    "1": {
+     "0": 0,
+     "1": 1
+    }
+   }
+  },
+  {
+   "actual_class": "NO_PAIR_SEPARATION",
+   "cells": {
+    "00": 2,
+    "01": 2,
+    "10": 0,
+    "11": 2
+   },
+   "condition_states_with_positive_denominator": [
+    "0",
+    "1"
+   ],
+   "expected_class": "NO_PAIR_SEPARATION",
+   "joint_support_total": 6,
+   "result_hash": "63da02dfe2d22e9904cccc022c684cf035f8508966b6ffed9b170bb1bab55418",
+   "support_vectors": {
+    "0": {
+     "0": 2,
+     "1": 2
+    },
+    "1": {
+     "0": 0,
+     "1": 2
+    }
+   }
+  },
+  {
+   "actual_class": "NO_PAIR_SEPARATION",
+   "cells": {
+    "00": 2,
+    "01": 2,
+    "10": 1,
+    "11": 0
+   },
+   "condition_states_with_positive_denominator": [
+    "0",
+    "1"
+   ],
+   "expected_class": "NO_PAIR_SEPARATION",
+   "joint_support_total": 5,
+   "result_hash": "e816ecdb2764957499a4676890f39a4e237f93c4d85892538a694488761dd46e",
+   "support_vectors": {
+    "0": {
+     "0": 2,
+     "1": 2
+    },
+    "1": {
+     "0": 1,
+     "1": 0
+    }
+   }
+  },
+  {
+   "actual_class": "NO_PAIR_SEPARATION",
+   "cells": {
+    "00": 2,
+    "01": 2,
+    "10": 1,
+    "11": 1
+   },
+   "condition_states_with_positive_denominator": [
+    "0",
+    "1"
+   ],
+   "expected_class": "NO_PAIR_SEPARATION",
+   "joint_support_total": 6,
+   "result_hash": "c0ed110cd370c503c470ff4f60847ed5208f1b34c879ae497bdf68f974a6fa4d",
+   "support_vectors": {
+    "0": {
+     "0": 2,
+     "1": 2
+    },
+    "1": {
+     "0": 1,
+     "1": 1
+    }
+   }
+  },
+  {
+   "actual_class": "NO_PAIR_SEPARATION",
+   "cells": {
+    "00": 2,
+    "01": 2,
+    "10": 1,
+    "11": 2
+   },
+   "condition_states_with_positive_denominator": [
+    "0",
+    "1"
+   ],
+   "expected_class": "NO_PAIR_SEPARATION",
+   "joint_support_total": 7,
+   "result_hash": "75b574ed43e21b116184ffcdd03244dd2c2251ce3bd9c5b347d8a01308dde267",
+   "support_vectors": {
+    "0": {
+     "0": 2,
+     "1": 2
+    },
+    "1": {
+     "0": 1,
+     "1": 2
+    }
+   }
+  },
+  {
+   "actual_class": "NO_PAIR_SEPARATION",
+   "cells": {
+    "00": 2,
+    "01": 2,
+    "10": 2,
+    "11": 0
+   },
+   "condition_states_with_positive_denominator": [
+    "0",
+    "1"
+   ],
+   "expected_class": "NO_PAIR_SEPARATION",
+   "joint_support_total": 6,
+   "result_hash": "7ba946f19d07211e8139d0193c721a2bf61039e5585a87553ed7d3e52164134b",
+   "support_vectors": {
+    "0": {
+     "0": 2,
+     "1": 2
+    },
+    "1": {
+     "0": 2,
+     "1": 0
+    }
+   }
+  },
+  {
+   "actual_class": "NO_PAIR_SEPARATION",
+   "cells": {
+    "00": 2,
+    "01": 2,
+    "10": 2,
+    "11": 1
+   },
+   "condition_states_with_positive_denominator": [
+    "0",
+    "1"
+   ],
+   "expected_class": "NO_PAIR_SEPARATION",
+   "joint_support_total": 7,
+   "result_hash": "783d0d3f8ee23a157dabe1f9a714c386e8b006a333e545f4c291a8a5ae38497e",
+   "support_vectors": {
+    "0": {
+     "0": 2,
+     "1": 2
+    },
+    "1": {
+     "0": 2,
+     "1": 1
+    }
+   }
+  },
+  {
+   "actual_class": "NO_PAIR_SEPARATION",
+   "cells": {
+    "00": 2,
+    "01": 2,
+    "10": 2,
+    "11": 2
+   },
+   "condition_states_with_positive_denominator": [
+    "0",
+    "1"
+   ],
+   "expected_class": "NO_PAIR_SEPARATION",
+   "joint_support_total": 8,
+   "result_hash": "913c7242f0cb348c9eca6d87d500d51857d1a7b480a907ded3b0fc3e450b6b03",
+   "support_vectors": {
+    "0": {
+     "0": 2,
+     "1": 2
+    },
+    "1": {
+     "0": 2,
+     "1": 2
+    }
+   }
+  }
+ ]
+}

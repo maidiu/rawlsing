@@ -1,0 +1,10 @@
+{
+  "status": "PRE_EXECUTION_CORRECTION_ORIGINAL_ORACLE_PRESERVED",
+  "original_oracle_sha256": "321681bb0918e4119e3053aef8f0a6cb0d9db434eadc0a3225f897a686a55f79",
+  "field": "new_independent_row_mutation.respondent",
+  "original": "R1",
+  "corrected": "R2",
+  "reason": "Passive source inspection shows R2 carries X=0,Y=0 and R1 carries X=1,Y=1. The independently frozen numerical mutation and expected forward/reverse counts remain unchanged; use the zero-valued R2 row.",
+  "cut": "Before any PV2/accepted owner Python import or execution; no original oracle or candidate file edited.",
+  "source": "candidate/repro/pv2_original_scope_register.py:_register_native_inventory"
+}

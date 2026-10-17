@@ -1,0 +1,5 @@
+from pathlib import Path
+import sys,shutil,json,subprocess
+R=Path(__file__).resolve().parents[1];RT=R/'runtime_root';dest=RT/'pv2i_checkpoint_attack';shutil.copytree(RT/'pv2i_cold',dest)
+p=next((dest/'ledger').rglob('b01e_checkpoint.json'));v=json.loads(p.read_text());before=v['records'][0]['receipt_projection']['result_refs'][0];v['records'][0]['receipt_projection']['result_refs'][0]={'kind':before['kind'],'object_id':'urn:pv2i:forged-fact','content_hash':'a'*64};p.write_text(json.dumps(v,sort_keys=True)+'\n')
+cmd=[sys.executable,str(R/'repro/cold_child.py'),str(dest),'replay','cold_checkpoint_payload_tamper'];c=subprocess.run(cmd,capture_output=True,text=True);(R/'observations/cold_checkpoint_payload_tamper.stdout').write_text(c.stdout+c.stderr);(R/'observations/cold_checkpoint_payload_tamper.json').write_text(json.dumps({'argv':cmd,'exit':c.returncode,'field':'checkpoint.records[0].receipt_projection.result_refs[0] without new checkpoint digest','stderr':c.stderr,'stdout':c.stdout},indent=2)+'\n');print('CHECKPOINT_TAMPER_EXIT',c.returncode)

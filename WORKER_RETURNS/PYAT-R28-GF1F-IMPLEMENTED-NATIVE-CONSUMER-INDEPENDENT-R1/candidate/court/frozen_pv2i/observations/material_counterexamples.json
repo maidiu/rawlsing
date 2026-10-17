@@ -1,0 +1,85 @@
+{
+  "self_reissued_E": {
+    "accepted": true,
+    "old_root": "49f0f51866d3327aca2b7d8910517c0317a85c6b7fd3f011c9ffd6634c6218bf",
+    "new_root": "3a3b13760148da3e6d8d85db949b93e1288fa0479befd9521f18fc2e78c4f77b",
+    "foreign_ref": {
+      "kind": "PV2I_FOREIGN",
+      "object_id": "urn:pv2i:independent-self-issued-E",
+      "content_hash": "145493eda25c8bfb3f52824b53814785b2fba7a6fa4b9b07cfbeecbdf83b9a07"
+    },
+    "links": 6,
+    "held": 2,
+    "same_actual_consumers": true,
+    "durable_calls": [
+      3,
+      3
+    ]
+  },
+  "equal_count_held_substitution": {
+    "accepted": true,
+    "counts": [
+      6,
+      2
+    ],
+    "actual_held_slots": [
+      [
+        "PV2-ADULT-A",
+        "PV2I-SUBSTITUTED-HELD"
+      ],
+      [
+        "PV2-ADULT-B",
+        "ORDERED"
+      ]
+    ],
+    "new_root": "956c7555db0dbddf396f0ef44e97d78d96dcced39ab0e73aff88348ebf11a595"
+  },
+  "unrecognized_original_item_scope": {
+    "accepted": true,
+    "original_item_scope_ref": {
+      "kind": "PV2I_FOREIGN",
+      "object_id": "urn:pv2i:unrecognized-original-item-scope",
+      "content_hash": "97842e61d458b68fee3c436ab3223bbd3db9ac5d2dfa65f85dc47431484d13cd"
+    },
+    "new_original_key": "c50a031dbd4ce4f9a10333a7cd20688337143620ca41f92dccdda3fc23484460",
+    "same_actual_consumers": true
+  },
+  "grant_current_read": {
+    "servable": true,
+    "returned_grant": {
+      "grant": "REAL_PERMISSION_LABEL",
+      "issuer": "PV2I-UNTRUSTED",
+      "ceiling": [
+        "PRODUCTION"
+      ],
+      "scope": "sourcefree synthetic native rows only; no survey microdata",
+      "revoked": false,
+      "revocation_reason": null
+    },
+    "actual_relation_permission_ceilings": [
+      [
+        "SOURCE_FREE_DEV"
+      ]
+    ],
+    "limit": "No actual production permission gained: downstream material retains SOURCE_FREE_DEV; foreign metadata accepted by PV2 read gate."
+  },
+  "tampered_current_material": {
+    "servable": true,
+    "unchanged_consumer_ref": {
+      "kind": "EXACT_CONDITIONAL_SUPPORT_PROFILE_WITHIN_SCOPE@1.0.0",
+      "object_id": "urn:rawlsing:field-forge:conditional-support:sha256:5c178013b6aa7cc843ecdc9d3bd92f705777332d39dcb755448f3bab9decc8b5",
+      "content_hash": "5c178013b6aa7cc843ecdc9d3bd92f705777332d39dcb755448f3bab9decc8b5"
+    },
+    "served_denominator": 999
+  },
+  "selective_revocation_limit": {
+    "read": {
+      "servable": false,
+      "revocation_reason": "PV2I_SOURCE_A_REQUEST",
+      "historical_links": 6,
+      "claim": "PV2_REVOKED_FIXTURE_USE_HISTORICAL_RECORD_ONLY"
+    },
+    "scope": "PV2-ADULT-A",
+    "limit": "API has one global revoked bit and textual scope, no per-source issuer/currentness resolver. Cannot lawfully issue selective current-source grant here; source-selective current-use remains HOLD."
+  }
+}

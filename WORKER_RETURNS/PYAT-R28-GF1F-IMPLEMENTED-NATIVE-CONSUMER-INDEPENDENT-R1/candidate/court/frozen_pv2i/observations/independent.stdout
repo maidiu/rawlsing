@@ -1,0 +1,176 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.11.3, pytest-9.0.2, pluggy-1.6.0 -- /usr/local/bin/python3
+rootdir: /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1
+collecting ... collected 48 items
+
+../tests/test_independent.py::test_exact_independent_inventory_and_six_real_consumers PASSED [  2%]
+../tests/test_independent.py::test_foreign_reference_with_fixed_register_refused[original_U_ref] PASSED [  4%]
+../tests/test_independent.py::test_foreign_reference_with_fixed_register_refused[independent_E_ref] PASSED [  6%]
+../tests/test_independent.py::test_foreign_reference_with_fixed_register_refused[independent_custody_ref] PASSED [  8%]
+../tests/test_independent.py::test_foreign_reference_with_fixed_register_refused[original_operation_scope_ref] PASSED [ 10%]
+../tests/test_independent.py::test_coherently_reissued_register_cannot_authenticate_itself[original_U_ref] FAILED [ 12%]
+../tests/test_independent.py::test_coherently_reissued_register_cannot_authenticate_itself[independent_E_ref] FAILED [ 14%]
+../tests/test_independent.py::test_coherently_reissued_register_cannot_authenticate_itself[independent_custody_ref] FAILED [ 16%]
+../tests/test_independent.py::test_coherently_reissued_register_cannot_authenticate_itself[original_operation_scope_ref] FAILED [ 18%]
+../tests/test_independent.py::test_fixed_register_rejects_original_metadata_mutation[form-PV2I-FOREIGN-FORM] PASSED [ 20%]
+../tests/test_independent.py::test_fixed_register_rejects_original_metadata_mutation[respondent_unit-HOUSEHOLD] PASSED [ 22%]
+../tests/test_independent.py::test_fixed_register_rejects_original_metadata_mutation[language-PV2I-OTHER] PASSED [ 25%]
+../tests/test_independent.py::test_fixed_register_rejects_original_metadata_mutation[instrument_release-EDITION2] PASSED [ 27%]
+../tests/test_independent.py::test_fixed_register_rejects_original_metadata_mutation[administered_occurrence-SECOND] PASSED [ 29%]
+../tests/test_independent.py::test_fixed_register_rejects_original_metadata_mutation[option_scope-value5] PASSED [ 31%]
+../tests/test_independent.py::test_two_held_omission_same_six_runnable_refused PASSED [ 33%]
+../tests/test_independent.py::test_A_only_scope_refused PASSED           [ 35%]
+../tests/test_independent.py::test_equal_count_held_relabel_with_fixed_register_refused PASSED [ 37%]
+../tests/test_independent.py::test_equal_count_held_relabel_with_self_reissued_register_refused FAILED [ 39%]
+../tests/test_independent.py::test_complete_original_source_binding[source_release_ref] PASSED [ 41%]
+../tests/test_independent.py::test_complete_original_source_binding[empirical_universe_ref] PASSED [ 43%]
+../tests/test_independent.py::test_complete_original_source_binding[original_item_scope_ref] FAILED [ 45%]
+../tests/test_independent.py::test_complete_original_source_binding[routing_refs] PASSED [ 47%]
+../tests/test_independent.py::test_swapped_actual_query_target_conditioner_refused PASSED [ 50%]
+../tests/test_independent.py::test_reversed_role_mask_refused PASSED     [ 52%]
+../tests/test_independent.py::test_current_read_refuses_foreign_or_widened_fixture_grant[issuer-PV2I-SELF-ISSUER] FAILED [ 54%]
+../tests/test_independent.py::test_current_read_refuses_foreign_or_widened_fixture_grant[grant-SIGNED_REAL_SOURCE_GRANT] FAILED [ 56%]
+../tests/test_independent.py::test_current_read_refuses_foreign_or_widened_fixture_grant[ceiling-value2] FAILED [ 58%]
+../tests/test_independent.py::test_execution_refuses_self_rehashed_fixture_grant[issuer-PV2I-SELF-ISSUER] FAILED [ 60%]
+../tests/test_independent.py::test_execution_refuses_self_rehashed_fixture_grant[grant-SIGNED_REAL_SOURCE_GRANT] FAILED [ 62%]
+../tests/test_independent.py::test_execution_refuses_self_rehashed_fixture_grant[ceiling-value2] FAILED [ 64%]
+../tests/test_independent.py::test_explicit_revoked_register_blocks PASSED [ 66%]
+../tests/test_independent.py::test_historical_register_cannot_restore_current_authorization FAILED [ 68%]
+../tests/test_independent.py::test_current_consumer_rejects_payload_tamper_same_ref FAILED [ 70%]
+../tests/test_independent.py::test_current_read_does_not_alias_historical_report FAILED [ 72%]
+../tests/test_independent.py::test_role_validation_fails_closed_on_incomplete_material[missing_material] FAILED [ 75%]
+../tests/test_independent.py::test_role_validation_fails_closed_on_incomplete_material[missing_roles] FAILED [ 77%]
+../tests/test_independent.py::test_role_validation_fails_closed_on_incomplete_material[missing_conditioner] FAILED [ 79%]
+../tests/test_independent.py::test_generic_native_labels_not_specialized_Q86 FAILED [ 81%]
+../tests/test_independent.py::test_independent_row_mutation_reaches_actual_consumers PASSED [ 83%]
+../tests/test_independent.py::test_coherent_household_relabel_cannot_reuse_respondent_fact FAILED [ 85%]
+../tests/test_independent.py::test_genuine_cold_process_preserves_journal_and_no_new_durable_units PASSED [ 87%]
+../tests/test_independent.py::test_changed_actual_journal_result_reference_is_not_ignored FAILED [ 89%]
+../tests/test_independent.py::test_changed_checkpoint_receipt_payload_refused PASSED [ 91%]
+../tests/test_independent.py::test_fresh_process_current_read_refuses_self_issued_grant FAILED [ 93%]
+../tests/test_independent.py::test_missing_source_and_changed_edition_never_fake_cold_success PASSED [ 95%]
+../tests/test_independent.py::test_real_empty_risk_I03_and_Field_Forge_typed_states PASSED [ 97%]
+../tests/test_independent.py::test_second_independent_row_mutation_changes_I05_winning_consumer PASSED [100%]
+
+=================================== FAILURES ===================================
+_ test_coherently_reissued_register_cannot_authenticate_itself[original_U_ref] _
+../tests/test_independent.py:39: in test_coherently_reissued_register_cannot_authenticate_itself
+    with pytest.raises(ValueError):run(fx,e,p,reg)
+E   Failed: DID NOT RAISE <class 'ValueError'>
+_ test_coherently_reissued_register_cannot_authenticate_itself[independent_E_ref] _
+../tests/test_independent.py:39: in test_coherently_reissued_register_cannot_authenticate_itself
+    with pytest.raises(ValueError):run(fx,e,p,reg)
+E   Failed: DID NOT RAISE <class 'ValueError'>
+_ test_coherently_reissued_register_cannot_authenticate_itself[independent_custody_ref] _
+../tests/test_independent.py:39: in test_coherently_reissued_register_cannot_authenticate_itself
+    with pytest.raises(ValueError):run(fx,e,p,reg)
+E   Failed: DID NOT RAISE <class 'ValueError'>
+_ test_coherently_reissued_register_cannot_authenticate_itself[original_operation_scope_ref] _
+../tests/test_independent.py:39: in test_coherently_reissued_register_cannot_authenticate_itself
+    with pytest.raises(ValueError):run(fx,e,p,reg)
+E   Failed: DID NOT RAISE <class 'ValueError'>
+______ test_equal_count_held_relabel_with_self_reissued_register_refused _______
+../tests/test_independent.py:61: in test_equal_count_held_relabel_with_self_reissued_register_refused
+    with pytest.raises(ValueError):run(fx,e,p,reg)
+E   Failed: DID NOT RAISE <class 'ValueError'>
+________ test_complete_original_source_binding[original_item_scope_ref] ________
+../tests/test_independent.py:68: in test_complete_original_source_binding
+    with pytest.raises(ValueError):run(fx,e,p)
+E   Failed: DID NOT RAISE <class 'ValueError'>
+_ test_current_read_refuses_foreign_or_widened_fixture_grant[issuer-PV2I-SELF-ISSUER] _
+../tests/test_independent.py:83: in test_current_read_refuses_foreign_or_widened_fixture_grant
+    assert reading['servable'] is False
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError
+_ test_current_read_refuses_foreign_or_widened_fixture_grant[grant-SIGNED_REAL_SOURCE_GRANT] _
+../tests/test_independent.py:83: in test_current_read_refuses_foreign_or_widened_fixture_grant
+    assert reading['servable'] is False
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError
+__ test_current_read_refuses_foreign_or_widened_fixture_grant[ceiling-value2] __
+../tests/test_independent.py:83: in test_current_read_refuses_foreign_or_widened_fixture_grant
+    assert reading['servable'] is False
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError
+_ test_execution_refuses_self_rehashed_fixture_grant[issuer-PV2I-SELF-ISSUER] __
+../tests/test_independent.py:88: in test_execution_refuses_self_rehashed_fixture_grant
+    with pytest.raises(ValueError):run(fx,register=reg)
+E   Failed: DID NOT RAISE <class 'ValueError'>
+_ test_execution_refuses_self_rehashed_fixture_grant[grant-SIGNED_REAL_SOURCE_GRANT] _
+../tests/test_independent.py:88: in test_execution_refuses_self_rehashed_fixture_grant
+    with pytest.raises(ValueError):run(fx,register=reg)
+E   Failed: DID NOT RAISE <class 'ValueError'>
+______ test_execution_refuses_self_rehashed_fixture_grant[ceiling-value2] ______
+../tests/test_independent.py:88: in test_execution_refuses_self_rehashed_fixture_grant
+    with pytest.raises(ValueError):run(fx,register=reg)
+E   Failed: DID NOT RAISE <class 'ValueError'>
+________ test_historical_register_cannot_restore_current_authorization _________
+../tests/test_independent.py:98: in test_historical_register_cannot_restore_current_authorization
+    assert V.read_current_consumer_material(fx['register'],r)['servable'] is False, 'Old unrevoked snapshot reauthorizes after revocation; no independent current registry'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: Old unrevoked snapshot reauthorizes after revocation; no independent current registry
+____________ test_current_consumer_rejects_payload_tamper_same_ref _____________
+../tests/test_independent.py:104: in test_current_consumer_rejects_payload_tamper_same_ref
+    assert reading['servable'] is False,'Current read serves changed payload under unchanged consumer reference'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: Current read serves changed payload under unchanged consumer reference
+______________ test_current_read_does_not_alias_historical_report ______________
+../tests/test_independent.py:109: in test_current_read_does_not_alias_historical_report
+    assert history==r,'Read result aliases original historical material'
+           ^^^^^^^^^^
+E   AssertionError: Read result aliases original historical material
+__ test_role_validation_fails_closed_on_incomplete_material[missing_material] __
+../tests/test_independent.py:117: in test_role_validation_fails_closed_on_incomplete_material
+    with pytest.raises(ValueError):V.validate_consumer_roles_against_declared(links,fx['register'])
+E   Failed: DID NOT RAISE <class 'ValueError'>
+___ test_role_validation_fails_closed_on_incomplete_material[missing_roles] ____
+../tests/test_independent.py:117: in test_role_validation_fails_closed_on_incomplete_material
+    with pytest.raises(ValueError):V.validate_consumer_roles_against_declared(links,fx['register'])
+E   Failed: DID NOT RAISE <class 'ValueError'>
+_ test_role_validation_fails_closed_on_incomplete_material[missing_conditioner] _
+../tests/test_independent.py:117: in test_role_validation_fails_closed_on_incomplete_material
+    with pytest.raises(ValueError):V.validate_consumer_roles_against_declared(links,fx['register'])
+E   Failed: DID NOT RAISE <class 'ValueError'>
+________________ test_generic_native_labels_not_specialized_Q86 ________________
+../tests/test_independent.py:123: in test_generic_native_labels_not_specialized_Q86
+    assert role['CONDITIONER']['source_native_variable'] in ('X','Y') and role['TARGET']['source_native_variable'] in ('X','Y')
+                                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError
+_________ test_coherent_household_relabel_cannot_reuse_respondent_fact _________
+../tests/test_independent.py:140: in test_coherent_household_relabel_cannot_reuse_respondent_fact
+    with pytest.raises(ValueError):run(fx,e,p,reg)
+E   Failed: DID NOT RAISE <class 'ValueError'>
+_________ test_changed_actual_journal_result_reference_is_not_ignored __________
+../tests/test_independent.py:148: in test_changed_actual_journal_result_reference_is_not_ignored
+    assert d['exit']!=0, 'Changed result_refs in actual side-effect journal ignored by successful replay'
+           ^^^^^^^^^^^^
+E   AssertionError: Changed result_refs in actual side-effect journal ignored by successful replay
+__________ test_fresh_process_current_read_refuses_self_issued_grant ___________
+../tests/test_independent.py:155: in test_fresh_process_current_read_refuses_self_issued_grant
+    assert not d['servable'], 'Fresh process serves persisted history under requester-created production-ceiling grant'
+E   AssertionError: Fresh process serves persisted history under requester-created production-ceiling grant
+- generated xml file: /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r11-pv2i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R11-PV2I-INDEPENDENT-ORIGINAL-SCOPE-R1/observations/independent.xml -
+=========================== short test summary info ============================
+FAILED ../tests/test_independent.py::test_coherently_reissued_register_cannot_authenticate_itself[original_U_ref] - Failed: DID NOT RAISE <class 'ValueError'>
+FAILED ../tests/test_independent.py::test_coherently_reissued_register_cannot_authenticate_itself[independent_E_ref] - Failed: DID NOT RAISE <class 'ValueError'>
+FAILED ../tests/test_independent.py::test_coherently_reissued_register_cannot_authenticate_itself[independent_custody_ref] - Failed: DID NOT RAISE <class 'ValueError'>
+FAILED ../tests/test_independent.py::test_coherently_reissued_register_cannot_authenticate_itself[original_operation_scope_ref] - Failed: DID NOT RAISE <class 'ValueError'>
+FAILED ../tests/test_independent.py::test_equal_count_held_relabel_with_self_reissued_register_refused - Failed: DID NOT RAISE <class 'ValueError'>
+FAILED ../tests/test_independent.py::test_complete_original_source_binding[original_item_scope_ref] - Failed: DID NOT RAISE <class 'ValueError'>
+FAILED ../tests/test_independent.py::test_current_read_refuses_foreign_or_widened_fixture_grant[issuer-PV2I-SELF-ISSUER] - AssertionError
+FAILED ../tests/test_independent.py::test_current_read_refuses_foreign_or_widened_fixture_grant[grant-SIGNED_REAL_SOURCE_GRANT] - AssertionError
+FAILED ../tests/test_independent.py::test_current_read_refuses_foreign_or_widened_fixture_grant[ceiling-value2] - AssertionError
+FAILED ../tests/test_independent.py::test_execution_refuses_self_rehashed_fixture_grant[issuer-PV2I-SELF-ISSUER] - Failed: DID NOT RAISE <class 'ValueError'>
+FAILED ../tests/test_independent.py::test_execution_refuses_self_rehashed_fixture_grant[grant-SIGNED_REAL_SOURCE_GRANT] - Failed: DID NOT RAISE <class 'ValueError'>
+FAILED ../tests/test_independent.py::test_execution_refuses_self_rehashed_fixture_grant[ceiling-value2] - Failed: DID NOT RAISE <class 'ValueError'>
+FAILED ../tests/test_independent.py::test_historical_register_cannot_restore_current_authorization - AssertionError: Old unrevoked snapshot reauthorizes after revocation; no independent current registry
+FAILED ../tests/test_independent.py::test_current_consumer_rejects_payload_tamper_same_ref - AssertionError: Current read serves changed payload under unchanged consumer reference
+FAILED ../tests/test_independent.py::test_current_read_does_not_alias_historical_report - AssertionError: Read result aliases original historical material
+FAILED ../tests/test_independent.py::test_role_validation_fails_closed_on_incomplete_material[missing_material] - Failed: DID NOT RAISE <class 'ValueError'>
+FAILED ../tests/test_independent.py::test_role_validation_fails_closed_on_incomplete_material[missing_roles] - Failed: DID NOT RAISE <class 'ValueError'>
+FAILED ../tests/test_independent.py::test_role_validation_fails_closed_on_incomplete_material[missing_conditioner] - Failed: DID NOT RAISE <class 'ValueError'>
+FAILED ../tests/test_independent.py::test_generic_native_labels_not_specialized_Q86 - AssertionError
+FAILED ../tests/test_independent.py::test_coherent_household_relabel_cannot_reuse_respondent_fact - Failed: DID NOT RAISE <class 'ValueError'>
+FAILED ../tests/test_independent.py::test_changed_actual_journal_result_reference_is_not_ignored - AssertionError: Changed result_refs in actual side-effect journal ignored by successful replay
+FAILED ../tests/test_independent.py::test_fresh_process_current_read_refuses_self_issued_grant - AssertionError: Fresh process serves persisted history under requester-created production-ceiling grant
+======================== 22 failed, 26 passed in 3.24s =========================

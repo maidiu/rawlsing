@@ -1,0 +1,48 @@
+{
+ "branch": "agent/reviewer-pyat-r28-gf1f-implemented-consumer-independent-r1",
+ "candidate": {
+  "branch": "agent/rabochii-pyat-r27-gf1e-actual-native-consumer-implementation-r1",
+  "consumer_sha256": "06dd484b0e9b4b2c9fb0a1583453ac7ffa8c052135304eaaee167a34127cb402",
+  "sha": "eeb726357204653b22458dc267dd70ba0009bd77"
+ },
+ "courts": {
+  "frozen44": {
+   "errors": 0,
+   "failures": 0,
+   "skipped": 0,
+   "tests": 44
+  },
+  "gf1i19": {
+   "errors": 0,
+   "failures": 2,
+   "skipped": 0,
+   "tests": 19
+  },
+  "independent": {
+   "errors": 0,
+   "failures": 0,
+   "skipped": 0,
+   "tests": 100
+  }
+ },
+ "environment_id": "GF1F_LOCAL_REVIEWER",
+ "epoch_id": "GF1F_R28",
+ "git": "git version 2.39.1",
+ "independence": "different model/agent from the GF1E implementer, but SAME persisted session (disclosed in verdict)",
+ "interpreter": "3.11.3",
+ "machine_alias": "LOCAL_SHARED_STORE_HOST",
+ "model": {
+  "actual_model": "deepseek-flash",
+  "actual_reasoning_effort": "NOT_EXPOSED",
+  "commissioned": "GPT-6 High / capable Codex Medium/High genuine Python",
+  "observed": "DeepSeek Harness"
+ },
+ "observed_at_utc": "2026-10-17T08:23:08.816945+00:00",
+ "privacy": "synthetic fixtures only; no SAV/DTA, credentials, or source/actor grant",
+ "pytest": "pytest 9.1.1",
+ "schema": "GF1F_SANITIZED_ENVIRONMENT_PASSPORT_DELTA@1",
+ "sealed_startup": "3686021a0f1c79e5e14c94fc736e1c36f51fddca",
+ "session_alias": "GF1F_R28",
+ "status": "LIVE_VERIFIED",
+ "surface": "S2_LOCAL_HOST"
+}

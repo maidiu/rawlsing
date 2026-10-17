@@ -1,0 +1,162 @@
+{
+  "pv2_residual_hostiles_and_owner_tests": {
+    "claim_grade": "SOURCEFREE_ORIGINAL_SCOPE_CANDIDATE_NOT_ADOPTED",
+    "suites": [
+      {
+        "label": "pv2_hostiles",
+        "source": "tests/test_pv2_original_scope_binding.py",
+        "grade": "NEWLY_AUTHORED_PV2_SOURCEFREE",
+        "tests": 33,
+        "pass": 33,
+        "fail": 0,
+        "error": 0,
+        "skip": 0,
+        "junit": "observations/pv2_hostiles.xml"
+      },
+      {
+        "label": "v2k_author_baseline",
+        "source": "rawlsing_next/tests/test_hq295_v2k_original_identity_successor.py",
+        "grade": "HISTORICAL_V2K_AUTHOR_UNMODIFIED",
+        "tests": 24,
+        "pass": 24,
+        "fail": 0,
+        "error": 0,
+        "skip": 0,
+        "junit": "observations/v2k_author_baseline.xml"
+      },
+      {
+        "label": "pv_21_diagnostics",
+        "source": "rawlsing_next/tests/test_postastra_pv_v2k_independent.py",
+        "grade": "FROZEN_PV_INDEPENDENT_REGRADE_NOT_SEMANTIC_ADOPTION",
+        "tests": 21,
+        "pass": 21,
+        "fail": 0,
+        "error": 0,
+        "skip": 0,
+        "junit": "observations/pv_21_diagnostics.xml",
+        "note": "A diagnostic PASS may reproduce a vulnerability; it is not semantic qualification."
+      },
+      {
+        "label": "owner_suites",
+        "source": "5 accepted-owner suites, unmodified",
+        "grade": "ACCEPTED_OWNER_UNCHANGED",
+        "tests": 111,
+        "pass": 111,
+        "fail": 0,
+        "error": 0,
+        "skip": 0,
+        "junit": "observations/owner_suites.xml"
+      }
+    ],
+    "totals": {"tests": 189, "pass": 189, "fail": 0, "error": 0, "skip": 0},
+    "false_xfails": 0,
+    "not_executed_conversions": 0
+  },
+
+  "defect_closure": {
+    "a_coherent_foreign_U_E_refs": {
+      "pv_court_observed": "4 foreign self-issued issuer refs accepted with ok=True and textual holds only",
+      "pv2_tests": [
+        "test_coherent_foreign_issuer_ref_refused[original_U_ref]",
+        "test_coherent_foreign_issuer_ref_refused[independent_E_ref]",
+        "test_coherent_foreign_issuer_ref_refused[independent_custody_ref]",
+        "test_coherent_foreign_issuer_ref_refused[original_operation_scope_ref]",
+        "test_foreign_issuer_ref_changes_the_original_key"
+      ],
+      "closure": "PV2 matches each issuer ref against the independently precommitted authorized refs and raises PV2_*_ISSUER_NOT_AUTHENTICATED before any durable owner call.",
+      "status": "CLOSED"
+    },
+    "b_dropping_all_held_original_E_members": {
+      "pv_court_observed": "nonrunnable == [] with ok=True; original held identities disappeared from the successor export",
+      "pv2_tests": [
+        "test_dropping_all_held_obligations_refused",
+        "test_dropping_one_held_obligation_with_identical_runnable_output_refused"
+      ],
+      "closure": "The complete obligation multiset (runnable and HELD) must equal the precommitted multiset; removing either HELD obligation raises PV2_ORIGINAL_EXPECTED_SCOPE_ANTI_JOIN.",
+      "status": "CLOSED"
+    },
+    "c_cherry_picked_A_only_E": {
+      "pv_court_observed": "a single-record E passed ok=True locally",
+      "pv2_tests": [
+        "test_cherry_picked_single_obligation_refused",
+        "test_cherry_picked_namespace_refused"
+      ],
+      "closure": "Same multiset anti-join against the independent register, so any omitted label/slot/namespace is refused before execution.",
+      "status": "CLOSED"
+    },
+    "d_reversed_semantic_role_mask": {
+      "pv_court_observed": "(TARGET, CONDITIONER) accepted against the unchanged exact X->Y producer",
+      "pv2_tests": [
+        "test_reversed_semantic_role_mask_refused",
+        "test_reversed_role_mask_also_fails_the_owner_topology_check",
+        "test_declared_roles_bind_the_actual_producer_topology",
+        "test_masked_role_label_rejected_at_consumer_material"
+      ],
+      "closure": "Declared roles are validated against the register, the real query's positional conditioner/target order, and the actual Field Forge consumer role material.",
+      "status": "CLOSED"
+    },
+    "e_foreign_native_form_or_respondent_unit": {
+      "pv_court_observed": "FOREIGN-FORM and HOUSEHOLD accepted with unchanged underlying consumer refs",
+      "pv2_tests": [
+        "test_foreign_form_or_respondent_unit_refused[form-FOREIGN-FORM]",
+        "test_foreign_form_or_respondent_unit_refused[respondent_unit-HOUSEHOLD]",
+        "test_other_relabelled_identity_labels_refused[language|instrument_release|administered_occurrence|option_scope]",
+        "test_form_and_unit_labels_discriminate_the_original_key"
+      ],
+      "closure": "form, respondent_unit, language, instrument_release, administered_occurrence and option_scope are bound to the precommitted trusted original metadata.",
+      "status": "CLOSED"
+    }
+  },
+
+  "additional_pv2_hostiles": [
+    {
+      "name": "same_count_swapped_source_native_item",
+      "test": "test_same_count_swapped_source_native_item_refused",
+      "result": "REFUSED"
+    },
+    {
+      "name": "foreign_replay_ref",
+      "test": "test_foreign_replay_ref_refused",
+      "result": "REFUSED"
+    },
+    {
+      "name": "stale_precommitted_register",
+      "test": "test_stale_precommitted_register_refused",
+      "result": "REFUSED"
+    },
+    {
+      "name": "caller_supplied_inventory_relabel",
+      "test": "test_caller_supplied_inventory_relabel_refused",
+      "result": "REFUSED"
+    },
+    {
+      "name": "revoked_fixture_use_at_execution_and_consumer_read",
+      "test": "test_revoked_fixture_use_blocks_execution_and_current_read",
+      "result": "REFUSED_AT_EXECUTION; historical record only at read"
+    },
+    {
+      "name": "cold_process_separate_interpreter_replay",
+      "test": "repro/pv2_cold_process.py first -> replay",
+      "result": "IDENTICAL_LINKS_HELD_AND_ROOTS; durable calls [3,3] -> [0,0]"
+    },
+    {
+      "name": "altered_expected_digest",
+      "test": "test_altered_expected_digest_refused",
+      "result": "REFUSED"
+    },
+    {
+      "name": "unregistered_scope_key",
+      "test": "test_unregistered_scope_key_refused",
+      "result": "REFUSED"
+    }
+  ],
+
+  "preserved_and_graded": {
+    "v2k_author_24_unmodified_as_baseline": true,
+    "pv_21_frozen_diagnostics_re_graded_distinctly": true,
+    "accepted_owner_111_unmodified": true,
+    "no_false_xfails": true,
+    "no_not_executed_conversion": true,
+    "no_reenactment_of_35_wave_survey_or_f1_f8_global_completion": true
+  }
+}
