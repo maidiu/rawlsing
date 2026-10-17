@@ -1,101 +1,212 @@
 {
+  "candidate_producer": {
+    "git_blob": "2df811d76db258d98d89ffb43c830cb221ff9a7d",
+    "implementation_version": "F6M_NATIVE_DECISION_ADMISSION_REPAIR@1",
+    "method": "PRE553_TARGET_JOINT_STANDARDIZATION@1",
+    "path": "WORKER_RETURNS/PYAT-R29-F6N-INDEPENDENT-NATIVE-F6-COURT-R1/03_PHASE_B/F6M_STAGE/rawlsing_next/pre553_heterogeneous_synthesis.py",
+    "sha256": "2930b5cd15c899146e9552b2e6b0efa3fc5835e57e58a6c16d756093e21d3871"
+  },
   "courts": {
-    "f6c_author_57_baseline.xml": {
+    "f6c_author_57_on_repaired.xml": {
       "errors": 0,
-      "failures": 0,
-      "file": "f6c_author_57_baseline.xml",
+      "failed_tests": [
+        "test_custody_imported_module_is_the_corrected_pinned_blob",
+        "test_world_a_native_joint_and_identities_preserved",
+        "test_negative_real_source_admission_is_not_a_grant_itself"
+      ],
+      "failures": 3,
+      "file": "f6c_author_57_on_repaired.xml",
       "skipped": 0,
       "tests": 57
     },
-    "f6j_adversarial_53_baseline.xml": {
+    "f6j_adversarial_53_on_repaired.xml": {
       "errors": 0,
-      "failures": 0,
-      "file": "f6j_adversarial_53_baseline.xml",
+      "failed_tests": [
+        "test_f6j_f1_decision_is_synthetic_candidate_even_when_distribution_is_null",
+        "test_f6j_f1b_null_decision_divergence_is_systematic_not_fixture_artefact",
+        "test_f6j_stratum_level_threshold_exclusion_renormalizes_alpha",
+        "test_f6j_no_person_no_calibration_no_real_source_claimed",
+        "test_f6j_method_identity_and_native_blob_are_pinned"
+      ],
+      "failures": 5,
+      "file": "f6j_adversarial_53_on_repaired.xml",
       "skipped": 0,
       "tests": 53
     },
+    "f6l_inherited_on_repaired.xml": {
+      "errors": 0,
+      "failed_tests": [
+        "test_native_producer_is_the_pinned_corrected_s03fo_blob",
+        "test_p5b_mixed_origin_does_not_launder_an_unverified_source_into_real_output"
+      ],
+      "failures": 2,
+      "file": "f6l_inherited_on_repaired.xml",
+      "skipped": 0,
+      "tests": 26
+    },
     "f6l_inherited_phase_a_on_original.xml": {
       "errors": 0,
+      "failed_tests": [
+        "test_p1_original_world_does_not_assert_a_complete_candidate_when_null",
+        "test_novel_no_positivity_is_not_served_as_complete[P2_NOVEL_2X2_NO_POSITIVITY]",
+        "test_novel_no_positivity_is_not_served_as_complete[P3_NOVEL_3_CATEGORY_NO_POSITIVITY]",
+        "test_p4_unverified_admit_true_cannot_issue_real_source_authority",
+        "test_p5_test_origin_output_never_claims_real_source_authority",
+        "test_p5b_mixed_origin_does_not_launder_an_unverified_source_into_real_output",
+        "test_p7_every_evidence_node_has_authority_ceiling_and_provenance",
+        "test_p7_no_node_exceeds_its_native_parent_authority",
+        "test_p7_test_only_graph_has_no_real_use_ceiling",
+        "test_p8_source_exclusion_must_not_be_silent_complete_renormalization",
+        "test_p9_decision_only_consumer_cannot_consume_null_as_complete"
+      ],
       "failures": 11,
       "file": "f6l_inherited_phase_a_on_original.xml",
       "skipped": 0,
       "tests": 26
     },
+    "f6n_new_on_repaired.xml": {
+      "errors": 0,
+      "failed_tests": [
+        "test_n6_producer_hash_substitution_is_detectable"
+      ],
+      "failures": 1,
+      "file": "f6n_new_on_repaired.xml",
+      "skipped": 0,
+      "tests": 8
+    },
     "f6n_phase_a_new_falsifiers_on_original.xml": {
       "errors": 0,
+      "failed_tests": [
+        "test_n1_rare_category_not_silently_renormalized_into_false_complete"
+      ],
       "failures": 1,
       "file": "f6n_phase_a_new_falsifiers_on_original.xml",
       "skipped": 0,
       "tests": 8
     },
-    "inherited_s03fo_35_baseline.xml": {
+    "f6n_phase_b_diagnostics.xml": {
       "errors": 0,
+      "failed_tests": [],
       "failures": 0,
-      "file": "inherited_s03fo_35_baseline.xml",
+      "file": "f6n_phase_b_diagnostics.xml",
+      "skipped": 0,
+      "tests": 7
+    },
+    "inherited_s03fo_35_on_repaired.xml": {
+      "errors": 0,
+      "failed_tests": [],
+      "failures": 0,
+      "file": "inherited_s03fo_35_on_repaired.xml",
       "skipped": 0,
       "tests": 35
     }
   },
   "f6j_82": {
-    "evidence": "05_LOGS/f6j_native_vs_frozen_82_baseline.log",
-    "evidence_path": "05_PHASE_B/f6j_native_vs_frozen_82.json",
-    "evidence_sha256": "500edb0168f665f483eb105e9c538de8f4ce6c1c6338d75426cddd22ff98a7c8",
+    "evidence": "05_PHASE_B/f6j_native_vs_frozen_82_on_repaired.json",
+    "evidence_sha256": "a4a24f3ad88610335aa18e6776f6c902e6d1143284e6a5b49ec43b573fc45ae1",
     "failed": 0,
     "passed": 82,
     "total": 82
   },
-  "f6m_return": {
-    "conclusion": "F6M published no worker return and no runnable implementation; only its launch commission is present. Phase B repaired execution is impossible. The inherited original baseline remains unchanged.",
-    "f6m_branch": "agent/rabochii-pyat-r29-f6m-native-decision-admission-executable-repair-r1",
-    "f6m_changed_paths": [
-      "A\tWORKER_COMMISSIONS/PYAT-R29-F6M-ACTUAL-F6-NATIVE-AUTHORITY-REPAIR-R1/00_COMMISSION.md"
+  "f6m_final_tip": "5ed8e5389dd3510cf29a4947b04bd05901c8d213",
+  "f6m_implementation_commit": "1f1c72f883d0d7a6d11d7df8bad75c37d06c3ffa",
+  "failure_classification": {
+    "f6c": [
+      {
+        "class": "EXPECTED_CUSTODY_DELTA",
+        "test": "test_custody_imported_module_is_the_corrected_pinned_blob"
+      },
+      {
+        "class": "EXPECTED_SAFER_QUALIFICATION_STRING",
+        "reason": "all numerical/joint/identity assertions pass; only old EXTERNAL_REVIEW_REQUIRED string differs",
+        "test": "test_world_a_native_joint_and_identities_preserved"
+      },
+      {
+        "class": "EXPECTED_SAFER_QUALIFICATION_STRING",
+        "reason": "all non-grant assertions pass; only old status string differs",
+        "test": "test_negative_real_source_admission_is_not_a_grant_itself"
+      }
     ],
-    "f6m_commission_path": "WORKER_COMMISSIONS/PYAT-R29-F6M-ACTUAL-F6-NATIVE-AUTHORITY-REPAIR-R1/00_COMMISSION.md",
-    "f6m_commission_sha256": "8a602343316e3dfc9c0ac0a3600e19ab8b8a0211fde1065fc3141c17ac25c62e",
-    "f6m_only_launch_commission": true,
-    "f6m_parent": "537cb5195bf4f51ee4abc0ce097155c3a3a69291",
-    "f6m_repaired_producer_present": false,
-    "f6m_runnable_code_present": false,
-    "f6m_tests_executed_by_author": false,
-    "f6m_tip": "1a6096f263623e57b77c7b70b5fcfb23cdebdad8",
-    "f6m_worker_return_paths": [
-      "WORKER_COMMISSIONS/PYAT-R29-F6M-ACTUAL-F6-NATIVE-AUTHORITY-REPAIR-R1/00_COMMISSION.md"
+    "f6j": [
+      {
+        "class": "EXPECTED_INTENDED_DECISION_CHANGE",
+        "test": "test_f6j_f1_decision_is_synthetic_candidate_even_when_distribution_is_null"
+      },
+      {
+        "class": "EXPECTED_INTENDED_DECISION_CHANGE",
+        "test": "test_f6j_f1b_null_decision_divergence_is_systematic_not_fixture_artefact"
+      },
+      {
+        "class": "EXPECTED_INTENDED_RENORMALIZATION_REPAIR",
+        "test": "test_f6j_stratum_level_threshold_exclusion_renormalizes_alpha"
+      },
+      {
+        "class": "EXPECTED_SAFER_QUALIFICATION_STRING",
+        "test": "test_f6j_no_person_no_calibration_no_real_source_claimed"
+      },
+      {
+        "class": "EXPECTED_CUSTODY_DELTA",
+        "test": "test_f6j_method_identity_and_native_blob_are_pinned"
+      }
     ],
-    "f6m_worker_return_present": false,
-    "original_producer_absent_at_f6m": true,
-    "original_producer_path": "rawlsing_next/pre553_heterogeneous_synthesis.py",
-    "schema": "PYAT_R29_F6N_F6M_RETURN_AUDIT@1"
-  },
-  "inherited_f6l": "6060adfac10f80020ed8e52cf2736467112d57c1",
-  "phase_a_expected": {
-    "f6l": "15 PASS / 11 RED",
-    "f6n": "7 PASS / 1 RED (N1 rare renormalization unsafe)"
-  },
-  "phase_a_freeze": "dbe7bedee0bc64f65916c4f21a83d26baf97274c",
-  "phase_b": {
-    "acceptance_possible": false,
-    "changed_behavior": [],
-    "changed_worlds": [],
-    "reason": "F6M published no worker return, no repaired producer, no runnable tests; only its launch commission is in the branch.",
-    "repaired_candidate_present": false,
-    "unchanged_baseline": [
-      "F6J 82/82",
-      "F6J 53/53",
-      "inherited S03FO 35/35",
-      "F6C author 57/57",
-      "F6L 15/11",
-      "F6N 7/8"
+    "f6l": [
+      {
+        "class": "EXPECTED_CUSTODY_DELTA",
+        "reason": "asserts original fc5e37fa; repaired candidate is 2df811 and independently pinned",
+        "test": "test_native_producer_is_the_pinned_corrected_s03fo_blob"
+      },
+      {
+        "class": "HARNESS_WORLD_ALIAS_KEYERROR__BEHAVIOR_VERIFIED_INDEPENDENTLY",
+        "reason": "the frozen test looked up a nonexistent WORLDS alias; F6N Phase-B diagnostic executes the same mutation and passes safety",
+        "test": "test_p5b_mixed_origin_does_not_launder_an_unverified_source_into_real_output"
+      }
+    ],
+    "f6n": [
+      {
+        "class": "EXPECTED_CUSTODY_DELTA__PHASE_A_HARDCODED_ORIGINAL",
+        "reason": "N6 froze the original blob; candidate identity is separately pinned and its own mutation guard passes",
+        "test": "test_n6_producer_hash_substitution_is_detectable"
+      }
     ]
   },
-  "producer_identity": {
-    "expected_blob": "fc5e37fa5b2f0eb689593b42d95479d1327cb94c",
+  "inherited_f6l": "6060adfac10f80020ed8e52cf2736467112d57c1",
+  "original_producer": {
     "git_blob": "fc5e37fa5b2f0eb689593b42d95479d1327cb94c",
-    "method": "PRE553_TARGET_JOINT_STANDARDIZATION@1",
-    "module_file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f6n/WORKER_RETURNS/PYAT-R29-F6N-INDEPENDENT-NATIVE-F6-COURT-R1/01_INHERITED_F6L/01_STAGED_NATIVE/rawlsing_next/pre553_heterogeneous_synthesis.py",
-    "sha256": "ef76ee4f48cc74cc38e0dcf55a3190362d4b55975d3a367ddb43fbadd43a9869"
+    "source_commit": "1428c2e92bce1a49efd87378cb23df936d646dc5",
+    "used_for_baseline_only": true
+  },
+  "phase_a_freeze": "dbe7bedee0bc64f65916c4f21a83d26baf97274c",
+  "phase_b_diagnostics": {
+    "failed": 0,
+    "items": [
+      "candidate/dependency blob identity",
+      "actual mixed-origin mutation",
+      "reverse mixed-origin mutation",
+      "null consumer refusal",
+      "rare exclusion partial",
+      "positive consumer preserved",
+      "candidate mutation guard"
+    ],
+    "passed": 7,
+    "tests": 7
   },
   "role": "independent F6L scientific-review continuation; not F6M/F6C author or HQ",
   "schema": "PYAT_R29_F6N_REAL_SOURCE_AND_PYTEST@1",
+  "scientific_preservation": {
+    "conditional_yes_given_low": "1/3 preserved",
+    "f6c_core": "54/57 with three stale qualification/custody assertions; all numerical assertions reached before the changed strings pass",
+    "f6j_exact_rational": "82/82",
+    "f6l": "24/26 with one custody assertion and one harness KeyError; all executed safety assertions pass",
+    "f6n": "7/8 with only the frozen original-blob guard; N1 rare-category now safe",
+    "inherited_s03fo": "35/35",
+    "positive_joint": "1/3,1/6,1/6,1/3 preserved",
+    "upper_bounds": [
+      "19/25",
+      "41/50",
+      "17/50"
+    ],
+    "world_b_uncovered": "1/5 preserved"
+  },
   "sealed_startup": "44700b0445673fad11c4f9779345d2920aeddd56",
-  "verdict": "F6N_TYPED_HOLD__NO_F6M_IMPLEMENTATION__INHERITED_BASELINE_UNCHANGED__ORIGINAL_PRODUCER_11_RED_PLUS_N1_RED"
+  "verdict": "PASS__F6M_REPAIRS_DECISION_ADMISSION_AND_RARE_EXCLUSION_AT_SOURCEFREE_METHOD_GRAIN__CORE_NUMERICS_PRESERVED__EXPECTED_CUSTODY_AND_STALE_TEST_DELTAS_DOCUMENTED"
 }

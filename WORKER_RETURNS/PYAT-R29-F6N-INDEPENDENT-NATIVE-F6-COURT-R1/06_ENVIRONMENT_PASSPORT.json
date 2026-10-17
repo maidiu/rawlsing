@@ -1,36 +1,54 @@
 {
   "branch": "agent/reviewer-pyat-r29-f6n-independent-f6m-native-consumer-court-r1",
+  "candidate_producer": {
+    "git_blob": "2df811d76db258d98d89ffb43c830cb221ff9a7d",
+    "implementation_version": "F6M_NATIVE_DECISION_ADMISSION_REPAIR@1",
+    "sha256": "2930b5cd15c899146e9552b2e6b0efa3fc5835e57e58a6c16d756093e21d3871"
+  },
+  "dependency": {
+    "git_blob": "a61365b994e5c3c50de0f598fcf40e90abf757b6",
+    "sha256": "9cd1d71440a7e8c1861dda73274529e07211edc14335583e93ad91c0833e9ab4"
+  },
   "executable": "/usr/local/bin/python3",
   "execution_policy": {
     "bytecode_writes_disabled": true,
+    "f6m_candidate_staged_from_git": true,
     "fresh_processes": true,
     "pytest_plugin_autoload_disabled": true,
     "raw_source_reads": 0,
     "sourcefree_only": true
   },
-  "f6m_reviewed_tip": "1a6096f263623e57b77c7b70b5fcfb23cdebdad8",
-  "generated_utc": "2026-10-17T19:18:48Z",
+  "f6m_final_tip": "5ed8e5389dd3510cf29a4947b04bd05901c8d213",
+  "f6m_implementation_commit": "1f1c72f883d0d7a6d11d7df8bad75c37d06c3ffa",
+  "generated_utc": "2026-10-17T19:32:10Z",
   "git": "git version 2.39.1",
   "inherited_f6l": "6060adfac10f80020ed8e52cf2736467112d57c1",
   "key_artifacts": {
-    "00_I2_VERDICT.md": "98a658d3ad782d59cbe302ee6bbdd6cffd171d0ac603434bf9540abe4d9cb4b3",
+    "00_I2_VERDICT.md": "8a57cec72f6ac89f0a6f785b7b1b11c858cd6a36df4e124a70fc9f7d4c1c7970",
     "01_FROZEN_CONSUMER_CASES.json": "30b32020e7b83d2a2f0fd03d76c200a811dd439fda6e39b9b797531e9015345b",
-    "02_REAL_SOURCE_AND_PYTEST.json": "7130adc2ee1ff1489744959061781c0cbe19c910a4fcd9b2db870879ad3d6089",
-    "03_METHOD_CEILING.md": "955683c06fb0005b7057686901843efa23d33ddcc0689ae1f64295d790c222e6",
-    "05_PHASE_B/00_F6M_RETURN_AUDIT.json": "806cb546c7b6bf851801178ffd26ececf7f4344761ddcf8adb17fa926925e861",
-    "05_PHASE_B/01_CHANGED_UNCHANGED_RECEIPTS.json": "f156d3ac0f74064c0ec3168d03e741b73a0249498d36c09c302c085b7b639aa1"
+    "02_REAL_SOURCE_AND_PYTEST.json": "ec2061e581a7bef628df001c1504513d3c4c77d05f439c6353f4757914e1269c",
+    "03_METHOD_CEILING.md": "c870ccbd0608222643d7acab009de743c46e32beb6b22d976f568c1eb9749638",
+    "03_PHASE_B/03_IMPORT_RECEIPTS.json": "5b6725b2a3d27682bfd3dc5ac0c0446180f70dcb29af8b81295232708bb2b0e4",
+    "04_F6N_PHASE_B_REVIEW.md": "5b411ccbf620a164651dc4529e852d42cd33a73d71357541632a034875ff5a1c",
+    "05_PHASE_B/00_F6M_RETURN_AUDIT.json": "60eefae4bb94aebfa1ab27e4ecebb0afd930061c44539e6091cc8c9b15bc7e6f",
+    "05_PHASE_B/01_CHANGED_UNCHANGED_RECEIPTS.json": "f1339b4004de30d6d305cdf79b296682c613fdee4eedcc17f8519ae146050f36",
+    "05_PHASE_B/02_CHANGED_UNCHANGED_RECEIPTS.json": "16d342c60bbee0c31225e62fbb21f32045009fbff7a47caf4e18c991408663ec"
   },
   "machine": "x86_64",
   "phase_a_freeze": "dbe7bedee0bc64f65916c4f21a83d26baf97274c",
   "platform": "macOS-13.7.8-x86_64-i386-64bit",
-  "producer_identity": {
-    "blob": "fc5e37fa5b2f0eb689593b42d95479d1327cb94c",
-    "sha256": "ef76ee4f48cc74cc38e0dcf55a3190362d4b55975d3a367ddb43fbadd43a9869",
-    "source_commit": "1428c2e92bce1a49efd87378cb23df936d646dc5"
-  },
   "pytest": "pytest 9.1.1",
   "python": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]",
+  "results": {
+    "f6c": "54/57",
+    "f6j": "48/53",
+    "f6j_82": "82/82",
+    "f6l": "24/26",
+    "f6n": "7/8",
+    "f6n_phase_b_diagnostics": "7/7",
+    "inherited_s03fo_35": "35/35"
+  },
   "schema": "PYAT_R29_F6N_ENVIRONMENT_PASSPORT@1",
   "sealed_startup": "44700b0445673fad11c4f9779345d2920aeddd56",
-  "verdict": "F6N_TYPED_HOLD__NO_F6M_RUNNABLE_IMPLEMENTATION__INHERITED_SCIENCE_REPRODUCED__ELEVEN_F6L_RED_PLUS_N1_RED_REMAIN__SOURCEFREE_ONLY"
+  "verdict": "PASS__F6M_REPAIRS_DECISION_ADMISSION_AND_RARE_EXCLUSION_AT_SOURCEFREE_METHOD_GRAIN__CORE_NUMERICS_PRESERVED__EXPECTED_CUSTODY_AND_STALE_TEST_DELTAS_DOCUMENTED"
 }

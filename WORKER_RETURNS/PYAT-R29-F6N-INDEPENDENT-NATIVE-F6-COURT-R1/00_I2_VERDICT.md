@@ -1,9 +1,11 @@
 # F6N — independent native F6 decision/admission court verdict
 
-**VERDICT:** `F6N_TYPED_HOLD__NO_F6M_RUNNABLE_IMPLEMENTATION__INHERITED_SCIENCE_REPRODUCED__ELEVEN_F6L_RED_PLUS_N1_RED_REMAIN__SOURCEFREE_ONLY`
+**VERDICT:** `PASS__F6M_REPAIRS_DECISION_ADMISSION_AND_RARE_EXCLUSION_AT_SOURCEFREE_METHOD_GRAIN__CORE_NUMERICS_PRESERVED__EXPECTED_CUSTODY_AND_STALE_TEST_DELTAS_DOCUMENTED`
 
-**Role:** independent F6L scientific-review continuation (F6N). **Not** F6M
-author, F6C author, HQ, source/semantic issuer, or self-adopter.
+**Recommendation to HQ:** accept the repaired sourcefree F6 method for the exact
+bounded grain below, subject to the stated ceilings. This is an independent
+review recommendation, **not** HQ adoption, source permission, or a new F6
+right.
 
 | Binding | Value |
 |---|---|
@@ -12,82 +14,112 @@ author, F6C author, HQ, source/semantic issuer, or self-adopter.
 | Sealed startup | `44700b0445673fad11c4f9779345d2920aeddd56` |
 | Phase-A freeze | `dbe7bedee0bc64f65916c4f21a83d26baf97274c` |
 | Inherited F6L | `6060adfac10f80020ed8e52cf2736467112d57c1` |
-| F6M reviewed tip | `1a6096f263623e57b77c7b70b5fcfb23cdebdad8` |
+| F6M final tip | `5ed8e5389dd3510cf29a4947b04bd05901c8d213` |
+| F6M implementation commit | `1f1c72f883d0d7a6d11d7df8bad75c37d06c3ffa` |
+| Candidate producer | `2df811d76db258d98d89ffb43c830cb221ff9a7d` / SHA-256 `2930b5cd…` |
 | Original producer | `fc5e37fa5b2f0eb689593b42d95479d1327cb94c` |
-| Write terrain | `WORKER_RETURNS/PYAT-R29-F6N-INDEPENDENT-NATIVE-F6-COURT-R1/` |
+| Dependency | `a61365b994e5c3c50de0f598fcf40e90abf757b6` (unchanged) |
+
+All F6M changes are inside its own worker return. No accepted owner module,
+canonical control, or raw source was touched.
 
 ---
 
-## 1. Decision: HOLD, not repaired acceptance
+## 1. Independent result
 
-F6M **did not publish a worker return or any runnable repaired code**. Its
-branch tip `1a6096f` contains only its launch commission:
+F6M's repaired producer passes the F6N safety falsifiers that the original
+producer failed, while preserving the genuine heterogeneous computations.
 
-- parent `537cb5195` (F6K typed hold, no code);
-- changed path: `WORKER_COMMISSIONS/PYAT-R29-F6M-ACTUAL-F6-NATIVE-AUTHORITY-REPAIR-R1/00_COMMISSION.md`;
-- no `WORKER_RETURNS/PYAT-R29-F6M-NATIVE-AUTHORITY-REPAIR-R1/` directory;
-- no repaired `rawlsing_next/pre553_heterogeneous_synthesis.py`;
-- no author tests, JUnit, or logs.
+| Court | Original | Repaired | Classification |
+|---|---:|---:|---|
+| F6J exact rational | 82/82 | **82/82** | preserved |
+| Inherited S03FO | 35/35 | **35/35** | preserved |
+| F6C author | 57/57 | **54/57** | 3 stale custody/qualification assertions; numerical assertions preserved |
+| F6J adversarial | 53/53 | **48/53** | 5 stale unsafe-behavior/custody assertions |
+| F6L Phase A | 15 PASS / 11 RED | **24 PASS / 2 RED** | 1 original-blob custody, 1 harness KeyError; behavior otherwise repaired |
+| F6N Phase A | 7 PASS / 1 RED | **7 PASS / 1 RED** | only N6 original-blob guard remains; N1 rare-category now safe |
+| F6N Phase-B diagnostics | n/a | **7/7** | actual mixed-origin, consumer and identity checks |
 
-Therefore Phase B repaired execution is impossible. This is an explicit bounded
-HOLD, not a claim that a repair failed scientifically.
+**No genuine numerical regression was found.** Every F6C failure occurs at a
+custody or qualification-string assertion after the numerical/joint assertions
+have passed. The F6J failures are old assertions that the unsafe behavior
+exists (null `SYNTHETIC_CANDIDATE`, excluded-source renormalization, old status
+string) or that the original producer blob is pinned. The F6L failures are the
+original-blob assertion and a test-harness `KeyError`, not an executed unsafe
+behavior.
 
-## 2. What the inherited original actually does (reproduced)
+## 2. The repairs that were actually verified
 
-All runs used the original producer blob `fc5e37fa…` and fresh Python processes.
+- **Null/no-positivity:** `PARTIAL_IDENTIFICATION_ONLY`, distribution `None`,
+  `NO_COMPLETE_TARGET_JOINT`; decision-only and conditional consumers refuse.
+- **Forged `admit=True`:** output is `UNVERIFIED_INTEGRATION_BOUNDARY`,
+  `real_use_authorized=false`, `SOURCEFREE_EXPERIMENT_ONLY`; no external-owner
+  ceiling is issued.
+- **`test_origin` bypass and mixing:** all-test, all-declared-real and both mixed
+  orders remain experimental; mixed reports `MIXED_TEST_AND_UNVERIFIED`.
+- **Mapped authority:** native/mapped/target nodes carry source, producer and
+  value hashes with `TEST_ONLY`/`UNVERIFIED` ceilings; mapped nodes do not exceed
+  parents; no caller-controlled promotion.
+- **Rare/minority exclusion:** a present source excluded by the aggregate gate
+  keeps its planned target share as uncovered; the rare N1 world becomes
+  `PARTIAL_IDENTIFICATION_ONLY` with uncovered `1/2`, not a complete S2-only
+  population point.
+- **Producer/source identity:** candidate producer and unchanged dependency
+  blobs are independently pinned; one-byte mutations are rejected by the guard;
+  product-ref substitution rebinds measured parent refs/input hashes; duplicate
+  source identity and mapping/scope substitutions refuse.
+- **Machine-independent transport:** two relative staging roots produce identical
+  content hashes; the candidate stage contains no symlinks.
+- **Positive preservation:** exact joint `1/3,1/6,1/6,1/3`;
+  `P(YES|LOW)=1/3`; consumer `SUPPORTED_MODEL`; World B uncovered `1/5` and
+  upper bounds `19/25,41/50,17/50` unchanged.
+- **Real-use consumer:** `conditional(..., use="REAL_USE")` always returns
+  `UNAVAILABLE / UNVERIFIED_OWNER_ADMISSION`; no issuer is synthesized.
 
-| Court | Result |
-|---|---:|
-| F6J exact rational court | **82/82** |
-| F6J new adversarial tests | **53/53** |
-| Inherited S03FO | **35/35** (24 tests + 11 subtests) |
-| F6C author court | **57/57** |
-| F6L inherited Phase A (safe expectations) | **15 PASS / 11 RED** |
-| F6N new Phase A (N1–N8) | **7 PASS / 1 RED** |
+## 3. Critical correction: F6L's P5B test was a harness KeyError
 
-The 11 inherited F6L REDs remain exactly the unsafe behaviours it preregistered:
-null distribution represented by `SYNTHETIC_CANDIDATE` (P1/P2/P3), forged
-`admit=True` real-use authority (P4), test-origin real-use ceilings (P5),
-mixed-origin contamination (P5B), missing/elevated mapped authority (P7),
-silent excluded-source renormalization (P8), and decision-only null consumption
-(P9).
+The inherited F6L test
+`test_p5b_mixed_origin_does_not_launder_an_unverified_source_into_real_output`
+looked up `WORLDS["P5B_MIXED_ORIGIN_CONTAMINATION"]`, an alias that does not
+exist in the frozen world map. That 11th RED was therefore **not** an executed
+behavioral falsification. F6N independently executes the same mutation
+(`W.mixed_origin(W.positive_2x2())`) and both mixed orders in
+`03_PHASE_B/test_phase_b_diagnostics.py`; the repaired output is safe: mixed
+classification, no real-use ceiling, and `REAL_USE` refusal.
 
-The new F6N N1 RED is a distinct rare-category loss: a source with a rare cell
-and total 100 is excluded by threshold 150; the producer still emits a complete
-S2-only `SYNTHETIC_CANDIDATE` with `uncovered_target_mass=0`. N2–N8 pass:
-scope substitution, mapping-hash substitution, product-ref rebinding, duplicate
-identity refusal, producer-mutation guard, machine-independent staging, and the
-genuine complete positive are preserved.
+This correction matters for the historical 15/11 count but not for the repair
+decision: the actual mixed-origin case passes.
 
-## 3. Changed / unchanged
+## 4. Stale tests are not silently relabeled
 
-Because F6M shipped no code:
+F6N did **not** edit the F6L/F6C/F6J oracles, did not use F6M's compatibility
+rewrites as evidence, and did not turn failures into expected failures.
 
-- **Changed worlds:** none.
-- **Changed behavior:** none.
-- **Unchanged:** F6J 82/82, 53/53, S03FO 35/35, F6C 57/57, F6L 15/11, F6N 7/8.
-- **No WorldA/WorldB changed-world receipt exists.**
-- **No repaired decision/admission behaviour exists to accept.**
+- The original-blob tests are legitimate custody assertions for the **original**
+  producer; they necessarily fail on a new candidate. F6N separately pins the
+  candidate blob and dependency.
+- The F6C/F6J qualification-string failures assert the old
+  `EXTERNAL_REVIEW_REQUIRED` string. F6M's `UNVERIFIED_INTEGRATION_BOUNDARY` is
+  the explicitly commissioned safer status; the numerical assertions before it
+  pass.
+- The F6J null/renormalization failures are the **defects being repaired**; the
+  tests assert unsafe behavior by design.
+- F6N N6 freezes the original producer identity as a mutation guard; it is not a
+  requirement that the repaired candidate retain the original bytes.
 
-## 4. What a future F6M must actually deliver
+## 5. Bounded method ceiling
 
-A runnable repaired producer under its own worker return with:
+This is a **sourcefree F6 method-implementation PASS only**:
 
-1. null distribution never labelled complete; typed
-   `PARTIAL_IDENTIFICATION_ONLY` / `NO_COMPLETE_TARGET_JOINT`;
-2. no `EXTERNAL_OWNER_ADMISSION_FOR_REAL_USE` from a plain callback or caller
-   `test_origin`;
-3. mixed synthetic/real provenance fail-closed;
-4. `mapped:*` authority ceilings/provenance no higher than parents;
-5. honest total-stratum support gate with no silent rare/minority
-   renormalization into a complete population point;
-6. relative identity-based transport without machine-absolute fixture paths;
-7. unchanged exact positive arithmetic and consumer values;
-8. real JUnit/logs for 35, 57, 53, 82 and F6L/F6N controls.
+- no original measured F6, no raw SAV/DTA, no source authentication, no real
+  source grant, no N9/OC05, no N11/N12, no V3 actor authority;
+- no national/person/cohort representation, no fabricated design variance, no
+  confidence interval;
+- no adoption by this reviewer; HQ remains the only method acceptor;
+- no claim that synthetic/declared-test evidence is real-source statistics.
 
-## 5. Method ceiling
+## 6. Decision
 
-Bounded **sourcefree** F6 method review only. No original measured F6, no source
-grant/authentication, no N9/OC05, no N11/N12/Sorok V3 actor authority, no
-confidence interval, no person-world inference. Test-only calculus is never
-real permission. HQ method adoption remains separate and is not issued here.
+`PASS` at the exact sourcefree method grain, with explicit stale-test and custody
+deltas. Any future change to the producer, source, risk scope or consumer must
+return for a fresh review rather than inheriting this PASS.

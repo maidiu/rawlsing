@@ -1,0 +1,87 @@
+.....................FF........................F...FF                    [100%]
+=================================== FAILURES ===================================
+__ test_f6j_f1_decision_is_synthetic_candidate_even_when_distribution_is_null __
+
+    def test_f6j_f1_decision_is_synthetic_candidate_even_when_distribution_is_null():
+        out = run("N5_NO_POSITIVITY_UNCOVERED_MASS")
+>       assert out["decision"] == "SYNTHETIC_CANDIDATE"
+E       AssertionError: assert 'PARTIAL_IDENTIFICATION_ONLY' == 'SYNTHETIC_CANDIDATE'
+E         
+E         - SYNTHETIC_CANDIDATE
+E         + PARTIAL_IDENTIFICATION_ONLY
+
+/tmp/f6n_repaired_courts/f6j_return/04_TESTS/test_f6j_adversarial.py:180: AssertionError
+___ test_f6j_f1b_null_decision_divergence_is_systematic_not_fixture_artefact ___
+
+    def test_f6j_f1b_null_decision_divergence_is_systematic_not_fixture_artefact():
+        for wid in ("N5_NO_POSITIVITY_UNCOVERED_MASS", "N6_PARALLEL_ARITHMETIC_CORRECTION"):
+            out = run(wid)
+>           assert out["decision"] == "SYNTHETIC_CANDIDATE", wid
+E           AssertionError: N5_NO_POSITIVITY_UNCOVERED_MASS
+E           assert 'PARTIAL_IDENTIFICATION_ONLY' == 'SYNTHETIC_CANDIDATE'
+E             
+E             - SYNTHETIC_CANDIDATE
+E             + PARTIAL_IDENTIFICATION_ONLY
+
+/tmp/f6n_repaired_courts/f6j_return/04_TESTS/test_f6j_adversarial.py:188: AssertionError
+________ test_f6j_stratum_level_threshold_exclusion_renormalizes_alpha _________
+
+    def test_f6j_stratum_level_threshold_exclusion_renormalizes_alpha():
+        """A source IS excluded when its STRATUM TOTAL falls below the threshold,
+        and alpha then renormalizes onto the survivors.
+    
+        Local inputs, not a frozen world: S1 total 100, S2 total 200, threshold 150.
+        """
+        w = WORLDS["N8_MINORITY_REPRESENTATION_AND_SUPPORT_THRESHOLD"]
+        srcs = deepcopy(w["sources"])
+        srcs[1]["strata"]["Z1"]["cells"] = [
+            {"categories": ["na0", "nb0"], "n": 50, "mass": 50},
+            {"categories": ["na0", "nb1"], "n": 50, "mass": 50},
+            {"categories": ["na1", "nb0"], "n": 50, "mass": 50},
+            {"categories": ["na1", "nb1"], "n": 50, "mass": 50}]
+        srcs[1]["strata"]["Z1"]["eligible_n"] = 200
+        pol = deepcopy(w["policy"]); pol["minimum_raw_support"] = 150
+        out = run("N8_MINORITY_REPRESENTATION_AND_SUPPORT_THRESHOLD",
+                  policy=pol, sources=srcs)
+        sup = out["candidate"]["support"]["Z1"]
+        assert sup["excluded_sources"] == ["S1"]
+        assert [x["source_id"] for x in sup["sources"]] == ["S2"]
+>       assert F(sup["sources"][0]["conditional_source_weight"]) == 1
+E       AssertionError: assert Fraction(1, 2) == 1
+E        +  where Fraction(1, 2) = F('1/2')
+
+/tmp/f6n_repaired_courts/f6j_return/04_TESTS/test_f6j_adversarial.py:471: AssertionError
+___________ test_f6j_no_person_no_calibration_no_real_source_claimed ___________
+
+    def test_f6j_no_person_no_calibration_no_real_source_claimed():
+        out = run("N2_TWO_SOURCE_EQUAL_WEIGHT_MIX")
+        assert out["test_origin"] is True
+>       assert out["real_source_qualification"] == "EXTERNAL_REVIEW_REQUIRED"
+E       AssertionError: assert 'UNVERIFIED_I...TION_BOUNDARY' == 'EXTERNAL_REVIEW_REQUIRED'
+E         
+E         - EXTERNAL_REVIEW_REQUIRED
+E         + UNVERIFIED_INTEGRATION_BOUNDARY
+
+/tmp/f6n_repaired_courts/f6j_return/04_TESTS/test_f6j_adversarial.py:510: AssertionError
+_____________ test_f6j_method_identity_and_native_blob_are_pinned ______________
+
+    def test_f6j_method_identity_and_native_blob_are_pinned():
+        assert METHOD == "PRE553_TARGET_JOINT_STANDARDIZATION@1"
+        src = (RET / "01_STAGED_NATIVE/rawlsing_next/pre553_heterogeneous_synthesis.py")
+        import subprocess
+        blob = subprocess.run(["git", "hash-object", str(src)], capture_output=True,
+                              text=True, check=True).stdout.strip()
+>       assert blob == "fc5e37fa5b2f0eb689593b42d95479d1327cb94c"
+E       AssertionError: assert '2df811d76db2...30cb221ff9a7d' == 'fc5e37fa5b2f...479d1327cb94c'
+E         
+E         - fc5e37fa5b2f0eb689593b42d95479d1327cb94c
+E         + 2df811d76db258d98d89ffb43c830cb221ff9a7d
+
+/tmp/f6n_repaired_courts/f6j_return/04_TESTS/test_f6j_adversarial.py:532: AssertionError
+=========================== short test summary info ============================
+FAILED ../../../tmp/f6n_repaired_courts/f6j_return/04_TESTS/test_f6j_adversarial.py::test_f6j_f1_decision_is_synthetic_candidate_even_when_distribution_is_null
+FAILED ../../../tmp/f6n_repaired_courts/f6j_return/04_TESTS/test_f6j_adversarial.py::test_f6j_f1b_null_decision_divergence_is_systematic_not_fixture_artefact
+FAILED ../../../tmp/f6n_repaired_courts/f6j_return/04_TESTS/test_f6j_adversarial.py::test_f6j_stratum_level_threshold_exclusion_renormalizes_alpha
+FAILED ../../../tmp/f6n_repaired_courts/f6j_return/04_TESTS/test_f6j_adversarial.py::test_f6j_no_person_no_calibration_no_real_source_claimed
+FAILED ../../../tmp/f6n_repaired_courts/f6j_return/04_TESTS/test_f6j_adversarial.py::test_f6j_method_identity_and_native_blob_are_pinned
+5 failed, 48 passed in 0.34s

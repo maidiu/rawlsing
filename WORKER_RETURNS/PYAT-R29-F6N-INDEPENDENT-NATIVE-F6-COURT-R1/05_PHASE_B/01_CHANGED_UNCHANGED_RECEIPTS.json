@@ -1,20 +1,40 @@
 {
-  "schema": "PYAT_R29_F6N_CHANGED_UNCHANGED_RECEIPTS@1",
-  "f6m_tip": "1a6096f263623e57b77c7b70b5fcfb23cdebdad8",
-  "f6m_worker_return_present": false,
-  "f6m_repaired_producer_present": false,
-  "changed_worlds": [],
-  "changed_behavior": [],
-  "unchanged": [
-    "F6J 82/82 exact rational comparisons",
-    "F6J 53/53 adversarial tests",
-    "inherited S03FO 35/35",
-    "F6C author 57/57",
-    "F6L inherited Phase A 15 PASS / 11 RED",
-    "F6N new Phase A 7 PASS / 1 RED (N1 rare-category renormalization)"
+  "schema": "PYAT_R29_F6N_CHANGED_UNCHANGED_SUMMARY@1",
+  "f6m_final_tip": "5ed8e5389dd3510cf29a4947b04bd05901c8d213",
+  "f6m_implementation_commit": "1f1c72f883d0d7a6d11d7df8bad75c37d06c3ffa",
+  "candidate_producer_blob": "2df811d76db258d98d89ffb43c830cb221ff9a7d",
+  "changed_as_intended": [
+    "null/no-positivity decision: SYNTHETIC_CANDIDATE -> PARTIAL_IDENTIFICATION_ONLY; distribution None",
+    "rare/minority excluded source: complete S2-only joint -> PARTIAL_IDENTIFICATION_ONLY; uncovered 1/2",
+    "forged admit=True / all-declared-real: real-use authority -> UNVERIFIED_INTEGRATION_BOUNDARY; real_use_authorized false",
+    "mixed test+real origin: MIXED_TEST_AND_UNVERIFIED; no EXTERNAL_OWNER_ADMISSION_FOR_REAL_USE ceiling",
+    "conditional REAL_USE: UNAVAILABLE / UNVERIFIED_OWNER_ADMISSION",
+    "null/rare conditional consumer: UNAVAILABLE / NO_COMPLETE_TARGET_JOINT",
+    "mapped nodes: source/producer/value hashes and parent-equal TEST_ONLY/UNVERIFIED ceilings"
   ],
-  "reason": "F6M published only its launch commission; no code, no return, no tests, no repaired producer. No Phase-B repaired execution or changed-world receipt exists.",
-  "world_a_unchanged": true,
-  "world_b_decision_unsafe_unchanged": true,
-  "n1_rare_renormalization_unsafe_unchanged": true
+  "unchanged_as_required": [
+    "F6J exact rational 82/82",
+    "inherited S03FO 35/35",
+    "F6C core numerical 54/57; all three failures are custody or old qualification-string assertions",
+    "F6L 24/26 executed tests; the two failures are one original-blob custody assertion and one harness world-alias KeyError",
+    "F6N 7/8 executed tests; the one failure is the frozen original-blob guard",
+    "positive joint 1/3,1/6,1/6,1/3",
+    "conditional P(YES|LOW)=1/3",
+    "World B uncovered 1/5 and upper bounds 19/25, 41/50, 17/50",
+    "no cross-survey person, no fabricated design variance, no confidence interval"
+  ],
+  "stale_test_deltas": {
+    "f6l": 2,
+    "f6c": 3,
+    "f6j": 5,
+    "f6n": 1,
+    "note": "The stale failures assert original producer bytes, old unsafe decisions/renormalization, or the old EXTERNAL_REVIEW_REQUIRED string. They are not numerical regressions and were not edited to force a pass."
+  },
+  "f6l_p5b_harness_defect": {
+    "frozen_test": "test_p5b_mixed_origin_does_not_launder_an_unverified_source_into_real_output",
+    "original_failure": "KeyError: WORLDS['P5B_MIXED_ORIGIN_CONTAMINATION']",
+    "actual_behavior_verified_by": "03_PHASE_B/test_phase_b_diagnostics.py::test_mixed_origin_actually_executes_and_is_not_real_use and reverse-order test",
+    "result": "actual mixed-origin mutation is safe; no real-use ceiling; REAL_USE consumer refuses"
+  },
+  "verdict": "PASS__F6M_REPAIRS_DECISION_ADMISSION_AND_RARE_EXCLUSION_AT_SOURCEFREE_METHOD_GRAIN__CORE_NUMERICS_PRESERVED__EXPECTED_CUSTODY_AND_STALE_TEST_DELTAS_DOCUMENTED"
 }
