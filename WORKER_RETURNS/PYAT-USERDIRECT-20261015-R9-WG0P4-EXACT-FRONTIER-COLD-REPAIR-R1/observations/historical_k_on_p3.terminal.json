@@ -1,0 +1,20 @@
+{
+  "command": [
+    "python3",
+    "-m",
+    "pytest",
+    "-c",
+    "<WORKTREE>/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pytest.ini",
+    "<WORKTREE>/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/predecessors/k/repro/test_wg0k_full_module_hostiles.py",
+    "-vv",
+    "--tb=short",
+    "--junitxml=<WORKTREE>/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/observations/historical_k_on_p3.xml"
+  ],
+  "exit": 1,
+  "seconds": 1.1853528022766113,
+  "tests": 11,
+  "failures": 10,
+  "errors": 0,
+  "skips": 0,
+  "qualification": "UNCHANGED_FROZEN_SOURCE_HISTORICAL_CONTROL_NOT_WG0P4"
+}

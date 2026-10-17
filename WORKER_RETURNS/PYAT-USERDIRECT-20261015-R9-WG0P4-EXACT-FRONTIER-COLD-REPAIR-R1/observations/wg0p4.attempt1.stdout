@@ -1,0 +1,79 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.11.3, pytest-9.1.1, pluggy-1.6.0 -- /usr/local/bin/python3
+rootdir: <WORKTREE>/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1
+configfile: pytest.ini
+collecting ... collected 62 items
+
+tests/test_wg0p4.py::test_equal_count_original_operation_substitutions[op_id-OP-FOREIGN-PRODUCED] PASSED [  1%]
+tests/test_wg0p4.py::test_equal_count_original_operation_substitutions[op_id-OP-FOREIGN-HELD] PASSED [  3%]
+tests/test_wg0p4.py::test_equal_count_original_operation_substitutions[op_id-OP-FOREIGN-INADMISSIBLE] PASSED [  4%]
+tests/test_wg0p4.py::test_equal_count_original_operation_substitutions[target-FOREIGN-PRODUCED] PASSED [  6%]
+tests/test_wg0p4.py::test_equal_count_original_operation_substitutions[target-FOREIGN-HELD] PASSED [  8%]
+tests/test_wg0p4.py::test_equal_count_original_operation_substitutions[target-FOREIGN-INADMISSIBLE] PASSED [  9%]
+tests/test_wg0p4.py::test_equal_count_original_operation_substitutions[conditioners-value2-PRODUCED] PASSED [ 11%]
+tests/test_wg0p4.py::test_equal_count_original_operation_substitutions[conditioners-value2-HELD] PASSED [ 12%]
+tests/test_wg0p4.py::test_equal_count_original_operation_substitutions[conditioners-value2-INADMISSIBLE] PASSED [ 14%]
+tests/test_wg0p4.py::test_equal_count_original_operation_substitutions[item_ids-value3-PRODUCED] PASSED [ 16%]
+tests/test_wg0p4.py::test_equal_count_original_operation_substitutions[item_ids-value3-HELD] PASSED [ 17%]
+tests/test_wg0p4.py::test_equal_count_original_operation_substitutions[item_ids-value3-INADMISSIBLE] PASSED [ 19%]
+tests/test_wg0p4.py::test_equal_count_original_operation_substitutions[op_class-FOREIGN-PRODUCED] PASSED [ 20%]
+tests/test_wg0p4.py::test_equal_count_original_operation_substitutions[op_class-FOREIGN-HELD] PASSED [ 22%]
+tests/test_wg0p4.py::test_equal_count_original_operation_substitutions[op_class-FOREIGN-INADMISSIBLE] PASSED [ 24%]
+tests/test_wg0p4.py::test_equal_count_original_operation_substitutions[disposition_reason-FORGED-PRODUCED] PASSED [ 25%]
+tests/test_wg0p4.py::test_equal_count_original_operation_substitutions[disposition_reason-FORGED-HELD] PASSED [ 27%]
+tests/test_wg0p4.py::test_equal_count_original_operation_substitutions[disposition_reason-FORGED-INADMISSIBLE] PASSED [ 29%]
+tests/test_wg0p4.py::test_native_tuple_must_match_qualified_source_and_query[options-value0] PASSED [ 30%]
+tests/test_wg0p4.py::test_native_tuple_must_match_qualified_source_and_query[missing_codes-value1] PASSED [ 32%]
+tests/test_wg0p4.py::test_native_tuple_must_match_qualified_source_and_query[wave-W99] PASSED [ 33%]
+tests/test_wg0p4.py::test_native_tuple_must_match_qualified_source_and_query[unit-household] PASSED [ 35%]
+tests/test_wg0p4.py::test_native_tuple_must_match_qualified_source_and_query[source_id-FOREIGN] PASSED [ 37%]
+tests/test_wg0p4.py::test_native_tuple_must_match_qualified_source_and_query[form_id-Q-OTHER] PASSED [ 38%]
+tests/test_wg0p4.py::test_native_tuple_must_match_qualified_source_and_query[response_kind-MULTIPLE_RESPONSE] PASSED [ 40%]
+tests/test_wg0p4.py::test_native_tuple_must_match_qualified_source_and_query[version-v2] PASSED [ 41%]
+tests/test_wg0p4.py::test_native_tuple_must_match_qualified_source_and_query[grant-UNKNOWN] PASSED [ 43%]
+tests/test_wg0p4.py::test_native_tuple_must_match_qualified_source_and_query[grant-None] PASSED [ 45%]
+tests/test_wg0p4.py::test_native_tuple_must_match_qualified_source_and_query[route_evidence-FOREIGN] PASSED [ 46%]
+tests/test_wg0p4.py::test_callback_checks_all_exact_unit_fields[job_ref] PASSED [ 48%]
+tests/test_wg0p4.py::test_callback_checks_all_exact_unit_fields[release_refs] PASSED [ 50%]
+tests/test_wg0p4.py::test_callback_checks_all_exact_unit_fields[semantic_input_refs] PASSED [ 51%]
+tests/test_wg0p4.py::test_external_oracle_root_is_not_recomputed_from_candidate PASSED [ 53%]
+tests/test_wg0p4.py::test_fact_aliases_do_not_modify_archived_bytes[store] PASSED [ 54%]
+tests/test_wg0p4.py::test_fact_aliases_do_not_modify_archived_bytes[read] PASSED [ 56%]
+tests/test_wg0p4.py::test_fact_aliases_do_not_modify_archived_bytes[snapshot] PASSED [ 58%]
+tests/test_wg0p4.py::test_fact_aliases_do_not_modify_archived_bytes[restore] PASSED [ 59%]
+tests/test_wg0p4.py::test_collision_and_bad_restore_are_atomic PASSED    [ 61%]
+tests/test_wg0p4.py::test_native_payload_matches_actual_exact_empirical_fact PASSED [ 62%]
+tests/test_wg0p4.py::test_self_rehashed_native_fact_and_receipt_do_not_become_issued_results PASSED [ 64%]
+tests/test_wg0p4.py::test_fixture_owner_currentness_not_plan_self_issued_grant PASSED [ 66%]
+tests/test_wg0p4.py::test_unknown_fixture_owner_is_not_permission PASSED [ 67%]
+tests/test_wg0p4.py::test_cold_self_rehash_cannot_launder_any_bound_field[grant] PASSED [ 69%]
+tests/test_wg0p4.py::test_cold_self_rehash_cannot_launder_any_bound_field[fact] PASSED [ 70%]
+tests/test_wg0p4.py::test_cold_self_rehash_cannot_launder_any_bound_field[fact_hash] PASSED [ 72%]
+tests/test_wg0p4.py::test_cold_self_rehash_cannot_launder_any_bound_field[receipt_provenance] PASSED [ 74%]
+tests/test_wg0p4.py::test_cold_self_rehash_cannot_launder_any_bound_field[receipt_executor] PASSED [ 75%]
+tests/test_wg0p4.py::test_cold_self_rehash_cannot_launder_any_bound_field[receipt_result] PASSED [ 77%]
+tests/test_wg0p4.py::test_cold_self_rehash_cannot_launder_any_bound_field[receipt_attempt] PASSED [ 79%]
+tests/test_wg0p4.py::test_cold_self_rehash_cannot_launder_any_bound_field[source_edition] PASSED [ 80%]
+tests/test_wg0p4.py::test_cold_self_rehash_cannot_launder_any_bound_field[source_material] PASSED [ 82%]
+tests/test_wg0p4.py::test_cold_self_rehash_cannot_launder_any_bound_field[knowledge_clock] PASSED [ 83%]
+tests/test_wg0p4.py::test_cold_self_rehash_cannot_launder_any_bound_field[frontier_root] PASSED [ 85%]
+tests/test_wg0p4.py::test_cold_self_rehash_cannot_launder_any_bound_field[manifest] PASSED [ 87%]
+tests/test_wg0p4.py::test_cold_self_rehash_cannot_launder_any_bound_field[missing_payload] PASSED [ 88%]
+tests/test_wg0p4.py::test_cold_self_rehash_cannot_launder_any_bound_field[completed_unit] PASSED [ 90%]
+tests/test_wg0p4.py::test_original_manifest_receipt_resume_and_legitimate_replay PASSED [ 91%]
+tests/test_wg0p4.py::test_cold_revoke_keeps_historical_bytes_but_denies_current_resume PASSED [ 93%]
+tests/test_wg0p4.py::test_actual_subprocesses_restore_one_original_receipt_and_execute_only_two PASSED [ 95%]
+tests/test_wg0p4.py::test_conditional_uses_ordinary_chain_with_same_person_and_complete_second_frontier FAILED [ 96%]
+tests/test_wg0p4.py::test_conditional_joint_grant_cannot_authorize_cross_wave_or_household PASSED [ 98%]
+tests/test_wg0p4.py::test_supported_zero_distinct_from_zero_risk_and_unknown PASSED [100%]
+
+=================================== FAILURES ===================================
+_ test_conditional_uses_ordinary_chain_with_same_person_and_complete_second_frontier _
+tests/test_wg0p4.py:151: in test_conditional_uses_ordinary_chain_with_same_person_and_complete_second_frontier
+    assert sorted(e[op][0]['native_fact']['semantic_fields']['denominator_respondent_refs'],key=lambda x:x['object_id'])==sorted(expected,key=lambda x:x['object_id'])
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   KeyError: 'denominator_respondent_refs'
+- generated xml file: <WORKTREE>/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/observations/wg0p4.xml -
+=========================== short test summary info ============================
+FAILED tests/test_wg0p4.py::test_conditional_uses_ordinary_chain_with_same_person_and_complete_second_frontier - KeyError: 'denominator_respondent_refs'
+======================== 1 failed, 61 passed in 16.13s =========================

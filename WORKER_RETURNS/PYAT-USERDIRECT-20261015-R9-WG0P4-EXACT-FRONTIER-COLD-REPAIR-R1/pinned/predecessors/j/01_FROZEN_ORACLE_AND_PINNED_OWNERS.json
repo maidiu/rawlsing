@@ -1,0 +1,462 @@
+{
+  "schema": "WG0J_EXPECTATION_FIRST_INDEPENDENT_ORACLE@1",
+  "frozen_at": "2026-10-15T04:05:33.286334+00:00",
+  "observation_cut": "Candidate report/code read; no candidate import, test or workload execution yet. Independent inventory and reasons authored manually from scientific eligibility; no candidate expected-class helper called.",
+  "candidate": "56098540bd36f22aef66db24913722aec808e3e9",
+  "original_items": [
+    {
+      "item_id": "WG0P-ORD-01",
+      "form_id": "Q-ORD-A",
+      "source_id": "WG0P-SRC-A",
+      "wave": "W1",
+      "unit": "respondent",
+      "grant": "GRANTED_FIXTURE"
+    },
+    {
+      "item_id": "WG0P-HH-MR-02",
+      "form_id": "Q-HH-MR-B",
+      "source_id": "WG0P-SRC-A",
+      "wave": "W1",
+      "unit": "household",
+      "grant": "GRANTED_FIXTURE"
+    },
+    {
+      "item_id": "WG0P-ROUTED-03",
+      "form_id": "Q-RT-C",
+      "source_id": "WG0P-SRC-A",
+      "wave": "W1",
+      "unit": "respondent",
+      "grant": "GRANTED_FIXTURE"
+    },
+    {
+      "item_id": "WG0P-ORD-04",
+      "form_id": "Q-ORD-A",
+      "source_id": "WG0P-SRC-B",
+      "wave": "W2",
+      "unit": "respondent",
+      "grant": "WITHDRAWN"
+    },
+    {
+      "item_id": "WG0P-ORD-05",
+      "form_id": "Q-ORD-A",
+      "source_id": "WG0P-SRC-A",
+      "wave": "W2",
+      "unit": "respondent",
+      "grant": "GRANTED_FIXTURE"
+    }
+  ],
+  "operations": [
+    {
+      "op_id": "OP-WG0P-ORD-01-MARGINAL",
+      "op_class": "MARGINAL",
+      "target": "WG0P-ORD-01",
+      "conditioners": [],
+      "item_ids": [
+        "WG0P-ORD-01"
+      ],
+      "disposition": "PRODUCED",
+      "disposition_reason": "ELIGIBLE"
+    },
+    {
+      "op_id": "OP-WG0P-HH-MR-02-MARGINAL",
+      "op_class": "MARGINAL",
+      "target": "WG0P-HH-MR-02",
+      "conditioners": [],
+      "item_ids": [
+        "WG0P-HH-MR-02"
+      ],
+      "disposition": "PRODUCED",
+      "disposition_reason": "ELIGIBLE"
+    },
+    {
+      "op_id": "OP-WG0P-ROUTED-03-MARGINAL",
+      "op_class": "MARGINAL",
+      "target": "WG0P-ROUTED-03",
+      "conditioners": [],
+      "item_ids": [
+        "WG0P-ROUTED-03"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "ROUTE_EVIDENCE_MISSING"
+    },
+    {
+      "op_id": "OP-WG0P-ORD-04-MARGINAL",
+      "op_class": "MARGINAL",
+      "target": "WG0P-ORD-04",
+      "conditioners": [],
+      "item_ids": [
+        "WG0P-ORD-04"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "GRANT_WITHDRAWN"
+    },
+    {
+      "op_id": "OP-WG0P-ORD-05-MARGINAL",
+      "op_class": "MARGINAL",
+      "target": "WG0P-ORD-05",
+      "conditioners": [],
+      "item_ids": [
+        "WG0P-ORD-05"
+      ],
+      "disposition": "PRODUCED",
+      "disposition_reason": "ELIGIBLE"
+    },
+    {
+      "op_id": "OP-WG0P-ORD-01-GIVEN-WG0P-HH-MR-02",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ORD-01",
+      "conditioners": [
+        "WG0P-HH-MR-02"
+      ],
+      "item_ids": [
+        "WG0P-ORD-01",
+        "WG0P-HH-MR-02"
+      ],
+      "disposition": "INADMISSIBLE",
+      "disposition_reason": "CROSS_UNIT_NOT_SAME_PERSON"
+    },
+    {
+      "op_id": "OP-WG0P-ORD-01-GIVEN-WG0P-ROUTED-03",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ORD-01",
+      "conditioners": [
+        "WG0P-ROUTED-03"
+      ],
+      "item_ids": [
+        "WG0P-ORD-01",
+        "WG0P-ROUTED-03"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "CONDITIONER_ROUTE_EVIDENCE_MISSING"
+    },
+    {
+      "op_id": "OP-WG0P-ORD-01-GIVEN-WG0P-ORD-04",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ORD-01",
+      "conditioners": [
+        "WG0P-ORD-04"
+      ],
+      "item_ids": [
+        "WG0P-ORD-01",
+        "WG0P-ORD-04"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "CONDITIONER_GRANT_WITHDRAWN"
+    },
+    {
+      "op_id": "OP-WG0P-ORD-01-GIVEN-WG0P-ORD-05",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ORD-01",
+      "conditioners": [
+        "WG0P-ORD-05"
+      ],
+      "item_ids": [
+        "WG0P-ORD-01",
+        "WG0P-ORD-05"
+      ],
+      "disposition": "INADMISSIBLE",
+      "disposition_reason": "CROSS_WAVE_NOT_SAME_PERSON"
+    },
+    {
+      "op_id": "OP-WG0P-HH-MR-02-GIVEN-WG0P-ORD-01",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-HH-MR-02",
+      "conditioners": [
+        "WG0P-ORD-01"
+      ],
+      "item_ids": [
+        "WG0P-HH-MR-02",
+        "WG0P-ORD-01"
+      ],
+      "disposition": "INADMISSIBLE",
+      "disposition_reason": "CROSS_UNIT_NOT_SAME_PERSON"
+    },
+    {
+      "op_id": "OP-WG0P-HH-MR-02-GIVEN-WG0P-ROUTED-03",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-HH-MR-02",
+      "conditioners": [
+        "WG0P-ROUTED-03"
+      ],
+      "item_ids": [
+        "WG0P-HH-MR-02",
+        "WG0P-ROUTED-03"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "CONDITIONER_ROUTE_EVIDENCE_MISSING"
+    },
+    {
+      "op_id": "OP-WG0P-HH-MR-02-GIVEN-WG0P-ORD-04",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-HH-MR-02",
+      "conditioners": [
+        "WG0P-ORD-04"
+      ],
+      "item_ids": [
+        "WG0P-HH-MR-02",
+        "WG0P-ORD-04"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "CONDITIONER_GRANT_WITHDRAWN"
+    },
+    {
+      "op_id": "OP-WG0P-HH-MR-02-GIVEN-WG0P-ORD-05",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-HH-MR-02",
+      "conditioners": [
+        "WG0P-ORD-05"
+      ],
+      "item_ids": [
+        "WG0P-HH-MR-02",
+        "WG0P-ORD-05"
+      ],
+      "disposition": "INADMISSIBLE",
+      "disposition_reason": "CROSS_UNIT_NOT_SAME_PERSON"
+    },
+    {
+      "op_id": "OP-WG0P-ROUTED-03-GIVEN-WG0P-ORD-01",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ROUTED-03",
+      "conditioners": [
+        "WG0P-ORD-01"
+      ],
+      "item_ids": [
+        "WG0P-ROUTED-03",
+        "WG0P-ORD-01"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "TARGET_ROUTE_EVIDENCE_MISSING"
+    },
+    {
+      "op_id": "OP-WG0P-ROUTED-03-GIVEN-WG0P-HH-MR-02",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ROUTED-03",
+      "conditioners": [
+        "WG0P-HH-MR-02"
+      ],
+      "item_ids": [
+        "WG0P-ROUTED-03",
+        "WG0P-HH-MR-02"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "TARGET_ROUTE_EVIDENCE_MISSING"
+    },
+    {
+      "op_id": "OP-WG0P-ROUTED-03-GIVEN-WG0P-ORD-04",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ROUTED-03",
+      "conditioners": [
+        "WG0P-ORD-04"
+      ],
+      "item_ids": [
+        "WG0P-ROUTED-03",
+        "WG0P-ORD-04"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "CONDITIONER_GRANT_WITHDRAWN"
+    },
+    {
+      "op_id": "OP-WG0P-ROUTED-03-GIVEN-WG0P-ORD-05",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ROUTED-03",
+      "conditioners": [
+        "WG0P-ORD-05"
+      ],
+      "item_ids": [
+        "WG0P-ROUTED-03",
+        "WG0P-ORD-05"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "TARGET_ROUTE_EVIDENCE_MISSING"
+    },
+    {
+      "op_id": "OP-WG0P-ORD-04-GIVEN-WG0P-ORD-01",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ORD-04",
+      "conditioners": [
+        "WG0P-ORD-01"
+      ],
+      "item_ids": [
+        "WG0P-ORD-04",
+        "WG0P-ORD-01"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "TARGET_GRANT_WITHDRAWN"
+    },
+    {
+      "op_id": "OP-WG0P-ORD-04-GIVEN-WG0P-HH-MR-02",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ORD-04",
+      "conditioners": [
+        "WG0P-HH-MR-02"
+      ],
+      "item_ids": [
+        "WG0P-ORD-04",
+        "WG0P-HH-MR-02"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "TARGET_GRANT_WITHDRAWN"
+    },
+    {
+      "op_id": "OP-WG0P-ORD-04-GIVEN-WG0P-ROUTED-03",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ORD-04",
+      "conditioners": [
+        "WG0P-ROUTED-03"
+      ],
+      "item_ids": [
+        "WG0P-ORD-04",
+        "WG0P-ROUTED-03"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "TARGET_GRANT_WITHDRAWN"
+    },
+    {
+      "op_id": "OP-WG0P-ORD-04-GIVEN-WG0P-ORD-05",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ORD-04",
+      "conditioners": [
+        "WG0P-ORD-05"
+      ],
+      "item_ids": [
+        "WG0P-ORD-04",
+        "WG0P-ORD-05"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "TARGET_GRANT_WITHDRAWN"
+    },
+    {
+      "op_id": "OP-WG0P-ORD-05-GIVEN-WG0P-ORD-01",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ORD-05",
+      "conditioners": [
+        "WG0P-ORD-01"
+      ],
+      "item_ids": [
+        "WG0P-ORD-05",
+        "WG0P-ORD-01"
+      ],
+      "disposition": "INADMISSIBLE",
+      "disposition_reason": "CROSS_WAVE_NOT_SAME_PERSON"
+    },
+    {
+      "op_id": "OP-WG0P-ORD-05-GIVEN-WG0P-HH-MR-02",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ORD-05",
+      "conditioners": [
+        "WG0P-HH-MR-02"
+      ],
+      "item_ids": [
+        "WG0P-ORD-05",
+        "WG0P-HH-MR-02"
+      ],
+      "disposition": "INADMISSIBLE",
+      "disposition_reason": "CROSS_UNIT_NOT_SAME_PERSON"
+    },
+    {
+      "op_id": "OP-WG0P-ORD-05-GIVEN-WG0P-ROUTED-03",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ORD-05",
+      "conditioners": [
+        "WG0P-ROUTED-03"
+      ],
+      "item_ids": [
+        "WG0P-ORD-05",
+        "WG0P-ROUTED-03"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "CONDITIONER_ROUTE_EVIDENCE_MISSING"
+    },
+    {
+      "op_id": "OP-WG0P-ORD-05-GIVEN-WG0P-ORD-04",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ORD-05",
+      "conditioners": [
+        "WG0P-ORD-04"
+      ],
+      "item_ids": [
+        "WG0P-ORD-05",
+        "WG0P-ORD-04"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "CONDITIONER_GRANT_WITHDRAWN"
+    }
+  ],
+  "expected_counts": {
+    "produced": 3,
+    "held": 16,
+    "inadmissible": 6,
+    "total": 25
+  },
+  "conditional_counts": {
+    "produced": 0,
+    "held": 14,
+    "inadmissible": 6,
+    "total": 20
+  },
+  "pinned_owner_blobs": {
+    "rawlsing_next/pre553_c11_repository.py": "67c6eb6494522cd11aab1b93d0e73f9cef6036f3",
+    "rawlsing_next/pre553_empirical_query.py": "03facecf70890bfd13b80418620d274cbcd69d02",
+    "rawlsing_next/pre553_batch_runner.py": "2d291600b9a10c56d9c6f6de7f7d619f6c52e829",
+    "rawlsing_next/pre553_empirical_objects.py": "a61365b994e5c3c50de0f598fcf40e90abf757b6",
+    "rawlsing_next/pre553_c11_ingest.py": "37cd35fa2e3420a3eea272a2902e96ab9ba38aba"
+  },
+  "expected_native": {
+    "ORD01": {
+      "0": 1,
+      "1": 2,
+      "2": 2,
+      "3": 1,
+      "9": 0
+    },
+    "ORD05": {
+      "0": 0,
+      "1": 2,
+      "2": 1,
+      "3": 1,
+      "9": 0
+    },
+    "MR_sets": [
+      [
+        "food",
+        "rent"
+      ],
+      [
+        "rent",
+        "health"
+      ],
+      [
+        "food",
+        "health",
+        "education"
+      ],
+      [
+        "none"
+      ]
+    ],
+    "MR_indicator_totals": {
+      "food": 2,
+      "rent": 2,
+      "health": 2,
+      "education": 1,
+      "none": 1
+    }
+  },
+  "independent_checks": [
+    "Actual3validatedC11releases; no injectedobject; ownercalltraces",
+    "Native01counts1,2,2,1,0/6;05counts0,2,1,1,0/4;4MRprofiles/4;weightsRAWtypedabsence",
+    "Exact25keys and dispositions at enumeration/frontier; expected register needed beyond produced manifest",
+    "Unknown/negative/missing/foreign rows failclosed; missing special9 cannot silently become substantive",
+    "Nativeoptions and metadata must bind actualsource/query or typedHOLD, not onlyunitIDs",
+    "Granttoken isTEST_ONLY; do not accept syntheticALLOWsnapshot as trustedexternalissuer",
+    "Operationsemantic changes under sameID must reject; no target/class/conditioner bypass",
+    "Absentjointcarrier/splitballot/crossunit/crosswave cannot silentlycompute",
+    "Positiveconditional path requires legitimate qualifiedmanifest; directI03mechanism separate",
+    "Lategrant revocation must block currentconsumerread; historyretained; unrelatedsourcesstable",
+    "Resultref/payload/release identity must bind actualfact atconsumer read",
+    "Coldprocess replay, checkpoint/sharding/interruption must retain exactfrontier andfactcustody",
+    "All15previousWG0Ifailures individually adjudicated, not merely same-test-name pass",
+    "No originaldata/all35/I05RouteBfullqualification/N11/N12/V3/adoption"
+  ],
+  "permission_ceiling": "SOURCEFREE_SYNTHETIC_ONLY; no original survey, issuer adoption, all35/N11 or V3"
+}

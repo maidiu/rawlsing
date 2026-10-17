@@ -1,0 +1,29 @@
+{
+  "name": "ported_k",
+  "command": [
+    "/usr/local/bin/python3",
+    "-m",
+    "pytest",
+    "-c",
+    "<WORKTREE>/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pytest.ini",
+    "<WORKTREE>/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/tests/test_wg0k_adapter_v1.py",
+    "-vv",
+    "--tb=short",
+    "--junitxml=<WORKTREE>/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/observations/ported_k.xml"
+  ],
+  "cwd": "<RETURN>",
+  "pythonpath": [
+    "<WORKTREE>/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned",
+    "<WORKTREE>/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/repro"
+  ],
+  "exit": 0,
+  "seconds": 0.42941713333129883,
+  "log_redaction": "Only personal filesystem root aliases; otherwise complete real stdout/stderr. Unredacted local execution output kept ignored runtime/raw_logs.",
+  "source": "Exact frozen sources for historical modes; separately versioned implementer compatibility adapters for ported modes.",
+  "candidate_sha256": "c74b34d14c5a79993e7b56908ac017b2e35a97df422460f4d62beb30b63821f8",
+  "test_file_sha256": "eb5f2d2af6ae54441c643e1911c1d17e5f20b21f3e94cba60791870098d7b375",
+  "tests": 11,
+  "failures": 0,
+  "errors": 0,
+  "skips": 0
+}

@@ -1,0 +1,660 @@
+{
+  "actual_calls": [
+    {
+      "function": "run",
+      "module": "pre553_batch_runner.py"
+    },
+    {
+      "function": "execute_empirical_query",
+      "module": "pre553_empirical_query.py"
+    },
+    {
+      "function": "execute_empirical_query",
+      "module": "pre553_empirical_query.py"
+    }
+  ],
+  "checkpoint_fact_count": 1,
+  "current_grant": "INDEPENDENT_TEST_ONLY_FIXTURE_OWNER",
+  "manifest": "bcd255228ef35edcb9b59436b76e1eb78947c07180f2936779572f510981c140",
+  "pid": 44853,
+  "receipts": [
+    {
+      "attempt_index": 1,
+      "detail_hash": null,
+      "execution_performed": true,
+      "executor_ref": {
+        "content_hash": "900602d7ec547dc7c5eafb32f6f708569298615fddb96ca801506116acb27b76",
+        "kind": "EXECUTOR",
+        "object_id": "urn:wg0p4:test:WG0P4_QUERY_V1"
+      },
+      "failure_code": null,
+      "manifest_hash": "bcd255228ef35edcb9b59436b76e1eb78947c07180f2936779572f510981c140",
+      "provenance_refs": [
+        {
+          "content_hash": "cab5734bd77587fd442116bdf2d7648b9035c613164cf671f4915ef142ca6eba",
+          "kind": "C11LogicalRelease",
+          "object_id": "REL-REL-A-W1"
+        },
+        {
+          "content_hash": "900602d7ec547dc7c5eafb32f6f708569298615fddb96ca801506116acb27b76",
+          "kind": "EXECUTOR",
+          "object_id": "urn:wg0p4:test:WG0P4_QUERY_V1"
+        },
+        {
+          "content_hash": "ed038e8e5cb589c1b0da6ab0e2053b53a6cf4f0c0b3e974196f229a88e14ffa2",
+          "kind": "EmpiricalPredicate@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:ed038e8e5cb589c1b0da6ab0e2053b53a6cf4f0c0b3e974196f229a88e14ffa2"
+        },
+        {
+          "content_hash": "5810a0ba0dc4dd63efc7ad9c905775870c077fc3b1acb773f5b22cb305c8482c",
+          "kind": "EmpiricalQuerySpec@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:5810a0ba0dc4dd63efc7ad9c905775870c077fc3b1acb773f5b22cb305c8482c"
+        },
+        {
+          "content_hash": "96c950dc859da65f6c9bc2658d8c7acb651cbf3e155b36d2036ec556aea2a678",
+          "kind": "WG0P4_NATIVE_ITEM",
+          "object_id": "urn:wg0p4:test:native:WG0P-HH-MR-02"
+        },
+        {
+          "content_hash": "74347caa8257f09f7486e485b46c882bd9b0332e53c6ae776bbfc4cee633a665",
+          "kind": "WG0P4_SCIENTIFIC_FRONTIER",
+          "object_id": "urn:wg0p4:frontier:original25"
+        }
+      ],
+      "receipt_hash": "caac243fc25c521acc10b2e082b55bdb854921dff8f730680d82eeaf2dcabcbd",
+      "receipt_ref": {
+        "content_hash": "caac243fc25c521acc10b2e082b55bdb854921dff8f730680d82eeaf2dcabcbd",
+        "kind": "PRE553BatchExecutionReceipt@1.0.0",
+        "object_id": "urn:rawlsing:pre553:batch-receipt:sha256:caac243fc25c521acc10b2e082b55bdb854921dff8f730680d82eeaf2dcabcbd"
+      },
+      "result_refs": [
+        {
+          "content_hash": "80bcc96544eb5bfdd2d4cc9be58659a0b5fa5252291399a2eec5f97f56691c88",
+          "kind": "EmpiricalFact@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:80bcc96544eb5bfdd2d4cc9be58659a0b5fa5252291399a2eec5f97f56691c88"
+        }
+      ],
+      "state": "COMPLETED",
+      "unit_ref": {
+        "content_hash": "030cc8b9461be5ffda3f982a7c4416a807d8f7aa6dcc640769dd164b81b64274",
+        "kind": "PRE553BatchUnit@1.0.0",
+        "object_id": "urn:rawlsing:pre553:batch-unit:sha256:030cc8b9461be5ffda3f982a7c4416a807d8f7aa6dcc640769dd164b81b64274"
+      }
+    },
+    {
+      "attempt_index": 1,
+      "detail_hash": null,
+      "execution_performed": true,
+      "executor_ref": {
+        "content_hash": "900602d7ec547dc7c5eafb32f6f708569298615fddb96ca801506116acb27b76",
+        "kind": "EXECUTOR",
+        "object_id": "urn:wg0p4:test:WG0P4_QUERY_V1"
+      },
+      "failure_code": null,
+      "manifest_hash": "bcd255228ef35edcb9b59436b76e1eb78947c07180f2936779572f510981c140",
+      "provenance_refs": [
+        {
+          "content_hash": "cab5734bd77587fd442116bdf2d7648b9035c613164cf671f4915ef142ca6eba",
+          "kind": "C11LogicalRelease",
+          "object_id": "REL-REL-A-W1"
+        },
+        {
+          "content_hash": "900602d7ec547dc7c5eafb32f6f708569298615fddb96ca801506116acb27b76",
+          "kind": "EXECUTOR",
+          "object_id": "urn:wg0p4:test:WG0P4_QUERY_V1"
+        },
+        {
+          "content_hash": "433d5e28505b351677c897fd7ebcd26228274c2175cac8744c9bc60115ff0a0c",
+          "kind": "EmpiricalPredicate@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:433d5e28505b351677c897fd7ebcd26228274c2175cac8744c9bc60115ff0a0c"
+        },
+        {
+          "content_hash": "3dc98e1fe68584c0d5d60900ada2bab2c56fe7dfd2227e3fb83bca7b7f3008d6",
+          "kind": "EmpiricalQuerySpec@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:3dc98e1fe68584c0d5d60900ada2bab2c56fe7dfd2227e3fb83bca7b7f3008d6"
+        },
+        {
+          "content_hash": "b8b2d40412112278a0e28a326af1c81398fc206342fff606386d21924482625a",
+          "kind": "WG0P4_NATIVE_ITEM",
+          "object_id": "urn:wg0p4:test:native:WG0P-ORD-01"
+        },
+        {
+          "content_hash": "74347caa8257f09f7486e485b46c882bd9b0332e53c6ae776bbfc4cee633a665",
+          "kind": "WG0P4_SCIENTIFIC_FRONTIER",
+          "object_id": "urn:wg0p4:frontier:original25"
+        }
+      ],
+      "receipt_hash": "343029179dd6f84e88161966c5bbde1a5fa26b9bc77b24759632473660d983a7",
+      "receipt_ref": {
+        "content_hash": "343029179dd6f84e88161966c5bbde1a5fa26b9bc77b24759632473660d983a7",
+        "kind": "PRE553BatchExecutionReceipt@1.0.0",
+        "object_id": "urn:rawlsing:pre553:batch-receipt:sha256:343029179dd6f84e88161966c5bbde1a5fa26b9bc77b24759632473660d983a7"
+      },
+      "result_refs": [
+        {
+          "content_hash": "7392e92ee800a17e154346a23ae885dce50896193e1194d0acb3a81bea86ce50",
+          "kind": "EmpiricalFact@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:7392e92ee800a17e154346a23ae885dce50896193e1194d0acb3a81bea86ce50"
+        }
+      ],
+      "state": "COMPLETED",
+      "unit_ref": {
+        "content_hash": "90a7774218c599e3672d39e79d30425eace88e746844514dfac6f56b05e2c4e9",
+        "kind": "PRE553BatchUnit@1.0.0",
+        "object_id": "urn:rawlsing:pre553:batch-unit:sha256:90a7774218c599e3672d39e79d30425eace88e746844514dfac6f56b05e2c4e9"
+      }
+    },
+    {
+      "attempt_index": 1,
+      "detail_hash": null,
+      "execution_performed": true,
+      "executor_ref": {
+        "content_hash": "900602d7ec547dc7c5eafb32f6f708569298615fddb96ca801506116acb27b76",
+        "kind": "EXECUTOR",
+        "object_id": "urn:wg0p4:test:WG0P4_QUERY_V1"
+      },
+      "failure_code": null,
+      "manifest_hash": "bcd255228ef35edcb9b59436b76e1eb78947c07180f2936779572f510981c140",
+      "provenance_refs": [
+        {
+          "content_hash": "df342195d6f7f977ecd6c30b3a1a5ca68c5ae421af8bcec57ec904b713751dba",
+          "kind": "C11LogicalRelease",
+          "object_id": "REL-REL-A-W2"
+        },
+        {
+          "content_hash": "900602d7ec547dc7c5eafb32f6f708569298615fddb96ca801506116acb27b76",
+          "kind": "EXECUTOR",
+          "object_id": "urn:wg0p4:test:WG0P4_QUERY_V1"
+        },
+        {
+          "content_hash": "1c01d3d63514b81c1fbfb0b040645029899b4a6d54ae80a8fb4fa86c648826e2",
+          "kind": "EmpiricalPredicate@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:1c01d3d63514b81c1fbfb0b040645029899b4a6d54ae80a8fb4fa86c648826e2"
+        },
+        {
+          "content_hash": "6df08ed020d68d7acbdc0663515367f3fd9a404e7c137f4a7aa1305b69b58df7",
+          "kind": "EmpiricalQuerySpec@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:6df08ed020d68d7acbdc0663515367f3fd9a404e7c137f4a7aa1305b69b58df7"
+        },
+        {
+          "content_hash": "d76c7d181f3d526d78492fcb8072e67a2823d1ea5a96e45c8e60791ede2d8b21",
+          "kind": "WG0P4_NATIVE_ITEM",
+          "object_id": "urn:wg0p4:test:native:WG0P-ORD-05"
+        },
+        {
+          "content_hash": "74347caa8257f09f7486e485b46c882bd9b0332e53c6ae776bbfc4cee633a665",
+          "kind": "WG0P4_SCIENTIFIC_FRONTIER",
+          "object_id": "urn:wg0p4:frontier:original25"
+        }
+      ],
+      "receipt_hash": "a9ece5580a015c0358a92178dd808a37db1689b6c89c9e5232e04d1f5d86c8c2",
+      "receipt_ref": {
+        "content_hash": "a9ece5580a015c0358a92178dd808a37db1689b6c89c9e5232e04d1f5d86c8c2",
+        "kind": "PRE553BatchExecutionReceipt@1.0.0",
+        "object_id": "urn:rawlsing:pre553:batch-receipt:sha256:a9ece5580a015c0358a92178dd808a37db1689b6c89c9e5232e04d1f5d86c8c2"
+      },
+      "result_refs": [
+        {
+          "content_hash": "e9a23eb22e12ffc8e5a180278d304586b8104b0cd15d725fd0ac8b2eee910c0b",
+          "kind": "EmpiricalFact@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:e9a23eb22e12ffc8e5a180278d304586b8104b0cd15d725fd0ac8b2eee910c0b"
+        }
+      ],
+      "state": "COMPLETED",
+      "unit_ref": {
+        "content_hash": "b7a75f1472bbe94c0feb083ff757a0420e4a946f70b33ee7be6321bc64ad870c",
+        "kind": "PRE553BatchUnit@1.0.0",
+        "object_id": "urn:rawlsing:pre553:batch-unit:sha256:b7a75f1472bbe94c0feb083ff757a0420e4a946f70b33ee7be6321bc64ad870c"
+      }
+    }
+  ],
+  "remaining_executed": 2,
+  "source_frontier_root": "74347caa8257f09f7486e485b46c882bd9b0332e53c6ae776bbfc4cee633a665",
+  "summary": {
+    "actual_execution_receipts": 3,
+    "batch_state": "COMPLETED",
+    "completed_units": 3,
+    "coverage_state": "FULL_MANIFEST_COVERAGE",
+    "deferred_units": 0,
+    "failed_units": 0,
+    "full_coverage": true,
+    "manifest_ref": {
+      "content_hash": "bcd255228ef35edcb9b59436b76e1eb78947c07180f2936779572f510981c140",
+      "kind": "PRE553BatchManifest@1.0.0",
+      "object_id": "urn:rawlsing:pre553:batch-manifest:sha256:bcd255228ef35edcb9b59436b76e1eb78947c07180f2936779572f510981c140"
+    },
+    "pending_units": 0,
+    "populated_data_execution_claim": false,
+    "receipt_set_hash": "2948d398dec0b9a81e797cb03618500fb0e6a800a53dc4ff9756e10465602698",
+    "total_units": 3
+  },
+  "unit_count": 3,
+  "values": {
+    "OP-WG0P-HH-MR-02-MARGINAL": [
+      {
+        "cells": [
+          {
+            "cell": [
+              "no",
+              "no",
+              "no",
+              "no",
+              "no"
+            ],
+            "n": 0,
+            "state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+          },
+          {
+            "cell": [
+              "no",
+              "no",
+              "no",
+              "no",
+              "yes"
+            ],
+            "n": 1,
+            "state": "OBSERVED_POSITIVE"
+          },
+          {
+            "cell": [
+              "no",
+              "no",
+              "no",
+              "yes",
+              "no"
+            ],
+            "n": 0,
+            "state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+          },
+          {
+            "cell": [
+              "no",
+              "no",
+              "no",
+              "yes",
+              "yes"
+            ],
+            "n": 0,
+            "state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+          },
+          {
+            "cell": [
+              "no",
+              "no",
+              "yes",
+              "no",
+              "no"
+            ],
+            "n": 0,
+            "state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+          },
+          {
+            "cell": [
+              "no",
+              "no",
+              "yes",
+              "no",
+              "yes"
+            ],
+            "n": 0,
+            "state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+          },
+          {
+            "cell": [
+              "no",
+              "no",
+              "yes",
+              "yes",
+              "no"
+            ],
+            "n": 0,
+            "state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+          },
+          {
+            "cell": [
+              "no",
+              "no",
+              "yes",
+              "yes",
+              "yes"
+            ],
+            "n": 0,
+            "state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+          },
+          {
+            "cell": [
+              "no",
+              "yes",
+              "no",
+              "no",
+              "no"
+            ],
+            "n": 0,
+            "state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+          },
+          {
+            "cell": [
+              "no",
+              "yes",
+              "no",
+              "no",
+              "yes"
+            ],
+            "n": 0,
+            "state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+          },
+          {
+            "cell": [
+              "no",
+              "yes",
+              "no",
+              "yes",
+              "no"
+            ],
+            "n": 0,
+            "state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+          },
+          {
+            "cell": [
+              "no",
+              "yes",
+              "no",
+              "yes",
+              "yes"
+            ],
+            "n": 0,
+            "state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+          },
+          {
+            "cell": [
+              "no",
+              "yes",
+              "yes",
+              "no",
+              "no"
+            ],
+            "n": 1,
+            "state": "OBSERVED_POSITIVE"
+          },
+          {
+            "cell": [
+              "no",
+              "yes",
+              "yes",
+              "no",
+              "yes"
+            ],
+            "n": 0,
+            "state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+          },
+          {
+            "cell": [
+              "no",
+              "yes",
+              "yes",
+              "yes",
+              "no"
+            ],
+            "n": 0,
+            "state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+          },
+          {
+            "cell": [
+              "no",
+              "yes",
+              "yes",
+              "yes",
+              "yes"
+            ],
+            "n": 0,
+            "state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+          },
+          {
+            "cell": [
+              "yes",
+              "no",
+              "no",
+              "no",
+              "no"
+            ],
+            "n": 0,
+            "state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+          },
+          {
+            "cell": [
+              "yes",
+              "no",
+              "no",
+              "no",
+              "yes"
+            ],
+            "n": 0,
+            "state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+          },
+          {
+            "cell": [
+              "yes",
+              "no",
+              "no",
+              "yes",
+              "no"
+            ],
+            "n": 0,
+            "state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+          },
+          {
+            "cell": [
+              "yes",
+              "no",
+              "no",
+              "yes",
+              "yes"
+            ],
+            "n": 0,
+            "state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+          },
+          {
+            "cell": [
+              "yes",
+              "no",
+              "yes",
+              "no",
+              "no"
+            ],
+            "n": 0,
+            "state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+          },
+          {
+            "cell": [
+              "yes",
+              "no",
+              "yes",
+              "no",
+              "yes"
+            ],
+            "n": 0,
+            "state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+          },
+          {
+            "cell": [
+              "yes",
+              "no",
+              "yes",
+              "yes",
+              "no"
+            ],
+            "n": 1,
+            "state": "OBSERVED_POSITIVE"
+          },
+          {
+            "cell": [
+              "yes",
+              "no",
+              "yes",
+              "yes",
+              "yes"
+            ],
+            "n": 0,
+            "state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+          },
+          {
+            "cell": [
+              "yes",
+              "yes",
+              "no",
+              "no",
+              "no"
+            ],
+            "n": 1,
+            "state": "OBSERVED_POSITIVE"
+          },
+          {
+            "cell": [
+              "yes",
+              "yes",
+              "no",
+              "no",
+              "yes"
+            ],
+            "n": 0,
+            "state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+          },
+          {
+            "cell": [
+              "yes",
+              "yes",
+              "no",
+              "yes",
+              "no"
+            ],
+            "n": 0,
+            "state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+          },
+          {
+            "cell": [
+              "yes",
+              "yes",
+              "no",
+              "yes",
+              "yes"
+            ],
+            "n": 0,
+            "state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+          },
+          {
+            "cell": [
+              "yes",
+              "yes",
+              "yes",
+              "no",
+              "no"
+            ],
+            "n": 0,
+            "state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+          },
+          {
+            "cell": [
+              "yes",
+              "yes",
+              "yes",
+              "no",
+              "yes"
+            ],
+            "n": 0,
+            "state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+          },
+          {
+            "cell": [
+              "yes",
+              "yes",
+              "yes",
+              "yes",
+              "no"
+            ],
+            "n": 0,
+            "state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+          },
+          {
+            "cell": [
+              "yes",
+              "yes",
+              "yes",
+              "yes",
+              "yes"
+            ],
+            "n": 0,
+            "state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+          }
+        ],
+        "denominator": 4,
+        "typed_state": "SUPPORTED"
+      }
+    ],
+    "OP-WG0P-ORD-01-MARGINAL": [
+      {
+        "cells": [
+          {
+            "cell": "0",
+            "n": 1,
+            "state": "OBSERVED_POSITIVE"
+          },
+          {
+            "cell": "1",
+            "n": 2,
+            "state": "OBSERVED_POSITIVE"
+          },
+          {
+            "cell": "2",
+            "n": 2,
+            "state": "OBSERVED_POSITIVE"
+          },
+          {
+            "cell": "3",
+            "n": 1,
+            "state": "OBSERVED_POSITIVE"
+          },
+          {
+            "cell": "9",
+            "n": 0,
+            "state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+          }
+        ],
+        "denominator": 6,
+        "typed_state": "SUPPORTED"
+      }
+    ],
+    "OP-WG0P-ORD-05-MARGINAL": [
+      {
+        "cells": [
+          {
+            "cell": "0",
+            "n": 0,
+            "state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+          },
+          {
+            "cell": "1",
+            "n": 2,
+            "state": "OBSERVED_POSITIVE"
+          },
+          {
+            "cell": "2",
+            "n": 1,
+            "state": "OBSERVED_POSITIVE"
+          },
+          {
+            "cell": "3",
+            "n": 1,
+            "state": "OBSERVED_POSITIVE"
+          },
+          {
+            "cell": "9",
+            "n": 0,
+            "state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+          }
+        ],
+        "denominator": 4,
+        "typed_state": "SUPPORTED"
+      }
+    ]
+  }
+}

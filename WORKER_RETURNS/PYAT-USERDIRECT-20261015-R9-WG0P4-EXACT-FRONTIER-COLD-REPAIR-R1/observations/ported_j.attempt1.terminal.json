@@ -1,0 +1,27 @@
+{
+  "name": "ported_j",
+  "command": [
+    "/usr/local/bin/python3",
+    "-m",
+    "pytest",
+    "-c",
+    "<WORKTREE>/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pytest.ini",
+    "<WORKTREE>/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/tests/test_wg0j_adapter_v1.py",
+    "-vv",
+    "--tb=short",
+    "--junitxml=<WORKTREE>/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/observations/ported_j.xml"
+  ],
+  "cwd": "<RETURN>",
+  "pythonpath": [
+    "<WORKTREE>/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned",
+    "<WORKTREE>/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/repro"
+  ],
+  "exit": 1,
+  "seconds": 10.060572862625122,
+  "log_redaction": "Only personal filesystem root aliases; otherwise complete real stdout/stderr. Unredacted local execution output kept ignored runtime/raw_logs.",
+  "source": "Exact frozen sources for historical modes; separately versioned implementer compatibility adapters for ported modes.",
+  "tests": 44,
+  "failures": 1,
+  "errors": 0,
+  "skips": 0
+}
