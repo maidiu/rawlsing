@@ -1,3 +1,38 @@
+# WG0L Phase B final independent court — RED
+
+Candidate **20d781c8502662bf788b60b828e46df55898d687** was verified by direct remote readback, checked for return-only changes, frozen in an append-only read cut, and executed in this separate reviewer worktree with real Python/pytest and unchanged accepted C11/I03/Batch modules.
+
+**Three additional independent counterexamples prevent acceptance.** A copied plan can change `BoundSpec.source_edition` to `FORGED_CALLER_EDITION`, or `native_item_ids` to a foreign native item, while keeping the registered contract unchanged. Actual native execution completes and serves the forged provenance as `SUPPORTED`. A copied `release_tag` reaches native I03 and later raises `KeyError: complete_cell_semantic_projection` instead of being rejected by bound-plan validation. Numerical values staying correct does not make false source provenance acceptable. The contract projection binds unit/query/predicate but omits descriptor fields consumed by execution and `_fact_entry`.
+
+| Actual executed evidence | Result | Qualification |
+|---|---:|---|
+| Independently precommitted65 | 65 PASS | Frozen expectations and assertions unchanged; final stable-harness run confirms all65 |
+| Original WG0J | 44 PASS | Original source unchanged; explicit reviewer early-admission/immutable-interface mappings |
+| Original retained WG0K full-module | 11 PASS | One explicit early grant-parser refusal mapping |
+| Published WG0K documented contracts | 19 PASS | Reconstructed15 method +4 real-cold expectations on full imports; not original excerpt-script replay |
+| Additional descriptor provenance court | **3 RED** | Actual wrong edition/item metadata served; unbound release descriptor reaches I03 |
+| Accepted C11/I03/Batch/object-authority tests | 80 PASS | Exact original native tests at frozen source commit |
+| Original WG0P2 / WG0P3 author controls | 29 /36 PASS | Historical source reproduction, separate from candidate acceptance |
+| WG0P4 author regression | 69 PASS | Author suite reproduced independently; not independent acceptance |
+| Historical WG0J on WG0P2 | 24 PASS /20 RED | Historical failures reproduced and preserved |
+| Historical WG0K on WG0P3 | 1 PASS /10 RED | Historical failures reproduced and preserved |
+
+The final inherited/additional JUnit has **74 PASS /3 FAIL /0 ERROR /0 SKIP** across77 tests. Initial harness attempts remain retained: a staging verifier refused regenerated historical observation inputs; later maps corrected the transport of native carrier conflicts and reviewer alias snapshots. A strengthened copied-descriptor check first surfaced inside the mapped immutable-spec test; it is now retained as separately named additional counterexamples so original44 intent and new hardening expectations remain explicit. No candidate source, native owner source, original test source, frozen expectation or frozen assertion was changed.
+
+The actual ordinary conditional uses builder→plan→executor→run_plan→accepted Batch→consumer, producing **yes1/no1 over2**, with actual native denominator members **R2/R3**. The original25 frontier remains **3 PRODUCED /16 HELD /6 INADMISSIBLE**; a separate four-op interface register was committed before its reviewer execution. Missing/split joint membership, cross-wave and household/person joins retain their typed refusal states.
+
+Actual crash/recovery exits23 after one native unit, restores the original accepted receipt under the same three-unit manifest in a fresh PID, executes only two new I03 calls, and serves all three original results. File and directory fsync and atomic rename are measured. Seven positive cold controls inspect one explicitly shared OS experiment; other attacks have separate child interpreters. See report03 and raw control JSON.
+
+**Archival HOLD:** WG0K's original15-test extracted script and4-test cold script were container-local and absent from its published Git tree. Their exact historical hashes/paths/sizes are retained. All19 documented expectations were executed on full imports, but byte-exact original-script replay is not claimed. No missing test or skip is counted as an independent pass.
+
+Report02 contains exact commands, module paths/hashes, source identities, raw evidence indexes, exits and result accounting. Report04 gives the repair edge and authority ceiling. The candidate remains **RED**, with no HQ/source/semantic-issuer/adopter authority granted. Publish this reviewer return only; obtain author repair and fresh independent scientific acceptance before any later adoption claim.
+
+---
+
+# Historical Phase A checkpoint and continuation records
+
+The following record is preserved as history. Its prospective instructions and WAIT notes are superseded by the Phase B result above.
+
 # WG0L Phase A precommitted independent full-engine court
 
 **PHASE_A_ORACLE_READY_NOT_CANDIDATE_ADJUDICATED.** This is the required Phase A checkpoint. No WG0P4 candidate source has been inspected or imported and no candidate verdict is issued. After this checkpoint is committed/pushed and verified, check the actual WG0P4 remote branch. If still sealed at `c1e88fb26f3ef757f13bad7cf901cd6529a368c8`, retain **WAIT_FOR_CANDIDATE_PUSH** and stop this phase as commissioned. A separate appended observation records that check; no automatic scheduling is assumed.

@@ -1,0 +1,857 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.11.3, pytest-9.0.2, pluggy-1.6.0 -- /usr/local/bin/python3
+rootdir: /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate
+configfile: pytest.ini
+plugins: anyio-4.12.1
+collecting ... collected 65 items
+
+runtime_phase_b/candidate::test_precommitted_hostile[frontier/omit_HELD] <- ../../tests/test_precommitted_phase_b.py ERROR [  1%]
+runtime_phase_b/candidate::test_precommitted_hostile[frontier/omit_INADMISSIBLE] <- ../../tests/test_precommitted_phase_b.py ERROR [  3%]
+runtime_phase_b/candidate::test_precommitted_hostile[frontier/equal_count_HELD_identity_swap] <- ../../tests/test_precommitted_phase_b.py ERROR [  4%]
+runtime_phase_b/candidate::test_precommitted_hostile[frontier/equal_count_reason_forgery] <- ../../tests/test_precommitted_phase_b.py ERROR [  6%]
+runtime_phase_b/candidate::test_precommitted_hostile[frontier/equal_count_target_swap] <- ../../tests/test_precommitted_phase_b.py ERROR [  7%]
+runtime_phase_b/candidate::test_precommitted_hostile[frontier/equal_count_source_permission_swap] <- ../../tests/test_precommitted_phase_b.py ERROR [  9%]
+runtime_phase_b/candidate::test_precommitted_hostile[frontier/circular_expected_list] <- ../../tests/test_precommitted_phase_b.py ERROR [ 10%]
+runtime_phase_b/candidate::test_precommitted_hostile[frontier/consumer_frontier_mutation] <- ../../tests/test_precommitted_phase_b.py ERROR [ 12%]
+runtime_phase_b/candidate::test_precommitted_hostile[frontier/duplicate_changed_semantics] <- ../../tests/test_precommitted_phase_b.py ERROR [ 13%]
+runtime_phase_b/candidate::test_precommitted_hostile[native/options] <- ../../tests/test_precommitted_phase_b.py ERROR [ 15%]
+runtime_phase_b/candidate::test_precommitted_hostile[native/missing_codes] <- ../../tests/test_precommitted_phase_b.py ERROR [ 16%]
+runtime_phase_b/candidate::test_precommitted_hostile[native/routing] <- ../../tests/test_precommitted_phase_b.py ERROR [ 18%]
+runtime_phase_b/candidate::test_precommitted_hostile[native/wave] <- ../../tests/test_precommitted_phase_b.py ERROR [ 20%]
+runtime_phase_b/candidate::test_precommitted_hostile[native/unit] <- ../../tests/test_precommitted_phase_b.py ERROR [ 21%]
+runtime_phase_b/candidate::test_precommitted_hostile[native/response_kind] <- ../../tests/test_precommitted_phase_b.py ERROR [ 23%]
+runtime_phase_b/candidate::test_precommitted_hostile[native/source_id] <- ../../tests/test_precommitted_phase_b.py ERROR [ 24%]
+runtime_phase_b/candidate::test_precommitted_hostile[native/form_id] <- ../../tests/test_precommitted_phase_b.py ERROR [ 26%]
+runtime_phase_b/candidate::test_precommitted_hostile[native/MR_indicator_disagreement] <- ../../tests/test_precommitted_phase_b.py ERROR [ 27%]
+runtime_phase_b/candidate::test_precommitted_hostile[native/invalid_negative] <- ../../tests/test_precommitted_phase_b.py ERROR [ 29%]
+runtime_phase_b/candidate::test_precommitted_hostile[native/invalid_foreign] <- ../../tests/test_precommitted_phase_b.py ERROR [ 30%]
+runtime_phase_b/candidate::test_precommitted_hostile[native/missing_observation] <- ../../tests/test_precommitted_phase_b.py ERROR [ 32%]
+runtime_phase_b/candidate::test_precommitted_hostile[native/missing9_not_substantive] <- ../../tests/test_precommitted_phase_b.py ERROR [ 33%]
+runtime_phase_b/candidate::test_precommitted_hostile[native/zero_risk_vs_observed_zero] <- ../../tests/test_precommitted_phase_b.py ERROR [ 35%]
+runtime_phase_b/candidate::test_precommitted_hostile[binding/wrong_unit_release] <- ../../tests/test_precommitted_phase_b.py ERROR [ 36%]
+runtime_phase_b/candidate::test_precommitted_hostile[binding/wrong_unit_job_ref] <- ../../tests/test_precommitted_phase_b.py ERROR [ 38%]
+runtime_phase_b/candidate::test_precommitted_hostile[binding/wrong_unit_semantic_input] <- ../../tests/test_precommitted_phase_b.py ERROR [ 40%]
+runtime_phase_b/candidate::test_precommitted_hostile[binding/query_predicate_swap] <- ../../tests/test_precommitted_phase_b.py ERROR [ 41%]
+runtime_phase_b/candidate::test_precommitted_hostile[binding/result_reference_swap] <- ../../tests/test_precommitted_phase_b.py ERROR [ 43%]
+runtime_phase_b/candidate::test_precommitted_hostile[binding/source_leaf_mutation] <- ../../tests/test_precommitted_phase_b.py ERROR [ 44%]
+runtime_phase_b/candidate::test_precommitted_hostile[binding/source_authority_change] <- ../../tests/test_precommitted_phase_b.py ERROR [ 46%]
+runtime_phase_b/candidate::test_precommitted_hostile[binding/W2_wave_identity] <- ../../tests/test_precommitted_phase_b.py ERROR [ 47%]
+runtime_phase_b/candidate::test_precommitted_hostile[binding/unrelated_W2_exact_stability] <- ../../tests/test_precommitted_phase_b.py ERROR [ 49%]
+runtime_phase_b/candidate::test_precommitted_hostile[custody/store_alias] <- ../../tests/test_precommitted_phase_b.py ERROR [ 50%]
+runtime_phase_b/candidate::test_precommitted_hostile[custody/read_alias] <- ../../tests/test_precommitted_phase_b.py ERROR [ 52%]
+runtime_phase_b/candidate::test_precommitted_hostile[custody/snapshot_alias] <- ../../tests/test_precommitted_phase_b.py ERROR [ 53%]
+runtime_phase_b/candidate::test_precommitted_hostile[custody/restore_alias] <- ../../tests/test_precommitted_phase_b.py ERROR [ 55%]
+runtime_phase_b/candidate::test_precommitted_hostile[custody/same_key_collision] <- ../../tests/test_precommitted_phase_b.py ERROR [ 56%]
+runtime_phase_b/candidate::test_precommitted_hostile[custody/fact_projection_ref_hash] <- ../../tests/test_precommitted_phase_b.py ERROR [ 58%]
+runtime_phase_b/candidate::test_precommitted_hostile[custody/rehashed_changed_fact] <- ../../tests/test_precommitted_phase_b.py ERROR [ 60%]
+runtime_phase_b/candidate::test_precommitted_hostile[custody/immediate_restore_validation] <- ../../tests/test_precommitted_phase_b.py ERROR [ 61%]
+runtime_phase_b/candidate::test_precommitted_hostile[authority/requester_forged_grant] <- ../../tests/test_precommitted_phase_b.py ERROR [ 63%]
+runtime_phase_b/candidate::test_precommitted_hostile[authority/self_rehashed_issuer] <- ../../tests/test_precommitted_phase_b.py ERROR [ 64%]
+runtime_phase_b/candidate::test_precommitted_hostile[authority/historical_snapshot_after_revocation] <- ../../tests/test_precommitted_phase_b.py ERROR [ 66%]
+runtime_phase_b/candidate::test_precommitted_hostile[authority/fresh_process_revocation] <- ../../tests/test_precommitted_phase_b.py ERROR [ 67%]
+runtime_phase_b/candidate::test_precommitted_hostile[authority/stale_source_edition] <- ../../tests/test_precommitted_phase_b.py ERROR [ 69%]
+runtime_phase_b/candidate::test_precommitted_hostile[authority/stale_knowledge_clock] <- ../../tests/test_precommitted_phase_b.py ERROR [ 70%]
+runtime_phase_b/candidate::test_precommitted_hostile[authority/current_grant_independent_of_plan] <- ../../tests/test_precommitted_phase_b.py ERROR [ 72%]
+runtime_phase_b/candidate::test_precommitted_hostile[conditional/ordinary_full_chain_yes1_no1_over2] <- ../../tests/test_precommitted_phase_b.py ERROR [ 73%]
+runtime_phase_b/candidate::test_precommitted_hostile[conditional/original25_unchanged] <- ../../tests/test_precommitted_phase_b.py ERROR [ 75%]
+runtime_phase_b/candidate::test_precommitted_hostile[conditional/second_frontier_exact_no_drop] <- ../../tests/test_precommitted_phase_b.py ERROR [ 76%]
+runtime_phase_b/candidate::test_precommitted_hostile[conditional/same_grain_without_person_HOLD] <- ../../tests/test_precommitted_phase_b.py ERROR [ 78%]
+runtime_phase_b/candidate::test_precommitted_hostile[conditional/split_ballot_HOLD] <- ../../tests/test_precommitted_phase_b.py ERROR [ 80%]
+runtime_phase_b/candidate::test_precommitted_hostile[conditional/cross_wave_HOLD] <- ../../tests/test_precommitted_phase_b.py ERROR [ 81%]
+runtime_phase_b/candidate::test_precommitted_hostile[conditional/household_person_INADMISSIBLE] <- ../../tests/test_precommitted_phase_b.py ERROR [ 83%]
+runtime_phase_b/candidate::test_precommitted_hostile[cold/actual_abrupt_exit23_after_one] <- ../../tests/test_precommitted_phase_b.py ERROR [ 84%]
+runtime_phase_b/candidate::test_precommitted_hostile[cold/same_original_manifest] <- ../../tests/test_precommitted_phase_b.py ERROR [ 86%]
+runtime_phase_b/candidate::test_precommitted_hostile[cold/original_UnitExecutionReceipt_preimage] <- ../../tests/test_precommitted_phase_b.py ERROR [ 87%]
+runtime_phase_b/candidate::test_precommitted_hostile[cold/fresh_process_exactly_two_I03_calls] <- ../../tests/test_precommitted_phase_b.py ERROR [ 89%]
+runtime_phase_b/candidate::test_precommitted_hostile[cold/three_original_consumer_values] <- ../../tests/test_precommitted_phase_b.py ERROR [ 90%]
+runtime_phase_b/candidate::test_precommitted_hostile[cold/prior_receipt_hash_retained] <- ../../tests/test_precommitted_phase_b.py ERROR [ 92%]
+runtime_phase_b/candidate::test_precommitted_hostile[cold/missing_fact_refuse] <- ../../tests/test_precommitted_phase_b.py ERROR [ 93%]
+runtime_phase_b/candidate::test_precommitted_hostile[cold/changed_receipt_provenance_refuse] <- ../../tests/test_precommitted_phase_b.py ERROR [ 95%]
+runtime_phase_b/candidate::test_precommitted_hostile[cold/self_rehashed_checkpoint_refuse] <- ../../tests/test_precommitted_phase_b.py ERROR [ 96%]
+runtime_phase_b/candidate::test_precommitted_hostile[cold/source_edition_currentness_refuse] <- ../../tests/test_precommitted_phase_b.py ERROR [ 98%]
+runtime_phase_b/candidate::test_precommitted_hostile[cold/full_frontier25_retained] <- ../../tests/test_precommitted_phase_b.py ERROR [100%]
+
+==================================== ERRORS ====================================
+_______ ERROR at setup of test_precommitted_hostile[frontier/omit_HELD] ________
+tests/test_precommitted_phase_b.py:13: in adapter
+    a=importlib.import_module(name).Adapter(ORACLE)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+repro/phase_b_adapter_v1.py:11: in __init__
+    self.oracle=oracle;self.physical=verified_modules()
+                                     ^^^^^^^^^^^^^^^^^^
+repro/phase_b_support_v1.py:49: in verified_modules
+    if hashlib.sha256(data).hexdigest()!=row['sha256']:raise RuntimeError('changed staged source '+str(path))
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+___ ERROR at setup of test_precommitted_hostile[frontier/omit_INADMISSIBLE] ____
+tests/test_precommitted_phase_b.py:13: in adapter
+    a=importlib.import_module(name).Adapter(ORACLE)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+repro/phase_b_adapter_v1.py:11: in __init__
+    self.oracle=oracle;self.physical=verified_modules()
+                                     ^^^^^^^^^^^^^^^^^^
+repro/phase_b_support_v1.py:49: in verified_modules
+    if hashlib.sha256(data).hexdigest()!=row['sha256']:raise RuntimeError('changed staged source '+str(path))
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+_ ERROR at setup of test_precommitted_hostile[frontier/equal_count_HELD_identity_swap] _
+tests/test_precommitted_phase_b.py:13: in adapter
+    a=importlib.import_module(name).Adapter(ORACLE)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+repro/phase_b_adapter_v1.py:11: in __init__
+    self.oracle=oracle;self.physical=verified_modules()
+                                     ^^^^^^^^^^^^^^^^^^
+repro/phase_b_support_v1.py:49: in verified_modules
+    if hashlib.sha256(data).hexdigest()!=row['sha256']:raise RuntimeError('changed staged source '+str(path))
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+_ ERROR at setup of test_precommitted_hostile[frontier/equal_count_reason_forgery] _
+tests/test_precommitted_phase_b.py:13: in adapter
+    a=importlib.import_module(name).Adapter(ORACLE)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+repro/phase_b_adapter_v1.py:11: in __init__
+    self.oracle=oracle;self.physical=verified_modules()
+                                     ^^^^^^^^^^^^^^^^^^
+repro/phase_b_support_v1.py:49: in verified_modules
+    if hashlib.sha256(data).hexdigest()!=row['sha256']:raise RuntimeError('changed staged source '+str(path))
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+_ ERROR at setup of test_precommitted_hostile[frontier/equal_count_target_swap] _
+tests/test_precommitted_phase_b.py:13: in adapter
+    a=importlib.import_module(name).Adapter(ORACLE)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+repro/phase_b_adapter_v1.py:11: in __init__
+    self.oracle=oracle;self.physical=verified_modules()
+                                     ^^^^^^^^^^^^^^^^^^
+repro/phase_b_support_v1.py:49: in verified_modules
+    if hashlib.sha256(data).hexdigest()!=row['sha256']:raise RuntimeError('changed staged source '+str(path))
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+_ ERROR at setup of test_precommitted_hostile[frontier/equal_count_source_permission_swap] _
+tests/test_precommitted_phase_b.py:13: in adapter
+    a=importlib.import_module(name).Adapter(ORACLE)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+repro/phase_b_adapter_v1.py:11: in __init__
+    self.oracle=oracle;self.physical=verified_modules()
+                                     ^^^^^^^^^^^^^^^^^^
+repro/phase_b_support_v1.py:49: in verified_modules
+    if hashlib.sha256(data).hexdigest()!=row['sha256']:raise RuntimeError('changed staged source '+str(path))
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+_ ERROR at setup of test_precommitted_hostile[frontier/circular_expected_list] _
+tests/test_precommitted_phase_b.py:13: in adapter
+    a=importlib.import_module(name).Adapter(ORACLE)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+repro/phase_b_adapter_v1.py:11: in __init__
+    self.oracle=oracle;self.physical=verified_modules()
+                                     ^^^^^^^^^^^^^^^^^^
+repro/phase_b_support_v1.py:49: in verified_modules
+    if hashlib.sha256(data).hexdigest()!=row['sha256']:raise RuntimeError('changed staged source '+str(path))
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+_ ERROR at setup of test_precommitted_hostile[frontier/consumer_frontier_mutation] _
+tests/test_precommitted_phase_b.py:13: in adapter
+    a=importlib.import_module(name).Adapter(ORACLE)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+repro/phase_b_adapter_v1.py:11: in __init__
+    self.oracle=oracle;self.physical=verified_modules()
+                                     ^^^^^^^^^^^^^^^^^^
+repro/phase_b_support_v1.py:49: in verified_modules
+    if hashlib.sha256(data).hexdigest()!=row['sha256']:raise RuntimeError('changed staged source '+str(path))
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+_ ERROR at setup of test_precommitted_hostile[frontier/duplicate_changed_semantics] _
+tests/test_precommitted_phase_b.py:13: in adapter
+    a=importlib.import_module(name).Adapter(ORACLE)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+repro/phase_b_adapter_v1.py:11: in __init__
+    self.oracle=oracle;self.physical=verified_modules()
+                                     ^^^^^^^^^^^^^^^^^^
+repro/phase_b_support_v1.py:49: in verified_modules
+    if hashlib.sha256(data).hexdigest()!=row['sha256']:raise RuntimeError('changed staged source '+str(path))
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+_________ ERROR at setup of test_precommitted_hostile[native/options] __________
+tests/test_precommitted_phase_b.py:13: in adapter
+    a=importlib.import_module(name).Adapter(ORACLE)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+repro/phase_b_adapter_v1.py:11: in __init__
+    self.oracle=oracle;self.physical=verified_modules()
+                                     ^^^^^^^^^^^^^^^^^^
+repro/phase_b_support_v1.py:49: in verified_modules
+    if hashlib.sha256(data).hexdigest()!=row['sha256']:raise RuntimeError('changed staged source '+str(path))
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+______ ERROR at setup of test_precommitted_hostile[native/missing_codes] _______
+tests/test_precommitted_phase_b.py:13: in adapter
+    a=importlib.import_module(name).Adapter(ORACLE)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+repro/phase_b_adapter_v1.py:11: in __init__
+    self.oracle=oracle;self.physical=verified_modules()
+                                     ^^^^^^^^^^^^^^^^^^
+repro/phase_b_support_v1.py:49: in verified_modules
+    if hashlib.sha256(data).hexdigest()!=row['sha256']:raise RuntimeError('changed staged source '+str(path))
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+_________ ERROR at setup of test_precommitted_hostile[native/routing] __________
+tests/test_precommitted_phase_b.py:13: in adapter
+    a=importlib.import_module(name).Adapter(ORACLE)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+repro/phase_b_adapter_v1.py:11: in __init__
+    self.oracle=oracle;self.physical=verified_modules()
+                                     ^^^^^^^^^^^^^^^^^^
+repro/phase_b_support_v1.py:49: in verified_modules
+    if hashlib.sha256(data).hexdigest()!=row['sha256']:raise RuntimeError('changed staged source '+str(path))
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+___________ ERROR at setup of test_precommitted_hostile[native/wave] ___________
+tests/test_precommitted_phase_b.py:13: in adapter
+    a=importlib.import_module(name).Adapter(ORACLE)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+repro/phase_b_adapter_v1.py:11: in __init__
+    self.oracle=oracle;self.physical=verified_modules()
+                                     ^^^^^^^^^^^^^^^^^^
+repro/phase_b_support_v1.py:49: in verified_modules
+    if hashlib.sha256(data).hexdigest()!=row['sha256']:raise RuntimeError('changed staged source '+str(path))
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+___________ ERROR at setup of test_precommitted_hostile[native/unit] ___________
+tests/test_precommitted_phase_b.py:13: in adapter
+    a=importlib.import_module(name).Adapter(ORACLE)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+repro/phase_b_adapter_v1.py:11: in __init__
+    self.oracle=oracle;self.physical=verified_modules()
+                                     ^^^^^^^^^^^^^^^^^^
+repro/phase_b_support_v1.py:49: in verified_modules
+    if hashlib.sha256(data).hexdigest()!=row['sha256']:raise RuntimeError('changed staged source '+str(path))
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+______ ERROR at setup of test_precommitted_hostile[native/response_kind] _______
+tests/test_precommitted_phase_b.py:13: in adapter
+    a=importlib.import_module(name).Adapter(ORACLE)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+repro/phase_b_adapter_v1.py:11: in __init__
+    self.oracle=oracle;self.physical=verified_modules()
+                                     ^^^^^^^^^^^^^^^^^^
+repro/phase_b_support_v1.py:49: in verified_modules
+    if hashlib.sha256(data).hexdigest()!=row['sha256']:raise RuntimeError('changed staged source '+str(path))
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+________ ERROR at setup of test_precommitted_hostile[native/source_id] _________
+tests/test_precommitted_phase_b.py:13: in adapter
+    a=importlib.import_module(name).Adapter(ORACLE)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+repro/phase_b_adapter_v1.py:11: in __init__
+    self.oracle=oracle;self.physical=verified_modules()
+                                     ^^^^^^^^^^^^^^^^^^
+repro/phase_b_support_v1.py:49: in verified_modules
+    if hashlib.sha256(data).hexdigest()!=row['sha256']:raise RuntimeError('changed staged source '+str(path))
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+_________ ERROR at setup of test_precommitted_hostile[native/form_id] __________
+tests/test_precommitted_phase_b.py:13: in adapter
+    a=importlib.import_module(name).Adapter(ORACLE)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+repro/phase_b_adapter_v1.py:11: in __init__
+    self.oracle=oracle;self.physical=verified_modules()
+                                     ^^^^^^^^^^^^^^^^^^
+repro/phase_b_support_v1.py:49: in verified_modules
+    if hashlib.sha256(data).hexdigest()!=row['sha256']:raise RuntimeError('changed staged source '+str(path))
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+_ ERROR at setup of test_precommitted_hostile[native/MR_indicator_disagreement] _
+tests/test_precommitted_phase_b.py:13: in adapter
+    a=importlib.import_module(name).Adapter(ORACLE)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+repro/phase_b_adapter_v1.py:11: in __init__
+    self.oracle=oracle;self.physical=verified_modules()
+                                     ^^^^^^^^^^^^^^^^^^
+repro/phase_b_support_v1.py:49: in verified_modules
+    if hashlib.sha256(data).hexdigest()!=row['sha256']:raise RuntimeError('changed staged source '+str(path))
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+_____ ERROR at setup of test_precommitted_hostile[native/invalid_negative] _____
+tests/test_precommitted_phase_b.py:13: in adapter
+    a=importlib.import_module(name).Adapter(ORACLE)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+repro/phase_b_adapter_v1.py:11: in __init__
+    self.oracle=oracle;self.physical=verified_modules()
+                                     ^^^^^^^^^^^^^^^^^^
+repro/phase_b_support_v1.py:49: in verified_modules
+    if hashlib.sha256(data).hexdigest()!=row['sha256']:raise RuntimeError('changed staged source '+str(path))
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+_____ ERROR at setup of test_precommitted_hostile[native/invalid_foreign] ______
+tests/test_precommitted_phase_b.py:13: in adapter
+    a=importlib.import_module(name).Adapter(ORACLE)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+repro/phase_b_adapter_v1.py:11: in __init__
+    self.oracle=oracle;self.physical=verified_modules()
+                                     ^^^^^^^^^^^^^^^^^^
+repro/phase_b_support_v1.py:49: in verified_modules
+    if hashlib.sha256(data).hexdigest()!=row['sha256']:raise RuntimeError('changed staged source '+str(path))
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+___ ERROR at setup of test_precommitted_hostile[native/missing_observation] ____
+tests/test_precommitted_phase_b.py:13: in adapter
+    a=importlib.import_module(name).Adapter(ORACLE)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+repro/phase_b_adapter_v1.py:11: in __init__
+    self.oracle=oracle;self.physical=verified_modules()
+                                     ^^^^^^^^^^^^^^^^^^
+repro/phase_b_support_v1.py:49: in verified_modules
+    if hashlib.sha256(data).hexdigest()!=row['sha256']:raise RuntimeError('changed staged source '+str(path))
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+_ ERROR at setup of test_precommitted_hostile[native/missing9_not_substantive] _
+tests/test_precommitted_phase_b.py:13: in adapter
+    a=importlib.import_module(name).Adapter(ORACLE)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+repro/phase_b_adapter_v1.py:11: in __init__
+    self.oracle=oracle;self.physical=verified_modules()
+                                     ^^^^^^^^^^^^^^^^^^
+repro/phase_b_support_v1.py:49: in verified_modules
+    if hashlib.sha256(data).hexdigest()!=row['sha256']:raise RuntimeError('changed staged source '+str(path))
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+_ ERROR at setup of test_precommitted_hostile[native/zero_risk_vs_observed_zero] _
+tests/test_precommitted_phase_b.py:13: in adapter
+    a=importlib.import_module(name).Adapter(ORACLE)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+repro/phase_b_adapter_v1.py:11: in __init__
+    self.oracle=oracle;self.physical=verified_modules()
+                                     ^^^^^^^^^^^^^^^^^^
+repro/phase_b_support_v1.py:49: in verified_modules
+    if hashlib.sha256(data).hexdigest()!=row['sha256']:raise RuntimeError('changed staged source '+str(path))
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+___ ERROR at setup of test_precommitted_hostile[binding/wrong_unit_release] ____
+tests/test_precommitted_phase_b.py:13: in adapter
+    a=importlib.import_module(name).Adapter(ORACLE)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+repro/phase_b_adapter_v1.py:11: in __init__
+    self.oracle=oracle;self.physical=verified_modules()
+                                     ^^^^^^^^^^^^^^^^^^
+repro/phase_b_support_v1.py:49: in verified_modules
+    if hashlib.sha256(data).hexdigest()!=row['sha256']:raise RuntimeError('changed staged source '+str(path))
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+___ ERROR at setup of test_precommitted_hostile[binding/wrong_unit_job_ref] ____
+tests/test_precommitted_phase_b.py:13: in adapter
+    a=importlib.import_module(name).Adapter(ORACLE)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+repro/phase_b_adapter_v1.py:11: in __init__
+    self.oracle=oracle;self.physical=verified_modules()
+                                     ^^^^^^^^^^^^^^^^^^
+repro/phase_b_support_v1.py:49: in verified_modules
+    if hashlib.sha256(data).hexdigest()!=row['sha256']:raise RuntimeError('changed staged source '+str(path))
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+_ ERROR at setup of test_precommitted_hostile[binding/wrong_unit_semantic_input] _
+tests/test_precommitted_phase_b.py:13: in adapter
+    a=importlib.import_module(name).Adapter(ORACLE)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+repro/phase_b_adapter_v1.py:11: in __init__
+    self.oracle=oracle;self.physical=verified_modules()
+                                     ^^^^^^^^^^^^^^^^^^
+repro/phase_b_support_v1.py:49: in verified_modules
+    if hashlib.sha256(data).hexdigest()!=row['sha256']:raise RuntimeError('changed staged source '+str(path))
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+__ ERROR at setup of test_precommitted_hostile[binding/query_predicate_swap] ___
+tests/test_precommitted_phase_b.py:13: in adapter
+    a=importlib.import_module(name).Adapter(ORACLE)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+repro/phase_b_adapter_v1.py:11: in __init__
+    self.oracle=oracle;self.physical=verified_modules()
+                                     ^^^^^^^^^^^^^^^^^^
+repro/phase_b_support_v1.py:49: in verified_modules
+    if hashlib.sha256(data).hexdigest()!=row['sha256']:raise RuntimeError('changed staged source '+str(path))
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+__ ERROR at setup of test_precommitted_hostile[binding/result_reference_swap] __
+tests/test_precommitted_phase_b.py:13: in adapter
+    a=importlib.import_module(name).Adapter(ORACLE)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+repro/phase_b_adapter_v1.py:11: in __init__
+    self.oracle=oracle;self.physical=verified_modules()
+                                     ^^^^^^^^^^^^^^^^^^
+repro/phase_b_support_v1.py:49: in verified_modules
+    if hashlib.sha256(data).hexdigest()!=row['sha256']:raise RuntimeError('changed staged source '+str(path))
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+__ ERROR at setup of test_precommitted_hostile[binding/source_leaf_mutation] ___
+tests/test_precommitted_phase_b.py:13: in adapter
+    a=importlib.import_module(name).Adapter(ORACLE)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+repro/phase_b_adapter_v1.py:11: in __init__
+    self.oracle=oracle;self.physical=verified_modules()
+                                     ^^^^^^^^^^^^^^^^^^
+repro/phase_b_support_v1.py:49: in verified_modules
+    if hashlib.sha256(data).hexdigest()!=row['sha256']:raise RuntimeError('changed staged source '+str(path))
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+_ ERROR at setup of test_precommitted_hostile[binding/source_authority_change] _
+tests/test_precommitted_phase_b.py:13: in adapter
+    a=importlib.import_module(name).Adapter(ORACLE)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+repro/phase_b_adapter_v1.py:11: in __init__
+    self.oracle=oracle;self.physical=verified_modules()
+                                     ^^^^^^^^^^^^^^^^^^
+repro/phase_b_support_v1.py:49: in verified_modules
+    if hashlib.sha256(data).hexdigest()!=row['sha256']:raise RuntimeError('changed staged source '+str(path))
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+____ ERROR at setup of test_precommitted_hostile[binding/W2_wave_identity] _____
+tests/test_precommitted_phase_b.py:13: in adapter
+    a=importlib.import_module(name).Adapter(ORACLE)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+repro/phase_b_adapter_v1.py:11: in __init__
+    self.oracle=oracle;self.physical=verified_modules()
+                                     ^^^^^^^^^^^^^^^^^^
+repro/phase_b_support_v1.py:49: in verified_modules
+    if hashlib.sha256(data).hexdigest()!=row['sha256']:raise RuntimeError('changed staged source '+str(path))
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+_ ERROR at setup of test_precommitted_hostile[binding/unrelated_W2_exact_stability] _
+tests/test_precommitted_phase_b.py:13: in adapter
+    a=importlib.import_module(name).Adapter(ORACLE)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+repro/phase_b_adapter_v1.py:11: in __init__
+    self.oracle=oracle;self.physical=verified_modules()
+                                     ^^^^^^^^^^^^^^^^^^
+repro/phase_b_support_v1.py:49: in verified_modules
+    if hashlib.sha256(data).hexdigest()!=row['sha256']:raise RuntimeError('changed staged source '+str(path))
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+_______ ERROR at setup of test_precommitted_hostile[custody/store_alias] _______
+tests/test_precommitted_phase_b.py:13: in adapter
+    a=importlib.import_module(name).Adapter(ORACLE)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+repro/phase_b_adapter_v1.py:11: in __init__
+    self.oracle=oracle;self.physical=verified_modules()
+                                     ^^^^^^^^^^^^^^^^^^
+repro/phase_b_support_v1.py:49: in verified_modules
+    if hashlib.sha256(data).hexdigest()!=row['sha256']:raise RuntimeError('changed staged source '+str(path))
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+_______ ERROR at setup of test_precommitted_hostile[custody/read_alias] ________
+tests/test_precommitted_phase_b.py:13: in adapter
+    a=importlib.import_module(name).Adapter(ORACLE)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+repro/phase_b_adapter_v1.py:11: in __init__
+    self.oracle=oracle;self.physical=verified_modules()
+                                     ^^^^^^^^^^^^^^^^^^
+repro/phase_b_support_v1.py:49: in verified_modules
+    if hashlib.sha256(data).hexdigest()!=row['sha256']:raise RuntimeError('changed staged source '+str(path))
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+_____ ERROR at setup of test_precommitted_hostile[custody/snapshot_alias] ______
+tests/test_precommitted_phase_b.py:13: in adapter
+    a=importlib.import_module(name).Adapter(ORACLE)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+repro/phase_b_adapter_v1.py:11: in __init__
+    self.oracle=oracle;self.physical=verified_modules()
+                                     ^^^^^^^^^^^^^^^^^^
+repro/phase_b_support_v1.py:49: in verified_modules
+    if hashlib.sha256(data).hexdigest()!=row['sha256']:raise RuntimeError('changed staged source '+str(path))
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+______ ERROR at setup of test_precommitted_hostile[custody/restore_alias] ______
+tests/test_precommitted_phase_b.py:13: in adapter
+    a=importlib.import_module(name).Adapter(ORACLE)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+repro/phase_b_adapter_v1.py:11: in __init__
+    self.oracle=oracle;self.physical=verified_modules()
+                                     ^^^^^^^^^^^^^^^^^^
+repro/phase_b_support_v1.py:49: in verified_modules
+    if hashlib.sha256(data).hexdigest()!=row['sha256']:raise RuntimeError('changed staged source '+str(path))
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+___ ERROR at setup of test_precommitted_hostile[custody/same_key_collision] ____
+tests/test_precommitted_phase_b.py:13: in adapter
+    a=importlib.import_module(name).Adapter(ORACLE)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+repro/phase_b_adapter_v1.py:11: in __init__
+    self.oracle=oracle;self.physical=verified_modules()
+                                     ^^^^^^^^^^^^^^^^^^
+repro/phase_b_support_v1.py:49: in verified_modules
+    if hashlib.sha256(data).hexdigest()!=row['sha256']:raise RuntimeError('changed staged source '+str(path))
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+_ ERROR at setup of test_precommitted_hostile[custody/fact_projection_ref_hash] _
+tests/test_precommitted_phase_b.py:13: in adapter
+    a=importlib.import_module(name).Adapter(ORACLE)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+repro/phase_b_adapter_v1.py:11: in __init__
+    self.oracle=oracle;self.physical=verified_modules()
+                                     ^^^^^^^^^^^^^^^^^^
+repro/phase_b_support_v1.py:49: in verified_modules
+    if hashlib.sha256(data).hexdigest()!=row['sha256']:raise RuntimeError('changed staged source '+str(path))
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+__ ERROR at setup of test_precommitted_hostile[custody/rehashed_changed_fact] __
+tests/test_precommitted_phase_b.py:13: in adapter
+    a=importlib.import_module(name).Adapter(ORACLE)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+repro/phase_b_adapter_v1.py:11: in __init__
+    self.oracle=oracle;self.physical=verified_modules()
+                                     ^^^^^^^^^^^^^^^^^^
+repro/phase_b_support_v1.py:49: in verified_modules
+    if hashlib.sha256(data).hexdigest()!=row['sha256']:raise RuntimeError('changed staged source '+str(path))
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+_ ERROR at setup of test_precommitted_hostile[custody/immediate_restore_validation] _
+tests/test_precommitted_phase_b.py:13: in adapter
+    a=importlib.import_module(name).Adapter(ORACLE)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+repro/phase_b_adapter_v1.py:11: in __init__
+    self.oracle=oracle;self.physical=verified_modules()
+                                     ^^^^^^^^^^^^^^^^^^
+repro/phase_b_support_v1.py:49: in verified_modules
+    if hashlib.sha256(data).hexdigest()!=row['sha256']:raise RuntimeError('changed staged source '+str(path))
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+_ ERROR at setup of test_precommitted_hostile[authority/requester_forged_grant] _
+tests/test_precommitted_phase_b.py:13: in adapter
+    a=importlib.import_module(name).Adapter(ORACLE)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+repro/phase_b_adapter_v1.py:11: in __init__
+    self.oracle=oracle;self.physical=verified_modules()
+                                     ^^^^^^^^^^^^^^^^^^
+repro/phase_b_support_v1.py:49: in verified_modules
+    if hashlib.sha256(data).hexdigest()!=row['sha256']:raise RuntimeError('changed staged source '+str(path))
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+_ ERROR at setup of test_precommitted_hostile[authority/self_rehashed_issuer] __
+tests/test_precommitted_phase_b.py:13: in adapter
+    a=importlib.import_module(name).Adapter(ORACLE)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+repro/phase_b_adapter_v1.py:11: in __init__
+    self.oracle=oracle;self.physical=verified_modules()
+                                     ^^^^^^^^^^^^^^^^^^
+repro/phase_b_support_v1.py:49: in verified_modules
+    if hashlib.sha256(data).hexdigest()!=row['sha256']:raise RuntimeError('changed staged source '+str(path))
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+_ ERROR at setup of test_precommitted_hostile[authority/historical_snapshot_after_revocation] _
+tests/test_precommitted_phase_b.py:13: in adapter
+    a=importlib.import_module(name).Adapter(ORACLE)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+repro/phase_b_adapter_v1.py:11: in __init__
+    self.oracle=oracle;self.physical=verified_modules()
+                                     ^^^^^^^^^^^^^^^^^^
+repro/phase_b_support_v1.py:49: in verified_modules
+    if hashlib.sha256(data).hexdigest()!=row['sha256']:raise RuntimeError('changed staged source '+str(path))
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+_ ERROR at setup of test_precommitted_hostile[authority/fresh_process_revocation] _
+tests/test_precommitted_phase_b.py:13: in adapter
+    a=importlib.import_module(name).Adapter(ORACLE)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+repro/phase_b_adapter_v1.py:11: in __init__
+    self.oracle=oracle;self.physical=verified_modules()
+                                     ^^^^^^^^^^^^^^^^^^
+repro/phase_b_support_v1.py:49: in verified_modules
+    if hashlib.sha256(data).hexdigest()!=row['sha256']:raise RuntimeError('changed staged source '+str(path))
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+_ ERROR at setup of test_precommitted_hostile[authority/stale_source_edition] __
+tests/test_precommitted_phase_b.py:13: in adapter
+    a=importlib.import_module(name).Adapter(ORACLE)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+repro/phase_b_adapter_v1.py:11: in __init__
+    self.oracle=oracle;self.physical=verified_modules()
+                                     ^^^^^^^^^^^^^^^^^^
+repro/phase_b_support_v1.py:49: in verified_modules
+    if hashlib.sha256(data).hexdigest()!=row['sha256']:raise RuntimeError('changed staged source '+str(path))
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+_ ERROR at setup of test_precommitted_hostile[authority/stale_knowledge_clock] _
+tests/test_precommitted_phase_b.py:13: in adapter
+    a=importlib.import_module(name).Adapter(ORACLE)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+repro/phase_b_adapter_v1.py:11: in __init__
+    self.oracle=oracle;self.physical=verified_modules()
+                                     ^^^^^^^^^^^^^^^^^^
+repro/phase_b_support_v1.py:49: in verified_modules
+    if hashlib.sha256(data).hexdigest()!=row['sha256']:raise RuntimeError('changed staged source '+str(path))
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+_ ERROR at setup of test_precommitted_hostile[authority/current_grant_independent_of_plan] _
+tests/test_precommitted_phase_b.py:13: in adapter
+    a=importlib.import_module(name).Adapter(ORACLE)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+repro/phase_b_adapter_v1.py:11: in __init__
+    self.oracle=oracle;self.physical=verified_modules()
+                                     ^^^^^^^^^^^^^^^^^^
+repro/phase_b_support_v1.py:49: in verified_modules
+    if hashlib.sha256(data).hexdigest()!=row['sha256']:raise RuntimeError('changed staged source '+str(path))
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+_ ERROR at setup of test_precommitted_hostile[conditional/ordinary_full_chain_yes1_no1_over2] _
+tests/test_precommitted_phase_b.py:13: in adapter
+    a=importlib.import_module(name).Adapter(ORACLE)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+repro/phase_b_adapter_v1.py:11: in __init__
+    self.oracle=oracle;self.physical=verified_modules()
+                                     ^^^^^^^^^^^^^^^^^^
+repro/phase_b_support_v1.py:49: in verified_modules
+    if hashlib.sha256(data).hexdigest()!=row['sha256']:raise RuntimeError('changed staged source '+str(path))
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+_ ERROR at setup of test_precommitted_hostile[conditional/original25_unchanged] _
+tests/test_precommitted_phase_b.py:13: in adapter
+    a=importlib.import_module(name).Adapter(ORACLE)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+repro/phase_b_adapter_v1.py:11: in __init__
+    self.oracle=oracle;self.physical=verified_modules()
+                                     ^^^^^^^^^^^^^^^^^^
+repro/phase_b_support_v1.py:49: in verified_modules
+    if hashlib.sha256(data).hexdigest()!=row['sha256']:raise RuntimeError('changed staged source '+str(path))
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+_ ERROR at setup of test_precommitted_hostile[conditional/second_frontier_exact_no_drop] _
+tests/test_precommitted_phase_b.py:13: in adapter
+    a=importlib.import_module(name).Adapter(ORACLE)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+repro/phase_b_adapter_v1.py:11: in __init__
+    self.oracle=oracle;self.physical=verified_modules()
+                                     ^^^^^^^^^^^^^^^^^^
+repro/phase_b_support_v1.py:49: in verified_modules
+    if hashlib.sha256(data).hexdigest()!=row['sha256']:raise RuntimeError('changed staged source '+str(path))
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+_ ERROR at setup of test_precommitted_hostile[conditional/same_grain_without_person_HOLD] _
+tests/test_precommitted_phase_b.py:13: in adapter
+    a=importlib.import_module(name).Adapter(ORACLE)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+repro/phase_b_adapter_v1.py:11: in __init__
+    self.oracle=oracle;self.physical=verified_modules()
+                                     ^^^^^^^^^^^^^^^^^^
+repro/phase_b_support_v1.py:49: in verified_modules
+    if hashlib.sha256(data).hexdigest()!=row['sha256']:raise RuntimeError('changed staged source '+str(path))
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+__ ERROR at setup of test_precommitted_hostile[conditional/split_ballot_HOLD] __
+tests/test_precommitted_phase_b.py:13: in adapter
+    a=importlib.import_module(name).Adapter(ORACLE)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+repro/phase_b_adapter_v1.py:11: in __init__
+    self.oracle=oracle;self.physical=verified_modules()
+                                     ^^^^^^^^^^^^^^^^^^
+repro/phase_b_support_v1.py:49: in verified_modules
+    if hashlib.sha256(data).hexdigest()!=row['sha256']:raise RuntimeError('changed staged source '+str(path))
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+___ ERROR at setup of test_precommitted_hostile[conditional/cross_wave_HOLD] ___
+tests/test_precommitted_phase_b.py:13: in adapter
+    a=importlib.import_module(name).Adapter(ORACLE)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+repro/phase_b_adapter_v1.py:11: in __init__
+    self.oracle=oracle;self.physical=verified_modules()
+                                     ^^^^^^^^^^^^^^^^^^
+repro/phase_b_support_v1.py:49: in verified_modules
+    if hashlib.sha256(data).hexdigest()!=row['sha256']:raise RuntimeError('changed staged source '+str(path))
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+_ ERROR at setup of test_precommitted_hostile[conditional/household_person_INADMISSIBLE] _
+tests/test_precommitted_phase_b.py:13: in adapter
+    a=importlib.import_module(name).Adapter(ORACLE)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+repro/phase_b_adapter_v1.py:11: in __init__
+    self.oracle=oracle;self.physical=verified_modules()
+                                     ^^^^^^^^^^^^^^^^^^
+repro/phase_b_support_v1.py:49: in verified_modules
+    if hashlib.sha256(data).hexdigest()!=row['sha256']:raise RuntimeError('changed staged source '+str(path))
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+_ ERROR at setup of test_precommitted_hostile[cold/actual_abrupt_exit23_after_one] _
+tests/test_precommitted_phase_b.py:13: in adapter
+    a=importlib.import_module(name).Adapter(ORACLE)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+repro/phase_b_adapter_v1.py:11: in __init__
+    self.oracle=oracle;self.physical=verified_modules()
+                                     ^^^^^^^^^^^^^^^^^^
+repro/phase_b_support_v1.py:49: in verified_modules
+    if hashlib.sha256(data).hexdigest()!=row['sha256']:raise RuntimeError('changed staged source '+str(path))
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+___ ERROR at setup of test_precommitted_hostile[cold/same_original_manifest] ___
+tests/test_precommitted_phase_b.py:13: in adapter
+    a=importlib.import_module(name).Adapter(ORACLE)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+repro/phase_b_adapter_v1.py:11: in __init__
+    self.oracle=oracle;self.physical=verified_modules()
+                                     ^^^^^^^^^^^^^^^^^^
+repro/phase_b_support_v1.py:49: in verified_modules
+    if hashlib.sha256(data).hexdigest()!=row['sha256']:raise RuntimeError('changed staged source '+str(path))
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+_ ERROR at setup of test_precommitted_hostile[cold/original_UnitExecutionReceipt_preimage] _
+tests/test_precommitted_phase_b.py:13: in adapter
+    a=importlib.import_module(name).Adapter(ORACLE)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+repro/phase_b_adapter_v1.py:11: in __init__
+    self.oracle=oracle;self.physical=verified_modules()
+                                     ^^^^^^^^^^^^^^^^^^
+repro/phase_b_support_v1.py:49: in verified_modules
+    if hashlib.sha256(data).hexdigest()!=row['sha256']:raise RuntimeError('changed staged source '+str(path))
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+_ ERROR at setup of test_precommitted_hostile[cold/fresh_process_exactly_two_I03_calls] _
+tests/test_precommitted_phase_b.py:13: in adapter
+    a=importlib.import_module(name).Adapter(ORACLE)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+repro/phase_b_adapter_v1.py:11: in __init__
+    self.oracle=oracle;self.physical=verified_modules()
+                                     ^^^^^^^^^^^^^^^^^^
+repro/phase_b_support_v1.py:49: in verified_modules
+    if hashlib.sha256(data).hexdigest()!=row['sha256']:raise RuntimeError('changed staged source '+str(path))
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+_ ERROR at setup of test_precommitted_hostile[cold/three_original_consumer_values] _
+tests/test_precommitted_phase_b.py:13: in adapter
+    a=importlib.import_module(name).Adapter(ORACLE)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+repro/phase_b_adapter_v1.py:11: in __init__
+    self.oracle=oracle;self.physical=verified_modules()
+                                     ^^^^^^^^^^^^^^^^^^
+repro/phase_b_support_v1.py:49: in verified_modules
+    if hashlib.sha256(data).hexdigest()!=row['sha256']:raise RuntimeError('changed staged source '+str(path))
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+_ ERROR at setup of test_precommitted_hostile[cold/prior_receipt_hash_retained] _
+tests/test_precommitted_phase_b.py:13: in adapter
+    a=importlib.import_module(name).Adapter(ORACLE)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+repro/phase_b_adapter_v1.py:11: in __init__
+    self.oracle=oracle;self.physical=verified_modules()
+                                     ^^^^^^^^^^^^^^^^^^
+repro/phase_b_support_v1.py:49: in verified_modules
+    if hashlib.sha256(data).hexdigest()!=row['sha256']:raise RuntimeError('changed staged source '+str(path))
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+____ ERROR at setup of test_precommitted_hostile[cold/missing_fact_refuse] _____
+tests/test_precommitted_phase_b.py:13: in adapter
+    a=importlib.import_module(name).Adapter(ORACLE)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+repro/phase_b_adapter_v1.py:11: in __init__
+    self.oracle=oracle;self.physical=verified_modules()
+                                     ^^^^^^^^^^^^^^^^^^
+repro/phase_b_support_v1.py:49: in verified_modules
+    if hashlib.sha256(data).hexdigest()!=row['sha256']:raise RuntimeError('changed staged source '+str(path))
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+_ ERROR at setup of test_precommitted_hostile[cold/changed_receipt_provenance_refuse] _
+tests/test_precommitted_phase_b.py:13: in adapter
+    a=importlib.import_module(name).Adapter(ORACLE)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+repro/phase_b_adapter_v1.py:11: in __init__
+    self.oracle=oracle;self.physical=verified_modules()
+                                     ^^^^^^^^^^^^^^^^^^
+repro/phase_b_support_v1.py:49: in verified_modules
+    if hashlib.sha256(data).hexdigest()!=row['sha256']:raise RuntimeError('changed staged source '+str(path))
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+_ ERROR at setup of test_precommitted_hostile[cold/self_rehashed_checkpoint_refuse] _
+tests/test_precommitted_phase_b.py:13: in adapter
+    a=importlib.import_module(name).Adapter(ORACLE)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+repro/phase_b_adapter_v1.py:11: in __init__
+    self.oracle=oracle;self.physical=verified_modules()
+                                     ^^^^^^^^^^^^^^^^^^
+repro/phase_b_support_v1.py:49: in verified_modules
+    if hashlib.sha256(data).hexdigest()!=row['sha256']:raise RuntimeError('changed staged source '+str(path))
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+_ ERROR at setup of test_precommitted_hostile[cold/source_edition_currentness_refuse] _
+tests/test_precommitted_phase_b.py:13: in adapter
+    a=importlib.import_module(name).Adapter(ORACLE)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+repro/phase_b_adapter_v1.py:11: in __init__
+    self.oracle=oracle;self.physical=verified_modules()
+                                     ^^^^^^^^^^^^^^^^^^
+repro/phase_b_support_v1.py:49: in verified_modules
+    if hashlib.sha256(data).hexdigest()!=row['sha256']:raise RuntimeError('changed staged source '+str(path))
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+__ ERROR at setup of test_precommitted_hostile[cold/full_frontier25_retained] __
+tests/test_precommitted_phase_b.py:13: in adapter
+    a=importlib.import_module(name).Adapter(ORACLE)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+repro/phase_b_adapter_v1.py:11: in __init__
+    self.oracle=oracle;self.physical=verified_modules()
+                                     ^^^^^^^^^^^^^^^^^^
+repro/phase_b_support_v1.py:49: in verified_modules
+    if hashlib.sha256(data).hexdigest()!=row['sha256']:raise RuntimeError('changed staged source '+str(path))
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+- generated xml file: /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/observations/phase_b/controls_v1_attempt1.xml -
+=========================== short test summary info ============================
+ERROR runtime_phase_b/candidate::test_precommitted_hostile[frontier/omit_HELD] - RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+ERROR runtime_phase_b/candidate::test_precommitted_hostile[frontier/omit_INADMISSIBLE] - RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+ERROR runtime_phase_b/candidate::test_precommitted_hostile[frontier/equal_count_HELD_identity_swap] - RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+ERROR runtime_phase_b/candidate::test_precommitted_hostile[frontier/equal_count_reason_forgery] - RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+ERROR runtime_phase_b/candidate::test_precommitted_hostile[frontier/equal_count_target_swap] - RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+ERROR runtime_phase_b/candidate::test_precommitted_hostile[frontier/equal_count_source_permission_swap] - RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+ERROR runtime_phase_b/candidate::test_precommitted_hostile[frontier/circular_expected_list] - RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+ERROR runtime_phase_b/candidate::test_precommitted_hostile[frontier/consumer_frontier_mutation] - RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+ERROR runtime_phase_b/candidate::test_precommitted_hostile[frontier/duplicate_changed_semantics] - RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+ERROR runtime_phase_b/candidate::test_precommitted_hostile[native/options] - RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+ERROR runtime_phase_b/candidate::test_precommitted_hostile[native/missing_codes] - RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+ERROR runtime_phase_b/candidate::test_precommitted_hostile[native/routing] - RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+ERROR runtime_phase_b/candidate::test_precommitted_hostile[native/wave] - RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+ERROR runtime_phase_b/candidate::test_precommitted_hostile[native/unit] - RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+ERROR runtime_phase_b/candidate::test_precommitted_hostile[native/response_kind] - RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+ERROR runtime_phase_b/candidate::test_precommitted_hostile[native/source_id] - RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+ERROR runtime_phase_b/candidate::test_precommitted_hostile[native/form_id] - RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+ERROR runtime_phase_b/candidate::test_precommitted_hostile[native/MR_indicator_disagreement] - RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+ERROR runtime_phase_b/candidate::test_precommitted_hostile[native/invalid_negative] - RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+ERROR runtime_phase_b/candidate::test_precommitted_hostile[native/invalid_foreign] - RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+ERROR runtime_phase_b/candidate::test_precommitted_hostile[native/missing_observation] - RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+ERROR runtime_phase_b/candidate::test_precommitted_hostile[native/missing9_not_substantive] - RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+ERROR runtime_phase_b/candidate::test_precommitted_hostile[native/zero_risk_vs_observed_zero] - RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+ERROR runtime_phase_b/candidate::test_precommitted_hostile[binding/wrong_unit_release] - RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+ERROR runtime_phase_b/candidate::test_precommitted_hostile[binding/wrong_unit_job_ref] - RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+ERROR runtime_phase_b/candidate::test_precommitted_hostile[binding/wrong_unit_semantic_input] - RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+ERROR runtime_phase_b/candidate::test_precommitted_hostile[binding/query_predicate_swap] - RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+ERROR runtime_phase_b/candidate::test_precommitted_hostile[binding/result_reference_swap] - RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+ERROR runtime_phase_b/candidate::test_precommitted_hostile[binding/source_leaf_mutation] - RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+ERROR runtime_phase_b/candidate::test_precommitted_hostile[binding/source_authority_change] - RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+ERROR runtime_phase_b/candidate::test_precommitted_hostile[binding/W2_wave_identity] - RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+ERROR runtime_phase_b/candidate::test_precommitted_hostile[binding/unrelated_W2_exact_stability] - RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+ERROR runtime_phase_b/candidate::test_precommitted_hostile[custody/store_alias] - RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+ERROR runtime_phase_b/candidate::test_precommitted_hostile[custody/read_alias] - RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+ERROR runtime_phase_b/candidate::test_precommitted_hostile[custody/snapshot_alias] - RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+ERROR runtime_phase_b/candidate::test_precommitted_hostile[custody/restore_alias] - RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+ERROR runtime_phase_b/candidate::test_precommitted_hostile[custody/same_key_collision] - RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+ERROR runtime_phase_b/candidate::test_precommitted_hostile[custody/fact_projection_ref_hash] - RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+ERROR runtime_phase_b/candidate::test_precommitted_hostile[custody/rehashed_changed_fact] - RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+ERROR runtime_phase_b/candidate::test_precommitted_hostile[custody/immediate_restore_validation] - RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+ERROR runtime_phase_b/candidate::test_precommitted_hostile[authority/requester_forged_grant] - RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+ERROR runtime_phase_b/candidate::test_precommitted_hostile[authority/self_rehashed_issuer] - RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+ERROR runtime_phase_b/candidate::test_precommitted_hostile[authority/historical_snapshot_after_revocation] - RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+ERROR runtime_phase_b/candidate::test_precommitted_hostile[authority/fresh_process_revocation] - RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+ERROR runtime_phase_b/candidate::test_precommitted_hostile[authority/stale_source_edition] - RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+ERROR runtime_phase_b/candidate::test_precommitted_hostile[authority/stale_knowledge_clock] - RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+ERROR runtime_phase_b/candidate::test_precommitted_hostile[authority/current_grant_independent_of_plan] - RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+ERROR runtime_phase_b/candidate::test_precommitted_hostile[conditional/ordinary_full_chain_yes1_no1_over2] - RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+ERROR runtime_phase_b/candidate::test_precommitted_hostile[conditional/original25_unchanged] - RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+ERROR runtime_phase_b/candidate::test_precommitted_hostile[conditional/second_frontier_exact_no_drop] - RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+ERROR runtime_phase_b/candidate::test_precommitted_hostile[conditional/same_grain_without_person_HOLD] - RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+ERROR runtime_phase_b/candidate::test_precommitted_hostile[conditional/split_ballot_HOLD] - RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+ERROR runtime_phase_b/candidate::test_precommitted_hostile[conditional/cross_wave_HOLD] - RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+ERROR runtime_phase_b/candidate::test_precommitted_hostile[conditional/household_person_INADMISSIBLE] - RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+ERROR runtime_phase_b/candidate::test_precommitted_hostile[cold/actual_abrupt_exit23_after_one] - RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+ERROR runtime_phase_b/candidate::test_precommitted_hostile[cold/same_original_manifest] - RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+ERROR runtime_phase_b/candidate::test_precommitted_hostile[cold/original_UnitExecutionReceipt_preimage] - RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+ERROR runtime_phase_b/candidate::test_precommitted_hostile[cold/fresh_process_exactly_two_I03_calls] - RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+ERROR runtime_phase_b/candidate::test_precommitted_hostile[cold/three_original_consumer_values] - RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+ERROR runtime_phase_b/candidate::test_precommitted_hostile[cold/prior_receipt_hash_retained] - RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+ERROR runtime_phase_b/candidate::test_precommitted_hostile[cold/missing_fact_refuse] - RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+ERROR runtime_phase_b/candidate::test_precommitted_hostile[cold/changed_receipt_provenance_refuse] - RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+ERROR runtime_phase_b/candidate::test_precommitted_hostile[cold/self_rehashed_checkpoint_refuse] - RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+ERROR runtime_phase_b/candidate::test_precommitted_hostile[cold/source_edition_currentness_refuse] - RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+ERROR runtime_phase_b/candidate::test_precommitted_hostile[cold/full_frontier25_retained] - RuntimeError: changed staged source /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json
+============================== 65 errors in 1.34s ==============================

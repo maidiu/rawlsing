@@ -1,69 +1,80 @@
 {
-  "schema": "WG0L_PHASE_A_ENVIRONMENT_PASSPORT_DELTA@1",
+  "WG0P4_candidate_read": false,
   "at": "2026-10-15T16:22:42.236641+00:00",
-  "thread": "01a13ac3-6875-7bc0-9d56-d1124400de89",
+  "branch": "agent/userdirect-pyat-20261015-r10-wg0l-precommitted-full-engine-court-r1",
+  "direct_remote_startup_readback": "dc16f0b4807d13c4c17d38d05ccdc6bb006f9668; verified before edits via git ls-remote",
   "environment": {
+    "created_at": "2026-10-15T16:15:44.350804+00:00",
     "environment_id": "92fae242-f655-46d4-b5d5-ae75d799b72e",
     "epoch_id": "e1b8b74a-f48a-4c38-ba2c-12ca8c6a8768",
-    "created_at": "2026-10-15T16:15:44.350804+00:00",
     "permission": "Read historical sourcefree code, run local synthetic tests; no original source or issuance"
   },
   "independence": "Separate WG0L sparse checkout; independent of WG0P4 implementer. Same chat authored WG0J; no new institutional signer.",
-  "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court",
-  "branch": "agent/userdirect-pyat-20261015-r10-wg0l-precommitted-full-engine-court-r1",
-  "sealed_start": "dc16f0b4807d13c4c17d38d05ccdc6bb006f9668",
-  "remote": "https://github.com/maidiu/rawlsing.git",
-  "direct_remote_startup_readback": "dc16f0b4807d13c4c17d38d05ccdc6bb006f9668; verified before edits via git ls-remote",
+  "latest_live_resume": {
+    "at": "2026-10-17T02:54:06.724622+00:00",
+    "candidate_ref_observed": "c1e88fb26f3ef757f13bad7cf901cd6529a368c8",
+    "candidate_source_read": false,
+    "commissioned_resume_seal": "1f198cb397d1602d0450f8bac60610ebfcaf5b3a",
+    "continuity": "LIVE_VERIFIED_RETAINED_STATIC_CLOSURE; no running-worker claim",
+    "environment_id": "92fae242-f655-46d4-b5d5-ae75d799b72e",
+    "epoch_id": "e1b8b74a-f48a-4c38-ba2c-12ca8c6a8768",
+    "evidence": "observations/resume_20261016/verification.json",
+    "frozen_files_verified": 5,
+    "hostiles_collected": 65,
+    "native_imports_verified": 6,
+    "phase_B_executed": false,
+    "phase_B_gate": "WAIT_FOR_CANDIDATE_PUSH",
+    "quota_observed": {
+      "cash_cost": null,
+      "paid_overflow_used": false,
+      "primary_used_percent": 0,
+      "scope": "ACCOUNT_WIDE",
+      "weekly_used_percent": 53
+    },
+    "runtime_marker_sha256": "efcb2484c0439b4629c5e1c5df12d27f1398ba42d5443e6c5fbfd0a34717c348",
+    "selected_pair": {
+      "basis": "CURRENT_USER_COMMISSION; no model/harness switch",
+      "editor": "Codex",
+      "effort": "Medium",
+      "model": "GPT-6.1 Sol"
+    },
+    "staged_sources_verified": 56
+  },
+  "local_build_run_permissions": "Actual successful Python/pytest, synthetic C11/I03/batch, file+directory fsync, os._exit23 and new child process execution; no permission gap observed.",
   "model_current_turn": {
-    "model": "gpt-6.1-sol",
     "effort": "medium",
-    "evidence": "Own latest turn_context read from local session JSONL; only model/effort/cwd extracted."
+    "evidence": "Own latest turn_context read from local session JSONL; only model/effort/cwd extracted.",
+    "model": "gpt-6.1-sol"
+  },
+  "original_oracle_edits": false,
+  "owner_edits": false,
+  "phase_A_frozen_oracle_sha256": "4261fbc277d446dccc8311962ff1aa003dabef9f8bebe86b5c0d14796078944e",
+  "phase_B_pending": "Actual remote final candidate/read cut, separate clean staging, explicit adapters, full candidate/owner/court execution.",
+  "phase_b": {
+    "at": "2026-10-17T03:34:10.035397+00:00",
+    "candidate_sha": "20d781c8502662bf788b60b828e46df55898d687",
+    "current_thread": "01a146d0-4409-79d0-96ba-2b64dbc9b0df",
+    "git": "git version 2.43.0",
+    "platform": "macOS-13.2.1-x86_64-i386-64bit",
+    "python": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]",
+    "scope": "Reviewer return only; actual full-source synthetic owner chain; RED candidate finding; no source/issuer/adopter authority.",
+    "sealed_resume_startup": "1f198cb397d1602d0450f8bac60610ebfcaf5b3a",
+    "staged_source_reverified": true
   },
   "quota_at_start": {
     "ordinaryUsageAllowed": true,
-    "primaryUsedPercent": 1,
-    "weeklyUsedPercent": 0,
     "primaryResetsAt": 1792098842,
-    "weeklyResetsAt": 1792685642
+    "primaryUsedPercent": 1,
+    "weeklyResetsAt": 1792685642,
+    "weeklyUsedPercent": 0
   },
+  "remote": "https://github.com/maidiu/rawlsing.git",
   "reset_or_overflow_used": false,
-  "local_build_run_permissions": "Actual successful Python/pytest, synthetic C11/I03/batch, file+directory fsync, os._exit23 and new child process execution; no permission gap observed.",
+  "schema": "WG0L_PHASE_A_ENVIRONMENT_PASSPORT_DELTA@1",
+  "sealed_start": "dc16f0b4807d13c4c17d38d05ccdc6bb006f9668",
   "source_permissions": "Sourcefree synthetic historical code/fixtures only; no SAV/DTA or original respondent read; no real source issuance/adoption.",
-  "write_only": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1",
-  "owner_edits": false,
-  "original_oracle_edits": false,
-  "WG0P4_candidate_read": false,
   "subagents": false,
-  "phase_B_pending": "Actual remote final candidate/read cut, separate clean staging, explicit adapters, full candidate/owner/court execution.",
-  "phase_A_frozen_oracle_sha256": "4261fbc277d446dccc8311962ff1aa003dabef9f8bebe86b5c0d14796078944e",
-  "latest_live_resume": {
-    "at": "2026-10-17T02:54:06.724622+00:00",
-    "commissioned_resume_seal": "1f198cb397d1602d0450f8bac60610ebfcaf5b3a",
-    "environment_id": "92fae242-f655-46d4-b5d5-ae75d799b72e",
-    "epoch_id": "e1b8b74a-f48a-4c38-ba2c-12ca8c6a8768",
-    "runtime_marker_sha256": "efcb2484c0439b4629c5e1c5df12d27f1398ba42d5443e6c5fbfd0a34717c348",
-    "continuity": "LIVE_VERIFIED_RETAINED_STATIC_CLOSURE; no running-worker claim",
-    "staged_sources_verified": 56,
-    "native_imports_verified": 6,
-    "frozen_files_verified": 5,
-    "hostiles_collected": 65,
-    "candidate_source_read": false,
-    "phase_B_executed": false,
-    "phase_B_gate": "WAIT_FOR_CANDIDATE_PUSH",
-    "candidate_ref_observed": "c1e88fb26f3ef757f13bad7cf901cd6529a368c8",
-    "selected_pair": {
-      "editor": "Codex",
-      "model": "GPT-6.1 Sol",
-      "effort": "Medium",
-      "basis": "CURRENT_USER_COMMISSION; no model/harness switch"
-    },
-    "quota_observed": {
-      "primary_used_percent": 0,
-      "weekly_used_percent": 53,
-      "scope": "ACCOUNT_WIDE",
-      "cash_cost": null,
-      "paid_overflow_used": false
-    },
-    "evidence": "observations/resume_20261016/verification.json"
-  }
+  "thread": "01a13ac3-6875-7bc0-9d56-d1124400de89",
+  "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court",
+  "write_only": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1"
 }

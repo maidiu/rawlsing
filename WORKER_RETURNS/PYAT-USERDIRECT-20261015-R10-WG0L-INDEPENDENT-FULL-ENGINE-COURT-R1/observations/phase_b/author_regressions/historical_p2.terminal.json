@@ -1,0 +1,29 @@
+{
+  "name": "historical_p2",
+  "command": [
+    "/usr/local/bin/python3",
+    "-m",
+    "pytest",
+    "-c",
+    "<WORKTREE>/runtime_phase_b/candidate/pytest.ini",
+    "<WORKTREE>/runtime_phase_b/candidate/pinned/predecessors/p2/repro/test_wg0p2_repair.py",
+    "-vv",
+    "--tb=short",
+    "--junitxml=<WORKTREE>/runtime_phase_b/candidate/observations/historical_p2.xml"
+  ],
+  "cwd": "<RETURN>",
+  "pythonpath": [
+    "<WORKTREE>/runtime_phase_b/candidate/pinned",
+    "<WORKTREE>/runtime_phase_b/candidate/pinned/predecessors/p2/repro"
+  ],
+  "exit": 0,
+  "seconds": 3.4246959686279297,
+  "log_redaction": "Only personal filesystem root aliases; otherwise complete real stdout/stderr. Unredacted local execution output kept ignored runtime/raw_logs.",
+  "source": "Exact frozen sources for historical modes; separately versioned implementer compatibility adapters for ported modes.",
+  "candidate_sha256": "c74b34d14c5a79993e7b56908ac017b2e35a97df422460f4d62beb30b63821f8",
+  "test_file_sha256": "5acc64a2287645dfbe9a131d352e2be446c263002d4e80ed2728e35f1ee4aeda",
+  "tests": 29,
+  "failures": 0,
+  "errors": 0,
+  "skips": 0
+}
