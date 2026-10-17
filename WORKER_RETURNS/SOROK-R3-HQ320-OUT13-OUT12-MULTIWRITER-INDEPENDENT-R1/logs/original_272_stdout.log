@@ -5,7 +5,7 @@
 =================================== FAILURES ===================================
 ________ test_replay_manual_two_writers_can_lose_first_committed_event _________
 
-tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-67/test_replay_manual_two_writers0')
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-70/test_replay_manual_two_writers0')
 
     def test_replay_manual_two_writers_can_lose_first_committed_event(tmp_path):
         j=Journal(tmp_path/'journal.json'); a=j.recover();b=j.recover()
@@ -39,4 +39,4 @@ test_sr_28_falsifier_court.py:263: AssertionError
 =========================== short test summary info ============================
 FAILED test_rto_hostile.py::test_replay_manual_two_writers_can_lose_first_committed_event
 FAILED test_sr_28_falsifier_court.py::test_s27_material_move_needs_world_owner
-2 failed, 270 passed in 6.20s
+2 failed, 270 passed in 4.20s

@@ -1,0 +1,61 @@
+{
+ "schema": "SOROK_HQ320_OUT13_EVIDENCE@1",
+ "suites": {
+  "original_272.xml": {
+   "tests": 272,
+   "passed": 270,
+   "reds": [
+    "test_rto_hostile::test_replay_manual_two_writers_can_lose_first_committed_event",
+    "test_sr_28_falsifier_court::test_s27_material_move_needs_world_owner"
+   ]
+  },
+  "out12_author_9.xml": {
+   "tests": 9,
+   "passed": 9,
+   "reds": []
+  },
+  "out13_hostile.xml": {
+   "tests": 23,
+   "passed": 23,
+   "reds": []
+  }
+ },
+ "process_model": "real OS subprocesses, real fcntl.flock, real fsync, real os._exit crash injection",
+ "barrier": "real ready/go file barrier so writers are genuinely simultaneous",
+ "worker_pids_from": "out13_worker.py self-reported os.getpid()",
+ "identity_source": "ACCEPTED API (ledger.admit / outbox.emit) - not synthesised by this court",
+ "verdict": "REVIEW_REVISE_AT_SOURCEFREE_SCOPED_MULTIWRITER_GRAIN",
+ "defects": [
+  "writer_version lies OUTSIDE the accepted state_digest; older readers ignore it -> unauthenticated ordering metadata",
+  "_read_version() returns 0 on ANY parse failure -> a holder expecting version 0 defeats the CAS",
+  "an authorized bypassing ACCEPTED Journal.commit() obtains no lock/no version and erases writer_version entirely, feeding the version-0 path",
+  "OUT12 C7 'real SIGKILL' is recorded rc=79 = os._exit(79), a normal exit, not signal -9",
+  "process death is not power-loss durability; only user-space fsync of file+dir is done"
+ ],
+ "holds": [
+  "2/3/5 simultaneous cooperating writers lose NO acknowledged committed event",
+  "conflicts are typed STALE_JOURNAL_CONFLICT and lawful retry succeeds",
+  "writer_version monotone and equals commit count for cooperating writers",
+  "crash BEFORE_RENAME leaves prior state byte-identical",
+  "crash AFTER_COMMIT leaves newest state durable",
+  "lock starvation yields typed JOURNAL_LOCK_TIMEOUT and the lock is released",
+  "revocation and client-delivery state survive competing transactions"
+ ],
+ "independence_disclosure": "I authored the accepted OUT9 baseline in an earlier session of this same conversation. OUT12 authorship independence intact; baseline-reviewer independence COMPROMISED. HQ-adjudicable, not resolved by me.",
+ "my_own_error": "first staging split OUT9/OUT12 directories producing 6 spurious failures; corrected to a faithful merged candidate/ layout where OUT12 is 9/9",
+ "honest_nulls": [
+  "single-process sequential accepted-Journal commits did not lose an event in this configuration; the loss property rests on OUT12's two-process C0 which passed unedited"
+ ],
+ "prohibitions_respected": {
+  "production_ADP019": false,
+  "real_human_perception": false,
+  "physical_world_event": false,
+  "semantic_adoption": false,
+  "V3": false,
+  "accepted_OUT9_edited": false,
+  "OUT12_edited": false,
+  "historical_REDs_preserved": true,
+  "helpers": 0,
+  "model_switches": 0
+ }
+}
