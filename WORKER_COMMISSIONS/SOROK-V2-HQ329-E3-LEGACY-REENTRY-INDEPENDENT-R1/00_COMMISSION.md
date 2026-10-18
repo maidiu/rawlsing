@@ -1,0 +1,19 @@
+# SOROK VOZHD-2 HQ329 E3 — Fresh independent B2 legacy-reentry acceptance
+
+REPOSITORY maidiu/rawlsing (private)
+ROLE Fresh independent bounded sourcefree event-custody acceptance reviewer. NOT E2 original reviewer/repair author, R1/B2 implementer, HQ or semantic issuer. One accountable agent.
+MODEL Codex GPT-6 Medium; ENV authorized preexisting oldMac/local Git-backed worktree, Python/pytest/SQLite/Node, subprocess and real pinned Git objects. Sorok 00C/00D class LOCAL_DOMINANT due 69 inherited modules and F1 binary and multiple cold subprocesses. Medium, not High; no paid external API, survey execution, provider change or false staging. If no actual object store return HOLD.
+BRANCH agent/reviewer-sorok-v2-hq329-e3-legacy-reentry-independent-r1
+EXACT STARTUP: commission-bearing SHA separately verified by HQ.
+READ this entire commission, Sorok 00C/00D, HQ329 intake 794a0b192b125703c02a669ca918f1a8f20fe34e; original B2 950ecf0b3816ea7d0dd3ab48b62c92cedfe0e883, R1 358fd1086eac0a4aa7791ca14abc25c45b935ddd, X2 931aec3497c60114444806c375d1bb51ec7c0e7d, E2 independent report and strict source 8983315b3aee130e9446d43bd983c4a91c6f0437, exact user-directed repaired source codex/b2-legacy-reentry-repair@8f7966d6d0bbb1ea2e57359de9defbcf552268bd; accepted ADP019 and CAN008/CAN011 law boundaries.
+
+MISSION: independently qualify *exact new 8f7966...*, not replay old E2's REVIEW_REVISE on old R1 by inertia. Source scope is **B2 synthetic SQLite ingress only**, not production signer or immunity to privileged direct B1 writes.
+
+1. Exact materialization of repair and old R1, direct Git file SHA/bytes and loaded Python modules; original immutable B1/P1/D1/F1, frozen E2 and X2 tests. Ensure minimal diff is only B2 bridge and new evidence subtree.
+2. Independently reproduce E2's original two strict failures on OLD R1; run E2 strict unchanged on FIX and demand 2 PASS. Full E2 original 44 with truthful expected changed-status 42 PASS/2 now-outdated observational assertions, untouched X2 old-defect proof likewise 16 PASS/1 now-outdated proof assertion. Do NOT edit/relabel frozen tests to achieve fake 44/44 or 17/17.
+3. Independently execute original 249 inherited +81 B2, R1 45, new user-directed 5 controls, raw F1 native 17 RED, cold/replay and process crash/concurrency; preserve actual stdout/JUnit and source/test manifests.
+4. Write new independent hostile controls for polluted ledger AFTER mapping with response committed versus permission denied, exact duplicate B1 content versus different content, before mapping, nonrelated legacy event, stale checkpoint, modified readset, forged actor/world/issuer, duplicate unrelated event, and 2+ concurrent writers including a privileged B1 bypass. Under true BEGIN IMMEDIATE, a competing writer inserted before B2 lock acquisition must be detected; refusal must not mutate or delete committed objective history. Test arbitrary B1-write limitation and local registrar's own closed interface honestly; no production ADP019 permission claim.
+5. Examine performance/denial-of-service risk of full occurrence-table scan without demanding an unauthorized global index migration; this is a bounded research gate. Verify no original source/owner mutation.
+6. Return sourcefree independent verdict SOURCEFREE_BFIRST_EVENT_CUSTODY_ACCEPT_SCOPED only on fresh actual success; otherwise REVIEW_REVISE/HOLD with exact RED. This cannot certify psychological science, CAN011 owner grant, F1 17 positives or real event authentication.
+
+Deliver to NEW WORKER_RETURNS/SOROK-V2-HQ329-E3-LEGACY-REENTRY-INDEPENDENT-R1/ on own branch: original+fixed source identities, independent runnable tests, all results, JUnit, SQL evidence, process ID/locks, 00D passport, exact direct remote SHA. No code repair by this reviewer.
