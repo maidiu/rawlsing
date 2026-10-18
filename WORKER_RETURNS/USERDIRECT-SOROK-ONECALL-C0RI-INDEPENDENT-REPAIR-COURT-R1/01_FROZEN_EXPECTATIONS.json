@@ -1,0 +1,188 @@
+{
+  "schema": "SOROK_C0RI_BLIND_FROZEN_EXPECTATIONS@1",
+  "sealed_startup": "b48837d84d01077091386dfa14c1eedae9955ad5",
+  "candidate_C0R_inspected_before_freeze": false,
+  "original_pin": {
+    "commit": "66d012c469ee1791c61f1d623079520697508243",
+    "source_git_blob": "f45e4f5573495f060503f92b7630ec83531ced4d",
+    "source_sha256": "3f0da92095f8355c7512d49ac546c846b6026d3775533ba56be7e148e11abfa1"
+  },
+  "original_18": [
+    "A02",
+    "A07",
+    "A11",
+    "A13",
+    "A16",
+    "A17",
+    "A18",
+    "A23",
+    "A26",
+    "A27",
+    "R32",
+    "R33",
+    "R34",
+    "R35",
+    "R36",
+    "R37",
+    "R38",
+    "R39"
+  ],
+  "independent_new_cases": {
+    "H01": {
+      "intent": "source_swap_between_validation_and_append",
+      "expected": "REFUSE_OR_VERIFIED_CAUSAL_INVARIANT",
+      "original_pin_only": false
+    },
+    "H02": {
+      "intent": "same_event_replay_different_payload",
+      "expected": "REFUSE_OR_VERIFIED_CAUSAL_INVARIANT",
+      "original_pin_only": false
+    },
+    "H03": {
+      "intent": "unconstructed_independent_other",
+      "expected": "REFUSE_OR_VERIFIED_CAUSAL_INVARIANT",
+      "original_pin_only": false
+    },
+    "H04": {
+      "intent": "forged_external_issuer",
+      "expected": "REFUSE_OR_VERIFIED_CAUSAL_INVARIANT",
+      "original_pin_only": false
+    },
+    "H05": {
+      "intent": "false_provider_provenance",
+      "expected": "REFUSE_OR_VERIFIED_CAUSAL_INVARIANT",
+      "original_pin_only": false
+    },
+    "H06": {
+      "intent": "cosmetic_label_invariance",
+      "expected": "REFUSE_OR_VERIFIED_CAUSAL_INVARIANT",
+      "original_pin_only": false
+    },
+    "H07": {
+      "intent": "intra_year_parent_admitted",
+      "expected": "REFUSE_OR_VERIFIED_CAUSAL_INVARIANT",
+      "original_pin_only": false
+    },
+    "H08": {
+      "intent": "intra_year_parent_denied",
+      "expected": "REFUSE_OR_VERIFIED_CAUSAL_INVARIANT",
+      "original_pin_only": false
+    },
+    "H09": {
+      "intent": "optimized_python_source_authority",
+      "expected": "REFUSE_OR_VERIFIED_CAUSAL_INVARIANT",
+      "original_pin_only": false
+    },
+    "H10": {
+      "intent": "midyear_restart",
+      "expected": "REFUSE_OR_VERIFIED_CAUSAL_INVARIANT",
+      "original_pin_only": false
+    },
+    "H11": {
+      "intent": "explicit_empty_grants",
+      "expected": "REFUSE_OR_VERIFIED_CAUSAL_INVARIANT",
+      "original_pin_only": false
+    },
+    "H12": {
+      "intent": "missing_source_permission",
+      "expected": "REFUSE_OR_VERIFIED_CAUSAL_INVARIANT",
+      "original_pin_only": false
+    },
+    "H13": {
+      "intent": "nonexistent_teacher",
+      "expected": "REFUSE_OR_VERIFIED_CAUSAL_INVARIANT",
+      "original_pin_only": false
+    },
+    "H14": {
+      "intent": "render_private_access",
+      "expected": "REFUSE_OR_VERIFIED_CAUSAL_INVARIANT",
+      "original_pin_only": false
+    },
+    "H15": {
+      "intent": "valid_empty",
+      "expected": "REFUSE_OR_VERIFIED_CAUSAL_INVARIANT",
+      "original_pin_only": false
+    },
+    "H16": {
+      "intent": "unsupported_score",
+      "expected": "REFUSE_OR_VERIFIED_CAUSAL_INVARIANT",
+      "original_pin_only": false
+    },
+    "H17": {
+      "intent": "onecall_render_only_equivalence",
+      "expected": "REFUSE_OR_VERIFIED_CAUSAL_INVARIANT",
+      "original_pin_only": false
+    },
+    "H18": {
+      "intent": "original_exact_sha_only",
+      "expected": "REFUSE_OR_VERIFIED_CAUSAL_INVARIANT",
+      "original_pin_only": true
+    }
+  },
+  "original_run": {
+    "author": {
+      "tests": 32,
+      "pass": 32,
+      "red": 0
+    },
+    "inherited": {
+      "tests": 44,
+      "pass": 26,
+      "red": 18
+    },
+    "new": {
+      "tests": 18,
+      "pass": 6,
+      "red": 12
+    }
+  },
+  "source_custody": [
+    {
+      "path": "onecall_c0.py",
+      "git_blob_sha1": "f45e4f5573495f060503f92b7630ec83531ced4d",
+      "sha256": "3f0da92095f8355c7512d49ac546c846b6026d3775533ba56be7e148e11abfa1"
+    },
+    {
+      "path": "test_onecall_c0_part1.py",
+      "git_blob_sha1": "91a0934f003ce5dceae075dae9494e0873a5877f",
+      "sha256": null
+    },
+    {
+      "path": "test_onecall_c0_part2.py",
+      "git_blob_sha1": "93f12d216bb24b4adc021a190c1953498d571102",
+      "sha256": null
+    },
+    {
+      "path": "test_onecall_c0_part3.py",
+      "git_blob_sha1": "3890c28e654899b0a0d9aed8ba8b3bba790a3c0d",
+      "sha256": null
+    },
+    {
+      "path": "test_onecall_c0_part4.py",
+      "git_blob_sha1": "2d1fd5a855d8872cc471239c9fb0569188e20257",
+      "sha256": null
+    },
+    {
+      "path": "test_phase_b_preregistered_against_c0.py",
+      "git_blob_sha1": "0a727662fc1790ec9a56f566dfe6eb19a93fe8c7",
+      "sha256": "cc9278886e782bbd49dafc340ffe96b8c4650146d1d98cabc457f2ddc86563a8"
+    },
+    {
+      "path": "test_phase_b_postfreeze_distinct_hostiles.py",
+      "git_blob_sha1": "b736392c1f9fb5aba86c7ac6e056d49405ed7f88",
+      "sha256": "6d4811ef66fde35d022abdc9a5e2e1e36b0d9d2eb0e84c0d3aad4e29d4929f5f"
+    },
+    {
+      "path": "test_c0ri_blind_prereg.py.xz",
+      "git_blob_sha1": "94ca0f978dad9576a9f7ded1b88f15914b8b1ccc",
+      "sha256": null
+    }
+  ],
+  "original_junit_sha256": {
+    "author": "2124a5e4a0fcd629a67e66498246778d6648801e8d61effeda0a6406530c4471",
+    "historical": "c8cf6a8b5eb399383a511c6d69fd76dd896d4e3946611b0cc60657ddd81aaab5",
+    "new": "69d177e0f0e437eaf412b6a892feaf192bf51e043e6bb70945a4a06b608c469d"
+  },
+  "oracle_not_a_generator": true,
+  "authority": "NO_NATIVE_F1_B3_CAN008_CAN011_ADP016_ACTOR_OR_SOURCE_PERMISSION"
+}
