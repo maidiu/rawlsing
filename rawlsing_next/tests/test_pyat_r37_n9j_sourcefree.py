@@ -101,7 +101,7 @@ def test_00_precommitted_before_runtime_and_noninstallation():
     assert r["operative_N9"] is r["operative_OC05"] is r["model_use"] is False
     assert r["installed_OC05"][OC05]["current_applicability"] == "NOT_YET_APPLICABLE"
     with pytest.raises(NotYetApplicableConsumer):
-        evaluate_current_consumer(policy_id=OC05)
+        evaluate_current_consumer(policy_id=OC05, operation_id='TEST_REFUSAL', inputs=(), requested_claim_ceiling=None, partial_allowed=False)
 
 
 def test_01_empirical_only_precommitted_delta_through_native_generic_consumers():
@@ -257,13 +257,21 @@ def test_11_unknown_institutional_is_not_false_and_no_selection_model():
 
 def test_12_unrelated_field_invalidation_does_not_mutate_dependency_closure():
     a, q, s, acceptance, r = _run()
-    # extra_field may be unrelated but do not make it a selected dependency
-    if "unrelated" in a.service.catalog.__dict__:
-        pytest.skip("catalog controls unrelated injection; no permission to manufacture it")
-    expected = copy.deepcopy(r["native_field_readset"])
-    assert set(r["structural_readset"]) == set(E.STRUCTURAL_KEYS)
-    assert r["native_field_readset"] == expected
-    assert r["empirical_state"] == "PRODUCTIVE_TEST_ONLY"
+    other = _adapter(extra_field=17)
+    oq = E.standard_request(label="CURRENT_TEST_CLOCK")
+    osnapshot = other.build_snapshot(oq)
+    oaccepted = other.accept(oq, osnapshot)
+    output = other.serve(oq, oaccepted, osnapshot, consumers=[
+        nonparent(other.service, osnapshot)["material"],
+        proposal(other.service, osnapshot, PROPOSALS)["material"],
+    ])
+    assert output["native_field_readset"] == r["native_field_readset"]
+    assert output["empirical_steps"] == r["empirical_steps"]
+    assert {k: v["value"] for k, v in output["structural_values"].items()} == {k: v["value"] for k, v in r["structural_values"].items()}
+    x = other.invalidate("unrelated_stock")
+    assert output["receipt_hash"] not in x["invalidated_for_fresh_use"]
+    assert output["receipt_hash"] in x["unaffected"]
+    assert other.historical_receipt(output["receipt_hash"])["archival_only"] is True
 
 
 def test_13_real_independent_cold_replay_and_import_paths():
