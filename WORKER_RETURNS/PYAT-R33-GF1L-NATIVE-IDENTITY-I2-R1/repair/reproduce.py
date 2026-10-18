@@ -1,10 +1,13 @@
-"""Author repair replay; inherited review tests remain byte-for-byte unchanged.
+"""Retained repair replay and historical diagnostics; use qualify.py for the current gate.
 Only ignored stage seating is mutable. Old review evidence is never overwritten.
 """
 import hashlib,io,json,os,subprocess,sys,tarfile,xml.etree.ElementTree as ET
 from pathlib import Path
 R=Path(__file__).resolve().parent; REVIEW=R.parent;REPO=REVIEW.parents[1];S=REVIEW/'stage'
-OUT=R/'evidence';OUT.mkdir(exist_ok=True)
+ARTIFACTS=Path(os.environ.get('GF1_REPAIR_ARTIFACT_DIR',str(R))).resolve()
+assert ARTIFACTS.is_relative_to(R.resolve()), 'repair artifacts must stay within repair return'
+ARTIFACTS.mkdir(parents=True,exist_ok=True)
+OUT=ARTIFACTS/'evidence';OUT.mkdir(exist_ok=True)
 E='WORKER_RETURNS/PYAT-USERDIRECT-20261016-R17-GF1-GENERIC-NATIVE-PAIR-RELATION-R1'
 G='WORKER_RETURNS/PYAT-R29-GF1G-FRESH-I2-PAIR-CONSUMER-R1'
 H='WORKER_RETURNS/PYAT-R32-GF1H-PAIR-CONSUMER-INTEGRITY-REPAIR-R1'
@@ -28,6 +31,9 @@ if not (S/I/'court/runtime_root').is_dir():
     archive('9f4a23cef1482e0a81afb1e7a65df90879931465',E+'/court',S/'pre')
     import shutil
     shutil.copytree(S/'pre'/E/'court',S/I/'court',dirs_exist_ok=True)
+from staging import stage_gf1i_parent_metadata
+metadata=stage_gf1i_parent_metadata(REPO,S/I)
+(ARTIFACTS/'staged_parent_metadata.json').write_text(json.dumps(metadata,indent=2)+'\n')
 C=S/E/'court'; RT=C/'runtime_root'
 selector=json.loads((C/'source_selector.json').read_text());native=[]
 for row in selector['files']:
@@ -109,9 +115,9 @@ try:
         got=summary(name);was=next(c for c in baseline if c['court']==old)
         assert (got['tests'],got['failures'],got['errors'],got['skipped'])==(n,fail,0,0),got
         assert set(got['failed_nodes'])=={v['node'] for v in was['failures_by_node']}
-    (R/'native_sources_imports_and_tests.json').write_text(json.dumps(dict(role='AUTHOR_REPAIR_NOT_INDEPENDENT_I2',candidate=ids(repaired),prior_candidate=dict(commit=PINS[K],**ids(prior)),native_files=native,native_file_count=74,python_files=sum(row['staged_path'].endswith('.py') for row in native),frozen_tests=frozen,cold_processes=cold,distinct_cold_pids=True,equal_non_pid_receipts=True,baseline_output_hash_unchanged=True,physical_import_hashes_verified_while_repair_seated=True,restore_original_seating_after_execution=True),indent=2)+'\n')
-    (R/'court_summary.json').write_text(json.dumps(checks,indent=2)+'\n')
-    print('ALL REPAIR GATES SATISFIED; original historical six failures retained',flush=True)
+    (ARTIFACTS/'native_sources_imports_and_tests.json').write_text(json.dumps(dict(role='AUTHOR_REPAIR_NOT_INDEPENDENT_I2',candidate=ids(repaired),prior_candidate=dict(commit=PINS[K],**ids(prior)),native_files=native,native_file_count=74,python_files=sum(row['staged_path'].endswith('.py') for row in native),frozen_tests=frozen,cold_processes=cold,distinct_cold_pids=True,equal_non_pid_receipts=True,baseline_output_hash_unchanged=True,physical_import_hashes_verified_while_repair_seated=True,restore_original_seating_after_execution=True),indent=2)+'\n')
+    (ARTIFACTS/'court_summary.json').write_text(json.dumps(checks,indent=2)+'\n')
+    print('RETAINED REPLAY VERIFIED; HISTORICAL DIAGNOSTICS PRESERVED; CURRENT GATE: RUN qualify.py',flush=True)
 finally:
-    (R/'run_results.json').write_text(json.dumps(results,indent=2)+'\n')
+    (ARTIFACTS/'run_results.json').write_text(json.dumps(results,indent=2)+'\n')
     for p,b in saved.items():p.write_bytes(b);assert p.read_bytes()==b

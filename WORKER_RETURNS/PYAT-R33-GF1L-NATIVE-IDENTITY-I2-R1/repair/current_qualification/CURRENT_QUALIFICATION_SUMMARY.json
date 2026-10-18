@@ -1,0 +1,93 @@
+{
+  "status": "CURRENT_QUALIFICATION_GREEN",
+  "role": "USER_AUTHORIZED_AUTHOR_QUALIFICATION; NOT INDEPENDENT ADOPTION",
+  "candidate_sha256": "00a5cc6adc8b6a4074e9ae63d0a57384a8c227e9c88a719683cb0304691a4f9b",
+  "current_tests": 282,
+  "current_failures": 0,
+  "current_errors": 0,
+  "current_skipped": 0,
+  "current_allowlisted_failures": 0,
+  "existing_product_and_frozen_tests": 161,
+  "current_successor_tests": 121,
+  "nested_native44_separately_verified": {
+    "tests": 44,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "successor_courts": [
+    {
+      "name": "current_gf1f102",
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--import-mode=importlib",
+        "/Users/matthewsmith/Desktop/Rawlsing/R33-GF1L-native-i2-wt/WORKER_RETURNS/PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1/repair/current_qualification/gf1f/tests/test_current_gf1f.py",
+        "--junitxml=/Users/matthewsmith/Desktop/Rawlsing/R33-GF1L-native-i2-wt/WORKER_RETURNS/PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1/repair/current_qualification/evidence/current_gf1f102.xml"
+      ],
+      "counts": {
+        "tests": 102,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "junit_sha256": "acab8caa9979b5fbffd1e2f11b5a34e96cb3ba0ad56d1d95f86bc1d4dad5a888"
+    },
+    {
+      "name": "current_gf1i19",
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--import-mode=importlib",
+        "/Users/matthewsmith/Desktop/Rawlsing/R33-GF1L-native-i2-wt/WORKER_RETURNS/PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1/repair/current_qualification/gf1i/test_current_gf1i.py",
+        "--junitxml=/Users/matthewsmith/Desktop/Rawlsing/R33-GF1L-native-i2-wt/WORKER_RETURNS/PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1/repair/current_qualification/evidence/current_gf1i19.xml"
+      ],
+      "counts": {
+        "tests": 19,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "junit_sha256": "61ca8d9b86adf3e96cfb720198e95988862d023ce4204d198f303375f2cb54fc"
+    }
+  ],
+  "cold_case_count": 82,
+  "cold_class_count": 4,
+  "cold_pids": [
+    50311,
+    50317
+  ],
+  "staging_negative_control": "MISSING_ORACLE_FAILS_COLLECTION; RESTORING_EXACT_METADATA_COLLECTS_AND_EXECUTES44",
+  "staged_parent_metadata": [
+    {
+      "commit": "9f4a23cef1482e0a81afb1e7a65df90879931465",
+      "source_path": "WORKER_RETURNS/PYAT-USERDIRECT-20261016-R17-GF1-GENERIC-NATIVE-PAIR-RELATION-R1/01_PRECOMMITTED_GENERIC_NATIVE_PAIR_ORACLE.json",
+      "destination": "/Users/matthewsmith/Desktop/Rawlsing/R33-GF1L-native-i2-wt/WORKER_RETURNS/PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1/stage/WORKER_RETURNS/PYAT-R18-GF1I-INDEPENDENT-GENERIC-PAIR-R1/01_PRECOMMITTED_GENERIC_NATIVE_PAIR_ORACLE.json",
+      "already_present": false,
+      "git_blob_sha1": "36fca5fa0d43152ea76c79854ecdb7b600ab2226",
+      "sha256": "c5bdc14aec82e7df042594d8f2df1d8130b89345d305de5f73830828a0257790",
+      "bytes": 11607
+    },
+    {
+      "commit": "9f4a23cef1482e0a81afb1e7a65df90879931465",
+      "source_path": "WORKER_RETURNS/PYAT-USERDIRECT-20261016-R17-GF1-GENERIC-NATIVE-PAIR-RELATION-R1/pinned_refs/PV3N_01_FROZEN_ORIGINAL_EIGHT_OPS_AND_TRUSTED_OWNER.json",
+      "destination": "/Users/matthewsmith/Desktop/Rawlsing/R33-GF1L-native-i2-wt/WORKER_RETURNS/PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1/stage/WORKER_RETURNS/PYAT-R18-GF1I-INDEPENDENT-GENERIC-PAIR-R1/pinned_refs/PV3N_01_FROZEN_ORIGINAL_EIGHT_OPS_AND_TRUSTED_OWNER.json",
+      "already_present": false,
+      "git_blob_sha1": "f4f13ae332e9fe90015f1aa85da2975ec384f110",
+      "sha256": "6b1c9a19fb1747460577b3e60315e79471462ac0e384ee87cdd1db50ba9e07df",
+      "bytes": 56047
+    }
+  ],
+  "historical_evidence": "Original frozen suites still run as diagnostics, with unchanged failed nodes; no historical failure is an exception in the current gate.",
+  "historical_tests_unchanged": true,
+  "original_independent_review_hashes_unchanged": true,
+  "product_source_changed": false
+}

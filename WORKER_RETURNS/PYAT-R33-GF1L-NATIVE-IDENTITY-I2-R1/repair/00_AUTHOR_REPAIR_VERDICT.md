@@ -47,3 +47,7 @@ Run `python3 WORKER_RETURNS/PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1/repair/reproduce
 The author repair preserves GF1H arithmetic/risk/typed-state guards, original GF1J alias rejection, reverse grants, F2 noncopy and sourcefree ceilings. No original SAV/DTA, source35, canonical owner, Field Forge, OC05/N11/N12, actor, Sorok or V3 change is made. `production_owner_commit=False` remains mandatory. Structural self-hash does not authenticate an original signatory.
 
 Because this session now authored a repair, these runs are author validation. The independent RED verdict remains valid for the old GF1K SHA. The new candidate is ready for a separate independent re-review; no self-adoption or new authority grant is asserted.
+
+## Current qualification update
+
+The tables above preserve the repair evidence recorded at `dd12505c81b9757ca70bb49806aaac494b9a61df`. The user subsequently authorized reconciliation of the six historical assertions and correction of the staging defect. The current gate is **282 PASS / 0 FAIL / 0 ERROR / 0 SKIP**, with no failure allowance; the nested original44 also runs successfully. Use `repair/qualify.py` for current qualification and see `current_qualification/00_CURRENT_QUALIFICATION.md` plus its six-node crosswalk. Historical originals remain unchanged, while versioned current successors qualify the repaired candidate. The consumer code is unchanged.
