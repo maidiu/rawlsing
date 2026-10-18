@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="3" time="0.870" timestamp="2026-10-17T21:21:53.330421-04:00" hostname="MacBook-Pro.lan"><testcase classname="R33-GF1L-native-i2-wt.WORKER_RETURNS.PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1.stage.WORKER_RETURNS.PYAT-R32-GF1J-INDEPENDENT-GF1H-COURT-R1.repro.test_gf1j_postfreeze_native_identity_hostiles" name="test_exact_native_state_identity_no_string_alias[condition]" time="0.352"><failure message="AssertionError: {'condition_states_with_positive_denominator': ['0', '1'], 'consumer_id': 'GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ON...family': 'GF1_PAIR_SUPPORT_SIGNATURE_RESULT_TEST_ONLY@1.0.0', 'decision_state': 'PAIR_SUPPORT_SIGNATURE_COMPUTED', ...}&#10;assert 'PAIR_SUPPORT...TURE_COMPUTED' == 'CONSUMER_REL...RITY_REJECTED'&#10;  &#10;  - CONSUMER_RELATION_INTEGRITY_REJECTED&#10;  + PAIR_SUPPORT_SIGNATURE_COMPUTED">which = 'condition'
+
+    @pytest.mark.parametrize("which",["condition","target"])
+    def test_exact_native_state_identity_no_string_alias(which):
+        def change(f):
+            if which=="condition":
+                # Real native conditioner domain contains string "0", not integer 0.
+                f["conditional_count_profile"][0]["condition_state"]=0
+            else:
+                # Real native target domain contains string "0", not integer 0.
+                f["conditional_count_profile"][0]["target_counts"][0]["target_state"]=0
+        rel=_make(change)
+        res=h.CONS(rel)
+&gt;       assert res["decision_state"]=="CONSUMER_RELATION_INTEGRITY_REJECTED",res
+E       AssertionError: {'condition_states_with_positive_denominator': ['0', '1'], 'consumer_id': 'GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ON...family': 'GF1_PAIR_SUPPORT_SIGNATURE_RESULT_TEST_ONLY@1.0.0', 'decision_state': 'PAIR_SUPPORT_SIGNATURE_COMPUTED', ...}
+E       assert 'PAIR_SUPPORT...TURE_COMPUTED' == 'CONSUMER_REL...RITY_REJECTED'
+E         
+E         - CONSUMER_RELATION_INTEGRITY_REJECTED
+E         + PAIR_SUPPORT_SIGNATURE_COMPUTED
+
+../../../PYAT-R32-GF1J-INDEPENDENT-GF1H-COURT-R1/repro/test_gf1j_postfreeze_native_identity_hostiles.py:41: AssertionError</failure></testcase><testcase classname="R33-GF1L-native-i2-wt.WORKER_RETURNS.PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1.stage.WORKER_RETURNS.PYAT-R32-GF1J-INDEPENDENT-GF1H-COURT-R1.repro.test_gf1j_postfreeze_native_identity_hostiles" name="test_exact_native_state_identity_no_string_alias[target]" time="0.003"><failure message="AssertionError: {'condition_states_with_positive_denominator': ['0', '1'], 'consumer_id': 'GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ON...family': 'GF1_PAIR_SUPPORT_SIGNATURE_RESULT_TEST_ONLY@1.0.0', 'decision_state': 'PAIR_SUPPORT_SIGNATURE_COMPUTED', ...}&#10;assert 'PAIR_SUPPORT...TURE_COMPUTED' == 'CONSUMER_REL...RITY_REJECTED'&#10;  &#10;  - CONSUMER_RELATION_INTEGRITY_REJECTED&#10;  + PAIR_SUPPORT_SIGNATURE_COMPUTED">which = 'target'
+
+    @pytest.mark.parametrize("which",["condition","target"])
+    def test_exact_native_state_identity_no_string_alias(which):
+        def change(f):
+            if which=="condition":
+                # Real native conditioner domain contains string "0", not integer 0.
+                f["conditional_count_profile"][0]["condition_state"]=0
+            else:
+                # Real native target domain contains string "0", not integer 0.
+                f["conditional_count_profile"][0]["target_counts"][0]["target_state"]=0
+        rel=_make(change)
+        res=h.CONS(rel)
+&gt;       assert res["decision_state"]=="CONSUMER_RELATION_INTEGRITY_REJECTED",res
+E       AssertionError: {'condition_states_with_positive_denominator': ['0', '1'], 'consumer_id': 'GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ON...family': 'GF1_PAIR_SUPPORT_SIGNATURE_RESULT_TEST_ONLY@1.0.0', 'decision_state': 'PAIR_SUPPORT_SIGNATURE_COMPUTED', ...}
+E       assert 'PAIR_SUPPORT...TURE_COMPUTED' == 'CONSUMER_REL...RITY_REJECTED'
+E         
+E         - CONSUMER_RELATION_INTEGRITY_REJECTED
+E         + PAIR_SUPPORT_SIGNATURE_COMPUTED
+
+../../../PYAT-R32-GF1J-INDEPENDENT-GF1H-COURT-R1/repro/test_gf1j_postfreeze_native_identity_hostiles.py:41: AssertionError</failure></testcase><testcase classname="R33-GF1L-native-i2-wt.WORKER_RETURNS.PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1.stage.WORKER_RETURNS.PYAT-R32-GF1J-INDEPENDENT-GF1H-COURT-R1.repro.test_gf1j_postfreeze_native_identity_hostiles" name="test_normal_exact_native_state_remains_positive" time="0.002" /></testsuite></testsuites>

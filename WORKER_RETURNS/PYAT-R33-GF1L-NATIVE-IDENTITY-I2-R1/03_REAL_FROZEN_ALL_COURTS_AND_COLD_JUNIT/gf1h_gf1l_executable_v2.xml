@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="3" skipped="0" tests="14" time="0.945" timestamp="2026-10-17T21:22:30.361477-04:00" hostname="MacBook-Pro.lan"><testcase classname="R33-GF1L-native-i2-wt.WORKER_RETURNS.PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1.phase_a.test_gf1l_executable_v2" name="test_native_string_zero_never_aliases[0-condition]" time="0.351"><failure message="AssertionError: {'condition_states_with_positive_denominator': ['0', '1'], 'consumer_id': 'GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ON...family': 'GF1_PAIR_SUPPORT_SIGNATURE_RESULT_TEST_ONLY@1.0.0', 'decision_state': 'PAIR_SUPPORT_SIGNATURE_COMPUTED', ...}&#10;assert 'PAIR_SUPPORT...TURE_COMPUTED' == 'CONSUMER_REL...RITY_REJECTED'&#10;  &#10;  - CONSUMER_RELATION_INTEGRITY_REJECTED&#10;  + PAIR_SUPPORT_SIGNATURE_COMPUTED">role = 'condition', alias = 0
+
+    @pytest.mark.parametrize('role', ['condition', 'target'])
+    @pytest.mark.parametrize('alias', [0, False, 0.0])
+    def test_native_string_zero_never_aliases(role, alias):
+        f = fields()
+        if role == 'condition':
+            assert type(f['conditioner_domain'][0]) is str
+            f['conditional_count_profile'][0]['condition_state'] = alias
+        else:
+            assert type(f['target_domain'][0]) is str
+            f['conditional_count_profile'][0]['target_counts'][0]['target_state'] = alias
+&gt;       refused(f)
+
+../../../../../phase_a/test_gf1l_executable_v2.py:49: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+f = {'conditional_count_profile': ({'condition_denominator_support': 1, 'condition_state': 0, 'source_native_conditioner':...STION_NATIVE', 'object_id': 'urn:test:i03:question_native:m01-X'}), 'conditioner_source_native_variable': 'm01-X', ...}
+
+    def refused(f):
+        # Native construction may reject a malformed projection before consumption.
+        try:
+            rel = make(f)
+        except h.G.GenericNativePairError:
+            return
+        got = h.CONS(rel)
+&gt;       assert got['decision_state'] == 'CONSUMER_RELATION_INTEGRITY_REJECTED', got
+E       AssertionError: {'condition_states_with_positive_denominator': ['0', '1'], 'consumer_id': 'GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ON...family': 'GF1_PAIR_SUPPORT_SIGNATURE_RESULT_TEST_ONLY@1.0.0', 'decision_state': 'PAIR_SUPPORT_SIGNATURE_COMPUTED', ...}
+E       assert 'PAIR_SUPPORT...TURE_COMPUTED' == 'CONSUMER_REL...RITY_REJECTED'
+E         
+E         - CONSUMER_RELATION_INTEGRITY_REJECTED
+E         + PAIR_SUPPORT_SIGNATURE_COMPUTED
+
+../../../../../phase_a/test_gf1l_executable_v2.py:35: AssertionError</failure></testcase><testcase classname="R33-GF1L-native-i2-wt.WORKER_RETURNS.PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1.phase_a.test_gf1l_executable_v2" name="test_native_string_zero_never_aliases[0-target]" time="0.003"><failure message="AssertionError: {'condition_states_with_positive_denominator': ['0', '1'], 'consumer_id': 'GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ON...family': 'GF1_PAIR_SUPPORT_SIGNATURE_RESULT_TEST_ONLY@1.0.0', 'decision_state': 'PAIR_SUPPORT_SIGNATURE_COMPUTED', ...}&#10;assert 'PAIR_SUPPORT...TURE_COMPUTED' == 'CONSUMER_REL...RITY_REJECTED'&#10;  &#10;  - CONSUMER_RELATION_INTEGRITY_REJECTED&#10;  + PAIR_SUPPORT_SIGNATURE_COMPUTED">role = 'target', alias = 0
+
+    @pytest.mark.parametrize('role', ['condition', 'target'])
+    @pytest.mark.parametrize('alias', [0, False, 0.0])
+    def test_native_string_zero_never_aliases(role, alias):
+        f = fields()
+        if role == 'condition':
+            assert type(f['conditioner_domain'][0]) is str
+            f['conditional_count_profile'][0]['condition_state'] = alias
+        else:
+            assert type(f['target_domain'][0]) is str
+            f['conditional_count_profile'][0]['target_counts'][0]['target_state'] = alias
+&gt;       refused(f)
+
+../../../../../phase_a/test_gf1l_executable_v2.py:49: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+f = {'conditional_count_profile': ({'condition_denominator_support': 1, 'condition_state': '0', 'source_native_conditioner...STION_NATIVE', 'object_id': 'urn:test:i03:question_native:m01-X'}), 'conditioner_source_native_variable': 'm01-X', ...}
+
+    def refused(f):
+        # Native construction may reject a malformed projection before consumption.
+        try:
+            rel = make(f)
+        except h.G.GenericNativePairError:
+            return
+        got = h.CONS(rel)
+&gt;       assert got['decision_state'] == 'CONSUMER_RELATION_INTEGRITY_REJECTED', got
+E       AssertionError: {'condition_states_with_positive_denominator': ['0', '1'], 'consumer_id': 'GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ON...family': 'GF1_PAIR_SUPPORT_SIGNATURE_RESULT_TEST_ONLY@1.0.0', 'decision_state': 'PAIR_SUPPORT_SIGNATURE_COMPUTED', ...}
+E       assert 'PAIR_SUPPORT...TURE_COMPUTED' == 'CONSUMER_REL...RITY_REJECTED'
+E         
+E         - CONSUMER_RELATION_INTEGRITY_REJECTED
+E         + PAIR_SUPPORT_SIGNATURE_COMPUTED
+
+../../../../../phase_a/test_gf1l_executable_v2.py:35: AssertionError</failure></testcase><testcase classname="R33-GF1L-native-i2-wt.WORKER_RETURNS.PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1.phase_a.test_gf1l_executable_v2" name="test_native_string_zero_never_aliases[False-condition]" time="0.002" /><testcase classname="R33-GF1L-native-i2-wt.WORKER_RETURNS.PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1.phase_a.test_gf1l_executable_v2" name="test_native_string_zero_never_aliases[False-target]" time="0.002" /><testcase classname="R33-GF1L-native-i2-wt.WORKER_RETURNS.PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1.phase_a.test_gf1l_executable_v2" name="test_native_string_zero_never_aliases[0.0-condition]" time="0.002" /><testcase classname="R33-GF1L-native-i2-wt.WORKER_RETURNS.PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1.phase_a.test_gf1l_executable_v2" name="test_native_string_zero_never_aliases[0.0-target]" time="0.002" /><testcase classname="R33-GF1L-native-i2-wt.WORKER_RETURNS.PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1.phase_a.test_gf1l_executable_v2" name="test_integer_domain_bool_alias_is_not_equal[condition]" time="0.002" /><testcase classname="R33-GF1L-native-i2-wt.WORKER_RETURNS.PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1.phase_a.test_gf1l_executable_v2" name="test_integer_domain_bool_alias_is_not_equal[target]" time="0.002" /><testcase classname="R33-GF1L-native-i2-wt.WORKER_RETURNS.PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1.phase_a.test_gf1l_executable_v2" name="test_duplicate_or_foreign_native_category[condition]" time="0.003" /><testcase classname="R33-GF1L-native-i2-wt.WORKER_RETURNS.PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1.phase_a.test_gf1l_executable_v2" name="test_duplicate_or_foreign_native_category[target]" time="0.004" /><testcase classname="R33-GF1L-native-i2-wt.WORKER_RETURNS.PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1.phase_a.test_gf1l_executable_v2" name="test_legitimate_source_native_positive_and_order[native]" time="0.002" /><testcase classname="R33-GF1L-native-i2-wt.WORKER_RETURNS.PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1.phase_a.test_gf1l_executable_v2" name="test_legitimate_source_native_positive_and_order[reverse_both]" time="0.002" /><testcase classname="R33-GF1L-native-i2-wt.WORKER_RETURNS.PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1.phase_a.test_gf1l_executable_v2" name="test_original_full_native_import_required" time="0.013" /><testcase classname="R33-GF1L-native-i2-wt.WORKER_RETURNS.PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1.phase_a.test_gf1l_executable_v2" name="test_semantic_projection_retains_native_python_identity" time="0.003"><failure message="AssertionError: {'condition_states_with_positive_denominator': ['0', '1'], 'consumer_id': 'GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ON...family': 'GF1_PAIR_SUPPORT_SIGNATURE_RESULT_TEST_ONLY@1.0.0', 'decision_state': 'PAIR_SUPPORT_SIGNATURE_COMPUTED', ...}&#10;assert 'PAIR_SUPPORT...TURE_COMPUTED' == 'CONSUMER_REL...RITY_REJECTED'&#10;  &#10;  - CONSUMER_RELATION_INTEGRITY_REJECTED&#10;  + PAIR_SUPPORT_SIGNATURE_COMPUTED">def test_semantic_projection_retains_native_python_identity():
+        for role in ('condition', 'target'):
+            f = fields()
+            original = h.G.semantic_hash(h.G._projection(f))
+            if role == 'condition':
+                f['conditional_count_profile'][0]['condition_state'] = 0
+            else:
+                f['conditional_count_profile'][0]['target_counts'][0]['target_state'] = 0
+            assert h.G.semantic_hash(h.G._projection(f)) != original
+&gt;           refused(f)
+
+../../../../../phase_a/test_gf1l_executable_v2.py:117: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+f = {'conditional_count_profile': ({'condition_denominator_support': 1, 'condition_state': 0, 'source_native_conditioner':...STION_NATIVE', 'object_id': 'urn:test:i03:question_native:m01-X'}), 'conditioner_source_native_variable': 'm01-X', ...}
+
+    def refused(f):
+        # Native construction may reject a malformed projection before consumption.
+        try:
+            rel = make(f)
+        except h.G.GenericNativePairError:
+            return
+        got = h.CONS(rel)
+&gt;       assert got['decision_state'] == 'CONSUMER_RELATION_INTEGRITY_REJECTED', got
+E       AssertionError: {'condition_states_with_positive_denominator': ['0', '1'], 'consumer_id': 'GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ON...family': 'GF1_PAIR_SUPPORT_SIGNATURE_RESULT_TEST_ONLY@1.0.0', 'decision_state': 'PAIR_SUPPORT_SIGNATURE_COMPUTED', ...}
+E       assert 'PAIR_SUPPORT...TURE_COMPUTED' == 'CONSUMER_REL...RITY_REJECTED'
+E         
+E         - CONSUMER_RELATION_INTEGRITY_REJECTED
+E         + PAIR_SUPPORT_SIGNATURE_COMPUTED
+
+../../../../../phase_a/test_gf1l_executable_v2.py:35: AssertionError</failure></testcase></testsuite></testsuites>

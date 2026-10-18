@@ -1,0 +1,800 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="13" skipped="0" tests="14" time="1.073" timestamp="2026-10-17T21:21:54.609420-04:00" hostname="MacBook-Pro.lan"><testcase classname="R33-GF1L-native-i2-wt.WORKER_RETURNS.PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1.phase_a.test_gf1l_frozen" name="test_native_string_zero_never_aliases[0-condition]" time="0.354"><failure message="TypeError: cannot pickle 'mappingproxy' object">role = 'condition', alias = 0
+
+    @pytest.mark.parametrize('role', ['condition', 'target'])
+    @pytest.mark.parametrize('alias', [0, False, 0.0])
+    def test_native_string_zero_never_aliases(role, alias):
+&gt;       f = fields()
+            ^^^^^^^^
+
+../../../../../phase_a/test_gf1l_frozen.py:41: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../../../../../phase_a/test_gf1l_frozen.py:16: in fields
+    f = deepcopy(h._template().__dict__)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/copy.py:146: in deepcopy
+    y = copier(x, memo)
+        ^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/copy.py:231: in _deepcopy_dict
+    y[deepcopy(key, memo)] = deepcopy(value, memo)
+                             ^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+x = mappingproxy({'content_hash': 'e8fd4d7969c753914b87a8a0135521c4eb8076a04438920a85ef83c645057d94', 'kind': 'QUESTION_NATIVE', 'object_id': 'urn:test:i03:question_native:m01-X'})
+memo = {4422738816: {'conditioner_source_native_variable': 'm01-X', 'producer_state_blocking': False, 'target_source_native_variable': 'm01-Y', 'typed_state': 'SUPPORTED'}}
+_nil = []
+
+    def deepcopy(x, memo=None, _nil=[]):
+        """Deep copy operation on arbitrary Python objects.
+    
+        See the module's __doc__ string for more info.
+        """
+    
+        if memo is None:
+            memo = {}
+    
+        d = id(x)
+        y = memo.get(d, _nil)
+        if y is not _nil:
+            return y
+    
+        cls = type(x)
+    
+        copier = _deepcopy_dispatch.get(cls)
+        if copier is not None:
+            y = copier(x, memo)
+        else:
+            if issubclass(cls, type):
+                y = _deepcopy_atomic(x, memo)
+            else:
+                copier = getattr(x, "__deepcopy__", None)
+                if copier is not None:
+                    y = copier(memo)
+                else:
+                    reductor = dispatch_table.get(cls)
+                    if reductor:
+                        rv = reductor(x)
+                    else:
+                        reductor = getattr(x, "__reduce_ex__", None)
+                        if reductor is not None:
+&gt;                           rv = reductor(4)
+                                 ^^^^^^^^^^^
+E                           TypeError: cannot pickle 'mappingproxy' object
+
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/copy.py:161: TypeError</failure></testcase><testcase classname="R33-GF1L-native-i2-wt.WORKER_RETURNS.PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1.phase_a.test_gf1l_frozen" name="test_native_string_zero_never_aliases[0-target]" time="0.001"><failure message="TypeError: cannot pickle 'mappingproxy' object">role = 'target', alias = 0
+
+    @pytest.mark.parametrize('role', ['condition', 'target'])
+    @pytest.mark.parametrize('alias', [0, False, 0.0])
+    def test_native_string_zero_never_aliases(role, alias):
+&gt;       f = fields()
+            ^^^^^^^^
+
+../../../../../phase_a/test_gf1l_frozen.py:41: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../../../../../phase_a/test_gf1l_frozen.py:16: in fields
+    f = deepcopy(h._template().__dict__)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/copy.py:146: in deepcopy
+    y = copier(x, memo)
+        ^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/copy.py:231: in _deepcopy_dict
+    y[deepcopy(key, memo)] = deepcopy(value, memo)
+                             ^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+x = mappingproxy({'content_hash': 'e8fd4d7969c753914b87a8a0135521c4eb8076a04438920a85ef83c645057d94', 'kind': 'QUESTION_NATIVE', 'object_id': 'urn:test:i03:question_native:m01-X'})
+memo = {4422738816: {'conditioner_source_native_variable': 'm01-X', 'producer_state_blocking': False, 'target_source_native_variable': 'm01-Y', 'typed_state': 'SUPPORTED'}}
+_nil = []
+
+    def deepcopy(x, memo=None, _nil=[]):
+        """Deep copy operation on arbitrary Python objects.
+    
+        See the module's __doc__ string for more info.
+        """
+    
+        if memo is None:
+            memo = {}
+    
+        d = id(x)
+        y = memo.get(d, _nil)
+        if y is not _nil:
+            return y
+    
+        cls = type(x)
+    
+        copier = _deepcopy_dispatch.get(cls)
+        if copier is not None:
+            y = copier(x, memo)
+        else:
+            if issubclass(cls, type):
+                y = _deepcopy_atomic(x, memo)
+            else:
+                copier = getattr(x, "__deepcopy__", None)
+                if copier is not None:
+                    y = copier(memo)
+                else:
+                    reductor = dispatch_table.get(cls)
+                    if reductor:
+                        rv = reductor(x)
+                    else:
+                        reductor = getattr(x, "__reduce_ex__", None)
+                        if reductor is not None:
+&gt;                           rv = reductor(4)
+                                 ^^^^^^^^^^^
+E                           TypeError: cannot pickle 'mappingproxy' object
+
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/copy.py:161: TypeError</failure></testcase><testcase classname="R33-GF1L-native-i2-wt.WORKER_RETURNS.PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1.phase_a.test_gf1l_frozen" name="test_native_string_zero_never_aliases[False-condition]" time="0.001"><failure message="TypeError: cannot pickle 'mappingproxy' object">role = 'condition', alias = False
+
+    @pytest.mark.parametrize('role', ['condition', 'target'])
+    @pytest.mark.parametrize('alias', [0, False, 0.0])
+    def test_native_string_zero_never_aliases(role, alias):
+&gt;       f = fields()
+            ^^^^^^^^
+
+../../../../../phase_a/test_gf1l_frozen.py:41: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../../../../../phase_a/test_gf1l_frozen.py:16: in fields
+    f = deepcopy(h._template().__dict__)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/copy.py:146: in deepcopy
+    y = copier(x, memo)
+        ^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/copy.py:231: in _deepcopy_dict
+    y[deepcopy(key, memo)] = deepcopy(value, memo)
+                             ^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+x = mappingproxy({'content_hash': 'e8fd4d7969c753914b87a8a0135521c4eb8076a04438920a85ef83c645057d94', 'kind': 'QUESTION_NATIVE', 'object_id': 'urn:test:i03:question_native:m01-X'})
+memo = {4422738816: {'conditioner_source_native_variable': 'm01-X', 'producer_state_blocking': False, 'target_source_native_variable': 'm01-Y', 'typed_state': 'SUPPORTED'}}
+_nil = []
+
+    def deepcopy(x, memo=None, _nil=[]):
+        """Deep copy operation on arbitrary Python objects.
+    
+        See the module's __doc__ string for more info.
+        """
+    
+        if memo is None:
+            memo = {}
+    
+        d = id(x)
+        y = memo.get(d, _nil)
+        if y is not _nil:
+            return y
+    
+        cls = type(x)
+    
+        copier = _deepcopy_dispatch.get(cls)
+        if copier is not None:
+            y = copier(x, memo)
+        else:
+            if issubclass(cls, type):
+                y = _deepcopy_atomic(x, memo)
+            else:
+                copier = getattr(x, "__deepcopy__", None)
+                if copier is not None:
+                    y = copier(memo)
+                else:
+                    reductor = dispatch_table.get(cls)
+                    if reductor:
+                        rv = reductor(x)
+                    else:
+                        reductor = getattr(x, "__reduce_ex__", None)
+                        if reductor is not None:
+&gt;                           rv = reductor(4)
+                                 ^^^^^^^^^^^
+E                           TypeError: cannot pickle 'mappingproxy' object
+
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/copy.py:161: TypeError</failure></testcase><testcase classname="R33-GF1L-native-i2-wt.WORKER_RETURNS.PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1.phase_a.test_gf1l_frozen" name="test_native_string_zero_never_aliases[False-target]" time="0.001"><failure message="TypeError: cannot pickle 'mappingproxy' object">role = 'target', alias = False
+
+    @pytest.mark.parametrize('role', ['condition', 'target'])
+    @pytest.mark.parametrize('alias', [0, False, 0.0])
+    def test_native_string_zero_never_aliases(role, alias):
+&gt;       f = fields()
+            ^^^^^^^^
+
+../../../../../phase_a/test_gf1l_frozen.py:41: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../../../../../phase_a/test_gf1l_frozen.py:16: in fields
+    f = deepcopy(h._template().__dict__)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/copy.py:146: in deepcopy
+    y = copier(x, memo)
+        ^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/copy.py:231: in _deepcopy_dict
+    y[deepcopy(key, memo)] = deepcopy(value, memo)
+                             ^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+x = mappingproxy({'content_hash': 'e8fd4d7969c753914b87a8a0135521c4eb8076a04438920a85ef83c645057d94', 'kind': 'QUESTION_NATIVE', 'object_id': 'urn:test:i03:question_native:m01-X'})
+memo = {4422738816: {'conditioner_source_native_variable': 'm01-X', 'producer_state_blocking': False, 'target_source_native_variable': 'm01-Y', 'typed_state': 'SUPPORTED'}}
+_nil = []
+
+    def deepcopy(x, memo=None, _nil=[]):
+        """Deep copy operation on arbitrary Python objects.
+    
+        See the module's __doc__ string for more info.
+        """
+    
+        if memo is None:
+            memo = {}
+    
+        d = id(x)
+        y = memo.get(d, _nil)
+        if y is not _nil:
+            return y
+    
+        cls = type(x)
+    
+        copier = _deepcopy_dispatch.get(cls)
+        if copier is not None:
+            y = copier(x, memo)
+        else:
+            if issubclass(cls, type):
+                y = _deepcopy_atomic(x, memo)
+            else:
+                copier = getattr(x, "__deepcopy__", None)
+                if copier is not None:
+                    y = copier(memo)
+                else:
+                    reductor = dispatch_table.get(cls)
+                    if reductor:
+                        rv = reductor(x)
+                    else:
+                        reductor = getattr(x, "__reduce_ex__", None)
+                        if reductor is not None:
+&gt;                           rv = reductor(4)
+                                 ^^^^^^^^^^^
+E                           TypeError: cannot pickle 'mappingproxy' object
+
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/copy.py:161: TypeError</failure></testcase><testcase classname="R33-GF1L-native-i2-wt.WORKER_RETURNS.PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1.phase_a.test_gf1l_frozen" name="test_native_string_zero_never_aliases[0.0-condition]" time="0.001"><failure message="TypeError: cannot pickle 'mappingproxy' object">role = 'condition', alias = 0.0
+
+    @pytest.mark.parametrize('role', ['condition', 'target'])
+    @pytest.mark.parametrize('alias', [0, False, 0.0])
+    def test_native_string_zero_never_aliases(role, alias):
+&gt;       f = fields()
+            ^^^^^^^^
+
+../../../../../phase_a/test_gf1l_frozen.py:41: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../../../../../phase_a/test_gf1l_frozen.py:16: in fields
+    f = deepcopy(h._template().__dict__)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/copy.py:146: in deepcopy
+    y = copier(x, memo)
+        ^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/copy.py:231: in _deepcopy_dict
+    y[deepcopy(key, memo)] = deepcopy(value, memo)
+                             ^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+x = mappingproxy({'content_hash': 'e8fd4d7969c753914b87a8a0135521c4eb8076a04438920a85ef83c645057d94', 'kind': 'QUESTION_NATIVE', 'object_id': 'urn:test:i03:question_native:m01-X'})
+memo = {4422738816: {'conditioner_source_native_variable': 'm01-X', 'producer_state_blocking': False, 'target_source_native_variable': 'm01-Y', 'typed_state': 'SUPPORTED'}}
+_nil = []
+
+    def deepcopy(x, memo=None, _nil=[]):
+        """Deep copy operation on arbitrary Python objects.
+    
+        See the module's __doc__ string for more info.
+        """
+    
+        if memo is None:
+            memo = {}
+    
+        d = id(x)
+        y = memo.get(d, _nil)
+        if y is not _nil:
+            return y
+    
+        cls = type(x)
+    
+        copier = _deepcopy_dispatch.get(cls)
+        if copier is not None:
+            y = copier(x, memo)
+        else:
+            if issubclass(cls, type):
+                y = _deepcopy_atomic(x, memo)
+            else:
+                copier = getattr(x, "__deepcopy__", None)
+                if copier is not None:
+                    y = copier(memo)
+                else:
+                    reductor = dispatch_table.get(cls)
+                    if reductor:
+                        rv = reductor(x)
+                    else:
+                        reductor = getattr(x, "__reduce_ex__", None)
+                        if reductor is not None:
+&gt;                           rv = reductor(4)
+                                 ^^^^^^^^^^^
+E                           TypeError: cannot pickle 'mappingproxy' object
+
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/copy.py:161: TypeError</failure></testcase><testcase classname="R33-GF1L-native-i2-wt.WORKER_RETURNS.PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1.phase_a.test_gf1l_frozen" name="test_native_string_zero_never_aliases[0.0-target]" time="0.001"><failure message="TypeError: cannot pickle 'mappingproxy' object">role = 'target', alias = 0.0
+
+    @pytest.mark.parametrize('role', ['condition', 'target'])
+    @pytest.mark.parametrize('alias', [0, False, 0.0])
+    def test_native_string_zero_never_aliases(role, alias):
+&gt;       f = fields()
+            ^^^^^^^^
+
+../../../../../phase_a/test_gf1l_frozen.py:41: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../../../../../phase_a/test_gf1l_frozen.py:16: in fields
+    f = deepcopy(h._template().__dict__)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/copy.py:146: in deepcopy
+    y = copier(x, memo)
+        ^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/copy.py:231: in _deepcopy_dict
+    y[deepcopy(key, memo)] = deepcopy(value, memo)
+                             ^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+x = mappingproxy({'content_hash': 'e8fd4d7969c753914b87a8a0135521c4eb8076a04438920a85ef83c645057d94', 'kind': 'QUESTION_NATIVE', 'object_id': 'urn:test:i03:question_native:m01-X'})
+memo = {4422738816: {'conditioner_source_native_variable': 'm01-X', 'producer_state_blocking': False, 'target_source_native_variable': 'm01-Y', 'typed_state': 'SUPPORTED'}}
+_nil = []
+
+    def deepcopy(x, memo=None, _nil=[]):
+        """Deep copy operation on arbitrary Python objects.
+    
+        See the module's __doc__ string for more info.
+        """
+    
+        if memo is None:
+            memo = {}
+    
+        d = id(x)
+        y = memo.get(d, _nil)
+        if y is not _nil:
+            return y
+    
+        cls = type(x)
+    
+        copier = _deepcopy_dispatch.get(cls)
+        if copier is not None:
+            y = copier(x, memo)
+        else:
+            if issubclass(cls, type):
+                y = _deepcopy_atomic(x, memo)
+            else:
+                copier = getattr(x, "__deepcopy__", None)
+                if copier is not None:
+                    y = copier(memo)
+                else:
+                    reductor = dispatch_table.get(cls)
+                    if reductor:
+                        rv = reductor(x)
+                    else:
+                        reductor = getattr(x, "__reduce_ex__", None)
+                        if reductor is not None:
+&gt;                           rv = reductor(4)
+                                 ^^^^^^^^^^^
+E                           TypeError: cannot pickle 'mappingproxy' object
+
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/copy.py:161: TypeError</failure></testcase><testcase classname="R33-GF1L-native-i2-wt.WORKER_RETURNS.PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1.phase_a.test_gf1l_frozen" name="test_integer_domain_bool_alias_is_not_equal[condition]" time="0.001"><failure message="TypeError: cannot pickle 'mappingproxy' object">role = 'condition'
+
+    @pytest.mark.parametrize('role', ['condition', 'target'])
+    def test_integer_domain_bool_alias_is_not_equal(role):
+&gt;       f = fields()
+            ^^^^^^^^
+
+../../../../../phase_a/test_gf1l_frozen.py:53: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../../../../../phase_a/test_gf1l_frozen.py:16: in fields
+    f = deepcopy(h._template().__dict__)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/copy.py:146: in deepcopy
+    y = copier(x, memo)
+        ^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/copy.py:231: in _deepcopy_dict
+    y[deepcopy(key, memo)] = deepcopy(value, memo)
+                             ^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+x = mappingproxy({'content_hash': 'e8fd4d7969c753914b87a8a0135521c4eb8076a04438920a85ef83c645057d94', 'kind': 'QUESTION_NATIVE', 'object_id': 'urn:test:i03:question_native:m01-X'})
+memo = {4422738816: {'conditioner_source_native_variable': 'm01-X', 'producer_state_blocking': False, 'target_source_native_variable': 'm01-Y', 'typed_state': 'SUPPORTED'}}
+_nil = []
+
+    def deepcopy(x, memo=None, _nil=[]):
+        """Deep copy operation on arbitrary Python objects.
+    
+        See the module's __doc__ string for more info.
+        """
+    
+        if memo is None:
+            memo = {}
+    
+        d = id(x)
+        y = memo.get(d, _nil)
+        if y is not _nil:
+            return y
+    
+        cls = type(x)
+    
+        copier = _deepcopy_dispatch.get(cls)
+        if copier is not None:
+            y = copier(x, memo)
+        else:
+            if issubclass(cls, type):
+                y = _deepcopy_atomic(x, memo)
+            else:
+                copier = getattr(x, "__deepcopy__", None)
+                if copier is not None:
+                    y = copier(memo)
+                else:
+                    reductor = dispatch_table.get(cls)
+                    if reductor:
+                        rv = reductor(x)
+                    else:
+                        reductor = getattr(x, "__reduce_ex__", None)
+                        if reductor is not None:
+&gt;                           rv = reductor(4)
+                                 ^^^^^^^^^^^
+E                           TypeError: cannot pickle 'mappingproxy' object
+
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/copy.py:161: TypeError</failure></testcase><testcase classname="R33-GF1L-native-i2-wt.WORKER_RETURNS.PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1.phase_a.test_gf1l_frozen" name="test_integer_domain_bool_alias_is_not_equal[target]" time="0.001"><failure message="TypeError: cannot pickle 'mappingproxy' object">role = 'target'
+
+    @pytest.mark.parametrize('role', ['condition', 'target'])
+    def test_integer_domain_bool_alias_is_not_equal(role):
+&gt;       f = fields()
+            ^^^^^^^^
+
+../../../../../phase_a/test_gf1l_frozen.py:53: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../../../../../phase_a/test_gf1l_frozen.py:16: in fields
+    f = deepcopy(h._template().__dict__)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/copy.py:146: in deepcopy
+    y = copier(x, memo)
+        ^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/copy.py:231: in _deepcopy_dict
+    y[deepcopy(key, memo)] = deepcopy(value, memo)
+                             ^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+x = mappingproxy({'content_hash': 'e8fd4d7969c753914b87a8a0135521c4eb8076a04438920a85ef83c645057d94', 'kind': 'QUESTION_NATIVE', 'object_id': 'urn:test:i03:question_native:m01-X'})
+memo = {4422738816: {'conditioner_source_native_variable': 'm01-X', 'producer_state_blocking': False, 'target_source_native_variable': 'm01-Y', 'typed_state': 'SUPPORTED'}}
+_nil = []
+
+    def deepcopy(x, memo=None, _nil=[]):
+        """Deep copy operation on arbitrary Python objects.
+    
+        See the module's __doc__ string for more info.
+        """
+    
+        if memo is None:
+            memo = {}
+    
+        d = id(x)
+        y = memo.get(d, _nil)
+        if y is not _nil:
+            return y
+    
+        cls = type(x)
+    
+        copier = _deepcopy_dispatch.get(cls)
+        if copier is not None:
+            y = copier(x, memo)
+        else:
+            if issubclass(cls, type):
+                y = _deepcopy_atomic(x, memo)
+            else:
+                copier = getattr(x, "__deepcopy__", None)
+                if copier is not None:
+                    y = copier(memo)
+                else:
+                    reductor = dispatch_table.get(cls)
+                    if reductor:
+                        rv = reductor(x)
+                    else:
+                        reductor = getattr(x, "__reduce_ex__", None)
+                        if reductor is not None:
+&gt;                           rv = reductor(4)
+                                 ^^^^^^^^^^^
+E                           TypeError: cannot pickle 'mappingproxy' object
+
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/copy.py:161: TypeError</failure></testcase><testcase classname="R33-GF1L-native-i2-wt.WORKER_RETURNS.PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1.phase_a.test_gf1l_frozen" name="test_duplicate_or_foreign_native_category[condition]" time="0.001"><failure message="TypeError: cannot pickle 'mappingproxy' object">role = 'condition'
+
+    @pytest.mark.parametrize('role', ['condition', 'target'])
+    def test_duplicate_or_foreign_native_category(role):
+        for state in ('foreign', '1'):
+&gt;           f = fields()
+                ^^^^^^^^
+
+../../../../../phase_a/test_gf1l_frozen.py:72: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../../../../../phase_a/test_gf1l_frozen.py:16: in fields
+    f = deepcopy(h._template().__dict__)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/copy.py:146: in deepcopy
+    y = copier(x, memo)
+        ^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/copy.py:231: in _deepcopy_dict
+    y[deepcopy(key, memo)] = deepcopy(value, memo)
+                             ^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+x = mappingproxy({'content_hash': 'e8fd4d7969c753914b87a8a0135521c4eb8076a04438920a85ef83c645057d94', 'kind': 'QUESTION_NATIVE', 'object_id': 'urn:test:i03:question_native:m01-X'})
+memo = {4422738816: {'conditioner_source_native_variable': 'm01-X', 'producer_state_blocking': False, 'target_source_native_variable': 'm01-Y', 'typed_state': 'SUPPORTED'}}
+_nil = []
+
+    def deepcopy(x, memo=None, _nil=[]):
+        """Deep copy operation on arbitrary Python objects.
+    
+        See the module's __doc__ string for more info.
+        """
+    
+        if memo is None:
+            memo = {}
+    
+        d = id(x)
+        y = memo.get(d, _nil)
+        if y is not _nil:
+            return y
+    
+        cls = type(x)
+    
+        copier = _deepcopy_dispatch.get(cls)
+        if copier is not None:
+            y = copier(x, memo)
+        else:
+            if issubclass(cls, type):
+                y = _deepcopy_atomic(x, memo)
+            else:
+                copier = getattr(x, "__deepcopy__", None)
+                if copier is not None:
+                    y = copier(memo)
+                else:
+                    reductor = dispatch_table.get(cls)
+                    if reductor:
+                        rv = reductor(x)
+                    else:
+                        reductor = getattr(x, "__reduce_ex__", None)
+                        if reductor is not None:
+&gt;                           rv = reductor(4)
+                                 ^^^^^^^^^^^
+E                           TypeError: cannot pickle 'mappingproxy' object
+
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/copy.py:161: TypeError</failure></testcase><testcase classname="R33-GF1L-native-i2-wt.WORKER_RETURNS.PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1.phase_a.test_gf1l_frozen" name="test_duplicate_or_foreign_native_category[target]" time="0.001"><failure message="TypeError: cannot pickle 'mappingproxy' object">role = 'target'
+
+    @pytest.mark.parametrize('role', ['condition', 'target'])
+    def test_duplicate_or_foreign_native_category(role):
+        for state in ('foreign', '1'):
+&gt;           f = fields()
+                ^^^^^^^^
+
+../../../../../phase_a/test_gf1l_frozen.py:72: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../../../../../phase_a/test_gf1l_frozen.py:16: in fields
+    f = deepcopy(h._template().__dict__)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/copy.py:146: in deepcopy
+    y = copier(x, memo)
+        ^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/copy.py:231: in _deepcopy_dict
+    y[deepcopy(key, memo)] = deepcopy(value, memo)
+                             ^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+x = mappingproxy({'content_hash': 'e8fd4d7969c753914b87a8a0135521c4eb8076a04438920a85ef83c645057d94', 'kind': 'QUESTION_NATIVE', 'object_id': 'urn:test:i03:question_native:m01-X'})
+memo = {4422738816: {'conditioner_source_native_variable': 'm01-X', 'producer_state_blocking': False, 'target_source_native_variable': 'm01-Y', 'typed_state': 'SUPPORTED'}}
+_nil = []
+
+    def deepcopy(x, memo=None, _nil=[]):
+        """Deep copy operation on arbitrary Python objects.
+    
+        See the module's __doc__ string for more info.
+        """
+    
+        if memo is None:
+            memo = {}
+    
+        d = id(x)
+        y = memo.get(d, _nil)
+        if y is not _nil:
+            return y
+    
+        cls = type(x)
+    
+        copier = _deepcopy_dispatch.get(cls)
+        if copier is not None:
+            y = copier(x, memo)
+        else:
+            if issubclass(cls, type):
+                y = _deepcopy_atomic(x, memo)
+            else:
+                copier = getattr(x, "__deepcopy__", None)
+                if copier is not None:
+                    y = copier(memo)
+                else:
+                    reductor = dispatch_table.get(cls)
+                    if reductor:
+                        rv = reductor(x)
+                    else:
+                        reductor = getattr(x, "__reduce_ex__", None)
+                        if reductor is not None:
+&gt;                           rv = reductor(4)
+                                 ^^^^^^^^^^^
+E                           TypeError: cannot pickle 'mappingproxy' object
+
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/copy.py:161: TypeError</failure></testcase><testcase classname="R33-GF1L-native-i2-wt.WORKER_RETURNS.PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1.phase_a.test_gf1l_frozen" name="test_legitimate_source_native_positive_and_order[native]" time="0.001"><failure message="TypeError: cannot pickle 'mappingproxy' object">order = 'native'
+
+    @pytest.mark.parametrize('order', ['native', 'reverse_both'])
+    def test_legitimate_source_native_positive_and_order(order):
+&gt;       f = fields()
+            ^^^^^^^^
+
+../../../../../phase_a/test_gf1l_frozen.py:82: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../../../../../phase_a/test_gf1l_frozen.py:16: in fields
+    f = deepcopy(h._template().__dict__)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/copy.py:146: in deepcopy
+    y = copier(x, memo)
+        ^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/copy.py:231: in _deepcopy_dict
+    y[deepcopy(key, memo)] = deepcopy(value, memo)
+                             ^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+x = mappingproxy({'content_hash': 'e8fd4d7969c753914b87a8a0135521c4eb8076a04438920a85ef83c645057d94', 'kind': 'QUESTION_NATIVE', 'object_id': 'urn:test:i03:question_native:m01-X'})
+memo = {4422738816: {'conditioner_source_native_variable': 'm01-X', 'producer_state_blocking': False, 'target_source_native_variable': 'm01-Y', 'typed_state': 'SUPPORTED'}}
+_nil = []
+
+    def deepcopy(x, memo=None, _nil=[]):
+        """Deep copy operation on arbitrary Python objects.
+    
+        See the module's __doc__ string for more info.
+        """
+    
+        if memo is None:
+            memo = {}
+    
+        d = id(x)
+        y = memo.get(d, _nil)
+        if y is not _nil:
+            return y
+    
+        cls = type(x)
+    
+        copier = _deepcopy_dispatch.get(cls)
+        if copier is not None:
+            y = copier(x, memo)
+        else:
+            if issubclass(cls, type):
+                y = _deepcopy_atomic(x, memo)
+            else:
+                copier = getattr(x, "__deepcopy__", None)
+                if copier is not None:
+                    y = copier(memo)
+                else:
+                    reductor = dispatch_table.get(cls)
+                    if reductor:
+                        rv = reductor(x)
+                    else:
+                        reductor = getattr(x, "__reduce_ex__", None)
+                        if reductor is not None:
+&gt;                           rv = reductor(4)
+                                 ^^^^^^^^^^^
+E                           TypeError: cannot pickle 'mappingproxy' object
+
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/copy.py:161: TypeError</failure></testcase><testcase classname="R33-GF1L-native-i2-wt.WORKER_RETURNS.PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1.phase_a.test_gf1l_frozen" name="test_legitimate_source_native_positive_and_order[reverse_both]" time="0.001"><failure message="TypeError: cannot pickle 'mappingproxy' object">order = 'reverse_both'
+
+    @pytest.mark.parametrize('order', ['native', 'reverse_both'])
+    def test_legitimate_source_native_positive_and_order(order):
+&gt;       f = fields()
+            ^^^^^^^^
+
+../../../../../phase_a/test_gf1l_frozen.py:82: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../../../../../phase_a/test_gf1l_frozen.py:16: in fields
+    f = deepcopy(h._template().__dict__)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/copy.py:146: in deepcopy
+    y = copier(x, memo)
+        ^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/copy.py:231: in _deepcopy_dict
+    y[deepcopy(key, memo)] = deepcopy(value, memo)
+                             ^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+x = mappingproxy({'content_hash': 'e8fd4d7969c753914b87a8a0135521c4eb8076a04438920a85ef83c645057d94', 'kind': 'QUESTION_NATIVE', 'object_id': 'urn:test:i03:question_native:m01-X'})
+memo = {4422738816: {'conditioner_source_native_variable': 'm01-X', 'producer_state_blocking': False, 'target_source_native_variable': 'm01-Y', 'typed_state': 'SUPPORTED'}}
+_nil = []
+
+    def deepcopy(x, memo=None, _nil=[]):
+        """Deep copy operation on arbitrary Python objects.
+    
+        See the module's __doc__ string for more info.
+        """
+    
+        if memo is None:
+            memo = {}
+    
+        d = id(x)
+        y = memo.get(d, _nil)
+        if y is not _nil:
+            return y
+    
+        cls = type(x)
+    
+        copier = _deepcopy_dispatch.get(cls)
+        if copier is not None:
+            y = copier(x, memo)
+        else:
+            if issubclass(cls, type):
+                y = _deepcopy_atomic(x, memo)
+            else:
+                copier = getattr(x, "__deepcopy__", None)
+                if copier is not None:
+                    y = copier(memo)
+                else:
+                    reductor = dispatch_table.get(cls)
+                    if reductor:
+                        rv = reductor(x)
+                    else:
+                        reductor = getattr(x, "__reduce_ex__", None)
+                        if reductor is not None:
+&gt;                           rv = reductor(4)
+                                 ^^^^^^^^^^^
+E                           TypeError: cannot pickle 'mappingproxy' object
+
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/copy.py:161: TypeError</failure></testcase><testcase classname="R33-GF1L-native-i2-wt.WORKER_RETURNS.PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1.phase_a.test_gf1l_frozen" name="test_original_full_native_import_required" time="0.014" /><testcase classname="R33-GF1L-native-i2-wt.WORKER_RETURNS.PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1.phase_a.test_gf1l_frozen" name="test_semantic_projection_retains_native_python_identity" time="0.000"><failure message="TypeError: cannot pickle 'mappingproxy' object">def test_semantic_projection_retains_native_python_identity():
+        for role in ('condition', 'target'):
+&gt;           f = fields()
+                ^^^^^^^^
+
+../../../../../phase_a/test_gf1l_frozen.py:109: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../../../../../phase_a/test_gf1l_frozen.py:16: in fields
+    f = deepcopy(h._template().__dict__)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/copy.py:146: in deepcopy
+    y = copier(x, memo)
+        ^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/copy.py:231: in _deepcopy_dict
+    y[deepcopy(key, memo)] = deepcopy(value, memo)
+                             ^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+x = mappingproxy({'content_hash': 'e8fd4d7969c753914b87a8a0135521c4eb8076a04438920a85ef83c645057d94', 'kind': 'QUESTION_NATIVE', 'object_id': 'urn:test:i03:question_native:m01-X'})
+memo = {4422738816: {'conditioner_source_native_variable': 'm01-X', 'producer_state_blocking': False, 'target_source_native_variable': 'm01-Y', 'typed_state': 'SUPPORTED'}}
+_nil = []
+
+    def deepcopy(x, memo=None, _nil=[]):
+        """Deep copy operation on arbitrary Python objects.
+    
+        See the module's __doc__ string for more info.
+        """
+    
+        if memo is None:
+            memo = {}
+    
+        d = id(x)
+        y = memo.get(d, _nil)
+        if y is not _nil:
+            return y
+    
+        cls = type(x)
+    
+        copier = _deepcopy_dispatch.get(cls)
+        if copier is not None:
+            y = copier(x, memo)
+        else:
+            if issubclass(cls, type):
+                y = _deepcopy_atomic(x, memo)
+            else:
+                copier = getattr(x, "__deepcopy__", None)
+                if copier is not None:
+                    y = copier(memo)
+                else:
+                    reductor = dispatch_table.get(cls)
+                    if reductor:
+                        rv = reductor(x)
+                    else:
+                        reductor = getattr(x, "__reduce_ex__", None)
+                        if reductor is not None:
+&gt;                           rv = reductor(4)
+                                 ^^^^^^^^^^^
+E                           TypeError: cannot pickle 'mappingproxy' object
+
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/copy.py:161: TypeError</failure></testcase></testsuite></testsuites>

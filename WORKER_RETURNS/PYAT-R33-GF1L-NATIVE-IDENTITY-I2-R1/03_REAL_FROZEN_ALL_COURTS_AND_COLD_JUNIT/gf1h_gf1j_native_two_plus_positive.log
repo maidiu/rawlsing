@@ -1,0 +1,52 @@
+FF.                                                                      [100%]
+=================================== FAILURES ===================================
+_________ test_exact_native_state_identity_no_string_alias[condition] __________
+
+which = 'condition'
+
+    @pytest.mark.parametrize("which",["condition","target"])
+    def test_exact_native_state_identity_no_string_alias(which):
+        def change(f):
+            if which=="condition":
+                # Real native conditioner domain contains string "0", not integer 0.
+                f["conditional_count_profile"][0]["condition_state"]=0
+            else:
+                # Real native target domain contains string "0", not integer 0.
+                f["conditional_count_profile"][0]["target_counts"][0]["target_state"]=0
+        rel=_make(change)
+        res=h.CONS(rel)
+>       assert res["decision_state"]=="CONSUMER_RELATION_INTEGRITY_REJECTED",res
+E       AssertionError: {'condition_states_with_positive_denominator': ['0', '1'], 'consumer_id': 'GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ON...family': 'GF1_PAIR_SUPPORT_SIGNATURE_RESULT_TEST_ONLY@1.0.0', 'decision_state': 'PAIR_SUPPORT_SIGNATURE_COMPUTED', ...}
+E       assert 'PAIR_SUPPORT...TURE_COMPUTED' == 'CONSUMER_REL...RITY_REJECTED'
+E         
+E         - CONSUMER_RELATION_INTEGRITY_REJECTED
+E         + PAIR_SUPPORT_SIGNATURE_COMPUTED
+
+../../../PYAT-R32-GF1J-INDEPENDENT-GF1H-COURT-R1/repro/test_gf1j_postfreeze_native_identity_hostiles.py:41: AssertionError
+___________ test_exact_native_state_identity_no_string_alias[target] ___________
+
+which = 'target'
+
+    @pytest.mark.parametrize("which",["condition","target"])
+    def test_exact_native_state_identity_no_string_alias(which):
+        def change(f):
+            if which=="condition":
+                # Real native conditioner domain contains string "0", not integer 0.
+                f["conditional_count_profile"][0]["condition_state"]=0
+            else:
+                # Real native target domain contains string "0", not integer 0.
+                f["conditional_count_profile"][0]["target_counts"][0]["target_state"]=0
+        rel=_make(change)
+        res=h.CONS(rel)
+>       assert res["decision_state"]=="CONSUMER_RELATION_INTEGRITY_REJECTED",res
+E       AssertionError: {'condition_states_with_positive_denominator': ['0', '1'], 'consumer_id': 'GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ON...family': 'GF1_PAIR_SUPPORT_SIGNATURE_RESULT_TEST_ONLY@1.0.0', 'decision_state': 'PAIR_SUPPORT_SIGNATURE_COMPUTED', ...}
+E       assert 'PAIR_SUPPORT...TURE_COMPUTED' == 'CONSUMER_REL...RITY_REJECTED'
+E         
+E         - CONSUMER_RELATION_INTEGRITY_REJECTED
+E         + PAIR_SUPPORT_SIGNATURE_COMPUTED
+
+../../../PYAT-R32-GF1J-INDEPENDENT-GF1H-COURT-R1/repro/test_gf1j_postfreeze_native_identity_hostiles.py:41: AssertionError
+=========================== short test summary info ============================
+FAILED ../../../PYAT-R32-GF1J-INDEPENDENT-GF1H-COURT-R1/repro/test_gf1j_postfreeze_native_identity_hostiles.py::test_exact_native_state_identity_no_string_alias[condition]
+FAILED ../../../PYAT-R32-GF1J-INDEPENDENT-GF1H-COURT-R1/repro/test_gf1j_postfreeze_native_identity_hostiles.py::test_exact_native_state_identity_no_string_alias[target]
+2 failed, 1 passed in 0.87s

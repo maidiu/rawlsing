@@ -1,0 +1,112 @@
+FF...........F                                                           [100%]
+=================================== FAILURES ===================================
+______________ test_native_string_zero_never_aliases[0-condition] ______________
+
+role = 'condition', alias = 0
+
+    @pytest.mark.parametrize('role', ['condition', 'target'])
+    @pytest.mark.parametrize('alias', [0, False, 0.0])
+    def test_native_string_zero_never_aliases(role, alias):
+        f = fields()
+        if role == 'condition':
+            assert type(f['conditioner_domain'][0]) is str
+            f['conditional_count_profile'][0]['condition_state'] = alias
+        else:
+            assert type(f['target_domain'][0]) is str
+            f['conditional_count_profile'][0]['target_counts'][0]['target_state'] = alias
+>       refused(f)
+
+../../../../../phase_a/test_gf1l_executable_v2.py:49: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+f = {'conditional_count_profile': ({'condition_denominator_support': 1, 'condition_state': 0, 'source_native_conditioner':...STION_NATIVE', 'object_id': 'urn:test:i03:question_native:m01-X'}), 'conditioner_source_native_variable': 'm01-X', ...}
+
+    def refused(f):
+        # Native construction may reject a malformed projection before consumption.
+        try:
+            rel = make(f)
+        except h.G.GenericNativePairError:
+            return
+        got = h.CONS(rel)
+>       assert got['decision_state'] == 'CONSUMER_RELATION_INTEGRITY_REJECTED', got
+E       AssertionError: {'condition_states_with_positive_denominator': ['0', '1'], 'consumer_id': 'GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ON...family': 'GF1_PAIR_SUPPORT_SIGNATURE_RESULT_TEST_ONLY@1.0.0', 'decision_state': 'PAIR_SUPPORT_SIGNATURE_COMPUTED', ...}
+E       assert 'PAIR_SUPPORT...TURE_COMPUTED' == 'CONSUMER_REL...RITY_REJECTED'
+E         
+E         - CONSUMER_RELATION_INTEGRITY_REJECTED
+E         + PAIR_SUPPORT_SIGNATURE_COMPUTED
+
+../../../../../phase_a/test_gf1l_executable_v2.py:35: AssertionError
+_______________ test_native_string_zero_never_aliases[0-target] ________________
+
+role = 'target', alias = 0
+
+    @pytest.mark.parametrize('role', ['condition', 'target'])
+    @pytest.mark.parametrize('alias', [0, False, 0.0])
+    def test_native_string_zero_never_aliases(role, alias):
+        f = fields()
+        if role == 'condition':
+            assert type(f['conditioner_domain'][0]) is str
+            f['conditional_count_profile'][0]['condition_state'] = alias
+        else:
+            assert type(f['target_domain'][0]) is str
+            f['conditional_count_profile'][0]['target_counts'][0]['target_state'] = alias
+>       refused(f)
+
+../../../../../phase_a/test_gf1l_executable_v2.py:49: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+f = {'conditional_count_profile': ({'condition_denominator_support': 1, 'condition_state': '0', 'source_native_conditioner...STION_NATIVE', 'object_id': 'urn:test:i03:question_native:m01-X'}), 'conditioner_source_native_variable': 'm01-X', ...}
+
+    def refused(f):
+        # Native construction may reject a malformed projection before consumption.
+        try:
+            rel = make(f)
+        except h.G.GenericNativePairError:
+            return
+        got = h.CONS(rel)
+>       assert got['decision_state'] == 'CONSUMER_RELATION_INTEGRITY_REJECTED', got
+E       AssertionError: {'condition_states_with_positive_denominator': ['0', '1'], 'consumer_id': 'GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ON...family': 'GF1_PAIR_SUPPORT_SIGNATURE_RESULT_TEST_ONLY@1.0.0', 'decision_state': 'PAIR_SUPPORT_SIGNATURE_COMPUTED', ...}
+E       assert 'PAIR_SUPPORT...TURE_COMPUTED' == 'CONSUMER_REL...RITY_REJECTED'
+E         
+E         - CONSUMER_RELATION_INTEGRITY_REJECTED
+E         + PAIR_SUPPORT_SIGNATURE_COMPUTED
+
+../../../../../phase_a/test_gf1l_executable_v2.py:35: AssertionError
+___________ test_semantic_projection_retains_native_python_identity ____________
+
+    def test_semantic_projection_retains_native_python_identity():
+        for role in ('condition', 'target'):
+            f = fields()
+            original = h.G.semantic_hash(h.G._projection(f))
+            if role == 'condition':
+                f['conditional_count_profile'][0]['condition_state'] = 0
+            else:
+                f['conditional_count_profile'][0]['target_counts'][0]['target_state'] = 0
+            assert h.G.semantic_hash(h.G._projection(f)) != original
+>           refused(f)
+
+../../../../../phase_a/test_gf1l_executable_v2.py:117: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+f = {'conditional_count_profile': ({'condition_denominator_support': 1, 'condition_state': 0, 'source_native_conditioner':...STION_NATIVE', 'object_id': 'urn:test:i03:question_native:m01-X'}), 'conditioner_source_native_variable': 'm01-X', ...}
+
+    def refused(f):
+        # Native construction may reject a malformed projection before consumption.
+        try:
+            rel = make(f)
+        except h.G.GenericNativePairError:
+            return
+        got = h.CONS(rel)
+>       assert got['decision_state'] == 'CONSUMER_RELATION_INTEGRITY_REJECTED', got
+E       AssertionError: {'condition_states_with_positive_denominator': ['0', '1'], 'consumer_id': 'GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ON...family': 'GF1_PAIR_SUPPORT_SIGNATURE_RESULT_TEST_ONLY@1.0.0', 'decision_state': 'PAIR_SUPPORT_SIGNATURE_COMPUTED', ...}
+E       assert 'PAIR_SUPPORT...TURE_COMPUTED' == 'CONSUMER_REL...RITY_REJECTED'
+E         
+E         - CONSUMER_RELATION_INTEGRITY_REJECTED
+E         + PAIR_SUPPORT_SIGNATURE_COMPUTED
+
+../../../../../phase_a/test_gf1l_executable_v2.py:35: AssertionError
+=========================== short test summary info ============================
+FAILED ../../../../../phase_a/test_gf1l_executable_v2.py::test_native_string_zero_never_aliases[0-condition]
+FAILED ../../../../../phase_a/test_gf1l_executable_v2.py::test_native_string_zero_never_aliases[0-target]
+FAILED ../../../../../phase_a/test_gf1l_executable_v2.py::test_semantic_projection_retains_native_python_identity
+3 failed, 11 passed in 0.94s
