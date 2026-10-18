@@ -1,0 +1,134 @@
+{
+  "schema": "SOROK_C0RI_I2_EXECUTION_RECEIPTS@1",
+  "seal": "b48837d84d01077091386dfa14c1eedae9955ad5",
+  "phase_a_freeze": "76be43f3cd65999c93371f28d41571d04a7399fb",
+  "pre_C0R_addendum": "5f6ab4821c63d1f7de98ad615bc3990b0272fba4",
+  "c0r_final": "98fdbdf0794da76485b40b155fa4396370a04025",
+  "source": {
+    "git_blob_sha1": "76bd3a6ea26fd72ef59816d62013fd694bf8e774",
+    "sha256": "298ff2bdbf4f916049ae21167e238767d2da682f369820a29c7d5ffa1a5461f9",
+    "bytes": 29383,
+    "imported_exact": true
+  },
+  "new_independent_test": {
+    "git_blob_sha1": "ef5d5e1aa712d2b6a64714289f39c6bbf0eb19e7",
+    "sha256": "0f78fd03695133ab046394c353cc0d5edf525c7abec0614bf6f9da9694ca4e3f"
+  },
+  "runtime": {
+    "python": "3.13.5",
+    "pytest": "9.0.2",
+    "filesystem": "REAL",
+    "subprocess": "REAL",
+    "remote_private_checkout": "NOT_PRESENT",
+    "repaired_source_exact_local_import": "YES"
+  },
+  "suites": [
+    {
+      "file": "historical_original_author_32.xml",
+      "pass": 32,
+      "red": 0,
+      "sha256": "5fa2051ae532df1c874dd7a5cea082412a6a6b3a37b89be9abac7cea66649a5a",
+      "execution": "FRESH_REAL_PYTEST",
+      "raw_xml_in_verified_archive": true
+    },
+    {
+      "file": "historical_original_44.xml",
+      "pass": 26,
+      "red": 18,
+      "sha256": "94ea1d365711bad60ec5b6636ca7a783fde12796b2a9b3289886e045b350d16b",
+      "execution": "FRESH_REAL_PYTEST",
+      "raw_xml_in_verified_archive": true
+    },
+    {
+      "file": "historical_original_blind_18.xml",
+      "pass": 6,
+      "red": 12,
+      "sha256": "1bed25e20557bf3cbcc77582cddf7155d292f20b7a783f1b31b373a31098e236",
+      "execution": "FRESH_REAL_PYTEST",
+      "raw_xml_in_verified_archive": true
+    },
+    {
+      "file": "historical_original_addendum_4.xml",
+      "pass": 1,
+      "red": 3,
+      "sha256": "79faaeed71bbcb996d3e54a7ee5ccc9504456c0ea58c7f2b6bf9041e5ea95993",
+      "execution": "FRESH_REAL_PYTEST",
+      "raw_xml_in_verified_archive": true
+    },
+    {
+      "file": "author_unchanged_junit.xml",
+      "pass": 31,
+      "red": 1,
+      "sha256": "908caf6fe2164a5912534ca9c7d1ed39fc8055027feea7d4b6cb49c7df63d4aa",
+      "execution": "FRESH_REAL_PYTEST",
+      "raw_xml_in_verified_archive": true
+    },
+    {
+      "file": "frozen_original_C0F_junit.xml",
+      "pass": 43,
+      "red": 1,
+      "sha256": "ec1674609737273979b7e5abd2ec8437ce2f314cbe7debb41de05f6c50546a2f",
+      "execution": "FRESH_REAL_PYTEST",
+      "raw_xml_in_verified_archive": true
+    },
+    {
+      "file": "c0ri_first_blind_junit.xml",
+      "pass": 17,
+      "red": 1,
+      "sha256": "06cc1e75112da76a1f2cb8b6f90760cf5a733c628a538e7591a02aa229e08877",
+      "execution": "FRESH_REAL_PYTEST",
+      "raw_xml_in_verified_archive": true
+    },
+    {
+      "file": "c0ri_addendum_junit.xml",
+      "pass": 4,
+      "red": 0,
+      "sha256": "6d83a891f280c109f3e655206f23aeb660ee1486bdf57f98190370adc7271965",
+      "execution": "FRESH_REAL_PYTEST",
+      "raw_xml_in_verified_archive": true
+    },
+    {
+      "file": "i2_postfreeze_junit.xml",
+      "pass": 10,
+      "red": 4,
+      "sha256": "d4ae78daa664c9a169047f10ecf8cd5bbe47a12013ed3e39133ff2015f9d4641",
+      "execution": "FRESH_REAL_PYTEST",
+      "raw_xml_in_verified_archive": true
+    }
+  ],
+  "author_translated_54": {
+    "status": "AUTHOR_PUBLISHED_JUNIT_VERIFIED_NOT_INDEPENDENTLY_RERUN",
+    "tests": 54,
+    "failures": 0,
+    "git_blob": "cd71254493c2d710e64dfd94b8ba16ab26c2babd"
+  },
+  "cold": {
+    "seeds": [
+      17,
+      791
+    ],
+    "exact_bytes": 18384,
+    "outputs_identical": true,
+    "sha256": "1949122dd8761e9c742477b502f6a73b82dd98670408361b5002473b5581dbdf"
+  },
+  "archive": {
+    "filename": "C0RI_PHASE_B_INDEPENDENT_COURT_R1.tar.gz",
+    "sha256": "51bcd0ce0a3e5ed543e860c7eedeb3b64f8fd02340ef33dd54a1959ea99954ef",
+    "bytes": 62312,
+    "member_count": 42,
+    "actual_raw_junit_in_archive": true,
+    "git_binary_uploaded": false
+  },
+  "no_rights": [
+    "SOURCE_ISSUANCE",
+    "ORIGINAL35",
+    "CAN008",
+    "CAN011",
+    "ADP016",
+    "ADP017",
+    "ACTOR",
+    "PRODUCTION",
+    "HQ_ACCEPTANCE"
+  ],
+  "decision": "REVISE_HOLD"
+}
