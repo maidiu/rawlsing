@@ -1,0 +1,115 @@
+{
+  "schema": "SOROK_M2_R3_FRESH_INDEPENDENT_I2_EXECUTION_R1",
+  "disposition": "REVISE",
+  "sealed_startup": "a9f2ca4ebac6067845e9821459a69e383931f5dd",
+  "target_commit": "9c1ab2fa172e41c7fb033b5f134b25255d65126c",
+  "runtime": {
+    "python": "3.13.5",
+    "pytest": "9.0.2",
+    "surface": "isolated Python subprocess",
+    "source_grade": "exact sourcefree",
+    "native_adp": "not accessed"
+  },
+  "source_sha256": {
+    "kernel.py": "838d0852e6b1b28bb733b1eda580b3dc53f5db3d47e3a0caefbd3072022ad45a",
+    "original_R2_kernel.py": "88bb8c65dfd88efd1843f16e1bb6d51e1fa01a0dc1fdccb13e03a9b2b394d8d3",
+    "test_m2.py": "112114ee13545791cd003f30f1c9aa2cfdeccd1fba8b93cae7ff25c26456fbbc",
+    "test_m3_independent.py": "b519d48d7a08531911398ec2529b3a7893146b42c2856b440df1f011d16a06e3",
+    "test_m3_unresolved.py": "76ac10e4d80a3c89a9285032ceba9c0d8c61bbd62cea0bb85d7e947148d309b3",
+    "test_source_preimages.py": "26e988de750185f664fea7b1013a8b9961f0e63059478c6a8e4a89bd17d81f63",
+    "frozen_m3/test_original_preimage.py": "867d315310c940bf0cf11b707c8cb81f86fe5ec49a000c6121bbbe70465179d0",
+    "test_local_hostile.py": "05e6476fa9640596156b73349a05c01668729b1c8554111302515e5e6eefcb91",
+    "test_relation_custody.py": "44b9590f8e66de3586451349dd06e0364ca16dcea1bbd54a5ccd5aadbc1b7681",
+    "test_heldout_actor_independence.py": "0dc1f012bd689cf25771d26439afb32cdf8452be08fe307e08f5b19c2d0bd5b5",
+    "test_r3_counterpart_actor_custody.py": "cd75b8556918668090dc8fca0819eec18212f4e4df681d8eb8b397a5b6973d2b",
+    "test_fresh_i2_adversarial.py": "b9c01d20fe6b2d771246fd7b1b36671b9dbda8bddae062fd6c96df8196c471de"
+  },
+  "suites": [
+    {
+      "court": "R3_author_unmodified",
+      "passed": 135,
+      "failed": 0,
+      "skipped": 0,
+      "errors": 0,
+      "exit": 0,
+      "junit": "author_135_R3.xml",
+      "junit_sha256": "b7ce09b0ec327fd94a441605c8a41748256b70dda0912f658d59a79fc1c1b8e7",
+      "component_counts": [
+        41,
+        32,
+        3,
+        15,
+        3,
+        11,
+        14,
+        2,
+        14
+      ]
+    },
+    {
+      "court": "R2_original_two_case_heldout",
+      "passed": 1,
+      "failed": 1,
+      "skipped": 0,
+      "errors": 0,
+      "exit": 1,
+      "junit": "heldout_R2.xml",
+      "junit_sha256": "47871e972992254fa4479bb5fd9350bb967103f775b695a4b1ddcd8badd15a1f",
+      "red": "CHILD_SELF_ACTION_WRONGLY_ADMITTED_AS_COUNTERPART"
+    },
+    {
+      "court": "R3_prior_I2_two_case_heldout",
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "errors": 0,
+      "exit": 0,
+      "junit": "heldout_R3.xml",
+      "junit_sha256": "be3b5fd6ca7dca47b21ef0d928a5c793da7b7ab314dc9a9ada30f3bfed0db9af"
+    },
+    {
+      "court": "fresh_I2_six_case",
+      "passed": 4,
+      "failed": 2,
+      "skipped": 0,
+      "errors": 0,
+      "exit": 1,
+      "junit": "heldout_fresh_i2.xml",
+      "junit_sha256": "c51902eb619f14039c441c103a0b482b528fc0be9875536d8bacc3260208453e",
+      "cases": [
+        {
+          "name": "test_i2_01_historical_lineage_rule_hash_must_not_accept_a_different_rule",
+          "status": "RED"
+        },
+        {
+          "name": "test_i2_02_other_owner_cannot_be_sole_witness_of_own_action_and_child_observation",
+          "status": "RED"
+        },
+        {
+          "name": "test_i2_03_unconsumed_alternative_may_expire_between_proposal_and_append",
+          "status": "PASS"
+        },
+        {
+          "name": "test_i2_04_future_observed_history_and_reissued_clock_do_not_enable_relation",
+          "status": "PASS"
+        },
+        {
+          "name": "test_i2_05_late_consumed_action_owner_source_cannot_be_rewritten_for_future",
+          "status": "PASS"
+        },
+        {
+          "name": "test_i2_06_nochange_denies_psychological_state_mutation_with_different_grant",
+          "status": "PASS"
+        }
+      ]
+    }
+  ],
+  "frozen_M1_I2": "NOT_RERUN__historical_19_M1_on_R2_and_10_I2_on_R2_failures_retained",
+  "evidence_bundle": {
+    "file": "sorok_m2r3_fresh_i2_evidence.zip",
+    "bytes": 74011,
+    "sha256": "fd1969a5801331ca01ff34fca4526a1ffa9cebd991434629162486d89bedf0c9",
+    "delivery": "conversation sandbox attachment; not committed to repository"
+  },
+  "native_rights": "synthetic fixture issuer and grant only; no authenticated ADP owner grant"
+}
