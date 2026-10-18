@@ -1,0 +1,54 @@
+{
+  "schema": "PYAT_R34_GF1N_MECHANICAL_PREFREEZE_ERRATUM@1",
+  "erratum_of": {
+    "path": "phase_a/01_PHASE_A_FROZEN_EXPECTATIONS.json",
+    "sha256": "871a7a3c4b156fc4829320c6bfe24a94e734f627966f25213faf92703531b12a",
+    "frozen_test_sha256": "0e524e62f31d669cda47171a92a2337d85933fd6d930b1cee9b8cf6a61e0249f",
+    "preserved": true,
+    "never_edited_after_publication": true
+  },
+  "chronology": {
+    "original_freeze_commit": "1a7f8e8b5c8c5eaed399eb0f81559e3450b2a573",
+    "original_freeze_remote_verified": true,
+    "candidate_opened_after_freeze": true,
+    "erratum_derived_from": "frozen GF1G G9/G11/G14 contract clauses and one execution discrepancy, not from candidate outputs",
+    "original_v1_result_on_exact_candidate": {"tests": 63, "passed": 61, "failed": 2, "failed_nodes": ["eligible_zero", "observed_zero"]},
+    "v1_failures_are_harness_specification_not_candidate_red": true
+  },
+  "changes": [
+    {
+      "id": "E1_empty_vs_no_eligible_risk",
+      "contract_clause": "GF1G test_g14_empty_profile_contract_state: an empty conditional_count_profile is RESPONSE_INPUTS_VALID_EMPTY; GF1G test_g09_synthetic_classes no_eligible_risk uses a non-empty all-zero 2x2 profile with eligible=0",
+      "before": "case eligible_zero used empty_profile=True, eligible=0 with expect=no_risk",
+      "after": "renamed eligible_zero_empty, expect=empty; added no_eligible_risk with counts={}, eligible=0, expect=no_risk",
+      "assertions_weakened": false,
+      "rationale": "the original case exercised the valid-empty shape, not the no-eligible-risk shape; the no-risk shape is now actually exercised"
+    },
+    {
+      "id": "E2_typed_zero_vs_observed_zero_downstream_scope",
+      "contract_clause": "GF1G test_g11_zero_support_typed_and_observed_zero: typed ZERO_SUPPORT requires downstream_value_produced=false; the observed-zero supported case requires only separation_class=UNDETERMINED_ZERO_SUPPORT_RISK",
+      "before": "single assert_zero required downstream=false for both cases",
+      "after": "typed ZERO_SUPPORT keeps downstream=false (assert_typed_zero); observed-zero requires the ZERO class and strict JSON only (assert_zero_class)",
+      "assertions_weakened": false,
+      "rationale": "aligns each case with its authoritative G11 branch; no accepted positive class or downstream value is newly allowed for the typed refusal"
+    },
+    {
+      "id": "E3_no_eligible_risk_downstream_scope",
+      "contract_clause": "GF1G test_g09_synthetic_classes requires only separation_class=UNDETERMINED_NO_ELIGIBLE_RISK",
+      "before": "assert_no_risk required downstream_value_produced=false",
+      "after": "assert_no_risk requires the NO_ELIGIBLE_RISK class and strict JSON; downstream flag not constrained",
+      "assertions_weakened": false,
+      "rationale": "matches the frozen class-only contract for a valid supported relation with an empty eligible risk set"
+    }
+  ],
+  "v2_artifacts_sha256": {
+    "phase_a_erratum_v2/gf1n_probe_v2.py": "9b0e13ea9e8c385e68cfeddb2c1548de9c43c13bf69b30f04730a466c8ab2c66",
+    "phase_a_erratum_v2/test_gf1n_independent_v2.py": "4187c19a4dc9d0dff9ecee98d2ca780a26e1608fa8e5577681bdd481d0629c70",
+    "phase_a_erratum_v2/01_PHASE_A_FROZEN_EXPECTATIONS_V2.json": "12c9ce1b2038bb4e81fdf1d3e1ab3478fafa33a54260f285c549d2f586a27fa3",
+    "03_REAL_FROZEN_JUNIT_AND_COLD/frozen_v1.xml": "78d5427386667f95b38aee393685913fea56c5e390c6282e28df0668796c4022",
+    "03_REAL_FROZEN_JUNIT_AND_COLD/frozen_v2_erratum.xml": "2e886cd5e2de145078909093c1e363166501ae34a5bdc994aa7fa9e7fcce7a7b"
+  },
+  "v2_result_on_exact_candidate": {"tests": 64, "passed": 64, "failed": 0},
+  "preserved_not_green": "the original v1 bytes and its 61/63 result remain in the tree and in the record; no post-inspection expectation is presented as prefreeze",
+  "authority": "SOURCEFREE TEST_ONLY"
+}
