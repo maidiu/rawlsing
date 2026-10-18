@@ -1,0 +1,9 @@
+{
+  "prior_remote_freeze": "8dbf894109d0d81b5b0b936939484ab95771ddd3",
+  "original_preserved": "WORKER_RETURNS/PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1/phase_a/test_gf1l_frozen.py",
+  "original_sha256": "9fdc33cd1b03242a5fcdfb3f5838ab1951d72fdd3463b63f4f9b8d2512b20ce8",
+  "correction": "Shallow copy immutable native references; deepcopy only conditional_count_profile. Original mappingproxy references cannot be pickled by deepcopy. No change to oracle, assertions, parameters, expected outcomes, or inherited tests.",
+  "new_test_sha256": "091155e4470486bab80a3c96385db04376418cbcc7fcaefcbb552dc8e8c35f50",
+  "evidence": "13 fixture-copy errors, 1 native attestation pass; not scientific reds",
+  "GF1K_repair_read": false
+}
