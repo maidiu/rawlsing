@@ -1,0 +1,105 @@
+{
+  "schema": "SOROK_C0F_FINAL_PUBLISHED_RUNNABLE_JUNIT_CUSTODY@1",
+  "phase_A_frozen": "1daad754b01a1a3b2f866cc4c47c2f800f63d451",
+  "c0_author": "66d012c469ee1791c61f1d623079520697508243",
+  "c0f_postfreeze_base": "c42d391cd36a2b2be1e27bb6e112f1735c5e00f3",
+  "environment": {
+    "python": "3.13.5",
+    "pytest": "9.0.2",
+    "git": "2.47.3",
+    "source_imported_from": "/mnt/data/onecall_c0f_phaseb/onecall_c0.py",
+    "author_git_blob": "f45e4f5573495f060503f92b7630ec83531ced4d"
+  },
+  "source_hashes": {
+    "onecall_c0.py": "3f0da92095f8355c7512d49ac546c846b6026d3775533ba56be7e148e11abfa1",
+    "test_phase_b_preregistered_against_c0.py": "cc9278886e782bbd49dafc340ffe96b8c4650146d1d98cabc457f2ddc86563a8",
+    "test_phase_b_postfreeze_distinct_hostiles.py": "6d4811ef66fde35d022abdc9a5e2e1e36b0d9d2eb0e84c0d3aad4e29d4929f5f",
+    "frozen_matrix.json": "2d16c3fd3d8792e990cfc925a92092d1736d60b6b82638e303c80603a331dd27"
+  },
+  "actual_existing_generated_junit": {
+    "phasea_rerun_junit.xml": {
+      "sha256": "f4451150999ab7e79381d59b26fbcfd6186e27303a89faf9f45f4dcbd8163d52",
+      "passed": 45,
+      "failed": 0
+    },
+    "author_fresh_replay_junit.xml": {
+      "sha256": "5d2d1756e03256f55afc5e4e4523dd7d8e62be128c2787b7b0e5c84e8f4c3b86",
+      "passed": 32,
+      "failed": 0
+    },
+    "phaseb_frozen_against_author_junit.xml": {
+      "sha256": "b851c01f2f458df8faa14dfc474e708aa3d69db1c56322c862cabb790a01e83b",
+      "passed": 22,
+      "failed": 10,
+      "exit_code": 1
+    },
+    "phaseb_new_hostiles_junit.xml": {
+      "sha256": "a8ac3e1c3c4c04290453596332fcba5c8898ef78eb3ca0212f369f87f",
+      "passed": 4,
+      "failed": 8,
+      "exit_code": 1
+    }
+  },
+  "actual_terminal_recheck_junit": {
+    "terminal_author_junit.xml": {
+      "sha256": "0b0994ad2fcdbe5a3b4e9194a7679aca83ef1579e5b1aab367d2e0cf613778ab",
+      "passed": 32,
+      "failed": 0,
+      "exit_code": 0
+    },
+    "terminal_prereg_junit.xml": {
+      "sha256": "9515bca2aadbd94a307c19254f62bc0ed726292e0e6160dfae0b5eb7952a7c5c",
+      "passed": 22,
+      "failed": 10,
+      "exit_code": 1
+    },
+    "terminal_new_junit.xml": {
+      "sha256": "544aaad54c54d90c5ab01bbd4eb6d796a971d2e39dd922c1d8aa807ea282f82b",
+      "passed": 4,
+      "failed": 8,
+      "exit_code": 1
+    }
+  },
+  "prereg_reproduced_reds": [
+    "A02",
+    "A07",
+    "A11",
+    "A13",
+    "A16",
+    "A17",
+    "A18",
+    "A23",
+    "A26",
+    "A27"
+  ],
+  "new_reproduced_reds": [
+    "R32",
+    "R33",
+    "R34",
+    "R35",
+    "R36",
+    "R37",
+    "R38",
+    "R39"
+  ],
+  "original_f1_native_red": 17,
+  "author_mock_call_counts": {
+    "ONE_CALL": 3,
+    "TWO_CALL": 4,
+    "FIXED_PACKET": 0
+  },
+  "real_llm_calls": 0,
+  "cold_sha256_all_seed_runs": "6adbe66e50c0ecbdc0611e86353d603b181a13132d8c546443acb3d7e084f062",
+  "verified_initial_binary_archive": {
+    "name": "C0F_PHASE_B_INDEPENDENT_EXECUTION_AND_HOSTILES.tar.gz",
+    "sha256": "1fca6fe1c4c8a53d6c65469f0a3e6ff6a442e911942029450f0dc534cca86f60",
+    "git_blob_present": false
+  },
+  "verified_full_portable_capsule": {
+    "name": "ONECALL_C0F_FINAL_EXECUTABLE_COURT_R1.tar.xz",
+    "sha256": "19ac443e247a76638d5aa644e3874fcbb68cd1cba5890deb3fec9b40c6e33cd3",
+    "git_blob_present": false
+  },
+  "note": "JUnit hashes of real already generated XML; their XML bytes are supplied in attached archives, not deceptively claimed to be newly uploaded Git blobs. The exact Git-native sources here regenerate full XML.",
+  "scope": "ONLY_BOUND_SOURCEFREE_C0F_REVIEW__NO_ISSUANCE"
+}
