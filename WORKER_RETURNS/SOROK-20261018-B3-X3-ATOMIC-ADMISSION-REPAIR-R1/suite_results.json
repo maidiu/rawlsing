@@ -1,0 +1,465 @@
+{
+  "frozen_x3.xml": {
+    "tests": 28,
+    "failures": 8,
+    "errors": 0,
+    "skipped": 0,
+    "failed_tests": [
+      {
+        "name": "test_missing_origin_refusal_is_atomic",
+        "classname": "frozen_x3.test_independent",
+        "kind": "FAIL"
+      },
+      {
+        "name": "test_duplicate_physical_check_cannot_form_practice",
+        "classname": "frozen_x3.test_independent",
+        "kind": "FAIL"
+      },
+      {
+        "name": "test_guard_rejects_missing_previously_used_sources",
+        "classname": "frozen_x3.test_independent",
+        "kind": "FAIL"
+      },
+      {
+        "name": "test_before_and_after_loss_practice_requires_pre_loss_act",
+        "classname": "frozen_x3.test_independent",
+        "kind": "FAIL"
+      },
+      {
+        "name": "test_late_refusal_does_not_partially_admit[missing_parent]",
+        "classname": "frozen_x3.test_independent",
+        "kind": "FAIL"
+      },
+      {
+        "name": "test_late_refusal_does_not_partially_admit[future_event]",
+        "classname": "frozen_x3.test_independent",
+        "kind": "FAIL"
+      },
+      {
+        "name": "test_refusal_rows_persist_on_real_cold_connection[missing_origin]",
+        "classname": "frozen_x3.test_independent",
+        "kind": "FAIL"
+      },
+      {
+        "name": "test_refusal_rows_persist_on_real_cold_connection[future_event]",
+        "classname": "frozen_x3.test_independent",
+        "kind": "FAIL"
+      }
+    ]
+  },
+  "development_b3_missing_output_dir.xml": {
+    "tests": 71,
+    "failures": 2,
+    "errors": 0,
+    "skipped": 0,
+    "failed_tests": [
+      {
+        "name": "test_real_two_process_duplicate_race[False]",
+        "classname": "WORKER_RETURNS.SOROK-20261018-B3-X3-ATOMIC-ADMISSION-REPAIR-R1.candidate.test_integration_b3",
+        "kind": "FAIL"
+      },
+      {
+        "name": "test_real_two_process_duplicate_race[True]",
+        "classname": "WORKER_RETURNS.SOROK-20261018-B3-X3-ATOMIC-ADMISSION-REPAIR-R1.candidate.test_integration_b3",
+        "kind": "FAIL"
+      }
+    ]
+  },
+  "candidate_x3.xml": {
+    "tests": 28,
+    "failures": 4,
+    "errors": 0,
+    "skipped": 0,
+    "failed_tests": [
+      {
+        "name": "test_duplicate_physical_check_cannot_form_practice",
+        "classname": "frozen_x3.test_independent",
+        "kind": "FAIL"
+      },
+      {
+        "name": "test_guard_rejects_missing_previously_used_sources",
+        "classname": "frozen_x3.test_independent",
+        "kind": "FAIL"
+      },
+      {
+        "name": "test_before_and_after_loss_practice_requires_pre_loss_act",
+        "classname": "frozen_x3.test_independent",
+        "kind": "FAIL"
+      },
+      {
+        "name": "test_privileged_second_connection_between_guard_and_commit_is_detected_only_on_reentry",
+        "classname": "frozen_x3.test_independent",
+        "kind": "FAIL"
+      }
+    ]
+  },
+  "atomic.xml": {
+    "tests": 63,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_tests": []
+  },
+  "boundary_sql.xml": {
+    "tests": 6,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_tests": []
+  },
+  "projected_atomic.xml": {
+    "tests": 2,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_tests": []
+  },
+  "e3.xml": {
+    "tests": 26,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_tests": []
+  },
+  "candidate_b3.xml": {
+    "tests": 71,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_tests": []
+  },
+  "candidate/f2/junit.xml": {
+    "tests": 42,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_tests": []
+  },
+  "baseline/b3_final.xml": {
+    "tests": 71,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_tests": []
+  },
+  "baseline/f2/junit.xml": {
+    "tests": 42,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_tests": []
+  },
+  "baseline/inherited/x2.xml": {
+    "tests": 17,
+    "failures": 1,
+    "errors": 0,
+    "skipped": 0,
+    "failed_tests": [
+      {
+        "name": "test_same_event_id_accepts_distinct_objective_payload_hashes",
+        "classname": "tests_after.R1.frozen.test_hostile_x2",
+        "kind": "FAIL"
+      }
+    ]
+  },
+  "baseline/inherited/e2_strict.xml": {
+    "tests": 2,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_tests": []
+  },
+  "baseline/inherited/m3_source_preimage_3_red.xml": {
+    "tests": 3,
+    "failures": 3,
+    "errors": 0,
+    "skipped": 0,
+    "failed_tests": [
+      {
+        "name": "test_R3_01_past_heard_words_cannot_change_without_current_lineage_source_collision",
+        "classname": "m3.05_SOURCE_PREIMAGE_RED_REPRODUCER",
+        "kind": "FAIL"
+      },
+      {
+        "name": "test_R3_02_prior_practical_orientation_cannot_change_unnoticed_after_lineage_append",
+        "classname": "m3.05_SOURCE_PREIMAGE_RED_REPRODUCER",
+        "kind": "FAIL"
+      },
+      {
+        "name": "test_R3_03_earlier_affective_witness_rewrite_cannot_change_historical_lineage_source",
+        "classname": "m3.05_SOURCE_PREIMAGE_RED_REPRODUCER",
+        "kind": "FAIL"
+      }
+    ]
+  },
+  "baseline/inherited/e2_full.xml": {
+    "tests": 44,
+    "failures": 2,
+    "errors": 0,
+    "skipped": 0,
+    "failed_tests": [
+      {
+        "name": "test_direct_b1_after_wrapper_limit_is_measured[False]",
+        "classname": "tests_after.E2.test_e2",
+        "kind": "FAIL"
+      },
+      {
+        "name": "test_direct_b1_after_wrapper_limit_is_measured[True]",
+        "classname": "tests_after.E2.test_e2",
+        "kind": "FAIL"
+      }
+    ]
+  },
+  "baseline/inherited/m2_41.xml": {
+    "tests": 41,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_tests": []
+  },
+  "baseline/inherited/m1_37_on_m2.xml": {
+    "tests": 37,
+    "failures": 19,
+    "errors": 0,
+    "skipped": 0,
+    "failed_tests": [
+      {
+        "name": "test_every_accessible_speech_has_multiple_competing_stances",
+        "classname": "m1_original.test_kernel",
+        "kind": "FAIL"
+      },
+      {
+        "name": "test_peer_attribution_never_world_culprit",
+        "classname": "m1_original.test_kernel",
+        "kind": "FAIL"
+      },
+      {
+        "name": "test_factual_acceptance_and_negative_affect_are_independent",
+        "classname": "m1_original.test_kernel",
+        "kind": "FAIL"
+      },
+      {
+        "name": "test_private_rejection_and_public_conformity_do_not_collapse",
+        "classname": "m1_original.test_kernel",
+        "kind": "FAIL"
+      },
+      {
+        "name": "test_procedural_watchfulness_survives_explicit_rejection",
+        "classname": "m1_original.test_kernel",
+        "kind": "FAIL"
+      },
+      {
+        "name": "test_seven_later_alternatives_are_only_candidates[REATTRIBUTE]",
+        "classname": "m1_original.test_kernel",
+        "kind": "FAIL"
+      },
+      {
+        "name": "test_seven_later_alternatives_are_only_candidates[NARROW]",
+        "classname": "m1_original.test_kernel",
+        "kind": "FAIL"
+      },
+      {
+        "name": "test_seven_later_alternatives_are_only_candidates[GENERALIZE]",
+        "classname": "m1_original.test_kernel",
+        "kind": "FAIL"
+      },
+      {
+        "name": "test_seven_later_alternatives_are_only_candidates[REINFORCE]",
+        "classname": "m1_original.test_kernel",
+        "kind": "FAIL"
+      },
+      {
+        "name": "test_seven_later_alternatives_are_only_candidates[CONTRADICT]",
+        "classname": "m1_original.test_kernel",
+        "kind": "FAIL"
+      },
+      {
+        "name": "test_seven_later_alternatives_are_only_candidates[DIFFERENTIATE]",
+        "classname": "m1_original.test_kernel",
+        "kind": "FAIL"
+      },
+      {
+        "name": "test_seven_later_alternatives_are_only_candidates[NO_CHANGE]",
+        "classname": "m1_original.test_kernel",
+        "kind": "FAIL"
+      },
+      {
+        "name": "test_later_append_versioned_reinterpretation_without_past_rewrite",
+        "classname": "m1_original.test_kernel",
+        "kind": "FAIL"
+      },
+      {
+        "name": "test_later_no_change_is_actual_valid_option",
+        "classname": "m1_original.test_kernel",
+        "kind": "FAIL"
+      },
+      {
+        "name": "test_independent_other_can_refuse_without_forced_romance",
+        "classname": "m1_original.test_kernel",
+        "kind": "FAIL"
+      },
+      {
+        "name": "test_replay_is_exact_under_same_seal",
+        "classname": "m1_original.test_kernel",
+        "kind": "FAIL"
+      },
+      {
+        "name": "test_ordering_fails_closed_on_second_loss_after_later",
+        "classname": "m1_original.test_kernel",
+        "kind": "FAIL"
+      },
+      {
+        "name": "test_untampered_lineage_hash_is_required",
+        "classname": "m1_original.test_kernel",
+        "kind": "FAIL"
+      },
+      {
+        "name": "test_future_habit_cannot_be_causal_past_of_loss",
+        "classname": "m1_original.test_kernel",
+        "kind": "FAIL"
+      }
+    ]
+  },
+  "baseline/inherited/r1_45.xml": {
+    "tests": 45,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_tests": []
+  },
+  "baseline/inherited/i2_23_on_m2.xml": {
+    "tests": 23,
+    "failures": 10,
+    "errors": 0,
+    "skipped": 0,
+    "failed_tests": [
+      {
+        "name": "test_01_reproducible_witnesses_and_plural_without_compulsion",
+        "classname": "i2_strict.test_i2_strict",
+        "kind": "FAIL"
+      },
+      {
+        "name": "test_06_original_event_immutable_with_same_scene_and_append",
+        "classname": "i2_strict.test_i2_strict",
+        "kind": "FAIL"
+      },
+      {
+        "name": "test_07_private_memory_not_manufactured",
+        "classname": "i2_strict.test_i2_strict",
+        "kind": "FAIL"
+      },
+      {
+        "name": "test_09_other_P_refusal_already_encoded_no_forced_response",
+        "classname": "i2_strict.test_i2_strict",
+        "kind": "FAIL"
+      },
+      {
+        "name": "test_11_permission_replay_before_hash_blocks_reuse",
+        "classname": "i2_strict.test_i2_strict",
+        "kind": "FAIL"
+      },
+      {
+        "name": "test_R03_same_objective_id_changed_payload_cannot_preserve_old_lineage",
+        "classname": "i2_strict.test_i2_strict",
+        "kind": "FAIL"
+      },
+      {
+        "name": "test_R04_NO_CHANGE_must_mean_no_durable_interpretation_update",
+        "classname": "i2_strict.test_i2_strict",
+        "kind": "FAIL"
+      },
+      {
+        "name": "test_R05_cosmetic_history_label_does_not_create_new_causal_route_identity",
+        "classname": "i2_strict.test_i2_strict",
+        "kind": "FAIL"
+      },
+      {
+        "name": "test_R08_future_self_history_cannot_be_usable_as_prior_lineage_evidence",
+        "classname": "i2_strict.test_i2_strict",
+        "kind": "FAIL"
+      },
+      {
+        "name": "test_R10_later_interpretation_requires_evidence_of_relevance_or_difference",
+        "classname": "i2_strict.test_i2_strict",
+        "kind": "FAIL"
+      }
+    ]
+  },
+  "baseline/inherited/repair_5.xml": {
+    "tests": 5,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_tests": []
+  },
+  "baseline/inherited/b2/f1.xml": {
+    "tests": 97,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_tests": []
+  },
+  "baseline/inherited/b2/p1.xml": {
+    "tests": 74,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_tests": []
+  },
+  "baseline/inherited/b2/integration.xml": {
+    "tests": 81,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_tests": []
+  },
+  "baseline/inherited/b2/b1.xml": {
+    "tests": 39,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_tests": []
+  },
+  "development_before_receipt_cleanup/candidate_x3.xml": {
+    "tests": 28,
+    "failures": 4,
+    "errors": 0,
+    "skipped": 0,
+    "failed_tests": [
+      {
+        "name": "test_duplicate_physical_check_cannot_form_practice",
+        "classname": "frozen_x3.test_independent",
+        "kind": "FAIL"
+      },
+      {
+        "name": "test_guard_rejects_missing_previously_used_sources",
+        "classname": "frozen_x3.test_independent",
+        "kind": "FAIL"
+      },
+      {
+        "name": "test_before_and_after_loss_practice_requires_pre_loss_act",
+        "classname": "frozen_x3.test_independent",
+        "kind": "FAIL"
+      },
+      {
+        "name": "test_privileged_second_connection_between_guard_and_commit_is_detected_only_on_reentry",
+        "classname": "frozen_x3.test_independent",
+        "kind": "FAIL"
+      }
+    ]
+  },
+  "development_before_receipt_cleanup/atomic.xml": {
+    "tests": 61,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_tests": []
+  },
+  "development_before_receipt_cleanup/candidate_b3.xml": {
+    "tests": 71,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failed_tests": []
+  }
+}
