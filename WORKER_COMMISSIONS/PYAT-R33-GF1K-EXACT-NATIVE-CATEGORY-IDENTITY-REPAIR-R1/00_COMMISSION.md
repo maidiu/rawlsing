@@ -1,0 +1,17 @@
+# PYAT R33 GF1K — exact native category identity repair, no new model/semantic grant
+
+PRIVATE repo: maidiu/rawlsing. ROLE bounded sourcefree GF1H consumer author/repairer, NOT HQ, independent I2, source/FF/N11/V3 issuer. BRANCH agent/userdirect-pyat-20261017-r33-gf1k-exact-native-category-identity-repair-r1; verify exact sealed launch SHA. Write ONLY WORKER_RETURNS/PYAT-R33-GF1K-CATEGORY-IDENTITY-REPAIR-R1/. No accepted owner or frozen test mutation. Host must have actual full Git/Python/pytest/subprocess native imports, preferably qualified Codex Medium or equivalent.
+
+## Pinned actual findings
+
+GF1G I2 @ec5dddfcb3476c01ceb8e7f5122c5e5259b936f7 found GF1E denominator/risk/typed-state REDs. GF1H @cc41ad4553d189a3c4c8152179b3d1977327c07f repaired the computed core: author original44 44, GF1G26 26, new26 26, historical GF1F96/100 and GF1I17/19 remain visible. GF1H candidate Git blob 66658149fd7362e17c064a3fc1f9029d638f9ed9, SHA256 a4915b845853e70f9430190aebde298346ea5ad4472de8380e26182113f97c8a. GF1J independent @f3f34bc1b7b9fd97a3ae8a9b24dd2201f42f38f5: exact GF1H consumer imported, 16 math +36 bounded sourcefree + cold PASS, 2 physically executed strict native-identity hostiles FAIL; original 74-module true producer closure NOT independently rerun.
+
+## Scientific defect and bounded repair
+
+GF1H's _decode_profile converts source-native domain values and nested row/cell state values to strings. A category whose native declared value is the STRING "0" is accepted when a fully rehashed semantic relation instead supplies INTEGER 0 at condition_state or target_state. Both are computed as EXACT_PAIR_SEPARATION. That is a scientific exact-identity violation. Beware Python bool False == int 0 too.
+
+Stage exact true native GenericNativePairRelation and full originally pinned 74-module source closure, GF1H and GF1J source. First reproduce two GF1J failing hostiles. Implement a minimal VERSIONED sourcefree candidate in your own return: type-preserving native-category equality of declared domain and row/target keys, not generic str(), bool/int coercion or auto normalization. Any legitimate cross-type conversion requires a separately qualified source owner mapping, NEVER convenience consumer casting. Reject spoofed row/target categories BEFORE total/class/result hash/value with CONSUMER_RELATION_INTEGRITY_REJECTED and no consumer product. Preserve genuine original source-native string and other exact typed domains without recoding.
+
+Preserve all GF1H arithmetic/risk/denominator/typed-state repairs, original44, GF1G26, GF1H26, forward/reverse, F2 noncopy, genuine minority/zero and no signer claims. Test int vs string, bool vs int, rehashed content/object id, swapped row/target state, target-domain ordering, valid native code, cold processes and full true producer constructor. Run real original44, GF1G26, GF1H26, GF1J two hostiles; GF1F100 and GF1I19 original stale cases remain NOT GREEN and unchanged. Do not regrade frozen oracles. Record actual Python __file__, SHA/Git blob, JUnit and cold logs. If full owner unavailable, return exact native execution HOLD separately from bounded fix.
+
+DELIVER 00_TYPED_IDENTITY_REPAIR_VERDICT.md; runnable candidate code/tests; 01_GF1J_TWO_REDS_BEFORE_AFTER.json; 02_NATIVE_MODULES_IMPORT_AND_SHA.json; 03_REAL_FROZEN_COURTS_JUNIT_COLD/; 04_SCIENTIFIC_CONSERVATION_AND_ISSUER_HOLDS.md; final remote SHA. No HQ self-adoption, original35, FieldForge, N11/N12, OC05, V3, actor grant. Independent GF1L will review.
