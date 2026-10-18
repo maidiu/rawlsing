@@ -1,0 +1,250 @@
+{
+  "schema": "SOROK_M2_R3_USER_DIRECT_IMPLEMENTATION_EXECUTION_R1",
+  "status": "CANDIDATE_NOT_INDEPENDENTLY_REVIEWED",
+  "original_R2_commit": "e8f375e9feae187e8a1add2343100ca05d9fffc4",
+  "original_R2_sha256": "88bb8c65dfd88efd1843f16e1bb6d51e1fa01a0dc1fdccb13e03a9b2b394d8d3",
+  "new_R3_kernel_sha256": "838d0852e6b1b28bb733b1eda580b3dc53f5db3d47e3a0caefbd3072022ad45a",
+  "source_sha256": {
+    "kernel.py": "838d0852e6b1b28bb733b1eda580b3dc53f5db3d47e3a0caefbd3072022ad45a",
+    "test_m2.py": "112114ee13545791cd003f30f1c9aa2cfdeccd1fba8b93cae7ff25c26456fbbc",
+    "test_m3_independent.py": "b519d48d7a08531911398ec2529b3a7893146b42c2856b440df1f011d16a06e3",
+    "test_m3_unresolved.py": "76ac10e4d80a3c89a9285032ceba9c0d8c61bbd62cea0bb85d7e947148d309b3",
+    "test_source_preimages.py": "26e988de750185f664fea7b1013a8b9961f0e63059478c6a8e4a89bd17d81f63",
+    "test_local_hostile.py": "05e6476fa9640596156b73349a05c01668729b1c8554111302515e5e6eefcb91",
+    "test_relation_custody.py": "44b9590f8e66de3586451349dd06e0364ca16dcea1bbd54a5ccd5aadbc1b7681",
+    "test_heldout_actor_independence.py": "0dc1f012bd689cf25771d26439afb32cdf8452be08fe307e08f5b19c2d0bd5b5",
+    "test_r3_counterpart_actor_custody.py": "cd75b8556918668090dc8fca0819eec18212f4e4df681d8eb8b397a5b6973d2b",
+    "frozen_m3/test_original_preimage.py": "867d315310c940bf0cf11b707c8cb81f86fe5ec49a000c6121bbbe70465179d0"
+  },
+  "python": "3.13.5",
+  "pytest": "9.0.2",
+  "surface": "browser_container_pinned_sourcefree",
+  "fresh_counts": {
+    "tests": 135,
+    "passed": 135,
+    "failed": 0,
+    "skipped": 0
+  },
+  "suites": [
+    {
+      "court": "original_M2_41",
+      "tests_source": "test_m2.py",
+      "command": [
+        "python3",
+        "-c",
+        "import verified kernel+pytest",
+        "-q",
+        "--import-mode=importlib",
+        "test_m2.py",
+        "--junitxml=evidence/original_M2_41.xml"
+      ],
+      "actual_exit": 0,
+      "counts": {
+        "tests": 41,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "actual_loaded_sha256": "838d0852e6b1b28bb733b1eda580b3dc53f5db3d47e3a0caefbd3072022ad45a",
+      "log_ref": "evidence/original_M2_41.log",
+      "junit_ref": "evidence/original_M2_41.xml"
+    },
+    {
+      "court": "M3_lawful_32",
+      "tests_source": "test_m3_independent.py",
+      "command": [
+        "python3",
+        "-c",
+        "import verified kernel+pytest",
+        "-q",
+        "--import-mode=importlib",
+        "test_m3_independent.py",
+        "--junitxml=evidence/M3_lawful_32.xml"
+      ],
+      "actual_exit": 0,
+      "counts": {
+        "tests": 32,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "actual_loaded_sha256": "838d0852e6b1b28bb733b1eda580b3dc53f5db3d47e3a0caefbd3072022ad45a",
+      "log_ref": "evidence/M3_lawful_32.log",
+      "junit_ref": "evidence/M3_lawful_32.xml"
+    },
+    {
+      "court": "M3_packaged_3",
+      "tests_source": "test_m3_unresolved.py",
+      "command": [
+        "python3",
+        "-c",
+        "import verified kernel+pytest",
+        "-q",
+        "--import-mode=importlib",
+        "test_m3_unresolved.py",
+        "--junitxml=evidence/M3_packaged_3.xml"
+      ],
+      "actual_exit": 0,
+      "counts": {
+        "tests": 3,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "actual_loaded_sha256": "838d0852e6b1b28bb733b1eda580b3dc53f5db3d47e3a0caefbd3072022ad45a",
+      "log_ref": "evidence/M3_packaged_3.log",
+      "junit_ref": "evidence/M3_packaged_3.xml"
+    },
+    {
+      "court": "additional_15",
+      "tests_source": "test_source_preimages.py",
+      "command": [
+        "python3",
+        "-c",
+        "import verified kernel+pytest",
+        "-q",
+        "--import-mode=importlib",
+        "test_source_preimages.py",
+        "--junitxml=evidence/additional_15.xml"
+      ],
+      "actual_exit": 0,
+      "counts": {
+        "tests": 15,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "actual_loaded_sha256": "838d0852e6b1b28bb733b1eda580b3dc53f5db3d47e3a0caefbd3072022ad45a",
+      "log_ref": "evidence/additional_15.log",
+      "junit_ref": "evidence/additional_15.xml"
+    },
+    {
+      "court": "original_M3_exact_3",
+      "tests_source": "frozen_m3/test_original_preimage.py",
+      "command": [
+        "python3",
+        "-c",
+        "import verified kernel+pytest",
+        "-q",
+        "--import-mode=importlib",
+        "frozen_m3/test_original_preimage.py",
+        "--junitxml=evidence/original_M3_exact_3.xml"
+      ],
+      "actual_exit": 0,
+      "counts": {
+        "tests": 3,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "actual_loaded_sha256": "838d0852e6b1b28bb733b1eda580b3dc53f5db3d47e3a0caefbd3072022ad45a",
+      "log_ref": "evidence/original_M3_exact_3.log",
+      "junit_ref": "evidence/original_M3_exact_3.xml"
+    },
+    {
+      "court": "original_hostile_11",
+      "tests_source": "test_local_hostile.py",
+      "command": [
+        "python3",
+        "-c",
+        "import verified kernel+pytest",
+        "-q",
+        "--import-mode=importlib",
+        "test_local_hostile.py",
+        "--junitxml=evidence/original_hostile_11.xml"
+      ],
+      "actual_exit": 0,
+      "counts": {
+        "tests": 11,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "actual_loaded_sha256": "838d0852e6b1b28bb733b1eda580b3dc53f5db3d47e3a0caefbd3072022ad45a",
+      "log_ref": "evidence/original_hostile_11.log",
+      "junit_ref": "evidence/original_hostile_11.xml"
+    },
+    {
+      "court": "R2_relation_14",
+      "tests_source": "test_relation_custody.py",
+      "command": [
+        "python3",
+        "-c",
+        "import verified kernel+pytest",
+        "-q",
+        "--import-mode=importlib",
+        "test_relation_custody.py",
+        "--junitxml=evidence/R2_relation_14.xml"
+      ],
+      "actual_exit": 0,
+      "counts": {
+        "tests": 14,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "actual_loaded_sha256": "838d0852e6b1b28bb733b1eda580b3dc53f5db3d47e3a0caefbd3072022ad45a",
+      "log_ref": "evidence/R2_relation_14.log",
+      "junit_ref": "evidence/R2_relation_14.xml"
+    },
+    {
+      "court": "independent_previous_heldout_2",
+      "tests_source": "test_heldout_actor_independence.py",
+      "command": [
+        "python3",
+        "-c",
+        "import verified kernel+pytest",
+        "-q",
+        "--import-mode=importlib",
+        "test_heldout_actor_independence.py",
+        "--junitxml=evidence/independent_previous_heldout_2.xml"
+      ],
+      "actual_exit": 0,
+      "counts": {
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "actual_loaded_sha256": "838d0852e6b1b28bb733b1eda580b3dc53f5db3d47e3a0caefbd3072022ad45a",
+      "log_ref": "evidence/independent_previous_heldout_2.log",
+      "junit_ref": "evidence/independent_previous_heldout_2.xml"
+    },
+    {
+      "court": "new_R3_counterpart_controls_14",
+      "tests_source": "test_r3_counterpart_actor_custody.py",
+      "command": [
+        "python3",
+        "-c",
+        "import verified kernel+pytest",
+        "-q",
+        "--import-mode=importlib",
+        "test_r3_counterpart_actor_custody.py",
+        "--junitxml=evidence/new_R3_counterpart_controls_14.xml"
+      ],
+      "actual_exit": 0,
+      "counts": {
+        "tests": 14,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "actual_loaded_sha256": "838d0852e6b1b28bb733b1eda580b3dc53f5db3d47e3a0caefbd3072022ad45a",
+      "log_ref": "evidence/new_R3_counterpart_controls_14.log",
+      "junit_ref": "evidence/new_R3_counterpart_controls_14.xml"
+    }
+  ],
+  "negative_control_original_R2": {
+    "actual_exit": 1,
+    "counts": {
+      "tests": 2,
+      "failures": 1,
+      "errors": 0,
+      "skipped": 0
+    },
+    "log_ref": "evidence/original_R2_heldout_RED.log",
+    "junit_ref": "evidence/original_R2_heldout_RED.xml"
+  },
+  "frozen_M1_I2": "NOT_RERUN__PRESERVED_HISTORICAL_REGRESSION_RECORDS",
+  "claim_limit": "AUTHOR_EXECUTED_SOURCEFREE_CANDIDATE__PENDING_FRESH_I2"
+}

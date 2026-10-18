@@ -1,0 +1,69 @@
+--- /mnt/data/sorok_runtime/r2/kernel.py	2026-10-18 19:00:29.684372924 +0000
++++ candidate/kernel.py	2026-10-18 19:25:13.855491979 +0000
+@@ -5,10 +5,11 @@
+ import json
+ 
+ GRADE = 'TEST_ONLY_M1_SOURCE_TIME_REPAIR_CANDIDATE_PENDING_I2'
+-RULE = 'M2_INTERPRETATION_SOURCE_TEMPORAL_IDENTITY@0.4.0_CANDIDATE'
++RULE = 'M2_INTERPRETATION_SOURCE_TEMPORAL_IDENTITY@0.4.1_CANDIDATE'
+ RULE_CONTRACT = {'name':RULE,'clock':'no_future_read','history':'independent_fixture_witness',
+                  'speech':'actual_action_plus_listener_exposure','lineage':'objective_and_consumed_source_preimages',
+                  'relation':'exact_consumed_relevance_history_and_witness',
++                 'counterpart':'other_actor_action_owner_bound_to_observation_and_relevance',
+                  'outcome':'candidate_only','no_change':'unchanged_psychology_separate_audit'}
+ MODES = ('REATTRIBUTE','NARROW','GENERALIZE','REINFORCE','CONTRADICT','DIFFERENTIATE','NO_CHANGE')
+ STANCES = ('ACCEPT','REJECT','SUSPEND')
+@@ -28,6 +29,7 @@
+ @dataclass(frozen=True)
+ class History:
+     id: str; actor: str; time: int; activity: str; witnessed: bool; accessible: bool
++    observed_action_owner: str|None=None  # explicitly attributed person for observed-other actions
+ 
+ @dataclass(frozen=True)
+ class Actor:
+@@ -70,6 +72,7 @@
+     later_event_id: str; later_event_hash: str; earlier_event_id: str
+     earlier_event_hash: str; actor: str; observed_history_id: str
+     observer: str; time: int; issuer: str=TEST_RELEVANCE_ISSUER
++    observed_action_owner: str|None=None  # links this receipt to the event's actual action owner
+ 
+ @dataclass(frozen=True)
+ class Scene:
+@@ -296,15 +299,17 @@
+ 
+ def _relation_sources(scene,actor_id,e,orig):
+     """Return the exact qualified alternatives used by the relation gate."""
+-    if e.kind not in ('ENCOUNTER','ACTION'):return ()
++    if e.kind not in ('ENCOUNTER','ACTION') or not e.action_owner or e.action_owner==actor_id:return ()
+     out=[]
+     for x in scene.relevance:
+         if x.actor!=actor_id or x.later_event_id!=e.id or x.earlier_event_id!=orig.id:continue
+         if (x.issuer!=TEST_RELEVANCE_ISSUER or x.later_event_hash!=objective_event_hash(e)
+                 or x.earlier_event_hash!=objective_event_hash(orig) or x.time>e.time
++                or x.observed_action_owner!=e.action_owner
+                 or x.observer==actor_id or x.observer not in {a.id for a in scene.actors}):continue
+         witness=next((h for h in actor(scene,actor_id).history if h.id==x.observed_history_id),None)
+-        if (witness and witness.witnessed and witness.time==e.time and x.time==e.time and e.action_owner
++        if (witness and witness.witnessed and witness.time==e.time and x.time==e.time
++                and witness.observed_action_owner==e.action_owner
+                 and witness.activity=='observed_counterpart_action:'+str(e.action)
+                 and _history_source(scene,witness).operation=='OBSERVED_RELATIONAL_DIFFERENCE'):
+             out.append((x,witness,_history_source(scene,witness)))
+@@ -433,7 +438,8 @@
+         History('old_watchful_habit','child',2,'guard_property',True,False),
+         History('first_distress','child',4,'bodily_grief',True,True),
+         History('public_lock_check','child',5,'lock_inspection',True,True),
+-        History('later_observed_counterpart','child',9,'observed_counterpart_action:'+other_action,True,True)),
++        History('later_observed_counterpart','child',9,'observed_counterpart_action:'+other_action,True,True,
++                observed_action_owner='other_P')),
+         ('loss','parent_said')+(('peer_said',) if child_access_peer else ())+
+         ('discussion','later',),'repair_bicycle',age,background)
+     caregiver=Actor('caregiver',(History('care_work_history','caregiver',1,parent_history,True,False),),
+@@ -470,5 +476,6 @@
+             heard.append(Exposure(s.id,digest(asdict(s)),'child',
+                 objective_event_hash(act),'child',s.time))
+     relevance=(Relevance('later',objective_event_hash(later),'loss',
+-       objective_event_hash(loss),'child','later_observed_counterpart','caregiver',9),)
++       objective_event_hash(loss),'child','later_observed_counterpart','caregiver',9,
++       observed_action_owner='other_P'),)
+     return Scene(people,events,tuple(speech),witnesses,tuple(acts),tuple(heard),relevance)
