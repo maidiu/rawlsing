@@ -1,0 +1,59 @@
+{
+  "observed_utc": "2026-10-18T15:20:57.595706+00:00",
+  "pytest": "pytest 9.1.1",
+  "python": "3.11.3",
+  "redaction": "stdout host checkout/interpreter prefixes and JUnit hostname alias only; test values unchanged",
+  "suites": [
+    {
+      "command": [
+        "python3",
+        "-m",
+        "pytest",
+        "-v",
+        "test_world_intersection.py",
+        "--junitxml=../../evidence/inherited.xml"
+      ],
+      "cwd": "inherited/causal_experiment",
+      "errors": 0,
+      "exit_code": 0,
+      "failures": 0,
+      "skipped": 0,
+      "suite": "inherited",
+      "tests": 24
+    },
+    {
+      "command": [
+        "python3",
+        "-m",
+        "pytest",
+        "-v",
+        "test_controls.py",
+        "--junitxml=evidence/controls.xml"
+      ],
+      "cwd": ".",
+      "errors": 0,
+      "exit_code": 0,
+      "failures": 0,
+      "skipped": 0,
+      "suite": "controls",
+      "tests": 23
+    },
+    {
+      "command": [
+        "python3",
+        "-m",
+        "pytest",
+        "-v",
+        "test_falsifiers.py",
+        "--junitxml=evidence/falsifiers.xml"
+      ],
+      "cwd": ".",
+      "errors": 0,
+      "exit_code": 1,
+      "failures": 6,
+      "skipped": 0,
+      "suite": "falsifiers",
+      "tests": 6
+    }
+  ]
+}

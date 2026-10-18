@@ -1,0 +1,109 @@
+{
+  "passport_schema": "SOROK_ENVIRONMENT_PASSPORT_R1",
+  "environment_id": "eb6c7ac9-9195-45b5-a8e9-5c3c37cd3a36",
+  "epoch_id": "2ee5f56e-10c5-4fe9-9185-4250cae5dc54",
+  "owner_session_alias": "contingent-lives-court",
+  "surface": "LOCAL_SHARED_STORE",
+  "machine_alias": "local",
+  "conversation_or_account_affinity": "current-Codex-chat",
+  "status": "LIVE_VERIFIED",
+  "last_live_probe_at": "2026-10-18T15:23:40.566726+00:00",
+  "runtime_marker_digest": "e810a6ceb285da287ff52a8c6dc58ca339204fab7f5e9469a78fb36936d239a1",
+  "probe_command_and_result": {
+    "python": "VERIFIED 3.11.3",
+    "pytest": "VERIFIED pytest 9.1.1",
+    "git": "VERIFIED git version 2.39.1",
+    "filesystem_shell": "VERIFIED",
+    "node": "UNKNOWN_NOT_NEEDED"
+  },
+  "git_object_store_alias": "existing-rawlsing-shared-store",
+  "worktree_alias": "isolated-contingent-lives-r1",
+  "branch": "agent/experimental-sorok-contingent-lives-court-r1",
+  "exact_checkout_base": "25830fe7462bb9e29bc4087e6ae14f3f84cec377",
+  "head": "FINAL_RETURN_TIP_IDENTIFIES_RETURN_NOT_COMMISSION",
+  "clean_dirty_state": "OWN_RETURN_PENDING_FINAL_COMMIT",
+  "dependency_closure_status": "BOUNDED",
+  "science_grade": "SOURCEFREE_UNCALIBRATED_RESEARCH_ONLY",
+  "model_provider": "OpenAI Codex current session",
+  "model": "UNKNOWN_NOT_PROBED",
+  "effort": "UNKNOWN_NOT_PROBED",
+  "cash_known": false,
+  "quota_known": false,
+  "context_cache_reuse": "UNKNOWN",
+  "estimated_total_evidence_cost": "UNKNOWN",
+  "independent_review_separation": "HQ distinct post-return reviewer required; none commissioned by this worker",
+  "privacy_source_grant": "user supplied sourcefree packet only; no original survey/model/actor access",
+  "materialized_source_refs": [
+    {
+      "path": "inherited/causal_experiment/world_intersection.py",
+      "git_commit": null,
+      "git_blob_sha1": "ee6aad38eba225eefafaaa7148666ba15bf7f14d",
+      "sha256": "3b6d0995930664cb03969a0108214b95e67f3cb4ab04391cfdf27aa5059ad4aa",
+      "verified_import_relative_path": "inherited/causal_experiment/world_intersection.py"
+    }
+  ],
+  "covered_test_suites": [
+    {
+      "command": [
+        "python3",
+        "-m",
+        "pytest",
+        "-v",
+        "test_world_intersection.py",
+        "--junitxml=../../evidence/inherited.xml"
+      ],
+      "cwd": "inherited/causal_experiment",
+      "errors": 0,
+      "exit_code": 0,
+      "failures": 0,
+      "skipped": 0,
+      "suite": "inherited",
+      "tests": 24
+    },
+    {
+      "command": [
+        "python3",
+        "-m",
+        "pytest",
+        "-v",
+        "test_controls.py",
+        "--junitxml=evidence/controls.xml"
+      ],
+      "cwd": ".",
+      "errors": 0,
+      "exit_code": 0,
+      "failures": 0,
+      "skipped": 0,
+      "suite": "controls",
+      "tests": 23
+    },
+    {
+      "command": [
+        "python3",
+        "-m",
+        "pytest",
+        "-v",
+        "test_falsifiers.py",
+        "--junitxml=evidence/falsifiers.xml"
+      ],
+      "cwd": ".",
+      "errors": 0,
+      "exit_code": 1,
+      "failures": 6,
+      "skipped": 0,
+      "suite": "falsifiers",
+      "tests": 6
+    }
+  ],
+  "assignments_completed": [
+    "bounded contingent-lives causal court"
+  ],
+  "next_good_affinity_tags": [
+    "OCCURRENCE",
+    "CAUSAL_READSET",
+    "COUNTERFACTUAL"
+  ],
+  "staged_state_preservation": "LOCAL_COMMITTED_RETURN; runtime must be re-probed on resume",
+  "retire_or_rebuild_reason": null,
+  "routing": "USER_SELECTED_CODEX_SINGLE_AGENT_NO_MODEL_OR_HARNESS_SWITCH; fresh independent review belongs to HQ"
+}
