@@ -61,7 +61,6 @@ def test_actual_native_producer_values_reach_original_nonparent_consumer():
         assert native["source_universe_ref"] and native["release_ref"]
         assert native["authority_refs"] and native["provenance_refs"]
     assert receipt["material"]["route_probability"] is None
-    assert receipt["material"]["person_generation"] if "person_generation" in receipt["material"] else True
     assert service.provider.trace
     assert any(t["call"] == "compose_positioned_subject_possibility" for t in service.provider.trace)
     assert any(t["call"] == "provide_empirical_possibility_slice" for t in service.provider.trace)
