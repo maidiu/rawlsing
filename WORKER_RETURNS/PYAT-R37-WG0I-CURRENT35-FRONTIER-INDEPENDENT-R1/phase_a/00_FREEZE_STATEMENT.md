@@ -63,13 +63,13 @@ expected-products manifest or final consumer for any of the 35 sources).
 
 | Artifact | SHA-256 |
 |---|---|
-| `phase_a/01_PHASE_A_FROZEN_ORACLE.json` | `1bb381ffc05a1a2a79753171f97a15b196eefd99a1a86232031f86b5e3ba5356` |
-| `phase_a/02_ITEM_IDENTITY_LEDGER.jsonl` | `46e4d70adc6bc723b99be414fc702b146fefc6ed7ac6652c3892f5469b985d38` |
-| `phase_a/03_REFUSAL_AND_CLASSIFICATION_CASES.json` | `f99a7684679e86b12137d72665befde2e64dc454f136a6025bbc07fac4fcca16` |
+| `phase_a/01_PHASE_A_FROZEN_ORACLE.json` | `279b5fa20e9cceff1f7fb6b8a661ae628cd5c181c479de4b805a11a1721a4cc1` |
+| `phase_a/02_ITEM_IDENTITY_LEDGER.jsonl` | `5f7359042bc9c78d77cbd81ba8477bb10f164a4ab3eb0eb471dea21b381121b0` |
+| `phase_a/03_REFUSAL_AND_CLASSIFICATION_CASES.json` | `eaa53d2eaf6fed7a19fd84456fc030a39334e9c1bd06531c03cb830c2570ae8e` |
 | `phase_a/04_COUNTING_LOGIC.md` | `1b0f32f98b6340db19baee7a7d3d154618be5bab0064641f09e3349fd04ab0ff` |
-| `phase_a/build_oracle.py` | `0d07764d212f63f5bff66c37be8a63d4a328c476c9f08d4200d99ef10d37b1bc` |
+| `phase_a/build_oracle.py` | `d8bae4c900e4aaf8c26dd3b8a80ee3347b6dd5ae4f5ec5dd19d11ef029f58b0d` |
 
-Oracle canonical digest: `7603de8178b208053c25e3d6fd846d33b6988b8664a47c0db15f15d1fa6c35c6`.
+Oracle canonical digest: `682b74202e618b0f5f5a5f56a89f46b246b9ca63de2f6afa2992510bfe179c5b`.
 Item ledger rows: 18,259, sorted by `(wave, question_id)`.
 
 ## Frozen refusal cases

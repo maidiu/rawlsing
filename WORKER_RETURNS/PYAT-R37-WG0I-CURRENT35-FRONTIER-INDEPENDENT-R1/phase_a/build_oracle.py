@@ -67,13 +67,19 @@ def main() -> None:
         for it in items:
             st = it["qra_authority_status"]
             status_counts[st] += 1
+            topology = it.get("topology_metadata") or {}
             ledger.append({
                 "wave": w["atlas_id"],
                 "question_id": it["question_id"],
                 "p2_identity": it["p2_exact_identity_sha256"],
                 "governed_hash": it["governed_row_payload_hash"],
+                "qsmv2_hash": it.get("qsmv2_final_payload_hash"),
                 "status": st,
-                "topology": (it.get("topology_metadata") or {}).get("p2_response_topology"),
+                "relation_use_status": it.get("relation_use_status"),
+                "manual_topology": topology.get("manual_response_topology"),
+                "p2_topology": topology.get("p2_response_topology"),
+                "binding_status": topology.get("p2_response_binding_status"),
+                "administered_occurrence": it.get("original_administered_occurrence"),
                 "operation_eligibility": it["original_item_operation_eligibility"],
             })
         per_wave.append({
@@ -117,6 +123,17 @@ def main() -> None:
     assert len(cells) == 1890, len(cells)
     assert len(estate["sources"]) == 35
     cell_status = collections.Counter(c["status"] for c in cells)
+
+    # Per-source estate axis ledger.
+    per_source = []
+    for s in estate["sources"]:
+        counts = collections.Counter()
+        for key in ("source_native_axes", "empirical_engine_axes", "f1_f8_axes"):
+            for a in s.get(key) or []:
+                counts[a["status"]] += 1
+        per_source.append({"source": s["id"], "cells": sum(counts.values()),
+                           "status_counts": dict(counts)})
+    assert all(x["cells"] == 54 for x in per_source)
 
     # 101 tasks and queue.
     task_rows = tasks["task_rows"]
@@ -212,13 +229,19 @@ def main() -> None:
             "sources": len(estate["sources"]), "cells": len(cells),
             "source_native_expected": 1050, "ee_expected": 560, "f_expected": 280,
             "status_counts": dict(cell_status),
-            "cells_per_source": 54,
+            "cells_per_source": 54, "per_source": per_source,
         },
         "task_census": {"tasks": 101, "state_counts": dict(task_states),
+                        "task_identity_ledger_sha256": sha256("".join(
+                            r["id"] + "|" + r["reconciliation_state"] + "\n"
+                            for r in task_rows).encode()),
                         "critical_gate_status": tasks["critical_shared_frontier_gate"]["status"],
                         "gate_owner_evidence": tasks["critical_shared_frontier_gate"]["current_owner_evidence"]},
         "queue_census": {"sources": 35, "current_ref_nulls": ref_nulls,
                          "all_current_refs_null": True,
+                         "per_source": [{"source": s["id"],
+                                         "null_refs": [r for r in refs if s.get(r) is None]}
+                                        for s in queue_sources],
                          "status": queue.get("status")},
         "six_label_census": six_labels,
         "primary_disposition": primary,
