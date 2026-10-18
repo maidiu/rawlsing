@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="26" time="1.022" timestamp="2026-10-17T23:32:19.621079-04:00" hostname="MacBook-Pro.lan"><testcase classname="R34-GF1M-independent-current-wt.WORKER_RETURNS.PYAT-R34-GF1M-INDEPENDENT-CURRENT-GF1-R1.03_REAL_JUNIT_282_NESTED44_COLD_AND_NEW_ADVERSARIALS.test_independent_domains" name="test_independent_domain_integrity[bool_collision-condition]" time="0.358" /><testcase classname="R34-GF1M-independent-current-wt.WORKER_RETURNS.PYAT-R34-GF1M-INDEPENDENT-CURRENT-GF1-R1.03_REAL_JUNIT_282_NESTED44_COLD_AND_NEW_ADVERSARIALS.test_independent_domains" name="test_independent_domain_integrity[bool_collision-target]" time="0.004" /><testcase classname="R34-GF1M-independent-current-wt.WORKER_RETURNS.PYAT-R34-GF1M-INDEPENDENT-CURRENT-GF1-R1.03_REAL_JUNIT_282_NESTED44_COLD_AND_NEW_ADVERSARIALS.test_independent_domains" name="test_independent_domain_integrity[float_collision-condition]" time="0.002" /><testcase classname="R34-GF1M-independent-current-wt.WORKER_RETURNS.PYAT-R34-GF1M-INDEPENDENT-CURRENT-GF1-R1.03_REAL_JUNIT_282_NESTED44_COLD_AND_NEW_ADVERSARIALS.test_independent_domains" name="test_independent_domain_integrity[float_collision-target]" time="0.002" /><testcase classname="R34-GF1M-independent-current-wt.WORKER_RETURNS.PYAT-R34-GF1M-INDEPENDENT-CURRENT-GF1-R1.03_REAL_JUNIT_282_NESTED44_COLD_AND_NEW_ADVERSARIALS.test_independent_domains" name="test_independent_domain_integrity[string_int-condition]" time="0.002" /><testcase classname="R34-GF1M-independent-current-wt.WORKER_RETURNS.PYAT-R34-GF1M-INDEPENDENT-CURRENT-GF1-R1.03_REAL_JUNIT_282_NESTED44_COLD_AND_NEW_ADVERSARIALS.test_independent_domains" name="test_independent_domain_integrity[string_int-target]" time="0.002" /><testcase classname="R34-GF1M-independent-current-wt.WORKER_RETURNS.PYAT-R34-GF1M-INDEPENDENT-CURRENT-GF1-R1.03_REAL_JUNIT_282_NESTED44_COLD_AND_NEW_ADVERSARIALS.test_independent_domains" name="test_independent_domain_integrity[string_float-condition]" time="0.002" /><testcase classname="R34-GF1M-independent-current-wt.WORKER_RETURNS.PYAT-R34-GF1M-INDEPENDENT-CURRENT-GF1-R1.03_REAL_JUNIT_282_NESTED44_COLD_AND_NEW_ADVERSARIALS.test_independent_domains" name="test_independent_domain_integrity[string_float-target]" time="0.002" /><testcase classname="R34-GF1M-independent-current-wt.WORKER_RETURNS.PYAT-R34-GF1M-INDEPENDENT-CURRENT-GF1-R1.03_REAL_JUNIT_282_NESTED44_COLD_AND_NEW_ADVERSARIALS.test_independent_domains" name="test_independent_domain_integrity[negative_string-condition]" time="0.001" /><testcase classname="R34-GF1M-independent-current-wt.WORKER_RETURNS.PYAT-R34-GF1M-INDEPENDENT-CURRENT-GF1-R1.03_REAL_JUNIT_282_NESTED44_COLD_AND_NEW_ADVERSARIALS.test_independent_domains" name="test_independent_domain_integrity[negative_string-target]" time="0.002" /><testcase classname="R34-GF1M-independent-current-wt.WORKER_RETURNS.PYAT-R34-GF1M-INDEPENDENT-CURRENT-GF1-R1.03_REAL_JUNIT_282_NESTED44_COLD_AND_NEW_ADVERSARIALS.test_independent_domains" name="test_independent_domain_integrity[unicode-condition]" time="0.003" /><testcase classname="R34-GF1M-independent-current-wt.WORKER_RETURNS.PYAT-R34-GF1M-INDEPENDENT-CURRENT-GF1-R1.03_REAL_JUNIT_282_NESTED44_COLD_AND_NEW_ADVERSARIALS.test_independent_domains" name="test_independent_domain_integrity[unicode-target]" time="0.003" /><testcase classname="R34-GF1M-independent-current-wt.WORKER_RETURNS.PYAT-R34-GF1M-INDEPENDENT-CURRENT-GF1-R1.03_REAL_JUNIT_282_NESTED44_COLD_AND_NEW_ADVERSARIALS.test_independent_domains" name="test_independent_domain_integrity[huge_int-condition]" time="0.003" /><testcase classname="R34-GF1M-independent-current-wt.WORKER_RETURNS.PYAT-R34-GF1M-INDEPENDENT-CURRENT-GF1-R1.03_REAL_JUNIT_282_NESTED44_COLD_AND_NEW_ADVERSARIALS.test_independent_domains" name="test_independent_domain_integrity[huge_int-target]" time="0.003" /><testcase classname="R34-GF1M-independent-current-wt.WORKER_RETURNS.PYAT-R34-GF1M-INDEPENDENT-CURRENT-GF1-R1.03_REAL_JUNIT_282_NESTED44_COLD_AND_NEW_ADVERSARIALS.test_independent_domains" name="test_independent_domain_integrity[infinity-condition]" time="0.002"><failure message="ValueError: Out of range float values are not JSON compliant">role = 'condition', domain = (inf, 1.0)
+
+    @pytest.mark.parametrize('role',['condition','target'])
+    @pytest.mark.parametrize('domain',DOMAINS,ids=IDS)
+    def test_independent_domain_integrity(role,domain):
+        try: rel=build(role,domain)
+        except p.h.G.GenericNativePairError: return
+        got=p.h.CONS(rel)
+        assert got['production_owner_commit'] is False
+        if got['decision_state']=='CONSUMER_RELATION_INTEGRITY_REJECTED':
+            assert got['separation_class'] is None and got['downstream_value_produced'] is False
+            return
+        # Same-type equal categories cannot represent two distinct declared states.
+        assert not (type(domain[0]) is type(domain[1]) and domain[0]==domain[1]),got
+        assert got['decision_state']=='PAIR_SUPPORT_SIGNATURE_COMPUTED',got
+        assert got['joint_support_total']==2 and got['separation_class']=='EXACT_PAIR_SEPARATION',got
+        assert len(got['support_vectors'])==2
+        assert all(len(v)==2 for v in got['support_vectors'].values())
+&gt;       encoded=json.dumps(got,sort_keys=True,allow_nan=False)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+../../../../../../../../03_REAL_JUNIT_282_NESTED44_COLD_AND_NEW_ADVERSARIALS/test_independent_domains.py:35: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/__init__.py:238: in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:200: in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;json.encoder.JSONEncoder object at 0x1032bdc50&gt;
+o = {'condition_states_with_positive_denominator': [inf, 1.0], 'consumer_id': 'GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ON...family': 'GF1_PAIR_SUPPORT_SIGNATURE_RESULT_TEST_ONLY@1.0.0', 'decision_state': 'PAIR_SUPPORT_SIGNATURE_COMPUTED', ...}
+_one_shot = True
+
+    def iterencode(self, o, _one_shot=False):
+        """Encode the given object and yield each string
+        representation as available.
+    
+        For example::
+    
+            for chunk in JSONEncoder().iterencode(bigobject):
+                mysocket.write(chunk)
+    
+        """
+        if self.check_circular:
+            markers = {}
+        else:
+            markers = None
+        if self.ensure_ascii:
+            _encoder = encode_basestring_ascii
+        else:
+            _encoder = encode_basestring
+    
+        def floatstr(o, allow_nan=self.allow_nan,
+                _repr=float.__repr__, _inf=INFINITY, _neginf=-INFINITY):
+            # Check for specials.  Note that this type of test is processor
+            # and/or platform-specific, so do tests which don't depend on the
+            # internals.
+    
+            if o != o:
+                text = 'NaN'
+            elif o == _inf:
+                text = 'Infinity'
+            elif o == _neginf:
+                text = '-Infinity'
+            else:
+                return _repr(o)
+    
+            if not allow_nan:
+                raise ValueError(
+                    "Out of range float values are not JSON compliant: " +
+                    repr(o))
+    
+            return text
+    
+    
+        if (_one_shot and c_make_encoder is not None
+                and self.indent is None):
+            _iterencode = c_make_encoder(
+                markers, self.default, _encoder, self.indent,
+                self.key_separator, self.item_separator, self.sort_keys,
+                self.skipkeys, self.allow_nan)
+        else:
+            _iterencode = _make_iterencode(
+                markers, self.default, _encoder, self.indent, floatstr,
+                self.key_separator, self.item_separator, self.sort_keys,
+                self.skipkeys, _one_shot)
+&gt;       return _iterencode(o, 0)
+               ^^^^^^^^^^^^^^^^^
+E       ValueError: Out of range float values are not JSON compliant
+
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:258: ValueError</failure></testcase><testcase classname="R34-GF1M-independent-current-wt.WORKER_RETURNS.PYAT-R34-GF1M-INDEPENDENT-CURRENT-GF1-R1.03_REAL_JUNIT_282_NESTED44_COLD_AND_NEW_ADVERSARIALS.test_independent_domains" name="test_independent_domain_integrity[infinity-target]" time="0.002"><failure message="ValueError: Out of range float values are not JSON compliant">role = 'target', domain = (inf, 1.0)
+
+    @pytest.mark.parametrize('role',['condition','target'])
+    @pytest.mark.parametrize('domain',DOMAINS,ids=IDS)
+    def test_independent_domain_integrity(role,domain):
+        try: rel=build(role,domain)
+        except p.h.G.GenericNativePairError: return
+        got=p.h.CONS(rel)
+        assert got['production_owner_commit'] is False
+        if got['decision_state']=='CONSUMER_RELATION_INTEGRITY_REJECTED':
+            assert got['separation_class'] is None and got['downstream_value_produced'] is False
+            return
+        # Same-type equal categories cannot represent two distinct declared states.
+        assert not (type(domain[0]) is type(domain[1]) and domain[0]==domain[1]),got
+        assert got['decision_state']=='PAIR_SUPPORT_SIGNATURE_COMPUTED',got
+        assert got['joint_support_total']==2 and got['separation_class']=='EXACT_PAIR_SEPARATION',got
+        assert len(got['support_vectors'])==2
+        assert all(len(v)==2 for v in got['support_vectors'].values())
+&gt;       encoded=json.dumps(got,sort_keys=True,allow_nan=False)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+../../../../../../../../03_REAL_JUNIT_282_NESTED44_COLD_AND_NEW_ADVERSARIALS/test_independent_domains.py:35: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/__init__.py:238: in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:200: in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;json.encoder.JSONEncoder object at 0x103019850&gt;
+o = {'condition_states_with_positive_denominator': ['0', '1'], 'consumer_id': 'GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ON...family': 'GF1_PAIR_SUPPORT_SIGNATURE_RESULT_TEST_ONLY@1.0.0', 'decision_state': 'PAIR_SUPPORT_SIGNATURE_COMPUTED', ...}
+_one_shot = True
+
+    def iterencode(self, o, _one_shot=False):
+        """Encode the given object and yield each string
+        representation as available.
+    
+        For example::
+    
+            for chunk in JSONEncoder().iterencode(bigobject):
+                mysocket.write(chunk)
+    
+        """
+        if self.check_circular:
+            markers = {}
+        else:
+            markers = None
+        if self.ensure_ascii:
+            _encoder = encode_basestring_ascii
+        else:
+            _encoder = encode_basestring
+    
+        def floatstr(o, allow_nan=self.allow_nan,
+                _repr=float.__repr__, _inf=INFINITY, _neginf=-INFINITY):
+            # Check for specials.  Note that this type of test is processor
+            # and/or platform-specific, so do tests which don't depend on the
+            # internals.
+    
+            if o != o:
+                text = 'NaN'
+            elif o == _inf:
+                text = 'Infinity'
+            elif o == _neginf:
+                text = '-Infinity'
+            else:
+                return _repr(o)
+    
+            if not allow_nan:
+                raise ValueError(
+                    "Out of range float values are not JSON compliant: " +
+                    repr(o))
+    
+            return text
+    
+    
+        if (_one_shot and c_make_encoder is not None
+                and self.indent is None):
+            _iterencode = c_make_encoder(
+                markers, self.default, _encoder, self.indent,
+                self.key_separator, self.item_separator, self.sort_keys,
+                self.skipkeys, self.allow_nan)
+        else:
+            _iterencode = _make_iterencode(
+                markers, self.default, _encoder, self.indent, floatstr,
+                self.key_separator, self.item_separator, self.sort_keys,
+                self.skipkeys, _one_shot)
+&gt;       return _iterencode(o, 0)
+               ^^^^^^^^^^^^^^^^^
+E       ValueError: Out of range float values are not JSON compliant
+
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:258: ValueError</failure></testcase><testcase classname="R34-GF1M-independent-current-wt.WORKER_RETURNS.PYAT-R34-GF1M-INDEPENDENT-CURRENT-GF1-R1.03_REAL_JUNIT_282_NESTED44_COLD_AND_NEW_ADVERSARIALS.test_independent_domains" name="test_independent_domain_integrity[nan-condition]" time="0.002" /><testcase classname="R34-GF1M-independent-current-wt.WORKER_RETURNS.PYAT-R34-GF1M-INDEPENDENT-CURRENT-GF1-R1.03_REAL_JUNIT_282_NESTED44_COLD_AND_NEW_ADVERSARIALS.test_independent_domains" name="test_independent_domain_integrity[nan-target]" time="0.002" /><testcase classname="R34-GF1M-independent-current-wt.WORKER_RETURNS.PYAT-R34-GF1M-INDEPENDENT-CURRENT-GF1-R1.03_REAL_JUNIT_282_NESTED44_COLD_AND_NEW_ADVERSARIALS.test_independent_domains" name="test_independent_domain_integrity[signed_zero-condition]" time="0.002" /><testcase classname="R34-GF1M-independent-current-wt.WORKER_RETURNS.PYAT-R34-GF1M-INDEPENDENT-CURRENT-GF1-R1.03_REAL_JUNIT_282_NESTED44_COLD_AND_NEW_ADVERSARIALS.test_independent_domains" name="test_independent_domain_integrity[signed_zero-target]" time="0.002" /><testcase classname="R34-GF1M-independent-current-wt.WORKER_RETURNS.PYAT-R34-GF1M-INDEPENDENT-CURRENT-GF1-R1.03_REAL_JUNIT_282_NESTED44_COLD_AND_NEW_ADVERSARIALS.test_independent_domains" name="test_independent_domain_integrity[subclass-condition]" time="0.002" /><testcase classname="R34-GF1M-independent-current-wt.WORKER_RETURNS.PYAT-R34-GF1M-INDEPENDENT-CURRENT-GF1-R1.03_REAL_JUNIT_282_NESTED44_COLD_AND_NEW_ADVERSARIALS.test_independent_domains" name="test_independent_domain_integrity[subclass-target]" time="0.001" /><testcase classname="R34-GF1M-independent-current-wt.WORKER_RETURNS.PYAT-R34-GF1M-INDEPENDENT-CURRENT-GF1-R1.03_REAL_JUNIT_282_NESTED44_COLD_AND_NEW_ADVERSARIALS.test_independent_domains" name="test_independent_domain_integrity[delimiters-condition]" time="0.002" /><testcase classname="R34-GF1M-independent-current-wt.WORKER_RETURNS.PYAT-R34-GF1M-INDEPENDENT-CURRENT-GF1-R1.03_REAL_JUNIT_282_NESTED44_COLD_AND_NEW_ADVERSARIALS.test_independent_domains" name="test_independent_domain_integrity[delimiters-target]" time="0.003" /><testcase classname="R34-GF1M-independent-current-wt.WORKER_RETURNS.PYAT-R34-GF1M-INDEPENDENT-CURRENT-GF1-R1.03_REAL_JUNIT_282_NESTED44_COLD_AND_NEW_ADVERSARIALS.test_independent_domains" name="test_type_swap_changes_relation_identity_and_refuses[condition]" time="0.002" /><testcase classname="R34-GF1M-independent-current-wt.WORKER_RETURNS.PYAT-R34-GF1M-INDEPENDENT-CURRENT-GF1-R1.03_REAL_JUNIT_282_NESTED44_COLD_AND_NEW_ADVERSARIALS.test_independent_domains" name="test_type_swap_changes_relation_identity_and_refuses[target]" time="0.002" /></testsuite></testsuites>

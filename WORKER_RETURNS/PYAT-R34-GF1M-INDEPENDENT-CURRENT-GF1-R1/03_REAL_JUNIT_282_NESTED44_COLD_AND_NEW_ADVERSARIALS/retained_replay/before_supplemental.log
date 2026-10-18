@@ -1,0 +1,146 @@
+F.F.FF....                                                               [100%]
+=================================== FAILURES ===================================
+_ test_type_distinct_categories_never_silently_collapse_or_crash[int_bool-condition] _
+
+role = 'condition', domain = (0, False)
+
+    @pytest.mark.parametrize('role',['condition','target'])
+    @pytest.mark.parametrize('domain',[(0,False),(0,0.0),('0',0),('0','1'),(0,1)],ids=['int_bool','int_float','string_int','strings_control','integers_control'])
+    def test_type_distinct_categories_never_silently_collapse_or_crash(role,domain):
+        assert not typed_equal(*domain)
+        rel=relation(role,domain)
+        # Either fail closed as an explicitly unsupported typed-domain shape or
+        # preserve both genuine constructor category identities and all support.
+        got=p.h.CONS(rel)
+        if got['decision_state']=='CONSUMER_RELATION_INTEGRITY_REJECTED':
+            assert got['separation_class'] is None
+            assert got['downstream_value_produced'] is False
+            return
+        assert got['decision_state']=='PAIR_SUPPORT_SIGNATURE_COMPUTED',got
+>       assert got['joint_support_total']==2,got
+E       AssertionError: {'condition_states_with_positive_denominator': [0, False], 'consumer_id': 'GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ON...family': 'GF1_PAIR_SUPPORT_SIGNATURE_RESULT_TEST_ONLY@1.0.0', 'decision_state': 'PAIR_SUPPORT_SIGNATURE_COMPUTED', ...}
+E       assert 1 == 2
+
+../../../../../postinspection/test_gf1l_typed_domain_conservation.py:45: AssertionError
+_ test_type_distinct_categories_never_silently_collapse_or_crash[int_float-condition] _
+
+role = 'condition', domain = (0, 0.0)
+
+    @pytest.mark.parametrize('role',['condition','target'])
+    @pytest.mark.parametrize('domain',[(0,False),(0,0.0),('0',0),('0','1'),(0,1)],ids=['int_bool','int_float','string_int','strings_control','integers_control'])
+    def test_type_distinct_categories_never_silently_collapse_or_crash(role,domain):
+        assert not typed_equal(*domain)
+        rel=relation(role,domain)
+        # Either fail closed as an explicitly unsupported typed-domain shape or
+        # preserve both genuine constructor category identities and all support.
+        got=p.h.CONS(rel)
+        if got['decision_state']=='CONSUMER_RELATION_INTEGRITY_REJECTED':
+            assert got['separation_class'] is None
+            assert got['downstream_value_produced'] is False
+            return
+        assert got['decision_state']=='PAIR_SUPPORT_SIGNATURE_COMPUTED',got
+>       assert got['joint_support_total']==2,got
+E       AssertionError: {'condition_states_with_positive_denominator': [0, 0.0], 'consumer_id': 'GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ONLY...family': 'GF1_PAIR_SUPPORT_SIGNATURE_RESULT_TEST_ONLY@1.0.0', 'decision_state': 'PAIR_SUPPORT_SIGNATURE_COMPUTED', ...}
+E       assert 1 == 2
+
+../../../../../postinspection/test_gf1l_typed_domain_conservation.py:45: AssertionError
+_ test_type_distinct_categories_never_silently_collapse_or_crash[string_int-condition] _
+
+role = 'condition', domain = ('0', 0)
+
+    @pytest.mark.parametrize('role',['condition','target'])
+    @pytest.mark.parametrize('domain',[(0,False),(0,0.0),('0',0),('0','1'),(0,1)],ids=['int_bool','int_float','string_int','strings_control','integers_control'])
+    def test_type_distinct_categories_never_silently_collapse_or_crash(role,domain):
+        assert not typed_equal(*domain)
+        rel=relation(role,domain)
+        # Either fail closed as an explicitly unsupported typed-domain shape or
+        # preserve both genuine constructor category identities and all support.
+>       got=p.h.CONS(rel)
+            ^^^^^^^^^^^^^
+
+../../../../../postinspection/test_gf1l_typed_domain_conservation.py:39: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../runtime_root/gf1_pair_support_consumer.py:271: in compute_pair_support_signature
+    result["result_hash"] = semantic_hash(body)
+                            ^^^^^^^^^^^^^^^^^^^
+../runtime_root/generic_native_pair_relation.py:107: in semantic_hash
+    return hashlib.sha256(canonical_json(value).encode()).hexdigest()
+                          ^^^^^^^^^^^^^^^^^^^^^
+../runtime_root/generic_native_pair_relation.py:102: in canonical_json
+    return json.dumps(canonicalize(value), sort_keys=True, separators=(",", ":"),
+                      ^^^^^^^^^^^^^^^^^^^
+../runtime_root/generic_native_pair_relation.py:97: in canonicalize
+    return {str(k): canonicalize(value[k]) for k in sorted(value)}
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../runtime_root/generic_native_pair_relation.py:97: in <dictcomp>
+    return {str(k): canonicalize(value[k]) for k in sorted(value)}
+                    ^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+value = {'0': {'0': 1, '1': 0}, 0: {'0': 0, '1': 1}}
+
+    def canonicalize(value: Any) -> Any:
+        if isinstance(value, (list, tuple)):
+            return [canonicalize(v) for v in value]
+        if isinstance(value, Mapping):
+>           return {str(k): canonicalize(value[k]) for k in sorted(value)}
+                                                            ^^^^^^^^^^^^^
+E           TypeError: '<' not supported between instances of 'int' and 'str'
+
+../runtime_root/generic_native_pair_relation.py:97: TypeError
+_ test_type_distinct_categories_never_silently_collapse_or_crash[string_int-target] _
+
+role = 'target', domain = ('0', 0)
+
+    @pytest.mark.parametrize('role',['condition','target'])
+    @pytest.mark.parametrize('domain',[(0,False),(0,0.0),('0',0),('0','1'),(0,1)],ids=['int_bool','int_float','string_int','strings_control','integers_control'])
+    def test_type_distinct_categories_never_silently_collapse_or_crash(role,domain):
+        assert not typed_equal(*domain)
+        rel=relation(role,domain)
+        # Either fail closed as an explicitly unsupported typed-domain shape or
+        # preserve both genuine constructor category identities and all support.
+>       got=p.h.CONS(rel)
+            ^^^^^^^^^^^^^
+
+../../../../../postinspection/test_gf1l_typed_domain_conservation.py:39: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../runtime_root/gf1_pair_support_consumer.py:271: in compute_pair_support_signature
+    result["result_hash"] = semantic_hash(body)
+                            ^^^^^^^^^^^^^^^^^^^
+../runtime_root/generic_native_pair_relation.py:107: in semantic_hash
+    return hashlib.sha256(canonical_json(value).encode()).hexdigest()
+                          ^^^^^^^^^^^^^^^^^^^^^
+../runtime_root/generic_native_pair_relation.py:102: in canonical_json
+    return json.dumps(canonicalize(value), sort_keys=True, separators=(",", ":"),
+                      ^^^^^^^^^^^^^^^^^^^
+../runtime_root/generic_native_pair_relation.py:97: in canonicalize
+    return {str(k): canonicalize(value[k]) for k in sorted(value)}
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../runtime_root/generic_native_pair_relation.py:97: in <dictcomp>
+    return {str(k): canonicalize(value[k]) for k in sorted(value)}
+                    ^^^^^^^^^^^^^^^^^^^^^^
+../runtime_root/generic_native_pair_relation.py:97: in canonicalize
+    return {str(k): canonicalize(value[k]) for k in sorted(value)}
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../runtime_root/generic_native_pair_relation.py:97: in <dictcomp>
+    return {str(k): canonicalize(value[k]) for k in sorted(value)}
+                    ^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+value = {'0': 1, 0: 0}
+
+    def canonicalize(value: Any) -> Any:
+        if isinstance(value, (list, tuple)):
+            return [canonicalize(v) for v in value]
+        if isinstance(value, Mapping):
+>           return {str(k): canonicalize(value[k]) for k in sorted(value)}
+                                                            ^^^^^^^^^^^^^
+E           TypeError: '<' not supported between instances of 'int' and 'str'
+
+../runtime_root/generic_native_pair_relation.py:97: TypeError
+=========================== short test summary info ============================
+FAILED ../../../../../postinspection/test_gf1l_typed_domain_conservation.py::test_type_distinct_categories_never_silently_collapse_or_crash[int_bool-condition]
+FAILED ../../../../../postinspection/test_gf1l_typed_domain_conservation.py::test_type_distinct_categories_never_silently_collapse_or_crash[int_float-condition]
+FAILED ../../../../../postinspection/test_gf1l_typed_domain_conservation.py::test_type_distinct_categories_never_silently_collapse_or_crash[string_int-condition]
+FAILED ../../../../../postinspection/test_gf1l_typed_domain_conservation.py::test_type_distinct_categories_never_silently_collapse_or_crash[string_int-target]
+4 failed, 6 passed in 1.10s

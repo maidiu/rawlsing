@@ -1,0 +1,151 @@
+{
+  "candidate": {
+    "sha256": "00a5cc6adc8b6a4074e9ae63d0a57384a8c227e9c88a719683cb0304691a4f9b",
+    "git_blob": "3761730d975f3281e69f8038b337da62824e0baf",
+    "bytes": 13938
+  },
+  "python45_compiled": true,
+  "universe81_retained": true,
+  "oracle_changes": [
+    {
+      "index": 0,
+      "old": {
+        "cells": {
+          "00": 0,
+          "01": 0,
+          "10": 0,
+          "11": 0
+        },
+        "eligible": 0,
+        "expected_class": "UNDETERMINED_ZERO_SUPPORT_RISK",
+        "expected_joint_support_total": 0,
+        "expected_positive_denominator": [],
+        "expected_support_vectors": {
+          "0": {
+            "0": 0,
+            "1": 0
+          },
+          "1": {
+            "0": 0,
+            "1": 0
+          }
+        }
+      },
+      "current": {
+        "cells": {
+          "00": 0,
+          "01": 0,
+          "10": 0,
+          "11": 0
+        },
+        "eligible": 0,
+        "expected_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+        "expected_joint_support_total": 0,
+        "expected_positive_denominator": [],
+        "expected_support_vectors": {
+          "0": {
+            "0": 0,
+            "1": 0
+          },
+          "1": {
+            "0": 0,
+            "1": 0
+          }
+        }
+      }
+    }
+  ],
+  "function_preservation": [
+    {
+      "suite": "GF1F",
+      "unchanged_functions": [
+        "test_mutation_object_id_without_recompute_rejected",
+        "test_mutation_risk_denominator_without_recompute_rejected",
+        "test_non_relation_input_refused",
+        "test_reverse_xy_relation_is_a_distinct_operation",
+        "test_f2_consumer_fields_are_not_copied_relation_fields",
+        "test_mutation_content_hash_without_recompute_rejected",
+        "test_bypass_frozen_mutation_is_identity_refused_by_consumer",
+        "test_universe_class_and_derived_fields",
+        "test_mutation_role_order_without_recompute_rejected",
+        "_assert_constructor_rejects",
+        "test_mutation_one_cell_without_recompute_rejected"
+      ],
+      "modified_functions": [
+        "test_named_cases",
+        "test_cold_process_consumer_replay_bit_identical"
+      ],
+      "removed_functions": [
+        "test_missing_suppressed_relation_is_empty_response"
+      ],
+      "added_functions": [
+        "test_missing_suppressed_relation_remains_typed_blocking",
+        "test_no_risk_and_positive_risk_without_support_are_distinct",
+        "test_true_supported_empty_profile_remains_valid_empty"
+      ],
+      "original": {
+        "sha256": "e2157329dc8222afc969dc698308cfd9a62af680cc2353033476688b5d700db2",
+        "git_blob": "f4931c1f3604a209a291fc84e6b083ee199a8887",
+        "bytes": 7337
+      },
+      "current": {
+        "sha256": "cd3744873cf9f138139005baeb89fae9785520eb575f561718e3243631916de5",
+        "git_blob": "11c572028cb055bf08b486d27bbcb3654df4dbfd",
+        "bytes": 8951
+      }
+    },
+    {
+      "suite": "GF1I",
+      "unchanged_functions": [
+        "test_role_binding_follows_native_component_order_not_a_hardcoded_label",
+        "test_r2_y1_reaches_frozen_cell_set_and_isolates_source_b",
+        "test_baseline_pair_exact_cells_risk_and_per_condition_denominator",
+        "cells",
+        "test_eight_operations_two_ordered_held_preserved",
+        "test_no_personality_causal_or_significance_claim_in_relation",
+        "test_reverse_swap_without_separate_grant_refused",
+        "test_forged_unknown_reverse_grant_refused",
+        "test_zero_cells_are_supported_risk_zeros_never_zero_support",
+        "_first_pair_link",
+        "test_non_native_role_ref_refused",
+        "test_accepted_field_forge_module_unmodified",
+        "bundle",
+        "link_of",
+        "test_native_closure_reattested_74_of_74",
+        "test_tampered_relation_refused_on_replay",
+        "test_permission_widening_refused",
+        "test_relation_permission_ceiling_never_widens",
+        "test_generic_relation_is_distinct_from_accepted_specialized_material",
+        "relations",
+        "test_discovery_consumer_eligibility_absent_is_not_a_zero_cell",
+        "test_r1_y0_reaches_frozen_cell_set_and_isolates_source_b"
+      ],
+      "modified_functions": [],
+      "removed_functions": [
+        "test_candidate_frozen_44_suite_cannot_be_collected",
+        "test_named_downstream_consumer_module_is_absent_from_candidate"
+      ],
+      "added_functions": [
+        "test_candidate_frozen_44_suite_collects_and_executes",
+        "test_named_downstream_consumer_is_present_and_computes"
+      ],
+      "original": {
+        "sha256": "4866771e2f4e98cd229beab2073c05b36891e4ea195f57140e95a972b37c93e7",
+        "git_blob": "18f22fe03e28bb7bf73f563f15658163b50e21c6",
+        "bytes": 13012
+      },
+      "current": {
+        "sha256": "2ba671f28b1b523a209d1f856c4f4175596defa949dc0bf0683a1f9ada33d1f6",
+        "git_blob": "1831088e99ffae08d33cd1ea30fa2263b49e172d",
+        "bytes": 13322
+      }
+    }
+  ],
+  "independent_cold82_class_counts": {
+    "UNDETERMINED_NO_ELIGIBLE_RISK": 17,
+    "NO_PAIR_SEPARATION": 56,
+    "EXACT_PAIR_SEPARATION": 8,
+    "UNDETERMINED_ZERO_SUPPORT_RISK": 1
+  },
+  "expectations_derived_without_candidate_execution": true
+}

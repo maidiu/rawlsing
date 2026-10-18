@@ -1,0 +1,2141 @@
+{
+  "candidate": {
+    "branch": "agent/rabochii-pyat-r27-gf1e-actual-native-consumer-implementation-r1",
+    "consumer_sha256": "06dd484b0e9b4b2c9fb0a1583453ac7ffa8c052135304eaaee167a34127cb402",
+    "frozen44_sha256": "2bbb54aa7b1ea990705fc6edf51895a2ea7ec6192abd90acf062940aeff87ef5",
+    "frozen_oracle_sha256": "c5bdc14aec82e7df042594d8f2df1d8130b89345d305de5f73830828a0257790",
+    "sha": "eeb726357204653b22458dc267dd70ba0009bd77"
+  },
+  "class_counts": {
+    "EXACT_PAIR_SEPARATION": 8,
+    "NO_PAIR_SEPARATION": 56,
+    "UNDETERMINED_NO_ELIGIBLE_RISK": 17
+  },
+  "classification_rule": "eligible=0 -> NO_ELIGIBLE_RISK; eligible>0 and total=0 -> ZERO_SUPPORT_RISK; otherwise classify explicit row supports without inventing support.",
+  "cold_class_counts": {
+    "EXACT_PAIR_SEPARATION": 8,
+    "NO_PAIR_SEPARATION": 56,
+    "UNDETERMINED_NO_ELIGIBLE_RISK": 17,
+    "UNDETERMINED_ZERO_SUPPORT_RISK": 1
+  },
+  "cold_extra_cases": [
+    {
+      "case_id": "0000_eligible2",
+      "cells": {
+        "00": 0,
+        "01": 0,
+        "10": 0,
+        "11": 0
+      },
+      "eligible": 2,
+      "expected_class": "UNDETERMINED_ZERO_SUPPORT_RISK"
+    }
+  ],
+  "contract_refs": {
+    "GF1G_final": "ec5dddfcb3476c01ceb8e7f5122c5e5259b936f7",
+    "GF1G_phase_a": "ecd975ad5b424f952ac248dfcf1b7a83aa867a6a",
+    "tests": [
+      "g09 no_eligible_risk/all_zero_observed_zero",
+      "g10 missing states",
+      "g11 typed zero support",
+      "g14 supported empty profile"
+    ]
+  },
+  "f2_non_copy_fields": [
+    "separation_class",
+    "separation_signature",
+    "support_vectors",
+    "zero_cell_semantics",
+    "joint_support_total",
+    "condition_states_with_positive_denominator",
+    "result_hash"
+  ],
+  "historical_source": {
+    "commit": "3dcc7d7dddfff4f1be8b4293cab92e5b4275007d",
+    "path": "WORKER_RETURNS/PYAT-R28-GF1F-IMPLEMENTED-NATIVE-CONSUMER-INDEPENDENT-R1/01_INDEPENDENT_FROZEN_PAIR_ORACLE.json",
+    "sha256": "b892615feb961631c5258ab2367fa9dac4807e58fab72375b6219606d67bc827"
+  },
+  "mutations": [
+    "object_id",
+    "content_hash",
+    "one_cell",
+    "risk_denominator",
+    "role_order"
+  ],
+  "named_cases": {
+    "anti_diagonal": {
+      "00": 0,
+      "01": 1,
+      "10": 1,
+      "11": 0,
+      "eligible": 2,
+      "expected_class": "EXACT_PAIR_SEPARATION"
+    },
+    "baseline_diagonal": {
+      "00": 1,
+      "01": 0,
+      "10": 0,
+      "11": 1,
+      "eligible": 2,
+      "expected_class": "EXACT_PAIR_SEPARATION"
+    },
+    "mixed_row_not_deterministic": {
+      "00": 1,
+      "01": 1,
+      "10": 1,
+      "11": 0,
+      "eligible": 3,
+      "expected_class": "NO_PAIR_SEPARATION"
+    },
+    "no_eligible_risk_row0_empty": {
+      "00": 0,
+      "01": 0,
+      "10": 0,
+      "11": 1,
+      "eligible": 1,
+      "expected_class": "UNDETERMINED_NO_ELIGIBLE_RISK"
+    },
+    "no_eligible_risk_row1_empty": {
+      "00": 1,
+      "01": 0,
+      "10": 0,
+      "11": 0,
+      "eligible": 1,
+      "expected_class": "UNDETERMINED_NO_ELIGIBLE_RISK"
+    },
+    "target_collapsed_to_0": {
+      "00": 1,
+      "01": 0,
+      "10": 1,
+      "11": 0,
+      "eligible": 2,
+      "expected_class": "NO_PAIR_SEPARATION"
+    },
+    "target_collapsed_to_1": {
+      "00": 0,
+      "01": 1,
+      "10": 0,
+      "11": 1,
+      "eligible": 2,
+      "expected_class": "NO_PAIR_SEPARATION"
+    },
+    "zero_supported_risk": {
+      "00": 0,
+      "01": 0,
+      "10": 0,
+      "11": 0,
+      "eligible": 2,
+      "expected_class": "UNDETERMINED_ZERO_SUPPORT_RISK"
+    }
+  },
+  "phase": "USER_AUTHORIZED_CURRENT_RECONCILIATION; NOT AN INDEPENDENT PREFREEZE",
+  "schema": "GF1F_CURRENT_QUALIFICATION_ORACLE@2",
+  "universe": [
+    {
+      "cells": {
+        "00": 0,
+        "01": 0,
+        "10": 0,
+        "11": 0
+      },
+      "eligible": 0,
+      "expected_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+      "expected_joint_support_total": 0,
+      "expected_positive_denominator": [],
+      "expected_support_vectors": {
+        "0": {
+          "0": 0,
+          "1": 0
+        },
+        "1": {
+          "0": 0,
+          "1": 0
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 0,
+        "01": 0,
+        "10": 0,
+        "11": 1
+      },
+      "eligible": 1,
+      "expected_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+      "expected_joint_support_total": 1,
+      "expected_positive_denominator": [
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 0,
+          "1": 0
+        },
+        "1": {
+          "0": 0,
+          "1": 1
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 0,
+        "01": 0,
+        "10": 0,
+        "11": 2
+      },
+      "eligible": 2,
+      "expected_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+      "expected_joint_support_total": 2,
+      "expected_positive_denominator": [
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 0,
+          "1": 0
+        },
+        "1": {
+          "0": 0,
+          "1": 2
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 0,
+        "01": 0,
+        "10": 1,
+        "11": 0
+      },
+      "eligible": 1,
+      "expected_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+      "expected_joint_support_total": 1,
+      "expected_positive_denominator": [
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 0,
+          "1": 0
+        },
+        "1": {
+          "0": 1,
+          "1": 0
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 0,
+        "01": 0,
+        "10": 1,
+        "11": 1
+      },
+      "eligible": 2,
+      "expected_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+      "expected_joint_support_total": 2,
+      "expected_positive_denominator": [
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 0,
+          "1": 0
+        },
+        "1": {
+          "0": 1,
+          "1": 1
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 0,
+        "01": 0,
+        "10": 1,
+        "11": 2
+      },
+      "eligible": 3,
+      "expected_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+      "expected_joint_support_total": 3,
+      "expected_positive_denominator": [
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 0,
+          "1": 0
+        },
+        "1": {
+          "0": 1,
+          "1": 2
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 0,
+        "01": 0,
+        "10": 2,
+        "11": 0
+      },
+      "eligible": 2,
+      "expected_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+      "expected_joint_support_total": 2,
+      "expected_positive_denominator": [
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 0,
+          "1": 0
+        },
+        "1": {
+          "0": 2,
+          "1": 0
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 0,
+        "01": 0,
+        "10": 2,
+        "11": 1
+      },
+      "eligible": 3,
+      "expected_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+      "expected_joint_support_total": 3,
+      "expected_positive_denominator": [
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 0,
+          "1": 0
+        },
+        "1": {
+          "0": 2,
+          "1": 1
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 0,
+        "01": 0,
+        "10": 2,
+        "11": 2
+      },
+      "eligible": 4,
+      "expected_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+      "expected_joint_support_total": 4,
+      "expected_positive_denominator": [
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 0,
+          "1": 0
+        },
+        "1": {
+          "0": 2,
+          "1": 2
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 0,
+        "01": 1,
+        "10": 0,
+        "11": 0
+      },
+      "eligible": 1,
+      "expected_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+      "expected_joint_support_total": 1,
+      "expected_positive_denominator": [
+        "0"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 0,
+          "1": 1
+        },
+        "1": {
+          "0": 0,
+          "1": 0
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 0,
+        "01": 1,
+        "10": 0,
+        "11": 1
+      },
+      "eligible": 2,
+      "expected_class": "NO_PAIR_SEPARATION",
+      "expected_joint_support_total": 2,
+      "expected_positive_denominator": [
+        "0",
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 0,
+          "1": 1
+        },
+        "1": {
+          "0": 0,
+          "1": 1
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 0,
+        "01": 1,
+        "10": 0,
+        "11": 2
+      },
+      "eligible": 3,
+      "expected_class": "NO_PAIR_SEPARATION",
+      "expected_joint_support_total": 3,
+      "expected_positive_denominator": [
+        "0",
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 0,
+          "1": 1
+        },
+        "1": {
+          "0": 0,
+          "1": 2
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 0,
+        "01": 1,
+        "10": 1,
+        "11": 0
+      },
+      "eligible": 2,
+      "expected_class": "EXACT_PAIR_SEPARATION",
+      "expected_joint_support_total": 2,
+      "expected_positive_denominator": [
+        "0",
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 0,
+          "1": 1
+        },
+        "1": {
+          "0": 1,
+          "1": 0
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 0,
+        "01": 1,
+        "10": 1,
+        "11": 1
+      },
+      "eligible": 3,
+      "expected_class": "NO_PAIR_SEPARATION",
+      "expected_joint_support_total": 3,
+      "expected_positive_denominator": [
+        "0",
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 0,
+          "1": 1
+        },
+        "1": {
+          "0": 1,
+          "1": 1
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 0,
+        "01": 1,
+        "10": 1,
+        "11": 2
+      },
+      "eligible": 4,
+      "expected_class": "NO_PAIR_SEPARATION",
+      "expected_joint_support_total": 4,
+      "expected_positive_denominator": [
+        "0",
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 0,
+          "1": 1
+        },
+        "1": {
+          "0": 1,
+          "1": 2
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 0,
+        "01": 1,
+        "10": 2,
+        "11": 0
+      },
+      "eligible": 3,
+      "expected_class": "EXACT_PAIR_SEPARATION",
+      "expected_joint_support_total": 3,
+      "expected_positive_denominator": [
+        "0",
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 0,
+          "1": 1
+        },
+        "1": {
+          "0": 2,
+          "1": 0
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 0,
+        "01": 1,
+        "10": 2,
+        "11": 1
+      },
+      "eligible": 4,
+      "expected_class": "NO_PAIR_SEPARATION",
+      "expected_joint_support_total": 4,
+      "expected_positive_denominator": [
+        "0",
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 0,
+          "1": 1
+        },
+        "1": {
+          "0": 2,
+          "1": 1
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 0,
+        "01": 1,
+        "10": 2,
+        "11": 2
+      },
+      "eligible": 5,
+      "expected_class": "NO_PAIR_SEPARATION",
+      "expected_joint_support_total": 5,
+      "expected_positive_denominator": [
+        "0",
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 0,
+          "1": 1
+        },
+        "1": {
+          "0": 2,
+          "1": 2
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 0,
+        "01": 2,
+        "10": 0,
+        "11": 0
+      },
+      "eligible": 2,
+      "expected_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+      "expected_joint_support_total": 2,
+      "expected_positive_denominator": [
+        "0"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 0,
+          "1": 2
+        },
+        "1": {
+          "0": 0,
+          "1": 0
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 0,
+        "01": 2,
+        "10": 0,
+        "11": 1
+      },
+      "eligible": 3,
+      "expected_class": "NO_PAIR_SEPARATION",
+      "expected_joint_support_total": 3,
+      "expected_positive_denominator": [
+        "0",
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 0,
+          "1": 2
+        },
+        "1": {
+          "0": 0,
+          "1": 1
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 0,
+        "01": 2,
+        "10": 0,
+        "11": 2
+      },
+      "eligible": 4,
+      "expected_class": "NO_PAIR_SEPARATION",
+      "expected_joint_support_total": 4,
+      "expected_positive_denominator": [
+        "0",
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 0,
+          "1": 2
+        },
+        "1": {
+          "0": 0,
+          "1": 2
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 0,
+        "01": 2,
+        "10": 1,
+        "11": 0
+      },
+      "eligible": 3,
+      "expected_class": "EXACT_PAIR_SEPARATION",
+      "expected_joint_support_total": 3,
+      "expected_positive_denominator": [
+        "0",
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 0,
+          "1": 2
+        },
+        "1": {
+          "0": 1,
+          "1": 0
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 0,
+        "01": 2,
+        "10": 1,
+        "11": 1
+      },
+      "eligible": 4,
+      "expected_class": "NO_PAIR_SEPARATION",
+      "expected_joint_support_total": 4,
+      "expected_positive_denominator": [
+        "0",
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 0,
+          "1": 2
+        },
+        "1": {
+          "0": 1,
+          "1": 1
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 0,
+        "01": 2,
+        "10": 1,
+        "11": 2
+      },
+      "eligible": 5,
+      "expected_class": "NO_PAIR_SEPARATION",
+      "expected_joint_support_total": 5,
+      "expected_positive_denominator": [
+        "0",
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 0,
+          "1": 2
+        },
+        "1": {
+          "0": 1,
+          "1": 2
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 0,
+        "01": 2,
+        "10": 2,
+        "11": 0
+      },
+      "eligible": 4,
+      "expected_class": "EXACT_PAIR_SEPARATION",
+      "expected_joint_support_total": 4,
+      "expected_positive_denominator": [
+        "0",
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 0,
+          "1": 2
+        },
+        "1": {
+          "0": 2,
+          "1": 0
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 0,
+        "01": 2,
+        "10": 2,
+        "11": 1
+      },
+      "eligible": 5,
+      "expected_class": "NO_PAIR_SEPARATION",
+      "expected_joint_support_total": 5,
+      "expected_positive_denominator": [
+        "0",
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 0,
+          "1": 2
+        },
+        "1": {
+          "0": 2,
+          "1": 1
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 0,
+        "01": 2,
+        "10": 2,
+        "11": 2
+      },
+      "eligible": 6,
+      "expected_class": "NO_PAIR_SEPARATION",
+      "expected_joint_support_total": 6,
+      "expected_positive_denominator": [
+        "0",
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 0,
+          "1": 2
+        },
+        "1": {
+          "0": 2,
+          "1": 2
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 1,
+        "01": 0,
+        "10": 0,
+        "11": 0
+      },
+      "eligible": 1,
+      "expected_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+      "expected_joint_support_total": 1,
+      "expected_positive_denominator": [
+        "0"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 1,
+          "1": 0
+        },
+        "1": {
+          "0": 0,
+          "1": 0
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 1,
+        "01": 0,
+        "10": 0,
+        "11": 1
+      },
+      "eligible": 2,
+      "expected_class": "EXACT_PAIR_SEPARATION",
+      "expected_joint_support_total": 2,
+      "expected_positive_denominator": [
+        "0",
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 1,
+          "1": 0
+        },
+        "1": {
+          "0": 0,
+          "1": 1
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 1,
+        "01": 0,
+        "10": 0,
+        "11": 2
+      },
+      "eligible": 3,
+      "expected_class": "EXACT_PAIR_SEPARATION",
+      "expected_joint_support_total": 3,
+      "expected_positive_denominator": [
+        "0",
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 1,
+          "1": 0
+        },
+        "1": {
+          "0": 0,
+          "1": 2
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 1,
+        "01": 0,
+        "10": 1,
+        "11": 0
+      },
+      "eligible": 2,
+      "expected_class": "NO_PAIR_SEPARATION",
+      "expected_joint_support_total": 2,
+      "expected_positive_denominator": [
+        "0",
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 1,
+          "1": 0
+        },
+        "1": {
+          "0": 1,
+          "1": 0
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 1,
+        "01": 0,
+        "10": 1,
+        "11": 1
+      },
+      "eligible": 3,
+      "expected_class": "NO_PAIR_SEPARATION",
+      "expected_joint_support_total": 3,
+      "expected_positive_denominator": [
+        "0",
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 1,
+          "1": 0
+        },
+        "1": {
+          "0": 1,
+          "1": 1
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 1,
+        "01": 0,
+        "10": 1,
+        "11": 2
+      },
+      "eligible": 4,
+      "expected_class": "NO_PAIR_SEPARATION",
+      "expected_joint_support_total": 4,
+      "expected_positive_denominator": [
+        "0",
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 1,
+          "1": 0
+        },
+        "1": {
+          "0": 1,
+          "1": 2
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 1,
+        "01": 0,
+        "10": 2,
+        "11": 0
+      },
+      "eligible": 3,
+      "expected_class": "NO_PAIR_SEPARATION",
+      "expected_joint_support_total": 3,
+      "expected_positive_denominator": [
+        "0",
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 1,
+          "1": 0
+        },
+        "1": {
+          "0": 2,
+          "1": 0
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 1,
+        "01": 0,
+        "10": 2,
+        "11": 1
+      },
+      "eligible": 4,
+      "expected_class": "NO_PAIR_SEPARATION",
+      "expected_joint_support_total": 4,
+      "expected_positive_denominator": [
+        "0",
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 1,
+          "1": 0
+        },
+        "1": {
+          "0": 2,
+          "1": 1
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 1,
+        "01": 0,
+        "10": 2,
+        "11": 2
+      },
+      "eligible": 5,
+      "expected_class": "NO_PAIR_SEPARATION",
+      "expected_joint_support_total": 5,
+      "expected_positive_denominator": [
+        "0",
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 1,
+          "1": 0
+        },
+        "1": {
+          "0": 2,
+          "1": 2
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 1,
+        "01": 1,
+        "10": 0,
+        "11": 0
+      },
+      "eligible": 2,
+      "expected_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+      "expected_joint_support_total": 2,
+      "expected_positive_denominator": [
+        "0"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 1,
+          "1": 1
+        },
+        "1": {
+          "0": 0,
+          "1": 0
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 1,
+        "01": 1,
+        "10": 0,
+        "11": 1
+      },
+      "eligible": 3,
+      "expected_class": "NO_PAIR_SEPARATION",
+      "expected_joint_support_total": 3,
+      "expected_positive_denominator": [
+        "0",
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 1,
+          "1": 1
+        },
+        "1": {
+          "0": 0,
+          "1": 1
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 1,
+        "01": 1,
+        "10": 0,
+        "11": 2
+      },
+      "eligible": 4,
+      "expected_class": "NO_PAIR_SEPARATION",
+      "expected_joint_support_total": 4,
+      "expected_positive_denominator": [
+        "0",
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 1,
+          "1": 1
+        },
+        "1": {
+          "0": 0,
+          "1": 2
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 1,
+        "01": 1,
+        "10": 1,
+        "11": 0
+      },
+      "eligible": 3,
+      "expected_class": "NO_PAIR_SEPARATION",
+      "expected_joint_support_total": 3,
+      "expected_positive_denominator": [
+        "0",
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 1,
+          "1": 1
+        },
+        "1": {
+          "0": 1,
+          "1": 0
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 1,
+        "01": 1,
+        "10": 1,
+        "11": 1
+      },
+      "eligible": 4,
+      "expected_class": "NO_PAIR_SEPARATION",
+      "expected_joint_support_total": 4,
+      "expected_positive_denominator": [
+        "0",
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 1,
+          "1": 1
+        },
+        "1": {
+          "0": 1,
+          "1": 1
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 1,
+        "01": 1,
+        "10": 1,
+        "11": 2
+      },
+      "eligible": 5,
+      "expected_class": "NO_PAIR_SEPARATION",
+      "expected_joint_support_total": 5,
+      "expected_positive_denominator": [
+        "0",
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 1,
+          "1": 1
+        },
+        "1": {
+          "0": 1,
+          "1": 2
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 1,
+        "01": 1,
+        "10": 2,
+        "11": 0
+      },
+      "eligible": 4,
+      "expected_class": "NO_PAIR_SEPARATION",
+      "expected_joint_support_total": 4,
+      "expected_positive_denominator": [
+        "0",
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 1,
+          "1": 1
+        },
+        "1": {
+          "0": 2,
+          "1": 0
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 1,
+        "01": 1,
+        "10": 2,
+        "11": 1
+      },
+      "eligible": 5,
+      "expected_class": "NO_PAIR_SEPARATION",
+      "expected_joint_support_total": 5,
+      "expected_positive_denominator": [
+        "0",
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 1,
+          "1": 1
+        },
+        "1": {
+          "0": 2,
+          "1": 1
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 1,
+        "01": 1,
+        "10": 2,
+        "11": 2
+      },
+      "eligible": 6,
+      "expected_class": "NO_PAIR_SEPARATION",
+      "expected_joint_support_total": 6,
+      "expected_positive_denominator": [
+        "0",
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 1,
+          "1": 1
+        },
+        "1": {
+          "0": 2,
+          "1": 2
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 1,
+        "01": 2,
+        "10": 0,
+        "11": 0
+      },
+      "eligible": 3,
+      "expected_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+      "expected_joint_support_total": 3,
+      "expected_positive_denominator": [
+        "0"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 1,
+          "1": 2
+        },
+        "1": {
+          "0": 0,
+          "1": 0
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 1,
+        "01": 2,
+        "10": 0,
+        "11": 1
+      },
+      "eligible": 4,
+      "expected_class": "NO_PAIR_SEPARATION",
+      "expected_joint_support_total": 4,
+      "expected_positive_denominator": [
+        "0",
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 1,
+          "1": 2
+        },
+        "1": {
+          "0": 0,
+          "1": 1
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 1,
+        "01": 2,
+        "10": 0,
+        "11": 2
+      },
+      "eligible": 5,
+      "expected_class": "NO_PAIR_SEPARATION",
+      "expected_joint_support_total": 5,
+      "expected_positive_denominator": [
+        "0",
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 1,
+          "1": 2
+        },
+        "1": {
+          "0": 0,
+          "1": 2
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 1,
+        "01": 2,
+        "10": 1,
+        "11": 0
+      },
+      "eligible": 4,
+      "expected_class": "NO_PAIR_SEPARATION",
+      "expected_joint_support_total": 4,
+      "expected_positive_denominator": [
+        "0",
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 1,
+          "1": 2
+        },
+        "1": {
+          "0": 1,
+          "1": 0
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 1,
+        "01": 2,
+        "10": 1,
+        "11": 1
+      },
+      "eligible": 5,
+      "expected_class": "NO_PAIR_SEPARATION",
+      "expected_joint_support_total": 5,
+      "expected_positive_denominator": [
+        "0",
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 1,
+          "1": 2
+        },
+        "1": {
+          "0": 1,
+          "1": 1
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 1,
+        "01": 2,
+        "10": 1,
+        "11": 2
+      },
+      "eligible": 6,
+      "expected_class": "NO_PAIR_SEPARATION",
+      "expected_joint_support_total": 6,
+      "expected_positive_denominator": [
+        "0",
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 1,
+          "1": 2
+        },
+        "1": {
+          "0": 1,
+          "1": 2
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 1,
+        "01": 2,
+        "10": 2,
+        "11": 0
+      },
+      "eligible": 5,
+      "expected_class": "NO_PAIR_SEPARATION",
+      "expected_joint_support_total": 5,
+      "expected_positive_denominator": [
+        "0",
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 1,
+          "1": 2
+        },
+        "1": {
+          "0": 2,
+          "1": 0
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 1,
+        "01": 2,
+        "10": 2,
+        "11": 1
+      },
+      "eligible": 6,
+      "expected_class": "NO_PAIR_SEPARATION",
+      "expected_joint_support_total": 6,
+      "expected_positive_denominator": [
+        "0",
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 1,
+          "1": 2
+        },
+        "1": {
+          "0": 2,
+          "1": 1
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 1,
+        "01": 2,
+        "10": 2,
+        "11": 2
+      },
+      "eligible": 7,
+      "expected_class": "NO_PAIR_SEPARATION",
+      "expected_joint_support_total": 7,
+      "expected_positive_denominator": [
+        "0",
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 1,
+          "1": 2
+        },
+        "1": {
+          "0": 2,
+          "1": 2
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 2,
+        "01": 0,
+        "10": 0,
+        "11": 0
+      },
+      "eligible": 2,
+      "expected_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+      "expected_joint_support_total": 2,
+      "expected_positive_denominator": [
+        "0"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 2,
+          "1": 0
+        },
+        "1": {
+          "0": 0,
+          "1": 0
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 2,
+        "01": 0,
+        "10": 0,
+        "11": 1
+      },
+      "eligible": 3,
+      "expected_class": "EXACT_PAIR_SEPARATION",
+      "expected_joint_support_total": 3,
+      "expected_positive_denominator": [
+        "0",
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 2,
+          "1": 0
+        },
+        "1": {
+          "0": 0,
+          "1": 1
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 2,
+        "01": 0,
+        "10": 0,
+        "11": 2
+      },
+      "eligible": 4,
+      "expected_class": "EXACT_PAIR_SEPARATION",
+      "expected_joint_support_total": 4,
+      "expected_positive_denominator": [
+        "0",
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 2,
+          "1": 0
+        },
+        "1": {
+          "0": 0,
+          "1": 2
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 2,
+        "01": 0,
+        "10": 1,
+        "11": 0
+      },
+      "eligible": 3,
+      "expected_class": "NO_PAIR_SEPARATION",
+      "expected_joint_support_total": 3,
+      "expected_positive_denominator": [
+        "0",
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 2,
+          "1": 0
+        },
+        "1": {
+          "0": 1,
+          "1": 0
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 2,
+        "01": 0,
+        "10": 1,
+        "11": 1
+      },
+      "eligible": 4,
+      "expected_class": "NO_PAIR_SEPARATION",
+      "expected_joint_support_total": 4,
+      "expected_positive_denominator": [
+        "0",
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 2,
+          "1": 0
+        },
+        "1": {
+          "0": 1,
+          "1": 1
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 2,
+        "01": 0,
+        "10": 1,
+        "11": 2
+      },
+      "eligible": 5,
+      "expected_class": "NO_PAIR_SEPARATION",
+      "expected_joint_support_total": 5,
+      "expected_positive_denominator": [
+        "0",
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 2,
+          "1": 0
+        },
+        "1": {
+          "0": 1,
+          "1": 2
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 2,
+        "01": 0,
+        "10": 2,
+        "11": 0
+      },
+      "eligible": 4,
+      "expected_class": "NO_PAIR_SEPARATION",
+      "expected_joint_support_total": 4,
+      "expected_positive_denominator": [
+        "0",
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 2,
+          "1": 0
+        },
+        "1": {
+          "0": 2,
+          "1": 0
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 2,
+        "01": 0,
+        "10": 2,
+        "11": 1
+      },
+      "eligible": 5,
+      "expected_class": "NO_PAIR_SEPARATION",
+      "expected_joint_support_total": 5,
+      "expected_positive_denominator": [
+        "0",
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 2,
+          "1": 0
+        },
+        "1": {
+          "0": 2,
+          "1": 1
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 2,
+        "01": 0,
+        "10": 2,
+        "11": 2
+      },
+      "eligible": 6,
+      "expected_class": "NO_PAIR_SEPARATION",
+      "expected_joint_support_total": 6,
+      "expected_positive_denominator": [
+        "0",
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 2,
+          "1": 0
+        },
+        "1": {
+          "0": 2,
+          "1": 2
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 2,
+        "01": 1,
+        "10": 0,
+        "11": 0
+      },
+      "eligible": 3,
+      "expected_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+      "expected_joint_support_total": 3,
+      "expected_positive_denominator": [
+        "0"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 2,
+          "1": 1
+        },
+        "1": {
+          "0": 0,
+          "1": 0
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 2,
+        "01": 1,
+        "10": 0,
+        "11": 1
+      },
+      "eligible": 4,
+      "expected_class": "NO_PAIR_SEPARATION",
+      "expected_joint_support_total": 4,
+      "expected_positive_denominator": [
+        "0",
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 2,
+          "1": 1
+        },
+        "1": {
+          "0": 0,
+          "1": 1
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 2,
+        "01": 1,
+        "10": 0,
+        "11": 2
+      },
+      "eligible": 5,
+      "expected_class": "NO_PAIR_SEPARATION",
+      "expected_joint_support_total": 5,
+      "expected_positive_denominator": [
+        "0",
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 2,
+          "1": 1
+        },
+        "1": {
+          "0": 0,
+          "1": 2
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 2,
+        "01": 1,
+        "10": 1,
+        "11": 0
+      },
+      "eligible": 4,
+      "expected_class": "NO_PAIR_SEPARATION",
+      "expected_joint_support_total": 4,
+      "expected_positive_denominator": [
+        "0",
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 2,
+          "1": 1
+        },
+        "1": {
+          "0": 1,
+          "1": 0
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 2,
+        "01": 1,
+        "10": 1,
+        "11": 1
+      },
+      "eligible": 5,
+      "expected_class": "NO_PAIR_SEPARATION",
+      "expected_joint_support_total": 5,
+      "expected_positive_denominator": [
+        "0",
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 2,
+          "1": 1
+        },
+        "1": {
+          "0": 1,
+          "1": 1
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 2,
+        "01": 1,
+        "10": 1,
+        "11": 2
+      },
+      "eligible": 6,
+      "expected_class": "NO_PAIR_SEPARATION",
+      "expected_joint_support_total": 6,
+      "expected_positive_denominator": [
+        "0",
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 2,
+          "1": 1
+        },
+        "1": {
+          "0": 1,
+          "1": 2
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 2,
+        "01": 1,
+        "10": 2,
+        "11": 0
+      },
+      "eligible": 5,
+      "expected_class": "NO_PAIR_SEPARATION",
+      "expected_joint_support_total": 5,
+      "expected_positive_denominator": [
+        "0",
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 2,
+          "1": 1
+        },
+        "1": {
+          "0": 2,
+          "1": 0
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 2,
+        "01": 1,
+        "10": 2,
+        "11": 1
+      },
+      "eligible": 6,
+      "expected_class": "NO_PAIR_SEPARATION",
+      "expected_joint_support_total": 6,
+      "expected_positive_denominator": [
+        "0",
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 2,
+          "1": 1
+        },
+        "1": {
+          "0": 2,
+          "1": 1
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 2,
+        "01": 1,
+        "10": 2,
+        "11": 2
+      },
+      "eligible": 7,
+      "expected_class": "NO_PAIR_SEPARATION",
+      "expected_joint_support_total": 7,
+      "expected_positive_denominator": [
+        "0",
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 2,
+          "1": 1
+        },
+        "1": {
+          "0": 2,
+          "1": 2
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 2,
+        "01": 2,
+        "10": 0,
+        "11": 0
+      },
+      "eligible": 4,
+      "expected_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+      "expected_joint_support_total": 4,
+      "expected_positive_denominator": [
+        "0"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 2,
+          "1": 2
+        },
+        "1": {
+          "0": 0,
+          "1": 0
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 2,
+        "01": 2,
+        "10": 0,
+        "11": 1
+      },
+      "eligible": 5,
+      "expected_class": "NO_PAIR_SEPARATION",
+      "expected_joint_support_total": 5,
+      "expected_positive_denominator": [
+        "0",
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 2,
+          "1": 2
+        },
+        "1": {
+          "0": 0,
+          "1": 1
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 2,
+        "01": 2,
+        "10": 0,
+        "11": 2
+      },
+      "eligible": 6,
+      "expected_class": "NO_PAIR_SEPARATION",
+      "expected_joint_support_total": 6,
+      "expected_positive_denominator": [
+        "0",
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 2,
+          "1": 2
+        },
+        "1": {
+          "0": 0,
+          "1": 2
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 2,
+        "01": 2,
+        "10": 1,
+        "11": 0
+      },
+      "eligible": 5,
+      "expected_class": "NO_PAIR_SEPARATION",
+      "expected_joint_support_total": 5,
+      "expected_positive_denominator": [
+        "0",
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 2,
+          "1": 2
+        },
+        "1": {
+          "0": 1,
+          "1": 0
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 2,
+        "01": 2,
+        "10": 1,
+        "11": 1
+      },
+      "eligible": 6,
+      "expected_class": "NO_PAIR_SEPARATION",
+      "expected_joint_support_total": 6,
+      "expected_positive_denominator": [
+        "0",
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 2,
+          "1": 2
+        },
+        "1": {
+          "0": 1,
+          "1": 1
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 2,
+        "01": 2,
+        "10": 1,
+        "11": 2
+      },
+      "eligible": 7,
+      "expected_class": "NO_PAIR_SEPARATION",
+      "expected_joint_support_total": 7,
+      "expected_positive_denominator": [
+        "0",
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 2,
+          "1": 2
+        },
+        "1": {
+          "0": 1,
+          "1": 2
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 2,
+        "01": 2,
+        "10": 2,
+        "11": 0
+      },
+      "eligible": 6,
+      "expected_class": "NO_PAIR_SEPARATION",
+      "expected_joint_support_total": 6,
+      "expected_positive_denominator": [
+        "0",
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 2,
+          "1": 2
+        },
+        "1": {
+          "0": 2,
+          "1": 0
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 2,
+        "01": 2,
+        "10": 2,
+        "11": 1
+      },
+      "eligible": 7,
+      "expected_class": "NO_PAIR_SEPARATION",
+      "expected_joint_support_total": 7,
+      "expected_positive_denominator": [
+        "0",
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 2,
+          "1": 2
+        },
+        "1": {
+          "0": 2,
+          "1": 1
+        }
+      }
+    },
+    {
+      "cells": {
+        "00": 2,
+        "01": 2,
+        "10": 2,
+        "11": 2
+      },
+      "eligible": 8,
+      "expected_class": "NO_PAIR_SEPARATION",
+      "expected_joint_support_total": 8,
+      "expected_positive_denominator": [
+        "0",
+        "1"
+      ],
+      "expected_support_vectors": {
+        "0": {
+          "0": 2,
+          "1": 2
+        },
+        "1": {
+          "0": 2,
+          "1": 2
+        }
+      }
+    }
+  ]
+}

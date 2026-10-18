@@ -1,0 +1,71 @@
+{
+  "scope": "Current user-authorized qualification; never an edit to the original frozen court.",
+  "rows": [
+    {
+      "id": "H01",
+      "historical_suite": "GF1F100",
+      "historical_node": "test_universe_class_and_derived_fields[0000]",
+      "cause": "Historical expectation ZERO_SUPPORT_RISK with explicit eligible=0 conflates no eligible risk and positive risk with zero support.",
+      "successor": "current_gf1f102::test_universe_class_and_derived_fields[0000]",
+      "change": "Keep cells and eligible=0; derive NO_ELIGIBLE_RISK from explicit risk semantics.",
+      "proof": "current_gf1f102.xml; current oracle universe[0000]; added risk-distinction test",
+      "disposition": "SUPERSEDED_EXPECTATION; ORIGINAL_PRESERVED",
+      "current_status": "PASS"
+    },
+    {
+      "id": "H02",
+      "historical_suite": "GF1F100",
+      "historical_node": "test_named_cases[zero_supported_risk]",
+      "cause": "Named fixture promised supported risk but defaulted eligible to sum(cells)=0.",
+      "successor": "current_gf1f102::test_named_cases[zero_supported_risk]",
+      "change": "Supply eligible=2 explicitly; preserve zero counts and expected ZERO_SUPPORT_RISK.",
+      "proof": "current_gf1f102.xml; current oracle named_cases.zero_supported_risk",
+      "disposition": "FIXED_CURRENT_FIXTURE; ORIGINAL_PRESERVED",
+      "current_status": "PASS"
+    },
+    {
+      "id": "H03",
+      "historical_suite": "GF1F100",
+      "historical_node": "test_missing_suppressed_relation_is_empty_response",
+      "cause": "Historical assertion treats MISSING_TARGET_STATE as valid empty, contrary to later frozen blocking semantics.",
+      "successor": "current_gf1f102::test_missing_suppressed_relation_remains_typed_blocking",
+      "change": "Require producer blocking, original missing typed state, no separation and no downstream value. Add a distinct true SUPPORTED empty-profile test.",
+      "proof": "current_gf1f102.xml; GF1G frozen g10/g14; unchanged GF1H26",
+      "disposition": "SUPERSEDED_EXPECTATION; MISSING_EMPTY_DISTINCTION_PRESERVED",
+      "current_status": "PASS"
+    },
+    {
+      "id": "H04",
+      "historical_suite": "GF1F100",
+      "historical_node": "test_cold_process_consumer_replay_bit_identical",
+      "cause": "Deterministic cold results already agree. The old 81-case enumeration cannot cover positive-risk/zero-support because eligible=sum(cells).",
+      "successor": "current_gf1f102::test_cold_process_consumer_replay_bit_identical",
+      "change": "Preserve all81 count tables; add explicit cold-only eligible2/zero-support case. Check all82 expected results and exact class counts, distinct PIDs and consumer hash.",
+      "proof": "current_gf1f102.xml; gf1f/observations/gf1f_cold_0.json and gf1f_cold_1.json",
+      "disposition": "FIXED_CURRENT_COLD_COVERAGE; ORIGINAL_PRESERVED",
+      "current_status": "PASS"
+    },
+    {
+      "id": "H05",
+      "historical_suite": "GF1I19",
+      "historical_node": "test_named_downstream_consumer_module_is_absent_from_candidate",
+      "cause": "Historical absence observation is false once a consumer is implemented.",
+      "successor": "current_gf1i19::test_named_downstream_consumer_is_present_and_computes",
+      "change": "Require physical presence, exact import path/SHA and computed value bound to a real native relation.",
+      "proof": "current_gf1i19.xml; native_sources_imports_and_tests.json; positive original producer relation",
+      "disposition": "SUPERSEDED_HISTORICAL_ABSENCE_OBSERVATION",
+      "current_status": "PASS"
+    },
+    {
+      "id": "H06",
+      "historical_suite": "GF1I19",
+      "historical_node": "test_candidate_frozen_44_suite_cannot_be_collected",
+      "cause": "Historical absence assertion obsolete; also hid real FileNotFoundError from two omitted parent metadata artifacts.",
+      "successor": "current_gf1i19::test_candidate_frozen_44_suite_collects_and_executes",
+      "change": "Restore oracle and operation register from their exact original Git objects. Require successful44 collection and execution with zero failures/errors/skips. Negative control removes oracle and proves specific failure before restoring.",
+      "proof": "gf1i_nested_collect.log; gf1i_nested_run.log; gf1i_nested_original44.xml; staging_missing_oracle_negative.log; staged_parent_metadata.json",
+      "disposition": "FIXED_STAGING; REPLACED_NEGATIVE_WITH_POSITIVE_CAPABILITY_GATE",
+      "current_status": "PASS"
+    }
+  ]
+}
