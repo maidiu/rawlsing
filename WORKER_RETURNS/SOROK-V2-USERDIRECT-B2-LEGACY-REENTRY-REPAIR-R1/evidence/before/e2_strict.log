@@ -1,0 +1,58 @@
+FF                                                                       [100%]
+=================================== FAILURES ===================================
+_______ test_legacy_after_mapping_must_fail_closed_at_b2_reentry[False] ________
+
+tmp_path = PosixPath('<TEMP>')
+committed = False
+
+    @pytest.mark.parametrize('committed',[False,True])
+    def test_legacy_after_mapping_must_fail_closed_at_b2_reentry(tmp_path,committed):
+        """Strict commission gate: both insertion orders, without requiring B1 changes.
+    
+        B1 can bypass the wrapper, as disclosed. On subsequent B2 reentry the
+        ambiguous ledger must be detected instead of issuing an admitted receipt.
+        This is a B2 pre-existing-state integrity check, not a B1 writer lockdown.
+        """
+        b,v=setup(tmp_path);advance(b,v,grant=committed)
+        b.store.admit_fixture(m.b1.episode(label='E2_CONFLICTING_LEGACY_OCCURRENCE'))
+        before=tables(b.store.db)
+        r=advance(b,v,grant=False)
+        save('strict_legacy_after_'+str(committed),receipt=r,before=before,after=tables(b.store.db),
+             required='DENIED with NOT_PERFORMED on ambiguous same-ID ledger at B2 reentry')
+        assert tables(b.store.db)==before
+        b.close()
+>       assert r['event_admission']=='NOT_PERFORMED', 'B2 reentry certifies mapped occurrence despite conflicting legacy row'
+E       AssertionError: B2 reentry certifies mapped occurrence despite conflicting legacy row
+E       assert {'rule': 'B2_SYNTHETIC_WITNESSED_INGRESS@1', 'witness_ref': 'f299222680945d70cbe17e1df052eb597d6cb706aeb2692d13f190c7b...998046f09af5f28b5b32544edc80', 'proposal_ref': '32a8cb92b29a064b2d9320b3d9db676dcdbe83857be47503402a481ec38f93c5', ...} == 'NOT_PERFORMED'
+
+../tests_before/E2/test_e2.py:151: AssertionError
+________ test_legacy_after_mapping_must_fail_closed_at_b2_reentry[True] ________
+
+tmp_path = PosixPath('<TEMP>')
+committed = True
+
+    @pytest.mark.parametrize('committed',[False,True])
+    def test_legacy_after_mapping_must_fail_closed_at_b2_reentry(tmp_path,committed):
+        """Strict commission gate: both insertion orders, without requiring B1 changes.
+    
+        B1 can bypass the wrapper, as disclosed. On subsequent B2 reentry the
+        ambiguous ledger must be detected instead of issuing an admitted receipt.
+        This is a B2 pre-existing-state integrity check, not a B1 writer lockdown.
+        """
+        b,v=setup(tmp_path);advance(b,v,grant=committed)
+        b.store.admit_fixture(m.b1.episode(label='E2_CONFLICTING_LEGACY_OCCURRENCE'))
+        before=tables(b.store.db)
+        r=advance(b,v,grant=False)
+        save('strict_legacy_after_'+str(committed),receipt=r,before=before,after=tables(b.store.db),
+             required='DENIED with NOT_PERFORMED on ambiguous same-ID ledger at B2 reentry')
+        assert tables(b.store.db)==before
+        b.close()
+>       assert r['event_admission']=='NOT_PERFORMED', 'B2 reentry certifies mapped occurrence despite conflicting legacy row'
+E       AssertionError: B2 reentry certifies mapped occurrence despite conflicting legacy row
+E       assert {'attributed_claims': [{'accessible_source_refs': ['THEFT-1'], 'claim': 'A careful response could reduce future loss; ...be203525b9c2e8a2f27d0050', 'objective_world_facts': {'group_criminality': 'NOT_ESTABLISHED', 'known_thief': None}, ...} == 'NOT_PERFORMED'
+
+../tests_before/E2/test_e2.py:151: AssertionError
+=========================== short test summary info ============================
+FAILED ../tests_before/E2/test_e2.py::test_legacy_after_mapping_must_fail_closed_at_b2_reentry[False]
+FAILED ../tests_before/E2/test_e2.py::test_legacy_after_mapping_must_fail_closed_at_b2_reentry[True]
+2 failed, 42 deselected in 0.71s

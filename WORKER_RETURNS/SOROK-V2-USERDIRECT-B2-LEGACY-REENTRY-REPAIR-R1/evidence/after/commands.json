@@ -1,0 +1,129 @@
+[
+  {
+    "command": [
+      "/usr/local/bin/python3",
+      "materialize.py"
+    ],
+    "cwd": "<B2_STAGE>",
+    "environment": {
+      "B2_REVIEW_ROOT": "<B2_STAGE>",
+      "GIT_DIR": "<SHARED_OBJECT_STORE>"
+    },
+    "exit": 0,
+    "expected_exit": 0
+  },
+  {
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "<REPAIR_RETURN>/.runtime/tests_after/E2/test_e2.py",
+      "-k",
+      "legacy_after_mapping_must_fail_closed_at_b2_reentry",
+      "--junitxml=<REPAIR_RETURN>/evidence/after/e2_strict.xml"
+    ],
+    "cwd": "<B2_STAGE>",
+    "environment": {
+      "B2_REVIEW_ROOT": "<B2_STAGE>",
+      "GIT_DIR": "<SHARED_OBJECT_STORE>"
+    },
+    "exit": 0,
+    "expected_exit": 0
+  },
+  {
+    "command": [
+      "/usr/local/bin/python3",
+      "run_courts.py"
+    ],
+    "cwd": "<B2_STAGE>",
+    "environment": {
+      "B2_REVIEW_ROOT": "<B2_STAGE>",
+      "GIT_DIR": "<SHARED_OBJECT_STORE>"
+    },
+    "exit": 0,
+    "expected_exit": 0
+  },
+  {
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "<REPAIR_RETURN>/.runtime/tests_after/R1/test_identity.py",
+      "--junitxml=<REPAIR_RETURN>/evidence/after/r1.xml"
+    ],
+    "cwd": "<B2_STAGE>",
+    "environment": {
+      "B2_REVIEW_ROOT": "<B2_STAGE>",
+      "GIT_DIR": "<SHARED_OBJECT_STORE>"
+    },
+    "exit": 0,
+    "expected_exit": 0
+  },
+  {
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "<REPAIR_RETURN>/.runtime/tests_after/E2/test_e2.py",
+      "--junitxml=<REPAIR_RETURN>/evidence/after/e2_full.xml"
+    ],
+    "cwd": "<B2_STAGE>",
+    "environment": {
+      "B2_REVIEW_ROOT": "<B2_STAGE>",
+      "GIT_DIR": "<SHARED_OBJECT_STORE>"
+    },
+    "exit": 1,
+    "expected_exit": 1
+  },
+  {
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "<REPAIR_RETURN>/.runtime/tests_after/R1/frozen/test_hostile_x2.py",
+      "--junitxml=<REPAIR_RETURN>/evidence/after/x2.xml"
+    ],
+    "cwd": "<B2_STAGE>",
+    "environment": {
+      "B2_REVIEW_ROOT": "<B2_STAGE>",
+      "GIT_DIR": "<SHARED_OBJECT_STORE>"
+    },
+    "exit": 1,
+    "expected_exit": 1
+  },
+  {
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "<REPAIR_RETURN>/test_regression.py",
+      "--junitxml=<REPAIR_RETURN>/evidence/after/regression.xml"
+    ],
+    "cwd": "<B2_STAGE>",
+    "environment": {
+      "B2_REVIEW_ROOT": "<B2_STAGE>",
+      "GIT_DIR": "<SHARED_OBJECT_STORE>"
+    },
+    "exit": 0,
+    "expected_exit": 0
+  },
+  {
+    "command": [
+      "/usr/local/bin/python3",
+      "<REPAIR_RETURN>/.runtime/tests_after/E2/runtime_probe.py",
+      "<REPAIR_RETURN>/evidence/after/runtime.json"
+    ],
+    "cwd": "<B2_STAGE>",
+    "environment": {
+      "B2_REVIEW_ROOT": "<B2_STAGE>",
+      "GIT_DIR": "<SHARED_OBJECT_STORE>"
+    },
+    "exit": 0,
+    "expected_exit": 0
+  }
+]

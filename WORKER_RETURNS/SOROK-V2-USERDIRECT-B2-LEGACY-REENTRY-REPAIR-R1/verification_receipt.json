@@ -1,0 +1,39 @@
+{
+  "grade": "SOURCEFREE_LEGACY_REENTRY_REPAIR_CANDIDATE_PENDING_INDEPENDENT_REVIEW",
+  "base": "358fd1086eac0a4aa7791ca14abc25c45b935ddd",
+  "bridge_sha256": "9c112a7984b0581e965394983acf0e38064847083b78096e2d8215b48932250f",
+  "strict_e2_before": {
+    "tests": 2,
+    "failures": 2
+  },
+  "strict_e2_after": {
+    "tests": 2,
+    "failures": 0
+  },
+  "unchanged_checks": 330,
+  "r1_tests": 45,
+  "new_controls": 5,
+  "frozen_e2": {
+    "tests": 44,
+    "pass_count": 42,
+    "old_behavior_observation_failures": 2
+  },
+  "frozen_x2": {
+    "tests": 17,
+    "pass_count": 16,
+    "old_collision_demonstration_failure": 1
+  },
+  "native_f1": {
+    "reference_tests": 97,
+    "dispatched_cases": 36,
+    "boundary_negative_deferral_pass": 19,
+    "native_positive_cases_passed": 0,
+    "not_applicable": 17,
+    "raw_native_exit": 1,
+    "raw_native_status": "RED",
+    "raw_native_failures": 17
+  },
+  "positive_control_trace": "BYTE_IDENTICAL_TO_R1",
+  "journal_only_trace": "BYTE_IDENTICAL_TO_R1",
+  "scope": "B2 replay/admission integrity; committed objective facts preserved"
+}
