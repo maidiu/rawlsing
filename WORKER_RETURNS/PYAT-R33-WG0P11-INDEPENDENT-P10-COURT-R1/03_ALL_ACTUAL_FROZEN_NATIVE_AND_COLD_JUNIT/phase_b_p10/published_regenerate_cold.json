@@ -1,0 +1,11 @@
+{
+  "command": [
+    "/usr/local/bin/python3",
+    "-B",
+    "repro/wg0p10_regenerate_cold.py"
+  ],
+  "cwd": "/tmp/wg0p11-independent-p10-c9f8767/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1",
+  "exit": 0,
+  "stdout": "crash  exit=23 (23 expected)\nresume exit=0 (0 expected)\n{\n  \"crash_pid\": 63154,\n  \"resume_pid\": 63158,\n  \"pids_distinct\": true,\n  \"manifest_hash\": \"bcd255228ef35edcb9b59436b76e1eb78947c07180f2936779572f510981c140\",\n  \"manifest_units\": 3,\n  \"resume_manifest_matches\": true,\n  \"receipt_class\": \"rawlsing_next.pre553_batch_runner.UnitExecutionReceipt\",\n  \"owner_members\": [\n    \"current.json\",\n    \"issued.json\",\n    \"key.bin\"\n  ],\n  \"durability_calls\": [\n    {\n      \"call\": \"fsync\",\n      \"kind\": \"file\"\n    },\n    {\n      \"call\": \"replace\",\n      \"source\": \"/private/tmp/wg0p11-independent-p10-c9f8767/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/observations/phase_b/inherited_v1/cold/cold-face4d00952b4460a7c1285c1dd80be5/checkpoint.json.tmp-ecf93b22f488705f\",\n      \"target\": \"/private/tmp/wg0p11-independent-p10-c9f8767/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/observations/phase_b/inherited_v1/cold/cold-face4d00952b4460a7c1285c1dd80be5/checkpoint.json\"\n    },\n    {\n      \"call\": \"fsync\",\n      \"kind\": \"directory\"\n    }\n  ]\n}\n",
+  "stderr": ""
+}

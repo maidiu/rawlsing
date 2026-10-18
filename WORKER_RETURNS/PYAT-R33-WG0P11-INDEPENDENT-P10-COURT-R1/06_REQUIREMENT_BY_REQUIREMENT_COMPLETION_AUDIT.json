@@ -1,0 +1,355 @@
+{
+  "schema": "WG0P11_REQUIREMENT_COMPLETION_AUDIT@1",
+  "p10_head": "c9f876788dea5770563f0c1ac3354ec745cfa59c",
+  "requirements": [
+    {
+      "id": "A1",
+      "requirement": "Independent pre-P10 oracle/test remote freeze and exact original 187/11 preimages",
+      "status": "PASS",
+      "evidence": "01_PHASE_A_FROZEN_REQUIREMENTS_AND_HASHES.json"
+    },
+    {
+      "id": "A2",
+      "requirement": "Original repaired P5 identity and expected native/cold court frozen before P10",
+      "status": "PASS",
+      "evidence": "01_PHASE_A_FROZEN_REQUIREMENTS_AND_HASHES.json"
+    },
+    {
+      "id": "B1",
+      "requirement": "Fresh exact P10 direct-remote isolated checkout; no overlay or local object alternates",
+      "status": "PASS",
+      "evidence": "02_CLEAN_CLONE_MODULE_AND_INPUT_SHA.json"
+    },
+    {
+      "id": "B2",
+      "requirement": "Whole 1272-file committed artifact closure, original187, restored11 and exact missing WG0N blob",
+      "status": "PASS",
+      "evidence": "02_CLEAN_CLONE_MODULE_AND_INPUT_SHA.json"
+    },
+    {
+      "id": "D1",
+      "requirement": "Exact repaired module accepted; pristine module refused before payload",
+      "status": "PASS",
+      "evidence": "03_ALL_ACTUAL_FROZEN_NATIVE_AND_COLD_JUNIT/phase_b_remote/D1_probe.json"
+    },
+    {
+      "id": "D2",
+      "requirement": "New observed atexit audit including actual cold resume process",
+      "status": "PASS",
+      "evidence": "03_ALL_ACTUAL_FROZEN_NATIVE_AND_COLD_JUNIT/phase_b_remote/all_actual_import_audits_index.json"
+    },
+    {
+      "id": "D3",
+      "requirement": "Fresh42 no manual directory creation or teardown errors",
+      "status": "PASS",
+      "evidence": "03_ALL_ACTUAL_FROZEN_NATIVE_AND_COLD_JUNIT/phase_b_remote/D3_fresh42.xml"
+    },
+    {
+      "id": "D4",
+      "requirement": "Published cold regeneration, runtime path resolution and unchanged pointer test",
+      "status": "PASS",
+      "evidence": "03_ALL_ACTUAL_FROZEN_NATIVE_AND_COLD_JUNIT/phase_b_remote/D4_pointer.xml"
+    },
+    {
+      "id": "D5",
+      "requirement": "Exact historical WG0N verdict present; unchanged original WG0O17 passes",
+      "status": "PASS",
+      "evidence": "02_CLEAN_CLONE_MODULE_AND_INPUT_SHA.json"
+    },
+    {
+      "id": "B3",
+      "requirement": "Actual original17, reviewer36, mandatory236, fresh42 and real JUnit; no skips",
+      "status": "PASS",
+      "evidence": "03_ALL_ACTUAL_FROZEN_NATIVE_AND_COLD_JUNIT/phase_b_remote/published_native_junit/run_receipt.json"
+    },
+    {
+      "id": "B4",
+      "requirement": "Fresh published transport9 actual JUnit",
+      "status": "PASS",
+      "evidence": "03_ALL_ACTUAL_FROZEN_NATIVE_AND_COLD_JUNIT/phase_b_remote/transport9.xml"
+    },
+    {
+      "id": "B5",
+      "requirement": "Immutable independent6 pass, same bytes as first pre-P10 remote commit",
+      "status": "PASS",
+      "evidence": "03_ALL_ACTUAL_FROZEN_NATIVE_AND_COLD_JUNIT/phase_b_remote/independent_frozen_D1_D5.xml"
+    },
+    {
+      "id": "B6",
+      "requirement": "True 42 supported cells / 4 I03; replay0 with identical effects/receipts",
+      "status": "PASS",
+      "evidence": "03_ALL_ACTUAL_FROZEN_NATIVE_AND_COLD_JUNIT/phase_b_remote/independent_authority_audit.json"
+    },
+    {
+      "id": "B7",
+      "requirement": "Genuine OS crash23/resume0, distinct PIDs, 1+2 I03 and original native receipt preimage",
+      "status": "PASS",
+      "evidence": "03_ALL_ACTUAL_FROZEN_NATIVE_AND_COLD_JUNIT/phase_b_remote/original65_cold/commands.json"
+    },
+    {
+      "id": "B8",
+      "requirement": "Pointer forgery IdentityError, 0 I03, unchanged custody/journal and 0 restored receipts",
+      "status": "PASS",
+      "evidence": "03_ALL_ACTUAL_FROZEN_NATIVE_AND_COLD_JUNIT/phase_b_remote/fresh_process_source_pointer_refusal.json"
+    },
+    {
+      "id": "B9",
+      "requirement": "Source omission, hash change and wrong module refuse before native payload; restored exact",
+      "status": "PASS",
+      "evidence": "03_ALL_ACTUAL_FROZEN_NATIVE_AND_COLD_JUNIT/phase_b_remote/source_hostiles/actual_source_hostiles_summary.json"
+    },
+    {
+      "id": "B10",
+      "requirement": "Wrong epoch and foreign authority: no supported original fact; all 40 negatives zero I03",
+      "status": "PASS",
+      "evidence": "03_ALL_ACTUAL_FROZEN_NATIVE_AND_COLD_JUNIT/phase_b_remote/independent_authority_audit.json"
+    },
+    {
+      "id": "H1",
+      "requirement": "Five historical UNCONSTRUCTIBLE cases remain NOT GREEN with original construction failures",
+      "status": "PRESERVED_NOT_GREEN",
+      "evidence": "03_ALL_ACTUAL_FROZEN_NATIVE_AND_COLD_JUNIT/phase_b_remote/historical_five_unconstructible.xml"
+    },
+    {
+      "id": "H2",
+      "requirement": "Two historical characterisation failures remain NOT GREEN, unmodified",
+      "status": "PRESERVED_NOT_GREEN",
+      "evidence": "03_ALL_ACTUAL_FROZEN_NATIVE_AND_COLD_JUNIT/phase_b_remote/historical_characterisation.xml"
+    },
+    {
+      "id": "H3",
+      "requirement": "No issuer by source hash, no temporal-owner rule or source-artifact revocation grant",
+      "status": "NON_GRANTS_PRESERVED",
+      "evidence": "04_HISTORICAL_NOT_GREEN_AND_NO_NEW_ISSUER.md"
+    },
+    {
+      "id": "R1",
+      "requirement": "All six commissioned deliverables and actual native/cold JUnit directory exist",
+      "status": "PASS",
+      "evidence": "00_INDEPENDENT_SELFCONTAINED_VERDICT.md"
+    }
+  ],
+  "actual_runtime_summary": {
+    "p10_head": "c9f876788dea5770563f0c1ac3354ec745cfa59c",
+    "clone": "/private/tmp/wg0p11-remote-filtered-p10",
+    "git_fetching_disabled": {
+      "GIT_CONFIG_COUNT": "1",
+      "GIT_CONFIG_KEY_0": "remote.origin.url",
+      "GIT_CONFIG_VALUE_0": "/nonexistent/WG0P11_GIT_NETWORK_DISABLED"
+    },
+    "original_source_count": 187,
+    "restored_original_count": 11,
+    "initial_git_tree_files": 1272,
+    "immutable_phase_a_bytes_unchanged": true,
+    "actual_junit": {
+      "wg0o17": {
+        "tests": 17,
+        "failures": 0,
+        "errors": 0,
+        "skips": 0
+      },
+      "wg0q36": {
+        "tests": 36,
+        "failures": 0,
+        "errors": 0,
+        "skips": 0
+      },
+      "wg0m33": {
+        "tests": 33,
+        "failures": 0,
+        "errors": 0,
+        "skips": 0
+      },
+      "original65": {
+        "tests": 65,
+        "failures": 0,
+        "errors": 0,
+        "skips": 0
+      },
+      "original3": {
+        "tests": 3,
+        "failures": 0,
+        "errors": 0,
+        "skips": 0
+      },
+      "j44_k11": {
+        "tests": 55,
+        "failures": 0,
+        "errors": 0,
+        "skips": 0
+      },
+      "owners80": {
+        "tests": 80,
+        "failures": 0,
+        "errors": 0,
+        "skips": 0
+      },
+      "fresh42": {
+        "tests": 42,
+        "failures": 0,
+        "errors": 0,
+        "skips": 0
+      },
+      "independent_frozen_D1_D5": {
+        "tests": 6,
+        "failures": 0,
+        "errors": 0,
+        "skips": 0
+      },
+      "D3_fresh42": {
+        "tests": 42,
+        "failures": 0,
+        "errors": 0,
+        "skips": 0
+      },
+      "D4_pointer": {
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skips": 0
+      },
+      "transport9": {
+        "tests": 9,
+        "failures": 0,
+        "errors": 0,
+        "skips": 0
+      },
+      "historical_characterisation": {
+        "tests": 3,
+        "failures": 2,
+        "errors": 0,
+        "skips": 0
+      },
+      "historical_five_unconstructible": {
+        "tests": 5,
+        "failures": 5,
+        "errors": 0,
+        "skips": 0
+      }
+    },
+    "native_total": 331,
+    "mandatory_total": 236,
+    "authority_negatives_zero_I03": 40,
+    "native_positives": [
+      {
+        "group": "positive_current_body",
+        "case": "P1_pristine_serves",
+        "exception_type": null,
+        "exception_reason": null,
+        "typed_refusal": null,
+        "new_I03_calls": 4,
+        "supported_fact_cells_served": 42,
+        "effects_sha256": "4b9d03246167c93df6dde8d590fac33c24c51ef158d60abd8ee33601ca059550",
+        "served_supported_original_fact": true
+      },
+      {
+        "group": "positive_current_body",
+        "case": "P2_owner_identity_rebind_serves",
+        "exception_type": null,
+        "exception_reason": null,
+        "typed_refusal": null,
+        "new_I03_calls": 4,
+        "supported_fact_cells_served": 42,
+        "effects_sha256": "4b9d03246167c93df6dde8d590fac33c24c51ef158d60abd8ee33601ca059550",
+        "served_supported_original_fact": true
+      },
+      {
+        "group": "positive_current_body",
+        "case": "P3_replay_identical",
+        "exception_type": null,
+        "exception_reason": null,
+        "typed_refusal": null,
+        "new_I03_calls": 0,
+        "supported_fact_cells_served": 42,
+        "effects_sha256": "4b9d03246167c93df6dde8d590fac33c24c51ef158d60abd8ee33601ca059550",
+        "served_supported_original_fact": true
+      },
+      {
+        "group": "positive_current_body",
+        "case": "P4_identical_body_rebind",
+        "exception_type": null,
+        "exception_reason": null,
+        "typed_refusal": null,
+        "new_I03_calls": 4,
+        "supported_fact_cells_served": 42,
+        "effects_sha256": "4b9d03246167c93df6dde8d590fac33c24c51ef158d60abd8ee33601ca059550",
+        "served_supported_original_fact": true
+      }
+    ],
+    "published_cold": {
+      "crash_pid": 66149,
+      "resume_pid": 66162,
+      "first_I03": 1,
+      "resume_I03": 2,
+      "manifest": "bcd255228ef35edcb9b59436b76e1eb78947c07180f2936779572f510981c140",
+      "receipt_preimage_equal": true,
+      "receipt_hash": "caac243fc25c521acc10b2e082b55bdb854921dff8f730680d82eeaf2dcabcbd"
+    },
+    "original65_cold_pids": [
+      66505,
+      66516
+    ],
+    "pointer_pid": 66616,
+    "pointer_new_I03": 0,
+    "original25": {
+      "INADMISSIBLE": 6,
+      "HELD": 16,
+      "PRODUCED": 3
+    },
+    "ordinary_conditional": {
+      "counts": {
+        "no": 1,
+        "yes": 1
+      },
+      "denominator": 2,
+      "respondents": [
+        "R2",
+        "R3"
+      ]
+    },
+    "fresh_atexit_receipts": 24,
+    "source_hostiles": [
+      {
+        "case": "omitted_restored_source",
+        "verifier_exit": 86,
+        "bootstrap_exit": 86,
+        "payload_started": false,
+        "new_I03_calls": 0,
+        "zero_I03_basis": "bootstrap terminates before any payload statement"
+      },
+      {
+        "case": "changed_source_hash",
+        "verifier_exit": 86,
+        "bootstrap_exit": 86,
+        "payload_started": false,
+        "new_I03_calls": 0,
+        "zero_I03_basis": "bootstrap terminates before any payload statement"
+      },
+      {
+        "case": "pristine_wrong_P5",
+        "verifier_exit": 86,
+        "bootstrap_exit": 86,
+        "payload_started": false,
+        "new_I03_calls": 0,
+        "zero_I03_basis": "bootstrap terminates before any payload statement"
+      }
+    ],
+    "historical_not_green": {
+      "unconstructible": 5,
+      "characterisation_failures": 2
+    },
+    "missing_required_runtime_evidence": []
+  },
+  "missing_required_work": [],
+  "publication": "Final return commit is reported with a directly verified remote SHA in the final response; no self-referential Git hash is embedded here.",
+  "non_grants": [
+    "original source U/E_pre",
+    "independent institutional issuer",
+    "source-artifact revocation grant",
+    "new temporal-owner rule",
+    "N11/N12/OC05",
+    "V3/actor adoption",
+    "production grant",
+    "HQ adoption"
+  ]
+}

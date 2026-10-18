@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="5" skipped="0" tests="5" time="1.553" timestamp="2026-10-17T23:24:16.124052-04:00" hostname="Matthews-MBP.lan"><testcase classname="" name="test_hostile_source_view_is_refused[source_epoch_and_revocation/C3_source_artifact_revocation]" time="0.289"><failure message="wg0p4_workload.RevocationError: UNKNOWN_RELEASE_NO_REVOCATION">/tmp/wg0p11-independent-p10-c9f8767/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/reviewer_frozen/03_INHERITED/WG0N/tests/test_hostile_source_view_court.py:78: in test_hostile_source_view_is_refused
+    e = court.execute_case(control["group"], control["case"])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../reviewer_frozen/03_INHERITED/WG0N/repro/hostile_source_view_adapter_v1.py:129: in execute_case
+    owner.revoke(rel1.source_artifact_ref.object_id)
+runtime_phase_b/p5_return/review/runtime_phase_b/candidate/repro/wg0p4_workload.py:150: in revoke
+    if tag not in d['grants']:raise RevocationError('UNKNOWN_RELEASE_NO_REVOCATION')
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   wg0p4_workload.RevocationError: UNKNOWN_RELEASE_NO_REVOCATION</failure></testcase><testcase classname="" name="test_hostile_source_view_is_refused[altered_snapshot/D3_truncated_or_empty_snapshot]" time="0.272"><failure message="rawlsing_next.pre553_empirical_objects.Pre553IntegrityError: content_hash must be a non-empty string">/tmp/wg0p11-independent-p10-c9f8767/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/reviewer_frozen/03_INHERITED/WG0N/tests/test_hostile_source_view_court.py:78: in test_hostile_source_view_is_refused
+    e = court.execute_case(control["group"], control["case"])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../reviewer_frozen/03_INHERITED/WG0N/repro/hostile_source_view_adapter_v1.py:150: in execute_case
+    forged = replace(ref, content_hash="")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/dataclasses.py:1494: in replace
+    return obj.__class__(**changes)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+&lt;string&gt;:6: in __init__
+    ???
+runtime_phase_b/p5_return/review/runtime_phase_b/candidate/pinned/rawlsing_next/pre553_empirical_objects.py:288: in __post_init__
+    object.__setattr__(self, "content_hash", _sha256(self.content_hash, "content_hash"))
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+runtime_phase_b/p5_return/review/runtime_phase_b/candidate/pinned/rawlsing_next/pre553_empirical_objects.py:165: in _sha256
+    value = _text(value, name)
+            ^^^^^^^^^^^^^^^^^^
+runtime_phase_b/p5_return/review/runtime_phase_b/candidate/pinned/rawlsing_next/pre553_empirical_objects.py:160: in _text
+    raise Pre553IntegrityError(f"{name} must be a non-empty string")
+E   rawlsing_next.pre553_empirical_objects.Pre553IntegrityError: content_hash must be a non-empty string</failure></testcase><testcase classname="" name="test_hostile_source_view_is_refused[issuer_mismatch/E1_release_issuer_not_registrar]" time="0.279"><failure message="TypeError: IngestedRelease.__init__() got an unexpected keyword argument 'issuer_id'">/tmp/wg0p11-independent-p10-c9f8767/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/reviewer_frozen/03_INHERITED/WG0N/tests/test_hostile_source_view_court.py:78: in test_hostile_source_view_is_refused
+    e = court.execute_case(control["group"], control["case"])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../reviewer_frozen/03_INHERITED/WG0N/repro/hostile_source_view_adapter_v1.py:159: in execute_case
+    p2 = _mutate_source_view(p, REL1, issuer_id="ISSUER_NOT_THE_REGISTRAR")
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../reviewer_frozen/03_INHERITED/WG0N/repro/hostile_source_view_adapter_v1.py:57: in _mutate_source_view
+    rel = replace(rel, **fields)
+          ^^^^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/dataclasses.py:1494: in replace
+    return obj.__class__(**changes)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: IngestedRelease.__init__() got an unexpected keyword argument 'issuer_id'</failure></testcase><testcase classname="" name="test_hostile_source_view_is_refused[issuer_mismatch/E2_unregistered_issuer]" time="0.260"><failure message="TypeError: IngestedRelease.__init__() got an unexpected keyword argument 'issuer_id'">/tmp/wg0p11-independent-p10-c9f8767/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/reviewer_frozen/03_INHERITED/WG0N/tests/test_hostile_source_view_court.py:78: in test_hostile_source_view_is_refused
+    e = court.execute_case(control["group"], control["case"])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../reviewer_frozen/03_INHERITED/WG0N/repro/hostile_source_view_adapter_v1.py:162: in execute_case
+    p2 = _mutate_source_view(p, REL1, issuer_id="ISSUER_UNKNOWN_UNREGISTERED")
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../reviewer_frozen/03_INHERITED/WG0N/repro/hostile_source_view_adapter_v1.py:57: in _mutate_source_view
+    rel = replace(rel, **fields)
+          ^^^^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/dataclasses.py:1494: in replace
+    return obj.__class__(**changes)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: IngestedRelease.__init__() got an unexpected keyword argument 'issuer_id'</failure></testcase><testcase classname="" name="test_hostile_source_view_is_refused[issuer_mismatch/E3_issuer_epoch_mismatch]" time="0.247"><failure message="TypeError: IngestedRelease.__init__() got an unexpected keyword argument 'issuer_epoch'">/tmp/wg0p11-independent-p10-c9f8767/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/reviewer_frozen/03_INHERITED/WG0N/tests/test_hostile_source_view_court.py:78: in test_hostile_source_view_is_refused
+    e = court.execute_case(control["group"], control["case"])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../reviewer_frozen/03_INHERITED/WG0N/repro/hostile_source_view_adapter_v1.py:165: in execute_case
+    p2 = _mutate_source_view(p, REL1, issuer_epoch="WG0N_OTHER_EPOCH")
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../reviewer_frozen/03_INHERITED/WG0N/repro/hostile_source_view_adapter_v1.py:57: in _mutate_source_view
+    rel = replace(rel, **fields)
+          ^^^^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/dataclasses.py:1494: in replace
+    return obj.__class__(**changes)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: IngestedRelease.__init__() got an unexpected keyword argument 'issuer_epoch'</failure></testcase></testsuite></testsuites>

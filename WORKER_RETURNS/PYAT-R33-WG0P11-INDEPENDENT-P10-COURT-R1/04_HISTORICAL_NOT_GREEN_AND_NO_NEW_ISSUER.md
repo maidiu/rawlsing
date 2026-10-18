@@ -1,31 +1,28 @@
 # Historical NOT GREEN and authority ceiling
 
-The exact historical WG0N verdict is frozen at `frozen_WG0N_historical_verdict.md`.
-It is evidence of historical status and was never inserted into the candidate.
+Both the Phase A P8 replay and the completed P10 replay ran the original tests
+without edits. Fresh P10 JUnit lives under
+`03_ALL_ACTUAL_FROZEN_NATIVE_AND_COLD_JUNIT/phase_b_remote/`.
 
-Actual unmodified tests in the isolated P8 clone reconfirmed:
+- `historical_five_unconstructible.xml`: 5 failures during stimulus construction,
+  15 unrelated tests deselected. C3 raises UNKNOWN_RELEASE_NO_REVOCATION for a
+  source-artifact id; D3 refuses an empty content hash with Pre553IntegrityError;
+  E1/E2/E3 raise TypeError for nonexistent issuer_id/issuer_epoch fields.
+  These remain UNCONSTRUCTIBLE / NOT GREEN. They were not retargeted or xfailed.
+- `historical_characterisation.xml`: 1 passed / 2 failed. The source_edition and
+  native_item_ids cases still raise IdentityError:
+  COMPLETE_BOUND_SOURCE_DESCRIPTOR_CHANGED. No frozen expectation was altered.
+- P10 now includes the exact historical WG0N verdict from
+  `6cd28b429504ad47e1bbc0fbcc6c4ef91db59ccd`, SHA-256
+  `839adc7508fcd81bd0a59af8f0fc8793b8ea075c80661683b776124cb90a228b`.
+  The reviewer's separately frozen copy was never overlaid into the candidate.
 
-- C3 source-artifact revocation: `RevocationError: UNKNOWN_RELEASE_NO_REVOCATION`
-  during fixture construction. The owner accepts release tags; independent
-  source-artifact revocation remains unrepresented and NOT_SUPPORTED.
-- D3 empty snapshot: `Pre553IntegrityError` rejects an empty content hash during
-  construction. The original frozen oracle does not count that as its required
-  refusal; it remains historically UNCONSTRUCTIBLE / NOT GREEN.
-- E1/E2/E3 issuer controls: `TypeError` on nonexistent `issuer_id` or
-  `issuer_epoch` constructor fields. These three controls remain
-  UNCONSTRUCTIBLE / NOT GREEN. They have not been silently retargeted to a
-  different authority surface.
-- The two original `test_bound_descriptor_cannot_change_served_provenance`
-  cases for `source_edition` and `native_item_ids` still fail with
-  `IdentityError: COMPLETE_BOUND_SOURCE_DESCRIPTOR_CHANGED`. Their assertions
-  have not been edited. The third case in the same file passes.
+The five original historical construction limits do not become green because
+new controls against the real authority API pass. Actual supported-cell and
+signature checks concern the bounded synthetic fixture. Byte custody cannot
+establish an independently signed institutional issuer. The source-artifact
+revocation surface remains NOT_SUPPORTED; no new temporal-owner rule is granted.
 
-JUnit and command/stdout/stderr receipts are under
-`03_ALL_ACTUAL_FROZEN_NATIVE_AND_COLD_JUNIT/`. Five construction failures are
-reported as five failures in XML, not skipped, xfailed or newly green.
-
-Hash identity establishes byte custody, never an independent signed issuer.
-No source-artifact revocation support, new temporal-owner rule, U/E_pre,
-N11/N12/OC05, actor/V3 authority, source/semantic adoption or HQ self-adoption
-is granted. Future genuine authority tests do not retroactively regrade these
-historical cases.
+No original-source U/E_pre, raw survey evidence, N11/N12/OC05, actor/V3 authority,
+production grant, source/semantic adoption or HQ self-adoption follows from the
+independent replay. The positive mechanical verdict preserves these ceilings.

@@ -1,20 +1,26 @@
 # Bounded acceptance motion
 
-Bank only the independent Phase A freeze, original-source custody checks,
-discriminating P8 baseline failures and preserved historical NOT GREEN results.
-The first remote oracle/test commit is
-`cb5484c96325e06b981dea22207e4dadc3d83558`.
+Recommend banking **INDEPENDENT_SELFCONTAINED_NATIVE_COURT_PASS** for exact P10
+`c9f876788dea5770563f0c1ac3354ec745cfa59c`, after the fresh isolated replay
+recorded in this packet. This supersedes the earlier missing-author Phase B HOLD.
+It is a recommendation from the independent reviewer, not HQ adoption.
 
-HOLD Phase B until a completed P10 implementation is pushed to
-`agent/userdirect-pyat-20261017-r33-wg0p10-five-publication-defects-repair-r1`.
-The directly observed remote still equals sealed startup
-`90e6b5cc713780df0fb617d9357feed14c00ed24`; absence of a completed author is not
-a failed scientific or transport verdict.
+The independently frozen pre-P10 oracle/tests at
+`cb5484c96325e06b981dea22207e4dadc3d83558` are unchanged. D1–D5 now pass those
+checks, including actual atexit, fresh42, pointer forgery and exact historical
+verdict. The original 187 inputs, restored11 and full 1,272-file initial P10
+closure are verified. Actual new JUnit proves 17/36/236/42, transport9 and pointer1.
+The original native positive is 42 cells / 4 I03; genuine crash23/resume0 pairs,
+exact native receipt preimages and zero-I03 refusals are retained.
 
-Do not bank SELFCONTAINED_PASS or repair acceptance from this packet.
-Require an isolated exact-head clone, complete source closure, observed atexit
-receipts, published-runner directory/fixture preparation, real frozen
-17/36/236/42 suites, 42 cells / 4 I03, genuine crash23/resume0, pointer refusal,
-transport9 and pre-I03 hostile refusals. No overlay, inherited JUnit tally or
-manual owner/path reconstruction can substitute. The commission's authority
-and historical-status ceilings remain binding.
+Preparation used the two published scripts for cold regeneration and native
+suite execution, followed by the immutable independent court. No manual fixture
+or path repair was applied. Supplementary source-tampering probes ran only after
+positive replay and were restored exactly. D6 is an explicitly disclosed runner
+environment repair; it changes no frozen science or assertion.
+
+Preserve the five historical UNCONSTRUCTIBLE controls and two characterisation
+failures as NOT GREEN. Do not infer an independent issuer from a source hash or
+supply a missing source-artifact revocation/temporal-owner grant. No original-source
+U/E_pre, N11/N12/OC05, source/semantic adoption, production grant or V3/actor
+adoption is requested by this motion.

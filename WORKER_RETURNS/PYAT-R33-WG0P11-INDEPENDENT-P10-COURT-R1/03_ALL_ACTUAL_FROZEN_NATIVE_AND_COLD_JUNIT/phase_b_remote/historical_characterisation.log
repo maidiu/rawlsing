@@ -1,0 +1,32 @@
+FF.                                                                      [100%]
+=================================== FAILURES ===================================
+_ test_bound_descriptor_cannot_change_served_provenance[source_edition-FORGED_CALLER_EDITION] _
+/tmp/wg0p11-remote-filtered-p10/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/tests/phase_b/test_additional_descriptor_binding_red.py:12: in test_bound_descriptor_cannot_change_served_provenance
+    runner,receipts,effects=execute(altered)
+                            ^^^^^^^^^^^^^^^^
+repro/phase_b_support_v1.py:35: in execute
+    runner,rs=w.run_plan(p,w.make_executor(p));return runner,rs,w.consumer_effects(p,rs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+runtime_phase_b/p5_return/review/runtime_phase_b/candidate/repro/wg0p4_workload.py:450: in run_plan
+    _check_plan(plan)
+runtime_phase_b/p5_return/review/runtime_phase_b/candidate/repro/wg0p4_workload.py:408: in _check_plan
+    if canonical(contract)!=plan.contract:raise IdentityError('COMPLETE_BOUND_SOURCE_DESCRIPTOR_CHANGED')
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   wg0p4_workload.IdentityError: COMPLETE_BOUND_SOURCE_DESCRIPTOR_CHANGED
+_ test_bound_descriptor_cannot_change_served_provenance[native_item_ids-forged1] _
+/tmp/wg0p11-remote-filtered-p10/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/tests/phase_b/test_additional_descriptor_binding_red.py:12: in test_bound_descriptor_cannot_change_served_provenance
+    runner,receipts,effects=execute(altered)
+                            ^^^^^^^^^^^^^^^^
+repro/phase_b_support_v1.py:35: in execute
+    runner,rs=w.run_plan(p,w.make_executor(p));return runner,rs,w.consumer_effects(p,rs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+runtime_phase_b/p5_return/review/runtime_phase_b/candidate/repro/wg0p4_workload.py:450: in run_plan
+    _check_plan(plan)
+runtime_phase_b/p5_return/review/runtime_phase_b/candidate/repro/wg0p4_workload.py:408: in _check_plan
+    if canonical(contract)!=plan.contract:raise IdentityError('COMPLETE_BOUND_SOURCE_DESCRIPTOR_CHANGED')
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   wg0p4_workload.IdentityError: COMPLETE_BOUND_SOURCE_DESCRIPTOR_CHANGED
+=========================== short test summary info ============================
+FAILED ../../../../../../../tmp/wg0p11-remote-filtered-p10/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/candidate::test_bound_descriptor_cannot_change_served_provenance[source_edition-FORGED_CALLER_EDITION]
+FAILED ../../../../../../../tmp/wg0p11-remote-filtered-p10/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/candidate::test_bound_descriptor_cannot_change_served_provenance[native_item_ids-forged1]
+2 failed, 1 passed in 0.89s

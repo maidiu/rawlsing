@@ -1,75 +1,145 @@
-# WG0P11 independent clean replay
+# WG0P11 independent clean replay — final verdict
 
-**PHASE_A_BANKED / PHASE_B_HOLD_NO_P10_IMPLEMENTATION. No SELFCONTAINED_PASS.**
+**INDEPENDENT_SELFCONTAINED_NATIVE_COURT_PASS — bounded sourcefree transport replay.**
 
-The commission at sealed startup `75a4c331124ffd762e1a7f900b0a9c73897f9bd3`
-expressly permits banking Phase A while P10 is unavailable. Direct remote checks
-before freezing and after execution found the P10 branch still at startup
-`90e6b5cc713780df0fb617d9357feed14c00ed24`. This is an unavailable repair,
-not a failed repair. No future P10 implementation was inspected or evaluated.
+The completed P10 artifact at **`c9f876788dea5770563f0c1ac3354ec745cfa59c`**
+works from a fresh isolated checkout with no manual repair overlay. D1–D5 are
+closed by the unchanged, independently frozen acceptance tests. The historical
+five unconstructible controls and two characterisation failures remain NOT GREEN.
+This is an independent reviewer finding, not HQ acceptance or source/issuer adoption.
 
-Independent oracle and executable acceptance tests were pushed first at
-`cb5484c96325e06b981dea22207e4dadc3d83558`, before their baseline execution.
-They derive from the commission, pinned P9 review
-`c2bfed5b2e11d229068dfdf78a3df16467704d14`, and original P8 source, not P10 output.
-The reviewer has not authored the repair or assumed HQ/issuer/semantic authority.
+## Independence and exact checkout
 
-## Actual isolated execution
+Commission/startup: `75a4c331124ffd762e1a7f900b0a9c73897f9bd3`.
+Phase A oracle, original hashes and independent tests were pushed first at
+`cb5484c96325e06b981dea22207e4dadc3d83558`, while P10 still had no implementation.
+Phase A baseline evidence was banked at `bb48510ccff801c417b216890bfc0363e51b3f99`.
+The frozen oracle and test bytes remain identical to that first remote commit.
+The earlier HOLD is superseded by this actual Phase B execution.
 
-Fresh clone `/tmp/wg0p11-independent-p8`, made with `git clone --no-hardlinks
---no-checkout`, detached at exact P8 `e1d82971f8c07147550ce53ef3c4bc52f349fed3`.
-Its object source was this repository after fetching the exact remote P8 commit;
-it is a separate checkout, not a reused reviewer directory or manual file overlay.
-Initial `git status --porcelain` was empty. Darwin x86_64, Python 3.11.3,
-pytest 9.1.1. Actual subprocesses and JUnit were used. No raw survey data.
+Direct `git ls-remote` identified the completed P10 head above, and a final check
+confirmed the same head. The decisive isolated clone is
+`/tmp/wg0p11-remote-filtered-p10`, fetched directly from GitHub with
+`--filter=blob:none --no-checkout`, then sparsely checked out at that exact
+commit with all 1,272 artifact files materialized. Initial status was empty;
+there are no local-object alternates or inherited worktree files. All runtime
+subprocesses had further Git fetching disabled. Host: Darwin x86_64,
+Python 3.11.3, pytest 9.1.1.
 
-All **187/187 original input files** were independently read and checked for
-SHA-256, Git blob SHA-1 and byte length, including the **11 restored inputs**.
-The source manifest is `2e7d47d2a14fe1fec12fd574c1183fadf50ee25b6f10a62ffae8858e29885418`.
-The repaired P5 remains
-`89fed0a6078b5bb2ced8ce930ef6f56364acf2a4a9b24ab6210adfe90d89a643`,
-Git blob `62895078908ff748771da9a9fbcec6b36d34a803`.
+The published bootstrap reads the frozen register at historical Git commit
+`bec9a128922e4e431ce2ed862aa7802c902813ed`. Repository Git history is therefore
+part of this transport's runtime contract. In the direct remote clone that
+historical read matched the already-staged original bytes, before the replay
+with Git fetching disabled. The tested contract retains this Git metadata.
+The earlier detached local-object clone was an initial complete screening;
+its separate evidence remains in `phase_b_p10/`. The decisive replay and final
+completion audit are in `phase_b_remote/`.
 
-| Actual P8 baseline check | Result |
+Only published candidate entrypoints prepared the fixture:
+`python3 -B repro/wg0p10_regenerate_cold.py`, then
+`python3 -B repro/wg0p8_publication.py run`. Versioned directory markers provide
+the required parents at checkout. The published regeneration script provisions
+the owner and runs genuine crash/resume processes; the published conftest resolves
+the repository-relative cold path. No manual mkdir, owner reconstruction, file
+restore or path edit was used to make positive tests pass.
+
+## Independent custody evidence
+
+- **187/187 original source preimages** match the Phase A freeze for SHA-256,
+  Git blob and length, including **11/11 restored inherited files**.
+- Source manifest: `2e7d47d2a14fe1fec12fd574c1183fadf50ee25b6f10a62ffae8858e29885418`.
+- Repaired P5: SHA-256 `89fed0a6078b5bb2ced8ce930ef6f56364acf2a4a9b24ab6210adfe90d89a643`,
+  Git blob `62895078908ff748771da9a9fbcec6b36d34a803`, actual version
+  `WG0P6_RELEASE_VIEW_SOURCE_SNAPSHOT_BINDING@1`, loaded from the nested repaired path.
+- **1,272/1,272 tracked P10 artifact files** were independently hashed in the
+  initial clean clone and matched directly against the immutable P10 Git tree.
+  No symlinks. The missing WG0N verdict matches SHA-256
+  `839adc7508fcd81bd0a59af8f0fc8793b8ea075c80661683b776124cb90a228b`
+  from `6cd28b429504ad47e1bbc0fbcc6c4ef91db59ccd`.
+- All original frozen test and oracle preimages survive. The two changed original
+  Python files are the disclosed transport bootstrap and publication runner;
+  the D4 conftest and cold-regeneration script are added transport. Productive
+  P5 and frozen tests are unchanged. P10 also discloses D6: the runner now sets
+  the existing required adapter environment variables.
+- Final custody verification passed after all execution and hostile stimuli;
+  all 187 original inputs and all tracked P10 Python source bytes remain exact.
+
+See `02_CLEAN_CLONE_MODULE_AND_INPUT_SHA.json` for the full closure and deltas.
+
+## Actual fresh tests, not inherited tallies
+
+| Court | Actual result |
 | --- | --- |
-| Independent original-187 custody test | PASS |
-| D1 published probe-import | FAIL, exit 86: correct repaired module rejected |
-| D2 direct bootstrapped fresh-process import | Import exit 0, acceptance FAIL: swallowed atexit FileNotFoundError, no audit receipt |
-| D3 unchanged fresh-42 suite | 42 test cases, no assertion failures, 1 teardown error; acceptance FAIL |
-| D4 unchanged pointer test | 1 failure at missing runtime parent; fixture use not reached |
-| D4 independent fixture inspection | Placeholder cold path, no usable owner at that path; no manual repair |
-| D5 exact historical verdict at required candidate path | FAIL: absent |
-| Historical five WG0N controls, unmodified | 5 failures during construction; remain UNCONSTRUCTIBLE, not green |
-| Historical characterisation file, unmodified | 1 pass / 2 failures with COMPLETE_BOUND_SOURCE_DESCRIPTOR_CHANGED |
+| WG0O original authority seam | 17 passed |
+| WG0Q authority-body/epoch | 36 passed |
+| Mandatory inherited | 236 passed: 33 + 65 + 3 + 55 + 80 |
+| Fresh source-view | 42 passed, no teardown errors |
+| Pointer forgery in a new process | 1 passed |
+| Published transport guards | 9 passed |
+| Immutable independent acceptance suite | 6 passed |
 
-The independent acceptance suite therefore reports **1 passed / 5 failed** on
-the defective P8 baseline. These failures are intentional evidence that the
-frozen checks discriminate the predecessor; they are neither xfailed nor
-reported as repaired results. The pointer check's D3 dependency is disclosed:
-its failure alone does not isolate D4; separate path inspection records D4.
+The published native runner accounts for **331 passed / 0 failures / 0 errors /
+0 skips** (17 + 36 + 236 + 42). Transport9 and pointer1 are additional courts.
+The six independent acceptance checks include another execution of fresh42 and
+pointer1; those reruns are not counted as additional distinct scientific cases.
+Real JUnit, commands, exits and stdout/stderr are in
+`03_ALL_ACTUAL_FROZEN_NATIVE_AND_COLD_JUNIT/phase_b_remote/`.
 
-The exact WG0N historical verdict was retrieved from
-`6cd28b429504ad47e1bbc0fbcc6c4ef91db59ccd`, verified as
-`839adc7508fcd81bd0a59af8f0fc8793b8ea075c80661683b776124cb90a228b`,
-and frozen in this reviewer return only. It was **not** overlaid into the candidate.
+The same six acceptance checks gave **1 pass / 5 failures** on the defective P8
+baseline before P10 was available. Against P10 all six pass without changing
+one test byte. D1 accepts the exact repaired module; D2 observes a newly written
+atexit receipt; D3 has no directory/teardown failure; D4 executes the unchanged
+pointer test against a genuinely regenerated owner; D5 verifies the exact missing
+historical verdict. Twenty-four newly observed import audits, including the
+fresh cold-resume process, identify the native modules. Archived receipts were
+excluded from the fresh-audit count. The abrupt-exit crash intentionally does not
+run atexit callbacks.
 
-## Phase B remains untested
+## Native outputs and true cold OS boundaries
 
-No P10 clean clone, source closure, import receipts, WG0O17, WG0Q36,
-mandatory236, fresh42, positive42/4I03, genuine crash23/resume0 process pair,
-pointer refusal, transport9 or malicious-input checks were executed against
-P10. P9's published positive results are expectations, not this reviewer's
-observations. No inherited XML was presented as a new run.
+The raw authority receipts independently show **42 supported cells / 4 I03** for
+pristine P1, own-identity P2 and identical-body P4. All have effects SHA-256
+`4b9d03246167c93df6dde8d590fac33c24c51ef158d60abd8ee33601ca059550`.
+P3 replay returns the same cells/receipts with **0 new I03**. The original
+frontier remains **25 = 3 PRODUCED / 16 HELD / 6 INADMISSIBLE**; the ordinary
+conditional remains yes1/no1 over R2 and R3, denominator2.
 
-The pending replay must start from the exact completed remote P10 commit with
-no overlay. The published runner must create its own directories and cold
-owner fixture. Record both cold OS PIDs, exits, I03 counts, original manifest and
-receipt preimages; confirm pointer forgery makes zero new I03 calls. Verify all
-original source bytes and disclose any transport-only changes separately from
-the frozen original source manifest; do not silently rebaseline the strict
-original-187 acceptance test. Run all required native suites and hostile cases,
-including omission/hash change/wrong epoch/foreign authority, before acceptance.
+The published cold regeneration actually exited **23 then 0**, PIDs
+**66149 / 66162**, with **1 then 2 I03**. Both processes used the original
+three-unit manifest `bcd255228ef35edcb9b59436b76e1eb78947c07180f2936779572f510981c140`.
+The original native `UnitExecutionReceipt` preimage is restored byte-for-byte,
+receipt hash `caac243fc25c521acc10b2e082b55bdb854921dff8f730680d82eeaf2dcabcbd`.
+Measured file-fsync, replace and directory-fsync calls are retained. The original65
+suite separately made a genuine pair, PIDs **66505 / 66516**, exits **23 / 0**.
+These prove process-death recovery; they do not prove machine power-loss durability.
 
-No issuer can be inferred from source hashes; no temporal-owner rule,
-source-artifact revocation grant, original-source U/E_pre, N11/N12/OC05,
-V3/actor adoption or HQ acceptance follows from this packet.
+Fresh pointer-forgery PID **66616** differs from crash PID 66149. It reports
+`IdentityError`, **0 new I03**, 0 restored receipts, unchanged owner journal and
+custody, and the same three-unit manifest.
+
+## Hostiles and historical limits
+
+All **40 authority negatives** (11 original + 29 new) were independently checked
+from this clone's actual receipts: no supported original fact served and zero
+new I03, including wrong epoch and foreign authority. Typed exceptions/HOLDs are
+recorded per case. This does not invent an issuer from a matching source hash.
+
+Supplementary actual-source probes omitted a restored input, changed its bytes,
+and replaced repaired P5 with the pristine direct module. In every case both
+verifier and bootstrap exited **86**, before even the first payload statement,
+so no payload I03 occurred. Each hostile file was restored to its exact initial
+bytes, with successful custody verification between probes. These deliberate
+attacks happened after positive replay; they were not repair overlays. Their
+supplementary driver was written after P10 inspection and is not represented as
+part of the pre-P10 frozen test set.
+
+Unmodified historical tests were rerun against P10: **five construction failures**
+remain UNCONSTRUCTIBLE/NOT GREEN; the characterisation file remains **1 passed /
+2 failed** with `COMPLETE_BOUND_SOURCE_DESCRIPTOR_CHANGED`. These seven failures
+are required preserved historical statuses, outside the passing mandatory court.
+They are retained in JUnit without skip/xfail or relabelling.
+
+No original surveys, U/E_pre, independently signed institutional issuer,
+source-artifact revocation grant, new temporal-owner rule, N11/N12/OC05,
+V3/actor adoption, production grant or HQ self-adoption is established.
+No required Phase B execution remains unrun; the explicit non-grants remain.

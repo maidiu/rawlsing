@@ -1,0 +1,12 @@
+{
+  "command": [
+    "/usr/local/bin/python3",
+    "-B",
+    "-c",
+    "print('PAYLOAD_STARTED',flush=True); from phase_b_support_v1 import plan,execute; execute(plan()); print('EXECUTED_NATIVE_I03',flush=True)"
+  ],
+  "cwd": "/private/tmp/wg0p11-remote-filtered-p10/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court",
+  "exit": 86,
+  "stdout": "",
+  "stderr": "WG0P6_BOOTSTRAP_REFUSE:ImportError:SOURCE_PREIMAGE_CHANGED:/private/tmp/wg0p11-remote-filtered-p10/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/repro/wg0p4_workload.py\n"
+}

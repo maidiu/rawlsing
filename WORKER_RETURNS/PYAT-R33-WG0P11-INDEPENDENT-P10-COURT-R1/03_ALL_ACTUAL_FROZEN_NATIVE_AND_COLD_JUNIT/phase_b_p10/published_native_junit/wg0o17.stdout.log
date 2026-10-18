@@ -1,0 +1,26 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.11.3, pytest-9.1.1, pluggy-1.6.0 -- /usr/local/bin/python3
+rootdir: /private/tmp/wg0p11-independent-p10-c9f8767/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/candidate
+configfile: pytest.ini
+collecting ... collected 17 items
+
+runtime_phase_b/candidate::test_phase_a_oracle_is_self_consistent <- ../../../../reviewer_frozen/02_WG0P7_STAGED/reviewer/tests/test_authority_seam_court.py PASSED [  5%]
+runtime_phase_b/candidate::test_inherited_wg0n_status_preserved_not_regraded <- ../../../../reviewer_frozen/02_WG0P7_STAGED/reviewer/tests/test_authority_seam_court.py PASSED [ 11%]
+runtime_phase_b/candidate::test_forged_or_substituted_authority_does_not_serve_supported_fact[authority_issuer_substitution/A1_wrong_issuer_qauth_substitution] <- ../../../../reviewer_frozen/02_WG0P7_STAGED/reviewer/tests/test_authority_seam_court.py PASSED [ 17%]
+runtime_phase_b/candidate::test_forged_or_substituted_authority_does_not_serve_supported_fact[authority_issuer_substitution/A2_stale_issuer_epoch_same_identity] <- ../../../../reviewer_frozen/02_WG0P7_STAGED/reviewer/tests/test_authority_seam_court.py PASSED [ 23%]
+runtime_phase_b/candidate::test_forged_or_substituted_authority_does_not_serve_supported_fact[authority_issuer_substitution/A3_same_hash_foreign_signed_body] <- ../../../../reviewer_frozen/02_WG0P7_STAGED/reviewer/tests/test_authority_seam_court.py PASSED [ 29%]
+runtime_phase_b/candidate::test_forged_or_substituted_authority_does_not_serve_supported_fact[authority_issuer_substitution/A4_foreign_governed_operations_same_hash] <- ../../../../reviewer_frozen/02_WG0P7_STAGED/reviewer/tests/test_authority_seam_court.py PASSED [ 35%]
+runtime_phase_b/candidate::test_forged_or_substituted_authority_does_not_serve_supported_fact[authority_issuer_substitution/A5_foreign_authority_inside_authorities_tuple] <- ../../../../reviewer_frozen/02_WG0P7_STAGED/reviewer/tests/test_authority_seam_court.py PASSED [ 41%]
+runtime_phase_b/candidate::test_forged_or_substituted_authority_does_not_serve_supported_fact[signature_and_callback/B1_self_rehashed_checkpoint_foreign_signature] <- ../../../../reviewer_frozen/02_WG0P7_STAGED/reviewer/tests/test_authority_seam_court.py PASSED [ 47%]
+runtime_phase_b/candidate::test_forged_or_substituted_authority_does_not_serve_supported_fact[signature_and_callback/B2_foreign_signature_proper_tag] <- ../../../../reviewer_frozen/02_WG0P7_STAGED/reviewer/tests/test_authority_seam_court.py PASSED [ 52%]
+runtime_phase_b/candidate::test_forged_or_substituted_authority_does_not_serve_supported_fact[signature_and_callback/B3_captured_executor_callback_fabricates_fact] <- ../../../../reviewer_frozen/02_WG0P7_STAGED/reviewer/tests/test_authority_seam_court.py PASSED [ 58%]
+runtime_phase_b/candidate::test_forged_or_substituted_authority_does_not_serve_supported_fact[revocation_and_alias/C1_source_artifact_revocation_not_release_tag] <- ../../../../reviewer_frozen/02_WG0P7_STAGED/reviewer/tests/test_authority_seam_court.py PASSED [ 64%]
+runtime_phase_b/candidate::test_forged_or_substituted_authority_does_not_serve_supported_fact[revocation_and_alias/C2_missing_independent_issuer] <- ../../../../reviewer_frozen/02_WG0P7_STAGED/reviewer/tests/test_authority_seam_court.py PASSED [ 70%]
+runtime_phase_b/candidate::test_forged_or_substituted_authority_does_not_serve_supported_fact[revocation_and_alias/C3_alias_pointer_across_genuine_source_universes] <- ../../../../reviewer_frozen/02_WG0P7_STAGED/reviewer/tests/test_authority_seam_court.py PASSED [ 76%]
+runtime_phase_b/candidate::test_legitimate_owner_still_serves_supported_fact[positive_owner/P1_unmodified_owner_serves] <- ../../../../reviewer_frozen/02_WG0P7_STAGED/reviewer/tests/test_authority_seam_court.py PASSED [ 82%]
+runtime_phase_b/candidate::test_legitimate_owner_still_serves_supported_fact[positive_owner/P2_own_authority_identity_rebind_serves] <- ../../../../reviewer_frozen/02_WG0P7_STAGED/reviewer/tests/test_authority_seam_court.py PASSED [ 88%]
+runtime_phase_b/candidate::test_legitimate_owner_still_serves_supported_fact[positive_owner/P3_replay_identical_consumer] <- ../../../../reviewer_frozen/02_WG0P7_STAGED/reviewer/tests/test_authority_seam_court.py PASSED [ 94%]
+runtime_phase_b/candidate::test_phase_a_artifacts_are_frozen_and_identified <- ../../../../reviewer_frozen/02_WG0P7_STAGED/reviewer/tests/test_authority_seam_court.py PASSED [100%]
+
+- generated xml file: /private/tmp/wg0p11-independent-p10-c9f8767/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/04_JUNIT_LOGS/wg0o17.xml -
+============================= 17 passed in 18.41s ==============================
