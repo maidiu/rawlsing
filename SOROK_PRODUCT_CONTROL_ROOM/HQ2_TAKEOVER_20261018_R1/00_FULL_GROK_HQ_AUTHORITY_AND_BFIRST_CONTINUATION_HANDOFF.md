@@ -1,5 +1,8 @@
 # SOROK HQ2 → fully grounded successor: 18 October 2026 no-loss takeover R1
 
+
+**MANDATORY PRE-MAIN HQ-EQUIVALENCE SECOND READ (18 OCT 2026 CORRECTION):** Immediately after this handoff, read and execute `SOROK_PRODUCT_CONTROL_ROOM/HQ2_TAKEOVER_20261018_R1/01_PREMAIN_HQ_EQUIVALENCE_AND_NONDELEGABLE_COMMAND_GATE_R1.md`. The original handoff's instruction to READ PRE-MAIN is necessary but insufficient: a successor must actually issue a scoped `GOVERNANCE_PROTOCOLS_R1/DECISION_AGENT_GROUNDING_PROTOCOL.md` receipt, sweep relevant central state/obligation/reintegration IDs, observe adoption/ancestry and return-required distinctions, and exercise nondelegable whole-Sorok terminal-critical-path judgment. No HQ-level adjudication, formal accession, adoption or worker-dispatch authority is conferred by merely reading. Existing scoped user-directed research continues only within already authorized ceilings.
+
 **Status:** PROJECT-OWNER-REQUESTED CHAT/WORKSTREAM HANDOFF__HQ2-SCOPED_RESEARCH_CONTINUATION__FORMAL_SOROK_HQ_ACTIVATION_NOT ESTABLISHED__NO ACTOR/SEMANTIC/SOURCE GRANT.
 **Repository:** maidiu/rawlsing (private). **Parent HQ2 control cut:** `agent/vozhd2-sorok-20261017-hq329-e2-fix-m2-intake-r1@c8f6a6d3ba156630b30e2d567f49465e5ec50c4d` before this handoff. This document is **documentary succession context**, not permission to modify canonical PRE-MAIN semantic/actor source law.
 **Truth categories:** User's stated purpose/choice; accepted canonical law; direct-verifiable worker return and native execution as reported; project owner/HQ acceptance; unresolved candidate. Never collapse these.
