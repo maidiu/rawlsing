@@ -1,0 +1,89 @@
+{
+  "cold": {
+    "children": [
+      {
+        "bytes": 1099273,
+        "command": [
+          "python3",
+          "runtime/two_epoch_world.py",
+          "02_PINNED_NATIVE_TEMPORAL_IMPORTS_AND_JUNIT/cold_a.json"
+        ],
+        "exit_code": 0,
+        "label": "cold_a",
+        "log": "cold_a.log",
+        "pid": 31393,
+        "sha256": "c4697da7e08a6920d2208e46274a0bab122ecdd334249f6268875625ea2f857b"
+      },
+      {
+        "bytes": 1099273,
+        "command": [
+          "python3",
+          "runtime/two_epoch_world.py",
+          "02_PINNED_NATIVE_TEMPORAL_IMPORTS_AND_JUNIT/cold_b.json"
+        ],
+        "exit_code": 0,
+        "label": "cold_b",
+        "log": "cold_b.log",
+        "pid": 31397,
+        "sha256": "c4697da7e08a6920d2208e46274a0bab122ecdd334249f6268875625ea2f857b"
+      }
+    ],
+    "execution": "two fresh child processes"
+  },
+  "driver": {
+    "command": "python3 runtime/two_epoch_world.py 03_WORLD_TWO_EPOCH_CONSUMER_DELTA.json",
+    "exit_code": 0
+  },
+  "environment": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONHASHSEED": "0"
+  },
+  "interpreter": {
+    "command": "python3 -V",
+    "version": "3.11.3"
+  },
+  "pytest": {
+    "command": "python3 -m pytest --version",
+    "version": "9.1.1"
+  },
+  "sanitization": {
+    "hostname_attribute_replaced_with": "sanitized-host",
+    "reason": "no personal machine identity in published evidence",
+    "testcase_counts_unchanged": true
+  },
+  "schema": "R35_T35_EXECUTED_COMMANDS@1",
+  "suites": [
+    {
+      "command": "python3 -m pytest tests -q --junitxml=02_PINNED_NATIVE_TEMPORAL_IMPORTS_AND_JUNIT/our_suite.xml",
+      "exit_code": 0,
+      "log": "our_suite.log",
+      "name": "our_suite",
+      "tests": 41,
+      "xml": "our_suite.xml"
+    },
+    {
+      "command": "python3 -m pytest -p no:cacheprovider rawlsing_next/tests/test_m4_v557_v558_publication_repository.py rawlsing_next/tests/test_m5_runtime_rsc_peer_prior.py -q --junitxml=02_PINNED_NATIVE_TEMPORAL_IMPORTS_AND_JUNIT/original_m4_m5.xml",
+      "exit_code": 0,
+      "log": "original_m4_m5.log",
+      "name": "original_m4_m5",
+      "tests": 30,
+      "xml": "original_m4_m5.xml"
+    },
+    {
+      "command": "python3 -m pytest -p no:cacheprovider rawlsing_next/tests/test_pre553_empirical_possibility_provider.py rawlsing_next/tests/test_pre553_empirical_query.py -q --junitxml=02_PINNED_NATIVE_TEMPORAL_IMPORTS_AND_JUNIT/original_empirical_chain.xml",
+      "exit_code": 0,
+      "log": "original_empirical_chain.log",
+      "name": "original_empirical_chain",
+      "tests": 75,
+      "xml": "original_empirical_chain.xml"
+    },
+    {
+      "command": "python3 -m pytest -p no:cacheprovider runtime/author_courts/test_product_r10.py -q --junitxml=02_PINNED_NATIVE_TEMPORAL_IMPORTS_AND_JUNIT/original_e04_author.xml",
+      "exit_code": 0,
+      "log": "original_e04_author.log",
+      "name": "original_e04_author",
+      "tests": 37,
+      "xml": "original_e04_author.xml"
+    }
+  ]
+}

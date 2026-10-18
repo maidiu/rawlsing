@@ -1,0 +1,127 @@
+{
+  "assignments_completed": [
+    "R35 T35 two-epoch native E04/M4/M5 world-consumer positive",
+    "source-free N8E admissibility/EE12 exercise",
+    "historical V553 candidate-method evaluation",
+    "read-only opportunity contract"
+  ],
+  "authorization_grade": "TEST_ONLY_SOURCEFREE_NONINSTALLING",
+  "claim_grade": "bounded source-free executable method and world-consumer positive; no EE12/N8E/N9/OC05/N10W/N8S/N11/N12/actor issuance",
+  "cold_replay": {
+    "byte_identical": true,
+    "child_processes": 2,
+    "sha256": "c4697da7e08a6920d2208e46274a0bab122ecdd334249f6268875625ea2f857b"
+  },
+  "environment_id": "local-darwin-shared-store-r35t35",
+  "epoch_id": "r35t35-20261018-1",
+  "execution_grade": "S2 governed local shared-store worktree",
+  "expiry_trigger": "retire on interpreter/package change, branch reset, sealed-startup mismatch, or any source/permission widening",
+  "git": {
+    "command": "git",
+    "version": "2.39.1"
+  },
+  "import_resolution": {
+    "absolute_host_paths_recorded": false,
+    "all_pinned_closure_match": true,
+    "import_count": 53,
+    "kinds": {
+      "SEALED_NATIVE": 41,
+      "STAGED_PINNED_NATIVE": 9,
+      "WORKER_TRANSPORT": 3
+    },
+    "pinned_closure_count": 26,
+    "resolution": "staged non-sealed owner modules by exact pinned blob; sealed rawlsing_next and data modules from the sealed checkout"
+  },
+  "incremental_money": "UNKNOWN",
+  "interpreter": {
+    "command": "python3",
+    "implementation": "CPython",
+    "version": "3.11.3"
+  },
+  "last_live_probe_at": "2026-10-18T23:15:55Z",
+  "machine_alias": "darwin-x86_64-local",
+  "next_domain_affinity": [
+    "temporal world consumer",
+    "EE12 admissibility",
+    "selected-world replay/revocation",
+    "N8E pending owner bridge"
+  ],
+  "no_absolute_host_paths": true,
+  "node": {
+    "command": "node",
+    "status": "NOT_REQUIRED"
+  },
+  "packages": {
+    "pandas": "3.0.6",
+    "pytest": "9.1.1"
+  },
+  "provider": {
+    "billing_class": "UNKNOWN",
+    "model": "V4.1 Flash Standard",
+    "name": "DeepSeek",
+    "reasoning_effort": "standard"
+  },
+  "pytest": {
+    "command": "python3 -m pytest",
+    "version": "9.1.1"
+  },
+  "quota_tier": "UNKNOWN",
+  "reviewer_conflicts": [
+    "no independent reviewer has accepted this return; WP2/WP2I authors are not reviewers of this worker"
+  ],
+  "schema": "R35_T35_SANITIZED_ENVIRONMENT_PASSPORT@1",
+  "session_alias": "deepseek-flash-r35t35-bounded-worker",
+  "source_privacy_gate": "no original respondent file, SAV/DTA, private row, token, password, billing identifier or personal filesystem path read or published",
+  "status": "LIVE_VERIFIED",
+  "surface": "existing local shared Git worktree, non-sparse full checkout at sealed startup",
+  "tests": {
+    "suites": [
+      {
+        "errors": 0,
+        "exit_code": 0,
+        "failures": 0,
+        "name": "our_suite",
+        "skipped": 0,
+        "tests": 41
+      },
+      {
+        "errors": 0,
+        "exit_code": 0,
+        "failures": 0,
+        "name": "original_m4_m5",
+        "skipped": 0,
+        "tests": 30
+      },
+      {
+        "errors": 0,
+        "exit_code": 0,
+        "failures": 0,
+        "name": "original_empirical_chain",
+        "skipped": 0,
+        "tests": 75
+      },
+      {
+        "errors": 0,
+        "exit_code": 0,
+        "failures": 0,
+        "name": "original_e04_author",
+        "skipped": 0,
+        "tests": 37
+      }
+    ],
+    "total_errors": 0,
+    "total_failures": 0,
+    "total_skipped": 0,
+    "total_tests": 183
+  },
+  "worktree": {
+    "branch": "agent/rabochii-pyat-r35-t35-historical-temporal-world-consumer-r1",
+    "branch_was_at_commission_tip_before_work": true,
+    "no_sparse_skip_worktree": true,
+    "sealed_startup": "5064d76b3c58a8225693055a8ec6bb07e216d9b1"
+  },
+  "writable_marker": {
+    "path": "WORKER_RETURNS/PYAT-R35-T35-TEMPORAL-WORLD-POSITIVE-R1",
+    "writable": true
+  }
+}

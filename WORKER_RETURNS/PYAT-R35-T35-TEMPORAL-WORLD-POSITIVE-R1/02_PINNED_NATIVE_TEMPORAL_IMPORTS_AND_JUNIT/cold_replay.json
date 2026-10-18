@@ -1,0 +1,50 @@
+{
+  "all_children_exit_zero": true,
+  "byte_identical": true,
+  "children": [
+    {
+      "bytes": 1099273,
+      "command": [
+        "python3",
+        "runtime/two_epoch_world.py",
+        "02_PINNED_NATIVE_TEMPORAL_IMPORTS_AND_JUNIT/cold_a.json"
+      ],
+      "exit_code": 0,
+      "label": "cold_a",
+      "log": "cold_a.log",
+      "pid": 31393,
+      "sha256": "c4697da7e08a6920d2208e46274a0bab122ecdd334249f6268875625ea2f857b"
+    },
+    {
+      "bytes": 1099273,
+      "command": [
+        "python3",
+        "runtime/two_epoch_world.py",
+        "02_PINNED_NATIVE_TEMPORAL_IMPORTS_AND_JUNIT/cold_b.json"
+      ],
+      "exit_code": 0,
+      "label": "cold_b",
+      "log": "cold_b.log",
+      "pid": 31397,
+      "sha256": "c4697da7e08a6920d2208e46274a0bab122ecdd334249f6268875625ea2f857b"
+    }
+  ],
+  "evidence_note": "The product contains no wall clock, PID or absolute host path; byte equality is therefore a full product equality check.",
+  "execution": "two fresh interpreter processes; no shared module state",
+  "failed_assertions": {
+    "cold_a": [],
+    "cold_b": []
+  },
+  "interpreter": {
+    "executable": "python3",
+    "hash_seed": "0",
+    "implementation": "CPython",
+    "version": "3.11.3"
+  },
+  "schema": "R35_T35_COLD_CHILD_REPLAY@1",
+  "sha256_equal": true,
+  "terminals": [
+    "TWO_EPOCH_TEST_ONLY_NATIVE_WORLD_CONSUMER_POSITIVE__N8E_ABSENT_HOLD",
+    "TWO_EPOCH_TEST_ONLY_NATIVE_WORLD_CONSUMER_POSITIVE__N8E_ABSENT_HOLD"
+  ]
+}

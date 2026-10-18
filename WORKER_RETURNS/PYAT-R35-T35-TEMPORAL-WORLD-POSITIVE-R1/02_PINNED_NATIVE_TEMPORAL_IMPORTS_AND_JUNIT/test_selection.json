@@ -1,0 +1,55 @@
+{
+  "note": "JUnit XML is pytest JUnit XML; there are no Java tests in this repository. Test events are implementation/regression observations, not independent scientific acceptance decisions.",
+  "schema": "R35_T35_TEST_SELECTION@1",
+  "suites": [
+    {
+      "command": "python3 -m pytest tests -q --junitxml=02_PINNED_NATIVE_TEMPORAL_IMPORTS_AND_JUNIT/our_suite.xml",
+      "errors": 0,
+      "exit_code": 0,
+      "failures": 0,
+      "log": "our_suite.log",
+      "name": "our_suite",
+      "purpose": "runtime tests: 41 frozen clock/EE12/world cases",
+      "skipped": 0,
+      "tests": 41,
+      "xml": "our_suite.xml"
+    },
+    {
+      "command": "python3 -m pytest -p no:cacheprovider rawlsing_next/tests/test_m4_v557_v558_publication_repository.py rawlsing_next/tests/test_m5_runtime_rsc_peer_prior.py -q --junitxml=02_PINNED_NATIVE_TEMPORAL_IMPORTS_AND_JUNIT/original_m4_m5.xml",
+      "errors": 0,
+      "exit_code": 0,
+      "failures": 0,
+      "log": "original_m4_m5.log",
+      "name": "original_m4_m5",
+      "purpose": "original sealed M4 V557/V558 and M5 RSC/peer-prior suites",
+      "skipped": 0,
+      "tests": 30,
+      "xml": "original_m4_m5.xml"
+    },
+    {
+      "command": "python3 -m pytest -p no:cacheprovider rawlsing_next/tests/test_pre553_empirical_possibility_provider.py rawlsing_next/tests/test_pre553_empirical_query.py -q --junitxml=02_PINNED_NATIVE_TEMPORAL_IMPORTS_AND_JUNIT/original_empirical_chain.xml",
+      "errors": 0,
+      "exit_code": 0,
+      "failures": 0,
+      "log": "original_empirical_chain.log",
+      "name": "original_empirical_chain",
+      "purpose": "original sealed empirical possibility provider and query suites",
+      "skipped": 0,
+      "tests": 75,
+      "xml": "original_empirical_chain.xml"
+    },
+    {
+      "command": "python3 -m pytest -p no:cacheprovider runtime/author_courts/test_product_r10.py -q --junitxml=02_PINNED_NATIVE_TEMPORAL_IMPORTS_AND_JUNIT/original_e04_author.xml",
+      "errors": 0,
+      "exit_code": 0,
+      "failures": 0,
+      "log": "original_e04_author.log",
+      "name": "original_e04_author",
+      "purpose": "original R10 E04 author court over the unchanged product package",
+      "skipped": 0,
+      "tests": 37,
+      "xml": "original_e04_author.xml"
+    }
+  ],
+  "total_tests": 183
+}
