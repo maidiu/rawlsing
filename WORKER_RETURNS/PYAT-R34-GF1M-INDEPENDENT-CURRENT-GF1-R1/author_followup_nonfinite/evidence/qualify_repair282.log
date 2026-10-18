@@ -1,0 +1,27 @@
+oracle_derivation exit 0 Independent-of-candidate oracle derivation: 81 universe cases, 82 cold cases
+
+retained_replay exit 0 t 'gf1_pair_support_consumer' in 'R34-GF1M-independent-current-wt/WORKER_RETURNS/PYAT-R34-GF1M-INDEPENDENT-CURRENT-GF1-R1/author_followup_nonfinite/sta...-R1/court/repro/test_gf1_generic_pair.py::test_generic_native_semantics_hold_retained\n\n44 tests collected in 0.52s\n'
+
+test_gf1i_independent.py:303: AssertionError
+=========================== short test summary info ============================
+FAILED test_gf1i_independent.py::test_named_downstream_consumer_module_is_absent_from_candidate
+FAILED test_gf1i_independent.py::test_candidate_frozen_44_suite_cannot_be_collected
+2 failed, 17 passed in 2.85s
+
+RETAINED REPLAY VERIFIED; HISTORICAL DIAGNOSTICS PRESERVED; CURRENT GATE: RUN qualify.py
+
+staging_missing_oracle_negative exit 2 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing/R34-GF1M-independent-current-wt/WORKER_RETURNS/PYAT-R34-GF1M-INDEPENDENT-CURRENT-GF1-R1/author_followup_nonfinite/stage/WORKER_RETURNS/PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1/stage/WORKER_RETURNS/PYAT-R18-GF1I-INDEPENDENT-GENERIC-PAIR-R1/01_PRECOMMITTED_GENERIC_NATIVE_PAIR_ORACLE.json'
+=========================== short test summary info ============================
+ERROR test_gf1_generic_pair.py - FileNotFoundError: [Errno 2] No such file or...
+!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+no tests collected, 1 error in 0.68s
+
+current_gf1f102 exit 0 ........................................................................ [ 70%]
+..............................                                           [100%]
+102 passed in 1.41s
+
+current_gf1i19 exit 0 ...................                                                      [100%]
+19 passed in 5.53s
+
+CURRENT QUALIFICATION: 282 PASS / 0 FAIL / 0 ERROR / 0 SKIP; NESTED NATIVE44 PASS; NO FAILURE ALLOWLIST

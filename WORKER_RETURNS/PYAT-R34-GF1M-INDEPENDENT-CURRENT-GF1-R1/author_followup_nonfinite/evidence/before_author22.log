@@ -1,0 +1,164 @@
+FFFF..FFFF............                                                   [100%]
+=================================== FAILURES ===================================
+_ test_nonfinite_category_typed_refusal_has_no_scientific_fields[0-positive_inf-condition] _
+
+role = 'condition', nonfinite = inf, position = 0
+
+    @pytest.mark.parametrize('role',['condition','target'])
+    @pytest.mark.parametrize('nonfinite',[float('inf'),float('-inf'),float('nan')],ids=['positive_inf','negative_inf','nan'])
+    @pytest.mark.parametrize('position',[0,1])
+    def test_nonfinite_category_typed_refusal_has_no_scientific_fields(role,nonfinite,position):
+        domain=[1.0,1.0];domain[position]=nonfinite
+        relation=f.build(role,tuple(domain))
+        got=f.p.h.CONS(relation)
+>       assert got['decision_state']=='CONSUMER_RELATION_INTEGRITY_REJECTED',got
+E       AssertionError: {'condition_states_with_positive_denominator': [inf, 1.0], 'consumer_id': 'GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ON...family': 'GF1_PAIR_SUPPORT_SIGNATURE_RESULT_TEST_ONLY@1.0.0', 'decision_state': 'PAIR_SUPPORT_SIGNATURE_COMPUTED', ...}
+E       assert 'PAIR_SUPPORT...TURE_COMPUTED' == 'CONSUMER_REL...RITY_REJECTED'
+E         
+E         - CONSUMER_RELATION_INTEGRITY_REJECTED
+E         + PAIR_SUPPORT_SIGNATURE_COMPUTED
+
+../../../../../../../../test_nonfinite_refusal.py:14: AssertionError
+_ test_nonfinite_category_typed_refusal_has_no_scientific_fields[0-positive_inf-target] _
+
+role = 'target', nonfinite = inf, position = 0
+
+    @pytest.mark.parametrize('role',['condition','target'])
+    @pytest.mark.parametrize('nonfinite',[float('inf'),float('-inf'),float('nan')],ids=['positive_inf','negative_inf','nan'])
+    @pytest.mark.parametrize('position',[0,1])
+    def test_nonfinite_category_typed_refusal_has_no_scientific_fields(role,nonfinite,position):
+        domain=[1.0,1.0];domain[position]=nonfinite
+        relation=f.build(role,tuple(domain))
+        got=f.p.h.CONS(relation)
+>       assert got['decision_state']=='CONSUMER_RELATION_INTEGRITY_REJECTED',got
+E       AssertionError: {'condition_states_with_positive_denominator': ['0', '1'], 'consumer_id': 'GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ON...family': 'GF1_PAIR_SUPPORT_SIGNATURE_RESULT_TEST_ONLY@1.0.0', 'decision_state': 'PAIR_SUPPORT_SIGNATURE_COMPUTED', ...}
+E       assert 'PAIR_SUPPORT...TURE_COMPUTED' == 'CONSUMER_REL...RITY_REJECTED'
+E         
+E         - CONSUMER_RELATION_INTEGRITY_REJECTED
+E         + PAIR_SUPPORT_SIGNATURE_COMPUTED
+
+../../../../../../../../test_nonfinite_refusal.py:14: AssertionError
+_ test_nonfinite_category_typed_refusal_has_no_scientific_fields[0-negative_inf-condition] _
+
+role = 'condition', nonfinite = -inf, position = 0
+
+    @pytest.mark.parametrize('role',['condition','target'])
+    @pytest.mark.parametrize('nonfinite',[float('inf'),float('-inf'),float('nan')],ids=['positive_inf','negative_inf','nan'])
+    @pytest.mark.parametrize('position',[0,1])
+    def test_nonfinite_category_typed_refusal_has_no_scientific_fields(role,nonfinite,position):
+        domain=[1.0,1.0];domain[position]=nonfinite
+        relation=f.build(role,tuple(domain))
+        got=f.p.h.CONS(relation)
+>       assert got['decision_state']=='CONSUMER_RELATION_INTEGRITY_REJECTED',got
+E       AssertionError: {'condition_states_with_positive_denominator': [-inf, 1.0], 'consumer_id': 'GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_O...family': 'GF1_PAIR_SUPPORT_SIGNATURE_RESULT_TEST_ONLY@1.0.0', 'decision_state': 'PAIR_SUPPORT_SIGNATURE_COMPUTED', ...}
+E       assert 'PAIR_SUPPORT...TURE_COMPUTED' == 'CONSUMER_REL...RITY_REJECTED'
+E         
+E         - CONSUMER_RELATION_INTEGRITY_REJECTED
+E         + PAIR_SUPPORT_SIGNATURE_COMPUTED
+
+../../../../../../../../test_nonfinite_refusal.py:14: AssertionError
+_ test_nonfinite_category_typed_refusal_has_no_scientific_fields[0-negative_inf-target] _
+
+role = 'target', nonfinite = -inf, position = 0
+
+    @pytest.mark.parametrize('role',['condition','target'])
+    @pytest.mark.parametrize('nonfinite',[float('inf'),float('-inf'),float('nan')],ids=['positive_inf','negative_inf','nan'])
+    @pytest.mark.parametrize('position',[0,1])
+    def test_nonfinite_category_typed_refusal_has_no_scientific_fields(role,nonfinite,position):
+        domain=[1.0,1.0];domain[position]=nonfinite
+        relation=f.build(role,tuple(domain))
+        got=f.p.h.CONS(relation)
+>       assert got['decision_state']=='CONSUMER_RELATION_INTEGRITY_REJECTED',got
+E       AssertionError: {'condition_states_with_positive_denominator': ['0', '1'], 'consumer_id': 'GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ON...family': 'GF1_PAIR_SUPPORT_SIGNATURE_RESULT_TEST_ONLY@1.0.0', 'decision_state': 'PAIR_SUPPORT_SIGNATURE_COMPUTED', ...}
+E       assert 'PAIR_SUPPORT...TURE_COMPUTED' == 'CONSUMER_REL...RITY_REJECTED'
+E         
+E         - CONSUMER_RELATION_INTEGRITY_REJECTED
+E         + PAIR_SUPPORT_SIGNATURE_COMPUTED
+
+../../../../../../../../test_nonfinite_refusal.py:14: AssertionError
+_ test_nonfinite_category_typed_refusal_has_no_scientific_fields[1-positive_inf-condition] _
+
+role = 'condition', nonfinite = inf, position = 1
+
+    @pytest.mark.parametrize('role',['condition','target'])
+    @pytest.mark.parametrize('nonfinite',[float('inf'),float('-inf'),float('nan')],ids=['positive_inf','negative_inf','nan'])
+    @pytest.mark.parametrize('position',[0,1])
+    def test_nonfinite_category_typed_refusal_has_no_scientific_fields(role,nonfinite,position):
+        domain=[1.0,1.0];domain[position]=nonfinite
+        relation=f.build(role,tuple(domain))
+        got=f.p.h.CONS(relation)
+>       assert got['decision_state']=='CONSUMER_RELATION_INTEGRITY_REJECTED',got
+E       AssertionError: {'condition_states_with_positive_denominator': [1.0, inf], 'consumer_id': 'GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ON...family': 'GF1_PAIR_SUPPORT_SIGNATURE_RESULT_TEST_ONLY@1.0.0', 'decision_state': 'PAIR_SUPPORT_SIGNATURE_COMPUTED', ...}
+E       assert 'PAIR_SUPPORT...TURE_COMPUTED' == 'CONSUMER_REL...RITY_REJECTED'
+E         
+E         - CONSUMER_RELATION_INTEGRITY_REJECTED
+E         + PAIR_SUPPORT_SIGNATURE_COMPUTED
+
+../../../../../../../../test_nonfinite_refusal.py:14: AssertionError
+_ test_nonfinite_category_typed_refusal_has_no_scientific_fields[1-positive_inf-target] _
+
+role = 'target', nonfinite = inf, position = 1
+
+    @pytest.mark.parametrize('role',['condition','target'])
+    @pytest.mark.parametrize('nonfinite',[float('inf'),float('-inf'),float('nan')],ids=['positive_inf','negative_inf','nan'])
+    @pytest.mark.parametrize('position',[0,1])
+    def test_nonfinite_category_typed_refusal_has_no_scientific_fields(role,nonfinite,position):
+        domain=[1.0,1.0];domain[position]=nonfinite
+        relation=f.build(role,tuple(domain))
+        got=f.p.h.CONS(relation)
+>       assert got['decision_state']=='CONSUMER_RELATION_INTEGRITY_REJECTED',got
+E       AssertionError: {'condition_states_with_positive_denominator': ['0', '1'], 'consumer_id': 'GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ON...family': 'GF1_PAIR_SUPPORT_SIGNATURE_RESULT_TEST_ONLY@1.0.0', 'decision_state': 'PAIR_SUPPORT_SIGNATURE_COMPUTED', ...}
+E       assert 'PAIR_SUPPORT...TURE_COMPUTED' == 'CONSUMER_REL...RITY_REJECTED'
+E         
+E         - CONSUMER_RELATION_INTEGRITY_REJECTED
+E         + PAIR_SUPPORT_SIGNATURE_COMPUTED
+
+../../../../../../../../test_nonfinite_refusal.py:14: AssertionError
+_ test_nonfinite_category_typed_refusal_has_no_scientific_fields[1-negative_inf-condition] _
+
+role = 'condition', nonfinite = -inf, position = 1
+
+    @pytest.mark.parametrize('role',['condition','target'])
+    @pytest.mark.parametrize('nonfinite',[float('inf'),float('-inf'),float('nan')],ids=['positive_inf','negative_inf','nan'])
+    @pytest.mark.parametrize('position',[0,1])
+    def test_nonfinite_category_typed_refusal_has_no_scientific_fields(role,nonfinite,position):
+        domain=[1.0,1.0];domain[position]=nonfinite
+        relation=f.build(role,tuple(domain))
+        got=f.p.h.CONS(relation)
+>       assert got['decision_state']=='CONSUMER_RELATION_INTEGRITY_REJECTED',got
+E       AssertionError: {'condition_states_with_positive_denominator': [1.0, -inf], 'consumer_id': 'GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_O...family': 'GF1_PAIR_SUPPORT_SIGNATURE_RESULT_TEST_ONLY@1.0.0', 'decision_state': 'PAIR_SUPPORT_SIGNATURE_COMPUTED', ...}
+E       assert 'PAIR_SUPPORT...TURE_COMPUTED' == 'CONSUMER_REL...RITY_REJECTED'
+E         
+E         - CONSUMER_RELATION_INTEGRITY_REJECTED
+E         + PAIR_SUPPORT_SIGNATURE_COMPUTED
+
+../../../../../../../../test_nonfinite_refusal.py:14: AssertionError
+_ test_nonfinite_category_typed_refusal_has_no_scientific_fields[1-negative_inf-target] _
+
+role = 'target', nonfinite = -inf, position = 1
+
+    @pytest.mark.parametrize('role',['condition','target'])
+    @pytest.mark.parametrize('nonfinite',[float('inf'),float('-inf'),float('nan')],ids=['positive_inf','negative_inf','nan'])
+    @pytest.mark.parametrize('position',[0,1])
+    def test_nonfinite_category_typed_refusal_has_no_scientific_fields(role,nonfinite,position):
+        domain=[1.0,1.0];domain[position]=nonfinite
+        relation=f.build(role,tuple(domain))
+        got=f.p.h.CONS(relation)
+>       assert got['decision_state']=='CONSUMER_RELATION_INTEGRITY_REJECTED',got
+E       AssertionError: {'condition_states_with_positive_denominator': ['0', '1'], 'consumer_id': 'GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ON...family': 'GF1_PAIR_SUPPORT_SIGNATURE_RESULT_TEST_ONLY@1.0.0', 'decision_state': 'PAIR_SUPPORT_SIGNATURE_COMPUTED', ...}
+E       assert 'PAIR_SUPPORT...TURE_COMPUTED' == 'CONSUMER_REL...RITY_REJECTED'
+E         
+E         - CONSUMER_RELATION_INTEGRITY_REJECTED
+E         + PAIR_SUPPORT_SIGNATURE_COMPUTED
+
+../../../../../../../../test_nonfinite_refusal.py:14: AssertionError
+=========================== short test summary info ============================
+FAILED ../../../../../../../../test_nonfinite_refusal.py::test_nonfinite_category_typed_refusal_has_no_scientific_fields[0-positive_inf-condition]
+FAILED ../../../../../../../../test_nonfinite_refusal.py::test_nonfinite_category_typed_refusal_has_no_scientific_fields[0-positive_inf-target]
+FAILED ../../../../../../../../test_nonfinite_refusal.py::test_nonfinite_category_typed_refusal_has_no_scientific_fields[0-negative_inf-condition]
+FAILED ../../../../../../../../test_nonfinite_refusal.py::test_nonfinite_category_typed_refusal_has_no_scientific_fields[0-negative_inf-target]
+FAILED ../../../../../../../../test_nonfinite_refusal.py::test_nonfinite_category_typed_refusal_has_no_scientific_fields[1-positive_inf-condition]
+FAILED ../../../../../../../../test_nonfinite_refusal.py::test_nonfinite_category_typed_refusal_has_no_scientific_fields[1-positive_inf-target]
+FAILED ../../../../../../../../test_nonfinite_refusal.py::test_nonfinite_category_typed_refusal_has_no_scientific_fields[1-negative_inf-condition]
+FAILED ../../../../../../../../test_nonfinite_refusal.py::test_nonfinite_category_typed_refusal_has_no_scientific_fields[1-negative_inf-target]
+8 failed, 14 passed in 1.02s

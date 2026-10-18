@@ -1,0 +1,81 @@
+F....................................................................... [ 72%]
+................F........F.F                                             [100%]
+=================================== FAILURES ===================================
+_________________ test_universe_class_and_derived_fields[0000] _________________
+
+row = {'cells': {'00': 0, '01': 0, '10': 0, '11': 0}, 'eligible': 0, 'expected_class': 'UNDETERMINED_ZERO_SUPPORT_RISK', 'expected_joint_support_total': 0, ...}
+
+    @pytest.mark.parametrize("row", ORACLE["universe"],
+                             ids=lambda r: "%d%d%d%d" % (r["cells"]["00"], r["cells"]["01"],
+                                                         r["cells"]["10"], r["cells"]["11"]))
+    def test_universe_class_and_derived_fields(row):
+        cells = row["cells"]
+        rel = build_relation(cells, eligible=row["eligible"])
+        out = C.compute_pair_support_signature(rel)
+        assert out["decision_state"] == "PAIR_SUPPORT_SIGNATURE_COMPUTED"
+>       assert out["separation_class"] == row["expected_class"]
+E       AssertionError: assert 'UNDETERMINED...ELIGIBLE_RISK' == 'UNDETERMINED..._SUPPORT_RISK'
+E         
+E         - UNDETERMINED_ZERO_SUPPORT_RISK
+E         + UNDETERMINED_NO_ELIGIBLE_RISK
+
+tests/test_gf1f_independent_consumer.py:37: AssertionError
+____________________ test_named_cases[zero_supported_risk] _____________________
+
+name = 'zero_supported_risk'
+
+    @pytest.mark.parametrize("name", sorted(ORACLE["named_cases"]))
+    def test_named_cases(name):
+        case = ORACLE["named_cases"][name]
+        cells = {k: case[k] for k in ("00", "01", "10", "11")}
+        rel = build_relation(cells)
+        out = C.compute_pair_support_signature(rel)
+>       assert out["separation_class"] == case["expected_class"]
+E       AssertionError: assert 'UNDETERMINED...ELIGIBLE_RISK' == 'UNDETERMINED..._SUPPORT_RISK'
+E         
+E         - UNDETERMINED_ZERO_SUPPORT_RISK
+E         + UNDETERMINED_NO_ELIGIBLE_RISK
+
+tests/test_gf1f_independent_consumer.py:52: AssertionError
+______________ test_missing_suppressed_relation_is_empty_response ______________
+
+    def test_missing_suppressed_relation_is_empty_response():
+        rel = build_relation(cells_of(0, 0, 0, 0), typed_state="MISSING_TARGET_STATE")
+        out = C.compute_pair_support_signature(rel)
+>       assert out["decision_state"] == "RESPONSE_INPUTS_VALID_EMPTY"
+E       AssertionError: assert 'CONSUMER_PRO...TATE_BLOCKING' == 'RESPONSE_INPUTS_VALID_EMPTY'
+E         
+E         - RESPONSE_INPUTS_VALID_EMPTY
+E         + CONSUMER_PRODUCER_TYPED_STATE_BLOCKING
+
+tests/test_gf1f_independent_consumer.py:114: AssertionError
+_______________ test_cold_process_consumer_replay_bit_identical ________________
+
+    def test_cold_process_consumer_replay_bit_identical():
+        outs = []
+        for i in range(2):
+            dest = RET / "observations" / ("gf1f_cold_%d.json" % i)
+            dest.parent.mkdir(parents=True, exist_ok=True)
+            subprocess.run([sys.executable, str(COLD), str(dest)], check=True,
+                           capture_output=True, text=True,
+                           env=dict(os.environ, PYTHONDONTWRITEBYTECODE="1"))
+            outs.append(json.loads(dest.read_text()))
+        assert len({o["pid"] for o in outs}) == 2
+        assert json.dumps(outs[0]["results"], sort_keys=True) == \
+            json.dumps(outs[1]["results"], sort_keys=True)
+        assert outs[0]["consumer_file"].endswith("gf1_pair_support_consumer.py")
+        # every universe class is exercised in the cold process
+>       assert set(outs[0]["class_counts"]) == set(ORACLE["class_counts"])
+E       AssertionError: assert {'EXACT_PAIR_...LIGIBLE_RISK'} == {'EXACT_PAIR_...SUPPORT_RISK'}
+E         
+E         Extra items in the right set:
+E         'UNDETERMINED_ZERO_SUPPORT_RISK'
+E         Use -v to get more diff
+
+tests/test_gf1f_independent_consumer.py:164: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_gf1f_independent_consumer.py::test_universe_class_and_derived_fields[0000]
+FAILED tests/test_gf1f_independent_consumer.py::test_named_cases[zero_supported_risk]
+FAILED tests/test_gf1f_independent_consumer.py::test_missing_suppressed_relation_is_empty_response
+FAILED tests/test_gf1f_independent_consumer.py::test_cold_process_consumer_replay_bit_identical
+4 failed, 96 passed in 1.48s

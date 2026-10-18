@@ -1,0 +1,33 @@
+diff --git a/WORKER_RETURNS/PYAT-R34-GF1M-INDEPENDENT-CURRENT-GF1-R1/03_REAL_JUNIT_282_NESTED44_COLD_AND_NEW_ADVERSARIALS/reviewed_author_source/gf1_pair_support_consumer.py b/WORKER_RETURNS/PYAT-R34-GF1M-INDEPENDENT-CURRENT-GF1-R1/author_followup_nonfinite/gf1_pair_support_consumer.py
+index 3761730d9..c5dfb119e 100644
+--- a/WORKER_RETURNS/PYAT-R34-GF1M-INDEPENDENT-CURRENT-GF1-R1/03_REAL_JUNIT_282_NESTED44_COLD_AND_NEW_ADVERSARIALS/reviewed_author_source/gf1_pair_support_consumer.py
++++ b/WORKER_RETURNS/PYAT-R34-GF1M-INDEPENDENT-CURRENT-GF1-R1/author_followup_nonfinite/gf1_pair_support_consumer.py
+@@ -16,6 +16,7 @@ original source, no OC05/N11/N12/actor/V3.
+ """
+ from __future__ import annotations
+ 
++from math import isfinite
+ from typing import Any
+ 
+ from generic_native_pair_relation import (
+@@ -26,7 +27,7 @@ from generic_native_pair_relation import (
+     semantic_hash,
+ )
+ 
+-REPAIR_VERSION = "GF1L_NATIVE_KEY_STORAGE_GUARD@1"
++REPAIR_VERSION = "GF1M_NONFINITE_NATIVE_CATEGORY_GUARD@1"
+ 
+ # The four lawful downstream separation classes.
+ SEPARATION_CLASSES = (
+@@ -100,6 +101,11 @@ def _require_lossless_mapping_keys(values: list[Any]) -> None:
+     converting a category or changing the result schema. Unsupported key
+     combinations must be refused before support aggregation or classification.
+     """
++    # The inherited semantic hash accepts Infinity/NaN. A successful hash is
++    # therefore insufficient evidence that native states can be exchanged as
++    # strict JSON. Refuse these categories before creating a scientific value.
++    if any(isinstance(value, float) and not isfinite(value) for value in values):
++        raise GenericNativePairError("nonfinite native states are not JSON representable")
+     probe = {value: None for value in values}
+     if len(probe) != len(values):
+         raise GenericNativePairError("native states collide as Python mapping keys")

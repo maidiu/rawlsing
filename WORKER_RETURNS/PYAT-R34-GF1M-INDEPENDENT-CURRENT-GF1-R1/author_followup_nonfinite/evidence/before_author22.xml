@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="8" skipped="0" tests="22" time="1.023" timestamp="2026-10-17T23:38:38.277977-04:00" hostname="MacBook-Pro.lan"><testcase classname="R34-GF1M-independent-current-wt.WORKER_RETURNS.PYAT-R34-GF1M-INDEPENDENT-CURRENT-GF1-R1.author_followup_nonfinite.test_nonfinite_refusal" name="test_nonfinite_category_typed_refusal_has_no_scientific_fields[0-positive_inf-condition]" time="0.433"><failure message="AssertionError: {'condition_states_with_positive_denominator': [inf, 1.0], 'consumer_id': 'GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ON...family': 'GF1_PAIR_SUPPORT_SIGNATURE_RESULT_TEST_ONLY@1.0.0', 'decision_state': 'PAIR_SUPPORT_SIGNATURE_COMPUTED', ...}&#10;assert 'PAIR_SUPPORT...TURE_COMPUTED' == 'CONSUMER_REL...RITY_REJECTED'&#10;  &#10;  - CONSUMER_RELATION_INTEGRITY_REJECTED&#10;  + PAIR_SUPPORT_SIGNATURE_COMPUTED">role = 'condition', nonfinite = inf, position = 0
+
+    @pytest.mark.parametrize('role',['condition','target'])
+    @pytest.mark.parametrize('nonfinite',[float('inf'),float('-inf'),float('nan')],ids=['positive_inf','negative_inf','nan'])
+    @pytest.mark.parametrize('position',[0,1])
+    def test_nonfinite_category_typed_refusal_has_no_scientific_fields(role,nonfinite,position):
+        domain=[1.0,1.0];domain[position]=nonfinite
+        relation=f.build(role,tuple(domain))
+        got=f.p.h.CONS(relation)
+&gt;       assert got['decision_state']=='CONSUMER_RELATION_INTEGRITY_REJECTED',got
+E       AssertionError: {'condition_states_with_positive_denominator': [inf, 1.0], 'consumer_id': 'GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ON...family': 'GF1_PAIR_SUPPORT_SIGNATURE_RESULT_TEST_ONLY@1.0.0', 'decision_state': 'PAIR_SUPPORT_SIGNATURE_COMPUTED', ...}
+E       assert 'PAIR_SUPPORT...TURE_COMPUTED' == 'CONSUMER_REL...RITY_REJECTED'
+E         
+E         - CONSUMER_RELATION_INTEGRITY_REJECTED
+E         + PAIR_SUPPORT_SIGNATURE_COMPUTED
+
+../../../../../../../../test_nonfinite_refusal.py:14: AssertionError</failure></testcase><testcase classname="R34-GF1M-independent-current-wt.WORKER_RETURNS.PYAT-R34-GF1M-INDEPENDENT-CURRENT-GF1-R1.author_followup_nonfinite.test_nonfinite_refusal" name="test_nonfinite_category_typed_refusal_has_no_scientific_fields[0-positive_inf-target]" time="0.002"><failure message="AssertionError: {'condition_states_with_positive_denominator': ['0', '1'], 'consumer_id': 'GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ON...family': 'GF1_PAIR_SUPPORT_SIGNATURE_RESULT_TEST_ONLY@1.0.0', 'decision_state': 'PAIR_SUPPORT_SIGNATURE_COMPUTED', ...}&#10;assert 'PAIR_SUPPORT...TURE_COMPUTED' == 'CONSUMER_REL...RITY_REJECTED'&#10;  &#10;  - CONSUMER_RELATION_INTEGRITY_REJECTED&#10;  + PAIR_SUPPORT_SIGNATURE_COMPUTED">role = 'target', nonfinite = inf, position = 0
+
+    @pytest.mark.parametrize('role',['condition','target'])
+    @pytest.mark.parametrize('nonfinite',[float('inf'),float('-inf'),float('nan')],ids=['positive_inf','negative_inf','nan'])
+    @pytest.mark.parametrize('position',[0,1])
+    def test_nonfinite_category_typed_refusal_has_no_scientific_fields(role,nonfinite,position):
+        domain=[1.0,1.0];domain[position]=nonfinite
+        relation=f.build(role,tuple(domain))
+        got=f.p.h.CONS(relation)
+&gt;       assert got['decision_state']=='CONSUMER_RELATION_INTEGRITY_REJECTED',got
+E       AssertionError: {'condition_states_with_positive_denominator': ['0', '1'], 'consumer_id': 'GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ON...family': 'GF1_PAIR_SUPPORT_SIGNATURE_RESULT_TEST_ONLY@1.0.0', 'decision_state': 'PAIR_SUPPORT_SIGNATURE_COMPUTED', ...}
+E       assert 'PAIR_SUPPORT...TURE_COMPUTED' == 'CONSUMER_REL...RITY_REJECTED'
+E         
+E         - CONSUMER_RELATION_INTEGRITY_REJECTED
+E         + PAIR_SUPPORT_SIGNATURE_COMPUTED
+
+../../../../../../../../test_nonfinite_refusal.py:14: AssertionError</failure></testcase><testcase classname="R34-GF1M-independent-current-wt.WORKER_RETURNS.PYAT-R34-GF1M-INDEPENDENT-CURRENT-GF1-R1.author_followup_nonfinite.test_nonfinite_refusal" name="test_nonfinite_category_typed_refusal_has_no_scientific_fields[0-negative_inf-condition]" time="0.002"><failure message="AssertionError: {'condition_states_with_positive_denominator': [-inf, 1.0], 'consumer_id': 'GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_O...family': 'GF1_PAIR_SUPPORT_SIGNATURE_RESULT_TEST_ONLY@1.0.0', 'decision_state': 'PAIR_SUPPORT_SIGNATURE_COMPUTED', ...}&#10;assert 'PAIR_SUPPORT...TURE_COMPUTED' == 'CONSUMER_REL...RITY_REJECTED'&#10;  &#10;  - CONSUMER_RELATION_INTEGRITY_REJECTED&#10;  + PAIR_SUPPORT_SIGNATURE_COMPUTED">role = 'condition', nonfinite = -inf, position = 0
+
+    @pytest.mark.parametrize('role',['condition','target'])
+    @pytest.mark.parametrize('nonfinite',[float('inf'),float('-inf'),float('nan')],ids=['positive_inf','negative_inf','nan'])
+    @pytest.mark.parametrize('position',[0,1])
+    def test_nonfinite_category_typed_refusal_has_no_scientific_fields(role,nonfinite,position):
+        domain=[1.0,1.0];domain[position]=nonfinite
+        relation=f.build(role,tuple(domain))
+        got=f.p.h.CONS(relation)
+&gt;       assert got['decision_state']=='CONSUMER_RELATION_INTEGRITY_REJECTED',got
+E       AssertionError: {'condition_states_with_positive_denominator': [-inf, 1.0], 'consumer_id': 'GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_O...family': 'GF1_PAIR_SUPPORT_SIGNATURE_RESULT_TEST_ONLY@1.0.0', 'decision_state': 'PAIR_SUPPORT_SIGNATURE_COMPUTED', ...}
+E       assert 'PAIR_SUPPORT...TURE_COMPUTED' == 'CONSUMER_REL...RITY_REJECTED'
+E         
+E         - CONSUMER_RELATION_INTEGRITY_REJECTED
+E         + PAIR_SUPPORT_SIGNATURE_COMPUTED
+
+../../../../../../../../test_nonfinite_refusal.py:14: AssertionError</failure></testcase><testcase classname="R34-GF1M-independent-current-wt.WORKER_RETURNS.PYAT-R34-GF1M-INDEPENDENT-CURRENT-GF1-R1.author_followup_nonfinite.test_nonfinite_refusal" name="test_nonfinite_category_typed_refusal_has_no_scientific_fields[0-negative_inf-target]" time="0.002"><failure message="AssertionError: {'condition_states_with_positive_denominator': ['0', '1'], 'consumer_id': 'GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ON...family': 'GF1_PAIR_SUPPORT_SIGNATURE_RESULT_TEST_ONLY@1.0.0', 'decision_state': 'PAIR_SUPPORT_SIGNATURE_COMPUTED', ...}&#10;assert 'PAIR_SUPPORT...TURE_COMPUTED' == 'CONSUMER_REL...RITY_REJECTED'&#10;  &#10;  - CONSUMER_RELATION_INTEGRITY_REJECTED&#10;  + PAIR_SUPPORT_SIGNATURE_COMPUTED">role = 'target', nonfinite = -inf, position = 0
+
+    @pytest.mark.parametrize('role',['condition','target'])
+    @pytest.mark.parametrize('nonfinite',[float('inf'),float('-inf'),float('nan')],ids=['positive_inf','negative_inf','nan'])
+    @pytest.mark.parametrize('position',[0,1])
+    def test_nonfinite_category_typed_refusal_has_no_scientific_fields(role,nonfinite,position):
+        domain=[1.0,1.0];domain[position]=nonfinite
+        relation=f.build(role,tuple(domain))
+        got=f.p.h.CONS(relation)
+&gt;       assert got['decision_state']=='CONSUMER_RELATION_INTEGRITY_REJECTED',got
+E       AssertionError: {'condition_states_with_positive_denominator': ['0', '1'], 'consumer_id': 'GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ON...family': 'GF1_PAIR_SUPPORT_SIGNATURE_RESULT_TEST_ONLY@1.0.0', 'decision_state': 'PAIR_SUPPORT_SIGNATURE_COMPUTED', ...}
+E       assert 'PAIR_SUPPORT...TURE_COMPUTED' == 'CONSUMER_REL...RITY_REJECTED'
+E         
+E         - CONSUMER_RELATION_INTEGRITY_REJECTED
+E         + PAIR_SUPPORT_SIGNATURE_COMPUTED
+
+../../../../../../../../test_nonfinite_refusal.py:14: AssertionError</failure></testcase><testcase classname="R34-GF1M-independent-current-wt.WORKER_RETURNS.PYAT-R34-GF1M-INDEPENDENT-CURRENT-GF1-R1.author_followup_nonfinite.test_nonfinite_refusal" name="test_nonfinite_category_typed_refusal_has_no_scientific_fields[0-nan-condition]" time="0.002" /><testcase classname="R34-GF1M-independent-current-wt.WORKER_RETURNS.PYAT-R34-GF1M-INDEPENDENT-CURRENT-GF1-R1.author_followup_nonfinite.test_nonfinite_refusal" name="test_nonfinite_category_typed_refusal_has_no_scientific_fields[0-nan-target]" time="0.002" /><testcase classname="R34-GF1M-independent-current-wt.WORKER_RETURNS.PYAT-R34-GF1M-INDEPENDENT-CURRENT-GF1-R1.author_followup_nonfinite.test_nonfinite_refusal" name="test_nonfinite_category_typed_refusal_has_no_scientific_fields[1-positive_inf-condition]" time="0.002"><failure message="AssertionError: {'condition_states_with_positive_denominator': [1.0, inf], 'consumer_id': 'GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ON...family': 'GF1_PAIR_SUPPORT_SIGNATURE_RESULT_TEST_ONLY@1.0.0', 'decision_state': 'PAIR_SUPPORT_SIGNATURE_COMPUTED', ...}&#10;assert 'PAIR_SUPPORT...TURE_COMPUTED' == 'CONSUMER_REL...RITY_REJECTED'&#10;  &#10;  - CONSUMER_RELATION_INTEGRITY_REJECTED&#10;  + PAIR_SUPPORT_SIGNATURE_COMPUTED">role = 'condition', nonfinite = inf, position = 1
+
+    @pytest.mark.parametrize('role',['condition','target'])
+    @pytest.mark.parametrize('nonfinite',[float('inf'),float('-inf'),float('nan')],ids=['positive_inf','negative_inf','nan'])
+    @pytest.mark.parametrize('position',[0,1])
+    def test_nonfinite_category_typed_refusal_has_no_scientific_fields(role,nonfinite,position):
+        domain=[1.0,1.0];domain[position]=nonfinite
+        relation=f.build(role,tuple(domain))
+        got=f.p.h.CONS(relation)
+&gt;       assert got['decision_state']=='CONSUMER_RELATION_INTEGRITY_REJECTED',got
+E       AssertionError: {'condition_states_with_positive_denominator': [1.0, inf], 'consumer_id': 'GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ON...family': 'GF1_PAIR_SUPPORT_SIGNATURE_RESULT_TEST_ONLY@1.0.0', 'decision_state': 'PAIR_SUPPORT_SIGNATURE_COMPUTED', ...}
+E       assert 'PAIR_SUPPORT...TURE_COMPUTED' == 'CONSUMER_REL...RITY_REJECTED'
+E         
+E         - CONSUMER_RELATION_INTEGRITY_REJECTED
+E         + PAIR_SUPPORT_SIGNATURE_COMPUTED
+
+../../../../../../../../test_nonfinite_refusal.py:14: AssertionError</failure></testcase><testcase classname="R34-GF1M-independent-current-wt.WORKER_RETURNS.PYAT-R34-GF1M-INDEPENDENT-CURRENT-GF1-R1.author_followup_nonfinite.test_nonfinite_refusal" name="test_nonfinite_category_typed_refusal_has_no_scientific_fields[1-positive_inf-target]" time="0.002"><failure message="AssertionError: {'condition_states_with_positive_denominator': ['0', '1'], 'consumer_id': 'GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ON...family': 'GF1_PAIR_SUPPORT_SIGNATURE_RESULT_TEST_ONLY@1.0.0', 'decision_state': 'PAIR_SUPPORT_SIGNATURE_COMPUTED', ...}&#10;assert 'PAIR_SUPPORT...TURE_COMPUTED' == 'CONSUMER_REL...RITY_REJECTED'&#10;  &#10;  - CONSUMER_RELATION_INTEGRITY_REJECTED&#10;  + PAIR_SUPPORT_SIGNATURE_COMPUTED">role = 'target', nonfinite = inf, position = 1
+
+    @pytest.mark.parametrize('role',['condition','target'])
+    @pytest.mark.parametrize('nonfinite',[float('inf'),float('-inf'),float('nan')],ids=['positive_inf','negative_inf','nan'])
+    @pytest.mark.parametrize('position',[0,1])
+    def test_nonfinite_category_typed_refusal_has_no_scientific_fields(role,nonfinite,position):
+        domain=[1.0,1.0];domain[position]=nonfinite
+        relation=f.build(role,tuple(domain))
+        got=f.p.h.CONS(relation)
+&gt;       assert got['decision_state']=='CONSUMER_RELATION_INTEGRITY_REJECTED',got
+E       AssertionError: {'condition_states_with_positive_denominator': ['0', '1'], 'consumer_id': 'GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ON...family': 'GF1_PAIR_SUPPORT_SIGNATURE_RESULT_TEST_ONLY@1.0.0', 'decision_state': 'PAIR_SUPPORT_SIGNATURE_COMPUTED', ...}
+E       assert 'PAIR_SUPPORT...TURE_COMPUTED' == 'CONSUMER_REL...RITY_REJECTED'
+E         
+E         - CONSUMER_RELATION_INTEGRITY_REJECTED
+E         + PAIR_SUPPORT_SIGNATURE_COMPUTED
+
+../../../../../../../../test_nonfinite_refusal.py:14: AssertionError</failure></testcase><testcase classname="R34-GF1M-independent-current-wt.WORKER_RETURNS.PYAT-R34-GF1M-INDEPENDENT-CURRENT-GF1-R1.author_followup_nonfinite.test_nonfinite_refusal" name="test_nonfinite_category_typed_refusal_has_no_scientific_fields[1-negative_inf-condition]" time="0.003"><failure message="AssertionError: {'condition_states_with_positive_denominator': [1.0, -inf], 'consumer_id': 'GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_O...family': 'GF1_PAIR_SUPPORT_SIGNATURE_RESULT_TEST_ONLY@1.0.0', 'decision_state': 'PAIR_SUPPORT_SIGNATURE_COMPUTED', ...}&#10;assert 'PAIR_SUPPORT...TURE_COMPUTED' == 'CONSUMER_REL...RITY_REJECTED'&#10;  &#10;  - CONSUMER_RELATION_INTEGRITY_REJECTED&#10;  + PAIR_SUPPORT_SIGNATURE_COMPUTED">role = 'condition', nonfinite = -inf, position = 1
+
+    @pytest.mark.parametrize('role',['condition','target'])
+    @pytest.mark.parametrize('nonfinite',[float('inf'),float('-inf'),float('nan')],ids=['positive_inf','negative_inf','nan'])
+    @pytest.mark.parametrize('position',[0,1])
+    def test_nonfinite_category_typed_refusal_has_no_scientific_fields(role,nonfinite,position):
+        domain=[1.0,1.0];domain[position]=nonfinite
+        relation=f.build(role,tuple(domain))
+        got=f.p.h.CONS(relation)
+&gt;       assert got['decision_state']=='CONSUMER_RELATION_INTEGRITY_REJECTED',got
+E       AssertionError: {'condition_states_with_positive_denominator': [1.0, -inf], 'consumer_id': 'GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_O...family': 'GF1_PAIR_SUPPORT_SIGNATURE_RESULT_TEST_ONLY@1.0.0', 'decision_state': 'PAIR_SUPPORT_SIGNATURE_COMPUTED', ...}
+E       assert 'PAIR_SUPPORT...TURE_COMPUTED' == 'CONSUMER_REL...RITY_REJECTED'
+E         
+E         - CONSUMER_RELATION_INTEGRITY_REJECTED
+E         + PAIR_SUPPORT_SIGNATURE_COMPUTED
+
+../../../../../../../../test_nonfinite_refusal.py:14: AssertionError</failure></testcase><testcase classname="R34-GF1M-independent-current-wt.WORKER_RETURNS.PYAT-R34-GF1M-INDEPENDENT-CURRENT-GF1-R1.author_followup_nonfinite.test_nonfinite_refusal" name="test_nonfinite_category_typed_refusal_has_no_scientific_fields[1-negative_inf-target]" time="0.003"><failure message="AssertionError: {'condition_states_with_positive_denominator': ['0', '1'], 'consumer_id': 'GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ON...family': 'GF1_PAIR_SUPPORT_SIGNATURE_RESULT_TEST_ONLY@1.0.0', 'decision_state': 'PAIR_SUPPORT_SIGNATURE_COMPUTED', ...}&#10;assert 'PAIR_SUPPORT...TURE_COMPUTED' == 'CONSUMER_REL...RITY_REJECTED'&#10;  &#10;  - CONSUMER_RELATION_INTEGRITY_REJECTED&#10;  + PAIR_SUPPORT_SIGNATURE_COMPUTED">role = 'target', nonfinite = -inf, position = 1
+
+    @pytest.mark.parametrize('role',['condition','target'])
+    @pytest.mark.parametrize('nonfinite',[float('inf'),float('-inf'),float('nan')],ids=['positive_inf','negative_inf','nan'])
+    @pytest.mark.parametrize('position',[0,1])
+    def test_nonfinite_category_typed_refusal_has_no_scientific_fields(role,nonfinite,position):
+        domain=[1.0,1.0];domain[position]=nonfinite
+        relation=f.build(role,tuple(domain))
+        got=f.p.h.CONS(relation)
+&gt;       assert got['decision_state']=='CONSUMER_RELATION_INTEGRITY_REJECTED',got
+E       AssertionError: {'condition_states_with_positive_denominator': ['0', '1'], 'consumer_id': 'GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ON...family': 'GF1_PAIR_SUPPORT_SIGNATURE_RESULT_TEST_ONLY@1.0.0', 'decision_state': 'PAIR_SUPPORT_SIGNATURE_COMPUTED', ...}
+E       assert 'PAIR_SUPPORT...TURE_COMPUTED' == 'CONSUMER_REL...RITY_REJECTED'
+E         
+E         - CONSUMER_RELATION_INTEGRITY_REJECTED
+E         + PAIR_SUPPORT_SIGNATURE_COMPUTED
+
+../../../../../../../../test_nonfinite_refusal.py:14: AssertionError</failure></testcase><testcase classname="R34-GF1M-independent-current-wt.WORKER_RETURNS.PYAT-R34-GF1M-INDEPENDENT-CURRENT-GF1-R1.author_followup_nonfinite.test_nonfinite_refusal" name="test_nonfinite_category_typed_refusal_has_no_scientific_fields[1-nan-condition]" time="0.002" /><testcase classname="R34-GF1M-independent-current-wt.WORKER_RETURNS.PYAT-R34-GF1M-INDEPENDENT-CURRENT-GF1-R1.author_followup_nonfinite.test_nonfinite_refusal" name="test_nonfinite_category_typed_refusal_has_no_scientific_fields[1-nan-target]" time="0.002" /><testcase classname="R34-GF1M-independent-current-wt.WORKER_RETURNS.PYAT-R34-GF1M-INDEPENDENT-CURRENT-GF1-R1.author_followup_nonfinite.test_nonfinite_refusal" name="test_finite_native_controls_preserve_identity_support_and_serialization[finite-condition]" time="0.003" /><testcase classname="R34-GF1M-independent-current-wt.WORKER_RETURNS.PYAT-R34-GF1M-INDEPENDENT-CURRENT-GF1-R1.author_followup_nonfinite.test_nonfinite_refusal" name="test_finite_native_controls_preserve_identity_support_and_serialization[finite-target]" time="0.003" /><testcase classname="R34-GF1M-independent-current-wt.WORKER_RETURNS.PYAT-R34-GF1M-INDEPENDENT-CURRENT-GF1-R1.author_followup_nonfinite.test_nonfinite_refusal" name="test_finite_native_controls_preserve_identity_support_and_serialization[finite_extremes-condition]" time="0.003" /><testcase classname="R34-GF1M-independent-current-wt.WORKER_RETURNS.PYAT-R34-GF1M-INDEPENDENT-CURRENT-GF1-R1.author_followup_nonfinite.test_nonfinite_refusal" name="test_finite_native_controls_preserve_identity_support_and_serialization[finite_extremes-target]" time="0.003" /><testcase classname="R34-GF1M-independent-current-wt.WORKER_RETURNS.PYAT-R34-GF1M-INDEPENDENT-CURRENT-GF1-R1.author_followup_nonfinite.test_nonfinite_refusal" name="test_finite_native_controls_preserve_identity_support_and_serialization[subnormal-condition]" time="0.002" /><testcase classname="R34-GF1M-independent-current-wt.WORKER_RETURNS.PYAT-R34-GF1M-INDEPENDENT-CURRENT-GF1-R1.author_followup_nonfinite.test_nonfinite_refusal" name="test_finite_native_controls_preserve_identity_support_and_serialization[subnormal-target]" time="0.002" /><testcase classname="R34-GF1M-independent-current-wt.WORKER_RETURNS.PYAT-R34-GF1M-INDEPENDENT-CURRENT-GF1-R1.author_followup_nonfinite.test_nonfinite_refusal" name="test_finite_native_controls_preserve_identity_support_and_serialization[heterogeneous_numeric-condition]" time="0.002" /><testcase classname="R34-GF1M-independent-current-wt.WORKER_RETURNS.PYAT-R34-GF1M-INDEPENDENT-CURRENT-GF1-R1.author_followup_nonfinite.test_nonfinite_refusal" name="test_finite_native_controls_preserve_identity_support_and_serialization[heterogeneous_numeric-target]" time="0.002" /><testcase classname="R34-GF1M-independent-current-wt.WORKER_RETURNS.PYAT-R34-GF1M-INDEPENDENT-CURRENT-GF1-R1.author_followup_nonfinite.test_nonfinite_refusal" name="test_finite_native_controls_preserve_identity_support_and_serialization[source_strings-condition]" time="0.002" /><testcase classname="R34-GF1M-independent-current-wt.WORKER_RETURNS.PYAT-R34-GF1M-INDEPENDENT-CURRENT-GF1-R1.author_followup_nonfinite.test_nonfinite_refusal" name="test_finite_native_controls_preserve_identity_support_and_serialization[source_strings-target]" time="0.002" /></testsuite></testsuites>
