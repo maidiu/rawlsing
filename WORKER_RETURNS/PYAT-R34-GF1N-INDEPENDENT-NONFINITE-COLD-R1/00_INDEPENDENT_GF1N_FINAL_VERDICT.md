@@ -147,8 +147,11 @@ evidence for HQ consideration, not self-adoption and not general native-domain
 qualification. The precise limits in `05_DOMAIN_CEILING_AND_NO_ISSUER.md` apply.
 
 Final author commit reviewed: `a8fcb6953f2795b7bc698f9f019f4782f80026c9`.
-Final remote reviewer SHA: bound by direct remote readback in
-`PUBLICATION_RECEIPT.json` (evidence commit and branch head).
+Frozen expectation SHA: v1 `871a7a3c4b156fc4829320c6bfe24a94e734f627966f25213faf92703531b12a`;
+corrected executable v2 `12c9ce1b2038bb4e81fdf1d3e1ab3478fafa33a54260f285c549d2f586a27fa3`.
+Reviewer evidence commit `bdfd4b04a6546f0989047b473c9ee67eb197609c` is bound by
+direct remote readback in `PUBLICATION_RECEIPT.json`; the final branch head after
+that receipt is supplied by direct remote readback in the final reviewer response.
 
 ## 8. Evidence index
 
