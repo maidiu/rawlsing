@@ -1,0 +1,52 @@
+# USERDIRECT ONECALL-C0R — fail-closed authority, event-identity and temporal-dependency repair
+
+**Repository**: `maidiu/rawlsing` (PRIVATE). **Date**: 2026-10-18.  
+**Role**: One accountable bounded sourcefree implementation/repair worker; NOT Sorok/Pyat HQ, source/semantic/actor authority issuer, M2/M4/B3 implementer, original F1 oracle editor, or independent acceptance reviewer.  
+**Recommended model/surface**: Browser GPT-6 Medium with actual GitHub plus Python/pytest/subprocess; use a cheaper QUALIFIED already-warm authorized worktree where the user has explicitly chosen one, but NEVER silently change harness/model/provider or expose the private repo to an unauthorized service. This is mostly I1/I2 mechanical implementation under frozen independent REDs; separate GPT-6 High I2 reviews the resulting science/authority. Verify actual host and 00D passport.
+**Branch**: `agent/userdirect-sorok-20261018-onecall-c0r-authority-causality-repair-r1`.
+**Exact sealed startup**: the immutable commit containing this commission, supplied by the launch prompt; independently verify before modification.
+**Write scope ONLY**: `WORKER_RETURNS/USERDIRECT-SOROK-ONECALL-C0R-AUTHORITY-CAUSALITY-REPAIR-R1/`. No direct edits to the C0/C0F original returns, frozen suites, Sorok HQ330/HQ331, M2/M4, B3/X3/S3, Pyat, Sorok 00C/00D, PREMAIN/CURRENT, or accepted rules.
+
+## Startup and immutable evidence
+
+Read this entire commission at exact sealed startup; Sorok `SOROK_PRODUCT_CONTROL_ROOM/00_READ_ME_FIRST.md`, `00D_WARM_ENVIRONMENT_PASSPORT_AND_COST_AWARE_AGENT_DISPENSATION_R1.md`, and full 00C from `agent/sorok-prea0-psyche-architecture-r1/SOROK_PRODUCT_CONTROL_ROOM/00C_HQ_PROMPT_DISPENSATION_AGENT_ROUTING_AND_ORCHESTRATION_CONSTITUTION_R1.md` (record exact tip/blob). Read the three user-confirmed bank docs from `SOROK_PRODUCT_CONTROL_ROOM/RESEARCH_PROPOSALS/20261018_SINGLE_CALL_RETROSPECTIVE_PROSPECTIVE_V3_RECURSION_R1/` at `a1681a40b40dd1be5c67ec55857320d9e3a8b3ed`. TD-R05 original V3 two-pass/hybrid/no-render-causal law remains the constitutional background.
+
+**Original C0 author exact final**: `66d012c469ee1791c61f1d623079520697508243`, `WORKER_RETURNS/USERDIRECT-SOROK-ONECALL-C0-ORCHESTRATION-R1/onecall_c0.py`, Git blob `f45e4f5573495f060503f92b7630ec83531ced4d`, SHA256 `3f0da92095f8355c7512d49ac546c846b6026d3775533ba56be7e148e11abfa1`; original author 32/32 PASS. Original author code and test files must remain byte-for-byte immutable.
+**Independent C0F exact final**: `df31181c22afe3f8ec178b02f0e769e3cb610c81`, `WORKER_RETURNS/USERDIRECT-SOROK-ONECALL-C0F-PREREGISTERED-HOSTILES-R1/`, Phase A frozen commit `1daad754b01a1a3b2f866cc4c47c2f800f63d451`; independent 22 PASS/10 RED prereg A01-A32, and 4 PASS/8 RED new R32-R43. Both real executable test suites are in its committed `repro/` alongside author exact code. Read `05_PHASE_B_ACTUAL_C0_FALSIFICATION_VERDICT.md`, `06_PHASE_B_A01_A32_COURT_MATRIX.json`, `07_POSTFREEZE_AUTHOR_AND_INDEPENDENT_GRADES.md` and actual tests. Do NOT modify their code or expected outcomes. The original B3/F1 17 RED and M2 preimage three RED are **separate** from this commission.
+
+## Mission: repair the independent 18 REDs without minting new authority
+
+Create a NEW `onecall_c0.py` under own authorized return (clearly new implementation version), preserving sourcefree mock grade, one physical mock invocation with two separately typed logical outputs, original normal observed product where still lawful, multi-event ordering, cold replay, and two-call/fixed comparison. Preserve independent test evidence from the original C0 as a separate historical receipt. Each test-only permission must be explicit, typed and default-deny: a synthetic fixture label cannot be silently promoted to an external signer, scientific rule or personal psychology.
+
+Prioritize these precise defect classes and IDs:
+
+**P0 grants/schema/source and actor identity**:
+- `R32`: distinguish `rules is None` from explicitly passed `{}`; empty rules mean ZERO licensed actions, not implicit default permission.
+- `R37`: remove all permission/integrity `assert` dependencies; Python `-O` must preserve refusal with explicit exceptions/typed denies and stable receipt. Do not use `assert` for integrity/source/permission gates elsewhere.
+- `A02,R38`: strict allowlist schema for retrospective render, deny unexpected `durable_psyche_patch`, `actor_private_memory_access` and arbitrary psyche/world access; render cannot mutate.
+- `A07,A17,A18,A26,A27,R39`: per-candidate explicit synthetic owner/right/rule claims must fail closed when absent, null, foreign, missing or forged; proposal-level model/provenance is NOT issuer permission. Distinguish `MOCK_NO_MODEL` from asserted `GROUNDED_PROVIDER`; a real model call is forbidden. Strict typed field checks, including source permission and per-event qualified objective owner mock, never trust LLM-declared source/actor/event authority. Novel unsupported fields cannot be swallowed. Do not pretend a newly authored `TEST_ONLY` registry is accepted CAN/ADP/Pyat law.
+- `R33,R34`: compare exact other-person reference to separately constructed actor-world state; nonexistent counterpart or teacher must REFUSE or DEFER even if `peer` is available. No invented entity construction on LLM word alone.
+- `A13`: negative score/random draw provided by proposal is untrusted; **do not implement human behavior probabilities or silently sanitize a failed score**. Fail closed (or explicit unsupported-grade denial); no LLM-selected score can override admission.
+
+**P0 causal and time identity**:
+- `A11`: preexisting exact event ID / partial historical prestate must not lead to a duplicate committed event. Existing source-free ledger prestate must be checked (conflict/refusal for forged/replaced payloads). Event/source/history cannot be replaced retroactively.
+- `R35`: `possible_relevance_domains` / narrated cosmetic labels must remain in separately hashable proposal/audit records, **not** committed canonical causal event identity/history. Two otherwise identical admitted material histories must have identical canonical event-history hash despite alternate noncausal labels.
+- `R36`: support bounded intra-year PROPOSED dependency on an earlier explicitly named candidate in same packet: retain as `PENDING_PARENT` until the exact parent event is truly admitted with matching canonical fact ID; otherwise defer/reject, never use proposed-but-unrealized parent or future speech as a witnessed fact. Reject cycles, time inversions and missing ancestors.
+- `A16,A23`: distinguish a requested 90-day or other subannual temporal horizon and a midyear restart at an already elapsed event-time cursor. The original annual-only API lacked these. At minimum FAIL CLOSED with explicit `UNSUPPORTED_TEMPORAL_SCOPE` for an unsupported subannual request and no backdated event upon reconstructed prestate. If implementing genuine subannual scheduler within this bounded scope, demonstrate exact semantics, not merely refusal, and do not infer accepted temporal owner. Preserve physical currentness vs event order, epoch and partial-state integrity.
+
+All other originally passing tests and underlying permissions should remain intact; test-only code may be adapted transparently to add explicit synthetic grants where formerly omitted, but the **original 32 author tests, original A01–A32 independent suite and original R32–R43 must not be edited or misrepresented as unchanged tests against new version**.
+
+**Crucial frozen source identity control**: original `R42` asserts the ORIGINAL C0 Git blob/hash and therefore MUST run against original pinned C0. It cannot literally PASS when reimporting a repaired byte-different module. Report `ORIGINAL_R42_PASS`, then add a NEW repaired module import+blob identity control with the new content digest; do not weaken/rewrite original frozen R42 to manufacture green. Any other original test relying on historical exact source remains historically anchored; classify changed preconditions explicitly rather than silently mutating the oracle.
+
+## Executable/receipt requirements
+
+1. Verify original exact source and unchanged original independent REDs with real Python/pytest **first**. Record 32 author PASS + 10/8 RED original counts or physical inability with exact reason.
+2. Implement/test a narrow first repair for `R32` and `R37`; continue in one worker on P0 schema, identity, time, parentage. Early meaningful executable positives, no documentary-only return.
+3. Re-run original author regressions, all independent C0F prereg and new hostiles via **separate immutable original-vs-repaired fixture/import closures**. For each case report `HISTORICAL_RED_REPRODUCED`, `REPAIRED_PASS`, `REPAIRED_RED`, `EXPLICIT_UNSUPPORTED_FAIL_CLOSED`, or source-identity `ORIGINAL_ONLY`. If using a thin compatibility shim, disclose it and show the native repaired function physically executed; no edit to frozen expected.
+4. New mutation/adversarial probes: empty-grant truthiness, `python -O`, changing only relevance text, false issuer/other person, source replacement after packet validation but before append, resumed midyear duplicate, parent denied then child pending, parent actually admitted then child eligible, forged render actor-private access, prospective/retrospective leakage, all-proposals-denied/no forced fallback. Verify unknown input/outcomes.
+5. Cold replay in two independent interpreter processes, exact rule/schema/source/ledger identity, Python and pytest version, JUnit stdout, per-case PASS/RED/N/A; original unchanged file SHA and new repaired file SHA.
+6. No B3 native modules, original35, external LLM, psychological model, numeric calibrated behavior, explicit CAN008/CAN011/ADP grants, or production mutation. NO claim F1 17 RED closed. This is **sourcefree orchestration authority-hygiene only**.
+
+**Deliver exclusively:** `WORKER_RETURNS/USERDIRECT-SOROK-ONECALL-C0R-AUTHORITY-CAUSALITY-REPAIR-R1/` containing `00_RETURN.md`, `onecall_c0.py` repaired, author tests/new tests/independent frozen immutable source refs, exact source manifest, per-case historic/repaired grade, real JUnit/logs, cold OS replay, sanitized 00D environment passport and independent-review handoff. Push only branch; verify exact remote HEAD and changed paths. Terminal candidate only: `C0R_SOURCEFREE_REPAIR_CANDIDATE_PENDING_FRESH_I2` or actual RED/HOLD. A test PASS never grants actor/semantic authority.
+
+**Do not wait for M4/X3/S3 or HQ331 to finish; keep the work independent, isolated and useful.**
