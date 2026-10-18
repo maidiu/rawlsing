@@ -1,0 +1,91 @@
+{
+  "passport_schema": "SOROK_00D_R1",
+  "environment_id": "sorok-m2r3-fresh-i2-isolated-local-container-20261018",
+  "epoch_id": "new_fresh_I2_runtime_no_presumed_continuity",
+  "owner_session_alias": "m2r3-fresh-i2",
+  "surface": "ISOLATED_CONTAINER",
+  "machine_alias": null,
+  "worktree_alias": null,
+  "git_object_store_alias": null,
+  "branch": "agent/reviewer-sorok-20261018-m2r3-fresh-independent-i2-r1",
+  "exact_checkout_base": "sourcefree_files_from_explicit_pinned_connector_reads",
+  "status": "LIVE_VERIFIED_AT_EXECUTION__FUTURE_CONTINUITY_NOT_GUARANTEED",
+  "runtime_marker_digest": null,
+  "probe_command_and_result": {
+    "python3 --version": "Python 3.13.5",
+    "python3 -m pytest --version": "pytest 9.0.2",
+    "git --version": "git version 2.47.3",
+    "actual_python_imported_kernel": "sorok_m2r3_review/kernel.py"
+  },
+  "python": "3.13.5",
+  "pytest": "9.0.2",
+  "git": "2.47.3",
+  "filesystem": "VERIFIED",
+  "subprocess": "VERIFIED",
+  "github_connector_separate_from_container": true,
+  "remote_private_git_auth_in_container": false,
+  "model_provider": "OpenAI ChatGPT",
+  "model_name": "GPT-6",
+  "model_effort": "not_runtime_verifiable",
+  "cash": "UNKNOWN",
+  "usage": "UNKNOWN",
+  "privacy": "PRIVATE_GITHUB_USER_DIRECTED_REVIEW_ONLY",
+  "source_grant": "PINNED_SOURCEFREE_ONLY",
+  "imported_kernel": {
+    "git_commit": "9c1ab2fa172e41c7fb033b5f134b25255d65126c",
+    "git_blob_sha1": "645308250f54133c1f9d707a5851f689942f18ba",
+    "sha256": "838d0852e6b1b28bb733b1eda580b3dc53f5db3d47e3a0caefbd3072022ad45a",
+    "relative_path": "kernel.py"
+  },
+  "original_R2_kernel": {
+    "git_commit": "e8f375e9feae187e8a1add2343100ca05d9fffc4",
+    "sha256": "88bb8c65dfd88efd1843f16e1bb6d51e1fa01a0dc1fdccb13e03a9b2b394d8d3",
+    "relative_path": "r2_negative/kernel.py"
+  },
+  "dependency_closure_status": "FULL_BOUNDED_SOURCEFREE_135+6+HISTORICAL",
+  "covered_test_suites": [
+    {
+      "court": "author_135_R3",
+      "passed": 135,
+      "failed": 0,
+      "skipped": 0,
+      "junit_sha256": "b7ce09b0ec327fd94a441605c8a41748256b70dda0912f658d59a79fc1c1b8e7"
+    },
+    {
+      "court": "original_R2_heldout",
+      "passed": 1,
+      "failed": 1,
+      "skipped": 0,
+      "junit_sha256": "47871e972992254fa4479bb5fd9350bb967103f775b695a4b1ddcd8badd15a1f"
+    },
+    {
+      "court": "R3_prior_I2_heldout",
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "junit_sha256": "be3b5fd6ca7dca47b21ef0d928a5c793da7b7ab314dc9a9ada30f3bfed0db9af"
+    },
+    {
+      "court": "fresh_I2_6_new",
+      "passed": 4,
+      "failed": 2,
+      "skipped": 0,
+      "junit_sha256": "c51902eb619f14039c441c103a0b482b528fc0be9875536d8bacc3260208453e"
+    }
+  ],
+  "science_grade": "REVISE_INDEPENDENT_SOURCEFREE_NOT_NATIVE",
+  "review_independence": "distinct_from_R2_R3_authors",
+  "native_ADP_authorities": "NOT_ACCESSED",
+  "model_actor_authority": "NOT_GRANTED",
+  "staged_state_preservation": "local evidence packaged, no git clone or producer mutation",
+  "governance_read": [
+    "SOROK_PRODUCT_CONTROL_ROOM/00C_HQ_PROMPT_DISPENSATION_AGENT_ROUTING_AND_ORCHESTRATION_CONSTITUTION_R1.md",
+    "SOROK_PRODUCT_CONTROL_ROOM/00D_WARM_ENVIRONMENT_PASSPORT_AND_COST_AWARE_AGENT_DISPENSATION_R1.md"
+  ],
+  "next_good_affinity_tags": [
+    "M2",
+    "RULE_HASH",
+    "ACTOR_SOURCE_INDEPENDENCE",
+    "RELATION_READSET"
+  ]
+}
