@@ -1,0 +1,74 @@
+{
+  "schema": "authority_census_harvest003_effective_lookup_receipt_v1",
+  "packet_sha256": "0ad166ec3da232f56a5a0c9612862e99b2091e8ba80626bc76417e7a4524e461",
+  "accepted_v525b": {
+    "semantic_sha256": "6e76965c1e00c90e1ae4a4647f99b851dc558a345c2a2792151143cb35fe2fc0",
+    "driver_sha256": "53feb28296705d2005f8c3d2548c136e2c15fabd62c103694f05caa555063711",
+    "rows_each": 6211,
+    "authority_status": "accepted_structural_authority",
+    "authority_classification": "canonical_structural_authority"
+  },
+  "later_carriers": {
+    "semantic_sha256": "171d399da7e0f2bbd66dcce08a6c353978e48b69fee8d32ac6b1720d10d70ca5",
+    "semantic_rows": 18528,
+    "driver_sha256": "d62accad0e956f739eada0718e4fb222429e7a90ed7889fff6f4f292b1a8a011",
+    "driver_rows": 28983,
+    "driver_distinct_source_wave_var_keys": 18519,
+    "driver_duplicate_key_excess_rows": 10462
+  },
+  "structure_builder_lookup_law": {
+    "key": ["source", "wave", "var_name"],
+    "implementation": "dict comprehension; duplicate keys resolve to final row encountered",
+    "structure_lookup": ["source_family", "canonical_wave", "matched_codebook_var_or_question_name"]
+  },
+  "register_b_vs_d62_effective_lookup": {
+    "matched_structure_rows": 18262,
+    "unmatched_structure_rows": 530,
+    "semantic_driver_field_mismatches": 0
+  },
+  "register_a_vs_d62_effective_lookup": {
+    "changed_rows": 2148,
+    "changed_cells": 13330,
+    "changed_cells_by_field": {
+      "final_driver_id": 879,
+      "final_driver_scope": 1870,
+      "final_driver_label": 1592,
+      "final_driver_origin": 1869,
+      "semantic_scope": 1870,
+      "semantic_primary_driver": 1296,
+      "semantic_secondary_driver": 773,
+      "semantic_shared_driver": 1310,
+      "semantic_notes": 1871
+    }
+  },
+  "changed_key_duplicate_structure": {
+    "changed_keys": 2148,
+    "two_row_keys": 2056,
+    "single_row_keys": 92,
+    "register_a_state_retained_as_earlier_duplicate": 1228,
+    "register_a_state_absent_from_d62": 920,
+    "register_b_state_is_final_duplicate_for_all_two_row_keys": 2056
+  },
+  "winning_row_mapping_status": {
+    "accepted_context_only": 1142,
+    "accepted_block_child": 990,
+    "blank": 12,
+    "context_not_applicable": 3,
+    "women_rights_representation": 1
+  },
+  "effective_nonblank_to_blank_transitions": {
+    "final_driver_scope": 1866,
+    "final_driver_label": 1216,
+    "final_driver_origin": 1864,
+    "semantic_scope": 1866,
+    "semantic_primary_driver": 1290,
+    "semantic_secondary_driver": 773,
+    "semantic_shared_driver": 1306,
+    "semantic_notes": 1866
+  },
+  "review_key_coverage": {
+    "changed_keys": 2148,
+    "changed_keys_present_in_facet_deepening_review_files": 68
+  },
+  "interpretation_limit": "Mechanical lookup/row equality and transition analysis only. This receipt does not decide whether any driver/facet judgment is semantically correct or whether shadowing was intentional."
+}

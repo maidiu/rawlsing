@@ -1,0 +1,7 @@
+# Transport delta and precise holds
+
+New candidate reuses exact P7 Git tree and restores 11 historical observations by Git SHA references. The sole derived SOURCE_INPUTS modification replaces the P5 stale preimage with repaired P7 nested module. Source manifest SHA256 `2e7d47d2a14fe1fec12fd574c1183fadf50ee25b6f10a62ffae8858e29885418`; original P7 manifest Git blob `a4fb02bd3aef3f2297d3338b25a2a585a824ef09` unchanged.
+
+The nested module SHA-256 is `89fed0a6078b5bb2ced8ce930ef6f56364acf2a4a9b24ab6210adfe90d89a643`; direct older module remains only as frozen history and is refused by the versioned P8 bootstrap unless the correct import preimage and path are proven. The historical P7 `ARTIFACT_MANIFEST.json` is not the operative P8 manifest. The new `candidate/WG0P8_PUBLICATION_CUSTODY_MANIFEST.json` binds the revised source manifest, exact blobs and transport-only scope.
+
+The new `repro/wg0p8_publication.py` and nine synthetic `tests/test_wg0p8_transport.py` are newly versioned and not part of accepted native rule semantics. The transport verifies all 187 inputs, version and correct P5 import, and supports the original frozen courts through explicit fresh Python subprocesses. Those new-subtree full runs were **not available here**, so execution and fresh I2 acceptance HOLD. Original 5 WG0N unconstructible and 2 historical stronger-refusal conflicts remain visible, not rewritten. No independently signed issuer, owner temporal/supersession semantics, independent revocation, original source rights, I05, N11/N12 or V3 rights are added.

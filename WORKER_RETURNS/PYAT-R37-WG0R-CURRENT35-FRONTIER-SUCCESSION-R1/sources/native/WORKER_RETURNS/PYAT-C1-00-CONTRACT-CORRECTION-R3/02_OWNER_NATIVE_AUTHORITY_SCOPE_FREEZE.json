@@ -1,0 +1,292 @@
+{
+  "schema": "PYAT_C1_00_R3_OWNER_NATIVE_AUTHORITY_SCOPE_FREEZE@1",
+  "status": "FROZEN_DOCUMENTARY_ORACLE__NOT_EXECUTED",
+  "owner_baseline": "b3b2fa13049513078c301a1f6574b661fcf390c5",
+  "identity_law": "PRE553 canonicalize/canonical_json + sha256",
+  "synthetic_at07_universe": {
+    "construction_order": "FREEZE_UNIVERSE_BEFORE_SOURCE_SCOPED_QUERY_AUTHORITY",
+    "owner_family": "EmpiricalUniverse@1.0.0",
+    "semantic_projection": {
+      "schema_id": "EmpiricalUniverse",
+      "schema_version": "1.0.0",
+      "typed_state": "UNIVERSE_IDENTIFIED",
+      "authority_snapshot_refs": [
+        {
+          "authority_id": "C1-AT07-SOURCE",
+          "authority_version": "1.0.0",
+          "authority_content_hash": "4d565f1b40adb2bd3c9c3c2965226a4f9be9222338323ed6b649b8a68a973dab"
+        }
+      ],
+      "dependency_refs": [],
+      "producer_replay_locator_or_reference_root": {
+        "kind": "REPLAY_ROOT",
+        "object_id": "urn:test:i03:replay_root:universe-c1-at07",
+        "content_hash": "867318b2cb6b7faac76f88fa422da5c115c06fb3998330cc0ba074e056770cd4"
+      },
+      "semantic_fields": {
+        "raw_source_identity": "RAW-c1-at07",
+        "source_family": "SURVEY",
+        "study_product_release": "STUDY-c1-at07/REL-1",
+        "instrument_release": "INST-c1-at07",
+        "country_geography": "US",
+        "sampling_geography": "US-NATIONAL",
+        "raw_wave": "W1",
+        "canonical_wave_if_governed": null,
+        "field_or_reference_time": "2026-01",
+        "target_population_and_sample_frame": "ADULTS",
+        "sampling_design_regime": "DESIGN-I03",
+        "respondent_namespace": "NS-c1-at07",
+        "source_artifact_import_lineage": "SOURCE-LINEAGE-c1-at07",
+        "harmonization_authority_ref": null,
+        "source_relation_refs": []
+      }
+    },
+    "expected_ref": {
+      "kind": "EmpiricalUniverse@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:ca5ee1320b1c0e0685eccb6585b35c1e74094516802545bde42fa11191ea43c2",
+      "content_hash": "ca5ee1320b1c0e0685eccb6585b35c1e74094516802545bde42fa11191ea43c2"
+    }
+  },
+  "source_fixture_generation_law": {
+    "rows": [
+      {
+        "prefix": "P1Y",
+        "count": 54,
+        "position": "P1",
+        "answer": "yes",
+        "id_format": "PREFIX + zero-padded 3-digit 001..count"
+      },
+      {
+        "prefix": "P1N",
+        "count": 6,
+        "position": "P1",
+        "answer": "no",
+        "id_format": "PREFIX + zero-padded 3-digit 001..count"
+      },
+      {
+        "prefix": "P2Y",
+        "count": 8,
+        "position": "P2",
+        "answer": "yes",
+        "id_format": "PREFIX + zero-padded 3-digit 001..count"
+      },
+      {
+        "prefix": "P2N",
+        "count": 32,
+        "position": "P2",
+        "answer": "no",
+        "id_format": "PREFIX + zero-padded 3-digit 001..count"
+      }
+    ],
+    "builder_law": "Use the current source-free I03 owner/test object construction semantics frozen in this file: two scalar response events per respondent, whole-question R_ALL_100 routing for both questions, one inert observed coordinate per respondent, R2 SOURCE/ROUTING/COORDINATE/REPLAY snapshots, no weights, DISTINCT_BY_DEFAULT source relation, NOT_APPLICABLE/DEFERRED internal optional sections.",
+    "question_refs": {
+      "POSITION": {
+        "kind": "QUESTION_NATIVE",
+        "object_id": "urn:test:i03:question_native:c1-at07-POSITION",
+        "content_hash": "df6d11b23fb0494ebb9ad89a1e173012b8225bafc0b62d3c4a7a3eae5aaf6bf5"
+      },
+      "ANSWER": {
+        "kind": "QUESTION_NATIVE",
+        "object_id": "urn:test:i03:question_native:c1-at07-ANSWER",
+        "content_hash": "e6f8992046c0941a5192585cbe9c2ec86e03963e68207c1f05988df2c9105513"
+      }
+    },
+    "risk_set_ref": {
+      "kind": "RISK_SET",
+      "object_id": "urn:test:i03:risk_set:c1-at07-R_ALL_100",
+      "content_hash": "704b0dc18f64d14cb4b4188a35dbfbe58d136f2ca5ef174c8048285334a515ad"
+    },
+    "record_counts": {
+      "EmpiricalUniverse": 1,
+      "RespondentIdentity": 100,
+      "QuestionVariableBinding": 2,
+      "RespondentEvent": 200,
+      "RoutingEligibilityFact": 200,
+      "EmpiricalCoordinateFact": 100,
+      "WeightMeasureFact": 0,
+      "AuthoritySnapshot": 4,
+      "SourceUniverseRelation": 0,
+      "EmpiricalPredicateReplayBinding": 0,
+      "ComparatorReplayBinding": 0,
+      "DiscoveryBranchReplayBinding": 0,
+      "StructuralAdmissionReplayBinding": 0,
+      "ReplayManifest": 1
+    },
+    "source_manifest_hash": "01ee5fa6db95efad3ce0acecd656f51beb6c2f2e21bc30e49bd358633f9ad6a1",
+    "candidate_projection_hash": "f0e42f9d04cac4a7f33abf2e3b5fd4392bc85ce3da4ab5489298b50c7ce2bf22",
+    "replay_manifest_ref": {
+      "kind": "C11Internal:ReplayManifest",
+      "object_id": "urn:rawlsing:pre553:c11:ReplayManifest:sha256:e3791d5f5dfc70849789545e9d08e954c994feaef283953e84151c8f885fe76d",
+      "content_hash": "e3791d5f5dfc70849789545e9d08e954c994feaef283953e84151c8f885fe76d"
+    },
+    "expected_release_ref": {
+      "kind": "C11LogicalRelease",
+      "object_id": "REL-c1-at07",
+      "content_hash": "8afa807cc06a3a10e660d13bbd831f4f758ae829e835a454c62831bfd8f4d939"
+    },
+    "source_authority_snapshot_outer_refs": {
+      "C1-AT07-SOURCE": {
+        "kind": "AuthoritySnapshot@1.0.0",
+        "object_id": "urn:rawlsing:pre553:AuthoritySnapshot:sha256:e3f5af0b4657ac24b530de6456757f326015c7c02798685aba11eeda328120da",
+        "content_hash": "e3f5af0b4657ac24b530de6456757f326015c7c02798685aba11eeda328120da"
+      },
+      "C1-AT07-ROUTING": {
+        "kind": "AuthoritySnapshot@1.0.0",
+        "object_id": "urn:rawlsing:pre553:AuthoritySnapshot:sha256:6504424b2922616ef993ada9e9faa45624134f3af947508eef14c7c1aa215b49",
+        "content_hash": "6504424b2922616ef993ada9e9faa45624134f3af947508eef14c7c1aa215b49"
+      },
+      "C1-AT07-COORDINATE": {
+        "kind": "AuthoritySnapshot@1.0.0",
+        "object_id": "urn:rawlsing:pre553:AuthoritySnapshot:sha256:36f5f41bbee8535372db8ad7ab0793dfacf1c6687e36680676dee12cb0ea835e",
+        "content_hash": "36f5f41bbee8535372db8ad7ab0793dfacf1c6687e36680676dee12cb0ea835e"
+      },
+      "C1-AT07-REPLAY": {
+        "kind": "AuthoritySnapshot@1.0.0",
+        "object_id": "urn:rawlsing:pre553:AuthoritySnapshot:sha256:40a8c7e0a437b044b09837b34bb34c403a8bee8ef9eb31bbf5d93e50dfe7cd11",
+        "content_hash": "40a8c7e0a437b044b09837b34bb34c403a8bee8ef9eb31bbf5d93e50dfe7cd11"
+      }
+    }
+  },
+  "repaired_query_authority": {
+    "old_expected_ref": {
+      "authority_id": "C1-AT07-QUERY",
+      "authority_version": "1.0.0",
+      "authority_content_hash": "b485ea6ddba78b0e0ccc4c4c0b2097b783d4f9f39fede9717b716edfb5f54a45"
+    },
+    "canonical_material": {
+      "schema": "C1_SYNTHETIC_PRE553_AUTHORITY_PREIMAGE@1",
+      "typed_state": "ALLOW",
+      "authority_snapshot_refs": [],
+      "dependency_refs": [],
+      "producer_replay_locator_or_reference_root": {
+        "kind": "REPLAY_ROOT",
+        "object_id": "urn:test:c1:at07:replay-root:C1-AT07-QUERY",
+        "content_hash": "9ae8711ad9d56ddb60fb5d97219e64078ccc8d44f3023143de0305d8c80c0594"
+      },
+      "authority_id": "C1-AT07-QUERY",
+      "authority_version": "1.0.0",
+      "authority_kind": "PREDICATE_GRAMMAR",
+      "decision_state": "ALLOW",
+      "governed_operations": [
+        "C1_AT07_QUERY"
+      ],
+      "governed_object_families": [
+        "EmpiricalPredicate@1.0.0",
+        "EmpiricalQuerySpec@1.0.0",
+        "EmpiricalFact@1.0.0"
+      ],
+      "scope_envelope": {
+        "fixture_id": "AT07_BIDIRECTIONAL_100",
+        "source_family": "SYNTHETIC_SURVEY",
+        "source_seed": "C1_AT07",
+        "use": "SOURCE_FREE_C1_01_ONLY",
+        "source_universe_refs": [
+          {
+            "kind": "EmpiricalUniverse@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:ca5ee1320b1c0e0685eccb6585b35c1e74094516802545bde42fa11191ea43c2",
+            "content_hash": "ca5ee1320b1c0e0685eccb6585b35c1e74094516802545bde42fa11191ea43c2"
+          }
+        ]
+      },
+      "effective_time_or_interval": "AT07_FIXTURE_ONLY",
+      "parent_authority_refs": [],
+      "negative_limit_refs": [],
+      "supersession_refs": [],
+      "interpretation_semantics_fingerprint": "06e1e05a8179f861827bfb515675b15183461349bba7b8feadfd7dd0af80f9df",
+      "replay_protocol_ref": {
+        "kind": "REPLAY_PROTOCOL",
+        "object_id": "urn:test:c1:at07:replay-protocol:C1-AT07-QUERY",
+        "content_hash": "f4df42e3717302cbf67cbfa4cd2824b047b41152da870c3c6a082066b9f85a6c"
+      },
+      "purpose": "synthetic predicate/query grammar and fact-production authority",
+      "real_source_effect": false
+    },
+    "expected_authority_ref": {
+      "authority_id": "C1-AT07-QUERY",
+      "authority_version": "1.0.0",
+      "authority_content_hash": "b59ef578314515268fa7b280a8480b4c95c80c9cfd831c39c2bfc4214b6fd767"
+    },
+    "authority_snapshot_outer_ref": {
+      "kind": "AuthoritySnapshot@1.0.0",
+      "object_id": "urn:rawlsing:pre553:AuthoritySnapshot:sha256:ddce68bad384945dbec3da9413f915cc968147fb06ba9562aaa4a63ffdbb5724",
+      "content_hash": "ddce68bad384945dbec3da9413f915cc968147fb06ba9562aaa4a63ffdbb5724"
+    }
+  },
+  "public_path_scope_inspection": [
+    {
+      "authority_id": "C1-AT07-SOURCE",
+      "future_c1_01_use": "C11/source + target topology/response semantic closure",
+      "require_positive_authority_scope_args": "none at this direct I03 use beyond positive exact resolution",
+      "R3_scope_change": "NONE"
+    },
+    {
+      "authority_id": "C1-AT07-ROUTING",
+      "future_c1_01_use": "RoutingEligibilityFact closure; I03 requires a ROUTING_RISK_SET kind among resolved refs",
+      "require_positive_authority_scope_args": "none",
+      "R3_scope_change": "NONE"
+    },
+    {
+      "authority_id": "C1-AT07-COORDINATE",
+      "future_c1_01_use": "inert source fixture coordinate closure; not a condition leaf in AT07",
+      "require_positive_authority_scope_args": "none",
+      "R3_scope_change": "NONE"
+    },
+    {
+      "authority_id": "C1-AT07-REPLAY",
+      "future_c1_01_use": "I02 replay manifest validation",
+      "require_positive_authority_scope_args": "authority_kind only",
+      "R3_scope_change": "NONE"
+    },
+    {
+      "authority_id": "C1-AT07-QUERY",
+      "future_c1_01_use": "I03 _require_exact_i03_authority_fitness",
+      "require_positive_authority_scope_args": [
+        "authority_kind",
+        "operation",
+        "object_family",
+        "source_universe_ref"
+      ],
+      "R3_scope_change": "ADD owner-native source_universe_refs containing exact frozen universe ref"
+    },
+    {
+      "authority_id": "C1-AT07-COMPARABILITY",
+      "future_c1_01_use": "existing consumer fixture-only AuthorityRef; not PRE553 AuthoritySnapshot",
+      "R3_scope_change": "NONE"
+    },
+    {
+      "authority_id": "C1-AT07-MODEL",
+      "future_c1_01_use": "existing consumer fixture-only AuthorityRef; not PRE553 AuthoritySnapshot",
+      "R3_scope_change": "NONE"
+    },
+    {
+      "authority_id": "C1-AT07-WALKBACK",
+      "future_c1_01_use": "existing consumer fixture-only AuthorityRef; not PRE553 AuthoritySnapshot",
+      "R3_scope_change": "NONE"
+    }
+  ],
+  "owner_contract_compatibility": {
+    "owner_query_blob": "03facecf70890bfd13b80418620d274cbcd69d02",
+    "owner_authority_blob": "ca65a7fd4d52f0c44447434559b1d09412e7aa39",
+    "required_source_universe_ref": {
+      "kind": "EmpiricalUniverse@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:ca5ee1320b1c0e0685eccb6585b35c1e74094516802545bde42fa11191ea43c2",
+      "content_hash": "ca5ee1320b1c0e0685eccb6585b35c1e74094516802545bde42fa11191ea43c2"
+    },
+    "frozen_scope_source_universe_refs": [
+      {
+        "kind": "EmpiricalUniverse@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:ca5ee1320b1c0e0685eccb6585b35c1e74094516802545bde42fa11191ea43c2",
+        "content_hash": "ca5ee1320b1c0e0685eccb6585b35c1e74094516802545bde42fa11191ea43c2"
+      }
+    ],
+    "exact_containment": true,
+    "typed_state_allow": true,
+    "kind_match": true,
+    "operation_match": true,
+    "object_family_matches": true,
+    "target_use_ref_supplied_by_frozen_narrow_query": false,
+    "predicate_or_risk_set_ref_supplied_by_frozen_narrow_query": false,
+    "expected": "PASS_CURRENT_PUBLIC_I03_SCOPE_TEST_AT_SYNTHETIC_FIXTURE_GRAIN"
+  },
+  "real_source_effect": false
+}

@@ -1,0 +1,93 @@
+{
+  "adjudication": {
+    "EXP-001": "EXISTS__ACCEPTED_AUTHORITY_MAPPED",
+    "EXP-007": "EXISTS__SUPERSESSION_NOT_PROVED",
+    "HARVEST-001": "ADJUDICATED__FOLLOW_UP_REQUIRED"
+  },
+  "builder_versions": {
+    "aug17_uid_builder_binding_ref": "source_structure_audit_binding_35wave_v1.json",
+    "aug17_uid_builder_sha256": "2ea25c11cde8bd2ee3b00d6ba6608ebf452dc05dbede227faf7fcbc3700a93dc",
+    "count": 4,
+    "sha256s": [
+      "6abc78efbe6e1200893089aa4b4cd8b9f4d90924ebd8585eba5c056474d624b1",
+      "3d271c55e1596973a6e698919372b065ae5c279244aee877fbcddc2787ee0b69",
+      "3cabb94b84e7e498cfc56c4d579d58047744ef545faae2e03586a7d5f0856175",
+      "2ea25c11cde8bd2ee3b00d6ba6608ebf452dc05dbede227faf7fcbc3700a93dc"
+    ]
+  },
+  "delta_a_to_b": {
+    "changed_cells": 13330,
+    "changed_columns": {
+      "final_driver_id": 879,
+      "final_driver_label": 1592,
+      "final_driver_origin": 1869,
+      "final_driver_scope": 1870,
+      "semantic_notes": 1871,
+      "semantic_primary_driver": 1296,
+      "semantic_scope": 1870,
+      "semantic_secondary_driver": 773,
+      "semantic_shared_driver": 1310
+    },
+    "changed_rows": 2148,
+    "holding": "changes confined to driver/semantic fields; question-structure manual/topology core invariant"
+  },
+  "delta_b_to_c": {
+    "changed_cells": 131,
+    "changed_columns": {
+      "source_structure_classification": 117,
+      "source_structure_confidence": 7,
+      "source_structure_review_required": 7
+    },
+    "changed_rows": 117,
+    "classification_transitions": {
+      "open_text_excluded->substantive_scale": 98,
+      "substantive_single_choice->substantive_scale": 12,
+      "unknown->substantive_scale": 7
+    },
+    "families": {
+      "GSS": 117
+    },
+    "holding": "bounded deterministic GSS SES structural-classification correction; no manual-core or driver-semantic change"
+  },
+  "harvest_id": "HARVEST-001",
+  "negative_evidence": {
+    "holding": "not accepted as 54 missing authority objects; repeated references collapse to three historical basenames and Library manifest shows case/alias-drifted LiTS III/IV audit artifacts; authority loss not proved",
+    "reported_missing_linked_path_occurrences": 54
+  },
+  "packet": {
+    "distinct_packaged_sha_identities": 108,
+    "evidence_manifest_rows": 1704,
+    "responsive_archive_members": 24,
+    "sha256": "e283735f6af208578b373a2e30d8df7fc8ad3f86edc05874fa43e4be9092db78",
+    "sha256s_entries_verified": 114,
+    "sha256s_failures": 0,
+    "size_bytes": 45544102,
+    "zip_member_count": 175
+  },
+  "question_structure_register": {
+    "common_pre_driver_structural_projection": {
+      "byte_count": 20384370,
+      "column_count": 52,
+      "csv_sha256": "500f0022f5ccdec32008019bad642d62c3c5a77937bcbf9cef24fc67d23e6f85",
+      "identical_across_all_three": true
+    },
+    "manual_review": {
+      "distinct_question_ids": 560,
+      "identical_across_all_three": true,
+      "rows_each": 562,
+      "sorted_row_sequence_sha256": "98a24a7bfecf573b5ef00329226f7210a2e6cb61ebaadd9b5e6127aff476c780"
+    },
+    "row_count_each": 18792,
+    "scope": {
+      "asian_barometer_w6_present_each": false,
+      "distinct_family_wave_pairs_each": 35,
+      "evs_1999_present_each": true,
+      "normalized_pair_csv_sha256": "2b6da759ea59d09a2faf66df9fd4476d2d190e10ec2e18275991ce072e668911"
+    },
+    "versions": [
+      {"columns": 62, "occurrences": 1, "sha256": "f47c8adb65546b1c0a06dcd31dc0b827b59f8975a3806646f41a0742966c3d84"},
+      {"columns": 69, "occurrences": 3, "sha256": "15f7b5613b7cb106c2d2db233925891d5392917b66eee19c1a5eff8e0655585b"},
+      {"columns": 69, "current_local_path": "/Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/manifests/question_structure_register.csv", "occurrences": 1, "sha256": "9139c1ab77bf47a872f63ccae7784f3631f03a3e02a936b4ac41e75580c45219"}
+    ]
+  }
+}

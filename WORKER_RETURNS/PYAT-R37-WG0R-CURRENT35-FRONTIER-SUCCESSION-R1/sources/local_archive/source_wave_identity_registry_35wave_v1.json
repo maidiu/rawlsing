@@ -1,0 +1,554 @@
+{
+  "registry_id": "source_wave_identity_registry_35wave_v1",
+  "schema_version": "1.0",
+  "uid_namespace_version": "swid_uid_v1",
+  "physical_token_version": "swidp1",
+  "production_membership_set": "CLOSED_35",
+  "production_member_count": 35,
+  "authority_basis": {
+    "closed_35": "question_relation_registry_35wave_active_v1.csv source_family/canonical_wave identities",
+    "recognized_excluded": [
+      "Asian Barometer|W6"
+    ],
+    "note": "Identity recognition does not imply production authorization. Historical path/checkpoint/cache identifiers are unchanged."
+  },
+  "source_families": [
+    {
+      "source_family_uid": "sf_afrobarometer_v1",
+      "compatibility_key": "afrobarometer",
+      "canonical_display_source": "Afrobarometer",
+      "aliases": [
+        "Afrobarometer",
+        "Afro Barometer"
+      ],
+      "waves": [
+        {
+          "wave_uid": "wv_afrobarometer_r1_v1",
+          "canonical_display_wave": "R1",
+          "compatibility_key": "ROUND1",
+          "aliases": [
+            "R1",
+            "ROUND1",
+            "Round 1",
+            "W1",
+            "Wave 1",
+            "1"
+          ],
+          "governance_state": "CLOSED_35",
+          "closed_35_member": true
+        },
+        {
+          "wave_uid": "wv_afrobarometer_r5_v1",
+          "canonical_display_wave": "R5",
+          "compatibility_key": "ROUND5",
+          "aliases": [
+            "R5",
+            "ROUND5",
+            "Round 5",
+            "W5",
+            "Wave 5",
+            "5"
+          ],
+          "governance_state": "CLOSED_35",
+          "closed_35_member": true
+        },
+        {
+          "wave_uid": "wv_afrobarometer_r9_v1",
+          "canonical_display_wave": "R9",
+          "compatibility_key": "ROUND9",
+          "aliases": [
+            "R9",
+            "ROUND9",
+            "Round 9",
+            "W9",
+            "Wave 9",
+            "9"
+          ],
+          "governance_state": "CLOSED_35",
+          "closed_35_member": true
+        }
+      ]
+    },
+    {
+      "source_family_uid": "sf_arab_barometer_v1",
+      "compatibility_key": "arab_barometer",
+      "canonical_display_source": "Arab Barometer",
+      "aliases": [
+        "Arab Barometer",
+        "ArabBarometer"
+      ],
+      "waves": [
+        {
+          "wave_uid": "wv_arab_barometer_i_v1",
+          "canonical_display_wave": "I",
+          "compatibility_key": "I",
+          "aliases": [
+            "I",
+            "W1",
+            "Wave 1",
+            "1"
+          ],
+          "governance_state": "CLOSED_35",
+          "closed_35_member": true
+        },
+        {
+          "wave_uid": "wv_arab_barometer_ii_v1",
+          "canonical_display_wave": "II",
+          "compatibility_key": "II",
+          "aliases": [
+            "II",
+            "W2",
+            "Wave 2",
+            "2"
+          ],
+          "governance_state": "CLOSED_35",
+          "closed_35_member": true
+        },
+        {
+          "wave_uid": "wv_arab_barometer_v_v1",
+          "canonical_display_wave": "V",
+          "compatibility_key": "V",
+          "aliases": [
+            "V",
+            "W5",
+            "Wave 5",
+            "5"
+          ],
+          "governance_state": "CLOSED_35",
+          "closed_35_member": true
+        },
+        {
+          "wave_uid": "wv_arab_barometer_viii_v1",
+          "canonical_display_wave": "VIII",
+          "compatibility_key": "VIII",
+          "aliases": [
+            "VIII",
+            "W8",
+            "Wave 8",
+            "8"
+          ],
+          "governance_state": "CLOSED_35",
+          "closed_35_member": true
+        }
+      ]
+    },
+    {
+      "source_family_uid": "sf_asian_barometer_v1",
+      "compatibility_key": "asian_barometer",
+      "canonical_display_source": "Asian Barometer",
+      "aliases": [
+        "Asian Barometer",
+        "AsianBarometer",
+        "Asian Barometer Survey"
+      ],
+      "waves": [
+        {
+          "wave_uid": "wv_asian_barometer_w1_v1",
+          "canonical_display_wave": "W1",
+          "compatibility_key": "W1",
+          "aliases": [
+            "W1",
+            "Wave 1",
+            "1"
+          ],
+          "governance_state": "CLOSED_35",
+          "closed_35_member": true
+        },
+        {
+          "wave_uid": "wv_asian_barometer_w4_v1",
+          "canonical_display_wave": "W4",
+          "compatibility_key": "W4",
+          "aliases": [
+            "W4",
+            "Wave 4",
+            "4"
+          ],
+          "governance_state": "CLOSED_35",
+          "closed_35_member": true
+        },
+        {
+          "wave_uid": "wv_asian_barometer_w5_v1",
+          "canonical_display_wave": "W5",
+          "compatibility_key": "W5",
+          "aliases": [
+            "W5",
+            "Wave 5",
+            "5"
+          ],
+          "governance_state": "CLOSED_35",
+          "closed_35_member": true
+        },
+        {
+          "wave_uid": "wv_asian_barometer_w6_v1",
+          "canonical_display_wave": "W6",
+          "compatibility_key": "W6",
+          "aliases": [
+            "W6",
+            "Wave 6",
+            "6"
+          ],
+          "governance_state": "RECOGNIZED_EXCLUDED",
+          "closed_35_member": false
+        }
+      ]
+    },
+    {
+      "source_family_uid": "sf_evs_v1",
+      "compatibility_key": "evs",
+      "canonical_display_source": "EVS",
+      "aliases": [
+        "EVS",
+        "European Values Study",
+        "European Values Survey"
+      ],
+      "waves": [
+        {
+          "wave_uid": "wv_evs_1981_v1",
+          "canonical_display_wave": "1981",
+          "compatibility_key": "W1",
+          "aliases": [
+            "1981",
+            "W1",
+            "Wave 1",
+            "1"
+          ],
+          "governance_state": "CLOSED_35",
+          "closed_35_member": true
+        },
+        {
+          "wave_uid": "wv_evs_1990_v1",
+          "canonical_display_wave": "1990",
+          "compatibility_key": "W2",
+          "aliases": [
+            "1990",
+            "W2",
+            "Wave 2",
+            "2"
+          ],
+          "governance_state": "CLOSED_35",
+          "closed_35_member": true
+        },
+        {
+          "wave_uid": "wv_evs_1999_v1",
+          "canonical_display_wave": "1999",
+          "compatibility_key": "W3",
+          "aliases": [
+            "1999",
+            "W3",
+            "Wave 3",
+            "3"
+          ],
+          "governance_state": "CLOSED_35",
+          "closed_35_member": true
+        },
+        {
+          "wave_uid": "wv_evs_2008_v1",
+          "canonical_display_wave": "2008",
+          "compatibility_key": "W4",
+          "aliases": [
+            "2008",
+            "W4",
+            "Wave 4",
+            "4"
+          ],
+          "governance_state": "CLOSED_35",
+          "closed_35_member": true
+        },
+        {
+          "wave_uid": "wv_evs_2017_v1",
+          "canonical_display_wave": "2017",
+          "compatibility_key": "W5",
+          "aliases": [
+            "2017",
+            "W5",
+            "Wave 5",
+            "5"
+          ],
+          "governance_state": "CLOSED_35",
+          "closed_35_member": true
+        }
+      ]
+    },
+    {
+      "source_family_uid": "sf_gss_v1",
+      "compatibility_key": "gss",
+      "canonical_display_source": "GSS",
+      "aliases": [
+        "GSS",
+        "General Social Survey"
+      ],
+      "waves": [
+        {
+          "wave_uid": "wv_gss_1972_v1",
+          "canonical_display_wave": "1972",
+          "compatibility_key": "1972",
+          "aliases": [
+            "1972"
+          ],
+          "governance_state": "CLOSED_35",
+          "closed_35_member": true
+        },
+        {
+          "wave_uid": "wv_gss_1973_v1",
+          "canonical_display_wave": "1973",
+          "compatibility_key": "1973",
+          "aliases": [
+            "1973"
+          ],
+          "governance_state": "CLOSED_35",
+          "closed_35_member": true
+        },
+        {
+          "wave_uid": "wv_gss_1984_v1",
+          "canonical_display_wave": "1984",
+          "compatibility_key": "1984",
+          "aliases": [
+            "1984"
+          ],
+          "governance_state": "CLOSED_35",
+          "closed_35_member": true
+        },
+        {
+          "wave_uid": "wv_gss_1993_v1",
+          "canonical_display_wave": "1993",
+          "compatibility_key": "1993",
+          "aliases": [
+            "1993"
+          ],
+          "governance_state": "CLOSED_35",
+          "closed_35_member": true
+        },
+        {
+          "wave_uid": "wv_gss_2002_v1",
+          "canonical_display_wave": "2002",
+          "compatibility_key": "2002",
+          "aliases": [
+            "2002"
+          ],
+          "governance_state": "CLOSED_35",
+          "closed_35_member": true
+        },
+        {
+          "wave_uid": "wv_gss_2010_v1",
+          "canonical_display_wave": "2010",
+          "compatibility_key": "2010",
+          "aliases": [
+            "2010"
+          ],
+          "governance_state": "CLOSED_35",
+          "closed_35_member": true
+        },
+        {
+          "wave_uid": "wv_gss_2016_v1",
+          "canonical_display_wave": "2016",
+          "compatibility_key": "2016",
+          "aliases": [
+            "2016"
+          ],
+          "governance_state": "CLOSED_35",
+          "closed_35_member": true
+        },
+        {
+          "wave_uid": "wv_gss_2024_v1",
+          "canonical_display_wave": "2024",
+          "compatibility_key": "2024",
+          "aliases": [
+            "2024"
+          ],
+          "governance_state": "CLOSED_35",
+          "closed_35_member": true
+        }
+      ]
+    },
+    {
+      "source_family_uid": "sf_latinobarometro_v1",
+      "compatibility_key": "latinobarometro",
+      "canonical_display_source": "Latinobarómetro",
+      "aliases": [
+        "Latinobarómetro",
+        "Latinobarometro"
+      ],
+      "waves": [
+        {
+          "wave_uid": "wv_latinobarometro_1995_v1",
+          "canonical_display_wave": "1995",
+          "compatibility_key": "1995",
+          "aliases": [
+            "1995"
+          ],
+          "governance_state": "CLOSED_35",
+          "closed_35_member": true
+        },
+        {
+          "wave_uid": "wv_latinobarometro_2011_v1",
+          "canonical_display_wave": "2011",
+          "compatibility_key": "2011",
+          "aliases": [
+            "2011"
+          ],
+          "governance_state": "CLOSED_35",
+          "closed_35_member": true
+        },
+        {
+          "wave_uid": "wv_latinobarometro_2024_v1",
+          "canonical_display_wave": "2024",
+          "compatibility_key": "2024",
+          "aliases": [
+            "2024"
+          ],
+          "governance_state": "CLOSED_35",
+          "closed_35_member": true
+        }
+      ]
+    },
+    {
+      "source_family_uid": "sf_lits_v1",
+      "compatibility_key": "lits",
+      "canonical_display_source": "LiTS",
+      "aliases": [
+        "LiTS",
+        "Life in Transition Survey",
+        "Life Transition Survey"
+      ],
+      "waves": [
+        {
+          "wave_uid": "wv_lits_2006_v1",
+          "canonical_display_wave": "2006",
+          "compatibility_key": "2006",
+          "aliases": [
+            "2006",
+            "I",
+            "W1",
+            "Wave 1",
+            "1"
+          ],
+          "governance_state": "CLOSED_35",
+          "closed_35_member": true
+        },
+        {
+          "wave_uid": "wv_lits_ii_v1",
+          "canonical_display_wave": "II",
+          "compatibility_key": "II",
+          "aliases": [
+            "II",
+            "W2",
+            "Wave 2",
+            "2"
+          ],
+          "governance_state": "CLOSED_35",
+          "closed_35_member": true
+        },
+        {
+          "wave_uid": "wv_lits_iii_v1",
+          "canonical_display_wave": "III",
+          "compatibility_key": "III",
+          "aliases": [
+            "III",
+            "W3",
+            "Wave 3",
+            "3"
+          ],
+          "governance_state": "CLOSED_35",
+          "closed_35_member": true
+        },
+        {
+          "wave_uid": "wv_lits_iv_v1",
+          "canonical_display_wave": "IV",
+          "compatibility_key": "IV",
+          "aliases": [
+            "IV",
+            "W4",
+            "Wave 4",
+            "4"
+          ],
+          "governance_state": "CLOSED_35",
+          "closed_35_member": true
+        }
+      ]
+    },
+    {
+      "source_family_uid": "sf_south_asia_v1",
+      "compatibility_key": "south_asia",
+      "canonical_display_source": "South Asia",
+      "aliases": [
+        "South Asia",
+        "SouthAsia",
+        "South Asia Barometer"
+      ],
+      "waves": [
+        {
+          "wave_uid": "wv_south_asia_w1_v1",
+          "canonical_display_wave": "W1",
+          "compatibility_key": "W1",
+          "aliases": [
+            "W1",
+            "Wave 1",
+            "1"
+          ],
+          "governance_state": "CLOSED_35",
+          "closed_35_member": true
+        },
+        {
+          "wave_uid": "wv_south_asia_w2_v1",
+          "canonical_display_wave": "W2",
+          "compatibility_key": "W2",
+          "aliases": [
+            "W2",
+            "Wave 2",
+            "2"
+          ],
+          "governance_state": "CLOSED_35",
+          "closed_35_member": true
+        }
+      ]
+    },
+    {
+      "source_family_uid": "sf_wvs_v1",
+      "compatibility_key": "wvs",
+      "canonical_display_source": "WVS",
+      "aliases": [
+        "WVS",
+        "WV",
+        "World Values Survey"
+      ],
+      "waves": [
+        {
+          "wave_uid": "wv_wvs_w1_v1",
+          "canonical_display_wave": "W1",
+          "compatibility_key": "W1",
+          "aliases": [
+            "W1",
+            "Wave 1",
+            "1"
+          ],
+          "governance_state": "CLOSED_35",
+          "closed_35_member": true
+        },
+        {
+          "wave_uid": "wv_wvs_w4_v1",
+          "canonical_display_wave": "W4",
+          "compatibility_key": "W4",
+          "aliases": [
+            "W4",
+            "Wave 4",
+            "4"
+          ],
+          "governance_state": "CLOSED_35",
+          "closed_35_member": true
+        },
+        {
+          "wave_uid": "wv_wvs_w7_v1",
+          "canonical_display_wave": "W7",
+          "compatibility_key": "W7",
+          "aliases": [
+            "W7",
+            "Wave 7",
+            "7"
+          ],
+          "governance_state": "CLOSED_35",
+          "closed_35_member": true
+        }
+      ]
+    }
+  ]
+}

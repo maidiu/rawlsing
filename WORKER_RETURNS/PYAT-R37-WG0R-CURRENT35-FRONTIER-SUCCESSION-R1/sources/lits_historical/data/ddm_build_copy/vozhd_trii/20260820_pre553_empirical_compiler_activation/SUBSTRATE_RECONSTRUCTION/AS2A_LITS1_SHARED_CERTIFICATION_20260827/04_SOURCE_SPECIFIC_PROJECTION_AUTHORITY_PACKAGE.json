@@ -1,0 +1,130 @@
+{
+  "projection_authority_ref": {
+    "kind": "AS2A_LITS1_SOURCE_SPECIFIC_PROJECTION_AUTHORITY",
+    "object_id": "urn:rawlsing:pre553:as2a:lits1-projection-authority:sha256:9dd1e6b7350ebb795e028db86279131f8d319e939a044b74c3c5605ecacf5b06",
+    "content_hash": "9dd1e6b7350ebb795e028db86279131f8d319e939a044b74c3c5605ecacf5b06"
+  },
+  "projection_material": {
+    "schema": "AS2A_LITS1_SOURCE_SPECIFIC_PROJECTION_AUTHORITY@1.0.0",
+    "source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "source_shape": {
+      "rows": 29002,
+      "variables": 1198,
+      "physical_cells": 34744396
+    },
+    "decoder": {
+      "call": "decode_dta(source_path, encoding=\"latin1\")",
+      "authority": "COMPATIBILITY_EXECUTION_ONLY__NOT_SOURCE_TEXT_ENCODING_AUTHORITY"
+    },
+    "contract_target": "PRE553_SOURCE_BACKED_C11_FACADE@1.0.0",
+    "slot_ledger_sha256": "65bdb972c2004d7ea6539b991125d2111e3705aee2d3e76159208d04e4a3fa60",
+    "authority_inputs": [
+      {
+        "id": "Verkhovod18",
+        "commit": "0f61b3840ddae78f4a5df30cde22b1bc82aaec2e"
+      },
+      {
+        "id": "Authority82",
+        "control_commit": "04a0109aa170c6041b199e5c6130a39a8e0f6029"
+      },
+      {
+        "id": "LiTSI_Questionnaire.pdf",
+        "sha256": "b94bdcf4a9f2e2e025bf35e5364f79acf0b1f5fa05c035064e674fa58a921eae"
+      },
+      {
+        "id": "accepted_R07_codebook_member",
+        "sha256": "91698cbc22d7498c3587bcacd7f96be47323d2bc9867cec5103e954e5099eb0c"
+      },
+      {
+        "id": "uploaded_normalized_codebook_inspection_copy",
+        "sha256": "400ad9cf8b0b350a8ba1a2a778346f190ef2bba710145e648a12fc9ff464fc44",
+        "authority_status": "NONAUTHORITATIVE_INSPECTION_COPY__HASH_DIFFERS_FROM_ACCEPTED_MEMBER"
+      },
+      {
+        "id": "v550_v551_response_semantics_contract_binding_v1",
+        "certified_LiTS2006_slots": [
+          "q301_2",
+          "q301_7",
+          "q312_3",
+          "q315_1",
+          "q511"
+        ]
+      },
+      {
+        "id": "LiTS_response_option_authority",
+        "sha256": "e696eb5084458cb5424a53f96c9461cdf8ec3da8e5eb47dc0a4458b413a2f867"
+      },
+      {
+        "id": "LiTS2006_FQRA_R1",
+        "accepted_input_sha256": "0f7fa1c0f579fd44ad44a7ccfc576166b5e8b49895e2822dfc916dff8d00ad13",
+        "row_count": 1198
+      }
+    ],
+    "respondent_identity": {
+      "key_law": "source_sha256 + 1-based row ordinal + semantic role SELECTED_RESPONDENT",
+      "native_id": "ATTRIBUTE_ONLY__NOT_DURABLE_ID_AUTHORITY"
+    },
+    "bounded_proving_response_slots": [
+      "q301_2",
+      "q301_7"
+    ],
+    "positive_response_slots": [
+      "q301_2",
+      "q301_7"
+    ],
+    "certified_active_response_contract_slots": [
+      "q301_2",
+      "q301_7",
+      "q312_3",
+      "q315_1",
+      "q511"
+    ],
+    "positive_coordinate_slots": [
+      "city",
+      "country",
+      "region",
+      "tablec",
+      "tabled"
+    ],
+    "weight_slots": [],
+    "nonparticipating_slot_count": 1191,
+    "routing_scope": {
+      "q301_2": "ELIGIBLE_APPLICABLE__SECTION3_UNCONDITIONAL",
+      "q301_7": "ELIGIBLE_APPLICABLE__SECTION3_UNCONDITIONAL"
+    },
+    "part_a_pass_conditions": {
+      "UNACCOUNTED_LITS1_SOURCE_SLOT": 0,
+      "UNRESOLVED_RESPONDENT_ROLE_REQUIRED_FOR_PROVING_SCOPE": 0,
+      "UNRESOLVED_ROUTING_APPLICABILITY_REQUIRED_FOR_PROVING_SCOPE": 0
+    },
+    "carried_unknowns": [
+      "intended source-text encoding",
+      "cross-release semantic equivalence",
+      "universal/default weight selection among weight_0/weight_1/weight_2",
+      "durable native-ID semantic identity beyond source-SHA + row ordinal"
+    ],
+    "universe_spec": {
+      "schema": "AS2A_LITS1_SINGLE_RELEASE_EMPIRICAL_UNIVERSE_SPEC@1.0.0",
+      "source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+      "source_rows": 29002,
+      "source_variables": 1198,
+      "study_product": "Life in Transition Survey 2006",
+      "instrument_release": "LiTS-I Final questionnaire 2006",
+      "raw_wave": "2006",
+      "canonical_wave_if_governed": "2006",
+      "country_geography": "source field country; 29 source-present country codes; no cross-release equivalence claim",
+      "sampling_geography": "country/city/region/tablec/tabled(PSU) source fields",
+      "target_population_and_sample_frame": "source-documented randomly selected households with one selected person for Sections 3-7; bounded RAW proving release",
+      "sampling_design_regime": "LiTS-I source-documented household/selected-person sampling; no weight estimand claimed",
+      "respondent_namespace": "LITS1_SELECTED_RESPONDENT__7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09__ROW_ORDINAL_1BASED",
+      "row_level_semantic_subject": "selected person for Sections 3-7; identity is source-SHA + row ordinal, not durable native id",
+      "source_relation_state": "DISTINCT_BY_DEFAULT__CROSS_RELEASE_EQUIVALENCE_UNKNOWN",
+      "weights": "NONE__RAW_UNWEIGHTED"
+    },
+    "universe_spec_ref": {
+      "kind": "AS2A_LITS1_EMPIRICAL_UNIVERSE_SPEC",
+      "object_id": "urn:rawlsing:pre553:as2a:universe:sha256:834f9be5c5838226abcc9f0af96f2f582eac8bec2944c514ce52680f45faf99f",
+      "content_hash": "834f9be5c5838226abcc9f0af96f2f582eac8bec2944c514ce52680f45faf99f"
+    }
+  }
+}

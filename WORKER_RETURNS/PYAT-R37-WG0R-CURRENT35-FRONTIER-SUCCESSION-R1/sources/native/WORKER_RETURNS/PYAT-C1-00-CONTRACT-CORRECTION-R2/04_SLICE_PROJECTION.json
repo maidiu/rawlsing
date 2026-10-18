@@ -1,0 +1,150 @@
+{
+  "schema": "PYAT_C1_00_R2_SLICE_PROJECTION@1",
+  "status": "FROZEN_DOCUMENTARY_CONTRACT__NOT_EXECUTED",
+  "projection_schema_material": {
+    "schema": "C1_POSSIBILITY_SLICE_PROJECTION@1",
+    "applicability": "C1-01 scalar direct empirical route only",
+    "geometry_exact_keys": [
+      "schema",
+      "source_fact_ref",
+      "producer_query_ref",
+      "condition_predicate_ref",
+      "condition_value_witness_ref",
+      "target",
+      "denominator",
+      "measure",
+      "cells"
+    ],
+    "geometry": {
+      "schema": "C1_POSSIBILITY_SLICE_GEOMETRY@1",
+      "source_fact_ref": "exact EmpiricalFact.ref",
+      "producer_query_ref": "exact EmpiricalQuerySpec.ref; must equal EmpiricalFact.empirical_query_spec_ref",
+      "condition_predicate_ref": "exact EmpiricalPredicate.ref; must equal EmpiricalFact.condition_predicate_ref",
+      "condition_value_witness_ref": "exact C1 condition-value witness ref",
+      "target": {
+        "target_ref": "empirical_query.target_refs[0]; must equal consumer_query.target_ref",
+        "arity": "must be integer 1",
+        "joint_order_semantics": "copied exactly from empirical_query.target_arity_and_topology",
+        "component_material": "canonical exact empirical_query.target_arity_and_topology.components[0] material; no dropped topology/domain/authority fields",
+        "target_domain_identity": "copied exactly from EmpiricalFact.target_domain_identity"
+      },
+      "denominator": {
+        "risk_set_ref": "exact EmpiricalFact.risk_set_ref",
+        "risk_set_type": "exact EmpiricalFact.risk_set_type",
+        "risk_set_member_refs": "exact canonically sorted EmpiricalFact.risk_set_member_refs",
+        "denominator_member_refs": "exact canonically sorted EmpiricalFact.denominator_member_refs",
+        "raw_denominator_support": "exact EmpiricalFact.raw_denominator_support",
+        "weighted_denominator_support_if_authorized": "exact EmpiricalFact weighted denominator object or null"
+      },
+      "measure": {
+        "measure_kind": "exact EmpiricalFact.measure_kind",
+        "measure_basis_ref": "exact EmpiricalFact.measure_basis_ref",
+        "weight_basis_id_or_null": "empirical_query.requested_output_grain.weight_basis_id when governed weighted, otherwise null",
+        "weight_design_estimand_context": "exact dereferenced used WeightMeasureFact context when governed weighted, otherwise null"
+      },
+      "cells": {
+        "source": "EmpiricalFact.target_topology.complete_cell_semantic_projection",
+        "order": "preserve producer canonical cell order exactly",
+        "exact_keys": [
+          "cell",
+          "cell_state",
+          "raw_numerator_support",
+          "weighted_numerator_support_if_authorized",
+          "raw_probability_exact_fraction",
+          "weighted_probability_exact_fraction_if_authorized"
+        ],
+        "raw_probability_exact_fraction": "reduce raw_numerator_support/raw_denominator_support; null only when raw denominator is zero",
+        "weighted_probability_exact_fraction_if_authorized": "divide exact weighted numerator fraction by exact weighted denominator fraction and reduce; null when measure is RAW or denominator unavailable"
+      }
+    },
+    "fraction_encoding": {
+      "schema": "EXACT_FRACTION",
+      "json_shape": {
+        "$exact_fraction": [
+          "integer numerator",
+          "positive integer denominator"
+        ]
+      },
+      "normalization": "greatest-common-divisor reduced; denominator positive; zero represented [0,1]"
+    },
+    "possibility_slice_evidence_mapping": {
+      "source_universe_ref": "must equal consumer_query.source_universe_ref and sole producer universe ref",
+      "release_ref": "must equal consumer_query.release_ref and sole exact C11 execution release",
+      "target_ref": "consumer_query.target_ref",
+      "retained_conditioner_ids": "consumer_query.conditioner_ids exactly",
+      "evidence_state": "SUPPORTED only for this C1-01 geometry projection; other producer states follow outer-envelope state law and may omit consumer call",
+      "geometry": "exact geometry above",
+      "raw_support": "EXACTLY EmpiricalFact.raw_denominator_support; never raw_resolved_target_support and never one cell numerator",
+      "uncertainty_state": "exact EmpiricalFact.uncertainty_method_or_typed_state",
+      "provenance_refs": "must include EmpiricalFact.ref, EmpiricalQuerySpec.ref, EmpiricalPredicate.ref, EmpiricalFact.replay_ref, condition_value_witness_ref, subject_condition_preimage_ref, pairing_ground_truth_ref; canonical ExactRef order",
+      "authority_refs": "canonical union of EmpiricalFact.authority_snapshot_refs and condition-value pairing AuthorityRef",
+      "evidence_ref": "sha256 identity over the complete PossibilitySliceEvidence payload plus contract id C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1"
+    },
+    "fail_closed": [
+      "if empirical fact state is not losslessly representable as consumer evidence, do not fabricate geometry and set consumer_result null in the outer envelope",
+      "ZERO_SUPPORT and ZERO_OVERLAP do not map to SUPPORTED evidence",
+      "observed-zero cell in positive denominator remains a SUPPORTED geometry cell with raw_numerator_support=0 and raw_probability_exact_fraction=[0,1]",
+      "VALID_EMPTY remains distinct and has no supported geometry",
+      "any change to denominator members, measure identity, target component/domain, condition witness, cell material or authority/provenance changes the evidence identity"
+    ]
+  },
+  "projection_schema_hash": "c00e038dd2c1177bfc7842f12febef7b3e30b92bc421df244e2a8e3c4a20b17a",
+  "at07_expected_supported_geometry": {
+    "forward_P1": {
+      "raw_support": 60,
+      "cells": [
+        {
+          "cell": "no",
+          "cell_state": "OBSERVED_POSITIVE",
+          "raw_numerator_support": 6,
+          "raw_probability_exact_fraction": {
+            "$exact_fraction": [
+              1,
+              10
+            ]
+          }
+        },
+        {
+          "cell": "yes",
+          "cell_state": "OBSERVED_POSITIVE",
+          "raw_numerator_support": 54,
+          "raw_probability_exact_fraction": {
+            "$exact_fraction": [
+              9,
+              10
+            ]
+          }
+        }
+      ]
+    },
+    "reverse_yes": {
+      "raw_support": 62,
+      "cells": [
+        {
+          "cell": "P1",
+          "cell_state": "OBSERVED_POSITIVE",
+          "raw_numerator_support": 54,
+          "raw_probability_exact_fraction": {
+            "$exact_fraction": [
+              27,
+              31
+            ]
+          }
+        },
+        {
+          "cell": "P2",
+          "cell_state": "OBSERVED_POSITIVE",
+          "raw_numerator_support": 8,
+          "raw_probability_exact_fraction": {
+            "$exact_fraction": [
+              4,
+              31
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "weighted_rule": "C1-01 AT07 is RAW, but the projection schema already freezes weighted slots. A later GOVERNED_WEIGHTED use must carry exact owner-provided weighted numerator/denominator fractions and used WeightMeasureFact design/estimand context; numerical equality with RAW does not alias.",
+  "real_source_effect": false
+}

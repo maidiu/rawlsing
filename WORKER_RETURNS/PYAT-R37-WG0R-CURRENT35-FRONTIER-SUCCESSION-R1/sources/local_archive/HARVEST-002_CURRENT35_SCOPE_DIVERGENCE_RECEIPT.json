@@ -1,0 +1,73 @@
+{
+  "schema": "authority_census_harvest_002_current35_scope_divergence_receipt_v1",
+  "harvest_id": "HARVEST-002",
+  "packet_sha256": "70789a6556f70c2c6be0771defe00fec918b7e64514e37d82744493431f1dc37",
+  "packet_size_bytes": 89531,
+  "packet_integrity": {
+    "zip_test": "PASS",
+    "sha256sums_entries": 25,
+    "sha256sums_verified": 25
+  },
+  "audit_binding": {
+    "sha256": "d8b73c0fc2498084c69adf0703313286c417c0170431613a024eec39412a68ce",
+    "status": "BLOCKED_REQUIRES_HASH_BOUND_AUDIT_REPUBLICATION",
+    "expected_wave_uid_count": 35,
+    "observed_wave_uid_count": 0,
+    "artifact_count": 0,
+    "browser_classification": "FAIL_CLOSED_AUDIT_PUBLICATION_AUTHORITY__NOT_CURRENT35_MEMBERSHIP_CARRIER"
+  },
+  "source_wave_identity_registry": {
+    "git_branch": "agent/source-wave-identity-repair-integration",
+    "git_blob_sha1": "ae09ab645d5d134c4462a012da57dbe02708b690",
+    "registry_id": "source_wave_identity_registry_35wave_v1",
+    "production_membership_set": "CLOSED_35",
+    "production_member_count": 35,
+    "evs1999": "CLOSED_35",
+    "asian_barometer_w6": "RECOGNIZED_EXCLUDED",
+    "current_browser_control_presence": false
+  },
+  "identity_kernel": {
+    "artifact": "ddm_source_wave_identity.py",
+    "sha256": "4847f568d91ec7f94157e09c9a5d28052e85d7ff436877fb63bcd9343c24af7e",
+    "packet_recovered": true,
+    "current_browser_control_presence": false
+  },
+  "wave_authority_registry": {
+    "sha256": "3670d056c45c188843681535feb8543cf5a4ad20f2d0a067ce4f6b16b944888e",
+    "entry_count": 35,
+    "evs1999_present": true,
+    "asian_barometer_w6_present": false,
+    "evs1999_first_pass_rows": 513,
+    "evs1999_first_pass_contains_manual_designation_required": true
+  },
+  "historical_itinerary": {
+    "sha256": "866eb3ab25fbd9479781c15a0aecbb00a9d547fdc947cc443e8b904262b86eb3",
+    "row_count": 35,
+    "evs1999_present": false,
+    "asian_barometer_w6_present": true,
+    "evs_other_four_rows_critical_manual_required": true,
+    "lossless_supersession_proved": false
+  },
+  "swid_repair": {
+    "branch": "agent/source-wave-identity-repair-integration",
+    "terminal_resolution_object": "data/ddm_build_copy/issue_register/20260816_source_wave_identity/TERMINAL_RESOLUTIONS_W06D.json",
+    "mandatory_active_count": 26,
+    "terminal_count": 26,
+    "swid_016": "RESOLVED_TERMINAL_STATIC",
+    "runtime_pass_claimed": false,
+    "v550_itinerary_behavior": "PRESERVE_GATE_FIELDS__REKEY_BY_GOVERNED_UID__FAIL_CLOSED_ON_DIVERGENT_DUPLICATE_GATE_CONTENT"
+  },
+  "current_control": {
+    "head_at_adjudication_start": "20e8edbd0c9f2b07d31d1292f2d5864420c1a7c0",
+    "ddm_v550_question_use_git_blob_sha1": "8d90a5116fd05b5db17e9b4645638a3aa6fc1131",
+    "itinerary_lookup": "LITERAL_NORMALIZED_SOURCE_PLUS_WAVE",
+    "unmatched_default": {
+      "review_priority": "normal",
+      "manual_designation_required": false
+    },
+    "inherits_swid_integration": false,
+    "divergence_merge_base": "25a63e08b0fcf7ef3dfc9de0c7b03325d26d918a"
+  },
+  "browser_holding": "EXISTING_ACCEPTED_AUTHORITY_NOT_INHERITED__CURRENT_CONTROL_EXECUTION_DIVERGENCE",
+  "new_authority_creation_authorized": false
+}

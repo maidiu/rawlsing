@@ -1,0 +1,17 @@
+{
+  "status": "VALID",
+  "contract": "PRE553_SOURCE_BACKED_C11_FACADE@1.0.0",
+  "projection_authority_identity": "urn:rawlsing:pre553:as2a:lits1-projection-authority:sha256:9dd1e6b7350ebb795e028db86279131f8d319e939a044b74c3c5605ecacf5b06",
+  "projection_authority_hash": "9dd1e6b7350ebb795e028db86279131f8d319e939a044b74c3c5605ecacf5b06",
+  "governed_c11_projection_identity": "urn:rawlsing:pre553:as2b:lits1:governed-c11-projection:sha256:84361298ae702786a3fd1044bf619ffa4fe9ed2877040724386951e9c9d27872",
+  "governed_c11_projection_hash": "84361298ae702786a3fd1044bf619ffa4fe9ed2877040724386951e9c9d27872",
+  "source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+  "respondent_identity_law": "source SHA-256 plus 1-based row ordinal; native id is physical attribute only",
+  "respondent_count": 29002,
+  "response_slots": ["q301_2", "q301_7"],
+  "coordinate_slots": ["country", "city", "region", "tablec", "tabled"],
+  "weight_slots": [],
+  "source_relation_state": "DISTINCT_BY_DEFAULT",
+  "routing_state": "ELIGIBLE_APPLICABLE__SECTION3_Q301_UNCONDITIONAL_SELECTED_RESPONDENT",
+  "runtime_validation_note": "The frozen constructor's row-reference validation is quadratic. The additive driver uses an exact-check-equivalent GovernedC11Projection subclass that computes the respondent-ref set once; no field, identity, semantic rule, or frozen runtime file was changed."
+}

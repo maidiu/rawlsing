@@ -1,0 +1,168 @@
+......FFFFF...                                                           [100%]
+=================================== FAILURES ===================================
+___________ test_pre_result_authority_binding_substitution[subject] ____________
+
+mutation = 'subject'
+
+    @pytest.mark.parametrize('mutation',['route','subject','weight','source-version'])
+    def test_pre_result_authority_binding_substitution(mutation):
+        fx=r._fixture();frozen=r.binding(fx);p=fx['projection']
+        if mutation=='route':p=replace(p,routing=tuple(reversed(p.routing[:-1])))
+        elif mutation=='subject':
+            subjects=(replace(p.respondents[0],respondent_key='SUBSTITUTED'),*p.respondents[1:])
+>           p=replace(p,respondents=subjects)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test_wg0r.py:52: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/dataclasses.py:1494: in replace
+    return obj.__class__(**changes)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+<string>:31: in __init__
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = GovernedC11Projection(projection_identity_ref=ExactRef(kind='C11_SEMANTIC_PROJECTION', object_id='urn:test:i03:c11_sem...19de50c2ff0c2af48b9561ea30fdfe5bdf3600e8a7f29c6e5a86d662b2104d8'), replay_protocol_version='1.0.0', slot_owner_sets=())
+
+    def __post_init__(self):
+        exact_ref(self.projection_identity_ref, "projection_identity_ref")
+        _sha(self.expected_source_sha256, "expected_source_sha256")
+        if self.source_snapshot_retention_ref.content_hash != self.expected_source_sha256:
+            raise SourceBackedC11FacadeError("snapshot ref does not bind expected source SHA")
+        if not all((self.universes, self.respondents, self.row_bindings, self.questions,
+                    self.response_slots, self.coordinate_slots, self.routing,
+                    self.authority_snapshots, self.required_authority_refs)):
+            raise SourceBackedC11FacadeError("projection omits mandatory governed semantic input")
+        mandatory = {self.projection_authority_ref, self.replay_authority_ref}
+        if not mandatory.issubset(set(self.required_authority_refs)):
+            raise SourceBackedC11FacadeError("projection/replay authorities must be explicitly required")
+        packaged = {a.authority_ref for a in self.authority_snapshots}
+        if not set(self.required_authority_refs).issubset(packaged):
+            raise SourceBackedC11FacadeError("required authority absent from projection closure")
+        if len({x.row_ordinal for x in self.row_bindings}) != len(self.row_bindings):
+            raise SourceBackedC11FacadeError("duplicate row replay coordinate")
+        respondent_refs = {r.ref for r in self.respondents}
+        if any(x.respondent_ref not in respondent_refs for x in self.row_bindings):
+>           raise SourceBackedC11FacadeError("row binding references absent respondent")
+E           rawlsing_next.pre553_source_backed_c11_facade.SourceBackedC11FacadeError: row binding references absent respondent
+
+sources/native/rawlsing_next/pre553_source_backed_c11_facade.py:313: SourceBackedC11FacadeError
+____________ test_pre_result_authority_binding_substitution[weight] ____________
+
+mutation = 'weight'
+
+    @pytest.mark.parametrize('mutation',['route','subject','weight','source-version'])
+    def test_pre_result_authority_binding_substitution(mutation):
+        fx=r._fixture();frozen=r.binding(fx);p=fx['projection']
+        if mutation=='route':p=replace(p,routing=tuple(reversed(p.routing[:-1])))
+        elif mutation=='subject':
+            subjects=(replace(p.respondents[0],respondent_key='SUBSTITUTED'),*p.respondents[1:])
+            p=replace(p,respondents=subjects)
+        elif mutation=='weight':
+            p=replace(p,weight_slots=(replace(p.weight_slots[0],weight_basis_id='SUBSTITUTED'),))
+        else:p=replace(p,expected_source_sha256='1'*64)
+        fx['projection']=p
+>       with pytest.raises(r.FrontierRefusal,match='BINDING_CHANGED'):
+E       Failed: DID NOT RAISE <class 'repro_fixture.FrontierRefusal'>
+
+test_wg0r.py:57: Failed
+________ test_pre_result_authority_binding_substitution[source-version] ________
+
+mutation = 'source-version'
+
+    @pytest.mark.parametrize('mutation',['route','subject','weight','source-version'])
+    def test_pre_result_authority_binding_substitution(mutation):
+        fx=r._fixture();frozen=r.binding(fx);p=fx['projection']
+        if mutation=='route':p=replace(p,routing=tuple(reversed(p.routing[:-1])))
+        elif mutation=='subject':
+            subjects=(replace(p.respondents[0],respondent_key='SUBSTITUTED'),*p.respondents[1:])
+            p=replace(p,respondents=subjects)
+        elif mutation=='weight':
+            p=replace(p,weight_slots=(replace(p.weight_slots[0],weight_basis_id='SUBSTITUTED'),))
+>       else:p=replace(p,expected_source_sha256='1'*64)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test_wg0r.py:55: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/dataclasses.py:1494: in replace
+    return obj.__class__(**changes)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+<string>:31: in __init__
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = GovernedC11Projection(projection_identity_ref=ExactRef(kind='C11_SEMANTIC_PROJECTION', object_id='urn:test:i03:c11_sem...19de50c2ff0c2af48b9561ea30fdfe5bdf3600e8a7f29c6e5a86d662b2104d8'), replay_protocol_version='1.0.0', slot_owner_sets=())
+
+    def __post_init__(self):
+        exact_ref(self.projection_identity_ref, "projection_identity_ref")
+        _sha(self.expected_source_sha256, "expected_source_sha256")
+        if self.source_snapshot_retention_ref.content_hash != self.expected_source_sha256:
+>           raise SourceBackedC11FacadeError("snapshot ref does not bind expected source SHA")
+E           rawlsing_next.pre553_source_backed_c11_facade.SourceBackedC11FacadeError: snapshot ref does not bind expected source SHA
+
+sources/native/rawlsing_next/pre553_source_backed_c11_facade.py:298: SourceBackedC11FacadeError
+______________ test_all35_expected_registry_antijoin_and_no_drop _______________
+
+    def test_all35_expected_registry_antijoin_and_no_drop():
+>       rows,waves,_=accounting.load()
+                     ^^^^^^^^^^^^^^^^^
+
+test_wg0r.py:62: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def load():
+        p = ROOT/'sources/local_archive/Rawlsing_P2_Phase0_Question_Node_Skeleton_v1.csv'
+        data = p.read_bytes()
+        if hashlib.sha256(data).hexdigest() != P2_SHA:
+            raise ValueError('EXACT_P2_IDENTITY_MISMATCH')
+        rows = list(csv.DictReader(io.StringIO(data.decode('utf-8-sig'))))
+        if len(rows)!=18276 or len({r['question_implementation_id'] for r in rows})!=18276:
+            raise ValueError('P2_IDENTITY_OR_CARDINALITY_LOSS')
+        pack_path = ROOT/'sources/local_archive/CURRENT35_IMPLEMENTATION_DISPOSITION_LEDGER.csv'
+        packs = list(csv.DictReader(pack_path.open()))
+        if len(packs)!=1: raise ValueError('DISPOSITION_PACK_CARDINALITY')
+        pack = packs[0]
+        if pack['p2_sha256']!=P2_SHA or int(pack['p2_row_count'])!=len(rows):
+            raise ValueError('PACK_NOT_BOUND_TO_EXACT_P2')
+        payload = base64.b64decode(''.join(pack['payload_b64_'+str(i)] for i in range(4)),validate=True)
+        if len(payload)!=len(rows) or hashlib.sha256(payload).hexdigest()!=PACK_SHA:
+>           raise ValueError('DISPOSITION_PAYLOAD_MISMATCH')
+E           ValueError: DISPOSITION_PAYLOAD_MISMATCH
+
+account_current35.py:31: ValueError
+_____________ test_no_drop_omission_duplicate_and_swap_falsifiers ______________
+
+    def test_no_drop_omission_duplicate_and_swap_falsifiers():
+>       rows,waves,_=accounting.load()
+                     ^^^^^^^^^^^^^^^^^
+
+test_wg0r.py:71: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def load():
+        p = ROOT/'sources/local_archive/Rawlsing_P2_Phase0_Question_Node_Skeleton_v1.csv'
+        data = p.read_bytes()
+        if hashlib.sha256(data).hexdigest() != P2_SHA:
+            raise ValueError('EXACT_P2_IDENTITY_MISMATCH')
+        rows = list(csv.DictReader(io.StringIO(data.decode('utf-8-sig'))))
+        if len(rows)!=18276 or len({r['question_implementation_id'] for r in rows})!=18276:
+            raise ValueError('P2_IDENTITY_OR_CARDINALITY_LOSS')
+        pack_path = ROOT/'sources/local_archive/CURRENT35_IMPLEMENTATION_DISPOSITION_LEDGER.csv'
+        packs = list(csv.DictReader(pack_path.open()))
+        if len(packs)!=1: raise ValueError('DISPOSITION_PACK_CARDINALITY')
+        pack = packs[0]
+        if pack['p2_sha256']!=P2_SHA or int(pack['p2_row_count'])!=len(rows):
+            raise ValueError('PACK_NOT_BOUND_TO_EXACT_P2')
+        payload = base64.b64decode(''.join(pack['payload_b64_'+str(i)] for i in range(4)),validate=True)
+        if len(payload)!=len(rows) or hashlib.sha256(payload).hexdigest()!=PACK_SHA:
+>           raise ValueError('DISPOSITION_PAYLOAD_MISMATCH')
+E           ValueError: DISPOSITION_PAYLOAD_MISMATCH
+
+account_current35.py:31: ValueError
+=========================== short test summary info ============================
+FAILED test_wg0r.py::test_pre_result_authority_binding_substitution[subject]
+FAILED test_wg0r.py::test_pre_result_authority_binding_substitution[weight]
+FAILED test_wg0r.py::test_pre_result_authority_binding_substitution[source-version]
+FAILED test_wg0r.py::test_all35_expected_registry_antijoin_and_no_drop - Valu...
+FAILED test_wg0r.py::test_no_drop_omission_duplicate_and_swap_falsifiers - Va...
+5 failed, 9 passed in 3.00s
