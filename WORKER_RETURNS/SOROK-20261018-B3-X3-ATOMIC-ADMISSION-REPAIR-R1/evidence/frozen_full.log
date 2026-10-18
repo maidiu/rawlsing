@@ -1,0 +1,17 @@
+Traceback (most recent call last):
+  File "/private<RUNTIME>/WORKER_RETURNS/B3/finalize.py", line 96, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/private<RUNTIME>/WORKER_RETURNS/B3/finalize.py", line 73, in main
+    assert branch=='agent/rabochii-sorok-v2-hq329-b3-coupled-interpretation-prototype-r1'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
+Traceback (most recent call last):
+  File "<RUNTIME>/WORKER_RETURNS/B3/run_all.py", line 31, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "<RUNTIME>/WORKER_RETURNS/B3/run_all.py", line 28, in main
+    subprocess.run([sys.executable,'finalize.py'],cwd=ROOT,check=True)
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/usr/local/bin/python3', 'finalize.py']' returned non-zero exit status 1.
