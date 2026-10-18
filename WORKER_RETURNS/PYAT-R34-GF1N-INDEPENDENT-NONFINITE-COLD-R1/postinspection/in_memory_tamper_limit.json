@@ -1,0 +1,17 @@
+{
+  "schema": "PYAT_R34_GF1N_IN_MEMORY_TAMPER_LIMIT@1",
+  "classification": "NON_BLOCKING_ROBUSTNESS_LIMIT__NOT_A_SCIENTIFIC_RED__OUTSIDE_SOURCEFREE_RELATION_VALUE_INPUT",
+  "falsifier": {
+    "setup": "construct a normal relation through the frozen GenericNativePairRelation constructor, then bypass the frozen dataclass with object.__setattr__(relation, 'producer_fact_ref', {1: 'a', 'b': 2}); call compute_pair_support_signature(relation)",
+    "observed": "TypeError: '<' not supported between instances of 'str' and 'int'",
+    "where": "defence-in-depth _verify_identity -> semantic_hash(relation.semantic_projection()) canonicalization sorting the tampered mixed-key ref dict; the surrounding handler catches GenericNativePairError only",
+    "downstream_value": false,
+    "result_hash": false,
+    "support_vector": false,
+    "requires": "in-process object.__setattr__ bypass of the frozen dataclass; a normal caller cannot supply this through the constructor because __post_init__ validates the self-hash",
+  },
+  "inherited_status": "the same _verify_identity body exists in the prior d97a5df8 consumer and is unchanged by the nonfinite repair; this is not a regression introduced by the follow-up guard",
+  "why_not_scientific_red": "the sourcefree input contract is the immutable relation value validated by its semantic projection; a caller able to mutate a frozen attribute in memory can equally replace the consumer module. No false scientific value, positive class or downstream hash is produced.",
+  "recommended_hardening": "broaden the _verify_identity exception handler to (GenericNativePairError, TypeError, ValueError) and return the existing typed CONSUMER_RELATION_IDENTITY_MISMATCH refusal; one-line change, not required for the nonfinite acceptance grain",
+  "authority": "SOURCEFREE TEST_ONLY"
+}

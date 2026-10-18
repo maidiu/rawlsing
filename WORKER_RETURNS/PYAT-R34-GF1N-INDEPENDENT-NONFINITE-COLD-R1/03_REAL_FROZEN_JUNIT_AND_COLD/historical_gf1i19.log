@@ -1,0 +1,27 @@
+.................F.                                                      [100%]
+=================================== FAILURES ===================================
+________ test_named_downstream_consumer_module_is_absent_from_candidate ________
+
+    def test_named_downstream_consumer_module_is_absent_from_candidate():
+        """GF1 claims a named consumer that physically reads the relation.
+    
+        The module ``gf1_pair_support_consumer`` is imported by BOTH
+        ``court/repro/gf1_native.py`` and ``court/repro/test_gf1_generic_pair.py``
+        but exists NOWHERE in the candidate branch history.  Therefore the claimed
+        44/44 chain and the named-consumer value claims cannot be reproduced.
+        """
+        r = RT / "gf1_pair_support_consumer.py"
+        assert not r.exists(), "unexpectedly present"
+        repo_root = Path(R).resolve().parents[1]
+        hits = list(repo_root.glob("**/gf1_pair_support_consumer*"))
+>       assert hits == [], f"consumer module must be absent from the returned tree: {hits}"
+E       AssertionError: consumer module must be absent from the returned tree: [PosixPath('/Users/matthewsmith/Desktop/Rawlsing_Worktrees/gf1n/WORKER_RETURNS/PYAT-R34-GF1N-INDEPENDENT-NONFINITE-COLD-R1/stage/WORKER_RETURNS/PYAT-R32-GF1H-PAIR-CONSUMER-INTEGRITY-REPAIR-R1/gf1_pair_support_consumer.py'), PosixPath('/Users/matthewsmith/Desktop/Rawlsing_Worktrees/gf1n/WORKER_RETURNS/PYAT-R34-GF1N-INDEPENDENT-NONFINITE-COLD-R1/stage/WORKER_RETURNS/PYAT-R28-GF1F-IMPLEMENTED-NATIVE-CONSUMER-INDEPENDENT-R1/candidate/court/runtime_root/gf1_pair_support_consumer.py'), PosixPath('/Users/matthewsmith/Desktop/Rawlsing_Worktrees/gf1n/WORKER_RETURNS/PYAT-R34-GF1N-INDEPENDENT-NONFINITE-COLD-R1/stage/WORKER_RETURNS/PYAT-R33-GF1K-CATEGORY-IDENTITY-REPAIR-R1/gf1_pair_support_consumer.py'), PosixPath('/Users/matthewsmith/Desktop/Rawlsing_Worktrees/gf1n/WORKER_RETURNS/PYAT-R34-GF1N-INDEPENDENT-NONFINITE-COLD-R1/stage/WORKER_RETURNS/PYAT-R33-GF1K-CATEGORY-IDENTITY-REPAIR-R1/before/gf1_pair_support_consumer.py'), PosixPath('/Users/matthewsmith/Desktop/Rawlsing_Worktrees/gf1n/WORKER_RETURNS/PYAT-R34-GF1N-INDEPENDENT-NONFINITE-COLD-R1/stage/WORKER_RETURNS/PYAT-R29-GF1G-FRESH-I2-PAIR-CONSUMER-R1/phase_a/reference_consumer/gf1_pair_support_consumer.py'), PosixPath('/Users/matthewsmith/Desktop/Rawlsing_Worktrees/gf1n/WORKER_RETURNS/PYAT-R34-GF1N-INDEPENDENT-NONFINITE-COLD-R1/stage/WORKER_RETURNS/PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1/repair/gf1_pair_support_consumer.py'), PosixPath('/Users/matthewsmith/Desktop/Rawlsing_Worktrees/gf1n/WORKER_RETURNS/PYAT-R34-GF1N-INDEPENDENT-NONFINITE-COLD-R1/stage/WORKER_RETURNS/PYAT-USERDIRECT-20261016-R17-GF1-GENERIC-NATIVE-PAIR-RELATION-R1/court/runtime_root/gf1_pair_support_consumer.py')]
+E       assert [PosixPath('/...mer.py'), ...] == []
+E         
+E         Left contains 7 more items, first extra item: PosixPath('/Users/matthewsmith/Desktop/Rawlsing_Worktrees/gf1n/WORKER_RETURNS/PYAT-R34-GF1N-INDEPENDENT-NONFINITE-COLD-R1/stage/WORKER_RETURNS/PYAT-R32-GF1H-PAIR-CONSUMER-INTEGRITY-REPAIR-R1/gf1_pair_support_consumer.py')
+E         Use -v to get more diff
+
+test_gf1i_independent.py:285: AssertionError
+=========================== short test summary info ============================
+FAILED test_gf1i_independent.py::test_named_downstream_consumer_module_is_absent_from_candidate
+1 failed, 18 passed in 2.72s

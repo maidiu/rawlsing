@@ -1,0 +1,31 @@
+--- /tmp/prior_consumer.py	2026-10-18 02:09:12
++++ /tmp/cand_consumer.py	2026-10-18 02:09:12
+@@ -16,6 +16,7 @@
+ """
+ from __future__ import annotations
+ 
++from math import isfinite
+ from typing import Any
+ 
+ from generic_native_pair_relation import (
+@@ -26,7 +27,7 @@
+     semantic_hash,
+ )
+ 
+-REPAIR_VERSION = "GF1L_NATIVE_KEY_STORAGE_GUARD@1"
++REPAIR_VERSION = "GF1M_NONFINITE_NATIVE_CATEGORY_GUARD@1"
+ 
+ # The four lawful downstream separation classes.
+ SEPARATION_CLASSES = (
+@@ -100,6 +101,11 @@
+     converting a category or changing the result schema. Unsupported key
+     combinations must be refused before support aggregation or classification.
+     """
++    # The inherited semantic hash accepts Infinity/NaN. A successful hash is
++    # therefore insufficient evidence that native states can be exchanged as
++    # strict JSON. Refuse these categories before creating a scientific value.
++    if any(isinstance(value, float) and not isfinite(value) for value in values):
++        raise GenericNativePairError("nonfinite native states are not JSON representable")
+     probe = {value: None for value in values}
+     if len(probe) != len(values):
+         raise GenericNativePairError("native states collide as Python mapping keys")

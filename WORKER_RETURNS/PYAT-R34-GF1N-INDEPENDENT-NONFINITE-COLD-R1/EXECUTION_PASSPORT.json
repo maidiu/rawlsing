@@ -1,0 +1,54 @@
+{
+  "schema": "PYAT_R34_GF1N_EXECUTION_PASSPORT@1",
+  "recorded_at_utc": "2026-10-18T06:12:20Z",
+  "host": "Matthews-MBP.lan",
+  "os": "macOS-13.7.8-x86_64-i386-64bit",
+  "machine": "x86_64",
+  "cpu": "Intel(R) Core(TM) i9-9880H CPU @ 2.30GHz",
+  "python": "3.11.3",
+  "python_executable": "/usr/local/bin/python3",
+  "pytest": "pytest 9.1.1",
+  "git": "git version 2.39.1",
+  "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/gf1n",
+  "branch": "agent/userdirect-pyat-20261017-r34-gf1n-economical-continuous-hostile-court-r1",
+  "sealed_startup": "1bbb68f831ae43149eca52f23085b7d4261b85af",
+  "phase_a_freeze_commit": "1a7f8e8b5c8c5eaed399eb0f81559e3450b2a573",
+  "phase_a_receipt_commit": "286c036785a05900d745933c29a12d651e826d3c",
+  "erratum_commit": "04d9ea04b980526cd1016f3e2c28b999ce0c764d",
+  "candidate": {
+    "commit": "a8fcb6953f2795b7bc698f9f019f4782f80026c9",
+    "git_blob": "c5dfb119ee730e968c54be9f085fd3a6d78fa787",
+    "sha256": "7629749e61e1204c7f2b2098548a5c136c37ab22098cd8a3490082ee3e7021d2"
+  },
+  "model_runtime": "DeepSeek Harness Web session; deepseek-v4-pro for the opening turn and deepseek-flash for execution (standard reasoning)",
+  "subagents_used": false,
+  "network": "private GitHub read/write used only to fetch the exact startup/candidate refs and publish the commissioned branch",
+  "execution": {
+    "pytest": true,
+    "subprocess_cold": true,
+    "git_source_attestation": true,
+    "junit": true
+  },
+  "cold_pids": {
+    "gf1f": [
+      96733,
+      96734
+    ],
+    "hostile_pairs": true
+  },
+  "non_grants": [
+    "original source U/E_pre",
+    "issuer",
+    "independent revocation",
+    "temporal semantics",
+    "N11/N12",
+    "V3/actor",
+    "Field Forge",
+    "N10W",
+    "Sorok",
+    "original35",
+    "sampling inference",
+    "production owner commit",
+    "HQ adoption"
+  ]
+}

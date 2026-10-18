@@ -30,8 +30,7 @@ CASES = {
     "support_exceeds_risk": dict(role="condition", domain=("0", "1"),
                                  counts={"00": 1, "11": 1}, eligible=1),
     "typed_missing_target": dict(role="none", typed_state="MISSING_TARGET_STATE", eligible=0),
-    "observed_zero": dict(role="condition", domain=("0", "1"), counts={}, eligible=2,
-                          zero_state="OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"),
+    "observed_zero": dict(role="condition", domain=("0", "1"), counts={}, eligible=2),
 }
 
 

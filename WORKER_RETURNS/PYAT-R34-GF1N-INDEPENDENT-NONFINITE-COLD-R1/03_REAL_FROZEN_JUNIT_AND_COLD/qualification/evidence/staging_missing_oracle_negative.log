@@ -1,0 +1,17 @@
+
+==================================== ERRORS ====================================
+__________________ ERROR collecting test_gf1_generic_pair.py ___________________
+test_gf1_generic_pair.py:40: in <module>
+    ORACLE = json.loads((RET / "01_PRECOMMITTED_GENERIC_NATIVE_PAIR_ORACLE.json").read_text())
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1058: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1044: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/gf1n/WORKER_RETURNS/PYAT-R34-GF1N-INDEPENDENT-NONFINITE-COLD-R1/stage/WORKER_RETURNS/PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1/stage/WORKER_RETURNS/PYAT-R18-GF1I-INDEPENDENT-GENERIC-PAIR-R1/01_PRECOMMITTED_GENERIC_NATIVE_PAIR_ORACLE.json'
+=========================== short test summary info ============================
+ERROR test_gf1_generic_pair.py - FileNotFoundError: [Errno 2] No such file or...
+!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+no tests collected, 1 error in 0.60s

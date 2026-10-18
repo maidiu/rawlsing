@@ -12,7 +12,15 @@
     "original_freeze_remote_verified": true,
     "candidate_opened_after_freeze": true,
     "erratum_derived_from": "frozen GF1G G9/G11/G14 contract clauses and one execution discrepancy, not from candidate outputs",
-    "original_v1_result_on_exact_candidate": {"tests": 63, "passed": 61, "failed": 2, "failed_nodes": ["eligible_zero", "observed_zero"]},
+    "original_v1_result_on_exact_candidate": {
+      "tests": 63,
+      "passed": 61,
+      "failed": 2,
+      "failed_nodes": [
+        "eligible_zero",
+        "observed_zero"
+      ]
+    },
     "v1_failures_are_harness_specification_not_candidate_red": true
   },
   "changes": [
@@ -39,6 +47,18 @@
       "after": "assert_no_risk requires the NO_ELIGIBLE_RISK class and strict JSON; downstream flag not constrained",
       "assertions_weakened": false,
       "rationale": "matches the frozen class-only contract for a valid supported relation with an empty eligible risk set"
+    },
+    {
+      "id": "E4_cold_worker_call_signature_and_nonstrict_fallback",
+      "contract_clause": "auxiliary execution driver only; no expectation clause",
+      "before": "phase_a/gf1n_cold_worker.py sha256 ee8c9e92a5370526e701cec15d8fb8159a259fdc97a1e2708cc3c75805b46fc6",
+      "after": "phase_a/gf1n_cold_worker.py sha256 943d868764eaabe86af2e365885b8db00287a958ba7f6d5026ab7c5e881f4719",
+      "details": [
+        "dropped a redundant zero_state keyword not accepted by assess(); the relation() default is the same value",
+        "wrapped the payload dump in a non-strict fallback so a non-JSON result is reported as a witness rather than crashing the runner"
+      ],
+      "assertions_weakened": false,
+      "rationale": "auxiliary cold driver fix; the frozen probe, test file and expectation JSON hashes are unchanged and no frozen expectation was altered"
     }
   ],
   "v2_artifacts_sha256": {
@@ -46,9 +66,14 @@
     "phase_a_erratum_v2/test_gf1n_independent_v2.py": "4187c19a4dc9d0dff9ecee98d2ca780a26e1608fa8e5577681bdd481d0629c70",
     "phase_a_erratum_v2/01_PHASE_A_FROZEN_EXPECTATIONS_V2.json": "12c9ce1b2038bb4e81fdf1d3e1ab3478fafa33a54260f285c549d2f586a27fa3",
     "03_REAL_FROZEN_JUNIT_AND_COLD/frozen_v1.xml": "78d5427386667f95b38aee393685913fea56c5e390c6282e28df0668796c4022",
-    "03_REAL_FROZEN_JUNIT_AND_COLD/frozen_v2_erratum.xml": "2e886cd5e2de145078909093c1e363166501ae34a5bdc994aa7fa9e7fcce7a7b"
+    "03_REAL_FROZEN_JUNIT_AND_COLD/frozen_v2_erratum.xml": "2e886cd5e2de145078909093c1e363166501ae34a5bdc994aa7fa9e7fcce7a7b",
+    "phase_a/gf1n_cold_worker.py": "943d868764eaabe86af2e365885b8db00287a958ba7f6d5026ab7c5e881f4719"
   },
-  "v2_result_on_exact_candidate": {"tests": 64, "passed": 64, "failed": 0},
+  "v2_result_on_exact_candidate": {
+    "tests": 64,
+    "passed": 64,
+    "failed": 0
+  },
   "preserved_not_green": "the original v1 bytes and its 61/63 result remain in the tree and in the record; no post-inspection expectation is presented as prefreeze",
   "authority": "SOURCEFREE TEST_ONLY"
 }

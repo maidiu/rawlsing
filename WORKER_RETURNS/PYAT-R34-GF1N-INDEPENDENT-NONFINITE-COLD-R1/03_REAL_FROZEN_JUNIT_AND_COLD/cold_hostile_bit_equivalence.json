@@ -1,0 +1,140 @@
+{
+  "schema": "PYAT_R34_GF1N_COLD_BIT_EQUIVALENCE@1",
+  "cases": [
+    {
+      "case": "native_positive",
+      "outcome": "ACCEPTED",
+      "same_payload": true,
+      "first_exit": 0,
+      "second_exit": 0,
+      "strict_ok": true,
+      "contract_ok": true,
+      "deterministic": true,
+      "payload_sha256": "31833d34cf10f2995920f389d804218fa2b0d8a082061bc6669d695e6b1aea32",
+      "ok": true
+    },
+    {
+      "case": "finite_heterogeneous_condition",
+      "outcome": "CONSUMER_REFUSED",
+      "same_payload": true,
+      "first_exit": 0,
+      "second_exit": 0,
+      "strict_ok": true,
+      "contract_ok": null,
+      "deterministic": null,
+      "payload_sha256": "34c49891032a52c8ed7a3002f5428ebbecec34b2310eb85940207fc3f76fed55",
+      "ok": true
+    },
+    {
+      "case": "finite_heterogeneous_target",
+      "outcome": "CONSUMER_REFUSED",
+      "same_payload": true,
+      "first_exit": 0,
+      "second_exit": 0,
+      "strict_ok": true,
+      "contract_ok": null,
+      "deterministic": null,
+      "payload_sha256": "550bfff37d176cedea5c3e48af422cf542de3f69ac94e5f236b20516e87fbd7f",
+      "ok": true
+    },
+    {
+      "case": "nonfinite_plus_infinity_condition",
+      "outcome": "CONSUMER_REFUSED",
+      "same_payload": true,
+      "first_exit": 0,
+      "second_exit": 0,
+      "strict_ok": true,
+      "contract_ok": null,
+      "deterministic": null,
+      "payload_sha256": "ecabf9d54511e1d49b55e3433b68f04391cdde717c7155f72bf99e5e1b291db2",
+      "ok": true
+    },
+    {
+      "case": "nonfinite_minus_infinity_target",
+      "outcome": "CONSUMER_REFUSED",
+      "same_payload": true,
+      "first_exit": 0,
+      "second_exit": 0,
+      "strict_ok": true,
+      "contract_ok": null,
+      "deterministic": null,
+      "payload_sha256": "2d78349705d3e25f6b9248d0c6b1099131b94af71c2427736b86d01dee696102",
+      "ok": true
+    },
+    {
+      "case": "nonfinite_nan_condition",
+      "outcome": "CONSUMER_REFUSED",
+      "same_payload": true,
+      "first_exit": 0,
+      "second_exit": 0,
+      "strict_ok": true,
+      "contract_ok": null,
+      "deterministic": null,
+      "payload_sha256": "7b3218bb775f3131c4417000d8c39b23a0b27c730c018bc556b64576442cbc40",
+      "ok": true
+    },
+    {
+      "case": "signed_zero_target",
+      "outcome": "CONSUMER_REFUSED",
+      "same_payload": true,
+      "first_exit": 0,
+      "second_exit": 0,
+      "strict_ok": true,
+      "contract_ok": null,
+      "deterministic": null,
+      "payload_sha256": "63cd5420080485c66abe14f9a61b45e162de2a432ca38b0a27a2ddf67a2923b3",
+      "ok": true
+    },
+    {
+      "case": "collision_int_string_condition",
+      "outcome": "CONSUMER_REFUSED",
+      "same_payload": true,
+      "first_exit": 0,
+      "second_exit": 0,
+      "strict_ok": true,
+      "contract_ok": null,
+      "deterministic": null,
+      "payload_sha256": "58a505c621627a38a22e4337b4cbb07af974157b3f7db0193cc0864c90d6eff4",
+      "ok": true
+    },
+    {
+      "case": "support_exceeds_risk",
+      "outcome": "CONSUMER_REFUSED",
+      "same_payload": true,
+      "first_exit": 0,
+      "second_exit": 0,
+      "strict_ok": true,
+      "contract_ok": null,
+      "deterministic": null,
+      "payload_sha256": "fd6cfa892d21ecc81ca412dde96d021953969079e7ddde240c07f5d55064a626",
+      "ok": true
+    },
+    {
+      "case": "typed_missing_target",
+      "outcome": "HOLD",
+      "same_payload": true,
+      "first_exit": 0,
+      "second_exit": 0,
+      "strict_ok": true,
+      "contract_ok": null,
+      "deterministic": null,
+      "payload_sha256": "6edc1e53202aa6a6ac8dfce0c03908f08fa34a988e85f0753648c2857b05c421",
+      "ok": true
+    },
+    {
+      "case": "observed_zero",
+      "outcome": "ZERO",
+      "same_payload": true,
+      "first_exit": 0,
+      "second_exit": 0,
+      "strict_ok": true,
+      "contract_ok": null,
+      "deterministic": null,
+      "payload_sha256": "9915d09a2c8a36de4d88c345d4b66da1941fb7e50e2ba9773ec423bc326b2ace",
+      "ok": true
+    }
+  ],
+  "failures": [],
+  "all_ok": true,
+  "note": "two fresh OS processes with PYTHONHASHSEED 0 and 1; pid/python removed before comparison"
+}
