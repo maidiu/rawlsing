@@ -7,3 +7,8 @@
 **What HQ can bank now:** Separate genuinely pre-GF1H oracle freeze, 16 independently run arithmetic reference controls, author's GF1H reported 44/26/96/17/26 with distinct cold PIDs and no false-green historical oracle alterations, and exact new code-path suspect with executable test. HQ may *not* label these an independent fully executed GF1H acceptance or install this as FF/OC05/N11.
 
 **Status:** `GF1J_PHASE_A_FROZEN__PHASE_B_HONEST_SOURCE_REVIEW__NATIVE_STATE_ALIAS_RED_PENDING_PHYSICAL_TEST__I2_NOT_ACCEPTED`.
+
+
+## Later executed scientific result (additional evidence; same HOLD)
+
+GF1J subsequently proved the exact GF1H source blob was physically imported under a clearly labeled synthetic relation fixture and independently executed **36 PASS** guards, **one two-process cold PASS**, **16 independent math PASS**, and **two strict rehashed typed-native-category FAIL cases**. Both are an actual science-oriented consumer coercion RED, not just a static suspicion; the missing original native 74-module reproduction means it is **not full native-I2 acceptance evidence**. Refer to `06_EXECUTED_EXACT_GF1H_BOUNDED_COURT_AND_TWO_REDS.md`. Proposed narrow correction remains strict exact type-preserving category comparison; do not change historical oracles or claim adoption.
