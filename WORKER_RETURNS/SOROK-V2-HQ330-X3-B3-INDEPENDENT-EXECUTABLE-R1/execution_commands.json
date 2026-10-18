@@ -1,0 +1,31 @@
+{
+  "base": "50349f2e90f8e9d0379040fdb7d3186dfe3b6c02",
+  "target": "47b46a85b9ebb633754866f1e6f1b12db3bd2012",
+  "commands": [
+    {
+      "command": "GIT_DIR=<EXISTING_SHARED_STORE> python3 <B3_RUNTIME>/run_all.py",
+      "exit": 1,
+      "result": "All execution stages exit 0; author-branch-only finalizer assertion fails"
+    },
+    {
+      "command": "X3_B3_ROOT=<B3_RUNTIME> X3_EVIDENCE=<X3_RETURN>/evidence/sql python3 -m pytest -q <X3_RETURN>/test_independent.py --junitxml=<X3_RETURN>/evidence/independent_final.xml",
+      "exit": 1,
+      "result": "20 PASS / 8 FAIL"
+    },
+    {
+      "command": "X3_B3_ROOT=<B3_RUNTIME> X3_EVIDENCE=<X3_RETURN>/evidence/f2_blinded python3 <X3_RETURN>/audit_f2.py",
+      "exit": 0,
+      "result": "42 PASS / 20 eligible"
+    },
+    {
+      "command": "python3 <X3_RETURN>/mutation_controls.py",
+      "exit": 0,
+      "result": "Actual contrasts PASS; constant/cosmetic mutants killed"
+    },
+    {
+      "command": "python3 <X3_RETURN>/run_review.py --runtime <X3_STAGING> --collect-only",
+      "exit": 0,
+      "result": "216 source entries / 9 actual loaded modules / SQL verified"
+    }
+  ]
+}

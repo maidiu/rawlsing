@@ -1,0 +1,44 @@
+...............................FF...........                             [100%]
+=================================== FAILURES ===================================
+____________ test_direct_b1_after_wrapper_limit_is_measured[False] _____________
+
+tmp_path = PosixPath('<TEMP>')
+committed = False
+
+    @pytest.mark.parametrize('committed',[False,True])
+    def test_direct_b1_after_wrapper_limit_is_measured(tmp_path,committed):
+        """Boundary characterization, not an assertion of global ledger security."""
+        b,v=setup(tmp_path);advance(b,v,grant=committed)
+        b.store.admit_fixture(m.b1.episode(label='E2_DIRECT_BYPASS_AFTER_MAPPING'))
+        before=tables(b.store.db);r=advance(b,v,grant=False)
+        assert len(before['occurrence'])==2
+        assert tables(b.store.db)==before
+        # Existing mapping does not scan for independently inserted competing B1 rows.
+>       assert isinstance(r['event_admission'],dict)
+E       AssertionError: assert False
+E        +  where False = isinstance('NOT_PERFORMED', dict)
+
+../tests_after/E2/test_e2.py:130: AssertionError
+_____________ test_direct_b1_after_wrapper_limit_is_measured[True] _____________
+
+tmp_path = PosixPath('<TEMP>')
+committed = True
+
+    @pytest.mark.parametrize('committed',[False,True])
+    def test_direct_b1_after_wrapper_limit_is_measured(tmp_path,committed):
+        """Boundary characterization, not an assertion of global ledger security."""
+        b,v=setup(tmp_path);advance(b,v,grant=committed)
+        b.store.admit_fixture(m.b1.episode(label='E2_DIRECT_BYPASS_AFTER_MAPPING'))
+        before=tables(b.store.db);r=advance(b,v,grant=False)
+        assert len(before['occurrence'])==2
+        assert tables(b.store.db)==before
+        # Existing mapping does not scan for independently inserted competing B1 rows.
+>       assert isinstance(r['event_admission'],dict)
+E       AssertionError: assert False
+E        +  where False = isinstance('NOT_PERFORMED', dict)
+
+../tests_after/E2/test_e2.py:130: AssertionError
+=========================== short test summary info ============================
+FAILED ../tests_after/E2/test_e2.py::test_direct_b1_after_wrapper_limit_is_measured[False]
+FAILED ../tests_after/E2/test_e2.py::test_direct_b1_after_wrapper_limit_is_measured[True]
+2 failed, 42 passed in 8.46s

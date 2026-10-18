@@ -1,0 +1,65 @@
+{
+  "passport_schema": "SOROK_WARM_ENVIRONMENT_PASSPORT_R1",
+  "environment_id": "38cd8f60-eaff-4fe4-a636-83e17d23db68",
+  "epoch_id": "a2625605-34fd-44c6-bcee-f184f7433485",
+  "owner_session_alias": "X3_INDEPENDENT_REVIEWER",
+  "surface": "LOCAL_SHARED_STORE",
+  "machine_alias": "LOCAL_X3",
+  "conversation_or_account_affinity": null,
+  "status": "LIVE_VERIFIED",
+  "last_live_probe_at": "2026-10-18T05:59:28.052221+00:00",
+  "runtime_marker_digest": "c53ac48c5ef8130ae1564e9280ff37874dfd6f6ef75953cc58f75d52721522f8",
+  "probe_command_and_result": {
+    "python": "3.11.3",
+    "pytest": "9.1.1",
+    "sqlite": "3.40.1",
+    "git": "git version 2.39.1",
+    "node": "v18.14.2",
+    "shell": "zsh"
+  },
+  "capabilities": {
+    "python": "VERIFIED",
+    "pytest": "VERIFIED",
+    "sqlite": "VERIFIED",
+    "git": "VERIFIED",
+    "node": "VERIFIED",
+    "filesystem": "VERIFIED",
+    "subprocess": "VERIFIED"
+  },
+  "git_object_store_alias": "EXISTING_SHARED_STORE",
+  "worktree_alias": "X3_SEALED_REVIEW",
+  "branch": "agent/reviewer-sorok-v2-hq330-x3-b3-independent-executable-r1",
+  "exact_checkout_base": "50349f2e90f8e9d0379040fdb7d3186dfe3b6c02",
+  "head_at_probe": "50349f2e90f8e9d0379040fdb7d3186dfe3b6c02",
+  "clean_dirty_state": "ONLY_X3_RETURN_CHANGES",
+  "materialized_source_refs": "verified_sources.json",
+  "verified_imports": "loaded_modules.json",
+  "dependency_closure_status": "BOUNDED",
+  "fixture_query_source_permission": "USER_AUTHORIZED_SOURCEFREE_ONLY",
+  "covered_test_suites": "suite_results.json",
+  "science_grade": "B3_REVISE",
+  "model_provider": "CODEX",
+  "model_effort": "USER_REQUESTED_GPT6_MEDIUM_RUNTIME_SELECTION_NOT_INDEPENDENTLY_VERIFIED",
+  "pricing_class": "UNKNOWN",
+  "observed_usage": {
+    "primary_used_percent": 52,
+    "secondary_used_percent": 24,
+    "cash_charges": null,
+    "source": "LIVE_ACCOUNT_TOOL_AT_RETURN",
+    "ordinary_usage_allowed": true
+  },
+  "independent_review_separation": "FRESH_X3_NO_B3_OR_M2_AUTHORSHIP_NO_AGENTS",
+  "privacy_source_grant": "SYNTHETIC_ONLY_NO_MODEL_APIS",
+  "assignments_completed": [
+    "X3"
+  ],
+  "next_good_affinity_tags": [
+    "B3_ATOMICITY",
+    "TEMPORAL",
+    "SOURCE_PREIMAGE",
+    "SQLITE"
+  ],
+  "staged_state_preservation": "LOCAL_RUNTIME_RECHECK_ON_RESUME",
+  "retire_or_rebuild_reason": null,
+  "attestation": "00C_READ=YES;00D_WARM_PASSPORT_READ=YES;LIVE_RESOURCE_CHECK=YES;REAL_SESSION_CONTINUITY_VERIFIED_OR_NEW=YES;CHEAPEST_QUALIFIED_ROUTE_EVALUATED=YES;INDEPENDENCE_AND_AUTHORITY_PRESERVED=YES"
+}

@@ -1,0 +1,2089 @@
+{
+  "receipts": [
+    {
+      "schema": "B2_VERTICAL_RECEIPT@1",
+      "rule": "B2_SYNTHETIC_WITNESSED_INGRESS@1",
+      "eligibility": {
+        "decision": "ADMIT",
+        "code": "P1_NONCAUSAL_ELIGIBILITY_COURT",
+        "proposal_id": "B2-PACKET-1",
+        "proposal_hash": "32a8cb92b29a064b2d9320b3d9db676dcdbe83857be47503402a481ec38f93c5",
+        "context_hash": "ab8b28e658716bbb4380e647ac69e158b1f470a257918be7c9157021c634645c",
+        "rule_ref": "P1_CANDIDATE_ELIGIBILITY_TEST_ONLY@1.0.0",
+        "rule_hash": "2a5814d3d867ca8a4c25138eaa0e2def57e70400245d9402bde96918d59f5c1e",
+        "candidates": [
+          {
+            "candidate_id": "ALT-CARE",
+            "candidate_replay_hash": "30fad96058ae57d0ff0ae855f09a545fc4acb1a18ecb22c9425672b995ae3e56",
+            "decision": "ADMIT",
+            "code": "PROPOSAL_CANDIDATE_ONLY_NOT_CAUSAL"
+          },
+          {
+            "candidate_id": "ALT-CHILD-SEARCH",
+            "candidate_replay_hash": "d8194a78f7e2f71d99f04254d80375e1d0eaf184afa9356e959d73a695fffce1",
+            "decision": "ADMIT",
+            "code": "PROPOSAL_CANDIDATE_ONLY_NOT_CAUSAL"
+          },
+          {
+            "candidate_id": "ALT-NONE",
+            "candidate_replay_hash": "4b2cd1fc47eb962ffb77932b439b7396ed3ecfe80314c5bdbf407d93b26beb2d",
+            "decision": "ADMIT",
+            "code": "PROPOSAL_CANDIDATE_ONLY_NOT_CAUSAL"
+          },
+          {
+            "candidate_id": "ALT-PEER",
+            "candidate_replay_hash": "8867124b5b74374a5352bf65e6a228ff757229991c46df6aa00eaaf7062ae9a6",
+            "decision": "ADMIT",
+            "code": "PROPOSAL_CANDIDATE_ONLY_NOT_CAUSAL"
+          }
+        ],
+        "eligible_entries": [
+          {
+            "candidate_id": "ALT-CARE",
+            "candidate_replay_hash": "30fad96058ae57d0ff0ae855f09a545fc4acb1a18ecb22c9425672b995ae3e56",
+            "candidate_authority_id": "P1_CANDIDATE_ELIGIBILITY_TEST_ONLY@1.0.0",
+            "candidate_authority_version": "1.0.0",
+            "eligibility_or_admission_receipt_hash": "8dbb896d0080534398d8b9995c1147421345c6b5ff0176bdf2d320a29da6dfab"
+          },
+          {
+            "candidate_id": "ALT-CHILD-SEARCH",
+            "candidate_replay_hash": "d8194a78f7e2f71d99f04254d80375e1d0eaf184afa9356e959d73a695fffce1",
+            "candidate_authority_id": "P1_CANDIDATE_ELIGIBILITY_TEST_ONLY@1.0.0",
+            "candidate_authority_version": "1.0.0",
+            "eligibility_or_admission_receipt_hash": "169ec1dd604866c505018c4062ddc0be595b6e5282d645dce93d01f169b9f765"
+          },
+          {
+            "candidate_id": "ALT-NONE",
+            "candidate_replay_hash": "4b2cd1fc47eb962ffb77932b439b7396ed3ecfe80314c5bdbf407d93b26beb2d",
+            "candidate_authority_id": "P1_CANDIDATE_ELIGIBILITY_TEST_ONLY@1.0.0",
+            "candidate_authority_version": "1.0.0",
+            "eligibility_or_admission_receipt_hash": "d5822b6d5793431b3e8efc67558c6b9215dd857604e8cf17f5b602d58d3c33e5"
+          },
+          {
+            "candidate_id": "ALT-PEER",
+            "candidate_replay_hash": "8867124b5b74374a5352bf65e6a228ff757229991c46df6aa00eaaf7062ae9a6",
+            "candidate_authority_id": "P1_CANDIDATE_ELIGIBILITY_TEST_ONLY@1.0.0",
+            "candidate_authority_version": "1.0.0",
+            "eligibility_or_admission_receipt_hash": "746d8062e292cfb28ff0d705944fd4ffd9111ac40b2c928f2e0f06bb0add1538"
+          }
+        ],
+        "candidate_set_hash": "3bd4a3b23ffc247e993f94bb1c7de40d204a4f5f6b9cf16f7ff3156ac186ff98",
+        "consumption": null,
+        "event_admission": "NOT_PERFORMED",
+        "evaluation_hash": "c4b571cc2b27e0514a27ce3925d3a5fea3c14cdc7ee695bbc475508e43558d69"
+      },
+      "selection": {
+        "decision": "ADMIT",
+        "code": "TEST_ONLY_SELECTED_NONCAUSAL_ALTERNATIVE",
+        "selected_candidate_id": "ALT-CARE",
+        "draw_consumed": false,
+        "rng_receipt": {
+          "algorithm": "ADP020_COMPATIBILITY_MOCK_TEST_ONLY",
+          "static_stream": "p1.test.causal.alternative",
+          "seed_source": "EXPLICIT_TEST_ONLY_SEED",
+          "seed_sha256": "9b68d49bb092f71292ad76ab8fb8750d710aae5af70e43b8ec0a901d048c0030",
+          "coordinate": 0,
+          "draw_consumed": false,
+          "draw": null,
+          "probability_grade": "PROVISIONAL_NOT_CALIBRATED",
+          "parameter_source": "AUTHORED_DESIGN_HYPOTHESIS_TEST_ONLY",
+          "weight_units": {
+            "ALT-CARE": 1,
+            "ALT-CHILD-SEARCH": 0,
+            "ALT-NONE": 0,
+            "ALT-PEER": 0
+          },
+          "total_weight_units": 1,
+          "policy_hash": "0f9d9598d9731f36a3b52570bdf17780fce172495bd54b1fbdeeb3c92753fb1e",
+          "candidate_set_hash": "3bd4a3b23ffc247e993f94bb1c7de40d204a4f5f6b9cf16f7ff3156ac186ff98"
+        },
+        "replay_identity": "272fb0030fde14f86128415ef42f3886548fcd8dc5740b1728b93704cfc7cbed",
+        "consumption": {
+          "contract": "BFirstCandidateDecision_PROVISIONAL_P1",
+          "candidate_id": "ALT-CARE",
+          "event_admission": "NOT_PERFORMED",
+          "actor_response_rule_ref": null,
+          "recruited_source_refs": [],
+          "competing_influence_refs": [],
+          "response_effect_proposals": [],
+          "target_CAN011_update_proposals": [],
+          "probability_grade": "PROVISIONAL_NOT_CALIBRATED",
+          "model_proposal_provenance": "32a8cb92b29a064b2d9320b3d9db676dcdbe83857be47503402a481ec38f93c5",
+          "negatives": [],
+          "rng_receipt": {
+            "algorithm": "ADP020_COMPATIBILITY_MOCK_TEST_ONLY",
+            "static_stream": "p1.test.causal.alternative",
+            "seed_source": "EXPLICIT_TEST_ONLY_SEED",
+            "seed_sha256": "9b68d49bb092f71292ad76ab8fb8750d710aae5af70e43b8ec0a901d048c0030",
+            "coordinate": 0,
+            "draw_consumed": false,
+            "draw": null,
+            "probability_grade": "PROVISIONAL_NOT_CALIBRATED",
+            "parameter_source": "AUTHORED_DESIGN_HYPOTHESIS_TEST_ONLY",
+            "weight_units": {
+              "ALT-CARE": 1,
+              "ALT-CHILD-SEARCH": 0,
+              "ALT-NONE": 0,
+              "ALT-PEER": 0
+            },
+            "total_weight_units": 1,
+            "policy_hash": "0f9d9598d9731f36a3b52570bdf17780fce172495bd54b1fbdeeb3c92753fb1e",
+            "candidate_set_hash": "3bd4a3b23ffc247e993f94bb1c7de40d204a4f5f6b9cf16f7ff3156ac186ff98"
+          },
+          "no_world_or_actor_mutation": true
+        }
+      },
+      "before_hash": "c28d6ccb925e39cd9ba270d9b0632c4adb00e60fe799bc558e3885838ca3e9f0",
+      "status": "TRANSACTION_ABORTED_ROLLBACK",
+      "event_admission": {
+        "rule": "B2_SYNTHETIC_WITNESSED_INGRESS@1",
+        "witness_ref": "edcb98aeca452ae34e13522009f6d70dd609df1ce52e5b0c787e1b5f732d6ad3",
+        "event_ref": "a16274746510372375192804393269a760d0134f4f462e9e9d4f79d4401b2e7c",
+        "proposal_ref": "32a8cb92b29a064b2d9320b3d9db676dcdbe83857be47503402a481ec38f93c5",
+        "selected_candidate_id": "ALT-CARE",
+        "status": "ADMITTED_SYNTHETIC_FIXTURE_ONLY",
+        "attributed_claims": [
+          {
+            "accessible_source_refs": [
+              "THEFT-1"
+            ],
+            "claim": "A careful response could reduce future loss; I am worried.",
+            "claim_kind": "ATTRIBUTED_UNVERIFIED_ASSERTION",
+            "claim_world_fact_ref": null,
+            "speaker_actor_ref": "CARE-1",
+            "utterance": "We should report this and see what can be secured."
+          }
+        ],
+        "objective_world_facts": {
+          "known_thief": null,
+          "group_criminality": "NOT_ESTABLISHED"
+        },
+        "hash": "c7e74ceb42b7b55dc8e30ef67370edeb06e4c4aefbe92a04437e9ef0bf02a4fc"
+      },
+      "b1_invoked": true,
+      "admitted_event": {
+        "actor_id": "child",
+        "admission_grade": "ADMITTED_SYNTHETIC_FIXTURE_ONLY",
+        "event_id": "E2-ID-0",
+        "hash": "a16274746510372375192804393269a760d0134f4f462e9e9d4f79d4401b2e7c",
+        "interrupted": true,
+        "objective_occurrence": "OBSERVED_INTERACTION_AFTER_MATERIAL_LOSS",
+        "offers": [
+          [
+            "caretaker",
+            "We should report this and see what can be secured.",
+            "joint_inventory"
+          ]
+        ],
+        "power_ref": "power:caretaker_controls_tools",
+        "project": "repair_route",
+        "provenance": "B1_AUTHORED_SOURCEFREE",
+        "relation_refs": [
+          "relation:child:caretaker"
+        ],
+        "time": 2,
+        "world_ref": "WORLD-BIKE-1"
+      },
+      "capability_decision": {
+        "decision": "PROPOSABLE_ONLY",
+        "code": "NO_MUTATION",
+        "mutations": 0,
+        "source_sha256": "f1fcb0f753e4fbea034f6b78bf7b5fbef5b67d8be0ebabf503248571306a4c29",
+        "frozen_self_tests": 17
+      },
+      "response": {
+        "schema": "B1_CANDIDATE_ADAPTER@1.0.0",
+        "actor_id": "child",
+        "event_ref": "a16274746510372375192804393269a760d0134f4f462e9e9d4f79d4401b2e7c",
+        "time": 2,
+        "response_rule_ref": {
+          "authority_id": "TEST_ONLY_CAN008_B1",
+          "authority_version": "1",
+          "rule_id": "situated_plan_comparison",
+          "rule_version": "1",
+          "grade": "PROVISIONAL_MODEL_HYPOTHESIS",
+          "predicates": [
+            "admitted fixture occurrence; actor can compare enacted plans",
+            "interrupted active project; counterpart offers executable plan",
+            "prior enacted counterpart recognition -> joint_check",
+            "prior imposed counterpart plan -> private_check",
+            "later offer recruits ACTIVE exact project/counterpart mediator only"
+          ],
+          "composition": "independent source streams coexist; no scalar winner",
+          "effect_kind": "TRANSFORM",
+          "numeric_policy": "NONE",
+          "stochastic_policy": "NO_DRAWS",
+          "authority_content_hash": "b8edd86e0985b8a5209db1904d1cc950906b55236c6b240cb3b203e79cb090f0",
+          "rule_content_hash": "d8fef5e42dab49d6c31fcc32bbae2f15bdf27d960d22cb8a5019aa78989db754",
+          "hash": "86ea57ee9d1cd5ffa0ff6b4416da624e54a13e0618f4886fd4bf77b844945a5d"
+        },
+        "prior_response_history_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "before_state_hash": "c28d6ccb925e39cd9ba270d9b0632c4adb00e60fe799bc558e3885838ca3e9f0",
+        "before_target_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "uptake": [
+          {
+            "stream": "56fcb91d80719095ca6e1e62f7bddbe47cb734589a6e0cbafeff7eb5249b1fd1",
+            "counterpart": "caretaker",
+            "words": "We should report this and see what can be secured.",
+            "propositional": "UNDECIDED_ATTRIBUTED_ASSERTION",
+            "affective": [
+              "recognized"
+            ]
+          }
+        ],
+        "recruited": [
+          "2ed27ab77ed315917fa0388e7f9e9ceb1052eee463051a0d2fc02f470fda905b"
+        ],
+        "practical_activity": [
+          "compare_current_plan:caretaker"
+        ],
+        "target_proposals": [
+          {
+            "proposal_id": "992dc6af924a69e9060ba802ecf4df708a286578c05817cfa5320cbc6149260d",
+            "actor_id": "child",
+            "state_kind_id": "V3MS_MEDIATOR",
+            "target_middle_state_id": "992dc6af924a69e9060ba802ecf4df708a286578c05817cfa5320cbc6149260d",
+            "operation": "CREATE",
+            "proposed_effective_time": 2,
+            "proposed_role_tags": [
+              "REGULATORY_PROTECTIVE"
+            ],
+            "semantic_object_ref": "test_only:scoped_plan_comparison",
+            "target_refs": [
+              "repair_route",
+              "caretaker"
+            ],
+            "proposed_payload_delta_or_replacement": {
+              "project": "repair_route",
+              "counterpart": "caretaker",
+              "mode": "joint_check",
+              "origin_access": "INACCESSIBLE",
+              "belief_effect": "NONE"
+            },
+            "causal_parent_refs": [
+              "a16274746510372375192804393269a760d0134f4f462e9e9d4f79d4401b2e7c",
+              "2ed27ab77ed315917fa0388e7f9e9ceb1052eee463051a0d2fc02f470fda905b"
+            ],
+            "source_update_rule_ref": {
+              "authority_id": "TEST_ONLY_CAN011_B1",
+              "authority_version": "1",
+              "rule_id": "scoped_plan_mediator",
+              "rule_version": "1",
+              "grade": "PROVISIONAL_MODEL_HYPOTHESIS",
+              "predicates": [
+                "CREATE only; exact actor/project/counterpart",
+                "independently recheck interruption, offered plan and enacted history",
+                "payload joint_check or private_check from matching history",
+                "explicit TEST_ONLY owner grant; before hashes; causal parents"
+              ],
+              "state_kind_id": "V3MS_MEDIATOR",
+              "role": "REGULATORY_PROTECTIVE",
+              "authority_content_hash": "db4efe5d32bc5d0239e59371823765cd046b50f8045eecf94705d75a472c8b4f",
+              "rule_content_hash": "661ce8b8b959ba2107193354bf37571c8d5da6ee5a9528ae007be98624864882",
+              "hash": "9a0edaaeb5468f4defce6c4b944554e7d6210733a3ef2ffc13b78605369491b1"
+            },
+            "evaluator_or_predicate_receipts": [
+              "2ed27ab77ed315917fa0388e7f9e9ceb1052eee463051a0d2fc02f470fda905b"
+            ],
+            "numeric_rule_ref": null,
+            "stochastic_receipt_ref": null,
+            "provenance_refs": [
+              "B1_SOURCEFREE",
+              "PROVISIONAL_MODEL_HYPOTHESIS"
+            ],
+            "stream": "56fcb91d80719095ca6e1e62f7bddbe47cb734589a6e0cbafeff7eb5249b1fd1",
+            "effect_kind": "TRANSFORM",
+            "hash": "307b75f0832e370241de2642139a51c8ad943cf334a2d3e24b2340f651f20324"
+          }
+        ],
+        "actor_surface": {
+          "actions": [
+            "compare_current_plan:caretaker"
+          ],
+          "origin_explanation": "NOT_ACCESSIBLE"
+        },
+        "status": "RESPONSE_TRANSACTION_COMMITTED",
+        "hash": "b3fd2835e5ce5f8cd96fc1dca6c9eae9b777534c3baa63645c814a2fe08dbba8"
+      },
+      "joint": {
+        "status": "TRANSACTION_ABORTED_ROLLBACK",
+        "reason": "FOREIGN_OWNER_PERMISSION_DENIED",
+        "before_hash": "c28d6ccb925e39cd9ba270d9b0632c4adb00e60fe799bc558e3885838ca3e9f0",
+        "hash": "ff51120c0a3c51e6e0d69d24ec124e41e91f5fe3a4595aca8ae156e651db5793"
+      },
+      "actor_safe": {
+        "actions": [],
+        "origin_explanation": "NOT_ACCESSIBLE",
+        "status": "RESPONSE_ABORTED"
+      },
+      "after_hash": "c28d6ccb925e39cd9ba270d9b0632c4adb00e60fe799bc558e3885838ca3e9f0",
+      "permission": {
+        "issuer": "TEST_ONLY_CAN011_FIXTURE_AUTHORIZER",
+        "scope": "TEST_ONLY",
+        "actor_id": "child",
+        "before_target_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "response_hash": "b3fd2835e5ce5f8cd96fc1dca6c9eae9b777534c3baa63645c814a2fe08dbba8",
+        "proposal_hashes": [
+          "307b75f0832e370241de2642139a51c8ad943cf334a2d3e24b2340f651f20324"
+        ],
+        "update_rule_hash": "9a0edaaeb5468f4defce6c4b944554e7d6210733a3ef2ffc13b78605369491b1",
+        "hash": "f1d1df458b35df7e90f066266ed8f215bda737a59dcf8d1062ac7913a1f1a83d"
+      },
+      "hash": "4f277abfe209acfee9f5e7dbf539600a5da935a36049731720d4f5fea79f5e46"
+    },
+    {
+      "schema": "B2_VERTICAL_RECEIPT@1",
+      "rule": "B2_SYNTHETIC_WITNESSED_INGRESS@1",
+      "eligibility": {
+        "decision": "ADMIT",
+        "code": "P1_NONCAUSAL_ELIGIBILITY_COURT",
+        "proposal_id": "B2-PACKET-1",
+        "proposal_hash": "32a8cb92b29a064b2d9320b3d9db676dcdbe83857be47503402a481ec38f93c5",
+        "context_hash": "ab8b28e658716bbb4380e647ac69e158b1f470a257918be7c9157021c634645c",
+        "rule_ref": "P1_CANDIDATE_ELIGIBILITY_TEST_ONLY@1.0.0",
+        "rule_hash": "2a5814d3d867ca8a4c25138eaa0e2def57e70400245d9402bde96918d59f5c1e",
+        "candidates": [
+          {
+            "candidate_id": "ALT-CARE",
+            "candidate_replay_hash": "30fad96058ae57d0ff0ae855f09a545fc4acb1a18ecb22c9425672b995ae3e56",
+            "decision": "ADMIT",
+            "code": "PROPOSAL_CANDIDATE_ONLY_NOT_CAUSAL"
+          },
+          {
+            "candidate_id": "ALT-CHILD-SEARCH",
+            "candidate_replay_hash": "d8194a78f7e2f71d99f04254d80375e1d0eaf184afa9356e959d73a695fffce1",
+            "decision": "ADMIT",
+            "code": "PROPOSAL_CANDIDATE_ONLY_NOT_CAUSAL"
+          },
+          {
+            "candidate_id": "ALT-NONE",
+            "candidate_replay_hash": "4b2cd1fc47eb962ffb77932b439b7396ed3ecfe80314c5bdbf407d93b26beb2d",
+            "decision": "ADMIT",
+            "code": "PROPOSAL_CANDIDATE_ONLY_NOT_CAUSAL"
+          },
+          {
+            "candidate_id": "ALT-PEER",
+            "candidate_replay_hash": "8867124b5b74374a5352bf65e6a228ff757229991c46df6aa00eaaf7062ae9a6",
+            "decision": "ADMIT",
+            "code": "PROPOSAL_CANDIDATE_ONLY_NOT_CAUSAL"
+          }
+        ],
+        "eligible_entries": [
+          {
+            "candidate_id": "ALT-CARE",
+            "candidate_replay_hash": "30fad96058ae57d0ff0ae855f09a545fc4acb1a18ecb22c9425672b995ae3e56",
+            "candidate_authority_id": "P1_CANDIDATE_ELIGIBILITY_TEST_ONLY@1.0.0",
+            "candidate_authority_version": "1.0.0",
+            "eligibility_or_admission_receipt_hash": "8dbb896d0080534398d8b9995c1147421345c6b5ff0176bdf2d320a29da6dfab"
+          },
+          {
+            "candidate_id": "ALT-CHILD-SEARCH",
+            "candidate_replay_hash": "d8194a78f7e2f71d99f04254d80375e1d0eaf184afa9356e959d73a695fffce1",
+            "candidate_authority_id": "P1_CANDIDATE_ELIGIBILITY_TEST_ONLY@1.0.0",
+            "candidate_authority_version": "1.0.0",
+            "eligibility_or_admission_receipt_hash": "169ec1dd604866c505018c4062ddc0be595b6e5282d645dce93d01f169b9f765"
+          },
+          {
+            "candidate_id": "ALT-NONE",
+            "candidate_replay_hash": "4b2cd1fc47eb962ffb77932b439b7396ed3ecfe80314c5bdbf407d93b26beb2d",
+            "candidate_authority_id": "P1_CANDIDATE_ELIGIBILITY_TEST_ONLY@1.0.0",
+            "candidate_authority_version": "1.0.0",
+            "eligibility_or_admission_receipt_hash": "d5822b6d5793431b3e8efc67558c6b9215dd857604e8cf17f5b602d58d3c33e5"
+          },
+          {
+            "candidate_id": "ALT-PEER",
+            "candidate_replay_hash": "8867124b5b74374a5352bf65e6a228ff757229991c46df6aa00eaaf7062ae9a6",
+            "candidate_authority_id": "P1_CANDIDATE_ELIGIBILITY_TEST_ONLY@1.0.0",
+            "candidate_authority_version": "1.0.0",
+            "eligibility_or_admission_receipt_hash": "746d8062e292cfb28ff0d705944fd4ffd9111ac40b2c928f2e0f06bb0add1538"
+          }
+        ],
+        "candidate_set_hash": "3bd4a3b23ffc247e993f94bb1c7de40d204a4f5f6b9cf16f7ff3156ac186ff98",
+        "consumption": null,
+        "event_admission": "NOT_PERFORMED",
+        "evaluation_hash": "c4b571cc2b27e0514a27ce3925d3a5fea3c14cdc7ee695bbc475508e43558d69"
+      },
+      "selection": {
+        "decision": "ADMIT",
+        "code": "TEST_ONLY_SELECTED_NONCAUSAL_ALTERNATIVE",
+        "selected_candidate_id": "ALT-CARE",
+        "draw_consumed": false,
+        "rng_receipt": {
+          "algorithm": "ADP020_COMPATIBILITY_MOCK_TEST_ONLY",
+          "static_stream": "p1.test.causal.alternative",
+          "seed_source": "EXPLICIT_TEST_ONLY_SEED",
+          "seed_sha256": "9b68d49bb092f71292ad76ab8fb8750d710aae5af70e43b8ec0a901d048c0030",
+          "coordinate": 0,
+          "draw_consumed": false,
+          "draw": null,
+          "probability_grade": "PROVISIONAL_NOT_CALIBRATED",
+          "parameter_source": "AUTHORED_DESIGN_HYPOTHESIS_TEST_ONLY",
+          "weight_units": {
+            "ALT-CARE": 1,
+            "ALT-CHILD-SEARCH": 0,
+            "ALT-NONE": 0,
+            "ALT-PEER": 0
+          },
+          "total_weight_units": 1,
+          "policy_hash": "0f9d9598d9731f36a3b52570bdf17780fce172495bd54b1fbdeeb3c92753fb1e",
+          "candidate_set_hash": "3bd4a3b23ffc247e993f94bb1c7de40d204a4f5f6b9cf16f7ff3156ac186ff98"
+        },
+        "replay_identity": "272fb0030fde14f86128415ef42f3886548fcd8dc5740b1728b93704cfc7cbed",
+        "consumption": {
+          "contract": "BFirstCandidateDecision_PROVISIONAL_P1",
+          "candidate_id": "ALT-CARE",
+          "event_admission": "NOT_PERFORMED",
+          "actor_response_rule_ref": null,
+          "recruited_source_refs": [],
+          "competing_influence_refs": [],
+          "response_effect_proposals": [],
+          "target_CAN011_update_proposals": [],
+          "probability_grade": "PROVISIONAL_NOT_CALIBRATED",
+          "model_proposal_provenance": "32a8cb92b29a064b2d9320b3d9db676dcdbe83857be47503402a481ec38f93c5",
+          "negatives": [],
+          "rng_receipt": {
+            "algorithm": "ADP020_COMPATIBILITY_MOCK_TEST_ONLY",
+            "static_stream": "p1.test.causal.alternative",
+            "seed_source": "EXPLICIT_TEST_ONLY_SEED",
+            "seed_sha256": "9b68d49bb092f71292ad76ab8fb8750d710aae5af70e43b8ec0a901d048c0030",
+            "coordinate": 0,
+            "draw_consumed": false,
+            "draw": null,
+            "probability_grade": "PROVISIONAL_NOT_CALIBRATED",
+            "parameter_source": "AUTHORED_DESIGN_HYPOTHESIS_TEST_ONLY",
+            "weight_units": {
+              "ALT-CARE": 1,
+              "ALT-CHILD-SEARCH": 0,
+              "ALT-NONE": 0,
+              "ALT-PEER": 0
+            },
+            "total_weight_units": 1,
+            "policy_hash": "0f9d9598d9731f36a3b52570bdf17780fce172495bd54b1fbdeeb3c92753fb1e",
+            "candidate_set_hash": "3bd4a3b23ffc247e993f94bb1c7de40d204a4f5f6b9cf16f7ff3156ac186ff98"
+          },
+          "no_world_or_actor_mutation": true
+        }
+      },
+      "before_hash": "c28d6ccb925e39cd9ba270d9b0632c4adb00e60fe799bc558e3885838ca3e9f0",
+      "status": "TRANSACTION_ABORTED_ROLLBACK",
+      "event_admission": {
+        "rule": "B2_SYNTHETIC_WITNESSED_INGRESS@1",
+        "witness_ref": "13dc994d03d1eda9859e6dacd77f77607f89421147cc9a7cd9c93ea677ec68e9",
+        "event_ref": "b6c6468bedf1eaf305792fd3079c26096500ed1c1fb3aa12547e98e79f2e6f29",
+        "proposal_ref": "32a8cb92b29a064b2d9320b3d9db676dcdbe83857be47503402a481ec38f93c5",
+        "selected_candidate_id": "ALT-CARE",
+        "status": "ADMITTED_SYNTHETIC_FIXTURE_ONLY",
+        "attributed_claims": [
+          {
+            "accessible_source_refs": [
+              "THEFT-1"
+            ],
+            "claim": "A careful response could reduce future loss; I am worried.",
+            "claim_kind": "ATTRIBUTED_UNVERIFIED_ASSERTION",
+            "claim_world_fact_ref": null,
+            "speaker_actor_ref": "CARE-1",
+            "utterance": "We should report this and see what can be secured."
+          }
+        ],
+        "objective_world_facts": {
+          "known_thief": null,
+          "group_criminality": "NOT_ESTABLISHED"
+        },
+        "hash": "5d52fa54702a8ee23d55ca4515186330b645bca25963f9cf5494e6530048b3bb"
+      },
+      "b1_invoked": true,
+      "admitted_event": {
+        "actor_id": "child",
+        "admission_grade": "ADMITTED_SYNTHETIC_FIXTURE_ONLY",
+        "event_id": "E2-ID-1",
+        "hash": "b6c6468bedf1eaf305792fd3079c26096500ed1c1fb3aa12547e98e79f2e6f29",
+        "interrupted": true,
+        "objective_occurrence": "OBSERVED_INTERACTION_AFTER_MATERIAL_LOSS",
+        "offers": [
+          [
+            "caretaker",
+            "We should report this and see what can be secured.",
+            "joint_inventory"
+          ]
+        ],
+        "power_ref": "power:caretaker_controls_tools",
+        "project": "repair_route",
+        "provenance": "B1_AUTHORED_SOURCEFREE",
+        "relation_refs": [
+          "relation:child:caretaker"
+        ],
+        "time": 2,
+        "world_ref": "WORLD-BIKE-1"
+      },
+      "capability_decision": {
+        "decision": "PROPOSABLE_ONLY",
+        "code": "NO_MUTATION",
+        "mutations": 0,
+        "source_sha256": "f1fcb0f753e4fbea034f6b78bf7b5fbef5b67d8be0ebabf503248571306a4c29",
+        "frozen_self_tests": 17
+      },
+      "response": {
+        "schema": "B1_CANDIDATE_ADAPTER@1.0.0",
+        "actor_id": "child",
+        "event_ref": "b6c6468bedf1eaf305792fd3079c26096500ed1c1fb3aa12547e98e79f2e6f29",
+        "time": 2,
+        "response_rule_ref": {
+          "authority_id": "TEST_ONLY_CAN008_B1",
+          "authority_version": "1",
+          "rule_id": "situated_plan_comparison",
+          "rule_version": "1",
+          "grade": "PROVISIONAL_MODEL_HYPOTHESIS",
+          "predicates": [
+            "admitted fixture occurrence; actor can compare enacted plans",
+            "interrupted active project; counterpart offers executable plan",
+            "prior enacted counterpart recognition -> joint_check",
+            "prior imposed counterpart plan -> private_check",
+            "later offer recruits ACTIVE exact project/counterpart mediator only"
+          ],
+          "composition": "independent source streams coexist; no scalar winner",
+          "effect_kind": "TRANSFORM",
+          "numeric_policy": "NONE",
+          "stochastic_policy": "NO_DRAWS",
+          "authority_content_hash": "b8edd86e0985b8a5209db1904d1cc950906b55236c6b240cb3b203e79cb090f0",
+          "rule_content_hash": "d8fef5e42dab49d6c31fcc32bbae2f15bdf27d960d22cb8a5019aa78989db754",
+          "hash": "86ea57ee9d1cd5ffa0ff6b4416da624e54a13e0618f4886fd4bf77b844945a5d"
+        },
+        "prior_response_history_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "before_state_hash": "c28d6ccb925e39cd9ba270d9b0632c4adb00e60fe799bc558e3885838ca3e9f0",
+        "before_target_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "uptake": [
+          {
+            "stream": "d83286ef757421937e98577df27839a24508e38a490bbabe30cedf0c78946161",
+            "counterpart": "caretaker",
+            "words": "We should report this and see what can be secured.",
+            "propositional": "UNDECIDED_ATTRIBUTED_ASSERTION",
+            "affective": [
+              "recognized"
+            ]
+          }
+        ],
+        "recruited": [
+          "2ed27ab77ed315917fa0388e7f9e9ceb1052eee463051a0d2fc02f470fda905b"
+        ],
+        "practical_activity": [
+          "compare_current_plan:caretaker"
+        ],
+        "target_proposals": [
+          {
+            "proposal_id": "a4243c95720ac85618c021238fbc916694203eaacd14b586c3302a87e2c474d8",
+            "actor_id": "child",
+            "state_kind_id": "V3MS_MEDIATOR",
+            "target_middle_state_id": "a4243c95720ac85618c021238fbc916694203eaacd14b586c3302a87e2c474d8",
+            "operation": "CREATE",
+            "proposed_effective_time": 2,
+            "proposed_role_tags": [
+              "REGULATORY_PROTECTIVE"
+            ],
+            "semantic_object_ref": "test_only:scoped_plan_comparison",
+            "target_refs": [
+              "repair_route",
+              "caretaker"
+            ],
+            "proposed_payload_delta_or_replacement": {
+              "project": "repair_route",
+              "counterpart": "caretaker",
+              "mode": "joint_check",
+              "origin_access": "INACCESSIBLE",
+              "belief_effect": "NONE"
+            },
+            "causal_parent_refs": [
+              "b6c6468bedf1eaf305792fd3079c26096500ed1c1fb3aa12547e98e79f2e6f29",
+              "2ed27ab77ed315917fa0388e7f9e9ceb1052eee463051a0d2fc02f470fda905b"
+            ],
+            "source_update_rule_ref": {
+              "authority_id": "TEST_ONLY_CAN011_B1",
+              "authority_version": "1",
+              "rule_id": "scoped_plan_mediator",
+              "rule_version": "1",
+              "grade": "PROVISIONAL_MODEL_HYPOTHESIS",
+              "predicates": [
+                "CREATE only; exact actor/project/counterpart",
+                "independently recheck interruption, offered plan and enacted history",
+                "payload joint_check or private_check from matching history",
+                "explicit TEST_ONLY owner grant; before hashes; causal parents"
+              ],
+              "state_kind_id": "V3MS_MEDIATOR",
+              "role": "REGULATORY_PROTECTIVE",
+              "authority_content_hash": "db4efe5d32bc5d0239e59371823765cd046b50f8045eecf94705d75a472c8b4f",
+              "rule_content_hash": "661ce8b8b959ba2107193354bf37571c8d5da6ee5a9528ae007be98624864882",
+              "hash": "9a0edaaeb5468f4defce6c4b944554e7d6210733a3ef2ffc13b78605369491b1"
+            },
+            "evaluator_or_predicate_receipts": [
+              "2ed27ab77ed315917fa0388e7f9e9ceb1052eee463051a0d2fc02f470fda905b"
+            ],
+            "numeric_rule_ref": null,
+            "stochastic_receipt_ref": null,
+            "provenance_refs": [
+              "B1_SOURCEFREE",
+              "PROVISIONAL_MODEL_HYPOTHESIS"
+            ],
+            "stream": "d83286ef757421937e98577df27839a24508e38a490bbabe30cedf0c78946161",
+            "effect_kind": "TRANSFORM",
+            "hash": "e25be2c4a631afa974633151b05152dcfc70c2c1c698f5e3a446edc308fdf090"
+          }
+        ],
+        "actor_surface": {
+          "actions": [
+            "compare_current_plan:caretaker"
+          ],
+          "origin_explanation": "NOT_ACCESSIBLE"
+        },
+        "status": "RESPONSE_TRANSACTION_COMMITTED",
+        "hash": "010f731a406116facd7c81095077a64f29dd10fcc48a4845863b8b0667378fb7"
+      },
+      "joint": {
+        "status": "TRANSACTION_ABORTED_ROLLBACK",
+        "reason": "FOREIGN_OWNER_PERMISSION_DENIED",
+        "before_hash": "c28d6ccb925e39cd9ba270d9b0632c4adb00e60fe799bc558e3885838ca3e9f0",
+        "hash": "ff51120c0a3c51e6e0d69d24ec124e41e91f5fe3a4595aca8ae156e651db5793"
+      },
+      "actor_safe": {
+        "actions": [],
+        "origin_explanation": "NOT_ACCESSIBLE",
+        "status": "RESPONSE_ABORTED"
+      },
+      "after_hash": "c28d6ccb925e39cd9ba270d9b0632c4adb00e60fe799bc558e3885838ca3e9f0",
+      "permission": {
+        "issuer": "TEST_ONLY_CAN011_FIXTURE_AUTHORIZER",
+        "scope": "TEST_ONLY",
+        "actor_id": "child",
+        "before_target_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "response_hash": "010f731a406116facd7c81095077a64f29dd10fcc48a4845863b8b0667378fb7",
+        "proposal_hashes": [
+          "e25be2c4a631afa974633151b05152dcfc70c2c1c698f5e3a446edc308fdf090"
+        ],
+        "update_rule_hash": "9a0edaaeb5468f4defce6c4b944554e7d6210733a3ef2ffc13b78605369491b1",
+        "hash": "96e849546d6107a44b15774826743d9d0bd29994d7fb93b03e53009b25205a9c"
+      },
+      "hash": "378eb92f4d1223646ad5fe2bedf62a58d557a7bc17b313d2a2a4f8c8f71c18d8"
+    },
+    {
+      "schema": "B2_VERTICAL_RECEIPT@1",
+      "rule": "B2_SYNTHETIC_WITNESSED_INGRESS@1",
+      "eligibility": {
+        "decision": "ADMIT",
+        "code": "P1_NONCAUSAL_ELIGIBILITY_COURT",
+        "proposal_id": "B2-PACKET-1",
+        "proposal_hash": "32a8cb92b29a064b2d9320b3d9db676dcdbe83857be47503402a481ec38f93c5",
+        "context_hash": "ab8b28e658716bbb4380e647ac69e158b1f470a257918be7c9157021c634645c",
+        "rule_ref": "P1_CANDIDATE_ELIGIBILITY_TEST_ONLY@1.0.0",
+        "rule_hash": "2a5814d3d867ca8a4c25138eaa0e2def57e70400245d9402bde96918d59f5c1e",
+        "candidates": [
+          {
+            "candidate_id": "ALT-CARE",
+            "candidate_replay_hash": "30fad96058ae57d0ff0ae855f09a545fc4acb1a18ecb22c9425672b995ae3e56",
+            "decision": "ADMIT",
+            "code": "PROPOSAL_CANDIDATE_ONLY_NOT_CAUSAL"
+          },
+          {
+            "candidate_id": "ALT-CHILD-SEARCH",
+            "candidate_replay_hash": "d8194a78f7e2f71d99f04254d80375e1d0eaf184afa9356e959d73a695fffce1",
+            "decision": "ADMIT",
+            "code": "PROPOSAL_CANDIDATE_ONLY_NOT_CAUSAL"
+          },
+          {
+            "candidate_id": "ALT-NONE",
+            "candidate_replay_hash": "4b2cd1fc47eb962ffb77932b439b7396ed3ecfe80314c5bdbf407d93b26beb2d",
+            "decision": "ADMIT",
+            "code": "PROPOSAL_CANDIDATE_ONLY_NOT_CAUSAL"
+          },
+          {
+            "candidate_id": "ALT-PEER",
+            "candidate_replay_hash": "8867124b5b74374a5352bf65e6a228ff757229991c46df6aa00eaaf7062ae9a6",
+            "decision": "ADMIT",
+            "code": "PROPOSAL_CANDIDATE_ONLY_NOT_CAUSAL"
+          }
+        ],
+        "eligible_entries": [
+          {
+            "candidate_id": "ALT-CARE",
+            "candidate_replay_hash": "30fad96058ae57d0ff0ae855f09a545fc4acb1a18ecb22c9425672b995ae3e56",
+            "candidate_authority_id": "P1_CANDIDATE_ELIGIBILITY_TEST_ONLY@1.0.0",
+            "candidate_authority_version": "1.0.0",
+            "eligibility_or_admission_receipt_hash": "8dbb896d0080534398d8b9995c1147421345c6b5ff0176bdf2d320a29da6dfab"
+          },
+          {
+            "candidate_id": "ALT-CHILD-SEARCH",
+            "candidate_replay_hash": "d8194a78f7e2f71d99f04254d80375e1d0eaf184afa9356e959d73a695fffce1",
+            "candidate_authority_id": "P1_CANDIDATE_ELIGIBILITY_TEST_ONLY@1.0.0",
+            "candidate_authority_version": "1.0.0",
+            "eligibility_or_admission_receipt_hash": "169ec1dd604866c505018c4062ddc0be595b6e5282d645dce93d01f169b9f765"
+          },
+          {
+            "candidate_id": "ALT-NONE",
+            "candidate_replay_hash": "4b2cd1fc47eb962ffb77932b439b7396ed3ecfe80314c5bdbf407d93b26beb2d",
+            "candidate_authority_id": "P1_CANDIDATE_ELIGIBILITY_TEST_ONLY@1.0.0",
+            "candidate_authority_version": "1.0.0",
+            "eligibility_or_admission_receipt_hash": "d5822b6d5793431b3e8efc67558c6b9215dd857604e8cf17f5b602d58d3c33e5"
+          },
+          {
+            "candidate_id": "ALT-PEER",
+            "candidate_replay_hash": "8867124b5b74374a5352bf65e6a228ff757229991c46df6aa00eaaf7062ae9a6",
+            "candidate_authority_id": "P1_CANDIDATE_ELIGIBILITY_TEST_ONLY@1.0.0",
+            "candidate_authority_version": "1.0.0",
+            "eligibility_or_admission_receipt_hash": "746d8062e292cfb28ff0d705944fd4ffd9111ac40b2c928f2e0f06bb0add1538"
+          }
+        ],
+        "candidate_set_hash": "3bd4a3b23ffc247e993f94bb1c7de40d204a4f5f6b9cf16f7ff3156ac186ff98",
+        "consumption": null,
+        "event_admission": "NOT_PERFORMED",
+        "evaluation_hash": "c4b571cc2b27e0514a27ce3925d3a5fea3c14cdc7ee695bbc475508e43558d69"
+      },
+      "selection": {
+        "decision": "ADMIT",
+        "code": "TEST_ONLY_SELECTED_NONCAUSAL_ALTERNATIVE",
+        "selected_candidate_id": "ALT-CARE",
+        "draw_consumed": false,
+        "rng_receipt": {
+          "algorithm": "ADP020_COMPATIBILITY_MOCK_TEST_ONLY",
+          "static_stream": "p1.test.causal.alternative",
+          "seed_source": "EXPLICIT_TEST_ONLY_SEED",
+          "seed_sha256": "9b68d49bb092f71292ad76ab8fb8750d710aae5af70e43b8ec0a901d048c0030",
+          "coordinate": 0,
+          "draw_consumed": false,
+          "draw": null,
+          "probability_grade": "PROVISIONAL_NOT_CALIBRATED",
+          "parameter_source": "AUTHORED_DESIGN_HYPOTHESIS_TEST_ONLY",
+          "weight_units": {
+            "ALT-CARE": 1,
+            "ALT-CHILD-SEARCH": 0,
+            "ALT-NONE": 0,
+            "ALT-PEER": 0
+          },
+          "total_weight_units": 1,
+          "policy_hash": "0f9d9598d9731f36a3b52570bdf17780fce172495bd54b1fbdeeb3c92753fb1e",
+          "candidate_set_hash": "3bd4a3b23ffc247e993f94bb1c7de40d204a4f5f6b9cf16f7ff3156ac186ff98"
+        },
+        "replay_identity": "272fb0030fde14f86128415ef42f3886548fcd8dc5740b1728b93704cfc7cbed",
+        "consumption": {
+          "contract": "BFirstCandidateDecision_PROVISIONAL_P1",
+          "candidate_id": "ALT-CARE",
+          "event_admission": "NOT_PERFORMED",
+          "actor_response_rule_ref": null,
+          "recruited_source_refs": [],
+          "competing_influence_refs": [],
+          "response_effect_proposals": [],
+          "target_CAN011_update_proposals": [],
+          "probability_grade": "PROVISIONAL_NOT_CALIBRATED",
+          "model_proposal_provenance": "32a8cb92b29a064b2d9320b3d9db676dcdbe83857be47503402a481ec38f93c5",
+          "negatives": [],
+          "rng_receipt": {
+            "algorithm": "ADP020_COMPATIBILITY_MOCK_TEST_ONLY",
+            "static_stream": "p1.test.causal.alternative",
+            "seed_source": "EXPLICIT_TEST_ONLY_SEED",
+            "seed_sha256": "9b68d49bb092f71292ad76ab8fb8750d710aae5af70e43b8ec0a901d048c0030",
+            "coordinate": 0,
+            "draw_consumed": false,
+            "draw": null,
+            "probability_grade": "PROVISIONAL_NOT_CALIBRATED",
+            "parameter_source": "AUTHORED_DESIGN_HYPOTHESIS_TEST_ONLY",
+            "weight_units": {
+              "ALT-CARE": 1,
+              "ALT-CHILD-SEARCH": 0,
+              "ALT-NONE": 0,
+              "ALT-PEER": 0
+            },
+            "total_weight_units": 1,
+            "policy_hash": "0f9d9598d9731f36a3b52570bdf17780fce172495bd54b1fbdeeb3c92753fb1e",
+            "candidate_set_hash": "3bd4a3b23ffc247e993f94bb1c7de40d204a4f5f6b9cf16f7ff3156ac186ff98"
+          },
+          "no_world_or_actor_mutation": true
+        }
+      },
+      "before_hash": "c28d6ccb925e39cd9ba270d9b0632c4adb00e60fe799bc558e3885838ca3e9f0",
+      "status": "TRANSACTION_ABORTED_ROLLBACK",
+      "event_admission": {
+        "rule": "B2_SYNTHETIC_WITNESSED_INGRESS@1",
+        "witness_ref": "3583a14a1b904877e0fefb0b484d4021ea5d57eb092f9e68ba4a48b203cf1265",
+        "event_ref": "99cc17d05c2a627b5a9f2d7f25241f80efc6376c59e3d2f5549b6c79d2b04d43",
+        "proposal_ref": "32a8cb92b29a064b2d9320b3d9db676dcdbe83857be47503402a481ec38f93c5",
+        "selected_candidate_id": "ALT-CARE",
+        "status": "ADMITTED_SYNTHETIC_FIXTURE_ONLY",
+        "attributed_claims": [
+          {
+            "accessible_source_refs": [
+              "THEFT-1"
+            ],
+            "claim": "A careful response could reduce future loss; I am worried.",
+            "claim_kind": "ATTRIBUTED_UNVERIFIED_ASSERTION",
+            "claim_world_fact_ref": null,
+            "speaker_actor_ref": "CARE-1",
+            "utterance": "We should report this and see what can be secured."
+          }
+        ],
+        "objective_world_facts": {
+          "known_thief": null,
+          "group_criminality": "NOT_ESTABLISHED"
+        },
+        "hash": "8b252e4c6d3595460fc014baed2fb9ae1dfdc8755d994766496f1ba034485cff"
+      },
+      "b1_invoked": true,
+      "admitted_event": {
+        "actor_id": "child",
+        "admission_grade": "ADMITTED_SYNTHETIC_FIXTURE_ONLY",
+        "event_id": "E2-ID-2",
+        "hash": "99cc17d05c2a627b5a9f2d7f25241f80efc6376c59e3d2f5549b6c79d2b04d43",
+        "interrupted": true,
+        "objective_occurrence": "OBSERVED_INTERACTION_AFTER_MATERIAL_LOSS",
+        "offers": [
+          [
+            "caretaker",
+            "We should report this and see what can be secured.",
+            "joint_inventory"
+          ]
+        ],
+        "power_ref": "power:caretaker_controls_tools",
+        "project": "repair_route",
+        "provenance": "B1_AUTHORED_SOURCEFREE",
+        "relation_refs": [
+          "relation:child:caretaker"
+        ],
+        "time": 2,
+        "world_ref": "WORLD-BIKE-1"
+      },
+      "capability_decision": {
+        "decision": "PROPOSABLE_ONLY",
+        "code": "NO_MUTATION",
+        "mutations": 0,
+        "source_sha256": "f1fcb0f753e4fbea034f6b78bf7b5fbef5b67d8be0ebabf503248571306a4c29",
+        "frozen_self_tests": 17
+      },
+      "response": {
+        "schema": "B1_CANDIDATE_ADAPTER@1.0.0",
+        "actor_id": "child",
+        "event_ref": "99cc17d05c2a627b5a9f2d7f25241f80efc6376c59e3d2f5549b6c79d2b04d43",
+        "time": 2,
+        "response_rule_ref": {
+          "authority_id": "TEST_ONLY_CAN008_B1",
+          "authority_version": "1",
+          "rule_id": "situated_plan_comparison",
+          "rule_version": "1",
+          "grade": "PROVISIONAL_MODEL_HYPOTHESIS",
+          "predicates": [
+            "admitted fixture occurrence; actor can compare enacted plans",
+            "interrupted active project; counterpart offers executable plan",
+            "prior enacted counterpart recognition -> joint_check",
+            "prior imposed counterpart plan -> private_check",
+            "later offer recruits ACTIVE exact project/counterpart mediator only"
+          ],
+          "composition": "independent source streams coexist; no scalar winner",
+          "effect_kind": "TRANSFORM",
+          "numeric_policy": "NONE",
+          "stochastic_policy": "NO_DRAWS",
+          "authority_content_hash": "b8edd86e0985b8a5209db1904d1cc950906b55236c6b240cb3b203e79cb090f0",
+          "rule_content_hash": "d8fef5e42dab49d6c31fcc32bbae2f15bdf27d960d22cb8a5019aa78989db754",
+          "hash": "86ea57ee9d1cd5ffa0ff6b4416da624e54a13e0618f4886fd4bf77b844945a5d"
+        },
+        "prior_response_history_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "before_state_hash": "c28d6ccb925e39cd9ba270d9b0632c4adb00e60fe799bc558e3885838ca3e9f0",
+        "before_target_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "uptake": [
+          {
+            "stream": "c2f37443e25fc16912d44e5ef6da5992ff606c881751b4186cad56c6c0926147",
+            "counterpart": "caretaker",
+            "words": "We should report this and see what can be secured.",
+            "propositional": "UNDECIDED_ATTRIBUTED_ASSERTION",
+            "affective": [
+              "recognized"
+            ]
+          }
+        ],
+        "recruited": [
+          "2ed27ab77ed315917fa0388e7f9e9ceb1052eee463051a0d2fc02f470fda905b"
+        ],
+        "practical_activity": [
+          "compare_current_plan:caretaker"
+        ],
+        "target_proposals": [
+          {
+            "proposal_id": "0ca6c364064bbfb944a3917a12afa214926d8cd55e079c89575a6005dd5267ec",
+            "actor_id": "child",
+            "state_kind_id": "V3MS_MEDIATOR",
+            "target_middle_state_id": "0ca6c364064bbfb944a3917a12afa214926d8cd55e079c89575a6005dd5267ec",
+            "operation": "CREATE",
+            "proposed_effective_time": 2,
+            "proposed_role_tags": [
+              "REGULATORY_PROTECTIVE"
+            ],
+            "semantic_object_ref": "test_only:scoped_plan_comparison",
+            "target_refs": [
+              "repair_route",
+              "caretaker"
+            ],
+            "proposed_payload_delta_or_replacement": {
+              "project": "repair_route",
+              "counterpart": "caretaker",
+              "mode": "joint_check",
+              "origin_access": "INACCESSIBLE",
+              "belief_effect": "NONE"
+            },
+            "causal_parent_refs": [
+              "99cc17d05c2a627b5a9f2d7f25241f80efc6376c59e3d2f5549b6c79d2b04d43",
+              "2ed27ab77ed315917fa0388e7f9e9ceb1052eee463051a0d2fc02f470fda905b"
+            ],
+            "source_update_rule_ref": {
+              "authority_id": "TEST_ONLY_CAN011_B1",
+              "authority_version": "1",
+              "rule_id": "scoped_plan_mediator",
+              "rule_version": "1",
+              "grade": "PROVISIONAL_MODEL_HYPOTHESIS",
+              "predicates": [
+                "CREATE only; exact actor/project/counterpart",
+                "independently recheck interruption, offered plan and enacted history",
+                "payload joint_check or private_check from matching history",
+                "explicit TEST_ONLY owner grant; before hashes; causal parents"
+              ],
+              "state_kind_id": "V3MS_MEDIATOR",
+              "role": "REGULATORY_PROTECTIVE",
+              "authority_content_hash": "db4efe5d32bc5d0239e59371823765cd046b50f8045eecf94705d75a472c8b4f",
+              "rule_content_hash": "661ce8b8b959ba2107193354bf37571c8d5da6ee5a9528ae007be98624864882",
+              "hash": "9a0edaaeb5468f4defce6c4b944554e7d6210733a3ef2ffc13b78605369491b1"
+            },
+            "evaluator_or_predicate_receipts": [
+              "2ed27ab77ed315917fa0388e7f9e9ceb1052eee463051a0d2fc02f470fda905b"
+            ],
+            "numeric_rule_ref": null,
+            "stochastic_receipt_ref": null,
+            "provenance_refs": [
+              "B1_SOURCEFREE",
+              "PROVISIONAL_MODEL_HYPOTHESIS"
+            ],
+            "stream": "c2f37443e25fc16912d44e5ef6da5992ff606c881751b4186cad56c6c0926147",
+            "effect_kind": "TRANSFORM",
+            "hash": "c94082ac07270d97fd4bff59b8434322c0c5cbd541f0719f59992f544e10f653"
+          }
+        ],
+        "actor_surface": {
+          "actions": [
+            "compare_current_plan:caretaker"
+          ],
+          "origin_explanation": "NOT_ACCESSIBLE"
+        },
+        "status": "RESPONSE_TRANSACTION_COMMITTED",
+        "hash": "9fa806c90e660e4efb1ab08c367b48c3c0e1eda7d0e6393db1451ab379d74cc5"
+      },
+      "joint": {
+        "status": "TRANSACTION_ABORTED_ROLLBACK",
+        "reason": "FOREIGN_OWNER_PERMISSION_DENIED",
+        "before_hash": "c28d6ccb925e39cd9ba270d9b0632c4adb00e60fe799bc558e3885838ca3e9f0",
+        "hash": "ff51120c0a3c51e6e0d69d24ec124e41e91f5fe3a4595aca8ae156e651db5793"
+      },
+      "actor_safe": {
+        "actions": [],
+        "origin_explanation": "NOT_ACCESSIBLE",
+        "status": "RESPONSE_ABORTED"
+      },
+      "after_hash": "c28d6ccb925e39cd9ba270d9b0632c4adb00e60fe799bc558e3885838ca3e9f0",
+      "permission": {
+        "issuer": "TEST_ONLY_CAN011_FIXTURE_AUTHORIZER",
+        "scope": "TEST_ONLY",
+        "actor_id": "child",
+        "before_target_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "response_hash": "9fa806c90e660e4efb1ab08c367b48c3c0e1eda7d0e6393db1451ab379d74cc5",
+        "proposal_hashes": [
+          "c94082ac07270d97fd4bff59b8434322c0c5cbd541f0719f59992f544e10f653"
+        ],
+        "update_rule_hash": "9a0edaaeb5468f4defce6c4b944554e7d6210733a3ef2ffc13b78605369491b1",
+        "hash": "74cca60a0082c7dd057f5280f223665945285e98bb095fa89e4f7cb246bab680"
+      },
+      "hash": "25209cfdb58fd6b1f702a6ae021b5be2616e582c9c8fbb70d4993d852096d28a"
+    },
+    {
+      "schema": "B2_VERTICAL_RECEIPT@1",
+      "rule": "B2_SYNTHETIC_WITNESSED_INGRESS@1",
+      "eligibility": {
+        "decision": "ADMIT",
+        "code": "P1_NONCAUSAL_ELIGIBILITY_COURT",
+        "proposal_id": "B2-PACKET-1",
+        "proposal_hash": "32a8cb92b29a064b2d9320b3d9db676dcdbe83857be47503402a481ec38f93c5",
+        "context_hash": "ab8b28e658716bbb4380e647ac69e158b1f470a257918be7c9157021c634645c",
+        "rule_ref": "P1_CANDIDATE_ELIGIBILITY_TEST_ONLY@1.0.0",
+        "rule_hash": "2a5814d3d867ca8a4c25138eaa0e2def57e70400245d9402bde96918d59f5c1e",
+        "candidates": [
+          {
+            "candidate_id": "ALT-CARE",
+            "candidate_replay_hash": "30fad96058ae57d0ff0ae855f09a545fc4acb1a18ecb22c9425672b995ae3e56",
+            "decision": "ADMIT",
+            "code": "PROPOSAL_CANDIDATE_ONLY_NOT_CAUSAL"
+          },
+          {
+            "candidate_id": "ALT-CHILD-SEARCH",
+            "candidate_replay_hash": "d8194a78f7e2f71d99f04254d80375e1d0eaf184afa9356e959d73a695fffce1",
+            "decision": "ADMIT",
+            "code": "PROPOSAL_CANDIDATE_ONLY_NOT_CAUSAL"
+          },
+          {
+            "candidate_id": "ALT-NONE",
+            "candidate_replay_hash": "4b2cd1fc47eb962ffb77932b439b7396ed3ecfe80314c5bdbf407d93b26beb2d",
+            "decision": "ADMIT",
+            "code": "PROPOSAL_CANDIDATE_ONLY_NOT_CAUSAL"
+          },
+          {
+            "candidate_id": "ALT-PEER",
+            "candidate_replay_hash": "8867124b5b74374a5352bf65e6a228ff757229991c46df6aa00eaaf7062ae9a6",
+            "decision": "ADMIT",
+            "code": "PROPOSAL_CANDIDATE_ONLY_NOT_CAUSAL"
+          }
+        ],
+        "eligible_entries": [
+          {
+            "candidate_id": "ALT-CARE",
+            "candidate_replay_hash": "30fad96058ae57d0ff0ae855f09a545fc4acb1a18ecb22c9425672b995ae3e56",
+            "candidate_authority_id": "P1_CANDIDATE_ELIGIBILITY_TEST_ONLY@1.0.0",
+            "candidate_authority_version": "1.0.0",
+            "eligibility_or_admission_receipt_hash": "8dbb896d0080534398d8b9995c1147421345c6b5ff0176bdf2d320a29da6dfab"
+          },
+          {
+            "candidate_id": "ALT-CHILD-SEARCH",
+            "candidate_replay_hash": "d8194a78f7e2f71d99f04254d80375e1d0eaf184afa9356e959d73a695fffce1",
+            "candidate_authority_id": "P1_CANDIDATE_ELIGIBILITY_TEST_ONLY@1.0.0",
+            "candidate_authority_version": "1.0.0",
+            "eligibility_or_admission_receipt_hash": "169ec1dd604866c505018c4062ddc0be595b6e5282d645dce93d01f169b9f765"
+          },
+          {
+            "candidate_id": "ALT-NONE",
+            "candidate_replay_hash": "4b2cd1fc47eb962ffb77932b439b7396ed3ecfe80314c5bdbf407d93b26beb2d",
+            "candidate_authority_id": "P1_CANDIDATE_ELIGIBILITY_TEST_ONLY@1.0.0",
+            "candidate_authority_version": "1.0.0",
+            "eligibility_or_admission_receipt_hash": "d5822b6d5793431b3e8efc67558c6b9215dd857604e8cf17f5b602d58d3c33e5"
+          },
+          {
+            "candidate_id": "ALT-PEER",
+            "candidate_replay_hash": "8867124b5b74374a5352bf65e6a228ff757229991c46df6aa00eaaf7062ae9a6",
+            "candidate_authority_id": "P1_CANDIDATE_ELIGIBILITY_TEST_ONLY@1.0.0",
+            "candidate_authority_version": "1.0.0",
+            "eligibility_or_admission_receipt_hash": "746d8062e292cfb28ff0d705944fd4ffd9111ac40b2c928f2e0f06bb0add1538"
+          }
+        ],
+        "candidate_set_hash": "3bd4a3b23ffc247e993f94bb1c7de40d204a4f5f6b9cf16f7ff3156ac186ff98",
+        "consumption": null,
+        "event_admission": "NOT_PERFORMED",
+        "evaluation_hash": "c4b571cc2b27e0514a27ce3925d3a5fea3c14cdc7ee695bbc475508e43558d69"
+      },
+      "selection": {
+        "decision": "ADMIT",
+        "code": "TEST_ONLY_SELECTED_NONCAUSAL_ALTERNATIVE",
+        "selected_candidate_id": "ALT-CARE",
+        "draw_consumed": false,
+        "rng_receipt": {
+          "algorithm": "ADP020_COMPATIBILITY_MOCK_TEST_ONLY",
+          "static_stream": "p1.test.causal.alternative",
+          "seed_source": "EXPLICIT_TEST_ONLY_SEED",
+          "seed_sha256": "9b68d49bb092f71292ad76ab8fb8750d710aae5af70e43b8ec0a901d048c0030",
+          "coordinate": 0,
+          "draw_consumed": false,
+          "draw": null,
+          "probability_grade": "PROVISIONAL_NOT_CALIBRATED",
+          "parameter_source": "AUTHORED_DESIGN_HYPOTHESIS_TEST_ONLY",
+          "weight_units": {
+            "ALT-CARE": 1,
+            "ALT-CHILD-SEARCH": 0,
+            "ALT-NONE": 0,
+            "ALT-PEER": 0
+          },
+          "total_weight_units": 1,
+          "policy_hash": "0f9d9598d9731f36a3b52570bdf17780fce172495bd54b1fbdeeb3c92753fb1e",
+          "candidate_set_hash": "3bd4a3b23ffc247e993f94bb1c7de40d204a4f5f6b9cf16f7ff3156ac186ff98"
+        },
+        "replay_identity": "272fb0030fde14f86128415ef42f3886548fcd8dc5740b1728b93704cfc7cbed",
+        "consumption": {
+          "contract": "BFirstCandidateDecision_PROVISIONAL_P1",
+          "candidate_id": "ALT-CARE",
+          "event_admission": "NOT_PERFORMED",
+          "actor_response_rule_ref": null,
+          "recruited_source_refs": [],
+          "competing_influence_refs": [],
+          "response_effect_proposals": [],
+          "target_CAN011_update_proposals": [],
+          "probability_grade": "PROVISIONAL_NOT_CALIBRATED",
+          "model_proposal_provenance": "32a8cb92b29a064b2d9320b3d9db676dcdbe83857be47503402a481ec38f93c5",
+          "negatives": [],
+          "rng_receipt": {
+            "algorithm": "ADP020_COMPATIBILITY_MOCK_TEST_ONLY",
+            "static_stream": "p1.test.causal.alternative",
+            "seed_source": "EXPLICIT_TEST_ONLY_SEED",
+            "seed_sha256": "9b68d49bb092f71292ad76ab8fb8750d710aae5af70e43b8ec0a901d048c0030",
+            "coordinate": 0,
+            "draw_consumed": false,
+            "draw": null,
+            "probability_grade": "PROVISIONAL_NOT_CALIBRATED",
+            "parameter_source": "AUTHORED_DESIGN_HYPOTHESIS_TEST_ONLY",
+            "weight_units": {
+              "ALT-CARE": 1,
+              "ALT-CHILD-SEARCH": 0,
+              "ALT-NONE": 0,
+              "ALT-PEER": 0
+            },
+            "total_weight_units": 1,
+            "policy_hash": "0f9d9598d9731f36a3b52570bdf17780fce172495bd54b1fbdeeb3c92753fb1e",
+            "candidate_set_hash": "3bd4a3b23ffc247e993f94bb1c7de40d204a4f5f6b9cf16f7ff3156ac186ff98"
+          },
+          "no_world_or_actor_mutation": true
+        }
+      },
+      "before_hash": "c28d6ccb925e39cd9ba270d9b0632c4adb00e60fe799bc558e3885838ca3e9f0",
+      "status": "TRANSACTION_ABORTED_ROLLBACK",
+      "event_admission": {
+        "rule": "B2_SYNTHETIC_WITNESSED_INGRESS@1",
+        "witness_ref": "11f98af524b59610e8c6cba37de64443d90b80842454dee4a96b0b38cc2348e4",
+        "event_ref": "ee6baa2f79d8bb76f6267286766183975461ffd88ee895ca2847bbed3201a83b",
+        "proposal_ref": "32a8cb92b29a064b2d9320b3d9db676dcdbe83857be47503402a481ec38f93c5",
+        "selected_candidate_id": "ALT-CARE",
+        "status": "ADMITTED_SYNTHETIC_FIXTURE_ONLY",
+        "attributed_claims": [
+          {
+            "accessible_source_refs": [
+              "THEFT-1"
+            ],
+            "claim": "A careful response could reduce future loss; I am worried.",
+            "claim_kind": "ATTRIBUTED_UNVERIFIED_ASSERTION",
+            "claim_world_fact_ref": null,
+            "speaker_actor_ref": "CARE-1",
+            "utterance": "We should report this and see what can be secured."
+          }
+        ],
+        "objective_world_facts": {
+          "known_thief": null,
+          "group_criminality": "NOT_ESTABLISHED"
+        },
+        "hash": "e09589b1129866f3a17b8a072579a1bf6bd26056b2875a4a2707c17d1d34e7b7"
+      },
+      "b1_invoked": true,
+      "admitted_event": {
+        "actor_id": "child",
+        "admission_grade": "ADMITTED_SYNTHETIC_FIXTURE_ONLY",
+        "event_id": "E2-ID-3",
+        "hash": "ee6baa2f79d8bb76f6267286766183975461ffd88ee895ca2847bbed3201a83b",
+        "interrupted": true,
+        "objective_occurrence": "OBSERVED_INTERACTION_AFTER_MATERIAL_LOSS",
+        "offers": [
+          [
+            "caretaker",
+            "We should report this and see what can be secured.",
+            "joint_inventory"
+          ]
+        ],
+        "power_ref": "power:caretaker_controls_tools",
+        "project": "repair_route",
+        "provenance": "B1_AUTHORED_SOURCEFREE",
+        "relation_refs": [
+          "relation:child:caretaker"
+        ],
+        "time": 2,
+        "world_ref": "WORLD-BIKE-1"
+      },
+      "capability_decision": {
+        "decision": "PROPOSABLE_ONLY",
+        "code": "NO_MUTATION",
+        "mutations": 0,
+        "source_sha256": "f1fcb0f753e4fbea034f6b78bf7b5fbef5b67d8be0ebabf503248571306a4c29",
+        "frozen_self_tests": 17
+      },
+      "response": {
+        "schema": "B1_CANDIDATE_ADAPTER@1.0.0",
+        "actor_id": "child",
+        "event_ref": "ee6baa2f79d8bb76f6267286766183975461ffd88ee895ca2847bbed3201a83b",
+        "time": 2,
+        "response_rule_ref": {
+          "authority_id": "TEST_ONLY_CAN008_B1",
+          "authority_version": "1",
+          "rule_id": "situated_plan_comparison",
+          "rule_version": "1",
+          "grade": "PROVISIONAL_MODEL_HYPOTHESIS",
+          "predicates": [
+            "admitted fixture occurrence; actor can compare enacted plans",
+            "interrupted active project; counterpart offers executable plan",
+            "prior enacted counterpart recognition -> joint_check",
+            "prior imposed counterpart plan -> private_check",
+            "later offer recruits ACTIVE exact project/counterpart mediator only"
+          ],
+          "composition": "independent source streams coexist; no scalar winner",
+          "effect_kind": "TRANSFORM",
+          "numeric_policy": "NONE",
+          "stochastic_policy": "NO_DRAWS",
+          "authority_content_hash": "b8edd86e0985b8a5209db1904d1cc950906b55236c6b240cb3b203e79cb090f0",
+          "rule_content_hash": "d8fef5e42dab49d6c31fcc32bbae2f15bdf27d960d22cb8a5019aa78989db754",
+          "hash": "86ea57ee9d1cd5ffa0ff6b4416da624e54a13e0618f4886fd4bf77b844945a5d"
+        },
+        "prior_response_history_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "before_state_hash": "c28d6ccb925e39cd9ba270d9b0632c4adb00e60fe799bc558e3885838ca3e9f0",
+        "before_target_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "uptake": [
+          {
+            "stream": "bf9ebe627f75be5da51bb86ccf71f250cb9d93933923ce947900c45655329632",
+            "counterpart": "caretaker",
+            "words": "We should report this and see what can be secured.",
+            "propositional": "UNDECIDED_ATTRIBUTED_ASSERTION",
+            "affective": [
+              "recognized"
+            ]
+          }
+        ],
+        "recruited": [
+          "2ed27ab77ed315917fa0388e7f9e9ceb1052eee463051a0d2fc02f470fda905b"
+        ],
+        "practical_activity": [
+          "compare_current_plan:caretaker"
+        ],
+        "target_proposals": [
+          {
+            "proposal_id": "bd7bf239deb98a50b1811ed1b16aca671187840c8fa08391ba0b2f67ed3ee2d0",
+            "actor_id": "child",
+            "state_kind_id": "V3MS_MEDIATOR",
+            "target_middle_state_id": "bd7bf239deb98a50b1811ed1b16aca671187840c8fa08391ba0b2f67ed3ee2d0",
+            "operation": "CREATE",
+            "proposed_effective_time": 2,
+            "proposed_role_tags": [
+              "REGULATORY_PROTECTIVE"
+            ],
+            "semantic_object_ref": "test_only:scoped_plan_comparison",
+            "target_refs": [
+              "repair_route",
+              "caretaker"
+            ],
+            "proposed_payload_delta_or_replacement": {
+              "project": "repair_route",
+              "counterpart": "caretaker",
+              "mode": "joint_check",
+              "origin_access": "INACCESSIBLE",
+              "belief_effect": "NONE"
+            },
+            "causal_parent_refs": [
+              "ee6baa2f79d8bb76f6267286766183975461ffd88ee895ca2847bbed3201a83b",
+              "2ed27ab77ed315917fa0388e7f9e9ceb1052eee463051a0d2fc02f470fda905b"
+            ],
+            "source_update_rule_ref": {
+              "authority_id": "TEST_ONLY_CAN011_B1",
+              "authority_version": "1",
+              "rule_id": "scoped_plan_mediator",
+              "rule_version": "1",
+              "grade": "PROVISIONAL_MODEL_HYPOTHESIS",
+              "predicates": [
+                "CREATE only; exact actor/project/counterpart",
+                "independently recheck interruption, offered plan and enacted history",
+                "payload joint_check or private_check from matching history",
+                "explicit TEST_ONLY owner grant; before hashes; causal parents"
+              ],
+              "state_kind_id": "V3MS_MEDIATOR",
+              "role": "REGULATORY_PROTECTIVE",
+              "authority_content_hash": "db4efe5d32bc5d0239e59371823765cd046b50f8045eecf94705d75a472c8b4f",
+              "rule_content_hash": "661ce8b8b959ba2107193354bf37571c8d5da6ee5a9528ae007be98624864882",
+              "hash": "9a0edaaeb5468f4defce6c4b944554e7d6210733a3ef2ffc13b78605369491b1"
+            },
+            "evaluator_or_predicate_receipts": [
+              "2ed27ab77ed315917fa0388e7f9e9ceb1052eee463051a0d2fc02f470fda905b"
+            ],
+            "numeric_rule_ref": null,
+            "stochastic_receipt_ref": null,
+            "provenance_refs": [
+              "B1_SOURCEFREE",
+              "PROVISIONAL_MODEL_HYPOTHESIS"
+            ],
+            "stream": "bf9ebe627f75be5da51bb86ccf71f250cb9d93933923ce947900c45655329632",
+            "effect_kind": "TRANSFORM",
+            "hash": "87fa5a63b604f14201e9ab5c725358e09a3a846e03e4d1608dfb09afc76c010b"
+          }
+        ],
+        "actor_surface": {
+          "actions": [
+            "compare_current_plan:caretaker"
+          ],
+          "origin_explanation": "NOT_ACCESSIBLE"
+        },
+        "status": "RESPONSE_TRANSACTION_COMMITTED",
+        "hash": "bd74f72a35250bd11a78f6a6664d60a7e9db9453e9747e894aa07dfa4be33302"
+      },
+      "joint": {
+        "status": "TRANSACTION_ABORTED_ROLLBACK",
+        "reason": "FOREIGN_OWNER_PERMISSION_DENIED",
+        "before_hash": "c28d6ccb925e39cd9ba270d9b0632c4adb00e60fe799bc558e3885838ca3e9f0",
+        "hash": "ff51120c0a3c51e6e0d69d24ec124e41e91f5fe3a4595aca8ae156e651db5793"
+      },
+      "actor_safe": {
+        "actions": [],
+        "origin_explanation": "NOT_ACCESSIBLE",
+        "status": "RESPONSE_ABORTED"
+      },
+      "after_hash": "c28d6ccb925e39cd9ba270d9b0632c4adb00e60fe799bc558e3885838ca3e9f0",
+      "permission": {
+        "issuer": "TEST_ONLY_CAN011_FIXTURE_AUTHORIZER",
+        "scope": "TEST_ONLY",
+        "actor_id": "child",
+        "before_target_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "response_hash": "bd74f72a35250bd11a78f6a6664d60a7e9db9453e9747e894aa07dfa4be33302",
+        "proposal_hashes": [
+          "87fa5a63b604f14201e9ab5c725358e09a3a846e03e4d1608dfb09afc76c010b"
+        ],
+        "update_rule_hash": "9a0edaaeb5468f4defce6c4b944554e7d6210733a3ef2ffc13b78605369491b1",
+        "hash": "811424411749399765f8345273a43266336865d6ef2419f28ec3f45669312e4c"
+      },
+      "hash": "91ee0c866ac084159448145ac848479bd5dc86a1fb2464197596eb8539376f4b"
+    },
+    {
+      "schema": "B2_VERTICAL_RECEIPT@1",
+      "rule": "B2_SYNTHETIC_WITNESSED_INGRESS@1",
+      "eligibility": {
+        "decision": "ADMIT",
+        "code": "P1_NONCAUSAL_ELIGIBILITY_COURT",
+        "proposal_id": "B2-PACKET-1",
+        "proposal_hash": "32a8cb92b29a064b2d9320b3d9db676dcdbe83857be47503402a481ec38f93c5",
+        "context_hash": "ab8b28e658716bbb4380e647ac69e158b1f470a257918be7c9157021c634645c",
+        "rule_ref": "P1_CANDIDATE_ELIGIBILITY_TEST_ONLY@1.0.0",
+        "rule_hash": "2a5814d3d867ca8a4c25138eaa0e2def57e70400245d9402bde96918d59f5c1e",
+        "candidates": [
+          {
+            "candidate_id": "ALT-CARE",
+            "candidate_replay_hash": "30fad96058ae57d0ff0ae855f09a545fc4acb1a18ecb22c9425672b995ae3e56",
+            "decision": "ADMIT",
+            "code": "PROPOSAL_CANDIDATE_ONLY_NOT_CAUSAL"
+          },
+          {
+            "candidate_id": "ALT-CHILD-SEARCH",
+            "candidate_replay_hash": "d8194a78f7e2f71d99f04254d80375e1d0eaf184afa9356e959d73a695fffce1",
+            "decision": "ADMIT",
+            "code": "PROPOSAL_CANDIDATE_ONLY_NOT_CAUSAL"
+          },
+          {
+            "candidate_id": "ALT-NONE",
+            "candidate_replay_hash": "4b2cd1fc47eb962ffb77932b439b7396ed3ecfe80314c5bdbf407d93b26beb2d",
+            "decision": "ADMIT",
+            "code": "PROPOSAL_CANDIDATE_ONLY_NOT_CAUSAL"
+          },
+          {
+            "candidate_id": "ALT-PEER",
+            "candidate_replay_hash": "8867124b5b74374a5352bf65e6a228ff757229991c46df6aa00eaaf7062ae9a6",
+            "decision": "ADMIT",
+            "code": "PROPOSAL_CANDIDATE_ONLY_NOT_CAUSAL"
+          }
+        ],
+        "eligible_entries": [
+          {
+            "candidate_id": "ALT-CARE",
+            "candidate_replay_hash": "30fad96058ae57d0ff0ae855f09a545fc4acb1a18ecb22c9425672b995ae3e56",
+            "candidate_authority_id": "P1_CANDIDATE_ELIGIBILITY_TEST_ONLY@1.0.0",
+            "candidate_authority_version": "1.0.0",
+            "eligibility_or_admission_receipt_hash": "8dbb896d0080534398d8b9995c1147421345c6b5ff0176bdf2d320a29da6dfab"
+          },
+          {
+            "candidate_id": "ALT-CHILD-SEARCH",
+            "candidate_replay_hash": "d8194a78f7e2f71d99f04254d80375e1d0eaf184afa9356e959d73a695fffce1",
+            "candidate_authority_id": "P1_CANDIDATE_ELIGIBILITY_TEST_ONLY@1.0.0",
+            "candidate_authority_version": "1.0.0",
+            "eligibility_or_admission_receipt_hash": "169ec1dd604866c505018c4062ddc0be595b6e5282d645dce93d01f169b9f765"
+          },
+          {
+            "candidate_id": "ALT-NONE",
+            "candidate_replay_hash": "4b2cd1fc47eb962ffb77932b439b7396ed3ecfe80314c5bdbf407d93b26beb2d",
+            "candidate_authority_id": "P1_CANDIDATE_ELIGIBILITY_TEST_ONLY@1.0.0",
+            "candidate_authority_version": "1.0.0",
+            "eligibility_or_admission_receipt_hash": "d5822b6d5793431b3e8efc67558c6b9215dd857604e8cf17f5b602d58d3c33e5"
+          },
+          {
+            "candidate_id": "ALT-PEER",
+            "candidate_replay_hash": "8867124b5b74374a5352bf65e6a228ff757229991c46df6aa00eaaf7062ae9a6",
+            "candidate_authority_id": "P1_CANDIDATE_ELIGIBILITY_TEST_ONLY@1.0.0",
+            "candidate_authority_version": "1.0.0",
+            "eligibility_or_admission_receipt_hash": "746d8062e292cfb28ff0d705944fd4ffd9111ac40b2c928f2e0f06bb0add1538"
+          }
+        ],
+        "candidate_set_hash": "3bd4a3b23ffc247e993f94bb1c7de40d204a4f5f6b9cf16f7ff3156ac186ff98",
+        "consumption": null,
+        "event_admission": "NOT_PERFORMED",
+        "evaluation_hash": "c4b571cc2b27e0514a27ce3925d3a5fea3c14cdc7ee695bbc475508e43558d69"
+      },
+      "selection": {
+        "decision": "ADMIT",
+        "code": "TEST_ONLY_SELECTED_NONCAUSAL_ALTERNATIVE",
+        "selected_candidate_id": "ALT-CARE",
+        "draw_consumed": false,
+        "rng_receipt": {
+          "algorithm": "ADP020_COMPATIBILITY_MOCK_TEST_ONLY",
+          "static_stream": "p1.test.causal.alternative",
+          "seed_source": "EXPLICIT_TEST_ONLY_SEED",
+          "seed_sha256": "9b68d49bb092f71292ad76ab8fb8750d710aae5af70e43b8ec0a901d048c0030",
+          "coordinate": 0,
+          "draw_consumed": false,
+          "draw": null,
+          "probability_grade": "PROVISIONAL_NOT_CALIBRATED",
+          "parameter_source": "AUTHORED_DESIGN_HYPOTHESIS_TEST_ONLY",
+          "weight_units": {
+            "ALT-CARE": 1,
+            "ALT-CHILD-SEARCH": 0,
+            "ALT-NONE": 0,
+            "ALT-PEER": 0
+          },
+          "total_weight_units": 1,
+          "policy_hash": "0f9d9598d9731f36a3b52570bdf17780fce172495bd54b1fbdeeb3c92753fb1e",
+          "candidate_set_hash": "3bd4a3b23ffc247e993f94bb1c7de40d204a4f5f6b9cf16f7ff3156ac186ff98"
+        },
+        "replay_identity": "272fb0030fde14f86128415ef42f3886548fcd8dc5740b1728b93704cfc7cbed",
+        "consumption": {
+          "contract": "BFirstCandidateDecision_PROVISIONAL_P1",
+          "candidate_id": "ALT-CARE",
+          "event_admission": "NOT_PERFORMED",
+          "actor_response_rule_ref": null,
+          "recruited_source_refs": [],
+          "competing_influence_refs": [],
+          "response_effect_proposals": [],
+          "target_CAN011_update_proposals": [],
+          "probability_grade": "PROVISIONAL_NOT_CALIBRATED",
+          "model_proposal_provenance": "32a8cb92b29a064b2d9320b3d9db676dcdbe83857be47503402a481ec38f93c5",
+          "negatives": [],
+          "rng_receipt": {
+            "algorithm": "ADP020_COMPATIBILITY_MOCK_TEST_ONLY",
+            "static_stream": "p1.test.causal.alternative",
+            "seed_source": "EXPLICIT_TEST_ONLY_SEED",
+            "seed_sha256": "9b68d49bb092f71292ad76ab8fb8750d710aae5af70e43b8ec0a901d048c0030",
+            "coordinate": 0,
+            "draw_consumed": false,
+            "draw": null,
+            "probability_grade": "PROVISIONAL_NOT_CALIBRATED",
+            "parameter_source": "AUTHORED_DESIGN_HYPOTHESIS_TEST_ONLY",
+            "weight_units": {
+              "ALT-CARE": 1,
+              "ALT-CHILD-SEARCH": 0,
+              "ALT-NONE": 0,
+              "ALT-PEER": 0
+            },
+            "total_weight_units": 1,
+            "policy_hash": "0f9d9598d9731f36a3b52570bdf17780fce172495bd54b1fbdeeb3c92753fb1e",
+            "candidate_set_hash": "3bd4a3b23ffc247e993f94bb1c7de40d204a4f5f6b9cf16f7ff3156ac186ff98"
+          },
+          "no_world_or_actor_mutation": true
+        }
+      },
+      "before_hash": "c28d6ccb925e39cd9ba270d9b0632c4adb00e60fe799bc558e3885838ca3e9f0",
+      "status": "TRANSACTION_ABORTED_ROLLBACK",
+      "event_admission": {
+        "rule": "B2_SYNTHETIC_WITNESSED_INGRESS@1",
+        "witness_ref": "2525cf172f264561da153dfdf9b7d9d0028bbe2ea3ec7aab51e67031ded22765",
+        "event_ref": "46f0739385e61cdec7337f62c32158eef00e70f45550ea54d267ce74f85b25e8",
+        "proposal_ref": "32a8cb92b29a064b2d9320b3d9db676dcdbe83857be47503402a481ec38f93c5",
+        "selected_candidate_id": "ALT-CARE",
+        "status": "ADMITTED_SYNTHETIC_FIXTURE_ONLY",
+        "attributed_claims": [
+          {
+            "accessible_source_refs": [
+              "THEFT-1"
+            ],
+            "claim": "A careful response could reduce future loss; I am worried.",
+            "claim_kind": "ATTRIBUTED_UNVERIFIED_ASSERTION",
+            "claim_world_fact_ref": null,
+            "speaker_actor_ref": "CARE-1",
+            "utterance": "We should report this and see what can be secured."
+          }
+        ],
+        "objective_world_facts": {
+          "known_thief": null,
+          "group_criminality": "NOT_ESTABLISHED"
+        },
+        "hash": "f2905759187b5ffe98cce08c63075f678b5d437325f5ad6a0e3e963b6017a14b"
+      },
+      "b1_invoked": true,
+      "admitted_event": {
+        "actor_id": "child",
+        "admission_grade": "ADMITTED_SYNTHETIC_FIXTURE_ONLY",
+        "event_id": "E2-ID-4",
+        "hash": "46f0739385e61cdec7337f62c32158eef00e70f45550ea54d267ce74f85b25e8",
+        "interrupted": true,
+        "objective_occurrence": "OBSERVED_INTERACTION_AFTER_MATERIAL_LOSS",
+        "offers": [
+          [
+            "caretaker",
+            "We should report this and see what can be secured.",
+            "joint_inventory"
+          ]
+        ],
+        "power_ref": "power:caretaker_controls_tools",
+        "project": "repair_route",
+        "provenance": "B1_AUTHORED_SOURCEFREE",
+        "relation_refs": [
+          "relation:child:caretaker"
+        ],
+        "time": 2,
+        "world_ref": "WORLD-BIKE-1"
+      },
+      "capability_decision": {
+        "decision": "PROPOSABLE_ONLY",
+        "code": "NO_MUTATION",
+        "mutations": 0,
+        "source_sha256": "f1fcb0f753e4fbea034f6b78bf7b5fbef5b67d8be0ebabf503248571306a4c29",
+        "frozen_self_tests": 17
+      },
+      "response": {
+        "schema": "B1_CANDIDATE_ADAPTER@1.0.0",
+        "actor_id": "child",
+        "event_ref": "46f0739385e61cdec7337f62c32158eef00e70f45550ea54d267ce74f85b25e8",
+        "time": 2,
+        "response_rule_ref": {
+          "authority_id": "TEST_ONLY_CAN008_B1",
+          "authority_version": "1",
+          "rule_id": "situated_plan_comparison",
+          "rule_version": "1",
+          "grade": "PROVISIONAL_MODEL_HYPOTHESIS",
+          "predicates": [
+            "admitted fixture occurrence; actor can compare enacted plans",
+            "interrupted active project; counterpart offers executable plan",
+            "prior enacted counterpart recognition -> joint_check",
+            "prior imposed counterpart plan -> private_check",
+            "later offer recruits ACTIVE exact project/counterpart mediator only"
+          ],
+          "composition": "independent source streams coexist; no scalar winner",
+          "effect_kind": "TRANSFORM",
+          "numeric_policy": "NONE",
+          "stochastic_policy": "NO_DRAWS",
+          "authority_content_hash": "b8edd86e0985b8a5209db1904d1cc950906b55236c6b240cb3b203e79cb090f0",
+          "rule_content_hash": "d8fef5e42dab49d6c31fcc32bbae2f15bdf27d960d22cb8a5019aa78989db754",
+          "hash": "86ea57ee9d1cd5ffa0ff6b4416da624e54a13e0618f4886fd4bf77b844945a5d"
+        },
+        "prior_response_history_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "before_state_hash": "c28d6ccb925e39cd9ba270d9b0632c4adb00e60fe799bc558e3885838ca3e9f0",
+        "before_target_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "uptake": [
+          {
+            "stream": "8a7eba0aefe557f2a732c99a13e7d9974eb40aef0a056cecbc631e59f6fe8911",
+            "counterpart": "caretaker",
+            "words": "We should report this and see what can be secured.",
+            "propositional": "UNDECIDED_ATTRIBUTED_ASSERTION",
+            "affective": [
+              "recognized"
+            ]
+          }
+        ],
+        "recruited": [
+          "2ed27ab77ed315917fa0388e7f9e9ceb1052eee463051a0d2fc02f470fda905b"
+        ],
+        "practical_activity": [
+          "compare_current_plan:caretaker"
+        ],
+        "target_proposals": [
+          {
+            "proposal_id": "ef685f5f7fdd89c2e93ea720f28f4eb02c28ded09de77e1311e9da63b7ff2e44",
+            "actor_id": "child",
+            "state_kind_id": "V3MS_MEDIATOR",
+            "target_middle_state_id": "ef685f5f7fdd89c2e93ea720f28f4eb02c28ded09de77e1311e9da63b7ff2e44",
+            "operation": "CREATE",
+            "proposed_effective_time": 2,
+            "proposed_role_tags": [
+              "REGULATORY_PROTECTIVE"
+            ],
+            "semantic_object_ref": "test_only:scoped_plan_comparison",
+            "target_refs": [
+              "repair_route",
+              "caretaker"
+            ],
+            "proposed_payload_delta_or_replacement": {
+              "project": "repair_route",
+              "counterpart": "caretaker",
+              "mode": "joint_check",
+              "origin_access": "INACCESSIBLE",
+              "belief_effect": "NONE"
+            },
+            "causal_parent_refs": [
+              "46f0739385e61cdec7337f62c32158eef00e70f45550ea54d267ce74f85b25e8",
+              "2ed27ab77ed315917fa0388e7f9e9ceb1052eee463051a0d2fc02f470fda905b"
+            ],
+            "source_update_rule_ref": {
+              "authority_id": "TEST_ONLY_CAN011_B1",
+              "authority_version": "1",
+              "rule_id": "scoped_plan_mediator",
+              "rule_version": "1",
+              "grade": "PROVISIONAL_MODEL_HYPOTHESIS",
+              "predicates": [
+                "CREATE only; exact actor/project/counterpart",
+                "independently recheck interruption, offered plan and enacted history",
+                "payload joint_check or private_check from matching history",
+                "explicit TEST_ONLY owner grant; before hashes; causal parents"
+              ],
+              "state_kind_id": "V3MS_MEDIATOR",
+              "role": "REGULATORY_PROTECTIVE",
+              "authority_content_hash": "db4efe5d32bc5d0239e59371823765cd046b50f8045eecf94705d75a472c8b4f",
+              "rule_content_hash": "661ce8b8b959ba2107193354bf37571c8d5da6ee5a9528ae007be98624864882",
+              "hash": "9a0edaaeb5468f4defce6c4b944554e7d6210733a3ef2ffc13b78605369491b1"
+            },
+            "evaluator_or_predicate_receipts": [
+              "2ed27ab77ed315917fa0388e7f9e9ceb1052eee463051a0d2fc02f470fda905b"
+            ],
+            "numeric_rule_ref": null,
+            "stochastic_receipt_ref": null,
+            "provenance_refs": [
+              "B1_SOURCEFREE",
+              "PROVISIONAL_MODEL_HYPOTHESIS"
+            ],
+            "stream": "8a7eba0aefe557f2a732c99a13e7d9974eb40aef0a056cecbc631e59f6fe8911",
+            "effect_kind": "TRANSFORM",
+            "hash": "78223a5e196b9a87c0c161c6f0e471748c1b3d30c30544deb9a79931ef1355c6"
+          }
+        ],
+        "actor_surface": {
+          "actions": [
+            "compare_current_plan:caretaker"
+          ],
+          "origin_explanation": "NOT_ACCESSIBLE"
+        },
+        "status": "RESPONSE_TRANSACTION_COMMITTED",
+        "hash": "2e00d987dec225fccd709c9f209e5dbe573b1cf13e435bce15d675cb0075b75e"
+      },
+      "joint": {
+        "status": "TRANSACTION_ABORTED_ROLLBACK",
+        "reason": "FOREIGN_OWNER_PERMISSION_DENIED",
+        "before_hash": "c28d6ccb925e39cd9ba270d9b0632c4adb00e60fe799bc558e3885838ca3e9f0",
+        "hash": "ff51120c0a3c51e6e0d69d24ec124e41e91f5fe3a4595aca8ae156e651db5793"
+      },
+      "actor_safe": {
+        "actions": [],
+        "origin_explanation": "NOT_ACCESSIBLE",
+        "status": "RESPONSE_ABORTED"
+      },
+      "after_hash": "c28d6ccb925e39cd9ba270d9b0632c4adb00e60fe799bc558e3885838ca3e9f0",
+      "permission": {
+        "issuer": "TEST_ONLY_CAN011_FIXTURE_AUTHORIZER",
+        "scope": "TEST_ONLY",
+        "actor_id": "child",
+        "before_target_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "response_hash": "2e00d987dec225fccd709c9f209e5dbe573b1cf13e435bce15d675cb0075b75e",
+        "proposal_hashes": [
+          "78223a5e196b9a87c0c161c6f0e471748c1b3d30c30544deb9a79931ef1355c6"
+        ],
+        "update_rule_hash": "9a0edaaeb5468f4defce6c4b944554e7d6210733a3ef2ffc13b78605369491b1",
+        "hash": "53d07f08fe92d337dd36d9848dc9a4e9506b975bff11dd77039813d5b9ead0a4"
+      },
+      "hash": "5b45df6ef86ea86eea714cd32291ab1c07017ccf453ba6ac0a55f660cb8275c6"
+    },
+    {
+      "schema": "B2_VERTICAL_RECEIPT@1",
+      "rule": "B2_SYNTHETIC_WITNESSED_INGRESS@1",
+      "eligibility": {
+        "decision": "ADMIT",
+        "code": "P1_NONCAUSAL_ELIGIBILITY_COURT",
+        "proposal_id": "B2-PACKET-1",
+        "proposal_hash": "32a8cb92b29a064b2d9320b3d9db676dcdbe83857be47503402a481ec38f93c5",
+        "context_hash": "ab8b28e658716bbb4380e647ac69e158b1f470a257918be7c9157021c634645c",
+        "rule_ref": "P1_CANDIDATE_ELIGIBILITY_TEST_ONLY@1.0.0",
+        "rule_hash": "2a5814d3d867ca8a4c25138eaa0e2def57e70400245d9402bde96918d59f5c1e",
+        "candidates": [
+          {
+            "candidate_id": "ALT-CARE",
+            "candidate_replay_hash": "30fad96058ae57d0ff0ae855f09a545fc4acb1a18ecb22c9425672b995ae3e56",
+            "decision": "ADMIT",
+            "code": "PROPOSAL_CANDIDATE_ONLY_NOT_CAUSAL"
+          },
+          {
+            "candidate_id": "ALT-CHILD-SEARCH",
+            "candidate_replay_hash": "d8194a78f7e2f71d99f04254d80375e1d0eaf184afa9356e959d73a695fffce1",
+            "decision": "ADMIT",
+            "code": "PROPOSAL_CANDIDATE_ONLY_NOT_CAUSAL"
+          },
+          {
+            "candidate_id": "ALT-NONE",
+            "candidate_replay_hash": "4b2cd1fc47eb962ffb77932b439b7396ed3ecfe80314c5bdbf407d93b26beb2d",
+            "decision": "ADMIT",
+            "code": "PROPOSAL_CANDIDATE_ONLY_NOT_CAUSAL"
+          },
+          {
+            "candidate_id": "ALT-PEER",
+            "candidate_replay_hash": "8867124b5b74374a5352bf65e6a228ff757229991c46df6aa00eaaf7062ae9a6",
+            "decision": "ADMIT",
+            "code": "PROPOSAL_CANDIDATE_ONLY_NOT_CAUSAL"
+          }
+        ],
+        "eligible_entries": [
+          {
+            "candidate_id": "ALT-CARE",
+            "candidate_replay_hash": "30fad96058ae57d0ff0ae855f09a545fc4acb1a18ecb22c9425672b995ae3e56",
+            "candidate_authority_id": "P1_CANDIDATE_ELIGIBILITY_TEST_ONLY@1.0.0",
+            "candidate_authority_version": "1.0.0",
+            "eligibility_or_admission_receipt_hash": "8dbb896d0080534398d8b9995c1147421345c6b5ff0176bdf2d320a29da6dfab"
+          },
+          {
+            "candidate_id": "ALT-CHILD-SEARCH",
+            "candidate_replay_hash": "d8194a78f7e2f71d99f04254d80375e1d0eaf184afa9356e959d73a695fffce1",
+            "candidate_authority_id": "P1_CANDIDATE_ELIGIBILITY_TEST_ONLY@1.0.0",
+            "candidate_authority_version": "1.0.0",
+            "eligibility_or_admission_receipt_hash": "169ec1dd604866c505018c4062ddc0be595b6e5282d645dce93d01f169b9f765"
+          },
+          {
+            "candidate_id": "ALT-NONE",
+            "candidate_replay_hash": "4b2cd1fc47eb962ffb77932b439b7396ed3ecfe80314c5bdbf407d93b26beb2d",
+            "candidate_authority_id": "P1_CANDIDATE_ELIGIBILITY_TEST_ONLY@1.0.0",
+            "candidate_authority_version": "1.0.0",
+            "eligibility_or_admission_receipt_hash": "d5822b6d5793431b3e8efc67558c6b9215dd857604e8cf17f5b602d58d3c33e5"
+          },
+          {
+            "candidate_id": "ALT-PEER",
+            "candidate_replay_hash": "8867124b5b74374a5352bf65e6a228ff757229991c46df6aa00eaaf7062ae9a6",
+            "candidate_authority_id": "P1_CANDIDATE_ELIGIBILITY_TEST_ONLY@1.0.0",
+            "candidate_authority_version": "1.0.0",
+            "eligibility_or_admission_receipt_hash": "746d8062e292cfb28ff0d705944fd4ffd9111ac40b2c928f2e0f06bb0add1538"
+          }
+        ],
+        "candidate_set_hash": "3bd4a3b23ffc247e993f94bb1c7de40d204a4f5f6b9cf16f7ff3156ac186ff98",
+        "consumption": null,
+        "event_admission": "NOT_PERFORMED",
+        "evaluation_hash": "c4b571cc2b27e0514a27ce3925d3a5fea3c14cdc7ee695bbc475508e43558d69"
+      },
+      "selection": {
+        "decision": "ADMIT",
+        "code": "TEST_ONLY_SELECTED_NONCAUSAL_ALTERNATIVE",
+        "selected_candidate_id": "ALT-CARE",
+        "draw_consumed": false,
+        "rng_receipt": {
+          "algorithm": "ADP020_COMPATIBILITY_MOCK_TEST_ONLY",
+          "static_stream": "p1.test.causal.alternative",
+          "seed_source": "EXPLICIT_TEST_ONLY_SEED",
+          "seed_sha256": "9b68d49bb092f71292ad76ab8fb8750d710aae5af70e43b8ec0a901d048c0030",
+          "coordinate": 0,
+          "draw_consumed": false,
+          "draw": null,
+          "probability_grade": "PROVISIONAL_NOT_CALIBRATED",
+          "parameter_source": "AUTHORED_DESIGN_HYPOTHESIS_TEST_ONLY",
+          "weight_units": {
+            "ALT-CARE": 1,
+            "ALT-CHILD-SEARCH": 0,
+            "ALT-NONE": 0,
+            "ALT-PEER": 0
+          },
+          "total_weight_units": 1,
+          "policy_hash": "0f9d9598d9731f36a3b52570bdf17780fce172495bd54b1fbdeeb3c92753fb1e",
+          "candidate_set_hash": "3bd4a3b23ffc247e993f94bb1c7de40d204a4f5f6b9cf16f7ff3156ac186ff98"
+        },
+        "replay_identity": "272fb0030fde14f86128415ef42f3886548fcd8dc5740b1728b93704cfc7cbed",
+        "consumption": {
+          "contract": "BFirstCandidateDecision_PROVISIONAL_P1",
+          "candidate_id": "ALT-CARE",
+          "event_admission": "NOT_PERFORMED",
+          "actor_response_rule_ref": null,
+          "recruited_source_refs": [],
+          "competing_influence_refs": [],
+          "response_effect_proposals": [],
+          "target_CAN011_update_proposals": [],
+          "probability_grade": "PROVISIONAL_NOT_CALIBRATED",
+          "model_proposal_provenance": "32a8cb92b29a064b2d9320b3d9db676dcdbe83857be47503402a481ec38f93c5",
+          "negatives": [],
+          "rng_receipt": {
+            "algorithm": "ADP020_COMPATIBILITY_MOCK_TEST_ONLY",
+            "static_stream": "p1.test.causal.alternative",
+            "seed_source": "EXPLICIT_TEST_ONLY_SEED",
+            "seed_sha256": "9b68d49bb092f71292ad76ab8fb8750d710aae5af70e43b8ec0a901d048c0030",
+            "coordinate": 0,
+            "draw_consumed": false,
+            "draw": null,
+            "probability_grade": "PROVISIONAL_NOT_CALIBRATED",
+            "parameter_source": "AUTHORED_DESIGN_HYPOTHESIS_TEST_ONLY",
+            "weight_units": {
+              "ALT-CARE": 1,
+              "ALT-CHILD-SEARCH": 0,
+              "ALT-NONE": 0,
+              "ALT-PEER": 0
+            },
+            "total_weight_units": 1,
+            "policy_hash": "0f9d9598d9731f36a3b52570bdf17780fce172495bd54b1fbdeeb3c92753fb1e",
+            "candidate_set_hash": "3bd4a3b23ffc247e993f94bb1c7de40d204a4f5f6b9cf16f7ff3156ac186ff98"
+          },
+          "no_world_or_actor_mutation": true
+        }
+      },
+      "before_hash": "c28d6ccb925e39cd9ba270d9b0632c4adb00e60fe799bc558e3885838ca3e9f0",
+      "status": "TRANSACTION_ABORTED_ROLLBACK",
+      "event_admission": {
+        "rule": "B2_SYNTHETIC_WITNESSED_INGRESS@1",
+        "witness_ref": "acb84583f87478f7e044ccccf0a0dbf6aa6b398a86e6900965218e2b7da37d38",
+        "event_ref": "4af9ea5b36c2c9f6ea720fef3ecf107251e38265b3971df29638274e60a17766",
+        "proposal_ref": "32a8cb92b29a064b2d9320b3d9db676dcdbe83857be47503402a481ec38f93c5",
+        "selected_candidate_id": "ALT-CARE",
+        "status": "ADMITTED_SYNTHETIC_FIXTURE_ONLY",
+        "attributed_claims": [
+          {
+            "accessible_source_refs": [
+              "THEFT-1"
+            ],
+            "claim": "A careful response could reduce future loss; I am worried.",
+            "claim_kind": "ATTRIBUTED_UNVERIFIED_ASSERTION",
+            "claim_world_fact_ref": null,
+            "speaker_actor_ref": "CARE-1",
+            "utterance": "We should report this and see what can be secured."
+          }
+        ],
+        "objective_world_facts": {
+          "known_thief": null,
+          "group_criminality": "NOT_ESTABLISHED"
+        },
+        "hash": "0351f52db8af20b75cbda1d7ff37fe918fe9768aabbeab015ab8152d21bcc9ed"
+      },
+      "b1_invoked": true,
+      "admitted_event": {
+        "actor_id": "child",
+        "admission_grade": "ADMITTED_SYNTHETIC_FIXTURE_ONLY",
+        "event_id": "E2-ID-5",
+        "hash": "4af9ea5b36c2c9f6ea720fef3ecf107251e38265b3971df29638274e60a17766",
+        "interrupted": true,
+        "objective_occurrence": "OBSERVED_INTERACTION_AFTER_MATERIAL_LOSS",
+        "offers": [
+          [
+            "caretaker",
+            "We should report this and see what can be secured.",
+            "joint_inventory"
+          ]
+        ],
+        "power_ref": "power:caretaker_controls_tools",
+        "project": "repair_route",
+        "provenance": "B1_AUTHORED_SOURCEFREE",
+        "relation_refs": [
+          "relation:child:caretaker"
+        ],
+        "time": 2,
+        "world_ref": "WORLD-BIKE-1"
+      },
+      "capability_decision": {
+        "decision": "PROPOSABLE_ONLY",
+        "code": "NO_MUTATION",
+        "mutations": 0,
+        "source_sha256": "f1fcb0f753e4fbea034f6b78bf7b5fbef5b67d8be0ebabf503248571306a4c29",
+        "frozen_self_tests": 17
+      },
+      "response": {
+        "schema": "B1_CANDIDATE_ADAPTER@1.0.0",
+        "actor_id": "child",
+        "event_ref": "4af9ea5b36c2c9f6ea720fef3ecf107251e38265b3971df29638274e60a17766",
+        "time": 2,
+        "response_rule_ref": {
+          "authority_id": "TEST_ONLY_CAN008_B1",
+          "authority_version": "1",
+          "rule_id": "situated_plan_comparison",
+          "rule_version": "1",
+          "grade": "PROVISIONAL_MODEL_HYPOTHESIS",
+          "predicates": [
+            "admitted fixture occurrence; actor can compare enacted plans",
+            "interrupted active project; counterpart offers executable plan",
+            "prior enacted counterpart recognition -> joint_check",
+            "prior imposed counterpart plan -> private_check",
+            "later offer recruits ACTIVE exact project/counterpart mediator only"
+          ],
+          "composition": "independent source streams coexist; no scalar winner",
+          "effect_kind": "TRANSFORM",
+          "numeric_policy": "NONE",
+          "stochastic_policy": "NO_DRAWS",
+          "authority_content_hash": "b8edd86e0985b8a5209db1904d1cc950906b55236c6b240cb3b203e79cb090f0",
+          "rule_content_hash": "d8fef5e42dab49d6c31fcc32bbae2f15bdf27d960d22cb8a5019aa78989db754",
+          "hash": "86ea57ee9d1cd5ffa0ff6b4416da624e54a13e0618f4886fd4bf77b844945a5d"
+        },
+        "prior_response_history_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "before_state_hash": "c28d6ccb925e39cd9ba270d9b0632c4adb00e60fe799bc558e3885838ca3e9f0",
+        "before_target_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "uptake": [
+          {
+            "stream": "4bfa626d0bbe2974e3e659c31f2fcf5125cbccb680f9b7f87246afdac19324a1",
+            "counterpart": "caretaker",
+            "words": "We should report this and see what can be secured.",
+            "propositional": "UNDECIDED_ATTRIBUTED_ASSERTION",
+            "affective": [
+              "recognized"
+            ]
+          }
+        ],
+        "recruited": [
+          "2ed27ab77ed315917fa0388e7f9e9ceb1052eee463051a0d2fc02f470fda905b"
+        ],
+        "practical_activity": [
+          "compare_current_plan:caretaker"
+        ],
+        "target_proposals": [
+          {
+            "proposal_id": "5d339443a73cf8bf6b054f12456613d389bdabadc22e35a77883c39bbc7adc9e",
+            "actor_id": "child",
+            "state_kind_id": "V3MS_MEDIATOR",
+            "target_middle_state_id": "5d339443a73cf8bf6b054f12456613d389bdabadc22e35a77883c39bbc7adc9e",
+            "operation": "CREATE",
+            "proposed_effective_time": 2,
+            "proposed_role_tags": [
+              "REGULATORY_PROTECTIVE"
+            ],
+            "semantic_object_ref": "test_only:scoped_plan_comparison",
+            "target_refs": [
+              "repair_route",
+              "caretaker"
+            ],
+            "proposed_payload_delta_or_replacement": {
+              "project": "repair_route",
+              "counterpart": "caretaker",
+              "mode": "joint_check",
+              "origin_access": "INACCESSIBLE",
+              "belief_effect": "NONE"
+            },
+            "causal_parent_refs": [
+              "4af9ea5b36c2c9f6ea720fef3ecf107251e38265b3971df29638274e60a17766",
+              "2ed27ab77ed315917fa0388e7f9e9ceb1052eee463051a0d2fc02f470fda905b"
+            ],
+            "source_update_rule_ref": {
+              "authority_id": "TEST_ONLY_CAN011_B1",
+              "authority_version": "1",
+              "rule_id": "scoped_plan_mediator",
+              "rule_version": "1",
+              "grade": "PROVISIONAL_MODEL_HYPOTHESIS",
+              "predicates": [
+                "CREATE only; exact actor/project/counterpart",
+                "independently recheck interruption, offered plan and enacted history",
+                "payload joint_check or private_check from matching history",
+                "explicit TEST_ONLY owner grant; before hashes; causal parents"
+              ],
+              "state_kind_id": "V3MS_MEDIATOR",
+              "role": "REGULATORY_PROTECTIVE",
+              "authority_content_hash": "db4efe5d32bc5d0239e59371823765cd046b50f8045eecf94705d75a472c8b4f",
+              "rule_content_hash": "661ce8b8b959ba2107193354bf37571c8d5da6ee5a9528ae007be98624864882",
+              "hash": "9a0edaaeb5468f4defce6c4b944554e7d6210733a3ef2ffc13b78605369491b1"
+            },
+            "evaluator_or_predicate_receipts": [
+              "2ed27ab77ed315917fa0388e7f9e9ceb1052eee463051a0d2fc02f470fda905b"
+            ],
+            "numeric_rule_ref": null,
+            "stochastic_receipt_ref": null,
+            "provenance_refs": [
+              "B1_SOURCEFREE",
+              "PROVISIONAL_MODEL_HYPOTHESIS"
+            ],
+            "stream": "4bfa626d0bbe2974e3e659c31f2fcf5125cbccb680f9b7f87246afdac19324a1",
+            "effect_kind": "TRANSFORM",
+            "hash": "c2625da00cf2809cd52dd8eca4f7589f9cee1cad8cb019d2d0104734be116b73"
+          }
+        ],
+        "actor_surface": {
+          "actions": [
+            "compare_current_plan:caretaker"
+          ],
+          "origin_explanation": "NOT_ACCESSIBLE"
+        },
+        "status": "RESPONSE_TRANSACTION_COMMITTED",
+        "hash": "0568541bc09232012bd658812768eb6e1c896a675d29ee44f61b31875b0ef66e"
+      },
+      "joint": {
+        "status": "TRANSACTION_ABORTED_ROLLBACK",
+        "reason": "FOREIGN_OWNER_PERMISSION_DENIED",
+        "before_hash": "c28d6ccb925e39cd9ba270d9b0632c4adb00e60fe799bc558e3885838ca3e9f0",
+        "hash": "ff51120c0a3c51e6e0d69d24ec124e41e91f5fe3a4595aca8ae156e651db5793"
+      },
+      "actor_safe": {
+        "actions": [],
+        "origin_explanation": "NOT_ACCESSIBLE",
+        "status": "RESPONSE_ABORTED"
+      },
+      "after_hash": "c28d6ccb925e39cd9ba270d9b0632c4adb00e60fe799bc558e3885838ca3e9f0",
+      "permission": {
+        "issuer": "TEST_ONLY_CAN011_FIXTURE_AUTHORIZER",
+        "scope": "TEST_ONLY",
+        "actor_id": "child",
+        "before_target_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "response_hash": "0568541bc09232012bd658812768eb6e1c896a675d29ee44f61b31875b0ef66e",
+        "proposal_hashes": [
+          "c2625da00cf2809cd52dd8eca4f7589f9cee1cad8cb019d2d0104734be116b73"
+        ],
+        "update_rule_hash": "9a0edaaeb5468f4defce6c4b944554e7d6210733a3ef2ffc13b78605369491b1",
+        "hash": "fbcd43d5bde99e35125cb3646fccdefe158063e03589ef17faf270b9a1e625cb"
+      },
+      "hash": "f8f2e85dccdc37ca6096147ef3410d2bbc7d90a783ee80edabb2e8beed1fca5d"
+    }
+  ],
+  "tables": {
+    "b2_event_identity": [
+      [
+        "E2-ID-0",
+        "{\"actor\":\"child\",\"context\":{\"action_opportunities\":{\"OP-CARE-REPORT\":{\"act_kind\":\"REPORT_MISSING_BIKE\",\"actor_ref\":\"CARE-1\",\"place_ref\":\"GARAGE-1\",\"time\":\"2026-10-17T10:00:00Z\"},\"OP-CARE-SPEAK\":{\"act_kind\":\"SPEAK_TO_CHILD\",\"actor_ref\":\"CARE-1\",\"place_ref\":\"GARAGE-1\",\"time\":\"2026-10-17T10:00:00Z\"},\"OP-CHILD-SEARCH\":{\"act_kind\":\"CHECK_GARAGE\",\"actor_ref\":\"CHILD-1\",\"place_ref\":\"GARAGE-1\",\"time\":\"2026-10-17T10:00:00Z\"},\"OP-PEER-SPEAK\":{\"act_kind\":\"SPEAK_TO_CHILD\",\"actor_ref\":\"PEER-1\",\"place_ref\":\"GARAGE-1\",\"time\":\"2026-10-17T10:00:00Z\"}},\"actor_access\":{\"CARE-1\":[\"THEFT-1\"],\"CHILD-1\":[\"THEFT-1\"],\"NEIGHBOR-1\":[],\"PEER-1\":[\"THEFT-1\"]},\"allowed_role_refs\":[\"CHILD\",\"CAREGIVER\",\"PEER\",\"NEIGHBOR\"],\"as_of\":\"2026-10-17T10:00:00Z\",\"context_hash\":\"ab8b28e658716bbb4380e647ac69e158b1f470a257918be7c9157021c634645c\",\"facts\":{\"DENIED-PAST-THEFT\":{\"epistemic_class\":\"ADMITTED_OBJECTIVE_EVENT\",\"kind\":\"OTHER_THEFT\",\"occurred\":false,\"time\":\"2026-10-16T09:00:00Z\"},\"PRIVATE-CAREGIVER-1\":{\"epistemic_class\":\"PRIVATE_ACTOR_STATE\",\"kind\":\"UNREADABLE_CAREGIVER_CONCERN\",\"occurred\":true,\"time\":\"2026-10-17T08:00:00Z\"},\"THEFT-1\":{\"epistemic_class\":\"ADMITTED_OBJECTIVE_EVENT\",\"kind\":\"BIKE_STOLEN\",\"known_culprit\":null,\"material_object_ref\":\"BIKE-CHILD-1\",\"occurred\":true,\"time\":\"2026-10-17T09:00:00Z\"}},\"histories\":{\"H-CARE-CONTROL\":{\"owner\":\"CARE-1\",\"source\":\"SYNTHETIC_HISTORY\",\"summary\":\"caregiver has history of intrusive scrutiny and material safety concern\"},\"H-CARE-PROTECT\":{\"owner\":\"CARE-1\",\"source\":\"B2_INDEPENDENT_TYPED_PARTICIPANT\",\"summary\":\"typed participant digest d862ca0cbca948f54059451042d2296de0a07f8ee3f5ff9cf73f2342f02c66b7\"},\"H-CHILD-1\":{\"owner\":\"CHILD-1\",\"source\":\"B2_EXACT_SYNTHETIC_PREHISTORY\",\"summary\":\"typed history digest 77df16a7f51e350940f083026e04b07689b890050bc3a90ae7aacb1da4588e0e\"},\"H-CHILD-2\":{\"owner\":\"CHILD-1\",\"source\":\"SYNTHETIC_HISTORY\",\"summary\":\"child bicycle gift and repeated arbitrary searches; reacts to control with caution\"},\"H-NEIGHBOR-INDEPENDENT\":{\"owner\":\"NEIGHBOR-1\",\"source\":\"SYNTHETIC_HISTORY\",\"summary\":\"neighbor has independent daily schedule unrelated to theft\"},\"H-PEER-BELONGING\":{\"owner\":\"PEER-1\",\"source\":\"B2_INDEPENDENT_TYPED_PARTICIPANT\",\"summary\":\"typed participant digest 947b8a4774423252204592913fa41f5c16032c2662f0615d197d04886c040044\"}},\"material_affordances\":[\"GARAGE_ACCESS\",\"PHONE_AVAILABLE\"],\"people\":{\"CARE-1\":{\"history_ref\":\"H-CARE-PROTECT\",\"role\":\"CAREGIVER\"},\"CHILD-1\":{\"history_ref\":\"H-CHILD-1\",\"role\":\"CHILD\"},\"NEIGHBOR-1\":{\"history_ref\":\"H-NEIGHBOR-INDEPENDENT\",\"role\":\"NEIGHBOR\"},\"PEER-1\":{\"history_ref\":\"H-PEER-BELONGING\",\"role\":\"PEER\"}},\"places\":[\"GARAGE-1\"],\"schema\":\"P1_SYNTHETIC_CONTEXT_V1\",\"world_ref\":\"WORLD-BIKE-1\"},\"packet\":{\"as_of\":\"2026-10-17T10:00:00Z\",\"candidates\":[{\"action_refs\":[{\"act_kind\":\"SPEAK_TO_CHILD\",\"actor_ref\":\"CARE-1\",\"opportunity_ref\":\"OP-CARE-SPEAK\"}],\"candidate_id\":\"ALT-CARE\",\"courses\":[{\"action_ref\":\"OP-CARE-SPEAK\",\"actor_ref\":\"CARE-1\",\"course_id\":\"COURSE-CARE-SPEAK\",\"description\":\"Caregiver considers reassurance or practical protective speech\"}],\"family\":\"OBSERVABLE_UTTERANCE\",\"interpretations\":[{\"accessible_source_refs\":[\"THEFT-1\"],\"claim\":\"A careful response could reduce future loss; I am worried.\",\"claim_kind\":\"ATTRIBUTED_UNVERIFIED_ASSERTION\",\"claim_world_fact_ref\":null,\"speaker_actor_ref\":\"CARE-1\",\"utterance\":\"We should report this and see what can be secured.\"}],\"parent_event_ref\":\"THEFT-1\",\"participants\":[\"CHILD-1\",\"CARE-1\"],\"place_ref\":\"GARAGE-1\",\"possible_effects\":[{\"description\":\"Child may perceive factual prudence yet feel emotionally unheard\",\"effect_kind\":\"MAY_RETAIN_CONTRADICTION\",\"epistemic_class\":\"HYPOTHESIS_ONLY\",\"owner_required\":\"CAN011_EXTERNAL_OWNER\",\"target_actor_ref\":\"CHILD-1\"}],\"prerequisites\":[{\"kind\":\"WORLD_FACT_TRUE\",\"ref\":\"THEFT-1\"},{\"kind\":\"ACTOR_ACCESS\",\"ref\":\"CARE-1|THEFT-1\"},{\"kind\":\"HISTORY_PRESENT\",\"ref\":\"CARE-1|H-CARE-PROTECT\"},{\"kind\":\"HISTORY_PRESENT\",\"ref\":\"CHILD-1|H-CHILD-1\"}],\"prospective_participants\":[],\"readset\":[\"THEFT-1\"],\"time\":\"2026-10-17T10:00:00Z\",\"uncertainty\":\"Competing possible receptions, no privileged insight or fixed psychological consequence\",\"visibility\":[\"CHILD-1\",\"CARE-1\"]},{\"action_refs\":[{\"act_kind\":\"SPEAK_TO_CHILD\",\"actor_ref\":\"PEER-1\",\"opportunity_ref\":\"OP-PEER-SPEAK\"}],\"candidate_id\":\"ALT-PEER\",\"courses\":[{\"action_ref\":\"OP-PEER-SPEAK\",\"actor_ref\":\"PEER-1\",\"course_id\":\"COURSE-PEER-SPEAK\",\"description\":\"Peer might circulate unsupported scapegoating rumor\"}],\"family\":\"OBSERVABLE_UTTERANCE\",\"interpretations\":[{\"accessible_source_refs\":[\"THEFT-1\"],\"claim\":\"Unsubstantiated blame of neighbors in a peer rumor\",\"claim_kind\":\"ATTRIBUTED_UNVERIFIED_ASSERTION\",\"claim_world_fact_ref\":null,\"speaker_actor_ref\":\"PEER-1\",\"utterance\":\"People from that block always take things.\"}],\"parent_event_ref\":\"THEFT-1\",\"participants\":[\"CHILD-1\",\"PEER-1\"],\"place_ref\":\"GARAGE-1\",\"possible_effects\":[{\"description\":\"Child could reject or absorb peer narrative, unknown\",\"effect_kind\":\"MAY_RETAIN_CONTRADICTION\",\"epistemic_class\":\"HYPOTHESIS_ONLY\",\"owner_required\":\"CAN011_EXTERNAL_OWNER\",\"target_actor_ref\":\"CHILD-1\"}],\"prerequisites\":[{\"kind\":\"WORLD_FACT_TRUE\",\"ref\":\"THEFT-1\"},{\"kind\":\"ACTOR_ACCESS\",\"ref\":\"PEER-1|THEFT-1\"},{\"kind\":\"HISTORY_PRESENT\",\"ref\":\"PEER-1|H-PEER-BELONGING\"},{\"kind\":\"HISTORY_PRESENT\",\"ref\":\"CHILD-1|H-CHILD-1\"}],\"prospective_participants\":[],\"readset\":[\"THEFT-1\"],\"time\":\"2026-10-17T10:00:00Z\",\"uncertainty\":\"Competing possible receptions, no privileged insight or fixed psychological consequence\",\"visibility\":[\"CHILD-1\",\"PEER-1\"]},{\"action_refs\":[{\"act_kind\":\"CHECK_GARAGE\",\"actor_ref\":\"CHILD-1\",\"opportunity_ref\":\"OP-CHILD-SEARCH\"}],\"candidate_id\":\"ALT-CHILD-SEARCH\",\"courses\":[{\"action_ref\":\"OP-CHILD-SEARCH\",\"actor_ref\":\"CHILD-1\",\"course_id\":\"COURSE-CHILD-SEARCH\",\"description\":\"Child might look for lock marks before deciding what happened\"}],\"family\":\"MATERIAL_ACTION_PROPOSAL\",\"interpretations\":[],\"parent_event_ref\":\"THEFT-1\",\"participants\":[\"CHILD-1\"],\"place_ref\":\"GARAGE-1\",\"possible_effects\":[{\"description\":\"No durable response is required\",\"effect_kind\":\"NO_CHANGE\",\"epistemic_class\":\"HYPOTHESIS_ONLY\",\"owner_required\":\"CAN011_EXTERNAL_OWNER\",\"target_actor_ref\":\"CHILD-1\"}],\"prerequisites\":[{\"kind\":\"WORLD_FACT_TRUE\",\"ref\":\"THEFT-1\"},{\"kind\":\"MATERIAL_AFFORDANCE\",\"ref\":\"GARAGE_ACCESS\"},{\"kind\":\"HISTORY_PRESENT\",\"ref\":\"CHILD-1|H-CHILD-1\"}],\"prospective_participants\":[],\"readset\":[\"THEFT-1\"],\"time\":\"2026-10-17T10:00:00Z\",\"uncertainty\":\"Competing possible receptions, no privileged insight or fixed psychological consequence\",\"visibility\":[\"CHILD-1\"]},{\"action_refs\":[],\"candidate_id\":\"ALT-NONE\",\"courses\":[],\"family\":\"NONOCCURRENCE\",\"interpretations\":[],\"parent_event_ref\":\"THEFT-1\",\"participants\":[\"CHILD-1\"],\"place_ref\":\"GARAGE-1\",\"possible_effects\":[],\"prerequisites\":[{\"kind\":\"WORLD_FACT_TRUE\",\"ref\":\"THEFT-1\"},{\"kind\":\"HISTORY_PRESENT\",\"ref\":\"CHILD-1|H-CHILD-1\"}],\"prospective_participants\":[],\"readset\":[\"THEFT-1\"],\"time\":\"2026-10-17T10:00:00Z\",\"uncertainty\":\"Competing possible receptions, no privileged insight or fixed psychological consequence\",\"visibility\":[\"CHILD-1\"]}],\"context_hash\":\"ab8b28e658716bbb4380e647ac69e158b1f470a257918be7c9157021c634645c\",\"epistemic_class\":\"LLM_PROPOSAL\",\"model\":{\"model_version\":\"SYNTH-1\",\"prompt_sha256\":\"09c625dda784aa41702a734b8c2141b520726e69809e3f20aa053c231413dae6\",\"prompt_version\":\"P1-PROMPT-1\",\"provider_label\":\"FROZEN_FABRICATED_PACKET_NO_LIVE_MODEL\",\"sampling_record\":{\"kind\":\"FROZEN_AUTHOR_SYNTHETIC\",\"model_draws\":\"NOT_RECORDED_NOT_CAUSAL\"}},\"proposal_hash\":\"32a8cb92b29a064b2d9320b3d9db676dcdbe83857be47503402a481ec38f93c5\",\"proposal_id\":\"B2-PACKET-1\",\"schema\":\"P1_LLM_ALTERNATIVES_PROPOSAL_V1\",\"world_ref\":\"WORLD-BIKE-1\"},\"policy\":{\"calibration_grade\":\"PROVISIONAL_NOT_CALIBRATED\",\"candidate_set_hash\":\"3bd4a3b23ffc247e993f94bb1c7de40d204a4f5f6b9cf16f7ff3156ac186ff98\",\"parameter_source\":\"AUTHORED_DESIGN_HYPOTHESIS_TEST_ONLY\",\"policy_hash\":\"0f9d9598d9731f36a3b52570bdf17780fce172495bd54b1fbdeeb3c92753fb1e\",\"policy_id\":\"B2-TEST-COORDINATE\",\"policy_version\":\"1.0.0\",\"schema\":\"P1_TEST_ONLY_AUTHORED_SELECTION_POLICY_V1\",\"weight_units\":{\"ALT-CARE\":1,\"ALT-CHILD-SEARCH\":0,\"ALT-NONE\":0,\"ALT-PEER\":0}},\"rule\":\"B2_SYNTHETIC_WITNESSED_INGRESS@1\",\"selected_candidate_id\":\"ALT-CARE\",\"witness\":{\"candidate_hash\":\"30fad96058ae57d0ff0ae855f09a545fc4acb1a18ecb22c9425672b995ae3e56\",\"context_hash\":\"ab8b28e658716bbb4380e647ac69e158b1f470a257918be7c9157021c634645c\",\"event_id\":\"E2-ID-0\",\"expected_actor_state_hash\":\"c28d6ccb925e39cd9ba270d9b0632c4adb00e60fe799bc558e3885838ca3e9f0\",\"hash\":\"edcb98aeca452ae34e13522009f6d70dd609df1ce52e5b0c787e1b5f732d6ad3\",\"interrupted\":true,\"issuer\":\"B2_WORLD_FIXTURE_AUTHORIZER\",\"number\":1,\"objective_occurrence\":\"OBSERVED_INTERACTION_AFTER_MATERIAL_LOSS\",\"observed_interpretations\":[{\"accessible_source_refs\":[\"THEFT-1\"],\"claim\":\"A careful response could reduce future loss; I am worried.\",\"claim_kind\":\"ATTRIBUTED_UNVERIFIED_ASSERTION\",\"claim_world_fact_ref\":null,\"speaker_actor_ref\":\"CARE-1\",\"utterance\":\"We should report this and see what can be secured.\"}],\"other_actions\":[{\"action\":\"joint_inventory\",\"p1_actor\":\"CARE-1\",\"participant\":{\"actor_id\":\"caretaker\",\"history\":[{\"activity\":\"organize_work\",\"actor_access\":\"EXPLICIT\",\"actor_id\":\"caretaker\",\"counterpart\":\"workshop\",\"episode_id\":\"caretaker_work\",\"outcome\":\"tools_available\",\"parent_refs\":[],\"project\":\"own_work\",\"provenance\":\"SYNTHETIC_PREHISTORY_FIXTURE\",\"time\":0}],\"project\":\"own_work\"},\"source_history_hash\":\"d862ca0cbca948f54059451042d2296de0a07f8ee3f5ff9cf73f2342f02c66b7\"}],\"outcome\":\"OCCURRED\",\"parent_fact_hash\":\"42fb867561347435fef23470d2dc17c5681ace69d6aefe9c467bfb32324a5ee7\",\"participants\":[\"CHILD-1\",\"CARE-1\"],\"place\":\"GARAGE-1\",\"project\":\"repair_route\",\"proposal_hash\":\"32a8cb92b29a064b2d9320b3d9db676dcdbe83857be47503402a481ec38f93c5\",\"schema\":\"B2_INDEPENDENT_SYNTHETIC_OCCURRENCE_WITNESS@1\",\"time\":\"2026-10-17T10:00:00Z\",\"world_facts\":{\"group_criminality\":\"NOT_ESTABLISHED\",\"known_thief\":null},\"world_ref\":\"WORLD-BIKE-1\"}}",
+        "a16274746510372375192804393269a760d0134f4f462e9e9d4f79d4401b2e7c",
+        "c7e74ceb42b7b55dc8e30ef67370edeb06e4c4aefbe92a04437e9ef0bf02a4fc"
+      ],
+      [
+        "E2-ID-1",
+        "{\"actor\":\"child\",\"context\":{\"action_opportunities\":{\"OP-CARE-REPORT\":{\"act_kind\":\"REPORT_MISSING_BIKE\",\"actor_ref\":\"CARE-1\",\"place_ref\":\"GARAGE-1\",\"time\":\"2026-10-17T10:00:00Z\"},\"OP-CARE-SPEAK\":{\"act_kind\":\"SPEAK_TO_CHILD\",\"actor_ref\":\"CARE-1\",\"place_ref\":\"GARAGE-1\",\"time\":\"2026-10-17T10:00:00Z\"},\"OP-CHILD-SEARCH\":{\"act_kind\":\"CHECK_GARAGE\",\"actor_ref\":\"CHILD-1\",\"place_ref\":\"GARAGE-1\",\"time\":\"2026-10-17T10:00:00Z\"},\"OP-PEER-SPEAK\":{\"act_kind\":\"SPEAK_TO_CHILD\",\"actor_ref\":\"PEER-1\",\"place_ref\":\"GARAGE-1\",\"time\":\"2026-10-17T10:00:00Z\"}},\"actor_access\":{\"CARE-1\":[\"THEFT-1\"],\"CHILD-1\":[\"THEFT-1\"],\"NEIGHBOR-1\":[],\"PEER-1\":[\"THEFT-1\"]},\"allowed_role_refs\":[\"CHILD\",\"CAREGIVER\",\"PEER\",\"NEIGHBOR\"],\"as_of\":\"2026-10-17T10:00:00Z\",\"context_hash\":\"ab8b28e658716bbb4380e647ac69e158b1f470a257918be7c9157021c634645c\",\"facts\":{\"DENIED-PAST-THEFT\":{\"epistemic_class\":\"ADMITTED_OBJECTIVE_EVENT\",\"kind\":\"OTHER_THEFT\",\"occurred\":false,\"time\":\"2026-10-16T09:00:00Z\"},\"PRIVATE-CAREGIVER-1\":{\"epistemic_class\":\"PRIVATE_ACTOR_STATE\",\"kind\":\"UNREADABLE_CAREGIVER_CONCERN\",\"occurred\":true,\"time\":\"2026-10-17T08:00:00Z\"},\"THEFT-1\":{\"epistemic_class\":\"ADMITTED_OBJECTIVE_EVENT\",\"kind\":\"BIKE_STOLEN\",\"known_culprit\":null,\"material_object_ref\":\"BIKE-CHILD-1\",\"occurred\":true,\"time\":\"2026-10-17T09:00:00Z\"}},\"histories\":{\"H-CARE-CONTROL\":{\"owner\":\"CARE-1\",\"source\":\"SYNTHETIC_HISTORY\",\"summary\":\"caregiver has history of intrusive scrutiny and material safety concern\"},\"H-CARE-PROTECT\":{\"owner\":\"CARE-1\",\"source\":\"B2_INDEPENDENT_TYPED_PARTICIPANT\",\"summary\":\"typed participant digest d862ca0cbca948f54059451042d2296de0a07f8ee3f5ff9cf73f2342f02c66b7\"},\"H-CHILD-1\":{\"owner\":\"CHILD-1\",\"source\":\"B2_EXACT_SYNTHETIC_PREHISTORY\",\"summary\":\"typed history digest 77df16a7f51e350940f083026e04b07689b890050bc3a90ae7aacb1da4588e0e\"},\"H-CHILD-2\":{\"owner\":\"CHILD-1\",\"source\":\"SYNTHETIC_HISTORY\",\"summary\":\"child bicycle gift and repeated arbitrary searches; reacts to control with caution\"},\"H-NEIGHBOR-INDEPENDENT\":{\"owner\":\"NEIGHBOR-1\",\"source\":\"SYNTHETIC_HISTORY\",\"summary\":\"neighbor has independent daily schedule unrelated to theft\"},\"H-PEER-BELONGING\":{\"owner\":\"PEER-1\",\"source\":\"B2_INDEPENDENT_TYPED_PARTICIPANT\",\"summary\":\"typed participant digest 947b8a4774423252204592913fa41f5c16032c2662f0615d197d04886c040044\"}},\"material_affordances\":[\"GARAGE_ACCESS\",\"PHONE_AVAILABLE\"],\"people\":{\"CARE-1\":{\"history_ref\":\"H-CARE-PROTECT\",\"role\":\"CAREGIVER\"},\"CHILD-1\":{\"history_ref\":\"H-CHILD-1\",\"role\":\"CHILD\"},\"NEIGHBOR-1\":{\"history_ref\":\"H-NEIGHBOR-INDEPENDENT\",\"role\":\"NEIGHBOR\"},\"PEER-1\":{\"history_ref\":\"H-PEER-BELONGING\",\"role\":\"PEER\"}},\"places\":[\"GARAGE-1\"],\"schema\":\"P1_SYNTHETIC_CONTEXT_V1\",\"world_ref\":\"WORLD-BIKE-1\"},\"packet\":{\"as_of\":\"2026-10-17T10:00:00Z\",\"candidates\":[{\"action_refs\":[{\"act_kind\":\"SPEAK_TO_CHILD\",\"actor_ref\":\"CARE-1\",\"opportunity_ref\":\"OP-CARE-SPEAK\"}],\"candidate_id\":\"ALT-CARE\",\"courses\":[{\"action_ref\":\"OP-CARE-SPEAK\",\"actor_ref\":\"CARE-1\",\"course_id\":\"COURSE-CARE-SPEAK\",\"description\":\"Caregiver considers reassurance or practical protective speech\"}],\"family\":\"OBSERVABLE_UTTERANCE\",\"interpretations\":[{\"accessible_source_refs\":[\"THEFT-1\"],\"claim\":\"A careful response could reduce future loss; I am worried.\",\"claim_kind\":\"ATTRIBUTED_UNVERIFIED_ASSERTION\",\"claim_world_fact_ref\":null,\"speaker_actor_ref\":\"CARE-1\",\"utterance\":\"We should report this and see what can be secured.\"}],\"parent_event_ref\":\"THEFT-1\",\"participants\":[\"CHILD-1\",\"CARE-1\"],\"place_ref\":\"GARAGE-1\",\"possible_effects\":[{\"description\":\"Child may perceive factual prudence yet feel emotionally unheard\",\"effect_kind\":\"MAY_RETAIN_CONTRADICTION\",\"epistemic_class\":\"HYPOTHESIS_ONLY\",\"owner_required\":\"CAN011_EXTERNAL_OWNER\",\"target_actor_ref\":\"CHILD-1\"}],\"prerequisites\":[{\"kind\":\"WORLD_FACT_TRUE\",\"ref\":\"THEFT-1\"},{\"kind\":\"ACTOR_ACCESS\",\"ref\":\"CARE-1|THEFT-1\"},{\"kind\":\"HISTORY_PRESENT\",\"ref\":\"CARE-1|H-CARE-PROTECT\"},{\"kind\":\"HISTORY_PRESENT\",\"ref\":\"CHILD-1|H-CHILD-1\"}],\"prospective_participants\":[],\"readset\":[\"THEFT-1\"],\"time\":\"2026-10-17T10:00:00Z\",\"uncertainty\":\"Competing possible receptions, no privileged insight or fixed psychological consequence\",\"visibility\":[\"CHILD-1\",\"CARE-1\"]},{\"action_refs\":[{\"act_kind\":\"SPEAK_TO_CHILD\",\"actor_ref\":\"PEER-1\",\"opportunity_ref\":\"OP-PEER-SPEAK\"}],\"candidate_id\":\"ALT-PEER\",\"courses\":[{\"action_ref\":\"OP-PEER-SPEAK\",\"actor_ref\":\"PEER-1\",\"course_id\":\"COURSE-PEER-SPEAK\",\"description\":\"Peer might circulate unsupported scapegoating rumor\"}],\"family\":\"OBSERVABLE_UTTERANCE\",\"interpretations\":[{\"accessible_source_refs\":[\"THEFT-1\"],\"claim\":\"Unsubstantiated blame of neighbors in a peer rumor\",\"claim_kind\":\"ATTRIBUTED_UNVERIFIED_ASSERTION\",\"claim_world_fact_ref\":null,\"speaker_actor_ref\":\"PEER-1\",\"utterance\":\"People from that block always take things.\"}],\"parent_event_ref\":\"THEFT-1\",\"participants\":[\"CHILD-1\",\"PEER-1\"],\"place_ref\":\"GARAGE-1\",\"possible_effects\":[{\"description\":\"Child could reject or absorb peer narrative, unknown\",\"effect_kind\":\"MAY_RETAIN_CONTRADICTION\",\"epistemic_class\":\"HYPOTHESIS_ONLY\",\"owner_required\":\"CAN011_EXTERNAL_OWNER\",\"target_actor_ref\":\"CHILD-1\"}],\"prerequisites\":[{\"kind\":\"WORLD_FACT_TRUE\",\"ref\":\"THEFT-1\"},{\"kind\":\"ACTOR_ACCESS\",\"ref\":\"PEER-1|THEFT-1\"},{\"kind\":\"HISTORY_PRESENT\",\"ref\":\"PEER-1|H-PEER-BELONGING\"},{\"kind\":\"HISTORY_PRESENT\",\"ref\":\"CHILD-1|H-CHILD-1\"}],\"prospective_participants\":[],\"readset\":[\"THEFT-1\"],\"time\":\"2026-10-17T10:00:00Z\",\"uncertainty\":\"Competing possible receptions, no privileged insight or fixed psychological consequence\",\"visibility\":[\"CHILD-1\",\"PEER-1\"]},{\"action_refs\":[{\"act_kind\":\"CHECK_GARAGE\",\"actor_ref\":\"CHILD-1\",\"opportunity_ref\":\"OP-CHILD-SEARCH\"}],\"candidate_id\":\"ALT-CHILD-SEARCH\",\"courses\":[{\"action_ref\":\"OP-CHILD-SEARCH\",\"actor_ref\":\"CHILD-1\",\"course_id\":\"COURSE-CHILD-SEARCH\",\"description\":\"Child might look for lock marks before deciding what happened\"}],\"family\":\"MATERIAL_ACTION_PROPOSAL\",\"interpretations\":[],\"parent_event_ref\":\"THEFT-1\",\"participants\":[\"CHILD-1\"],\"place_ref\":\"GARAGE-1\",\"possible_effects\":[{\"description\":\"No durable response is required\",\"effect_kind\":\"NO_CHANGE\",\"epistemic_class\":\"HYPOTHESIS_ONLY\",\"owner_required\":\"CAN011_EXTERNAL_OWNER\",\"target_actor_ref\":\"CHILD-1\"}],\"prerequisites\":[{\"kind\":\"WORLD_FACT_TRUE\",\"ref\":\"THEFT-1\"},{\"kind\":\"MATERIAL_AFFORDANCE\",\"ref\":\"GARAGE_ACCESS\"},{\"kind\":\"HISTORY_PRESENT\",\"ref\":\"CHILD-1|H-CHILD-1\"}],\"prospective_participants\":[],\"readset\":[\"THEFT-1\"],\"time\":\"2026-10-17T10:00:00Z\",\"uncertainty\":\"Competing possible receptions, no privileged insight or fixed psychological consequence\",\"visibility\":[\"CHILD-1\"]},{\"action_refs\":[],\"candidate_id\":\"ALT-NONE\",\"courses\":[],\"family\":\"NONOCCURRENCE\",\"interpretations\":[],\"parent_event_ref\":\"THEFT-1\",\"participants\":[\"CHILD-1\"],\"place_ref\":\"GARAGE-1\",\"possible_effects\":[],\"prerequisites\":[{\"kind\":\"WORLD_FACT_TRUE\",\"ref\":\"THEFT-1\"},{\"kind\":\"HISTORY_PRESENT\",\"ref\":\"CHILD-1|H-CHILD-1\"}],\"prospective_participants\":[],\"readset\":[\"THEFT-1\"],\"time\":\"2026-10-17T10:00:00Z\",\"uncertainty\":\"Competing possible receptions, no privileged insight or fixed psychological consequence\",\"visibility\":[\"CHILD-1\"]}],\"context_hash\":\"ab8b28e658716bbb4380e647ac69e158b1f470a257918be7c9157021c634645c\",\"epistemic_class\":\"LLM_PROPOSAL\",\"model\":{\"model_version\":\"SYNTH-1\",\"prompt_sha256\":\"09c625dda784aa41702a734b8c2141b520726e69809e3f20aa053c231413dae6\",\"prompt_version\":\"P1-PROMPT-1\",\"provider_label\":\"FROZEN_FABRICATED_PACKET_NO_LIVE_MODEL\",\"sampling_record\":{\"kind\":\"FROZEN_AUTHOR_SYNTHETIC\",\"model_draws\":\"NOT_RECORDED_NOT_CAUSAL\"}},\"proposal_hash\":\"32a8cb92b29a064b2d9320b3d9db676dcdbe83857be47503402a481ec38f93c5\",\"proposal_id\":\"B2-PACKET-1\",\"schema\":\"P1_LLM_ALTERNATIVES_PROPOSAL_V1\",\"world_ref\":\"WORLD-BIKE-1\"},\"policy\":{\"calibration_grade\":\"PROVISIONAL_NOT_CALIBRATED\",\"candidate_set_hash\":\"3bd4a3b23ffc247e993f94bb1c7de40d204a4f5f6b9cf16f7ff3156ac186ff98\",\"parameter_source\":\"AUTHORED_DESIGN_HYPOTHESIS_TEST_ONLY\",\"policy_hash\":\"0f9d9598d9731f36a3b52570bdf17780fce172495bd54b1fbdeeb3c92753fb1e\",\"policy_id\":\"B2-TEST-COORDINATE\",\"policy_version\":\"1.0.0\",\"schema\":\"P1_TEST_ONLY_AUTHORED_SELECTION_POLICY_V1\",\"weight_units\":{\"ALT-CARE\":1,\"ALT-CHILD-SEARCH\":0,\"ALT-NONE\":0,\"ALT-PEER\":0}},\"rule\":\"B2_SYNTHETIC_WITNESSED_INGRESS@1\",\"selected_candidate_id\":\"ALT-CARE\",\"witness\":{\"candidate_hash\":\"30fad96058ae57d0ff0ae855f09a545fc4acb1a18ecb22c9425672b995ae3e56\",\"context_hash\":\"ab8b28e658716bbb4380e647ac69e158b1f470a257918be7c9157021c634645c\",\"event_id\":\"E2-ID-1\",\"expected_actor_state_hash\":\"c28d6ccb925e39cd9ba270d9b0632c4adb00e60fe799bc558e3885838ca3e9f0\",\"hash\":\"13dc994d03d1eda9859e6dacd77f77607f89421147cc9a7cd9c93ea677ec68e9\",\"interrupted\":true,\"issuer\":\"B2_WORLD_FIXTURE_AUTHORIZER\",\"number\":1,\"objective_occurrence\":\"OBSERVED_INTERACTION_AFTER_MATERIAL_LOSS\",\"observed_interpretations\":[{\"accessible_source_refs\":[\"THEFT-1\"],\"claim\":\"A careful response could reduce future loss; I am worried.\",\"claim_kind\":\"ATTRIBUTED_UNVERIFIED_ASSERTION\",\"claim_world_fact_ref\":null,\"speaker_actor_ref\":\"CARE-1\",\"utterance\":\"We should report this and see what can be secured.\"}],\"other_actions\":[{\"action\":\"joint_inventory\",\"p1_actor\":\"CARE-1\",\"participant\":{\"actor_id\":\"caretaker\",\"history\":[{\"activity\":\"organize_work\",\"actor_access\":\"EXPLICIT\",\"actor_id\":\"caretaker\",\"counterpart\":\"workshop\",\"episode_id\":\"caretaker_work\",\"outcome\":\"tools_available\",\"parent_refs\":[],\"project\":\"own_work\",\"provenance\":\"SYNTHETIC_PREHISTORY_FIXTURE\",\"time\":0}],\"project\":\"own_work\"},\"source_history_hash\":\"d862ca0cbca948f54059451042d2296de0a07f8ee3f5ff9cf73f2342f02c66b7\"}],\"outcome\":\"OCCURRED\",\"parent_fact_hash\":\"42fb867561347435fef23470d2dc17c5681ace69d6aefe9c467bfb32324a5ee7\",\"participants\":[\"CHILD-1\",\"CARE-1\"],\"place\":\"GARAGE-1\",\"project\":\"repair_route\",\"proposal_hash\":\"32a8cb92b29a064b2d9320b3d9db676dcdbe83857be47503402a481ec38f93c5\",\"schema\":\"B2_INDEPENDENT_SYNTHETIC_OCCURRENCE_WITNESS@1\",\"time\":\"2026-10-17T10:00:00Z\",\"world_facts\":{\"group_criminality\":\"NOT_ESTABLISHED\",\"known_thief\":null},\"world_ref\":\"WORLD-BIKE-1\"}}",
+        "b6c6468bedf1eaf305792fd3079c26096500ed1c1fb3aa12547e98e79f2e6f29",
+        "5d52fa54702a8ee23d55ca4515186330b645bca25963f9cf5494e6530048b3bb"
+      ],
+      [
+        "E2-ID-2",
+        "{\"actor\":\"child\",\"context\":{\"action_opportunities\":{\"OP-CARE-REPORT\":{\"act_kind\":\"REPORT_MISSING_BIKE\",\"actor_ref\":\"CARE-1\",\"place_ref\":\"GARAGE-1\",\"time\":\"2026-10-17T10:00:00Z\"},\"OP-CARE-SPEAK\":{\"act_kind\":\"SPEAK_TO_CHILD\",\"actor_ref\":\"CARE-1\",\"place_ref\":\"GARAGE-1\",\"time\":\"2026-10-17T10:00:00Z\"},\"OP-CHILD-SEARCH\":{\"act_kind\":\"CHECK_GARAGE\",\"actor_ref\":\"CHILD-1\",\"place_ref\":\"GARAGE-1\",\"time\":\"2026-10-17T10:00:00Z\"},\"OP-PEER-SPEAK\":{\"act_kind\":\"SPEAK_TO_CHILD\",\"actor_ref\":\"PEER-1\",\"place_ref\":\"GARAGE-1\",\"time\":\"2026-10-17T10:00:00Z\"}},\"actor_access\":{\"CARE-1\":[\"THEFT-1\"],\"CHILD-1\":[\"THEFT-1\"],\"NEIGHBOR-1\":[],\"PEER-1\":[\"THEFT-1\"]},\"allowed_role_refs\":[\"CHILD\",\"CAREGIVER\",\"PEER\",\"NEIGHBOR\"],\"as_of\":\"2026-10-17T10:00:00Z\",\"context_hash\":\"ab8b28e658716bbb4380e647ac69e158b1f470a257918be7c9157021c634645c\",\"facts\":{\"DENIED-PAST-THEFT\":{\"epistemic_class\":\"ADMITTED_OBJECTIVE_EVENT\",\"kind\":\"OTHER_THEFT\",\"occurred\":false,\"time\":\"2026-10-16T09:00:00Z\"},\"PRIVATE-CAREGIVER-1\":{\"epistemic_class\":\"PRIVATE_ACTOR_STATE\",\"kind\":\"UNREADABLE_CAREGIVER_CONCERN\",\"occurred\":true,\"time\":\"2026-10-17T08:00:00Z\"},\"THEFT-1\":{\"epistemic_class\":\"ADMITTED_OBJECTIVE_EVENT\",\"kind\":\"BIKE_STOLEN\",\"known_culprit\":null,\"material_object_ref\":\"BIKE-CHILD-1\",\"occurred\":true,\"time\":\"2026-10-17T09:00:00Z\"}},\"histories\":{\"H-CARE-CONTROL\":{\"owner\":\"CARE-1\",\"source\":\"SYNTHETIC_HISTORY\",\"summary\":\"caregiver has history of intrusive scrutiny and material safety concern\"},\"H-CARE-PROTECT\":{\"owner\":\"CARE-1\",\"source\":\"B2_INDEPENDENT_TYPED_PARTICIPANT\",\"summary\":\"typed participant digest d862ca0cbca948f54059451042d2296de0a07f8ee3f5ff9cf73f2342f02c66b7\"},\"H-CHILD-1\":{\"owner\":\"CHILD-1\",\"source\":\"B2_EXACT_SYNTHETIC_PREHISTORY\",\"summary\":\"typed history digest 77df16a7f51e350940f083026e04b07689b890050bc3a90ae7aacb1da4588e0e\"},\"H-CHILD-2\":{\"owner\":\"CHILD-1\",\"source\":\"SYNTHETIC_HISTORY\",\"summary\":\"child bicycle gift and repeated arbitrary searches; reacts to control with caution\"},\"H-NEIGHBOR-INDEPENDENT\":{\"owner\":\"NEIGHBOR-1\",\"source\":\"SYNTHETIC_HISTORY\",\"summary\":\"neighbor has independent daily schedule unrelated to theft\"},\"H-PEER-BELONGING\":{\"owner\":\"PEER-1\",\"source\":\"B2_INDEPENDENT_TYPED_PARTICIPANT\",\"summary\":\"typed participant digest 947b8a4774423252204592913fa41f5c16032c2662f0615d197d04886c040044\"}},\"material_affordances\":[\"GARAGE_ACCESS\",\"PHONE_AVAILABLE\"],\"people\":{\"CARE-1\":{\"history_ref\":\"H-CARE-PROTECT\",\"role\":\"CAREGIVER\"},\"CHILD-1\":{\"history_ref\":\"H-CHILD-1\",\"role\":\"CHILD\"},\"NEIGHBOR-1\":{\"history_ref\":\"H-NEIGHBOR-INDEPENDENT\",\"role\":\"NEIGHBOR\"},\"PEER-1\":{\"history_ref\":\"H-PEER-BELONGING\",\"role\":\"PEER\"}},\"places\":[\"GARAGE-1\"],\"schema\":\"P1_SYNTHETIC_CONTEXT_V1\",\"world_ref\":\"WORLD-BIKE-1\"},\"packet\":{\"as_of\":\"2026-10-17T10:00:00Z\",\"candidates\":[{\"action_refs\":[{\"act_kind\":\"SPEAK_TO_CHILD\",\"actor_ref\":\"CARE-1\",\"opportunity_ref\":\"OP-CARE-SPEAK\"}],\"candidate_id\":\"ALT-CARE\",\"courses\":[{\"action_ref\":\"OP-CARE-SPEAK\",\"actor_ref\":\"CARE-1\",\"course_id\":\"COURSE-CARE-SPEAK\",\"description\":\"Caregiver considers reassurance or practical protective speech\"}],\"family\":\"OBSERVABLE_UTTERANCE\",\"interpretations\":[{\"accessible_source_refs\":[\"THEFT-1\"],\"claim\":\"A careful response could reduce future loss; I am worried.\",\"claim_kind\":\"ATTRIBUTED_UNVERIFIED_ASSERTION\",\"claim_world_fact_ref\":null,\"speaker_actor_ref\":\"CARE-1\",\"utterance\":\"We should report this and see what can be secured.\"}],\"parent_event_ref\":\"THEFT-1\",\"participants\":[\"CHILD-1\",\"CARE-1\"],\"place_ref\":\"GARAGE-1\",\"possible_effects\":[{\"description\":\"Child may perceive factual prudence yet feel emotionally unheard\",\"effect_kind\":\"MAY_RETAIN_CONTRADICTION\",\"epistemic_class\":\"HYPOTHESIS_ONLY\",\"owner_required\":\"CAN011_EXTERNAL_OWNER\",\"target_actor_ref\":\"CHILD-1\"}],\"prerequisites\":[{\"kind\":\"WORLD_FACT_TRUE\",\"ref\":\"THEFT-1\"},{\"kind\":\"ACTOR_ACCESS\",\"ref\":\"CARE-1|THEFT-1\"},{\"kind\":\"HISTORY_PRESENT\",\"ref\":\"CARE-1|H-CARE-PROTECT\"},{\"kind\":\"HISTORY_PRESENT\",\"ref\":\"CHILD-1|H-CHILD-1\"}],\"prospective_participants\":[],\"readset\":[\"THEFT-1\"],\"time\":\"2026-10-17T10:00:00Z\",\"uncertainty\":\"Competing possible receptions, no privileged insight or fixed psychological consequence\",\"visibility\":[\"CHILD-1\",\"CARE-1\"]},{\"action_refs\":[{\"act_kind\":\"SPEAK_TO_CHILD\",\"actor_ref\":\"PEER-1\",\"opportunity_ref\":\"OP-PEER-SPEAK\"}],\"candidate_id\":\"ALT-PEER\",\"courses\":[{\"action_ref\":\"OP-PEER-SPEAK\",\"actor_ref\":\"PEER-1\",\"course_id\":\"COURSE-PEER-SPEAK\",\"description\":\"Peer might circulate unsupported scapegoating rumor\"}],\"family\":\"OBSERVABLE_UTTERANCE\",\"interpretations\":[{\"accessible_source_refs\":[\"THEFT-1\"],\"claim\":\"Unsubstantiated blame of neighbors in a peer rumor\",\"claim_kind\":\"ATTRIBUTED_UNVERIFIED_ASSERTION\",\"claim_world_fact_ref\":null,\"speaker_actor_ref\":\"PEER-1\",\"utterance\":\"People from that block always take things.\"}],\"parent_event_ref\":\"THEFT-1\",\"participants\":[\"CHILD-1\",\"PEER-1\"],\"place_ref\":\"GARAGE-1\",\"possible_effects\":[{\"description\":\"Child could reject or absorb peer narrative, unknown\",\"effect_kind\":\"MAY_RETAIN_CONTRADICTION\",\"epistemic_class\":\"HYPOTHESIS_ONLY\",\"owner_required\":\"CAN011_EXTERNAL_OWNER\",\"target_actor_ref\":\"CHILD-1\"}],\"prerequisites\":[{\"kind\":\"WORLD_FACT_TRUE\",\"ref\":\"THEFT-1\"},{\"kind\":\"ACTOR_ACCESS\",\"ref\":\"PEER-1|THEFT-1\"},{\"kind\":\"HISTORY_PRESENT\",\"ref\":\"PEER-1|H-PEER-BELONGING\"},{\"kind\":\"HISTORY_PRESENT\",\"ref\":\"CHILD-1|H-CHILD-1\"}],\"prospective_participants\":[],\"readset\":[\"THEFT-1\"],\"time\":\"2026-10-17T10:00:00Z\",\"uncertainty\":\"Competing possible receptions, no privileged insight or fixed psychological consequence\",\"visibility\":[\"CHILD-1\",\"PEER-1\"]},{\"action_refs\":[{\"act_kind\":\"CHECK_GARAGE\",\"actor_ref\":\"CHILD-1\",\"opportunity_ref\":\"OP-CHILD-SEARCH\"}],\"candidate_id\":\"ALT-CHILD-SEARCH\",\"courses\":[{\"action_ref\":\"OP-CHILD-SEARCH\",\"actor_ref\":\"CHILD-1\",\"course_id\":\"COURSE-CHILD-SEARCH\",\"description\":\"Child might look for lock marks before deciding what happened\"}],\"family\":\"MATERIAL_ACTION_PROPOSAL\",\"interpretations\":[],\"parent_event_ref\":\"THEFT-1\",\"participants\":[\"CHILD-1\"],\"place_ref\":\"GARAGE-1\",\"possible_effects\":[{\"description\":\"No durable response is required\",\"effect_kind\":\"NO_CHANGE\",\"epistemic_class\":\"HYPOTHESIS_ONLY\",\"owner_required\":\"CAN011_EXTERNAL_OWNER\",\"target_actor_ref\":\"CHILD-1\"}],\"prerequisites\":[{\"kind\":\"WORLD_FACT_TRUE\",\"ref\":\"THEFT-1\"},{\"kind\":\"MATERIAL_AFFORDANCE\",\"ref\":\"GARAGE_ACCESS\"},{\"kind\":\"HISTORY_PRESENT\",\"ref\":\"CHILD-1|H-CHILD-1\"}],\"prospective_participants\":[],\"readset\":[\"THEFT-1\"],\"time\":\"2026-10-17T10:00:00Z\",\"uncertainty\":\"Competing possible receptions, no privileged insight or fixed psychological consequence\",\"visibility\":[\"CHILD-1\"]},{\"action_refs\":[],\"candidate_id\":\"ALT-NONE\",\"courses\":[],\"family\":\"NONOCCURRENCE\",\"interpretations\":[],\"parent_event_ref\":\"THEFT-1\",\"participants\":[\"CHILD-1\"],\"place_ref\":\"GARAGE-1\",\"possible_effects\":[],\"prerequisites\":[{\"kind\":\"WORLD_FACT_TRUE\",\"ref\":\"THEFT-1\"},{\"kind\":\"HISTORY_PRESENT\",\"ref\":\"CHILD-1|H-CHILD-1\"}],\"prospective_participants\":[],\"readset\":[\"THEFT-1\"],\"time\":\"2026-10-17T10:00:00Z\",\"uncertainty\":\"Competing possible receptions, no privileged insight or fixed psychological consequence\",\"visibility\":[\"CHILD-1\"]}],\"context_hash\":\"ab8b28e658716bbb4380e647ac69e158b1f470a257918be7c9157021c634645c\",\"epistemic_class\":\"LLM_PROPOSAL\",\"model\":{\"model_version\":\"SYNTH-1\",\"prompt_sha256\":\"09c625dda784aa41702a734b8c2141b520726e69809e3f20aa053c231413dae6\",\"prompt_version\":\"P1-PROMPT-1\",\"provider_label\":\"FROZEN_FABRICATED_PACKET_NO_LIVE_MODEL\",\"sampling_record\":{\"kind\":\"FROZEN_AUTHOR_SYNTHETIC\",\"model_draws\":\"NOT_RECORDED_NOT_CAUSAL\"}},\"proposal_hash\":\"32a8cb92b29a064b2d9320b3d9db676dcdbe83857be47503402a481ec38f93c5\",\"proposal_id\":\"B2-PACKET-1\",\"schema\":\"P1_LLM_ALTERNATIVES_PROPOSAL_V1\",\"world_ref\":\"WORLD-BIKE-1\"},\"policy\":{\"calibration_grade\":\"PROVISIONAL_NOT_CALIBRATED\",\"candidate_set_hash\":\"3bd4a3b23ffc247e993f94bb1c7de40d204a4f5f6b9cf16f7ff3156ac186ff98\",\"parameter_source\":\"AUTHORED_DESIGN_HYPOTHESIS_TEST_ONLY\",\"policy_hash\":\"0f9d9598d9731f36a3b52570bdf17780fce172495bd54b1fbdeeb3c92753fb1e\",\"policy_id\":\"B2-TEST-COORDINATE\",\"policy_version\":\"1.0.0\",\"schema\":\"P1_TEST_ONLY_AUTHORED_SELECTION_POLICY_V1\",\"weight_units\":{\"ALT-CARE\":1,\"ALT-CHILD-SEARCH\":0,\"ALT-NONE\":0,\"ALT-PEER\":0}},\"rule\":\"B2_SYNTHETIC_WITNESSED_INGRESS@1\",\"selected_candidate_id\":\"ALT-CARE\",\"witness\":{\"candidate_hash\":\"30fad96058ae57d0ff0ae855f09a545fc4acb1a18ecb22c9425672b995ae3e56\",\"context_hash\":\"ab8b28e658716bbb4380e647ac69e158b1f470a257918be7c9157021c634645c\",\"event_id\":\"E2-ID-2\",\"expected_actor_state_hash\":\"c28d6ccb925e39cd9ba270d9b0632c4adb00e60fe799bc558e3885838ca3e9f0\",\"hash\":\"3583a14a1b904877e0fefb0b484d4021ea5d57eb092f9e68ba4a48b203cf1265\",\"interrupted\":true,\"issuer\":\"B2_WORLD_FIXTURE_AUTHORIZER\",\"number\":1,\"objective_occurrence\":\"OBSERVED_INTERACTION_AFTER_MATERIAL_LOSS\",\"observed_interpretations\":[{\"accessible_source_refs\":[\"THEFT-1\"],\"claim\":\"A careful response could reduce future loss; I am worried.\",\"claim_kind\":\"ATTRIBUTED_UNVERIFIED_ASSERTION\",\"claim_world_fact_ref\":null,\"speaker_actor_ref\":\"CARE-1\",\"utterance\":\"We should report this and see what can be secured.\"}],\"other_actions\":[{\"action\":\"joint_inventory\",\"p1_actor\":\"CARE-1\",\"participant\":{\"actor_id\":\"caretaker\",\"history\":[{\"activity\":\"organize_work\",\"actor_access\":\"EXPLICIT\",\"actor_id\":\"caretaker\",\"counterpart\":\"workshop\",\"episode_id\":\"caretaker_work\",\"outcome\":\"tools_available\",\"parent_refs\":[],\"project\":\"own_work\",\"provenance\":\"SYNTHETIC_PREHISTORY_FIXTURE\",\"time\":0}],\"project\":\"own_work\"},\"source_history_hash\":\"d862ca0cbca948f54059451042d2296de0a07f8ee3f5ff9cf73f2342f02c66b7\"}],\"outcome\":\"OCCURRED\",\"parent_fact_hash\":\"42fb867561347435fef23470d2dc17c5681ace69d6aefe9c467bfb32324a5ee7\",\"participants\":[\"CHILD-1\",\"CARE-1\"],\"place\":\"GARAGE-1\",\"project\":\"repair_route\",\"proposal_hash\":\"32a8cb92b29a064b2d9320b3d9db676dcdbe83857be47503402a481ec38f93c5\",\"schema\":\"B2_INDEPENDENT_SYNTHETIC_OCCURRENCE_WITNESS@1\",\"time\":\"2026-10-17T10:00:00Z\",\"world_facts\":{\"group_criminality\":\"NOT_ESTABLISHED\",\"known_thief\":null},\"world_ref\":\"WORLD-BIKE-1\"}}",
+        "99cc17d05c2a627b5a9f2d7f25241f80efc6376c59e3d2f5549b6c79d2b04d43",
+        "8b252e4c6d3595460fc014baed2fb9ae1dfdc8755d994766496f1ba034485cff"
+      ],
+      [
+        "E2-ID-3",
+        "{\"actor\":\"child\",\"context\":{\"action_opportunities\":{\"OP-CARE-REPORT\":{\"act_kind\":\"REPORT_MISSING_BIKE\",\"actor_ref\":\"CARE-1\",\"place_ref\":\"GARAGE-1\",\"time\":\"2026-10-17T10:00:00Z\"},\"OP-CARE-SPEAK\":{\"act_kind\":\"SPEAK_TO_CHILD\",\"actor_ref\":\"CARE-1\",\"place_ref\":\"GARAGE-1\",\"time\":\"2026-10-17T10:00:00Z\"},\"OP-CHILD-SEARCH\":{\"act_kind\":\"CHECK_GARAGE\",\"actor_ref\":\"CHILD-1\",\"place_ref\":\"GARAGE-1\",\"time\":\"2026-10-17T10:00:00Z\"},\"OP-PEER-SPEAK\":{\"act_kind\":\"SPEAK_TO_CHILD\",\"actor_ref\":\"PEER-1\",\"place_ref\":\"GARAGE-1\",\"time\":\"2026-10-17T10:00:00Z\"}},\"actor_access\":{\"CARE-1\":[\"THEFT-1\"],\"CHILD-1\":[\"THEFT-1\"],\"NEIGHBOR-1\":[],\"PEER-1\":[\"THEFT-1\"]},\"allowed_role_refs\":[\"CHILD\",\"CAREGIVER\",\"PEER\",\"NEIGHBOR\"],\"as_of\":\"2026-10-17T10:00:00Z\",\"context_hash\":\"ab8b28e658716bbb4380e647ac69e158b1f470a257918be7c9157021c634645c\",\"facts\":{\"DENIED-PAST-THEFT\":{\"epistemic_class\":\"ADMITTED_OBJECTIVE_EVENT\",\"kind\":\"OTHER_THEFT\",\"occurred\":false,\"time\":\"2026-10-16T09:00:00Z\"},\"PRIVATE-CAREGIVER-1\":{\"epistemic_class\":\"PRIVATE_ACTOR_STATE\",\"kind\":\"UNREADABLE_CAREGIVER_CONCERN\",\"occurred\":true,\"time\":\"2026-10-17T08:00:00Z\"},\"THEFT-1\":{\"epistemic_class\":\"ADMITTED_OBJECTIVE_EVENT\",\"kind\":\"BIKE_STOLEN\",\"known_culprit\":null,\"material_object_ref\":\"BIKE-CHILD-1\",\"occurred\":true,\"time\":\"2026-10-17T09:00:00Z\"}},\"histories\":{\"H-CARE-CONTROL\":{\"owner\":\"CARE-1\",\"source\":\"SYNTHETIC_HISTORY\",\"summary\":\"caregiver has history of intrusive scrutiny and material safety concern\"},\"H-CARE-PROTECT\":{\"owner\":\"CARE-1\",\"source\":\"B2_INDEPENDENT_TYPED_PARTICIPANT\",\"summary\":\"typed participant digest d862ca0cbca948f54059451042d2296de0a07f8ee3f5ff9cf73f2342f02c66b7\"},\"H-CHILD-1\":{\"owner\":\"CHILD-1\",\"source\":\"B2_EXACT_SYNTHETIC_PREHISTORY\",\"summary\":\"typed history digest 77df16a7f51e350940f083026e04b07689b890050bc3a90ae7aacb1da4588e0e\"},\"H-CHILD-2\":{\"owner\":\"CHILD-1\",\"source\":\"SYNTHETIC_HISTORY\",\"summary\":\"child bicycle gift and repeated arbitrary searches; reacts to control with caution\"},\"H-NEIGHBOR-INDEPENDENT\":{\"owner\":\"NEIGHBOR-1\",\"source\":\"SYNTHETIC_HISTORY\",\"summary\":\"neighbor has independent daily schedule unrelated to theft\"},\"H-PEER-BELONGING\":{\"owner\":\"PEER-1\",\"source\":\"B2_INDEPENDENT_TYPED_PARTICIPANT\",\"summary\":\"typed participant digest 947b8a4774423252204592913fa41f5c16032c2662f0615d197d04886c040044\"}},\"material_affordances\":[\"GARAGE_ACCESS\",\"PHONE_AVAILABLE\"],\"people\":{\"CARE-1\":{\"history_ref\":\"H-CARE-PROTECT\",\"role\":\"CAREGIVER\"},\"CHILD-1\":{\"history_ref\":\"H-CHILD-1\",\"role\":\"CHILD\"},\"NEIGHBOR-1\":{\"history_ref\":\"H-NEIGHBOR-INDEPENDENT\",\"role\":\"NEIGHBOR\"},\"PEER-1\":{\"history_ref\":\"H-PEER-BELONGING\",\"role\":\"PEER\"}},\"places\":[\"GARAGE-1\"],\"schema\":\"P1_SYNTHETIC_CONTEXT_V1\",\"world_ref\":\"WORLD-BIKE-1\"},\"packet\":{\"as_of\":\"2026-10-17T10:00:00Z\",\"candidates\":[{\"action_refs\":[{\"act_kind\":\"SPEAK_TO_CHILD\",\"actor_ref\":\"CARE-1\",\"opportunity_ref\":\"OP-CARE-SPEAK\"}],\"candidate_id\":\"ALT-CARE\",\"courses\":[{\"action_ref\":\"OP-CARE-SPEAK\",\"actor_ref\":\"CARE-1\",\"course_id\":\"COURSE-CARE-SPEAK\",\"description\":\"Caregiver considers reassurance or practical protective speech\"}],\"family\":\"OBSERVABLE_UTTERANCE\",\"interpretations\":[{\"accessible_source_refs\":[\"THEFT-1\"],\"claim\":\"A careful response could reduce future loss; I am worried.\",\"claim_kind\":\"ATTRIBUTED_UNVERIFIED_ASSERTION\",\"claim_world_fact_ref\":null,\"speaker_actor_ref\":\"CARE-1\",\"utterance\":\"We should report this and see what can be secured.\"}],\"parent_event_ref\":\"THEFT-1\",\"participants\":[\"CHILD-1\",\"CARE-1\"],\"place_ref\":\"GARAGE-1\",\"possible_effects\":[{\"description\":\"Child may perceive factual prudence yet feel emotionally unheard\",\"effect_kind\":\"MAY_RETAIN_CONTRADICTION\",\"epistemic_class\":\"HYPOTHESIS_ONLY\",\"owner_required\":\"CAN011_EXTERNAL_OWNER\",\"target_actor_ref\":\"CHILD-1\"}],\"prerequisites\":[{\"kind\":\"WORLD_FACT_TRUE\",\"ref\":\"THEFT-1\"},{\"kind\":\"ACTOR_ACCESS\",\"ref\":\"CARE-1|THEFT-1\"},{\"kind\":\"HISTORY_PRESENT\",\"ref\":\"CARE-1|H-CARE-PROTECT\"},{\"kind\":\"HISTORY_PRESENT\",\"ref\":\"CHILD-1|H-CHILD-1\"}],\"prospective_participants\":[],\"readset\":[\"THEFT-1\"],\"time\":\"2026-10-17T10:00:00Z\",\"uncertainty\":\"Competing possible receptions, no privileged insight or fixed psychological consequence\",\"visibility\":[\"CHILD-1\",\"CARE-1\"]},{\"action_refs\":[{\"act_kind\":\"SPEAK_TO_CHILD\",\"actor_ref\":\"PEER-1\",\"opportunity_ref\":\"OP-PEER-SPEAK\"}],\"candidate_id\":\"ALT-PEER\",\"courses\":[{\"action_ref\":\"OP-PEER-SPEAK\",\"actor_ref\":\"PEER-1\",\"course_id\":\"COURSE-PEER-SPEAK\",\"description\":\"Peer might circulate unsupported scapegoating rumor\"}],\"family\":\"OBSERVABLE_UTTERANCE\",\"interpretations\":[{\"accessible_source_refs\":[\"THEFT-1\"],\"claim\":\"Unsubstantiated blame of neighbors in a peer rumor\",\"claim_kind\":\"ATTRIBUTED_UNVERIFIED_ASSERTION\",\"claim_world_fact_ref\":null,\"speaker_actor_ref\":\"PEER-1\",\"utterance\":\"People from that block always take things.\"}],\"parent_event_ref\":\"THEFT-1\",\"participants\":[\"CHILD-1\",\"PEER-1\"],\"place_ref\":\"GARAGE-1\",\"possible_effects\":[{\"description\":\"Child could reject or absorb peer narrative, unknown\",\"effect_kind\":\"MAY_RETAIN_CONTRADICTION\",\"epistemic_class\":\"HYPOTHESIS_ONLY\",\"owner_required\":\"CAN011_EXTERNAL_OWNER\",\"target_actor_ref\":\"CHILD-1\"}],\"prerequisites\":[{\"kind\":\"WORLD_FACT_TRUE\",\"ref\":\"THEFT-1\"},{\"kind\":\"ACTOR_ACCESS\",\"ref\":\"PEER-1|THEFT-1\"},{\"kind\":\"HISTORY_PRESENT\",\"ref\":\"PEER-1|H-PEER-BELONGING\"},{\"kind\":\"HISTORY_PRESENT\",\"ref\":\"CHILD-1|H-CHILD-1\"}],\"prospective_participants\":[],\"readset\":[\"THEFT-1\"],\"time\":\"2026-10-17T10:00:00Z\",\"uncertainty\":\"Competing possible receptions, no privileged insight or fixed psychological consequence\",\"visibility\":[\"CHILD-1\",\"PEER-1\"]},{\"action_refs\":[{\"act_kind\":\"CHECK_GARAGE\",\"actor_ref\":\"CHILD-1\",\"opportunity_ref\":\"OP-CHILD-SEARCH\"}],\"candidate_id\":\"ALT-CHILD-SEARCH\",\"courses\":[{\"action_ref\":\"OP-CHILD-SEARCH\",\"actor_ref\":\"CHILD-1\",\"course_id\":\"COURSE-CHILD-SEARCH\",\"description\":\"Child might look for lock marks before deciding what happened\"}],\"family\":\"MATERIAL_ACTION_PROPOSAL\",\"interpretations\":[],\"parent_event_ref\":\"THEFT-1\",\"participants\":[\"CHILD-1\"],\"place_ref\":\"GARAGE-1\",\"possible_effects\":[{\"description\":\"No durable response is required\",\"effect_kind\":\"NO_CHANGE\",\"epistemic_class\":\"HYPOTHESIS_ONLY\",\"owner_required\":\"CAN011_EXTERNAL_OWNER\",\"target_actor_ref\":\"CHILD-1\"}],\"prerequisites\":[{\"kind\":\"WORLD_FACT_TRUE\",\"ref\":\"THEFT-1\"},{\"kind\":\"MATERIAL_AFFORDANCE\",\"ref\":\"GARAGE_ACCESS\"},{\"kind\":\"HISTORY_PRESENT\",\"ref\":\"CHILD-1|H-CHILD-1\"}],\"prospective_participants\":[],\"readset\":[\"THEFT-1\"],\"time\":\"2026-10-17T10:00:00Z\",\"uncertainty\":\"Competing possible receptions, no privileged insight or fixed psychological consequence\",\"visibility\":[\"CHILD-1\"]},{\"action_refs\":[],\"candidate_id\":\"ALT-NONE\",\"courses\":[],\"family\":\"NONOCCURRENCE\",\"interpretations\":[],\"parent_event_ref\":\"THEFT-1\",\"participants\":[\"CHILD-1\"],\"place_ref\":\"GARAGE-1\",\"possible_effects\":[],\"prerequisites\":[{\"kind\":\"WORLD_FACT_TRUE\",\"ref\":\"THEFT-1\"},{\"kind\":\"HISTORY_PRESENT\",\"ref\":\"CHILD-1|H-CHILD-1\"}],\"prospective_participants\":[],\"readset\":[\"THEFT-1\"],\"time\":\"2026-10-17T10:00:00Z\",\"uncertainty\":\"Competing possible receptions, no privileged insight or fixed psychological consequence\",\"visibility\":[\"CHILD-1\"]}],\"context_hash\":\"ab8b28e658716bbb4380e647ac69e158b1f470a257918be7c9157021c634645c\",\"epistemic_class\":\"LLM_PROPOSAL\",\"model\":{\"model_version\":\"SYNTH-1\",\"prompt_sha256\":\"09c625dda784aa41702a734b8c2141b520726e69809e3f20aa053c231413dae6\",\"prompt_version\":\"P1-PROMPT-1\",\"provider_label\":\"FROZEN_FABRICATED_PACKET_NO_LIVE_MODEL\",\"sampling_record\":{\"kind\":\"FROZEN_AUTHOR_SYNTHETIC\",\"model_draws\":\"NOT_RECORDED_NOT_CAUSAL\"}},\"proposal_hash\":\"32a8cb92b29a064b2d9320b3d9db676dcdbe83857be47503402a481ec38f93c5\",\"proposal_id\":\"B2-PACKET-1\",\"schema\":\"P1_LLM_ALTERNATIVES_PROPOSAL_V1\",\"world_ref\":\"WORLD-BIKE-1\"},\"policy\":{\"calibration_grade\":\"PROVISIONAL_NOT_CALIBRATED\",\"candidate_set_hash\":\"3bd4a3b23ffc247e993f94bb1c7de40d204a4f5f6b9cf16f7ff3156ac186ff98\",\"parameter_source\":\"AUTHORED_DESIGN_HYPOTHESIS_TEST_ONLY\",\"policy_hash\":\"0f9d9598d9731f36a3b52570bdf17780fce172495bd54b1fbdeeb3c92753fb1e\",\"policy_id\":\"B2-TEST-COORDINATE\",\"policy_version\":\"1.0.0\",\"schema\":\"P1_TEST_ONLY_AUTHORED_SELECTION_POLICY_V1\",\"weight_units\":{\"ALT-CARE\":1,\"ALT-CHILD-SEARCH\":0,\"ALT-NONE\":0,\"ALT-PEER\":0}},\"rule\":\"B2_SYNTHETIC_WITNESSED_INGRESS@1\",\"selected_candidate_id\":\"ALT-CARE\",\"witness\":{\"candidate_hash\":\"30fad96058ae57d0ff0ae855f09a545fc4acb1a18ecb22c9425672b995ae3e56\",\"context_hash\":\"ab8b28e658716bbb4380e647ac69e158b1f470a257918be7c9157021c634645c\",\"event_id\":\"E2-ID-3\",\"expected_actor_state_hash\":\"c28d6ccb925e39cd9ba270d9b0632c4adb00e60fe799bc558e3885838ca3e9f0\",\"hash\":\"11f98af524b59610e8c6cba37de64443d90b80842454dee4a96b0b38cc2348e4\",\"interrupted\":true,\"issuer\":\"B2_WORLD_FIXTURE_AUTHORIZER\",\"number\":1,\"objective_occurrence\":\"OBSERVED_INTERACTION_AFTER_MATERIAL_LOSS\",\"observed_interpretations\":[{\"accessible_source_refs\":[\"THEFT-1\"],\"claim\":\"A careful response could reduce future loss; I am worried.\",\"claim_kind\":\"ATTRIBUTED_UNVERIFIED_ASSERTION\",\"claim_world_fact_ref\":null,\"speaker_actor_ref\":\"CARE-1\",\"utterance\":\"We should report this and see what can be secured.\"}],\"other_actions\":[{\"action\":\"joint_inventory\",\"p1_actor\":\"CARE-1\",\"participant\":{\"actor_id\":\"caretaker\",\"history\":[{\"activity\":\"organize_work\",\"actor_access\":\"EXPLICIT\",\"actor_id\":\"caretaker\",\"counterpart\":\"workshop\",\"episode_id\":\"caretaker_work\",\"outcome\":\"tools_available\",\"parent_refs\":[],\"project\":\"own_work\",\"provenance\":\"SYNTHETIC_PREHISTORY_FIXTURE\",\"time\":0}],\"project\":\"own_work\"},\"source_history_hash\":\"d862ca0cbca948f54059451042d2296de0a07f8ee3f5ff9cf73f2342f02c66b7\"}],\"outcome\":\"OCCURRED\",\"parent_fact_hash\":\"42fb867561347435fef23470d2dc17c5681ace69d6aefe9c467bfb32324a5ee7\",\"participants\":[\"CHILD-1\",\"CARE-1\"],\"place\":\"GARAGE-1\",\"project\":\"repair_route\",\"proposal_hash\":\"32a8cb92b29a064b2d9320b3d9db676dcdbe83857be47503402a481ec38f93c5\",\"schema\":\"B2_INDEPENDENT_SYNTHETIC_OCCURRENCE_WITNESS@1\",\"time\":\"2026-10-17T10:00:00Z\",\"world_facts\":{\"group_criminality\":\"NOT_ESTABLISHED\",\"known_thief\":null},\"world_ref\":\"WORLD-BIKE-1\"}}",
+        "ee6baa2f79d8bb76f6267286766183975461ffd88ee895ca2847bbed3201a83b",
+        "e09589b1129866f3a17b8a072579a1bf6bd26056b2875a4a2707c17d1d34e7b7"
+      ],
+      [
+        "E2-ID-4",
+        "{\"actor\":\"child\",\"context\":{\"action_opportunities\":{\"OP-CARE-REPORT\":{\"act_kind\":\"REPORT_MISSING_BIKE\",\"actor_ref\":\"CARE-1\",\"place_ref\":\"GARAGE-1\",\"time\":\"2026-10-17T10:00:00Z\"},\"OP-CARE-SPEAK\":{\"act_kind\":\"SPEAK_TO_CHILD\",\"actor_ref\":\"CARE-1\",\"place_ref\":\"GARAGE-1\",\"time\":\"2026-10-17T10:00:00Z\"},\"OP-CHILD-SEARCH\":{\"act_kind\":\"CHECK_GARAGE\",\"actor_ref\":\"CHILD-1\",\"place_ref\":\"GARAGE-1\",\"time\":\"2026-10-17T10:00:00Z\"},\"OP-PEER-SPEAK\":{\"act_kind\":\"SPEAK_TO_CHILD\",\"actor_ref\":\"PEER-1\",\"place_ref\":\"GARAGE-1\",\"time\":\"2026-10-17T10:00:00Z\"}},\"actor_access\":{\"CARE-1\":[\"THEFT-1\"],\"CHILD-1\":[\"THEFT-1\"],\"NEIGHBOR-1\":[],\"PEER-1\":[\"THEFT-1\"]},\"allowed_role_refs\":[\"CHILD\",\"CAREGIVER\",\"PEER\",\"NEIGHBOR\"],\"as_of\":\"2026-10-17T10:00:00Z\",\"context_hash\":\"ab8b28e658716bbb4380e647ac69e158b1f470a257918be7c9157021c634645c\",\"facts\":{\"DENIED-PAST-THEFT\":{\"epistemic_class\":\"ADMITTED_OBJECTIVE_EVENT\",\"kind\":\"OTHER_THEFT\",\"occurred\":false,\"time\":\"2026-10-16T09:00:00Z\"},\"PRIVATE-CAREGIVER-1\":{\"epistemic_class\":\"PRIVATE_ACTOR_STATE\",\"kind\":\"UNREADABLE_CAREGIVER_CONCERN\",\"occurred\":true,\"time\":\"2026-10-17T08:00:00Z\"},\"THEFT-1\":{\"epistemic_class\":\"ADMITTED_OBJECTIVE_EVENT\",\"kind\":\"BIKE_STOLEN\",\"known_culprit\":null,\"material_object_ref\":\"BIKE-CHILD-1\",\"occurred\":true,\"time\":\"2026-10-17T09:00:00Z\"}},\"histories\":{\"H-CARE-CONTROL\":{\"owner\":\"CARE-1\",\"source\":\"SYNTHETIC_HISTORY\",\"summary\":\"caregiver has history of intrusive scrutiny and material safety concern\"},\"H-CARE-PROTECT\":{\"owner\":\"CARE-1\",\"source\":\"B2_INDEPENDENT_TYPED_PARTICIPANT\",\"summary\":\"typed participant digest d862ca0cbca948f54059451042d2296de0a07f8ee3f5ff9cf73f2342f02c66b7\"},\"H-CHILD-1\":{\"owner\":\"CHILD-1\",\"source\":\"B2_EXACT_SYNTHETIC_PREHISTORY\",\"summary\":\"typed history digest 77df16a7f51e350940f083026e04b07689b890050bc3a90ae7aacb1da4588e0e\"},\"H-CHILD-2\":{\"owner\":\"CHILD-1\",\"source\":\"SYNTHETIC_HISTORY\",\"summary\":\"child bicycle gift and repeated arbitrary searches; reacts to control with caution\"},\"H-NEIGHBOR-INDEPENDENT\":{\"owner\":\"NEIGHBOR-1\",\"source\":\"SYNTHETIC_HISTORY\",\"summary\":\"neighbor has independent daily schedule unrelated to theft\"},\"H-PEER-BELONGING\":{\"owner\":\"PEER-1\",\"source\":\"B2_INDEPENDENT_TYPED_PARTICIPANT\",\"summary\":\"typed participant digest 947b8a4774423252204592913fa41f5c16032c2662f0615d197d04886c040044\"}},\"material_affordances\":[\"GARAGE_ACCESS\",\"PHONE_AVAILABLE\"],\"people\":{\"CARE-1\":{\"history_ref\":\"H-CARE-PROTECT\",\"role\":\"CAREGIVER\"},\"CHILD-1\":{\"history_ref\":\"H-CHILD-1\",\"role\":\"CHILD\"},\"NEIGHBOR-1\":{\"history_ref\":\"H-NEIGHBOR-INDEPENDENT\",\"role\":\"NEIGHBOR\"},\"PEER-1\":{\"history_ref\":\"H-PEER-BELONGING\",\"role\":\"PEER\"}},\"places\":[\"GARAGE-1\"],\"schema\":\"P1_SYNTHETIC_CONTEXT_V1\",\"world_ref\":\"WORLD-BIKE-1\"},\"packet\":{\"as_of\":\"2026-10-17T10:00:00Z\",\"candidates\":[{\"action_refs\":[{\"act_kind\":\"SPEAK_TO_CHILD\",\"actor_ref\":\"CARE-1\",\"opportunity_ref\":\"OP-CARE-SPEAK\"}],\"candidate_id\":\"ALT-CARE\",\"courses\":[{\"action_ref\":\"OP-CARE-SPEAK\",\"actor_ref\":\"CARE-1\",\"course_id\":\"COURSE-CARE-SPEAK\",\"description\":\"Caregiver considers reassurance or practical protective speech\"}],\"family\":\"OBSERVABLE_UTTERANCE\",\"interpretations\":[{\"accessible_source_refs\":[\"THEFT-1\"],\"claim\":\"A careful response could reduce future loss; I am worried.\",\"claim_kind\":\"ATTRIBUTED_UNVERIFIED_ASSERTION\",\"claim_world_fact_ref\":null,\"speaker_actor_ref\":\"CARE-1\",\"utterance\":\"We should report this and see what can be secured.\"}],\"parent_event_ref\":\"THEFT-1\",\"participants\":[\"CHILD-1\",\"CARE-1\"],\"place_ref\":\"GARAGE-1\",\"possible_effects\":[{\"description\":\"Child may perceive factual prudence yet feel emotionally unheard\",\"effect_kind\":\"MAY_RETAIN_CONTRADICTION\",\"epistemic_class\":\"HYPOTHESIS_ONLY\",\"owner_required\":\"CAN011_EXTERNAL_OWNER\",\"target_actor_ref\":\"CHILD-1\"}],\"prerequisites\":[{\"kind\":\"WORLD_FACT_TRUE\",\"ref\":\"THEFT-1\"},{\"kind\":\"ACTOR_ACCESS\",\"ref\":\"CARE-1|THEFT-1\"},{\"kind\":\"HISTORY_PRESENT\",\"ref\":\"CARE-1|H-CARE-PROTECT\"},{\"kind\":\"HISTORY_PRESENT\",\"ref\":\"CHILD-1|H-CHILD-1\"}],\"prospective_participants\":[],\"readset\":[\"THEFT-1\"],\"time\":\"2026-10-17T10:00:00Z\",\"uncertainty\":\"Competing possible receptions, no privileged insight or fixed psychological consequence\",\"visibility\":[\"CHILD-1\",\"CARE-1\"]},{\"action_refs\":[{\"act_kind\":\"SPEAK_TO_CHILD\",\"actor_ref\":\"PEER-1\",\"opportunity_ref\":\"OP-PEER-SPEAK\"}],\"candidate_id\":\"ALT-PEER\",\"courses\":[{\"action_ref\":\"OP-PEER-SPEAK\",\"actor_ref\":\"PEER-1\",\"course_id\":\"COURSE-PEER-SPEAK\",\"description\":\"Peer might circulate unsupported scapegoating rumor\"}],\"family\":\"OBSERVABLE_UTTERANCE\",\"interpretations\":[{\"accessible_source_refs\":[\"THEFT-1\"],\"claim\":\"Unsubstantiated blame of neighbors in a peer rumor\",\"claim_kind\":\"ATTRIBUTED_UNVERIFIED_ASSERTION\",\"claim_world_fact_ref\":null,\"speaker_actor_ref\":\"PEER-1\",\"utterance\":\"People from that block always take things.\"}],\"parent_event_ref\":\"THEFT-1\",\"participants\":[\"CHILD-1\",\"PEER-1\"],\"place_ref\":\"GARAGE-1\",\"possible_effects\":[{\"description\":\"Child could reject or absorb peer narrative, unknown\",\"effect_kind\":\"MAY_RETAIN_CONTRADICTION\",\"epistemic_class\":\"HYPOTHESIS_ONLY\",\"owner_required\":\"CAN011_EXTERNAL_OWNER\",\"target_actor_ref\":\"CHILD-1\"}],\"prerequisites\":[{\"kind\":\"WORLD_FACT_TRUE\",\"ref\":\"THEFT-1\"},{\"kind\":\"ACTOR_ACCESS\",\"ref\":\"PEER-1|THEFT-1\"},{\"kind\":\"HISTORY_PRESENT\",\"ref\":\"PEER-1|H-PEER-BELONGING\"},{\"kind\":\"HISTORY_PRESENT\",\"ref\":\"CHILD-1|H-CHILD-1\"}],\"prospective_participants\":[],\"readset\":[\"THEFT-1\"],\"time\":\"2026-10-17T10:00:00Z\",\"uncertainty\":\"Competing possible receptions, no privileged insight or fixed psychological consequence\",\"visibility\":[\"CHILD-1\",\"PEER-1\"]},{\"action_refs\":[{\"act_kind\":\"CHECK_GARAGE\",\"actor_ref\":\"CHILD-1\",\"opportunity_ref\":\"OP-CHILD-SEARCH\"}],\"candidate_id\":\"ALT-CHILD-SEARCH\",\"courses\":[{\"action_ref\":\"OP-CHILD-SEARCH\",\"actor_ref\":\"CHILD-1\",\"course_id\":\"COURSE-CHILD-SEARCH\",\"description\":\"Child might look for lock marks before deciding what happened\"}],\"family\":\"MATERIAL_ACTION_PROPOSAL\",\"interpretations\":[],\"parent_event_ref\":\"THEFT-1\",\"participants\":[\"CHILD-1\"],\"place_ref\":\"GARAGE-1\",\"possible_effects\":[{\"description\":\"No durable response is required\",\"effect_kind\":\"NO_CHANGE\",\"epistemic_class\":\"HYPOTHESIS_ONLY\",\"owner_required\":\"CAN011_EXTERNAL_OWNER\",\"target_actor_ref\":\"CHILD-1\"}],\"prerequisites\":[{\"kind\":\"WORLD_FACT_TRUE\",\"ref\":\"THEFT-1\"},{\"kind\":\"MATERIAL_AFFORDANCE\",\"ref\":\"GARAGE_ACCESS\"},{\"kind\":\"HISTORY_PRESENT\",\"ref\":\"CHILD-1|H-CHILD-1\"}],\"prospective_participants\":[],\"readset\":[\"THEFT-1\"],\"time\":\"2026-10-17T10:00:00Z\",\"uncertainty\":\"Competing possible receptions, no privileged insight or fixed psychological consequence\",\"visibility\":[\"CHILD-1\"]},{\"action_refs\":[],\"candidate_id\":\"ALT-NONE\",\"courses\":[],\"family\":\"NONOCCURRENCE\",\"interpretations\":[],\"parent_event_ref\":\"THEFT-1\",\"participants\":[\"CHILD-1\"],\"place_ref\":\"GARAGE-1\",\"possible_effects\":[],\"prerequisites\":[{\"kind\":\"WORLD_FACT_TRUE\",\"ref\":\"THEFT-1\"},{\"kind\":\"HISTORY_PRESENT\",\"ref\":\"CHILD-1|H-CHILD-1\"}],\"prospective_participants\":[],\"readset\":[\"THEFT-1\"],\"time\":\"2026-10-17T10:00:00Z\",\"uncertainty\":\"Competing possible receptions, no privileged insight or fixed psychological consequence\",\"visibility\":[\"CHILD-1\"]}],\"context_hash\":\"ab8b28e658716bbb4380e647ac69e158b1f470a257918be7c9157021c634645c\",\"epistemic_class\":\"LLM_PROPOSAL\",\"model\":{\"model_version\":\"SYNTH-1\",\"prompt_sha256\":\"09c625dda784aa41702a734b8c2141b520726e69809e3f20aa053c231413dae6\",\"prompt_version\":\"P1-PROMPT-1\",\"provider_label\":\"FROZEN_FABRICATED_PACKET_NO_LIVE_MODEL\",\"sampling_record\":{\"kind\":\"FROZEN_AUTHOR_SYNTHETIC\",\"model_draws\":\"NOT_RECORDED_NOT_CAUSAL\"}},\"proposal_hash\":\"32a8cb92b29a064b2d9320b3d9db676dcdbe83857be47503402a481ec38f93c5\",\"proposal_id\":\"B2-PACKET-1\",\"schema\":\"P1_LLM_ALTERNATIVES_PROPOSAL_V1\",\"world_ref\":\"WORLD-BIKE-1\"},\"policy\":{\"calibration_grade\":\"PROVISIONAL_NOT_CALIBRATED\",\"candidate_set_hash\":\"3bd4a3b23ffc247e993f94bb1c7de40d204a4f5f6b9cf16f7ff3156ac186ff98\",\"parameter_source\":\"AUTHORED_DESIGN_HYPOTHESIS_TEST_ONLY\",\"policy_hash\":\"0f9d9598d9731f36a3b52570bdf17780fce172495bd54b1fbdeeb3c92753fb1e\",\"policy_id\":\"B2-TEST-COORDINATE\",\"policy_version\":\"1.0.0\",\"schema\":\"P1_TEST_ONLY_AUTHORED_SELECTION_POLICY_V1\",\"weight_units\":{\"ALT-CARE\":1,\"ALT-CHILD-SEARCH\":0,\"ALT-NONE\":0,\"ALT-PEER\":0}},\"rule\":\"B2_SYNTHETIC_WITNESSED_INGRESS@1\",\"selected_candidate_id\":\"ALT-CARE\",\"witness\":{\"candidate_hash\":\"30fad96058ae57d0ff0ae855f09a545fc4acb1a18ecb22c9425672b995ae3e56\",\"context_hash\":\"ab8b28e658716bbb4380e647ac69e158b1f470a257918be7c9157021c634645c\",\"event_id\":\"E2-ID-4\",\"expected_actor_state_hash\":\"c28d6ccb925e39cd9ba270d9b0632c4adb00e60fe799bc558e3885838ca3e9f0\",\"hash\":\"2525cf172f264561da153dfdf9b7d9d0028bbe2ea3ec7aab51e67031ded22765\",\"interrupted\":true,\"issuer\":\"B2_WORLD_FIXTURE_AUTHORIZER\",\"number\":1,\"objective_occurrence\":\"OBSERVED_INTERACTION_AFTER_MATERIAL_LOSS\",\"observed_interpretations\":[{\"accessible_source_refs\":[\"THEFT-1\"],\"claim\":\"A careful response could reduce future loss; I am worried.\",\"claim_kind\":\"ATTRIBUTED_UNVERIFIED_ASSERTION\",\"claim_world_fact_ref\":null,\"speaker_actor_ref\":\"CARE-1\",\"utterance\":\"We should report this and see what can be secured.\"}],\"other_actions\":[{\"action\":\"joint_inventory\",\"p1_actor\":\"CARE-1\",\"participant\":{\"actor_id\":\"caretaker\",\"history\":[{\"activity\":\"organize_work\",\"actor_access\":\"EXPLICIT\",\"actor_id\":\"caretaker\",\"counterpart\":\"workshop\",\"episode_id\":\"caretaker_work\",\"outcome\":\"tools_available\",\"parent_refs\":[],\"project\":\"own_work\",\"provenance\":\"SYNTHETIC_PREHISTORY_FIXTURE\",\"time\":0}],\"project\":\"own_work\"},\"source_history_hash\":\"d862ca0cbca948f54059451042d2296de0a07f8ee3f5ff9cf73f2342f02c66b7\"}],\"outcome\":\"OCCURRED\",\"parent_fact_hash\":\"42fb867561347435fef23470d2dc17c5681ace69d6aefe9c467bfb32324a5ee7\",\"participants\":[\"CHILD-1\",\"CARE-1\"],\"place\":\"GARAGE-1\",\"project\":\"repair_route\",\"proposal_hash\":\"32a8cb92b29a064b2d9320b3d9db676dcdbe83857be47503402a481ec38f93c5\",\"schema\":\"B2_INDEPENDENT_SYNTHETIC_OCCURRENCE_WITNESS@1\",\"time\":\"2026-10-17T10:00:00Z\",\"world_facts\":{\"group_criminality\":\"NOT_ESTABLISHED\",\"known_thief\":null},\"world_ref\":\"WORLD-BIKE-1\"}}",
+        "46f0739385e61cdec7337f62c32158eef00e70f45550ea54d267ce74f85b25e8",
+        "f2905759187b5ffe98cce08c63075f678b5d437325f5ad6a0e3e963b6017a14b"
+      ],
+      [
+        "E2-ID-5",
+        "{\"actor\":\"child\",\"context\":{\"action_opportunities\":{\"OP-CARE-REPORT\":{\"act_kind\":\"REPORT_MISSING_BIKE\",\"actor_ref\":\"CARE-1\",\"place_ref\":\"GARAGE-1\",\"time\":\"2026-10-17T10:00:00Z\"},\"OP-CARE-SPEAK\":{\"act_kind\":\"SPEAK_TO_CHILD\",\"actor_ref\":\"CARE-1\",\"place_ref\":\"GARAGE-1\",\"time\":\"2026-10-17T10:00:00Z\"},\"OP-CHILD-SEARCH\":{\"act_kind\":\"CHECK_GARAGE\",\"actor_ref\":\"CHILD-1\",\"place_ref\":\"GARAGE-1\",\"time\":\"2026-10-17T10:00:00Z\"},\"OP-PEER-SPEAK\":{\"act_kind\":\"SPEAK_TO_CHILD\",\"actor_ref\":\"PEER-1\",\"place_ref\":\"GARAGE-1\",\"time\":\"2026-10-17T10:00:00Z\"}},\"actor_access\":{\"CARE-1\":[\"THEFT-1\"],\"CHILD-1\":[\"THEFT-1\"],\"NEIGHBOR-1\":[],\"PEER-1\":[\"THEFT-1\"]},\"allowed_role_refs\":[\"CHILD\",\"CAREGIVER\",\"PEER\",\"NEIGHBOR\"],\"as_of\":\"2026-10-17T10:00:00Z\",\"context_hash\":\"ab8b28e658716bbb4380e647ac69e158b1f470a257918be7c9157021c634645c\",\"facts\":{\"DENIED-PAST-THEFT\":{\"epistemic_class\":\"ADMITTED_OBJECTIVE_EVENT\",\"kind\":\"OTHER_THEFT\",\"occurred\":false,\"time\":\"2026-10-16T09:00:00Z\"},\"PRIVATE-CAREGIVER-1\":{\"epistemic_class\":\"PRIVATE_ACTOR_STATE\",\"kind\":\"UNREADABLE_CAREGIVER_CONCERN\",\"occurred\":true,\"time\":\"2026-10-17T08:00:00Z\"},\"THEFT-1\":{\"epistemic_class\":\"ADMITTED_OBJECTIVE_EVENT\",\"kind\":\"BIKE_STOLEN\",\"known_culprit\":null,\"material_object_ref\":\"BIKE-CHILD-1\",\"occurred\":true,\"time\":\"2026-10-17T09:00:00Z\"}},\"histories\":{\"H-CARE-CONTROL\":{\"owner\":\"CARE-1\",\"source\":\"SYNTHETIC_HISTORY\",\"summary\":\"caregiver has history of intrusive scrutiny and material safety concern\"},\"H-CARE-PROTECT\":{\"owner\":\"CARE-1\",\"source\":\"B2_INDEPENDENT_TYPED_PARTICIPANT\",\"summary\":\"typed participant digest d862ca0cbca948f54059451042d2296de0a07f8ee3f5ff9cf73f2342f02c66b7\"},\"H-CHILD-1\":{\"owner\":\"CHILD-1\",\"source\":\"B2_EXACT_SYNTHETIC_PREHISTORY\",\"summary\":\"typed history digest 77df16a7f51e350940f083026e04b07689b890050bc3a90ae7aacb1da4588e0e\"},\"H-CHILD-2\":{\"owner\":\"CHILD-1\",\"source\":\"SYNTHETIC_HISTORY\",\"summary\":\"child bicycle gift and repeated arbitrary searches; reacts to control with caution\"},\"H-NEIGHBOR-INDEPENDENT\":{\"owner\":\"NEIGHBOR-1\",\"source\":\"SYNTHETIC_HISTORY\",\"summary\":\"neighbor has independent daily schedule unrelated to theft\"},\"H-PEER-BELONGING\":{\"owner\":\"PEER-1\",\"source\":\"B2_INDEPENDENT_TYPED_PARTICIPANT\",\"summary\":\"typed participant digest 947b8a4774423252204592913fa41f5c16032c2662f0615d197d04886c040044\"}},\"material_affordances\":[\"GARAGE_ACCESS\",\"PHONE_AVAILABLE\"],\"people\":{\"CARE-1\":{\"history_ref\":\"H-CARE-PROTECT\",\"role\":\"CAREGIVER\"},\"CHILD-1\":{\"history_ref\":\"H-CHILD-1\",\"role\":\"CHILD\"},\"NEIGHBOR-1\":{\"history_ref\":\"H-NEIGHBOR-INDEPENDENT\",\"role\":\"NEIGHBOR\"},\"PEER-1\":{\"history_ref\":\"H-PEER-BELONGING\",\"role\":\"PEER\"}},\"places\":[\"GARAGE-1\"],\"schema\":\"P1_SYNTHETIC_CONTEXT_V1\",\"world_ref\":\"WORLD-BIKE-1\"},\"packet\":{\"as_of\":\"2026-10-17T10:00:00Z\",\"candidates\":[{\"action_refs\":[{\"act_kind\":\"SPEAK_TO_CHILD\",\"actor_ref\":\"CARE-1\",\"opportunity_ref\":\"OP-CARE-SPEAK\"}],\"candidate_id\":\"ALT-CARE\",\"courses\":[{\"action_ref\":\"OP-CARE-SPEAK\",\"actor_ref\":\"CARE-1\",\"course_id\":\"COURSE-CARE-SPEAK\",\"description\":\"Caregiver considers reassurance or practical protective speech\"}],\"family\":\"OBSERVABLE_UTTERANCE\",\"interpretations\":[{\"accessible_source_refs\":[\"THEFT-1\"],\"claim\":\"A careful response could reduce future loss; I am worried.\",\"claim_kind\":\"ATTRIBUTED_UNVERIFIED_ASSERTION\",\"claim_world_fact_ref\":null,\"speaker_actor_ref\":\"CARE-1\",\"utterance\":\"We should report this and see what can be secured.\"}],\"parent_event_ref\":\"THEFT-1\",\"participants\":[\"CHILD-1\",\"CARE-1\"],\"place_ref\":\"GARAGE-1\",\"possible_effects\":[{\"description\":\"Child may perceive factual prudence yet feel emotionally unheard\",\"effect_kind\":\"MAY_RETAIN_CONTRADICTION\",\"epistemic_class\":\"HYPOTHESIS_ONLY\",\"owner_required\":\"CAN011_EXTERNAL_OWNER\",\"target_actor_ref\":\"CHILD-1\"}],\"prerequisites\":[{\"kind\":\"WORLD_FACT_TRUE\",\"ref\":\"THEFT-1\"},{\"kind\":\"ACTOR_ACCESS\",\"ref\":\"CARE-1|THEFT-1\"},{\"kind\":\"HISTORY_PRESENT\",\"ref\":\"CARE-1|H-CARE-PROTECT\"},{\"kind\":\"HISTORY_PRESENT\",\"ref\":\"CHILD-1|H-CHILD-1\"}],\"prospective_participants\":[],\"readset\":[\"THEFT-1\"],\"time\":\"2026-10-17T10:00:00Z\",\"uncertainty\":\"Competing possible receptions, no privileged insight or fixed psychological consequence\",\"visibility\":[\"CHILD-1\",\"CARE-1\"]},{\"action_refs\":[{\"act_kind\":\"SPEAK_TO_CHILD\",\"actor_ref\":\"PEER-1\",\"opportunity_ref\":\"OP-PEER-SPEAK\"}],\"candidate_id\":\"ALT-PEER\",\"courses\":[{\"action_ref\":\"OP-PEER-SPEAK\",\"actor_ref\":\"PEER-1\",\"course_id\":\"COURSE-PEER-SPEAK\",\"description\":\"Peer might circulate unsupported scapegoating rumor\"}],\"family\":\"OBSERVABLE_UTTERANCE\",\"interpretations\":[{\"accessible_source_refs\":[\"THEFT-1\"],\"claim\":\"Unsubstantiated blame of neighbors in a peer rumor\",\"claim_kind\":\"ATTRIBUTED_UNVERIFIED_ASSERTION\",\"claim_world_fact_ref\":null,\"speaker_actor_ref\":\"PEER-1\",\"utterance\":\"People from that block always take things.\"}],\"parent_event_ref\":\"THEFT-1\",\"participants\":[\"CHILD-1\",\"PEER-1\"],\"place_ref\":\"GARAGE-1\",\"possible_effects\":[{\"description\":\"Child could reject or absorb peer narrative, unknown\",\"effect_kind\":\"MAY_RETAIN_CONTRADICTION\",\"epistemic_class\":\"HYPOTHESIS_ONLY\",\"owner_required\":\"CAN011_EXTERNAL_OWNER\",\"target_actor_ref\":\"CHILD-1\"}],\"prerequisites\":[{\"kind\":\"WORLD_FACT_TRUE\",\"ref\":\"THEFT-1\"},{\"kind\":\"ACTOR_ACCESS\",\"ref\":\"PEER-1|THEFT-1\"},{\"kind\":\"HISTORY_PRESENT\",\"ref\":\"PEER-1|H-PEER-BELONGING\"},{\"kind\":\"HISTORY_PRESENT\",\"ref\":\"CHILD-1|H-CHILD-1\"}],\"prospective_participants\":[],\"readset\":[\"THEFT-1\"],\"time\":\"2026-10-17T10:00:00Z\",\"uncertainty\":\"Competing possible receptions, no privileged insight or fixed psychological consequence\",\"visibility\":[\"CHILD-1\",\"PEER-1\"]},{\"action_refs\":[{\"act_kind\":\"CHECK_GARAGE\",\"actor_ref\":\"CHILD-1\",\"opportunity_ref\":\"OP-CHILD-SEARCH\"}],\"candidate_id\":\"ALT-CHILD-SEARCH\",\"courses\":[{\"action_ref\":\"OP-CHILD-SEARCH\",\"actor_ref\":\"CHILD-1\",\"course_id\":\"COURSE-CHILD-SEARCH\",\"description\":\"Child might look for lock marks before deciding what happened\"}],\"family\":\"MATERIAL_ACTION_PROPOSAL\",\"interpretations\":[],\"parent_event_ref\":\"THEFT-1\",\"participants\":[\"CHILD-1\"],\"place_ref\":\"GARAGE-1\",\"possible_effects\":[{\"description\":\"No durable response is required\",\"effect_kind\":\"NO_CHANGE\",\"epistemic_class\":\"HYPOTHESIS_ONLY\",\"owner_required\":\"CAN011_EXTERNAL_OWNER\",\"target_actor_ref\":\"CHILD-1\"}],\"prerequisites\":[{\"kind\":\"WORLD_FACT_TRUE\",\"ref\":\"THEFT-1\"},{\"kind\":\"MATERIAL_AFFORDANCE\",\"ref\":\"GARAGE_ACCESS\"},{\"kind\":\"HISTORY_PRESENT\",\"ref\":\"CHILD-1|H-CHILD-1\"}],\"prospective_participants\":[],\"readset\":[\"THEFT-1\"],\"time\":\"2026-10-17T10:00:00Z\",\"uncertainty\":\"Competing possible receptions, no privileged insight or fixed psychological consequence\",\"visibility\":[\"CHILD-1\"]},{\"action_refs\":[],\"candidate_id\":\"ALT-NONE\",\"courses\":[],\"family\":\"NONOCCURRENCE\",\"interpretations\":[],\"parent_event_ref\":\"THEFT-1\",\"participants\":[\"CHILD-1\"],\"place_ref\":\"GARAGE-1\",\"possible_effects\":[],\"prerequisites\":[{\"kind\":\"WORLD_FACT_TRUE\",\"ref\":\"THEFT-1\"},{\"kind\":\"HISTORY_PRESENT\",\"ref\":\"CHILD-1|H-CHILD-1\"}],\"prospective_participants\":[],\"readset\":[\"THEFT-1\"],\"time\":\"2026-10-17T10:00:00Z\",\"uncertainty\":\"Competing possible receptions, no privileged insight or fixed psychological consequence\",\"visibility\":[\"CHILD-1\"]}],\"context_hash\":\"ab8b28e658716bbb4380e647ac69e158b1f470a257918be7c9157021c634645c\",\"epistemic_class\":\"LLM_PROPOSAL\",\"model\":{\"model_version\":\"SYNTH-1\",\"prompt_sha256\":\"09c625dda784aa41702a734b8c2141b520726e69809e3f20aa053c231413dae6\",\"prompt_version\":\"P1-PROMPT-1\",\"provider_label\":\"FROZEN_FABRICATED_PACKET_NO_LIVE_MODEL\",\"sampling_record\":{\"kind\":\"FROZEN_AUTHOR_SYNTHETIC\",\"model_draws\":\"NOT_RECORDED_NOT_CAUSAL\"}},\"proposal_hash\":\"32a8cb92b29a064b2d9320b3d9db676dcdbe83857be47503402a481ec38f93c5\",\"proposal_id\":\"B2-PACKET-1\",\"schema\":\"P1_LLM_ALTERNATIVES_PROPOSAL_V1\",\"world_ref\":\"WORLD-BIKE-1\"},\"policy\":{\"calibration_grade\":\"PROVISIONAL_NOT_CALIBRATED\",\"candidate_set_hash\":\"3bd4a3b23ffc247e993f94bb1c7de40d204a4f5f6b9cf16f7ff3156ac186ff98\",\"parameter_source\":\"AUTHORED_DESIGN_HYPOTHESIS_TEST_ONLY\",\"policy_hash\":\"0f9d9598d9731f36a3b52570bdf17780fce172495bd54b1fbdeeb3c92753fb1e\",\"policy_id\":\"B2-TEST-COORDINATE\",\"policy_version\":\"1.0.0\",\"schema\":\"P1_TEST_ONLY_AUTHORED_SELECTION_POLICY_V1\",\"weight_units\":{\"ALT-CARE\":1,\"ALT-CHILD-SEARCH\":0,\"ALT-NONE\":0,\"ALT-PEER\":0}},\"rule\":\"B2_SYNTHETIC_WITNESSED_INGRESS@1\",\"selected_candidate_id\":\"ALT-CARE\",\"witness\":{\"candidate_hash\":\"30fad96058ae57d0ff0ae855f09a545fc4acb1a18ecb22c9425672b995ae3e56\",\"context_hash\":\"ab8b28e658716bbb4380e647ac69e158b1f470a257918be7c9157021c634645c\",\"event_id\":\"E2-ID-5\",\"expected_actor_state_hash\":\"c28d6ccb925e39cd9ba270d9b0632c4adb00e60fe799bc558e3885838ca3e9f0\",\"hash\":\"acb84583f87478f7e044ccccf0a0dbf6aa6b398a86e6900965218e2b7da37d38\",\"interrupted\":true,\"issuer\":\"B2_WORLD_FIXTURE_AUTHORIZER\",\"number\":1,\"objective_occurrence\":\"OBSERVED_INTERACTION_AFTER_MATERIAL_LOSS\",\"observed_interpretations\":[{\"accessible_source_refs\":[\"THEFT-1\"],\"claim\":\"A careful response could reduce future loss; I am worried.\",\"claim_kind\":\"ATTRIBUTED_UNVERIFIED_ASSERTION\",\"claim_world_fact_ref\":null,\"speaker_actor_ref\":\"CARE-1\",\"utterance\":\"We should report this and see what can be secured.\"}],\"other_actions\":[{\"action\":\"joint_inventory\",\"p1_actor\":\"CARE-1\",\"participant\":{\"actor_id\":\"caretaker\",\"history\":[{\"activity\":\"organize_work\",\"actor_access\":\"EXPLICIT\",\"actor_id\":\"caretaker\",\"counterpart\":\"workshop\",\"episode_id\":\"caretaker_work\",\"outcome\":\"tools_available\",\"parent_refs\":[],\"project\":\"own_work\",\"provenance\":\"SYNTHETIC_PREHISTORY_FIXTURE\",\"time\":0}],\"project\":\"own_work\"},\"source_history_hash\":\"d862ca0cbca948f54059451042d2296de0a07f8ee3f5ff9cf73f2342f02c66b7\"}],\"outcome\":\"OCCURRED\",\"parent_fact_hash\":\"42fb867561347435fef23470d2dc17c5681ace69d6aefe9c467bfb32324a5ee7\",\"participants\":[\"CHILD-1\",\"CARE-1\"],\"place\":\"GARAGE-1\",\"project\":\"repair_route\",\"proposal_hash\":\"32a8cb92b29a064b2d9320b3d9db676dcdbe83857be47503402a481ec38f93c5\",\"schema\":\"B2_INDEPENDENT_SYNTHETIC_OCCURRENCE_WITNESS@1\",\"time\":\"2026-10-17T10:00:00Z\",\"world_facts\":{\"group_criminality\":\"NOT_ESTABLISHED\",\"known_thief\":null},\"world_ref\":\"WORLD-BIKE-1\"}}",
+        "4af9ea5b36c2c9f6ea720fef3ecf107251e38265b3971df29638274e60a17766",
+        "0351f52db8af20b75cbda1d7ff37fe918fe9768aabbeab015ab8152d21bcc9ed"
+      ]
+    ],
+    "b2_ingress": [
+      [
+        "0351f52db8af20b75cbda1d7ff37fe918fe9768aabbeab015ab8152d21bcc9ed",
+        "{\"attributed_claims\":[{\"accessible_source_refs\":[\"THEFT-1\"],\"claim\":\"A careful response could reduce future loss; I am worried.\",\"claim_kind\":\"ATTRIBUTED_UNVERIFIED_ASSERTION\",\"claim_world_fact_ref\":null,\"speaker_actor_ref\":\"CARE-1\",\"utterance\":\"We should report this and see what can be secured.\"}],\"event_ref\":\"4af9ea5b36c2c9f6ea720fef3ecf107251e38265b3971df29638274e60a17766\",\"hash\":\"0351f52db8af20b75cbda1d7ff37fe918fe9768aabbeab015ab8152d21bcc9ed\",\"objective_world_facts\":{\"group_criminality\":\"NOT_ESTABLISHED\",\"known_thief\":null},\"proposal_ref\":\"32a8cb92b29a064b2d9320b3d9db676dcdbe83857be47503402a481ec38f93c5\",\"rule\":\"B2_SYNTHETIC_WITNESSED_INGRESS@1\",\"selected_candidate_id\":\"ALT-CARE\",\"status\":\"ADMITTED_SYNTHETIC_FIXTURE_ONLY\",\"witness_ref\":\"acb84583f87478f7e044ccccf0a0dbf6aa6b398a86e6900965218e2b7da37d38\"}"
+      ],
+      [
+        "5d52fa54702a8ee23d55ca4515186330b645bca25963f9cf5494e6530048b3bb",
+        "{\"attributed_claims\":[{\"accessible_source_refs\":[\"THEFT-1\"],\"claim\":\"A careful response could reduce future loss; I am worried.\",\"claim_kind\":\"ATTRIBUTED_UNVERIFIED_ASSERTION\",\"claim_world_fact_ref\":null,\"speaker_actor_ref\":\"CARE-1\",\"utterance\":\"We should report this and see what can be secured.\"}],\"event_ref\":\"b6c6468bedf1eaf305792fd3079c26096500ed1c1fb3aa12547e98e79f2e6f29\",\"hash\":\"5d52fa54702a8ee23d55ca4515186330b645bca25963f9cf5494e6530048b3bb\",\"objective_world_facts\":{\"group_criminality\":\"NOT_ESTABLISHED\",\"known_thief\":null},\"proposal_ref\":\"32a8cb92b29a064b2d9320b3d9db676dcdbe83857be47503402a481ec38f93c5\",\"rule\":\"B2_SYNTHETIC_WITNESSED_INGRESS@1\",\"selected_candidate_id\":\"ALT-CARE\",\"status\":\"ADMITTED_SYNTHETIC_FIXTURE_ONLY\",\"witness_ref\":\"13dc994d03d1eda9859e6dacd77f77607f89421147cc9a7cd9c93ea677ec68e9\"}"
+      ],
+      [
+        "8b252e4c6d3595460fc014baed2fb9ae1dfdc8755d994766496f1ba034485cff",
+        "{\"attributed_claims\":[{\"accessible_source_refs\":[\"THEFT-1\"],\"claim\":\"A careful response could reduce future loss; I am worried.\",\"claim_kind\":\"ATTRIBUTED_UNVERIFIED_ASSERTION\",\"claim_world_fact_ref\":null,\"speaker_actor_ref\":\"CARE-1\",\"utterance\":\"We should report this and see what can be secured.\"}],\"event_ref\":\"99cc17d05c2a627b5a9f2d7f25241f80efc6376c59e3d2f5549b6c79d2b04d43\",\"hash\":\"8b252e4c6d3595460fc014baed2fb9ae1dfdc8755d994766496f1ba034485cff\",\"objective_world_facts\":{\"group_criminality\":\"NOT_ESTABLISHED\",\"known_thief\":null},\"proposal_ref\":\"32a8cb92b29a064b2d9320b3d9db676dcdbe83857be47503402a481ec38f93c5\",\"rule\":\"B2_SYNTHETIC_WITNESSED_INGRESS@1\",\"selected_candidate_id\":\"ALT-CARE\",\"status\":\"ADMITTED_SYNTHETIC_FIXTURE_ONLY\",\"witness_ref\":\"3583a14a1b904877e0fefb0b484d4021ea5d57eb092f9e68ba4a48b203cf1265\"}"
+      ],
+      [
+        "c7e74ceb42b7b55dc8e30ef67370edeb06e4c4aefbe92a04437e9ef0bf02a4fc",
+        "{\"attributed_claims\":[{\"accessible_source_refs\":[\"THEFT-1\"],\"claim\":\"A careful response could reduce future loss; I am worried.\",\"claim_kind\":\"ATTRIBUTED_UNVERIFIED_ASSERTION\",\"claim_world_fact_ref\":null,\"speaker_actor_ref\":\"CARE-1\",\"utterance\":\"We should report this and see what can be secured.\"}],\"event_ref\":\"a16274746510372375192804393269a760d0134f4f462e9e9d4f79d4401b2e7c\",\"hash\":\"c7e74ceb42b7b55dc8e30ef67370edeb06e4c4aefbe92a04437e9ef0bf02a4fc\",\"objective_world_facts\":{\"group_criminality\":\"NOT_ESTABLISHED\",\"known_thief\":null},\"proposal_ref\":\"32a8cb92b29a064b2d9320b3d9db676dcdbe83857be47503402a481ec38f93c5\",\"rule\":\"B2_SYNTHETIC_WITNESSED_INGRESS@1\",\"selected_candidate_id\":\"ALT-CARE\",\"status\":\"ADMITTED_SYNTHETIC_FIXTURE_ONLY\",\"witness_ref\":\"edcb98aeca452ae34e13522009f6d70dd609df1ce52e5b0c787e1b5f732d6ad3\"}"
+      ],
+      [
+        "e09589b1129866f3a17b8a072579a1bf6bd26056b2875a4a2707c17d1d34e7b7",
+        "{\"attributed_claims\":[{\"accessible_source_refs\":[\"THEFT-1\"],\"claim\":\"A careful response could reduce future loss; I am worried.\",\"claim_kind\":\"ATTRIBUTED_UNVERIFIED_ASSERTION\",\"claim_world_fact_ref\":null,\"speaker_actor_ref\":\"CARE-1\",\"utterance\":\"We should report this and see what can be secured.\"}],\"event_ref\":\"ee6baa2f79d8bb76f6267286766183975461ffd88ee895ca2847bbed3201a83b\",\"hash\":\"e09589b1129866f3a17b8a072579a1bf6bd26056b2875a4a2707c17d1d34e7b7\",\"objective_world_facts\":{\"group_criminality\":\"NOT_ESTABLISHED\",\"known_thief\":null},\"proposal_ref\":\"32a8cb92b29a064b2d9320b3d9db676dcdbe83857be47503402a481ec38f93c5\",\"rule\":\"B2_SYNTHETIC_WITNESSED_INGRESS@1\",\"selected_candidate_id\":\"ALT-CARE\",\"status\":\"ADMITTED_SYNTHETIC_FIXTURE_ONLY\",\"witness_ref\":\"11f98af524b59610e8c6cba37de64443d90b80842454dee4a96b0b38cc2348e4\"}"
+      ],
+      [
+        "f2905759187b5ffe98cce08c63075f678b5d437325f5ad6a0e3e963b6017a14b",
+        "{\"attributed_claims\":[{\"accessible_source_refs\":[\"THEFT-1\"],\"claim\":\"A careful response could reduce future loss; I am worried.\",\"claim_kind\":\"ATTRIBUTED_UNVERIFIED_ASSERTION\",\"claim_world_fact_ref\":null,\"speaker_actor_ref\":\"CARE-1\",\"utterance\":\"We should report this and see what can be secured.\"}],\"event_ref\":\"46f0739385e61cdec7337f62c32158eef00e70f45550ea54d267ce74f85b25e8\",\"hash\":\"f2905759187b5ffe98cce08c63075f678b5d437325f5ad6a0e3e963b6017a14b\",\"objective_world_facts\":{\"group_criminality\":\"NOT_ESTABLISHED\",\"known_thief\":null},\"proposal_ref\":\"32a8cb92b29a064b2d9320b3d9db676dcdbe83857be47503402a481ec38f93c5\",\"rule\":\"B2_SYNTHETIC_WITNESSED_INGRESS@1\",\"selected_candidate_id\":\"ALT-CARE\",\"status\":\"ADMITTED_SYNTHETIC_FIXTURE_ONLY\",\"witness_ref\":\"2525cf172f264561da153dfdf9b7d9d0028bbe2ea3ec7aab51e67031ded22765\"}"
+      ]
+    ],
+    "checkpoint": [
+      [
+        1,
+        "{\"actor_id\":\"child\",\"capabilities\":[\"compare_enacted_plans\"],\"epistemic\":{\"beliefs\":[\"locking_reduces_access\"],\"inaccessible\":[\"shared_task\"],\"unknown\":[\"thief_identity\",\"thief_motive\"]},\"history\":[{\"activity\":\"learn_object_check\",\"actor_access\":\"EXPLICIT\",\"actor_id\":\"child\",\"counterpart\":\"caretaker\",\"episode_id\":\"init\",\"hash\":\"5dd05ecbdbb78b4952673f463585cc42891a87d3f9aa7df783e878a1f027a5ab\",\"outcome\":\"check_enacted\",\"parent_refs\":[],\"project\":\"repair_route\",\"provenance\":\"SYNTHETIC_PREHISTORY_FIXTURE\",\"time\":0},{\"activity\":\"compare_plans_in_task\",\"actor_access\":\"INACCESSIBLE\",\"actor_id\":\"child\",\"counterpart\":\"caretaker\",\"episode_id\":\"shared_task\",\"hash\":\"2ed27ab77ed315917fa0388e7f9e9ceb1052eee463051a0d2fc02f470fda905b\",\"outcome\":\"recognized_plan\",\"parent_refs\":[\"5dd05ecbdbb78b4952673f463585cc42891a87d3f9aa7df783e878a1f027a5ab\"],\"project\":\"repair_route\",\"provenance\":\"SYNTHETIC_PREHISTORY_FIXTURE\",\"time\":1}],\"middle\":[],\"project\":\"repair_route\",\"responses\":[],\"schema\":\"B1_CANDIDATE_ADAPTER@1.0.0\",\"transitions\":[]}"
+      ]
+    ],
+    "joint_receipt": [],
+    "occurrence": [
+      [
+        "46f0739385e61cdec7337f62c32158eef00e70f45550ea54d267ce74f85b25e8",
+        "{\"actor_id\":\"child\",\"admission_grade\":\"ADMITTED_SYNTHETIC_FIXTURE_ONLY\",\"event_id\":\"E2-ID-4\",\"hash\":\"46f0739385e61cdec7337f62c32158eef00e70f45550ea54d267ce74f85b25e8\",\"interrupted\":true,\"objective_occurrence\":\"OBSERVED_INTERACTION_AFTER_MATERIAL_LOSS\",\"offers\":[[\"caretaker\",\"We should report this and see what can be secured.\",\"joint_inventory\"]],\"power_ref\":\"power:caretaker_controls_tools\",\"project\":\"repair_route\",\"provenance\":\"B1_AUTHORED_SOURCEFREE\",\"relation_refs\":[\"relation:child:caretaker\"],\"time\":2,\"world_ref\":\"WORLD-BIKE-1\"}"
+      ],
+      [
+        "4af9ea5b36c2c9f6ea720fef3ecf107251e38265b3971df29638274e60a17766",
+        "{\"actor_id\":\"child\",\"admission_grade\":\"ADMITTED_SYNTHETIC_FIXTURE_ONLY\",\"event_id\":\"E2-ID-5\",\"hash\":\"4af9ea5b36c2c9f6ea720fef3ecf107251e38265b3971df29638274e60a17766\",\"interrupted\":true,\"objective_occurrence\":\"OBSERVED_INTERACTION_AFTER_MATERIAL_LOSS\",\"offers\":[[\"caretaker\",\"We should report this and see what can be secured.\",\"joint_inventory\"]],\"power_ref\":\"power:caretaker_controls_tools\",\"project\":\"repair_route\",\"provenance\":\"B1_AUTHORED_SOURCEFREE\",\"relation_refs\":[\"relation:child:caretaker\"],\"time\":2,\"world_ref\":\"WORLD-BIKE-1\"}"
+      ],
+      [
+        "99cc17d05c2a627b5a9f2d7f25241f80efc6376c59e3d2f5549b6c79d2b04d43",
+        "{\"actor_id\":\"child\",\"admission_grade\":\"ADMITTED_SYNTHETIC_FIXTURE_ONLY\",\"event_id\":\"E2-ID-2\",\"hash\":\"99cc17d05c2a627b5a9f2d7f25241f80efc6376c59e3d2f5549b6c79d2b04d43\",\"interrupted\":true,\"objective_occurrence\":\"OBSERVED_INTERACTION_AFTER_MATERIAL_LOSS\",\"offers\":[[\"caretaker\",\"We should report this and see what can be secured.\",\"joint_inventory\"]],\"power_ref\":\"power:caretaker_controls_tools\",\"project\":\"repair_route\",\"provenance\":\"B1_AUTHORED_SOURCEFREE\",\"relation_refs\":[\"relation:child:caretaker\"],\"time\":2,\"world_ref\":\"WORLD-BIKE-1\"}"
+      ],
+      [
+        "a16274746510372375192804393269a760d0134f4f462e9e9d4f79d4401b2e7c",
+        "{\"actor_id\":\"child\",\"admission_grade\":\"ADMITTED_SYNTHETIC_FIXTURE_ONLY\",\"event_id\":\"E2-ID-0\",\"hash\":\"a16274746510372375192804393269a760d0134f4f462e9e9d4f79d4401b2e7c\",\"interrupted\":true,\"objective_occurrence\":\"OBSERVED_INTERACTION_AFTER_MATERIAL_LOSS\",\"offers\":[[\"caretaker\",\"We should report this and see what can be secured.\",\"joint_inventory\"]],\"power_ref\":\"power:caretaker_controls_tools\",\"project\":\"repair_route\",\"provenance\":\"B1_AUTHORED_SOURCEFREE\",\"relation_refs\":[\"relation:child:caretaker\"],\"time\":2,\"world_ref\":\"WORLD-BIKE-1\"}"
+      ],
+      [
+        "b6c6468bedf1eaf305792fd3079c26096500ed1c1fb3aa12547e98e79f2e6f29",
+        "{\"actor_id\":\"child\",\"admission_grade\":\"ADMITTED_SYNTHETIC_FIXTURE_ONLY\",\"event_id\":\"E2-ID-1\",\"hash\":\"b6c6468bedf1eaf305792fd3079c26096500ed1c1fb3aa12547e98e79f2e6f29\",\"interrupted\":true,\"objective_occurrence\":\"OBSERVED_INTERACTION_AFTER_MATERIAL_LOSS\",\"offers\":[[\"caretaker\",\"We should report this and see what can be secured.\",\"joint_inventory\"]],\"power_ref\":\"power:caretaker_controls_tools\",\"project\":\"repair_route\",\"provenance\":\"B1_AUTHORED_SOURCEFREE\",\"relation_refs\":[\"relation:child:caretaker\"],\"time\":2,\"world_ref\":\"WORLD-BIKE-1\"}"
+      ],
+      [
+        "ee6baa2f79d8bb76f6267286766183975461ffd88ee895ca2847bbed3201a83b",
+        "{\"actor_id\":\"child\",\"admission_grade\":\"ADMITTED_SYNTHETIC_FIXTURE_ONLY\",\"event_id\":\"E2-ID-3\",\"hash\":\"ee6baa2f79d8bb76f6267286766183975461ffd88ee895ca2847bbed3201a83b\",\"interrupted\":true,\"objective_occurrence\":\"OBSERVED_INTERACTION_AFTER_MATERIAL_LOSS\",\"offers\":[[\"caretaker\",\"We should report this and see what can be secured.\",\"joint_inventory\"]],\"power_ref\":\"power:caretaker_controls_tools\",\"project\":\"repair_route\",\"provenance\":\"B1_AUTHORED_SOURCEFREE\",\"relation_refs\":[\"relation:child:caretaker\"],\"time\":2,\"world_ref\":\"WORLD-BIKE-1\"}"
+      ]
+    ]
+  }
+}

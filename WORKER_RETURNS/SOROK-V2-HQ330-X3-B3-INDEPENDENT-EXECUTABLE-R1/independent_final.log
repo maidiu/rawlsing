@@ -1,0 +1,208 @@
+FF.........F.......FFF....FF                                             [100%]
+=================================== FAILURES ===================================
+____________________ test_missing_origin_refusal_is_atomic _____________________
+
+tmp_path = PosixPath('<TEMP>')
+
+    def test_missing_origin_refusal_is_atomic(tmp_path):
+        f=frame_at();f['origin_event_id']='NEVER_ADMITTED_PARENT'
+        e,a=engine(tmp_path,f);before=e.snapshot()
+        try:
+            try:r=e.run(f)
+            except Exception as exc:r={'exception':type(exc).__name__,'code':str(exc)}
+            receipt('missing_origin',e,before,r)
+>           assert e.snapshot()==before, 'refused missing origin left durable admission/source rows'
+E           AssertionError: refused missing origin left durable admission/source rows
+E           assert {'b2_event_id...ock': [], ...} == {'b2_event_id...ock': [], ...}
+E             
+E             Omitting 7 identical items, use -vv to show
+E             Differing items:
+E             {'b2_ingress': [('5c32ee1917988e60b6b75b62bf48d42870ed878d85c8be8c04ef7e71ecebce79', '{"attributed_claims":[],"event_r..."ADMITTED_SYNTHETIC_FIXTURE_ONLY","witness_ref":"7f068a29a9a39216d07cb8708796070581f3d155fb36c614068d815e7bb41e6f"}')]} != {'b2_ingress': []}
+E             {'b2_event_identity': [('loss:t3', '{"actor":"child","context":{"action_opportunities":{"OP-CARE-REPORT":{"act_kind":"...ea40069e53c34a7a82f630922e5b9df3ea377f1c106b832', '5c32ee1917988e60b6b75b62bf48d42870ed878d85c8be8c04ef7e71ecebce79')]} != {'b2_event_...
+E             
+E             ...Full output truncated (5 lines hidden), use '-vv' to show
+
+WORKER_RETURNS/SOROK-V2-HQ330-X3-B3-INDEPENDENT-EXECUTABLE-R1/test_independent.py:45: AssertionError
+______________ test_duplicate_physical_check_cannot_form_practice ______________
+
+tmp_path = PosixPath('<TEMP>')
+
+    def test_duplicate_physical_check_cannot_form_practice(tmp_path):
+        f=frame_at(); f['evidence']=[x for x in f['evidence'] if x['id']!='check:2']
+        x=deepcopy(next(x for x in f['evidence'] if x['id']=='check:7'))
+        x['id']='same-check-second-id';rehash(x);f['evidence'].append(x)
+        # Both records now describe the same clock, actor, observer, object and result.
+        f['readset']=[x['id'] for x in f['evidence'] if x['actor']=='child']+[s['witness'] for s in f['utterances']]
+        e,a=engine(tmp_path,f);before=e.snapshot();p=permission_for([],f)
+        try:
+            r=e.run(f,owner_permission=p,registered_permissions=(p,));receipt('duplicate_activity',e,before,r)
+>           assert not r['owner_effect_committed'], 'two IDs of one witnessed activity counted as repetition'
+E           AssertionError: two IDs of one witnessed activity counted as repetition
+E           assert not True
+
+WORKER_RETURNS/SOROK-V2-HQ330-X3-B3-INDEPENDENT-EXECUTABLE-R1/test_independent.py:58: AssertionError
+______________ test_guard_rejects_missing_previously_used_sources ______________
+
+    def test_guard_rejects_missing_previously_used_sources():
+        s=m2.seed_scene();old=source_guard.preimages(s)
+        removed=replace(s,speech=(),speech_actions=(),exposures=())
+        # The helper's claimed immutable continuation should not drop its readset.
+>       with pytest.raises(m2.Refusal):source_guard.check(old,removed)
+E       Failed: DID NOT RAISE Refusal
+
+WORKER_RETURNS/SOROK-V2-HQ330-X3-B3-INDEPENDENT-EXECUTABLE-R1/test_independent.py:102: Failed
+__________ test_before_and_after_loss_practice_requires_pre_loss_act ___________
+
+tmp_path = PosixPath('<TEMP>')
+
+    def test_before_and_after_loss_practice_requires_pre_loss_act(tmp_path):
+        f=frame_at()
+        x=next(x for x in f['evidence'] if x['id']=='check:2');x['time']=6;rehash(x)
+        e,a=engine(tmp_path,f);before=e.snapshot();p=permission_for([],f)
+        try:
+            r=e.run(f,owner_permission=p,registered_permissions=(p,));receipt('no_pre_loss_act',e,before,r)
+>           assert not r['owner_effect_committed'], 'both checks occurred after loss; pre-loss activity absent'
+E           AssertionError: both checks occurred after loss; pre-loss activity absent
+E           assert not True
+
+WORKER_RETURNS/SOROK-V2-HQ330-X3-B3-INDEPENDENT-EXECUTABLE-R1/test_independent.py:148: AssertionError
+__________ test_late_refusal_does_not_partially_admit[missing_parent] __________
+
+tmp_path = PosixPath('<TEMP>')
+attack = 'missing_parent'
+
+    @pytest.mark.parametrize('attack',['missing_parent','future_event','future_capability','history_collision'])
+    def test_late_refusal_does_not_partially_admit(tmp_path,attack):
+        f=frame_at();e,a=engine(tmp_path,f)
+        if attack=='history_collision':
+            assert e.run(f)['status']=='ELIGIBLE_NONCAUSAL'
+            # A newly admitted event plus a changed derived M2 history ID should still be atomic.
+            f['as_of']=8
+        before=e.snapshot();bad=deepcopy(f)
+        if attack=='missing_parent':bad['origin_event_id']='unadmitted'
+        if attack=='future_event':bad['event']['time']=99
+        if attack=='future_capability':bad['capability']['witnesses'][0]['time']=99
+        if attack=='history_collision':
+            bad['event']['id']='new-current-event';bad['event']['time']=8
+            # Raw source payloads stay identical; this targets derived event/history collision.
+            bad['utterances'][0]['event_ref']='new-current-event'
+        a.register_observed(bad)
+        try:
+            try:r=e.run(bad)
+            except Exception as exc:r={'exception':type(exc).__name__,'code':str(exc)}
+            receipt('atomic_'+attack,e,before,r)
+>           assert e.snapshot()==before, 'failed/refused operation changed persisted source/occurrence tables'
+E           AssertionError: failed/refused operation changed persisted source/occurrence tables
+E           assert {'b2_event_id...ock': [], ...} == {'b2_event_id...ock': [], ...}
+E             
+E             Omitting 7 identical items, use -vv to show
+E             Differing items:
+E             {'b2_ingress': [('5c32ee1917988e60b6b75b62bf48d42870ed878d85c8be8c04ef7e71ecebce79', '{"attributed_claims":[],"event_r..."ADMITTED_SYNTHETIC_FIXTURE_ONLY","witness_ref":"7f068a29a9a39216d07cb8708796070581f3d155fb36c614068d815e7bb41e6f"}')]} != {'b2_ingress': []}
+E             {'b2_event_identity': [('loss:t3', '{"actor":"child","context":{"action_opportunities":{"OP-CARE-REPORT":{"act_kind":"...ea40069e53c34a7a82f630922e5b9df3ea377f1c106b832', '5c32ee1917988e60b6b75b62bf48d42870ed878d85c8be8c04ef7e71ecebce79')]} != {'b2_event_...
+E             
+E             ...Full output truncated (5 lines hidden), use '-vv' to show
+
+WORKER_RETURNS/SOROK-V2-HQ330-X3-B3-INDEPENDENT-EXECUTABLE-R1/test_independent.py:171: AssertionError
+___________ test_late_refusal_does_not_partially_admit[future_event] ___________
+
+tmp_path = PosixPath('<TEMP>')
+attack = 'future_event'
+
+    @pytest.mark.parametrize('attack',['missing_parent','future_event','future_capability','history_collision'])
+    def test_late_refusal_does_not_partially_admit(tmp_path,attack):
+        f=frame_at();e,a=engine(tmp_path,f)
+        if attack=='history_collision':
+            assert e.run(f)['status']=='ELIGIBLE_NONCAUSAL'
+            # A newly admitted event plus a changed derived M2 history ID should still be atomic.
+            f['as_of']=8
+        before=e.snapshot();bad=deepcopy(f)
+        if attack=='missing_parent':bad['origin_event_id']='unadmitted'
+        if attack=='future_event':bad['event']['time']=99
+        if attack=='future_capability':bad['capability']['witnesses'][0]['time']=99
+        if attack=='history_collision':
+            bad['event']['id']='new-current-event';bad['event']['time']=8
+            # Raw source payloads stay identical; this targets derived event/history collision.
+            bad['utterances'][0]['event_ref']='new-current-event'
+        a.register_observed(bad)
+        try:
+            try:r=e.run(bad)
+            except Exception as exc:r={'exception':type(exc).__name__,'code':str(exc)}
+            receipt('atomic_'+attack,e,before,r)
+>           assert e.snapshot()==before, 'failed/refused operation changed persisted source/occurrence tables'
+E           AssertionError: failed/refused operation changed persisted source/occurrence tables
+E           assert {'b2_event_id...ock': [], ...} == {'b2_event_id...ock': [], ...}
+E             
+E             Omitting 7 identical items, use -vv to show
+E             Differing items:
+E             {'b2_ingress': [('0de765d76586f3976a0a50eaf2ac5f21856c0afab629a91bfb8b1920b60dc98a', '{"attributed_claims":[],"event_r..."ADMITTED_SYNTHETIC_FIXTURE_ONLY","witness_ref":"56799cee2b978ee759b0a491d5ea0d431dac8d762fc598facd0058cd80f0ca9c"}')]} != {'b2_ingress': []}
+E             {'b2_event_identity': [('action:caregiver:4', '{"actor":"child","context":{"action_opportunities":{"OP-CARE-REPORT":{"...8c3119b8ad142835d0554f06a7a1d34661e7a89287f5254', '38be1c1cb539bd0c09f63aa853f9836a3d08dd2ea0c880c0579d54cfa26314e0')]} != {'b2_event_...
+E             
+E             ...Full output truncated (5 lines hidden), use '-vv' to show
+
+WORKER_RETURNS/SOROK-V2-HQ330-X3-B3-INDEPENDENT-EXECUTABLE-R1/test_independent.py:171: AssertionError
+______ test_refusal_rows_persist_on_real_cold_connection[missing_origin] _______
+
+tmp_path = PosixPath('<TEMP>')
+kind = 'missing_origin'
+
+    @pytest.mark.parametrize('kind',['missing_origin','future_event'])
+    def test_refusal_rows_persist_on_real_cold_connection(tmp_path,kind):
+        f=frame_at()
+        if kind=='missing_origin':f['origin_event_id']='never-existed'
+        else:f['event']['time']=99
+        e,a=engine(tmp_path,f);before=e.snapshot()
+        try:r=e.run(f)
+        except Exception as exc:r={'exception':type(exc).__name__,'code':str(exc)}
+        e.close();e=Integration(tmp_path/'court.sqlite',a)
+        try:
+            receipt('cold_partial_'+kind,e,before,r)
+>           assert e.snapshot()==before, 'partial writes survived closing and reopening SQLite'
+E           AssertionError: partial writes survived closing and reopening SQLite
+E           assert {'b2_event_id...ock': [], ...} == {'b2_event_id...ock': [], ...}
+E             
+E             Omitting 7 identical items, use -vv to show
+E             Differing items:
+E             {'b2_ingress': [('5c32ee1917988e60b6b75b62bf48d42870ed878d85c8be8c04ef7e71ecebce79', '{"attributed_claims":[],"event_r..."ADMITTED_SYNTHETIC_FIXTURE_ONLY","witness_ref":"7f068a29a9a39216d07cb8708796070581f3d155fb36c614068d815e7bb41e6f"}')]} != {'b2_ingress': []}
+E             {'b2_event_identity': [('loss:t3', '{"actor":"child","context":{"action_opportunities":{"OP-CARE-REPORT":{"act_kind":"...ea40069e53c34a7a82f630922e5b9df3ea377f1c106b832', '5c32ee1917988e60b6b75b62bf48d42870ed878d85c8be8c04ef7e71ecebce79')]} != {'b2_event_...
+E             
+E             ...Full output truncated (5 lines hidden), use '-vv' to show
+
+WORKER_RETURNS/SOROK-V2-HQ330-X3-B3-INDEPENDENT-EXECUTABLE-R1/test_independent.py:215: AssertionError
+_______ test_refusal_rows_persist_on_real_cold_connection[future_event] ________
+
+tmp_path = PosixPath('<TEMP>')
+kind = 'future_event'
+
+    @pytest.mark.parametrize('kind',['missing_origin','future_event'])
+    def test_refusal_rows_persist_on_real_cold_connection(tmp_path,kind):
+        f=frame_at()
+        if kind=='missing_origin':f['origin_event_id']='never-existed'
+        else:f['event']['time']=99
+        e,a=engine(tmp_path,f);before=e.snapshot()
+        try:r=e.run(f)
+        except Exception as exc:r={'exception':type(exc).__name__,'code':str(exc)}
+        e.close();e=Integration(tmp_path/'court.sqlite',a)
+        try:
+            receipt('cold_partial_'+kind,e,before,r)
+>           assert e.snapshot()==before, 'partial writes survived closing and reopening SQLite'
+E           AssertionError: partial writes survived closing and reopening SQLite
+E           assert {'b2_event_id...ock': [], ...} == {'b2_event_id...ock': [], ...}
+E             
+E             Omitting 7 identical items, use -vv to show
+E             Differing items:
+E             {'b2_ingress': [('0de765d76586f3976a0a50eaf2ac5f21856c0afab629a91bfb8b1920b60dc98a', '{"attributed_claims":[],"event_r..."ADMITTED_SYNTHETIC_FIXTURE_ONLY","witness_ref":"56799cee2b978ee759b0a491d5ea0d431dac8d762fc598facd0058cd80f0ca9c"}')]} != {'b2_ingress': []}
+E             {'b2_event_identity': [('action:caregiver:4', '{"actor":"child","context":{"action_opportunities":{"OP-CARE-REPORT":{"...8c3119b8ad142835d0554f06a7a1d34661e7a89287f5254', '38be1c1cb539bd0c09f63aa853f9836a3d08dd2ea0c880c0579d54cfa26314e0')]} != {'b2_event_...
+E             
+E             ...Full output truncated (5 lines hidden), use '-vv' to show
+
+WORKER_RETURNS/SOROK-V2-HQ330-X3-B3-INDEPENDENT-EXECUTABLE-R1/test_independent.py:215: AssertionError
+=========================== short test summary info ============================
+FAILED WORKER_RETURNS/SOROK-V2-HQ330-X3-B3-INDEPENDENT-EXECUTABLE-R1/test_independent.py::test_missing_origin_refusal_is_atomic
+FAILED WORKER_RETURNS/SOROK-V2-HQ330-X3-B3-INDEPENDENT-EXECUTABLE-R1/test_independent.py::test_duplicate_physical_check_cannot_form_practice
+FAILED WORKER_RETURNS/SOROK-V2-HQ330-X3-B3-INDEPENDENT-EXECUTABLE-R1/test_independent.py::test_guard_rejects_missing_previously_used_sources
+FAILED WORKER_RETURNS/SOROK-V2-HQ330-X3-B3-INDEPENDENT-EXECUTABLE-R1/test_independent.py::test_before_and_after_loss_practice_requires_pre_loss_act
+FAILED WORKER_RETURNS/SOROK-V2-HQ330-X3-B3-INDEPENDENT-EXECUTABLE-R1/test_independent.py::test_late_refusal_does_not_partially_admit[missing_parent]
+FAILED WORKER_RETURNS/SOROK-V2-HQ330-X3-B3-INDEPENDENT-EXECUTABLE-R1/test_independent.py::test_late_refusal_does_not_partially_admit[future_event]
+FAILED WORKER_RETURNS/SOROK-V2-HQ330-X3-B3-INDEPENDENT-EXECUTABLE-R1/test_independent.py::test_refusal_rows_persist_on_real_cold_connection[missing_origin]
+FAILED WORKER_RETURNS/SOROK-V2-HQ330-X3-B3-INDEPENDENT-EXECUTABLE-R1/test_independent.py::test_refusal_rows_persist_on_real_cold_connection[future_event]
+8 failed, 20 passed in 13.64s
