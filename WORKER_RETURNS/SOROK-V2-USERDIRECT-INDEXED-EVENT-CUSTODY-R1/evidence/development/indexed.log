@@ -1,0 +1,82 @@
+FF.....                                                                  [100%]
+=================================== FAILURES ===================================
+_________ test_existing_ledger_is_indexed_without_fact_changes[False] __________
+
+tmp_path = PosixPath('<TEMP>')
+polluted = False
+
+    @pytest.mark.parametrize('polluted',[False,True])
+    def test_existing_ledger_is_indexed_without_fact_changes(tmp_path,polluted):
+     path=tmp_path/'state.sqlite';s=m.b1.Store(path,m.b1.initialize(m.b1.prehistory()))
+     s.admit_fixture(m.b1.episode())
+     if polluted:s.admit_fixture(m.b1.episode(label='LEGACY-CONFLICT'))
+     before=s.db.execute('SELECT * FROM occurrence ORDER BY 1').fetchall();s.close()
+>    b,args=setup(tmp_path);r=b.advance(*args,grant=False)
+            ^^^^^^^^^^^^^^^
+
+../../test_indexed.py:25: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../../test_indexed.py:11: in setup
+    b=m.Bridge(path/'state.sqlite',m.b1.initialize(m.b1.prehistory()))
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+bridge.py:150: in __init__
+    self.store=b1.Store(path,initial)
+               ^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <b2_pinned_bfirst.Store object at 0x109679750>
+path = PosixPath('<TEMP>')
+initial = {'schema': 'B1_CANDIDATE_ADAPTER@1.0.0', 'actor_id': 'child', 'project': 'repair_route', 'capabilities': ['compare_enacted_plans'], ...}
+
+    def __init__(self, path, initial=None):
+        self.db = sqlite3.connect(path, isolation_level=None)
+        self.db.execute('CREATE TABLE IF NOT EXISTS checkpoint (id INTEGER PRIMARY KEY, body TEXT)')
+        self.db.execute('CREATE TABLE IF NOT EXISTS occurrence (hash TEXT PRIMARY KEY, body TEXT)')
+        self.db.execute('CREATE TABLE IF NOT EXISTS joint_receipt (hash TEXT PRIMARY KEY, body TEXT)')
+        if initial is not None:
+>           self.db.execute('INSERT INTO checkpoint VALUES (1, ?)', (canonical(initial),))
+E           sqlite3.IntegrityError: UNIQUE constraint failed: checkpoint.id
+
+imports/B1/bfirst.py:290: IntegrityError
+__________ test_existing_ledger_is_indexed_without_fact_changes[True] __________
+
+tmp_path = PosixPath('<TEMP>')
+polluted = True
+
+    @pytest.mark.parametrize('polluted',[False,True])
+    def test_existing_ledger_is_indexed_without_fact_changes(tmp_path,polluted):
+     path=tmp_path/'state.sqlite';s=m.b1.Store(path,m.b1.initialize(m.b1.prehistory()))
+     s.admit_fixture(m.b1.episode())
+     if polluted:s.admit_fixture(m.b1.episode(label='LEGACY-CONFLICT'))
+     before=s.db.execute('SELECT * FROM occurrence ORDER BY 1').fetchall();s.close()
+>    b,args=setup(tmp_path);r=b.advance(*args,grant=False)
+            ^^^^^^^^^^^^^^^
+
+../../test_indexed.py:25: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../../test_indexed.py:11: in setup
+    b=m.Bridge(path/'state.sqlite',m.b1.initialize(m.b1.prehistory()))
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+bridge.py:150: in __init__
+    self.store=b1.Store(path,initial)
+               ^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <b2_pinned_bfirst.Store object at 0x109693550>
+path = PosixPath('<TEMP>')
+initial = {'schema': 'B1_CANDIDATE_ADAPTER@1.0.0', 'actor_id': 'child', 'project': 'repair_route', 'capabilities': ['compare_enacted_plans'], ...}
+
+    def __init__(self, path, initial=None):
+        self.db = sqlite3.connect(path, isolation_level=None)
+        self.db.execute('CREATE TABLE IF NOT EXISTS checkpoint (id INTEGER PRIMARY KEY, body TEXT)')
+        self.db.execute('CREATE TABLE IF NOT EXISTS occurrence (hash TEXT PRIMARY KEY, body TEXT)')
+        self.db.execute('CREATE TABLE IF NOT EXISTS joint_receipt (hash TEXT PRIMARY KEY, body TEXT)')
+        if initial is not None:
+>           self.db.execute('INSERT INTO checkpoint VALUES (1, ?)', (canonical(initial),))
+E           sqlite3.IntegrityError: UNIQUE constraint failed: checkpoint.id
+
+imports/B1/bfirst.py:290: IntegrityError
+=========================== short test summary info ============================
+FAILED ../../test_indexed.py::test_existing_ledger_is_indexed_without_fact_changes[False]
+FAILED ../../test_indexed.py::test_existing_ledger_is_indexed_without_fact_changes[True]
+2 failed, 5 passed in 1.68s

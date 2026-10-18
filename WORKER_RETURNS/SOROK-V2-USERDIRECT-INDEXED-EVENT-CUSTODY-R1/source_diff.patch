@@ -1,0 +1,25 @@
+--- reviewed_8f7966d6/bridge.py
++++ indexed_candidate/bridge.py
+@@ -150,6 +150,10 @@
+         self.store=b1.Store(path,initial)
+         self.witnesses={w['hash']:deepcopy(w) for w in witnesses if b1.valid(w)}
+         self.capability_witnesses=deepcopy(capability_witnesses)
++        # SQLite maintains this derived lookup for every writer, including B1.
++        # One-time construction scans legacy rows; entry uses an indexed lookup.
++        self.store.db.execute("CREATE INDEX IF NOT EXISTS b2_occurrence_event_id "
++            "ON occurrence(json_extract(body, '$.event_id'))")
+         self.store.db.execute('CREATE TABLE IF NOT EXISTS b2_ingress (id TEXT PRIMARY KEY, body TEXT)')
+         # One global ID in this bounded registrar: actor/world/issuer are immutable
+         # content, never additional namespace columns permitting ID reuse.
+@@ -216,8 +220,9 @@
+             (event_id,)).fetchone()
+         # Direct B1 writes can precede or follow this registrar's mapping. Recheck
+         # the complete ID under the writer lock, including before replay returns.
+-        occurrences=[row for row in self.store.db.execute('SELECT hash,body FROM occurrence')
+-                     if json.loads(row[1])['event_id']==event_id]
++        occurrences=self.store.db.execute(
++            "SELECT hash,body FROM occurrence WHERE json_extract(body, '$.event_id')=? LIMIT 2",
++            (event_id,)).fetchall()
+         if identity is not None:
+             if identity[0]!=binding:return stop('EVENT_IDENTITY_CONFLICT')
+             if len(occurrences)!=1 or occurrences[0][0]!=identity[1]:

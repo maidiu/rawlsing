@@ -1,0 +1,125 @@
+{
+  "grade": "TEST_ONLY_INDEXED_EVENT_CUSTODY_CANDIDATE_PENDING_INDEPENDENT_REVIEW",
+  "base": "8f7966d6d0bbb1ea2e57359de9defbcf552268bd",
+  "candidate_sha256": "74fd397edd0f23f0972be9940514b9bb838d8012867340c1f75145874a9af0ed",
+  "suites": {
+    "fixed/strict": {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "tests": "2",
+      "time": "0.532",
+      "timestamp": "2026-10-17T23:54:20.456913-04:00",
+      "failed": []
+    },
+    "fixed/r1": {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "tests": "45",
+      "time": "7.240",
+      "timestamp": "2026-10-17T23:54:30.093594-04:00",
+      "failed": []
+    },
+    "fixed/e2_full": {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "2",
+      "skipped": "0",
+      "tests": "44",
+      "time": "7.457",
+      "timestamp": "2026-10-17T23:54:37.566461-04:00",
+      "failed": [
+        "test_direct_b1_after_wrapper_limit_is_measured[False]",
+        "test_direct_b1_after_wrapper_limit_is_measured[True]"
+      ]
+    },
+    "fixed/x2": {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "1",
+      "skipped": "0",
+      "tests": "17",
+      "time": "1.215",
+      "timestamp": "2026-10-17T23:54:45.263625-04:00",
+      "failed": [
+        "test_same_event_id_accepts_distinct_objective_payload_hashes"
+      ]
+    },
+    "fixed/repair5": {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "tests": "5",
+      "time": "1.058",
+      "timestamp": "2026-10-17T23:54:46.720733-04:00",
+      "failed": []
+    },
+    "fixed/e3_frozen": {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "tests": "26",
+      "time": "4.315",
+      "timestamp": "2026-10-17T23:54:48.014436-04:00",
+      "failed": []
+    },
+    "fixed/indexed": {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "tests": "7",
+      "time": "1.443",
+      "timestamp": "2026-10-17T23:54:52.585140-04:00",
+      "failed": []
+    }
+  },
+  "inherited": 330,
+  "native_reds": [
+    "F01",
+    "F02",
+    "F03",
+    "F04",
+    "F05",
+    "F06",
+    "F07",
+    "F08",
+    "F10",
+    "F11",
+    "F13",
+    "F15",
+    "F16",
+    "F17",
+    "F18",
+    "F19",
+    "F21"
+  ],
+  "indexed_lookup_vm_instructions": [
+    [
+      16,
+      16,
+      16,
+      16,
+      16
+    ],
+    [
+      16,
+      16,
+      16,
+      16,
+      16
+    ],
+    [
+      16,
+      16,
+      16,
+      16,
+      16
+    ]
+  ]
+}

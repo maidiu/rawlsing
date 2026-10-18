@@ -1,0 +1,132 @@
+[
+  {
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "<E3>/.runtime/tests_after/E2/test_e2.py",
+      "-k",
+      "legacy_after_mapping_must_fail_closed_at_b2_reentry",
+      "--junitxml=<E3>/evidence/fixed/strict.xml"
+    ],
+    "cwd": "<E3>/.runtime/fixed",
+    "label": "fixed/strict",
+    "exit": 0,
+    "expected_exit": 0,
+    "seconds": 0.8113293419592083
+  },
+  {
+    "command": [
+      "/usr/local/bin/python3",
+      "run_courts.py"
+    ],
+    "cwd": "<E3>/.runtime/fixed",
+    "label": "fixed/inherited",
+    "exit": 0,
+    "expected_exit": 0,
+    "seconds": 8.850712082814425
+  },
+  {
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "<E3>/.runtime/tests_after/R1/test_identity.py",
+      "--junitxml=<E3>/evidence/fixed/r1.xml"
+    ],
+    "cwd": "<E3>/.runtime/fixed",
+    "label": "fixed/r1",
+    "exit": 0,
+    "expected_exit": 0,
+    "seconds": 7.4834983348846436
+  },
+  {
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "<E3>/.runtime/tests_after/E2/test_e2.py",
+      "--junitxml=<E3>/evidence/fixed/e2_full.xml"
+    ],
+    "cwd": "<E3>/.runtime/fixed",
+    "label": "fixed/e2_full",
+    "exit": 1,
+    "expected_exit": 1,
+    "seconds": 7.706765678012744
+  },
+  {
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "<E3>/.runtime/tests_after/R1/frozen/test_hostile_x2.py",
+      "--junitxml=<E3>/evidence/fixed/x2.xml"
+    ],
+    "cwd": "<E3>/.runtime/fixed",
+    "label": "fixed/x2",
+    "exit": 1,
+    "expected_exit": 1,
+    "seconds": 1.4462267619092017
+  },
+  {
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "<E3>/.runtime/repair/test_regression.py",
+      "--junitxml=<E3>/evidence/fixed/repair5.xml"
+    ],
+    "cwd": "<E3>/.runtime/fixed",
+    "label": "fixed/repair5",
+    "exit": 0,
+    "expected_exit": 0,
+    "seconds": 1.300896585918963
+  },
+  {
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "<E3>/.runtime/tests_after/E3/test_independent.py",
+      "--junitxml=<E3>/evidence/fixed/e3_frozen.xml"
+    ],
+    "cwd": "<E3>/.runtime/fixed",
+    "label": "fixed/e3_frozen",
+    "exit": 0,
+    "expected_exit": 0,
+    "seconds": 4.557809562887996
+  },
+  {
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "<E3>/test_indexed.py",
+      "--junitxml=<E3>/evidence/fixed/indexed.xml"
+    ],
+    "cwd": "<E3>/.runtime/fixed",
+    "label": "fixed/indexed",
+    "exit": 0,
+    "expected_exit": 0,
+    "seconds": 1.6842445970978588
+  },
+  {
+    "command": [
+      "/usr/local/bin/python3",
+      "<E3>/.runtime/tests_after/E2/runtime_probe.py",
+      "<E3>/evidence/fixed/loaded_modules.json"
+    ],
+    "cwd": "<E3>/.runtime/fixed",
+    "label": "fixed/loaded_modules",
+    "exit": 0,
+    "expected_exit": 0,
+    "seconds": 0.23055419395677745
+  }
+]
