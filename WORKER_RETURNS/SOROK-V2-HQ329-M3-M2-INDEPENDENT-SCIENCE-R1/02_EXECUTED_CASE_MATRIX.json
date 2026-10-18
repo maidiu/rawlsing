@@ -1,0 +1,649 @@
+{
+  "schema": "SOROK_HQ329_M3_EXECUTED_CASE_MATRIX_R1",
+  "sealed_startup": "700a75d81182d0bffc1ee970aff7389c28ea494b",
+  "source_m2_commit": "5c2fbe14ccfa5027becfabc682206a1e61aaf986",
+  "source_matrix_blob": "9705e18a8224cc5f12f1260eb270dba6d3b84fdc",
+  "disposition": "REVISE_SOURCE_PREIMAGE_CUSTODY",
+  "review_independence": "NOT_MET__SAME_CONVERSATION_CONTAINS_M2_AUTHOR",
+  "frozen_M1_against_M2": [
+    {
+      "ordinal": 1,
+      "name": "test_four_independent_actors_with_histories",
+      "frozen_status": "PASS",
+      "classification": "PRESERVED_PASS",
+      "rationale": "Pinned frozen assertion still passes unchanged.",
+      "original_failure": null
+    },
+    {
+      "ordinal": 2,
+      "name": "test_objective_theft_has_no_culprit_or_ideology",
+      "frozen_status": "PASS",
+      "classification": "PRESERVED_PASS",
+      "rationale": "Pinned frozen assertion still passes unchanged.",
+      "original_failure": null
+    },
+    {
+      "ordinal": 3,
+      "name": "test_every_accessible_speech_has_multiple_competing_stances",
+      "frozen_status": "RED",
+      "classification": "A_OBSOLETE_T3_FUTURE_ACCESS_OR_UNWITNESSED_CAUSAL_FIXTURE",
+      "rationale": "Frozen fixture treats parent t4 and peer t5 speech/child affect as readable at LOSS t3; t6 PROCESS with independently witnessed speaker action/exposure is the only lawful migrated path.",
+      "original_failure": "AssertionError: assert set() == {('parent_sai...', 'SUSPEND')}\n  \n  Extra items in the right set:\n  ('parent_said', 'ACCEPT')\n  ('parent_said', 'SUSPEND')\n  ('peer_said', 'ACCEPT')\n  ('parent_said', 'REJECT')\n  ('peer_said', 'REJECT')\n  ('peer_said', 'SUSPEND')\n  \n  Full diff:\n  + set()\n  - {\n  -     (\n  -         'parent_said',\n  -         'ACCEPT',\n  -     ),\n  -     (\n  -         'parent_said',\n  -         'REJECT',\n  -     ),\n  -     (\n  -         'parent_said',\n  -         'SUSPEND',\n  -     ),\n  -     (\n  -         'peer_said',\n  -         'ACCEPT',\n  -     ),\n  -     (\n  -         'peer"
+    },
+    {
+      "ordinal": 4,
+      "name": "test_peer_attribution_never_world_culprit",
+      "frozen_status": "RED",
+      "classification": "A_OBSOLETE_T3_FUTURE_ACCESS_OR_UNWITNESSED_CAUSAL_FIXTURE",
+      "rationale": "Frozen fixture treats parent t4 and peer t5 speech/child affect as readable at LOSS t3; t6 PROCESS with independently witnessed speaker action/exposure is the only lawful migrated path.",
+      "original_failure": "StopIteration"
+    },
+    {
+      "ordinal": 5,
+      "name": "test_unheard_peer_cannot_influence_candidates",
+      "frozen_status": "PASS",
+      "classification": "PRESERVED_PASS",
+      "rationale": "Pinned frozen assertion still passes unchanged.",
+      "original_failure": null
+    },
+    {
+      "ordinal": 6,
+      "name": "test_missing_peer_speech_cannot_influence_candidates",
+      "frozen_status": "PASS",
+      "classification": "PRESERVED_PASS",
+      "rationale": "Pinned frozen assertion still passes unchanged.",
+      "original_failure": null
+    },
+    {
+      "ordinal": 7,
+      "name": "test_changed_child_history_changes_eligible_witnessed_prior_but_not_fixed_output",
+      "frozen_status": "PASS",
+      "classification": "PRESERVED_PASS",
+      "rationale": "Pinned frozen assertion still passes unchanged.",
+      "original_failure": null
+    },
+    {
+      "ordinal": 8,
+      "name": "test_parent_private_care_history_changes_without_automatic_child_belief",
+      "frozen_status": "PASS",
+      "classification": "PRESERVED_PASS",
+      "rationale": "Pinned frozen assertion still passes unchanged.",
+      "original_failure": null
+    },
+    {
+      "ordinal": 9,
+      "name": "test_factual_acceptance_and_negative_affect_are_independent",
+      "frozen_status": "RED",
+      "classification": "A_OBSOLETE_T3_FUTURE_ACCESS_OR_UNWITNESSED_CAUSAL_FIXTURE",
+      "rationale": "Frozen fixture treats parent t4 and peer t5 speech/child affect as readable at LOSS t3; t6 PROCESS with independently witnessed speaker action/exposure is the only lawful migrated path.",
+      "original_failure": "StopIteration"
+    },
+    {
+      "ordinal": 10,
+      "name": "test_private_rejection_and_public_conformity_do_not_collapse",
+      "frozen_status": "RED",
+      "classification": "A_OBSOLETE_T3_FUTURE_ACCESS_OR_UNWITNESSED_CAUSAL_FIXTURE",
+      "rationale": "Frozen fixture treats parent t4 and peer t5 speech/child affect as readable at LOSS t3; t6 PROCESS with independently witnessed speaker action/exposure is the only lawful migrated path.",
+      "original_failure": "StopIteration"
+    },
+    {
+      "ordinal": 11,
+      "name": "test_procedural_watchfulness_survives_explicit_rejection",
+      "frozen_status": "RED",
+      "classification": "A_OBSOLETE_T3_FUTURE_ACCESS_OR_UNWITNESSED_CAUSAL_FIXTURE",
+      "rationale": "Frozen fixture treats parent t4 and peer t5 speech/child affect as readable at LOSS t3; t6 PROCESS with independently witnessed speaker action/exposure is the only lawful migrated path.",
+      "original_failure": "StopIteration"
+    },
+    {
+      "ordinal": 12,
+      "name": "test_seven_later_alternatives_are_only_candidates[REATTRIBUTE]",
+      "frozen_status": "RED",
+      "classification": "A_OBSOLETE_T3_FUTURE_ACCESS_OR_UNWITNESSED_CAUSAL_FIXTURE",
+      "rationale": "Old test first commits a now-forbidden t3 account then tries a later append; lawful t6 PROCESS then P scene retains equivalent noncausal option, no-change and exact lineage.",
+      "original_failure": "StopIteration"
+    },
+    {
+      "ordinal": 13,
+      "name": "test_seven_later_alternatives_are_only_candidates[NARROW]",
+      "frozen_status": "RED",
+      "classification": "A_OBSOLETE_T3_FUTURE_ACCESS_OR_UNWITNESSED_CAUSAL_FIXTURE",
+      "rationale": "Old test first commits a now-forbidden t3 account then tries a later append; lawful t6 PROCESS then P scene retains equivalent noncausal option, no-change and exact lineage.",
+      "original_failure": "StopIteration"
+    },
+    {
+      "ordinal": 14,
+      "name": "test_seven_later_alternatives_are_only_candidates[GENERALIZE]",
+      "frozen_status": "RED",
+      "classification": "A_OBSOLETE_T3_FUTURE_ACCESS_OR_UNWITNESSED_CAUSAL_FIXTURE",
+      "rationale": "Old test first commits a now-forbidden t3 account then tries a later append; lawful t6 PROCESS then P scene retains equivalent noncausal option, no-change and exact lineage.",
+      "original_failure": "StopIteration"
+    },
+    {
+      "ordinal": 15,
+      "name": "test_seven_later_alternatives_are_only_candidates[REINFORCE]",
+      "frozen_status": "RED",
+      "classification": "A_OBSOLETE_T3_FUTURE_ACCESS_OR_UNWITNESSED_CAUSAL_FIXTURE",
+      "rationale": "Old test first commits a now-forbidden t3 account then tries a later append; lawful t6 PROCESS then P scene retains equivalent noncausal option, no-change and exact lineage.",
+      "original_failure": "StopIteration"
+    },
+    {
+      "ordinal": 16,
+      "name": "test_seven_later_alternatives_are_only_candidates[CONTRADICT]",
+      "frozen_status": "RED",
+      "classification": "A_OBSOLETE_T3_FUTURE_ACCESS_OR_UNWITNESSED_CAUSAL_FIXTURE",
+      "rationale": "Old test first commits a now-forbidden t3 account then tries a later append; lawful t6 PROCESS then P scene retains equivalent noncausal option, no-change and exact lineage.",
+      "original_failure": "StopIteration"
+    },
+    {
+      "ordinal": 17,
+      "name": "test_seven_later_alternatives_are_only_candidates[DIFFERENTIATE]",
+      "frozen_status": "RED",
+      "classification": "A_OBSOLETE_T3_FUTURE_ACCESS_OR_UNWITNESSED_CAUSAL_FIXTURE",
+      "rationale": "Old test first commits a now-forbidden t3 account then tries a later append; lawful t6 PROCESS then P scene retains equivalent noncausal option, no-change and exact lineage.",
+      "original_failure": "StopIteration"
+    },
+    {
+      "ordinal": 18,
+      "name": "test_seven_later_alternatives_are_only_candidates[NO_CHANGE]",
+      "frozen_status": "RED",
+      "classification": "A_OBSOLETE_T3_FUTURE_ACCESS_OR_UNWITNESSED_CAUSAL_FIXTURE",
+      "rationale": "Old test first commits a now-forbidden t3 account then tries a later append; lawful t6 PROCESS then P scene retains equivalent noncausal option, no-change and exact lineage.",
+      "original_failure": "StopIteration"
+    },
+    {
+      "ordinal": 19,
+      "name": "test_later_append_versioned_reinterpretation_without_past_rewrite",
+      "frozen_status": "RED",
+      "classification": "A_OBSOLETE_T3_FUTURE_ACCESS_OR_UNWITNESSED_CAUSAL_FIXTURE",
+      "rationale": "Old test first commits a now-forbidden t3 account then tries a later append; lawful t6 PROCESS then P scene retains equivalent noncausal option, no-change and exact lineage.",
+      "original_failure": "StopIteration"
+    },
+    {
+      "ordinal": 20,
+      "name": "test_later_no_change_is_actual_valid_option",
+      "frozen_status": "RED",
+      "classification": "A_OBSOLETE_T3_FUTURE_ACCESS_OR_UNWITNESSED_CAUSAL_FIXTURE",
+      "rationale": "Old test first commits a now-forbidden t3 account then tries a later append; lawful t6 PROCESS then P scene retains equivalent noncausal option, no-change and exact lineage.",
+      "original_failure": "StopIteration"
+    },
+    {
+      "ordinal": 21,
+      "name": "test_independent_other_can_refuse_without_forced_romance",
+      "frozen_status": "RED",
+      "classification": "A_OBSOLETE_T3_FUTURE_ACCESS_OR_UNWITNESSED_CAUSAL_FIXTURE",
+      "rationale": "Old test first commits a now-forbidden t3 account then tries a later append; lawful t6 PROCESS then P scene retains equivalent noncausal option, no-change and exact lineage.",
+      "original_failure": "StopIteration"
+    },
+    {
+      "ordinal": 22,
+      "name": "test_other_act_must_have_own_history",
+      "frozen_status": "PASS",
+      "classification": "PRESERVED_PASS",
+      "rationale": "Pinned frozen assertion still passes unchanged.",
+      "original_failure": null
+    },
+    {
+      "ordinal": 23,
+      "name": "test_child_cannot_write_caregiver_state",
+      "frozen_status": "PASS",
+      "classification": "PRESERVED_PASS",
+      "rationale": "Pinned frozen assertion still passes unchanged.",
+      "original_failure": null
+    },
+    {
+      "ordinal": 24,
+      "name": "test_unheard_parent_is_not_permitted_source",
+      "frozen_status": "PASS",
+      "classification": "PRESERVED_PASS",
+      "rationale": "Pinned frozen assertion still passes unchanged.",
+      "original_failure": null
+    },
+    {
+      "ordinal": 25,
+      "name": "test_malicious_llm_extra_effect_field_fails_closed",
+      "frozen_status": "PASS",
+      "classification": "PRESERVED_PASS",
+      "rationale": "Pinned frozen assertion still passes unchanged.",
+      "original_failure": null
+    },
+    {
+      "ordinal": 26,
+      "name": "test_llm_valid_minimal_packet_still_noncausal",
+      "frozen_status": "PASS",
+      "classification": "PRESERVED_PASS",
+      "rationale": "Pinned frozen assertion still passes unchanged.",
+      "original_failure": null
+    },
+    {
+      "ordinal": 27,
+      "name": "test_owner_fixture_permission_is_required",
+      "frozen_status": "PASS",
+      "classification": "PRESERVED_PASS",
+      "rationale": "Pinned frozen assertion still passes unchanged.",
+      "original_failure": null
+    },
+    {
+      "ordinal": 28,
+      "name": "test_permission_actor_binds",
+      "frozen_status": "PASS",
+      "classification": "PRESERVED_PASS",
+      "rationale": "Pinned frozen assertion still passes unchanged.",
+      "original_failure": null
+    },
+    {
+      "ordinal": 29,
+      "name": "test_replay_is_exact_under_same_seal",
+      "frozen_status": "RED",
+      "classification": "A_OBSOLETE_T3_FUTURE_ACCESS_OR_UNWITNESSED_CAUSAL_FIXTURE",
+      "rationale": "Old test first commits a now-forbidden t3 account then tries a later append; lawful t6 PROCESS then P scene retains equivalent noncausal option, no-change and exact lineage.",
+      "original_failure": "StopIteration"
+    },
+    {
+      "ordinal": 30,
+      "name": "test_permission_replay_from_stale_state_is_refused",
+      "frozen_status": "PASS",
+      "classification": "PRESERVED_PASS",
+      "rationale": "Pinned frozen assertion still passes unchanged.",
+      "original_failure": null
+    },
+    {
+      "ordinal": 31,
+      "name": "test_ordering_fails_closed_on_second_loss_after_later",
+      "frozen_status": "RED",
+      "classification": "A_OBSOLETE_T3_FUTURE_ACCESS_OR_UNWITNESSED_CAUSAL_FIXTURE",
+      "rationale": "Old test first commits a now-forbidden t3 account then tries a later append; lawful t6 PROCESS then P scene retains equivalent noncausal option, no-change and exact lineage.",
+      "original_failure": "StopIteration"
+    },
+    {
+      "ordinal": 32,
+      "name": "test_unsupported_actor_procedure_fails",
+      "frozen_status": "PASS",
+      "classification": "PRESERVED_PASS",
+      "rationale": "Pinned frozen assertion still passes unchanged.",
+      "original_failure": null
+    },
+    {
+      "ordinal": 33,
+      "name": "test_demographic_only_counterfactual_invariance",
+      "frozen_status": "PASS",
+      "classification": "PRESERVED_PASS",
+      "rationale": "Pinned frozen assertion still passes unchanged.",
+      "original_failure": null
+    },
+    {
+      "ordinal": 34,
+      "name": "test_fake_objective_culprit_rejected",
+      "frozen_status": "PASS",
+      "classification": "PRESERVED_PASS",
+      "rationale": "Pinned frozen assertion still passes unchanged.",
+      "original_failure": null
+    },
+    {
+      "ordinal": 35,
+      "name": "test_witnessed_own_affect_cannot_be_borrowed",
+      "frozen_status": "PASS",
+      "classification": "PRESERVED_PASS",
+      "rationale": "Pinned frozen assertion still passes unchanged.",
+      "original_failure": null
+    },
+    {
+      "ordinal": 36,
+      "name": "test_untampered_lineage_hash_is_required",
+      "frozen_status": "RED",
+      "classification": "A_OBSOLETE_T3_FUTURE_ACCESS_OR_UNWITNESSED_CAUSAL_FIXTURE",
+      "rationale": "Old test first commits a now-forbidden t3 account then tries a later append; lawful t6 PROCESS then P scene retains equivalent noncausal option, no-change and exact lineage.",
+      "original_failure": "StopIteration"
+    },
+    {
+      "ordinal": 37,
+      "name": "test_future_habit_cannot_be_causal_past_of_loss",
+      "frozen_status": "RED",
+      "classification": "C_OVERSTRONG_OR_DIFFERENT_LAWFUL_REFUSAL",
+      "rationale": "Refuses stale independently registered past-history witness. Frozen regex insists PROCEDURAL_ORIGIN_UNBOUND; actual HISTORY_WITNESS_SOURCE_UNVERIFIED is an equally safe earlier refusal.",
+      "original_failure": "AssertionError: Regex pattern did not match.\n  Expected regex: 'PROCEDURAL_ORIGIN_UNBOUND'\n  Actual message: 'HISTORY_WITNESS_SOURCE_UNVERIFIED'"
+    }
+  ],
+  "frozen_I2_against_M2": [
+    {
+      "ordinal": 1,
+      "name": "test_01_reproducible_witnesses_and_plural_without_compulsion",
+      "frozen_status": "RED",
+      "classification": "A_OBSOLETE_T3_FUTURE_ACCESS_OR_UNWITNESSED_CAUSAL_FIXTURE",
+      "rationale": "Frozen fixture treats parent t4 and peer t5 speech/child affect as readable at LOSS t3; t6 PROCESS with independently witnessed speaker action/exposure is the only lawful migrated path.",
+      "original_failure": "AssertionError: assert ((Candidate(id...2d8d8e187f2')) == (Candidate(id...2d8d8e187f2'))\n  \n  Full diff:\n    (\n        Candidate(\n            id='499c2491c12d558fb1c6',\n            actor='child',\n            event='loss',\n            source=None,\n            mode='NO_CHANGE',\n            stance='SUSPEND',\n            parent=None,\n            rule_hash='5e3d9e0faad371bfb13c2c7406cacf7cdcca8522f68f88eecabe72d8d8e187f2',\n        ),\n        Candidate(\n            id='b897a0e6ea842d9472dd',\n            actor='child',\n            event='loss',\n            source='history:bd6ceca0bbc100c87573e507be1d"
+    },
+    {
+      "ordinal": 2,
+      "name": "test_02_speaker_claim_not_objective_culprit",
+      "frozen_status": "PASS",
+      "classification": "PRESERVED_PASS",
+      "rationale": "Pinned frozen assertion still passes unchanged.",
+      "original_failure": null
+    },
+    {
+      "ordinal": 3,
+      "name": "test_03_unheard_claim_not_eligible",
+      "frozen_status": "PASS",
+      "classification": "PRESERVED_PASS",
+      "rationale": "Pinned frozen assertion still passes unchanged.",
+      "original_failure": null
+    },
+    {
+      "ordinal": 4,
+      "name": "test_04_same_child_accessible_history_parent_private_difference_cannot_auto_set_belief",
+      "frozen_status": "PASS",
+      "classification": "PRESERVED_PASS",
+      "rationale": "Pinned frozen assertion still passes unchanged.",
+      "original_failure": null
+    },
+    {
+      "ordinal": 5,
+      "name": "test_05_prior_actual_history_changed_provenance_not_forced_psychology",
+      "frozen_status": "PASS",
+      "classification": "PRESERVED_PASS",
+      "rationale": "Pinned frozen assertion still passes unchanged.",
+      "original_failure": null
+    },
+    {
+      "ordinal": 6,
+      "name": "test_06_original_event_immutable_with_same_scene_and_append",
+      "frozen_status": "RED",
+      "classification": "A_OBSOLETE_T3_FUTURE_ACCESS_OR_UNWITNESSED_CAUSAL_FIXTURE",
+      "rationale": "Frozen fixture treats parent t4 and peer t5 speech/child affect as readable at LOSS t3; t6 PROCESS with independently witnessed speaker action/exposure is the only lawful migrated path.",
+      "original_failure": "StopIteration"
+    },
+    {
+      "ordinal": 7,
+      "name": "test_07_private_memory_not_manufactured",
+      "frozen_status": "RED",
+      "classification": "A_OBSOLETE_T3_FUTURE_ACCESS_OR_UNWITNESSED_CAUSAL_FIXTURE",
+      "rationale": "Frozen fixture treats parent t4 and peer t5 speech/child affect as readable at LOSS t3; t6 PROCESS with independently witnessed speaker action/exposure is the only lawful migrated path.",
+      "original_failure": "StopIteration"
+    },
+    {
+      "ordinal": 8,
+      "name": "test_08_sibling_or_caregiver_history_not_borrowed_as_procedure",
+      "frozen_status": "PASS",
+      "classification": "PRESERVED_PASS",
+      "rationale": "Pinned frozen assertion still passes unchanged.",
+      "original_failure": null
+    },
+    {
+      "ordinal": 9,
+      "name": "test_09_other_P_refusal_already_encoded_no_forced_response",
+      "frozen_status": "RED",
+      "classification": "A_OBSOLETE_T3_FUTURE_ACCESS_OR_UNWITNESSED_CAUSAL_FIXTURE",
+      "rationale": "Old test first commits a now-forbidden t3 account then tries a later append; lawful t6 PROCESS then P scene retains equivalent noncausal option, no-change and exact lineage.",
+      "original_failure": "StopIteration"
+    },
+    {
+      "ordinal": 10,
+      "name": "test_10_bad_model_payload_cannot_inject_owner_effect",
+      "frozen_status": "PASS",
+      "classification": "PRESERVED_PASS",
+      "rationale": "Pinned frozen assertion still passes unchanged.",
+      "original_failure": null
+    },
+    {
+      "ordinal": 11,
+      "name": "test_11_permission_replay_before_hash_blocks_reuse",
+      "frozen_status": "RED",
+      "classification": "C_OVERSTRONG_OR_DIFFERENT_LAWFUL_REFUSAL",
+      "rationale": "Frozen test selects the first LOSS candidate, now NO_CHANGE: replay preserves identical state and is not stale mutating grant. Separately selected t6 mutating candidate correctly rejects reused grant.",
+      "original_failure": "Failed: DID NOT RAISE <class 'kernel.Refusal'>"
+    },
+    {
+      "ordinal": 12,
+      "name": "test_12_foreign_other_history_does_not_supply_P_project",
+      "frozen_status": "PASS",
+      "classification": "PRESERVED_PASS",
+      "rationale": "Pinned frozen assertion still passes unchanged.",
+      "original_failure": null
+    },
+    {
+      "ordinal": 13,
+      "name": "test_13_demographics_no_direct_link",
+      "frozen_status": "PASS",
+      "classification": "PRESERVED_PASS",
+      "rationale": "Pinned frozen assertion still passes unchanged.",
+      "original_failure": null
+    },
+    {
+      "ordinal": 14,
+      "name": "test_R01_future_speech_must_not_be_available_at_event_clock",
+      "frozen_status": "PASS",
+      "classification": "PRESERVED_PASS",
+      "rationale": "Pinned frozen assertion still passes unchanged.",
+      "original_failure": null
+    },
+    {
+      "ordinal": 15,
+      "name": "test_R02_future_affect_must_not_be_retrospectively_referenced_as_current",
+      "frozen_status": "PASS",
+      "classification": "PRESERVED_PASS",
+      "rationale": "Pinned frozen assertion still passes unchanged.",
+      "original_failure": null
+    },
+    {
+      "ordinal": 16,
+      "name": "test_R03_same_objective_id_changed_payload_cannot_preserve_old_lineage",
+      "frozen_status": "RED",
+      "classification": "A_OBSOLETE_T3_FUTURE_ACCESS_OR_UNWITNESSED_CAUSAL_FIXTURE",
+      "rationale": "Old test first commits a now-forbidden t3 account then tries a later append; lawful t6 PROCESS then P scene retains equivalent noncausal option, no-change and exact lineage.",
+      "original_failure": "StopIteration"
+    },
+    {
+      "ordinal": 17,
+      "name": "test_R04_NO_CHANGE_must_mean_no_durable_interpretation_update",
+      "frozen_status": "RED",
+      "classification": "A_OBSOLETE_T3_FUTURE_ACCESS_OR_UNWITNESSED_CAUSAL_FIXTURE",
+      "rationale": "Frozen fixture treats parent t4 and peer t5 speech/child affect as readable at LOSS t3; t6 PROCESS with independently witnessed speaker action/exposure is the only lawful migrated path.",
+      "original_failure": "StopIteration"
+    },
+    {
+      "ordinal": 18,
+      "name": "test_R05_cosmetic_history_label_does_not_create_new_causal_route_identity",
+      "frozen_status": "RED",
+      "classification": "C_OVERSTRONG_OR_DIFFERENT_LAWFUL_REFUSAL",
+      "rationale": "Old fixture rewrites source bytes without renewing witness preimage; refusal is correct, not a warranted equality of cryptographic candidate IDs or evidence of different psychology.",
+      "original_failure": "kernel.Refusal: HISTORY_WITNESS_SOURCE_UNVERIFIED"
+    },
+    {
+      "ordinal": 19,
+      "name": "test_R06_forged_witness_without_source_admission_cannot_create_route",
+      "frozen_status": "PASS",
+      "classification": "PRESERVED_PASS",
+      "rationale": "Pinned frozen assertion still passes unchanged.",
+      "original_failure": null
+    },
+    {
+      "ordinal": 20,
+      "name": "test_R07_nonsemantic_material_stereotype_cannot_be_minted_world_truth",
+      "frozen_status": "PASS",
+      "classification": "PRESERVED_PASS",
+      "rationale": "Pinned frozen assertion still passes unchanged.",
+      "original_failure": null
+    },
+    {
+      "ordinal": 21,
+      "name": "test_R08_future_self_history_cannot_be_usable_as_prior_lineage_evidence",
+      "frozen_status": "RED",
+      "classification": "C_OVERSTRONG_OR_DIFFERENT_LAWFUL_REFUSAL",
+      "rationale": "Old fixture moves history to future t99 without replacing independently registered witness; conservative source refusal supersedes expected nonrecruitment observation.",
+      "original_failure": "kernel.Refusal: HISTORY_WITNESS_SOURCE_UNVERIFIED"
+    },
+    {
+      "ordinal": 22,
+      "name": "test_R09_later_own_new_utterance_requires_actual_speaker_opportunity",
+      "frozen_status": "PASS",
+      "classification": "PRESERVED_PASS",
+      "rationale": "Pinned frozen assertion still passes unchanged.",
+      "original_failure": null
+    },
+    {
+      "ordinal": 23,
+      "name": "test_R10_later_interpretation_requires_evidence_of_relevance_or_difference",
+      "frozen_status": "RED",
+      "classification": "A_OBSOLETE_T3_FUTURE_ACCESS_OR_UNWITNESSED_CAUSAL_FIXTURE",
+      "rationale": "Old test first commits a now-forbidden t3 account then tries a later append; lawful t6 PROCESS then P scene retains equivalent noncausal option, no-change and exact lineage.",
+      "original_failure": "StopIteration"
+    }
+  ],
+  "classification_count": {
+    "A": 25,
+    "C": 4,
+    "B": 0
+  },
+  "actual_fresh_m3_positive": [
+    {
+      "name": "test_M3_01_both_claims_postdate_loss_and_no_t3_reconsideration",
+      "result": "PASS"
+    },
+    {
+      "name": "test_M3_02_exact_t6_processing_restores_two_plural_accounts",
+      "result": "PASS"
+    },
+    {
+      "name": "test_M3_03_unknown_culprit_stays_unknown_and_peer_group_accusation_only_speech",
+      "result": "PASS"
+    },
+    {
+      "name": "test_M3_04_t3_refuses_future_affect",
+      "result": "PASS"
+    },
+    {
+      "name": "test_M3_05_t6_separate_negative_affect_and_public_practice_with_rejection",
+      "result": "PASS"
+    },
+    {
+      "name": "test_M3_06_witnessed_caregiver_private_history_swap_does_not_change_child_uptake",
+      "result": "PASS"
+    },
+    {
+      "name": "test_M3_07_child_witnessed_history_changes_content_identity_not_forced_belief",
+      "result": "PASS"
+    },
+    {
+      "name": "test_M3_08_prior_procedural_habit_survives_conscious_rejection",
+      "result": "PASS"
+    },
+    {
+      "name": "test_M3_09_original_objective_content_hash_survives_later_differentiation",
+      "result": "PASS"
+    },
+    {
+      "name": "test_M3_10_forged_same_id_changed_loss_refused_after_lineage",
+      "result": "PASS"
+    },
+    {
+      "name": "test_M3_11_forged_same_id_changed_processing_refused_after_lineage",
+      "result": "PASS"
+    },
+    {
+      "name": "test_M3_12_no_effect_retains_state_but_separate_audit_changes_document_identity",
+      "result": "PASS"
+    },
+    {
+      "name": "test_M3_13_refusing_other_person_with_real_independent_project_does_not_force_belief",
+      "result": "PASS"
+    },
+    {
+      "name": "test_M3_14_unrelated_later_material_still_allows_no_change_only",
+      "result": "PASS"
+    },
+    {
+      "name": "test_M3_15_self_attested_history_without_witness_refused_even_if_witnessed_flag_true",
+      "result": "PASS"
+    },
+    {
+      "name": "test_M3_16_cross_actor_history_witness_cannot_authorize_child_activity",
+      "result": "PASS"
+    },
+    {
+      "name": "test_M3_17_access_id_without_exposure_cannot_create_heard_claim",
+      "result": "PASS"
+    },
+    {
+      "name": "test_M3_18_missing_speaker_action_event_refused",
+      "result": "PASS"
+    },
+    {
+      "name": "test_M3_19_exposure_from_future_cannot_be_retroactively_heard",
+      "result": "PASS"
+    },
+    {
+      "name": "test_M3_20_typed_material_claim_group_as_true_is_refused",
+      "result": "PASS"
+    },
+    {
+      "name": "test_M3_21_valid_typed_resource_status_on_new_observation_is_allowed",
+      "result": "PASS"
+    },
+    {
+      "name": "test_M3_22_stale_mutating_grant_replay_refused",
+      "result": "PASS"
+    },
+    {
+      "name": "test_M3_23_two_event_exact_replay_hash_same",
+      "result": "PASS"
+    },
+    {
+      "name": "test_M3_24_age_background_swaps_cannot_impose_stance",
+      "result": "PASS"
+    },
+    {
+      "name": "test_M3_25_other_person_project_without_actual_prior_witness_is_refused",
+      "result": "PASS"
+    },
+    {
+      "name": "test_M3_26_actor_cannot_claim_other_history_as_own_procedure",
+      "result": "PASS"
+    },
+    {
+      "name": "test_M3_27_model_payload_cannot_write_immediate_memory_or_belief",
+      "result": "PASS"
+    },
+    {
+      "name": "test_M3_28_changed_witness_operation_affect_vs_public_is_refused",
+      "result": "PASS"
+    },
+    {
+      "name": "test_M3_29_uncontrolled_forged_speaker_motive_cannot_be_objective",
+      "result": "PASS"
+    },
+    {
+      "name": "test_M3_30_lineage_tamper_after_sourcefree_update_refused",
+      "result": "PASS"
+    },
+    {
+      "name": "test_M3_31_registered_fixtures_remain_self_authored_not_true_external_signatures",
+      "result": "PASS"
+    },
+    {
+      "name": "test_M3_32_speech_contents_not_proof_of_speaker_private_intent",
+      "result": "PASS"
+    }
+  ],
+  "actual_fresh_m3_strict": [
+    {
+      "name": "test_R3_01_past_heard_words_cannot_change_without_current_lineage_source_collision",
+      "result": "RED",
+      "failure": "DID NOT RAISE Refusal",
+      "kind": "CHANGED_ALREADY_HEARD_WORDS_WITH_REPLACED_RECEIPTS"
+    },
+    {
+      "name": "test_R3_02_prior_practical_orientation_cannot_change_unnoticed_after_lineage_append",
+      "result": "RED",
+      "failure": "DID NOT RAISE Refusal",
+      "kind": "CHANGED_PRIOR_PROCEDURE_WITH_REPLACED_WITNESS_HASH"
+    },
+    {
+      "name": "test_R3_03_earlier_affective_witness_rewrite_cannot_change_historical_lineage_source",
+      "result": "RED",
+      "failure": "DID NOT RAISE Refusal",
+      "kind": "CHANGED_PRIOR_AFFECT_WITH_REPLACED_WITNESS_HASH"
+    }
+  ],
+  "fresh_source_bundle_sha256": "94a3d5827ed3b0541285ac30928ddc899fe8b2474e1d8e018c8e93591fd45c3f",
+  "fresh_source_bundle_bytes": 35000
+}

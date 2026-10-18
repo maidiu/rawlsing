@@ -1,0 +1,77 @@
+{
+  "schema": "SOROK_HQ329_M3_ACTUAL_EXECUTION_RECEIPT_R1",
+  "grade": "PINNED_SOURCEFREE_BOUNDED_EXECUTION__NOT_FRESH_INDEPENDENT_ADOPTION",
+  "seal": "700a75d81182d0bffc1ee970aff7389c28ea494b",
+  "m2_commit": "5c2fbe14ccfa5027becfabc682206a1e61aaf986",
+  "m2_code_git_blob_sha1": "5530bd1152161e084f734b5ba518668763192c6b",
+  "m2_code_sha256": "888d73fff63f70a22932f1001f5c9003104b0e5a9cdef84e93456151428676c8",
+  "frozen_m1_git_blob_sha1": "37174efcf6689f87110ef97023e91cc83786fe2a",
+  "frozen_m1_sha256": "30b820eda81089c89d9e2df8145860386d33b973f5c7f6a028e7e16b21dbe7b4",
+  "frozen_i2_git_blob_sha1": "23ebc5a15df242b288555ec415ef6533b4420a7f",
+  "frozen_i2_sha256": "449f9cf8c8db7befc8b2358b776adee636db70f884e7d2fdffa069b07c19d72f",
+  "python": "3.13.5",
+  "pytest": "9.0.2",
+  "runs": [
+    {
+      "suite": "M1_FROZEN_ORIGINAL",
+      "pass": 37,
+      "red": 0,
+      "stdout_sha256": "6adbd847994908c88defd5bdb7bef714491fd981d50f8fb26f038cef19c876d7",
+      "junit_sha256": "7a8090cc5d6393e3a6eb0796841b88a4cfcc05f2e400db22010e90be2fa6e7fe"
+    },
+    {
+      "suite": "I2_FROZEN_ORIGINAL",
+      "pass": 14,
+      "red": 9,
+      "stdout_sha256": "e6be85056b6a2c472cf583696dc7863aad81392ca5608a60b6de4aa17e945d2d",
+      "junit_sha256": "91fcc632ff5e5f0d857a4a839f095b1b0c73a3db2cd1424fbefa86057eac952e"
+    },
+    {
+      "suite": "M2_AUTHOR_UNCHANGED",
+      "pass": 41,
+      "red": 0,
+      "stdout_sha256": "0836c391b4c8fa23a8d83d4771aeda004a74443b96d131a9cff33ac284097715",
+      "junit_sha256": "5f7b525a6ddb2bae4fcd7e2e6e9f68d55f96a8da2cb0c6b99ba8f6acb51b76ca"
+    },
+    {
+      "suite": "M1_FROZEN_AGAINST_M2",
+      "pass": 18,
+      "red": 19,
+      "stdout_sha256": "6cd13432c6bf1357889f6c4a80a163d9b82b532d70c55f828f8da2a4c0a07a30",
+      "junit_sha256": "638ecf75e7ff623d6e16fc1306b2f3836b9024eeb54ba5f5862f8b3994f3beff"
+    },
+    {
+      "suite": "I2_FROZEN_AGAINST_M2",
+      "pass": 13,
+      "red": 10,
+      "stdout_sha256": "7e0aa5ffcca38834183b88ef9f4021cfdf37640bc3d4f49f193db50e3fe010b1",
+      "junit_sha256": "cf9f036100e846d42d0818633ac0e763c481a9681878775bb43f5f0d6aced9ff"
+    },
+    {
+      "suite": "M3_POSITIVE_LAWFUL",
+      "pass": 32,
+      "red": 0,
+      "stdout_sha256": "592f1fd59f98bd34b46c4c7f21e72978861b97e3cbb1c53379719c67c21c",
+      "junit_sha256": "8b388dd0a50e2d61c8acb227084e4b0fa1d7e7af3e17e72430cc35137c5ef793"
+    },
+    {
+      "suite": "M3_SOURCE_PREIMAGE_HOSTILES",
+      "pass": 0,
+      "red": 3,
+      "stdout_sha256": "c69442192d2db86baa64925a406f9b4f9ac54d895d20c5d5b3177201203f72cc",
+      "junit_sha256": "5627340f957e42b9f0dc0269150b6aa8b1fa6d8fcb289a51c995485e4a848fa7"
+    }
+  ],
+  "source_portable_zip": {
+    "filename": "SOROK_HQ329_M3_INDEPENDENT_COURT.zip",
+    "bytes": 35000,
+    "sha256": "94a3d5827ed3b0541285ac30928ddc899fe8b2474e1d8e018c8e93591fd45c3f",
+    "in_github_return": false,
+    "available_as": "exact conversation artifact"
+  },
+  "frozen_originals_modified": false,
+  "production_owner_modified": false,
+  "formal_independence": "NOT_MET__SAME_CONVERSATION_AS_M2_AUTHOR",
+  "native_owner_execution": "NOT_RUN",
+  "original_35_wave_source": "NOT_RUN"
+}
