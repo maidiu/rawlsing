@@ -1,0 +1,377 @@
+{
+  "grade": "TEST_ONLY_B3_INTEGRATED_CANDIDATE_PENDING_I2",
+  "passed": true,
+  "startup": "63f07960eb04cc856d94ed85f4c3c597f2f6bc9e",
+  "branch": "agent/rabochii-sorok-v2-hq329-b3-coupled-interpretation-prototype-r1",
+  "required_suites": {
+    "b3_final": {
+      "tests": 71,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "inherited/r1_45": {
+      "tests": 45,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "inherited/repair_5": {
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "inherited/e2_strict": {
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "inherited/e2_full": {
+      "tests": 44,
+      "failures": 2,
+      "errors": 0,
+      "skipped": 0
+    },
+    "inherited/x2": {
+      "tests": 17,
+      "failures": 1,
+      "errors": 0,
+      "skipped": 0
+    },
+    "inherited/m2_41": {
+      "tests": 41,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "inherited/m1_37_on_m2": {
+      "tests": 37,
+      "failures": 19,
+      "errors": 0,
+      "skipped": 0
+    },
+    "inherited/i2_23_on_m2": {
+      "tests": 23,
+      "failures": 10,
+      "errors": 0,
+      "skipped": 0
+    },
+    "inherited/m3_source_preimage_3_red": {
+      "tests": 3,
+      "failures": 3,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "inherited": {
+    "b1": {
+      "tests": 39,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "p1": {
+      "tests": 74,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "f1": {
+      "tests": 97,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "integration": {
+      "tests": 81,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "d1_original": {
+      "tests": 22,
+      "grade": "HISTORICAL_GUARD_KNOWN_ABSENCE_DEFECT"
+    },
+    "d1_corrected": {
+      "tests": 17,
+      "grade": "CORRECTED_RESEARCH_GUARD"
+    }
+  },
+  "f1_native_status": "RED",
+  "f1_native_failed_cases": [
+    {
+      "case_id": "F01",
+      "errors": [
+        "STATUS_MISMATCH"
+      ]
+    },
+    {
+      "case_id": "F02",
+      "errors": [
+        "STATUS_MISMATCH"
+      ]
+    },
+    {
+      "case_id": "F03",
+      "errors": [
+        "STATUS_MISMATCH"
+      ]
+    },
+    {
+      "case_id": "F04",
+      "errors": [
+        "STATUS_MISMATCH"
+      ]
+    },
+    {
+      "case_id": "F05",
+      "errors": [
+        "STATUS_MISMATCH",
+        "NONATOMIC_OWNER_EFFECT"
+      ]
+    },
+    {
+      "case_id": "F06",
+      "errors": [
+        "STATUS_MISMATCH"
+      ]
+    },
+    {
+      "case_id": "F07",
+      "errors": [
+        "STATUS_MISMATCH"
+      ]
+    },
+    {
+      "case_id": "F08",
+      "errors": [
+        "STATUS_MISMATCH"
+      ]
+    },
+    {
+      "case_id": "F10",
+      "errors": [
+        "STATUS_MISMATCH"
+      ]
+    },
+    {
+      "case_id": "F11",
+      "errors": [
+        "STATUS_MISMATCH"
+      ]
+    },
+    {
+      "case_id": "F13",
+      "errors": [
+        "STATUS_MISMATCH",
+        "NONATOMIC_OWNER_EFFECT"
+      ]
+    },
+    {
+      "case_id": "F15",
+      "errors": [
+        "STATUS_MISMATCH",
+        "NONATOMIC_OWNER_EFFECT"
+      ]
+    },
+    {
+      "case_id": "F16",
+      "errors": [
+        "STATUS_MISMATCH",
+        "NONATOMIC_OWNER_EFFECT"
+      ]
+    },
+    {
+      "case_id": "F17",
+      "errors": [
+        "STATUS_MISMATCH"
+      ]
+    },
+    {
+      "case_id": "F18",
+      "errors": [
+        "STATUS_MISMATCH"
+      ]
+    },
+    {
+      "case_id": "F19",
+      "errors": [
+        "STATUS_MISMATCH"
+      ]
+    },
+    {
+      "case_id": "F21",
+      "errors": [
+        "STATUS_MISMATCH"
+      ]
+    }
+  ],
+  "preserved_failed_assertions": {
+    "e2_full": [
+      "test_direct_b1_after_wrapper_limit_is_measured[False]",
+      "test_direct_b1_after_wrapper_limit_is_measured[True]"
+    ],
+    "x2": [
+      "test_same_event_id_accepts_distinct_objective_payload_hashes"
+    ],
+    "m1_37_on_m2": [
+      "test_every_accessible_speech_has_multiple_competing_stances",
+      "test_peer_attribution_never_world_culprit",
+      "test_factual_acceptance_and_negative_affect_are_independent",
+      "test_private_rejection_and_public_conformity_do_not_collapse",
+      "test_procedural_watchfulness_survives_explicit_rejection",
+      "test_seven_later_alternatives_are_only_candidates[REATTRIBUTE]",
+      "test_seven_later_alternatives_are_only_candidates[NARROW]",
+      "test_seven_later_alternatives_are_only_candidates[GENERALIZE]",
+      "test_seven_later_alternatives_are_only_candidates[REINFORCE]",
+      "test_seven_later_alternatives_are_only_candidates[CONTRADICT]",
+      "test_seven_later_alternatives_are_only_candidates[DIFFERENTIATE]",
+      "test_seven_later_alternatives_are_only_candidates[NO_CHANGE]",
+      "test_later_append_versioned_reinterpretation_without_past_rewrite",
+      "test_later_no_change_is_actual_valid_option",
+      "test_independent_other_can_refuse_without_forced_romance",
+      "test_replay_is_exact_under_same_seal",
+      "test_ordering_fails_closed_on_second_loss_after_later",
+      "test_untampered_lineage_hash_is_required",
+      "test_future_habit_cannot_be_causal_past_of_loss"
+    ],
+    "i2_23_on_m2": [
+      "test_01_reproducible_witnesses_and_plural_without_compulsion",
+      "test_06_original_event_immutable_with_same_scene_and_append",
+      "test_07_private_memory_not_manufactured",
+      "test_09_other_P_refusal_already_encoded_no_forced_response",
+      "test_11_permission_replay_before_hash_blocks_reuse",
+      "test_R03_same_objective_id_changed_payload_cannot_preserve_old_lineage",
+      "test_R04_NO_CHANGE_must_mean_no_durable_interpretation_update",
+      "test_R05_cosmetic_history_label_does_not_create_new_causal_route_identity",
+      "test_R08_future_self_history_cannot_be_usable_as_prior_lineage_evidence",
+      "test_R10_later_interpretation_requires_evidence_of_relevance_or_difference"
+    ],
+    "m3_source_preimage_3_red": [
+      "test_R3_01_past_heard_words_cannot_change_without_current_lineage_source_collision",
+      "test_R3_02_prior_practical_orientation_cannot_change_unnoticed_after_lineage_append",
+      "test_R3_03_earlier_affective_witness_rewrite_cannot_change_historical_lineage_source"
+    ]
+  },
+  "f2": {
+    "PASS": 42,
+    "RED": 0,
+    "NOT_APPLICABLE": 0
+  },
+  "sql_cold_replay": {
+    "positive": {
+      "integrity": "ok",
+      "snapshot_hash": "99eedde4545a657c51c3c1ae612895f3936001e802e105e237bf32bf6a2ddcfd",
+      "table_rows": {
+        "b2_event_identity": 10,
+        "b2_ingress": 10,
+        "b3_audit": 10,
+        "b3_clock": 6,
+        "b3_m2_sources": 34,
+        "b3_preimage": 14,
+        "b3_response": 6,
+        "b3_source": 2,
+        "b3_transition": 1,
+        "checkpoint": 1,
+        "joint_receipt": 0,
+        "occurrence": 10
+      },
+      "sha256": "410dfaef60a50edb6ab0a8298e36ce377cf7f0c3430668d9cd9499f0f5a13058"
+    },
+    "positive_cold": {
+      "integrity": "ok",
+      "snapshot_hash": "99eedde4545a657c51c3c1ae612895f3936001e802e105e237bf32bf6a2ddcfd",
+      "table_rows": {
+        "b2_event_identity": 10,
+        "b2_ingress": 10,
+        "b3_audit": 10,
+        "b3_clock": 6,
+        "b3_m2_sources": 34,
+        "b3_preimage": 14,
+        "b3_response": 6,
+        "b3_source": 2,
+        "b3_transition": 1,
+        "checkpoint": 1,
+        "joint_receipt": 0,
+        "occurrence": 10
+      },
+      "sha256": "410dfaef60a50edb6ab0a8298e36ce377cf7f0c3430668d9cd9499f0f5a13058"
+    },
+    "permission_absent": {
+      "integrity": "ok",
+      "snapshot_hash": "1344a727b9dbb7542c4937e97bc8cedeb12798a733775df81178ebb61c7d7982",
+      "table_rows": {
+        "b2_event_identity": 10,
+        "b2_ingress": 10,
+        "b3_audit": 10,
+        "b3_clock": 6,
+        "b3_m2_sources": 34,
+        "b3_preimage": 14,
+        "b3_response": 6,
+        "b3_source": 2,
+        "b3_transition": 0,
+        "checkpoint": 1,
+        "joint_receipt": 0,
+        "occurrence": 10
+      },
+      "sha256": "5ddad411c6d95038e7d9f8b45c78665274bd47d0d3dd4a027130d2df0aa10ab5"
+    },
+    "permission_absent_cold": {
+      "integrity": "ok",
+      "snapshot_hash": "1344a727b9dbb7542c4937e97bc8cedeb12798a733775df81178ebb61c7d7982",
+      "table_rows": {
+        "b2_event_identity": 10,
+        "b2_ingress": 10,
+        "b3_audit": 10,
+        "b3_clock": 6,
+        "b3_m2_sources": 34,
+        "b3_preimage": 14,
+        "b3_response": 6,
+        "b3_source": 2,
+        "b3_transition": 0,
+        "checkpoint": 1,
+        "joint_receipt": 0,
+        "occurrence": 10
+      },
+      "sha256": "5ddad411c6d95038e7d9f8b45c78665274bd47d0d3dd4a027130d2df0aa10ab5"
+    }
+  },
+  "loaded_modules": [
+    {
+      "module": "b3_fixed_b2",
+      "relative_file": ".runtime/b2/bridge.py",
+      "sha256": "9c112a7984b0581e965394983acf0e38064847083b78096e2d8215b48932250f"
+    },
+    {
+      "module": "b2_pinned_bfirst",
+      "relative_file": ".runtime/b2/imports/B1/bfirst.py",
+      "sha256": "478b989730f49a5def41a367b6f53e4aae9c80961f7f466fe669c7dbd92201a3"
+    },
+    {
+      "module": "b2_pinned_p1",
+      "relative_file": ".runtime/b2/imports/P1/p1_contract.py",
+      "sha256": "df31a147ab037385c5488801b5fa7413f9bcf5c63c97ba6328f859c8fcd92d38"
+    },
+    {
+      "module": "b3_frozen_m2",
+      "relative_file": ".runtime/m2/kernel.py",
+      "sha256": "888d73fff63f70a22932f1001f5c9003104b0e5a9cdef84e93456151428676c8"
+    }
+  ],
+  "E3": {
+    "commit": "a16ba353f3bc471776d60ce198f267be4e9e5773",
+    "verdict": "SOURCEFREE_BFIRST_EVENT_CUSTODY_ACCEPT_SCOPED"
+  },
+  "M3": {
+    "commit": "49dfcb30971310756a12f659961600d9f2eb4a11",
+    "verdict": "REVISE_SOURCE_PREIMAGE",
+    "independence": "NOT_MET",
+    "durable_m2_use": "QUARANTINED"
+  },
+  "no_original_sources": true,
+  "no_model_calls": true,
+  "no_semantic_adoption": true,
+  "portable_sanitation": "PATHS_AND_XML_HOSTNAME_ONLY_SOURCE_BYTES_UNCHANGED"
+}

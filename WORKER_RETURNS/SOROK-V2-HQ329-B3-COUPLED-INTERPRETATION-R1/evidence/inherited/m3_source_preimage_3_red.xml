@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="3" skipped="0" tests="3" time="0.155" timestamp="2026-10-18T00:04:26.726078-04:00"><testcase classname="HQ329-B3-coupled-interpretation-wt.WORKER_RETURNS.SOROK-V2-HQ329-B3-COUPLED-INTERPRETATION-R1..runtime.m3.05_SOURCE_PREIMAGE_RED_REPRODUCER" name="test_R3_01_past_heard_words_cannot_change_without_current_lineage_source_collision" time="0.006"><failure message="Failed: DID NOT RAISE &lt;class 'kernel.Refusal'&gt;">def test_R3_01_past_heard_words_cannot_change_without_current_lineage_source_collision():
+        scene, state = fixed_t6_interpretation()
+        changed_words = replace(scene.speech[0], words='It was definitely the children of group Z.')
+        changed = replace(scene, speech=(changed_words,) + scene.speech[1:],
+            speech_actions=(replace(scene.speech_actions[0],
+                                    speech_hash=digest(asdict(changed_words))),) + scene.speech_actions[1:],
+            exposures=(replace(scene.exposures[0],
+                               speech_hash=digest(asdict(changed_words))),) + scene.exposures[1:])
+&gt;       with pytest.raises(Refusal, match='SOURCE_PREIMAGE|SOURCE_IDENTITY_COLLISION'):
+E       Failed: DID NOT RAISE &lt;class 'kernel.Refusal'&gt;
+
+../m3/05_SOURCE_PREIMAGE_RED_REPRODUCER.py:27: Failed</failure></testcase><testcase classname="HQ329-B3-coupled-interpretation-wt.WORKER_RETURNS.SOROK-V2-HQ329-B3-COUPLED-INTERPRETATION-R1..runtime.m3.05_SOURCE_PREIMAGE_RED_REPRODUCER" name="test_R3_02_prior_practical_orientation_cannot_change_unnoticed_after_lineage_append" time="0.004"><failure message="Failed: DID NOT RAISE &lt;class 'kernel.Refusal'&gt;">def test_R3_02_prior_practical_orientation_cannot_change_unnoticed_after_lineage_append():
+        scene, state = fixed_t6_interpretation()
+        child = scene.actors[0]
+        changed_habit = replace(child.history[1],
+                                activity='fully different old practical orientation')
+        changed_witnesses = tuple(
+            replace(w, history_hash=digest(asdict(changed_habit)))
+            if w.actor == 'child' and w.history_id == changed_habit.id else w
+            for w in scene.history_witnesses)
+        changed = replace(scene,
+            actors=(replace(child, history=child.history[:1] + (changed_habit,) + child.history[2:]),)
+                   + scene.actors[1:],
+            history_witnesses=changed_witnesses)
+&gt;       with pytest.raises(Refusal, match='SOURCE_PREIMAGE|SOURCE_IDENTITY_COLLISION'):
+E       Failed: DID NOT RAISE &lt;class 'kernel.Refusal'&gt;
+
+../m3/05_SOURCE_PREIMAGE_RED_REPRODUCER.py:43: Failed</failure></testcase><testcase classname="HQ329-B3-coupled-interpretation-wt.WORKER_RETURNS.SOROK-V2-HQ329-B3-COUPLED-INTERPRETATION-R1..runtime.m3.05_SOURCE_PREIMAGE_RED_REPRODUCER" name="test_R3_03_earlier_affective_witness_rewrite_cannot_change_historical_lineage_source" time="0.005"><failure message="Failed: DID NOT RAISE &lt;class 'kernel.Refusal'&gt;">def test_R3_03_earlier_affective_witness_rewrite_cannot_change_historical_lineage_source():
+        scene, state = fixed_t6_interpretation()
+        child = scene.actors[0]
+        changed_affect = replace(child.history[2],
+                                 activity='happy delight instead of distress')
+        changed_witnesses = tuple(
+            replace(w, history_hash=digest(asdict(changed_affect)))
+            if w.actor == 'child' and w.history_id == changed_affect.id else w
+            for w in scene.history_witnesses)
+        changed = replace(scene,
+            actors=(replace(child, history=child.history[:2] + (changed_affect,) + child.history[3:]),)
+                   + scene.actors[1:],
+            history_witnesses=changed_witnesses)
+&gt;       with pytest.raises(Refusal, match='SOURCE_PREIMAGE|SOURCE_IDENTITY_COLLISION'):
+E       Failed: DID NOT RAISE &lt;class 'kernel.Refusal'&gt;
+
+../m3/05_SOURCE_PREIMAGE_RED_REPRODUCER.py:59: Failed</failure></testcase></testsuite></testsuites>

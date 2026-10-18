@@ -1,0 +1,88 @@
+{
+  "passport_schema": "SOROK_WARM_ENVIRONMENT_PASSPORT_R1",
+  "environment_id": "05b77176-11f7-481a-abf7-c216859e910e",
+  "epoch_id": "ac07ba65-9a7e-42e3-8d55-188918efd52d",
+  "owner_session_alias": "B3_IMPLEMENTER",
+  "surface": "LOCAL_SHARED_STORE",
+  "machine_alias": "LOCAL_B3",
+  "conversation_or_account_affinity": null,
+  "status": "LIVE_VERIFIED",
+  "last_live_probe_at": "2026-10-18T04:14:12.212079+00:00",
+  "runtime_marker_digest": "4ddeaefc9e8bd1eed9a0b7a2bfdf36814b256e109f5ed135ade2dca46f184b1a",
+  "probe_command_and_result": {
+    "python": "3.11.3",
+    "pytest": "9.0.2",
+    "sqlite": "3.40.1",
+    "git": "git version 2.43.0",
+    "node": "v20.19.1"
+  },
+  "capabilities": {
+    "python": "VERIFIED",
+    "pytest": "VERIFIED",
+    "sqlite": "VERIFIED",
+    "git": "VERIFIED",
+    "node": "VERIFIED",
+    "filesystem": "VERIFIED",
+    "bash": "VERIFIED"
+  },
+  "git_object_store_alias": "EXISTING_CANONICAL_SHARED_STORE",
+  "worktree_alias": "HQ329-B3-coupled-interpretation-wt",
+  "branch": "agent/rabochii-sorok-v2-hq329-b3-coupled-interpretation-prototype-r1",
+  "exact_checkout_base": "63f07960eb04cc856d94ed85f4c3c597f2f6bc9e",
+  "head_at_return": "REPORTED_EXTERNALLY_AFTER_PUSH",
+  "clean_dirty_state": "ONLY_COMMISSIONED_RETURN_CHANGES_PLUS_UNRELATED_UNTRACKED_DESKTOP_METADATA",
+  "materialized_source_refs": "source_manifest.json",
+  "verified_imports": [
+    {
+      "module": "b3_fixed_b2",
+      "relative_file": ".runtime/b2/bridge.py",
+      "sha256": "9c112a7984b0581e965394983acf0e38064847083b78096e2d8215b48932250f"
+    },
+    {
+      "module": "b2_pinned_bfirst",
+      "relative_file": ".runtime/b2/imports/B1/bfirst.py",
+      "sha256": "478b989730f49a5def41a367b6f53e4aae9c80961f7f466fe669c7dbd92201a3"
+    },
+    {
+      "module": "b2_pinned_p1",
+      "relative_file": ".runtime/b2/imports/P1/p1_contract.py",
+      "sha256": "df31a147ab037385c5488801b5fa7413f9bcf5c63c97ba6328f859c8fcd92d38"
+    },
+    {
+      "module": "b3_frozen_m2",
+      "relative_file": ".runtime/m2/kernel.py",
+      "sha256": "888d73fff63f70a22932f1001f5c9003104b0e5a9cdef84e93456151428676c8"
+    }
+  ],
+  "dependency_closure_status": "BOUNDED",
+  "fixture_query_source_permission": "USER_AUTHORIZED_SYNTHETIC_ONLY",
+  "covered_test_suites": "verification_receipt.json",
+  "actual_commands": "evidence/run_commands.json and evidence/inherited/commands.json",
+  "science_grade": "TEST_ONLY_B3_INTEGRATED_CANDIDATE_PENDING_I2",
+  "model_provider": "CODEX",
+  "model_effort": "USER_REQUESTED_GPT6_MEDIUM_ACTUAL_RUNTIME_SELECTION_UNVERIFIED",
+  "pricing_class": "UNKNOWN",
+  "observed_usage": {
+    "primary_used_percent": 56,
+    "secondary_used_percent": 23,
+    "cash_charges": null,
+    "source": "LIVE_ACCOUNT_TOOL_AT_RETURN_PREPARATION"
+  },
+  "independent_review_separation": "B3_AUTHOR_NOT_ACCEPTANCE_REVIEWER; E3_SCOPED_INPUT; M3_INDEPENDENCE_NOT_MET; FRESH_I2_REQUIRED",
+  "privacy_source_grant": "NO_ORIGINAL_SURVEY_NO_EXTERNAL_MODEL_DISCLOSURE",
+  "assignments_completed": [
+    "B3_INTEGRATED_RESEARCH_CANDIDATE"
+  ],
+  "next_good_affinity_tags": [
+    "B2",
+    "M2_QUARANTINE",
+    "SOURCE_PREIMAGE",
+    "CAN008",
+    "CAN011",
+    "SQLITE",
+    "F2"
+  ],
+  "staged_state_preservation": "LIVE_LOCAL_RECHECK_REQUIRED_ON_RESUME",
+  "retire_or_rebuild_reason": null,
+  "attestation": "00C_READ=YES;00D_WARM_PASSPORT_READ=YES;LIVE_RESOURCE_CHECK=YES;REAL_SESSION_CONTINUITY_VERIFIED_OR_NEW=YES;CHEAPEST_QUALIFIED_ROUTE_EVALUATED=YES;INDEPENDENCE_AND_AUTHORITY_PRESERVED=YES"
+}

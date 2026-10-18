@@ -1,0 +1,157 @@
+[
+  {
+    "label": "b2_330",
+    "command": [
+      "/usr/local/bin/python3",
+      "run_courts.py"
+    ],
+    "cwd": "<B3_RETURN>/.runtime/b2",
+    "exit": 0,
+    "expected": 0
+  },
+  {
+    "label": "r1_45",
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "<B3_RETURN>/.runtime/tests_after/R1/test_identity.py",
+      "--junitxml=<B3_RETURN>/evidence/inherited/r1_45.xml"
+    ],
+    "cwd": "<B3_RETURN>/.runtime/b2",
+    "exit": 0,
+    "expected": 0
+  },
+  {
+    "label": "repair_5",
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "<B3_RETURN>/.runtime/repair/test_regression.py",
+      "--junitxml=<B3_RETURN>/evidence/inherited/repair_5.xml"
+    ],
+    "cwd": "<B3_RETURN>/.runtime/b2",
+    "exit": 0,
+    "expected": 0
+  },
+  {
+    "label": "e2_full",
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "<B3_RETURN>/.runtime/tests_after/E2/test_e2.py",
+      "--junitxml=<B3_RETURN>/evidence/inherited/e2_full.xml"
+    ],
+    "cwd": "<B3_RETURN>/.runtime/b2",
+    "exit": 2,
+    "expected": 1
+  },
+  {
+    "label": "e2_full",
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "<B3_RETURN>/.runtime/tests_after/E2/test_e2.py",
+      "--junitxml=<B3_RETURN>/evidence/inherited/e2_full.xml"
+    ],
+    "cwd": "<B3_RETURN>/.runtime/b2",
+    "exit": 1,
+    "expected": 1
+  },
+  {
+    "label": "e2_strict",
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "<B3_RETURN>/.runtime/tests_after/E2/test_e2.py",
+      "-k",
+      "legacy_after_mapping_must_fail_closed_at_b2_reentry",
+      "--junitxml=<B3_RETURN>/evidence/inherited/e2_strict.xml"
+    ],
+    "cwd": "<B3_RETURN>/.runtime/b2",
+    "exit": 0,
+    "expected": 0
+  },
+  {
+    "label": "x2",
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "<B3_RETURN>/.runtime/tests_after/R1/frozen/test_hostile_x2.py",
+      "--junitxml=<B3_RETURN>/evidence/inherited/x2.xml"
+    ],
+    "cwd": "<B3_RETURN>/.runtime/b2",
+    "exit": 1,
+    "expected": 1
+  },
+  {
+    "label": "m2_41",
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "test_m2.py",
+      "--junitxml=<B3_RETURN>/evidence/inherited/m2_41.xml"
+    ],
+    "cwd": "<B3_RETURN>/.runtime/m2",
+    "exit": 0,
+    "expected": 0
+  },
+  {
+    "label": "m1_37_on_m2",
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "<B3_RETURN>/.runtime/m1_original/test_kernel.py",
+      "--import-mode=importlib",
+      "--junitxml=<B3_RETURN>/evidence/inherited/m1_37_on_m2.xml"
+    ],
+    "cwd": "<B3_RETURN>/.runtime/m2",
+    "exit": 1,
+    "expected": 1
+  },
+  {
+    "label": "i2_23_on_m2",
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "<B3_RETURN>/.runtime/i2_strict/test_i2_strict.py",
+      "--import-mode=importlib",
+      "--junitxml=<B3_RETURN>/evidence/inherited/i2_23_on_m2.xml"
+    ],
+    "cwd": "<B3_RETURN>/.runtime/m2",
+    "exit": 1,
+    "expected": 1
+  },
+  {
+    "label": "m3_source_preimage_3_red",
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "<B3_RETURN>/.runtime/m3/05_SOURCE_PREIMAGE_RED_REPRODUCER.py",
+      "--import-mode=importlib",
+      "--junitxml=<B3_RETURN>/evidence/inherited/m3_source_preimage_3_red.xml"
+    ],
+    "cwd": "<B3_RETURN>/.runtime/m2",
+    "exit": 1,
+    "expected": 1
+  }
+]
