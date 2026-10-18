@@ -1,7 +1,63 @@
-# Pyat R29F — fifth R28 return complete; science rev15
+# Pyat HQ — current whole-machine state and scientific trajectory (revision 16)
 
-**R28 5/5 returns scientifically adjudicated**. WG0O returned exact `3ee5d6a4e246fca89740d4d36ab26206230c83bf` with 3 sourcefree authority-body RED (A2 stale epoch, A3 same claimed hash with foreign body, A4 foreign op), each 42 supported facts/4 I03; prior bounded WG0 native 236 controls remain banked, not a whole-authority acceptance. Four R29I returns O35E/GF1F/F6K/F6L and four follow-on startup SHAs inherited unchanged from preceding sealed R29I checkpoint.
+**18 October 2026 · owner:** Pyat · **status:** `PYAT_HQ_20261018_USER_ACCEPTED_SESSION__WHOLE_MACHINE_R16_LIVE_FANIN__SOURCE35_N11_HOLD`. User reviewed and accepted current-session accession against dossier `677e02687ff1cfc0b55a5e16d41dc3ac778bf79f` at inherited working-HQ authority, recorded at `47f8a543cadd6dbe44627248049b274f280f1b9e`. Direct canonical pre-update cut: `7b1dcb82e0326737b4af172b17f9c2b7e25fd848`. Last actual source re-verification: `2026-10-18T20:28:29.818Z`. PRE-MAIN Pyat-only progress report; **no new original source/model/FF/actor rights, production merge or N11/N12**.
 
-**R29F two concurrent starts**: WG0P7 `a72e75a011468a1f0ea7b251f5b07969f59488e0` author repair; WG0Q `81075b2db946bda2623721c431c68bd0c6a95ad4` independent Phase A now. No automatic work sessions and no original scientific issuer grants.
+## End-product and current scientific maturity
 
-**End product P0 still HELD**: competent original35 U/E_pre and survey data-rights warrant -> real C11/I03/I05/Batch F1–F8 N11 -> separate Sorok N12; actor and source semantics remain distinct. Authenticated source revocation absent. Sorok current progress revision4 untouched.
+Pyat's productive end is a **generic, automatic, governed 35-wave original source→empirical/learned→objective structural/multifield/temporal historical world→N9/N10E/N10W source- and time-qualified possibility service** for Sorok's separate actual V3 historically formed actor and V2 expression. It is **not** Pyat generating a life or assigning Enneagram from demographics. Historic V550–V558 names are retained function ancestry, not present mandatory runtime stage architecture. This update differentiates code, local executable tests, independently reviewed method, joined test-only consumers, real original measured output, all35 N11, separate N12.
+
+**Bottom line:** current generic sourcefree owners and several real native consumer paths are substantial. The missing original administered-item/operation U + independent prospective E_pre + actual source/use rights and all35 no-drop workload, original FF/F6/F7 source-qualified world products, selected coherent N9 and issued N10W use are **not independently complete**. Method acceptance is not original estate occupancy.
+
+## Live custody and counterpart
+
+- Canonical pre-update `7b1dcb82e0326737b4af172b17f9c2b7e25fd848` ; immutable `HQ_HANDOFF/LATEST.json` still seals historic R29F `20261017-PYAT-HQ-R29F-WG0O-THREE-AUTHORITY-RED-TWO-COMMISSIONS-R1` @ `6b64759c968b51bd6479ae738e4b83c84deef1c9`. These are distinct from later live returns; this report does not silently reseal checkpoint.
+- This session's user-accepted active bounded working source `agent/vozhd-pyat-20261018-session-full-regrok-candidate-r1@47f8a543cadd6dbe44627248049b274f280f1b9e`. Prior accepted HQ review lineage remains `agent/vozhd-pyat-r3-hq-successor-20261016-r1@a9ff419cae9562472b63322f00236703f793e90e`; prior substantive decisions/history preserved.
+- Sorok canonical `SOROK_PRODUCT_CONTROL_ROOM/CURRENT_PROGRESS.md/.json` **rev4** at this canonical pre-update cut, verified `2026-10-18T20:28:29.818Z`, working HQ320 `3c423a0f74915a01911197b0023de9f85fd74aff`; separate later HQ321 *candidate* `903bbc73cac90380a702bfa1f2f15ad9a43c20f7`, not automatically adopted. Sorok reports LIFE1 16/16 product arms deferred absent concrete actor-bound CAN008 response/target, ongoing genealogy, journal and C0 dual owner contract repair. No Pyat adoption of actor semantics.
+- Fixed Astra R3 advisory/amendment16 `3b2d9a1b644a9fa024ed1bd895b67be5c8789531` observed as program advice, not operative source/model/actor authority.
+
+## What changed since revision 15
+
+| Work | Exact remotely verified return | Independent scientific result / limitation |
+|---|---|---|
+| **WG0P11** | `b9f2c4bf8f5f1d94c751c4f20d82b4666c03e6ee` | Fresh P10 sourcefree/native cold publication and sealed 6 tests PASS (331 native + transport); historic 5 unconstructible/2 NOT GREEN retained; no original U/Epre/issuer |
+| **GF1N** | `af7cb86c33014051e5ace9f1f0f57ebd42cd0ef2` | Finite-typed-category sourcefree pair/field method independently qualified; nonfinite fail-closed; original six historical reds retained; not generic FF issuance |
+| **WP2I** | `c1a91372ec6a81492055d7ef9b6932f9e9048273` | Genuine native TEST_ONLY existing selected-world → original two E04 consumers, author 597 case events +32 independent; no selected original world / N10W installed rule |
+| **N10WM** | `14e952915e36dc525a18ace93152a2bbc84d1dc2` | 13 original E04 consumer tests through declared read-only shim; formal eligibility ≠ practical affordability; behavioral propensity unidentified and stays null |
+| **Original 35 estate** | EST1 `d800848bbff502658c9f1ed50fce73f1fc7dcad7`, O35E `30a2ef61230cea4583945493a1ad489f5ab213c5`, O35W `7fcbe70a979084a7c6b04ed0e813812871699ba0` | Independent omission/custody archaeology/sourcefree method advanced; not complete real source-issued U/Epre original product |
+| **N10W architecture** | `c433be8645ae484a831b2b19bab079055dd6be62` | 39 bounded reference/real-client tests of layer distinctions; NO actor-positive and no new model issuer |
+
+**Do not launch GF1O or WG0P12 merely to repeat already independently passed current fixture method.**
+
+## Whole-machine obligations and gates
+
+- **N0/N1/N4, WG0–WG4:** Complete physical original 35 sources, exact respondent/household/weight/routing/version/semantics and original competent source-use U + independently frozen E_pre; automatic full scientifically eligible item-operation generation, not only caller-prepared requests; exact anti-drop proof and real source→C11/I03/I05/Batch positive. 1,890 requirement cells / 101 task types / old 20/15 physical representation are not originals consumed.
+- **F1–F4/learned:** Existing physical/RouteB/C1/I03/I05/Batch and learned M1/M2/B5/I4 code is real; produce joined accepted empirical distributions, predictors, branches, respondent joint, attitude clouds, minority/outliers with replay/currentness at actual issued source scope. No sourcefree C1 fact magically yields FF structure.
+- **F5:** Claim-specific Field Forge/structural original position authority. Scoped Afro R5 BEN0002 Q73A context-only structural publication already exists, not automatic social-causal model or global source grant. Produce permitted actual structural content and named consumer.
+- **F6:** Compare distinct independent-source fields, exact target/design/weight, no common-respondent fiction, partial [q,q+unknown] if uncovered, qualify inclusion and minority. Correct S03FO Git module blob `fc5e37fa5b2f0eb689593b42d95479d1327cb94c` distinct from F6M blob `2df811d76db258d98d89ffb43c830cb221ff9a7d`.
+- **F7/EE12:** Exact same-target comparability, temporal validity/publication/as-of, rupture/uncertainty and source-time snapshots. No measured Ghana trend/no-change inferred from official instruments; no future data in past worlds.
+- **F8/N9/N10E/N10W:** Reuse WP2I native selected-world read; actual matched source-competent structural and empirical context under rights/currentness to named read-only clients, formal eligibility ≠ material access. Model rule/route `HOLD`, `route_probability=None`, `selection_weight=None` absent qualified outcome/actor bridge.
+- **N11 then N12:** all 35 applicable original F1–F8/AT01–AT35 independently accounted, no hidden eligible omission, named consumers and cold reconstruction; separate actor V3 wake with Sorok. Neither attained.
+
+## Command priorities — parallel, no paper treadmill
+
+**P0 original science & automatic complete workload:** use EST1/O35E/O35W, find competent present source/read/operation principal and freeze independent original item/E_pre frontier; prove no-drop and true real source→empirical product or exact permission-local stop. Don't handcraft individual questions as the project program.
+
+**P0/P1 composed empirical→structural named consumer:** reuse actual C1/M1/M2/B5/I4, FF relation owners, and WP2I world clients for sourcefree first *joined* positive, then original qualified source product; identify exactly missing physical/semantic/issuer edge rather than new engine.
+
+**Parallel F6 and F7:** current native multi-source alternative comparative and temporal/original-qualified historical world, independent target/risk/FF/EE12 authority. Preserve partial/unknown. Different workers can pursue these without waiting for full original35 source grant.
+
+**Parallel N9/N10E/N10W service:** actual holistic selected objective world, two original E04 clients and receiver roles, exact source/model-use currentness and four clocks; no Pyat simulated childhood/actor psyche. Request Sorok exact read-only C0 acceptance/actor rule separately.
+
+**Finishing line:** M1 source-licensed prospective automatic work bridge → M2 actual measured artifact with named producer→consumer → M3 2-family qualified FF+temporal selected-world integration → M4 all 35 full scientifically applicable occupancy → M5 independent N11 and explicit N12 decision. These are measurable and do NOT unnecessarily serialize orthogonal sourcefree owner implementation.
+
+## Worker portfolio truth and economy
+
+O35R `00c8d56556ef86152ac127197dd53546d03ee1c8`, F6C `fec96baf6b9a1e3379d308e486230a39b67ab2b8`, T35 `5064d76b3c58a8225693055a8ec6bb07e216d9b1` currently **commission-only proposed** on their own distinct branches; no remote implementation return or externally attested live session; were published before new session HQ accession. F6C requires S03FO exact blob correction before qualified dispatch. SHIP0 `88d08b41cd449993bcfd6bc1aa65528d63ce1720` is old developer-persona demo commission, NOT Pyat F1–F8. No new dispatch or model use is implied here.
+
+Persistence: one Git object store and isolated sparse worktrees; use verified warm host/model cheapest qualified for native execution, independent reviewer at meaningful scientific decision, persistent repair by author within scoped permissions. Avoid cloned mini-courts or per-bug HQ return overhead.
+
+## Reciprocal cross-HQ decision/needs
+
+**Pyat supplies** exact source-typed, temporal/currentness-bound objective N9 world and N10E/N10W possible conditions, population empirical relationships and explicit unknown/permission states. **Sorok owns** actor-specific encounter, deliberation, CAN008 action/event/target, genealogy, memory, V2 expression; genuine actor-positive rule remains independently owned. Need updated Sorok accepted C0 double-port and competent actor-rule contract before operative seam; no Pyat psychological implementation, sourcefree fixture not true N12 wake.
+
+**Authority and execution limits:** this rev16 is HQ documentary progress only. No new Python/test original respondent execution by this session, no source SAV/DTA access, no semantic or producer code writes, no actor/N11/N12/OC05 source/model right issued. Canonical immutable handoff pointer still denotes historic R29F checkpoint until separately sealed.
