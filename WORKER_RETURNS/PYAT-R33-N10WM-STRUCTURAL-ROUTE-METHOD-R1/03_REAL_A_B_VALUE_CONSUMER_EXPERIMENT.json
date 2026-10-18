@@ -1,0 +1,149 @@
+{
+  "scope": "DIRECT_ORIGINAL_SOURCE_EXACT_E04_CONSUMERS_WITH_TEST_ONLY_INTERFACE_SHIM__NO_FULL_E05R_C1_N10E_M4_M5_NATIVE_REEXECUTION",
+  "original_source_sha": {
+    "nonparent.py": "2181b832d3c4376d4b9428e13f4354f273be8f32",
+    "scenario.py": "b7e568166cd277c1ba127374ea1a350d1b3841a2"
+  },
+  "environment": {
+    "python": "3.13",
+    "pytest": "installed",
+    "source_program": "test_n10wm_court.py",
+    "source_program_sha256": "33562e5d7575e2ba796eea4cb2e87ad86c87ba7215845ded5257048356fdc261",
+    "tested_command": "python -m pytest -q test_n10wm_court.py --junitxml=pytest-n10wm-junit.xml",
+    "passed": 13,
+    "failed": 0,
+    "skipped": 0,
+    "recorded_runtime_seconds": 0.08,
+    "archive_sha256": "2abe1b03f5cad764f34965d5cc793f05506a08645cb61d521f213810fad0f8a8"
+  },
+  "sourcefree_inputs": {
+    "selected_world_A": "E05R historical TEST_ONLY modeled readset",
+    "selected_world_B": "E05R revised TEST_ONLY modeled readset",
+    "synthetic_empirical_reference": "WP2 same source C1/N10E synthetic counts used as explicit supplied fixture, not a native C1 query",
+    "same_source_steps": [
+      {
+        "denominator": 32,
+        "yes": 18,
+        "no": 14
+      },
+      {
+        "denominator": 16,
+        "yes": 10,
+        "no": 6
+      },
+      {
+        "denominator": 8,
+        "yes": 6,
+        "no": 2
+      }
+    ],
+    "changed_source_steps": [
+      {
+        "denominator": 32,
+        "yes": 19,
+        "no": 13
+      },
+      {
+        "denominator": 16,
+        "yes": 11,
+        "no": 5
+      },
+      {
+        "denominator": 8,
+        "yes": 7,
+        "no": 1
+      }
+    ]
+  },
+  "executed_cases": [
+    {
+      "id": "native_source_exactness",
+      "result": "both original files match pinned Git blobs"
+    },
+    {
+      "id": "same_rule_label",
+      "result": "EXACT_NO_EFFECT"
+    },
+    {
+      "id": "changed_public_rule",
+      "result": "training eligible->blocked; exit within_budget->constrained; civil unchanged; empirical unchanged"
+    },
+    {
+      "id": "access_fee_counterexample",
+      "input": "training_access=True, fee=7, budget=5",
+      "native_nonparent": "BLOCKED_BY_MODELED_RULE",
+      "native_proposal": "FEASIBLE_MODELED_PREMISE",
+      "implication": "proposal does not check fee; narrower access premise, not full practical feasibility"
+    },
+    {
+      "id": "civil_sanction_counterexample",
+      "result": "civil closed by modeled sanction"
+    },
+    {
+      "id": "changed_empirical_only",
+      "result": "first source-balance count 4->6; structural values untouched; positive minority present"
+    },
+    {
+      "id": "unknown_access",
+      "result": "UNAVAILABLE_AUTHORITY_OR_CLOCK and UNKNOWN_PREMISE"
+    },
+    {
+      "id": "revoked_civil_sanction",
+      "result": "UNAVAILABLE_AUTHORITY_OR_CLOCK and UNKNOWN_PREMISE"
+    },
+    {
+      "id": "publication_vs_effective",
+      "result": "synthetic selected readsets historical before publish; revised after publish; selector itself NOT native E05R rerun"
+    },
+    {
+      "id": "zero_support",
+      "result": "partial preserved with ZERO_SUPPORT and null source balance"
+    },
+    {
+      "id": "probability_false_estimate",
+      "result": "route_probability None and all scenario selection_weight None on same/changed worlds"
+    },
+    {
+      "id": "F6M_arithmetic_only",
+      "result": "26/31+5/31=1; 4 covered 1/8 cells, missing 1/2 gives [1/8,5/8]; no F6M code rerun"
+    },
+    {
+      "id": "nonidentification_countermodel",
+      "result": "both zero-takeup and all-takeup latent pathway models preserve all observed input; [0,1] sharp"
+    }
+  ],
+  "material_values": {
+    "historical": {
+      "training": "ELIGIBLE",
+      "exit_constraint": "WITHIN_MODELED_BUDGET",
+      "civil": "ELIGIBLE",
+      "proposal_institutional": "FEASIBLE_MODELED_PREMISE",
+      "proposal_civil": "FEASIBLE_MODELED_PREMISE"
+    },
+    "revised": {
+      "training": "BLOCKED_BY_MODELED_RULE",
+      "exit_constraint": "RESOURCE_CONSTRAINED",
+      "civil": "ELIGIBLE",
+      "proposal_institutional": "INFEASIBLE_MODELED_PREMISE",
+      "proposal_civil": "FEASIBLE_MODELED_PREMISE"
+    }
+  },
+  "typed_nulls": {
+    "route_probability": null,
+    "route_probability_reason": "NO_JOINT_EMPIRICAL_STRUCTURAL_ROUTE_MODEL",
+    "selection_weight": null,
+    "selection_weight_reason": "NO_SCENARIO_SELECTION_MODEL_OR_ISSUER"
+  },
+  "scope_limits": {
+    "source_exact_e04_consumers": true,
+    "full_native_E05R_execution_here": false,
+    "actual_M4_M5_selection_here": false,
+    "actual_C1_N10E_provider_here": false,
+    "F6M_code_execution_here": false,
+    "actor_knowledge_owner": false,
+    "real_source_use": false,
+    "semantic_issuance": false,
+    "Sorok_C0_installation": false
+  },
+  "status": "LOCAL_CONSUMER_TEST_13_PASS__NAMED_N10W_RULE_HOLD"
+}

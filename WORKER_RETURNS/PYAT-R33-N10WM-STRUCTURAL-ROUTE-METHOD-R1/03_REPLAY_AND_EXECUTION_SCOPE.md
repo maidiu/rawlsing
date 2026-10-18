@@ -1,0 +1,8 @@
+# 03 executable evidence and replay manifest
+The actual **source-exact** original E04 `nonparent.py` and `scenario.py`, self-contained `test_n10wm_court.py`, 13-case JUnit XML, test log, JSON receipt and README were executed and packaged together in the **N10WM_R33_DIRECT_ORIGINAL_CONSUMER_COURT.zip** conversation-delivered evidence attachment. SHA256 of ZIP: `2abe1b03f5cad764f34965d5cc793f05506a08645cb61d521f213810fad0f8a8`. The separately machine-readable scientific result is in `03_REAL_A_B_VALUE_CONSUMER_EXPERIMENT.json`.
+
+Replay: extract the archive, run `python -m pytest -q test_n10wm_court.py --junitxml=pytest-n10wm-junit.xml`. Python 3.13, pytest installed. Source hashes assert exact original Git blob identities before other assertions. 13 tests passed with 0 errors, 0 skips and no original source module edit.
+
+**Critical execution limitation:** E04's *actual original consumer functions* are run but the upstream E05R selected-publication service, M4/M5 and C1/N10E native providers are represented by an explicit immutable TEST_ONLY read-interface shim. This tests real original consumer logic, does not regenerate full selected-world source receipts, and must **not** be called a fresh complete native E05R/N9/N10W execution. WP2's previously reported native 597 tests are inherited evidence only. Independent F6M arithmetic cross-check does not execute its producer.
+
+Current branch records the 03 JSON and manifest; the ZIP's full code/JUnit/log are furnished separately as an exact user-visible archive rather than silently claimed to have been committed on this branch. Scientific terminal stays `NAMED_N10W_RULE_HOLD`.
