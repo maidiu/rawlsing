@@ -1,0 +1,89 @@
+{
+  "passport_schema": "SOROK_00D_ENVIRONMENT_PASSPORT_DELTA_R1",
+  "environment_id": "S3-BROWSER-GITHUB-DOCUMENTARY-20261018",
+  "epoch_id": "S3-HQ330-STARTUP-8749bba7",
+  "owner_session_alias": "HQ330-S3-independent-science",
+  "surface": "BROWSER_CONTAINER",
+  "machine_alias": null,
+  "conversation_or_account_affinity": "CHATGPT_BOUNDED_HQ330_S3",
+  "status": "NOT_ACCESSIBLE",
+  "last_live_probe_at": null,
+  "runtime_marker_digest": null,
+  "probe_command_and_result": {
+    "command": "python --version; python -m pytest --version; git --version; check /mnt/data/rawlsing existence",
+    "result": {
+      "python": "3.13.5",
+      "pytest": "9.0.2",
+      "git": "2.47.3",
+      "private_repo_checkout": "ABSENT"
+    }
+  },
+  "python": "3.13.5 VERIFIED",
+  "pytest": "9.0.2 VERIFIED_TOOL_ONLY_NO_TEST_RUN",
+  "git": "2.47.3 VERIFIED",
+  "node": "NOT_PROBED_NOT_REQUIRED",
+  "sqlite": "NOT_EXECUTED",
+  "filesystem": "VERIFIED",
+  "shell": "VERIFIED",
+  "github_connector": "AUTHENTICATED_READ_WRITE_VERIFIED",
+  "git_object_store_alias": null,
+  "worktree_alias": null,
+  "branch": "agent/reviewer-sorok-v2-hq330-s3-b3-independent-science-r1",
+  "checkout_base": "8749bba7cdf30c1c972187b5e4601e415cfc5eae",
+  "exact_checkout_head": null,
+  "clean_dirty_state": "NO_PRIVATE_CHECKOUT",
+  "materialized_source_refs": [],
+  "dependency_closure_status": "DOCUMENTARY_PINNED_GITHUB_FILES_ONLY",
+  "runtime_import_path_proofs": [],
+  "source_commit_refs": [
+    "47b46a85b9ebb633754866f1e6f1b12db3bd2012",
+    "a16ba353f3bc471776d60ce198f267be4e9e5773",
+    "49dfcb30971310756a12f659961600d9f2eb4a11",
+    "5c2fbe14ccfa5027becfabc682206a1e61aaf986",
+    "3091e49448705f7e650f838f1f67b37afcad5616"
+  ],
+  "covered_test_suites": [
+    {
+      "label": "S3 independent B3 pytest",
+      "actual": "NOT_RUN",
+      "reason": "No pinned private import closure staged; X3 assigned for native execution"
+    },
+    {
+      "label": "S3 native F1",
+      "actual": "NOT_RUN",
+      "reason": "F1 binary archive not materialized; 17 existing native RED retained"
+    },
+    {
+      "label": "S3 M2/M3 R3-01..03",
+      "actual": "NOT_RUN",
+      "reason": "Read actual M3 reproducer and frozen M2 notes; no M2 import performed"
+    },
+    {
+      "label": "B3 author 71",
+      "actual": "INSPECTED_SAVED_JUNIT_NOT_RERUN"
+    },
+    {
+      "label": "F2 on B3 author 42",
+      "actual": "INSPECTED_SAVED_MATRIX_NOT_RERUN"
+    }
+  ],
+  "science_grade": "INDEPENDENT_SOURCE_FORENSIC_HIGH_I2_CLAIM_COURT_NOT_EXECUTABLE_ACCEPTANCE",
+  "model_provider": "CHATGPT Browser; commissioned GPT-6 High, host effort telemetry unknown",
+  "cash_consumed": null,
+  "quota_window": null,
+  "source_permission": "PRIVATE_GITHUB_CONNECTOR_ONLY; NO_EXTERNAL_PROVIDER",
+  "independence": "S3 not B3/M2/M3 author and not X3 native executor",
+  "assignments_completed": [
+    "S3 independent B3 scientific/ontology and owner-grade court"
+  ],
+  "next_good_affinity_tags": [
+    "CAN008",
+    "CAN011",
+    "ADP016",
+    "ADP017",
+    "OTHERNESS",
+    "HISTORY_SOURCE_CUSTODY"
+  ],
+  "staged_state_preservation": "NO_PRIVATE_REPO_STAGING",
+  "retire_or_rebuild_reason": "No local import closure; native rerun delegated to X3"
+}
