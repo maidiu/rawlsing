@@ -1,0 +1,21 @@
+.............................................................F.......... [ 83%]
+..............                                                           [100%]
+=================================== FAILURES ===================================
+______________ test_R08_cosmetic_relevance_label_not_owner_psyche ______________
+
+    def test_R08_cosmetic_relevance_label_not_owner_psyche():
+        a, b = oc.initial_state(), oc.initial_state()
+        p = oc.candidate(2020, 30, 'a', 'OBSERVED_NEUTRAL', domains=['recognized_plan'])
+        q = oc.candidate(2020, 30, 'a', 'OBSERVED_NEUTRAL', domains=['unrecognized_plan'])
+        rules = {'licensed_objective_actions':['OBSERVED_NEUTRAL']}
+        oc.apply_admitted(a, p, 2020, rules)
+        oc.apply_admitted(b, q, 2020, rules)
+        assert a['actor'] == b['actor']
+>       assert a['events'][0]['hash'] != b['events'][0]['hash']  # audit label differences remain visible
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: assert 'eedc7997e9670e410134ec59a620916bfbccfa71d8eb24e725944d1c1ceb666f' != 'eedc7997e9670e410134ec59a620916bfbccfa71d8eb24e725944d1c1ceb666f'
+
+test_onecall_c0_original_immutable.py:101: AssertionError
+=========================== short test summary info ============================
+FAILED test_onecall_c0_original_immutable.py::test_R08_cosmetic_relevance_label_not_owner_psyche - AssertionError: assert 'eedc7997e9670e410134ec59a620916bfbccfa71d8eb24e725944d1c1ceb666f' != 'eedc7997e9670e410134ec59a620916bfbccfa71d8eb24e725944d1c1ceb666f'
+1 failed, 85 passed in 5.50s
