@@ -1,0 +1,76 @@
+{
+  "schema": "C0RI_PHASE_A_EXECUTION_AND_ENVIRONMENT_R1",
+  "original_sealed": "b48837d84d01077091386dfa14c1eedae9955ad5",
+  "immutable_first_blind_commit": "76be43f3cd65999c93371f28d41571d04a7399fb",
+  "C0R_sealed_commission": "b505539fc04bd361eb0426f0559374f8035767fa",
+  "runtime": {
+    "python": "3.13.5",
+    "pytest": "9.0.2",
+    "git": "2.47.3",
+    "private_repo_local_checkout": false,
+    "local_github_git": "DNS_COULD_NOT_RESOLVE_GITHUB",
+    "github_connector": "PRIVATE_BLOB_READ_AND_BRANCH_WRITE_VERIFIED",
+    "real_subprocess_and_filesystem": true,
+    "materialized_original_only": true,
+    "model_api_calls": 0,
+    "original_survey_calls": 0,
+    "actor_native_calls": 0
+  },
+  "runs": [
+    {
+      "suite": "author_exact_original",
+      "command": "python -m pytest -q --junitxml=original_author_junit.xml test_onecall_c0_part{1,2,3,4}.py",
+      "tests": 32,
+      "passed": 32,
+      "failures": 0,
+      "xml_sha256": "2124a5e4a0fcd629a67e66498246778d6648801e8d61effeda0a6406530c4471"
+    },
+    {
+      "suite": "unchanged_C0F_44_cases",
+      "command": "python -m pytest -q --junitxml=original_18_junit.xml test_phase_b_preregistered_against_c0.py test_phase_b_postfreeze_distinct_hostiles.py",
+      "tests": 44,
+      "passed": 26,
+      "failures": 18,
+      "xml_sha256": "c8cf6a8b5eb399383a511c6d69fd76dd896d4e3946611b0cc60657ddd81aaab5"
+    },
+    {
+      "suite": "new_blind_prereg_18",
+      "command": "python -m pytest -q --junitxml=blind_new_original_junit.xml test_c0ri_blind_prereg.py",
+      "tests": 18,
+      "passed": 6,
+      "failures": 12,
+      "xml_sha256": "69d177e0f0e437eaf412b6a892feaf192bf51e043e6bb70945a4a06b608c469d",
+      "limitations": [
+        "H01_PASS_NONDISCRIMINATING",
+        "H02_PASS_NONDISCRIMINATING"
+      ]
+    },
+    {
+      "suite": "blind_addendum_pre_C0R_candidate_inspection",
+      "command": "python -m pytest -q --junitxml=blind_addendum_original_junit.xml test_c0ri_blind_addendum.py",
+      "tests": 4,
+      "passed": 1,
+      "failures": 3,
+      "xml_sha256": "dbc8592ee185bf8668a29c3cfa92b8e9dfc6f069c9f5e242d2a3daf72c43f7d8",
+      "source_git_blob": "ab53ed9bbbec67b06a43be76d5d7d0a8ef5dd1c8",
+      "source_sha256": "476ae27d9f335ae76b58d0ad0649eac8873f7e26f817eb572da5217903fbd1b9"
+    }
+  ],
+  "portable_evidence": {
+    "container_path": "/mnt/data/C0RI_PHASE_A_BLIND_COURT_R1.tar.xz",
+    "sha256": "e61966ed53313a4c657343da7e0c54e99b2143c2af81c287f508cc072ae7dbf9",
+    "bytes": 22444,
+    "contains_reproducible_python_junit_stdout_and_sha_manifest": true,
+    "git_archive_blob_published": false
+  },
+  "owner_permissions": {
+    "source_free": true,
+    "original_35": false,
+    "native_B3_CAN008_CAN011_ADP016": false,
+    "original_F1_17_RED_preserved": true,
+    "model_api": false,
+    "actor_runs": false,
+    "semantic_issuance": false
+  },
+  "phase_B_status": "NOT_RUN_C0R_COMMISSION_ONLY"
+}

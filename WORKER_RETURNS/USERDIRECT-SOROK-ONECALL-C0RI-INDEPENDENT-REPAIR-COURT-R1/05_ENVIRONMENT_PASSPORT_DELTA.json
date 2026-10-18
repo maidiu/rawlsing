@@ -1,0 +1,65 @@
+{
+  "passport_schema": "SOROK_WARM_ENVIRONMENT_PASSPORT@R1",
+  "environment_id": "ONECALL-C0RI-NEW-CHECKED-SOURCEFREE",
+  "epoch_id": "2026-10-18-R1",
+  "owner_session_alias": "C0RI_REVIEWER",
+  "surface": "BROWSER_CONTAINER",
+  "status": "LIVE_VERIFIED_AT_PHASE_A",
+  "python": "3.13.5",
+  "pytest": "9.0.2",
+  "git": "2.47.3",
+  "filesystem": "VERIFIED",
+  "subprocess": "VERIFIED",
+  "git_checkout_present": false,
+  "materialized_source_refs": [
+    {
+      "path": "original/onecall_c0.py",
+      "pinned_commit": "66d012c469ee1791c61f1d623079520697508243",
+      "blob_sha1": "f45e4f5573495f060503f92b7630ec83531ced4d",
+      "sha256": "3f0da92095f8355c7512d49ac546c846b6026d3775533ba56be7e148e11abfa1"
+    }
+  ],
+  "covered_test_suites": [
+    {
+      "name": "author",
+      "pass": 32,
+      "red": 0
+    },
+    {
+      "name": "historical",
+      "pass": 26,
+      "red": 18
+    },
+    {
+      "name": "blind_new",
+      "pass": 6,
+      "red": 12
+    },
+    {
+      "name": "blind_addendum",
+      "pass": 1,
+      "red": 3
+    }
+  ],
+  "science_grade": "SOURCEFREE_ORIGINAL_FALSIFICATION",
+  "cash_known": null,
+  "quota_known": null,
+  "model_provider": "NO_EXTERNAL_PROVIDER_MODEL_INVOKED",
+  "cold_replay_repaired": "NOT_RUN",
+  "dependency_closure_status": "BOUNDED_ORIGINAL_C0_ONLY",
+  "independent_reviewer": "C0RI_SEPARATE_FROM_C0R_AUTHOR",
+  "next_good_affinity_tags": [
+    "ORIGINAL_C0R_REPAIR_I2",
+    "SOURCEFREE_CAUSAL_LEDGER",
+    "TEMPORAL_AND_AUTHORITY"
+  ],
+  "staged_state_preservation": "CONVERSATION_ARTIFACT_AND_COMMITTED_SOURCE_BLOBS",
+  "non_grants": [
+    "CAN008",
+    "CAN011",
+    "ADP016",
+    "SOURCE",
+    "ACTOR",
+    "HQ"
+  ]
+}
