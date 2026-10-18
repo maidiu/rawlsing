@@ -1,0 +1,89 @@
+{
+  "passport_schema": "SOROK_WARM_ENVIRONMENT_PASSPORT_R1_DELTA",
+  "environment_id": "C0R_ISOLATED_CONTAINER_RECONSTRUCTED",
+  "epoch_id": "C0R_20261018_SINGLE_SESSION",
+  "owner_session_alias": "ONECALL_C0R_AUTHOR",
+  "surface": "BROWSER_CONTAINER",
+  "machine_alias": null,
+  "status": "LIVE_VERIFIED_AT_TEST_TIME__RECHECK_BEFORE_REUSE",
+  "last_live_probe_at": null,
+  "probe_command_and_result": [
+    "python -m pytest -q test_c0r_hostiles.py => 54 PASS",
+    "python -m pytest -q original/test_onecall_c0.py => 32 PASS",
+    "python -m pytest -q test_onecall_c0_original_immutable.py => 31 PASS/1 RED",
+    "PYTHONHASHSEED=17/791 python -B onecall_c0.py --mode ONE_CALL --out => equal 18384 bytes"
+  ],
+  "capabilities": {
+    "python": {
+      "status": "VERIFIED",
+      "version": "3.13.5"
+    },
+    "pytest": {
+      "status": "VERIFIED",
+      "version": "9.0.2"
+    },
+    "subprocess": {
+      "status": "VERIFIED"
+    },
+    "filesystem": {
+      "status": "VERIFIED"
+    },
+    "git": {
+      "status": "VERIFIED",
+      "version": "2.47.3"
+    },
+    "node": {
+      "status": "UNKNOWN"
+    }
+  },
+  "git_object_store_alias": null,
+  "worktree_alias": null,
+  "branch": "agent/userdirect-sorok-20261018-onecall-c0r-authority-causality-repair-r1",
+  "exact_checkout_base": "b505539fc04bd361eb0426f0559374f8035767fa",
+  "checkout": "NO_PRIVATE_GIT_CHECKOUT__PINNED_SOURCEFREE_STAGING",
+  "materialized_source_refs": [
+    {
+      "ref": "66d012c469ee1791c61f1d623079520697508243",
+      "blob_sha1": "f45e4f5573495f060503f92b7630ec83531ced4d",
+      "grade": "ORIGINAL_C0_HISTORICAL"
+    },
+    {
+      "ref": "df31181c22afe3f8ec178b02f0e769e3cb610c81",
+      "grade": "FROZEN_C0F_EVIDENCE_READ_NOT_EXACT_SOURCE_RERUN"
+    }
+  ],
+  "dependency_closure_status": "BOUNDED",
+  "science_grade": "TEST_ONLY_SOURCEFREE_AUTHOR_PENDING_FRESH_I2",
+  "suites": {
+    "original_author": {
+      "pass": 32,
+      "red": 0
+    },
+    "repaired_authored": {
+      "pass": 54,
+      "red": 0
+    },
+    "repaired_original_unchanged": {
+      "pass": 31,
+      "red": 1,
+      "red_case": "R08_CONFLICT"
+    },
+    "immutable_C0F_against_repair": {
+      "status": "NOT_RUN"
+    }
+  },
+  "model_provider": "ChatGPT_Browser_GPT6_MEDIUM_USER_SPECIFIED",
+  "effort": "Medium",
+  "pricing_class": null,
+  "observed_cash": null,
+  "source_grants": "SOURCEFREE_FIXTURE_ONLY",
+  "independent_reviewer": "NOT_THIS_AUTHOR",
+  "staged_state_preservation": "NO_GUARANTEE_AFTER_SESSION",
+  "next_good_affinity_tags": [
+    "TEMPORAL",
+    "C0R",
+    "EVENT_CUSTODY",
+    "SOURCEFREE_HOSTILES"
+  ],
+  "source_hash": "298ff2bdbf4f916049ae21167e238767d2da682f369820a29c7d5ffa1a5461f9"
+}
