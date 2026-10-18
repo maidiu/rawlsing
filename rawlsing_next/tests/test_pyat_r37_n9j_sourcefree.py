@@ -68,7 +68,7 @@ def _pair(receipt):
 
 def _fraction(step, label="1"):
     cell = next(c for c in step["cells"] if c["cell"] == label)
-    return Fraction(cell["raw_probability_exact_fraction"]["$exact_fraction"])
+    return Fraction(*cell["raw_probability_exact_fraction"]["$exact_fraction"])
 
 
 def _counts(receipt):
