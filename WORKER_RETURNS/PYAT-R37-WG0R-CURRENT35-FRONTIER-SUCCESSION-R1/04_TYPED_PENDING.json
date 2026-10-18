@@ -2,13 +2,6 @@
   "schema": "WG0R_TYPED_PENDING@1",
   "cases": [
     {
-      "id": "PEND-01",
-      "state": "RETAINED_CARRIER_INTEGRITY_RED",
-      "owner": "competent current35 authority custodian / exact archive recovery",
-      "required": "exact disposition payload with original SHA 64a43b... and exact P2 d3830158 binding",
-      "forbidden_shortcut": "truncate, repair guessed base64, change expected hash, infer rows from aggregate counts"
-    },
-    {
       "id": "PEND-02",
       "state": "FULL_ORIGINAL_AUTHORITY_TO_OPERATION_BINDING_UNWITNESSED",
       "owner": "existing source/operation compiler and native semantic/source owners",
@@ -36,5 +29,18 @@
       "required": "separate review of this bounded transport/accounting return",
       "forbidden_shortcut": "author tests or push treated as adoption"
     }
-  ]
+  ],
+  "resolved_cases": [
+    {
+      "id": "PEND-01",
+      "state": "CLOSED__EXACT_FROZEN_PAYLOAD_RECOVERED",
+      "owner": "competent current35 authority custodian / exact archive recovery",
+      "required": "exact disposition payload with original SHA 64a43b... and exact P2 d3830158 binding",
+      "forbidden_shortcut": "truncate, repair guessed base64, change expected hash, infer rows from aggregate counts",
+      "evidence": "evidence/disposition_exact_recovery.json",
+      "payload_sha256": "64a43ba2d7564d7681770065b843273330dc368b8d01bf328a8af7b19878bd98"
+    }
+  ],
+  "independent_prior_review": "44eac9021db23267448a6fc151e6bbe8374a868f",
+  "repair_independent_review": "NOT_PERFORMED"
 }

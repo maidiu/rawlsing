@@ -86,10 +86,10 @@ def test_native_source_custody():
 
 def test_retained_disposition_pack_rejected_without_rewriting_authority():
     with pytest.raises(ValueError,match='DISPOSITION_PAYLOAD_MISMATCH'):
-        accounting.decode_dispositions()
+        accounting.decode_dispositions(pack_path=r.ROOT/'sources/local_archive/CURRENT35_IMPLEMENTATION_DISPOSITION_LEDGER.csv')
     rows,_,_=accounting.load()
-    assert all(r['governed_use'] is None and r['hard_fail'] is None for r in rows)
-    assert accounting.pack_receipt()['observed_bytes']==18387
+    assert all(r['governed_use'] is not None and r['hard_fail'] is not None for r in rows)
+    assert accounting.pack_receipt()['observed_bytes']==18276
 
 
 def test_frozen_plan_custody():

@@ -10,10 +10,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 P2_SHA = 'd38301588fae27c66f6b8627c5007fb0d8ed4ac3d7eb25f32c74228c367b86b6'
 PACK_SHA = '64a43ba2d7564d7681770065b843273330dc368b8d01bf328a8af7b19878bd98'
+ACTIVE_PACK = ROOT/'sources/recovered_disposition/CURRENT35_IMPLEMENTATION_DISPOSITION_LEDGER.csv'
 
 
-def decode_dispositions(row_count=18276):
-    pack_path = ROOT/'sources/local_archive/CURRENT35_IMPLEMENTATION_DISPOSITION_LEDGER.csv'
+def decode_dispositions(row_count=18276, *, pack_path=None):
+    pack_path = ACTIVE_PACK if pack_path is None else Path(pack_path)
     packs = list(csv.DictReader(pack_path.open()))
     if len(packs)!=1: raise ValueError('DISPOSITION_PACK_CARDINALITY')
     pack = packs[0]
@@ -23,13 +24,17 @@ def decode_dispositions(row_count=18276):
     if len(payload)!=row_count or hashlib.sha256(payload).hexdigest()!=PACK_SHA:
         raise ValueError('DISPOSITION_PAYLOAD_MISMATCH')
     codes = dict(x.split('=') for x in pack['use_code_map'].split(';'))
+    if codes != {str(i):c for i,c in enumerate(['SEM','TOP','POS','END','CTX','SCX','ADM','REJ','CPC','BLK'])}:
+        raise ValueError('DISPOSITION_CODE_MAP_MISMATCH')
+    if pack['format_version']!='P2_ORDINAL_BYTEPACK_V1' or pack['payload_sha256']!=PACK_SHA or int(pack['payload_bytes'])!=row_count:
+        raise ValueError('DISPOSITION_HEADER_MISMATCH')
     if any(b&0xc0 or str(b&15) not in codes for b in payload):
         raise ValueError('UNRECOGNIZED_PACK_BITS')
     return payload,codes
 
 
 def pack_receipt():
-    pack=next(csv.DictReader((ROOT/'sources/local_archive/CURRENT35_IMPLEMENTATION_DISPOSITION_LEDGER.csv').open()))
+    pack=next(csv.DictReader(ACTIVE_PACK.open()))
     payload=base64.b64decode(''.join(pack['payload_b64_'+str(i)] for i in range(4)),validate=True)
     try:
         decode_dispositions()
@@ -38,7 +43,9 @@ def pack_receipt():
     return {'state':state,'claimed_bytes':int(pack['payload_bytes']),'observed_bytes':len(payload),
             'claimed_sha256':pack['payload_sha256'],'observed_sha256':hashlib.sha256(payload).hexdigest(),
             'reserved_bit_violations':sum(bool(b&192) for b in payload),
-            'scope':'RETAINED_LOCAL_DOCUMENTARY_COPY_ONLY__UPSTREAM_SEMANTIC_AUTHORITY_NOT_REVOKED'}
+            'scope':'BYTE_EXACT_RECOVERY_OF_FROZEN_ACCEPTED_PAYLOAD__NO_NEW_SEMANTIC_ISSUANCE',
+            'active_path':str(ACTIVE_PACK.relative_to(ROOT)),
+            'historical_red_path':'sources/local_archive/CURRENT35_IMPLEMENTATION_DISPOSITION_LEDGER.csv'}
 
 
 def load():
