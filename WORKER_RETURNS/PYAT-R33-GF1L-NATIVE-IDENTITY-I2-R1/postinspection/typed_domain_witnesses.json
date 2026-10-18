@@ -1,0 +1,874 @@
+[
+  {
+    "role": "condition",
+    "domain": [
+      {
+        "type": "int",
+        "value": "0"
+      },
+      {
+        "type": "bool",
+        "value": "False"
+      }
+    ],
+    "relation_hash": "d2abf7ece4b6dbc76782ad05ed255fb775018ee2a2fb9d4864470f28edfaefe2",
+    "real_original_constructor": true,
+    "source_qualified_producer_output": false,
+    "independent_reference_support": 2,
+    "independent_reference_separation": "EXACT_PAIR_SEPARATION",
+    "cells": [
+      {
+        "condition_type": "int",
+        "condition_value": "0",
+        "target_type": "str",
+        "target_value": "'0'",
+        "count": 1
+      },
+      {
+        "condition_type": "int",
+        "condition_value": "0",
+        "target_type": "str",
+        "target_value": "'1'",
+        "count": 0
+      },
+      {
+        "condition_type": "bool",
+        "condition_value": "False",
+        "target_type": "str",
+        "target_value": "'0'",
+        "count": 0
+      },
+      {
+        "condition_type": "bool",
+        "condition_value": "False",
+        "target_type": "str",
+        "target_value": "'1'",
+        "count": 1
+      }
+    ],
+    "actual": {
+      "consumer_id": "GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ONLY@1.0.0",
+      "consumer_output_family": "GF1_PAIR_SUPPORT_SIGNATURE_RESULT_TEST_ONLY@1.0.0",
+      "decision_state": "PAIR_SUPPORT_SIGNATURE_COMPUTED",
+      "downstream_value_produced": true,
+      "generic_native_semantics_hold": "RETAINED",
+      "read_relation_owner": "GF1_GENERIC_PAIR_CANDIDATE_RELATION_OWNER_TEST_ONLY",
+      "read_relation_family": "GF1_GENERIC_NATIVE_PAIR_RELATION_TEST_ONLY@1.0.0",
+      "read_relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:d2abf7ece4b6dbc76782ad05ed255fb775018ee2a2fb9d4864470f28edfaefe2",
+      "read_relation_content_hash": "d2abf7ece4b6dbc76782ad05ed255fb775018ee2a2fb9d4864470f28edfaefe2",
+      "separation_class": "NO_PAIR_SEPARATION",
+      "separation_signature": "m01-X|m01-Y|FORWARD_NATIVE_ORDER|NO_PAIR_SEPARATION|00=0.01=1.False0=0.False1=1",
+      "support_vectors": {
+        "0": {
+          "0": 0,
+          "1": 1
+        }
+      },
+      "zero_cell_semantics": {
+        "0": {
+          "0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+          "1": "OBSERVED_POSITIVE"
+        }
+      },
+      "joint_support_total": 1,
+      "eligible_joint_risk_total": 2,
+      "excluded_ineligible_target_count": 0,
+      "condition_states_with_positive_denominator": [
+        0,
+        false
+      ],
+      "measure_kind": "RAW",
+      "measure_basis_ref": {
+        "kind": "MEASURE_BASIS",
+        "object_id": "urn:test:i03:measure_basis:RAW",
+        "content_hash": "c552e0c978466b790e06f4eb30ba5286c77b1781ec0b57907f5743f04e955bda"
+      },
+      "operation_role_order": "FORWARD_NATIVE_ORDER",
+      "native_component_order": [
+        "urn:test:i03:question_native:m01-X",
+        "urn:test:i03:question_native:m01-Y"
+      ],
+      "permission_ceilings": {
+        "producer": [
+          "SOURCE_FREE_DEV"
+        ],
+        "relation": [
+          "SOURCE_FREE_DEV"
+        ]
+      },
+      "is_population_evidence_not_actor_fact": true,
+      "makes_no_causal_or_psychological_claim": true,
+      "production_owner_commit": false,
+      "result_hash": "52228bed2dff37187929ebba18f37714e688c19ec1708caf83b31587ff9f6282"
+    }
+  },
+  {
+    "role": "condition",
+    "domain": [
+      {
+        "type": "int",
+        "value": "0"
+      },
+      {
+        "type": "float",
+        "value": "0.0"
+      }
+    ],
+    "relation_hash": "5a450e51d974558cfe46a9d19287347997935e9fffb046b3a5cc7f3234bacf23",
+    "real_original_constructor": true,
+    "source_qualified_producer_output": false,
+    "independent_reference_support": 2,
+    "independent_reference_separation": "EXACT_PAIR_SEPARATION",
+    "cells": [
+      {
+        "condition_type": "int",
+        "condition_value": "0",
+        "target_type": "str",
+        "target_value": "'0'",
+        "count": 1
+      },
+      {
+        "condition_type": "int",
+        "condition_value": "0",
+        "target_type": "str",
+        "target_value": "'1'",
+        "count": 0
+      },
+      {
+        "condition_type": "float",
+        "condition_value": "0.0",
+        "target_type": "str",
+        "target_value": "'0'",
+        "count": 0
+      },
+      {
+        "condition_type": "float",
+        "condition_value": "0.0",
+        "target_type": "str",
+        "target_value": "'1'",
+        "count": 1
+      }
+    ],
+    "actual": {
+      "consumer_id": "GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ONLY@1.0.0",
+      "consumer_output_family": "GF1_PAIR_SUPPORT_SIGNATURE_RESULT_TEST_ONLY@1.0.0",
+      "decision_state": "PAIR_SUPPORT_SIGNATURE_COMPUTED",
+      "downstream_value_produced": true,
+      "generic_native_semantics_hold": "RETAINED",
+      "read_relation_owner": "GF1_GENERIC_PAIR_CANDIDATE_RELATION_OWNER_TEST_ONLY",
+      "read_relation_family": "GF1_GENERIC_NATIVE_PAIR_RELATION_TEST_ONLY@1.0.0",
+      "read_relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:5a450e51d974558cfe46a9d19287347997935e9fffb046b3a5cc7f3234bacf23",
+      "read_relation_content_hash": "5a450e51d974558cfe46a9d19287347997935e9fffb046b3a5cc7f3234bacf23",
+      "separation_class": "NO_PAIR_SEPARATION",
+      "separation_signature": "m01-X|m01-Y|FORWARD_NATIVE_ORDER|NO_PAIR_SEPARATION|00=0.01=1.0.00=0.0.01=1",
+      "support_vectors": {
+        "0": {
+          "0": 0,
+          "1": 1
+        }
+      },
+      "zero_cell_semantics": {
+        "0": {
+          "0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+          "1": "OBSERVED_POSITIVE"
+        }
+      },
+      "joint_support_total": 1,
+      "eligible_joint_risk_total": 2,
+      "excluded_ineligible_target_count": 0,
+      "condition_states_with_positive_denominator": [
+        0,
+        0.0
+      ],
+      "measure_kind": "RAW",
+      "measure_basis_ref": {
+        "kind": "MEASURE_BASIS",
+        "object_id": "urn:test:i03:measure_basis:RAW",
+        "content_hash": "c552e0c978466b790e06f4eb30ba5286c77b1781ec0b57907f5743f04e955bda"
+      },
+      "operation_role_order": "FORWARD_NATIVE_ORDER",
+      "native_component_order": [
+        "urn:test:i03:question_native:m01-X",
+        "urn:test:i03:question_native:m01-Y"
+      ],
+      "permission_ceilings": {
+        "producer": [
+          "SOURCE_FREE_DEV"
+        ],
+        "relation": [
+          "SOURCE_FREE_DEV"
+        ]
+      },
+      "is_population_evidence_not_actor_fact": true,
+      "makes_no_causal_or_psychological_claim": true,
+      "production_owner_commit": false,
+      "result_hash": "2c258735571c6285ad4d2236540cb8f5440055e6d1283c38e80d61f2ee5e95bc"
+    }
+  },
+  {
+    "role": "condition",
+    "domain": [
+      {
+        "type": "str",
+        "value": "'0'"
+      },
+      {
+        "type": "int",
+        "value": "0"
+      }
+    ],
+    "relation_hash": "db954b8c4c0644fac3ffe5275a7d96d3b66044136b43f179f6b84226f06b7639",
+    "real_original_constructor": true,
+    "source_qualified_producer_output": false,
+    "independent_reference_support": 2,
+    "independent_reference_separation": "EXACT_PAIR_SEPARATION",
+    "cells": [
+      {
+        "condition_type": "str",
+        "condition_value": "'0'",
+        "target_type": "str",
+        "target_value": "'0'",
+        "count": 1
+      },
+      {
+        "condition_type": "str",
+        "condition_value": "'0'",
+        "target_type": "str",
+        "target_value": "'1'",
+        "count": 0
+      },
+      {
+        "condition_type": "int",
+        "condition_value": "0",
+        "target_type": "str",
+        "target_value": "'0'",
+        "count": 0
+      },
+      {
+        "condition_type": "int",
+        "condition_value": "0",
+        "target_type": "str",
+        "target_value": "'1'",
+        "count": 1
+      }
+    ],
+    "exception": {
+      "type": "TypeError",
+      "message": "'<' not supported between instances of 'int' and 'str'"
+    }
+  },
+  {
+    "role": "condition",
+    "domain": [
+      {
+        "type": "str",
+        "value": "'0'"
+      },
+      {
+        "type": "str",
+        "value": "'1'"
+      }
+    ],
+    "relation_hash": "74d3aaaca35aaacc4491c7e472ac38a6e69fcf0d51736b86b853ea48d10b2236",
+    "real_original_constructor": true,
+    "source_qualified_producer_output": false,
+    "independent_reference_support": 2,
+    "independent_reference_separation": "EXACT_PAIR_SEPARATION",
+    "cells": [
+      {
+        "condition_type": "str",
+        "condition_value": "'0'",
+        "target_type": "str",
+        "target_value": "'0'",
+        "count": 1
+      },
+      {
+        "condition_type": "str",
+        "condition_value": "'0'",
+        "target_type": "str",
+        "target_value": "'1'",
+        "count": 0
+      },
+      {
+        "condition_type": "str",
+        "condition_value": "'1'",
+        "target_type": "str",
+        "target_value": "'0'",
+        "count": 0
+      },
+      {
+        "condition_type": "str",
+        "condition_value": "'1'",
+        "target_type": "str",
+        "target_value": "'1'",
+        "count": 1
+      }
+    ],
+    "actual": {
+      "consumer_id": "GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ONLY@1.0.0",
+      "consumer_output_family": "GF1_PAIR_SUPPORT_SIGNATURE_RESULT_TEST_ONLY@1.0.0",
+      "decision_state": "PAIR_SUPPORT_SIGNATURE_COMPUTED",
+      "downstream_value_produced": true,
+      "generic_native_semantics_hold": "RETAINED",
+      "read_relation_owner": "GF1_GENERIC_PAIR_CANDIDATE_RELATION_OWNER_TEST_ONLY",
+      "read_relation_family": "GF1_GENERIC_NATIVE_PAIR_RELATION_TEST_ONLY@1.0.0",
+      "read_relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:74d3aaaca35aaacc4491c7e472ac38a6e69fcf0d51736b86b853ea48d10b2236",
+      "read_relation_content_hash": "74d3aaaca35aaacc4491c7e472ac38a6e69fcf0d51736b86b853ea48d10b2236",
+      "separation_class": "EXACT_PAIR_SEPARATION",
+      "separation_signature": "m01-X|m01-Y|FORWARD_NATIVE_ORDER|EXACT_PAIR_SEPARATION|00=1.01=0.10=0.11=1",
+      "support_vectors": {
+        "0": {
+          "0": 1,
+          "1": 0
+        },
+        "1": {
+          "0": 0,
+          "1": 1
+        }
+      },
+      "zero_cell_semantics": {
+        "0": {
+          "0": "OBSERVED_POSITIVE",
+          "1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+        },
+        "1": {
+          "0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+          "1": "OBSERVED_POSITIVE"
+        }
+      },
+      "joint_support_total": 2,
+      "eligible_joint_risk_total": 2,
+      "excluded_ineligible_target_count": 0,
+      "condition_states_with_positive_denominator": [
+        "0",
+        "1"
+      ],
+      "measure_kind": "RAW",
+      "measure_basis_ref": {
+        "kind": "MEASURE_BASIS",
+        "object_id": "urn:test:i03:measure_basis:RAW",
+        "content_hash": "c552e0c978466b790e06f4eb30ba5286c77b1781ec0b57907f5743f04e955bda"
+      },
+      "operation_role_order": "FORWARD_NATIVE_ORDER",
+      "native_component_order": [
+        "urn:test:i03:question_native:m01-X",
+        "urn:test:i03:question_native:m01-Y"
+      ],
+      "permission_ceilings": {
+        "producer": [
+          "SOURCE_FREE_DEV"
+        ],
+        "relation": [
+          "SOURCE_FREE_DEV"
+        ]
+      },
+      "is_population_evidence_not_actor_fact": true,
+      "makes_no_causal_or_psychological_claim": true,
+      "production_owner_commit": false,
+      "result_hash": "0b8ee8a6aa220266071800a1838ec868bb9e1b0bc688def46f6bdb2484db05f0"
+    }
+  },
+  {
+    "role": "condition",
+    "domain": [
+      {
+        "type": "int",
+        "value": "0"
+      },
+      {
+        "type": "int",
+        "value": "1"
+      }
+    ],
+    "relation_hash": "abe50561e6b612d297f74b906ce1623c7bef9269b9143a22c10cbbf73fc106e6",
+    "real_original_constructor": true,
+    "source_qualified_producer_output": false,
+    "independent_reference_support": 2,
+    "independent_reference_separation": "EXACT_PAIR_SEPARATION",
+    "cells": [
+      {
+        "condition_type": "int",
+        "condition_value": "0",
+        "target_type": "str",
+        "target_value": "'0'",
+        "count": 1
+      },
+      {
+        "condition_type": "int",
+        "condition_value": "0",
+        "target_type": "str",
+        "target_value": "'1'",
+        "count": 0
+      },
+      {
+        "condition_type": "int",
+        "condition_value": "1",
+        "target_type": "str",
+        "target_value": "'0'",
+        "count": 0
+      },
+      {
+        "condition_type": "int",
+        "condition_value": "1",
+        "target_type": "str",
+        "target_value": "'1'",
+        "count": 1
+      }
+    ],
+    "actual": {
+      "consumer_id": "GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ONLY@1.0.0",
+      "consumer_output_family": "GF1_PAIR_SUPPORT_SIGNATURE_RESULT_TEST_ONLY@1.0.0",
+      "decision_state": "PAIR_SUPPORT_SIGNATURE_COMPUTED",
+      "downstream_value_produced": true,
+      "generic_native_semantics_hold": "RETAINED",
+      "read_relation_owner": "GF1_GENERIC_PAIR_CANDIDATE_RELATION_OWNER_TEST_ONLY",
+      "read_relation_family": "GF1_GENERIC_NATIVE_PAIR_RELATION_TEST_ONLY@1.0.0",
+      "read_relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:abe50561e6b612d297f74b906ce1623c7bef9269b9143a22c10cbbf73fc106e6",
+      "read_relation_content_hash": "abe50561e6b612d297f74b906ce1623c7bef9269b9143a22c10cbbf73fc106e6",
+      "separation_class": "EXACT_PAIR_SEPARATION",
+      "separation_signature": "m01-X|m01-Y|FORWARD_NATIVE_ORDER|EXACT_PAIR_SEPARATION|00=1.01=0.10=0.11=1",
+      "support_vectors": {
+        "0": {
+          "0": 1,
+          "1": 0
+        },
+        "1": {
+          "0": 0,
+          "1": 1
+        }
+      },
+      "zero_cell_semantics": {
+        "0": {
+          "0": "OBSERVED_POSITIVE",
+          "1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+        },
+        "1": {
+          "0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+          "1": "OBSERVED_POSITIVE"
+        }
+      },
+      "joint_support_total": 2,
+      "eligible_joint_risk_total": 2,
+      "excluded_ineligible_target_count": 0,
+      "condition_states_with_positive_denominator": [
+        0,
+        1
+      ],
+      "measure_kind": "RAW",
+      "measure_basis_ref": {
+        "kind": "MEASURE_BASIS",
+        "object_id": "urn:test:i03:measure_basis:RAW",
+        "content_hash": "c552e0c978466b790e06f4eb30ba5286c77b1781ec0b57907f5743f04e955bda"
+      },
+      "operation_role_order": "FORWARD_NATIVE_ORDER",
+      "native_component_order": [
+        "urn:test:i03:question_native:m01-X",
+        "urn:test:i03:question_native:m01-Y"
+      ],
+      "permission_ceilings": {
+        "producer": [
+          "SOURCE_FREE_DEV"
+        ],
+        "relation": [
+          "SOURCE_FREE_DEV"
+        ]
+      },
+      "is_population_evidence_not_actor_fact": true,
+      "makes_no_causal_or_psychological_claim": true,
+      "production_owner_commit": false,
+      "result_hash": "8ac84266b94e962b911c06b1d395239fd8d5b348ad6a44ecb7c813e05d229d9d"
+    }
+  },
+  {
+    "role": "target",
+    "domain": [
+      {
+        "type": "int",
+        "value": "0"
+      },
+      {
+        "type": "bool",
+        "value": "False"
+      }
+    ],
+    "relation_hash": "73b4e55f2994e6b808f55e5becbab6ecaf126da1f5702db3fa3c7412136b3565",
+    "real_original_constructor": true,
+    "source_qualified_producer_output": false,
+    "independent_reference_support": 2,
+    "independent_reference_separation": "EXACT_PAIR_SEPARATION",
+    "cells": [
+      {
+        "condition_type": "str",
+        "condition_value": "'0'",
+        "target_type": "int",
+        "target_value": "0",
+        "count": 1
+      },
+      {
+        "condition_type": "str",
+        "condition_value": "'0'",
+        "target_type": "bool",
+        "target_value": "False",
+        "count": 0
+      },
+      {
+        "condition_type": "str",
+        "condition_value": "'1'",
+        "target_type": "int",
+        "target_value": "0",
+        "count": 0
+      },
+      {
+        "condition_type": "str",
+        "condition_value": "'1'",
+        "target_type": "bool",
+        "target_value": "False",
+        "count": 1
+      }
+    ],
+    "actual": {
+      "consumer_id": "GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ONLY@1.0.0",
+      "consumer_output_family": "GF1_PAIR_SUPPORT_SIGNATURE_RESULT_TEST_ONLY@1.0.0",
+      "decision_state": "CONSUMER_RELATION_INTEGRITY_REJECTED",
+      "separation_class": null,
+      "downstream_value_produced": false,
+      "generic_native_semantics_hold": "RETAINED",
+      "is_population_evidence_not_actor_fact": true,
+      "makes_no_causal_or_psychological_claim": true,
+      "production_owner_commit": false
+    }
+  },
+  {
+    "role": "target",
+    "domain": [
+      {
+        "type": "int",
+        "value": "0"
+      },
+      {
+        "type": "float",
+        "value": "0.0"
+      }
+    ],
+    "relation_hash": "b3c54541248ded2481a8dfc132786a277ab0043bca8bbbf257cc7ed99e2ebf02",
+    "real_original_constructor": true,
+    "source_qualified_producer_output": false,
+    "independent_reference_support": 2,
+    "independent_reference_separation": "EXACT_PAIR_SEPARATION",
+    "cells": [
+      {
+        "condition_type": "str",
+        "condition_value": "'0'",
+        "target_type": "int",
+        "target_value": "0",
+        "count": 1
+      },
+      {
+        "condition_type": "str",
+        "condition_value": "'0'",
+        "target_type": "float",
+        "target_value": "0.0",
+        "count": 0
+      },
+      {
+        "condition_type": "str",
+        "condition_value": "'1'",
+        "target_type": "int",
+        "target_value": "0",
+        "count": 0
+      },
+      {
+        "condition_type": "str",
+        "condition_value": "'1'",
+        "target_type": "float",
+        "target_value": "0.0",
+        "count": 1
+      }
+    ],
+    "actual": {
+      "consumer_id": "GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ONLY@1.0.0",
+      "consumer_output_family": "GF1_PAIR_SUPPORT_SIGNATURE_RESULT_TEST_ONLY@1.0.0",
+      "decision_state": "CONSUMER_RELATION_INTEGRITY_REJECTED",
+      "separation_class": null,
+      "downstream_value_produced": false,
+      "generic_native_semantics_hold": "RETAINED",
+      "is_population_evidence_not_actor_fact": true,
+      "makes_no_causal_or_psychological_claim": true,
+      "production_owner_commit": false
+    }
+  },
+  {
+    "role": "target",
+    "domain": [
+      {
+        "type": "str",
+        "value": "'0'"
+      },
+      {
+        "type": "int",
+        "value": "0"
+      }
+    ],
+    "relation_hash": "aa6a59d6105019129218e1a3f8a6a7b6012cbe2a151947c775e973adaec26668",
+    "real_original_constructor": true,
+    "source_qualified_producer_output": false,
+    "independent_reference_support": 2,
+    "independent_reference_separation": "EXACT_PAIR_SEPARATION",
+    "cells": [
+      {
+        "condition_type": "str",
+        "condition_value": "'0'",
+        "target_type": "str",
+        "target_value": "'0'",
+        "count": 1
+      },
+      {
+        "condition_type": "str",
+        "condition_value": "'0'",
+        "target_type": "int",
+        "target_value": "0",
+        "count": 0
+      },
+      {
+        "condition_type": "str",
+        "condition_value": "'1'",
+        "target_type": "str",
+        "target_value": "'0'",
+        "count": 0
+      },
+      {
+        "condition_type": "str",
+        "condition_value": "'1'",
+        "target_type": "int",
+        "target_value": "0",
+        "count": 1
+      }
+    ],
+    "exception": {
+      "type": "TypeError",
+      "message": "'<' not supported between instances of 'int' and 'str'"
+    }
+  },
+  {
+    "role": "target",
+    "domain": [
+      {
+        "type": "str",
+        "value": "'0'"
+      },
+      {
+        "type": "str",
+        "value": "'1'"
+      }
+    ],
+    "relation_hash": "74d3aaaca35aaacc4491c7e472ac38a6e69fcf0d51736b86b853ea48d10b2236",
+    "real_original_constructor": true,
+    "source_qualified_producer_output": false,
+    "independent_reference_support": 2,
+    "independent_reference_separation": "EXACT_PAIR_SEPARATION",
+    "cells": [
+      {
+        "condition_type": "str",
+        "condition_value": "'0'",
+        "target_type": "str",
+        "target_value": "'0'",
+        "count": 1
+      },
+      {
+        "condition_type": "str",
+        "condition_value": "'0'",
+        "target_type": "str",
+        "target_value": "'1'",
+        "count": 0
+      },
+      {
+        "condition_type": "str",
+        "condition_value": "'1'",
+        "target_type": "str",
+        "target_value": "'0'",
+        "count": 0
+      },
+      {
+        "condition_type": "str",
+        "condition_value": "'1'",
+        "target_type": "str",
+        "target_value": "'1'",
+        "count": 1
+      }
+    ],
+    "actual": {
+      "consumer_id": "GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ONLY@1.0.0",
+      "consumer_output_family": "GF1_PAIR_SUPPORT_SIGNATURE_RESULT_TEST_ONLY@1.0.0",
+      "decision_state": "PAIR_SUPPORT_SIGNATURE_COMPUTED",
+      "downstream_value_produced": true,
+      "generic_native_semantics_hold": "RETAINED",
+      "read_relation_owner": "GF1_GENERIC_PAIR_CANDIDATE_RELATION_OWNER_TEST_ONLY",
+      "read_relation_family": "GF1_GENERIC_NATIVE_PAIR_RELATION_TEST_ONLY@1.0.0",
+      "read_relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:74d3aaaca35aaacc4491c7e472ac38a6e69fcf0d51736b86b853ea48d10b2236",
+      "read_relation_content_hash": "74d3aaaca35aaacc4491c7e472ac38a6e69fcf0d51736b86b853ea48d10b2236",
+      "separation_class": "EXACT_PAIR_SEPARATION",
+      "separation_signature": "m01-X|m01-Y|FORWARD_NATIVE_ORDER|EXACT_PAIR_SEPARATION|00=1.01=0.10=0.11=1",
+      "support_vectors": {
+        "0": {
+          "0": 1,
+          "1": 0
+        },
+        "1": {
+          "0": 0,
+          "1": 1
+        }
+      },
+      "zero_cell_semantics": {
+        "0": {
+          "0": "OBSERVED_POSITIVE",
+          "1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+        },
+        "1": {
+          "0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+          "1": "OBSERVED_POSITIVE"
+        }
+      },
+      "joint_support_total": 2,
+      "eligible_joint_risk_total": 2,
+      "excluded_ineligible_target_count": 0,
+      "condition_states_with_positive_denominator": [
+        "0",
+        "1"
+      ],
+      "measure_kind": "RAW",
+      "measure_basis_ref": {
+        "kind": "MEASURE_BASIS",
+        "object_id": "urn:test:i03:measure_basis:RAW",
+        "content_hash": "c552e0c978466b790e06f4eb30ba5286c77b1781ec0b57907f5743f04e955bda"
+      },
+      "operation_role_order": "FORWARD_NATIVE_ORDER",
+      "native_component_order": [
+        "urn:test:i03:question_native:m01-X",
+        "urn:test:i03:question_native:m01-Y"
+      ],
+      "permission_ceilings": {
+        "producer": [
+          "SOURCE_FREE_DEV"
+        ],
+        "relation": [
+          "SOURCE_FREE_DEV"
+        ]
+      },
+      "is_population_evidence_not_actor_fact": true,
+      "makes_no_causal_or_psychological_claim": true,
+      "production_owner_commit": false,
+      "result_hash": "0b8ee8a6aa220266071800a1838ec868bb9e1b0bc688def46f6bdb2484db05f0"
+    }
+  },
+  {
+    "role": "target",
+    "domain": [
+      {
+        "type": "int",
+        "value": "0"
+      },
+      {
+        "type": "int",
+        "value": "1"
+      }
+    ],
+    "relation_hash": "d7da842074b0219ee4a861c85ffcccda7f27e870700ee49894af1a181315128f",
+    "real_original_constructor": true,
+    "source_qualified_producer_output": false,
+    "independent_reference_support": 2,
+    "independent_reference_separation": "EXACT_PAIR_SEPARATION",
+    "cells": [
+      {
+        "condition_type": "str",
+        "condition_value": "'0'",
+        "target_type": "int",
+        "target_value": "0",
+        "count": 1
+      },
+      {
+        "condition_type": "str",
+        "condition_value": "'0'",
+        "target_type": "int",
+        "target_value": "1",
+        "count": 0
+      },
+      {
+        "condition_type": "str",
+        "condition_value": "'1'",
+        "target_type": "int",
+        "target_value": "0",
+        "count": 0
+      },
+      {
+        "condition_type": "str",
+        "condition_value": "'1'",
+        "target_type": "int",
+        "target_value": "1",
+        "count": 1
+      }
+    ],
+    "actual": {
+      "consumer_id": "GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ONLY@1.0.0",
+      "consumer_output_family": "GF1_PAIR_SUPPORT_SIGNATURE_RESULT_TEST_ONLY@1.0.0",
+      "decision_state": "PAIR_SUPPORT_SIGNATURE_COMPUTED",
+      "downstream_value_produced": true,
+      "generic_native_semantics_hold": "RETAINED",
+      "read_relation_owner": "GF1_GENERIC_PAIR_CANDIDATE_RELATION_OWNER_TEST_ONLY",
+      "read_relation_family": "GF1_GENERIC_NATIVE_PAIR_RELATION_TEST_ONLY@1.0.0",
+      "read_relation_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:d7da842074b0219ee4a861c85ffcccda7f27e870700ee49894af1a181315128f",
+      "read_relation_content_hash": "d7da842074b0219ee4a861c85ffcccda7f27e870700ee49894af1a181315128f",
+      "separation_class": "EXACT_PAIR_SEPARATION",
+      "separation_signature": "m01-X|m01-Y|FORWARD_NATIVE_ORDER|EXACT_PAIR_SEPARATION|00=1.01=0.10=0.11=1",
+      "support_vectors": {
+        "0": {
+          "0": 1,
+          "1": 0
+        },
+        "1": {
+          "0": 0,
+          "1": 1
+        }
+      },
+      "zero_cell_semantics": {
+        "0": {
+          "0": "OBSERVED_POSITIVE",
+          "1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+        },
+        "1": {
+          "0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+          "1": "OBSERVED_POSITIVE"
+        }
+      },
+      "joint_support_total": 2,
+      "eligible_joint_risk_total": 2,
+      "excluded_ineligible_target_count": 0,
+      "condition_states_with_positive_denominator": [
+        "0",
+        "1"
+      ],
+      "measure_kind": "RAW",
+      "measure_basis_ref": {
+        "kind": "MEASURE_BASIS",
+        "object_id": "urn:test:i03:measure_basis:RAW",
+        "content_hash": "c552e0c978466b790e06f4eb30ba5286c77b1781ec0b57907f5743f04e955bda"
+      },
+      "operation_role_order": "FORWARD_NATIVE_ORDER",
+      "native_component_order": [
+        "urn:test:i03:question_native:m01-X",
+        "urn:test:i03:question_native:m01-Y"
+      ],
+      "permission_ceilings": {
+        "producer": [
+          "SOURCE_FREE_DEV"
+        ],
+        "relation": [
+          "SOURCE_FREE_DEV"
+        ]
+      },
+      "is_population_evidence_not_actor_fact": true,
+      "makes_no_causal_or_psychological_claim": true,
+      "production_owner_commit": false,
+      "result_hash": "45176ef5b73ae6723a8f7f7a97102da454038f9709128751b40cc5a33a9d91fa"
+    }
+  }
+]

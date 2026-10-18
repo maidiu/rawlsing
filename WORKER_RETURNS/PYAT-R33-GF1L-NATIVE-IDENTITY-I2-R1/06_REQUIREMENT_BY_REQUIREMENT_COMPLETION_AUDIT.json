@@ -1,0 +1,105 @@
+{
+  "audit_at_utc": "2026-10-18T02:13:14.692722+00:00",
+  "objective": "Independent native review, not author repair or adoption",
+  "requirements": [
+    {
+      "requirement": "Exact commissioned checkout, remote, branch and startup",
+      "status": "complete",
+      "evidence": "00_FULL_NATIVE_I2_VERDICT.md; Git ancestry from 6346b8ed72cc1687d84c358f48cb88f042ade6fd"
+    },
+    {
+      "requirement": "Independent falsifiers frozen remotely before candidate inspection",
+      "status": "complete",
+      "evidence": "01_INDEPENDENT_PHASE_A_FROZEN_SHA_AND_ORACLE.json; commits 8dbf894109d0d81b5b0b936939484ab95771ddd3 and 4d3566081e4f552c14327bd3f1d1ec57fb13e762; retained transparent harness error"
+    },
+    {
+      "requirement": "Preserve original26 and original GF1J native RED identities",
+      "status": "complete",
+      "evidence": "02_EXACT_NATIVE_SOURCE_IMPORTS_AND_ISSUER_SCOPE.json frozen_tests; unchanged original native GF1J file executed in both phases"
+    },
+    {
+      "requirement": "Returned GF1K pinned and reviewed",
+      "status": "complete",
+      "evidence": "GF1K_RETURN_AND_REVIEW_RECEIPT.json; exact 1399a475e54ea33355cf641979829424625c511d and candidate blob/SHA"
+    },
+    {
+      "requirement": "Complete original native closure and actual imported files verified",
+      "status": "complete",
+      "evidence": "02_EXACT_NATIVE_SOURCE_IMPORTS_AND_ISSUER_SCOPE.json; 74 original files, 45 Python files, 38 actual import paths; original constructor and fixture producer hashes"
+    },
+    {
+      "requirement": "original44 physically run unchanged",
+      "status": "complete",
+      "evidence": "gf1k_original44.xml:44 pass"
+    },
+    {
+      "requirement": "GF1G26 physically run unchanged",
+      "status": "complete",
+      "evidence": "gf1k_gf1g26.xml:26 pass"
+    },
+    {
+      "requirement": "GF1H26 physically run unchanged",
+      "status": "complete",
+      "evidence": "gf1k_gf1h26.xml:26 pass"
+    },
+    {
+      "requirement": "GF1J two native REDs physically run unchanged",
+      "status": "complete",
+      "evidence": "gf1k_gf1j_native_two_plus_positive.xml:3 pass including two original parametrized hostile nodes"
+    },
+    {
+      "requirement": "Own corrected preinspection Phase A physically run unchanged",
+      "status": "complete",
+      "evidence": "gf1k_gf1l_executable_v2.xml:14 pass; original broken harness preserved with original log and correction before candidate inspection"
+    },
+    {
+      "requirement": "GF1F100 historical four failures preserved",
+      "status": "complete",
+      "evidence": "gf1k_gf1f100.xml:96 pass,4 fail; verifier compares exact before/after failed node sets"
+    },
+    {
+      "requirement": "GF1I19 historical two absence failures preserved",
+      "status": "complete",
+      "evidence": "gf1k_gf1i19.xml:17 pass,2 fail; verifier compares exact before/after failed node sets"
+    },
+    {
+      "requirement": "Recompute native type AND value identity, ordering and coercion",
+      "status": "complete",
+      "evidence": "GF1L14; source-native string positives; homogeneous integer constructor controls; separately labelled mixed-domain supplemental10 and typed_domain_witnesses.json"
+    },
+    {
+      "requirement": "Two actual cold OS processes, imports and deterministic outputs",
+      "status": "complete",
+      "evidence": "gf1k_cold_0.log/gf1k_cold_1.log; distinct PIDs37995/37998 and equal non-PID receipts checked"
+    },
+    {
+      "requirement": "F2, reverse X|Y, denominator/risk, zero/missing/empty guards conserved",
+      "status": "complete",
+      "evidence": "unchanged GF1G26/GF1H26 and original44; source inspection confirms minimal patch"
+    },
+    {
+      "requirement": "Forged rehash not elevated to signatory or production authority",
+      "status": "complete",
+      "evidence": "GF1G forged reference case passes only at TEST_ONLY scope; no signature verification exists or is claimed; production_owner_commit false"
+    },
+    {
+      "requirement": "No new owner/method grant or forbidden rights",
+      "status": "complete",
+      "evidence": "04_SCIENTIFIC_CONSERVATION_AND_HISTORICAL_NOT_GREEN.md; candidate diff29 files only own return, review writes only own return"
+    },
+    {
+      "requirement": "Deliver required 00 through 05 artifacts with bounded verdict",
+      "status": "complete",
+      "evidence": "All six exact commission deliverables exist; verdict RED with original two failures closed and two new residual regression classes"
+    },
+    {
+      "requirement": "Postinspection findings independently reproduced without editing candidate",
+      "status": "complete",
+      "evidence": "supplemental GF1H10pass versus GF1K6pass4fail; tests frozen at6a52f266da7261c9fee777af5505a86709b005f6; original constructor TEST_ONLY variants; no source-issued claim"
+    }
+  ],
+  "review_complete": true,
+  "candidate_accepted": false,
+  "candidate_scientific_disposition": "RED; original two GF1J cases closed, supplemental four regression witnesses in two classes",
+  "remaining_review_work": "None; final publication is proven separately by PUBLICATION_RECEIPT.json and final direct remote readback."
+}

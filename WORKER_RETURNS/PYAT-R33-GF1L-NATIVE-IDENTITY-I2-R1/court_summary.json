@@ -9,22 +9,22 @@
       {
         "node": "test_universe_class_and_derived_fields[0000]",
         "class_name": "R33-GF1L-native-i2-wt.WORKER_RETURNS.PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1.stage.WORKER_RETURNS.PYAT-R28-GF1F-IMPLEMENTED-NATIVE-CONSUMER-INDEPENDENT-R1.tests.test_gf1f_independent_consumer",
-        "kind": "failure"
+        "message": "AssertionError: assert 'UNDETERMINED...ELIGIBLE_RISK' == 'UNDETERMINED..._SUPPORT_RISK'\n  \n  - UNDETERMINED_ZERO_SUPPORT_RISK\n  + UNDETERMINED_NO_ELIGIBLE_RISK"
       },
       {
         "node": "test_named_cases[zero_supported_risk]",
         "class_name": "R33-GF1L-native-i2-wt.WORKER_RETURNS.PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1.stage.WORKER_RETURNS.PYAT-R28-GF1F-IMPLEMENTED-NATIVE-CONSUMER-INDEPENDENT-R1.tests.test_gf1f_independent_consumer",
-        "kind": "failure"
+        "message": "AssertionError: assert 'UNDETERMINED...ELIGIBLE_RISK' == 'UNDETERMINED..._SUPPORT_RISK'\n  \n  - UNDETERMINED_ZERO_SUPPORT_RISK\n  + UNDETERMINED_NO_ELIGIBLE_RISK"
       },
       {
         "node": "test_missing_suppressed_relation_is_empty_response",
         "class_name": "R33-GF1L-native-i2-wt.WORKER_RETURNS.PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1.stage.WORKER_RETURNS.PYAT-R28-GF1F-IMPLEMENTED-NATIVE-CONSUMER-INDEPENDENT-R1.tests.test_gf1f_independent_consumer",
-        "kind": "failure"
+        "message": "AssertionError: assert 'CONSUMER_PRO...TATE_BLOCKING' == 'RESPONSE_INPUTS_VALID_EMPTY'\n  \n  - RESPONSE_INPUTS_VALID_EMPTY\n  + CONSUMER_PRODUCER_TYPED_STATE_BLOCKING"
       },
       {
         "node": "test_cold_process_consumer_replay_bit_identical",
         "class_name": "R33-GF1L-native-i2-wt.WORKER_RETURNS.PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1.stage.WORKER_RETURNS.PYAT-R28-GF1F-IMPLEMENTED-NATIVE-CONSUMER-INDEPENDENT-R1.tests.test_gf1f_independent_consumer",
-        "kind": "failure"
+        "message": "AssertionError: assert {'EXACT_PAIR_...LIGIBLE_RISK'} == {'EXACT_PAIR_...SUPPORT_RISK'}\n  \n  Extra items in the right set:\n  'UNDETERMINED_ZERO_SUPPORT_RISK'\n  Use -v to get more diff"
       }
     ],
     "sha256": "92def6b0cb642df45210f19f04b3f422ec3e03cdc3b3259404b352632ebbe26d"
@@ -57,12 +57,12 @@
       {
         "node": "test_named_downstream_consumer_module_is_absent_from_candidate",
         "class_name": "R33-GF1L-native-i2-wt.WORKER_RETURNS.PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1.stage.WORKER_RETURNS.PYAT-R18-GF1I-INDEPENDENT-GENERIC-PAIR-R1.court.test_gf1i_independent",
-        "kind": "failure"
+        "message": "AssertionError: unexpectedly present\nassert not True\n +  where True = exists()\n +    where exists = PosixPath('/Users/matthewsmith/Desktop/Rawlsing/R33-GF1L-native-i2-wt/WORKER_RETURNS/PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1/stage/WORKER_RETURNS/PYAT-R18-GF1I-INDEPENDENT-GENERIC-PAIR-R1/court/runtime_root/gf1_pair_support_consumer.py').exists"
       },
       {
         "node": "test_candidate_frozen_44_suite_cannot_be_collected",
         "class_name": "R33-GF1L-native-i2-wt.WORKER_RETURNS.PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1.stage.WORKER_RETURNS.PYAT-R18-GF1I-INDEPENDENT-GENERIC-PAIR-R1.court.test_gf1i_independent",
-        "kind": "failure"
+        "message": "AssertionError: expected the missing-consumer import failure\nassert 'gf1_pair_support_consumer' in '\\n==================================== ERRORS ====================================\\n_ ERROR collecting R33-GF1L-nativ...!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\\nno tests collected, 1 error in 0.70s\\n'"
       }
     ],
     "sha256": "d7de4e76f70aa704d4ab1be066bd5e02eb79f4efa3bbba84b5bdc984c77e2e28"
@@ -77,12 +77,12 @@
       {
         "node": "test_exact_native_state_identity_no_string_alias[condition]",
         "class_name": "R33-GF1L-native-i2-wt.WORKER_RETURNS.PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1.stage.WORKER_RETURNS.PYAT-R32-GF1J-INDEPENDENT-GF1H-COURT-R1.repro.test_gf1j_postfreeze_native_identity_hostiles",
-        "kind": "failure"
+        "message": "AssertionError: {'condition_states_with_positive_denominator': ['0', '1'], 'consumer_id': 'GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ON...family': 'GF1_PAIR_SUPPORT_SIGNATURE_RESULT_TEST_ONLY@1.0.0', 'decision_state': 'PAIR_SUPPORT_SIGNATURE_COMPUTED', ...}\nassert 'PAIR_SUPPORT...TURE_COMPUTED' == 'CONSUMER_REL...RITY_REJECTED'\n  \n  - CONSUMER_RELATION_INTEGRITY_REJECTED\n  + PAIR_SUPPORT_SIGNATURE_COMPUTED"
       },
       {
         "node": "test_exact_native_state_identity_no_string_alias[target]",
         "class_name": "R33-GF1L-native-i2-wt.WORKER_RETURNS.PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1.stage.WORKER_RETURNS.PYAT-R32-GF1J-INDEPENDENT-GF1H-COURT-R1.repro.test_gf1j_postfreeze_native_identity_hostiles",
-        "kind": "failure"
+        "message": "AssertionError: {'condition_states_with_positive_denominator': ['0', '1'], 'consumer_id': 'GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ON...family': 'GF1_PAIR_SUPPORT_SIGNATURE_RESULT_TEST_ONLY@1.0.0', 'decision_state': 'PAIR_SUPPORT_SIGNATURE_COMPUTED', ...}\nassert 'PAIR_SUPPORT...TURE_COMPUTED' == 'CONSUMER_REL...RITY_REJECTED'\n  \n  - CONSUMER_RELATION_INTEGRITY_REJECTED\n  + PAIR_SUPPORT_SIGNATURE_COMPUTED"
       }
     ],
     "sha256": "942f1a22bd3c062bd982bdeab6bddf4ed3bd47a16d153a99620c984475f78691"
@@ -97,17 +97,17 @@
       {
         "node": "test_native_string_zero_never_aliases[0-condition]",
         "class_name": "R33-GF1L-native-i2-wt.WORKER_RETURNS.PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1.phase_a.test_gf1l_executable_v2",
-        "kind": "failure"
+        "message": "AssertionError: {'condition_states_with_positive_denominator': ['0', '1'], 'consumer_id': 'GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ON...family': 'GF1_PAIR_SUPPORT_SIGNATURE_RESULT_TEST_ONLY@1.0.0', 'decision_state': 'PAIR_SUPPORT_SIGNATURE_COMPUTED', ...}\nassert 'PAIR_SUPPORT...TURE_COMPUTED' == 'CONSUMER_REL...RITY_REJECTED'\n  \n  - CONSUMER_RELATION_INTEGRITY_REJECTED\n  + PAIR_SUPPORT_SIGNATURE_COMPUTED"
       },
       {
         "node": "test_native_string_zero_never_aliases[0-target]",
         "class_name": "R33-GF1L-native-i2-wt.WORKER_RETURNS.PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1.phase_a.test_gf1l_executable_v2",
-        "kind": "failure"
+        "message": "AssertionError: {'condition_states_with_positive_denominator': ['0', '1'], 'consumer_id': 'GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ON...family': 'GF1_PAIR_SUPPORT_SIGNATURE_RESULT_TEST_ONLY@1.0.0', 'decision_state': 'PAIR_SUPPORT_SIGNATURE_COMPUTED', ...}\nassert 'PAIR_SUPPORT...TURE_COMPUTED' == 'CONSUMER_REL...RITY_REJECTED'\n  \n  - CONSUMER_RELATION_INTEGRITY_REJECTED\n  + PAIR_SUPPORT_SIGNATURE_COMPUTED"
       },
       {
         "node": "test_semantic_projection_retains_native_python_identity",
         "class_name": "R33-GF1L-native-i2-wt.WORKER_RETURNS.PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1.phase_a.test_gf1l_executable_v2",
-        "kind": "failure"
+        "message": "AssertionError: {'condition_states_with_positive_denominator': ['0', '1'], 'consumer_id': 'GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ON...family': 'GF1_PAIR_SUPPORT_SIGNATURE_RESULT_TEST_ONLY@1.0.0', 'decision_state': 'PAIR_SUPPORT_SIGNATURE_COMPUTED', ...}\nassert 'PAIR_SUPPORT...TURE_COMPUTED' == 'CONSUMER_REL...RITY_REJECTED'\n  \n  - CONSUMER_RELATION_INTEGRITY_REJECTED\n  + PAIR_SUPPORT_SIGNATURE_COMPUTED"
       }
     ],
     "sha256": "20e8f72b66dad6a58ad862a4519a971fc3c2e4ad6c820db2167788770b9f5fc8"
@@ -122,67 +122,67 @@
       {
         "node": "test_native_string_zero_never_aliases[0-condition]",
         "class_name": "R33-GF1L-native-i2-wt.WORKER_RETURNS.PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1.phase_a.test_gf1l_frozen",
-        "kind": "failure"
+        "message": "TypeError: cannot pickle 'mappingproxy' object"
       },
       {
         "node": "test_native_string_zero_never_aliases[0-target]",
         "class_name": "R33-GF1L-native-i2-wt.WORKER_RETURNS.PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1.phase_a.test_gf1l_frozen",
-        "kind": "failure"
+        "message": "TypeError: cannot pickle 'mappingproxy' object"
       },
       {
         "node": "test_native_string_zero_never_aliases[False-condition]",
         "class_name": "R33-GF1L-native-i2-wt.WORKER_RETURNS.PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1.phase_a.test_gf1l_frozen",
-        "kind": "failure"
+        "message": "TypeError: cannot pickle 'mappingproxy' object"
       },
       {
         "node": "test_native_string_zero_never_aliases[False-target]",
         "class_name": "R33-GF1L-native-i2-wt.WORKER_RETURNS.PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1.phase_a.test_gf1l_frozen",
-        "kind": "failure"
+        "message": "TypeError: cannot pickle 'mappingproxy' object"
       },
       {
         "node": "test_native_string_zero_never_aliases[0.0-condition]",
         "class_name": "R33-GF1L-native-i2-wt.WORKER_RETURNS.PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1.phase_a.test_gf1l_frozen",
-        "kind": "failure"
+        "message": "TypeError: cannot pickle 'mappingproxy' object"
       },
       {
         "node": "test_native_string_zero_never_aliases[0.0-target]",
         "class_name": "R33-GF1L-native-i2-wt.WORKER_RETURNS.PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1.phase_a.test_gf1l_frozen",
-        "kind": "failure"
+        "message": "TypeError: cannot pickle 'mappingproxy' object"
       },
       {
         "node": "test_integer_domain_bool_alias_is_not_equal[condition]",
         "class_name": "R33-GF1L-native-i2-wt.WORKER_RETURNS.PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1.phase_a.test_gf1l_frozen",
-        "kind": "failure"
+        "message": "TypeError: cannot pickle 'mappingproxy' object"
       },
       {
         "node": "test_integer_domain_bool_alias_is_not_equal[target]",
         "class_name": "R33-GF1L-native-i2-wt.WORKER_RETURNS.PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1.phase_a.test_gf1l_frozen",
-        "kind": "failure"
+        "message": "TypeError: cannot pickle 'mappingproxy' object"
       },
       {
         "node": "test_duplicate_or_foreign_native_category[condition]",
         "class_name": "R33-GF1L-native-i2-wt.WORKER_RETURNS.PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1.phase_a.test_gf1l_frozen",
-        "kind": "failure"
+        "message": "TypeError: cannot pickle 'mappingproxy' object"
       },
       {
         "node": "test_duplicate_or_foreign_native_category[target]",
         "class_name": "R33-GF1L-native-i2-wt.WORKER_RETURNS.PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1.phase_a.test_gf1l_frozen",
-        "kind": "failure"
+        "message": "TypeError: cannot pickle 'mappingproxy' object"
       },
       {
         "node": "test_legitimate_source_native_positive_and_order[native]",
         "class_name": "R33-GF1L-native-i2-wt.WORKER_RETURNS.PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1.phase_a.test_gf1l_frozen",
-        "kind": "failure"
+        "message": "TypeError: cannot pickle 'mappingproxy' object"
       },
       {
         "node": "test_legitimate_source_native_positive_and_order[reverse_both]",
         "class_name": "R33-GF1L-native-i2-wt.WORKER_RETURNS.PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1.phase_a.test_gf1l_frozen",
-        "kind": "failure"
+        "message": "TypeError: cannot pickle 'mappingproxy' object"
       },
       {
         "node": "test_semantic_projection_retains_native_python_identity",
         "class_name": "R33-GF1L-native-i2-wt.WORKER_RETURNS.PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1.phase_a.test_gf1l_frozen",
-        "kind": "failure"
+        "message": "TypeError: cannot pickle 'mappingproxy' object"
       }
     ],
     "sha256": "785b9fc7bd446ce5fc47bea0c9658c30df5bbff8c9d899686a837546fae2c7e3"
@@ -195,5 +195,148 @@
     "skipped": 0,
     "failures_by_node": [],
     "sha256": "48cb1398f95c4e90623cb23473af8051dec4a6b968502691e08e2a35bb9383f8"
+  },
+  {
+    "court": "gf1h_postinspection_typed_domains",
+    "tests": 10,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failures_by_node": [],
+    "sha256": "6b8fc8d1bcb402e24819008c82a6c2415c84b8f4d6e3941ae0db7a448ab0973f"
+  },
+  {
+    "court": "gf1k_author12_independent_execution",
+    "tests": 12,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failures_by_node": [],
+    "sha256": "f47632158857910b72ae248d9cc7fd12b4c54a72154a6464547310930dbeafca"
+  },
+  {
+    "court": "gf1k_gf1f100",
+    "tests": 100,
+    "failures": 4,
+    "errors": 0,
+    "skipped": 0,
+    "failures_by_node": [
+      {
+        "node": "test_universe_class_and_derived_fields[0000]",
+        "class_name": "R33-GF1L-native-i2-wt.WORKER_RETURNS.PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1.stage.WORKER_RETURNS.PYAT-R28-GF1F-IMPLEMENTED-NATIVE-CONSUMER-INDEPENDENT-R1.tests.test_gf1f_independent_consumer",
+        "message": "AssertionError: assert 'UNDETERMINED...ELIGIBLE_RISK' == 'UNDETERMINED..._SUPPORT_RISK'\n  \n  - UNDETERMINED_ZERO_SUPPORT_RISK\n  + UNDETERMINED_NO_ELIGIBLE_RISK"
+      },
+      {
+        "node": "test_named_cases[zero_supported_risk]",
+        "class_name": "R33-GF1L-native-i2-wt.WORKER_RETURNS.PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1.stage.WORKER_RETURNS.PYAT-R28-GF1F-IMPLEMENTED-NATIVE-CONSUMER-INDEPENDENT-R1.tests.test_gf1f_independent_consumer",
+        "message": "AssertionError: assert 'UNDETERMINED...ELIGIBLE_RISK' == 'UNDETERMINED..._SUPPORT_RISK'\n  \n  - UNDETERMINED_ZERO_SUPPORT_RISK\n  + UNDETERMINED_NO_ELIGIBLE_RISK"
+      },
+      {
+        "node": "test_missing_suppressed_relation_is_empty_response",
+        "class_name": "R33-GF1L-native-i2-wt.WORKER_RETURNS.PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1.stage.WORKER_RETURNS.PYAT-R28-GF1F-IMPLEMENTED-NATIVE-CONSUMER-INDEPENDENT-R1.tests.test_gf1f_independent_consumer",
+        "message": "AssertionError: assert 'CONSUMER_PRO...TATE_BLOCKING' == 'RESPONSE_INPUTS_VALID_EMPTY'\n  \n  - RESPONSE_INPUTS_VALID_EMPTY\n  + CONSUMER_PRODUCER_TYPED_STATE_BLOCKING"
+      },
+      {
+        "node": "test_cold_process_consumer_replay_bit_identical",
+        "class_name": "R33-GF1L-native-i2-wt.WORKER_RETURNS.PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1.stage.WORKER_RETURNS.PYAT-R28-GF1F-IMPLEMENTED-NATIVE-CONSUMER-INDEPENDENT-R1.tests.test_gf1f_independent_consumer",
+        "message": "AssertionError: assert {'EXACT_PAIR_...LIGIBLE_RISK'} == {'EXACT_PAIR_...SUPPORT_RISK'}\n  \n  Extra items in the right set:\n  'UNDETERMINED_ZERO_SUPPORT_RISK'\n  Use -v to get more diff"
+      }
+    ],
+    "sha256": "9352eddca2cea797af5f8ad525b03823175186c6d9e8f531f9c0796576a4933f"
+  },
+  {
+    "court": "gf1k_gf1g26",
+    "tests": 26,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failures_by_node": [],
+    "sha256": "725e386ab4da87a20ee0d49fa5906665ef29df50453338415edad939f5386079"
+  },
+  {
+    "court": "gf1k_gf1h26",
+    "tests": 26,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failures_by_node": [],
+    "sha256": "42e08ee40c25dfcaa65a3262d54c21c93f181b98f2fc8a2c66bfcc4b0c7acf36"
+  },
+  {
+    "court": "gf1k_gf1i19",
+    "tests": 19,
+    "failures": 2,
+    "errors": 0,
+    "skipped": 0,
+    "failures_by_node": [
+      {
+        "node": "test_named_downstream_consumer_module_is_absent_from_candidate",
+        "class_name": "R33-GF1L-native-i2-wt.WORKER_RETURNS.PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1.stage.WORKER_RETURNS.PYAT-R18-GF1I-INDEPENDENT-GENERIC-PAIR-R1.court.test_gf1i_independent",
+        "message": "AssertionError: unexpectedly present\nassert not True\n +  where True = exists()\n +    where exists = PosixPath('/Users/matthewsmith/Desktop/Rawlsing/R33-GF1L-native-i2-wt/WORKER_RETURNS/PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1/stage/WORKER_RETURNS/PYAT-R18-GF1I-INDEPENDENT-GENERIC-PAIR-R1/court/runtime_root/gf1_pair_support_consumer.py').exists"
+      },
+      {
+        "node": "test_candidate_frozen_44_suite_cannot_be_collected",
+        "class_name": "R33-GF1L-native-i2-wt.WORKER_RETURNS.PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1.stage.WORKER_RETURNS.PYAT-R18-GF1I-INDEPENDENT-GENERIC-PAIR-R1.court.test_gf1i_independent",
+        "message": "AssertionError: expected the missing-consumer import failure\nassert 'gf1_pair_support_consumer' in '\\n==================================== ERRORS ====================================\\n_ ERROR collecting R33-GF1L-nativ...!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\\nno tests collected, 1 error in 0.66s\\n'"
+      }
+    ],
+    "sha256": "d12dde8d9a19ede6bbd77460372a46c73e92a633c1a42f01b4d99ae1c249a65a"
+  },
+  {
+    "court": "gf1k_gf1j_native_two_plus_positive",
+    "tests": 3,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failures_by_node": [],
+    "sha256": "791328ed365e00872275bd3a75c9ae7ee6f853620349d7ba13431d34d7c7fd33"
+  },
+  {
+    "court": "gf1k_gf1l_executable_v2",
+    "tests": 14,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failures_by_node": [],
+    "sha256": "965d1375153092fd56c5c2fcdc3a40f98d8471e8b700c90fed9ae66761e216f9"
+  },
+  {
+    "court": "gf1k_original44",
+    "tests": 44,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failures_by_node": [],
+    "sha256": "a44ddf4e9b7c8e7e8eafcbbaf556592d5508f4bcf93363a25ae2996c0798493e"
+  },
+  {
+    "court": "gf1k_postinspection_typed_domains",
+    "tests": 10,
+    "failures": 4,
+    "errors": 0,
+    "skipped": 0,
+    "failures_by_node": [
+      {
+        "node": "test_type_distinct_categories_never_silently_collapse_or_crash[int_bool-condition]",
+        "class_name": "R33-GF1L-native-i2-wt.WORKER_RETURNS.PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1.postinspection.test_gf1l_typed_domain_conservation",
+        "message": "AssertionError: {'condition_states_with_positive_denominator': [0, False], 'consumer_id': 'GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ON...family': 'GF1_PAIR_SUPPORT_SIGNATURE_RESULT_TEST_ONLY@1.0.0', 'decision_state': 'PAIR_SUPPORT_SIGNATURE_COMPUTED', ...}\nassert 1 == 2"
+      },
+      {
+        "node": "test_type_distinct_categories_never_silently_collapse_or_crash[int_float-condition]",
+        "class_name": "R33-GF1L-native-i2-wt.WORKER_RETURNS.PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1.postinspection.test_gf1l_typed_domain_conservation",
+        "message": "AssertionError: {'condition_states_with_positive_denominator': [0, 0.0], 'consumer_id': 'GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ONLY...family': 'GF1_PAIR_SUPPORT_SIGNATURE_RESULT_TEST_ONLY@1.0.0', 'decision_state': 'PAIR_SUPPORT_SIGNATURE_COMPUTED', ...}\nassert 1 == 2"
+      },
+      {
+        "node": "test_type_distinct_categories_never_silently_collapse_or_crash[string_int-condition]",
+        "class_name": "R33-GF1L-native-i2-wt.WORKER_RETURNS.PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1.postinspection.test_gf1l_typed_domain_conservation",
+        "message": "TypeError: '<' not supported between instances of 'int' and 'str'"
+      },
+      {
+        "node": "test_type_distinct_categories_never_silently_collapse_or_crash[string_int-target]",
+        "class_name": "R33-GF1L-native-i2-wt.WORKER_RETURNS.PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1.postinspection.test_gf1l_typed_domain_conservation",
+        "message": "TypeError: '<' not supported between instances of 'int' and 'str'"
+      }
+    ],
+    "sha256": "a8ab45aa5fae1ce52c858de1110d0d4459b75ae9592394042b25ea802a8faec2"
   }
 ]
