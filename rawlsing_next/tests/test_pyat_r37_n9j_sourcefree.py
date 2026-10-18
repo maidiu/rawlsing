@@ -289,3 +289,72 @@ def test_13_real_independent_cold_replay_and_import_paths():
     assert material["hash"] and material["payload_hash"]
     assert Path(E.__file__).resolve() == NATIVE / "e05_n9_selected_world_adapter.py"
     assert Path(sys.modules["product.nonparent"].__file__).resolve() == NATIVE / "product/nonparent.py"
+
+
+def test_14_prepublication_native_field_is_typed_partial_not_zero():
+    a, q, s, accepted, r = _run(label="TYPED_PARTIAL_PRE_NCA_PUBLICATION")
+    assert r["state"] == "TYPED_PARTIAL_SELECTED_WORLD"
+    assert r["acceptance_state"] == "ACCEPTED_WITH_TYPED_PARTIAL"
+    assert "NATIVE_FIELD_REFUSAL:NOT_PUBLISHED_AT_SELECTED_ASOF" in r["inconsistencies"]
+    reads = r["native_field_readset"]
+    assert len(reads["dependency_readset"]) == 2
+    assert {x["role"] for x in reads["values_read"]} == {GSS}
+    assert any(x["reason"] == "NOT_PUBLISHED_AT_SELECTED_ASOF" for x in reads["refusals"])
+    assert r["pooling"] is False and r["person_exposure"] is False
+
+
+def test_15_effective_publication_and_asof_clocks_cannot_be_collapsed():
+    from dataclasses import replace
+    a = _adapter(structural_revision=True)
+    base = E.standard_request(label="CURRENT_TEST_CLOCK")
+    def serve(valid_at, published_asof):
+        q = replace(base, clock=E.SelectedWorldClock(
+            mode="AS_OF", valid_at=valid_at, published_asof=published_asof))
+        s = a.build_snapshot(q)
+        accept = a.accept(q, s)
+        consumers = [nonparent(a.service, s)["material"],
+                     proposal(a.service, s, PROPOSALS)["material"]]
+        return a.serve(q, accept, s, consumers=consumers)
+    not_published = serve("2027-09-01", "2027-05-31")
+    newly_published = serve("2027-09-01", "2027-06-01")
+    not_effective = serve("2026-12-31", "2027-09-01")
+    assert [(r["structural_values"]["training_access"]["value"],
+             r["structural_values"]["exit_cost"]["value"])
+            for r in (not_published, newly_published, not_effective)] == [
+                (True, 2), (False, 8), (True, 2)]
+    assert not_published["empirical_steps"] == newly_published["empirical_steps"]
+    assert not_published["native_field_readset"] == newly_published["native_field_readset"]
+    assert not_published["selection"]["valid_at"] == newly_published["selection"]["valid_at"]
+    assert not_published["selection"]["published_asof"] != newly_published["selection"]["published_asof"]
+
+
+def test_16_reverse_respondent_target_under_exact_native_denominator():
+    a, q, s, accepted, r = _run()
+    reverse = a.service.possibilities(s, target="A", conditions=(("Y", 1),),
+                                      consumer="N9J_REVERSE_NATIVE")
+    assert reverse["state"] == "PRODUCTIVE_TEST_ONLY"
+    assert len(reverse["steps"]) == 1
+    step = reverse["steps"][0]
+    assert step["denominator"] == 29
+    assert {cell["cell"]: cell["raw_numerator_support"] for cell in step["cells"]} == {
+        "0": 11, "1": 18}
+    assert str(Fraction(*next(cell["raw_probability_exact_fraction"]["$exact_fraction"]
+                              for cell in step["cells"] if cell["cell"] == "1"))) == "18/29"
+
+
+def test_17_native_git_blob_preimages_are_the_exact_imported_modules():
+    source_sha = {
+        "product/service.py": "facf1c86911a8a4c37db112be51d8c7109cd9f3b",
+        "product/nonparent.py": "2181b832d3c4376d4b9428e13f4354f273be8f32",
+        "product/scenario.py": "b7e568166cd277c1ba127374ea1a350d1b3841a2",
+        "product/empirical.py": "475feb9f9aea495c11c40a56b083f0b628c34e15",
+        "product/world.py": "06a74caebda69f7d1baa8719a99138ef57d9c07b",
+        "e05_n9_selected_world_adapter.py": "642381bc033aaeef878624bdce71f9f94708043d",
+        "rawlsing_next/pre553_hq297_n9c_two_field_reader.py": "03eb46efccadd6880cb34b2e2ac609ffc9b16c59",
+        "rawlsing_next/pre553_n9_n10w_progressive_candidate.py": "84d404147547767be8ecd4b6e1541f5fa3a8c8a2",
+    }
+    for relative, expected in source_sha.items():
+        file_path = NATIVE / relative
+        out = subprocess.run(["git", "hash-object", str(file_path)],
+                             capture_output=True, text=True, check=True, cwd=ROOT)
+        assert out.stdout.strip() == expected, relative
