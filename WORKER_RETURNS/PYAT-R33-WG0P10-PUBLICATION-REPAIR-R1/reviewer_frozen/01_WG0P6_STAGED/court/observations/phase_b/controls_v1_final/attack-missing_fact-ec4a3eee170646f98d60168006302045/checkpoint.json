@@ -1,0 +1,104 @@
+{
+  "checkpoint_hash": "e3103f68f7a12ee39312a0b41ef26f25e92a5e0061653723d9c5d3110d26fe2e",
+  "completed_units": {
+    "PRE553BatchUnit@1.0.0|urn:rawlsing:pre553:batch-unit:sha256:030cc8b9461be5ffda3f982a7c4416a807d8f7aa6dcc640769dd164b81b64274|030cc8b9461be5ffda3f982a7c4416a807d8f7aa6dcc640769dd164b81b64274": "caac243fc25c521acc10b2e082b55bdb854921dff8f730680d82eeaf2dcabcbd"
+  },
+  "fact_custody_snapshot": {
+    "facts": {},
+    "hashes": {}
+  },
+  "grant_state": "GRANTED_FIXTURE",
+  "manifest_hash": "bcd255228ef35edcb9b59436b76e1eb78947c07180f2936779572f510981c140",
+  "owner_snapshot": {
+    "epoch": "1b1040db678d3efa9f1f46e63bbf4838",
+    "generation": 0,
+    "grants": {
+      "REL-A-W1": "GRANTED_FIXTURE",
+      "REL-A-W2": "GRANTED_FIXTURE",
+      "REL-B-W2": "WITHDRAWN"
+    },
+    "known_at": "2026-01-01",
+    "owner": "WG0P4_TESTONLY_FIXTURE_OWNER",
+    "scope": "SOURCEFREE_ONLY",
+    "source_digests": {
+      "REL-A-W1": "36460bdf57cd6dc8236b711f49fc030b7730d933ce8e71a3b0ecc15d3a8384a4",
+      "REL-A-W2": "5a29d9a17fd4c98f0626e1a9f3763c2b90c06374a3bfe8a14ddfd957691b45d8",
+      "REL-B-W2": "82845269a0351b4e8b043098150e2f1c89c74bfee312753b2d9a83638c3968ed"
+    },
+    "version": 1
+  },
+  "plan_freeze_hash": "44fd2fe4cd80d5118bdde298c512220575dd18771894ebff8a5b1bc177e6b5ec",
+  "prior_receipts": [
+    {
+      "attempt_index": 1,
+      "detail_hash": null,
+      "execution_performed": true,
+      "executor_ref": {
+        "content_hash": "900602d7ec547dc7c5eafb32f6f708569298615fddb96ca801506116acb27b76",
+        "kind": "EXECUTOR",
+        "object_id": "urn:wg0p4:test:WG0P4_QUERY_V1"
+      },
+      "failure_code": null,
+      "manifest_hash": "bcd255228ef35edcb9b59436b76e1eb78947c07180f2936779572f510981c140",
+      "provenance_refs": [
+        {
+          "content_hash": "cab5734bd77587fd442116bdf2d7648b9035c613164cf671f4915ef142ca6eba",
+          "kind": "C11LogicalRelease",
+          "object_id": "REL-REL-A-W1"
+        },
+        {
+          "content_hash": "900602d7ec547dc7c5eafb32f6f708569298615fddb96ca801506116acb27b76",
+          "kind": "EXECUTOR",
+          "object_id": "urn:wg0p4:test:WG0P4_QUERY_V1"
+        },
+        {
+          "content_hash": "ed038e8e5cb589c1b0da6ab0e2053b53a6cf4f0c0b3e974196f229a88e14ffa2",
+          "kind": "EmpiricalPredicate@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:ed038e8e5cb589c1b0da6ab0e2053b53a6cf4f0c0b3e974196f229a88e14ffa2"
+        },
+        {
+          "content_hash": "5810a0ba0dc4dd63efc7ad9c905775870c077fc3b1acb773f5b22cb305c8482c",
+          "kind": "EmpiricalQuerySpec@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:5810a0ba0dc4dd63efc7ad9c905775870c077fc3b1acb773f5b22cb305c8482c"
+        },
+        {
+          "content_hash": "96c950dc859da65f6c9bc2658d8c7acb651cbf3e155b36d2036ec556aea2a678",
+          "kind": "WG0P4_NATIVE_ITEM",
+          "object_id": "urn:wg0p4:test:native:WG0P-HH-MR-02"
+        },
+        {
+          "content_hash": "74347caa8257f09f7486e485b46c882bd9b0332e53c6ae776bbfc4cee633a665",
+          "kind": "WG0P4_SCIENTIFIC_FRONTIER",
+          "object_id": "urn:wg0p4:frontier:original25"
+        }
+      ],
+      "receipt_hash": "caac243fc25c521acc10b2e082b55bdb854921dff8f730680d82eeaf2dcabcbd",
+      "receipt_ref": {
+        "content_hash": "caac243fc25c521acc10b2e082b55bdb854921dff8f730680d82eeaf2dcabcbd",
+        "kind": "PRE553BatchExecutionReceipt@1.0.0",
+        "object_id": "urn:rawlsing:pre553:batch-receipt:sha256:caac243fc25c521acc10b2e082b55bdb854921dff8f730680d82eeaf2dcabcbd"
+      },
+      "result_refs": [
+        {
+          "content_hash": "80bcc96544eb5bfdd2d4cc9be58659a0b5fa5252291399a2eec5f97f56691c88",
+          "kind": "EmpiricalFact@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:80bcc96544eb5bfdd2d4cc9be58659a0b5fa5252291399a2eec5f97f56691c88"
+        }
+      ],
+      "state": "COMPLETED",
+      "unit_ref": {
+        "content_hash": "030cc8b9461be5ffda3f982a7c4416a807d8f7aa6dcc640769dd164b81b64274",
+        "kind": "PRE553BatchUnit@1.0.0",
+        "object_id": "urn:rawlsing:pre553:batch-unit:sha256:030cc8b9461be5ffda3f982a7c4416a807d8f7aa6dcc640769dd164b81b64274"
+      }
+    }
+  ],
+  "science_root": "74347caa8257f09f7486e485b46c882bd9b0332e53c6ae776bbfc4cee633a665",
+  "signature": "272c54a19d533744c80e1f4a50264bef4437eb784938c08d2605b5ac7cf9cc22",
+  "source_editions": {
+    "REL-A-W1": "SRC-EDITION-REL-A-W1-W1-v1",
+    "REL-A-W2": "SRC-EDITION-REL-A-W2-W2-v1",
+    "REL-B-W2": "SRC-EDITION-REL-B-W2-W2-v1"
+  },
+  "source_material": "{\"REL-A-W1\":{\"authority_refs\":[{\"authority_content_hash\":\"dcac087065bcfa60c5597f4cf79c2b87850a073fe308458f6b4e99d590a0df1b\",\"authority_id\":\"WG0P3-AUTH-source-REL-A-W1\",\"authority_version\":\"1.0.0\"},{\"authority_content_hash\":\"aa6234006f0dd317398c6cc971c5afa4840febb3513cd5ce076016d9d95f5f48\",\"authority_id\":\"WG0P3-AUTH-routing-REL-A-W1\",\"authority_version\":\"1.0.0\"},{\"authority_content_hash\":\"769eebf1ce2adede524501028f1fa8cae412b68e9a5f5218fbc64259c60a34eb\",\"authority_id\":\"WG0P3-AUTH-coord-REL-A-W1\",\"authority_version\":\"1.0.0\"},{\"authority_content_hash\":\"042dbd7b22c6d18c5a2814a556d12052810d590fefc8045c2ebde1932753adc4\",\"authority_id\":\"WG0P3-AUTH-replay-REL-A-W1\",\"authority_version\":\"1.0.0\"},{\"authority_content_hash\":\"da3a454d37b9dd4f434e04bbf84425020985f58045d130e903441af3a57d82e8\",\"authority_id\":\"WG0P3-AUTH-wg0p3-REL-A-W1\",\"authority_version\":\"1.0.0\"}],\"edition\":\"SRC-EDITION-REL-A-W1-W1-v1\",\"qrefs\":{\"Q-HH-edu\":{\"content_hash\":\"d0061dec4aa42a7f5f4595fbe1a19c082bc49542cc5bc8958b14499f4d8ad618\",\"kind\":\"QUESTION_NATIVE\",\"object_id\":\"urn:wg0p3:test:question_native:aw1-Q-HH-edu\"},\"Q-HH-food\":{\"content_hash\":\"e153e8e33fa0a15997510703b8a1cbac5e7ea6980eabbde247c57d2a034e9249\",\"kind\":\"QUESTION_NATIVE\",\"object_id\":\"urn:wg0p3:test:question_native:aw1-Q-HH-food\"},\"Q-HH-health\":{\"content_hash\":\"4e6ce5826ca3feabc362c438cdd178bd174b5e8255ad0eba4513dbf3503dbbab\",\"kind\":\"QUESTION_NATIVE\",\"object_id\":\"urn:wg0p3:test:question_native:aw1-Q-HH-health\"},\"Q-HH-none\":{\"content_hash\":\"7ce9d83fbdf55d1416b24073ce6dfa58a0b512926c3a37064e8abbb9d00fb884\",\"kind\":\"QUESTION_NATIVE\",\"object_id\":\"urn:wg0p3:test:question_native:aw1-Q-HH-none\"},\"Q-HH-rent\":{\"content_hash\":\"e249bf42d924ddcab56dbef02678e6437a0f074fbbc73aaf87d138dbb29f00ec\",\"kind\":\"QUESTION_NATIVE\",\"object_id\":\"urn:wg0p3:test:question_native:aw1-Q-HH-rent\"},\"Q-ORD-A\":{\"content_hash\":\"fdc42196ae7cd43460288021e6d0ac32845df0c918d49a2c87bb5a918298e163\",\"kind\":\"QUESTION_NATIVE\",\"object_id\":\"urn:wg0p3:test:question_native:aw1-Q-ORD-A\"},\"Q-RT-C\":{\"content_hash\":\"e7ca4462f7a1569d31ab0370fabafa3dc1b13cd7789de5156a5916b29fffdc0a\",\"kind\":\"QUESTION_NATIVE\",\"object_id\":\"urn:wg0p3:test:question_native:aw1-Q-RT-C\"}},\"records_hash\":\"45f7e27b92ca893a37a3d12c9ee693a04cadd2e71b83e8dca7cdd7f98c2e2da8\",\"release\":{\"content_hash\":\"cab5734bd77587fd442116bdf2d7648b9035c613164cf671f4915ef142ca6eba\",\"kind\":\"C11LogicalRelease\",\"object_id\":\"REL-REL-A-W1\"},\"risk_refs\":{\"R_HH\":{\"content_hash\":\"fc48b81405f2bbf6c594a65570fb46053d90e774d7195e73bacf0f49522ed8ea\",\"kind\":\"RISK_SET\",\"object_id\":\"urn:wg0p3:test:risk_set:REL-A-W1-R_HH\"},\"R_JOINT_ORD_RT\":{\"content_hash\":\"ab244694f4478520b10cc94fd123c9ca5d32d74eb9267f4f2ff0835a00be32f9\",\"kind\":\"RISK_SET\",\"object_id\":\"urn:wg0p3:test:risk_set:REL-A-W1-R_JOINT_ORD_RT\"},\"R_ORD\":{\"content_hash\":\"cacd7494e81100d4057e8affb22bc29073a6eaead258af24cf86faa738969dd9\",\"kind\":\"RISK_SET\",\"object_id\":\"urn:wg0p3:test:risk_set:REL-A-W1-R_ORD\"},\"R_RT\":{\"content_hash\":\"f634fb0143106aad1539a7af4d489d63054d2a99ba97207cc6e1f8d1b923c246\",\"kind\":\"RISK_SET\",\"object_id\":\"urn:wg0p3:test:risk_set:REL-A-W1-R_RT\"}},\"source_artifact\":{\"content_hash\":\"1c7f1339ef1e7844b1eb8c93bba678f4e00cb6eb76c5698e3806ca8812b2c90f\",\"kind\":\"SOURCE_ARTIFACT\",\"object_id\":\"SOURCE-WG0P3-REL-A-W1\"},\"source_view_binding\":{\"manifest_hash\":\"2d6fa2940c10a5b64b59e2eb22ba3447dbb9be44e176366fde9898c7e77efd3c\",\"release\":{\"content_hash\":\"cab5734bd77587fd442116bdf2d7648b9035c613164cf671f4915ef142ca6eba\",\"kind\":\"C11LogicalRelease\",\"object_id\":\"REL-REL-A-W1\"},\"replay_manifest\":{\"content_hash\":\"af8f6bc5157419949b53c636e1fc5e264a38aa392f6b89877ed8cb19ff459a91\",\"kind\":\"C11Internal:ReplayManifest\",\"object_id\":\"urn:rawlsing:pre553:c11:ReplayManifest:sha256:af8f6bc5157419949b53c636e1fc5e264a38aa392f6b89877ed8cb19ff459a91\"},\"source_artifact\":{\"content_hash\":\"1c7f1339ef1e7844b1eb8c93bba678f4e00cb6eb76c5698e3806ca8812b2c90f\",\"kind\":\"SOURCE_ARTIFACT\",\"object_id\":\"SOURCE-WG0P3-REL-A-W1\"},\"version\":\"SOURCE_VIEW_TO_C11_ARTIFACT@1\",\"view_source_snapshot\":{\"content_hash\":\"1c7f1339ef1e7844b1eb8c93bba678f4e00cb6eb76c5698e3806ca8812b2c90f\",\"kind\":\"SOURCE_SNAPSHOT\",\"object_id\":\"urn:wg0p3:test:source-snapshot:REL-A-W1\"}},\"tag\":\"REL-A-W1\",\"universe\":{\"content_hash\":\"506ad5f8f472313797d2c1460bebcd1e350c3cbcbea1aa30c3698b38edaaba1f\",\"kind\":\"EmpiricalUniverse@1.0.0\",\"object_id\":\"urn:rawlsing:pre553:EmpiricalUniverse:sha256:506ad5f8f472313797d2c1460bebcd1e350c3cbcbea1aa30c3698b38edaaba1f\"},\"wave\":\"W1\"},\"REL-A-W2\":{\"authority_refs\":[{\"authority_content_hash\":\"93d5101c55d5e39a336a59cabdcd7da98a2f85f2f8c9ed728c542a8164a495fc\",\"authority_id\":\"WG0P3-AUTH-source-REL-A-W2\",\"authority_version\":\"1.0.0\"},{\"authority_content_hash\":\"0a02ca98825ebf387bf83e7bf9c345a8157d3de32b8c0b77b22b5946616a3b75\",\"authority_id\":\"WG0P3-AUTH-routing-REL-A-W2\",\"authority_version\":\"1.0.0\"},{\"authority_content_hash\":\"62b9b53d0acb8908fffe86c1706b9425e2bfa36b9abe63b8b1d080594872d763\",\"authority_id\":\"WG0P3-AUTH-coord-REL-A-W2\",\"authority_version\":\"1.0.0\"},{\"authority_content_hash\":\"015cd8da9bfc0aa898aafd22da1a8edb54a16a395096e639c84cce102e94b699\",\"authority_id\":\"WG0P3-AUTH-replay-REL-A-W2\",\"authority_version\":\"1.0.0\"},{\"authority_content_hash\":\"ecb195b8fd4f9b49012673b46c64d347a87179ff6f3260a33e1d3bcdeb8ee9f5\",\"authority_id\":\"WG0P3-AUTH-wg0p3-REL-A-W2\",\"authority_version\":\"1.0.0\"}],\"edition\":\"SRC-EDITION-REL-A-W2-W2-v1\",\"qrefs\":{\"Q-ORD-A\":{\"content_hash\":\"b92332ea3cb6d4c03df088b693592005b6d6f867946db74f4ca806c88355ba97\",\"kind\":\"QUESTION_NATIVE\",\"object_id\":\"urn:wg0p3:test:question_native:aw2-Q-ORD-A\"}},\"records_hash\":\"15b98b9e6c8c6f126a945fb2528de2886c2a7b6d0e7f37af0ff933cad5f11e42\",\"release\":{\"content_hash\":\"df342195d6f7f977ecd6c30b3a1a5ca68c5ae421af8bcec57ec904b713751dba\",\"kind\":\"C11LogicalRelease\",\"object_id\":\"REL-REL-A-W2\"},\"risk_refs\":{\"R_ORD2\":{\"content_hash\":\"c739dcd89206e11b45dbb2ef6ff21ad2c99e87f9076b982e1f9e8b3a228a2e8b\",\"kind\":\"RISK_SET\",\"object_id\":\"urn:wg0p3:test:risk_set:REL-A-W2-R_ORD2\"}},\"source_artifact\":{\"content_hash\":\"df95a46e77b23e64fc7727bdfbd7aba49529da1a68c565fc2e105e602c842734\",\"kind\":\"SOURCE_ARTIFACT\",\"object_id\":\"SOURCE-WG0P3-REL-A-W2\"},\"source_view_binding\":{\"manifest_hash\":\"c22c08fb76808424673814d331952219f2d3622eae02def018c980d1f85f4043\",\"release\":{\"content_hash\":\"df342195d6f7f977ecd6c30b3a1a5ca68c5ae421af8bcec57ec904b713751dba\",\"kind\":\"C11LogicalRelease\",\"object_id\":\"REL-REL-A-W2\"},\"replay_manifest\":{\"content_hash\":\"3ecadf35e9595c72de90a39a113546319c1d1f8a3e48b9be6979eca199192209\",\"kind\":\"C11Internal:ReplayManifest\",\"object_id\":\"urn:rawlsing:pre553:c11:ReplayManifest:sha256:3ecadf35e9595c72de90a39a113546319c1d1f8a3e48b9be6979eca199192209\"},\"source_artifact\":{\"content_hash\":\"df95a46e77b23e64fc7727bdfbd7aba49529da1a68c565fc2e105e602c842734\",\"kind\":\"SOURCE_ARTIFACT\",\"object_id\":\"SOURCE-WG0P3-REL-A-W2\"},\"version\":\"SOURCE_VIEW_TO_C11_ARTIFACT@1\",\"view_source_snapshot\":{\"content_hash\":\"df95a46e77b23e64fc7727bdfbd7aba49529da1a68c565fc2e105e602c842734\",\"kind\":\"SOURCE_SNAPSHOT\",\"object_id\":\"urn:wg0p3:test:source-snapshot:REL-A-W2\"}},\"tag\":\"REL-A-W2\",\"universe\":{\"content_hash\":\"3724433d64b96c40cca3b2b821bbd62ef883bba71add3b179edfc13e96cbc912\",\"kind\":\"EmpiricalUniverse@1.0.0\",\"object_id\":\"urn:rawlsing:pre553:EmpiricalUniverse:sha256:3724433d64b96c40cca3b2b821bbd62ef883bba71add3b179edfc13e96cbc912\"},\"wave\":\"W2\"},\"REL-B-W2\":{\"authority_refs\":[{\"authority_content_hash\":\"56dc56ee4efd66b43f92d1f32af903e8855c2d0fb567bde710b736ed815c620e\",\"authority_id\":\"WG0P3-AUTH-source-REL-B-W2\",\"authority_version\":\"1.0.0\"},{\"authority_content_hash\":\"5d4d8808334f1a384f0724751f1cd166724e3f938a2186f85733fcd95efcfa3c\",\"authority_id\":\"WG0P3-AUTH-routing-REL-B-W2\",\"authority_version\":\"1.0.0\"},{\"authority_content_hash\":\"a4d25721e18a28430355c0f65ca360a4139e88de9efcd67557c8c13f2d2c2b97\",\"authority_id\":\"WG0P3-AUTH-coord-REL-B-W2\",\"authority_version\":\"1.0.0\"},{\"authority_content_hash\":\"83f59ca9b2310188c7f30cd73123dadd7cb450be2f2b8c87ef184607e114a45c\",\"authority_id\":\"WG0P3-AUTH-replay-REL-B-W2\",\"authority_version\":\"1.0.0\"},{\"authority_content_hash\":\"c4eddaf1030070f164bc37556f8da2046c93eea26b600f56ae95083945a69d17\",\"authority_id\":\"WG0P3-AUTH-wg0p3-REL-B-W2\",\"authority_version\":\"1.0.0\"}],\"edition\":\"SRC-EDITION-REL-B-W2-W2-v1\",\"qrefs\":{\"Q-ORD-A\":{\"content_hash\":\"4502fa0ec70e3db81d3e9854bb76e2d31ab74b3153bec8f670d394ef9fb9d048\",\"kind\":\"QUESTION_NATIVE\",\"object_id\":\"urn:wg0p3:test:question_native:bw2-Q-ORD-A\"}},\"records_hash\":\"69717cff6efaeab574148d5941d2771df30b5ab8a58ba6f5ec6a60fea49e720e\",\"release\":{\"content_hash\":\"d133fe16d1ef8b29b174292c7c2675047d059379c7b67e35c6fab8a2f4321547\",\"kind\":\"C11LogicalRelease\",\"object_id\":\"REL-REL-B-W2\"},\"risk_refs\":{\"R_ORDB\":{\"content_hash\":\"f1683a291c61d9879d2915debdd58a81febf0d508cd4382da37b05aeddb60d56\",\"kind\":\"RISK_SET\",\"object_id\":\"urn:wg0p3:test:risk_set:REL-B-W2-R_ORDB\"}},\"source_artifact\":{\"content_hash\":\"26f50dda51e05a8fca707b0539333b154214c8ebdf2024fe33ab3d5bc238bfc4\",\"kind\":\"SOURCE_ARTIFACT\",\"object_id\":\"SOURCE-WG0P3-REL-B-W2\"},\"source_view_binding\":{\"manifest_hash\":\"aa5fe0ca6d6e72e996fef7cc45f81f807d0c5710b5a4a85ba380b2ea09c980d0\",\"release\":{\"content_hash\":\"d133fe16d1ef8b29b174292c7c2675047d059379c7b67e35c6fab8a2f4321547\",\"kind\":\"C11LogicalRelease\",\"object_id\":\"REL-REL-B-W2\"},\"replay_manifest\":{\"content_hash\":\"aa8673e1436aabd70d87782aebaca39aec808cc9f5d3dcfda2fb18b4a381f8c3\",\"kind\":\"C11Internal:ReplayManifest\",\"object_id\":\"urn:rawlsing:pre553:c11:ReplayManifest:sha256:aa8673e1436aabd70d87782aebaca39aec808cc9f5d3dcfda2fb18b4a381f8c3\"},\"source_artifact\":{\"content_hash\":\"26f50dda51e05a8fca707b0539333b154214c8ebdf2024fe33ab3d5bc238bfc4\",\"kind\":\"SOURCE_ARTIFACT\",\"object_id\":\"SOURCE-WG0P3-REL-B-W2\"},\"version\":\"SOURCE_VIEW_TO_C11_ARTIFACT@1\",\"view_source_snapshot\":{\"content_hash\":\"26f50dda51e05a8fca707b0539333b154214c8ebdf2024fe33ab3d5bc238bfc4\",\"kind\":\"SOURCE_SNAPSHOT\",\"object_id\":\"urn:wg0p3:test:source-snapshot:REL-B-W2\"}},\"tag\":\"REL-B-W2\",\"universe\":{\"content_hash\":\"3549cbdfb726d5c67fef9f2352750a87de9a8882a0358a5ad6e3ccd08ed98ef4\",\"kind\":\"EmpiricalUniverse@1.0.0\",\"object_id\":\"urn:rawlsing:pre553:EmpiricalUniverse:sha256:3549cbdfb726d5c67fef9f2352750a87de9a8882a0358a5ad6e3ccd08ed98ef4\"},\"wave\":\"W2\"}}"
+}

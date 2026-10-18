@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="18" skipped="0" tests="36" time="109.434" timestamp="2026-10-17T13:09:54.602515-04:00" hostname="Matthews-MBP.lan"><testcase classname="tests.test_authority_body_delta_court" name="test_phase_a_oracle_self_consistency" time="0.001" /><testcase classname="tests.test_authority_body_delta_court" name="test_original_wg0o_oracle_is_preserved_byte_for_byte" time="0.001" /><testcase classname="tests.test_authority_body_delta_court" name="test_negative_authority_body_is_typed_refused_before_I03[authority_body_integrity/B1_semantic_fingerprint_same_triple]" time="5.463"><failure message="AssertionError: B1_semantic_fingerprint_same_triple served a supported original fact&#10;assert True is False">court = &lt;authority_body_adapter_v1.AuthorityBodyCourt object at 0x10be17090&gt;
+control = {'case': 'B1_semantic_fingerprint_same_triple', 'deeper_semantics': False, 'expected': {'allowed_exception_families': ...cted_new_I03_calls': 0, 'expected_served_supported_original_fact': False, ...}, 'expected_state': 'TYPED_REFUSAL', ...}
+
+    @pytest.mark.parametrize("control", NEG, ids=lambda c: c["group"] + "/" + c["case"])
+    def test_negative_authority_body_is_typed_refused_before_I03(court, control):
+        e = court.execute_case(control["group"], control["case"])
+        exp = control["expected"]
+        assert e["attempted"] is True
+        assert e["raw_path"], "raw receipt must be persisted"
+        assert e["physical_modules"], "native owner modules must be physically verified"
+&gt;       assert e["served_supported_original_fact"] is exp["expected_served_supported_original_fact"], (
+            control["case"] + " served a supported original fact")
+E       AssertionError: B1_semantic_fingerprint_same_triple served a supported original fact
+E       assert True is False
+
+WORKER_RETURNS/PYAT-R29-WG0Q-INDEPENDENT-AUTHORITY-BODY-DELTA-R1/01_WG0P6_REVIEWER/tests/test_authority_body_delta_court.py:74: AssertionError</failure></testcase><testcase classname="tests.test_authority_body_delta_court" name="test_negative_authority_body_is_typed_refused_before_I03[authority_body_integrity/B2_parent_authority_refs_same_triple]" time="5.080"><failure message="AssertionError: B2_parent_authority_refs_same_triple served a supported original fact&#10;assert True is False">court = &lt;authority_body_adapter_v1.AuthorityBodyCourt object at 0x10be17090&gt;
+control = {'case': 'B2_parent_authority_refs_same_triple', 'deeper_semantics': False, 'expected': {'allowed_exception_families':...cted_new_I03_calls': 0, 'expected_served_supported_original_fact': False, ...}, 'expected_state': 'TYPED_REFUSAL', ...}
+
+    @pytest.mark.parametrize("control", NEG, ids=lambda c: c["group"] + "/" + c["case"])
+    def test_negative_authority_body_is_typed_refused_before_I03(court, control):
+        e = court.execute_case(control["group"], control["case"])
+        exp = control["expected"]
+        assert e["attempted"] is True
+        assert e["raw_path"], "raw receipt must be persisted"
+        assert e["physical_modules"], "native owner modules must be physically verified"
+&gt;       assert e["served_supported_original_fact"] is exp["expected_served_supported_original_fact"], (
+            control["case"] + " served a supported original fact")
+E       AssertionError: B2_parent_authority_refs_same_triple served a supported original fact
+E       assert True is False
+
+WORKER_RETURNS/PYAT-R29-WG0Q-INDEPENDENT-AUTHORITY-BODY-DELTA-R1/01_WG0P6_REVIEWER/tests/test_authority_body_delta_court.py:74: AssertionError</failure></testcase><testcase classname="tests.test_authority_body_delta_court" name="test_negative_authority_body_is_typed_refused_before_I03[authority_body_integrity/B3_replay_root_same_triple]" time="5.618"><failure message="AssertionError: B3_replay_root_same_triple served a supported original fact&#10;assert True is False">court = &lt;authority_body_adapter_v1.AuthorityBodyCourt object at 0x10be17090&gt;
+control = {'case': 'B3_replay_root_same_triple', 'deeper_semantics': False, 'expected': {'allowed_exception_families': ['Identit...cted_new_I03_calls': 0, 'expected_served_supported_original_fact': False, ...}, 'expected_state': 'TYPED_REFUSAL', ...}
+
+    @pytest.mark.parametrize("control", NEG, ids=lambda c: c["group"] + "/" + c["case"])
+    def test_negative_authority_body_is_typed_refused_before_I03(court, control):
+        e = court.execute_case(control["group"], control["case"])
+        exp = control["expected"]
+        assert e["attempted"] is True
+        assert e["raw_path"], "raw receipt must be persisted"
+        assert e["physical_modules"], "native owner modules must be physically verified"
+&gt;       assert e["served_supported_original_fact"] is exp["expected_served_supported_original_fact"], (
+            control["case"] + " served a supported original fact")
+E       AssertionError: B3_replay_root_same_triple served a supported original fact
+E       assert True is False
+
+WORKER_RETURNS/PYAT-R29-WG0Q-INDEPENDENT-AUTHORITY-BODY-DELTA-R1/01_WG0P6_REVIEWER/tests/test_authority_body_delta_court.py:74: AssertionError</failure></testcase><testcase classname="tests.test_authority_body_delta_court" name="test_negative_authority_body_is_typed_refused_before_I03[authority_body_integrity/B4_governed_family_removed]" time="1.192"><failure message="AssertionError: B4_governed_family_removed: expected zero I03 calls before refusal, got 1 after KeyError: 'complete_cell_semantic_projection'&#10;assert 1 == 0">court = &lt;authority_body_adapter_v1.AuthorityBodyCourt object at 0x10be17090&gt;
+control = {'case': 'B4_governed_family_removed', 'deeper_semantics': False, 'expected': {'allowed_exception_families': ['Identit...cted_new_I03_calls': 0, 'expected_served_supported_original_fact': False, ...}, 'expected_state': 'TYPED_REFUSAL', ...}
+
+    @pytest.mark.parametrize("control", NEG, ids=lambda c: c["group"] + "/" + c["case"])
+    def test_negative_authority_body_is_typed_refused_before_I03(court, control):
+        e = court.execute_case(control["group"], control["case"])
+        exp = control["expected"]
+        assert e["attempted"] is True
+        assert e["raw_path"], "raw receipt must be persisted"
+        assert e["physical_modules"], "native owner modules must be physically verified"
+        assert e["served_supported_original_fact"] is exp["expected_served_supported_original_fact"], (
+            control["case"] + " served a supported original fact")
+&gt;       assert e["new_I03_calls"] == exp["expected_new_I03_calls"], (
+            f"{control['case']}: expected zero I03 calls before refusal, got "
+            f"{e['new_I03_calls']} after {e['exception_type']}: {e['exception_reason']}")
+E       AssertionError: B4_governed_family_removed: expected zero I03 calls before refusal, got 1 after KeyError: 'complete_cell_semantic_projection'
+E       assert 1 == 0
+
+WORKER_RETURNS/PYAT-R29-WG0Q-INDEPENDENT-AUTHORITY-BODY-DELTA-R1/01_WG0P6_REVIEWER/tests/test_authority_body_delta_court.py:76: AssertionError</failure></testcase><testcase classname="tests.test_authority_body_delta_court" name="test_negative_authority_body_is_typed_refused_before_I03[authority_body_integrity/B5_false_authority_kind]" time="1.315"><failure message="AssertionError: B5_false_authority_kind: expected zero I03 calls before refusal, got 1 after KeyError: 'complete_cell_semantic_projection'&#10;assert 1 == 0">court = &lt;authority_body_adapter_v1.AuthorityBodyCourt object at 0x10be17090&gt;
+control = {'case': 'B5_false_authority_kind', 'deeper_semantics': False, 'expected': {'allowed_exception_families': ['IdentityEr...cted_new_I03_calls': 0, 'expected_served_supported_original_fact': False, ...}, 'expected_state': 'TYPED_REFUSAL', ...}
+
+    @pytest.mark.parametrize("control", NEG, ids=lambda c: c["group"] + "/" + c["case"])
+    def test_negative_authority_body_is_typed_refused_before_I03(court, control):
+        e = court.execute_case(control["group"], control["case"])
+        exp = control["expected"]
+        assert e["attempted"] is True
+        assert e["raw_path"], "raw receipt must be persisted"
+        assert e["physical_modules"], "native owner modules must be physically verified"
+        assert e["served_supported_original_fact"] is exp["expected_served_supported_original_fact"], (
+            control["case"] + " served a supported original fact")
+&gt;       assert e["new_I03_calls"] == exp["expected_new_I03_calls"], (
+            f"{control['case']}: expected zero I03 calls before refusal, got "
+            f"{e['new_I03_calls']} after {e['exception_type']}: {e['exception_reason']}")
+E       AssertionError: B5_false_authority_kind: expected zero I03 calls before refusal, got 1 after KeyError: 'complete_cell_semantic_projection'
+E       assert 1 == 0
+
+WORKER_RETURNS/PYAT-R29-WG0Q-INDEPENDENT-AUTHORITY-BODY-DELTA-R1/01_WG0P6_REVIEWER/tests/test_authority_body_delta_court.py:76: AssertionError</failure></testcase><testcase classname="tests.test_authority_body_delta_court" name="test_negative_authority_body_is_typed_refused_before_I03[authority_body_integrity/B6_negative_limit_added]" time="5.478"><failure message="AssertionError: B6_negative_limit_added served a supported original fact&#10;assert True is False">court = &lt;authority_body_adapter_v1.AuthorityBodyCourt object at 0x10be17090&gt;
+control = {'case': 'B6_negative_limit_added', 'deeper_semantics': False, 'expected': {'allowed_exception_families': ['IdentityEr...cted_new_I03_calls': 0, 'expected_served_supported_original_fact': False, ...}, 'expected_state': 'TYPED_REFUSAL', ...}
+
+    @pytest.mark.parametrize("control", NEG, ids=lambda c: c["group"] + "/" + c["case"])
+    def test_negative_authority_body_is_typed_refused_before_I03(court, control):
+        e = court.execute_case(control["group"], control["case"])
+        exp = control["expected"]
+        assert e["attempted"] is True
+        assert e["raw_path"], "raw receipt must be persisted"
+        assert e["physical_modules"], "native owner modules must be physically verified"
+&gt;       assert e["served_supported_original_fact"] is exp["expected_served_supported_original_fact"], (
+            control["case"] + " served a supported original fact")
+E       AssertionError: B6_negative_limit_added served a supported original fact
+E       assert True is False
+
+WORKER_RETURNS/PYAT-R29-WG0Q-INDEPENDENT-AUTHORITY-BODY-DELTA-R1/01_WG0P6_REVIEWER/tests/test_authority_body_delta_court.py:74: AssertionError</failure></testcase><testcase classname="tests.test_authority_body_delta_court" name="test_negative_authority_body_is_typed_refused_before_I03[authority_body_integrity/B7_deny_state_same_triple]" time="1.316"><failure message="AssertionError: B7_deny_state_same_triple: expected zero I03 calls before refusal, got 1 after KeyError: 'complete_cell_semantic_projection'&#10;assert 1 == 0">court = &lt;authority_body_adapter_v1.AuthorityBodyCourt object at 0x10be17090&gt;
+control = {'case': 'B7_deny_state_same_triple', 'deeper_semantics': False, 'expected': {'allowed_exception_families': ['Identity...cted_new_I03_calls': 0, 'expected_served_supported_original_fact': False, ...}, 'expected_state': 'TYPED_REFUSAL', ...}
+
+    @pytest.mark.parametrize("control", NEG, ids=lambda c: c["group"] + "/" + c["case"])
+    def test_negative_authority_body_is_typed_refused_before_I03(court, control):
+        e = court.execute_case(control["group"], control["case"])
+        exp = control["expected"]
+        assert e["attempted"] is True
+        assert e["raw_path"], "raw receipt must be persisted"
+        assert e["physical_modules"], "native owner modules must be physically verified"
+        assert e["served_supported_original_fact"] is exp["expected_served_supported_original_fact"], (
+            control["case"] + " served a supported original fact")
+&gt;       assert e["new_I03_calls"] == exp["expected_new_I03_calls"], (
+            f"{control['case']}: expected zero I03 calls before refusal, got "
+            f"{e['new_I03_calls']} after {e['exception_type']}: {e['exception_reason']}")
+E       AssertionError: B7_deny_state_same_triple: expected zero I03 calls before refusal, got 1 after KeyError: 'complete_cell_semantic_projection'
+E       assert 1 == 0
+
+WORKER_RETURNS/PYAT-R29-WG0Q-INDEPENDENT-AUTHORITY-BODY-DELTA-R1/01_WG0P6_REVIEWER/tests/test_authority_body_delta_court.py:76: AssertionError</failure></testcase><testcase classname="tests.test_authority_body_delta_court" name="test_negative_authority_body_is_typed_refused_before_I03[authority_body_integrity/B8_false_content_hash_claim]" time="0.425" /><testcase classname="tests.test_authority_body_delta_court" name="test_negative_authority_body_is_typed_refused_before_I03[authority_body_integrity/B9_foreign_scope_same_triple]" time="1.226"><failure message="AssertionError: B9_foreign_scope_same_triple: expected zero I03 calls before refusal, got 1 after KeyError: 'complete_cell_semantic_projection'&#10;assert 1 == 0">court = &lt;authority_body_adapter_v1.AuthorityBodyCourt object at 0x10be17090&gt;
+control = {'case': 'B9_foreign_scope_same_triple', 'deeper_semantics': False, 'expected': {'allowed_exception_families': ['Ident...cted_new_I03_calls': 0, 'expected_served_supported_original_fact': False, ...}, 'expected_state': 'TYPED_REFUSAL', ...}
+
+    @pytest.mark.parametrize("control", NEG, ids=lambda c: c["group"] + "/" + c["case"])
+    def test_negative_authority_body_is_typed_refused_before_I03(court, control):
+        e = court.execute_case(control["group"], control["case"])
+        exp = control["expected"]
+        assert e["attempted"] is True
+        assert e["raw_path"], "raw receipt must be persisted"
+        assert e["physical_modules"], "native owner modules must be physically verified"
+        assert e["served_supported_original_fact"] is exp["expected_served_supported_original_fact"], (
+            control["case"] + " served a supported original fact")
+&gt;       assert e["new_I03_calls"] == exp["expected_new_I03_calls"], (
+            f"{control['case']}: expected zero I03 calls before refusal, got "
+            f"{e['new_I03_calls']} after {e['exception_type']}: {e['exception_reason']}")
+E       AssertionError: B9_foreign_scope_same_triple: expected zero I03 calls before refusal, got 1 after KeyError: 'complete_cell_semantic_projection'
+E       assert 1 == 0
+
+WORKER_RETURNS/PYAT-R29-WG0Q-INDEPENDENT-AUTHORITY-BODY-DELTA-R1/01_WG0P6_REVIEWER/tests/test_authority_body_delta_court.py:76: AssertionError</failure></testcase><testcase classname="tests.test_authority_body_delta_court" name="test_negative_authority_body_is_typed_refused_before_I03[authority_body_integrity/B10_no_permitted_operation]" time="1.279"><failure message="AssertionError: B10_no_permitted_operation: expected zero I03 calls before refusal, got 1 after KeyError: 'complete_cell_semantic_projection'&#10;assert 1 == 0">court = &lt;authority_body_adapter_v1.AuthorityBodyCourt object at 0x10be17090&gt;
+control = {'case': 'B10_no_permitted_operation', 'deeper_semantics': False, 'expected': {'allowed_exception_families': ['Identit...cted_new_I03_calls': 0, 'expected_served_supported_original_fact': False, ...}, 'expected_state': 'TYPED_REFUSAL', ...}
+
+    @pytest.mark.parametrize("control", NEG, ids=lambda c: c["group"] + "/" + c["case"])
+    def test_negative_authority_body_is_typed_refused_before_I03(court, control):
+        e = court.execute_case(control["group"], control["case"])
+        exp = control["expected"]
+        assert e["attempted"] is True
+        assert e["raw_path"], "raw receipt must be persisted"
+        assert e["physical_modules"], "native owner modules must be physically verified"
+        assert e["served_supported_original_fact"] is exp["expected_served_supported_original_fact"], (
+            control["case"] + " served a supported original fact")
+&gt;       assert e["new_I03_calls"] == exp["expected_new_I03_calls"], (
+            f"{control['case']}: expected zero I03 calls before refusal, got "
+            f"{e['new_I03_calls']} after {e['exception_type']}: {e['exception_reason']}")
+E       AssertionError: B10_no_permitted_operation: expected zero I03 calls before refusal, got 1 after KeyError: 'complete_cell_semantic_projection'
+E       assert 1 == 0
+
+WORKER_RETURNS/PYAT-R29-WG0Q-INDEPENDENT-AUTHORITY-BODY-DELTA-R1/01_WG0P6_REVIEWER/tests/test_authority_body_delta_court.py:76: AssertionError</failure></testcase><testcase classname="tests.test_authority_body_delta_court" name="test_negative_authority_body_is_typed_refused_before_I03[authority_body_integrity/B11_foreign_operation_same_triple]" time="5.608"><failure message="AssertionError: B11_foreign_operation_same_triple served a supported original fact&#10;assert True is False">court = &lt;authority_body_adapter_v1.AuthorityBodyCourt object at 0x10be17090&gt;
+control = {'case': 'B11_foreign_operation_same_triple', 'deeper_semantics': False, 'expected': {'allowed_exception_families': ['...cted_new_I03_calls': 0, 'expected_served_supported_original_fact': False, ...}, 'expected_state': 'TYPED_REFUSAL', ...}
+
+    @pytest.mark.parametrize("control", NEG, ids=lambda c: c["group"] + "/" + c["case"])
+    def test_negative_authority_body_is_typed_refused_before_I03(court, control):
+        e = court.execute_case(control["group"], control["case"])
+        exp = control["expected"]
+        assert e["attempted"] is True
+        assert e["raw_path"], "raw receipt must be persisted"
+        assert e["physical_modules"], "native owner modules must be physically verified"
+&gt;       assert e["served_supported_original_fact"] is exp["expected_served_supported_original_fact"], (
+            control["case"] + " served a supported original fact")
+E       AssertionError: B11_foreign_operation_same_triple served a supported original fact
+E       assert True is False
+
+WORKER_RETURNS/PYAT-R29-WG0Q-INDEPENDENT-AUTHORITY-BODY-DELTA-R1/01_WG0P6_REVIEWER/tests/test_authority_body_delta_court.py:74: AssertionError</failure></testcase><testcase classname="tests.test_authority_body_delta_court" name="test_negative_authority_body_is_typed_refused_before_I03[authority_body_integrity/B12_foreign_replay_protocol_ref]" time="5.849"><failure message="AssertionError: B12_foreign_replay_protocol_ref served a supported original fact&#10;assert True is False">court = &lt;authority_body_adapter_v1.AuthorityBodyCourt object at 0x10be17090&gt;
+control = {'case': 'B12_foreign_replay_protocol_ref', 'deeper_semantics': False, 'expected': {'allowed_exception_families': ['Id...cted_new_I03_calls': 0, 'expected_served_supported_original_fact': False, ...}, 'expected_state': 'TYPED_REFUSAL', ...}
+
+    @pytest.mark.parametrize("control", NEG, ids=lambda c: c["group"] + "/" + c["case"])
+    def test_negative_authority_body_is_typed_refused_before_I03(court, control):
+        e = court.execute_case(control["group"], control["case"])
+        exp = control["expected"]
+        assert e["attempted"] is True
+        assert e["raw_path"], "raw receipt must be persisted"
+        assert e["physical_modules"], "native owner modules must be physically verified"
+&gt;       assert e["served_supported_original_fact"] is exp["expected_served_supported_original_fact"], (
+            control["case"] + " served a supported original fact")
+E       AssertionError: B12_foreign_replay_protocol_ref served a supported original fact
+E       assert True is False
+
+WORKER_RETURNS/PYAT-R29-WG0Q-INDEPENDENT-AUTHORITY-BODY-DELTA-R1/01_WG0P6_REVIEWER/tests/test_authority_body_delta_court.py:74: AssertionError</failure></testcase><testcase classname="tests.test_authority_body_delta_court" name="test_negative_authority_body_is_typed_refused_before_I03[temporal_authority_status/T1_expired_interval_same_triple]" time="5.878"><failure message="AssertionError: T1_expired_interval_same_triple served a supported original fact&#10;assert True is False">court = &lt;authority_body_adapter_v1.AuthorityBodyCourt object at 0x10be17090&gt;
+control = {'case': 'T1_expired_interval_same_triple', 'deeper_semantics': False, 'expected': {'allowed_exception_families': ['Id...cted_new_I03_calls': 0, 'expected_served_supported_original_fact': False, ...}, 'expected_state': 'TYPED_REFUSAL', ...}
+
+    @pytest.mark.parametrize("control", NEG, ids=lambda c: c["group"] + "/" + c["case"])
+    def test_negative_authority_body_is_typed_refused_before_I03(court, control):
+        e = court.execute_case(control["group"], control["case"])
+        exp = control["expected"]
+        assert e["attempted"] is True
+        assert e["raw_path"], "raw receipt must be persisted"
+        assert e["physical_modules"], "native owner modules must be physically verified"
+&gt;       assert e["served_supported_original_fact"] is exp["expected_served_supported_original_fact"], (
+            control["case"] + " served a supported original fact")
+E       AssertionError: T1_expired_interval_same_triple served a supported original fact
+E       assert True is False
+
+WORKER_RETURNS/PYAT-R29-WG0Q-INDEPENDENT-AUTHORITY-BODY-DELTA-R1/01_WG0P6_REVIEWER/tests/test_authority_body_delta_court.py:74: AssertionError</failure></testcase><testcase classname="tests.test_authority_body_delta_court" name="test_negative_authority_body_is_typed_refused_before_I03[temporal_authority_status/T2_unknown_epoch_none]" time="5.918"><failure message="AssertionError: T2_unknown_epoch_none served a supported original fact&#10;assert True is False">court = &lt;authority_body_adapter_v1.AuthorityBodyCourt object at 0x10be17090&gt;
+control = {'case': 'T2_unknown_epoch_none', 'deeper_semantics': False, 'expected': {'allowed_exception_families': ['IdentityErro...cted_new_I03_calls': 0, 'expected_served_supported_original_fact': False, ...}, 'expected_state': 'TYPED_REFUSAL', ...}
+
+    @pytest.mark.parametrize("control", NEG, ids=lambda c: c["group"] + "/" + c["case"])
+    def test_negative_authority_body_is_typed_refused_before_I03(court, control):
+        e = court.execute_case(control["group"], control["case"])
+        exp = control["expected"]
+        assert e["attempted"] is True
+        assert e["raw_path"], "raw receipt must be persisted"
+        assert e["physical_modules"], "native owner modules must be physically verified"
+&gt;       assert e["served_supported_original_fact"] is exp["expected_served_supported_original_fact"], (
+            control["case"] + " served a supported original fact")
+E       AssertionError: T2_unknown_epoch_none served a supported original fact
+E       assert True is False
+
+WORKER_RETURNS/PYAT-R29-WG0Q-INDEPENDENT-AUTHORITY-BODY-DELTA-R1/01_WG0P6_REVIEWER/tests/test_authority_body_delta_court.py:74: AssertionError</failure></testcase><testcase classname="tests.test_authority_body_delta_court" name="test_negative_authority_body_is_typed_refused_before_I03[temporal_authority_status/T3_unknown_epoch_label]" time="5.552"><failure message="AssertionError: T3_unknown_epoch_label served a supported original fact&#10;assert True is False">court = &lt;authority_body_adapter_v1.AuthorityBodyCourt object at 0x10be17090&gt;
+control = {'case': 'T3_unknown_epoch_label', 'deeper_semantics': False, 'expected': {'allowed_exception_families': ['IdentityErr...cted_new_I03_calls': 0, 'expected_served_supported_original_fact': False, ...}, 'expected_state': 'TYPED_REFUSAL', ...}
+
+    @pytest.mark.parametrize("control", NEG, ids=lambda c: c["group"] + "/" + c["case"])
+    def test_negative_authority_body_is_typed_refused_before_I03(court, control):
+        e = court.execute_case(control["group"], control["case"])
+        exp = control["expected"]
+        assert e["attempted"] is True
+        assert e["raw_path"], "raw receipt must be persisted"
+        assert e["physical_modules"], "native owner modules must be physically verified"
+&gt;       assert e["served_supported_original_fact"] is exp["expected_served_supported_original_fact"], (
+            control["case"] + " served a supported original fact")
+E       AssertionError: T3_unknown_epoch_label served a supported original fact
+E       assert True is False
+
+WORKER_RETURNS/PYAT-R29-WG0Q-INDEPENDENT-AUTHORITY-BODY-DELTA-R1/01_WG0P6_REVIEWER/tests/test_authority_body_delta_court.py:74: AssertionError</failure></testcase><testcase classname="tests.test_authority_body_delta_court" name="test_negative_authority_body_is_typed_refused_before_I03[temporal_authority_status/T4_current_interval_unissued_body]" time="7.334"><failure message="AssertionError: T4_current_interval_unissued_body served a supported original fact&#10;assert True is False">court = &lt;authority_body_adapter_v1.AuthorityBodyCourt object at 0x10be17090&gt;
+control = {'case': 'T4_current_interval_unissued_body', 'deeper_semantics': False, 'expected': {'allowed_exception_families': ['...cted_new_I03_calls': 0, 'expected_served_supported_original_fact': False, ...}, 'expected_state': 'TYPED_REFUSAL', ...}
+
+    @pytest.mark.parametrize("control", NEG, ids=lambda c: c["group"] + "/" + c["case"])
+    def test_negative_authority_body_is_typed_refused_before_I03(court, control):
+        e = court.execute_case(control["group"], control["case"])
+        exp = control["expected"]
+        assert e["attempted"] is True
+        assert e["raw_path"], "raw receipt must be persisted"
+        assert e["physical_modules"], "native owner modules must be physically verified"
+&gt;       assert e["served_supported_original_fact"] is exp["expected_served_supported_original_fact"], (
+            control["case"] + " served a supported original fact")
+E       AssertionError: T4_current_interval_unissued_body served a supported original fact
+E       assert True is False
+
+WORKER_RETURNS/PYAT-R29-WG0Q-INDEPENDENT-AUTHORITY-BODY-DELTA-R1/01_WG0P6_REVIEWER/tests/test_authority_body_delta_court.py:74: AssertionError</failure></testcase><testcase classname="tests.test_authority_body_delta_court" name="test_negative_authority_body_is_typed_refused_before_I03[temporal_authority_status/T5_supersession_only_same_triple]" time="5.530"><failure message="AssertionError: T5_supersession_only_same_triple served a supported original fact&#10;assert True is False">court = &lt;authority_body_adapter_v1.AuthorityBodyCourt object at 0x10be17090&gt;
+control = {'case': 'T5_supersession_only_same_triple', 'deeper_semantics': False, 'expected': {'allowed_exception_families': ['I...cted_new_I03_calls': 0, 'expected_served_supported_original_fact': False, ...}, 'expected_state': 'TYPED_REFUSAL', ...}
+
+    @pytest.mark.parametrize("control", NEG, ids=lambda c: c["group"] + "/" + c["case"])
+    def test_negative_authority_body_is_typed_refused_before_I03(court, control):
+        e = court.execute_case(control["group"], control["case"])
+        exp = control["expected"]
+        assert e["attempted"] is True
+        assert e["raw_path"], "raw receipt must be persisted"
+        assert e["physical_modules"], "native owner modules must be physically verified"
+&gt;       assert e["served_supported_original_fact"] is exp["expected_served_supported_original_fact"], (
+            control["case"] + " served a supported original fact")
+E       AssertionError: T5_supersession_only_same_triple served a supported original fact
+E       assert True is False
+
+WORKER_RETURNS/PYAT-R29-WG0Q-INDEPENDENT-AUTHORITY-BODY-DELTA-R1/01_WG0P6_REVIEWER/tests/test_authority_body_delta_court.py:74: AssertionError</failure></testcase><testcase classname="tests.test_authority_body_delta_court" name="test_negative_authority_body_is_typed_refused_before_I03[temporal_authority_status/T6_stale_single_date]" time="5.180"><failure message="AssertionError: T6_stale_single_date served a supported original fact&#10;assert True is False">court = &lt;authority_body_adapter_v1.AuthorityBodyCourt object at 0x10be17090&gt;
+control = {'case': 'T6_stale_single_date', 'deeper_semantics': False, 'expected': {'allowed_exception_families': ['IdentityError...cted_new_I03_calls': 0, 'expected_served_supported_original_fact': False, ...}, 'expected_state': 'TYPED_REFUSAL', ...}
+
+    @pytest.mark.parametrize("control", NEG, ids=lambda c: c["group"] + "/" + c["case"])
+    def test_negative_authority_body_is_typed_refused_before_I03(court, control):
+        e = court.execute_case(control["group"], control["case"])
+        exp = control["expected"]
+        assert e["attempted"] is True
+        assert e["raw_path"], "raw receipt must be persisted"
+        assert e["physical_modules"], "native owner modules must be physically verified"
+&gt;       assert e["served_supported_original_fact"] is exp["expected_served_supported_original_fact"], (
+            control["case"] + " served a supported original fact")
+E       AssertionError: T6_stale_single_date served a supported original fact
+E       assert True is False
+
+WORKER_RETURNS/PYAT-R29-WG0Q-INDEPENDENT-AUTHORITY-BODY-DELTA-R1/01_WG0P6_REVIEWER/tests/test_authority_body_delta_court.py:74: AssertionError</failure></testcase><testcase classname="tests.test_authority_body_delta_court" name="test_negative_authority_body_is_typed_refused_before_I03[temporal_authority_status/T7_owner_known_before_explicit_interval]" time="5.654"><failure message="AssertionError: T7_owner_known_before_explicit_interval served a supported original fact&#10;assert True is False">court = &lt;authority_body_adapter_v1.AuthorityBodyCourt object at 0x10be17090&gt;
+control = {'case': 'T7_owner_known_before_explicit_interval', 'deeper_semantics': True, 'expected': {'allowed_exception_families...cted_new_I03_calls': 0, 'expected_served_supported_original_fact': False, ...}, 'expected_state': 'TYPED_REFUSAL', ...}
+
+    @pytest.mark.parametrize("control", NEG, ids=lambda c: c["group"] + "/" + c["case"])
+    def test_negative_authority_body_is_typed_refused_before_I03(court, control):
+        e = court.execute_case(control["group"], control["case"])
+        exp = control["expected"]
+        assert e["attempted"] is True
+        assert e["raw_path"], "raw receipt must be persisted"
+        assert e["physical_modules"], "native owner modules must be physically verified"
+&gt;       assert e["served_supported_original_fact"] is exp["expected_served_supported_original_fact"], (
+            control["case"] + " served a supported original fact")
+E       AssertionError: T7_owner_known_before_explicit_interval served a supported original fact
+E       assert True is False
+
+WORKER_RETURNS/PYAT-R29-WG0Q-INDEPENDENT-AUTHORITY-BODY-DELTA-R1/01_WG0P6_REVIEWER/tests/test_authority_body_delta_court.py:74: AssertionError</failure></testcase><testcase classname="tests.test_authority_body_delta_court" name="test_negative_authority_body_is_typed_refused_before_I03[source_item_swap/S1_source_artifact_ref_swap]" time="0.273" /><testcase classname="tests.test_authority_body_delta_court" name="test_negative_authority_body_is_typed_refused_before_I03[source_item_swap/S2_source_edition_swap]" time="0.422" /><testcase classname="tests.test_authority_body_delta_court" name="test_negative_authority_body_is_typed_refused_before_I03[source_item_swap/S3_release_universe_swap]" time="0.282" /><testcase classname="tests.test_authority_body_delta_court" name="test_negative_authority_body_is_typed_refused_before_I03[source_item_swap/S4_item_metadata_same_cardinality]" time="0.413" /><testcase classname="tests.test_authority_body_delta_court" name="test_negative_authority_body_is_typed_refused_before_I03[source_item_swap/S5_qrefs_swap]" time="0.434" /><testcase classname="tests.test_authority_body_delta_court" name="test_negative_authority_body_is_typed_refused_before_I03[owner_grant_and_cold/R1_source_grant_withdrawn_after_plan]" time="0.266" /><testcase classname="tests.test_authority_body_delta_court" name="test_negative_authority_body_is_typed_refused_before_I03[owner_grant_and_cold/R2_source_artifact_revocation_unknown]" time="1.677" /><testcase classname="tests.test_authority_body_delta_court" name="test_negative_authority_body_is_typed_refused_before_I03[owner_grant_and_cold/R3_cold_forged_source_edition]" time="1.719" /><testcase classname="tests.test_authority_body_delta_court" name="test_negative_authority_body_is_typed_refused_before_I03[owner_grant_and_cold/R4_cold_forged_replay_root]" time="1.531" /><testcase classname="tests.test_authority_body_delta_court" name="test_negative_authority_body_is_typed_refused_before_I03[owner_grant_and_cold/R5_cross_plan_cold]" time="1.853" /><testcase classname="tests.test_authority_body_delta_court" name="test_honest_owner_body_still_serves[positive_current_body/P1_pristine_serves]" time="5.212" /><testcase classname="tests.test_authority_body_delta_court" name="test_honest_owner_body_still_serves[positive_current_body/P2_owner_identity_rebind_serves]" time="5.872" /><testcase classname="tests.test_authority_body_delta_court" name="test_honest_owner_body_still_serves[positive_current_body/P3_replay_identical]" time="1.257" /><testcase classname="tests.test_authority_body_delta_court" name="test_honest_owner_body_still_serves[positive_current_body/P4_identical_body_rebind]" time="5.623" /><testcase classname="tests.test_authority_body_delta_court" name="test_honest_owner_body_still_serves[owner_grant_and_cold/R6_valid_cold_restore]" time="1.561" /></testsuite></testsuites>

@@ -1,0 +1,59 @@
+{
+  "actual_command": [
+    "/usr/local/bin/python3",
+    "-m",
+    "pytest",
+    "tests/test_precommitted_phase_b.py"
+  ],
+  "attack_variant": "missing_fact",
+  "attempted": true,
+  "calls": [],
+  "candidate_sha": "62895078908ff748771da9a9fbcec6b36d34a803",
+  "case": "missing_fact_refuse",
+  "child_command": [
+    "/usr/local/bin/python3",
+    "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/repro/phase_b_cold_worker_v1.py",
+    "attack",
+    "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/observations/phase_b/controls_v1_final/attack-missing_fact-707768faf9fe4c7499b5447d8af79bce"
+  ],
+  "exception_type": "ColdRestartError",
+  "execution_evidence_path": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/observations/phase_b/controls_v1_final/cold__missing_fact_refuse.json",
+  "group": "cold",
+  "physical_module_files": {
+    "pre553_batch_runner": {
+      "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/pinned/rawlsing_next/pre553_batch_runner.py",
+      "git_blob_sha1": "2d291600b9a10c56d9c6f6de7f7d619f6c52e829",
+      "sha256": "5071bde0180db05f59386884d5de2bdea503cd26db2024806a92887d2a5a1e04"
+    },
+    "pre553_c11_ingest": {
+      "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/pinned/rawlsing_next/pre553_c11_ingest.py",
+      "git_blob_sha1": "37cd35fa2e3420a3eea272a2902e96ab9ba38aba",
+      "sha256": "0c56a0f6f656547a096982a6adab21c9b47d749385411a5d159f2b5390eec8bf"
+    },
+    "pre553_c11_integrity": {
+      "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/pinned/rawlsing_next/pre553_c11_integrity.py",
+      "git_blob_sha1": "7c59aa13a2b7c8e3ab0dc90a1400df645b0b4bbd",
+      "sha256": "3963facef5c8ae2981991ffa8c5c5c9b717fb4e09f342eec277198fc5cf38a33"
+    },
+    "pre553_c11_repository": {
+      "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/pinned/rawlsing_next/pre553_c11_repository.py",
+      "git_blob_sha1": "67c6eb6494522cd11aab1b93d0e73f9cef6036f3",
+      "sha256": "84a71fe43307cca30f9eeaaedb269d8390468a4744a0fac251aebc2cda7b498e"
+    },
+    "pre553_empirical_objects": {
+      "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/pinned/rawlsing_next/pre553_empirical_objects.py",
+      "git_blob_sha1": "a61365b994e5c3c50de0f598fcf40e90abf757b6",
+      "sha256": "9cd1d71440a7e8c1861dda73274529e07211edc14335583e93ad91c0833e9ab4"
+    },
+    "pre553_empirical_query": {
+      "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/pinned/rawlsing_next/pre553_empirical_query.py",
+      "git_blob_sha1": "03facecf70890bfd13b80418620d274cbcd69d02",
+      "sha256": "d45ad313bc57e94c8c3652b4123c7cb03b0fc18d38d577aaaae94435664ef4cb"
+    }
+  },
+  "pid": 53979,
+  "raw_execution_path": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/observations/phase_b/controls_v1_final/attack-missing_fact-707768faf9fe4c7499b5447d8af79bce",
+  "reason": "UNTRUSTED_OR_SELF_REHASHED_CHECKPOINT",
+  "served_positive": false,
+  "typed_state": null
+}

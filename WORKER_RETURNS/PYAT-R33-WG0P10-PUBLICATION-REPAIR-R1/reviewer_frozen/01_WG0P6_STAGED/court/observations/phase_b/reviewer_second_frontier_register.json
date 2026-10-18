@@ -1,0 +1,56 @@
+{
+  "schema": "WG0L_INTERFACE_SPECIFIC_SECOND_FRONTIER_V1",
+  "basis": "Independently enumerated directed 2-item frontier: 2 marginals, both directional pairs. Only RT given ORD has the declared same-person routing qualification. Names map the published interface; expected science remains Phase A yes1/no1 over2. This register is frozen before reviewer control execution, after candidate inspection; not falsely labelled pre-candidate.",
+  "operations": [
+    {
+      "op_id": "OP-WG0P4-JOINT-ORD-GIVEN-WG0P4-JOINT-RT",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P4-JOINT-ORD",
+      "conditioners": [
+        "WG0P4-JOINT-RT"
+      ],
+      "item_ids": [
+        "WG0P4-JOINT-ORD",
+        "WG0P4-JOINT-RT"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "JOINT_RISK_SET_UNPROVED"
+    },
+    {
+      "op_id": "OP-WG0P4-JOINT-ORD-MARGINAL",
+      "op_class": "MARGINAL",
+      "target": "WG0P4-JOINT-ORD",
+      "conditioners": [],
+      "item_ids": [
+        "WG0P4-JOINT-ORD"
+      ],
+      "disposition": "PRODUCED",
+      "disposition_reason": "ELIGIBLE"
+    },
+    {
+      "op_id": "OP-WG0P4-JOINT-RT-GIVEN-WG0P4-JOINT-ORD",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P4-JOINT-RT",
+      "conditioners": [
+        "WG0P4-JOINT-ORD"
+      ],
+      "item_ids": [
+        "WG0P4-JOINT-RT",
+        "WG0P4-JOINT-ORD"
+      ],
+      "disposition": "PRODUCED",
+      "disposition_reason": "QUALIFIED_TESTONLY_JOINT_RISK"
+    },
+    {
+      "op_id": "OP-WG0P4-JOINT-RT-MARGINAL",
+      "op_class": "MARGINAL",
+      "target": "WG0P4-JOINT-RT",
+      "conditioners": [],
+      "item_ids": [
+        "WG0P4-JOINT-RT"
+      ],
+      "disposition": "PRODUCED",
+      "disposition_reason": "ELIGIBLE"
+    }
+  ]
+}

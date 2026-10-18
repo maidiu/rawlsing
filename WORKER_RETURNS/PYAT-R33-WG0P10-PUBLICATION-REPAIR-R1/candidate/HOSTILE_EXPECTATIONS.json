@@ -1,0 +1,14 @@
+{
+  "schema":"WG0P6_SOURCE_VIEW_BINDING_PROSPECTIVE_ORACLE@1",
+  "scope":"Sourcefree TEST_ONLY implementer regression, not independent WG0N acceptance",
+  "before_productive_patch":true,
+  "preserve_original_oracles":true,
+  "positive":"An exact reconstructed SOURCE_SNAPSHOT ref equal to the I02 sealed release replay closure is accepted; native counts, original25 and original-manifest cold receipts remain unchanged.",
+  "negatives":["other release snapshot","same hash foreign snapshot ID","same ID wrong hash","wrong ref kind","SOURCE_ARTIFACT substituted for SOURCE_SNAPSHOT","missing ref","precompile substitution","copied plan substitution","caller rehashed source material","caller rehashed contract","wrong release/edition/member","source drift","revocation","consumer after valid computation then source swap","cold restore with substituted view"],
+  "refusal":"Typed IdentityError/RevocationError/ColdRestartError before ANY new I03 call; no new facts/receipts/plan registration, no partial cold restoration, no consumer output",
+  "fixed_frontier":{"PRODUCED":3,"HELD":16,"INADMISSIBLE":6,"total":25},
+  "conditional":{"members":["R2","R3"],"yes":1,"no":1,"denominator":2},
+  "cold":{"first_exit":23,"first_I03_calls":1,"second_I03_calls":2,"manifest_units":3,"same_original_manifest":true,"prior_receipt_preimage_preserved":true},
+  "mandatory_courts":{"WG0M":33,"original_frozen":65,"J":44,"K":11,"native_owners":80,"P5_author":26,"P4_author":69},
+  "no_new_source_or_actor_rights":true
+}

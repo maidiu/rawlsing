@@ -1,0 +1,1 @@
+Only the 9 actual sourcefree WG0P8 synthetic transport tests were executed locally, and their JUnit is preserved here. The earlier WG0Q native JUnits are preserved byte-exact under ../reviewer_frozen/04_JUNIT and are NOT new WG0P8 runs. No JUnit has been invented for absent 17/36/236/42 tests.

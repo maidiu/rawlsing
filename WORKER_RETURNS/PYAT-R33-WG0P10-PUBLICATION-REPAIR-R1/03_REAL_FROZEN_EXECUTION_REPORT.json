@@ -1,0 +1,44 @@
+{
+  "schema": "WG0P8_REAL_EXECUTION@1",
+  "local": {
+    "python": "3.13.5",
+    "pytest": "9.0.2",
+    "git": "2.47.3",
+    "command": "python -B -m pytest -q --junitxml=/mnt/data/wg0p8_local/transport_contract_junit.xml test_wg0p8_transport.py",
+    "test_grade": "SYNTHETIC_TRANSPORT_CONTRACT_ONLY",
+    "tests": 9,
+    "passed": 9,
+    "failures": 0,
+    "skips": 0,
+    "junit_blob": "ade956851217f69440e4c8c9eaabdf835d74ae09",
+    "module_blob": "1ea931fb8690c6c593320d6eff74d7641bcd5aa9",
+    "test_blob": "aeb946a38476ad8514584d8155fa31d3411fa65d",
+    "earlier_diagnostic": "7 pass / 2 fail, setup errors corrected before final 9 pass"
+  },
+  "connector": {
+    "all_11_SHA256": true,
+    "all_187_input_git_blobs": true,
+    "symlinks": 0,
+    "exact_tree": "074036aa6a06174e3179917e053390262ed52369"
+  },
+  "blocked": {
+    "authenticated_clean_git_clone": "DNS failure: Could not resolve host github.com; no mounted checkout",
+    "fresh_WG0O_17": "NOT_EXECUTED",
+    "fresh_WG0Q_36": "NOT_EXECUTED",
+    "fresh_236": "NOT_EXECUTED",
+    "fresh_42_4_I03": "NOT_EXECUTED",
+    "sourcefree_real_P5_import": "NOT_EXECUTED",
+    "authority_body_operation_temporal_hostiles": "NOT_EXECUTED"
+  },
+  "historical_WG0Q_only": {
+    "wg0o": "17/17",
+    "wg0q": "36/36",
+    "mandatory": "236/236",
+    "fresh": "42/42",
+    "consumer_sha256": "4b9d03246167c93df6dde8d590fac33c24c51ef158d60abd8ee33601ca059550",
+    "wg0n": "12 executed; 5 NOT GREEN",
+    "historical": "1 PASS; 2 expected failures"
+  },
+  "authority_grants": [],
+  "disposition": "EXACT_HOLD_FULL_NATIVE_COLD_REEXECUTION_MISSING"
+}

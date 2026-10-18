@@ -1,0 +1,737 @@
+[
+  {
+    "positive": "REL-A-W1",
+    "binding": {
+      "version": "SOURCE_VIEW_TO_C11_ARTIFACT@1",
+      "release": {
+        "kind": "C11LogicalRelease",
+        "object_id": "REL-REL-A-W1",
+        "content_hash": "cab5734bd77587fd442116bdf2d7648b9035c613164cf671f4915ef142ca6eba"
+      },
+      "manifest_hash": "2d6fa2940c10a5b64b59e2eb22ba3447dbb9be44e176366fde9898c7e77efd3c",
+      "replay_manifest": {
+        "kind": "C11Internal:ReplayManifest",
+        "object_id": "urn:rawlsing:pre553:c11:ReplayManifest:sha256:af8f6bc5157419949b53c636e1fc5e264a38aa392f6b89877ed8cb19ff459a91",
+        "content_hash": "af8f6bc5157419949b53c636e1fc5e264a38aa392f6b89877ed8cb19ff459a91"
+      },
+      "source_artifact": {
+        "kind": "SOURCE_ARTIFACT",
+        "object_id": "SOURCE-WG0P3-REL-A-W1",
+        "content_hash": "1c7f1339ef1e7844b1eb8c93bba678f4e00cb6eb76c5698e3806ca8812b2c90f"
+      },
+      "view_source_snapshot": {
+        "kind": "SOURCE_SNAPSHOT",
+        "object_id": "urn:wg0p3:test:source-snapshot:REL-A-W1",
+        "content_hash": "1c7f1339ef1e7844b1eb8c93bba678f4e00cb6eb76c5698e3806ca8812b2c90f"
+      }
+    }
+  },
+  {
+    "positive": "REL-A-W2",
+    "binding": {
+      "version": "SOURCE_VIEW_TO_C11_ARTIFACT@1",
+      "release": {
+        "kind": "C11LogicalRelease",
+        "object_id": "REL-REL-A-W2",
+        "content_hash": "df342195d6f7f977ecd6c30b3a1a5ca68c5ae421af8bcec57ec904b713751dba"
+      },
+      "manifest_hash": "c22c08fb76808424673814d331952219f2d3622eae02def018c980d1f85f4043",
+      "replay_manifest": {
+        "kind": "C11Internal:ReplayManifest",
+        "object_id": "urn:rawlsing:pre553:c11:ReplayManifest:sha256:3ecadf35e9595c72de90a39a113546319c1d1f8a3e48b9be6979eca199192209",
+        "content_hash": "3ecadf35e9595c72de90a39a113546319c1d1f8a3e48b9be6979eca199192209"
+      },
+      "source_artifact": {
+        "kind": "SOURCE_ARTIFACT",
+        "object_id": "SOURCE-WG0P3-REL-A-W2",
+        "content_hash": "df95a46e77b23e64fc7727bdfbd7aba49529da1a68c565fc2e105e602c842734"
+      },
+      "view_source_snapshot": {
+        "kind": "SOURCE_SNAPSHOT",
+        "object_id": "urn:wg0p3:test:source-snapshot:REL-A-W2",
+        "content_hash": "df95a46e77b23e64fc7727bdfbd7aba49529da1a68c565fc2e105e602c842734"
+      }
+    }
+  },
+  {
+    "positive": "REL-B-W2",
+    "binding": {
+      "version": "SOURCE_VIEW_TO_C11_ARTIFACT@1",
+      "release": {
+        "kind": "C11LogicalRelease",
+        "object_id": "REL-REL-B-W2",
+        "content_hash": "d133fe16d1ef8b29b174292c7c2675047d059379c7b67e35c6fab8a2f4321547"
+      },
+      "manifest_hash": "aa5fe0ca6d6e72e996fef7cc45f81f807d0c5710b5a4a85ba380b2ea09c980d0",
+      "replay_manifest": {
+        "kind": "C11Internal:ReplayManifest",
+        "object_id": "urn:rawlsing:pre553:c11:ReplayManifest:sha256:aa8673e1436aabd70d87782aebaca39aec808cc9f5d3dcfda2fb18b4a381f8c3",
+        "content_hash": "aa8673e1436aabd70d87782aebaca39aec808cc9f5d3dcfda2fb18b4a381f8c3"
+      },
+      "source_artifact": {
+        "kind": "SOURCE_ARTIFACT",
+        "object_id": "SOURCE-WG0P3-REL-B-W2",
+        "content_hash": "26f50dda51e05a8fca707b0539333b154214c8ebdf2024fe33ab3d5bc238bfc4"
+      },
+      "view_source_snapshot": {
+        "kind": "SOURCE_SNAPSHOT",
+        "object_id": "urn:wg0p3:test:source-snapshot:REL-B-W2",
+        "content_hash": "26f50dda51e05a8fca707b0539333b154214c8ebdf2024fe33ab3d5bc238bfc4"
+      }
+    }
+  },
+  {
+    "stage": "precompile",
+    "kind": "other_release",
+    "error": "IdentityError",
+    "reason": "RELEASE_VIEW_SOURCE_SNAPSHOT_NOT_SEALED_C11_LINEAGE",
+    "new_i03_calls": 0,
+    "owner_journal_unchanged": true,
+    "fact_custody_unchanged": true,
+    "callbacks": [
+      {
+        "name": "__init__",
+        "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/repro/wg0p4_workload.py",
+        "line": 82
+      },
+      {
+        "name": "__init__",
+        "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/pinned/predecessors/p3/repro/wg0p3_workload.py",
+        "line": 249
+      },
+      {
+        "name": "enumerate",
+        "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/repro/wg0p4_workload.py",
+        "line": 90
+      },
+      {
+        "name": "enumerate",
+        "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/pinned/predecessors/p3/repro/wg0p3_workload.py",
+        "line": 269
+      },
+      {
+        "name": "build_executable_plan",
+        "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/repro/wg0p4_workload.py",
+        "line": 364
+      },
+      {
+        "name": "__init__",
+        "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/repro/wg0p4_workload.py",
+        "line": 82
+      },
+      {
+        "name": "__init__",
+        "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/pinned/predecessors/p3/repro/wg0p3_workload.py",
+        "line": 249
+      }
+    ]
+  },
+  {
+    "stage": "callback",
+    "kind": "other_release",
+    "error": "IdentityError",
+    "reason": "RELEASE_VIEW_SOURCE_SNAPSHOT_NOT_SEALED_C11_LINEAGE",
+    "new_i03_calls": 0,
+    "owner_journal_unchanged": true,
+    "fact_custody_unchanged": true,
+    "callbacks": [
+      {
+        "name": "make_executor",
+        "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/repro/wg0p4_workload.py",
+        "line": 432
+      }
+    ]
+  },
+  {
+    "stage": "run",
+    "kind": "other_release",
+    "error": "IdentityError",
+    "reason": "RELEASE_VIEW_SOURCE_SNAPSHOT_NOT_SEALED_C11_LINEAGE",
+    "new_i03_calls": 0,
+    "owner_journal_unchanged": true,
+    "fact_custody_unchanged": true,
+    "callbacks": [
+      {
+        "name": "make_executor",
+        "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/repro/wg0p4_workload.py",
+        "line": 432
+      },
+      {
+        "name": "run_plan",
+        "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/repro/wg0p4_workload.py",
+        "line": 449
+      }
+    ]
+  },
+  {
+    "stage": "consumer",
+    "kind": "other_release",
+    "error": "IdentityError",
+    "reason": "RELEASE_VIEW_SOURCE_SNAPSHOT_NOT_SEALED_C11_LINEAGE",
+    "new_i03_calls": 0,
+    "owner_journal_unchanged": true,
+    "fact_custody_unchanged": true,
+    "callbacks": [
+      {
+        "name": "consumer_effects",
+        "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/repro/wg0p4_workload.py",
+        "line": 472
+      }
+    ]
+  },
+  {
+    "stage": "restore",
+    "kind": "other_release",
+    "error": "IdentityError",
+    "reason": "RELEASE_VIEW_SOURCE_SNAPSHOT_NOT_SEALED_C11_LINEAGE",
+    "new_i03_calls": 0,
+    "owner_journal_unchanged": true,
+    "fact_custody_unchanged": true,
+    "callbacks": []
+  },
+  {
+    "stage": "precompile",
+    "kind": "same_hash_foreign_id",
+    "error": "IdentityError",
+    "reason": "RELEASE_VIEW_SOURCE_SNAPSHOT_NOT_SEALED_C11_LINEAGE",
+    "new_i03_calls": 0,
+    "owner_journal_unchanged": true,
+    "fact_custody_unchanged": true,
+    "callbacks": [
+      {
+        "name": "__init__",
+        "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/repro/wg0p4_workload.py",
+        "line": 82
+      },
+      {
+        "name": "__init__",
+        "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/pinned/predecessors/p3/repro/wg0p3_workload.py",
+        "line": 249
+      },
+      {
+        "name": "enumerate",
+        "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/repro/wg0p4_workload.py",
+        "line": 90
+      },
+      {
+        "name": "enumerate",
+        "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/pinned/predecessors/p3/repro/wg0p3_workload.py",
+        "line": 269
+      },
+      {
+        "name": "build_executable_plan",
+        "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/repro/wg0p4_workload.py",
+        "line": 364
+      },
+      {
+        "name": "__init__",
+        "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/repro/wg0p4_workload.py",
+        "line": 82
+      },
+      {
+        "name": "__init__",
+        "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/pinned/predecessors/p3/repro/wg0p3_workload.py",
+        "line": 249
+      }
+    ]
+  },
+  {
+    "stage": "callback",
+    "kind": "same_hash_foreign_id",
+    "error": "IdentityError",
+    "reason": "RELEASE_VIEW_SOURCE_SNAPSHOT_NOT_SEALED_C11_LINEAGE",
+    "new_i03_calls": 0,
+    "owner_journal_unchanged": true,
+    "fact_custody_unchanged": true,
+    "callbacks": [
+      {
+        "name": "make_executor",
+        "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/repro/wg0p4_workload.py",
+        "line": 432
+      }
+    ]
+  },
+  {
+    "stage": "run",
+    "kind": "same_hash_foreign_id",
+    "error": "IdentityError",
+    "reason": "RELEASE_VIEW_SOURCE_SNAPSHOT_NOT_SEALED_C11_LINEAGE",
+    "new_i03_calls": 0,
+    "owner_journal_unchanged": true,
+    "fact_custody_unchanged": true,
+    "callbacks": [
+      {
+        "name": "make_executor",
+        "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/repro/wg0p4_workload.py",
+        "line": 432
+      },
+      {
+        "name": "run_plan",
+        "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/repro/wg0p4_workload.py",
+        "line": 449
+      }
+    ]
+  },
+  {
+    "stage": "consumer",
+    "kind": "same_hash_foreign_id",
+    "error": "IdentityError",
+    "reason": "RELEASE_VIEW_SOURCE_SNAPSHOT_NOT_SEALED_C11_LINEAGE",
+    "new_i03_calls": 0,
+    "owner_journal_unchanged": true,
+    "fact_custody_unchanged": true,
+    "callbacks": [
+      {
+        "name": "consumer_effects",
+        "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/repro/wg0p4_workload.py",
+        "line": 472
+      }
+    ]
+  },
+  {
+    "stage": "restore",
+    "kind": "same_hash_foreign_id",
+    "error": "IdentityError",
+    "reason": "RELEASE_VIEW_SOURCE_SNAPSHOT_NOT_SEALED_C11_LINEAGE",
+    "new_i03_calls": 0,
+    "owner_journal_unchanged": true,
+    "fact_custody_unchanged": true,
+    "callbacks": []
+  },
+  {
+    "stage": "precompile",
+    "kind": "same_id_wrong_hash",
+    "error": "IdentityError",
+    "reason": "RELEASE_VIEW_SOURCE_SNAPSHOT_NOT_SEALED_C11_LINEAGE",
+    "new_i03_calls": 0,
+    "owner_journal_unchanged": true,
+    "fact_custody_unchanged": true,
+    "callbacks": [
+      {
+        "name": "__init__",
+        "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/repro/wg0p4_workload.py",
+        "line": 82
+      },
+      {
+        "name": "__init__",
+        "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/pinned/predecessors/p3/repro/wg0p3_workload.py",
+        "line": 249
+      },
+      {
+        "name": "enumerate",
+        "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/repro/wg0p4_workload.py",
+        "line": 90
+      },
+      {
+        "name": "enumerate",
+        "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/pinned/predecessors/p3/repro/wg0p3_workload.py",
+        "line": 269
+      },
+      {
+        "name": "build_executable_plan",
+        "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/repro/wg0p4_workload.py",
+        "line": 364
+      },
+      {
+        "name": "__init__",
+        "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/repro/wg0p4_workload.py",
+        "line": 82
+      },
+      {
+        "name": "__init__",
+        "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/pinned/predecessors/p3/repro/wg0p3_workload.py",
+        "line": 249
+      }
+    ]
+  },
+  {
+    "stage": "callback",
+    "kind": "same_id_wrong_hash",
+    "error": "IdentityError",
+    "reason": "RELEASE_VIEW_SOURCE_SNAPSHOT_NOT_SEALED_C11_LINEAGE",
+    "new_i03_calls": 0,
+    "owner_journal_unchanged": true,
+    "fact_custody_unchanged": true,
+    "callbacks": [
+      {
+        "name": "make_executor",
+        "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/repro/wg0p4_workload.py",
+        "line": 432
+      }
+    ]
+  },
+  {
+    "stage": "run",
+    "kind": "same_id_wrong_hash",
+    "error": "IdentityError",
+    "reason": "RELEASE_VIEW_SOURCE_SNAPSHOT_NOT_SEALED_C11_LINEAGE",
+    "new_i03_calls": 0,
+    "owner_journal_unchanged": true,
+    "fact_custody_unchanged": true,
+    "callbacks": [
+      {
+        "name": "make_executor",
+        "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/repro/wg0p4_workload.py",
+        "line": 432
+      },
+      {
+        "name": "run_plan",
+        "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/repro/wg0p4_workload.py",
+        "line": 449
+      }
+    ]
+  },
+  {
+    "stage": "consumer",
+    "kind": "same_id_wrong_hash",
+    "error": "IdentityError",
+    "reason": "RELEASE_VIEW_SOURCE_SNAPSHOT_NOT_SEALED_C11_LINEAGE",
+    "new_i03_calls": 0,
+    "owner_journal_unchanged": true,
+    "fact_custody_unchanged": true,
+    "callbacks": [
+      {
+        "name": "consumer_effects",
+        "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/repro/wg0p4_workload.py",
+        "line": 472
+      }
+    ]
+  },
+  {
+    "stage": "restore",
+    "kind": "same_id_wrong_hash",
+    "error": "IdentityError",
+    "reason": "RELEASE_VIEW_SOURCE_SNAPSHOT_NOT_SEALED_C11_LINEAGE",
+    "new_i03_calls": 0,
+    "owner_journal_unchanged": true,
+    "fact_custody_unchanged": true,
+    "callbacks": []
+  },
+  {
+    "stage": "precompile",
+    "kind": "wrong_kind",
+    "error": "IdentityError",
+    "reason": "RELEASE_VIEW_SOURCE_SNAPSHOT_NOT_SEALED_C11_LINEAGE",
+    "new_i03_calls": 0,
+    "owner_journal_unchanged": true,
+    "fact_custody_unchanged": true,
+    "callbacks": [
+      {
+        "name": "__init__",
+        "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/repro/wg0p4_workload.py",
+        "line": 82
+      },
+      {
+        "name": "__init__",
+        "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/pinned/predecessors/p3/repro/wg0p3_workload.py",
+        "line": 249
+      },
+      {
+        "name": "enumerate",
+        "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/repro/wg0p4_workload.py",
+        "line": 90
+      },
+      {
+        "name": "enumerate",
+        "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/pinned/predecessors/p3/repro/wg0p3_workload.py",
+        "line": 269
+      },
+      {
+        "name": "build_executable_plan",
+        "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/repro/wg0p4_workload.py",
+        "line": 364
+      },
+      {
+        "name": "__init__",
+        "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/repro/wg0p4_workload.py",
+        "line": 82
+      },
+      {
+        "name": "__init__",
+        "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/pinned/predecessors/p3/repro/wg0p3_workload.py",
+        "line": 249
+      }
+    ]
+  },
+  {
+    "stage": "callback",
+    "kind": "wrong_kind",
+    "error": "IdentityError",
+    "reason": "RELEASE_VIEW_SOURCE_SNAPSHOT_NOT_SEALED_C11_LINEAGE",
+    "new_i03_calls": 0,
+    "owner_journal_unchanged": true,
+    "fact_custody_unchanged": true,
+    "callbacks": [
+      {
+        "name": "make_executor",
+        "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/repro/wg0p4_workload.py",
+        "line": 432
+      }
+    ]
+  },
+  {
+    "stage": "run",
+    "kind": "wrong_kind",
+    "error": "IdentityError",
+    "reason": "RELEASE_VIEW_SOURCE_SNAPSHOT_NOT_SEALED_C11_LINEAGE",
+    "new_i03_calls": 0,
+    "owner_journal_unchanged": true,
+    "fact_custody_unchanged": true,
+    "callbacks": [
+      {
+        "name": "make_executor",
+        "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/repro/wg0p4_workload.py",
+        "line": 432
+      },
+      {
+        "name": "run_plan",
+        "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/repro/wg0p4_workload.py",
+        "line": 449
+      }
+    ]
+  },
+  {
+    "stage": "consumer",
+    "kind": "wrong_kind",
+    "error": "IdentityError",
+    "reason": "RELEASE_VIEW_SOURCE_SNAPSHOT_NOT_SEALED_C11_LINEAGE",
+    "new_i03_calls": 0,
+    "owner_journal_unchanged": true,
+    "fact_custody_unchanged": true,
+    "callbacks": [
+      {
+        "name": "consumer_effects",
+        "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/repro/wg0p4_workload.py",
+        "line": 472
+      }
+    ]
+  },
+  {
+    "stage": "restore",
+    "kind": "wrong_kind",
+    "error": "IdentityError",
+    "reason": "RELEASE_VIEW_SOURCE_SNAPSHOT_NOT_SEALED_C11_LINEAGE",
+    "new_i03_calls": 0,
+    "owner_journal_unchanged": true,
+    "fact_custody_unchanged": true,
+    "callbacks": []
+  },
+  {
+    "stage": "precompile",
+    "kind": "actual_artifact",
+    "error": "IdentityError",
+    "reason": "RELEASE_VIEW_SOURCE_SNAPSHOT_NOT_SEALED_C11_LINEAGE",
+    "new_i03_calls": 0,
+    "owner_journal_unchanged": true,
+    "fact_custody_unchanged": true,
+    "callbacks": [
+      {
+        "name": "__init__",
+        "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/repro/wg0p4_workload.py",
+        "line": 82
+      },
+      {
+        "name": "__init__",
+        "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/pinned/predecessors/p3/repro/wg0p3_workload.py",
+        "line": 249
+      },
+      {
+        "name": "enumerate",
+        "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/repro/wg0p4_workload.py",
+        "line": 90
+      },
+      {
+        "name": "enumerate",
+        "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/pinned/predecessors/p3/repro/wg0p3_workload.py",
+        "line": 269
+      },
+      {
+        "name": "build_executable_plan",
+        "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/repro/wg0p4_workload.py",
+        "line": 364
+      },
+      {
+        "name": "__init__",
+        "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/repro/wg0p4_workload.py",
+        "line": 82
+      },
+      {
+        "name": "__init__",
+        "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/pinned/predecessors/p3/repro/wg0p3_workload.py",
+        "line": 249
+      }
+    ]
+  },
+  {
+    "stage": "callback",
+    "kind": "actual_artifact",
+    "error": "IdentityError",
+    "reason": "RELEASE_VIEW_SOURCE_SNAPSHOT_NOT_SEALED_C11_LINEAGE",
+    "new_i03_calls": 0,
+    "owner_journal_unchanged": true,
+    "fact_custody_unchanged": true,
+    "callbacks": [
+      {
+        "name": "make_executor",
+        "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/repro/wg0p4_workload.py",
+        "line": 432
+      }
+    ]
+  },
+  {
+    "stage": "run",
+    "kind": "actual_artifact",
+    "error": "IdentityError",
+    "reason": "RELEASE_VIEW_SOURCE_SNAPSHOT_NOT_SEALED_C11_LINEAGE",
+    "new_i03_calls": 0,
+    "owner_journal_unchanged": true,
+    "fact_custody_unchanged": true,
+    "callbacks": [
+      {
+        "name": "make_executor",
+        "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/repro/wg0p4_workload.py",
+        "line": 432
+      },
+      {
+        "name": "run_plan",
+        "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/repro/wg0p4_workload.py",
+        "line": 449
+      }
+    ]
+  },
+  {
+    "stage": "consumer",
+    "kind": "actual_artifact",
+    "error": "IdentityError",
+    "reason": "RELEASE_VIEW_SOURCE_SNAPSHOT_NOT_SEALED_C11_LINEAGE",
+    "new_i03_calls": 0,
+    "owner_journal_unchanged": true,
+    "fact_custody_unchanged": true,
+    "callbacks": [
+      {
+        "name": "consumer_effects",
+        "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/repro/wg0p4_workload.py",
+        "line": 472
+      }
+    ]
+  },
+  {
+    "stage": "restore",
+    "kind": "actual_artifact",
+    "error": "IdentityError",
+    "reason": "RELEASE_VIEW_SOURCE_SNAPSHOT_NOT_SEALED_C11_LINEAGE",
+    "new_i03_calls": 0,
+    "owner_journal_unchanged": true,
+    "fact_custody_unchanged": true,
+    "callbacks": []
+  },
+  {
+    "stage": "precompile",
+    "kind": "missing",
+    "error": "IdentityError",
+    "reason": "RELEASE_VIEW_SOURCE_SNAPSHOT_NOT_SEALED_C11_LINEAGE",
+    "new_i03_calls": 0,
+    "owner_journal_unchanged": true,
+    "fact_custody_unchanged": true,
+    "callbacks": [
+      {
+        "name": "__init__",
+        "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/repro/wg0p4_workload.py",
+        "line": 82
+      },
+      {
+        "name": "__init__",
+        "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/pinned/predecessors/p3/repro/wg0p3_workload.py",
+        "line": 249
+      },
+      {
+        "name": "enumerate",
+        "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/repro/wg0p4_workload.py",
+        "line": 90
+      },
+      {
+        "name": "enumerate",
+        "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/pinned/predecessors/p3/repro/wg0p3_workload.py",
+        "line": 269
+      },
+      {
+        "name": "build_executable_plan",
+        "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/repro/wg0p4_workload.py",
+        "line": 364
+      },
+      {
+        "name": "__init__",
+        "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/repro/wg0p4_workload.py",
+        "line": 82
+      },
+      {
+        "name": "__init__",
+        "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/pinned/predecessors/p3/repro/wg0p3_workload.py",
+        "line": 249
+      }
+    ]
+  },
+  {
+    "stage": "callback",
+    "kind": "missing",
+    "error": "IdentityError",
+    "reason": "RELEASE_VIEW_SOURCE_SNAPSHOT_NOT_SEALED_C11_LINEAGE",
+    "new_i03_calls": 0,
+    "owner_journal_unchanged": true,
+    "fact_custody_unchanged": true,
+    "callbacks": [
+      {
+        "name": "make_executor",
+        "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/repro/wg0p4_workload.py",
+        "line": 432
+      }
+    ]
+  },
+  {
+    "stage": "run",
+    "kind": "missing",
+    "error": "IdentityError",
+    "reason": "RELEASE_VIEW_SOURCE_SNAPSHOT_NOT_SEALED_C11_LINEAGE",
+    "new_i03_calls": 0,
+    "owner_journal_unchanged": true,
+    "fact_custody_unchanged": true,
+    "callbacks": [
+      {
+        "name": "make_executor",
+        "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/repro/wg0p4_workload.py",
+        "line": 432
+      },
+      {
+        "name": "run_plan",
+        "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/repro/wg0p4_workload.py",
+        "line": 449
+      }
+    ]
+  },
+  {
+    "stage": "consumer",
+    "kind": "missing",
+    "error": "IdentityError",
+    "reason": "RELEASE_VIEW_SOURCE_SNAPSHOT_NOT_SEALED_C11_LINEAGE",
+    "new_i03_calls": 0,
+    "owner_journal_unchanged": true,
+    "fact_custody_unchanged": true,
+    "callbacks": [
+      {
+        "name": "consumer_effects",
+        "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/wg0p10-wt/WORKER_RETURNS/PYAT-R33-WG0P10-PUBLICATION-REPAIR-R1/candidate/court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/repro/wg0p4_workload.py",
+        "line": 472
+      }
+    ]
+  },
+  {
+    "stage": "restore",
+    "kind": "missing",
+    "error": "IdentityError",
+    "reason": "RELEASE_VIEW_SOURCE_SNAPSHOT_NOT_SEALED_C11_LINEAGE",
+    "new_i03_calls": 0,
+    "owner_journal_unchanged": true,
+    "fact_custody_unchanged": true,
+    "callbacks": []
+  }
+]

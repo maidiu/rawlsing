@@ -1,0 +1,102 @@
+{
+  "corrected_actual_wg0p6_p5": {
+    "bootstrap_used": true,
+    "module_git_blob": "ef4f2b33c07596ae6c3008320f13d9f5d027b9e4",
+    "module_sha256": "3807e46eec947694a1bd76afe23fd96183dd989b511584ec2ad3991ae943925e",
+    "module_staged_path": "court/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/repro/wg0p4_workload.py",
+    "new_matrix": {
+      "S1_source_artifact_ref_swap": "already typed-refused by WG0P6 P5 source-view binding; not a new WG0P7-only fix",
+      "counts": {
+        "errors": 0,
+        "failures": 18,
+        "tests": 36
+      },
+      "junit": "04_JUNIT/wg0p6_p5_actual_new_matrix.xml",
+      "pass_cases": [
+        "B8_false_content_hash_claim",
+        "R1_source_grant_withdrawn_after_plan",
+        "R2_source_artifact_revocation_unknown",
+        "R3_cold_forged_source_edition",
+        "R4_cold_forged_replay_root",
+        "R5_cross_plan_cold",
+        "R6_valid_cold_restore",
+        "P1_pristine_serves",
+        "P2_owner_identity_rebind_serves",
+        "P3_replay_identical",
+        "P4_identical_body_rebind",
+        "S1_source_artifact_ref_swap",
+        "S2_source_edition_swap",
+        "S3_release_universe_swap",
+        "S4_item_metadata_same_cardinality",
+        "S5_qrefs_swap"
+      ],
+      "pass_count": 16,
+      "red_cases": [
+        "B10_no_permitted_operation",
+        "B11_foreign_operation_same_triple",
+        "B12_foreign_replay_protocol_ref",
+        "B1_semantic_fingerprint_same_triple",
+        "B2_parent_authority_refs_same_triple",
+        "B3_replay_root_same_triple",
+        "B4_governed_family_removed",
+        "B5_false_authority_kind",
+        "B6_negative_limit_added",
+        "B7_deny_state_same_triple",
+        "B9_foreign_scope_same_triple",
+        "T1_expired_interval_same_triple",
+        "T2_unknown_epoch_none",
+        "T3_unknown_epoch_label",
+        "T4_current_interval_unissued_body",
+        "T5_supersession_only_same_triple",
+        "T6_stale_single_date",
+        "T7_owner_known_before_explicit_interval"
+      ],
+      "red_count": 18
+    },
+    "original_14": {
+      "C2_missing_issuer": "IdentityError / RELEASE_VIEW_SOURCE_BINDING_UNRESOLVABLE, typed, 0 served, 0 I03",
+      "counts": {
+        "errors": 0,
+        "failures": 3,
+        "tests": 17
+      },
+      "junit": "04_JUNIT/wg0p6_p5_actual_original_14.xml",
+      "positives": 3,
+      "served_red": [
+        "A2_stale_issuer_epoch_same_identity",
+        "A3_same_hash_foreign_signed_body",
+        "A4_foreign_governed_operations_same_hash"
+      ],
+      "typed_refusals": [
+        "A1_wrong_issuer_qauth_substitution",
+        "A5_foreign_authority_inside_authorities_tuple",
+        "C1_source_artifact_revocation_not_release_tag",
+        "C2_missing_independent_issuer",
+        "C3_alias_pointer_across_genuine_source_universes",
+        "B1_self_rehashed_checkpoint_foreign_signature",
+        "B2_foreign_signature_proper_tag",
+        "B3_captured_executor_callback_fabricates_fact"
+      ]
+    }
+  },
+  "initial_phase_a_replay": {
+    "module_sha256": "c74b34d14c5a79993e7b56908ac017b2e35a97df422460f4d62beb30b63821f8",
+    "new_matrix_pass_count": 15,
+    "new_matrix_red_count": 19,
+    "original_14": "3 served RED / 7 typed / C2 AttributeError / 3 positives"
+  },
+  "raw_receipt_roots": [
+    "01_WG0P6_REVIEWER/observations/authority_seam_runs/phase_a_frozen",
+    "01_WG0P6_REVIEWER/observations/authority_body_runs/phase_a_wg0p6_p5_actual"
+  ],
+  "schema": "PYAT_R29_WG0Q_PHASE_A_CUSTODY_CORRECTION@1",
+  "status": "REVIEWER_TRANSPORT_ERROR_CORRECTED__FROZEN_ORACLE_UNCHANGED",
+  "what_happened": "The first Phase A WG0P6 replay omitted the candidate bootstrap_p6 and imported the direct runtime_phase_b/candidate copy (sha256 c74b34d14c5a79993e7b56908ac017b2e35a97df422460f4d62beb30b63821f8), not the intended WG0P6 P5 runtime (sha256 3807e46eec947694a1bd76afe23fd96183dd989b511584ec2ad3991ae943925e). The frozen oracle and tests were not changed.",
+  "what_is_unchanged": {
+    "frozen_oracle_sha256": "240709efc075764abe713d73e4326887f7e11be4dd9473ca97089f8fa3afad97",
+    "phase_a_freeze_commit": "d8e4c86a7a57e0e519063919831e9aad5c902cfb",
+    "three_wg0o_served_reds_closed": true,
+    "wg0p7_new_matrix_result": "34/34 PASS (36 tests including meta)"
+  },
+  "why_this_matters": "The correction changes the WG0P6 baseline count (19 -> 18 new REDs; S1 already closed by P5) and restores WG0O's 8-typed-refusal claim on the actual P5 runtime. It does not change the WG0P7 result or the frozen expectations."
+}

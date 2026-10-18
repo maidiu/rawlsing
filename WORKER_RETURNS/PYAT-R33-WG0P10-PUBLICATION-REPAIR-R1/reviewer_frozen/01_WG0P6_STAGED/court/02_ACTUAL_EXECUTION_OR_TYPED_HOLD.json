@@ -1,0 +1,316 @@
+{
+  "at": "2026-10-17T04:37:43.599940+00:00",
+  "candidate_direct_remote_readback": "9fa1098dfbcdb011d3624eb2dbc8a7cd9578fa34",
+  "candidate_module_sha256": "06fadc7eb8c01fa832fa59beccfc2ea2f6e068216fdc8b04c95365065d492723",
+  "candidate_sha": "9fa1098dfbcdb011d3624eb2dbc8a7cd9578fa34",
+  "cold": {
+    "all_original_results_resolved": true,
+    "atomic_replace": true,
+    "checkpoint_exit": 23,
+    "final_receipt_hashes": [
+      "caac243fc25c521acc10b2e082b55bdb854921dff8f730680d82eeaf2dcabcbd",
+      "343029179dd6f84e88161966c5bbde1a5fa26b9bc77b24759632473660d983a7",
+      "a9ece5580a015c0358a92178dd808a37db1689b6c89c9e5232e04d1f5d86c8c2"
+    ],
+    "first_I03_calls": 1,
+    "first_pid": 9388,
+    "fsync_directory": true,
+    "fsync_file": true,
+    "manifest_after": "bcd255228ef35edcb9b59436b76e1eb78947c07180f2936779572f510981c140",
+    "manifest_before": "bcd255228ef35edcb9b59436b76e1eb78947c07180f2936779572f510981c140",
+    "manifest_units": 3,
+    "original_receipt_hash": "caac243fc25c521acc10b2e082b55bdb854921dff8f730680d82eeaf2dcabcbd",
+    "original_receipt_preimage_verified": true,
+    "owner_receipt_class": "rawlsing_next.pre553_batch_runner.UnitExecutionReceipt",
+    "second_I03_calls": 2,
+    "second_pid": 9390,
+    "shared_cold_execution_path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r26-wg0m-court/WORKER_RETURNS/PYAT-R26-WG0M-ORIGINAL-FRONTIER-INDEPENDENT-DELTA-R1/observations/phase_b/controls_v1_final/cold-7b3477275d9b4c2b9a1c031c508d28e4"
+  },
+  "conditional": {
+    "counts": {
+      "no": 1,
+      "yes": 1
+    },
+    "denominator": 2,
+    "owner_batch_calls": 1,
+    "owner_query_calls": 3,
+    "route": [
+      "WorkloadBuilder",
+      "build_executable_plan",
+      "make_executor",
+      "run_plan",
+      "accepted_BatchExecutionRunner",
+      "consumer_effects"
+    ],
+    "same_respondents": [
+      "R2",
+      "R3"
+    ],
+    "second_frontier_verified_against_independent_register": true
+  },
+  "exact_commands": {
+    "author26_regression": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=bootstrap_p5:repro python3 repro/run_author_descriptor_v1.py",
+    "author69_and_historical29_36": "PYTHONDONTWRITEBYTECODE=1 python3 runtime_phase_b/p5_return/repro/run_all.py author_inputs author",
+    "descriptor33_original3_native80": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=bootstrap_p5:repro WG0M_RUN=phase_b_P5 python3 -m pytest -c runtime_phase_b/candidate/pytest.ini tests/test_descriptor_delta_frozen.py tests/p5_mapping/test_original_three_adapter_v1.py runtime_phase_b/owner_tests -vv --tb=short --junitxml=observations/phase_b_P5_descriptor_and_owners_attempt1.xml",
+    "independent_probe_cold_and_shards": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=bootstrap_p5:repro python3 repro/prepare_inherited_v1.py",
+    "original44_11": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=bootstrap_p5:repro python3 -m pytest -c runtime_phase_b/candidate/pytest.ini tests/phase_b/test_original_j_adapter_v1.py tests/phase_b/test_original_k_adapter_v1.py -vv --tb=short --junitxml=observations/phase_b_P5_original_J44_K11.xml",
+    "original65": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=bootstrap_p5:repro WG0L_PHASE_B_ADAPTER=phase_b_adapter_v1 WG0M_RUN=phase_b_P5 python3 -m pytest -c runtime_phase_b/candidate/pytest.ini tests/test_precommitted_phase_b.py -vv --tb=short --junitxml=observations/phase_b_P5_original65_attempt1.xml"
+  },
+  "holds": [
+    "No original survey/35-wave/source rights, semantic issuer, all35 productivity, I05/Route B, N11/N12 or V3 qualification.",
+    "Original WG0K extracted15+4 script bytes remain an inherited archival limitation; exact original retained K11 was fully executed."
+  ],
+  "phase": "B_EXECUTED",
+  "phase_a_historical": {
+    "WG0P5_candidate_sha": null,
+    "at": "2026-10-17T04:14:02.667498+00:00",
+    "candidate_under_test": "20d781c8502662bf788b60b828e46df55898d687",
+    "frozen_roots": [
+      "observations/DESCRIPTOR_PREREGISTRATION_ROOT.json",
+      "observations/PRECOMMITTED_TEST_ROOT.json"
+    ],
+    "goal_disposition": "BLOCKED_AFTER_THREE_CONSECUTIVE_UNCHANGED_DEPENDENCY_TURNS",
+    "inherited_source_selector": "observations/inheritance_source_selector.json",
+    "latest_dependency_audit": "observations/gate_audit_turn3_blocked.json",
+    "phase": "A_BEFORE_ANY_WG0P5_REF_OR_SOURCE_READ",
+    "phase_b_gate": {
+      "WG0P5_code_imported": false,
+      "at": "2026-10-17T04:16:46.934984+00:00",
+      "branch": "agent/rabochii-pyat-r26-wg0p5-bound-descriptor-provenance-repair-r1",
+      "direct_remote_sha": "7e589c19c693c150d0cf622fc43e84bbc40d1b31",
+      "reason": "Remote is the sealed commission startup and has no WG0P5 return files.",
+      "return_path": "WORKER_RETURNS/PYAT-R26-WG0P5-DESCRIPTOR-PROVENANCE-REPAIR-R1/",
+      "returned_files": [],
+      "startup_sha": "7e589c19c693c150d0cf622fc43e84bbc40d1b31",
+      "status": "WAIT_FOR_GOVERNED_WG0P5_PUSH"
+    },
+    "physical_imports": {
+      "pre553_batch_runner": {
+        "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r26-wg0m-court/WORKER_RETURNS/PYAT-R26-WG0M-ORIGINAL-FRONTIER-INDEPENDENT-DELTA-R1/runtime_phase_b/candidate/pinned/rawlsing_next/pre553_batch_runner.py",
+        "sha256": "5071bde0180db05f59386884d5de2bdea503cd26db2024806a92887d2a5a1e04"
+      },
+      "pre553_c11_ingest": {
+        "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r26-wg0m-court/WORKER_RETURNS/PYAT-R26-WG0M-ORIGINAL-FRONTIER-INDEPENDENT-DELTA-R1/runtime_phase_b/candidate/pinned/rawlsing_next/pre553_c11_ingest.py",
+        "sha256": "0c56a0f6f656547a096982a6adab21c9b47d749385411a5d159f2b5390eec8bf"
+      },
+      "pre553_c11_integrity": {
+        "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r26-wg0m-court/WORKER_RETURNS/PYAT-R26-WG0M-ORIGINAL-FRONTIER-INDEPENDENT-DELTA-R1/runtime_phase_b/candidate/pinned/rawlsing_next/pre553_c11_integrity.py",
+        "sha256": "3963facef5c8ae2981991ffa8c5c5c9b717fb4e09f342eec277198fc5cf38a33"
+      },
+      "pre553_c11_repository": {
+        "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r26-wg0m-court/WORKER_RETURNS/PYAT-R26-WG0M-ORIGINAL-FRONTIER-INDEPENDENT-DELTA-R1/runtime_phase_b/candidate/pinned/rawlsing_next/pre553_c11_repository.py",
+        "sha256": "84a71fe43307cca30f9eeaaedb269d8390468a4744a0fac251aebc2cda7b498e"
+      },
+      "pre553_empirical_objects": {
+        "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r26-wg0m-court/WORKER_RETURNS/PYAT-R26-WG0M-ORIGINAL-FRONTIER-INDEPENDENT-DELTA-R1/runtime_phase_b/candidate/pinned/rawlsing_next/pre553_empirical_objects.py",
+        "sha256": "9cd1d71440a7e8c1861dda73274529e07211edc14335583e93ad91c0833e9ab4"
+      },
+      "pre553_empirical_query": {
+        "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r26-wg0m-court/WORKER_RETURNS/PYAT-R26-WG0M-ORIGINAL-FRONTIER-INDEPENDENT-DELTA-R1/runtime_phase_b/candidate/pinned/rawlsing_next/pre553_empirical_query.py",
+        "sha256": "d45ad313bc57e94c8c3652b4123c7cb03b0fc18d38d577aaaae94435664ef4cb"
+      }
+    },
+    "preregistration_pushed_sha": "17a71b27221a3334cd43358429c3ee1561f70f87",
+    "pytest": {
+      "errors": 0,
+      "exit": 1,
+      "failed": 19,
+      "failed_cases": [
+        "test_frozen_descriptor_source_integrity[descriptor/source_edition]",
+        "test_frozen_descriptor_source_integrity[descriptor/native_item_ids]",
+        "test_frozen_descriptor_source_integrity[descriptor/release_tag]",
+        "test_frozen_descriptor_source_integrity[descriptor/risk_name]",
+        "test_frozen_descriptor_source_integrity[descriptor/targets_other_form]",
+        "test_frozen_descriptor_source_integrity[descriptor/member_ids_same_cardinality]",
+        "test_frozen_descriptor_source_integrity[descriptor/member_ids_denominator_drop]",
+        "test_frozen_descriptor_source_integrity[descriptor/grant_withdrawn]",
+        "test_frozen_descriptor_source_integrity[descriptor/grant_foreign]",
+        "test_frozen_descriptor_source_integrity[descriptor/disposition_HELD]",
+        "test_frozen_descriptor_source_integrity[descriptor/full_identity_hash]",
+        "test_frozen_descriptor_source_integrity[descriptor/op_id]",
+        "test_frozen_descriptor_source_integrity[descriptor/target_domain_same_cardinality]",
+        "test_frozen_descriptor_source_integrity[source/release_source_artifact]",
+        "test_frozen_descriptor_source_integrity[copy/shallow_copied_plan]",
+        "test_frozen_descriptor_source_integrity[copy/copied_mapping]",
+        "test_bound_descriptor_cannot_change_served_provenance[source_edition-FORGED_CALLER_EDITION]",
+        "test_bound_descriptor_cannot_change_served_provenance[native_item_ids-forged1]",
+        "test_copied_release_descriptor_refused_before_native_query"
+      ],
+      "junit": "observations/phase_a_previous_P4.xml",
+      "passed": 17,
+      "skipped": 0,
+      "stdout": "observations/phase_a_previous_P4.stdout",
+      "tests": 36
+    },
+    "scope": "Only historical WG0P4 native synthetic execution; no WG0P5 source inspected and no repaired-candidate conclusion.",
+    "start": "b809dd46e4c0003cbef271fdb7490e93714e36fb"
+  },
+  "red": {
+    "frozen_case": "source/release_source_artifact",
+    "independent_positive_counterexample": "observations/P5_release_view_artifact_counterexample.json",
+    "next_edge": "Bind and verify the source snapshot view against actual native source material before registering/using it, or remove/explicitly type that redundant untrusted field under a new contract. Keep frozen expectations unchanged; new candidate requires fresh independent review.",
+    "observed_new_I03_calls": 4,
+    "observed_supported_consumer": true,
+    "observed_typed_refusal": null,
+    "precise_limit": "Actual sealed C11 artifact, native fact source/query identities and empirical values remain original/correct. The observed RED is failure of the preregistered contradictory-source-view admission rule, not evidence of fabricated native counts or reopening the original three served-provenance defects.",
+    "precompile_counterexample": "observations/P5_precompile_artifact_view_counterexample.json",
+    "raw_frozen_control": "observations/descriptor_runs/phase_b_P5/source__release_source_artifact.json",
+    "root_cause": "_release_material reads actual sealed C11 source_artifact_ref but omits the release view source_artifact_ref (a SOURCE_SNAPSHOT pointer), so that contradictory view can be copied or compiled without changing registered material/contract."
+  },
+  "results": {
+    "author26_reproduced": {
+      "errors": 0,
+      "failed": 0,
+      "failures": [],
+      "passed": 26,
+      "path": "observations/phase_b_P5_author26.xml",
+      "skipped": 0,
+      "tests": 26
+    },
+    "author69_historical29_36_reproduced": {
+      "historical_p2": {
+        "errors": 0,
+        "failed": 0,
+        "failures": [],
+        "passed": 29,
+        "path": "observations/P5_author_regression_reproduced/candidate_children/historical_p2.xml",
+        "skipped": 0,
+        "tests": 29
+      },
+      "historical_p3": {
+        "errors": 0,
+        "failed": 0,
+        "failures": [],
+        "passed": 36,
+        "path": "observations/P5_author_regression_reproduced/candidate_children/historical_p3.xml",
+        "skipped": 0,
+        "tests": 36
+      },
+      "wg0p4": {
+        "errors": 0,
+        "failed": 0,
+        "failures": [],
+        "passed": 69,
+        "path": "observations/P5_author_regression_reproduced/candidate_children/wg0p4.xml",
+        "skipped": 0,
+        "tests": 69
+      }
+    },
+    "core116": {
+      "errors": 0,
+      "failed": 1,
+      "failures": [
+        "test_frozen_descriptor_source_integrity[source/release_source_artifact]"
+      ],
+      "passed": 115,
+      "path": "observations/phase_b_P5_descriptor_and_owners_attempt1.xml",
+      "skipped": 0,
+      "tests": 116
+    },
+    "mandatory_court_total": {
+      "errors": 0,
+      "failed": 1,
+      "passed": 235,
+      "skipped": 0,
+      "tests": 236
+    },
+    "original65": {
+      "errors": 0,
+      "failed": 0,
+      "failures": [],
+      "passed": 65,
+      "path": "observations/phase_b_P5_original65_attempt1.xml",
+      "skipped": 0,
+      "tests": 65
+    },
+    "originalJ44_K11": {
+      "errors": 0,
+      "failed": 0,
+      "failures": [],
+      "passed": 55,
+      "path": "observations/phase_b_P5_original_J44_K11.xml",
+      "skipped": 0,
+      "tests": 55
+    },
+    "role_breakdown": {
+      "native_owner80": {
+        "failed": 0,
+        "passed": 80
+      },
+      "new_frozen_descriptor33": {
+        "failed": 1,
+        "passed": 32
+      },
+      "original65": {
+        "failed": 0,
+        "passed": 65
+      },
+      "originalJ44": {
+        "failed": 0,
+        "passed": 44
+      },
+      "originalK11": {
+        "failed": 0,
+        "passed": 11
+      },
+      "original_three_via_explicit_refusal_map": {
+        "failed": 0,
+        "passed": 3
+      }
+    }
+  },
+  "reviewer_harness_commit": "5e22c6c4b21cd052ccac8b1496c4a2939ed63761",
+  "schema": "WG0M_FINAL_P5_INDEPENDENT_COURT@1",
+  "scope": "Independent reviewer execution only; no author/native source edits or HQ adoption.",
+  "source_custody": {
+    "actual_imports": {
+      "pre553_batch_runner": {
+        "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r26-wg0m-court/WORKER_RETURNS/PYAT-R26-WG0M-ORIGINAL-FRONTIER-INDEPENDENT-DELTA-R1/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/pinned/rawlsing_next/pre553_batch_runner.py",
+        "git_blob_sha1": "2d291600b9a10c56d9c6f6de7f7d619f6c52e829",
+        "sha256": "5071bde0180db05f59386884d5de2bdea503cd26db2024806a92887d2a5a1e04"
+      },
+      "pre553_c11_ingest": {
+        "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r26-wg0m-court/WORKER_RETURNS/PYAT-R26-WG0M-ORIGINAL-FRONTIER-INDEPENDENT-DELTA-R1/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/pinned/rawlsing_next/pre553_c11_ingest.py",
+        "git_blob_sha1": "37cd35fa2e3420a3eea272a2902e96ab9ba38aba",
+        "sha256": "0c56a0f6f656547a096982a6adab21c9b47d749385411a5d159f2b5390eec8bf"
+      },
+      "pre553_c11_integrity": {
+        "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r26-wg0m-court/WORKER_RETURNS/PYAT-R26-WG0M-ORIGINAL-FRONTIER-INDEPENDENT-DELTA-R1/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/pinned/rawlsing_next/pre553_c11_integrity.py",
+        "git_blob_sha1": "7c59aa13a2b7c8e3ab0dc90a1400df645b0b4bbd",
+        "sha256": "3963facef5c8ae2981991ffa8c5c5c9b717fb4e09f342eec277198fc5cf38a33"
+      },
+      "pre553_c11_repository": {
+        "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r26-wg0m-court/WORKER_RETURNS/PYAT-R26-WG0M-ORIGINAL-FRONTIER-INDEPENDENT-DELTA-R1/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/pinned/rawlsing_next/pre553_c11_repository.py",
+        "git_blob_sha1": "67c6eb6494522cd11aab1b93d0e73f9cef6036f3",
+        "sha256": "84a71fe43307cca30f9eeaaedb269d8390468a4744a0fac251aebc2cda7b498e"
+      },
+      "pre553_empirical_objects": {
+        "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r26-wg0m-court/WORKER_RETURNS/PYAT-R26-WG0M-ORIGINAL-FRONTIER-INDEPENDENT-DELTA-R1/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/pinned/rawlsing_next/pre553_empirical_objects.py",
+        "git_blob_sha1": "a61365b994e5c3c50de0f598fcf40e90abf757b6",
+        "sha256": "9cd1d71440a7e8c1861dda73274529e07211edc14335583e93ad91c0833e9ab4"
+      },
+      "pre553_empirical_query": {
+        "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r26-wg0m-court/WORKER_RETURNS/PYAT-R26-WG0M-ORIGINAL-FRONTIER-INDEPENDENT-DELTA-R1/runtime_phase_b/p5_return/review/runtime_phase_b/candidate/pinned/rawlsing_next/pre553_empirical_query.py",
+        "git_blob_sha1": "03facecf70890bfd13b80418620d274cbcd69d02",
+        "sha256": "d45ad313bc57e94c8c3652b4123c7cb03b0fc18d38d577aaaae94435664ef4cb"
+      }
+    },
+    "actual_module_passport": "observations/P5_physical_module_passport.json",
+    "all27_pinned_inputs_equal_original": "observations/P5_all_pinned_sources_equal_original.json",
+    "all_frozen_roots_unchanged": true,
+    "cut": "observations/WG0P5_candidate_read_cut.json",
+    "exact_staged_return_files_verified": 78,
+    "historical_inherited_files_unchanged": 88,
+    "original_P4_staging_preserved": true
+  },
+  "terminal_exits": {
+    "author26": 0,
+    "author_inputs_and_author_launcher": 0,
+    "core116": 1,
+    "inherited_prepare": 0,
+    "original65": 0,
+    "originalJ44_K11": 0
+  },
+  "three_prior_WG0L_REDs": "CLOSED_BY_ACTUAL_EARLY_TYPED_REFUSAL_WITH_ZERO_I03",
+  "verdict": "RED_ONE_PREREGISTERED_RELEASE_VIEW_SOURCE_REFERENCE_ADMISSION_GAP"
+}
