@@ -1,0 +1,16 @@
+{
+  "schema":"SOROK_ONECALL_C0F_BROWSER_PHASE_A_ENVIRONMENT@1",
+  "evidence_grade":"FRESH_SOURCEFREE_PREREG_REFERENCE_ONLY",
+  "runtime":{"python":"3.13.5","pytest":"9.0.2","git":"2.47.3","filesystem":"VERIFIED","subprocess":"VERIFIED","private_git_checkout":"NOT_MOUNTED","local_git_remote_probe":"COULD_NOT_RESOLVE_HOST_GITHUB_COM","github_connector":"VERIFIED_PRIVATE_READ_AND_COMMISSIONED_BRANCH_WRITE"},
+  "source_materialization":"AUTHOR_C0_NONE_BEFORE_FREEZE",
+  "local_test_command":"python -B -m pytest -q --disable-warnings --junitxml=phase_a_reference_junit.xml test_phase_a_oracle.py",
+  "local_test_count":45,
+  "local_test_failures":0,
+  "cold_real_processes":2,
+  "real_model_api_calls":0,
+  "native_actor_owner_calls":0,
+  "permissions":"BOUNDED_TEST_ONLY_NO_ACTOR_OR_SOURCE",
+  "cash_known":null,"quota_known":null,"provider_model_access":"NOT_USED",
+  "next_affinity":"C0_POST_AUTHOR_INDEPENDENT_FALSIFICATION_AFTER_FROZEN_SHA",
+  "reviewer_role":"NOT_AUTHOR_NOT_HQ_NOT_ISSUER"
+}
