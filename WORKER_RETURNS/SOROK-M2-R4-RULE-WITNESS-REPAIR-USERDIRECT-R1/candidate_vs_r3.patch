@@ -1,0 +1,50 @@
+--- R3/9c1ab2fa/candidate/kernel.py
++++ R4/candidate/kernel.py
+@@ -5,11 +5,13 @@
+ import json
+ 
+ GRADE = 'TEST_ONLY_M1_SOURCE_TIME_REPAIR_CANDIDATE_PENDING_I2'
+-RULE = 'M2_INTERPRETATION_SOURCE_TEMPORAL_IDENTITY@0.4.1_CANDIDATE'
++RULE = 'M2_INTERPRETATION_SOURCE_TEMPORAL_IDENTITY@0.4.2_CANDIDATE'
+ RULE_CONTRACT = {'name':RULE,'clock':'no_future_read','history':'independent_fixture_witness',
+                  'speech':'actual_action_plus_listener_exposure','lineage':'objective_and_consumed_source_preimages',
+                  'relation':'exact_consumed_relevance_history_and_witness',
+                  'counterpart':'other_actor_action_owner_bound_to_observation_and_relevance',
++                 'counterpart_witness':'event_relevance_history_observers_independent_of_action_owner',
++                 'lineage_rule':'each_retained_version_requires_current_qualified_rule_hash_no_implicit_migration',
+                  'outcome':'candidate_only','no_change':'unchanged_psychology_separate_audit'}
+ MODES = ('REATTRIBUTE','NARROW','GENERALIZE','REINFORCE','CONTRADICT','DIFFERENTIATE','NO_CHANGE')
+ STANCES = ('ACCEPT','REJECT','SUSPEND')
+@@ -278,6 +280,9 @@
+         data=asdict(rec);data.pop('hash')
+         require(digest(data)==rec.hash and rec.actor==state.actor
+                 and rec.version==index+1,'LINEAGE_INTEGRITY_FAILURE')
++        # A self-consistent content digest does not authorize an arbitrary rule.
++        # Earlier rule/schema records require a separately authorized migration.
++        require(rec.rule_hash==RULE_HASH,'HISTORICAL_RULE_IDENTITY_UNQUALIFIED')
+         require(rec.previous_hash==(state.lineage[index-1].hash if index else None),
+                 'LINEAGE_PARENT_INVALID')
+         original=evs.get(rec.original_event_id)
+@@ -299,17 +304,20 @@
+ 
+ def _relation_sources(scene,actor_id,e,orig):
+     """Return the exact qualified alternatives used by the relation gate."""
+-    if e.kind not in ('ENCOUNTER','ACTION') or not e.action_owner or e.action_owner==actor_id:return ()
++    if (e.kind not in ('ENCOUNTER','ACTION') or not e.action_owner
++            or e.action_owner==actor_id or e.observer==e.action_owner):return ()
+     out=[]
+     for x in scene.relevance:
+         if x.actor!=actor_id or x.later_event_id!=e.id or x.earlier_event_id!=orig.id:continue
+         if (x.issuer!=TEST_RELEVANCE_ISSUER or x.later_event_hash!=objective_event_hash(e)
+                 or x.earlier_event_hash!=objective_event_hash(orig) or x.time>e.time
+                 or x.observed_action_owner!=e.action_owner
+-                or x.observer==actor_id or x.observer not in {a.id for a in scene.actors}):continue
++                or x.observer in (actor_id,e.action_owner)
++                or x.observer not in {a.id for a in scene.actors}):continue
+         witness=next((h for h in actor(scene,actor_id).history if h.id==x.observed_history_id),None)
+         if (witness and witness.witnessed and witness.time==e.time and x.time==e.time
+                 and witness.observed_action_owner==e.action_owner
++                and _history_source(scene,witness).observer!=e.action_owner
+                 and witness.activity=='observed_counterpart_action:'+str(e.action)
+                 and _history_source(scene,witness).operation=='OBSERVED_RELATIONAL_DIFFERENCE'):
+             out.append((x,witness,_history_source(scene,witness)))
