@@ -1,0 +1,45 @@
+{
+  "candidate": "4076dcc7c944723b8eea449c0753e535b79d1aa5",
+  "findings": [
+    {
+      "failure": "same actor/object/time accepts conflicting physical slots under distinct source IDs",
+      "grade": "REVISE_RESEARCH_CANON_CONSISTENCY; HOLD_NATIVE_GENERALIZATION",
+      "id": "I2-F01",
+      "preserve": [
+        "nonunique compatible realization",
+        "immutable source preimages",
+        "single-trajectory execution"
+      ],
+      "result": "RED",
+      "test": "test_same_actor_object_at_same_time_cannot_occupy_two_places",
+      "threat": "two public admit calls; no private history or accepted-preimage modification"
+    },
+    {
+      "failure": "resolved presence contradicts selected shared-attention event yet admits",
+      "grade": "CONDITIONAL_PRODUCER_TRUST_BOUNDARY",
+      "id": "I2-F02",
+      "required_choice": "validate qualified content-bound producer receipt/restrict ingress or provide ingress consistency court; do not assert ordinary producer is corrupt",
+      "result": "RED",
+      "test": "test_inconsistent_producer_frame_not_a_validated_computed_transition",
+      "threat": "untrusted initial producer frame, not arbitrary admitted-history rewrite"
+    }
+  ],
+  "original_six_unchanged": true,
+  "positive_probes": 4,
+  "preregistration": {
+    "candidate_commit": "4076dcc7c944723b8eea449c0753e535b79d1aa5",
+    "original_six": "untouched and separately rerun",
+    "positive_discriminators": [
+      "workplace relabel invariance",
+      "real canon field drives task with permitted numerical convergence",
+      "deepcopy source isolation",
+      "ordinary evolution with unchanged fields"
+    ],
+    "safety_expectations": [
+      "same-object same-time mutually exclusive canon admission must refuse",
+      "untrusted contradictory computed source must refuse (conditional producer boundary)"
+    ],
+    "stage": "FROZEN_BEFORE_FIRST_NEW_PROBE_EXECUTION",
+    "suite_sha256": "7e258dc0d4ef08225496956389e1239ca641af0a71cbdfe72c28292a52daf1ba"
+  }
+}

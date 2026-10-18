@@ -1,0 +1,531 @@
+# v3_config.yaml
+# Tuning/config layer for v3 backbone engine.
+# Keep code generic: read this file, run yearly_step order, apply caps/friction/gates.
+
+meta:
+  version: "3.0-v0"
+  notes: >
+    v0 charter: runnable, conservative, falsifiable. Indices are rough.
+    Phenomenology/v2 rendering is downstream and must not mutate backbone state directly.
+    LLM-band mutations are allowed only through code-mediated, provenance-tracked deltas.
+
+scales:
+  default_min: 0
+  default_max: 100
+  clamp_all_numeric: true
+
+enums:
+  loop_topology: [reciprocal, extractive, self_contained]
+  solidarity_boundary: [none, transactional, in_group, expanding, universal]
+  theory_of_change_style:
+    [
+      witness_exposure,
+      mass_nonviolent_disruption,
+      armed_deterrence,
+      armed_insurrection,
+      institution_building
+    ]
+  cracks:
+    types:
+      [
+        shame_core,
+        rage_core,
+        dissociation,
+        nihilism,
+        intimacy_avoidance,
+        authority_fixation,
+        performance_compulsion,
+        moral_alibi
+      ]
+  buffers:
+    types:
+      [
+        piety,
+        ideology,
+        craft,
+        intimacy,
+        work,
+        intoxication,
+        status,
+        family_role,
+        health_regimen,
+        escapism
+      ]
+
+stored_state_schema:
+  # This is for your dataclass generation / validation.
+  # Code should treat these as persisted year-to-year fields.
+  capacity:
+    fields:
+      time: {min: 0, max: 100}
+      money: {min: 0, max: 100}
+      health: {min: 0, max: 100}
+      social_support: {min: 0, max: 100}
+      skill: {min: 0, max: 100}
+      mobility: {min: 0, max: 100}
+      risk_tolerance: {min: 0, max: 100}
+      legitimacy: {min: 0, max: 100}
+  reproduction_constraints:
+    fields:
+      dependents: {min: 0, max: 100}
+      housing_insecurity: {min: 0, max: 100}
+      legal_insecurity: {min: 0, max: 100}   # 0 = secure, 100 = precarious
+      debt: {min: 0, max: 100}
+      job_insecurity: {min: 0, max: 100}
+      caregiving_load: {min: 0, max: 100}
+
+  domains:
+    # A/S/V/Aim per domain.
+    # You can expand domains later, but keep these 3 for SL baseline.
+    domain_names: [empire_occupation, nation_state, sect_class_ethnicity]
+    fields:
+      A: {min: 0, max: 100}
+      S: {min: 0, max: 100}
+      V: {min: 0, max: 100}
+      Aim: {min: 0, max: 100}
+
+  alienation: {min: 0, max: 100}
+
+  cracks:
+    max_total: 8
+    max_active: 3
+    crack_fields:
+      type: {enum: "cracks.types"}
+      intensity: {min: 0, max: 100}
+      latent_pressure: {min: 0, max: 100}
+      active: {type: bool}
+      origin_year: {type: int}
+
+  buffers:
+    max_total: 8
+    buffer_fields:
+      type: {enum: "buffers.types"}
+      strength: {min: 0, max: 100}
+      # cost profile is used by yearly update to reduce capacity, raise alienation, etc.
+      cost_profile:
+        time_cost: {min: 0, max: 100}
+        money_cost: {min: 0, max: 100}
+        relational_cost: {min: 0, max: 100}
+        truth_cost: {min: 0, max: 100}
+
+  frameworks:
+    max_active: 6
+    weights_scale: {min: 0, max: 100}
+    # Framework registry is external to config; here only caps + update rules.
+
+  collective_infrastructure:
+    fields:
+      network_density: {min: 0, max: 100}
+      org_discipline: {min: 0, max: 100}
+      resource_pool: {min: 0, max: 100}
+      repression_pressure: {min: 0, max: 100}
+      elite_splits: {min: 0, max: 100}
+
+  practice_stack:
+    fields:
+      study: {min: 0, max: 100}
+      care: {min: 0, max: 100}
+      organizing: {min: 0, max: 100}
+      craft: {min: 0, max: 100}
+      spiritual: {min: 0, max: 100}
+      risk_training: {min: 0, max: 100}
+
+  peak_routing:
+    loop_topology: {enum: "enums.loop_topology"}
+    solidarity_boundary: {enum: "enums.solidarity_boundary"}
+    harm_constraint: {min: 0, max: 100}          # very high => Jesus posture
+    rage_metabolization: {min: 0, max: 100}      # high => disciplined rage
+    theory_of_change_style: {enum: "enums.theory_of_change_style"}
+    coherence: {min: 0, max: 100}
+    impunity_access: {min: 0, max: 100}
+    appetite_profile:
+      fields:
+        status: {min: 0, max: 100}
+        control: {min: 0, max: 100}
+        sensuality: {min: 0, max: 100}
+        care: {min: 0, max: 100}
+
+  intensity_and_capture:
+    intensity: {min: 0, max: 100}
+    craft_talent: {min: 0, max: 100}
+    opportunity_access: {min: 0, max: 100}
+    attention_field_exposure: {min: 0, max: 100}
+    capture_pressure: {min: 0, max: 100}
+
+derived_indices:
+  # Indices computed each year. Do not store in state unless you want caching.
+  hostage_index:
+    formula: weighted_sum
+    weights:
+      dependents: 0.25
+      housing_insecurity: 0.20
+      legal_insecurity: 0.15
+      debt: 0.15
+      job_insecurity: 0.15
+      caregiving_load: 0.10
+
+  insulation_score:
+    formula: topk_buffers_plus_money
+    topk: 3
+    weights:
+      buffers_strength: 0.70
+      money: 0.30
+
+  structural_lucidity_SL:
+    formula: domain_lucidity_average
+    domains: [empire_occupation, nation_state, sect_class_ethnicity]
+    domain_lucidity:
+      formula: A_minus_insulation_plus_viscerality
+      weights:
+        A: 1.00
+        insulation_score: -0.40
+        V: 0.20
+
+  agency_capacity_AC:
+    formula: weighted_sum_minus_hostage
+    base_weights:
+      time: 0.20
+      money: 0.15
+      health: 0.15
+      social_support: 0.15
+      skill: 0.10
+      mobility: 0.10
+      risk_tolerance: 0.10
+      legitimacy: 0.05
+    hostage_penalty_multiplier: 0.50
+
+  mis_aim_risk:
+    formula: weighted_components
+    components:
+      alienation: 0.40
+      hostage_index: 0.30
+      organizing_deficit: 0.30   # (100 - practice_stack.organizing)
+
+peak_gates:
+  # Controls rarity of "peak regime" eligibility.
+  peak_regime:
+    conditions:
+      SL_min: 75
+      AC_min: 75
+      hostage_index_max: 40
+    coherence_min_years: 2
+    coherence_min_value: 70
+
+# Che/Jesus gating (starter_engine): peak_regime AND liberatory orientation. Base rates: high SL+AC+liberatory extremely uncommon.
+che_jesus_gates:
+  require_liberatory_orientation: true
+  SL_min: 75
+  AC_min: 75
+  hostage_index_max: 40
+  coherence_min: 70
+  # base_rate_note: "Engine should produce Che/Jesus outcomes rarely; default outputs = insulation, mis-aim, managed despair, or predation."
+
+delta_caps:
+  # Annual caps unless shock overrides.
+  frameworks_weights: 15
+  domain_A: 10
+  domain_S: 10
+  domain_V: 10
+  domain_Aim: 10
+  alienation: 15
+  capacity_fields: 20
+  reproduction_constraints_fields: 20
+  buffer_strength: 20
+  practice_fields: 15
+  infrastructure_fields: 15
+  intensity: 10
+  attention_exposure: 15
+  capture_pressure: 15
+  coherence: 10
+  harm_constraint: 8
+  rage_metabolization: 10
+  impunity_access: 10
+
+hysteresis:
+  # Sticky transitions to prevent ping-pong.
+  loop_topology:
+    required_consecutive_years: 2
+    transitions:
+      to_reciprocal:
+        requires:
+          network_density_min: 60
+          organizing_min: 60
+          solidarity_boundary_not: [none]
+      to_extractive:
+        requires:
+          money_min: 70
+          social_support_min: 50
+          solidarity_boundary_in: [none, transactional]
+          mis_aim_risk_min: 60
+          impunity_access_min: 50
+      to_self_contained:
+        requires:
+          craft_or_study_min: 60
+          network_density_max: 40
+          solidarity_boundary_in: [transactional, in_group, expanding]
+        or_if:
+          hostage_index_min: 60
+
+  solidarity_boundary:
+    max_step_per_year: 1
+    order: [none, transactional, in_group, expanding, universal]
+    reversal_requires_any:
+      - repression_pressure_min: 70
+      - hostage_index_min: 70
+      - shock_override: true
+
+cracks_rules:
+  spawn:
+    intensity_on_spawn: 30
+    spawn_if_room: true
+  annual_update:
+    # If contradiction_pressure > insulation_score, intensify or spawn.
+    intensify_range: [10, 20]
+    latent_decay_if_insulated: 8
+    activation_threshold: 40
+    deactivation_threshold: 25
+  brittleness:
+    # Allow periods with low active cracks if insulation is high,
+    # but store latent pressure so later shocks can rupture quickly.
+    allow_low_active_if_insulation_min: 70
+    require_latent_pressure_min: 30
+
+attention_system:
+  # How attention and capture evolve.
+  attention_exposure:
+    # Rough v0: attention rises with opportunity + talent + intensity, and with signal events.
+    base_formula: weighted_sum
+    weights:
+      opportunity_access: 0.40
+      craft_talent: 0.35
+      intensity: 0.25
+    annual_noise_range: [-5, 5]
+  capture_pressure:
+    # Capture rises when attention is high and solidarity infrastructure is low.
+    base_formula: attention_minus_infrastructure
+    weights:
+      attention_field_exposure: 0.70
+      org_discipline: -0.20
+      network_density: -0.10
+    floor_at_attention_min: 50   # below this attention, capture can be near zero.
+
+  effects:
+    # Attention increases AC components but increases mis-aim risk unless stabilized.
+    ac_bonus:
+      money_bonus_multiplier: 0.20    # attention * multiplier
+      mobility_bonus_multiplier: 0.10
+      legitimacy_bonus_multiplier: 0.10
+    mis_aim_bonus:
+      capture_pressure_multiplier: 0.25
+      attention_multiplier: 0.10
+    topology_drift:
+      # When attention & capture are high, reciprocal is harder to maintain.
+      reciprocal_stability_penalty_if:
+        attention_min: 70
+        capture_min: 60
+      penalty:
+        increase_required_consecutive_years: 1  # e.g., 2 -> 3 years for reciprocal retention
+        raise_to_reciprocal_network_density_min: 10
+        raise_to_reciprocal_organizing_min: 10
+
+strategy_and_signal:
+  # Signal effects are applied after topology/boundary update.
+  audiences: [in_group, neutral_public, out_group, security_apparatus, international]
+  signal_vector_fields: [morale, recruitment, legitimacy, fear, defections, repression_justification]
+
+  # Default signal profiles (v0 heuristics). Values are deltas in [-20, +20] before caps.
+  default_profiles:
+    witness_exposure:
+      in_group: {morale: 8, recruitment: 4, legitimacy: 6, fear: -2, defections: 2, repression_justification: 4}
+      neutral_public: {morale: 2, recruitment: 1, legitimacy: 10, fear: -3, defections: 3, repression_justification: 5}
+      out_group: {morale: -2, recruitment: -1, legitimacy: -4, fear: 3, defections: -1, repression_justification: 2}
+      security_apparatus: {morale: -1, recruitment: -1, legitimacy: -2, fear: 2, defections: 6, repression_justification: 3}
+      international: {morale: 2, recruitment: 1, legitimacy: 10, fear: -2, defections: 3, repression_justification: 4}
+
+    mass_nonviolent_disruption:
+      in_group: {morale: 10, recruitment: 8, legitimacy: 6, fear: -1, defections: 2, repression_justification: 6}
+      neutral_public: {morale: 4, recruitment: 4, legitimacy: 8, fear: 0, defections: 3, repression_justification: 7}
+      out_group: {morale: -4, recruitment: -2, legitimacy: -3, fear: 4, defections: -1, repression_justification: 4}
+      security_apparatus: {morale: -2, recruitment: -1, legitimacy: -2, fear: 4, defections: 5, repression_justification: 6}
+      international: {morale: 3, recruitment: 2, legitimacy: 8, fear: 0, defections: 3, repression_justification: 5}
+
+    armed_deterrence:
+      in_group: {morale: 8, recruitment: 4, legitimacy: 0, fear: 2, defections: 0, repression_justification: 8}
+      neutral_public: {morale: 0, recruitment: 0, legitimacy: -3, fear: 5, defections: 1, repression_justification: 10}
+      out_group: {morale: -3, recruitment: -2, legitimacy: -5, fear: 8, defections: -1, repression_justification: 6}
+      security_apparatus: {morale: -2, recruitment: -1, legitimacy: -4, fear: 6, defections: 2, repression_justification: 9}
+      international: {morale: 0, recruitment: 0, legitimacy: -2, fear: 4, defections: 1, repression_justification: 8}
+
+    armed_insurrection:
+      in_group: {morale: 10, recruitment: 6, legitimacy: -2, fear: 3, defections: 0, repression_justification: 12}
+      neutral_public: {morale: -2, recruitment: -1, legitimacy: -6, fear: 8, defections: 0, repression_justification: 15}
+      out_group: {morale: -6, recruitment: -4, legitimacy: -8, fear: 12, defections: -2, repression_justification: 10}
+      security_apparatus: {morale: -4, recruitment: -2, legitimacy: -6, fear: 10, defections: 1, repression_justification: 14}
+      international: {morale: -2, recruitment: -1, legitimacy: -5, fear: 7, defections: 0, repression_justification: 12}
+
+    institution_building:
+      in_group: {morale: 6, recruitment: 6, legitimacy: 4, fear: -1, defections: 1, repression_justification: 2}
+      neutral_public: {morale: 3, recruitment: 3, legitimacy: 6, fear: -1, defections: 1, repression_justification: 2}
+      out_group: {morale: -1, recruitment: -1, legitimacy: -2, fear: 1, defections: 0, repression_justification: 1}
+      security_apparatus: {morale: -1, recruitment: -1, legitimacy: -1, fear: 1, defections: 1, repression_justification: 1}
+      international: {morale: 2, recruitment: 2, legitimacy: 5, fear: -1, defections: 1, repression_justification: 1}
+
+  signal_caps:
+    max_abs_delta_per_field: 15
+
+  signal_application:
+    # Map signal vectors into concrete state changes.
+    # These multipliers convert signal deltas into state updates.
+    to_infrastructure:
+      morale_to_network_density: 0.30
+      recruitment_to_network_density: 0.40
+      defections_to_elite_splits: 0.50
+      repression_justification_to_repression_pressure: 0.50
+    to_person:
+      legitimacy_to_solidarity_boundary_shift_bias: 0.10
+      fear_to_rage_metabolization_penalty: 0.10
+
+invariants:
+  # Tests that must always pass (or be explicitly overridden by debug mode).
+  # repair_min_counts: ensure min cracks/frameworks before steps so invariants can hold.
+  repair_min_counts: true
+  # assert_after_year: run full backbone invariants (incl. expressed_aim gating) after each year.
+  assert_after_year: true
+  hard:
+    - "all_numeric_fields_clamped_0_100"
+    - "len(cracks) <= cracks.max_total"
+    - "active_cracks_count <= cracks.max_active"
+    - "len(buffers) <= buffers.max_total"
+    - "derived_indices_not_persisted_unless_cached"
+    - "events_do_not_directly_set_domains_or_topology"
+    - "yearly_step_order_is_respected"
+  soft:
+    # Use soft checks as warnings; log when violated.
+    - "peak_regime_rate_under_1_percent_in_population_runs"
+
+rendering_contract:
+  # v2/LLM layer rules
+  llm_role:
+    - "render narrative and phenomenology using backbone state"
+    - "may propose candidate deltas that code applies with provenance and caps"
+  prohibited:
+    - "unprovenanced mutation of backbone state by LLM output"
+    - "bypassing caps, hysteresis, or gates"
+
+
+# --- STYLE TRAITS MODULE ---
+# Orthogonal to backbone. Used only by render/phenomenology layer.
+# Purpose: ensure normal, goofy, vivid humans are the default.
+
+style_traits:
+  fields:
+    playfulness: {min: 0, max: 100}
+    novelty_seeking: {min: 0, max: 100}
+    conscientiousness: {min: 0, max: 100}
+    social_energy: {min: 0, max: 100}
+    absurdist_humor: {min: 0, max: 100}
+    aesthetic_sensitivity: {min: 0, max: 100}
+    impulsivity: {min: 0, max: 100}
+
+style_drift:
+  # Personality vibe changes slowly across years.
+  annual_delta_cap: 5
+  shock_override_cap: 10
+
+style_event_modifiers:
+  # How life events can nudge vibe (small effects).
+  burnout:
+    playfulness: -5
+    social_energy: -6
+    impulsivity: -3
+  recovery_period:
+    playfulness: +4
+    social_energy: +4
+  new_romance:
+    playfulness: +6
+    novelty_seeking: +4
+    impulsivity: +4
+  parenting_new_child:
+    conscientiousness: +6
+    social_energy: -3
+    novelty_seeking: -2
+  artistic_breakthrough:
+    aesthetic_sensitivity: +5
+    playfulness: +3
+  humiliation_event:
+    absurdist_humor: +4    # humor as coping
+    social_energy: -4
+
+render_guidelines:
+  # Mapping style traits → voice/behavior tendencies.
+  # Used by LLM rendering layer only; never mutates backbone.
+
+  playfulness:
+    high:
+      voice: ["jokes easily", "light teasing", "warm sarcasm", "playful metaphors"]
+      behavior: ["initiates fun", "likes games", "silliness in safe contexts"]
+    low:
+      voice: ["serious tone", "literal phrasing", "minimal banter"]
+      behavior: ["rare joking", "task-focused interactions"]
+
+  novelty_seeking:
+    high:
+      voice: ["excited by new ideas", "future-oriented", "trend curious"]
+      behavior: ["tries hobbies", "switches interests", "experiments socially"]
+    low:
+      voice: ["routine valuing", "nostalgic tone"]
+      behavior: ["prefers familiarity", "stable habits"]
+
+  conscientiousness:
+    high:
+      voice: ["organized language", "plans and lists", "structured thinking"]
+      behavior: ["reliable", "early planning", "task completion"]
+    low:
+      voice: ["loose phrasing", "digressions"]
+      behavior: ["lateness", "messiness", "spontaneity"]
+
+  social_energy:
+    high:
+      voice: ["storytelling", "references people often"]
+      behavior: ["seeks gatherings", "large friend networks"]
+    low:
+      voice: ["reflective tone", "shorter interactions"]
+      behavior: ["prefers solitude", "small circles"]
+
+  absurdist_humor:
+    high:
+      voice: ["weird metaphors", "deadpan nonsense", "memetic phrasing"]
+      behavior: ["inside jokes", "ironic play"]
+    low:
+      voice: ["literal humor", "situational jokes only"]
+
+  aesthetic_sensitivity:
+    high:
+      voice: ["sensory language", "imagery", "music/art references"]
+      behavior: ["curates spaces", "emotional reaction to art"]
+    low:
+      voice: ["utilitarian descriptions"]
+
+  impulsivity:
+    high:
+      voice: ["fast topic shifts", "excited bursts"]
+      behavior: ["risk taking", "last-minute decisions"]
+    low:
+      voice: ["measured pacing"]
+      behavior: ["deliberate choices"]
+
+# Striving objects: spawn and update (ChatGPT full adoption)
+striving:
+  max_new_per_year: 2
+  use_budget_by_age: true
+  use_weighted_axis: true
+  retire_prob: 0.35
+
+render_contract_addendum:
+  # Guardrail: prevents “everyone sounds like a theorist”.
+  rules:
+    - "Backbone variables must NOT be referenced unless contextually triggered."
+    - "Every character must exhibit at least 3 style-trait behaviors in ordinary scenes."
+    - "At least 70% of daily-life scenes should contain no political or structural language."
+    - "Humor, relationships, hobbies, and mundane concerns must dominate everyday output."
+    - "Structural lucidity appears primarily during stress, conflict, or reflective moments."

@@ -1,0 +1,442 @@
+{
+  "source": "sources/legacy/v3/core/state.py",
+  "sha256": "19e968d45e9d81eb7629f1c237dbc55119fec8fc7db0b29e2b39b2476d12ada2",
+  "classes": [
+    {
+      "name": "Capacity",
+      "fields": [
+        "time",
+        "money",
+        "health",
+        "social_support",
+        "skill",
+        "mobility",
+        "risk_tolerance",
+        "legitimacy"
+      ],
+      "line": 18
+    },
+    {
+      "name": "PsychologicalCapacity",
+      "fields": [
+        "vitality",
+        "aperture",
+        "reality_anchor",
+        "binding",
+        "coherence",
+        "agency",
+        "transmutation"
+      ],
+      "line": 41
+    },
+    {
+      "name": "ReproductionConstraints",
+      "fields": [
+        "dependents",
+        "housing_insecurity",
+        "legal_status",
+        "debt",
+        "job_insecurity",
+        "caregiving_load"
+      ],
+      "line": 58
+    },
+    {
+      "name": "DomainState",
+      "fields": [
+        "A",
+        "S",
+        "V",
+        "Aim",
+        "latent_aim",
+        "expressed_aim",
+        "baseline_load",
+        "expression_rate",
+        "activation_threshold",
+        "affect_channel",
+        "buffer_type",
+        "puncture_counter",
+        "puncture_years_since_last"
+      ],
+      "line": 72
+    },
+    {
+      "name": "AlienationVector",
+      "fields": [
+        "distant_others",
+        "near_others",
+        "self",
+        "moral_totality"
+      ],
+      "line": 95
+    },
+    {
+      "name": "Registers",
+      "fields": [
+        "public_expression_gate",
+        "private_expression_gate",
+        "inner_load"
+      ],
+      "line": 114
+    },
+    {
+      "name": "WoundVector",
+      "fields": [
+        "shame",
+        "fear",
+        "anger",
+        "abandonment",
+        "control",
+        "recognition",
+        "loss",
+        "default_coping_channels"
+      ],
+      "line": 130
+    },
+    {
+      "name": "Crack",
+      "fields": [
+        "type",
+        "intensity",
+        "latent_pressure",
+        "active",
+        "origin_year"
+      ],
+      "line": 151
+    },
+    {
+      "name": "BufferCostProfile",
+      "fields": [
+        "time_cost",
+        "money_cost",
+        "relational_cost",
+        "truth_cost"
+      ],
+      "line": 164
+    },
+    {
+      "name": "Buffer",
+      "fields": [
+        "type",
+        "strength",
+        "cost_profile"
+      ],
+      "line": 176
+    },
+    {
+      "name": "Framework",
+      "fields": [
+        "id",
+        "weight",
+        "acute_delta",
+        "chronic_delta",
+        "half_life_years",
+        "failure_mode",
+        "enemy_requirement",
+        "institutional_affinities",
+        "tenure_years"
+      ],
+      "line": 187
+    },
+    {
+      "name": "Magnet",
+      "fields": [
+        "id",
+        "magnet_type",
+        "label",
+        "intensity",
+        "tenure_years"
+      ],
+      "line": 205
+    },
+    {
+      "name": "CollectiveInfrastructure",
+      "fields": [
+        "network_density",
+        "org_discipline",
+        "resource_pool",
+        "repression_pressure",
+        "elite_splits"
+      ],
+      "line": 218
+    },
+    {
+      "name": "PracticeStack",
+      "fields": [
+        "study",
+        "care",
+        "organizing",
+        "craft",
+        "spiritual",
+        "risk_training"
+      ],
+      "line": 231
+    },
+    {
+      "name": "AppetiteProfile",
+      "fields": [
+        "status",
+        "control",
+        "sensuality",
+        "care"
+      ],
+      "line": 245
+    },
+    {
+      "name": "PeakRouting",
+      "fields": [
+        "loop_topology",
+        "solidarity_boundary",
+        "harm_constraint",
+        "rage_metabolization",
+        "theory_of_change_style",
+        "coherence",
+        "impunity_access",
+        "appetite_profile",
+        "topology_hysteresis_years"
+      ],
+      "line": 257
+    },
+    {
+      "name": "IntensityAndCapture",
+      "fields": [
+        "intensity",
+        "craft_talent",
+        "opportunity_access",
+        "attention_field_exposure",
+        "capture_pressure"
+      ],
+      "line": 276
+    },
+    {
+      "name": "StyleTraits",
+      "fields": [
+        "playfulness",
+        "novelty_seeking",
+        "conscientiousness",
+        "social_energy",
+        "absurdist_humor",
+        "aesthetic_sensitivity",
+        "impulsivity"
+      ],
+      "line": 289
+    },
+    {
+      "name": "StrivingObject",
+      "fields": [
+        "id",
+        "label",
+        "need_axis",
+        "started_age",
+        "investment",
+        "identity_load",
+        "feasibility_belief",
+        "social_support",
+        "recent_momentum",
+        "tags",
+        "secrecy",
+        "costs",
+        "active"
+      ],
+      "line": 313
+    },
+    {
+      "name": "GiftShard",
+      "fields": [
+        "id",
+        "year",
+        "age",
+        "need_axis",
+        "striving_object_id",
+        "label",
+        "valence",
+        "prediction_error",
+        "opacity"
+      ],
+      "line": 339
+    },
+    {
+      "name": "DisruptionShard",
+      "fields": [
+        "id",
+        "year",
+        "age",
+        "need_axis",
+        "striving_object_id",
+        "label",
+        "valence",
+        "prediction_error",
+        "opacity",
+        "malheur_risk"
+      ],
+      "line": 353
+    },
+    {
+      "name": "RuptureShard",
+      "fields": [
+        "id",
+        "year",
+        "age",
+        "violated_assumption",
+        "domain",
+        "opacity",
+        "prediction_error",
+        "current_status",
+        "intrusive_return_rate",
+        "meaning_attempts"
+      ],
+      "line": 369
+    },
+    {
+      "name": "MetabolizationProcess",
+      "fields": [
+        "id",
+        "start_year",
+        "start_age",
+        "domain",
+        "violated_assumption",
+        "severity",
+        "opacity",
+        "prediction_error",
+        "mode",
+        "status",
+        "cluster",
+        "plasticity_years_left",
+        "intrusive_return_rate",
+        "intrusive_return_rate_prev",
+        "narrators",
+        "provisional_frame",
+        "downstream_biases",
+        "reactivation_triggers",
+        "sealed_candidate_years",
+        "post_plasticity_years",
+        "start_plasticity_years"
+      ],
+      "line": 392
+    },
+    {
+      "name": "NarrationSupport",
+      "fields": [
+        "availability",
+        "accuracy",
+        "warmth",
+        "coercion"
+      ],
+      "line": 422
+    },
+    {
+      "name": "MacroField",
+      "fields": [
+        "raw",
+        "provenance"
+      ],
+      "line": 436
+    },
+    {
+      "name": "CalibrationRegime",
+      "fields": [
+        "norm_center",
+        "uniqueness_norm",
+        "outlier_penalties",
+        "outlier_incentives",
+        "dream_window"
+      ],
+      "line": 444
+    },
+    {
+      "name": "BoundaryMapEntry",
+      "fields": [
+        "discouraged",
+        "permitted",
+        "incentivized",
+        "trigger_conditions"
+      ],
+      "line": 458
+    },
+    {
+      "name": "Stratum",
+      "fields": [
+        "level",
+        "name",
+        "description",
+        "material_relation",
+        "hegemonic_story",
+        "loyalty_demand",
+        "provision_strength",
+        "coercion_strength",
+        "contradiction_load",
+        "visibility_of_complicity",
+        "salience"
+      ],
+      "line": 468
+    },
+    {
+      "name": "BackboneState",
+      "fields": [
+        "year",
+        "age",
+        "field",
+        "calibration_regime",
+        "boundary_map",
+        "strata_salience",
+        "strata_stack",
+        "events_this_year",
+        "micro_trace_this_year",
+        "capacity",
+        "psychological_capacity",
+        "reproduction_constraints",
+        "domains",
+        "alienation",
+        "alienation_vector",
+        "wound_vector",
+        "cracks",
+        "buffers",
+        "frameworks",
+        "frameworks_dormant",
+        "collective_infrastructure",
+        "practice_stack",
+        "peak_routing",
+        "intensity_and_capture",
+        "style_traits",
+        "rendered_output",
+        "rupture_shards",
+        "metabolization_processes",
+        "initial_state_provenance",
+        "yearly_integrity",
+        "pressure_flow_history",
+        "pressure_flow_memory",
+        "surface_psyche_profile",
+        "analyst_pressure_account",
+        "generation_diagnostics",
+        "plasticity_window",
+        "narration_support",
+        "metabolic_style",
+        "expectation_baseline",
+        "striving_objects",
+        "gift_shards",
+        "disruption_shards",
+        "registers",
+        "child_model",
+        "active_magnets",
+        "v5_runtime_input_bundle",
+        "v5_runtime_input_refs",
+        "v5_bridge_status",
+        "autonomy_drive",
+        "safety_drive",
+        "autonomy_condition",
+        "safety_condition",
+        "stability_threshold_inertia",
+        "stability_delta_applied_this_year"
+      ],
+      "line": 501
+    }
+  ],
+  "age_phase_callable": "v3.psyche.vitality._age_phase",
+  "weight_sources": [
+    "v3.core.derived",
+    "v3.v3config.yaml",
+    "Framework.weight"
+  ],
+  "not_claimed": "No official Rawlsing 3.4 scalar/driver/type-weight API was inferred from a design document; this is the actual recovered BackboneState and existing legacy configuration.",
+  "person_fixture": "Explicit synthetic dataclass defaults plus five existing DomainState defaults, age6/year2006, not ADP007-generated identity or biography"
+}

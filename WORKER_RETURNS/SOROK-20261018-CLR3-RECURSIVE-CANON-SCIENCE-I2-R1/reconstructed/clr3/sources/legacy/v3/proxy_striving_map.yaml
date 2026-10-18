@@ -1,0 +1,356 @@
+# proxy_striving_map.yaml — Complete core set (all 10 axes, all 4 baselines).
+# Direct striving (DIR_*) for entitled/hopeful; proxy striving (PR_*) for forbidden/hopeless.
+# Structure: proxies[need_axis][baseline][age_bracket] -> list of entries.
+
+meta:
+  age_brackets: [3, 7, 11, 14, 17, 24, 35]
+  baselines: [entitled, hopeful, forbidden, hopeless]
+  note: "Direct (entitled/hopeful) and proxy (forbidden/hopeless) with tags for event-template matching."
+
+proxies:
+  attachment:
+    entitled:
+      3:
+        - id: DIR_ATT_003_SECURE_EXPLORER
+          label: "Secure explorer"
+          tags: [exploration, return_to_parent, trust]
+          default_investment: 40
+          default_identity_load: 25
+          secrecy: 0
+      14:
+        - id: DIR_ATT_014_TRUSTED_FRIEND
+          label: "Deep trusted friendship"
+          tags: [loyal_friend, mutual_support]
+          default_investment: 65
+          default_identity_load: 55
+          secrecy: 0
+    hopeful:
+      7:
+        - id: DIR_ATT_007_BEST_FRIEND
+          label: "Best friend bond"
+          tags: [friendship, loyalty]
+          default_investment: 55
+          default_identity_load: 40
+          secrecy: 10
+    forbidden:
+      11:
+        - id: PR_ATT_011_PEOPLE_PLEASING
+          label: "People-pleasing to secure closeness"
+          tags: [approval, compliance, anxiety]
+          default_investment: 60
+          default_identity_load: 45
+          secrecy: 30
+    hopeless:
+      14:
+        - id: PR_ATT_014_EMOTIONAL_WITHDRAWAL
+          label: "Emotional withdrawal"
+          tags: [distance, guarded, self-reliance]
+          default_investment: 50
+          default_identity_load: 50
+          secrecy: 20
+
+  safety:
+    entitled:
+      7:
+        - id: DIR_SAF_007_CONFIDENT_PLAY
+          label: "Unselfconscious play"
+          tags: [play, risk, joy]
+          default_investment: 45
+          default_identity_load: 25
+          secrecy: 0
+    hopeful:
+      11:
+        - id: DIR_SAF_011_RULE_CONFIDENCE
+          label: "Confidence in fairness of systems"
+          tags: [teacher_trust, rule_trust]
+          default_investment: 40
+          default_identity_load: 30
+          secrecy: 0
+    forbidden:
+      7:
+        - id: PR_SAF_007_VIGILANCE
+          label: "Hypervigilance"
+          tags: [scanning, anxiety]
+          default_investment: 60
+          default_identity_load: 45
+          secrecy: 10
+    hopeless:
+      14:
+        - id: PR_SAF_014_FATALISM
+          label: "Fatalistic realism"
+          tags: [shrug, nothing_matters]
+          default_investment: 50
+          default_identity_load: 40
+          secrecy: 5
+
+  belonging:
+    entitled:
+      11:
+        - id: DIR_BEL_011_TEAM_MEMBER
+          label: "Team identity"
+          tags: [team, group, pride]
+          default_investment: 60
+          default_identity_load: 50
+          secrecy: 0
+    hopeful:
+      14:
+        - id: DIR_BEL_014_SOCIAL_CLUSTER
+          label: "Peer cluster"
+          tags: [friend_group, identity]
+          default_investment: 65
+          default_identity_load: 55
+          secrecy: 5
+    forbidden:
+      14:
+        - id: PR_BEL_014_SUBCULTURE
+          label: "Subculture adoption"
+          tags: [fandom, online_identity]
+          default_investment: 65
+          default_identity_load: 55
+          secrecy: 25
+    hopeless:
+      17:
+        - id: PR_BEL_017_ISOLATED_SUPERIORITY
+          label: "Detached superiority"
+          tags: [loner, intellectual_superiority]
+          default_investment: 55
+          default_identity_load: 50
+          secrecy: 10
+
+  status:
+    entitled:
+      14:
+        - id: DIR_STA_014_HIGH_ACHIEVER
+          label: "High achiever identity"
+          tags: [rank, awards, recognition]
+          default_investment: 70
+          default_identity_load: 60
+          secrecy: 0
+    hopeful:
+      11:
+        - id: DIR_STA_011_COMPETITIVE_STUDENT
+          label: "Competitive student"
+          tags: [grades, rank]
+          default_investment: 60
+          default_identity_load: 45
+          secrecy: 0
+    forbidden:
+      14:
+        - id: PR_STA_014_INVISIBILITY
+          label: "Self-erasure"
+          tags: [blend_in, avoid_attention]
+          default_investment: 55
+          default_identity_load: 40
+          secrecy: 10
+    hopeless:
+      17:
+        - id: PR_STA_017_ANTI_STATUS_IDENTITY
+          label: "Status rejection identity"
+          tags: [anti_elite, mockery]
+          default_investment: 50
+          default_identity_load: 45
+          secrecy: 5
+
+  competence:
+    entitled:
+      7:
+        - id: DIR_COM_007_SKILL_BUILDER
+          label: "Skill builder"
+          tags: [sports, art, coding]
+          default_investment: 60
+          default_identity_load: 40
+          secrecy: 0
+    hopeful:
+      11:
+        - id: DIR_COM_011_CLUB_JOINER
+          label: "Club participation"
+          tags: [choir, robotics]
+          default_investment: 55
+          default_identity_load: 45
+          secrecy: 0
+    forbidden:
+      14:
+        - id: PR_COM_014_PERFECTIONISM
+          label: "Perfectionism as safety"
+          tags: [overwork, fear_of_failure]
+          default_investment: 70
+          default_identity_load: 55
+          secrecy: 30
+    hopeless:
+      11:
+        - id: PR_COM_011_AVOIDANCE
+          label: "Avoidance"
+          tags: [procrastination, fear]
+          default_investment: 35
+          default_identity_load: 30
+          secrecy: 20
+
+  autonomy:
+    entitled:
+      14:
+        - id: DIR_AUT_014_SELF_DIRECTION
+          label: "Self-directed goals"
+          tags: [independence, initiative]
+          default_investment: 65
+          default_identity_load: 50
+          secrecy: 0
+    hopeful:
+      11:
+        - id: DIR_AUT_011_DECISION_TRIALS
+          label: "Trying decisions"
+          tags: [choice, small_rebellion]
+          default_investment: 50
+          default_identity_load: 35
+          secrecy: 10
+    forbidden:
+      14:
+        - id: PR_AUT_014_REBELLION_STYLE
+          label: "Rebellion-as-style"
+          tags: [contrarian, aesthetic]
+          default_investment: 60
+          default_identity_load: 55
+          secrecy: 35
+    hopeless:
+      17:
+        - id: PR_AUT_017_PASSIVITY
+          label: "Chronic passivity"
+          tags: [learned_helplessness]
+          default_investment: 40
+          default_identity_load: 35
+          secrecy: 5
+
+  meaning:
+    entitled:
+      17:
+        - id: DIR_MEA_017_DEVOTIONAL_IDENTITY
+          label: "Devotional identity"
+          tags: [faith, philosophy, calling]
+          default_investment: 70
+          default_identity_load: 65
+          secrecy: 0
+    hopeful:
+      14:
+        - id: DIR_MEA_014_QUESTIONING
+          label: "Active questioning"
+          tags: [reading, debate]
+          default_investment: 65
+          default_identity_load: 55
+          secrecy: 10
+    forbidden:
+      14:
+        - id: PR_MEA_014_PRIVATE_METAPHYSICS
+          label: "Secret metaphysics"
+          tags: [private_questions]
+          default_investment: 65
+          default_identity_load: 50
+          secrecy: 70
+    hopeless:
+      17:
+        - id: PR_MEA_017_CYNIC_REALISM
+          label: "Cynic realism"
+          tags: [nihilism, irony]
+          default_investment: 55
+          default_identity_load: 45
+          secrecy: 5
+
+  justice:
+    entitled:
+      17:
+        - id: DIR_JUS_017_ORGANIZER
+          label: "Organizer identity"
+          tags: [activism, solidarity]
+          default_investment: 70
+          default_identity_load: 65
+          secrecy: 0
+    hopeful:
+      14:
+        - id: DIR_JUS_014_DEBATE_MORAL
+          label: "Moral debate"
+          tags: [argument, fairness]
+          default_investment: 60
+          default_identity_load: 50
+          secrecy: 10
+    forbidden:
+      11:
+        - id: PR_JUS_011_RULE_PURITY
+          label: "Rule purity"
+          tags: [obedience, fear]
+          default_investment: 55
+          default_identity_load: 45
+          secrecy: 15
+    hopeless:
+      14:
+        - id: PR_JUS_014_PRIVATE_OUTRAGE
+          label: "Private outrage"
+          tags: [doomscroll, moral_pain]
+          default_investment: 60
+          default_identity_load: 50
+          secrecy: 30
+
+  beauty_play:
+    entitled:
+      7:
+        - id: DIR_BEA_007_PLAYFUL_CREATOR
+          label: "Playful creator"
+          tags: [drawing, music, imagination]
+          default_investment: 55
+          default_identity_load: 35
+          secrecy: 0
+    hopeful:
+      14:
+        - id: DIR_BEA_014_ART_SCENE
+          label: "Art scene belonging"
+          tags: [band, poetry]
+          default_investment: 65
+          default_identity_load: 55
+          secrecy: 10
+    forbidden:
+      7:
+        - id: PR_BEA_007_COMEDY
+          label: "Comedy deflection"
+          tags: [jokes, attention]
+          default_investment: 55
+          default_identity_load: 40
+          secrecy: 20
+    hopeless:
+      11:
+        - id: PR_BEA_011_SCREENS
+          label: "Screens as numb-play"
+          tags: [gaming, scroll]
+          default_investment: 50
+          default_identity_load: 35
+          secrecy: 10
+
+  eros_intimacy:
+    entitled:
+      17:
+        - id: DIR_ERO_017_MUTUAL_INTIMACY
+          label: "Mutual intimacy"
+          tags: [relationship, tenderness]
+          default_investment: 75
+          default_identity_load: 65
+          secrecy: 0
+    hopeful:
+      14:
+        - id: DIR_ERO_014_CRUSH
+          label: "Open crush"
+          tags: [romance, vulnerability]
+          default_investment: 65
+          default_identity_load: 50
+          secrecy: 10
+    forbidden:
+      14:
+        - id: PR_ERO_014_PURITY_IDENTITY
+          label: "Purity identity"
+          tags: [virtue, repression]
+          default_investment: 60
+          default_identity_load: 60
+          secrecy: 20
+    hopeless:
+      17:
+        - id: PR_ERO_017_NIHILIST_HOOKUPS
+          label: "Nihilist hookups"
+          tags: [conquest, numb]
+          default_investment: 45
+          default_identity_load: 35
+          secrecy: 20

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="8" skipped="0" tests="34" time="4.189" timestamp="2026-10-18T15:04:32.793963-04:00" hostname="local-host"><testcase classname="test_recursive_court" name="test_actual_54_field_schema_not_replacement_trait_vector" time="0.921" /><testcase classname="test_recursive_court" name="test_ordinary_engine_steps_change_more_than_clock_before_and_after" time="0.001" /><testcase classname="test_recursive_court" name="test_upstream_pair_holds_initial_records_and_unrelated_draws_fixed" time="0.003"><failure message="AssertionError: assert 3 == 1&#10; +  where 3 = len({'3c7c4e36e9f12809b8c0a204632c749937024c001500daa451fc2270d5b5646c', '3ff2438a85871adfaea90a9c4f801f7222c04f40d178833c11a28b572b7e0c0c', '87a861c5fbc03eb83e217de4788087e3fbdeea45175dd12e5ece88086340aab6'})">runs = {'HOURS_CUT': {'grade': 'PROVISIONAL_HISTORICAL_RECURRENCE_AND_RESEARCH_CANON; NATIVE_OWNER_INTERFACES_UNISSUED', 'nat...'year': 2007, 'source': 'field_update', 'injection': {}, 'event_deltas': {}}}}, 'calibration_regime': None, ...}, ...}}
+
+    def test_upstream_pair_holds_initial_records_and_unrelated_draws_fixed(runs):
+        values=list(runs.values())
+        for key in ('initial','pre_encounter','world','proposal'):
+&gt;           assert len({digest(r[key]) for r in values})==1
+E           AssertionError: assert 3 == 1
+E            +  where 3 = len({'3c7c4e36e9f12809b8c0a204632c749937024c001500daa451fc2270d5b5646c', '3ff2438a85871adfaea90a9c4f801f7222c04f40d178833c11a28b572b7e0c0c', '87a861c5fbc03eb83e217de4788087e3fbdeea45175dd12e5ece88086340aab6'})
+
+test_recursive_court.py:33: AssertionError</failure></testcase><testcase classname="test_recursive_court" name="test_material_constraints_change_opportunity_before_effect" time="0.000" /><testcase classname="test_recursive_court" name="test_distinct_workplace_circumstances_can_converge_numerically" time="0.001"><failure message="AssertionError: assert '1e320822ce6f...b32cf2bf38806' == 'fa24645ee4a6...08ac478cc1b18'&#10;  &#10;  - fa24645ee4a650e8576818e1b4743ed8909731b616bc42fcc7308ac478cc1b18&#10;  + 1e320822ce6f041ee54224a2942be2d41461d673e1a65dd5808b32cf2bf38806">runs = {'HOURS_CUT': {'grade': 'PROVISIONAL_HISTORICAL_RECURRENCE_AND_RESEARCH_CANON; NATIVE_OWNER_INTERFACES_UNISSUED', 'nat...'year': 2007, 'source': 'field_update', 'injection': {}, 'event_deltas': {}}}}, 'calibration_regime': None, ...}, ...}}
+
+    def test_distinct_workplace_circumstances_can_converge_numerically(runs):
+        a,b=runs['ROUTINE'],runs['HOURS_CUT']
+        assert a['resolved']['workplace']!=b['resolved']['workplace']
+&gt;       assert a['immediate']['after_hash']==b['immediate']['after_hash']
+E       AssertionError: assert '1e320822ce6f...b32cf2bf38806' == 'fa24645ee4a6...08ac478cc1b18'
+E         
+E         - fa24645ee4a650e8576818e1b4743ed8909731b616bc42fcc7308ac478cc1b18
+E         + 1e320822ce6f041ee54224a2942be2d41461d673e1a65dd5808b32cf2bf38806
+
+test_recursive_court.py:48: AssertionError</failure></testcase><testcase classname="test_recursive_court" name="test_existing_runtime_effect_propagates_across_sections" time="0.001"><failure message="AssertionError: assert [{'schema_version': 'v516_surface_psyche_profile', 'year': 2007, 'age': 7, 'event_context': {'events_this_year_count':...s_this_year_count': 0, 'micro_trace_this_year_count': 0, 'event_type_counts': {}, 'micro_trace_type_counts': {}}, ...}] != [{'schema_version': 'v516_surface_psyche_profile', 'year': 2007, 'age': 7, 'event_context': {'events_this_year_count':...s_this_year_count': 0, 'micro_trace_this_year_count': 0, 'event_type_counts': {}, 'micro_trace_type_counts': {}}, ...}]">runs = {'HOURS_CUT': {'grade': 'PROVISIONAL_HISTORICAL_RECURRENCE_AND_RESEARCH_CANON; NATIVE_OWNER_INTERFACES_UNISSUED', 'nat...'year': 2007, 'source': 'field_update', 'injection': {}, 'event_deltas': {}}}}, 'calibration_regime': None, ...}, ...}}
+
+    def test_existing_runtime_effect_propagates_across_sections(runs):
+        a,b=runs['ROUTINE'],runs['RAISE_WITH_OVERTIME']
+        assert len({c['path'].split('.')[0] for c in a['immediate']['numeric_changes']})&gt;1
+        assert a['ticks'][2]['after_hash']!=b['ticks'][2]['after_hash']
+&gt;       assert a['final_state']['pressure_flow_history']!=b['final_state']['pressure_flow_history']
+E       AssertionError: assert [{'schema_version': 'v516_surface_psyche_profile', 'year': 2007, 'age': 7, 'event_context': {'events_this_year_count':...s_this_year_count': 0, 'micro_trace_this_year_count': 0, 'event_type_counts': {}, 'micro_trace_type_counts': {}}, ...}] != [{'schema_version': 'v516_surface_psyche_profile', 'year': 2007, 'age': 7, 'event_context': {'events_this_year_count':...s_this_year_count': 0, 'micro_trace_this_year_count': 0, 'event_type_counts': {}, 'micro_trace_type_counts': {}}, ...}]
+
+test_recursive_court.py:55: AssertionError</failure></testcase><testcase classname="test_recursive_court" name="test_same_employer_event_moderated_by_prior_care_practice" time="0.277" /><testcase classname="test_recursive_court" name="test_first_call_receives_existing_age_and_state" time="0.001"><failure message="KeyError: 'situational_options'">runs = {'HOURS_CUT': {'grade': 'PROVISIONAL_HISTORICAL_RECURRENCE_AND_RESEARCH_CANON; NATIVE_OWNER_INTERFACES_UNISSUED', 'nat...'year': 2007, 'source': 'field_update', 'injection': {}, 'event_deltas': {}}}}, 'calibration_regime': None, ...}, ...}}
+
+    def test_first_call_receives_existing_age_and_state(runs):
+        r=runs['ROUTINE'];p=r['proposal']
+        assert p['conditioning']['state_hash']==digest(r['pre_encounter']) and p['conditioning']['age']==8
+&gt;       assert len(p['situational_options'])==3 and p['legacy_parsed_packet']['branch_hypotheses']==[]
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'situational_options'
+
+test_recursive_court.py:67: KeyError</failure></testcase><testcase classname="test_recursive_court" name="test_first_call_rejects_endpoints_and_direct_metric_writes[payload0]" time="0.001" /><testcase classname="test_recursive_court" name="test_first_call_rejects_endpoints_and_direct_metric_writes[payload1]" time="0.001" /><testcase classname="test_recursive_court" name="test_first_call_rejects_endpoints_and_direct_metric_writes[payload2]" time="0.001" /><testcase classname="test_recursive_court" name="test_first_call_rejects_endpoints_and_direct_metric_writes[payload3]" time="0.001" /><testcase classname="test_recursive_court" name="test_second_call_has_both_states_and_no_numeric_write" time="0.000" /><testcase classname="test_recursive_court" name="test_nonunique_compatible_flesh_preserves_transition_and_is_consumed" time="0.539"><failure message="AssertionError: assert ({'clock': 23,...263a0a1', ...} == {'clock': 23,...f7c4242', ...}&#10;  &#10;  Omitting 8 identical items, use -vv to show&#10;  Differing items:&#10;  {'after': {'year': 2008, 'age': 8, 'field': {'raw': {'morale': 62.0, 'recruitment': 62.0, 'legitimacy': 58.0, 'fear': ...ar': {'year': 2007, 'source': 'field_update', 'injection': {}, 'event_deltas': {}}}}, 'calibration_regime': None, ...}} != {'after': {'year': 2008, 'age': 8, 'field': {'raw': {'morale': 62.0, 'recruitment': 62.0, 'legitimacy': 58.0, 'fear': ...ar': {'year': 2007, 'source': 'field_update', 'injection': {}, 'event_deltas': {}}}}, 'calibration_regime': None, ...}}&#10;  {'after_hash': '409c231ae762b21b5...&#10;  &#10;  ...Full output truncated (4 lines hidden), use '-vv' to show)">def test_nonunique_compatible_flesh_preserves_transition_and_is_consumed():
+        a=run_trajectory(location='hall_drawer',variant='plain');b=run_trajectory(location='garage_shelf',variant='alternate')
+&gt;       assert a['immediate']==b['immediate'] and a['canon'][0]['text']!=b['canon'][0]['text']
+E       AssertionError: assert ({'clock': 23,...263a0a1', ...} == {'clock': 23,...f7c4242', ...}
+E         
+E         Omitting 8 identical items, use -vv to show
+E         Differing items:
+E         {'after': {'year': 2008, 'age': 8, 'field': {'raw': {'morale': 62.0, 'recruitment': 62.0, 'legitimacy': 58.0, 'fear': ...ar': {'year': 2007, 'source': 'field_update', 'injection': {}, 'event_deltas': {}}}}, 'calibration_regime': None, ...}} != {'after': {'year': 2008, 'age': 8, 'field': {'raw': {'morale': 62.0, 'recruitment': 62.0, 'legitimacy': 58.0, 'fear': ...ar': {'year': 2007, 'source': 'field_update', 'injection': {}, 'event_deltas': {}}}}, 'calibration_regime': None, ...}}
+E         {'after_hash': '409c231ae762b21b5...
+E         
+E         ...Full output truncated (4 lines hidden), use '-vv' to show)
+
+test_recursive_court.py:83: AssertionError</failure></testcase><testcase classname="test_recursive_court" name="test_contradictory_or_incompatible_flesh_rejected[bicycle_missing-False]" time="0.004" /><testcase classname="test_recursive_court" name="test_contradictory_or_incompatible_flesh_rejected[father_present-False]" time="0.004" /><testcase classname="test_recursive_court" name="test_contradictory_or_incompatible_flesh_rejected[lock_id-invented-lock]" time="0.003" /><testcase classname="test_recursive_court" name="test_contradictory_or_incompatible_flesh_rejected[lock_location-unavailable-room]" time="0.004" /><testcase classname="test_recursive_court" name="test_unsupported_psychological_addition_rejected" time="0.003" /><testcase classname="test_recursive_court" name="test_false_prose_cannot_hide_behind_true_facts" time="0.003" /><testcase classname="test_recursive_court" name="test_state_hash_swap_rejected" time="0.002" /><testcase classname="test_recursive_court" name="test_numerical_nochange_permits_history_append" time="0.009" /><testcase classname="test_recursive_court" name="test_independent_counterpart_refuses_while_canon_detail_is_used" time="0.262"><failure message="AssertionError: assert ('ALLOW_CONTACT' == 'ALLOW_CONTACT'&#10;  &#10;    ALLOW_CONTACT and {'clock': 23,...83ad382', ...} == {'clock': 23,...340aab6', ...}&#10;  &#10;  Omitting 8 identical items, use -vv to show&#10;  Differing items:&#10;  {'after': {'year': 2008, 'age': 8, 'field': {'raw': {'morale': 62.0, 'recruitment': 62.0, 'legitimacy': 58.0, 'fear': ...ar': {'year': 2007, 'source': 'field_update', 'injection': {}, 'event_deltas': {}}}}, 'calibration_regime': None, ...}} != {'after': {'year': 2008, 'age': 8, 'field': {'raw': {'morale': 62.0, 'recruitment': 62.0, 'legitimacy': 58.0, 'fear': ...ar': {'year': 2007, 'source': 'field_update', 'injection': {}, 'event_deltas': {}}}}, 'calibration_regime': None, ...}}&#10;  {'after_hash': '8b4a22d1f3a97276b...&#10;  &#10;  ...Full output truncated (4 lines hidden), use '-vv' to show)">runs = {'HOURS_CUT': {'grade': 'PROVISIONAL_HISTORICAL_RECURRENCE_AND_RESEARCH_CANON; NATIVE_OWNER_INTERFACES_UNISSUED', 'nat...'year': 2007, 'source': 'field_update', 'injection': {}, 'event_deltas': {}}}}, 'calibration_regime': None, ...}, ...}}
+
+    def test_independent_counterpart_refuses_while_canon_detail_is_used(runs):
+        r=runs['ROUTINE'];o=r['later']['counterpart']
+        assert o['action']=='DECLINE_CONTACT' and not o['focal_child_state_read']
+        assert r['later']['action']=='FETCH_EXISTING_LOCK'
+        alternative=run_trajectory(busy=False)
+&gt;       assert alternative['later']['counterpart']['action']=='ALLOW_CONTACT' and alternative['immediate']==r['immediate']
+E       AssertionError: assert ('ALLOW_CONTACT' == 'ALLOW_CONTACT'
+E         
+E           ALLOW_CONTACT and {'clock': 23,...83ad382', ...} == {'clock': 23,...340aab6', ...}
+E         
+E         Omitting 8 identical items, use -vv to show
+E         Differing items:
+E         {'after': {'year': 2008, 'age': 8, 'field': {'raw': {'morale': 62.0, 'recruitment': 62.0, 'legitimacy': 58.0, 'fear': ...ar': {'year': 2007, 'source': 'field_update', 'injection': {}, 'event_deltas': {}}}}, 'calibration_regime': None, ...}} != {'after': {'year': 2008, 'age': 8, 'field': {'raw': {'morale': 62.0, 'recruitment': 62.0, 'legitimacy': 58.0, 'fear': ...ar': {'year': 2007, 'source': 'field_update', 'injection': {}, 'event_deltas': {}}}}, 'calibration_regime': None, ...}}
+E         {'after_hash': '8b4a22d1f3a97276b...
+E         
+E         ...Full output truncated (4 lines hidden), use '-vv' to show)
+
+test_recursive_court.py:117: AssertionError</failure></testcase><testcase classname="test_recursive_court" name="test_unrelated_append_does_not_rewrite_prior_snapshot" time="0.012" /><testcase classname="test_recursive_court" name="test_historical_source_rewrite_refuses_continuation" time="0.008" /><testcase classname="test_recursive_court" name="test_history_rewrite_refused_without_merkle_descendant_requirement" time="0.007" /><testcase classname="test_recursive_court" name="test_same_id_source_replacement_refused" time="0.009" /><testcase classname="test_recursive_court" name="test_future_canon_and_other_actor_private_read_refused" time="0.010" /><testcase classname="test_recursive_court" name="test_future_source_not_backfilled_as_earlier_narrative" time="0.002" /><testcase classname="test_recursive_court" name="test_canon_read_is_parent_of_delayed_numerical_feedback" time="0.000" /><testcase classname="test_recursive_court" name="test_recorded_rng_and_mock_proposal_replay_deterministic" time="0.275"><failure message="AssertionError: assert {'grade': 'PR...ne, ...}, ...} == {'grade': 'PR...ne, ...}, ...}&#10;  &#10;  Omitting 7 identical items, use -vv to show&#10;  Differing items:&#10;  {'recorded_second_call': {'actor': 'child', 'clock': 24, 'source_ref': 'episode-theft', 'prestate_hash': 'a65f8fcaee9a4e1c61984ffaf694163502d494367f565fd00a452887e395702e', ...}} != {'recorded_second_call': {'actor': 'child', 'clock': 24, 'source_ref': 'episode-theft', 'prestate_hash': '3ff2438a85871adfaea90a9c4f801f7222c04f40d178833c11a28b572b7e0c0c', ...}}&#10;  {'pre_encounter': {'year': 2008, 'age': 8, 'field': {'raw': {'morale': 62.0, 'recruitment': 62.0, 'legitimacy': 58.0, ...ar': {'year': 2007, 'source': 'field...&#10;  &#10;  ...Full output truncated (12 lines hidden), use '-vv' to show">runs = {'HOURS_CUT': {'grade': 'PROVISIONAL_HISTORICAL_RECURRENCE_AND_RESEARCH_CANON; NATIVE_OWNER_INTERFACES_UNISSUED', 'nat...'year': 2007, 'source': 'field_update', 'injection': {}, 'event_deltas': {}}}}, 'calibration_regime': None, ...}, ...}}
+
+    def test_recorded_rng_and_mock_proposal_replay_deterministic(runs):
+&gt;       for w,r in runs.items():assert run_trajectory(w)==r
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: assert {'grade': 'PR...ne, ...}, ...} == {'grade': 'PR...ne, ...}, ...}
+E         
+E         Omitting 7 identical items, use -vv to show
+E         Differing items:
+E         {'recorded_second_call': {'actor': 'child', 'clock': 24, 'source_ref': 'episode-theft', 'prestate_hash': 'a65f8fcaee9a4e1c61984ffaf694163502d494367f565fd00a452887e395702e', ...}} != {'recorded_second_call': {'actor': 'child', 'clock': 24, 'source_ref': 'episode-theft', 'prestate_hash': '3ff2438a85871adfaea90a9c4f801f7222c04f40d178833c11a28b572b7e0c0c', ...}}
+E         {'pre_encounter': {'year': 2008, 'age': 8, 'field': {'raw': {'morale': 62.0, 'recruitment': 62.0, 'legitimacy': 58.0, ...ar': {'year': 2007, 'source': 'field...
+E         
+E         ...Full output truncated (12 lines hidden), use '-vv' to show
+
+test_recursive_court.py:153: AssertionError</failure></testcase><testcase classname="test_recursive_court" name="test_cross_process_hash_seed_replay" time="1.430"><failure message="AssertionError: assert 3 == 1&#10; +  where 3 = len({'3479db0019c28226fa18c9cdd6ea4c21948930840edef00a33b497c7e87d6a46', '462dd774f0d7382733eca56e2d2df059418d2a60c68a53327f9f7ec202a3e446', '6dc2b8eb464d900a22ce8dd8ad28bc35a103b98ef69b98cace060ef707398dbf'})&#10; +    where {'3479db0019c28226fa18c9cdd6ea4c21948930840edef00a33b497c7e87d6a46', '462dd774f0d7382733eca56e2d2df059418d2a60c68a53327f9f7ec202a3e446', '6dc2b8eb464d900a22ce8dd8ad28bc35a103b98ef69b98cace060ef707398dbf'} = set(['6dc2b8eb464d900a22ce8dd8ad28bc35a103b98ef69b98cace060ef707398dbf', '462dd774f0d7382733eca56e2d2df059418d2a60c68a53327f9f7ec202a3e446', '3479db0019c28226fa18c9cdd6ea4c21948930840edef00a33b497c7e87d6a46'])">def test_cross_process_hash_seed_replay():
+        code="from recursive_court import run_trajectory; print(run_trajectory()['trace_hash'])"
+        outputs=[subprocess.check_output([sys.executable,'-c',code],cwd=ROOT,env={**os.environ,'PYTHONHASHSEED':str(seed),'PYTHONDONTWRITEBYTECODE':'1'},text=True).strip() for seed in (0,1,71)]
+&gt;       assert len(set(outputs))==1
+E       AssertionError: assert 3 == 1
+E        +  where 3 = len({'3479db0019c28226fa18c9cdd6ea4c21948930840edef00a33b497c7e87d6a46', '462dd774f0d7382733eca56e2d2df059418d2a60c68a53327f9f7ec202a3e446', '6dc2b8eb464d900a22ce8dd8ad28bc35a103b98ef69b98cace060ef707398dbf'})
+E        +    where {'3479db0019c28226fa18c9cdd6ea4c21948930840edef00a33b497c7e87d6a46', '462dd774f0d7382733eca56e2d2df059418d2a60c68a53327f9f7ec202a3e446', '6dc2b8eb464d900a22ce8dd8ad28bc35a103b98ef69b98cace060ef707398dbf'} = set(['6dc2b8eb464d900a22ce8dd8ad28bc35a103b98ef69b98cace060ef707398dbf', '462dd774f0d7382733eca56e2d2df059418d2a60c68a53327f9f7ec202a3e446', '3479db0019c28226fa18c9cdd6ea4c21948930840edef00a33b497c7e87d6a46'])
+
+test_recursive_court.py:159: AssertionError</failure></testcase><testcase classname="test_recursive_court" name="test_scope_is_bounded_not_general_language_or_native_owner_claim" time="0.000" /><testcase classname="test_recursive_court" name="test_legacy_event_tag_is_unqualified_assumption_not_discovered_law" time="0.082" /></testsuite></testsuites>

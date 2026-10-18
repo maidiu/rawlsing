@@ -1,0 +1,206 @@
+{
+  "2": [
+    {
+      "behavior": {
+        "child_actions": [
+          "TAKE_BUS",
+          "TAKE_BUS",
+          "ASK_FOR_ASSISTANCE"
+        ],
+        "count": 1,
+        "father": {
+          "action": "DISCUSS_NONPURCHASE_OPTIONS",
+          "assigned_overtime_min": 0,
+          "available_minutes": 35,
+          "cash_after_work": -50,
+          "material_repair_feasible": false,
+          "overtime_declined_min": 0,
+          "overtime_worked_min": 0,
+          "replacement_feasible": false
+        },
+        "later": "ASK_FOR_ASSISTANCE"
+      },
+      "workplace": "HOURS_CUT"
+    },
+    {
+      "behavior": {
+        "child_actions": [
+          "TAKE_BUS",
+          "TAKE_BUS",
+          "ASK_FOR_ASSISTANCE"
+        ],
+        "count": 1,
+        "father": {
+          "action": "DEFER_CONVERSATION",
+          "assigned_overtime_min": 32,
+          "available_minutes": 3,
+          "cash_after_work": 335,
+          "material_repair_feasible": true,
+          "overtime_declined_min": 0,
+          "overtime_worked_min": 32,
+          "replacement_feasible": true
+        },
+        "later": "ASK_FOR_ASSISTANCE"
+      },
+      "workplace": "RAISE_WITH_OVERTIME"
+    },
+    {
+      "behavior": {
+        "child_actions": [
+          "PARTICIPATE_JOINT_REPAIR",
+          "REHEARSE_BICYCLE_REPAIR",
+          "TRY_INDEPENDENT_REPAIR"
+        ],
+        "count": 3,
+        "father": {
+          "action": "OFFER_JOINT_REPAIR",
+          "assigned_overtime_min": 0,
+          "available_minutes": 35,
+          "cash_after_work": 125,
+          "material_repair_feasible": true,
+          "overtime_declined_min": 0,
+          "overtime_worked_min": 0,
+          "replacement_feasible": false
+        },
+        "later": "TRY_INDEPENDENT_REPAIR"
+      },
+      "workplace": "ROUTINE"
+    }
+  ],
+  "3": [
+    {
+      "behavior": {
+        "child_actions": [
+          "TAKE_BUS",
+          "TAKE_BUS",
+          "ASK_FOR_ASSISTANCE"
+        ],
+        "count": 1,
+        "father": {
+          "action": "DISCUSS_NONPURCHASE_OPTIONS",
+          "assigned_overtime_min": 0,
+          "available_minutes": 35,
+          "cash_after_work": -50,
+          "material_repair_feasible": false,
+          "overtime_declined_min": 0,
+          "overtime_worked_min": 0,
+          "replacement_feasible": false
+        },
+        "later": "ASK_FOR_ASSISTANCE"
+      },
+      "workplace": "HOURS_CUT"
+    },
+    {
+      "behavior": {
+        "child_actions": [
+          "TAKE_BUS",
+          "TAKE_BUS",
+          "ASK_FOR_ASSISTANCE"
+        ],
+        "count": 1,
+        "father": {
+          "action": "DEFER_CONVERSATION",
+          "assigned_overtime_min": 32,
+          "available_minutes": 3,
+          "cash_after_work": 335,
+          "material_repair_feasible": true,
+          "overtime_declined_min": 0,
+          "overtime_worked_min": 32,
+          "replacement_feasible": true
+        },
+        "later": "ASK_FOR_ASSISTANCE"
+      },
+      "workplace": "RAISE_WITH_OVERTIME"
+    },
+    {
+      "behavior": {
+        "child_actions": [
+          "PARTICIPATE_JOINT_REPAIR",
+          "REHEARSE_BICYCLE_REPAIR",
+          "TRY_INDEPENDENT_REPAIR"
+        ],
+        "count": 3,
+        "father": {
+          "action": "OFFER_JOINT_REPAIR",
+          "assigned_overtime_min": 0,
+          "available_minutes": 35,
+          "cash_after_work": 125,
+          "material_repair_feasible": true,
+          "overtime_declined_min": 0,
+          "overtime_worked_min": 0,
+          "replacement_feasible": false
+        },
+        "later": "TRY_INDEPENDENT_REPAIR"
+      },
+      "workplace": "ROUTINE"
+    }
+  ],
+  "4": [
+    {
+      "behavior": {
+        "child_actions": [
+          "TAKE_BUS",
+          "TAKE_BUS",
+          "ASK_FOR_ASSISTANCE"
+        ],
+        "count": 1,
+        "father": {
+          "action": "DISCUSS_NONPURCHASE_OPTIONS",
+          "assigned_overtime_min": 0,
+          "available_minutes": 35,
+          "cash_after_work": -50,
+          "material_repair_feasible": false,
+          "overtime_declined_min": 0,
+          "overtime_worked_min": 0,
+          "replacement_feasible": false
+        },
+        "later": "ASK_FOR_ASSISTANCE"
+      },
+      "workplace": "HOURS_CUT"
+    },
+    {
+      "behavior": {
+        "child_actions": [
+          "TAKE_BUS",
+          "TAKE_BUS",
+          "ASK_FOR_ASSISTANCE"
+        ],
+        "count": 1,
+        "father": {
+          "action": "DEFER_CONVERSATION",
+          "assigned_overtime_min": 32,
+          "available_minutes": 3,
+          "cash_after_work": 335,
+          "material_repair_feasible": true,
+          "overtime_declined_min": 0,
+          "overtime_worked_min": 32,
+          "replacement_feasible": true
+        },
+        "later": "ASK_FOR_ASSISTANCE"
+      },
+      "workplace": "RAISE_WITH_OVERTIME"
+    },
+    {
+      "behavior": {
+        "child_actions": [
+          "PARTICIPATE_JOINT_REPAIR",
+          "REHEARSE_BICYCLE_REPAIR",
+          "ASK_FOR_ASSISTANCE"
+        ],
+        "count": 3,
+        "father": {
+          "action": "OFFER_JOINT_REPAIR",
+          "assigned_overtime_min": 0,
+          "available_minutes": 35,
+          "cash_after_work": 125,
+          "material_repair_feasible": true,
+          "overtime_declined_min": 0,
+          "overtime_worked_min": 0,
+          "replacement_feasible": false
+        },
+        "later": "ASK_FOR_ASSISTANCE"
+      },
+      "workplace": "ROUTINE"
+    }
+  ]
+}

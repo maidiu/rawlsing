@@ -1,0 +1,176 @@
+{
+  "PyYAML": {
+    "status": "VERIFIED",
+    "version": "6.0.2"
+  },
+  "actual_imports": "evidence/import_and_replay_audit.json",
+  "assignments_completed": [
+    "CLR3 I2 independent science/closure/native-interface review"
+  ],
+  "authority_refs": "evidence/authority_manifest.json",
+  "billing_account": "not published",
+  "bootstrap": "No commissioned local checkout existed. Commission explicitly allowed exact Git reconstruction; created isolated shared-store sparse worktree at sealed commit; no fresh clone or colleague checkout repurposed.",
+  "branch": "agent/reviewer-sorok-20261018-clr3-recursive-canon-science-i2-r1",
+  "cash": null,
+  "cash_known": false,
+  "clean_at_launch": true,
+  "cold_replay": "four interpreters, three whole-trajectory hashes each; evidence/cold_replay.json",
+  "context_cache_reuse": "UNKNOWN",
+  "conversation_or_account_affinity": "independent-review-conversation; account independence UNKNOWN",
+  "covered_test_suites": [
+    {
+      "command": [
+        "python3",
+        "-m",
+        "pytest",
+        "-c",
+        "/dev/null",
+        "--rootdir=.",
+        "--confcutdir=.",
+        "-v",
+        "-p",
+        "no:cacheprovider",
+        "test_recursive_court.py",
+        "--junitxml=../../evidence/clr3.xml"
+      ],
+      "cwd": "reconstructed/clr3",
+      "errors": 0,
+      "exit_code": 0,
+      "failures": 0,
+      "junit": "evidence/clr3.xml",
+      "skipped": 0,
+      "suite": "clr3",
+      "tests": 38
+    },
+    {
+      "command": [
+        "python3",
+        "-m",
+        "pytest",
+        "-c",
+        "/dev/null",
+        "--rootdir=.",
+        "--confcutdir=.",
+        "-v",
+        "-p",
+        "no:cacheprovider",
+        "test_falsifiers.py",
+        "--junitxml=../../../../evidence/original_six_red.xml"
+      ],
+      "cwd": "reconstructed/clr3/preserved/r1_court",
+      "errors": 0,
+      "exit_code": 1,
+      "failures": 6,
+      "junit": "evidence/original_six_red.xml",
+      "skipped": 0,
+      "suite": "original_six_red",
+      "tests": 6
+    },
+    {
+      "command": [
+        "python3",
+        "-m",
+        "pytest",
+        "-c",
+        "/dev/null",
+        "--rootdir=.",
+        "--confcutdir=.",
+        "-v",
+        "-p",
+        "no:cacheprovider",
+        "test_independent.py",
+        "--junitxml=evidence/independent.xml"
+      ],
+      "cwd": ".",
+      "errors": 0,
+      "exit_code": 1,
+      "failures": 2,
+      "junit": "evidence/independent.xml",
+      "skipped": 0,
+      "suite": "independent",
+      "tests": 6
+    }
+  ],
+  "dependency_closure_status": "BOUNDED_EXACT_65_FILE_CLOSURE; 54 legacy modules + 3 YAML files observed; remaining 8 verified unused",
+  "dependency_install": "Public PyPI exact PyYAML6.0.2 and pytest9.1.1 into ignored .runtime; no private code exported; no external LLM call",
+  "effort": "high",
+  "environment_id": "clr3-independent-science-i2-local",
+  "epoch_id": "c97cc1c3-9972-44c5-9480-6cab11441be6",
+  "estimated_total_evidence_cost": "UNKNOWN",
+  "exact_checkout_base": "60acc908213d2ed6c310909016703c16d69dae47",
+  "external_paid_model_calls": 0,
+  "filesystem_shell": {
+    "status": "VERIFIED"
+  },
+  "git": {
+    "status": "VERIFIED",
+    "version": "2.43.0"
+  },
+  "git_object_store_alias": "existing-rawlsing-shared-store",
+  "head_at_launch": "60acc908213d2ed6c310909016703c16d69dae47",
+  "independent_review_separation": "distinct conversation, new worktree, frozen prospective probes; author files unchanged; no coagents",
+  "last_live_probe_at": "2026-10-18T21:35:39.324502+00:00",
+  "launch_usage": {
+    "primary_reset_unix": 1792376593,
+    "primary_used_percent": 1,
+    "primary_window_minutes": 300,
+    "secondary_reset_unix": 1792879036,
+    "secondary_used_percent": 25,
+    "secondary_window_minutes": 10080
+  },
+  "limitations": [
+    "passport is documentary, not provider attestation",
+    "historical container lineage HOLD",
+    "49 dependencies not historically admitted",
+    "native implementation/actor/target grants unissued",
+    "source/code integrity is not psychological validation"
+  ],
+  "machine_alias": "local-review-host",
+  "materialized_source_refs": "evidence/reconstruction_manifest.json",
+  "model": "gpt-6.1-sol",
+  "model_evidence": "current conversation turn_context metadata; not a signed provider execution attestation",
+  "model_provider": "OpenAI Codex; private-code work remained on authorized local/connected repository surface",
+  "next_good_affinity_tags": [
+    "CLR3_CUSTODY",
+    "CANON_CONSISTENCY_REVIEW",
+    "NATIVE_OWNER_INTERFACE_AUDIT"
+  ],
+  "node": {
+    "status": "NOT_REQUIRED_NOT_PROBED"
+  },
+  "owner_session_alias": "clr3-i2-reviewer",
+  "passport_schema": "SOROK_ENVIRONMENT_PASSPORT_R1",
+  "privacy_source_grant": "commissioned sourcefree code/fixtures only; no original survey/source35/model actor access",
+  "probe_command_and_result": {
+    "command": "python3 run_review.py",
+    "exit_code": 1,
+    "meaning": "completed; preserves original and independent REDs",
+    "receipt": "evidence/execution_receipts.json"
+  },
+  "pytest": {
+    "status": "VERIFIED",
+    "version": "9.1.1"
+  },
+  "python": {
+    "interpreter_alias": "<PYTHON>",
+    "status": "VERIFIED",
+    "version": "3.11.3"
+  },
+  "quota_known": true,
+  "retire_or_rebuild_reason": null,
+  "return_usage": {
+    "observation": "live quota tool at return preparation; account-wide, not job token cost",
+    "primary_used_percent": 24,
+    "secondary_used_percent": 29
+  },
+  "runtime_marker_digest": "71c5b78901ec6accee27f1d37b0a847283d55ca24b1fa00fbf46212194e8c407",
+  "science_grade": "INDEPENDENT_SOURCEFREE_ARCHITECTURAL_REPLAY_AND_CONTRACT_REVIEW; NOT_HUMAN_EMPIRICAL_VALIDATION_OR_NATIVE_ADOPTION",
+  "selected_editor": "Codex",
+  "source_custody": "31 selected archive members verified; runtime16 selected +49 local pins; archive mismatch not waived",
+  "source_family": "published CLR3 top-family sourcefree reconstruction",
+  "staged_state_preservation": "retained; re-probe marker and every source hash before reuse",
+  "status": "RECONSTRUCTED_AND_LIVE_VERIFIED",
+  "surface": "LOCAL_SHARED_STORE",
+  "worktree_alias": "new-clr3-science-i2-sparse-worktree",
+  "write_terrain": "WORKER_RETURNS/SOROK-20261018-CLR3-RECURSIVE-CANON-SCIENCE-I2-R1/"
+}

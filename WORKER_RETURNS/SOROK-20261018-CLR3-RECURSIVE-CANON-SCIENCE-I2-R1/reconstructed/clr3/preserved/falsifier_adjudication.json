@@ -1,0 +1,38 @@
+[
+  {
+    "test": "test_trace_validation_rejects_forged_summary",
+    "original_assertion": "RED_REPRODUCED_UNCHANGED",
+    "disposition": "RETAIN_SUMMARY_VALIDATION_LIMITATION",
+    "reason": "Ordinary output is consistent; untrusted summary validation is incomplete."
+  },
+  {
+    "test": "test_trace_validation_requires_notification_dependency",
+    "original_assertion": "RED_REPRODUCED_UNCHANGED",
+    "disposition": "RETAIN_REQUIRED_READSET_VALIDATION_LIMITATION",
+    "reason": "Declared-edge graph validation does not enforce semantic prerequisite completeness."
+  },
+  {
+    "test": "test_descendant_identity_binds_consumed_parent_content",
+    "original_assertion": "RED_REPRODUCED_UNCHANGED",
+    "disposition": "WITHDRAW_AS_REQUIRED_DEFECT",
+    "reason": "Full-trace digest binds parent contents without requiring propagated node hashes."
+  },
+  {
+    "test": "test_negative_neighbor_availability_has_recorded_causal_dependency",
+    "original_assertion": "RED_REPRODUCED_UNCHANGED",
+    "disposition": "RETAIN_INCOMPLETE_CAUSAL_ACCOUNTING",
+    "reason": "Negative branch consumes context with no neighbor ancestor; direct-parent or new-encounter form is not mandatory."
+  },
+  {
+    "test": "test_recorded_workplace_facts_are_actual_computation_source",
+    "original_assertion": "RED_REPRODUCED_UNCHANGED",
+    "disposition": "CONDITIONAL_PRODUCER_TRUST_BOUNDARY",
+    "reason": "Reproducer requires privileged logger replacement; ordinary receipt/computation agree."
+  },
+  {
+    "test": "test_repair_requires_a_witnessed_available_bicycle",
+    "original_assertion": "RED_REPRODUCED_UNCHANGED",
+    "disposition": "RECLASSIFY_UNDERSPECIFIED_FIXTURE",
+    "reason": "Repair referent unspecified; sole-bicycle/three-event-type assumptions not established."
+  }
+]

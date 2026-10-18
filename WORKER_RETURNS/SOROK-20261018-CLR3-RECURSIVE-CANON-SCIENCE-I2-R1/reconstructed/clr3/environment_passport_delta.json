@@ -1,0 +1,86 @@
+{
+  "passport_schema": "SOROK_ENVIRONMENT_PASSPORT_R1",
+  "environment_id": "contingent-lives-family-local-clr3",
+  "epoch_id": "6d438cae-d5d6-4fff-acc4-eb41c818ee44",
+  "owner_session_alias": "clr3-research-author",
+  "surface": "LOCAL_SHARED_STORE",
+  "machine_alias": "local",
+  "status": "LIVE_VERIFIED",
+  "last_live_probe_at": "2026-10-18T19:15:07.922378+00:00",
+  "runtime_marker_digest": "f90b0c30f0e594ce0a2d66656f29d3b8ab0d00af33c0878c54eb5dbd2dde4655",
+  "git_object_store_alias": "existing-rawlsing-shared-store",
+  "worktree_alias": "sorok-clr3-research-r1",
+  "branch": "agent/rabochii-sorok-20261018-clr3-recursive-canon-causal-court-r1",
+  "exact_checkout_base": "40100f568fbe15cc2d4bbf1687450829c706dddb",
+  "model": "gpt-6.1-sol",
+  "effort": "high",
+  "model_evidence": {
+    "timestamp": "2026-10-18T18:52:40.958Z",
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "python": "3.11.3",
+  "pytest": "9.1.1",
+  "PyYAML": "6.0.2",
+  "dependency_install": "PyYAML 6.0.2 installed to a temporary local dependency directory from public PyPI; no private source sent; bundled Python probed but not used",
+  "dependency_closure_status": "BOUNDED_65_HISTORICAL_CODE_CONFIG_FILES",
+  "source_custody": "16 member-attested runtime/config files; 49 observed local dependencies; 31 total manifest-selected archive members matched",
+  "source_refs": "sources/legacy_source_inventory.json",
+  "science_grade": "ACTUAL_HISTORICAL_SOURCEFREE_REPLAY_PLUS_RESEARCH_CANON; NATIVE_CONTRACT_HOLD",
+  "executed_suites": [
+    {
+      "command": [
+        "python3",
+        "-m",
+        "pytest",
+        "-v",
+        "-p",
+        "no:cacheprovider",
+        "test_recursive_court.py",
+        "--junitxml=evidence/clr3.xml"
+      ],
+      "cwd": ".",
+      "errors": 0,
+      "exit_code": 0,
+      "failures": 0,
+      "skipped": 0,
+      "suite": "clr3",
+      "tests": 38
+    },
+    {
+      "command": [
+        "python3",
+        "-m",
+        "pytest",
+        "-v",
+        "-p",
+        "no:cacheprovider",
+        "test_falsifiers.py",
+        "--junitxml=../../evidence/original_six_red.xml"
+      ],
+      "cwd": "preserved/r1_court",
+      "errors": 0,
+      "exit_code": 1,
+      "failures": 6,
+      "skipped": 0,
+      "suite": "original_six_red",
+      "tests": 6
+    }
+  ],
+  "independent_review": "Not independent; HQ distinct later High reviewer",
+  "source_actor_grant": "Sourcefree synthetic fixtures only; no native actor/model/original-data use",
+  "cash_known": false,
+  "quota_known": false,
+  "context_cache_reuse": "UNKNOWN",
+  "estimated_total_evidence_cost": "UNKNOWN",
+  "assignments_completed": [
+    "CLR3 bounded archaeology/recursive-canon research court"
+  ],
+  "next_good_affinity_tags": [
+    "RECURSIVE_FORMATION",
+    "SOURCE_CUSTODY",
+    "CANON_CONSUMPTION"
+  ],
+  "staged_state_preservation": "Own research subtree retained; other family worktrees untouched; re-probe before reuse",
+  "retire_or_rebuild_reason": null
+}

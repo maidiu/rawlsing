@@ -1,0 +1,86 @@
+[
+  {
+    "child_actions": [
+      "TAKE_BUS",
+      "TAKE_BUS",
+      "ASK_FOR_ASSISTANCE"
+    ],
+    "count": 1,
+    "father": {
+      "action": "DISCUSS_NONPURCHASE_OPTIONS",
+      "assigned_overtime_min": 0,
+      "available_minutes": 35,
+      "cash_after_work": -50,
+      "material_repair_feasible": false,
+      "overtime_declined_min": 0,
+      "overtime_worked_min": 0,
+      "replacement_feasible": false
+    },
+    "required_overtime_min": 0,
+    "trace_sha256": "ff625005d93e8c9a23f40efd886c2d3b49d22a29f665d5d948272459dbcaf8c4",
+    "wage_delta": -175
+  },
+  {
+    "child_actions": [
+      "TAKE_BUS",
+      "TAKE_BUS",
+      "ASK_FOR_ASSISTANCE"
+    ],
+    "count": 1,
+    "father": {
+      "action": "DEFER_CONVERSATION",
+      "assigned_overtime_min": 32,
+      "available_minutes": 3,
+      "cash_after_work": -50,
+      "material_repair_feasible": false,
+      "overtime_declined_min": 0,
+      "overtime_worked_min": 32,
+      "replacement_feasible": false
+    },
+    "required_overtime_min": 32,
+    "trace_sha256": "96cf1663a655d151837baa7766facb61009731c1c9d677ac9a8faa9d9a809302",
+    "wage_delta": -175
+  },
+  {
+    "child_actions": [
+      "PARTICIPATE_JOINT_REPAIR",
+      "REHEARSE_BICYCLE_REPAIR",
+      "TRY_INDEPENDENT_REPAIR"
+    ],
+    "count": 3,
+    "father": {
+      "action": "OFFER_JOINT_REPAIR",
+      "assigned_overtime_min": 0,
+      "available_minutes": 35,
+      "cash_after_work": 125,
+      "material_repair_feasible": true,
+      "overtime_declined_min": 0,
+      "overtime_worked_min": 0,
+      "replacement_feasible": false
+    },
+    "required_overtime_min": 0,
+    "trace_sha256": "d380941f340f7a10a2de2747b28ca5d037b921d74c683221955cb0798e0abc2c",
+    "wage_delta": 0
+  },
+  {
+    "child_actions": [
+      "TAKE_BUS",
+      "TAKE_BUS",
+      "ASK_FOR_ASSISTANCE"
+    ],
+    "count": 1,
+    "father": {
+      "action": "DEFER_CONVERSATION",
+      "assigned_overtime_min": 32,
+      "available_minutes": 3,
+      "cash_after_work": 125,
+      "material_repair_feasible": true,
+      "overtime_declined_min": 0,
+      "overtime_worked_min": 32,
+      "replacement_feasible": false
+    },
+    "required_overtime_min": 32,
+    "trace_sha256": "42c93334d354be05d9f2c06623b28f7dbd032d8dcb13b3860f8ba0eacc03c5ec",
+    "wage_delta": 0
+  }
+]
