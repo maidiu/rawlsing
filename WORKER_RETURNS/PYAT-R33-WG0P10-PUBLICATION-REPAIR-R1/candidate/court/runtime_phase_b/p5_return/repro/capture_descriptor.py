@@ -1,0 +1,9 @@
+"""Capture actual registered descriptor and source-owner view; export no keys."""
+import json,pathlib,sys,hashlib,dataclasses
+R=pathlib.Path(__file__).resolve().parents[1];sys.path.insert(0,str(R/'review/repro'))
+from phase_b_support_v1 import w,plan
+p=plan();registered=json.loads(p.contract)
+assert p.fixture_owner._issued()['plans'][hashlib.sha256(p.contract).hexdigest()]['science']==p.science_root
+obj={'schema':'WG0P5_FULL_BOUND_SOURCE_DESCRIPTOR@1','descriptor_dataclass_fields':[f.name for f in dataclasses.fields(w.BoundSpec)],'actual_registered_contract':registered,'contract_sha256':hashlib.sha256(p.contract).hexdigest(),'separate_fixture_owner_snapshot':json.loads(p.owner_snapshot),'fixture_owner_compiled_plan_record':p.fixture_owner._issued()['plans'][hashlib.sha256(p.contract).hexdigest()],'fixture_owner_native_sources':p.fixture_owner._issued()['native_sources'],'actual_source_material':json.loads(p.source_material),'qualified_native_item_preimages':{'original25':w.frozen('ORIGINAL_FRONTIER.json')['native_items'],'separate_conditional4':w.frozen('CONDITIONAL_FRONTIER.json')['native_items']},'source_pin_law':'Native metadata options/missing/response/form/source/wave/route/grant/version is independently frozen and binds native item refs plus science/freeze root; every runtime BoundSpec field is additionally in the owner-registered contract.','trust_boundary':'Local TEST_ONLY fixture owner. Private owner directory/code/key is trusted; not external original-source/semantic/model authority.','scientific_acceptance':'PENDING_INDEPENDENT_WG0M_AND_HQ'}
+(R/'01_FULL_BOUND_SOURCE_DESCRIPTOR.json').write_text(json.dumps(obj,indent=2)+'\n')
+print(json.dumps({'descriptor_fields':len(obj['descriptor_dataclass_fields']),'original_manifest_units':len(p.manifest.units),'frontier':len(p.frontier_receipts),'contract_sha256':obj['contract_sha256']}))

@@ -1,0 +1,11 @@
+# Ordinary same-respondent conditional and genuine native numerical products
+
+Original fixed25 remains3 PRODUCED/16 HELD/6 INADMISSIBLE, including ZERO produced conditionals. We do not relabel an old HELD as a pass to satisfy the product requirement.
+
+The separate preregistered two-item/four-op frontier uses the same original-like synthetic source A/W1 respondent carrier and independently specified joint routing/risk evidence R1–R6. Only the directional `Q-RT-C | Q-ORD-A=1` relation receives the exact TEST_ONLY joint permission. R2 andR3 are the exact selected respondents. Native I03 computes yes1/no1/raw denominator2, preserving original native respondent refs in denominator_member_refs. Other marginals use ordinary paths, reverse remains HELD. Cross-wave/source/household replacements cannot obtain the joint grant.
+
+`WorkloadBuilder.add_joint_risk_authority`→`enumerate`→`build_executable_plan`→`make_executor`→accepted `BatchExecutionRunner`→`consumer_effects` is the actual path. The optional compatibility convenience delegates to this same chain and is not the proof basis. `observations/ordinary_conditional.json` contains the exact query, predicate, unit/manifest, complete frontier, real receipts and value-bearing original consumer result.
+
+The original ordinal products remain 01:{0:1,1:2,2:2,3:1,9:0}/6 and05:{0:0,1:2,2:1,3:1,9:0}/4. Four household native MR joint profiles preserve food2/rent2/health2/education1/none1. The pinned WG0J reconstruction algorithm independently specifies counts from captured sealed C11 event/routing identities; it is executed here by the WG0P4 implementer and is not a new independent-review verdict. Its receipt is `observations/independent_native_reconstruction.json`. Supported cell9=0 is not ZERO_SUPPORT; a real empty native risk predicate separately gives typed ZERO_SUPPORT/0, not an invented number. Source changes affect intended values while W2 is stable; no smoothing or pooled cross-person/cross-wave inference is introduced.
+
+Only sourcefree local conditional productive capability is claimed. All original-source measurement, licence, design/weight/generalization, Field Forge/source-world semantics, whole35 F1–F8/AT01–35, N11/N12 and actor permissions remain separate.
