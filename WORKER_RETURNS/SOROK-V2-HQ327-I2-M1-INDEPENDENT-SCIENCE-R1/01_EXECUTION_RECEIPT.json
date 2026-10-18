@@ -1,0 +1,64 @@
+{
+  "schema": "SOROK_HQ327_I2_M1_INDEPENDENT_EXECUTION_R1",
+  "grade": "PINNED_SOURCEFREE_REPLAY_AND_FRESH_HOSTILE",
+  "sealed_startup": "9f4ea6b6a45e955ccb85ce6e36fdf022b7dd4c74",
+  "source_commit": "7e91c19828589281fb348c3aff35dca51bf9d995",
+  "source_archive": {
+    "bytes": 6315,
+    "git_blob_sha1": "37174efcf6689f87110ef97023e91cc83786fe2a",
+    "sha256": "30b820eda81089c89d9e2df8145860386d33b973f5c7f6a028e7e16b21dbe7b4",
+    "git_verified": true,
+    "tar_extracted_safely": true,
+    "members": {
+      "kernel.py": "c86a38ad5ceec387937effa9eca42da8f0b6f0eccbc7652d8fc6ef033578892f",
+      "test_kernel.py": "3d80d47b70cb8b5450a36d67559293aacad0cb08f4dfdef6ca18e9c32044242c"
+    }
+  },
+  "runtime": {
+    "python": "3.13.5",
+    "pytest": "9.0.2",
+    "github_connector_mounts_private_file": false,
+    "staged_with_verified_base64": true
+  },
+  "runs": [
+    {
+      "suite": "UNMODIFIED_AUTHOR",
+      "command": "python -m pytest -q --junitxml=author_reproduction.junit.xml",
+      "pass": 37,
+      "fail": 0,
+      "error": 0,
+      "skipped": 0,
+      "exit_code": 0,
+      "junit_sha256": "6db17e1eb83d1a9af1b57579ada01e4b08a650be361cc90c9ef158bfbaba1875",
+      "stdout_sha256": "3e62137b8331e5093c598c5984f07ba7ebd335dbd23ed78b8568e911f7ffd001"
+    },
+    {
+      "suite": "FRESH_I2_STRICT",
+      "command": "python -m pytest -q test_i2_strict.py --junitxml=i2_strict.junit.xml",
+      "pass": 14,
+      "fail": 9,
+      "error": 0,
+      "skipped": 0,
+      "exit_code": 1,
+      "junit_sha256": "4e91821914bc1ce412b3256441f4e565d39d319f91eef6b12b10e6d2982b1783",
+      "stdout_sha256": "e33080c5d8e9ad4e8bbb293ccbd0b2449b4540d602eac5a053e6f4cd5faa83c1"
+    }
+  ],
+  "evidence_bundle": {
+    "bytes": 5706,
+    "git_blob_sha1": "23ebc5a15df242b288555ec415ef6533b4420a7f",
+    "sha256": "449f9cf8c8db7befc8b2358b776adee636db70f884e7d2fdffa069b07c19d72f",
+    "test_source_sha256": "31669b17358a306ad119a7d8c2677e202e6cfa6356ad474602c8d553ef339dee",
+    "files": [
+      "test_i2_strict.py",
+      "i2_strict.junit.xml",
+      "i2_strict.log",
+      "author_reproduction.junit.xml",
+      "author_reproduction.log"
+    ]
+  },
+  "native_owner_execution": "NOT_RUN",
+  "original_35_waves": "NOT_RUN",
+  "live_LLM": "NOT_RUN",
+  "self_adoption": false
+}

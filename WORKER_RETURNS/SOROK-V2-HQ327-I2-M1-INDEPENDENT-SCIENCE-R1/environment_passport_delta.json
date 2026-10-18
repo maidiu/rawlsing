@@ -1,0 +1,66 @@
+{
+  "passport_schema": "SOROK_00D_ENVIRONMENT_PASSPORT_DELTA_R1",
+  "environment_id": "SOROK_HQ327_I2_M1_BOUNDED_BROWSER",
+  "epoch_id": "HQ327_I2_20261017",
+  "owner_session_alias": "SOROK_HQ327_FRESH_INDEPENDENT_I2",
+  "surface": "BROWSER_CONTAINER_WITH_PRIVATE_GITHUB_CONNECTOR",
+  "machine_alias": null,
+  "conversation_or_account_affinity": "THIS_REVIEW_SESSION_ONLY",
+  "status": "RECHECK_ON_RESUME",
+  "last_live_probe_at": null,
+  "runtime_marker_digest": null,
+  "probe_command_and_result": "python=3.13.5, pytest=9.0.2; exact M1 source Git blob SHA1 and tar SHA256 verified; source-only imports; independently executed 37 original and 23 strict cases",
+  "capabilities": {
+    "github_read": "VERIFIED",
+    "github_write": "PENDING_COMMIT_VERIFICATION",
+    "python": "VERIFIED",
+    "pytest": "VERIFIED",
+    "filesystem": "VERIFIED",
+    "full_native_CAN_ADP": "NOT_STAGED",
+    "original_survey": "NOT_AUTHORIZED"
+  },
+  "branch": "agent/reviewer-sorok-v2-hq327-i2-m1-independent-science-r1",
+  "exact_checkout_base": "9f4ea6b6a45e955ccb85ce6e36fdf022b7dd4c74",
+  "worktree_alias": null,
+  "git_object_store_alias": null,
+  "materialized_source_refs": [
+    {
+      "commit": "7e91c19828589281fb348c3aff35dca51bf9d995",
+      "repository_path": "WORKER_RETURNS/SOROK-V2-HQ326-M1-INTERPRETATION-LINEAGE-R1/M1_source_tests.tar.gz",
+      "git_blob_sha1": "37174efcf6689f87110ef97023e91cc83786fe2a",
+      "imported_module": "kernel.py",
+      "source_grade": "TEST_ONLY_INTERPRETATION_LINEAGE_CANDIDATE"
+    }
+  ],
+  "dependency_closure_status": "FULL_FOR_STANDALONE_M1_ONLY",
+  "covered_test_suites": [
+    {
+      "suite": "AUTHOR_FROZEN",
+      "actual_pass": 37,
+      "actual_fail": 0,
+      "command": "python -m pytest -q --junitxml=author_reproduction.junit.xml"
+    },
+    {
+      "suite": "FRESH_I2_STRICT",
+      "actual_pass": 14,
+      "actual_fail": 9,
+      "command": "python -m pytest -q test_i2_strict.py --junitxml=i2_strict.junit.xml"
+    }
+  ],
+  "science_grade": "INDEPENDENT_SOURCEFREE_REPLAY__SCIENTIFIC_REVIEW_REVISE_CAUSAL_INTEGRATION",
+  "provider": "OpenAI",
+  "model": "GPT-6 High",
+  "cost_known": null,
+  "usage_known": null,
+  "original_source": "NOT_RUN",
+  "actor_wake": "NOT_RUN",
+  "independent_review_separation": "FRESH_REVIEWER_NOT_M1_AUTHOR",
+  "next_good_affinity_tags": [
+    "B2_OCCURRENCE_CUSTODY",
+    "M1_MEANING_LINEAGE",
+    "ADP017_EXPOSURE",
+    "CAN011_TARGET_AUTHORIZATION"
+  ],
+  "staged_state_preservation": "EPHEMERAL; exact archive and receipts committed",
+  "retire_or_rebuild_reason": "Do not assume this browser Python runtime remains after conversation."
+}

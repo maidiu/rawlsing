@@ -1,0 +1,150 @@
+{
+  "schema": "SOROK_HQ327_I2_M1_INDEPENDENT_FALSIFIERS_R1",
+  "author_reproduction": {
+    "pass": 37,
+    "fail": 0
+  },
+  "independent_executable": {
+    "pass": 14,
+    "fail": 9,
+    "total": 23
+  },
+  "green_tests": [
+    "01 plural noncompelled",
+    "02 attributed claim not culprit",
+    "03 unheard peer excluded",
+    "04 parent private history invariant",
+    "05 child history changes candidate identity not psychological menu",
+    "06 immutable fixed-scene append",
+    "07 memory inaccessible",
+    "08 no caregiver procedure borrow",
+    "09 other P refusal permitted",
+    "10 LLM mutation blocked",
+    "11 stale grant blocked",
+    "12 other P borrowed history blocked",
+    "13 demographic invariance",
+    "R08 future prior history excluded"
+  ],
+  "hostiles": [
+    {
+      "id": "R01",
+      "status": "RED",
+      "priority": "P0",
+      "kind": "FUTURE_SPEECH",
+      "input": "LOSS time 3; parent speech time 4; peer speech time 5 already on child access",
+      "expected": "at t3 these utterances cannot affect present-event eligibility",
+      "actual": "both appear as accepted candidate sources",
+      "source_line": "kernel.py:157-160",
+      "run": "ACTUAL_PYTEST",
+      "meaning": "PROPOSED_OWNER_SEAM_BLOCKER"
+    },
+    {
+      "id": "R02",
+      "status": "RED",
+      "priority": "P0",
+      "kind": "FUTURE_AFFECT",
+      "input": "LOSS t3; first_distress time 4 offered as immediate affect",
+      "expected": "refusal or separately admitted later processing time",
+      "actual": "propose allows future affect",
+      "source_line": "kernel.py:178-181",
+      "run": "ACTUAL_PYTEST",
+      "meaning": "PROPOSED_OWNER_SEAM_BLOCKER"
+    },
+    {
+      "id": "R03",
+      "status": "RED",
+      "priority": "P0",
+      "kind": "EVENT_CONTENT_COLLISION",
+      "input": "append on scene A then substitute material for same LOSS id/time in scene B; original objective SHA changes",
+      "expected": "prior lineage must reject changed exact objective content",
+      "actual": "later eligibility accepts original lineage",
+      "source_line": "kernel.py:82-97,141-147,201-205",
+      "run": "ACTUAL_PYTEST",
+      "meaning": "PROPOSED_OWNER_SEAM_BLOCKER"
+    },
+    {
+      "id": "R04",
+      "status": "RED",
+      "priority": "P2_CONTRACT",
+      "kind": "NO_CHANGE_JOURNAL",
+      "input": "after one appended meaning choose NO_CHANGE on later encounter",
+      "expected": "strict invariant state hash unchanged if no lasting change",
+      "actual": "state hash and version increment; could be lawful audit without psychic effect",
+      "source_line": "kernel.py:149,201-207",
+      "run": "ACTUAL_PYTEST",
+      "meaning": "SPECIFICATION_CHOICE_NO_ADOPTED_NOEFFECT_SEMANTICS"
+    },
+    {
+      "id": "R05",
+      "status": "RED",
+      "priority": "P2_SCIENCE",
+      "kind": "COSMETIC_ACTIVITY_TEXT",
+      "input": "same prior history ID and time, alter activity text only",
+      "expected": "strict proposed identical candidate identity",
+      "actual": "hash changes, correctly reflecting changed bytes but without psychology",
+      "source_line": "kernel.py:153-156",
+      "run": "ACTUAL_PYTEST",
+      "meaning": "STRICT_EXPECTATION_TOO_STRONG_FOR_HASH_IDENTITY"
+    },
+    {
+      "id": "R06",
+      "status": "RED",
+      "priority": "P0",
+      "kind": "SELF_ATTESTED_HISTORY",
+      "input": "add forged prior_* actor-owned History(witnessed=True) with no owner source",
+      "expected": "cannot add a scientifically qualified route without admitted independent source",
+      "actual": "new candidate appears",
+      "source_line": "kernel.py:113-116,153-156",
+      "run": "ACTUAL_PYTEST",
+      "meaning": "PROPOSED_OWNER_SEAM_BLOCKER"
+    },
+    {
+      "id": "R07",
+      "status": "RED",
+      "priority": "P0",
+      "kind": "OPAQUE_CULPRIT_CLAIM",
+      "input": "insert stolen_by:group_X into objective material",
+      "expected": "unowned culprit must never be objective truth",
+      "actual": "prefix filter does not catch it",
+      "source_line": "kernel.py:120-121",
+      "run": "ACTUAL_PYTEST",
+      "meaning": "PROPOSED_OWNER_SEAM_BLOCKER"
+    },
+    {
+      "id": "R08",
+      "status": "PASS",
+      "priority": "P0",
+      "kind": "FUTURE_PRIOR_EXCLUSION",
+      "input": "move prior_recognition time from 1 to 99 while LOSS time 3",
+      "expected": "exclude procedural recruitment",
+      "actual": "no procedural recruitment",
+      "source_line": "kernel.py:153-156",
+      "run": "ACTUAL_PYTEST",
+      "meaning": "POSITIVE_BOUNDARY"
+    },
+    {
+      "id": "R09",
+      "status": "RED",
+      "priority": "P0",
+      "kind": "UNISSUED_SPEAKER",
+      "input": "add other_P speech to LOSS and child.access id with no speaker action receipt",
+      "expected": "reject unauthenticated speaking/exposure source",
+      "actual": "new child candidate appears",
+      "source_line": "kernel.py:126-128,157-160",
+      "run": "ACTUAL_PYTEST",
+      "meaning": "PROPOSED_OWNER_SEAM_BLOCKER"
+    },
+    {
+      "id": "R10",
+      "status": "RED",
+      "priority": "P1_SCIENCE",
+      "kind": "UNRELATED_LATER_MODES",
+      "input": "replace later encounter with unrelated_work and refusal",
+      "expected": "strict no mode except NO_CHANGE absent relationship/relevance evidence",
+      "actual": "all six positive modes remain hypotheses",
+      "source_line": "kernel.py:161-164",
+      "run": "ACTUAL_PYTEST",
+      "meaning": "UNFILTERED_NONCAUSAL_CANDIDATES_NOT_YET_CAUSAL_EFFECT"
+    }
+  ]
+}
