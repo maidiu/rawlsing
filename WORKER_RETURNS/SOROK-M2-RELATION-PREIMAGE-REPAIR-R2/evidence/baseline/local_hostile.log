@@ -1,0 +1,56 @@
+LOADED_KERNEL {"file": "<RETURN>/m2_patch/kernel.py", "sha256": "56388b0c1ef71c1b77886932ca473d12bc3ff9232f630371858809e1289eeb0c"}
+........FFF                                                              [100%]
+=================================== FAILURES ===================================
+___ test_consumed_later_relation_source_must_remain_bound[observed_history] ____
+
+attack = 'observed_history'
+
+    @pytest.mark.parametrize('attack',['observed_history','relevance_deleted','relevance_witness'])
+    def test_consumed_later_relation_source_must_remain_bound(attack):
+        scene,state=twice();assert eligible(scene,state,'future')
+        if attack=='observed_history':
+            bad=rewrite_history(scene,'child','later_observed_counterpart',activity='observed_counterpart_action:ALLOW')
+        elif attack=='relevance_deleted':bad=replace(scene,relevance=())
+        else:bad=replace(scene,relevance=(replace(scene.relevance[0],observer='peer'),))
+        # This source enabled the already appended DIFFERENTIATE at t9.
+>       with pytest.raises(Refusal,match='SOURCE_PREIMAGE|SOURCE_IDENTITY|LINEAGE'):
+E       Failed: DID NOT RAISE Refusal
+
+test_local_hostile.py:84: Failed
+___ test_consumed_later_relation_source_must_remain_bound[relevance_deleted] ___
+
+attack = 'relevance_deleted'
+
+    @pytest.mark.parametrize('attack',['observed_history','relevance_deleted','relevance_witness'])
+    def test_consumed_later_relation_source_must_remain_bound(attack):
+        scene,state=twice();assert eligible(scene,state,'future')
+        if attack=='observed_history':
+            bad=rewrite_history(scene,'child','later_observed_counterpart',activity='observed_counterpart_action:ALLOW')
+        elif attack=='relevance_deleted':bad=replace(scene,relevance=())
+        else:bad=replace(scene,relevance=(replace(scene.relevance[0],observer='peer'),))
+        # This source enabled the already appended DIFFERENTIATE at t9.
+>       with pytest.raises(Refusal,match='SOURCE_PREIMAGE|SOURCE_IDENTITY|LINEAGE'):
+E       Failed: DID NOT RAISE Refusal
+
+test_local_hostile.py:84: Failed
+___ test_consumed_later_relation_source_must_remain_bound[relevance_witness] ___
+
+attack = 'relevance_witness'
+
+    @pytest.mark.parametrize('attack',['observed_history','relevance_deleted','relevance_witness'])
+    def test_consumed_later_relation_source_must_remain_bound(attack):
+        scene,state=twice();assert eligible(scene,state,'future')
+        if attack=='observed_history':
+            bad=rewrite_history(scene,'child','later_observed_counterpart',activity='observed_counterpart_action:ALLOW')
+        elif attack=='relevance_deleted':bad=replace(scene,relevance=())
+        else:bad=replace(scene,relevance=(replace(scene.relevance[0],observer='peer'),))
+        # This source enabled the already appended DIFFERENTIATE at t9.
+>       with pytest.raises(Refusal,match='SOURCE_PREIMAGE|SOURCE_IDENTITY|LINEAGE'):
+E       Failed: DID NOT RAISE Refusal
+
+test_local_hostile.py:84: Failed
+=========================== short test summary info ============================
+FAILED test_local_hostile.py::test_consumed_later_relation_source_must_remain_bound[observed_history]
+FAILED test_local_hostile.py::test_consumed_later_relation_source_must_remain_bound[relevance_deleted]
+FAILED test_local_hostile.py::test_consumed_later_relation_source_must_remain_bound[relevance_witness]
+3 failed, 8 passed in 0.14s

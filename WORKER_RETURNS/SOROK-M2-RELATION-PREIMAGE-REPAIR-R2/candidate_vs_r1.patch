@@ -1,0 +1,103 @@
+--- R1/kernel.py
++++ R2/kernel.py
+@@ -5,9 +5,10 @@
+ import json
+ 
+ GRADE = 'TEST_ONLY_M1_SOURCE_TIME_REPAIR_CANDIDATE_PENDING_I2'
+-RULE = 'M2_INTERPRETATION_SOURCE_TEMPORAL_IDENTITY@0.3.0_CANDIDATE'
++RULE = 'M2_INTERPRETATION_SOURCE_TEMPORAL_IDENTITY@0.4.0_CANDIDATE'
+ RULE_CONTRACT = {'name':RULE,'clock':'no_future_read','history':'independent_fixture_witness',
+                  'speech':'actual_action_plus_listener_exposure','lineage':'objective_and_consumed_source_preimages',
++                 'relation':'exact_consumed_relevance_history_and_witness',
+                  'outcome':'candidate_only','no_change':'unchanged_psychology_separate_audit'}
+ MODES = ('REATTRIBUTE','NARROW','GENERALIZE','REINFORCE','CONTRADICT','DIFFERENTIATE','NO_CHANGE')
+ STANCES = ('ACCEPT','REJECT','SUSPEND')
+@@ -201,7 +202,8 @@
+     return evs
+ 
+ def _source_preimages(scene, *, actor_id, event_id, source, procedure_refs,
+-                      affect_ref, public_action_ref, evs):
++                      affect_ref, public_action_ref, evs, mode, original_event_id,
++                      retained_preimages=None):
+     """Snapshot precisely the source objects consumed by an interpretation.
+ 
+     Only non-objective, historical *read* dependencies go here. Objective
+@@ -248,6 +250,24 @@
+         add('HEARD_SPEECH',source,utterance)
+         add('SPEAKER_ACTION_RECEIPT',source,action)
+         add('LISTENER_EXPOSURE_RECEIPT',source,exposure)
++    if mode in MODES and mode!='NO_CHANGE':
++        choices=_relation_sources(scene,actor_id,current,evs[original_event_id])
++        snapshots=[]
++        for relevance,observed,witness in choices:
++            ref=digest([actor_id,event_id,original_event_id,observed.id])
++            snapshots.append(tuple(sorted((kind,ref,digest(asdict(obj))) for kind,obj in (
++                ('RELATION_RELEVANCE',relevance),
++                ('RELATION_OBSERVED_HISTORY',observed),
++                ('RELATION_HISTORY_WITNESS',witness)))))
++        if retained_preimages is not None:
++            # Revalidate the actually consumed alternative, not a newly preferred
++            # receipt. Adding unrelated/alternative evidence cannot rewrite it.
++            retained=tuple(sorted(x for x in retained_preimages if x[0].startswith('RELATION_')))
++            require(retained in snapshots,'SOURCE_PREIMAGE_IDENTITY_COLLISION')
++            captured.extend(retained)
++        else:
++            require(snapshots,'SOURCE_PREIMAGE_IDENTITY_COLLISION')
++            captured.extend(min(snapshots))
+     return tuple(sorted(captured))
+ 
+ def _lineage_integrity(scene,state,evs):
+@@ -266,26 +286,33 @@
+         try:
+             exact=_source_preimages(scene,actor_id=rec.actor,event_id=rec.event,
+                 source=rec.source,procedure_refs=rec.retained_procedure_refs,
+-                affect_ref=rec.affect_ref,public_action_ref=rec.public_action_ref,evs=evs)
++                affect_ref=rec.affect_ref,public_action_ref=rec.public_action_ref,evs=evs,
++                mode=rec.mode,original_event_id=rec.original_event_id,
++                retained_preimages=rec.source_preimages)
+         except Refusal as exc:
+             raise Refusal('SOURCE_PREIMAGE_IDENTITY_COLLISION') from exc
+         require(exact==rec.source_preimages,'SOURCE_PREIMAGE_IDENTITY_COLLISION')
+         require(rec.actor_memory_access=='NOT_GRANTED','UNISSUED_ACTOR_MEMORY')
+ 
+-def _relevant(scene,state,e,evs):
+-    if not state.lineage:return False
+-    orig=evs[state.lineage[0].original_event_id]
++def _relation_sources(scene,actor_id,e,orig):
++    """Return the exact qualified alternatives used by the relation gate."""
++    if e.kind not in ('ENCOUNTER','ACTION'):return ()
++    out=[]
+     for x in scene.relevance:
+-        if x.actor!=state.actor or x.later_event_id!=e.id or x.earlier_event_id!=orig.id:continue
++        if x.actor!=actor_id or x.later_event_id!=e.id or x.earlier_event_id!=orig.id:continue
+         if (x.issuer!=TEST_RELEVANCE_ISSUER or x.later_event_hash!=objective_event_hash(e)
+                 or x.earlier_event_hash!=objective_event_hash(orig) or x.time>e.time
+-                or x.observer==state.actor or x.observer not in {a.id for a in scene.actors}):continue
+-        witness=next((h for h in actor(scene,state.actor).history if h.id==x.observed_history_id),None)
+-        if (witness and witness.time==e.time and x.time==e.time and e.action_owner
++                or x.observer==actor_id or x.observer not in {a.id for a in scene.actors}):continue
++        witness=next((h for h in actor(scene,actor_id).history if h.id==x.observed_history_id),None)
++        if (witness and witness.witnessed and witness.time==e.time and x.time==e.time and e.action_owner
+                 and witness.activity=='observed_counterpart_action:'+str(e.action)
+                 and _history_source(scene,witness).operation=='OBSERVED_RELATIONAL_DIFFERENCE'):
+-            return True
+-    return False
++            out.append((x,witness,_history_source(scene,witness)))
++    return tuple(out)
++
++def _relevant(scene,state,e,evs):
++    return bool(state.lineage and _relation_sources(scene,state.actor,e,
++        evs[state.lineage[0].original_event_id]))
+ 
+ def eligible(scene,state,event_id):
+     # Check already-retained exact objective preimages before any derived-parent checks.
+@@ -354,7 +381,8 @@
+         'source_preimages':_source_preimages(scene,actor_id=own.id,event_id=event_id,
+             source=selected.source,procedure_refs=state.procedure_refs,
+             affect_ref=affect_ref,public_action_ref=public_action_ref,
+-            evs={e.id:e for e in scene.events})}
++            evs={e.id:e for e in scene.events},mode=selected.mode,
++            original_event_id=original.id)}
+ 
+ def fixture_grant(proposal,scope_actor):
+     require(proposal['actor']==scope_actor and proposal['grade']==GRADE,'GRANT_ACTOR_SCOPE_INVALID')

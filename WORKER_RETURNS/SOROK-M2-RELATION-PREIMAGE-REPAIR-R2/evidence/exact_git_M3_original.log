@@ -1,0 +1,60 @@
+LOADED_KERNEL {"file": "<RETURN>/.runtime/original_m2/kernel.py", "sha256": "888d73fff63f70a22932f1001f5c9003104b0e5a9cdef84e93456151428676c8"}
+FFF                                                                      [100%]
+=================================== FAILURES ===================================
+_ test_R3_01_past_heard_words_cannot_change_without_current_lineage_source_collision _
+
+    def test_R3_01_past_heard_words_cannot_change_without_current_lineage_source_collision():
+        scene, state = fixed_t6_interpretation()
+        changed_words = replace(scene.speech[0], words='It was definitely the children of group Z.')
+        changed = replace(scene, speech=(changed_words,) + scene.speech[1:],
+            speech_actions=(replace(scene.speech_actions[0],
+                                    speech_hash=digest(asdict(changed_words))),) + scene.speech_actions[1:],
+            exposures=(replace(scene.exposures[0],
+                               speech_hash=digest(asdict(changed_words))),) + scene.exposures[1:])
+>       with pytest.raises(Refusal, match='SOURCE_PREIMAGE|SOURCE_IDENTITY_COLLISION'):
+E       Failed: DID NOT RAISE Refusal
+
+frozen_m3/test_original_preimage.py:27: Failed
+_ test_R3_02_prior_practical_orientation_cannot_change_unnoticed_after_lineage_append _
+
+    def test_R3_02_prior_practical_orientation_cannot_change_unnoticed_after_lineage_append():
+        scene, state = fixed_t6_interpretation()
+        child = scene.actors[0]
+        changed_habit = replace(child.history[1],
+                                activity='fully different old practical orientation')
+        changed_witnesses = tuple(
+            replace(w, history_hash=digest(asdict(changed_habit)))
+            if w.actor == 'child' and w.history_id == changed_habit.id else w
+            for w in scene.history_witnesses)
+        changed = replace(scene,
+            actors=(replace(child, history=child.history[:1] + (changed_habit,) + child.history[2:]),)
+                   + scene.actors[1:],
+            history_witnesses=changed_witnesses)
+>       with pytest.raises(Refusal, match='SOURCE_PREIMAGE|SOURCE_IDENTITY_COLLISION'):
+E       Failed: DID NOT RAISE Refusal
+
+frozen_m3/test_original_preimage.py:43: Failed
+_ test_R3_03_earlier_affective_witness_rewrite_cannot_change_historical_lineage_source _
+
+    def test_R3_03_earlier_affective_witness_rewrite_cannot_change_historical_lineage_source():
+        scene, state = fixed_t6_interpretation()
+        child = scene.actors[0]
+        changed_affect = replace(child.history[2],
+                                 activity='happy delight instead of distress')
+        changed_witnesses = tuple(
+            replace(w, history_hash=digest(asdict(changed_affect)))
+            if w.actor == 'child' and w.history_id == changed_affect.id else w
+            for w in scene.history_witnesses)
+        changed = replace(scene,
+            actors=(replace(child, history=child.history[:2] + (changed_affect,) + child.history[3:]),)
+                   + scene.actors[1:],
+            history_witnesses=changed_witnesses)
+>       with pytest.raises(Refusal, match='SOURCE_PREIMAGE|SOURCE_IDENTITY_COLLISION'):
+E       Failed: DID NOT RAISE Refusal
+
+frozen_m3/test_original_preimage.py:59: Failed
+=========================== short test summary info ============================
+FAILED frozen_m3/test_original_preimage.py::test_R3_01_past_heard_words_cannot_change_without_current_lineage_source_collision
+FAILED frozen_m3/test_original_preimage.py::test_R3_02_prior_practical_orientation_cannot_change_unnoticed_after_lineage_append
+FAILED frozen_m3/test_original_preimage.py::test_R3_03_earlier_affective_witness_rewrite_cannot_change_historical_lineage_source
+3 failed in 0.06s

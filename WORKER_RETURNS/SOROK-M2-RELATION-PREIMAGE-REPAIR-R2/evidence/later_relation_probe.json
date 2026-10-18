@@ -1,0 +1,110 @@
+{
+  "state_hash_before": "65d3aff16d8e42ea75f3e30dfc60b9b16d689f3a0ba83e20a02b50dc96e9efa8",
+  "lineage_source_preimages": [
+    [
+      [
+        "AFFECT_HISTORY",
+        "first_distress",
+        "309722ca62fe0059c40bd50f9bd015602bd6869e0751f8256771b218a2360651"
+      ],
+      [
+        "AFFECT_HISTORY_WITNESS",
+        "first_distress",
+        "f1f35f655476c69a2d838e4da116408b0d5ffb4e23992dca1fefcaa820677da3"
+      ],
+      [
+        "HEARD_SPEECH",
+        "parent_said",
+        "16f97c6923aedc20c17866a0a5153acb17a7525e43826c14d05cbd9cd0b72d96"
+      ],
+      [
+        "LISTENER_EXPOSURE_RECEIPT",
+        "parent_said",
+        "a61cbfcbcab78a455d9115a84b12bc6f29d3d5f32285f306d39a0153af019bab"
+      ],
+      [
+        "PRACTICAL_HISTORY",
+        "old_watchful_habit",
+        "36f40655a5739e21a34e31eab4a161e2f8d659a49db08b21d96bc6898e93f10c"
+      ],
+      [
+        "PRACTICAL_HISTORY_WITNESS",
+        "old_watchful_habit",
+        "b1087b7ede3c0fc43e280651d07df19cf7ec46358a17ea628ef82ace251faa2b"
+      ],
+      [
+        "PUBLIC_ACTION_HISTORY",
+        "public_lock_check",
+        "3bdff206e3b14c6714002751cbae5c0fd931c86e66a2531815ece047313db089"
+      ],
+      [
+        "PUBLIC_ACTION_HISTORY_WITNESS",
+        "public_lock_check",
+        "d058370d55ddb03ea7b57be99ae897f4ab89aa6c852083c105ba51e633d95f62"
+      ],
+      [
+        "SPEAKER_ACTION_RECEIPT",
+        "parent_said",
+        "6bf326c9ba57302404ed1eceda6abdf11fea3b67d67330e3a569c8114ea10745"
+      ]
+    ],
+    [
+      [
+        "PRACTICAL_HISTORY",
+        "old_watchful_habit",
+        "36f40655a5739e21a34e31eab4a161e2f8d659a49db08b21d96bc6898e93f10c"
+      ],
+      [
+        "PRACTICAL_HISTORY_WITNESS",
+        "old_watchful_habit",
+        "b1087b7ede3c0fc43e280651d07df19cf7ec46358a17ea628ef82ace251faa2b"
+      ],
+      [
+        "RELATION_HISTORY_WITNESS",
+        "bde486751d5a7176e9dfeb26daa6912aed2030e3553343b12c5abbb568934315",
+        "16cc536474b8c91862f2c9dc309cb9a03c2862f0f331fdf4a72e59129ff68b08"
+      ],
+      [
+        "RELATION_OBSERVED_HISTORY",
+        "bde486751d5a7176e9dfeb26daa6912aed2030e3553343b12c5abbb568934315",
+        "b63a4b15d7f57a6292b312c1c12bb7cf2c645dc5829ee643a227247a076effb2"
+      ],
+      [
+        "RELATION_RELEVANCE",
+        "bde486751d5a7176e9dfeb26daa6912aed2030e3553343b12c5abbb568934315",
+        "4d25588e91e02b4c1245a3da7dc5dc5b2cf229b3c4b5a30d2a874010e1553ffc"
+      ]
+    ]
+  ],
+  "original_t9_relevance": [
+    {
+      "later_event_id": "later",
+      "later_event_hash": "d5bace2e01c786d3d4e5d69e4cf2dd380981801d4ab857864f38198321cc67b3",
+      "earlier_event_id": "loss",
+      "earlier_event_hash": "fc99f6626a7dcc7429eef9d38b3bc305660e9c0a6bc0524bebeeb28cf6317e74",
+      "actor": "child",
+      "observed_history_id": "later_observed_counterpart",
+      "observer": "caregiver",
+      "time": 9,
+      "issuer": "M2_TEST_ONLY_OBSERVED_RELATION_CONTRAST"
+    }
+  ],
+  "controls": [
+    {
+      "attack": "observed_history",
+      "result": "REFUSED",
+      "code": "SOURCE_PREIMAGE_IDENTITY_COLLISION"
+    },
+    {
+      "attack": "relevance_deleted",
+      "result": "REFUSED",
+      "code": "SOURCE_PREIMAGE_IDENTITY_COLLISION"
+    },
+    {
+      "attack": "relevance_witness",
+      "result": "REFUSED",
+      "code": "SOURCE_PREIMAGE_IDENTITY_COLLISION"
+    }
+  ],
+  "state_hash_after": "65d3aff16d8e42ea75f3e30dfc60b9b16d689f3a0ba83e20a02b50dc96e9efa8"
+}

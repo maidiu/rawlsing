@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="3" skipped="0" tests="11" time="0.143" timestamp="2026-10-18T11:20:11.240786-04:00"><testcase classname="test_local_hostile" name="test_reissued_old_history_sources_refused_without_state_change[old_watchful_habit]" time="0.006" /><testcase classname="test_local_hostile" name="test_reissued_old_history_sources_refused_without_state_change[first_distress]" time="0.006" /><testcase classname="test_local_hostile" name="test_reissued_old_history_sources_refused_without_state_change[public_lock_check]" time="0.005" /><testcase classname="test_local_hostile" name="test_reissued_speech_action_exposure_cannot_replace_prior_words" time="0.005" /><testcase classname="test_local_hostile" name="test_unconsumed_private_history_change_does_not_change_later_options" time="0.006" /><testcase classname="test_local_hostile" name="test_renewed_future_exposure_does_not_create_prior_access" time="0.002" /><testcase classname="test_local_hostile" name="test_exact_replay_and_no_change_remain_distinct_from_mutating_lineage" time="0.014" /><testcase classname="test_local_hostile" name="test_tampered_proposal_preimage_with_fresh_fixture_grant_refused" time="0.003" /><testcase classname="test_local_hostile" name="test_consumed_later_relation_source_must_remain_bound[observed_history]" time="0.010"><failure message="Failed: DID NOT RAISE Refusal">attack = 'observed_history'
+
+    @pytest.mark.parametrize('attack',['observed_history','relevance_deleted','relevance_witness'])
+    def test_consumed_later_relation_source_must_remain_bound(attack):
+        scene,state=twice();assert eligible(scene,state,'future')
+        if attack=='observed_history':
+            bad=rewrite_history(scene,'child','later_observed_counterpart',activity='observed_counterpart_action:ALLOW')
+        elif attack=='relevance_deleted':bad=replace(scene,relevance=())
+        else:bad=replace(scene,relevance=(replace(scene.relevance[0],observer='peer'),))
+        # This source enabled the already appended DIFFERENTIATE at t9.
+&gt;       with pytest.raises(Refusal,match='SOURCE_PREIMAGE|SOURCE_IDENTITY|LINEAGE'):
+E       Failed: DID NOT RAISE Refusal
+
+test_local_hostile.py:84: Failed</failure></testcase><testcase classname="test_local_hostile" name="test_consumed_later_relation_source_must_remain_bound[relevance_deleted]" time="0.011"><failure message="Failed: DID NOT RAISE Refusal">attack = 'relevance_deleted'
+
+    @pytest.mark.parametrize('attack',['observed_history','relevance_deleted','relevance_witness'])
+    def test_consumed_later_relation_source_must_remain_bound(attack):
+        scene,state=twice();assert eligible(scene,state,'future')
+        if attack=='observed_history':
+            bad=rewrite_history(scene,'child','later_observed_counterpart',activity='observed_counterpart_action:ALLOW')
+        elif attack=='relevance_deleted':bad=replace(scene,relevance=())
+        else:bad=replace(scene,relevance=(replace(scene.relevance[0],observer='peer'),))
+        # This source enabled the already appended DIFFERENTIATE at t9.
+&gt;       with pytest.raises(Refusal,match='SOURCE_PREIMAGE|SOURCE_IDENTITY|LINEAGE'):
+E       Failed: DID NOT RAISE Refusal
+
+test_local_hostile.py:84: Failed</failure></testcase><testcase classname="test_local_hostile" name="test_consumed_later_relation_source_must_remain_bound[relevance_witness]" time="0.012"><failure message="Failed: DID NOT RAISE Refusal">attack = 'relevance_witness'
+
+    @pytest.mark.parametrize('attack',['observed_history','relevance_deleted','relevance_witness'])
+    def test_consumed_later_relation_source_must_remain_bound(attack):
+        scene,state=twice();assert eligible(scene,state,'future')
+        if attack=='observed_history':
+            bad=rewrite_history(scene,'child','later_observed_counterpart',activity='observed_counterpart_action:ALLOW')
+        elif attack=='relevance_deleted':bad=replace(scene,relevance=())
+        else:bad=replace(scene,relevance=(replace(scene.relevance[0],observer='peer'),))
+        # This source enabled the already appended DIFFERENTIATE at t9.
+&gt;       with pytest.raises(Refusal,match='SOURCE_PREIMAGE|SOURCE_IDENTITY|LINEAGE'):
+E       Failed: DID NOT RAISE Refusal
+
+test_local_hostile.py:84: Failed</failure></testcase></testsuite></testsuites>

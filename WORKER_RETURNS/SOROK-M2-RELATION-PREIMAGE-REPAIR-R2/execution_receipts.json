@@ -1,0 +1,296 @@
+[
+  {
+    "label": "M2_41",
+    "command": [
+      "/usr/local/bin/python3",
+      "-c",
+      "import sys,json,hashlib;sys.path.insert(0,sys.argv[1]);import kernel,pytest;print('LOADED_KERNEL '+json.dumps({'file':kernel.__file__,'sha256':hashlib.sha256(open(kernel.__file__,'rb').read()).hexdigest()}),flush=True);sys.exit(pytest.main(sys.argv[2:]))",
+      "<RETURN>/m2_patch",
+      "-q",
+      "<RETURN>/m2_patch/test_m2.py",
+      "--import-mode=importlib",
+      "--junitxml=<RETURN>/evidence/M2_41.xml"
+    ],
+    "exit": 0,
+    "expected_exit": 0,
+    "counts": {
+      "tests": 41,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  {
+    "label": "M3_lawful_32",
+    "command": [
+      "/usr/local/bin/python3",
+      "-c",
+      "import sys,json,hashlib;sys.path.insert(0,sys.argv[1]);import kernel,pytest;print('LOADED_KERNEL '+json.dumps({'file':kernel.__file__,'sha256':hashlib.sha256(open(kernel.__file__,'rb').read()).hexdigest()}),flush=True);sys.exit(pytest.main(sys.argv[2:]))",
+      "<RETURN>/m2_patch",
+      "-q",
+      "<RETURN>/m2_patch/test_m3_independent.py",
+      "--import-mode=importlib",
+      "--junitxml=<RETURN>/evidence/M3_lawful_32.xml"
+    ],
+    "exit": 0,
+    "expected_exit": 0,
+    "counts": {
+      "tests": 32,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  {
+    "label": "packaged_M3_three",
+    "command": [
+      "/usr/local/bin/python3",
+      "-c",
+      "import sys,json,hashlib;sys.path.insert(0,sys.argv[1]);import kernel,pytest;print('LOADED_KERNEL '+json.dumps({'file':kernel.__file__,'sha256':hashlib.sha256(open(kernel.__file__,'rb').read()).hexdigest()}),flush=True);sys.exit(pytest.main(sys.argv[2:]))",
+      "<RETURN>/m2_patch",
+      "-q",
+      "<RETURN>/m2_patch/test_m3_unresolved.py",
+      "--import-mode=importlib",
+      "--junitxml=<RETURN>/evidence/packaged_M3_three.xml"
+    ],
+    "exit": 0,
+    "expected_exit": 0,
+    "counts": {
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  {
+    "label": "additional_15",
+    "command": [
+      "/usr/local/bin/python3",
+      "-c",
+      "import sys,json,hashlib;sys.path.insert(0,sys.argv[1]);import kernel,pytest;print('LOADED_KERNEL '+json.dumps({'file':kernel.__file__,'sha256':hashlib.sha256(open(kernel.__file__,'rb').read()).hexdigest()}),flush=True);sys.exit(pytest.main(sys.argv[2:]))",
+      "<RETURN>/m2_patch",
+      "-q",
+      "<RETURN>/m2_patch/test_source_preimages.py",
+      "--import-mode=importlib",
+      "--junitxml=<RETURN>/evidence/additional_15.xml"
+    ],
+    "exit": 0,
+    "expected_exit": 0,
+    "counts": {
+      "tests": 15,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  {
+    "label": "exact_git_M3_patch",
+    "command": [
+      "/usr/local/bin/python3",
+      "-c",
+      "import sys,json,hashlib;sys.path.insert(0,sys.argv[1]);import kernel,pytest;print('LOADED_KERNEL '+json.dumps({'file':kernel.__file__,'sha256':hashlib.sha256(open(kernel.__file__,'rb').read()).hexdigest()}),flush=True);sys.exit(pytest.main(sys.argv[2:]))",
+      "<RETURN>/m2_patch",
+      "-q",
+      "<RETURN>/frozen_m3/test_original_preimage.py",
+      "--import-mode=importlib",
+      "--junitxml=<RETURN>/evidence/exact_git_M3_patch.xml"
+    ],
+    "exit": 0,
+    "expected_exit": 0,
+    "counts": {
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  {
+    "label": "exact_git_M3_original",
+    "command": [
+      "/usr/local/bin/python3",
+      "-c",
+      "import sys,json,hashlib;sys.path.insert(0,sys.argv[1]);import kernel,pytest;print('LOADED_KERNEL '+json.dumps({'file':kernel.__file__,'sha256':hashlib.sha256(open(kernel.__file__,'rb').read()).hexdigest()}),flush=True);sys.exit(pytest.main(sys.argv[2:]))",
+      "<RETURN>/.runtime/original_m2",
+      "-q",
+      "<RETURN>/frozen_m3/test_original_preimage.py",
+      "--import-mode=importlib",
+      "--junitxml=<RETURN>/evidence/exact_git_M3_original.xml"
+    ],
+    "exit": 1,
+    "expected_exit": 1,
+    "counts": {
+      "tests": 3,
+      "failures": 3,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  {
+    "label": "M1_original",
+    "command": [
+      "/usr/local/bin/python3",
+      "-c",
+      "import sys,json,hashlib;sys.path.insert(0,sys.argv[1]);import kernel,pytest;print('LOADED_KERNEL '+json.dumps({'file':kernel.__file__,'sha256':hashlib.sha256(open(kernel.__file__,'rb').read()).hexdigest()}),flush=True);sys.exit(pytest.main(sys.argv[2:]))",
+      "<RETURN>/.runtime/m1",
+      "-q",
+      "<RETURN>/.runtime/m1/test_kernel.py",
+      "--import-mode=importlib",
+      "--junitxml=<RETURN>/evidence/M1_original.xml"
+    ],
+    "exit": 0,
+    "expected_exit": 0,
+    "counts": {
+      "tests": 37,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  {
+    "label": "I2_on_M1",
+    "command": [
+      "/usr/local/bin/python3",
+      "-c",
+      "import sys,json,hashlib;sys.path.insert(0,sys.argv[1]);import kernel,pytest;print('LOADED_KERNEL '+json.dumps({'file':kernel.__file__,'sha256':hashlib.sha256(open(kernel.__file__,'rb').read()).hexdigest()}),flush=True);sys.exit(pytest.main(sys.argv[2:]))",
+      "<RETURN>/.runtime/m1",
+      "-q",
+      "<RETURN>/.runtime/i2/test_i2_strict.py",
+      "--import-mode=importlib",
+      "--junitxml=<RETURN>/evidence/I2_on_M1.xml"
+    ],
+    "exit": 1,
+    "expected_exit": 1,
+    "counts": {
+      "tests": 23,
+      "failures": 9,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  {
+    "label": "M1_on_original_M2",
+    "command": [
+      "/usr/local/bin/python3",
+      "-c",
+      "import sys,json,hashlib;sys.path.insert(0,sys.argv[1]);import kernel,pytest;print('LOADED_KERNEL '+json.dumps({'file':kernel.__file__,'sha256':hashlib.sha256(open(kernel.__file__,'rb').read()).hexdigest()}),flush=True);sys.exit(pytest.main(sys.argv[2:]))",
+      "<RETURN>/.runtime/original_m2",
+      "-q",
+      "<RETURN>/.runtime/m1/test_kernel.py",
+      "--import-mode=importlib",
+      "--junitxml=<RETURN>/evidence/M1_on_original_M2.xml"
+    ],
+    "exit": 1,
+    "expected_exit": 1,
+    "counts": {
+      "tests": 37,
+      "failures": 19,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  {
+    "label": "I2_on_original_M2",
+    "command": [
+      "/usr/local/bin/python3",
+      "-c",
+      "import sys,json,hashlib;sys.path.insert(0,sys.argv[1]);import kernel,pytest;print('LOADED_KERNEL '+json.dumps({'file':kernel.__file__,'sha256':hashlib.sha256(open(kernel.__file__,'rb').read()).hexdigest()}),flush=True);sys.exit(pytest.main(sys.argv[2:]))",
+      "<RETURN>/.runtime/original_m2",
+      "-q",
+      "<RETURN>/.runtime/i2/test_i2_strict.py",
+      "--import-mode=importlib",
+      "--junitxml=<RETURN>/evidence/I2_on_original_M2.xml"
+    ],
+    "exit": 1,
+    "expected_exit": 1,
+    "counts": {
+      "tests": 23,
+      "failures": 10,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  {
+    "label": "M1_on_patch",
+    "command": [
+      "/usr/local/bin/python3",
+      "-c",
+      "import sys,json,hashlib;sys.path.insert(0,sys.argv[1]);import kernel,pytest;print('LOADED_KERNEL '+json.dumps({'file':kernel.__file__,'sha256':hashlib.sha256(open(kernel.__file__,'rb').read()).hexdigest()}),flush=True);sys.exit(pytest.main(sys.argv[2:]))",
+      "<RETURN>/m2_patch",
+      "-q",
+      "<RETURN>/.runtime/m1/test_kernel.py",
+      "--import-mode=importlib",
+      "--junitxml=<RETURN>/evidence/M1_on_patch.xml"
+    ],
+    "exit": 1,
+    "expected_exit": 1,
+    "counts": {
+      "tests": 37,
+      "failures": 19,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  {
+    "label": "I2_on_patch",
+    "command": [
+      "/usr/local/bin/python3",
+      "-c",
+      "import sys,json,hashlib;sys.path.insert(0,sys.argv[1]);import kernel,pytest;print('LOADED_KERNEL '+json.dumps({'file':kernel.__file__,'sha256':hashlib.sha256(open(kernel.__file__,'rb').read()).hexdigest()}),flush=True);sys.exit(pytest.main(sys.argv[2:]))",
+      "<RETURN>/m2_patch",
+      "-q",
+      "<RETURN>/.runtime/i2/test_i2_strict.py",
+      "--import-mode=importlib",
+      "--junitxml=<RETURN>/evidence/I2_on_patch.xml"
+    ],
+    "exit": 1,
+    "expected_exit": 1,
+    "counts": {
+      "tests": 23,
+      "failures": 10,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  {
+    "label": "local_hostile",
+    "command": [
+      "/usr/local/bin/python3",
+      "-c",
+      "import sys,json,hashlib;sys.path.insert(0,sys.argv[1]);import kernel,pytest;print('LOADED_KERNEL '+json.dumps({'file':kernel.__file__,'sha256':hashlib.sha256(open(kernel.__file__,'rb').read()).hexdigest()}),flush=True);sys.exit(pytest.main(sys.argv[2:]))",
+      "<RETURN>/m2_patch",
+      "-q",
+      "<RETURN>/test_local_hostile.py",
+      "--import-mode=importlib",
+      "--junitxml=<RETURN>/evidence/local_hostile.xml"
+    ],
+    "exit": 0,
+    "expected_exit": 0,
+    "counts": {
+      "tests": 11,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  {
+    "label": "relation_regressions",
+    "command": [
+      "/usr/local/bin/python3",
+      "-c",
+      "import sys,json,hashlib;sys.path.insert(0,sys.argv[1]);import kernel,pytest;print('LOADED_KERNEL '+json.dumps({'file':kernel.__file__,'sha256':hashlib.sha256(open(kernel.__file__,'rb').read()).hexdigest()}),flush=True);sys.exit(pytest.main(sys.argv[2:]))",
+      "<RETURN>/m2_patch",
+      "-q",
+      "<RETURN>/test_relation_custody.py",
+      "--import-mode=importlib",
+      "--junitxml=<RETURN>/evidence/relation_regressions.xml"
+    ],
+    "exit": 0,
+    "expected_exit": 0,
+    "counts": {
+      "tests": 14,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  }
+]
