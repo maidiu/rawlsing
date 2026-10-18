@@ -1,0 +1,156 @@
+{
+  "schema": "PYAT_R37_WG0I_PUBLICATION_RECEIPT@1",
+  "repository": "maidiu/rawlsing (PRIVATE)",
+  "role": "independent hostile source/operation conservation reviewer; not WG0R author, HQ, source-semantic issuer or original E_pre issuer",
+  "branch": "agent/reviewer-pyat-r37-wg0i-current35-frontier-independent-r1",
+  "sealed_base": "68873526efe5a39a0849aa401666ac997870f156",
+  "phase_a_freeze_commit": "31d26f78f11d5bf1cc04280874ee118de0923502",
+  "wg0r_compared_commit": "0310d94dfab57f811110027c1c801b725fdba5c1",
+  "evidence_commit": "df7a6ef2068becb493a3dcc4912409bd0ce51d80",
+  "evidence_remote_verified_sha": "df7a6ef2068becb493a3dcc4912409bd0ce51d80",
+  "remote_ref": "refs/heads/agent/reviewer-pyat-r37-wg0i-current35-frontier-independent-r1",
+  "verified_by": "git ls-remote origin <ref> after push",
+  "verified_at": "2026-10-18T22:56:00Z",
+  "oracle_digest_sha256": "682b74202e618b0f5f5a5f56a89f46b246b9ca63de2f6afa2992510bfe179c5b",
+  "item_ledger_sha256": "5f7359042bc9c78d77cbd81ba8477bb10f164a4ab3eb0eb471dea21b381121b0",
+  "frozen_census": {
+    "sources": 35,
+    "all_o35e_rows": 18518,
+    "active_items": 18259,
+    "excluded_inactive": 259,
+    "operation_rows": 127813,
+    "permitted": 0,
+    "hold": 127813,
+    "estate_cells": 1890,
+    "tasks": 101,
+    "queue_null_refs": 175,
+    "primary": {
+      "SOURCE_INTRINSIC_NONAPPLICABLE": 13577,
+      "AUTHORITY_HELD": 4630,
+      "EXECUTED_WITH_CONSUMER": 52,
+      "PERMITTED": 0,
+      "UNDECIDED": 0
+    }
+  },
+  "wg0r_comparison": {
+    "accounting_rows": 18276,
+    "unique_ids": 18276,
+    "unique_hashes": 18276,
+    "waves": 35,
+    "families": 9,
+    "common_identity_hashes": 18250,
+    "o35e_none_identity_blocked_rows": 9,
+    "p2_only_hashes": 26,
+    "p2_only_carrier_variables": 7,
+    "p2_only_measurement_candidates": 19,
+    "net_count_delta": 17,
+    "wave_deltas": {
+      "Afrobarometer R1": 1,
+      "Latinobar\u00f3metro 1995": 15,
+      "Latinobar\u00f3metro 2024": 1
+    },
+    "author_court": {
+      "tests": 82,
+      "failures": 0
+    },
+    "cold_court": {
+      "tests": 82,
+      "failures": 0
+    },
+    "carrier_red": {
+      "claimed_bytes": 18276,
+      "claimed_sha256": "64a43ba2d7564d7681770065b843273330dc368b8d01bf328a8af7b19878bd98",
+      "observed_bytes": 18387,
+      "observed_sha256": "3bee6f0ec5cae74c112f2896b517b23ab7e880c9400bf019d1df6d0b3157edee",
+      "reserved_bit_violations": 2114,
+      "state": "DISPOSITION_PAYLOAD_MISMATCH",
+      "fail_closed": true
+    },
+    "all35_operation_execution": "UNVERIFIED__NO_RAW_READS_OR_SOURCE_WARRANT_ISSUED"
+  },
+  "independent_court": {
+    "tests": 36,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "matrix_mutations_detected": "8/8",
+    "probe_mutations_detected": "7/7",
+    "cold_two_process_identical": true
+  },
+  "decision": {
+    "headline": "HOLD at complete current35 original item/operation frontier",
+    "bounded_native_fixture_and_18_276_identity_accounting": "ACCEPT_AT_OWN_GRAIN",
+    "retained_disposition_carrier": "REVISE__RED__EXACT_REPUBLICATION_REQUIRED",
+    "crosswalk_19_measurement_candidates": "REVISE__OWNER_TYPING_REQUIRED",
+    "full_original35_frontier": "HOLD",
+    "n11": "SEPARATE_NOT_COMMISSIONED"
+  },
+  "non_grants": [
+    "original source U/E_pre",
+    "raw SAV/DTA/respondent read",
+    "signed issuer",
+    "source execution warrant",
+    "model/actor",
+    "Field Forge",
+    "N10W",
+    "Sorok",
+    "OC05",
+    "V3",
+    "N11/N12",
+    "production owner commit",
+    "HQ adoption"
+  ],
+  "artifact_sha256": {
+    "00_INDEPENDENT_VERDICT.md": {
+      "sha256": "3a08d6bc4b94185909b126c03b685554ad87a392fac2d60ab8182d93c5481824",
+      "bytes": 8421
+    },
+    "04_RESIDUAL_OWNER_AND_PERMISSION_CLASSIFICATION.md": {
+      "sha256": "3897a5d0d6b6b48390c3a0adaccc0cfd951ee34a18fe87fee4c719a10a4edd29",
+      "bytes": 4129
+    },
+    "05_ORIGINAL_AUTHORITY_SOURCE_FREE_POSITIVE_ESTATE_N11.md": {
+      "sha256": "9fcf3073a61d56d40f8a16ce1e7c99d92286896382a251b35163c90415ab88eb",
+      "bytes": 3685
+    },
+    "phase_a/01_PHASE_A_FROZEN_ORACLE.json": {
+      "sha256": "279b5fa20e9cceff1f7fb6b8a661ae628cd5c181c479de4b805a11a1721a4cc1",
+      "bytes": 69067
+    },
+    "phase_a/02_ITEM_IDENTITY_LEDGER.jsonl": {
+      "sha256": "5f7359042bc9c78d77cbd81ba8477bb10f164a4ab3eb0eb471dea21b381121b0",
+      "bytes": 10600470
+    },
+    "phase_a/03_REFUSAL_AND_CLASSIFICATION_CASES.json": {
+      "sha256": "eaa53d2eaf6fed7a19fd84456fc030a39334e9c1bd06531c03cb830c2570ae8e",
+      "bytes": 5124
+    },
+    "phase_b/02_HOSTILE_RECEIPTS.json": {
+      "sha256": "62ebaa3bc4825839c8cec6eeaf5ce7fde782ed59193a9f2af11fcb3e71ab3c55",
+      "bytes": 30577
+    },
+    "phase_b/03_ORACLE_VS_WG0R.md": {
+      "sha256": "2a5cd811bde0eb00711a53064be201c636baecee45df4dfed999865217a5bf9f",
+      "bytes": 2919
+    },
+    "phase_b/WG0R_COMPARISON.json": {
+      "sha256": "a856e6e92c3e840a4696b36dc8943a832579a9545326fc20dfdb724b4cf4c45d",
+      "bytes": 17332
+    },
+    "phase_b/probe_frontier.json": {
+      "sha256": "27aacd09300e6ee1f613813a03261aa0b65140be44c4eb48453ea98483632a5c",
+      "bytes": 39112
+    },
+    "02_REAL_HOSTILE_JUNIT_AND_LOGS/wg0i_hostiles.xml": {
+      "sha256": "fec09957505960ba05228414ec3802e67c5afc659ef25b4cd2a1a00137be784c",
+      "bytes": 4768
+    }
+  },
+  "comparison_source": {
+    "bounded_fixture_and_identity_accounting": "ACCEPT_AT_OWN_GRAIN",
+    "retained_disposition_carrier": "REVISE__RED__EXACT_REPUBLICATION_REQUIRED",
+    "17_row_crosswalk": "REVISE__OWNER_TYPING_REQUIRED",
+    "full_original35_item_operation_frontier": "HOLD"
+  },
+  "authority": "SOURCEFREE TEST_ONLY; author evidence compared, not adopted"
+}
