@@ -1,0 +1,451 @@
+# yearly_step.yaml
+# Mechanical sequencing contract for the v3 backbone engine.
+# Purpose: prevent circular causality, prevent LLM from mutating backbone,
+# and make module ordering explicit and testable.
+
+meta:
+  name: "v3_yearly_step_order"
+  version: "3.0-v0"
+  invariants:
+    - "events_do_not_directly_set_domains_or_topology"
+    - "llm_band_mutations_require_provenance"
+    - "derived_indices_computed_only_from_stored_state"
+    - "sequence_must_be_executed_in_order"
+
+execution:
+  timestep: "year"
+  max_events_per_year: 3
+  clamp_after_each_step: true
+  store_derived_cache: false   # optional optimization; must not alter semantics
+
+derived_indices_schedule:
+  # When each derived index must be computed (for use in subsequent steps).
+  hostage_index: {compute_after_step: "reproduction_constraints_update"}
+  agency_capacity_AC: {compute_after_step: "capacity_update"}
+  health_level: {compute_after_step: "health_drift_update"}
+  insulation_score: {compute_after_step: "buffers_update"}
+  structural_lucidity_SL: {compute_after_step: "domains_update"}
+  mis_aim_risk: {compute_after_step: "cracks_and_alienation_update"}
+  metabolic_style: {compute_after_step: "cracks_and_alienation_update"}
+  autonomy_gap: {compute_after_step: "topology_and_boundary_update"}
+  safety_gap: {compute_after_step: "topology_and_boundary_update"}
+  gap_pressure_index: {compute_after_step: "topology_and_boundary_update"}
+  alignment_vector: {compute_after_step: "topology_and_boundary_update"}
+  stability_threshold: {compute_after_step: "topology_and_boundary_update"}
+  peak_regime: {compute_after_step: "topology_and_boundary_update"}
+  che_jesus_eligible: {compute_after_step: "topology_and_boundary_update"}
+
+# Spec §10 alignment: "Order of operations (do exactly this)" maps to v3 step ids.
+# Each spec step may be implemented by one or more v3 steps (14-step spine is finer-grained).
+spec_10_step_alignment:
+  - spec: "1. Compute salience of strata; 2. Aggregate field_pressure"
+    v3_steps: ["field_update"]
+  - spec: "3. Update reproduction constraints → derive hostage_index"
+    v3_steps: ["reproduction_constraints_update"]
+  - spec: "4. Apply field_pressure to capacity (bounded deltas)"
+    v3_steps: ["capacity_update"]
+  - spec: "5. Apply framework operators (acute vs chronic vs half-life decay)"
+    v3_steps: ["frameworks_update"]
+  - spec: "6. Process events (punctures, humiliations)"
+    v3_steps: ["event_sampling", "buffers_update"]
+  - spec: "7. Update domains (A/S/V/Aim); aim latent; expressed requires gate"
+    v3_steps: ["domains_update"]
+  - spec: "8. Update alienation vector; 9. Update cracks (no resolution)"
+    v3_steps: ["cracks_and_alienation_update"]
+  - spec: "10. Write YearRecord (deltas + narrative snapshot)"
+    v3_steps: ["practice_and_infrastructure_update", "topology_and_boundary_update", "attention_and_capture_update", "strategy_and_signal_effects", "style_trait_drift", "render_layer"]
+
+# Core spine: these 14 step ids must appear in this order as a subsequence of steps.
+# Extensions (steps not in core_steps) allowed per extension_policy (append_only or permitted_slots).
+core_steps:
+  - "field_update"
+  - "autonomy_safety_micro_drift"
+  - "event_sampling"
+  - "reproduction_constraints_update"
+  - "capacity_update"
+  - "health_drift_update"
+  - "buffers_update"
+  - "frameworks_update"
+  - "domains_update"
+  - "cracks_and_alienation_update"
+  - "plasticity_and_metabolization_update"
+  - "stability_inertia_dissipation"
+  - "striving_update"
+  - "practice_and_infrastructure_update"
+  - "topology_and_boundary_update"
+  - "attention_and_capture_update"
+  - "strategy_and_signal_effects"
+  - "style_trait_drift"
+  - "render_layer"
+
+extension_policy: "append_only"   # extensions only after last core step; or "permitted_slots" (future)
+
+steps:
+  - id: "field_update"
+    description: "Update macro field conditions (economy, repression baseline, movement heat, local opportunities)."
+    modules:
+      - "systems/field.py::update_field"
+    inputs:
+      - "state.field"
+      - "state.strata_salience"
+      - "state.age"
+    outputs_mutate:
+      - "state.field"
+    prohibits_mutation_of:
+      - "state.domains"
+      - "state.peak_routing"
+      - "state.frameworks"
+      - "state.cracks"
+
+  - id: "autonomy_safety_micro_drift"
+    description: "Micro-drift/repair autonomy_condition and safety_condition; append trace to events_this_year."
+    modules:
+      - "systems/autonomy_safety.py::autonomy_safety_micro_drift"
+    inputs:
+      - "state.autonomy_drive"
+      - "state.autonomy_condition"
+      - "state.safety_drive"
+      - "state.safety_condition"
+      - "state.capacity"
+      - "derived.stability_threshold"
+      - "derived.insulation_score"
+      - "derived.alignment_vector"
+    outputs_mutate:
+      - "state.autonomy_condition"
+      - "state.safety_condition"
+      - "state.events_this_year"
+    prohibits_mutation_of:
+      - "state.domains"
+      - "state.peak_routing"
+
+  - id: "event_sampling"
+    description: "Sample 0–3 events conditioned on field + strata + prior state. Events create pressures/opportunities, not beliefs."
+    modules:
+      - "engine/event_engine.py::sample_events"
+    inputs:
+      - "state.field"
+      - "state.strata_salience"
+      - "state.capacity"
+      - "state.reproduction_constraints"
+      - "state.cracks"
+      - "state.intensity_and_capture"
+    outputs_mutate:
+      - "state.events_this_year"
+    prohibits_mutation_of:
+      - "state.domains"
+      - "state.peak_routing"
+
+  - id: "reproduction_constraints_update"
+    description: "Update reproduction constraints; compute hostage index."
+    modules:
+      - "systems/reproduction.py::update_reproduction_constraints"
+    inputs:
+      - "state.events_this_year"
+      - "state.reproduction_constraints"
+      - "state.field"
+    outputs_mutate:
+      - "state.reproduction_constraints"
+    derived_compute:
+      - "hostage_index"
+    prohibits_mutation_of:
+      - "state.domains"
+      - "state.peak_routing"
+
+  - id: "capacity_update"
+    description: "Update capacity vector; compute AC. Capacity is substrate for buffers/domains."
+    modules:
+      - "systems/capacity.py::update_capacity"
+    inputs:
+      - "state.events_this_year"
+      - "state.capacity"
+      - "derived.hostage_index"
+      - "state.field"
+    outputs_mutate:
+      - "state.capacity"
+    derived_compute:
+      - "agency_capacity_AC"
+    prohibits_mutation_of:
+      - "state.domains"
+      - "state.peak_routing"
+
+  - id: "health_drift_update"
+    description: "Composite health drift from stability/support; small annual drift to Capacity.health."
+    modules:
+      - "systems/health_drift.py::update_health_drift"
+    inputs:
+      - "state.capacity"
+      - "derived.stability_threshold"
+      - "derived.insulation_score"
+    outputs_mutate:
+      - "state.capacity"
+    derived_compute:
+      - "health_level"
+    prohibits_mutation_of:
+      - "state.domains"
+      - "state.peak_routing"
+
+  - id: "buffers_update"
+    description: "Update buffers and pay their costs; compute insulation score."
+    modules:
+      - "systems/buffers.py::update_buffers"
+    inputs:
+      - "state.events_this_year"
+      - "state.buffers"
+      - "state.capacity"
+      - "state.frameworks"
+      - "state.style_traits"   # optional: humor as buffer, etc; must be small influence
+    outputs_mutate:
+      - "state.buffers"
+      - "state.capacity"       # buffer costs can reduce time/money/social support
+    derived_compute:
+      - "insulation_score"
+    prohibits_mutation_of:
+      - "state.domains"
+      - "state.peak_routing"
+
+  - id: "frameworks_update"
+    description: "Adjust framework weights (slow); frameworks bias interpretation but do not directly set outcomes."
+    modules:
+      - "systems/frameworks.py::update_framework_weights"
+    inputs:
+      - "state.events_this_year"
+      - "state.frameworks"
+      - "state.capacity"
+      - "derived.insulation_score"
+    outputs_mutate:
+      - "state.frameworks"
+
+  - id: "domains_update"
+    description: "Update domain A/S/V/Aim using events + frameworks + insulation + intensity + practices."
+    modules:
+      - "systems/domains.py::update_domains"
+    inputs:
+      - "state.events_this_year"
+      - "state.domains"
+      - "state.frameworks"
+      - "derived.insulation_score"
+      - "state.intensity_and_capture.intensity"
+      - "state.practice_stack"
+      - "state.capacity"
+    outputs_mutate:
+      - "state.domains"
+    derived_compute:
+      - "structural_lucidity_SL"
+    prohibits_mutation_of:
+      - "state.peak_routing.loop_topology"
+      - "state.peak_routing.solidarity_boundary"
+
+  - id: "cracks_and_alienation_update"
+    description: "Update cracks and alienation from contradiction pressure vs insulation; compute mis-aim risk."
+    modules:
+      - "systems/cracks.py::update_cracks"
+      - "systems/alienation.py::update_alienation"
+    inputs:
+      - "state.events_this_year"
+      - "state.cracks"
+      - "state.alienation"
+      - "state.domains"
+      - "derived.insulation_score"
+      - "derived.hostage_index"
+      - "state.practice_stack.organizing"
+      - "state.intensity_and_capture.intensity"
+    outputs_mutate:
+      - "state.cracks"
+      - "state.alienation"
+    derived_compute:
+      - "mis_aim_risk"
+      - "metabolic_style"
+    prohibits_mutation_of:
+      - "state.peak_routing.loop_topology"
+      - "state.peak_routing.solidarity_boundary"
+
+  - id: "plasticity_and_metabolization_update"
+    description: "Decrement plasticity_window years_left; derive NarrationSupport from metabolization narrators; apply cluster deltas to psychological_capacity and process downstream_biases."
+    modules:
+      - "engine/effects/metabolization_effects.py::update_metabolization_and_plasticity_step"
+    inputs:
+      - "state.metabolization_processes"
+      - "state.plasticity_window"
+      - "state.narration_support"
+      - "state.psychological_capacity"
+    outputs_mutate:
+      - "state.plasticity_window"
+      - "state.narration_support"
+      - "state.psychological_capacity"
+      - "state.metabolization_processes"
+    prohibits_mutation_of:
+      - "state.peak_routing"
+      - "state.domains"
+
+  - id: "stability_inertia_dissipation"
+    description: "Drain stability_threshold_inertia from integration, IRR-drop, and holding; clear stability_delta_applied_this_year."
+    modules:
+      - "systems/stability_inertia.py::stability_inertia_dissipation"
+    inputs:
+      - "state.stability_threshold_inertia"
+      - "state.stability_delta_applied_this_year"
+      - "state.metabolization_processes"
+      - "state.narration_support"
+      - "state.capacity"
+      - "state.peak_routing"
+      - "derived.insulation_score"
+    outputs_mutate:
+      - "state.stability_threshold_inertia"
+      - "state.stability_delta_applied_this_year"
+    prohibits_mutation_of:
+      - "state.domains"
+      - "state.peak_routing"
+
+  - id: "striving_update"
+    description: "Spawn StrivingObjects from proxy_striving_map when expectation_baseline is forbidden or hopeless for a NeedAxis; update existing striving (investment, feasibility_belief, recent_momentum)."
+    modules:
+      - "engine/striving_objects.py::update_striving_step"
+    inputs:
+      - "state.expectation_baseline"
+      - "state.striving_objects"
+      - "state.age"
+      - "state.year"
+    outputs_mutate:
+      - "state.striving_objects"
+    prohibits_mutation_of:
+      - "state.expectation_baseline"
+      - "state.domains"
+      - "state.peak_routing"
+
+  - id: "practice_and_infrastructure_update"
+    description: "Update practice stack and collective infrastructure (network, discipline, resources, repression, elite splits)."
+    modules:
+      - "systems/practices.py::update_practice_stack"
+      - "systems/infrastructure.py::update_collective_infrastructure"
+    inputs:
+      - "state.events_this_year"
+      - "state.practice_stack"
+      - "state.collective_infrastructure"
+      - "state.capacity"
+      - "state.cracks"
+      - "state.field"
+      - "derived.mis_aim_risk"
+    outputs_mutate:
+      - "state.practice_stack"
+      - "state.collective_infrastructure"
+
+  - id: "topology_and_boundary_update"
+    description: "Update loop_topology and solidarity_boundary using hysteresis rules (sticky, slow). Compute peak regime."
+    modules:
+      - "systems/topology.py::update_loop_topology"
+      - "systems/boundary.py::update_solidarity_boundary"
+      - "systems/coherence.py::update_coherence"
+    inputs:
+      - "state.peak_routing"
+      - "state.collective_infrastructure"
+      - "state.practice_stack"
+      - "derived.mis_aim_risk"
+      - "derived.hostage_index"
+      - "derived.structural_lucidity_SL"
+      - "derived.agency_capacity_AC"
+      - "state.cracks"
+    outputs_mutate:
+      - "state.peak_routing.loop_topology"
+      - "state.peak_routing.solidarity_boundary"
+      - "state.peak_routing.coherence"
+    derived_compute:
+      - "peak_regime"
+      - "che_jesus_eligible"
+      - "autonomy_gap"
+      - "safety_gap"
+      - "gap_pressure_index"
+      - "alignment_vector"
+      - "stability_threshold"
+
+  - id: "attention_and_capture_update"
+    description: "Update attention exposure and capture pressure; apply capture effects (mis-aim pressure, reciprocal stability penalties next year)."
+    modules:
+      - "systems/attention.py::update_attention_and_capture"
+    inputs:
+      - "state.intensity_and_capture"
+      - "state.collective_infrastructure"
+      - "state.capacity"
+      - "state.practice_stack"
+      - "state.peak_routing"
+      - "state.events_this_year"
+    outputs_mutate:
+      - "state.intensity_and_capture.attention_field_exposure"
+      - "state.intensity_and_capture.capture_pressure"
+      - "state.capacity"  # optional: attention AC bonuses may flow into money/mobility/legitimacy
+
+  - id: "strategy_and_signal_effects"
+    description: "Apply signal profiles by theory_of_change_style; update infrastructure via morale/recruitment/defections/repression justification."
+    modules:
+      - "systems/signal.py::apply_signal_effects"
+    inputs:
+      - "state.peak_routing.theory_of_change_style"
+      - "state.intensity_and_capture.attention_field_exposure"
+      - "state.collective_infrastructure"
+      - "state.peak_routing"
+      - "state.field"
+    outputs_mutate:
+      - "state.collective_infrastructure"
+
+  - id: "style_trait_drift"
+    description: "Small drift in vibe traits; used for rendering only."
+    modules:
+      - "systems/style.py::update_style_traits"
+    inputs:
+      - "state.style_traits"
+      - "state.events_this_year"
+      - "state.capacity"
+      - "state.cracks"
+    outputs_mutate:
+      - "state.style_traits"
+    prohibits_mutation_of:
+      - "state.peak_routing"
+      - "state.domains"
+
+  - id: "render_layer"
+    description: "LLM/v2 phenomenology rendering. Must not mutate backbone."
+    modules:
+      - "render/phenomenology.py::render_year"
+    inputs:
+      - "state"           # full final backbone
+      - "derived"         # computed indices for readability
+      - "state.style_traits"
+    outputs_mutate:
+      - "state.rendered_output"   # stored separately from backbone if desired
+    prohibits_mutation_of:
+      - "state.capacity"
+      - "state.reproduction_constraints"
+      - "state.domains"
+      - "state.cracks"
+      - "state.buffers"
+      - "state.frameworks"
+      - "state.collective_infrastructure"
+      - "state.practice_stack"
+      - "state.peak_routing"
+      - "state.intensity_and_capture"
+
+  - id: "active_magnets_update"
+    description: "Decay active magnets intensity; remove below floor; cap list (specLLM)."
+    modules:
+      - "engine/active_magnets.py::update_active_magnets_step"
+    inputs:
+      - "state.active_magnets"
+    outputs_mutate:
+      - "state.active_magnets"
+    prohibits_mutation_of:
+      - "state.capacity"
+      - "state.domains"
+      - "state.peak_routing"
+
+tests:
+  # Suggested tests Cursor should generate.
+  required:
+    - id: "test_step_order_enforced"
+      description: "Runner fails if steps executed out of order."
+    - id: "test_no_direct_domain_set_by_events"
+      description: "Events cannot write to domains/topology/boundary."
+    - id: "test_llm_no_backbone_mutation"
+      description: "Render layer outputs cannot change backbone hashes."
+    - id: "test_caps_respected"
+      description: "All annual delta caps are enforced unless shock override."
+    - id: "test_hysteresis_respected"
+      description: "Topology/boundary cannot ping-pong in one year."

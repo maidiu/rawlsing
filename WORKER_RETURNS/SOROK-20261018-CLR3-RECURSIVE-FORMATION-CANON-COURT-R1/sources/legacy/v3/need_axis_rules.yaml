@@ -1,0 +1,256 @@
+```yaml
+# need_axis_rules.yaml
+# Data-driven rules for deriving child expectation_baseline[NeedAxis]
+# Internal score range: [-2..+2]
+# Map score -> baseline:
+#  +1,+2 => entitled
+#   0    => hopeful
+#  -1    => forbidden
+#  -2    => hopeless
+
+meta:
+  score_min: -2
+  score_max: 2
+  thresholds:
+    high: 70
+    extreme: 80
+  seed_weights:
+    two_caregivers: {p1: 0.55, p2: 0.35, env: 0.10}
+    one_caregiver:  {p1: 0.75, env: 0.25}
+  parent_category_to_score:
+    entitled: 1
+    hopeful: 0
+    forbidden: -1
+    hopeless: -2
+
+global_modifiers:
+  - id: G_WARM_CONSISTENT
+    when: {warmth_gte: 70, modeling_consistency_gte: 60}
+    apply: {all_axes: +1}
+
+  - id: G_ANXIETY_EXTREME_ATTACHMENT_SAFETY
+    when: {anxiety_gte: 80}
+    apply: {axes: {attachment: -1, safety: -1}}
+
+  - id: G_SHAME_EXTREME_AUTON_EROS_BEAUTY
+    when: {shame_gte: 80}
+    apply: {axes: {autonomy: -1, eros_intimacy: -1, beauty_play: -1}}
+
+  - id: G_OPENNESS_HIGH_COMP_BEAUTY_MEANING
+    when: {openness_gte: 70}
+    apply: {axes: {competence: +1, beauty_play: +1, meaning: +1}}
+
+axis_rules:
+
+  attachment:
+    modifiers:
+      - when: {warmth_gte: 70}               # attunement
+        apply: +1
+      - when: {modeling_consistency_gte: 60} # reliable caregiver
+        apply: +1
+      - when: {anxiety_gte: 70}
+        apply: -1
+      - when: {coercion_gte: 70}
+        apply: -1
+      - when: {external_threat_gte: 70}
+        apply: -1
+      - when: {external_threat_gte: 70, collective_solidarity_gte: 70}
+        apply: +1  # offsets the -1 above; net ~0
+
+    flags:
+      - id: attachment_volatility
+        when: {modeling_consistency_lt: 40, warmth_gte: 50}
+        set: true
+
+  safety:
+    modifiers:
+      - when: {external_threat_gte: 70}
+        apply: -2
+      - when: {institutional_reliability_gte: 70}
+        apply: +1
+      - when: {economic_precarity_gte: 70}
+        apply: -1
+      - when: {anxiety_gte: 70}
+        apply: -1
+      - when: {collective_solidarity_gte: 70}
+        apply: +1
+      - when: {external_threat_gte: 70, collective_solidarity_gte: 70}
+        apply: -1  # cancels the solidarity bump under threat; safety still not safe
+
+  belonging:
+    modifiers:
+      - when: {warmth_gte: 70}
+        apply: +1
+      - when: {shame_gte: 70}
+        apply: -1
+      - when: {coercion_gte: 70}
+        apply: -1
+      - when: {collective_solidarity_gte: 70}
+        apply: +2
+      - when: {status_competition_gte: 70}
+        apply: -1
+
+    flags:
+      - id: belonging_policed
+        when: {coercion_gte: 70}
+        set: true
+      - id: solidarity_radius_narrow_risk
+        when: {external_threat_gte: 70, collective_solidarity_gte: 70}
+        set: true
+
+  status:
+    modifiers:
+      - when: {status_competition_gte: 70}
+        apply: +1
+      - when: {institutional_reliability_gte: 70}
+        apply: +1
+      - when: {external_threat_gte: 70}
+        apply: -1
+      - when: {economic_precarity_gte: 70}
+        apply: 0   # leave to context flag below
+
+    conditional_modifiers:
+      - id: shame_plus_achievement_focus_status_entitled_brittle
+        when: {shame_gte: 70, achievement_focus_gte: 70}
+        apply: +1
+        flags: {status_brittle: true}
+
+      - id: shame_global_condemnation_status_forbidden
+        when: {shame_gte: 80, achievement_focus_lt: 50}
+        apply: -1
+
+      - id: precarity_status_as_escape
+        when: {economic_precarity_gte: 70, status_as_escape: true}
+        apply: +1
+
+      - id: precarity_status_as_pointless
+        when: {economic_precarity_gte: 70, status_as_escape: false}
+        apply: -1
+
+  competence:
+    modifiers:
+      - when: {openness_gte: 70}
+        apply: +1
+      - when: {modeling_consistency_gte: 60}
+        apply: +1
+      - when: {institutional_reliability_gte: 70}
+        apply: +1
+      - when: {shame_gte: 70}
+        apply: -1
+      - when: {status_competition_gte: 70}
+        apply: +1
+
+    flags:
+      - id: competence_brittle
+        when: {status_competition_gte: 70, shame_gte: 60}
+        set: true
+
+    conditional_modifiers:
+      - id: precarity_competence_as_escape
+        when: {economic_precarity_gte: 70, competence_as_escape: true}
+        apply: +1
+      - id: precarity_competence_undermined
+        when: {economic_precarity_gte: 70, competence_as_escape: false}
+        apply: -1
+
+  autonomy:
+    modifiers:
+      - when: {coercion_gte: 70}
+        apply: -2
+      - when: {shame_gte: 70}
+        apply: -1
+      - when: {warmth_gte: 70}
+        apply: +1
+      - when: {openness_gte: 70}
+        apply: +1
+      - when: {external_threat_gte: 70}
+        apply: -1
+
+    flags:
+      - id: autonomy_secretive_risk
+        when: {coercion_gte: 70}
+        set: true
+
+  meaning:
+    # meaning_frame is an input enum:
+    # integrative | authoritarian | absent | cynical
+    base_by_meaning_frame:
+      integrative: +2
+      authoritarian: +1
+      absent: 0
+      cynical: -1
+
+    modifiers:
+      - when: {external_threat_gte: 70, meaning_frame_in: [integrative, authoritarian]}
+        apply: +1
+      - when: {external_threat_gte: 70, meaning_frame_in: [absent, cynical]}
+        apply: -1
+      - when: {modeling_consistency_lt: 40, moral_talk_gte: 60}
+        apply: -1
+
+    conditional_modifiers:
+      - id: openness_only_helps_non_authoritarian
+        when: {openness_gte: 70, meaning_frame_in: [integrative, absent]}
+        apply: +1
+      - id: authoritarian_punishes_curiosity
+        when: {openness_gte: 70, meaning_frame_in: [authoritarian], coercion_gte: 60}
+        apply: -1
+        flags: {meaning_cost: "narrow"}
+
+  justice:
+    modifiers:
+      - when: {collective_solidarity_gte: 70}
+        apply: +1
+      - when: {external_threat_gte: 70}
+        apply: +1
+      - when: {institutional_reliability_gte: 70}
+        apply: +1
+      - when: {shame_gte: 80, coercion_gte: 70}
+        apply: -1
+
+    conditional_modifiers:
+      - id: hypocrisy_can_prime_justice_or_cynicism
+        when: {modeling_consistency_lt: 40, moral_talk_gte: 70}
+        apply: 0
+        flags: {justice_split_risk: true}  # downstream metabolization decides
+
+  beauty_play:
+    modifiers:
+      - when: {openness_gte: 70}
+        apply: +2
+      - when: {warmth_gte: 70}
+        apply: +1
+      - when: {shame_gte: 70}
+        apply: -1
+      - when: {coercion_gte: 70}
+        apply: -2
+      - when: {economic_precarity_gte: 70}
+        apply: -1
+      - when: {external_threat_gte: 70}
+        apply: -1
+      - when: {collective_solidarity_gte: 70}
+        apply: +1
+
+    conditional_modifiers:
+      - id: solidarity_play_cannot_cancel_bombs
+        when: {external_threat_gte: 70, collective_solidarity_gte: 70}
+        apply: -1  # cancels the +1 above; net 0 from solidarity
+
+  eros_intimacy:
+    modifiers:
+      - when: {shame_gte: 70}
+        apply: -2
+      - when: {coercion_gte: 70}
+        apply: -1
+      - when: {warmth_gte: 70}
+        apply: +1
+      - when: {modeling_consistency_gte: 60}
+        apply: +1
+
+    conditional_modifiers:
+      - id: authoritarian_sex_policing
+        when: {meaning_frame_in: [authoritarian], sexual_policing_gte: 60}
+        apply: -1
+      - id: openness_helps_only_if_not_shamed
+        when: {openness_gte: 70, shame_lt: 60}
+        apply: +1

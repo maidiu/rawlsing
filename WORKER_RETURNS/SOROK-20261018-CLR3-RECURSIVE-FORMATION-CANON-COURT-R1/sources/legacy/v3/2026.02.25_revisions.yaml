@@ -1,0 +1,242 @@
+feature: v3_autonomy_safety_threshold_health_gating
+version: 2
+scope: wired_app_v3_only
+goal: >
+  Add (a) autonomy/safety drives + conditions, (b) a v3-native threshold index (RMT analogue)
+  with endogenous event feedback, (c) composite health drift (beyond event-only deltas),
+  and (d) developmental gating of narration/representation, without importing v2 needs/strategies/civic_soul.
+
+preflight_checkpoints:
+  - id: codec_state_fields
+    file: v3/io/json_codec.py
+    verify: >
+      state_to_dict/dict_to_state are not field-whitelist fragile. If they are, update
+      them to include all new BackboneState fields and any new state sub-objects.
+  - id: derived_propagation
+    file: v3/engine/yearly_step.py
+    verify: >
+      _compute_derived_after_step manually copies derived fields; confirm we can add new keys
+      (autonomy_gap, safety_gap, gap_pressure_index, alignment_vector, stability_threshold).
+  - id: step_id_validation
+    file: v3/engine/validators.py
+    verify: >
+      No allowlist blocks new step ids. If present, add the new step ids.
+
+phases:
+
+  - phase: 1_backbone_state_autonomy_safety
+    description: Add primitive drives + lived conditions (0–100) to BackboneState.
+    files:
+      - path: v3/core/state.py
+        actions:
+          - add_fields_backbone_state:
+              autonomy_drive: {type: float, default: 50.0, range: [0, 100], meaning: "demand for agency"}
+              safety_drive: {type: float, default: 50.0, range: [0, 100], meaning: "demand for protection"}
+              autonomy_condition: {type: float, default: 50.0, range: [0, 100], meaning: "actual latitude"}
+              safety_condition: {type: float, default: 50.0, range: [0, 100], meaning: "actual stability"}
+          - clamp_all: clamp new fields to [0, 100]
+          - ensure_serialization: state_to_dict/dict_to_state include these fields
+    validation:
+      - new_fields_present_in_recursions_year_json: true
+      - sim_runs_no_crash: true
+
+  - phase: 2_derived_autonomy_safety_gaps_alignment
+    description: Compute gaps + pressure + alignment vector as v3 DerivedIndices.
+    files:
+      - path: v3/core/derived.py
+        actions:
+          - extend_DerivedIndices:
+              autonomy_gap: {type: float, range: [0, 100]}
+              safety_gap: {type: float, range: [0, 100]}
+              gap_pressure_index: {type: float, range: [0, 100]}
+              alignment_vector: {type: float, range: [-100, 100], meaning: "-=will amplification, +=will alignment"}
+          - compute_all_derived_additions:
+              autonomy_gap: "max(0, state.autonomy_drive - state.autonomy_condition)"
+              safety_gap: "max(0, state.safety_drive - state.safety_condition)"
+              gap_pressure_index: "0.5*autonomy_gap + 0.5*safety_gap"
+              alignment_vector: >
+                compute pos/neg from existing v3 substrate only:
+                pos from (practice_stack.organizing/spiritual, capacity.social_support,
+                collective_infrastructure.network_density/org_discipline) if present;
+                neg from (gap_pressure_index, hostage_index, mis_aim_risk).
+                clamp to [-100, 100].
+          - derived_to_dict: include all new fields
+    wiring:
+      - path: v3/engine/yearly_step.py
+        actions:
+          - update__compute_derived_after_step_to_copy:
+              - autonomy_gap
+              - safety_gap
+              - gap_pressure_index
+              - alignment_vector
+    validation:
+      - derived_fields_present_in_recursions_year_json: true
+      - alignment_vector_in_range: [-100, 100]
+
+  - phase: 3_new_threshold_index_v3
+    description: Add v3-native "stability threshold" index (RMT analogue) with event feedback.
+    design_choice:
+      index_name: stability_threshold   # rename later if you want; avoid "recursive_madness_threshold" if too loaded
+      location: derived_and_optional_state_shadow
+      rationale: >
+        Derived so it is always recomputable; optionally shadow it into state to persist its own inertia.
+    files:
+      - path: v3/core/derived.py
+        actions:
+          - extend_DerivedIndices:
+              stability_threshold: {type: float, range: [0, 100], meaning: "higher = more brittle / closer to breakdown"}
+          - compute_stability_threshold:
+              base_components:
+                - gap_pressure_index (positive)
+                - hostage_index (positive)
+                - mis_aim_risk (positive)
+                - insulation_score (negative)
+                - capacity.health (negative, weak)
+                - coherence signals (negative, if any exist)
+              note: >
+                Start simple; tune later. Must respond to events indirectly via cracks/rupture_shards/coherence/capacity.
+      - path: v3/engine/effects/delta_templates.py
+        actions:
+          - add_event_effect_channel_optional:
+              name: stability_deltas
+              purpose: >
+                Allow events to directly raise/lower stability_threshold via deltas,
+                analogous to v2 trauma→RMT, but v3-native.
+              note: >
+                If adding a new delta channel is too invasive, skip and rely on event effects
+                already changing cracks/rupture_shards/coherence which feed compute_stability_threshold.
+      - path: v3/engine/yearly_step.py
+        actions:
+          - propagate_new_derived_field:
+              - stability_threshold
+    validation:
+      - stability_threshold_present_in_derived_year_json: true
+      - stability_threshold_moves_after_big_events: true
+
+  - phase: 4_health_drift_v3
+    description: Add composite health-level drift so Capacity.health isn't event-only and doesn't float without recentering.
+    design_choice:
+      approach: derived_health_level_plus_soft_reversion
+      rationale: >
+        Keep Capacity.health as-is (event deltas), but add a derived health_level and a gentle
+        yearly drift step that recenters Capacity.health toward an adaptive baseline modulated by stability/support.
+    files:
+      - path: v3/core/derived.py
+        actions:
+          - extend_DerivedIndices:
+              health_level: {type: float, range: [0, 100], meaning: "composite resilience/wear"}
+          - compute_health_level:
+              inputs:
+                - capacity.health (primary)
+                - stability_threshold (negative)
+                - insulation_score (positive)
+                - social_support / network_density (positive if available)
+              output: clamp to [0, 100]
+      - path: v3/systems/health_drift.py
+        create: true
+        actions:
+          - define_step: health_drift_update(state, derived, v3config)
+          - behavior: >
+              Apply small drift to Capacity.health each year:
+              - If stability_threshold high: drift slightly downward (wear) even without events.
+              - If insulation/support high and stability low: drift slightly upward (recovery).
+              - Always keep drift tiny (e.g., ±0.2 to ±1.0) and clamp to [0, 100].
+              - Do not erase event impacts; this is slow physiology/psychology.
+      - path: v3/engine/yearly_step.py
+        actions:
+          - wire_step_id: health_drift_update
+          - propagate_derived_fields:
+              - health_level
+    step_order:
+      - path: v3/v3_yearly_step_order.yaml
+        actions:
+          - insert_step_after: capacity_update
+            step_id: health_drift_update
+    validation:
+      - health_level_present_in_derived_year_json: true
+      - capacity_health_changes_even_in_no_event_years: true
+
+  - phase: 5_autonomy_safety_micro_drift_step
+    description: Add yearly micro-drift/micro-repair affecting autonomy_condition/safety_condition and leaving traces.
+    files:
+      - path: v3/systems/autonomy_safety.py
+        create: true
+        actions:
+          - define_step: autonomy_safety_micro_drift(state, derived, v3config)
+          - update_rules:
+              drift_delta_range: [-2.0, 0.0]
+              repair_delta_range: [0.0, +2.0]
+              axis_bias: "hit larger gap more"
+              drift_bias: "increase with gap_pressure_index and stability_threshold"
+              repair_bias: "increase with insulation_score and social_support and positive alignment_vector"
+          - persistence:
+              write_trace_to_state.events_this_year:
+                kind: micro_drift|micro_repair
+                axis: autonomy|safety|both
+                delta: {autonomy_condition: float, safety_condition: float}
+                cue: string
+                shaping: string
+      - path: v3/engine/yearly_step.py
+        actions:
+          - wire_step_id: autonomy_safety_micro_drift
+          - propagate_derived_fields: [autonomy_gap, safety_gap, gap_pressure_index, alignment_vector, stability_threshold]
+    step_order:
+      - path: v3/v3_yearly_step_order.yaml
+        actions:
+          - insert_step_after: field_update
+            step_id: autonomy_safety_micro_drift
+    validation:
+      - events_this_year_contains_micro_drift: true
+      - autonomy_condition_and_safety_condition_change_over_years: true
+
+  - phase: 6_developmental_gating_representation
+    description: >
+      Prevent adult-cognitive narration/interpretive overlays in early childhood by gating render layer
+      and persona_sheet fallback, not by importing v2 strategies.
+    files:
+      - path: v3/render/phenomenology.py
+        actions:
+          - add_age_gating_rules:
+              age_0_3: >
+                Use sensory/attachment language. Avoid abstract moral categories ("justice order", "legitimacy").
+                Express as felt predictability, warmth, danger, bodily comfort, proximity, routine.
+              age_4_10: >
+                Allow fairness instincts and concrete rules; still avoid political abstractions.
+              age_11_18: >
+                Introduce ideology seeds, humiliation/status, authority meanings.
+              age_19_plus: >
+                Full abstraction allowed.
+      - path: v3/io/persona_sheet.py
+        actions:
+          - fallback_scene_from_micro_drift_trace:
+              age_sensitive_formatting: true
+              rule: >
+                When rendered_output missing and micro_drift exists,
+                generate one-line ambient year entry with age gating (no adult abstractions at low ages).
+    validation:
+      - early_year_backstory_no_adult_abstractions: true
+
+  - phase: 7_persona_sheet_visibility
+    description: Ensure drift/repair traces surface in backstory where no rendered_output exists.
+    files:
+      - path: v3/io/persona_sheet.py
+        actions:
+          - modify_no_recorded_scene_placeholder:
+              if_events_this_year_contains_micro_drift_or_repair: >
+                Use "[Age X] (ambient) {cue} → {shaping}" with age gating.
+              else: keep existing placeholder
+    validation:
+      - backstory_contains_ambient_lines_for_non_band_years: true
+      - backstory_length_controlled: true
+
+out_of_scope_for_this_pass:
+  - move_rupture_injection_into_step_spine   # important but separate; do later
+  - persona_to_world_slice_feedback          # explicitly not desired right now
+  - reintroduce v2 needs/strategies/civic_soul
+
+post_implementation_audit:
+  inspect_metrics:
+    - autonomy_gap_trends_vs_conditions: true
+    - stability_threshold_spikes_after_ruptures: true
+    - health_level_tracks_stability_and_support: true
+    - early_childhood_narration_is_sensory_not_political: true
