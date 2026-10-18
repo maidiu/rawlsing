@@ -1,0 +1,20 @@
+{
+  "passport_schema":"SOROK_ENVIRONMENT_PASSPORT_DELTA_R1",
+  "environment_id":"f2-browser-20261017-epoch-a",
+  "epoch_id":"20261017-f2-heldout-a",
+  "owner_session_alias":"HQ327_F2_REVIEWER",
+  "surface":"BROWSER_CONTAINER",
+  "status":"LIVE_VERIFIED_AT_EXECUTION_NOT_DURABLE_ASSUMPTION",
+  "last_live_probe_at":"2026-10-18T01:10:36Z",
+  "runtime_marker_digest":null,
+  "probe_command_and_result":{"python":"3.13.5 VERIFIED","pytest":"9.0.2 VERIFIED","git":"2.47.3 VERIFIED","node":"22.16.0 VERIFIED_BUT_UNUSED","filesystem":"VERIFIED","github_connector":"VERIFIED_SEALED_REF","private_git_checkout":"UNAVAILABLE_DNS"},
+  "git_object_store_alias":null,"worktree_alias":null,"branch":"agent/reviewer-sorok-v2-hq327-f2-heldout-developmental-court-r1",
+  "exact_checkout_head":null,"materialized_source_refs":[],"dependency_closure_status":"STANDALONE_NO_PRIVATE_SOURCE_IMPORTS",
+  "covered_test_suites":[{"command":"python -m pytest -q --junitxml=f2_junit.xml","PASS":66,"FAIL":0,"SKIP":0,"NOT_RUN":0,"evidence":"f2_junit.xml/f2_pytest_stdout.txt"},{"command":"python mutation_audit.py","mutants_killed":5,"total_mutants":5,"evidence":"mutation_receipt.json"},{"suite":"future B3 integrated","result":"NOT_RUN"},{"suite":"F1 original native","result":"NOT_RUN_BY_F2; 17 HISTORICAL_REDS_RETAINED"}],
+  "science_grade":"SOURCEFREE_INDEPENDENT_FROZEN_TEST_REFERENCE_NOT_HUMAN_PSYCHOLOGY",
+  "model_provider":"Browser GPT-6 Medium user-selected; real telemetry unknown","cost_or_quota":null,
+  "privacy_source_grant":"SYNTHETIC_FIXTURES_PLUS_PRIVATE_GITHUB_DOCUMENTARY_READ_ONLY",
+  "independence":"F2 independent of B2/M1/R1 authors and future B3",
+  "next_good_affinity_tags":["B3_INTEGRATION","CAN008","CAN011","ADP016","ADP017","F1_NATIVE"],
+  "staged_state_preservation":"PORTABLE_ARCHIVE_WITH_HASHED_CONTENT","retire_or_rebuild_reason":null
+}

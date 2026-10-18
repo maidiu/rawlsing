@@ -1,0 +1,94 @@
+{
+  "schema": "F2_MUTATION_SENSITIVITY_V1",
+  "mutants": [
+    {
+      "mutant": "CONSTANT_RESPONDER",
+      "killed": true,
+      "red_count": 42,
+      "pass_count": 0,
+      "sample_reds": [
+        "F2-001",
+        "F2-002",
+        "F2-003",
+        "F2-004",
+        "F2-005",
+        "F2-006",
+        "F2-007",
+        "F2-008"
+      ],
+      "note": "F2 oracle rejection, not independent human-model science"
+    },
+    {
+      "mutant": "COSMETIC_LABEL_RESPONDER",
+      "killed": true,
+      "red_count": 20,
+      "pass_count": 22,
+      "sample_reds": [
+        "F2-001",
+        "F2-002",
+        "F2-003",
+        "F2-004",
+        "F2-005",
+        "F2-006",
+        "F2-007",
+        "F2-008"
+      ],
+      "note": "F2 oracle rejection, not independent human-model science"
+    },
+    {
+      "mutant": "EVENT_ID_COLLISION_BYPASS",
+      "killed": true,
+      "red_count": 1,
+      "pass_count": 41,
+      "sample_reds": [
+        "F2-027"
+      ],
+      "note": "F2 oracle rejection, not independent human-model science"
+    },
+    {
+      "mutant": "IDEOLOGICAL_CLAIM_AS_CULPRIT",
+      "killed": true,
+      "red_count": 20,
+      "pass_count": 22,
+      "sample_reds": [
+        "F2-001",
+        "F2-002",
+        "F2-003",
+        "F2-004",
+        "F2-005",
+        "F2-006",
+        "F2-007",
+        "F2-008"
+      ],
+      "note": "F2 oracle rejection, not independent human-model science"
+    },
+    {
+      "mutant": "SELF_GRANTED_DURABLE_EFFECT",
+      "killed": true,
+      "red_count": 20,
+      "pass_count": 22,
+      "sample_reds": [
+        "F2-001",
+        "F2-002",
+        "F2-003",
+        "F2-004",
+        "F2-005",
+        "F2-006",
+        "F2-007",
+        "F2-008"
+      ],
+      "note": "F2 oracle rejection, not independent human-model science"
+    }
+  ],
+  "mutants_killed": 5,
+  "total_mutants": 5,
+  "cosmetic_label_scientific_invariance": true,
+  "cosmetic_mutant_changes_affect": true,
+  "lawful_no_change_cases_green": [
+    "F2-015",
+    "F2-016",
+    "F2-041"
+  ],
+  "grade": "INDEPENDENT_SOURCEFREE_REFERENCE_ONLY",
+  "future_b3": "NOT_RUN"
+}
