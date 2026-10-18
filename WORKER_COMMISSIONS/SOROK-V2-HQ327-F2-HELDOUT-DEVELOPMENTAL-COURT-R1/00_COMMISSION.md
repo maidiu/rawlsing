@@ -1,0 +1,26 @@
+# SOROK VOZHD-2 HQ327 F2 — Independent heldout childhood–later-meaning Otherness court
+
+**Repo:** maidiu/rawlsing (private). **ROLE:** independent pre-implementation sourcefree test-oracle author, NOT M1/B2/R1 implementer, CAN/ADP science issuer, HQ or positive reviewer of future B3.
+**MODEL/HOST:** Browser GPT-6 Medium; tiny standalone Python stdlib+pytest and GitHub connector. No large private Git object closure, no F1 binary staging, no paid LLM or original surveys. Browser runtime should be probed and tested, not presumed. 00C/00D cost-aware plan (cheap I1 test construction with I2 guardrails, High I2 later). Quota/cost unknown, no autonomous provider switch.
+**Branch:** `agent/reviewer-sorok-v2-hq327-f2-heldout-developmental-court-r1`
+**Exact startup:** separate HQ verified commission commit.
+**Read:** full commission, Sorok 00C/00D, HQ327 `f0ef08f6076365874e9d700ac7056a7abd8ce5f4`, PRE-A0 interpretive lineage and infant/parent power, October bike-theft `02`, F1 36 frozen court report at `ed367d96af66d816a01dd651b91f0af285762c82`, S2 independent falsifiers at `7e6ac81e85aa2c8dca0cea53349ad61f10fb6665`, M1 owner seams @`7e91c19828589281fb348c3aff35dca51bf9d995` and X2 event collision report @`931aec3497c60114444806c375d1bb51ec7c0e7d`. This is a **new independent heldout court**, don't edit F1 or M1 existing author assertions.
+
+**Single outcome:** deliver a genuinely executable, pre-frozen, **heldout metamorphic case library and boundary adapter contract** for the *future* corrected B2→M1 integration. It should prevent dishonest claims of psychologically generated meaning by checking causal invariants and source/actor separation, not prescribing that any exact child must turn into a benevolent or racist personality.
+
+Minimum 20 scenarios across:
+- fixed actual bike theft, same parent literal speech, varying **independently witnessed prior enacted parent-child interactions** while cosmetic history labels unchanged; counterpart action/source presence causal; route eligibility may change or stay valid-empty, never hardcoded mood.
+- unchanged enacted caregiver/child acts but changed only analyst `recognized_plan/imposed_plan` labels; **no new scientific claim** may arise solely from label. Report legacy B2 label flip as expected scientific RED, not one software bug.
+- caregiver materially constrained by own work/task/SES-mediated resources without `poor parent → coercive parent` shortcut; own independent P's projects and refusal, not generated as focal lesson.
+- child propositionally agrees with parent's theft-prevention advice but affectively feels dismissed; public imitation of peer's prejudicial utterance may coexist with private rejection; no equivalence of enacted speech and interior belief. Peer speech never culprit proof.
+- child with older enacted protection habit and no explicit autobiographical recollection; later experience may alter present interpretation while old habit persists, and t0 world hash remains identical.
+- desired counterpart independently can refuse, be indifferent or pursue other activities; no forced romance/repair. Valid no-effect even when new information appears.
+- age/developmental capability only scoped, witnessed and temporally available; UNKNOWN ≠ ABSENT; contradicted comparable witness requires DEFER/CONFLICT; no racial/sect/SES shortcut.
+- raw model proposal, private other actor motive, fabricated new actor or retrocausal child future influencing preconception parent are hard refusals; test ownership/readsets.
+- event ID same/ different payload **hard custody RED**, exact replay idempotent, no double event, witness bytes+owner bound.
+- deterministic same-input replay, eligible set nontrivial against constant-output or cosmetic label-only mutants; **do not fail legitimately no-effect tracks**. If statistical outcome expected, probabilistic rubric must be a design hypothesis, not estimated individual human likelihood.
+
+**Executable deliverable:** stand-alone frozen `cases.json`, test-only `reference_oracle.py` or equivalent and 20+ executable tests with exact stdout/JUnit. Define adapter method that maps future B3 `actual witness/history/actor access/lineage/durable owner decisions` to observables. Until real B3 exists grade `REFERENCE_ORACLE_EXECUTED__FUTURE_NATIVE_INTEGRATION_NOT_RUN`. Show **mutation sensitivity**: at least one deliberately constant responder and one label-only responder must trigger a RED in heldout scientific sensitivity test, while genuine valid no-effect cases remain GREEN. Avoid hardcoding unique morally desired response, preserve F1 17 original unmet native cells unchanged.
+**Freeze requirement:** fixtures and oracle IDs hashed/published before adapting to implementation; do not weaken tests because future B3 differs. If an exact interface is unsupported, return applicability/typed owner requirement rather than counterfeit native pass.
+
+Return only `WORKER_RETURNS/SOROK-V2-HQ327-F2-HELDOUT-OTHERNESS-R1/` source/test/JUnit/report/environment passport, exact remote SHA. No owner adoption/production, no B2/M1/F1 edits.
