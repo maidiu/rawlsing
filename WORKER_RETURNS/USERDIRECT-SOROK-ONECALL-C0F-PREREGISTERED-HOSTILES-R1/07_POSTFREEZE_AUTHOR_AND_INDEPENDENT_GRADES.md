@@ -1,0 +1,9 @@
+# Phase B execution and owner/authority ceilings
+
+**Seal order:** C0F freeze `1daad754b01a1a3b2f866cc4c47c2f800f63d451` was pushed and independently read back before opening C0 actual return. The prior interim phase-B source-custody HOLD at `ab0dadf487a2597a13d107adf25bc5ec847f1763` is now superseded only by final C0 `66d012c469ee1791c61f1d623079520697508243`. Original 00–04 Phase-A contents, source/test hashes and requirements were not rewritten.
+
+**True reproducible commands in physical archive:** `python -B -m pytest -q --junitxml=author_fresh_replay_junit.xml test_onecall_c0_part1.py test_onecall_c0_part2.py test_onecall_c0_part3.py test_onecall_c0_part4.py`, `python -B -m pytest -ra -q --junitxml=phaseb_frozen_against_author_junit.xml test_phase_b_preregistered_against_c0.py`, and similarly `test_phase_b_postfreeze_distinct_hostiles.py`. Failures remain literal process exit=1, never xfail. `phasea_rerun_junit.xml` is separate *reference* execution. Repo C0 imported module is exact content-hash verified author code, not imported B3 native code.
+
+**Status distinctions:** Independent Phase A=PASS at reference test grain; C0 author sourcefree mock=PASS at authored test grain; preregistered C0 I2 boundary=RED; actual CAN008/CAN011/ADP016/F1 learned-person meaning=NATIVE_HOLD/NOT_RUN; external paid LLM quality or cost=NOT_RUN/UNAUTHORIZED; original survey/position source=NATIVE_HOLD; actor rights=NONE. The F2 42 and B3 71 positive integration receipts belong to distinct test-only courts. Original F1 17 native RED remain intact.
+
+**Versioned ZIP evidence:** exact final comprehensive local archive SHA256 `1fca6fe1c4c8a53d6c65469f0a3e6ff6a442e911942029450f0dc534cca86f60`. The independent test source and actual generated JUnit in that archive require no original survey inputs, only pinned `onecall_c0.py` and pure stdlib/pytest. No release or semantic adoption is requested by this independent reviewer.
