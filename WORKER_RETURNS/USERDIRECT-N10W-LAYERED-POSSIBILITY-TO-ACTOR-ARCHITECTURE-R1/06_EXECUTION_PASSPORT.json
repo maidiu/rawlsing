@@ -1,0 +1,112 @@
+{
+  "schema": "N10W_LAYERED_COURT_EXECUTION_PASSPORT_R1",
+  "exact_sealed_startup": "4485dd8ffbd5190d90b5e1235861592c7e996f8e",
+  "run_grade": "SOURCEFREE_NATIVE_E04_CLIENTS_PLUS_REFERENCE_NEGATIVE_PROBES__NO_ACTOR_POSITIVE",
+  "runtime": {
+    "python": "3.13.5",
+    "pytest": "9.0.2",
+    "git": "2.47.3",
+    "sandbox": "/mnt/data/n10w_layered_court",
+    "source_bundles_in_repo_native_consumers": true,
+    "private_repo_git_clone": false
+  },
+  "actual_execution": {
+    "command": "python -m pytest -q test_n10w_hostiles.py test_exact_native_consumers.py --junitxml=all_bounded_courts.junit.xml",
+    "tests_collected": 36,
+    "reference_22": 22,
+    "source_exact_native_14": 14,
+    "passed": 36,
+    "failed": 0,
+    "latest_actual_wall_time_reported_seconds": 0.08,
+    "original_E05R_C1_N10E_M4_M5_full_imports": false,
+    "actual_CAN008_actor": false
+  },
+  "cold": {
+    "command": "python cold_replay.py",
+    "independent_child_hashseeds": [
+      "13",
+      "791"
+    ],
+    "match": true,
+    "sha256": "6a0a4ab7a3ef075079fe06803dd86feee3f2bfd17b502d52338f20a1039e789e",
+    "scope": "SOURCEFREE_E04_CLIENTS_AND_SYNTHETIC_ADAPTER_ONLY",
+    "two_actor_world_process_replay": false
+  },
+  "artifacts": [
+    {
+      "name": "native/nonparent.py",
+      "bytes": 2966,
+      "sha256": "3635f0f6ad4891718c26c99f0f9860263d5e054517059f3dfe0409ec66d6287e",
+      "git_blob": "2181b832d3c4376d4b9428e13f4354f273be8f32",
+      "provenance": "exact inherited WP2 E04 client"
+    },
+    {
+      "name": "native/scenario.py",
+      "bytes": 3412,
+      "sha256": "f60169b2076f32cd34b5495b570cef24984d2bd2c6e4678fe1f5710cf41cbca6",
+      "git_blob": "b7e568166cd277c1ba127374ea1a350d1b3841a2",
+      "provenance": "exact inherited WP2 E04 client"
+    },
+    {
+      "name": "n10w_reference.py",
+      "bytes": 4241,
+      "sha256": "103c8eaf1344848cdb306a8a2acb9cb2c04c3037ba24c7e0f87410660ba01185",
+      "git_blob": "2febdb26bd6a29f82f621b38a885de2e0d8996fd",
+      "provenance": "independent local reference test-only"
+    },
+    {
+      "name": "test_n10w_hostiles.py",
+      "bytes": 7001,
+      "sha256": "2d22a58c1654e827480baa63625aeab42e389670c1df1110e12ff9d5b8f037be",
+      "git_blob": "3515eec342a24913a975f29ac74faaca22ce4fa2",
+      "provenance": "22 reference negative controls; not full person-world positives"
+    },
+    {
+      "name": "test_exact_native_consumers.py",
+      "bytes": 6074,
+      "sha256": "2b0fa123384f46f6bddff19e2c4907bea0c08166acaef66a3ad170c95fb01469",
+      "git_blob": "806b4ab0e46d3b6720d8ff2d9057a021efaf481b",
+      "provenance": "14 original E04 byte-matched client positive/negative checks, synthetic service adapter"
+    },
+    {
+      "name": "cold_replay.py",
+      "bytes": 1409,
+      "sha256": "33f01bb16cfe5928640ce0fed30fa5d37346ce70bfdef0ffaa3741d735f5ded3",
+      "git_blob": "eef91d4a0c9074a254f43e9b871c0ed219cfbad0"
+    },
+    {
+      "name": "all_bounded_courts.junit.xml",
+      "bytes": 4154,
+      "sha256": "bc7d1ffa6017dd17b59e384c65e591677995ecd4aa568cd04459e93a3092223a",
+      "git_blob": "01609eb16cf3f9d2983160e7c5262edd0514b6a1"
+    },
+    {
+      "name": "all_bounded_courts.log",
+      "bytes": 99,
+      "sha256": "49ac65ca30ace60f4a3338a04082b40b4e3cff20b3f11a71a9bc3ac1cfe76371",
+      "git_blob": "885fb21a7c32efbe0aea95b32e91127806accf38"
+    },
+    {
+      "name": "cold_replay_receipt.json",
+      "bytes": 330,
+      "sha256": "db96a542b10531ac1caacfc4ea21a1f2158bbf32d2626235c124859c4687ac7f",
+      "git_blob": "170fe0a1414f93e93ff8f3e2f3004db1a952f7e2"
+    }
+  ],
+  "evidence_zip": {
+    "exact_generated_path": "/mnt/data/n10w_layered_court/N10W_Layered_Architecture_Court_Executable_Evidence.zip",
+    "bytes": 12014,
+    "sha256": "bbe3b3f155ce732554f4694b155a90e738a63144a7b7a50366ba2b885a8e6ee0",
+    "entries": 10,
+    "attached_in_conversation": true,
+    "github_uploaded": false
+  },
+  "scientific_holds": [
+    "T04_T05_T06_T10_T11_T12_T13_T18_T19_T20_ACTOR_POSITIVE_NOT_REACHED",
+    "NO_FULL_E05R_M4_M5_C1_N10E_SOURCE_CLOSURE",
+    "NO_CAN008_ACTOR_BOUND_RULE_TARGET_ISSUANCE",
+    "NO_SDTF_NATIVE_POSITIONED_TO_EXTERNAL_CONSEQUENCE_POSITIVE",
+    "NO_QUALIFIED_POPULATION_ROUTE_ATTEMPT_ESTIMAND",
+    "NO_ORIGINAL35_N11_N12_OC05_V3_PRODUCT"
+  ]
+}
