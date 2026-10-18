@@ -1,0 +1,66 @@
+{
+  "passport_schema": "SOROK_ENVIRONMENT_PASSPORT_R1",
+  "environment_id": "bbca92d9-8505-4f01-a8c4-8e38f477a8bd",
+  "epoch_id": "f7e93e83-a243-4959-b5b2-189dba7a89b4",
+  "alias": "M2_local_handoff",
+  "owner_session_alias": "M2_local_publication",
+  "surface": "LOCAL_SHARED_STORE",
+  "machine_alias": "authorized_local",
+  "status": "LIVE_VERIFIED",
+  "last_live_probe_at": "2026-10-18T03:07:39.314134+00:00",
+  "runtime_marker_digest": "f911d454ad607f1580503d65f5c964607d0a6b5268dd94fbe14689ebd5c417d6",
+  "python": "3.11.3",
+  "pytest": "pytest 9.1.1",
+  "git": "git version 2.39.1",
+  "node": "NOT_REQUIRED",
+  "shell": "zsh_user_environment",
+  "capabilities": {
+    "Python": "VERIFIED",
+    "pytest": "VERIFIED",
+    "Git": "VERIFIED",
+    "filesystem": "VERIFIED",
+    "remote_read": "VERIFIED"
+  },
+  "git_object_store_alias": "existing_shared_store",
+  "worktree_alias": "M2_isolated_publication",
+  "branch": "agent/rabochii-sorok-v2-hq328-m2-m1-source-time-identity-repair-r1",
+  "checkout_base": "6eebdf23fec3d24d29df1f95fd567f3599316e11",
+  "pre_publication_head": "6eebdf23fec3d24d29df1f95fd567f3599316e11",
+  "dirty_state": "assigned subtree only",
+  "dependency_closure_status": "BOUNDED_FULL_FOR_HANDOFF",
+  "materialized_source_refs": {
+    "pinned_archives": {
+      "M1": {
+        "relative": "frozen_inputs/M1_original_exact_7e91c198.tar.gz",
+        "sha256": "30b820eda81089c89d9e2df8145860386d33b973f5c7f6a028e7e16b21dbe7b4"
+      },
+      "I2": {
+        "relative": "frozen_inputs/I2_strict_exact_19f1e86a.tar.gz",
+        "sha256": "449f9cf8c8db7befc8b2358b776adee636db70f884e7d2fdffa069b07c19d72f"
+      }
+    },
+    "binary_git_blobs": {
+      "M1": "37174efcf6689f87110ef97023e91cc83786fe2a",
+      "I2": "23ebc5a15df242b288555ec415ef6533b4420a7f"
+    },
+    "actual_imports": "verification.json/results"
+  },
+  "covered_test_suites": "verification.json and commands.json",
+  "science_grade": "TEST_ONLY_M1_SOURCE_TIME_REPAIR_CANDIDATE_PENDING_I2",
+  "model_provider": "OpenAI_Codex_user_authorized_handoff",
+  "effort": "UNKNOWN",
+  "pricing_class": "UNKNOWN",
+  "observed_credits": null,
+  "observed_usage": null,
+  "independent_review_separation": "local execution/publication only; NOT scientific I2",
+  "privacy_source_grant": "private sourcefree handoff only",
+  "assignments_completed": [
+    "M2_LOCAL_VERIFICATION"
+  ],
+  "next_good_affinity_tags": [
+    "SOURCE_CUSTODY",
+    "GIT_PUBLICATION"
+  ],
+  "staged_state_preservation": "input sources retained; temporary comparison dirs disposed",
+  "retire_or_rebuild_reason": null
+}

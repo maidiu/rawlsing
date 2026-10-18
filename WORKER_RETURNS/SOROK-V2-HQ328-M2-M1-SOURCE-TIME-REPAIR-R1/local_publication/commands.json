@@ -1,0 +1,97 @@
+[
+  {
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "test_m2.py",
+      "-p",
+      "no:cacheprovider",
+      "--junitxml=<M2_RETURN>/local_publication/after_m2_41.xml"
+    ],
+    "cwd": "<M2_RETURN>",
+    "environment": {
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTHONPATH": "UNSET"
+    },
+    "exit_code": 0,
+    "expected_exit": false
+  },
+  {
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "test_kernel.py",
+      "-p",
+      "no:cacheprovider",
+      "--junitxml=<M2_RETURN>/local_publication/before_m1_37.xml"
+    ],
+    "cwd": "<ISOLATED_STAGE>/before_m1_37",
+    "environment": {
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTHONPATH": "UNSET"
+    },
+    "exit_code": 0,
+    "expected_exit": false
+  },
+  {
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "test_i2_strict.py",
+      "-p",
+      "no:cacheprovider",
+      "--junitxml=<M2_RETURN>/local_publication/before_i2_23.xml"
+    ],
+    "cwd": "<ISOLATED_STAGE>/before_i2_23",
+    "environment": {
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTHONPATH": "UNSET"
+    },
+    "exit_code": 1,
+    "expected_exit": true
+  },
+  {
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "test_kernel.py",
+      "-p",
+      "no:cacheprovider",
+      "--junitxml=<M2_RETURN>/local_publication/after_m1_37.xml"
+    ],
+    "cwd": "<ISOLATED_STAGE>/after_m1_37",
+    "environment": {
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTHONPATH": "UNSET"
+    },
+    "exit_code": 1,
+    "expected_exit": true
+  },
+  {
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "test_i2_strict.py",
+      "-p",
+      "no:cacheprovider",
+      "--junitxml=<M2_RETURN>/local_publication/after_i2_23.xml"
+    ],
+    "cwd": "<ISOLATED_STAGE>/after_i2_23",
+    "environment": {
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTHONPATH": "UNSET"
+    },
+    "exit_code": 1,
+    "expected_exit": true
+  }
+]

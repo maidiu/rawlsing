@@ -1,0 +1,337 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="19" skipped="0" tests="37" time="0.370" timestamp="2026-10-17T23:07:38.189594-04:00"><testcase classname="test_kernel" name="test_four_independent_actors_with_histories" time="0.001" /><testcase classname="test_kernel" name="test_objective_theft_has_no_culprit_or_ideology" time="0.001" /><testcase classname="test_kernel" name="test_every_accessible_speech_has_multiple_competing_stances" time="0.002"><failure message="AssertionError: assert set() == {('parent_sai...', 'SUSPEND')}&#10;  &#10;  Extra items in the right set:&#10;  ('peer_said', 'SUSPEND')&#10;  ('parent_said', 'ACCEPT')&#10;  ('peer_said', 'ACCEPT')&#10;  ('peer_said', 'REJECT')&#10;  ('parent_said', 'SUSPEND')&#10;  ('parent_said', 'REJECT')&#10;  Use -v to get more diff">def test_every_accessible_speech_has_multiple_competing_stances():
+        scene,state=start(); c=eligible(scene,state,'loss')
+&gt;       assert {(x.source,x.stance) for x in c if x.mode=='RECONSIDER'}=={(s,mode) for s in ('parent_said','peer_said') for mode in ('ACCEPT','REJECT','SUSPEND')}
+E       AssertionError: assert set() == {('parent_sai...', 'SUSPEND')}
+E         
+E         Extra items in the right set:
+E         ('peer_said', 'SUSPEND')
+E         ('parent_said', 'ACCEPT')
+E         ('peer_said', 'ACCEPT')
+E         ('peer_said', 'REJECT')
+E         ('parent_said', 'SUSPEND')
+E         ('parent_said', 'REJECT')
+E         Use -v to get more diff
+
+test_kernel.py:32: AssertionError</failure></testcase><testcase classname="test_kernel" name="test_peer_attribution_never_world_culprit" time="0.002"><failure message="StopIteration">def test_peer_attribution_never_world_culprit():
+&gt;       scene,state=start(); new,p=choose(scene,state,source='peer_said')
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test_kernel.py:37: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+scene = Scene(actors=(Actor(id='child', history=(History(id='prior_recognition', actor='child', time=1, activity='cooperative'...ory_id='later_observed_counterpart', observer='caregiver', time=9, issuer='M2_TEST_ONLY_OBSERVED_RELATION_CONTRAST'),))
+state = State(actor='child', lineage=(), procedure_refs=('old_watchful_habit',))
+event = 'loss', mode = 'RECONSIDER', stance = 'ACCEPT', source = 'peer_said'
+kw = {}
+
+    def choose(scene,state,event='loss',mode='RECONSIDER',stance='ACCEPT',source='parent_said',**kw):
+&gt;       c=next(c for c in eligible(scene,state,event) if c.mode==mode and c.stance==stance and c.source==source)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       StopIteration
+
+test_kernel.py:14: StopIteration</failure></testcase><testcase classname="test_kernel" name="test_unheard_peer_cannot_influence_candidates" time="0.001" /><testcase classname="test_kernel" name="test_missing_peer_speech_cannot_influence_candidates" time="0.001" /><testcase classname="test_kernel" name="test_changed_child_history_changes_eligible_witnessed_prior_but_not_fixed_output" time="0.003" /><testcase classname="test_kernel" name="test_parent_private_care_history_changes_without_automatic_child_belief" time="0.002" /><testcase classname="test_kernel" name="test_factual_acceptance_and_negative_affect_are_independent" time="0.001"><failure message="StopIteration">def test_factual_acceptance_and_negative_affect_are_independent():
+&gt;       scene,state=start();state,p=choose(scene,state,stance='ACCEPT',affect_ref='first_distress',public_action_ref='public_lock_check')
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test_kernel.py:69: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+scene = Scene(actors=(Actor(id='child', history=(History(id='prior_recognition', actor='child', time=1, activity='cooperative'...ory_id='later_observed_counterpart', observer='caregiver', time=9, issuer='M2_TEST_ONLY_OBSERVED_RELATION_CONTRAST'),))
+state = State(actor='child', lineage=(), procedure_refs=('old_watchful_habit',))
+event = 'loss', mode = 'RECONSIDER', stance = 'ACCEPT', source = 'parent_said'
+kw = {'affect_ref': 'first_distress', 'public_action_ref': 'public_lock_check'}
+
+    def choose(scene,state,event='loss',mode='RECONSIDER',stance='ACCEPT',source='parent_said',**kw):
+&gt;       c=next(c for c in eligible(scene,state,event) if c.mode==mode and c.stance==stance and c.source==source)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       StopIteration
+
+test_kernel.py:14: StopIteration</failure></testcase><testcase classname="test_kernel" name="test_private_rejection_and_public_conformity_do_not_collapse" time="0.001"><failure message="StopIteration">def test_private_rejection_and_public_conformity_do_not_collapse():
+&gt;       scene,state=start();state,_=choose(scene,state,stance='REJECT',source='peer_said',public_action_ref='public_lock_check')
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test_kernel.py:76: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+scene = Scene(actors=(Actor(id='child', history=(History(id='prior_recognition', actor='child', time=1, activity='cooperative'...ory_id='later_observed_counterpart', observer='caregiver', time=9, issuer='M2_TEST_ONLY_OBSERVED_RELATION_CONTRAST'),))
+state = State(actor='child', lineage=(), procedure_refs=('old_watchful_habit',))
+event = 'loss', mode = 'RECONSIDER', stance = 'REJECT', source = 'peer_said'
+kw = {'public_action_ref': 'public_lock_check'}
+
+    def choose(scene,state,event='loss',mode='RECONSIDER',stance='ACCEPT',source='parent_said',**kw):
+&gt;       c=next(c for c in eligible(scene,state,event) if c.mode==mode and c.stance==stance and c.source==source)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       StopIteration
+
+test_kernel.py:14: StopIteration</failure></testcase><testcase classname="test_kernel" name="test_procedural_watchfulness_survives_explicit_rejection" time="0.001"><failure message="StopIteration">def test_procedural_watchfulness_survives_explicit_rejection():
+&gt;       scene,state=start();s,_=choose(scene,state,source='parent_said',stance='REJECT')
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test_kernel.py:81: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+scene = Scene(actors=(Actor(id='child', history=(History(id='prior_recognition', actor='child', time=1, activity='cooperative'...ory_id='later_observed_counterpart', observer='caregiver', time=9, issuer='M2_TEST_ONLY_OBSERVED_RELATION_CONTRAST'),))
+state = State(actor='child', lineage=(), procedure_refs=('old_watchful_habit',))
+event = 'loss', mode = 'RECONSIDER', stance = 'REJECT', source = 'parent_said'
+kw = {}
+
+    def choose(scene,state,event='loss',mode='RECONSIDER',stance='ACCEPT',source='parent_said',**kw):
+&gt;       c=next(c for c in eligible(scene,state,event) if c.mode==mode and c.stance==stance and c.source==source)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       StopIteration
+
+test_kernel.py:14: StopIteration</failure></testcase><testcase classname="test_kernel" name="test_seven_later_alternatives_are_only_candidates[REATTRIBUTE]" time="0.001"><failure message="StopIteration">later_mode = 'REATTRIBUTE'
+
+    @pytest.mark.parametrize('later_mode',('REATTRIBUTE','NARROW','GENERALIZE','REINFORCE','CONTRADICT','DIFFERENTIATE','NO_CHANGE'))
+    def test_seven_later_alternatives_are_only_candidates(later_mode):
+&gt;       scene,state=start();state,_=choose(scene,state)
+                                    ^^^^^^^^^^^^^^^^^^^
+
+test_kernel.py:88: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+scene = Scene(actors=(Actor(id='child', history=(History(id='prior_recognition', actor='child', time=1, activity='cooperative'...ory_id='later_observed_counterpart', observer='caregiver', time=9, issuer='M2_TEST_ONLY_OBSERVED_RELATION_CONTRAST'),))
+state = State(actor='child', lineage=(), procedure_refs=('old_watchful_habit',))
+event = 'loss', mode = 'RECONSIDER', stance = 'ACCEPT', source = 'parent_said'
+kw = {}
+
+    def choose(scene,state,event='loss',mode='RECONSIDER',stance='ACCEPT',source='parent_said',**kw):
+&gt;       c=next(c for c in eligible(scene,state,event) if c.mode==mode and c.stance==stance and c.source==source)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       StopIteration
+
+test_kernel.py:14: StopIteration</failure></testcase><testcase classname="test_kernel" name="test_seven_later_alternatives_are_only_candidates[NARROW]" time="0.002"><failure message="StopIteration">later_mode = 'NARROW'
+
+    @pytest.mark.parametrize('later_mode',('REATTRIBUTE','NARROW','GENERALIZE','REINFORCE','CONTRADICT','DIFFERENTIATE','NO_CHANGE'))
+    def test_seven_later_alternatives_are_only_candidates(later_mode):
+&gt;       scene,state=start();state,_=choose(scene,state)
+                                    ^^^^^^^^^^^^^^^^^^^
+
+test_kernel.py:88: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+scene = Scene(actors=(Actor(id='child', history=(History(id='prior_recognition', actor='child', time=1, activity='cooperative'...ory_id='later_observed_counterpart', observer='caregiver', time=9, issuer='M2_TEST_ONLY_OBSERVED_RELATION_CONTRAST'),))
+state = State(actor='child', lineage=(), procedure_refs=('old_watchful_habit',))
+event = 'loss', mode = 'RECONSIDER', stance = 'ACCEPT', source = 'parent_said'
+kw = {}
+
+    def choose(scene,state,event='loss',mode='RECONSIDER',stance='ACCEPT',source='parent_said',**kw):
+&gt;       c=next(c for c in eligible(scene,state,event) if c.mode==mode and c.stance==stance and c.source==source)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       StopIteration
+
+test_kernel.py:14: StopIteration</failure></testcase><testcase classname="test_kernel" name="test_seven_later_alternatives_are_only_candidates[GENERALIZE]" time="0.001"><failure message="StopIteration">later_mode = 'GENERALIZE'
+
+    @pytest.mark.parametrize('later_mode',('REATTRIBUTE','NARROW','GENERALIZE','REINFORCE','CONTRADICT','DIFFERENTIATE','NO_CHANGE'))
+    def test_seven_later_alternatives_are_only_candidates(later_mode):
+&gt;       scene,state=start();state,_=choose(scene,state)
+                                    ^^^^^^^^^^^^^^^^^^^
+
+test_kernel.py:88: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+scene = Scene(actors=(Actor(id='child', history=(History(id='prior_recognition', actor='child', time=1, activity='cooperative'...ory_id='later_observed_counterpart', observer='caregiver', time=9, issuer='M2_TEST_ONLY_OBSERVED_RELATION_CONTRAST'),))
+state = State(actor='child', lineage=(), procedure_refs=('old_watchful_habit',))
+event = 'loss', mode = 'RECONSIDER', stance = 'ACCEPT', source = 'parent_said'
+kw = {}
+
+    def choose(scene,state,event='loss',mode='RECONSIDER',stance='ACCEPT',source='parent_said',**kw):
+&gt;       c=next(c for c in eligible(scene,state,event) if c.mode==mode and c.stance==stance and c.source==source)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       StopIteration
+
+test_kernel.py:14: StopIteration</failure></testcase><testcase classname="test_kernel" name="test_seven_later_alternatives_are_only_candidates[REINFORCE]" time="0.002"><failure message="StopIteration">later_mode = 'REINFORCE'
+
+    @pytest.mark.parametrize('later_mode',('REATTRIBUTE','NARROW','GENERALIZE','REINFORCE','CONTRADICT','DIFFERENTIATE','NO_CHANGE'))
+    def test_seven_later_alternatives_are_only_candidates(later_mode):
+&gt;       scene,state=start();state,_=choose(scene,state)
+                                    ^^^^^^^^^^^^^^^^^^^
+
+test_kernel.py:88: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+scene = Scene(actors=(Actor(id='child', history=(History(id='prior_recognition', actor='child', time=1, activity='cooperative'...ory_id='later_observed_counterpart', observer='caregiver', time=9, issuer='M2_TEST_ONLY_OBSERVED_RELATION_CONTRAST'),))
+state = State(actor='child', lineage=(), procedure_refs=('old_watchful_habit',))
+event = 'loss', mode = 'RECONSIDER', stance = 'ACCEPT', source = 'parent_said'
+kw = {}
+
+    def choose(scene,state,event='loss',mode='RECONSIDER',stance='ACCEPT',source='parent_said',**kw):
+&gt;       c=next(c for c in eligible(scene,state,event) if c.mode==mode and c.stance==stance and c.source==source)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       StopIteration
+
+test_kernel.py:14: StopIteration</failure></testcase><testcase classname="test_kernel" name="test_seven_later_alternatives_are_only_candidates[CONTRADICT]" time="0.001"><failure message="StopIteration">later_mode = 'CONTRADICT'
+
+    @pytest.mark.parametrize('later_mode',('REATTRIBUTE','NARROW','GENERALIZE','REINFORCE','CONTRADICT','DIFFERENTIATE','NO_CHANGE'))
+    def test_seven_later_alternatives_are_only_candidates(later_mode):
+&gt;       scene,state=start();state,_=choose(scene,state)
+                                    ^^^^^^^^^^^^^^^^^^^
+
+test_kernel.py:88: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+scene = Scene(actors=(Actor(id='child', history=(History(id='prior_recognition', actor='child', time=1, activity='cooperative'...ory_id='later_observed_counterpart', observer='caregiver', time=9, issuer='M2_TEST_ONLY_OBSERVED_RELATION_CONTRAST'),))
+state = State(actor='child', lineage=(), procedure_refs=('old_watchful_habit',))
+event = 'loss', mode = 'RECONSIDER', stance = 'ACCEPT', source = 'parent_said'
+kw = {}
+
+    def choose(scene,state,event='loss',mode='RECONSIDER',stance='ACCEPT',source='parent_said',**kw):
+&gt;       c=next(c for c in eligible(scene,state,event) if c.mode==mode and c.stance==stance and c.source==source)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       StopIteration
+
+test_kernel.py:14: StopIteration</failure></testcase><testcase classname="test_kernel" name="test_seven_later_alternatives_are_only_candidates[DIFFERENTIATE]" time="0.001"><failure message="StopIteration">later_mode = 'DIFFERENTIATE'
+
+    @pytest.mark.parametrize('later_mode',('REATTRIBUTE','NARROW','GENERALIZE','REINFORCE','CONTRADICT','DIFFERENTIATE','NO_CHANGE'))
+    def test_seven_later_alternatives_are_only_candidates(later_mode):
+&gt;       scene,state=start();state,_=choose(scene,state)
+                                    ^^^^^^^^^^^^^^^^^^^
+
+test_kernel.py:88: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+scene = Scene(actors=(Actor(id='child', history=(History(id='prior_recognition', actor='child', time=1, activity='cooperative'...ory_id='later_observed_counterpart', observer='caregiver', time=9, issuer='M2_TEST_ONLY_OBSERVED_RELATION_CONTRAST'),))
+state = State(actor='child', lineage=(), procedure_refs=('old_watchful_habit',))
+event = 'loss', mode = 'RECONSIDER', stance = 'ACCEPT', source = 'parent_said'
+kw = {}
+
+    def choose(scene,state,event='loss',mode='RECONSIDER',stance='ACCEPT',source='parent_said',**kw):
+&gt;       c=next(c for c in eligible(scene,state,event) if c.mode==mode and c.stance==stance and c.source==source)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       StopIteration
+
+test_kernel.py:14: StopIteration</failure></testcase><testcase classname="test_kernel" name="test_seven_later_alternatives_are_only_candidates[NO_CHANGE]" time="0.001"><failure message="StopIteration">later_mode = 'NO_CHANGE'
+
+    @pytest.mark.parametrize('later_mode',('REATTRIBUTE','NARROW','GENERALIZE','REINFORCE','CONTRADICT','DIFFERENTIATE','NO_CHANGE'))
+    def test_seven_later_alternatives_are_only_candidates(later_mode):
+&gt;       scene,state=start();state,_=choose(scene,state)
+                                    ^^^^^^^^^^^^^^^^^^^
+
+test_kernel.py:88: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+scene = Scene(actors=(Actor(id='child', history=(History(id='prior_recognition', actor='child', time=1, activity='cooperative'...ory_id='later_observed_counterpart', observer='caregiver', time=9, issuer='M2_TEST_ONLY_OBSERVED_RELATION_CONTRAST'),))
+state = State(actor='child', lineage=(), procedure_refs=('old_watchful_habit',))
+event = 'loss', mode = 'RECONSIDER', stance = 'ACCEPT', source = 'parent_said'
+kw = {}
+
+    def choose(scene,state,event='loss',mode='RECONSIDER',stance='ACCEPT',source='parent_said',**kw):
+&gt;       c=next(c for c in eligible(scene,state,event) if c.mode==mode and c.stance==stance and c.source==source)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       StopIteration
+
+test_kernel.py:14: StopIteration</failure></testcase><testcase classname="test_kernel" name="test_later_append_versioned_reinterpretation_without_past_rewrite" time="0.001"><failure message="StopIteration">def test_later_append_versioned_reinterpretation_without_past_rewrite():
+&gt;       scene,state=start();e0=digest(asdict(scene.events[0]));state,_=choose(scene,state)
+                                                                       ^^^^^^^^^^^^^^^^^^^
+
+test_kernel.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+scene = Scene(actors=(Actor(id='child', history=(History(id='prior_recognition', actor='child', time=1, activity='cooperative'...ory_id='later_observed_counterpart', observer='caregiver', time=9, issuer='M2_TEST_ONLY_OBSERVED_RELATION_CONTRAST'),))
+state = State(actor='child', lineage=(), procedure_refs=('old_watchful_habit',))
+event = 'loss', mode = 'RECONSIDER', stance = 'ACCEPT', source = 'parent_said'
+kw = {}
+
+    def choose(scene,state,event='loss',mode='RECONSIDER',stance='ACCEPT',source='parent_said',**kw):
+&gt;       c=next(c for c in eligible(scene,state,event) if c.mode==mode and c.stance==stance and c.source==source)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       StopIteration
+
+test_kernel.py:14: StopIteration</failure></testcase><testcase classname="test_kernel" name="test_later_no_change_is_actual_valid_option" time="0.001"><failure message="StopIteration">def test_later_no_change_is_actual_valid_option():
+&gt;       scene,state=start();state,_=choose(scene,state)
+                                    ^^^^^^^^^^^^^^^^^^^
+
+test_kernel.py:103: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+scene = Scene(actors=(Actor(id='child', history=(History(id='prior_recognition', actor='child', time=1, activity='cooperative'...ory_id='later_observed_counterpart', observer='caregiver', time=9, issuer='M2_TEST_ONLY_OBSERVED_RELATION_CONTRAST'),))
+state = State(actor='child', lineage=(), procedure_refs=('old_watchful_habit',))
+event = 'loss', mode = 'RECONSIDER', stance = 'ACCEPT', source = 'parent_said'
+kw = {}
+
+    def choose(scene,state,event='loss',mode='RECONSIDER',stance='ACCEPT',source='parent_said',**kw):
+&gt;       c=next(c for c in eligible(scene,state,event) if c.mode==mode and c.stance==stance and c.source==source)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       StopIteration
+
+test_kernel.py:14: StopIteration</failure></testcase><testcase classname="test_kernel" name="test_independent_other_can_refuse_without_forced_romance" time="0.001"><failure message="StopIteration">def test_independent_other_can_refuse_without_forced_romance():
+        scene,state=start(seed_scene(other_action='REFUSE'))
+        assert scene.events[-1].action_owner=='other_P' and scene.events[-1].action=='REFUSE'
+&gt;       state,_=choose(scene,state)
+                ^^^^^^^^^^^^^^^^^^^
+
+test_kernel.py:111: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+scene = Scene(actors=(Actor(id='child', history=(History(id='prior_recognition', actor='child', time=1, activity='cooperative'...ory_id='later_observed_counterpart', observer='caregiver', time=9, issuer='M2_TEST_ONLY_OBSERVED_RELATION_CONTRAST'),))
+state = State(actor='child', lineage=(), procedure_refs=('old_watchful_habit',))
+event = 'loss', mode = 'RECONSIDER', stance = 'ACCEPT', source = 'parent_said'
+kw = {}
+
+    def choose(scene,state,event='loss',mode='RECONSIDER',stance='ACCEPT',source='parent_said',**kw):
+&gt;       c=next(c for c in eligible(scene,state,event) if c.mode==mode and c.stance==stance and c.source==source)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       StopIteration
+
+test_kernel.py:14: StopIteration</failure></testcase><testcase classname="test_kernel" name="test_other_act_must_have_own_history" time="0.001" /><testcase classname="test_kernel" name="test_child_cannot_write_caregiver_state" time="0.001" /><testcase classname="test_kernel" name="test_unheard_parent_is_not_permitted_source" time="0.001" /><testcase classname="test_kernel" name="test_malicious_llm_extra_effect_field_fails_closed" time="0.001" /><testcase classname="test_kernel" name="test_llm_valid_minimal_packet_still_noncausal" time="0.002" /><testcase classname="test_kernel" name="test_owner_fixture_permission_is_required" time="0.002" /><testcase classname="test_kernel" name="test_permission_actor_binds" time="0.002" /><testcase classname="test_kernel" name="test_replay_is_exact_under_same_seal" time="0.001"><failure message="StopIteration">def test_replay_is_exact_under_same_seal():
+&gt;       scene,state=start();one,_=choose(scene,state);two,_=choose(scene,state)
+                                  ^^^^^^^^^^^^^^^^^^^
+
+test_kernel.py:155: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+scene = Scene(actors=(Actor(id='child', history=(History(id='prior_recognition', actor='child', time=1, activity='cooperative'...ory_id='later_observed_counterpart', observer='caregiver', time=9, issuer='M2_TEST_ONLY_OBSERVED_RELATION_CONTRAST'),))
+state = State(actor='child', lineage=(), procedure_refs=('old_watchful_habit',))
+event = 'loss', mode = 'RECONSIDER', stance = 'ACCEPT', source = 'parent_said'
+kw = {}
+
+    def choose(scene,state,event='loss',mode='RECONSIDER',stance='ACCEPT',source='parent_said',**kw):
+&gt;       c=next(c for c in eligible(scene,state,event) if c.mode==mode and c.stance==stance and c.source==source)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       StopIteration
+
+test_kernel.py:14: StopIteration</failure></testcase><testcase classname="test_kernel" name="test_permission_replay_from_stale_state_is_refused" time="0.002" /><testcase classname="test_kernel" name="test_ordering_fails_closed_on_second_loss_after_later" time="0.001"><failure message="StopIteration">def test_ordering_fails_closed_on_second_loss_after_later():
+&gt;       scene,state=start();state,_=choose(scene,state)
+                                    ^^^^^^^^^^^^^^^^^^^
+
+test_kernel.py:168: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+scene = Scene(actors=(Actor(id='child', history=(History(id='prior_recognition', actor='child', time=1, activity='cooperative'...ory_id='later_observed_counterpart', observer='caregiver', time=9, issuer='M2_TEST_ONLY_OBSERVED_RELATION_CONTRAST'),))
+state = State(actor='child', lineage=(), procedure_refs=('old_watchful_habit',))
+event = 'loss', mode = 'RECONSIDER', stance = 'ACCEPT', source = 'parent_said'
+kw = {}
+
+    def choose(scene,state,event='loss',mode='RECONSIDER',stance='ACCEPT',source='parent_said',**kw):
+&gt;       c=next(c for c in eligible(scene,state,event) if c.mode==mode and c.stance==stance and c.source==source)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       StopIteration
+
+test_kernel.py:14: StopIteration</failure></testcase><testcase classname="test_kernel" name="test_unsupported_actor_procedure_fails" time="0.001" /><testcase classname="test_kernel" name="test_demographic_only_counterfactual_invariance" time="0.002" /><testcase classname="test_kernel" name="test_fake_objective_culprit_rejected" time="0.001" /><testcase classname="test_kernel" name="test_witnessed_own_affect_cannot_be_borrowed" time="0.002" /><testcase classname="test_kernel" name="test_untampered_lineage_hash_is_required" time="0.001"><failure message="StopIteration">def test_untampered_lineage_hash_is_required():
+&gt;       scene,state=start();state,_=choose(scene,state)
+                                    ^^^^^^^^^^^^^^^^^^^
+
+test_kernel.py:195: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+scene = Scene(actors=(Actor(id='child', history=(History(id='prior_recognition', actor='child', time=1, activity='cooperative'...ory_id='later_observed_counterpart', observer='caregiver', time=9, issuer='M2_TEST_ONLY_OBSERVED_RELATION_CONTRAST'),))
+state = State(actor='child', lineage=(), procedure_refs=('old_watchful_habit',))
+event = 'loss', mode = 'RECONSIDER', stance = 'ACCEPT', source = 'parent_said'
+kw = {}
+
+    def choose(scene,state,event='loss',mode='RECONSIDER',stance='ACCEPT',source='parent_said',**kw):
+&gt;       c=next(c for c in eligible(scene,state,event) if c.mode==mode and c.stance==stance and c.source==source)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       StopIteration
+
+test_kernel.py:14: StopIteration</failure></testcase><testcase classname="test_kernel" name="test_future_habit_cannot_be_causal_past_of_loss" time="0.001"><failure message="AssertionError: Regex pattern did not match.&#10;  Expected regex: 'PROCEDURAL_ORIGIN_UNBOUND'&#10;  Actual message: 'HISTORY_WITNESS_SOURCE_UNVERIFIED'">def test_future_habit_cannot_be_causal_past_of_loss():
+        scene,state=start();child=scene.actors[0]
+        future=replace(child.history[1],time=99)
+        modified=replace(scene,actors=(replace(child,history=(child.history[0],future)+child.history[2:]),)+scene.actors[1:])
+&gt;       with pytest.raises(Refusal,match='PROCEDURAL_ORIGIN_UNBOUND'):eligible(modified,state,'loss')
+E       AssertionError: Regex pattern did not match.
+E         Expected regex: 'PROCEDURAL_ORIGIN_UNBOUND'
+E         Actual message: 'HISTORY_WITNESS_SOURCE_UNVERIFIED'
+
+test_kernel.py:204: AssertionError</failure></testcase></testsuite></testsuites>

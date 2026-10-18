@@ -1,0 +1,74 @@
+{
+  "passport_schema": "SOROK_00D_BOUNDED_BROWSER_ENVIRONMENT_DELTA_R1",
+  "environment_id": "HQ328_M2_EPHEMERAL_STANDALONE_20261017",
+  "epoch_id": "M2_LOCAL_HANDOFF_REVALIDATED",
+  "owner_session_alias": "SOROK_HQ328_M2_IMPLEMENTATION_WORKER",
+  "surface": "BROWSER_CONTAINER_WITH_GITHUB_CONNECTOR",
+  "status": "RECHECK_REQUIRED_ON_LOCAL_AGENT",
+  "startup_sha": "6eebdf23fec3d24d29df1f95fd567f3599316e11",
+  "assigned_branch": "agent/rabochii-sorok-v2-hq328-m2-m1-source-time-identity-repair-r1",
+  "python": "3.13.5 VERIFIED",
+  "pytest": "9.0.2 VERIFIED",
+  "files_and_shell": "VERIFIED",
+  "github_connector_reads": "VERIFIED",
+  "git_push": "NOT_RUN_BY_HANDOFF",
+  "runtime_marker_digest": null,
+  "materialized_source_refs": [
+    {
+      "ref": "7e91c19828589281fb348c3aff35dca51bf9d995",
+      "blob": "37174efcf6689f87110ef97023e91cc83786fe2a",
+      "sha256": "30b820eda81089c89d9e2df8145860386d33b973f5c7f6a028e7e16b21dbe7b4"
+    },
+    {
+      "ref": "19f1e86ad2eab7226b59f84288dbbe4f970de77c",
+      "blob": "23ebc5a15df242b288555ec415ef6533b4420a7f",
+      "sha256": "449f9cf8c8db7befc8b2358b776adee636db70f884e7d2fdffa069b07c19d72f"
+    }
+  ],
+  "actual_runs": [
+    {
+      "suite": "original_M1_before",
+      "pass": 37,
+      "red": 0,
+      "error": 0,
+      "junit": "execution/before_m1_37.xml"
+    },
+    {
+      "suite": "I2_strict_before",
+      "pass": 14,
+      "red": 9,
+      "error": 0,
+      "junit": "execution/before_i2_23.xml"
+    },
+    {
+      "suite": "original_M1_against_M2",
+      "pass": 18,
+      "red": 19,
+      "error": 0,
+      "junit": "execution/after_m1_37.xml"
+    },
+    {
+      "suite": "I2_strict_against_M2",
+      "pass": 13,
+      "red": 10,
+      "error": 0,
+      "junit": "execution/after_i2_23.xml"
+    },
+    {
+      "suite": "new_M2",
+      "pass": 41,
+      "red": 0,
+      "error": 0,
+      "junit": "execution/after_m2_41.xml"
+    }
+  ],
+  "sourcefree_grade": "TEST_ONLY_M1_SOURCE_TIME_REPAIR_CANDIDATE_PENDING_I2",
+  "original_waves": "NOT_RUN",
+  "production_actor": "NOT_RUN",
+  "accepted_semantic_authority": "NOT_GRANTED",
+  "model_provider": "OpenAI",
+  "model_label": "GPT-6 Medium assigned",
+  "cash": "UNKNOWN",
+  "quotas": "UNKNOWN",
+  "staged_state_preservation": "ZIP_HANDOFF_VERIFIED; FUTURE_LOCAL_RECHECK_REQUIRED"
+}
