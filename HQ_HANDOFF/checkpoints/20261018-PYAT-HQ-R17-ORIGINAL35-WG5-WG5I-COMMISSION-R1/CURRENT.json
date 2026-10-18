@@ -1,0 +1,140 @@
+{
+  "schema": "RAWLSING_HQ_CHECKPOINT_CURRENT@1.1.0",
+  "checkpoint_id": "20261018-PYAT-HQ-R17-ORIGINAL35-WG5-WG5I-COMMISSION-R1",
+  "canonical_control_base": "1494fa0adad20a83fed60473452c0595bf81a790",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "semantic_pre_main_tip": "1f47063c3205a45888b3c55e81e7485943ed1390",
+  "previous_checkpoint": "20261018-PYAT-HQ-R16-USER-ACCEPTED-WHOLE-MACHINE-CONTROL-R1",
+  "previous_handoff_commit": "e1182c32cc40b7908304cecc5964193590bbb1cc",
+  "working_hq": {
+    "branch": "agent/vozhd-pyat-20261018-session-full-regrok-candidate-r1",
+    "user_reviewed_candidate": "677e02687ff1cfc0b55a5e16d41dc3ac778bf79f",
+    "user_accepted_overlay": "47f8a543cadd6dbe44627248049b274f280f1b9e",
+    "bounded_scope": true
+  },
+  "canonical_pyat_progress_revision": 17,
+  "counterpart_sorok_revision": 4,
+  "science": {
+    "all35_original_sav": 31,
+    "all35_original_dta": 4,
+    "original_u_complete": false,
+    "original_epre_accepted": false,
+    "source_rights_current": false,
+    "native_sourcefree_methods": [
+      "WG0P11",
+      "GF1N",
+      "WP2I"
+    ],
+    "expected_operation_grain": "independent original source+meaning+role+risk+weight+scientific estimand, before results",
+    "n11": false,
+    "n12": false
+  },
+  "active_workers": [
+    {
+      "id": "WG5",
+      "branch": "agent/rabochii-pyat-r36-wg5-local-original35-automatic-workload-r1",
+      "commission_tip": "1e609a3fc2fb378138ed5e0f3cd805f22902dcb6",
+      "observed_head_at_checkpoint": "1e609a3fc2fb378138ed5e0f3cd805f22902dcb6",
+      "grain": "R36_WG0_WG4_GENERAL_ORIGINAL35_AUTO_WORKLOAD_LOCAL_NATIVE",
+      "library_access": "NO",
+      "pass_wake": "COMMISSION_ONLY__USER_LAUNCH_NOT_ATTESTED",
+      "blocker_effect": "ACTUAL_ORIGINAL_READ_ONLY_AFTER_SOURCE_OWNER_AND_LOCAL_HOST_PERMISSION",
+      "hard_forbidden": "NO_RAW_SAV_DTA_UPLOAD_OR_UNISSUED_SCIENTIFIC_EPRE"
+    },
+    {
+      "id": "WG5I",
+      "branch": "agent/reviewer-pyat-r36-wg5i-independent-original35-workload-omission-r1",
+      "commission_tip": "7c24ef20ed52dfa06fc5bb11decaf865efd54494",
+      "observed_head_at_checkpoint": "7c24ef20ed52dfa06fc5bb11decaf865efd54494",
+      "grain": "R36_FRESH_INDEPENDENT_U_EPRE_ORACLE_PHASE_A",
+      "library_access": "NO",
+      "pass_wake": "PHASE_A_CAN_START_IN_PARALLEL__PHASE_B_AFTER_WG5_CANDIDATE",
+      "blocker_effect": "SCIENTIFIC_MEANING_OWNER_IF_DISPUTED; NOT A NEW SOURCE_READ_GRANT",
+      "hard_forbidden": "NO_SILENT_TEST_EXPECTATION_REWRITE_OR_TEST_AUTHORSHIP_CROSSOVER"
+    },
+    {
+      "id": "O35R",
+      "branch": "agent/rabochii-pyat-r35-o35r-first-original-warrant-to-consumer-edge-r1",
+      "commission_tip": "00c8d56556ef86152ac127197dd53546d03ee1c8",
+      "observed_head_at_checkpoint": "00c8d56556ef86152ac127197dd53546d03ee1c8",
+      "grain": "HISTORICAL_ONE_SOURCE_PILOT_UNADOPTED",
+      "library_access": "NO",
+      "pass_wake": "NO_LAUNCH_RECOMMENDED_OVER_WG5_GENERAL",
+      "blocker_effect": "R36_GENERAL_SCOPE_NOW_PRIMARY",
+      "hard_forbidden": "DO_NOT_TREAT_ONE_CANARY_AS_ALL35"
+    }
+  ],
+  "dependency_graph": [
+    {
+      "id": "WG0_SOURCE_AND_U",
+      "status": "RIGHTS_AND_FULL_ORIGINAL_U_HOLD",
+      "prerequisites": [
+        "EXACT_35_ORIGINAL_FILES_ACCESS",
+        "CURRENT_SOURCE_CUSTODIAN_READ_APPROVAL",
+        "INDEPENDENT_ADMINISTERED_ITEM_INVENTORY"
+      ],
+      "wake_effect": "COMPLETE_ORIGINAL_U",
+      "prohibited_early_actions": [
+        "NO_UNAUTHORIZED_ORIGINAL_SURVEY_OPEN_OR_HASH"
+      ]
+    },
+    {
+      "id": "WG1_WG2_EPRE",
+      "status": "MISSING_COMPLETE_PROSPECTIVE_OPERATION_FRONTIER",
+      "prerequisites": [
+        "FULL_U",
+        "COMPETENT_MEANING_AND_SCIENTIFIC_ESTIMAND",
+        "INDEPENDENT_PREFREEZE"
+      ],
+      "wake_effect": "COMPLETE_PERMITTED_SCIENTIFIC_WORK_MERKLE_MANIFEST",
+      "prohibited_early_actions": [
+        "NO_RESULT_DRIVEN_SELECTION_OR_SKIP"
+      ]
+    },
+    {
+      "id": "WG3_C11_I03_I05_BATCH",
+      "status": "CURRENT_EXECUTABLE_OWNER_PRESENT__ORIGINAL_INTEGRATION_INCOMPLETE",
+      "prerequisites": [
+        "AUTHORIZED_EPRE",
+        "ACTUAL_SOURCE"
+      ],
+      "wake_effect": "NATIVE_EMPIRICAL_POSITIVES",
+      "prohibited_early_actions": [
+        "NO_MOCK_AS_ORIGINAL_PRODUCT"
+      ]
+    },
+    {
+      "id": "WG4_WORLD_N11",
+      "status": "JOINED_CONSUMER_AND_FULL35_HOLD",
+      "prerequisites": [
+        "ACTUAL_ALL_ELIGIBLE_PRODUCT_INVENTORY",
+        "FF_F1_F8_PRODUCT_CLAIM_COMPETENCE",
+        "INDEPENDENT_NO_DROP"
+      ],
+      "wake_effect": "N11_DECLARED_SCOPE_CANDIDATE",
+      "prohibited_early_actions": [
+        "NO_SAFE_REFUSAL_AS_PRODUCTION_PASS"
+      ]
+    },
+    {
+      "id": "N12_SOROK",
+      "status": "HELD",
+      "prerequisites": [
+        "N11",
+        "SEPARATE_N12_ISSUANCE",
+        "SOROK_ACTOR_OWNER"
+      ],
+      "wake_effect": "ACTOR_WELD",
+      "prohibited_early_actions": [
+        "NO_PYAT_SELF_ACTOR_MODEL"
+      ]
+    }
+  ],
+  "decision": {
+    "id": "PYAT-R17-WG5-WG5I-COMMISSION",
+    "meaning": "CONCURRENT_PERSISTENT_NATIVE_ALL35_IMPL_AND_INDEPENDENT_PREFREEZE",
+    "no_new_source_or_actor_issuer": true
+  },
+  "next_action": "Launch WG5 Codex GPT-6 Medium main Mac and WG5I DeepSeek V4.1 Flash independent local Mac, first local source file custody/permission and PhaseA source-independent hostile expected-work freeze. Continue implementation while grant is pending. No remote/Library raw source upload or invented original measured output.",
+  "authority_ceiling": "NO_NEW_U_EPRE_FF_N9_N10W_N11_N12_OR_SOROK_ACTOR_GRANTS"
+}
