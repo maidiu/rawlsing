@@ -1,0 +1,15 @@
+# Parallel local publication and independent review — candidate workflow
+
+This packet deliberately DOES NOT create a new official HQ commission number, sealed startup, branch, adoption or upstream commit. Owner/HQ must assign those precisely. Reference sources are private.
+
+## A — local source-free M2 preimage repair worker
+
+Role: bounded M2 patch implementation and package publisher, NOT semantic owner/HQ/reviewer. Preserve exact reference M2 `5c2fbe14ccfa5027becfabc682206a1e61aaf986` and M3 `49dfcb30971310756a12f659961600d9f2eb4a11`. Stage provided `m2_patch/kernel.py` as a **new candidate return subtree**, not as a mutation of accepted M2 or M3. Verify all hashes. Execute the unchanged original M2 41, M3 lawful 32, former strict 3, and new 15; run original M1 37 and I2 23 on both original and candidate without changing any frozen bytes. Preserve their historical RED receipts. Hostile review must mutate source preimages with renewed fixture attestations and confirm fail-closed; separately confirm that unrelated unconsumed histories can change. Return JUnit, stdout, exact source SHA-256, typed limitations and a single remote commit SHA to the HQ-assigned, sealed, private branch. Never claim signed ADP/CAN, real-world psyche or fresh I2 acceptance.
+
+## B — source-free independent-life event intersection experiment worker
+
+Role: sourcefree causal experiment and original scientific falsification, NOT B3 adopter or new psyche law issuer. Use `causal_experiment/world_intersection.py`, `test_world_intersection.py` as an executable initial candidate at current checksum, not a canonical psychology engine. Hold objective bicycle disappearance and all independent actor histories fixed; intervene ONLY on an employer-side pay/hours occurrence. Test work → father material constraints/practices → actual father response → child activity → later observable practice, with separate independent neighbor project and genuine no-change cases. Prohibit output labels `secure_child`, `insecure_child`, `trust+10`, or deterministic benevolent relationship repair. Vary baseline father/child practice, care/work tradeoffs, and external stochastic seeds to kill overfit label scripts. Preserve mechanism/source truth and no-effect outcomes. Return negative controls, determinism, realistic constraints, event DAG, JUnit, stdout, source digest, limitations and exact remote SHA to HQ-assigned separate sealed branch. Prior author-defined toy policy is not empirically calibrated.
+
+## Independent review and B3 gating
+
+These two sourcefree candidates can be pursued **in parallel**. Do not block one solely for lack of the other's return. Neither changes canonical source or production actor. A distinct High/I2 reviewer must later validate A against original M2/M3 and adversarial history-source rewriting. Another independent scientific review must challenge B's toy father/child rules and test noncausal confounding/selection. B3 integration is allowed as *research-only proposal* until the checks and owner grants exist. No generated psychology claim from green pytest alone.

@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="9" skipped="0" tests="23" time="0.140" timestamp="2026-10-18T11:20:08.735060-04:00"><testcase classname=".runtime.i2.test_i2_strict" name="test_01_reproducible_witnesses_and_plural_without_compulsion" time="0.001" /><testcase classname=".runtime.i2.test_i2_strict" name="test_02_speaker_claim_not_objective_culprit" time="0.000" /><testcase classname=".runtime.i2.test_i2_strict" name="test_03_unheard_claim_not_eligible" time="0.000" /><testcase classname=".runtime.i2.test_i2_strict" name="test_04_same_child_accessible_history_parent_private_difference_cannot_auto_set_belief" time="0.001" /><testcase classname=".runtime.i2.test_i2_strict" name="test_05_prior_actual_history_changed_provenance_not_forced_psychology" time="0.001" /><testcase classname=".runtime.i2.test_i2_strict" name="test_06_original_event_immutable_with_same_scene_and_append" time="0.001" /><testcase classname=".runtime.i2.test_i2_strict" name="test_07_private_memory_not_manufactured" time="0.001" /><testcase classname=".runtime.i2.test_i2_strict" name="test_08_sibling_or_caregiver_history_not_borrowed_as_procedure" time="0.000" /><testcase classname=".runtime.i2.test_i2_strict" name="test_09_other_P_refusal_already_encoded_no_forced_response" time="0.001" /><testcase classname=".runtime.i2.test_i2_strict" name="test_10_bad_model_payload_cannot_inject_owner_effect" time="0.000" /><testcase classname=".runtime.i2.test_i2_strict" name="test_11_permission_replay_before_hash_blocks_reuse" time="0.001" /><testcase classname=".runtime.i2.test_i2_strict" name="test_12_foreign_other_history_does_not_supply_P_project" time="0.000" /><testcase classname=".runtime.i2.test_i2_strict" name="test_13_demographics_no_direct_link" time="0.000" /><testcase classname=".runtime.i2.test_i2_strict" name="test_R01_future_speech_must_not_be_available_at_event_clock" time="0.001"><failure message="AssertionError: FUTURE_UTTERANCE_LAUNDERED_TO_PAST&#10;assert not True&#10; +  where True = any(&lt;generator object test_R01_future_speech_must_not_be_available_at_event_clock.&lt;locals&gt;.&lt;genexpr&gt; at 0x11148c5f0&gt;)">def test_R01_future_speech_must_not_be_available_at_event_clock():
+        sc,st=root()
+        assert sc.events[0].time==3 and sc.speech[0].time==4 and sc.speech[1].time==5
+&gt;       assert not any(c.source=='parent_said' for c in eligible(sc,st,'loss')), 'FUTURE_UTTERANCE_LAUNDERED_TO_PAST'
+E       AssertionError: FUTURE_UTTERANCE_LAUNDERED_TO_PAST
+E       assert not True
+E        +  where True = any(&lt;generator object test_R01_future_speech_must_not_be_available_at_event_clock.&lt;locals&gt;.&lt;genexpr&gt; at 0x11148c5f0&gt;)
+
+.runtime/i2/test_i2_strict.py:101: AssertionError</failure></testcase><testcase classname=".runtime.i2.test_i2_strict" name="test_R02_future_affect_must_not_be_retrospectively_referenced_as_current" time="0.001"><failure message="Failed: DID NOT RAISE Refusal">def test_R02_future_affect_must_not_be_retrospectively_referenced_as_current():
+        sc,st=root();c=eligible(sc,st,'loss')[0]
+&gt;       with pytest.raises(Refusal,match='FUTURE_AFFECT_REF'):
+E       Failed: DID NOT RAISE Refusal
+
+.runtime/i2/test_i2_strict.py:106: Failed</failure></testcase><testcase classname=".runtime.i2.test_i2_strict" name="test_R03_same_objective_id_changed_payload_cannot_preserve_old_lineage" time="0.001"><failure message="Failed: DID NOT RAISE Refusal">def test_R03_same_objective_id_changed_payload_cannot_preserve_old_lineage():
+        sc,st=root();before=first(sc,st)
+        loss=sc.events[0]
+        new_loss=replace(loss,material=loss.material+('bicycle_found_undamaged',))
+        new_scene=replace(sc,events=(new_loss,)+sc.events[1:])
+        assert digest(asdict(loss)) != digest(asdict(new_loss))
+&gt;       with pytest.raises(Refusal,match='OBJECTIVE_EVENT_IDENTITY_COLLISION'):
+E       Failed: DID NOT RAISE Refusal
+
+.runtime/i2/test_i2_strict.py:116: Failed</failure></testcase><testcase classname=".runtime.i2.test_i2_strict" name="test_R04_NO_CHANGE_must_mean_no_durable_interpretation_update" time="0.002"><failure message="AssertionError: NO_CHANGE_STILL_APPENDS_DURABLE_LINEAGE&#10;assert 'b4eb25dbc80d...9abf89a3d8540' == '34e177f658c2...1a5599f709649'&#10;  &#10;  - 34e177f658c21bb8371330c37211b084c10366d295c071278e21a5599f709649&#10;  + b4eb25dbc80d2cdc4591213fdf6cd5464286c1d99a7e4af5d849abf89a3d8540">def test_R04_NO_CHANGE_must_mean_no_durable_interpretation_update():
+        sc,st=root();before=first(sc,st)
+        c=next(c for c in eligible(sc,before,'later') if c.mode=='NO_CHANGE')
+        proposal=propose(sc,before,'later',c.id)
+        after=append_test_only(sc,before,proposal,fixture_grant(proposal,'child'))
+&gt;       assert after.hash()==before.hash(), 'NO_CHANGE_STILL_APPENDS_DURABLE_LINEAGE'
+E       AssertionError: NO_CHANGE_STILL_APPENDS_DURABLE_LINEAGE
+E       assert 'b4eb25dbc80d...9abf89a3d8540' == '34e177f658c2...1a5599f709649'
+E         
+E         - 34e177f658c21bb8371330c37211b084c10366d295c071278e21a5599f709649
+E         + b4eb25dbc80d2cdc4591213fdf6cd5464286c1d99a7e4af5d849abf89a3d8540
+
+.runtime/i2/test_i2_strict.py:125: AssertionError</failure></testcase><testcase classname=".runtime.i2.test_i2_strict" name="test_R05_cosmetic_history_label_does_not_create_new_causal_route_identity" time="0.001"><failure message="AssertionError: COSMETIC_ACTIVITY_NAME_CHANGE_CREATES_NEW_CANDIDATE_ID&#10;assert {'f7dcaa7dfa78fb02c7ef'} == {'86b018b9f880adef099f'}&#10;  &#10;  Extra items in the left set:&#10;  'f7dcaa7dfa78fb02c7ef'&#10;  Extra items in the right set:&#10;  '86b018b9f880adef099f'&#10;  Use -v to get more diff">def test_R05_cosmetic_history_label_does_not_create_new_causal_route_identity():
+        sc,st=root();ch=sc.actors[0]
+        old=ch.history[0]; cosmetic=replace(old,activity='same work, spelling updated')
+        updated=replace(sc,actors=(replace(ch,history=(cosmetic,)+ch.history[1:]),)+sc.actors[1:])
+        a={c.id for c in eligible(sc,st,'loss') if c.mode=='PROCEDURAL_RECRUITMENT'}
+        b={c.id for c in eligible(updated,st,'loss') if c.mode=='PROCEDURAL_RECRUITMENT'}
+&gt;       assert a==b, 'COSMETIC_ACTIVITY_NAME_CHANGE_CREATES_NEW_CANDIDATE_ID'
+E       AssertionError: COSMETIC_ACTIVITY_NAME_CHANGE_CREATES_NEW_CANDIDATE_ID
+E       assert {'f7dcaa7dfa78fb02c7ef'} == {'86b018b9f880adef099f'}
+E         
+E         Extra items in the left set:
+E         'f7dcaa7dfa78fb02c7ef'
+E         Extra items in the right set:
+E         '86b018b9f880adef099f'
+E         Use -v to get more diff
+
+.runtime/i2/test_i2_strict.py:134: AssertionError</failure></testcase><testcase classname=".runtime.i2.test_i2_strict" name="test_R06_forged_witness_without_source_admission_cannot_create_route" time="0.001"><failure message="Failed: DID NOT RAISE Refusal">def test_R06_forged_witness_without_source_admission_cannot_create_route():
+        sc,st=root();ch=sc.actors[0]
+        fake=History('prior_forged_interaction','child',1,'fabricated history',True,True)
+        tampered=replace(sc,actors=(replace(ch,history=ch.history+(fake,)),)+sc.actors[1:])
+&gt;       with pytest.raises(Refusal,match='HISTORY_WITNESS_SOURCE_UNVERIFIED'):
+E       Failed: DID NOT RAISE Refusal
+
+.runtime/i2/test_i2_strict.py:141: Failed</failure></testcase><testcase classname=".runtime.i2.test_i2_strict" name="test_R07_nonsemantic_material_stereotype_cannot_be_minted_world_truth" time="0.001"><failure message="Failed: DID NOT RAISE Refusal">def test_R07_nonsemantic_material_stereotype_cannot_be_minted_world_truth():
+        sc,st=root();loss=sc.events[0]
+        bad=replace(sc,events=(replace(loss,material=loss.material+('stolen_by:group_X',)),)+sc.events[1:])
+&gt;       with pytest.raises(Refusal,match='MORAL_FACT_IN_EVENT'):
+E       Failed: DID NOT RAISE Refusal
+
+.runtime/i2/test_i2_strict.py:148: Failed</failure></testcase><testcase classname=".runtime.i2.test_i2_strict" name="test_R08_future_self_history_cannot_be_usable_as_prior_lineage_evidence" time="0.000" /><testcase classname=".runtime.i2.test_i2_strict" name="test_R09_later_own_new_utterance_requires_actual_speaker_opportunity" time="0.001"><failure message="Failed: DID NOT RAISE Refusal">def test_R09_later_own_new_utterance_requires_actual_speaker_opportunity():
+        sc,st=root();s=Speech('outsider_forged','loss','other_P',4,'All this was their group.','peer_group_blame')
+        child=sc.actors[0]
+        tampered=replace(sc,actors=(replace(child,access=child.access+(s.id,)),)+sc.actors[1:],speech=sc.speech+(s,))
+&gt;       with pytest.raises(Refusal,match='SPEAKER_ACTION_OR_ACCESS_UNVERIFIED'):
+E       Failed: DID NOT RAISE Refusal
+
+.runtime/i2/test_i2_strict.py:164: Failed</failure></testcase><testcase classname=".runtime.i2.test_i2_strict" name="test_R10_later_interpretation_requires_evidence_of_relevance_or_difference" time="0.001"><failure message="AssertionError: SIX_PSYCHOLOGICAL_REINTERPRETATIONS_WITHOUT_RELEVANCE_EVIDENCE&#10;assert {'CONTRADICT'...TRIBUTE', ...} == {'NO_CHANGE'}&#10;  &#10;  Extra items in the left set:&#10;  'DIFFERENTIATE'&#10;  'REINFORCE'&#10;  'REATTRIBUTE'&#10;  'CONTRADICT'&#10;  'GENERALIZE'&#10;  'NARROW'&#10;  Use -v to get more diff">def test_R10_later_interpretation_requires_evidence_of_relevance_or_difference():
+        sc,st=root();before=first(sc,st)
+        irrelevant=replace(sc.events[-1],material=('unrelated_work',),action='REFUSE')
+        changed=replace(sc,events=(sc.events[0],irrelevant))
+        choices=eligible(changed,before,'later')
+&gt;       assert {c.mode for c in choices}=={'NO_CHANGE'},'SIX_PSYCHOLOGICAL_REINTERPRETATIONS_WITHOUT_RELEVANCE_EVIDENCE'
+E       AssertionError: SIX_PSYCHOLOGICAL_REINTERPRETATIONS_WITHOUT_RELEVANCE_EVIDENCE
+E       assert {'CONTRADICT'...TRIBUTE', ...} == {'NO_CHANGE'}
+E         
+E         Extra items in the left set:
+E         'DIFFERENTIATE'
+E         'REINFORCE'
+E         'REATTRIBUTE'
+E         'CONTRADICT'
+E         'GENERALIZE'
+E         'NARROW'
+E         Use -v to get more diff
+
+.runtime/i2/test_i2_strict.py:173: AssertionError</failure></testcase></testsuite></testsuites>

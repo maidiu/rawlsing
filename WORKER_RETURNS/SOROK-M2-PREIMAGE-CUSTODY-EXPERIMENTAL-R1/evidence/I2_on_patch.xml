@@ -1,0 +1,159 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="10" skipped="0" tests="23" time="0.249" timestamp="2026-10-18T11:20:10.742077-04:00"><testcase classname=".runtime.i2.test_i2_strict" name="test_01_reproducible_witnesses_and_plural_without_compulsion" time="0.002"><failure message="AssertionError: assert ((Candidate(id...9dc40f5b994')) == (Candidate(id...9dc40f5b994'))&#10;  &#10;  Use -v to get more diff and 2 &gt;= 8)&#10; +  where 2 = len((Candidate(id='499c2491c12d558fb1c6', actor='child', event='loss', source=None, mode='NO_CHANGE', stance='SUSPEND', pa...UITMENT', stance='SUSPEND', parent=None, rule_hash='e9ca02617f2c19aebc4aa53d80be33aa63792048bfa52edfc7d1e9dc40f5b994')))">def test_01_reproducible_witnesses_and_plural_without_compulsion():
+        sc,st=root(); a=eligible(sc,st,'loss'); b=eligible(sc,st,'loss')
+&gt;       assert a==b and len(a)&gt;=8 and len({(x.source,x.stance) for x in a if x.source})&gt;=6
+E       AssertionError: assert ((Candidate(id...9dc40f5b994')) == (Candidate(id...9dc40f5b994'))
+E         
+E         Use -v to get more diff and 2 &gt;= 8)
+E        +  where 2 = len((Candidate(id='499c2491c12d558fb1c6', actor='child', event='loss', source=None, mode='NO_CHANGE', stance='SUSPEND', pa...UITMENT', stance='SUSPEND', parent=None, rule_hash='e9ca02617f2c19aebc4aa53d80be33aa63792048bfa52edfc7d1e9dc40f5b994')))
+
+.runtime/i2/test_i2_strict.py:22: AssertionError</failure></testcase><testcase classname=".runtime.i2.test_i2_strict" name="test_02_speaker_claim_not_objective_culprit" time="0.001" /><testcase classname=".runtime.i2.test_i2_strict" name="test_03_unheard_claim_not_eligible" time="0.001" /><testcase classname=".runtime.i2.test_i2_strict" name="test_04_same_child_accessible_history_parent_private_difference_cannot_auto_set_belief" time="0.002" /><testcase classname=".runtime.i2.test_i2_strict" name="test_05_prior_actual_history_changed_provenance_not_forced_psychology" time="0.002" /><testcase classname=".runtime.i2.test_i2_strict" name="test_06_original_event_immutable_with_same_scene_and_append" time="0.001"><failure message="StopIteration">def test_06_original_event_immutable_with_same_scene_and_append():
+&gt;       sc,st=root();origin=digest(asdict(sc.events[0]));st=first(sc,st)
+                                                            ^^^^^^^^^^^^
+
+.runtime/i2/test_i2_strict.py:50: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+scene = Scene(actors=(Actor(id='child', history=(History(id='prior_recognition', actor='child', time=1, activity='cooperative'...ory_id='later_observed_counterpart', observer='caregiver', time=9, issuer='M2_TEST_ONLY_OBSERVED_RELATION_CONTRAST'),))
+state = State(actor='child', lineage=(), procedure_refs=('old_watchful_habit',))
+
+    def first(scene,state):
+&gt;       c=next(c for c in eligible(scene,state,'loss') if c.source=='parent_said' and c.stance=='REJECT')
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       StopIteration
+
+.runtime/i2/test_i2_strict.py:14: StopIteration</failure></testcase><testcase classname=".runtime.i2.test_i2_strict" name="test_07_private_memory_not_manufactured" time="0.001"><failure message="StopIteration">def test_07_private_memory_not_manufactured():
+&gt;       sc,st=root();st=first(sc,st);assert st.lineage[0].actor_memory_access=='NOT_GRANTED'
+                        ^^^^^^^^^^^^
+
+.runtime/i2/test_i2_strict.py:59: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+scene = Scene(actors=(Actor(id='child', history=(History(id='prior_recognition', actor='child', time=1, activity='cooperative'...ory_id='later_observed_counterpart', observer='caregiver', time=9, issuer='M2_TEST_ONLY_OBSERVED_RELATION_CONTRAST'),))
+state = State(actor='child', lineage=(), procedure_refs=('old_watchful_habit',))
+
+    def first(scene,state):
+&gt;       c=next(c for c in eligible(scene,state,'loss') if c.source=='parent_said' and c.stance=='REJECT')
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       StopIteration
+
+.runtime/i2/test_i2_strict.py:14: StopIteration</failure></testcase><testcase classname=".runtime.i2.test_i2_strict" name="test_08_sibling_or_caregiver_history_not_borrowed_as_procedure" time="0.001" /><testcase classname=".runtime.i2.test_i2_strict" name="test_09_other_P_refusal_already_encoded_no_forced_response" time="0.001"><failure message="StopIteration">def test_09_other_P_refusal_already_encoded_no_forced_response():
+&gt;       sc,st=root(seed_scene(other_action='REFUSE'));st=first(sc,st)
+                                                         ^^^^^^^^^^^^
+
+.runtime/i2/test_i2_strict.py:68: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+scene = Scene(actors=(Actor(id='child', history=(History(id='prior_recognition', actor='child', time=1, activity='cooperative'...ory_id='later_observed_counterpart', observer='caregiver', time=9, issuer='M2_TEST_ONLY_OBSERVED_RELATION_CONTRAST'),))
+state = State(actor='child', lineage=(), procedure_refs=('old_watchful_habit',))
+
+    def first(scene,state):
+&gt;       c=next(c for c in eligible(scene,state,'loss') if c.source=='parent_said' and c.stance=='REJECT')
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       StopIteration
+
+.runtime/i2/test_i2_strict.py:14: StopIteration</failure></testcase><testcase classname=".runtime.i2.test_i2_strict" name="test_10_bad_model_payload_cannot_inject_owner_effect" time="0.001" /><testcase classname=".runtime.i2.test_i2_strict" name="test_11_permission_replay_before_hash_blocks_reuse" time="0.005"><failure message="Failed: DID NOT RAISE Refusal">def test_11_permission_replay_before_hash_blocks_reuse():
+        sc,st=root();c=eligible(sc,st,'loss')[0];p=propose(sc,st,'loss',c.id);g=fixture_grant(p,'child')
+        st2=append_test_only(sc,st,p,g)
+&gt;       with pytest.raises(Refusal,match='STALE_LINEAGE_STATE'):append_test_only(sc,st2,p,g)
+E       Failed: DID NOT RAISE Refusal
+
+.runtime/i2/test_i2_strict.py:82: Failed</failure></testcase><testcase classname=".runtime.i2.test_i2_strict" name="test_12_foreign_other_history_does_not_supply_P_project" time="0.001" /><testcase classname=".runtime.i2.test_i2_strict" name="test_13_demographics_no_direct_link" time="0.002" /><testcase classname=".runtime.i2.test_i2_strict" name="test_R01_future_speech_must_not_be_available_at_event_clock" time="0.001" /><testcase classname=".runtime.i2.test_i2_strict" name="test_R02_future_affect_must_not_be_retrospectively_referenced_as_current" time="0.002" /><testcase classname=".runtime.i2.test_i2_strict" name="test_R03_same_objective_id_changed_payload_cannot_preserve_old_lineage" time="0.002"><failure message="StopIteration">def test_R03_same_objective_id_changed_payload_cannot_preserve_old_lineage():
+&gt;       sc,st=root();before=first(sc,st)
+                            ^^^^^^^^^^^^
+
+.runtime/i2/test_i2_strict.py:111: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+scene = Scene(actors=(Actor(id='child', history=(History(id='prior_recognition', actor='child', time=1, activity='cooperative'...ory_id='later_observed_counterpart', observer='caregiver', time=9, issuer='M2_TEST_ONLY_OBSERVED_RELATION_CONTRAST'),))
+state = State(actor='child', lineage=(), procedure_refs=('old_watchful_habit',))
+
+    def first(scene,state):
+&gt;       c=next(c for c in eligible(scene,state,'loss') if c.source=='parent_said' and c.stance=='REJECT')
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       StopIteration
+
+.runtime/i2/test_i2_strict.py:14: StopIteration</failure></testcase><testcase classname=".runtime.i2.test_i2_strict" name="test_R04_NO_CHANGE_must_mean_no_durable_interpretation_update" time="0.001"><failure message="StopIteration">def test_R04_NO_CHANGE_must_mean_no_durable_interpretation_update():
+&gt;       sc,st=root();before=first(sc,st)
+                            ^^^^^^^^^^^^
+
+.runtime/i2/test_i2_strict.py:121: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+scene = Scene(actors=(Actor(id='child', history=(History(id='prior_recognition', actor='child', time=1, activity='cooperative'...ory_id='later_observed_counterpart', observer='caregiver', time=9, issuer='M2_TEST_ONLY_OBSERVED_RELATION_CONTRAST'),))
+state = State(actor='child', lineage=(), procedure_refs=('old_watchful_habit',))
+
+    def first(scene,state):
+&gt;       c=next(c for c in eligible(scene,state,'loss') if c.source=='parent_said' and c.stance=='REJECT')
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       StopIteration
+
+.runtime/i2/test_i2_strict.py:14: StopIteration</failure></testcase><testcase classname=".runtime.i2.test_i2_strict" name="test_R05_cosmetic_history_label_does_not_create_new_causal_route_identity" time="0.001"><failure message="kernel.Refusal: HISTORY_WITNESS_SOURCE_UNVERIFIED">def test_R05_cosmetic_history_label_does_not_create_new_causal_route_identity():
+        sc,st=root();ch=sc.actors[0]
+        old=ch.history[0]; cosmetic=replace(old,activity='same work, spelling updated')
+        updated=replace(sc,actors=(replace(ch,history=(cosmetic,)+ch.history[1:]),)+sc.actors[1:])
+        a={c.id for c in eligible(sc,st,'loss') if c.mode=='PROCEDURAL_RECRUITMENT'}
+&gt;       b={c.id for c in eligible(updated,st,'loss') if c.mode=='PROCEDURAL_RECRUITMENT'}
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.runtime/i2/test_i2_strict.py:133: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+m2_patch/kernel.py:299: in eligible
+    evs=validate(scene)
+        ^^^^^^^^^^^^^^^
+m2_patch/kernel.py:171: in validate
+    if h.witnessed: _history_source(scene,h)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^
+m2_patch/kernel.py:132: in _history_source
+    require(w.issuer==TEST_HISTORY_ISSUER and w.history_hash==digest(asdict(h))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+ok = False, reason = 'HISTORY_WITNESS_SOURCE_UNVERIFIED'
+
+    def require(ok, reason):
+&gt;       if not ok: raise Refusal(reason)
+                   ^^^^^^^^^^^^^^^^^^^^^
+E       kernel.Refusal: HISTORY_WITNESS_SOURCE_UNVERIFIED
+
+m2_patch/kernel.py:25: Refusal</failure></testcase><testcase classname=".runtime.i2.test_i2_strict" name="test_R06_forged_witness_without_source_admission_cannot_create_route" time="0.001" /><testcase classname=".runtime.i2.test_i2_strict" name="test_R07_nonsemantic_material_stereotype_cannot_be_minted_world_truth" time="0.001" /><testcase classname=".runtime.i2.test_i2_strict" name="test_R08_future_self_history_cannot_be_usable_as_prior_lineage_evidence" time="0.001"><failure message="kernel.Refusal: HISTORY_WITNESS_SOURCE_UNVERIFIED">def test_R08_future_self_history_cannot_be_usable_as_prior_lineage_evidence():
+        sc,st=root();ch=sc.actors[0]
+        future=replace(ch.history[0],time=99)
+        new=replace(sc,actors=(replace(ch,history=(future,)+ch.history[1:]),)+sc.actors[1:])
+&gt;       a=eligible(new,st,'loss')
+          ^^^^^^^^^^^^^^^^^^^^^^^
+
+.runtime/i2/test_i2_strict.py:156: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+m2_patch/kernel.py:299: in eligible
+    evs=validate(scene)
+        ^^^^^^^^^^^^^^^
+m2_patch/kernel.py:171: in validate
+    if h.witnessed: _history_source(scene,h)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^
+m2_patch/kernel.py:132: in _history_source
+    require(w.issuer==TEST_HISTORY_ISSUER and w.history_hash==digest(asdict(h))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+ok = False, reason = 'HISTORY_WITNESS_SOURCE_UNVERIFIED'
+
+    def require(ok, reason):
+&gt;       if not ok: raise Refusal(reason)
+                   ^^^^^^^^^^^^^^^^^^^^^
+E       kernel.Refusal: HISTORY_WITNESS_SOURCE_UNVERIFIED
+
+m2_patch/kernel.py:25: Refusal</failure></testcase><testcase classname=".runtime.i2.test_i2_strict" name="test_R09_later_own_new_utterance_requires_actual_speaker_opportunity" time="0.001" /><testcase classname=".runtime.i2.test_i2_strict" name="test_R10_later_interpretation_requires_evidence_of_relevance_or_difference" time="0.001"><failure message="StopIteration">def test_R10_later_interpretation_requires_evidence_of_relevance_or_difference():
+&gt;       sc,st=root();before=first(sc,st)
+                            ^^^^^^^^^^^^
+
+.runtime/i2/test_i2_strict.py:169: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+scene = Scene(actors=(Actor(id='child', history=(History(id='prior_recognition', actor='child', time=1, activity='cooperative'...ory_id='later_observed_counterpart', observer='caregiver', time=9, issuer='M2_TEST_ONLY_OBSERVED_RELATION_CONTRAST'),))
+state = State(actor='child', lineage=(), procedure_refs=('old_watchful_habit',))
+
+    def first(scene,state):
+&gt;       c=next(c for c in eligible(scene,state,'loss') if c.source=='parent_said' and c.stance=='REJECT')
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       StopIteration
+
+.runtime/i2/test_i2_strict.py:14: StopIteration</failure></testcase></testsuite></testsuites>

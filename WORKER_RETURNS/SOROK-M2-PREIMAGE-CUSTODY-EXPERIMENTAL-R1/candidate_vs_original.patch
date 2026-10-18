@@ -1,0 +1,116 @@
+--- exact_original_M2/kernel.py
++++ supplied_m2_patch/kernel.py
+@@ -5,9 +5,9 @@
+ import json
+ 
+ GRADE = 'TEST_ONLY_M1_SOURCE_TIME_REPAIR_CANDIDATE_PENDING_I2'
+-RULE = 'M2_INTERPRETATION_SOURCE_TEMPORAL_IDENTITY@0.2.0'
++RULE = 'M2_INTERPRETATION_SOURCE_TEMPORAL_IDENTITY@0.3.0_CANDIDATE'
+ RULE_CONTRACT = {'name':RULE,'clock':'no_future_read','history':'independent_fixture_witness',
+-                 'speech':'actual_action_plus_listener_exposure','lineage':'objective_content_hash',
++                 'speech':'actual_action_plus_listener_exposure','lineage':'objective_and_consumed_source_preimages',
+                  'outcome':'candidate_only','no_change':'unchanged_psychology_separate_audit'}
+ MODES = ('REATTRIBUTE','NARROW','GENERALIZE','REINFORCE','CONTRADICT','DIFFERENTIATE','NO_CHANGE')
+ STANCES = ('ACCEPT','REJECT','SUSPEND')
+@@ -91,6 +91,7 @@
+     retained_procedure_refs: tuple[str,...]; actor_memory_access: str
+     rule_hash: str; provenance_refs: tuple[str,...]
+     event_hash: str; original_event_id: str; original_event_hash: str
++    source_preimages: tuple[tuple[str,str,str], ...]
+     hash: str
+ 
+ @dataclass(frozen=True)
+@@ -199,6 +200,56 @@
+                 'SPEAKER_ACTION_OR_ACCESS_UNVERIFIED')
+     return evs
+ 
++def _source_preimages(scene, *, actor_id, event_id, source, procedure_refs,
++                      affect_ref, public_action_ref, evs):
++    """Snapshot precisely the source objects consumed by an interpretation.
++
++    Only non-objective, historical *read* dependencies go here. Objective
++    occurrence identities are pinned separately. Synthetic witness records are
++    not accepted ADP-owner or cryptographic signatures.
++    """
++    own=actor(scene,actor_id)
++    current=evs[event_id]
++    captured=[]
++    def add(kind, ref, obj):
++        captured.append((kind,ref,digest(asdict(obj))))
++    def history(ref, operation, kind):
++        matches=[h for h in own.history if h.id==ref and h.actor==actor_id]
++        require(len(matches)==1,'SOURCE_PREIMAGE_IDENTITY_COLLISION')
++        h=matches[0]
++        require(h.witnessed and h.time<=current.time,'SOURCE_PREIMAGE_IDENTITY_COLLISION')
++        w=_history_source(scene,h,operation)
++        add(kind,ref,h)
++        add(kind+'_WITNESS',ref,w)
++    for ref in procedure_refs:
++        history(ref,'PROCEDURAL_PRACTICE','PRACTICAL_HISTORY')
++    if affect_ref:
++        history(affect_ref,'AFFECT_EXPRESSION','AFFECT_HISTORY')
++    if public_action_ref:
++        history(public_action_ref,'PUBLIC_ACTION','PUBLIC_ACTION_HISTORY')
++    if source and source.startswith('history:'):
++        token=source.split(':',1)[1]
++        matches=[]
++        for h in own.history:
++            if not h.witnessed or h.time>=current.time:
++                continue
++            w=_history_source(scene,h)
++            if w.operation=='RELATIONAL_RECOGNITION' and digest([asdict(h),asdict(w)])==token:
++                matches.append((h,w))
++        require(len(matches)==1,'SOURCE_PREIMAGE_IDENTITY_COLLISION')
++        h,w=matches[0]
++        add('RELATIONAL_HISTORY',h.id,h)
++        add('RELATIONAL_HISTORY_WITNESS',h.id,w)
++    elif source:
++        messages=[z for z in scene.speech if z.id==source]
++        require(len(messages)==1,'SOURCE_PREIMAGE_IDENTITY_COLLISION')
++        utterance=messages[0]
++        action,exposure=_real_spoken_and_heard(scene,utterance,actor_id,current.time,evs)
++        add('HEARD_SPEECH',source,utterance)
++        add('SPEAKER_ACTION_RECEIPT',source,action)
++        add('LISTENER_EXPOSURE_RECEIPT',source,exposure)
++    return tuple(sorted(captured))
++
+ def _lineage_integrity(scene,state,evs):
+     for index,rec in enumerate(state.lineage):
+         data=asdict(rec);data.pop('hash')
+@@ -212,6 +263,13 @@
+                 and objective_event_hash(original)==rec.original_event_hash
+                 and objective_event_hash(event)==rec.event_hash,
+                 'OBJECTIVE_EVENT_IDENTITY_COLLISION')
++        try:
++            exact=_source_preimages(scene,actor_id=rec.actor,event_id=rec.event,
++                source=rec.source,procedure_refs=rec.retained_procedure_refs,
++                affect_ref=rec.affect_ref,public_action_ref=rec.public_action_ref,evs=evs)
++        except Refusal as exc:
++            raise Refusal('SOURCE_PREIMAGE_IDENTITY_COLLISION') from exc
++        require(exact==rec.source_preimages,'SOURCE_PREIMAGE_IDENTITY_COLLISION')
+         require(rec.actor_memory_access=='NOT_GRANTED','UNISSUED_ACTOR_MEMORY')
+ 
+ def _relevant(scene,state,e,evs):
+@@ -292,7 +350,11 @@
+         'candidate_hash':digest(asdict(selected)),'affect_ref':affect_ref,
+         'public_action_ref':public_action_ref,'state_before_hash':state.hash(),
+         'possible_owner_effect':'CAN011_OR_ADP016_017_UNISSUED',
+-        'no_actor_or_world_mutation':True}
++        'no_actor_or_world_mutation':True,
++        'source_preimages':_source_preimages(scene,actor_id=own.id,event_id=event_id,
++            source=selected.source,procedure_refs=state.procedure_refs,
++            affect_ref=affect_ref,public_action_ref=public_action_ref,
++            evs={e.id:e for e in scene.events})}
+ 
+ def fixture_grant(proposal,scope_actor):
+     require(proposal['actor']==scope_actor and proposal['grade']==GRADE,'GRANT_ACTOR_SCOPE_INVALID')
+@@ -330,7 +392,8 @@
+         provenance_refs=(proposal['event_hash'],proposal['original_event_hash'],
+                          proposal['candidate_hash'],grant['proposal_hash']),
+         event_hash=proposal['event_hash'],original_event_id=proposal['original_event_id'],
+-        original_event_hash=proposal['original_event_hash'])
++        original_event_hash=proposal['original_event_hash'],
++        source_preimages=proposal['source_preimages'])
+     rec=Interpretation(**fields,hash=digest(fields))
+     return replace(state,lineage=state.lineage+(rec,))
+ 
