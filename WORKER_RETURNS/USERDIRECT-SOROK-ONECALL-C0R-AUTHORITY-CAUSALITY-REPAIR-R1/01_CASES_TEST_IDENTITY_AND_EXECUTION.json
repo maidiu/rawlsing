@@ -1,0 +1,119 @@
+{
+  "schema": "C0R_SOURCEFREE_FALSIFICATION_SUMMARY@1",
+  "source_grade": "BOUNDED_MOCK_OWNER_ONLY",
+  "author_original": {
+    "source_sha256": "3f0da92095f8355c7512d49ac546c846b6026d3775533ba56be7e148e11abfa1",
+    "passed": 32,
+    "red": 0,
+    "executed": true
+  },
+  "independent_C0F_original": {
+    "phase_A_freeze": "1daad754b01a1a3b2f866cc4c47c2f800f63d451",
+    "preregistered": {
+      "pass": 22,
+      "red": 10
+    },
+    "distinct": {
+      "pass": 4,
+      "red": 8
+    },
+    "results_cited_not_rerun_on_local_exact_C0F_closure": true
+  },
+  "repaired": {
+    "source_sha256": "298ff2bdbf4f916049ae21167e238767d2da682f369820a29c7d5ffa1a5461f9",
+    "git_blob_sha1": "76bd3a6ea26fd72ef59816d62013fd694bf8e774",
+    "translated_independent_case_ids": [
+      "A01",
+      "A02",
+      "A03",
+      "A04",
+      "A05",
+      "A06",
+      "A07",
+      "A08",
+      "A09",
+      "A10",
+      "A11",
+      "A12",
+      "A13",
+      "A14",
+      "A15",
+      "A16",
+      "A17",
+      "A18",
+      "A19",
+      "A20",
+      "A21",
+      "A22",
+      "A23",
+      "A24",
+      "A25",
+      "A26",
+      "A27",
+      "A28",
+      "A29",
+      "A30",
+      "A31",
+      "A32",
+      "R32",
+      "R33",
+      "R34",
+      "R35",
+      "R36",
+      "R37",
+      "R38",
+      "R39",
+      "R40",
+      "R41",
+      "R42_REPAIRED_IDENTITY_NOT_ORIGINAL_R42",
+      "R43"
+    ],
+    "new_mutations": [
+      "M01_TOCTOU_SOURCE",
+      "M02_PARENT_REFUSED",
+      "M03_PARENT_COMMITTED",
+      "M04_PARENT_CYCLE",
+      "M05_RENDER_PRIVATE",
+      "M06_ALL_DENIED",
+      "M07_DUPLICATE_PRESTATE",
+      "M08_SUBANNUAL_REFUSAL",
+      "M09_OTHER_ACTOR",
+      "M10_PYTHON_OPTIMIZED_ISSUER"
+    ],
+    "passed": 54,
+    "red": 0,
+    "author_immutable": {
+      "pass": 31,
+      "red": 1,
+      "red_case": "R08_EXPECTS_NONCAUSAL_RELEVANCE_IN_CANONICAL_EVENT_HASH__CONTRADICTS_INDEPENDENT_R35"
+    },
+    "joint": {
+      "pass": 85,
+      "red": 1
+    }
+  },
+  "cold": {
+    "two_distinct_python_processes": true,
+    "outputs_identical_sha256": "1949122dd8761e9c742477b502f6a73b82dd98670408361b5002473b5581dbdf",
+    "normal_causal_receipt_hash": "94cfb5160b355d02f4d61aa29aa2d1719044532efb05b9d95e274e3500d22443",
+    "mock_mode_calls": {
+      "ONE_CALL": 3,
+      "TWO_CALL": 4,
+      "FIXED_PACKET": 0
+    }
+  },
+  "runtime": {
+    "python": "3.13.5",
+    "pytest": "9.0.2",
+    "subprocess": true,
+    "git": "2.47.3",
+    "checkout": "NOT_PRESENT_CONTAINER",
+    "native_B3_imported": false
+  },
+  "local_evidence_archive": {
+    "basename": "ONECALL_C0R_REPAIR_RUNNABLE_EVIDENCE.tar.gz",
+    "sha256": "ebbefa5b5e57f8bf46cfcef528358b026bb6d94215e281e08b216dc4e71368b0",
+    "bytes": 28982,
+    "uploaded_to_private_git_repo": false
+  }
+}
