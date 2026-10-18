@@ -1,0 +1,16 @@
+# Replay and proof limits
+
+Use Python 3.11 with pytest and the inherited pytest-subtests dependency. The working tree is a full private checkout; Git object alternates refer to the existing local shared store. No original data or external publisher/actor service is required. Two fresh interpreters are process independence at the same checkout, not a second provisioned machine or production restart/persistence proof.
+
+The ignored `runtime/candidate_checkout` is a separate full Git checkout, remote https://github.com/maidiu/rawlsing.git, detached exact f7824794bc6674c662734c9a8b110dd3df224be7. Reconstruct it with an authenticated full/filtered private clone and exact checkout. All 8,600 candidate tracked files and its complete declared source transport closure were present. Review source is pinned independently to immutable Git preimages, not only the author's hashes. `runtime/f6n` is an exact git-archive export of WORKER_RETURNS/PYAT-R29-F6N-INDEPENDENT-NATIVE-F6-COURT-R1 from 3ef97b0708e8ffd082ee4569b629554e5353fe27. Source inventories/hashes for both are retained in 02; outputs, logs, tests and reviewer scripts are committed under the owned return. Candidate owner code is not duplicated into this publication.
+
+From the review repository root:
+
+1. `python3 -B WORKER_RETURNS/PYAT-R33-WP2I-INDEPENDENT-NATIVE-WORLD-R1/repro/verify_and_run.py` verifies source closure, runs two cold interpreters, unchanged WP2 tests and all original selected owner suites, then the owner import probe.
+2. `python3 -B -m pytest -q WORKER_RETURNS/PYAT-R33-WP2I-INDEPENDENT-NATIVE-WORLD-R1/tests/test_independent_science.py --import-mode=importlib -p no:cacheprovider --junitxml=WORKER_RETURNS/PYAT-R33-WP2I-INDEPENDENT-NATIVE-WORLD-R1/04_ORIGINAL_NEW_REAL_JUNIT_COLD/independent_science.xml` runs the independent scientific checks.
+3. Run `repro/run_f6n.py diagnostics`, `repro/run_f6n.py frozen_n8` and `repro/run_f6n.py frozen_l26` with python3 -B and this return's path prefix. The last command deliberately returns failure for the two unchanged legacy assertions; do not patch or count them as passes. It preimports WP2's exact repaired producer before loading unchanged original tests.
+4. `python3 -B WORKER_RETURNS/PYAT-R33-WP2I-INDEPENDENT-NATIVE-WORLD-R1/repro/finalize.py` validates the selected JUnit accounting, immutable Python bytes and sourcefree evidence before writing the verdicts.
+
+Actual cold command argv/PID/cwd/exits are retained. Each owner's JUnit/log is fresh from this checkout; no author XML is copied as independent evidence. Candidate script run_suites.py writes its outputs within the ignored candidate checkout; fresh outputs are then copied into reviewer evidence. Generated native trace JSONs are separate from immutable test/code bytes. The initial reviewer assertion-placement failure is retained separately and excluded from the final selected summary. Every test grouping's XML is individually hashed.
+
+The Phase A oracle was frozen before candidate inspection; executable tests were subsequently implemented against its fixed falsifiers. No phase boundary authorizes model issuance, installation or a subsequent build phase. This is bounded test evidence and a non-granting acceptance motion, not an exhaustive security proof.

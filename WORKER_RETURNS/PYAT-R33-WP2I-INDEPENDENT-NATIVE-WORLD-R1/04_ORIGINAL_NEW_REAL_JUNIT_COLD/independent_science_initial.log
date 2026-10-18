@@ -1,0 +1,60 @@
+.....................FF......                                            [100%]
+=================================== FAILURES ===================================
+_ test_native_registry_permission_substitution_never_reuses_old_positive[GSS_RURAL_LIGHTING] _
+
+role = 'GSS_RURAL_LIGHTING'
+
+    @pytest.mark.parametrize('role',[W.GSS,W.NCA])
+    def test_native_registry_permission_substitution_never_reuses_old_positive(role):
+>    a,q,s,accept,r=W.execute();rows=W.rows();next(v for v in rows if v['role']==role)['permission']='FORGED_NEW_GRANT';a.registry=W.TestOnlyRegistry(rows)
+                                                                                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^
+
+WORKER_RETURNS/PYAT-R33-WP2I-INDEPENDENT-NATIVE-WORLD-R1/tests/test_independent_science.py:107: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+WORKER_RETURNS/PYAT-R33-WP2I-INDEPENDENT-NATIVE-WORLD-R1/runtime/candidate_checkout/WORKER_RETURNS/PYAT-R32-WP2-NATIVE-WORLD-POSSIBILITY-R1/selected/rawlsing_next/pre553_hq297_n9c_two_field_reader.py:111: in __init__
+    _check_source(row)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+row = {'exclusions': ['SECONDARY_HOUSING', 'VACANT_DWELLINGS'], 'family': 'GH_GSS_PHC_2021', 'fixture_only': True, 'issued': False, ...}
+
+    def _check_source(row: Mapping[str, Any]) -> None:
+        if row.get("fixture_only") is not True or row.get("issued") is not False:
+            raise TestOnlyReadError("FIELD_ISSUANCE_LAUNDERING")
+        if row.get("source_pdf_sha256") is not None or row.get("issuer_ref") is not None:
+            raise TestOnlyReadError("EXTERNAL_CUSTODY_OR_ISSUER_FORGERY")
+        if row.get("permission") != "TEST_ONLY_NO_EXTERNAL_USE_GRANT":
+>           raise TestOnlyReadError("REAL_USE_PERMISSION_NOT_ISSUED")
+E           rawlsing_next.pre553_hq297_n9c_two_field_reader.TestOnlyReadError: REAL_USE_PERMISSION_NOT_ISSUED
+
+WORKER_RETURNS/PYAT-R33-WP2I-INDEPENDENT-NATIVE-WORLD-R1/runtime/candidate_checkout/WORKER_RETURNS/PYAT-R32-WP2-NATIVE-WORLD-POSSIBILITY-R1/selected/rawlsing_next/pre553_hq297_n9c_two_field_reader.py:54: TestOnlyReadError
+_ test_native_registry_permission_substitution_never_reuses_old_positive[NCA_NATIONAL_MOBILE_DATA] _
+
+role = 'NCA_NATIONAL_MOBILE_DATA'
+
+    @pytest.mark.parametrize('role',[W.GSS,W.NCA])
+    def test_native_registry_permission_substitution_never_reuses_old_positive(role):
+>    a,q,s,accept,r=W.execute();rows=W.rows();next(v for v in rows if v['role']==role)['permission']='FORGED_NEW_GRANT';a.registry=W.TestOnlyRegistry(rows)
+                                                                                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^
+
+WORKER_RETURNS/PYAT-R33-WP2I-INDEPENDENT-NATIVE-WORLD-R1/tests/test_independent_science.py:107: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+WORKER_RETURNS/PYAT-R33-WP2I-INDEPENDENT-NATIVE-WORLD-R1/runtime/candidate_checkout/WORKER_RETURNS/PYAT-R32-WP2-NATIVE-WORLD-POSSIBILITY-R1/selected/rawlsing_next/pre553_hq297_n9c_two_field_reader.py:111: in __init__
+    _check_source(row)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+row = {'family': 'GH_NCA_LICENSEE_REPORTS_2021Q4', 'fixture_only': True, 'issued': False, 'issuer_ref': None, ...}
+
+    def _check_source(row: Mapping[str, Any]) -> None:
+        if row.get("fixture_only") is not True or row.get("issued") is not False:
+            raise TestOnlyReadError("FIELD_ISSUANCE_LAUNDERING")
+        if row.get("source_pdf_sha256") is not None or row.get("issuer_ref") is not None:
+            raise TestOnlyReadError("EXTERNAL_CUSTODY_OR_ISSUER_FORGERY")
+        if row.get("permission") != "TEST_ONLY_NO_EXTERNAL_USE_GRANT":
+>           raise TestOnlyReadError("REAL_USE_PERMISSION_NOT_ISSUED")
+E           rawlsing_next.pre553_hq297_n9c_two_field_reader.TestOnlyReadError: REAL_USE_PERMISSION_NOT_ISSUED
+
+WORKER_RETURNS/PYAT-R33-WP2I-INDEPENDENT-NATIVE-WORLD-R1/runtime/candidate_checkout/WORKER_RETURNS/PYAT-R32-WP2-NATIVE-WORLD-POSSIBILITY-R1/selected/rawlsing_next/pre553_hq297_n9c_two_field_reader.py:54: TestOnlyReadError
+=========================== short test summary info ============================
+FAILED WORKER_RETURNS/PYAT-R33-WP2I-INDEPENDENT-NATIVE-WORLD-R1/tests/test_independent_science.py::test_native_registry_permission_substitution_never_reuses_old_positive[GSS_RURAL_LIGHTING]
+FAILED WORKER_RETURNS/PYAT-R33-WP2I-INDEPENDENT-NATIVE-WORLD-R1/tests/test_independent_science.py::test_native_registry_permission_substitution_never_reuses_old_positive[NCA_NATIONAL_MOBILE_DATA]
+2 failed, 27 passed in 11.45s
