@@ -1,0 +1,52 @@
+{
+  "passport_schema": "SOROK_00D_R1",
+  "environment_id": "BROWSER_M2R2_I2_SOURCEFREE_R1",
+  "epoch_id": "RECONSTRUCTED_EPOCH_20261018_01",
+  "owner_session_alias": "fresh_i2_execution",
+  "surface": "BROWSER_CONTAINER",
+  "machine_alias": "ephemeral-isolated-container",
+  "status": "RECONSTRUCTED",
+  "python": {
+    "status": "VERIFIED",
+    "version": "3.13.5"
+  },
+  "pytest": {
+    "status": "VERIFIED",
+    "version": "9.0.2"
+  },
+  "git": {
+    "status": "VERIFIED",
+    "version": "2.47.3",
+    "private_repo_checkout": "NOT_ACCESSIBLE_DNS"
+  },
+  "filesystem_shell": "VERIFIED",
+  "node": "UNKNOWN",
+  "last_live_probe_at": null,
+  "runtime_marker_digest": "local-epoch-only-not-persisted",
+  "probe_command_and_result": "python -V; pytest --version; git --version; isolated filesystem and real subprocess: PASS; git ls-remote failed DNS",
+  "git_object_store_alias": null,
+  "worktree_alias": null,
+  "branch": "agent/reviewer-sorok-20261018-m2r2-sourcefree-i2-execution-r1",
+  "exact_checkout_base": null,
+  "synthetic_staged_target": "e8f375e9feae187e8a1add2343100ca05d9fffc4",
+  "dependency_closure_status": "BOUNDED",
+  "materialized_source_refs": "source hashes in 00_RETURN and original R2 source_refs.json; 8 exact ASCII source files checked",
+  "covered_test_suites": "see execution_summary.json and JUnit evidence.tar.gz",
+  "science_grade": "SOURCEFREE_INDEPENDENT_REVIEW_REVISE_NOT_OWNER_AUTHORITY",
+  "model_provider": "OpenAI",
+  "model_effort": "GPT-6 High user selected Browser",
+  "cash_known": null,
+  "quota_known": null,
+  "expected_reset": null,
+  "privacy_source_grant": "private GitHub connector; no original surveys or models",
+  "review_independence": "fresh reviewer distinct from R2 author",
+  "assignments_completed": [
+    "M2R2_I2_EXECUTION_R1"
+  ],
+  "next_good_affinity_tags": [
+    "M2_READSET",
+    "RELATION_ACTOR_IDENTITY",
+    "B3_ADAPTER"
+  ],
+  "staged_state_preservation": "repo evidence archive and isolated report; do not infer browser continuity"
+}
