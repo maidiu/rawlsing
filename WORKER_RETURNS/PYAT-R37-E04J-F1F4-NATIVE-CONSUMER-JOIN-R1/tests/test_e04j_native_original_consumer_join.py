@@ -17,10 +17,24 @@ RUNTIME = Path(__file__).resolve().parents[1] / "runtime"
 if str(RUNTIME) not in sys.path:
     sys.path.insert(0, str(RUNTIME))
 
+# The E03 owner is inherited from its own exact commit, not installed on
+# this base. Import the byte-identical test-local preimage without extending
+# production rawlsing_next or changing the owner implementation.
+import importlib.util
+import rawlsing_next
+
+_e03_file = RUNTIME / "aux" / "pre553_n9_n10w_progressive_candidate.py"
+_e03_name = "rawlsing_next.pre553_n9_n10w_progressive_candidate"
+_e03_spec = importlib.util.spec_from_file_location(_e03_name, _e03_file)
+assert _e03_spec is not None and _e03_spec.loader is not None
+original_rows = importlib.util.module_from_spec(_e03_spec)
+sys.modules[_e03_name] = original_rows
+setattr(rawlsing_next, "pre553_n9_n10w_progressive_candidate", original_rows)
+_e03_spec.loader.exec_module(original_rows)
+
 from product.service import GenericSelectedWorldService
 from product.nonparent import consume
 from product.scenario import evaluate
-from rawlsing_next import pre553_n9_n10w_progressive_candidate as original_rows
 
 
 def _consumer_read(*, same_marginals=False):
