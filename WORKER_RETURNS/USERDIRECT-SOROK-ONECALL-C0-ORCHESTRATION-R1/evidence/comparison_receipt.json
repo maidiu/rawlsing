@@ -1,0 +1,23 @@
+{
+  "schema": "ONECALL_C0_MODE_COMPARISON@1",
+  "grade": "BOUNDED_MOCK_OWNER_ONLY",
+  "normal": {
+    "causal_equal": true,
+    "model_invocations": {
+      "ONE_CALL": 3,
+      "TWO_CALL": 4,
+      "FIXED_PACKET": 0
+    },
+    "causal_receipt_sha256": "02318c3807c3fdff232b6dd6578a9bc2200141561db9edd6dbfcf0a4697ab1c8",
+    "preferred_mock_mode": "ONE_CALL"
+  },
+  "adversarial": {
+    "onecall_extra_rejected": "extra_fabricated_teacher",
+    "onecall_extra_rejection_reason": "NARRATIVE_INVENTION_IS_NOT_A_PREREQUISITE",
+    "causal_audit_equal": false,
+    "onecall_audit_hash": "5a5aa46ccadb01f5eee4c2541dbe234034847dd406d497e217e65d6faa0ca579",
+    "other_modes_audit_hash": "02318c3807c3fdff232b6dd6578a9bc2200141561db9edd6dbfcf0a4697ab1c8",
+    "selected_research_fallback": "TWO_CALL"
+  },
+  "caveat": "All modes use author-controlled deterministic mocks, no external model cost, speed or narrative quality study."
+}
