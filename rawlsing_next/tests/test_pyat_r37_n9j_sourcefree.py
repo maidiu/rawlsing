@@ -323,7 +323,10 @@ def test_15_effective_publication_and_asof_clocks_cannot_be_collapsed():
             for r in (not_published, newly_published, not_effective)] == [
                 (True, 2), (False, 8), (True, 2)]
     assert not_published["empirical_steps"] == newly_published["empirical_steps"]
-    assert not_published["native_field_readset"] == newly_published["native_field_readset"]
+    assert {k: v for k, v in not_published["native_field_readset"].items() if k != "as_of"} == {
+        k: v for k, v in newly_published["native_field_readset"].items() if k != "as_of"}
+    assert not_published["native_field_readset"]["as_of"] == "2027-05-31"
+    assert newly_published["native_field_readset"]["as_of"] == "2027-06-01"
     assert not_published["selection"]["valid_at"] == newly_published["selection"]["valid_at"]
     assert not_published["selection"]["published_asof"] != newly_published["selection"]["published_asof"]
 
