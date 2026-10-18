@@ -1,0 +1,81 @@
+{
+  "schema": "WP2I_PHASE_A@1",
+  "time": "2026-10-18T01:19:20.703210+00:00",
+  "launch": "ac8a11654a4192bf16485399c3a0be3eac555697",
+  "candidate": "f7824794bc6674c662734c9a8b110dd3df224be7",
+  "candidate_source_or_outputs_opened": false,
+  "basis": [
+    {
+      "commit": "f524f60781e2e7e72278d04d6377fb1da877698a",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261016-R14-E05S-INDEPENDENT-SELECTED-WORLD-R1/01_FROZEN_REQUEST_WORLD_NATIVE_ORACLE.json",
+      "sha256": "c3d78d7010974c7ebb6e6a76dc476c764fed3ccd1a217b84b0b856e4e113249d",
+      "blob": "0dd2d2b89cdf004fb8343a66fe6400f42626c770"
+    },
+    {
+      "commit": "3ef97b0708e8ffd082ee4569b629554e5353fe27",
+      "path": "WORKER_RETURNS/PYAT-R29-F6N-INDEPENDENT-NATIVE-F6-COURT-R1/02_PHASE_A/00_PREREGISTRATION.md",
+      "sha256": "fece7e74017a3991be4cbe4f01fa97f8597f9801dc7a4b12c41006d3179d3a64",
+      "blob": "28b329905fce0fec0b891cf5aa11a221f77d2415"
+    }
+  ],
+  "falsifiers": [
+    {
+      "id": "P01",
+      "expectation": "Exact native input universe and readset must bind original source/release/grant/owner; hash-identical closure and actual module paths"
+    },
+    {
+      "id": "P02",
+      "expectation": "Independent C1 recomputation Y|A=1 exact 18/32,10/16,6/8; opposite 11/26,6/12,4/6; reverse 18/29 distinct"
+    },
+    {
+      "id": "P03",
+      "expectation": "AT07 denominator depends on conditioner: 54/60 versus 54/62; no denominator laundering"
+    },
+    {
+      "id": "P04",
+      "expectation": "M4/M5 effective, publication and request-asof all bound; historical true/2 versus current false/8; late publication unavailable"
+    },
+    {
+      "id": "P05",
+      "expectation": "Late owner revocation and source-specific invalidation must propagate to two real original consumers"
+    },
+    {
+      "id": "P06",
+      "expectation": "NONPARENT_OPTIONS and finite proposal evaluator must read native values, not only labels or references"
+    },
+    {
+      "id": "P07",
+      "expectation": "F6M complete 26/31 versus 5/31 separately; missing/minority coverage gives intervals or typed incomplete, never complete renormalized estimate"
+    },
+    {
+      "id": "P08",
+      "expectation": "Label-only change preserves deterministic rule and empirical values; changed published structural rule changes eligibility/exit/proposal with empirical output fixed"
+    },
+    {
+      "id": "P09",
+      "expectation": "Empirical-only input change alters exact readset and values with same structural rule; isolated native source changes invalidate only dependencies"
+    },
+    {
+      "id": "P10",
+      "expectation": "Caller-forged world/root/grant must refuse; future actor knowledge never inferred from world knowledge"
+    },
+    {
+      "id": "P11",
+      "expectation": "F7 missing comparable wave, person knowledge and original authorization remain typed missing; F6 sidecar never fake common respondent"
+    },
+    {
+      "id": "P12",
+      "expectation": "route_probability null with NO_JOINT_EMPIRICAL_STRUCTURAL_ROUTE_MODEL; selection_weight null with NO_SCENARIO_SELECTION_MODEL_OR_ISSUER; Sorok UNINSTALLED"
+    },
+    {
+      "id": "P13",
+      "expectation": "Two genuinely separate cold processes with physical source imports; original E05/E05R/E05S/PE2/C1/N10E/M4/M5/F6 tests unchanged; count XML testcase events versus top-level tests explicitly"
+    },
+    {
+      "id": "P14",
+      "expectation": "GF1E/GF1H held; no original35, signed source/person/Field Forge grant, N11/N12/OC05/CAN008/V3/adoption permission"
+    }
+  ],
+  "discipline": "Candidate checkout and inspection only after this Phase A commit is pushed and directly read back. Independent tests remain separate; no editing original tests. Missing execution is UNVERIFIED, not PASS.",
+  "source_universe": "Pinned E05R/S native C1/N10E/M4/M5/E04/PE2 closure plus repaired F6M blob 2df811d76db258d98d89ffb43c830cb221ff9a7d; sourcefree only; GF1E/GF1H forbidden. Exact candidate transport universe will be checked against independent Git preimages before import."
+}
