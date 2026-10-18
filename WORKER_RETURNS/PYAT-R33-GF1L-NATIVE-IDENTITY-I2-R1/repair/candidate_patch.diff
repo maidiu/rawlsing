@@ -1,0 +1,55 @@
+diff --git a/WORKER_RETURNS/PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1/stage/WORKER_RETURNS/PYAT-R33-GF1K-CATEGORY-IDENTITY-REPAIR-R1/gf1_pair_support_consumer.py b/WORKER_RETURNS/PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1/repair/gf1_pair_support_consumer.py
+index bbbda32fa..3761730d9 100644
+--- a/WORKER_RETURNS/PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1/stage/WORKER_RETURNS/PYAT-R33-GF1K-CATEGORY-IDENTITY-REPAIR-R1/gf1_pair_support_consumer.py
++++ b/WORKER_RETURNS/PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1/repair/gf1_pair_support_consumer.py
+@@ -1,4 +1,4 @@
+-"""R33 GF1K — exact native category identity repair (on the GF1H integrity core).
++"""GF1L author repair — preserve native key identity at the result storage boundary.
+ 
+ `compute_pair_support_signature(relation) -> dict` reads an immutable
+ ``GenericNativePairRelation`` and COMPUTES a downstream support-signature value.
+@@ -26,7 +26,7 @@ from generic_native_pair_relation import (
+     semantic_hash,
+ )
+ 
+-REPAIR_VERSION = "GF1K_EXACT_NATIVE_CATEGORY_IDENTITY@1"
++REPAIR_VERSION = "GF1L_NATIVE_KEY_STORAGE_GUARD@1"
+ 
+ # The four lawful downstream separation classes.
+ SEPARATION_CLASSES = (
+@@ -91,6 +91,26 @@ def _distinct_native_pair(values: list[Any]) -> bool:
+     return len(values) == 2 and not _same_native(values[0], values[1])
+ 
+ 
++def _require_lossless_mapping_keys(values: list[Any]) -> None:
++    """Refuse domains the existing mapping/result serializer cannot preserve.
++
++    Strict row membership alone does not stop Python dict keys such as 0 and
++    False from merging. The inherited result serializer also sorts mapping
++    keys and encodes them as strings. Probe that same serializer, without
++    converting a category or changing the result schema. Unsupported key
++    combinations must be refused before support aggregation or classification.
++    """
++    probe = {value: None for value in values}
++    if len(probe) != len(values):
++        raise GenericNativePairError("native states collide as Python mapping keys")
++    key_identities = [semantic_hash({value: None}) for value in values]
++    if len(set(key_identities)) != len(values):
++        raise GenericNativePairError("native states collide in result key serialization")
++    # An individually serializable key can still be incompatible with another
++    # key during canonical sorting. The caller maps those errors to typed refusal.
++    semantic_hash(probe)
++
++
+ def _decode_profile(relation: GenericNativePairRelation):
+     """Check the full 2×2 conservation boundary before computing any science."""
+     eligible = _exact_count(relation.eligible_joint_risk_total, "eligible_joint_risk_total")
+@@ -104,6 +124,8 @@ def _decode_profile(relation: GenericNativePairRelation):
+     if (not _distinct_native_pair(condition_order)
+             or not _distinct_native_pair(target_order)):
+         raise GenericNativePairError("pair domains must each have two distinct typed states")
++    _require_lossless_mapping_keys(condition_order)
++    _require_lossless_mapping_keys(target_order)
+     denominators: dict = {}
+     counts: dict = {}
+     cell_states: dict = {}
