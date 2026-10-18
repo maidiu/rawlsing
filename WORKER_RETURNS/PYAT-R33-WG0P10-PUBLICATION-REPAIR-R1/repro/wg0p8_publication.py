@@ -139,7 +139,17 @@ def run_suites(names: list[str]) -> list[dict]:
     logdir.mkdir(exist_ok=True)
     env = dict(os.environ, PYTHONDONTWRITEBYTECODE="1", PYTEST_DISABLE_PLUGIN_AUTOLOAD="1",
                PYTHONPATH=os.pathsep.join([str(COURT / "bootstrap_p6"), str(COURT / "repro")]),
-               WG0O_WG0N_ROOT=str(ROOT / "reviewer_frozen" / "03_INHERITED" / "WG0N"))
+               WG0O_WG0N_ROOT=str(ROOT / "reviewer_frozen" / "03_INHERITED" / "WG0N"),
+               # D6 (WG0P10-discovered, not in the commissioned D1-D5 set):
+               # test_precommitted_phase_b.py requires the versioned adapter name
+               # via WG0L_PHASE_B_ADAPTER and refuses collection without it
+               # (PHASE_B_NOT_AUTHORIZED_WITHOUT_PUBLISHED_CANDIDATE_READ_CUT_AND_
+               # VERSIONED_ADAPTER). The candidate's own documented invocation in
+               # court/02_ACTUAL_EXECUTION_OR_TYPED_HOLD.json supplies both; the
+               # runner previously omitted them, so `run` could never reach
+               # mandatory236 in a clean checkout.
+               WG0L_PHASE_B_ADAPTER="phase_b_adapter_v1",
+               WG0M_RUN="phase_b_P5")
     results = []
     for name in names:
         if name not in SUITES:
