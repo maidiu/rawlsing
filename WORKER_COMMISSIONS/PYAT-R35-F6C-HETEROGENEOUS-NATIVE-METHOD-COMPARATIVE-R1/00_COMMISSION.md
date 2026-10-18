@@ -1,0 +1,22 @@
+# PYAT R35 F6C — REAL F6 comparative method × native consumer decision experiment
+
+REPOSITORY maidiu/rawlsing private. ROLE: independent bounded scientific-method experimenter/code executor, NOT HQ or inference/source or structural field issuer. Model recommendation GPT-6 MEDIUM on real full native Git/Python/pytest/subprocess Mac worktree, cheaper proven qualified coding executor permitted; High only for a material identification/method dispute. Branch agent/rabochii-pyat-r35-f6c-native-comparative-consumer-r1, verify sealed startup SHA by direct Git ref. Write only WORKER_RETURNS/PYAT-R35-F6C-NATIVE-COMPARATIVE-R1/.
+
+## Avoid repeated known F6B mistake
+Old F6B `c23fd5a4ffbfa4da089331c5ab05096e89a3c572` got HOLD because its startup did not contain the accepted F6 module, NOT because synthesis math was disproved. Stage PINNED exact real owners from their correct commits, verify Git blobs and import physical paths, not branch-local substitutions:
+- F6M candidate `agent/rabochii-pyat-r29-f6m-native-decision-admission-executable-repair-r1@5ed8e5389dd3510cf29a4947b04bd05901c8d213`, blob `2df811d76db258d98d89ffb43c830cb221ff9a7d`;
+- F6N independent `3ef97b0708e8ffd082ee4569b629554e5353fe27`;
+- S03F/S03FO original heterogeneous `pre553_heterogeneous_synthesis.py`, Git blob `182cc7970d7624f6614015f5a51d0602e1630d52` (reverify source).
+- WP2 native real owner-to-consumer author `f7824794bc6674c662734c9a8b110dd3df224be7` and independent WP2I `c1a91372ec6a81492055d7ef9b6932f9e9048273` (597 selected original tests + 32 independent, true testonly native sourcefree selected world).
+
+MISSION: Stop treating F6 as a documentation debate. Evaluate actual heterogeneous, separate-sample statistical *objects*, identify best method and make result move a real existing sourcefree world/empirical consumer without faking respondent overlap or calibrated actor behavior.
+
+PHASE A freeze mathematically independent cell/stratum/target/risk/unknown mass expected, one full coverage, one partial/missingness, one overlap-swap hostile and one nonidentifiable/positivity target; freeze before calling any candidate. Contrast A: inherited S03 `synthesize/conditional`, B: repaired F6M full/missing target with F6N controls, C: no-pool/no-identification baseline (bounds or null). Additional baseline from original V550/J can be inspected/reused where physically present; do not silently invent equivalent method. Assess sample frames, target meaning, design weighting, minority uncovered fraction, source geography/times, risk denominator, invariance, conditional bounds, dependence, variance, and prior-known false synthetic guarantees.
+
+PHASE B real execution of all above **true pinned imports** with cold separate processes, original-owner modules and independent counting oracle. Accept full explicit population conditional only where support/assumptions established; report proper [q,q+unknown] marginal bounds where not. Full absence of route/actor joint observation means route propensity unidentified; never substitute F6 26/31 or 1/8–5/8 as a generated person's actual life-route probability.
+
+Most important: carry one F6 answer (or justified partial/null) through WP2's actual C1/N10E selected-world read-only route to a named existing consumer *at precisely permitted F6 sidecar grade*, demonstrate consumer changed/not changed in response to source exclusion or method ambiguity with identical structural rules, and produce real value/no-value outputs with exact source and claim ceilings. Don't overwrite WP2 native graph or claim new owner integration if a sidecar comparison only.
+
+Scientifically rank whether to REUSE F6M, improve, or replace, with out-of-support hostile matrix and explicit current vs historical test exceptions. This is method evidence, not scientific issuer act.
+
+PERSISTENT worker may fix normal test/transport defects inside return. Preserve all independent historical fails, no test rewrite. Deliver 00_NATIVE_METHOD_COMPARATIVE_AND_CONSUMER_VERDICT.md; 01_FROZEN_ESTIMANDS_AND_INDEPENDENT_ORACLE.json; 02_EXACT_F6_OWNER_BLOB_IMPORTS_AND_CUSTODY.json; 03_EXECUTABLE_JUNIT_AND_TWO_COLD/; 04_REAL_CONSUMER_DELTA_AND_ALTERNATIVE_RANKING.json; 05_SPECIFIC_COMPETENT_SCIENCE_OWNER_MOTION.md. Report exact tested grades, original-vs-synthetic, no source/actor/N11/N12/V3 issuance.
