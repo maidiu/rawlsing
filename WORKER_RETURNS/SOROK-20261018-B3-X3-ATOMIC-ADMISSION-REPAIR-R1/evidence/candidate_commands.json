@@ -1,0 +1,49 @@
+[
+  {
+    "label": "f2_run",
+    "args": [
+      "python3",
+      "run_f2.py"
+    ],
+    "exit": 0
+  },
+  {
+    "label": "mutations",
+    "args": [
+      "python3",
+      "mutation_audit_b3.py"
+    ],
+    "exit": 0
+  },
+  {
+    "label": "loop",
+    "args": [
+      "python3",
+      "developmental_loop.py",
+      "evidence/loop"
+    ],
+    "exit": 0
+  },
+  {
+    "label": "positive_cold",
+    "args": [
+      "python3",
+      "developmental_loop.py",
+      "replay",
+      "evidence/loop/positive.json",
+      "<WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3-X3-ATOMIC-ADMISSION-REPAIR-R1/candidate/evidence/loop/positive_cold.sqlite"
+    ],
+    "exit": 0
+  },
+  {
+    "label": "permission_absent_cold",
+    "args": [
+      "python3",
+      "developmental_loop.py",
+      "replay",
+      "evidence/loop/permission_absent.json",
+      "<WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3-X3-ATOMIC-ADMISSION-REPAIR-R1/candidate/evidence/loop/permission_absent_cold.sqlite"
+    ],
+    "exit": 0
+  }
+]
