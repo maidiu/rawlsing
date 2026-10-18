@@ -1,0 +1,42 @@
+{
+  "schema": "SOROK_M2_R4_USER_DIRECT_SOURCE_REFS_R1",
+  "branch": "agent/rabochii-sorok-20261018-m2r4-rule-witness-repair-userdirect-r1",
+  "base_commit": "9c1ab2fa172e41c7fb033b5f134b25255d65126c",
+  "base_nature": "USER_DIRECTED_IMPLEMENTATION__NOT_HQ_ISSUED_SEAL",
+  "review_r3": {
+    "commit": "a4129eaf652b49a5ba629de32e2b7b0abd60d443",
+    "path": "WORKER_RETURNS/SOROK-20261018-M2R3-FRESH-INDEPENDENT-I2-R1",
+    "new_I2_6_sha256": "b9c01d20fe6b2d771246fd7b1b36671b9dbda8bddae062fd6c96df8196c471de"
+  },
+  "r3_kernel": {
+    "commit": "9c1ab2fa172e41c7fb033b5f134b25255d65126c",
+    "path": "WORKER_RETURNS/SOROK-M2-R3-COUNTERPART-OWNER-REPAIR-USERDIRECT-R1/candidate/kernel.py",
+    "sha256": "838d0852e6b1b28bb733b1eda580b3dc53f5db3d47e3a0caefbd3072022ad45a",
+    "git_blob_sha1": "645308250f54133c1f9d707a5851f689942f18ba"
+  },
+  "r4_kernel": {
+    "path": "WORKER_RETURNS/SOROK-M2-R4-RULE-WITNESS-REPAIR-USERDIRECT-R1/candidate/kernel.py",
+    "sha256": "5b8ac91ca8b3b9afb068493f2a1d6c2dabdc650814ff5f099f0e670d09823940",
+    "git_blob_sha1": "045331889e922274ba0a31bb78d4b110aaba06a1",
+    "RULE": "M2_INTERPRETATION_SOURCE_TEMPORAL_IDENTITY@0.4.2_CANDIDATE"
+  },
+  "r4_hostile_tests": {
+    "path": "WORKER_RETURNS/SOROK-M2-R4-RULE-WITNESS-REPAIR-USERDIRECT-R1/test_r4_owner_rule_hostile.py",
+    "sha256": "b62b841042da187637799952be30164b3ea83f3b453169bb901372227453e28d",
+    "git_blob_sha1": "85fa5794663a9217ec9a3dabec170d076e670f9c"
+  },
+  "r2": {
+    "commit": "e8f375e9feae187e8a1add2343100ca05d9fffc4",
+    "root": "WORKER_RETURNS/SOROK-M2-RELATION-PREIMAGE-REPAIR-R2",
+    "kernel_sha256": "88bb8c65dfd88efd1843f16e1bb6d51e1fa01a0dc1fdccb13e03a9b2b394d8d3"
+  },
+  "prior_fresh_i2": {
+    "commit": "e8b2d6be5ba243729f387cda4048cc30a52664d2",
+    "path": "WORKER_RETURNS/SOROK-20261018-M2R2-FRESH-I2-EXECUTION-R1/test_heldout_actor_independence.py"
+  },
+  "historical_m3": {
+    "source_commit": "49dfcb30971310756a12f659961600d9f2eb4a11",
+    "frozen_test_staged_from": "e8f375e9feae187e8a1add2343100ca05d9fffc4"
+  },
+  "native_ADP_CAN_grants": "NONE"
+}
