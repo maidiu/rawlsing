@@ -1,0 +1,60 @@
+{
+  "passport_schema": "R1",
+  "environment_id": "8d8ddce8a4abf9e9",
+  "epoch_id": "fa09af513c3e46e3903b60a0c082d4fc",
+  "owner_session_alias": "E3-independent",
+  "surface": "LOCAL_SHARED_STORE",
+  "machine_alias": "oldMac-user-reported",
+  "status": "LIVE_VERIFIED",
+  "runtime_marker_digest": "8d8ddce8a4abf9e9adf8be3eaa737b4b5a81747d062dabeaa4fff6e26c18cda7",
+  "python": "3.11.3",
+  "pytest": "pytest 9.1.1",
+  "sqlite": "3.40.1",
+  "node": "v18.14.2",
+  "git": "git version 2.39.1",
+  "git_object_store_alias": "existing-shared-store",
+  "worktree_alias": "E3-review",
+  "branch": "agent/reviewer-sorok-v2-hq329-e3-legacy-reentry-independent-r1",
+  "checkout_base": "ccc84471c27b6dbe3ff1040dcaf78a3070746e99",
+  "materialized_source_refs": "evidence/{old,fixed}/source_manifest.json",
+  "covered_test_suites": "evidence/commands.json",
+  "dependency_closure_status": "BOUNDED",
+  "science_grade": "sourcefree prototype",
+  "model_provider": "OpenAI Codex",
+  "model_effort": "user requested GPT-6 Medium; runtime selection not independently inspectable",
+  "cash_known": null,
+  "quota_known": null,
+  "independence": "No candidate authorship in this review",
+  "privacy_source_grant": "Commission synthetic fixtures only",
+  "staged_state_preservation": "local .runtime ignored; recheck marker on resume",
+  "assignments_completed": [
+    "E3"
+  ],
+  "next_good_affinity_tags": [
+    "OCCURRENCE",
+    "SQLITE_CUSTODY"
+  ],
+  "last_live_probe_at": "2026-10-18T03:48:16.895497+00:00",
+  "probe_command_and_result": "python3 run_review.py and audit_review.py: success; local runtime marker verified",
+  "conversation_or_account_affinity": "current E3 session",
+  "filesystem_shell": {
+    "filesystem": "VERIFIED",
+    "shell": "zsh",
+    "subprocess": "VERIFIED",
+    "sqlite_lock": "VERIFIED"
+  },
+  "capabilities": {
+    "python": "VERIFIED",
+    "pytest": "VERIFIED",
+    "git": "VERIFIED",
+    "node": "VERIFIED",
+    "remote_read_write": "read VERIFIED; authenticated push available, verification follows publication"
+  },
+  "actual_loaded_modules": "evidence/{old,fixed}/loaded_modules.json",
+  "fixture_query_source_permission": "commission synthetic sourcefree fixtures",
+  "retire_or_rebuild_reason": null,
+  "estimated_total_evidence_cost": null,
+  "usage_reset": null,
+  "retries": 1,
+  "authority_ceiling": "independent synthetic B2 ingress acceptance only"
+}

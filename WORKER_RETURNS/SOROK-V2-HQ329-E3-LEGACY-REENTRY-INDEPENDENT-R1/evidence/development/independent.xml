@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="23" time="4.268" timestamp="2026-10-17T23:46:16.119930-04:00"><testcase classname="test_independent" name="test_same_id_conflict_committed_history_is_preserved[before-False]" time="0.015" /><testcase classname="test_independent" name="test_same_id_conflict_committed_history_is_preserved[before-True]" time="0.012" /><testcase classname="test_independent" name="test_same_id_conflict_committed_history_is_preserved[after-False]" time="0.082" /><testcase classname="test_independent" name="test_same_id_conflict_committed_history_is_preserved[after-True]" time="0.089" /><testcase classname="test_independent" name="test_exact_b1_duplicate_then_foreign_duplicate[False]" time="0.296" /><testcase classname="test_independent" name="test_exact_b1_duplicate_then_foreign_duplicate[True]" time="0.088" /><testcase classname="test_independent" name="test_closed_registrar_rejects_forged_provenance[False-issuer]" time="0.012" /><testcase classname="test_independent" name="test_closed_registrar_rejects_forged_provenance[False-world_ref]" time="0.012" /><testcase classname="test_independent" name="test_closed_registrar_rejects_forged_provenance[False-expected_actor_state_hash]" time="0.012" /><testcase classname="test_independent" name="test_closed_registrar_rejects_forged_provenance[False-other_actions]" time="0.012" /><testcase classname="test_independent" name="test_closed_registrar_rejects_forged_provenance[True-issuer]" time="0.086" /><testcase classname="test_independent" name="test_closed_registrar_rejects_forged_provenance[True-world_ref]" time="0.082" /><testcase classname="test_independent" name="test_closed_registrar_rejects_forged_provenance[True-expected_actor_state_hash]" time="0.087" /><testcase classname="test_independent" name="test_closed_registrar_rejects_forged_provenance[True-other_actions]" time="0.095" /><testcase classname="test_independent" name="test_replay_cannot_extend_complete_readset[packet]" time="0.081" /><testcase classname="test_independent" name="test_replay_cannot_extend_complete_readset[context]" time="0.092" /><testcase classname="test_independent" name="test_replay_cannot_extend_complete_readset[policy]" time="0.086"><failure message="AssertionError: assert ('DEFERRED' == 'DENIED'&#10;  &#10;  - DENIED&#10;  + DEFERRED)">tmp_path = PosixPath('&lt;TEMP&gt;')
+part = 'policy'
+
+    @pytest.mark.parametrize('part',['packet','context','policy'])
+    def test_replay_cannot_extend_complete_readset(tmp_path,part):
+     b,v=make(tmp_path);advance(b,v);before=snapshot(b)
+     v[part]['e3_added_readset']={'parent':'UNWITNESSED'}
+     key={'packet':'proposal_hash','context':'context_hash','policy':'policy_hash'}[part];v[part]=m.rehash(v[part],key)
+&gt;    r=advance(b,v);denied(r);assert snapshot(b)==before
+                    ^^^^^^^^^
+
+../../test_independent.py:76: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+r = {'schema': 'B2_VERTICAL_RECEIPT@1', 'rule': 'B2_SYNTHETIC_WITNESSED_INGRESS@1', 'eligibility': {'decision': 'ADMIT', '...93c5', ...}, 'selection': {'decision': 'DEFER', 'reason': 'SELECTION_POLICY_SCHEMA_MISSING', 'consumption': None}, ...}
+
+    def denied(r):
+&gt;    assert r['status']=='DENIED' and r['event_admission']=='NOT_PERFORMED' and not r['b1_invoked']
+E    AssertionError: assert ('DEFERRED' == 'DENIED'
+E      
+E      - DENIED
+E      + DEFERRED)
+
+../../test_independent.py:24: AssertionError</failure></testcase><testcase classname="test_independent" name="test_unmapped_stale_checkpoint_cannot_create_occurrence" time="0.011" /><testcase classname="test_independent" name="test_two_cold_ingress_writers_wait_for_privileged_b1_commit[False]" time="0.618" /><testcase classname="test_independent" name="test_two_cold_ingress_writers_wait_for_privileged_b1_commit[True]" time="0.616" /><testcase classname="test_independent" name="test_rolled_back_privileged_writer_does_not_poison_reentry" time="0.576"><failure message="json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)">tmp_path = PosixPath('&lt;TEMP&gt;')
+
+    def test_rolled_back_privileged_writer_does_not_poison_reentry(tmp_path):
+     b,v=make(tmp_path);advance(b,v);before=snapshot(b);p,ready=start(tmp_path,v,0)
+     b.store.db.execute('BEGIN IMMEDIATE');b.store.admit_fixture(m.b1.episode(label='E3_ABORTED_BYPASS'));release(p)
+     assert select.select([p.stdout],[],[],15)[0];assert p.stdout.readline().strip()=='LOCK_REQUEST'
+     assert not select.select([p.stdout],[],[],0.15)[0];b.store.db.execute('ROLLBACK')
+&gt;    out,err=p.communicate(timeout=30);assert p.returncode==0,err;r=json.loads(out)
+                                                                    ^^^^^^^^^^^^^^^
+
+../../test_independent.py:109: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/__init__.py:346: in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/decoder.py:337: in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;json.decoder.JSONDecoder object at 0x100f1a8d0&gt;
+s = 'LOCK_REQUEST\n{"receipt": {"schema": "B2_VERTICAL_RECEIPT@1", "rule": "B2_SYNTHETIC_WITNESSED_INGRESS@1", "eligibilit...y FROM checkpoint WHERE id=1"], "module_sha256": "9c112a7984b0581e965394983acf0e38064847083b78096e2d8215b48932250f"}\n'
+idx = 0
+
+    def raw_decode(self, s, idx=0):
+        """Decode a JSON document from ``s`` (a ``str`` beginning with
+        a JSON document) and return a 2-tuple of the Python
+        representation and the index in ``s`` where the document ended.
+    
+        This can be used to decode a JSON document from a string that may
+        have extraneous data at the end.
+    
+        """
+        try:
+            obj, end = self.scan_once(s, idx)
+        except StopIteration as err:
+&gt;           raise JSONDecodeError("Expecting value", s, err.value) from None
+E           json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/decoder.py:355: JSONDecodeError</failure></testcase><testcase classname="test_independent" name="test_cold_mapped_replay_refuses_pollution_without_rewriting_response" time="0.190" /><testcase classname="test_independent" name="test_scan_cost_and_query_plan_are_bounded_measurements" time="0.875" /></testsuite></testsuites>

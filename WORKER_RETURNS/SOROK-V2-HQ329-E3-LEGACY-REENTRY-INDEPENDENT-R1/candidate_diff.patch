@@ -1,0 +1,29 @@
+diff --git a/WORKER_RETURNS/SOROK-V2-HQ325-B2-FOUR_RETURN_INTEGRATION-R1/bridge.py b/WORKER_RETURNS/SOROK-V2-HQ325-B2-FOUR_RETURN_INTEGRATION-R1/bridge.py
+index 7245046bc..ca27e715f 100644
+--- a/WORKER_RETURNS/SOROK-V2-HQ325-B2-FOUR_RETURN_INTEGRATION-R1/bridge.py
++++ b/WORKER_RETURNS/SOROK-V2-HQ325-B2-FOUR_RETURN_INTEGRATION-R1/bridge.py
+@@ -214,8 +214,14 @@ class Bridge:
+         identity=self.store.db.execute(
+             'SELECT binding,event_ref,ingress_ref FROM b2_event_identity WHERE event_id=?',
+             (event_id,)).fetchone()
++        # Direct B1 writes can precede or follow this registrar's mapping. Recheck
++        # the complete ID under the writer lock, including before replay returns.
++        occurrences=[row for row in self.store.db.execute('SELECT hash,body FROM occurrence')
++                     if json.loads(row[1])['event_id']==event_id]
+         if identity is not None:
+             if identity[0]!=binding:return stop('EVENT_IDENTITY_CONFLICT')
++            if len(occurrences)!=1 or occurrences[0][0]!=identity[1]:
++                return stop('EVENT_IDENTITY_LEDGER_INTEGRITY_FAILURE')
+             event_row=self.store.db.execute('SELECT body FROM occurrence WHERE hash=?',(identity[1],)).fetchone()
+             ingress_row=self.store.db.execute('SELECT body FROM b2_ingress WHERE id=?',(identity[2],)).fetchone()
+             if (not event_row or not ingress_row
+@@ -235,8 +241,7 @@ class Bridge:
+                 # Retain the existing response stale-state reason; admission is
+                 # idempotent while response rebinding is still forbidden.
+                 return stop('WITNESS_BINDING_OR_STALE_STATE','ALREADY_ADMITTED')
+-        elif any(json.loads(row[0])['event_id']==event_id for row in
+-                 self.store.db.execute('SELECT body FROM occurrence')):
++        elif occurrences:
+             # No retrospective provenance invention for old/direct B1 admissions.
+             return stop('EVENT_IDENTITY_UNBOUND_LEGACY')
+         child_history=context['histories'].get('H-CHILD-1',{})

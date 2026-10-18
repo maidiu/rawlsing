@@ -1,0 +1,74 @@
+................F...F..                                                  [100%]
+=================================== FAILURES ===================================
+______________ test_replay_cannot_extend_complete_readset[policy] ______________
+
+tmp_path = PosixPath('<TEMP>')
+part = 'policy'
+
+    @pytest.mark.parametrize('part',['packet','context','policy'])
+    def test_replay_cannot_extend_complete_readset(tmp_path,part):
+     b,v=make(tmp_path);advance(b,v);before=snapshot(b)
+     v[part]['e3_added_readset']={'parent':'UNWITNESSED'}
+     key={'packet':'proposal_hash','context':'context_hash','policy':'policy_hash'}[part];v[part]=m.rehash(v[part],key)
+>    r=advance(b,v);denied(r);assert snapshot(b)==before
+                    ^^^^^^^^^
+
+../../test_independent.py:76: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+r = {'schema': 'B2_VERTICAL_RECEIPT@1', 'rule': 'B2_SYNTHETIC_WITNESSED_INGRESS@1', 'eligibility': {'decision': 'ADMIT', '...93c5', ...}, 'selection': {'decision': 'DEFER', 'reason': 'SELECTION_POLICY_SCHEMA_MISSING', 'consumption': None}, ...}
+
+    def denied(r):
+>    assert r['status']=='DENIED' and r['event_admission']=='NOT_PERFORMED' and not r['b1_invoked']
+E    AssertionError: assert ('DEFERRED' == 'DENIED'
+E      
+E      - DENIED
+E      + DEFERRED)
+
+../../test_independent.py:24: AssertionError
+__________ test_rolled_back_privileged_writer_does_not_poison_reentry __________
+
+tmp_path = PosixPath('<TEMP>')
+
+    def test_rolled_back_privileged_writer_does_not_poison_reentry(tmp_path):
+     b,v=make(tmp_path);advance(b,v);before=snapshot(b);p,ready=start(tmp_path,v,0)
+     b.store.db.execute('BEGIN IMMEDIATE');b.store.admit_fixture(m.b1.episode(label='E3_ABORTED_BYPASS'));release(p)
+     assert select.select([p.stdout],[],[],15)[0];assert p.stdout.readline().strip()=='LOCK_REQUEST'
+     assert not select.select([p.stdout],[],[],0.15)[0];b.store.db.execute('ROLLBACK')
+>    out,err=p.communicate(timeout=30);assert p.returncode==0,err;r=json.loads(out)
+                                                                    ^^^^^^^^^^^^^^^
+
+../../test_independent.py:109: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/__init__.py:346: in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/decoder.py:337: in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <json.decoder.JSONDecoder object at 0x100f1a8d0>
+s = 'LOCK_REQUEST\n{"receipt": {"schema": "B2_VERTICAL_RECEIPT@1", "rule": "B2_SYNTHETIC_WITNESSED_INGRESS@1", "eligibilit...y FROM checkpoint WHERE id=1"], "module_sha256": "9c112a7984b0581e965394983acf0e38064847083b78096e2d8215b48932250f"}\n'
+idx = 0
+
+    def raw_decode(self, s, idx=0):
+        """Decode a JSON document from ``s`` (a ``str`` beginning with
+        a JSON document) and return a 2-tuple of the Python
+        representation and the index in ``s`` where the document ended.
+    
+        This can be used to decode a JSON document from a string that may
+        have extraneous data at the end.
+    
+        """
+        try:
+            obj, end = self.scan_once(s, idx)
+        except StopIteration as err:
+>           raise JSONDecodeError("Expecting value", s, err.value) from None
+E           json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/decoder.py:355: JSONDecodeError
+=========================== short test summary info ============================
+FAILED ../../test_independent.py::test_replay_cannot_extend_complete_readset[policy]
+FAILED ../../test_independent.py::test_rolled_back_privileged_writer_does_not_poison_reentry
+2 failed, 21 passed in 4.29s

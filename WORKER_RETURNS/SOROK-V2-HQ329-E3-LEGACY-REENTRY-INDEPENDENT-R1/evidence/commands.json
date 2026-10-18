@@ -1,0 +1,175 @@
+[
+  {
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "<E3>/.runtime/tests_after/E2/test_e2.py",
+      "-k",
+      "legacy_after_mapping_must_fail_closed_at_b2_reentry",
+      "--junitxml=<E3>/evidence/old/strict.xml"
+    ],
+    "cwd": "<E3>/.runtime/old",
+    "label": "old/strict",
+    "exit": 1,
+    "expected_exit": 1,
+    "seconds": 0.6616466189734638
+  },
+  {
+    "command": [
+      "/usr/local/bin/python3",
+      "run_courts.py"
+    ],
+    "cwd": "<E3>/.runtime/old",
+    "label": "old/inherited",
+    "exit": 0,
+    "expected_exit": 0,
+    "seconds": 8.447637924924493
+  },
+  {
+    "command": [
+      "/usr/local/bin/python3",
+      "<E3>/.runtime/tests_after/E2/runtime_probe.py",
+      "<E3>/evidence/old/loaded_modules.json"
+    ],
+    "cwd": "<E3>/.runtime/old",
+    "label": "old/loaded_modules",
+    "exit": 0,
+    "expected_exit": 0,
+    "seconds": 0.24053389206528664
+  },
+  {
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "<E3>/.runtime/tests_after/E2/test_e2.py",
+      "-k",
+      "legacy_after_mapping_must_fail_closed_at_b2_reentry",
+      "--junitxml=<E3>/evidence/fixed/strict.xml"
+    ],
+    "cwd": "<E3>/.runtime/fixed",
+    "label": "fixed/strict",
+    "exit": 0,
+    "expected_exit": 0,
+    "seconds": 0.5604205399286002
+  },
+  {
+    "command": [
+      "/usr/local/bin/python3",
+      "run_courts.py"
+    ],
+    "cwd": "<E3>/.runtime/fixed",
+    "label": "fixed/inherited",
+    "exit": 0,
+    "expected_exit": 0,
+    "seconds": 8.45668346597813
+  },
+  {
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "<E3>/.runtime/tests_after/R1/test_identity.py",
+      "--junitxml=<E3>/evidence/fixed/r1.xml"
+    ],
+    "cwd": "<E3>/.runtime/fixed",
+    "label": "fixed/r1",
+    "exit": 0,
+    "expected_exit": 0,
+    "seconds": 7.132372525054961
+  },
+  {
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "<E3>/.runtime/tests_after/E2/test_e2.py",
+      "--junitxml=<E3>/evidence/fixed/e2_full.xml"
+    ],
+    "cwd": "<E3>/.runtime/fixed",
+    "label": "fixed/e2_full",
+    "exit": 1,
+    "expected_exit": 1,
+    "seconds": 7.3336661900393665
+  },
+  {
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "<E3>/.runtime/tests_after/R1/frozen/test_hostile_x2.py",
+      "--junitxml=<E3>/evidence/fixed/x2.xml"
+    ],
+    "cwd": "<E3>/.runtime/fixed",
+    "label": "fixed/x2",
+    "exit": 1,
+    "expected_exit": 1,
+    "seconds": 1.4121956250164658
+  },
+  {
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "<E3>/.runtime/repair/test_regression.py",
+      "--junitxml=<E3>/evidence/fixed/repair5.xml"
+    ],
+    "cwd": "<E3>/.runtime/fixed",
+    "label": "fixed/repair5",
+    "exit": 0,
+    "expected_exit": 0,
+    "seconds": 1.2127952759619802
+  },
+  {
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "<E3>/test_independent.py",
+      "--junitxml=<E3>/evidence/fixed/independent.xml"
+    ],
+    "cwd": "<E3>/.runtime/fixed",
+    "label": "fixed/independent",
+    "exit": 0,
+    "expected_exit": 0,
+    "seconds": 4.418416155036539
+  },
+  {
+    "command": [
+      "/usr/local/bin/python3",
+      "<E3>/.runtime/tests_after/E2/runtime_probe.py",
+      "<E3>/evidence/fixed/loaded_modules.json"
+    ],
+    "cwd": "<E3>/.runtime/fixed",
+    "label": "fixed/loaded_modules",
+    "exit": 0,
+    "expected_exit": 0,
+    "seconds": 0.24080676888115704
+  },
+  {
+    "command": [
+      "python3",
+      "-m",
+      "pytest",
+      "-q",
+      "<E3>/test_independent.py",
+      "--junitxml=<E3>/evidence/fixed/independent.xml"
+    ],
+    "cwd": "<WORKTREE>",
+    "label": "fixed/independent-final",
+    "exit": 0,
+    "expected_exit": 0,
+    "environment": {
+      "B2_REVIEW_ROOT": "<E3>/.runtime/fixed",
+      "E3_EVIDENCE": "<E3>/evidence/fixed/e3_sql"
+    }
+  }
+]
