@@ -1,0 +1,21 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.11.3, pytest-9.1.1, pluggy-1.7.0 -- [PYTHON]
+CLR3 repair candidate binding verified: repair_r1/candidate/recursive_court.py
+rootdir: [I2_RETURN]/repair_r1
+configfile: ../../../../../../../../dev/null
+collecting ... collected 11 items
+
+test_repair_contracts.py::test_location_conflict_refuses_in_both_orders_without_partial_write[hall_drawer-garage_shelf] PASSED [  9%]
+test_repair_contracts.py::test_location_conflict_refuses_in_both_orders_without_partial_write[garage_shelf-hall_drawer] PASSED [ 18%]
+test_repair_contracts.py::test_same_time_compatible_particulars_and_alternative_wording_remain_allowed PASSED [ 27%]
+test_repair_contracts.py::test_distinct_counterfactual_worlds_can_admit_different_particulars PASSED [ 36%]
+test_repair_contracts.py::test_later_observation_does_not_rewrite_earlier_location PASSED [ 45%]
+test_repair_contracts.py::test_presence_conflict_refuses_in_both_directions_with_atomic_retry[ROUTINE] PASSED [ 54%]
+test_repair_contracts.py::test_presence_conflict_refuses_in_both_directions_with_atomic_retry[RAISE_WITH_OVERTIME] PASSED [ 63%]
+test_repair_contracts.py::test_matching_flags_do_not_hide_contradictory_material_time PASSED [ 72%]
+test_repair_contracts.py::test_selected_attention_event_must_retain_its_recorded_contract[wrong_kind] PASSED [ 81%]
+test_repair_contracts.py::test_selected_attention_event_must_retain_its_recorded_contract[missing_care] PASSED [ 90%]
+test_repair_contracts.py::test_selected_attention_event_must_retain_its_recorded_contract[duplicate] PASSED [100%]
+
+- generated xml file: [I2_RETURN]/repair_r1/evidence/repair_controls.xml -
+============================== 11 passed in 0.76s ==============================

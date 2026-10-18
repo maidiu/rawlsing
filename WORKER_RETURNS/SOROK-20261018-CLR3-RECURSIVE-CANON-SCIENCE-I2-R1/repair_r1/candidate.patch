@@ -1,0 +1,94 @@
+--- frozen_clr3/recursive_court.py
++++ repair_r1/candidate/recursive_court.py
+@@ -14,8 +14,10 @@
+ from unittest.mock import patch
+ 
+ ROOT=Path(__file__).resolve().parent
+-sys.path.insert(0,str(ROOT/'sources/legacy'))
+-sys.path.insert(0,str(ROOT/'sources'))
++# Reuse the frozen reviewed source closure; only this research wrapper changes.
++SOURCE_ROOT=ROOT.parents[1]/'reconstructed/clr3'
++sys.path.insert(0,str(SOURCE_ROOT/'sources/legacy'))
++sys.path.insert(0,str(SOURCE_ROOT/'sources'))
+ from v3.core.state import BackboneState,DomainState
+ from v3.core.enums import DOMAIN_NAMES
+ from v3.core.derived import compute_all_derived
+@@ -163,18 +165,53 @@
+     return dict(actor='child',clock=24,source_ref=frame['id'],prestate_hash=frame['effect']['before_hash'],poststate_hash=frame['effect']['after_hash'],facts=facts,psychological_changes={},variant=variant,text=render_text(facts,variant))
+ 
+ 
++def validate_source_encounter(frame):
++    """Check the existing fixture's encounter account before canon admission.
++
++    This is not a new response rule or validation of arbitrary psychological
++    computation. The recorded shared-attention event and the resolved presence
++    flag must describe the same encounter; the existing event's kind/care offer
++    and, when supplied, its material-time account must agree as well.
++    """
++    present=frame['resolved']['father_present']
++    require(isinstance(present,bool),'SOURCE_ENCOUNTER_MISMATCH')
++    selected=frame['effect']['selected_events']
++    attention=[e for e in selected if e.get('id')=='actual-shared-attention']
++    require(len(attention)<=1 and bool(attention)==present,'SOURCE_ENCOUNTER_MISMATCH')
++    if attention:
++        e=attention[0]
++        require(e.get('kind')=='relationship' and 'care' in (e.get('magnets') or {}).get('offers',[]),'SOURCE_ENCOUNTER_MISMATCH')
++    response=frame['resolved'].get('father_response')
++    if response is not None:
++        require((response['available_minutes']>=10)==present,'SOURCE_ENCOUNTER_MISMATCH')
++
++
++def validate_canon_consistency(prior,entry):
++    """One ledger is one research world; same-time particulars must agree."""
++    for previous in prior:
++        if previous['kind']!='REALIZATION' or previous['clock']!=entry['clock']:
++            continue
++        a,b=previous['facts'],entry['facts']
++        if a['lock_id']==b['lock_id']:
++            require(a['lock_location']==b['lock_location'],'CANON_OBJECT_LOCATION_CONFLICT')
++        if previous['actor']==entry['actor']:
++            require(a['father_present']==b['father_present'],'CANON_ACTOR_FACT_CONFLICT')
++
++
+ class CanonLedger:
+     """Append-only test-only archive, with complete source preimages, not actor mind."""
+     def __init__(self):self._entries=[];self._sources={}
+     @property
+     def entries(self):return deepcopy(self._entries)
+     def verify(self):
+-        for e in self._entries:
++        for index,e in enumerate(self._entries):
+             body={k:v for k,v in e.items() if k!='hash'}
+             require(digest(body)==e['hash'],'HISTORY_REWRITE')
+             if e['kind']=='REALIZATION':
+                 require(e['source_ref'] in self._sources,'SOURCE_MISSING')
+                 require(digest(self._sources[e['source_ref']])==e['source_hash'],'SOURCE_PREIMAGE_REWRITE')
++                validate_source_encounter(self._sources[e['source_ref']])
++                validate_canon_consistency(self._entries[:index],e)
+         return True
+     def admit(self,frame,candidate):
+         self.verify()
+@@ -184,6 +221,7 @@
+         require(candidate['actor']=='child','ACTOR_MISMATCH')
+         require(candidate['prestate_hash']==frame['effect']['before_hash'] and candidate['poststate_hash']==frame['effect']['after_hash'],'STATE_MISMATCH')
+         require(digest(frame['effect']['before'])==candidate['prestate_hash'] and digest(frame['effect']['after'])==candidate['poststate_hash'],'STATE_SNAPSHOT_REWRITE')
++        validate_source_encounter(frame)
+         require(isinstance(candidate['psychological_changes'],dict) and not candidate['psychological_changes'],'UNSUPPORTED_PSYCHOLOGICAL_CHANGE')
+         require(set(candidate)=={'actor','clock','source_ref','prestate_hash','poststate_hash','facts','psychological_changes','variant','text'},'UNSUPPORTED_REALIZATION_FIELD')
+         f=candidate['facts'];require(set(f)=={'bicycle_missing','father_present','lock_location','lock_id','actor_observed'},'UNSUPPORTED_FACT')
+@@ -191,9 +229,13 @@
+         require(f['lock_id']==frame['world']['lock_id'] and f['lock_location'] in frame['world']['available_storage_slots'],'INCOMPATIBLE_OBJECT_DETAIL')
+         require(f['actor_observed'] is True and frame['resolved']['child_at_home'],'UNWITNESSED_ACCESS')
+         require(candidate['text']==render_text(f,candidate['variant']),'PROSE_NOT_SUPPORTED_BY_TYPED_REALIZATION')
++        body=dict(id='canon:'+str(len(self._entries)),kind='REALIZATION',source_ref=frame['id'],source_hash=digest(frame),prestate_hash=candidate['prestate_hash'],poststate_hash=candidate['poststate_hash'],actor='child',clock=candidate['clock'],facts=deepcopy(f),text=candidate['text'],grade='RESEARCH_CANON_NOT_NATIVE_ADP016_OR_ACTOR_MEMORY')
++        validate_canon_consistency(self._entries,body)
++        body['hash']=digest(body)
++        # Both validations precede either write: a refused source reserves no ID
++        # and cannot leave an orphan preimage or partial canon append.
+         self._sources[frame['id']]=deepcopy(frame)
+-        body=dict(id='canon:'+str(len(self._entries)),kind='REALIZATION',source_ref=frame['id'],source_hash=digest(frame),prestate_hash=candidate['prestate_hash'],poststate_hash=candidate['poststate_hash'],actor='child',clock=candidate['clock'],facts=deepcopy(f),text=candidate['text'],grade='RESEARCH_CANON_NOT_NATIVE_ADP016_OR_ACTOR_MEMORY')
+-        body['hash']=digest(body);self._entries.append(body);return deepcopy(body)
++        self._entries.append(body);return deepcopy(body)
+     def append_unrelated(self,clock=25):
+         self.verify();body=dict(id='audit:'+str(len(self._entries)),kind='UNRELATED_OTHER_PROJECT',actor='neighbor',clock=clock,facts={'project':'library_inventory'},numerical_effect=None)
+         body['hash']=digest(body);self._entries.append(body);return deepcopy(body)

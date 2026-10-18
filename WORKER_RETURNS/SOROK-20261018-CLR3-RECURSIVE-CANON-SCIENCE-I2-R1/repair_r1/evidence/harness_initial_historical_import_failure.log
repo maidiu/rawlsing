@@ -1,0 +1,19 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.11.3, pytest-9.1.1, pluggy-1.7.0 -- [PYTHON]
+rootdir: [I2_RETURN]/repair_r1
+configfile: ../../../../../../../../dev/null
+collecting ... collected 0 items / 1 error
+
+==================================== ERRORS ====================================
+________________________ ERROR collecting test session _________________________
+ImportError while importing test module '[I2_RETURN]/reconstructed/clr3/preserved/r1_court/test_falsifiers.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+../reconstructed/clr3/preserved/r1_court/test_falsifiers.py:8: in <module>
+    from court import model as m, intervene, rehash, replace_event
+E   ModuleNotFoundError: No module named 'court'
+- generated xml file: [I2_RETURN]/repair_r1/evidence/original_six_red.xml -
+=========================== short test summary info ============================
+ERROR 
+!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+=============================== 1 error in 0.19s ===============================
