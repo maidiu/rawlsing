@@ -1,0 +1,1120 @@
+{
+  "schema": "PYAT_R37_WG0I_PHASE_A_FROZEN_ORACLE@1",
+  "freeze_phase": "BEFORE_WG0R_OUTPUT",
+  "sealed_base": "68873526efe5a39a0849aa401666ac997870f156",
+  "derivation": {
+    "o35e_matrix": {
+      "commit": "30a2ef61230cea4583945493a1ad489f5ab213c5",
+      "path": "WORKER_RETURNS/PYAT-R28-O35E-ORIGINAL-35-ELIGIBILITY-NATIVE-R1/01_35_WAVE_ELIGIBLE_ITEM_OPERATION_MATRIX.json",
+      "sha256": "f4b0bc6e35d267440e9a2880d593841b563a7398f33c3254b69904db6c5e02a9",
+      "git_blob_sha1": "68f34fbb37bab07a492155c0eef80b73d2155bed",
+      "bytes": 33419920
+    },
+    "estate_35x": {
+      "path": "PYAT_CONTROL_ROOM/WHOLE_MACHINE_COMPLETION_R1/ESTATE_35X_REQUIREMENTS_MATRIX.json",
+      "sha256": "ca865cdcf66c2f1ac768f79c01faf031bbdd8be9a2b4bd69af542681a0e59c83",
+      "git_blob_sha1": "2ad9a001aefef4889d8ac48a2a81cd806dec50d6",
+      "bytes": 988616
+    },
+    "task_ledger_101": {
+      "path": "PYAT_CONTROL_ROOM/WHOLE_MACHINE_COMPLETION_R1/TASK_LEDGER_101_MACHINE.json",
+      "sha256": "682dbb211766edc2915113799eaa6c104bb9b832278c1e716d271903bb6231c6",
+      "git_blob_sha1": "45be0f82e72ab37bcb972236b1ef3a827b1f95ac",
+      "bytes": 176816
+    },
+    "wave35_queue": {
+      "path": "PYAT_CONTROL_ROOM/WHOLE_MACHINE_COMPLETION_R1/WAVE35_COMMON_EDGE_ACTION_QUEUE.json",
+      "sha256": "5bed62627156995955c230bbae912167331663cd2e8d7371a1bc66e504becd04",
+      "git_blob_sha1": "f1347ac73e0805569b85123ffe12af9180f6f136",
+      "bytes": 70755
+    },
+    "critical_gate": {
+      "path": "PYAT_CONTROL_ROOM/WHOLE_MACHINE_COMPLETION_R1/AUTOMATED_WORKLOAD_CONSTRUCTION_CRITICAL_GATE.md",
+      "sha256": "0aed99e0f468249d170055c0630f5341a9132d9d39caea30a2e91d004062dd89",
+      "git_blob_sha1": "1c8301d0f4126edfa3d77cedf0235ad2632e44e3",
+      "bytes": 8410
+    },
+    "r18_correction": "PYAT_CONTROL_ROOM/R18_WG5_WG5I_SCIENTIFIC_SCOPE_CORRECTION_AND_INHERITANCE_RECOGNITION_20261018.md",
+    "p10_g1a": "P10_G1A_MANUAL_AUTHORITY_PRESERVATION_RECLOSURE_PASS @ d73907f2a695a10095f9cac08739545aaa844fa7; 65,354 accounting units, 0 unresolved preservation gaps, 76 held states (documentary, not execution-loaded)"
+  },
+  "source_census": {
+    "expected_sources": 35,
+    "observed_sources": 35,
+    "no_drop_assertion": "atlas_id SRC01..SRC35 exactly once; no source removed for execution convenience",
+    "sources": [
+      {
+        "atlas_id": "SRC01",
+        "label": "Afrobarometer R1",
+        "family": "Afrobarometer",
+        "wave": "R1",
+        "qra_row_count": 143,
+        "items": 143,
+        "status_counts": {
+          "GOVERNED_ADMINISTRATIVE_DISPOSITION": 9,
+          "GOVERNED_NON_DIRECTIONAL_DISPOSITION": 78,
+          "GOVERNED_QSMV2_RELATION_AUTHORITY": 48,
+          "GOVERNED_MANUAL_RELATION_AUTHORITY": 6,
+          "BLOCKED_IDENTITY_OR_AUTHORITY_JOIN": 2
+        },
+        "source_use_status": "HOLD_NO_VERIFIED_CURRENT_SIGNED_ORIGINAL_RIGHT",
+        "permission_warrant_ref": null,
+        "competent_original_U_ref": null,
+        "competent_original_E_pre_ref": null,
+        "eligible_original_count": null,
+        "native_original_runs": 0,
+        "sample_risk_design_edition": "UNBOUND_TO_CURRENT_ORIGINAL_NATIVE_RELEASE"
+      },
+      {
+        "atlas_id": "SRC02",
+        "label": "Afrobarometer R5",
+        "family": "Afrobarometer",
+        "wave": "R5",
+        "qra_row_count": 348,
+        "items": 348,
+        "status_counts": {
+          "GOVERNED_NON_DIRECTIONAL_DISPOSITION": 223,
+          "GOVERNED_ADMINISTRATIVE_DISPOSITION": 64,
+          "GOVERNED_QSMV2_RELATION_AUTHORITY": 54,
+          "GOVERNED_MANUAL_RELATION_AUTHORITY": 5,
+          "BLOCKED_STRUCTURAL_MAPPING_AUTHORITY": 2
+        },
+        "source_use_status": "HOLD_NO_VERIFIED_CURRENT_SIGNED_ORIGINAL_RIGHT",
+        "permission_warrant_ref": null,
+        "competent_original_U_ref": null,
+        "competent_original_E_pre_ref": null,
+        "eligible_original_count": null,
+        "native_original_runs": 0,
+        "sample_risk_design_edition": "UNBOUND_TO_CURRENT_ORIGINAL_NATIVE_RELEASE"
+      },
+      {
+        "atlas_id": "SRC03",
+        "label": "Afrobarometer R9",
+        "family": "Afrobarometer",
+        "wave": "R9",
+        "qra_row_count": 421,
+        "items": 421,
+        "status_counts": {
+          "GOVERNED_NON_DIRECTIONAL_DISPOSITION": 289,
+          "GOVERNED_ADMINISTRATIVE_DISPOSITION": 61,
+          "GOVERNED_QSMV2_RELATION_AUTHORITY": 64,
+          "BLOCKED_STRUCTURAL_MAPPING_AUTHORITY": 1,
+          "GOVERNED_MANUAL_RELATION_AUTHORITY": 6
+        },
+        "source_use_status": "HOLD_NO_VERIFIED_CURRENT_SIGNED_ORIGINAL_RIGHT",
+        "permission_warrant_ref": null,
+        "competent_original_U_ref": null,
+        "competent_original_E_pre_ref": null,
+        "eligible_original_count": null,
+        "native_original_runs": 0,
+        "sample_risk_design_edition": "UNBOUND_TO_CURRENT_ORIGINAL_NATIVE_RELEASE"
+      },
+      {
+        "atlas_id": "SRC04",
+        "label": "Arab Barometer W1",
+        "family": "Arab Barometer",
+        "wave": "I",
+        "qra_row_count": 181,
+        "items": 181,
+        "status_counts": {
+          "GOVERNED_NON_DIRECTIONAL_DISPOSITION": 57,
+          "GOVERNED_ADMINISTRATIVE_DISPOSITION": 2,
+          "GOVERNED_QSMV2_RELATION_AUTHORITY": 112,
+          "BLOCKED_STRUCTURAL_MAPPING_AUTHORITY": 2,
+          "GOVERNED_MANUAL_RELATION_AUTHORITY": 8
+        },
+        "source_use_status": "HOLD_NO_VERIFIED_CURRENT_SIGNED_ORIGINAL_RIGHT",
+        "permission_warrant_ref": null,
+        "competent_original_U_ref": null,
+        "competent_original_E_pre_ref": null,
+        "eligible_original_count": null,
+        "native_original_runs": 0,
+        "sample_risk_design_edition": "UNBOUND_TO_CURRENT_ORIGINAL_NATIVE_RELEASE"
+      },
+      {
+        "atlas_id": "SRC05",
+        "label": "Arab Barometer W2",
+        "family": "Arab Barometer",
+        "wave": "II",
+        "qra_row_count": 468,
+        "items": 468,
+        "status_counts": {
+          "GOVERNED_ADMINISTRATIVE_DISPOSITION": 9,
+          "GOVERNED_QSMV2_RELATION_AUTHORITY": 226,
+          "GOVERNED_NON_DIRECTIONAL_DISPOSITION": 225,
+          "BLOCKED_STRUCTURAL_MAPPING_AUTHORITY": 3,
+          "GOVERNED_MANUAL_RELATION_AUTHORITY": 5
+        },
+        "source_use_status": "HOLD_NO_VERIFIED_CURRENT_SIGNED_ORIGINAL_RIGHT",
+        "permission_warrant_ref": null,
+        "competent_original_U_ref": null,
+        "competent_original_E_pre_ref": null,
+        "eligible_original_count": null,
+        "native_original_runs": 0,
+        "sample_risk_design_edition": "UNBOUND_TO_CURRENT_ORIGINAL_NATIVE_RELEASE"
+      },
+      {
+        "atlas_id": "SRC06",
+        "label": "Arab Barometer W5",
+        "family": "Arab Barometer",
+        "wave": "V",
+        "qra_row_count": 359,
+        "items": 359,
+        "status_counts": {
+          "GOVERNED_ADMINISTRATIVE_DISPOSITION": 13,
+          "GOVERNED_NON_DIRECTIONAL_DISPOSITION": 237,
+          "GOVERNED_QSMV2_RELATION_AUTHORITY": 101,
+          "GOVERNED_MANUAL_RELATION_AUTHORITY": 5,
+          "BLOCKED_STRUCTURAL_MAPPING_AUTHORITY": 3
+        },
+        "source_use_status": "HOLD_NO_VERIFIED_CURRENT_SIGNED_ORIGINAL_RIGHT",
+        "permission_warrant_ref": null,
+        "competent_original_U_ref": null,
+        "competent_original_E_pre_ref": null,
+        "eligible_original_count": null,
+        "native_original_runs": 0,
+        "sample_risk_design_edition": "UNBOUND_TO_CURRENT_ORIGINAL_NATIVE_RELEASE"
+      },
+      {
+        "atlas_id": "SRC07",
+        "label": "Arab Barometer W8",
+        "family": "Arab Barometer",
+        "wave": "VIII",
+        "qra_row_count": 690,
+        "items": 690,
+        "status_counts": {
+          "GOVERNED_ADMINISTRATIVE_DISPOSITION": 9,
+          "GOVERNED_NON_DIRECTIONAL_DISPOSITION": 476,
+          "GOVERNED_MANUAL_RELATION_AUTHORITY": 4,
+          "GOVERNED_QSMV2_RELATION_AUTHORITY": 198,
+          "BLOCKED_STRUCTURAL_MAPPING_AUTHORITY": 3
+        },
+        "source_use_status": "HOLD_NO_VERIFIED_CURRENT_SIGNED_ORIGINAL_RIGHT",
+        "permission_warrant_ref": null,
+        "competent_original_U_ref": null,
+        "competent_original_E_pre_ref": null,
+        "eligible_original_count": null,
+        "native_original_runs": 0,
+        "sample_risk_design_edition": "UNBOUND_TO_CURRENT_ORIGINAL_NATIVE_RELEASE"
+      },
+      {
+        "atlas_id": "SRC08",
+        "label": "Asian Barometer W1",
+        "family": "Asian Barometer",
+        "wave": "W1",
+        "qra_row_count": 217,
+        "items": 217,
+        "status_counts": {
+          "GOVERNED_ADMINISTRATIVE_DISPOSITION": 12,
+          "GOVERNED_NON_DIRECTIONAL_DISPOSITION": 127,
+          "GOVERNED_QSMV2_RELATION_AUTHORITY": 70,
+          "GOVERNED_MANUAL_RELATION_AUTHORITY": 7,
+          "BLOCKED_STRUCTURAL_MAPPING_AUTHORITY": 1
+        },
+        "source_use_status": "HOLD_NO_VERIFIED_CURRENT_SIGNED_ORIGINAL_RIGHT",
+        "permission_warrant_ref": null,
+        "competent_original_U_ref": null,
+        "competent_original_E_pre_ref": null,
+        "eligible_original_count": null,
+        "native_original_runs": 0,
+        "sample_risk_design_edition": "UNBOUND_TO_CURRENT_ORIGINAL_NATIVE_RELEASE"
+      },
+      {
+        "atlas_id": "SRC09",
+        "label": "Asian Barometer W4",
+        "family": "Asian Barometer",
+        "wave": "W4",
+        "qra_row_count": 289,
+        "items": 289,
+        "status_counts": {
+          "GOVERNED_ADMINISTRATIVE_DISPOSITION": 8,
+          "GOVERNED_NON_DIRECTIONAL_DISPOSITION": 167,
+          "GOVERNED_QSMV2_RELATION_AUTHORITY": 109,
+          "GOVERNED_MANUAL_RELATION_AUTHORITY": 4,
+          "BLOCKED_STRUCTURAL_MAPPING_AUTHORITY": 1
+        },
+        "source_use_status": "HOLD_NO_VERIFIED_CURRENT_SIGNED_ORIGINAL_RIGHT",
+        "permission_warrant_ref": null,
+        "competent_original_U_ref": null,
+        "competent_original_E_pre_ref": null,
+        "eligible_original_count": null,
+        "native_original_runs": 0,
+        "sample_risk_design_edition": "UNBOUND_TO_CURRENT_ORIGINAL_NATIVE_RELEASE"
+      },
+      {
+        "atlas_id": "SRC10",
+        "label": "Asian Barometer W5",
+        "family": "Asian Barometer",
+        "wave": "W5",
+        "qra_row_count": 308,
+        "items": 308,
+        "status_counts": {
+          "GOVERNED_ADMINISTRATIVE_DISPOSITION": 7,
+          "GOVERNED_NON_DIRECTIONAL_DISPOSITION": 172,
+          "GOVERNED_QSMV2_RELATION_AUTHORITY": 125,
+          "GOVERNED_MANUAL_RELATION_AUTHORITY": 4
+        },
+        "source_use_status": "HOLD_NO_VERIFIED_CURRENT_SIGNED_ORIGINAL_RIGHT",
+        "permission_warrant_ref": null,
+        "competent_original_U_ref": null,
+        "competent_original_E_pre_ref": null,
+        "eligible_original_count": null,
+        "native_original_runs": 0,
+        "sample_risk_design_edition": "UNBOUND_TO_CURRENT_ORIGINAL_NATIVE_RELEASE"
+      },
+      {
+        "atlas_id": "SRC11",
+        "label": "EVS1981",
+        "family": "EVS",
+        "wave": "1981",
+        "qra_row_count": 370,
+        "items": 370,
+        "status_counts": {
+          "GOVERNED_NON_DIRECTIONAL_DISPOSITION": 201,
+          "GOVERNED_ADMINISTRATIVE_DISPOSITION": 23,
+          "GOVERNED_QSMV2_RELATION_AUTHORITY": 138,
+          "GOVERNED_MANUAL_RELATION_AUTHORITY": 7,
+          "BLOCKED_STRUCTURAL_MAPPING_AUTHORITY": 1
+        },
+        "source_use_status": "HOLD_NO_VERIFIED_CURRENT_SIGNED_ORIGINAL_RIGHT",
+        "permission_warrant_ref": null,
+        "competent_original_U_ref": null,
+        "competent_original_E_pre_ref": null,
+        "eligible_original_count": null,
+        "native_original_runs": 0,
+        "sample_risk_design_edition": "UNBOUND_TO_CURRENT_ORIGINAL_NATIVE_RELEASE"
+      },
+      {
+        "atlas_id": "SRC12",
+        "label": "EVS1990",
+        "family": "EVS",
+        "wave": "1990",
+        "qra_row_count": 390,
+        "items": 390,
+        "status_counts": {
+          "GOVERNED_NON_DIRECTIONAL_DISPOSITION": 187,
+          "GOVERNED_ADMINISTRATIVE_DISPOSITION": 28,
+          "GOVERNED_QSMV2_RELATION_AUTHORITY": 167,
+          "BLOCKED_STRUCTURAL_MAPPING_AUTHORITY": 2,
+          "GOVERNED_MANUAL_RELATION_AUTHORITY": 6
+        },
+        "source_use_status": "HOLD_NO_VERIFIED_CURRENT_SIGNED_ORIGINAL_RIGHT",
+        "permission_warrant_ref": null,
+        "competent_original_U_ref": null,
+        "competent_original_E_pre_ref": null,
+        "eligible_original_count": null,
+        "native_original_runs": 0,
+        "sample_risk_design_edition": "UNBOUND_TO_CURRENT_ORIGINAL_NATIVE_RELEASE"
+      },
+      {
+        "atlas_id": "SRC13",
+        "label": "EVS1999",
+        "family": "EVS",
+        "wave": "1999",
+        "qra_row_count": 513,
+        "items": 513,
+        "status_counts": {
+          "GOVERNED_NON_DIRECTIONAL_DISPOSITION": 264,
+          "GOVERNED_ADMINISTRATIVE_DISPOSITION": 22,
+          "GOVERNED_QSMV2_RELATION_AUTHORITY": 216,
+          "GOVERNED_MANUAL_RELATION_AUTHORITY": 9,
+          "BLOCKED_STRUCTURAL_MAPPING_AUTHORITY": 2
+        },
+        "source_use_status": "HOLD_NO_VERIFIED_CURRENT_SIGNED_ORIGINAL_RIGHT",
+        "permission_warrant_ref": null,
+        "competent_original_U_ref": null,
+        "competent_original_E_pre_ref": null,
+        "eligible_original_count": null,
+        "native_original_runs": 0,
+        "sample_risk_design_edition": "UNBOUND_TO_CURRENT_ORIGINAL_NATIVE_RELEASE"
+      },
+      {
+        "atlas_id": "SRC14",
+        "label": "EVS2008",
+        "family": "EVS",
+        "wave": "2008",
+        "qra_row_count": 477,
+        "items": 477,
+        "status_counts": {
+          "GOVERNED_NON_DIRECTIONAL_DISPOSITION": 281,
+          "GOVERNED_ADMINISTRATIVE_DISPOSITION": 28,
+          "GOVERNED_QSMV2_RELATION_AUTHORITY": 160,
+          "GOVERNED_MANUAL_RELATION_AUTHORITY": 6,
+          "BLOCKED_STRUCTURAL_MAPPING_AUTHORITY": 2
+        },
+        "source_use_status": "HOLD_NO_VERIFIED_CURRENT_SIGNED_ORIGINAL_RIGHT",
+        "permission_warrant_ref": null,
+        "competent_original_U_ref": null,
+        "competent_original_E_pre_ref": null,
+        "eligible_original_count": null,
+        "native_original_runs": 0,
+        "sample_risk_design_edition": "UNBOUND_TO_CURRENT_ORIGINAL_NATIVE_RELEASE"
+      },
+      {
+        "atlas_id": "SRC15",
+        "label": "EVS2017",
+        "family": "EVS",
+        "wave": "2017",
+        "qra_row_count": 474,
+        "items": 474,
+        "status_counts": {
+          "GOVERNED_NON_DIRECTIONAL_DISPOSITION": 273,
+          "GOVERNED_ADMINISTRATIVE_DISPOSITION": 41,
+          "GOVERNED_QSMV2_RELATION_AUTHORITY": 151,
+          "GOVERNED_MANUAL_RELATION_AUTHORITY": 7,
+          "BLOCKED_STRUCTURAL_MAPPING_AUTHORITY": 2
+        },
+        "source_use_status": "HOLD_NO_VERIFIED_CURRENT_SIGNED_ORIGINAL_RIGHT",
+        "permission_warrant_ref": null,
+        "competent_original_U_ref": null,
+        "competent_original_E_pre_ref": null,
+        "eligible_original_count": null,
+        "native_original_runs": 0,
+        "sample_risk_design_edition": "UNBOUND_TO_CURRENT_ORIGINAL_NATIVE_RELEASE"
+      },
+      {
+        "atlas_id": "SRC16",
+        "label": "GSS1972",
+        "family": "GSS",
+        "wave": "1972",
+        "qra_row_count": 216,
+        "items": 216,
+        "status_counts": {
+          "FROZEN_ACCEPTED_GSS": 8,
+          "GOVERNED_NON_DIRECTIONAL_DISPOSITION": 149,
+          "GOVERNED_QSMV2_RELATION_AUTHORITY": 29,
+          "GOVERNED_ADMINISTRATIVE_DISPOSITION": 30
+        },
+        "source_use_status": "HOLD_NO_VERIFIED_CURRENT_SIGNED_ORIGINAL_RIGHT",
+        "permission_warrant_ref": null,
+        "competent_original_U_ref": null,
+        "competent_original_E_pre_ref": null,
+        "eligible_original_count": null,
+        "native_original_runs": 0,
+        "sample_risk_design_edition": "UNBOUND_TO_CURRENT_ORIGINAL_NATIVE_RELEASE"
+      },
+      {
+        "atlas_id": "SRC17",
+        "label": "GSS1973",
+        "family": "GSS",
+        "wave": "1973",
+        "qra_row_count": 339,
+        "items": 339,
+        "status_counts": {
+          "FROZEN_ACCEPTED_GSS": 6,
+          "GOVERNED_NON_DIRECTIONAL_DISPOSITION": 224,
+          "GOVERNED_QSMV2_RELATION_AUTHORITY": 71,
+          "GOVERNED_MANUAL_RELATION_AUTHORITY": 4,
+          "GOVERNED_ADMINISTRATIVE_DISPOSITION": 34
+        },
+        "source_use_status": "HOLD_NO_VERIFIED_CURRENT_SIGNED_ORIGINAL_RIGHT",
+        "permission_warrant_ref": null,
+        "competent_original_U_ref": null,
+        "competent_original_E_pre_ref": null,
+        "eligible_original_count": null,
+        "native_original_runs": 0,
+        "sample_risk_design_edition": "UNBOUND_TO_CURRENT_ORIGINAL_NATIVE_RELEASE"
+      },
+      {
+        "atlas_id": "SRC18",
+        "label": "GSS1984",
+        "family": "GSS",
+        "wave": "1984",
+        "qra_row_count": 675,
+        "items": 675,
+        "status_counts": {
+          "FROZEN_ACCEPTED_GSS": 7,
+          "GOVERNED_NON_DIRECTIONAL_DISPOSITION": 470,
+          "GOVERNED_QSMV2_RELATION_AUTHORITY": 158,
+          "GOVERNED_ADMINISTRATIVE_DISPOSITION": 38,
+          "GOVERNED_MANUAL_RELATION_AUTHORITY": 2
+        },
+        "source_use_status": "HOLD_NO_VERIFIED_CURRENT_SIGNED_ORIGINAL_RIGHT",
+        "permission_warrant_ref": null,
+        "competent_original_U_ref": null,
+        "competent_original_E_pre_ref": null,
+        "eligible_original_count": null,
+        "native_original_runs": 0,
+        "sample_risk_design_edition": "UNBOUND_TO_CURRENT_ORIGINAL_NATIVE_RELEASE"
+      },
+      {
+        "atlas_id": "SRC19",
+        "label": "GSS1993",
+        "family": "GSS",
+        "wave": "1993",
+        "qra_row_count": 752,
+        "items": 752,
+        "status_counts": {
+          "FROZEN_ACCEPTED_GSS": 7,
+          "GOVERNED_QSMV2_RELATION_AUTHORITY": 185,
+          "GOVERNED_NON_DIRECTIONAL_DISPOSITION": 520,
+          "GOVERNED_ADMINISTRATIVE_DISPOSITION": 39,
+          "GOVERNED_MANUAL_RELATION_AUTHORITY": 1
+        },
+        "source_use_status": "HOLD_NO_VERIFIED_CURRENT_SIGNED_ORIGINAL_RIGHT",
+        "permission_warrant_ref": null,
+        "competent_original_U_ref": null,
+        "competent_original_E_pre_ref": null,
+        "eligible_original_count": null,
+        "native_original_runs": 0,
+        "sample_risk_design_edition": "UNBOUND_TO_CURRENT_ORIGINAL_NATIVE_RELEASE"
+      },
+      {
+        "atlas_id": "SRC20",
+        "label": "GSS2002",
+        "family": "GSS",
+        "wave": "2002",
+        "qra_row_count": 1119,
+        "items": 1119,
+        "status_counts": {
+          "FROZEN_ACCEPTED_GSS": 6,
+          "GOVERNED_NON_DIRECTIONAL_DISPOSITION": 849,
+          "GOVERNED_QSMV2_RELATION_AUTHORITY": 221,
+          "GOVERNED_ADMINISTRATIVE_DISPOSITION": 41,
+          "BLOCKED_SOURCE_AUTHORITY": 1,
+          "GOVERNED_MANUAL_RELATION_AUTHORITY": 1
+        },
+        "source_use_status": "HOLD_NO_VERIFIED_CURRENT_SIGNED_ORIGINAL_RIGHT",
+        "permission_warrant_ref": null,
+        "competent_original_U_ref": null,
+        "competent_original_E_pre_ref": null,
+        "eligible_original_count": null,
+        "native_original_runs": 0,
+        "sample_risk_design_edition": "UNBOUND_TO_CURRENT_ORIGINAL_NATIVE_RELEASE"
+      },
+      {
+        "atlas_id": "SRC21",
+        "label": "GSS2010",
+        "family": "GSS",
+        "wave": "2010",
+        "qra_row_count": 922,
+        "items": 922,
+        "status_counts": {
+          "FROZEN_ACCEPTED_GSS": 6,
+          "GOVERNED_QSMV2_RELATION_AUTHORITY": 186,
+          "GOVERNED_NON_DIRECTIONAL_DISPOSITION": 679,
+          "GOVERNED_ADMINISTRATIVE_DISPOSITION": 48,
+          "BLOCKED_SOURCE_AUTHORITY": 2,
+          "GOVERNED_MANUAL_RELATION_AUTHORITY": 1
+        },
+        "source_use_status": "HOLD_NO_VERIFIED_CURRENT_SIGNED_ORIGINAL_RIGHT",
+        "permission_warrant_ref": null,
+        "competent_original_U_ref": null,
+        "competent_original_E_pre_ref": null,
+        "eligible_original_count": null,
+        "native_original_runs": 0,
+        "sample_risk_design_edition": "UNBOUND_TO_CURRENT_ORIGINAL_NATIVE_RELEASE"
+      },
+      {
+        "atlas_id": "SRC22",
+        "label": "GSS2016",
+        "family": "GSS",
+        "wave": "2016",
+        "qra_row_count": 1018,
+        "items": 1018,
+        "status_counts": {
+          "FROZEN_ACCEPTED_GSS": 6,
+          "GOVERNED_QSMV2_RELATION_AUTHORITY": 194,
+          "GOVERNED_NON_DIRECTIONAL_DISPOSITION": 784,
+          "GOVERNED_ADMINISTRATIVE_DISPOSITION": 33,
+          "BLOCKED_SOURCE_AUTHORITY": 1
+        },
+        "source_use_status": "HOLD_NO_VERIFIED_CURRENT_SIGNED_ORIGINAL_RIGHT",
+        "permission_warrant_ref": null,
+        "competent_original_U_ref": null,
+        "competent_original_E_pre_ref": null,
+        "eligible_original_count": null,
+        "native_original_runs": 0,
+        "sample_risk_design_edition": "UNBOUND_TO_CURRENT_ORIGINAL_NATIVE_RELEASE"
+      },
+      {
+        "atlas_id": "SRC23",
+        "label": "GSS2024",
+        "family": "GSS",
+        "wave": "2024",
+        "qra_row_count": 980,
+        "items": 980,
+        "status_counts": {
+          "FROZEN_ACCEPTED_GSS": 6,
+          "GOVERNED_QSMV2_RELATION_AUTHORITY": 253,
+          "GOVERNED_NON_DIRECTIONAL_DISPOSITION": 674,
+          "GOVERNED_ADMINISTRATIVE_DISPOSITION": 46,
+          "GOVERNED_MANUAL_RELATION_AUTHORITY": 1
+        },
+        "source_use_status": "HOLD_NO_VERIFIED_CURRENT_SIGNED_ORIGINAL_RIGHT",
+        "permission_warrant_ref": null,
+        "competent_original_U_ref": null,
+        "competent_original_E_pre_ref": null,
+        "eligible_original_count": null,
+        "native_original_runs": 0,
+        "sample_risk_design_edition": "UNBOUND_TO_CURRENT_ORIGINAL_NATIVE_RELEASE"
+      },
+      {
+        "atlas_id": "SRC24",
+        "label": "Latinobar\u00f3metro1995",
+        "family": "Latinobar\u00f3metro",
+        "wave": "1995",
+        "qra_row_count": 188,
+        "items": 188,
+        "status_counts": {
+          "GOVERNED_QSMV2_RELATION_AUTHORITY": 93,
+          "GOVERNED_NON_DIRECTIONAL_DISPOSITION": 90,
+          "BLOCKED_IDENTITY_OR_AUTHORITY_JOIN": 3,
+          "BLOCKED_SOURCE_AUTHORITY": 2
+        },
+        "source_use_status": "HOLD_NO_VERIFIED_CURRENT_SIGNED_ORIGINAL_RIGHT",
+        "permission_warrant_ref": null,
+        "competent_original_U_ref": null,
+        "competent_original_E_pre_ref": null,
+        "eligible_original_count": null,
+        "native_original_runs": 0,
+        "sample_risk_design_edition": "UNBOUND_TO_CURRENT_ORIGINAL_NATIVE_RELEASE"
+      },
+      {
+        "atlas_id": "SRC25",
+        "label": "Latinobar\u00f3metro2011",
+        "family": "Latinobar\u00f3metro",
+        "wave": "2011",
+        "qra_row_count": 414,
+        "items": 414,
+        "status_counts": {
+          "GOVERNED_ADMINISTRATIVE_DISPOSITION": 41,
+          "GOVERNED_QSMV2_RELATION_AUTHORITY": 174,
+          "GOVERNED_NON_DIRECTIONAL_DISPOSITION": 192,
+          "GOVERNED_MANUAL_RELATION_AUTHORITY": 6,
+          "BLOCKED_SOURCE_AUTHORITY": 1
+        },
+        "source_use_status": "HOLD_NO_VERIFIED_CURRENT_SIGNED_ORIGINAL_RIGHT",
+        "permission_warrant_ref": null,
+        "competent_original_U_ref": null,
+        "competent_original_E_pre_ref": null,
+        "eligible_original_count": null,
+        "native_original_runs": 0,
+        "sample_risk_design_edition": "UNBOUND_TO_CURRENT_ORIGINAL_NATIVE_RELEASE"
+      },
+      {
+        "atlas_id": "SRC26",
+        "label": "Latinobar\u00f3metro2024",
+        "family": "Latinobar\u00f3metro",
+        "wave": "2024",
+        "qra_row_count": 194,
+        "items": 194,
+        "status_counts": {
+          "GOVERNED_QSMV2_RELATION_AUTHORITY": 106,
+          "GOVERNED_NON_DIRECTIONAL_DISPOSITION": 67,
+          "BLOCKED_IDENTITY_OR_AUTHORITY_JOIN": 4,
+          "GOVERNED_MANUAL_RELATION_AUTHORITY": 10,
+          "BLOCKED_SOURCE_AUTHORITY": 3,
+          "GOVERNED_ADMINISTRATIVE_DISPOSITION": 4
+        },
+        "source_use_status": "HOLD_NO_VERIFIED_CURRENT_SIGNED_ORIGINAL_RIGHT",
+        "permission_warrant_ref": null,
+        "competent_original_U_ref": null,
+        "competent_original_E_pre_ref": null,
+        "eligible_original_count": null,
+        "native_original_runs": 0,
+        "sample_risk_design_edition": "UNBOUND_TO_CURRENT_ORIGINAL_NATIVE_RELEASE"
+      },
+      {
+        "atlas_id": "SRC27",
+        "label": "LiTS I",
+        "family": "LiTS",
+        "wave": "2006",
+        "qra_row_count": 1198,
+        "items": 1198,
+        "status_counts": {
+          "GOVERNED_NON_DIRECTIONAL_DISPOSITION": 1141,
+          "GOVERNED_ADMINISTRATIVE_DISPOSITION": 7,
+          "GOVERNED_QSMV2_RELATION_AUTHORITY": 45,
+          "GOVERNED_MANUAL_RELATION_AUTHORITY": 5
+        },
+        "source_use_status": "HOLD_NO_VERIFIED_CURRENT_SIGNED_ORIGINAL_RIGHT",
+        "permission_warrant_ref": null,
+        "competent_original_U_ref": null,
+        "competent_original_E_pre_ref": null,
+        "eligible_original_count": null,
+        "native_original_runs": 0,
+        "sample_risk_design_edition": "UNBOUND_TO_CURRENT_ORIGINAL_NATIVE_RELEASE"
+      },
+      {
+        "atlas_id": "SRC28",
+        "label": "LiTS II",
+        "family": "LiTS",
+        "wave": "II",
+        "qra_row_count": 627,
+        "items": 627,
+        "status_counts": {
+          "GOVERNED_NON_DIRECTIONAL_DISPOSITION": 502,
+          "GOVERNED_ADMINISTRATIVE_DISPOSITION": 9,
+          "GOVERNED_QSMV2_RELATION_AUTHORITY": 103,
+          "GOVERNED_MANUAL_RELATION_AUTHORITY": 8,
+          "BLOCKED_STRUCTURAL_MAPPING_AUTHORITY": 5
+        },
+        "source_use_status": "HOLD_NO_VERIFIED_CURRENT_SIGNED_ORIGINAL_RIGHT",
+        "permission_warrant_ref": null,
+        "competent_original_U_ref": null,
+        "competent_original_E_pre_ref": null,
+        "eligible_original_count": null,
+        "native_original_runs": 0,
+        "sample_risk_design_edition": "UNBOUND_TO_CURRENT_ORIGINAL_NATIVE_RELEASE"
+      },
+      {
+        "atlas_id": "SRC29",
+        "label": "LiTS III",
+        "family": "LiTS",
+        "wave": "III",
+        "qra_row_count": 1290,
+        "items": 1290,
+        "status_counts": {
+          "GOVERNED_NON_DIRECTIONAL_DISPOSITION": 1141,
+          "GOVERNED_ADMINISTRATIVE_DISPOSITION": 51,
+          "GOVERNED_QSMV2_RELATION_AUTHORITY": 92,
+          "GOVERNED_MANUAL_RELATION_AUTHORITY": 5,
+          "BLOCKED_STRUCTURAL_MAPPING_AUTHORITY": 1
+        },
+        "source_use_status": "HOLD_NO_VERIFIED_CURRENT_SIGNED_ORIGINAL_RIGHT",
+        "permission_warrant_ref": null,
+        "competent_original_U_ref": null,
+        "competent_original_E_pre_ref": null,
+        "eligible_original_count": null,
+        "native_original_runs": 0,
+        "sample_risk_design_edition": "UNBOUND_TO_CURRENT_ORIGINAL_NATIVE_RELEASE"
+      },
+      {
+        "atlas_id": "SRC30",
+        "label": "LiTS IV",
+        "family": "LiTS",
+        "wave": "IV",
+        "qra_row_count": 1319,
+        "items": 1319,
+        "status_counts": {
+          "GOVERNED_NON_DIRECTIONAL_DISPOSITION": 1020,
+          "GOVERNED_ADMINISTRATIVE_DISPOSITION": 192,
+          "GOVERNED_QSMV2_RELATION_AUTHORITY": 99,
+          "BLOCKED_STRUCTURAL_MAPPING_AUTHORITY": 3,
+          "GOVERNED_MANUAL_RELATION_AUTHORITY": 5
+        },
+        "source_use_status": "HOLD_NO_VERIFIED_CURRENT_SIGNED_ORIGINAL_RIGHT",
+        "permission_warrant_ref": null,
+        "competent_original_U_ref": null,
+        "competent_original_E_pre_ref": null,
+        "eligible_original_count": null,
+        "native_original_runs": 0,
+        "sample_risk_design_edition": "UNBOUND_TO_CURRENT_ORIGINAL_NATIVE_RELEASE"
+      },
+      {
+        "atlas_id": "SRC31",
+        "label": "South Asia W1",
+        "family": "South Asia",
+        "wave": "W1",
+        "qra_row_count": 68,
+        "items": 68,
+        "status_counts": {
+          "GOVERNED_NON_DIRECTIONAL_DISPOSITION": 38,
+          "GOVERNED_QSMV2_RELATION_AUTHORITY": 21,
+          "GOVERNED_MANUAL_RELATION_AUTHORITY": 8,
+          "GOVERNED_ADMINISTRATIVE_DISPOSITION": 1
+        },
+        "source_use_status": "HOLD_NO_VERIFIED_CURRENT_SIGNED_ORIGINAL_RIGHT",
+        "permission_warrant_ref": null,
+        "competent_original_U_ref": null,
+        "competent_original_E_pre_ref": null,
+        "eligible_original_count": null,
+        "native_original_runs": 0,
+        "sample_risk_design_edition": "UNBOUND_TO_CURRENT_ORIGINAL_NATIVE_RELEASE"
+      },
+      {
+        "atlas_id": "SRC32",
+        "label": "South Asia W2",
+        "family": "South Asia",
+        "wave": "W2",
+        "qra_row_count": 73,
+        "items": 73,
+        "status_counts": {
+          "GOVERNED_QSMV2_RELATION_AUTHORITY": 24,
+          "GOVERNED_NON_DIRECTIONAL_DISPOSITION": 37,
+          "GOVERNED_MANUAL_RELATION_AUTHORITY": 8,
+          "BLOCKED_STRUCTURAL_MAPPING_AUTHORITY": 2,
+          "GOVERNED_ADMINISTRATIVE_DISPOSITION": 2
+        },
+        "source_use_status": "HOLD_NO_VERIFIED_CURRENT_SIGNED_ORIGINAL_RIGHT",
+        "permission_warrant_ref": null,
+        "competent_original_U_ref": null,
+        "competent_original_E_pre_ref": null,
+        "eligible_original_count": null,
+        "native_original_runs": 0,
+        "sample_risk_design_edition": "UNBOUND_TO_CURRENT_ORIGINAL_NATIVE_RELEASE"
+      },
+      {
+        "atlas_id": "SRC33",
+        "label": "WVS W1",
+        "family": "WVS",
+        "wave": "W1",
+        "qra_row_count": 188,
+        "items": 188,
+        "status_counts": {
+          "GOVERNED_NON_DIRECTIONAL_DISPOSITION": 130,
+          "GOVERNED_ADMINISTRATIVE_DISPOSITION": 7,
+          "GOVERNED_QSMV2_RELATION_AUTHORITY": 46,
+          "GOVERNED_MANUAL_RELATION_AUTHORITY": 4,
+          "BLOCKED_STRUCTURAL_MAPPING_AUTHORITY": 1
+        },
+        "source_use_status": "HOLD_NO_VERIFIED_CURRENT_SIGNED_ORIGINAL_RIGHT",
+        "permission_warrant_ref": null,
+        "competent_original_U_ref": null,
+        "competent_original_E_pre_ref": null,
+        "eligible_original_count": null,
+        "native_original_runs": 0,
+        "sample_risk_design_edition": "UNBOUND_TO_CURRENT_ORIGINAL_NATIVE_RELEASE"
+      },
+      {
+        "atlas_id": "SRC34",
+        "label": "WVS W4",
+        "family": "WVS",
+        "wave": "W4",
+        "qra_row_count": 418,
+        "items": 418,
+        "status_counts": {
+          "GOVERNED_NON_DIRECTIONAL_DISPOSITION": 242,
+          "GOVERNED_QSMV2_RELATION_AUTHORITY": 163,
+          "GOVERNED_MANUAL_RELATION_AUTHORITY": 9,
+          "GOVERNED_ADMINISTRATIVE_DISPOSITION": 2,
+          "BLOCKED_STRUCTURAL_MAPPING_AUTHORITY": 2
+        },
+        "source_use_status": "HOLD_NO_VERIFIED_CURRENT_SIGNED_ORIGINAL_RIGHT",
+        "permission_warrant_ref": null,
+        "competent_original_U_ref": null,
+        "competent_original_E_pre_ref": null,
+        "eligible_original_count": null,
+        "native_original_runs": 0,
+        "sample_risk_design_edition": "UNBOUND_TO_CURRENT_ORIGINAL_NATIVE_RELEASE"
+      },
+      {
+        "atlas_id": "SRC35",
+        "label": "WVS W7",
+        "family": "WVS",
+        "wave": "W7",
+        "qra_row_count": 613,
+        "items": 613,
+        "status_counts": {
+          "GOVERNED_NON_DIRECTIONAL_DISPOSITION": 405,
+          "GOVERNED_ADMINISTRATIVE_DISPOSITION": 5,
+          "GOVERNED_QSMV2_RELATION_AUTHORITY": 195,
+          "GOVERNED_MANUAL_RELATION_AUTHORITY": 6,
+          "BLOCKED_STRUCTURAL_MAPPING_AUTHORITY": 2
+        },
+        "source_use_status": "HOLD_NO_VERIFIED_CURRENT_SIGNED_ORIGINAL_RIGHT",
+        "permission_warrant_ref": null,
+        "competent_original_U_ref": null,
+        "competent_original_E_pre_ref": null,
+        "eligible_original_count": null,
+        "native_original_runs": 0,
+        "sample_risk_design_edition": "UNBOUND_TO_CURRENT_ORIGINAL_NATIVE_RELEASE"
+      }
+    ]
+  },
+  "item_census": {
+    "all_rows": 18518,
+    "active_rows": 18259,
+    "excluded_Asian_W6_rows": 259,
+    "active_plus_excluded": 18518,
+    "status_counts": {
+      "GOVERNED_ADMINISTRATIVE_DISPOSITION": 966,
+      "GOVERNED_NON_DIRECTIONAL_DISPOSITION": 12611,
+      "GOVERNED_QSMV2_RELATION_AUTHORITY": 4397,
+      "GOVERNED_MANUAL_RELATION_AUTHORITY": 173,
+      "BLOCKED_IDENTITY_OR_AUTHORITY_JOIN": 9,
+      "BLOCKED_STRUCTURAL_MAPPING_AUTHORITY": 41,
+      "FROZEN_ACCEPTED_GSS": 52,
+      "BLOCKED_SOURCE_AUTHORITY": 10
+    },
+    "identity_ledger": {
+      "path": "phase_a/02_ITEM_IDENTITY_LEDGER.jsonl",
+      "rows": 18259,
+      "sha256": "46e4d70adc6bc723b99be414fc702b146fefc6ed7ac6652c3892f5469b985d38"
+    },
+    "claimed_active_18_259_matches_o35e": true,
+    "claimed_all_18_518_matches": true,
+    "difference_18_276_spine": {
+      "value": 18276,
+      "status": "EXACT_CROSSWALK_REQUIRED__NOT_AN_OMISSION_TO_DELETE",
+      "note": "R18: 18,792 structure rows, 18,276 governed implementation spine, 18,259 O35E active rows, 18,413 historical columns are different units; the 17-row O35E-vs-spine delta must be typed, not dropped"
+    }
+  },
+  "operation_census": {
+    "classes": [
+      "I03_RAW_MARGINAL",
+      "I03_GOVERNED_WEIGHTED",
+      "I03_DIRECTED_CONDITIONAL",
+      "I05_EXACT_BOUNDED_DISCOVERY",
+      "I04_STRUCTURAL_ADMISSION",
+      "BATCH_EXPECTED_WORK",
+      "OC01_SOURCE_LOCAL_CONSUMER"
+    ],
+    "requirements": {
+      "I03_RAW_MARGINAL": "Source-grounded target/response/risk/denominator and scientific operation authority required.",
+      "I03_GOVERNED_WEIGHTED": "Also explicit weight/design/estimand; not default weight=1.",
+      "I03_DIRECTED_CONDITIONAL": "Also eligible condition role, directed predicate, shared subject carrier and risk-set binding.",
+      "I05_EXACT_BOUNDED_DISCOVERY": "Also prospective finite grammar/frontier, support/validation and coverage authority.",
+      "I04_STRUCTURAL_ADMISSION": "Relation-specific semantic authority and exact ingress required; empirical facts remain distinct.",
+      "BATCH_EXPECTED_WORK": "Source issuer E_pre expected root independent of emitted manifest, exact result custody.",
+      "OC01_SOURCE_LOCAL_CONSUMER": "Exact measured fact and current bounded evidence; no population or actor promotion."
+    },
+    "defaults": {
+      "I03_RAW_MARGINAL": "HOLD_UNISSUED_ORIGINAL_SOURCE_ITEM_OP_BINDING",
+      "I03_GOVERNED_WEIGHTED": "HOLD_UNISSUED_ORIGINAL_SOURCE_ITEM_OP_BINDING",
+      "I03_DIRECTED_CONDITIONAL": "HOLD_UNISSUED_ORIGINAL_SOURCE_ITEM_OP_BINDING",
+      "I05_EXACT_BOUNDED_DISCOVERY": "HOLD_UNISSUED_ORIGINAL_SOURCE_ITEM_OP_BINDING",
+      "I04_STRUCTURAL_ADMISSION": "HOLD_UNISSUED_ORIGINAL_SOURCE_ITEM_OP_BINDING",
+      "BATCH_EXPECTED_WORK": "HOLD_UNISSUED_ORIGINAL_SOURCE_ITEM_OP_BINDING",
+      "OC01_SOURCE_LOCAL_CONSUMER": "HOLD_UNISSUED_ORIGINAL_SOURCE_ITEM_OP_BINDING"
+    },
+    "counts": {
+      "I03_RAW_MARGINAL": {
+        "potential": 18259,
+        "permitted": 0,
+        "hold": 18259,
+        "executed_with_consumer": 0,
+        "default": "HOLD_UNISSUED_ORIGINAL_SOURCE_ITEM_OP_BINDING"
+      },
+      "I03_GOVERNED_WEIGHTED": {
+        "potential": 18259,
+        "permitted": 0,
+        "hold": 18259,
+        "executed_with_consumer": 0,
+        "default": "HOLD_UNISSUED_ORIGINAL_SOURCE_ITEM_OP_BINDING"
+      },
+      "I03_DIRECTED_CONDITIONAL": {
+        "potential": 18259,
+        "permitted": 0,
+        "hold": 18259,
+        "executed_with_consumer": 0,
+        "default": "HOLD_UNISSUED_ORIGINAL_SOURCE_ITEM_OP_BINDING"
+      },
+      "I05_EXACT_BOUNDED_DISCOVERY": {
+        "potential": 18259,
+        "permitted": 0,
+        "hold": 18259,
+        "executed_with_consumer": 0,
+        "default": "HOLD_UNISSUED_ORIGINAL_SOURCE_ITEM_OP_BINDING"
+      },
+      "I04_STRUCTURAL_ADMISSION": {
+        "potential": 18259,
+        "permitted": 0,
+        "hold": 18259,
+        "executed_with_consumer": 0,
+        "default": "HOLD_UNISSUED_ORIGINAL_SOURCE_ITEM_OP_BINDING"
+      },
+      "BATCH_EXPECTED_WORK": {
+        "potential": 18259,
+        "permitted": 0,
+        "hold": 18259,
+        "executed_with_consumer": 0,
+        "default": "HOLD_UNISSUED_ORIGINAL_SOURCE_ITEM_OP_BINDING"
+      },
+      "OC01_SOURCE_LOCAL_CONSUMER": {
+        "potential": 18259,
+        "permitted": 0,
+        "hold": 18259,
+        "executed_with_consumer": 0,
+        "default": "HOLD_UNISSUED_ORIGINAL_SOURCE_ITEM_OP_BINDING"
+      }
+    },
+    "potential_rows": 127813,
+    "permitted": 0,
+    "hold": 127813,
+    "executed_with_consumer_current": 0
+  },
+  "estate_axis_census": {
+    "sources": 35,
+    "cells": 1890,
+    "source_native_expected": 1050,
+    "ee_expected": 560,
+    "f_expected": 280,
+    "status_counts": {
+      "EXACT_SCOPED_RECONCILIATION_REQUIRED__NOT_ASSERTED_MISSING": 1050,
+      "GENERAL_OWNER_OR_ARCHITECTURE_PRESENT_AT_BASELINE__THIS_WAVE_OPERATION_OCCUPANCY_UNVERIFIED": 560,
+      "NOT_CERTIFIED_AT_THIS_EXACT_SCOPE": 280
+    },
+    "cells_per_source": 54
+  },
+  "task_census": {
+    "tasks": 101,
+    "state_counts": {
+      "OPEN_EVIDENCE_BINDING__NOT_A_DEFECT_VERDICT": 101
+    },
+    "critical_gate_status": "NOT_PROVED_AT_COMPLETE_CLOSED35_ORIGINAL_ITEM_OPERATION_GRAIN",
+    "gate_owner_evidence": [
+      "rawlsing_next/pre553_route_b_production.py::execute_route_b_production consumes predeclared i03_requests and discovery authority",
+      "rawlsing_next/pre553_discovery_exact.py::execute_exact_bounded_discovery consumes authority + predicate and query template catalogs",
+      "rawlsing_next/pre553_batch_runner.py::BatchExecutionRunner consumes immutable BatchManifest"
+    ]
+  },
+  "queue_census": {
+    "sources": 35,
+    "current_ref_nulls": {
+      "current_complete_qualified_item_inventory_ref": 35,
+      "current_auto_authorized_frontier_ref": 35,
+      "current_source_backed_all_expected_products_manifest_ref": 35,
+      "final_consumer_receipt_ref": 35,
+      "source_intrinsic_nonapplicability_receipt_ref": 35
+    },
+    "all_current_refs_null": true,
+    "status": "NON_AUTHORIZING_CURRENT_READ_AND_HISTORICAL_EDGE_CROSSWALK__NOT_NEW_ITEM_LEVEL_OR_EXECUTION_CERTIFICATION"
+  },
+  "six_label_census": {
+    "PERMITTED": {
+      "count": 0,
+      "grain": "current original item/operation",
+      "rule": "requires exact competent original U + E_pre + current source-use permission + operation requirement; none observed"
+    },
+    "AUTHORITY_HELD": {
+      "count": 4630,
+      "grain": "item primary (blocked/relation authority without current source permission)"
+    },
+    "UNDECIDED": {
+      "count": 0,
+      "grain": "item primary status",
+      "note": "all 18,259 items have incomplete option/carrier/route/risk binding, recorded separately as binding incompleteness, not as an undecided authority class"
+    },
+    "SOURCE_INTRINSIC_NONAPPLICABLE": {
+      "count": 13577,
+      "grain": "item primary at directed measurement-relation grain",
+      "note": "marginal/structural operations remain HOLD, never auto-permitted"
+    },
+    "PRODUCER_PENDING": {
+      "count": 18259,
+      "grain": "current frontier axis (all items)",
+      "rule": "no current complete qualified item inventory / authorized frontier / expected-products manifest / consumer ref for any of 35 sources"
+    },
+    "EXECUTED_WITH_CONSUMER": {
+      "count": 52,
+      "grain": "historical frozen GSS accepted relations",
+      "note": "LiTS-I AS2B adds 8 historical I03 positives outside the O35E matrix; neither is a current all35 prospective proof"
+    }
+  },
+  "primary_disposition": {
+    "SOURCE_INTRINSIC_NONAPPLICABLE": 13577,
+    "AUTHORITY_HELD": 4630,
+    "EXECUTED_WITH_CONSUMER": 52,
+    "PERMITTED": 0,
+    "UNDECIDED": 0
+  },
+  "accepted_positives": {
+    "lits_i_as2b": {
+      "commit": "923f2c00b6145182a5e2be5038f579845951da19",
+      "respondents": 29002,
+      "respondent_events": 58004,
+      "routing_facts": 58004,
+      "coordinate_facts": 145010,
+      "weight_facts": 0,
+      "i03_executed": 8,
+      "i03_passed": 8,
+      "i03_failed": 0,
+      "typed_nonpositive_dispositions": 11,
+      "hostile_pass": 8,
+      "hostile_fail": 0,
+      "exact_hashes": {
+        "GovernedC11Projection": "84361298ae702786a3fd1044bf619ffa4fe9ed2877040724386951e9c9d27872",
+        "C11SourceReleaseCandidate": "7f81a222ea2611638d7ce7ac55c695120b57323832e6dc17ff65c1992201659c",
+        "C11LogicalRelease": "e6c954538fa1830820120465a10a6d065b8a18d1e6b7b08d3f863b0917741e26",
+        "C11Repository": "ff8a49d2560fe3cf229f4d5a0f87a14c52d08086a74649968d8c9c9d0225aa77",
+        "ReplayManifest": "6bfe9862abd6f373309ff6f8868f8871948bb9ed397906d880cda6776941a1dd"
+      },
+      "grain": "HISTORICAL_EXACT_LITS1_I_SOURCE_BACKED_C11_AND_8_I03__NOT_CURRENT_ALL35"
+    },
+    "gss_frozen_accepted": 52,
+    "o35e_test_only_positive": {
+      "verdict": "ORIGINAL35_SOURCE_U_E_PRE_HOLD__NATIVE_TESTONLY_POSITIVE",
+      "original_source_run": "NOT_EXECUTED__SOURCE_AND_ISSUER_HOLD",
+      "new_original_products": 0,
+      "new_U_or_E_pre": false,
+      "grain": "TEST_ONLY_NATIVE_POSITIVE__NOT_ORIGINAL_SOURCE_PRODUCT"
+    },
+    "wvs7": {
+      "status": "ACCEPTED_REAL_SOURCE_ENGINEERING_PRESENT__EXACT_GRAIN_NOT_RECENSUSED_IN_THIS_FREEZE",
+      "pointer": "PRE-MAIN Verkhovod / Trii real-source history"
+    }
+  },
+  "refusal_cases": [
+    {
+      "id": "RF01_missing_eligible_item",
+      "detect": "ledger identity absent",
+      "expected": "RED, no reduction"
+    },
+    {
+      "id": "RF02_substituted_same_cardinality",
+      "detect": "identity/p2 hash set mismatch at equal count",
+      "expected": "RED"
+    },
+    {
+      "id": "RF03_duplicate_response_options",
+      "detect": "duplicate option/category identity or conflicting topology",
+      "expected": "RED"
+    },
+    {
+      "id": "RF04_country_form_split_change",
+      "detect": "country/form/split key mismatch",
+      "expected": "RED"
+    },
+    {
+      "id": "RF05_household_person_confusion",
+      "detect": "respondent carrier/role mismatch",
+      "expected": "RED"
+    },
+    {
+      "id": "RF06_mr_ranked_repeated_collapse",
+      "detect": "topology/partial-registry conflict or lost multiplicity",
+      "expected": "RED"
+    },
+    {
+      "id": "RF07_d62_semantic_shadowing",
+      "detect": "semantic version/qsmv2 hash or source authority mismatch",
+      "expected": "RED"
+    },
+    {
+      "id": "RF08_wrong_weight_or_denominator",
+      "detect": "weight/denominator/estimand mismatch; no default weight=1",
+      "expected": "RED"
+    },
+    {
+      "id": "RF09_source_version_temporal_change",
+      "detect": "source SHA/edition/version mismatch",
+      "expected": "RED"
+    },
+    {
+      "id": "RF10_false_no_change",
+      "detect": "canonical digest/status census differs while claiming no change",
+      "expected": "RED"
+    },
+    {
+      "id": "RF11_post_result_frontier_deletion",
+      "detect": "operation/item removed after a positive receipt",
+      "expected": "RED"
+    },
+    {
+      "id": "RF12_hidden_unvisited_work",
+      "detect": "active/excluded/35X/queue census mismatch",
+      "expected": "RED"
+    }
+  ],
+  "counting_logic": {
+    "source_formula": "35 atlas sources, exactly once",
+    "item_formula": "sum(per-wave items) = 18,259 active; 18,259 + 259 excluded = 18,518 all rows",
+    "status_formula": "sum(8 status classes) = 18,259",
+    "operation_formula": "18,259 items x 7 operation classes = 127,813 potential rows; PERMITTED=0, HOLD=127,813",
+    "estate_formula": "35 sources x 54 axes = 1,890 cells; 1,050 source-native + 560 EE + 280 F",
+    "task_formula": "101 task rows; 101 OPEN_EVIDENCE_BINDING",
+    "queue_formula": "35 sources x 5 current refs = 175 null refs",
+    "primary_formula": "13,577 SOURCE_INTRINSIC_NONAPPLICABLE + 4,630 AUTHORITY_HELD + 52 EXECUTED_WITH_CONSUMER = 18,259"
+  },
+  "classification_contract": {
+    "PERMITTED": "exact competent original U + E_pre + current source-use permission + operation requirement; none in this freeze",
+    "AUTHORITY_HELD": "blocked source/identity/structural status or relation authority without current source permission",
+    "UNDECIDED": "no item primary status in this matrix; incomplete option/carrier/route/risk binding is recorded separately for all 18,259 items",
+    "SOURCE_INTRINSIC_NONAPPLICABLE": "administrative or non-directional source disposition at the directed measurement-relation grain; does not authorize marginal/structural operations",
+    "PRODUCER_PENDING": "no current complete qualified item inventory / authorized frontier / expected products manifest / consumer for a source",
+    "EXECUTED_WITH_CONSUMER": "exact historical accepted receipt at its own grain; LiTS-I 8 I03 and GSS 52 are not current all35 prospective proof"
+  },
+  "authority": "SOURCEFREE TEST_ONLY; no original U/E_pre, source execution, model/actor, Field Forge or production right",
+  "oracle_digest_sha256": "7603de8178b208053c25e3d6fd846d33b6988b8664a47c0db15f15d1fa6c35c6"
+}

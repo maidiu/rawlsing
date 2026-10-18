@@ -1,0 +1,116 @@
+{
+  "schema": "PYAT_R37_WG0I_REFUSAL_AND_CLASSIFICATION_CASES@1",
+  "oracle_digest_sha256": "7603de8178b208053c25e3d6fd846d33b6988b8664a47c0db15f15d1fa6c35c6",
+  "item_ledger_sha256": "46e4d70adc6bc723b99be414fc702b146fefc6ed7ac6652c3892f5469b985d38",
+  "classification_contract": {
+    "PERMITTED": "exact competent original U + E_pre + current source-use permission + operation requirement; none in this freeze",
+    "AUTHORITY_HELD": "blocked source/identity/structural status or relation authority without current source permission",
+    "UNDECIDED": "no item primary status in this matrix; incomplete option/carrier/route/risk binding is recorded separately for all 18,259 items",
+    "SOURCE_INTRINSIC_NONAPPLICABLE": "administrative or non-directional source disposition at the directed measurement-relation grain; does not authorize marginal/structural operations",
+    "PRODUCER_PENDING": "no current complete qualified item inventory / authorized frontier / expected products manifest / consumer for a source",
+    "EXECUTED_WITH_CONSUMER": "exact historical accepted receipt at its own grain; LiTS-I 8 I03 and GSS 52 are not current all35 prospective proof"
+  },
+  "six_label_census": {
+    "PERMITTED": {
+      "count": 0,
+      "grain": "current original item/operation",
+      "rule": "requires exact competent original U + E_pre + current source-use permission + operation requirement; none observed"
+    },
+    "AUTHORITY_HELD": {
+      "count": 4630,
+      "grain": "item primary (blocked/relation authority without current source permission)"
+    },
+    "UNDECIDED": {
+      "count": 0,
+      "grain": "item primary status",
+      "note": "all 18,259 items have incomplete option/carrier/route/risk binding, recorded separately as binding incompleteness, not as an undecided authority class"
+    },
+    "SOURCE_INTRINSIC_NONAPPLICABLE": {
+      "count": 13577,
+      "grain": "item primary at directed measurement-relation grain",
+      "note": "marginal/structural operations remain HOLD, never auto-permitted"
+    },
+    "PRODUCER_PENDING": {
+      "count": 18259,
+      "grain": "current frontier axis (all items)",
+      "rule": "no current complete qualified item inventory / authorized frontier / expected-products manifest / consumer ref for any of 35 sources"
+    },
+    "EXECUTED_WITH_CONSUMER": {
+      "count": 52,
+      "grain": "historical frozen GSS accepted relations",
+      "note": "LiTS-I AS2B adds 8 historical I03 positives outside the O35E matrix; neither is a current all35 prospective proof"
+    }
+  },
+  "primary_disposition": {
+    "SOURCE_INTRINSIC_NONAPPLICABLE": 13577,
+    "AUTHORITY_HELD": 4630,
+    "EXECUTED_WITH_CONSUMER": 52,
+    "PERMITTED": 0,
+    "UNDECIDED": 0
+  },
+  "refusal_cases": [
+    {
+      "id": "RF01_missing_eligible_item",
+      "detect": "ledger identity absent",
+      "expected": "RED, no reduction"
+    },
+    {
+      "id": "RF02_substituted_same_cardinality",
+      "detect": "identity/p2 hash set mismatch at equal count",
+      "expected": "RED"
+    },
+    {
+      "id": "RF03_duplicate_response_options",
+      "detect": "duplicate option/category identity or conflicting topology",
+      "expected": "RED"
+    },
+    {
+      "id": "RF04_country_form_split_change",
+      "detect": "country/form/split key mismatch",
+      "expected": "RED"
+    },
+    {
+      "id": "RF05_household_person_confusion",
+      "detect": "respondent carrier/role mismatch",
+      "expected": "RED"
+    },
+    {
+      "id": "RF06_mr_ranked_repeated_collapse",
+      "detect": "topology/partial-registry conflict or lost multiplicity",
+      "expected": "RED"
+    },
+    {
+      "id": "RF07_d62_semantic_shadowing",
+      "detect": "semantic version/qsmv2 hash or source authority mismatch",
+      "expected": "RED"
+    },
+    {
+      "id": "RF08_wrong_weight_or_denominator",
+      "detect": "weight/denominator/estimand mismatch; no default weight=1",
+      "expected": "RED"
+    },
+    {
+      "id": "RF09_source_version_temporal_change",
+      "detect": "source SHA/edition/version mismatch",
+      "expected": "RED"
+    },
+    {
+      "id": "RF10_false_no_change",
+      "detect": "canonical digest/status census differs while claiming no change",
+      "expected": "RED"
+    },
+    {
+      "id": "RF11_post_result_frontier_deletion",
+      "detect": "operation/item removed after a positive receipt",
+      "expected": "RED"
+    },
+    {
+      "id": "RF12_hidden_unvisited_work",
+      "detect": "active/excluded/35X/queue census mismatch",
+      "expected": "RED"
+    }
+  ],
+  "permitted_rule": "No operation may be labelled PERMITTED without an exact competent original U, E_pre, current source-use permission and the operation-specific requirement; the freeze records zero such rows.",
+  "no_drop_rule": "Every one of the 35 sources and every one of the 18,259 active O35E items must be retained in any current frontier; 259 excluded Asian W6 rows must remain typed, not deleted; the 18,276/18,259/18,792/18,413 unit difference is a crosswalk obligation, not an omission.",
+  "authority": "SOURCEFREE TEST_ONLY; no original U/E_pre or source execution right."
+}
