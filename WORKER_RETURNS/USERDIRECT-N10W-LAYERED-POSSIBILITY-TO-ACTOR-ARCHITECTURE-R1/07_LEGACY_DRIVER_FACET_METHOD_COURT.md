@@ -1,0 +1,18 @@
+# Supplement: legacy driver/Enneagram mechanical falsification — project-upload files, NOT repo owner authority
+
+**Independent scientific context only.** Examined three user-supplied project attachment snapshots in the local container, not an accepted current GitHub producer or current Sorok identity:
+- `driverSchema.json` SHA256 `859d16ce2f490dcd6cdf73b80db9580ff2b03c21168bcafaf5d5284db89cb5dc`; descriptions of country-level drivers and survey/proxy families.
+- `driverTypeWeights.js` SHA256 `7d1eb56b4dc50f037c01976fe9eaace6e43130da3bdf7ea02591d02fe04d90cc`; JSON-like mappings of 22 contextual dimensions to `t1`…`t9` weights; these are **given coefficients**, no calibration/causal warrant claimed.
+- `enneagramBatch.js` SHA256 `52e849e3e36d2708c13c8214fce2dfd606156292636d695412dc25451c4d1751`; `getTypeScores(countryVec,weights)` computes sums `sum_d countryDriver[d] × tWeight[d]` and min–max normalizes across nine type scores **within one country** before writing `countryEnneagramProfiles.json`. Note it imports a `csv-parser` CLI module; the independent tests extract and execute the exact function via Node VM without triggering the command-line CSV side effects or needing package installation.
+
+**Actually executed three local tests:** Node 22.16.0 via Python 3.13.5 / pytest 9.0.2 and the **actual supplied function text**, using an isolated read-only VM: `3 passed`, `0 failed` in 0.18s; `legacy_driver_adversarial.junit.xml` included in attached executable bundle. This is **not** a new accepted Rawlsing law or a fully installed old generator.
+
+| Case | Input intervention | Observed program behavior | Scientific judgement |
+|---|---|---|---|
+| LD01 all driver inputs absent | `getTypeScores({},weights)` | each raw score 0; min=max=0, normalization divides 0/0; JS `NaN` becomes `null` under JSON serialization for all t1..t9 | Real **legacy computation/NULL-handling defect**, not a person fact or a missing-support estimate |
+| LD02 one malformed driver | `materialSecurity='unknown'` | `parseFloat` produces NaN and contaminates all nine accumulated type scores, then null on JSON export | Real **input-validation/propagation defect**, not observed type distribution |
+| LD03 one positive numeric country driver | `materialSecurity=0.5` | nine bounded numbers 0..1 produced | Arithmetic normalizer works for this synthetic input, but no evidence of a particular person, social practice, or recognized history |
+
+**Architecture verdict:** Legacy country/driver → t1..t9 scoring is at most a speculative/derived *group-coded descriptor* or downstream bounded research prior; it cannot itself be a calibrated empirical life-route likelihood, a psychologically validated type, a person's personally experienced class position, acquaintance, memory, meaning, or an action mechanism. It cannot instantiate P3/P4/P5 or override the material world, event/actor history and model/use issuers. Even if numeric weights were independently calibrated, group-level covariation would not identify an individual's actual conations or future acts without qualified joint observations and developmental bridge. The correct decision is **NO REUSE AS PERSON-ACTION GENERATOR**; preserve possible descriptive research under explicitly TEST_ONLY receipts if competent science and owners later grant it.
+
+**Boundary:** Local attached files are user-provided evidence; do **not** assert their SHA is a GitHub repository blob, infer when they were current, or silently equate them to accepted Pyat PRE-V3 or Sorok code. No change to `00_VERDICT` positive ceiling. This supplement adds 3 independently executed legacy-mechanism guards in a *separate* court, not to the already published 36 E04/reference count.
