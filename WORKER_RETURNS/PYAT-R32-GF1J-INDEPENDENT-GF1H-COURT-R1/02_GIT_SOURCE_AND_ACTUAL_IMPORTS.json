@@ -22,8 +22,8 @@
   "local_git": "2.47.3",
   "local_git_clone_status": "NO_PRIVATE_REPO_WORKTREE",
   "local_container_github_dns": "FAILED_COULD_NOT_RESOLVE_HOST",
-  "local_gf1h_import_file": null,
-  "local_gf1h_import_sha256": null,
+  "local_gf1h_import_file": "/mnt/data/gf1j_phase_b/repro/gf1_pair_support_consumer.py",
+  "local_gf1h_import_sha256": "a4915b845853e70f9430190aebde298346ea5ad4472de8380e26182113f97c8a",
   "phase_a_reference_script": {
     "local_path": "/mnt/data/gf1j_phase_a/test_independent_math_reference.py",
     "git_blob": "cbd958b6f63bf7c8ff5535aa223fb83fc79adc5b",
@@ -57,8 +57,48 @@
       "fail": 0
     }
   },
-  "gf1j_independent_exact_repaired_import_tests": "NOT_EXECUTED_NO_74_SOURCE_CLOSURE_STAGED",
-  "gf1j_independent_exact_cold_process": "NOT_EXECUTED",
-  "phase_b_status": "SOURCE_CODE_REVIEW_AND_JUNIT_AUDIT_COMPLETED__INDEPENDENT_EXECUTABLE_GF1H_REPRO_HOLD",
-  "original_data_processed": false
+  "gf1j_independent_exact_repaired_import_tests": {
+    "status": "REAL_EXACT_GF1H_BLOB_SOURCE__ISOLATION_ADAPTER_ONLY",
+    "passed": 36,
+    "failed": 0,
+    "full_native_74_module_closure": false,
+    "junit_sha256": "806a03bf4c0f433e492a5341c0afa5389bf5d1922d654e8ce4d49f39009c883f"
+  },
+  "gf1j_independent_exact_cold_process": {
+    "status": "TWO_SEPARATE_PYTHON_OS_PROCESSES_ON_EXACT_GF1H_WITH_ISOLATED_TEST_ADAPTER",
+    "passed": 1,
+    "distinct_pids": [
+      681,
+      691
+    ],
+    "result_hash": "16d26e9c6ecbd4bf288a00350749c4116e0e55b36649b0897689171da3dd1e59",
+    "junit_sha256": "a279e32f6b538570a62c5d08260e887d9bbddcb99ffc45f03f47e78520bb802d",
+    "full_native_cold": false
+  },
+  "phase_b_status": "EXACT_GF1H_IMPORTED_BOUNDED_36_PASS__COLD_1_PASS__TYPED_NATIVE_STATE_TWO_REDS__FULL_NATIVE_74_MODULE_I2_HOLD",
+  "original_data_processed": false,
+  "gf1j_independent_new_two_strict_reds": {
+    "result": "TWO_REAL_PYTEST_FAILURES",
+    "tests": 2,
+    "failures": 2,
+    "mutants": [
+      "int(0) aliases string conditioner domain '0'",
+      "int(0) aliases string target domain '0'"
+    ],
+    "observed": "PAIR_SUPPORT_SIGNATURE_COMPUTED__EXACT_PAIR_SEPARATION__DOWNSTREAM_VALUE_TRUE",
+    "required": "CONSUMER_RELATION_INTEGRITY_REJECTED__NO_SEPARATION_CLASS__NO_VALUE",
+    "junit_sha256": "f1e1c7db61898c20577896ea163329833417c8a106b48c6fbee4b227f787022b",
+    "original_native_constructor_physically_tested": false
+  },
+  "phase_a_math_rerun": {
+    "tests": 16,
+    "passed": 16,
+    "junit_sha256": "6a12110085f0ec4a673ef338979e9b120fbd39c3e3938b0456cf2f81fad285ae"
+  },
+  "local_executable_bundle": {
+    "path": "/mnt/data/gf1j_phase_b/GF1J_INDEPENDENT_PHASE_A_BOUNDED_PHASE_B_BUNDLE.zip",
+    "bytes": 13389,
+    "sha256": "9449faefb62bcd35a57c5e0dc95ee56077defeeea52ceef7d06677ae8f4f2c71",
+    "committed_to_github": false
+  }
 }
