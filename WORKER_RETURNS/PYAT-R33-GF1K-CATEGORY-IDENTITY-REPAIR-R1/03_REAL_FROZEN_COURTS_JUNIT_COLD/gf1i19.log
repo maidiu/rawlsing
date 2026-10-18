@@ -1,0 +1,47 @@
+.................FF                                                      [100%]
+=================================== FAILURES ===================================
+________ test_named_downstream_consumer_module_is_absent_from_candidate ________
+
+    def test_named_downstream_consumer_module_is_absent_from_candidate():
+        """GF1 claims a named consumer that physically reads the relation.
+    
+        The module ``gf1_pair_support_consumer`` is imported by BOTH
+        ``court/repro/gf1_native.py`` and ``court/repro/test_gf1_generic_pair.py``
+        but exists NOWHERE in the candidate branch history.  Therefore the claimed
+        44/44 chain and the named-consumer value claims cannot be reproduced.
+        """
+        r = RT / "gf1_pair_support_consumer.py"
+>       assert not r.exists(), "unexpectedly present"
+E       AssertionError: unexpectedly present
+E       assert not True
+E        +  where True = exists()
+E        +    where exists = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/gf1k-r33-idcp9tf9/WORKER_RETURNS/PYAT-R18-GF1I-INDEPENDENT-GENERIC-PAIR-R1/court/runtime_root/gf1_pair_support_consumer.py').exists
+
+test_gf1i_independent.py:282: AssertionError
+______________ test_candidate_frozen_44_suite_cannot_be_collected ______________
+
+    def test_candidate_frozen_44_suite_cannot_be_collected():
+        """The returned test suite fails at import, so 44/44 is not reproducible."""
+    
+        import subprocess
+        test_file = C / "repro/test_gf1_generic_pair.py"
+        assert test_file.is_file(), "candidate test file must be present"
+        env = dict(os.environ)
+        env["PYTHONDONTWRITEBYTECODE"] = "1"
+        env["PYTHONPATH"] = str(C / "repro") + os.pathsep + str(RT)
+        proc = subprocess.run(
+            [sys.executable, "-m", "pytest", "test_gf1_generic_pair.py", "-q",
+             "--no-header", "-p", "no:cacheprovider", "--collect-only"],
+            cwd=str(C / "repro"), capture_output=True, text=True, env=env,
+        )
+        combined = proc.stdout + proc.stderr
+>       assert "gf1_pair_support_consumer" in combined, \
+            "expected the missing-consumer import failure"
+E       AssertionError: expected the missing-consumer import failure
+E       assert 'gf1_pair_support_consumer' in '\n==================================== ERRORS ====================================\n__________________ ERROR collecti...!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\nno tests collected, 1 error in 1.18s\n'
+
+test_gf1i_independent.py:303: AssertionError
+=========================== short test summary info ============================
+FAILED test_gf1i_independent.py::test_named_downstream_consumer_module_is_absent_from_candidate
+FAILED test_gf1i_independent.py::test_candidate_frozen_44_suite_cannot_be_collected
+2 failed, 17 passed in 4.27s

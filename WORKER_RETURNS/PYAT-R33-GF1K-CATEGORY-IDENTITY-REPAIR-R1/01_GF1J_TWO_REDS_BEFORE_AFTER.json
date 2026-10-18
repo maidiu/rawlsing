@@ -1,0 +1,49 @@
+{
+ "schema": "PYAT_R33_GF1K_TWO_REDS_BEFORE_AFTER@1",
+ "observed_at_utc": "2026-10-18T02:00:09Z",
+ "defect": "GF1H _decode_profile coerced source-native domain values and row/cell state values with str(). A category whose native declared value is the STRING \"0\" was accepted when a fully rehashed semantic relation supplied INTEGER 0 at condition_state or target_state; both computed as EXACT_PAIR_SEPARATION. Python bool False == int 0 was likewise folded.",
+ "repair": "Type-preserving native-category identity (_same_native = type(a) is type(b) and a == b) on declared conditioner/target domains and on every row condition_state / cell target_state. No str() coercion, no bool/int folding, no auto-normalisation. Spoofed row or target categories are refused with CONSUMER_RELATION_INTEGRITY_REJECTED before any total, class, result hash or downstream value.",
+ "before": {
+  "consumer": "GF1H (pinned)",
+  "git_blob_sha1": "66658149fd7362e17c064a3fc1f9029d638f9ed9",
+  "sha256": "a4915b845853e70f9430190aebde298346ea5ad4472de8380e26182113f97c8a",
+  "matches_commission_pin": true,
+  "exit": 1,
+  "cases": [
+   {
+    "case": "test_gf1j_red1_conditioner_integer_spoofed",
+    "result": "RED",
+    "message": "AssertionError: {'consumer_id': 'GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ONLY@1.0.0', 'consumer_output_family': 'GF1_PAIR_SUPPORT_SIG...E_RESULT_TEST_ONLY@1.0.0', 'decision_state': 'PAIR_SUPPORT_SIGNATURE_COMPUTED', 'downstream_value_produced': True, ...}\nassert 'PAIR_SUPPORT...TURE_COMPUTED' == 'C"
+   },
+   {
+    "case": "test_gf1j_red2_target_integer_spoofed",
+    "result": "RED",
+    "message": "AssertionError: {'consumer_id': 'GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ONLY@1.0.0', 'consumer_output_family': 'GF1_PAIR_SUPPORT_SIG...E_RESULT_TEST_ONLY@1.0.0', 'decision_state': 'PAIR_SUPPORT_SIGNATURE_COMPUTED', 'downstream_value_produced': True, ...}\nassert 'PAIR_SUPPORT...TURE_COMPUTED' == 'C"
+   }
+  ]
+ },
+ "after": {
+  "consumer": "GF1K (this return)",
+  "git_blob_sha1": "bbbda32facce0a3324498b88f4ba4bf0f79f18d2",
+  "sha256": "06bf4ea9e71b084b615deba50b6a0233e774b944cb7b463974006ccb8a8a2b40",
+  "REPAIR_VERSION": "GF1K_EXACT_NATIVE_CATEGORY_IDENTITY@1",
+  "exit": 0,
+  "cases": [
+   {
+    "case": "test_gf1j_red1_conditioner_integer_spoofed",
+    "result": "PASS",
+    "message": null
+   },
+   {
+    "case": "test_gf1j_red2_target_integer_spoofed",
+    "result": "PASS",
+    "message": null
+   }
+  ]
+ },
+ "before_all_red": true,
+ "after_all_pass": true,
+ "cases_unchanged": true,
+ "no_frozen_test_mutation": "Both phases execute the SAME test file (test_gf1k_native_identity.py); only the seated consumer changes.",
+ "note": "The two hostiles are GF1J's physically executed strict native-identity REDs: an integer-spoofed condition_state and an integer-spoofed target_state against a string-declared native domain."
+}

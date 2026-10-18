@@ -1,0 +1,50 @@
+FF                                                                       [100%]
+=================================== FAILURES ===================================
+__________________ test_gf1j_red1_conditioner_integer_spoofed __________________
+
+    def test_gf1j_red1_conditioner_integer_spoofed():
+        """GF1J RED1: condition_state = 0 (int) against declared string domain."""
+        fields = clone(gf1g._template())
+        fields["conditional_count_profile"][0]["condition_state"] = 0
+>       assert_integrity(CONS(rehash(fields)))
+
+/private/tmp/gf1k_fresh/WORKER_RETURNS/PYAT-R33-GF1K-CATEGORY-IDENTITY-REPAIR-R1/test_gf1k_native_identity.py:59: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+result = {'consumer_id': 'GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ONLY@1.0.0', 'consumer_output_family': 'GF1_PAIR_SUPPORT_SIG...E_RESULT_TEST_ONLY@1.0.0', 'decision_state': 'PAIR_SUPPORT_SIGNATURE_COMPUTED', 'downstream_value_produced': True, ...}
+
+    def assert_integrity(result):
+>       assert result["decision_state"] == INTEGRITY, result
+E       AssertionError: {'consumer_id': 'GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ONLY@1.0.0', 'consumer_output_family': 'GF1_PAIR_SUPPORT_SIG...E_RESULT_TEST_ONLY@1.0.0', 'decision_state': 'PAIR_SUPPORT_SIGNATURE_COMPUTED', 'downstream_value_produced': True, ...}
+E       assert 'PAIR_SUPPORT...TURE_COMPUTED' == 'CONSUMER_REL...RITY_REJECTED'
+E         
+E         - CONSUMER_RELATION_INTEGRITY_REJECTED
+E         + PAIR_SUPPORT_SIGNATURE_COMPUTED
+
+/private/tmp/gf1k_fresh/WORKER_RETURNS/PYAT-R33-GF1K-CATEGORY-IDENTITY-REPAIR-R1/test_gf1k_native_identity.py:49: AssertionError
+____________________ test_gf1j_red2_target_integer_spoofed _____________________
+
+    def test_gf1j_red2_target_integer_spoofed():
+        """GF1J RED2: target_counts[0].target_state = 0 (int) against string domain."""
+        fields = clone(gf1g._template())
+        fields["conditional_count_profile"][0]["target_counts"][0]["target_state"] = 0
+>       assert_integrity(CONS(rehash(fields)))
+
+/private/tmp/gf1k_fresh/WORKER_RETURNS/PYAT-R33-GF1K-CATEGORY-IDENTITY-REPAIR-R1/test_gf1k_native_identity.py:66: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+result = {'consumer_id': 'GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ONLY@1.0.0', 'consumer_output_family': 'GF1_PAIR_SUPPORT_SIG...E_RESULT_TEST_ONLY@1.0.0', 'decision_state': 'PAIR_SUPPORT_SIGNATURE_COMPUTED', 'downstream_value_produced': True, ...}
+
+    def assert_integrity(result):
+>       assert result["decision_state"] == INTEGRITY, result
+E       AssertionError: {'consumer_id': 'GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ONLY@1.0.0', 'consumer_output_family': 'GF1_PAIR_SUPPORT_SIG...E_RESULT_TEST_ONLY@1.0.0', 'decision_state': 'PAIR_SUPPORT_SIGNATURE_COMPUTED', 'downstream_value_produced': True, ...}
+E       assert 'PAIR_SUPPORT...TURE_COMPUTED' == 'CONSUMER_REL...RITY_REJECTED'
+E         
+E         - CONSUMER_RELATION_INTEGRITY_REJECTED
+E         + PAIR_SUPPORT_SIGNATURE_COMPUTED
+
+/private/tmp/gf1k_fresh/WORKER_RETURNS/PYAT-R33-GF1K-CATEGORY-IDENTITY-REPAIR-R1/test_gf1k_native_identity.py:49: AssertionError
+=========================== short test summary info ============================
+FAILED ../../../../../../../../../../tmp/gf1k_fresh/WORKER_RETURNS/PYAT-R33-GF1K-CATEGORY-IDENTITY-REPAIR-R1/test_gf1k_native_identity.py::test_gf1j_red1_conditioner_integer_spoofed
+FAILED ../../../../../../../../../../tmp/gf1k_fresh/WORKER_RETURNS/PYAT-R33-GF1K-CATEGORY-IDENTITY-REPAIR-R1/test_gf1k_native_identity.py::test_gf1j_red2_target_integer_spoofed
+2 failed, 10 deselected in 1.22s
