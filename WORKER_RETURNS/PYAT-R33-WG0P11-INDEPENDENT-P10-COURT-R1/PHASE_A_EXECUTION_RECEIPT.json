@@ -1,0 +1,64 @@
+{
+  "checked_at_utc": "2026-10-18T01:24:26.728078+00:00",
+  "phase_a_frozen_remote_commit": "cb5484c96325e06b981dea22207e4dadc3d83558",
+  "remote_heads": "90e6b5cc713780df0fb617d9357feed14c00ed24\trefs/heads/agent/userdirect-pyat-20261017-r33-wg0p10-five-publication-defects-repair-r1\ncb5484c96325e06b981dea22207e4dadc3d83558\trefs/heads/agent/userdirect-pyat-20261017-r33-wg0p11-independent-selfcontained-native-court-r1\n",
+  "p10_status": "HOLD_NO_IMPLEMENTATION_YET_NOT_FAILED",
+  "baseline_p8_actual_junit": {
+    "D3_fresh42.xml": {
+      "testcases": 42,
+      "failures": 0,
+      "errors": 1,
+      "skipped": 0
+    },
+    "historical_characterisation.xml": {
+      "testcases": 3,
+      "failures": 2,
+      "errors": 0,
+      "skipped": 0
+    },
+    "phase_a_p8_D1_D5.xml": {
+      "testcases": 6,
+      "failures": 5,
+      "errors": 0,
+      "skipped": 0
+    },
+    "D4_pointer.xml": {
+      "testcases": 1,
+      "failures": 1,
+      "errors": 0,
+      "skipped": 0
+    },
+    "historical_five_unconstructible.xml": {
+      "testcases": 5,
+      "failures": 5,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "D4_inspection": {
+    "declared_cold_directory": "<WORKTREE>/WORKER_RETURNS/PYAT-R27-WG0P6-RELEASE-VIEW-SOURCE-ARTIFACT-BINDING-R1/court/observations/phase_b/inherited_v1/cold/cold-face4d00952b4460a7c1285c1dd80be5",
+    "contains_placeholder": true,
+    "declared_path_exists": false,
+    "declared_owner_exists": false,
+    "pointer_test_result": "FAILED before fixture use at missing candidate/runtime parent; D4 fixture inspected separately, no manual overlay",
+    "inherited_cold_owner_directories": []
+  },
+  "p10_not_run": [
+    "clean clone of repaired implementation",
+    "whole P10 source closure",
+    "bootstrap accepts repaired/refuses wrong module",
+    "observed repaired atexit",
+    "WG0O17",
+    "WG0Q36",
+    "mandatory236",
+    "fresh42",
+    "positive42cells4I03",
+    "cold crash23/resume0 genuine pair",
+    "cold pointer forgery refusal",
+    "new transport9",
+    "omission/hash/wrong epoch/foreign authority failclosed"
+  ],
+  "baseline_source_187": "all verified physically before testing",
+  "restored_eleven": "all entries also among verified original inputs; declared byte lengths, SHA256 and Git blobs exact",
+  "warnings": "Outer pytest using -c /dev/null emitted cache write warnings for /dev/.pytest_cache. No tests were skipped or changed; no candidate directory was created to fix defects."
+}

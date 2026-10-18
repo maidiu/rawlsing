@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="0.064" timestamp="2026-10-17T21:23:39.382347-04:00" hostname="Matthews-MBP.lan"><testcase classname="" name="test_fresh_process_pointer_substitution_cannot_restore_signed_prior_facts" time="0.002"><failure message="FileNotFoundError: [Errno 2] No such file or directory: '/private/tmp/wg0p11-independent-p8/WORKER_RETURNS/PYAT-R31-WG0P8-PUBLICATION-CUSTODY-R1/candidate/runtime/cold-pointer-004601c6cc9649ad988170590148d290'">def test_fresh_process_pointer_substitution_cannot_restore_signed_prior_facts():
+     summary=json.loads((R/'court/observations/phase_b/inherited_v1/observations/cold_comparison.json').read_text())
+     source=Path(summary['cold_directory'])
+&gt;    folder=R/'runtime'/('cold-pointer-'+uuid.uuid4().hex);folder.mkdir()
+                                                           ^^^^^^^^^^^^^^
+
+../tests/test_cold_pointer_process.py:8: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/private/tmp/wg0p11-independent-p8/WORKER_RETURNS/PYAT-R31-WG0P8-PUBLICATION-CUSTODY-R1/candidate/runtime/cold-pointer-004601c6cc9649ad988170590148d290')
+mode = 511, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [Errno 2] No such file or directory: '/private/tmp/wg0p11-independent-p8/WORKER_RETURNS/PYAT-R31-WG0P8-PUBLICATION-CUSTODY-R1/candidate/runtime/cold-pointer-004601c6cc9649ad988170590148d290'
+
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1116: FileNotFoundError</failure></testcase></testsuite></testsuites>
