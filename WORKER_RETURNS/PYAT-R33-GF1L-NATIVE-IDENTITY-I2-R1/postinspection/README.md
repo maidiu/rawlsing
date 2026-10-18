@@ -1,0 +1,5 @@
+# Post-inspection supplemental domain conservation court
+
+This is not a Phase A prefreeze. GF1K patch was read only after the remotely verified original/corrected freezes. Inspection then showed strict type comparison feeding plain Python dict/set keys. The independent supplemental expectation, declared here before execution, is: fully self-rehashed original-constructor domain variants must either be refused with typed integrity/no value, or preserve both type-distinct categories, two units of support and the exact separation class. They must not crash or silently merge categories. Controls use homogeneous string and integer domains. Variants use conditioner/target domains (0, False), (0, 0.0), and ("0", 0).
+
+These are TEST_ONLY original-constructor objects. They are not claimed to come from a separately authenticated source-native producer or a qualified cross-instrument mapping. Frozen original producer and accepted owners remain untouched. This court evaluates a residual fail-closed/semantic-conservation boundary after the narrow GF1J repair; its findings must be reported separately from closure of the original two REDs.
