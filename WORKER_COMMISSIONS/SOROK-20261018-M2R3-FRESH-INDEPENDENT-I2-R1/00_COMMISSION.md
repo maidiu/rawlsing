@@ -1,0 +1,27 @@
+# SOROK — M2 R3 fresh independent I2 qualification
+ROLE: Genuinely distinct High/I2 sourcefree reviewer, NOT M2/R2/R3 author, prior same-conversation author, B3 implementation integrator, HQ or semantic issuer.
+USER_SELECTED_EDITOR_MODEL_PAIR: HQ RECOMMENDED Browser/GitHub GPT-6 High (I2) with verified Browser Python/pytest. SINGLE_AGENT_FULL_DELIVERABLE: YES. NO_AUTONOMOUS_MODEL_OR_HARNESS_SWITCH: YES; later HQ adjudication outside reviewer; reviewer may not self-adopt.
+HQ_ENVIRONMENT_VERDICT: BROWSER_NATIVE, FULL for bounded small text Python source. Reuse a genuinely independent warm environment if available, but prove runtime continuity or restage exact Git blobs; Browser GitHub connector alone never mounts private repo. Setup LIGHT. Cash/quota UNKNOWN; do not add paid calls. Distinct I2 scientific judgment is necessary for actor independence and historical source grants. Local Codex is not necessary for ~28KB sourcefree kernel and limited pytest; if actual source staging fails, report exact capability HOLD, no silent harness switch.
+ACTIVE_WORKER_NO_DISTURBANCE: No existing R3 independent reviewer identified; NEW review. Avoid R3 author. PHASE_MODEL_ASSIGNMENT: I2 reasoning + own deterministic suite execution; no extra helper or reviewer assumed.
+EXACT TARGET: 9c1ab2fa172e41c7fb033b5f134b25255d65126c
+EXACT R3 KERNEL SHA256: 838d0852e6b1b28bb733b1eda580b3dc53f5db3d47e3a0caefbd3072022ad45a
+BRANCH: agent/reviewer-sorok-20261018-m2r3-fresh-independent-i2-r1
+EXACT SEALED STARTUP: this branch's **initial HQ-issued commit SHA**, containing this commission as its only changed file. Read direct remote HEAD at launch before work; do not substitute target R3 SHA for seal.
+COMMISSION: WORKER_COMMISSIONS/SOROK-20261018-M2R3-FRESH-INDEPENDENT-I2-R1/00_COMMISSION.md
+WRITE ONLY: WORKER_RETURNS/SOROK-20261018-M2R3-FRESH-INDEPENDENT-I2-R1/
+REPOSITORY: maidiu/rawlsing (PRIVATE). Governing: Sorok 00C/00D, the PRE-MAIN and Sorok source/actor/semantic owner boundaries. One accountable worker for the full assigned bounded outcome, no autonomous editor/model/provider switch, no alternate paid LLMs, no raw survey data, no production V3, original35, CAN008/CAN011 or ADP semantic grants. Work only in a NEW isolated research/reviewer return subtree; do not mutate existing returns, frozen cases, PREMAIN, Sorok control room, accepted laws or current actor. Publish with ordinary non-force push and direct remote SHA verification. Retain 00D sanitized environment passport, exact source Git blob and SHA-256, imported runtime paths, commands and JUnit/test files. Historical tests are not made green by editing expectations. Independently accepted != production adopted.
+
+## MUST_READ_NOW
+- Complete R3 return, candidate kernel, R3 regression/test source, source refs, case matrix and execution receipts at exact target.
+- R2 exact e8f375e9feae187e8a1add2343100ca05d9fffc4 and independent R2 hostile reviewer exact e8b2d6be5ba243729f387cda4048cc30a52664d2; historical M3 source-preimage court at 49dfcb30971310756a12f659961600d9f2eb4a11.
+- Sorok 00C/00D; original frozen M1/I2 sources and reports for compatibility as needed, but do not conflate old incompatible fixture rights with new actor sovereignty.
+READ_IF_TRIGGERED: B3, CAN008/CAN011/ADP015/016/017/019/021 owner originals if the R3 claims require them; do not manufacture semantic authority.
+
+## MISSION AND FIRST DISCRIMINATOR
+Independently stage the exact candidate R3 Python bytes and full pinned 135-case closure. **First** reproduce original R2's child-self-action RED with the unchanged earlier heldout, then execute that exact heldout against R3: child action vs truly distinct other_P and other_Q action, full event/action-owner, Relevance.observed_action_owner, History.observed_action_owner, independently witnessed source operation/clock/history. A second independent observer is not sufficient if the action is child-owned. Require mismatch/removed owner field, source-hash refresh, same-ID actor swap, wrong actor access, proposal→append source replacement, consumed vs unconsumed relation alternatives, same-time and future witness, original event immutable origin, independent refusal and NO_CHANGE exact state preservation.
+
+Reproduce all 135 candidate tests with unchanged source bytes: original M2 41, M3 lawful 32, M3 packaged 3, source preimage 15, exact M3 historical 3, hostile 11, R2 relation 14, old independent heldout 2, R3 14. Preserve original historical M1/I2 compatibility counts, rerun only if exact tar staging supported; do not declare those obsolete failures 'closed'. Independently write at least 3 adversarial controls not copied from the author's own tests. Check field-level action owner identities and whether artificial minted fixture witnesses can counterfeit native rights; the latter are sourcefree only.
+
+DELIVER review-grade ACCEPT_SCOPED / REVISE / HOLD with exact test results, remaining REDs, possible B3 adapter boundary, open migration contract for old R2 record schema/RULE_HASH, and explicit synthetic-fixture vs native ADP distinction. Never approve meaning selection/psychological uptake/actor grants merely because sourcefree tests pass.
+
+STOP on mismatched bytes, unexecuted tests presented as PASS, reviewer non-independence, unavailable runner after real preflight, changed frozen evidence or failed owner-temporal checks. No production import, law adoption or B3 integration.
