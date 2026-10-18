@@ -1,0 +1,242 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="8" skipped="0" tests="41" time="5.964" timestamp="2026-10-17T21:04:37.462500-04:00"><testcase classname="test_identity" name="test_collision_refuses_before_any_write[objective_occurrence-DIFFERENT_OBJECTIVE_EVENT]" time="0.081" /><testcase classname="test_identity" name="test_collision_refuses_before_any_write[actor-peer]" time="0.084" /><testcase classname="test_identity" name="test_collision_refuses_before_any_write[time-2026-10-18T10:00:00Z]" time="0.084" /><testcase classname="test_identity" name="test_collision_refuses_before_any_write[number-2]" time="0.076" /><testcase classname="test_identity" name="test_collision_refuses_before_any_write[world_ref-other-world]" time="0.074" /><testcase classname="test_identity" name="test_collision_refuses_before_any_write[issuer-OTHER_ISSUER]" time="0.076" /><testcase classname="test_identity" name="test_collision_refuses_before_any_write[parent_fact_hash-0000000000000000000000000000000000000000000000000000000000000000]" time="0.074" /><testcase classname="test_identity" name="test_collision_refuses_before_any_write[expected_actor_state_hash-0000000000000000000000000000000000000000000000000000000000000000]" time="0.081" /><testcase classname="test_identity" name="test_collision_refuses_before_any_write[context_hash-0000000000000000000000000000000000000000000000000000000000000000]" time="0.073" /><testcase classname="test_identity" name="test_collision_refuses_before_any_write[proposal_hash-0000000000000000000000000000000000000000000000000000000000000000]" time="0.096" /><testcase classname="test_identity" name="test_collision_refuses_before_any_write[candidate_hash-0000000000000000000000000000000000000000000000000000000000000000]" time="0.077" /><testcase classname="test_identity" name="test_collision_refuses_before_any_write[project-other-project]" time="0.081" /><testcase classname="test_identity" name="test_collision_refuses_before_any_write[participants-value12]" time="0.081" /><testcase classname="test_identity" name="test_collision_refuses_before_any_write[observed_interpretations-value13]" time="0.081" /><testcase classname="test_identity" name="test_collision_refuses_before_any_write[other_actions-value14]" time="0.083" /><testcase classname="test_identity" name="test_collision_refuses_before_any_write[world_facts-value15]" time="0.078" /><testcase classname="test_identity" name="test_collision_refuses_before_any_write[interrupted-False]" time="0.080" /><testcase classname="test_identity" name="test_collision_refuses_before_any_write[outcome-NONOCCURRENCE]" time="0.083" /><testcase classname="test_identity" name="test_collision_refuses_before_any_write[place-other-place]" time="0.084" /><testcase classname="test_identity" name="test_collision_refuses_before_any_write[extra_readset-value19]" time="0.080" /><testcase classname="test_identity" name="test_complete_readset_reuse_refused[packet]" time="0.081" /><testcase classname="test_identity" name="test_complete_readset_reuse_refused[context]" time="0.085" /><testcase classname="test_identity" name="test_complete_readset_reuse_refused[policy]" time="0.088" /><testcase classname="test_identity" name="test_exact_replay_idempotent_after_success_or_rollback[kwargs0]" time="0.088" /><testcase classname="test_identity" name="test_exact_replay_idempotent_after_success_or_rollback[kwargs1]" time="0.167" /><testcase classname="test_identity" name="test_exact_replay_idempotent_after_success_or_rollback[kwargs2]" time="0.194" /><testcase classname="test_identity" name="test_exact_old_event_after_later_committed_event" time="0.173" /><testcase classname="test_identity" name="test_legacy_unmapped_occurrence_fails_closed" time="0.012" /><testcase classname="test_identity" name="test_storage_fault_rolls_back_entire_admission[occurrence]" time="0.011" /><testcase classname="test_identity" name="test_storage_fault_rolls_back_entire_admission[b2_ingress]" time="0.013" /><testcase classname="test_identity" name="test_storage_fault_rolls_back_entire_admission[b2_event_identity]" time="0.014" /><testcase classname="test_identity" name="test_simultaneous_fresh_process_writers[exact]" time="0.406"><failure message="AssertionError: assert {'actor_id': ...', ...}], ...} == {'schema': 'B..._plans'], ...}&#10;  &#10;  Omitting 8 identical items, use -vv to show&#10;  Differing items:&#10;  {'history': [{'activity': 'learn_object_check', 'actor_access': 'EXPLICIT', 'actor_id': 'child', 'counterpart': 'caret...vity': 'compare_plans_in_task', 'actor_access': 'INACCESSIBLE', 'actor_id': 'child', 'counterpart': 'caretaker', ...}]} != {'history': [{'episode_id': 'init', 'actor_id': 'child', 'counterpart': 'caretaker', 'project': 'repair_route', ...}, {'episode_id': 'shared_task', 'actor_id': 'child', 'counterpart': 'caretaker', 'project': 'repair_route', ...}]}&#10;  Use -v to get more diff">tmp_path = PosixPath('&lt;TEMP&gt;')
+mode = 'exact'
+
+    @pytest.mark.parametrize('mode',['exact','payload','issuer','clock','actor','readset','utterance','distinct'])
+    def test_simultaneous_fresh_process_writers(tmp_path,mode):
+        b,v=setup(tmp_path);b.close();v['kwargs']={'grant':False}
+        changed=deepcopy(v)
+        if mode=='distinct':changed['witness']['event_id']='event-other'
+        elif mode=='payload':changed['witness']['objective_occurrence']='CONFLICT'
+        elif mode=='issuer':changed['witness']['issuer']='OTHER_ISSUER'
+        elif mode=='clock':changed['witness']['time']='2026-10-18T10:00:00Z'
+        elif mode=='actor':changed['witness']['actor']='other'
+        elif mode=='readset':changed['witness']['extra_readset']='other'
+        elif mode=='utterance':changed['witness']['observed_interpretations']=[]
+        seal(changed)
+        # All connections exist before release; actual independent OS processes.
+        procs=[start(tmp_path,x,str(i)) for i,x in enumerate([v,changed,v,changed])]
+        for p in procs:p.stdin.write('GO\n');p.stdin.flush()
+        results=[finish(p) for p in procs]
+        b=m.Bridge(tmp_path/'state.sqlite');rows=b.store.db.execute('SELECT body FROM occurrence').fetchall()
+        assert len(rows)==(2 if mode=='distinct' else 1)
+        assert len({json.loads(r[0])['event_id'] for r in rows})==len(rows)
+&gt;       assert b.store.state()==m.b1.initialize(m.b1.prehistory())
+E       AssertionError: assert {'actor_id': ...', ...}], ...} == {'schema': 'B..._plans'], ...}
+E         
+E         Omitting 8 identical items, use -vv to show
+E         Differing items:
+E         {'history': [{'activity': 'learn_object_check', 'actor_access': 'EXPLICIT', 'actor_id': 'child', 'counterpart': 'caret...vity': 'compare_plans_in_task', 'actor_access': 'INACCESSIBLE', 'actor_id': 'child', 'counterpart': 'caretaker', ...}]} != {'history': [{'episode_id': 'init', 'actor_id': 'child', 'counterpart': 'caretaker', 'project': 'repair_route', ...}, {'episode_id': 'shared_task', 'actor_id': 'child', 'counterpart': 'caretaker', 'project': 'repair_route', ...}]}
+E         Use -v to get more diff
+
+&lt;R1&gt;/test_identity.py:130: AssertionError</failure></testcase><testcase classname="test_identity" name="test_simultaneous_fresh_process_writers[payload]" time="0.374"><failure message="AssertionError: assert {'actor_id': ...', ...}], ...} == {'schema': 'B..._plans'], ...}&#10;  &#10;  Omitting 8 identical items, use -vv to show&#10;  Differing items:&#10;  {'history': [{'activity': 'learn_object_check', 'actor_access': 'EXPLICIT', 'actor_id': 'child', 'counterpart': 'caret...vity': 'compare_plans_in_task', 'actor_access': 'INACCESSIBLE', 'actor_id': 'child', 'counterpart': 'caretaker', ...}]} != {'history': [{'episode_id': 'init', 'actor_id': 'child', 'counterpart': 'caretaker', 'project': 'repair_route', ...}, {'episode_id': 'shared_task', 'actor_id': 'child', 'counterpart': 'caretaker', 'project': 'repair_route', ...}]}&#10;  Use -v to get more diff">tmp_path = PosixPath('&lt;TEMP&gt;')
+mode = 'payload'
+
+    @pytest.mark.parametrize('mode',['exact','payload','issuer','clock','actor','readset','utterance','distinct'])
+    def test_simultaneous_fresh_process_writers(tmp_path,mode):
+        b,v=setup(tmp_path);b.close();v['kwargs']={'grant':False}
+        changed=deepcopy(v)
+        if mode=='distinct':changed['witness']['event_id']='event-other'
+        elif mode=='payload':changed['witness']['objective_occurrence']='CONFLICT'
+        elif mode=='issuer':changed['witness']['issuer']='OTHER_ISSUER'
+        elif mode=='clock':changed['witness']['time']='2026-10-18T10:00:00Z'
+        elif mode=='actor':changed['witness']['actor']='other'
+        elif mode=='readset':changed['witness']['extra_readset']='other'
+        elif mode=='utterance':changed['witness']['observed_interpretations']=[]
+        seal(changed)
+        # All connections exist before release; actual independent OS processes.
+        procs=[start(tmp_path,x,str(i)) for i,x in enumerate([v,changed,v,changed])]
+        for p in procs:p.stdin.write('GO\n');p.stdin.flush()
+        results=[finish(p) for p in procs]
+        b=m.Bridge(tmp_path/'state.sqlite');rows=b.store.db.execute('SELECT body FROM occurrence').fetchall()
+        assert len(rows)==(2 if mode=='distinct' else 1)
+        assert len({json.loads(r[0])['event_id'] for r in rows})==len(rows)
+&gt;       assert b.store.state()==m.b1.initialize(m.b1.prehistory())
+E       AssertionError: assert {'actor_id': ...', ...}], ...} == {'schema': 'B..._plans'], ...}
+E         
+E         Omitting 8 identical items, use -vv to show
+E         Differing items:
+E         {'history': [{'activity': 'learn_object_check', 'actor_access': 'EXPLICIT', 'actor_id': 'child', 'counterpart': 'caret...vity': 'compare_plans_in_task', 'actor_access': 'INACCESSIBLE', 'actor_id': 'child', 'counterpart': 'caretaker', ...}]} != {'history': [{'episode_id': 'init', 'actor_id': 'child', 'counterpart': 'caretaker', 'project': 'repair_route', ...}, {'episode_id': 'shared_task', 'actor_id': 'child', 'counterpart': 'caretaker', 'project': 'repair_route', ...}]}
+E         Use -v to get more diff
+
+&lt;R1&gt;/test_identity.py:130: AssertionError</failure></testcase><testcase classname="test_identity" name="test_simultaneous_fresh_process_writers[issuer]" time="0.411"><failure message="AssertionError: assert {'actor_id': ...', ...}], ...} == {'schema': 'B..._plans'], ...}&#10;  &#10;  Omitting 8 identical items, use -vv to show&#10;  Differing items:&#10;  {'history': [{'activity': 'learn_object_check', 'actor_access': 'EXPLICIT', 'actor_id': 'child', 'counterpart': 'caret...vity': 'compare_plans_in_task', 'actor_access': 'INACCESSIBLE', 'actor_id': 'child', 'counterpart': 'caretaker', ...}]} != {'history': [{'episode_id': 'init', 'actor_id': 'child', 'counterpart': 'caretaker', 'project': 'repair_route', ...}, {'episode_id': 'shared_task', 'actor_id': 'child', 'counterpart': 'caretaker', 'project': 'repair_route', ...}]}&#10;  Use -v to get more diff">tmp_path = PosixPath('&lt;TEMP&gt;')
+mode = 'issuer'
+
+    @pytest.mark.parametrize('mode',['exact','payload','issuer','clock','actor','readset','utterance','distinct'])
+    def test_simultaneous_fresh_process_writers(tmp_path,mode):
+        b,v=setup(tmp_path);b.close();v['kwargs']={'grant':False}
+        changed=deepcopy(v)
+        if mode=='distinct':changed['witness']['event_id']='event-other'
+        elif mode=='payload':changed['witness']['objective_occurrence']='CONFLICT'
+        elif mode=='issuer':changed['witness']['issuer']='OTHER_ISSUER'
+        elif mode=='clock':changed['witness']['time']='2026-10-18T10:00:00Z'
+        elif mode=='actor':changed['witness']['actor']='other'
+        elif mode=='readset':changed['witness']['extra_readset']='other'
+        elif mode=='utterance':changed['witness']['observed_interpretations']=[]
+        seal(changed)
+        # All connections exist before release; actual independent OS processes.
+        procs=[start(tmp_path,x,str(i)) for i,x in enumerate([v,changed,v,changed])]
+        for p in procs:p.stdin.write('GO\n');p.stdin.flush()
+        results=[finish(p) for p in procs]
+        b=m.Bridge(tmp_path/'state.sqlite');rows=b.store.db.execute('SELECT body FROM occurrence').fetchall()
+        assert len(rows)==(2 if mode=='distinct' else 1)
+        assert len({json.loads(r[0])['event_id'] for r in rows})==len(rows)
+&gt;       assert b.store.state()==m.b1.initialize(m.b1.prehistory())
+E       AssertionError: assert {'actor_id': ...', ...}], ...} == {'schema': 'B..._plans'], ...}
+E         
+E         Omitting 8 identical items, use -vv to show
+E         Differing items:
+E         {'history': [{'activity': 'learn_object_check', 'actor_access': 'EXPLICIT', 'actor_id': 'child', 'counterpart': 'caret...vity': 'compare_plans_in_task', 'actor_access': 'INACCESSIBLE', 'actor_id': 'child', 'counterpart': 'caretaker', ...}]} != {'history': [{'episode_id': 'init', 'actor_id': 'child', 'counterpart': 'caretaker', 'project': 'repair_route', ...}, {'episode_id': 'shared_task', 'actor_id': 'child', 'counterpart': 'caretaker', 'project': 'repair_route', ...}]}
+E         Use -v to get more diff
+
+&lt;R1&gt;/test_identity.py:130: AssertionError</failure></testcase><testcase classname="test_identity" name="test_simultaneous_fresh_process_writers[clock]" time="0.376"><failure message="AssertionError: assert {'actor_id': ...', ...}], ...} == {'schema': 'B..._plans'], ...}&#10;  &#10;  Omitting 8 identical items, use -vv to show&#10;  Differing items:&#10;  {'history': [{'activity': 'learn_object_check', 'actor_access': 'EXPLICIT', 'actor_id': 'child', 'counterpart': 'caret...vity': 'compare_plans_in_task', 'actor_access': 'INACCESSIBLE', 'actor_id': 'child', 'counterpart': 'caretaker', ...}]} != {'history': [{'episode_id': 'init', 'actor_id': 'child', 'counterpart': 'caretaker', 'project': 'repair_route', ...}, {'episode_id': 'shared_task', 'actor_id': 'child', 'counterpart': 'caretaker', 'project': 'repair_route', ...}]}&#10;  Use -v to get more diff">tmp_path = PosixPath('&lt;TEMP&gt;')
+mode = 'clock'
+
+    @pytest.mark.parametrize('mode',['exact','payload','issuer','clock','actor','readset','utterance','distinct'])
+    def test_simultaneous_fresh_process_writers(tmp_path,mode):
+        b,v=setup(tmp_path);b.close();v['kwargs']={'grant':False}
+        changed=deepcopy(v)
+        if mode=='distinct':changed['witness']['event_id']='event-other'
+        elif mode=='payload':changed['witness']['objective_occurrence']='CONFLICT'
+        elif mode=='issuer':changed['witness']['issuer']='OTHER_ISSUER'
+        elif mode=='clock':changed['witness']['time']='2026-10-18T10:00:00Z'
+        elif mode=='actor':changed['witness']['actor']='other'
+        elif mode=='readset':changed['witness']['extra_readset']='other'
+        elif mode=='utterance':changed['witness']['observed_interpretations']=[]
+        seal(changed)
+        # All connections exist before release; actual independent OS processes.
+        procs=[start(tmp_path,x,str(i)) for i,x in enumerate([v,changed,v,changed])]
+        for p in procs:p.stdin.write('GO\n');p.stdin.flush()
+        results=[finish(p) for p in procs]
+        b=m.Bridge(tmp_path/'state.sqlite');rows=b.store.db.execute('SELECT body FROM occurrence').fetchall()
+        assert len(rows)==(2 if mode=='distinct' else 1)
+        assert len({json.loads(r[0])['event_id'] for r in rows})==len(rows)
+&gt;       assert b.store.state()==m.b1.initialize(m.b1.prehistory())
+E       AssertionError: assert {'actor_id': ...', ...}], ...} == {'schema': 'B..._plans'], ...}
+E         
+E         Omitting 8 identical items, use -vv to show
+E         Differing items:
+E         {'history': [{'activity': 'learn_object_check', 'actor_access': 'EXPLICIT', 'actor_id': 'child', 'counterpart': 'caret...vity': 'compare_plans_in_task', 'actor_access': 'INACCESSIBLE', 'actor_id': 'child', 'counterpart': 'caretaker', ...}]} != {'history': [{'episode_id': 'init', 'actor_id': 'child', 'counterpart': 'caretaker', 'project': 'repair_route', ...}, {'episode_id': 'shared_task', 'actor_id': 'child', 'counterpart': 'caretaker', 'project': 'repair_route', ...}]}
+E         Use -v to get more diff
+
+&lt;R1&gt;/test_identity.py:130: AssertionError</failure></testcase><testcase classname="test_identity" name="test_simultaneous_fresh_process_writers[actor]" time="0.351"><failure message="AssertionError: assert {'actor_id': ...', ...}], ...} == {'schema': 'B..._plans'], ...}&#10;  &#10;  Omitting 8 identical items, use -vv to show&#10;  Differing items:&#10;  {'history': [{'activity': 'learn_object_check', 'actor_access': 'EXPLICIT', 'actor_id': 'child', 'counterpart': 'caret...vity': 'compare_plans_in_task', 'actor_access': 'INACCESSIBLE', 'actor_id': 'child', 'counterpart': 'caretaker', ...}]} != {'history': [{'episode_id': 'init', 'actor_id': 'child', 'counterpart': 'caretaker', 'project': 'repair_route', ...}, {'episode_id': 'shared_task', 'actor_id': 'child', 'counterpart': 'caretaker', 'project': 'repair_route', ...}]}&#10;  Use -v to get more diff">tmp_path = PosixPath('&lt;TEMP&gt;')
+mode = 'actor'
+
+    @pytest.mark.parametrize('mode',['exact','payload','issuer','clock','actor','readset','utterance','distinct'])
+    def test_simultaneous_fresh_process_writers(tmp_path,mode):
+        b,v=setup(tmp_path);b.close();v['kwargs']={'grant':False}
+        changed=deepcopy(v)
+        if mode=='distinct':changed['witness']['event_id']='event-other'
+        elif mode=='payload':changed['witness']['objective_occurrence']='CONFLICT'
+        elif mode=='issuer':changed['witness']['issuer']='OTHER_ISSUER'
+        elif mode=='clock':changed['witness']['time']='2026-10-18T10:00:00Z'
+        elif mode=='actor':changed['witness']['actor']='other'
+        elif mode=='readset':changed['witness']['extra_readset']='other'
+        elif mode=='utterance':changed['witness']['observed_interpretations']=[]
+        seal(changed)
+        # All connections exist before release; actual independent OS processes.
+        procs=[start(tmp_path,x,str(i)) for i,x in enumerate([v,changed,v,changed])]
+        for p in procs:p.stdin.write('GO\n');p.stdin.flush()
+        results=[finish(p) for p in procs]
+        b=m.Bridge(tmp_path/'state.sqlite');rows=b.store.db.execute('SELECT body FROM occurrence').fetchall()
+        assert len(rows)==(2 if mode=='distinct' else 1)
+        assert len({json.loads(r[0])['event_id'] for r in rows})==len(rows)
+&gt;       assert b.store.state()==m.b1.initialize(m.b1.prehistory())
+E       AssertionError: assert {'actor_id': ...', ...}], ...} == {'schema': 'B..._plans'], ...}
+E         
+E         Omitting 8 identical items, use -vv to show
+E         Differing items:
+E         {'history': [{'activity': 'learn_object_check', 'actor_access': 'EXPLICIT', 'actor_id': 'child', 'counterpart': 'caret...vity': 'compare_plans_in_task', 'actor_access': 'INACCESSIBLE', 'actor_id': 'child', 'counterpart': 'caretaker', ...}]} != {'history': [{'episode_id': 'init', 'actor_id': 'child', 'counterpart': 'caretaker', 'project': 'repair_route', ...}, {'episode_id': 'shared_task', 'actor_id': 'child', 'counterpart': 'caretaker', 'project': 'repair_route', ...}]}
+E         Use -v to get more diff
+
+&lt;R1&gt;/test_identity.py:130: AssertionError</failure></testcase><testcase classname="test_identity" name="test_simultaneous_fresh_process_writers[readset]" time="0.372"><failure message="AssertionError: assert {'actor_id': ...', ...}], ...} == {'schema': 'B..._plans'], ...}&#10;  &#10;  Omitting 8 identical items, use -vv to show&#10;  Differing items:&#10;  {'history': [{'activity': 'learn_object_check', 'actor_access': 'EXPLICIT', 'actor_id': 'child', 'counterpart': 'caret...vity': 'compare_plans_in_task', 'actor_access': 'INACCESSIBLE', 'actor_id': 'child', 'counterpart': 'caretaker', ...}]} != {'history': [{'episode_id': 'init', 'actor_id': 'child', 'counterpart': 'caretaker', 'project': 'repair_route', ...}, {'episode_id': 'shared_task', 'actor_id': 'child', 'counterpart': 'caretaker', 'project': 'repair_route', ...}]}&#10;  Use -v to get more diff">tmp_path = PosixPath('&lt;TEMP&gt;')
+mode = 'readset'
+
+    @pytest.mark.parametrize('mode',['exact','payload','issuer','clock','actor','readset','utterance','distinct'])
+    def test_simultaneous_fresh_process_writers(tmp_path,mode):
+        b,v=setup(tmp_path);b.close();v['kwargs']={'grant':False}
+        changed=deepcopy(v)
+        if mode=='distinct':changed['witness']['event_id']='event-other'
+        elif mode=='payload':changed['witness']['objective_occurrence']='CONFLICT'
+        elif mode=='issuer':changed['witness']['issuer']='OTHER_ISSUER'
+        elif mode=='clock':changed['witness']['time']='2026-10-18T10:00:00Z'
+        elif mode=='actor':changed['witness']['actor']='other'
+        elif mode=='readset':changed['witness']['extra_readset']='other'
+        elif mode=='utterance':changed['witness']['observed_interpretations']=[]
+        seal(changed)
+        # All connections exist before release; actual independent OS processes.
+        procs=[start(tmp_path,x,str(i)) for i,x in enumerate([v,changed,v,changed])]
+        for p in procs:p.stdin.write('GO\n');p.stdin.flush()
+        results=[finish(p) for p in procs]
+        b=m.Bridge(tmp_path/'state.sqlite');rows=b.store.db.execute('SELECT body FROM occurrence').fetchall()
+        assert len(rows)==(2 if mode=='distinct' else 1)
+        assert len({json.loads(r[0])['event_id'] for r in rows})==len(rows)
+&gt;       assert b.store.state()==m.b1.initialize(m.b1.prehistory())
+E       AssertionError: assert {'actor_id': ...', ...}], ...} == {'schema': 'B..._plans'], ...}
+E         
+E         Omitting 8 identical items, use -vv to show
+E         Differing items:
+E         {'history': [{'activity': 'learn_object_check', 'actor_access': 'EXPLICIT', 'actor_id': 'child', 'counterpart': 'caret...vity': 'compare_plans_in_task', 'actor_access': 'INACCESSIBLE', 'actor_id': 'child', 'counterpart': 'caretaker', ...}]} != {'history': [{'episode_id': 'init', 'actor_id': 'child', 'counterpart': 'caretaker', 'project': 'repair_route', ...}, {'episode_id': 'shared_task', 'actor_id': 'child', 'counterpart': 'caretaker', 'project': 'repair_route', ...}]}
+E         Use -v to get more diff
+
+&lt;R1&gt;/test_identity.py:130: AssertionError</failure></testcase><testcase classname="test_identity" name="test_simultaneous_fresh_process_writers[utterance]" time="0.386"><failure message="AssertionError: assert {'actor_id': ...', ...}], ...} == {'schema': 'B..._plans'], ...}&#10;  &#10;  Omitting 8 identical items, use -vv to show&#10;  Differing items:&#10;  {'history': [{'activity': 'learn_object_check', 'actor_access': 'EXPLICIT', 'actor_id': 'child', 'counterpart': 'caret...vity': 'compare_plans_in_task', 'actor_access': 'INACCESSIBLE', 'actor_id': 'child', 'counterpart': 'caretaker', ...}]} != {'history': [{'episode_id': 'init', 'actor_id': 'child', 'counterpart': 'caretaker', 'project': 'repair_route', ...}, {'episode_id': 'shared_task', 'actor_id': 'child', 'counterpart': 'caretaker', 'project': 'repair_route', ...}]}&#10;  Use -v to get more diff">tmp_path = PosixPath('&lt;TEMP&gt;')
+mode = 'utterance'
+
+    @pytest.mark.parametrize('mode',['exact','payload','issuer','clock','actor','readset','utterance','distinct'])
+    def test_simultaneous_fresh_process_writers(tmp_path,mode):
+        b,v=setup(tmp_path);b.close();v['kwargs']={'grant':False}
+        changed=deepcopy(v)
+        if mode=='distinct':changed['witness']['event_id']='event-other'
+        elif mode=='payload':changed['witness']['objective_occurrence']='CONFLICT'
+        elif mode=='issuer':changed['witness']['issuer']='OTHER_ISSUER'
+        elif mode=='clock':changed['witness']['time']='2026-10-18T10:00:00Z'
+        elif mode=='actor':changed['witness']['actor']='other'
+        elif mode=='readset':changed['witness']['extra_readset']='other'
+        elif mode=='utterance':changed['witness']['observed_interpretations']=[]
+        seal(changed)
+        # All connections exist before release; actual independent OS processes.
+        procs=[start(tmp_path,x,str(i)) for i,x in enumerate([v,changed,v,changed])]
+        for p in procs:p.stdin.write('GO\n');p.stdin.flush()
+        results=[finish(p) for p in procs]
+        b=m.Bridge(tmp_path/'state.sqlite');rows=b.store.db.execute('SELECT body FROM occurrence').fetchall()
+        assert len(rows)==(2 if mode=='distinct' else 1)
+        assert len({json.loads(r[0])['event_id'] for r in rows})==len(rows)
+&gt;       assert b.store.state()==m.b1.initialize(m.b1.prehistory())
+E       AssertionError: assert {'actor_id': ...', ...}], ...} == {'schema': 'B..._plans'], ...}
+E         
+E         Omitting 8 identical items, use -vv to show
+E         Differing items:
+E         {'history': [{'activity': 'learn_object_check', 'actor_access': 'EXPLICIT', 'actor_id': 'child', 'counterpart': 'caret...vity': 'compare_plans_in_task', 'actor_access': 'INACCESSIBLE', 'actor_id': 'child', 'counterpart': 'caretaker', ...}]} != {'history': [{'episode_id': 'init', 'actor_id': 'child', 'counterpart': 'caretaker', 'project': 'repair_route', ...}, {'episode_id': 'shared_task', 'actor_id': 'child', 'counterpart': 'caretaker', 'project': 'repair_route', ...}]}
+E         Use -v to get more diff
+
+&lt;R1&gt;/test_identity.py:130: AssertionError</failure></testcase><testcase classname="test_identity" name="test_simultaneous_fresh_process_writers[distinct]" time="0.355"><failure message="AssertionError: assert {'actor_id': ...', ...}], ...} == {'schema': 'B..._plans'], ...}&#10;  &#10;  Omitting 8 identical items, use -vv to show&#10;  Differing items:&#10;  {'history': [{'activity': 'learn_object_check', 'actor_access': 'EXPLICIT', 'actor_id': 'child', 'counterpart': 'caret...vity': 'compare_plans_in_task', 'actor_access': 'INACCESSIBLE', 'actor_id': 'child', 'counterpart': 'caretaker', ...}]} != {'history': [{'episode_id': 'init', 'actor_id': 'child', 'counterpart': 'caretaker', 'project': 'repair_route', ...}, {'episode_id': 'shared_task', 'actor_id': 'child', 'counterpart': 'caretaker', 'project': 'repair_route', ...}]}&#10;  Use -v to get more diff">tmp_path = PosixPath('&lt;TEMP&gt;')
+mode = 'distinct'
+
+    @pytest.mark.parametrize('mode',['exact','payload','issuer','clock','actor','readset','utterance','distinct'])
+    def test_simultaneous_fresh_process_writers(tmp_path,mode):
+        b,v=setup(tmp_path);b.close();v['kwargs']={'grant':False}
+        changed=deepcopy(v)
+        if mode=='distinct':changed['witness']['event_id']='event-other'
+        elif mode=='payload':changed['witness']['objective_occurrence']='CONFLICT'
+        elif mode=='issuer':changed['witness']['issuer']='OTHER_ISSUER'
+        elif mode=='clock':changed['witness']['time']='2026-10-18T10:00:00Z'
+        elif mode=='actor':changed['witness']['actor']='other'
+        elif mode=='readset':changed['witness']['extra_readset']='other'
+        elif mode=='utterance':changed['witness']['observed_interpretations']=[]
+        seal(changed)
+        # All connections exist before release; actual independent OS processes.
+        procs=[start(tmp_path,x,str(i)) for i,x in enumerate([v,changed,v,changed])]
+        for p in procs:p.stdin.write('GO\n');p.stdin.flush()
+        results=[finish(p) for p in procs]
+        b=m.Bridge(tmp_path/'state.sqlite');rows=b.store.db.execute('SELECT body FROM occurrence').fetchall()
+        assert len(rows)==(2 if mode=='distinct' else 1)
+        assert len({json.loads(r[0])['event_id'] for r in rows})==len(rows)
+&gt;       assert b.store.state()==m.b1.initialize(m.b1.prehistory())
+E       AssertionError: assert {'actor_id': ...', ...}], ...} == {'schema': 'B..._plans'], ...}
+E         
+E         Omitting 8 identical items, use -vv to show
+E         Differing items:
+E         {'history': [{'activity': 'learn_object_check', 'actor_access': 'EXPLICIT', 'actor_id': 'child', 'counterpart': 'caret...vity': 'compare_plans_in_task', 'actor_access': 'INACCESSIBLE', 'actor_id': 'child', 'counterpart': 'caretaker', ...}]} != {'history': [{'episode_id': 'init', 'actor_id': 'child', 'counterpart': 'caretaker', 'project': 'repair_route', ...}, {'episode_id': 'shared_task', 'actor_id': 'child', 'counterpart': 'caretaker', 'project': 'repair_route', ...}]}
+E         Use -v to get more diff
+
+&lt;R1&gt;/test_identity.py:130: AssertionError</failure></testcase><testcase classname="test_identity" name="test_fresh_process_exact_replay_after_committed_response" time="0.147" /><testcase classname="test_identity" name="test_prestate_checked_under_actual_sqlite_lock" time="0.085" /></testsuite></testsuites>

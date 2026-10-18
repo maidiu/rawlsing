@@ -1,0 +1,28 @@
+............................................F                            [100%]
+=================================== FAILURES ===================================
+___________ test_terminated_writer_rolls_back_uncommitted_admission ____________
+
+tmp_path = PosixPath('<TEMP>')
+
+    def test_terminated_writer_rolls_back_uncommitted_admission(tmp_path):
+        b,v=setup(tmp_path);before=snapshot(b);v['admission_pause']=True
+        p=start(tmp_path,v,'crash');p.stdin.write('GO\n');p.stdin.flush()
+        assert p.stdout.readline().strip()=='UNCOMMITTED_OCCURRENCE'
+        # Another connection cannot see the occurrence before the registrar commit.
+        assert snapshot(b)==before
+        p.kill();stdout,stderr=p.communicate(timeout=10)
+        assert p.returncode!=0
+        b.close();b=m.Bridge(tmp_path/'state.sqlite')
+        assert snapshot(b)==before
+        # A genuinely new attempt remains admissible after process death.
+>       assert advance(b,v)['status']=='COMMITTED';b.close()
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: assert 'DENIED' == 'COMMITTED'
+E         
+E         - COMMITTED
+E         + DENIED
+
+<R1>/test_identity.py:198: AssertionError
+=========================== short test summary info ============================
+FAILED ../../../../../../../..<R1>/test_identity.py::test_terminated_writer_rolls_back_uncommitted_admission
+1 failed, 44 passed in 7.46s

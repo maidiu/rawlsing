@@ -1,0 +1,85 @@
+{
+  "passport_schema": "SOROK_ENVIRONMENT_PASSPORT_R1",
+  "environment_id": "3e4b127d-cf5a-4c11-b8e3-7c868724d3ba",
+  "epoch_id": "c61c201e-8e95-4785-bb2b-bec6137fbd9f",
+  "owner_session_alias": "hq327-r1-implementer",
+  "surface": "LOCAL_SHARED_STORE",
+  "worktree_alias": "hq327-r1-event-identity",
+  "source_family": "B2_SOURCEFREE_EVENT_IDENTITY",
+  "probe_at": "2026-10-18T01:08:17Z",
+  "status": "LIVE_VERIFIED",
+  "machine_alias": "local-authorized",
+  "conversation_or_account_affinity": "same-codex-chat",
+  "last_live_probe_at": "2026-10-18T01:08:17Z",
+  "runtime_marker_digest": "68d8e703a50e2b6c92c51e9abe226c58eec42758781157df277c442d05aa7bef",
+  "probe_command_and_result": {
+    "command": "runtime_probe.py and audit_return.py; read runtime_marker.json and SHA-256",
+    "result": "VERIFIED",
+    "evidence": "evidence/after/runtime.json"
+  },
+  "runtime": {
+    "python": "3.11.3",
+    "sqlite": "3.40.1",
+    "pytest": "pytest 9.1.1",
+    "git": "git version 2.39.1",
+    "node": "v18.14.2",
+    "modules": {
+      "bridge": {
+        "path": "bridge.py",
+        "sha256": "681cb99e8808025b8f5698fac670183e91f7788c7390baaa7b9841e840587769"
+      },
+      "B1": {
+        "path": "imports/B1/bfirst.py",
+        "sha256": "478b989730f49a5def41a367b6f53e4aae9c80961f7f466fe669c7dbd92201a3"
+      },
+      "P1": {
+        "path": "imports/P1/p1_contract.py",
+        "sha256": "df31a147ab037385c5488801b5fa7413f9bcf5c63c97ba6328f859c8fcd92d38"
+      }
+    }
+  },
+  "capabilities": {
+    "python": "VERIFIED",
+    "pytest": "VERIFIED",
+    "sqlite": "VERIFIED",
+    "node": "VERIFIED",
+    "git": "VERIFIED",
+    "filesystem": "VERIFIED",
+    "shell": "VERIFIED",
+    "git_object_store": "VERIFIED"
+  },
+  "git_object_store_alias": "existing-shared-rawlsing-store",
+  "branch": "agent/rabochii-sorok-v2-hq327-r1-b2-event-identity-repair-r1",
+  "checkout_base": "a52fc56c72b2a0496356a68c9a9e8563edf1c107",
+  "head_identity": "resolve direct remote ref after commit; no self-embedded SHA",
+  "clean_dirty_at_probe": "candidate bridge and new return dirty; inherited source unchanged",
+  "materialized_source_refs": "evidence/after/imported_sources.json",
+  "dependency_closure_status": "BOUNDED",
+  "source_permission": "commissioned sourcefree fixtures only",
+  "science_grade": "SOURCEFREE_EVENT_IDENTITY_REPAIR_CANDIDATE_PENDING_INDEPENDENT_I2",
+  "covered_test_suites": {
+    "commands": "evidence/after/commands.json",
+    "inherited_and_B2": "330 PASS",
+    "R1": "45 PASS",
+    "X2": "16 PASS; 1 preserved defect-oracle failure",
+    "native_F1": "17 RED; exit 1"
+  },
+  "model_provider": "Codex selected by user; exact runtime model/provider introspection unavailable",
+  "selected_model_effort": "GPT-6 Medium (user assignment)",
+  "cash_known": null,
+  "quota_known": null,
+  "context_cache_reuse": "same chat; measured cache statistics UNKNOWN",
+  "estimated_total_evidence_cost": null,
+  "retries": "development disclosures in 00_RETURN.md",
+  "review_independence": "HQ later separate I2; this worker is implementer only",
+  "assignments_completed": [
+    "HQ327 R1 author repair"
+  ],
+  "next_good_affinity_tags": [
+    "SQLITE_EVENT_IDENTITY",
+    "B2_REPLAY",
+    "OCCURRENCE"
+  ],
+  "staged_state_preservation": "local worktree and 69 verified imported files retained; temporary court directories removed",
+  "retire_or_rebuild_reason": null
+}

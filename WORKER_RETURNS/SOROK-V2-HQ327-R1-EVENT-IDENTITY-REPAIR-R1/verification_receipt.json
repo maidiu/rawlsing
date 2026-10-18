@@ -1,0 +1,108 @@
+{
+  "grade": "SOURCEFREE_EVENT_IDENTITY_REPAIR_CANDIDATE_PENDING_INDEPENDENT_I2",
+  "unchanged_checks": 330,
+  "new_checks": 45,
+  "x2_original_before": "17 PASS, defect demonstrated",
+  "x2_original_after": "16 PASS, 1 unchanged defect oracle failure",
+  "f1_native": "17 RED, exit 1, unchanged",
+  "f1_accounting": {
+    "boundary_pass": 19,
+    "not_applicable": 17
+  },
+  "concurrency": [
+    {
+      "terrain": "distinct",
+      "distinct_os_processes": 4,
+      "receipt_statuses": [
+        "TRANSACTION_ABORTED_ROLLBACK",
+        "DENIED",
+        "TRANSACTION_ABORTED_ROLLBACK",
+        "DENIED"
+      ]
+    },
+    {
+      "terrain": "clock",
+      "distinct_os_processes": 4,
+      "receipt_statuses": [
+        "TRANSACTION_ABORTED_ROLLBACK",
+        "DENIED",
+        "TRANSACTION_ABORTED_ROLLBACK",
+        "DENIED"
+      ]
+    },
+    {
+      "terrain": "utterance",
+      "distinct_os_processes": 4,
+      "receipt_statuses": [
+        "TRANSACTION_ABORTED_ROLLBACK",
+        "DENIED",
+        "TRANSACTION_ABORTED_ROLLBACK",
+        "DENIED"
+      ]
+    },
+    {
+      "terrain": "exact",
+      "distinct_os_processes": 4,
+      "receipt_statuses": [
+        "TRANSACTION_ABORTED_ROLLBACK",
+        "TRANSACTION_ABORTED_ROLLBACK",
+        "TRANSACTION_ABORTED_ROLLBACK",
+        "TRANSACTION_ABORTED_ROLLBACK"
+      ]
+    },
+    {
+      "terrain": "actor",
+      "distinct_os_processes": 4,
+      "receipt_statuses": [
+        "DENIED",
+        "TRANSACTION_ABORTED_ROLLBACK",
+        "DENIED",
+        "TRANSACTION_ABORTED_ROLLBACK"
+      ]
+    },
+    {
+      "terrain": "readset",
+      "distinct_os_processes": 4,
+      "receipt_statuses": [
+        "TRANSACTION_ABORTED_ROLLBACK",
+        "DENIED",
+        "TRANSACTION_ABORTED_ROLLBACK",
+        "DENIED"
+      ]
+    },
+    {
+      "terrain": "issuer",
+      "distinct_os_processes": 4,
+      "receipt_statuses": [
+        "TRANSACTION_ABORTED_ROLLBACK",
+        "DENIED",
+        "TRANSACTION_ABORTED_ROLLBACK",
+        "DENIED"
+      ]
+    },
+    {
+      "terrain": "payload",
+      "distinct_os_processes": 4,
+      "receipt_statuses": [
+        "TRANSACTION_ABORTED_ROLLBACK",
+        "DENIED",
+        "TRANSACTION_ABORTED_ROLLBACK",
+        "DENIED"
+      ]
+    },
+    {
+      "terrain": "concurrent_commit",
+      "distinct_os_processes": 4,
+      "receipt_statuses": [
+        "COMMITTED",
+        "TRANSACTION_ABORTED_ROLLBACK",
+        "TRANSACTION_ABORTED_ROLLBACK",
+        "TRANSACTION_ABORTED_ROLLBACK"
+      ]
+    }
+  ],
+  "crash_recovery": "45-check identity court includes killed uncommitted writer and valid subsequent admission",
+  "cold_replay": "exact receipt/final-state comparison in unchanged B2 court",
+  "science_adoption": false,
+  "source_sanitation": "portable evidence copies only"
+}

@@ -1,0 +1,107 @@
+diff --git a/WORKER_RETURNS/SOROK-V2-HQ325-B2-FOUR_RETURN_INTEGRATION-R1/bridge.py b/WORKER_RETURNS/SOROK-V2-HQ325-B2-FOUR_RETURN_INTEGRATION-R1/bridge.py
+index 5c84ace20..7245046bc 100644
+--- a/WORKER_RETURNS/SOROK-V2-HQ325-B2-FOUR_RETURN_INTEGRATION-R1/bridge.py
++++ b/WORKER_RETURNS/SOROK-V2-HQ325-B2-FOUR_RETURN_INTEGRATION-R1/bridge.py
+@@ -5,6 +5,7 @@ from dataclasses import asdict, replace
+ import hashlib
+ import importlib.util
+ import json
++import sqlite3
+ from pathlib import Path
+ import subprocess
+ import sys
+@@ -150,12 +151,36 @@ class Bridge:
+         self.witnesses={w['hash']:deepcopy(w) for w in witnesses if b1.valid(w)}
+         self.capability_witnesses=deepcopy(capability_witnesses)
+         self.store.db.execute('CREATE TABLE IF NOT EXISTS b2_ingress (id TEXT PRIMARY KEY, body TEXT)')
++        # One global ID in this bounded registrar: actor/world/issuer are immutable
++        # content, never additional namespace columns permitting ID reuse.
++        self.store.db.execute('''CREATE TABLE IF NOT EXISTS b2_event_identity
++            (event_id TEXT PRIMARY KEY NOT NULL, binding TEXT NOT NULL,
++             event_ref TEXT NOT NULL, ingress_ref TEXT NOT NULL)''')
+ 
+     def close(self):self.store.close()
+ 
+     def advance(self,packet,context,policy,witness,capability,*,seed='0f'*32,coordinate=0,
+                 frozen_envelope=None,
+                 journal_only=False,grant=True,fault=None):
++        # B1 uses autocommit admission but does not commit an enclosing transaction.
++        # Hold the actual write lock through validation, prestate reconciliation,
++        # occurrence + ingress + identity insertion. Response has its own B1 txn.
++        try:
++            self.store.db.execute('BEGIN IMMEDIATE')
++            return self._advance(packet,context,policy,witness,capability,seed=seed,
++                coordinate=coordinate,frozen_envelope=frozen_envelope,
++                journal_only=journal_only,grant=grant,fault=fault)
++        except sqlite3.Error:
++            if self.store.db.in_transaction:self.store.db.execute('ROLLBACK')
++            return b1.sealed(dict(schema='B2_VERTICAL_RECEIPT@1',rule=RULE,
++                status='DENIED',reason='SYNTHETIC_INGRESS_STORAGE_FAILURE',
++                event_admission='NOT_PERFORMED',b1_invoked=False,
++                after_hash=b1.digest(self.store.state())))
++        finally:
++            if self.store.db.in_transaction:self.store.db.execute('ROLLBACK')
++
++    def _advance(self,packet,context,policy,witness,capability,*,seed,coordinate,
++                 frozen_envelope,journal_only,grant,fault):
+         before=self.store.state();before_hash=b1.digest(before)
+         evaluation=p1.evaluate(packet,context)
+         selection=p1.select_test_only(evaluation,policy,seed_hex=seed,coordinate=coordinate)
+@@ -177,6 +202,43 @@ class Bridge:
+         candidate=next(c for c in packet['candidates'] if c['candidate_id']==selection['selected_candidate_id'])
+         if not witness or not b1.valid(witness) or self.witnesses.get(witness['hash'])!=witness:
+             return stop('INDEPENDENT_OCCURRENCE_WITNESS_REQUIRED')
++        # Bind the complete witnessed payload and readset, including fields not
++        # represented by B1.Event (wall clock, issuer, parent, attributed speech).
++        # Capabilities/grants are downstream conditions and may be retried.
++        binding=b1.canonical(dict(rule=RULE,actor='child',witness=witness,
++            packet=packet,context=context,policy=policy,
++            selected_candidate_id=candidate['candidate_id']))
++        event_id=witness.get('event_id')
++        if not isinstance(event_id,str) or not event_id:
++            return stop('EVENT_ID_REQUIRED')
++        identity=self.store.db.execute(
++            'SELECT binding,event_ref,ingress_ref FROM b2_event_identity WHERE event_id=?',
++            (event_id,)).fetchone()
++        if identity is not None:
++            if identity[0]!=binding:return stop('EVENT_IDENTITY_CONFLICT')
++            event_row=self.store.db.execute('SELECT body FROM occurrence WHERE hash=?',(identity[1],)).fetchone()
++            ingress_row=self.store.db.execute('SELECT body FROM b2_ingress WHERE id=?',(identity[2],)).fetchone()
++            if (not event_row or not ingress_row
++                or not b1.valid(json.loads(event_row[0]))
++                or not b1.valid(json.loads(ingress_row[0]))
++                or json.loads(event_row[0])['hash']!=identity[1]
++                or json.loads(ingress_row[0])['hash']!=identity[2]
++                or json.loads(event_row[0])['event_id']!=event_id
++                or json.loads(ingress_row[0])['event_ref']!=identity[1]):
++                return stop('EVENT_IDENTITY_LEDGER_INTEGRITY_FAILURE')
++            if witness['expected_actor_state_hash']!=before_hash:
++                # Re-admission is successful and inert even after later events.
++                # Never re-run an old response against the new checkpoint.
++                receipt.update(event_admission=json.loads(ingress_row[0]),
++                    admitted_event=json.loads(event_row[0]),
++                    admission_replay='EXACT_EVENT_ALREADY_ADMITTED',response_status='DENIED')
++                # Retain the existing response stale-state reason; admission is
++                # idempotent while response rebinding is still forbidden.
++                return stop('WITNESS_BINDING_OR_STALE_STATE','ALREADY_ADMITTED')
++        elif any(json.loads(row[0])['event_id']==event_id for row in
++                 self.store.db.execute('SELECT body FROM occurrence')):
++            # No retrospective provenance invention for old/direct B1 admissions.
++            return stop('EVENT_IDENTITY_UNBOUND_LEGACY')
+         child_history=context['histories'].get('H-CHILD-1',{})
+         if (context['people']['CHILD-1']['history_ref']!='H-CHILD-1'
+             or child_history.get('source')!='B2_EXACT_SYNTHETIC_PREHISTORY'
+@@ -239,6 +301,13 @@ class Bridge:
+             status='ADMITTED_SYNTHETIC_FIXTURE_ONLY',attributed_claims=candidate['interpretations'],
+             objective_world_facts=witness['world_facts']))
+         self.store.db.execute('INSERT OR IGNORE INTO b2_ingress VALUES (?,?)',(ingress['hash'],b1.canonical(ingress)))
++        if identity is None:
++            self.store.db.execute('INSERT INTO b2_event_identity VALUES (?,?,?,?)',
++                (event_id,binding,admitted['hash'],ingress['hash']))
++        elif identity[1:]!=(admitted['hash'],ingress['hash']):
++            return stop('EVENT_IDENTITY_LEDGER_INTEGRITY_FAILURE')
++        # This is the sole admission commit; downstream denials preserve it.
++        self.store.db.execute('COMMIT')
+         receipt.update(event_admission=ingress,admitted_event=admitted)
+         cap=deepcopy(capability)
+         # Reject caller trying to use capability context for a different event or actor.

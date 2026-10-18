@@ -1,0 +1,57 @@
+[
+  {
+    "command": [
+      "/usr/local/bin/python3",
+      "run_courts.py"
+    ],
+    "label": "all_courts",
+    "exit": 0,
+    "expected": 0
+  },
+  {
+    "command": [
+      "/usr/local/bin/python3",
+      "<R1>/runtime_probe.py",
+      "<R1>/evidence/after/runtime.json"
+    ],
+    "label": "runtime",
+    "exit": 0,
+    "expected": 0
+  },
+  {
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "<R1>/frozen/test_hostile_x2.py",
+      "--junitxml=<R1>/evidence/after/x2.xml"
+    ],
+    "label": "x2",
+    "exit": 1,
+    "expected": 1
+  },
+  {
+    "command": [
+      "/usr/local/bin/python3",
+      "<R1>/probe.py",
+      "<R1>/evidence/after/collision.json"
+    ],
+    "label": "collision",
+    "exit": 0,
+    "expected": 0
+  },
+  {
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "<R1>/test_identity.py",
+      "--junitxml=<R1>/evidence/after/identity.xml"
+    ],
+    "label": "identity",
+    "exit": 0,
+    "expected": 0
+  }
+]
