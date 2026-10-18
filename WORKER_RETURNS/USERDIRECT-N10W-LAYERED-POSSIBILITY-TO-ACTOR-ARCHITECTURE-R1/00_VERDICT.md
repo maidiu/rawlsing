@@ -23,3 +23,11 @@ The unit of explanation cannot be a group-statistical route propensity pasted in
 ## Decisions not made
 
 Competent Pyat structural model-use/temporal owner acceptance, precise SDTF object-positioned resource contract and verified external gatekeeper, concrete Sorok CAN008 rule/target/actor accessible receipt, calibrated/identified empirical route/attempt estimand, native 74+ module or full cross-HQ cold execution, actual admitted irreversible developmental consequence, original35/N11/N12/OC05 gates. **Nonbinding verdict only.** Full evidence/motions in 01–05 and 06 evidence passport.
+
+## Exact final execution supplement and bundle
+
+The **36** original court tests remain unchanged: T01–T22 reference bounds (22/22) plus real original E04 clients (14/14). A **separate** legacy-driver program court then executed 3 additional tests using the user-attached original `enneagramBatch.js` function and supplied weights/schema; **combined total 39/39 PASS**. These three actually reproduce the old min–max normalizer's null/NaN behavior for missing/malformed country drivers. They **do not** validate its Enneagram type scores or expand Pyat/Sorok permissions; see `07_LEGACY_DRIVER_FACET_METHOD_COURT.md`.
+
+All 39 suites were rerun together under Python 3.13.5 / pytest 9.0.2 (0.24s), with independently checked original native-client Git blobs. The final executable/source/JUnit/cold bundle is `N10W_Layered_Architecture_Court_Evidence_R1.zip`, SHA256 `180debae440775fae6985c2a1efe8689ec9b1365b40430c2767cffd7134c238d`. Exact physical transport, bundle content, and the independent two-child equality receipt are in `06_EXECUTION_PASSPORT.json`. All readable runnable 36-suite code and both exact original E04 clients have also been pushed under this return's `repro/` subtree. The three legacy uploaded inputs are kept in the separate attached artifact, not represented as repo-current owner source.
+
+**Final terminal remains `BOUNDED_SOURCEFREE_STRUCTURAL_POSITIVE__FORMED_PERSON_POSITIVE_NOT_REACHED__NONBINDING_NO_ISSUANCE`.** `39 TEST PASS` must not be misreported as `22/22 FULL NATIVE PERSON-WORLD TESTS`.
