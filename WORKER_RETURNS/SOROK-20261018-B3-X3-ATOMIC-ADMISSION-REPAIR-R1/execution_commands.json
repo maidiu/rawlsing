@@ -1,0 +1,25 @@
+{
+  "working_directory": "RETURN_ROOT",
+  "full_baseline_command": "GIT_DIR=<EXISTING_SHARED_OBJECT_STORE> python3 <STAGING>/WORKER_RETURNS/B3/run_all.py",
+  "full_baseline_exit": 1,
+  "full_baseline_exit_reason": "Original author-only finalizer branch assertion after all execution stages; evidence/baseline/run_commands.json records actual preceding commands.",
+  "final_candidate_command": "python3 reproduce.py --reuse-baseline",
+  "final_candidate_commands": "evidence/reproduction_commands.json",
+  "extra_commands": [
+    {
+      "command": "B2_REVIEW_ROOT=candidate/.runtime/b2 E3_EVIDENCE=evidence/e3_sql python3 -m pytest -q candidate/.runtime/e3/test_independent.py --junitxml=evidence/e3.xml",
+      "exit": 0
+    },
+    {
+      "command": "python3 -m pytest -q test_projected_atomic.py --junitxml=evidence/projected_atomic.xml",
+      "exit": 0
+    }
+  ],
+  "bootstrap": {
+    "checkout_initial_detached": "25830fe7462bb9e29bc4087e6ae14f3f84cec377",
+    "fetched_branch": "agent/rabochii-sorok-20261018-b3-x3-atomic-admission-repair-r1",
+    "direct_remote_startup": "0632bc21f3b0453e55703f80ba3201816238d6cc",
+    "sole_seal_change": "WORKER_COMMISSIONS/SOROK-20261018-B3-X3-ATOMIC-ADMISSION-REPAIR-R1/00_COMMISSION.md",
+    "new_clone": false
+  }
+}
