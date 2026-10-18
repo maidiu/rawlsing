@@ -1,0 +1,179 @@
+[
+  {
+    "command": [
+      "/usr/local/bin/python3",
+      "run_courts.py"
+    ],
+    "cwd": "<E2>/.runtime/original",
+    "label": "original/inherited",
+    "exit": 0,
+    "expected_exit": 0,
+    "environment": {
+      "GIT_DIR": "<EXISTING_SHARED_GIT_OBJECT_STORE>",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    }
+  },
+  {
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "<E2>/.runtime/frozen/test_hostile_x2.py",
+      "--junitxml=<E2>/evidence/original/x2.xml"
+    ],
+    "cwd": "<E2>/.runtime/original",
+    "label": "original/x2",
+    "exit": 0,
+    "expected_exit": 0,
+    "environment": {
+      "GIT_DIR": "<EXISTING_SHARED_GIT_OBJECT_STORE>",
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "B2_REVIEW_ROOT": "<E2>/.runtime/original",
+      "E2_EVIDENCE": "<E2>/evidence/original/sql"
+    }
+  },
+  {
+    "command": [
+      "/usr/local/bin/python3",
+      "<E2>/probe_e2.py",
+      "<E2>/evidence/original/collision.json"
+    ],
+    "cwd": "<E2>/.runtime/original",
+    "label": "original/collision",
+    "exit": 0,
+    "expected_exit": 0,
+    "environment": {
+      "GIT_DIR": "<EXISTING_SHARED_GIT_OBJECT_STORE>",
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "B2_REVIEW_ROOT": "<E2>/.runtime/original",
+      "E2_EVIDENCE": "<E2>/evidence/original/sql"
+    }
+  },
+  {
+    "command": [
+      "/usr/local/bin/python3",
+      "<E2>/runtime_probe.py",
+      "<E2>/evidence/original/runtime.json"
+    ],
+    "cwd": "<E2>/.runtime/original",
+    "label": "original/runtime",
+    "exit": 0,
+    "expected_exit": 0,
+    "environment": {
+      "GIT_DIR": "<EXISTING_SHARED_GIT_OBJECT_STORE>",
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "B2_REVIEW_ROOT": "<E2>/.runtime/original",
+      "E2_EVIDENCE": "<E2>/evidence/original/sql"
+    }
+  },
+  {
+    "command": [
+      "/usr/local/bin/python3",
+      "run_courts.py"
+    ],
+    "cwd": "<E2>/.runtime/repaired",
+    "label": "repaired/inherited",
+    "exit": 0,
+    "expected_exit": 0,
+    "environment": {
+      "GIT_DIR": "<EXISTING_SHARED_GIT_OBJECT_STORE>",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    }
+  },
+  {
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "<E2>/.runtime/frozen/test_hostile_x2.py",
+      "--junitxml=<E2>/evidence/repaired/x2.xml"
+    ],
+    "cwd": "<E2>/.runtime/repaired",
+    "label": "repaired/x2",
+    "exit": 1,
+    "expected_exit": 1,
+    "environment": {
+      "GIT_DIR": "<EXISTING_SHARED_GIT_OBJECT_STORE>",
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "B2_REVIEW_ROOT": "<E2>/.runtime/repaired",
+      "E2_EVIDENCE": "<E2>/evidence/repaired/sql"
+    }
+  },
+  {
+    "command": [
+      "/usr/local/bin/python3",
+      "<E2>/probe_e2.py",
+      "<E2>/evidence/repaired/collision.json"
+    ],
+    "cwd": "<E2>/.runtime/repaired",
+    "label": "repaired/collision",
+    "exit": 0,
+    "expected_exit": 0,
+    "environment": {
+      "GIT_DIR": "<EXISTING_SHARED_GIT_OBJECT_STORE>",
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "B2_REVIEW_ROOT": "<E2>/.runtime/repaired",
+      "E2_EVIDENCE": "<E2>/evidence/repaired/sql"
+    }
+  },
+  {
+    "command": [
+      "/usr/local/bin/python3",
+      "<E2>/runtime_probe.py",
+      "<E2>/evidence/repaired/runtime.json"
+    ],
+    "cwd": "<E2>/.runtime/repaired",
+    "label": "repaired/runtime",
+    "exit": 0,
+    "expected_exit": 0,
+    "environment": {
+      "GIT_DIR": "<EXISTING_SHARED_GIT_OBJECT_STORE>",
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "B2_REVIEW_ROOT": "<E2>/.runtime/repaired",
+      "E2_EVIDENCE": "<E2>/evidence/repaired/sql"
+    }
+  },
+  {
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "<E2>/.runtime/R1/test_identity.py",
+      "--junitxml=<E2>/evidence/repaired/r1.xml"
+    ],
+    "cwd": "<E2>/.runtime/repaired",
+    "label": "repaired/r1",
+    "exit": 0,
+    "expected_exit": 0,
+    "environment": {
+      "GIT_DIR": "<EXISTING_SHARED_GIT_OBJECT_STORE>",
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "B2_REVIEW_ROOT": "<E2>/.runtime/repaired",
+      "E2_EVIDENCE": "<E2>/evidence/repaired/sql",
+      "R1_EVIDENCE": "<E2>/evidence/repaired/r1_concurrency"
+    }
+  },
+  {
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "<E2>/test_e2.py",
+      "--junitxml=<E2>/evidence/repaired/e2.xml"
+    ],
+    "cwd": "<E2>/.runtime/repaired",
+    "label": "repaired/e2",
+    "exit": 1,
+    "expected_exit": 1,
+    "environment": {
+      "GIT_DIR": "<EXISTING_SHARED_GIT_OBJECT_STORE>",
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "B2_REVIEW_ROOT": "<E2>/.runtime/repaired",
+      "E2_EVIDENCE": "<E2>/evidence/repaired/sql"
+    }
+  }
+]

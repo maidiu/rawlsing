@@ -1,0 +1,93 @@
+{
+  "verdict": "REVIEW_REVISE",
+  "original": "950ecf0b3816ea7d0dd3ab48b62c92cedfe0e883",
+  "repair": "358fd1086eac0a4aa7791ca14abc25c45b935ddd",
+  "phases": {
+    "original": {
+      "unchanged": 330,
+      "x2_pass": 17,
+      "x2_fail": 0,
+      "native_red": [
+        "F01",
+        "F02",
+        "F03",
+        "F04",
+        "F05",
+        "F06",
+        "F07",
+        "F08",
+        "F10",
+        "F11",
+        "F13",
+        "F15",
+        "F16",
+        "F17",
+        "F18",
+        "F19",
+        "F21"
+      ]
+    },
+    "repaired": {
+      "unchanged": 330,
+      "x2_pass": 16,
+      "x2_fail": 1,
+      "native_red": [
+        "F01",
+        "F02",
+        "F03",
+        "F04",
+        "F05",
+        "F06",
+        "F07",
+        "F08",
+        "F10",
+        "F11",
+        "F13",
+        "F15",
+        "F16",
+        "F17",
+        "F18",
+        "F19",
+        "F21"
+      ]
+    }
+  },
+  "r1": {
+    "tests": 45,
+    "pass_count": 45
+  },
+  "independent_e2": {
+    "tests": 44,
+    "pass_count": 42,
+    "fail_count": 2,
+    "strict_failures": [
+      "test_legacy_after_mapping_must_fail_closed_at_b2_reentry[False]",
+      "test_legacy_after_mapping_must_fail_closed_at_b2_reentry[True]"
+    ]
+  },
+  "concurrent_processes": {
+    "same": {
+      "distinct_os_processes": 6,
+      "occurrences": 1,
+      "joint_receipts": 0
+    },
+    "conflicting": {
+      "distinct_os_processes": 6,
+      "occurrences": 1,
+      "joint_receipts": 0
+    },
+    "distinct": {
+      "distinct_os_processes": 6,
+      "occurrences": 6,
+      "joint_receipts": 0
+    },
+    "commit": {
+      "distinct_os_processes": 6,
+      "occurrences": 1,
+      "joint_receipts": 1
+    }
+  },
+  "killed_writer": "SIGKILL at three uncommitted insert boundaries; not power loss",
+  "cold_replay": "exact receipts/state and persisted two-event mediator verified",
+  "revision_scope": "B2 reentry integrity after conflicting legacy B1 write; no B1 producer lockdown requested"
+}
