@@ -1,0 +1,38 @@
+name: Pyat R37 N9J Sourcefree Selected-World Court
+
+on:
+  pull_request:
+    paths:
+      - 'rawlsing_next/tests/test_pyat_r37_n9j_sourcefree.py'
+      - 'WORKER_RETURNS/PYAT-R37-N9J-SELECTED-WORLD-PROGRESSIVE-CONSUMER-R1/**'
+      - '.github/workflows/pyat-r37-n9j-sourcefree-court.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  n9j-testonly:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --disable-pip-version-check pytest
+      - name: Exact N9J original-owner import and value/negative court
+        env:
+          PYTHONHASHSEED: '0'
+          PYTEST_DISABLE_PLUGIN_AUTOLOAD: '1'
+        run: |
+          python -m pytest -q rawlsing_next/tests/test_pyat_r37_n9j_sourcefree.py --junitxml=n9j-junit.xml
+      - name: Upload independent N9J JUnit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pyat-r37-n9j-sourcefree-junit-${{ github.run_id }}
+          path: n9j-junit.xml
+          if-no-files-found: warn
