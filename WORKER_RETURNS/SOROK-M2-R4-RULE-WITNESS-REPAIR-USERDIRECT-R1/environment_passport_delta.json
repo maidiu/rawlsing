@@ -1,0 +1,66 @@
+{
+  "passport_schema": "SOROK_00D_R1",
+  "owner_session_alias": "m2r4-userdirect-implementation",
+  "surface": "ISOLATED_CONTAINER",
+  "environment_id": "m2r4-userdirect-sourcefree-container",
+  "epoch_id": "source-reused-locally-with-new-isolated-R4-directory",
+  "machine_alias": null,
+  "git_object_store_alias": null,
+  "worktree_alias": null,
+  "branch": "agent/rabochii-sorok-20261018-m2r4-rule-witness-repair-userdirect-r1",
+  "exact_checkout_base": "9c1ab2fa172e41c7fb033b5f134b25255d65126c as GitHub source preimage; not actual checkout",
+  "status": "LIVE_VERIFIED_AT_EXECUTION__FUTURE_CONTINUITY_NOT_GUARANTEED",
+  "last_live_probe_at": null,
+  "runtime_marker_digest": null,
+  "capabilities": {
+    "python": "3.13.5 VERIFIED",
+    "pytest": "9.0.2 VERIFIED",
+    "shell": "VERIFIED",
+    "filesystem": "VERIFIED",
+    "subprocess": "VERIFIED",
+    "git": "binary present; private network authentication not used",
+    "node": "NOT_NEEDED",
+    "github_connector": "READ_AND_WRITE_PRIVATE_REPOSITORY_VERIFIED"
+  },
+  "materialized_source_refs": [
+    {
+      "commit": "9c1ab2fa172e41c7fb033b5f134b25255d65126c",
+      "git_blob_sha1": "645308250f54133c1f9d707a5851f689942f18ba",
+      "sha256": "838d0852e6b1b28bb733b1eda580b3dc53f5db3d47e3a0caefbd3072022ad45a",
+      "imported_module_path": "sorok_m2r4_repair/kernel.py"
+    },
+    {
+      "commit": "user-directed new R4 research branch",
+      "git_blob_sha1": "045331889e922274ba0a31bb78d4b110aaba06a1",
+      "sha256": "5b8ac91ca8b3b9afb068493f2a1d6c2dabdc650814ff5f099f0e670d09823940",
+      "imported_module_path": "sorok_m2r4_repair/kernel.py"
+    }
+  ],
+  "dependency_closure_status": "FULL_BOUNDED_SOURCEFREE",
+  "covered_test_suites": {
+    "R3_author_original_135": "135_PASS",
+    "independent_prior_new_6": "6_PASS",
+    "R4_new_hostile_12": "12_PASS",
+    "all": "153_PASS",
+    "original_R2_negative": "1_PASS_1_EXPECTED_RED"
+  },
+  "model_provider": "OpenAI ChatGPT",
+  "model_family": "GPT-6",
+  "effort": "not independently verifiable from runtime",
+  "cash": "UNKNOWN",
+  "usage": "UNKNOWN",
+  "independence": "R4 implementation performed after R3 I2 review in same conversation; CANNOT independently accept R4",
+  "privacy": "PRIVATE_SOURCE_USER_DIRECTED",
+  "science_grade": "IMPLEMENTER_VERIFIED_SOURCEFREE_NOT_INDEPENDENT_ACCEPTED",
+  "native_ADP_CAN_authority": "NOT_GRANTED",
+  "source35": "NOT_ACCESSED",
+  "no_production_mutation": true,
+  "next_good_affinity_tags": [
+    "M2",
+    "R4",
+    "RULE_HASH",
+    "COUNTERPART_WITNESS",
+    "HISTORICAL_READSET"
+  ],
+  "staged_state_preservation": "sourcefree local files packaged, remote candidate independent branch published"
+}
