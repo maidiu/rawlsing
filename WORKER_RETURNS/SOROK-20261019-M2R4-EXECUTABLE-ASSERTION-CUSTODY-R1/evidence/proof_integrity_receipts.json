@@ -1,0 +1,90 @@
+{
+  "claim_grades": {
+    "ASSERTION_EFFICACY_PROVED": true,
+    "CLAIM_EDGE_FALSIFIED_BY_CONTROL_AND_POSITIVE_SURVIVED": true,
+    "EXECUTED_GREEN": true,
+    "SCIENCE": "bounded sourcefree executable custody court only"
+  },
+  "gate_path": "staged/cross_hq/proof_integrity_gate_r1.py",
+  "gate_results": [
+    {
+      "contract": "test_fresh_i2_adversarial.py.proof.json",
+      "label": "rule_binding",
+      "log": "proof_gate_rule_binding.log",
+      "receipt": "proof_gate_rule_binding_receipt.json",
+      "receipt_payload": {
+        "claims": [
+          {
+            "baseline": "PASS",
+            "claim_id": "R3I2_RED1_HISTORICAL_RULE_IDENTITY_BINDING",
+            "fault_path": "kernel.py",
+            "fault_probe": "TARGET_ASSERTION_FAILED",
+            "grade": "BOUNDED_MUTATION_DETECTED",
+            "positive_node": "test_fresh_i2_adversarial.py::test_i2_01_historical_lineage_rule_hash_must_not_accept_a_different_rule"
+          }
+        ],
+        "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+        "status": "MECHANICAL_WITNESS_PASS_NOT_SEMANTIC_ADOPTION"
+      },
+      "return_code": 0
+    },
+    {
+      "contract": "test_r4_i2_new_hostiles.py.proof.json",
+      "label": "witness_channels",
+      "log": "proof_gate_witness_channels.log",
+      "receipt": "proof_gate_witness_channels_receipt.json",
+      "receipt_payload": {
+        "claims": [
+          {
+            "baseline": "PASS",
+            "claim_id": "R3I2_RED2_EVENT_OBSERVER_INDEPENDENCE",
+            "fault_path": "kernel.py",
+            "fault_probe": "TARGET_ASSERTION_FAILED",
+            "grade": "BOUNDED_MUTATION_DETECTED",
+            "positive_node": "test_r4_i2_new_hostiles.py::test_i2n02_event_owner_self_observer"
+          },
+          {
+            "baseline": "PASS",
+            "claim_id": "R3I2_RED2_RELEVANCE_OBSERVER_INDEPENDENCE",
+            "fault_path": "kernel.py",
+            "fault_probe": "TARGET_ASSERTION_FAILED",
+            "grade": "BOUNDED_MUTATION_DETECTED",
+            "positive_node": "test_r4_i2_new_hostiles.py::test_i2n03_relevance_owner_self_observer"
+          },
+          {
+            "baseline": "PASS",
+            "claim_id": "R3I2_RED2_HISTORY_WITNESS_INDEPENDENCE",
+            "fault_path": "kernel.py",
+            "fault_probe": "TARGET_ASSERTION_FAILED",
+            "grade": "BOUNDED_MUTATION_DETECTED",
+            "positive_node": "test_r4_i2_new_hostiles.py::test_i2n04_history_owner_self_observer"
+          }
+        ],
+        "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+        "status": "MECHANICAL_WITNESS_PASS_NOT_SEMANTIC_ADOPTION"
+      },
+      "return_code": 0
+    }
+  ],
+  "kernel_restoration": {
+    "actual": "5b8ac91ca8b3b9afb068493f2a1d6c2dabdc650814ff5f099f0e670d09823940",
+    "expected": "5b8ac91ca8b3b9afb068493f2a1d6c2dabdc650814ff5f099f0e670d09823940",
+    "match": true
+  },
+  "law_path": "staged/cross_hq/PROOF_INTEGRITY_AND_FALSIFIABLE_TEST_LAW_R1.md",
+  "lint": [
+    {
+      "file": "staged/tests/test_r4_i2_new_hostiles.py",
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "{\n  \"state\": \"AST_LINT_PASS\",\n  \"file\": \"staged/tests/test_r4_i2_new_hostiles.py\"\n}"
+    },
+    {
+      "file": "staged/cross_hq/test_proof_integrity_gate_r1.py",
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "{\n  \"state\": \"AST_LINT_PASS\",\n  \"file\": \"staged/cross_hq/test_proof_integrity_gate_r1.py\"\n}"
+    }
+  ],
+  "schema": "SOROK_M2R4E_PROOF_WITNESS_RECEIPTS@1"
+}

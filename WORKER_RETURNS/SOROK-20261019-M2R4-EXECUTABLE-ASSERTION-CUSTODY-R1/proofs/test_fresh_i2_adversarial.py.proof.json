@@ -1,0 +1,16 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "claims": [
+    {
+      "claim_id": "R3I2_RED1_HISTORICAL_RULE_IDENTITY_BINDING",
+      "actual_consumer": "kernel.eligible -> kernel._lineage_integrity retained Interpretation.rule_hash gate",
+      "claimed_dependency": "a retained lineage version is usable only when rec.rule_hash equals the current qualified RULE_HASH, even if an attacker recomputes the unkeyed content digest",
+      "positive_node": "test_fresh_i2_adversarial.py::test_i2_01_historical_lineage_rule_hash_must_not_accept_a_different_rule",
+      "fault": {
+        "path": "kernel.py",
+        "old": "        require(rec.rule_hash==RULE_HASH,'HISTORICAL_RULE_IDENTITY_UNQUALIFIED')",
+        "new": "        pass  # PROOF_FAULT: historical rule identity binding severed"
+      }
+    }
+  ]
+}

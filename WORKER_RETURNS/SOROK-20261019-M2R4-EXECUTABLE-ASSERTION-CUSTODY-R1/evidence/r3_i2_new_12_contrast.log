@@ -1,0 +1,115 @@
+FFFF.....FF.                                                             [100%]
+=================================== FAILURES ===================================
+________________________ test_i2n01_forged_rule_digest _________________________
+
+    def test_i2n01_forged_rule_digest():
+        """Recomputed content digest does not authorize an arbitrary rule hash."""
+        scene, state = seeded_past()
+        original = state.lineage[0]
+        forged = replace(original, rule_hash="f" * 64)
+        fields = asdict(forged)
+        fields.pop("hash")
+        forged = replace(forged, hash=digest(fields))
+        tampered = replace(state, lineage=(forged,))
+>       with pytest.raises(Refusal, match="HISTORICAL_RULE_IDENTITY_UNQUALIFIED"):
+E       Failed: DID NOT RAISE Refusal
+
+test_r4_i2_new_hostiles.py:62: Failed
+_____________________ test_i2n02_event_owner_self_observer _____________________
+
+    def test_i2n02_event_owner_self_observer():
+        """Owner-as-objective-event-observer cannot support other-person modes."""
+        scene, state = seeded_past()
+        changed = observe(scene, action_event_observer="other_P")
+>       assert modes(changed, state) == {"NO_CHANGE"}
+E       AssertionError: assert {'CONTRADICT'...TRIBUTE', ...} == {'NO_CHANGE'}
+E         
+E         Extra items in the left set:
+E         'CONTRADICT'
+E         'DIFFERENTIATE'
+E         'REINFORCE'
+E         'NARROW'
+E         'GENERALIZE'
+E         'REATTRIBUTE'
+E         Use -v to get more diff
+
+test_r4_i2_new_hostiles.py:70: AssertionError
+___________________ test_i2n03_relevance_owner_self_observer ___________________
+
+    def test_i2n03_relevance_owner_self_observer():
+        """Owner-as-Relevance.observer cannot support other-person modes."""
+        scene, state = seeded_past()
+        changed = observe(scene, relevance_observer="other_P")
+>       assert modes(changed, state) == {"NO_CHANGE"}
+E       AssertionError: assert {'CONTRADICT'...TRIBUTE', ...} == {'NO_CHANGE'}
+E         
+E         Extra items in the left set:
+E         'CONTRADICT'
+E         'DIFFERENTIATE'
+E         'REINFORCE'
+E         'NARROW'
+E         'GENERALIZE'
+E         'REATTRIBUTE'
+E         Use -v to get more diff
+
+test_r4_i2_new_hostiles.py:77: AssertionError
+____________________ test_i2n04_history_owner_self_observer ____________________
+
+    def test_i2n04_history_owner_self_observer():
+        """Owner-as-HistoryWitness.observer cannot support other-person modes."""
+        scene, state = seeded_past()
+        changed = observe(scene, history_observer="other_P")
+>       assert modes(changed, state) == {"NO_CHANGE"}
+E       AssertionError: assert {'CONTRADICT'...TRIBUTE', ...} == {'NO_CHANGE'}
+E         
+E         Extra items in the left set:
+E         'CONTRADICT'
+E         'DIFFERENTIATE'
+E         'REINFORCE'
+E         'NARROW'
+E         'GENERALIZE'
+E         'REATTRIBUTE'
+E         Use -v to get more diff
+
+test_r4_i2_new_hostiles.py:84: AssertionError
+___________________ test_i2n10_old_version_rule_unqualified ____________________
+
+    def test_i2n10_old_version_rule_unqualified():
+        """A legacy @0.4.1 rehashed rule cannot migrate silently to @0.4.2."""
+        scene, state = seeded_past()
+        original = state.lineage[0]
+        old = replace(original, rule_hash=R3_RULE_HASH)
+        fields = asdict(old)
+        fields.pop("hash")
+        old = replace(old, hash=digest(fields))
+>       with pytest.raises(Refusal, match="HISTORICAL_RULE_IDENTITY_UNQUALIFIED"):
+E       Failed: DID NOT RAISE Refusal
+
+test_r4_i2_new_hostiles.py:181: Failed
+_____________________ test_i2n11_nochange_unchanged_state ______________________
+
+    def test_i2n11_nochange_unchanged_state():
+        """Disqualify the only witness channel; NO_CHANGE must be non-mutating."""
+        scene, state = seeded_past()
+        scene = observe(scene, history_observer="other_P")
+>       assert modes(scene, state) == {"NO_CHANGE"}
+E       AssertionError: assert {'CONTRADICT'...TRIBUTE', ...} == {'NO_CHANGE'}
+E         
+E         Extra items in the left set:
+E         'CONTRADICT'
+E         'DIFFERENTIATE'
+E         'REINFORCE'
+E         'NARROW'
+E         'GENERALIZE'
+E         'REATTRIBUTE'
+E         Use -v to get more diff
+
+test_r4_i2_new_hostiles.py:189: AssertionError
+=========================== short test summary info ============================
+FAILED test_r4_i2_new_hostiles.py::test_i2n01_forged_rule_digest - Failed: DI...
+FAILED test_r4_i2_new_hostiles.py::test_i2n02_event_owner_self_observer - Ass...
+FAILED test_r4_i2_new_hostiles.py::test_i2n03_relevance_owner_self_observer
+FAILED test_r4_i2_new_hostiles.py::test_i2n04_history_owner_self_observer - A...
+FAILED test_r4_i2_new_hostiles.py::test_i2n10_old_version_rule_unqualified - ...
+FAILED test_r4_i2_new_hostiles.py::test_i2n11_nochange_unchanged_state - Asse...
+6 failed, 6 passed in 0.22s

@@ -1,0 +1,105 @@
+{
+  "cold_full_153": [
+    {
+      "actual": {
+        "errors": 0,
+        "failed": 0,
+        "passed": 153,
+        "skipped": 0,
+        "tests": 153
+      },
+      "label": "cold_a",
+      "log": "r4_author_153_cold_a.log",
+      "return_code": 0,
+      "xml": "r4_author_153_cold_a.xml"
+    },
+    {
+      "actual": {
+        "errors": 0,
+        "failed": 0,
+        "passed": 153,
+        "skipped": 0,
+        "tests": 153
+      },
+      "label": "cold_b",
+      "log": "r4_author_153_cold_b.log",
+      "return_code": 0,
+      "xml": "r4_author_153_cold_b.xml"
+    }
+  ],
+  "cold_interpretation": "Two fresh processes, each executing the full 153-case inherited suite on the exact R4 kernel; counts and outcomes equal. JUnit byte hashes differ only by run metadata, not by test outcome.",
+  "cold_kernel_imports": [
+    {
+      "cwd": "runs/r2_control",
+      "implementer": "cpython",
+      "imported_kernel_is_exact_local_file": true,
+      "module": "kernel",
+      "module_file": "runs/r2_control/kernel.py",
+      "module_sha256": "88bb8c65dfd88efd1843f16e1bb6d51e1fa01a0dc1fdccb13e03a9b2b394d8d3",
+      "python": "3.11.3",
+      "rule": "M2_INTERPRETATION_SOURCE_TEMPORAL_IDENTITY@0.4.0_CANDIDATE",
+      "rule_hash": "fa7b943be9e1cd49ddf9cc1c8faf5ec01c2b68f86dbe4ea3cdeb859699f5dcaf",
+      "schema": "SOROK_M2R4E_COLD_IMPORT@1",
+      "sys_path_first": [
+        "runs/r2_control",
+        "runner",
+        "<external>"
+      ]
+    },
+    {
+      "cwd": "runs/r3_red",
+      "implementer": "cpython",
+      "imported_kernel_is_exact_local_file": true,
+      "module": "kernel",
+      "module_file": "runs/r3_red/kernel.py",
+      "module_sha256": "838d0852e6b1b28bb733b1eda580b3dc53f5db3d47e3a0caefbd3072022ad45a",
+      "python": "3.11.3",
+      "rule": "M2_INTERPRETATION_SOURCE_TEMPORAL_IDENTITY@0.4.1_CANDIDATE",
+      "rule_hash": "8cc1f8495ee84170f77df0532f21c077b630de3af2d72d3c6f5dd7793eec9ece",
+      "schema": "SOROK_M2R4E_COLD_IMPORT@1",
+      "sys_path_first": [
+        "runs/r3_red",
+        "runner",
+        "<external>"
+      ]
+    },
+    {
+      "cwd": "runs/r4_green",
+      "implementer": "cpython",
+      "imported_kernel_is_exact_local_file": true,
+      "module": "kernel",
+      "module_file": "runs/r4_green/kernel.py",
+      "module_sha256": "5b8ac91ca8b3b9afb068493f2a1d6c2dabdc650814ff5f099f0e670d09823940",
+      "python": "3.11.3",
+      "rule": "M2_INTERPRETATION_SOURCE_TEMPORAL_IDENTITY@0.4.2_CANDIDATE",
+      "rule_hash": "7bd2a3c289a98e918f655734d5acab198faef430e1558cfce57c9e40cae41150",
+      "schema": "SOROK_M2R4E_COLD_IMPORT@1",
+      "sys_path_first": [
+        "runs/r4_green",
+        "runner",
+        "<external>"
+      ]
+    }
+  ],
+  "cold_outcomes_equal": true,
+  "no_change": {
+    "audit_hash": "4a9bffa49ef5f03e380ecbde5cc27ba1daf39ec0ad40cdf4aecaa02aa181d244",
+    "audit_matches_before": true,
+    "audit_state_before_hash": "99e7ef94674c62829e353359b0372c37996a687f5cf13f6fb4085555ed60ccbd",
+    "candidate_hash": "e82c50cb93718d8e47b1a6e31740cc60b02e9c987be04b98069ee7bac4de3029",
+    "modes": [
+      "NO_CHANGE"
+    ],
+    "no_mutation": true,
+    "relation_preimages_empty": true,
+    "returned_state_is_same_object": true,
+    "rule": "M2_INTERPRETATION_SOURCE_TEMPORAL_IDENTITY@0.4.2_CANDIDATE",
+    "rule_hash": "7bd2a3c289a98e918f655734d5acab198faef430e1558cfce57c9e40cae41150",
+    "schema": "SOROK_M2R4E_NO_CHANGE_RECEIPT@1",
+    "selected_mode": "NO_CHANGE",
+    "source_preimage_count": 2,
+    "state_hash_after": "99e7ef94674c62829e353359b0372c37996a687f5cf13f6fb4085555ed60ccbd",
+    "state_hash_before": "99e7ef94674c62829e353359b0372c37996a687f5cf13f6fb4085555ed60ccbd"
+  },
+  "schema": "SOROK_M2R4E_NO_CHANGE_AND_COLD_RECEIPTS@1"
+}

@@ -1,0 +1,201 @@
+F....FF.F.F....FFF..F.F                                                  [100%]
+=================================== FAILURES ===================================
+_________ test_01_reproducible_witnesses_and_plural_without_compulsion _________
+
+    def test_01_reproducible_witnesses_and_plural_without_compulsion():
+        sc,st=root(); a=eligible(sc,st,'loss'); b=eligible(sc,st,'loss')
+>       assert a==b and len(a)>=8 and len({(x.source,x.stance) for x in a if x.source})>=6
+E       AssertionError: assert ((Candidate(id...59699f5dcaf')) == (Candidate(id...59699f5dcaf'))
+E         
+E         Use -v to get more diff and 2 >= 8)
+E        +  where 2 = len((Candidate(id='499c2491c12d558fb1c6', actor='child', event='loss', source=None, mode='NO_CHANGE', stance='SUSPEND', pa...UITMENT', stance='SUSPEND', parent=None, rule_hash='fa7b943be9e1cd49ddf9cc1c8faf5ec01c2b68f86dbe4ea3cdeb859699f5dcaf')))
+
+test_i2_strict.py:22: AssertionError
+_________ test_06_original_event_immutable_with_same_scene_and_append __________
+
+    def test_06_original_event_immutable_with_same_scene_and_append():
+>       sc,st=root();origin=digest(asdict(sc.events[0]));st=first(sc,st)
+                                                            ^^^^^^^^^^^^
+
+test_i2_strict.py:50: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+scene = Scene(actors=(Actor(id='child', history=(History(id='prior_recognition', actor='child', time=1, activity='cooperative'...ory_id='later_observed_counterpart', observer='caregiver', time=9, issuer='M2_TEST_ONLY_OBSERVED_RELATION_CONTRAST'),))
+state = State(actor='child', lineage=(), procedure_refs=('old_watchful_habit',))
+
+    def first(scene,state):
+>       c=next(c for c in eligible(scene,state,'loss') if c.source=='parent_said' and c.stance=='REJECT')
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       StopIteration
+
+test_i2_strict.py:14: StopIteration
+___________________ test_07_private_memory_not_manufactured ____________________
+
+    def test_07_private_memory_not_manufactured():
+>       sc,st=root();st=first(sc,st);assert st.lineage[0].actor_memory_access=='NOT_GRANTED'
+                        ^^^^^^^^^^^^
+
+test_i2_strict.py:59: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+scene = Scene(actors=(Actor(id='child', history=(History(id='prior_recognition', actor='child', time=1, activity='cooperative'...ory_id='later_observed_counterpart', observer='caregiver', time=9, issuer='M2_TEST_ONLY_OBSERVED_RELATION_CONTRAST'),))
+state = State(actor='child', lineage=(), procedure_refs=('old_watchful_habit',))
+
+    def first(scene,state):
+>       c=next(c for c in eligible(scene,state,'loss') if c.source=='parent_said' and c.stance=='REJECT')
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       StopIteration
+
+test_i2_strict.py:14: StopIteration
+__________ test_09_other_P_refusal_already_encoded_no_forced_response __________
+
+    def test_09_other_P_refusal_already_encoded_no_forced_response():
+>       sc,st=root(seed_scene(other_action='REFUSE'));st=first(sc,st)
+                                                         ^^^^^^^^^^^^
+
+test_i2_strict.py:68: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+scene = Scene(actors=(Actor(id='child', history=(History(id='prior_recognition', actor='child', time=1, activity='cooperative'...ory_id='later_observed_counterpart', observer='caregiver', time=9, issuer='M2_TEST_ONLY_OBSERVED_RELATION_CONTRAST'),))
+state = State(actor='child', lineage=(), procedure_refs=('old_watchful_habit',))
+
+    def first(scene,state):
+>       c=next(c for c in eligible(scene,state,'loss') if c.source=='parent_said' and c.stance=='REJECT')
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       StopIteration
+
+test_i2_strict.py:14: StopIteration
+______________ test_11_permission_replay_before_hash_blocks_reuse ______________
+
+    def test_11_permission_replay_before_hash_blocks_reuse():
+        sc,st=root();c=eligible(sc,st,'loss')[0];p=propose(sc,st,'loss',c.id);g=fixture_grant(p,'child')
+        st2=append_test_only(sc,st,p,g)
+>       with pytest.raises(Refusal,match='STALE_LINEAGE_STATE'):append_test_only(sc,st2,p,g)
+E       Failed: DID NOT RAISE Refusal
+
+test_i2_strict.py:82: Failed
+____ test_R03_same_objective_id_changed_payload_cannot_preserve_old_lineage ____
+
+    def test_R03_same_objective_id_changed_payload_cannot_preserve_old_lineage():
+>       sc,st=root();before=first(sc,st)
+                            ^^^^^^^^^^^^
+
+test_i2_strict.py:111: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+scene = Scene(actors=(Actor(id='child', history=(History(id='prior_recognition', actor='child', time=1, activity='cooperative'...ory_id='later_observed_counterpart', observer='caregiver', time=9, issuer='M2_TEST_ONLY_OBSERVED_RELATION_CONTRAST'),))
+state = State(actor='child', lineage=(), procedure_refs=('old_watchful_habit',))
+
+    def first(scene,state):
+>       c=next(c for c in eligible(scene,state,'loss') if c.source=='parent_said' and c.stance=='REJECT')
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       StopIteration
+
+test_i2_strict.py:14: StopIteration
+________ test_R04_NO_CHANGE_must_mean_no_durable_interpretation_update _________
+
+    def test_R04_NO_CHANGE_must_mean_no_durable_interpretation_update():
+>       sc,st=root();before=first(sc,st)
+                            ^^^^^^^^^^^^
+
+test_i2_strict.py:121: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+scene = Scene(actors=(Actor(id='child', history=(History(id='prior_recognition', actor='child', time=1, activity='cooperative'...ory_id='later_observed_counterpart', observer='caregiver', time=9, issuer='M2_TEST_ONLY_OBSERVED_RELATION_CONTRAST'),))
+state = State(actor='child', lineage=(), procedure_refs=('old_watchful_habit',))
+
+    def first(scene,state):
+>       c=next(c for c in eligible(scene,state,'loss') if c.source=='parent_said' and c.stance=='REJECT')
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       StopIteration
+
+test_i2_strict.py:14: StopIteration
+__ test_R05_cosmetic_history_label_does_not_create_new_causal_route_identity ___
+
+    def test_R05_cosmetic_history_label_does_not_create_new_causal_route_identity():
+        sc,st=root();ch=sc.actors[0]
+        old=ch.history[0]; cosmetic=replace(old,activity='same work, spelling updated')
+        updated=replace(sc,actors=(replace(ch,history=(cosmetic,)+ch.history[1:]),)+sc.actors[1:])
+        a={c.id for c in eligible(sc,st,'loss') if c.mode=='PROCEDURAL_RECRUITMENT'}
+>       b={c.id for c in eligible(updated,st,'loss') if c.mode=='PROCEDURAL_RECRUITMENT'}
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test_i2_strict.py:133: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+kernel.py:326: in eligible
+    evs=validate(scene)
+        ^^^^^^^^^^^^^^^
+kernel.py:172: in validate
+    if h.witnessed: _history_source(scene,h)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^
+kernel.py:133: in _history_source
+    require(w.issuer==TEST_HISTORY_ISSUER and w.history_hash==digest(asdict(h))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+ok = False, reason = 'HISTORY_WITNESS_SOURCE_UNVERIFIED'
+
+    def require(ok, reason):
+>       if not ok: raise Refusal(reason)
+                   ^^^^^^^^^^^^^^^^^^^^^
+E       kernel.Refusal: HISTORY_WITNESS_SOURCE_UNVERIFIED
+
+kernel.py:26: Refusal
+___ test_R08_future_self_history_cannot_be_usable_as_prior_lineage_evidence ____
+
+    def test_R08_future_self_history_cannot_be_usable_as_prior_lineage_evidence():
+        sc,st=root();ch=sc.actors[0]
+        future=replace(ch.history[0],time=99)
+        new=replace(sc,actors=(replace(ch,history=(future,)+ch.history[1:]),)+sc.actors[1:])
+>       a=eligible(new,st,'loss')
+          ^^^^^^^^^^^^^^^^^^^^^^^
+
+test_i2_strict.py:156: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+kernel.py:326: in eligible
+    evs=validate(scene)
+        ^^^^^^^^^^^^^^^
+kernel.py:172: in validate
+    if h.witnessed: _history_source(scene,h)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^
+kernel.py:133: in _history_source
+    require(w.issuer==TEST_HISTORY_ISSUER and w.history_hash==digest(asdict(h))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+ok = False, reason = 'HISTORY_WITNESS_SOURCE_UNVERIFIED'
+
+    def require(ok, reason):
+>       if not ok: raise Refusal(reason)
+                   ^^^^^^^^^^^^^^^^^^^^^
+E       kernel.Refusal: HISTORY_WITNESS_SOURCE_UNVERIFIED
+
+kernel.py:26: Refusal
+__ test_R10_later_interpretation_requires_evidence_of_relevance_or_difference __
+
+    def test_R10_later_interpretation_requires_evidence_of_relevance_or_difference():
+>       sc,st=root();before=first(sc,st)
+                            ^^^^^^^^^^^^
+
+test_i2_strict.py:169: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+scene = Scene(actors=(Actor(id='child', history=(History(id='prior_recognition', actor='child', time=1, activity='cooperative'...ory_id='later_observed_counterpart', observer='caregiver', time=9, issuer='M2_TEST_ONLY_OBSERVED_RELATION_CONTRAST'),))
+state = State(actor='child', lineage=(), procedure_refs=('old_watchful_habit',))
+
+    def first(scene,state):
+>       c=next(c for c in eligible(scene,state,'loss') if c.source=='parent_said' and c.stance=='REJECT')
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       StopIteration
+
+test_i2_strict.py:14: StopIteration
+=========================== short test summary info ============================
+FAILED test_i2_strict.py::test_01_reproducible_witnesses_and_plural_without_compulsion
+FAILED test_i2_strict.py::test_06_original_event_immutable_with_same_scene_and_append
+FAILED test_i2_strict.py::test_07_private_memory_not_manufactured - StopItera...
+FAILED test_i2_strict.py::test_09_other_P_refusal_already_encoded_no_forced_response
+FAILED test_i2_strict.py::test_11_permission_replay_before_hash_blocks_reuse
+FAILED test_i2_strict.py::test_R03_same_objective_id_changed_payload_cannot_preserve_old_lineage
+FAILED test_i2_strict.py::test_R04_NO_CHANGE_must_mean_no_durable_interpretation_update
+FAILED test_i2_strict.py::test_R05_cosmetic_history_label_does_not_create_new_causal_route_identity
+FAILED test_i2_strict.py::test_R08_future_self_history_cannot_be_usable_as_prior_lineage_evidence
+FAILED test_i2_strict.py::test_R10_later_interpretation_requires_evidence_of_relevance_or_difference
+10 failed, 13 passed in 0.32s

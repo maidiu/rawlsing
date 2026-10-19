@@ -1,0 +1,29 @@
+.F                                                                       [100%]
+=================================== FAILURES ===================================
+__________ test_child_self_action_must_not_be_admitted_as_counterpart __________
+
+    def test_child_self_action_must_not_be_admitted_as_counterpart():
+        scene,state=seeded_past()
+        own=with_child_independent_action(scene)
+        validate(own)  # separately proves actual valid scene; no malformed-fixture refusal
+        assert next(e for e in own.events if e.id=='later').action_owner=='child'
+        assert own.relevance[0].observer!='child'
+        assert own.relevance[0].later_event_hash==objective_event_hash(next(e for e in own.events if e.id=='later'))
+        modes={c.mode for c in eligible(own,state,'later')}
+>       assert modes=={'NO_CHANGE'}, f'CHILD_SELF_ACTION_WRONGLY_ADMITTED_AS_COUNTERPART: {sorted(modes)}'
+E       AssertionError: CHILD_SELF_ACTION_WRONGLY_ADMITTED_AS_COUNTERPART: ['CONTRADICT', 'DIFFERENTIATE', 'GENERALIZE', 'NARROW', 'NO_CHANGE', 'REATTRIBUTE', 'REINFORCE']
+E       assert {'CONTRADICT'...TRIBUTE', ...} == {'NO_CHANGE'}
+E         
+E         Extra items in the left set:
+E         'CONTRADICT'
+E         'DIFFERENTIATE'
+E         'REINFORCE'
+E         'NARROW'
+E         'GENERALIZE'
+E         'REATTRIBUTE'
+E         Use -v to get more diff
+
+test_heldout_actor_independence.py:48: AssertionError
+=========================== short test summary info ============================
+FAILED test_heldout_actor_independence.py::test_child_self_action_must_not_be_admitted_as_counterpart
+1 failed, 1 passed in 0.09s

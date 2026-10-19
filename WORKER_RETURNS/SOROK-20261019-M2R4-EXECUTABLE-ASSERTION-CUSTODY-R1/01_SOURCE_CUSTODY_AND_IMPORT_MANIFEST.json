@@ -1,0 +1,616 @@
+{
+  "all_git_blobs_match": true,
+  "branch": "agent/reviewer-sorok-20261019-m2r4-executable-assertion-custody-r1",
+  "cold_kernel_imports": [
+    {
+      "cwd": "runs/r2_control",
+      "implementer": "cpython",
+      "imported_kernel_is_exact_local_file": true,
+      "module": "kernel",
+      "module_file": "runs/r2_control/kernel.py",
+      "module_sha256": "88bb8c65dfd88efd1843f16e1bb6d51e1fa01a0dc1fdccb13e03a9b2b394d8d3",
+      "python": "3.11.3",
+      "rule": "M2_INTERPRETATION_SOURCE_TEMPORAL_IDENTITY@0.4.0_CANDIDATE",
+      "rule_hash": "fa7b943be9e1cd49ddf9cc1c8faf5ec01c2b68f86dbe4ea3cdeb859699f5dcaf",
+      "schema": "SOROK_M2R4E_COLD_IMPORT@1",
+      "sys_path_first": [
+        "runs/r2_control",
+        "runner",
+        "<external>"
+      ]
+    },
+    {
+      "cwd": "runs/r3_red",
+      "implementer": "cpython",
+      "imported_kernel_is_exact_local_file": true,
+      "module": "kernel",
+      "module_file": "runs/r3_red/kernel.py",
+      "module_sha256": "838d0852e6b1b28bb733b1eda580b3dc53f5db3d47e3a0caefbd3072022ad45a",
+      "python": "3.11.3",
+      "rule": "M2_INTERPRETATION_SOURCE_TEMPORAL_IDENTITY@0.4.1_CANDIDATE",
+      "rule_hash": "8cc1f8495ee84170f77df0532f21c077b630de3af2d72d3c6f5dd7793eec9ece",
+      "schema": "SOROK_M2R4E_COLD_IMPORT@1",
+      "sys_path_first": [
+        "runs/r3_red",
+        "runner",
+        "<external>"
+      ]
+    },
+    {
+      "cwd": "runs/r4_green",
+      "implementer": "cpython",
+      "imported_kernel_is_exact_local_file": true,
+      "module": "kernel",
+      "module_file": "runs/r4_green/kernel.py",
+      "module_sha256": "5b8ac91ca8b3b9afb068493f2a1d6c2dabdc650814ff5f099f0e670d09823940",
+      "python": "3.11.3",
+      "rule": "M2_INTERPRETATION_SOURCE_TEMPORAL_IDENTITY@0.4.2_CANDIDATE",
+      "rule_hash": "7bd2a3c289a98e918f655734d5acab198faef430e1558cfce57c9e40cae41150",
+      "schema": "SOROK_M2R4E_COLD_IMPORT@1",
+      "sys_path_first": [
+        "runs/r4_green",
+        "runner",
+        "<external>"
+      ]
+    }
+  ],
+  "documentary_r4_i2": "8e74be26d14dae270ed6723d5e878f59446c94bd",
+  "executed_import_receipts": {
+    "i2_on_r2": {
+      "modules": [
+        {
+          "bytes": 27303,
+          "file": "runs/i2_on_r2/kernel.py",
+          "module": "kernel",
+          "sha256": "88bb8c65dfd88efd1843f16e1bb6d51e1fa01a0dc1fdccb13e03a9b2b394d8d3"
+        },
+        {
+          "bytes": 8159,
+          "file": "runs/i2_on_r2/test_i2_strict.py",
+          "module": "test_i2_strict",
+          "sha256": "31669b17358a306ad119a7d8c2677e202e6cfa6356ad474602c8d553ef339dee"
+        }
+      ],
+      "python": "3.11.3",
+      "run_dir": "runs/i2_on_r2",
+      "schema": "SOROK_M2R4E_IMPORTED_MODULE_RECEIPT@1"
+    },
+    "m1_on_r2": {
+      "modules": [
+        {
+          "bytes": 27303,
+          "file": "runs/m1_on_r2/kernel.py",
+          "module": "kernel",
+          "sha256": "88bb8c65dfd88efd1843f16e1bb6d51e1fa01a0dc1fdccb13e03a9b2b394d8d3"
+        },
+        {
+          "bytes": 9945,
+          "file": "runs/m1_on_r2/test_kernel.py",
+          "module": "test_kernel",
+          "sha256": "3d80d47b70cb8b5450a36d67559293aacad0cb08f4dfdef6ca18e9c32044242c"
+        }
+      ],
+      "python": "3.11.3",
+      "run_dir": "runs/m1_on_r2",
+      "schema": "SOROK_M2R4E_IMPORTED_MODULE_RECEIPT@1"
+    },
+    "r2_control": {
+      "modules": [
+        {
+          "bytes": 27303,
+          "file": "runs/r2_control/kernel.py",
+          "module": "kernel",
+          "sha256": "88bb8c65dfd88efd1843f16e1bb6d51e1fa01a0dc1fdccb13e03a9b2b394d8d3"
+        },
+        {
+          "bytes": 2664,
+          "file": "runs/r2_control/test_heldout_actor_independence.py",
+          "module": "test_heldout_actor_independence",
+          "sha256": "0dc1f012bd689cf25771d26439afb32cdf8452be08fe307e08f5b19c2d0bd5b5"
+        }
+      ],
+      "python": "3.11.3",
+      "run_dir": "runs/r2_control",
+      "schema": "SOROK_M2R4E_IMPORTED_MODULE_RECEIPT@1"
+    },
+    "r3_red": {
+      "modules": [
+        {
+          "bytes": 27840,
+          "file": "runs/r3_red/kernel.py",
+          "module": "kernel",
+          "sha256": "838d0852e6b1b28bb733b1eda580b3dc53f5db3d47e3a0caefbd3072022ad45a"
+        },
+        {
+          "bytes": 5305,
+          "file": "runs/r3_red/test_fresh_i2_adversarial.py",
+          "module": "test_fresh_i2_adversarial",
+          "sha256": "b9c01d20fe6b2d771246fd7b1b36671b9dbda8bddae062fd6c96df8196c471de"
+        },
+        {
+          "bytes": 2664,
+          "file": "runs/r3_red/test_heldout_actor_independence.py",
+          "module": "test_heldout_actor_independence",
+          "sha256": "0dc1f012bd689cf25771d26439afb32cdf8452be08fe307e08f5b19c2d0bd5b5"
+        },
+        {
+          "bytes": 5191,
+          "file": "runs/r3_red/test_local_hostile.py",
+          "module": "test_local_hostile",
+          "sha256": "05e6476fa9640596156b73349a05c01668729b1c8554111302515e5e6eefcb91"
+        }
+      ],
+      "python": "3.11.3",
+      "run_dir": "runs/r3_red",
+      "schema": "SOROK_M2R4E_IMPORTED_MODULE_RECEIPT@1"
+    },
+    "r4_green": {
+      "modules": [
+        {
+          "bytes": 28458,
+          "file": "runs/r4_green/kernel.py",
+          "module": "kernel",
+          "sha256": "5b8ac91ca8b3b9afb068493f2a1d6c2dabdc650814ff5f099f0e670d09823940"
+        },
+        {
+          "bytes": 5305,
+          "file": "runs/r4_green/test_fresh_i2_adversarial.py",
+          "module": "test_fresh_i2_adversarial",
+          "sha256": "b9c01d20fe6b2d771246fd7b1b36671b9dbda8bddae062fd6c96df8196c471de"
+        },
+        {
+          "bytes": 2664,
+          "file": "runs/r4_green/test_heldout_actor_independence.py",
+          "module": "test_heldout_actor_independence",
+          "sha256": "0dc1f012bd689cf25771d26439afb32cdf8452be08fe307e08f5b19c2d0bd5b5"
+        },
+        {
+          "bytes": 5191,
+          "file": "runs/r4_green/test_local_hostile.py",
+          "module": "test_local_hostile",
+          "sha256": "05e6476fa9640596156b73349a05c01668729b1c8554111302515e5e6eefcb91"
+        },
+        {
+          "bytes": 12272,
+          "file": "runs/r4_green/test_m2.py",
+          "module": "test_m2",
+          "sha256": "112114ee13545791cd003f30f1c9aa2cfdeccd1fba8b93cae7ff25c26456fbbc"
+        },
+        {
+          "bytes": 11199,
+          "file": "runs/r4_green/test_m3_independent.py",
+          "module": "test_m3_independent",
+          "sha256": "b519d48d7a08531911398ec2529b3a7893146b42c2856b440df1f011d16a06e3"
+        },
+        {
+          "bytes": 2338,
+          "file": "runs/r4_green/test_m3_unresolved.py",
+          "module": "test_m3_unresolved",
+          "sha256": "76ac10e4d80a3c89a9285032ceba9c0d8c61bbd62cea0bb85d7e947148d309b3"
+        },
+        {
+          "bytes": 3337,
+          "file": "runs/r4_green/test_original_preimage.py",
+          "module": "test_original_preimage",
+          "sha256": "867d315310c940bf0cf11b707c8cb81f86fe5ec49a000c6121bbbe70465179d0"
+        },
+        {
+          "bytes": 7529,
+          "file": "runs/r4_green/test_r3_counterpart_actor_custody.py",
+          "module": "test_r3_counterpart_actor_custody",
+          "sha256": "cd75b8556918668090dc8fca0819eec18212f4e4df681d8eb8b397a5b6973d2b"
+        },
+        {
+          "bytes": 9033,
+          "file": "runs/r4_green/test_r4_i2_new_hostiles.py",
+          "module": "test_r4_i2_new_hostiles",
+          "sha256": "faeec5a2bd710458334ff3e2ea1f48f33b1e2069d662f38a18a2478f99e46110"
+        },
+        {
+          "bytes": 5955,
+          "file": "runs/r4_green/test_r4_owner_rule_hostile.py",
+          "module": "test_r4_owner_rule_hostile",
+          "sha256": "b62b841042da187637799952be30164b3ea83f3b453169bb901372227453e28d"
+        },
+        {
+          "bytes": 3825,
+          "file": "runs/r4_green/test_relation_custody.py",
+          "module": "test_relation_custody",
+          "sha256": "44b9590f8e66de3586451349dd06e0364ca16dcea1bbd54a5ccd5aadbc1b7681"
+        },
+        {
+          "bytes": 6562,
+          "file": "runs/r4_green/test_source_preimages.py",
+          "module": "test_source_preimages",
+          "sha256": "26e988de750185f664fea7b1013a8b9961f0e63059478c6a8e4a89bd17d81f63"
+        }
+      ],
+      "python": "3.11.3",
+      "run_dir": "runs/r4_green",
+      "schema": "SOROK_M2R4E_IMPORTED_MODULE_RECEIPT@1"
+    }
+  },
+  "imported_file_paths_are_return_relative": true,
+  "native_adp_can_authority": "NONE",
+  "no_change_receipt": {
+    "audit_hash": "4a9bffa49ef5f03e380ecbde5cc27ba1daf39ec0ad40cdf4aecaa02aa181d244",
+    "audit_matches_before": true,
+    "audit_state_before_hash": "99e7ef94674c62829e353359b0372c37996a687f5cf13f6fb4085555ed60ccbd",
+    "candidate_hash": "e82c50cb93718d8e47b1a6e31740cc60b02e9c987be04b98069ee7bac4de3029",
+    "modes": [
+      "NO_CHANGE"
+    ],
+    "no_mutation": true,
+    "relation_preimages_empty": true,
+    "returned_state_is_same_object": true,
+    "rule": "M2_INTERPRETATION_SOURCE_TEMPORAL_IDENTITY@0.4.2_CANDIDATE",
+    "rule_hash": "7bd2a3c289a98e918f655734d5acab198faef430e1558cfce57c9e40cae41150",
+    "schema": "SOROK_M2R4E_NO_CHANGE_RECEIPT@1",
+    "selected_mode": "NO_CHANGE",
+    "source_preimage_count": 2,
+    "state_hash_after": "99e7ef94674c62829e353359b0372c37996a687f5cf13f6fb4085555ed60ccbd",
+    "state_hash_before": "99e7ef94674c62829e353359b0372c37996a687f5cf13f6fb4085555ed60ccbd"
+  },
+  "original_r3": "9c1ab2fa172e41c7fb033b5f134b25255d65126c",
+  "original_r3_i2": "a4129eaf652b49a5ba629de32e2b7b0abd60d443",
+  "rows": [
+    {
+      "actual_git_blob": "534fdb6b75e692585ad763673faabbe8e138050f",
+      "bytes": 27303,
+      "expected_git_blob": "534fdb6b75e692585ad763673faabbe8e138050f",
+      "git_blob_match": true,
+      "origin_commit": "e8f375e9feae187e8a1add2343100ca05d9fffc4",
+      "origin_kind": "GIT_OBJECT",
+      "origin_path": "WORKER_RETURNS/SOROK-M2-RELATION-PREIMAGE-REPAIR-R2/m2_patch/kernel.py",
+      "path": "staged/kernels/r2_kernel.py",
+      "sha256": "88bb8c65dfd88efd1843f16e1bb6d51e1fa01a0dc1fdccb13e03a9b2b394d8d3"
+    },
+    {
+      "actual_git_blob": "645308250f54133c1f9d707a5851f689942f18ba",
+      "bytes": 27840,
+      "expected_git_blob": "645308250f54133c1f9d707a5851f689942f18ba",
+      "git_blob_match": true,
+      "origin_commit": "9c1ab2fa172e41c7fb033b5f134b25255d65126c",
+      "origin_kind": "GIT_OBJECT",
+      "origin_path": "WORKER_RETURNS/SOROK-M2-R3-COUNTERPART-OWNER-REPAIR-USERDIRECT-R1/candidate/kernel.py",
+      "path": "staged/kernels/r3_kernel.py",
+      "sha256": "838d0852e6b1b28bb733b1eda580b3dc53f5db3d47e3a0caefbd3072022ad45a"
+    },
+    {
+      "actual_git_blob": "045331889e922274ba0a31bb78d4b110aaba06a1",
+      "bytes": 28458,
+      "expected_git_blob": "045331889e922274ba0a31bb78d4b110aaba06a1",
+      "git_blob_match": true,
+      "origin_commit": "2001169089e97da7444dc8baa2df700aa56e9aca",
+      "origin_kind": "GIT_OBJECT",
+      "origin_path": "WORKER_RETURNS/SOROK-M2-R4-RULE-WITNESS-REPAIR-USERDIRECT-R1/candidate/kernel.py",
+      "path": "staged/kernels/r4_kernel.py",
+      "sha256": "5b8ac91ca8b3b9afb068493f2a1d6c2dabdc650814ff5f099f0e670d09823940"
+    },
+    {
+      "actual_git_blob": "3c55e7fcfc855ec45d6d9489051e1c8cf699b4ac",
+      "bytes": 12272,
+      "expected_git_blob": "3c55e7fcfc855ec45d6d9489051e1c8cf699b4ac",
+      "git_blob_match": true,
+      "origin_commit": "e8f375e9feae187e8a1add2343100ca05d9fffc4",
+      "origin_kind": "GIT_OBJECT",
+      "origin_path": "WORKER_RETURNS/SOROK-M2-RELATION-PREIMAGE-REPAIR-R2/m2_patch/test_m2.py",
+      "path": "staged/source/source_test_m2.py",
+      "sha256": "112114ee13545791cd003f30f1c9aa2cfdeccd1fba8b93cae7ff25c26456fbbc"
+    },
+    {
+      "actual_git_blob": "c576e93057ded184eba07cf1dd56e2ee90f1c211",
+      "bytes": 11199,
+      "expected_git_blob": "c576e93057ded184eba07cf1dd56e2ee90f1c211",
+      "git_blob_match": true,
+      "origin_commit": "e8f375e9feae187e8a1add2343100ca05d9fffc4",
+      "origin_kind": "GIT_OBJECT",
+      "origin_path": "WORKER_RETURNS/SOROK-M2-RELATION-PREIMAGE-REPAIR-R2/m2_patch/test_m3_independent.py",
+      "path": "staged/tests/test_m3_independent.py",
+      "sha256": "b519d48d7a08531911398ec2529b3a7893146b42c2856b440df1f011d16a06e3"
+    },
+    {
+      "actual_git_blob": "b9b9bea794d04a504a51dc6f5dd27b71055bb479",
+      "bytes": 2338,
+      "expected_git_blob": "b9b9bea794d04a504a51dc6f5dd27b71055bb479",
+      "git_blob_match": true,
+      "origin_commit": "e8f375e9feae187e8a1add2343100ca05d9fffc4",
+      "origin_kind": "GIT_OBJECT",
+      "origin_path": "WORKER_RETURNS/SOROK-M2-RELATION-PREIMAGE-REPAIR-R2/m2_patch/test_m3_unresolved.py",
+      "path": "staged/tests/test_m3_unresolved.py",
+      "sha256": "76ac10e4d80a3c89a9285032ceba9c0d8c61bbd62cea0bb85d7e947148d309b3"
+    },
+    {
+      "actual_git_blob": "954b5aa110986b479214c7981fe370d3512cda19",
+      "bytes": 6562,
+      "expected_git_blob": "954b5aa110986b479214c7981fe370d3512cda19",
+      "git_blob_match": true,
+      "origin_commit": "e8f375e9feae187e8a1add2343100ca05d9fffc4",
+      "origin_kind": "GIT_OBJECT",
+      "origin_path": "WORKER_RETURNS/SOROK-M2-RELATION-PREIMAGE-REPAIR-R2/m2_patch/test_source_preimages.py",
+      "path": "staged/tests/test_source_preimages.py",
+      "sha256": "26e988de750185f664fea7b1013a8b9961f0e63059478c6a8e4a89bd17d81f63"
+    },
+    {
+      "actual_git_blob": "9294f2cb3920f8af687d112f96ed556119977b77",
+      "bytes": 3337,
+      "expected_git_blob": "9294f2cb3920f8af687d112f96ed556119977b77",
+      "git_blob_match": true,
+      "origin_commit": "e8f375e9feae187e8a1add2343100ca05d9fffc4",
+      "origin_kind": "GIT_OBJECT",
+      "origin_path": "WORKER_RETURNS/SOROK-M2-RELATION-PREIMAGE-REPAIR-R2/frozen_m3/test_original_preimage.py",
+      "path": "staged/tests/test_original_preimage.py",
+      "sha256": "867d315310c940bf0cf11b707c8cb81f86fe5ec49a000c6121bbbe70465179d0"
+    },
+    {
+      "actual_git_blob": "47e796a29ec3253a3da3fff1b6f5fb00136a6c2b",
+      "bytes": 5191,
+      "expected_git_blob": "47e796a29ec3253a3da3fff1b6f5fb00136a6c2b",
+      "git_blob_match": true,
+      "origin_commit": "e8f375e9feae187e8a1add2343100ca05d9fffc4",
+      "origin_kind": "GIT_OBJECT",
+      "origin_path": "WORKER_RETURNS/SOROK-M2-RELATION-PREIMAGE-REPAIR-R2/test_local_hostile.py",
+      "path": "staged/tests/test_local_hostile.py",
+      "sha256": "05e6476fa9640596156b73349a05c01668729b1c8554111302515e5e6eefcb91"
+    },
+    {
+      "actual_git_blob": "a517fb1eaee24ab0a95857bedefa6d224a009478",
+      "bytes": 3825,
+      "expected_git_blob": "a517fb1eaee24ab0a95857bedefa6d224a009478",
+      "git_blob_match": true,
+      "origin_commit": "e8f375e9feae187e8a1add2343100ca05d9fffc4",
+      "origin_kind": "GIT_OBJECT",
+      "origin_path": "WORKER_RETURNS/SOROK-M2-RELATION-PREIMAGE-REPAIR-R2/test_relation_custody.py",
+      "path": "staged/tests/test_relation_custody.py",
+      "sha256": "44b9590f8e66de3586451349dd06e0364ca16dcea1bbd54a5ccd5aadbc1b7681"
+    },
+    {
+      "actual_git_blob": "2d3b24f9281ac5625999b49f97396d4f6c2202aa",
+      "bytes": 2664,
+      "expected_git_blob": "2d3b24f9281ac5625999b49f97396d4f6c2202aa",
+      "git_blob_match": true,
+      "origin_commit": "e8b2d6be5ba243729f387cda4048cc30a52664d2",
+      "origin_kind": "GIT_OBJECT",
+      "origin_path": "WORKER_RETURNS/SOROK-20261018-M2R2-FRESH-I2-EXECUTION-R1/test_heldout_actor_independence.py",
+      "path": "staged/tests/test_heldout_actor_independence.py",
+      "sha256": "0dc1f012bd689cf25771d26439afb32cdf8452be08fe307e08f5b19c2d0bd5b5"
+    },
+    {
+      "actual_git_blob": "00d3efe320796cd6790faee581a9ba0c0d2bc266",
+      "bytes": 7529,
+      "expected_git_blob": "00d3efe320796cd6790faee581a9ba0c0d2bc266",
+      "git_blob_match": true,
+      "origin_commit": "9c1ab2fa172e41c7fb033b5f134b25255d65126c",
+      "origin_kind": "GIT_OBJECT",
+      "origin_path": "WORKER_RETURNS/SOROK-M2-R3-COUNTERPART-OWNER-REPAIR-USERDIRECT-R1/test_r3_counterpart_actor_custody.py",
+      "path": "staged/tests/test_r3_counterpart_actor_custody.py",
+      "sha256": "cd75b8556918668090dc8fca0819eec18212f4e4df681d8eb8b397a5b6973d2b"
+    },
+    {
+      "actual_git_blob": "cdf76452e82e241c38bc3035aa73202ccf5ec3ab",
+      "bytes": 5305,
+      "expected_git_blob": "cdf76452e82e241c38bc3035aa73202ccf5ec3ab",
+      "git_blob_match": true,
+      "origin_commit": "a4129eaf652b49a5ba629de32e2b7b0abd60d443",
+      "origin_kind": "GIT_OBJECT",
+      "origin_path": "WORKER_RETURNS/SOROK-20261018-M2R3-FRESH-INDEPENDENT-I2-R1/test_fresh_i2_adversarial.py",
+      "path": "staged/tests/test_fresh_i2_adversarial.py",
+      "sha256": "b9c01d20fe6b2d771246fd7b1b36671b9dbda8bddae062fd6c96df8196c471de"
+    },
+    {
+      "actual_git_blob": "85fa5794663a9217ec9a3dabec170d076e670f9c",
+      "bytes": 5955,
+      "expected_git_blob": "85fa5794663a9217ec9a3dabec170d076e670f9c",
+      "git_blob_match": true,
+      "origin_commit": "2001169089e97da7444dc8baa2df700aa56e9aca",
+      "origin_kind": "GIT_OBJECT",
+      "origin_path": "WORKER_RETURNS/SOROK-M2-R4-RULE-WITNESS-REPAIR-USERDIRECT-R1/test_r4_owner_rule_hostile.py",
+      "path": "staged/tests/test_r4_owner_rule_hostile.py",
+      "sha256": "b62b841042da187637799952be30164b3ea83f3b453169bb901372227453e28d"
+    },
+    {
+      "actual_git_blob": "461c8ac0e25ad2078f834ad3071fc1499b140ca1",
+      "bytes": 10552,
+      "expected_git_blob": "461c8ac0e25ad2078f834ad3071fc1499b140ca1",
+      "git_blob_match": true,
+      "origin_commit": "8e74be26d14dae270ed6723d5e878f59446c94bd",
+      "origin_kind": "GIT_OBJECT",
+      "origin_path": "CROSS_HQ_CONTROL_ROOM/proof_integrity_gate_r1.py",
+      "path": "staged/cross_hq/proof_integrity_gate_r1.py",
+      "sha256": "e3125e121babb6f522688e050b1840f514e04796b47fdab81c5d40b140f858ed"
+    },
+    {
+      "actual_git_blob": "a83d054a656ff9d7bf32b18495bd0a1843c02da9",
+      "bytes": 8633,
+      "expected_git_blob": "a83d054a656ff9d7bf32b18495bd0a1843c02da9",
+      "git_blob_match": true,
+      "origin_commit": "8e74be26d14dae270ed6723d5e878f59446c94bd",
+      "origin_kind": "GIT_OBJECT",
+      "origin_path": "CROSS_HQ_CONTROL_ROOM/PROOF_INTEGRITY_AND_FALSIFIABLE_TEST_LAW_R1.md",
+      "path": "staged/cross_hq/PROOF_INTEGRITY_AND_FALSIFIABLE_TEST_LAW_R1.md",
+      "sha256": "197e4459de807f57a139fd6d90de8c64b40f6f153fc8a6e13e09311bfcf4d79f"
+    },
+    {
+      "actual_git_blob": "7d9b50ab397b6820ed87810843b99c6c969c8824",
+      "bytes": 3528,
+      "expected_git_blob": "7d9b50ab397b6820ed87810843b99c6c969c8824",
+      "git_blob_match": true,
+      "origin_commit": "8e74be26d14dae270ed6723d5e878f59446c94bd",
+      "origin_kind": "GIT_OBJECT",
+      "origin_path": "CROSS_HQ_CONTROL_ROOM/test_proof_integrity_gate_r1.py",
+      "path": "staged/cross_hq/test_proof_integrity_gate_r1.py",
+      "sha256": "5458c98c514e2d55479395768ec1c74d30d866de88fb6d0e77ff9afa2477588a"
+    },
+    {
+      "actual_git_blob": "67c199de08581e676eacc9676b6dcdc1c87d6f64",
+      "bytes": 7544,
+      "expected_git_blob": "67c199de08581e676eacc9676b6dcdc1c87d6f64",
+      "git_blob_match": true,
+      "origin_commit": "2001169089e97da7444dc8baa2df700aa56e9aca",
+      "origin_kind": "GIT_OBJECT",
+      "origin_path": "WORKER_RETURNS/SOROK-M2-R4-RULE-WITNESS-REPAIR-USERDIRECT-R1/00_RETURN.md",
+      "path": "staged/references/R4_00_RETURN.md",
+      "sha256": "72c8396227fb7acbe4c21aa0c40c2bb46811924f9e3baf47c5518fb5fe583afc"
+    },
+    {
+      "actual_git_blob": "5bad6d3bbb771be590b1ff5742200c0c5427f82e",
+      "bytes": 2080,
+      "expected_git_blob": "5bad6d3bbb771be590b1ff5742200c0c5427f82e",
+      "git_blob_match": true,
+      "origin_commit": "2001169089e97da7444dc8baa2df700aa56e9aca",
+      "origin_kind": "GIT_OBJECT",
+      "origin_path": "WORKER_RETURNS/SOROK-M2-R4-RULE-WITNESS-REPAIR-USERDIRECT-R1/source_refs.json",
+      "path": "staged/references/R4_source_refs.json",
+      "sha256": "be5d27dd00d098abd1fdb8e94ecc8666e9c51e72890517b6726ac7ae847adb09"
+    },
+    {
+      "actual_git_blob": "659a588dc7844fdc21281a729932147f407b6a45",
+      "bytes": 5744,
+      "expected_git_blob": "659a588dc7844fdc21281a729932147f407b6a45",
+      "git_blob_match": true,
+      "origin_commit": "2001169089e97da7444dc8baa2df700aa56e9aca",
+      "origin_kind": "GIT_OBJECT",
+      "origin_path": "WORKER_RETURNS/SOROK-M2-R4-RULE-WITNESS-REPAIR-USERDIRECT-R1/execution_receipts.json",
+      "path": "staged/references/R4_execution_receipts.json",
+      "sha256": "17edfe2a763f4de3da02fe38a8d4ff11fa78170aa67d9ef160d43a4fdb8693d1"
+    },
+    {
+      "actual_git_blob": "c67b342902d3cfb095667e0cdc77191c25a89431",
+      "bytes": 5295,
+      "expected_git_blob": "c67b342902d3cfb095667e0cdc77191c25a89431",
+      "git_blob_match": true,
+      "origin_commit": "9c1ab2fa172e41c7fb033b5f134b25255d65126c",
+      "origin_kind": "GIT_OBJECT",
+      "origin_path": "WORKER_RETURNS/SOROK-M2-R3-COUNTERPART-OWNER-REPAIR-USERDIRECT-R1/00_RETURN.md",
+      "path": "staged/references/R3_00_RETURN.md",
+      "sha256": "98bbd5bf058027191c4e7139bbd0b389b8614de317aa4f9de326d9b0b85ea427"
+    },
+    {
+      "actual_git_blob": "fe1e55313e26be9e5e3f368bcdba25073d06eed6",
+      "bytes": 7196,
+      "expected_git_blob": "fe1e55313e26be9e5e3f368bcdba25073d06eed6",
+      "git_blob_match": true,
+      "origin_commit": "a4129eaf652b49a5ba629de32e2b7b0abd60d443",
+      "origin_kind": "GIT_OBJECT",
+      "origin_path": "WORKER_RETURNS/SOROK-20261018-M2R3-FRESH-INDEPENDENT-I2-R1/00_RETURN.md",
+      "path": "staged/references/R3I2_00_RETURN.md",
+      "sha256": "8213fe64cdcd6742885c0cdb50f67feebb3a5051745dd9fa95f7fc3239570760"
+    },
+    {
+      "actual_git_blob": "3cecf8feb977c54128926ca3b68031390ca38528",
+      "bytes": 5684,
+      "expected_git_blob": "3cecf8feb977c54128926ca3b68031390ca38528",
+      "git_blob_match": true,
+      "origin_commit": "8e74be26d14dae270ed6723d5e878f59446c94bd",
+      "origin_kind": "GIT_OBJECT",
+      "origin_path": "WORKER_RETURNS/SOROK-20261018-M2R4-RULE-WITNESS-INDEPENDENT-I2-R1/00_RETURN.md",
+      "path": "staged/references/R4I2_00_RETURN.md",
+      "sha256": "b6442841bc747c4abd800ab8e60dfaa3230add310b946fe724dc40efc641ffe0"
+    },
+    {
+      "actual_git_blob": "590d76c2cef14a5894e2b8fb6f4411679c6b36a6",
+      "bytes": 3925,
+      "expected_git_blob": "590d76c2cef14a5894e2b8fb6f4411679c6b36a6",
+      "git_blob_match": true,
+      "origin_commit": "8e74be26d14dae270ed6723d5e878f59446c94bd",
+      "origin_kind": "GIT_OBJECT",
+      "origin_path": "WORKER_RETURNS/SOROK-20261018-M2R4-RULE-WITNESS-INDEPENDENT-I2-R1/source_manifest.json",
+      "path": "staged/references/R4I2_source_manifest.json",
+      "sha256": "1cdcf5adba694c0ef7cb8b0ec39f95d1f8032f8aa8021d62beb0ca2f1d69d0ec"
+    },
+    {
+      "actual_git_blob": "1c943ee145e1ef1bb251c0a2701383804a70fd75",
+      "bytes": 6494,
+      "expected_git_blob": "1c943ee145e1ef1bb251c0a2701383804a70fd75",
+      "git_blob_match": true,
+      "origin_commit": "8e74be26d14dae270ed6723d5e878f59446c94bd",
+      "origin_kind": "GIT_OBJECT",
+      "origin_path": "WORKER_RETURNS/SOROK-20261018-M2R4-RULE-WITNESS-INDEPENDENT-I2-R1/test_plan_preregistered.json",
+      "path": "staged/references/R4I2_test_plan_preregistered.json",
+      "sha256": "43f886bcef89d0489dd70675c8d60fd91e9c83038a8c8d66b401a36491c6d917"
+    },
+    {
+      "actual_git_blob": "37174efcf6689f87110ef97023e91cc83786fe2a",
+      "bytes": 6315,
+      "expected_git_blob": "37174efcf6689f87110ef97023e91cc83786fe2a",
+      "git_blob_match": true,
+      "origin_commit": "e8f375e9feae187e8a1add2343100ca05d9fffc4",
+      "origin_kind": "GIT_OBJECT",
+      "origin_path": "WORKER_RETURNS/SOROK-M2-RELATION-PREIMAGE-REPAIR-R2/m2_patch/frozen_inputs/M1_original_exact_7e91c198.tar.gz",
+      "path": "staged/historical/M1_original_exact_7e91c198.tar.gz",
+      "sha256": "30b820eda81089c89d9e2df8145860386d33b973f5c7f6a028e7e16b21dbe7b4"
+    },
+    {
+      "actual_git_blob": "23ebc5a15df242b288555ec415ef6533b4420a7f",
+      "bytes": 5706,
+      "expected_git_blob": "23ebc5a15df242b288555ec415ef6533b4420a7f",
+      "git_blob_match": true,
+      "origin_commit": "e8f375e9feae187e8a1add2343100ca05d9fffc4",
+      "origin_kind": "GIT_OBJECT",
+      "origin_path": "WORKER_RETURNS/SOROK-M2-RELATION-PREIMAGE-REPAIR-R2/m2_patch/frozen_inputs/I2_strict_exact_19f1e86a.tar.gz",
+      "path": "staged/historical/I2_strict_exact_19f1e86a.tar.gz",
+      "sha256": "449f9cf8c8db7befc8b2358b776adee636db70f884e7d2fdffa069b07c19d72f"
+    },
+    {
+      "bytes": 11240,
+      "git_blob_match": true,
+      "member_sha256": "c86a38ad5ceec387937effa9eca42da8f0b6f0eccbc7652d8fc6ef033578892f",
+      "origin_kind": "FROZEN_TAR_MEMBER",
+      "path": "staged/kernels/m1_kernel.py",
+      "sha256": "c86a38ad5ceec387937effa9eca42da8f0b6f0eccbc7652d8fc6ef033578892f",
+      "tar_member": "kernel.py",
+      "tar_path": "staged/historical/M1_original_exact_7e91c198.tar.gz",
+      "tar_sha256": "30b820eda81089c89d9e2df8145860386d33b973f5c7f6a028e7e16b21dbe7b4"
+    },
+    {
+      "bytes": 9945,
+      "git_blob_match": true,
+      "member_sha256": "3d80d47b70cb8b5450a36d67559293aacad0cb08f4dfdef6ca18e9c32044242c",
+      "origin_kind": "FROZEN_TAR_MEMBER",
+      "path": "staged/historical/test_kernel.py",
+      "sha256": "3d80d47b70cb8b5450a36d67559293aacad0cb08f4dfdef6ca18e9c32044242c",
+      "tar_member": "test_kernel.py",
+      "tar_path": "staged/historical/M1_original_exact_7e91c198.tar.gz",
+      "tar_sha256": "30b820eda81089c89d9e2df8145860386d33b973f5c7f6a028e7e16b21dbe7b4"
+    },
+    {
+      "bytes": 8159,
+      "git_blob_match": true,
+      "member_sha256": "31669b17358a306ad119a7d8c2677e202e6cfa6356ad474602c8d553ef339dee",
+      "origin_kind": "FROZEN_TAR_MEMBER",
+      "path": "staged/historical/test_i2_strict.py",
+      "sha256": "31669b17358a306ad119a7d8c2677e202e6cfa6356ad474602c8d553ef339dee",
+      "tar_member": "test_i2_strict.py",
+      "tar_path": "staged/historical/I2_strict_exact_19f1e86a.tar.gz",
+      "tar_sha256": "449f9cf8c8db7befc8b2358b776adee636db70f884e7d2fdffa069b07c19d72f"
+    },
+    {
+      "bytes": 9033,
+      "description": "Independent executable implementation of the twelve frozen claim IDs in R4-I2 test_plan_preregistered.json; no author test byte edited.",
+      "git_blob_match": true,
+      "origin_kind": "WORKER_AUTHORED",
+      "path": "staged/tests/test_r4_i2_new_hostiles.py",
+      "sha256": "faeec5a2bd710458334ff3e2ea1f48f33b1e2069d662f38a18a2478f99e46110"
+    },
+    {
+      "bytes": 812,
+      "description": "Claim-specific rule-binding mutation contract.",
+      "git_blob_match": true,
+      "origin_kind": "WORKER_AUTHORED",
+      "path": "proofs/test_fresh_i2_adversarial.py.proof.json",
+      "sha256": "bedc30eed461fb1983a8595330855dbf81624f7a86b69ab96e0886d477b00f22"
+    },
+    {
+      "bytes": 2193,
+      "description": "Claim-specific three observer-channel mutation contracts.",
+      "git_blob_match": true,
+      "origin_kind": "WORKER_AUTHORED",
+      "path": "proofs/test_r4_i2_new_hostiles.py.proof.json",
+      "sha256": "fbe19c0a87ebd2cc3b874bfad02d0f4e7724e4547fc321df4eb4216597698373"
+    }
+  ],
+  "schema": "SOROK_M2R4E_SOURCE_CUSTODY_MANIFEST@1",
+  "sealed_startup": "e91695beaa282eae46fd1a330d00dddca55bbcdf",
+  "source_store": "actual local Git object store (full checkout worktree), not a browser-mounted read",
+  "target_r4": "2001169089e97da7444dc8baa2df700aa56e9aca"
+}

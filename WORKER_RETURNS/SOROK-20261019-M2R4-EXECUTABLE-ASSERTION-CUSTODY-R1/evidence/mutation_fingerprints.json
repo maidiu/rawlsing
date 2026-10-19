@@ -1,0 +1,64 @@
+{
+  "baseline_kernel_sha256": "5b8ac91ca8b3b9afb068493f2a1d6c2dabdc650814ff5f099f0e670d09823940",
+  "claims": [
+    {
+      "baseline_kernel_sha256": "5b8ac91ca8b3b9afb068493f2a1d6c2dabdc650814ff5f099f0e670d09823940",
+      "claim_id": "R3I2_RED1_HISTORICAL_RULE_IDENTITY_BINDING",
+      "contract": "test_fresh_i2_adversarial.py.proof.json",
+      "fault_path": "kernel.py",
+      "mutant_is_different": true,
+      "mutant_kernel_sha256": "a7e72e7a315b9ec2f05288124014fc7e34fda61da9b01df1894793a9210f8ace",
+      "new_sha256": "998a4384416ee88cc052e96e840d4b471aa40e9352dd92f3f7e3c321ef962c62",
+      "old_occurrences": 1,
+      "old_sha256": "f871e67658d288e93ae54737a0df04f653b2f3df2666461618451e64e65fbf1a",
+      "patch_fingerprint": "ee9a35765796d994931e04be66013cebc41d0e68d2578514c756c03e1dcce393",
+      "positive_node": "test_fresh_i2_adversarial.py::test_i2_01_historical_lineage_rule_hash_must_not_accept_a_different_rule",
+      "restored_kernel_sha256": "5b8ac91ca8b3b9afb068493f2a1d6c2dabdc650814ff5f099f0e670d09823940"
+    },
+    {
+      "baseline_kernel_sha256": "5b8ac91ca8b3b9afb068493f2a1d6c2dabdc650814ff5f099f0e670d09823940",
+      "claim_id": "R3I2_RED2_EVENT_OBSERVER_INDEPENDENCE",
+      "contract": "test_r4_i2_new_hostiles.py.proof.json",
+      "fault_path": "kernel.py",
+      "mutant_is_different": true,
+      "mutant_kernel_sha256": "1c6c6f3c0df605e14bb91496d3112000d847d24e416fb2d4a6038ca44a5c5942",
+      "new_sha256": "5d9938ded65be4b4bf1ceb8535f1aacf31d5d0c6eb45febe316ec0fc8668c83a",
+      "old_occurrences": 1,
+      "old_sha256": "56104dc5cd373ebb2a59b51e136efdd0cde113741634f71dcd2aa5f2f6dcdb6b",
+      "patch_fingerprint": "26f17d2e2834853648201301f9ad570c6b77d086fe85d6352870a9a24dfdc81a",
+      "positive_node": "test_r4_i2_new_hostiles.py::test_i2n02_event_owner_self_observer",
+      "restored_kernel_sha256": "5b8ac91ca8b3b9afb068493f2a1d6c2dabdc650814ff5f099f0e670d09823940"
+    },
+    {
+      "baseline_kernel_sha256": "5b8ac91ca8b3b9afb068493f2a1d6c2dabdc650814ff5f099f0e670d09823940",
+      "claim_id": "R3I2_RED2_RELEVANCE_OBSERVER_INDEPENDENCE",
+      "contract": "test_r4_i2_new_hostiles.py.proof.json",
+      "fault_path": "kernel.py",
+      "mutant_is_different": true,
+      "mutant_kernel_sha256": "713469c6b3ec9811a079e3acce0d887eef5e72558f0fb966e9f10ab6d7e73466",
+      "new_sha256": "225d46a82d2d9f39f9ce3defe42dcbc48b0a4a5b3155fc7a9949644bfbc8e94b",
+      "old_occurrences": 1,
+      "old_sha256": "f0ad1783a8ecad417b58ee7e1e5e9743eee3d7429e2b265a34821d3bcd9a3775",
+      "patch_fingerprint": "d33ac087557e32cb417f683198702e52067e3d42df0909f82fbbfce4c577a1da",
+      "positive_node": "test_r4_i2_new_hostiles.py::test_i2n03_relevance_owner_self_observer",
+      "restored_kernel_sha256": "5b8ac91ca8b3b9afb068493f2a1d6c2dabdc650814ff5f099f0e670d09823940"
+    },
+    {
+      "baseline_kernel_sha256": "5b8ac91ca8b3b9afb068493f2a1d6c2dabdc650814ff5f099f0e670d09823940",
+      "claim_id": "R3I2_RED2_HISTORY_WITNESS_INDEPENDENCE",
+      "contract": "test_r4_i2_new_hostiles.py.proof.json",
+      "fault_path": "kernel.py",
+      "mutant_is_different": true,
+      "mutant_kernel_sha256": "24cf2b9d513b8a9a68c5675b59c671f01c781187506f1f6dd130766b02046766",
+      "new_sha256": "3128ccb4874ba82bd6d0e55af58a0787af2d3e07507015bdae8aa4b98740b879",
+      "old_occurrences": 1,
+      "old_sha256": "e6fc372c6aa7210d1c28864506bf804d1d36c1b811eec5d496e05c33b0157da8",
+      "patch_fingerprint": "9cc0dabd7ba0f5aae905af1e63efaa233dd74a5783a860d3f3030ab386aaa8d8",
+      "positive_node": "test_r4_i2_new_hostiles.py::test_i2n04_history_owner_self_observer",
+      "restored_kernel_sha256": "5b8ac91ca8b3b9afb068493f2a1d6c2dabdc650814ff5f099f0e670d09823940"
+    }
+  ],
+  "kernel_path": "runs/r4_green/kernel.py",
+  "restored_kernel_sha256": "5b8ac91ca8b3b9afb068493f2a1d6c2dabdc650814ff5f099f0e670d09823940",
+  "schema": "SOROK_M2R4E_MUTATION_FINGERPRINTS@1"
+}

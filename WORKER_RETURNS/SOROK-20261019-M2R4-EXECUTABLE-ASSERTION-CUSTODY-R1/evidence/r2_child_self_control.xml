@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="2" time="0.090" timestamp="2026-10-19T02:37:23.526648-04:00" hostname="sanitized-host"><testcase classname="test_heldout_actor_independence" name="test_genuine_other_owned_counterpart_is_positive" time="0.006" /><testcase classname="test_heldout_actor_independence" name="test_child_self_action_must_not_be_admitted_as_counterpart" time="0.007"><failure message="AssertionError: CHILD_SELF_ACTION_WRONGLY_ADMITTED_AS_COUNTERPART: ['CONTRADICT', 'DIFFERENTIATE', 'GENERALIZE', 'NARROW', 'NO_CHANGE', 'REATTRIBUTE', 'REINFORCE']&#10;assert {'CONTRADICT'...TRIBUTE', ...} == {'NO_CHANGE'}&#10;  &#10;  Extra items in the left set:&#10;  'CONTRADICT'&#10;  'DIFFERENTIATE'&#10;  'REINFORCE'&#10;  'NARROW'&#10;  'GENERALIZE'&#10;  'REATTRIBUTE'&#10;  Use -v to get more diff">def test_child_self_action_must_not_be_admitted_as_counterpart():
+        scene,state=seeded_past()
+        own=with_child_independent_action(scene)
+        validate(own)  # separately proves actual valid scene; no malformed-fixture refusal
+        assert next(e for e in own.events if e.id=='later').action_owner=='child'
+        assert own.relevance[0].observer!='child'
+        assert own.relevance[0].later_event_hash==objective_event_hash(next(e for e in own.events if e.id=='later'))
+        modes={c.mode for c in eligible(own,state,'later')}
+&gt;       assert modes=={'NO_CHANGE'}, f'CHILD_SELF_ACTION_WRONGLY_ADMITTED_AS_COUNTERPART: {sorted(modes)}'
+E       AssertionError: CHILD_SELF_ACTION_WRONGLY_ADMITTED_AS_COUNTERPART: ['CONTRADICT', 'DIFFERENTIATE', 'GENERALIZE', 'NARROW', 'NO_CHANGE', 'REATTRIBUTE', 'REINFORCE']
+E       assert {'CONTRADICT'...TRIBUTE', ...} == {'NO_CHANGE'}
+E         
+E         Extra items in the left set:
+E         'CONTRADICT'
+E         'DIFFERENTIATE'
+E         'REINFORCE'
+E         'NARROW'
+E         'GENERALIZE'
+E         'REATTRIBUTE'
+E         Use -v to get more diff
+
+test_heldout_actor_independence.py:48: AssertionError</failure></testcase></testsuite></testsuites>

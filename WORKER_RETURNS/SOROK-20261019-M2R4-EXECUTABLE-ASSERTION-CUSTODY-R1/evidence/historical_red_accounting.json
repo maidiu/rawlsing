@@ -1,0 +1,189 @@
+{
+  "accounting": {
+    "i2_on_m1": "9 RED / 14 PASS retained",
+    "i2_on_r2": "10 RED / 13 PASS retained",
+    "m1_on_r2": "19 RED / 18 PASS retained",
+    "m1_original": "37 PASS",
+    "original_R2_child_self": "1 PASS / 1 RED retained"
+  },
+  "disposition": "Historical incompatibilities are retained as RED, not repaired or retrospectively passed. The unchanged R3-I2 two nodes fail only on R3 and pass on R4; the unchanged R2 child-self negative remains 1 PASS/1 RED.",
+  "i2_on_m1": {
+    "actual": {
+      "errors": 0,
+      "failed": 9,
+      "passed": 14,
+      "skipped": 0,
+      "tests": 23
+    },
+    "expected": {
+      "failed": 9,
+      "passed": 14,
+      "tests": 23
+    },
+    "failing_nodes": [
+      "::test_R01_future_speech_must_not_be_available_at_event_clock",
+      "::test_R02_future_affect_must_not_be_retrospectively_referenced_as_current",
+      "::test_R03_same_objective_id_changed_payload_cannot_preserve_old_lineage",
+      "::test_R04_NO_CHANGE_must_mean_no_durable_interpretation_update",
+      "::test_R05_cosmetic_history_label_does_not_create_new_causal_route_identity",
+      "::test_R06_forged_witness_without_source_admission_cannot_create_route",
+      "::test_R07_nonsemantic_material_stereotype_cannot_be_minted_world_truth",
+      "::test_R09_later_own_new_utterance_requires_actual_speaker_opportunity",
+      "::test_R10_later_interpretation_requires_evidence_of_relevance_or_difference"
+    ],
+    "log": "i2_on_m1.log",
+    "matched": true,
+    "return_code": 1,
+    "xml": "i2_on_m1.xml"
+  },
+  "i2_on_r2": {
+    "actual": {
+      "errors": 0,
+      "failed": 10,
+      "passed": 13,
+      "skipped": 0,
+      "tests": 23
+    },
+    "expected": {
+      "failed": 10,
+      "passed": 13,
+      "tests": 23
+    },
+    "failing_nodes": [
+      "::test_01_reproducible_witnesses_and_plural_without_compulsion",
+      "::test_06_original_event_immutable_with_same_scene_and_append",
+      "::test_07_private_memory_not_manufactured",
+      "::test_09_other_P_refusal_already_encoded_no_forced_response",
+      "::test_11_permission_replay_before_hash_blocks_reuse",
+      "::test_R03_same_objective_id_changed_payload_cannot_preserve_old_lineage",
+      "::test_R04_NO_CHANGE_must_mean_no_durable_interpretation_update",
+      "::test_R05_cosmetic_history_label_does_not_create_new_causal_route_identity",
+      "::test_R08_future_self_history_cannot_be_usable_as_prior_lineage_evidence",
+      "::test_R10_later_interpretation_requires_evidence_of_relevance_or_difference"
+    ],
+    "log": "i2_on_r2.log",
+    "matched": true,
+    "return_code": 1,
+    "xml": "i2_on_r2.xml"
+  },
+  "m1_on_r2": {
+    "actual": {
+      "errors": 0,
+      "failed": 19,
+      "passed": 18,
+      "skipped": 0,
+      "tests": 37
+    },
+    "expected": {
+      "failed": 19,
+      "passed": 18,
+      "tests": 37
+    },
+    "failing_nodes": [
+      "::test_every_accessible_speech_has_multiple_competing_stances",
+      "::test_peer_attribution_never_world_culprit",
+      "::test_factual_acceptance_and_negative_affect_are_independent",
+      "::test_private_rejection_and_public_conformity_do_not_collapse",
+      "::test_procedural_watchfulness_survives_explicit_rejection",
+      "::test_seven_later_alternatives_are_only_candidates[REATTRIBUTE]",
+      "::test_seven_later_alternatives_are_only_candidates[NARROW]",
+      "::test_seven_later_alternatives_are_only_candidates[GENERALIZE]",
+      "::test_seven_later_alternatives_are_only_candidates[REINFORCE]",
+      "::test_seven_later_alternatives_are_only_candidates[CONTRADICT]",
+      "::test_seven_later_alternatives_are_only_candidates[DIFFERENTIATE]",
+      "::test_seven_later_alternatives_are_only_candidates[NO_CHANGE]",
+      "::test_later_append_versioned_reinterpretation_without_past_rewrite",
+      "::test_later_no_change_is_actual_valid_option",
+      "::test_independent_other_can_refuse_without_forced_romance",
+      "::test_replay_is_exact_under_same_seal",
+      "::test_ordering_fails_closed_on_second_loss_after_later",
+      "::test_untampered_lineage_hash_is_required",
+      "::test_future_habit_cannot_be_causal_past_of_loss"
+    ],
+    "log": "m1_on_r2.log",
+    "matched": true,
+    "return_code": 1,
+    "xml": "m1_on_r2.xml"
+  },
+  "m1_original": {
+    "actual": {
+      "errors": 0,
+      "failed": 0,
+      "passed": 37,
+      "skipped": 0,
+      "tests": 37
+    },
+    "expected": {
+      "failed": 0,
+      "passed": 37,
+      "tests": 37
+    },
+    "failing_nodes": [],
+    "log": "m1_original.log",
+    "matched": true,
+    "return_code": 0,
+    "xml": "m1_original.xml"
+  },
+  "r2_child_self_control": {
+    "actual": {
+      "errors": 0,
+      "failed": 1,
+      "passed": 1,
+      "skipped": 0,
+      "tests": 2
+    },
+    "expected": {
+      "failed": 1,
+      "passed": 1,
+      "tests": 2
+    },
+    "failing_nodes": [
+      "::test_child_self_action_must_not_be_admitted_as_counterpart"
+    ],
+    "log": "r2_child_self_control.log",
+    "matched": true,
+    "return_code": 1,
+    "xml": "r2_child_self_control.xml"
+  },
+  "r3_i2_six": {
+    "actual": {
+      "errors": 0,
+      "failed": 2,
+      "passed": 4,
+      "skipped": 0,
+      "tests": 6
+    },
+    "expected": {
+      "failed": 2,
+      "passed": 4,
+      "tests": 6
+    },
+    "failing_nodes": [
+      "::test_i2_01_historical_lineage_rule_hash_must_not_accept_a_different_rule",
+      "::test_i2_02_other_owner_cannot_be_sole_witness_of_own_action_and_child_observation"
+    ],
+    "log": "r3_i2_six.log",
+    "matched": true,
+    "return_code": 1,
+    "xml": "r3_i2_six.xml"
+  },
+  "r4_i2_six": {
+    "actual": {
+      "errors": 0,
+      "failed": 0,
+      "passed": 6,
+      "skipped": 0,
+      "tests": 6
+    },
+    "expected": {
+      "failed": 0,
+      "passed": 6,
+      "tests": 6
+    },
+    "failing_nodes": [],
+    "log": "r4_i2_six.log",
+    "matched": true,
+    "return_code": 0,
+    "xml": "r4_i2_six.xml"
+  }
+}

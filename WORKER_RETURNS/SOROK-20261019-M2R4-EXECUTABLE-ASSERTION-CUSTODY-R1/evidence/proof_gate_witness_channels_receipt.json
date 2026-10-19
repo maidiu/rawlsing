@@ -1,0 +1,30 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "status": "MECHANICAL_WITNESS_PASS_NOT_SEMANTIC_ADOPTION",
+  "claims": [
+    {
+      "claim_id": "R3I2_RED2_EVENT_OBSERVER_INDEPENDENCE",
+      "positive_node": "test_r4_i2_new_hostiles.py::test_i2n02_event_owner_self_observer",
+      "fault_path": "kernel.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    },
+    {
+      "claim_id": "R3I2_RED2_RELEVANCE_OBSERVER_INDEPENDENCE",
+      "positive_node": "test_r4_i2_new_hostiles.py::test_i2n03_relevance_owner_self_observer",
+      "fault_path": "kernel.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    },
+    {
+      "claim_id": "R3I2_RED2_HISTORY_WITNESS_INDEPENDENCE",
+      "positive_node": "test_r4_i2_new_hostiles.py::test_i2n04_history_owner_self_observer",
+      "fault_path": "kernel.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    }
+  ]
+}

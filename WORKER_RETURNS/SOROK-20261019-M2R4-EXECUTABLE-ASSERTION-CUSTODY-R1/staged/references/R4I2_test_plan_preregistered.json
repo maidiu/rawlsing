@@ -1,0 +1,127 @@
+{
+  "schema": "SOROK_M2R4_I2_FROZEN_NAMED_ASSERTION_MATRIX_R1",
+  "frozen_before_any_new_hostile_probe_result": true,
+  "note": "Preregistration is a future executable test design, not an execution receipt. All new nodes NOT_RUN. Counterfactual must fail named assertion, not a setup error.",
+  "case_rows": [
+    {
+      "claim_id": "I2N01",
+      "proposed_node": "test_m2r4_i2_new_hostiles.py::test_i2n01_forged_rule_digest",
+      "actual_target_consumer": "eligible(scene, forged_state, 'later')",
+      "claimed_dependency": "R4 rejects fully rehashed unissued historical rule",
+      "positive_oracle": "HISTORICAL_RULE_IDENTITY_UNQUALIFIED",
+      "direct_severance": "R3 original red, R4 green on unchanged source",
+      "execution": "NOT_RUN",
+      "assertion_efficacy": "NOT_PROVED"
+    },
+    {
+      "claim_id": "I2N02",
+      "proposed_node": "test_m2r4_i2_new_hostiles.py::test_i2n02_event_owner_self_observer",
+      "actual_target_consumer": "eligible(scene, state, 'later')",
+      "claimed_dependency": "owner-as-event-observer cannot support other-person modes",
+      "positive_oracle": "only NO_CHANGE",
+      "direct_severance": "sever Event.observer independence; rehash referenced event",
+      "execution": "NOT_RUN",
+      "assertion_efficacy": "NOT_PROVED"
+    },
+    {
+      "claim_id": "I2N03",
+      "proposed_node": "test_m2r4_i2_new_hostiles.py::test_i2n03_relevance_owner_self_observer",
+      "actual_target_consumer": "eligible(scene, state, 'later')",
+      "claimed_dependency": "owner-as-Relevance.observer cannot support other-person modes",
+      "positive_oracle": "only NO_CHANGE",
+      "direct_severance": "sever Relevance.observer independence",
+      "execution": "NOT_RUN",
+      "assertion_efficacy": "NOT_PROVED"
+    },
+    {
+      "claim_id": "I2N04",
+      "proposed_node": "test_m2r4_i2_new_hostiles.py::test_i2n04_history_owner_self_observer",
+      "actual_target_consumer": "eligible(scene, state, 'later')",
+      "claimed_dependency": "owner-as-HistoryWitness.observer cannot support other-person modes",
+      "positive_oracle": "only NO_CHANGE",
+      "direct_severance": "sever HistoryWitness.observer independence",
+      "execution": "NOT_RUN",
+      "assertion_efficacy": "NOT_PROVED"
+    },
+    {
+      "claim_id": "I2N05",
+      "proposed_node": "test_m2r4_i2_new_hostiles.py::test_i2n05_shared_nonowner_observer_positive",
+      "actual_target_consumer": "eligible(scene, state, 'later')",
+      "claimed_dependency": "observer channels can name same non-owner person and remain eligible",
+      "positive_oracle": "seven modes including NO_CHANGE",
+      "direct_severance": "positive without invented observer mutual-distinctness law",
+      "execution": "NOT_RUN",
+      "assertion_efficacy": "NOT_PROVED"
+    },
+    {
+      "claim_id": "I2N06",
+      "proposed_node": "test_m2r4_i2_new_hostiles.py::test_i2n06_other_q_positive",
+      "actual_target_consumer": "eligible(scene, state, 'later')",
+      "claimed_dependency": "different other_Q valid earlier independent project and witness supplies counterpart option",
+      "positive_oracle": "seven modes including NO_CHANGE",
+      "direct_severance": "rebind actual action to second distinct other with all three owner fields",
+      "execution": "NOT_RUN",
+      "assertion_efficacy": "NOT_PROVED"
+    },
+    {
+      "claim_id": "I2N07",
+      "proposed_node": "test_m2r4_i2_new_hostiles.py::test_i2n07_future_history_t10_cannot_prove_t9",
+      "actual_target_consumer": "eligible(scene, state, 'later')",
+      "claimed_dependency": "a future history/witness/relevance cannot authorize t9 possibility",
+      "positive_oracle": "only NO_CHANGE",
+      "direct_severance": "move evidence source time to t10 and recompute witness hash",
+      "execution": "NOT_RUN",
+      "assertion_efficacy": "NOT_PROVED"
+    },
+    {
+      "claim_id": "I2N08",
+      "proposed_node": "test_m2r4_i2_new_hostiles.py::test_i2n08_consumed_witness_change_postproposal",
+      "actual_target_consumer": "append_test_only(changed, state, original_proposal, grant)",
+      "claimed_dependency": "witness after proposal changed; same named append must refuse",
+      "positive_oracle": "PROPOSAL_RECOMPUTATION_FAILED",
+      "direct_severance": "replace consumed witness observer with another non-owner observer",
+      "execution": "NOT_RUN",
+      "assertion_efficacy": "NOT_PROVED"
+    },
+    {
+      "claim_id": "I2N09",
+      "proposed_node": "test_m2r4_i2_new_hostiles.py::test_i2n09_unconsumed_alternative_stable",
+      "actual_target_consumer": "eligible(changed, state, 'future')",
+      "claimed_dependency": "unconsumed alternative addition cannot rewrite consumed lineage",
+      "positive_oracle": "existing modes retained",
+      "direct_severance": "append only irrelevant disqualified alternative",
+      "execution": "NOT_RUN",
+      "assertion_efficacy": "NOT_PROVED"
+    },
+    {
+      "claim_id": "I2N10",
+      "proposed_node": "test_m2r4_i2_new_hostiles.py::test_i2n10_old_version_rule_unqualified",
+      "actual_target_consumer": "eligible(scene, old_rule_state, 'later')",
+      "claimed_dependency": "legacy @0.4.1 historical record must not migrate silently",
+      "positive_oracle": "HISTORICAL_RULE_IDENTITY_UNQUALIFIED",
+      "direct_severance": "rehash old-version rule and preserve original scene",
+      "execution": "NOT_RUN",
+      "assertion_efficacy": "NOT_PROVED"
+    },
+    {
+      "claim_id": "I2N11",
+      "proposed_node": "test_m2r4_i2_new_hostiles.py::test_i2n11_nochange_unchanged_state",
+      "actual_target_consumer": "append_test_only(scene, state, NO_CHANGE_proposal, grant)",
+      "claimed_dependency": "NO_CHANGE never issues psychological change",
+      "positive_oracle": "returned state is exact same object/hash",
+      "direct_severance": "disqualify observer then take the sole NO_CHANGE option",
+      "execution": "NOT_RUN",
+      "assertion_efficacy": "NOT_PROVED"
+    },
+    {
+      "claim_id": "I2N12",
+      "proposed_node": "test_m2r4_i2_new_hostiles.py::test_i2n12_consumed_source_replaced_on_continuation",
+      "actual_target_consumer": "eligible(changed, state, 'future')",
+      "claimed_dependency": "consumed relevance/source history replacement cannot pass continuation",
+      "positive_oracle": "SOURCE_PREIMAGE_IDENTITY_COLLISION",
+      "direct_severance": "sever retained historical readset while same target continuing",
+      "execution": "NOT_RUN",
+      "assertion_efficacy": "NOT_PROVED"
+    }
+  ]
+}

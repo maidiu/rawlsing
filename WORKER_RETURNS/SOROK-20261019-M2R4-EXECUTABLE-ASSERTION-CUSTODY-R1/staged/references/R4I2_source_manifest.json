@@ -1,0 +1,109 @@
+{
+  "schema": "SOROK_M2R4_I2_REMOTE_SOURCE_AND_STATIC_INSPECTION_R1",
+  "review_target": "2001169089e97da7444dc8baa2df700aa56e9aca",
+  "sealed_startup": "d53b36a2e5b1f665061a736b26584806c4deaa6c",
+  "identity_grade": "GITHUB_CONNECTOR_FETCH_AND_INDEPENDENT_JS_SHA256_NOT_PYTHON_IMPORT",
+  "r3_kernel": {
+    "ref": "9c1ab2fa172e41c7fb033b5f134b25255d65126c",
+    "git_blob": "645308250f54133c1f9d707a5851f689942f18ba",
+    "bytes": 27840,
+    "sha256": "838d0852e6b1b28bb733b1eda580b3dc53f5db3d47e3a0caefbd3072022ad45a",
+    "sha256_independently_verified": true
+  },
+  "r4_kernel": {
+    "ref": "2001169089e97da7444dc8baa2df700aa56e9aca",
+    "git_blob": "045331889e922274ba0a31bb78d4b110aaba06a1",
+    "bytes": 28458,
+    "sha256": "5b8ac91ca8b3b9afb068493f2a1d6c2dabdc650814ff5f099f0e670d09823940",
+    "sha256_independently_verified": true
+  },
+  "prior_R3_I2_six": {
+    "ref": "a4129eaf652b49a5ba629de32e2b7b0abd60d443",
+    "git_blob": "cdf76452e82e241c38bc3035aa73202ccf5ec3ab",
+    "sha256": "b9c01d20fe6b2d771246fd7b1b36671b9dbda8bddae062fd6c96df8196c471de",
+    "sha256_independently_verified": true
+  },
+  "author_R4_twelve": {
+    "ref": "2001169089e97da7444dc8baa2df700aa56e9aca",
+    "git_blob": "85fa5794663a9217ec9a3dabec170d076e670f9c",
+    "sha256": "b62b841042da187637799952be30164b3ea83f3b453169bb901372227453e28d",
+    "sha256_independently_verified": true
+  },
+  "inherited_test_blob_refs": [
+    {
+      "file": "test_m2.py",
+      "blob": "3c55e7fcfc855ec45d6d9489051e1c8cf699b4ac",
+      "author_claimed_count": 41,
+      "independent_execution": "NOT_RUN"
+    },
+    {
+      "file": "test_m3_independent.py",
+      "blob": "c576e93057ded184eba07cf1dd56e2ee90f1c211",
+      "author_claimed_count": 32,
+      "independent_execution": "NOT_RUN"
+    },
+    {
+      "file": "test_m3_unresolved.py",
+      "blob": "b9b9bea794d04a504a51dc6f5dd27b71055bb479",
+      "author_claimed_count": 3,
+      "independent_execution": "NOT_RUN"
+    },
+    {
+      "file": "test_source_preimages.py",
+      "blob": "954b5aa110986b479214c7981fe370d3512cda19",
+      "author_claimed_count": 15,
+      "independent_execution": "NOT_RUN"
+    },
+    {
+      "file": "frozen_m3/test_original_preimage.py",
+      "blob": "9294f2cb3920f8af687d112f96ed556119977b77",
+      "author_claimed_count": 3,
+      "independent_execution": "NOT_RUN"
+    },
+    {
+      "file": "test_local_hostile.py",
+      "blob": "47e796a29ec3253a3da3fff1b6f5fb00136a6c2b",
+      "author_claimed_count": 11,
+      "independent_execution": "NOT_RUN"
+    },
+    {
+      "file": "test_relation_custody.py",
+      "blob": "a517fb1eaee24ab0a95857bedefa6d224a009478",
+      "author_claimed_count": 14,
+      "independent_execution": "NOT_RUN"
+    },
+    {
+      "file": "test_heldout_actor_independence.py",
+      "blob": "2d3b24f9281ac5625999b49f97396d4f6c2202aa",
+      "author_claimed_count": 2,
+      "independent_execution": "NOT_RUN"
+    },
+    {
+      "file": "test_r3_counterpart_actor_custody.py",
+      "blob": "00d3efe320796cd6790faee581a9ba0c0d2bc266",
+      "author_claimed_count": 14,
+      "independent_execution": "NOT_RUN"
+    },
+    {
+      "file": "test_fresh_i2_adversarial.py",
+      "blob": "cdf76452e82e241c38bc3035aa73202ccf5ec3ab",
+      "author_claimed_count": 6,
+      "independent_execution": "NOT_RUN"
+    },
+    {
+      "file": "test_r4_owner_rule_hostile.py",
+      "blob": "85fa5794663a9217ec9a3dabec170d076e670f9c",
+      "author_claimed_count": 12,
+      "independent_execution": "NOT_RUN"
+    }
+  ],
+  "diff_observed": [
+    "RULE 0.4.1 -> 0.4.2",
+    "two RULE_CONTRACT fields inserted",
+    "_lineage_integrity requires rec.rule_hash == RULE_HASH",
+    "_relation_sources refuses event observer equal to action owner",
+    "_relation_sources refuses relevance observer equal to action owner",
+    "_relation_sources refuses history source witness observer equal to action owner"
+  ],
+  "native_permission_grants": []
+}

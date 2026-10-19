@@ -1,0 +1,771 @@
+{
+  "all_expected_outcomes": true,
+  "cold_full_153": [
+    {
+      "actual": {
+        "errors": 0,
+        "failed": 0,
+        "passed": 153,
+        "skipped": 0,
+        "tests": 153
+      },
+      "label": "cold_a",
+      "log": "r4_author_153_cold_a.log",
+      "return_code": 0,
+      "xml": "r4_author_153_cold_a.xml"
+    },
+    {
+      "actual": {
+        "errors": 0,
+        "failed": 0,
+        "passed": 153,
+        "skipped": 0,
+        "tests": 153
+      },
+      "label": "cold_b",
+      "log": "r4_author_153_cold_b.log",
+      "return_code": 0,
+      "xml": "r4_author_153_cold_b.xml"
+    }
+  ],
+  "cold_imports": [
+    {
+      "cwd": "runs/r2_control",
+      "implementer": "cpython",
+      "imported_kernel_is_exact_local_file": true,
+      "module": "kernel",
+      "module_file": "runs/r2_control/kernel.py",
+      "module_sha256": "88bb8c65dfd88efd1843f16e1bb6d51e1fa01a0dc1fdccb13e03a9b2b394d8d3",
+      "python": "3.11.3",
+      "rule": "M2_INTERPRETATION_SOURCE_TEMPORAL_IDENTITY@0.4.0_CANDIDATE",
+      "rule_hash": "fa7b943be9e1cd49ddf9cc1c8faf5ec01c2b68f86dbe4ea3cdeb859699f5dcaf",
+      "schema": "SOROK_M2R4E_COLD_IMPORT@1",
+      "sys_path_first": [
+        "runs/r2_control",
+        "runner",
+        "<external>"
+      ]
+    },
+    {
+      "cwd": "runs/r3_red",
+      "implementer": "cpython",
+      "imported_kernel_is_exact_local_file": true,
+      "module": "kernel",
+      "module_file": "runs/r3_red/kernel.py",
+      "module_sha256": "838d0852e6b1b28bb733b1eda580b3dc53f5db3d47e3a0caefbd3072022ad45a",
+      "python": "3.11.3",
+      "rule": "M2_INTERPRETATION_SOURCE_TEMPORAL_IDENTITY@0.4.1_CANDIDATE",
+      "rule_hash": "8cc1f8495ee84170f77df0532f21c077b630de3af2d72d3c6f5dd7793eec9ece",
+      "schema": "SOROK_M2R4E_COLD_IMPORT@1",
+      "sys_path_first": [
+        "runs/r3_red",
+        "runner",
+        "<external>"
+      ]
+    },
+    {
+      "cwd": "runs/r4_green",
+      "implementer": "cpython",
+      "imported_kernel_is_exact_local_file": true,
+      "module": "kernel",
+      "module_file": "runs/r4_green/kernel.py",
+      "module_sha256": "5b8ac91ca8b3b9afb068493f2a1d6c2dabdc650814ff5f099f0e670d09823940",
+      "python": "3.11.3",
+      "rule": "M2_INTERPRETATION_SOURCE_TEMPORAL_IDENTITY@0.4.2_CANDIDATE",
+      "rule_hash": "7bd2a3c289a98e918f655734d5acab198faef430e1558cfce57c9e40cae41150",
+      "schema": "SOROK_M2R4E_COLD_IMPORT@1",
+      "sys_path_first": [
+        "runs/r4_green",
+        "runner",
+        "<external>"
+      ]
+    }
+  ],
+  "cold_outcomes_equal": true,
+  "environment": {
+    "pytest": "pytest 9.1.1",
+    "python": "3.11.3"
+  },
+  "evidence_sanitized_files": 24,
+  "gate_restored_kernel": {
+    "actual": "5b8ac91ca8b3b9afb068493f2a1d6c2dabdc650814ff5f099f0e670d09823940",
+    "expected": "5b8ac91ca8b3b9afb068493f2a1d6c2dabdc650814ff5f099f0e670d09823940",
+    "match": true
+  },
+  "historical_accounting": {
+    "i2_on_m1": "9 RED / 14 PASS retained",
+    "i2_on_r2": "10 RED / 13 PASS retained",
+    "m1_on_r2": "19 RED / 18 PASS retained",
+    "m1_original": "37 PASS",
+    "original_R2_child_self": "1 PASS / 1 RED retained"
+  },
+  "lint": [
+    {
+      "file": "staged/tests/test_r4_i2_new_hostiles.py",
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "{\n  \"state\": \"AST_LINT_PASS\",\n  \"file\": \"staged/tests/test_r4_i2_new_hostiles.py\"\n}"
+    },
+    {
+      "file": "staged/cross_hq/test_proof_integrity_gate_r1.py",
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "{\n  \"state\": \"AST_LINT_PASS\",\n  \"file\": \"staged/cross_hq/test_proof_integrity_gate_r1.py\"\n}"
+    }
+  ],
+  "no_change": {
+    "audit_hash": "4a9bffa49ef5f03e380ecbde5cc27ba1daf39ec0ad40cdf4aecaa02aa181d244",
+    "audit_matches_before": true,
+    "audit_state_before_hash": "99e7ef94674c62829e353359b0372c37996a687f5cf13f6fb4085555ed60ccbd",
+    "candidate_hash": "e82c50cb93718d8e47b1a6e31740cc60b02e9c987be04b98069ee7bac4de3029",
+    "modes": [
+      "NO_CHANGE"
+    ],
+    "no_mutation": true,
+    "relation_preimages_empty": true,
+    "returned_state_is_same_object": true,
+    "rule": "M2_INTERPRETATION_SOURCE_TEMPORAL_IDENTITY@0.4.2_CANDIDATE",
+    "rule_hash": "7bd2a3c289a98e918f655734d5acab198faef430e1558cfce57c9e40cae41150",
+    "schema": "SOROK_M2R4E_NO_CHANGE_RECEIPT@1",
+    "selected_mode": "NO_CHANGE",
+    "source_preimage_count": 2,
+    "state_hash_after": "99e7ef94674c62829e353359b0372c37996a687f5cf13f6fb4085555ed60ccbd",
+    "state_hash_before": "99e7ef94674c62829e353359b0372c37996a687f5cf13f6fb4085555ed60ccbd"
+  },
+  "proof_gate": [
+    {
+      "contract": "test_fresh_i2_adversarial.py.proof.json",
+      "label": "rule_binding",
+      "log": "proof_gate_rule_binding.log",
+      "receipt": "proof_gate_rule_binding_receipt.json",
+      "receipt_payload": {
+        "claims": [
+          {
+            "baseline": "PASS",
+            "claim_id": "R3I2_RED1_HISTORICAL_RULE_IDENTITY_BINDING",
+            "fault_path": "kernel.py",
+            "fault_probe": "TARGET_ASSERTION_FAILED",
+            "grade": "BOUNDED_MUTATION_DETECTED",
+            "positive_node": "test_fresh_i2_adversarial.py::test_i2_01_historical_lineage_rule_hash_must_not_accept_a_different_rule"
+          }
+        ],
+        "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+        "status": "MECHANICAL_WITNESS_PASS_NOT_SEMANTIC_ADOPTION"
+      },
+      "return_code": 0
+    },
+    {
+      "contract": "test_r4_i2_new_hostiles.py.proof.json",
+      "label": "witness_channels",
+      "log": "proof_gate_witness_channels.log",
+      "receipt": "proof_gate_witness_channels_receipt.json",
+      "receipt_payload": {
+        "claims": [
+          {
+            "baseline": "PASS",
+            "claim_id": "R3I2_RED2_EVENT_OBSERVER_INDEPENDENCE",
+            "fault_path": "kernel.py",
+            "fault_probe": "TARGET_ASSERTION_FAILED",
+            "grade": "BOUNDED_MUTATION_DETECTED",
+            "positive_node": "test_r4_i2_new_hostiles.py::test_i2n02_event_owner_self_observer"
+          },
+          {
+            "baseline": "PASS",
+            "claim_id": "R3I2_RED2_RELEVANCE_OBSERVER_INDEPENDENCE",
+            "fault_path": "kernel.py",
+            "fault_probe": "TARGET_ASSERTION_FAILED",
+            "grade": "BOUNDED_MUTATION_DETECTED",
+            "positive_node": "test_r4_i2_new_hostiles.py::test_i2n03_relevance_owner_self_observer"
+          },
+          {
+            "baseline": "PASS",
+            "claim_id": "R3I2_RED2_HISTORY_WITNESS_INDEPENDENCE",
+            "fault_path": "kernel.py",
+            "fault_probe": "TARGET_ASSERTION_FAILED",
+            "grade": "BOUNDED_MUTATION_DETECTED",
+            "positive_node": "test_r4_i2_new_hostiles.py::test_i2n04_history_owner_self_observer"
+          }
+        ],
+        "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+        "status": "MECHANICAL_WITNESS_PASS_NOT_SEMANTIC_ADOPTION"
+      },
+      "return_code": 0
+    }
+  ],
+  "schema": "SOROK_M2R4E_EXECUTION_SUMMARY@1",
+  "suites": [
+    {
+      "actual": {
+        "errors": 0,
+        "failed": 2,
+        "passed": 4,
+        "skipped": 0,
+        "tests": 6
+      },
+      "expected": {
+        "failed": 2,
+        "passed": 4,
+        "tests": 6
+      },
+      "failing_nodes": [
+        "::test_i2_01_historical_lineage_rule_hash_must_not_accept_a_different_rule",
+        "::test_i2_02_other_owner_cannot_be_sole_witness_of_own_action_and_child_observation"
+      ],
+      "files": [
+        "test_fresh_i2_adversarial.py"
+      ],
+      "log": "r3_i2_six.log",
+      "matched": true,
+      "name": "r3_i2_six",
+      "return_code": 1,
+      "run_dir": "r3_red",
+      "xml": "r3_i2_six.xml"
+    },
+    {
+      "actual": {
+        "errors": 0,
+        "failed": 0,
+        "passed": 6,
+        "skipped": 0,
+        "tests": 6
+      },
+      "expected": {
+        "failed": 0,
+        "passed": 6,
+        "tests": 6
+      },
+      "failing_nodes": [],
+      "files": [
+        "test_fresh_i2_adversarial.py"
+      ],
+      "log": "r4_i2_six.log",
+      "matched": true,
+      "name": "r4_i2_six",
+      "return_code": 0,
+      "run_dir": "r4_green",
+      "xml": "r4_i2_six.xml"
+    },
+    {
+      "actual": {
+        "errors": 0,
+        "failed": 0,
+        "passed": 41,
+        "skipped": 0,
+        "tests": 41
+      },
+      "expected": {
+        "failed": 0,
+        "passed": 41,
+        "tests": 41
+      },
+      "failing_nodes": [],
+      "files": [
+        "test_m2.py"
+      ],
+      "log": "r4_M2_41.log",
+      "matched": true,
+      "name": "r4_M2_41",
+      "return_code": 0,
+      "run_dir": "r4_green",
+      "xml": "r4_M2_41.xml"
+    },
+    {
+      "actual": {
+        "errors": 0,
+        "failed": 0,
+        "passed": 32,
+        "skipped": 0,
+        "tests": 32
+      },
+      "expected": {
+        "failed": 0,
+        "passed": 32,
+        "tests": 32
+      },
+      "failing_nodes": [],
+      "files": [
+        "test_m3_independent.py"
+      ],
+      "log": "r4_M3_lawful_32.log",
+      "matched": true,
+      "name": "r4_M3_lawful_32",
+      "return_code": 0,
+      "run_dir": "r4_green",
+      "xml": "r4_M3_lawful_32.xml"
+    },
+    {
+      "actual": {
+        "errors": 0,
+        "failed": 0,
+        "passed": 3,
+        "skipped": 0,
+        "tests": 3
+      },
+      "expected": {
+        "failed": 0,
+        "passed": 3,
+        "tests": 3
+      },
+      "failing_nodes": [],
+      "files": [
+        "test_m3_unresolved.py"
+      ],
+      "log": "r4_M3_packaged_3.log",
+      "matched": true,
+      "name": "r4_M3_packaged_3",
+      "return_code": 0,
+      "run_dir": "r4_green",
+      "xml": "r4_M3_packaged_3.xml"
+    },
+    {
+      "actual": {
+        "errors": 0,
+        "failed": 0,
+        "passed": 15,
+        "skipped": 0,
+        "tests": 15
+      },
+      "expected": {
+        "failed": 0,
+        "passed": 15,
+        "tests": 15
+      },
+      "failing_nodes": [],
+      "files": [
+        "test_source_preimages.py"
+      ],
+      "log": "r4_source_preimage_15.log",
+      "matched": true,
+      "name": "r4_source_preimage_15",
+      "return_code": 0,
+      "run_dir": "r4_green",
+      "xml": "r4_source_preimage_15.xml"
+    },
+    {
+      "actual": {
+        "errors": 0,
+        "failed": 0,
+        "passed": 3,
+        "skipped": 0,
+        "tests": 3
+      },
+      "expected": {
+        "failed": 0,
+        "passed": 3,
+        "tests": 3
+      },
+      "failing_nodes": [],
+      "files": [
+        "test_original_preimage.py"
+      ],
+      "log": "r4_M3_historical_3.log",
+      "matched": true,
+      "name": "r4_M3_historical_3",
+      "return_code": 0,
+      "run_dir": "r4_green",
+      "xml": "r4_M3_historical_3.xml"
+    },
+    {
+      "actual": {
+        "errors": 0,
+        "failed": 0,
+        "passed": 11,
+        "skipped": 0,
+        "tests": 11
+      },
+      "expected": {
+        "failed": 0,
+        "passed": 11,
+        "tests": 11
+      },
+      "failing_nodes": [],
+      "files": [
+        "test_local_hostile.py"
+      ],
+      "log": "r4_old_hostile_11.log",
+      "matched": true,
+      "name": "r4_old_hostile_11",
+      "return_code": 0,
+      "run_dir": "r4_green",
+      "xml": "r4_old_hostile_11.xml"
+    },
+    {
+      "actual": {
+        "errors": 0,
+        "failed": 0,
+        "passed": 14,
+        "skipped": 0,
+        "tests": 14
+      },
+      "expected": {
+        "failed": 0,
+        "passed": 14,
+        "tests": 14
+      },
+      "failing_nodes": [],
+      "files": [
+        "test_relation_custody.py"
+      ],
+      "log": "r4_R2_relation_14.log",
+      "matched": true,
+      "name": "r4_R2_relation_14",
+      "return_code": 0,
+      "run_dir": "r4_green",
+      "xml": "r4_R2_relation_14.xml"
+    },
+    {
+      "actual": {
+        "errors": 0,
+        "failed": 0,
+        "passed": 2,
+        "skipped": 0,
+        "tests": 2
+      },
+      "expected": {
+        "failed": 0,
+        "passed": 2,
+        "tests": 2
+      },
+      "failing_nodes": [],
+      "files": [
+        "test_heldout_actor_independence.py"
+      ],
+      "log": "r4_R2_I2_heldout_2.log",
+      "matched": true,
+      "name": "r4_R2_I2_heldout_2",
+      "return_code": 0,
+      "run_dir": "r4_green",
+      "xml": "r4_R2_I2_heldout_2.xml"
+    },
+    {
+      "actual": {
+        "errors": 0,
+        "failed": 0,
+        "passed": 14,
+        "skipped": 0,
+        "tests": 14
+      },
+      "expected": {
+        "failed": 0,
+        "passed": 14,
+        "tests": 14
+      },
+      "failing_nodes": [],
+      "files": [
+        "test_r3_counterpart_actor_custody.py"
+      ],
+      "log": "r4_R3_owner_14.log",
+      "matched": true,
+      "name": "r4_R3_owner_14",
+      "return_code": 0,
+      "run_dir": "r4_green",
+      "xml": "r4_R3_owner_14.xml"
+    },
+    {
+      "actual": {
+        "errors": 0,
+        "failed": 0,
+        "passed": 6,
+        "skipped": 0,
+        "tests": 6
+      },
+      "expected": {
+        "failed": 0,
+        "passed": 6,
+        "tests": 6
+      },
+      "failing_nodes": [],
+      "files": [
+        "test_fresh_i2_adversarial.py"
+      ],
+      "log": "r4_fresh_I2_6.log",
+      "matched": true,
+      "name": "r4_fresh_I2_6",
+      "return_code": 0,
+      "run_dir": "r4_green",
+      "xml": "r4_fresh_I2_6.xml"
+    },
+    {
+      "actual": {
+        "errors": 0,
+        "failed": 0,
+        "passed": 12,
+        "skipped": 0,
+        "tests": 12
+      },
+      "expected": {
+        "failed": 0,
+        "passed": 12,
+        "tests": 12
+      },
+      "failing_nodes": [],
+      "files": [
+        "test_r4_owner_rule_hostile.py"
+      ],
+      "log": "r4_new_12.log",
+      "matched": true,
+      "name": "r4_new_12",
+      "return_code": 0,
+      "run_dir": "r4_green",
+      "xml": "r4_new_12.xml"
+    },
+    {
+      "actual": {
+        "errors": 0,
+        "failed": 0,
+        "passed": 153,
+        "skipped": 0,
+        "tests": 153
+      },
+      "expected": {
+        "failed": 0,
+        "passed": 153,
+        "tests": 153
+      },
+      "failing_nodes": [],
+      "files": [
+        "test_m2.py",
+        "test_m3_independent.py",
+        "test_m3_unresolved.py",
+        "test_source_preimages.py",
+        "test_original_preimage.py",
+        "test_local_hostile.py",
+        "test_relation_custody.py",
+        "test_heldout_actor_independence.py",
+        "test_r3_counterpart_actor_custody.py",
+        "test_fresh_i2_adversarial.py",
+        "test_r4_owner_rule_hostile.py"
+      ],
+      "log": "r4_author_153_all.log",
+      "matched": true,
+      "name": "r4_author_153_all",
+      "return_code": 0,
+      "run_dir": "r4_green",
+      "xml": "r4_author_153_all.xml"
+    },
+    {
+      "actual": {
+        "errors": 0,
+        "failed": 0,
+        "passed": 12,
+        "skipped": 0,
+        "tests": 12
+      },
+      "expected": {
+        "failed": 0,
+        "passed": 12,
+        "tests": 12
+      },
+      "failing_nodes": [],
+      "files": [
+        "test_r4_i2_new_hostiles.py"
+      ],
+      "log": "r4_i2_new_12.log",
+      "matched": true,
+      "name": "r4_i2_new_12",
+      "return_code": 0,
+      "run_dir": "r4_green",
+      "xml": "r4_i2_new_12.xml"
+    },
+    {
+      "actual": {
+        "errors": 0,
+        "failed": 6,
+        "passed": 6,
+        "skipped": 0,
+        "tests": 12
+      },
+      "expected": {
+        "failed": 6,
+        "passed": 6,
+        "tests": 12
+      },
+      "failing_nodes": [
+        "::test_i2n01_forged_rule_digest",
+        "::test_i2n02_event_owner_self_observer",
+        "::test_i2n03_relevance_owner_self_observer",
+        "::test_i2n04_history_owner_self_observer",
+        "::test_i2n10_old_version_rule_unqualified",
+        "::test_i2n11_nochange_unchanged_state"
+      ],
+      "files": [
+        "test_r4_i2_new_hostiles.py"
+      ],
+      "log": "r3_i2_new_12_contrast.log",
+      "matched": true,
+      "name": "r3_i2_new_12_contrast",
+      "return_code": 1,
+      "run_dir": "r3_new",
+      "xml": "r3_i2_new_12_contrast.xml"
+    },
+    {
+      "actual": {
+        "errors": 0,
+        "failed": 1,
+        "passed": 1,
+        "skipped": 0,
+        "tests": 2
+      },
+      "expected": {
+        "failed": 1,
+        "passed": 1,
+        "tests": 2
+      },
+      "failing_nodes": [
+        "::test_child_self_action_must_not_be_admitted_as_counterpart"
+      ],
+      "files": [
+        "test_heldout_actor_independence.py"
+      ],
+      "log": "r2_child_self_control.log",
+      "matched": true,
+      "name": "r2_child_self_control",
+      "return_code": 1,
+      "run_dir": "r2_control",
+      "xml": "r2_child_self_control.xml"
+    },
+    {
+      "actual": {
+        "errors": 0,
+        "failed": 19,
+        "passed": 18,
+        "skipped": 0,
+        "tests": 37
+      },
+      "expected": {
+        "failed": 19,
+        "passed": 18,
+        "tests": 37
+      },
+      "failing_nodes": [
+        "::test_every_accessible_speech_has_multiple_competing_stances",
+        "::test_peer_attribution_never_world_culprit",
+        "::test_factual_acceptance_and_negative_affect_are_independent",
+        "::test_private_rejection_and_public_conformity_do_not_collapse",
+        "::test_procedural_watchfulness_survives_explicit_rejection",
+        "::test_seven_later_alternatives_are_only_candidates[REATTRIBUTE]",
+        "::test_seven_later_alternatives_are_only_candidates[NARROW]",
+        "::test_seven_later_alternatives_are_only_candidates[GENERALIZE]",
+        "::test_seven_later_alternatives_are_only_candidates[REINFORCE]",
+        "::test_seven_later_alternatives_are_only_candidates[CONTRADICT]",
+        "::test_seven_later_alternatives_are_only_candidates[DIFFERENTIATE]",
+        "::test_seven_later_alternatives_are_only_candidates[NO_CHANGE]",
+        "::test_later_append_versioned_reinterpretation_without_past_rewrite",
+        "::test_later_no_change_is_actual_valid_option",
+        "::test_independent_other_can_refuse_without_forced_romance",
+        "::test_replay_is_exact_under_same_seal",
+        "::test_ordering_fails_closed_on_second_loss_after_later",
+        "::test_untampered_lineage_hash_is_required",
+        "::test_future_habit_cannot_be_causal_past_of_loss"
+      ],
+      "files": [
+        "test_kernel.py"
+      ],
+      "log": "m1_on_r2.log",
+      "matched": true,
+      "name": "m1_on_r2",
+      "return_code": 1,
+      "run_dir": "m1_on_r2",
+      "xml": "m1_on_r2.xml"
+    },
+    {
+      "actual": {
+        "errors": 0,
+        "failed": 10,
+        "passed": 13,
+        "skipped": 0,
+        "tests": 23
+      },
+      "expected": {
+        "failed": 10,
+        "passed": 13,
+        "tests": 23
+      },
+      "failing_nodes": [
+        "::test_01_reproducible_witnesses_and_plural_without_compulsion",
+        "::test_06_original_event_immutable_with_same_scene_and_append",
+        "::test_07_private_memory_not_manufactured",
+        "::test_09_other_P_refusal_already_encoded_no_forced_response",
+        "::test_11_permission_replay_before_hash_blocks_reuse",
+        "::test_R03_same_objective_id_changed_payload_cannot_preserve_old_lineage",
+        "::test_R04_NO_CHANGE_must_mean_no_durable_interpretation_update",
+        "::test_R05_cosmetic_history_label_does_not_create_new_causal_route_identity",
+        "::test_R08_future_self_history_cannot_be_usable_as_prior_lineage_evidence",
+        "::test_R10_later_interpretation_requires_evidence_of_relevance_or_difference"
+      ],
+      "files": [
+        "test_i2_strict.py"
+      ],
+      "log": "i2_on_r2.log",
+      "matched": true,
+      "name": "i2_on_r2",
+      "return_code": 1,
+      "run_dir": "i2_on_r2",
+      "xml": "i2_on_r2.xml"
+    },
+    {
+      "actual": {
+        "errors": 0,
+        "failed": 0,
+        "passed": 37,
+        "skipped": 0,
+        "tests": 37
+      },
+      "expected": {
+        "failed": 0,
+        "passed": 37,
+        "tests": 37
+      },
+      "failing_nodes": [],
+      "files": [
+        "test_kernel.py"
+      ],
+      "log": "m1_original.log",
+      "matched": true,
+      "name": "m1_original",
+      "return_code": 0,
+      "run_dir": "m1_original",
+      "xml": "m1_original.xml"
+    },
+    {
+      "actual": {
+        "errors": 0,
+        "failed": 9,
+        "passed": 14,
+        "skipped": 0,
+        "tests": 23
+      },
+      "expected": {
+        "failed": 9,
+        "passed": 14,
+        "tests": 23
+      },
+      "failing_nodes": [
+        "::test_R01_future_speech_must_not_be_available_at_event_clock",
+        "::test_R02_future_affect_must_not_be_retrospectively_referenced_as_current",
+        "::test_R03_same_objective_id_changed_payload_cannot_preserve_old_lineage",
+        "::test_R04_NO_CHANGE_must_mean_no_durable_interpretation_update",
+        "::test_R05_cosmetic_history_label_does_not_create_new_causal_route_identity",
+        "::test_R06_forged_witness_without_source_admission_cannot_create_route",
+        "::test_R07_nonsemantic_material_stereotype_cannot_be_minted_world_truth",
+        "::test_R09_later_own_new_utterance_requires_actual_speaker_opportunity",
+        "::test_R10_later_interpretation_requires_evidence_of_relevance_or_difference"
+      ],
+      "files": [
+        "test_i2_strict.py"
+      ],
+      "log": "i2_on_m1.log",
+      "matched": true,
+      "name": "i2_on_m1",
+      "return_code": 1,
+      "run_dir": "i2_on_m1",
+      "xml": "i2_on_m1.xml"
+    }
+  ],
+  "verdict_grade": {
+    "ASSERTION_EFFICACY_PROVED": true,
+    "CLAIM_EDGE_FALSIFIED_BY_CONTROL_AND_POSITIVE_SURVIVED": true,
+    "EXECUTED_GREEN": true,
+    "SCIENCE": "bounded sourcefree executable custody court only"
+  }
+}

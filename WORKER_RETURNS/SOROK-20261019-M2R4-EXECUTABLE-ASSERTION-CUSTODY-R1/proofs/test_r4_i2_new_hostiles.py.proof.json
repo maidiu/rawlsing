@@ -1,0 +1,38 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "claims": [
+    {
+      "claim_id": "R3I2_RED2_EVENT_OBSERVER_INDEPENDENCE",
+      "actual_consumer": "kernel._relation_sources -> kernel.eligible other-person relation modes",
+      "claimed_dependency": "an objective event observed by its own action owner cannot support counterpart relation modes; Event.observer must differ from Event.action_owner",
+      "positive_node": "test_r4_i2_new_hostiles.py::test_i2n02_event_owner_self_observer",
+      "fault": {
+        "path": "kernel.py",
+        "old": "            or e.action_owner==actor_id or e.observer==e.action_owner):return ()",
+        "new": "            or e.action_owner==actor_id):return ()"
+      }
+    },
+    {
+      "claim_id": "R3I2_RED2_RELEVANCE_OBSERVER_INDEPENDENCE",
+      "actual_consumer": "kernel._relation_sources -> kernel.eligible other-person relation modes",
+      "claimed_dependency": "a Relevance receipt observed by the action owner cannot support counterpart relation modes",
+      "positive_node": "test_r4_i2_new_hostiles.py::test_i2n03_relevance_owner_self_observer",
+      "fault": {
+        "path": "kernel.py",
+        "old": "                or x.observer in (actor_id,e.action_owner)\n                or x.observer not in {a.id for a in scene.actors}):continue",
+        "new": "                or x.observer not in {a.id for a in scene.actors}):continue"
+      }
+    },
+    {
+      "claim_id": "R3I2_RED2_HISTORY_WITNESS_INDEPENDENCE",
+      "actual_consumer": "kernel._relation_sources -> kernel.eligible other-person relation modes",
+      "claimed_dependency": "the independently registered observed-history witness must differ from the action owner; otherwise owner self-testimony launders the counterpart",
+      "positive_node": "test_r4_i2_new_hostiles.py::test_i2n04_history_owner_self_observer",
+      "fault": {
+        "path": "kernel.py",
+        "old": "                and _history_source(scene,witness).observer!=e.action_owner\n                and witness.activity=='observed_counterpart_action:'+str(e.action)",
+        "new": "                and witness.activity=='observed_counterpart_action:'+str(e.action)"
+      }
+    }
+  ]
+}
