@@ -1,0 +1,143 @@
+[
+  {
+    "label": "b2_330",
+    "command": [
+      "/usr/local/bin/python3",
+      "run_courts.py"
+    ],
+    "cwd": "<TEMP>",
+    "exit": 0,
+    "expected": 0
+  },
+  {
+    "label": "r1_45",
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "<TEMP>",
+      "--junitxml=<TEMP>"
+    ],
+    "cwd": "<TEMP>",
+    "exit": 0,
+    "expected": 0
+  },
+  {
+    "label": "repair_5",
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "<TEMP>",
+      "--junitxml=<TEMP>"
+    ],
+    "cwd": "<TEMP>",
+    "exit": 0,
+    "expected": 0
+  },
+  {
+    "label": "e2_full",
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "<TEMP>",
+      "--junitxml=<TEMP>"
+    ],
+    "cwd": "<TEMP>",
+    "exit": 1,
+    "expected": 1
+  },
+  {
+    "label": "e2_strict",
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "<TEMP>",
+      "-k",
+      "legacy_after_mapping_must_fail_closed_at_b2_reentry",
+      "--junitxml=<TEMP>"
+    ],
+    "cwd": "<TEMP>",
+    "exit": 0,
+    "expected": 0
+  },
+  {
+    "label": "x2",
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "<TEMP>",
+      "--junitxml=<TEMP>"
+    ],
+    "cwd": "<TEMP>",
+    "exit": 1,
+    "expected": 1
+  },
+  {
+    "label": "m2_41",
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "test_m2.py",
+      "--junitxml=<TEMP>"
+    ],
+    "cwd": "<TEMP>",
+    "exit": 0,
+    "expected": 0
+  },
+  {
+    "label": "m1_37_on_m2",
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "<TEMP>",
+      "--import-mode=importlib",
+      "--junitxml=<TEMP>"
+    ],
+    "cwd": "<TEMP>",
+    "exit": 1,
+    "expected": 1
+  },
+  {
+    "label": "i2_23_on_m2",
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "<TEMP>",
+      "--import-mode=importlib",
+      "--junitxml=<TEMP>"
+    ],
+    "cwd": "<TEMP>",
+    "exit": 1,
+    "expected": 1
+  },
+  {
+    "label": "m3_source_preimage_3_red",
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "<TEMP>",
+      "--import-mode=importlib",
+      "--junitxml=<TEMP>"
+    ],
+    "cwd": "<TEMP>",
+    "exit": 1,
+    "expected": 1
+  }
+]

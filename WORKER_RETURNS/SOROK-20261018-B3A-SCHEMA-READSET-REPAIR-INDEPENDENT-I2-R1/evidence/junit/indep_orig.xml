@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="6" skipped="0" tests="19" time="21.782" timestamp="2026-10-18T22:32:48.238739-04:00" hostname="Matthews-MBP.lan"><testcase classname="test_independent_hostiles" name="test_hc_index_in_late_window[False]" time="1.185"><failure message="AssertionError: late schema-only change escaped the publication readset&#10;assert 'ELIGIBLE_NONCAUSAL' == 'REFUSED'&#10;  &#10;  - REFUSED&#10;  + ELIGIBLE_NONCAUSAL">tmp_path = PosixPath('<TEMP>')
+seeded = False
+
+    @pytest.mark.parametrize('seeded', [False, True])
+    def test_hc_index_in_late_window(tmp_path, seeded):
+     f, a, e, path = setup(tmp_path, seeded)
+     before = cold(path); fired = []
+     def fault(stage):
+      if stage == 'after_target_effect_before_commit':
+       out = external('ddl', path, sql='CREATE INDEX i2hc_late_index ON b3_source(body)')
+       fired.append(out)
+     e.fault = fault
+     r = e.run(f); after = cold(path); e.close()
+     save('hc1_index_' + str(seeded), before=before, result=r, after=after, fired=fired)
+     assert fired and fired[0]['ddl'] == 'COMMITTED'
+     assert not schema_equal(before, after)
+&gt;    assert r['status'] == 'REFUSED', 'late schema-only change escaped the publication readset'
+E    AssertionError: late schema-only change escaped the publication readset
+E    assert 'ELIGIBLE_NONCAUSAL' == 'REFUSED'
+E      
+E      - REFUSED
+E      + ELIGIBLE_NONCAUSAL
+
+<TEMP> AssertionError</failure></testcase><testcase classname="test_independent_hostiles" name="test_hc_index_in_late_window[True]" time="0.872"><failure message="AssertionError: late schema-only change escaped the publication readset&#10;assert 'ELIGIBLE_NONCAUSAL' == 'REFUSED'&#10;  &#10;  - REFUSED&#10;  + ELIGIBLE_NONCAUSAL">tmp_path = PosixPath('<TEMP>')
+seeded = True
+
+    @pytest.mark.parametrize('seeded', [False, True])
+    def test_hc_index_in_late_window(tmp_path, seeded):
+     f, a, e, path = setup(tmp_path, seeded)
+     before = cold(path); fired = []
+     def fault(stage):
+      if stage == 'after_target_effect_before_commit':
+       out = external('ddl', path, sql='CREATE INDEX i2hc_late_index ON b3_source(body)')
+       fired.append(out)
+     e.fault = fault
+     r = e.run(f); after = cold(path); e.close()
+     save('hc1_index_' + str(seeded), before=before, result=r, after=after, fired=fired)
+     assert fired and fired[0]['ddl'] == 'COMMITTED'
+     assert not schema_equal(before, after)
+&gt;    assert r['status'] == 'REFUSED', 'late schema-only change escaped the publication readset'
+E    AssertionError: late schema-only change escaped the publication readset
+E    assert 'ELIGIBLE_NONCAUSAL' == 'REFUSED'
+E      
+E      - REFUSED
+E      + ELIGIBLE_NONCAUSAL
+
+<TEMP> AssertionError</failure></testcase><testcase classname="test_independent_hostiles" name="test_hc_schema_object_families[trigger]" time="0.823"><failure message="AssertionError: assert 'ELIGIBLE_NONCAUSAL' == 'REFUSED'&#10;  &#10;  - REFUSED&#10;  + ELIGIBLE_NONCAUSAL">tmp_path = PosixPath('<TEMP>')
+obj = 'trigger'
+
+    @pytest.mark.parametrize('obj', ['trigger', 'view', 'table', 'userversion'])
+    def test_hc_schema_object_families(tmp_path, obj):
+     f, a, e, path = setup(tmp_path, False)
+     before = cold(path); fired = []
+     statements = {
+      'trigger': 'CREATE TRIGGER i2hc_trg AFTER INSERT ON b3_source BEGIN UPDATE b3_audit SET body=body WHERE 0; END',
+      'view': 'CREATE VIEW i2hc_view AS SELECT id FROM b3_source',
+      'table': 'CREATE TABLE i2hc_tbl (id TEXT PRIMARY KEY)',
+      'userversion': 'PRAGMA user_version=7',
+     }
+     def fault(stage):
+      if stage == 'after_target_effect_before_commit':
+       fired.append(external('ddl', path, sql=statements[obj]))
+     e.fault = fault
+     r = e.run(f); after = cold(path); e.close()
+     save('hc2_' + obj, before=before, result=r, after=after, fired=fired)
+     assert fired and fired[0]['ddl'] == 'COMMITTED'
+&gt;    assert r['status'] == 'REFUSED'
+E    AssertionError: assert 'ELIGIBLE_NONCAUSAL' == 'REFUSED'
+E      
+E      - REFUSED
+E      + ELIGIBLE_NONCAUSAL
+
+<TEMP> AssertionError</failure></testcase><testcase classname="test_independent_hostiles" name="test_hc_schema_object_families[view]" time="0.764"><failure message="AssertionError: assert 'ELIGIBLE_NONCAUSAL' == 'REFUSED'&#10;  &#10;  - REFUSED&#10;  + ELIGIBLE_NONCAUSAL">tmp_path = PosixPath('<TEMP>')
+obj = 'view'
+
+    @pytest.mark.parametrize('obj', ['trigger', 'view', 'table', 'userversion'])
+    def test_hc_schema_object_families(tmp_path, obj):
+     f, a, e, path = setup(tmp_path, False)
+     before = cold(path); fired = []
+     statements = {
+      'trigger': 'CREATE TRIGGER i2hc_trg AFTER INSERT ON b3_source BEGIN UPDATE b3_audit SET body=body WHERE 0; END',
+      'view': 'CREATE VIEW i2hc_view AS SELECT id FROM b3_source',
+      'table': 'CREATE TABLE i2hc_tbl (id TEXT PRIMARY KEY)',
+      'userversion': 'PRAGMA user_version=7',
+     }
+     def fault(stage):
+      if stage == 'after_target_effect_before_commit':
+       fired.append(external('ddl', path, sql=statements[obj]))
+     e.fault = fault
+     r = e.run(f); after = cold(path); e.close()
+     save('hc2_' + obj, before=before, result=r, after=after, fired=fired)
+     assert fired and fired[0]['ddl'] == 'COMMITTED'
+&gt;    assert r['status'] == 'REFUSED'
+E    AssertionError: assert 'ELIGIBLE_NONCAUSAL' == 'REFUSED'
+E      
+E      - REFUSED
+E      + ELIGIBLE_NONCAUSAL
+
+<TEMP> AssertionError</failure></testcase><testcase classname="test_independent_hostiles" name="test_hc_schema_object_families[table]" time="0.771" /><testcase classname="test_independent_hostiles" name="test_hc_schema_object_families[userversion]" time="0.877"><failure message="AssertionError: assert 'ELIGIBLE_NONCAUSAL' == 'REFUSED'&#10;  &#10;  - REFUSED&#10;  + ELIGIBLE_NONCAUSAL">tmp_path = PosixPath('<TEMP>')
+obj = 'userversion'
+
+    @pytest.mark.parametrize('obj', ['trigger', 'view', 'table', 'userversion'])
+    def test_hc_schema_object_families(tmp_path, obj):
+     f, a, e, path = setup(tmp_path, False)
+     before = cold(path); fired = []
+     statements = {
+      'trigger': 'CREATE TRIGGER i2hc_trg AFTER INSERT ON b3_source BEGIN UPDATE b3_audit SET body=body WHERE 0; END',
+      'view': 'CREATE VIEW i2hc_view AS SELECT id FROM b3_source',
+      'table': 'CREATE TABLE i2hc_tbl (id TEXT PRIMARY KEY)',
+      'userversion': 'PRAGMA user_version=7',
+     }
+     def fault(stage):
+      if stage == 'after_target_effect_before_commit':
+       fired.append(external('ddl', path, sql=statements[obj]))
+     e.fault = fault
+     r = e.run(f); after = cold(path); e.close()
+     save('hc2_' + obj, before=before, result=r, after=after, fired=fired)
+     assert fired and fired[0]['ddl'] == 'COMMITTED'
+&gt;    assert r['status'] == 'REFUSED'
+E    AssertionError: assert 'ELIGIBLE_NONCAUSAL' == 'REFUSED'
+E      
+E      - REFUSED
+E      + ELIGIBLE_NONCAUSAL
+
+<TEMP> AssertionError</failure></testcase><testcase classname="test_independent_hostiles" name="test_hc_late_refusal_with_trigger" time="0.750"><failure message="AssertionError: external schema change before refusal must be reported&#10;assert True is False">tmp_path = PosixPath('<TEMP>')
+
+    def test_hc_late_refusal_with_trigger(tmp_path):
+     f, a, e, path = setup(tmp_path, False)
+     before = cold(path); fired = []
+     def fault(stage):
+      if stage == 'after_target_effect_before_commit':
+       fired.append(external('ddl', path, sql='CREATE TRIGGER i2hc_refused AFTER INSERT ON b3_source BEGIN UPDATE b3_audit SET body=body WHERE 0; END'))
+       raise Refusal('I2HC_LATE_REFUSAL_WITH_TRIGGER')
+     e.fault = fault
+     r = e.run(f); after = cold(path); e.close()
+     save('hc3_refusal_trigger', before=before, result=r, after=after, fired=fired)
+     assert fired and fired[0]['ddl'] == 'COMMITTED'
+     assert r['status'] == 'REFUSED' and r['code'] == 'I2HC_LATE_REFUSAL_WITH_TRIGGER'
+     existing_rows_unchanged(before, after)
+     assert not schema_equal(before, after)
+&gt;    assert r['no_mutation'] is False, 'external schema change before refusal must be reported'
+E    AssertionError: external schema change before refusal must be reported
+E    assert True is False
+
+<TEMP> AssertionError</failure></testcase><testcase classname="test_independent_hostiles" name="test_hc_concurrent_fact_and_index[False]" time="0.850" /><testcase classname="test_independent_hostiles" name="test_hc_concurrent_fact_and_index[True]" time="0.950" /><testcase classname="test_independent_hostiles" name="test_hc_sigkill_cold_schema_rows[False-after_target_effect_before_commit]" time="0.773" /><testcase classname="test_independent_hostiles" name="test_hc_sigkill_cold_schema_rows[False-after_publication_before_commit]" time="0.765" /><testcase classname="test_independent_hostiles" name="test_hc_sigkill_cold_schema_rows[False-after_successful_return]" time="0.811" /><testcase classname="test_independent_hostiles" name="test_hc_sigkill_cold_schema_rows[True-after_target_effect_before_commit]" time="0.851" /><testcase classname="test_independent_hostiles" name="test_hc_sigkill_cold_schema_rows[True-after_publication_before_commit]" time="0.854" /><testcase classname="test_independent_hostiles" name="test_hc_sigkill_cold_schema_rows[True-after_successful_return]" time="0.830" /><testcase classname="test_independent_hostiles" name="test_hc_refusal_then_retry_no_ghosts[False]" time="1.254" /><testcase classname="test_independent_hostiles" name="test_hc_refusal_then_retry_no_ghosts[True]" time="1.305" /><testcase classname="test_independent_hostiles" name="test_hc_no_mutation_semantics" time="5.280" /><testcase classname="test_independent_hostiles" name="test_hc_no_ddl_inside_immediate" time="0.773" /></testsuite></testsuites>

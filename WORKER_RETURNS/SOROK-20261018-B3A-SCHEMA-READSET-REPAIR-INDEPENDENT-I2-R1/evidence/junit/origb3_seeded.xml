@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="4" skipped="0" tests="4" time="1.976" timestamp="2026-10-18T22:00:13.143313-04:00" hostname="Matthews-MBP.lan"><testcase classname="frozen.test_seeded_refusals" name="test_bad_request_has_no_cold_partial_rows[False-missing_origin]" time="0.458"><failure message="AssertionError: refusal left durable rows, or erased independently admitted fact&#10;assert {'schema': [[...egrity': 'ok'} == {'schema': [[...egrity': 'ok'}&#10;  &#10;  Omitting 2 identical items, use -vv to show&#10;  Differing items:&#10;  {'tables': {'b2_event_identity': [['loss:t3', '{&quot;actor&quot;:&quot;child&quot;,&quot;context&quot;:{&quot;action_opportunities&quot;:{&quot;OP-CARE-REPORT&quot;:{&quot;...acts&quot;:{&quot;group_criminality&quot;:&quot;NOT_ESTABLISHED&quot;,&quot;known_thief&quot;:null},&quot;world_ref&quot;:&quot;WORLD-BIKE-1&quot;}}']], 'b3_clock': [], ...}} != {'tables': {'b2_event_identity': [], 'b2_ingress': [], 'b3_audit': [], 'b3_clock': [], ...}}&#10;  Use -v to get more diff">tmp_path = PosixPath('<TEMP>')
+attack = 'missing_origin', seeded = False
+
+    @pytest.mark.parametrize('attack',['missing_origin','future_event'])
+    @pytest.mark.parametrize('seeded',[False,True])
+    def test_bad_request_has_no_cold_partial_rows(tmp_path,attack,seeded):
+     f,a,e,path=setup(tmp_path,seeded);bad=deepcopy(f)
+     if attack=='missing_origin':bad['origin_event_id']='I2-not-issued'
+     else:bad['event']['time']=99
+     a.register_observed(bad);before=cold(path)
+     try:
+      try:r=e.run(bad)
+      except Exception as exc:r=dict(exception=type(exc).__name__,code=str(exc))
+     finally:e.close()
+     after=cold(path);save('seeded_'+attack+'_'+str(seeded),before=before,result=r,after=after)
+&gt;    assert stable(after)==stable(before),'refusal left durable rows, or erased independently admitted fact'
+E    AssertionError: refusal left durable rows, or erased independently admitted fact
+E    assert {'schema': [[...egrity': 'ok'} == {'schema': [[...egrity': 'ok'}
+E      
+E      Omitting 2 identical items, use -vv to show
+E      Differing items:
+E      {'tables': {'b2_event_identity': [['loss:t3', '{"actor":"child","context":{"action_opportunities":{"OP-CARE-REPORT":{"...acts":{"group_criminality":"NOT_ESTABLISHED","known_thief":null},"world_ref":"WORLD-BIKE-1"}}']], 'b3_clock': [], ...}} != {'tables': {'b2_event_identity': [], 'b2_ingress': [], 'b3_audit': [], 'b3_clock': [], ...}}
+E      Use -v to get more diff
+
+frozen/test_seeded_refusals.py:18: AssertionError</failure></testcase><testcase classname="frozen.test_seeded_refusals" name="test_bad_request_has_no_cold_partial_rows[False-future_event]" time="0.496"><failure message="AssertionError: refusal left durable rows, or erased independently admitted fact&#10;assert {'schema': [[...egrity': 'ok'} == {'schema': [[...egrity': 'ok'}&#10;  &#10;  Omitting 2 identical items, use -vv to show&#10;  Differing items:&#10;  {'tables': {'b2_event_identity': [['action:caregiver:4', '{&quot;actor&quot;:&quot;child&quot;,&quot;context&quot;:{&quot;action_opportunities&quot;:{&quot;OP-CARE...acts&quot;:{&quot;group_criminality&quot;:&quot;NOT_ESTABLISHED&quot;,&quot;known_thief&quot;:null},&quot;world_ref&quot;:&quot;WORLD-BIKE-1&quot;}}']], 'b3_clock': [], ...}} != {'tables': {'b2_event_identity': [], 'b2_ingress': [], 'b3_audit': [], 'b3_clock': [], ...}}&#10;  Use -v to get more diff">tmp_path = PosixPath('<TEMP>')
+attack = 'future_event', seeded = False
+
+    @pytest.mark.parametrize('attack',['missing_origin','future_event'])
+    @pytest.mark.parametrize('seeded',[False,True])
+    def test_bad_request_has_no_cold_partial_rows(tmp_path,attack,seeded):
+     f,a,e,path=setup(tmp_path,seeded);bad=deepcopy(f)
+     if attack=='missing_origin':bad['origin_event_id']='I2-not-issued'
+     else:bad['event']['time']=99
+     a.register_observed(bad);before=cold(path)
+     try:
+      try:r=e.run(bad)
+      except Exception as exc:r=dict(exception=type(exc).__name__,code=str(exc))
+     finally:e.close()
+     after=cold(path);save('seeded_'+attack+'_'+str(seeded),before=before,result=r,after=after)
+&gt;    assert stable(after)==stable(before),'refusal left durable rows, or erased independently admitted fact'
+E    AssertionError: refusal left durable rows, or erased independently admitted fact
+E    assert {'schema': [[...egrity': 'ok'} == {'schema': [[...egrity': 'ok'}
+E      
+E      Omitting 2 identical items, use -vv to show
+E      Differing items:
+E      {'tables': {'b2_event_identity': [['action:caregiver:4', '{"actor":"child","context":{"action_opportunities":{"OP-CARE...acts":{"group_criminality":"NOT_ESTABLISHED","known_thief":null},"world_ref":"WORLD-BIKE-1"}}']], 'b3_clock': [], ...}} != {'tables': {'b2_event_identity': [], 'b2_ingress': [], 'b3_audit': [], 'b3_clock': [], ...}}
+E      Use -v to get more diff
+
+frozen/test_seeded_refusals.py:18: AssertionError</failure></testcase><testcase classname="frozen.test_seeded_refusals" name="test_bad_request_has_no_cold_partial_rows[True-missing_origin]" time="0.262"><failure message="AssertionError: refusal left durable rows, or erased independently admitted fact&#10;assert {'schema': [[...egrity': 'ok'} == {'schema': [[...egrity': 'ok'}&#10;  &#10;  Omitting 2 identical items, use -vv to show&#10;  Differing items:&#10;  {'tables': {'b2_event_identity': [['I2-independent-before-request', '{&quot;actor&quot;:&quot;child&quot;,&quot;context&quot;:{&quot;action_opportunities...acts&quot;:{&quot;group_criminality&quot;:&quot;NOT_ESTABLISHED&quot;,&quot;known_thief&quot;:null},&quot;world_ref&quot;:&quot;WORLD-BIKE-1&quot;}}']], 'b3_clock': [], ...}} != {'tables': {'b2_event_identity': [['I2-independent-before-request', '{&quot;actor&quot;:&quot;child&quot;,&quot;context&quot;:{&quot;action_opportunities...ness_ref&quot;:&quot;8d65eaf53dbfaf2f5e1341d6a6be82bc47769d1f4a50ae87f9dc37c65fa2ae6d&quot;}']], 'b3_audit': [], 'b3_clock': [], ...}}&#10;  Use -v to get more diff">tmp_path = PosixPath('<TEMP>')
+attack = 'missing_origin', seeded = True
+
+    @pytest.mark.parametrize('attack',['missing_origin','future_event'])
+    @pytest.mark.parametrize('seeded',[False,True])
+    def test_bad_request_has_no_cold_partial_rows(tmp_path,attack,seeded):
+     f,a,e,path=setup(tmp_path,seeded);bad=deepcopy(f)
+     if attack=='missing_origin':bad['origin_event_id']='I2-not-issued'
+     else:bad['event']['time']=99
+     a.register_observed(bad);before=cold(path)
+     try:
+      try:r=e.run(bad)
+      except Exception as exc:r=dict(exception=type(exc).__name__,code=str(exc))
+     finally:e.close()
+     after=cold(path);save('seeded_'+attack+'_'+str(seeded),before=before,result=r,after=after)
+&gt;    assert stable(after)==stable(before),'refusal left durable rows, or erased independently admitted fact'
+E    AssertionError: refusal left durable rows, or erased independently admitted fact
+E    assert {'schema': [[...egrity': 'ok'} == {'schema': [[...egrity': 'ok'}
+E      
+E      Omitting 2 identical items, use -vv to show
+E      Differing items:
+E      {'tables': {'b2_event_identity': [['I2-independent-before-request', '{"actor":"child","context":{"action_opportunities...acts":{"group_criminality":"NOT_ESTABLISHED","known_thief":null},"world_ref":"WORLD-BIKE-1"}}']], 'b3_clock': [], ...}} != {'tables': {'b2_event_identity': [['I2-independent-before-request', '{"actor":"child","context":{"action_opportunities...ness_ref":"8d65eaf53dbfaf2f5e1341d6a6be82bc47769d1f4a50ae87f9dc37c65fa2ae6d"}']], 'b3_audit': [], 'b3_clock': [], ...}}
+E      Use -v to get more diff
+
+frozen/test_seeded_refusals.py:18: AssertionError</failure></testcase><testcase classname="frozen.test_seeded_refusals" name="test_bad_request_has_no_cold_partial_rows[True-future_event]" time="0.587"><failure message="AssertionError: refusal left durable rows, or erased independently admitted fact&#10;assert {'schema': [[...egrity': 'ok'} == {'schema': [[...egrity': 'ok'}&#10;  &#10;  Omitting 2 identical items, use -vv to show&#10;  Differing items:&#10;  {'tables': {'b2_event_identity': [['I2-independent-before-request', '{&quot;actor&quot;:&quot;child&quot;,&quot;context&quot;:{&quot;action_opportunities...acts&quot;:{&quot;group_criminality&quot;:&quot;NOT_ESTABLISHED&quot;,&quot;known_thief&quot;:null},&quot;world_ref&quot;:&quot;WORLD-BIKE-1&quot;}}']], 'b3_clock': [], ...}} != {'tables': {'b2_event_identity': [['I2-independent-before-request', '{&quot;actor&quot;:&quot;child&quot;,&quot;context&quot;:{&quot;action_opportunities...ness_ref&quot;:&quot;8d65eaf53dbfaf2f5e1341d6a6be82bc47769d1f4a50ae87f9dc37c65fa2ae6d&quot;}']], 'b3_audit': [], 'b3_clock': [], ...}}&#10;  Use -v to get more diff">tmp_path = PosixPath('<TEMP>')
+attack = 'future_event', seeded = True
+
+    @pytest.mark.parametrize('attack',['missing_origin','future_event'])
+    @pytest.mark.parametrize('seeded',[False,True])
+    def test_bad_request_has_no_cold_partial_rows(tmp_path,attack,seeded):
+     f,a,e,path=setup(tmp_path,seeded);bad=deepcopy(f)
+     if attack=='missing_origin':bad['origin_event_id']='I2-not-issued'
+     else:bad['event']['time']=99
+     a.register_observed(bad);before=cold(path)
+     try:
+      try:r=e.run(bad)
+      except Exception as exc:r=dict(exception=type(exc).__name__,code=str(exc))
+     finally:e.close()
+     after=cold(path);save('seeded_'+attack+'_'+str(seeded),before=before,result=r,after=after)
+&gt;    assert stable(after)==stable(before),'refusal left durable rows, or erased independently admitted fact'
+E    AssertionError: refusal left durable rows, or erased independently admitted fact
+E    assert {'schema': [[...egrity': 'ok'} == {'schema': [[...egrity': 'ok'}
+E      
+E      Omitting 2 identical items, use -vv to show
+E      Differing items:
+E      {'tables': {'b2_event_identity': [['I2-independent-before-request', '{"actor":"child","context":{"action_opportunities...acts":{"group_criminality":"NOT_ESTABLISHED","known_thief":null},"world_ref":"WORLD-BIKE-1"}}']], 'b3_clock': [], ...}} != {'tables': {'b2_event_identity': [['I2-independent-before-request', '{"actor":"child","context":{"action_opportunities...ness_ref":"8d65eaf53dbfaf2f5e1341d6a6be82bc47769d1f4a50ae87f9dc37c65fa2ae6d"}']], 'b3_audit': [], 'b3_clock': [], ...}}
+E      Use -v to get more diff
+
+frozen/test_seeded_refusals.py:18: AssertionError</failure></testcase></testsuite></testsuites>

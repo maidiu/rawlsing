@@ -1,0 +1,17 @@
+{
+  "frozen_before_first_control_execution": true,
+  "first_run_outputs": "evidence/indep_repair_run1",
+  "amendments": {
+    "a1": "independent_worker.py: argv-ordering fixture bug fixed before any successful control pass; expectations unchanged",
+    "a2": "test_independent_hostiles.py HC2/HC3: rows_equal->existing_rows_unchanged (a new empty external table is not a row mutation); substantive requirements unchanged",
+    "a3": "test_independent_hostiles.py HC6: transition identity uses the row primary key (records have no id field); replay ghost check is source/transition stability",
+    "a4": "test_independent_hostiles.py HC7: idempotent-repeat expectation applied to an identical repeat call; replay after a committed target is allowed to append its own b3_response record and is measured, not assumed",
+    "note": "all four amendments are reviewer-control mechanics; none weakens a preregistered requirement or touches candidate/frozen code",
+    "a5": "test_independent_hostiles.py HC7: each semantics stratum runs on its own database because scene projections are bound to event identity (a second event reusing the same utterance/exposure evidence is refused SOURCE_PREIMAGE_IDENTITY_COLLISION); measured properties unchanged"
+  },
+  "sha256_after_amendments": {
+    "preregistration_independent.json": "84b2ff0ef4d1ff7af74396cf9f0a7dd3a82c78a9fcdd140c00cd2c097b35bdf9",
+    "test_independent_hostiles.py": "29a0fb3cf2282a83db6baebab82cd9be662c175365a3f43b6f4b6e623fda822e",
+    "independent_worker.py": "7830740e42b841a36c9155e208627cbbdf7da2de69ae110df11bf31680080eb0"
+  }
+}

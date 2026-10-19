@@ -1,0 +1,65 @@
+{
+ "commission": "SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-INDEPENDENT-I2-R1",
+ "reviewer_role": "Fresh independent source-free I2 reviewer (OpenCode / MiMo-V2.6-Pro). Not B3A/B3AS author, not first B3A reviewer, not HQ, not semantic issuer.",
+ "sealed_startup": "e18c41b5faa6cbb0ab393561833d850e1dd1e383",
+ "prior_independent_review": "528e8cde0cff9e28f3c55d5d54a66e820d7401fa",
+ "original_b3a_candidate": "8bd4d6b01fd402e7e6a8d07903f2c3cada837f55",
+ "local_author_repair": "16f15a125ba54cdf17f5d41be2d851bbcd2240d7",
+ "custody_publication": {
+  "branch": "agent/rabochii-sorok-20261018-b3a-schema-readset-repair-r1",
+  "remote_sha_verified": "16f15a125ba54cdf17f5d41be2d851bbcd2240d7",
+  "force_push": false,
+  "rewrite_or_cherrypick": false
+ },
+ "two_frozen_i2_reds": {
+  "test_schema_only_race_is_rejected": {"pre_repair": "RED (status ELIGIBLE_NONCAUSAL, schema-only change escaped publication readset)", "post_repair": "PASS"},
+  "test_schema_change_on_refusal_sets_no_mutation_false": {"pre_repair": "RED (no_mutation=True despite external schema change)", "post_repair": "PASS"}
+ },
+ "frozen_20_case_court": {"pre_repair": {"pass": 18, "red": 2}, "post_repair": {"pass": 20, "red": 0}},
+ "seeded_refusals_4": {"b3a_pre_repair": {"pass": 4, "red": 0}, "b3a_post_repair": {"pass": 4, "red": 0}, "original_b3_historical": {"pass": 0, "red": 4}},
+ "regressions_post_repair": {
+  "b3_71": {"pass": 71, "red": 0},
+  "b3a_atomicity_63": {"pass": 63, "red": 0},
+  "f2_42": {"pass": 42, "red": 0},
+  "f2_blinded_42": {"pass": 42, "red": 0, "eligible": 20},
+  "e3_26": {"pass": 26, "red": 0},
+  "x3_28": {"pass": 24, "red": 4, "red_ids": ["test_duplicate_physical_check_cannot_form_practice", "test_guard_rejects_missing_previously_used_sources", "test_before_and_after_loss_practice_requires_pre_loss_act", "test_privileged_second_connection_between_guard_and_commit_is_detected_only_on_reentry"]}
+ },
+ "author_supplementary_extended_court_33": {"pass": 33, "red": 0, "note": "author-authored 13 repair controls plus the frozen 20; counted as supplementary, not as independent acceptance"},
+ "independent_hostile_controls": {
+  "cases": 19,
+  "post_repair": {"pass": 19, "red": 0},
+  "pre_repair_contrast": {"pass": 13, "red": 6, "red_ids": ["test_hc_index_in_late_window[False]", "test_hc_index_in_late_window[True]", "test_hc_schema_object_families[trigger]", "test_hc_schema_object_families[view]", "test_hc_schema_object_families[userversion]", "test_hc_late_refusal_with_trigger"]},
+  "families": ["HC1 index in late window", "HC2 trigger/view/table/user_version schema objects", "HC3 late refusal with external trigger", "HC4 concurrent independent B2 fact and index preserved", "HC5 SIGKILL at scratch/public publication with cold schema+row inspection", "HC6 refused proposal then correct retry without ghosts", "HC7 no_mutation semantics matrix", "HC8 no external DDL inside BEGIN IMMEDIATE"]
+ },
+ "cold_replay": {"positive": "snapshot_hash match, receipts match, schema+rows match, integrity ok", "permission_absent": "snapshot_hash match, receipts match, schema+rows match, integrity ok"},
+ "inherited_post_repair": {
+  "pass_249": {"b1": 39, "p1": 74, "d1_historical": 22, "d1_corrected": 17, "f1_reference": 97},
+  "b2_integration": 81, "r1": 45, "repair_regression": 5, "e2_strict": 2, "m2": 41,
+  "historical_negatives_preserved": {
+   "e2_full": "42 PASS / 2 RED", "x2": "16 PASS / 1 RED", "m1_on_m2": "18 PASS / 19 RED",
+   "i2_on_m2": "13 PASS / 10 RED", "m3_source_preimage": "3 RED",
+   "native_f1": "17 RED (F01 F02 F03 F04 F05 F06 F07 F08 F10 F11 F13 F15 F16 F17 F18 F19 F21)"
+  }
+ },
+ "no_mutation_semantics_measured": {
+  "refusal_no_external_change": "True",
+  "refusal_with_external_schema_change": "False (post-repair; True pre-repair was the RED)",
+  "refusal_with_external_row_change": "False",
+  "fresh_success": "False (rows published)",
+  "identical_repeat_call": "True (no state change)",
+  "repeat_after_committed_target": "False, sole delta one appended b3_response record computed over the changed middle",
+  "valid_empty_target": "False (objective event admitted; transition VALID_EMPTY)",
+  "denied_target": "transition DENIED, owner_effect_committed False, no independent_owner_receipt"
+ },
+ "source_verification": {
+  "only_changed_candidate_file": "candidate/integration.py",
+  "integration_py_git_blob": "d3a324bb93c17fdaf12670dd153aeb138d9c426a",
+  "integration_py_sha256": "6b0187c5dfa0a48928f78fb0c3979de6c35e49aa770c9d10f644f57eaed6a679",
+  "matches_author_claim": true,
+  "materialized_entries_verified_against_git_blobs": 199,
+  "actual_imports_hash_verified": 11,
+  "frozen_courts_byte_identical_to_prior_review": true
+ },
+ "verdict": "ACCEPT_SCOPED"
+}

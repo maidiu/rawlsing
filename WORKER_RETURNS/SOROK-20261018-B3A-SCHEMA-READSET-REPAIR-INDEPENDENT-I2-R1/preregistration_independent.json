@@ -1,0 +1,26 @@
+{
+ "frozen_at_utc": "2026-10-19T04:20:00+00:00",
+ "before_any_independent_control_execution": true,
+ "reviewer": "SOROK B3AS-I2 independent reviewer (OpenCode / MiMo-V2.6-Pro), not B3A/B3AS author, not first B3A reviewer, not HQ",
+ "candidate_under_test": "16f15a125ba54cdf17f5d41be2d851bbcd2240d7",
+ "pre_repair_baseline": "8bd4d6b01fd402e7e6a8d07903f2c3cada837f55",
+ "frozen_courts_byte_identity": {
+  "test_reviewer_hostiles.py": "30baf690d09ac079d370f7730c06114481848403efd52629f279ec2aceb9246f",
+  "reviewer_worker.py": "c0f15116b759ce67db67c5d7ffc979433b22fa94272c06e9c2e825c9db66e948",
+  "test_seeded_refusals.py": "36d45e2437fffb0460cdb269276afea4ac745276f2e513cc9230cd04b57317cc",
+  "test_atomic.py": "8ebff73920563f765b5688a066699a676d699f54",
+  "test_projected_atomic.py": "db82a941430b248d7e1def7ee386a2bbd62a96be",
+  "frozen_x3/test_independent.py": "3a1c98adbf871418fddccf9e2d752a6996ae15b4"
+ },
+ "independent_controls": {
+  "HC1_index_in_late_window": "An independent OS process creates an index after scratch validation and before public BEGIN IMMEDIATE. Prospective requirement: REFUSED (PUBLICATION_READSET_CHANGED or PUBLICATION_SCHEMA_CHANGED), no_mutation false, external index preserved, no candidate rows, seeded rows preserved. Clean and seeded strata.",
+  "HC2_schema_object_families": "Independent process creates a TRIGGER, a VIEW, a TABLE, and changes user_version metadata at the same late window. Prospective requirement for each: REFUSED with truthful no_mutation false, object preserved, rows unchanged. The documented schema contract covers tables/indexes/triggers/views and version metadata.",
+  "HC3_late_refusal_with_trigger": "Independent process creates a TRIGGER, then a domain refusal is raised at the same boundary. Prospective requirement: REFUSED, no_mutation false (schema changed), table rows unchanged, trigger preserved.",
+  "HC4_concurrent_fact_and_index": "Independent process admits a new B2 objective fact AND creates an index during the late window. Prospective requirement: REFUSED, no_mutation false, the independent fact rows survive as a superset (no deletion/rollback of foreign state), no b3_source/b3_transition candidate rows.",
+  "HC5_sigkill_cold_schema_rows": "Real SIGKILL at scratch boundary and at public publication boundary, clean and seeded. Prospective requirement: cold inspection in a distinct process shows schema and rows unchanged and integrity ok; kill after successful return leaves committed rows replayable.",
+  "HC6_refusal_then_retry_no_ghosts": "A refused proposal (bad origin) followed by a correct retry. Prospective requirement: refusal leaves no rows; retry is ELIGIBLE_NONCAUSAL with exactly its own rows and no target/source ghosts from the refused attempt.",
+  "HC7_no_mutation_semantics": "Measure no_mutation across: fresh success, exact replay, valid-empty target without permission, denied target, refusal without external change, refusal with external row, refusal with external schema. Prospective requirement: no_mutation is true only when the request itself produced no durable public change and no external change occurred; any external schema/row change forces false; refusal without external change yields true.",
+  "HC8_no_ddl_inside_immediate": "During the public BEGIN IMMEDIATE window an independent process attempts DDL with timeout 0. Prospective requirement: the DDL cannot commit (writer lock), publication still commits, final schema equals the pre-run schema plus expected tables only. This documents a lock boundary, not cryptographic protection."
+ },
+ "interpretation_rule": "Keep failed assertions RED and literal. External raw SQL is a privileged schema-writer adversary distinct from an unauthenticated B2 request; results show missing promised schema/readset coverage, not that arbitrary DBA corruption is preventable. SIGKILL is process-death evidence only, never power-loss/fsync proof. No test result authorizes CAN008/CAN011 law, M2 integration, production adoption or psychological claims. These controls are independently authored by this reviewer and are additional to, not a replacement of, the two frozen B3A-I2 REDs."
+}

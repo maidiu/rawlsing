@@ -1,0 +1,331 @@
+{
+  "before": {
+    "pid": 3284,
+    "integrity": "ok",
+    "schema": [
+      [
+        "index",
+        "sqlite_autoindex_b2_event_identity_1",
+        "b2_event_identity",
+        null
+      ],
+      [
+        "index",
+        "sqlite_autoindex_b2_ingress_1",
+        "b2_ingress",
+        null
+      ],
+      [
+        "index",
+        "sqlite_autoindex_b3_audit_1",
+        "b3_audit",
+        null
+      ],
+      [
+        "index",
+        "sqlite_autoindex_b3_m2_sources_1",
+        "b3_m2_sources",
+        null
+      ],
+      [
+        "index",
+        "sqlite_autoindex_b3_preimage_1",
+        "b3_preimage",
+        null
+      ],
+      [
+        "index",
+        "sqlite_autoindex_b3_response_1",
+        "b3_response",
+        null
+      ],
+      [
+        "index",
+        "sqlite_autoindex_b3_source_1",
+        "b3_source",
+        null
+      ],
+      [
+        "index",
+        "sqlite_autoindex_b3_transition_1",
+        "b3_transition",
+        null
+      ],
+      [
+        "index",
+        "sqlite_autoindex_joint_receipt_1",
+        "joint_receipt",
+        null
+      ],
+      [
+        "index",
+        "sqlite_autoindex_occurrence_1",
+        "occurrence",
+        null
+      ],
+      [
+        "table",
+        "b2_event_identity",
+        "b2_event_identity",
+        "CREATE TABLE b2_event_identity\n            (event_id TEXT PRIMARY KEY NOT NULL, binding TEXT NOT NULL,\n             event_ref TEXT NOT NULL, ingress_ref TEXT NOT NULL)"
+      ],
+      [
+        "table",
+        "b2_ingress",
+        "b2_ingress",
+        "CREATE TABLE b2_ingress (id TEXT PRIMARY KEY, body TEXT)"
+      ],
+      [
+        "table",
+        "b3_audit",
+        "b3_audit",
+        "CREATE TABLE b3_audit (id TEXT PRIMARY KEY, body TEXT NOT NULL)"
+      ],
+      [
+        "table",
+        "b3_clock",
+        "b3_clock",
+        "CREATE TABLE b3_clock (clock INTEGER PRIMARY KEY)"
+      ],
+      [
+        "table",
+        "b3_m2_sources",
+        "b3_m2_sources",
+        "CREATE TABLE b3_m2_sources (id TEXT PRIMARY KEY, body TEXT NOT NULL)"
+      ],
+      [
+        "table",
+        "b3_preimage",
+        "b3_preimage",
+        "CREATE TABLE b3_preimage (id TEXT PRIMARY KEY, body TEXT NOT NULL)"
+      ],
+      [
+        "table",
+        "b3_response",
+        "b3_response",
+        "CREATE TABLE b3_response (id TEXT PRIMARY KEY, body TEXT NOT NULL)"
+      ],
+      [
+        "table",
+        "b3_source",
+        "b3_source",
+        "CREATE TABLE b3_source (id TEXT PRIMARY KEY, body TEXT NOT NULL)"
+      ],
+      [
+        "table",
+        "b3_transition",
+        "b3_transition",
+        "CREATE TABLE b3_transition (id TEXT PRIMARY KEY, body TEXT NOT NULL)"
+      ],
+      [
+        "table",
+        "checkpoint",
+        "checkpoint",
+        "CREATE TABLE checkpoint (id INTEGER PRIMARY KEY, body TEXT)"
+      ],
+      [
+        "table",
+        "joint_receipt",
+        "joint_receipt",
+        "CREATE TABLE joint_receipt (hash TEXT PRIMARY KEY, body TEXT)"
+      ],
+      [
+        "table",
+        "occurrence",
+        "occurrence",
+        "CREATE TABLE occurrence (hash TEXT PRIMARY KEY, body TEXT)"
+      ]
+    ],
+    "tables": {
+      "b2_event_identity": [],
+      "b2_ingress": [],
+      "b3_audit": [],
+      "b3_clock": [],
+      "b3_m2_sources": [],
+      "b3_preimage": [],
+      "b3_response": [],
+      "b3_source": [],
+      "b3_transition": [],
+      "checkpoint": [
+        [
+          1,
+          "{\"actor_id\":\"child\",\"capabilities\":[\"compare_enacted_plans\"],\"epistemic\":{\"beliefs\":[\"locking_reduces_access\"],\"inaccessible\":[],\"unknown\":[\"thief_identity\",\"thief_motive\"]},\"history\":[],\"middle\":[],\"project\":\"repair_route\",\"responses\":[],\"schema\":\"B1_CANDIDATE_ADAPTER@1.0.0\",\"transitions\":[]}"
+        ]
+      ],
+      "joint_receipt": [],
+      "occurrence": []
+    },
+    "metadata": {
+      "schema_version": 12,
+      "user_version": 0,
+      "application_id": 0
+    }
+  },
+  "ready": {
+    "pid": 3285,
+    "stage": "after_publication_before_commit"
+  },
+  "exit_code": -9,
+  "after": {
+    "pid": 3292,
+    "integrity": "ok",
+    "schema": [
+      [
+        "index",
+        "sqlite_autoindex_b2_event_identity_1",
+        "b2_event_identity",
+        null
+      ],
+      [
+        "index",
+        "sqlite_autoindex_b2_ingress_1",
+        "b2_ingress",
+        null
+      ],
+      [
+        "index",
+        "sqlite_autoindex_b3_audit_1",
+        "b3_audit",
+        null
+      ],
+      [
+        "index",
+        "sqlite_autoindex_b3_m2_sources_1",
+        "b3_m2_sources",
+        null
+      ],
+      [
+        "index",
+        "sqlite_autoindex_b3_preimage_1",
+        "b3_preimage",
+        null
+      ],
+      [
+        "index",
+        "sqlite_autoindex_b3_response_1",
+        "b3_response",
+        null
+      ],
+      [
+        "index",
+        "sqlite_autoindex_b3_source_1",
+        "b3_source",
+        null
+      ],
+      [
+        "index",
+        "sqlite_autoindex_b3_transition_1",
+        "b3_transition",
+        null
+      ],
+      [
+        "index",
+        "sqlite_autoindex_joint_receipt_1",
+        "joint_receipt",
+        null
+      ],
+      [
+        "index",
+        "sqlite_autoindex_occurrence_1",
+        "occurrence",
+        null
+      ],
+      [
+        "table",
+        "b2_event_identity",
+        "b2_event_identity",
+        "CREATE TABLE b2_event_identity\n            (event_id TEXT PRIMARY KEY NOT NULL, binding TEXT NOT NULL,\n             event_ref TEXT NOT NULL, ingress_ref TEXT NOT NULL)"
+      ],
+      [
+        "table",
+        "b2_ingress",
+        "b2_ingress",
+        "CREATE TABLE b2_ingress (id TEXT PRIMARY KEY, body TEXT)"
+      ],
+      [
+        "table",
+        "b3_audit",
+        "b3_audit",
+        "CREATE TABLE b3_audit (id TEXT PRIMARY KEY, body TEXT NOT NULL)"
+      ],
+      [
+        "table",
+        "b3_clock",
+        "b3_clock",
+        "CREATE TABLE b3_clock (clock INTEGER PRIMARY KEY)"
+      ],
+      [
+        "table",
+        "b3_m2_sources",
+        "b3_m2_sources",
+        "CREATE TABLE b3_m2_sources (id TEXT PRIMARY KEY, body TEXT NOT NULL)"
+      ],
+      [
+        "table",
+        "b3_preimage",
+        "b3_preimage",
+        "CREATE TABLE b3_preimage (id TEXT PRIMARY KEY, body TEXT NOT NULL)"
+      ],
+      [
+        "table",
+        "b3_response",
+        "b3_response",
+        "CREATE TABLE b3_response (id TEXT PRIMARY KEY, body TEXT NOT NULL)"
+      ],
+      [
+        "table",
+        "b3_source",
+        "b3_source",
+        "CREATE TABLE b3_source (id TEXT PRIMARY KEY, body TEXT NOT NULL)"
+      ],
+      [
+        "table",
+        "b3_transition",
+        "b3_transition",
+        "CREATE TABLE b3_transition (id TEXT PRIMARY KEY, body TEXT NOT NULL)"
+      ],
+      [
+        "table",
+        "checkpoint",
+        "checkpoint",
+        "CREATE TABLE checkpoint (id INTEGER PRIMARY KEY, body TEXT)"
+      ],
+      [
+        "table",
+        "joint_receipt",
+        "joint_receipt",
+        "CREATE TABLE joint_receipt (hash TEXT PRIMARY KEY, body TEXT)"
+      ],
+      [
+        "table",
+        "occurrence",
+        "occurrence",
+        "CREATE TABLE occurrence (hash TEXT PRIMARY KEY, body TEXT)"
+      ]
+    ],
+    "tables": {
+      "b2_event_identity": [],
+      "b2_ingress": [],
+      "b3_audit": [],
+      "b3_clock": [],
+      "b3_m2_sources": [],
+      "b3_preimage": [],
+      "b3_response": [],
+      "b3_source": [],
+      "b3_transition": [],
+      "checkpoint": [
+        [
+          1,
+          "{\"actor_id\":\"child\",\"capabilities\":[\"compare_enacted_plans\"],\"epistemic\":{\"beliefs\":[\"locking_reduces_access\"],\"inaccessible\":[],\"unknown\":[\"thief_identity\",\"thief_motive\"]},\"history\":[],\"middle\":[],\"project\":\"repair_route\",\"responses\":[],\"schema\":\"B1_CANDIDATE_ADAPTER@1.0.0\",\"transitions\":[]}"
+        ]
+      ],
+      "joint_receipt": [],
+      "occurrence": []
+    },
+    "metadata": {
+      "schema_version": 12,
+      "user_version": 0,
+      "application_id": 0
+    }
+  }
+}

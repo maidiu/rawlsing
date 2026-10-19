@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="19" time="19.137" timestamp="2026-10-18T22:27:13.407002-04:00" hostname="Matthews-MBP.lan"><testcase classname="test_independent_hostiles" name="test_hc_index_in_late_window[False]" time="1.248" /><testcase classname="test_independent_hostiles" name="test_hc_index_in_late_window[True]" time="0.931" /><testcase classname="test_independent_hostiles" name="test_hc_schema_object_families[trigger]" time="0.831" /><testcase classname="test_independent_hostiles" name="test_hc_schema_object_families[view]" time="0.786" /><testcase classname="test_independent_hostiles" name="test_hc_schema_object_families[table]" time="0.751" /><testcase classname="test_independent_hostiles" name="test_hc_schema_object_families[userversion]" time="0.812" /><testcase classname="test_independent_hostiles" name="test_hc_late_refusal_with_trigger" time="0.870" /><testcase classname="test_independent_hostiles" name="test_hc_concurrent_fact_and_index[False]" time="0.875" /><testcase classname="test_independent_hostiles" name="test_hc_concurrent_fact_and_index[True]" time="0.881" /><testcase classname="test_independent_hostiles" name="test_hc_sigkill_cold_schema_rows[False-after_target_effect_before_commit]" time="0.718" /><testcase classname="test_independent_hostiles" name="test_hc_sigkill_cold_schema_rows[False-after_publication_before_commit]" time="0.712" /><testcase classname="test_independent_hostiles" name="test_hc_sigkill_cold_schema_rows[False-after_successful_return]" time="0.809" /><testcase classname="test_independent_hostiles" name="test_hc_sigkill_cold_schema_rows[True-after_target_effect_before_commit]" time="0.865" /><testcase classname="test_independent_hostiles" name="test_hc_sigkill_cold_schema_rows[True-after_publication_before_commit]" time="0.799" /><testcase classname="test_independent_hostiles" name="test_hc_sigkill_cold_schema_rows[True-after_successful_return]" time="0.801" /><testcase classname="test_independent_hostiles" name="test_hc_refusal_then_retry_no_ghosts[False]" time="1.190" /><testcase classname="test_independent_hostiles" name="test_hc_refusal_then_retry_no_ghosts[True]" time="1.334" /><testcase classname="test_independent_hostiles" name="test_hc_no_mutation_semantics" time="2.780"><failure message="AssertionError: assert ('REFUSED' == 'ELIGIBLE_NONCAUSAL'&#10;  &#10;  - ELIGIBLE_NONCAUSAL&#10;  + REFUSED)">tmp_path = PosixPath('<TEMP>')
+
+    def test_hc_no_mutation_semantics(tmp_path):
+     f, a, e, path = setup(tmp_path, False)
+     b0 = cold(path)
+     perm = permission_for([], f)
+     fresh = e.run(f, owner_permission=perm, registered_permissions=(perm,))
+     after_fresh = cold(path)
+     replay_after_target = e.run(f)
+     after_replay = cold(path)
+     e.close()
+     idem_frame = deepcopy(f); idem_frame['event']['id'] = 'I2HC-idempotent-pair'
+     a.register_observed(idem_frame)
+     e1 = Integration(path, a)
+     idem_first = e1.run(idem_frame)
+     after_idem_first = cold(path)
+     idem_second = e1.run(idem_frame)
+     after_idem_second = cold(path); e1.close()
+     empty_frame = deepcopy(f); empty_frame['event']['id'] = 'I2HC-valid-empty-target'
+     a.register_observed(empty_frame)
+     e2 = Integration(path, a)
+     empty = e2.run(empty_frame)  # missing permission: valid-empty target
+     after_empty = cold(path); e2.close()
+     denied_frame = deepcopy(f); denied_frame['event']['id'] = 'I2HC-denied-target'
+     a.register_observed(denied_frame)
+     e3 = Integration(path, a)
+     denied = e3.run(denied_frame, owner_permission='I2HC-bogus-token', registered_permissions=())
+     after_denied = cold(path); e3.close()
+     clean_ref = deepcopy(f); clean_ref['origin_event_id'] = 'I2HC-nope'
+     a.register_observed(clean_ref)
+     e4 = Integration(path, a)
+     clean_refusal = e4.run(clean_ref)
+     def schemafault(stage):
+      if stage == 'after_target_effect_before_commit':
+       external('ddl', path, sql='CREATE TABLE i2hc_semantic_marker (id TEXT)')
+     e4.fault = schemafault
+     schema_refusal = e4.run(f)
+     def rowfault(stage):
+      if stage == 'after_target_effect_before_commit':
+       other = deepcopy(f); other['event']['id'] = 'I2HC-semantic-external-row'
+       external('admit', path, frame_obj=other)
+     e4.fault = rowfault
+     row_refusal = e4.run(f)
+     after_row = cold(path); e4.close()
+     replay_delta = {t: [row for row in after_replay['tables'][t] if row not in after_fresh['tables'].get(t, [])]
+                     for t in after_replay['tables']}
+     replay_delta = {t: rows for t, rows in replay_delta.items() if rows}
+     save('hc7_semantics', fresh=fresh, replay_after_target=replay_after_target,
+          idem_first=idem_first, idem_second=idem_second, empty=empty, denied=denied,
+          clean_refusal=clean_refusal, schema_refusal=schema_refusal, row_refusal=row_refusal,
+          replay_delta=replay_delta,
+          states=dict(b0=b0, after_fresh=after_fresh, after_replay=after_replay,
+                      after_idem_first=after_idem_first, after_idem_second=after_idem_second,
+                      after_empty=after_empty, after_denied=after_denied, after_row=after_row))
+     assert fresh['status'] == 'ELIGIBLE_NONCAUSAL' and fresh['owner_effect_committed'] is True
+     assert fresh['no_mutation'] is False, 'a request that published rows must not claim no mutation'
+     assert replay_after_target['status'] == 'ELIGIBLE_NONCAUSAL' and replay_after_target['exact_replay']
+&gt;    assert idem_first['status'] == 'ELIGIBLE_NONCAUSAL' and idem_first['no_mutation'] is False
+E    AssertionError: assert ('REFUSED' == 'ELIGIBLE_NONCAUSAL'
+E      
+E      - ELIGIBLE_NONCAUSAL
+E      + REFUSED)
+
+<TEMP> AssertionError</failure></testcase><testcase classname="test_independent_hostiles" name="test_hc_no_ddl_inside_immediate" time="0.771" /></testsuite></testsuites>
