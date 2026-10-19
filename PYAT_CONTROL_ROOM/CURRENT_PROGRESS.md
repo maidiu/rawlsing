@@ -1,4 +1,20 @@
-# Pyat HQ — current whole-machine state and scientific trajectory (revision 19)
+# Pyat HQ — current whole-machine state and scientific trajectory (revision 20)
+
+## R40 — commissioned parallel critical-path batch, not worker launch (18 October 2026)
+
+**Common exact sealed startup** `1150e836ef58553255abc0f588e66c1327db4932`. Competent HQ priority/succession rationale: [R40 decision](R40_HQ_POST_R39_CRITICAL_PATH_AND_F6C_PIN_SUCCESSION_20261018.md); [dispatch seal](R40_EXACT_DISPATCH_SEAL_20261018.md). Canonical exact commission files are published and source-listed in the seal; branch existence/session/actual execution after this cut is NOT claimed.
+
+| parallel lane | economical default and qualified effort | productive test / demand |
+| --- | --- | --- |
+| **O35B original authority binding** | Codex GPT-6 Medium, High only for real contested science | Reuse V550/J and P10/RouteB/I03/I05/Batch, identity/operation exact anti-drop with correct **6 admin/20 nonadmin** delta; no original read beyond specific granted source |
+| **WV1 coherent historical world** | Codex GPT-6 Medium, High only for genuine owner conflict | Genuine B5/M2/I4-selected learned + T35 two-epoch M4/M5/N9C/R13 world into ORIGINAL E04 clients; structured unknowns, no invented F6/FF cross-survey join |
+| **EE1 honest temporal science** | DeepSeek V4.1 Flash; science escalation GPT-6 High only if necessary | V553/EE12 reusable method and source/time comparability with actual temporal client; Ghana unissued, not fabricated trend |
+| **R39I combined independent** | Separate DeepSeek V4.1 Flash, High science escalation only | One concurrent I2 E04L+F6P read-through/partial-bounds court with own claim-specific REDs; not serial gate on O35B/WV1/EE1 |
+
+**R35 correction by explicit competent HQ succession reference:** historical sealed R35 commission quoted obsolete S03FO `182cc797...`; exact R24/R25 valid producer A `1428c2e92...:rawlsing_next/pre553_heterogeneous_synthesis.py` blob `fc5e37fa5b2f0eb689593b42d95479d1327cb94c` now governs R35 and successors. Older blob is A0 negative control only. See HQ R40 decision; no historical file edited; repaired F6M `2df811d7...` remains candidate and transport unissued.
+
+**Currentness/authority:** R39 E04L/F6P remain sourcefree author-positive, not independent method/scientific adoption. WG0RI carrier ACCEPT and N9TI T35 I2 ACCEPT are bounded; source-specific original35 U/E_pre, original source release/model use, cohesive N9/FF/EE12, and Sorok actor/N11/N12 remain held. Dispatch does not fabricate a live executor. Each material new/edited consumer test must satisfy PRE-MAIN claim-specific fault-injection law **in the same implementation pass**. HQ retains whole-machine adoption and Sorok counterpart interface decisions, and does not launch another isolated wrapper simply because one green court returned.
+
 
 ## R39 — two bounded real read-through consumers (18 October 2026; documentary intake, not adoption)
 
