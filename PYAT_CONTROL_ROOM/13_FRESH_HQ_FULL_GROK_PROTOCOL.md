@@ -1,5 +1,10 @@
 # MANDATORY PYAT HQ VALIDITY CHANGE — PERSONA END-PRODUCT + CRITICAL METHOD GROK
 
+## Mandatory test-efficacy proof on every new/resumed HQ cycle — 18 October 2026
+
+Read [shared PRE-MAIN proof-integrity law](../CROSS_HQ_CONTROL_ROOM/PROOF_INTEGRITY_AND_FALSIFIABLE_TEST_LAW_R1.md) and ensure commissioned/joined productive functions include frozen claim-specific negative controls with the real downstream consumer. New/revised tests must pass the executable AST/fault witness gate; independent reviewers must test the actual dependency rather than the author's green summary. The core standard adds no universal extra reviewer or background audit round; distinguish `EXECUTED_GREEN` from a falsified claimed-edge positive and keep all source/model/V3 gates independent.
+
+
 ## GROK PASS J — continuous whole-machine command, not worker-return management (mandatory 2026-10-16)
 
 Read [HQ_CONTINUOUS_COMMAND_AND_RABOCHII_DELEGATION_LAW_20261016_R1.md](HQ_CONTINUOUS_COMMAND_AND_RABOCHII_DELEGATION_LAW_20261016_R1.md) at every new/resumed HQ grok and apply its A–D loop during active HQ work. It **supplements** persona-first accession and Passes 0/A–I; it does not erase any original 35-wave obligation or authorize an issuer.
