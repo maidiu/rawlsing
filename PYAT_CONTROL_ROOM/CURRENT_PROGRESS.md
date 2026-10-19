@@ -1,4 +1,19 @@
-# Pyat HQ — current whole-machine state and scientific trajectory (revision 20)
+# Pyat HQ — current whole-machine state and scientific trajectory (revision 21)
+
+## R41 — SOURCE→PRE-V3 TERMINAL COMPLETION FLIGHT (19 October 2026)
+
+**Read [full decision](R41_HQ_TERMINAL_ARTIFACT_COMPLETION_FLIGHT_20261019_R1.md) and [exact seal](R41_COMPLETION_CAMPAIGNS_EXACT_DISPATCH_SEAL_20261019.md).** Four complete major commissions published, **not auto-launched**, common worker startup `c4934fd71120d37a4d06f7c830891e6e97fe4ecf`. New PRE-MAIN terminal-scale law supersedes R40's under-powered *future dispatch strategy* but preserves all its sourcefree native evidence and original scientific limitations.
+
+**DONE:** Accepted Route B, sourcefree HQD-124 53-responsibility semantic conservation; I2 E04L actual release→unchanged original E04 NONPARENT_OPTIONS and F6P actual native F6M partial-bound consumer at TEST_ONLY only (R39I `05c21c54c538d523965d0b312525224d4d2c2a0d`). T35 TEST_ONLY independent temporal acceptance. WV1 `23989684dd980efe49de9f2b21e15373ba58a709` author 235-case sourcefree selected-world original nonparent positive, but original proposal and full R13 purpose denied. EE1 `affe600d05073fd9ffbdb071af5762e48c76112e` sourcefree time-method/clock positive, no measured Ghana/EE12. O35B latest `c714af26a5a749706c6da06df40ac0ef026c6296` recovered the LiTS checkpoint and repaired P1→M1 binding but its original I03/Batch execution remains blocked.
+
+**REMAINING:** 35-wave original U/E_pre/source+operation issuance and actual source-backed F1–F8 occupancy across 1,890 scope/151↔101, independently complete expected-versus-executed no-drop; source-qualified F5 structural and F6 multisource and F7 temporal; coherent N9 selected source-qualified world; computed N10E plus generic progressively conditioned N10W actual consumers; N11 joined accepted `f1_f8_acceptance_matrix.json`, `estate_acceptance_manifest.json`, `final_maturity_adjudication.md`; N12 separate `prev3_v3_wake_decision.md`/interface prerequisites. No N11, N12, actor or source/model use grant.
+
+**BLOCKER:** Original LiTS validated 15-section C11 SourceReleaseCandidate preimages/repository for `LITS1-I02-F02-SUCCESSOR-7cac43e2ca5b31cb-bf305bf3f169d669` remain absent from inspected 234-public-object retention, or require an exact current source+host+purpose reconstruction warrant. Custodian packet retained under O35B `evidence/C11_REPLAY_CUSTODIAN_DELIVERY_REQUEST.json`. This is a **localized external custody/issuer task**, not permission to re-run raw sources or to commission another redundant metadata archeology worker.
+
+**LARGEST PRODUCTIVE MOVE / PARALLEL FLIGHT:** E41 real rich F1–F4→computed N10E across all lawfully eligible inputs; W41 maximal F5–F7 structural/multifield/temporal N9 real world; P41 actual N9+computed N10E→N10W generic progressive service; A41 executable all35 F1–F8 N11 acceptance assembly with real receipts and honest NOT_READY. All must deliver real producer→original consumer results, independent expected-universe proofs, actual fault-induced RED, restored cold replay, and full terminal artifact hand-backs. Small tests are substeps, not campaign deliverables. Models/resources/active sessions UNKNOWN until verified; preserve economic and independent scientific authority roles. Sorok owns actors separately.
+
+**DELTA:** R40 native real nonparent world consumption and independent E04L/F6P have materially improved components but not whole source-to-PRE-V3. R41 launches the **actual product-completion program**; publishing a commission does not count as implementation or N11 progress.
+
 
 ## R40 — commissioned parallel critical-path batch, not worker launch (18 October 2026)
 
