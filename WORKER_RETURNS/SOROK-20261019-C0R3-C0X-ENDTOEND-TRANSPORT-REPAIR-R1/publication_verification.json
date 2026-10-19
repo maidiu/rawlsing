@@ -1,0 +1,38 @@
+{
+  "branch": "agent/rabochii-sorok-20261019-c0r3-c0x-endtoend-transport-repair-r1",
+  "cold_equal": true,
+  "corrected": {
+    "facade": "6e828fd83fa71c7797427d00978279d78adca7dab8ae080ba4eca6f9f2469749",
+    "receiver": "54fd2f354899214669fa53b162679bd4de573a15234717745be5bf1a6f8aa65b"
+  },
+  "direct_readback_matches_evidence_commit": true,
+  "direct_remote_readback": "2303432f61fe6e3247d54f9b53a4e04d7d1bacb3",
+  "evidence_commit": "2303432f61fe6e3247d54f9b53a4e04d7d1bacb3",
+  "evidence_commit_parent": "0a0f8e99d9117a88a51d67b3b2b51f4f618cbaab",
+  "native29": {
+    "all_match": true,
+    "bytes": 859712,
+    "count": 29
+  },
+  "proof": {
+    "claims": 3,
+    "restored": true
+  },
+  "publication_receipt_note": "This receipt is committed after the evidence commit. The final branch tip containing this receipt is reported in the final chat return and is the tip that must be read by direct git ls-remote for acceptance.",
+  "remote_head_after_push": "2303432f61fe6e3247d54f9b53a4e04d7d1bacb3",
+  "remote_head_before_push": "0a0f8e99d9117a88a51d67b3b2b51f4f618cbaab",
+  "schema": "SOROK_C0R3_PUBLICATION_VERIFICATION@1",
+  "sealed_startup": "0a0f8e99d9117a88a51d67b3b2b51f4f618cbaab",
+  "tests": {
+    "errors": 0,
+    "events": 309,
+    "expected_red": 3,
+    "passed": 306,
+    "skipped": 0
+  },
+  "verification_commands": [
+    "git ls-remote origin refs/heads/agent/rabochii-sorok-20261019-c0r3-c0x-endtoend-transport-repair-r1",
+    "git rev-parse HEAD"
+  ],
+  "verified_at_utc": "2026-10-19T16:13:50Z"
+}
