@@ -1,0 +1,14 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "claims": [{
+    "claim_id": "O35B_DECLARED_HOLD_ACCOUNTING_NO_DROP",
+    "actual_consumer": "O35B metadata accounting comparison; NOT I03/Batch/M1 execution",
+    "claimed_dependency": "all inherited original item/profile declarations survive into held accounting, checked against a separately frozen direct-source digest",
+    "positive_node": "WORKER_RETURNS/PYAT-R40-O35B-ORIGINAL35-AUTHORITY-OPERATION-BINDING-R1/test_o35b_binding.py::test_declared_accounting_no_drop",
+    "fault": {
+      "path": "WORKER_RETURNS/PYAT-R40-O35B-ORIGINAL35-AUTHORITY-OPERATION-BINDING-R1/authority_binding.py",
+      "old": "                yield unit",
+      "new": "                if unit != ('SRC01', 'Afrobarometer:R1:acrosswt', '3a92c1496daca5b3d660edf96cb498ef9845661e91b63f859110652d9bd50d44', 'BATCH_EXPECTED_WORK'):\n                    yield unit"
+    }
+  }]
+}

@@ -1,0 +1,31 @@
+# Exact decisions and competent owner motion
+
+Every individual row and its exact original identity/hash appears in `evidence/owner_binding_audit.json`. Original owner assertions and response-option text are retained separately in `evidence/owner_assertions_sanitized.json`. No casefold search relation is promoted to same-item identity.
+
+| Exact candidate group | Preserved decision | Required competent action |
+|---|---|---|
+| Afro R1 casenumb; Latin 1995 enc, numero, pais, region, wt | Six carrier/admin candidates. A carrier or design role does not identify an actual person/household, risk set or valid weight. | Source/design custodian binds physical edition, carrier namespace, population and weight/design; no measurement-target promotion. |
+| Afro R1 party | Substantive nominal party affiliation; 112 retained historical labels. pid remains a possible renamed code, not an admitted alias. | Instrument/item owner adjudicates party/pid on the same form and edition; country-local labels and special states retained. No directional or portable party scale inferred. |
+| Afro R1 xstronld | Retained harmonized cross-country tradeoff role; no new harmonization issued. | Existing semantic owner supplies exact inherited operation scope and limits plus source/design packet. |
+| Latin 1995 p33b | Competently held response review. | Response owner reopens the exact held identity; no candidate operation issued. |
+| Latin 1995 p43a | Context candidate. P43 remains blocked; V525b genderEquality and D62 imperialAlignment assertions coexist in the record. | Same-form physical identity and accepted semantic jurisdiction must be adjudicated; no driver substitution by recency. |
+| Latin 1995 p46a–h | Eight distinct single-choice country-knowledge context columns. | Source/options/routing owner binds each occurrence. Shared prefix does not issue joint-battery scoring, multiresponse topology or directed scale. |
+| Latin 1995 p47a, p47b, p47c | Distinct Europe, US and Japan relation targets. P47 stem remains blocked; V525b temporalOrientation and D62 imperialAlignment disagree. | Item/target owner preserves target-specific identities and adjudicates parent/child scope. No stem collapse. |
+| Latin 2024 Q45ST, Q47STC, Q8NCVA/B/C | P45ST, P47ST.C, P8NCV.A/B/C are physical-name candidates only. | Same-edition administered form and column/option proof before alias issuance. No dotted-name or P/Q normalization as authority. |
+| Blocked pid, respnumb, P15, P43, P47, Q12STGBS, Q28ST, Q47ST, Q56ST | All nine preserved independently with their QRA payload hashes. | Original instrument owner resolves renaming, stem/split/entity structure and carrier identity without inventing a P2 match. |
+| Latin 2024 Q47ST | Two V525b assertions, printed press and social media, at distinct original CSV ordinals. QRA social media and P2 Q47STC press are preserved. | Competent owner supplies exact source/form/physical occurrence, preserving C/D distinctions. No last-row-wins resolution. |
+
+The decision tree is deliberately an audit artifact, not an authorization validator. Filling a dictionary cannot issue rights. For each candidate an exact owner must settle: source edition and current use warrant; administered form/physical item; options and special states; country/population/time; person/household namespace and repeat/missing/duplicate policy; routing and risk denominator; explicit RAW or governed weights/design; operation-specific eligibility; competent original U/E_pre; complete canonical authority/query/predicate preimages; validated C11 release; independent pre-run expectations; and a named learned rule/consumer.
+
+The all35 ledger retains the same unresolved fields for the 18,250 common rows as well as the differences. A historical source manifest basename, recorded size, header count or old existence flag is not a current edition hash or permission grant. The 145 partial response contracts, 700 selected questions and 906 declared active authority rows remain partial metadata. They do not issue the full 18,518-row source estate or full35 eligibility.
+
+The 259 inactive Asian W6 rows remain outside the active frontier in their separate exact ledger. The P10 census remains 65,354 accounting units over 45 rows. Its 76 explicit holds are 15 P6 blocked, 42 B04 directional conflicts, four B06 source contradictions, seven B07 functions and eight B08 functions. These are preservation-complete unresolved states, not eligible operations, absence or rejection. The frozen census and pinned B07/B08 adjudications are retained without widening their scope. The other scientific populations—18,792 QSR rows, 18,413 historical columns, the 35×54 requirement cells, and candidate temporal/cross-family pairs—are not substituted for an issued original item-operation universe.
+
+The finite next motion is:
+
+1. A retained-material custodian locates and verifies the accepted LiTS canonical checkpoint. Validate its 225-object closure before a named learned-consumer replay. Separately locate a complete exact validated C11 release, including its governed response, routing, coordinate and internal records, if new I03/Batch recomputation is claimed.
+2. The source/instrument and operation owners bind one exact accepted item/operation, including form/respondent/risk/design and current jurisdiction. If retained release preimages are unavailable, only a specific verified source/host/purpose warrant can authorize a new raw read. No file-presence fallback.
+3. The independent expectation custodian freezes the original operation set before execution. Existing catalog, I03/I05, Batch and M1 owners execute it; severing an actual operation must RED the named expected-versus-executed/consumed assertion while irrelevant inputs stay fixed.
+4. Extend the same packet by competent per-wave/per-operation jurisdiction. HQ may assess the scoped author evidence; this worker cannot self-adopt it or convert pending original eligibility into PERMITTED.
+
+No unresolved semantic decision was guessed at Medium. No High switch was required for the finite source/custody and contract audit. Any future contested source-semantic or design decision requires the competent issuer, with user-controlled effort change if needed.

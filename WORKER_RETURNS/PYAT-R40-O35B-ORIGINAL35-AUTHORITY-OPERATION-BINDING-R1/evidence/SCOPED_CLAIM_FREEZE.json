@@ -1,0 +1,12 @@
+{
+  "schema": "O35B_SCOPED_METADATA_CLAIM_FREEZE_R1",
+  "prior_freeze_sha256": "076ac5deaaa2b81dd50ca1e830738361de1842ebe4350c57f1282050f7bf16ae",
+  "claim_id": "O35B_DECLARED_HOLD_ACCOUNTING_NO_DROP",
+  "actual_target_consumer": "O35B metadata accounting anti-join; NOT native I03/Batch/M1",
+  "claimed_dependency": "direct O35E wave/item/profile declarations -> complete held accounting ledger -> independently frozen expected-set comparison",
+  "frozen_positive_oracle": "PREIMPLEMENTATION_FREEZE.json declared_accounting_not_E_pre SHA-256 and count, independently derived before candidate implementation",
+  "fault_injection_target_and_expected_RED": "remove the first sorted declared item/profile unit from accounting_units; test_declared_accounting_no_drop must fail its exact expected-set assertion; restore GREEN",
+  "positive_test_node": "test_o35b_binding.py::test_declared_accounting_no_drop",
+  "scope": "metadata source/authority accounting only; cannot discharge commissioned native original positive or actual execution-plan omission witness",
+  "native_original_edge_grade": "NOT_PROVED_PENDING_EXACT_RETAINED_PREIMAGES"
+}
