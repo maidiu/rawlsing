@@ -1,0 +1,15 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+__________________ test_stale_selection_cache_replay_refuses ___________________
+
+    def test_stale_selection_cache_replay_refuses():
+        p=prepare();service=ReadThroughService(p);first=consume(service,p.snapshot)
+        selected=p.composition.b5_selection_receipt
+        p.lifecycle.declare_no_current(selected.selection_key_ref,expected_previous_receipt_ref=selected.ref,event_authority_ref=ref('LifecycleAuthority','none'),event_rule_ref=ref('LifecycleRule','none'),reason_ref=ref('Reason','none'),selection_attestation_ref=ref('SelectionAttestation','none'))
+>       with pytest.raises(ValueError):consume(service,p.snapshot)
+E       Failed: DID NOT RAISE ValueError
+
+WORKER_RETURNS/PYAT-R39-E04L-RELEASE-READTHROUGH-CONSUMER-R1/test_readthrough_consumer.py:94: Failed
+=========================== short test summary info ============================
+FAILED WORKER_RETURNS/PYAT-R39-E04L-RELEASE-READTHROUGH-CONSUMER-R1/test_readthrough_consumer.py::test_stale_selection_cache_replay_refuses
+1 failed in 3.51s

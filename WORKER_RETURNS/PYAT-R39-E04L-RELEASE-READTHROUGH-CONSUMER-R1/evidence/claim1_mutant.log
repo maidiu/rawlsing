@@ -1,0 +1,39 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_________ test_selected_release_drives_original_consumer_and_severance _________
+
+    def test_selected_release_drives_original_consumer_and_severance():
+        p=prepare();service=ReadThroughService(p);first=consume(service,p.snapshot)
+        assert cells(first)==[{'0':14,'1':18},{'0':6,'1':10},{'0':2,'1':6}]
+        assert [s['denominator'] for s in first['material']['empirical']['steps']]==[32,16,8]
+        empirical=[x for x in first['material']['values_read'] if x['channel']=='empirical']
+        assert len(empirical)==3
+        for read in empirical:
+            binding=read['learned_release_binding']
+            assert binding['learned_release_ref']==p.composition.b5_selection_receipt.selected_release_ref.as_dict()
+            assert binding['m1_subject_ref']==p.composition.m1_disposition.ref.as_dict()
+            assert binding['producer_fact_ref'] in [x.as_dict() for x in p.composition.m1_disposition.empirical_fact_refs]
+            assert read['value_read']==first['material']['empirical']['steps'][empirical.index(read)]['cells']
+>       sever_and_restore(p,service)
+
+WORKER_RETURNS/PYAT-R39-E04L-RELEASE-READTHROUGH-CONSUMER-R1/test_readthrough_consumer.py:39: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+p = Prepared(service=<product.service.GenericSelectedWorldService object at 0x10ef6d4d0>, snapshot=SelectedSnapshot(materi...ed_previous_selection_receipt_ref=None, direct_producer_route_authority_ref=None, direct_consumer_acceptance_ref=None))
+service = <readthrough.ReadThroughService object at 0x10ef6e7d0>
+
+    def sever_and_restore(p,service):
+        original=p.composition.m2_artifacts.release
+        before=semantic_hash(p.native_provider.world['rows_hash'])
+        p.repository._releases.clear()
+        refused=False
+        try:consume(service,p.snapshot)
+        except ValueError:refused=True
+>       assert refused,'RELEASE_EDGE_SEVERED_BUT_ORIGINAL_CONSUMER_STILL_PRODUCTIVE'
+E       AssertionError: RELEASE_EDGE_SEVERED_BUT_ORIGINAL_CONSUMER_STILL_PRODUCTIVE
+E       assert False
+
+WORKER_RETURNS/PYAT-R39-E04L-RELEASE-READTHROUGH-CONSUMER-R1/test_readthrough_consumer.py:23: AssertionError
+=========================== short test summary info ============================
+FAILED WORKER_RETURNS/PYAT-R39-E04L-RELEASE-READTHROUGH-CONSUMER-R1/test_readthrough_consumer.py::test_selected_release_drives_original_consumer_and_severance
+1 failed in 3.68s

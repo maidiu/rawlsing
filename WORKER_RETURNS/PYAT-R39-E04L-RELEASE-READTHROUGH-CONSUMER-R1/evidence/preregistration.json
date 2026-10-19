@@ -1,0 +1,64 @@
+{
+  "schema": "E04L_FROZEN_PROOF_R1",
+  "time_utc": "2026-10-19T02:48:11.331057+00:00",
+  "startup": "2e6c189fd54b818556a44419b19691938ea76d5a",
+  "claim_id": "E04L_SELECTED_RELEASE_TO_ORIGINAL_CONSUMER",
+  "actual_consumer": "unchanged product.nonparent.consume via unchanged GenericSelectedWorldService.possibilities; provider adapter only",
+  "required_dependency": "B5 exact current selection -> M2 exact release/subject -> replay-verified M1 disposition -> authorized exact fact/query/predicate catalog -> original E04 empirical values_read",
+  "frozen_positive_oracle": {
+    "base": {
+      "denominators": [
+        32,
+        16,
+        8
+      ],
+      "cells": [
+        {
+          "0": 14,
+          "1": 18
+        },
+        {
+          "0": 6,
+          "1": 10
+        },
+        {
+          "0": 2,
+          "1": 6
+        }
+      ]
+    },
+    "same_marginals": {
+      "denominators": [
+        32,
+        16,
+        8
+      ],
+      "cells": [
+        {
+          "0": 13,
+          "1": 19
+        },
+        {
+          "0": 5,
+          "1": 11
+        },
+        {
+          "0": 1,
+          "1": 7
+        }
+      ]
+    }
+  },
+  "fault_injection_target_and_expected_RED": "Bypass selected-release catalog resolution and return original source/cache. With identical source/world and revoked/severed learned selection, named real-consumer dependency test must fail its refusal assertion. Restore implementation and rerun same test green.",
+  "requirements": [
+    "actual native producer/M1/M2/B5/I4 objects",
+    "no owner code or original consumer edits",
+    "all three progressive facts included in selected release subject closure; no deeper release used to authorize unseen shallower facts",
+    "no consumer permission inferred from B5; retain TEST_ONLY E04 source/role/model restrictions",
+    "fact values read from exact producer objects resolved by selected release, no source recomputation after publication",
+    "new integration test proof witness and PRE-MAIN checker",
+    "hostiles listed in launch including no joint behavioral probability"
+  ],
+  "high_escalation": "Only unresolved competent-owner contract ambiguity; no escalation for imports/test execution. User changes effort; never self-switch.",
+  "authoring_status": "BEFORE_ADAPTER_IMPLEMENTATION_OR_NEW_TEST_OUTCOMES"
+}

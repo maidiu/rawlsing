@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="3.515" timestamp="2026-10-18T22:56:22.962331-04:00" hostname="e04l-host"><testcase classname="WORKER_RETURNS.PYAT-R39-E04L-RELEASE-READTHROUGH-CONSUMER-R1.test_readthrough_consumer" name="test_stale_selection_cache_replay_refuses" time="2.883"><failure message="Failed: DID NOT RAISE ValueError">def test_stale_selection_cache_replay_refuses():
+        p=prepare();service=ReadThroughService(p);first=consume(service,p.snapshot)
+        selected=p.composition.b5_selection_receipt
+        p.lifecycle.declare_no_current(selected.selection_key_ref,expected_previous_receipt_ref=selected.ref,event_authority_ref=ref('LifecycleAuthority','none'),event_rule_ref=ref('LifecycleRule','none'),reason_ref=ref('Reason','none'),selection_attestation_ref=ref('SelectionAttestation','none'))
+&gt;       with pytest.raises(ValueError):consume(service,p.snapshot)
+E       Failed: DID NOT RAISE ValueError
+
+WORKER_RETURNS/PYAT-R39-E04L-RELEASE-READTHROUGH-CONSUMER-R1/test_readthrough_consumer.py:94: Failed</failure></testcase></testsuite></testsuites>

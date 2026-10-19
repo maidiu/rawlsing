@@ -1,0 +1,169 @@
+[
+  {
+    "name": "final_court",
+    "command": [
+      "PYTHON",
+      "-B",
+      "-m",
+      "pytest",
+      "-q",
+      "-p",
+      "no:cacheprovider",
+      "WORKER_RETURNS/PYAT-R39-E04L-RELEASE-READTHROUGH-CONSUMER-R1/test_readthrough_consumer.py",
+      "--junitxml=WORKER_RETURNS/PYAT-R39-E04L-RELEASE-READTHROUGH-CONSUMER-R1/evidence/final_court.xml"
+    ],
+    "exit_code": 0,
+    "testcases": 22,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0
+  },
+  {
+    "name": "original_native",
+    "command": [
+      "PYTHON",
+      "-B",
+      "-m",
+      "pytest",
+      "-q",
+      "-p",
+      "no:cacheprovider",
+      "WORKER_RETURNS/PYAT-R39-E04L-RELEASE-READTHROUGH-CONSUMER-R1/.runtime/e04jr/tests/test_e04j_native_original_consumer_join.py",
+      "--junitxml=WORKER_RETURNS/PYAT-R39-E04L-RELEASE-READTHROUGH-CONSUMER-R1/evidence/original_native.xml"
+    ],
+    "exit_code": 0,
+    "testcases": 7,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0
+  },
+  {
+    "name": "claim1_positive",
+    "command": [
+      "PYTHON",
+      "-B",
+      "-m",
+      "pytest",
+      "-q",
+      "-p",
+      "no:cacheprovider",
+      "WORKER_RETURNS/PYAT-R39-E04L-RELEASE-READTHROUGH-CONSUMER-R1/test_readthrough_consumer.py::test_selected_release_drives_original_consumer_and_severance",
+      "--junitxml=WORKER_RETURNS/PYAT-R39-E04L-RELEASE-READTHROUGH-CONSUMER-R1/evidence/claim1_positive.xml"
+    ],
+    "exit_code": 0,
+    "testcases": 1,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0
+  },
+  {
+    "name": "claim1_mutant",
+    "command": [
+      "PYTHON",
+      "-B",
+      "-m",
+      "pytest",
+      "-q",
+      "-p",
+      "no:cacheprovider",
+      "WORKER_RETURNS/PYAT-R39-E04L-RELEASE-READTHROUGH-CONSUMER-R1/test_readthrough_consumer.py::test_selected_release_drives_original_consumer_and_severance",
+      "--junitxml=WORKER_RETURNS/PYAT-R39-E04L-RELEASE-READTHROUGH-CONSUMER-R1/evidence/claim1_mutant.xml"
+    ],
+    "exit_code": 1,
+    "testcases": 1,
+    "failures": 1,
+    "errors": 0,
+    "skips": 0
+  },
+  {
+    "name": "claim1_restored",
+    "command": [
+      "PYTHON",
+      "-B",
+      "-m",
+      "pytest",
+      "-q",
+      "-p",
+      "no:cacheprovider",
+      "WORKER_RETURNS/PYAT-R39-E04L-RELEASE-READTHROUGH-CONSUMER-R1/test_readthrough_consumer.py::test_selected_release_drives_original_consumer_and_severance",
+      "--junitxml=WORKER_RETURNS/PYAT-R39-E04L-RELEASE-READTHROUGH-CONSUMER-R1/evidence/claim1_restored.xml"
+    ],
+    "exit_code": 0,
+    "testcases": 1,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0
+  },
+  {
+    "name": "claim2_positive",
+    "command": [
+      "PYTHON",
+      "-B",
+      "-m",
+      "pytest",
+      "-q",
+      "-p",
+      "no:cacheprovider",
+      "WORKER_RETURNS/PYAT-R39-E04L-RELEASE-READTHROUGH-CONSUMER-R1/test_readthrough_consumer.py::test_stale_selection_cache_replay_refuses",
+      "--junitxml=WORKER_RETURNS/PYAT-R39-E04L-RELEASE-READTHROUGH-CONSUMER-R1/evidence/claim2_positive.xml"
+    ],
+    "exit_code": 0,
+    "testcases": 1,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0
+  },
+  {
+    "name": "claim2_mutant",
+    "command": [
+      "PYTHON",
+      "-B",
+      "-m",
+      "pytest",
+      "-q",
+      "-p",
+      "no:cacheprovider",
+      "WORKER_RETURNS/PYAT-R39-E04L-RELEASE-READTHROUGH-CONSUMER-R1/test_readthrough_consumer.py::test_stale_selection_cache_replay_refuses",
+      "--junitxml=WORKER_RETURNS/PYAT-R39-E04L-RELEASE-READTHROUGH-CONSUMER-R1/evidence/claim2_mutant.xml"
+    ],
+    "exit_code": 1,
+    "testcases": 1,
+    "failures": 1,
+    "errors": 0,
+    "skips": 0
+  },
+  {
+    "name": "claim2_restored",
+    "command": [
+      "PYTHON",
+      "-B",
+      "-m",
+      "pytest",
+      "-q",
+      "-p",
+      "no:cacheprovider",
+      "WORKER_RETURNS/PYAT-R39-E04L-RELEASE-READTHROUGH-CONSUMER-R1/test_readthrough_consumer.py::test_stale_selection_cache_replay_refuses",
+      "--junitxml=WORKER_RETURNS/PYAT-R39-E04L-RELEASE-READTHROUGH-CONSUMER-R1/evidence/claim2_restored.xml"
+    ],
+    "exit_code": 0,
+    "testcases": 1,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0
+  },
+  {
+    "name": "proof_gate",
+    "command": [
+      "PYTHON",
+      "-B",
+      "CROSS_HQ_CONTROL_ROOM/proof_integrity_gate_r1.py",
+      "witness",
+      "WORKER_RETURNS/PYAT-R39-E04L-RELEASE-READTHROUGH-CONSUMER-R1/test_readthrough_consumer.py.proof.json",
+      "--root",
+      ".",
+      "--receipt",
+      "WORKER_RETURNS/PYAT-R39-E04L-RELEASE-READTHROUGH-CONSUMER-R1/evidence/proof_witness.json"
+    ],
+    "exit_code": 0
+  }
+]

@@ -1,0 +1,27 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "claims": [
+    {
+      "claim_id": "E04L_SELECTED_IMMUTABLE_RELEASE_REQUIRED",
+      "actual_consumer": "unchanged product.nonparent.consume",
+      "claimed_dependency": "B5-selected exact M2 release availability -> exact producer fact catalog -> original empirical values_read; no stale release resurrection",
+      "positive_node": "WORKER_RETURNS/PYAT-R39-E04L-RELEASE-READTHROUGH-CONSUMER-R1/test_readthrough_consumer.py::test_selected_release_drives_original_consumer_and_severance",
+      "fault": {
+        "path": "WORKER_RETURNS/PYAT-R39-E04L-RELEASE-READTHROUGH-CONSUMER-R1/readthrough.py",
+        "old": "        resolution=m2.resolve_release_exact(p.repository,selected.selected_release_ref)",
+        "new": "        p.repository.register_release(p.composition.m2_artifacts.release)  # injected stale cached release resurrection\n        resolution=m2.resolve_release_exact(p.repository,selected.selected_release_ref)"
+      }
+    },
+    {
+      "claim_id": "E04L_CURRENT_SELECTION_REQUIRED_FOR_FRESH_CONSUMER",
+      "actual_consumer": "unchanged product.nonparent.consume",
+      "claimed_dependency": "actual B5 current selection, rather than old captured selection, gates every fresh empirical read",
+      "positive_node": "WORKER_RETURNS/PYAT-R39-E04L-RELEASE-READTHROUGH-CONSUMER-R1/test_readthrough_consumer.py::test_stale_selection_cache_replay_refuses",
+      "fault": {
+        "path": "WORKER_RETURNS/PYAT-R39-E04L-RELEASE-READTHROUGH-CONSUMER-R1/readthrough.py",
+        "old": "        selected=p.lifecycle.resolve_selection_exact(self.selection_key,self.selection_receipt)",
+        "new": "        selected=__import__('types').SimpleNamespace(state='CURRENT_SELECTED',selected_release_ref=self.expected_release,receipt_ref=self.selection_receipt)  # injected stale-selection bypass"
+      }
+    }
+  ]
+}
