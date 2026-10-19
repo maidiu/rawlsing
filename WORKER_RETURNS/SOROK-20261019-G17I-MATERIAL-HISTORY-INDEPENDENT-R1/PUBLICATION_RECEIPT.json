@@ -1,0 +1,174 @@
+{
+  "schema": "SOROK_G17I_PUBLICATION_RECEIPT@1",
+  "repository": "maidiu/rawlsing (PRIVATE)",
+  "role": "one fresh independent I2 sourcefree material/history-science and executable reviewer; not G17/G15 author, HQ, C9R author, C8OI reviewer, Pyat or CAN/ADP issuer",
+  "branch": "agent/reviewer-sorok-20261019-g17i-material-historical-life-and-c9-consumer-independent-r1",
+  "sealed_startup": "76dfa72f20eba481763160bc4213997b792279c7",
+  "g17_target": "90d0eb7925de54635559a879ee76fc1b97b9ff61",
+  "g17_candidate": "a35403cede4f65134da340d46f198f92723db410",
+  "g15": "fbc84ba4b5ec8befcf7954357a2ba1c576f5d7a5",
+  "g16i": "683aa56828cda76ea70792a2c8b39cf78624e8dc",
+  "evidence_commit": "b8960ed62d59bc9e91e4cd15b26a9cbff8f01a6f",
+  "gate_commit": "98554b6f5c60bfa0b1f59308fbe3301476d9fcfe",
+  "remote_head_verified_before_receipt": "98554b6f5c60bfa0b1f59308fbe3301476d9fcfe",
+  "remote_ref": "refs/heads/agent/reviewer-sorok-20261019-g17i-material-historical-life-and-c9-consumer-independent-r1",
+  "verified_by": "git ls-remote origin <ref> after push",
+  "courts": {
+    "g13_181": {
+      "pass": 108,
+      "red": 73
+    },
+    "g14_67": {
+      "pass": 67,
+      "red": 0
+    },
+    "g15_75": {
+      "pass": 75,
+      "red": 0
+    },
+    "g16i_24": {
+      "pass": 22,
+      "red": 2,
+      "hold": [
+        "M2",
+        "MP"
+      ]
+    },
+    "g17_13": {
+      "pass": 13,
+      "red": 0
+    },
+    "g17i_independent": {
+      "pass": 11,
+      "red": 3
+    }
+  },
+  "preserved_reds": {
+    "g13_red_count": 73,
+    "sets_equal_g15": true,
+    "compatibility_56_all_present": true,
+    "compatibility_56_count": 56,
+    "original_17_count": 17
+  },
+  "bypasses": {
+    "forged_material_event": {
+      "accepted": true,
+      "after_cash": 100058,
+      "material_owner": "FAKE_SOURCE_OWNER",
+      "material_permission": "FAKE",
+      "where": "lab_sgi1.continuation.continue_person"
+    },
+    "nested_future_child": {
+      "terminal": "COMMITTED",
+      "where": "run_pipeline top-level-only guard"
+    },
+    "c9_forged_material": {
+      "accepted": true,
+      "status": "ACCEPTED",
+      "after_cash": 100055,
+      "material_owner": "FAKE_SOURCE_OWNER",
+      "where": "c9_handoff_consumer.receive_handoff"
+    }
+  },
+  "author_proof": {
+    "claims": 7,
+    "all_baseline": "PASS",
+    "all_fault_probe": "TARGET_ASSERTION_FAILED",
+    "grade": "BOUNDED_MUTATION_DETECTED",
+    "reviewer_copy": true
+  },
+  "reviewer_proof": {
+    "claims": 1,
+    "positive_node": "tests/test_g17i_independent.py::test_stock5_two_conflicting_claims_rejected_with_positive_alternative",
+    "baseline": "PASS",
+    "fault_probe": "TARGET_ASSERTION_FAILED",
+    "grade": "BOUNDED_MUTATION_DETECTED"
+  },
+  "m2_mp": {
+    "M2": {
+      "archive_sha256": "9e0efc335e2bfc1e1d9f9bc25604af6d04578e7b6acddb31e439b6ff117a3ab7",
+      "event_count": 23,
+      "replay_valid": false,
+      "has_world_material": false,
+      "continuation_admitted": false
+    },
+    "MP": {
+      "known_counterpart": "F_EXISTING",
+      "terminal": "SHARED_HISTORY_CONTRADICTION_HOLD",
+      "no_duplicate_actor": true
+    }
+  },
+  "three_dispositions": {
+    "engineering": "RED \u2014 three alternate-interface bypasses accept fake cash (100058), nested future-child COMMITTED, and fake C9 cash (100055) despite the author's narrow eight-edge positives",
+    "scientific": "REVISE \u2014 finite material conservation and 2-vs-5 material variation are real at the tested grain; authenticated participation and two-independent-contradictory-actor claims are not established; M2/MP HOLD",
+    "authority": "ACCEPT_REVIEW_SCOPE \u2014 sourcefree review only; no native/model/actor/rule/E2/C11 issuance; underlying owner grants HOLD"
+  },
+  "hq_action_request": [
+    "do not adopt the G17 positive claim",
+    "return G17 for authenticated material-source receipt in continue_person and C9",
+    "make future-child partition guard recursive/allowlist-based",
+    "add genuine two-actor contradictory positive or narrow scientific claim",
+    "preserve M2/MP typed HOLD unless competent owners materialise source"
+  ],
+  "accountable_owner": "G17 author for engineering revision; Sorok HQ intake; ADP015/020/CAN008/CAN011 for M2/MP/native truth; C9P/C9PI/CAN/ADP for C9 E1/E2; later independent I2/HQ for adoption",
+  "not_run": [
+    "C9 E1/RULE_A/RULE_T/E2 native issuance",
+    "native M2/MP continuation/reuse",
+    "original source/biological/psychological calibration",
+    "N11/N12",
+    "V3",
+    "C11 physical weld",
+    "production adoption"
+  ],
+  "cost": {
+    "billed_api_cash": "UNKNOWN",
+    "included_quota": "UNKNOWN",
+    "execution_surface": "local warm Git/pytest; no paid API call observed"
+  },
+  "artifact_sha256": {
+    "00_RETURN.md": {
+      "sha256": "b208dc74c0f108b487998f01340d1128cbed86e86f61402cea79270a7a7a3471",
+      "bytes": 7742
+    },
+    "environment_passport_delta.json": {
+      "sha256": "a3bbcf57c4d6f057868dcaf5e16676f5e05c26a3e8b0149eb350e0cf660b189a",
+      "bytes": 2801
+    },
+    "tests/test_g17i_independent.py": {
+      "sha256": "0e4535a708d83a85d763c592f3d206f0b21dbc599846d7ffcd89cd82f145a5e6",
+      "bytes": 10229
+    },
+    "tests/test_g17i_independent.py.proof.json": {
+      "sha256": "454cc2fb1aafd8a9ecc1804fa38b97ea6081ea85f07a3b5b69edbc43934ff07c",
+      "bytes": 847
+    },
+    "evidence/court_summary.json": {
+      "sha256": "2b008ebb6e8fdeeb5522905580b5b26ce93775d4df155135cd7e7827537b304e",
+      "bytes": 892
+    },
+    "evidence/preserved_red_ids.json": {
+      "sha256": "2dfd26d24e73c0639338ecdbb478e75f17febb3c5ffad114e85deb0ebb331967",
+      "bytes": 14194
+    },
+    "evidence/bypass_and_edge_receipts.json": {
+      "sha256": "cdd2a81992fd8e6a0972a65a168f1bd6b542d1fb5a42c5043a6a1242882b25e2",
+      "bytes": 1968
+    },
+    "evidence/source_provenance.json": {
+      "sha256": "a5908cd98e8b444cd8653594d59c05d6adced681ddfda085ef10962a3ed3144b",
+      "bytes": 15360
+    },
+    "evidence/author_proof_reviewer_receipt.json": {
+      "sha256": "dbefa950d092e1d8b5811f7a357a2380bac0e0639164298f4acde1b09a007289",
+      "bytes": 3859
+    },
+    "evidence/proof_gate_changed_receipt.json": {
+      "sha256": "4213dc823605bbb4a78727a24a7c8e234b17e1343445e210709fb4d39918fd67",
+      "bytes": 937
+    },
+    "evidence/g17i_independent.xml": {
+      "sha256": "9f7d8ad6283b9522f8b20dbead54afd2fc815b956cb6adf6620e214a7d794ca8",
+      "bytes": 6555
+    }
+  }
+}
