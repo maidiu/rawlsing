@@ -1,6 +1,6 @@
 # Full objective audit — incomplete
 
-The goal remains active. This audit preserves the original scope and does not redefine completion around metadata or the new catalog positive.
+The full objective is incomplete. This audit preserves the original scope and does not redefine completion around metadata or the new catalog positive.
 
 | Objective requirement | Authoritative evidence / current state | Completion |
 |---|---|---|
@@ -26,3 +26,5 @@ The goal remains active. This audit preserves the original scope and does not re
 | No self-adoption, source/semantic issuance, actor, FF/model, N11/N12 or V3 | Passive worker-return changes; native owners unchanged; remaining rights explicitly held | Proved scope boundary |
 
 Completion is not established. The remaining execution/consumer proof needs externally retained exact Fact arrays and a validated C11 release, or a separately verified specific source/host/purpose warrant for new computation. Full35 scientific binding also needs competent issuer decisions. This worker cannot make those prerequisites true by widening claims or selecting among conflicting authority envelopes.
+
+The final blocked audit in `evidence/final_block_audit.json` revalidates the same prerequisite failure on the third consecutive goal turn. The previous turn made real progress through portable-packet recovery and scoped native catalog binding. The fresh boundary probes still reject deferred Facts and the absent exact validated C11 release; the recorded full checkpoint remains absent. No process is being waited on and no original execution is claimed. Further execution progress requires the external preimages or a verified specific current warrant and competent owner bindings. The chat goal is therefore to be marked blocked after this evidence is committed and its remote SHA verified.
