@@ -1,0 +1,59 @@
+{
+  "a42_grade_produced": "ORIGINAL_MEASURED_OCCUPANCY",
+  "a42_intake_accepted_receipts": [
+    "S44-WITNESS-SRC01-S01"
+  ],
+  "contract": "S44_CURRENT_SOURCE_POSITIVE_RECEIPT@1",
+  "issuance_contract": "S44_COMPETENT_U_EPRE_ISSUANCE@1",
+  "note": "The synthetic witness proves socket mechanics only. It is gated by an explicit witness flag and is never part of the real merged bank or N11 artifacts. A real S44 receipt requires a competent external issuance attestation this worker cannot create.",
+  "real_artifacts_original_measured": 0,
+  "refusal_codes": {
+    "artifact_preimage_changed": "PREIMAGE_ERROR:CONTENT_PREIMAGE_MISMATCH:WORKER_RETURNS/PYAT-R42-A42-WHOLE-ESTATE-RETURN-FANIN-AND-N11-CANDIDATE-R1/j42_addon_endpoint.",
+    "clock_after_estate": "S44_CLOCK_VIOLATION",
+    "clock_not_current": "S44_CLOCK_NOT_CURRENT",
+    "forged_consumer": "S44_UNKNOWN_USER_CONSUMER_REF",
+    "issuance_missing": "S44_COMPETENT_U_E_PRE_ISSUANCE_ATTESTATION_REQUIRED",
+    "missing_grant": "S44_MISSING_GRANT",
+    "missing_host": "S44_GRANT_HOST_REQUIRED",
+    "missing_purpose": "S44_GRANT_PURPOSE_REQUIRED",
+    "no_measured_product": "S44_NO_MEASURED_PRODUCT",
+    "operation_not_granted": "S44_GRANT_SCOPE_MISSING_OPERATION",
+    "revoked_grant": "S44_GRANT_REVOKED",
+    "synthetic_issuance_without_witness_mode": "S44_SYNTHETIC_GRANT_REQUIRES_EXPLICIT_WITNESS_MODE",
+    "u_e_pre_not_issued": "S44_U_E_PRE_NOT_ISSUED",
+    "wave_out_of_scope": "S44_WAVE_OUT_OF_SCOPE"
+  },
+  "schema": "I44_S44_RECEIVING_INTERFACE_REPORT@1",
+  "scope_overlay": {
+    "base_scope_digest": "27a15716f76df5d5cdce18da5dd62be5f3c6ce62c7f896964fcf794145554992",
+    "competent_issuer": true,
+    "issuance_ref": "SYNTHETIC_WITNESS_NOT_ISSUED:ISSUANCE-1",
+    "issuer_ref": "SYNTHETIC_WITNESS_NOT_ISSUED:U_EPRE_ISSUER",
+    "schema": "S44_SCOPE_ISSUANCE_OVERLAY@1",
+    "scope_hash": "06ab0b376c97abd0251ad9d6a1ce9c9152bc26d961eb41ebed84b15f87a5e8a6",
+    "synthetic_witness": true,
+    "wave": "SRC01"
+  },
+  "state": "EXECUTABLE_SOCKET_READY__NO_REAL_S44_RECEIPT_PRESENT",
+  "synthetic_witness_cell_ids": [
+    "SRC01.S01"
+  ],
+  "synthetic_witness_counted_in_real_artifacts": false,
+  "synthetic_witness_only": true,
+  "synthetic_witness_original_cells_in_witness_assessment": 1,
+  "validation": {
+    "as_of": "2026-10-19",
+    "axis_ids": [
+      "S01"
+    ],
+    "counted_in_real_artifacts": false,
+    "issuance_ref": "SYNTHETIC_WITNESS_NOT_ISSUED:ISSUANCE-1",
+    "operation_ids": [
+      "S44-WITNESS-OP"
+    ],
+    "receipt_id": "S44-WITNESS-SRC01-S01",
+    "schema": "S44_SOURCE_POSITIVE_VALIDATION@1",
+    "synthetic_witness": true,
+    "wave": "SRC01"
+  }
+}

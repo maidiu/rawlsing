@@ -1,0 +1,122 @@
+{
+  "schema": "PYAT_00D_ENVIRONMENT_PASSPORT_DELTA@1",
+  "environment_id": "opencode-main-mac-r44-i44",
+  "epoch_id": "20261019-r44-i44-a1",
+  "session_alias": "user-main-mac-opencode",
+  "surface": "OpenCode",
+  "machine_alias": "user-main-mac",
+  "status": "LIVE_VERIFIED",
+  "last_live_probe_at": "2026-10-19T05:30:00Z",
+  "interpreter": {
+    "command": "python3",
+    "version": "3.11.3",
+    "status": "OK"
+  },
+  "pytest": {
+    "command": "python3 -m pytest",
+    "version": "9.0.2",
+    "status": "OK"
+  },
+  "git": {
+    "command": "git",
+    "status": "OK"
+  },
+  "writable_marker": "OK (artifacts written and re-read)",
+  "worktree": {
+    "alias": "R44-I44-wt",
+    "branch": "agent/rabochii-pyat-r44-i44-r43-four-return-native-world-n11-fanin-r1",
+    "startup_head": "2e5a8693b2b48df5b2e1281e1d33ff2d5d5d2d2c",
+    "sparse": true,
+    "pinned_returns_materialized": true
+  },
+  "pinned_imports": [
+    {
+      "path": "rawlsing_next/pre553_empirical_objects.py",
+      "git_blob_sha1": "a61365b994e5c3c50de0f598fcf40e90abf757b6",
+      "grade": "ACCEPTED_OWNER_UNCHANGED"
+    },
+    {
+      "path": "rawlsing_next/pre553_route_b_production.py",
+      "git_blob_sha1": "2385cd327dced3c5b887b59085aa0d21b04d78c3",
+      "grade": "ACCEPTED_OWNER_UNCHANGED"
+    },
+    {
+      "path": "rawlsing_next/pre553_batch_runner.py",
+      "git_blob_sha1": "2d291600b9a10c56d9c6f6de7f7d619f6c52e829",
+      "grade": "ACCEPTED_OWNER_UNCHANGED"
+    },
+    {
+      "path": "rawlsing_next/pre553_carrier_execution.py",
+      "git_blob_sha1": "e7cda773e6a2426bfa12b22790fd8e005fe75153",
+      "grade": "ACCEPTED_OWNER_UNCHANGED"
+    },
+    {
+      "path": "rawlsing_next/pre553_issued_workload.py",
+      "git_blob_sha1": "07e6f419f7fb5e588d041ce9993fa17b935d3626",
+      "grade": "U43_NEW_CANDIDATE_MODULE_NOT_COMMITTED_TO_I44_BRANCH"
+    }
+  ],
+  "pinned_returns": {
+    "A42": "843175b0587b54db3df1f461ad9f7f1314894372",
+    "J42": "f53cb0d2bce52640268c844c398bbd8007d28edc",
+    "U43": "dcf71f1afbfdbe8a084844cea5fffbc73d9d91ef",
+    "B43": "0fa15c1eda1ca36d89b0bbd948b655aa68f17370",
+    "F43": "c0271e2b8d59018d3cf2af7b366258ea503295a6"
+  },
+  "dependency_closure": "FULL (stdlib + repo-local; pytest only)",
+  "tests_executed": {
+    "i44_courts": {
+      "command": "python3 -m pytest test_i44_integration.py -q",
+      "result": "18 passed",
+      "junit": "evidence/i44_junit.xml"
+    },
+    "a42_suite": {
+      "result": "25 passed",
+      "junit": "evidence/a42_junit.xml"
+    },
+    "j42_suite": {
+      "result": "13 passed (re-runs real E41/W41 drivers)",
+      "junit": "evidence/j42_junit.xml"
+    },
+    "f43_suite": {
+      "result": "30 passed",
+      "junit": "evidence/f43_junit.xml"
+    },
+    "b43_suite": {
+      "result": "16 passed",
+      "junit": "evidence/b43_junit.xml"
+    },
+    "u43_suite": {
+      "result": "47 passed with exact author local-court support; 38 self-contained otherwise",
+      "junit": "evidence/u43_junit.xml"
+    },
+    "proof_witness": {
+      "result": "3/3 BASELINE PASS / TARGET_ASSERTION_FAILED",
+      "receipt": "evidence/proof_witness.json"
+    },
+    "cold_replay": {
+      "result": "byte-identical",
+      "blended": "ef86999070033c3cd52ecabf064e39ac249d8cdd16fcba3b1acabb9b55811cec"
+    }
+  },
+  "u43_support_dependency": {
+    "required_for_9_tests": "LOCAL_COURTS/u43-repaired/repro/phase_b_support_v1.py",
+    "sha256": "1e94397a7881ba6c015217a3bae0e660bd6114cab52d81ef8b4fc9bece8c2234",
+    "committed_by_u43": false,
+    "disposition": "U43_RETURN_PACKAGING_GAP__NOT_AN_I44_DEFECT; the 38 self-contained tests pass from the returned bytes"
+  },
+  "provider_model_effort": {
+    "provider": "OpenCode",
+    "model": "DeepSeek V4.1 Flash",
+    "effort": "standard/default"
+  },
+  "account_quota_tier": "UNKNOWN (user session)",
+  "incremental_money_observed": "UNKNOWN (no billing telemetry in-session)",
+  "installed_packages": "pytest 9.0.2",
+  "assignments_completed": [
+    "PYAT-R44-I44-J42-U43-B43-F43-WHOLE-N11-FANIN-R1"
+  ],
+  "eligibility_for_continuation": "YES for the S44 source-positive ingestion once externally issued; NO for source/authority issuance",
+  "review_conflicts": "None; this worker is not the independent acceptor of its own work",
+  "privacy_gate": "No passwords, tokens, personal filesystem paths, respondents or secret data in the return"
+}

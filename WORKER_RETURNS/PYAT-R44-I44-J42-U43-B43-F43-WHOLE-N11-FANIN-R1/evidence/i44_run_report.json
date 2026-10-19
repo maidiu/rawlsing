@@ -1,0 +1,190 @@
+{
+  "artifact_sha256": {
+    "estate_acceptance_manifest.json": "d44dc028db8fb1adbb534ea6ac9fc869431701d2156cd0423da11ae854a1ac1e",
+    "f1_f8_acceptance_matrix.json": "6da2a64951ccd2f646457ea8c1af06cec3145a225c3a4ef1c5da9da31269ed3e",
+    "final_maturity_adjudication.md": "d28e673769d8703a457c6e33a58113cde2da206ad3f2172ad896493f706774bf",
+    "i44_terminal_completion_delta.json": "1db925aa4c6f448a784ec50725b2799e2bb7a0bb4f3c34e9442a395536e80378",
+    "j42_addon_endpoint.json": "1d8fb03262cb09c12ab35fb8f551c5888f790a7faa411d569b2db9ad96f5c598",
+    "merged_receipt_bank_i44.json": "f3490b404df138b0f1a5b7bca3703e54d0b2aa1f680c120a8fc9a23d2ce60aa3",
+    "n11_r43_fanin_intake_and_delta.json": "d744aff313e4833fadab77a431ea39b42ab91aa4304ccce20353f176b6e001f5",
+    "original35_source_positive_execution_wake_packet.json": "34319115986415bc72632abc6e9a00b72cc0830bbcc401e7ad9be84ec833c095",
+    "s44_receiving_interface_report.json": "561fa3050fc3b823c9e60c0be64e570ee9f4d44b1aa017abf0227c96b95bdb42"
+  },
+  "base_verdict": {
+    "blocked_cells": 35,
+    "can_self_adopt_n11": false,
+    "finite_blocker_count": 1781,
+    "functional_evidence_gates": [
+      "F1",
+      "F2",
+      "F3",
+      "F4",
+      "F5",
+      "F6",
+      "F7",
+      "F8"
+    ],
+    "global_relations_closed": 0,
+    "global_relations_open": 3,
+    "historical_or_retained_cells": 5,
+    "identity_accounted_only_cells": 70,
+    "independently_accepted_sourcefree_cells": 0,
+    "intrinsic_nonapplicability_cells": 0,
+    "missing_expected_cells": 1778,
+    "n11_state": "N11_NOT_READY",
+    "notes": [
+      "SOURCEFREE_LOCAL_PASS != ORIGINAL_ESTATE_OCCUPANCY",
+      "R41 sourcefree integration does not create original U/E_pre",
+      "per-wave F6/F7/F8 cells cannot discharge the global F6/F7/F8 capabilities"
+    ],
+    "original_measured_missing_cells": 1890,
+    "original_measured_occupied_cells": 0,
+    "sourcefree_integrated_cells": 0,
+    "sourcefree_local_cells": 2,
+    "total_cells": 1890,
+    "unmatched_register_rows": 81,
+    "unmatched_resolved_by_competent_retirement": 0,
+    "unmatched_still_unresolved": 81,
+    "valid_null_cells": 0,
+    "verdict_scope": "whole declared estate 35/1890/151/101/F1-F8 global (A42 v2)"
+  },
+  "blended": "ef86999070033c3cd52ecabf064e39ac249d8cdd16fcba3b1acabb9b55811cec",
+  "delta": {
+    "base_a42": {
+      "functional": {
+        "F1": "SOURCEFREE_INTEGRATED_POSITIVE",
+        "F2": "SOURCEFREE_INTEGRATED_POSITIVE",
+        "F3": "SOURCEFREE_INTEGRATED_POSITIVE",
+        "F4": "SOURCEFREE_INTEGRATED_POSITIVE",
+        "F5": "HISTORICAL_RETAINED_EVIDENCE",
+        "F6": "INDEPENDENTLY_ACCEPTED_SOURCEFREE",
+        "F7": "SOURCEFREE_INTEGRATED_POSITIVE",
+        "F8": "SOURCEFREE_INTEGRATED_POSITIVE"
+      },
+      "historical_or_retained": 5,
+      "j42_state": "PENDING_PHYSICAL_RETURN",
+      "missing_expected": 1778,
+      "original_measured": 0,
+      "receipts": 13
+    },
+    "classification": "EVIDENCE_BREADTH_AND_INTEGRATION__NO_ESTATE_OCCUPANCY_DELTA",
+    "delta": {
+      "functional_grade_changes": {},
+      "historical_or_retained_cells": 0,
+      "missing_expected_cells": 0,
+      "original_measured_cells": 0,
+      "receipts": 7
+    },
+    "i44_merged": {
+      "functional": {
+        "F1": "SOURCEFREE_INTEGRATED_POSITIVE",
+        "F2": "SOURCEFREE_INTEGRATED_POSITIVE",
+        "F3": "SOURCEFREE_INTEGRATED_POSITIVE",
+        "F4": "SOURCEFREE_INTEGRATED_POSITIVE",
+        "F5": "HISTORICAL_RETAINED_EVIDENCE",
+        "F6": "INDEPENDENTLY_ACCEPTED_SOURCEFREE",
+        "F7": "SOURCEFREE_INTEGRATED_POSITIVE",
+        "F8": "SOURCEFREE_INTEGRATED_POSITIVE"
+      },
+      "historical_or_retained": 5,
+      "j42_state": "INTEGRATED_SOURCEFREE_TESTONLY",
+      "missing_expected": 1778,
+      "original_measured": 0,
+      "receipts": 20
+    },
+    "schema": "I44_TERMINAL_COMPLETION_DELTA@1",
+    "terminal_statement": "The four R43 returns are actually bound into A42 at their real grades. No original measured cell, global F6/F7/F8 closure, N11 acceptance or N12 wake is created. Original35 U/E_pre remains unissued."
+  },
+  "merged_receipt_count": 20,
+  "merged_verdict": {
+    "blocked_cells": 35,
+    "can_self_adopt_n11": false,
+    "finite_blocker_count": 1781,
+    "functional_evidence_gates": [
+      "F1",
+      "F2",
+      "F3",
+      "F4",
+      "F5",
+      "F6",
+      "F7",
+      "F8"
+    ],
+    "global_relations_closed": 0,
+    "global_relations_open": 3,
+    "historical_or_retained_cells": 5,
+    "identity_accounted_only_cells": 70,
+    "independently_accepted_sourcefree_cells": 0,
+    "intrinsic_nonapplicability_cells": 0,
+    "missing_expected_cells": 1778,
+    "n11_state": "N11_NOT_READY",
+    "notes": [
+      "SOURCEFREE_LOCAL_PASS != ORIGINAL_ESTATE_OCCUPANCY",
+      "R41 sourcefree integration does not create original U/E_pre",
+      "per-wave F6/F7/F8 cells cannot discharge the global F6/F7/F8 capabilities"
+    ],
+    "original_measured_missing_cells": 1890,
+    "original_measured_occupied_cells": 0,
+    "sourcefree_integrated_cells": 0,
+    "sourcefree_local_cells": 2,
+    "total_cells": 1890,
+    "unmatched_register_rows": 81,
+    "unmatched_resolved_by_competent_retirement": 0,
+    "unmatched_still_unresolved": 81,
+    "valid_null_cells": 0,
+    "verdict_scope": "whole declared estate 35/1890/151/101/F1-F8 global (A42 v2)"
+  },
+  "pins": {
+    "A42": {
+      "commit": "843175b0587b54db3df1f461ad9f7f1314894372",
+      "file_count": 21,
+      "total_bytes": 11853803
+    },
+    "B43": {
+      "commit": "0fa15c1eda1ca36d89b0bbd948b655aa68f17370",
+      "file_count": 16,
+      "total_bytes": 6605629
+    },
+    "F43": {
+      "commit": "c0271e2b8d59018d3cf2af7b366258ea503295a6",
+      "file_count": 19,
+      "total_bytes": 25234336
+    },
+    "J42": {
+      "commit": "f53cb0d2bce52640268c844c398bbd8007d28edc",
+      "file_count": 18,
+      "total_bytes": 2794259
+    },
+    "U43": {
+      "commit": "dcf71f1afbfdbe8a084844cea5fffbc73d9d91ef",
+      "file_count": 22,
+      "total_bytes": 8208008
+    },
+    "U43_ISSUED_WORKLOAD_MODULE": {
+      "commit": "dcf71f1afbfdbe8a084844cea5fffbc73d9d91ef",
+      "file_count": 1,
+      "path": "rawlsing_next/pre553_issued_workload.py"
+    }
+  },
+  "s44": {
+    "refusal_codes": {
+      "artifact_preimage_changed": "PREIMAGE_ERROR:CONTENT_PREIMAGE_MISMATCH:WORKER_RETURNS/PYAT-R42-A42-WHOLE-ESTATE-RETURN-FANIN-AND-N11-CANDIDATE-R1/j42_addon_endpoint.",
+      "clock_after_estate": "S44_CLOCK_VIOLATION",
+      "clock_not_current": "S44_CLOCK_NOT_CURRENT",
+      "forged_consumer": "S44_UNKNOWN_USER_CONSUMER_REF",
+      "issuance_missing": "S44_COMPETENT_U_E_PRE_ISSUANCE_ATTESTATION_REQUIRED",
+      "missing_grant": "S44_MISSING_GRANT",
+      "missing_host": "S44_GRANT_HOST_REQUIRED",
+      "missing_purpose": "S44_GRANT_PURPOSE_REQUIRED",
+      "no_measured_product": "S44_NO_MEASURED_PRODUCT",
+      "operation_not_granted": "S44_GRANT_SCOPE_MISSING_OPERATION",
+      "revoked_grant": "S44_GRANT_REVOKED",
+      "synthetic_issuance_without_witness_mode": "S44_SYNTHETIC_GRANT_REQUIRES_EXPLICIT_WITNESS_MODE",
+      "u_e_pre_not_issued": "S44_U_E_PRE_NOT_ISSUED",
+      "wave_out_of_scope": "S44_WAVE_OUT_OF_SCOPE"
+    },
+    "state": "EXECUTABLE_SOCKET_READY__NO_REAL_S44_RECEIPT_PRESENT",
+    "synthetic_witness_counted_in_real_artifacts": false
+  },
+  "schema": "I44_RUN_REPORT@1"
+}

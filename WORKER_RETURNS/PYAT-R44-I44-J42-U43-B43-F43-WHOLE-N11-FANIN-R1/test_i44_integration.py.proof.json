@@ -1,0 +1,38 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "claims": [
+    {
+      "claim_id": "I44_MERGED_RECEIPT_NO_DROP_EDGE",
+      "actual_consumer": "i44_integration.merged_bank/assert_receipt_set merged workload -> unchanged A42 ingest/assess",
+      "claimed_dependency": "independently frozen merged receipt set (20) must include J42, U43, B43 and four F43 receipts; dropping one must be detected",
+      "positive_node": "WORKER_RETURNS/PYAT-R44-I44-J42-U43-B43-F43-WHOLE-N11-FANIN-R1/test_i44_integration.py::test_no_drop_removed_j42_receipt_is_detected",
+      "fault": {
+        "path": "WORKER_RETURNS/PYAT-R44-I44-J42-U43-B43-F43-WHOLE-N11-FANIN-R1/i44_integration.py",
+        "old": "    if ids != EXPECTED_MERGED_RECEIPT_IDS:",
+        "new": "    if False:"
+      }
+    },
+    {
+      "claim_id": "I44_A42_FALSE_ORIGINAL_PROMOTION_REFUSAL_EDGE",
+      "actual_consumer": "i44_integration.assess -> A42 a42.core.ingest_r41_bank exact anti-promotion guard",
+      "claimed_dependency": "a sourcefree receipt relabelled ORIGINAL_MEASURED_OCCUPANCY while the frozen wave U/E_pre is unissued must raise PreimageError, never be laundered",
+      "positive_node": "WORKER_RETURNS/PYAT-R44-I44-J42-U43-B43-F43-WHOLE-N11-FANIN-R1/test_i44_integration.py::test_false_sourcegrade_promotion_is_refused",
+      "fault": {
+        "path": "WORKER_RETURNS/PYAT-R44-I44-J42-U43-B43-F43-WHOLE-N11-FANIN-R1/i44_integration.py",
+        "old": "    r41 = a42core.ingest_r41_bank(bank, gp, scope)",
+        "new": "    r41 = list(bank[\"receipts\"])  # I44_FAULT_BYPASSES_A42_INTAKE"
+      }
+    },
+    {
+      "claim_id": "I44_U43_DESCRIPTOR_TO_B43_ISSUER_FRONTEND_EDGE",
+      "actual_consumer": "u43_b43_adapter.admit_via_b43 -> B43 IssuerBoundAdmission against the issued descriptor contract",
+      "claimed_dependency": "a forged U43 descriptor candidate (source_edition/native_item_ids/release_tag) must be denied by B43 before any native execution",
+      "positive_node": "WORKER_RETURNS/PYAT-R44-I44-J42-U43-B43-F43-WHOLE-N11-FANIN-R1/test_i44_integration.py::test_u43_b43_compiled_adapter_refuses_forged_descriptor",
+      "fault": {
+        "path": "WORKER_RETURNS/PYAT-R44-I44-J42-U43-B43-F43-WHOLE-N11-FANIN-R1/u43_b43_adapter.py",
+        "old": "    plan = as_b43_plan(candidate_descriptor or descriptor, op_ids=op_ids)",
+        "new": "    plan = as_b43_plan(descriptor, op_ids=op_ids)"
+      }
+    }
+  ]
+}

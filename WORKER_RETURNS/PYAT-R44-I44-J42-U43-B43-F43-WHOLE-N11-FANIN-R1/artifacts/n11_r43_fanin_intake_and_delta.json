@@ -1,0 +1,264 @@
+{
+  "artifact": "n11_r41_return_intake_and_delta.json",
+  "delta": {
+    "missing_delta": -3,
+    "new_a42_original_measured": 0,
+    "new_functional_evidence_gates": [
+      "F1",
+      "F2",
+      "F3",
+      "F4",
+      "F5",
+      "F6",
+      "F7",
+      "F8"
+    ],
+    "new_functional_grades": {
+      "F1": "SOURCEFREE_INTEGRATED_POSITIVE",
+      "F2": "SOURCEFREE_INTEGRATED_POSITIVE",
+      "F3": "SOURCEFREE_INTEGRATED_POSITIVE",
+      "F4": "SOURCEFREE_INTEGRATED_POSITIVE",
+      "F5": "HISTORICAL_RETAINED_EVIDENCE",
+      "F6": "INDEPENDENTLY_ACCEPTED_SOURCEFREE",
+      "F7": "SOURCEFREE_INTEGRATED_POSITIVE",
+      "F8": "SOURCEFREE_INTEGRATED_POSITIVE"
+    },
+    "new_historical_or_retained_cells": 5,
+    "new_independently_accepted_sourcefree_cells": 0,
+    "new_missing_expected": 1778,
+    "new_sourcefree_integrated_cells": 0,
+    "new_sourcefree_local": 2,
+    "no_new_original_occupied_cells": true,
+    "old_a41_original_measured": 0,
+    "old_functional_evidence_gates": [],
+    "old_missing_expected": 1781,
+    "old_sourcefree_local": 2
+  },
+  "f6p_not_world_acceptance": true,
+  "grade_buckets": {
+    "GLOBAL_ACCEPTED": [],
+    "INDEPENDENTLY_ACCEPTED_SOURCEFREE": [
+      "E04L-SOURCEFREE-READTHROUGH",
+      "F6P-SOURCEFREE-PARTIAL-BOUND",
+      "I2-R39I-INDEPENDENT-COURT"
+    ],
+    "INTEGRATED_SOURCEFREE": [
+      "E41-SOURCEFREE-INTEGRATED",
+      "W41-SOURCEFREE-INTEGRATED",
+      "P41-SOURCEFREE-INTEGRATED",
+      "F43-ORIGINAL-E04-TEST",
+      "J42-JOINED-E41-W41-P41-NATIVE"
+    ],
+    "RETAINED_HISTORIC": [
+      "AS2B-LITS-HISTORICAL-POSITIVE",
+      "W41-RETAINED-GT2-J04",
+      "F43-RETAINED-F5-CONTEXT"
+    ],
+    "SOURCEFREE_LOCAL": [
+      "O35B-P1-M1-NATIVE-BINDING",
+      "WV1-SOURCEFREE-WORLD-CONSUMPTION",
+      "F43-BOUNDED-F6-CANDIDATE",
+      "F43-TEMPORAL-CANDIDATE"
+    ],
+    "SOURCE_AUTHORIZED": []
+  },
+  "i44_a42_base_receipts": 13,
+  "i44_assessor": {
+    "artifacts_function": "a42.core.artifacts",
+    "assessment_function": "a42.core.assess_v2",
+    "commit": "843175b0587b54db3df1f461ad9f7f1314894372",
+    "intake_function": "a42.core.ingest_r41_bank",
+    "module": "WORKER_RETURNS/PYAT-R42-A42-WHOLE-ESTATE-RETURN-FANIN-AND-N11-CANDIDATE-R1/a42/core.py",
+    "owner": "A42 unchanged a42.core"
+  },
+  "i44_merged_receipt_count": 20,
+  "i44_merged_receipts": [
+    "E41-SOURCEFREE-INTEGRATED",
+    "W41-RETAINED-GT2-J04",
+    "W41-SOURCEFREE-INTEGRATED",
+    "P41-SOURCEFREE-INTEGRATED",
+    "F43-RETAINED-F5-CONTEXT",
+    "F43-BOUNDED-F6-CANDIDATE",
+    "F43-TEMPORAL-CANDIDATE",
+    "F43-ORIGINAL-E04-TEST",
+    "J42-JOINED-E41-W41-P41-NATIVE",
+    "U43-ORIGINAL35-FRONTIER-AND-DESCRIPTOR-REPAIR",
+    "B43-SELECTED-B-SOURCE-FEEDER"
+  ],
+  "i44_new_receipts": {
+    "B43": "B43-SELECTED-B-SOURCE-FEEDER",
+    "F43": [
+      "F43-RETAINED-F5-CONTEXT",
+      "F43-BOUNDED-F6-CANDIDATE",
+      "F43-TEMPORAL-CANDIDATE",
+      "F43-ORIGINAL-E04-TEST"
+    ],
+    "J42": "J42-JOINED-E41-W41-P41-NATIVE",
+    "U43": "U43-ORIGINAL35-FRONTIER-AND-DESCRIPTOR-REPAIR"
+  },
+  "i44_overlay_law": "I44 corrects only labels A42 could not know (J42 returned after A42 was authored) and appends provenance; verdict, tallies, cells, grades, global relations, 151/101/81 and measured occupancy are A42's own values.",
+  "j42_state": "INTEGRATED_ACTUAL_NATIVE_JOINED_RETURN__SOURCEFREE_TESTONLY",
+  "new_a42": {
+    "grade_tally": {
+      "ACCOUNTED_IDENTITY_ONLY__NOT_OCCUPIED": 70,
+      "DEVELOPMENT_BLOCKER_WITH_NARROW_OWNER": 35,
+      "HISTORICAL_OR_RETAINED__NOT_CURRENT_OCCUPANCY": 5,
+      "MISSING_EXPECTED_ORIGINAL_SCIENCE__NOT_INTRINSICALLY_INAPPLICABLE": 1778,
+      "SOURCEFREE_LOCAL_POSITIVE__NOT_ORIGINAL_OCCUPANCY": 2
+    },
+    "receipts": 20,
+    "verdict": {
+      "blocked_cells": 35,
+      "can_self_adopt_n11": false,
+      "finite_blocker_count": 1781,
+      "functional_evidence_gates": [
+        "F1",
+        "F2",
+        "F3",
+        "F4",
+        "F5",
+        "F6",
+        "F7",
+        "F8"
+      ],
+      "global_relations_closed": 0,
+      "global_relations_open": 3,
+      "historical_or_retained_cells": 5,
+      "identity_accounted_only_cells": 70,
+      "independently_accepted_sourcefree_cells": 0,
+      "intrinsic_nonapplicability_cells": 0,
+      "missing_expected_cells": 1778,
+      "n11_state": "N11_NOT_READY",
+      "notes": [
+        "SOURCEFREE_LOCAL_PASS != ORIGINAL_ESTATE_OCCUPANCY",
+        "R41 sourcefree integration does not create original U/E_pre",
+        "per-wave F6/F7/F8 cells cannot discharge the global F6/F7/F8 capabilities"
+      ],
+      "original_measured_missing_cells": 1890,
+      "original_measured_occupied_cells": 0,
+      "sourcefree_integrated_cells": 0,
+      "sourcefree_local_cells": 2,
+      "total_cells": 1890,
+      "unmatched_register_rows": 81,
+      "unmatched_resolved_by_competent_retirement": 0,
+      "unmatched_still_unresolved": 81,
+      "valid_null_cells": 0,
+      "verdict_scope": "whole declared estate 35/1890/151/101/F1-F8 global (A42 v2)"
+    }
+  },
+  "no_invented_original_occupancy": true,
+  "old_a41": {
+    "grade_tally": {
+      "ACCOUNTED_IDENTITY_ONLY__NOT_OCCUPIED": 70,
+      "DEVELOPMENT_BLOCKER_WITH_NARROW_OWNER": 35,
+      "HISTORICAL_SCOPE_POSITIVE__NOT_CURRENT_OCCUPANCY": 2,
+      "MISSING_EXPECTED_ORIGINAL_SCIENCE__NOT_INTRINSICALLY_INAPPLICABLE": 1781,
+      "SOURCEFREE_LOCAL_POSITIVE__NOT_ORIGINAL_OCCUPANCY": 2
+    },
+    "receipts": 9,
+    "verdict": {
+      "blocked_cells": 35,
+      "can_self_adopt_n11": false,
+      "empirical_null_cells": 0,
+      "finite_blocker_count": 1784,
+      "global_relations_closed": 0,
+      "global_relations_open": 3,
+      "historical_scope_cells": 2,
+      "identity_accounted_only_cells": 70,
+      "intrinsic_nonapplicability_cells": 0,
+      "missing_expected_cells": 1781,
+      "n11_state": "N11_NOT_READY",
+      "notes": [
+        "SOURCEFREE_LOCAL_PASS != ORIGINAL_ESTATE_OCCUPANCY",
+        "TYPED_REFUSAL != COMPLETION",
+        "AUTHORIZED_SOURCE != ARBITRARY_QUERY",
+        "per-wave F6/F7/F8 cells cannot discharge the global F6/F7/F8 capabilities"
+      ],
+      "original_measured_occupied_cells": 0,
+      "sourcefree_covered_cells": 2,
+      "total_cells": 1890,
+      "verdict_scope": "whole declared estate: 35 waves / 1,890 cells / 151<->101 / F1-F8 global"
+    }
+  },
+  "old_a41_source": "4a51e5c0efe4522dbc0b379c5e118efc356d0c1c",
+  "r41_intake": [
+    {
+      "claim_id": "E41_FULL_F1F4_31_OPS_18_N10E_SLICES_ORIGINAL_E04_CONSUMER",
+      "grade": "SOURCEFREE_INTEGRATED_POSITIVE",
+      "origin_commit": "6e123bafe749d6997c764ae117fb5e68e0139ed7",
+      "receipt_id": "E41-SOURCEFREE-INTEGRATED",
+      "source_return": "A42_BASE_R41_BANK"
+    },
+    {
+      "claim_id": "W41_RETAINED_GT2_J04_EXACT_LIMITED_STRUCTURAL_POSITIVES",
+      "grade": "HISTORICAL_RETAINED_EVIDENCE",
+      "origin_commit": "b0a68e4ff5d5e2ca62b080376fda6b5f5431a6c2",
+      "receipt_id": "W41-RETAINED-GT2-J04",
+      "source_return": "A42_BASE_R41_BANK"
+    },
+    {
+      "claim_id": "W41_SOURCEFREE_MULTIFIELD_TEMPORAL_84_VIEWS_F6_8_CASES_EE1_9_CASES",
+      "grade": "SOURCEFREE_INTEGRATED_POSITIVE",
+      "origin_commit": "b0a68e4ff5d5e2ca62b080376fda6b5f5431a6c2",
+      "receipt_id": "W41-SOURCEFREE-INTEGRATED",
+      "source_return": "A42_BASE_R41_BANK"
+    },
+    {
+      "claim_id": "P41_GENERIC_PROGRESSIVE_N9_N10E_N10W_19_TRAJECTORIES",
+      "grade": "SOURCEFREE_INTEGRATED_POSITIVE",
+      "origin_commit": "f27d1101048638bba395143a48efb7ef00bfcda4",
+      "receipt_id": "P41-SOURCEFREE-INTEGRATED",
+      "source_return": "A42_BASE_R41_BANK"
+    },
+    {
+      "claim_id": "retained_view GT2 FF/V554/M4 CONTEXT and J04 source-domain reconstruction",
+      "grade": "HISTORICAL_RETAINED_EVIDENCE",
+      "origin_commit": "4fb2058e57291610e23eca1af7f0b27c6730eba8",
+      "receipt_id": "F43-RETAINED-F5-CONTEXT",
+      "source_return": "F43_R43"
+    },
+    {
+      "claim_id": "f6_view F6M/F6P partial conditionals; original_N9_admitted=false",
+      "grade": "SOURCEFREE_LOCAL_POSITIVE",
+      "origin_commit": "4fb2058e57291610e23eca1af7f0b27c6730eba8",
+      "receipt_id": "F43-BOUNDED-F6-CANDIDATE",
+      "source_return": "F43_R43"
+    },
+    {
+      "claim_id": "temporal_view V553/EE1 and strict pre-guard; no observed pair",
+      "grade": "SOURCEFREE_LOCAL_POSITIVE",
+      "origin_commit": "4fb2058e57291610e23eca1af7f0b27c6730eba8",
+      "receipt_id": "F43-TEMPORAL-CANDIDATE",
+      "source_return": "F43_R43"
+    },
+    {
+      "claim_id": "unchanged product.nonparent.consume NONPARENT_OPTIONS under T35 TEST_ONLY rules",
+      "grade": "SOURCEFREE_INTEGRATED_POSITIVE",
+      "origin_commit": "4fb2058e57291610e23eca1af7f0b27c6730eba8",
+      "receipt_id": "F43-ORIGINAL-E04-TEST",
+      "source_return": "F43_R43"
+    },
+    {
+      "claim_id": "J42_E41xW41xP41_ACTUAL_JOINED_PREV3_CONSUMER_V1",
+      "grade": "SOURCEFREE_INTEGRATED_POSITIVE",
+      "origin_commit": "f53cb0d2bce52640268c844c398bbd8007d28edc",
+      "receipt_id": "J42-JOINED-E41-W41-P41-NATIVE",
+      "source_return": "J42_R42"
+    },
+    {
+      "claim_id": "U43 18,285 retained research identities + issuer-bound descriptor transport + WG0L descriptor repair; original U/E_pre and source execution UNISSUED",
+      "grade": "DOCUMENTARY_IDENTITY_RECONCILIATION",
+      "origin_commit": "dcf71f1afbfdbe8a084844cea5fffbc73d9d91ef",
+      "receipt_id": "U43-ORIGINAL35-FRONTIER-AND-DESCRIPTOR-REPAIR",
+      "source_return": "U43_R43"
+    },
+    {
+      "claim_id": "B43_SELECTED_B_SOURCE_POSITIVE_FEEDER_READY__SOURCE_GRANT_PENDING",
+      "grade": "DEVELOPMENT_BLOCKER_WITH_NARROW_OWNER",
+      "origin_commit": "0fa15c1eda1ca36d89b0bbd948b655aa68f17370",
+      "receipt_id": "B43-SELECTED-B-SOURCE-FEEDER",
+      "source_return": "B43_R43"
+    }
+  ],
+  "schema": "PYAT_A42_N11_CANDIDATE@2.0.0"
+}

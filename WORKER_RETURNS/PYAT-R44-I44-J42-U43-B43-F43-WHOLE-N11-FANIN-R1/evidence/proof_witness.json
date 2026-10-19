@@ -1,0 +1,30 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "status": "MECHANICAL_WITNESS_PASS_NOT_SEMANTIC_ADOPTION",
+  "claims": [
+    {
+      "claim_id": "I44_MERGED_RECEIPT_NO_DROP_EDGE",
+      "positive_node": "WORKER_RETURNS/PYAT-R44-I44-J42-U43-B43-F43-WHOLE-N11-FANIN-R1/test_i44_integration.py::test_no_drop_removed_j42_receipt_is_detected",
+      "fault_path": "WORKER_RETURNS/PYAT-R44-I44-J42-U43-B43-F43-WHOLE-N11-FANIN-R1/i44_integration.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    },
+    {
+      "claim_id": "I44_A42_FALSE_ORIGINAL_PROMOTION_REFUSAL_EDGE",
+      "positive_node": "WORKER_RETURNS/PYAT-R44-I44-J42-U43-B43-F43-WHOLE-N11-FANIN-R1/test_i44_integration.py::test_false_sourcegrade_promotion_is_refused",
+      "fault_path": "WORKER_RETURNS/PYAT-R44-I44-J42-U43-B43-F43-WHOLE-N11-FANIN-R1/i44_integration.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    },
+    {
+      "claim_id": "I44_U43_DESCRIPTOR_TO_B43_ISSUER_FRONTEND_EDGE",
+      "positive_node": "WORKER_RETURNS/PYAT-R44-I44-J42-U43-B43-F43-WHOLE-N11-FANIN-R1/test_i44_integration.py::test_u43_b43_compiled_adapter_refuses_forged_descriptor",
+      "fault_path": "WORKER_RETURNS/PYAT-R44-I44-J42-U43-B43-F43-WHOLE-N11-FANIN-R1/u43_b43_adapter.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    }
+  ]
+}
