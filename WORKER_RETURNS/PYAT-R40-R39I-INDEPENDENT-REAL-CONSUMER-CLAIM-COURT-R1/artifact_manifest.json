@@ -1,0 +1,124 @@
+{
+  "schema": "PYAT_R40_R39I_INDEPENDENT_REVIEW_MANIFEST_R1",
+  "reviewer": "independent I2",
+  "model": "DeepSeek V4.1 Flash",
+  "base": "1150e836ef58553255abc0f588e66c1327db4932",
+  "targets": {
+    "E04L": "daf0d085e930696708c755e687879b155653c215",
+    "F6P": "912467aaacb715fd6e80ebc8c2bdd7285c26120b"
+  },
+  "verdicts": {
+    "E04L": "ACCEPT_SOURCEFREE_TEST_ONLY",
+    "F6P": "ACCEPT_SOURCEFREE_TEST_ONLY"
+  },
+  "test_counts": {
+    "court_a_author": 29,
+    "court_a_reviewer": 10,
+    "court_a_reviewer_fault_witnesses": 2,
+    "court_b_author": 32,
+    "court_b_reviewer": 8,
+    "court_b_reviewer_fault_witnesses": 2
+  },
+  "files": [
+    {
+      "path": "00_INDEPENDENT_REVIEW_VERDICTS.md",
+      "sha256": "d3831d92595cd13086abc2da91ea95b0db8cb26fdace17f60d6bba1c1f75c2fc",
+      "bytes": 3437
+    },
+    {
+      "path": "01_COURT_A_E04L_REVIEW.md",
+      "sha256": "d83cbdc974afd6b9d71290be4d0f881c6d62fd3041697e540d5b49621cc42fad",
+      "bytes": 5987
+    },
+    {
+      "path": "02_COURT_B_F6P_REVIEW.md",
+      "sha256": "83448ee043695a6f4357bcbdeaa80464680086820055095341eb03ca2b1f3899",
+      "bytes": 6795
+    },
+    {
+      "path": "03_CROSS_COURT_INDEPENDENCE_AND_LIMITS.md",
+      "sha256": "b86e041d560e326443acf966df958d968c9eeaf34944387370f871180c4484e4",
+      "bytes": 2859
+    },
+    {
+      "path": "04_CUSTODY_PROVENANCE_ENVIRONMENT_AND_REPRODUCTION.md",
+      "sha256": "2e99b9b97f5f68c718f68a1dc4e72233207d4813c6997cd4d98c2c0d509f3531",
+      "bytes": 4245
+    },
+    {
+      "path": "05_ENVIRONMENT_PASSPORT.json",
+      "sha256": "ef0fb241c3853919d881f802b79936b48c74576dc37186eb32cef64818b707be",
+      "bytes": 1244
+    },
+    {
+      "path": "06_COST_RECORD_AND_OUTSTANDING_GRANTS.md",
+      "sha256": "35ee6e0365a8192e05e9250efcce64d3d83b6d1469e0bab2feb2209b3ac0859b",
+      "bytes": 1879
+    },
+    {
+      "path": "evidence/court_a/test_court_a_e04l_independent.py",
+      "sha256": "ef266fd2ba258b4449eef8fedc04f8de52be003e64ffe19d83a3e3df0e82c344",
+      "bytes": 11112
+    },
+    {
+      "path": "evidence/court_a/test_court_a_e04l_independent.py.proof.json",
+      "sha256": "df90ef559c2b56ab8398543b6f38152bd556ddb67ddca70178f791bddf4903ee",
+      "bytes": 2284
+    },
+    {
+      "path": "evidence/court_b/test_court_b_f6p_independent.py",
+      "sha256": "ccefcd47412068ff127fbd2820da2e3986864f381508aa0fdbf4cbaf9691e451",
+      "bytes": 12429
+    },
+    {
+      "path": "evidence/court_b/test_court_b_f6p_independent.py.proof.json",
+      "sha256": "628e95731b50f4b0c367dab2123df77256843b0c32447c530ba64175d3f319b1",
+      "bytes": 2030
+    },
+    {
+      "path": "evidence/logs/court_a_author_fault_witness_repro.json",
+      "sha256": "504520e2711afaf865e0e3b95a98437e68b3838e172b7c6974dcc28f698007e3",
+      "bytes": 1054
+    },
+    {
+      "path": "evidence/logs/court_a_author_new_22.log",
+      "sha256": "9af3850be9948b58fef6cc23c0d81716961d5201f423901138c002e5544469f2",
+      "bytes": 100
+    },
+    {
+      "path": "evidence/logs/court_a_original_native_7.log",
+      "sha256": "78d173cbbab1d6f1c71b8c11bbd434415312030c6569fc685cac1e9ac3414882",
+      "bytes": 98
+    },
+    {
+      "path": "evidence/logs/court_a_reviewer_fault_witness.json",
+      "sha256": "67fcd8ce94e2732e8fafa79be002ae146a41bd52dca9d33e80c5678fc12d8f17",
+      "bytes": 1146
+    },
+    {
+      "path": "evidence/logs/court_a_reviewer_tests.log",
+      "sha256": "3996f9cccedc95f257c989c59f02c8bd7c0e984015dfe7f5c4cfd295c05318c4",
+      "bytes": 100
+    },
+    {
+      "path": "evidence/logs/court_b_author_fault_witness_repro.json",
+      "sha256": "a879a26b71c0528588802567edfaf0aeec22b75922bfbc1afcc648dc3f833731",
+      "bytes": 636
+    },
+    {
+      "path": "evidence/logs/court_b_author_native_32.log",
+      "sha256": "74e8a2ac6d2ebc55822cb0e4c22856769ff4d4b507a66461aa811b5952aaf32f",
+      "bytes": 99
+    },
+    {
+      "path": "evidence/logs/court_b_reviewer_fault_witness.json",
+      "sha256": "fd2bc16d737219488e14a69e063eca2585b87fd69b9382c494ec44769c53f98c",
+      "bytes": 1189
+    },
+    {
+      "path": "evidence/logs/court_b_reviewer_tests.log",
+      "sha256": "1aef82cd5e70b2ea4c95d9d557576257100e1d89b53772510facf304c1e874bd",
+      "bytes": 98
+    }
+  ]
+}

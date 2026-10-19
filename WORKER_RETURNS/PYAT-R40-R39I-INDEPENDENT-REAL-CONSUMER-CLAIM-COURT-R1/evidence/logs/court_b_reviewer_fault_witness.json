@@ -1,0 +1,22 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "status": "MECHANICAL_WITNESS_PASS_NOT_SEMANTIC_ADOPTION",
+  "claims": [
+    {
+      "claim_id": "F6P_INDEPENDENT_UNCOVERED_MASS_READ_IS_LOAD_BEARING",
+      "positive_node": "WORKER_RETURNS/PYAT-R40-R39I-INDEPENDENT-REAL-CONSUMER-CLAIM-COURT-R1/evidence/court_b/test_court_b_f6p_independent.py::test_uncovered_mass_preserved_independently",
+      "fault_path": "WORKER_RETURNS/PYAT-R39-F6P-PARTIAL-BOUND-EVIDENCE-CONSUMER-R1/f6p_partial_bound_evidence_consumer.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    },
+    {
+      "claim_id": "F6P_INDEPENDENT_CONSUMER_RESPONDS_TO_ACTUAL_F6M_DECISION",
+      "positive_node": "WORKER_RETURNS/PYAT-R40-R39I-INDEPENDENT-REAL-CONSUMER-CLAIM-COURT-R1/evidence/court_b/test_court_b_f6p_independent.py::test_consumer_responds_to_actual_producer_decision",
+      "fault_path": "WORKER_RETURNS/PYAT-R39-F6P-PARTIAL-BOUND-EVIDENCE-CONSUMER-R1/native/rawlsing_next/pre553_heterogeneous_synthesis.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    }
+  ]
+}

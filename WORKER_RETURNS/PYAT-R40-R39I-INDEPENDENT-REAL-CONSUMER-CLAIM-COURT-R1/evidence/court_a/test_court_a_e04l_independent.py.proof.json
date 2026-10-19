@@ -1,0 +1,27 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "claims": [
+    {
+      "claim_id": "E04L_INDEPENDENT_SEVERED_SELECTED_RELEASE_MUST_REFUSE",
+      "actual_consumer": "unchanged product.nonparent.consume driven by readthrough.ReadThroughService",
+      "claimed_dependency": "live B5-selected exact M2 release availability -> exact producer fact catalog -> original empirical values_read; removal of the selected immutable release with source fixed must make the unchanged original consumer refuse",
+      "positive_node": "WORKER_RETURNS/PYAT-R40-R39I-INDEPENDENT-REAL-CONSUMER-CLAIM-COURT-R1/evidence/court_a/test_court_a_e04l_independent.py::test_original_consumer_refuses_when_selected_release_removed_source_fixed",
+      "fault": {
+        "path": "WORKER_RETURNS/PYAT-R39-E04L-RELEASE-READTHROUGH-CONSUMER-R1/readthrough.py",
+        "old": "        resolution=m2.resolve_release_exact(p.repository,selected.selected_release_ref)",
+        "new": "        if selected.selected_release_ref.key not in p.repository._releases:\n            p.repository.register_release(p.composition.m2_artifacts.release)  # reviewer-injected cached-release resurrection\n        resolution=m2.resolve_release_exact(p.repository,selected.selected_release_ref)"
+      }
+    },
+    {
+      "claim_id": "E04L_INDEPENDENT_STALE_B5_SELECTION_MUST_NOT_SERVE",
+      "actual_consumer": "unchanged product.nonparent.consume driven by readthrough.ReadThroughService",
+      "claimed_dependency": "each fresh empirical read resolves the live B5 current selection, not a frozen composition-time selection receipt",
+      "positive_node": "WORKER_RETURNS/PYAT-R40-R39I-INDEPENDENT-REAL-CONSUMER-CLAIM-COURT-R1/evidence/court_a/test_court_a_e04l_independent.py::test_stale_b5_current_selection_is_load_bearing",
+      "fault": {
+        "path": "WORKER_RETURNS/PYAT-R39-E04L-RELEASE-READTHROUGH-CONSUMER-R1/readthrough.py",
+        "old": "        selected=p.lifecycle.resolve_selection_exact(self.selection_key,self.selection_receipt)",
+        "new": "        selected=__import__('types').SimpleNamespace(state='CURRENT_SELECTED',selected_release_ref=p.composition.b5_selection_receipt.selected_release_ref,receipt_ref=self.selection_receipt)  # reviewer-injected frozen-selection bypass"
+      }
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "claims": [
+    {
+      "claim_id": "F6P_INDEPENDENT_UNCOVERED_MASS_READ_IS_LOAD_BEARING",
+      "actual_consumer": "f6p_partial_bound_evidence_consumer.consume_f6m_evidence",
+      "claimed_dependency": "the consumer's partial-identification state is driven by the actual F6M candidate uncovered_target_mass; dropping that read must fabricate full coverage and change the state",
+      "positive_node": "WORKER_RETURNS/PYAT-R40-R39I-INDEPENDENT-REAL-CONSUMER-CLAIM-COURT-R1/evidence/court_b/test_court_b_f6p_independent.py::test_uncovered_mass_preserved_independently",
+      "fault": {
+        "path": "WORKER_RETURNS/PYAT-R39-F6P-PARTIAL-BOUND-EVIDENCE-CONSUMER-R1/f6p_partial_bound_evidence_consumer.py",
+        "old": "    uncovered = _q(candidate[\"uncovered_target_mass\"])",
+        "new": "    uncovered = F(0)  # reviewer-injected: drop uncovered mass"
+      }
+    },
+    {
+      "claim_id": "F6P_INDEPENDENT_CONSUMER_RESPONDS_TO_ACTUAL_F6M_DECISION",
+      "actual_consumer": "f6p_partial_bound_evidence_consumer.consume_f6m_evidence",
+      "claimed_dependency": "named consumer state follows the actual F6M producer decision/status product; corrupting the F6M decision must change the consumer response",
+      "positive_node": "WORKER_RETURNS/PYAT-R40-R39I-INDEPENDENT-REAL-CONSUMER-CLAIM-COURT-R1/evidence/court_b/test_court_b_f6p_independent.py::test_consumer_responds_to_actual_producer_decision",
+      "fault": {
+        "path": "WORKER_RETURNS/PYAT-R39-F6P-PARTIAL-BOUND-EVIDENCE-CONSUMER-R1/native/rawlsing_next/pre553_heterogeneous_synthesis.py",
+        "old": "    out[\"decision\"] = (\"PARTIAL_IDENTIFICATION_ONLY\" if candidate[\"distribution\"] is None or uncovered > 0\n                       else \"SYNTHETIC_CANDIDATE\" if out[\"test_origin\"]\n                       else \"INFERRED_CANDIDATE_REQUIRES_REVIEW\")",
+        "new": "    out[\"decision\"] = \"SYNTHETIC_CANDIDATE\"  # reviewer-injected: mislabel partial as complete"
+      }
+    }
+  ]
+}
