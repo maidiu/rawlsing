@@ -1,0 +1,44 @@
+"""Real retained original LiTS objects -> native catalog, bounded before I03."""
+import json
+from pathlib import Path
+import sys
+
+import pytest
+
+HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(HERE))
+sys.path.insert(0, str(HERE.parents[1]))
+import retained_catalog
+from rawlsing_next.pre553_carrier_execution import materialize_public_object, CarrierExecutionBindingError
+
+
+def frozen_refs(family):
+    freeze = json.loads((HERE / 'evidence/RETAINED_NATIVE_CATALOG_FREEZE.json').read_text())
+    return {tuple(sorted(r.items())) for r in freeze['expected_refs'] if r['kind'] == family + '@1.0.0'}
+
+
+def test_retained_original_query_catalog_no_drop():
+    catalog = retained_catalog.build_retained_catalog()
+    actual = {tuple(sorted(r.as_dict().items())) for r in catalog.query_refs}
+    expected = frozen_refs('EmpiricalQuerySpec')
+    assert expected - actual == set()
+    assert actual - expected == set()
+    assert len(actual) == 63
+
+
+def test_retained_native_predicate_and_authority_closure():
+    catalog = retained_catalog.build_retained_catalog()
+    actual_predicates = {tuple(sorted(r.as_dict().items())) for r in catalog.predicate_refs}
+    actual_authorities = {tuple(sorted(a.ref.as_dict().items())) for a in catalog.authorities}
+    assert actual_predicates == frozen_refs('EmpiricalPredicate')
+    assert frozen_refs('AuthoritySnapshot') <= actual_authorities
+    assert len(catalog.authorities) == 24
+    assert len(catalog.predicates) == 35
+    assert len(catalog.queries) == 63
+
+
+def test_deferred_original_fact_is_not_an_exact_native_fact():
+    partial = json.loads((HERE / 'evidence/retained_DEFERRED_fact_negative_only.json').read_text())
+    assert '$deferred_retained_member' in partial['preimage']['dependency_refs']
+    with pytest.raises(CarrierExecutionBindingError, match='preimage'):
+        materialize_public_object(partial['preimage'])

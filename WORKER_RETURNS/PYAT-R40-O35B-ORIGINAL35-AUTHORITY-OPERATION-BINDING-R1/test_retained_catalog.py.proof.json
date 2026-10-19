@@ -1,0 +1,24 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "claims": [{
+    "claim_id": "O35B_RETAINED_ORIGINAL_PREIMAGE_TO_NATIVE_OBJECT_DESERIALIZATION",
+    "actual_consumer": "sealed materialize_public_object; NOT a complete catalog registry or I03/Batch/M1",
+    "claimed_dependency": "exact retained original LiTS query preimages enter actual native canonical objects without omitting any of the independently Git-pinned 63 query refs; full registry claim remains falsified",
+    "positive_node": "WORKER_RETURNS/PYAT-R40-O35B-ORIGINAL35-AUTHORITY-OPERATION-BINDING-R1/test_retained_catalog.py::test_retained_original_query_consumer_preimages_no_drop",
+    "fault": {
+      "path": "WORKER_RETURNS/PYAT-R40-O35B-ORIGINAL35-AUTHORITY-OPERATION-BINDING-R1/retained_catalog.py",
+      "old": "    return tuple(materialize_public_object(d) for d in documents)",
+      "new": "    return tuple(materialize_public_object(d) for d in documents if d['content_hash'] != '06ce0011b9871286a0d1eb271cdf85b2333652acebc9378c3dab7f32651bd748')"
+    }
+  }, {
+    "claim_id": "O35B_EXACT_ORIGINAL_QUERY_PACKET_TO_SCOPED_NATIVE_CATALOG",
+    "actual_consumer": "sealed RuntimeObjectCatalog.from_documents and query_refs on exact source-defined scoped projection; NOT I03/Batch/M1",
+    "claimed_dependency": "all independently Git-pinned63 original LiTS query refs survive exact original snapshot projection and actual native catalog materialization",
+    "positive_node": "WORKER_RETURNS/PYAT-R40-O35B-ORIGINAL35-AUTHORITY-OPERATION-BINDING-R1/test_retained_catalog.py::test_original_scoped_catalog_consumer_no_drop",
+    "fault": {
+      "path": "WORKER_RETURNS/PYAT-R40-O35B-ORIGINAL35-AUTHORITY-OPERATION-BINDING-R1/retained_catalog.py",
+      "old": "        query_documents=queries,",
+      "new": "        query_documents=queries[1:],"
+    }
+  }]
+}

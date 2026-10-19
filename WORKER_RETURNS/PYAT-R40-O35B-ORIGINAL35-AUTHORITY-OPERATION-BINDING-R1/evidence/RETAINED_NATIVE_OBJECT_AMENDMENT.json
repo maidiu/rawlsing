@@ -1,0 +1,16 @@
+{
+  "schema": "O35B_RETAINED_NATIVE_OBJECT_CLAIM_AMENDMENT_R1",
+  "observed_utc": "2026-10-19T04:31:29.272009+00:00",
+  "prior_preregistration_sha256": "9cc81b7358a0ff754a0129e6f030dcf49b4458d8d082b695c0fb1ff2256b0693",
+  "prior_claim_grade": "FALSIFIED_AT_NATIVE_AUTHORITY_REGISTRY; no successful witness claimed",
+  "prior_test_source_sha256": "9e641e6591a37dae4419115d5fd9e78a1ba39240e9ee95ac44574492584658dc",
+  "actual_observation": "RuntimeObjectCatalog.from_documents re-materializes the preimages, then AuthorityRegistry raises Pre553AuthorityConflict: duplicate exact authority ref has conflicting snapshots",
+  "prior_attempt_junit": "evidence/retained_full_catalog_RED.xml",
+  "claim_id": "O35B_RETAINED_ORIGINAL_PREIMAGE_TO_NATIVE_OBJECT_DESERIALIZATION",
+  "actual_target_consumer": "sealed materialize_public_object; no catalog registry union, I03, Batch, M1 or authority adoption",
+  "claimed_dependency": "Every independently Git-pinned original query/predicate preimage survives into actual native canonical object deserialization, with exact identity equality; all 24 retained snapshots are individually materialized without choosing among duplicate authority keys",
+  "frozen_positive_oracle": "RETAINED_NATIVE_CATALOG_FREEZE.json 63 independently Git-pinned query refs, 35 predicates and 12 enumerated snapshot refs; packet retains 24 snapshots total",
+  "fault_injection_target_and_expected_RED": "Omit exact first sorted retained query preimage before materialize_public_object; named expected-vs-actual query-ref anti-join assertion must RED while all source preimages/expected refs stay fixed; restore GREEN",
+  "positive_test_node": "test_retained_catalog.py::test_retained_original_query_consumer_preimages_no_drop",
+  "owner_decision_not_self_issued": "Six duplicate authority triples carry different immutable public envelopes. Preserve both. Owner must specify exact scoped snapshot projection/namespace for execution; no first/last-row selection or registry weakening."
+}

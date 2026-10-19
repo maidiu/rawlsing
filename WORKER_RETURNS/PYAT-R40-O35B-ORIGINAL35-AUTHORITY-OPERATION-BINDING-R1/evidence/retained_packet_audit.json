@@ -1,0 +1,234 @@
+{
+  "schema": "O35B_PORTABLE_RETAINED_PACKET_AUDIT_R1",
+  "observed_utc": "2026-10-19T04:38:36.444312+00:00",
+  "external_locator": "LOCAL_TRANSFERRED_D2P_PORTABLE_PACKET; HOST_PATH_REDACTED",
+  "portable_manifest_sha256": "46b38c21f2b331575b12f2eadd09348299ab9c6736983f9f281fd48644ff8106",
+  "seven_file_hashes_and_sizes": [
+    {
+      "bytes": 2070,
+      "path": "01_CHECKPOINT_IDENTITY.json",
+      "sha256": "d11c905c4af358142517d9bf4953b97f669fee72f23c04163301076099c765f6"
+    },
+    {
+      "bytes": 789815,
+      "path": "02_CANDIDATE_RECEIPT_BINDINGS.jsonl",
+      "sha256": "db7fddffd89662cf7df34472a5de48eae76c2c14fe8a8574abdfd2753edf62ee"
+    },
+    {
+      "bytes": 65748,
+      "path": "03_AUTHORITY_SNAPSHOT_CLOSURE.jsonl",
+      "sha256": "31a6eed307c3a2619b52cf1186f48dc883e6f4844a0d7d2c03121ee8308e93c4"
+    },
+    {
+      "bytes": 2688913,
+      "path": "04_PER_OBJECT_AUTHORITY_BINDINGS.jsonl",
+      "sha256": "33205c20c7b98cc97b11fb010c8f95e3c1fa5d0e5ab9d3f12991f561b1d1cd3a"
+    },
+    {
+      "bytes": 249175,
+      "path": "05_P2_LOGICAL_BINDINGS.jsonl",
+      "sha256": "270c165dd639ae52be139132072da10bb82d3396349a4a140bb312a412fdf0f0"
+    },
+    {
+      "bytes": 2448,
+      "path": "06_B001_B002_B003_CLOSURE.json",
+      "sha256": "ccbdb2f733b004938c7cb010034bc668bdbc07f4d2ec8e12c8f4251415e8a621"
+    },
+    {
+      "bytes": 25038,
+      "path": "07_EXTRACTION_SCRIPT.py",
+      "sha256": "5464ccd4b714aa67fcdbc411d11959d3fb0a39b979f768fde104a167af6ed74e"
+    }
+  ],
+  "nine_checksum_entries_verified": [
+    "00_RETURN.md",
+    "01_CHECKPOINT_IDENTITY.json",
+    "02_CANDIDATE_RECEIPT_BINDINGS.jsonl",
+    "03_AUTHORITY_SNAPSHOT_CLOSURE.jsonl",
+    "04_PER_OBJECT_AUTHORITY_BINDINGS.jsonl",
+    "05_P2_LOGICAL_BINDINGS.jsonl",
+    "06_B001_B002_B003_CLOSURE.json",
+    "07_EXTRACTION_SCRIPT.py",
+    "08_PACKET_MANIFEST.json"
+  ],
+  "checkpoint_file_currently_available": false,
+  "checkpoint_hash_grade": "UPSTREAM_EXPORT_RECEIPT_ONLY; NOT_REMEASURED_HERE",
+  "closure_identity_grade": "RECORDED_NOT_RECOMPUTED_FROM_FULL_CHECKPOINT",
+  "native_individual_objects_materialized": 122,
+  "native_individual_object_counts": {
+    "EmpiricalPredicate": 35,
+    "EmpiricalQuerySpec": 63,
+    "AuthoritySnapshot": 24
+  },
+  "independent_Git_query_predicate_snapshot_ref_counts": {
+    "EmpiricalPredicate@1.0.0": 35,
+    "EmpiricalQuerySpec@1.0.0": 63,
+    "AuthoritySnapshot@1.0.0": 12
+  },
+  "original_oracle_exact_ref_count": 225,
+  "retained_public_object_inventory_count": 234,
+  "whole_24_snapshot_archive_as_one_catalog": {
+    "status": "RED_PRESERVED",
+    "exception": "Pre553AuthorityConflict",
+    "detail": "duplicate exact authority ref has conflicting snapshots"
+  },
+  "distinct_authority_ref_triples_in_archive": 18,
+  "conflicting_snapshot_pairs": [
+    {
+      "authority_id": "urn:rawlsing:prev3:f02:lits1:source-semantics",
+      "authority_version": "1.0.0",
+      "authority_content_hash": "47142de560f66e725283aaf96024bfad06fb0b33eeb56e3c8cfdc8afcc745bc0",
+      "public_snapshot_hashes": [
+        "18b028e4f63b47cfbb667d0a02bd535514a95ba18563b0bef8e9f8a6d4a74e21",
+        "8d0ad477ae45bbae9541453164af46c97fee9a63f14a3661b3ef15ad6ad4739a"
+      ],
+      "different_semantic_fields": [
+        "effective_time_or_interval",
+        "governed_object_families",
+        "governed_operations",
+        "interpretation_semantics_fingerprint",
+        "parent_authority_refs",
+        "replay_protocol_ref",
+        "scope_envelope"
+      ]
+    },
+    {
+      "authority_id": "urn:rawlsing:pre553:as2b:lits1:authority:routing",
+      "authority_version": "AS2A-BANKED-1.0.0",
+      "authority_content_hash": "703f629c5d2b66e1ea5fccfddec80130bbb9b2ea5f8f93c4f69ad5797158d89a",
+      "public_snapshot_hashes": [
+        "18b0bc3a28db044161b9b1e18271a521f794a1b5c56941825a86a28ab73006c2",
+        "5942a8d07abd0ef2e49595616dc3ccec487327b7c9eb5d1b0a12ac4213f0b9cc"
+      ],
+      "different_semantic_fields": [
+        "effective_time_or_interval",
+        "governed_object_families",
+        "governed_operations",
+        "interpretation_semantics_fingerprint",
+        "replay_protocol_ref",
+        "scope_envelope"
+      ]
+    },
+    {
+      "authority_id": "urn:rawlsing:pre553:as2b:lits1:authority:source_semantics",
+      "authority_version": "AS2A-BANKED-1.0.0",
+      "authority_content_hash": "5f671f2cf9342820026af287009d1d9220e3f9f29d92134582d77eeebbdcd638",
+      "public_snapshot_hashes": [
+        "48ff1623e548239296c8687c37dcfc1cb7022ed71091c6ba96d5cc4a3e6a5d27",
+        "6e25a273ec71433a9c7d8b456af6a805600cc6ebf8d4f10bbe26260f00cece8a"
+      ],
+      "different_semantic_fields": [
+        "effective_time_or_interval",
+        "governed_object_families",
+        "governed_operations",
+        "interpretation_semantics_fingerprint",
+        "replay_protocol_ref",
+        "scope_envelope"
+      ]
+    },
+    {
+      "authority_id": "urn:rawlsing:pre553:as2b:lits1:authority:i03_query",
+      "authority_version": "AS2A-BANKED-1.0.0",
+      "authority_content_hash": "6c6d2f5fb5f4165e5de19989bd456ee8c09f42ab175fa4d10572dc2b9403ca0d",
+      "public_snapshot_hashes": [
+        "59481f8d7444d06e23236d8715bc3ca235610064c46b1ed919414f74350b984f",
+        "a3435ceb84a1ebf1efb9c031bd56c4bff61cdbba55a837043d64a0a5d4f3aef7"
+      ],
+      "different_semantic_fields": [
+        "effective_time_or_interval",
+        "governed_object_families",
+        "governed_operations",
+        "interpretation_semantics_fingerprint",
+        "replay_protocol_ref",
+        "scope_envelope"
+      ]
+    },
+    {
+      "authority_id": "urn:rawlsing:prev3:f02:lits1:predicate-grammar",
+      "authority_version": "1.0.0",
+      "authority_content_hash": "bc6d433ff58e67e343f1bd1d8e3e92d691b81931dca6447716b08dbf0c8eff8b",
+      "public_snapshot_hashes": [
+        "af2ab61bcdf2031d8295e5ba9999df0f610e6c2d5a2520523f2b2cc8f8735390",
+        "d4ac78517912cb604f9ea8074bbbf737fb4cc1784b7d10eb711fe50432ca81d3"
+      ],
+      "different_semantic_fields": [
+        "effective_time_or_interval",
+        "governed_object_families",
+        "governed_operations",
+        "interpretation_semantics_fingerprint",
+        "parent_authority_refs",
+        "replay_protocol_ref",
+        "scope_envelope"
+      ]
+    },
+    {
+      "authority_id": "urn:rawlsing:prev3:f02:lits1:routing",
+      "authority_version": "1.0.0",
+      "authority_content_hash": "52e741a07b75c475254628dfdf191a77f969e0a7cd7bbdf9b7a90addf324d540",
+      "public_snapshot_hashes": [
+        "bf15826d0a91d989d2d76a6a92835d8ed3b7ec19ef644f4d467302837fe80924",
+        "e7c7707cf4d7b67050f80715c36a0d9531d6526ad8071177da5806568b661c64"
+      ],
+      "different_semantic_fields": [
+        "effective_time_or_interval",
+        "governed_object_families",
+        "governed_operations",
+        "interpretation_semantics_fingerprint",
+        "parent_authority_refs",
+        "replay_protocol_ref",
+        "scope_envelope"
+      ]
+    }
+  ],
+  "scoped_catalog": {
+    "snapshots": 13,
+    "predicates": 35,
+    "queries": 63,
+    "grade": "EXACT_SOURCEFREE_NATIVE_PACKET_BINDING; NO_EXECUTION_GRANT"
+  },
+  "actual_original_query_Batch_gate": {
+    "grade": "EXACT_RELEASE_PREIMAGE_UNAVAILABLE; NO_EXECUTION",
+    "exception": "BatchIntegrityError",
+    "detail": "exact C11 release unavailable; no latest/default/fuzzy/nearest fallback",
+    "query_ref": {
+      "kind": "EmpiricalQuerySpec@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:06ce0011b9871286a0d1eb271cdf85b2333652acebc9378c3dab7f32651bd748",
+      "content_hash": "06ce0011b9871286a0d1eb271cdf85b2333652acebc9378c3dab7f32651bd748"
+    },
+    "release_ref": {
+      "kind": "C11LogicalRelease",
+      "object_id": "LITS1-I02-F02-SUCCESSOR-7cac43e2ca5b31cb-bf305bf3f169d669",
+      "content_hash": "192926fabd9c9c3d40e43b1d7705ca2bcfe7f8d06e286be26d4b886d436df43f"
+    },
+    "native_ordered_target_refs": [
+      {
+        "content_hash": "c2d934d3687e1200ab524a51d8f51b3d920c548754b4aefbefe506b01986806f",
+        "kind": "QUESTION_NATIVE",
+        "object_id": "urn:rawlsing:pre553:as2b:lits1-q301_7:sha256:c2d934d3687e1200ab524a51d8f51b3d920c548754b4aefbefe506b01986806f"
+      }
+    ],
+    "native_condition_predicate_ref": {
+      "content_hash": "d70117a545873dbeb9c9f46301564d60d44b02187d822df4082824aa71d7224f",
+      "kind": "EmpiricalPredicate@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:d70117a545873dbeb9c9f46301564d60d44b02187d822df4082824aa71d7224f"
+    },
+    "native_risk_set_ref": {
+      "content_hash": "31f7ec452d8d75eebf7963d1ce1715b38f5329a31c757d9088819c99f5d4db45",
+      "kind": "RISK_SET",
+      "object_id": "urn:rawlsing:pre553:as2b:lits1-q301-bounded:sha256:31f7ec452d8d75eebf7963d1ce1715b38f5329a31c757d9088819c99f5d4db45"
+    },
+    "native_measure_basis_ref": {
+      "content_hash": "25e90c83f1f226ce7eb6a337018635b28427ae90446f3e4d825a1788c43336ec",
+      "kind": "AS3_QUERY_MEASURE_BASIS",
+      "object_id": "urn:rawlsing:pre553:as3:measure-raw:sha256:25e90c83f1f226ce7eb6a337018635b28427ae90446f3e4d825a1788c43336ec"
+    }
+  },
+  "deferred_Facts_not_materializable": 60,
+  "deferred_payload_bytes_upstream_declared": 3276820474,
+  "source_read_calls": 0,
+  "I03_runs": 0,
+  "I05_runs": 0,
+  "Batch_runs": 0,
+  "M1_original_runs": 0,
+  "original_native_execution_edge": "NOT_PROVED"
+}

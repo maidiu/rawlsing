@@ -8,6 +8,9 @@
 | Frozen expectation → actual accounting producer → no-drop anti-join | ASSERTION_EFFICACY_PROVED | Metadata consumer only; first actual accounting unit removed, named assertion RED, source restored |
 | New hostile/boundary tests | 21 PASS | Party, aliases, conflicting meanings, duplicate assertions, nine blocked identities, held methods, source/form/route/risk/design/time/respondent gaps, inactive259 and P10 holds |
 | Existing carrier, Batch, I03, I05, M1 owner suites | 93 PASS | Existing sourcefree native regressions; no original LiTS execution claimed |
+| Retained portable packet / actual native constructors and catalog | Six additional tests PASS | 122 exact public objects individually imported; scoped catalog has 63 queries, 35 predicates, 13 snapshots; no original execution grant |
+| Whole 24-snapshot archive as one registry | Original RED preserved | Six same-key/different-envelope pairs; expected native rejection retained separately from scoped success |
+| Deferred original Fact and missing successor C11 release | Actual native materialization / Batch rejection | Partial Fact cannot satisfy exact identity; real original query reaches Batch constructor and fails missing exact validated release |
 | Historical receipt-only canonical catalog input | Actual native rejection, tested PASS | Hash/count summary cannot materialize a canonical query |
 | Historical release ref without repository preimage | Actual native KeyError, tested PASS | No fuzzy/default/hash-inversion release resolution |
 | Native checkpoint loader at documented custody location | FileNotFoundError | NOT_REACHED due missing retained payload; no original read |
@@ -28,5 +31,7 @@ PYTHONDONTWRITEBYTECODE=1 PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 $QUALIFIED_PYTHON -B 
 ```
 
 Cold pytest output/JUnit, live native import hashes and the actual missing-checkpoint probe are retained. Hostnames and absolute personal paths are redacted in published receipts. Runtime inputs/caches and live markers are ignored. `source_manifest.json` plus Git objects reconstruct the input closure without republishing the 140MB original metadata estate or treating host raw paths as permissions.
+
+The retained-packet continuation has separate preimplementation claim freezes, preserved initial full-registry RED, actual sourcefree catalog binding and two claim-specific fault injections. It does not discharge the commissioned original execution-plan omission control. The canonical-object inventory is 234, while the oracle exact-ref manifest count is 225; an earlier return conflated these and is corrected in place with this explicit disclosure.
 
 The new code is confined to the worker return. It is passive scientific/source accounting and reproducible proof infrastructure; no native owner or production behavior changes. The model/effort last observed in this conversation is GPT-6.1 Sol / Medium, with no autonomous switch. Cash and quota increments are UNKNOWN. This worker is the author of the new ledger and is ineligible to independently accept it.

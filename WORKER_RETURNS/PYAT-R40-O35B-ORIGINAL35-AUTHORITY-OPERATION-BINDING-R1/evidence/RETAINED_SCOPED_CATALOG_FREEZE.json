@@ -1,0 +1,92 @@
+{
+  "schema": "O35B_EXACT_ORIGINAL_CATALOG_PROJECTION_PREREGISTRATION_R1",
+  "observed_utc": "2026-10-19T04:33:15.946556+00:00",
+  "claim_id": "O35B_EXACT_ORIGINAL_QUERY_PACKET_TO_SCOPED_NATIVE_CATALOG",
+  "actual_target_consumer": "RuntimeObjectCatalog.from_documents, exact query_refs/resolve_query; not I03/Batch/M1",
+  "original_query_and_predicate_expected_refs": "RETAINED_NATIVE_CATALOG_FREEZE.json, independently from accepted Git oracle",
+  "projection_rule": "Retain all 12 exact public AuthoritySnapshot refs explicitly enumerated by the accepted original Git oracle. Add a retained snapshot only for a query/predicate-required exact AuthorityRef triple absent from those 12, and only when exactly one retained public snapshot has that triple. Ambiguity raises. No first/last-row/hash-order selection; no altered snapshots; all 24 archive objects preserved separately.",
+  "independently_predetermined_authority_public_refs": [
+    {
+      "kind": "AuthoritySnapshot@1.0.0",
+      "object_id": "urn:rawlsing:pre553:AuthoritySnapshot:sha256:155bed51eeb1c5c81fd66329e8837c33acdf6712172ed47e8dff24cdc51fa0bc",
+      "content_hash": "155bed51eeb1c5c81fd66329e8837c33acdf6712172ed47e8dff24cdc51fa0bc"
+    },
+    {
+      "kind": "AuthoritySnapshot@1.0.0",
+      "object_id": "urn:rawlsing:pre553:AuthoritySnapshot:sha256:18b0bc3a28db044161b9b1e18271a521f794a1b5c56941825a86a28ab73006c2",
+      "content_hash": "18b0bc3a28db044161b9b1e18271a521f794a1b5c56941825a86a28ab73006c2"
+    },
+    {
+      "kind": "AuthoritySnapshot@1.0.0",
+      "object_id": "urn:rawlsing:pre553:AuthoritySnapshot:sha256:1c7111e62895dd2e0cae735690170f72cc1f7dd4416cfa29cbe66a45f918a3d2",
+      "content_hash": "1c7111e62895dd2e0cae735690170f72cc1f7dd4416cfa29cbe66a45f918a3d2"
+    },
+    {
+      "kind": "AuthoritySnapshot@1.0.0",
+      "object_id": "urn:rawlsing:pre553:AuthoritySnapshot:sha256:4e7118a461857e0d3feb0a9e27ed7315771a1cfc1bc1d8b3e191b5637c8c9039",
+      "content_hash": "4e7118a461857e0d3feb0a9e27ed7315771a1cfc1bc1d8b3e191b5637c8c9039"
+    },
+    {
+      "kind": "AuthoritySnapshot@1.0.0",
+      "object_id": "urn:rawlsing:pre553:AuthoritySnapshot:sha256:5744cae786e69cef8a7a21687478c3a60c459abe58641789d768e44880143928",
+      "content_hash": "5744cae786e69cef8a7a21687478c3a60c459abe58641789d768e44880143928"
+    },
+    {
+      "kind": "AuthoritySnapshot@1.0.0",
+      "object_id": "urn:rawlsing:pre553:AuthoritySnapshot:sha256:676e0a4318060de6a0bfc911b007bb4409af94e956ac3f8d5b616720fef70999",
+      "content_hash": "676e0a4318060de6a0bfc911b007bb4409af94e956ac3f8d5b616720fef70999"
+    },
+    {
+      "kind": "AuthoritySnapshot@1.0.0",
+      "object_id": "urn:rawlsing:pre553:AuthoritySnapshot:sha256:6e25a273ec71433a9c7d8b456af6a805600cc6ebf8d4f10bbe26260f00cece8a",
+      "content_hash": "6e25a273ec71433a9c7d8b456af6a805600cc6ebf8d4f10bbe26260f00cece8a"
+    },
+    {
+      "kind": "AuthoritySnapshot@1.0.0",
+      "object_id": "urn:rawlsing:pre553:AuthoritySnapshot:sha256:8d0ad477ae45bbae9541453164af46c97fee9a63f14a3661b3ef15ad6ad4739a",
+      "content_hash": "8d0ad477ae45bbae9541453164af46c97fee9a63f14a3661b3ef15ad6ad4739a"
+    },
+    {
+      "kind": "AuthoritySnapshot@1.0.0",
+      "object_id": "urn:rawlsing:pre553:AuthoritySnapshot:sha256:991921998d813089c186283fbec68b7bb3fb6693e751287102030346f1404085",
+      "content_hash": "991921998d813089c186283fbec68b7bb3fb6693e751287102030346f1404085"
+    },
+    {
+      "kind": "AuthoritySnapshot@1.0.0",
+      "object_id": "urn:rawlsing:pre553:AuthoritySnapshot:sha256:a3435ceb84a1ebf1efb9c031bd56c4bff61cdbba55a837043d64a0a5d4f3aef7",
+      "content_hash": "a3435ceb84a1ebf1efb9c031bd56c4bff61cdbba55a837043d64a0a5d4f3aef7"
+    },
+    {
+      "kind": "AuthoritySnapshot@1.0.0",
+      "object_id": "urn:rawlsing:pre553:AuthoritySnapshot:sha256:af2ab61bcdf2031d8295e5ba9999df0f610e6c2d5a2520523f2b2cc8f8735390",
+      "content_hash": "af2ab61bcdf2031d8295e5ba9999df0f610e6c2d5a2520523f2b2cc8f8735390"
+    },
+    {
+      "kind": "AuthoritySnapshot@1.0.0",
+      "object_id": "urn:rawlsing:pre553:AuthoritySnapshot:sha256:c22cccad0add0048047f4edc3852ebce5d7f87ca0e7b81acb18587abb98ece4e",
+      "content_hash": "c22cccad0add0048047f4edc3852ebce5d7f87ca0e7b81acb18587abb98ece4e"
+    },
+    {
+      "kind": "AuthoritySnapshot@1.0.0",
+      "object_id": "urn:rawlsing:pre553:AuthoritySnapshot:sha256:e7c7707cf4d7b67050f80715c36a0d9531d6526ad8071177da5806568b661c64",
+      "content_hash": "e7c7707cf4d7b67050f80715c36a0d9531d6526ad8071177da5806568b661c64"
+    }
+  ],
+  "counts": {
+    "original_exact_public_snapshot_refs": 12,
+    "unambiguous_required_extra_snapshot": 1,
+    "scoped_catalog_snapshots": 13,
+    "predicates": 35,
+    "queries": 63
+  },
+  "extra_snapshot_authority_id": "urn:rawlsing:prev3:p2r4a:pre553:mixed-predicate-grammar",
+  "counterfactual": "Remove first sorted original query document before native catalog constructor. Catalog remains valid; independently frozen expected63-ref anti-join must assert RED; restore GREEN.",
+  "positive_node": "test_retained_catalog.py::test_original_scoped_catalog_consumer_no_drop",
+  "nonclaims": [
+    "No resolution of conflicting archive envelopes for general execution",
+    "No source rights or permission issuance",
+    "No complete retained Fact preimages",
+    "No validated C11 event/internal-record release",
+    "No native I03/Batch/M1 mission positive"
+  ]
+}
