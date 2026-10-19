@@ -1,5 +1,10 @@
 # MANDATORY PYAT HQ VALIDITY CHANGE — PERSONA END-PRODUCT + CRITICAL METHOD GROK
 
+## GROK PASS K — mandatory anti-sequentialism / live commission flight (18 October 2026)
+
+**Read and pass the [shared parallel-flights and model-economy law](../CROSS_HQ_CONTROL_ROOM/HQ_PARALLEL_FLIGHTS_AND_ECONOMICAL_MODEL_ROUTING_LAW_R1.md) on every new/resumed HQ grok and EVERY material return**, in addition to Passes 0/A–J. A verbal acknowledgment is insufficient. Deliver a WHOLE-MACHINE FLIGHT_BOARD with at least four independent potential workstreams (or evidence fewer exist), their parallel status, exact source/owner/critical-path/consumer dependencies, direct positive and dependency-severance tests, writer/reviewer isolation, and measured/UNKNOWN host capacity across two possible computers, two Codex/ChatGPT and two OpenCode accounts. Publish model recommendations and minimum effort SEPARATE FROM user-selected OpenCode/DeepSeek-Harness/editor; verify DeepSeek V4.1-Flash sufficiency for economical local work where applicable, and default high-intelligence/no-heavy-local-toolchain work to Browser High. State reasons for every truly sequential barrier and for selecting only one commission while another independent qualified slot is ready. Recompute after each return, not merely after a flight completes. Absent this: `PYAT_HQ_GROK_K_FAIL__SEQ_DRIFT__NO_NEW_DISPATCH_UNTIL_BOARD_CORRECTED`. Existing active workers continue; no new authority is issued.
+
+
 ## Mandatory test-efficacy proof on every new/resumed HQ cycle — 18 October 2026
 
 Read [shared PRE-MAIN proof-integrity law](../CROSS_HQ_CONTROL_ROOM/PROOF_INTEGRITY_AND_FALSIFIABLE_TEST_LAW_R1.md) and ensure commissioned/joined productive functions include frozen claim-specific negative controls with the real downstream consumer. New/revised tests must pass the executable AST/fault witness gate; independent reviewers must test the actual dependency rather than the author's green summary. The core standard adds no universal extra reviewer or background audit round; distinguish `EXECUTED_GREEN` from a falsified claimed-edge positive and keep all source/model/V3 gates independent.
