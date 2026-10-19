@@ -1,0 +1,49 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "claims": [
+    {
+      "claim_id": "S44_HISTORICAL_SOURCE_NOT_PROMOTED_TO_ORIGINAL",
+      "actual_consumer": "S44 historical-source verification and A42 source-grade fan-in",
+      "claimed_dependency": "AS2B LiTS-I is historical-scope science only; it must never become current original measured occupancy",
+      "positive_node": "WORKER_RETURNS/PYAT-R44-S44-ORIGINAL-SOURCE-TO-CURRENT-ROUTE-B-FIRST-MEASURED-WHOLE-ESTATE-R1/tests/test_s44_falsifiers.py::test_as2b_is_historical_only_not_current_original",
+      "fault": {
+        "path": "WORKER_RETURNS/PYAT-R44-S44-ORIGINAL-SOURCE-TO-CURRENT-ROUTE-B-FIRST-MEASURED-WHOLE-ESTATE-R1/s44/historical.py",
+        "old": "GRADE = \"HISTORICAL_SCOPE_POSITIVE\"",
+        "new": "GRADE = \"ORIGINAL_MEASURED_OCCUPANCY\"  # injected historical-to-original promotion"
+      }
+    },
+    {
+      "claim_id": "S44_ALL35_LEDGER_NO_DROP",
+      "actual_consumer": "S44 all35 deferred source-execution ledger",
+      "claimed_dependency": "all 35 original waves remain in the deferred ledger",
+      "positive_node": "WORKER_RETURNS/PYAT-R44-S44-ORIGINAL-SOURCE-TO-CURRENT-ROUTE-B-FIRST-MEASURED-WHOLE-ESTATE-R1/tests/test_s44_falsifiers.py::test_all35_deferred_ledger_no_drop",
+      "fault": {
+        "path": "WORKER_RETURNS/PYAT-R44-S44-ORIGINAL-SOURCE-TO-CURRENT-ROUTE-B-FIRST-MEASURED-WHOLE-ESTATE-R1/s44/handoff.py",
+        "old": "    for w in permitted[\"waves\"]:",
+        "new": "    for w in permitted[\"waves\"]:\n        if w[\"atlas_id\"] == \"SRC01\":\n            continue"
+      }
+    },
+    {
+      "claim_id": "S44_SINGLE_DECISION_ISSUER_BOUND",
+      "actual_consumer": "S44 single competent owner decision packet",
+      "claimed_dependency": "the decision must carry the exact historical LiTS-I source digest, not a placeholder",
+      "positive_node": "WORKER_RETURNS/PYAT-R44-S44-ORIGINAL-SOURCE-TO-CURRENT-ROUTE-B-FIRST-MEASURED-WHOLE-ESTATE-R1/tests/test_s44_falsifiers.py::test_single_decision_is_exact_and_issuer_bound",
+      "fault": {
+        "path": "WORKER_RETURNS/PYAT-R44-S44-ORIGINAL-SOURCE-TO-CURRENT-ROUTE-B-FIRST-MEASURED-WHOLE-ESTATE-R1/s44/handoff.py",
+        "old": "            \"source_sha256\": a[\"source_sha256\"],",
+        "new": "            \"source_sha256\": None,  # injected missing exact source identity"
+      }
+    },
+    {
+      "claim_id": "S44_RUNTIME_CONTRACT_ENFORCED",
+      "actual_consumer": "S44 qualified source-runtime handoff",
+      "claimed_dependency": "a runtime missing resolver/workloads/source_factory is refused",
+      "positive_node": "WORKER_RETURNS/PYAT-R44-S44-ORIGINAL-SOURCE-TO-CURRENT-ROUTE-B-FIRST-MEASURED-WHOLE-ESTATE-R1/tests/test_s44_falsifiers.py::test_runtime_requires_authenticated_members",
+      "fault": {
+        "path": "WORKER_RETURNS/PYAT-R44-S44-ORIGINAL-SOURCE-TO-CURRENT-ROUTE-B-FIRST-MEASURED-WHOLE-ESTATE-R1/s44/handoff.py",
+        "old": "    if missing:",
+        "new": "    if False:  # injected: disable runtime completeness check"
+      }
+    }
+  ]
+}
