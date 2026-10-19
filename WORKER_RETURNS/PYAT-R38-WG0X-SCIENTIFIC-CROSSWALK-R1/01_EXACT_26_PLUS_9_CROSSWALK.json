@@ -1,0 +1,2772 @@
+{
+  "counts": {
+    "common": 18250,
+    "excluded_inactive": 259,
+    "net_delta": 17,
+    "p2": 18276,
+    "p2_only": 26,
+    "p2_only_roles": {
+      "admin": 5,
+      "administrative_metadata": 1,
+      "blocked_review": 1,
+      "harmonized_cross_country_tradeoff": 1,
+      "relation_evidence": 8,
+      "structural_context": 9,
+      "substantive_nominal_choice": 1
+    },
+    "qra_active": 18259,
+    "qra_only_blocked": 9,
+    "research_union": 18285
+  },
+  "crosswalk_digest": "7815b9720d95d36263250f0186754934d0b089240d8d02e0cffd6324dc35ee62",
+  "grade": "SOURCE_QUALIFIED_RESEARCH__NOT_SEMANTIC_ISSUANCE_OR_INDEPENDENT_ACCEPTANCE",
+  "original35_current_operation_permission": "UNCHANGED_HOLD__NO_ISSUANCE",
+  "rows": [
+    {
+      "atlas_id": "SRC24",
+      "classification": "SUBSTANTIVE_SOURCE_RESPONSE_WITH_STRUCTURAL_CONTEXT_ROLE",
+      "current_operation_status": "SOURCE_OR_OPERATION_HELD",
+      "evidence": [
+        {
+          "csv_record": 11745,
+          "exact_identity_sha256": "0fa0a9f546132c54f98c1114abadfc4c600edb9652d027c5d804033026d1837a",
+          "owner": "P2_IMPLEMENTATION_AUTHORITY"
+        },
+        {
+          "csv_record": 11871,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "1995",
+            "p46f"
+          ],
+          "owner": "register_A",
+          "row_sha256": "5416cdc29324f8fe8df93c2ddba9799f5310a0745d885825986f11284b96482b"
+        },
+        {
+          "csv_record": 11871,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "1995",
+            "p46f"
+          ],
+          "owner": "register_B",
+          "row_sha256": "13d0279877a307ec8514f766bcb770f0aba49a954f37e0033fb706e2967efd68"
+        }
+      ],
+      "family": "Latinobarómetro",
+      "form": "UNBOUND_REQUIRES_ORIGINAL_SOURCE_OWNER",
+      "historical_owner_artifact": "latinobarómetro_1995_semantic_authority_overlay.csv",
+      "inherited_response_binding": "bound",
+      "inherited_role": "structural_context",
+      "p2_csv_record": 11745,
+      "p2_exact_identity_sha256": "0fa0a9f546132c54f98c1114abadfc4c600edb9652d027c5d804033026d1837a",
+      "p2_implementation_id": "question_impl.phase0.0fa0a9f546132c54f98c",
+      "physical_alias_candidate": null,
+      "question_text": "Which are the EU countries: Portugal",
+      "record_id": "P2_ONLY:0fa0a9f546132c54f98c1114abadfc4c600edb9652d027c5d804033026d1837a",
+      "respondent_carrier": "UNBOUND_PERSON_HOUSEHOLD_NAMESPACE_NOT_INFERRED",
+      "response_classes": "other_governed",
+      "routing_risk_weight": "UNBOUND_OPERATION_SPECIFIC",
+      "scientific_note": "Eight separately retained EU-country knowledge columns; QSR reports single_choice for each. Joint multi-response/battery scoring and option-selection topology are not issued by their shared prefix.",
+      "side": "P2_ONLY",
+      "source_specific_decision": "CONTEXT_OR_CONDITION_CANDIDATE__NO_DIRECTED_ROLE_INFERRED",
+      "source_version": {
+        "actual_source_edition_hash": "UNBOUND",
+        "classification_confidence": "0.0",
+        "dataset_id": "Latinobarometro_1995_Latinobarometro_1995",
+        "format": "sav",
+        "legacy_wave": "1995",
+        "physical_presence_or_bytes_checked": false,
+        "recorded_basename": "Latinobarometro 1995.sav",
+        "recorded_size_bytes": 2224483,
+        "recorded_source_sha256": null
+      },
+      "variable": "p46f",
+      "wave": "1995"
+    },
+    {
+      "atlas_id": "SRC24",
+      "classification": "ADMIN_OR_CARRIER",
+      "current_operation_status": "SOURCE_OR_OPERATION_HELD",
+      "evidence": [
+        {
+          "csv_record": 11672,
+          "exact_identity_sha256": "1f60935613eb8655add9b8560c4c56483f85295fac24c775e0e391260f2c08a0",
+          "owner": "P2_IMPLEMENTATION_AUTHORITY"
+        },
+        {
+          "csv_record": 11863,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "1995",
+            "numero"
+          ],
+          "owner": "register_A",
+          "row_sha256": "c34a350be9b29565dd901937f3c5f5c132057c9e05827edf15332d6b5cb72005"
+        },
+        {
+          "csv_record": 11863,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "1995",
+            "numero"
+          ],
+          "owner": "register_B",
+          "row_sha256": "f913555b8f3761806caaae42393843c1348cbf6d16bcc0b3116c1250d08dac9d"
+        }
+      ],
+      "family": "Latinobarómetro",
+      "form": "UNBOUND_REQUIRES_ORIGINAL_SOURCE_OWNER",
+      "historical_owner_artifact": "latinobarómetro_1995_semantic_authority_overlay.csv",
+      "inherited_response_binding": "blocked_response_authority_gap",
+      "inherited_role": "admin",
+      "p2_csv_record": 11672,
+      "p2_exact_identity_sha256": "1f60935613eb8655add9b8560c4c56483f85295fac24c775e0e391260f2c08a0",
+      "p2_implementation_id": "question_impl.phase0.1f60935613eb8655add9",
+      "physical_alias_candidate": null,
+      "question_text": "Year Research",
+      "record_id": "P2_ONLY:1f60935613eb8655add9b8560c4c56483f85295fac24c775e0e391260f2c08a0",
+      "respondent_carrier": "UNBOUND_PERSON_HOUSEHOLD_NAMESPACE_NOT_INFERRED",
+      "response_classes": "other_governed",
+      "routing_risk_weight": "UNBOUND_OPERATION_SPECIFIC",
+      "scientific_note": "Preserve exact retained role and distinct code; no operation or respondent/form/route identity inferred from label.",
+      "side": "P2_ONLY",
+      "source_specific_decision": "PRESERVE_CARRIER_OR_DESIGN_INPUT__NOT_MEASUREMENT_TARGET_BY_P2_DISPOSITION",
+      "source_version": {
+        "actual_source_edition_hash": "UNBOUND",
+        "classification_confidence": "0.0",
+        "dataset_id": "Latinobarometro_1995_Latinobarometro_1995",
+        "format": "sav",
+        "legacy_wave": "1995",
+        "physical_presence_or_bytes_checked": false,
+        "recorded_basename": "Latinobarometro 1995.sav",
+        "recorded_size_bytes": 2224483,
+        "recorded_source_sha256": null
+      },
+      "variable": "numero",
+      "wave": "1995"
+    },
+    {
+      "atlas_id": "SRC01",
+      "classification": "SUBSTANTIVE_MEASUREMENT_CANDIDATE",
+      "current_operation_status": "SOURCE_OR_OPERATION_HELD",
+      "evidence": [
+        {
+          "csv_record": 69,
+          "exact_identity_sha256": "238565c640e3d79b72d0056af0f97ba7f8fb2fda05ded95aee435cd6dc4bb104",
+          "owner": "P2_IMPLEMENTATION_AUTHORITY"
+        },
+        {
+          "csv_record": 69,
+          "exact_case_key": [
+            "Afrobarometer",
+            "R1",
+            "party"
+          ],
+          "owner": "register_A",
+          "row_sha256": "1876a0009237ccdbf0c4d3f545612ab37f12fc7694b665d5eafa8b414f40866c"
+        },
+        {
+          "csv_record": 69,
+          "exact_case_key": [
+            "Afrobarometer",
+            "R1",
+            "party"
+          ],
+          "owner": "register_B",
+          "row_sha256": "5bd9bb9c4ad7bcd471aa88d0e7e4beed6ad8c7bbd76155688660db92cd1a627a"
+        }
+      ],
+      "family": "Afrobarometer",
+      "form": "UNBOUND_REQUIRES_ORIGINAL_SOURCE_OWNER",
+      "historical_owner_artifact": "afrobarometer_R1_semantic_authority_overlay.csv",
+      "inherited_response_binding": "bound",
+      "inherited_role": "substantive_nominal_choice",
+      "p2_csv_record": 69,
+      "p2_exact_identity_sha256": "238565c640e3d79b72d0056af0f97ba7f8fb2fda05ded95aee435cd6dc4bb104",
+      "p2_implementation_id": "question_impl.phase0.238565c640e3d79b72d0",
+      "physical_alias_candidate": null,
+      "question_text": "Party affiliation",
+      "record_id": "P2_ONLY:238565c640e3d79b72d0056af0f97ba7f8fb2fda05ded95aee435cd6dc4bb104",
+      "respondent_carrier": "UNBOUND_PERSON_HOUSEHOLD_NAMESPACE_NOT_INFERRED",
+      "response_classes": "unknown|refusal|missing|other_governed",
+      "routing_risk_weight": "UNBOUND_OPERATION_SPECIFIC",
+      "scientific_note": "Substantive nominal party affiliation, not administrative; 112 historical source labels. Do not infer directional or harmonized cross-country party scale. Candidate codebook pid alias remains unissued.",
+      "side": "P2_ONLY",
+      "source_specific_decision": "ACCEPTED_P2_NONADMIN_ROLE__OPERATION_SPECIFIC_AUTHORITY_REQUIRED",
+      "source_version": {
+        "actual_source_edition_hash": "UNBOUND",
+        "classification_confidence": "0.0",
+        "dataset_id": "Afrobarometer_Round_1_Afro_Barometer_Round_1",
+        "format": "sav",
+        "legacy_wave": "Round 1",
+        "physical_presence_or_bytes_checked": false,
+        "recorded_basename": "Afro Barometer Round 1.sav",
+        "recorded_size_bytes": 4492565,
+        "recorded_source_sha256": null
+      },
+      "variable": "party",
+      "wave": "R1"
+    },
+    {
+      "atlas_id": "SRC24",
+      "classification": "SUBSTANTIVE_SOURCE_RESPONSE_WITH_STRUCTURAL_CONTEXT_ROLE",
+      "current_operation_status": "SOURCE_OR_OPERATION_HELD",
+      "evidence": [
+        {
+          "csv_record": 11744,
+          "exact_identity_sha256": "23f75ff1ae9fa5f9e8321d1a003a36e13d42c0da6219233a83f4b44508c2fc21",
+          "owner": "P2_IMPLEMENTATION_AUTHORITY"
+        },
+        {
+          "csv_record": 11870,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "1995",
+            "p46e"
+          ],
+          "owner": "register_A",
+          "row_sha256": "bf94a1c2864515a35f71dc311837da1506639c0ecc52f3ab5071a9600bd993dc"
+        },
+        {
+          "csv_record": 11870,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "1995",
+            "p46e"
+          ],
+          "owner": "register_B",
+          "row_sha256": "a1fd13b4a9e31bf07c1096a4ed309e5a59cf6ad7aabf78244931fd6e917075a6"
+        }
+      ],
+      "family": "Latinobarómetro",
+      "form": "UNBOUND_REQUIRES_ORIGINAL_SOURCE_OWNER",
+      "historical_owner_artifact": "latinobarómetro_1995_semantic_authority_overlay.csv",
+      "inherited_response_binding": "bound",
+      "inherited_role": "structural_context",
+      "p2_csv_record": 11744,
+      "p2_exact_identity_sha256": "23f75ff1ae9fa5f9e8321d1a003a36e13d42c0da6219233a83f4b44508c2fc21",
+      "p2_implementation_id": "question_impl.phase0.23f75ff1ae9fa5f9e832",
+      "physical_alias_candidate": null,
+      "question_text": "Which are the EU countries: Italy",
+      "record_id": "P2_ONLY:23f75ff1ae9fa5f9e8321d1a003a36e13d42c0da6219233a83f4b44508c2fc21",
+      "respondent_carrier": "UNBOUND_PERSON_HOUSEHOLD_NAMESPACE_NOT_INFERRED",
+      "response_classes": "other_governed",
+      "routing_risk_weight": "UNBOUND_OPERATION_SPECIFIC",
+      "scientific_note": "Eight separately retained EU-country knowledge columns; QSR reports single_choice for each. Joint multi-response/battery scoring and option-selection topology are not issued by their shared prefix.",
+      "side": "P2_ONLY",
+      "source_specific_decision": "CONTEXT_OR_CONDITION_CANDIDATE__NO_DIRECTED_ROLE_INFERRED",
+      "source_version": {
+        "actual_source_edition_hash": "UNBOUND",
+        "classification_confidence": "0.0",
+        "dataset_id": "Latinobarometro_1995_Latinobarometro_1995",
+        "format": "sav",
+        "legacy_wave": "1995",
+        "physical_presence_or_bytes_checked": false,
+        "recorded_basename": "Latinobarometro 1995.sav",
+        "recorded_size_bytes": 2224483,
+        "recorded_source_sha256": null
+      },
+      "variable": "p46e",
+      "wave": "1995"
+    },
+    {
+      "atlas_id": "SRC24",
+      "classification": "SUBSTANTIVE_SOURCE_RESPONSE_WITH_STRUCTURAL_CONTEXT_ROLE",
+      "current_operation_status": "SOURCE_OR_OPERATION_HELD",
+      "evidence": [
+        {
+          "csv_record": 11735,
+          "exact_identity_sha256": "30e308d2f5b1add44a693a4572d68eae2b644ab754c3b2058a93ab3c3ca39640",
+          "owner": "P2_IMPLEMENTATION_AUTHORITY"
+        },
+        {
+          "csv_record": 11865,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "1995",
+            "p43a"
+          ],
+          "owner": "register_A",
+          "row_sha256": "706944a98cd172202e305c308767133f1078b41dbd983d4e78399145738c161a"
+        },
+        {
+          "csv_record": 11865,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "1995",
+            "p43a"
+          ],
+          "owner": "register_B",
+          "row_sha256": "f4c49bc0a7235973d2bc44dc6fd1c4ad326b3f424d543b035a0898c8c0d5025c"
+        }
+      ],
+      "family": "Latinobarómetro",
+      "form": "UNBOUND_REQUIRES_ORIGINAL_SOURCE_OWNER",
+      "historical_owner_artifact": "latinobarómetro_1995_semantic_authority_overlay.csv",
+      "inherited_response_binding": "bound",
+      "inherited_role": "structural_context",
+      "p2_csv_record": 11735,
+      "p2_exact_identity_sha256": "30e308d2f5b1add44a693a4572d68eae2b644ab754c3b2058a93ab3c3ca39640",
+      "p2_implementation_id": "question_impl.phase0.30e308d2f5b1add44a69",
+      "physical_alias_candidate": null,
+      "question_text": "Have you heard through the media of the European Union's involvement in Latin America and [nation]?.",
+      "record_id": "P2_ONLY:30e308d2f5b1add44a693a4572d68eae2b644ab754c3b2058a93ab3c3ca39640",
+      "respondent_carrier": "UNBOUND_PERSON_HOUSEHOLD_NAMESPACE_NOT_INFERRED",
+      "response_classes": "unknown|missing|other_governed",
+      "routing_risk_weight": "UNBOUND_OPERATION_SPECIFIC",
+      "scientific_note": "Preserve exact retained role and distinct code; no operation or respondent/form/route identity inferred from label.",
+      "side": "P2_ONLY",
+      "source_specific_decision": "CONTEXT_OR_CONDITION_CANDIDATE__NO_DIRECTED_ROLE_INFERRED",
+      "source_version": {
+        "actual_source_edition_hash": "UNBOUND",
+        "classification_confidence": "0.0",
+        "dataset_id": "Latinobarometro_1995_Latinobarometro_1995",
+        "format": "sav",
+        "legacy_wave": "1995",
+        "physical_presence_or_bytes_checked": false,
+        "recorded_basename": "Latinobarometro 1995.sav",
+        "recorded_size_bytes": 2224483,
+        "recorded_source_sha256": null
+      },
+      "variable": "p43a",
+      "wave": "1995"
+    },
+    {
+      "atlas_id": "SRC24",
+      "classification": "ADMIN_OR_CARRIER",
+      "current_operation_status": "SOURCE_OR_OPERATION_HELD",
+      "evidence": [
+        {
+          "csv_record": 11671,
+          "exact_identity_sha256": "339be33bf48093941579fc88c64396226f0ffd1a112085c7658b568add570546",
+          "owner": "P2_IMPLEMENTATION_AUTHORITY"
+        },
+        {
+          "csv_record": 11862,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "1995",
+            "enc"
+          ],
+          "owner": "register_A",
+          "row_sha256": "025a6f0c49be58e8af1891817be81167011ce38b411d471fd41dd05a8c7bdf64"
+        },
+        {
+          "csv_record": 11862,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "1995",
+            "enc"
+          ],
+          "owner": "register_B",
+          "row_sha256": "7336015296ef6a4e7dbc7c72ee62b54f5b0d414d4704356214705407d4ea5da9"
+        }
+      ],
+      "family": "Latinobarómetro",
+      "form": "UNBOUND_REQUIRES_ORIGINAL_SOURCE_OWNER",
+      "historical_owner_artifact": "latinobarómetro_1995_semantic_authority_overlay.csv",
+      "inherited_response_binding": "blocked_response_authority_gap",
+      "inherited_role": "admin",
+      "p2_csv_record": 11671,
+      "p2_exact_identity_sha256": "339be33bf48093941579fc88c64396226f0ffd1a112085c7658b568add570546",
+      "p2_implementation_id": "question_impl.phase0.339be33bf48093941579",
+      "physical_alias_candidate": null,
+      "question_text": "Number interview",
+      "record_id": "P2_ONLY:339be33bf48093941579fc88c64396226f0ffd1a112085c7658b568add570546",
+      "respondent_carrier": "UNBOUND_PERSON_HOUSEHOLD_NAMESPACE_NOT_INFERRED",
+      "response_classes": "other_governed",
+      "routing_risk_weight": "UNBOUND_OPERATION_SPECIFIC",
+      "scientific_note": "Preserve exact retained role and distinct code; no operation or respondent/form/route identity inferred from label.",
+      "side": "P2_ONLY",
+      "source_specific_decision": "PRESERVE_CARRIER_OR_DESIGN_INPUT__NOT_MEASUREMENT_TARGET_BY_P2_DISPOSITION",
+      "source_version": {
+        "actual_source_edition_hash": "UNBOUND",
+        "classification_confidence": "0.0",
+        "dataset_id": "Latinobarometro_1995_Latinobarometro_1995",
+        "format": "sav",
+        "legacy_wave": "1995",
+        "physical_presence_or_bytes_checked": false,
+        "recorded_basename": "Latinobarometro 1995.sav",
+        "recorded_size_bytes": 2224483,
+        "recorded_source_sha256": null
+      },
+      "variable": "enc",
+      "wave": "1995"
+    },
+    {
+      "atlas_id": "SRC26",
+      "classification": "SUBSTANTIVE_MEASUREMENT_CANDIDATE",
+      "current_operation_status": "SOURCE_OR_OPERATION_HELD",
+      "evidence": [
+        {
+          "csv_record": 12432,
+          "exact_identity_sha256": "50b49a78bd42f4ccc762733a600e89f6c11dd1457ca30007e73fb35e3a0cb981",
+          "owner": "P2_IMPLEMENTATION_AUTHORITY"
+        },
+        {
+          "csv_record": 12751,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "2024",
+            "P8NCV.A"
+          ],
+          "owner": "register_A",
+          "row_sha256": "e52a985122fba43d9d20767db0227b7c1338990348dedb830e028f09440d2774"
+        },
+        {
+          "csv_record": 12751,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "2024",
+            "P8NCV.A"
+          ],
+          "owner": "register_B",
+          "row_sha256": "8b35aaee3e9418bc40d4802425bb4e4ab7228acd9132e0b8d7f3f466a85d6f17"
+        }
+      ],
+      "family": "Latinobarómetro",
+      "form": "UNBOUND_REQUIRES_ORIGINAL_SOURCE_OWNER",
+      "historical_owner_artifact": "latinobarómetro_2024_semantic_authority_overlay.csv",
+      "inherited_response_binding": "bound",
+      "inherited_role": "relation_evidence",
+      "p2_csv_record": 12432,
+      "p2_exact_identity_sha256": "50b49a78bd42f4ccc762733a600e89f6c11dd1457ca30007e73fb35e3a0cb981",
+      "p2_implementation_id": "question_impl.phase0.50b49a78bd42f4ccc762",
+      "physical_alias_candidate": "P8NCV.A",
+      "question_text": "I can collaborate with my community to protect the environment",
+      "record_id": "P2_ONLY:50b49a78bd42f4ccc762733a600e89f6c11dd1457ca30007e73fb35e3a0cb981",
+      "respondent_carrier": "UNBOUND_PERSON_HOUSEHOLD_NAMESPACE_NOT_INFERRED",
+      "response_classes": "support|oppose|unknown",
+      "routing_risk_weight": "UNBOUND_OPERATION_SPECIFIC",
+      "scientific_note": "P2 question text and physical P8NCV.A content support an explicit P/Q/dotted-name candidate; current source/version/form/routing/response-code authority crosswalk must be supplied. This report does not apply that alias.",
+      "side": "P2_ONLY",
+      "source_specific_decision": "ACCEPTED_P2_RELATION_ROLE__EXACT_CURRENT_OPERATION_BINDING_HELD",
+      "source_version": {
+        "actual_source_edition_hash": "UNBOUND",
+        "classification_confidence": "0.0",
+        "dataset_id": "Latinobarometro_2024_Latinobarometro_2024",
+        "format": "sav",
+        "legacy_wave": "2024",
+        "physical_presence_or_bytes_checked": false,
+        "recorded_basename": "Latinobarometro 2024.sav",
+        "recorded_size_bytes": 7886834,
+        "recorded_source_sha256": null
+      },
+      "variable": "Q8NCVA",
+      "wave": "2024"
+    },
+    {
+      "atlas_id": "SRC24",
+      "classification": "SUBSTANTIVE_MEASUREMENT_CANDIDATE",
+      "current_operation_status": "SOURCE_OR_OPERATION_HELD",
+      "evidence": [
+        {
+          "csv_record": 11749,
+          "exact_identity_sha256": "62f74db198472da0b525ca2252a0ee4d0bb399681a12585c9aef45157099ff22",
+          "owner": "P2_IMPLEMENTATION_AUTHORITY"
+        },
+        {
+          "csv_record": 11875,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "1995",
+            "p47b"
+          ],
+          "owner": "register_A",
+          "row_sha256": "48cf4e21b5322c13dc88e7c508aab9401b9131df6f4edc71869eff4d747b94b1"
+        },
+        {
+          "csv_record": 11875,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "1995",
+            "p47b"
+          ],
+          "owner": "register_B",
+          "row_sha256": "70d91a44d4e5eb2e4936dfe549720d63b31d4355e4a6aedb78b3016768041572"
+        }
+      ],
+      "family": "Latinobarómetro",
+      "form": "UNBOUND_REQUIRES_ORIGINAL_SOURCE_OWNER",
+      "historical_owner_artifact": "latinobarómetro_1995_semantic_authority_overlay.csv",
+      "inherited_response_binding": "bound",
+      "inherited_role": "relation_evidence",
+      "p2_csv_record": 11749,
+      "p2_exact_identity_sha256": "62f74db198472da0b525ca2252a0ee4d0bb399681a12585c9aef45157099ff22",
+      "p2_implementation_id": "question_impl.phase0.62f74db198472da0b525",
+      "physical_alias_candidate": null,
+      "question_text": "Opinion of the Unites States",
+      "record_id": "P2_ONLY:62f74db198472da0b525ca2252a0ee4d0bb399681a12585c9aef45157099ff22",
+      "respondent_carrier": "UNBOUND_PERSON_HOUSEHOLD_NAMESPACE_NOT_INFERRED",
+      "response_classes": "support|oppose|neutral|unknown|missing",
+      "routing_risk_weight": "UNBOUND_OPERATION_SPECIFIC",
+      "scientific_note": "Distinct named external-entity response; preserve target and support/oppose/neutral/unknown/missing classes from P2. Parent P47 is not another interchangeable response.",
+      "side": "P2_ONLY",
+      "source_specific_decision": "ACCEPTED_P2_RELATION_ROLE__EXACT_CURRENT_OPERATION_BINDING_HELD",
+      "source_version": {
+        "actual_source_edition_hash": "UNBOUND",
+        "classification_confidence": "0.0",
+        "dataset_id": "Latinobarometro_1995_Latinobarometro_1995",
+        "format": "sav",
+        "legacy_wave": "1995",
+        "physical_presence_or_bytes_checked": false,
+        "recorded_basename": "Latinobarometro 1995.sav",
+        "recorded_size_bytes": 2224483,
+        "recorded_source_sha256": null
+      },
+      "variable": "p47b",
+      "wave": "1995"
+    },
+    {
+      "atlas_id": "SRC24",
+      "classification": "SUBSTANTIVE_SOURCE_RESPONSE_WITH_STRUCTURAL_CONTEXT_ROLE",
+      "current_operation_status": "SOURCE_OR_OPERATION_HELD",
+      "evidence": [
+        {
+          "csv_record": 11740,
+          "exact_identity_sha256": "715c3c525b8d7aea42ccbd39e5fa769103f500dafe29fab5e2db1e775aab79eb",
+          "owner": "P2_IMPLEMENTATION_AUTHORITY"
+        },
+        {
+          "csv_record": 11866,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "1995",
+            "p46a"
+          ],
+          "owner": "register_A",
+          "row_sha256": "604d6557deecc05164d4122d01a2a65e93c26f2cd8f30896b19676c55c27e0e5"
+        },
+        {
+          "csv_record": 11866,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "1995",
+            "p46a"
+          ],
+          "owner": "register_B",
+          "row_sha256": "97d1911177d638f51865d0b31258caeb53a956e6ee1865fbf250ad6792a83c0c"
+        }
+      ],
+      "family": "Latinobarómetro",
+      "form": "UNBOUND_REQUIRES_ORIGINAL_SOURCE_OWNER",
+      "historical_owner_artifact": "latinobarómetro_1995_semantic_authority_overlay.csv",
+      "inherited_response_binding": "bound",
+      "inherited_role": "structural_context",
+      "p2_csv_record": 11740,
+      "p2_exact_identity_sha256": "715c3c525b8d7aea42ccbd39e5fa769103f500dafe29fab5e2db1e775aab79eb",
+      "p2_implementation_id": "question_impl.phase0.715c3c525b8d7aea42cc",
+      "physical_alias_candidate": null,
+      "question_text": "Which are the EU countries: Germany",
+      "record_id": "P2_ONLY:715c3c525b8d7aea42ccbd39e5fa769103f500dafe29fab5e2db1e775aab79eb",
+      "respondent_carrier": "UNBOUND_PERSON_HOUSEHOLD_NAMESPACE_NOT_INFERRED",
+      "response_classes": "other_governed",
+      "routing_risk_weight": "UNBOUND_OPERATION_SPECIFIC",
+      "scientific_note": "Eight separately retained EU-country knowledge columns; QSR reports single_choice for each. Joint multi-response/battery scoring and option-selection topology are not issued by their shared prefix.",
+      "side": "P2_ONLY",
+      "source_specific_decision": "CONTEXT_OR_CONDITION_CANDIDATE__NO_DIRECTED_ROLE_INFERRED",
+      "source_version": {
+        "actual_source_edition_hash": "UNBOUND",
+        "classification_confidence": "0.0",
+        "dataset_id": "Latinobarometro_1995_Latinobarometro_1995",
+        "format": "sav",
+        "legacy_wave": "1995",
+        "physical_presence_or_bytes_checked": false,
+        "recorded_basename": "Latinobarometro 1995.sav",
+        "recorded_size_bytes": 2224483,
+        "recorded_source_sha256": null
+      },
+      "variable": "p46a",
+      "wave": "1995"
+    },
+    {
+      "atlas_id": "SRC24",
+      "classification": "SUBSTANTIVE_SOURCE_RESPONSE_WITH_STRUCTURAL_CONTEXT_ROLE",
+      "current_operation_status": "SOURCE_OR_OPERATION_HELD",
+      "evidence": [
+        {
+          "csv_record": 11747,
+          "exact_identity_sha256": "7207b6d4db8252fc0c906f79a6b96de911d29198292f3d3b4a682da281ca1360",
+          "owner": "P2_IMPLEMENTATION_AUTHORITY"
+        },
+        {
+          "csv_record": 11873,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "1995",
+            "p46h"
+          ],
+          "owner": "register_A",
+          "row_sha256": "338310d9fbb3649f1b6c5124f6976e433e4caee20fb5ddcff58e4bb0b56d593c"
+        },
+        {
+          "csv_record": 11873,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "1995",
+            "p46h"
+          ],
+          "owner": "register_B",
+          "row_sha256": "56d7946a125c276422518d50f788ba7954aa4b90fa5e25e793ea7aabd76f12f3"
+        }
+      ],
+      "family": "Latinobarómetro",
+      "form": "UNBOUND_REQUIRES_ORIGINAL_SOURCE_OWNER",
+      "historical_owner_artifact": "latinobarómetro_1995_semantic_authority_overlay.csv",
+      "inherited_response_binding": "bound",
+      "inherited_role": "structural_context",
+      "p2_csv_record": 11747,
+      "p2_exact_identity_sha256": "7207b6d4db8252fc0c906f79a6b96de911d29198292f3d3b4a682da281ca1360",
+      "p2_implementation_id": "question_impl.phase0.7207b6d4db8252fc0c90",
+      "physical_alias_candidate": null,
+      "question_text": "Which are the EU countries: Other countries / incorrect",
+      "record_id": "P2_ONLY:7207b6d4db8252fc0c906f79a6b96de911d29198292f3d3b4a682da281ca1360",
+      "respondent_carrier": "UNBOUND_PERSON_HOUSEHOLD_NAMESPACE_NOT_INFERRED",
+      "response_classes": "other_governed",
+      "routing_risk_weight": "UNBOUND_OPERATION_SPECIFIC",
+      "scientific_note": "Eight separately retained EU-country knowledge columns; QSR reports single_choice for each. Joint multi-response/battery scoring and option-selection topology are not issued by their shared prefix.",
+      "side": "P2_ONLY",
+      "source_specific_decision": "CONTEXT_OR_CONDITION_CANDIDATE__NO_DIRECTED_ROLE_INFERRED",
+      "source_version": {
+        "actual_source_edition_hash": "UNBOUND",
+        "classification_confidence": "0.0",
+        "dataset_id": "Latinobarometro_1995_Latinobarometro_1995",
+        "format": "sav",
+        "legacy_wave": "1995",
+        "physical_presence_or_bytes_checked": false,
+        "recorded_basename": "Latinobarometro 1995.sav",
+        "recorded_size_bytes": 2224483,
+        "recorded_source_sha256": null
+      },
+      "variable": "p46h",
+      "wave": "1995"
+    },
+    {
+      "atlas_id": "SRC26",
+      "classification": "SUBSTANTIVE_MEASUREMENT_CANDIDATE",
+      "current_operation_status": "SOURCE_OR_OPERATION_HELD",
+      "evidence": [
+        {
+          "csv_record": 12387,
+          "exact_identity_sha256": "79ced092c7ce65377c1ce222745ab00cdd0b797af713d9a0b8d4b817fecb5ee6",
+          "owner": "P2_IMPLEMENTATION_AUTHORITY"
+        },
+        {
+          "csv_record": 12659,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "2024",
+            "P47ST.C"
+          ],
+          "owner": "register_A",
+          "row_sha256": "b1b4d0dd5107409ada34e85a636eb6522aea22fc73196a0fcb28ebb2fac2c58b"
+        },
+        {
+          "csv_record": 12659,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "2024",
+            "P47ST.C"
+          ],
+          "owner": "register_B",
+          "row_sha256": "d909ee5affbff46e1f89d090c1f376d443e59ddae247e03ef856d464780476e5"
+        }
+      ],
+      "family": "Latinobarómetro",
+      "form": "UNBOUND_REQUIRES_ORIGINAL_SOURCE_OWNER",
+      "historical_owner_artifact": "latinobarómetro_2024_semantic_authority_overlay.csv",
+      "inherited_response_binding": "bound",
+      "inherited_role": "relation_evidence",
+      "p2_csv_record": 12387,
+      "p2_exact_identity_sha256": "79ced092c7ce65377c1ce222745ab00cdd0b797af713d9a0b8d4b817fecb5ee6",
+      "p2_implementation_id": "question_impl.phase0.79ced092c7ce65377c1c",
+      "physical_alias_candidate": "P47ST.C",
+      "question_text": "With respect to printed press, would you say there is has (1) a lot, (2) some, (3) little or (4) no fake news?",
+      "record_id": "P2_ONLY:79ced092c7ce65377c1ce222745ab00cdd0b797af713d9a0b8d4b817fecb5ee6",
+      "respondent_carrier": "UNBOUND_PERSON_HOUSEHOLD_NAMESPACE_NOT_INFERRED",
+      "response_classes": "support|oppose|unknown",
+      "routing_risk_weight": "UNBOUND_OPERATION_SPECIFIC",
+      "scientific_note": "P2 question text and physical P47ST.C content support an explicit P/Q/dotted-name candidate; current source/version/form/routing/response-code authority crosswalk must be supplied. This report does not apply that alias.",
+      "side": "P2_ONLY",
+      "source_specific_decision": "ACCEPTED_P2_RELATION_ROLE__EXACT_CURRENT_OPERATION_BINDING_HELD",
+      "source_version": {
+        "actual_source_edition_hash": "UNBOUND",
+        "classification_confidence": "0.0",
+        "dataset_id": "Latinobarometro_2024_Latinobarometro_2024",
+        "format": "sav",
+        "legacy_wave": "2024",
+        "physical_presence_or_bytes_checked": false,
+        "recorded_basename": "Latinobarometro 2024.sav",
+        "recorded_size_bytes": 7886834,
+        "recorded_source_sha256": null
+      },
+      "variable": "Q47STC",
+      "wave": "2024"
+    },
+    {
+      "atlas_id": "SRC24",
+      "classification": "ADMIN_OR_CARRIER",
+      "current_operation_status": "SOURCE_OR_OPERATION_HELD",
+      "evidence": [
+        {
+          "csv_record": 11823,
+          "exact_identity_sha256": "7d541ce591ee2c5b7920e925c391f18e54b10477dbd950c49470a62b8d71c35f",
+          "owner": "P2_IMPLEMENTATION_AUTHORITY"
+        },
+        {
+          "csv_record": 11877,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "1995",
+            "pais"
+          ],
+          "owner": "register_A",
+          "row_sha256": "7c5a02b483d4653d37a3a853d0f31981ecb453a38dd263f98bbdc769d5eb29fd"
+        },
+        {
+          "csv_record": 11877,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "1995",
+            "pais"
+          ],
+          "owner": "register_B",
+          "row_sha256": "8b43189e544947f57e830a5a8c2e395076c9532f7f494db2ecff161e7bc2033c"
+        }
+      ],
+      "family": "Latinobarómetro",
+      "form": "UNBOUND_REQUIRES_ORIGINAL_SOURCE_OWNER",
+      "historical_owner_artifact": "latinobarómetro_1995_semantic_authority_overlay.csv",
+      "inherited_response_binding": "blocked_response_authority_gap",
+      "inherited_role": "admin",
+      "p2_csv_record": 11823,
+      "p2_exact_identity_sha256": "7d541ce591ee2c5b7920e925c391f18e54b10477dbd950c49470a62b8d71c35f",
+      "p2_implementation_id": "question_impl.phase0.7d541ce591ee2c5b7920",
+      "physical_alias_candidate": null,
+      "question_text": "Country",
+      "record_id": "P2_ONLY:7d541ce591ee2c5b7920e925c391f18e54b10477dbd950c49470a62b8d71c35f",
+      "respondent_carrier": "UNBOUND_PERSON_HOUSEHOLD_NAMESPACE_NOT_INFERRED",
+      "response_classes": "other_governed",
+      "routing_risk_weight": "UNBOUND_OPERATION_SPECIFIC",
+      "scientific_note": "Preserve exact retained role and distinct code; no operation or respondent/form/route identity inferred from label.",
+      "side": "P2_ONLY",
+      "source_specific_decision": "PRESERVE_CARRIER_OR_DESIGN_INPUT__NOT_MEASUREMENT_TARGET_BY_P2_DISPOSITION",
+      "source_version": {
+        "actual_source_edition_hash": "UNBOUND",
+        "classification_confidence": "0.0",
+        "dataset_id": "Latinobarometro_1995_Latinobarometro_1995",
+        "format": "sav",
+        "legacy_wave": "1995",
+        "physical_presence_or_bytes_checked": false,
+        "recorded_basename": "Latinobarometro 1995.sav",
+        "recorded_size_bytes": 2224483,
+        "recorded_source_sha256": null
+      },
+      "variable": "pais",
+      "wave": "1995"
+    },
+    {
+      "atlas_id": "SRC24",
+      "classification": "SUBSTANTIVE_SOURCE_RESPONSE_WITH_STRUCTURAL_CONTEXT_ROLE",
+      "current_operation_status": "SOURCE_OR_OPERATION_HELD",
+      "evidence": [
+        {
+          "csv_record": 11742,
+          "exact_identity_sha256": "7dbb9eae2776776e6ea9e88bea2a65adf2266e06097746967cc8c364e2ca5476",
+          "owner": "P2_IMPLEMENTATION_AUTHORITY"
+        },
+        {
+          "csv_record": 11868,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "1995",
+            "p46c"
+          ],
+          "owner": "register_A",
+          "row_sha256": "f10cfcc188bed0447aaf73772d0c2fcff770c982afc51850a09622067e0c2469"
+        },
+        {
+          "csv_record": 11868,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "1995",
+            "p46c"
+          ],
+          "owner": "register_B",
+          "row_sha256": "483b8da5d85e3b7fa09d9c228192e1e920b663e6ca10e19719910c442a7c6e1d"
+        }
+      ],
+      "family": "Latinobarómetro",
+      "form": "UNBOUND_REQUIRES_ORIGINAL_SOURCE_OWNER",
+      "historical_owner_artifact": "latinobarómetro_1995_semantic_authority_overlay.csv",
+      "inherited_response_binding": "bound",
+      "inherited_role": "structural_context",
+      "p2_csv_record": 11742,
+      "p2_exact_identity_sha256": "7dbb9eae2776776e6ea9e88bea2a65adf2266e06097746967cc8c364e2ca5476",
+      "p2_implementation_id": "question_impl.phase0.7dbb9eae2776776e6ea9",
+      "physical_alias_candidate": null,
+      "question_text": "Which are the EU countries: France",
+      "record_id": "P2_ONLY:7dbb9eae2776776e6ea9e88bea2a65adf2266e06097746967cc8c364e2ca5476",
+      "respondent_carrier": "UNBOUND_PERSON_HOUSEHOLD_NAMESPACE_NOT_INFERRED",
+      "response_classes": "other_governed",
+      "routing_risk_weight": "UNBOUND_OPERATION_SPECIFIC",
+      "scientific_note": "Eight separately retained EU-country knowledge columns; QSR reports single_choice for each. Joint multi-response/battery scoring and option-selection topology are not issued by their shared prefix.",
+      "side": "P2_ONLY",
+      "source_specific_decision": "CONTEXT_OR_CONDITION_CANDIDATE__NO_DIRECTED_ROLE_INFERRED",
+      "source_version": {
+        "actual_source_edition_hash": "UNBOUND",
+        "classification_confidence": "0.0",
+        "dataset_id": "Latinobarometro_1995_Latinobarometro_1995",
+        "format": "sav",
+        "legacy_wave": "1995",
+        "physical_presence_or_bytes_checked": false,
+        "recorded_basename": "Latinobarometro 1995.sav",
+        "recorded_size_bytes": 2224483,
+        "recorded_source_sha256": null
+      },
+      "variable": "p46c",
+      "wave": "1995"
+    },
+    {
+      "atlas_id": "SRC26",
+      "classification": "SUBSTANTIVE_MEASUREMENT_CANDIDATE",
+      "current_operation_status": "SOURCE_OR_OPERATION_HELD",
+      "evidence": [
+        {
+          "csv_record": 12434,
+          "exact_identity_sha256": "8399e795f61d5c85360987d3f5a5477d7e863ade35d4173cdc6ad6a1843032f5",
+          "owner": "P2_IMPLEMENTATION_AUTHORITY"
+        },
+        {
+          "csv_record": 12753,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "2024",
+            "P8NCV.C"
+          ],
+          "owner": "register_A",
+          "row_sha256": "aab2c7ec7995163e30631287143a8bfb0d8e9d77ccd6f391d69846705564ff51"
+        },
+        {
+          "csv_record": 12753,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "2024",
+            "P8NCV.C"
+          ],
+          "owner": "register_B",
+          "row_sha256": "c454a4e8a2c0d1517f949dc6c97ef948cb1c8afc8ac0154667dcde7eebcf7c5f"
+        }
+      ],
+      "family": "Latinobarómetro",
+      "form": "UNBOUND_REQUIRES_ORIGINAL_SOURCE_OWNER",
+      "historical_owner_artifact": "latinobarómetro_2024_semantic_authority_overlay.csv",
+      "inherited_response_binding": "bound",
+      "inherited_role": "relation_evidence",
+      "p2_csv_record": 12434,
+      "p2_exact_identity_sha256": "8399e795f61d5c85360987d3f5a5477d7e863ade35d4173cdc6ad6a1843032f5",
+      "p2_implementation_id": "question_impl.phase0.8399e795f61d5c853609",
+      "physical_alias_candidate": "P8NCV.C",
+      "question_text": "No matter how challenging it is to address the issue of climate change, I believe my actions can contribute to the solution",
+      "record_id": "P2_ONLY:8399e795f61d5c85360987d3f5a5477d7e863ade35d4173cdc6ad6a1843032f5",
+      "respondent_carrier": "UNBOUND_PERSON_HOUSEHOLD_NAMESPACE_NOT_INFERRED",
+      "response_classes": "support|oppose|unknown",
+      "routing_risk_weight": "UNBOUND_OPERATION_SPECIFIC",
+      "scientific_note": "P2 question text and physical P8NCV.C content support an explicit P/Q/dotted-name candidate; current source/version/form/routing/response-code authority crosswalk must be supplied. This report does not apply that alias.",
+      "side": "P2_ONLY",
+      "source_specific_decision": "ACCEPTED_P2_RELATION_ROLE__EXACT_CURRENT_OPERATION_BINDING_HELD",
+      "source_version": {
+        "actual_source_edition_hash": "UNBOUND",
+        "classification_confidence": "0.0",
+        "dataset_id": "Latinobarometro_2024_Latinobarometro_2024",
+        "format": "sav",
+        "legacy_wave": "2024",
+        "physical_presence_or_bytes_checked": false,
+        "recorded_basename": "Latinobarometro 2024.sav",
+        "recorded_size_bytes": 7886834,
+        "recorded_source_sha256": null
+      },
+      "variable": "Q8NCVC",
+      "wave": "2024"
+    },
+    {
+      "atlas_id": "SRC24",
+      "classification": "ADMIN_OR_CARRIER",
+      "current_operation_status": "SOURCE_OR_OPERATION_HELD",
+      "evidence": [
+        {
+          "csv_record": 11824,
+          "exact_identity_sha256": "9147f6bcfc5d312f0ffdc950ab620060b57c74b4241c7cf012db4a7fea682dd2",
+          "owner": "P2_IMPLEMENTATION_AUTHORITY"
+        },
+        {
+          "csv_record": 11878,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "1995",
+            "region"
+          ],
+          "owner": "register_A",
+          "row_sha256": "02529a60b2a04a834748ef5874f41df861edd27dbe3d3a0915c2c07b66829c2e"
+        },
+        {
+          "csv_record": 11878,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "1995",
+            "region"
+          ],
+          "owner": "register_B",
+          "row_sha256": "0c11d8156ab895b6f67fb0f6368b62bdc09bdc1497265f405fd0e99d02d3d6ff"
+        }
+      ],
+      "family": "Latinobarómetro",
+      "form": "UNBOUND_REQUIRES_ORIGINAL_SOURCE_OWNER",
+      "historical_owner_artifact": "latinobarómetro_1995_semantic_authority_overlay.csv",
+      "inherited_response_binding": "blocked_response_authority_gap",
+      "inherited_role": "admin",
+      "p2_csv_record": 11824,
+      "p2_exact_identity_sha256": "9147f6bcfc5d312f0ffdc950ab620060b57c74b4241c7cf012db4a7fea682dd2",
+      "p2_implementation_id": "question_impl.phase0.9147f6bcfc5d312f0ffd",
+      "physical_alias_candidate": null,
+      "question_text": "Region/Geographical Area",
+      "record_id": "P2_ONLY:9147f6bcfc5d312f0ffdc950ab620060b57c74b4241c7cf012db4a7fea682dd2",
+      "respondent_carrier": "UNBOUND_PERSON_HOUSEHOLD_NAMESPACE_NOT_INFERRED",
+      "response_classes": "other_governed",
+      "routing_risk_weight": "UNBOUND_OPERATION_SPECIFIC",
+      "scientific_note": "Preserve exact retained role and distinct code; no operation or respondent/form/route identity inferred from label.",
+      "side": "P2_ONLY",
+      "source_specific_decision": "PRESERVE_CARRIER_OR_DESIGN_INPUT__NOT_MEASUREMENT_TARGET_BY_P2_DISPOSITION",
+      "source_version": {
+        "actual_source_edition_hash": "UNBOUND",
+        "classification_confidence": "0.0",
+        "dataset_id": "Latinobarometro_1995_Latinobarometro_1995",
+        "format": "sav",
+        "legacy_wave": "1995",
+        "physical_presence_or_bytes_checked": false,
+        "recorded_basename": "Latinobarometro 1995.sav",
+        "recorded_size_bytes": 2224483,
+        "recorded_source_sha256": null
+      },
+      "variable": "region",
+      "wave": "1995"
+    },
+    {
+      "atlas_id": "SRC26",
+      "classification": "SUBSTANTIVE_MEASUREMENT_CANDIDATE",
+      "current_operation_status": "SOURCE_OR_OPERATION_HELD",
+      "evidence": [
+        {
+          "csv_record": 12383,
+          "exact_identity_sha256": "9e4cec8d21b7bd803dd5906eb5427f35f52b9c98bece0b51a0e2f6807be3acef",
+          "owner": "P2_IMPLEMENTATION_AUTHORITY"
+        },
+        {
+          "csv_record": 12655,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "2024",
+            "P45ST"
+          ],
+          "owner": "register_A",
+          "row_sha256": "8bf7728d1c339dc5128e1e5c35e4ca02eac576124a75d0e4c617f8efb079d4bd"
+        },
+        {
+          "csv_record": 12655,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "2024",
+            "P45ST"
+          ],
+          "owner": "register_B",
+          "row_sha256": "5c063e7025b71cd81393d8efa69ff20f99c1745b5fe5966bdd7f2a9af6e864f8"
+        }
+      ],
+      "family": "Latinobarómetro",
+      "form": "UNBOUND_REQUIRES_ORIGINAL_SOURCE_OWNER",
+      "historical_owner_artifact": "latinobarómetro_2024_semantic_authority_overlay.csv",
+      "inherited_response_binding": "bound",
+      "inherited_role": "relation_evidence",
+      "p2_csv_record": 12383,
+      "p2_exact_identity_sha256": "9e4cec8d21b7bd803dd5906eb5427f35f52b9c98bece0b51a0e2f6807be3acef",
+      "p2_implementation_id": "question_impl.phase0.9e4cec8d21b7bd803dd5",
+      "physical_alias_candidate": "P45ST",
+      "question_text": "Would you say that social media makes politics better, neither makes politics better nor worse, or makes politics worse?",
+      "record_id": "P2_ONLY:9e4cec8d21b7bd803dd5906eb5427f35f52b9c98bece0b51a0e2f6807be3acef",
+      "respondent_carrier": "UNBOUND_PERSON_HOUSEHOLD_NAMESPACE_NOT_INFERRED",
+      "response_classes": "support|oppose|neutral",
+      "routing_risk_weight": "UNBOUND_OPERATION_SPECIFIC",
+      "scientific_note": "P2 question text and physical P45ST content support an explicit P/Q/dotted-name candidate; current source/version/form/routing/response-code authority crosswalk must be supplied. This report does not apply that alias.",
+      "side": "P2_ONLY",
+      "source_specific_decision": "ACCEPTED_P2_RELATION_ROLE__EXACT_CURRENT_OPERATION_BINDING_HELD",
+      "source_version": {
+        "actual_source_edition_hash": "UNBOUND",
+        "classification_confidence": "0.0",
+        "dataset_id": "Latinobarometro_2024_Latinobarometro_2024",
+        "format": "sav",
+        "legacy_wave": "2024",
+        "physical_presence_or_bytes_checked": false,
+        "recorded_basename": "Latinobarometro 2024.sav",
+        "recorded_size_bytes": 7886834,
+        "recorded_source_sha256": null
+      },
+      "variable": "Q45ST",
+      "wave": "2024"
+    },
+    {
+      "atlas_id": "SRC24",
+      "classification": "SUBSTANTIVE_SOURCE_RESPONSE_WITH_STRUCTURAL_CONTEXT_ROLE",
+      "current_operation_status": "SOURCE_OR_OPERATION_HELD",
+      "evidence": [
+        {
+          "csv_record": 11741,
+          "exact_identity_sha256": "a4d13df93b0b5f774305cf4c076e5ecf94fd4653ab0187e70847e5056e503bc9",
+          "owner": "P2_IMPLEMENTATION_AUTHORITY"
+        },
+        {
+          "csv_record": 11867,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "1995",
+            "p46b"
+          ],
+          "owner": "register_A",
+          "row_sha256": "d2e314e8b0f7b643ade9b9a37e168dca6f53821bbfa058cd68bc1320f0558f85"
+        },
+        {
+          "csv_record": 11867,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "1995",
+            "p46b"
+          ],
+          "owner": "register_B",
+          "row_sha256": "8f666b293ca11ff338cbcbe852e1f5b2c505cb101885b5e2cb30be93660f5231"
+        }
+      ],
+      "family": "Latinobarómetro",
+      "form": "UNBOUND_REQUIRES_ORIGINAL_SOURCE_OWNER",
+      "historical_owner_artifact": "latinobarómetro_1995_semantic_authority_overlay.csv",
+      "inherited_response_binding": "bound",
+      "inherited_role": "structural_context",
+      "p2_csv_record": 11741,
+      "p2_exact_identity_sha256": "a4d13df93b0b5f774305cf4c076e5ecf94fd4653ab0187e70847e5056e503bc9",
+      "p2_implementation_id": "question_impl.phase0.a4d13df93b0b5f774305",
+      "physical_alias_candidate": null,
+      "question_text": "Which are the EU countries: Spain",
+      "record_id": "P2_ONLY:a4d13df93b0b5f774305cf4c076e5ecf94fd4653ab0187e70847e5056e503bc9",
+      "respondent_carrier": "UNBOUND_PERSON_HOUSEHOLD_NAMESPACE_NOT_INFERRED",
+      "response_classes": "other_governed",
+      "routing_risk_weight": "UNBOUND_OPERATION_SPECIFIC",
+      "scientific_note": "Eight separately retained EU-country knowledge columns; QSR reports single_choice for each. Joint multi-response/battery scoring and option-selection topology are not issued by their shared prefix.",
+      "side": "P2_ONLY",
+      "source_specific_decision": "CONTEXT_OR_CONDITION_CANDIDATE__NO_DIRECTED_ROLE_INFERRED",
+      "source_version": {
+        "actual_source_edition_hash": "UNBOUND",
+        "classification_confidence": "0.0",
+        "dataset_id": "Latinobarometro_1995_Latinobarometro_1995",
+        "format": "sav",
+        "legacy_wave": "1995",
+        "physical_presence_or_bytes_checked": false,
+        "recorded_basename": "Latinobarometro 1995.sav",
+        "recorded_size_bytes": 2224483,
+        "recorded_source_sha256": null
+      },
+      "variable": "p46b",
+      "wave": "1995"
+    },
+    {
+      "atlas_id": "SRC24",
+      "classification": "SUBSTANTIVE_MEASUREMENT_CANDIDATE",
+      "current_operation_status": "SOURCE_OR_OPERATION_HELD",
+      "evidence": [
+        {
+          "csv_record": 11750,
+          "exact_identity_sha256": "b347c6c99a427d8b7c48175d111f68fdefa3f47cdee4a1b4212ba38a200c527e",
+          "owner": "P2_IMPLEMENTATION_AUTHORITY"
+        },
+        {
+          "csv_record": 11876,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "1995",
+            "p47c"
+          ],
+          "owner": "register_A",
+          "row_sha256": "a2468b467d8cf001741dfbea60e73aaad98c6ba6ecc261d190f37a386c145ed8"
+        },
+        {
+          "csv_record": 11876,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "1995",
+            "p47c"
+          ],
+          "owner": "register_B",
+          "row_sha256": "45a95355462095e0e4882bd7cbef430465b7c728bbbd2d67c33ae4b1c12db6d4"
+        }
+      ],
+      "family": "Latinobarómetro",
+      "form": "UNBOUND_REQUIRES_ORIGINAL_SOURCE_OWNER",
+      "historical_owner_artifact": "latinobarómetro_1995_semantic_authority_overlay.csv",
+      "inherited_response_binding": "bound",
+      "inherited_role": "relation_evidence",
+      "p2_csv_record": 11750,
+      "p2_exact_identity_sha256": "b347c6c99a427d8b7c48175d111f68fdefa3f47cdee4a1b4212ba38a200c527e",
+      "p2_implementation_id": "question_impl.phase0.b347c6c99a427d8b7c48",
+      "physical_alias_candidate": null,
+      "question_text": "Opinion of Japan",
+      "record_id": "P2_ONLY:b347c6c99a427d8b7c48175d111f68fdefa3f47cdee4a1b4212ba38a200c527e",
+      "respondent_carrier": "UNBOUND_PERSON_HOUSEHOLD_NAMESPACE_NOT_INFERRED",
+      "response_classes": "support|oppose|neutral|unknown|missing",
+      "routing_risk_weight": "UNBOUND_OPERATION_SPECIFIC",
+      "scientific_note": "Distinct named external-entity response; preserve target and support/oppose/neutral/unknown/missing classes from P2. Parent P47 is not another interchangeable response.",
+      "side": "P2_ONLY",
+      "source_specific_decision": "ACCEPTED_P2_RELATION_ROLE__EXACT_CURRENT_OPERATION_BINDING_HELD",
+      "source_version": {
+        "actual_source_edition_hash": "UNBOUND",
+        "classification_confidence": "0.0",
+        "dataset_id": "Latinobarometro_1995_Latinobarometro_1995",
+        "format": "sav",
+        "legacy_wave": "1995",
+        "physical_presence_or_bytes_checked": false,
+        "recorded_basename": "Latinobarometro 1995.sav",
+        "recorded_size_bytes": 2224483,
+        "recorded_source_sha256": null
+      },
+      "variable": "p47c",
+      "wave": "1995"
+    },
+    {
+      "atlas_id": "SRC24",
+      "classification": "SUBSTANTIVE_MEASUREMENT_CANDIDATE",
+      "current_operation_status": "SOURCE_OR_OPERATION_HELD",
+      "evidence": [
+        {
+          "csv_record": 11748,
+          "exact_identity_sha256": "b5595cebe965f664cb27dfc7fbe50d0d9428df9e6d76c80881371ea051911136",
+          "owner": "P2_IMPLEMENTATION_AUTHORITY"
+        },
+        {
+          "csv_record": 11874,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "1995",
+            "p47a"
+          ],
+          "owner": "register_A",
+          "row_sha256": "b4c204f91e944a6398e7403a5594933feb63b11c3cfdf517043b158acb5c1a5a"
+        },
+        {
+          "csv_record": 11874,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "1995",
+            "p47a"
+          ],
+          "owner": "register_B",
+          "row_sha256": "b0fa4486e01678a192039d3cea361c2e53bf6856f0860c84f1d680959419656a"
+        }
+      ],
+      "family": "Latinobarómetro",
+      "form": "UNBOUND_REQUIRES_ORIGINAL_SOURCE_OWNER",
+      "historical_owner_artifact": "latinobarómetro_1995_semantic_authority_overlay.csv",
+      "inherited_response_binding": "bound",
+      "inherited_role": "relation_evidence",
+      "p2_csv_record": 11748,
+      "p2_exact_identity_sha256": "b5595cebe965f664cb27dfc7fbe50d0d9428df9e6d76c80881371ea051911136",
+      "p2_implementation_id": "question_impl.phase0.b5595cebe965f664cb27",
+      "physical_alias_candidate": null,
+      "question_text": "Opinion of Europe",
+      "record_id": "P2_ONLY:b5595cebe965f664cb27dfc7fbe50d0d9428df9e6d76c80881371ea051911136",
+      "respondent_carrier": "UNBOUND_PERSON_HOUSEHOLD_NAMESPACE_NOT_INFERRED",
+      "response_classes": "support|oppose|neutral|unknown|missing",
+      "routing_risk_weight": "UNBOUND_OPERATION_SPECIFIC",
+      "scientific_note": "Distinct named external-entity response; preserve target and support/oppose/neutral/unknown/missing classes from P2. Parent P47 is not another interchangeable response.",
+      "side": "P2_ONLY",
+      "source_specific_decision": "ACCEPTED_P2_RELATION_ROLE__EXACT_CURRENT_OPERATION_BINDING_HELD",
+      "source_version": {
+        "actual_source_edition_hash": "UNBOUND",
+        "classification_confidence": "0.0",
+        "dataset_id": "Latinobarometro_1995_Latinobarometro_1995",
+        "format": "sav",
+        "legacy_wave": "1995",
+        "physical_presence_or_bytes_checked": false,
+        "recorded_basename": "Latinobarometro 1995.sav",
+        "recorded_size_bytes": 2224483,
+        "recorded_source_sha256": null
+      },
+      "variable": "p47a",
+      "wave": "1995"
+    },
+    {
+      "atlas_id": "SRC01",
+      "classification": "SUBSTANTIVE_MEASUREMENT_CANDIDATE",
+      "current_operation_status": "SOURCE_OR_OPERATION_HELD",
+      "evidence": [
+        {
+          "csv_record": 144,
+          "exact_identity_sha256": "c1b201b575e7490270a829aa2879c858334b16d548ad0ff279b9f6a6482f226e",
+          "owner": "P2_IMPLEMENTATION_AUTHORITY"
+        },
+        {
+          "csv_record": 146,
+          "exact_case_key": [
+            "Afrobarometer",
+            "R1",
+            "xstronld"
+          ],
+          "owner": "register_A",
+          "row_sha256": "987caf630236a2406a778424aff7e8aafd5ae66c0008f367bce3a355acc5a874"
+        },
+        {
+          "csv_record": 146,
+          "exact_case_key": [
+            "Afrobarometer",
+            "R1",
+            "xstronld"
+          ],
+          "owner": "register_B",
+          "row_sha256": "3aefa1611e4462100bb029ae84d1ffa2efe2fa6af0d4d9b4fcc56f93932b6c77"
+        }
+      ],
+      "family": "Afrobarometer",
+      "form": "UNBOUND_REQUIRES_ORIGINAL_SOURCE_OWNER",
+      "historical_owner_artifact": "afrobarometer_R1_semantic_authority_overlay.csv",
+      "inherited_response_binding": "bound",
+      "inherited_role": "harmonized_cross_country_tradeoff",
+      "p2_csv_record": 144,
+      "p2_exact_identity_sha256": "c1b201b575e7490270a829aa2879c858334b16d548ad0ff279b9f6a6482f226e",
+      "p2_implementation_id": "question_impl.phase0.c1b201b575e7490270a8",
+      "physical_alias_candidate": null,
+      "question_text": "Strong leader could decide everything?/or Democracy always best",
+      "record_id": "P2_ONLY:c1b201b575e7490270a829aa2879c858334b16d548ad0ff279b9f6a6482f226e",
+      "respondent_carrier": "UNBOUND_PERSON_HOUSEHOLD_NAMESPACE_NOT_INFERRED",
+      "response_classes": "unknown|refusal|missing|other_governed",
+      "routing_risk_weight": "UNBOUND_OPERATION_SPECIFIC",
+      "scientific_note": "Retained harmonized cross-country tradeoff and source-extra single-choice response. Harmonized wording does not establish source country/form comparability or a directed scalar.",
+      "side": "P2_ONLY",
+      "source_specific_decision": "ACCEPTED_P2_NONADMIN_ROLE__OPERATION_SPECIFIC_AUTHORITY_REQUIRED",
+      "source_version": {
+        "actual_source_edition_hash": "UNBOUND",
+        "classification_confidence": "0.0",
+        "dataset_id": "Afrobarometer_Round_1_Afro_Barometer_Round_1",
+        "format": "sav",
+        "legacy_wave": "Round 1",
+        "physical_presence_or_bytes_checked": false,
+        "recorded_basename": "Afro Barometer Round 1.sav",
+        "recorded_size_bytes": 4492565,
+        "recorded_source_sha256": null
+      },
+      "variable": "xstronld",
+      "wave": "R1"
+    },
+    {
+      "atlas_id": "SRC24",
+      "classification": "COMPETENTLY_HELD_P2_REVIEW",
+      "current_operation_status": "SOURCE_OR_OPERATION_HELD",
+      "evidence": [
+        {
+          "csv_record": 11720,
+          "exact_identity_sha256": "e02d1acbdbe0dd0d28ca2f28364a6ef9bd4aa48c42e93342e2d4489c43ac6caa",
+          "owner": "P2_IMPLEMENTATION_AUTHORITY"
+        },
+        {
+          "csv_record": 11864,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "1995",
+            "p33b"
+          ],
+          "owner": "register_A",
+          "row_sha256": "c9f5405a5e5c27b02fd85fde639e168ef240fb39213df4d533307fc6dedb617b"
+        },
+        {
+          "csv_record": 11864,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "1995",
+            "p33b"
+          ],
+          "owner": "register_B",
+          "row_sha256": "65ac64f9886dec24d2aeee7f3d6a22a7b1d80e30d3daedcff4d30a515cb62737"
+        }
+      ],
+      "family": "Latinobarómetro",
+      "form": "UNBOUND_REQUIRES_ORIGINAL_SOURCE_OWNER",
+      "historical_owner_artifact": "latinobarómetro_1995_semantic_authority_overlay.csv",
+      "inherited_response_binding": "blocked_response_authority_gap",
+      "inherited_role": "blocked_review",
+      "p2_csv_record": 11720,
+      "p2_exact_identity_sha256": "e02d1acbdbe0dd0d28ca2f28364a6ef9bd4aa48c42e93342e2d4489c43ac6caa",
+      "p2_implementation_id": "question_impl.phase0.e02d1acbdbe0dd0d28ca",
+      "physical_alias_candidate": null,
+      "question_text": "Summary of Political Parties",
+      "record_id": "P2_ONLY:e02d1acbdbe0dd0d28ca2f28364a6ef9bd4aa48c42e93342e2d4489c43ac6caa",
+      "respondent_carrier": "UNBOUND_PERSON_HOUSEHOLD_NAMESPACE_NOT_INFERRED",
+      "response_classes": "other_governed",
+      "routing_risk_weight": "UNBOUND_OPERATION_SPECIFIC",
+      "scientific_note": "P2 retains blocked_review despite a historical single_choice source-column classification. Classification alone cannot remove its competent hold.",
+      "side": "P2_ONLY",
+      "source_specific_decision": "P2_BLOCKED_REVIEW_AND_RESPONSE_AUTHORITY_GAP_PRESERVED",
+      "source_version": {
+        "actual_source_edition_hash": "UNBOUND",
+        "classification_confidence": "0.0",
+        "dataset_id": "Latinobarometro_1995_Latinobarometro_1995",
+        "format": "sav",
+        "legacy_wave": "1995",
+        "physical_presence_or_bytes_checked": false,
+        "recorded_basename": "Latinobarometro 1995.sav",
+        "recorded_size_bytes": 2224483,
+        "recorded_source_sha256": null
+      },
+      "variable": "p33b",
+      "wave": "1995"
+    },
+    {
+      "atlas_id": "SRC01",
+      "classification": "ADMIN_OR_CARRIER",
+      "current_operation_status": "SOURCE_OR_OPERATION_HELD",
+      "evidence": [
+        {
+          "csv_record": 7,
+          "exact_identity_sha256": "e8a81e3fdbb1f7e81e74df65323c3a5e8901c3ad701ab7f3a617f488fc06149b",
+          "owner": "P2_IMPLEMENTATION_AUTHORITY"
+        },
+        {
+          "csv_record": 7,
+          "exact_case_key": [
+            "Afrobarometer",
+            "R1",
+            "casenumb"
+          ],
+          "owner": "register_A",
+          "row_sha256": "5e097bd0724b71910f7428326ca06f92d3c038345a63762099118a167d179052"
+        },
+        {
+          "csv_record": 7,
+          "exact_case_key": [
+            "Afrobarometer",
+            "R1",
+            "casenumb"
+          ],
+          "owner": "register_B",
+          "row_sha256": "c9314f55e877f012f9d60787d0ad3b1d371095a6fd7ad821a70b37e728647a53"
+        }
+      ],
+      "family": "Afrobarometer",
+      "form": "UNBOUND_REQUIRES_ORIGINAL_SOURCE_OWNER",
+      "historical_owner_artifact": "afrobarometer_R1_semantic_authority_overlay.csv",
+      "inherited_response_binding": "blocked_response_authority_gap",
+      "inherited_role": "administrative_metadata",
+      "p2_csv_record": 7,
+      "p2_exact_identity_sha256": "e8a81e3fdbb1f7e81e74df65323c3a5e8901c3ad701ab7f3a617f488fc06149b",
+      "p2_implementation_id": "question_impl.phase0.e8a81e3fdbb1f7e81e74",
+      "physical_alias_candidate": null,
+      "question_text": "Respondent number",
+      "record_id": "P2_ONLY:e8a81e3fdbb1f7e81e74df65323c3a5e8901c3ad701ab7f3a617f488fc06149b",
+      "respondent_carrier": "UNBOUND_PERSON_HOUSEHOLD_NAMESPACE_NOT_INFERRED",
+      "response_classes": "other_governed",
+      "routing_risk_weight": "UNBOUND_OPERATION_SPECIFIC",
+      "scientific_note": "Preserve exact retained role and distinct code; no operation or respondent/form/route identity inferred from label.",
+      "side": "P2_ONLY",
+      "source_specific_decision": "PRESERVE_CARRIER_OR_DESIGN_INPUT__NOT_MEASUREMENT_TARGET_BY_P2_DISPOSITION",
+      "source_version": {
+        "actual_source_edition_hash": "UNBOUND",
+        "classification_confidence": "0.0",
+        "dataset_id": "Afrobarometer_Round_1_Afro_Barometer_Round_1",
+        "format": "sav",
+        "legacy_wave": "Round 1",
+        "physical_presence_or_bytes_checked": false,
+        "recorded_basename": "Afro Barometer Round 1.sav",
+        "recorded_size_bytes": 4492565,
+        "recorded_source_sha256": null
+      },
+      "variable": "casenumb",
+      "wave": "R1"
+    },
+    {
+      "atlas_id": "SRC24",
+      "classification": "ADMIN_OR_CARRIER",
+      "current_operation_status": "SOURCE_OR_OPERATION_HELD",
+      "evidence": [
+        {
+          "csv_record": 11873,
+          "exact_identity_sha256": "e8dc88eb458ddb593acdee09d9b70ecf3e2ad0541d0a38336185c92f67479e0b",
+          "owner": "P2_IMPLEMENTATION_AUTHORITY"
+        },
+        {
+          "csv_record": 11879,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "1995",
+            "wt"
+          ],
+          "owner": "register_A",
+          "row_sha256": "73b1b5eb6f6b297658a4d0cb67f696d42971faffba62937bea171eb468210b45"
+        },
+        {
+          "csv_record": 11879,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "1995",
+            "wt"
+          ],
+          "owner": "register_B",
+          "row_sha256": "4c89296f8690d115277534c3157d3de2d740418ab8080dae2574d8df9f9fb957"
+        }
+      ],
+      "family": "Latinobarómetro",
+      "form": "UNBOUND_REQUIRES_ORIGINAL_SOURCE_OWNER",
+      "historical_owner_artifact": "latinobarómetro_1995_semantic_authority_overlay.csv",
+      "inherited_response_binding": "blocked_response_authority_gap",
+      "inherited_role": "admin",
+      "p2_csv_record": 11873,
+      "p2_exact_identity_sha256": "e8dc88eb458ddb593acdee09d9b70ecf3e2ad0541d0a38336185c92f67479e0b",
+      "p2_implementation_id": "question_impl.phase0.e8dc88eb458ddb593acd",
+      "physical_alias_candidate": null,
+      "question_text": "Weighting",
+      "record_id": "P2_ONLY:e8dc88eb458ddb593acdee09d9b70ecf3e2ad0541d0a38336185c92f67479e0b",
+      "respondent_carrier": "UNBOUND_PERSON_HOUSEHOLD_NAMESPACE_NOT_INFERRED",
+      "response_classes": "other_governed",
+      "routing_risk_weight": "UNBOUND_OPERATION_SPECIFIC",
+      "scientific_note": "Weight/design input retained. No measure fact, national estimand or unit weight is inferred from its name or administrative status.",
+      "side": "P2_ONLY",
+      "source_specific_decision": "PRESERVE_CARRIER_OR_DESIGN_INPUT__NOT_MEASUREMENT_TARGET_BY_P2_DISPOSITION",
+      "source_version": {
+        "actual_source_edition_hash": "UNBOUND",
+        "classification_confidence": "0.0",
+        "dataset_id": "Latinobarometro_1995_Latinobarometro_1995",
+        "format": "sav",
+        "legacy_wave": "1995",
+        "physical_presence_or_bytes_checked": false,
+        "recorded_basename": "Latinobarometro 1995.sav",
+        "recorded_size_bytes": 2224483,
+        "recorded_source_sha256": null
+      },
+      "variable": "wt",
+      "wave": "1995"
+    },
+    {
+      "atlas_id": "SRC24",
+      "classification": "SUBSTANTIVE_SOURCE_RESPONSE_WITH_STRUCTURAL_CONTEXT_ROLE",
+      "current_operation_status": "SOURCE_OR_OPERATION_HELD",
+      "evidence": [
+        {
+          "csv_record": 11746,
+          "exact_identity_sha256": "ec543f8a2afb10e7974a053c0e5c51c95ee15577c2c362b1ae077cbf427c2ba8",
+          "owner": "P2_IMPLEMENTATION_AUTHORITY"
+        },
+        {
+          "csv_record": 11872,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "1995",
+            "p46g"
+          ],
+          "owner": "register_A",
+          "row_sha256": "6f1fbac4a4dc81386aeec042194b5070e41f822b37ffdcf4ea6a3039d897b9d7"
+        },
+        {
+          "csv_record": 11872,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "1995",
+            "p46g"
+          ],
+          "owner": "register_B",
+          "row_sha256": "dd1a33f4945c0e5a71d4a4824cfde35dbfc1431c73c068af7cac1354cd90ca82"
+        }
+      ],
+      "family": "Latinobarómetro",
+      "form": "UNBOUND_REQUIRES_ORIGINAL_SOURCE_OWNER",
+      "historical_owner_artifact": "latinobarómetro_1995_semantic_authority_overlay.csv",
+      "inherited_response_binding": "bound",
+      "inherited_role": "structural_context",
+      "p2_csv_record": 11746,
+      "p2_exact_identity_sha256": "ec543f8a2afb10e7974a053c0e5c51c95ee15577c2c362b1ae077cbf427c2ba8",
+      "p2_implementation_id": "question_impl.phase0.ec543f8a2afb10e7974a",
+      "physical_alias_candidate": null,
+      "question_text": "Which are the EU countries: Other countries of the EU",
+      "record_id": "P2_ONLY:ec543f8a2afb10e7974a053c0e5c51c95ee15577c2c362b1ae077cbf427c2ba8",
+      "respondent_carrier": "UNBOUND_PERSON_HOUSEHOLD_NAMESPACE_NOT_INFERRED",
+      "response_classes": "other_governed",
+      "routing_risk_weight": "UNBOUND_OPERATION_SPECIFIC",
+      "scientific_note": "Eight separately retained EU-country knowledge columns; QSR reports single_choice for each. Joint multi-response/battery scoring and option-selection topology are not issued by their shared prefix.",
+      "side": "P2_ONLY",
+      "source_specific_decision": "CONTEXT_OR_CONDITION_CANDIDATE__NO_DIRECTED_ROLE_INFERRED",
+      "source_version": {
+        "actual_source_edition_hash": "UNBOUND",
+        "classification_confidence": "0.0",
+        "dataset_id": "Latinobarometro_1995_Latinobarometro_1995",
+        "format": "sav",
+        "legacy_wave": "1995",
+        "physical_presence_or_bytes_checked": false,
+        "recorded_basename": "Latinobarometro 1995.sav",
+        "recorded_size_bytes": 2224483,
+        "recorded_source_sha256": null
+      },
+      "variable": "p46g",
+      "wave": "1995"
+    },
+    {
+      "atlas_id": "SRC24",
+      "classification": "SUBSTANTIVE_SOURCE_RESPONSE_WITH_STRUCTURAL_CONTEXT_ROLE",
+      "current_operation_status": "SOURCE_OR_OPERATION_HELD",
+      "evidence": [
+        {
+          "csv_record": 11743,
+          "exact_identity_sha256": "f86530d3805d17e8e918397e909cc731a2e78a25951957d11267ee29c11c8955",
+          "owner": "P2_IMPLEMENTATION_AUTHORITY"
+        },
+        {
+          "csv_record": 11869,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "1995",
+            "p46d"
+          ],
+          "owner": "register_A",
+          "row_sha256": "90a86919fafa5b91357be1b0e99e8888b91a9e8ddc89132a5478803ce0046718"
+        },
+        {
+          "csv_record": 11869,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "1995",
+            "p46d"
+          ],
+          "owner": "register_B",
+          "row_sha256": "471a03057692820dc01d6456517608516c4ef3cb05ab2a2b3dd4331a834ac8e8"
+        }
+      ],
+      "family": "Latinobarómetro",
+      "form": "UNBOUND_REQUIRES_ORIGINAL_SOURCE_OWNER",
+      "historical_owner_artifact": "latinobarómetro_1995_semantic_authority_overlay.csv",
+      "inherited_response_binding": "bound",
+      "inherited_role": "structural_context",
+      "p2_csv_record": 11743,
+      "p2_exact_identity_sha256": "f86530d3805d17e8e918397e909cc731a2e78a25951957d11267ee29c11c8955",
+      "p2_implementation_id": "question_impl.phase0.f86530d3805d17e8e918",
+      "physical_alias_candidate": null,
+      "question_text": "Which are the EU countries: England",
+      "record_id": "P2_ONLY:f86530d3805d17e8e918397e909cc731a2e78a25951957d11267ee29c11c8955",
+      "respondent_carrier": "UNBOUND_PERSON_HOUSEHOLD_NAMESPACE_NOT_INFERRED",
+      "response_classes": "other_governed",
+      "routing_risk_weight": "UNBOUND_OPERATION_SPECIFIC",
+      "scientific_note": "Eight separately retained EU-country knowledge columns; QSR reports single_choice for each. Joint multi-response/battery scoring and option-selection topology are not issued by their shared prefix.",
+      "side": "P2_ONLY",
+      "source_specific_decision": "CONTEXT_OR_CONDITION_CANDIDATE__NO_DIRECTED_ROLE_INFERRED",
+      "source_version": {
+        "actual_source_edition_hash": "UNBOUND",
+        "classification_confidence": "0.0",
+        "dataset_id": "Latinobarometro_1995_Latinobarometro_1995",
+        "format": "sav",
+        "legacy_wave": "1995",
+        "physical_presence_or_bytes_checked": false,
+        "recorded_basename": "Latinobarometro 1995.sav",
+        "recorded_size_bytes": 2224483,
+        "recorded_source_sha256": null
+      },
+      "variable": "p46d",
+      "wave": "1995"
+    },
+    {
+      "atlas_id": "SRC26",
+      "classification": "SUBSTANTIVE_MEASUREMENT_CANDIDATE",
+      "current_operation_status": "SOURCE_OR_OPERATION_HELD",
+      "evidence": [
+        {
+          "csv_record": 12433,
+          "exact_identity_sha256": "f90eff21049e70ac36bfefe820046d9b08240f5b7a658b9dc88d3de016aa969f",
+          "owner": "P2_IMPLEMENTATION_AUTHORITY"
+        },
+        {
+          "csv_record": 12752,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "2024",
+            "P8NCV.B"
+          ],
+          "owner": "register_A",
+          "row_sha256": "6aab1f7d205ff8d23aecdc2405de81ecb294531b9f9ffb4a21f781f51395c41d"
+        },
+        {
+          "csv_record": 12752,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "2024",
+            "P8NCV.B"
+          ],
+          "owner": "register_B",
+          "row_sha256": "1f8695dc77304a44a7f62357d33e65c2530567113121b2e69102598ffdb1c8b0"
+        }
+      ],
+      "family": "Latinobarómetro",
+      "form": "UNBOUND_REQUIRES_ORIGINAL_SOURCE_OWNER",
+      "historical_owner_artifact": "latinobarómetro_2024_semantic_authority_overlay.csv",
+      "inherited_response_binding": "bound",
+      "inherited_role": "relation_evidence",
+      "p2_csv_record": 12433,
+      "p2_exact_identity_sha256": "f90eff21049e70ac36bfefe820046d9b08240f5b7a658b9dc88d3de016aa969f",
+      "p2_implementation_id": "question_impl.phase0.f90eff21049e70ac36bf",
+      "physical_alias_candidate": "P8NCV.B",
+      "question_text": "I can persuade others to change their opinion or attitude towards the environment",
+      "record_id": "P2_ONLY:f90eff21049e70ac36bfefe820046d9b08240f5b7a658b9dc88d3de016aa969f",
+      "respondent_carrier": "UNBOUND_PERSON_HOUSEHOLD_NAMESPACE_NOT_INFERRED",
+      "response_classes": "support|oppose|unknown",
+      "routing_risk_weight": "UNBOUND_OPERATION_SPECIFIC",
+      "scientific_note": "P2 question text and physical P8NCV.B content support an explicit P/Q/dotted-name candidate; current source/version/form/routing/response-code authority crosswalk must be supplied. This report does not apply that alias.",
+      "side": "P2_ONLY",
+      "source_specific_decision": "ACCEPTED_P2_RELATION_ROLE__EXACT_CURRENT_OPERATION_BINDING_HELD",
+      "source_version": {
+        "actual_source_edition_hash": "UNBOUND",
+        "classification_confidence": "0.0",
+        "dataset_id": "Latinobarometro_2024_Latinobarometro_2024",
+        "format": "sav",
+        "legacy_wave": "2024",
+        "physical_presence_or_bytes_checked": false,
+        "recorded_basename": "Latinobarometro 2024.sav",
+        "recorded_size_bytes": 7886834,
+        "recorded_source_sha256": null
+      },
+      "variable": "Q8NCVB",
+      "wave": "2024"
+    },
+    {
+      "atlas_id": "SRC01",
+      "classification": "POSSIBLE_RENAMED_SUBSTANTIVE_ITEM",
+      "country_scope_as_recorded": "LS",
+      "current_operation_status": "SOURCE_OR_OPERATION_HELD",
+      "evidence": [
+        {
+          "csv_record": 100,
+          "governed_row_payload_hash": "65b6eb280ee443d907155c772089aaafb11f811ec5b325354a36dcffa9fcb4fe",
+          "owner": "QRA_FINAL_R1"
+        },
+        {
+          "csv_record": 102,
+          "exact_case_key": [
+            "Afrobarometer",
+            "R1",
+            "pid"
+          ],
+          "owner": "register_A",
+          "row_sha256": "4ee2dcc703b6c97a468c2e8706455fcef2b45df7363f6682ec58f0c6007a21d0"
+        },
+        {
+          "csv_record": 102,
+          "exact_case_key": [
+            "Afrobarometer",
+            "R1",
+            "pid"
+          ],
+          "owner": "register_B",
+          "row_sha256": "3197e92ee2e50d369106c267f5a71bcf292c866755d1c0549762db487772dae7"
+        },
+        {
+          "csv_record": 100,
+          "exact_case_key": [
+            "Afrobarometer",
+            "R1",
+            "pid"
+          ],
+          "owner": "v525b_semantic",
+          "row_sha256": "7bee7eb05eac13f9532e6caaac4bd5c21d740b68951eb9812c48974a47d1e288"
+        },
+        {
+          "csv_record": 100,
+          "exact_case_key": [
+            "Afrobarometer",
+            "R1",
+            "pid"
+          ],
+          "owner": "v525b_drivers",
+          "row_sha256": "7240d28ee1f20c7ee7b4b9399773382df86effd80f95cdbdca6264ae9d033beb"
+        },
+        {
+          "csv_record": 100,
+          "exact_case_key": [
+            "Afrobarometer",
+            "R1",
+            "pid"
+          ],
+          "owner": "d62_driver_provenance_only",
+          "row_sha256": "8c7d7e19d020c800f7cb6d89fbcc6dd104df81c1c224cb2265bf99e7012f47e3"
+        }
+      ],
+      "family": "Afrobarometer",
+      "form": "UNBOUND_REQUIRES_ORIGINAL_SOURCE_OWNER",
+      "governed_row_payload_hash": "65b6eb280ee443d907155c772089aaafb11f811ec5b325354a36dcffa9fcb4fe",
+      "inherited_role": "BLOCKED_IDENTITY_OR_AUTHORITY_JOIN",
+      "p2_exact_identity_sha256": null,
+      "qra_csv_record": 100,
+      "qra_question_id": "Afrobarometer:R1:pid",
+      "record_id": "QRA_BLOCKED:Afrobarometer:R1:pid",
+      "related_candidates": "party",
+      "respondent_carrier": "UNBOUND_PERSON_HOUSEHOLD_NAMESPACE_NOT_INFERRED",
+      "scientific_note": "V525b party affiliation has 112 options; QSR pid is a codebook-only reference and party a real 112-label source column. Text/category-count correspondence is candidate evidence; no issued alias or directional driver transfer.",
+      "side": "QRA_BLOCKED",
+      "source_specific_decision": "PRESERVE_BLOCKED_IDENTITY__NO_AUTOMATIC_ALIAS_OR_PARENT_COLLAPSE",
+      "source_version": {
+        "actual_source_edition_hash": "UNBOUND",
+        "classification_confidence": "0.0",
+        "dataset_id": "Afrobarometer_Round_1_Afro_Barometer_Round_1",
+        "format": "sav",
+        "legacy_wave": "Round 1",
+        "physical_presence_or_bytes_checked": false,
+        "recorded_basename": "Afro Barometer Round 1.sav",
+        "recorded_size_bytes": 4492565,
+        "recorded_source_sha256": null
+      },
+      "variable": "pid",
+      "wave": "R1"
+    },
+    {
+      "atlas_id": "SRC01",
+      "classification": "POSSIBLE_RENAMED_CARRIER",
+      "country_scope_as_recorded": "LS",
+      "current_operation_status": "SOURCE_OR_OPERATION_HELD",
+      "evidence": [
+        {
+          "csv_record": 115,
+          "governed_row_payload_hash": "5fbf4918e2a38ebf9ad0ffbcd77d3cdc3f7955b6b9ba0e6f927d2e71eec830c8",
+          "owner": "QRA_FINAL_R1"
+        },
+        {
+          "csv_record": 117,
+          "exact_case_key": [
+            "Afrobarometer",
+            "R1",
+            "respnumb"
+          ],
+          "owner": "register_A",
+          "row_sha256": "669b1090e39c714c58eb40125d6c49effc95740ad1215e62de21380b310f93fa"
+        },
+        {
+          "csv_record": 117,
+          "exact_case_key": [
+            "Afrobarometer",
+            "R1",
+            "respnumb"
+          ],
+          "owner": "register_B",
+          "row_sha256": "9374f035ee23df43728207bf8794cbe9e8cec07d115ef79813de607a53d09404"
+        },
+        {
+          "csv_record": 115,
+          "exact_case_key": [
+            "Afrobarometer",
+            "R1",
+            "respnumb"
+          ],
+          "owner": "v525b_semantic",
+          "row_sha256": "923a038e80929fc46e110c8660daf57bdbf21a4af23220815c5e4fd1a1655810"
+        },
+        {
+          "csv_record": 115,
+          "exact_case_key": [
+            "Afrobarometer",
+            "R1",
+            "respnumb"
+          ],
+          "owner": "v525b_drivers",
+          "row_sha256": "28536b43a05d34ef5abe8a2e020f3e638850538888247df0003bb9e8aa64bfee"
+        },
+        {
+          "csv_record": 115,
+          "exact_case_key": [
+            "Afrobarometer",
+            "R1",
+            "respnumb"
+          ],
+          "owner": "d62_driver_provenance_only",
+          "row_sha256": "4853c0da85dcae6dbc3a33302e9e7478c1841acea4ad27b90329d39b25ec727b"
+        }
+      ],
+      "family": "Afrobarometer",
+      "form": "UNBOUND_REQUIRES_ORIGINAL_SOURCE_OWNER",
+      "governed_row_payload_hash": "5fbf4918e2a38ebf9ad0ffbcd77d3cdc3f7955b6b9ba0e6f927d2e71eec830c8",
+      "inherited_role": "BLOCKED_IDENTITY_OR_AUTHORITY_JOIN",
+      "p2_exact_identity_sha256": null,
+      "qra_csv_record": 115,
+      "qra_question_id": "Afrobarometer:R1:respnumb",
+      "record_id": "QRA_BLOCKED:Afrobarometer:R1:respnumb",
+      "related_candidates": "casenumb",
+      "respondent_carrier": "UNBOUND_PERSON_HOUSEHOLD_NAMESPACE_NOT_INFERRED",
+      "scientific_note": "Codebook stem absent from source; casenumb is a retained source-extra respondent-number carrier. No respondent namespace equivalence is issued.",
+      "side": "QRA_BLOCKED",
+      "source_specific_decision": "PRESERVE_BLOCKED_IDENTITY__NO_AUTOMATIC_ALIAS_OR_PARENT_COLLAPSE",
+      "source_version": {
+        "actual_source_edition_hash": "UNBOUND",
+        "classification_confidence": "0.0",
+        "dataset_id": "Afrobarometer_Round_1_Afro_Barometer_Round_1",
+        "format": "sav",
+        "legacy_wave": "Round 1",
+        "physical_presence_or_bytes_checked": false,
+        "recorded_basename": "Afro Barometer Round 1.sav",
+        "recorded_size_bytes": 4492565,
+        "recorded_source_sha256": null
+      },
+      "variable": "respnumb",
+      "wave": "R1"
+    },
+    {
+      "atlas_id": "SRC24",
+      "classification": "CODEBOOK_REFERENCE_WITH_ITEM_BATTERY",
+      "country_scope_as_recorded": "BR",
+      "current_operation_status": "SOURCE_OR_OPERATION_HELD",
+      "evidence": [
+        {
+          "csv_record": 11935,
+          "governed_row_payload_hash": "b557b40172478a4b0327c5dd745d037ddf9ea5cf36e46a80fb8f19c716e968dc",
+          "owner": "QRA_FINAL_R1"
+        },
+        {
+          "csv_record": 11679,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "1995",
+            "P15"
+          ],
+          "owner": "register_A",
+          "row_sha256": "9ab86eb33ae79c9d4a01c63b53ab1257d58eb51e32d9d59364cde90f3201d75d"
+        },
+        {
+          "csv_record": 11679,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "1995",
+            "P15"
+          ],
+          "owner": "register_B",
+          "row_sha256": "376121f7a54e888ce09337d7bf88292a09c118cdd2938c6751e9dfcdec5ea591"
+        },
+        {
+          "csv_record": 4200,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "1995",
+            "P15"
+          ],
+          "owner": "v525b_semantic",
+          "row_sha256": "24baaa4e4b4bc95a34577bf78da7c5047b4118a101257b68c59e999b8770bb02"
+        },
+        {
+          "csv_record": 4200,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "1995",
+            "P15"
+          ],
+          "owner": "v525b_drivers",
+          "row_sha256": "2ddeea3d2a535b628c2a931eecc296429ee81233f436a96a3622ddd9814486dc"
+        },
+        {
+          "csv_record": 11942,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "1995",
+            "P15"
+          ],
+          "owner": "d62_driver_provenance_only",
+          "row_sha256": "50c539a1b94af9d0a46ca8fc263763611cfc61810d385fa0455a83d6cfda5308"
+        }
+      ],
+      "family": "Latinobarómetro",
+      "form": "UNBOUND_REQUIRES_ORIGINAL_SOURCE_OWNER",
+      "governed_row_payload_hash": "b557b40172478a4b0327c5dd745d037ddf9ea5cf36e46a80fb8f19c716e968dc",
+      "inherited_role": "BLOCKED_IDENTITY_OR_AUTHORITY_JOIN",
+      "p2_exact_identity_sha256": null,
+      "qra_csv_record": 11935,
+      "qra_question_id": "Latinobarómetro:1995:P15",
+      "record_id": "QRA_BLOCKED:Latinobarómetro:1995:P15",
+      "related_candidates": "P15A|P15B|P15C|P15D|P15E",
+      "respondent_carrier": "UNBOUND_PERSON_HOUSEHOLD_NAMESPACE_NOT_INFERRED",
+      "scientific_note": "Historical codebook reference is absent as a source column. Five separately identified active child items exist; parent cannot become another measured response or be deleted from authority accounting.",
+      "side": "QRA_BLOCKED",
+      "source_specific_decision": "PRESERVE_BLOCKED_IDENTITY__NO_AUTOMATIC_ALIAS_OR_PARENT_COLLAPSE",
+      "source_version": {
+        "actual_source_edition_hash": "UNBOUND",
+        "classification_confidence": "0.0",
+        "dataset_id": "Latinobarometro_1995_Latinobarometro_1995",
+        "format": "sav",
+        "legacy_wave": "1995",
+        "physical_presence_or_bytes_checked": false,
+        "recorded_basename": "Latinobarometro 1995.sav",
+        "recorded_size_bytes": 2224483,
+        "recorded_source_sha256": null
+      },
+      "variable": "P15",
+      "wave": "1995"
+    },
+    {
+      "atlas_id": "SRC24",
+      "classification": "POSSIBLE_RENAMED_CONTEXT_ITEM",
+      "country_scope_as_recorded": "BR",
+      "current_operation_status": "SOURCE_OR_OPERATION_HELD",
+      "evidence": [
+        {
+          "csv_record": 11991,
+          "governed_row_payload_hash": "872295236cb074f80016f331f6ee710c56a391c456a552715c02cbfd43d3d246",
+          "owner": "QRA_FINAL_R1"
+        },
+        {
+          "csv_record": 11735,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "1995",
+            "P43"
+          ],
+          "owner": "register_A",
+          "row_sha256": "3ae5b8d8e7faeeba694262dcc30ad4786266511d43af7e7468bdece53003c0c1"
+        },
+        {
+          "csv_record": 11735,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "1995",
+            "P43"
+          ],
+          "owner": "register_B",
+          "row_sha256": "a41c3fc429f914fc09d498807d1ce5f78d3d53884d740c4226ba88e7b74e90d1"
+        },
+        {
+          "csv_record": 4256,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "1995",
+            "P43"
+          ],
+          "owner": "v525b_semantic",
+          "row_sha256": "33924015cdadef6b1779d7e3537bc8db4791af8c09b6439fb1121a0a54bed12f"
+        },
+        {
+          "csv_record": 4256,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "1995",
+            "P43"
+          ],
+          "owner": "v525b_drivers",
+          "row_sha256": "0cb2b7644c143236cd9d75ce9224ea82879d7236bee359d96a769b07eb82969f"
+        },
+        {
+          "csv_record": 11998,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "1995",
+            "P43"
+          ],
+          "owner": "d62_driver_provenance_only",
+          "row_sha256": "4a76eb0570154fb161cc0667c150c6237d2aa4b523ddce981f8de13ca639b0be"
+        }
+      ],
+      "family": "Latinobarómetro",
+      "form": "UNBOUND_REQUIRES_ORIGINAL_SOURCE_OWNER",
+      "governed_row_payload_hash": "872295236cb074f80016f331f6ee710c56a391c456a552715c02cbfd43d3d246",
+      "inherited_role": "BLOCKED_IDENTITY_OR_AUTHORITY_JOIN",
+      "p2_exact_identity_sha256": null,
+      "qra_csv_record": 11991,
+      "qra_question_id": "Latinobarómetro:1995:P43",
+      "record_id": "QRA_BLOCKED:Latinobarómetro:1995:P43",
+      "related_candidates": "p43a",
+      "respondent_carrier": "UNBOUND_PERSON_HOUSEHOLD_NAMESPACE_NOT_INFERRED",
+      "scientific_note": "EU-awareness codebook reference absent as a source column; p43a source-extra is a candidate. Accepted V525b genderEquality and later imperialAlignment assignments differ; no semantic succession is inferred.",
+      "side": "QRA_BLOCKED",
+      "source_specific_decision": "PRESERVE_BLOCKED_IDENTITY__NO_AUTOMATIC_ALIAS_OR_PARENT_COLLAPSE",
+      "source_version": {
+        "actual_source_edition_hash": "UNBOUND",
+        "classification_confidence": "0.0",
+        "dataset_id": "Latinobarometro_1995_Latinobarometro_1995",
+        "format": "sav",
+        "legacy_wave": "1995",
+        "physical_presence_or_bytes_checked": false,
+        "recorded_basename": "Latinobarometro 1995.sav",
+        "recorded_size_bytes": 2224483,
+        "recorded_source_sha256": null
+      },
+      "variable": "P43",
+      "wave": "1995"
+    },
+    {
+      "atlas_id": "SRC24",
+      "classification": "CODEBOOK_REFERENCE_WITH_ENTITY_SUBITEMS",
+      "country_scope_as_recorded": "BR",
+      "current_operation_status": "SOURCE_OR_OPERATION_HELD",
+      "evidence": [
+        {
+          "csv_record": 11996,
+          "governed_row_payload_hash": "2657dda40a6eac9a6a96903bfd345edea746df911292e440f4fba1ffc5a97067",
+          "owner": "QRA_FINAL_R1"
+        },
+        {
+          "csv_record": 11741,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "1995",
+            "P47"
+          ],
+          "owner": "register_A",
+          "row_sha256": "9293a277275ed349de224cf69ee950e0509dca85224741091a0547a702b77a27"
+        },
+        {
+          "csv_record": 11741,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "1995",
+            "P47"
+          ],
+          "owner": "register_B",
+          "row_sha256": "a7c91808995afc3eeb4f63c2fda6660271cbfc3235e80aa8a01ad34bc734a6d6"
+        },
+        {
+          "csv_record": 4262,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "1995",
+            "P47"
+          ],
+          "owner": "v525b_semantic",
+          "row_sha256": "b68fd205719377e05cf5794ca1091577824d447b7f45ec6456c261c08c1a385c"
+        },
+        {
+          "csv_record": 4262,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "1995",
+            "P47"
+          ],
+          "owner": "v525b_drivers",
+          "row_sha256": "c059695ad226aa64a47d7e2079dfcf5a11c9e33e8c7feae1453165a0ccbc68fd"
+        },
+        {
+          "csv_record": 12004,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "1995",
+            "P47"
+          ],
+          "owner": "d62_driver_provenance_only",
+          "row_sha256": "bdbaeae6cd43bd296da125d139c43c54039d703c053b2a29503521ff67ff4939"
+        }
+      ],
+      "family": "Latinobarómetro",
+      "form": "UNBOUND_REQUIRES_ORIGINAL_SOURCE_OWNER",
+      "governed_row_payload_hash": "2657dda40a6eac9a6a96903bfd345edea746df911292e440f4fba1ffc5a97067",
+      "inherited_role": "BLOCKED_IDENTITY_OR_AUTHORITY_JOIN",
+      "p2_exact_identity_sha256": null,
+      "qra_csv_record": 11996,
+      "qra_question_id": "Latinobarómetro:1995:P47",
+      "record_id": "QRA_BLOCKED:Latinobarómetro:1995:P47",
+      "related_candidates": "p47a|p47b|p47c",
+      "respondent_carrier": "UNBOUND_PERSON_HOUSEHOLD_NAMESPACE_NOT_INFERRED",
+      "scientific_note": "Parent refers to US/Europe/Japan; retained P2 has three distinct entity responses. Accepted V525b temporalOrientation differs from later imperialAlignment; neither label licenses collapsing entity responses.",
+      "side": "QRA_BLOCKED",
+      "source_specific_decision": "PRESERVE_BLOCKED_IDENTITY__NO_AUTOMATIC_ALIAS_OR_PARENT_COLLAPSE",
+      "source_version": {
+        "actual_source_edition_hash": "UNBOUND",
+        "classification_confidence": "0.0",
+        "dataset_id": "Latinobarometro_1995_Latinobarometro_1995",
+        "format": "sav",
+        "legacy_wave": "1995",
+        "physical_presence_or_bytes_checked": false,
+        "recorded_basename": "Latinobarometro 1995.sav",
+        "recorded_size_bytes": 2224483,
+        "recorded_source_sha256": null
+      },
+      "variable": "P47",
+      "wave": "1995"
+    },
+    {
+      "atlas_id": "SRC26",
+      "classification": "CODEBOOK_STEM_WITH_SPLIT_SUBITEMS",
+      "country_scope_as_recorded": "GT",
+      "current_operation_status": "SOURCE_OR_OPERATION_HELD",
+      "evidence": [
+        {
+          "csv_record": 12536,
+          "governed_row_payload_hash": "8a6ba914acf854aec71b6c7cd949af38a284a15e516a32e569c4acc4211bc703",
+          "owner": "QRA_FINAL_R1"
+        },
+        {
+          "csv_record": 12771,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "2024",
+            "Q12STGBS"
+          ],
+          "owner": "register_A",
+          "row_sha256": "36d70444f003be08ed3d43b0ce7ad3b78d74c1860fd52bd6ca86ffd0b66d5ddb"
+        },
+        {
+          "csv_record": 12771,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "2024",
+            "Q12STGBS"
+          ],
+          "owner": "register_B",
+          "row_sha256": "d1394b865101b7d4b441a1cd67e361f67691f815a79ff3a0adc0de6bd2c9c88d"
+        },
+        {
+          "csv_record": 4802,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "2024",
+            "Q12STGBS"
+          ],
+          "owner": "v525b_semantic",
+          "row_sha256": "4a54825610e90543b409072c795b90a0176ea08b8ee28e9957777d4f8663ae3d"
+        },
+        {
+          "csv_record": 4802,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "2024",
+            "Q12STGBS"
+          ],
+          "owner": "v525b_drivers",
+          "row_sha256": "72097933165e6148d79691e59cb5bc6c85fd3d4f173e1096946f09682cd6e93e"
+        },
+        {
+          "csv_record": 12544,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "2024",
+            "Q12STGBS"
+          ],
+          "owner": "d62_driver_provenance_only",
+          "row_sha256": "a1079c67dffe98ee7257e297590f5219013e05c7d879b8e99e23904b1a33aef9"
+        }
+      ],
+      "family": "Latinobarómetro",
+      "form": "UNBOUND_REQUIRES_ORIGINAL_SOURCE_OWNER",
+      "governed_row_payload_hash": "8a6ba914acf854aec71b6c7cd949af38a284a15e516a32e569c4acc4211bc703",
+      "inherited_role": "BLOCKED_IDENTITY_OR_AUTHORITY_JOIN",
+      "p2_exact_identity_sha256": null,
+      "qra_csv_record": 12536,
+      "qra_question_id": "Latinobarómetro:2024:Q12STGBS",
+      "record_id": "QRA_BLOCKED:Latinobarómetro:2024:Q12STGBS",
+      "related_candidates": "Q12STGBSA|Q12STGBSB",
+      "respondent_carrier": "UNBOUND_PERSON_HOUSEHOLD_NAMESPACE_NOT_INFERRED",
+      "scientific_note": "QSR marks absent codebook stem; active democracy and economy subitems remain separate. Source forms/physical bindings require owner validation.",
+      "side": "QRA_BLOCKED",
+      "source_specific_decision": "PRESERVE_BLOCKED_IDENTITY__NO_AUTOMATIC_ALIAS_OR_PARENT_COLLAPSE",
+      "source_version": {
+        "actual_source_edition_hash": "UNBOUND",
+        "classification_confidence": "0.0",
+        "dataset_id": "Latinobarometro_2024_Latinobarometro_2024",
+        "format": "sav",
+        "legacy_wave": "2024",
+        "physical_presence_or_bytes_checked": false,
+        "recorded_basename": "Latinobarometro 2024.sav",
+        "recorded_size_bytes": 7886834,
+        "recorded_source_sha256": null
+      },
+      "variable": "Q12STGBS",
+      "wave": "2024"
+    },
+    {
+      "atlas_id": "SRC26",
+      "classification": "CODEBOOK_STEM_WITH_SPLIT_SUBITEMS",
+      "country_scope_as_recorded": "GT",
+      "current_operation_status": "SOURCE_OR_OPERATION_HELD",
+      "evidence": [
+        {
+          "csv_record": 12576,
+          "governed_row_payload_hash": "b2c8d2186576bf29f6bdcf9d6d22de66021caedad403df0a41ac9caf50fcc5a1",
+          "owner": "QRA_FINAL_R1"
+        },
+        {
+          "csv_record": 12811,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "2024",
+            "Q28ST"
+          ],
+          "owner": "register_A",
+          "row_sha256": "b099cb04edbbc2f25c3c104f333c36ffa526648d9632fdaa18b44bc841ac5e86"
+        },
+        {
+          "csv_record": 12811,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "2024",
+            "Q28ST"
+          ],
+          "owner": "register_B",
+          "row_sha256": "44e6c0fcbe8cf555baadb37ca2297203077f3be7a8c98395af5f98e4fb3e0265"
+        },
+        {
+          "csv_record": 4842,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "2024",
+            "Q28ST"
+          ],
+          "owner": "v525b_semantic",
+          "row_sha256": "f258c557fde8a89a4c5f92196c44be1cfbd6aad3131d66fd37b58cfaa7a11d3e"
+        },
+        {
+          "csv_record": 4842,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "2024",
+            "Q28ST"
+          ],
+          "owner": "v525b_drivers",
+          "row_sha256": "bca3402a87ef24bc27bae877198075f1582e9d5a59b143c7f1ddad8f3d2ded41"
+        },
+        {
+          "csv_record": 12584,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "2024",
+            "Q28ST"
+          ],
+          "owner": "d62_driver_provenance_only",
+          "row_sha256": "58cbbd051a1d8c9ecda39f1d804f7f21a283eb90caaddc29c3507e7ad7fc1a6a"
+        }
+      ],
+      "family": "Latinobarómetro",
+      "form": "UNBOUND_REQUIRES_ORIGINAL_SOURCE_OWNER",
+      "governed_row_payload_hash": "b2c8d2186576bf29f6bdcf9d6d22de66021caedad403df0a41ac9caf50fcc5a1",
+      "inherited_role": "BLOCKED_IDENTITY_OR_AUTHORITY_JOIN",
+      "p2_exact_identity_sha256": null,
+      "qra_csv_record": 12576,
+      "qra_question_id": "Latinobarómetro:2024:Q28ST",
+      "record_id": "QRA_BLOCKED:Latinobarómetro:2024:Q28ST",
+      "related_candidates": "Q28STA|Q28STB|Q28STC|Q28STD|Q28STE",
+      "respondent_carrier": "UNBOUND_PERSON_HOUSEHOLD_NAMESPACE_NOT_INFERRED",
+      "scientific_note": "Absent stem; five distinct future-outlook dimensions remain individually governed. Do not treat a later metadata driver as proof that the child measurements are administrative.",
+      "side": "QRA_BLOCKED",
+      "source_specific_decision": "PRESERVE_BLOCKED_IDENTITY__NO_AUTOMATIC_ALIAS_OR_PARENT_COLLAPSE",
+      "source_version": {
+        "actual_source_edition_hash": "UNBOUND",
+        "classification_confidence": "0.0",
+        "dataset_id": "Latinobarometro_2024_Latinobarometro_2024",
+        "format": "sav",
+        "legacy_wave": "2024",
+        "physical_presence_or_bytes_checked": false,
+        "recorded_basename": "Latinobarometro 2024.sav",
+        "recorded_size_bytes": 7886834,
+        "recorded_source_sha256": null
+      },
+      "variable": "Q28ST",
+      "wave": "2024"
+    },
+    {
+      "atlas_id": "SRC26",
+      "classification": "DUPLICATE_KEY_DISTINCT_ACCEPTED_MEANINGS",
+      "country_scope_as_recorded": "GT",
+      "current_operation_status": "SOURCE_OR_OPERATION_HELD",
+      "evidence": [
+        {
+          "csv_record": 12629,
+          "governed_row_payload_hash": "6fa7243a3f950fcc3fa35ec0016d72853d774f59c8ec137a4f4d6b4c3cde5aab",
+          "owner": "QRA_FINAL_R1"
+        },
+        {
+          "csv_record": 12864,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "2024",
+            "Q47ST"
+          ],
+          "owner": "register_A",
+          "row_sha256": "8e317543e84d8323ee1de28d418b3b7547c416ca6319943205eebd36563fa24d"
+        },
+        {
+          "csv_record": 12865,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "2024",
+            "Q47ST"
+          ],
+          "owner": "register_A",
+          "row_sha256": "8e317543e84d8323ee1de28d418b3b7547c416ca6319943205eebd36563fa24d"
+        },
+        {
+          "csv_record": 12864,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "2024",
+            "Q47ST"
+          ],
+          "owner": "register_B",
+          "row_sha256": "5572ea65fa6a04410afa74b88d91be3fd16baf903d504352f031f01b3821fa54"
+        },
+        {
+          "csv_record": 12865,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "2024",
+            "Q47ST"
+          ],
+          "owner": "register_B",
+          "row_sha256": "5572ea65fa6a04410afa74b88d91be3fd16baf903d504352f031f01b3821fa54"
+        },
+        {
+          "csv_record": 4895,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "2024",
+            "Q47ST"
+          ],
+          "owner": "v525b_semantic",
+          "row_sha256": "28fd39a4f9cb40096b945b780afa43f15b29f94c9887c3ddce9319e24b22f51b"
+        },
+        {
+          "csv_record": 4896,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "2024",
+            "Q47ST"
+          ],
+          "owner": "v525b_semantic",
+          "row_sha256": "e688964035c39afc423f6f95e9358ba61f311a679fc06192385d3c4340921e31"
+        },
+        {
+          "csv_record": 4895,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "2024",
+            "Q47ST"
+          ],
+          "owner": "v525b_drivers",
+          "row_sha256": "53d37acaa2f3831ee475742cc7314d8a3660a4f69d86de3d084f5618dc8f6b6c"
+        },
+        {
+          "csv_record": 4896,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "2024",
+            "Q47ST"
+          ],
+          "owner": "v525b_drivers",
+          "row_sha256": "75c2fbe1edeeb8a35cbe137c175782881e01513f842c826230dcf470c0cbeb51"
+        },
+        {
+          "csv_record": 12637,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "2024",
+            "Q47ST"
+          ],
+          "owner": "d62_driver_provenance_only",
+          "row_sha256": "cf748a8836f3c3e0f6831c46f875f53bb18221b07003d8a65a5ad761d633c224"
+        },
+        {
+          "csv_record": 12638,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "2024",
+            "Q47ST"
+          ],
+          "owner": "d62_driver_provenance_only",
+          "row_sha256": "d90abbd161ce61bc3289d65bf6ee7624014c996801cd792b2d1135d25811791f"
+        }
+      ],
+      "family": "Latinobarómetro",
+      "form": "UNBOUND_REQUIRES_ORIGINAL_SOURCE_OWNER",
+      "governed_row_payload_hash": "6fa7243a3f950fcc3fa35ec0016d72853d774f59c8ec137a4f4d6b4c3cde5aab",
+      "inherited_role": "BLOCKED_IDENTITY_OR_AUTHORITY_JOIN",
+      "p2_exact_identity_sha256": null,
+      "qra_csv_record": 12629,
+      "qra_question_id": "Latinobarómetro:2024:Q47ST",
+      "record_id": "QRA_BLOCKED:Latinobarómetro:2024:Q47ST",
+      "related_candidates": "Q47STC|P47ST.C|P47ST.D",
+      "respondent_carrier": "UNBOUND_PERSON_HOUSEHOLD_NAMESPACE_NOT_INFERRED",
+      "scientific_note": "Accepted V525b retains two rows under Q47ST: printed press and social media. QRA retained social-media text; P2-only Q47STC is printed press. Keep both accepted assertions and native C/D columns; never last-row or stem alias them.",
+      "side": "QRA_BLOCKED",
+      "source_specific_decision": "PRESERVE_BLOCKED_IDENTITY__NO_AUTOMATIC_ALIAS_OR_PARENT_COLLAPSE",
+      "source_version": {
+        "actual_source_edition_hash": "UNBOUND",
+        "classification_confidence": "0.0",
+        "dataset_id": "Latinobarometro_2024_Latinobarometro_2024",
+        "format": "sav",
+        "legacy_wave": "2024",
+        "physical_presence_or_bytes_checked": false,
+        "recorded_basename": "Latinobarometro 2024.sav",
+        "recorded_size_bytes": 7886834,
+        "recorded_source_sha256": null
+      },
+      "variable": "Q47ST",
+      "wave": "2024"
+    },
+    {
+      "atlas_id": "SRC26",
+      "classification": "CODEBOOK_STEM_WITH_ENTITY_SUBITEMS",
+      "country_scope_as_recorded": "GT",
+      "current_operation_status": "SOURCE_OR_OPERATION_HELD",
+      "evidence": [
+        {
+          "csv_record": 12651,
+          "governed_row_payload_hash": "c0c8bfde03d6e052ebc3416dff09a387c3a3968bb7fc227b98197ad248941d0f",
+          "owner": "QRA_FINAL_R1"
+        },
+        {
+          "csv_record": 12888,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "2024",
+            "Q56ST"
+          ],
+          "owner": "register_A",
+          "row_sha256": "20ecf01c32763c75f848caee9ccf3d7fd492bbc4a5df93aa6f70dd39419eae3b"
+        },
+        {
+          "csv_record": 12888,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "2024",
+            "Q56ST"
+          ],
+          "owner": "register_B",
+          "row_sha256": "9a619652771bf6ed186bf23c6b48b2ec91a69522cdbc40fbad9e1a566622424d"
+        },
+        {
+          "csv_record": 4919,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "2024",
+            "Q56ST"
+          ],
+          "owner": "v525b_semantic",
+          "row_sha256": "855269228c09ae192732b413981166bec7d529ed109344dd8ff45b7fe93d84c5"
+        },
+        {
+          "csv_record": 4919,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "2024",
+            "Q56ST"
+          ],
+          "owner": "v525b_drivers",
+          "row_sha256": "3ee96e655af1cf544971010acb95b56e765bd7bb8855aeaf2044aa8e98616a99"
+        },
+        {
+          "csv_record": 12661,
+          "exact_case_key": [
+            "Latinobarómetro",
+            "2024",
+            "Q56ST"
+          ],
+          "owner": "d62_driver_provenance_only",
+          "row_sha256": "a7b0f95c7bbf81c9d7f0c46756f86c7bba9a5f5cf91bf628684c81d8a8ddaf56"
+        }
+      ],
+      "family": "Latinobarómetro",
+      "form": "UNBOUND_REQUIRES_ORIGINAL_SOURCE_OWNER",
+      "governed_row_payload_hash": "c0c8bfde03d6e052ebc3416dff09a387c3a3968bb7fc227b98197ad248941d0f",
+      "inherited_role": "BLOCKED_IDENTITY_OR_AUTHORITY_JOIN",
+      "p2_exact_identity_sha256": null,
+      "qra_csv_record": 12651,
+      "qra_question_id": "Latinobarómetro:2024:Q56ST",
+      "record_id": "QRA_BLOCKED:Latinobarómetro:2024:Q56ST",
+      "related_candidates": "Q56ST*|Q56N*",
+      "respondent_carrier": "UNBOUND_PERSON_HOUSEHOLD_NAMESPACE_NOT_INFERRED",
+      "scientific_note": "Absent codebook stem for leader evaluations; native/codebook entity codes differ. Preserve each named target and do not infer scalar psyche, causal authority or one generic leader response.",
+      "side": "QRA_BLOCKED",
+      "source_specific_decision": "PRESERVE_BLOCKED_IDENTITY__NO_AUTOMATIC_ALIAS_OR_PARENT_COLLAPSE",
+      "source_version": {
+        "actual_source_edition_hash": "UNBOUND",
+        "classification_confidence": "0.0",
+        "dataset_id": "Latinobarometro_2024_Latinobarometro_2024",
+        "format": "sav",
+        "legacy_wave": "2024",
+        "physical_presence_or_bytes_checked": false,
+        "recorded_basename": "Latinobarometro 2024.sav",
+        "recorded_size_bytes": 7886834,
+        "recorded_source_sha256": null
+      },
+      "variable": "Q56ST",
+      "wave": "2024"
+    }
+  ],
+  "schema": "WG0X_SCIENTIFIC_RESEARCH_CROSSWALK@1",
+  "waves": [
+    {
+      "COMMON_EXACT_HASH": 141,
+      "P2_ONLY": 3,
+      "QRA_ONLY_BLOCKED": 2,
+      "atlas_id": "SRC01",
+      "family": "Afrobarometer",
+      "wave": "R1"
+    },
+    {
+      "COMMON_EXACT_HASH": 348,
+      "P2_ONLY": 0,
+      "QRA_ONLY_BLOCKED": 0,
+      "atlas_id": "SRC02",
+      "family": "Afrobarometer",
+      "wave": "R5"
+    },
+    {
+      "COMMON_EXACT_HASH": 421,
+      "P2_ONLY": 0,
+      "QRA_ONLY_BLOCKED": 0,
+      "atlas_id": "SRC03",
+      "family": "Afrobarometer",
+      "wave": "R9"
+    },
+    {
+      "COMMON_EXACT_HASH": 181,
+      "P2_ONLY": 0,
+      "QRA_ONLY_BLOCKED": 0,
+      "atlas_id": "SRC04",
+      "family": "Arab Barometer",
+      "wave": "I"
+    },
+    {
+      "COMMON_EXACT_HASH": 468,
+      "P2_ONLY": 0,
+      "QRA_ONLY_BLOCKED": 0,
+      "atlas_id": "SRC05",
+      "family": "Arab Barometer",
+      "wave": "II"
+    },
+    {
+      "COMMON_EXACT_HASH": 359,
+      "P2_ONLY": 0,
+      "QRA_ONLY_BLOCKED": 0,
+      "atlas_id": "SRC06",
+      "family": "Arab Barometer",
+      "wave": "V"
+    },
+    {
+      "COMMON_EXACT_HASH": 690,
+      "P2_ONLY": 0,
+      "QRA_ONLY_BLOCKED": 0,
+      "atlas_id": "SRC07",
+      "family": "Arab Barometer",
+      "wave": "VIII"
+    },
+    {
+      "COMMON_EXACT_HASH": 217,
+      "P2_ONLY": 0,
+      "QRA_ONLY_BLOCKED": 0,
+      "atlas_id": "SRC08",
+      "family": "Asian Barometer",
+      "wave": "W1"
+    },
+    {
+      "COMMON_EXACT_HASH": 289,
+      "P2_ONLY": 0,
+      "QRA_ONLY_BLOCKED": 0,
+      "atlas_id": "SRC09",
+      "family": "Asian Barometer",
+      "wave": "W4"
+    },
+    {
+      "COMMON_EXACT_HASH": 308,
+      "P2_ONLY": 0,
+      "QRA_ONLY_BLOCKED": 0,
+      "atlas_id": "SRC10",
+      "family": "Asian Barometer",
+      "wave": "W5"
+    },
+    {
+      "COMMON_EXACT_HASH": 370,
+      "P2_ONLY": 0,
+      "QRA_ONLY_BLOCKED": 0,
+      "atlas_id": "SRC11",
+      "family": "EVS",
+      "wave": "1981"
+    },
+    {
+      "COMMON_EXACT_HASH": 390,
+      "P2_ONLY": 0,
+      "QRA_ONLY_BLOCKED": 0,
+      "atlas_id": "SRC12",
+      "family": "EVS",
+      "wave": "1990"
+    },
+    {
+      "COMMON_EXACT_HASH": 513,
+      "P2_ONLY": 0,
+      "QRA_ONLY_BLOCKED": 0,
+      "atlas_id": "SRC13",
+      "family": "EVS",
+      "wave": "1999"
+    },
+    {
+      "COMMON_EXACT_HASH": 477,
+      "P2_ONLY": 0,
+      "QRA_ONLY_BLOCKED": 0,
+      "atlas_id": "SRC14",
+      "family": "EVS",
+      "wave": "2008"
+    },
+    {
+      "COMMON_EXACT_HASH": 474,
+      "P2_ONLY": 0,
+      "QRA_ONLY_BLOCKED": 0,
+      "atlas_id": "SRC15",
+      "family": "EVS",
+      "wave": "2017"
+    },
+    {
+      "COMMON_EXACT_HASH": 216,
+      "P2_ONLY": 0,
+      "QRA_ONLY_BLOCKED": 0,
+      "atlas_id": "SRC16",
+      "family": "GSS",
+      "wave": "1972"
+    },
+    {
+      "COMMON_EXACT_HASH": 339,
+      "P2_ONLY": 0,
+      "QRA_ONLY_BLOCKED": 0,
+      "atlas_id": "SRC17",
+      "family": "GSS",
+      "wave": "1973"
+    },
+    {
+      "COMMON_EXACT_HASH": 675,
+      "P2_ONLY": 0,
+      "QRA_ONLY_BLOCKED": 0,
+      "atlas_id": "SRC18",
+      "family": "GSS",
+      "wave": "1984"
+    },
+    {
+      "COMMON_EXACT_HASH": 752,
+      "P2_ONLY": 0,
+      "QRA_ONLY_BLOCKED": 0,
+      "atlas_id": "SRC19",
+      "family": "GSS",
+      "wave": "1993"
+    },
+    {
+      "COMMON_EXACT_HASH": 1119,
+      "P2_ONLY": 0,
+      "QRA_ONLY_BLOCKED": 0,
+      "atlas_id": "SRC20",
+      "family": "GSS",
+      "wave": "2002"
+    },
+    {
+      "COMMON_EXACT_HASH": 922,
+      "P2_ONLY": 0,
+      "QRA_ONLY_BLOCKED": 0,
+      "atlas_id": "SRC21",
+      "family": "GSS",
+      "wave": "2010"
+    },
+    {
+      "COMMON_EXACT_HASH": 1018,
+      "P2_ONLY": 0,
+      "QRA_ONLY_BLOCKED": 0,
+      "atlas_id": "SRC22",
+      "family": "GSS",
+      "wave": "2016"
+    },
+    {
+      "COMMON_EXACT_HASH": 980,
+      "P2_ONLY": 0,
+      "QRA_ONLY_BLOCKED": 0,
+      "atlas_id": "SRC23",
+      "family": "GSS",
+      "wave": "2024"
+    },
+    {
+      "COMMON_EXACT_HASH": 185,
+      "P2_ONLY": 18,
+      "QRA_ONLY_BLOCKED": 3,
+      "atlas_id": "SRC24",
+      "family": "Latinobarómetro",
+      "wave": "1995"
+    },
+    {
+      "COMMON_EXACT_HASH": 414,
+      "P2_ONLY": 0,
+      "QRA_ONLY_BLOCKED": 0,
+      "atlas_id": "SRC25",
+      "family": "Latinobarómetro",
+      "wave": "2011"
+    },
+    {
+      "COMMON_EXACT_HASH": 190,
+      "P2_ONLY": 5,
+      "QRA_ONLY_BLOCKED": 4,
+      "atlas_id": "SRC26",
+      "family": "Latinobarómetro",
+      "wave": "2024"
+    },
+    {
+      "COMMON_EXACT_HASH": 1198,
+      "P2_ONLY": 0,
+      "QRA_ONLY_BLOCKED": 0,
+      "atlas_id": "SRC27",
+      "family": "LiTS",
+      "wave": "2006"
+    },
+    {
+      "COMMON_EXACT_HASH": 627,
+      "P2_ONLY": 0,
+      "QRA_ONLY_BLOCKED": 0,
+      "atlas_id": "SRC28",
+      "family": "LiTS",
+      "wave": "II"
+    },
+    {
+      "COMMON_EXACT_HASH": 1290,
+      "P2_ONLY": 0,
+      "QRA_ONLY_BLOCKED": 0,
+      "atlas_id": "SRC29",
+      "family": "LiTS",
+      "wave": "III"
+    },
+    {
+      "COMMON_EXACT_HASH": 1319,
+      "P2_ONLY": 0,
+      "QRA_ONLY_BLOCKED": 0,
+      "atlas_id": "SRC30",
+      "family": "LiTS",
+      "wave": "IV"
+    },
+    {
+      "COMMON_EXACT_HASH": 68,
+      "P2_ONLY": 0,
+      "QRA_ONLY_BLOCKED": 0,
+      "atlas_id": "SRC31",
+      "family": "South Asia",
+      "wave": "W1"
+    },
+    {
+      "COMMON_EXACT_HASH": 73,
+      "P2_ONLY": 0,
+      "QRA_ONLY_BLOCKED": 0,
+      "atlas_id": "SRC32",
+      "family": "South Asia",
+      "wave": "W2"
+    },
+    {
+      "COMMON_EXACT_HASH": 188,
+      "P2_ONLY": 0,
+      "QRA_ONLY_BLOCKED": 0,
+      "atlas_id": "SRC33",
+      "family": "WVS",
+      "wave": "W1"
+    },
+    {
+      "COMMON_EXACT_HASH": 418,
+      "P2_ONLY": 0,
+      "QRA_ONLY_BLOCKED": 0,
+      "atlas_id": "SRC34",
+      "family": "WVS",
+      "wave": "W4"
+    },
+    {
+      "COMMON_EXACT_HASH": 613,
+      "P2_ONLY": 0,
+      "QRA_ONLY_BLOCKED": 0,
+      "atlas_id": "SRC35",
+      "family": "WVS",
+      "wave": "W7"
+    }
+  ]
+}

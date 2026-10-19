@@ -64,7 +64,7 @@ def main():
     dump('sources/three_wave_qra_context.json',context)
     # Small source-free native closure already pinned by WG0R; import provenance
     # binds originals at BASE, never adopts WG0R repair or carrier conclusions.
-    tree=subprocess.check_output(['git','ls-tree','-r','--name-only',WG0R,RP+'sources/native/'],text=True).splitlines()
+    tree=subprocess.check_output(['git','ls-tree','-r','--full-tree','--name-only',WG0R,RP+'sources/native/'],text=True).splitlines()
     for path in tree:
         dest=path.split('/sources/native/',1)[1]
         read(BASE,dest,'native/'+dest)
