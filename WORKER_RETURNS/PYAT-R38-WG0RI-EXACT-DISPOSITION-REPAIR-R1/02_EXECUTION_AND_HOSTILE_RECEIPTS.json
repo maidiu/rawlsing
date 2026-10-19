@@ -1,0 +1,341 @@
+{
+  "schema": "PYAT_R38_WG0RI_EXECUTION_AND_HOSTILE_RECEIPTS@1",
+  "author_target": "86c13ea6cea813fa2f87dca92396646305e3742c",
+  "base": "68873526efe5a39a0849aa401666ac997870f156",
+  "prior_wg0i": "44eac9021db23267448a6fc151e6bbe8374a868f",
+  "author_courts": {
+    "native_90": {
+      "tests": 90,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "cold_seed0_90": {
+      "tests": 90,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "cold_seed1_90": {
+      "tests": 90,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "short_documented_command": {
+      "tests": 23,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "independent_court": {
+    "tests": 24,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "payload": {
+    "bytes": 18276,
+    "sha256": "64a43ba2d7564d7681770065b843273330dc368b8d01bf328a8af7b19878bd98",
+    "reserved_bit_violations": 0,
+    "use_out_of_range": 0,
+    "class_counts": {
+      "ADM": 1026,
+      "CTX": 1675,
+      "TOP": 3667,
+      "REJ": 454,
+      "SEM": 4681,
+      "END": 2113,
+      "CPC": 183,
+      "BLK": 67,
+      "POS": 2904,
+      "SCX": 1506
+    },
+    "hard_fail": 10418,
+    "route_predicate_required": 4447,
+    "code_map": {
+      "0": "SEM",
+      "1": "TOP",
+      "2": "POS",
+      "3": "END",
+      "4": "CTX",
+      "5": "SCX",
+      "6": "ADM",
+      "7": "REJ",
+      "8": "CPC",
+      "9": "BLK"
+    },
+    "format": "P2_ORDINAL_BYTEPACK_V1"
+  },
+  "p2": {
+    "sha256": "d38301588fae27c66f6b8627c5007fb0d8ed4ac3d7eb25f32c74228c367b86b6",
+    "rows": 18276,
+    "unique_ids": 18276
+  },
+  "original": {
+    "git_commit": "b44596d880425f6984f208bfa14daee2f15d3f90",
+    "git_blob": "c93945d158198871f5cc6692a6bed25aeef44028",
+    "bytes": 24972,
+    "sha256": "c1d5a9a9b2905f7ed783a21f43eeef91bc173d6e5e077751a67f7025408ee7ad",
+    "decoded_bytes": 18387,
+    "decoded_sha256": "3bee6f0ec5cae74c112f2896b517b23ab7e880c9400bf019d1df6d0b3157edee",
+    "reserved_bit_violations": 2114,
+    "claimed_bytes": 18276,
+    "claimed_sha256": "64a43ba2d7564d7681770065b843273330dc368b8d01bf328a8af7b19878bd98",
+    "repaired_reader_fails_closed": true
+  },
+  "shard": {
+    "git_blob": "3a9b5bde2fc479c6fc10280561fe715686e39dd4",
+    "sha256": "e9fff20e06fabbd90fff6552f73811e93caeb8c0d998cb96add5d472d8892a67",
+    "bytes": 11944,
+    "rows": 1000,
+    "ordinals_0_999": true,
+    "mismatches": 0
+  },
+  "manifest": {
+    "shards": 19,
+    "rows": 18276,
+    "part000_sha256": "e2f5f13ade6187412dbe11a3c98b0e8a97ef967f45d8b583d157da5eaf12f140",
+    "survivor_sha256": "e9fff20e06fabbd90fff6552f73811e93caeb8c0d998cb96add5d472d8892a67",
+    "match": false,
+    "first_last_ids_match_p2": true,
+    "classification": "MANIFEST_SERIALIZATION_PROVENANCE_MISMATCH__SURVIVOR_IS_GIT_EXACT__NOT_A_PAYLOAD_MISMATCH"
+  },
+  "accounting": {
+    "rows": 18276,
+    "waves": 35,
+    "families": 9,
+    "carrier_state": "EXACT_PACK_VERIFIED",
+    "reserved_bit_violations": 0,
+    "p10_accounting_units": 65354,
+    "p10_exact_held_states": 76,
+    "all35_operation_execution": "UNVERIFIED__NO_RAW_READS_OR_SOURCE_WARRANT_ISSUED",
+    "pending_edge": "EXACT_ACCEPTED_AUTHORITY_TO_OPERATION_CATALOG_BINDING_AND_FULL_FRONTIER_WITNESS"
+  },
+  "o07": {
+    "schema": "PYAT_R38_WG0RI_O07_BOUNDARY@1",
+    "non_unresolved_change": {
+      "qid": "question_impl.phase0.cebb547531b5aeefc74d",
+      "exit": 0,
+      "sha256": "64a43ba2d7564d7681770065b843273330dc368b8d01bf328a8af7b19878bd98",
+      "exact_frozen_payload": true
+    },
+    "unresolved_total": 30,
+    "unresolved_changed_payload": 9,
+    "unresolved_exact": 21,
+    "unresolved_all_gate_rejected_or_exact": true,
+    "unresolved_results": [
+      {
+        "qid": "question_impl.phase0.692753fcd76eb9832c9a",
+        "exit": 0,
+        "sha256": "64a43ba2d7564d7681770065b843273330dc368b8d01bf328a8af7b19878bd98",
+        "stderr": ""
+      },
+      {
+        "qid": "question_impl.phase0.625f24a9526ff4b0ad95",
+        "exit": 0,
+        "sha256": "64a43ba2d7564d7681770065b843273330dc368b8d01bf328a8af7b19878bd98",
+        "stderr": ""
+      },
+      {
+        "qid": "question_impl.phase0.e02d1acbdbe0dd0d28ca",
+        "exit": 0,
+        "sha256": "64a43ba2d7564d7681770065b843273330dc368b8d01bf328a8af7b19878bd98",
+        "stderr": ""
+      },
+      {
+        "qid": "question_impl.phase0.fd9ca1472280a36e3c5b",
+        "exit": 0,
+        "sha256": "64a43ba2d7564d7681770065b843273330dc368b8d01bf328a8af7b19878bd98",
+        "stderr": ""
+      },
+      {
+        "qid": "question_impl.phase0.78588958b6332982a004",
+        "exit": 0,
+        "sha256": "64a43ba2d7564d7681770065b843273330dc368b8d01bf328a8af7b19878bd98",
+        "stderr": ""
+      },
+      {
+        "qid": "question_impl.phase0.a1fc7b3059360b2810d5",
+        "exit": 0,
+        "sha256": "64a43ba2d7564d7681770065b843273330dc368b8d01bf328a8af7b19878bd98",
+        "stderr": ""
+      },
+      {
+        "qid": "question_impl.phase0.9fc0831d20185bbed45b",
+        "exit": 0,
+        "sha256": "64a43ba2d7564d7681770065b843273330dc368b8d01bf328a8af7b19878bd98",
+        "stderr": ""
+      },
+      {
+        "qid": "question_impl.phase0.af4b15034ab44846138a",
+        "exit": 0,
+        "sha256": "64a43ba2d7564d7681770065b843273330dc368b8d01bf328a8af7b19878bd98",
+        "stderr": ""
+      },
+      {
+        "qid": "question_impl.phase0.7bb6f9153fa2fb164fb1",
+        "exit": 0,
+        "sha256": "64a43ba2d7564d7681770065b843273330dc368b8d01bf328a8af7b19878bd98",
+        "stderr": ""
+      },
+      {
+        "qid": "question_impl.phase0.2fe2b09ac3fc6bb75cda",
+        "exit": 0,
+        "sha256": "64a43ba2d7564d7681770065b843273330dc368b8d01bf328a8af7b19878bd98",
+        "stderr": ""
+      },
+      {
+        "qid": "question_impl.phase0.ee8797120cf430bc3a6f",
+        "exit": 0,
+        "sha256": "64a43ba2d7564d7681770065b843273330dc368b8d01bf328a8af7b19878bd98",
+        "stderr": ""
+      },
+      {
+        "qid": "question_impl.phase0.87779628ff6ed3de0577",
+        "exit": 0,
+        "sha256": "64a43ba2d7564d7681770065b843273330dc368b8d01bf328a8af7b19878bd98",
+        "stderr": ""
+      },
+      {
+        "qid": "question_impl.phase0.a66373d9169250f7367a",
+        "exit": 0,
+        "sha256": "64a43ba2d7564d7681770065b843273330dc368b8d01bf328a8af7b19878bd98",
+        "stderr": ""
+      },
+      {
+        "qid": "question_impl.phase0.612b07b566b80e57d6f8",
+        "exit": 0,
+        "sha256": "64a43ba2d7564d7681770065b843273330dc368b8d01bf328a8af7b19878bd98",
+        "stderr": ""
+      },
+      {
+        "qid": "question_impl.phase0.2add1f5141ba93239c41",
+        "exit": 0,
+        "sha256": "64a43ba2d7564d7681770065b843273330dc368b8d01bf328a8af7b19878bd98",
+        "stderr": ""
+      },
+      {
+        "qid": "question_impl.phase0.d8e26d257d90f8605508",
+        "exit": 0,
+        "sha256": "64a43ba2d7564d7681770065b843273330dc368b8d01bf328a8af7b19878bd98",
+        "stderr": ""
+      },
+      {
+        "qid": "question_impl.phase0.f03a0eec1ce8d0fc7a75",
+        "exit": 0,
+        "sha256": "64a43ba2d7564d7681770065b843273330dc368b8d01bf328a8af7b19878bd98",
+        "stderr": ""
+      },
+      {
+        "qid": "question_impl.phase0.ce727dcdaae385f29b40",
+        "exit": 0,
+        "sha256": "64a43ba2d7564d7681770065b843273330dc368b8d01bf328a8af7b19878bd98",
+        "stderr": ""
+      },
+      {
+        "qid": "question_impl.phase0.99c5743f8911de687b04",
+        "exit": 0,
+        "sha256": "64a43ba2d7564d7681770065b843273330dc368b8d01bf328a8af7b19878bd98",
+        "stderr": ""
+      },
+      {
+        "qid": "question_impl.phase0.20d68e072213d1e061dd",
+        "exit": 0,
+        "sha256": "64a43ba2d7564d7681770065b843273330dc368b8d01bf328a8af7b19878bd98",
+        "stderr": ""
+      },
+      {
+        "qid": "question_impl.phase0.8f1705e0f5f324243dec",
+        "exit": 0,
+        "sha256": "64a43ba2d7564d7681770065b843273330dc368b8d01bf328a8af7b19878bd98",
+        "stderr": ""
+      },
+      {
+        "qid": "question_impl.phase0.da4dd18862c19689c814",
+        "exit": 1,
+        "sha256": null,
+        "stderr": "ValueError: RECOVERY_NOT_THE_FROZEN_ORIGINAL_PAYLOAD"
+      },
+      {
+        "qid": "question_impl.phase0.70f905b8bf84d6c91b08",
+        "exit": 1,
+        "sha256": null,
+        "stderr": "ValueError: RECOVERY_NOT_THE_FROZEN_ORIGINAL_PAYLOAD"
+      },
+      {
+        "qid": "question_impl.phase0.47f02050e80666495d47",
+        "exit": 1,
+        "sha256": null,
+        "stderr": "ValueError: RECOVERY_NOT_THE_FROZEN_ORIGINAL_PAYLOAD"
+      },
+      {
+        "qid": "question_impl.phase0.f6b8a018a17d11a9355c",
+        "exit": 1,
+        "sha256": null,
+        "stderr": "ValueError: RECOVERY_NOT_THE_FROZEN_ORIGINAL_PAYLOAD"
+      },
+      {
+        "qid": "question_impl.phase0.b792dcb4fbf392218fa1",
+        "exit": 1,
+        "sha256": null,
+        "stderr": "ValueError: RECOVERY_NOT_THE_FROZEN_ORIGINAL_PAYLOAD"
+      },
+      {
+        "qid": "question_impl.phase0.00b867783cc4c6edf5d7",
+        "exit": 1,
+        "sha256": null,
+        "stderr": "ValueError: RECOVERY_NOT_THE_FROZEN_ORIGINAL_PAYLOAD"
+      },
+      {
+        "qid": "question_impl.phase0.5fd9d668550f6a325de6",
+        "exit": 1,
+        "sha256": null,
+        "stderr": "ValueError: RECOVERY_NOT_THE_FROZEN_ORIGINAL_PAYLOAD"
+      },
+      {
+        "qid": "question_impl.phase0.060ad02ca1509511c61c",
+        "exit": 1,
+        "sha256": null,
+        "stderr": "ValueError: RECOVERY_NOT_THE_FROZEN_ORIGINAL_PAYLOAD"
+      },
+      {
+        "qid": "question_impl.phase0.cebb547531b5aeefc74d",
+        "exit": 1,
+        "sha256": null,
+        "stderr": "ValueError: RECOVERY_NOT_THE_FROZEN_ORIGINAL_PAYLOAD"
+      }
+    ],
+    "conclusion": "O07 changes a held status only; use codes come from S00/central O04; no non-frozen payload is accepted."
+  },
+  "hostiles": {
+    "independent_tests": 24,
+    "byte_hash_corruption": "rejected",
+    "p2_substitution": "rejected",
+    "ordinal_duplication_omission_reordering": "detected",
+    "reserved_bit_violations": "rejected by frozen SHA / explicit guard",
+    "code_map_change": "rejected",
+    "dropped_or_converted_holds": "rejected by frozen SHA",
+    "forged_custody": "RECOVERY_INPUT_CUSTODY_MISMATCH",
+    "aggregate_reconstruction": "rejected",
+    "mismatched_manifest": "typed provenance discrepancy",
+    "two_process_replay": "identical",
+    "historical_malformed_artifact": "fails closed and preserved"
+  },
+  "prior_crosswalk_preserved": {
+    "o35e_rows": 18259,
+    "p2_only_hashes": 26,
+    "none_identity_rows": 9,
+    "net_count_delta": 17,
+    "measurement_candidates": 19,
+    "p10_holds": 76,
+    "full_frontier": "HOLD"
+  },
+  "decision": {
+    "exact_disposition_carrier_repair": "ACCEPT_AT_BYTE_LEDGER_GRAIN",
+    "provenance_manifest_and_o07_disclosure": "REVISE",
+    "full_original35_item_operation_frontier": "HOLD"
+  },
+  "authority": "SOURCEFREE TEST_ONLY; no source/operation/issuer/production right"
+}
