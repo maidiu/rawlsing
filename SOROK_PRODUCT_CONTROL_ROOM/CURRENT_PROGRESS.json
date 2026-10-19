@@ -1,21 +1,19 @@
 {
   "schema": "RAWLSING_CROSS_HQ_PROGRESS@1",
   "owner": "Sorok",
-  "revision": 7,
-  "report_status": "SOROK_G15_AUTHOR_56_NEW_INHERITED_REDS__C0R3_TRANSPORT_AUTHOR_REPAIRED_I2_PENDING__C9_C12_HELD",
-  "activity_mode": "HQ_PARALLEL_TERMINAL_FLIGHT__G16I_C0R3I_SEALED__C9PI_PUBLICATION_RECOVERY__C8O_USER_RUNNING",
-  "last_owner_update_at_utc": "2026-10-19T16:53:38.476Z",
-  "last_source_verified_at_utc": "2026-10-19T16:53:38.476Z",
+  "revision": 8,
+  "report_status": "SOROK_HQ_HANDOFF_PUBLISHED__G16I_C9PI_C8O_C0R3I_RUNNING_USER_REPORTED__C12_NOT_READY",
+  "activity_mode": "SOROK_FOUR_USER_RUNNING_WORKERS__NEXT_HQ_RE_GROKKING_REQUIRED",
+  "last_owner_update_at_utc": "2026-10-19T17:26:16.596Z",
+  "last_source_verified_at_utc": "2026-10-19T17:26:16.596Z",
   "initialization_authority": "User request dated 2026-10-14: amend both grok cycles and reciprocal progress publication",
   "publication_branch": "integration/pre-main-reconciliation-r1",
   "working_hq": {
     "branch": "agent/sorok-prea0-psyche-architecture-r1",
-    "verified_commit": "e842755170d307e67af8ccc0f94a407c5795cb60",
-    "review_decision_commit": "31f8339cfd1948fb5230181315da7a5ba1ddcde3",
-    "owner_decision_request_commit": "d7ba147b2059efe93ecad231ea6e61bbca545b6a",
-    "claim": "SOURCE_GRADED_RETURN_INTAKE__NO_NATIVE_RULE_ISSUANCE"
+    "verified_commit": "b813c829c1bde701afa752dfd037115717313005",
+    "claim": "STRICT_HQ_HANDOFF_PREPARED__NEW_W55_GROUNDING_RECEIPT_REQUIRED"
   },
-  "canonical_read_cut": "cdb35a42a194637b7ac78b8cbb5dc4490a03f383",
+  "canonical_read_cut": "2ffc739689cbbecc7ca9645616d1291c219bae47",
   "advisory": {
     "commit": "3b2d9a1b644a9fa024ed1bd895b67be5c8789531",
     "index": "CROSS_HQ_CONTROL_ROOM/ASTRA_R3_ADVISORY_INDEX_R1.md",
@@ -218,36 +216,44 @@
       "id": "G16I",
       "branch": "agent/reviewer-sorok-20261019-g16i-g15-scientific-compatibility-independent-r1",
       "direct_remote_commit": "8fdced60b7162407b08d20247405cc39b8410fa2",
-      "lifecycle": "COMMISSION_SEALED__NOT_AUTO_LAUNCHED__LOCAL_STATE_UNKNOWN",
+      "lifecycle": "USER_EXPLICITLY_REPORTS_RUNNING__REMOTE_AT_SEAL_LAST_VERIFIED__LOCAL_UNPROBED",
       "model_tier": "HIGH_SCIENTIFIC_LOCAL",
-      "terminal": "Independent adjudication of 56 new inherited RED and G15 causal legitimacy"
+      "terminal": "Independent adjudication of 56 new inherited RED and G15 causal legitimacy",
+      "local_status_source": "2026-10-19 user direct",
+      "do_not_restart": true
     },
     {
       "id": "C0R3I",
       "branch": "agent/reviewer-sorok-20261019-c0r3i-transport-source-independent-r1",
       "direct_remote_commit": "38f1d5b07ad3bce4daa639415721246ffb668f1d",
-      "lifecycle": "COMMISSION_SEALED__NOT_AUTO_LAUNCHED__LOCAL_STATE_UNKNOWN",
+      "lifecycle": "USER_EXPLICITLY_REPORTS_RUNNING__REMOTE_AT_SEAL_LAST_VERIFIED__LOCAL_UNPROBED",
       "model_tier": "IN_BETWEEN_LOCAL",
-      "terminal": "Independent complete source-to-C10 transport, temporal and real consumer"
+      "terminal": "Independent complete source-to-C10 transport, temporal and real consumer",
+      "local_status_source": "2026-10-19 user direct",
+      "do_not_restart": true
     },
     {
       "id": "C9PI",
       "branch": "agent/reviewer-sorok-20261019-c9pi-c9p-native-boundary-independent-r1",
       "direct_remote_commit": "4a806ab74e1c348805a546658c8b2c71fbdd53d8",
-      "lifecycle": "USER_REPORTS_RETURNED__REMOTE_BRANCH_STILL_SEALED_STARTUP__RETURN_PATH_NOT_FOUND",
+      "lifecycle": "USER_EXPLICITLY_REPORTS_RUNNING__REMOTE_AT_SEAL_LAST_VERIFIED__LOCAL_UNPROBED",
       "model_tier": "HIGH_LOCAL_EXISTING_REVIEWER",
-      "terminal": "C9P scientific/native actor I2; recover same reviewer return, NO duplicate"
+      "terminal": "C9P scientific/native actor I2; recover same reviewer return, NO duplicate",
+      "local_status_source": "2026-10-19 user direct",
+      "do_not_restart": true
     },
     {
       "id": "C8O",
       "branch": "agent/rabochii-sorok-20261019-c8o-out14-writer-authority-executable-boundary-r1",
       "direct_remote_commit": "27c3a802ff4d55cc9ad0c045cf56b32a48e15884",
-      "lifecycle": "USER_REPORTS_RUNNING__NO_REMOTE_RETURN__DO_NOT_RESTART",
+      "lifecycle": "USER_EXPLICITLY_REPORTS_RUNNING__REMOTE_AT_SEAL_LAST_VERIFIED__LOCAL_UNPROBED",
       "model_tier": "IN_BETWEEN_LOCAL",
-      "terminal": "C8 event/journal writer source/receipt authority"
+      "terminal": "C8 event/journal writer source/receipt authority",
+      "local_status_source": "2026-10-19 user direct",
+      "do_not_restart": true
     }
   ],
-  "active_commission_inventory_status": "2026-10-19_DIRECT_REMOTE_REVIEW_OF_FOUR_BRANCHES__LOCAL_RUNTIME_UNKNOWN__C8O_USER_RUNNING",
+  "active_commission_inventory_status": "USER_DIRECT_G16I_C9PI_C8O_C0R3I_RUNNING__REMOTE_STARTUP_ONLY__DO_NOT_RESET",
   "maturity": {
     "local_stage_acceptance": "B3AS logical SQLite Integration.run sourcefree engineering ACCEPT_SCOPED at independent review 1a25b19dd01e8e7954e38c59ffc7e52c50739c9f and HQ attestation d6b1e33af6dfe976228fb28134a09cf8aa5ff7dd; historical limitations explicitly retained",
     "integration_realization": "B3AS NOT installed into native V3/actor/CAN008/CAN011; C0R2 author pending I2; C9/C12 unproven",
@@ -255,12 +261,10 @@
     "production_or_wake": "NOT_GRANTED__N11_N12_C11_C12_HELD"
   },
   "next_actions": [
-    "Run G16I exact seal 8fdced60b7162407b08d20247405cc39b8410fa2 on qualified High LOCAL separate I2; adjudicate all 56 added inherited RED and nine K11 unavailable positives before accepting any G15 genealogy science.",
-    "Run C0R3I exact seal 38f1d5b07ad3bce4daa639415721246ffb668f1d on qualified IN-BETWEEN LOCAL reviewer; source to full JSON/clock and real consumer same-assertion proof; do not overspend High or underqualify Flash.",
-    "Recover same existing C9PI reviewer branch 4a806ab74e1c348805a546658c8b2c71fbdd53d8 and push/verify its actual independent court; no duplicate reviewer; never confuse C9P author 38fba... with C9PI.",
-    "C8O original session is user-reported running and unchanged; receive later, do not restart or new sourcefree writer commission.",
-    "Competent CAN008 concrete issuer and separately competent CAN011 target issuer/ADP event and later-action owner must accept/reject exact Sorok HQ issued decision-request docket d7ba147b2059efe93ecad231ea6e61bbca545b6a; sourcefree technical success does not sign.",
-    "Cross-HQ original source/world/N11/N12 remains exclusively Pyat; no Pyat worker dispatch or authority inference."
+    "Incoming HQ must read maximum-strict handoff and all mandatory PRE-MAIN Ground/state/governance and Sorok 00_FULL/00A/00B/00C/00D/07; emit valid grounding receipt before adjudication/dispatch.",
+    "G16I, C9PI, C8O, C0R3I are currently USER-REPORTED RUNNING: preserve exact selected local models/editors/sessions/worktrees, do not duplicate or demand push before worker claims completion.",
+    "Separately engage competent CAN008 RULE_A and CAN011 RULE_T owner/adoption dossier, genuine ADP actor/event/performed action grant, Sorok C10 receiving; Pyat owns all source/world/N11/N12 and worker dispatch.",
+    "After each of the four returns verify Git SHA, exact imported modules/JUnit/fault receipts, independently scope/adjudicate real source-to-person delta and update canonical pair atomically; produce parallel terminal flight and copy-pastes."
   ],
   "cross_hq": {
     "counterpart_report": "PYAT_CONTROL_ROOM/CURRENT_PROGRESS.json",
@@ -402,6 +406,15 @@
       "native_issued": false,
       "pyat_mutations": false,
       "notes": "Two author candidates banked at honest grain, C9PI not remotely published; avoid equating C9P author to C9PI I2. No claimed new person."
+    },
+    {
+      "revision": 8,
+      "previous": 7,
+      "kind": "USER_SAYS_FOUR_WORKERS_RUNNING_AND_STRICT_SOROK_HQ_HANDOFF_PUBLISHED",
+      "at_utc": "2026-10-19T17:26:16.596Z",
+      "previous_premain_commit": "2ffc739689cbbecc7ca9645616d1291c219bae47",
+      "handoff_commit": "b813c829c1bde701afa752dfd037115717313005",
+      "limitations": "No new native actor semantics issued or user machine probed; no Pyat paths edited."
     }
   ],
   "unexecuted": "No model, actor, scientific or source trials performed; no substantive adoption",
@@ -515,14 +528,14 @@
       "ADP007_010_019_PERFORMED_ACTION_NOT_PROVEN",
       "PYAT_N11_N12_EXTERNAL_HOLD"
     ],
-    "largest_productive_move": "Parallel high G16I causal/legacy legitimacy + intermediate C0R3I full transport I2 + original C9PI source publication recovery + active C8O; competent V3 independent owner rule/target/actor-source signatures rather than further synthetic C9 demo",
+    "largest_productive_move": "Preserve four genuinely running Sorok workers and concurrently advance nondelegable CAN008/CAN011/ADP issuer/C10-C12 recipient decisions; recompute all lanes on each return.",
     "flight_ids": [
       "G16I",
-      "C0R3I",
       "C9PI",
-      "C8O"
+      "C8O",
+      "C0R3I"
     ],
-    "terminal_delta": "AUTHOR_SOURCEFREE_PROGRESS__NO_NATIVE_PERSON_C9_C12_POSITIVE__NO_PYAT_COMMAND",
+    "terminal_delta": "SUCCESSION_ACTIVITY_LEDGER_CORRECTED__NO_NEW_PERSON_ACCEPTED",
     "counterpart_owner_boundary": "Pyat HQ separately owns its original35, source/world and N11/N12 commissions"
   },
   "historical_revision5_context": {
@@ -590,5 +603,10 @@
       "lifecycle": "COMMISSION_PUBLISHED_NOT_AUTO_LAUNCHED__USER_SESSION_UNKNOWN",
       "terminal": "C8 admitted event/outbox trust and sourcefree writer integrity"
     }
-  ]
+  ],
+  "handoff": {
+    "status": "PUBLISHED__NOT_AUTO_ACTIVATION",
+    "commit": "b813c829c1bde701afa752dfd037115717313005",
+    "path": "SOROK_PRODUCT_CONTROL_ROOM/handoffs/20261019_SOROK_HQ_MAXIMUM_STRICT_SUCCESSION_AND_LIVE_TERMINAL_FLIGHT_R1.md"
+  }
 }
