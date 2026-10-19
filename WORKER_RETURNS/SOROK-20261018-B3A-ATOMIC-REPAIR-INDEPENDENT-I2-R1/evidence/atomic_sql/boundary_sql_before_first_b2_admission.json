@@ -1,0 +1,203 @@
+{
+  "before": {
+    "b2_event_identity": [],
+    "b2_ingress": [],
+    "b3_audit": [],
+    "b3_clock": [],
+    "b3_m2_sources": [],
+    "b3_preimage": [],
+    "b3_response": [],
+    "b3_source": [],
+    "b3_transition": [],
+    "checkpoint": [
+      [
+        1,
+        "{\"actor_id\":\"child\",\"capabilities\":[\"compare_enacted_plans\"],\"epistemic\":{\"beliefs\":[\"locking_reduces_access\"],\"inaccessible\":[],\"unknown\":[\"thief_identity\",\"thief_motive\"]},\"history\":[],\"middle\":[],\"project\":\"repair_route\",\"responses\":[],\"schema\":\"B1_CANDIDATE_ADAPTER@1.0.0\",\"transitions\":[]}"
+      ]
+    ],
+    "joint_receipt": [],
+    "occurrence": []
+  },
+  "tentative": {
+    "snapshot": {
+      "b2_event_identity": [],
+      "b2_ingress": [],
+      "b3_audit": [],
+      "b3_clock": [],
+      "b3_m2_sources": [],
+      "b3_preimage": [],
+      "b3_response": [],
+      "b3_source": [],
+      "b3_transition": [],
+      "checkpoint": [
+        [
+          1,
+          "{\"actor_id\":\"child\",\"capabilities\":[\"compare_enacted_plans\"],\"epistemic\":{\"beliefs\":[\"locking_reduces_access\"],\"inaccessible\":[],\"unknown\":[\"thief_identity\",\"thief_motive\"]},\"history\":[],\"middle\":[],\"project\":\"repair_route\",\"responses\":[],\"schema\":\"B1_CANDIDATE_ADAPTER@1.0.0\",\"transitions\":[]}"
+        ]
+      ],
+      "joint_receipt": [],
+      "occurrence": []
+    },
+    "in_transaction": false
+  },
+  "result": {
+    "case_id": "SYNTHETIC_DEVELOPMENTAL_LOOP",
+    "grade": "TEST_ONLY_B3_ATOMIC_ADMISSION_R1_PENDING_I2",
+    "issued_production_authority": false,
+    "owner_effect_committed": false,
+    "selected_affect": null,
+    "asserted_culprit_group": null,
+    "imports": [
+      {
+        "module": "b3_fixed_b2",
+        "relative_file": ".runtime/b2/bridge.py",
+        "sha256": "9c112a7984b0581e965394983acf0e38064847083b78096e2d8215b48932250f"
+      },
+      {
+        "module": "b2_pinned_bfirst",
+        "relative_file": ".runtime/b2/imports/B1/bfirst.py",
+        "sha256": "478b989730f49a5def41a367b6f53e4aae9c80961f7f466fe669c7dbd92201a3"
+      },
+      {
+        "module": "b2_pinned_p1",
+        "relative_file": ".runtime/b2/imports/P1/p1_contract.py",
+        "sha256": "df31a147ab037385c5488801b5fa7413f9bcf5c63c97ba6328f859c8fcd92d38"
+      },
+      {
+        "module": "b3_frozen_m2",
+        "relative_file": ".runtime/m2/kernel.py",
+        "sha256": "888d73fff63f70a22932f1001f5c9003104b0e5a9cdef84e93456151428676c8"
+      }
+    ],
+    "new_event_count": 0,
+    "status": "REFUSED",
+    "code": "SQL_BOUNDARY_before_first_b2_admission",
+    "no_mutation": true
+  },
+  "public_trace": [
+    "SELECT name FROM sqlite_master WHERE type='table' ORDER BY name",
+    "SELECT * FROM b2_event_identity ORDER BY 1",
+    "SELECT * FROM b2_ingress ORDER BY 1",
+    "SELECT * FROM b3_audit ORDER BY 1",
+    "SELECT * FROM b3_clock ORDER BY 1",
+    "SELECT * FROM b3_m2_sources ORDER BY 1",
+    "SELECT * FROM b3_preimage ORDER BY 1",
+    "SELECT * FROM b3_response ORDER BY 1",
+    "SELECT * FROM b3_source ORDER BY 1",
+    "SELECT * FROM b3_transition ORDER BY 1",
+    "SELECT * FROM checkpoint ORDER BY 1",
+    "SELECT * FROM joint_receipt ORDER BY 1",
+    "SELECT * FROM occurrence ORDER BY 1",
+    "SELECT name FROM sqlite_master WHERE type='table' ORDER BY name",
+    "SELECT * FROM b2_event_identity ORDER BY 1",
+    "SELECT * FROM b2_ingress ORDER BY 1",
+    "SELECT * FROM b3_audit ORDER BY 1",
+    "SELECT * FROM b3_clock ORDER BY 1",
+    "SELECT * FROM b3_m2_sources ORDER BY 1",
+    "SELECT * FROM b3_preimage ORDER BY 1",
+    "SELECT * FROM b3_response ORDER BY 1",
+    "SELECT * FROM b3_source ORDER BY 1",
+    "SELECT * FROM b3_transition ORDER BY 1",
+    "SELECT * FROM checkpoint ORDER BY 1",
+    "SELECT * FROM joint_receipt ORDER BY 1",
+    "SELECT * FROM occurrence ORDER BY 1",
+    "SELECT name FROM sqlite_master WHERE type='table' ORDER BY name",
+    "SELECT * FROM b2_event_identity ORDER BY 1",
+    "SELECT * FROM b2_ingress ORDER BY 1",
+    "SELECT * FROM b3_audit ORDER BY 1",
+    "SELECT * FROM b3_clock ORDER BY 1",
+    "SELECT * FROM b3_m2_sources ORDER BY 1",
+    "SELECT * FROM b3_preimage ORDER BY 1",
+    "SELECT * FROM b3_response ORDER BY 1",
+    "SELECT * FROM b3_source ORDER BY 1",
+    "SELECT * FROM b3_transition ORDER BY 1",
+    "SELECT * FROM checkpoint ORDER BY 1",
+    "SELECT * FROM joint_receipt ORDER BY 1",
+    "SELECT * FROM occurrence ORDER BY 1"
+  ],
+  "scratch_trace": [
+    "SELECT name FROM sqlite_master WHERE type='table' ORDER BY name",
+    "SELECT * FROM b2_event_identity ORDER BY 1",
+    "SELECT * FROM b2_ingress ORDER BY 1",
+    "SELECT * FROM b3_audit ORDER BY 1",
+    "SELECT * FROM b3_clock ORDER BY 1",
+    "SELECT * FROM b3_m2_sources ORDER BY 1",
+    "SELECT * FROM b3_preimage ORDER BY 1",
+    "SELECT * FROM b3_response ORDER BY 1",
+    "SELECT * FROM b3_source ORDER BY 1",
+    "SELECT * FROM b3_transition ORDER BY 1",
+    "SELECT * FROM checkpoint ORDER BY 1",
+    "SELECT * FROM joint_receipt ORDER BY 1",
+    "SELECT * FROM occurrence ORDER BY 1",
+    "SELECT coalesce(max(clock),0) FROM b3_clock",
+    "SELECT body FROM b3_preimage WHERE id='exposure:heard:words:caregiver'",
+    "SELECT body FROM b3_preimage WHERE id='exposure:heard:words:peer'",
+    "SELECT id,body FROM b3_preimage",
+    "SELECT body FROM b3_source WHERE id='loss:t3'",
+    "SELECT body FROM checkpoint WHERE id=1",
+    "SELECT id,body FROM b3_m2_sources",
+    "SELECT name FROM sqlite_master WHERE type='table' ORDER BY name",
+    "SELECT * FROM b2_event_identity ORDER BY 1",
+    "SELECT * FROM b2_ingress ORDER BY 1",
+    "SELECT * FROM b3_audit ORDER BY 1",
+    "SELECT * FROM b3_clock ORDER BY 1",
+    "SELECT * FROM b3_m2_sources ORDER BY 1",
+    "SELECT * FROM b3_preimage ORDER BY 1",
+    "SELECT * FROM b3_response ORDER BY 1",
+    "SELECT * FROM b3_source ORDER BY 1",
+    "SELECT * FROM b3_transition ORDER BY 1",
+    "SELECT * FROM checkpoint ORDER BY 1",
+    "SELECT * FROM joint_receipt ORDER BY 1",
+    "SELECT * FROM occurrence ORDER BY 1",
+    "SELECT name FROM sqlite_master WHERE type='table' ORDER BY name",
+    "SELECT * FROM b2_event_identity ORDER BY 1",
+    "SELECT * FROM b2_ingress ORDER BY 1",
+    "SELECT * FROM b3_audit ORDER BY 1",
+    "SELECT * FROM b3_clock ORDER BY 1",
+    "SELECT * FROM b3_m2_sources ORDER BY 1",
+    "SELECT * FROM b3_preimage ORDER BY 1",
+    "SELECT * FROM b3_response ORDER BY 1",
+    "SELECT * FROM b3_source ORDER BY 1",
+    "SELECT * FROM b3_transition ORDER BY 1",
+    "SELECT * FROM checkpoint ORDER BY 1",
+    "SELECT * FROM joint_receipt ORDER BY 1",
+    "SELECT * FROM occurrence ORDER BY 1",
+    "SELECT name FROM sqlite_master WHERE type='table' ORDER BY name",
+    "SELECT * FROM b2_event_identity ORDER BY 1",
+    "SELECT * FROM b2_ingress ORDER BY 1",
+    "SELECT * FROM b3_audit ORDER BY 1",
+    "SELECT * FROM b3_clock ORDER BY 1",
+    "SELECT * FROM b3_m2_sources ORDER BY 1",
+    "SELECT * FROM b3_preimage ORDER BY 1",
+    "SELECT * FROM b3_response ORDER BY 1",
+    "SELECT * FROM b3_source ORDER BY 1",
+    "SELECT * FROM b3_transition ORDER BY 1",
+    "SELECT * FROM checkpoint ORDER BY 1",
+    "SELECT * FROM joint_receipt ORDER BY 1",
+    "SELECT * FROM occurrence ORDER BY 1"
+  ],
+  "cold": {
+    "pid": 38507,
+    "snapshot": {
+      "b2_event_identity": [],
+      "b2_ingress": [],
+      "b3_audit": [],
+      "b3_clock": [],
+      "b3_m2_sources": [],
+      "b3_preimage": [],
+      "b3_response": [],
+      "b3_source": [],
+      "b3_transition": [],
+      "checkpoint": [
+        [
+          1,
+          "{\"actor_id\":\"child\",\"capabilities\":[\"compare_enacted_plans\"],\"epistemic\":{\"beliefs\":[\"locking_reduces_access\"],\"inaccessible\":[],\"unknown\":[\"thief_identity\",\"thief_motive\"]},\"history\":[],\"middle\":[],\"project\":\"repair_route\",\"responses\":[],\"schema\":\"B1_CANDIDATE_ADAPTER@1.0.0\",\"transitions\":[]}"
+        ]
+      ],
+      "joint_receipt": [],
+      "occurrence": []
+    },
+    "middle": [],
+    "integrity": "ok"
+  }
+}

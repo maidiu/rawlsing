@@ -1,0 +1,5333 @@
+{
+  "original_x3_sql": {
+    "never_spoke": {
+      "result_status": "REFUSED",
+      "result_code": "SPEECH_SPEAKER_MISMATCH",
+      "no_mutation": true,
+      "tables": {
+        "b2_event_identity": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b2_ingress": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_audit": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_clock": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_m2_sources": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_preimage": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_response": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        }
+      }
+    },
+    "privileged_guard_to_commit_cold_detection": {
+      "result_status": "REFUSED",
+      "result_code": "SOURCE_PREIMAGE_IDENTITY_COLLISION",
+      "no_mutation": true,
+      "tables": {
+        "b2_event_identity": {
+          "before": 6,
+          "after": 6,
+          "unchanged": true
+        },
+        "b2_ingress": {
+          "before": 6,
+          "after": 6,
+          "unchanged": true
+        },
+        "b3_audit": {
+          "before": 6,
+          "after": 6,
+          "unchanged": true
+        },
+        "b3_clock": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "b3_m2_sources": {
+          "before": 28,
+          "after": 28,
+          "unchanged": true
+        },
+        "b3_preimage": {
+          "before": 13,
+          "after": 13,
+          "unchanged": true
+        },
+        "b3_response": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 6,
+          "after": 6,
+          "unchanged": true
+        }
+      }
+    },
+    "one_check": {
+      "result_status": "ELIGIBLE_NONCAUSAL",
+      "result_code": "SOURCEFREE_EVIDENCE_BOUNDARY_PASS",
+      "no_mutation": false,
+      "tables": {
+        "b2_event_identity": {
+          "before": 0,
+          "after": 6,
+          "unchanged": false
+        },
+        "b2_ingress": {
+          "before": 0,
+          "after": 6,
+          "unchanged": false
+        },
+        "b3_audit": {
+          "before": 0,
+          "after": 6,
+          "unchanged": false
+        },
+        "b3_clock": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "b3_m2_sources": {
+          "before": 0,
+          "after": 26,
+          "unchanged": false
+        },
+        "b3_preimage": {
+          "before": 0,
+          "after": 12,
+          "unchanged": false
+        },
+        "b3_response": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 0,
+          "after": 6,
+          "unchanged": false
+        }
+      }
+    },
+    "missing_observer": {
+      "result_status": "ELIGIBLE_NONCAUSAL",
+      "result_code": "SOURCEFREE_EVIDENCE_BOUNDARY_PASS",
+      "no_mutation": false,
+      "tables": {
+        "b2_event_identity": {
+          "before": 0,
+          "after": 6,
+          "unchanged": false
+        },
+        "b2_ingress": {
+          "before": 0,
+          "after": 6,
+          "unchanged": false
+        },
+        "b3_audit": {
+          "before": 0,
+          "after": 6,
+          "unchanged": false
+        },
+        "b3_clock": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "b3_m2_sources": {
+          "before": 0,
+          "after": 28,
+          "unchanged": false
+        },
+        "b3_preimage": {
+          "before": 0,
+          "after": 13,
+          "unchanged": false
+        },
+        "b3_response": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 0,
+          "after": 6,
+          "unchanged": false
+        }
+      }
+    },
+    "wrong_result": {
+      "result_status": "ELIGIBLE_NONCAUSAL",
+      "result_code": "SOURCEFREE_EVIDENCE_BOUNDARY_PASS",
+      "no_mutation": false,
+      "tables": {
+        "b2_event_identity": {
+          "before": 0,
+          "after": 6,
+          "unchanged": false
+        },
+        "b2_ingress": {
+          "before": 0,
+          "after": 6,
+          "unchanged": false
+        },
+        "b3_audit": {
+          "before": 0,
+          "after": 6,
+          "unchanged": false
+        },
+        "b3_clock": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "b3_m2_sources": {
+          "before": 0,
+          "after": 28,
+          "unchanged": false
+        },
+        "b3_preimage": {
+          "before": 0,
+          "after": 13,
+          "unchanged": false
+        },
+        "b3_response": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 0,
+          "after": 6,
+          "unchanged": false
+        }
+      }
+    },
+    "privileged_guard_to_commit_race": {
+      "result_status": "ELIGIBLE_NONCAUSAL",
+      "result_code": "SOURCEFREE_EVIDENCE_BOUNDARY_PASS",
+      "no_mutation": false,
+      "tables": {
+        "b2_event_identity": {
+          "before": 0,
+          "after": 6,
+          "unchanged": false
+        },
+        "b2_ingress": {
+          "before": 0,
+          "after": 6,
+          "unchanged": false
+        },
+        "b3_audit": {
+          "before": 0,
+          "after": 6,
+          "unchanged": false
+        },
+        "b3_clock": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "b3_m2_sources": {
+          "before": 0,
+          "after": 28,
+          "unchanged": false
+        },
+        "b3_preimage": {
+          "before": 0,
+          "after": 13,
+          "unchanged": false
+        },
+        "b3_response": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "b3_source": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 0,
+          "after": 6,
+          "unchanged": false
+        }
+      }
+    },
+    "missing_origin": {
+      "result_status": null,
+      "result_code": "REFUSAL_MUTATED_DATABASE",
+      "no_mutation": null,
+      "tables": {
+        "b2_event_identity": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "b2_ingress": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "b3_audit": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "b3_clock": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_m2_sources": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_preimage": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_response": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        }
+      }
+    },
+    "objective_claim": {
+      "result_status": "REFUSED",
+      "result_code": "CLAIM_TRUTH_PROMOTION",
+      "no_mutation": true,
+      "tables": {
+        "b2_event_identity": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b2_ingress": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_audit": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_clock": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_m2_sources": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_preimage": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_response": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        }
+      }
+    },
+    "future_action": {
+      "result_status": "REFUSED",
+      "result_code": "FUTURE_WITNESS_RECRUITMENT",
+      "no_mutation": true,
+      "tables": {
+        "b2_event_identity": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b2_ingress": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_audit": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_clock": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_m2_sources": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_preimage": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_response": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        }
+      }
+    },
+    "unregistered_permission": {
+      "result_status": "ELIGIBLE_NONCAUSAL",
+      "result_code": "SOURCEFREE_EVIDENCE_BOUNDARY_PASS",
+      "no_mutation": false,
+      "tables": {
+        "b2_event_identity": {
+          "before": 0,
+          "after": 6,
+          "unchanged": false
+        },
+        "b2_ingress": {
+          "before": 0,
+          "after": 6,
+          "unchanged": false
+        },
+        "b3_audit": {
+          "before": 0,
+          "after": 6,
+          "unchanged": false
+        },
+        "b3_clock": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "b3_m2_sources": {
+          "before": 0,
+          "after": 28,
+          "unchanged": false
+        },
+        "b3_preimage": {
+          "before": 0,
+          "after": 13,
+          "unchanged": false
+        },
+        "b3_response": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 0,
+          "after": 6,
+          "unchanged": false
+        }
+      }
+    },
+    "unheard": {
+      "result_status": "REFUSED",
+      "result_code": "OTHER_ACTOR_PRIVATE_READ",
+      "no_mutation": true,
+      "tables": {
+        "b2_event_identity": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b2_ingress": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_audit": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_clock": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_m2_sources": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_preimage": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_response": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        }
+      }
+    },
+    "atomic_history_collision": {
+      "result_status": "REFUSED",
+      "result_code": "SOURCE_PREIMAGE_IDENTITY_COLLISION",
+      "no_mutation": true,
+      "tables": {
+        "b2_event_identity": {
+          "before": 6,
+          "after": 6,
+          "unchanged": true
+        },
+        "b2_ingress": {
+          "before": 6,
+          "after": 6,
+          "unchanged": true
+        },
+        "b3_audit": {
+          "before": 6,
+          "after": 6,
+          "unchanged": true
+        },
+        "b3_clock": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "b3_m2_sources": {
+          "before": 28,
+          "after": 28,
+          "unchanged": true
+        },
+        "b3_preimage": {
+          "before": 13,
+          "after": 13,
+          "unchanged": true
+        },
+        "b3_response": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 6,
+          "after": 6,
+          "unchanged": true
+        }
+      }
+    },
+    "event_collision": {
+      "result_status": "REFUSED",
+      "result_code": "EVENT_ID_CONTENT_COLLISION",
+      "no_mutation": true,
+      "tables": {
+        "b2_event_identity": {
+          "before": 6,
+          "after": 6,
+          "unchanged": true
+        },
+        "b2_ingress": {
+          "before": 6,
+          "after": 6,
+          "unchanged": true
+        },
+        "b3_audit": {
+          "before": 6,
+          "after": 6,
+          "unchanged": true
+        },
+        "b3_clock": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "b3_m2_sources": {
+          "before": 26,
+          "after": 26,
+          "unchanged": true
+        },
+        "b3_preimage": {
+          "before": 11,
+          "after": 11,
+          "unchanged": true
+        },
+        "b3_response": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 6,
+          "after": 6,
+          "unchanged": true
+        }
+      }
+    },
+    "cold_history": {
+      "result_status": "REFUSED",
+      "result_code": "SOURCE_PREIMAGE_IDENTITY_COLLISION",
+      "no_mutation": true,
+      "tables": {
+        "b2_event_identity": {
+          "before": 6,
+          "after": 6,
+          "unchanged": true
+        },
+        "b2_ingress": {
+          "before": 6,
+          "after": 6,
+          "unchanged": true
+        },
+        "b3_audit": {
+          "before": 6,
+          "after": 6,
+          "unchanged": true
+        },
+        "b3_clock": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "b3_m2_sources": {
+          "before": 28,
+          "after": 28,
+          "unchanged": true
+        },
+        "b3_preimage": {
+          "before": 13,
+          "after": 13,
+          "unchanged": true
+        },
+        "b3_response": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 6,
+          "after": 6,
+          "unchanged": true
+        }
+      }
+    },
+    "cold_partial_future_event": {
+      "result_status": null,
+      "result_code": "REFUSAL_MUTATED_DATABASE",
+      "no_mutation": null,
+      "tables": {
+        "b2_event_identity": {
+          "before": 0,
+          "after": 5,
+          "unchanged": false
+        },
+        "b2_ingress": {
+          "before": 0,
+          "after": 5,
+          "unchanged": false
+        },
+        "b3_audit": {
+          "before": 0,
+          "after": 5,
+          "unchanged": false
+        },
+        "b3_clock": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_m2_sources": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_preimage": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_response": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 0,
+          "after": 5,
+          "unchanged": false
+        }
+      }
+    },
+    "cold_partial_missing_origin": {
+      "result_status": null,
+      "result_code": "REFUSAL_MUTATED_DATABASE",
+      "no_mutation": null,
+      "tables": {
+        "b2_event_identity": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "b2_ingress": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "b3_audit": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "b3_clock": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_m2_sources": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_preimage": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_response": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        }
+      }
+    },
+    "cold_affect": {
+      "result_status": "REFUSED",
+      "result_code": "SOURCE_PREIMAGE_IDENTITY_COLLISION",
+      "no_mutation": true,
+      "tables": {
+        "b2_event_identity": {
+          "before": 6,
+          "after": 6,
+          "unchanged": true
+        },
+        "b2_ingress": {
+          "before": 6,
+          "after": 6,
+          "unchanged": true
+        },
+        "b3_audit": {
+          "before": 6,
+          "after": 6,
+          "unchanged": true
+        },
+        "b3_clock": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "b3_m2_sources": {
+          "before": 30,
+          "after": 30,
+          "unchanged": true
+        },
+        "b3_preimage": {
+          "before": 14,
+          "after": 14,
+          "unchanged": true
+        },
+        "b3_response": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 6,
+          "after": 6,
+          "unchanged": true
+        }
+      }
+    },
+    "atomic_future_event": {
+      "result_status": null,
+      "result_code": "REFUSAL_MUTATED_DATABASE",
+      "no_mutation": null,
+      "tables": {
+        "b2_event_identity": {
+          "before": 0,
+          "after": 5,
+          "unchanged": false
+        },
+        "b2_ingress": {
+          "before": 0,
+          "after": 5,
+          "unchanged": false
+        },
+        "b3_audit": {
+          "before": 0,
+          "after": 5,
+          "unchanged": false
+        },
+        "b3_clock": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_m2_sources": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_preimage": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_response": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 0,
+          "after": 5,
+          "unchanged": false
+        }
+      }
+    },
+    "cold_speech": {
+      "result_status": "REFUSED",
+      "result_code": "SOURCE_PREIMAGE_IDENTITY_COLLISION",
+      "no_mutation": true,
+      "tables": {
+        "b2_event_identity": {
+          "before": 6,
+          "after": 6,
+          "unchanged": true
+        },
+        "b2_ingress": {
+          "before": 6,
+          "after": 6,
+          "unchanged": true
+        },
+        "b3_audit": {
+          "before": 6,
+          "after": 6,
+          "unchanged": true
+        },
+        "b3_clock": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "b3_m2_sources": {
+          "before": 28,
+          "after": 28,
+          "unchanged": true
+        },
+        "b3_preimage": {
+          "before": 13,
+          "after": 13,
+          "unchanged": true
+        },
+        "b3_response": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 6,
+          "after": 6,
+          "unchanged": true
+        }
+      }
+    },
+    "integrated_source_removal": {
+      "result_status": "REFUSED",
+      "result_code": "SOURCE_PREIMAGE_IDENTITY_COLLISION",
+      "no_mutation": true,
+      "tables": {
+        "b2_event_identity": {
+          "before": 6,
+          "after": 6,
+          "unchanged": true
+        },
+        "b2_ingress": {
+          "before": 6,
+          "after": 6,
+          "unchanged": true
+        },
+        "b3_audit": {
+          "before": 6,
+          "after": 6,
+          "unchanged": true
+        },
+        "b3_clock": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "b3_m2_sources": {
+          "before": 28,
+          "after": 28,
+          "unchanged": true
+        },
+        "b3_preimage": {
+          "before": 13,
+          "after": 13,
+          "unchanged": true
+        },
+        "b3_response": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 6,
+          "after": 6,
+          "unchanged": true
+        }
+      }
+    },
+    "no_pre_loss_act": {
+      "result_status": "ELIGIBLE_NONCAUSAL",
+      "result_code": "SOURCEFREE_EVIDENCE_BOUNDARY_PASS",
+      "no_mutation": false,
+      "tables": {
+        "b2_event_identity": {
+          "before": 0,
+          "after": 6,
+          "unchanged": false
+        },
+        "b2_ingress": {
+          "before": 0,
+          "after": 6,
+          "unchanged": false
+        },
+        "b3_audit": {
+          "before": 0,
+          "after": 6,
+          "unchanged": false
+        },
+        "b3_clock": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "b3_m2_sources": {
+          "before": 0,
+          "after": 28,
+          "unchanged": false
+        },
+        "b3_preimage": {
+          "before": 0,
+          "after": 13,
+          "unchanged": false
+        },
+        "b3_response": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "b3_source": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 0,
+          "after": 6,
+          "unchanged": false
+        }
+      }
+    },
+    "atomic_future_capability": {
+      "result_status": "DEFERRED",
+      "result_code": "CAPABILITY_UNQUALIFIED",
+      "no_mutation": true,
+      "tables": {
+        "b2_event_identity": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b2_ingress": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_audit": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_clock": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_m2_sources": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_preimage": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_response": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        }
+      }
+    },
+    "duplicate_activity": {
+      "result_status": "ELIGIBLE_NONCAUSAL",
+      "result_code": "SOURCEFREE_EVIDENCE_BOUNDARY_PASS",
+      "no_mutation": false,
+      "tables": {
+        "b2_event_identity": {
+          "before": 0,
+          "after": 6,
+          "unchanged": false
+        },
+        "b2_ingress": {
+          "before": 0,
+          "after": 6,
+          "unchanged": false
+        },
+        "b3_audit": {
+          "before": 0,
+          "after": 6,
+          "unchanged": false
+        },
+        "b3_clock": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "b3_m2_sources": {
+          "before": 0,
+          "after": 26,
+          "unchanged": false
+        },
+        "b3_preimage": {
+          "before": 0,
+          "after": 13,
+          "unchanged": false
+        },
+        "b3_response": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "b3_source": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 0,
+          "after": 6,
+          "unchanged": false
+        }
+      }
+    },
+    "stale_permission": {
+      "result_status": "ELIGIBLE_NONCAUSAL",
+      "result_code": "SOURCEFREE_EVIDENCE_BOUNDARY_PASS",
+      "no_mutation": false,
+      "tables": {
+        "b2_event_identity": {
+          "before": 0,
+          "after": 6,
+          "unchanged": false
+        },
+        "b2_ingress": {
+          "before": 0,
+          "after": 6,
+          "unchanged": false
+        },
+        "b3_audit": {
+          "before": 0,
+          "after": 6,
+          "unchanged": false
+        },
+        "b3_clock": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "b3_m2_sources": {
+          "before": 0,
+          "after": 28,
+          "unchanged": false
+        },
+        "b3_preimage": {
+          "before": 0,
+          "after": 13,
+          "unchanged": false
+        },
+        "b3_response": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 0,
+          "after": 6,
+          "unchanged": false
+        }
+      }
+    },
+    "atomic_missing_parent": {
+      "result_status": null,
+      "result_code": "REFUSAL_MUTATED_DATABASE",
+      "no_mutation": null,
+      "tables": {
+        "b2_event_identity": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "b2_ingress": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "b3_audit": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "b3_clock": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_m2_sources": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_preimage": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_response": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        }
+      }
+    },
+    "future": {
+      "result_status": "REFUSED",
+      "result_code": "FUTURE_WITNESS_RECRUITMENT",
+      "no_mutation": true,
+      "tables": {
+        "b2_event_identity": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b2_ingress": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_audit": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_clock": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_m2_sources": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_preimage": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_response": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        }
+      }
+    }
+  },
+  "candidate_x3_sql": {
+    "never_spoke": {
+      "result_status": "REFUSED",
+      "result_code": "SPEECH_SPEAKER_MISMATCH",
+      "no_mutation": true,
+      "tables": {
+        "b2_event_identity": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b2_ingress": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_audit": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_clock": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_m2_sources": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_preimage": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_response": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        }
+      }
+    },
+    "one_check": {
+      "result_status": "ELIGIBLE_NONCAUSAL",
+      "result_code": "SOURCEFREE_EVIDENCE_BOUNDARY_PASS",
+      "no_mutation": false,
+      "tables": {
+        "b2_event_identity": {
+          "before": 0,
+          "after": 6,
+          "unchanged": false
+        },
+        "b2_ingress": {
+          "before": 0,
+          "after": 6,
+          "unchanged": false
+        },
+        "b3_audit": {
+          "before": 0,
+          "after": 6,
+          "unchanged": false
+        },
+        "b3_clock": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "b3_m2_sources": {
+          "before": 0,
+          "after": 26,
+          "unchanged": false
+        },
+        "b3_preimage": {
+          "before": 0,
+          "after": 12,
+          "unchanged": false
+        },
+        "b3_response": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 0,
+          "after": 6,
+          "unchanged": false
+        }
+      }
+    },
+    "missing_observer": {
+      "result_status": "ELIGIBLE_NONCAUSAL",
+      "result_code": "SOURCEFREE_EVIDENCE_BOUNDARY_PASS",
+      "no_mutation": false,
+      "tables": {
+        "b2_event_identity": {
+          "before": 0,
+          "after": 6,
+          "unchanged": false
+        },
+        "b2_ingress": {
+          "before": 0,
+          "after": 6,
+          "unchanged": false
+        },
+        "b3_audit": {
+          "before": 0,
+          "after": 6,
+          "unchanged": false
+        },
+        "b3_clock": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "b3_m2_sources": {
+          "before": 0,
+          "after": 28,
+          "unchanged": false
+        },
+        "b3_preimage": {
+          "before": 0,
+          "after": 13,
+          "unchanged": false
+        },
+        "b3_response": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 0,
+          "after": 6,
+          "unchanged": false
+        }
+      }
+    },
+    "wrong_result": {
+      "result_status": "ELIGIBLE_NONCAUSAL",
+      "result_code": "SOURCEFREE_EVIDENCE_BOUNDARY_PASS",
+      "no_mutation": false,
+      "tables": {
+        "b2_event_identity": {
+          "before": 0,
+          "after": 6,
+          "unchanged": false
+        },
+        "b2_ingress": {
+          "before": 0,
+          "after": 6,
+          "unchanged": false
+        },
+        "b3_audit": {
+          "before": 0,
+          "after": 6,
+          "unchanged": false
+        },
+        "b3_clock": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "b3_m2_sources": {
+          "before": 0,
+          "after": 28,
+          "unchanged": false
+        },
+        "b3_preimage": {
+          "before": 0,
+          "after": 13,
+          "unchanged": false
+        },
+        "b3_response": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 0,
+          "after": 6,
+          "unchanged": false
+        }
+      }
+    },
+    "privileged_guard_to_commit_race": {
+      "result_status": "REFUSED",
+      "result_code": "PUBLICATION_READSET_CHANGED",
+      "no_mutation": false,
+      "tables": {
+        "b2_event_identity": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b2_ingress": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_audit": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_clock": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_m2_sources": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_preimage": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "b3_response": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        }
+      }
+    },
+    "missing_origin": {
+      "result_status": "REFUSED",
+      "result_code": "ORIGINAL_EVENT_NOT_ADMITTED",
+      "no_mutation": true,
+      "tables": {
+        "b2_event_identity": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b2_ingress": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_audit": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_clock": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_m2_sources": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_preimage": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_response": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        }
+      }
+    },
+    "objective_claim": {
+      "result_status": "REFUSED",
+      "result_code": "CLAIM_TRUTH_PROMOTION",
+      "no_mutation": true,
+      "tables": {
+        "b2_event_identity": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b2_ingress": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_audit": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_clock": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_m2_sources": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_preimage": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_response": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        }
+      }
+    },
+    "future_action": {
+      "result_status": "REFUSED",
+      "result_code": "FUTURE_WITNESS_RECRUITMENT",
+      "no_mutation": true,
+      "tables": {
+        "b2_event_identity": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b2_ingress": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_audit": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_clock": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_m2_sources": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_preimage": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_response": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        }
+      }
+    },
+    "unregistered_permission": {
+      "result_status": "ELIGIBLE_NONCAUSAL",
+      "result_code": "SOURCEFREE_EVIDENCE_BOUNDARY_PASS",
+      "no_mutation": false,
+      "tables": {
+        "b2_event_identity": {
+          "before": 0,
+          "after": 6,
+          "unchanged": false
+        },
+        "b2_ingress": {
+          "before": 0,
+          "after": 6,
+          "unchanged": false
+        },
+        "b3_audit": {
+          "before": 0,
+          "after": 6,
+          "unchanged": false
+        },
+        "b3_clock": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "b3_m2_sources": {
+          "before": 0,
+          "after": 28,
+          "unchanged": false
+        },
+        "b3_preimage": {
+          "before": 0,
+          "after": 13,
+          "unchanged": false
+        },
+        "b3_response": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 0,
+          "after": 6,
+          "unchanged": false
+        }
+      }
+    },
+    "unheard": {
+      "result_status": "REFUSED",
+      "result_code": "OTHER_ACTOR_PRIVATE_READ",
+      "no_mutation": true,
+      "tables": {
+        "b2_event_identity": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b2_ingress": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_audit": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_clock": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_m2_sources": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_preimage": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_response": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        }
+      }
+    },
+    "atomic_history_collision": {
+      "result_status": "REFUSED",
+      "result_code": "SOURCE_PREIMAGE_IDENTITY_COLLISION",
+      "no_mutation": true,
+      "tables": {
+        "b2_event_identity": {
+          "before": 6,
+          "after": 6,
+          "unchanged": true
+        },
+        "b2_ingress": {
+          "before": 6,
+          "after": 6,
+          "unchanged": true
+        },
+        "b3_audit": {
+          "before": 6,
+          "after": 6,
+          "unchanged": true
+        },
+        "b3_clock": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "b3_m2_sources": {
+          "before": 28,
+          "after": 28,
+          "unchanged": true
+        },
+        "b3_preimage": {
+          "before": 13,
+          "after": 13,
+          "unchanged": true
+        },
+        "b3_response": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 6,
+          "after": 6,
+          "unchanged": true
+        }
+      }
+    },
+    "event_collision": {
+      "result_status": "REFUSED",
+      "result_code": "EVENT_ID_CONTENT_COLLISION",
+      "no_mutation": true,
+      "tables": {
+        "b2_event_identity": {
+          "before": 6,
+          "after": 6,
+          "unchanged": true
+        },
+        "b2_ingress": {
+          "before": 6,
+          "after": 6,
+          "unchanged": true
+        },
+        "b3_audit": {
+          "before": 6,
+          "after": 6,
+          "unchanged": true
+        },
+        "b3_clock": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "b3_m2_sources": {
+          "before": 26,
+          "after": 26,
+          "unchanged": true
+        },
+        "b3_preimage": {
+          "before": 11,
+          "after": 11,
+          "unchanged": true
+        },
+        "b3_response": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 6,
+          "after": 6,
+          "unchanged": true
+        }
+      }
+    },
+    "cold_history": {
+      "result_status": "REFUSED",
+      "result_code": "SOURCE_PREIMAGE_IDENTITY_COLLISION",
+      "no_mutation": true,
+      "tables": {
+        "b2_event_identity": {
+          "before": 6,
+          "after": 6,
+          "unchanged": true
+        },
+        "b2_ingress": {
+          "before": 6,
+          "after": 6,
+          "unchanged": true
+        },
+        "b3_audit": {
+          "before": 6,
+          "after": 6,
+          "unchanged": true
+        },
+        "b3_clock": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "b3_m2_sources": {
+          "before": 28,
+          "after": 28,
+          "unchanged": true
+        },
+        "b3_preimage": {
+          "before": 13,
+          "after": 13,
+          "unchanged": true
+        },
+        "b3_response": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 6,
+          "after": 6,
+          "unchanged": true
+        }
+      }
+    },
+    "cold_partial_future_event": {
+      "result_status": "REFUSED",
+      "result_code": "EVENT_CLOCK_OUTSIDE_FRAME",
+      "no_mutation": true,
+      "tables": {
+        "b2_event_identity": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b2_ingress": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_audit": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_clock": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_m2_sources": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_preimage": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_response": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        }
+      }
+    },
+    "cold_partial_missing_origin": {
+      "result_status": "REFUSED",
+      "result_code": "ORIGINAL_EVENT_NOT_ADMITTED",
+      "no_mutation": true,
+      "tables": {
+        "b2_event_identity": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b2_ingress": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_audit": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_clock": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_m2_sources": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_preimage": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_response": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        }
+      }
+    },
+    "cold_affect": {
+      "result_status": "REFUSED",
+      "result_code": "SOURCE_PREIMAGE_IDENTITY_COLLISION",
+      "no_mutation": true,
+      "tables": {
+        "b2_event_identity": {
+          "before": 6,
+          "after": 6,
+          "unchanged": true
+        },
+        "b2_ingress": {
+          "before": 6,
+          "after": 6,
+          "unchanged": true
+        },
+        "b3_audit": {
+          "before": 6,
+          "after": 6,
+          "unchanged": true
+        },
+        "b3_clock": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "b3_m2_sources": {
+          "before": 30,
+          "after": 30,
+          "unchanged": true
+        },
+        "b3_preimage": {
+          "before": 14,
+          "after": 14,
+          "unchanged": true
+        },
+        "b3_response": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 6,
+          "after": 6,
+          "unchanged": true
+        }
+      }
+    },
+    "atomic_future_event": {
+      "result_status": "REFUSED",
+      "result_code": "EVENT_CLOCK_OUTSIDE_FRAME",
+      "no_mutation": true,
+      "tables": {
+        "b2_event_identity": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b2_ingress": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_audit": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_clock": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_m2_sources": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_preimage": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_response": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        }
+      }
+    },
+    "cold_speech": {
+      "result_status": "REFUSED",
+      "result_code": "SOURCE_PREIMAGE_IDENTITY_COLLISION",
+      "no_mutation": true,
+      "tables": {
+        "b2_event_identity": {
+          "before": 6,
+          "after": 6,
+          "unchanged": true
+        },
+        "b2_ingress": {
+          "before": 6,
+          "after": 6,
+          "unchanged": true
+        },
+        "b3_audit": {
+          "before": 6,
+          "after": 6,
+          "unchanged": true
+        },
+        "b3_clock": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "b3_m2_sources": {
+          "before": 28,
+          "after": 28,
+          "unchanged": true
+        },
+        "b3_preimage": {
+          "before": 13,
+          "after": 13,
+          "unchanged": true
+        },
+        "b3_response": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 6,
+          "after": 6,
+          "unchanged": true
+        }
+      }
+    },
+    "integrated_source_removal": {
+      "result_status": "REFUSED",
+      "result_code": "SOURCE_PREIMAGE_IDENTITY_COLLISION",
+      "no_mutation": true,
+      "tables": {
+        "b2_event_identity": {
+          "before": 6,
+          "after": 6,
+          "unchanged": true
+        },
+        "b2_ingress": {
+          "before": 6,
+          "after": 6,
+          "unchanged": true
+        },
+        "b3_audit": {
+          "before": 6,
+          "after": 6,
+          "unchanged": true
+        },
+        "b3_clock": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "b3_m2_sources": {
+          "before": 28,
+          "after": 28,
+          "unchanged": true
+        },
+        "b3_preimage": {
+          "before": 13,
+          "after": 13,
+          "unchanged": true
+        },
+        "b3_response": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 6,
+          "after": 6,
+          "unchanged": true
+        }
+      }
+    },
+    "no_pre_loss_act": {
+      "result_status": "ELIGIBLE_NONCAUSAL",
+      "result_code": "SOURCEFREE_EVIDENCE_BOUNDARY_PASS",
+      "no_mutation": false,
+      "tables": {
+        "b2_event_identity": {
+          "before": 0,
+          "after": 6,
+          "unchanged": false
+        },
+        "b2_ingress": {
+          "before": 0,
+          "after": 6,
+          "unchanged": false
+        },
+        "b3_audit": {
+          "before": 0,
+          "after": 6,
+          "unchanged": false
+        },
+        "b3_clock": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "b3_m2_sources": {
+          "before": 0,
+          "after": 28,
+          "unchanged": false
+        },
+        "b3_preimage": {
+          "before": 0,
+          "after": 13,
+          "unchanged": false
+        },
+        "b3_response": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "b3_source": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 0,
+          "after": 6,
+          "unchanged": false
+        }
+      }
+    },
+    "atomic_future_capability": {
+      "result_status": "DEFERRED",
+      "result_code": "CAPABILITY_UNQUALIFIED",
+      "no_mutation": true,
+      "tables": {
+        "b2_event_identity": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b2_ingress": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_audit": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_clock": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_m2_sources": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_preimage": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_response": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        }
+      }
+    },
+    "duplicate_activity": {
+      "result_status": "ELIGIBLE_NONCAUSAL",
+      "result_code": "SOURCEFREE_EVIDENCE_BOUNDARY_PASS",
+      "no_mutation": false,
+      "tables": {
+        "b2_event_identity": {
+          "before": 0,
+          "after": 6,
+          "unchanged": false
+        },
+        "b2_ingress": {
+          "before": 0,
+          "after": 6,
+          "unchanged": false
+        },
+        "b3_audit": {
+          "before": 0,
+          "after": 6,
+          "unchanged": false
+        },
+        "b3_clock": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "b3_m2_sources": {
+          "before": 0,
+          "after": 26,
+          "unchanged": false
+        },
+        "b3_preimage": {
+          "before": 0,
+          "after": 13,
+          "unchanged": false
+        },
+        "b3_response": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "b3_source": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 0,
+          "after": 6,
+          "unchanged": false
+        }
+      }
+    },
+    "stale_permission": {
+      "result_status": "ELIGIBLE_NONCAUSAL",
+      "result_code": "SOURCEFREE_EVIDENCE_BOUNDARY_PASS",
+      "no_mutation": false,
+      "tables": {
+        "b2_event_identity": {
+          "before": 0,
+          "after": 6,
+          "unchanged": false
+        },
+        "b2_ingress": {
+          "before": 0,
+          "after": 6,
+          "unchanged": false
+        },
+        "b3_audit": {
+          "before": 0,
+          "after": 6,
+          "unchanged": false
+        },
+        "b3_clock": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "b3_m2_sources": {
+          "before": 0,
+          "after": 28,
+          "unchanged": false
+        },
+        "b3_preimage": {
+          "before": 0,
+          "after": 13,
+          "unchanged": false
+        },
+        "b3_response": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 0,
+          "after": 6,
+          "unchanged": false
+        }
+      }
+    },
+    "atomic_missing_parent": {
+      "result_status": "REFUSED",
+      "result_code": "ORIGINAL_EVENT_NOT_ADMITTED",
+      "no_mutation": true,
+      "tables": {
+        "b2_event_identity": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b2_ingress": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_audit": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_clock": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_m2_sources": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_preimage": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_response": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        }
+      }
+    },
+    "future": {
+      "result_status": "REFUSED",
+      "result_code": "FUTURE_WITNESS_RECRUITMENT",
+      "no_mutation": true,
+      "tables": {
+        "b2_event_identity": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b2_ingress": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_audit": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_clock": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_m2_sources": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_preimage": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_response": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        }
+      }
+    }
+  },
+  "original_seeded_sql": {
+    "seeded_missing_origin_True": {
+      "schema_unchanged": true,
+      "tables": {
+        "b2_event_identity": {
+          "before": 1,
+          "after": 2,
+          "unchanged": false
+        },
+        "b2_ingress": {
+          "before": 1,
+          "after": 2,
+          "unchanged": false
+        },
+        "b3_audit": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "b3_clock": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_m2_sources": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_preimage": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_response": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 1,
+          "after": 2,
+          "unchanged": false
+        }
+      },
+      "result_status": null,
+      "result_code": "REFUSAL_MUTATED_DATABASE",
+      "no_mutation": null
+    },
+    "seeded_missing_origin_False": {
+      "schema_unchanged": true,
+      "tables": {
+        "b2_event_identity": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "b2_ingress": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "b3_audit": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "b3_clock": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_m2_sources": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_preimage": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_response": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        }
+      },
+      "result_status": null,
+      "result_code": "REFUSAL_MUTATED_DATABASE",
+      "no_mutation": null
+    },
+    "seeded_future_event_True": {
+      "schema_unchanged": true,
+      "tables": {
+        "b2_event_identity": {
+          "before": 1,
+          "after": 6,
+          "unchanged": false
+        },
+        "b2_ingress": {
+          "before": 1,
+          "after": 6,
+          "unchanged": false
+        },
+        "b3_audit": {
+          "before": 0,
+          "after": 5,
+          "unchanged": false
+        },
+        "b3_clock": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_m2_sources": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_preimage": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_response": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 1,
+          "after": 6,
+          "unchanged": false
+        }
+      },
+      "result_status": null,
+      "result_code": "REFUSAL_MUTATED_DATABASE",
+      "no_mutation": null
+    },
+    "seeded_future_event_False": {
+      "schema_unchanged": true,
+      "tables": {
+        "b2_event_identity": {
+          "before": 0,
+          "after": 5,
+          "unchanged": false
+        },
+        "b2_ingress": {
+          "before": 0,
+          "after": 5,
+          "unchanged": false
+        },
+        "b3_audit": {
+          "before": 0,
+          "after": 5,
+          "unchanged": false
+        },
+        "b3_clock": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_m2_sources": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_preimage": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_response": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 0,
+          "after": 5,
+          "unchanged": false
+        }
+      },
+      "result_status": null,
+      "result_code": "REFUSAL_MUTATED_DATABASE",
+      "no_mutation": null
+    }
+  },
+  "candidate_seeded_sql": {
+    "seeded_missing_origin_True": {
+      "schema_unchanged": true,
+      "tables": {
+        "b2_event_identity": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "b2_ingress": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "b3_audit": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_clock": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_m2_sources": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_preimage": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_response": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        }
+      },
+      "result_status": "REFUSED",
+      "result_code": "ORIGINAL_EVENT_NOT_ADMITTED",
+      "no_mutation": true
+    },
+    "seeded_missing_origin_False": {
+      "schema_unchanged": true,
+      "tables": {
+        "b2_event_identity": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b2_ingress": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_audit": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_clock": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_m2_sources": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_preimage": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_response": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        }
+      },
+      "result_status": "REFUSED",
+      "result_code": "ORIGINAL_EVENT_NOT_ADMITTED",
+      "no_mutation": true
+    },
+    "seeded_future_event_True": {
+      "schema_unchanged": true,
+      "tables": {
+        "b2_event_identity": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "b2_ingress": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "b3_audit": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_clock": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_m2_sources": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_preimage": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_response": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        }
+      },
+      "result_status": "REFUSED",
+      "result_code": "EVENT_CLOCK_OUTSIDE_FRAME",
+      "no_mutation": true
+    },
+    "seeded_future_event_False": {
+      "schema_unchanged": true,
+      "tables": {
+        "b2_event_identity": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b2_ingress": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_audit": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_clock": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_m2_sources": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_preimage": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_response": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        }
+      },
+      "result_status": "REFUSED",
+      "result_code": "EVENT_CLOCK_OUTSIDE_FRAME",
+      "no_mutation": true
+    }
+  },
+  "reviewer_sql": {
+    "kill_before_first_b2_admission_True": {
+      "schema_unchanged": true,
+      "tables": {
+        "b2_event_identity": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "b2_ingress": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "b3_audit": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_clock": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_m2_sources": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_preimage": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_response": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        }
+      },
+      "result_status": null,
+      "result_code": null,
+      "no_mutation": null
+    },
+    "late_target_True": {
+      "schema_unchanged": true,
+      "tables": {
+        "b2_event_identity": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "b2_ingress": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "b3_audit": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_clock": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_m2_sources": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_preimage": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_response": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        }
+      },
+      "result_status": "REFUSED",
+      "result_code": "I2_AFTER_TARGET_VALIDATION",
+      "no_mutation": true
+    },
+    "kill_after_target_effect_before_commit_False": {
+      "schema_unchanged": true,
+      "tables": {
+        "b2_event_identity": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b2_ingress": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_audit": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_clock": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_m2_sources": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_preimage": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_response": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        }
+      },
+      "result_status": null,
+      "result_code": null,
+      "no_mutation": null
+    },
+    "tamper_clock": {
+      "schema_unchanged": true,
+      "tables": {
+        "b2_event_identity": {
+          "before": 6,
+          "after": 6,
+          "unchanged": true
+        },
+        "b2_ingress": {
+          "before": 6,
+          "after": 6,
+          "unchanged": true
+        },
+        "b3_audit": {
+          "before": 6,
+          "after": 6,
+          "unchanged": true
+        },
+        "b3_clock": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "b3_m2_sources": {
+          "before": 28,
+          "after": 28,
+          "unchanged": true
+        },
+        "b3_preimage": {
+          "before": 13,
+          "after": 13,
+          "unchanged": true
+        },
+        "b3_response": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 6,
+          "after": 6,
+          "unchanged": true
+        }
+      },
+      "result_status": "REFUSED",
+      "result_code": "B3_TIME_REVERSED",
+      "no_mutation": true
+    },
+    "schema_refusal_flag": {
+      "schema_unchanged": false,
+      "tables": {
+        "b2_event_identity": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b2_ingress": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_audit": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_clock": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_m2_sources": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_preimage": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_response": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        }
+      },
+      "result_status": "REFUSED",
+      "result_code": "I2_REFUSAL_WITH_EXTERNAL_SCHEMA_CHANGE",
+      "no_mutation": true
+    },
+    "tamper_missing_origin": {
+      "schema_unchanged": true,
+      "tables": {
+        "b2_event_identity": {
+          "before": 6,
+          "after": 6,
+          "unchanged": true
+        },
+        "b2_ingress": {
+          "before": 6,
+          "after": 6,
+          "unchanged": true
+        },
+        "b3_audit": {
+          "before": 6,
+          "after": 6,
+          "unchanged": true
+        },
+        "b3_clock": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "b3_m2_sources": {
+          "before": 28,
+          "after": 28,
+          "unchanged": true
+        },
+        "b3_preimage": {
+          "before": 13,
+          "after": 13,
+          "unchanged": true
+        },
+        "b3_response": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 6,
+          "after": 6,
+          "unchanged": true
+        }
+      },
+      "result_status": "REFUSED",
+      "result_code": "ORIGINAL_EVENT_NOT_ADMITTED",
+      "no_mutation": true
+    },
+    "kill_after_publication_before_commit_True": {
+      "schema_unchanged": true,
+      "tables": {
+        "b2_event_identity": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "b2_ingress": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "b3_audit": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_clock": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_m2_sources": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_preimage": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_response": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        }
+      },
+      "result_status": null,
+      "result_code": null,
+      "no_mutation": null
+    },
+    "kill_after_first_source_admission_False": {
+      "schema_unchanged": true,
+      "tables": {
+        "b2_event_identity": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b2_ingress": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_audit": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_clock": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_m2_sources": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_preimage": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_response": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        }
+      },
+      "result_status": null,
+      "result_code": null,
+      "no_mutation": null
+    },
+    "tamper_origin_binding": {
+      "schema_unchanged": true,
+      "tables": {
+        "b2_event_identity": {
+          "before": 6,
+          "after": 6,
+          "unchanged": true
+        },
+        "b2_ingress": {
+          "before": 6,
+          "after": 6,
+          "unchanged": true
+        },
+        "b3_audit": {
+          "before": 6,
+          "after": 6,
+          "unchanged": true
+        },
+        "b3_clock": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "b3_m2_sources": {
+          "before": 28,
+          "after": 28,
+          "unchanged": true
+        },
+        "b3_preimage": {
+          "before": 13,
+          "after": 13,
+          "unchanged": true
+        },
+        "b3_response": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 6,
+          "after": 6,
+          "unchanged": true
+        }
+      },
+      "result_status": "REFUSED",
+      "result_code": "SYNTHETIC_SOURCE_ISSUER_NOT_REGISTERED",
+      "no_mutation": true
+    },
+    "schema_only_race": {
+      "schema_unchanged": false,
+      "tables": {
+        "b2_event_identity": {
+          "before": 0,
+          "after": 6,
+          "unchanged": false
+        },
+        "b2_ingress": {
+          "before": 0,
+          "after": 6,
+          "unchanged": false
+        },
+        "b3_audit": {
+          "before": 0,
+          "after": 6,
+          "unchanged": false
+        },
+        "b3_clock": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "b3_m2_sources": {
+          "before": 0,
+          "after": 28,
+          "unchanged": false
+        },
+        "b3_preimage": {
+          "before": 0,
+          "after": 13,
+          "unchanged": false
+        },
+        "b3_response": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "b3_source": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 0,
+          "after": 6,
+          "unchanged": false
+        }
+      },
+      "result_status": "ELIGIBLE_NONCAUSAL",
+      "result_code": "SOURCEFREE_EVIDENCE_BOUNDARY_PASS",
+      "no_mutation": false
+    },
+    "kill_after_publication_before_commit_False": {
+      "schema_unchanged": true,
+      "tables": {
+        "b2_event_identity": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b2_ingress": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_audit": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_clock": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_m2_sources": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_preimage": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_response": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        }
+      },
+      "result_status": null,
+      "result_code": null,
+      "no_mutation": null
+    },
+    "kill_after_target_effect_before_commit_True": {
+      "schema_unchanged": true,
+      "tables": {
+        "b2_event_identity": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "b2_ingress": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "b3_audit": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_clock": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_m2_sources": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_preimage": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_response": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        }
+      },
+      "result_status": null,
+      "result_code": null,
+      "no_mutation": null
+    },
+    "late_target_False": {
+      "schema_unchanged": true,
+      "tables": {
+        "b2_event_identity": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b2_ingress": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_audit": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_clock": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_m2_sources": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_preimage": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_response": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        }
+      },
+      "result_status": "REFUSED",
+      "result_code": "I2_AFTER_TARGET_VALIDATION",
+      "no_mutation": true
+    },
+    "tamper_source_parent": {
+      "schema_unchanged": true,
+      "tables": {
+        "b2_event_identity": {
+          "before": 6,
+          "after": 6,
+          "unchanged": true
+        },
+        "b2_ingress": {
+          "before": 6,
+          "after": 6,
+          "unchanged": true
+        },
+        "b3_audit": {
+          "before": 6,
+          "after": 6,
+          "unchanged": true
+        },
+        "b3_clock": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "b3_m2_sources": {
+          "before": 28,
+          "after": 28,
+          "unchanged": true
+        },
+        "b3_preimage": {
+          "before": 13,
+          "after": 13,
+          "unchanged": true
+        },
+        "b3_response": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 6,
+          "after": 6,
+          "unchanged": true
+        }
+      },
+      "result_status": "REFUSED",
+      "result_code": "SOURCE_PREIMAGE_IDENTITY_COLLISION",
+      "no_mutation": true
+    },
+    "kill_after_successful_return_False": {
+      "schema_unchanged": true,
+      "tables": {
+        "b2_event_identity": {
+          "before": 0,
+          "after": 6,
+          "unchanged": false
+        },
+        "b2_ingress": {
+          "before": 0,
+          "after": 6,
+          "unchanged": false
+        },
+        "b3_audit": {
+          "before": 0,
+          "after": 6,
+          "unchanged": false
+        },
+        "b3_clock": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "b3_m2_sources": {
+          "before": 0,
+          "after": 28,
+          "unchanged": false
+        },
+        "b3_preimage": {
+          "before": 0,
+          "after": 13,
+          "unchanged": false
+        },
+        "b3_response": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "b3_source": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 0,
+          "after": 6,
+          "unchanged": false
+        }
+      },
+      "result_status": null,
+      "result_code": null,
+      "no_mutation": null
+    },
+    "external_table": {
+      "schema_unchanged": false,
+      "tables": {
+        "b2_event_identity": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "b2_ingress": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "b3_audit": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_clock": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_m2_sources": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_preimage": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_response": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        }
+      },
+      "result_status": "REFUSED",
+      "result_code": "PUBLICATION_READSET_CHANGED",
+      "no_mutation": false
+    },
+    "external_row": {
+      "schema_unchanged": true,
+      "tables": {
+        "b2_event_identity": {
+          "before": 1,
+          "after": 2,
+          "unchanged": false
+        },
+        "b2_ingress": {
+          "before": 1,
+          "after": 2,
+          "unchanged": false
+        },
+        "b3_audit": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_clock": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_m2_sources": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_preimage": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_response": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 1,
+          "after": 2,
+          "unchanged": false
+        }
+      },
+      "result_status": "REFUSED",
+      "result_code": "PUBLICATION_READSET_CHANGED",
+      "no_mutation": false
+    },
+    "kill_after_first_source_admission_True": {
+      "schema_unchanged": true,
+      "tables": {
+        "b2_event_identity": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "b2_ingress": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "b3_audit": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_clock": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_m2_sources": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_preimage": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_response": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        }
+      },
+      "result_status": null,
+      "result_code": null,
+      "no_mutation": null
+    },
+    "kill_before_first_b2_admission_False": {
+      "schema_unchanged": true,
+      "tables": {
+        "b2_event_identity": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b2_ingress": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_audit": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_clock": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_m2_sources": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_preimage": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_response": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_source": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        }
+      },
+      "result_status": null,
+      "result_code": null,
+      "no_mutation": null
+    },
+    "kill_after_successful_return_True": {
+      "schema_unchanged": true,
+      "tables": {
+        "b2_event_identity": {
+          "before": 1,
+          "after": 7,
+          "unchanged": false
+        },
+        "b2_ingress": {
+          "before": 1,
+          "after": 7,
+          "unchanged": false
+        },
+        "b3_audit": {
+          "before": 0,
+          "after": 6,
+          "unchanged": false
+        },
+        "b3_clock": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "b3_m2_sources": {
+          "before": 0,
+          "after": 28,
+          "unchanged": false
+        },
+        "b3_preimage": {
+          "before": 0,
+          "after": 13,
+          "unchanged": false
+        },
+        "b3_response": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "b3_source": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "b3_transition": {
+          "before": 0,
+          "after": 1,
+          "unchanged": false
+        },
+        "checkpoint": {
+          "before": 1,
+          "after": 1,
+          "unchanged": true
+        },
+        "joint_receipt": {
+          "before": 0,
+          "after": 0,
+          "unchanged": true
+        },
+        "occurrence": {
+          "before": 1,
+          "after": 7,
+          "unchanged": false
+        }
+      },
+      "result_status": null,
+      "result_code": null,
+      "no_mutation": null
+    }
+  }
+}

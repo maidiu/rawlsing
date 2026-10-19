@@ -1,0 +1,1145 @@
+{
+  "case_id": "F2-005",
+  "grade": "TEST_ONLY_B3_ATOMIC_ADMISSION_R1_PENDING_I2",
+  "issued_production_authority": false,
+  "owner_effect_committed": false,
+  "selected_affect": null,
+  "asserted_culprit_group": null,
+  "imports": [
+    {
+      "module": "b3_fixed_b2",
+      "relative_file": ".runtime/b2/bridge.py",
+      "sha256": "9c112a7984b0581e965394983acf0e38064847083b78096e2d8215b48932250f"
+    },
+    {
+      "module": "b2_pinned_bfirst",
+      "relative_file": ".runtime/b2/imports/B1/bfirst.py",
+      "sha256": "478b989730f49a5def41a367b6f53e4aae9c80961f7f466fe669c7dbd92201a3"
+    },
+    {
+      "module": "b2_pinned_p1",
+      "relative_file": ".runtime/b2/imports/P1/p1_contract.py",
+      "sha256": "df31a147ab037385c5488801b5fa7413f9bcf5c63c97ba6328f859c8fcd92d38"
+    },
+    {
+      "module": "b3_frozen_m2",
+      "relative_file": ".runtime/m2/kernel.py",
+      "sha256": "888d73fff63f70a22932f1001f5c9003104b0e5a9cdef84e93456151428676c8"
+    }
+  ],
+  "new_event_count": 1,
+  "status": "ELIGIBLE_NONCAUSAL",
+  "code": "SOURCEFREE_EVIDENCE_BOUNDARY_PASS",
+  "original_event_hash": "7343ad0dceff4df24d51adf9c45d4e76da970ad1b712ef42bd0097811d3df2c5",
+  "event_world_hash_after": "7343ad0dceff4df24d51adf9c45d4e76da970ad1b712ef42bd0097811d3df2c5",
+  "exact_replay": false,
+  "verified_evidence_refs": [
+    "E-C-SPEECH",
+    "E-C-TOOLS",
+    "E-CHILD-BIKE",
+    "E-CHILD-CAP",
+    "E-P-SPEECH",
+    "E-PARENT-CHOICE",
+    "E-THEFT"
+  ],
+  "accessible_readset": [
+    "E-C-SPEECH",
+    "E-THEFT"
+  ],
+  "material_actor_activity": [
+    [
+      "caregiver",
+      "DECLINE_HELP",
+      "E-C-TOOLS"
+    ],
+    [
+      "caregiver",
+      "SHARED_TASK_CHOICE",
+      "E-PARENT-CHOICE"
+    ],
+    [
+      "child",
+      "BIKE_CARE",
+      "E-CHILD-BIKE"
+    ]
+  ],
+  "independent_offer_refs": [],
+  "admissible_routes": [
+    "NO_CHANGE",
+    "PRIVATE_PRACTICE"
+  ],
+  "history_material_hash": "1cccef1775f8fda7684a2aea0a132653220b8bf6378e7ba059699efa53e12c36",
+  "admission": {
+    "schema": "B2_VERTICAL_RECEIPT@1",
+    "rule": "B2_SYNTHETIC_WITNESSED_INGRESS@1",
+    "eligibility": {
+      "decision": "ADMIT",
+      "code": "P1_NONCAUSAL_ELIGIBILITY_COURT",
+      "proposal_id": "B2-PACKET-1",
+      "proposal_hash": "3abce576cd41b05f2cb6a824171c97d607a41281b04e4d946fbc036c2f631d8b",
+      "context_hash": "21a9c536d4ffa1f3b6eed410acc04298d6e3967276c4da74fcd1d0a309a9dc08",
+      "rule_ref": "P1_CANDIDATE_ELIGIBILITY_TEST_ONLY@1.0.0",
+      "rule_hash": "2a5814d3d867ca8a4c25138eaa0e2def57e70400245d9402bde96918d59f5c1e",
+      "candidates": [
+        {
+          "candidate_id": "ALT-CARE",
+          "candidate_replay_hash": "70d4e86f49ec019a12c047ed3ed79209f70686dc8bec6ce5c7e3306d34126170",
+          "decision": "ADMIT",
+          "code": "PROPOSAL_CANDIDATE_ONLY_NOT_CAUSAL"
+        },
+        {
+          "candidate_id": "ALT-CHILD-SEARCH",
+          "candidate_replay_hash": "1f28086a60008ce17ebf63228d8baec97709bf7a19cd26892f3a1516581e879c",
+          "decision": "ADMIT",
+          "code": "PROPOSAL_CANDIDATE_ONLY_NOT_CAUSAL"
+        },
+        {
+          "candidate_id": "ALT-NONE",
+          "candidate_replay_hash": "f332932d989b535ba05eb8fc6596a8aa6d93960e39117a940b712a54a6790244",
+          "decision": "ADMIT",
+          "code": "PROPOSAL_CANDIDATE_ONLY_NOT_CAUSAL"
+        },
+        {
+          "candidate_id": "ALT-PEER",
+          "candidate_replay_hash": "c1dbbd25c8ee16b10abf3b345eb6ec018ba8cd702cd2455afdc213fcbed42d24",
+          "decision": "ADMIT",
+          "code": "PROPOSAL_CANDIDATE_ONLY_NOT_CAUSAL"
+        }
+      ],
+      "eligible_entries": [
+        {
+          "candidate_id": "ALT-CARE",
+          "candidate_replay_hash": "70d4e86f49ec019a12c047ed3ed79209f70686dc8bec6ce5c7e3306d34126170",
+          "candidate_authority_id": "P1_CANDIDATE_ELIGIBILITY_TEST_ONLY@1.0.0",
+          "candidate_authority_version": "1.0.0",
+          "eligibility_or_admission_receipt_hash": "2c0ea744e420050e110a4825df7b55b10ae847e8eb8ffd1184480a70c29ec2c1"
+        },
+        {
+          "candidate_id": "ALT-CHILD-SEARCH",
+          "candidate_replay_hash": "1f28086a60008ce17ebf63228d8baec97709bf7a19cd26892f3a1516581e879c",
+          "candidate_authority_id": "P1_CANDIDATE_ELIGIBILITY_TEST_ONLY@1.0.0",
+          "candidate_authority_version": "1.0.0",
+          "eligibility_or_admission_receipt_hash": "b06e9bffd40c761f48845b0a61917b366be5901a04388f68113305b81e3e012a"
+        },
+        {
+          "candidate_id": "ALT-NONE",
+          "candidate_replay_hash": "f332932d989b535ba05eb8fc6596a8aa6d93960e39117a940b712a54a6790244",
+          "candidate_authority_id": "P1_CANDIDATE_ELIGIBILITY_TEST_ONLY@1.0.0",
+          "candidate_authority_version": "1.0.0",
+          "eligibility_or_admission_receipt_hash": "4dd1c63bd9b28a7087b42f8b449233dc9b4860af0007f6aa2872636cb5210676"
+        },
+        {
+          "candidate_id": "ALT-PEER",
+          "candidate_replay_hash": "c1dbbd25c8ee16b10abf3b345eb6ec018ba8cd702cd2455afdc213fcbed42d24",
+          "candidate_authority_id": "P1_CANDIDATE_ELIGIBILITY_TEST_ONLY@1.0.0",
+          "candidate_authority_version": "1.0.0",
+          "eligibility_or_admission_receipt_hash": "676d8eb938f1979cb6f1865f6d5f48d25eb2b7951aebc05874323f1a8ab6e437"
+        }
+      ],
+      "candidate_set_hash": "5c52f76fdde7eb499968dd1cb130d485437cea370213a6d5ebe85212c6567ed6",
+      "consumption": null,
+      "event_admission": "NOT_PERFORMED",
+      "evaluation_hash": "fc31058471491fb9a64ac61ce16428a60df96ed68efb89b43fdc5044170cf20b"
+    },
+    "selection": {
+      "decision": "ADMIT",
+      "code": "TEST_ONLY_SELECTED_NONCAUSAL_ALTERNATIVE",
+      "selected_candidate_id": "ALT-CARE",
+      "draw_consumed": false,
+      "rng_receipt": {
+        "algorithm": "ADP020_COMPATIBILITY_MOCK_TEST_ONLY",
+        "static_stream": "p1.test.causal.alternative",
+        "seed_source": "EXPLICIT_TEST_ONLY_SEED",
+        "seed_sha256": "9b68d49bb092f71292ad76ab8fb8750d710aae5af70e43b8ec0a901d048c0030",
+        "coordinate": 0,
+        "draw_consumed": false,
+        "draw": null,
+        "probability_grade": "PROVISIONAL_NOT_CALIBRATED",
+        "parameter_source": "AUTHORED_DESIGN_HYPOTHESIS_TEST_ONLY",
+        "weight_units": {
+          "ALT-CARE": 1,
+          "ALT-CHILD-SEARCH": 0,
+          "ALT-NONE": 0,
+          "ALT-PEER": 0
+        },
+        "total_weight_units": 1,
+        "policy_hash": "9135e191c2e16e7e5cc4627fdaefe43e6e8774b55be6c6e6d1f625ed2ae6c9b1",
+        "candidate_set_hash": "5c52f76fdde7eb499968dd1cb130d485437cea370213a6d5ebe85212c6567ed6"
+      },
+      "replay_identity": "f16b42f7caf056318096a8653d3ab201b19e26503153b7857dfbd6790433128c",
+      "consumption": {
+        "contract": "BFirstCandidateDecision_PROVISIONAL_P1",
+        "candidate_id": "ALT-CARE",
+        "event_admission": "NOT_PERFORMED",
+        "actor_response_rule_ref": null,
+        "recruited_source_refs": [],
+        "competing_influence_refs": [],
+        "response_effect_proposals": [],
+        "target_CAN011_update_proposals": [],
+        "probability_grade": "PROVISIONAL_NOT_CALIBRATED",
+        "model_proposal_provenance": "3abce576cd41b05f2cb6a824171c97d607a41281b04e4d946fbc036c2f631d8b",
+        "negatives": [],
+        "rng_receipt": {
+          "algorithm": "ADP020_COMPATIBILITY_MOCK_TEST_ONLY",
+          "static_stream": "p1.test.causal.alternative",
+          "seed_source": "EXPLICIT_TEST_ONLY_SEED",
+          "seed_sha256": "9b68d49bb092f71292ad76ab8fb8750d710aae5af70e43b8ec0a901d048c0030",
+          "coordinate": 0,
+          "draw_consumed": false,
+          "draw": null,
+          "probability_grade": "PROVISIONAL_NOT_CALIBRATED",
+          "parameter_source": "AUTHORED_DESIGN_HYPOTHESIS_TEST_ONLY",
+          "weight_units": {
+            "ALT-CARE": 1,
+            "ALT-CHILD-SEARCH": 0,
+            "ALT-NONE": 0,
+            "ALT-PEER": 0
+          },
+          "total_weight_units": 1,
+          "policy_hash": "9135e191c2e16e7e5cc4627fdaefe43e6e8774b55be6c6e6d1f625ed2ae6c9b1",
+          "candidate_set_hash": "5c52f76fdde7eb499968dd1cb130d485437cea370213a6d5ebe85212c6567ed6"
+        },
+        "no_world_or_actor_mutation": true
+      }
+    },
+    "before_hash": "d8ea29fab4df7f6fb40f42fade1f8544dc8b5a82bec4e3e5bba4ee6e5a14e567",
+    "status": "DEFERRED",
+    "event_admission": {
+      "rule": "B2_SYNTHETIC_WITNESSED_INGRESS@1",
+      "witness_ref": "2d250922e8381ad15ee618178619dd26f23454d424aa4fde4c7f58fe0f41d8be",
+      "event_ref": "9df10031c96bb73a398c2d6a06856e08bd558e11c26455a1d31e44e5f4f4ffde",
+      "proposal_ref": "3abce576cd41b05f2cb6a824171c97d607a41281b04e4d946fbc036c2f631d8b",
+      "selected_candidate_id": "ALT-CARE",
+      "status": "ADMITTED_SYNTHETIC_FIXTURE_ONLY",
+      "attributed_claims": [],
+      "objective_world_facts": {
+        "known_thief": null,
+        "group_criminality": "NOT_ESTABLISHED"
+      },
+      "hash": "f19f637656f9f55626f59c09c2d651e9f62a6ded23abd7ead6485317cf4d5218"
+    },
+    "b1_invoked": false,
+    "admitted_event": {
+      "actor_id": "child",
+      "admission_grade": "ADMITTED_SYNTHETIC_FIXTURE_ONLY",
+      "event_id": "bike-theft-1",
+      "hash": "9df10031c96bb73a398c2d6a06856e08bd558e11c26455a1d31e44e5f4f4ffde",
+      "interrupted": true,
+      "objective_occurrence": "stolen",
+      "offers": [],
+      "power_ref": "power:caretaker_controls_tools",
+      "project": "bike_security",
+      "provenance": "B1_AUTHORED_SOURCEFREE",
+      "relation_refs": [
+        "relation:child:caretaker"
+      ],
+      "time": 50,
+      "world_ref": "WORLD-BIKE-1"
+    },
+    "capability_decision": {
+      "decision": "REFUSED",
+      "code": "CAPABILITY_UNKNOWN",
+      "mutations": 0,
+      "source_sha256": "f1fcb0f753e4fbea034f6b78bf7b5fbef5b67d8be0ebabf503248571306a4c29",
+      "frozen_self_tests": 17
+    },
+    "reason": "CAPABILITY_UNKNOWN",
+    "after_hash": "d8ea29fab4df7f6fb40f42fade1f8544dc8b5a82bec4e3e5bba4ee6e5a14e567",
+    "hash": "5bbac16f0361d9c7435ae8b7ab7f315150f7f1236906462202b2f04f9140d9ea"
+  },
+  "CAN008_response": {
+    "rule": "B3_SITUATED_PRACTICAL_RESPONSE@1",
+    "rule_source_sha256": "d67ca51a84cb6125924c9fafd86a736682631e49f4e2cd7b7c1961e57bb9ecb1",
+    "event_ref": "9df10031c96bb73a398c2d6a06856e08bd558e11c26455a1d31e44e5f4f4ffde",
+    "conditioning_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "candidate_hashes": [
+      "eef4e69cb858e51c406315ceb0466f49d7f46fa9d5fcc42576290f63b17f3966",
+      "5bf95dc8c965d3b301e67b79c3f1aab5e84d35978c6c0641888f81b315a593fe",
+      "399db6b9ff9cbba2502d3541699b32cbe3a25a0d2efb794f7a01631200f2325f",
+      "5ed98957a42aa9b91acb73d12d2e8a36bbcb41f996081e9c0507a6c1a57da269"
+    ],
+    "recruited": [],
+    "uptake": [
+      {
+        "source": "U-CARE",
+        "epistemic": "HEARD_ATTRIBUTED_ONLY"
+      }
+    ],
+    "material_actor_activity": [
+      [
+        "caregiver",
+        "DECLINE_HELP",
+        "E-C-TOOLS"
+      ],
+      [
+        "caregiver",
+        "SHARED_TASK_CHOICE",
+        "E-PARENT-CHOICE"
+      ],
+      [
+        "child",
+        "BIKE_CARE",
+        "E-CHILD-BIKE"
+      ]
+    ],
+    "independent_offer_refs": [],
+    "admissible_routes": [
+      "NO_CHANGE",
+      "PRIVATE_PRACTICE"
+    ],
+    "practical_actions": [],
+    "selected_affect": null,
+    "selected_belief": null,
+    "current_consequence": "CURRENT_RESPONSE_CONSEQUENCES_VALID_EMPTY",
+    "actor_safe": {
+      "origin_explanation": "NOT_ACCESSIBLE",
+      "actions": []
+    },
+    "draws": 0,
+    "hash": "83fecff694d92f0396e50bfaa89644f454df890abe9f7c11a36df8c7afe26b49"
+  },
+  "CAN011_transition": {
+    "status": "VALID_EMPTY",
+    "code": "CAN011_QUALIFIED_EFFECT_RULE_OR_PERMISSION_MISSING",
+    "before": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "after": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+  },
+  "M2_temporal_traces": [
+    {
+      "clock": 50,
+      "event": "bike-theft-1",
+      "event_hash": "545b3b7dadf13a33a7d02b935821f23ad5437104dfda151fc33c1cc6a68b8e53",
+      "admitted_source_ref": "9df10031c96bb73a398c2d6a06856e08bd558e11c26455a1d31e44e5f4f4ffde",
+      "candidates": [
+        {
+          "id": "03fadac4a5227aabb038",
+          "actor": "child",
+          "event": "bike-theft-1",
+          "source": null,
+          "mode": "NO_CHANGE",
+          "stance": "SUSPEND",
+          "parent": null,
+          "rule_hash": "5e3d9e0faad371bfb13c2c7406cacf7cdcca8522f68f88eecabe72d8d8e187f2"
+        }
+      ],
+      "state_hash": "2fd78390af66e0ab6f5509ed3c6f1c4283732316eb6a1d22e8f42ddb41d24c34",
+      "actual_speech_ids": [],
+      "exposure_ids": []
+    },
+    {
+      "clock": 90,
+      "event": "process:90",
+      "event_hash": "6681b9038d519b910613d9791035bf62f0f080aa514fcc79655f09e3d1a4c581",
+      "admitted_source_ref": "9df10031c96bb73a398c2d6a06856e08bd558e11c26455a1d31e44e5f4f4ffde",
+      "candidates": [
+        {
+          "id": "c009702d07fd9364173d",
+          "actor": "child",
+          "event": "process:90",
+          "source": null,
+          "mode": "NO_CHANGE",
+          "stance": "SUSPEND",
+          "parent": null,
+          "rule_hash": "5e3d9e0faad371bfb13c2c7406cacf7cdcca8522f68f88eecabe72d8d8e187f2"
+        },
+        {
+          "id": "3566abeb9a4c3fbb5264",
+          "actor": "child",
+          "event": "process:90",
+          "source": "U-CARE",
+          "mode": "RECONSIDER",
+          "stance": "ACCEPT",
+          "parent": null,
+          "rule_hash": "5e3d9e0faad371bfb13c2c7406cacf7cdcca8522f68f88eecabe72d8d8e187f2"
+        },
+        {
+          "id": "30eb92710f34337d45c8",
+          "actor": "child",
+          "event": "process:90",
+          "source": "U-CARE",
+          "mode": "RECONSIDER",
+          "stance": "REJECT",
+          "parent": null,
+          "rule_hash": "5e3d9e0faad371bfb13c2c7406cacf7cdcca8522f68f88eecabe72d8d8e187f2"
+        },
+        {
+          "id": "733e2d7c21b91231c638",
+          "actor": "child",
+          "event": "process:90",
+          "source": "U-CARE",
+          "mode": "RECONSIDER",
+          "stance": "SUSPEND",
+          "parent": null,
+          "rule_hash": "5e3d9e0faad371bfb13c2c7406cacf7cdcca8522f68f88eecabe72d8d8e187f2"
+        }
+      ],
+      "state_hash": "2fd78390af66e0ab6f5509ed3c6f1c4283732316eb6a1d22e8f42ddb41d24c34",
+      "actual_speech_ids": [
+        "U-CARE",
+        "U-PEER"
+      ],
+      "exposure_ids": [
+        "U-CARE"
+      ]
+    }
+  ],
+  "source_admissions": [
+    {
+      "event_id": "E-C-SPEECH",
+      "event_hash": "1ffab322fced177118916b7e6dd607d7d9da26bf5f90de12df86c92c2f14368a",
+      "b2_receipt": {
+        "schema": "B2_VERTICAL_RECEIPT@1",
+        "rule": "B2_SYNTHETIC_WITNESSED_INGRESS@1",
+        "eligibility": {
+          "decision": "ADMIT",
+          "code": "P1_NONCAUSAL_ELIGIBILITY_COURT",
+          "proposal_id": "B2-PACKET-1",
+          "proposal_hash": "d7458fe3c773d0034b877ffb613b44583816e0b0fe7820b072bbb94adfcd1a39",
+          "context_hash": "275605158e64666ad6fdd604bc1cc8ea3282bafe9d683129f25ee35807aaf9c0",
+          "rule_ref": "P1_CANDIDATE_ELIGIBILITY_TEST_ONLY@1.0.0",
+          "rule_hash": "2a5814d3d867ca8a4c25138eaa0e2def57e70400245d9402bde96918d59f5c1e",
+          "candidates": [
+            {
+              "candidate_id": "ALT-CARE",
+              "candidate_replay_hash": "76834ae5d119a6a6efb60a603ec0efbef65ff682fea343b42d2b6dd41b86b383",
+              "decision": "ADMIT",
+              "code": "PROPOSAL_CANDIDATE_ONLY_NOT_CAUSAL"
+            },
+            {
+              "candidate_id": "ALT-CHILD-SEARCH",
+              "candidate_replay_hash": "d7690e703f1c3261f68e3ce27d5c072500d3acd7b2596d6665b21538d84b83d9",
+              "decision": "ADMIT",
+              "code": "PROPOSAL_CANDIDATE_ONLY_NOT_CAUSAL"
+            },
+            {
+              "candidate_id": "ALT-NONE",
+              "candidate_replay_hash": "70d8f5334e92b769285922c74e04321f0aa1809e09127b1458ab5abb18fd2830",
+              "decision": "ADMIT",
+              "code": "PROPOSAL_CANDIDATE_ONLY_NOT_CAUSAL"
+            },
+            {
+              "candidate_id": "ALT-PEER",
+              "candidate_replay_hash": "920826ce6910503953f56c66c907ee6c1ca0520d7e5c75f59f0e581ac76e27e6",
+              "decision": "ADMIT",
+              "code": "PROPOSAL_CANDIDATE_ONLY_NOT_CAUSAL"
+            }
+          ],
+          "eligible_entries": [
+            {
+              "candidate_id": "ALT-CARE",
+              "candidate_replay_hash": "76834ae5d119a6a6efb60a603ec0efbef65ff682fea343b42d2b6dd41b86b383",
+              "candidate_authority_id": "P1_CANDIDATE_ELIGIBILITY_TEST_ONLY@1.0.0",
+              "candidate_authority_version": "1.0.0",
+              "eligibility_or_admission_receipt_hash": "f1bac4f3abf0e06409acd0e4aab8107ada91a528ae22a45d9b26af691eea8b81"
+            },
+            {
+              "candidate_id": "ALT-CHILD-SEARCH",
+              "candidate_replay_hash": "d7690e703f1c3261f68e3ce27d5c072500d3acd7b2596d6665b21538d84b83d9",
+              "candidate_authority_id": "P1_CANDIDATE_ELIGIBILITY_TEST_ONLY@1.0.0",
+              "candidate_authority_version": "1.0.0",
+              "eligibility_or_admission_receipt_hash": "c3c6809334f3d5172aae46f6c59be1bf6fc6212ed7d6ad889125cdaf3c738950"
+            },
+            {
+              "candidate_id": "ALT-NONE",
+              "candidate_replay_hash": "70d8f5334e92b769285922c74e04321f0aa1809e09127b1458ab5abb18fd2830",
+              "candidate_authority_id": "P1_CANDIDATE_ELIGIBILITY_TEST_ONLY@1.0.0",
+              "candidate_authority_version": "1.0.0",
+              "eligibility_or_admission_receipt_hash": "9fd315f03044163af922d5432744fb45e5e3e5b02bc0ecce4bb34dda60afdff5"
+            },
+            {
+              "candidate_id": "ALT-PEER",
+              "candidate_replay_hash": "920826ce6910503953f56c66c907ee6c1ca0520d7e5c75f59f0e581ac76e27e6",
+              "candidate_authority_id": "P1_CANDIDATE_ELIGIBILITY_TEST_ONLY@1.0.0",
+              "candidate_authority_version": "1.0.0",
+              "eligibility_or_admission_receipt_hash": "ba3bc2e6856eca35d87a4356f1b6db5fda76ed3d6d61c75daa7880163edb8812"
+            }
+          ],
+          "candidate_set_hash": "4e411f421335a366b123c945cb03c5a4bf6d2e404e0ba0234bb4d544220986cd",
+          "consumption": null,
+          "event_admission": "NOT_PERFORMED",
+          "evaluation_hash": "6c373e96bd112ace97ff607d432d2e2d6cd70cf204a7a7fb279477ccfe8d09ba"
+        },
+        "selection": {
+          "decision": "ADMIT",
+          "code": "TEST_ONLY_SELECTED_NONCAUSAL_ALTERNATIVE",
+          "selected_candidate_id": "ALT-CARE",
+          "draw_consumed": false,
+          "rng_receipt": {
+            "algorithm": "ADP020_COMPATIBILITY_MOCK_TEST_ONLY",
+            "static_stream": "p1.test.causal.alternative",
+            "seed_source": "EXPLICIT_TEST_ONLY_SEED",
+            "seed_sha256": "9b68d49bb092f71292ad76ab8fb8750d710aae5af70e43b8ec0a901d048c0030",
+            "coordinate": 0,
+            "draw_consumed": false,
+            "draw": null,
+            "probability_grade": "PROVISIONAL_NOT_CALIBRATED",
+            "parameter_source": "AUTHORED_DESIGN_HYPOTHESIS_TEST_ONLY",
+            "weight_units": {
+              "ALT-CARE": 1,
+              "ALT-CHILD-SEARCH": 0,
+              "ALT-NONE": 0,
+              "ALT-PEER": 0
+            },
+            "total_weight_units": 1,
+            "policy_hash": "3900b79b0b5d9b805f28e97aca3bdc845d06c13ad59c3be2a8df8829efa194bc",
+            "candidate_set_hash": "4e411f421335a366b123c945cb03c5a4bf6d2e404e0ba0234bb4d544220986cd"
+          },
+          "replay_identity": "c83c5319b56c057fec25598e522d32051921f8d7242fc8e4e4238495c0f22c1f",
+          "consumption": {
+            "contract": "BFirstCandidateDecision_PROVISIONAL_P1",
+            "candidate_id": "ALT-CARE",
+            "event_admission": "NOT_PERFORMED",
+            "actor_response_rule_ref": null,
+            "recruited_source_refs": [],
+            "competing_influence_refs": [],
+            "response_effect_proposals": [],
+            "target_CAN011_update_proposals": [],
+            "probability_grade": "PROVISIONAL_NOT_CALIBRATED",
+            "model_proposal_provenance": "d7458fe3c773d0034b877ffb613b44583816e0b0fe7820b072bbb94adfcd1a39",
+            "negatives": [],
+            "rng_receipt": {
+              "algorithm": "ADP020_COMPATIBILITY_MOCK_TEST_ONLY",
+              "static_stream": "p1.test.causal.alternative",
+              "seed_source": "EXPLICIT_TEST_ONLY_SEED",
+              "seed_sha256": "9b68d49bb092f71292ad76ab8fb8750d710aae5af70e43b8ec0a901d048c0030",
+              "coordinate": 0,
+              "draw_consumed": false,
+              "draw": null,
+              "probability_grade": "PROVISIONAL_NOT_CALIBRATED",
+              "parameter_source": "AUTHORED_DESIGN_HYPOTHESIS_TEST_ONLY",
+              "weight_units": {
+                "ALT-CARE": 1,
+                "ALT-CHILD-SEARCH": 0,
+                "ALT-NONE": 0,
+                "ALT-PEER": 0
+              },
+              "total_weight_units": 1,
+              "policy_hash": "3900b79b0b5d9b805f28e97aca3bdc845d06c13ad59c3be2a8df8829efa194bc",
+              "candidate_set_hash": "4e411f421335a366b123c945cb03c5a4bf6d2e404e0ba0234bb4d544220986cd"
+            },
+            "no_world_or_actor_mutation": true
+          }
+        },
+        "before_hash": "d8ea29fab4df7f6fb40f42fade1f8544dc8b5a82bec4e3e5bba4ee6e5a14e567",
+        "status": "DEFERRED",
+        "event_admission": {
+          "rule": "B2_SYNTHETIC_WITNESSED_INGRESS@1",
+          "witness_ref": "7e4aecd2d033359dc610ea845facdc5cfda7cab900a2045375285f2f0b7e561e",
+          "event_ref": "2305712f1ae2e5ad12df1a1273e2e2de4ecf5d9434ca64c403c79ee9968cd831",
+          "proposal_ref": "d7458fe3c773d0034b877ffb613b44583816e0b0fe7820b072bbb94adfcd1a39",
+          "selected_candidate_id": "ALT-CARE",
+          "status": "ADMITTED_SYNTHETIC_FIXTURE_ONLY",
+          "attributed_claims": [],
+          "objective_world_facts": {
+            "known_thief": null,
+            "group_criminality": "NOT_ESTABLISHED"
+          },
+          "hash": "bea69e75bc1e97581e27e4ea4fa22d01a23aeea4621c313626a029b21690eaac"
+        },
+        "b1_invoked": false,
+        "admitted_event": {
+          "actor_id": "child",
+          "admission_grade": "ADMITTED_SYNTHETIC_FIXTURE_ONLY",
+          "event_id": "E-C-SPEECH",
+          "hash": "2305712f1ae2e5ad12df1a1273e2e2de4ecf5d9434ca64c403c79ee9968cd831",
+          "interrupted": false,
+          "objective_occurrence": "observed_action",
+          "offers": [],
+          "power_ref": "power:caretaker_controls_tools",
+          "project": "bike_security",
+          "provenance": "B1_AUTHORED_SOURCEFREE",
+          "relation_refs": [
+            "relation:child:caretaker"
+          ],
+          "time": 60,
+          "world_ref": "WORLD-BIKE-1"
+        },
+        "capability_decision": {
+          "decision": "REFUSED",
+          "code": "CAPABILITY_UNKNOWN",
+          "mutations": 0,
+          "source_sha256": "f1fcb0f753e4fbea034f6b78bf7b5fbef5b67d8be0ebabf503248571306a4c29",
+          "frozen_self_tests": 17
+        },
+        "reason": "CAPABILITY_UNKNOWN",
+        "after_hash": "d8ea29fab4df7f6fb40f42fade1f8544dc8b5a82bec4e3e5bba4ee6e5a14e567",
+        "hash": "9c1590eee778fafe9d19be7e190a53847269931c8b583a32410d883c2a240ccd"
+      }
+    },
+    {
+      "event_id": "exposure:heard:U-CARE",
+      "event_hash": "0c99857a2996dfe8b509e6f89594fe9901db74878cf4f8671f3c227f6a8dea36",
+      "b2_receipt": {
+        "schema": "B2_VERTICAL_RECEIPT@1",
+        "rule": "B2_SYNTHETIC_WITNESSED_INGRESS@1",
+        "eligibility": {
+          "decision": "ADMIT",
+          "code": "P1_NONCAUSAL_ELIGIBILITY_COURT",
+          "proposal_id": "B2-PACKET-1",
+          "proposal_hash": "d7458fe3c773d0034b877ffb613b44583816e0b0fe7820b072bbb94adfcd1a39",
+          "context_hash": "275605158e64666ad6fdd604bc1cc8ea3282bafe9d683129f25ee35807aaf9c0",
+          "rule_ref": "P1_CANDIDATE_ELIGIBILITY_TEST_ONLY@1.0.0",
+          "rule_hash": "2a5814d3d867ca8a4c25138eaa0e2def57e70400245d9402bde96918d59f5c1e",
+          "candidates": [
+            {
+              "candidate_id": "ALT-CARE",
+              "candidate_replay_hash": "76834ae5d119a6a6efb60a603ec0efbef65ff682fea343b42d2b6dd41b86b383",
+              "decision": "ADMIT",
+              "code": "PROPOSAL_CANDIDATE_ONLY_NOT_CAUSAL"
+            },
+            {
+              "candidate_id": "ALT-CHILD-SEARCH",
+              "candidate_replay_hash": "d7690e703f1c3261f68e3ce27d5c072500d3acd7b2596d6665b21538d84b83d9",
+              "decision": "ADMIT",
+              "code": "PROPOSAL_CANDIDATE_ONLY_NOT_CAUSAL"
+            },
+            {
+              "candidate_id": "ALT-NONE",
+              "candidate_replay_hash": "70d8f5334e92b769285922c74e04321f0aa1809e09127b1458ab5abb18fd2830",
+              "decision": "ADMIT",
+              "code": "PROPOSAL_CANDIDATE_ONLY_NOT_CAUSAL"
+            },
+            {
+              "candidate_id": "ALT-PEER",
+              "candidate_replay_hash": "920826ce6910503953f56c66c907ee6c1ca0520d7e5c75f59f0e581ac76e27e6",
+              "decision": "ADMIT",
+              "code": "PROPOSAL_CANDIDATE_ONLY_NOT_CAUSAL"
+            }
+          ],
+          "eligible_entries": [
+            {
+              "candidate_id": "ALT-CARE",
+              "candidate_replay_hash": "76834ae5d119a6a6efb60a603ec0efbef65ff682fea343b42d2b6dd41b86b383",
+              "candidate_authority_id": "P1_CANDIDATE_ELIGIBILITY_TEST_ONLY@1.0.0",
+              "candidate_authority_version": "1.0.0",
+              "eligibility_or_admission_receipt_hash": "f1bac4f3abf0e06409acd0e4aab8107ada91a528ae22a45d9b26af691eea8b81"
+            },
+            {
+              "candidate_id": "ALT-CHILD-SEARCH",
+              "candidate_replay_hash": "d7690e703f1c3261f68e3ce27d5c072500d3acd7b2596d6665b21538d84b83d9",
+              "candidate_authority_id": "P1_CANDIDATE_ELIGIBILITY_TEST_ONLY@1.0.0",
+              "candidate_authority_version": "1.0.0",
+              "eligibility_or_admission_receipt_hash": "c3c6809334f3d5172aae46f6c59be1bf6fc6212ed7d6ad889125cdaf3c738950"
+            },
+            {
+              "candidate_id": "ALT-NONE",
+              "candidate_replay_hash": "70d8f5334e92b769285922c74e04321f0aa1809e09127b1458ab5abb18fd2830",
+              "candidate_authority_id": "P1_CANDIDATE_ELIGIBILITY_TEST_ONLY@1.0.0",
+              "candidate_authority_version": "1.0.0",
+              "eligibility_or_admission_receipt_hash": "9fd315f03044163af922d5432744fb45e5e3e5b02bc0ecce4bb34dda60afdff5"
+            },
+            {
+              "candidate_id": "ALT-PEER",
+              "candidate_replay_hash": "920826ce6910503953f56c66c907ee6c1ca0520d7e5c75f59f0e581ac76e27e6",
+              "candidate_authority_id": "P1_CANDIDATE_ELIGIBILITY_TEST_ONLY@1.0.0",
+              "candidate_authority_version": "1.0.0",
+              "eligibility_or_admission_receipt_hash": "ba3bc2e6856eca35d87a4356f1b6db5fda76ed3d6d61c75daa7880163edb8812"
+            }
+          ],
+          "candidate_set_hash": "4e411f421335a366b123c945cb03c5a4bf6d2e404e0ba0234bb4d544220986cd",
+          "consumption": null,
+          "event_admission": "NOT_PERFORMED",
+          "evaluation_hash": "6c373e96bd112ace97ff607d432d2e2d6cd70cf204a7a7fb279477ccfe8d09ba"
+        },
+        "selection": {
+          "decision": "ADMIT",
+          "code": "TEST_ONLY_SELECTED_NONCAUSAL_ALTERNATIVE",
+          "selected_candidate_id": "ALT-CARE",
+          "draw_consumed": false,
+          "rng_receipt": {
+            "algorithm": "ADP020_COMPATIBILITY_MOCK_TEST_ONLY",
+            "static_stream": "p1.test.causal.alternative",
+            "seed_source": "EXPLICIT_TEST_ONLY_SEED",
+            "seed_sha256": "9b68d49bb092f71292ad76ab8fb8750d710aae5af70e43b8ec0a901d048c0030",
+            "coordinate": 0,
+            "draw_consumed": false,
+            "draw": null,
+            "probability_grade": "PROVISIONAL_NOT_CALIBRATED",
+            "parameter_source": "AUTHORED_DESIGN_HYPOTHESIS_TEST_ONLY",
+            "weight_units": {
+              "ALT-CARE": 1,
+              "ALT-CHILD-SEARCH": 0,
+              "ALT-NONE": 0,
+              "ALT-PEER": 0
+            },
+            "total_weight_units": 1,
+            "policy_hash": "3900b79b0b5d9b805f28e97aca3bdc845d06c13ad59c3be2a8df8829efa194bc",
+            "candidate_set_hash": "4e411f421335a366b123c945cb03c5a4bf6d2e404e0ba0234bb4d544220986cd"
+          },
+          "replay_identity": "c83c5319b56c057fec25598e522d32051921f8d7242fc8e4e4238495c0f22c1f",
+          "consumption": {
+            "contract": "BFirstCandidateDecision_PROVISIONAL_P1",
+            "candidate_id": "ALT-CARE",
+            "event_admission": "NOT_PERFORMED",
+            "actor_response_rule_ref": null,
+            "recruited_source_refs": [],
+            "competing_influence_refs": [],
+            "response_effect_proposals": [],
+            "target_CAN011_update_proposals": [],
+            "probability_grade": "PROVISIONAL_NOT_CALIBRATED",
+            "model_proposal_provenance": "d7458fe3c773d0034b877ffb613b44583816e0b0fe7820b072bbb94adfcd1a39",
+            "negatives": [],
+            "rng_receipt": {
+              "algorithm": "ADP020_COMPATIBILITY_MOCK_TEST_ONLY",
+              "static_stream": "p1.test.causal.alternative",
+              "seed_source": "EXPLICIT_TEST_ONLY_SEED",
+              "seed_sha256": "9b68d49bb092f71292ad76ab8fb8750d710aae5af70e43b8ec0a901d048c0030",
+              "coordinate": 0,
+              "draw_consumed": false,
+              "draw": null,
+              "probability_grade": "PROVISIONAL_NOT_CALIBRATED",
+              "parameter_source": "AUTHORED_DESIGN_HYPOTHESIS_TEST_ONLY",
+              "weight_units": {
+                "ALT-CARE": 1,
+                "ALT-CHILD-SEARCH": 0,
+                "ALT-NONE": 0,
+                "ALT-PEER": 0
+              },
+              "total_weight_units": 1,
+              "policy_hash": "3900b79b0b5d9b805f28e97aca3bdc845d06c13ad59c3be2a8df8829efa194bc",
+              "candidate_set_hash": "4e411f421335a366b123c945cb03c5a4bf6d2e404e0ba0234bb4d544220986cd"
+            },
+            "no_world_or_actor_mutation": true
+          }
+        },
+        "before_hash": "d8ea29fab4df7f6fb40f42fade1f8544dc8b5a82bec4e3e5bba4ee6e5a14e567",
+        "status": "DEFERRED",
+        "event_admission": {
+          "rule": "B2_SYNTHETIC_WITNESSED_INGRESS@1",
+          "witness_ref": "cc2480222ad048d16d7f8765dd0dc50cd9acb538c1078641283f918859a520d9",
+          "event_ref": "b5725048bd4cee8349b09e0f15d7143c71e7d9706e9b97a22e1e6b1a1ae0e033",
+          "proposal_ref": "d7458fe3c773d0034b877ffb613b44583816e0b0fe7820b072bbb94adfcd1a39",
+          "selected_candidate_id": "ALT-CARE",
+          "status": "ADMITTED_SYNTHETIC_FIXTURE_ONLY",
+          "attributed_claims": [],
+          "objective_world_facts": {
+            "known_thief": null,
+            "group_criminality": "NOT_ESTABLISHED"
+          },
+          "hash": "a0d4df21fa5fa167b7be0566be72f06a21e1ac81a3b0d4d2464549688a3e57a6"
+        },
+        "b1_invoked": false,
+        "admitted_event": {
+          "actor_id": "child",
+          "admission_grade": "ADMITTED_SYNTHETIC_FIXTURE_ONLY",
+          "event_id": "exposure:heard:U-CARE",
+          "hash": "b5725048bd4cee8349b09e0f15d7143c71e7d9706e9b97a22e1e6b1a1ae0e033",
+          "interrupted": false,
+          "objective_occurrence": "observed_action",
+          "offers": [],
+          "power_ref": "power:caretaker_controls_tools",
+          "project": "bike_security",
+          "provenance": "B1_AUTHORED_SOURCEFREE",
+          "relation_refs": [
+            "relation:child:caretaker"
+          ],
+          "time": 60,
+          "world_ref": "WORLD-BIKE-1"
+        },
+        "capability_decision": {
+          "decision": "REFUSED",
+          "code": "CAPABILITY_UNKNOWN",
+          "mutations": 0,
+          "source_sha256": "f1fcb0f753e4fbea034f6b78bf7b5fbef5b67d8be0ebabf503248571306a4c29",
+          "frozen_self_tests": 17
+        },
+        "reason": "CAPABILITY_UNKNOWN",
+        "after_hash": "d8ea29fab4df7f6fb40f42fade1f8544dc8b5a82bec4e3e5bba4ee6e5a14e567",
+        "hash": "f7250e43aaedb6885b9170e9b20905e36f55558c2659bc0e65f7282fe2356a81"
+      }
+    },
+    {
+      "event_id": "E-P-SPEECH",
+      "event_hash": "689326e651eca7d893cb7690129c39340e5c9e65b018e116e63ef0724efc9861",
+      "b2_receipt": {
+        "schema": "B2_VERTICAL_RECEIPT@1",
+        "rule": "B2_SYNTHETIC_WITNESSED_INGRESS@1",
+        "eligibility": {
+          "decision": "ADMIT",
+          "code": "P1_NONCAUSAL_ELIGIBILITY_COURT",
+          "proposal_id": "B2-PACKET-1",
+          "proposal_hash": "9b9588f9cb1b7e89c5cc3a9165dcb975ef8e82e3fb33c5622593fb4b29bf219a",
+          "context_hash": "339dbb8745ccf832a16568f33794873e45d119d8ec696e70913435e2841e7b72",
+          "rule_ref": "P1_CANDIDATE_ELIGIBILITY_TEST_ONLY@1.0.0",
+          "rule_hash": "2a5814d3d867ca8a4c25138eaa0e2def57e70400245d9402bde96918d59f5c1e",
+          "candidates": [
+            {
+              "candidate_id": "ALT-CARE",
+              "candidate_replay_hash": "276914cbbc39862f178125d5e084a499e9fd7e51d12c4ddc167b37bd4e43c4b9",
+              "decision": "ADMIT",
+              "code": "PROPOSAL_CANDIDATE_ONLY_NOT_CAUSAL"
+            },
+            {
+              "candidate_id": "ALT-CHILD-SEARCH",
+              "candidate_replay_hash": "b184e1a86567d6c737c01a7e214c76a197db6f222982c32e98eef5e3922b251b",
+              "decision": "ADMIT",
+              "code": "PROPOSAL_CANDIDATE_ONLY_NOT_CAUSAL"
+            },
+            {
+              "candidate_id": "ALT-NONE",
+              "candidate_replay_hash": "e781f172e026c3c94d4fa06305aab45d3da1ef5b8a5a9eb9cd14673c35be2c43",
+              "decision": "ADMIT",
+              "code": "PROPOSAL_CANDIDATE_ONLY_NOT_CAUSAL"
+            },
+            {
+              "candidate_id": "ALT-PEER",
+              "candidate_replay_hash": "3bc99d45eed2bfe4f80548ea139b6522ab62c098fd19cb4c797af6751ff1025a",
+              "decision": "ADMIT",
+              "code": "PROPOSAL_CANDIDATE_ONLY_NOT_CAUSAL"
+            }
+          ],
+          "eligible_entries": [
+            {
+              "candidate_id": "ALT-CARE",
+              "candidate_replay_hash": "276914cbbc39862f178125d5e084a499e9fd7e51d12c4ddc167b37bd4e43c4b9",
+              "candidate_authority_id": "P1_CANDIDATE_ELIGIBILITY_TEST_ONLY@1.0.0",
+              "candidate_authority_version": "1.0.0",
+              "eligibility_or_admission_receipt_hash": "58fa7760c815e3d8f56abc581eb8de3786999578985ae70baad4a638120a1230"
+            },
+            {
+              "candidate_id": "ALT-CHILD-SEARCH",
+              "candidate_replay_hash": "b184e1a86567d6c737c01a7e214c76a197db6f222982c32e98eef5e3922b251b",
+              "candidate_authority_id": "P1_CANDIDATE_ELIGIBILITY_TEST_ONLY@1.0.0",
+              "candidate_authority_version": "1.0.0",
+              "eligibility_or_admission_receipt_hash": "2b5b25d7927ae3e2aa4d5dacf49414068cd9cba017d0e941dea047a9d4514fad"
+            },
+            {
+              "candidate_id": "ALT-NONE",
+              "candidate_replay_hash": "e781f172e026c3c94d4fa06305aab45d3da1ef5b8a5a9eb9cd14673c35be2c43",
+              "candidate_authority_id": "P1_CANDIDATE_ELIGIBILITY_TEST_ONLY@1.0.0",
+              "candidate_authority_version": "1.0.0",
+              "eligibility_or_admission_receipt_hash": "5fe9681cb313a4d74567e72eaf8e403a38a37d768c21389dc3d6a1a60228f883"
+            },
+            {
+              "candidate_id": "ALT-PEER",
+              "candidate_replay_hash": "3bc99d45eed2bfe4f80548ea139b6522ab62c098fd19cb4c797af6751ff1025a",
+              "candidate_authority_id": "P1_CANDIDATE_ELIGIBILITY_TEST_ONLY@1.0.0",
+              "candidate_authority_version": "1.0.0",
+              "eligibility_or_admission_receipt_hash": "88fdfd91f5bad81a9aabd3a05fb2fad89d460ce5174d1460a9beb4ea93620bb8"
+            }
+          ],
+          "candidate_set_hash": "b205155f8584f5c853e5e0621fdb0745d1316be6d39d5552038696bf81ede8e0",
+          "consumption": null,
+          "event_admission": "NOT_PERFORMED",
+          "evaluation_hash": "aec7c79f3ae08b78c54ab5a579799e71566db6c3b134e883bd6c442a7b77a926"
+        },
+        "selection": {
+          "decision": "ADMIT",
+          "code": "TEST_ONLY_SELECTED_NONCAUSAL_ALTERNATIVE",
+          "selected_candidate_id": "ALT-CARE",
+          "draw_consumed": false,
+          "rng_receipt": {
+            "algorithm": "ADP020_COMPATIBILITY_MOCK_TEST_ONLY",
+            "static_stream": "p1.test.causal.alternative",
+            "seed_source": "EXPLICIT_TEST_ONLY_SEED",
+            "seed_sha256": "9b68d49bb092f71292ad76ab8fb8750d710aae5af70e43b8ec0a901d048c0030",
+            "coordinate": 0,
+            "draw_consumed": false,
+            "draw": null,
+            "probability_grade": "PROVISIONAL_NOT_CALIBRATED",
+            "parameter_source": "AUTHORED_DESIGN_HYPOTHESIS_TEST_ONLY",
+            "weight_units": {
+              "ALT-CARE": 1,
+              "ALT-CHILD-SEARCH": 0,
+              "ALT-NONE": 0,
+              "ALT-PEER": 0
+            },
+            "total_weight_units": 1,
+            "policy_hash": "bba33b2ba9f8073e561b09eaf13af12f42eb05ee46cd8bbc395217b4e7ffd1e5",
+            "candidate_set_hash": "b205155f8584f5c853e5e0621fdb0745d1316be6d39d5552038696bf81ede8e0"
+          },
+          "replay_identity": "acf7725ffdef708b9b8a52a13ab5bf0831afbc7743cddb6665b1e225c8a6f172",
+          "consumption": {
+            "contract": "BFirstCandidateDecision_PROVISIONAL_P1",
+            "candidate_id": "ALT-CARE",
+            "event_admission": "NOT_PERFORMED",
+            "actor_response_rule_ref": null,
+            "recruited_source_refs": [],
+            "competing_influence_refs": [],
+            "response_effect_proposals": [],
+            "target_CAN011_update_proposals": [],
+            "probability_grade": "PROVISIONAL_NOT_CALIBRATED",
+            "model_proposal_provenance": "9b9588f9cb1b7e89c5cc3a9165dcb975ef8e82e3fb33c5622593fb4b29bf219a",
+            "negatives": [],
+            "rng_receipt": {
+              "algorithm": "ADP020_COMPATIBILITY_MOCK_TEST_ONLY",
+              "static_stream": "p1.test.causal.alternative",
+              "seed_source": "EXPLICIT_TEST_ONLY_SEED",
+              "seed_sha256": "9b68d49bb092f71292ad76ab8fb8750d710aae5af70e43b8ec0a901d048c0030",
+              "coordinate": 0,
+              "draw_consumed": false,
+              "draw": null,
+              "probability_grade": "PROVISIONAL_NOT_CALIBRATED",
+              "parameter_source": "AUTHORED_DESIGN_HYPOTHESIS_TEST_ONLY",
+              "weight_units": {
+                "ALT-CARE": 1,
+                "ALT-CHILD-SEARCH": 0,
+                "ALT-NONE": 0,
+                "ALT-PEER": 0
+              },
+              "total_weight_units": 1,
+              "policy_hash": "bba33b2ba9f8073e561b09eaf13af12f42eb05ee46cd8bbc395217b4e7ffd1e5",
+              "candidate_set_hash": "b205155f8584f5c853e5e0621fdb0745d1316be6d39d5552038696bf81ede8e0"
+            },
+            "no_world_or_actor_mutation": true
+          }
+        },
+        "before_hash": "d8ea29fab4df7f6fb40f42fade1f8544dc8b5a82bec4e3e5bba4ee6e5a14e567",
+        "status": "DEFERRED",
+        "event_admission": {
+          "rule": "B2_SYNTHETIC_WITNESSED_INGRESS@1",
+          "witness_ref": "df49c12bb15391f11f281c312c9f88182b42ce8281aa2821b40be3002aebde53",
+          "event_ref": "461edfc45dbc33d876f4fb3612d0742bf21a9cf34e548cc0e310df4cbe7262c3",
+          "proposal_ref": "9b9588f9cb1b7e89c5cc3a9165dcb975ef8e82e3fb33c5622593fb4b29bf219a",
+          "selected_candidate_id": "ALT-CARE",
+          "status": "ADMITTED_SYNTHETIC_FIXTURE_ONLY",
+          "attributed_claims": [],
+          "objective_world_facts": {
+            "known_thief": null,
+            "group_criminality": "NOT_ESTABLISHED"
+          },
+          "hash": "41cc7f835051803af0db215f80b0f6a453128739d82bef632e6cf26a1cc37942"
+        },
+        "b1_invoked": false,
+        "admitted_event": {
+          "actor_id": "child",
+          "admission_grade": "ADMITTED_SYNTHETIC_FIXTURE_ONLY",
+          "event_id": "E-P-SPEECH",
+          "hash": "461edfc45dbc33d876f4fb3612d0742bf21a9cf34e548cc0e310df4cbe7262c3",
+          "interrupted": false,
+          "objective_occurrence": "observed_action",
+          "offers": [],
+          "power_ref": "power:caretaker_controls_tools",
+          "project": "bike_security",
+          "provenance": "B1_AUTHORED_SOURCEFREE",
+          "relation_refs": [
+            "relation:child:caretaker"
+          ],
+          "time": 62,
+          "world_ref": "WORLD-BIKE-1"
+        },
+        "capability_decision": {
+          "decision": "REFUSED",
+          "code": "CAPABILITY_UNKNOWN",
+          "mutations": 0,
+          "source_sha256": "f1fcb0f753e4fbea034f6b78bf7b5fbef5b67d8be0ebabf503248571306a4c29",
+          "frozen_self_tests": 17
+        },
+        "reason": "CAPABILITY_UNKNOWN",
+        "after_hash": "d8ea29fab4df7f6fb40f42fade1f8544dc8b5a82bec4e3e5bba4ee6e5a14e567",
+        "hash": "9f2be70f027418e9f50954a63b3f8e727b49ea6bc6ce0e41b432f8411b1bacdb"
+      }
+    },
+    {
+      "event_id": "process:90",
+      "event_hash": "6681b9038d519b910613d9791035bf62f0f080aa514fcc79655f09e3d1a4c581",
+      "b2_receipt": {
+        "schema": "B2_VERTICAL_RECEIPT@1",
+        "rule": "B2_SYNTHETIC_WITNESSED_INGRESS@1",
+        "eligibility": {
+          "decision": "ADMIT",
+          "code": "P1_NONCAUSAL_ELIGIBILITY_COURT",
+          "proposal_id": "B2-PACKET-1",
+          "proposal_hash": "14b002dbf72a16853f222e7a603e058a9c76533c02b437518d486f8da7aecbab",
+          "context_hash": "78c23ed6ac8c22a3f9269c3b2fa69d94a3351c06cbb9042b2801cd8b408227de",
+          "rule_ref": "P1_CANDIDATE_ELIGIBILITY_TEST_ONLY@1.0.0",
+          "rule_hash": "2a5814d3d867ca8a4c25138eaa0e2def57e70400245d9402bde96918d59f5c1e",
+          "candidates": [
+            {
+              "candidate_id": "ALT-CARE",
+              "candidate_replay_hash": "1aabefa91eb82ab67b1a6547ea669cf90ed7bdbe3e28f57863c05149487c9df5",
+              "decision": "ADMIT",
+              "code": "PROPOSAL_CANDIDATE_ONLY_NOT_CAUSAL"
+            },
+            {
+              "candidate_id": "ALT-CHILD-SEARCH",
+              "candidate_replay_hash": "e4b2117fa8eef5e307b50d146743b55c6f1928ed8e659618abc5576ce50ae4c2",
+              "decision": "ADMIT",
+              "code": "PROPOSAL_CANDIDATE_ONLY_NOT_CAUSAL"
+            },
+            {
+              "candidate_id": "ALT-NONE",
+              "candidate_replay_hash": "9267258e8ae5a9ea43d2c3da193f9d584ba901a7c7dfdda908b3f5c7867083a2",
+              "decision": "ADMIT",
+              "code": "PROPOSAL_CANDIDATE_ONLY_NOT_CAUSAL"
+            },
+            {
+              "candidate_id": "ALT-PEER",
+              "candidate_replay_hash": "f24ca804c4ea411803cbd1ce9b97cea802bb7ed9f5cce352723e81fafa7c2ceb",
+              "decision": "ADMIT",
+              "code": "PROPOSAL_CANDIDATE_ONLY_NOT_CAUSAL"
+            }
+          ],
+          "eligible_entries": [
+            {
+              "candidate_id": "ALT-CARE",
+              "candidate_replay_hash": "1aabefa91eb82ab67b1a6547ea669cf90ed7bdbe3e28f57863c05149487c9df5",
+              "candidate_authority_id": "P1_CANDIDATE_ELIGIBILITY_TEST_ONLY@1.0.0",
+              "candidate_authority_version": "1.0.0",
+              "eligibility_or_admission_receipt_hash": "f7f4a04b8905c13c051d4e71fe2beed235c881b08cd68186a885f9eb792fba9f"
+            },
+            {
+              "candidate_id": "ALT-CHILD-SEARCH",
+              "candidate_replay_hash": "e4b2117fa8eef5e307b50d146743b55c6f1928ed8e659618abc5576ce50ae4c2",
+              "candidate_authority_id": "P1_CANDIDATE_ELIGIBILITY_TEST_ONLY@1.0.0",
+              "candidate_authority_version": "1.0.0",
+              "eligibility_or_admission_receipt_hash": "ffdb71f4a967843496fc40d87052d27b749955687db95ff6f7408eca6b41b944"
+            },
+            {
+              "candidate_id": "ALT-NONE",
+              "candidate_replay_hash": "9267258e8ae5a9ea43d2c3da193f9d584ba901a7c7dfdda908b3f5c7867083a2",
+              "candidate_authority_id": "P1_CANDIDATE_ELIGIBILITY_TEST_ONLY@1.0.0",
+              "candidate_authority_version": "1.0.0",
+              "eligibility_or_admission_receipt_hash": "bd7661dace1c753cc051bbc0e9057d411aad35bb7d24f59e1f821da09e9f18f1"
+            },
+            {
+              "candidate_id": "ALT-PEER",
+              "candidate_replay_hash": "f24ca804c4ea411803cbd1ce9b97cea802bb7ed9f5cce352723e81fafa7c2ceb",
+              "candidate_authority_id": "P1_CANDIDATE_ELIGIBILITY_TEST_ONLY@1.0.0",
+              "candidate_authority_version": "1.0.0",
+              "eligibility_or_admission_receipt_hash": "e50001d3016531c96992017551fe65cb4ca56adec741d34222494ce986d30ecc"
+            }
+          ],
+          "candidate_set_hash": "b3263f29302693060307ac6b7664faca043b417f47710cc1a303ebacecb4e28f",
+          "consumption": null,
+          "event_admission": "NOT_PERFORMED",
+          "evaluation_hash": "1856fdf224c8b6eedefce36ffdd423299e0133571bc83c00686afec23687003c"
+        },
+        "selection": {
+          "decision": "ADMIT",
+          "code": "TEST_ONLY_SELECTED_NONCAUSAL_ALTERNATIVE",
+          "selected_candidate_id": "ALT-CARE",
+          "draw_consumed": false,
+          "rng_receipt": {
+            "algorithm": "ADP020_COMPATIBILITY_MOCK_TEST_ONLY",
+            "static_stream": "p1.test.causal.alternative",
+            "seed_source": "EXPLICIT_TEST_ONLY_SEED",
+            "seed_sha256": "9b68d49bb092f71292ad76ab8fb8750d710aae5af70e43b8ec0a901d048c0030",
+            "coordinate": 0,
+            "draw_consumed": false,
+            "draw": null,
+            "probability_grade": "PROVISIONAL_NOT_CALIBRATED",
+            "parameter_source": "AUTHORED_DESIGN_HYPOTHESIS_TEST_ONLY",
+            "weight_units": {
+              "ALT-CARE": 1,
+              "ALT-CHILD-SEARCH": 0,
+              "ALT-NONE": 0,
+              "ALT-PEER": 0
+            },
+            "total_weight_units": 1,
+            "policy_hash": "2ca0bff4939222287e13ae01efd99a01b1cc270e5b277c95b770c2aab9b25a7c",
+            "candidate_set_hash": "b3263f29302693060307ac6b7664faca043b417f47710cc1a303ebacecb4e28f"
+          },
+          "replay_identity": "9bbfffaac78c4e1b7ddd93d1bfb0ed6e6767ddf6695021fcd16b89d7f0eda61e",
+          "consumption": {
+            "contract": "BFirstCandidateDecision_PROVISIONAL_P1",
+            "candidate_id": "ALT-CARE",
+            "event_admission": "NOT_PERFORMED",
+            "actor_response_rule_ref": null,
+            "recruited_source_refs": [],
+            "competing_influence_refs": [],
+            "response_effect_proposals": [],
+            "target_CAN011_update_proposals": [],
+            "probability_grade": "PROVISIONAL_NOT_CALIBRATED",
+            "model_proposal_provenance": "14b002dbf72a16853f222e7a603e058a9c76533c02b437518d486f8da7aecbab",
+            "negatives": [],
+            "rng_receipt": {
+              "algorithm": "ADP020_COMPATIBILITY_MOCK_TEST_ONLY",
+              "static_stream": "p1.test.causal.alternative",
+              "seed_source": "EXPLICIT_TEST_ONLY_SEED",
+              "seed_sha256": "9b68d49bb092f71292ad76ab8fb8750d710aae5af70e43b8ec0a901d048c0030",
+              "coordinate": 0,
+              "draw_consumed": false,
+              "draw": null,
+              "probability_grade": "PROVISIONAL_NOT_CALIBRATED",
+              "parameter_source": "AUTHORED_DESIGN_HYPOTHESIS_TEST_ONLY",
+              "weight_units": {
+                "ALT-CARE": 1,
+                "ALT-CHILD-SEARCH": 0,
+                "ALT-NONE": 0,
+                "ALT-PEER": 0
+              },
+              "total_weight_units": 1,
+              "policy_hash": "2ca0bff4939222287e13ae01efd99a01b1cc270e5b277c95b770c2aab9b25a7c",
+              "candidate_set_hash": "b3263f29302693060307ac6b7664faca043b417f47710cc1a303ebacecb4e28f"
+            },
+            "no_world_or_actor_mutation": true
+          }
+        },
+        "before_hash": "d8ea29fab4df7f6fb40f42fade1f8544dc8b5a82bec4e3e5bba4ee6e5a14e567",
+        "status": "DEFERRED",
+        "event_admission": {
+          "rule": "B2_SYNTHETIC_WITNESSED_INGRESS@1",
+          "witness_ref": "b14b5e1215c809974177667d0a037634c8eebb458d5e67ea65f7b9a86eafc240",
+          "event_ref": "1b55a47ab53d61c4dd848648fefc507e4ed5c1d2b9269fe60e89375cb090bebd",
+          "proposal_ref": "14b002dbf72a16853f222e7a603e058a9c76533c02b437518d486f8da7aecbab",
+          "selected_candidate_id": "ALT-CARE",
+          "status": "ADMITTED_SYNTHETIC_FIXTURE_ONLY",
+          "attributed_claims": [],
+          "objective_world_facts": {
+            "known_thief": null,
+            "group_criminality": "NOT_ESTABLISHED"
+          },
+          "hash": "d0081600f1318ae09a7a2bf53c0dac9b170efd0106bda2fab5fc8b3bbdcf1667"
+        },
+        "b1_invoked": false,
+        "admitted_event": {
+          "actor_id": "child",
+          "admission_grade": "ADMITTED_SYNTHETIC_FIXTURE_ONLY",
+          "event_id": "process:90",
+          "hash": "1b55a47ab53d61c4dd848648fefc507e4ed5c1d2b9269fe60e89375cb090bebd",
+          "interrupted": false,
+          "objective_occurrence": "observed_process",
+          "offers": [],
+          "power_ref": "power:caretaker_controls_tools",
+          "project": "bike_security",
+          "provenance": "B1_AUTHORED_SOURCEFREE",
+          "relation_refs": [
+            "relation:child:caretaker"
+          ],
+          "time": 90,
+          "world_ref": "WORLD-BIKE-1"
+        },
+        "capability_decision": {
+          "decision": "REFUSED",
+          "code": "CAPABILITY_UNKNOWN",
+          "mutations": 0,
+          "source_sha256": "f1fcb0f753e4fbea034f6b78bf7b5fbef5b67d8be0ebabf503248571306a4c29",
+          "frozen_self_tests": 17
+        },
+        "reason": "CAPABILITY_UNKNOWN",
+        "after_hash": "d8ea29fab4df7f6fb40f42fade1f8544dc8b5a82bec4e3e5bba4ee6e5a14e567",
+        "hash": "04123e9467dd6439a7bf7fb7fa8a854cca75109d94b14ba03523b914aeaff3f6"
+      }
+    }
+  ],
+  "ADP016_memory": "NOT_GRANTED",
+  "ADP017_access": "HEARING_ONLY_NO_EPISTEMIC_WRITE",
+  "observed_belief_records": [],
+  "observed_affect_records": [],
+  "retained_practice": [],
+  "immutable_history": {
+    "source": {
+      "admitted": true,
+      "content": {
+        "fact": "stolen",
+        "known_culprit": null,
+        "object": "bike-child",
+        "place": "garage"
+      },
+      "content_hash": "7343ad0dceff4df24d51adf9c45d4e76da970ad1b712ef42bd0097811d3df2c5",
+      "id": "bike-theft-1",
+      "owner": "TEST_WORLD_REGISTRY",
+      "time": 50
+    },
+    "b2_occurrence": "9df10031c96bb73a398c2d6a06856e08bd558e11c26455a1d31e44e5f4f4ffde",
+    "m2_projection": "545b3b7dadf13a33a7d02b935821f23ad5437104dfda151fc33c1cc6a68b8e53"
+  },
+  "accumulated_history_refs": [
+    "d1c48658d5e26ac8740650c9a6c6ab258bb6b7400a766b0ffb1ccd559b4d5402"
+  ],
+  "later_meaning_effect": "DEFERRED_M2_DURABLE_LINEAGE_QUARANTINED_M3_P0",
+  "interpretation_lineage": [],
+  "lineage_grade": "INPUT_CANDIDATE_NOT_CAUSAL_STATE",
+  "no_mutation": false
+}

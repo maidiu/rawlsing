@@ -1,0 +1,43 @@
+F..................F                                                     [100%]
+=================================== FAILURES ===================================
+______________________ test_schema_only_race_is_rejected _______________________
+
+tmp_path = PosixPath('<TEMP>')
+
+    def test_schema_only_race_is_rejected(tmp_path):
+     f,a,e,path=setup(tmp_path);before=cold(path);fired=[]
+     def fault(stage):
+      if stage=='after_target_effect_before_commit':
+       with sqlite3.connect(path) as other:other.execute('CREATE INDEX i2_external_index ON b3_source(body)')
+       fired.append(stage)
+     e.fault=fault;r=e.run(f);after=cold(path);e.close();save('schema_only_race',before=before,result=r,after=after,fired=fired)
+     assert fired and before['schema']!=after['schema']
+>    assert r['status']=='REFUSED','schema-only concurrent mutation escaped claimed full publication readset'
+E    AssertionError: schema-only concurrent mutation escaped claimed full publication readset
+E    assert 'ELIGIBLE_NONCAUSAL' == 'REFUSED'
+E      
+E      - REFUSED
+E      + ELIGIBLE_NONCAUSAL
+
+test_reviewer_hostiles.py:40: AssertionError
+_____________ test_schema_change_on_refusal_sets_no_mutation_false _____________
+
+tmp_path = PosixPath('<TEMP>')
+
+    def test_schema_change_on_refusal_sets_no_mutation_false(tmp_path):
+     f,a,e,path=setup(tmp_path);before=cold(path)
+     def fault(stage):
+      if stage=='after_target_effect_before_commit':
+       with sqlite3.connect(path) as db:db.execute('CREATE INDEX i2_refused_schema ON b3_source(body)')
+       raise Refusal('I2_REFUSAL_WITH_EXTERNAL_SCHEMA_CHANGE')
+     e.fault=fault;r=e.run(f);after=cold(path);e.close();save('schema_refusal_flag',before=before,result=r,after=after)
+     assert r['status']=='REFUSED' and after['tables']==before['tables'] and after['schema']!=before['schema']
+>    assert r['no_mutation'] is False,'schema mutation incorrectly reported as no public mutation'
+E    AssertionError: schema mutation incorrectly reported as no public mutation
+E    assert True is False
+
+test_reviewer_hostiles.py:113: AssertionError
+=========================== short test summary info ============================
+FAILED test_reviewer_hostiles.py::test_schema_only_race_is_rejected - Asserti...
+FAILED test_reviewer_hostiles.py::test_schema_change_on_refusal_sets_no_mutation_false
+2 failed, 18 passed in 23.46s

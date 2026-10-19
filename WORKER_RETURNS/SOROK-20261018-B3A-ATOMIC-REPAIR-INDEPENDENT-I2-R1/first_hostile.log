@@ -1,0 +1,25 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+______________________ test_schema_only_race_is_rejected _______________________
+
+tmp_path = PosixPath('<TEMP>')
+
+    def test_schema_only_race_is_rejected(tmp_path):
+     f,a,e,path=setup(tmp_path);before=cold(path);fired=[]
+     def fault(stage):
+      if stage=='after_target_effect_before_commit':
+       with sqlite3.connect(path) as other:other.execute('CREATE INDEX i2_external_index ON b3_source(body)')
+       fired.append(stage)
+     e.fault=fault;r=e.run(f);after=cold(path);e.close();save('schema_only_race',before=before,result=r,after=after,fired=fired)
+     assert fired and before['schema']!=after['schema']
+>    assert r['status']=='REFUSED','schema-only concurrent mutation escaped claimed full publication readset'
+E    AssertionError: schema-only concurrent mutation escaped claimed full publication readset
+E    assert 'ELIGIBLE_NONCAUSAL' == 'REFUSED'
+E      
+E      - REFUSED
+E      + ELIGIBLE_NONCAUSAL
+
+WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/test_reviewer_hostiles.py:40: AssertionError
+=========================== short test summary info ============================
+FAILED WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/test_reviewer_hostiles.py::test_schema_only_race_is_rejected
+1 failed in 1.10s

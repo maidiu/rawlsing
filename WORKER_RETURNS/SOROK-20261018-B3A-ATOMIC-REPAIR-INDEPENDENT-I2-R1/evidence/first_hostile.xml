@@ -1,0 +1,18 @@
+<testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="1.074" timestamp="2026-10-18T20:03:55.483059-04:00" hostname="local-host"><testcase classname="WORKER_RETURNS.SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1.test_reviewer_hostiles" name="test_schema_only_race_is_rejected" time="0.927"><failure message="AssertionError: schema-only concurrent mutation escaped claimed full publication readset&#10;assert 'ELIGIBLE_NONCAUSAL' == 'REFUSED'&#10;  &#10;  - REFUSED&#10;  + ELIGIBLE_NONCAUSAL">tmp_path = PosixPath('&lt;TEMP&gt;')
+
+    def test_schema_only_race_is_rejected(tmp_path):
+     f,a,e,path=setup(tmp_path);before=cold(path);fired=[]
+     def fault(stage):
+      if stage=='after_target_effect_before_commit':
+       with sqlite3.connect(path) as other:other.execute('CREATE INDEX i2_external_index ON b3_source(body)')
+       fired.append(stage)
+     e.fault=fault;r=e.run(f);after=cold(path);e.close();save('schema_only_race',before=before,result=r,after=after,fired=fired)
+     assert fired and before['schema']!=after['schema']
+&gt;    assert r['status']=='REFUSED','schema-only concurrent mutation escaped claimed full publication readset'
+E    AssertionError: schema-only concurrent mutation escaped claimed full publication readset
+E    assert 'ELIGIBLE_NONCAUSAL' == 'REFUSED'
+E      
+E      - REFUSED
+E      + ELIGIBLE_NONCAUSAL
+
+WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/test_reviewer_hostiles.py:40: AssertionError</failure></testcase></testsuite></testsuites>

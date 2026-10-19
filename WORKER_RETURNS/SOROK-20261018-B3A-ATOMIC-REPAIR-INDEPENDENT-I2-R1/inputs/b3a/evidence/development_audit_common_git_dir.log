@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "<WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3-X3-ATOMIC-ADMISSION-REPAIR-R1/audit_return.py", line 108, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "<WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3-X3-ATOMIC-ADMISSION-REPAIR-R1/audit_return.py", line 18, in main
+    assert git('branch','--show-current').decode().strip()=='agent/rabochii-sorok-20261018-b3-x3-atomic-admission-repair-r1'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

@@ -1,0 +1,143 @@
+[
+  {
+    "label": "b2_330",
+    "command": [
+      "/usr/local/bin/python3",
+      "run_courts.py"
+    ],
+    "cwd": "<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/.scratch/b3a/frozen_b3/.runtime/b2",
+    "exit": 0,
+    "expected": 0
+  },
+  {
+    "label": "r1_45",
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/.scratch/b3a/frozen_b3/.runtime/tests_after/R1/test_identity.py",
+      "--junitxml=<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/.scratch/b3a/frozen_b3/evidence/inherited/r1_45.xml"
+    ],
+    "cwd": "<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/.scratch/b3a/frozen_b3/.runtime/b2",
+    "exit": 0,
+    "expected": 0
+  },
+  {
+    "label": "repair_5",
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/.scratch/b3a/frozen_b3/.runtime/repair/test_regression.py",
+      "--junitxml=<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/.scratch/b3a/frozen_b3/evidence/inherited/repair_5.xml"
+    ],
+    "cwd": "<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/.scratch/b3a/frozen_b3/.runtime/b2",
+    "exit": 0,
+    "expected": 0
+  },
+  {
+    "label": "e2_full",
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/.scratch/b3a/frozen_b3/.runtime/tests_after/E2/test_e2.py",
+      "--junitxml=<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/.scratch/b3a/frozen_b3/evidence/inherited/e2_full.xml"
+    ],
+    "cwd": "<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/.scratch/b3a/frozen_b3/.runtime/b2",
+    "exit": 1,
+    "expected": 1
+  },
+  {
+    "label": "e2_strict",
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/.scratch/b3a/frozen_b3/.runtime/tests_after/E2/test_e2.py",
+      "-k",
+      "legacy_after_mapping_must_fail_closed_at_b2_reentry",
+      "--junitxml=<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/.scratch/b3a/frozen_b3/evidence/inherited/e2_strict.xml"
+    ],
+    "cwd": "<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/.scratch/b3a/frozen_b3/.runtime/b2",
+    "exit": 0,
+    "expected": 0
+  },
+  {
+    "label": "x2",
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/.scratch/b3a/frozen_b3/.runtime/tests_after/R1/frozen/test_hostile_x2.py",
+      "--junitxml=<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/.scratch/b3a/frozen_b3/evidence/inherited/x2.xml"
+    ],
+    "cwd": "<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/.scratch/b3a/frozen_b3/.runtime/b2",
+    "exit": 1,
+    "expected": 1
+  },
+  {
+    "label": "m2_41",
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "test_m2.py",
+      "--junitxml=<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/.scratch/b3a/frozen_b3/evidence/inherited/m2_41.xml"
+    ],
+    "cwd": "<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/.scratch/b3a/frozen_b3/.runtime/m2",
+    "exit": 0,
+    "expected": 0
+  },
+  {
+    "label": "m1_37_on_m2",
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/.scratch/b3a/frozen_b3/.runtime/m1_original/test_kernel.py",
+      "--import-mode=importlib",
+      "--junitxml=<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/.scratch/b3a/frozen_b3/evidence/inherited/m1_37_on_m2.xml"
+    ],
+    "cwd": "<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/.scratch/b3a/frozen_b3/.runtime/m2",
+    "exit": 1,
+    "expected": 1
+  },
+  {
+    "label": "i2_23_on_m2",
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/.scratch/b3a/frozen_b3/.runtime/i2_strict/test_i2_strict.py",
+      "--import-mode=importlib",
+      "--junitxml=<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/.scratch/b3a/frozen_b3/evidence/inherited/i2_23_on_m2.xml"
+    ],
+    "cwd": "<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/.scratch/b3a/frozen_b3/.runtime/m2",
+    "exit": 1,
+    "expected": 1
+  },
+  {
+    "label": "m3_source_preimage_3_red",
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/.scratch/b3a/frozen_b3/.runtime/m3/05_SOURCE_PREIMAGE_RED_REPRODUCER.py",
+      "--import-mode=importlib",
+      "--junitxml=<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/.scratch/b3a/frozen_b3/evidence/inherited/m3_source_preimage_3_red.xml"
+    ],
+    "cwd": "<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/.scratch/b3a/frozen_b3/.runtime/m2",
+    "exit": 1,
+    "expected": 1
+  }
+]

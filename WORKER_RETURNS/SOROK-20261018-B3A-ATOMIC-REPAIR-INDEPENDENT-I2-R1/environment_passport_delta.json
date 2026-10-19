@@ -1,0 +1,68 @@
+{
+  "passport_schema": "SOROK_WARM_ENVIRONMENT_PASSPORT_R1",
+  "environment_id": "1bfe57b8-c524-445b-a0df-eea0202de8b8",
+  "epoch_id": "38291385-b2e0-4c9a-af24-9c61927f043f",
+  "owner_session_alias": "B3A_I2_REVIEWER",
+  "surface": "LOCAL_SHARED_STORE",
+  "machine_alias": "AUTHORIZED_LOCAL",
+  "conversation_or_account_affinity": "CURRENT_REVIEWER_CHAT",
+  "status": "LIVE_VERIFIED",
+  "last_live_probe_at": "2026-10-19T00:13:06.935947+00:00",
+  "runtime_marker_digest": "95e9ef32d9a713af0aa25185d1dda2f4fe9db5aed1ab43fc971c77b0d2e0ec3b",
+  "probe_command_and_result": {
+    "python": "3.11.3",
+    "pytest": "9.1.1",
+    "sqlite": "3.40.1",
+    "git": "git version 2.39.1",
+    "node": "v18.14.2",
+    "source_check": "228 Git/archive preimages PASS",
+    "actual_imports": "11 modules hash-verified"
+  },
+  "capabilities": {
+    "python": "VERIFIED",
+    "pytest": "VERIFIED",
+    "sqlite": "VERIFIED",
+    "git": "VERIFIED",
+    "node": "VERIFIED",
+    "filesystem": "VERIFIED",
+    "subprocess": "VERIFIED",
+    "SIGKILL": "VERIFIED"
+  },
+  "git_object_store_alias": "EXISTING_SHARED_STORE",
+  "worktree_alias": "NEW_B3AI2_SPARSE_REVIEW",
+  "branch": "agent/reviewer-sorok-20261018-b3a-atomic-repair-independent-i2-r1",
+  "exact_checkout_base": "87325cc7914dbbd77499f33190111589d5ed6d7c",
+  "clean_dirty_state": "AUTHORIZED_RETURN_ONLY",
+  "materialized_source_refs": "evidence/source_verification.json",
+  "verified_imports": "evidence/loaded_modules.json",
+  "dependency_closure_status": "BOUNDED",
+  "fixture_query_source_permission": "SEALED_SOURCEFREE_ONLY",
+  "science_grade": "INDEPENDENT_SOURCEFREE_TRANSACTION_REVIEW_NOT_ADOPTION",
+  "covered_test_suites": "evidence/suite_results.json",
+  "model_provider": "EXISTING_LOCAL_CODEX_NO_SWITCH",
+  "model_effort_observed": {
+    "model": "gpt-6.1-sol",
+    "effort": "high",
+    "observed_at": "2026-10-19T00:01:37.960Z"
+  },
+  "pricing_class": "UNKNOWN",
+  "cash_known": "UNKNOWN",
+  "quota_known": "UNKNOWN",
+  "context_cache_reuse": "UNKNOWN",
+  "estimated_total_evidence_cost": "UNKNOWN",
+  "observed_usage": null,
+  "expected_slot_reset": null,
+  "independent_review_separation": "Reviewer did not author B3/B3A/X3; prior CLR author and reference reader. New isolated worktree, source reconstruction and scratch DBs. Provider/account separation not independently attested.",
+  "privacy_source_grant": "NO_RAW_SURVEY_NO_EXTERNAL_MODEL_CALL",
+  "assignments_completed": [
+    "B3A_I2_INDEPENDENT_SOURCEFREE_COURT"
+  ],
+  "next_good_affinity_tags": [
+    "ATOMICITY",
+    "SQLITE",
+    "B3_SOURCE_CUSTODY"
+  ],
+  "staged_state_preservation": "LOCAL_SCRATCH_RECHECK_REQUIRED",
+  "retire_or_rebuild_reason": null,
+  "review_verdict": "REVISE_SCHEMA_CONTRACT"
+}

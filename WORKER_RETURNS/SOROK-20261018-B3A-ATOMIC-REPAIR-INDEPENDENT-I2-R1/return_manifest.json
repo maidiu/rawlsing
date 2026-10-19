@@ -1,0 +1,174 @@
+{
+  "schema_id": "RABOCHII_RETURN_MANIFEST@1.0.0",
+  "task_id": "SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1",
+  "branch": "agent/reviewer-sorok-20261018-b3a-atomic-repair-independent-i2-r1",
+  "commission": {
+    "authority_ref": "87325cc7914dbbd77499f33190111589d5ed6d7c",
+    "exact_start_sha": "87325cc7914dbbd77499f33190111589d5ed6d7c",
+    "path": "WORKER_COMMISSIONS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/00_COMMISSION.md"
+  },
+  "return": {
+    "result": "FAIL",
+    "qualification_verdict": "REVISE",
+    "terminal": "SOROK_B3A_I2_ATOMICITY_COURT_R1__RETURN_TO_HQ",
+    "phase": "CLOSURE_ONLY",
+    "completion": {
+      "commission_consumed": true,
+      "all_required_outputs_durable": true,
+      "no_required_work_remaining": true,
+      "no_background_work_remaining": true,
+      "return_packet_durable": true,
+      "terminal_state_entered": true
+    }
+  },
+  "separation": {
+    "performed_only_commissioned_role": true,
+    "no_uncommissioned_repair": true,
+    "no_uncommissioned_review": true
+  },
+  "return_packet": {
+    "path": "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/00_RETURN.md",
+    "blob_sha": "d5e9c238f032c749b9818be5d482f7dddd5c6eb7"
+  },
+  "required_outputs": [
+    {
+      "name": "00_RETURN.md",
+      "kind": "path",
+      "path": "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/00_RETURN.md",
+      "blob_sha": "d5e9c238f032c749b9818be5d482f7dddd5c6eb7",
+      "status": "DURABLE"
+    },
+    {
+      "name": "02_REQUIREMENTS_AND_LIMITATIONS.md",
+      "kind": "path",
+      "path": "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/02_REQUIREMENTS_AND_LIMITATIONS.md",
+      "blob_sha": "62ae2923b50fd844f0dbecc7c69beaef2a3a01b6",
+      "status": "DURABLE"
+    },
+    {
+      "name": "environment_passport_delta.json",
+      "kind": "path",
+      "path": "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/environment_passport_delta.json",
+      "blob_sha": "4a163cbf10d75f0611d1061b02f4a3572dde423f",
+      "status": "DURABLE"
+    },
+    {
+      "name": "README.md",
+      "kind": "path",
+      "path": "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/README.md",
+      "blob_sha": "f18b8afdad0a4155fd65b8b30bb29297c264cfa8",
+      "status": "DURABLE"
+    },
+    {
+      "name": "preregistration.json",
+      "kind": "path",
+      "path": "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/preregistration.json",
+      "blob_sha": "d5c37045f91094d6de172cf67c87009fbb5a11f6",
+      "status": "DURABLE"
+    },
+    {
+      "name": "preregistration_seeded.json",
+      "kind": "path",
+      "path": "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/preregistration_seeded.json",
+      "blob_sha": "776f80a314b85446b8cc546b5e5c60597d02bd2c",
+      "status": "DURABLE"
+    },
+    {
+      "name": "test_reviewer_hostiles.py",
+      "kind": "path",
+      "path": "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/test_reviewer_hostiles.py",
+      "blob_sha": "6277df57ff777034cf27cb4b61aa872c250ffa11",
+      "status": "DURABLE"
+    },
+    {
+      "name": "test_seeded_refusals.py",
+      "kind": "path",
+      "path": "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/test_seeded_refusals.py",
+      "blob_sha": "04b8cd6d0bfab0c52d7d8774c38f5a0f0ea06101",
+      "status": "DURABLE"
+    },
+    {
+      "name": "reviewer_worker.py",
+      "kind": "path",
+      "path": "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/reviewer_worker.py",
+      "blob_sha": "831dee127a30277b49052c1ce1662a3c1d1331cf",
+      "status": "DURABLE"
+    },
+    {
+      "name": "evidence/completion_audit.json",
+      "kind": "path",
+      "path": "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/evidence/completion_audit.json",
+      "blob_sha": "ff1f1eb167cf2b0119074c97135472d2be6a68ec",
+      "status": "DURABLE"
+    },
+    {
+      "name": "evidence/source_verification.json",
+      "kind": "path",
+      "path": "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/evidence/source_verification.json",
+      "blob_sha": "f36d67a08199774746800fdca98a69310bcbfcf4",
+      "status": "DURABLE"
+    },
+    {
+      "name": "evidence/input_transport_manifest.json",
+      "kind": "path",
+      "path": "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/evidence/input_transport_manifest.json",
+      "blob_sha": "7d155123e229fbec8f8354458758bd0e1d7e451d",
+      "status": "DURABLE"
+    },
+    {
+      "name": "evidence/loaded_modules.json",
+      "kind": "path",
+      "path": "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/evidence/loaded_modules.json",
+      "blob_sha": "c75dc3040d749057092642b9b8e8849192ec7df6",
+      "status": "DURABLE"
+    },
+    {
+      "name": "evidence/suite_results.json",
+      "kind": "path",
+      "path": "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/evidence/suite_results.json",
+      "blob_sha": "2c6e861f63fbd4f3126c5d1606579a9344bb0d42",
+      "status": "DURABLE"
+    },
+    {
+      "name": "evidence/table_case_matrix.json",
+      "kind": "path",
+      "path": "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/evidence/table_case_matrix.json",
+      "blob_sha": "95b222a77119b910add73d13045358df2cade8f8",
+      "status": "DURABLE"
+    },
+    {
+      "name": "evidence/sql_cold_audit.json",
+      "kind": "path",
+      "path": "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/evidence/sql_cold_audit.json",
+      "blob_sha": "c32759e685196e850f97bfceaaef55fa4dc6743e",
+      "status": "DURABLE"
+    },
+    {
+      "name": "evidence/process_death_summary.json",
+      "kind": "path",
+      "path": "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/evidence/process_death_summary.json",
+      "blob_sha": "971143533bb6b2009978f53b7c92a0bce640db7f",
+      "status": "DURABLE"
+    },
+    {
+      "name": "artifact_manifest.json",
+      "kind": "path",
+      "path": "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/artifact_manifest.json",
+      "blob_sha": "75f2b23cf60709e7cf70c72acb74594f5247f5d7",
+      "status": "DURABLE"
+    },
+    {
+      "name": "changed_paths.txt",
+      "kind": "path",
+      "path": "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/changed_paths.txt",
+      "blob_sha": "8ce274a50852c668c9c929bbf0f4cccfc8625724",
+      "status": "DURABLE"
+    }
+  ],
+  "evidence": {
+    "required": false,
+    "local_required_execution": "evidence/commands.json and JUnit/SQL receipts",
+    "github_actions_execution_claimed": false
+  },
+  "root_beacon_scope": "No root manifest mutation authorized; no automatic root certification claimed"
+}

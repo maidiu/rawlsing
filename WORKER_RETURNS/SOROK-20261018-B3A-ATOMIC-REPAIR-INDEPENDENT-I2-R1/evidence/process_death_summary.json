@@ -1,0 +1,96 @@
+{
+  "new_reviewer_process_kills": [
+    {
+      "case": "kill_after_first_source_admission_False",
+      "ready_pid": 33956,
+      "inspector_pid": 33958,
+      "exit": -9,
+      "stage": "after_first_source_admission",
+      "tables_unchanged": true,
+      "schema_unchanged": true
+    },
+    {
+      "case": "kill_after_first_source_admission_True",
+      "ready_pid": 34023,
+      "inspector_pid": 34025,
+      "exit": -9,
+      "stage": "after_first_source_admission",
+      "tables_unchanged": true,
+      "schema_unchanged": true
+    },
+    {
+      "case": "kill_after_publication_before_commit_False",
+      "ready_pid": 33981,
+      "inspector_pid": 33989,
+      "exit": -9,
+      "stage": "after_publication_before_commit",
+      "tables_unchanged": true,
+      "schema_unchanged": true
+    },
+    {
+      "case": "kill_after_publication_before_commit_True",
+      "ready_pid": 34226,
+      "inspector_pid": 34292,
+      "exit": -9,
+      "stage": "after_publication_before_commit",
+      "tables_unchanged": true,
+      "schema_unchanged": true
+    },
+    {
+      "case": "kill_after_successful_return_False",
+      "ready_pid": 33997,
+      "inspector_pid": 34004,
+      "exit": -9,
+      "stage": "after_successful_return",
+      "tables_unchanged": false,
+      "schema_unchanged": true
+    },
+    {
+      "case": "kill_after_successful_return_True",
+      "ready_pid": 34368,
+      "inspector_pid": 34432,
+      "exit": -9,
+      "stage": "after_successful_return",
+      "tables_unchanged": false,
+      "schema_unchanged": true
+    },
+    {
+      "case": "kill_after_target_effect_before_commit_False",
+      "ready_pid": 33966,
+      "inspector_pid": 33973,
+      "exit": -9,
+      "stage": "after_target_effect_before_commit",
+      "tables_unchanged": true,
+      "schema_unchanged": true
+    },
+    {
+      "case": "kill_after_target_effect_before_commit_True",
+      "ready_pid": 34086,
+      "inspector_pid": 34152,
+      "exit": -9,
+      "stage": "after_target_effect_before_commit",
+      "tables_unchanged": true,
+      "schema_unchanged": true
+    },
+    {
+      "case": "kill_before_first_b2_admission_False",
+      "ready_pid": 33947,
+      "inspector_pid": 33948,
+      "exit": -9,
+      "stage": "before_first_b2_admission",
+      "tables_unchanged": true,
+      "schema_unchanged": true
+    },
+    {
+      "case": "kill_before_first_b2_admission_True",
+      "ready_pid": 34013,
+      "inspector_pid": 34014,
+      "exit": -9,
+      "stage": "before_first_b2_admission",
+      "tables_unchanged": true,
+      "schema_unchanged": true
+    }
+  ],
+  "power_loss_durability_tested": false,
+  "author_atomic_kills_are_separate": 12
+}

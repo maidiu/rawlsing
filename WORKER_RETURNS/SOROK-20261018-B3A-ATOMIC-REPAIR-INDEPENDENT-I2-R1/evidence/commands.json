@@ -1,0 +1,302 @@
+[
+  {
+    "label": "reviewer_hostiles",
+    "args": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/test_reviewer_hostiles.py",
+      "--junitxml=<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/evidence/reviewer_hostiles.xml"
+    ],
+    "cwd": "<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1",
+    "environment_overrides": {
+      "REVIEW_B3_ROOT": "<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/.scratch/b3a/candidate",
+      "REVIEW_EVIDENCE": "<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/evidence/reviewer_sql"
+    },
+    "exit": 1,
+    "expected": 1,
+    "elapsed_seconds": 23.764561891555786
+  },
+  {
+    "label": "inherited",
+    "args": [
+      "/usr/local/bin/python3",
+      "run_inherited.py"
+    ],
+    "cwd": "<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/.scratch/b3a/frozen_b3",
+    "environment_overrides": {},
+    "exit": 0,
+    "expected": 0,
+    "elapsed_seconds": 31.625554084777832
+  },
+  {
+    "label": "frozen_b3",
+    "args": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "test_integration_b3.py",
+      "--junitxml=<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/evidence/frozen_b3.xml"
+    ],
+    "cwd": "<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/.scratch/b3a/frozen_b3",
+    "environment_overrides": {},
+    "exit": 0,
+    "expected": 0,
+    "elapsed_seconds": 42.09746313095093
+  },
+  {
+    "label": "candidate_b3",
+    "args": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "test_integration_b3.py",
+      "--junitxml=<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/evidence/candidate_b3.xml"
+    ],
+    "cwd": "<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/.scratch/b3a/candidate",
+    "environment_overrides": {},
+    "exit": 0,
+    "expected": 0,
+    "elapsed_seconds": 33.232357025146484
+  },
+  {
+    "label": "original_x3",
+    "args": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/.scratch/b3a/frozen_x3/test_independent.py",
+      "--junitxml=<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/evidence/original_x3.xml"
+    ],
+    "cwd": "<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1",
+    "environment_overrides": {
+      "X3_B3_ROOT": "<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/.scratch/b3a/frozen_b3",
+      "X3_EVIDENCE": "<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/evidence/original_x3_sql"
+    },
+    "exit": 1,
+    "expected": 1,
+    "elapsed_seconds": 11.789078950881958
+  },
+  {
+    "label": "candidate_x3",
+    "args": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/.scratch/b3a/frozen_x3/test_independent.py",
+      "--junitxml=<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/evidence/candidate_x3.xml"
+    ],
+    "cwd": "<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1",
+    "environment_overrides": {
+      "X3_B3_ROOT": "<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/.scratch/b3a/candidate",
+      "X3_EVIDENCE": "<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/evidence/candidate_x3_sql"
+    },
+    "exit": 1,
+    "expected": 1,
+    "elapsed_seconds": 11.754513263702393
+  },
+  {
+    "label": "original_seeded",
+    "args": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/test_seeded_refusals.py",
+      "--junitxml=<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/evidence/original_seeded.xml"
+    ],
+    "cwd": "<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1",
+    "environment_overrides": {
+      "REVIEW_B3_ROOT": "<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/.scratch/b3a/frozen_b3",
+      "REVIEW_EVIDENCE": "<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/evidence/original_seeded_sql"
+    },
+    "exit": 1,
+    "expected": 1,
+    "elapsed_seconds": 2.553838014602661
+  },
+  {
+    "label": "candidate_seeded",
+    "args": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/test_seeded_refusals.py",
+      "--junitxml=<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/evidence/candidate_seeded.xml"
+    ],
+    "cwd": "<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1",
+    "environment_overrides": {
+      "REVIEW_B3_ROOT": "<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/.scratch/b3a/candidate",
+      "REVIEW_EVIDENCE": "<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/evidence/candidate_seeded_sql"
+    },
+    "exit": 0,
+    "expected": 0,
+    "elapsed_seconds": 1.0770809650421143
+  },
+  {
+    "label": "atomic",
+    "args": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/.scratch/b3a/test_atomic.py",
+      "<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/.scratch/b3a/test_projected_atomic.py",
+      "--junitxml=<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/evidence/atomic.xml"
+    ],
+    "cwd": "<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/.scratch/b3a",
+    "environment_overrides": {},
+    "exit": 0,
+    "expected": 0,
+    "elapsed_seconds": 81.38387298583984
+  },
+  {
+    "label": "e3",
+    "args": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/.scratch/b3a/candidate/.runtime/e3/test_independent.py",
+      "--junitxml=<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/evidence/e3.xml"
+    ],
+    "cwd": "<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1",
+    "environment_overrides": {
+      "B2_REVIEW_ROOT": "<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/.scratch/b3a/candidate/.runtime/b2",
+      "E3_EVIDENCE": "<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/evidence/e3_sql"
+    },
+    "exit": 0,
+    "expected": 0,
+    "elapsed_seconds": 5.492492198944092
+  },
+  {
+    "label": "f2",
+    "args": [
+      "/usr/local/bin/python3",
+      "run_f2.py"
+    ],
+    "cwd": "<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/.scratch/b3a/candidate",
+    "environment_overrides": {},
+    "exit": 0,
+    "expected": 0,
+    "elapsed_seconds": 26.844403982162476
+  },
+  {
+    "label": "f2_blinded",
+    "args": [
+      "/usr/local/bin/python3",
+      "<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/.scratch/b3a/frozen_x3/audit_f2.py"
+    ],
+    "cwd": "<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1",
+    "environment_overrides": {
+      "X3_B3_ROOT": "<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/.scratch/b3a/candidate",
+      "X3_EVIDENCE": "<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/evidence/f2_blinded"
+    },
+    "exit": 0,
+    "expected": 0,
+    "elapsed_seconds": 131.47857093811035
+  },
+  {
+    "label": "b3_mutants",
+    "args": [
+      "/usr/local/bin/python3",
+      "mutation_audit_b3.py"
+    ],
+    "cwd": "<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/.scratch/b3a/candidate",
+    "environment_overrides": {},
+    "exit": 0,
+    "expected": 0,
+    "elapsed_seconds": 0.14583182334899902
+  },
+  {
+    "label": "original_loop",
+    "args": [
+      "/usr/local/bin/python3",
+      "developmental_loop.py",
+      "evidence/loop"
+    ],
+    "cwd": "<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/.scratch/b3a/frozen_b3",
+    "environment_overrides": {},
+    "exit": 0,
+    "expected": 0,
+    "elapsed_seconds": 4.487863063812256
+  },
+  {
+    "label": "original_positive_cold",
+    "args": [
+      "/usr/local/bin/python3",
+      "developmental_loop.py",
+      "replay",
+      "evidence/loop/positive.json",
+      "evidence/loop/positive_cold.sqlite"
+    ],
+    "cwd": "<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/.scratch/b3a/frozen_b3",
+    "environment_overrides": {},
+    "exit": 0,
+    "expected": 0,
+    "elapsed_seconds": 2.3215510845184326
+  },
+  {
+    "label": "original_permission_absent_cold",
+    "args": [
+      "/usr/local/bin/python3",
+      "developmental_loop.py",
+      "replay",
+      "evidence/loop/permission_absent.json",
+      "evidence/loop/permission_absent_cold.sqlite"
+    ],
+    "cwd": "<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/.scratch/b3a/frozen_b3",
+    "environment_overrides": {},
+    "exit": 0,
+    "expected": 0,
+    "elapsed_seconds": 2.2802231311798096
+  },
+  {
+    "label": "candidate_loop",
+    "args": [
+      "/usr/local/bin/python3",
+      "developmental_loop.py",
+      "evidence/loop"
+    ],
+    "cwd": "<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/.scratch/b3a/candidate",
+    "environment_overrides": {},
+    "exit": 0,
+    "expected": 0,
+    "elapsed_seconds": 5.017391681671143
+  },
+  {
+    "label": "candidate_positive_cold",
+    "args": [
+      "/usr/local/bin/python3",
+      "developmental_loop.py",
+      "replay",
+      "evidence/loop/positive.json",
+      "evidence/loop/positive_cold.sqlite"
+    ],
+    "cwd": "<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/.scratch/b3a/candidate",
+    "environment_overrides": {},
+    "exit": 0,
+    "expected": 0,
+    "elapsed_seconds": 2.7556259632110596
+  },
+  {
+    "label": "candidate_permission_absent_cold",
+    "args": [
+      "/usr/local/bin/python3",
+      "developmental_loop.py",
+      "replay",
+      "evidence/loop/permission_absent.json",
+      "evidence/loop/permission_absent_cold.sqlite"
+    ],
+    "cwd": "<REVIEW_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/.scratch/b3a/candidate",
+    "environment_overrides": {},
+    "exit": 0,
+    "expected": 0,
+    "elapsed_seconds": 2.333583116531372
+  }
+]

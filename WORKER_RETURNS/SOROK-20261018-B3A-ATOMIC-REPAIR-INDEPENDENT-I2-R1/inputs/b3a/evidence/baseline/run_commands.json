@@ -1,0 +1,85 @@
+[
+  {
+    "label": "materialize",
+    "command": [
+      "/usr/local/bin/python3",
+      "materialize.py"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0
+  },
+  {
+    "label": "inherited",
+    "command": [
+      "/usr/local/bin/python3",
+      "run_inherited.py"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0
+  },
+  {
+    "label": "b3_final",
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "test_integration_b3.py",
+      "--junitxml=evidence/b3_final.xml"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0
+  },
+  {
+    "label": "f2_run",
+    "command": [
+      "/usr/local/bin/python3",
+      "run_f2.py"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0
+  },
+  {
+    "label": "b3_mutation",
+    "command": [
+      "/usr/local/bin/python3",
+      "mutation_audit_b3.py"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0
+  },
+  {
+    "label": "loop_execution",
+    "command": [
+      "/usr/local/bin/python3",
+      "developmental_loop.py",
+      "evidence/loop"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0
+  },
+  {
+    "label": "positive_cold",
+    "command": [
+      "/usr/local/bin/python3",
+      "developmental_loop.py",
+      "replay",
+      "evidence/loop/positive.json",
+      "<B3_RETURN>/evidence/loop/positive_cold.sqlite"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0
+  },
+  {
+    "label": "permission_absent_cold",
+    "command": [
+      "/usr/local/bin/python3",
+      "developmental_loop.py",
+      "replay",
+      "evidence/loop/permission_absent.json",
+      "<B3_RETURN>/evidence/loop/permission_absent_cold.sqlite"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0
+  }
+]

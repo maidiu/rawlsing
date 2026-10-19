@@ -1,0 +1,68 @@
+[
+  {
+    "label": "frozen_materialize",
+    "args": [
+      "/usr/local/bin/python3",
+      "materialize.py"
+    ],
+    "cwd": "<TEMP>",
+    "exit": 0,
+    "expected": 0
+  },
+  {
+    "label": "frozen_x3",
+    "args": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "<WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3-X3-ATOMIC-ADMISSION-REPAIR-R1/frozen_x3/test_independent.py",
+      "--junitxml=<WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3-X3-ATOMIC-ADMISSION-REPAIR-R1/evidence/frozen_x3.xml"
+    ],
+    "cwd": "<WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3-X3-ATOMIC-ADMISSION-REPAIR-R1",
+    "exit": 1,
+    "expected": 1
+  },
+  {
+    "label": "candidate_x3",
+    "args": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "<WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3-X3-ATOMIC-ADMISSION-REPAIR-R1/frozen_x3/test_independent.py",
+      "--junitxml=<WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3-X3-ATOMIC-ADMISSION-REPAIR-R1/evidence/candidate_x3.xml"
+    ],
+    "cwd": "<WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3-X3-ATOMIC-ADMISSION-REPAIR-R1",
+    "exit": 1,
+    "expected": 1
+  },
+  {
+    "label": "candidate_b3",
+    "args": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "test_integration_b3.py",
+      "--junitxml=<WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3-X3-ATOMIC-ADMISSION-REPAIR-R1/evidence/candidate_b3.xml"
+    ],
+    "cwd": "<WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3-X3-ATOMIC-ADMISSION-REPAIR-R1/candidate",
+    "exit": 0,
+    "expected": 0
+  },
+  {
+    "label": "atomic",
+    "args": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "<WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3-X3-ATOMIC-ADMISSION-REPAIR-R1/test_atomic.py",
+      "--junitxml=<WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3-X3-ATOMIC-ADMISSION-REPAIR-R1/evidence/atomic.xml"
+    ],
+    "cwd": "<WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3-X3-ATOMIC-ADMISSION-REPAIR-R1",
+    "exit": 0,
+    "expected": 0
+  }
+]
