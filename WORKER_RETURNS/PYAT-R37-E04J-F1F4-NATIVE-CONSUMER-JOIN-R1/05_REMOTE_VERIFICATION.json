@@ -1,0 +1,67 @@
+{
+  "schema": "E04J_R37_05_REMOTE_VERIFICATION@1",
+  "verification": "DIRECT_REMOTE_SHA_AND_CHANGED_PATH_AUDIT",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/rabochii-pyat-r37-e04j-f1f4-native-consumer-join-r1",
+  "exact_return_head_at_start": "9ef085adb1e1fa0f8eede9ff7240ad9630c6998d",
+  "original_base": "68873526efe5a39a0849aa401666ac997870f156",
+  "no_duplicate_lane": true,
+  "prior_local_work_preserved": "no prior E04J worktree existed; restored qualified isolated worktree at verified remote head",
+
+  "evidence_payload_commit": "b831ac36f8a48eb471aabc26de93e4c3d87cc45c",
+  "verified_remote_head_at_evidence_payload": "b831ac36f8a48eb471aabc26de93e4c3d87cc45c",
+  "sha_match": true,
+  "readback_trees_identical": true,
+  "note": "This receipt is sealed by a subsequent commit whose SHA is reported in the delivery message.",
+
+  "changed_path_scope_clean": true,
+  "changed_path_audit": {"added": 11, "modified": 0, "removed": 0, "out_of_scope_count": 0,
+    "scope_rule": "only WORKER_RETURNS/PYAT-R37-E04J-F1F4-NATIVE-CONSUMER-JOIN-R1/"},
+
+  "phase_a_executed": {
+    "native_e04_consumer_court": "7 passed, cold, real imports (was STAGED ONLY / NOT EXECUTED)",
+    "independent_no_drop_oracle": "6 passed",
+    "import_receipts": "14 modules, 0 ambient leaks, exact Git blob preimages"
+  },
+  "phase_b_built": {
+    "learned_product_join": "M1->M2->B5->I4->E04 executed over the REAL E04 native EmpiricalFact",
+    "fact_identity_asserted": "extracted fact ref == E04 producer_fact_ref",
+    "authority_closure": "all 5 discovery/fact/query/predicate/receipt closures valid via genuine E04 I03 snapshots",
+    "b5_effects": "REGISTER/PUBLISH/SELECT_CURRENT all true; REPLAY_VERIFIED",
+    "conservative_effects_all_false": true,
+    "b5_selected_release_equals_m2_release": true
+  },
+  "scientific_positive": {
+    "independent_oracle": "equal marginals (A=1:4,B=1:4), P(B=1|A=1) concordant=1 vs minority=3/4",
+    "lifecycle_carrier": "authorized Y|A=B=C=1 denominator 8; base {0:2,1:6} vs same-marginals {0:1,1:7}",
+    "changes": ["E04 fact","M1 disposition","M2 release","B5 selection","source universe","consumer step","consumer receipt hash"],
+    "invariants": ["denominator 8","structural routes","route_probability=None","NO_JOINT_EMPIRICAL_STRUCTURAL_ROUTE_MODEL","conservative effects False"]
+  },
+  "execution": {
+    "phase_a_independent_oracle": "6/6",
+    "phase_a_native_e04": "7/7",
+    "phase_b_lifecycle_science": "6/6",
+    "hostile_boundaries": "10/10",
+    "total": "29 passed, 0 failed, 0 errors",
+    "junit": "evidence/e04j_full_junit.xml",
+    "courts_aggregated_into_one_percentage": false
+  },
+  "preservation": {
+    "owner_modules_unmodified": "git status rawlsing_next/ clean",
+    "inherited_phase_a_tests_unchanged": true,
+    "original_e04_consumer_unmodified": true,
+    "no_fabricated_fact_or_release": true
+  },
+  "k9_k10": "NOT_RUN",
+  "opencode_quota_billed_usage": "UNKNOWN",
+  "owner_modules_untouched": true,
+  "no_original_survey_permission": true,
+  "no_production_promotion": true,
+  "no_field_forge_semantics": true,
+  "no_model_route_probabilities": true,
+  "no_n11_n12": true,
+  "no_sorok_actors_or_v3": true,
+  "self_acceptance": false,
+  "independent_i2_review_required": true,
+  "verdict": "E04JR_SOURCEFREE_LEARNED_PRODUCT_JOIN_EXECUTED__I2_REVIEW_REQUIRED"
+}
