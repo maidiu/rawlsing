@@ -1,3 +1,9 @@
+# SUPERSEDED FOR UNLAUNCHED WORKERS BY MAX-REASONING USER CORRECTION
+
+**Do not launch an unstarted S44/I44 using the startup or model wording in this historical seal.** The user clarified that "DeepSeek" means `DeepSeek V4.1-Flash` at `REASONING=MAX` and requires full-job qualification before Codex High or Middle. The new controlling launch seal is `PYAT_CONTROL_ROOM/R44_DEEPSEEK_MAX_S44_I44_USER_CORRECTED_DISPATCH_SEAL_20261019.md`. Historical prior seals/SHAs retained; active real local workers are NOT restarted. No change to scientific/source/actor permissions.
+
+---
+
 # PYAT R44 — binding corrected S44/I44 dispatch seal: actual user's model-economy order
 
 **STATUS:** `AMENDED_BEFORE_LAUNCH__NOT_AUTO_LAUNCHED`. This supersedes the OLD `PYAT_CONTROL_ROOM/R44_EXACT_S44_I44_FULL_PRODUCT_DISPATCH_SEAL_20261019.md` and its exact old startup **ONLY for jobs not already locally running**. Direct worker remote branches absent at the check; local machine sessions not inspected. If the user reports an active S44/I44, preserve its model/worktree/session and apply prospective correction without restart.
