@@ -55,7 +55,6 @@
       "exclusions": [],
       "sampling_status": "EXTERNAL_DESIGN_DIAGONAL_ONLY",
       "bundle_decision": "SYNTHETIC_CANDIDATE",
-      "bundle_target_status": "COMPLETE_EXPERIMENTAL_TARGET_JOINT",
       "route_probability_absent": true,
       "selection_weight_absent": true
     },
@@ -85,7 +84,6 @@
       ],
       "sampling_status": "UNKNOWN_DESIGN",
       "bundle_decision": "PARTIAL_IDENTIFICATION_ONLY",
-      "bundle_target_status": "NO_COMPLETE_TARGET_JOINT",
       "route_probability_absent": true,
       "selection_weight_absent": true
     },
@@ -122,7 +120,6 @@
       ],
       "sampling_status": "UNKNOWN_DESIGN",
       "bundle_decision": "PARTIAL_IDENTIFICATION_ONLY",
-      "bundle_target_status": "NO_COMPLETE_TARGET_JOINT",
       "route_probability_absent": true,
       "selection_weight_absent": true
     },
@@ -159,7 +156,6 @@
       ],
       "sampling_status": "UNKNOWN_DESIGN",
       "bundle_decision": "PARTIAL_IDENTIFICATION_ONLY",
-      "bundle_target_status": "NO_COMPLETE_TARGET_JOINT",
       "route_probability_absent": true,
       "selection_weight_absent": true
     },
@@ -181,7 +177,6 @@
       "exclusions": [],
       "sampling_status": null,
       "bundle_decision": "SYNTHETIC_CANDIDATE",
-      "bundle_target_status": "COMPLETE_EXPERIMENTAL_TARGET_JOINT",
       "route_probability_absent": true,
       "selection_weight_absent": true
     },
@@ -198,7 +193,6 @@
       "exclusions": [],
       "sampling_status": null,
       "bundle_decision": "SOURCE_INDEXED_BACKOFF",
-      "bundle_target_status": null,
       "route_probability_absent": true,
       "selection_weight_absent": true
     },
@@ -220,7 +214,6 @@
       "exclusions": [],
       "sampling_status": null,
       "bundle_decision": "SYNTHETIC_CANDIDATE",
-      "bundle_target_status": "COMPLETE_EXPERIMENTAL_TARGET_JOINT",
       "route_probability_absent": true,
       "selection_weight_absent": true
     }
@@ -252,7 +245,6 @@
       ],
       "sampling_status": null,
       "bundle_decision": "SYNTHETIC_CANDIDATE",
-      "bundle_target_status": null,
       "route_probability_absent": true,
       "selection_weight_absent": true
     },
@@ -289,7 +281,6 @@
       ],
       "sampling_status": null,
       "bundle_decision": "SYNTHETIC_CANDIDATE",
-      "bundle_target_status": null,
       "route_probability_absent": true,
       "selection_weight_absent": true
     },
@@ -326,7 +317,6 @@
       ],
       "sampling_status": null,
       "bundle_decision": "SYNTHETIC_CANDIDATE",
-      "bundle_target_status": null,
       "route_probability_absent": true,
       "selection_weight_absent": true
     }
@@ -356,37 +346,66 @@
   },
   "courts": {
     "native": {
-      "tests": 26,
+      "tests": 32,
       "failures": 0,
       "errors": 0,
       "skipped": 0
     },
     "cold_0": {
-      "tests": 26,
+      "tests": 32,
       "failures": 0,
       "errors": 0,
       "skipped": 0
     },
     "cold_1": {
+      "tests": 32,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "restored_before_extra_hostiles": {
       "tests": 26,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "post_gate_cold_0": {
+      "tests": 32,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "post_gate_cold_1": {
+      "tests": 32,
       "failures": 0,
       "errors": 0,
       "skipped": 0
     }
   },
   "proof_witness": {
-    "schema": "RAWLSING_PROOF_INTEGRITY_R1",
-    "status": "MECHANICAL_WITNESS_PASS_NOT_SEMANTIC_ADOPTION",
-    "claims": [
+    "examined_tests": [
+      "WORKER_RETURNS/PYAT-R39-F6P-PARTIAL-BOUND-EVIDENCE-CONSUMER-R1/tests/f6p_fixtures.py",
+      "WORKER_RETURNS/PYAT-R39-F6P-PARTIAL-BOUND-EVIDENCE-CONSUMER-R1/tests/test_f6p_abc_oracle.py",
+      "WORKER_RETURNS/PYAT-R39-F6P-PARTIAL-BOUND-EVIDENCE-CONSUMER-R1/tests/test_f6p_consumer.py"
+    ],
+    "witness_contracts_run": 1,
+    "receipts": [
       {
-        "claim_id": "F6P_F6M_PARTIAL_BOUND_CONSUMER_DEPENDS_ON_ACTUAL_F6M_PRODUCT",
-        "positive_node": "WORKER_RETURNS/PYAT-R39-F6P-PARTIAL-BOUND-EVIDENCE-CONSUMER-R1/tests/test_f6p_consumer.py::test_w2_partial_preserves_uncovered_mass",
-        "fault_path": "WORKER_RETURNS/PYAT-R39-F6P-PARTIAL-BOUND-EVIDENCE-CONSUMER-R1/native/rawlsing_next/pre553_heterogeneous_synthesis.py",
-        "baseline": "PASS",
-        "fault_probe": "TARGET_ASSERTION_FAILED",
-        "grade": "BOUNDED_MUTATION_DETECTED"
+        "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+        "status": "MECHANICAL_WITNESS_PASS_NOT_SEMANTIC_ADOPTION",
+        "claims": [
+          {
+            "claim_id": "F6P_F6M_PARTIAL_BOUND_CONSUMER_DEPENDS_ON_ACTUAL_F6M_PRODUCT",
+            "positive_node": "WORKER_RETURNS/PYAT-R39-F6P-PARTIAL-BOUND-EVIDENCE-CONSUMER-R1/tests/test_f6p_consumer.py::test_w2_partial_preserves_uncovered_mass",
+            "fault_path": "WORKER_RETURNS/PYAT-R39-F6P-PARTIAL-BOUND-EVIDENCE-CONSUMER-R1/native/rawlsing_next/pre553_heterogeneous_synthesis.py",
+            "baseline": "PASS",
+            "fault_probe": "TARGET_ASSERTION_FAILED",
+            "grade": "BOUNDED_MUTATION_DETECTED"
+          }
+        ]
       }
-    ]
+    ],
+    "state": "MECHANICAL_PROOF_GATE_PASS_NOT_SCIENTIFIC_ADOPTION"
   },
   "scientific_ceiling": "SOURCEFREE_TEST_ONLY_NO_ROUTE_PROBABILITY_NO_SELECTION_WEIGHT_NO_MODEL_USE",
   "cost": {
