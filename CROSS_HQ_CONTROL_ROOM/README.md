@@ -1,5 +1,10 @@
 # Pyat ↔ Sorok shared grounding and progress
 
+## Mandatory code-test proof integrity — 18 October 2026
+
+[**Shared falsifiable-test and negative-control law**](PROOF_INTEGRITY_AND_FALSIFIABLE_TEST_LAW_R1.md) governs new/revised implementation claims across PRE-MAIN, Pyat and Sorok. The executable [AST/mutation checker](proof_integrity_gate_r1.py) is wired into the existing governed-court PR workflow; no additional reviewer round or blanket historic test reopening is created. No green suite proves a downstream integration without claim-specific producer/release severance and a real consumer response.
+
+
 User-authorized documentary control update, 14 October 2026. This is the predictable PRE-MAIN front door for both HQs' mutual grounding.
 
 - [Mandatory grok and update protocol](HQ_GROK_AND_PROGRESS_PROTOCOL_R1.md)
