@@ -1,5 +1,10 @@
 # Sorok Operating Method — Green-Field Product Architecture Without Sprawl
 
+## TERMINAL CAMPAIGN PRIORITY — 19 October 2026
+
+This green-field CAPTURE→FRAME→INVESTIGATE→PROTOTYPE→ADJUDICATE lifecycle is an **idea-validation mechanism**, not a reason to defer assembly of the already-delineated Rawlsing-generated person. Interpret with [PRE-MAIN terminal deliverable continuity law](https://github.com/maidiu/rawlsing/blob/integration/pre-main-reconciliation-r1/CROSS_HQ_CONTROL_ROOM/HQ_TERMINAL_DELIVERABLE_CONTINUITY_AND_ANTI_MICROFOCUS_LAW_R1.md): after a concept is sufficiently settled, advance the largest qualified C0–C12/A0–A5 *actual positive product*, using inherited actor/relationship/occurrence owners and coherent long-running campaigns. Do not multiply dockets, little tests and preliminary reviews as a substitute for life-generating implementation, nor cross unissued CAN/ADP/N12/weld authority. A small independent science/authority/negative test is admissible when it directly releases a named terminal campaign. Existing progress pair carries the small DONE/REMAINING/BLOCKERS/LARGEST MOVE/FLIGHT/DELTA; no new reporting committee.
+
+
 Status: `ACTIVE_METHOD_R1`
 
 ## 1. The problem
