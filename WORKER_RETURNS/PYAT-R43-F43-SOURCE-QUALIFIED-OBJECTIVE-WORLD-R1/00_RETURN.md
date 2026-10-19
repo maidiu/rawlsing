@@ -155,7 +155,7 @@ still lack qualified population/estimand/design/time and operation/use decisions
 Neither overlap nor missing overlap proves measured comparability or intrinsic
 nonapplicability. No candidate was dropped or converted into an eligible operation.
 All35 U43 current native manifests remain `NOT_YET_ISSUED`, with original U and
-eligible E_pre null, permitted original manifests 0 and new original occupancy 0.
+eligible E_pre null, permitted original manifests 0 and new original occupancy 0. The 105-cell acceptance supplement now records this published-but-unissued cause explicitly.
 The original F43 scientific products, seven native fault proofs and four A42
 receipt grades are unchanged. The exact U43 demands supplement the F43 method/use
 requests; they do not replace the separate FF/F6/F7 and receiving-purpose issuers.
