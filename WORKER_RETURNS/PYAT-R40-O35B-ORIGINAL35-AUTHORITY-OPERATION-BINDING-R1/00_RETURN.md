@@ -1,14 +1,20 @@
 # O35B original35 authority binding — bounded author return
 
-**Continuation update:** the exact retained checkpoint and all three permitted
-P1 Fact preimages have now been recovered and verified. Actual native M1 ran
-and returned `BLOCKED__MISSING_AUTHORITY_CLOSURE`; the independently frozen
-missing-rule positive is RED. See
-`06_CHECKPOINT_RECOVERY_AND_NATIVE_M1_RED.md` and the continuation passport.
-The earlier absence/deferred-P1 findings below describe the pre-continuation
-cut and are superseded at that exact grain. The full objective remains
-incomplete; original I03/Batch replay and its execution-plan omission witness
-remain unproved.
+**Current continuation update:** the exact retained checkpoint and all three
+permitted P1 Fact preimages are recovered and verified. Appending one existing
+historical projection snapshot repairs the return adapter's M1 binding; the
+original frozen test now passes at the expected
+`BLOCKED__MISSING_FAMILY_VALIDATION_RULE_AUTHORITY` terminal. The prior
+family-envelope diagnosis was wrong and is explicitly retracted in
+`07_NATIVE_M1_AUTHORITY_BINDING_CORRECTION.md`. Direct joint-Fact severance
+produces the intended named assertion RED; byte-exact restoration and a fresh
+native positive are GREEN. The exact sealed shared witness uses a documented
+return-only 600-second budget; its unadjusted 180-second CLI is not claimed to
+pass. See `evidence/p1_corrected_claim_receipt.json`. Historical absence,
+deferred-P1 and pre-repair M1 RED findings below
+are superseded only at their exact grains. The full objective remains
+incomplete: original I03/Batch replay, its execution-plan omission witness and
+full35 competent scientific bindings remain unproved.
 
 **HOLD on the commissioned original-source I03/Batch-to-learned-consumer positive.** The exact 26-plus-nine decision tree, all35 inherited operation accounting, original owner-row audit, omission-sensitive metadata comparison and an exact retained LiTS query packet entering the native catalog are delivered. No original authority or permission is issued. This is an implementing author's return, not independent acceptance or HQ adoption.
 

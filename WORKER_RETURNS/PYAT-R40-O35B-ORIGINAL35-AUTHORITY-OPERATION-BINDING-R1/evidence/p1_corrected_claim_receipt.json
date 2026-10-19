@@ -1,0 +1,50 @@
+{
+  "schema": "O35B_REPAIRED_NATIVE_M1_CLAIM_RECEIPT@1",
+  "claim_id": "EXACT_RETAINED_P1_FACTS_TO_NATIVE_M1_TYPED_RULE_HOLD",
+  "parent": "03cb37da391b47bd1030de59280633c05f377542",
+  "original_test_and_oracle_unchanged": true,
+  "repair": "Append unique existing archived/native historical projection snapshot; no envelope mutation or authority issuance",
+  "snapshot_count": 14,
+  "snapshot_hash": "998d7e93b1d8424386f6f918c84f4fd3cb120fcb07127abf7ed3a73df9d90b5b",
+  "actual_target_consumer": "Native build_m1_adjudication_input_bundle -> adjudicate_learned_empirical",
+  "positive_terminal": "BLOCKED__MISSING_FAMILY_VALIDATION_RULE_AUTHORITY",
+  "disposition_hash": "fccdea7d53c85db158dd5b4c67774b8aac1ea781f18e661bd2acdf0086f7a22a",
+  "actual_fault_terminal": "NATIVE_INPUT_BUNDLE_REFUSED",
+  "actual_negative_control_result": "TARGET_ASSERTION_FAILED; 1 failure, 0 errors, 0 skips; exact original JOINT Fact omitted from actual native input catalog",
+  "source_restored_exactly": true,
+  "baseline_and_restored_semantic_results_identical": true,
+  "native_processes": [
+    {
+      "phase": "baseline",
+      "tests": "1",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "243.440"
+    },
+    {
+      "phase": "fault",
+      "tests": "1",
+      "failures": "1",
+      "errors": "0",
+      "skipped": "0",
+      "time": "22.382"
+    },
+    {
+      "phase": "restored",
+      "tests": "1",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "250.748"
+    }
+  ],
+  "proof_grade": "RETAINED_ORIGINAL_P1_FACTS_TO_NATIVE_M1_VERIFICATION_AND_TYPED_RULE_HOLD__CLAIM_EDGE_PROVED_AT_THIS_GRAIN",
+  "witness": "evidence/p1_native_severance_witness.json",
+  "runner": "Exact sealed shared witness logic with return-only 600-second subprocess budget; unmodified 180-second CLI NOT_RUN",
+  "original_I03_Batch_execution": "NOT_RUN; no full validated C11 release recovered",
+  "original_execution_plan_omission": "NOT_RUN",
+  "new_source_semantic_family_model_actor_grants": 0,
+  "full_objective": "INCOMPLETE",
+  "retained_historical_RED": "evidence/continuation_p1_m1_frozen_claim.junit.xml remains pre-repair evidence; previous family-scope interpretation retracted"
+}

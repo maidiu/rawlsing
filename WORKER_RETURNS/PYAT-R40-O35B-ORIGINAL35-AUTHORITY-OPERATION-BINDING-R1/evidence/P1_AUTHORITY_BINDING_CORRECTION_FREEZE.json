@@ -1,0 +1,37 @@
+{
+  "schema": "O35B_P1_AUTHORITY_DIAGNOSIS_CORRECTION_FREEZE@1",
+  "time_utc": "2026-10-19T05:20:07.520226+00:00",
+  "parent": "03cb37da391b47bd1030de59280633c05f377542",
+  "original_positive_oracle": "CONTINUATION_P1_FREEZE.json unchanged",
+  "correction": "The previous require(object_family=...) diagnostic is stricter than actual native M1 validate_object_authority_closure, which calls resolve_exact only. The 36 family observations do not establish 36 M1 requirements.",
+  "actual_missing_authority": {
+    "authority_id": "urn:rawlsing:pre553:as2b:lits1:authority:part_a_projection",
+    "authority_version": "AS2A-BANKED-1.0.0",
+    "authority_content_hash": "9dd1e6b7350ebb795e028db86279131f8d319e939a044b74c3c5605ecacf5b06"
+  },
+  "exact_existing_public_snapshot_hash": "998d7e93b1d8424386f6f918c84f4fd3cb120fcb07127abf7ed3a73df9d90b5b",
+  "selection": "Single missing exact triple; unique existing retained snapshot. Retain scoped13 original snapshot pins; append existing projection snapshot only, without changing envelopes.",
+  "positive_expected": "Unchanged original named test reaches BLOCKED__MISSING_FAMILY_VALIDATION_RULE_AUTHORITY after actual native closure and receipt/fact/query verification",
+  "fault_expected": "Same existing joint-Fact deletion proof contract must fail named test assertion; restore and rerun green",
+  "broader_original_I03_Batch_positive": "Still NOT_PROVED; no source read, C11 fabrication or rule issuance",
+  "owner_sources": [
+    {
+      "path": "rawlsing_next/pre553_empirical_authority.py",
+      "commit": "1150e836ef58553255abc0f588e66c1327db4932",
+      "git_blob_sha1": "ca65a7fd4d52f0c44447434559b1d09412e7aa39",
+      "sha256": "c32b96cd67274d2bcb44ca509afd87e085748bd2e32565716c10313b0609a29a"
+    },
+    {
+      "path": "rawlsing_next/pre553_learned_empirical_adjudication.py",
+      "commit": "1150e836ef58553255abc0f588e66c1327db4932",
+      "git_blob_sha1": "761db5924639eacf1c7c8b78a209326c1c51e2c5",
+      "sha256": "40ce648ebb60e87eaab02f526f7c5fd9095d6a9d1e1e3712f0cdb4c2b17ea6a7"
+    },
+    {
+      "path": "rawlsing_next/fiabc_lits_i_i03_operation_authority.py",
+      "commit": "1150e836ef58553255abc0f588e66c1327db4932",
+      "git_blob_sha1": "7887434179eac86e0bf76e4192cbe01425293b0e",
+      "sha256": "d79f0a91aac664b2251d524522328ba5edfe827d6bdfcaa9fd031fbb70c7efde"
+    }
+  ]
+}

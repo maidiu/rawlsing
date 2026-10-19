@@ -1,5 +1,12 @@
 # Continuation from 60b2243 — checkpoint recovered; native M1 edge remains RED
 
+**Correction at the next continuation:** the executed missing-authority RED is
+historical pre-repair evidence. The interpretation below that all 36 family
+checks are M1 requirements was wrong: native M1 closure resolves exact refs and
+does not impose those family checks. One uniquely retained projection snapshot
+was missing from the adapter and can be appended without issuing rights. See
+`07_NATIVE_M1_AUTHORITY_BINDING_CORRECTION.md` for the actual contract and proof.
+
 This continuation supersedes the earlier local-checkpoint absence finding, not
 the historical test results or original scope. The full O35B objective remains
 incomplete. The exact 26-plus-nine crosswalk, six administrative/twenty

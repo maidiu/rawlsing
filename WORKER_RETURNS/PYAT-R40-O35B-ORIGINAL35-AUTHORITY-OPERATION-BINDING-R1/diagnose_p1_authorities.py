@@ -1,7 +1,9 @@
-"""Replay exact retained P1 authority-family failures without issuing envelopes.
+"""Replay a strict authority-family diagnostic, not M1's actual closure rule.
 
 This inspects already recovered objects and invokes the native registry. It is
 not a replacement for full native materialization or a learned-consumer pass.
+Correction: M1 closure calls resolve_exact, not require(object_family=...). The
+family failures here must not be reported as M1 authority-binding obligations.
 """
 import gzip
 import json

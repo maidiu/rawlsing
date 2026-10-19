@@ -2,11 +2,15 @@
 
 The full objective is incomplete. This audit preserves the original scope and does not redefine completion around metadata or the new catalog positive.
 
-**Resumed-cut update:** exact checkpoint bytes and the three selected P1 Fact
-preimages are now recovered. Native M1 was executed and failed the frozen
-missing-rule expectation with an earlier missing-authority-closure hold. The
-old blocked audit at the end is historical, not a fresh declaration of goal
-status. See `06_CHECKPOINT_RECOVERY_AND_NATIVE_M1_RED.md`.
+**Current resumed cut:** exact checkpoint bytes and the three selected P1 Fact
+preimages are recovered. One existing historical projection snapshot repairs
+the adapter's M1 exact-ref closure; the original frozen missing-rule test now
+passes. The earlier family-envelope diagnosis is retracted in
+`07_NATIVE_M1_AUTHORITY_BINDING_CORRECTION.md`. Direct severance asserts RED in
+the same named test and the restored native positive passes GREEN, with the
+documented 600-second shared-checker timeout adapter. The old blocked audit at
+the end remains historical, not a fresh
+declaration of goal status.
 
 | Objective requirement | Authoritative evidence / current state | Completion |
 |---|---|---|
@@ -21,10 +25,10 @@ status. See `06_CHECKPOINT_RECOVERY_AND_NATIVE_M1_RED.md`.
 | Actual retained original query packet enters native catalog | Recovered verified portable export; 122 exact native object imports; scoped13-snapshot/35-predicate/63-query native catalog | Proved sourcefree technical binding; no permission adoption |
 | Full historical archive can serve as one registry | Actual whole24-snapshot catalog fails six conflicting envelope pairs | Contradicted at union grain; original RED preserved |
 | Original native I03/Batch execution | Exact original query reaches actual Batch constructor; exact validated C11 release absent | Incomplete / NOT_RUN |
-| Named original learned consumer | Three exact selected P1 Facts recovered and passed to real M1; authority closure blocks before full verification and the expected missing-rule hold | Executed native boundary; frozen positive RED / integration NOT_PROVED |
+| Named original learned consumer | Three exact selected P1 Facts pass real native M1 verification after exact projection snapshot append; original frozen missing-rule hold test and exact joint-deletion/restored-positive witness pass | Retained-object integrity edge proved to typed rule hold; no learned relation or original execution completion |
 | Independent expected original execution workload | Eight AS2B operations frozen; accepted63 query refs independently pinned; original operation eligibility/U/E_pre remain unissued | Partial; not an issued current execution set |
 | Remove original operation from actual native execution plan, assert anti-join RED, restore GREEN | Metadata, native-object and scoped-catalog omission witnesses exist; no original execution plan ran | Incomplete; three narrower witnesses do not discharge it |
-| Claim-specific proof contracts, actual assertion RED and restored GREEN | Initial metadata proof; retained-object and scoped-catalog proof contracts and execution receipts | Proved only for their explicitly bounded edges |
+| Claim-specific proof contracts, actual assertion RED and restored GREEN | Initial metadata, retained-object and scoped-catalog witnesses; new actual original P1 Fact-to-native-M1 input omission and restored-positive witness | Proved only for their explicitly bounded edges; native M1 witness uses documented 600-second timeout wrapper |
 | Required native hostile controls across form/route/weight/respondent/etc. | Preservation and actual fail-closed boundary tests; native original operation variants remain NOT_RUN | Partial, see control-scope matrix |
 | No raw original read without verified exact warrant | No raw read/hash/stat/decoder; current source rights not inferred | Proved for this worker's actions |
 | Preserve original historical positive, distinguish historical from new | Original AS2B receipt and source audit; separate later checkpoint/export scopes | Proved |
@@ -32,8 +36,10 @@ status. See `06_CHECKPOINT_RECOVERY_AND_NATIVE_M1_RED.md`.
 | No self-adoption, source/semantic issuance, actor, FF/model, N11/N12 or V3 | Passive worker-return changes; native owners unchanged; remaining rights explicitly held | Proved scope boundary |
 
 Completion is not established. The selected P1 Fact arrays are now available.
-The remaining execution/consumer proof needs the exact validated C11 release
-and an identity-preserving compatible M1 authority packet. An original rebuild
+The remaining execution proof needs the exact validated C11 release. The
+selected P1 M1 authority packet is now mechanically bound using the existing
+exact projection snapshot; no family-envelope expansion is required. A
+positive learned claim still requires its exact family binding. An original rebuild
 would require a separately verified specific source/host/purpose warrant.
 Full35 scientific binding and any learned family rule remain competent issuer
 decisions. This worker cannot make those prerequisites true by widening claims

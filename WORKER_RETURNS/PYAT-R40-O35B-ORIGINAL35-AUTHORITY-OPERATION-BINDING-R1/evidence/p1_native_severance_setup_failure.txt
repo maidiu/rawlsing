@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "WORKTREE/WORKER_RETURNS/PYAT-R40-O35B-ORIGINAL35-AUTHORITY-OPERATION-BINDING-R1/run_p1_exact_witness.py", line 91, in <module>
+    result=run()
+           ^^^^^
+  File "WORKTREE/WORKER_RETURNS/PYAT-R40-O35B-ORIGINAL35-AUTHORITY-OPERATION-BINDING-R1/run_p1_exact_witness.py", line 64, in run
+    receipt=gate.witness(contract,ROOT)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "WORKTREE/CROSS_HQ_CONTROL_ROOM/proof_integrity_gate_r1.py", line 154, in witness
+    baseline = _run_node(root, node, base_xml)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "WORKTREE/CROSS_HQ_CONTROL_ROOM/proof_integrity_gate_r1.py", line 110, in _run_node
+    stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
+           ^^^^^^^^^^^^^^^
+AttributeError: 'types.SimpleNamespace' object has no attribute 'PIPE'

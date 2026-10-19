@@ -8,9 +8,9 @@
   "sealed_startup": "1150e836ef58553255abc0f588e66c1327db4932",
   "epoch_id": "dd32d116a9714d7797a568cd6a0c09cb",
   "status": "LIVE_VERIFIED",
-  "last_live_probe_at": "2026-10-19T05:15:56.305723+00:00",
+  "last_live_probe_at": "2026-10-19T05:33:11.629986+00:00",
   "head_at_probe": "60b224360ce95aedd0eb371413934d23d752eb71",
-  "continuation_parent": "60b224360ce95aedd0eb371413934d23d752eb71",
+  "continuation_parent": "03cb37da391b47bd1030de59280633c05f377542",
   "writable_marker": "KNOWN_VALUE_WRITE_READ_EQUALITY_VERIFIED_IGNORED_RUNTIME",
   "python": "3.11.3",
   "pytest": "9.0.2",
@@ -266,10 +266,70 @@
   "original35_current_permitted": 0,
   "checkpoint": "EXACT_BYTE_MATCH_RECOVERED",
   "selected_fact_arrays": "3_P1_FACTS_EXACT_NATIVE_MATERIALIZATION",
-  "M1": "EXECUTED_NATIVE__BLOCKED_MISSING_AUTHORITY_CLOSURE__FROZEN_POSITIVE_RED",
+  "M1": "ORIGINAL_FROZEN_POSITIVE_PASS_AFTER_EXACT_EXISTING_PROJECTION_SNAPSHOT_BINDING; NO_FAMILY_RULE_ISSUED",
   "original_execution_plan_omission": "NOT_RUN",
-  "proof_grade": "NEW_M1_EDGE_NOT_PROVED",
+  "proof_grade": "RETAINED_ORIGINAL_P1_FACTS_TO_NATIVE_M1_VERIFICATION_AND_TYPED_RULE_HOLD__CLAIM_EDGE_PROVED_AT_THIS_GRAIN",
   "independence": "IMPLEMENTING_AUTHOR; NOT_INDEPENDENT_ACCEPTANCE",
   "eligibility": "RELATED_RETAINED_BINDING_CONTINUATION; REPROBE_BEFORE_REUSE",
-  "expiry_trigger": "runtime reset, source/import drift, worktree conflict, source/scope change"
+  "expiry_trigger": "runtime reset, source/import drift, worktree conflict, source/scope change",
+  "history_parent": "03cb37da391b47bd1030de59280633c05f377542",
+  "observed_usage": {
+    "plan": "plus",
+    "primary_used_percent": 43,
+    "secondary_used_percent": 47,
+    "scope": "ACCOUNT_WIDE_SNAPSHOT_THIS_CONTINUATION; NOT_TASK_COST",
+    "incremental_cash": "UNKNOWN"
+  },
+  "rule_owner_boundary": "Existing I05/J/M1 owners inspected; positive exact P1 family-role/selection binding remains separate",
+  "actual_M1_baseline": {
+    "state": "BLOCKED__MISSING_FAMILY_VALIDATION_RULE_AUTHORITY",
+    "disposition_hash": "fccdea7d53c85db158dd5b4c67774b8aac1ea781f18e661bd2acdf0086f7a22a",
+    "runtime_seconds": 243.44,
+    "proof_grade": "RETAINED_FACT_INTEGRITY_TO_TYPED_RULE_HOLD"
+  },
+  "actual_M1_fault": {
+    "state": "NATIVE_INPUT_BUNDLE_REFUSED",
+    "result": "TARGET_ASSERTION_FAILED",
+    "errors": 0,
+    "skips": 0,
+    "runtime_seconds": 22.39
+  },
+  "shared_checker": {
+    "sealed_source_unchanged": true,
+    "timeout_only_return_wrapper_seconds": 600,
+    "direct_180_second_CLI": "NOT_RUN; native positive exceeds budget",
+    "restored_positive": "PASS; SAME_NATIVE_NAMED_TEST"
+  },
+  "broader_objective": "INCOMPLETE; current original execution/C11 preimage and scientific owner bindings missing",
+  "actual_native_M1_witness": [
+    {
+      "phase": "baseline",
+      "tests": "1",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "243.440"
+    },
+    {
+      "phase": "fault",
+      "tests": "1",
+      "failures": "1",
+      "errors": "0",
+      "skipped": "0",
+      "time": "22.382"
+    },
+    {
+      "phase": "restored",
+      "tests": "1",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "250.748"
+    }
+  ],
+  "assignments_completed": [
+    "O35B_BOUND_OWNER_ACCOUNTING",
+    "EXACT_P1_RETAINED_OBJECT_RECOVERY",
+    "RETURN_ONLY_NATIVE_M1_PROJECTION_BINDING_REPAIR_AND_DIRECT_FACT_SEVERANCE_PROOF"
+  ]
 }
