@@ -31,7 +31,7 @@
     },
     "filesystem": "VERIFIED",
     "shell": "zsh VERIFIED",
-    "github_transport": "VERIFIED read transport at execution; ordinary push/readback is separately evidenced in publication receipt"
+    "github_transport": "VERIFIED ordinary push, GitHub commit/branch API and git ls-remote; see evidence/publication_receipt.json"
   },
   "dependency_versions": {
     "pytest": "9.1.1",
@@ -501,5 +501,6 @@
   ],
   "staged_state_preservation": "versioned return preserved; ignored venv and marker live at final probe only; no future continuity assumed",
   "retire_or_rebuild_reason": null,
-  "adoption": false
+  "adoption": false,
+  "publication_checkpoint": "f6e01f64578f7aa90b2b117599ffdedb4aaf0959"
 }
