@@ -68,7 +68,7 @@ def run():
     out=rb.execute_route_b_production(source=fx['stream'],projection=fx['projection'],runtime_catalog=fx['catalog'],i03_requests=requests,discovery_authority_ref=ds[0].ref)
     results['valid_empty']=dict(i05_receipts=[material(x) for x in out.i05_result.receipts],i03_facts=[material(f) for x in out.i03_results for f in x.facts],anti_join=verify_jobs(expected['valid_empty'],requests,ds),grade='TEST_ONLY_TYPED_EMPTY_OR_NEGATIVE_RETAINED')
     (R/'evidence/native_experiment.json').write_text(json.dumps(results,sort_keys=True,indent=2)+'\n')
-    print(json.dumps({k:dict(manifest_units=len(v.get('manifest',{}).get('units',[])),anti_join=v.get('independent_named_fixture_anti_join',v.get('anti_join')),consumer_positive=v.get('consumer_positive',{}).get('typed_state'),consumer_unknown=v.get('consumer_unknown',{}).get('typed_state')) for k,v in results.items()},sort_keys=True))
+    print(json.dumps({k:dict(manifest_units=len(v.get('manifest',{}).get('units',[])),anti_join=v.get('independent_named_fixture_anti_join',v.get('anti_join')),consumer_positive=v.get('consumer_positive',{}).get('semantic_fields',{}).get('adjudication_outcome'),consumer_unknown=v.get('consumer_unknown',{}).get('semantic_fields',{}).get('adjudication_outcome')) for k,v in results.items()},sort_keys=True))
 if __name__=='__main__':
     if '--freeze' in sys.argv:freeze()
     else:run()

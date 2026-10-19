@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="33" time="1.264" timestamp="2026-10-18T20:42:43.834363-04:00" hostname="LOCAL_EXECUTOR"><testcase classname="test_wg0x" name="test_full_identity_multiset_and_all35" time="0.392" /><testcase classname="test_wg0x" name="test_party_is_substantive_with_original_structure_witness" time="0.001" /><testcase classname="test_wg0x" name="test_all_nine_blocked_rows_preserved_without_synthetic_identity" time="0.000" /><testcase classname="test_wg0x" name="test_accepted_duplicate_q47st_assertions_are_not_last_row_deduplicated" time="0.003" /><testcase classname="test_wg0x" name="test_v525b_and_later_driver_difference_is_retained" time="0.003" /><testcase classname="test_wg0x" name="test_exact_physical_names_are_candidate_bindings_not_replacements" time="0.000" /><testcase classname="test_wg0x" name="test_p46_and_entity_subitems_keep_multiplicity" time="0.000" /><testcase classname="test_wg0x" name="test_research_is_not_original_permission_or_full_frontier" time="0.004" /><testcase classname="test_wg0x" name="test_mutated_source_projection_refused[sources/p2_identity_projection.jsonl]" time="0.067" /><testcase classname="test_wg0x" name="test_mutated_source_projection_refused[sources/qra_identity_projection.jsonl]" time="0.080" /><testcase classname="test_wg0x" name="test_mutated_source_projection_refused[sources/p2_only_exact_rows.json]" time="0.040" /><testcase classname="test_wg0x" name="test_mutated_source_projection_refused[sources/qra_blocked_exact_rows.json]" time="0.040" /><testcase classname="test_wg0x" name="test_named_prefrozen_fixture_matches_input[positive]" time="0.020" /><testcase classname="test_wg0x" name="test_named_prefrozen_fixture_matches_input[missing_weight]" time="0.019" /><testcase classname="test_wg0x" name="test_named_prefrozen_fixture_matches_input[valid_empty]" time="0.018" /><testcase classname="test_wg0x" name="test_preexecution_job_anti_join_refuses[missing]" time="0.009" /><testcase classname="test_wg0x" name="test_preexecution_job_anti_join_refuses[duplicate]" time="0.008" /><testcase classname="test_wg0x" name="test_preexecution_job_anti_join_refuses[wrong_predicate]" time="0.009" /><testcase classname="test_wg0x" name="test_preexecution_job_anti_join_refuses[no_discovery]" time="0.009" /><testcase classname="test_wg0x" name="test_full_source_binding_changes_refused[source_version]" time="0.017" /><testcase classname="test_wg0x" name="test_full_source_binding_changes_refused[projection_respondent_role]" time="0.009"><failure message="AttributeError: 'GovernedC11Projection' object has no attribute 'row_respondent_bindings'">mutation = 'projection_respondent_role'
+expected = {'missing_weight': {'catalog_sha256': '8939383b15ca0f3dd85a3a2a0459a7601e7175f0ea3eae03dddc5f39d6ddf0bc', 'expected_jo..._ORIGINAL35_E_PRE', 'physical_stream_sha256': 'abef9f68d373a01268454ff6de4eb8e4eec3332dfbd53b89e8163da4b5b02684', ...}}
+
+    @pytest.mark.parametrize('mutation',['source_version','projection_respondent_role','changed_weight'])
+    def test_full_source_binding_changes_refused(mutation,expected):
+        fx=exp._fixture()
+        if mutation=='source_version':fx['stream']=replace(fx['stream'],source_sha256='f'*64)
+        elif mutation=='changed_weight':fx=exp._fixture(missing_weight=True)
+        else:
+            # Same native slots/counts, different supplied respondent carrier preimage.
+&gt;           p=fx['projection'];d=dict(p.row_respondent_bindings[0].__dict__)
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: 'GovernedC11Projection' object has no attribute 'row_respondent_bindings'
+
+test_wg0x.py:107: AttributeError</failure></testcase><testcase classname="test_wg0x" name="test_full_source_binding_changes_refused[changed_weight]" time="0.026" /><testcase classname="test_wg0x" name="test_actual_receipts_and_consumers[positive]" time="0.005" /><testcase classname="test_wg0x" name="test_actual_receipts_and_consumers[missing_weight]" time="0.002" /><testcase classname="test_wg0x" name="test_actual_missing_weight_stays_unavailable" time="0.000" /><testcase classname="test_wg0x" name="test_valid_empty_discovery_has_native_typed_receipt" time="0.000"><failure message="KeyError: 'discovery_state'">receipts = {'missing_weight': {'batch_receipts': [{'attempt_index': 1, 'detail_hash': None, 'execution_performed': True, 'executo...awlsing:pre553:DiscoveryResultReceipt:sha256:29ab4e44d44d5580063d494c2b7725ee322d4a2bd7b314126faf14c56cf142eb', ...}]}}
+
+    def test_valid_empty_discovery_has_native_typed_receipt(receipts):
+        ds=receipts['valid_empty']['i05_receipts']
+&gt;       assert ds and all(d['semantic_fields']['discovery_state']=='VALID_EMPTY' for d in ds)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test_wg0x.py:135: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+.0 = &lt;list_iterator object at 0x1021da5c0&gt;
+
+&gt;   assert ds and all(d['semantic_fields']['discovery_state']=='VALID_EMPTY' for d in ds)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   KeyError: 'discovery_state'
+
+test_wg0x.py:135: KeyError</failure></testcase><testcase classname="test_wg0x" name="test_postexecution_missing_substituted_or_hidden_results_refused[missing_receipt]" time="0.004" /><testcase classname="test_wg0x" name="test_postexecution_missing_substituted_or_hidden_results_refused[duplicate_receipt]" time="0.003" /><testcase classname="test_wg0x" name="test_postexecution_missing_substituted_or_hidden_results_refused[deferred]" time="0.004" /><testcase classname="test_wg0x" name="test_postexecution_missing_substituted_or_hidden_results_refused[drop_fact]" time="0.003" /><testcase classname="test_wg0x" name="test_postexecution_missing_substituted_or_hidden_results_refused[wrong_result]" time="0.003" /><testcase classname="test_wg0x" name="test_postexecution_missing_substituted_or_hidden_results_refused[consumer_drop]" time="0.004" /><testcase classname="test_wg0x" name="test_postexecution_missing_substituted_or_hidden_results_refused[drop_manifest]" time="0.011" /></testsuite></testsuites>

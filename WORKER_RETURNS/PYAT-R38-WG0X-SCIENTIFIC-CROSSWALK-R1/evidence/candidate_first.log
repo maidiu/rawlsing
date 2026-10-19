@@ -1,0 +1,42 @@
+....................F....F.......                                        [100%]
+=================================== FAILURES ===================================
+_____ test_full_source_binding_changes_refused[projection_respondent_role] _____
+
+mutation = 'projection_respondent_role'
+expected = {'missing_weight': {'catalog_sha256': '8939383b15ca0f3dd85a3a2a0459a7601e7175f0ea3eae03dddc5f39d6ddf0bc', 'expected_jo..._ORIGINAL35_E_PRE', 'physical_stream_sha256': 'abef9f68d373a01268454ff6de4eb8e4eec3332dfbd53b89e8163da4b5b02684', ...}}
+
+    @pytest.mark.parametrize('mutation',['source_version','projection_respondent_role','changed_weight'])
+    def test_full_source_binding_changes_refused(mutation,expected):
+        fx=exp._fixture()
+        if mutation=='source_version':fx['stream']=replace(fx['stream'],source_sha256='f'*64)
+        elif mutation=='changed_weight':fx=exp._fixture(missing_weight=True)
+        else:
+            # Same native slots/counts, different supplied respondent carrier preimage.
+>           p=fx['projection'];d=dict(p.row_respondent_bindings[0].__dict__)
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: 'GovernedC11Projection' object has no attribute 'row_respondent_bindings'
+
+test_wg0x.py:107: AttributeError
+_____________ test_valid_empty_discovery_has_native_typed_receipt ______________
+
+receipts = {'missing_weight': {'batch_receipts': [{'attempt_index': 1, 'detail_hash': None, 'execution_performed': True, 'executo...awlsing:pre553:DiscoveryResultReceipt:sha256:29ab4e44d44d5580063d494c2b7725ee322d4a2bd7b314126faf14c56cf142eb', ...}]}}
+
+    def test_valid_empty_discovery_has_native_typed_receipt(receipts):
+        ds=receipts['valid_empty']['i05_receipts']
+>       assert ds and all(d['semantic_fields']['discovery_state']=='VALID_EMPTY' for d in ds)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test_wg0x.py:135: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+.0 = <list_iterator object at 0x1021da5c0>
+
+>   assert ds and all(d['semantic_fields']['discovery_state']=='VALID_EMPTY' for d in ds)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   KeyError: 'discovery_state'
+
+test_wg0x.py:135: KeyError
+=========================== short test summary info ============================
+FAILED test_wg0x.py::test_full_source_binding_changes_refused[projection_respondent_role]
+FAILED test_wg0x.py::test_valid_empty_discovery_has_native_typed_receipt - Ke...
+2 failed, 31 passed in 1.27s

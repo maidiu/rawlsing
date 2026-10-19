@@ -1,0 +1,44 @@
+{
+  "status": "RELOCATED_SOURCEFREE_REPLAY_AND_133_TEST_COURT_PASS",
+  "no_git_directory": true,
+  "no_original_respondent_source_read": true,
+  "expected_sha256": "12f6d4880ce343ec9676863858d8bfcf2e801d1845bca72e71a0fc5e9d2dfb61",
+  "native_receipts_sha256": "acb51f106194aba062355d1cca3c2874fc942ba82ec92fdd5aa121e82bfa090d",
+  "byte_identical": true,
+  "commands": [
+    {
+      "command": [
+        "python3",
+        "-B",
+        "experiment.py"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "python3",
+        "-B",
+        "reconcile_execution.py"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "python3",
+        "-B",
+        "-m",
+        "pytest",
+        "test_wg0x.py",
+        "native/rawlsing_next/tests/test_pre553_route_b_production.py",
+        "native/rawlsing_next/tests/test_pre553_empirical_query.py",
+        "native/rawlsing_next/tests/test_pre553_discovery_exact.py",
+        "native/rawlsing_next/tests/test_pre553_batch_runner.py",
+        "native/rawlsing_next/tests/test_pre553_learned_empirical_adjudication.py",
+        "-q",
+        "--junitxml=evidence/cold_court.xml"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "scope": "AUTHOR_REPLAY_NOT_INDEPENDENT_REVIEW_OR_ORIGINAL35_PERMISSION"
+}

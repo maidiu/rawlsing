@@ -1,0 +1,57 @@
+....................F................................................... [ 54%]
+.............................................................            [100%]
+=================================== FAILURES ===================================
+_____ test_full_source_binding_changes_refused[projection_respondent_role] _____
+
+mutation = 'projection_respondent_role'
+expected = {'missing_weight': {'catalog_sha256': '8939383b15ca0f3dd85a3a2a0459a7601e7175f0ea3eae03dddc5f39d6ddf0bc', 'expected_jo..._ORIGINAL35_E_PRE', 'physical_stream_sha256': 'abef9f68d373a01268454ff6de4eb8e4eec3332dfbd53b89e8163da4b5b02684', ...}}
+
+    @pytest.mark.parametrize('mutation',['source_version','projection_respondent_role','changed_weight'])
+    def test_full_source_binding_changes_refused(mutation,expected):
+        fx=exp._fixture()
+        if mutation=='source_version':fx['stream']=replace(fx['stream'],source_sha256='f'*64)
+        elif mutation=='changed_weight':fx=exp._fixture(missing_weight=True)
+        else:
+            # Same row/slot counts, substituted exact respondent namespace.
+            p=fx['projection']; b=p.row_bindings[0]
+            foreign=replace(b.respondent_ref,object_id='urn:test:foreign-household')
+>           fx['projection']=replace(p,row_bindings=(replace(b,respondent_ref=foreign),*p.row_bindings[1:]))
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test_wg0x.py:109: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/dataclasses.py:1494: in replace
+    return obj.__class__(**changes)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+<string>:31: in __init__
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = GovernedC11Projection(projection_identity_ref=ExactRef(kind='C11_SEMANTIC_PROJECTION', object_id='urn:test:i03:c11_sem...19de50c2ff0c2af48b9561ea30fdfe5bdf3600e8a7f29c6e5a86d662b2104d8'), replay_protocol_version='1.0.0', slot_owner_sets=())
+
+    def __post_init__(self):
+        exact_ref(self.projection_identity_ref, "projection_identity_ref")
+        _sha(self.expected_source_sha256, "expected_source_sha256")
+        if self.source_snapshot_retention_ref.content_hash != self.expected_source_sha256:
+            raise SourceBackedC11FacadeError("snapshot ref does not bind expected source SHA")
+        if not all((self.universes, self.respondents, self.row_bindings, self.questions,
+                    self.response_slots, self.coordinate_slots, self.routing,
+                    self.authority_snapshots, self.required_authority_refs)):
+            raise SourceBackedC11FacadeError("projection omits mandatory governed semantic input")
+        mandatory = {self.projection_authority_ref, self.replay_authority_ref}
+        if not mandatory.issubset(set(self.required_authority_refs)):
+            raise SourceBackedC11FacadeError("projection/replay authorities must be explicitly required")
+        packaged = {a.authority_ref for a in self.authority_snapshots}
+        if not set(self.required_authority_refs).issubset(packaged):
+            raise SourceBackedC11FacadeError("required authority absent from projection closure")
+        if len({x.row_ordinal for x in self.row_bindings}) != len(self.row_bindings):
+            raise SourceBackedC11FacadeError("duplicate row replay coordinate")
+        respondent_refs = {r.ref for r in self.respondents}
+        if any(x.respondent_ref not in respondent_refs for x in self.row_bindings):
+>           raise SourceBackedC11FacadeError("row binding references absent respondent")
+E           rawlsing_next.pre553_source_backed_c11_facade.SourceBackedC11FacadeError: row binding references absent respondent
+
+native/rawlsing_next/pre553_source_backed_c11_facade.py:313: SourceBackedC11FacadeError
+=========================== short test summary info ============================
+FAILED test_wg0x.py::test_full_source_binding_changes_refused[projection_respondent_role]
+1 failed, 132 passed in 12.28s

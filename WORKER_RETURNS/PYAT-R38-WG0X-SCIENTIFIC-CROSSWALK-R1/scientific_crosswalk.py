@@ -89,6 +89,10 @@ def main():
     d=build();dump('01_EXACT_26_PLUS_9_CROSSWALK.json',{k:v for k,v in d.items() if k not in {'union','excluded'}})
     for name,key in [('evidence/union_identity_ledger.jsonl','union'),('evidence/excluded_inactive_ledger.jsonl','excluded')]:
         (R/name).write_text(''.join(json.dumps(x,ensure_ascii=False,sort_keys=True,separators=(',',':'))+'\n' for x in d[key]))
+    fields=['side','atlas_id','family','wave','variable','p2_exact_identity_sha256','inherited_role','classification','source_specific_decision','physical_alias_candidate','related_candidates','form','respondent_carrier','current_operation_status','scientific_note']
+    with (R/'01_EXACT_26_PLUS_9_CROSSWALK.csv').open('w') as f:
+        writer=csv.DictWriter(f,fieldnames=fields,lineterminator="\n");writer.writeheader()
+        writer.writerows({k:x.get(k,'') for k in fields} for x in d['rows'])
     dump('evidence/crosswalk_summary.json',{k:d[k] for k in ['counts','crosswalk_digest','waves','original35_current_operation_permission']})
     print(json.dumps(d['counts'],ensure_ascii=False))
 if __name__=='__main__':main()
