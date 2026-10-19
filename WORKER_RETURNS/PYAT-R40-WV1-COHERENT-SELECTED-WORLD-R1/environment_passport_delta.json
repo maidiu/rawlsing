@@ -6,7 +6,7 @@
   "surface": "Codex desktop local S2",
   "machine_alias": "LOCAL_ISOLATED_SHARED_STORE",
   "status": "LIVE_VERIFIED",
-  "last_live_probe_at": "2026-10-19T04:18:28.537471+00:00",
+  "last_live_probe_at": "2026-10-19T04:19:23.968328+00:00",
   "startup": "1150e836ef58553255abc0f588e66c1327db4932",
   "branch": "agent/rabochii-pyat-r40-wv1-coherent-selected-world-consumer-r1",
   "worktree": "ISOLATED_TASK_WORKTREE",
@@ -41,7 +41,9 @@
     "skipped": 0,
     "junit": "evidence/final_native.xml",
     "cold_replay": "evidence/cold_replay.json",
-    "claim_witnesses": "test_world_consumer.py.proof.json"
+    "claim_witnesses": "test_world_consumer.py.proof.json",
+    "changed_gate": "evidence/changed_gate.json",
+    "post_restore_audit": "evidence/completion_audit.json"
   },
   "usage": {
     "provider": "OpenAI through Codex",
@@ -69,5 +71,6 @@
     "F6 matched source/estimand/transport",
     "Original source/universe/operation binding",
     "Sorok C0 actor authority"
-  ]
+  ],
+  "implementation_commit": "80ad1a782724f3eec61b75cf9a347c6e916eed3c"
 }
