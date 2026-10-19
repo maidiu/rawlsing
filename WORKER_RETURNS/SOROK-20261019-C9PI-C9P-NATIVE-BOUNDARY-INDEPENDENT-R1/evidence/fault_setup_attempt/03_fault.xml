@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="0.119" timestamp="2026-10-19T13:10:42.212084-04:00" hostname="Matthews-MBP.lan"><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_severance_witnesses" name="test_conditioning_readset_binds_person_world_sources" time="0.013"><failure message="AssertionError: every conditioning source must appear in the bound readset&#10;assert ('SEVERED_SOU...D_SOURCE_REF') == ('TEST_ONLY_P...STATE:garage')&#10;  &#10;  At index 0 diff: 'SEVERED_SOURCE_REF' != 'TEST_ONLY_PERSON_STATE:standing'&#10;  Use -v to get more diff">def test_conditioning_readset_binds_person_world_sources() -&gt; None:
+        """Named assertion: the conditioning readset binds each person/world source."""
+        sources = build_conditioning_sources()
+        view = bind_conditioning(subject=ACTOR_ID, sources=sources, as_of=20)
+        assert view.status is ConditioningStatus.BOUND, view.reason.value
+        expected_refs = tuple(source["source_ref"] for source in sources)
+&gt;       assert view.readset_refs == expected_refs, (
+            "every conditioning source must appear in the bound readset"
+        )
+E       AssertionError: every conditioning source must appear in the bound readset
+E       assert ('SEVERED_SOU...D_SOURCE_REF') == ('TEST_ONLY_P...STATE:garage')
+E         
+E         At index 0 diff: 'SEVERED_SOURCE_REF' != 'TEST_ONLY_PERSON_STATE:standing'
+E         Use -v to get more diff
+
+WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_severance_witnesses.py:161: AssertionError</failure></testcase></testsuite></testsuites>

@@ -1,0 +1,19 @@
+E                                                                        [100%]
+==================================== ERRORS ====================================
+___________ ERROR at setup of test_permission_conditions_full_create ___________
+
+self = PosixPath('<RETURN_ROOT>/runs/pytest/07_fault')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+>           os.mkdir(self, mode)
+E           FileNotFoundError: [Errno 2] No such file or directory: '<RETURN_ROOT>/runs/pytest/07_fault'
+
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1116: FileNotFoundError
+=========================== short test summary info ============================
+ERROR review/test_edges.py::test_permission_conditions_full_create - FileNotF...
+1 error in 0.23s

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="0.366" timestamp="2026-10-19T13:20:18.645582-04:00" hostname="Matthews-MBP.lan"><testcase classname="review.test_edges" name="test_committed_target_conditions_cold_later_read" time="0.057"><failure message="AssertionError: assert &lt;LaterActionStatus.STATE_ABSENT: 'STATE_ABSENT'&gt; is &lt;LaterActionStatus.ACTION_ADMISSION_HELD: 'ACTION_ADMISSION_HELD'&gt;&#10; +  where &lt;LaterActionStatus.STATE_ABSENT: 'STATE_ABSENT'&gt; = LaterActionRead(status=&lt;LaterActionStatus.STATE_ABSENT: 'STATE_ABSENT'&gt;, consumer_id='TEST_ONLY_COLD_READER', middle_s...cord=None, as_of=30, readset_refs=(), candidate_route='', read_receipt_hash='', reason='COMMITTED_TARGET_STATE_ABSENT').status&#10; +  and   &lt;LaterActionStatus.ACTION_ADMISSION_HELD: 'ACTION_ADMISSION_HELD'&gt; = LaterActionStatus.ACTION_ADMISSION_HELD">tmp_path = PosixPath('<RETURN_ROOT>/runs/pytest/08_fault/test_committed_target_conditio0')
+
+    def test_committed_target_conditions_cold_later_read(tmp_path):
+     p=tmp_path/'positive.sqlite'
+     with CandidateStore(p) as s:
+      r=run(s);key=r.decision.proposal_hash;expected=r.decision.record_hash
+     with CandidateStore(p) as s:
+      from candidate.later_action import read_target_for_later_action
+      read=read_target_for_later_action(s,consumer=LaterActionConsumer('TEST_ONLY_COLD_READER','target'),middle_state_id=key,as_of=30,commit_time=15)
+&gt;     assert read.status is LaterActionStatus.ACTION_ADMISSION_HELD
+E     AssertionError: assert &lt;LaterActionStatus.STATE_ABSENT: 'STATE_ABSENT'&gt; is &lt;LaterActionStatus.ACTION_ADMISSION_HELD: 'ACTION_ADMISSION_HELD'&gt;
+E      +  where &lt;LaterActionStatus.STATE_ABSENT: 'STATE_ABSENT'&gt; = LaterActionRead(status=&lt;LaterActionStatus.STATE_ABSENT: 'STATE_ABSENT'&gt;, consumer_id='TEST_ONLY_COLD_READER', middle_s...cord=None, as_of=30, readset_refs=(), candidate_route='', read_receipt_hash='', reason='COMMITTED_TARGET_STATE_ABSENT').status
+E      +  and   &lt;LaterActionStatus.ACTION_ADMISSION_HELD: 'ACTION_ADMISSION_HELD'&gt; = LaterActionStatus.ACTION_ADMISSION_HELD
+
+review/test_edges.py:24: AssertionError</failure></testcase></testsuite></testsuites>

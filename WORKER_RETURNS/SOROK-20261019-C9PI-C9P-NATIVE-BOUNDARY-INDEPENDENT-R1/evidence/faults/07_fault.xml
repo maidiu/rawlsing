@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="0.384" timestamp="2026-10-19T13:20:15.800328-04:00" hostname="Matthews-MBP.lan"><testcase classname="review.test_edges" name="test_permission_conditions_full_create" time="0.050"><failure message="AssertionError: assert &lt;TargetBranch.DENY: 'DENY'&gt; is &lt;TargetBranch.CREATE: 'CREATE'&gt;&#10; +  where &lt;TargetBranch.DENY: 'DENY'&gt; = TargetDecision(branch=&lt;TargetBranch.DENY: 'DENY'&gt;, reason=&lt;TargetReason.PERMISSION_BINDING_MISMATCH: 'PERMISSION_BINDI...ter_target_hash='4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945', readset_refs=(), permission_ref='').branch&#10; +    where TargetDecision(branch=&lt;TargetBranch.DENY: 'DENY'&gt;, reason=&lt;TargetReason.PERMISSION_BINDING_MISMATCH: 'PERMISSION_BINDI...ter_target_hash='4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945', readset_refs=(), permission_ref='') = PipelineResult(stages=(PipelineStage(stage='actor_ingress', ok=True, reason='OK', detail={'actor_id': 'TEST_ONLY_REVIE...f, act, occurrence_ref, action_time, actor_id, consumed_state_hash, hash}', held_at=30), committed=True, no_ghost=True).decision&#10; +  and   &lt;TargetBranch.CREATE: 'CREATE'&gt; = TargetBranch.CREATE">tmp_path = PosixPath('<RETURN_ROOT>/runs/pytest/07_fault/test_permission_conditions_ful0')
+
+    def test_permission_conditions_full_create(tmp_path):
+     with CandidateStore(tmp_path/'positive.sqlite') as s:
+      r=run(s)
+      assert r.receipt.committed
+&gt;     assert r.decision.branch is TargetBranch.CREATE
+E     AssertionError: assert &lt;TargetBranch.DENY: 'DENY'&gt; is &lt;TargetBranch.CREATE: 'CREATE'&gt;
+E      +  where &lt;TargetBranch.DENY: 'DENY'&gt; = TargetDecision(branch=&lt;TargetBranch.DENY: 'DENY'&gt;, reason=&lt;TargetReason.PERMISSION_BINDING_MISMATCH: 'PERMISSION_BINDI...ter_target_hash='4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945', readset_refs=(), permission_ref='').branch
+E      +    where TargetDecision(branch=&lt;TargetBranch.DENY: 'DENY'&gt;, reason=&lt;TargetReason.PERMISSION_BINDING_MISMATCH: 'PERMISSION_BINDI...ter_target_hash='4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945', readset_refs=(), permission_ref='') = PipelineResult(stages=(PipelineStage(stage='actor_ingress', ok=True, reason='OK', detail={'actor_id': 'TEST_ONLY_REVIE...f, act, occurrence_ref, action_time, actor_id, consumed_state_hash, hash}', held_at=30), committed=True, no_ghost=True).decision
+E      +  and   &lt;TargetBranch.CREATE: 'CREATE'&gt; = TargetBranch.CREATE
+
+review/test_edges.py:13: AssertionError</failure></testcase></testsuite></testsuites>

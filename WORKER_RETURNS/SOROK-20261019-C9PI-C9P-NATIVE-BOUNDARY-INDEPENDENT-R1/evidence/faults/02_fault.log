@@ -1,0 +1,58 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_____________ test_target_decision_consumes_independent_permission _____________
+
+tmp_path = PosixPath('<RETURN_ROOT>/runs/pytest/02_fault/test_target_decision_consumes_0')
+
+    def test_target_decision_consumes_independent_permission(tmp_path) -> None:
+        """Named assertion: CREATE fires only from an independently authenticated permission."""
+        rule = build_response_rule()
+        registry = TargetRuleRegistry.test_only((build_target_rule(rule.rule_content_hash),))
+        permission = make_target_permission(
+            grant_id="grant-sev",
+            issuer_ref=TEST_ONLY_TARGET_ISSUER,
+            actor_id=ACTOR_ID,
+            rule_content_hash=rule.rule_content_hash,
+            before_target_hash="before-sev",
+            response_hash="resp-sev",
+            issued_at=10,
+        )
+        proposal = {
+            "schema": "C9P_TARGET_PROPOSAL@1",
+            "actor_id": ACTOR_ID,
+            "state_kind_id": "V3MS_PRACTICE",
+            "operation": "CREATE",
+            "proposed_effective_time": 15,
+            "semantic_object_ref": "c9p:coordinated_material_inspection",
+            "target_refs": ["c9p:practice"],
+            "causal_parent_refs": ["event-hash", "h-a", "h-b"],
+            "source_update_rule_ref": rule.rule_content_hash,
+            "evaluator_receipts": ["src-1"],
+            "numeric_rule_ref": None,
+            "stochastic_receipt_ref": None,
+        }
+        from candidate.canon import seal as _seal
+    
+        sealed_proposal = _seal(proposal)
+        decision = evaluate_target(
+            registry=registry,
+            proposal=sealed_proposal,
+            permission=permission,
+            actor_id=ACTOR_ID,
+            before_target_hash="before-sev",
+            existing_target_ids=frozenset(),
+            prior_event_hash="event-hash",
+            as_of=20,
+            enacted_history_refs=("h-a", "h-b"),
+            permitted_issuer_refs=frozenset({TEST_ONLY_TARGET_ISSUER}),
+        )
+>       assert decision.branch is TargetBranch.CREATE, decision.reason.value
+E       AssertionError: PERMISSION_BINDING_MISMATCH
+E       assert <TargetBranch.DENY: 'DENY'> is <TargetBranch.CREATE: 'CREATE'>
+E        +  where <TargetBranch.DENY: 'DENY'> = TargetDecision(branch=<TargetBranch.DENY: 'DENY'>, reason=<TargetReason.PERMISSION_BINDING_MISMATCH: 'PERMISSION_BINDI...', record_hash='', before_target_hash='before-sev', after_target_hash='before-sev', readset_refs=(), permission_ref='').branch
+E        +  and   <TargetBranch.CREATE: 'CREATE'> = TargetBranch.CREATE
+
+WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_severance_witnesses.py:150: AssertionError
+=========================== short test summary info ============================
+FAILED WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_severance_witnesses.py::test_target_decision_consumes_independent_permission
+1 failed in 0.21s

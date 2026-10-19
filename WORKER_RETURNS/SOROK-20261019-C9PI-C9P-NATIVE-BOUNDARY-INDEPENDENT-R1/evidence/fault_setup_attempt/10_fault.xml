@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="0.219" timestamp="2026-10-19T13:10:57.509455-04:00" hostname="Matthews-MBP.lan"><testcase classname="review.test_edges" name="test_event_original_presented_source_controls_readset" time="0.001"><failure message="AssertionError: assert ('SEVERED_OWNER',) == ('TEST_ONLY_R...EVENT_OWNER',)&#10;  &#10;  At index 0 diff: 'SEVERED_OWNER' != 'TEST_ONLY_REVIEW_EVENT_OWNER'&#10;  Use -v to get more diff">def test_event_original_presented_source_controls_readset():
+     e=event();r=ingress_event(e,as_of=20,last_time=0,prior_event_hashes=frozenset())
+     assert r.admitted
+     assert r.event_hash==e['hash']
+&gt;    assert r.readset_refs==(e['owner_ref'],)
+E    AssertionError: assert ('SEVERED_OWNER',) == ('TEST_ONLY_R...EVENT_OWNER',)
+E      
+E      At index 0 diff: 'SEVERED_OWNER' != 'TEST_ONLY_REVIEW_EVENT_OWNER'
+E      Use -v to get more diff
+
+review/test_edges.py:39: AssertionError</failure></testcase></testsuite></testsuites>

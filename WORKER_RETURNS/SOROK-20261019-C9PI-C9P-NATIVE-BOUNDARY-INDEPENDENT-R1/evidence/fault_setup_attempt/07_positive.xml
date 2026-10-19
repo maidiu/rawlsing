@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="1" failures="0" skipped="0" tests="1" time="0.241" timestamp="2026-10-19T13:10:50.668040-04:00" hostname="Matthews-MBP.lan"><testcase classname="review.test_edges" name="test_permission_conditions_full_create" time="0.002"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '<RETURN_ROOT>/runs/pytest/07_positive'&quot;">self = PosixPath('<RETURN_ROOT>/runs/pytest/07_positive')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [Errno 2] No such file or directory: '<RETURN_ROOT>/runs/pytest/07_positive'
+
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1116: FileNotFoundError</error></testcase></testsuite></testsuites>

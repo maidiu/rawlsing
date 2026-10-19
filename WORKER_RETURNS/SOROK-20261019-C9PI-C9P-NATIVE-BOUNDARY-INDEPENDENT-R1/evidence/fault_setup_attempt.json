@@ -1,0 +1,461 @@
+[
+  {
+    "claim_id": "C9P_LATER_ACTION_CONSUMER_READS_COMMITTED_TARGET_STATE",
+    "node": "WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_severance_witnesses.py::test_later_action_consumer_reads_committed_target_state",
+    "fault": {
+      "path": "WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/candidate/later_action.py",
+      "old": "record, state_hash = consumer.read_target(store, middle_state_id, as_of)",
+      "new": "record, state_hash = None, \"\""
+    },
+    "before_sha256": "b04abfe363299086c53f0f0d21380ec4d08477d175013a9b80cec3db3c1c3ffe",
+    "fault_sha256": "9439fb2117502321634883d9e05bb487f27c9ebe632ed70750b363b40e8e15ab",
+    "restored_sha256": "b04abfe363299086c53f0f0d21380ec4d08477d175013a9b80cec3db3c1c3ffe",
+    "positive": {
+      "exit": 1,
+      "name": "test_later_action_consumer_reads_committed_target_state",
+      "failure": false,
+      "error": true,
+      "skipped": false,
+      "junit": "evidence/faults/00_positive.xml",
+      "assertion": ""
+    },
+    "negative": {
+      "exit": 1,
+      "name": "test_later_action_consumer_reads_committed_target_state",
+      "failure": false,
+      "error": true,
+      "skipped": false,
+      "junit": "evidence/faults/00_fault.xml",
+      "assertion": ""
+    },
+    "restored": {
+      "exit": 1,
+      "name": "test_later_action_consumer_reads_committed_target_state",
+      "failure": false,
+      "error": true,
+      "skipped": false,
+      "junit": "evidence/faults/00_restored.xml",
+      "assertion": ""
+    },
+    "invariant": null,
+    "grade": "NOT_PROVED"
+  },
+  {
+    "claim_id": "C9P_RESPONSE_LOOKUP_CONSUMES_EXACT_RULE_REGISTRY_ENTRY",
+    "node": "WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_severance_witnesses.py::test_response_lookup_consumes_exact_rule_registry_entry",
+    "fault": {
+      "path": "WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/candidate/response_rules.py",
+      "old": "entry = registry.rules.get(key)",
+      "new": "entry = None"
+    },
+    "before_sha256": "80885e2fe0b3eef4ccb4566ddc0de1b1b03a8873314e20f2ce6225c9fd49885c",
+    "fault_sha256": "7b1c27865e5653dd04c60b5ecc83d70fe1b36f9bc66c1666c64516e704a0a366",
+    "restored_sha256": "80885e2fe0b3eef4ccb4566ddc0de1b1b03a8873314e20f2ce6225c9fd49885c",
+    "positive": {
+      "exit": 0,
+      "name": "test_response_lookup_consumes_exact_rule_registry_entry",
+      "failure": false,
+      "error": false,
+      "skipped": false,
+      "junit": "evidence/faults/01_positive.xml",
+      "assertion": ""
+    },
+    "negative": {
+      "exit": 1,
+      "name": "test_response_lookup_consumes_exact_rule_registry_entry",
+      "failure": true,
+      "error": false,
+      "skipped": false,
+      "junit": "evidence/faults/01_fault.xml",
+      "assertion": "AssertionError: CAN008_RULE_ABSENT_FROM_REGISTRY\nassert <RuleLookupStatus.RULE_ABSENT: 'RULE_ABSENT'> is <RuleLookupStatus.FOUND: 'FOUND'>\n +  where <RuleLookupStatus.RULE_ABSENT: 'RULE_ABSENT'> = RuleLookupResult(status=<RuleLookupStatus.RULE_ABSENT: 'RULE_ABSENT'>, rule_id='', rule_version='1', rule_content_hash...8_AUTHORITY', issuer_verified=False, grade='TEST_ONLY_SOURCEFREE_TECHNICAL', reason='CAN008_RULE_ABSENT_FROM_REGISTRY').status\n +  and   <RuleLookupStatus.FOUND: 'FOUND'> = RuleLookupStatus.FOUND"
+    },
+    "restored": {
+      "exit": 0,
+      "name": "test_response_lookup_consumes_exact_rule_registry_entry",
+      "failure": false,
+      "error": false,
+      "skipped": false,
+      "junit": "evidence/faults/01_restored.xml",
+      "assertion": ""
+    },
+    "invariant": null,
+    "grade": "SAME_ASSERTION_RED_RESTORED"
+  },
+  {
+    "claim_id": "C9P_TARGET_DECISION_CONSUMES_INDEPENDENT_PERMISSION",
+    "node": "WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_severance_witnesses.py::test_target_decision_consumes_independent_permission",
+    "fault": {
+      "path": "WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/candidate/target_rules.py",
+      "old": "if not _valid(permission):",
+      "new": "if True:"
+    },
+    "before_sha256": "78095d11c5a4663927fa6f4bc6563e314d42eac8002fe011dbc6504714ebdb50",
+    "fault_sha256": "5dfcdaa4f483f9a48aa4aebdcc98ba48b3586294135df5e98ca354c803dbcd5a",
+    "restored_sha256": "78095d11c5a4663927fa6f4bc6563e314d42eac8002fe011dbc6504714ebdb50",
+    "positive": {
+      "exit": 1,
+      "name": "test_target_decision_consumes_independent_permission",
+      "failure": false,
+      "error": true,
+      "skipped": false,
+      "junit": "evidence/faults/02_positive.xml",
+      "assertion": ""
+    },
+    "negative": {
+      "exit": 1,
+      "name": "test_target_decision_consumes_independent_permission",
+      "failure": false,
+      "error": true,
+      "skipped": false,
+      "junit": "evidence/faults/02_fault.xml",
+      "assertion": ""
+    },
+    "restored": {
+      "exit": 1,
+      "name": "test_target_decision_consumes_independent_permission",
+      "failure": false,
+      "error": true,
+      "skipped": false,
+      "junit": "evidence/faults/02_restored.xml",
+      "assertion": ""
+    },
+    "invariant": null,
+    "grade": "NOT_PROVED"
+  },
+  {
+    "claim_id": "C9P_CONDITIONING_READSET_BINDS_PERSON_WORLD_SOURCES",
+    "node": "WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_severance_witnesses.py::test_conditioning_readset_binds_person_world_sources",
+    "fault": {
+      "path": "WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/candidate/conditioning.py",
+      "old": "readset.append(source_ref)",
+      "new": "readset.append(\"SEVERED_SOURCE_REF\")"
+    },
+    "before_sha256": "1ac2ce5dc3d1ff8f70f1292535cfc8af35ee51f866fc71139d6203141e5a2358",
+    "fault_sha256": "6f9dd9dde5a3ab63ec00b2a8a898e07016d31c234ddb89b129b9da0709041dcf",
+    "restored_sha256": "1ac2ce5dc3d1ff8f70f1292535cfc8af35ee51f866fc71139d6203141e5a2358",
+    "positive": {
+      "exit": 0,
+      "name": "test_conditioning_readset_binds_person_world_sources",
+      "failure": false,
+      "error": false,
+      "skipped": false,
+      "junit": "evidence/faults/03_positive.xml",
+      "assertion": ""
+    },
+    "negative": {
+      "exit": 1,
+      "name": "test_conditioning_readset_binds_person_world_sources",
+      "failure": true,
+      "error": false,
+      "skipped": false,
+      "junit": "evidence/faults/03_fault.xml",
+      "assertion": "AssertionError: every conditioning source must appear in the bound readset\nassert ('SEVERED_SOU...D_SOURCE_REF') == ('TEST_ONLY_P...STATE:garage')\n  \n  At index 0 diff: 'SEVERED_SOURCE_REF' != 'TEST_ONLY_PERSON_STATE:standing'\n  Use -v to get more diff"
+    },
+    "restored": {
+      "exit": 0,
+      "name": "test_conditioning_readset_binds_person_world_sources",
+      "failure": false,
+      "error": false,
+      "skipped": false,
+      "junit": "evidence/faults/03_restored.xml",
+      "assertion": ""
+    },
+    "invariant": null,
+    "grade": "SAME_ASSERTION_RED_RESTORED"
+  },
+  {
+    "claim_id": "C9P_ACTION_ADMISSION_BINDS_PERFORMED_ACTION_RECEIPT",
+    "node": "WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_severance_witnesses.py::test_action_admission_binds_performed_action_receipt",
+    "fault": {
+      "path": "WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/candidate/action_admission.py",
+      "old": "if owner_receipt is None:",
+      "new": "if True:"
+    },
+    "before_sha256": "4d177bb4e3eea202309eac669d798a6c4d51279edbc7c3f98c761d26beb4b7cf",
+    "fault_sha256": "b47b41214e8da37cd226291bec109e677841fd42b218e95be14085f66566eb5d",
+    "restored_sha256": "4d177bb4e3eea202309eac669d798a6c4d51279edbc7c3f98c761d26beb4b7cf",
+    "positive": {
+      "exit": 0,
+      "name": "test_action_admission_binds_performed_action_receipt",
+      "failure": false,
+      "error": false,
+      "skipped": false,
+      "junit": "evidence/faults/04_positive.xml",
+      "assertion": ""
+    },
+    "negative": {
+      "exit": 1,
+      "name": "test_action_admission_binds_performed_action_receipt",
+      "failure": true,
+      "error": false,
+      "skipped": false,
+      "junit": "evidence/faults/04_fault.xml",
+      "assertion": "AssertionError: OWNER_RECEIPT_MISSING\nassert <AdmissionStatus.HELD: 'HELD'> is <AdmissionStatus.ADMITTED: 'ADMITTED'>\n +  where <AdmissionStatus.HELD: 'HELD'> = PerformedActionHold(status=<AdmissionStatus.HELD: 'HELD'>, reason=<AdmissionReason.OWNER_RECEIPT_MISSING: 'OWNER_RECEI..._form='OWNER_RECEIPT{actuator_ref, act, occurrence_ref, action_time, actor_id, consumed_state_hash, hash}', held_at=40).status\n +  and   <AdmissionStatus.ADMITTED: 'ADMITTED'> = AdmissionStatus.ADMITTED"
+    },
+    "restored": {
+      "exit": 0,
+      "name": "test_action_admission_binds_performed_action_receipt",
+      "failure": false,
+      "error": false,
+      "skipped": false,
+      "junit": "evidence/faults/04_restored.xml",
+      "assertion": ""
+    },
+    "invariant": null,
+    "grade": "SAME_ASSERTION_RED_RESTORED"
+  },
+  {
+    "claim_id": "C9P_TRANSACTION_READSET_BINDS_ADMITTED_EVENT_WITNESS",
+    "node": "WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_severance_witnesses.py::test_transaction_readset_binds_admitted_event_witness",
+    "fault": {
+      "path": "WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/candidate/transaction.py",
+      "old": "joint_transaction_id=receipt[\"hash\"],",
+      "new": "joint_transaction_id=\"SEVERED\","
+    },
+    "before_sha256": "b472c805b53f606d26c3f0e5f06a5df4e980da24ade29ec5e45b72ef0cdc8a1e",
+    "fault_sha256": "5777a938bf77878b866e4159d6b34697eaa70a6e13a07b163e8ca023938c2272",
+    "restored_sha256": "b472c805b53f606d26c3f0e5f06a5df4e980da24ade29ec5e45b72ef0cdc8a1e",
+    "positive": {
+      "exit": 1,
+      "name": "test_transaction_readset_binds_admitted_event_witness",
+      "failure": false,
+      "error": true,
+      "skipped": false,
+      "junit": "evidence/faults/05_positive.xml",
+      "assertion": ""
+    },
+    "negative": {
+      "exit": 1,
+      "name": "test_transaction_readset_binds_admitted_event_witness",
+      "failure": false,
+      "error": true,
+      "skipped": false,
+      "junit": "evidence/faults/05_fault.xml",
+      "assertion": ""
+    },
+    "restored": {
+      "exit": 1,
+      "name": "test_transaction_readset_binds_admitted_event_witness",
+      "failure": false,
+      "error": true,
+      "skipped": false,
+      "junit": "evidence/faults/05_restored.xml",
+      "assertion": ""
+    },
+    "invariant": null,
+    "grade": "NOT_PROVED"
+  },
+  {
+    "claim_id": "C9PI_NATIVE_GUARD_DIAGNOSTIC_ONLY",
+    "node": "review/test_edges.py::test_native_guard_result_is_consumed_as_diagnostic",
+    "fault": {
+      "path": "rawlsing_next/v3_psepf_zero_positive_guard.py",
+      "old": "outcome=GuardOutcome.DENY_ZERO_EFFECT,",
+      "new": "outcome=GuardOutcome.DELEGATE_TO_ACCEPTED_OWNER,"
+    },
+    "before_sha256": "12b2c49f664662cbfe993fc4817751ed9edfff3ce89c44cac489a00cb5e42177",
+    "fault_sha256": "b1612a5856ac96f41fa00a8df378f2be2d79fad817bfc175fa0e3181aa68d656",
+    "restored_sha256": "12b2c49f664662cbfe993fc4817751ed9edfff3ce89c44cac489a00cb5e42177",
+    "positive": {
+      "exit": 0,
+      "name": "test_native_guard_result_is_consumed_as_diagnostic",
+      "failure": false,
+      "error": false,
+      "skipped": false,
+      "junit": "evidence/faults/06_positive.xml",
+      "assertion": ""
+    },
+    "negative": {
+      "exit": 1,
+      "name": "test_native_guard_result_is_consumed_as_diagnostic",
+      "failure": true,
+      "error": false,
+      "skipped": false,
+      "junit": "evidence/faults/06_fault.xml",
+      "assertion": "AssertionError: assert 'DENY_ZERO_EFFECT' in 'DELEGATE_TO_ACCEPTED_OWNER'\n +  where 'DELEGATE_TO_ACCEPTED_OWNER' = ConditioningView(status=<ConditioningStatus.BOUND: 'BOUND'>, reason=<ConditioningReason.OK: 'OK'>, subject='TEST_ONLY_... guard_reason='ZERO_POSITIVE_REGISTRY', bundle_hash='f43da001bc79d95de2d5b1344e70b40743aaaaaac4c5e588dd566e6c4a5a4921').guard_outcome"
+    },
+    "restored": {
+      "exit": 0,
+      "name": "test_native_guard_result_is_consumed_as_diagnostic",
+      "failure": false,
+      "error": false,
+      "skipped": false,
+      "junit": "evidence/faults/06_restored.xml",
+      "assertion": ""
+    },
+    "invariant": {
+      "exit": 1,
+      "name": "test_test_only_create_does_not_depend_on_guard_diagnostic",
+      "failure": false,
+      "error": true,
+      "skipped": false,
+      "junit": "evidence/faults/06_create_invariant.xml",
+      "assertion": ""
+    },
+    "grade": "SAME_ASSERTION_RED_RESTORED"
+  },
+  {
+    "claim_id": "C9PI_CAN011_PERMISSION_TECHNICAL",
+    "node": "review/test_edges.py::test_permission_conditions_full_create",
+    "fault": {
+      "path": "WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/candidate/target_rules.py",
+      "old": "if not _valid(permission):",
+      "new": "if True:"
+    },
+    "before_sha256": "78095d11c5a4663927fa6f4bc6563e314d42eac8002fe011dbc6504714ebdb50",
+    "fault_sha256": "5dfcdaa4f483f9a48aa4aebdcc98ba48b3586294135df5e98ca354c803dbcd5a",
+    "restored_sha256": "78095d11c5a4663927fa6f4bc6563e314d42eac8002fe011dbc6504714ebdb50",
+    "positive": {
+      "exit": 1,
+      "name": "test_permission_conditions_full_create",
+      "failure": false,
+      "error": true,
+      "skipped": false,
+      "junit": "evidence/faults/07_positive.xml",
+      "assertion": ""
+    },
+    "negative": {
+      "exit": 1,
+      "name": "test_permission_conditions_full_create",
+      "failure": false,
+      "error": true,
+      "skipped": false,
+      "junit": "evidence/faults/07_fault.xml",
+      "assertion": ""
+    },
+    "restored": {
+      "exit": 1,
+      "name": "test_permission_conditions_full_create",
+      "failure": false,
+      "error": true,
+      "skipped": false,
+      "junit": "evidence/faults/07_restored.xml",
+      "assertion": ""
+    },
+    "invariant": null,
+    "grade": "NOT_PROVED"
+  },
+  {
+    "claim_id": "C9PI_COMMITTED_TARGET_COLD_READ",
+    "node": "review/test_edges.py::test_committed_target_conditions_cold_later_read",
+    "fault": {
+      "path": "WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/candidate/later_action.py",
+      "old": "record, state_hash = consumer.read_target(store, middle_state_id, as_of)",
+      "new": "record, state_hash = None, \"\""
+    },
+    "before_sha256": "b04abfe363299086c53f0f0d21380ec4d08477d175013a9b80cec3db3c1c3ffe",
+    "fault_sha256": "9439fb2117502321634883d9e05bb487f27c9ebe632ed70750b363b40e8e15ab",
+    "restored_sha256": "b04abfe363299086c53f0f0d21380ec4d08477d175013a9b80cec3db3c1c3ffe",
+    "positive": {
+      "exit": 1,
+      "name": "test_committed_target_conditions_cold_later_read",
+      "failure": false,
+      "error": true,
+      "skipped": false,
+      "junit": "evidence/faults/08_positive.xml",
+      "assertion": ""
+    },
+    "negative": {
+      "exit": 1,
+      "name": "test_committed_target_conditions_cold_later_read",
+      "failure": false,
+      "error": true,
+      "skipped": false,
+      "junit": "evidence/faults/08_fault.xml",
+      "assertion": ""
+    },
+    "restored": {
+      "exit": 1,
+      "name": "test_committed_target_conditions_cold_later_read",
+      "failure": false,
+      "error": true,
+      "skipped": false,
+      "junit": "evidence/faults/08_restored.xml",
+      "assertion": ""
+    },
+    "invariant": null,
+    "grade": "NOT_PROVED"
+  },
+  {
+    "claim_id": "C9PI_ACTOR_PRESENTED_SOURCE_READSET",
+    "node": "review/test_edges.py::test_actor_original_presented_source_controls_readset",
+    "fault": {
+      "path": "WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/candidate/identity.py",
+      "old": "readset_refs=(source_ref,),",
+      "new": "readset_refs=(\"SEVERED_SOURCE\",),"
+    },
+    "before_sha256": "13504a31a6e185d1e34840b1160dfe7719634c14228abbb9fa641fdb535a823e",
+    "fault_sha256": "23d7aa6c158fd7af567053af3ee09aba34256dfebfe0ed4bf2f6cd5e69531c74",
+    "restored_sha256": "13504a31a6e185d1e34840b1160dfe7719634c14228abbb9fa641fdb535a823e",
+    "positive": {
+      "exit": 0,
+      "name": "test_actor_original_presented_source_controls_readset",
+      "failure": false,
+      "error": false,
+      "skipped": false,
+      "junit": "evidence/faults/09_positive.xml",
+      "assertion": ""
+    },
+    "negative": {
+      "exit": 1,
+      "name": "test_actor_original_presented_source_controls_readset",
+      "failure": true,
+      "error": false,
+      "skipped": false,
+      "junit": "evidence/faults/09_fault.xml",
+      "assertion": "AssertionError: assert ('SEVERED_SOURCE',) == ('TEST_ONLY_R...CTOR_SOURCE',)\n  \n  At index 0 diff: 'SEVERED_SOURCE' != 'TEST_ONLY_REVIEW_ACTOR_SOURCE'\n  Use -v to get more diff"
+    },
+    "restored": {
+      "exit": 0,
+      "name": "test_actor_original_presented_source_controls_readset",
+      "failure": false,
+      "error": false,
+      "skipped": false,
+      "junit": "evidence/faults/09_restored.xml",
+      "assertion": ""
+    },
+    "invariant": null,
+    "grade": "SAME_ASSERTION_RED_RESTORED"
+  },
+  {
+    "claim_id": "C9PI_EVENT_PRESENTED_SOURCE_READSET",
+    "node": "review/test_edges.py::test_event_original_presented_source_controls_readset",
+    "fault": {
+      "path": "WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/candidate/events.py",
+      "old": "readset = [owner_ref]",
+      "new": "readset = [\"SEVERED_OWNER\"]"
+    },
+    "before_sha256": "220ca24ab68fa0a924c18af719e9454c1cbb4b16cac15ea8ef50288e3321318a",
+    "fault_sha256": "a581550807df80f420eb62cbbdf4bc99700ad15272765eb7fa78da95ed1ab3a9",
+    "restored_sha256": "220ca24ab68fa0a924c18af719e9454c1cbb4b16cac15ea8ef50288e3321318a",
+    "positive": {
+      "exit": 0,
+      "name": "test_event_original_presented_source_controls_readset",
+      "failure": false,
+      "error": false,
+      "skipped": false,
+      "junit": "evidence/faults/10_positive.xml",
+      "assertion": ""
+    },
+    "negative": {
+      "exit": 1,
+      "name": "test_event_original_presented_source_controls_readset",
+      "failure": true,
+      "error": false,
+      "skipped": false,
+      "junit": "evidence/faults/10_fault.xml",
+      "assertion": "AssertionError: assert ('SEVERED_OWNER',) == ('TEST_ONLY_R...EVENT_OWNER',)\n  \n  At index 0 diff: 'SEVERED_OWNER' != 'TEST_ONLY_REVIEW_EVENT_OWNER'\n  Use -v to get more diff"
+    },
+    "restored": {
+      "exit": 0,
+      "name": "test_event_original_presented_source_controls_readset",
+      "failure": false,
+      "error": false,
+      "skipped": false,
+      "junit": "evidence/faults/10_restored.xml",
+      "assertion": ""
+    },
+    "invariant": null,
+    "grade": "SAME_ASSERTION_RED_RESTORED"
+  }
+]

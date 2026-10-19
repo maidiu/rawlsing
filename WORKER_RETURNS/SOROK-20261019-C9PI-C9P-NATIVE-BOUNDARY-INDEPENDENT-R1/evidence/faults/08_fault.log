@@ -1,0 +1,22 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_______________ test_committed_target_conditions_cold_later_read _______________
+
+tmp_path = PosixPath('<RETURN_ROOT>/runs/pytest/08_fault/test_committed_target_conditio0')
+
+    def test_committed_target_conditions_cold_later_read(tmp_path):
+     p=tmp_path/'positive.sqlite'
+     with CandidateStore(p) as s:
+      r=run(s);key=r.decision.proposal_hash;expected=r.decision.record_hash
+     with CandidateStore(p) as s:
+      from candidate.later_action import read_target_for_later_action
+      read=read_target_for_later_action(s,consumer=LaterActionConsumer('TEST_ONLY_COLD_READER','target'),middle_state_id=key,as_of=30,commit_time=15)
+>     assert read.status is LaterActionStatus.ACTION_ADMISSION_HELD
+E     AssertionError: assert <LaterActionStatus.STATE_ABSENT: 'STATE_ABSENT'> is <LaterActionStatus.ACTION_ADMISSION_HELD: 'ACTION_ADMISSION_HELD'>
+E      +  where <LaterActionStatus.STATE_ABSENT: 'STATE_ABSENT'> = LaterActionRead(status=<LaterActionStatus.STATE_ABSENT: 'STATE_ABSENT'>, consumer_id='TEST_ONLY_COLD_READER', middle_s...cord=None, as_of=30, readset_refs=(), candidate_route='', read_receipt_hash='', reason='COMMITTED_TARGET_STATE_ABSENT').status
+E      +  and   <LaterActionStatus.ACTION_ADMISSION_HELD: 'ACTION_ADMISSION_HELD'> = LaterActionStatus.ACTION_ADMISSION_HELD
+
+review/test_edges.py:24: AssertionError
+=========================== short test summary info ============================
+FAILED review/test_edges.py::test_committed_target_conditions_cold_later_read
+1 failed in 0.37s

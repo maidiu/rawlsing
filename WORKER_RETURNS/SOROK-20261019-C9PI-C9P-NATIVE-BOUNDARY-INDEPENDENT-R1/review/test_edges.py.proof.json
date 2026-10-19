@@ -1,0 +1,60 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "claims": [
+    {
+      "claim_id": "C9PI_NATIVE_GUARD_DIAGNOSTIC_ONLY",
+      "actual_consumer": "candidate.conditioning.bind_conditioning -> _guard_decision",
+      "claimed_dependency": "native denial outcome -> ConditioningView.guard_outcome ONLY; not enforcement",
+      "positive_node": "review/test_edges.py::test_native_guard_result_is_consumed_as_diagnostic",
+      "fault": {
+        "path": "rawlsing_next/v3_psepf_zero_positive_guard.py",
+        "old": "outcome=GuardOutcome.DENY_ZERO_EFFECT,",
+        "new": "outcome=GuardOutcome.DELEGATE_TO_ACCEPTED_OWNER,"
+      }
+    },
+    {
+      "claim_id": "C9PI_CAN011_PERMISSION_TECHNICAL",
+      "actual_consumer": "candidate.target_rules.evaluate_target via run_candidate_path",
+      "claimed_dependency": "TEST_ONLY sealed permission -> CREATE -> committed row",
+      "positive_node": "review/test_edges.py::test_permission_conditions_full_create",
+      "fault": {
+        "path": "WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/candidate/target_rules.py",
+        "old": "if not _valid(permission):",
+        "new": "if True:"
+      }
+    },
+    {
+      "claim_id": "C9PI_COMMITTED_TARGET_COLD_READ",
+      "actual_consumer": "candidate.later_action.read_target_for_later_action",
+      "claimed_dependency": "cold committed row -> named consumer read -> readset",
+      "positive_node": "review/test_edges.py::test_committed_target_conditions_cold_later_read",
+      "fault": {
+        "path": "WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/candidate/later_action.py",
+        "old": "record, state_hash = consumer.read_target(store, middle_state_id, as_of)",
+        "new": "record, state_hash = None, \"\""
+      }
+    },
+    {
+      "claim_id": "C9PI_ACTOR_PRESENTED_SOURCE_READSET",
+      "actual_consumer": "candidate.identity.ingress_actor",
+      "claimed_dependency": "presented source_ref -> ingress readset; authentication NOT proved",
+      "positive_node": "review/test_edges.py::test_actor_original_presented_source_controls_readset",
+      "fault": {
+        "path": "WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/candidate/identity.py",
+        "old": "readset_refs=(source_ref,),",
+        "new": "readset_refs=(\"SEVERED_SOURCE\",),"
+      }
+    },
+    {
+      "claim_id": "C9PI_EVENT_PRESENTED_SOURCE_READSET",
+      "actual_consumer": "candidate.events.ingress_event",
+      "claimed_dependency": "presented owner_ref -> event readset; authentication NOT proved",
+      "positive_node": "review/test_edges.py::test_event_original_presented_source_controls_readset",
+      "fault": {
+        "path": "WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/candidate/events.py",
+        "old": "readset = [owner_ref]",
+        "new": "readset = [\"SEVERED_OWNER\"]"
+      }
+    }
+  ]
+}

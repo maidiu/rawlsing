@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="0.138" timestamp="2026-10-19T13:20:10.474062-04:00" hostname="Matthews-MBP.lan"><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_severance_witnesses" name="test_transaction_readset_binds_admitted_event_witness" time="0.017"><failure message="AssertionError: the joint transaction id must equal the sealed receipt hash&#10;assert 'SEVERED' == 'dec8063e09ef...7c2a5b3be7b39'&#10;  &#10;  - dec8063e09efdaf4831e6ac169219ecc8f606206715bb8159cb7c2a5b3be7b39&#10;  + SEVERED">tmp_path = PosixPath('<RETURN_ROOT>/runs/pytest/05_fault/test_transaction_readset_binds0')
+
+    def test_transaction_readset_binds_admitted_event_witness(tmp_path) -&gt; None:
+        """Named assertion: the committed receipt binds the exact admitted event witness."""
+        store = CandidateStore(tmp_path / "store.sqlite")
+        event = build_event_witness()
+        admitted = store.admit_occurrence(event)
+        from candidate.canon import seal as _seal
+        from candidate.target_rules import TargetDecision, TargetReason
+    
+        decision = TargetDecision(
+            branch=TargetBranch.DENY,
+            reason=TargetReason.NO_PROPOSAL,
+            actor_id=ACTOR_ID,
+            state_kind_id="V3MS_PRACTICE",
+            proposal_hash="proposal-sev",
+            record_hash="",
+            before_target_hash="",
+            after_target_hash="",
+            readset_refs=("read-1",),
+            permission_ref="",
+        )
+        receipt = store.commit(
+            event=admitted,
+            response=_seal({"event_ref": admitted["hash"], "status": "COMMITTED"}),
+            decision=decision,
+            readset_refs=("read-1", admitted["hash"]),
+        )
+        assert receipt.committed, receipt.target_reason
+        assert receipt.admitted_event_ref == admitted["hash"]
+        assert admitted["hash"] in receipt.readset_refs
+&gt;       assert receipt.joint_transaction_id == receipt.receipt_hash, (
+            "the joint transaction id must equal the sealed receipt hash"
+        )
+E       AssertionError: the joint transaction id must equal the sealed receipt hash
+E       assert 'SEVERED' == 'dec8063e09ef...7c2a5b3be7b39'
+E         
+E         - dec8063e09efdaf4831e6ac169219ecc8f606206715bb8159cb7c2a5b3be7b39
+E         + SEVERED
+
+WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_severance_witnesses.py:218: AssertionError</failure></testcase></testsuite></testsuites>

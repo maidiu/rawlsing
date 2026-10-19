@@ -1,0 +1,32 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+___________ test_later_action_consumer_reads_committed_target_state ____________
+
+tmp_path = PosixPath('<RETURN_ROOT>/runs/pytest/00_fault/test_later_action_consumer_rea0')
+
+    def test_later_action_consumer_reads_committed_target_state(tmp_path) -> None:
+        """Named assertion: the later-action consumer reads the exact committed target state."""
+        store = CandidateStore(tmp_path / "store.sqlite")
+        _committed_target(store)
+        consumer = LaterActionConsumer(
+            consumer_id="TEST_ONLY_LATER_ACTION_CONSUMER",
+            expected_surface="committed_target_state",
+        )
+        read = read_target_for_later_action(
+            store,
+            consumer=consumer,
+            middle_state_id="proposal-sev",
+            as_of=30,
+            commit_time=15,
+            action_admission_owner_ref="TEST_ONLY_ACTUATOR",
+        )
+>       assert read.status is LaterActionStatus.READ_OK, read.reason
+E       AssertionError: COMMITTED_TARGET_STATE_ABSENT
+E       assert <LaterActionStatus.STATE_ABSENT: 'STATE_ABSENT'> is <LaterActionStatus.READ_OK: 'READ_OK'>
+E        +  where <LaterActionStatus.STATE_ABSENT: 'STATE_ABSENT'> = LaterActionRead(status=<LaterActionStatus.STATE_ABSENT: 'STATE_ABSENT'>, consumer_id='TEST_ONLY_LATER_ACTION_CONSUMER'...cord=None, as_of=30, readset_refs=(), candidate_route='', read_receipt_hash='', reason='COMMITTED_TARGET_STATE_ABSENT').status
+E        +  and   <LaterActionStatus.READ_OK: 'READ_OK'> = LaterActionStatus.READ_OK
+
+WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_severance_witnesses.py:83: AssertionError
+=========================== short test summary info ============================
+FAILED WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_severance_witnesses.py::test_later_action_consumer_reads_committed_target_state
+1 failed in 0.25s

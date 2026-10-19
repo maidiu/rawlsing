@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="0.281" timestamp="2026-10-19T13:10:37.767261-04:00" hostname="Matthews-MBP.lan"><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_severance_witnesses" name="test_response_lookup_consumes_exact_rule_registry_entry" time="0.002"><failure message="AssertionError: CAN008_RULE_ABSENT_FROM_REGISTRY&#10;assert &lt;RuleLookupStatus.RULE_ABSENT: 'RULE_ABSENT'&gt; is &lt;RuleLookupStatus.FOUND: 'FOUND'&gt;&#10; +  where &lt;RuleLookupStatus.RULE_ABSENT: 'RULE_ABSENT'&gt; = RuleLookupResult(status=&lt;RuleLookupStatus.RULE_ABSENT: 'RULE_ABSENT'&gt;, rule_id='', rule_version='1', rule_content_hash...8_AUTHORITY', issuer_verified=False, grade='TEST_ONLY_SOURCEFREE_TECHNICAL', reason='CAN008_RULE_ABSENT_FROM_REGISTRY').status&#10; +  and   &lt;RuleLookupStatus.FOUND: 'FOUND'&gt; = RuleLookupStatus.FOUND">def test_response_lookup_consumes_exact_rule_registry_entry() -&gt; None:
+        """Named assertion: the CAN008 lookup consumes the exact registry entry and finds it."""
+        rule = build_response_rule()
+        registry = ResponseRuleRegistry.test_only((rule,))
+        lookup = lookup_rule(
+            registry,
+            authority_id=rule.authority_id,
+            rule_version=rule.rule_version,
+            rule_content_hash=rule.rule_content_hash,
+            subject=ACTOR_ID,
+        )
+&gt;       assert lookup.status is RuleLookupStatus.FOUND, lookup.reason
+E       AssertionError: CAN008_RULE_ABSENT_FROM_REGISTRY
+E       assert &lt;RuleLookupStatus.RULE_ABSENT: 'RULE_ABSENT'&gt; is &lt;RuleLookupStatus.FOUND: 'FOUND'&gt;
+E        +  where &lt;RuleLookupStatus.RULE_ABSENT: 'RULE_ABSENT'&gt; = RuleLookupResult(status=&lt;RuleLookupStatus.RULE_ABSENT: 'RULE_ABSENT'&gt;, rule_id='', rule_version='1', rule_content_hash...8_AUTHORITY', issuer_verified=False, grade='TEST_ONLY_SOURCEFREE_TECHNICAL', reason='CAN008_RULE_ABSENT_FROM_REGISTRY').status
+E        +  and   &lt;RuleLookupStatus.FOUND: 'FOUND'&gt; = RuleLookupStatus.FOUND
+
+WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_severance_witnesses.py:103: AssertionError</failure></testcase></testsuite></testsuites>

@@ -1,0 +1,20 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+____________________ test_permission_conditions_full_create ____________________
+
+tmp_path = PosixPath('<RETURN_ROOT>/runs/pytest/07_fault/test_permission_conditions_ful0')
+
+    def test_permission_conditions_full_create(tmp_path):
+     with CandidateStore(tmp_path/'positive.sqlite') as s:
+      r=run(s)
+      assert r.receipt.committed
+>     assert r.decision.branch is TargetBranch.CREATE
+E     AssertionError: assert <TargetBranch.DENY: 'DENY'> is <TargetBranch.CREATE: 'CREATE'>
+E      +  where <TargetBranch.DENY: 'DENY'> = TargetDecision(branch=<TargetBranch.DENY: 'DENY'>, reason=<TargetReason.PERMISSION_BINDING_MISMATCH: 'PERMISSION_BINDI...ter_target_hash='4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945', readset_refs=(), permission_ref='').branch
+E      +    where TargetDecision(branch=<TargetBranch.DENY: 'DENY'>, reason=<TargetReason.PERMISSION_BINDING_MISMATCH: 'PERMISSION_BINDI...ter_target_hash='4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945', readset_refs=(), permission_ref='') = PipelineResult(stages=(PipelineStage(stage='actor_ingress', ok=True, reason='OK', detail={'actor_id': 'TEST_ONLY_REVIE...f, act, occurrence_ref, action_time, actor_id, consumed_state_hash, hash}', held_at=30), committed=True, no_ghost=True).decision
+E      +  and   <TargetBranch.CREATE: 'CREATE'> = TargetBranch.CREATE
+
+review/test_edges.py:13: AssertionError
+=========================== short test summary info ============================
+FAILED review/test_edges.py::test_permission_conditions_full_create - Asserti...
+1 failed in 0.39s

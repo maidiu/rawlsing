@@ -1,0 +1,739 @@
+{
+  "verdict": "REVISE__NATIVE_HOLD",
+  "suites": [
+    {
+      "suite": "author_full",
+      "junit": "evidence/author_full.xml",
+      "counts": {
+        "PASS": 90,
+        "RED": 0,
+        "ERROR": 0,
+        "SKIP": 0
+      },
+      "cases": [
+        {
+          "name": "test_missing_owner_receipt_returns_typed_hold",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_action_admission",
+          "status": "PASS"
+        },
+        {
+          "name": "test_hand_authored_action_is_always_refused",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_action_admission",
+          "status": "PASS"
+        },
+        {
+          "name": "test_genuine_receipt_is_admitted",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_action_admission",
+          "status": "PASS"
+        },
+        {
+          "name": "test_actor_mismatch_is_refused",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_action_admission",
+          "status": "PASS"
+        },
+        {
+          "name": "test_act_mismatch_is_refused",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_action_admission",
+          "status": "PASS"
+        },
+        {
+          "name": "test_missing_occurrence_ref_is_refused",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_action_admission",
+          "status": "PASS"
+        },
+        {
+          "name": "test_future_action_time_is_refused",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_action_admission",
+          "status": "PASS"
+        },
+        {
+          "name": "test_no_consumed_state_is_refused",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_action_admission",
+          "status": "PASS"
+        },
+        {
+          "name": "test_unsealed_receipt_is_refused",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_action_admission",
+          "status": "PASS"
+        },
+        {
+          "name": "test_committed_transaction_binds_readset_and_event",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_atomic_rollback_no_ghost",
+          "status": "PASS"
+        },
+        {
+          "name": "test_denied_decision_leaves_no_target_rows",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_atomic_rollback_no_ghost",
+          "status": "PASS"
+        },
+        {
+          "name": "test_injected_fault_rolls_back_with_no_ghost",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_atomic_rollback_no_ghost",
+          "status": "PASS"
+        },
+        {
+          "name": "test_unadmitted_event_is_refused_with_rollback",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_atomic_rollback_no_ghost",
+          "status": "PASS"
+        },
+        {
+          "name": "test_response_event_mismatch_is_refused",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_atomic_rollback_no_ghost",
+          "status": "PASS"
+        },
+        {
+          "name": "test_create_decision_requires_matching_prestate",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_atomic_rollback_no_ghost",
+          "status": "PASS"
+        },
+        {
+          "name": "test_occurrence_survives_response_rollback",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_atomic_rollback_no_ghost",
+          "status": "PASS"
+        },
+        {
+          "name": "test_bound_conditioning_preserves_native_guard_zero_effect",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_conditioning_readonly",
+          "status": "PASS"
+        },
+        {
+          "name": "test_conditioning_view_is_read_only",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_conditioning_readonly",
+          "status": "PASS"
+        },
+        {
+          "name": "test_forbidden_source_to_psychology_conversion_is_refused",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_conditioning_readonly",
+          "status": "PASS"
+        },
+        {
+          "name": "test_observer_note_to_belief_conversion_is_refused",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_conditioning_readonly",
+          "status": "PASS"
+        },
+        {
+          "name": "test_unsealed_source_is_refused",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_conditioning_readonly",
+          "status": "PASS"
+        },
+        {
+          "name": "test_foreign_subject_source_is_refused",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_conditioning_readonly",
+          "status": "PASS"
+        },
+        {
+          "name": "test_unauthorized_source_class_is_refused",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_conditioning_readonly",
+          "status": "PASS"
+        },
+        {
+          "name": "test_test_only_full_create_chain_commits_target_and_reads_it",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_create_chain",
+          "status": "PASS"
+        },
+        {
+          "name": "test_test_only_create_chain_survives_cold_reopen",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_create_chain",
+          "status": "PASS"
+        },
+        {
+          "name": "test_admitted_test_only_witness_binds_owner_readset",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_event_witness",
+          "status": "PASS"
+        },
+        {
+          "name": "test_native_witness_without_owner_receipt_is_typed_missing",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_event_witness",
+          "status": "PASS"
+        },
+        {
+          "name": "test_typed_missing_grade_returns_missing_not_fabricated_event",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_event_witness",
+          "status": "PASS"
+        },
+        {
+          "name": "test_clock_outside_frame_is_refused",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_event_witness",
+          "status": "PASS"
+        },
+        {
+          "name": "test_time_reversed_is_refused",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_event_witness",
+          "status": "PASS"
+        },
+        {
+          "name": "test_unresolved_causal_parent_is_refused",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_event_witness",
+          "status": "PASS"
+        },
+        {
+          "name": "test_resolved_causal_parent_is_admitted",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_event_witness",
+          "status": "PASS"
+        },
+        {
+          "name": "test_test_only_owner_grade_mismatch_is_refused",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_event_witness",
+          "status": "PASS"
+        },
+        {
+          "name": "test_admitted_actor_binds_exact_source_readset",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_identity_ingress",
+          "status": "PASS"
+        },
+        {
+          "name": "test_inactive_actor_is_refused",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_identity_ingress",
+          "status": "PASS"
+        },
+        {
+          "name": "test_stale_standing_state_is_refused",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_identity_ingress",
+          "status": "PASS"
+        },
+        {
+          "name": "test_psychology_claim_at_ingress_is_refused",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_identity_ingress",
+          "status": "PASS"
+        },
+        {
+          "name": "test_unsealed_record_is_refused",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_identity_ingress",
+          "status": "PASS"
+        },
+        {
+          "name": "test_missing_source_ref_is_refused",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_identity_ingress",
+          "status": "PASS"
+        },
+        {
+          "name": "test_schema_mismatch_is_refused",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_identity_ingress",
+          "status": "PASS"
+        },
+        {
+          "name": "test_missing_consumer_is_typed_refusal",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_later_action_consumer",
+          "status": "PASS"
+        },
+        {
+          "name": "test_consumer_reads_exact_committed_state",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_later_action_consumer",
+          "status": "PASS"
+        },
+        {
+          "name": "test_consumer_read_with_owner_admission_is_read_ok",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_later_action_consumer",
+          "status": "PASS"
+        },
+        {
+          "name": "test_absent_target_state_is_typed_state_absent",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_later_action_consumer",
+          "status": "PASS"
+        },
+        {
+          "name": "test_as_of_before_commit_is_refused",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_later_action_consumer",
+          "status": "PASS"
+        },
+        {
+          "name": "test_consumer_readset_mismatch_is_typed",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_later_action_consumer",
+          "status": "PASS"
+        },
+        {
+          "name": "test_native_guard_custody_records_real_file",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_native_custody",
+          "status": "PASS"
+        },
+        {
+          "name": "test_import_graph_covers_candidate_native_dependencies",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_native_custody",
+          "status": "PASS"
+        },
+        {
+          "name": "test_blob_mismatch_raises_custody_mismatch",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_native_custody",
+          "status": "PASS"
+        },
+        {
+          "name": "test_guard_production_registry_is_empty",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_native_custody",
+          "status": "PASS"
+        },
+        {
+          "name": "test_native_ceiling_production_registries_refuse_everything",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_pipeline_native_ceiling",
+          "status": "PASS"
+        },
+        {
+          "name": "test_test_only_chain_commits_and_reads_committed_state",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_pipeline_native_ceiling",
+          "status": "PASS"
+        },
+        {
+          "name": "test_two_distinct_trajectories_are_materially_distinct",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_pipeline_native_ceiling",
+          "status": "PASS"
+        },
+        {
+          "name": "test_no_ghost_under_injected_storage_fault",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_pipeline_native_ceiling",
+          "status": "PASS"
+        },
+        {
+          "name": "test_performed_action_is_held_without_owner_receipt",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_pipeline_native_ceiling",
+          "status": "PASS"
+        },
+        {
+          "name": "test_hand_authored_action_path_is_refused",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_pipeline_native_ceiling",
+          "status": "PASS"
+        },
+        {
+          "name": "test_stale_actor_currentness_stops_chain_before_event",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_pipeline_native_ceiling",
+          "status": "PASS"
+        },
+        {
+          "name": "test_default_gate_is_held_with_all_finite_holds",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_release_gate",
+          "status": "PASS"
+        },
+        {
+          "name": "test_fixture_supplied_authority_never_clears_gate",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_release_gate",
+          "status": "PASS"
+        },
+        {
+          "name": "test_partial_issuer_evidence_still_held",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_release_gate",
+          "status": "PASS"
+        },
+        {
+          "name": "test_empty_positive_registry_alone_holds",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_release_gate",
+          "status": "PASS"
+        },
+        {
+          "name": "test_all_surfaces_cleared_authorizes",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_release_gate",
+          "status": "PASS"
+        },
+        {
+          "name": "test_gate_receipt_is_deterministic",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_release_gate",
+          "status": "PASS"
+        },
+        {
+          "name": "test_checked_surfaces_cover_all_commissioned_rows",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_release_gate",
+          "status": "PASS"
+        },
+        {
+          "name": "test_production_registry_lookup_returns_rule_absent",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_response_rule_lookup",
+          "status": "PASS"
+        },
+        {
+          "name": "test_unverified_issuer_lookup_returns_issuer_unverified",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_response_rule_lookup",
+          "status": "PASS"
+        },
+        {
+          "name": "test_test_only_registry_lookup_is_found_but_never_native",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_response_rule_lookup",
+          "status": "PASS"
+        },
+        {
+          "name": "test_subject_not_allowed_is_binding_mismatch",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_response_rule_lookup",
+          "status": "PASS"
+        },
+        {
+          "name": "test_absent_rule_yields_refused_response_with_readset",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_response_rule_lookup",
+          "status": "PASS"
+        },
+        {
+          "name": "test_unverified_rule_yields_held_response",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_response_rule_lookup",
+          "status": "PASS"
+        },
+        {
+          "name": "test_found_rule_with_no_enacted_history_is_valid_empty",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_response_rule_lookup",
+          "status": "PASS"
+        },
+        {
+          "name": "test_found_rule_with_full_inputs_emits_exactly_one_proposal",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_response_rule_lookup",
+          "status": "PASS"
+        },
+        {
+          "name": "test_later_action_consumer_reads_committed_target_state",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_severance_witnesses",
+          "status": "PASS"
+        },
+        {
+          "name": "test_response_lookup_consumes_exact_rule_registry_entry",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_severance_witnesses",
+          "status": "PASS"
+        },
+        {
+          "name": "test_target_decision_consumes_independent_permission",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_severance_witnesses",
+          "status": "PASS"
+        },
+        {
+          "name": "test_conditioning_readset_binds_person_world_sources",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_severance_witnesses",
+          "status": "PASS"
+        },
+        {
+          "name": "test_action_admission_binds_performed_action_receipt",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_severance_witnesses",
+          "status": "PASS"
+        },
+        {
+          "name": "test_transaction_readset_binds_admitted_event_witness",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_severance_witnesses",
+          "status": "PASS"
+        },
+        {
+          "name": "test_production_registry_denies_target_rule_absent",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_target_rule_branches",
+          "status": "PASS"
+        },
+        {
+          "name": "test_self_issued_permission_is_denied",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_target_rule_branches",
+          "status": "PASS"
+        },
+        {
+          "name": "test_missing_permission_is_denied",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_target_rule_branches",
+          "status": "PASS"
+        },
+        {
+          "name": "test_foreign_owner_permission_is_denied",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_target_rule_branches",
+          "status": "PASS"
+        },
+        {
+          "name": "test_revoked_permission_is_denied",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_target_rule_branches",
+          "status": "PASS"
+        },
+        {
+          "name": "test_expired_permission_is_denied",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_target_rule_branches",
+          "status": "PASS"
+        },
+        {
+          "name": "test_stale_prestate_conflict_is_denied",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_target_rule_branches",
+          "status": "PASS"
+        },
+        {
+          "name": "test_insufficient_enacted_history_yields_no_change",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_target_rule_branches",
+          "status": "PASS"
+        },
+        {
+          "name": "test_valid_grant_with_enacted_history_yields_create",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_target_rule_branches",
+          "status": "PASS"
+        },
+        {
+          "name": "test_no_proposal_yields_no_change",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_target_rule_branches",
+          "status": "PASS"
+        },
+        {
+          "name": "test_unissued_rule_yields_target_rule_unissued",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_target_rule_branches",
+          "status": "PASS"
+        },
+        {
+          "name": "test_response_to_target_end_to_end_create",
+          "classname": "WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_target_rule_branches",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "suite": "hostile",
+      "junit": "evidence/hostile.xml",
+      "counts": {
+        "PASS": 11,
+        "RED": 26,
+        "ERROR": 0,
+        "SKIP": 0
+      },
+      "cases": [
+        {
+          "name": "test_forged_actor_original_source_refused",
+          "classname": "review.test_hostile",
+          "status": "RED"
+        },
+        {
+          "name": "test_wrong_actor_event_refused",
+          "classname": "review.test_hostile",
+          "status": "RED"
+        },
+        {
+          "name": "test_forged_native_receipt_refused",
+          "classname": "review.test_hostile",
+          "status": "RED"
+        },
+        {
+          "name": "test_foreign_conditioning_subject_refused",
+          "classname": "review.test_hostile",
+          "status": "PASS"
+        },
+        {
+          "name": "test_ineligible_world_does_not_create[future]",
+          "classname": "review.test_hostile",
+          "status": "RED"
+        },
+        {
+          "name": "test_ineligible_world_does_not_create[wrong-scene]",
+          "classname": "review.test_hostile",
+          "status": "RED"
+        },
+        {
+          "name": "test_ineligible_world_does_not_create[denied-material-access]",
+          "classname": "review.test_hostile",
+          "status": "RED"
+        },
+        {
+          "name": "test_rehashed_source_false_identity_refused",
+          "classname": "review.test_hostile",
+          "status": "RED"
+        },
+        {
+          "name": "test_observer_privileged_truth_not_actor_practice",
+          "classname": "review.test_hostile",
+          "status": "RED"
+        },
+        {
+          "name": "test_unissued_rule_not_adopted_by_r2_label",
+          "classname": "review.test_hostile",
+          "status": "RED"
+        },
+        {
+          "name": "test_rule_content_rehash_not_authenticated",
+          "classname": "review.test_hostile",
+          "status": "RED"
+        },
+        {
+          "name": "test_locally_minted_target_registry_and_grant_refused",
+          "classname": "review.test_hostile",
+          "status": "RED"
+        },
+        {
+          "name": "test_target_grant_exact_binding[response_hash-WRONG_RESPONSE]",
+          "classname": "review.test_hostile",
+          "status": "RED"
+        },
+        {
+          "name": "test_target_grant_exact_binding[issued_at-999]",
+          "classname": "review.test_hostile",
+          "status": "RED"
+        },
+        {
+          "name": "test_target_grant_exact_binding[issuer_scope-REVOKED_SCOPE]",
+          "classname": "review.test_hostile",
+          "status": "RED"
+        },
+        {
+          "name": "test_unwitnessed_history_not_practice[single-invented]",
+          "classname": "review.test_hostile",
+          "status": "RED"
+        },
+        {
+          "name": "test_unwitnessed_history_not_practice[duplicate]",
+          "classname": "review.test_hostile",
+          "status": "RED"
+        },
+        {
+          "name": "test_unwitnessed_history_not_practice[future-foreign]",
+          "classname": "review.test_hostile",
+          "status": "RED"
+        },
+        {
+          "name": "test_own_offer_not_independent_p_action",
+          "classname": "review.test_hostile",
+          "status": "RED"
+        },
+        {
+          "name": "test_valid_empty_and_denied_preserve_occurrence[empty-history]",
+          "classname": "review.test_hostile",
+          "status": "PASS"
+        },
+        {
+          "name": "test_valid_empty_and_denied_preserve_occurrence[absent-offer]",
+          "classname": "review.test_hostile",
+          "status": "PASS"
+        },
+        {
+          "name": "test_valid_empty_and_denied_preserve_occurrence[absent-material]",
+          "classname": "review.test_hostile",
+          "status": "PASS"
+        },
+        {
+          "name": "test_valid_empty_and_denied_preserve_occurrence[missing-permission]",
+          "classname": "review.test_hostile",
+          "status": "PASS"
+        },
+        {
+          "name": "test_valid_empty_and_denied_preserve_occurrence[unissued-target]",
+          "classname": "review.test_hostile",
+          "status": "PASS"
+        },
+        {
+          "name": "test_revocation_between_evaluation_and_commit_refused",
+          "classname": "review.test_hostile",
+          "status": "RED"
+        },
+        {
+          "name": "test_missing_original_source_not_read_at_commit",
+          "classname": "review.test_hostile",
+          "status": "RED"
+        },
+        {
+          "name": "test_atomic_interference_cold_no_ghost[row-trigger]",
+          "classname": "review.test_hostile",
+          "status": "PASS"
+        },
+        {
+          "name": "test_atomic_interference_cold_no_ghost[schema]",
+          "classname": "review.test_hostile",
+          "status": "PASS"
+        },
+        {
+          "name": "test_later_omitted_mediator_refused",
+          "classname": "review.test_hostile",
+          "status": "PASS"
+        },
+        {
+          "name": "test_later_counterfeit_body_with_real_hash_refused",
+          "classname": "review.test_hostile",
+          "status": "RED"
+        },
+        {
+          "name": "test_fictional_performed_receipt_not_admitted[mismatched-target]",
+          "classname": "review.test_hostile",
+          "status": "RED"
+        },
+        {
+          "name": "test_fictional_performed_receipt_not_admitted[pre-commit-time]",
+          "classname": "review.test_hostile",
+          "status": "RED"
+        },
+        {
+          "name": "test_seven_default_holds_remain",
+          "classname": "review.test_hostile",
+          "status": "PASS"
+        },
+        {
+          "name": "test_raw_caller_flag_cannot_clear_authenticated_hold",
+          "classname": "review.test_hostile",
+          "status": "RED"
+        },
+        {
+          "name": "test_duplicate_event_id_different_content_refused",
+          "classname": "review.test_hostile",
+          "status": "RED"
+        },
+        {
+          "name": "test_conditioning_view_rejects_mutation",
+          "classname": "review.test_hostile",
+          "status": "RED"
+        },
+        {
+          "name": "test_guard_denial_does_not_prove_native_effect_guard",
+          "classname": "review.test_hostile",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "suite": "record_custody",
+      "junit": "evidence/record_custody.xml",
+      "counts": {
+        "PASS": 0,
+        "RED": 3,
+        "ERROR": 0,
+        "SKIP": 0
+      },
+      "cases": [
+        {
+          "name": "test_committed_semantic_record_survives_cold_reopen",
+          "classname": "review.test_record_custody",
+          "status": "RED"
+        },
+        {
+          "name": "test_explicit_validated_target_identity_is_committed_identity",
+          "classname": "review.test_record_custody",
+          "status": "RED"
+        },
+        {
+          "name": "test_fabricated_decision_cannot_bypass_target_owner",
+          "classname": "review.test_record_custody",
+          "status": "RED"
+        }
+      ]
+    },
+    {
+      "suite": "positive_edges",
+      "junit": "evidence/positive_edges.xml",
+      "counts": {
+        "PASS": 6,
+        "RED": 0,
+        "ERROR": 0,
+        "SKIP": 0
+      },
+      "cases": [
+        {
+          "name": "test_native_guard_result_is_consumed_as_diagnostic",
+          "classname": "review.test_edges",
+          "status": "PASS"
+        },
+        {
+          "name": "test_permission_conditions_full_create",
+          "classname": "review.test_edges",
+          "status": "PASS"
+        },
+        {
+          "name": "test_committed_target_conditions_cold_later_read",
+          "classname": "review.test_edges",
+          "status": "PASS"
+        },
+        {
+          "name": "test_actor_original_presented_source_controls_readset",
+          "classname": "review.test_edges",
+          "status": "PASS"
+        },
+        {
+          "name": "test_event_original_presented_source_controls_readset",
+          "classname": "review.test_edges",
+          "status": "PASS"
+        },
+        {
+          "name": "test_test_only_create_does_not_depend_on_guard_diagnostic",
+          "classname": "review.test_edges",
+          "status": "PASS"
+        }
+      ]
+    }
+  ],
+  "fault_triplets": 13,
+  "original_shared_claims": 8,
+  "reviewer_shared_claims": 5,
+  "native_positive": "NOT_PROVED",
+  "scientific_mechanism": "NOT_PROVED",
+  "C12": "NOT_RUN__LOCAL_ONLY_NO_TERMINAL_PERSON_DELTA"
+}

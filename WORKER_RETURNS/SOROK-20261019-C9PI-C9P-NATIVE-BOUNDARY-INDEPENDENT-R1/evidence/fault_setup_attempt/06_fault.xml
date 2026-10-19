@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="0.219" timestamp="2026-10-19T13:10:48.427841-04:00" hostname="Matthews-MBP.lan"><testcase classname="review.test_edges" name="test_native_guard_result_is_consumed_as_diagnostic" time="0.021"><failure message="AssertionError: assert 'DENY_ZERO_EFFECT' in 'DELEGATE_TO_ACCEPTED_OWNER'&#10; +  where 'DELEGATE_TO_ACCEPTED_OWNER' = ConditioningView(status=&lt;ConditioningStatus.BOUND: 'BOUND'&gt;, reason=&lt;ConditioningReason.OK: 'OK'&gt;, subject='TEST_ONLY_... guard_reason='ZERO_POSITIVE_REGISTRY', bundle_hash='f43da001bc79d95de2d5b1344e70b40743aaaaaac4c5e588dd566e6c4a5a4921').guard_outcome">def test_native_guard_result_is_consumed_as_diagnostic():
+     v=bind_conditioning(subject=A,sources=sources(),as_of=20)
+&gt;    assert 'DENY_ZERO_EFFECT' in v.guard_outcome
+E    AssertionError: assert 'DENY_ZERO_EFFECT' in 'DELEGATE_TO_ACCEPTED_OWNER'
+E     +  where 'DELEGATE_TO_ACCEPTED_OWNER' = ConditioningView(status=&lt;ConditioningStatus.BOUND: 'BOUND'&gt;, reason=&lt;ConditioningReason.OK: 'OK'&gt;, subject='TEST_ONLY_... guard_reason='ZERO_POSITIVE_REGISTRY', bundle_hash='f43da001bc79d95de2d5b1344e70b40743aaaaaac4c5e588dd566e6c4a5a4921').guard_outcome
+
+review/test_edges.py:7: AssertionError</failure></testcase></testsuite></testsuites>

@@ -1,0 +1,17 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+____________ test_actor_original_presented_source_controls_readset _____________
+
+    def test_actor_original_presented_source_controls_readset():
+     a=actor();r=ingress_actor(a,as_of=20)
+     assert r.admitted
+>    assert r.readset_refs==(a['source_ref'],)
+E    AssertionError: assert ('SEVERED_SOURCE',) == ('TEST_ONLY_R...CTOR_SOURCE',)
+E      
+E      At index 0 diff: 'SEVERED_SOURCE' != 'TEST_ONLY_REVIEW_ACTOR_SOURCE'
+E      Use -v to get more diff
+
+review/test_edges.py:32: AssertionError
+=========================== short test summary info ============================
+FAILED review/test_edges.py::test_actor_original_presented_source_controls_readset
+1 failed in 0.30s

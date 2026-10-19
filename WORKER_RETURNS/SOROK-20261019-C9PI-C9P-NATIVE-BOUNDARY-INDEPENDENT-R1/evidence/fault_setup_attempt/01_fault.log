@@ -1,0 +1,25 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+___________ test_response_lookup_consumes_exact_rule_registry_entry ____________
+
+    def test_response_lookup_consumes_exact_rule_registry_entry() -> None:
+        """Named assertion: the CAN008 lookup consumes the exact registry entry and finds it."""
+        rule = build_response_rule()
+        registry = ResponseRuleRegistry.test_only((rule,))
+        lookup = lookup_rule(
+            registry,
+            authority_id=rule.authority_id,
+            rule_version=rule.rule_version,
+            rule_content_hash=rule.rule_content_hash,
+            subject=ACTOR_ID,
+        )
+>       assert lookup.status is RuleLookupStatus.FOUND, lookup.reason
+E       AssertionError: CAN008_RULE_ABSENT_FROM_REGISTRY
+E       assert <RuleLookupStatus.RULE_ABSENT: 'RULE_ABSENT'> is <RuleLookupStatus.FOUND: 'FOUND'>
+E        +  where <RuleLookupStatus.RULE_ABSENT: 'RULE_ABSENT'> = RuleLookupResult(status=<RuleLookupStatus.RULE_ABSENT: 'RULE_ABSENT'>, rule_id='', rule_version='1', rule_content_hash...8_AUTHORITY', issuer_verified=False, grade='TEST_ONLY_SOURCEFREE_TECHNICAL', reason='CAN008_RULE_ABSENT_FROM_REGISTRY').status
+E        +  and   <RuleLookupStatus.FOUND: 'FOUND'> = RuleLookupStatus.FOUND
+
+WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_severance_witnesses.py:103: AssertionError
+=========================== short test summary info ============================
+FAILED WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_severance_witnesses.py::test_response_lookup_consumes_exact_rule_registry_entry
+1 failed in 0.27s

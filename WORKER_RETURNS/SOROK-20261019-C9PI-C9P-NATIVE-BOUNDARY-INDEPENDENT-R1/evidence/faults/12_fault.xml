@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="0.132" timestamp="2026-10-19T13:20:29.545035-04:00" hostname="Matthews-MBP.lan"><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_later_action_consumer" name="test_consumer_readset_mismatch_is_typed" time="0.018"><failure message="AssertionError: assert &lt;LaterActionStatus.ACTION_ADMISSION_HELD: 'ACTION_ADMISSION_HELD'&gt; is &lt;LaterActionStatus.CONSUMER_READSET_MISMATCH: 'CONSUMER_READSET_MISMATCH'&gt;&#10; +  where &lt;LaterActionStatus.ACTION_ADMISSION_HELD: 'ACTION_ADMISSION_HELD'&gt; = LaterActionRead(status=&lt;LaterActionStatus.ACTION_ADMISSION_HELD: 'ACTION_ADMISSION_HELD'&gt;, consumer_id='TEST_ONLY_DIVE...eipt_hash='b187454d87d86bef14817270e9b103d8cc5507d22dcdc4c174c25e0e0aae1d61', reason='PERFORMED_ACTION_OWNER_UNPROVED').status&#10; +  and   &lt;LaterActionStatus.CONSUMER_READSET_MISMATCH: 'CONSUMER_READSET_MISMATCH'&gt; = LaterActionStatus.CONSUMER_READSET_MISMATCH">tmp_path = PosixPath('<RETURN_ROOT>/runs/pytest/12_fault/test_consumer_readset_mismatch0')
+
+    def test_consumer_readset_mismatch_is_typed(tmp_path) -&gt; None:
+        from conftest import build_event_witness
+    
+        store = CandidateStore(tmp_path / "store.sqlite")
+        event = build_event_witness()
+        _commit_target(store, event)
+    
+        class DivergingConsumer(LaterActionConsumer):
+            def read_target(self, store_arg, middle_state_id, as_of):
+                record = store_arg.read_target_state(middle_state_id)
+                return record, "DIVERGED_HASH"
+    
+        consumer = DivergingConsumer(
+            consumer_id="TEST_ONLY_DIVERGING_CONSUMER",
+            expected_surface="committed_target_state",
+        )
+        read = read_target_for_later_action(
+            store,
+            consumer=consumer,
+            middle_state_id="proposal-1",
+            as_of=30,
+            commit_time=event["time"],
+        )
+&gt;       assert read.status is LaterActionStatus.CONSUMER_READSET_MISMATCH
+E       AssertionError: assert &lt;LaterActionStatus.ACTION_ADMISSION_HELD: 'ACTION_ADMISSION_HELD'&gt; is &lt;LaterActionStatus.CONSUMER_READSET_MISMATCH: 'CONSUMER_READSET_MISMATCH'&gt;
+E        +  where &lt;LaterActionStatus.ACTION_ADMISSION_HELD: 'ACTION_ADMISSION_HELD'&gt; = LaterActionRead(status=&lt;LaterActionStatus.ACTION_ADMISSION_HELD: 'ACTION_ADMISSION_HELD'&gt;, consumer_id='TEST_ONLY_DIVE...eipt_hash='b187454d87d86bef14817270e9b103d8cc5507d22dcdc4c174c25e0e0aae1d61', reason='PERFORMED_ACTION_OWNER_UNPROVED').status
+E        +  and   &lt;LaterActionStatus.CONSUMER_READSET_MISMATCH: 'CONSUMER_READSET_MISMATCH'&gt; = LaterActionStatus.CONSUMER_READSET_MISMATCH
+
+WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_later_action_consumer.py:170: AssertionError</failure></testcase></testsuite></testsuites>

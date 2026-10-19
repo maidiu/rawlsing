@@ -1,0 +1,37 @@
+{
+  "schema": "C9P_CASE_MATRIX@1",
+  "campaign": "SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1",
+  "startup_commit": "aa55bca9020d15b539f13a71c526e3d3849a9cbf",
+  "total_tests": 90,
+  "total_passed": 90,
+  "total_failed": 0,
+  "native_positive_status": "C9_NATIVE_POSITIVE_HELD",
+  "test_only_technical_status": "EXECUTED_GREEN__TEST_ONLY_TECHNICAL",
+  "severance_status": "ALL_SEVERANCE_WITNESSES_RED_SAME_NAMED_ASSERTION",
+  "cells": [
+    {"cell": "T0_native_module_custody", "tests": 4, "status": "EXECUTED_GREEN", "grade": "TECHNICAL"},
+    {"cell": "T1a_actor_identity_ingress", "tests": 7, "status": "EXECUTED_GREEN", "grade": "TECHNICAL"},
+    {"cell": "T1b_event_witness_ingress", "tests": 8, "status": "EXECUTED_GREEN", "grade": "TECHNICAL"},
+    {"cell": "T1c_conditioning_readonly", "tests": 7, "status": "EXECUTED_GREEN", "grade": "TECHNICAL"},
+    {"cell": "T1d_can008_rule_lookup", "tests": 8, "status": "EXECUTED_GREEN", "grade": "TECHNICAL"},
+    {"cell": "T1e_can011_target_branches", "tests": 12, "status": "EXECUTED_GREEN", "grade": "TECHNICAL"},
+    {"cell": "T1f_atomic_rollback_no_ghost", "tests": 7, "status": "EXECUTED_GREEN", "grade": "TECHNICAL"},
+    {"cell": "T1g_later_action_consumer", "tests": 6, "status": "EXECUTED_GREEN", "grade": "TECHNICAL"},
+    {"cell": "T1h_performed_action_admission", "tests": 9, "status": "EXECUTED_GREEN", "grade": "TECHNICAL"},
+    {"cell": "T1_pipeline_native_ceiling", "tests": 7, "status": "EXECUTED_GREEN", "grade": "TECHNICAL"},
+    {"cell": "T1_create_chain_test_only", "tests": 2, "status": "EXECUTED_GREEN__TEST_ONLY", "grade": "TEST_ONLY_SOURCEFREE_TECHNICAL"},
+    {"cell": "T2_owner_release_gate", "tests": 7, "status": "EXECUTED_GREEN__HELD", "grade": "TECHNICAL"},
+    {"cell": "T3_severance_witnesses", "tests": 6, "status": "CLAIM_EDGE_FALSIFIED_BY_CONTROL_AND_POSITIVE_SURVIVED", "grade": "PROOF_INTEGRITY"},
+    {"cell": "T3_proof_gate_witnesses", "tests": 8, "status": "MECHANICAL_WITNESS_PASS", "grade": "PROOF_INTEGRITY"},
+    {"cell": "C9_native_positive", "tests": 0, "status": "C9_NATIVE_POSITIVE_HELD", "grade": "HELD"},
+    {"cell": "C12_pipeline_generated_person", "tests": 0, "status": "NOT_RUN", "grade": "HELD"}
+  ],
+  "named_severance_assertions": [
+    "test_later_action_consumer_reads_committed_target_state",
+    "test_response_lookup_consumes_exact_rule_registry_entry",
+    "test_target_decision_consumes_independent_permission",
+    "test_conditioning_readset_binds_person_world_sources",
+    "test_action_admission_binds_performed_action_receipt",
+    "test_transaction_readset_binds_admitted_event_witness"
+  ]
+}

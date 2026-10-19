@@ -1,0 +1,19 @@
+E                                                                        [100%]
+==================================== ERRORS ====================================
+__ ERROR at setup of test_later_action_consumer_reads_committed_target_state ___
+
+self = PosixPath('<RETURN_ROOT>/runs/pytest/00_fault')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+>           os.mkdir(self, mode)
+E           FileNotFoundError: [Errno 2] No such file or directory: '<RETURN_ROOT>/runs/pytest/00_fault'
+
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1116: FileNotFoundError
+=========================== short test summary info ============================
+ERROR WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_severance_witnesses.py::test_later_action_consumer_reads_committed_target_state
+1 error in 0.18s

@@ -1,0 +1,27 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "claims": [
+    {
+      "claim_id": "C9P_CONSUMER_READ_EXACT_COMMITTED_STATE",
+      "actual_consumer": "candidate.later_action.read_target_for_later_action with LaterActionConsumer.read_target",
+      "claimed_dependency": "committed target_state row -> consumer read_target -> independent store read cross-check",
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_later_action_consumer.py::test_consumer_reads_exact_committed_state",
+      "fault": {
+        "path": "WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/candidate/later_action.py",
+        "old": "record, state_hash = consumer.read_target(store, middle_state_id, as_of)",
+        "new": "record, state_hash = None, \"\""
+      }
+    },
+    {
+      "claim_id": "C9P_CONSUMER_READSET_MISMATCH_DETECTED",
+      "actual_consumer": "candidate.later_action.read_target_for_later_action independent read cross-check",
+      "claimed_dependency": "consumer-returned state_hash -> independently read committed record digest comparison",
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_later_action_consumer.py::test_consumer_readset_mismatch_is_typed",
+      "fault": {
+        "path": "WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/candidate/later_action.py",
+        "old": "if independently_read is None or digest(independently_read) != state_hash:",
+        "new": "if False:"
+      }
+    }
+  ]
+}

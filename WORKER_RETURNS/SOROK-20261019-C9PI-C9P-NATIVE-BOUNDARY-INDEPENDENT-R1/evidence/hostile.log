@@ -1,0 +1,487 @@
+FFF.FFFFFFFFFFFFFFF.....FF...FFF.FFF.                                    [100%]
+=================================== FAILURES ===================================
+__________________ test_forged_actor_original_source_refused ___________________
+
+    def test_forged_actor_original_source_refused():
+     forged=reseal(actor(),source_ref='ADP007:INVENTED',source_hash='not-an-authentic-source')
+>    assert not ingress_actor(forged,as_of=20).admitted
+E    AssertionError: assert not True
+E     +  where True = ActorIngressResult(status=<IngressStatus.ADMITTED: 'ADMITTED'>, reason=<IngressReason.OK: 'OK'>, actor_id='TEST_ONLY_R...ED', readset_refs=('ADP007:INVENTED',), record_hash='b096f1b42b22e88457108676d4d829270c65e5a1c7c1e5ab45e2758c3c02b265').admitted
+E     +    where ActorIngressResult(status=<IngressStatus.ADMITTED: 'ADMITTED'>, reason=<IngressReason.OK: 'OK'>, actor_id='TEST_ONLY_R...ED', readset_refs=('ADP007:INVENTED',), record_hash='b096f1b42b22e88457108676d4d829270c65e5a1c7c1e5ab45e2758c3c02b265') = ingress_actor({'schema': 'C9P_ACTOR_IDENTITY_RECORD@1', 'actor_id': 'TEST_ONLY_REVIEW_A', 'activation_status': 'ACTIVE', 'standing_state': 'STANDING_CURRENT', ...}, as_of=20)
+
+review/test_hostile.py:18: AssertionError
+________________________ test_wrong_actor_event_refused ________________________
+
+store = <candidate.transaction.CandidateStore object at 0x10a510ad0>
+
+    def test_wrong_actor_event_refused(store):
+>    assert_no_effect(run(store,event_raw=event(actor_role='TEST_ONLY_OTHER_ACTOR',content={'participants':['OTHER'],'scene':'elsewhere'})))
+
+review/test_hostile.py:21: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+result = PipelineResult(stages=(PipelineStage(stage='actor_ingress', ok=True, reason='OK', detail={'actor_id': 'TEST_ONLY_REVIE...f, act, occurrence_ref, action_time, actor_id, consumed_state_hash, hash}', held_at=30), committed=True, no_ghost=True)
+
+    def assert_no_effect(result):
+>    assert result.decision is None or result.decision.branch is not TargetBranch.CREATE
+E    AssertionError: assert (TargetDecision(branch=<TargetBranch.CREATE: 'CREATE'>, reason=<TargetReason.OK: 'OK'>, actor_id='TEST_ONLY_REVIEW_A', ...afbfecdb2719dc9d867d17ec022c0603f76e40efaa2', 'TEST_ONLY_H1', 'TEST_ONLY_H2'), permission_ref='TEST_ONLY_REVIEW_GRANT') is None or <TargetBranch.CREATE: 'CREATE'> is not <TargetBranch.CREATE: 'CREATE'>)
+E     +  where TargetDecision(branch=<TargetBranch.CREATE: 'CREATE'>, reason=<TargetReason.OK: 'OK'>, actor_id='TEST_ONLY_REVIEW_A', ...afbfecdb2719dc9d867d17ec022c0603f76e40efaa2', 'TEST_ONLY_H1', 'TEST_ONLY_H2'), permission_ref='TEST_ONLY_REVIEW_GRANT') = PipelineResult(stages=(PipelineStage(stage='actor_ingress', ok=True, reason='OK', detail={'actor_id': 'TEST_ONLY_REVIE...f, act, occurrence_ref, action_time, actor_id, consumed_state_hash, hash}', held_at=30), committed=True, no_ghost=True).decision
+E     +  and   <TargetBranch.CREATE: 'CREATE'> = TargetDecision(branch=<TargetBranch.CREATE: 'CREATE'>, reason=<TargetReason.OK: 'OK'>, actor_id='TEST_ONLY_REVIEW_A', ...afbfecdb2719dc9d867d17ec022c0603f76e40efaa2', 'TEST_ONLY_H1', 'TEST_ONLY_H2'), permission_ref='TEST_ONLY_REVIEW_GRANT').branch
+E     +    where TargetDecision(branch=<TargetBranch.CREATE: 'CREATE'>, reason=<TargetReason.OK: 'OK'>, actor_id='TEST_ONLY_REVIEW_A', ...afbfecdb2719dc9d867d17ec022c0603f76e40efaa2', 'TEST_ONLY_H1', 'TEST_ONLY_H2'), permission_ref='TEST_ONLY_REVIEW_GRANT') = PipelineResult(stages=(PipelineStage(stage='actor_ingress', ok=True, reason='OK', detail={'actor_id': 'TEST_ONLY_REVIE...f, act, occurrence_ref, action_time, actor_id, consumed_state_hash, hash}', held_at=30), committed=True, no_ghost=True).decision
+E     +  and   <TargetBranch.CREATE: 'CREATE'> = TargetBranch.CREATE
+
+review/test_hostile.py:14: AssertionError
+______________________ test_forged_native_receipt_refused ______________________
+
+    def test_forged_native_receipt_refused():
+     e=event(admission_grade=GRADE_NATIVE,owner_ref='ADP019:FICTIONAL',owner_receipt_ref='no-such-owner-receipt')
+>    assert not ingress_event(e,as_of=20,last_time=0,prior_event_hashes=frozenset()).admitted
+E    AssertionError: assert not True
+E     +  where True = EventWitnessResult(status=<WitnessStatus.ADMITTED: 'ADMITTED'>, reason=<WitnessReason.OK: 'OK'>, event_id='TEST_ONLY_R...CTIONAL', event_time=15, admission_grade='ADMITTED_NATIVE', readset_refs=('ADP019:FICTIONAL', 'no-such-owner-receipt')).admitted
+E     +    where EventWitnessResult(status=<WitnessStatus.ADMITTED: 'ADMITTED'>, reason=<WitnessReason.OK: 'OK'>, event_id='TEST_ONLY_R...CTIONAL', event_time=15, admission_grade='ADMITTED_NATIVE', readset_refs=('ADP019:FICTIONAL', 'no-such-owner-receipt')) = ingress_event({'schema': 'C9P_EVENT_WITNESS@1', 'event_id': 'TEST_ONLY_REVIEW_E1', 'owner_ref': 'ADP019:FICTIONAL', 'owner_receipt_ref': 'no-such-owner-receipt', ...}, as_of=20, last_time=0, prior_event_hashes=frozenset())
+E     +      where frozenset() = frozenset()
+
+review/test_hostile.py:25: AssertionError
+________________ test_ineligible_world_does_not_create[future] _________________
+
+store = <candidate.transaction.CandidateStore object at 0x10a541690>
+body = {'as_of': 999, 'scene': 'garage', 'access': 'granted'}
+
+    @pytest.mark.parametrize('body',[{'as_of':999,'scene':'garage','access':'granted'},{'as_of':15,'scene':'other-world','access':'granted'},{'as_of':15,'scene':'garage','access':'denied'}],ids=['future','wrong-scene','denied-material-access'])
+    def test_ineligible_world_does_not_create(store,body):
+     s=make_conditioning_source(source_ref='TEST_ONLY_REVIEW_GARAGE',source_class='ResolvedStructuralContext',subject=A,body=body)
+>    assert_no_effect(run(store,conditioning_sources=[s]))
+
+review/test_hostile.py:35: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+result = PipelineResult(stages=(PipelineStage(stage='actor_ingress', ok=True, reason='OK', detail={'actor_id': 'TEST_ONLY_REVIE...f, act, occurrence_ref, action_time, actor_id, consumed_state_hash, hash}', held_at=30), committed=True, no_ghost=True)
+
+    def assert_no_effect(result):
+>    assert result.decision is None or result.decision.branch is not TargetBranch.CREATE
+E    AssertionError: assert (TargetDecision(branch=<TargetBranch.CREATE: 'CREATE'>, reason=<TargetReason.OK: 'OK'>, actor_id='TEST_ONLY_REVIEW_A', ...81d4a1f9a8c06487a739162aa6f0fbf4086154f3ef1', 'TEST_ONLY_H1', 'TEST_ONLY_H2'), permission_ref='TEST_ONLY_REVIEW_GRANT') is None or <TargetBranch.CREATE: 'CREATE'> is not <TargetBranch.CREATE: 'CREATE'>)
+E     +  where TargetDecision(branch=<TargetBranch.CREATE: 'CREATE'>, reason=<TargetReason.OK: 'OK'>, actor_id='TEST_ONLY_REVIEW_A', ...81d4a1f9a8c06487a739162aa6f0fbf4086154f3ef1', 'TEST_ONLY_H1', 'TEST_ONLY_H2'), permission_ref='TEST_ONLY_REVIEW_GRANT') = PipelineResult(stages=(PipelineStage(stage='actor_ingress', ok=True, reason='OK', detail={'actor_id': 'TEST_ONLY_REVIE...f, act, occurrence_ref, action_time, actor_id, consumed_state_hash, hash}', held_at=30), committed=True, no_ghost=True).decision
+E     +  and   <TargetBranch.CREATE: 'CREATE'> = TargetDecision(branch=<TargetBranch.CREATE: 'CREATE'>, reason=<TargetReason.OK: 'OK'>, actor_id='TEST_ONLY_REVIEW_A', ...81d4a1f9a8c06487a739162aa6f0fbf4086154f3ef1', 'TEST_ONLY_H1', 'TEST_ONLY_H2'), permission_ref='TEST_ONLY_REVIEW_GRANT').branch
+E     +    where TargetDecision(branch=<TargetBranch.CREATE: 'CREATE'>, reason=<TargetReason.OK: 'OK'>, actor_id='TEST_ONLY_REVIEW_A', ...81d4a1f9a8c06487a739162aa6f0fbf4086154f3ef1', 'TEST_ONLY_H1', 'TEST_ONLY_H2'), permission_ref='TEST_ONLY_REVIEW_GRANT') = PipelineResult(stages=(PipelineStage(stage='actor_ingress', ok=True, reason='OK', detail={'actor_id': 'TEST_ONLY_REVIE...f, act, occurrence_ref, action_time, actor_id, consumed_state_hash, hash}', held_at=30), committed=True, no_ghost=True).decision
+E     +  and   <TargetBranch.CREATE: 'CREATE'> = TargetBranch.CREATE
+
+review/test_hostile.py:14: AssertionError
+______________ test_ineligible_world_does_not_create[wrong-scene] ______________
+
+store = <candidate.transaction.CandidateStore object at 0x10a564910>
+body = {'as_of': 15, 'scene': 'other-world', 'access': 'granted'}
+
+    @pytest.mark.parametrize('body',[{'as_of':999,'scene':'garage','access':'granted'},{'as_of':15,'scene':'other-world','access':'granted'},{'as_of':15,'scene':'garage','access':'denied'}],ids=['future','wrong-scene','denied-material-access'])
+    def test_ineligible_world_does_not_create(store,body):
+     s=make_conditioning_source(source_ref='TEST_ONLY_REVIEW_GARAGE',source_class='ResolvedStructuralContext',subject=A,body=body)
+>    assert_no_effect(run(store,conditioning_sources=[s]))
+
+review/test_hostile.py:35: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+result = PipelineResult(stages=(PipelineStage(stage='actor_ingress', ok=True, reason='OK', detail={'actor_id': 'TEST_ONLY_REVIE...f, act, occurrence_ref, action_time, actor_id, consumed_state_hash, hash}', held_at=30), committed=True, no_ghost=True)
+
+    def assert_no_effect(result):
+>    assert result.decision is None or result.decision.branch is not TargetBranch.CREATE
+E    AssertionError: assert (TargetDecision(branch=<TargetBranch.CREATE: 'CREATE'>, reason=<TargetReason.OK: 'OK'>, actor_id='TEST_ONLY_REVIEW_A', ...81d4a1f9a8c06487a739162aa6f0fbf4086154f3ef1', 'TEST_ONLY_H1', 'TEST_ONLY_H2'), permission_ref='TEST_ONLY_REVIEW_GRANT') is None or <TargetBranch.CREATE: 'CREATE'> is not <TargetBranch.CREATE: 'CREATE'>)
+E     +  where TargetDecision(branch=<TargetBranch.CREATE: 'CREATE'>, reason=<TargetReason.OK: 'OK'>, actor_id='TEST_ONLY_REVIEW_A', ...81d4a1f9a8c06487a739162aa6f0fbf4086154f3ef1', 'TEST_ONLY_H1', 'TEST_ONLY_H2'), permission_ref='TEST_ONLY_REVIEW_GRANT') = PipelineResult(stages=(PipelineStage(stage='actor_ingress', ok=True, reason='OK', detail={'actor_id': 'TEST_ONLY_REVIE...f, act, occurrence_ref, action_time, actor_id, consumed_state_hash, hash}', held_at=30), committed=True, no_ghost=True).decision
+E     +  and   <TargetBranch.CREATE: 'CREATE'> = TargetDecision(branch=<TargetBranch.CREATE: 'CREATE'>, reason=<TargetReason.OK: 'OK'>, actor_id='TEST_ONLY_REVIEW_A', ...81d4a1f9a8c06487a739162aa6f0fbf4086154f3ef1', 'TEST_ONLY_H1', 'TEST_ONLY_H2'), permission_ref='TEST_ONLY_REVIEW_GRANT').branch
+E     +    where TargetDecision(branch=<TargetBranch.CREATE: 'CREATE'>, reason=<TargetReason.OK: 'OK'>, actor_id='TEST_ONLY_REVIEW_A', ...81d4a1f9a8c06487a739162aa6f0fbf4086154f3ef1', 'TEST_ONLY_H1', 'TEST_ONLY_H2'), permission_ref='TEST_ONLY_REVIEW_GRANT') = PipelineResult(stages=(PipelineStage(stage='actor_ingress', ok=True, reason='OK', detail={'actor_id': 'TEST_ONLY_REVIE...f, act, occurrence_ref, action_time, actor_id, consumed_state_hash, hash}', held_at=30), committed=True, no_ghost=True).decision
+E     +  and   <TargetBranch.CREATE: 'CREATE'> = TargetBranch.CREATE
+
+review/test_hostile.py:14: AssertionError
+________ test_ineligible_world_does_not_create[denied-material-access] _________
+
+store = <candidate.transaction.CandidateStore object at 0x10a43b350>
+body = {'as_of': 15, 'scene': 'garage', 'access': 'denied'}
+
+    @pytest.mark.parametrize('body',[{'as_of':999,'scene':'garage','access':'granted'},{'as_of':15,'scene':'other-world','access':'granted'},{'as_of':15,'scene':'garage','access':'denied'}],ids=['future','wrong-scene','denied-material-access'])
+    def test_ineligible_world_does_not_create(store,body):
+     s=make_conditioning_source(source_ref='TEST_ONLY_REVIEW_GARAGE',source_class='ResolvedStructuralContext',subject=A,body=body)
+>    assert_no_effect(run(store,conditioning_sources=[s]))
+
+review/test_hostile.py:35: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+result = PipelineResult(stages=(PipelineStage(stage='actor_ingress', ok=True, reason='OK', detail={'actor_id': 'TEST_ONLY_REVIE...f, act, occurrence_ref, action_time, actor_id, consumed_state_hash, hash}', held_at=30), committed=True, no_ghost=True)
+
+    def assert_no_effect(result):
+>    assert result.decision is None or result.decision.branch is not TargetBranch.CREATE
+E    AssertionError: assert (TargetDecision(branch=<TargetBranch.CREATE: 'CREATE'>, reason=<TargetReason.OK: 'OK'>, actor_id='TEST_ONLY_REVIEW_A', ...81d4a1f9a8c06487a739162aa6f0fbf4086154f3ef1', 'TEST_ONLY_H1', 'TEST_ONLY_H2'), permission_ref='TEST_ONLY_REVIEW_GRANT') is None or <TargetBranch.CREATE: 'CREATE'> is not <TargetBranch.CREATE: 'CREATE'>)
+E     +  where TargetDecision(branch=<TargetBranch.CREATE: 'CREATE'>, reason=<TargetReason.OK: 'OK'>, actor_id='TEST_ONLY_REVIEW_A', ...81d4a1f9a8c06487a739162aa6f0fbf4086154f3ef1', 'TEST_ONLY_H1', 'TEST_ONLY_H2'), permission_ref='TEST_ONLY_REVIEW_GRANT') = PipelineResult(stages=(PipelineStage(stage='actor_ingress', ok=True, reason='OK', detail={'actor_id': 'TEST_ONLY_REVIE...f, act, occurrence_ref, action_time, actor_id, consumed_state_hash, hash}', held_at=30), committed=True, no_ghost=True).decision
+E     +  and   <TargetBranch.CREATE: 'CREATE'> = TargetDecision(branch=<TargetBranch.CREATE: 'CREATE'>, reason=<TargetReason.OK: 'OK'>, actor_id='TEST_ONLY_REVIEW_A', ...81d4a1f9a8c06487a739162aa6f0fbf4086154f3ef1', 'TEST_ONLY_H1', 'TEST_ONLY_H2'), permission_ref='TEST_ONLY_REVIEW_GRANT').branch
+E     +    where TargetDecision(branch=<TargetBranch.CREATE: 'CREATE'>, reason=<TargetReason.OK: 'OK'>, actor_id='TEST_ONLY_REVIEW_A', ...81d4a1f9a8c06487a739162aa6f0fbf4086154f3ef1', 'TEST_ONLY_H1', 'TEST_ONLY_H2'), permission_ref='TEST_ONLY_REVIEW_GRANT') = PipelineResult(stages=(PipelineStage(stage='actor_ingress', ok=True, reason='OK', detail={'actor_id': 'TEST_ONLY_REVIE...f, act, occurrence_ref, action_time, actor_id, consumed_state_hash, hash}', held_at=30), committed=True, no_ghost=True).decision
+E     +  and   <TargetBranch.CREATE: 'CREATE'> = TargetBranch.CREATE
+
+review/test_hostile.py:14: AssertionError
+_________________ test_rehashed_source_false_identity_refused __________________
+
+    def test_rehashed_source_false_identity_refused():
+     s=reseal(sources()[0],content={'access':'denied'},source_hash='unchanged-false-digest')
+>    assert not bind_conditioning(subject=A,sources=[s],as_of=20).bound
+E    AssertionError: assert not True
+E     +  where True = ConditioningView(status=<ConditioningStatus.BOUND: 'BOUND'>, reason=<ConditioningReason.OK: 'OK'>, subject='TEST_ONLY_... guard_reason='ZERO_POSITIVE_REGISTRY', bundle_hash='3c1bed6c3ea2fa9479ea39357fc5965e232a28c7f6885374590860f7bca1de57').bound
+E     +    where ConditioningView(status=<ConditioningStatus.BOUND: 'BOUND'>, reason=<ConditioningReason.OK: 'OK'>, subject='TEST_ONLY_... guard_reason='ZERO_POSITIVE_REGISTRY', bundle_hash='3c1bed6c3ea2fa9479ea39357fc5965e232a28c7f6885374590860f7bca1de57') = bind_conditioning(subject='TEST_ONLY_REVIEW_A', sources=[{'schema': 'C9P_CONDITIONING_BUNDLE@1', 'source_ref': 'TEST_ONLY_REVIEW_GARAGE', 'source_class': 'ResolvedStructuralContext', 'subject': 'TEST_ONLY_REVIEW_A', ...}], as_of=20)
+
+review/test_hostile.py:39: AssertionError
+______________ test_observer_privileged_truth_not_actor_practice _______________
+
+store = <candidate.transaction.CandidateStore object at 0x10a4df810>
+
+    def test_observer_privileged_truth_not_actor_practice(store):
+     s=make_conditioning_source(source_ref='TEST_ONLY_PRIVATE_P_BELIEF',source_class='OBSERVER_TRUTH',subject=A,body={'P_private_plan':'leave','actor_observed':False})
+>    assert_no_effect(run(store,conditioning_sources=[s]))
+
+review/test_hostile.py:43: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+result = PipelineResult(stages=(PipelineStage(stage='actor_ingress', ok=True, reason='OK', detail={'actor_id': 'TEST_ONLY_REVIE...f, act, occurrence_ref, action_time, actor_id, consumed_state_hash, hash}', held_at=30), committed=True, no_ghost=True)
+
+    def assert_no_effect(result):
+>    assert result.decision is None or result.decision.branch is not TargetBranch.CREATE
+E    AssertionError: assert (TargetDecision(branch=<TargetBranch.CREATE: 'CREATE'>, reason=<TargetReason.OK: 'OK'>, actor_id='TEST_ONLY_REVIEW_A', ...81d4a1f9a8c06487a739162aa6f0fbf4086154f3ef1', 'TEST_ONLY_H1', 'TEST_ONLY_H2'), permission_ref='TEST_ONLY_REVIEW_GRANT') is None or <TargetBranch.CREATE: 'CREATE'> is not <TargetBranch.CREATE: 'CREATE'>)
+E     +  where TargetDecision(branch=<TargetBranch.CREATE: 'CREATE'>, reason=<TargetReason.OK: 'OK'>, actor_id='TEST_ONLY_REVIEW_A', ...81d4a1f9a8c06487a739162aa6f0fbf4086154f3ef1', 'TEST_ONLY_H1', 'TEST_ONLY_H2'), permission_ref='TEST_ONLY_REVIEW_GRANT') = PipelineResult(stages=(PipelineStage(stage='actor_ingress', ok=True, reason='OK', detail={'actor_id': 'TEST_ONLY_REVIE...f, act, occurrence_ref, action_time, actor_id, consumed_state_hash, hash}', held_at=30), committed=True, no_ghost=True).decision
+E     +  and   <TargetBranch.CREATE: 'CREATE'> = TargetDecision(branch=<TargetBranch.CREATE: 'CREATE'>, reason=<TargetReason.OK: 'OK'>, actor_id='TEST_ONLY_REVIEW_A', ...81d4a1f9a8c06487a739162aa6f0fbf4086154f3ef1', 'TEST_ONLY_H1', 'TEST_ONLY_H2'), permission_ref='TEST_ONLY_REVIEW_GRANT').branch
+E     +    where TargetDecision(branch=<TargetBranch.CREATE: 'CREATE'>, reason=<TargetReason.OK: 'OK'>, actor_id='TEST_ONLY_REVIEW_A', ...81d4a1f9a8c06487a739162aa6f0fbf4086154f3ef1', 'TEST_ONLY_H1', 'TEST_ONLY_H2'), permission_ref='TEST_ONLY_REVIEW_GRANT') = PipelineResult(stages=(PipelineStage(stage='actor_ingress', ok=True, reason='OK', detail={'actor_id': 'TEST_ONLY_REVIE...f, act, occurrence_ref, action_time, actor_id, consumed_state_hash, hash}', held_at=30), committed=True, no_ghost=True).decision
+E     +  and   <TargetBranch.CREATE: 'CREATE'> = TargetBranch.CREATE
+
+review/test_hostile.py:14: AssertionError
+__________________ test_unissued_rule_not_adopted_by_r2_label __________________
+
+    def test_unissued_rule_not_adopted_by_r2_label():
+     r=replace(rule(),authority_id='CAN008_R2_ADOPTED',authority_version='R2',grade='CURRENT_ACCEPTED',issuer_ref='LOCAL_CALLER')
+     reg=ResponseRuleRegistry('FORGED_CURRENT_REGISTRY','R2','CURRENT_ACCEPTED',{r.registry_key():r.as_dict()})
+     found=lookup_rule(reg,authority_id=r.authority_id,rule_version=r.rule_version,rule_content_hash=r.rule_content_hash,subject=A)
+>    assert not found.found
+E    AssertionError: assert not True
+E     +  where True = RuleLookupResult(status=<RuleLookupStatus.FOUND: 'FOUND'>, rule_id='TEST_ONLY_REVIEW_A_RULE', rule_version='1', rule_c...ff610763eda1ed914bf432', authority_id='CAN008_R2_ADOPTED', issuer_verified=True, grade='CURRENT_ACCEPTED', reason='OK').found
+
+review/test_hostile.py:49: AssertionError
+__________________ test_rule_content_rehash_not_authenticated __________________
+
+    def test_rule_content_rehash_not_authenticated():
+     r=rule();entry=r.as_dict();entry['predicates']=['anything'];entry['rule_content_hash']='forged-rehash'
+     reg=ResponseRuleRegistry('LOCAL','1','CURRENT_ACCEPTED',{(r.authority_id,'1','forged-rehash'):entry})
+>    assert not lookup_rule(reg,authority_id=r.authority_id,rule_version='1',rule_content_hash='forged-rehash',subject=A).found
+E    AssertionError: assert not True
+E     +  where True = RuleLookupResult(status=<RuleLookupStatus.FOUND: 'FOUND'>, rule_id='TEST_ONLY_REVIEW_A_RULE', rule_version='1', rule_c...sh', authority_id='TEST_ONLY_REVIEW_CAN008', issuer_verified=True, grade='TEST_ONLY_SOURCEFREE_TECHNICAL', reason='OK').found
+E     +    where RuleLookupResult(status=<RuleLookupStatus.FOUND: 'FOUND'>, rule_id='TEST_ONLY_REVIEW_A_RULE', rule_version='1', rule_c...sh', authority_id='TEST_ONLY_REVIEW_CAN008', issuer_verified=True, grade='TEST_ONLY_SOURCEFREE_TECHNICAL', reason='OK') = lookup_rule(ResponseRuleRegistry(registry_id='LOCAL', registry_version='1', grade='CURRENT_ACCEPTED', rules={('TEST_ONLY_REVIEW_CA...', 'predicates': ['anything'], 'effect_kind': 'TRANSFORM', 'numeric_policy': 'NONE', 'stochastic_policy': 'NO_DRAWS'}}), authority_id='TEST_ONLY_REVIEW_CAN008', rule_version='1', rule_content_hash='forged-rehash', subject='TEST_ONLY_REVIEW_A')
+E     +      where 'TEST_ONLY_REVIEW_CAN008' = ResponseRule(rule_id='TEST_ONLY_REVIEW_A_RULE', rule_version='1', rule_content_hash='e664d380ad7e4ab3fb1806b0102cd5b74...independent P offer', 'material access'), effect_kind='TRANSFORM', numeric_policy='NONE', stochastic_policy='NO_DRAWS').authority_id
+
+review/test_hostile.py:54: AssertionError
+____________ test_locally_minted_target_registry_and_grant_refused _____________
+
+store = <candidate.transaction.CandidateStore object at 0x10a4cf610>
+
+    def test_locally_minted_target_registry_and_grant_refused(store):
+     r=rule();t=replace(target(r),issuer_ref='LOCAL_FORGER',grade='CURRENT_ACCEPTED')
+     reg=TargetRuleRegistry('FORGED_CURRENT','1','CURRENT_ACCEPTED',{t.registry_key():t.as_dict()})
+     p=make_target_permission(grant_id='FORGED',issuer_ref='LOCAL_FORGER',actor_id=A,rule_content_hash=r.rule_content_hash,before_target_hash=store.target_state_hash(),response_hash='not-response',issued_at=10,grade='CURRENT_ACCEPTED')
+     _,_,d=decide(store,target_registry=reg,target_permission=p,permitted_issuer_refs=frozenset({'LOCAL_FORGER'}))
+>    assert d.branch is not TargetBranch.CREATE
+E    AssertionError: assert <TargetBranch.CREATE: 'CREATE'> is not <TargetBranch.CREATE: 'CREATE'>
+E     +  where <TargetBranch.CREATE: 'CREATE'> = TargetDecision(branch=<TargetBranch.CREATE: 'CREATE'>, reason=<TargetReason.OK: 'OK'>, actor_id='TEST_ONLY_REVIEW_A', ...296f6ff36cc8f34481d4a1f9a8c06487a739162aa6f0fbf4086154f3ef1', 'TEST_ONLY_H1', 'TEST_ONLY_H2'), permission_ref='FORGED').branch
+E     +  and   <TargetBranch.CREATE: 'CREATE'> = TargetBranch.CREATE
+
+review/test_hostile.py:61: AssertionError
+________ test_target_grant_exact_binding[response_hash-WRONG_RESPONSE] _________
+
+store = <candidate.transaction.CandidateStore object at 0x10a376b50>
+field = 'response_hash', value = 'WRONG_RESPONSE'
+
+    @pytest.mark.parametrize('field,value',[('response_hash','WRONG_RESPONSE'),('issued_at',999),('issuer_scope','REVOKED_SCOPE')])
+    def test_target_grant_exact_binding(store,field,value):
+     p=reseal(params(store)['target_permission'],**{field:value})
+>    assert_no_effect(run(store,target_permission=p))
+
+review/test_hostile.py:66: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+result = PipelineResult(stages=(PipelineStage(stage='actor_ingress', ok=True, reason='OK', detail={'actor_id': 'TEST_ONLY_REVIE...f, act, occurrence_ref, action_time, actor_id, consumed_state_hash, hash}', held_at=30), committed=True, no_ghost=True)
+
+    def assert_no_effect(result):
+>    assert result.decision is None or result.decision.branch is not TargetBranch.CREATE
+E    AssertionError: assert (TargetDecision(branch=<TargetBranch.CREATE: 'CREATE'>, reason=<TargetReason.OK: 'OK'>, actor_id='TEST_ONLY_REVIEW_A', ...81d4a1f9a8c06487a739162aa6f0fbf4086154f3ef1', 'TEST_ONLY_H1', 'TEST_ONLY_H2'), permission_ref='TEST_ONLY_REVIEW_GRANT') is None or <TargetBranch.CREATE: 'CREATE'> is not <TargetBranch.CREATE: 'CREATE'>)
+E     +  where TargetDecision(branch=<TargetBranch.CREATE: 'CREATE'>, reason=<TargetReason.OK: 'OK'>, actor_id='TEST_ONLY_REVIEW_A', ...81d4a1f9a8c06487a739162aa6f0fbf4086154f3ef1', 'TEST_ONLY_H1', 'TEST_ONLY_H2'), permission_ref='TEST_ONLY_REVIEW_GRANT') = PipelineResult(stages=(PipelineStage(stage='actor_ingress', ok=True, reason='OK', detail={'actor_id': 'TEST_ONLY_REVIE...f, act, occurrence_ref, action_time, actor_id, consumed_state_hash, hash}', held_at=30), committed=True, no_ghost=True).decision
+E     +  and   <TargetBranch.CREATE: 'CREATE'> = TargetDecision(branch=<TargetBranch.CREATE: 'CREATE'>, reason=<TargetReason.OK: 'OK'>, actor_id='TEST_ONLY_REVIEW_A', ...81d4a1f9a8c06487a739162aa6f0fbf4086154f3ef1', 'TEST_ONLY_H1', 'TEST_ONLY_H2'), permission_ref='TEST_ONLY_REVIEW_GRANT').branch
+E     +    where TargetDecision(branch=<TargetBranch.CREATE: 'CREATE'>, reason=<TargetReason.OK: 'OK'>, actor_id='TEST_ONLY_REVIEW_A', ...81d4a1f9a8c06487a739162aa6f0fbf4086154f3ef1', 'TEST_ONLY_H1', 'TEST_ONLY_H2'), permission_ref='TEST_ONLY_REVIEW_GRANT') = PipelineResult(stages=(PipelineStage(stage='actor_ingress', ok=True, reason='OK', detail={'actor_id': 'TEST_ONLY_REVIE...f, act, occurrence_ref, action_time, actor_id, consumed_state_hash, hash}', held_at=30), committed=True, no_ghost=True).decision
+E     +  and   <TargetBranch.CREATE: 'CREATE'> = TargetBranch.CREATE
+
+review/test_hostile.py:14: AssertionError
+________________ test_target_grant_exact_binding[issued_at-999] ________________
+
+store = <candidate.transaction.CandidateStore object at 0x10a4c6710>
+field = 'issued_at', value = 999
+
+    @pytest.mark.parametrize('field,value',[('response_hash','WRONG_RESPONSE'),('issued_at',999),('issuer_scope','REVOKED_SCOPE')])
+    def test_target_grant_exact_binding(store,field,value):
+     p=reseal(params(store)['target_permission'],**{field:value})
+>    assert_no_effect(run(store,target_permission=p))
+
+review/test_hostile.py:66: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+result = PipelineResult(stages=(PipelineStage(stage='actor_ingress', ok=True, reason='OK', detail={'actor_id': 'TEST_ONLY_REVIE...f, act, occurrence_ref, action_time, actor_id, consumed_state_hash, hash}', held_at=30), committed=True, no_ghost=True)
+
+    def assert_no_effect(result):
+>    assert result.decision is None or result.decision.branch is not TargetBranch.CREATE
+E    AssertionError: assert (TargetDecision(branch=<TargetBranch.CREATE: 'CREATE'>, reason=<TargetReason.OK: 'OK'>, actor_id='TEST_ONLY_REVIEW_A', ...81d4a1f9a8c06487a739162aa6f0fbf4086154f3ef1', 'TEST_ONLY_H1', 'TEST_ONLY_H2'), permission_ref='TEST_ONLY_REVIEW_GRANT') is None or <TargetBranch.CREATE: 'CREATE'> is not <TargetBranch.CREATE: 'CREATE'>)
+E     +  where TargetDecision(branch=<TargetBranch.CREATE: 'CREATE'>, reason=<TargetReason.OK: 'OK'>, actor_id='TEST_ONLY_REVIEW_A', ...81d4a1f9a8c06487a739162aa6f0fbf4086154f3ef1', 'TEST_ONLY_H1', 'TEST_ONLY_H2'), permission_ref='TEST_ONLY_REVIEW_GRANT') = PipelineResult(stages=(PipelineStage(stage='actor_ingress', ok=True, reason='OK', detail={'actor_id': 'TEST_ONLY_REVIE...f, act, occurrence_ref, action_time, actor_id, consumed_state_hash, hash}', held_at=30), committed=True, no_ghost=True).decision
+E     +  and   <TargetBranch.CREATE: 'CREATE'> = TargetDecision(branch=<TargetBranch.CREATE: 'CREATE'>, reason=<TargetReason.OK: 'OK'>, actor_id='TEST_ONLY_REVIEW_A', ...81d4a1f9a8c06487a739162aa6f0fbf4086154f3ef1', 'TEST_ONLY_H1', 'TEST_ONLY_H2'), permission_ref='TEST_ONLY_REVIEW_GRANT').branch
+E     +    where TargetDecision(branch=<TargetBranch.CREATE: 'CREATE'>, reason=<TargetReason.OK: 'OK'>, actor_id='TEST_ONLY_REVIEW_A', ...81d4a1f9a8c06487a739162aa6f0fbf4086154f3ef1', 'TEST_ONLY_H1', 'TEST_ONLY_H2'), permission_ref='TEST_ONLY_REVIEW_GRANT') = PipelineResult(stages=(PipelineStage(stage='actor_ingress', ok=True, reason='OK', detail={'actor_id': 'TEST_ONLY_REVIE...f, act, occurrence_ref, action_time, actor_id, consumed_state_hash, hash}', held_at=30), committed=True, no_ghost=True).decision
+E     +  and   <TargetBranch.CREATE: 'CREATE'> = TargetBranch.CREATE
+
+review/test_hostile.py:14: AssertionError
+_________ test_target_grant_exact_binding[issuer_scope-REVOKED_SCOPE] __________
+
+store = <candidate.transaction.CandidateStore object at 0x10a4c67d0>
+field = 'issuer_scope', value = 'REVOKED_SCOPE'
+
+    @pytest.mark.parametrize('field,value',[('response_hash','WRONG_RESPONSE'),('issued_at',999),('issuer_scope','REVOKED_SCOPE')])
+    def test_target_grant_exact_binding(store,field,value):
+     p=reseal(params(store)['target_permission'],**{field:value})
+>    assert_no_effect(run(store,target_permission=p))
+
+review/test_hostile.py:66: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+result = PipelineResult(stages=(PipelineStage(stage='actor_ingress', ok=True, reason='OK', detail={'actor_id': 'TEST_ONLY_REVIE...f, act, occurrence_ref, action_time, actor_id, consumed_state_hash, hash}', held_at=30), committed=True, no_ghost=True)
+
+    def assert_no_effect(result):
+>    assert result.decision is None or result.decision.branch is not TargetBranch.CREATE
+E    AssertionError: assert (TargetDecision(branch=<TargetBranch.CREATE: 'CREATE'>, reason=<TargetReason.OK: 'OK'>, actor_id='TEST_ONLY_REVIEW_A', ...81d4a1f9a8c06487a739162aa6f0fbf4086154f3ef1', 'TEST_ONLY_H1', 'TEST_ONLY_H2'), permission_ref='TEST_ONLY_REVIEW_GRANT') is None or <TargetBranch.CREATE: 'CREATE'> is not <TargetBranch.CREATE: 'CREATE'>)
+E     +  where TargetDecision(branch=<TargetBranch.CREATE: 'CREATE'>, reason=<TargetReason.OK: 'OK'>, actor_id='TEST_ONLY_REVIEW_A', ...81d4a1f9a8c06487a739162aa6f0fbf4086154f3ef1', 'TEST_ONLY_H1', 'TEST_ONLY_H2'), permission_ref='TEST_ONLY_REVIEW_GRANT') = PipelineResult(stages=(PipelineStage(stage='actor_ingress', ok=True, reason='OK', detail={'actor_id': 'TEST_ONLY_REVIE...f, act, occurrence_ref, action_time, actor_id, consumed_state_hash, hash}', held_at=30), committed=True, no_ghost=True).decision
+E     +  and   <TargetBranch.CREATE: 'CREATE'> = TargetDecision(branch=<TargetBranch.CREATE: 'CREATE'>, reason=<TargetReason.OK: 'OK'>, actor_id='TEST_ONLY_REVIEW_A', ...81d4a1f9a8c06487a739162aa6f0fbf4086154f3ef1', 'TEST_ONLY_H1', 'TEST_ONLY_H2'), permission_ref='TEST_ONLY_REVIEW_GRANT').branch
+E     +    where TargetDecision(branch=<TargetBranch.CREATE: 'CREATE'>, reason=<TargetReason.OK: 'OK'>, actor_id='TEST_ONLY_REVIEW_A', ...81d4a1f9a8c06487a739162aa6f0fbf4086154f3ef1', 'TEST_ONLY_H1', 'TEST_ONLY_H2'), permission_ref='TEST_ONLY_REVIEW_GRANT') = PipelineResult(stages=(PipelineStage(stage='actor_ingress', ok=True, reason='OK', detail={'actor_id': 'TEST_ONLY_REVIE...f, act, occurrence_ref, action_time, actor_id, consumed_state_hash, hash}', held_at=30), committed=True, no_ghost=True).decision
+E     +  and   <TargetBranch.CREATE: 'CREATE'> = TargetBranch.CREATE
+
+review/test_hostile.py:14: AssertionError
+____________ test_unwitnessed_history_not_practice[single-invented] ____________
+
+store = <candidate.transaction.CandidateStore object at 0x10a4d3dd0>
+hist = ('OUTCOME_LABEL_ONLY',)
+
+    @pytest.mark.parametrize('hist',[('OUTCOME_LABEL_ONLY',),('TEST_ONLY_DUP','TEST_ONLY_DUP'),('FUTURE_H999','OTHER_ACTOR_H999')],ids=['single-invented','duplicate','future-foreign'])
+    def test_unwitnessed_history_not_practice(store,hist):
+>    assert_no_effect(run(store,enacted_history_refs=hist))
+
+review/test_hostile.py:70: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+result = PipelineResult(stages=(PipelineStage(stage='actor_ingress', ok=True, reason='OK', detail={'actor_id': 'TEST_ONLY_REVIE...f, act, occurrence_ref, action_time, actor_id, consumed_state_hash, hash}', held_at=30), committed=True, no_ghost=True)
+
+    def assert_no_effect(result):
+>    assert result.decision is None or result.decision.branch is not TargetBranch.CREATE
+E    AssertionError: assert (TargetDecision(branch=<TargetBranch.CREATE: 'CREATE'>, reason=<TargetReason.OK: 'OK'>, actor_id='TEST_ONLY_REVIEW_A', ...f36cc8f34481d4a1f9a8c06487a739162aa6f0fbf4086154f3ef1', 'OUTCOME_LABEL_ONLY'), permission_ref='TEST_ONLY_REVIEW_GRANT') is None or <TargetBranch.CREATE: 'CREATE'> is not <TargetBranch.CREATE: 'CREATE'>)
+E     +  where TargetDecision(branch=<TargetBranch.CREATE: 'CREATE'>, reason=<TargetReason.OK: 'OK'>, actor_id='TEST_ONLY_REVIEW_A', ...f36cc8f34481d4a1f9a8c06487a739162aa6f0fbf4086154f3ef1', 'OUTCOME_LABEL_ONLY'), permission_ref='TEST_ONLY_REVIEW_GRANT') = PipelineResult(stages=(PipelineStage(stage='actor_ingress', ok=True, reason='OK', detail={'actor_id': 'TEST_ONLY_REVIE...f, act, occurrence_ref, action_time, actor_id, consumed_state_hash, hash}', held_at=30), committed=True, no_ghost=True).decision
+E     +  and   <TargetBranch.CREATE: 'CREATE'> = TargetDecision(branch=<TargetBranch.CREATE: 'CREATE'>, reason=<TargetReason.OK: 'OK'>, actor_id='TEST_ONLY_REVIEW_A', ...f36cc8f34481d4a1f9a8c06487a739162aa6f0fbf4086154f3ef1', 'OUTCOME_LABEL_ONLY'), permission_ref='TEST_ONLY_REVIEW_GRANT').branch
+E     +    where TargetDecision(branch=<TargetBranch.CREATE: 'CREATE'>, reason=<TargetReason.OK: 'OK'>, actor_id='TEST_ONLY_REVIEW_A', ...f36cc8f34481d4a1f9a8c06487a739162aa6f0fbf4086154f3ef1', 'OUTCOME_LABEL_ONLY'), permission_ref='TEST_ONLY_REVIEW_GRANT') = PipelineResult(stages=(PipelineStage(stage='actor_ingress', ok=True, reason='OK', detail={'actor_id': 'TEST_ONLY_REVIE...f, act, occurrence_ref, action_time, actor_id, consumed_state_hash, hash}', held_at=30), committed=True, no_ghost=True).decision
+E     +  and   <TargetBranch.CREATE: 'CREATE'> = TargetBranch.CREATE
+
+review/test_hostile.py:14: AssertionError
+_______________ test_unwitnessed_history_not_practice[duplicate] _______________
+
+store = <candidate.transaction.CandidateStore object at 0x10a4a1b90>
+hist = ('TEST_ONLY_DUP', 'TEST_ONLY_DUP')
+
+    @pytest.mark.parametrize('hist',[('OUTCOME_LABEL_ONLY',),('TEST_ONLY_DUP','TEST_ONLY_DUP'),('FUTURE_H999','OTHER_ACTOR_H999')],ids=['single-invented','duplicate','future-foreign'])
+    def test_unwitnessed_history_not_practice(store,hist):
+>    assert_no_effect(run(store,enacted_history_refs=hist))
+
+review/test_hostile.py:70: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+result = PipelineResult(stages=(PipelineStage(stage='actor_ingress', ok=True, reason='OK', detail={'actor_id': 'TEST_ONLY_REVIE...f, act, occurrence_ref, action_time, actor_id, consumed_state_hash, hash}', held_at=30), committed=True, no_ghost=True)
+
+    def assert_no_effect(result):
+>    assert result.decision is None or result.decision.branch is not TargetBranch.CREATE
+E    AssertionError: assert (TargetDecision(branch=<TargetBranch.CREATE: 'CREATE'>, reason=<TargetReason.OK: 'OK'>, actor_id='TEST_ONLY_REVIEW_A', ...d4a1f9a8c06487a739162aa6f0fbf4086154f3ef1', 'TEST_ONLY_DUP', 'TEST_ONLY_DUP'), permission_ref='TEST_ONLY_REVIEW_GRANT') is None or <TargetBranch.CREATE: 'CREATE'> is not <TargetBranch.CREATE: 'CREATE'>)
+E     +  where TargetDecision(branch=<TargetBranch.CREATE: 'CREATE'>, reason=<TargetReason.OK: 'OK'>, actor_id='TEST_ONLY_REVIEW_A', ...d4a1f9a8c06487a739162aa6f0fbf4086154f3ef1', 'TEST_ONLY_DUP', 'TEST_ONLY_DUP'), permission_ref='TEST_ONLY_REVIEW_GRANT') = PipelineResult(stages=(PipelineStage(stage='actor_ingress', ok=True, reason='OK', detail={'actor_id': 'TEST_ONLY_REVIE...f, act, occurrence_ref, action_time, actor_id, consumed_state_hash, hash}', held_at=30), committed=True, no_ghost=True).decision
+E     +  and   <TargetBranch.CREATE: 'CREATE'> = TargetDecision(branch=<TargetBranch.CREATE: 'CREATE'>, reason=<TargetReason.OK: 'OK'>, actor_id='TEST_ONLY_REVIEW_A', ...d4a1f9a8c06487a739162aa6f0fbf4086154f3ef1', 'TEST_ONLY_DUP', 'TEST_ONLY_DUP'), permission_ref='TEST_ONLY_REVIEW_GRANT').branch
+E     +    where TargetDecision(branch=<TargetBranch.CREATE: 'CREATE'>, reason=<TargetReason.OK: 'OK'>, actor_id='TEST_ONLY_REVIEW_A', ...d4a1f9a8c06487a739162aa6f0fbf4086154f3ef1', 'TEST_ONLY_DUP', 'TEST_ONLY_DUP'), permission_ref='TEST_ONLY_REVIEW_GRANT') = PipelineResult(stages=(PipelineStage(stage='actor_ingress', ok=True, reason='OK', detail={'actor_id': 'TEST_ONLY_REVIE...f, act, occurrence_ref, action_time, actor_id, consumed_state_hash, hash}', held_at=30), committed=True, no_ghost=True).decision
+E     +  and   <TargetBranch.CREATE: 'CREATE'> = TargetBranch.CREATE
+
+review/test_hostile.py:14: AssertionError
+____________ test_unwitnessed_history_not_practice[future-foreign] _____________
+
+store = <candidate.transaction.CandidateStore object at 0x10a43ba50>
+hist = ('FUTURE_H999', 'OTHER_ACTOR_H999')
+
+    @pytest.mark.parametrize('hist',[('OUTCOME_LABEL_ONLY',),('TEST_ONLY_DUP','TEST_ONLY_DUP'),('FUTURE_H999','OTHER_ACTOR_H999')],ids=['single-invented','duplicate','future-foreign'])
+    def test_unwitnessed_history_not_practice(store,hist):
+>    assert_no_effect(run(store,enacted_history_refs=hist))
+
+review/test_hostile.py:70: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+result = PipelineResult(stages=(PipelineStage(stage='actor_ingress', ok=True, reason='OK', detail={'actor_id': 'TEST_ONLY_REVIE...f, act, occurrence_ref, action_time, actor_id, consumed_state_hash, hash}', held_at=30), committed=True, no_ghost=True)
+
+    def assert_no_effect(result):
+>    assert result.decision is None or result.decision.branch is not TargetBranch.CREATE
+E    AssertionError: assert (TargetDecision(branch=<TargetBranch.CREATE: 'CREATE'>, reason=<TargetReason.OK: 'OK'>, actor_id='TEST_ONLY_REVIEW_A', ...4a1f9a8c06487a739162aa6f0fbf4086154f3ef1', 'FUTURE_H999', 'OTHER_ACTOR_H999'), permission_ref='TEST_ONLY_REVIEW_GRANT') is None or <TargetBranch.CREATE: 'CREATE'> is not <TargetBranch.CREATE: 'CREATE'>)
+E     +  where TargetDecision(branch=<TargetBranch.CREATE: 'CREATE'>, reason=<TargetReason.OK: 'OK'>, actor_id='TEST_ONLY_REVIEW_A', ...4a1f9a8c06487a739162aa6f0fbf4086154f3ef1', 'FUTURE_H999', 'OTHER_ACTOR_H999'), permission_ref='TEST_ONLY_REVIEW_GRANT') = PipelineResult(stages=(PipelineStage(stage='actor_ingress', ok=True, reason='OK', detail={'actor_id': 'TEST_ONLY_REVIE...f, act, occurrence_ref, action_time, actor_id, consumed_state_hash, hash}', held_at=30), committed=True, no_ghost=True).decision
+E     +  and   <TargetBranch.CREATE: 'CREATE'> = TargetDecision(branch=<TargetBranch.CREATE: 'CREATE'>, reason=<TargetReason.OK: 'OK'>, actor_id='TEST_ONLY_REVIEW_A', ...4a1f9a8c06487a739162aa6f0fbf4086154f3ef1', 'FUTURE_H999', 'OTHER_ACTOR_H999'), permission_ref='TEST_ONLY_REVIEW_GRANT').branch
+E     +    where TargetDecision(branch=<TargetBranch.CREATE: 'CREATE'>, reason=<TargetReason.OK: 'OK'>, actor_id='TEST_ONLY_REVIEW_A', ...4a1f9a8c06487a739162aa6f0fbf4086154f3ef1', 'FUTURE_H999', 'OTHER_ACTOR_H999'), permission_ref='TEST_ONLY_REVIEW_GRANT') = PipelineResult(stages=(PipelineStage(stage='actor_ingress', ok=True, reason='OK', detail={'actor_id': 'TEST_ONLY_REVIE...f, act, occurrence_ref, action_time, actor_id, consumed_state_hash, hash}', held_at=30), committed=True, no_ghost=True).decision
+E     +  and   <TargetBranch.CREATE: 'CREATE'> = TargetBranch.CREATE
+
+review/test_hostile.py:14: AssertionError
+___________________ test_own_offer_not_independent_p_action ____________________
+
+store = <candidate.transaction.CandidateStore object at 0x10a4fb450>
+
+    def test_own_offer_not_independent_p_action(store):
+>    assert_no_effect(run(store,other_person_offer_ref=A+':I_IMAGINED_AN_OFFER'))
+
+review/test_hostile.py:73: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+result = PipelineResult(stages=(PipelineStage(stage='actor_ingress', ok=True, reason='OK', detail={'actor_id': 'TEST_ONLY_REVIE...f, act, occurrence_ref, action_time, actor_id, consumed_state_hash, hash}', held_at=30), committed=True, no_ghost=True)
+
+    def assert_no_effect(result):
+>    assert result.decision is None or result.decision.branch is not TargetBranch.CREATE
+E    AssertionError: assert (TargetDecision(branch=<TargetBranch.CREATE: 'CREATE'>, reason=<TargetReason.OK: 'OK'>, actor_id='TEST_ONLY_REVIEW_A', ...81d4a1f9a8c06487a739162aa6f0fbf4086154f3ef1', 'TEST_ONLY_H1', 'TEST_ONLY_H2'), permission_ref='TEST_ONLY_REVIEW_GRANT') is None or <TargetBranch.CREATE: 'CREATE'> is not <TargetBranch.CREATE: 'CREATE'>)
+E     +  where TargetDecision(branch=<TargetBranch.CREATE: 'CREATE'>, reason=<TargetReason.OK: 'OK'>, actor_id='TEST_ONLY_REVIEW_A', ...81d4a1f9a8c06487a739162aa6f0fbf4086154f3ef1', 'TEST_ONLY_H1', 'TEST_ONLY_H2'), permission_ref='TEST_ONLY_REVIEW_GRANT') = PipelineResult(stages=(PipelineStage(stage='actor_ingress', ok=True, reason='OK', detail={'actor_id': 'TEST_ONLY_REVIE...f, act, occurrence_ref, action_time, actor_id, consumed_state_hash, hash}', held_at=30), committed=True, no_ghost=True).decision
+E     +  and   <TargetBranch.CREATE: 'CREATE'> = TargetDecision(branch=<TargetBranch.CREATE: 'CREATE'>, reason=<TargetReason.OK: 'OK'>, actor_id='TEST_ONLY_REVIEW_A', ...81d4a1f9a8c06487a739162aa6f0fbf4086154f3ef1', 'TEST_ONLY_H1', 'TEST_ONLY_H2'), permission_ref='TEST_ONLY_REVIEW_GRANT').branch
+E     +    where TargetDecision(branch=<TargetBranch.CREATE: 'CREATE'>, reason=<TargetReason.OK: 'OK'>, actor_id='TEST_ONLY_REVIEW_A', ...81d4a1f9a8c06487a739162aa6f0fbf4086154f3ef1', 'TEST_ONLY_H1', 'TEST_ONLY_H2'), permission_ref='TEST_ONLY_REVIEW_GRANT') = PipelineResult(stages=(PipelineStage(stage='actor_ingress', ok=True, reason='OK', detail={'actor_id': 'TEST_ONLY_REVIE...f, act, occurrence_ref, action_time, actor_id, consumed_state_hash, hash}', held_at=30), committed=True, no_ghost=True).decision
+E     +  and   <TargetBranch.CREATE: 'CREATE'> = TargetBranch.CREATE
+
+review/test_hostile.py:14: AssertionError
+____________ test_revocation_between_evaluation_and_commit_refused _____________
+
+store = <candidate.transaction.CandidateStore object at 0x10a484e90>
+
+    def test_revocation_between_evaluation_and_commit_refused(store):
+     args,resp,d=decide(store);assert d.branch is TargetBranch.CREATE
+     args['target_permission'].update(reseal(args['target_permission'],revoked=True))
+     store.admit_occurrence(args['event_raw'])
+     receipt=store.commit(event=args['event_raw'],response=seal({'event_ref':args['event_raw']['hash'],'status':resp.status.value}),decision=d,readset_refs=d.readset_refs)
+>    assert not receipt.committed or not store.committed_target_ids()
+E    AssertionError: assert (not True or not frozenset({'fbc4cdc9ecb5b05612ec21daaf642ffa776a49bf77473aa6556b07840675a58b'}))
+E     +  where True = CommitReceipt(status='COMMITTED', joint_transaction_id='b53247940c6a7c8934fd64339e316f838fbd953eb32b8094accbdd26f2891c...331425486b39c01c2', receipt_hash='b53247940c6a7c8934fd64339e316f838fbd953eb32b8094accbdd26f2891c5e', no_mutation=False).committed
+E     +  and   frozenset({'fbc4cdc9ecb5b05612ec21daaf642ffa776a49bf77473aa6556b07840675a58b'}) = committed_target_ids()
+E     +    where committed_target_ids = <candidate.transaction.CandidateStore object at 0x10a484e90>.committed_target_ids
+
+review/test_hostile.py:86: AssertionError
+_______________ test_missing_original_source_not_read_at_commit ________________
+
+store = <candidate.transaction.CandidateStore object at 0x10a57e850>
+
+    def test_missing_original_source_not_read_at_commit(store):
+     args,resp,d=decide(store)
+     args['actor_raw']['source_hash']='REVOKED';args['conditioning_sources'].clear()
+     store.admit_occurrence(args['event_raw'])
+     receipt=store.commit(event=args['event_raw'],response=seal({'event_ref':args['event_raw']['hash']}),decision=d,readset_refs=d.readset_refs)
+>    assert not receipt.committed or not store.committed_target_ids()
+E    AssertionError: assert (not True or not frozenset({'fbc4cdc9ecb5b05612ec21daaf642ffa776a49bf77473aa6556b07840675a58b'}))
+E     +  where True = CommitReceipt(status='COMMITTED', joint_transaction_id='564c8318da9f192bbeb9a0aea35cea3db24b24dce6045e41e0fe17e9a9e86d...331425486b39c01c2', receipt_hash='564c8318da9f192bbeb9a0aea35cea3db24b24dce6045e41e0fe17e9a9e86ddb', no_mutation=False).committed
+E     +  and   frozenset({'fbc4cdc9ecb5b05612ec21daaf642ffa776a49bf77473aa6556b07840675a58b'}) = committed_target_ids()
+E     +    where committed_target_ids = <candidate.transaction.CandidateStore object at 0x10a57e850>.committed_target_ids
+
+review/test_hostile.py:93: AssertionError
+______________ test_later_counterfeit_body_with_real_hash_refused ______________
+
+store = <candidate.transaction.CandidateStore object at 0x10a496150>
+
+    def test_later_counterfeit_body_with_real_hash_refused(store):
+     r=run(store)
+     class Counterfeit(LaterActionConsumer):
+      def read_target(self,s,key,as_of):
+       real=s.read_target_state(key);return {'actor_id':'OTHER','invented_practice':True},digest(real)
+     read=read_target_for_later_action(store,consumer=Counterfeit('TEST_ONLY_COUNTERFEIT','target'),middle_state_id=r.decision.proposal_hash,as_of=30,commit_time=15)
+>    assert read.status is LaterActionStatus.CONSUMER_READSET_MISMATCH
+E    AssertionError: assert <LaterActionStatus.ACTION_ADMISSION_HELD: 'ACTION_ADMISSION_HELD'> is <LaterActionStatus.CONSUMER_READSET_MISMATCH: 'CONSUMER_READSET_MISMATCH'>
+E     +  where <LaterActionStatus.ACTION_ADMISSION_HELD: 'ACTION_ADMISSION_HELD'> = LaterActionRead(status=<LaterActionStatus.ACTION_ADMISSION_HELD: 'ACTION_ADMISSION_HELD'>, consumer_id='TEST_ONLY_COUN...eipt_hash='c1dd313cf8e02b38dc4800a0236d97a97f54286d5fc681b83e50ac9f8811f0b4', reason='PERFORMED_ACTION_OWNER_UNPROVED').status
+E     +  and   <LaterActionStatus.CONSUMER_READSET_MISMATCH: 'CONSUMER_READSET_MISMATCH'> = LaterActionStatus.CONSUMER_READSET_MISMATCH
+
+review/test_hostile.py:117: AssertionError
+_______ test_fictional_performed_receipt_not_admitted[mismatched-target] _______
+
+state = 'WRONG_STATE', time = 30
+
+    @pytest.mark.parametrize('state,time',[('WRONG_STATE',30),('state',1)],ids=['mismatched-target','pre-commit-time'])
+    def test_fictional_performed_receipt_not_admitted(state,time):
+     p=make_performed_action_receipt(actor_id=A,act='inspect',actuator_ref='INVENTED',occurrence_ref='NEVER_PERFORMED',action_time=time,consumed_state_hash=state)
+     r=admit_performed_action(owner_receipt=p,expected_actor_id=A,expected_act='inspect',consumed_state_hash='state',as_of=40)
+>    assert not getattr(r,'admitted',False)
+E    AssertionError: assert not True
+E     +  where True = getattr(PerformedActionAdmission(status=<AdmissionStatus.ADMITTED: 'ADMITTED'>, reason=<AdmissionReason.OK: 'OK'>, actor_id='T...ed_state_hash='state', action_time=30, receipt_hash='c6c4faa2239f234f59aef2539ad3890992a47e54c3579a0eff78c92f8627ca1d'), 'admitted', False)
+
+review/test_hostile.py:123: AssertionError
+________ test_fictional_performed_receipt_not_admitted[pre-commit-time] ________
+
+state = 'state', time = 1
+
+    @pytest.mark.parametrize('state,time',[('WRONG_STATE',30),('state',1)],ids=['mismatched-target','pre-commit-time'])
+    def test_fictional_performed_receipt_not_admitted(state,time):
+     p=make_performed_action_receipt(actor_id=A,act='inspect',actuator_ref='INVENTED',occurrence_ref='NEVER_PERFORMED',action_time=time,consumed_state_hash=state)
+     r=admit_performed_action(owner_receipt=p,expected_actor_id=A,expected_act='inspect',consumed_state_hash='state',as_of=40)
+>    assert not getattr(r,'admitted',False)
+E    AssertionError: assert not True
+E     +  where True = getattr(PerformedActionAdmission(status=<AdmissionStatus.ADMITTED: 'ADMITTED'>, reason=<AdmissionReason.OK: 'OK'>, actor_id='T...med_state_hash='state', action_time=1, receipt_hash='1a3c4d4e91d39347e8a9672fe4eaa15db819e9f9d11963015d072fa85aac5c7c'), 'admitted', False)
+
+review/test_hostile.py:123: AssertionError
+_____________ test_raw_caller_flag_cannot_clear_authenticated_hold _____________
+
+    def test_raw_caller_flag_cannot_clear_authenticated_hold():
+     gate=evaluate_release_gate(rule_a_issuer_verified=True)
+>    assert any(h.hold_code.value=='CAN008_RULE_ISSUER_UNVERIFIED' for h in gate.holds)
+E    assert False
+E     +  where False = any(<generator object test_raw_caller_flag_cannot_clear_authenticated_hold.<locals>.<genexpr> at 0x1094e9220>)
+
+review/test_hostile.py:132: AssertionError
+______________ test_duplicate_event_id_different_content_refused _______________
+
+store = <candidate.transaction.CandidateStore object at 0x10a4eb9d0>
+
+    def test_duplicate_event_id_different_content_refused(store):
+     first=run(store);second=run(store,event_raw=event(time=16,content={'fact':'incompatible-new-fact'}),target_permission=None)
+>    assert not second.committed or len(store.committed_event_hashes())==1
+E    AssertionError: assert (not True or 2 == 1)
+E     +  where True = PipelineResult(stages=(PipelineStage(stage='actor_ingress', ok=True, reason='OK', detail={'actor_id': 'TEST_ONLY_REVIE...f, act, occurrence_ref, action_time, actor_id, consumed_state_hash, hash}', held_at=30), committed=True, no_ghost=True).committed
+E     +  and   2 = len(frozenset({'3093c296f6ff36cc8f34481d4a1f9a8c06487a739162aa6f0fbf4086154f3ef1', 'a539d0c345f2fe8c6420437bc51960c3f103e91c829228298be70e14acdf23cd'}))
+E     +    where frozenset({'3093c296f6ff36cc8f34481d4a1f9a8c06487a739162aa6f0fbf4086154f3ef1', 'a539d0c345f2fe8c6420437bc51960c3f103e91c829228298be70e14acdf23cd'}) = committed_event_hashes()
+E     +      where committed_event_hashes = <candidate.transaction.CandidateStore object at 0x10a4eb9d0>.committed_event_hashes
+
+review/test_hostile.py:136: AssertionError
+___________________ test_conditioning_view_rejects_mutation ____________________
+
+    def test_conditioning_view_rejects_mutation():
+     v=bind_conditioning(subject=A,sources=sources(),as_of=20)
+     original=v.sources[0]['source_ref']
+     try:v.sources[0]['source_ref']='MUTATED'
+     except TypeError:pass
+>    assert v.sources[0]['source_ref']==original
+E    AssertionError: assert 'MUTATED' == 'TEST_ONLY_REVIEW_GARAGE'
+E      
+E      - TEST_ONLY_REVIEW_GARAGE
+E      + MUTATED
+
+review/test_hostile.py:143: AssertionError
+=========================== short test summary info ============================
+FAILED review/test_hostile.py::test_forged_actor_original_source_refused - As...
+FAILED review/test_hostile.py::test_wrong_actor_event_refused - AssertionErro...
+FAILED review/test_hostile.py::test_forged_native_receipt_refused - Assertion...
+FAILED review/test_hostile.py::test_ineligible_world_does_not_create[future]
+FAILED review/test_hostile.py::test_ineligible_world_does_not_create[wrong-scene]
+FAILED review/test_hostile.py::test_ineligible_world_does_not_create[denied-material-access]
+FAILED review/test_hostile.py::test_rehashed_source_false_identity_refused - ...
+FAILED review/test_hostile.py::test_observer_privileged_truth_not_actor_practice
+FAILED review/test_hostile.py::test_unissued_rule_not_adopted_by_r2_label - A...
+FAILED review/test_hostile.py::test_rule_content_rehash_not_authenticated - A...
+FAILED review/test_hostile.py::test_locally_minted_target_registry_and_grant_refused
+FAILED review/test_hostile.py::test_target_grant_exact_binding[response_hash-WRONG_RESPONSE]
+FAILED review/test_hostile.py::test_target_grant_exact_binding[issued_at-999]
+FAILED review/test_hostile.py::test_target_grant_exact_binding[issuer_scope-REVOKED_SCOPE]
+FAILED review/test_hostile.py::test_unwitnessed_history_not_practice[single-invented]
+FAILED review/test_hostile.py::test_unwitnessed_history_not_practice[duplicate]
+FAILED review/test_hostile.py::test_unwitnessed_history_not_practice[future-foreign]
+FAILED review/test_hostile.py::test_own_offer_not_independent_p_action - Asse...
+FAILED review/test_hostile.py::test_revocation_between_evaluation_and_commit_refused
+FAILED review/test_hostile.py::test_missing_original_source_not_read_at_commit
+FAILED review/test_hostile.py::test_later_counterfeit_body_with_real_hash_refused
+FAILED review/test_hostile.py::test_fictional_performed_receipt_not_admitted[mismatched-target]
+FAILED review/test_hostile.py::test_fictional_performed_receipt_not_admitted[pre-commit-time]
+FAILED review/test_hostile.py::test_raw_caller_flag_cannot_clear_authenticated_hold
+FAILED review/test_hostile.py::test_duplicate_event_id_different_content_refused
+FAILED review/test_hostile.py::test_conditioning_view_rejects_mutation - Asse...
+26 failed, 11 passed in 1.89s

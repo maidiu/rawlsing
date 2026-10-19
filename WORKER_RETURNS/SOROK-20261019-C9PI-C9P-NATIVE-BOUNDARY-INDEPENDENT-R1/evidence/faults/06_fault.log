@@ -1,0 +1,14 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+______________ test_native_guard_result_is_consumed_as_diagnostic ______________
+
+    def test_native_guard_result_is_consumed_as_diagnostic():
+     v=bind_conditioning(subject=A,sources=sources(),as_of=20)
+>    assert 'DENY_ZERO_EFFECT' in v.guard_outcome
+E    AssertionError: assert 'DENY_ZERO_EFFECT' in 'DELEGATE_TO_ACCEPTED_OWNER'
+E     +  where 'DELEGATE_TO_ACCEPTED_OWNER' = ConditioningView(status=<ConditioningStatus.BOUND: 'BOUND'>, reason=<ConditioningReason.OK: 'OK'>, subject='TEST_ONLY_... guard_reason='ZERO_POSITIVE_REGISTRY', bundle_hash='f43da001bc79d95de2d5b1344e70b40743aaaaaac4c5e588dd566e6c4a5a4921').guard_outcome
+
+review/test_edges.py:7: AssertionError
+=========================== short test summary info ============================
+FAILED review/test_edges.py::test_native_guard_result_is_consumed_as_diagnostic
+1 failed in 0.21s

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="0.126" timestamp="2026-10-19T13:20:08.222212-04:00" hostname="Matthews-MBP.lan"><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_severance_witnesses" name="test_action_admission_binds_performed_action_receipt" time="0.002"><failure message="AssertionError: OWNER_RECEIPT_MISSING&#10;assert &lt;AdmissionStatus.HELD: 'HELD'&gt; is &lt;AdmissionStatus.ADMITTED: 'ADMITTED'&gt;&#10; +  where &lt;AdmissionStatus.HELD: 'HELD'&gt; = PerformedActionHold(status=&lt;AdmissionStatus.HELD: 'HELD'&gt;, reason=&lt;AdmissionReason.OWNER_RECEIPT_MISSING: 'OWNER_RECEI..._form='OWNER_RECEIPT{actuator_ref, act, occurrence_ref, action_time, actor_id, consumed_state_hash, hash}', held_at=40).status&#10; +  and   &lt;AdmissionStatus.ADMITTED: 'ADMITTED'&gt; = AdmissionStatus.ADMITTED">def test_action_admission_binds_performed_action_receipt() -&gt; None:
+        """Named assertion: performed-action admission consumes the exact owner receipt."""
+        receipt = make_performed_action_receipt(
+            actor_id=ACTOR_ID,
+            act="inspect_with_tool",
+            actuator_ref="TEST_ONLY_ACTUATOR",
+            occurrence_ref="TEST_ONLY_OCCURRENCE_E2",
+            action_time=30,
+            consumed_state_hash="state-hash",
+        )
+        result = admit_performed_action(
+            owner_receipt=receipt,
+            expected_actor_id=ACTOR_ID,
+            expected_act="inspect_with_tool",
+            consumed_state_hash="state-hash",
+            as_of=40,
+        )
+&gt;       assert result.status is AdmissionStatus.ADMITTED, result.reason.value
+E       AssertionError: OWNER_RECEIPT_MISSING
+E       assert &lt;AdmissionStatus.HELD: 'HELD'&gt; is &lt;AdmissionStatus.ADMITTED: 'ADMITTED'&gt;
+E        +  where &lt;AdmissionStatus.HELD: 'HELD'&gt; = PerformedActionHold(status=&lt;AdmissionStatus.HELD: 'HELD'&gt;, reason=&lt;AdmissionReason.OWNER_RECEIPT_MISSING: 'OWNER_RECEI..._form='OWNER_RECEIPT{actuator_ref, act, occurrence_ref, action_time, actor_id, consumed_state_hash, hash}', held_at=40).status
+E        +  and   &lt;AdmissionStatus.ADMITTED: 'ADMITTED'&gt; = AdmissionStatus.ADMITTED
+
+WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_severance_witnesses.py:184: AssertionError</failure></testcase></testsuite></testsuites>

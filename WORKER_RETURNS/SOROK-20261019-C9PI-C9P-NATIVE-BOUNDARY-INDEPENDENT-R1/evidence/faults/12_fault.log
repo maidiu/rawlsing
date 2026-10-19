@@ -1,0 +1,38 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+___________________ test_consumer_readset_mismatch_is_typed ____________________
+
+tmp_path = PosixPath('<RETURN_ROOT>/runs/pytest/12_fault/test_consumer_readset_mismatch0')
+
+    def test_consumer_readset_mismatch_is_typed(tmp_path) -> None:
+        from conftest import build_event_witness
+    
+        store = CandidateStore(tmp_path / "store.sqlite")
+        event = build_event_witness()
+        _commit_target(store, event)
+    
+        class DivergingConsumer(LaterActionConsumer):
+            def read_target(self, store_arg, middle_state_id, as_of):
+                record = store_arg.read_target_state(middle_state_id)
+                return record, "DIVERGED_HASH"
+    
+        consumer = DivergingConsumer(
+            consumer_id="TEST_ONLY_DIVERGING_CONSUMER",
+            expected_surface="committed_target_state",
+        )
+        read = read_target_for_later_action(
+            store,
+            consumer=consumer,
+            middle_state_id="proposal-1",
+            as_of=30,
+            commit_time=event["time"],
+        )
+>       assert read.status is LaterActionStatus.CONSUMER_READSET_MISMATCH
+E       AssertionError: assert <LaterActionStatus.ACTION_ADMISSION_HELD: 'ACTION_ADMISSION_HELD'> is <LaterActionStatus.CONSUMER_READSET_MISMATCH: 'CONSUMER_READSET_MISMATCH'>
+E        +  where <LaterActionStatus.ACTION_ADMISSION_HELD: 'ACTION_ADMISSION_HELD'> = LaterActionRead(status=<LaterActionStatus.ACTION_ADMISSION_HELD: 'ACTION_ADMISSION_HELD'>, consumer_id='TEST_ONLY_DIVE...eipt_hash='b187454d87d86bef14817270e9b103d8cc5507d22dcdc4c174c25e0e0aae1d61', reason='PERFORMED_ACTION_OWNER_UNPROVED').status
+E        +  and   <LaterActionStatus.CONSUMER_READSET_MISMATCH: 'CONSUMER_READSET_MISMATCH'> = LaterActionStatus.CONSUMER_READSET_MISMATCH
+
+WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_later_action_consumer.py:170: AssertionError
+=========================== short test summary info ============================
+FAILED WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_later_action_consumer.py::test_consumer_readset_mismatch_is_typed
+1 failed in 0.13s

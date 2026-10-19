@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="0.257" timestamp="2026-10-19T13:19:57.778076-04:00" hostname="Matthews-MBP.lan"><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_severance_witnesses" name="test_later_action_consumer_reads_committed_target_state" time="0.026"><failure message="AssertionError: COMMITTED_TARGET_STATE_ABSENT&#10;assert &lt;LaterActionStatus.STATE_ABSENT: 'STATE_ABSENT'&gt; is &lt;LaterActionStatus.READ_OK: 'READ_OK'&gt;&#10; +  where &lt;LaterActionStatus.STATE_ABSENT: 'STATE_ABSENT'&gt; = LaterActionRead(status=&lt;LaterActionStatus.STATE_ABSENT: 'STATE_ABSENT'&gt;, consumer_id='TEST_ONLY_LATER_ACTION_CONSUMER'...cord=None, as_of=30, readset_refs=(), candidate_route='', read_receipt_hash='', reason='COMMITTED_TARGET_STATE_ABSENT').status&#10; +  and   &lt;LaterActionStatus.READ_OK: 'READ_OK'&gt; = LaterActionStatus.READ_OK">tmp_path = PosixPath('<RETURN_ROOT>/runs/pytest/00_fault/test_later_action_consumer_rea0')
+
+    def test_later_action_consumer_reads_committed_target_state(tmp_path) -&gt; None:
+        """Named assertion: the later-action consumer reads the exact committed target state."""
+        store = CandidateStore(tmp_path / "store.sqlite")
+        _committed_target(store)
+        consumer = LaterActionConsumer(
+            consumer_id="TEST_ONLY_LATER_ACTION_CONSUMER",
+            expected_surface="committed_target_state",
+        )
+        read = read_target_for_later_action(
+            store,
+            consumer=consumer,
+            middle_state_id="proposal-sev",
+            as_of=30,
+            commit_time=15,
+            action_admission_owner_ref="TEST_ONLY_ACTUATOR",
+        )
+&gt;       assert read.status is LaterActionStatus.READ_OK, read.reason
+E       AssertionError: COMMITTED_TARGET_STATE_ABSENT
+E       assert &lt;LaterActionStatus.STATE_ABSENT: 'STATE_ABSENT'&gt; is &lt;LaterActionStatus.READ_OK: 'READ_OK'&gt;
+E        +  where &lt;LaterActionStatus.STATE_ABSENT: 'STATE_ABSENT'&gt; = LaterActionRead(status=&lt;LaterActionStatus.STATE_ABSENT: 'STATE_ABSENT'&gt;, consumer_id='TEST_ONLY_LATER_ACTION_CONSUMER'...cord=None, as_of=30, readset_refs=(), candidate_route='', read_receipt_hash='', reason='COMMITTED_TARGET_STATE_ABSENT').status
+E        +  and   &lt;LaterActionStatus.READ_OK: 'READ_OK'&gt; = LaterActionStatus.READ_OK
+
+WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_severance_witnesses.py:83: AssertionError</failure></testcase></testsuite></testsuites>

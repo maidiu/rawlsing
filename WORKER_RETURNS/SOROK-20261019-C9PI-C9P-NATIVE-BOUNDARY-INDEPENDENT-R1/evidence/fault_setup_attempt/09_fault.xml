@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="0.209" timestamp="2026-10-19T13:10:55.637463-04:00" hostname="Matthews-MBP.lan"><testcase classname="review.test_edges" name="test_actor_original_presented_source_controls_readset" time="0.006"><failure message="AssertionError: assert ('SEVERED_SOURCE',) == ('TEST_ONLY_R...CTOR_SOURCE',)&#10;  &#10;  At index 0 diff: 'SEVERED_SOURCE' != 'TEST_ONLY_REVIEW_ACTOR_SOURCE'&#10;  Use -v to get more diff">def test_actor_original_presented_source_controls_readset():
+     a=actor();r=ingress_actor(a,as_of=20)
+     assert r.admitted
+&gt;    assert r.readset_refs==(a['source_ref'],)
+E    AssertionError: assert ('SEVERED_SOURCE',) == ('TEST_ONLY_R...CTOR_SOURCE',)
+E      
+E      At index 0 diff: 'SEVERED_SOURCE' != 'TEST_ONLY_REVIEW_ACTOR_SOURCE'
+E      Use -v to get more diff
+
+review/test_edges.py:32: AssertionError</failure></testcase></testsuite></testsuites>

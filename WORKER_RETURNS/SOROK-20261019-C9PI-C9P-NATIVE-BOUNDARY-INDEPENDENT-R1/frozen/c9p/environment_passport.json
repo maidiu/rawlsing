@@ -1,0 +1,101 @@
+{
+  "passport_schema": "SOROK_00D_WARM_ENVIRONMENT_PASSPORT_R1",
+  "environment_id": "c9p-env-a7f3k2",
+  "epoch_id": "c9p-epoch-20261019",
+  "owner_session_alias": "rabochii-c9p-worker",
+  "surface": "LOCAL_SHARED_STORE",
+  "machine_alias": "darwin-primary",
+  "conversation_or_account_affinity": "opencode-mimo-v26-pro",
+  "status": "LIVE_VERIFIED",
+  "last_live_probe_at": "2026-10-19T06:00:00Z",
+  "runtime_marker_digest": "c9p-runtime-aa55bca9",
+  "probe_command_and_result": "python3 --version -> Python 3.11.3; python3 -m pytest --version -> pytest 9.1.1; git --version -> git version 2.x",
+  "python": {"version": "3.11.3", "capability": "VERIFIED"},
+  "pytest": {"version": "9.1.1", "capability": "VERIFIED"},
+  "git": {"capability": "VERIFIED"},
+  "node": {"capability": "UNKNOWN"},
+  "filesystem_shell": {"capability": "VERIFIED"},
+  "dependency_versions_observed": {
+    "python": "3.11.3",
+    "pytest": "9.1.1",
+    "sqlite3": "stdlib"
+  },
+  "git_object_store_alias": "maidiu-rawlsing-shared-store",
+  "worktree_alias": "c9p-worktree",
+  "branch": "agent/rabochii-sorok-20261019-c9p-native-actor-transition-terminal-tranche-r1",
+  "checkout_base_head": "aa55bca9020d15b539f13a71c526e3d3849a9cbf",
+  "clean_dirty_state": "dirty (new return subtree)",
+  "source_family": "sorok-native-v3-candidate",
+  "materialized_source_refs": [
+    {
+      "git_commit": "aa55bca9020d15b539f13a71c526e3d3849a9cbf",
+      "path": "rawlsing_next/v3_psepf_zero_positive_guard.py",
+      "git_blob_sha1": "e0528d65215cb431196570c38bac4eae94217a1b",
+      "local_relative_staging_path": "rawlsing_next/v3_psepf_zero_positive_guard.py",
+      "verified_imported_module_file": "rawlsing_next/v3_psepf_zero_positive_guard.py",
+      "grade": "ISSUED_RUNTIME"
+    },
+    {
+      "git_commit": "aa55bca9020d15b539f13a71c526e3d3849a9cbf",
+      "path": "rawlsing_next/wsc_gt0_protocol.py",
+      "git_blob_sha1": "see evidence/source_hashes.json",
+      "local_relative_staging_path": "rawlsing_next/wsc_gt0_protocol.py",
+      "verified_imported_module_file": "rawlsing_next/wsc_gt0_protocol.py",
+      "grade": "ISSUED_RUNTIME"
+    },
+    {
+      "git_commit": "aa55bca9020d15b539f13a71c526e3d3849a9cbf",
+      "path": "rawlsing_next/wsc_gt0_v3_runtime.py",
+      "git_blob_sha1": "see evidence/source_hashes.json",
+      "local_relative_staging_path": "rawlsing_next/wsc_gt0_v3_runtime.py",
+      "verified_imported_module_file": "rawlsing_next/wsc_gt0_v3_runtime.py",
+      "grade": "ISSUED_RUNTIME"
+    }
+  ],
+  "dependency_closure_status": "BOUNDED",
+  "fixture_query_source_permission": "COMMISSION_AUTHORIZED_TEST_ONLY",
+  "covered_test_suites": [
+    {
+      "command": "python3 -m pytest WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/ -q",
+      "junit_ref": "evidence/junit_full.xml",
+      "run": 90,
+      "pass": 90,
+      "fail": 0,
+      "skip": 0
+    },
+    {
+      "command": "python3 severance/run_severance.py --root . --receipt evidence/severance_receipt.json",
+      "run": 6,
+      "pass": 6,
+      "fail": 0,
+      "skip": 0
+    },
+    {
+      "command": "python3 /tmp/proof_integrity_gate_r1.py witness tests/test_severance_witnesses.py.proof.json",
+      "run": 6,
+      "pass": 6,
+      "fail": 0,
+      "skip": 0
+    },
+    {
+      "command": "python3 /tmp/proof_integrity_gate_r1.py witness tests/test_later_action_consumer.py.proof.json",
+      "run": 2,
+      "pass": 2,
+      "fail": 0,
+      "skip": 0
+    }
+  ],
+  "science_grade": "sourcefree prototype / test-only technical",
+  "model_provider": "opencode",
+  "model": "MiMo-V2.6-Pro",
+  "effort": "standard",
+  "pricing_class": "UNKNOWN",
+  "observed_credits_usage": null,
+  "independent_review_separation": "none (one accountable worker)",
+  "privacy_source_grant": "UNKNOWN",
+  "nearest_expected_slot_reset": "UNKNOWN",
+  "assignments_completed": ["T0_inventory", "T1_candidate_path", "T2_release_gate", "T3_severance_proof", "T4_handback"],
+  "next_good_affinity_tags": ["CAN008", "CAN011", "ADP019", "C9_NATIVE_POSITIVE", "LATER_ACTION_CONSUMER", "V3MS_PRACTICE"],
+  "staged_state_preservation": "return subtree only; no production state mutated",
+  "retire_or_rebuild_reason": null
+}

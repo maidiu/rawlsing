@@ -1,0 +1,31 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_____________ test_action_admission_binds_performed_action_receipt _____________
+
+    def test_action_admission_binds_performed_action_receipt() -> None:
+        """Named assertion: performed-action admission consumes the exact owner receipt."""
+        receipt = make_performed_action_receipt(
+            actor_id=ACTOR_ID,
+            act="inspect_with_tool",
+            actuator_ref="TEST_ONLY_ACTUATOR",
+            occurrence_ref="TEST_ONLY_OCCURRENCE_E2",
+            action_time=30,
+            consumed_state_hash="state-hash",
+        )
+        result = admit_performed_action(
+            owner_receipt=receipt,
+            expected_actor_id=ACTOR_ID,
+            expected_act="inspect_with_tool",
+            consumed_state_hash="state-hash",
+            as_of=40,
+        )
+>       assert result.status is AdmissionStatus.ADMITTED, result.reason.value
+E       AssertionError: OWNER_RECEIPT_MISSING
+E       assert <AdmissionStatus.HELD: 'HELD'> is <AdmissionStatus.ADMITTED: 'ADMITTED'>
+E        +  where <AdmissionStatus.HELD: 'HELD'> = PerformedActionHold(status=<AdmissionStatus.HELD: 'HELD'>, reason=<AdmissionReason.OWNER_RECEIPT_MISSING: 'OWNER_RECEI..._form='OWNER_RECEIPT{actuator_ref, act, occurrence_ref, action_time, actor_id, consumed_state_hash, hash}', held_at=40).status
+E        +  and   <AdmissionStatus.ADMITTED: 'ADMITTED'> = AdmissionStatus.ADMITTED
+
+WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_severance_witnesses.py:184: AssertionError
+=========================== short test summary info ============================
+FAILED WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_severance_witnesses.py::test_action_admission_binds_performed_action_receipt
+1 failed in 0.14s
