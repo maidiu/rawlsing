@@ -1,0 +1,21 @@
+.........................F...........                                    [100%]
+=================================== FAILURES ===================================
+_______________ test_missing_original_source_not_read_at_commit ________________
+
+store = <candidate.transaction.CandidateStore object at 0x108bcc9d0>
+
+    def test_missing_original_source_not_read_at_commit(store):
+     args,resp,d=decide(store)
+     args['actor_raw']['source_hash']='REVOKED';args['conditioning_sources'].clear()
+     store.admit_occurrence(args['event_raw'])
+     receipt=store.commit(event=args['event_raw'],response=seal({'event_ref':args['event_raw']['hash']}),decision=d,readset_refs=d.readset_refs)
+>    assert not receipt.committed or not store.committed_target_ids()
+E    AssertionError: assert (not True or not frozenset({'ce3b3b047479d3f42262962d98dc246ae0a5b3446b0db1538def88b8e9ad0d2a'}))
+E     +  where True = CommitReceipt(status='COMMITTED', joint_transaction_id='d40eee3a0cb6fe99f97887c4a60b87f12bf9f39f7aa9318768195976bb9f99...rade='TEST_ONLY_SOURCEFREE_TECHNICAL', response_ref='19eede163a924bb1aa2028e0ae9944b72c3cca67fc8e143c2b04ee5560649c47').committed
+E     +  and   frozenset({'ce3b3b047479d3f42262962d98dc246ae0a5b3446b0db1538def88b8e9ad0d2a'}) = committed_target_ids()
+E     +    where committed_target_ids = <candidate.transaction.CandidateStore object at 0x108bcc9d0>.committed_target_ids
+
+review/test_hostile.py:93: AssertionError
+=========================== short test summary info ============================
+FAILED review/test_hostile.py::test_missing_original_source_not_read_at_commit
+1 failed, 36 passed in 0.56s

@@ -1,0 +1,54 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "status": "MECHANICAL_WITNESS_PASS_NOT_SEMANTIC_ADOPTION",
+  "claims": [
+    {
+      "claim_id": "C9P_LATER_ACTION_CONSUMER_READS_COMMITTED_TARGET_STATE",
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_severance_witnesses.py::test_later_action_consumer_reads_committed_target_state",
+      "fault_path": "WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/candidate/later_action.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    },
+    {
+      "claim_id": "C9P_RESPONSE_LOOKUP_CONSUMES_EXACT_RULE_REGISTRY_ENTRY",
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_severance_witnesses.py::test_response_lookup_consumes_exact_rule_registry_entry",
+      "fault_path": "WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/candidate/response_rules.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    },
+    {
+      "claim_id": "C9P_TARGET_DECISION_CONSUMES_INDEPENDENT_PERMISSION",
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_severance_witnesses.py::test_target_decision_consumes_independent_permission",
+      "fault_path": "WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/candidate/target_rules.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    },
+    {
+      "claim_id": "C9P_CONDITIONING_READSET_BINDS_PERSON_WORLD_SOURCES",
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_severance_witnesses.py::test_conditioning_readset_binds_person_world_sources",
+      "fault_path": "WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/candidate/conditioning.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    },
+    {
+      "claim_id": "C9P_ACTION_ADMISSION_BINDS_PERFORMED_ACTION_RECEIPT",
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_severance_witnesses.py::test_action_admission_binds_performed_action_receipt",
+      "fault_path": "WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/candidate/action_admission.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    },
+    {
+      "claim_id": "C9P_TRANSACTION_READSET_BINDS_ADMITTED_EVENT_WITNESS",
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_severance_witnesses.py::test_transaction_readset_binds_admitted_event_witness",
+      "fault_path": "WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/candidate/transaction.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    }
+  ]
+}

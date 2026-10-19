@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="0.129" timestamp="2026-10-19T17:41:26.648548-04:00" hostname="Matthews-MBP.lan"><testcase classname="tests.test_c9r_consumer" name="test_native_guard_denial_holds_native_positive_claim" time="0.021"><failure message="AssertionError: assert &lt;TargetBranch.CREATE: 'CREATE'&gt; is &lt;TargetBranch.DENY: 'DENY'&gt;&#10; +  where &lt;TargetBranch.CREATE: 'CREATE'&gt; = TargetDecision(branch=&lt;TargetBranch.CREATE: 'CREATE'&gt;, reason=&lt;TargetReason.OK: 'OK'&gt;, actor_id='TEST_ONLY_C9R_A', sta...ade='TEST_ONLY_SOURCEFREE_TECHNICAL', response_hash='6c56052b69825bc4d0509cc1315b9ee62ee228e54116868b8f44cea9d8a8639f').branch&#10; +    where TargetDecision(branch=&lt;TargetBranch.CREATE: 'CREATE'&gt;, reason=&lt;TargetReason.OK: 'OK'&gt;, actor_id='TEST_ONLY_C9R_A', sta...ade='TEST_ONLY_SOURCEFREE_TECHNICAL', response_hash='6c56052b69825bc4d0509cc1315b9ee62ee228e54116868b8f44cea9d8a8639f') = PipelineResult(stages=(PipelineStage(stage='actor_ingress', ok=True, reason='OK', detail={'actor_id': 'TEST_ONLY_C9R_A...642ea8284dc3724ef8746c3a9c1c88f432ab235', target_id='fdc5393c9f4841021316408083f28350b2f4c4ba9a2fb0b1954611e1cb3538e9').decision&#10; +  and   &lt;TargetBranch.DENY: 'DENY'&gt; = TargetBranch.DENY">tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-1028/test_native_guard_denial_holds0')
+
+    def test_native_guard_denial_holds_native_positive_claim(tmp_path):
+        with CandidateStore(tmp_path / "native.sqlite") as store:
+            rule = _rule()
+            response_hash = _response_receipt_hash(store)
+            permission = _permission(store, response_hash=response_hash)
+            result = run_candidate_path(
+                store=store,
+                actor_raw=_actor(),
+                event_raw=_event(),
+                conditioning_sources=_sources(),
+                response_registry=ResponseRuleRegistry.test_only((rule,)),
+                target_registry=TargetRuleRegistry.test_only((_target_rule(rule),)),
+                authority_id=rule.authority_id,
+                rule_version=rule.rule_version,
+                rule_content_hash=rule.rule_content_hash,
+                as_of=20,
+                permitted_issuer_refs=frozenset({ISSUER}),
+                other_person_offer_ref=OFFER,
+                material_opportunity_ref=MATERIAL,
+                enacted_history_refs=HISTORY,
+                later_consumer=LaterActionConsumer("TEST_ONLY_C9R_E2_READER", "committed_target_state"),
+                later_as_of=30,
+                target_permission=permission,
+                native_positive_claim=True,
+            )
+            assert 'DENY_ZERO_EFFECT' in result.conditioning.guard_outcome
+&gt;           assert result.decision.branch is TargetBranch.DENY
+E           AssertionError: assert &lt;TargetBranch.CREATE: 'CREATE'&gt; is &lt;TargetBranch.DENY: 'DENY'&gt;
+E            +  where &lt;TargetBranch.CREATE: 'CREATE'&gt; = TargetDecision(branch=&lt;TargetBranch.CREATE: 'CREATE'&gt;, reason=&lt;TargetReason.OK: 'OK'&gt;, actor_id='TEST_ONLY_C9R_A', sta...ade='TEST_ONLY_SOURCEFREE_TECHNICAL', response_hash='6c56052b69825bc4d0509cc1315b9ee62ee228e54116868b8f44cea9d8a8639f').branch
+E            +    where TargetDecision(branch=&lt;TargetBranch.CREATE: 'CREATE'&gt;, reason=&lt;TargetReason.OK: 'OK'&gt;, actor_id='TEST_ONLY_C9R_A', sta...ade='TEST_ONLY_SOURCEFREE_TECHNICAL', response_hash='6c56052b69825bc4d0509cc1315b9ee62ee228e54116868b8f44cea9d8a8639f') = PipelineResult(stages=(PipelineStage(stage='actor_ingress', ok=True, reason='OK', detail={'actor_id': 'TEST_ONLY_C9R_A...642ea8284dc3724ef8746c3a9c1c88f432ab235', target_id='fdc5393c9f4841021316408083f28350b2f4c4ba9a2fb0b1954611e1cb3538e9').decision
+E            +  and   &lt;TargetBranch.DENY: 'DENY'&gt; = TargetBranch.DENY
+
+tests/test_c9r_consumer.py:464: AssertionError</failure></testcase></testsuite></testsuites>

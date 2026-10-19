@@ -1,0 +1,54 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "status": "MECHANICAL_WITNESS_PASS_NOT_SEMANTIC_ADOPTION",
+  "claims": [
+    {
+      "claim_id": "C9R_CONSUMER_READS_EXACT_COMMITTED_SEMANTIC_RECORD",
+      "positive_node": "tests/test_c9r_consumer.py::test_full_e1_to_e2_consumer_path",
+      "fault_path": "candidate/transaction.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    },
+    {
+      "claim_id": "C9R_CONSUMER_BODY_BOUND_TO_COMMITTED_DIGEST",
+      "positive_node": "tests/test_c9r_consumer.py::test_substituted_consumer_body_is_refused",
+      "fault_path": "candidate/later_action.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    },
+    {
+      "claim_id": "C9R_PERFORMED_ACTION_CONSUMED_STATE_BOUND",
+      "positive_node": "tests/test_c9r_consumer.py::test_mismatched_performed_action_is_refused",
+      "fault_path": "candidate/action_admission.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    },
+    {
+      "claim_id": "C9R_ENACTED_SOURCE_REQUIRED_FOR_CREATE",
+      "positive_node": "tests/test_c9r_consumer.py::test_removed_enacted_source_cannot_create",
+      "fault_path": "candidate/target_rules.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    },
+    {
+      "claim_id": "C9R_NATIVE_POSITIVE_HELD_UNDER_GUARD_DENIAL",
+      "positive_node": "tests/test_c9r_consumer.py::test_native_guard_denial_holds_native_positive_claim",
+      "fault_path": "candidate/target_rules.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    },
+    {
+      "claim_id": "C9R_REVOCATION_REVALIDATED_AT_COMMIT",
+      "positive_node": "tests/test_c9r_consumer.py::test_revoked_permission_between_proposal_and_commit_is_refused",
+      "fault_path": "candidate/transaction.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    }
+  ]
+}

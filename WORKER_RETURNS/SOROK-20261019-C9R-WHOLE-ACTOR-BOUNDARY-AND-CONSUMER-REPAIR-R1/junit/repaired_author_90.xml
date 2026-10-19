@@ -1,0 +1,753 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="28" skipped="0" tests="90" time="0.730" timestamp="2026-10-19T17:37:04.326227-04:00" hostname="Matthews-MBP.lan"><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_action_admission" name="test_missing_owner_receipt_returns_typed_hold" time="0.000" /><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_action_admission" name="test_hand_authored_action_is_always_refused" time="0.000" /><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_action_admission" name="test_genuine_receipt_is_admitted" time="0.000"><failure message="AssertionError: assert False&#10; +  where False = isinstance(PerformedActionHold(status=&lt;AdmissionStatus.REFUSED: 'REFUSED'&gt;, reason=&lt;AdmissionReason.TARGET_COMMIT_TIME_UNBOUND: '...MMIT_TIME_UNBOUND'&gt;, actor_id='actor-c9p-001', expected_owner_form='OWNER_RECEIPT_WITH_TARGET_COMMIT_TIME', held_at=40), PerformedActionAdmission)">def test_genuine_receipt_is_admitted() -&gt; None:
+        result = admit_performed_action(
+            owner_receipt=_receipt(),
+            expected_actor_id=ACTOR_ID,
+            expected_act="inspect_with_tool",
+            consumed_state_hash="state-hash",
+            as_of=40,
+        )
+&gt;       assert isinstance(result, PerformedActionAdmission)
+E       AssertionError: assert False
+E        +  where False = isinstance(PerformedActionHold(status=&lt;AdmissionStatus.REFUSED: 'REFUSED'&gt;, reason=&lt;AdmissionReason.TARGET_COMMIT_TIME_UNBOUND: '...MMIT_TIME_UNBOUND'&gt;, actor_id='actor-c9p-001', expected_owner_form='OWNER_RECEIPT_WITH_TARGET_COMMIT_TIME', held_at=40), PerformedActionAdmission)
+
+WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_action_admission.py:64: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_action_admission" name="test_actor_mismatch_is_refused" time="0.000" /><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_action_admission" name="test_act_mismatch_is_refused" time="0.000" /><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_action_admission" name="test_missing_occurrence_ref_is_refused" time="0.000" /><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_action_admission" name="test_future_action_time_is_refused" time="0.000" /><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_action_admission" name="test_no_consumed_state_is_refused" time="0.000"><failure message="AssertionError: assert &lt;AdmissionReason.TARGET_COMMIT_TIME_UNBOUND: 'TARGET_COMMIT_TIME_UNBOUND'&gt; is &lt;AdmissionReason.NO_CONSUMED_TARGET_STATE: 'NO_CONSUMED_TARGET_STATE'&gt;&#10; +  where &lt;AdmissionReason.TARGET_COMMIT_TIME_UNBOUND: 'TARGET_COMMIT_TIME_UNBOUND'&gt; = PerformedActionHold(status=&lt;AdmissionStatus.REFUSED: 'REFUSED'&gt;, reason=&lt;AdmissionReason.TARGET_COMMIT_TIME_UNBOUND: '...MMIT_TIME_UNBOUND'&gt;, actor_id='actor-c9p-001', expected_owner_form='OWNER_RECEIPT_WITH_TARGET_COMMIT_TIME', held_at=40).reason&#10; +  and   &lt;AdmissionReason.NO_CONSUMED_TARGET_STATE: 'NO_CONSUMED_TARGET_STATE'&gt; = AdmissionReason.NO_CONSUMED_TARGET_STATE">def test_no_consumed_state_is_refused() -&gt; None:
+        result = admit_performed_action(
+            owner_receipt=_receipt(consumed_state_hash=""),
+            expected_actor_id=ACTOR_ID,
+            expected_act="inspect_with_tool",
+            consumed_state_hash="",
+            as_of=40,
+        )
+        assert result.status is AdmissionStatus.REFUSED
+&gt;       assert result.reason is AdmissionReason.NO_CONSUMED_TARGET_STATE
+E       AssertionError: assert &lt;AdmissionReason.TARGET_COMMIT_TIME_UNBOUND: 'TARGET_COMMIT_TIME_UNBOUND'&gt; is &lt;AdmissionReason.NO_CONSUMED_TARGET_STATE: 'NO_CONSUMED_TARGET_STATE'&gt;
+E        +  where &lt;AdmissionReason.TARGET_COMMIT_TIME_UNBOUND: 'TARGET_COMMIT_TIME_UNBOUND'&gt; = PerformedActionHold(status=&lt;AdmissionStatus.REFUSED: 'REFUSED'&gt;, reason=&lt;AdmissionReason.TARGET_COMMIT_TIME_UNBOUND: '...MMIT_TIME_UNBOUND'&gt;, actor_id='actor-c9p-001', expected_owner_form='OWNER_RECEIPT_WITH_TARGET_COMMIT_TIME', held_at=40).reason
+E        +  and   &lt;AdmissionReason.NO_CONSUMED_TARGET_STATE: 'NO_CONSUMED_TARGET_STATE'&gt; = AdmissionReason.NO_CONSUMED_TARGET_STATE
+
+WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_action_admission.py:128: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_action_admission" name="test_unsealed_receipt_is_refused" time="0.000" /><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_atomic_rollback_no_ghost" name="test_committed_transaction_binds_readset_and_event" time="0.011" /><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_atomic_rollback_no_ghost" name="test_denied_decision_leaves_no_target_rows" time="0.010" /><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_atomic_rollback_no_ghost" name="test_injected_fault_rolls_back_with_no_ghost" time="0.009" /><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_atomic_rollback_no_ghost" name="test_unadmitted_event_is_refused_with_rollback" time="0.008" /><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_atomic_rollback_no_ghost" name="test_response_event_mismatch_is_refused" time="0.010" /><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_atomic_rollback_no_ghost" name="test_create_decision_requires_matching_prestate" time="0.009"><failure message="AssertionError: assert 'STALE_TARGET_PRESTATE' in 'TARGET_RECORD_PREIMAGE_MISSING'&#10; +  where 'TARGET_RECORD_PREIMAGE_MISSING' = CommitReceipt(status='TRANSACTION_ABORTED_ROLLBACK', joint_transaction_id='', admitted_event_ref='7f3c1dbc3165305fbb43...hash='', receipt_hash='', no_mutation=True, target_id='', authorization_hash='', publication_grade='', response_ref='').target_reason">tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/c9r-wt/WORKER_RETURNS/SOROK-20261019-C9R-WHOLE-ACTOR-BOUNDARY-AND-CONSUMER-REPAIR-R1/runtime/ptmp_a2/test_create_decision_requires_0')
+
+    def test_create_decision_requires_matching_prestate(tmp_path) -&gt; None:
+        store = CandidateStore(tmp_path / "store.sqlite")
+        event = build_event_witness()
+        admitted = store.admit_occurrence(event)
+        decision = TargetDecision(
+            branch=TargetBranch.CREATE,
+            reason=TargetReason.OK,
+            actor_id=ACTOR_ID,
+            state_kind_id="V3MS_PRACTICE",
+            proposal_hash="proposal-1",
+            record_hash="record-1",
+            before_target_hash="WRONG",
+            after_target_hash="after",
+            readset_refs=("read-1",),
+            permission_ref="grant-1",
+        )
+        receipt = store.commit(
+            event=admitted,
+            response=_response(admitted["hash"]),
+            decision=decision,
+            readset_refs=("read-1",),
+        )
+        assert receipt.status == "TRANSACTION_ABORTED_ROLLBACK"
+&gt;       assert "STALE_TARGET_PRESTATE" in receipt.target_reason
+E       AssertionError: assert 'STALE_TARGET_PRESTATE' in 'TARGET_RECORD_PREIMAGE_MISSING'
+E        +  where 'TARGET_RECORD_PREIMAGE_MISSING' = CommitReceipt(status='TRANSACTION_ABORTED_ROLLBACK', joint_transaction_id='', admitted_event_ref='7f3c1dbc3165305fbb43...hash='', receipt_hash='', no_mutation=True, target_id='', authorization_hash='', publication_grade='', response_ref='').target_reason
+
+WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_atomic_rollback_no_ghost.py:144: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_atomic_rollback_no_ghost" name="test_occurrence_survives_response_rollback" time="0.009" /><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_conditioning_readonly" name="test_bound_conditioning_preserves_native_guard_zero_effect" time="0.007" /><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_conditioning_readonly" name="test_conditioning_view_is_read_only" time="0.000" /><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_conditioning_readonly" name="test_forbidden_source_to_psychology_conversion_is_refused" time="0.000" /><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_conditioning_readonly" name="test_observer_note_to_belief_conversion_is_refused" time="0.000" /><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_conditioning_readonly" name="test_unsealed_source_is_refused" time="0.000" /><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_conditioning_readonly" name="test_foreign_subject_source_is_refused" time="0.000" /><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_conditioning_readonly" name="test_unauthorized_source_class_is_refused" time="0.000" /><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_create_chain" name="test_test_only_full_create_chain_commits_target_and_reads_it" time="0.008"><failure message="AssertionError: assert False is True&#10; +  where False = PipelineResult(stages=(PipelineStage(stage='actor_ingress', ok=True, reason='OK', detail={'actor_id': 'actor-c9p-001',...None, committed=False, no_ghost=True, material_eligible=False, material_reason='', authorization_hash='', target_id='').committed">tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/c9r-wt/WORKER_RETURNS/SOROK-20261019-C9R-WHOLE-ACTOR-BOUNDARY-AND-CONSUMER-REPAIR-R1/runtime/ptmp_a2/test_test_only_full_create_cha0')
+
+    def test_test_only_full_create_chain_commits_target_and_reads_it(tmp_path) -&gt; None:
+        store = CandidateStore(tmp_path / "store.sqlite")
+        rule = build_response_rule()
+        target_registry = TargetRuleRegistry.test_only((build_target_rule(rule.rule_content_hash),))
+        before_hash = store.target_state_hash()
+        permission = make_target_permission(
+            grant_id="TEST_ONLY_GRANT_CREATE_001",
+            issuer_ref=TEST_ONLY_TARGET_ISSUER,
+            actor_id=ACTOR_ID,
+            rule_content_hash=rule.rule_content_hash,
+            before_target_hash=before_hash,
+            response_hash="",
+            issued_at=10,
+        )
+        consumer = LaterActionConsumer(
+            consumer_id="TEST_ONLY_LATER_ACTION_CONSUMER",
+            expected_surface="committed_target_state",
+        )
+        result = run_candidate_path(
+            store=store,
+            actor_raw=build_actor_record(),
+            event_raw=build_event_witness(),
+            conditioning_sources=build_conditioning_sources(),
+            response_registry=ResponseRuleRegistry.test_only((rule,)),
+            target_registry=target_registry,
+            authority_id=rule.authority_id,
+            rule_version=rule.rule_version,
+            rule_content_hash=rule.rule_content_hash,
+            as_of=20,
+            permitted_issuer_refs=frozenset({TEST_ONLY_TARGET_ISSUER}),
+            other_person_offer_ref="TEST_ONLY_OFFER_LENT_WRENCH",
+            material_opportunity_ref="TEST_ONLY_WORLD_GARAGE",
+            enacted_history_refs=("TEST_ONLY_ENACTED_H_A", "TEST_ONLY_ENACTED_H_B"),
+            later_consumer=consumer,
+            later_as_of=30,
+            target_permission=permission,
+            expected_act="inspect_with_tool",
+        )
+&gt;       assert result.committed is True
+E       AssertionError: assert False is True
+E        +  where False = PipelineResult(stages=(PipelineStage(stage='actor_ingress', ok=True, reason='OK', detail={'actor_id': 'actor-c9p-001',...None, committed=False, no_ghost=True, material_eligible=False, material_reason='', authorization_hash='', target_id='').committed
+
+WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_create_chain.py:64: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_create_chain" name="test_test_only_create_chain_survives_cold_reopen" time="0.008"><failure message="AssertionError: assert None is not None&#10; +  where None = PipelineResult(stages=(PipelineStage(stage='actor_ingress', ok=True, reason='OK', detail={'actor_id': 'actor-c9p-001',...None, committed=False, no_ghost=True, material_eligible=False, material_reason='', authorization_hash='', target_id='').decision">tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/c9r-wt/WORKER_RETURNS/SOROK-20261019-C9R-WHOLE-ACTOR-BOUNDARY-AND-CONSUMER-REPAIR-R1/runtime/ptmp_a2/test_test_only_create_chain_su0')
+
+    def test_test_only_create_chain_survives_cold_reopen(tmp_path) -&gt; None:
+        path = tmp_path / "store.sqlite"
+        rule = build_response_rule()
+        target_registry = TargetRuleRegistry.test_only((build_target_rule(rule.rule_content_hash),))
+        store = CandidateStore(path)
+        before_hash = store.target_state_hash()
+        permission = make_target_permission(
+            grant_id="TEST_ONLY_GRANT_CREATE_002",
+            issuer_ref=TEST_ONLY_TARGET_ISSUER,
+            actor_id=ACTOR_ID,
+            rule_content_hash=rule.rule_content_hash,
+            before_target_hash=before_hash,
+            response_hash="",
+            issued_at=10,
+        )
+        consumer = LaterActionConsumer(
+            consumer_id="TEST_ONLY_LATER_ACTION_CONSUMER",
+            expected_surface="committed_target_state",
+        )
+        result = run_candidate_path(
+            store=store,
+            actor_raw=build_actor_record(),
+            event_raw=build_event_witness(),
+            conditioning_sources=build_conditioning_sources(),
+            response_registry=ResponseRuleRegistry.test_only((rule,)),
+            target_registry=target_registry,
+            authority_id=rule.authority_id,
+            rule_version=rule.rule_version,
+            rule_content_hash=rule.rule_content_hash,
+            as_of=20,
+            permitted_issuer_refs=frozenset({TEST_ONLY_TARGET_ISSUER}),
+            other_person_offer_ref="TEST_ONLY_OFFER_LENT_WRENCH",
+            material_opportunity_ref="TEST_ONLY_WORLD_GARAGE",
+            enacted_history_refs=("TEST_ONLY_ENACTED_H_A", "TEST_ONLY_ENACTED_H_B"),
+            later_consumer=consumer,
+            later_as_of=30,
+            target_permission=permission,
+        )
+&gt;       assert result.decision is not None
+E       AssertionError: assert None is not None
+E        +  where None = PipelineResult(stages=(PipelineStage(stage='actor_ingress', ok=True, reason='OK', detail={'actor_id': 'actor-c9p-001',...None, committed=False, no_ghost=True, material_eligible=False, material_reason='', authorization_hash='', target_id='').decision
+
+WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_create_chain.py:117: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_event_witness" name="test_admitted_test_only_witness_binds_owner_readset" time="0.000" /><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_event_witness" name="test_native_witness_without_owner_receipt_is_typed_missing" time="0.000" /><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_event_witness" name="test_typed_missing_grade_returns_missing_not_fabricated_event" time="0.000" /><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_event_witness" name="test_clock_outside_frame_is_refused" time="0.000" /><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_event_witness" name="test_time_reversed_is_refused" time="0.001" /><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_event_witness" name="test_unresolved_causal_parent_is_refused" time="0.000" /><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_event_witness" name="test_resolved_causal_parent_is_admitted" time="0.000" /><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_event_witness" name="test_test_only_owner_grade_mismatch_is_refused" time="0.000" /><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_identity_ingress" name="test_admitted_actor_binds_exact_source_readset" time="0.000" /><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_identity_ingress" name="test_inactive_actor_is_refused" time="0.000" /><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_identity_ingress" name="test_stale_standing_state_is_refused" time="0.000" /><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_identity_ingress" name="test_psychology_claim_at_ingress_is_refused" time="0.000" /><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_identity_ingress" name="test_unsealed_record_is_refused" time="0.000" /><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_identity_ingress" name="test_missing_source_ref_is_refused" time="0.000" /><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_identity_ingress" name="test_schema_mismatch_is_refused" time="0.000" /><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_later_action_consumer" name="test_missing_consumer_is_typed_refusal" time="0.009"><failure message="AssertionError: TARGET_RECORD_PREIMAGE_MISSING&#10;assert False&#10; +  where False = CommitReceipt(status='TRANSACTION_ABORTED_ROLLBACK', joint_transaction_id='', admitted_event_ref='7f3c1dbc3165305fbb43...hash='', receipt_hash='', no_mutation=True, target_id='', authorization_hash='', publication_grade='', response_ref='').committed">tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/c9r-wt/WORKER_RETURNS/SOROK-20261019-C9R-WHOLE-ACTOR-BOUNDARY-AND-CONSUMER-REPAIR-R1/runtime/ptmp_a2/test_missing_consumer_is_typed0')
+
+    def test_missing_consumer_is_typed_refusal(tmp_path) -&gt; None:
+        from conftest import build_event_witness
+    
+        store = CandidateStore(tmp_path / "store.sqlite")
+        event = build_event_witness()
+&gt;       _commit_target(store, event)
+
+WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_later_action_consumer.py:45: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+store = &lt;candidate.transaction.CandidateStore object at 0x1024ae910&gt;
+event = {'schema': 'C9P_EVENT_WITNESS@1', 'event_id': 'event-c9p-e1', 'owner_ref': 'TEST_ONLY_EVENT_OWNER', 'owner_receipt_ref': '', ...}
+proposal_hash = 'proposal-1'
+
+    def _commit_target(store: CandidateStore, event, proposal_hash: str = "proposal-1") -&gt; None:
+        from candidate.canon import seal
+    
+        admitted = store.admit_occurrence(event)
+        decision = TargetDecision(
+            branch=TargetBranch.CREATE,
+            reason=TargetReason.OK,
+            actor_id=ACTOR_ID,
+            state_kind_id="V3MS_PRACTICE",
+            proposal_hash=proposal_hash,
+            record_hash="record-1",
+            before_target_hash=store.target_state_hash(),
+            after_target_hash="after",
+            readset_refs=("read-1",),
+            permission_ref="grant-1",
+        )
+        receipt = store.commit(
+            event=admitted,
+            response=seal({"event_ref": admitted["hash"], "status": "COMMITTED"}),
+            decision=decision,
+            readset_refs=("read-1",),
+        )
+&gt;       assert receipt.committed, receipt.target_reason
+E       AssertionError: TARGET_RECORD_PREIMAGE_MISSING
+E       assert False
+E        +  where False = CommitReceipt(status='TRANSACTION_ABORTED_ROLLBACK', joint_transaction_id='', admitted_event_ref='7f3c1dbc3165305fbb43...hash='', receipt_hash='', no_mutation=True, target_id='', authorization_hash='', publication_grade='', response_ref='').committed
+
+WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_later_action_consumer.py:37: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_later_action_consumer" name="test_consumer_reads_exact_committed_state" time="0.009"><failure message="AssertionError: TARGET_RECORD_PREIMAGE_MISSING&#10;assert False&#10; +  where False = CommitReceipt(status='TRANSACTION_ABORTED_ROLLBACK', joint_transaction_id='', admitted_event_ref='7f3c1dbc3165305fbb43...hash='', receipt_hash='', no_mutation=True, target_id='', authorization_hash='', publication_grade='', response_ref='').committed">tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/c9r-wt/WORKER_RETURNS/SOROK-20261019-C9R-WHOLE-ACTOR-BOUNDARY-AND-CONSUMER-REPAIR-R1/runtime/ptmp_a2/test_consumer_reads_exact_comm0')
+
+    def test_consumer_reads_exact_committed_state(tmp_path) -&gt; None:
+        from conftest import build_event_witness
+    
+        store = CandidateStore(tmp_path / "store.sqlite")
+        event = build_event_witness()
+&gt;       _commit_target(store, event)
+
+WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_later_action_consumer.py:64: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+store = &lt;candidate.transaction.CandidateStore object at 0x1024f2610&gt;
+event = {'schema': 'C9P_EVENT_WITNESS@1', 'event_id': 'event-c9p-e1', 'owner_ref': 'TEST_ONLY_EVENT_OWNER', 'owner_receipt_ref': '', ...}
+proposal_hash = 'proposal-1'
+
+    def _commit_target(store: CandidateStore, event, proposal_hash: str = "proposal-1") -&gt; None:
+        from candidate.canon import seal
+    
+        admitted = store.admit_occurrence(event)
+        decision = TargetDecision(
+            branch=TargetBranch.CREATE,
+            reason=TargetReason.OK,
+            actor_id=ACTOR_ID,
+            state_kind_id="V3MS_PRACTICE",
+            proposal_hash=proposal_hash,
+            record_hash="record-1",
+            before_target_hash=store.target_state_hash(),
+            after_target_hash="after",
+            readset_refs=("read-1",),
+            permission_ref="grant-1",
+        )
+        receipt = store.commit(
+            event=admitted,
+            response=seal({"event_ref": admitted["hash"], "status": "COMMITTED"}),
+            decision=decision,
+            readset_refs=("read-1",),
+        )
+&gt;       assert receipt.committed, receipt.target_reason
+E       AssertionError: TARGET_RECORD_PREIMAGE_MISSING
+E       assert False
+E        +  where False = CommitReceipt(status='TRANSACTION_ABORTED_ROLLBACK', joint_transaction_id='', admitted_event_ref='7f3c1dbc3165305fbb43...hash='', receipt_hash='', no_mutation=True, target_id='', authorization_hash='', publication_grade='', response_ref='').committed
+
+WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_later_action_consumer.py:37: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_later_action_consumer" name="test_consumer_read_with_owner_admission_is_read_ok" time="0.009"><failure message="AssertionError: TARGET_RECORD_PREIMAGE_MISSING&#10;assert False&#10; +  where False = CommitReceipt(status='TRANSACTION_ABORTED_ROLLBACK', joint_transaction_id='', admitted_event_ref='7f3c1dbc3165305fbb43...hash='', receipt_hash='', no_mutation=True, target_id='', authorization_hash='', publication_grade='', response_ref='').committed">tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/c9r-wt/WORKER_RETURNS/SOROK-20261019-C9R-WHOLE-ACTOR-BOUNDARY-AND-CONSUMER-REPAIR-R1/runtime/ptmp_a2/test_consumer_read_with_owner_0')
+
+    def test_consumer_read_with_owner_admission_is_read_ok(tmp_path) -&gt; None:
+        from conftest import build_event_witness
+    
+        store = CandidateStore(tmp_path / "store.sqlite")
+        event = build_event_witness()
+&gt;       _commit_target(store, event)
+
+WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_later_action_consumer.py:90: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+store = &lt;candidate.transaction.CandidateStore object at 0x102554c10&gt;
+event = {'schema': 'C9P_EVENT_WITNESS@1', 'event_id': 'event-c9p-e1', 'owner_ref': 'TEST_ONLY_EVENT_OWNER', 'owner_receipt_ref': '', ...}
+proposal_hash = 'proposal-1'
+
+    def _commit_target(store: CandidateStore, event, proposal_hash: str = "proposal-1") -&gt; None:
+        from candidate.canon import seal
+    
+        admitted = store.admit_occurrence(event)
+        decision = TargetDecision(
+            branch=TargetBranch.CREATE,
+            reason=TargetReason.OK,
+            actor_id=ACTOR_ID,
+            state_kind_id="V3MS_PRACTICE",
+            proposal_hash=proposal_hash,
+            record_hash="record-1",
+            before_target_hash=store.target_state_hash(),
+            after_target_hash="after",
+            readset_refs=("read-1",),
+            permission_ref="grant-1",
+        )
+        receipt = store.commit(
+            event=admitted,
+            response=seal({"event_ref": admitted["hash"], "status": "COMMITTED"}),
+            decision=decision,
+            readset_refs=("read-1",),
+        )
+&gt;       assert receipt.committed, receipt.target_reason
+E       AssertionError: TARGET_RECORD_PREIMAGE_MISSING
+E       assert False
+E        +  where False = CommitReceipt(status='TRANSACTION_ABORTED_ROLLBACK', joint_transaction_id='', admitted_event_ref='7f3c1dbc3165305fbb43...hash='', receipt_hash='', no_mutation=True, target_id='', authorization_hash='', publication_grade='', response_ref='').committed
+
+WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_later_action_consumer.py:37: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_later_action_consumer" name="test_absent_target_state_is_typed_state_absent" time="0.008" /><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_later_action_consumer" name="test_as_of_before_commit_is_refused" time="0.009"><failure message="AssertionError: TARGET_RECORD_PREIMAGE_MISSING&#10;assert False&#10; +  where False = CommitReceipt(status='TRANSACTION_ABORTED_ROLLBACK', joint_transaction_id='', admitted_event_ref='7f3c1dbc3165305fbb43...hash='', receipt_hash='', no_mutation=True, target_id='', authorization_hash='', publication_grade='', response_ref='').committed">tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/c9r-wt/WORKER_RETURNS/SOROK-20261019-C9R-WHOLE-ACTOR-BOUNDARY-AND-CONSUMER-REPAIR-R1/runtime/ptmp_a2/test_as_of_before_commit_is_re0')
+
+    def test_as_of_before_commit_is_refused(tmp_path) -&gt; None:
+        from conftest import build_event_witness
+    
+        store = CandidateStore(tmp_path / "store.sqlite")
+        event = build_event_witness()
+&gt;       _commit_target(store, event)
+
+WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_later_action_consumer.py:131: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+store = &lt;candidate.transaction.CandidateStore object at 0x102532390&gt;
+event = {'schema': 'C9P_EVENT_WITNESS@1', 'event_id': 'event-c9p-e1', 'owner_ref': 'TEST_ONLY_EVENT_OWNER', 'owner_receipt_ref': '', ...}
+proposal_hash = 'proposal-1'
+
+    def _commit_target(store: CandidateStore, event, proposal_hash: str = "proposal-1") -&gt; None:
+        from candidate.canon import seal
+    
+        admitted = store.admit_occurrence(event)
+        decision = TargetDecision(
+            branch=TargetBranch.CREATE,
+            reason=TargetReason.OK,
+            actor_id=ACTOR_ID,
+            state_kind_id="V3MS_PRACTICE",
+            proposal_hash=proposal_hash,
+            record_hash="record-1",
+            before_target_hash=store.target_state_hash(),
+            after_target_hash="after",
+            readset_refs=("read-1",),
+            permission_ref="grant-1",
+        )
+        receipt = store.commit(
+            event=admitted,
+            response=seal({"event_ref": admitted["hash"], "status": "COMMITTED"}),
+            decision=decision,
+            readset_refs=("read-1",),
+        )
+&gt;       assert receipt.committed, receipt.target_reason
+E       AssertionError: TARGET_RECORD_PREIMAGE_MISSING
+E       assert False
+E        +  where False = CommitReceipt(status='TRANSACTION_ABORTED_ROLLBACK', joint_transaction_id='', admitted_event_ref='7f3c1dbc3165305fbb43...hash='', receipt_hash='', no_mutation=True, target_id='', authorization_hash='', publication_grade='', response_ref='').committed
+
+WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_later_action_consumer.py:37: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_later_action_consumer" name="test_consumer_readset_mismatch_is_typed" time="0.009"><failure message="AssertionError: TARGET_RECORD_PREIMAGE_MISSING&#10;assert False&#10; +  where False = CommitReceipt(status='TRANSACTION_ABORTED_ROLLBACK', joint_transaction_id='', admitted_event_ref='7f3c1dbc3165305fbb43...hash='', receipt_hash='', no_mutation=True, target_id='', authorization_hash='', publication_grade='', response_ref='').committed">tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/c9r-wt/WORKER_RETURNS/SOROK-20261019-C9R-WHOLE-ACTOR-BOUNDARY-AND-CONSUMER-REPAIR-R1/runtime/ptmp_a2/test_consumer_readset_mismatch0')
+
+    def test_consumer_readset_mismatch_is_typed(tmp_path) -&gt; None:
+        from conftest import build_event_witness
+    
+        store = CandidateStore(tmp_path / "store.sqlite")
+        event = build_event_witness()
+&gt;       _commit_target(store, event)
+
+WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_later_action_consumer.py:152: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+store = &lt;candidate.transaction.CandidateStore object at 0x1024de7d0&gt;
+event = {'schema': 'C9P_EVENT_WITNESS@1', 'event_id': 'event-c9p-e1', 'owner_ref': 'TEST_ONLY_EVENT_OWNER', 'owner_receipt_ref': '', ...}
+proposal_hash = 'proposal-1'
+
+    def _commit_target(store: CandidateStore, event, proposal_hash: str = "proposal-1") -&gt; None:
+        from candidate.canon import seal
+    
+        admitted = store.admit_occurrence(event)
+        decision = TargetDecision(
+            branch=TargetBranch.CREATE,
+            reason=TargetReason.OK,
+            actor_id=ACTOR_ID,
+            state_kind_id="V3MS_PRACTICE",
+            proposal_hash=proposal_hash,
+            record_hash="record-1",
+            before_target_hash=store.target_state_hash(),
+            after_target_hash="after",
+            readset_refs=("read-1",),
+            permission_ref="grant-1",
+        )
+        receipt = store.commit(
+            event=admitted,
+            response=seal({"event_ref": admitted["hash"], "status": "COMMITTED"}),
+            decision=decision,
+            readset_refs=("read-1",),
+        )
+&gt;       assert receipt.committed, receipt.target_reason
+E       AssertionError: TARGET_RECORD_PREIMAGE_MISSING
+E       assert False
+E        +  where False = CommitReceipt(status='TRANSACTION_ABORTED_ROLLBACK', joint_transaction_id='', admitted_event_ref='7f3c1dbc3165305fbb43...hash='', receipt_hash='', no_mutation=True, target_id='', authorization_hash='', publication_grade='', response_ref='').committed
+
+WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_later_action_consumer.py:37: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_native_custody" name="test_native_guard_custody_records_real_file" time="0.018" /><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_native_custody" name="test_import_graph_covers_candidate_native_dependencies" time="0.056" /><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_native_custody" name="test_blob_mismatch_raises_custody_mismatch" time="0.014" /><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_native_custody" name="test_guard_production_registry_is_empty" time="0.000" /><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_pipeline_native_ceiling" name="test_native_ceiling_production_registries_refuse_everything" time="0.009"><failure message="assert None is not None">tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/c9r-wt/WORKER_RETURNS/SOROK-20261019-C9R-WHOLE-ACTOR-BOUNDARY-AND-CONSUMER-REPAIR-R1/runtime/ptmp_a2/test_native_ceiling_production0')
+
+    def test_native_ceiling_production_registries_refuse_everything(tmp_path) -&gt; None:
+        store = CandidateStore(tmp_path / "store.sqlite")
+        result = run_candidate_path(
+            store=store,
+            actor_raw=build_actor_record(),
+            event_raw=build_event_witness(),
+            conditioning_sources=build_conditioning_sources(),
+            response_registry=ResponseRuleRegistry.production(),
+            target_registry=TargetRuleRegistry.production(),
+            authority_id="TEST_ONLY_CAN008_AUTHORITY",
+            rule_version="1",
+            rule_content_hash="absent-rule-hash",
+            as_of=20,
+            permitted_issuer_refs=frozenset(),
+            other_person_offer_ref="TEST_ONLY_OFFER_LENT_WRENCH",
+            material_opportunity_ref="TEST_ONLY_WORLD_GARAGE",
+            enacted_history_refs=("TEST_ONLY_ENACTED_H_A", "TEST_ONLY_ENACTED_H_B"),
+            later_consumer=None,
+            later_as_of=30,
+        )
+        response_stage = result.stage("can008_response_rule_lookup")
+&gt;       assert response_stage is not None
+E       assert None is not None
+
+WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_pipeline_native_ceiling.py:76: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_pipeline_native_ceiling" name="test_test_only_chain_commits_and_reads_committed_state" time="0.009"><failure message="AssertionError: assert False is True&#10; +  where False = PipelineResult(stages=(PipelineStage(stage='actor_ingress', ok=True, reason='OK', detail={'actor_id': 'actor-c9p-001',...None, committed=False, no_ghost=True, material_eligible=False, material_reason='', authorization_hash='', target_id='').committed">tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/c9r-wt/WORKER_RETURNS/SOROK-20261019-C9R-WHOLE-ACTOR-BOUNDARY-AND-CONSUMER-REPAIR-R1/runtime/ptmp_a2/test_test_only_chain_commits_a0')
+
+    def test_test_only_chain_commits_and_reads_committed_state(tmp_path) -&gt; None:
+        store = CandidateStore(tmp_path / "store.sqlite")
+        rule = build_response_rule()
+        permission = make_target_permission(
+            grant_id="TEST_ONLY_GRANT_001",
+            issuer_ref=TEST_ONLY_TARGET_ISSUER,
+            actor_id=ACTOR_ID,
+            rule_content_hash=rule.rule_content_hash,
+            before_target_hash=store.target_state_hash(),
+            response_hash="",
+            issued_at=10,
+        )
+        result = _run(store)
+&gt;       assert result.committed is True
+E       AssertionError: assert False is True
+E        +  where False = PipelineResult(stages=(PipelineStage(stage='actor_ingress', ok=True, reason='OK', detail={'actor_id': 'actor-c9p-001',...None, committed=False, no_ghost=True, material_eligible=False, material_reason='', authorization_hash='', target_id='').committed
+
+WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_pipeline_native_ceiling.py:101: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_pipeline_native_ceiling" name="test_two_distinct_trajectories_are_materially_distinct" time="0.009"><failure message="AssertionError: assert '' != ''&#10; +  where '' = EventWitnessResult(status=&lt;WitnessStatus.REFUSED: 'REFUSED'&gt;, reason=&lt;WitnessReason.ACTOR_ROLE_NOT_FOCAL: 'ACTOR_ROLE_...nt_hash='', owner_ref='', event_time=0, admission_grade='ADMITTED_TEST_ONLY_SOURCEFREE', readset_refs=(), content=None).event_hash&#10; +    where EventWitnessResult(status=&lt;WitnessStatus.REFUSED: 'REFUSED'&gt;, reason=&lt;WitnessReason.ACTOR_ROLE_NOT_FOCAL: 'ACTOR_ROLE_...nt_hash='', owner_ref='', event_time=0, admission_grade='ADMITTED_TEST_ONLY_SOURCEFREE', readset_refs=(), content=None) = PipelineResult(stages=(PipelineStage(stage='actor_ingress', ok=True, reason='OK', detail={'actor_id': 'actor-c9p-001',...None, committed=False, no_ghost=True, material_eligible=False, material_reason='', authorization_hash='', target_id='').event&#10; +  and   '' = EventWitnessResult(status=&lt;WitnessStatus.REFUSED: 'REFUSED'&gt;, reason=&lt;WitnessReason.ACTOR_ROLE_NOT_FOCAL: 'ACTOR_ROLE_...nt_hash='', owner_ref='', event_time=0, admission_grade='ADMITTED_TEST_ONLY_SOURCEFREE', readset_refs=(), content=None).event_hash&#10; +    where EventWitnessResult(status=&lt;WitnessStatus.REFUSED: 'REFUSED'&gt;, reason=&lt;WitnessReason.ACTOR_ROLE_NOT_FOCAL: 'ACTOR_ROLE_...nt_hash='', owner_ref='', event_time=0, admission_grade='ADMITTED_TEST_ONLY_SOURCEFREE', readset_refs=(), content=None) = PipelineResult(stages=(PipelineStage(stage='actor_ingress', ok=True, reason='OK', detail={'actor_id': 'actor-c9p-001',...None, committed=False, no_ghost=True, material_eligible=False, material_reason='', authorization_hash='', target_id='').event">tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/c9r-wt/WORKER_RETURNS/SOROK-20261019-C9R-WHOLE-ACTOR-BOUNDARY-AND-CONSUMER-REPAIR-R1/runtime/ptmp_a2/test_two_distinct_trajectories0')
+
+    def test_two_distinct_trajectories_are_materially_distinct(tmp_path) -&gt; None:
+        store = CandidateStore(tmp_path / "store.sqlite")
+        first = _run(store)
+        second = _run(
+            store,
+            event_raw=build_event_witness(
+                event_id="event-c9p-e2",
+                time=16,
+                content={"fact": "second_shared_tool_offer", "object": "spanner"},
+            ),
+            later_as_of=31,
+        )
+        assert first.event is not None and second.event is not None
+&gt;       assert first.event.event_hash != second.event.event_hash
+E       AssertionError: assert '' != ''
+E        +  where '' = EventWitnessResult(status=&lt;WitnessStatus.REFUSED: 'REFUSED'&gt;, reason=&lt;WitnessReason.ACTOR_ROLE_NOT_FOCAL: 'ACTOR_ROLE_...nt_hash='', owner_ref='', event_time=0, admission_grade='ADMITTED_TEST_ONLY_SOURCEFREE', readset_refs=(), content=None).event_hash
+E        +    where EventWitnessResult(status=&lt;WitnessStatus.REFUSED: 'REFUSED'&gt;, reason=&lt;WitnessReason.ACTOR_ROLE_NOT_FOCAL: 'ACTOR_ROLE_...nt_hash='', owner_ref='', event_time=0, admission_grade='ADMITTED_TEST_ONLY_SOURCEFREE', readset_refs=(), content=None) = PipelineResult(stages=(PipelineStage(stage='actor_ingress', ok=True, reason='OK', detail={'actor_id': 'actor-c9p-001',...None, committed=False, no_ghost=True, material_eligible=False, material_reason='', authorization_hash='', target_id='').event
+E        +  and   '' = EventWitnessResult(status=&lt;WitnessStatus.REFUSED: 'REFUSED'&gt;, reason=&lt;WitnessReason.ACTOR_ROLE_NOT_FOCAL: 'ACTOR_ROLE_...nt_hash='', owner_ref='', event_time=0, admission_grade='ADMITTED_TEST_ONLY_SOURCEFREE', readset_refs=(), content=None).event_hash
+E        +    where EventWitnessResult(status=&lt;WitnessStatus.REFUSED: 'REFUSED'&gt;, reason=&lt;WitnessReason.ACTOR_ROLE_NOT_FOCAL: 'ACTOR_ROLE_...nt_hash='', owner_ref='', event_time=0, admission_grade='ADMITTED_TEST_ONLY_SOURCEFREE', readset_refs=(), content=None) = PipelineResult(stages=(PipelineStage(stage='actor_ingress', ok=True, reason='OK', detail={'actor_id': 'actor-c9p-001',...None, committed=False, no_ghost=True, material_eligible=False, material_reason='', authorization_hash='', target_id='').event
+
+WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_pipeline_native_ceiling.py:132: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_pipeline_native_ceiling" name="test_no_ghost_under_injected_storage_fault" time="0.009"><failure message="AssertionError: assert None is not None&#10; +  where None = PipelineResult(stages=(PipelineStage(stage='actor_ingress', ok=True, reason='OK', detail={'actor_id': 'actor-c9p-001',...None, committed=False, no_ghost=True, material_eligible=False, material_reason='', authorization_hash='', target_id='').receipt">tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/c9r-wt/WORKER_RETURNS/SOROK-20261019-C9R-WHOLE-ACTOR-BOUNDARY-AND-CONSUMER-REPAIR-R1/runtime/ptmp_a2/test_no_ghost_under_injected_s0')
+
+    def test_no_ghost_under_injected_storage_fault(tmp_path) -&gt; None:
+        store = CandidateStore(tmp_path / "store.sqlite")
+        before = store.snapshot()
+        result = _run(store, fault="after_receipt_before_commit")
+&gt;       assert result.receipt is not None
+E       AssertionError: assert None is not None
+E        +  where None = PipelineResult(stages=(PipelineStage(stage='actor_ingress', ok=True, reason='OK', detail={'actor_id': 'actor-c9p-001',...None, committed=False, no_ghost=True, material_eligible=False, material_reason='', authorization_hash='', target_id='').receipt
+
+WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_pipeline_native_ceiling.py:142: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_pipeline_native_ceiling" name="test_performed_action_is_held_without_owner_receipt" time="0.009"><failure message="AssertionError: assert None is not None&#10; +  where None = PipelineResult(stages=(PipelineStage(stage='actor_ingress', ok=True, reason='OK', detail={'actor_id': 'actor-c9p-001',...None, committed=False, no_ghost=True, material_eligible=False, material_reason='', authorization_hash='', target_id='').action_admission">tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/c9r-wt/WORKER_RETURNS/SOROK-20261019-C9R-WHOLE-ACTOR-BOUNDARY-AND-CONSUMER-REPAIR-R1/runtime/ptmp_a2/test_performed_action_is_held_0')
+
+    def test_performed_action_is_held_without_owner_receipt(tmp_path) -&gt; None:
+        store = CandidateStore(tmp_path / "store.sqlite")
+        result = _run(store, action_owner_receipt=None, expected_act="inspect_with_tool")
+&gt;       assert result.action_admission is not None
+E       AssertionError: assert None is not None
+E        +  where None = PipelineResult(stages=(PipelineStage(stage='actor_ingress', ok=True, reason='OK', detail={'actor_id': 'actor-c9p-001',...None, committed=False, no_ghost=True, material_eligible=False, material_reason='', authorization_hash='', target_id='').action_admission
+
+WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_pipeline_native_ceiling.py:158: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_pipeline_native_ceiling" name="test_hand_authored_action_path_is_refused" time="0.008"><failure message="AssertionError: assert None is not None&#10; +  where None = PipelineResult(stages=(PipelineStage(stage='actor_ingress', ok=True, reason='OK', detail={'actor_id': 'actor-c9p-001',...None, committed=False, no_ghost=True, material_eligible=False, material_reason='', authorization_hash='', target_id='').action_admission">tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/c9r-wt/WORKER_RETURNS/SOROK-20261019-C9R-WHOLE-ACTOR-BOUNDARY-AND-CONSUMER-REPAIR-R1/runtime/ptmp_a2/test_hand_authored_action_path0')
+
+    def test_hand_authored_action_path_is_refused(tmp_path) -&gt; None:
+        store = CandidateStore(tmp_path / "store.sqlite")
+        result = _run(store)
+&gt;       assert result.action_admission is not None
+E       AssertionError: assert None is not None
+E        +  where None = PipelineResult(stages=(PipelineStage(stage='actor_ingress', ok=True, reason='OK', detail={'actor_id': 'actor-c9p-001',...None, committed=False, no_ghost=True, material_eligible=False, material_reason='', authorization_hash='', target_id='').action_admission
+
+WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_pipeline_native_ceiling.py:169: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_pipeline_native_ceiling" name="test_stale_actor_currentness_stops_chain_before_event" time="0.008" /><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_release_gate" name="test_default_gate_is_held_with_all_finite_holds" time="0.000" /><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_release_gate" name="test_fixture_supplied_authority_never_clears_gate" time="0.000" /><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_release_gate" name="test_partial_issuer_evidence_still_held" time="0.001"><failure message="AssertionError: assert &lt;HoldCode.CAN008_RULE_ISSUER_UNVERIFIED: 'CAN008_RULE_ISSUER_UNVERIFIED'&gt; not in {&lt;HoldCode.ADP010_ENCOUNTER_WITNESS_MISSING: 'ADP010_ENCOUNTER_WITNESS_MISSING'&gt;, &lt;HoldCode.ADP019_ACTOR_EVENT_WITNESS...: 'LATER_ACTION_CONSUMER_UNBOUND'&gt;, &lt;HoldCode.PERFORMED_ACTION_OWNER_UNPROVED: 'PERFORMED_ACTION_OWNER_UNPROVED'&gt;, ...}&#10; +  where &lt;HoldCode.CAN008_RULE_ISSUER_UNVERIFIED: 'CAN008_RULE_ISSUER_UNVERIFIED'&gt; = HoldCode.CAN008_RULE_ISSUER_UNVERIFIED">def test_partial_issuer_evidence_still_held() -&gt; None:
+        result = evaluate_release_gate(rule_a_issuer_verified=True)
+        assert result.outcome is ReleaseOutcome.C9_NATIVE_POSITIVE_HELD
+        codes = {hold.hold_code for hold in result.holds}
+&gt;       assert HoldCode.CAN008_RULE_ISSUER_UNVERIFIED not in codes
+E       AssertionError: assert &lt;HoldCode.CAN008_RULE_ISSUER_UNVERIFIED: 'CAN008_RULE_ISSUER_UNVERIFIED'&gt; not in {&lt;HoldCode.ADP010_ENCOUNTER_WITNESS_MISSING: 'ADP010_ENCOUNTER_WITNESS_MISSING'&gt;, &lt;HoldCode.ADP019_ACTOR_EVENT_WITNESS...: 'LATER_ACTION_CONSUMER_UNBOUND'&gt;, &lt;HoldCode.PERFORMED_ACTION_OWNER_UNPROVED: 'PERFORMED_ACTION_OWNER_UNPROVED'&gt;, ...}
+E        +  where &lt;HoldCode.CAN008_RULE_ISSUER_UNVERIFIED: 'CAN008_RULE_ISSUER_UNVERIFIED'&gt; = HoldCode.CAN008_RULE_ISSUER_UNVERIFIED
+
+WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_release_gate.py:35: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_release_gate" name="test_empty_positive_registry_alone_holds" time="0.001"><failure message="AssertionError: assert [&lt;HoldCode.CA...PROVED'&gt;, ...] == [&lt;HoldCode.PO...ISTRY_EMPTY'&gt;]&#10;  &#10;  At index 0 diff: &lt;HoldCode.CAN008_RULE_ISSUER_UNVERIFIED: 'CAN008_RULE_ISSUER_UNVERIFIED'&gt; != &lt;HoldCode.POSITIVE_TRANSITION_REGISTRY_EMPTY: 'POSITIVE_TRANSITION_REGISTRY_EMPTY'&gt;&#10;  Left contains 6 more items, first extra item: &lt;HoldCode.CAN011_TARGET_UNISSUED: 'CAN011_TARGET_UNISSUED'&gt;&#10;  Use -v to get more diff">def test_empty_positive_registry_alone_holds() -&gt; None:
+        result = evaluate_release_gate(
+            rule_a_issuer_verified=True,
+            rule_t_issuer_verified=True,
+            adp019_witness_present=True,
+            adp010_witness_present=True,
+            performed_action_owner_proved=True,
+            later_action_consumer_bound=True,
+        )
+        assert result.outcome is ReleaseOutcome.C9_NATIVE_POSITIVE_HELD
+&gt;       assert [hold.hold_code for hold in result.holds] == [
+            HoldCode.POSITIVE_TRANSITION_REGISTRY_EMPTY
+        ]
+E       AssertionError: assert [&lt;HoldCode.CA...PROVED'&gt;, ...] == [&lt;HoldCode.PO...ISTRY_EMPTY'&gt;]
+E         
+E         At index 0 diff: &lt;HoldCode.CAN008_RULE_ISSUER_UNVERIFIED: 'CAN008_RULE_ISSUER_UNVERIFIED'&gt; != &lt;HoldCode.POSITIVE_TRANSITION_REGISTRY_EMPTY: 'POSITIVE_TRANSITION_REGISTRY_EMPTY'&gt;
+E         Left contains 6 more items, first extra item: &lt;HoldCode.CAN011_TARGET_UNISSUED: 'CAN011_TARGET_UNISSUED'&gt;
+E         Use -v to get more diff
+
+WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_release_gate.py:49: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_release_gate" name="test_all_surfaces_cleared_authorizes" time="0.001"><failure message="AssertionError: assert &lt;ReleaseOutcome.C9_NATIVE_POSITIVE_HELD: 'C9_NATIVE_POSITIVE_HELD'&gt; is &lt;ReleaseOutcome.C9_NATIVE_POSITIVE_AUTHORIZED: 'C9_NATIVE_POSITIVE_AUTHORIZED'&gt;&#10; +  where &lt;ReleaseOutcome.C9_NATIVE_POSITIVE_HELD: 'C9_NATIVE_POSITIVE_HELD'&gt; = ReleaseGateResult(outcome=&lt;ReleaseOutcome.C9_NATIVE_POSITIVE_HELD: 'C9_NATIVE_POSITIVE_HELD'&gt;, holds=(OwnerHoldForm(ho...performed_action_owner_proved', 'later_action_consumer_bound', 'positive_registry_entries'), evidence_authenticated=()).outcome&#10; +  and   &lt;ReleaseOutcome.C9_NATIVE_POSITIVE_AUTHORIZED: 'C9_NATIVE_POSITIVE_AUTHORIZED'&gt; = ReleaseOutcome.C9_NATIVE_POSITIVE_AUTHORIZED">def test_all_surfaces_cleared_authorizes() -&gt; None:
+        result = evaluate_release_gate(
+            rule_a_issuer_verified=True,
+            rule_t_issuer_verified=True,
+            adp019_witness_present=True,
+            adp010_witness_present=True,
+            positive_registry_entries=1,
+            performed_action_owner_proved=True,
+            later_action_consumer_bound=True,
+        )
+&gt;       assert result.outcome is ReleaseOutcome.C9_NATIVE_POSITIVE_AUTHORIZED
+E       AssertionError: assert &lt;ReleaseOutcome.C9_NATIVE_POSITIVE_HELD: 'C9_NATIVE_POSITIVE_HELD'&gt; is &lt;ReleaseOutcome.C9_NATIVE_POSITIVE_AUTHORIZED: 'C9_NATIVE_POSITIVE_AUTHORIZED'&gt;
+E        +  where &lt;ReleaseOutcome.C9_NATIVE_POSITIVE_HELD: 'C9_NATIVE_POSITIVE_HELD'&gt; = ReleaseGateResult(outcome=&lt;ReleaseOutcome.C9_NATIVE_POSITIVE_HELD: 'C9_NATIVE_POSITIVE_HELD'&gt;, holds=(OwnerHoldForm(ho...performed_action_owner_proved', 'later_action_consumer_bound', 'positive_registry_entries'), evidence_authenticated=()).outcome
+E        +  and   &lt;ReleaseOutcome.C9_NATIVE_POSITIVE_AUTHORIZED: 'C9_NATIVE_POSITIVE_AUTHORIZED'&gt; = ReleaseOutcome.C9_NATIVE_POSITIVE_AUTHORIZED
+
+WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_release_gate.py:64: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_release_gate" name="test_gate_receipt_is_deterministic" time="0.000" /><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_release_gate" name="test_checked_surfaces_cover_all_commissioned_rows" time="0.000" /><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_response_rule_lookup" name="test_production_registry_lookup_returns_rule_absent" time="0.000" /><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_response_rule_lookup" name="test_unverified_issuer_lookup_returns_issuer_unverified" time="0.000" /><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_response_rule_lookup" name="test_test_only_registry_lookup_is_found_but_never_native" time="0.000" /><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_response_rule_lookup" name="test_subject_not_allowed_is_binding_mismatch" time="0.000" /><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_response_rule_lookup" name="test_absent_rule_yields_refused_response_with_readset" time="0.000" /><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_response_rule_lookup" name="test_unverified_rule_yields_held_response" time="0.000" /><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_response_rule_lookup" name="test_found_rule_with_no_enacted_history_is_valid_empty" time="0.000" /><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_response_rule_lookup" name="test_found_rule_with_full_inputs_emits_exactly_one_proposal" time="0.001"><failure message="AssertionError: assert &lt;ResponseStatus.RESPONSE_EFFECTS_VALID_EMPTY: 'RESPONSE_EFFECTS_VALID_EMPTY'&gt; is &lt;ResponseStatus.RESPONSE_COMMITTED: 'RESPONSE_COMMITTED'&gt;&#10; +  where &lt;ResponseStatus.RESPONSE_EFFECTS_VALID_EMPTY: 'RESPONSE_EFFECTS_VALID_EMPTY'&gt; = ResponseResult(status=&lt;ResponseStatus.RESPONSE_EFFECTS_VALID_EMPTY: 'RESPONSE_EFFECTS_VALID_EMPTY'&gt;, event_ref='event-..._ONLY', receipt_hash='', eligible_material_refs=(), declared_history_refs=('h-a', 'h-b'), declared_offer_ref='offer-1').status&#10; +  and   &lt;ResponseStatus.RESPONSE_COMMITTED: 'RESPONSE_COMMITTED'&gt; = ResponseStatus.RESPONSE_COMMITTED">def test_found_rule_with_full_inputs_emits_exactly_one_proposal() -&gt; None:
+        rule = build_response_rule()
+        registry = ResponseRuleRegistry.test_only((rule,))
+        lookup = lookup_rule(
+            registry,
+            authority_id=rule.authority_id,
+            rule_version=rule.rule_version,
+            rule_content_hash=rule.rule_content_hash,
+            subject=ACTOR_ID,
+        )
+        response = evaluate_response(
+            rule_lookup=lookup,
+            event_ref="event-hash",
+            event_time=15,
+            subject=ACTOR_ID,
+            conditioning_readset=("src-1",),
+            actor_history_refs=("h-a", "h-b"),
+            other_person_offer_ref="offer-1",
+            material_opportunity_ref="world-1",
+            prior_response_count=0,
+        )
+&gt;       assert response.status is ResponseStatus.RESPONSE_COMMITTED
+E       AssertionError: assert &lt;ResponseStatus.RESPONSE_EFFECTS_VALID_EMPTY: 'RESPONSE_EFFECTS_VALID_EMPTY'&gt; is &lt;ResponseStatus.RESPONSE_COMMITTED: 'RESPONSE_COMMITTED'&gt;
+E        +  where &lt;ResponseStatus.RESPONSE_EFFECTS_VALID_EMPTY: 'RESPONSE_EFFECTS_VALID_EMPTY'&gt; = ResponseResult(status=&lt;ResponseStatus.RESPONSE_EFFECTS_VALID_EMPTY: 'RESPONSE_EFFECTS_VALID_EMPTY'&gt;, event_ref='event-..._ONLY', receipt_hash='', eligible_material_refs=(), declared_history_refs=('h-a', 'h-b'), declared_offer_ref='offer-1').status
+E        +  and   &lt;ResponseStatus.RESPONSE_COMMITTED: 'RESPONSE_COMMITTED'&gt; = ResponseStatus.RESPONSE_COMMITTED
+
+WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_response_rule_lookup.py:195: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_severance_witnesses" name="test_later_action_consumer_reads_committed_target_state" time="0.009"><failure message="AssertionError: TARGET_RECORD_PREIMAGE_MISSING&#10;assert False&#10; +  where False = CommitReceipt(status='TRANSACTION_ABORTED_ROLLBACK', joint_transaction_id='', admitted_event_ref='7f3c1dbc3165305fbb43...hash='', receipt_hash='', no_mutation=True, target_id='', authorization_hash='', publication_grade='', response_ref='').committed">tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/c9r-wt/WORKER_RETURNS/SOROK-20261019-C9R-WHOLE-ACTOR-BOUNDARY-AND-CONSUMER-REPAIR-R1/runtime/ptmp_a2/test_later_action_consumer_rea0')
+
+    def test_later_action_consumer_reads_committed_target_state(tmp_path) -&gt; None:
+        """Named assertion: the later-action consumer reads the exact committed target state."""
+        store = CandidateStore(tmp_path / "store.sqlite")
+&gt;       _committed_target(store)
+
+WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_severance_witnesses.py:70: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+store = &lt;candidate.transaction.CandidateStore object at 0x1025a83d0&gt;
+proposal_hash = 'proposal-sev'
+
+    def _committed_target(store: CandidateStore, proposal_hash: str = "proposal-sev") -&gt; dict:
+        event = build_event_witness()
+        admitted = store.admit_occurrence(event)
+        from candidate.target_rules import TargetDecision, TargetReason
+        from candidate.canon import seal as _seal
+    
+        decision = TargetDecision(
+            branch=TargetBranch.CREATE,
+            reason=TargetReason.OK,
+            actor_id=ACTOR_ID,
+            state_kind_id="V3MS_PRACTICE",
+            proposal_hash=proposal_hash,
+            record_hash="record-sev",
+            before_target_hash=store.target_state_hash(),
+            after_target_hash="after",
+            readset_refs=("read-1",),
+            permission_ref="grant-sev",
+        )
+        receipt = store.commit(
+            event=admitted,
+            response=_seal({"event_ref": admitted["hash"], "status": "COMMITTED"}),
+            decision=decision,
+            readset_refs=("read-1",),
+        )
+&gt;       assert receipt.committed, receipt.target_reason
+E       AssertionError: TARGET_RECORD_PREIMAGE_MISSING
+E       assert False
+E        +  where False = CommitReceipt(status='TRANSACTION_ABORTED_ROLLBACK', joint_transaction_id='', admitted_event_ref='7f3c1dbc3165305fbb43...hash='', receipt_hash='', no_mutation=True, target_id='', authorization_hash='', publication_grade='', response_ref='').committed
+
+WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_severance_witnesses.py:63: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_severance_witnesses" name="test_response_lookup_consumes_exact_rule_registry_entry" time="0.000" /><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_severance_witnesses" name="test_target_decision_consumes_independent_permission" time="0.001"><failure message="AssertionError: PERMISSION_BINDING_MISMATCH&#10;assert &lt;TargetBranch.DENY: 'DENY'&gt; is &lt;TargetBranch.CREATE: 'CREATE'&gt;&#10; +  where &lt;TargetBranch.DENY: 'DENY'&gt; = TargetDecision(branch=&lt;TargetBranch.DENY: 'DENY'&gt;, reason=&lt;TargetReason.PERMISSION_BINDING_MISMATCH: 'PERMISSION_BINDI...et_id='', record_body=None, authorization_preimage=None, authorization_hash='', publication_grade='', response_hash='').branch&#10; +  and   &lt;TargetBranch.CREATE: 'CREATE'&gt; = TargetBranch.CREATE">tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/c9r-wt/WORKER_RETURNS/SOROK-20261019-C9R-WHOLE-ACTOR-BOUNDARY-AND-CONSUMER-REPAIR-R1/runtime/ptmp_a2/test_target_decision_consumes_0')
+
+    def test_target_decision_consumes_independent_permission(tmp_path) -&gt; None:
+        """Named assertion: CREATE fires only from an independently authenticated permission."""
+        rule = build_response_rule()
+        registry = TargetRuleRegistry.test_only((build_target_rule(rule.rule_content_hash),))
+        permission = make_target_permission(
+            grant_id="grant-sev",
+            issuer_ref=TEST_ONLY_TARGET_ISSUER,
+            actor_id=ACTOR_ID,
+            rule_content_hash=rule.rule_content_hash,
+            before_target_hash="before-sev",
+            response_hash="resp-sev",
+            issued_at=10,
+        )
+        proposal = {
+            "schema": "C9P_TARGET_PROPOSAL@1",
+            "actor_id": ACTOR_ID,
+            "state_kind_id": "V3MS_PRACTICE",
+            "operation": "CREATE",
+            "proposed_effective_time": 15,
+            "semantic_object_ref": "c9p:coordinated_material_inspection",
+            "target_refs": ["c9p:practice"],
+            "causal_parent_refs": ["event-hash", "h-a", "h-b"],
+            "source_update_rule_ref": rule.rule_content_hash,
+            "evaluator_receipts": ["src-1"],
+            "numeric_rule_ref": None,
+            "stochastic_receipt_ref": None,
+        }
+        from candidate.canon import seal as _seal
+    
+        sealed_proposal = _seal(proposal)
+        decision = evaluate_target(
+            registry=registry,
+            proposal=sealed_proposal,
+            permission=permission,
+            actor_id=ACTOR_ID,
+            before_target_hash="before-sev",
+            existing_target_ids=frozenset(),
+            prior_event_hash="event-hash",
+            as_of=20,
+            enacted_history_refs=("h-a", "h-b"),
+            permitted_issuer_refs=frozenset({TEST_ONLY_TARGET_ISSUER}),
+        )
+&gt;       assert decision.branch is TargetBranch.CREATE, decision.reason.value
+E       AssertionError: PERMISSION_BINDING_MISMATCH
+E       assert &lt;TargetBranch.DENY: 'DENY'&gt; is &lt;TargetBranch.CREATE: 'CREATE'&gt;
+E        +  where &lt;TargetBranch.DENY: 'DENY'&gt; = TargetDecision(branch=&lt;TargetBranch.DENY: 'DENY'&gt;, reason=&lt;TargetReason.PERMISSION_BINDING_MISMATCH: 'PERMISSION_BINDI...et_id='', record_body=None, authorization_preimage=None, authorization_hash='', publication_grade='', response_hash='').branch
+E        +  and   &lt;TargetBranch.CREATE: 'CREATE'&gt; = TargetBranch.CREATE
+
+WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_severance_witnesses.py:150: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_severance_witnesses" name="test_conditioning_readset_binds_person_world_sources" time="0.001" /><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_severance_witnesses" name="test_action_admission_binds_performed_action_receipt" time="0.000"><failure message="AssertionError: TARGET_COMMIT_TIME_UNBOUND&#10;assert &lt;AdmissionStatus.REFUSED: 'REFUSED'&gt; is &lt;AdmissionStatus.ADMITTED: 'ADMITTED'&gt;&#10; +  where &lt;AdmissionStatus.REFUSED: 'REFUSED'&gt; = PerformedActionHold(status=&lt;AdmissionStatus.REFUSED: 'REFUSED'&gt;, reason=&lt;AdmissionReason.TARGET_COMMIT_TIME_UNBOUND: '...MMIT_TIME_UNBOUND'&gt;, actor_id='actor-c9p-001', expected_owner_form='OWNER_RECEIPT_WITH_TARGET_COMMIT_TIME', held_at=40).status&#10; +  and   &lt;AdmissionStatus.ADMITTED: 'ADMITTED'&gt; = AdmissionStatus.ADMITTED">def test_action_admission_binds_performed_action_receipt() -&gt; None:
+        """Named assertion: performed-action admission consumes the exact owner receipt."""
+        receipt = make_performed_action_receipt(
+            actor_id=ACTOR_ID,
+            act="inspect_with_tool",
+            actuator_ref="TEST_ONLY_ACTUATOR",
+            occurrence_ref="TEST_ONLY_OCCURRENCE_E2",
+            action_time=30,
+            consumed_state_hash="state-hash",
+        )
+        result = admit_performed_action(
+            owner_receipt=receipt,
+            expected_actor_id=ACTOR_ID,
+            expected_act="inspect_with_tool",
+            consumed_state_hash="state-hash",
+            as_of=40,
+        )
+&gt;       assert result.status is AdmissionStatus.ADMITTED, result.reason.value
+E       AssertionError: TARGET_COMMIT_TIME_UNBOUND
+E       assert &lt;AdmissionStatus.REFUSED: 'REFUSED'&gt; is &lt;AdmissionStatus.ADMITTED: 'ADMITTED'&gt;
+E        +  where &lt;AdmissionStatus.REFUSED: 'REFUSED'&gt; = PerformedActionHold(status=&lt;AdmissionStatus.REFUSED: 'REFUSED'&gt;, reason=&lt;AdmissionReason.TARGET_COMMIT_TIME_UNBOUND: '...MMIT_TIME_UNBOUND'&gt;, actor_id='actor-c9p-001', expected_owner_form='OWNER_RECEIPT_WITH_TARGET_COMMIT_TIME', held_at=40).status
+E        +  and   &lt;AdmissionStatus.ADMITTED: 'ADMITTED'&gt; = AdmissionStatus.ADMITTED
+
+WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_severance_witnesses.py:184: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_severance_witnesses" name="test_transaction_readset_binds_admitted_event_witness" time="0.013" /><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_target_rule_branches" name="test_production_registry_denies_target_rule_absent" time="0.001" /><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_target_rule_branches" name="test_self_issued_permission_is_denied" time="0.000" /><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_target_rule_branches" name="test_missing_permission_is_denied" time="0.000" /><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_target_rule_branches" name="test_foreign_owner_permission_is_denied" time="0.001"><failure message="AssertionError: assert &lt;TargetReason.PERMISSION_ISSUER_UNVERIFIED: 'PERMISSION_ISSUER_UNVERIFIED'&gt; is &lt;TargetReason.PERMISSION_FOREIGN_OWNER: 'PERMISSION_FOREIGN_OWNER'&gt;&#10; +  where &lt;TargetReason.PERMISSION_ISSUER_UNVERIFIED: 'PERMISSION_ISSUER_UNVERIFIED'&gt; = TargetDecision(branch=&lt;TargetBranch.DENY: 'DENY'&gt;, reason=&lt;TargetReason.PERMISSION_ISSUER_UNVERIFIED: 'PERMISSION_ISSU...et_id='', record_body=None, authorization_preimage=None, authorization_hash='', publication_grade='', response_hash='').reason&#10; +  and   &lt;TargetReason.PERMISSION_FOREIGN_OWNER: 'PERMISSION_FOREIGN_OWNER'&gt; = TargetReason.PERMISSION_FOREIGN_OWNER">def test_foreign_owner_permission_is_denied() -&gt; None:
+        rule = build_response_rule()
+        registry = TargetRuleRegistry.test_only((build_target_rule(rule.rule_content_hash),))
+        permission = make_target_permission(
+            grant_id="g1",
+            issuer_ref="FOREIGN_ISSUER",
+            actor_id=ACTOR_ID,
+            rule_content_hash=rule.rule_content_hash,
+            before_target_hash="before-hash",
+            response_hash="r1",
+            issued_at=10,
+        )
+        decision = _decision(
+            registry,
+            _proposal(rule.rule_content_hash),
+            permission,
+        )
+        assert decision.branch is TargetBranch.DENY
+&gt;       assert decision.reason is TargetReason.PERMISSION_FOREIGN_OWNER
+E       AssertionError: assert &lt;TargetReason.PERMISSION_ISSUER_UNVERIFIED: 'PERMISSION_ISSUER_UNVERIFIED'&gt; is &lt;TargetReason.PERMISSION_FOREIGN_OWNER: 'PERMISSION_FOREIGN_OWNER'&gt;
+E        +  where &lt;TargetReason.PERMISSION_ISSUER_UNVERIFIED: 'PERMISSION_ISSUER_UNVERIFIED'&gt; = TargetDecision(branch=&lt;TargetBranch.DENY: 'DENY'&gt;, reason=&lt;TargetReason.PERMISSION_ISSUER_UNVERIFIED: 'PERMISSION_ISSU...et_id='', record_body=None, authorization_preimage=None, authorization_hash='', publication_grade='', response_hash='').reason
+E        +  and   &lt;TargetReason.PERMISSION_FOREIGN_OWNER: 'PERMISSION_FOREIGN_OWNER'&gt; = TargetReason.PERMISSION_FOREIGN_OWNER
+
+WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_target_rule_branches.py:108: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_target_rule_branches" name="test_revoked_permission_is_denied" time="0.000" /><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_target_rule_branches" name="test_expired_permission_is_denied" time="0.000" /><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_target_rule_branches" name="test_stale_prestate_conflict_is_denied" time="0.001"><failure message="AssertionError: assert &lt;TargetReason.PERMISSION_BINDING_MISMATCH: 'PERMISSION_BINDING_MISMATCH'&gt; is &lt;TargetReason.PRESTATE_CONFLICT: 'PRESTATE_CONFLICT'&gt;&#10; +  where &lt;TargetReason.PERMISSION_BINDING_MISMATCH: 'PERMISSION_BINDING_MISMATCH'&gt; = TargetDecision(branch=&lt;TargetBranch.DENY: 'DENY'&gt;, reason=&lt;TargetReason.PERMISSION_BINDING_MISMATCH: 'PERMISSION_BINDI...et_id='', record_body=None, authorization_preimage=None, authorization_hash='', publication_grade='', response_hash='').reason&#10; +  and   &lt;TargetReason.PRESTATE_CONFLICT: 'PRESTATE_CONFLICT'&gt; = TargetReason.PRESTATE_CONFLICT">def test_stale_prestate_conflict_is_denied() -&gt; None:
+        rule = build_response_rule()
+        registry = TargetRuleRegistry.test_only((build_target_rule(rule.rule_content_hash),))
+        permission = make_target_permission(
+            grant_id="g1",
+            issuer_ref=TEST_ONLY_TARGET_ISSUER,
+            actor_id=ACTOR_ID,
+            rule_content_hash=rule.rule_content_hash,
+            before_target_hash="WRONG_BEFORE",
+            response_hash="r1",
+            issued_at=10,
+        )
+        decision = _decision(
+            registry,
+            _proposal(rule.rule_content_hash),
+            permission,
+        )
+        assert decision.branch is TargetBranch.DENY
+&gt;       assert decision.reason is TargetReason.PRESTATE_CONFLICT
+E       AssertionError: assert &lt;TargetReason.PERMISSION_BINDING_MISMATCH: 'PERMISSION_BINDING_MISMATCH'&gt; is &lt;TargetReason.PRESTATE_CONFLICT: 'PRESTATE_CONFLICT'&gt;
+E        +  where &lt;TargetReason.PERMISSION_BINDING_MISMATCH: 'PERMISSION_BINDING_MISMATCH'&gt; = TargetDecision(branch=&lt;TargetBranch.DENY: 'DENY'&gt;, reason=&lt;TargetReason.PERMISSION_BINDING_MISMATCH: 'PERMISSION_BINDI...et_id='', record_body=None, authorization_preimage=None, authorization_hash='', publication_grade='', response_hash='').reason
+E        +  and   &lt;TargetReason.PRESTATE_CONFLICT: 'PRESTATE_CONFLICT'&gt; = TargetReason.PRESTATE_CONFLICT
+
+WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_target_rule_branches.py:174: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_target_rule_branches" name="test_insufficient_enacted_history_yields_no_change" time="0.001"><failure message="AssertionError: assert &lt;TargetBranch.DENY: 'DENY'&gt; is &lt;TargetBranch.NO_CHANGE: 'NO_CHANGE'&gt;&#10; +  where &lt;TargetBranch.DENY: 'DENY'&gt; = TargetDecision(branch=&lt;TargetBranch.DENY: 'DENY'&gt;, reason=&lt;TargetReason.PERMISSION_BINDING_MISMATCH: 'PERMISSION_BINDI...et_id='', record_body=None, authorization_preimage=None, authorization_hash='', publication_grade='', response_hash='').branch&#10; +  and   &lt;TargetBranch.NO_CHANGE: 'NO_CHANGE'&gt; = TargetBranch.NO_CHANGE">def test_insufficient_enacted_history_yields_no_change() -&gt; None:
+        rule = build_response_rule()
+        registry = TargetRuleRegistry.test_only((build_target_rule(rule.rule_content_hash),))
+        permission = make_target_permission(
+            grant_id="g1",
+            issuer_ref=TEST_ONLY_TARGET_ISSUER,
+            actor_id=ACTOR_ID,
+            rule_content_hash=rule.rule_content_hash,
+            before_target_hash="before-hash",
+            response_hash="r1",
+            issued_at=10,
+        )
+        decision = _decision(
+            registry,
+            _proposal(rule.rule_content_hash),
+            permission,
+            enacted_history_refs=(),
+        )
+&gt;       assert decision.branch is TargetBranch.NO_CHANGE
+E       AssertionError: assert &lt;TargetBranch.DENY: 'DENY'&gt; is &lt;TargetBranch.NO_CHANGE: 'NO_CHANGE'&gt;
+E        +  where &lt;TargetBranch.DENY: 'DENY'&gt; = TargetDecision(branch=&lt;TargetBranch.DENY: 'DENY'&gt;, reason=&lt;TargetReason.PERMISSION_BINDING_MISMATCH: 'PERMISSION_BINDI...et_id='', record_body=None, authorization_preimage=None, authorization_hash='', publication_grade='', response_hash='').branch
+E        +  and   &lt;TargetBranch.NO_CHANGE: 'NO_CHANGE'&gt; = TargetBranch.NO_CHANGE
+
+WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_target_rule_branches.py:195: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_target_rule_branches" name="test_valid_grant_with_enacted_history_yields_create" time="0.001"><failure message="AssertionError: assert &lt;TargetBranch.DENY: 'DENY'&gt; is &lt;TargetBranch.CREATE: 'CREATE'&gt;&#10; +  where &lt;TargetBranch.DENY: 'DENY'&gt; = TargetDecision(branch=&lt;TargetBranch.DENY: 'DENY'&gt;, reason=&lt;TargetReason.PERMISSION_BINDING_MISMATCH: 'PERMISSION_BINDI...et_id='', record_body=None, authorization_preimage=None, authorization_hash='', publication_grade='', response_hash='').branch&#10; +  and   &lt;TargetBranch.CREATE: 'CREATE'&gt; = TargetBranch.CREATE">def test_valid_grant_with_enacted_history_yields_create() -&gt; None:
+        rule = build_response_rule()
+        registry = TargetRuleRegistry.test_only((build_target_rule(rule.rule_content_hash),))
+        permission = make_target_permission(
+            grant_id="g1",
+            issuer_ref=TEST_ONLY_TARGET_ISSUER,
+            actor_id=ACTOR_ID,
+            rule_content_hash=rule.rule_content_hash,
+            before_target_hash="before-hash",
+            response_hash="r1",
+            issued_at=10,
+        )
+        decision = _decision(
+            registry,
+            _proposal(rule.rule_content_hash),
+            permission,
+        )
+&gt;       assert decision.branch is TargetBranch.CREATE
+E       AssertionError: assert &lt;TargetBranch.DENY: 'DENY'&gt; is &lt;TargetBranch.CREATE: 'CREATE'&gt;
+E        +  where &lt;TargetBranch.DENY: 'DENY'&gt; = TargetDecision(branch=&lt;TargetBranch.DENY: 'DENY'&gt;, reason=&lt;TargetReason.PERMISSION_BINDING_MISMATCH: 'PERMISSION_BINDI...et_id='', record_body=None, authorization_preimage=None, authorization_hash='', publication_grade='', response_hash='').branch
+E        +  and   &lt;TargetBranch.CREATE: 'CREATE'&gt; = TargetBranch.CREATE
+
+WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_target_rule_branches.py:217: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_target_rule_branches" name="test_no_proposal_yields_no_change" time="0.000" /><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_target_rule_branches" name="test_unissued_rule_yields_target_rule_unissued" time="0.001" /><testcase classname="WORKER_RETURNS.SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1.tests.test_target_rule_branches" name="test_response_to_target_end_to_end_create" time="0.001"><failure message="AssertionError: assert ()&#10; +  where () = ResponseResult(status=&lt;ResponseStatus.RESPONSE_EFFECTS_VALID_EMPTY: 'RESPONSE_EFFECTS_VALID_EMPTY'&gt;, event_ref='event-..._ONLY', receipt_hash='', eligible_material_refs=(), declared_history_refs=('h-a', 'h-b'), declared_offer_ref='offer-1').target_proposals">def test_response_to_target_end_to_end_create() -&gt; None:
+        rule = build_response_rule()
+        response_registry = ResponseRuleRegistry.test_only((rule,))
+        lookup = lookup_rule(
+            response_registry,
+            authority_id=rule.authority_id,
+            rule_version=rule.rule_version,
+            rule_content_hash=rule.rule_content_hash,
+            subject=ACTOR_ID,
+        )
+        response = evaluate_response(
+            rule_lookup=lookup,
+            event_ref=EVENT_HASH,
+            event_time=15,
+            subject=ACTOR_ID,
+            conditioning_readset=("src-1",),
+            actor_history_refs=("h-a", "h-b"),
+            other_person_offer_ref="offer-1",
+            material_opportunity_ref="world-1",
+            prior_response_count=0,
+        )
+&gt;       assert response.target_proposals
+E       AssertionError: assert ()
+E        +  where () = ResponseResult(status=&lt;ResponseStatus.RESPONSE_EFFECTS_VALID_EMPTY: 'RESPONSE_EFFECTS_VALID_EMPTY'&gt;, event_ref='event-..._ONLY', receipt_hash='', eligible_material_refs=(), declared_history_refs=('h-a', 'h-b'), declared_offer_ref='offer-1').target_proposals
+
+WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_target_rule_branches.py:270: AssertionError</failure></testcase></testsuite></testsuites>

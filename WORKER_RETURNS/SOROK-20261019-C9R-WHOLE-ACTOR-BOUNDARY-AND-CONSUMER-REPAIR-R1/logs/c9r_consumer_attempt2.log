@@ -1,0 +1,53 @@
+...F......                                                               [100%]
+=================================== FAILURES ===================================
+__________________ test_removed_enacted_source_cannot_create ___________________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/c9r-wt/WORKER_RETURNS/SOROK-20261019-C9R-WHOLE-ACTOR-BOUNDARY-AND-CONSUMER-REPAIR-R1/runtime/ptmp_c2/test_removed_enacted_source_ca0')
+
+    def test_removed_enacted_source_cannot_create(tmp_path):
+        with CandidateStore(tmp_path / "removed.sqlite") as store:
+            rule = _rule()
+            response_hash = _response_receipt_hash(store)
+            permission = _permission(store, response_hash=response_hash)
+            lookup = lookup_rule(
+                ResponseRuleRegistry.test_only((rule,)),
+                authority_id=rule.authority_id,
+                rule_version=rule.rule_version,
+                rule_content_hash=rule.rule_content_hash,
+                subject=A,
+            )
+            conditioning = bind_conditioning(subject=A, sources=_sources(), as_of=20)
+            response = evaluate_response(
+                rule_lookup=lookup,
+                event_ref=_event_ref(),
+                event_time=15,
+                subject=A,
+                conditioning_readset=conditioning.readset_refs,
+                actor_history_refs=HISTORY,
+                other_person_offer_ref=OFFER,
+                material_opportunity_ref=MATERIAL,
+                prior_response_count=0,
+                material_eligible=True,
+                eligible_material_refs=(MATERIAL,),
+            )
+            baseline = evaluate_target(
+                registry=TargetRuleRegistry.test_only((_target_rule(rule),)),
+                proposal=response.target_proposals[0],
+                permission=permission,
+                actor_id=A,
+                before_target_hash=store.target_state_hash(),
+                existing_target_ids=frozenset(),
+                prior_event_hash=_event_ref(),
+                as_of=20,
+                enacted_history_refs=HISTORY,
+                permitted_issuer_refs=frozenset({ISSUER}),
+            )
+>           assert baseline.branch is TargetBranch.CREATE
+E           AssertionError: assert <TargetBranch.DENY: 'DENY'> is <TargetBranch.CREATE: 'CREATE'>
+E            +  where <TargetBranch.DENY: 'DENY'> = TargetDecision(branch=<TargetBranch.DENY: 'DENY'>, reason=<TargetReason.PERMISSION_BINDING_MISMATCH: 'PERMISSION_BINDI...et_id='', record_body=None, authorization_preimage=None, authorization_hash='', publication_grade='', response_hash='').branch
+E            +  and   <TargetBranch.CREATE: 'CREATE'> = TargetBranch.CREATE
+
+tests/test_c9r_consumer.py:318: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_c9r_consumer.py::test_removed_enacted_source_cannot_create
+1 failed, 9 passed in 0.74s

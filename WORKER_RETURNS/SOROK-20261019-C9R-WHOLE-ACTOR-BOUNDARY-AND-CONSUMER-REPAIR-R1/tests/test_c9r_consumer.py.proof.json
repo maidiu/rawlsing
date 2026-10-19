@@ -1,0 +1,71 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "claims": [
+    {
+      "claim_id": "C9R_CONSUMER_READS_EXACT_COMMITTED_SEMANTIC_RECORD",
+      "actual_consumer": "candidate.CandidateStore.read_target_state republished full sealed record consumed by candidate.later_action.read_target_for_later_action",
+      "claimed_dependency": "evaluated sealed semantic target preimage -> atomic commit stores full record -> cold read returns exact semantic object/effective time/parents",
+      "positive_node": "tests/test_c9r_consumer.py::test_full_e1_to_e2_consumer_path",
+      "fault": {
+        "path": "candidate/transaction.py",
+        "old": "                stored = dict(record)",
+        "new": "                stored = {\"record_hash\": decision.record_hash}"
+      }
+    },
+    {
+      "claim_id": "C9R_CONSUMER_BODY_BOUND_TO_COMMITTED_DIGEST",
+      "actual_consumer": "candidate.later_action.read_target_for_later_action independent body/digest cross-check",
+      "claimed_dependency": "consumer-returned body -> digest(body) equals returned state hash -> independent committed row equality",
+      "positive_node": "tests/test_c9r_consumer.py::test_substituted_consumer_body_is_refused",
+      "fault": {
+        "path": "candidate/later_action.py",
+        "old": "    if (\n        not state_hash\n        or digest(record) != state_hash",
+        "new": "    if False and (\n        not state_hash\n        or digest(record) != state_hash"
+      }
+    },
+    {
+      "claim_id": "C9R_PERFORMED_ACTION_CONSUMED_STATE_BOUND",
+      "actual_consumer": "candidate.action_admission.admit_performed_action",
+      "claimed_dependency": "owner performed-action receipt consumed_state_hash -> expected committed state hash -> typed refusal on mismatch",
+      "positive_node": "tests/test_c9r_consumer.py::test_mismatched_performed_action_is_refused",
+      "fault": {
+        "path": "candidate/action_admission.py",
+        "old": "    if not consumed_state_hash or receipt_consumed != consumed_state_hash:",
+        "new": "    if not consumed_state_hash:"
+      }
+    },
+    {
+      "claim_id": "C9R_ENACTED_SOURCE_REQUIRED_FOR_CREATE",
+      "actual_consumer": "candidate.target_rules.evaluate_target enacted-history qualification",
+      "claimed_dependency": "declared enacted source refs -> target CREATE branch -> removal yields NO_CHANGE",
+      "positive_node": "tests/test_c9r_consumer.py::test_removed_enacted_source_cannot_create",
+      "fault": {
+        "path": "candidate/target_rules.py",
+        "old": "    if not isinstance(refs, (list, tuple)) or len(refs) < 2:",
+        "new": "    if not isinstance(refs, (list, tuple)):"
+      }
+    },
+    {
+      "claim_id": "C9R_NATIVE_POSITIVE_HELD_UNDER_GUARD_DENIAL",
+      "actual_consumer": "candidate.target_rules.evaluate_target native-positive admissibility gate",
+      "claimed_dependency": "native positive claim + guard denial -> typed NATIVE_ADMISSIBILITY_HELD -> no published native target",
+      "positive_node": "tests/test_c9r_consumer.py::test_native_guard_denial_holds_native_positive_claim",
+      "fault": {
+        "path": "candidate/target_rules.py",
+        "old": "    if native_positive_claim:",
+        "new": "    if False:"
+      }
+    },
+    {
+      "claim_id": "C9R_REVOCATION_REVALIDATED_AT_COMMIT",
+      "actual_consumer": "candidate.transaction.CandidateStore._revalidate commit-time authorization revalidation",
+      "claimed_dependency": "decision authorization preimage -> live permission revocation -> atomic commit refusal",
+      "positive_node": "tests/test_c9r_consumer.py::test_revoked_permission_between_proposal_and_commit_is_refused",
+      "fault": {
+        "path": "candidate/transaction.py",
+        "old": "        if permission.get(\"revoked\"):",
+        "new": "        if False:"
+      }
+    }
+  ]
+}

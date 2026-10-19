@@ -1,0 +1,32 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+__________________ test_substituted_consumer_body_is_refused ___________________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-1019/test_substituted_consumer_body0')
+
+    def test_substituted_consumer_body_is_refused(tmp_path):
+        with CandidateStore(tmp_path / "substituted.sqlite") as store:
+            result = _run(store)
+            target_id = result.decision.target_id
+    
+            class Substituted(LaterActionConsumer):
+                def read_target(self, store, middle_state_id, as_of):
+                    real = store.read_target_state(middle_state_id)
+                    return {"actor_id": "TEST_ONLY_OTHER", "invented_practice": True}, digest(real)
+    
+            read = read_target_for_later_action(
+                store,
+                consumer=Substituted("TEST_ONLY_SUBSTITUTED", "committed_target_state"),
+                middle_state_id=target_id,
+                as_of=30,
+                commit_time=15,
+            )
+>           assert read.status is LaterActionStatus.CONSUMER_READSET_MISMATCH
+E           AssertionError: assert <LaterActionStatus.ACTION_ADMISSION_HELD: 'ACTION_ADMISSION_HELD'> is <LaterActionStatus.CONSUMER_READSET_MISMATCH: 'CONSUMER_READSET_MISMATCH'>
+E            +  where <LaterActionStatus.ACTION_ADMISSION_HELD: 'ACTION_ADMISSION_HELD'> = LaterActionRead(status=<LaterActionStatus.ACTION_ADMISSION_HELD: 'ACTION_ADMISSION_HELD'>, consumer_id='TEST_ONLY_SUBS...eipt_hash='3e6fa4174438ead8e74a41791f5bc78d9595ab407cb2a1b82fcdcc255bbe47ce', reason='PERFORMED_ACTION_OWNER_UNPROVED').status
+E            +  and   <LaterActionStatus.CONSUMER_READSET_MISMATCH: 'CONSUMER_READSET_MISMATCH'> = LaterActionStatus.CONSUMER_READSET_MISMATCH
+
+tests/test_c9r_consumer.py:413: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_c9r_consumer.py::test_substituted_consumer_body_is_refused
+1 failed in 0.12s

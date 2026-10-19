@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="0.139" timestamp="2026-10-19T17:41:27.622169-04:00" hostname="Matthews-MBP.lan"><testcase classname="tests.test_c9r_consumer" name="test_revoked_permission_between_proposal_and_commit_is_refused" time="0.031"><failure message="AssertionError: assert not True&#10; +  where True = CommitReceipt(status='COMMITTED', joint_transaction_id='1cfb95e331dc5a7993e259136c8326e6f7f17be58196b088fd65bb04772efd...rade='TEST_ONLY_SOURCEFREE_TECHNICAL', response_ref='9980b5cad9edc76a7ee2e8221746d400c9be44bd433c1cabdeadccf7a3abaf46').committed">tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-1031/test_revoked_permission_betwee0')
+
+    def test_revoked_permission_between_proposal_and_commit_is_refused(tmp_path):
+        with CandidateStore(tmp_path / "revoked_probe.sqlite") as probe:
+            result = _run(probe)
+            assert result.receipt.committed
+            decision = result.decision
+        with CandidateStore(tmp_path / "revoked.sqlite") as store:
+            preimage = dict(decision.authorization_preimage)
+            revoked_permission = seal(
+                {
+                    **{k: v for k, v in preimage["permission"].items() if k != "hash"},
+                    "revoked": True,
+                }
+            )
+            preimage["permission"] = revoked_permission
+            resealed = seal({k: v for k, v in preimage.items() if k != "hash"})
+            forged = replace(
+                decision,
+                authorization_preimage=resealed,
+                authorization_hash=resealed["hash"],
+            )
+            store.admit_occurrence(_event())
+            receipt = store.commit(
+                event=_event(),
+                response=seal(
+                    {
+                        "event_ref": _event_ref(),
+                        "receipt_hash": decision.response_hash,
+                    }
+                ),
+                decision=forged,
+                readset_refs=decision.readset_refs,
+            )
+&gt;           assert not receipt.committed
+E           AssertionError: assert not True
+E            +  where True = CommitReceipt(status='COMMITTED', joint_transaction_id='1cfb95e331dc5a7993e259136c8326e6f7f17be58196b088fd65bb04772efd...rade='TEST_ONLY_SOURCEFREE_TECHNICAL', response_ref='9980b5cad9edc76a7ee2e8221746d400c9be44bd433c1cabdeadccf7a3abaf46').committed
+
+tests/test_c9r_consumer.py:393: AssertionError</failure></testcase></testsuite></testsuites>

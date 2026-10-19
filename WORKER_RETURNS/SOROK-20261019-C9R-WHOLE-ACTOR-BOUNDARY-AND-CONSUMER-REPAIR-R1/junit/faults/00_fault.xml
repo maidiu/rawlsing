@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="0.125" timestamp="2026-10-19T17:41:22.837510-04:00" hostname="Matthews-MBP.lan"><testcase classname="tests.test_c9r_consumer" name="test_full_e1_to_e2_consumer_path" time="0.022"><failure message="AssertionError: assert None == 'c9p:coordinated_material_inspection'&#10; +  where None = &lt;built-in method get of dict object at 0x10595bd40&gt;('semantic_object_ref')&#10; +    where &lt;built-in method get of dict object at 0x10595bd40&gt; = {'record_hash': 'df4788344e30cb3bb00518394e731c8d418c44f7a3c962fde1dc989a74ce745c', 'record_preimage': {'actor_id': 'T...reation_rule_key': ['TEST_ONLY_CAN011', '1', 'b9efddad61b27bae918149af334cee8bcc1881c49f9119fc095925506d8bb4ef'], ...}}.get">tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-1016/test_full_e1_to_e2_consumer_pa0')
+
+    def test_full_e1_to_e2_consumer_path(tmp_path):
+        path = tmp_path / "consumer.sqlite"
+        with CandidateStore(path) as store:
+            first = _run(store)
+            assert first.receipt.committed
+            assert first.decision.branch is TargetBranch.CREATE
+            target_id = first.decision.target_id
+            committed = store.read_target_state(target_id)
+            assert committed is not None
+&gt;           assert committed.get("semantic_object_ref") == "c9p:coordinated_material_inspection"
+E           AssertionError: assert None == 'c9p:coordinated_material_inspection'
+E            +  where None = &lt;built-in method get of dict object at 0x10595bd40&gt;('semantic_object_ref')
+E            +    where &lt;built-in method get of dict object at 0x10595bd40&gt; = {'record_hash': 'df4788344e30cb3bb00518394e731c8d418c44f7a3c962fde1dc989a74ce745c', 'record_preimage': {'actor_id': 'T...reation_rule_key': ['TEST_ONLY_CAN011', '1', 'b9efddad61b27bae918149af334cee8bcc1881c49f9119fc095925506d8bb4ef'], ...}}.get
+
+tests/test_c9r_consumer.py:198: AssertionError</failure></testcase></testsuite></testsuites>

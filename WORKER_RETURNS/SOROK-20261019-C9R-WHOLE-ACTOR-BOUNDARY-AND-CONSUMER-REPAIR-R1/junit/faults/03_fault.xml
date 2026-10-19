@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="0.125" timestamp="2026-10-19T17:41:25.695467-04:00" hostname="Matthews-MBP.lan"><testcase classname="tests.test_c9r_consumer" name="test_removed_enacted_source_cannot_create" time="0.018"><failure message="AssertionError: assert &lt;TargetBranch.CREATE: 'CREATE'&gt; is &lt;TargetBranch.NO_CHANGE: 'NO_CHANGE'&gt;&#10; +  where &lt;TargetBranch.CREATE: 'CREATE'&gt; = TargetDecision(branch=&lt;TargetBranch.CREATE: 'CREATE'&gt;, reason=&lt;TargetReason.OK: 'OK'&gt;, actor_id='TEST_ONLY_C9R_A', sta...ade='TEST_ONLY_SOURCEFREE_TECHNICAL', response_hash='6c56052b69825bc4d0509cc1315b9ee62ee228e54116868b8f44cea9d8a8639f').branch&#10; +  and   &lt;TargetBranch.NO_CHANGE: 'NO_CHANGE'&gt; = TargetBranch.NO_CHANGE">tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-1025/test_removed_enacted_source_ca0')
+
+    def test_removed_enacted_source_cannot_create(tmp_path):
+        with CandidateStore(tmp_path / "removed.sqlite") as store:
+            rule = _rule()
+            response_hash = _response_receipt_hash(store)
+            permission = _permission(store, response_hash=response_hash)
+            lookup = lookup_rule(
+                ResponseRuleRegistry.test_only((rule,)),
+                authority_id=rule.authority_id,
+                rule_version=rule.rule_version,
+                rule_content_hash=rule.rule_content_hash,
+                subject=A,
+            )
+            conditioning = bind_conditioning(subject=A, sources=_sources(), as_of=20)
+            response = evaluate_response(
+                rule_lookup=lookup,
+                event_ref=_event_ref(),
+                event_time=15,
+                subject=A,
+                conditioning_readset=conditioning.readset_refs,
+                actor_history_refs=HISTORY,
+                other_person_offer_ref=OFFER,
+                material_opportunity_ref=MATERIAL,
+                prior_response_count=0,
+                material_eligible=True,
+                eligible_material_refs=(MATERIAL,),
+            )
+            baseline = evaluate_target(
+                registry=TargetRuleRegistry.test_only((_target_rule(rule),)),
+                proposal=response.target_proposals[0],
+                permission=permission,
+                actor_id=A,
+                before_target_hash=store.target_state_hash(),
+                existing_target_ids=frozenset(),
+                prior_event_hash=_event_ref(),
+                as_of=20,
+                enacted_history_refs=HISTORY,
+                permitted_issuer_refs=frozenset({ISSUER}),
+                response_hash=response_hash,
+            )
+            assert baseline.branch is TargetBranch.CREATE
+            removed = evaluate_target(
+                registry=TargetRuleRegistry.test_only((_target_rule(rule),)),
+                proposal=response.target_proposals[0],
+                permission=permission,
+                actor_id=A,
+                before_target_hash=store.target_state_hash(),
+                existing_target_ids=frozenset(),
+                prior_event_hash=_event_ref(),
+                as_of=20,
+                enacted_history_refs=(),
+                permitted_issuer_refs=frozenset({ISSUER}),
+                response_hash=response_hash,
+            )
+&gt;           assert removed.branch is TargetBranch.NO_CHANGE
+E           AssertionError: assert &lt;TargetBranch.CREATE: 'CREATE'&gt; is &lt;TargetBranch.NO_CHANGE: 'NO_CHANGE'&gt;
+E            +  where &lt;TargetBranch.CREATE: 'CREATE'&gt; = TargetDecision(branch=&lt;TargetBranch.CREATE: 'CREATE'&gt;, reason=&lt;TargetReason.OK: 'OK'&gt;, actor_id='TEST_ONLY_C9R_A', sta...ade='TEST_ONLY_SOURCEFREE_TECHNICAL', response_hash='6c56052b69825bc4d0509cc1315b9ee62ee228e54116868b8f44cea9d8a8639f').branch
+E            +  and   &lt;TargetBranch.NO_CHANGE: 'NO_CHANGE'&gt; = TargetBranch.NO_CHANGE
+
+tests/test_c9r_consumer.py:334: AssertionError</failure></testcase></testsuite></testsuites>

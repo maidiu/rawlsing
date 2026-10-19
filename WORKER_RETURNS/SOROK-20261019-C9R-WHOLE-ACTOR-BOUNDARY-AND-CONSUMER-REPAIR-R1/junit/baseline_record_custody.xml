@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="3" skipped="0" tests="3" time="0.139" timestamp="2026-10-19T17:21:36.295867-04:00" hostname="Matthews-MBP.lan"><testcase classname="review.test_record_custody" name="test_committed_semantic_record_survives_cold_reopen" time="0.020"><failure message="AssertionError: assert None == 'c9p:coordinated_material_inspection'&#10; +  where None = &lt;built-in method get of dict object at 0x10601d440&gt;('semantic_object_ref')&#10; +    where &lt;built-in method get of dict object at 0x10601d440&gt; = {'actor_id': 'TEST_ONLY_REVIEW_A', 'after_target_hash': '63a5c99b1138130e37457e1731ad8b239b16c869a4a2ca2fead7e17ed7c34...d8e11ba873c2f11161202b945', 'middle_state_id': 'fbc4cdc9ecb5b05612ec21daaf642ffa776a49bf77473aa6556b07840675a58b', ...}.get">tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/c9r-wt/WORKER_RETURNS/SOROK-20261019-C9R-WHOLE-ACTOR-BOUNDARY-AND-CONSUMER-REPAIR-R1/runtime/ptmp_custody/test_committed_semantic_record0')
+
+    def test_committed_semantic_record_survives_cold_reopen(tmp_path):
+     p=tmp_path/'semantic.sqlite'
+     with CandidateStore(p) as s:
+      r=run(s);key=r.decision.proposal_hash
+     with CandidateStore(p) as s:
+      record=s.read_target_state(key)
+&gt;     assert record.get('semantic_object_ref')=='c9p:coordinated_material_inspection'
+E     AssertionError: assert None == 'c9p:coordinated_material_inspection'
+E      +  where None = &lt;built-in method get of dict object at 0x10601d440&gt;('semantic_object_ref')
+E      +    where &lt;built-in method get of dict object at 0x10601d440&gt; = {'actor_id': 'TEST_ONLY_REVIEW_A', 'after_target_hash': '63a5c99b1138130e37457e1731ad8b239b16c869a4a2ca2fead7e17ed7c34...d8e11ba873c2f11161202b945', 'middle_state_id': 'fbc4cdc9ecb5b05612ec21daaf642ffa776a49bf77473aa6556b07840675a58b', ...}.get
+
+review/test_record_custody.py:10: AssertionError</failure></testcase><testcase classname="review.test_record_custody" name="test_explicit_validated_target_identity_is_committed_identity" time="0.010"><failure message="AssertionError: assert None is not None&#10; +  where None = read_target_state('TEST_ONLY_EXPLICIT_TARGET')&#10; +    where read_target_state = &lt;candidate.transaction.CandidateStore object at 0x10601f790&gt;.read_target_state">tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/c9r-wt/WORKER_RETURNS/SOROK-20261019-C9R-WHOLE-ACTOR-BOUNDARY-AND-CONSUMER-REPAIR-R1/runtime/ptmp_custody/test_explicit_validated_target0')
+
+    def test_explicit_validated_target_identity_is_committed_identity(tmp_path):
+     with CandidateStore(tmp_path/'identity.sqlite') as s:
+      args,resp,_=decide(s);proposal=reseal(resp.target_proposals[0],target_middle_state_id='TEST_ONLY_EXPLICIT_TARGET')
+      d=evaluate_target(registry=args['target_registry'],proposal=proposal,permission=args['target_permission'],actor_id=A,before_target_hash=s.target_state_hash(),existing_target_ids=frozenset(),prior_event_hash=event()['hash'],as_of=20,enacted_history_refs=('TEST_ONLY_H1','TEST_ONLY_H2'),permitted_issuer_refs=frozenset({ISSUER}))
+      assert d.branch is TargetBranch.CREATE
+      s.admit_occurrence(args['event_raw'])
+      receipt=s.commit(event=args['event_raw'],response=seal({'event_ref':args['event_raw']['hash']}),decision=d,readset_refs=d.readset_refs)
+      assert receipt.committed
+&gt;     assert s.read_target_state('TEST_ONLY_EXPLICIT_TARGET') is not None
+E     AssertionError: assert None is not None
+E      +  where None = read_target_state('TEST_ONLY_EXPLICIT_TARGET')
+E      +    where read_target_state = &lt;candidate.transaction.CandidateStore object at 0x10601f790&gt;.read_target_state
+
+review/test_record_custody.py:22: AssertionError</failure></testcase><testcase classname="review.test_record_custody" name="test_fabricated_decision_cannot_bypass_target_owner" time="0.010"><failure message="AssertionError: assert (not True or not frozenset({'INVENTED_PROPOSAL'}))&#10; +  where True = CommitReceipt(status='COMMITTED', joint_transaction_id='a8ed55c3ea7cf67a1fd5a306de8fb3a0197563b581674d8d691a1bbfec27c0...='INVENTED_RECORD', receipt_hash='a8ed55c3ea7cf67a1fd5a306de8fb3a0197563b581674d8d691a1bbfec27c039', no_mutation=False).committed&#10; +  and   frozenset({'INVENTED_PROPOSAL'}) = committed_target_ids()&#10; +    where committed_target_ids = &lt;candidate.transaction.CandidateStore object at 0x106039550&gt;.committed_target_ids">tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/c9r-wt/WORKER_RETURNS/SOROK-20261019-C9R-WHOLE-ACTOR-BOUNDARY-AND-CONSUMER-REPAIR-R1/runtime/ptmp_custody/test_fabricated_decision_canno0')
+
+    def test_fabricated_decision_cannot_bypass_target_owner(tmp_path):
+     with CandidateStore(tmp_path/'forged.sqlite') as s:
+      e=event();s.admit_occurrence(e)
+      forged=TargetDecision(TargetBranch.CREATE,TargetReason.OK,A,'V3MS_PRACTICE','INVENTED_PROPOSAL','INVENTED_RECORD',s.target_state_hash(),'INVENTED_POST',(),'NO_SUCH_GRANT')
+      receipt=s.commit(event=e,response=seal({'event_ref':e['hash']}),decision=forged,readset_refs=())
+&gt;     assert not receipt.committed or not s.committed_target_ids()
+E     AssertionError: assert (not True or not frozenset({'INVENTED_PROPOSAL'}))
+E      +  where True = CommitReceipt(status='COMMITTED', joint_transaction_id='a8ed55c3ea7cf67a1fd5a306de8fb3a0197563b581674d8d691a1bbfec27c0...='INVENTED_RECORD', receipt_hash='a8ed55c3ea7cf67a1fd5a306de8fb3a0197563b581674d8d691a1bbfec27c039', no_mutation=False).committed
+E      +  and   frozenset({'INVENTED_PROPOSAL'}) = committed_target_ids()
+E      +    where committed_target_ids = &lt;candidate.transaction.CandidateStore object at 0x106039550&gt;.committed_target_ids
+
+review/test_record_custody.py:29: AssertionError</failure></testcase></testsuite></testsuites>

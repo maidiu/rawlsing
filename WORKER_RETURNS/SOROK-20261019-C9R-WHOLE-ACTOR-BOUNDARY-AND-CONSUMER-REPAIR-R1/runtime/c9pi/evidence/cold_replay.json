@@ -1,0 +1,205 @@
+{
+  "grade": "TEST_ONLY_FRESH_PROCESS_LOGICAL_REPLAY_PASS",
+  "runs": [
+    {
+      "snapshot": {
+        "clock": [
+          [
+            15
+          ]
+        ],
+        "occurrence": [
+          [
+            "3093c296f6ff36cc8f34481d4a1f9a8c06487a739162aa6f0fbf4086154f3ef1",
+            "{\"actor_role\":\"TEST_ONLY_REVIEW_A\",\"admission_grade\":\"ADMITTED_TEST_ONLY_SOURCEFREE\",\"causal_parent_refs\":[],\"content\":{\"fact\":\"tool_offer\",\"participants\":[\"TEST_ONLY_REVIEW_A\",\"TEST_ONLY_P\"],\"scene\":\"garage\"},\"content_hash\":\"f675a745c68a6af2448b74bf3aa41e41c280cdb9c78c7d0b4d42947ea0be15ab\",\"event_id\":\"TEST_ONLY_REVIEW_E1\",\"owner_receipt_ref\":\"\",\"owner_ref\":\"TEST_ONLY_REVIEW_EVENT_OWNER\",\"schema\":\"C9P_EVENT_WITNESS@1\",\"time\":15}"
+          ]
+        ],
+        "receipt": [
+          [
+            "a03aa5f3931192458ce6e3bcc63db06fc5e7e5650acc2397ece771c8833dab2f",
+            "{\"after_hash\":\"ea455f6a5475cec713edf84bdc5f3eca8c80e990e65980ed254a2a1bb2639118\",\"before_hash\":\"11271263745c5a94f8a1a7e6182d9d127346a3c5b372b41b09fe31cb328b0eef\",\"event_ref\":\"3093c296f6ff36cc8f34481d4a1f9a8c06487a739162aa6f0fbf4086154f3ef1\",\"readset_refs\":[\"3093c296f6ff36cc8f34481d4a1f9a8c06487a739162aa6f0fbf4086154f3ef1\",\"TEST_ONLY_REVIEW_GARAGE\",\"TEST_ONLY_H1\",\"TEST_ONLY_H2\",\"e664d380ad7e4ab3fb1806b0102cd5b74dc185efabff610763eda1ed914bf432\",\"TEST_ONLY_REVIEW_GRANT\",\"3093c296f6ff36cc8f34481d4a1f9a8c06487a739162aa6f0fbf4086154f3ef1\",\"TEST_ONLY_H1\",\"TEST_ONLY_H2\"],\"record_hash\":\"269da16904551580630db76ae8f9239417fa9820668418b331425486b39c01c2\",\"response_ref\":\"a56d1336b40c39100a7f239ba8009f36054fbec0fd6f2eaf887f6f0d605c3b31\",\"schema\":\"C9P_CANDIDATE_TRANSACTION@1\",\"target_branch\":\"CREATE\",\"target_reason\":\"OK\"}"
+          ]
+        ],
+        "response": [
+          [
+            "a56d1336b40c39100a7f239ba8009f36054fbec0fd6f2eaf887f6f0d605c3b31",
+            "{\"event_ref\":\"3093c296f6ff36cc8f34481d4a1f9a8c06487a739162aa6f0fbf4086154f3ef1\",\"receipt_hash\":\"d60a815acee8312bdcf3092ab399432b77622ee581b9d1b24d8eafcce4d08f16\",\"rule_status\":\"FOUND\",\"status\":\"RESPONSE_COMMITTED\"}"
+          ]
+        ],
+        "target_journal": [
+          [
+            "269da16904551580630db76ae8f9239417fa9820668418b331425486b39c01c2",
+            "{\"branch\":\"CREATE\",\"proposal_hash\":\"fbc4cdc9ecb5b05612ec21daaf642ffa776a49bf77473aa6556b07840675a58b\",\"readset_refs\":[\"e664d380ad7e4ab3fb1806b0102cd5b74dc185efabff610763eda1ed914bf432\",\"TEST_ONLY_REVIEW_GRANT\",\"3093c296f6ff36cc8f34481d4a1f9a8c06487a739162aa6f0fbf4086154f3ef1\",\"TEST_ONLY_H1\",\"TEST_ONLY_H2\"],\"reason\":\"OK\",\"record_hash\":\"269da16904551580630db76ae8f9239417fa9820668418b331425486b39c01c2\"}"
+          ]
+        ],
+        "target_state": [
+          [
+            "fbc4cdc9ecb5b05612ec21daaf642ffa776a49bf77473aa6556b07840675a58b",
+            "{\"actor_id\":\"TEST_ONLY_REVIEW_A\",\"after_target_hash\":\"63a5c99b1138130e37457e1731ad8b239b16c869a4a2ca2fead7e17ed7c345a2\",\"before_target_hash\":\"4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945\",\"middle_state_id\":\"fbc4cdc9ecb5b05612ec21daaf642ffa776a49bf77473aa6556b07840675a58b\",\"permission_ref\":\"TEST_ONLY_REVIEW_GRANT\",\"record_hash\":\"269da16904551580630db76ae8f9239417fa9820668418b331425486b39c01c2\",\"schema\":\"C9P_TARGET_RECORD@1\",\"state_kind_id\":\"V3MS_PRACTICE\"}"
+          ]
+        ]
+      },
+      "snapshot_hash": "e502cce33f47c6ea86f986b9ff7b8d5844e310fcb867871f81394e1b7ed0ee83",
+      "target_hash": "d8c4938d2db4d3dcf70da227c1184ffc6390eecb6e9d6bf310524b429a723804",
+      "read_hash": "d2e6902dbc6a27c2f5a384dc33efb0616a09d4b8c851010a304cc88cba188a4b",
+      "readset": [
+        "fbc4cdc9ecb5b05612ec21daaf642ffa776a49bf77473aa6556b07840675a58b",
+        "62249dae50700d934c093ac435a2a81aa5e75c61d3ff881442538387bca98cb1",
+        "TEST_ONLY_COLD_PROCESS"
+      ],
+      "integrity": "ok",
+      "pid": 68050,
+      "mode": "build"
+    },
+    {
+      "snapshot": {
+        "clock": [
+          [
+            15
+          ]
+        ],
+        "occurrence": [
+          [
+            "3093c296f6ff36cc8f34481d4a1f9a8c06487a739162aa6f0fbf4086154f3ef1",
+            "{\"actor_role\":\"TEST_ONLY_REVIEW_A\",\"admission_grade\":\"ADMITTED_TEST_ONLY_SOURCEFREE\",\"causal_parent_refs\":[],\"content\":{\"fact\":\"tool_offer\",\"participants\":[\"TEST_ONLY_REVIEW_A\",\"TEST_ONLY_P\"],\"scene\":\"garage\"},\"content_hash\":\"f675a745c68a6af2448b74bf3aa41e41c280cdb9c78c7d0b4d42947ea0be15ab\",\"event_id\":\"TEST_ONLY_REVIEW_E1\",\"owner_receipt_ref\":\"\",\"owner_ref\":\"TEST_ONLY_REVIEW_EVENT_OWNER\",\"schema\":\"C9P_EVENT_WITNESS@1\",\"time\":15}"
+          ]
+        ],
+        "receipt": [
+          [
+            "a03aa5f3931192458ce6e3bcc63db06fc5e7e5650acc2397ece771c8833dab2f",
+            "{\"after_hash\":\"ea455f6a5475cec713edf84bdc5f3eca8c80e990e65980ed254a2a1bb2639118\",\"before_hash\":\"11271263745c5a94f8a1a7e6182d9d127346a3c5b372b41b09fe31cb328b0eef\",\"event_ref\":\"3093c296f6ff36cc8f34481d4a1f9a8c06487a739162aa6f0fbf4086154f3ef1\",\"readset_refs\":[\"3093c296f6ff36cc8f34481d4a1f9a8c06487a739162aa6f0fbf4086154f3ef1\",\"TEST_ONLY_REVIEW_GARAGE\",\"TEST_ONLY_H1\",\"TEST_ONLY_H2\",\"e664d380ad7e4ab3fb1806b0102cd5b74dc185efabff610763eda1ed914bf432\",\"TEST_ONLY_REVIEW_GRANT\",\"3093c296f6ff36cc8f34481d4a1f9a8c06487a739162aa6f0fbf4086154f3ef1\",\"TEST_ONLY_H1\",\"TEST_ONLY_H2\"],\"record_hash\":\"269da16904551580630db76ae8f9239417fa9820668418b331425486b39c01c2\",\"response_ref\":\"a56d1336b40c39100a7f239ba8009f36054fbec0fd6f2eaf887f6f0d605c3b31\",\"schema\":\"C9P_CANDIDATE_TRANSACTION@1\",\"target_branch\":\"CREATE\",\"target_reason\":\"OK\"}"
+          ]
+        ],
+        "response": [
+          [
+            "a56d1336b40c39100a7f239ba8009f36054fbec0fd6f2eaf887f6f0d605c3b31",
+            "{\"event_ref\":\"3093c296f6ff36cc8f34481d4a1f9a8c06487a739162aa6f0fbf4086154f3ef1\",\"receipt_hash\":\"d60a815acee8312bdcf3092ab399432b77622ee581b9d1b24d8eafcce4d08f16\",\"rule_status\":\"FOUND\",\"status\":\"RESPONSE_COMMITTED\"}"
+          ]
+        ],
+        "target_journal": [
+          [
+            "269da16904551580630db76ae8f9239417fa9820668418b331425486b39c01c2",
+            "{\"branch\":\"CREATE\",\"proposal_hash\":\"fbc4cdc9ecb5b05612ec21daaf642ffa776a49bf77473aa6556b07840675a58b\",\"readset_refs\":[\"e664d380ad7e4ab3fb1806b0102cd5b74dc185efabff610763eda1ed914bf432\",\"TEST_ONLY_REVIEW_GRANT\",\"3093c296f6ff36cc8f34481d4a1f9a8c06487a739162aa6f0fbf4086154f3ef1\",\"TEST_ONLY_H1\",\"TEST_ONLY_H2\"],\"reason\":\"OK\",\"record_hash\":\"269da16904551580630db76ae8f9239417fa9820668418b331425486b39c01c2\"}"
+          ]
+        ],
+        "target_state": [
+          [
+            "fbc4cdc9ecb5b05612ec21daaf642ffa776a49bf77473aa6556b07840675a58b",
+            "{\"actor_id\":\"TEST_ONLY_REVIEW_A\",\"after_target_hash\":\"63a5c99b1138130e37457e1731ad8b239b16c869a4a2ca2fead7e17ed7c345a2\",\"before_target_hash\":\"4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945\",\"middle_state_id\":\"fbc4cdc9ecb5b05612ec21daaf642ffa776a49bf77473aa6556b07840675a58b\",\"permission_ref\":\"TEST_ONLY_REVIEW_GRANT\",\"record_hash\":\"269da16904551580630db76ae8f9239417fa9820668418b331425486b39c01c2\",\"schema\":\"C9P_TARGET_RECORD@1\",\"state_kind_id\":\"V3MS_PRACTICE\"}"
+          ]
+        ]
+      },
+      "snapshot_hash": "e502cce33f47c6ea86f986b9ff7b8d5844e310fcb867871f81394e1b7ed0ee83",
+      "target_hash": "d8c4938d2db4d3dcf70da227c1184ffc6390eecb6e9d6bf310524b429a723804",
+      "read_hash": "d2e6902dbc6a27c2f5a384dc33efb0616a09d4b8c851010a304cc88cba188a4b",
+      "readset": [
+        "fbc4cdc9ecb5b05612ec21daaf642ffa776a49bf77473aa6556b07840675a58b",
+        "62249dae50700d934c093ac435a2a81aa5e75c61d3ff881442538387bca98cb1",
+        "TEST_ONLY_COLD_PROCESS"
+      ],
+      "integrity": "ok",
+      "pid": 68051,
+      "mode": "inspect"
+    },
+    {
+      "snapshot": {
+        "clock": [
+          [
+            15
+          ]
+        ],
+        "occurrence": [
+          [
+            "3093c296f6ff36cc8f34481d4a1f9a8c06487a739162aa6f0fbf4086154f3ef1",
+            "{\"actor_role\":\"TEST_ONLY_REVIEW_A\",\"admission_grade\":\"ADMITTED_TEST_ONLY_SOURCEFREE\",\"causal_parent_refs\":[],\"content\":{\"fact\":\"tool_offer\",\"participants\":[\"TEST_ONLY_REVIEW_A\",\"TEST_ONLY_P\"],\"scene\":\"garage\"},\"content_hash\":\"f675a745c68a6af2448b74bf3aa41e41c280cdb9c78c7d0b4d42947ea0be15ab\",\"event_id\":\"TEST_ONLY_REVIEW_E1\",\"owner_receipt_ref\":\"\",\"owner_ref\":\"TEST_ONLY_REVIEW_EVENT_OWNER\",\"schema\":\"C9P_EVENT_WITNESS@1\",\"time\":15}"
+          ]
+        ],
+        "receipt": [
+          [
+            "a03aa5f3931192458ce6e3bcc63db06fc5e7e5650acc2397ece771c8833dab2f",
+            "{\"after_hash\":\"ea455f6a5475cec713edf84bdc5f3eca8c80e990e65980ed254a2a1bb2639118\",\"before_hash\":\"11271263745c5a94f8a1a7e6182d9d127346a3c5b372b41b09fe31cb328b0eef\",\"event_ref\":\"3093c296f6ff36cc8f34481d4a1f9a8c06487a739162aa6f0fbf4086154f3ef1\",\"readset_refs\":[\"3093c296f6ff36cc8f34481d4a1f9a8c06487a739162aa6f0fbf4086154f3ef1\",\"TEST_ONLY_REVIEW_GARAGE\",\"TEST_ONLY_H1\",\"TEST_ONLY_H2\",\"e664d380ad7e4ab3fb1806b0102cd5b74dc185efabff610763eda1ed914bf432\",\"TEST_ONLY_REVIEW_GRANT\",\"3093c296f6ff36cc8f34481d4a1f9a8c06487a739162aa6f0fbf4086154f3ef1\",\"TEST_ONLY_H1\",\"TEST_ONLY_H2\"],\"record_hash\":\"269da16904551580630db76ae8f9239417fa9820668418b331425486b39c01c2\",\"response_ref\":\"a56d1336b40c39100a7f239ba8009f36054fbec0fd6f2eaf887f6f0d605c3b31\",\"schema\":\"C9P_CANDIDATE_TRANSACTION@1\",\"target_branch\":\"CREATE\",\"target_reason\":\"OK\"}"
+          ]
+        ],
+        "response": [
+          [
+            "a56d1336b40c39100a7f239ba8009f36054fbec0fd6f2eaf887f6f0d605c3b31",
+            "{\"event_ref\":\"3093c296f6ff36cc8f34481d4a1f9a8c06487a739162aa6f0fbf4086154f3ef1\",\"receipt_hash\":\"d60a815acee8312bdcf3092ab399432b77622ee581b9d1b24d8eafcce4d08f16\",\"rule_status\":\"FOUND\",\"status\":\"RESPONSE_COMMITTED\"}"
+          ]
+        ],
+        "target_journal": [
+          [
+            "269da16904551580630db76ae8f9239417fa9820668418b331425486b39c01c2",
+            "{\"branch\":\"CREATE\",\"proposal_hash\":\"fbc4cdc9ecb5b05612ec21daaf642ffa776a49bf77473aa6556b07840675a58b\",\"readset_refs\":[\"e664d380ad7e4ab3fb1806b0102cd5b74dc185efabff610763eda1ed914bf432\",\"TEST_ONLY_REVIEW_GRANT\",\"3093c296f6ff36cc8f34481d4a1f9a8c06487a739162aa6f0fbf4086154f3ef1\",\"TEST_ONLY_H1\",\"TEST_ONLY_H2\"],\"reason\":\"OK\",\"record_hash\":\"269da16904551580630db76ae8f9239417fa9820668418b331425486b39c01c2\"}"
+          ]
+        ],
+        "target_state": [
+          [
+            "fbc4cdc9ecb5b05612ec21daaf642ffa776a49bf77473aa6556b07840675a58b",
+            "{\"actor_id\":\"TEST_ONLY_REVIEW_A\",\"after_target_hash\":\"63a5c99b1138130e37457e1731ad8b239b16c869a4a2ca2fead7e17ed7c345a2\",\"before_target_hash\":\"4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945\",\"middle_state_id\":\"fbc4cdc9ecb5b05612ec21daaf642ffa776a49bf77473aa6556b07840675a58b\",\"permission_ref\":\"TEST_ONLY_REVIEW_GRANT\",\"record_hash\":\"269da16904551580630db76ae8f9239417fa9820668418b331425486b39c01c2\",\"schema\":\"C9P_TARGET_RECORD@1\",\"state_kind_id\":\"V3MS_PRACTICE\"}"
+          ]
+        ]
+      },
+      "snapshot_hash": "e502cce33f47c6ea86f986b9ff7b8d5844e310fcb867871f81394e1b7ed0ee83",
+      "target_hash": "d8c4938d2db4d3dcf70da227c1184ffc6390eecb6e9d6bf310524b429a723804",
+      "read_hash": "d2e6902dbc6a27c2f5a384dc33efb0616a09d4b8c851010a304cc88cba188a4b",
+      "readset": [
+        "fbc4cdc9ecb5b05612ec21daaf642ffa776a49bf77473aa6556b07840675a58b",
+        "62249dae50700d934c093ac435a2a81aa5e75c61d3ff881442538387bca98cb1",
+        "TEST_ONLY_COLD_PROCESS"
+      ],
+      "integrity": "ok",
+      "pid": 68054,
+      "mode": "build"
+    },
+    {
+      "snapshot": {
+        "clock": [
+          [
+            15
+          ]
+        ],
+        "occurrence": [
+          [
+            "3093c296f6ff36cc8f34481d4a1f9a8c06487a739162aa6f0fbf4086154f3ef1",
+            "{\"actor_role\":\"TEST_ONLY_REVIEW_A\",\"admission_grade\":\"ADMITTED_TEST_ONLY_SOURCEFREE\",\"causal_parent_refs\":[],\"content\":{\"fact\":\"tool_offer\",\"participants\":[\"TEST_ONLY_REVIEW_A\",\"TEST_ONLY_P\"],\"scene\":\"garage\"},\"content_hash\":\"f675a745c68a6af2448b74bf3aa41e41c280cdb9c78c7d0b4d42947ea0be15ab\",\"event_id\":\"TEST_ONLY_REVIEW_E1\",\"owner_receipt_ref\":\"\",\"owner_ref\":\"TEST_ONLY_REVIEW_EVENT_OWNER\",\"schema\":\"C9P_EVENT_WITNESS@1\",\"time\":15}"
+          ]
+        ],
+        "receipt": [
+          [
+            "a03aa5f3931192458ce6e3bcc63db06fc5e7e5650acc2397ece771c8833dab2f",
+            "{\"after_hash\":\"ea455f6a5475cec713edf84bdc5f3eca8c80e990e65980ed254a2a1bb2639118\",\"before_hash\":\"11271263745c5a94f8a1a7e6182d9d127346a3c5b372b41b09fe31cb328b0eef\",\"event_ref\":\"3093c296f6ff36cc8f34481d4a1f9a8c06487a739162aa6f0fbf4086154f3ef1\",\"readset_refs\":[\"3093c296f6ff36cc8f34481d4a1f9a8c06487a739162aa6f0fbf4086154f3ef1\",\"TEST_ONLY_REVIEW_GARAGE\",\"TEST_ONLY_H1\",\"TEST_ONLY_H2\",\"e664d380ad7e4ab3fb1806b0102cd5b74dc185efabff610763eda1ed914bf432\",\"TEST_ONLY_REVIEW_GRANT\",\"3093c296f6ff36cc8f34481d4a1f9a8c06487a739162aa6f0fbf4086154f3ef1\",\"TEST_ONLY_H1\",\"TEST_ONLY_H2\"],\"record_hash\":\"269da16904551580630db76ae8f9239417fa9820668418b331425486b39c01c2\",\"response_ref\":\"a56d1336b40c39100a7f239ba8009f36054fbec0fd6f2eaf887f6f0d605c3b31\",\"schema\":\"C9P_CANDIDATE_TRANSACTION@1\",\"target_branch\":\"CREATE\",\"target_reason\":\"OK\"}"
+          ]
+        ],
+        "response": [
+          [
+            "a56d1336b40c39100a7f239ba8009f36054fbec0fd6f2eaf887f6f0d605c3b31",
+            "{\"event_ref\":\"3093c296f6ff36cc8f34481d4a1f9a8c06487a739162aa6f0fbf4086154f3ef1\",\"receipt_hash\":\"d60a815acee8312bdcf3092ab399432b77622ee581b9d1b24d8eafcce4d08f16\",\"rule_status\":\"FOUND\",\"status\":\"RESPONSE_COMMITTED\"}"
+          ]
+        ],
+        "target_journal": [
+          [
+            "269da16904551580630db76ae8f9239417fa9820668418b331425486b39c01c2",
+            "{\"branch\":\"CREATE\",\"proposal_hash\":\"fbc4cdc9ecb5b05612ec21daaf642ffa776a49bf77473aa6556b07840675a58b\",\"readset_refs\":[\"e664d380ad7e4ab3fb1806b0102cd5b74dc185efabff610763eda1ed914bf432\",\"TEST_ONLY_REVIEW_GRANT\",\"3093c296f6ff36cc8f34481d4a1f9a8c06487a739162aa6f0fbf4086154f3ef1\",\"TEST_ONLY_H1\",\"TEST_ONLY_H2\"],\"reason\":\"OK\",\"record_hash\":\"269da16904551580630db76ae8f9239417fa9820668418b331425486b39c01c2\"}"
+          ]
+        ],
+        "target_state": [
+          [
+            "fbc4cdc9ecb5b05612ec21daaf642ffa776a49bf77473aa6556b07840675a58b",
+            "{\"actor_id\":\"TEST_ONLY_REVIEW_A\",\"after_target_hash\":\"63a5c99b1138130e37457e1731ad8b239b16c869a4a2ca2fead7e17ed7c345a2\",\"before_target_hash\":\"4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945\",\"middle_state_id\":\"fbc4cdc9ecb5b05612ec21daaf642ffa776a49bf77473aa6556b07840675a58b\",\"permission_ref\":\"TEST_ONLY_REVIEW_GRANT\",\"record_hash\":\"269da16904551580630db76ae8f9239417fa9820668418b331425486b39c01c2\",\"schema\":\"C9P_TARGET_RECORD@1\",\"state_kind_id\":\"V3MS_PRACTICE\"}"
+          ]
+        ]
+      },
+      "snapshot_hash": "e502cce33f47c6ea86f986b9ff7b8d5844e310fcb867871f81394e1b7ed0ee83",
+      "target_hash": "d8c4938d2db4d3dcf70da227c1184ffc6390eecb6e9d6bf310524b429a723804",
+      "read_hash": "d2e6902dbc6a27c2f5a384dc33efb0616a09d4b8c851010a304cc88cba188a4b",
+      "readset": [
+        "fbc4cdc9ecb5b05612ec21daaf642ffa776a49bf77473aa6556b07840675a58b",
+        "62249dae50700d934c093ac435a2a81aa5e75c61d3ff881442538387bca98cb1",
+        "TEST_ONLY_COLD_PROCESS"
+      ],
+      "integrity": "ok",
+      "pid": 68058,
+      "mode": "inspect"
+    }
+  ]
+}

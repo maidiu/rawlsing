@@ -1,0 +1,142 @@
+FF.FFF...F                                                               [100%]
+=================================== FAILURES ===================================
+_______________________ test_full_e1_to_e2_consumer_path _______________________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/c9r-wt/WORKER_RETURNS/SOROK-20261019-C9R-WHOLE-ACTOR-BOUNDARY-AND-CONSUMER-REPAIR-R1/runtime/ptmp_c1/test_full_e1_to_e2_consumer_pa0')
+
+    def test_full_e1_to_e2_consumer_path(tmp_path):
+        path = tmp_path / "consumer.sqlite"
+        with CandidateStore(path) as store:
+            first = _run(store)
+            assert first.receipt.committed
+>           assert first.decision.branch is TargetBranch.CREATE
+E           AssertionError: assert <TargetBranch.DENY: 'DENY'> is <TargetBranch.CREATE: 'CREATE'>
+E            +  where <TargetBranch.DENY: 'DENY'> = TargetDecision(branch=<TargetBranch.DENY: 'DENY'>, reason=<TargetReason.PERMISSION_BINDING_MISMATCH: 'PERMISSION_BINDI...et_id='', record_body=None, authorization_preimage=None, authorization_hash='', publication_grade='', response_hash='').branch
+E            +    where TargetDecision(branch=<TargetBranch.DENY: 'DENY'>, reason=<TargetReason.PERMISSION_BINDING_MISMATCH: 'PERMISSION_BINDI...et_id='', record_body=None, authorization_preimage=None, authorization_hash='', publication_grade='', response_hash='') = PipelineResult(stages=(PipelineStage(stage='actor_ingress', ok=True, reason='OK', detail={'actor_id': 'TEST_ONLY_C9R_A...=30), committed=True, no_ghost=True, material_eligible=True, material_reason='OK', authorization_hash='', target_id='').decision
+E            +  and   <TargetBranch.CREATE: 'CREATE'> = TargetBranch.CREATE
+
+tests/test_c9r_consumer.py:194: AssertionError
+____________ test_second_full_run_admits_independently_performed_e2 ____________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/c9r-wt/WORKER_RETURNS/SOROK-20261019-C9R-WHOLE-ACTOR-BOUNDARY-AND-CONSUMER-REPAIR-R1/runtime/ptmp_c1/test_second_full_run_admits_in0')
+
+    def test_second_full_run_admits_independently_performed_e2(tmp_path):
+        probe_path = tmp_path / "probe.sqlite"
+        with CandidateStore(probe_path) as probe:
+            probe_run = _run(probe)
+            consumed = probe_run.later_read.state_hash
+        receipt = make_performed_action_receipt(
+            actor_id=A,
+            act="inspect_with_tool",
+            actuator_ref="TEST_ONLY_ACTUATOR_P",
+            occurrence_ref="TEST_ONLY_OCCURRENCE_E2",
+            action_time=25,
+            consumed_state_hash=consumed,
+            target_commit_time=15,
+        )
+        with CandidateStore(tmp_path / "full.sqlite") as store:
+            result = _run(store, action_receipt=receipt)
+            assert result.committed
+>           assert getattr(result.action_admission, "admitted", False)
+E           AssertionError: assert False
+E            +  where False = getattr(PerformedActionHold(status=<AdmissionStatus.REFUSED: 'REFUSED'>, reason=<AdmissionReason.NO_CONSUMED_TARGET_STATE: 'NO...D_TARGET_STATE'>, actor_id='TEST_ONLY_C9R_A', expected_owner_form='OWNER_RECEIPT_WITH_CONSUMED_STATE_HASH', held_at=30), 'admitted', False)
+E            +    where PerformedActionHold(status=<AdmissionStatus.REFUSED: 'REFUSED'>, reason=<AdmissionReason.NO_CONSUMED_TARGET_STATE: 'NO...D_TARGET_STATE'>, actor_id='TEST_ONLY_C9R_A', expected_owner_form='OWNER_RECEIPT_WITH_CONSUMED_STATE_HASH', held_at=30) = PipelineResult(stages=(PipelineStage(stage='actor_ingress', ok=True, reason='OK', detail={'actor_id': 'TEST_ONLY_C9R_A...=30), committed=True, no_ghost=True, material_eligible=True, material_reason='OK', authorization_hash='', target_id='').action_admission
+
+tests/test_c9r_consumer.py:261: AssertionError
+__________________ test_removed_enacted_source_cannot_create ___________________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/c9r-wt/WORKER_RETURNS/SOROK-20261019-C9R-WHOLE-ACTOR-BOUNDARY-AND-CONSUMER-REPAIR-R1/runtime/ptmp_c1/test_removed_enacted_source_ca0')
+
+    def test_removed_enacted_source_cannot_create(tmp_path):
+        with CandidateStore(tmp_path / "removed.sqlite") as store:
+            rule = _rule()
+            response_hash = _response_receipt_hash(store)
+            permission = _permission(store, response_hash=response_hash)
+            lookup = lookup_rule(
+                ResponseRuleRegistry.test_only((rule,)),
+                authority_id=rule.authority_id,
+                rule_version=rule.rule_version,
+                rule_content_hash=rule.rule_content_hash,
+                subject=A,
+            )
+            conditioning = bind_conditioning(subject=A, sources=_sources(), as_of=20)
+            response = evaluate_response(
+                rule_lookup=lookup,
+                event_ref=_event_ref(),
+                event_time=15,
+                subject=A,
+                conditioning_readset=conditioning.readset_refs,
+                actor_history_refs=HISTORY,
+                other_person_offer_ref=OFFER,
+                material_opportunity_ref=MATERIAL,
+                prior_response_count=0,
+                material_eligible=True,
+                eligible_material_refs=(MATERIAL,),
+            )
+            baseline = evaluate_target(
+                registry=TargetRuleRegistry.test_only((_target_rule(rule),)),
+                proposal=response.target_proposals[0],
+                permission=permission,
+                actor_id=A,
+                before_target_hash=store.target_state_hash(),
+                existing_target_ids=frozenset(),
+                prior_event_hash=_event_ref(),
+                as_of=20,
+                enacted_history_refs=HISTORY,
+                permitted_issuer_refs=frozenset({ISSUER}),
+            )
+>           assert baseline.branch is TargetBranch.CREATE
+E           AssertionError: assert <TargetBranch.DENY: 'DENY'> is <TargetBranch.CREATE: 'CREATE'>
+E            +  where <TargetBranch.DENY: 'DENY'> = TargetDecision(branch=<TargetBranch.DENY: 'DENY'>, reason=<TargetReason.PERMISSION_BINDING_MISMATCH: 'PERMISSION_BINDI...et_id='', record_body=None, authorization_preimage=None, authorization_hash='', publication_grade='', response_hash='').branch
+E            +  and   <TargetBranch.CREATE: 'CREATE'> = TargetBranch.CREATE
+
+tests/test_c9r_consumer.py:318: AssertionError
+___________________ test_corrupt_target_preimage_is_refused ____________________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/c9r-wt/WORKER_RETURNS/SOROK-20261019-C9R-WHOLE-ACTOR-BOUNDARY-AND-CONSUMER-REPAIR-R1/runtime/ptmp_c1/test_corrupt_target_preimage_i0')
+
+    def test_corrupt_target_preimage_is_refused(tmp_path):
+        with CandidateStore(tmp_path / "corrupt.sqlite") as store:
+            result = _run(store)
+            assert result.receipt.committed
+            decision = result.decision
+>           corrupted = dict(decision.record_body)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           TypeError: 'NoneType' object is not iterable
+
+tests/test_c9r_consumer.py:339: TypeError
+________ test_revoked_permission_between_proposal_and_commit_is_refused ________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/c9r-wt/WORKER_RETURNS/SOROK-20261019-C9R-WHOLE-ACTOR-BOUNDARY-AND-CONSUMER-REPAIR-R1/runtime/ptmp_c1/test_revoked_permission_betwee0')
+
+    def test_revoked_permission_between_proposal_and_commit_is_refused(tmp_path):
+        with CandidateStore(tmp_path / "revoked.sqlite") as store:
+            result = _run(store)
+            assert result.receipt.committed
+            decision = result.decision
+>           preimage = dict(decision.authorization_preimage)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           TypeError: 'NoneType' object is not iterable
+
+tests/test_c9r_consumer.py:363: TypeError
+_____________ test_test_only_publication_is_never_native_authority _____________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/c9r-wt/WORKER_RETURNS/SOROK-20261019-C9R-WHOLE-ACTOR-BOUNDARY-AND-CONSUMER-REPAIR-R1/runtime/ptmp_c1/test_test_only_publication_is_0')
+
+    def test_test_only_publication_is_never_native_authority(tmp_path):
+        with CandidateStore(tmp_path / "grade.sqlite") as store:
+            result = _run(store)
+>           assert result.decision.publication_grade == "TEST_ONLY_SOURCEFREE_TECHNICAL"
+E           AssertionError: assert '' == 'TEST_ONLY_SO...REE_TECHNICAL'
+E             
+E             - TEST_ONLY_SOURCEFREE_TECHNICAL
+
+tests/test_c9r_consumer.py:470: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_c9r_consumer.py::test_full_e1_to_e2_consumer_path - Asserti...
+FAILED tests/test_c9r_consumer.py::test_second_full_run_admits_independently_performed_e2
+FAILED tests/test_c9r_consumer.py::test_removed_enacted_source_cannot_create
+FAILED tests/test_c9r_consumer.py::test_corrupt_target_preimage_is_refused - ...
+FAILED tests/test_c9r_consumer.py::test_revoked_permission_between_proposal_and_commit_is_refused
+FAILED tests/test_c9r_consumer.py::test_test_only_publication_is_never_native_authority
+6 failed, 4 passed in 0.74s

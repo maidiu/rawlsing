@@ -1,0 +1,61 @@
+{
+  "schema": "C9P_SEVERANCE_R1",
+  "status": "ALL_SEVERANCE_WITNESSES_RED_SAME_NAMED_ASSERTION",
+  "separate_processes": true,
+  "cases": [
+    {
+      "claim_id": "C9P_LATER_ACTION_CONSUMER_READS_COMMITTED_TARGET_STATE",
+      "named_assertion": "test_later_action_consumer_reads_committed_target_state",
+      "severed_edge": "committed target_state row -> LaterActionConsumer.read_target",
+      "fault_path": "WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/candidate/later_action.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_RED",
+      "proof_grade": "CLAIM_EDGE_FALSIFIED_BY_CONTROL_AND_POSITIVE_SURVIVED"
+    },
+    {
+      "claim_id": "C9P_RESPONSE_LOOKUP_CONSUMES_EXACT_RULE_REGISTRY_ENTRY",
+      "named_assertion": "test_response_lookup_consumes_exact_rule_registry_entry",
+      "severed_edge": "response rule registry entry -> lookup_rule key dereference",
+      "fault_path": "WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/candidate/response_rules.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_RED",
+      "proof_grade": "CLAIM_EDGE_FALSIFIED_BY_CONTROL_AND_POSITIVE_SURVIVED"
+    },
+    {
+      "claim_id": "C9P_TARGET_DECISION_CONSUMES_INDEPENDENT_PERMISSION",
+      "named_assertion": "test_target_decision_consumes_independent_permission",
+      "severed_edge": "separately authenticated TargetPermission -> CREATE branch",
+      "fault_path": "WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/candidate/target_rules.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_RED",
+      "proof_grade": "CLAIM_EDGE_FALSIFIED_BY_CONTROL_AND_POSITIVE_SURVIVED"
+    },
+    {
+      "claim_id": "C9P_CONDITIONING_READSET_BINDS_PERSON_WORLD_SOURCES",
+      "named_assertion": "test_conditioning_readset_binds_person_world_sources",
+      "severed_edge": "person/world ConditioningSource -> readset append",
+      "fault_path": "WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/candidate/conditioning.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_RED",
+      "proof_grade": "CLAIM_EDGE_FALSIFIED_BY_CONTROL_AND_POSITIVE_SURVIVED"
+    },
+    {
+      "claim_id": "C9P_ACTION_ADMISSION_BINDS_PERFORMED_ACTION_RECEIPT",
+      "named_assertion": "test_action_admission_binds_performed_action_receipt",
+      "severed_edge": "performed-action owner receipt -> admit_performed_action",
+      "fault_path": "WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/candidate/action_admission.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_RED",
+      "proof_grade": "CLAIM_EDGE_FALSIFIED_BY_CONTROL_AND_POSITIVE_SURVIVED"
+    },
+    {
+      "claim_id": "C9P_TRANSACTION_READSET_BINDS_ADMITTED_EVENT_WITNESS",
+      "named_assertion": "test_transaction_readset_binds_admitted_event_witness",
+      "severed_edge": "admitted occurrence witness -> commit receipt joint identity",
+      "fault_path": "WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/candidate/transaction.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_RED",
+      "proof_grade": "CLAIM_EDGE_FALSIFIED_BY_CONTROL_AND_POSITIVE_SURVIVED"
+    }
+  ]
+}
