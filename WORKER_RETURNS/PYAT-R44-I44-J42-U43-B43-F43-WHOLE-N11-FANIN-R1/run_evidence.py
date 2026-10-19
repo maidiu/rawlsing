@@ -58,6 +58,7 @@ def main() -> int:
         "j42_suite": (bootstrap.path_for("J42"), "tests", "evidence/j42_junit.xml"),
         "f43_suite": (bootstrap.path_for("F43"), "tests", "evidence/f43_junit.xml"),
         "b43_suite": (bootstrap.path_for("B43"), "tests", "evidence/b43_junit.xml"),
+        "s44_suite": (bootstrap.path_for("S44"), "tests", "evidence/s44_junit.xml"),
     }
     u43_env = {}
     support = os.environ.get("U43_SUPPORT_ROOT") or str(ROOT / "LOCAL_COURTS/u43-repaired")
@@ -81,6 +82,17 @@ def main() -> int:
             [sys.executable, "-m", "pytest", "test_i44_integration.py", "-q",
              "--junitxml", str(EVIDENCE / "i44_junit.xml")],
             RETURN_DIR,
+        )
+    )
+    results.append(
+        _run(
+            "s44_proof_witness",
+            [sys.executable, "CROSS_HQ_CONTROL_ROOM/proof_integrity_gate_r1.py", "witness",
+             "WORKER_RETURNS/PYAT-R44-S44-ORIGINAL-SOURCE-TO-CURRENT-ROUTE-B-FIRST-MEASURED-WHOLE-ESTATE-R1/tests/test_s44_falsifiers.py.proof.json",
+             "--root", ".", "--receipt",
+             "WORKER_RETURNS/PYAT-R44-I44-J42-U43-B43-F43-WHOLE-N11-FANIN-R1/evidence/s44_proof_witness.json"],
+            ROOT,
+            env_extra={"PYTHONPATH": "rawlsing_next/tests"},
         )
     )
     results.append(

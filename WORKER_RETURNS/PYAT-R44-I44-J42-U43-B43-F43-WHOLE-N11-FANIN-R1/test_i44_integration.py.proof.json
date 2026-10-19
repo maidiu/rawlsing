@@ -33,6 +33,17 @@
         "old": "    plan = as_b43_plan(candidate_descriptor or descriptor, op_ids=op_ids)",
         "new": "    plan = as_b43_plan(descriptor, op_ids=op_ids)"
       }
+    },
+    {
+      "claim_id": "I44_S44_HISTORICAL_SOURCE_GRADE_EDGE",
+      "actual_consumer": "i44_integration.assert_historical_grade -> merged bank -> unchanged A42 intake / N11 artifacts",
+      "claimed_dependency": "S44 AS2B LiTS-I may only enter at HISTORICAL_SCOPE_POSITIVE; promotion to ORIGINAL_MEASURED_OCCUPANCY must be refused",
+      "positive_node": "WORKER_RETURNS/PYAT-R44-I44-J42-U43-B43-F43-WHOLE-N11-FANIN-R1/test_i44_integration.py::test_s44_source_grade_refusal_and_restore",
+      "fault": {
+        "path": "WORKER_RETURNS/PYAT-R44-I44-J42-U43-B43-F43-WHOLE-N11-FANIN-R1/i44_integration.py",
+        "old": "    if hist.get(\"grade\") != \"HISTORICAL_SCOPE_POSITIVE\":",
+        "new": "    if False:"
+      }
     }
   ]
 }

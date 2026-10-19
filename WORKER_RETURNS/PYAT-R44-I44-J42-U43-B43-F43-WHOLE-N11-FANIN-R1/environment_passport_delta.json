@@ -61,13 +61,14 @@
     "J42": "f53cb0d2bce52640268c844c398bbd8007d28edc",
     "U43": "dcf71f1afbfdbe8a084844cea5fffbc73d9d91ef",
     "B43": "0fa15c1eda1ca36d89b0bbd948b655aa68f17370",
-    "F43": "c0271e2b8d59018d3cf2af7b366258ea503295a6"
+    "F43": "c0271e2b8d59018d3cf2af7b366258ea503295a6",
+    "S44": "cde76f61f10c7f54e0be1582fc7179e23e33979d"
   },
   "dependency_closure": "FULL (stdlib + repo-local; pytest only)",
   "tests_executed": {
     "i44_courts": {
       "command": "python3 -m pytest test_i44_integration.py -q",
-      "result": "18 passed",
+      "result": "22 passed",
       "junit": "evidence/i44_junit.xml"
     },
     "a42_suite": {
@@ -91,12 +92,22 @@
       "junit": "evidence/u43_junit.xml"
     },
     "proof_witness": {
-      "result": "3/3 BASELINE PASS / TARGET_ASSERTION_FAILED",
-      "receipt": "evidence/proof_witness.json"
+      "result": "4/4 BASELINE PASS / TARGET_ASSERTION_FAILED (I44) + 4/4 S44",
+      "receipt": "evidence/proof_witness.json",
+      "s44_receipt": "evidence/s44_proof_witness.json"
     },
     "cold_replay": {
       "result": "byte-identical",
-      "blended": "ef86999070033c3cd52ecabf064e39ac249d8cdd16fcba3b1acabb9b55811cec"
+      "blended": "10a682bb34aeb1547953254baa65b90c0f9520c91772190b07ab2fed9d5cecb3",
+      "receipts": 22,
+      "original_measured": 0,
+      "historical_or_retained": 7,
+      "missing": 1777,
+      "n11": "N11_NOT_READY"
+    },
+    "s44_suite": {
+      "result": "8 passed",
+      "junit": "evidence/s44_junit.xml"
     }
   },
   "u43_support_dependency": {
@@ -114,9 +125,19 @@
   "incremental_money_observed": "UNKNOWN (no billing telemetry in-session)",
   "installed_packages": "pytest 9.0.2",
   "assignments_completed": [
-    "PYAT-R44-I44-J42-U43-B43-F43-WHOLE-N11-FANIN-R1"
+    "PYAT-R44-I44-J42-U43-B43-F43-WHOLE-N11-FANIN-R1",
+    "PYAT-R45-I44-S44-RETURN-INTAKE-CONTINUATION"
   ],
   "eligibility_for_continuation": "YES for the S44 source-positive ingestion once externally issued; NO for source/authority issuance",
   "review_conflicts": "None; this worker is not the independent acceptor of its own work",
-  "privacy_gate": "No passwords, tokens, personal filesystem paths, respondents or secret data in the return"
+  "privacy_gate": "No passwords, tokens, personal filesystem paths, respondents or secret data in the return",
+  "r45_continuation": {
+    "s44_return_commit": "cde76f61f10c7f54e0be1582fc7179e23e33979d",
+    "s44_historical_positive": "AS2B LiTS-I HISTORICAL_SCOPE_POSITIVE (SRC27.S19/S21)",
+    "prospective_e_pre": null,
+    "source_grant_present": false,
+    "stale_j42_pending_corrected": true,
+    "addendum_path_present": false,
+    "addendum_note": "PYAT_CONTROL_ROOM/R45_I44_NONINTERRUPTING_S44_RETURN_INTAKE_ADDENDUM_20261019.md was not present in fetched refs/workspace; explicit launch instructions implemented verbatim."
+  }
 }

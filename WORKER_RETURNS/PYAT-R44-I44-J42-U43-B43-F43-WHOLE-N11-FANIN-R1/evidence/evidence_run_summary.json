@@ -3,102 +3,127 @@
   "all_return_suites_green": true,
   "cold_replay": {
     "artifact_sha256": {
-      "estate_acceptance_manifest.json": "d44dc028db8fb1adbb534ea6ac9fc869431701d2156cd0423da11ae854a1ac1e",
+      "estate_acceptance_manifest.json": "7abe888256829b3c30c3d7b767642513c110e28194448f26c7435b19fb122254",
       "f1_f8_acceptance_matrix.json": "6da2a64951ccd2f646457ea8c1af06cec3145a225c3a4ef1c5da9da31269ed3e",
-      "final_maturity_adjudication.md": "d28e673769d8703a457c6e33a58113cde2da206ad3f2172ad896493f706774bf",
-      "i44_terminal_completion_delta.json": "1db925aa4c6f448a784ec50725b2799e2bb7a0bb4f3c34e9442a395536e80378",
+      "final_maturity_adjudication.md": "bd6a1c94e180bcb796986d30f6874c0467b99326a8791429da5d521fa40f07f9",
+      "i44_terminal_completion_delta.json": "f609ee13cea90933a6d38d6df9784ecc7fe5293ee5a64fc97fc663a6838ebe55",
       "j42_addon_endpoint.json": "1d8fb03262cb09c12ab35fb8f551c5888f790a7faa411d569b2db9ad96f5c598",
-      "merged_receipt_bank_i44.json": "f3490b404df138b0f1a5b7bca3703e54d0b2aa1f680c120a8fc9a23d2ce60aa3",
-      "n11_r43_fanin_intake_and_delta.json": "d744aff313e4833fadab77a431ea39b42ab91aa4304ccce20353f176b6e001f5",
+      "merged_receipt_bank_i44.json": "df77160b6b6ac10acda91d60aac7896f410613f1842dba7af0571feb239645a2",
+      "n11_r43_fanin_intake_and_delta.json": "688554125363ef5ebed37c28462a9f94f6549959d0f3b1dff8774c1c21eee7e7",
       "original35_source_positive_execution_wake_packet.json": "34319115986415bc72632abc6e9a00b72cc0830bbcc401e7ad9be84ec833c095",
       "s44_receiving_interface_report.json": "561fa3050fc3b823c9e60c0be64e570ee9f4d44b1aa017abf0227c96b95bdb42"
     },
     "byte_identical": true,
-    "first_blended": "ef86999070033c3cd52ecabf064e39ac249d8cdd16fcba3b1acabb9b55811cec",
-    "merged_receipt_count": 20,
+    "first_blended": "10a682bb34aeb1547953254baa65b90c0f9520c91772190b07ab2fed9d5cecb3",
+    "merged_receipt_count": 22,
     "n11_state": "N11_NOT_READY",
     "original_measured": 0,
     "schema": "I44_COLD_REPLAY@1",
-    "second_blended": "ef86999070033c3cd52ecabf064e39ac249d8cdd16fcba3b1acabb9b55811cec"
+    "second_blended": "10a682bb34aeb1547953254baa65b90c0f9520c91772190b07ab2fed9d5cecb3"
   },
   "proof_witness": "evidence/proof_witness.json",
   "runs": [
     {
-      "command": "/usr/local/bin/python3 -m pytest tests -q --junitxml evidence/a42_junit.xml",
+      "command": "/usr/local/bin/python3 -m pytest tests -q --junitxml WORKER_RETURNS/PYAT-R44-I44-J42-U43-B43-F43-WHOLE-N11-FANIN-R1/evidence/a42_junit.xml",
       "cwd": "WORKER_RETURNS/PYAT-R42-A42-WHOLE-ESTATE-RETURN-FANIN-AND-N11-CANDIDATE-R1",
-      "elapsed_seconds": 11.04,
+      "elapsed_seconds": 8.59,
       "log": "WORKER_RETURNS/PYAT-R44-I44-J42-U43-B43-F43-WHOLE-N11-FANIN-R1/evidence/a42_suite.log",
       "name": "a42_suite",
       "returncode": 0,
       "tail": [
         ".........................                                                [100%]",
-        "25 passed in 10.20s"
+        "25 passed in 7.95s"
       ]
     },
     {
-      "command": "/usr/local/bin/python3 -m pytest tests -q --junitxml evidence/j42_junit.xml",
+      "command": "/usr/local/bin/python3 -m pytest tests -q --junitxml WORKER_RETURNS/PYAT-R44-I44-J42-U43-B43-F43-WHOLE-N11-FANIN-R1/evidence/j42_junit.xml",
       "cwd": "WORKER_RETURNS/PYAT-R42-J42-COMPLETE-E41-W41-P41-ACTUAL-JOINT-PREV3-CONSUMER-R1",
-      "elapsed_seconds": 433.76,
+      "elapsed_seconds": 350.52,
       "log": "WORKER_RETURNS/PYAT-R44-I44-J42-U43-B43-F43-WHOLE-N11-FANIN-R1/evidence/j42_suite.log",
       "name": "j42_suite",
       "returncode": 0,
       "tail": [
         ".............                                                            [100%]",
-        "13 passed in 432.85s (0:07:12)"
+        "13 passed in 349.70s (0:05:49)"
       ]
     },
     {
-      "command": "/usr/local/bin/python3 -m pytest tests -q --junitxml evidence/f43_junit.xml",
+      "command": "/usr/local/bin/python3 -m pytest tests -q --junitxml WORKER_RETURNS/PYAT-R44-I44-J42-U43-B43-F43-WHOLE-N11-FANIN-R1/evidence/f43_junit.xml",
       "cwd": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1",
-      "elapsed_seconds": 34.2,
+      "elapsed_seconds": 29.42,
       "log": "WORKER_RETURNS/PYAT-R44-I44-J42-U43-B43-F43-WHOLE-N11-FANIN-R1/evidence/f43_suite.log",
       "name": "f43_suite",
       "returncode": 0,
       "tail": [
         "..............................                                           [100%]",
-        "30 passed in 33.05s"
+        "30 passed in 28.41s"
       ]
     },
     {
-      "command": "/usr/local/bin/python3 -m pytest tests -q --junitxml evidence/b43_junit.xml",
+      "command": "/usr/local/bin/python3 -m pytest tests -q --junitxml WORKER_RETURNS/PYAT-R44-I44-J42-U43-B43-F43-WHOLE-N11-FANIN-R1/evidence/b43_junit.xml",
       "cwd": "WORKER_RETURNS/PYAT-R43-B43-SELECTED-ROUTE-B-ORIGINAL35-SOURCE-POSITIVE-ENDTOEND-R1",
-      "elapsed_seconds": 1.45,
+      "elapsed_seconds": 1.18,
       "log": "WORKER_RETURNS/PYAT-R44-I44-J42-U43-B43-F43-WHOLE-N11-FANIN-R1/evidence/b43_suite.log",
       "name": "b43_suite",
       "returncode": 0,
       "tail": [
         "................                                                         [100%]",
-        "16 passed in 0.79s"
+        "16 passed in 0.61s"
       ]
     },
     {
-      "command": "/usr/local/bin/python3 -m pytest tests -q --junitxml evidence/u43_junit.xml",
+      "command": "/usr/local/bin/python3 -m pytest tests -q --junitxml WORKER_RETURNS/PYAT-R44-I44-J42-U43-B43-F43-WHOLE-N11-FANIN-R1/evidence/s44_junit.xml",
+      "cwd": "WORKER_RETURNS/PYAT-R44-S44-ORIGINAL-SOURCE-TO-CURRENT-ROUTE-B-FIRST-MEASURED-WHOLE-ESTATE-R1",
+      "elapsed_seconds": 1.27,
+      "log": "WORKER_RETURNS/PYAT-R44-I44-J42-U43-B43-F43-WHOLE-N11-FANIN-R1/evidence/s44_suite.log",
+      "name": "s44_suite",
+      "returncode": 0,
+      "tail": [
+        "........                                                                 [100%]",
+        "8 passed in 0.76s"
+      ]
+    },
+    {
+      "command": "/usr/local/bin/python3 -m pytest tests -q --junitxml WORKER_RETURNS/PYAT-R44-I44-J42-U43-B43-F43-WHOLE-N11-FANIN-R1/evidence/u43_junit.xml",
       "cwd": "WORKER_RETURNS/PYAT-R43-U43-ORIGINAL35-PROSPECTIVE-WORKLOAD-R1",
-      "elapsed_seconds": 61.75,
+      "elapsed_seconds": 35.15,
       "log": "WORKER_RETURNS/PYAT-R44-I44-J42-U43-B43-F43-WHOLE-N11-FANIN-R1/evidence/u43_suite.log",
       "name": "u43_suite",
       "returncode": 0,
       "tail": [
         "...............................................                          [100%]",
-        "47 passed in 61.15s (0:01:01)"
+        "47 passed in 34.70s"
       ]
     },
     {
       "command": "/usr/local/bin/python3 -m pytest test_i44_integration.py -q --junitxml WORKER_RETURNS/PYAT-R44-I44-J42-U43-B43-F43-WHOLE-N11-FANIN-R1/evidence/i44_junit.xml",
       "cwd": "WORKER_RETURNS/PYAT-R44-I44-J42-U43-B43-F43-WHOLE-N11-FANIN-R1",
-      "elapsed_seconds": 120.75,
+      "elapsed_seconds": 259.65,
       "log": "WORKER_RETURNS/PYAT-R44-I44-J42-U43-B43-F43-WHOLE-N11-FANIN-R1/evidence/i44_integration_courts.log",
       "name": "i44_integration_courts",
       "returncode": 0,
       "tail": [
-        "..................                                                       [100%]",
-        "18 passed in 119.88s (0:01:59)"
+        "......................                                                   [100%]",
+        "22 passed in 258.03s (0:04:18)"
+      ]
+    },
+    {
+      "command": "/usr/local/bin/python3 CROSS_HQ_CONTROL_ROOM/proof_integrity_gate_r1.py witness WORKER_RETURNS/PYAT-R44-S44-ORIGINAL-SOURCE-TO-CURRENT-ROUTE-B-FIRST-MEASURED-WHOLE-ESTATE-R1/tests/test_s44_falsifiers.py.proof.json --root . --receipt WORKER_RETURNS/PYAT-R44-I44-J42-U43-B43-F43-WHOLE-N11-FANIN-R1/evidence/s44_proof_witness.json",
+      "cwd": ".",
+      "elapsed_seconds": 8.3,
+      "log": "WORKER_RETURNS/PYAT-R44-I44-J42-U43-B43-F43-WHOLE-N11-FANIN-R1/evidence/s44_proof_witness.log",
+      "name": "s44_proof_witness",
+      "returncode": 0,
+      "tail": [
+        "    }",
+        "  ]",
+        "}"
       ]
     },
     {
       "command": "/usr/local/bin/python3 CROSS_HQ_CONTROL_ROOM/proof_integrity_gate_r1.py witness WORKER_RETURNS/PYAT-R44-I44-J42-U43-B43-F43-WHOLE-N11-FANIN-R1/test_i44_integration.py.proof.json --root . --receipt WORKER_RETURNS/PYAT-R44-I44-J42-U43-B43-F43-WHOLE-N11-FANIN-R1/evidence/proof_witness.json",
       "cwd": ".",
-      "elapsed_seconds": 141.71,
+      "elapsed_seconds": 201.57,
       "log": "WORKER_RETURNS/PYAT-R44-I44-J42-U43-B43-F43-WHOLE-N11-FANIN-R1/evidence/i44_proof_witness.log",
       "name": "i44_proof_witness",
       "returncode": 0,

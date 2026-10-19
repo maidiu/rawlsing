@@ -18,22 +18,22 @@ original estate.
 |---|---|
 | original measured occupancy | 0 |
 | independently accepted sourcefree | 0 |
-| historical or retained | 5 |
+| historical or retained | 7 |
 | sourcefree integrated positive | 0 |
 | sourcefree local positive | 2 |
 | valid empirical null | 0 |
 | accounted identity only | 70 |
-| development blocker, narrow owner | 35 |
-| missing expected original science | 1778 |
+| development blocker, narrow owner | 34 |
+| missing expected original science | 1777 |
 | **total** | **1890** |
 
 ## R41 fan-in delta vs frozen A41
 
 - original measured: 0 -> 0 (no new original occupied cells: True)
-- missing expected: 1781 -> 1778 (delta -3)
+- missing expected: 1781 -> 1777 (delta -4)
 - new sourcefree integrated cells: 0
 - new independently accepted sourcefree cells: 0
-- new historical/retained cells: 5
+- new historical/retained cells: 7
 
 ## Functional F1-F8 maturity (method, NOT original per-wave occupancy)
 
@@ -75,6 +75,7 @@ unmatched register obligations. J42 is integrated as a real sourcefree TEST_ONLY
 - U43: `dcf71f1afbfdbe8a084844cea5fffbc73d9d91ef` — 18,285 retained research identities, 35 source packets / 175 decisions, descriptor repair; original U/E_pre NULL.
 - B43: `0fa15c1eda1ca36d89b0bbd948b655aa68f17370` — executable selected-B feeder, issuer-bound admission, all35 source-pending; measured output 0.
 - F43: `c0271e2b8d59018d3cf2af7b366258ea503295a6` — four bounded A42 receipts (SRC02.F5 retained, F6/F7 candidate methods, original E04 TEST_ONLY).
-- A42 is the unchanged assessor; the I44 overlay only corrects the stale J42-pending label and records provenance.
+- S44: `cde76f61f10c7f54e0be1582fc7179e23e33979d` — AS2B LiTS-I historical positive re-verified (SRC27.S19/S21, HISTORICAL_SCOPE_POSITIVE); one exact SRC27 owner decision + all35 deferred ledger; current source grant absent, prospective E_pre NULL.
+- A42 is the unchanged assessor; the I44 overlay only corrects the stale J42-pending label and records provenance. The inherited A42 template line and the copied S44 v4 artifacts that repeat 'J42 remains a pending physical return' are stale and corrected here.
 - **Original measured occupancy remains 0. Global F6/F7/F8 remain open. N11 remains NOT_READY. N12 remains HOLD.**
 - S44 receiving interface is executable; no S44 source-positive receipt exists.

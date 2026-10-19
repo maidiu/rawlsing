@@ -7,9 +7,10 @@
     "B43": "0fa15c1eda1ca36d89b0bbd948b655aa68f17370",
     "F43": "c0271e2b8d59018d3cf2af7b366258ea503295a6",
     "J42": "f53cb0d2bce52640268c844c398bbd8007d28edc",
+    "S44": "cde76f61f10c7f54e0be1582fc7179e23e33979d",
     "U43": "dcf71f1afbfdbe8a084844cea5fffbc73d9d91ef"
   },
-  "receipt_order_law": "base A42 R41 bank + F43 four + J42 + U43 + B43",
+  "receipt_order_law": "base A42 R41 bank + F43 four + J42 + U43 + B43 + S44 historical + S44 handoff",
   "receipts": [
     {
       "artifacts": [
@@ -1376,6 +1377,250 @@
         "original_source_grant_present": false,
         "source_grant_present": false,
         "wave_count_pending": 35
+      }
+    },
+    {
+      "artifacts": [
+        {
+          "blob_sha1": "4a7f983e3550024ba577d21c7e3eb495bcd7658c",
+          "bytes": 1406,
+          "commit": "923f2c00b6145182a5e2be5038f579845951da19",
+          "path": "data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/AS2B_LITS1_MECHANICAL_SOURCE_CERTIFICATION_20260827/02_GOVERNED_C11_PROJECTION_RECEIPT.json",
+          "sha256": "ff6ce02f2c602fcefae7d7a4715d71f255e51f09a9160c63961b3752c7ca8534"
+        },
+        {
+          "blob_sha1": "64abcf1fca632203849458b0da63f2e850082bd8",
+          "bytes": 1301,
+          "commit": "923f2c00b6145182a5e2be5038f579845951da19",
+          "path": "data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/AS2B_LITS1_MECHANICAL_SOURCE_CERTIFICATION_20260827/03_C11_CANDIDATE_RELEASE_REPOSITORY_RECEIPT.json",
+          "sha256": "94a0e7f8f4f2d4172954a541d846959658c0458e72df7a91f9f3b3d3c103eb8e"
+        },
+        {
+          "blob_sha1": "56b3c4d4957f40423979b99aee049be62fc74ba0",
+          "bytes": 1017,
+          "commit": "923f2c00b6145182a5e2be5038f579845951da19",
+          "path": "data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/AS2B_LITS1_MECHANICAL_SOURCE_CERTIFICATION_20260827/04_REPLAY_MANIFEST_AND_DETERMINISM_RECEIPT.json",
+          "sha256": "a0c7b3a28ae3fe7eee44bc87471c9612a5dae2fc3561816f801e8891cec5b08b"
+        },
+        {
+          "blob_sha1": "e7331f26dab7e27793bb18bac00036f5a70565a1",
+          "bytes": 1877,
+          "commit": "923f2c00b6145182a5e2be5038f579845951da19",
+          "path": "data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/AS2B_LITS1_MECHANICAL_SOURCE_CERTIFICATION_20260827/06_I03_CERTIFICATION_RECEIPT.csv",
+          "sha256": "d0290ecb58bbe09a6f70d0f92e2f1d32cdf903a8deaa2c4ca666a8dc3de070ed"
+        },
+        {
+          "blob_sha1": "9bb773ba3f61950b4ac4db30a4b1fa73ad5bb6c8",
+          "bytes": 712,
+          "commit": "923f2c00b6145182a5e2be5038f579845951da19",
+          "path": "data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/AS2B_LITS1_MECHANICAL_SOURCE_CERTIFICATION_20260827/08_RESIDUAL_BLOCKER_LEDGER.csv",
+          "sha256": "deb609a4bf5d6cfd211b146d6e80f356adf1bcc407b4c0b31064043a2903fe7c"
+        },
+        {
+          "blob_sha1": "d77bfbaa76f6f0a0cef901dab68944d071e955b3",
+          "bytes": 2702,
+          "commit": "923f2c00b6145182a5e2be5038f579845951da19",
+          "path": "data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/AS2B_LITS1_MECHANICAL_SOURCE_CERTIFICATION_20260827/09_FINAL_AS2B_RETURN.md",
+          "sha256": "ad402f8c6eb920dca5022bd8c6f51479d4032fc5eb6f43f73b0598e77c0c2ea8"
+        }
+      ],
+      "claim_id": "S44_AS2B_LITS_I_HISTORICAL_ORIGINAL_SOURCE_POSITIVE",
+      "coverage": {
+        "axis_ids": [
+          "S19",
+          "S21"
+        ],
+        "f_gate_ids": [],
+        "functional_gates": [],
+        "global_contributions": [],
+        "global_relations": [],
+        "ledger_101_ids": [],
+        "occupancy_grain_note": "historical AS2B LiTS-I measured source positive; NOT current selected B, NOT original measured occupancy",
+        "register_151_ids": [],
+        "wave_ids": [
+          "SRC27"
+        ]
+      },
+      "currentness": {
+        "archive_or_current": "ARCHIVE",
+        "as_of": "2026-08-27T00:00:00+0000"
+      },
+      "grade": "HISTORICAL_SCOPE_POSITIVE",
+      "origin_commit": "923f2c00b6145182a5e2be5038f579845951da19",
+      "receipt_id": "S44-AS2B-LITS-I-HISTORICAL",
+      "unknown_bounds": {
+        "current_grant": false,
+        "deferred_waves": 35,
+        "prospective_e_pre": null,
+        "respondent_count": 29002,
+        "s44_commit": "cde76f61f10c7f54e0be1582fc7179e23e33979d",
+        "source_return": "S44",
+        "supported_fact": {
+          "empirical_fact_hash": "516c1a8b1bfa2f84a39f0423220ecb37f8880e8916e961e61909f5cc933d7cd8",
+          "operation": "recursive_and_or_not",
+          "raw_denominator_support": 5155,
+          "raw_numerator_support": 5155
+        },
+        "wgs7_state": "HISTORICAL_AUTHORITY_PRECEDENT_ONLY__NO_EXECUTED_FACT_RECEIPT_IN_INSPECTED_COMMIT"
+      }
+    },
+    {
+      "artifacts": [
+        {
+          "blob_sha1": "91ca151f537ec92c41013a10898d487f3a270949",
+          "bytes": 3841,
+          "commit": "cde76f61f10c7f54e0be1582fc7179e23e33979d",
+          "path": "WORKER_RETURNS/PYAT-R44-S44-ORIGINAL-SOURCE-TO-CURRENT-ROUTE-B-FIRST-MEASURED-WHOLE-ESTATE-R1/00_RETURN.md",
+          "sha256": "cbbadf5df3e14b2880315cd67106f2360f8fc4edc476d8b3de929d3aafd38279"
+        },
+        {
+          "blob_sha1": "c0e4dd28a7a3fcaf4aa8094430e9f084fead8883",
+          "bytes": 253,
+          "commit": "cde76f61f10c7f54e0be1582fc7179e23e33979d",
+          "path": "WORKER_RETURNS/PYAT-R44-S44-ORIGINAL-SOURCE-TO-CURRENT-ROUTE-B-FIRST-MEASURED-WHOLE-ESTATE-R1/06_COST_RECORD.md",
+          "sha256": "b69d58318507ae3b99b0f12b684cb0254c6bc9a9508864c2b9c4c8704b2ae99b"
+        },
+        {
+          "blob_sha1": "e5421d30eb81e2fd9b1cd31017e95995e1c04972",
+          "bytes": 1218,
+          "commit": "cde76f61f10c7f54e0be1582fc7179e23e33979d",
+          "path": "WORKER_RETURNS/PYAT-R44-S44-ORIGINAL-SOURCE-TO-CURRENT-ROUTE-B-FIRST-MEASURED-WHOLE-ESTATE-R1/environment_passport.json",
+          "sha256": "bcbf07662e823e4a83bce7113c08163160434c8720068bb5d2524246143a92f9"
+        },
+        {
+          "blob_sha1": "35c7173fd6df4c85ee3733080962d2774f0c53de",
+          "bytes": 959,
+          "commit": "cde76f61f10c7f54e0be1582fc7179e23e33979d",
+          "path": "WORKER_RETURNS/PYAT-R44-S44-ORIGINAL-SOURCE-TO-CURRENT-ROUTE-B-FIRST-MEASURED-WHOLE-ESTATE-R1/s44_a42_source_grade_delta.json",
+          "sha256": "becf39767185c1915192df6dcc2a57cfd92092314e7cfeb316334b76d1e16bb1"
+        },
+        {
+          "blob_sha1": "e56a41a02b75e9f1353b4bb06cb6a4145ca28991",
+          "bytes": 5758094,
+          "commit": "cde76f61f10c7f54e0be1582fc7179e23e33979d",
+          "path": "WORKER_RETURNS/PYAT-R44-S44-ORIGINAL-SOURCE-TO-CURRENT-ROUTE-B-FIRST-MEASURED-WHOLE-ESTATE-R1/s44_a42_v4_estate_acceptance_manifest.json",
+          "sha256": "1fe7f91eb670360b89a4d040afad066bb5d07701de3d2425503d3594f2d61c96"
+        },
+        {
+          "blob_sha1": "2a128382b543304a98d0126788a28949453af7b0",
+          "bytes": 759026,
+          "commit": "cde76f61f10c7f54e0be1582fc7179e23e33979d",
+          "path": "WORKER_RETURNS/PYAT-R44-S44-ORIGINAL-SOURCE-TO-CURRENT-ROUTE-B-FIRST-MEASURED-WHOLE-ESTATE-R1/s44_a42_v4_f1_f8_acceptance_matrix.json",
+          "sha256": "908b99ccee35df4dac77e38886cdfc3c1a610fc4949bad6e3c8f9bd31f97f615"
+        },
+        {
+          "blob_sha1": "d47d812f16f91332a4e875935c7e57dd2f09c7eb",
+          "bytes": 2531,
+          "commit": "cde76f61f10c7f54e0be1582fc7179e23e33979d",
+          "path": "WORKER_RETURNS/PYAT-R44-S44-ORIGINAL-SOURCE-TO-CURRENT-ROUTE-B-FIRST-MEASURED-WHOLE-ESTATE-R1/s44_a42_v4_final_maturity_adjudication.md",
+          "sha256": "d8d053666f31210fd134c9d6f1569ea3821cb5915ae31d233ff96338ad04cc71"
+        },
+        {
+          "blob_sha1": "1835e7178f56e3d0cdd211758550d0db77c00a49",
+          "bytes": 4265,
+          "commit": "cde76f61f10c7f54e0be1582fc7179e23e33979d",
+          "path": "WORKER_RETURNS/PYAT-R44-S44-ORIGINAL-SOURCE-TO-CURRENT-ROUTE-B-FIRST-MEASURED-WHOLE-ESTATE-R1/s44_historical_source_positives.json",
+          "sha256": "91f66d3892a24c3dcf23d577cbddea7c1ddf41a474b3a8c720da79a090b32bd9"
+        },
+        {
+          "blob_sha1": "83292d77051af06dab87ec897aa3d69e225a6e72",
+          "bytes": 3983,
+          "commit": "cde76f61f10c7f54e0be1582fc7179e23e33979d",
+          "path": "WORKER_RETURNS/PYAT-R44-S44-ORIGINAL-SOURCE-TO-CURRENT-ROUTE-B-FIRST-MEASURED-WHOLE-ESTATE-R1/s44_single_owner_decision.json",
+          "sha256": "9d954bab183c7fcea4ef847dc4c731e82e6eb9f5d417d3fcc5928329e81f7a16"
+        },
+        {
+          "blob_sha1": "f3e84e4acc680d7d0df0c92bf9a5523b4198c2c4",
+          "bytes": 14213,
+          "commit": "cde76f61f10c7f54e0be1582fc7179e23e33979d",
+          "path": "WORKER_RETURNS/PYAT-R44-S44-ORIGINAL-SOURCE-TO-CURRENT-ROUTE-B-FIRST-MEASURED-WHOLE-ESTATE-R1/s44_all35_deferred_ledger.json",
+          "sha256": "cabaaa71ca9b01a248c2ff06da3679d17ee4a85be53edadb8e4160df37893f51"
+        },
+        {
+          "blob_sha1": "24cf592f5bb545bcb42e6b8f540371ff96b2471d",
+          "bytes": 24208,
+          "commit": "cde76f61f10c7f54e0be1582fc7179e23e33979d",
+          "path": "WORKER_RETURNS/PYAT-R44-S44-ORIGINAL-SOURCE-TO-CURRENT-ROUTE-B-FIRST-MEASURED-WHOLE-ESTATE-R1/s44_source_runtime_handoff.json",
+          "sha256": "959786bd230bb12ff05bb35f253ab18cd29e921c0cc7625c2e24923a98353dde"
+        },
+        {
+          "blob_sha1": "25e911f66aa60f33f5b749a9bd4d2f2772168519",
+          "bytes": 4816,
+          "commit": "cde76f61f10c7f54e0be1582fc7179e23e33979d",
+          "path": "WORKER_RETURNS/PYAT-R44-S44-ORIGINAL-SOURCE-TO-CURRENT-ROUTE-B-FIRST-MEASURED-WHOLE-ESTATE-R1/s44/historical.py",
+          "sha256": "a5222a0b920447ffea65a0974568bd935eff83e8ce643201ab1e1e61ce2b2456"
+        },
+        {
+          "blob_sha1": "3fbad1b76d265080c64f684fa90ef85b788e6ed4",
+          "bytes": 5907,
+          "commit": "cde76f61f10c7f54e0be1582fc7179e23e33979d",
+          "path": "WORKER_RETURNS/PYAT-R44-S44-ORIGINAL-SOURCE-TO-CURRENT-ROUTE-B-FIRST-MEASURED-WHOLE-ESTATE-R1/s44/a42_fanin.py",
+          "sha256": "3760aacaff16e28248bee80a5832e7700af9eee21d3deb10812ced4fd59537d3"
+        },
+        {
+          "blob_sha1": "da1730fd67adbf128e883406903a4605d8146416",
+          "bytes": 6414,
+          "commit": "cde76f61f10c7f54e0be1582fc7179e23e33979d",
+          "path": "WORKER_RETURNS/PYAT-R44-S44-ORIGINAL-SOURCE-TO-CURRENT-ROUTE-B-FIRST-MEASURED-WHOLE-ESTATE-R1/s44/handoff.py",
+          "sha256": "f4fc5c2519bc12a47a580bf93d619e76b1a2e00576e33db206bd903c6ea5bcce"
+        },
+        {
+          "blob_sha1": "2858788caacaea5a6d93151fbf8017a03096ac04",
+          "bytes": 3771,
+          "commit": "cde76f61f10c7f54e0be1582fc7179e23e33979d",
+          "path": "WORKER_RETURNS/PYAT-R44-S44-ORIGINAL-SOURCE-TO-CURRENT-ROUTE-B-FIRST-MEASURED-WHOLE-ESTATE-R1/s44/cli.py",
+          "sha256": "c34852b1ee835cce8140c2b671a7ef57509dd9b57e86ff412fa6e36a75e9ef6c"
+        },
+        {
+          "blob_sha1": "3f44fcfeec13c6e58b4dc8216b9e1f4851c2e5a7",
+          "bytes": 3113,
+          "commit": "cde76f61f10c7f54e0be1582fc7179e23e33979d",
+          "path": "WORKER_RETURNS/PYAT-R44-S44-ORIGINAL-SOURCE-TO-CURRENT-ROUTE-B-FIRST-MEASURED-WHOLE-ESTATE-R1/tests/test_s44_falsifiers.py",
+          "sha256": "092ec08fefe208939332a016dea7bb2e32492aa20c1c53ad0855e2eb8ac65df9"
+        },
+        {
+          "blob_sha1": "095373dac152b67dfb44ddf94068a392dcef20c1",
+          "bytes": 3058,
+          "commit": "cde76f61f10c7f54e0be1582fc7179e23e33979d",
+          "path": "WORKER_RETURNS/PYAT-R44-S44-ORIGINAL-SOURCE-TO-CURRENT-ROUTE-B-FIRST-MEASURED-WHOLE-ESTATE-R1/tests/test_s44_falsifiers.py.proof.json",
+          "sha256": "0016588406bd913d3032a66d1e4aa82cdcaacceceae94613120bb0415bc7254d"
+        },
+        {
+          "blob_sha1": "dac7210fa3198b289b94c06b836ee3c1ee04a84a",
+          "bytes": 9236,
+          "commit": "cde76f61f10c7f54e0be1582fc7179e23e33979d",
+          "path": "WORKER_RETURNS/PYAT-R44-S44-ORIGINAL-SOURCE-TO-CURRENT-ROUTE-B-FIRST-MEASURED-WHOLE-ESTATE-R1/source_manifest.json",
+          "sha256": "041534730e4bd0c4de55f5e1d27ebe2ed5d72dc36cef7cbf6ae6ccef7aa435d1"
+        }
+      ],
+      "claim_id": "S44 one exact SRC27 LiTS-I owner decision + qualified source-runtime handoff + all35 deferred ledger; no current source grant or measured original output",
+      "coverage": {
+        "axis_ids": [],
+        "f_gate_ids": [],
+        "functional_gates": [],
+        "global_contributions": [],
+        "global_relations": [],
+        "ledger_101_ids": [],
+        "occupancy_grain_note": "source-runtime handoff and one owner decision; no acceptance cell occupation",
+        "register_151_ids": [],
+        "wave_ids": []
+      },
+      "currentness": {
+        "archive_or_current": "ARCHIVE",
+        "as_of": "2026-10-19",
+        "note": "returned handoff record; no current source execution"
+      },
+      "downstream_consumer_read_refs": [],
+      "grade": "DOCUMENTARY_IDENTITY_RECONCILIATION",
+      "origin_commit": "cde76f61f10c7f54e0be1582fc7179e23e33979d",
+      "receipt_id": "S44-SOURCE-RUNTIME-HANDOFF",
+      "unknown_bounds": {
+        "all35_deferred_waves": 35,
+        "current_measured_grade": "FIRST_ORIGINAL_CURRENT_B_MEASURED_NOT_YET_EARNED",
+        "historical_positive": "AS2B LiTS-I HISTORICAL_SCOPE_POSITIVE (SRC27 S19/S21)",
+        "prospective_e_pre": null,
+        "raw_source_access_this_pass": "NOT_GRANTED__NO_RAW_SAV_DTA_OPENED",
+        "source_grant_present": false
       }
     }
   ],

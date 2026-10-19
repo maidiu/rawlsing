@@ -1,12 +1,12 @@
 {
   "artifact_sha256": {
-    "estate_acceptance_manifest.json": "d44dc028db8fb1adbb534ea6ac9fc869431701d2156cd0423da11ae854a1ac1e",
+    "estate_acceptance_manifest.json": "7abe888256829b3c30c3d7b767642513c110e28194448f26c7435b19fb122254",
     "f1_f8_acceptance_matrix.json": "6da2a64951ccd2f646457ea8c1af06cec3145a225c3a4ef1c5da9da31269ed3e",
-    "final_maturity_adjudication.md": "d28e673769d8703a457c6e33a58113cde2da206ad3f2172ad896493f706774bf",
-    "i44_terminal_completion_delta.json": "1db925aa4c6f448a784ec50725b2799e2bb7a0bb4f3c34e9442a395536e80378",
+    "final_maturity_adjudication.md": "bd6a1c94e180bcb796986d30f6874c0467b99326a8791429da5d521fa40f07f9",
+    "i44_terminal_completion_delta.json": "f609ee13cea90933a6d38d6df9784ecc7fe5293ee5a64fc97fc663a6838ebe55",
     "j42_addon_endpoint.json": "1d8fb03262cb09c12ab35fb8f551c5888f790a7faa411d569b2db9ad96f5c598",
-    "merged_receipt_bank_i44.json": "f3490b404df138b0f1a5b7bca3703e54d0b2aa1f680c120a8fc9a23d2ce60aa3",
-    "n11_r43_fanin_intake_and_delta.json": "d744aff313e4833fadab77a431ea39b42ab91aa4304ccce20353f176b6e001f5",
+    "merged_receipt_bank_i44.json": "df77160b6b6ac10acda91d60aac7896f410613f1842dba7af0571feb239645a2",
+    "n11_r43_fanin_intake_and_delta.json": "688554125363ef5ebed37c28462a9f94f6549959d0f3b1dff8774c1c21eee7e7",
     "original35_source_positive_execution_wake_packet.json": "34319115986415bc72632abc6e9a00b72cc0830bbcc401e7ad9be84ec833c095",
     "s44_receiving_interface_report.json": "561fa3050fc3b823c9e60c0be64e570ee9f4d44b1aa017abf0227c96b95bdb42"
   },
@@ -48,7 +48,7 @@
     "valid_null_cells": 0,
     "verdict_scope": "whole declared estate 35/1890/151/101/F1-F8 global (A42 v2)"
   },
-  "blended": "ef86999070033c3cd52ecabf064e39ac249d8cdd16fcba3b1acabb9b55811cec",
+  "blended": "10a682bb34aeb1547953254baa65b90c0f9520c91772190b07ab2fed9d5cecb3",
   "delta": {
     "base_a42": {
       "functional": {
@@ -70,10 +70,10 @@
     "classification": "EVIDENCE_BREADTH_AND_INTEGRATION__NO_ESTATE_OCCUPANCY_DELTA",
     "delta": {
       "functional_grade_changes": {},
-      "historical_or_retained_cells": 0,
-      "missing_expected_cells": 0,
+      "historical_or_retained_cells": 2,
+      "missing_expected_cells": -1,
       "original_measured_cells": 0,
-      "receipts": 7
+      "receipts": 9
     },
     "i44_merged": {
       "functional": {
@@ -86,20 +86,20 @@
         "F7": "SOURCEFREE_INTEGRATED_POSITIVE",
         "F8": "SOURCEFREE_INTEGRATED_POSITIVE"
       },
-      "historical_or_retained": 5,
+      "historical_or_retained": 7,
       "j42_state": "INTEGRATED_SOURCEFREE_TESTONLY",
-      "missing_expected": 1778,
+      "missing_expected": 1777,
       "original_measured": 0,
-      "receipts": 20
+      "receipts": 22
     },
     "schema": "I44_TERMINAL_COMPLETION_DELTA@1",
     "terminal_statement": "The four R43 returns are actually bound into A42 at their real grades. No original measured cell, global F6/F7/F8 closure, N11 acceptance or N12 wake is created. Original35 U/E_pre remains unissued."
   },
-  "merged_receipt_count": 20,
+  "merged_receipt_count": 22,
   "merged_verdict": {
-    "blocked_cells": 35,
+    "blocked_cells": 34,
     "can_self_adopt_n11": false,
-    "finite_blocker_count": 1781,
+    "finite_blocker_count": 1780,
     "functional_evidence_gates": [
       "F1",
       "F2",
@@ -112,11 +112,11 @@
     ],
     "global_relations_closed": 0,
     "global_relations_open": 3,
-    "historical_or_retained_cells": 5,
+    "historical_or_retained_cells": 7,
     "identity_accounted_only_cells": 70,
     "independently_accepted_sourcefree_cells": 0,
     "intrinsic_nonapplicability_cells": 0,
-    "missing_expected_cells": 1778,
+    "missing_expected_cells": 1777,
     "n11_state": "N11_NOT_READY",
     "notes": [
       "SOURCEFREE_LOCAL_PASS != ORIGINAL_ESTATE_OCCUPANCY",
@@ -154,6 +154,11 @@
       "commit": "f53cb0d2bce52640268c844c398bbd8007d28edc",
       "file_count": 18,
       "total_bytes": 2794259
+    },
+    "S44": {
+      "commit": "cde76f61f10c7f54e0be1582fc7179e23e33979d",
+      "file_count": 18,
+      "total_bytes": 6608906
     },
     "U43": {
       "commit": "dcf71f1afbfdbe8a084844cea5fffbc73d9d91ef",

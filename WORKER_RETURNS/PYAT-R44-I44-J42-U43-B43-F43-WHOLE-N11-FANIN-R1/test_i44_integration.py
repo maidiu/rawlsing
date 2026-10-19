@@ -54,12 +54,12 @@ def _bank_with(built, receipt):
 
 def test_pins_and_all_twenty_receipts_are_preimage_verified(built):
     pins = built["pins"]
-    assert set(pins) == {"A42", "J42", "U43", "B43", "F43", "U43_ISSUED_WORKLOAD_MODULE"}
-    for name in ("A42", "J42", "U43", "B43", "F43"):
+    assert set(pins) == {"A42", "J42", "U43", "B43", "F43", "S44", "U43_ISSUED_WORKLOAD_MODULE"}
+    for name in ("A42", "J42", "U43", "B43", "F43", "S44"):
         assert pins[name]["commit"] == bootstrap.PINS[name]["commit"]
         assert pins[name]["file_count"] >= 16
     assert built["base"]["a41_receipt_count"] + built["base"]["r41_receipt_count"] == 13
-    assert built["merged"]["a41_receipt_count"] + built["merged"]["r41_receipt_count"] == 20
+    assert built["merged"]["a41_receipt_count"] + built["merged"]["r41_receipt_count"] == 22
     assert [r["receipt_id"] for r in built["bank"]["receipts"]] == list(
         i44.EXPECTED_MERGED_RECEIPT_IDS
     )
@@ -370,6 +370,88 @@ def test_s44_socket_never_changes_real_artifacts(built):
 
 
 # ---------------------------------------------------------------------------
+# S44 noninterrupting return intake (R45 continuation)
+# ---------------------------------------------------------------------------
+
+
+def test_s44_historical_positive_integrated_not_original(built):
+    receipt = built["s44_historical"]
+    assert receipt["receipt_id"] == "S44-AS2B-LITS-I-HISTORICAL"
+    assert receipt["origin_commit"] == "923f2c00b6145182a5e2be5038f579845951da19"
+    assert receipt["grade"] == "HISTORICAL_SCOPE_POSITIVE"
+    assert receipt["coverage"]["wave_ids"] == ["SRC27"]
+    assert set(receipt["coverage"]["axis_ids"]) == {"S19", "S21"}
+    assert receipt["artifacts"], "AS2B artifact custody must be bound"
+    verdict = built["merged"]["acc"]["verdict"]
+    assert verdict["original_measured_occupied_cells"] == 0
+    assert verdict["historical_or_retained_cells"] == 7
+    assert verdict["missing_expected_cells"] == 1777
+    assert verdict["blocked_cells"] == 34
+    assert verdict["sourcefree_local_cells"] == 2
+    assert verdict["identity_accounted_only_cells"] == 70
+    assert verdict["n11_state"] == "N11_NOT_READY"
+    assert built["s44_handoff"]["unknown_bounds"]["prospective_e_pre"] is None
+    assert built["s44_handoff"]["unknown_bounds"]["source_grant_present"] is False
+
+
+def test_s44_source_grade_refusal_and_restore(built):
+    # Integration guard refuses historical-to-original promotion.
+    with pytest.raises(PreimageError) as excinfo:
+        i44.assert_historical_grade({"grade": "ORIGINAL_MEASURED_OCCUPANCY"})
+    assert "S44_HISTORICAL_GRADE_PROMOTION_REFUSED" in str(excinfo.value)
+    i44.assert_historical_grade({"grade": "HISTORICAL_SCOPE_POSITIVE"})
+    # A42's own intake refuses the same promotion inside a merged bank.
+    bad = deepcopy(built["s44_historical"])
+    bad["grade"] = "ORIGINAL_MEASURED_OCCUPANCY"
+    receipts = [r for r in built["bank"]["receipts"] if r["receipt_id"] != bad["receipt_id"]]
+    with pytest.raises(PreimageError) as excinfo:
+        i44.assess({**built["bank"], "receipts": receipts + [bad]})
+    assert "FALSE_PROMOTION_SOURCEFREE_TO_ORIGINAL_OCCUPANCY" in str(excinfo.value)
+    restored = i44.assess(built["bank"])
+    assert restored["acc"]["verdict"]["original_measured_occupied_cells"] == 0
+    assert restored["acc"]["verdict"]["historical_or_retained_cells"] == 7
+
+
+def test_same_consumer_mutation_red_and_cold_restore(built):
+    """The same A42 intake consumer that reads the S44 return must fail on mutation."""
+
+    mutated = deepcopy(built["s44_handoff"])
+    mutated["artifacts"][0]["sha256"] = "0" * 64
+    receipts = [
+        r for r in built["bank"]["receipts"] if r["receipt_id"] != mutated["receipt_id"]
+    ]
+    with pytest.raises(PreimageError) as excinfo:
+        i44.assess({**built["bank"], "receipts": receipts + [mutated]})
+    assert "CONTENT_PREIMAGE_MISMATCH" in str(excinfo.value)
+    restored = i44.assess(built["bank"])
+    assert restored["acc"]["verdict"]["historical_or_retained_cells"] == 7
+    assert restored["acc"]["verdict"]["original_measured_occupied_cells"] == 0
+    # Cold restored green: repeated complete build is byte-identical.
+    first = i44.run_all()
+    second = i44.run_all()
+    assert first["artifact_sha256"] == second["artifact_sha256"]
+    assert first["blended"] == second["blended"]
+
+
+def test_stale_j42_pending_statement_is_corrected(built):
+    integration = built["overlay"]["integration"]
+    corrections = integration["stale_statement_corrections"]
+    assert len(corrections) == 2
+    assert all(
+        c["stale"].startswith("J42 remains a pending physical return")
+        or "PENDING_PHYSICAL_RETURN" in c["stale"]
+        for c in corrections
+    )
+    assert all(c["corrected"] == "INTEGRATED_ACTUAL_NATIVE_JOINED_RETURN__SOURCEFREE_TESTONLY"
+               for c in corrections)
+    assert "J42 remains a pending physical return." not in built["overlay"]["md"]
+    assert "J42 is integrated as a real sourcefree TEST_ONLY joined return" in built["overlay"]["md"]
+    assert built["overlay"]["manifest"]["j42_state"].startswith("INTEGRATED_")
+    assert built["overlay"]["f1_f8"]["j42_state"].startswith("INTEGRATED_")
+    assert built["overlay"]["j42_endpoint"]["state"].startswith("INTEGRATED_")
+
+
+# ---------------------------------------------------------------------------
 # deterministic replay
 # ---------------------------------------------------------------------------
 
@@ -380,4 +462,4 @@ def test_cold_replay_is_byte_identical(built):
     assert first["artifact_sha256"] == second["artifact_sha256"]
     assert first["blended"] == second["blended"]
     assert first["merged_verdict"]["original_measured_occupied_cells"] == 0
-    assert first["merged_receipt_count"] == 20
+    assert first["merged_receipt_count"] == 22

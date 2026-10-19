@@ -126,6 +126,26 @@ CONSUMED: dict[str, tuple[str, ...]] = {
         "evidence/proof_witness.json",
         "evidence/cold_replay.json",
     ),
+    "S44": (
+        "00_RETURN.md",
+        "06_COST_RECORD.md",
+        "environment_passport.json",
+        "s44_a42_source_grade_delta.json",
+        "s44_a42_v4_estate_acceptance_manifest.json",
+        "s44_a42_v4_f1_f8_acceptance_matrix.json",
+        "s44_a42_v4_final_maturity_adjudication.md",
+        "s44_historical_source_positives.json",
+        "s44_single_owner_decision.json",
+        "s44_all35_deferred_ledger.json",
+        "s44_source_runtime_handoff.json",
+        "s44/historical.py",
+        "s44/a42_fanin.py",
+        "s44/handoff.py",
+        "s44/cli.py",
+        "tests/test_s44_falsifiers.py",
+        "tests/test_s44_falsifiers.py.proof.json",
+        "source_manifest.json",
+    ),
     "A42": (
         "00_RETURN.md",
         "a42/__init__.py",
@@ -163,6 +183,8 @@ EXPECTED_MERGED_RECEIPT_IDS = (
     "J42-JOINED-E41-W41-P41-NATIVE",
     "U43-ORIGINAL35-FRONTIER-AND-DESCRIPTOR-REPAIR",
     "B43-SELECTED-B-SOURCE-FEEDER",
+    "S44-AS2B-LITS-I-HISTORICAL",
+    "S44-SOURCE-RUNTIME-HANDOFF",
 )
 
 
@@ -328,6 +350,82 @@ def build_b43_receipt(gp: GitPreimage) -> dict[str, Any]:
     return receipt
 
 
+def assert_historical_grade(hist: Mapping[str, Any]) -> None:
+    """S44 historical source must never be promoted to original occupancy."""
+
+    if hist.get("grade") != "HISTORICAL_SCOPE_POSITIVE":
+        raise PreimageError(
+            "S44_HISTORICAL_GRADE_PROMOTION_REFUSED:" + str(hist.get("grade"))
+        )
+
+
+def build_s44_receipts(gp: GitPreimage) -> tuple[dict[str, Any], dict[str, Any]]:
+    """Build the S44 historical source receipt and the exact return handoff receipt."""
+
+    import sys
+
+    s44_root = bootstrap.path_for("S44")
+    if str(s44_root) not in sys.path:
+        sys.path.insert(0, str(s44_root))
+    from s44 import historical as s44historical
+
+    hist = s44historical.verify_historical(gp)
+    assert_historical_grade(hist)
+    historical_receipt = s44historical.a42_historical_receipt(hist)
+    historical_receipt["grade"] = hist["grade"]
+    # S44's builder omits the artifact custody block; bind the exact AS2B preimages.
+    historical_receipt["artifacts"] = sorted(
+        hist["as2b"]["verified_artifacts"].values(), key=lambda record: record["path"]
+    )
+    historical_receipt["unknown_bounds"] = {
+        **historical_receipt.get("unknown_bounds", {}),
+        "source_return": "S44",
+        "s44_commit": bootstrap.PINS["S44"]["commit"],
+        "current_grant": False,
+        "prospective_e_pre": None,
+        "deferred_waves": 35,
+        "wgs7_state": hist["wvs7"]["state"],
+    }
+    handoff_receipt = {
+        "receipt_id": "S44-SOURCE-RUNTIME-HANDOFF",
+        "origin_commit": bootstrap.PINS["S44"]["commit"],
+        "claim_id": (
+            "S44 one exact SRC27 LiTS-I owner decision + qualified source-runtime handoff + "
+            "all35 deferred ledger; no current source grant or measured original output"
+        ),
+        "grade": "DOCUMENTARY_IDENTITY_RECONCILIATION",
+        "coverage": {
+            "wave_ids": [],
+            "axis_ids": [],
+            "f_gate_ids": [],
+            "functional_gates": [],
+            "register_151_ids": [],
+            "ledger_101_ids": [],
+            "global_relations": [],
+            "global_contributions": [],
+            "occupancy_grain_note": (
+                "source-runtime handoff and one owner decision; no acceptance cell occupation"
+            ),
+        },
+        "currentness": {
+            "archive_or_current": "ARCHIVE",
+            "as_of": "2026-10-19",
+            "note": "returned handoff record; no current source execution",
+        },
+        "artifacts": _artifacts(gp, "S44"),
+        "unknown_bounds": {
+            "source_grant_present": False,
+            "prospective_e_pre": None,
+            "all35_deferred_waves": 35,
+            "historical_positive": "AS2B LiTS-I HISTORICAL_SCOPE_POSITIVE (SRC27 S19/S21)",
+            "raw_source_access_this_pass": hist["raw_source_access_this_pass"],
+            "current_measured_grade": "FIRST_ORIGINAL_CURRENT_B_MEASURED_NOT_YET_EARNED",
+        },
+        "downstream_consumer_read_refs": [],
+    }
+    return historical_receipt, handoff_receipt
+
+
 def build_f43_bank(gp: GitPreimage) -> dict[str, Any]:
     import sys
 
@@ -365,8 +463,14 @@ def merged_bank(
     j42: Mapping[str, Any],
     u43: Mapping[str, Any],
     b43: Mapping[str, Any],
+    s44_historical: Mapping[str, Any] | None = None,
+    s44_handoff: Mapping[str, Any] | None = None,
 ) -> dict[str, Any]:
     receipts = list(base_bank["receipts"]) + list(f43_bank["receipts"]) + [j42, u43, b43]
+    if s44_historical is not None:
+        receipts.append(s44_historical)
+    if s44_handoff is not None:
+        receipts.append(s44_handoff)
     ids = [r["receipt_id"] for r in receipts]
     if len(ids) != len(set(ids)):
         raise PreimageError("DUPLICATE_RECEIPT_ID_IN_MERGED_BANK")
@@ -376,7 +480,7 @@ def merged_bank(
         "base_bank_schema": base_bank.get("schema"),
         "i44_startup": I44_STARTUP,
         "pins": {name: pin["commit"] for name, pin in bootstrap.PINS.items()},
-        "receipt_order_law": "base A42 R41 bank + F43 four + J42 + U43 + B43",
+        "receipt_order_law": "base A42 R41 bank + F43 four + J42 + U43 + B43 + S44 historical + S44 handoff",
         "receipts": receipts,
         "full_original_product_complete": False,
     }
@@ -443,6 +547,8 @@ def _source_return(receipt_id: str) -> str:
         return "U43_R43"
     if receipt_id.startswith("B43"):
         return "B43_R43"
+    if receipt_id.startswith("S44"):
+        return "S44_R44"
     return "UNKNOWN"
 
 
@@ -474,7 +580,32 @@ def apply_i44_overlay(result: Mapping[str, Any], pins_report: Mapping[str, Any])
                 "F43-TEMPORAL-CANDIDATE",
                 "F43-ORIGINAL-E04-TEST",
             ],
+            "S44": [
+                "S44-AS2B-LITS-I-HISTORICAL",
+                "S44-SOURCE-RUNTIME-HANDOFF",
+            ],
         },
+        "historical_source_positive": {
+            "source": "AS2B LiTS-I",
+            "commit": "923f2c00b6145182a5e2be5038f579845951da19",
+            "grade": "HISTORICAL_SCOPE_POSITIVE",
+            "cells": ["SRC27.S19", "SRC27.S21"],
+            "occupies_original_measured": False,
+        },
+        "prospective_e_pre": None,
+        "source_grant_present": False,
+        "stale_statement_corrections": [
+            {
+                "inherited_source": "A42 a42.core.artifacts() hardcoded template",
+                "stale": "J42 remains a pending physical return / PENDING_PHYSICAL_RETURN__NOT_COUNTED",
+                "corrected": j42_state,
+            },
+            {
+                "inherited_source": "S44 s44_a42_v4 artifacts (inherited A42 template)",
+                "stale": "J42 remains a pending physical return / PENDING_PHYSICAL_RETURN__NOT_COUNTED",
+                "corrected": j42_state,
+            },
+        ],
         "assessor": {
             "owner": "A42 unchanged a42.core",
             "commit": A42_COMMIT,
@@ -538,8 +669,14 @@ def apply_i44_overlay(result: Mapping[str, Any], pins_report: Mapping[str, Any])
         "issuer-bound admission, all35 source-pending; measured output 0.\n"
         f"- F43: `{bootstrap.PINS['F43']['commit']}` — four bounded A42 receipts "
         "(SRC02.F5 retained, F6/F7 candidate methods, original E04 TEST_ONLY).\n"
+        f"- S44: `{bootstrap.PINS['S44']['commit']}` — AS2B LiTS-I historical positive "
+        "re-verified (SRC27.S19/S21, HISTORICAL_SCOPE_POSITIVE); one exact SRC27 owner "
+        "decision + all35 deferred ledger; current source grant absent, prospective "
+        "E_pre NULL.\n"
         "- A42 is the unchanged assessor; the I44 overlay only corrects the stale "
-        "J42-pending label and records provenance.\n"
+        "J42-pending label and records provenance. The inherited A42 template line and "
+        "the copied S44 v4 artifacts that repeat 'J42 remains a pending physical return' "
+        "are stale and corrected here.\n"
         "- **Original measured occupancy remains 0. Global F6/F7/F8 remain open. "
         "N11 remains NOT_READY. N12 remains HOLD.**\n"
         "- S44 receiving interface is executable; no S44 source-positive receipt exists.\n"
@@ -666,7 +803,8 @@ def build_all() -> dict[str, Any]:
     j42 = build_j42_receipt(gp)
     u43 = build_u43_receipt(gp)
     b43 = build_b43_receipt(gp)
-    bank = merged_bank(base_bank, f43_bank, j42, u43, b43)
+    s44_historical, s44_handoff = build_s44_receipts(gp)
+    bank = merged_bank(base_bank, f43_bank, j42, u43, b43, s44_historical, s44_handoff)
     merged = assess(bank, gp=gp)
     overlay = apply_i44_overlay(merged, pins_report)
     delta = terminal_delta(base, merged)
@@ -681,6 +819,8 @@ def build_all() -> dict[str, Any]:
         "j42": j42,
         "u43": u43,
         "b43": b43,
+        "s44_historical": s44_historical,
+        "s44_handoff": s44_handoff,
         "bank": bank,
         "merged": merged,
         "overlay": overlay,

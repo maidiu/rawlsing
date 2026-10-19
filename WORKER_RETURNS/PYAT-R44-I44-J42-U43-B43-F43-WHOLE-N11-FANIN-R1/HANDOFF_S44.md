@@ -62,3 +62,22 @@ never written into the real artifacts.
 5. The method/purpose admission for any F6/F7/N9 use — separate from the source grant.
 
 The socket is transport and validation only; it grants nothing.
+
+---
+
+## R45 continuation — S44 return already ingested
+
+**Returned S44 head:** `cde76f61f10c7f54e0be1582fc7179e23e33979d`.
+
+The S44 return is now part of the merged A42 bank as two extra receipts:
+
+* `S44-AS2B-LITS-I-HISTORICAL` — `HISTORICAL_SCOPE_POSITIVE` at
+  `923f2c00b6145182a5e2be5038f579845951da19`, covering SRC27.S19/S21. It adds **2
+  retained cells** and reduces missing by **1**; original measured stays **0/1,890**.
+* `S44-SOURCE-RUNTIME-HANDOFF` — documentary: one exact SRC27 decision, qualified
+  runtime contract, all35 deferred ledger, prospective E_pre **NULL**.
+
+WVS7 remains precedent-only. No current source grant, current selected-B read,
+measured original output, F6 transport, observed F7 pair, N11 acceptance or N12 wake
+exists. The socket below is the exact place a real S44 source-positive receipt will
+enter once the external competent owner signs the SRC27 decision.
