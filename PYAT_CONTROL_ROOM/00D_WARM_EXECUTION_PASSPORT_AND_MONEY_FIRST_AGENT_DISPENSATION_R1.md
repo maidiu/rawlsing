@@ -1,5 +1,10 @@
 # PYAT 00D — Warm execution passport / money-first agent dispensation R1
 
+## Mandatory single-pass proof-integrity requirement — 18 October 2026
+
+New and continued Pyat worker commissions MUST inherit [the PRE-MAIN proof-integrity law](../CROSS_HQ_CONTROL_ROOM/PROOF_INTEGRITY_AND_FALSIFIABLE_TEST_LAW_R1.md): frozen claim-to-consumer observable, explicit upstream-edge severance, actual test RED for the named assertion in the same qualified implementation pass, nonvacuous assertions, and faithful `NOT_PROVED` where absent. CI checks changed Python tests and executes supplied integration fault witnesses. This is within the current warm execution and cost budget, NOT an added mandatory agent/reviewer round. Add the exact claim/fault/positive/RED test node to the return passport; provider/model/effort obligations remain unchanged.
+
+
 **Status:** MANDATORY USER-DIRECTED PYAT HQ COMMISSIONING/OPERATING DISCIPLINE, 2026-10-14. **Not** a new semantic authority, source-use license, HQ accession, model grant, canonical change, N11/N12/actor/weld decision or unattended dispatcher approval.
 
 **Use with:** `PYAT_CONTROL_ROOM/SHARED_STORE_SPARSE_WORKTREE_EXECUTION_LAW_R1.md`, `PYAT_CONTROL_ROOM/HQ_OPERATING_REQUIREMENTS_EFFECTIVENESS_R1.md`, `PYAT_CONTROL_ROOM/00_WHOLE_MACHINE_AUTOMATION_DOCTRINE_R1.md`, `PYAT_CONTROL_ROOM/RESOURCE_AWARE_COMMISSION_COMMAND_R1/README.md` (documented but not operationally qualified), Sorok's `00C` routing constitution plus Sorok new `00D_WARM_ENVIRONMENT_PASSPORT_AND_COST_AWARE_AGENT_DISPENSATION_R1.md` at exact live working commit `3c33688506840869e1f05f4230248ce950b78d6c`; and shared cross-HQ progress protocol. The latter Sorok ref is a read cut; re-resolve live progress before material decisions.
