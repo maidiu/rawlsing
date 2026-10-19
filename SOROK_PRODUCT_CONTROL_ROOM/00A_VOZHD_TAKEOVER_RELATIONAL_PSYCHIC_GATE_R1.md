@@ -1,5 +1,10 @@
 # SOROK VOZHD TAKEOVER GATE — Relationally Constituted Mediated Personhood R1
 
+## Terminal completion compatibility — 19 October 2026
+
+This relational-psychic specialization gate is **not** the whole Sorok finish-line gate. Before entry or operative dispatch, use the [shared PRE-MAIN terminal-deliverable/anti-microfocus law](https://github.com/maidiu/rawlsing/blob/integration/pre-main-reconciliation-r1/CROSS_HQ_CONTROL_ROOM/HQ_TERMINAL_DELIVERABLE_CONTINUITY_AND_ANTI_MICROFOCUS_LAW_R1.md) and 00_FULL/07/00C. An accurately described relational ontology is not evidence of **an actual world-conditioned, developing, enduring, independently generated person**. Name which current C0–C12/A0–A5 artifact/owner remains missing, the largest legal implementable completion campaign, and why any proposed narrower court is necessary to that outcome. Preserve the independent CAN008/ADP/genealogy/actor/source/N11/N12 gates, and do not turn a philosophical insight into runtime occurrence by fiat.
+
+
 Status: `MANDATORY_TAKEOVER_INHERITANCE_GATE__NON_DISPOSITIVE_TO_GOVERNED_PYAT`
 
 Date: 2026-09-29
