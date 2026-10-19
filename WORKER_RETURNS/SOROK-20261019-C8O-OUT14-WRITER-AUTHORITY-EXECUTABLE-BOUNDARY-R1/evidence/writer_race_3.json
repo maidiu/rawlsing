@@ -1,0 +1,52 @@
+{
+  "acknowledged_occurrence_ids": [
+    "OCC-0001",
+    "OCC-0002",
+    "OCC-0003"
+  ],
+  "cold_reopen": {
+    "count": 3,
+    "ids": [
+      "OCC-0001",
+      "OCC-0002",
+      "OCC-0003"
+    ],
+    "receipt_id": "c46a190653f7b2fec6b1b768cd7b0d61f103f83580b671228c0d612a9654650f",
+    "status": "VERSIONED_VALID",
+    "version": 3,
+    "writer_id": "W1"
+  },
+  "committed_versions": [
+    1,
+    2,
+    3
+  ],
+  "durable_occurrence_ids": [
+    "OCC-0001",
+    "OCC-0002",
+    "OCC-0003"
+  ],
+  "writers": [
+    {
+      "err": "",
+      "out": "{\"writer\": \"W0\", \"pid\": 77521, \"mode\": \"cas\", \"attempts\": [{\"recovered\": 0, \"committed\": 1, \"receipt_id\": \"08785276ec13160561221053bfebed0402b63b3c1eb19ac180f0d6cab6a46f51\", \"acknowledged\": [\"OCC-0001\"]}]}",
+      "pid": 77521,
+      "rc": 0,
+      "writer": "W0"
+    },
+    {
+      "err": "",
+      "out": "{\"writer\": \"W1\", \"pid\": 77523, \"mode\": \"cas\", \"attempts\": [{\"conflict\": {\"expected\": 1, \"actual\": 2}}, {\"recovered\": 2, \"committed\": 3, \"receipt_id\": \"c46a190653f7b2fec6b1b768cd7b0d61f103f83580b671228c0d612a9654650f\", \"acknowledged\": [\"OCC-0001\", \"OCC-0002\", \"OCC-0003\"]}]}",
+      "pid": 77523,
+      "rc": 0,
+      "writer": "W1"
+    },
+    {
+      "err": "",
+      "out": "{\"writer\": \"W2\", \"pid\": 77524, \"mode\": \"cas\", \"attempts\": [{\"conflict\": {\"expected\": 0, \"actual\": 1}}, {\"recovered\": 1, \"committed\": 2, \"receipt_id\": \"cac94c7bd8913d05cc9994ddb7490db6b2cb3d7321b5de065c934999a6062ab1\", \"acknowledged\": [\"OCC-0001\", \"OCC-0002\"]}]}",
+      "pid": 77524,
+      "rc": 0,
+      "writer": "W2"
+    }
+  ]
+}

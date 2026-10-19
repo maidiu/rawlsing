@@ -1,0 +1,39 @@
+{
+  "legally_callable_write_entrypoints": [
+    {
+      "capability_required": false,
+      "entrypoint": "outbox_prototype.Journal.commit",
+      "lock": false,
+      "restricted_by_competent_authority_in_source": false,
+      "signature": "(self, p, crash_boundary=None)",
+      "version_precondition": false
+    },
+    {
+      "capability_required": false,
+      "entrypoint": "outbox_prototype.Journal.admit_and_queue",
+      "lock": false,
+      "restricted_by_competent_authority_in_source": false,
+      "signature": "(self, candidate, viewer_id=None, crash_boundary=None)",
+      "version_precondition": false
+    },
+    {
+      "capability_required": true,
+      "entrypoint": "c8o_trusted_outbox.C8OccurrenceJournal.commit",
+      "lock": true,
+      "note": "opt-in discipline only; does not bind the accepted writer",
+      "restricted_by_competent_authority_in_source": false,
+      "signature": "(self, p, expected_version: 'int', *, capability: 'WriterCapability', crash_boundary: 'Optional[str]' = None, require_trusted_time: 'bool' = False) -> 'C8CommitReceipt'",
+      "version_precondition": true
+    },
+    {
+      "capability_required": false,
+      "entrypoint": "direct filesystem write / os.replace to the journal path",
+      "lock": false,
+      "restricted_by_competent_authority_in_source": false,
+      "signature": "OS-level",
+      "version_precondition": false
+    }
+  ],
+  "verdict": "LEGACY_WRITER_AUTHORIZATION_BYPASS_UNCLOSED",
+  "who_can_close_it": "a competent owner with jurisdiction over the accepted Journal public interface: deprecate/deny Journal.commit and Journal.admit_and_queue as writers of this path, or install a capability-checked writer gate; this worker may not issue or grant that authority"
+}

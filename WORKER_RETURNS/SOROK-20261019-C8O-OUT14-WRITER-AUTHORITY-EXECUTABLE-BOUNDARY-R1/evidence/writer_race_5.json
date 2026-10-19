@@ -1,0 +1,74 @@
+{
+  "acknowledged_occurrence_ids": [
+    "OCC-0001",
+    "OCC-0002",
+    "OCC-0003",
+    "OCC-0004",
+    "OCC-0005"
+  ],
+  "cold_reopen": {
+    "count": 5,
+    "ids": [
+      "OCC-0001",
+      "OCC-0002",
+      "OCC-0003",
+      "OCC-0004",
+      "OCC-0005"
+    ],
+    "receipt_id": "57549801e0cd0ce2c16af773de60f1580d5711cd3cc9cd8e64d7bceb4762bf97",
+    "status": "VERSIONED_VALID",
+    "version": 5,
+    "writer_id": "W3"
+  },
+  "committed_versions": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "durable_occurrence_ids": [
+    "OCC-0001",
+    "OCC-0002",
+    "OCC-0003",
+    "OCC-0004",
+    "OCC-0005"
+  ],
+  "writers": [
+    {
+      "err": "",
+      "out": "{\"writer\": \"W0\", \"pid\": 77542, \"mode\": \"cas\", \"attempts\": [{\"recovered\": 0, \"committed\": 1, \"receipt_id\": \"ea2545e82f6f09db638a91a8958b477789f6a8973227eb14bee18c470d43f876\", \"acknowledged\": [\"OCC-0001\"]}]}",
+      "pid": 77542,
+      "rc": 0,
+      "writer": "W0"
+    },
+    {
+      "err": "",
+      "out": "{\"writer\": \"W1\", \"pid\": 77543, \"mode\": \"cas\", \"attempts\": [{\"recovered\": 1, \"committed\": 2, \"receipt_id\": \"124e9bc5f1cd34b9281d844d6849a22a5011073aa9af42603eb66cdc458761be\", \"acknowledged\": [\"OCC-0001\", \"OCC-0002\"]}]}",
+      "pid": 77543,
+      "rc": 0,
+      "writer": "W1"
+    },
+    {
+      "err": "",
+      "out": "{\"writer\": \"W2\", \"pid\": 77544, \"mode\": \"cas\", \"attempts\": [{\"recovered\": 2, \"committed\": 3, \"receipt_id\": \"985af4735f91405a0b2023d138a57e2dfe3a5193ff87462a0dac63583ce9034c\", \"acknowledged\": [\"OCC-0001\", \"OCC-0002\", \"OCC-0003\"]}]}",
+      "pid": 77544,
+      "rc": 0,
+      "writer": "W2"
+    },
+    {
+      "err": "",
+      "out": "{\"writer\": \"W3\", \"pid\": 77546, \"mode\": \"cas\", \"attempts\": [{\"conflict\": {\"expected\": 3, \"actual\": 4}}, {\"recovered\": 4, \"committed\": 5, \"receipt_id\": \"57549801e0cd0ce2c16af773de60f1580d5711cd3cc9cd8e64d7bceb4762bf97\", \"acknowledged\": [\"OCC-0001\", \"OCC-0002\", \"OCC-0003\", \"OCC-0004\", \"OCC-0005\"]}]}",
+      "pid": 77546,
+      "rc": 0,
+      "writer": "W3"
+    },
+    {
+      "err": "",
+      "out": "{\"writer\": \"W4\", \"pid\": 77547, \"mode\": \"cas\", \"attempts\": [{\"conflict\": {\"expected\": 0, \"actual\": 2}}, {\"conflict\": {\"expected\": 2, \"actual\": 3}}, {\"recovered\": 3, \"committed\": 4, \"receipt_id\": \"ca1fe69d317049dd123d86af9daedbd014ba6efc5962dc75bf353742139726b7\", \"acknowledged\": [\"OCC-0001\", \"OCC-0002\", \"OCC-0003\", \"OCC-0004\"]}]}",
+      "pid": 77547,
+      "rc": 0,
+      "writer": "W4"
+    }
+  ]
+}

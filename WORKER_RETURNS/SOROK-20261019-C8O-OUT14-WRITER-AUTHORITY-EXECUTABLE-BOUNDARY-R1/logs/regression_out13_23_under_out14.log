@@ -1,0 +1,104 @@
+.............F.........                                                  [100%]
+=================================== FAILURES ===================================
+____ test_hp8_corrupting_writer_version_resets_to_zero_and_defeats_the_CAS _____
+
+self = <multiwriter_journal.MultiwriterJournal object at 0x10900e210>
+
+    def _read_version(self) -> int:
+        """Validate one exact version-bound canonical receipt or reject.
+    
+        A nonexistent file is the ONLY valid genesis version 0. An existing
+        unversioned/legacy, truncated, injected, or malformed file is NOT a
+        fresh journal. An unkeyed digest cannot authenticate the writer or
+        detect replay of an entirely previous valid receipt; owner grants
+        and trusted anti-rollback custody remain separate prerequisites.
+        """
+        if not self.path.exists():
+            return 0
+        try:
+            contents = self.path.read_text(encoding="utf8")
+            receipt = json.loads(contents)
+            if not isinstance(receipt, dict):
+                raise ValueError("NON_OBJECT")
+            required = {"schema", "state", "state_digest",
+                        "writer_version", "version_state_digest"}
+            if set(receipt) != required:
+                raise ValueError("MISSING_OR_UNKNOWN_ENVELOPE_FIELDS")
+            if receipt["schema"] != SCHEMA:
+                raise ValueError("UNSUPPORTED_SCHEMA")
+            ver = receipt["writer_version"]
+            if type(ver) is not int or ver < 1:
+>               raise ValueError("VERSION_NOT_POSITIVE_INTEGER")
+E               ValueError: VERSION_NOT_POSITIVE_INTEGER
+
+runtime/candidate/multiwriter_journal.py:124: ValueError
+
+The above exception was the direct cause of the following exception:
+
+    def test_hp8_corrupting_writer_version_resets_to_zero_and_defeats_the_CAS():
+        d = H.tmpdir()
+        p = d / "journal.json"
+        rows = H.parse(H.spawn("cas", d, ["A", "B"]))
+        v_before = H.writer_version(p)
+        assert v_before == 2
+        r = H.raw(p)
+        r["writer_version"] = "CORRUPT-NOT-AN-INT"
+        p.write_text(_canonical(r))
+        # _read_version swallows the parse failure and returns 0
+        j = MultiwriterJournal(p)
+>       _s, v_seen = j.recover()
+                     ^^^^^^^^^^^
+
+test_out13_hostile.py:187: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+runtime/candidate/multiwriter_journal.py:143: in recover
+    version = self._read_version()
+              ^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <multiwriter_journal.MultiwriterJournal object at 0x10900e210>
+
+    def _read_version(self) -> int:
+        """Validate one exact version-bound canonical receipt or reject.
+    
+        A nonexistent file is the ONLY valid genesis version 0. An existing
+        unversioned/legacy, truncated, injected, or malformed file is NOT a
+        fresh journal. An unkeyed digest cannot authenticate the writer or
+        detect replay of an entirely previous valid receipt; owner grants
+        and trusted anti-rollback custody remain separate prerequisites.
+        """
+        if not self.path.exists():
+            return 0
+        try:
+            contents = self.path.read_text(encoding="utf8")
+            receipt = json.loads(contents)
+            if not isinstance(receipt, dict):
+                raise ValueError("NON_OBJECT")
+            required = {"schema", "state", "state_digest",
+                        "writer_version", "version_state_digest"}
+            if set(receipt) != required:
+                raise ValueError("MISSING_OR_UNKNOWN_ENVELOPE_FIELDS")
+            if receipt["schema"] != SCHEMA:
+                raise ValueError("UNSUPPORTED_SCHEMA")
+            ver = receipt["writer_version"]
+            if type(ver) is not int or ver < 1:
+                raise ValueError("VERSION_NOT_POSITIVE_INTEGER")
+            if not isinstance(receipt["state"], dict):
+                raise ValueError("STATE_NOT_OBJECT")
+            if receipt["state_digest"] != _hash(receipt["state"]):
+                raise ValueError("STATE_DIGEST_MISMATCH")
+            sealed = {"schema": SCHEMA, "state": receipt["state"],
+                      "writer_version": ver}
+            if receipt["version_state_digest"] != _hash(sealed):
+                raise ValueError("VERSION_STATE_DIGEST_MISMATCH")
+            if _canonical(receipt) != contents:
+                raise ValueError("NONCANONICAL_RECEIPT")
+            return ver
+        except (OSError, UnicodeError, ValueError, TypeError, KeyError) as exc:
+>           raise VersionStateUnreadable(self.path, type(exc).__name__ + ":" + str(exc)) from exc
+E           multiwriter_journal.VersionStateUnreadable: VERSION_STATE_UNREADABLE reason=ValueError:VERSION_NOT_POSITIVE_INTEGER path=/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/out13-hagw31hn/journal.json
+
+runtime/candidate/multiwriter_journal.py:137: VersionStateUnreadable
+=========================== short test summary info ============================
+FAILED test_out13_hostile.py::test_hp8_corrupting_writer_version_resets_to_zero_and_defeats_the_CAS
+1 failed, 22 passed in 13.02s

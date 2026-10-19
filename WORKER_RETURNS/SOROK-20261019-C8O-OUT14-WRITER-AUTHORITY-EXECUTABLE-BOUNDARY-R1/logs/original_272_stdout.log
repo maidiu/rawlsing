@@ -1,0 +1,42 @@
+........................................................................ [ 26%]
+........................................................................ [ 52%]
+........................................................................ [ 79%]
+.........F............................................F.                 [100%]
+=================================== FAILURES ===================================
+________ test_replay_manual_two_writers_can_lose_first_committed_event _________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-956/test_replay_manual_two_writers0')
+
+    def test_replay_manual_two_writers_can_lose_first_committed_event(tmp_path):
+        j=Journal(tmp_path/'journal.json'); a=j.recover();b=j.recover()
+        first=a.ledger.admit(legacy('A'));a.outbox.emit(first['occurrence_id']);j.commit(a)
+        second=b.ledger.admit(legacy('B'));b.outbox.emit(second['occurrence_id']);j.commit(b)
+        # A second stale writer must not erase the original commit.
+>       reread=j.recover(); assert reread.ledger.get('OCC-0001')['candidate_id']=='A'
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: assert 'B' == 'A'
+E         
+E         - A
+E         + B
+
+test_rto_hostile.py:215: AssertionError
+___________________ test_s27_material_move_needs_world_owner ___________________
+
+    def test_s27_material_move_needs_world_owner():
+        p = make_prototype()
+        p.world_state["mug_position"] = "table"
+        candidate = {"candidate_id": "C-027", "payload": {"action": "move mug", "world_owner": "NADIA"}}
+        event = p.ledger.admit(candidate)
+        if event and event["payload"].get("world_owner"):
+            p.world_state["mug_position"] = "hand"
+>       assert p.world_state["mug_position"] == "hand"
+E       AssertionError: assert 'table' == 'hand'
+E         
+E         - hand
+E         + table
+
+test_sr_28_falsifier_court.py:263: AssertionError
+=========================== short test summary info ============================
+FAILED test_rto_hostile.py::test_replay_manual_two_writers_can_lose_first_committed_event
+FAILED test_sr_28_falsifier_court.py::test_s27_material_move_needs_world_owner
+2 failed, 270 passed in 6.68s

@@ -1,0 +1,41 @@
+{
+  "acknowledged_occurrence_ids": [
+    "OCC-0001",
+    "OCC-0002"
+  ],
+  "cold_reopen": {
+    "count": 2,
+    "ids": [
+      "OCC-0001",
+      "OCC-0002"
+    ],
+    "receipt_id": "76797731765b1bfa1ce1f47a0c0fc6a2273ff236adc20f026fd2f3186e8f0fe7",
+    "status": "VERSIONED_VALID",
+    "version": 2,
+    "writer_id": "W0"
+  },
+  "committed_versions": [
+    1,
+    2
+  ],
+  "durable_occurrence_ids": [
+    "OCC-0001",
+    "OCC-0002"
+  ],
+  "writers": [
+    {
+      "err": "",
+      "out": "{\"writer\": \"W0\", \"pid\": 77502, \"mode\": \"cas\", \"attempts\": [{\"recovered\": 1, \"committed\": 2, \"receipt_id\": \"76797731765b1bfa1ce1f47a0c0fc6a2273ff236adc20f026fd2f3186e8f0fe7\", \"acknowledged\": [\"OCC-0001\", \"OCC-0002\"]}]}",
+      "pid": 77502,
+      "rc": 0,
+      "writer": "W0"
+    },
+    {
+      "err": "",
+      "out": "{\"writer\": \"W1\", \"pid\": 77503, \"mode\": \"cas\", \"attempts\": [{\"recovered\": 0, \"committed\": 1, \"receipt_id\": \"8f6a36b34993354312d5b2784b720d195344eb639f7fbcdb24b2b0dc8d4afb11\", \"acknowledged\": [\"OCC-0001\"]}]}",
+      "pid": 77503,
+      "rc": 0,
+      "writer": "W1"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "boundary": "SIGKILL_BEFORE_RENAME",
+  "cold_reopen": {
+    "count": 1,
+    "ids": [
+      "OCC-0001"
+    ],
+    "receipt_id": "f40112fed01e1706a02be5ed51da696b62e2010583113baec5ff7b4c3fa48a1c",
+    "status": "VERSIONED_VALID",
+    "version": 1,
+    "writer_id": "SEED"
+  },
+  "expected_returncode": -9,
+  "journal_byte_identical_to_prior": true,
+  "os_returncode": -9,
+  "signal_semantics": "negative returncode == death by that signal"
+}

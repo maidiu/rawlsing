@@ -1,0 +1,38 @@
+{
+  "schema": "SOROK_00D_WARM_ENVIRONMENT_PASSPORT_DELTA@1",
+  "return": "SOROK-20261019-C8O-OUT14-WRITER-AUTHORITY-EXECUTABLE-BOUNDARY-R1",
+  "worker_role": "Bounded source-free C8 occurrence/outbox multiwriter integration and owner-custody worker; NOT HQ, NOT ADP019 issuer, NOT production integrator, NOT independent I2 reviewer, NOT Pyat worker",
+  "model_tier_selected": "IN_BETWEEN_MEDIUM_RECOMMENDED",
+  "model_used": "MiMo-V2.6-Pro (opencode-go/mimo-v2.6-pro) in user-selected OpenCode harness",
+  "model_switches": 0,
+  "editors_or_harnesses_used": [
+    "OpenCode"
+  ],
+  "runtime": {
+    "python": "3.11.3",
+    "python_full": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]",
+    "pytest": "9.1.1",
+    "git": "git version 2.39.1",
+    "platform": "macOS-13.7.8-x86_64-i386-64bit",
+    "machine": "x86_64",
+    "os_cpu_count": 16
+  },
+  "capability_probes": {
+    "fcntl_flock_EX": true,
+    "os_replace_atomic_same_dir": true,
+    "file_fsync": true,
+    "dir_fsync": true,
+    "SIGKILL_delivery": true,
+    "os_exit_79_abrupt_exit": true,
+    "subprocess_barrier_multiprocess": true
+  },
+  "network_or_secrets": {
+    "external_credentials_used": false,
+    "secrets_or_keys_invented": false,
+    "production_installation": false,
+    "note": "local Git working tree only; no network service relied upon for the court"
+  },
+  "execution_environment_note": "local macOS host; all courts executed with real OS processes, real fcntl.flock, real fsync and real SIGKILL; OUT14 frozen court additionally requires ambient PYTHONPATH pointing at its staged candidate dir because its crash-worker child spawns without its own sys.path staging (import-staging defect of that frozen test, not of the mechanism)",
+  "write_scope": "WORKER_RETURNS/SOROK-20261019-C8O-OUT14-WRITER-AUTHORITY-EXECUTABLE-BOUNDARY-R1/ only",
+  "sanitization": "no usernames, hostnames, tokens, cookies, absolute user paths beyond the repo-relative return tree, or account identifiers recorded"
+}

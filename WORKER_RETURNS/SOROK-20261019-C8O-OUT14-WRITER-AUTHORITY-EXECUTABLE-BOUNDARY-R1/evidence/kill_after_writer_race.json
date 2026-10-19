@@ -1,0 +1,30 @@
+{
+  "cold_reopen": {
+    "count": 3,
+    "ids": [
+      "OCC-0001",
+      "OCC-0002",
+      "OCC-0003"
+    ],
+    "receipt_id": "6631c3461c9942f5f01086405258e2d45cbffebf2a4e9b814d15f371ac5ffaf8",
+    "status": "VERSIONED_VALID",
+    "version": 3,
+    "writer_id": "W1"
+  },
+  "rows": [
+    {
+      "err": "",
+      "out": "{\"writer\": \"W0\", \"pid\": 77718, \"mode\": \"cas\", \"attempts\": [{\"recovered\": 1, \"committed\": 2, \"receipt_id\": \"af7eeb79662f53a1eb715cf178591cd330ea542522ab84aa3251f7f54d8ececc\", \"acknowledged\": [\"OCC-0001\", \"OCC-0002\"]}]}",
+      "pid": 77718,
+      "rc": 0,
+      "writer": "W0"
+    },
+    {
+      "err": "",
+      "out": "{\"writer\": \"W1\", \"pid\": 77721, \"mode\": \"cas\", \"attempts\": [{\"recovered\": 2, \"committed\": 3, \"receipt_id\": \"6631c3461c9942f5f01086405258e2d45cbffebf2a4e9b814d15f371ac5ffaf8\", \"acknowledged\": [\"OCC-0001\", \"OCC-0002\", \"OCC-0003\"]}]}",
+      "pid": 77721,
+      "rc": 0,
+      "writer": "W1"
+    }
+  ]
+}

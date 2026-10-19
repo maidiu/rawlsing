@@ -1,0 +1,59 @@
+{
+  "schema": "SOROK_HQ320_OUT13_PREREGISTRATION@1.0.0",
+  "status": "FROZEN_BEFORE_ANY_NEW_OUT13_HOSTILE_CODE",
+  "role": "Fresh independent I2 source-free concurrency reviewer; NOT the OUT12 author, NOT HQ, NOT an ADP019 issuer",
+  "branch": "agent/reviewer-sorok-r3-hq320-out13-out12-multiwriter-independent-r1",
+  "exact_branch_start": "8d99a4a08d39c870da596b23ccbb5c34e268c470",
+  "write_terrain": "WORKER_RETURNS/SOROK-R3-HQ320-OUT13-OUT12-MULTIWRITER-INDEPENDENT-R1/",
+
+  "INDEPENDENCE_DISCLOSURE": {
+    "out12_authorship": "NONE. I have never authored, edited or run OUT12.",
+    "baseline_authorship_compromise": "MATERIAL AND DISCLOSED. In an earlier session of this same conversation I authored the OUT9 return that produced the accepted single-writer source reviewed here (commit fd58957f, blob 331840768). My independence as reviewer of the ACCEPTED BASELINE is therefore compromised even though OUT12 authorship independence holds. This is an HQ-adjudicable defect. I do not resolve it myself.",
+    "mitigation": "Both OUT9 and OUT12 sources are staged byte-exact and re-verified against their own commits; no accepted or candidate source was edited, so the evidence is reproducible by a fully independent reviewer."
+  },
+
+  "custody": {
+    "staged_files": 20,
+    "staged_verified": "20/20 git blob SHA-1 with NUL preimage + byte count",
+    "OUT9_accepted": "fd58957fceca250e86ed3b1a5d06fa45ffc9ec85; outbox_prototype.py 331840768ce0b5f6f73e5e93094ca0d217ddaebf",
+    "OUT12_candidate": "c2fb389300b888b7addbe488cad30956a810094a; multiwriter_journal.py 99217d390a..., test_out12_multiwriter_court.py d1d2167bcd...",
+    "layout_fidelity": "OUT9 and OUT12 candidate modules staged in ONE candidate/ directory because OUT12's court spawns child processes importing outbox_prototype from their own script directory",
+    "my_own_error_disclosed": "My first staging split the two closures and produced 6 spurious failures. That was my staging error, not an OUT12 defect. Corrected; 9/9 author tests pass."
+  },
+
+  "reproduction_baseline": {
+    "original_272": "270 PASS / 2 historical REDs (reproduced exactly)",
+    "historical_REDs_preserved": ["test_replay_manual_two_writers_can_lose_first_committed_event", "test_s27_material_move_needs_world_owner"],
+    "out12_author_tests": "9 passed, unedited"
+  },
+
+  "predictions": {
+    "HP1": "Two, three and five genuinely simultaneous MultiwriterJournal writers produce NO lost acknowledged committed event identity.",
+    "HP2": "Stale snapshots are refused with typed StaleJournalConflict, and lawful retry after re-recover succeeds with a fresh version.",
+    "HP3": "writer_version is strictly monotone under cooperating writers and the lock is legitimately released on every path.",
+    "HP4": "Revocation and ACK integrity survive competing transactions.",
+    "HP5": "Lock starvation/timeout yields a typed LockTimeoutError rather than a hang or a corrupt write, and a later writer still succeeds.",
+    "HP6": "DIRECT BYPASS: an authorized caller using the accepted Journal.commit() while the candidate is active CAN lose an acknowledged committed event. This is a property of the accepted source, NOT of the candidate.",
+    "HP7": "VERSION METADATA IS UNAUTHENTICATED: writer_version lies OUTSIDE the accepted state_digest. Rewriting or corrupting writer_version while leaving state intact does NOT trip the accepted Journal's validation.",
+    "HP8": "Because _read_version() returns 0 on ANY parse failure, a writer holding expected_version=0 can publish after the version has been corrupted/reset, defeating the CAS.",
+    "HP9": "Cold recovery after interruption BEFORE rename leaves prior state byte-identical; AFTER commit yields the newest state durable.",
+    "HP10": "OUT12's C7 'real SIGKILL' is recorded as rc=79. That is os._exit(79), a normal process exit, NOT a SIGKILL signal. The label overstates the method; process-death semantics are largely exercised but no signal was delivered.",
+    "HP11": "Process death is demonstrably NOT the same as power-loss durability: fsync ordering is verified, but no barrier can prove media-level durability from user space.",
+    "HP12": "Journal/version consistency survives rollback of an altered writer_version but the version can be silently rewritten by an authorized writer."
+  },
+
+  "global_no_go": [
+    "editing accepted OUT9 source",
+    "editing or renaming OUT12 candidate source",
+    "suppressing either historical RED",
+    "counting a draft or expected table as an executed concurrency result",
+    "claiming exactly-once delivery, real perception, physical-world event, ADP019 authority, semantic adoption or V3 operation"
+  ],
+
+  "threat_model_declared": {
+    "in_scope": "test-only source-free multiwriter on a LOCAL filesystem, cooperating writers that all use MultiwriterJournal",
+    "out_of_scope": "exactly-once client delivery; exotic/network filesystem flock semantics; true power-loss durability; any writer that bypasses the candidate; production ADP019 issuance"
+  },
+
+  "freeze_declaration": "Written and committed BEFORE any new OUT13 hostile code. Predictions may be reported as falsified; they may not be edited after execution."
+}
