@@ -1,0 +1,127 @@
+{
+ "actual_evidence_refs": [
+  "ledger:sha256:3740961fb19bf7f89fb91f7bbe15edf1b4f9f7e9b0b1f48258734cd213bb7705"
+ ],
+ "assertion_names_contract": [
+  "nonmother_project_has_causal_effect_record",
+  "third_party_relationship_remains_actor_specific",
+  "father_can_act_without_mother_prompt",
+  "exact_forward_replay",
+  "not_biography_prose"
+ ],
+ "assertion_results": {
+  "exact_forward_replay": true,
+  "father_can_act_without_mother_prompt": true,
+  "nonmother_project_has_causal_effect_record": true,
+  "not_biography_prose": true,
+  "third_party_relationship_remains_actor_specific": true
+ },
+ "authority_versions": {
+  "contract": "V3_CONCEPTION_CONDITIONED_RETROSPECTIVE_CONSTRUCTION_RULE@0.1-PROPOSAL",
+  "k11_contract": "SOROK_SG_K11_GENEALOGY_EXECUTION_CONTRACT@1.0.0",
+  "lab_rule": "PROVISIONAL_LAB_RULE__NOT_ADOPTED",
+  "read_cuts": {
+   "astra_official": "3b2d9a1b644a9fa024ed1bd895b67be5c8789531",
+   "s_g_return": "aec8fecc1ae2e3438ff70c44ce5ce7845d1a4829",
+   "sorok_corrected": "bace7640777098732d425e9368cf28ada0e57aeb"
+  }
+ },
+ "case_id": "K11-E-INDEPENDENT-PROJECT",
+ "case_wall_seconds": 0.006746,
+ "cost_report": {
+  "actor_events": 19,
+  "causal_state_changes": 0,
+  "completion_tokens": 0,
+  "generic_queries": 6,
+  "history_attempts": 1,
+  "model_calls": 0,
+  "prompt_tokens": 0,
+  "rejected_candidates": 0,
+  "replay_ledger_bytes": 3617,
+  "replay_seconds": 9e-06,
+  "rng_draws": 1,
+  "total_tokens": 0,
+  "wall_seconds": 0.002353
+ },
+ "expected_status": "PASS_IF_AUTHORIZED_RUN",
+ "fixture_hash": "sha256:4c10ea65b3ac1fb22b943e34f19f3557c194e3f768687fc8543471885fea26af",
+ "input_hashes": {
+  "mother_anchor": "sha256:4c10ea65b3ac1fb22b943e34f19f3557c194e3f768687fc8543471885fea26af"
+ },
+ "intervention": {
+  "heldout_probes": 2,
+  "mom_or_child_in_prompt": false
+ },
+ "intervention_hash": "sha256:4e3bf9bc5b6b9de815d44a883a5422a64d6a55f8dd3da51ada5d4a6a6095d9da",
+ "missing_authority": [],
+ "model_version_if_used": "gpt-4o-2024-08-06",
+ "n_assertions": 5,
+ "observed_state": {
+  "probes": {
+   "heldout_independence_pass": true,
+   "n_pass": 2,
+   "n_probes": 2,
+   "probes": [
+    {
+     "acted_from_actor_state_without_mom_prompt": true,
+     "is_prose_only": false,
+     "mom_or_child_in_prompt": false,
+     "pass": true,
+     "probe_id": "PROBE_P1_WORK_COLLECTIVE_OBLIGATION",
+     "third_party_relationship_actor_specific": true,
+     "typed_action": {
+      "decision": "TAKE_REPAIR_ROTATION_LEAD_AND_UPDATE_LEDGER",
+      "durable_effect": "rotation_ledger_entry_plus_uptime_commitment_extended",
+      "state_change_refs": [
+       "PROJECT:shared_grain_silo_refit_and_rotation_ledger"
+      ]
+     },
+     "typed_causal_effect_record": {
+      "causal_basis_events": [
+       "sha256:bfe9abe529617ad9a0e2d87a05b910cc472cf05faaab9195ef803b262fc31ff2",
+       "sha256:9f0c951a8018075031e9db02ed54ff575bea6fd9ad848116d332b649c2f75520",
+       "sha256:9e3375810417dd3cf284b9022ac5375a5ff7d323c2b0ef2bb30962e3f172db48"
+      ],
+      "effect": "rotation_ledger_entry_plus_uptime_commitment_extended"
+     }
+    },
+    {
+     "acted_from_actor_state_without_mom_prompt": true,
+     "is_prose_only": false,
+     "mom_or_child_in_prompt": false,
+     "pass": true,
+     "probe_id": "PROBE_P2_FRIENDSHIP_CONFLICT",
+     "third_party_relationship_actor_specific": true,
+     "typed_action": {
+      "decision": "REPAIR_TOOLS_AND_LEDGER_DEBT_PARTIAL_CREDIT_AGAINST_STANDING_DEBT",
+      "durable_effect": "friend_favor_ledger_updated_plus_tool_repair_completed",
+      "state_change_refs": [
+       "NONMOTHER_RELATIONSHIP:FRIEND_L"
+      ]
+     },
+     "typed_causal_effect_record": {
+      "causal_basis_events": [
+       "sha256:bfe9abe529617ad9a0e2d87a05b910cc472cf05faaab9195ef803b262fc31ff2",
+       "sha256:9f0c951a8018075031e9db02ed54ff575bea6fd9ad848116d332b649c2f75520",
+       "sha256:9e3375810417dd3cf284b9022ac5375a5ff7d323c2b0ef2bb30962e3f172db48"
+      ],
+      "effect": "friend_favor_ledger_updated_plus_tool_repair_completed"
+     }
+    }
+   ]
+  },
+  "projects": [
+   "shared_grain_silo_refit_and_rotation_ledger"
+  ],
+  "relations": [
+   "FRIEND_L",
+   "SIBLING_M"
+  ]
+ },
+ "receipt_hash": "sha256:ee1be0b53badbd4b3a7bb01dcf5eaab1c1064d1f183207e84111dde2a2fb8f70",
+ "replay_result": {
+  "exact": true
+ },
+ "source_use_scope": "SOURCE_FREE_SYNTHETIC_LAB_ONLY__NO_ORIGINAL_SURVEY__NO_REAL_PERSON__NO_PRODUCTION_CURRENTNESS",
+ "terminal_grade": "K11_CASE_PASS"
+}

@@ -1,0 +1,116 @@
+[
+  {
+    "suite": "sgi1",
+    "command": [
+      "python3",
+      "-m",
+      "pytest",
+      "-q",
+      "-s",
+      "-p",
+      "no:cacheprovider",
+      "test_original_sgi1.py",
+      "--junitxml=evidence/sgi1_junit.xml"
+    ],
+    "exit_status": 1,
+    "wall_seconds": 1.5122958461288363,
+    "stdout": "evidence/sgi1_stdout.txt",
+    "junit": "evidence/sgi1_junit.xml",
+    "stdout_sha256": "3c6f4d703f4e241a7829f0c12e445bb08ff5ce7cc7f57a027291442af1e1b006"
+  },
+  {
+    "suite": "g11",
+    "command": [
+      "python3",
+      "-m",
+      "pytest",
+      "-q",
+      "-s",
+      "-p",
+      "no:cacheprovider",
+      "sources/g11/test_g11_solver.py",
+      "--junitxml=evidence/g11_junit.xml"
+    ],
+    "exit_status": 0,
+    "wall_seconds": 0.5640666410326958,
+    "stdout": "evidence/g11_stdout.txt",
+    "junit": "evidence/g11_junit.xml",
+    "stdout_sha256": "c92701cb649e9e8e3ad7c4d342ab0131e8cfefef4ece7c153777b4e76d2a751b"
+  },
+  {
+    "suite": "g12_controls",
+    "command": [
+      "python3",
+      "-m",
+      "pytest",
+      "-q",
+      "-s",
+      "-p",
+      "no:cacheprovider",
+      "test_g12_controls.py",
+      "--junitxml=evidence/g12_controls_junit.xml"
+    ],
+    "exit_status": 1,
+    "wall_seconds": 0.6595265960786492,
+    "stdout": "evidence/g12_controls_stdout.txt",
+    "junit": "evidence/g12_controls_junit.xml",
+    "stdout_sha256": "95517fb870f96fc4c327b0d41f2d23422bc9047b1f80eee2b043b18bae181325"
+  },
+  {
+    "suite": "g12_literal_contract",
+    "command": [
+      "python3",
+      "-m",
+      "pytest",
+      "-q",
+      "-s",
+      "-p",
+      "no:cacheprovider",
+      "test_g12_literal_contract.py",
+      "--junitxml=evidence/g12_literal_contract_junit.xml"
+    ],
+    "exit_status": 1,
+    "wall_seconds": 0.6691090969834477,
+    "stdout": "evidence/g12_literal_contract_stdout.txt",
+    "junit": "evidence/g12_literal_contract_junit.xml",
+    "stdout_sha256": "142e7b885d0828ae650bfb0795a238a9d1199737a829c8547c20f5caef9d8ef5"
+  },
+  {
+    "suite": "g12_supplemental",
+    "command": [
+      "python3",
+      "-m",
+      "pytest",
+      "-q",
+      "-s",
+      "-p",
+      "no:cacheprovider",
+      "test_g12_supplemental.py",
+      "--junitxml=evidence/g12_supplemental_junit.xml"
+    ],
+    "exit_status": 0,
+    "wall_seconds": 0.4534866879694164,
+    "stdout": "evidence/g12_supplemental_stdout.txt",
+    "junit": "evidence/g12_supplemental_junit.xml",
+    "stdout_sha256": "cf58dce38d106d0f80e8e24b024d1afa2aa42d1850715cdc9c926e8d0a1487bd"
+  },
+  {
+    "suite": "candidate_boundary",
+    "command": [
+      "python3",
+      "-m",
+      "pytest",
+      "-q",
+      "-s",
+      "-p",
+      "no:cacheprovider",
+      "test_candidate_boundary.py",
+      "--junitxml=evidence/candidate_boundary_junit.xml"
+    ],
+    "exit_status": 0,
+    "wall_seconds": 0.39714905503205955,
+    "stdout": "evidence/candidate_boundary_stdout.txt",
+    "junit": "evidence/candidate_boundary_junit.xml",
+    "stdout_sha256": "eb6f78bad8eddb35f70fa9586c18bb3d4760330d29c41d21849e029702e694a8"
+  }
+]

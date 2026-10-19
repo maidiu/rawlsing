@@ -1,0 +1,39 @@
+{
+  "schema": "G11_CONSTRUCTION_VS_CAUSAL_DAG_INDEPENDENT_R1",
+  "status": "SOURCEFREE_TEST_ONLY_NOT_ADOPTED",
+  "frozen_problem_sha256": "091b81c1604f856fb33d4b2da38d1aedf9d0e35b41e0831cdfad84f12fe2f055",
+  "important_interpretation": "The FROZEN_INDEPENDENT constraint graph is a COMPUTATION graph. Edges scenario_proposal->eligibility->conception->gestation->birth encode viability computation/forecast, NOT V3 causal parent refs, real events, or the ADP020 selection permission. The solver never emits an admitted conception or birth.",
+  "computational_constraint_graph": {
+    "node_count": 10,
+    "edge_count": 9,
+    "acyclic": true,
+    "constructive_search_support": "Compatibility of PRE-SUPPLIED, already fixed father and mother histories; no genuine father backward-history synthesis executed",
+    "classes": ["history_fixture", "checkpoint_hash", "proposal", "eligibility_check", "unadmitted_endpoint", "forecast"],
+    "stop_on_cycle": "REJECT_CYCLE"
+  },
+  "represented_causal_graph_PROSPECTIVE_NOT_EXECUTED": {
+    "nodes": ["world_before", "mother_history", "father_history", "mother_preevent_anchor", "father_preevent_anchor", "route_opportunity", "admitted_encounter", "admitted_conception_IF_ISSUED", "CHILD_GENERATED_IF_ISSUED", "admitted_birth_IF_ISSUED", "child_initialized_IF_ISSUED"],
+    "edges_if_all_independently_governed": [
+      ["world_before", "mother_history"], ["world_before", "father_history"],
+      ["mother_history", "mother_preevent_anchor"], ["father_history", "father_preevent_anchor"],
+      ["mother_preevent_anchor", "admitted_encounter"], ["father_preevent_anchor", "admitted_encounter"],
+      ["route_opportunity", "admitted_encounter"], ["admitted_encounter", "admitted_conception_IF_ISSUED"],
+      ["admitted_conception_IF_ISSUED", "CHILD_GENERATED_IF_ISSUED"],
+      ["admitted_conception_IF_ISSUED", "admitted_birth_IF_ISSUED"],
+      ["CHILD_GENERATED_IF_ISSUED", "child_initialized_IF_ISSUED"]
+    ],
+    "owner_condition": "Each IF_ISSUED edge is conditional, not currently admitted and not an automatic effect of its predecessor. Child birth and CHILD_GENERATED are separate semantics; scheduling relationship between them remains issuer-owned.",
+    "forbidden": ["child_future->father_history", "child_future->selection", "admitted_birth->mother_history", "admitted_conception->mother_history", "mother_preevent_anchor->father_history->mother_preevent_anchor cycle"]
+  },
+  "oracle_receipt": {
+    "command": "PYTHONPATH=. python -m pytest -q --junitxml=06_PYTEST_JUNIT.xml",
+    "tests_passed": 25,
+    "tests_failed": 0,
+    "positive_history_combinations": 8,
+    "genuine_generated_parent_histories": 0,
+    "actual_ADP020_draws": 0,
+    "actual_ADP015_child_generated": 0,
+    "original_source_rows": 0,
+    "observed_limit": "Static support and temporal arithmetic only; no independent source-qualified or actor-forward transition product"
+  }
+}

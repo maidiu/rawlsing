@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="4" skipped="0" tests="25" time="0.544" timestamp="2026-10-16T21:27:55.147286-04:00" hostname="Matthews-MBP.lan"><testcase classname="test_original_sgi1" name="test_literal_original_k11_case[K11-BASE-LOCAL]" time="0.001"><failure message="assert False">case = {'case_id': 'K11-BASE-LOCAL', 'fixture_hash': 'sha256:4c10ea65b3ac1fb22b943e34f19f3557c194e3f768687fc8543471885fea26af...50bb390250a5647dc3f85460bc9dd926b82367cb09', 'intervention': {'route_filter': 'ROUTE_LOCAL_CLOSED', 'seed': 'R0'}, ...}
+
+    @pytest.mark.parametrize('case',RESULT['cases'],ids=lambda c:c['case_id'])
+    def test_literal_original_k11_case(case):
+        assert case['n_assertions']==len(case['assertion_results'])
+        assert all(case['assertion_results'].values()),case['assertion_results']
+&gt;       assert SUMMARY['comparison'][case['case_id']]['equal']
+E       assert False
+
+test_original_sgi1.py:8: AssertionError</failure></testcase><testcase classname="test_original_sgi1" name="test_literal_original_k11_case[K11-ROUTE-DISCORDANT]" time="0.000"><failure message="assert False">case = {'case_id': 'K11-ROUTE-DISCORDANT', 'fixture_hash': 'sha256:4c10ea65b3ac1fb22b943e34f19f3557c194e3f768687fc8543471885f...1cd6d952090', 'intervention': {'change': 'route/institution only', 'seed': 'R1', 'world_premise_preserved': True}, ...}
+
+    @pytest.mark.parametrize('case',RESULT['cases'],ids=lambda c:c['case_id'])
+    def test_literal_original_k11_case(case):
+        assert case['n_assertions']==len(case['assertion_results'])
+        assert all(case['assertion_results'].values()),case['assertion_results']
+&gt;       assert SUMMARY['comparison'][case['case_id']]['equal']
+E       assert False
+
+test_original_sgi1.py:8: AssertionError</failure></testcase><testcase classname="test_original_sgi1" name="test_literal_original_k11_case[K11-ROUTE-MOBILITY]" time="0.001" /><testcase classname="test_original_sgi1" name="test_literal_original_k11_case[K11-ROUTE-UNCONVENTIONAL]" time="0.000" /><testcase classname="test_original_sgi1" name="test_literal_original_k11_case[K11-A-FUTURE-CHILD-EMBARGO]" time="0.001"><failure message="assert False">case = {'case_id': 'K11-A-FUTURE-CHILD-EMBARGO', 'fixture_hash': 'sha256:4c10ea65b3ac1fb22b943e34f19f3557c194e3f768687fc85434...2daad9bb2bd7603', 'intervention': {'changed': 'sealed future-child label only', 'visible_inputs_identical': True}, ...}
+
+    @pytest.mark.parametrize('case',RESULT['cases'],ids=lambda c:c['case_id'])
+    def test_literal_original_k11_case(case):
+        assert case['n_assertions']==len(case['assertion_results'])
+        assert all(case['assertion_results'].values()),case['assertion_results']
+&gt;       assert SUMMARY['comparison'][case['case_id']]['equal']
+E       assert False
+
+test_original_sgi1.py:8: AssertionError</failure></testcase><testcase classname="test_original_sgi1" name="test_literal_original_k11_case[K11-A2-DESIRED-WOUND-COUNTERFACTUAL]" time="0.001"><failure message="assert False">case = {'case_id': 'K11-A2-DESIRED-WOUND-COUNTERFACTUAL', 'fixture_hash': 'sha256:4c10ea65b3ac1fb22b943e34f19f3557c194e3f7686...764e310cf7989685ee3867d28ddae28e7c012971', 'intervention': {'changed': 'future child desired adversity tag only'}, ...}
+
+    @pytest.mark.parametrize('case',RESULT['cases'],ids=lambda c:c['case_id'])
+    def test_literal_original_k11_case(case):
+        assert case['n_assertions']==len(case['assertion_results'])
+        assert all(case['assertion_results'].values()),case['assertion_results']
+&gt;       assert SUMMARY['comparison'][case['case_id']]['equal']
+E       assert False
+
+test_original_sgi1.py:8: AssertionError</failure></testcase><testcase classname="test_original_sgi1" name="test_literal_original_k11_case[K11-B-INDEPENDENT-HISTORY]" time="0.000" /><testcase classname="test_original_sgi1" name="test_literal_original_k11_case[K11-C-EXISTING-PARTNER]" time="0.000" /><testcase classname="test_original_sgi1" name="test_literal_original_k11_case[K11-C2-EXISTING-SHARED-EVENT]" time="0.000" /><testcase classname="test_original_sgi1" name="test_literal_original_k11_case[K11-D-PARITY]" time="0.000" /><testcase classname="test_original_sgi1" name="test_literal_original_k11_case[K11-E-INDEPENDENT-PROJECT]" time="0.000" /><testcase classname="test_original_sgi1" name="test_literal_original_k11_case[K11-GRAPH-CONSTRUCTION-VS-CAUSAL]" time="0.000" /><testcase classname="test_original_sgi1" name="test_literal_original_k11_case[K11-DEDUPE]" time="0.000" /><testcase classname="test_original_sgi1" name="test_literal_original_k11_case[K11-EMPIRICAL-CEILING]" time="0.000" /><testcase classname="test_original_sgi1" name="test_literal_original_k11_case[K11-WEIGHT-ORDINAL]" time="0.000" /><testcase classname="test_original_sgi1" name="test_literal_original_k11_case[K11-WEIGHT-SENSITIVITY]" time="0.000" /><testcase classname="test_original_sgi1" name="test_literal_original_k11_case[K11-RETRY-BIAS]" time="0.000" /><testcase classname="test_original_sgi1" name="test_literal_original_k11_case[K11-VALID-EMPTY]" time="0.000" /><testcase classname="test_original_sgi1" name="test_literal_original_k11_case[K11-UNKNOWN-REQUIRED]" time="0.001" /><testcase classname="test_original_sgi1" name="test_literal_original_k11_case[K11-RELATION-ASYMMETRY]" time="0.001" /><testcase classname="test_original_sgi1" name="test_literal_original_k11_case[K11-CONCEPTION-CHILDGEN-BOUNDARY]" time="0.000" /><testcase classname="test_original_sgi1" name="test_literal_original_k11_case[K11-MISSING-HISTORY]" time="0.000" /><testcase classname="test_original_sgi1" name="test_literal_original_k11_case[K11-SCHEDULER-SAME-TIME]" time="0.000" /><testcase classname="test_original_sgi1" name="test_literal_original_k11_case[K11-REPLAY-ALTER-SUBJECT]" time="0.000" /><testcase classname="test_original_sgi1" name="test_complete_denominator_and_offline" time="0.000" /></testsuite></testsuites>

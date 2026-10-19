@@ -1,0 +1,63 @@
+......FF....................F..F................FF..F..F.F.
+=================================== FAILURES ===================================
+__ test_f1_invalid_causal_ancestry_refused[<lambda>-NONFORWARD_CAUSAL_PARENT] __
+test_g13_author_court.py:114: in test_f1_invalid_causal_ancestry_refused
+    assert code in r["causal_error_codes"]
+E   AssertionError: assert 'NONFORWARD_CAUSAL_PARENT' in ['DUPLICATE_EFFECTIVE_INDEX', 'MISSING_CAUSAL_PARENT']
+___________________ test_f1_removed_route_antecedent_refused ___________________
+test_g13_author_court.py:122: in test_f1_removed_route_antecedent_refused
+    assert "ENDPOINT_ASSERTION_WITHOUT_ANTECEDENT" in r["causal_error_codes"]
+E   AssertionError: assert 'ENDPOINT_ASSERTION_WITHOUT_ANTECEDENT' in ['MISSING_CAUSAL_PARENT']
+_____ test_f4_future_child_outcome_counterfactual_cannot_change_selection ______
+test_g13_author_court.py:317: in test_f4_future_child_outcome_counterfactual_cannot_change_selection
+    assert before["draw"]["draw_value"] == after["draw"]["draw_value"]
+                                           ^^^^^^^^^^^^^
+E   KeyError: 'draw'
+__________ test_f5_exact_32_byte_root_uses_accepted_adp020_mechanism ___________
+test_g13_author_court.py:344: in test_f5_exact_32_byte_root_uses_accepted_adp020_mechanism
+    assert rec.adp020_entitlement == "SAMPLER_MECHANISM_CONFORMANT"
+E   AssertionError: assert 'NOT_GRANTED' == 'SAMPLER_MECHANISM_CONFORMANT'
+E     
+E     - SAMPLER_MECHANISM_CONFORMANT
+E     + NOT_GRANTED
+_______ test_f7_actor_id_is_bound_from_actual_history_not_a_placeholder ________
+test_g13_author_court.py:490: in test_f7_actor_id_is_bound_from_actual_history_not_a_placeholder
+    assert r["objective_relation"]["participants"][1] == "G13_ACTUAL_SECOND_PARENT"
+           ^^^^^^^^^^^^^^^^^^^^^^^
+E   KeyError: 'objective_relation'
+__ test_f7_two_independently_derived_paternal_histories_bind_distinct_actors ___
+test_g13_author_court.py:500: in test_f7_two_independently_derived_paternal_histories_bind_distinct_actors
+    assert r1["objective_relation"]["participants"][1] == "G13_SECOND_PARENT_ALPHA"
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+E   KeyError: 'objective_relation'
+______________ test_f7_asymmetry_and_no_auto_household_preserved _______________
+test_g13_author_court.py:526: in test_f7_asymmetry_and_no_auto_household_preserved
+    assert r["perceived_states"][0]["perceived_state"] == "affectionate_bond_perceived"
+           ^^^^^^^^^^^^^^^^^^^^^
+E   KeyError: 'perceived_states'
+___________ test_ceilings_m0_and_m2_mother_histories_both_construct ____________
+test_g13_author_court.py:559: in test_ceilings_m0_and_m2_mother_histories_both_construct
+    assert out["terminal_status"] == "COMMITTED", variant
+E   AssertionError: M2
+E   assert 'HISTORY_SEARCH_EXHAUSTED' == 'COMMITTED'
+E     
+E     - COMMITTED
+E     + HISTORY_SEARCH_EXHAUSTED
+________ test_f5_lab_sampler_conforms_to_the_accepted_adp020_algorithm _________
+test_g13_author_court.py:590: in test_f5_lab_sampler_conforms_to_the_accepted_adp020_algorithm
+    assert rec.adp020_entitlement == "SAMPLER_MECHANISM_CONFORMANT"
+E   AssertionError: assert 'NOT_GRANTED' == 'SAMPLER_MECHANISM_CONFORMANT'
+E     
+E     - SAMPLER_MECHANISM_CONFORMANT
+E     + NOT_GRANTED
+=========================== short test summary info ============================
+FAILED test_g13_author_court.py::test_f1_invalid_causal_ancestry_refused[<lambda>-NONFORWARD_CAUSAL_PARENT]
+FAILED test_g13_author_court.py::test_f1_removed_route_antecedent_refused - A...
+FAILED test_g13_author_court.py::test_f4_future_child_outcome_counterfactual_cannot_change_selection
+FAILED test_g13_author_court.py::test_f5_exact_32_byte_root_uses_accepted_adp020_mechanism
+FAILED test_g13_author_court.py::test_f7_actor_id_is_bound_from_actual_history_not_a_placeholder
+FAILED test_g13_author_court.py::test_f7_two_independently_derived_paternal_histories_bind_distinct_actors
+FAILED test_g13_author_court.py::test_f7_asymmetry_and_no_auto_household_preserved
+FAILED test_g13_author_court.py::test_ceilings_m0_and_m2_mother_histories_both_construct
+FAILED test_g13_author_court.py::test_f5_lab_sampler_conforms_to_the_accepted_adp020_algorithm
+9 failed, 50 passed in 0.62s

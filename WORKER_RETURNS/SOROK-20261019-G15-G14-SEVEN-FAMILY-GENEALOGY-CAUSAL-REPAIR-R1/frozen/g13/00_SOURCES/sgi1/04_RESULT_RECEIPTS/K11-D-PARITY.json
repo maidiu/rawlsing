@@ -1,0 +1,90 @@
+{
+ "actual_evidence_refs": [
+  "ledger:sha256:1a6660f207316b3e872c364fe103916004bd4eed8cda35587c67181a846c2ca5"
+ ],
+ "assertion_names_contract": [
+  "older_child_actor_id_unchanged",
+  "older_child_actor_stream_unchanged",
+  "historical_membership_unchanged",
+  "new_target_not_assumed_first_child",
+  "no_ancestral_rewrite"
+ ],
+ "assertion_results": {
+  "historical_membership_unchanged": true,
+  "new_target_not_assumed_first_child": true,
+  "no_ancestral_rewrite": true,
+  "older_child_actor_id_unchanged": true,
+  "older_child_actor_stream_unchanged": true
+ },
+ "authority_versions": {
+  "contract": "V3_CONCEPTION_CONDITIONED_RETROSPECTIVE_CONSTRUCTION_RULE@0.1-PROPOSAL",
+  "k11_contract": "SOROK_SG_K11_GENEALOGY_EXECUTION_CONTRACT@1.0.0",
+  "lab_rule": "PROVISIONAL_LAB_RULE__NOT_ADOPTED",
+  "read_cuts": {
+   "astra_official": "3b2d9a1b644a9fa024ed1bd895b67be5c8789531",
+   "s_g_return": "aec8fecc1ae2e3438ff70c44ce5ce7845d1a4829",
+   "sorok_corrected": "bace7640777098732d425e9368cf28ada0e57aeb"
+  }
+ },
+ "case_id": "K11-D-PARITY",
+ "case_wall_seconds": 0.007885,
+ "cost_report": {
+  "route_a": {
+   "actor_events": 19,
+   "causal_state_changes": 0,
+   "completion_tokens": 0,
+   "generic_queries": 6,
+   "history_attempts": 1,
+   "model_calls": 0,
+   "prompt_tokens": 0,
+   "rejected_candidates": 0,
+   "replay_ledger_bytes": 3613,
+   "replay_seconds": 9e-06,
+   "rng_draws": 1,
+   "total_tokens": 0,
+   "wall_seconds": 0.002763
+  },
+  "route_b": {
+   "actor_events": 19,
+   "causal_state_changes": 0,
+   "completion_tokens": 0,
+   "generic_queries": 6,
+   "history_attempts": 1,
+   "model_calls": 0,
+   "prompt_tokens": 0,
+   "rejected_candidates": 0,
+   "replay_ledger_bytes": 3639,
+   "replay_seconds": 1e-05,
+   "rng_draws": 1,
+   "total_tokens": 0,
+   "wall_seconds": 0.002797
+  }
+ },
+ "expected_status": "PASS_IF_AUTHORIZED_RUN",
+ "fixture_hash": "sha256:f3b064ee62bbf8560bafc69a6067611b1bd0a936f6c5e1a312c16f570bfd3b78",
+ "input_hashes": {
+  "mother_anchor": "sha256:f3b064ee62bbf8560bafc69a6067611b1bd0a936f6c5e1a312c16f570bfd3b78"
+ },
+ "intervention": {
+  "fixture": "M2 with older child",
+  "routes": 2
+ },
+ "intervention_hash": "sha256:3d484008f64b48164e8d1b5d49c9031f79aa4ead71443c7ded41216c48524d48",
+ "missing_authority": [],
+ "model_version_if_used": "gpt-4o-2024-08-06",
+ "n_assertions": 5,
+ "observed_state": {
+  "anchor_hash": "sha256:f3b064ee62bbf8560bafc69a6067611b1bd0a936f6c5e1a312c16f570bfd3b78",
+  "child_stream_hash": "sha256:eb53369f54d792a0acc0d8da2d633955e838f058d0e98b34561ec315a8d5c092",
+  "membership_hash": "sha256:4009b1b28fda9f9d7d6fbacf4c38ef1cb11cc73b5a4786f2c67930c37baa251f",
+  "older_child_refs": [
+   "LAB_OLDER_CHILD_O1"
+  ]
+ },
+ "receipt_hash": "sha256:05fcec342dd36647af42843f83cb8adb221e2b7f3be07575be14f36ebe3763b4",
+ "replay_result": {
+  "anchor_invariant_across_routes": true
+ },
+ "source_use_scope": "SOURCE_FREE_SYNTHETIC_LAB_ONLY__NO_ORIGINAL_SURVEY__NO_REAL_PERSON__NO_PRODUCTION_CURRENTNESS",
+ "terminal_grade": "K11_CASE_PASS"
+}

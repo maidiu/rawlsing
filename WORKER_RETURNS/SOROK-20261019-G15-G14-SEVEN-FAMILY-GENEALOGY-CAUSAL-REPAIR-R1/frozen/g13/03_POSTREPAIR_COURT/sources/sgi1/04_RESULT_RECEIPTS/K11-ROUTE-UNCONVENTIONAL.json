@@ -1,0 +1,67 @@
+{
+ "actual_evidence_refs": [
+  "ledger:sha256:5c9faa6f9eeb0e893ceb2c436d7906dc7e63a925470751922e7af048791fc193"
+ ],
+ "assertion_names_contract": [
+  "no_typicality_mandate",
+  "actual_route_constraint_preserved",
+  "no_stereotype_mapping",
+  "exact_replay"
+ ],
+ "assertion_results": {
+  "actual_route_constraint_preserved": true,
+  "exact_replay": true,
+  "no_stereotype_mapping": true,
+  "no_typicality_mandate": true
+ },
+ "authority_versions": {
+  "contract": "V3_CONCEPTION_CONDITIONED_RETROSPECTIVE_CONSTRUCTION_RULE@0.1-PROPOSAL",
+  "k11_contract": "SOROK_SG_K11_GENEALOGY_EXECUTION_CONTRACT@1.0.0",
+  "lab_rule": "PROVISIONAL_LAB_RULE__NOT_ADOPTED",
+  "read_cuts": {
+   "astra_official": "3b2d9a1b644a9fa024ed1bd895b67be5c8789531",
+   "s_g_return": "aec8fecc1ae2e3438ff70c44ce5ce7845d1a4829",
+   "sorok_corrected": "bace7640777098732d425e9368cf28ada0e57aeb"
+  }
+ },
+ "case_id": "K11-ROUTE-UNCONVENTIONAL",
+ "case_wall_seconds": 0.006411,
+ "cost_report": {
+  "actor_events": 19,
+  "causal_state_changes": 0,
+  "completion_tokens": 0,
+  "generic_queries": 3,
+  "history_attempts": 1,
+  "model_calls": 0,
+  "prompt_tokens": 0,
+  "rejected_candidates": 0,
+  "replay_ledger_bytes": 3611,
+  "replay_seconds": 9e-06,
+  "rng_draws": 1,
+  "total_tokens": 0,
+  "wall_seconds": 0.002202
+ },
+ "expected_status": "PASS_IF_AUTHORIZED_RUN",
+ "fixture_hash": "sha256:4c10ea65b3ac1fb22b943e34f19f3557c194e3f768687fc8543471885fea26af",
+ "input_hashes": {
+  "mother_anchor": "sha256:4c10ea65b3ac1fb22b943e34f19f3557c194e3f768687fc8543471885fea26af"
+ },
+ "intervention": {
+  "route_filter": "ROUTE_UNCONVENTIONAL",
+  "seed": "R2"
+ },
+ "intervention_hash": "sha256:f3bfe1d20066c3da78f7bed341f23fcf54bf927bfc91965365b21ce18137c488",
+ "missing_authority": [],
+ "model_version_if_used": "gpt-4o-2024-08-06",
+ "n_assertions": 4,
+ "observed_state": {
+  "no_typicality_language_in_receipts": true,
+  "psyche_causal_ancestry_ok": true
+ },
+ "receipt_hash": "sha256:d67b367893b17effa0ee0632055578e56b2c3bc4283ef7837754191b6e16148b",
+ "replay_result": {
+  "exact_replay": true
+ },
+ "source_use_scope": "SOURCE_FREE_SYNTHETIC_LAB_ONLY__NO_ORIGINAL_SURVEY__NO_REAL_PERSON__NO_PRODUCTION_CURRENTNESS",
+ "terminal_grade": "K11_CASE_PASS"
+}

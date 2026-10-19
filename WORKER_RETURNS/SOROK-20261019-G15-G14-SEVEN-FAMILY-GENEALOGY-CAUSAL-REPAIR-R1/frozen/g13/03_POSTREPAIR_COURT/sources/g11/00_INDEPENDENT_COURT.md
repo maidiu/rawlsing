@@ -1,0 +1,24 @@
+# HQ297 G11 — independent K11 construction feasibility court
+
+**Reviewer:** G11 independent of SG author; **not HQ, original science issuer or actor runner**. **Verdict:** `FINITE_CONSTRAINT_FEASIBILITY_PASS__FULL_V3_PERSON_GENERATION_UNPROVEN__ADP_EXTENSION_UNISSUED__NO_ACTOR_WAKE`.
+
+**Sealed launch:** `a0faea0c106febc9a96a9f74d42ddfae6b218279`. Direct compare `sealed..assigned_branch`: **identical**, ahead 0, behind 0 before work. Both commission and executable-resource clarification read in full on that ref. Frozen independent synthetic constraints committed locally before SG expected-results file was read: SHA-256 `091b81c1604f856fb33d4b2da38d1aedf9d0e35b41e0831cdfad84f12fe2f055`. SG read cut: `ca031ce1d5c56b58b18727f94f41571d6dd763fb`; Astra controlling 16 blob `202e754aebc4e984fa84e5ab194ea5bb110dad3c`; ADP015 v1 blob `a4dab0a12102aaa0b584ef6ff4fdc9206a28d456`; ADP020 v1 blob `1911352f4bd5b04dfeaa0f26930e6702998bb76d`; V3 completion blob `49095f763c5c371d98bb57a01aaf5f47dc7b1ae1`.
+
+## Scientific decision
+
+A mother-first software *search dependency* with a provisional target can be acyclic and consistent with strictly forward represented causation. Retrospective **constraint planning** is not reverse causation, conditional selection is not yet true occurrence, and completed father prehistory must be independently forward-replayable through actual V3 owners. This is a **constructive satisfiability task** `find h: ForwardRules(h, world) meets endpoint`, NOT a posterior sample `P(h|endpoint)`; no prior, calibrated likelihood, selection normalization, dyadic risk-set distribution or issuer supplies a posterior. Under-determination is real: the same synthetic endpoint accommodates two distinct pre-written fathers, independent of any future child's desired trait. It does **not** demonstrate that either father is an actor generated through the future V3 developmental engine.
+
+SG correctly keeps ADP015's current two-parents-before-`CHILD_GENERATED` represented causality, rejects inferred reciprocity and parent averaging, preserves prior older-child lineage and makes failed-history retries visible. SG's K11 executable proposal and 4-history lab remain **unexecuted** as actor science. Our frozen court shows a sourcefree feasibility witness, not completion of SG K11's full 4 independently developed histories. Immediate mother pre-event anchors (rather than our coarse no-intervening-event January fixture), relationships, new conception/birth occurrence rules, and source/native model-use authorization remain absent.
+
+## Direct reproducible evidence
+
+- Host probes: `python --version` = Python 3.13.5; `python -m pytest --version` = pytest 9.0.2; `git --version` = 2.47.3; write/import probe PASS. Private repository raw `git ls-remote` network DNS failed (`Could not resolve host: github.com`); pinned files instead directly fetched and blob-identified through authorized GitHub connector. No full clone was asserted.
+- Sourcefree module `g11_solver.py`; predeclared JSON `01_FROZEN_INDEPENDENT_K11_EXPECTATIONS.json`; `test_g11_solver.py` (stdlib + pytest). Run: `PYTHONPATH=. python -m pytest -q --junitxml=06_PYTEST_JUNIT.xml`; 25 passed, 0 failed, exit 0 in 0.07s. `python g11_solver.py` produced 8 valid witness combinations, no rejected baseline. The actual import file was this local test return path; `PYTHONPATH` environment was initially unset, then local test invocation used `PYTHONPATH=.`. Standalone test only, **not** whole-repo pytest.
+- Test code Git blob hashes locally calculated by SHA-1 over Git blob header and UTF-8 bytes: solver `11443bd674d8b9ea14541d64d8946d2ca2aee47d`, tests `05afa5e70f0cb2a3a64dec613c678a831b23fd71`; frozen oracle Git blob `99a8c6e42d3a5d4926ab64cda9a3f0510f6318eb`. All three directly read back from GitHub connector as exact matches. No accepted modules changed.
+- Full case/class evidence in `02_CONSTRUCTION_DAG_CYCLE_ORACLE.json` and `03_COUNTEREXAMPLES_AND_BUDGET_CEILING.md`; authority and missing first owner producer in `04_ADP_OWNER_AND_LAB_GRANT_REQUIRED.md`.
+
+## Separate gate dispositions
+
+`FINITE_LOGICAL_FEASIBILITY=PASS`; `FORWARD_CHRONOLOGY_ON_SYNTHETIC_HISTORIES=PASS`; `DAG_CYCLE_AND_CHILD_EMBARGO_ORACLES=PASS`; `BOUND_COMPUTE=PASS_AT_FIXED_FIXTURE`; `GENUINE_PARENT_CONSTRUCTION=NOT_EXECUTED`; `ADP015/020_NEW_RULE_ISSUANCE=NO`; `ORIGINAL_EVIDENCE/CALIBRATION=NOT_EXECUTED`; `ACTOR_OR_MODEL_TRIAL=FORBIDDEN_NOT_EXECUTED`; `ACTUAL_CONCEPTION/CHILD_GENERATED/BIRTH=NONE`; `K11_FULL_PRODUCT_VALIDITY=UNRESOLVED`.
+
+**HQ action:** Accept only the limited nonadopted logical/test return if exact remote bytes verify; commission competent ADP015 scenario semantic issuance plus ADP020 stream/choice review, distinct occurrence/forward-owner/lab grants, then independently freeze and run the actual four developed-history K11. Never wake N12 or V3 because synthetic math passed.

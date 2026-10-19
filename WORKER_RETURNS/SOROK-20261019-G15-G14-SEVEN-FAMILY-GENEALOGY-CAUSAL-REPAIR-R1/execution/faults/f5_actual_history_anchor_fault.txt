@@ -1,0 +1,12 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_________ test_actual_pipeline_entropy_anchor_uses_frozen_history_cut __________
+WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py:414: in test_actual_pipeline_entropy_anchor_uses_frozen_history_cut
+    assert coordinate['anchor_event_id_or_init_checkpoint_hash']==prior['event_id']
+E   AssertionError: assert 'INIT:7879407...2eb7035b4e0b6' == 'sha256:b3e1c...dd88a02f15510'
+E     
+E     - sha256:b3e1cf72aef80174e8b6372cb10f5adb9534f1da0534fabc509dd88a02f15510
+E     + INIT:7879407e5374278bae6fd07dd2a1a4cdc92bfc8398bc34880122eb7035b4e0b6
+=========================== short test summary info ============================
+FAILED WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py::test_actual_pipeline_entropy_anchor_uses_frozen_history_cut
+1 failed in 0.46s

@@ -1,0 +1,148 @@
+{
+ "K11-A-FUTURE-CHILD-EMBARGO": [
+  "candidate_set_hash_equal",
+  "endpoint_same",
+  "father_history_event_hashes_equal",
+  "generic_query_request_hashes_equal",
+  "no_future_metadata_read",
+  "selection_decision_identity_equal"
+ ],
+ "K11-A2-DESIRED-WOUND-COUNTERFACTUAL": [
+  "byte_equal_father_ledger",
+  "no_child_future_key_in_model_prompt_or_seed",
+  "no_father_abuse_generated_as_function_of_label"
+ ],
+ "K11-B-INDEPENDENT-HISTORY": [
+  "at_least_two_endpoint_valid_distinct_nonendpoint_causal_histories_where_fixture_supports_alternatives",
+  "endpoint_hash_constraints_equal",
+  "identity_or_histories_not_merely_prose",
+  "no_hidden_backdating",
+  "nonmother_projects_distinct"
+ ],
+ "K11-BASE-LOCAL": [
+  "child_exposure_changes_only_after_admission",
+  "exact_replay_hash_equal",
+  "father_whole_domains_valid",
+  "forward_endpoint_match",
+  "generic_query_receipts_exact",
+  "mother_checkpoint_byte_identity_unchanged",
+  "post_conception_both_continue",
+  "proposal_set_finite",
+  "selection_policy_labeled",
+  "shared_occurrence_once"
+ ],
+ "K11-C-EXISTING-PARTNER": [
+  "existing_actor_reused_or_exact_contradiction_HOLD",
+  "mother_history_unchanged",
+  "no_duplicate_actor_or_event",
+  "zero_unapproved_RNG"
+ ],
+ "K11-C2-EXISTING-SHARED-EVENT": [
+  "HOLD_before_any_new_shared_event",
+  "no_retroactive_repair",
+  "unchanged_existing_E_pre_hash"
+ ],
+ "K11-CONCEPTION-CHILDGEN-BOUNDARY": [
+  "CONCEPTION_BIOLOGY_AUTHORITY_HOLD",
+  "PENDING_not_ADMITTED_CONCEPTION",
+  "no_birth_alias",
+  "zero_CHILD_GENERATED_events"
+ ],
+ "K11-D-PARITY": [
+  "historical_membership_unchanged",
+  "new_target_not_assumed_first_child",
+  "no_ancestral_rewrite",
+  "older_child_actor_id_unchanged",
+  "older_child_actor_stream_unchanged"
+ ],
+ "K11-DEDUPE": [
+  "candidate_set_hash_equal",
+  "dedup_equivalence_class_count_unchanged",
+  "no_probability_multiplication",
+  "selection_receipt_equal"
+ ],
+ "K11-E-INDEPENDENT-PROJECT": [
+  "exact_forward_replay",
+  "father_can_act_without_mother_prompt",
+  "nonmother_project_has_causal_effect_record",
+  "not_biography_prose",
+  "third_party_relationship_remains_actor_specific"
+ ],
+ "K11-EMPIRICAL-CEILING": [
+  "generic_empirical_receipt_NOT_ESTIMABLE_or_ceiling_limited",
+  "no_population_coupling_inferred",
+  "selection_no_frequency_claim"
+ ],
+ "K11-GRAPH-CONSTRUCTION-VS-CAUSAL": [
+  "both_graphs_acyclic",
+  "causal_childhood_to_endpoint_chronology",
+  "construction_E_to_H_edge_allowed_and_typed_only",
+  "zero_causal_endpoint_to_childhood_edges"
+ ],
+ "K11-MISSING-HISTORY": [
+  "INDEPENDENT_PROJECT_PROOF_MISSING_or_PREHISTORY_OWNER_RULE_MISSING",
+  "no_child_generation_commit"
+ ],
+ "K11-RELATION-ASYMMETRY": [
+  "both_continuations_replay",
+  "no_reciprocity_inference",
+  "one_objective_relation_event",
+  "two_distinct_perspective_states_where_admitted",
+  "zero_auto_household_membership"
+ ],
+ "K11-REPLAY-ALTER-SUBJECT": [
+  "ACTOR_ID_COLLISION_OR_SUBJECT_REUSE_INTEGRITY_FAILURE",
+  "no_reconstructed_history_pass"
+ ],
+ "K11-RETRY-BIAS": [
+  "effective_selection_bias_report_or_HOLD",
+  "failed_attempt_receipt_persisted",
+  "no_causal_commit_for_C1",
+  "no_silent_resample"
+ ],
+ "K11-ROUTE-DISCORDANT": [
+  "candidate_set_hash_binding",
+  "contrast_in_typed_candidates_and_eligibility",
+  "deterministic_replay_per_route",
+  "qualified_route_truth"
+ ],
+ "K11-ROUTE-MOBILITY": [
+  "invariant_unrelated_history",
+  "no_backdated_mother_mobility",
+  "permitted_route_expansion",
+  "source_uses_generic_not_parent_specific"
+ ],
+ "K11-ROUTE-UNCONVENTIONAL": [
+  "actual_route_constraint_preserved",
+  "exact_replay",
+  "no_stereotype_mapping",
+  "no_typicality_mandate"
+ ],
+ "K11-SCHEDULER-SAME-TIME": [
+  "AMBIGUOUS_SAME_TIME_CAUSAL_ORDER",
+  "no_lexicographic_priority",
+  "zero_fictitious_events"
+ ],
+ "K11-UNKNOWN-REQUIRED": [
+  "HOLD_not_INFEASIBLE",
+  "exact_missing_authority_list",
+  "no_filler_fact_or_event"
+ ],
+ "K11-VALID-EMPTY": [
+  "no_unsupported_father_created",
+  "typed_SCENARIOS_VALID_EMPTY_or_INFEASIBLE",
+  "zero_RNG_draws",
+  "zero_genealogy_events"
+ ],
+ "K11-WEIGHT-ORDINAL": [
+  "RNG_draw_count_zero",
+  "SELECTION_AUTHORITY_UNBOUND",
+  "no_ordinal_to_weight_normalization"
+ ],
+ "K11-WEIGHT-SENSITIVITY": [
+  "each_policy_hash_unique",
+  "no_best_child_based_policy_choice",
+  "outcomes_replay_exact",
+  "sensitivity_distribution_reported_without_population_claim"
+ ]
+}
