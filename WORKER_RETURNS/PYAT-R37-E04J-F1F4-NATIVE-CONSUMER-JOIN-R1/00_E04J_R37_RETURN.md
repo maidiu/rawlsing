@@ -136,22 +136,54 @@ are lawful; they are different queries and are reported as such.
 
 ## 4. Challenged boundaries (hostile court, 10 tests)
 
-* **Risk denominator** — reported as 8 with 8 denominator member refs; not substituted.
-* **Minority alternative** — retained with support, not pruned.
-* **Same-respondent joint** — denominator-member based; no cross-person link invented.
-* **Cross-person identity** — never claimed; `route_probability` stays `None`.
-* **No-support vs missing artifact** — support loss yields a typed no-support /
-  unavailable state, not a fabricated null; an empirically measured null remains a
-  positive product only after competent measurement.
-* **Wrong condition role** — refused, not guessed.
-* **Current vs historical selection** — invalidation flags the old receipt for fresh use
-  while historical evidence stays intact.
-* **Missing immutable release / wrong release root** — compose with absent M1
-  disposition is `BLOCKED`, `m2_release_ref is None`.
+All ten now assert **direct, falsifiable facts** looked up from the native objects —
+no conditional or `or True` fallbacks.
+
+* **Risk denominator** — `denominator == 8`, `denominator_member_refs` length 8,
+  `risk_set_ref.object_id` ends `R_ALL`.
+* **Minority alternative** — the `0` cell survives with support ≥ 1 and
+  `uncertainty != NO_SUPPORTED_EVIDENCE`.
+* **Same-respondent joint** — every denominator member is a distinct
+  `C11Internal:RespondentIdentity`; member count equals denominator, so no respondent is
+  double counted and no abstract count stands in for the joint. (The native step exposes
+  no `same_respondent_joint_ref`; this is the genuine same-respondent basis.)
+* **Cross-person identity** — measure is `RAW; unweighted; no causal inference`,
+  `dependencies == ['empirical']`, single source universe, `actor_executions == 0`,
+  `model_calls == 0`, `new_issuer is False`, `route_probability is None`.
+* **No-support vs fabricated null** — support loss gives
+  `PARTIAL_OPTIONS_OR_EMPIRICAL_SUPPORT` / `PARTIAL_TYPED_EMPIRICAL_SUPPORT` with the two
+  shallower steps `EXACT_SUPPORTED` and the deepest step `ZERO_SUPPORT`, denominator `0`,
+  `NO_SUPPORTED_EVIDENCE`, `cells == []` — a typed zero-support, never a manufactured 0/0.
+* **Wrong condition role** — `B|A` raises `TARGET_CONDITION_ROLE_AUTHORITY_UNAVAILABLE`.
+* **Current vs historical selection** — invalidation puts the exact consumer receipt hash
+  in `invalidated_for_fresh_use`, the post-invalidation snapshot hash genuinely differs,
+  and `historical_receipts_retained is True` with the hash still in `old_receipt_hashes`.
+* **Missing immutable release / wrong release root** — compose with absent M1 disposition
+  is `BLOCKED` with `m2_release_ref is None`.
 * **Cold replay / stale evidence** — replay `REPLAY_VERIFIED`; a second independent join
-  re-derives the identical selection.
-* **F4 / I05 boundary** — honest: the join proves the learned product reaches E04; it does
-  **not** by itself claim I05 recursion or F4 co-travel success.
+  re-derives the byte-identical selection ref.
+* **F4 / I05 boundary** — precise and falsifiable: on the `M1_M2_B5` route the I4 receipt
+  has `route_taken == "M1_M2_B5"` and `m01_execution_receipt_ref is None` and
+  `m01_object_graph_ref is None`, so **no M01/I05 recursive evidence was consumed**; the
+  `semantic_ceiling` explicitly withholds `NO_PRODUCT_RELEASE`, `NO_CURRENTNESS`,
+  `NO_STRUCTURAL_ADMISSION`, `NO_CAUSAL_PROMOTION`, `NO_PERSON_OR_V3_STATE`.
+
+### Mutation check — are these guards load-bearing?
+
+Deliberately breaking a pinned runtime source and confirming the suite fails
+(`evidence/hostile_mutation_check.json`; runtime restored from git, blobs re-verified):
+
+| Mutation | Result |
+|---|---|
+| `route_probability=None` → `0.5` (fabricate a merged cross-person probability) | **10 failed, 2 passed, 4 errors — guard bites** |
+| positive-branch `state` → forced `EXACT_SUPPORTED` | **10 passed — did NOT bite** |
+
+The second mutation is a **real, disclosed coverage gap**: support loss takes the
+separate `evidence is None` early-return branch in `provider.step()`, which never
+reaches the mutated line. The zero-support guard covers the path that actually produces
+`ZERO_SUPPORT`, but the positive-branch `state` field is not independently pinned. A
+future refactor routing zero-support through the positive branch would not be caught.
+Recorded rather than papered over.
 
 ---
 

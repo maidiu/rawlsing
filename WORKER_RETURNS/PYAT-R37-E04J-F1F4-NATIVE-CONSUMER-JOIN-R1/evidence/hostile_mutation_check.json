@@ -1,0 +1,27 @@
+{
+  "schema": "E04J_R37_HOSTILE_MUTATION_CHECK@1",
+  "purpose": "Verify the 10 hostile assertions are load-bearing, not vacuous. Each mutation deliberately breaks a guard the hostiles protect; the suite must FAIL.",
+  "method": "mutate a pinned runtime source, run the hostile + science courts, restore from git, confirm blob identity.",
+  "mutations": [
+    {
+      "id": "M1_FABRICATE_ROUTE_PROBABILITY",
+      "target": "runtime/product/nonparent.py",
+      "mutation": "route_probability=None -> route_probability=0.5",
+      "guards_broken": "fabricates a merged cross-person structural/empirical probability",
+      "result": "10 FAILED, 2 passed, 4 errors",
+      "bit": true
+    },
+    {
+      "id": "M2_FORCE_STATE_SUPPORTED",
+      "target": "runtime/product/empirical.py",
+      "mutation": "state=consumed.result_state -> state='EXACT_SUPPORTED' in the positive-evidence branch",
+      "guards_broken": "would hide a typed ZERO_SUPPORT / NO_SUPPORTED_EVIDENCE step",
+      "result": "10 passed (DID NOT BITE)",
+      "bit": false,
+      "coverage_gap_disclosed": "This mutation is NOT detected. Support loss takes the separate `evidence is None` branch in provider.step(), which returns early and never reaches the mutated line. The typed zero-support guard (test_no_support_is_distinct_from_a_fabricated_null) therefore covers the real code path that produces ZERO_SUPPORT, but does not independently pin the positive-branch state field. A future refactor could route zero-support through the positive branch and the guard would not catch it."
+    }
+  ],
+  "conclusion": "The route-probability guard is strongly load-bearing. The positive-branch state field is not independently pinned; this is disclosed rather than papered over. No guard was found to be vacuous.",
+  "runtime_restored_clean": true,
+  "nonparent_blob_after_restore": "2181b832d3c4376d4b9428e13f4354f273be8f32"
+}

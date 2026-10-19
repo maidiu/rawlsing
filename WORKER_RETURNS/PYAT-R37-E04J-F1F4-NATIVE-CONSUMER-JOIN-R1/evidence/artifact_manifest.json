@@ -1,7 +1,12 @@
 {
  "schema": "E04J_R37_ARTIFACT_MANIFEST@1",
- "file_count": 17,
+ "file_count": 21,
  "files": [
+  {
+   "path": ".gitignore",
+   "bytes": 19,
+   "sha256": "862263fa1f46c20f0d1e4dac5ffcc75abd55c08211b2c3864c5f8764b9d87793"
+  },
   {
    "path": "00_BOUNDED_EXECUTION_RETURN_AND_HOLD.md",
    "bytes": 8063,
@@ -9,13 +14,18 @@
   },
   {
    "path": "00_E04J_R37_RETURN.md",
-   "bytes": 10331,
-   "sha256": "2e1b8fc6fbad415d021cf16b9ab7cbd3d824e05a670e281a7bccfc5e303a8d29"
+   "bytes": 12445,
+   "sha256": "302aff2df23b87c15ebc252babcbfbb8cf91ca9bd4212d1218e46d31c838e6b8"
   },
   {
    "path": "01_EXACT_PREIMAGES_AND_GRADES.json",
    "bytes": 3568,
    "sha256": "7b34b19467c06e2850b9b5a2ce4b6025ef19dc8665d996d738f733d20abf732a"
+  },
+  {
+   "path": "05_REMOTE_VERIFICATION.json",
+   "bytes": 3333,
+   "sha256": "0367ccea86d98b772c519bc98a8438ff208c2d9ecd8dede6ab8d55ff5ed8f208"
   },
   {
    "path": "e04j_lifecycle_bridge.py",
@@ -33,9 +43,19 @@
    "sha256": "99aa228d831ea1f9a0a0236c7234ee1ac8662cb699e190c9ae0e99d6a3d3aa86"
   },
   {
+   "path": "evidence/artifact_manifest.json",
+   "bytes": 2710,
+   "sha256": "e751e09cb1061b88efbbcdb0ffb36c60fac86f1c5fbb79d7d12151f8a934791a"
+  },
+  {
    "path": "evidence/e04j_full_junit.xml",
-   "bytes": 6348,
-   "sha256": "4571b873746d90c2b4bf1fa7322a865bd5defd75b9fba0d53533b221838a81bd"
+   "bytes": 6338,
+   "sha256": "d79bfd0d74101d13a20d6f4bbba6882256525b54cbde9f987ef6a30d74095585"
+  },
+  {
+   "path": "evidence/hostile_mutation_check.json",
+   "bytes": 1893,
+   "sha256": "b5782af21beeb4f6f881c5b19138f10280344bb5508052e939882b519da06b2b"
   },
   {
    "path": "evidence/lifecycle_object_identities.json",
@@ -74,8 +94,8 @@
   },
   {
    "path": "tests/test_e04j_join_hostiles.py",
-   "bytes": 7667,
-   "sha256": "c2b1d0a0f3311a40ba73af393c77a3b6709290b228d162a631e661d50aa45ab2"
+   "bytes": 10541,
+   "sha256": "4148791db2e5cf54f2d9524439f9e2cc2d48e4315082321dce68c48f50be5e48"
   },
   {
    "path": "tests/test_e04j_lifecycle_join_science.py",

@@ -54,35 +54,72 @@ def test_minority_alternative_survives_to_the_consumer():
 
 # ------------------------------------------------------------------ identity
 def test_same_respondent_joint_is_denominator_member_based():
+    """The joint is counted over distinct RESPONDENT identities, not an abstract count.
+
+    The native E04 step exposes no `same_respondent_joint_ref` field; the genuine
+    same-respondent basis is `geometry.denominator.denominator_member_refs`, each of
+    which is a distinct C11Internal:RespondentIdentity. This asserts that directly.
+    """
     svc, ss, receipt = _fresh()
     final = receipt["material"]["empirical"]["steps"][-1]
     members = final["geometry"]["denominator"]["denominator_member_refs"]
-    assert len(members) == final["denominator"]
-    # a same-respondent joint must be measurable within the exact declared risk set;
-    # the facade never invents a cross-person linkage
-    poss = BR.run_lifecycle_join(same_marginals=False)
-    assert poss.native_step["same_respondent_joint_ref"] if "same_respondent_joint_ref" in poss.native_step else True
+    assert len(members) == final["denominator"] == 8
+    assert {m["kind"] for m in members} == {"C11Internal:RespondentIdentity"}
+    # every contributing member is a DISTINCT respondent; no person is double counted
+    assert len({m["object_id"] for m in members}) == len(members)
+    # the same respondent basis holds at the lifecycle carrier grain
+    j = BR.run_lifecycle_join(same_marginals=False)
+    step_members = j.native_step["geometry"]["denominator"]["denominator_member_refs"]
+    assert {m["kind"] for m in step_members} == {"C11Internal:RespondentIdentity"}
+    assert len({m["object_id"] for m in step_members}) == j.native_step["denominator"]
 
 
 def test_cross_person_identity_is_never_claimed():
+    """No cross-person join is asserted, and every member is a single-survey identity.
+
+    The native step carries no respondent-link object across sources; the measure is
+    declared RAW/unweighted, and no merged structural-empirical probability is issued.
+    """
     svc, ss, receipt = _fresh()
-    # NONPARENT_OPTIONS / generic facade do not expose a cross-survey respondent link
     step = svc.provider.step("Y", (("A", 1),))
-    assert step["direction"] == "FORWARD_CONDITIONAL" if "direction" in step else True
+    assert step["measure"] == "RAW; unweighted; no causal inference"
+    assert step["dependencies"] == ["empirical"]
+    # conditioning on one source's own coordinates only; no cross-survey source universe
+    assert step["source_universe_ref"]["kind"] == "EmpiricalUniverse@1.0.0"
+    assert svc.catalog.empirical_identity()["permission_root"] == "TEST_ONLY_E04_SOURCE_ROOT"
     mat = receipt["material"]
     assert mat["route_probability"] is None
-    assert "NO_JOINT_EMPIRICAL_STRUCTURAL_ROUTE_MODEL" == mat["route_probability_reason"]
+    assert mat["route_probability_reason"] == "NO_JOINT_EMPIRICAL_STRUCTURAL_ROUTE_MODEL"
+    # no V3 actor execution and no model call is ever issued by the generic facade
+    assert mat["actor_executions"] == 0
+    assert mat["model_calls"] == 0
+    assert mat["new_issuer"] is False
 
 
 # ------------------------------------------------------------------ no-support vs missing
-def test_no_support_is_distinct_from_a_missing_pipeline_artifact():
+def test_no_support_is_distinct_from_a_fabricated_null():
+    """Support loss yields a TYPED zero-support step, never a manufactured 0/0.
+
+    The deepest progressive step reports state=ZERO_SUPPORT with denominator 0 and
+    NO_SUPPORTED_EVIDENCE, and the consumer reports PARTIAL, not PRODUCTIVE. A measured
+    null remains a positive product only when it is actually measured.
+    """
     svc = GenericSelectedWorldService(support_loss=True)
     ss = svc.select(mode="AS_OF", valid_at="2027-09-01", published_asof="2027-09-01")
     receipt = e04_consume(svc, ss)
-    steps = receipt["material"]["empirical"]["steps"]
-    # support loss yields a typed no-support / unavailable state, not a fabricated null
-    assert receipt["material"]["empirical"]["state"] != "PRODUCTIVE_TEST_ONLY" or \
-        all(s["uncertainty"] == "NO_SUPPORTED_EVIDENCE" or s["cells"] for s in steps)
+    mat = receipt["material"]
+    assert mat["state"] == "PARTIAL_OPTIONS_OR_EMPIRICAL_SUPPORT"
+    assert mat["empirical"]["state"] == "PARTIAL_TYPED_EMPIRICAL_SUPPORT"
+    steps = mat["empirical"]["steps"]
+    # shallower steps remain genuinely supported
+    assert [s["state"] for s in steps[:2]] == ["EXACT_SUPPORTED", "EXACT_SUPPORTED"]
+    # the deepest step is typed zero-support with NO denominator, not a 0/0 null
+    deepest = steps[-1]
+    assert deepest["state"] == "ZERO_SUPPORT"
+    assert deepest["denominator"] == 0
+    assert deepest["uncertainty"] == "NO_SUPPORTED_EVIDENCE"
+    assert deepest["cells"] == []
+    assert mat["route_probability"] is None
 
 
 def test_wrong_condition_role_is_refused_not_guessed():
@@ -98,9 +135,14 @@ def test_b5_current_selection_and_invalidation_are_distinct():
     assert old["receipt_hash"] in result["invalidated_for_fresh_use"]
     # historical evidence (old receipt) remains intact and readable
     assert old["material"]["empirical"]["state"] == "PRODUCTIVE_TEST_ONLY"
-    # a fresh select after invalidation reflects invalidation
+    # a fresh select after invalidation yields a genuinely different snapshot
     ss2 = svc.select(mode="AS_OF", valid_at="2027-09-01", published_asof="2027-09-01")
-    assert ss2.snapshot_hash != ss.snapshot_hash or True
+    assert ss2.snapshot_hash != ss.snapshot_hash
+    # the invalidated receipt hash is the one the consumer actually produced
+    assert result["invalidated_for_fresh_use"] == [old["receipt_hash"]]
+    # the pre-invalidation receipt is retained as historical, not destroyed
+    assert result["historical_receipts_retained"] is True
+    assert old["receipt_hash"] in result["old_receipt_hashes"]
 
 
 def test_lifecycle_refuses_wrong_release_root_or_missing_release():
@@ -143,16 +185,27 @@ def test_cold_replay_is_verified_and_stale_evidence_is_not_reselected():
 
 # ------------------------------------------------------------------ F4 / I05 honest holds
 def test_f4_and_i05_are_bounded_not_fabricated():
-    """The learned join is M1->M2->B5->I4 over a single discovered product.
+    """The M1_M2_B5 route does NOT consume M01/I05 evidence, and the receipt says so.
 
-    It does NOT by itself prove I05 recursion or F4 same-respondent co-travel; those
-    are separate F1-F4 closures. This test records that boundary honestly rather than
-    claiming F1-F4 success from the join alone.
+    On the M1_M2_B5 route the I4 receipt leaves m01_execution_receipt_ref and
+    m01_object_graph_ref as None: no I05 recursive object graph was consumed. This is
+    a precise, falsifiable boundary claim - the join proves the learned product reaches
+    E04, and explicitly does NOT claim I05 recursion or F4 co-travel closure.
     """
     j = BR.run_lifecycle_join(same_marginals=False)
-    assert j.composition.receipt.terminal_state == "RULE_SATISFIED"
-    # single release, no recursion events beyond the explicit lifecycle actions
-    events = list(j.composition.b5_replay_receipt.as_dict().get("events", [])) \
-        if hasattr(j.composition.b5_replay_receipt, "as_dict") else []
-    # the join proves the learned product reaches E04; F4/I05 remain separately gated
-    assert j.fact.ref is not None
+    r = j.composition.receipt
+    assert r.route_taken == "M1_M2_B5"
+    # no M01/I05 execution or object graph is claimed on this route
+    assert r.m01_execution_receipt_ref is None
+    assert r.m01_object_graph_ref is None
+    # but the learned-product chain is fully present and verified
+    assert r.terminal_state == "RULE_SATISFIED"
+    assert r.m1_disposition_ref is not None
+    assert r.m2_release_ref is not None
+    assert r.b5_selection_receipt_ref is not None
+    # the semantic ceiling explicitly withholds release/currentness/promotion/person state
+    ceiling = r.semantic_ceiling
+    for withheld in ("NO_PRODUCT_RELEASE", "NO_CURRENTNESS",
+                     "NO_STRUCTURAL_ADMISSION", "NO_CAUSAL_PROMOTION"):
+        assert withheld in ceiling, withheld
+    assert "NO_PERSON_OR_V3_STATE" in ceiling
