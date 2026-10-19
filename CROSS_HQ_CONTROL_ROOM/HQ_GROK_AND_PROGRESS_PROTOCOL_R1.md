@@ -1,5 +1,10 @@
 # Mandatory mutual HQ grounding and progress publication
 
+## Mandatory shared proof-integrity intake — 18 October 2026
+
+Both HQs MUST apply [the shared falsifiable-test law](PROOF_INTEGRITY_AND_FALSIFIABLE_TEST_LAW_R1.md) to every new/revised functional or scientific integration claim, including independently returned author courts. Exact claimed dependency, real consumer, pre-frozen positive expectation, and relevant fault-induced RED are compulsory. An author's PASS or independent replay of the same self-authored checks cannot by itself promote an unconnected output pair to a joined product. The existing governed-court PR workflow checks modified tests automatically; workers run qualified fault witnesses **within their own normal execution pass**, not through new ritual review rounds. Claim status `EXECUTED_GREEN` is distinct from proven functional dependency and scientific adoption. Previously accepted historical evidence is not globally revoked.
+
+
 ## HQ judgment remains with HQ — Pyat whole-machine command amendment (2026-10-16)
 
 The user directed Pyat to remedy a **return-driven rather than end-product-driven** HQ operating pattern. Pyat must apply [its mandatory continuous command and rabochii delegation law](../PYAT_CONTROL_ROOM/HQ_CONTINUOUS_COMMAND_AND_RABOCHII_DELEGATION_LAW_20261016_R1.md) at each fresh/resumed grok, material work cycle, return intake and report refresh. Scientific/code excavation, independent tests and bounded implementation can run concurrently through rabochiis; the authorized HQ **cannot delegate its own whole-machine science, critical-path prioritization, current progress, method-adoption choices or counterpart interface judgment** to their reports. A successful worker return is first a scoped proof and then a distinct HQ-owned end-product/trajectory delta, not automatic authorization for a chain of same-lane reviews.
