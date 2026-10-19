@@ -1,5 +1,10 @@
 # PYAT R44 S44 — binding USER-CORRECTED prompt/model routing amendment, prior "High" or "Middle" default RETIRED
 
+## BINDING MAX REASONING CONFIGURATION — USER CLARIFICATION
+
+**The user's word "DeepSeek" means `MODEL=DeepSeek V4.1-Flash`, `REASONING=MAX`.** At routing step 2, evaluate **whole-S44 competence at MAX**, even for this I3/S3 original-science campaign. Do not rule Flash out on the basis of its name, an assumed I1 ceiling, or a lesser effort run. **The model at Max is the default DeepSeek candidate**, contingent on actual task-specific successful native tests and account/provider supporting Max; `MAX_AVAILABLE=UNKNOWN` until checked. The full order is `Browser? → DeepSeek V4.1-Flash @ MAX? → actually require Codex GPT-6.1 High? → otherwise user-selected Middle`. **Provider/editor/account/machine remains the user's choice**; Max reasoning is a required candidate configuration, NOT evidence the provider supports it or permission to switch. For every final user-visible launch header, explicitly spell out MODEL and THINKING/REASONING MAX, or status `USER_DECISION_REQUIRED` if exact provider cannot supply Max. This supersedes all earlier plain 'Flash' tier shorthand in this commission and any historical first amendment. Does not create source use/model issuer/N11/N12 rights or interrupt a running worker.
+
+
 **STATUS:** `ROUTING_AMENDED_BEFORE_LAUNCH__USER_ACCOUNT_CHOICE_REQUIRED`. This REPLACES preceding, contradictory model-tier recommendations for *unlaunched* S44. Direct remote worker branch absent at current check, local session unverified; if existing local work is found, do not restart/change the live agent. Full scientific mission below remains effective, none of its source/model/actor/estate permissions expanded.
 
 **AGENT / ROLE:** one accountable S44 implementer — ACTIVATE CURRENTLY AUTHORIZED ORIGINAL SCIENCE THROUGH ROUTE B. NOT HQ, separate science/actor/source/N11 issuer or self reviewer.
