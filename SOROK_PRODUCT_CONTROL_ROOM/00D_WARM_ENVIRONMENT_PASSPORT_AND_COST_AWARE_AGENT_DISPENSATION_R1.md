@@ -1,5 +1,10 @@
 # SOROK 00D — Warm-environment passports and cost-aware agent dispensation R1
 
+## Mandatory proof-integrity constraint on economical execution — 18 October 2026
+
+Apply [the PRE-MAIN shared falsifiable-test law](../CROSS_HQ_CONTROL_ROOM/PROOF_INTEGRITY_AND_FALSIFIABLE_TEST_LAW_R1.md) on every new or revised Sorok implementation/consumer commission, independent of agent provider or budget. Worker supplies exact claim/consumer/dependency, pre-frozen positive and severance RED, real target test result and sanitized receipt. The checker forbids inert assertions and enforces scoped integration-claim mutation witnesses on changed tests. Perform this as part of the SAME cheap qualified warm run, not a new review queue. Green JUnit does not authorize CAN/ADP person/actor use.
+
+
 **Status:** USER-DIRECTED MANDATORY SOROK HQ OPERATING / COMMISSIONING DISCIPLINE. **Effective:** 2026-10-14. Governs new and resumed Sorok worker assignments. Applies to Pyat↔Sorok shared-execution work as relevant. THIS IS RESOURCE/PROCESS LAW ONLY; not ADP, CAN, V3 actor, N12, source/model-use, canonical-semantic or architecture adoption.
 
 ## 0. Governing economic principle
