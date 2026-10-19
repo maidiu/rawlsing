@@ -1,0 +1,1844 @@
+{
+  "candidate": "A0",
+  "identity": {
+    "role": "HISTORICAL_CUSTODY_CONTROL_SUPERSEDED_NOT_COMPARISON_A",
+    "pinned_blob": "182cc7970d7624f6614015f5a51d0602e1630d52",
+    "observed_blob": "182cc7970d7624f6614015f5a51d0602e1630d52",
+    "physical_path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r35f6c/WORKER_RETURNS/PYAT-R35-F6C-NATIVE-COMPARATIVE-R1/staging/cand_A0_historical/rawlsing_next/pre553_heterogeneous_synthesis.py",
+    "module_name": "r35f6c_candidate_A0",
+    "module_file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r35f6c/WORKER_RETURNS/PYAT-R35-F6C-NATIVE-COMPARATIVE-R1/staging/cand_A0_historical/rawlsing_next/pre553_heterogeneous_synthesis.py"
+  },
+  "results": {
+    "W1_full_coverage_disjoint": {
+      "consumer_request": {
+        "conditions": {
+          "material_security": "secure"
+        },
+        "outcome": "employment_position"
+      },
+      "conditional_accepts_use_kwarg": false,
+      "target_strata": {
+        "majority": "1/2",
+        "minority": "1/2"
+      },
+      "source_strata_coverage": {
+        "S_A": {
+          "majority": 100,
+          "minority": 100
+        },
+        "S_B": {
+          "majority": 100,
+          "minority": 100
+        }
+      },
+      "minimum_raw_support": 30,
+      "synthesize": {
+        "ok": true,
+        "bundle": {
+          "decision": "SYNTHETIC_CANDIDATE",
+          "target_joint_status": "NOT_EMITTED",
+          "real_source_qualification": "EXTERNAL_REVIEW_REQUIRED",
+          "real_use_authorized": "NOT_EMITTED",
+          "use_scope": "NOT_EMITTED",
+          "owner_admission_status": "NOT_EMITTED",
+          "origin_classification": "NOT_EMITTED",
+          "support_gate_semantics": "NOT_EMITTED",
+          "content_hash": "abaaaa1cf6991932b0f8bf97927ab67ad39c550c838f21ec375c21c49c42a243",
+          "refusals": {
+            "S_A": [],
+            "S_B": []
+          },
+          "overlap_diagnostics": [],
+          "candidate_is_none": false,
+          "uncovered_target_mass": "0",
+          "distribution_is_none": false,
+          "distribution": [
+            {
+              "categories": [
+                "insecure",
+                "formal"
+              ],
+              "probability": "17/80"
+            },
+            {
+              "categories": [
+                "insecure",
+                "informal"
+              ],
+              "probability": "23/80"
+            },
+            {
+              "categories": [
+                "secure",
+                "formal"
+              ],
+              "probability": "5/16"
+            },
+            {
+              "categories": [
+                "secure",
+                "informal"
+              ],
+              "probability": "3/16"
+            }
+          ],
+          "covered_subprobability": [
+            {
+              "categories": [
+                "insecure",
+                "formal"
+              ],
+              "probability": "17/80"
+            },
+            {
+              "categories": [
+                "insecure",
+                "informal"
+              ],
+              "probability": "23/80"
+            },
+            {
+              "categories": [
+                "secure",
+                "formal"
+              ],
+              "probability": "5/16"
+            },
+            {
+              "categories": [
+                "secure",
+                "informal"
+              ],
+              "probability": "3/16"
+            }
+          ],
+          "ordered_categories": "NOT_EMITTED",
+          "dependence": "SOURCE_JOINTS_TRANSPORTED_AND_MIXED; NO_CROSS_SURVEY_RESPONDENT_LINKS",
+          "coverage_detail": {
+            "majority": {
+              "target_share": "1/2",
+              "sources": [
+                {
+                  "source_id": "S_A",
+                  "coefficient": "1/4",
+                  "conditional_source_weight": "1/2",
+                  "raw_support": 100
+                },
+                {
+                  "source_id": "S_B",
+                  "coefficient": "1/4",
+                  "conditional_source_weight": "1/2",
+                  "raw_support": 100
+                }
+              ],
+              "excluded_sources": [],
+              "uncovered_target_share": "NOT_EMITTED",
+              "exclusion_reasons": "NOT_EMITTED",
+              "minority_cell_protection": "NOT_EMITTED"
+            },
+            "minority": {
+              "target_share": "1/2",
+              "sources": [
+                {
+                  "source_id": "S_A",
+                  "coefficient": "1/4",
+                  "conditional_source_weight": "1/2",
+                  "raw_support": 100
+                },
+                {
+                  "source_id": "S_B",
+                  "coefficient": "1/4",
+                  "conditional_source_weight": "1/2",
+                  "raw_support": 100
+                }
+              ],
+              "excluded_sources": [],
+              "uncovered_target_share": "NOT_EMITTED",
+              "exclusion_reasons": "NOT_EMITTED",
+              "minority_cell_protection": "NOT_EMITTED"
+            }
+          },
+          "sampling_status": "EXTERNAL_DESIGN_DIAGONAL_ONLY",
+          "source_disagreement_bounds": [
+            {
+              "categories": [
+                "insecure",
+                "formal"
+              ],
+              "lower": "7/40",
+              "upper": "1/4"
+            },
+            {
+              "categories": [
+                "insecure",
+                "informal"
+              ],
+              "lower": "1/4",
+              "upper": "13/40"
+            },
+            {
+              "categories": [
+                "secure",
+                "formal"
+              ],
+              "lower": "9/40",
+              "upper": "2/5"
+            },
+            {
+              "categories": [
+                "secure",
+                "informal"
+              ],
+              "lower": "1/10",
+              "upper": "11/40"
+            }
+          ],
+          "bias_sensitivity_bounds": [
+            {
+              "categories": [
+                "insecure",
+                "formal"
+              ],
+              "lower": "23/200",
+              "upper": "31/100"
+            },
+            {
+              "categories": [
+                "insecure",
+                "informal"
+              ],
+              "lower": "19/100",
+              "upper": "77/200"
+            },
+            {
+              "categories": [
+                "secure",
+                "formal"
+              ],
+              "lower": "33/200",
+              "upper": "23/50"
+            },
+            {
+              "categories": [
+                "secure",
+                "informal"
+              ],
+              "lower": "1/25",
+              "upper": "67/200"
+            }
+          ],
+          "radii": {
+            "mapping_bias_radius": "1/100",
+            "transport_bias_radius": "1/20",
+            "target_share_bias_radius": 0
+          }
+        }
+      },
+      "conditional": {
+        "ok": true,
+        "result": {
+          "state": "SUPPORTED_MODEL",
+          "evidence_mode": "INFERRED",
+          "conditions": {
+            "material_security": "secure"
+          },
+          "outcome": "employment_position",
+          "probabilities": {
+            "formal": "5/8",
+            "informal": "3/8"
+          },
+          "model_denominator_mass": "1/2",
+          "observed_denominator": null,
+          "uncertainty": "CONDITIONAL_UNCERTAINTY_NOT_IDENTIFIED",
+          "bundle_hash": "abaaaa1cf6991932b0f8bf97927ab67ad39c550c838f21ec375c21c49c42a243",
+          "values_read_hash": "dc0c6c090a315fa2125c05e01b89297f6e221272684736482a5af32e4d160ee9",
+          "output_hash": "56f522d12b49fbdea952edd3b0d60f3e6f84d8e3496a70d76292a7fb05da6169"
+        }
+      },
+      "conditional_standard_request": {
+        "ok": true,
+        "result": {
+          "state": "SUPPORTED_MODEL",
+          "evidence_mode": "INFERRED",
+          "conditions": {
+            "material_security": "secure"
+          },
+          "outcome": "employment_position",
+          "probabilities": {
+            "formal": "5/8",
+            "informal": "3/8"
+          },
+          "model_denominator_mass": "1/2",
+          "observed_denominator": null,
+          "uncertainty": "CONDITIONAL_UNCERTAINTY_NOT_IDENTIFIED",
+          "bundle_hash": "abaaaa1cf6991932b0f8bf97927ab67ad39c550c838f21ec375c21c49c42a243",
+          "values_read_hash": "dc0c6c090a315fa2125c05e01b89297f6e221272684736482a5af32e4d160ee9",
+          "output_hash": "56f522d12b49fbdea952edd3b0d60f3e6f84d8e3496a70d76292a7fb05da6169"
+        }
+      }
+    },
+    "W2_mixed_eligibility_trap": {
+      "consumer_request": {
+        "conditions": {
+          "material_security": "secure"
+        },
+        "outcome": "employment_position"
+      },
+      "conditional_accepts_use_kwarg": false,
+      "target_strata": {
+        "majority": "1/2",
+        "minority": "1/2"
+      },
+      "source_strata_coverage": {
+        "S_A": {
+          "majority": 100,
+          "minority": 10
+        },
+        "S_B": {
+          "majority": 100,
+          "minority": 100
+        }
+      },
+      "minimum_raw_support": 30,
+      "synthesize": {
+        "ok": true,
+        "bundle": {
+          "decision": "SYNTHETIC_CANDIDATE",
+          "target_joint_status": "NOT_EMITTED",
+          "real_source_qualification": "EXTERNAL_REVIEW_REQUIRED",
+          "real_use_authorized": "NOT_EMITTED",
+          "use_scope": "NOT_EMITTED",
+          "owner_admission_status": "NOT_EMITTED",
+          "origin_classification": "NOT_EMITTED",
+          "support_gate_semantics": "NOT_EMITTED",
+          "content_hash": "a8f14eb55759852800c153418cabed16492fcbf8d7c7f66b26e2b3b1954cbab9",
+          "refusals": {
+            "S_A": [],
+            "S_B": []
+          },
+          "overlap_diagnostics": [],
+          "candidate_is_none": false,
+          "uncovered_target_mass": "0",
+          "distribution_is_none": false,
+          "distribution": [
+            {
+              "categories": [
+                "insecure",
+                "formal"
+              ],
+              "probability": "1/4"
+            },
+            {
+              "categories": [
+                "insecure",
+                "informal"
+              ],
+              "probability": "1/4"
+            },
+            {
+              "categories": [
+                "secure",
+                "formal"
+              ],
+              "probability": "7/20"
+            },
+            {
+              "categories": [
+                "secure",
+                "informal"
+              ],
+              "probability": "3/20"
+            }
+          ],
+          "covered_subprobability": [
+            {
+              "categories": [
+                "insecure",
+                "formal"
+              ],
+              "probability": "1/4"
+            },
+            {
+              "categories": [
+                "insecure",
+                "informal"
+              ],
+              "probability": "1/4"
+            },
+            {
+              "categories": [
+                "secure",
+                "formal"
+              ],
+              "probability": "7/20"
+            },
+            {
+              "categories": [
+                "secure",
+                "informal"
+              ],
+              "probability": "3/20"
+            }
+          ],
+          "ordered_categories": "NOT_EMITTED",
+          "dependence": "SOURCE_JOINTS_TRANSPORTED_AND_MIXED; NO_CROSS_SURVEY_RESPONDENT_LINKS",
+          "coverage_detail": {
+            "majority": {
+              "target_share": "1/2",
+              "sources": [
+                {
+                  "source_id": "S_A",
+                  "coefficient": "1/4",
+                  "conditional_source_weight": "1/2",
+                  "raw_support": 100
+                },
+                {
+                  "source_id": "S_B",
+                  "coefficient": "1/4",
+                  "conditional_source_weight": "1/2",
+                  "raw_support": 100
+                }
+              ],
+              "excluded_sources": [],
+              "uncovered_target_share": "NOT_EMITTED",
+              "exclusion_reasons": "NOT_EMITTED",
+              "minority_cell_protection": "NOT_EMITTED"
+            },
+            "minority": {
+              "target_share": "1/2",
+              "sources": [
+                {
+                  "source_id": "S_B",
+                  "coefficient": "1/2",
+                  "conditional_source_weight": "1",
+                  "raw_support": 100
+                }
+              ],
+              "excluded_sources": [
+                "S_A"
+              ],
+              "uncovered_target_share": "NOT_EMITTED",
+              "exclusion_reasons": "NOT_EMITTED",
+              "minority_cell_protection": "NOT_EMITTED"
+            }
+          },
+          "sampling_status": "EXTERNAL_DESIGN_DIAGONAL_ONLY",
+          "source_disagreement_bounds": [
+            {
+              "categories": [
+                "insecure",
+                "formal"
+              ],
+              "lower": "1/4",
+              "upper": "1/4"
+            },
+            {
+              "categories": [
+                "insecure",
+                "informal"
+              ],
+              "lower": "1/4",
+              "upper": "1/4"
+            },
+            {
+              "categories": [
+                "secure",
+                "formal"
+              ],
+              "lower": "3/10",
+              "upper": "2/5"
+            },
+            {
+              "categories": [
+                "secure",
+                "informal"
+              ],
+              "lower": "1/10",
+              "upper": "1/5"
+            }
+          ],
+          "bias_sensitivity_bounds": [
+            {
+              "categories": [
+                "insecure",
+                "formal"
+              ],
+              "lower": "19/100",
+              "upper": "31/100"
+            },
+            {
+              "categories": [
+                "insecure",
+                "informal"
+              ],
+              "lower": "19/100",
+              "upper": "31/100"
+            },
+            {
+              "categories": [
+                "secure",
+                "formal"
+              ],
+              "lower": "6/25",
+              "upper": "23/50"
+            },
+            {
+              "categories": [
+                "secure",
+                "informal"
+              ],
+              "lower": "1/25",
+              "upper": "13/50"
+            }
+          ],
+          "radii": {
+            "mapping_bias_radius": "1/100",
+            "transport_bias_radius": "1/20",
+            "target_share_bias_radius": 0
+          }
+        }
+      },
+      "conditional": {
+        "ok": true,
+        "result": {
+          "state": "SUPPORTED_MODEL",
+          "evidence_mode": "INFERRED",
+          "conditions": {
+            "material_security": "secure"
+          },
+          "outcome": "employment_position",
+          "probabilities": {
+            "formal": "7/10",
+            "informal": "3/10"
+          },
+          "model_denominator_mass": "1/2",
+          "observed_denominator": null,
+          "uncertainty": "CONDITIONAL_UNCERTAINTY_NOT_IDENTIFIED",
+          "bundle_hash": "a8f14eb55759852800c153418cabed16492fcbf8d7c7f66b26e2b3b1954cbab9",
+          "values_read_hash": "deef2842d864b098489f4f31d6297b2d7fd17946700dc5651341903d5453b857",
+          "output_hash": "26d98fef508c643ff33c42c33f2c197a6ad4a96bcc05a34d5efb13b71413d1bc"
+        }
+      },
+      "conditional_standard_request": {
+        "ok": true,
+        "result": {
+          "state": "SUPPORTED_MODEL",
+          "evidence_mode": "INFERRED",
+          "conditions": {
+            "material_security": "secure"
+          },
+          "outcome": "employment_position",
+          "probabilities": {
+            "formal": "7/10",
+            "informal": "3/10"
+          },
+          "model_denominator_mass": "1/2",
+          "observed_denominator": null,
+          "uncertainty": "CONDITIONAL_UNCERTAINTY_NOT_IDENTIFIED",
+          "bundle_hash": "a8f14eb55759852800c153418cabed16492fcbf8d7c7f66b26e2b3b1954cbab9",
+          "values_read_hash": "deef2842d864b098489f4f31d6297b2d7fd17946700dc5651341903d5453b857",
+          "output_hash": "26d98fef508c643ff33c42c33f2c197a6ad4a96bcc05a34d5efb13b71413d1bc"
+        }
+      }
+    },
+    "W3_minority_whole_stratum_absent": {
+      "consumer_request": {
+        "conditions": {
+          "material_security": "secure"
+        },
+        "outcome": "employment_position"
+      },
+      "conditional_accepts_use_kwarg": false,
+      "target_strata": {
+        "majority": "4/5",
+        "minority": "1/5"
+      },
+      "source_strata_coverage": {
+        "S_A": {
+          "majority": 100
+        },
+        "S_B": {
+          "majority": 100
+        }
+      },
+      "minimum_raw_support": 30,
+      "synthesize": {
+        "ok": true,
+        "bundle": {
+          "decision": "SYNTHETIC_CANDIDATE",
+          "target_joint_status": "NOT_EMITTED",
+          "real_source_qualification": "EXTERNAL_REVIEW_REQUIRED",
+          "real_use_authorized": "NOT_EMITTED",
+          "use_scope": "NOT_EMITTED",
+          "owner_admission_status": "NOT_EMITTED",
+          "origin_classification": "NOT_EMITTED",
+          "support_gate_semantics": "NOT_EMITTED",
+          "content_hash": "caadd210c3774c13f806fefb1373661f7974d015eef9d52d7bf05ba32c992b48",
+          "refusals": {
+            "S_A": [],
+            "S_B": []
+          },
+          "overlap_diagnostics": [],
+          "candidate_is_none": false,
+          "uncovered_target_mass": "1/5",
+          "distribution_is_none": true,
+          "distribution": null,
+          "covered_subprobability": [
+            {
+              "categories": [
+                "insecure",
+                "formal"
+              ],
+              "probability": "1/5"
+            },
+            {
+              "categories": [
+                "insecure",
+                "informal"
+              ],
+              "probability": "1/5"
+            },
+            {
+              "categories": [
+                "secure",
+                "formal"
+              ],
+              "probability": "6/25"
+            },
+            {
+              "categories": [
+                "secure",
+                "informal"
+              ],
+              "probability": "4/25"
+            }
+          ],
+          "ordered_categories": "NOT_EMITTED",
+          "dependence": "SOURCE_JOINTS_TRANSPORTED_AND_MIXED; NO_CROSS_SURVEY_RESPONDENT_LINKS",
+          "coverage_detail": {
+            "majority": {
+              "target_share": "4/5",
+              "sources": [
+                {
+                  "source_id": "S_A",
+                  "coefficient": "2/5",
+                  "conditional_source_weight": "1/2",
+                  "raw_support": 100
+                },
+                {
+                  "source_id": "S_B",
+                  "coefficient": "2/5",
+                  "conditional_source_weight": "1/2",
+                  "raw_support": 100
+                }
+              ],
+              "excluded_sources": [],
+              "uncovered_target_share": "NOT_EMITTED",
+              "exclusion_reasons": "NOT_EMITTED",
+              "minority_cell_protection": "NOT_EMITTED"
+            },
+            "minority": {
+              "target_share": "1/5",
+              "sources": [],
+              "excluded_sources": [
+                "S_A",
+                "S_B"
+              ],
+              "uncovered_target_share": "NOT_EMITTED",
+              "exclusion_reasons": "NOT_EMITTED",
+              "minority_cell_protection": "NOT_EMITTED"
+            }
+          },
+          "sampling_status": "UNKNOWN_DESIGN",
+          "source_disagreement_bounds": [
+            {
+              "categories": [
+                "insecure",
+                "formal"
+              ],
+              "lower": "1/5",
+              "upper": "2/5"
+            },
+            {
+              "categories": [
+                "insecure",
+                "informal"
+              ],
+              "lower": "1/5",
+              "upper": "2/5"
+            },
+            {
+              "categories": [
+                "secure",
+                "formal"
+              ],
+              "lower": "4/25",
+              "upper": "13/25"
+            },
+            {
+              "categories": [
+                "secure",
+                "informal"
+              ],
+              "lower": "2/25",
+              "upper": "11/25"
+            }
+          ],
+          "bias_sensitivity_bounds": [
+            {
+              "categories": [
+                "insecure",
+                "formal"
+              ],
+              "lower": "7/50",
+              "upper": "23/50"
+            },
+            {
+              "categories": [
+                "insecure",
+                "informal"
+              ],
+              "lower": "7/50",
+              "upper": "23/50"
+            },
+            {
+              "categories": [
+                "secure",
+                "formal"
+              ],
+              "lower": "1/10",
+              "upper": "29/50"
+            },
+            {
+              "categories": [
+                "secure",
+                "informal"
+              ],
+              "lower": "1/50",
+              "upper": "1/2"
+            }
+          ],
+          "radii": {
+            "mapping_bias_radius": "1/100",
+            "transport_bias_radius": "1/20",
+            "target_share_bias_radius": 0
+          }
+        }
+      },
+      "conditional": {
+        "ok": true,
+        "result": {
+          "state": "UNAVAILABLE",
+          "reason": "NO_COMPLETE_TARGET_JOINT",
+          "bundle_hash": "caadd210c3774c13f806fefb1373661f7974d015eef9d52d7bf05ba32c992b48"
+        }
+      },
+      "conditional_standard_request": {
+        "ok": true,
+        "result": {
+          "state": "UNAVAILABLE",
+          "reason": "NO_COMPLETE_TARGET_JOINT",
+          "bundle_hash": "caadd210c3774c13f806fefb1373661f7974d015eef9d52d7bf05ba32c992b48"
+        }
+      }
+    },
+    "W4_outcome_leakage": {
+      "consumer_request": {
+        "conditions": {
+          "employment_position": "formal"
+        },
+        "outcome": "employment_position"
+      },
+      "conditional_accepts_use_kwarg": false,
+      "target_strata": {
+        "majority": "1/2",
+        "minority": "1/2"
+      },
+      "source_strata_coverage": {
+        "S_A": {
+          "majority": 100,
+          "minority": 100
+        },
+        "S_B": {
+          "majority": 100,
+          "minority": 100
+        }
+      },
+      "minimum_raw_support": 30,
+      "synthesize": {
+        "ok": true,
+        "bundle": {
+          "decision": "SYNTHETIC_CANDIDATE",
+          "target_joint_status": "NOT_EMITTED",
+          "real_source_qualification": "EXTERNAL_REVIEW_REQUIRED",
+          "real_use_authorized": "NOT_EMITTED",
+          "use_scope": "NOT_EMITTED",
+          "owner_admission_status": "NOT_EMITTED",
+          "origin_classification": "NOT_EMITTED",
+          "support_gate_semantics": "NOT_EMITTED",
+          "content_hash": "abaaaa1cf6991932b0f8bf97927ab67ad39c550c838f21ec375c21c49c42a243",
+          "refusals": {
+            "S_A": [],
+            "S_B": []
+          },
+          "overlap_diagnostics": [],
+          "candidate_is_none": false,
+          "uncovered_target_mass": "0",
+          "distribution_is_none": false,
+          "distribution": [
+            {
+              "categories": [
+                "insecure",
+                "formal"
+              ],
+              "probability": "17/80"
+            },
+            {
+              "categories": [
+                "insecure",
+                "informal"
+              ],
+              "probability": "23/80"
+            },
+            {
+              "categories": [
+                "secure",
+                "formal"
+              ],
+              "probability": "5/16"
+            },
+            {
+              "categories": [
+                "secure",
+                "informal"
+              ],
+              "probability": "3/16"
+            }
+          ],
+          "covered_subprobability": [
+            {
+              "categories": [
+                "insecure",
+                "formal"
+              ],
+              "probability": "17/80"
+            },
+            {
+              "categories": [
+                "insecure",
+                "informal"
+              ],
+              "probability": "23/80"
+            },
+            {
+              "categories": [
+                "secure",
+                "formal"
+              ],
+              "probability": "5/16"
+            },
+            {
+              "categories": [
+                "secure",
+                "informal"
+              ],
+              "probability": "3/16"
+            }
+          ],
+          "ordered_categories": "NOT_EMITTED",
+          "dependence": "SOURCE_JOINTS_TRANSPORTED_AND_MIXED; NO_CROSS_SURVEY_RESPONDENT_LINKS",
+          "coverage_detail": {
+            "majority": {
+              "target_share": "1/2",
+              "sources": [
+                {
+                  "source_id": "S_A",
+                  "coefficient": "1/4",
+                  "conditional_source_weight": "1/2",
+                  "raw_support": 100
+                },
+                {
+                  "source_id": "S_B",
+                  "coefficient": "1/4",
+                  "conditional_source_weight": "1/2",
+                  "raw_support": 100
+                }
+              ],
+              "excluded_sources": [],
+              "uncovered_target_share": "NOT_EMITTED",
+              "exclusion_reasons": "NOT_EMITTED",
+              "minority_cell_protection": "NOT_EMITTED"
+            },
+            "minority": {
+              "target_share": "1/2",
+              "sources": [
+                {
+                  "source_id": "S_A",
+                  "coefficient": "1/4",
+                  "conditional_source_weight": "1/2",
+                  "raw_support": 100
+                },
+                {
+                  "source_id": "S_B",
+                  "coefficient": "1/4",
+                  "conditional_source_weight": "1/2",
+                  "raw_support": 100
+                }
+              ],
+              "excluded_sources": [],
+              "uncovered_target_share": "NOT_EMITTED",
+              "exclusion_reasons": "NOT_EMITTED",
+              "minority_cell_protection": "NOT_EMITTED"
+            }
+          },
+          "sampling_status": "EXTERNAL_DESIGN_DIAGONAL_ONLY",
+          "source_disagreement_bounds": [
+            {
+              "categories": [
+                "insecure",
+                "formal"
+              ],
+              "lower": "7/40",
+              "upper": "1/4"
+            },
+            {
+              "categories": [
+                "insecure",
+                "informal"
+              ],
+              "lower": "1/4",
+              "upper": "13/40"
+            },
+            {
+              "categories": [
+                "secure",
+                "formal"
+              ],
+              "lower": "9/40",
+              "upper": "2/5"
+            },
+            {
+              "categories": [
+                "secure",
+                "informal"
+              ],
+              "lower": "1/10",
+              "upper": "11/40"
+            }
+          ],
+          "bias_sensitivity_bounds": [
+            {
+              "categories": [
+                "insecure",
+                "formal"
+              ],
+              "lower": "23/200",
+              "upper": "31/100"
+            },
+            {
+              "categories": [
+                "insecure",
+                "informal"
+              ],
+              "lower": "19/100",
+              "upper": "77/200"
+            },
+            {
+              "categories": [
+                "secure",
+                "formal"
+              ],
+              "lower": "33/200",
+              "upper": "23/50"
+            },
+            {
+              "categories": [
+                "secure",
+                "informal"
+              ],
+              "lower": "1/25",
+              "upper": "67/200"
+            }
+          ],
+          "radii": {
+            "mapping_bias_radius": "1/100",
+            "transport_bias_radius": "1/20",
+            "target_share_bias_radius": 0
+          }
+        }
+      },
+      "conditional": {
+        "ok": true,
+        "result": {
+          "state": "SUPPORTED_MODEL",
+          "evidence_mode": "INFERRED",
+          "conditions": {
+            "employment_position": "formal"
+          },
+          "outcome": "employment_position",
+          "probabilities": {
+            "formal": "1"
+          },
+          "model_denominator_mass": "21/40",
+          "observed_denominator": null,
+          "uncertainty": "CONDITIONAL_UNCERTAINTY_NOT_IDENTIFIED",
+          "bundle_hash": "abaaaa1cf6991932b0f8bf97927ab67ad39c550c838f21ec375c21c49c42a243",
+          "values_read_hash": "dc0c6c090a315fa2125c05e01b89297f6e221272684736482a5af32e4d160ee9",
+          "output_hash": "baeaad4acb35cde571b02189a1ea49067b6bfa94e4c937fb0ed1a4cebe2d6553"
+        }
+      },
+      "conditional_standard_request": {
+        "ok": true,
+        "result": {
+          "state": "SUPPORTED_MODEL",
+          "evidence_mode": "INFERRED",
+          "conditions": {
+            "material_security": "secure"
+          },
+          "outcome": "employment_position",
+          "probabilities": {
+            "formal": "5/8",
+            "informal": "3/8"
+          },
+          "model_denominator_mass": "1/2",
+          "observed_denominator": null,
+          "uncertainty": "CONDITIONAL_UNCERTAINTY_NOT_IDENTIFIED",
+          "bundle_hash": "abaaaa1cf6991932b0f8bf97927ab67ad39c550c838f21ec375c21c49c42a243",
+          "values_read_hash": "dc0c6c090a315fa2125c05e01b89297f6e221272684736482a5af32e4d160ee9",
+          "output_hash": "56f522d12b49fbdea952edd3b0d60f3e6f84d8e3496a70d76292a7fb05da6169"
+        }
+      }
+    },
+    "W5_positivity_incomplete_native_domain": {
+      "consumer_request": {
+        "conditions": {
+          "material_security": "secure"
+        },
+        "outcome": "employment_position"
+      },
+      "conditional_accepts_use_kwarg": false,
+      "target_strata": {
+        "majority": "1"
+      },
+      "source_strata_coverage": {
+        "S_A": {
+          "majority": 75
+        },
+        "S_B": {
+          "majority": 100
+        }
+      },
+      "minimum_raw_support": 30,
+      "synthesize": {
+        "ok": true,
+        "bundle": {
+          "decision": "SYNTHETIC_CANDIDATE",
+          "target_joint_status": "NOT_EMITTED",
+          "real_source_qualification": "EXTERNAL_REVIEW_REQUIRED",
+          "real_use_authorized": "NOT_EMITTED",
+          "use_scope": "NOT_EMITTED",
+          "owner_admission_status": "NOT_EMITTED",
+          "origin_classification": "NOT_EMITTED",
+          "support_gate_semantics": "NOT_EMITTED",
+          "content_hash": "43d453b70d68d406f63e16a73fb32849c2dc15a3dcb8769b3d0742d21a5e33f2",
+          "refusals": {
+            "S_A": [],
+            "S_B": []
+          },
+          "overlap_diagnostics": [],
+          "candidate_is_none": false,
+          "uncovered_target_mass": "0",
+          "distribution_is_none": false,
+          "distribution": [
+            {
+              "categories": [
+                "insecure",
+                "formal"
+              ],
+              "probability": "7/24"
+            },
+            {
+              "categories": [
+                "insecure",
+                "informal"
+              ],
+              "probability": "1/8"
+            },
+            {
+              "categories": [
+                "secure",
+                "formal"
+              ],
+              "probability": "11/30"
+            },
+            {
+              "categories": [
+                "secure",
+                "informal"
+              ],
+              "probability": "13/60"
+            }
+          ],
+          "covered_subprobability": [
+            {
+              "categories": [
+                "insecure",
+                "formal"
+              ],
+              "probability": "7/24"
+            },
+            {
+              "categories": [
+                "insecure",
+                "informal"
+              ],
+              "probability": "1/8"
+            },
+            {
+              "categories": [
+                "secure",
+                "formal"
+              ],
+              "probability": "11/30"
+            },
+            {
+              "categories": [
+                "secure",
+                "informal"
+              ],
+              "probability": "13/60"
+            }
+          ],
+          "ordered_categories": "NOT_EMITTED",
+          "dependence": "SOURCE_JOINTS_TRANSPORTED_AND_MIXED; NO_CROSS_SURVEY_RESPONDENT_LINKS",
+          "coverage_detail": {
+            "majority": {
+              "target_share": "1",
+              "sources": [
+                {
+                  "source_id": "S_A",
+                  "coefficient": "1/2",
+                  "conditional_source_weight": "1/2",
+                  "raw_support": 75
+                },
+                {
+                  "source_id": "S_B",
+                  "coefficient": "1/2",
+                  "conditional_source_weight": "1/2",
+                  "raw_support": 100
+                }
+              ],
+              "excluded_sources": [],
+              "uncovered_target_share": "NOT_EMITTED",
+              "exclusion_reasons": "NOT_EMITTED",
+              "minority_cell_protection": "NOT_EMITTED"
+            }
+          },
+          "sampling_status": "EXTERNAL_DESIGN_DIAGONAL_ONLY",
+          "source_disagreement_bounds": [
+            {
+              "categories": [
+                "insecure",
+                "formal"
+              ],
+              "lower": "1/4",
+              "upper": "1/3"
+            },
+            {
+              "categories": [
+                "insecure",
+                "informal"
+              ],
+              "lower": "0",
+              "upper": "1/4"
+            },
+            {
+              "categories": [
+                "secure",
+                "formal"
+              ],
+              "lower": "1/5",
+              "upper": "8/15"
+            },
+            {
+              "categories": [
+                "secure",
+                "informal"
+              ],
+              "lower": "2/15",
+              "upper": "3/10"
+            }
+          ],
+          "bias_sensitivity_bounds": [
+            {
+              "categories": [
+                "insecure",
+                "formal"
+              ],
+              "lower": "19/100",
+              "upper": "59/150"
+            },
+            {
+              "categories": [
+                "insecure",
+                "informal"
+              ],
+              "lower": "0",
+              "upper": "31/100"
+            },
+            {
+              "categories": [
+                "secure",
+                "formal"
+              ],
+              "lower": "7/50",
+              "upper": "89/150"
+            },
+            {
+              "categories": [
+                "secure",
+                "informal"
+              ],
+              "lower": "11/150",
+              "upper": "9/25"
+            }
+          ],
+          "radii": {
+            "mapping_bias_radius": "1/100",
+            "transport_bias_radius": "1/20",
+            "target_share_bias_radius": 0
+          }
+        }
+      },
+      "conditional": {
+        "ok": true,
+        "result": {
+          "state": "SUPPORTED_MODEL",
+          "evidence_mode": "INFERRED",
+          "conditions": {
+            "material_security": "secure"
+          },
+          "outcome": "employment_position",
+          "probabilities": {
+            "formal": "22/35",
+            "informal": "13/35"
+          },
+          "model_denominator_mass": "7/12",
+          "observed_denominator": null,
+          "uncertainty": "CONDITIONAL_UNCERTAINTY_NOT_IDENTIFIED",
+          "bundle_hash": "43d453b70d68d406f63e16a73fb32849c2dc15a3dcb8769b3d0742d21a5e33f2",
+          "values_read_hash": "028619dbde87d584042abd4c767976bf176bdbe7bff9cacb2fe7ca5ee7e47692",
+          "output_hash": "ce67e1ba3569c66e80e6737917c830119b5c9fd8e070ae93be9dd1c2dc065cf7"
+        }
+      },
+      "conditional_standard_request": {
+        "ok": true,
+        "result": {
+          "state": "SUPPORTED_MODEL",
+          "evidence_mode": "INFERRED",
+          "conditions": {
+            "material_security": "secure"
+          },
+          "outcome": "employment_position",
+          "probabilities": {
+            "formal": "22/35",
+            "informal": "13/35"
+          },
+          "model_denominator_mass": "7/12",
+          "observed_denominator": null,
+          "uncertainty": "CONDITIONAL_UNCERTAINTY_NOT_IDENTIFIED",
+          "bundle_hash": "43d453b70d68d406f63e16a73fb32849c2dc15a3dcb8769b3d0742d21a5e33f2",
+          "values_read_hash": "028619dbde87d584042abd4c767976bf176bdbe7bff9cacb2fe7ca5ee7e47692",
+          "output_hash": "ce67e1ba3569c66e80e6737917c830119b5c9fd8e070ae93be9dd1c2dc065cf7"
+        }
+      }
+    },
+    "W6_overlap_duplicate_sample": {
+      "consumer_request": {
+        "conditions": {
+          "material_security": "secure"
+        },
+        "outcome": "employment_position"
+      },
+      "conditional_accepts_use_kwarg": false,
+      "target_strata": {
+        "majority": "1"
+      },
+      "source_strata_coverage": {
+        "S_A": {
+          "majority": 100
+        },
+        "S_B": {
+          "majority": 100
+        }
+      },
+      "minimum_raw_support": 30,
+      "synthesize": {
+        "ok": true,
+        "bundle": {
+          "decision": "SOURCE_INDEXED_BACKOFF",
+          "target_joint_status": "NOT_EMITTED",
+          "real_source_qualification": "EXTERNAL_REVIEW_REQUIRED",
+          "real_use_authorized": "NOT_EMITTED",
+          "use_scope": "NOT_EMITTED",
+          "owner_admission_status": "NOT_EMITTED",
+          "origin_classification": "NOT_EMITTED",
+          "support_gate_semantics": "NOT_EMITTED",
+          "content_hash": "3be7479aa34f984873050256088071b874758db72c64f5c2c95cc1eb3a365b63",
+          "refusals": {
+            "S_A": [],
+            "S_B": []
+          },
+          "overlap_diagnostics": [
+            {
+              "pair": "S_A|S_B",
+              "reason": "DUPLICATE_SAMPLE"
+            }
+          ],
+          "candidate_is_none": true
+        }
+      },
+      "conditional": {
+        "ok": true,
+        "result": {
+          "state": "UNAVAILABLE",
+          "reason": "NO_COMPLETE_TARGET_JOINT",
+          "bundle_hash": "3be7479aa34f984873050256088071b874758db72c64f5c2c95cc1eb3a365b63"
+        }
+      },
+      "conditional_standard_request": {
+        "ok": true,
+        "result": {
+          "state": "UNAVAILABLE",
+          "reason": "NO_COMPLETE_TARGET_JOINT",
+          "bundle_hash": "3be7479aa34f984873050256088071b874758db72c64f5c2c95cc1eb3a365b63"
+        }
+      }
+    },
+    "W7_source_excluded_all_strata": {
+      "consumer_request": {
+        "conditions": {
+          "material_security": "secure"
+        },
+        "outcome": "employment_position"
+      },
+      "conditional_accepts_use_kwarg": false,
+      "target_strata": {
+        "majority": "1/2",
+        "minority": "1/2"
+      },
+      "source_strata_coverage": {
+        "S_A": {
+          "majority": 6,
+          "minority": 5
+        },
+        "S_B": {
+          "majority": 100,
+          "minority": 100
+        }
+      },
+      "minimum_raw_support": 30,
+      "synthesize": {
+        "ok": true,
+        "bundle": {
+          "decision": "SYNTHETIC_CANDIDATE",
+          "target_joint_status": "NOT_EMITTED",
+          "real_source_qualification": "EXTERNAL_REVIEW_REQUIRED",
+          "real_use_authorized": "NOT_EMITTED",
+          "use_scope": "NOT_EMITTED",
+          "owner_admission_status": "NOT_EMITTED",
+          "origin_classification": "NOT_EMITTED",
+          "support_gate_semantics": "NOT_EMITTED",
+          "content_hash": "0ccc59305ad204e9399b7ead0dbe560234cd26eb014cf96f03040cfcdc4572ef",
+          "refusals": {
+            "S_A": [],
+            "S_B": []
+          },
+          "overlap_diagnostics": [],
+          "candidate_is_none": false,
+          "uncovered_target_mass": "0",
+          "distribution_is_none": false,
+          "distribution": [
+            {
+              "categories": [
+                "insecure",
+                "formal"
+              ],
+              "probability": "1/4"
+            },
+            {
+              "categories": [
+                "insecure",
+                "informal"
+              ],
+              "probability": "1/4"
+            },
+            {
+              "categories": [
+                "secure",
+                "formal"
+              ],
+              "probability": "3/10"
+            },
+            {
+              "categories": [
+                "secure",
+                "informal"
+              ],
+              "probability": "1/5"
+            }
+          ],
+          "covered_subprobability": [
+            {
+              "categories": [
+                "insecure",
+                "formal"
+              ],
+              "probability": "1/4"
+            },
+            {
+              "categories": [
+                "insecure",
+                "informal"
+              ],
+              "probability": "1/4"
+            },
+            {
+              "categories": [
+                "secure",
+                "formal"
+              ],
+              "probability": "3/10"
+            },
+            {
+              "categories": [
+                "secure",
+                "informal"
+              ],
+              "probability": "1/5"
+            }
+          ],
+          "ordered_categories": "NOT_EMITTED",
+          "dependence": "SOURCE_JOINTS_TRANSPORTED_AND_MIXED; NO_CROSS_SURVEY_RESPONDENT_LINKS",
+          "coverage_detail": {
+            "majority": {
+              "target_share": "1/2",
+              "sources": [
+                {
+                  "source_id": "S_B",
+                  "coefficient": "1/2",
+                  "conditional_source_weight": "1",
+                  "raw_support": 100
+                }
+              ],
+              "excluded_sources": [
+                "S_A"
+              ],
+              "uncovered_target_share": "NOT_EMITTED",
+              "exclusion_reasons": "NOT_EMITTED",
+              "minority_cell_protection": "NOT_EMITTED"
+            },
+            "minority": {
+              "target_share": "1/2",
+              "sources": [
+                {
+                  "source_id": "S_B",
+                  "coefficient": "1/2",
+                  "conditional_source_weight": "1",
+                  "raw_support": 100
+                }
+              ],
+              "excluded_sources": [
+                "S_A"
+              ],
+              "uncovered_target_share": "NOT_EMITTED",
+              "exclusion_reasons": "NOT_EMITTED",
+              "minority_cell_protection": "NOT_EMITTED"
+            }
+          },
+          "sampling_status": "EXTERNAL_DESIGN_DIAGONAL_ONLY",
+          "source_disagreement_bounds": [
+            {
+              "categories": [
+                "insecure",
+                "formal"
+              ],
+              "lower": "1/4",
+              "upper": "1/4"
+            },
+            {
+              "categories": [
+                "insecure",
+                "informal"
+              ],
+              "lower": "1/4",
+              "upper": "1/4"
+            },
+            {
+              "categories": [
+                "secure",
+                "formal"
+              ],
+              "lower": "3/10",
+              "upper": "3/10"
+            },
+            {
+              "categories": [
+                "secure",
+                "informal"
+              ],
+              "lower": "1/5",
+              "upper": "1/5"
+            }
+          ],
+          "bias_sensitivity_bounds": [
+            {
+              "categories": [
+                "insecure",
+                "formal"
+              ],
+              "lower": "19/100",
+              "upper": "31/100"
+            },
+            {
+              "categories": [
+                "insecure",
+                "informal"
+              ],
+              "lower": "19/100",
+              "upper": "31/100"
+            },
+            {
+              "categories": [
+                "secure",
+                "formal"
+              ],
+              "lower": "6/25",
+              "upper": "9/25"
+            },
+            {
+              "categories": [
+                "secure",
+                "informal"
+              ],
+              "lower": "7/50",
+              "upper": "13/50"
+            }
+          ],
+          "radii": {
+            "mapping_bias_radius": "1/100",
+            "transport_bias_radius": "1/20",
+            "target_share_bias_radius": 0
+          }
+        }
+      },
+      "conditional": {
+        "ok": true,
+        "result": {
+          "state": "SUPPORTED_MODEL",
+          "evidence_mode": "INFERRED",
+          "conditions": {
+            "material_security": "secure"
+          },
+          "outcome": "employment_position",
+          "probabilities": {
+            "formal": "3/5",
+            "informal": "2/5"
+          },
+          "model_denominator_mass": "1/2",
+          "observed_denominator": null,
+          "uncertainty": "CONDITIONAL_UNCERTAINTY_NOT_IDENTIFIED",
+          "bundle_hash": "0ccc59305ad204e9399b7ead0dbe560234cd26eb014cf96f03040cfcdc4572ef",
+          "values_read_hash": "cdabe09450aca3631c22868925b8db5d7994e94bf6d8b50310583469e6df110b",
+          "output_hash": "8c5fffa144ad186dd4a65b76f7995a7f5da22edc8d18c7329641735b6c0c400f"
+        }
+      },
+      "conditional_standard_request": {
+        "ok": true,
+        "result": {
+          "state": "SUPPORTED_MODEL",
+          "evidence_mode": "INFERRED",
+          "conditions": {
+            "material_security": "secure"
+          },
+          "outcome": "employment_position",
+          "probabilities": {
+            "formal": "3/5",
+            "informal": "2/5"
+          },
+          "model_denominator_mass": "1/2",
+          "observed_denominator": null,
+          "uncertainty": "CONDITIONAL_UNCERTAINTY_NOT_IDENTIFIED",
+          "bundle_hash": "0ccc59305ad204e9399b7ead0dbe560234cd26eb014cf96f03040cfcdc4572ef",
+          "values_read_hash": "cdabe09450aca3631c22868925b8db5d7994e94bf6d8b50310583469e6df110b",
+          "output_hash": "8c5fffa144ad186dd4a65b76f7995a7f5da22edc8d18c7329641735b6c0c400f"
+        }
+      }
+    },
+    "W8_condition_outside_mapped_support": {
+      "consumer_request": {
+        "conditions": {
+          "material_security": "unknown_third_state"
+        },
+        "outcome": "employment_position"
+      },
+      "conditional_accepts_use_kwarg": false,
+      "target_strata": {
+        "majority": "1/2",
+        "minority": "1/2"
+      },
+      "source_strata_coverage": {
+        "S_A": {
+          "majority": 100,
+          "minority": 100
+        },
+        "S_B": {
+          "majority": 100,
+          "minority": 100
+        }
+      },
+      "minimum_raw_support": 30,
+      "synthesize": {
+        "ok": true,
+        "bundle": {
+          "decision": "SYNTHETIC_CANDIDATE",
+          "target_joint_status": "NOT_EMITTED",
+          "real_source_qualification": "EXTERNAL_REVIEW_REQUIRED",
+          "real_use_authorized": "NOT_EMITTED",
+          "use_scope": "NOT_EMITTED",
+          "owner_admission_status": "NOT_EMITTED",
+          "origin_classification": "NOT_EMITTED",
+          "support_gate_semantics": "NOT_EMITTED",
+          "content_hash": "abaaaa1cf6991932b0f8bf97927ab67ad39c550c838f21ec375c21c49c42a243",
+          "refusals": {
+            "S_A": [],
+            "S_B": []
+          },
+          "overlap_diagnostics": [],
+          "candidate_is_none": false,
+          "uncovered_target_mass": "0",
+          "distribution_is_none": false,
+          "distribution": [
+            {
+              "categories": [
+                "insecure",
+                "formal"
+              ],
+              "probability": "17/80"
+            },
+            {
+              "categories": [
+                "insecure",
+                "informal"
+              ],
+              "probability": "23/80"
+            },
+            {
+              "categories": [
+                "secure",
+                "formal"
+              ],
+              "probability": "5/16"
+            },
+            {
+              "categories": [
+                "secure",
+                "informal"
+              ],
+              "probability": "3/16"
+            }
+          ],
+          "covered_subprobability": [
+            {
+              "categories": [
+                "insecure",
+                "formal"
+              ],
+              "probability": "17/80"
+            },
+            {
+              "categories": [
+                "insecure",
+                "informal"
+              ],
+              "probability": "23/80"
+            },
+            {
+              "categories": [
+                "secure",
+                "formal"
+              ],
+              "probability": "5/16"
+            },
+            {
+              "categories": [
+                "secure",
+                "informal"
+              ],
+              "probability": "3/16"
+            }
+          ],
+          "ordered_categories": "NOT_EMITTED",
+          "dependence": "SOURCE_JOINTS_TRANSPORTED_AND_MIXED; NO_CROSS_SURVEY_RESPONDENT_LINKS",
+          "coverage_detail": {
+            "majority": {
+              "target_share": "1/2",
+              "sources": [
+                {
+                  "source_id": "S_A",
+                  "coefficient": "1/4",
+                  "conditional_source_weight": "1/2",
+                  "raw_support": 100
+                },
+                {
+                  "source_id": "S_B",
+                  "coefficient": "1/4",
+                  "conditional_source_weight": "1/2",
+                  "raw_support": 100
+                }
+              ],
+              "excluded_sources": [],
+              "uncovered_target_share": "NOT_EMITTED",
+              "exclusion_reasons": "NOT_EMITTED",
+              "minority_cell_protection": "NOT_EMITTED"
+            },
+            "minority": {
+              "target_share": "1/2",
+              "sources": [
+                {
+                  "source_id": "S_A",
+                  "coefficient": "1/4",
+                  "conditional_source_weight": "1/2",
+                  "raw_support": 100
+                },
+                {
+                  "source_id": "S_B",
+                  "coefficient": "1/4",
+                  "conditional_source_weight": "1/2",
+                  "raw_support": 100
+                }
+              ],
+              "excluded_sources": [],
+              "uncovered_target_share": "NOT_EMITTED",
+              "exclusion_reasons": "NOT_EMITTED",
+              "minority_cell_protection": "NOT_EMITTED"
+            }
+          },
+          "sampling_status": "EXTERNAL_DESIGN_DIAGONAL_ONLY",
+          "source_disagreement_bounds": [
+            {
+              "categories": [
+                "insecure",
+                "formal"
+              ],
+              "lower": "7/40",
+              "upper": "1/4"
+            },
+            {
+              "categories": [
+                "insecure",
+                "informal"
+              ],
+              "lower": "1/4",
+              "upper": "13/40"
+            },
+            {
+              "categories": [
+                "secure",
+                "formal"
+              ],
+              "lower": "9/40",
+              "upper": "2/5"
+            },
+            {
+              "categories": [
+                "secure",
+                "informal"
+              ],
+              "lower": "1/10",
+              "upper": "11/40"
+            }
+          ],
+          "bias_sensitivity_bounds": [
+            {
+              "categories": [
+                "insecure",
+                "formal"
+              ],
+              "lower": "23/200",
+              "upper": "31/100"
+            },
+            {
+              "categories": [
+                "insecure",
+                "informal"
+              ],
+              "lower": "19/100",
+              "upper": "77/200"
+            },
+            {
+              "categories": [
+                "secure",
+                "formal"
+              ],
+              "lower": "33/200",
+              "upper": "23/50"
+            },
+            {
+              "categories": [
+                "secure",
+                "informal"
+              ],
+              "lower": "1/25",
+              "upper": "67/200"
+            }
+          ],
+          "radii": {
+            "mapping_bias_radius": "1/100",
+            "transport_bias_radius": "1/20",
+            "target_share_bias_radius": 0
+          }
+        }
+      },
+      "conditional": {
+        "ok": true,
+        "result": {
+          "state": "UNAVAILABLE",
+          "reason": "CATEGORY_OUTSIDE_MAPPED_SUPPORT",
+          "bundle_hash": "abaaaa1cf6991932b0f8bf97927ab67ad39c550c838f21ec375c21c49c42a243"
+        }
+      },
+      "conditional_standard_request": {
+        "ok": true,
+        "result": {
+          "state": "SUPPORTED_MODEL",
+          "evidence_mode": "INFERRED",
+          "conditions": {
+            "material_security": "secure"
+          },
+          "outcome": "employment_position",
+          "probabilities": {
+            "formal": "5/8",
+            "informal": "3/8"
+          },
+          "model_denominator_mass": "1/2",
+          "observed_denominator": null,
+          "uncertainty": "CONDITIONAL_UNCERTAINTY_NOT_IDENTIFIED",
+          "bundle_hash": "abaaaa1cf6991932b0f8bf97927ab67ad39c550c838f21ec375c21c49c42a243",
+          "values_read_hash": "dc0c6c090a315fa2125c05e01b89297f6e221272684736482a5af32e4d160ee9",
+          "output_hash": "56f522d12b49fbdea952edd3b0d60f3e6f84d8e3496a70d76292a7fb05da6169"
+        }
+      }
+    }
+  },
+  "environment": {
+    "python": "3.11.3",
+    "executable": "/usr/local/bin/python3",
+    "pid": 62085,
+    "hostname": "Matthews-MBP.lan",
+    "platform": "macOS-13.7.8-x86_64-i386-64bit",
+    "cold_round": "1",
+    "cwd": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r35f6c",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  }
+}
