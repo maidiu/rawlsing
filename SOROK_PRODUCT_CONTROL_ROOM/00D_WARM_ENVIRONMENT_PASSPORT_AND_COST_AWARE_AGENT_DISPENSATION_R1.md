@@ -1,5 +1,10 @@
 # SOROK 00D — Warm-environment passports and cost-aware agent dispensation R1
 
+## Cross-HQ parallel commission flight / capacity-aware model routing — 18 October 2026
+
+Before issuing a worker prompt or responding to a worker return, apply [the shared PRE-MAIN parallel-flight law](../CROSS_HQ_CONTROL_ROOM/HQ_PARALLEL_FLIGHTS_AND_ECONOMICAL_MODEL_ROUTING_LAW_R1.md) AND live Sorok 00C/00D. Optimize across simultaneous noncolliding READY_PARALLEL lanes, not one sequential task. Verify each actual computer/account/quota, preserve active independent worker and editor choice. Recommend a minimum sufficient **model** separately from the user's OpenCode/DeepSeek-Harness/editor selection: DeepSeek V4.1-Flash is an economical candidate only when actually available/competent, Browser High is default for high intelligence not requiring big local worktree/complex pytest; Codex 6.1 High is not a blanket default. Every return triggers full flight board refresh. No unmeasured cash claim, forced provider switch, extra reviewer round or V3/actor/source grant.
+
+
 ## Mandatory proof-integrity constraint on economical execution — 18 October 2026
 
 Apply [the PRE-MAIN shared falsifiable-test law](../CROSS_HQ_CONTROL_ROOM/PROOF_INTEGRITY_AND_FALSIFIABLE_TEST_LAW_R1.md) on every new or revised Sorok implementation/consumer commission, independent of agent provider or budget. Worker supplies exact claim/consumer/dependency, pre-frozen positive and severance RED, real target test result and sanitized receipt. The checker forbids inert assertions and enforces scoped integration-claim mutation witnesses on changed tests. Perform this as part of the SAME cheap qualified warm run, not a new review queue. Green JUnit does not authorize CAN/ADP person/actor use.
