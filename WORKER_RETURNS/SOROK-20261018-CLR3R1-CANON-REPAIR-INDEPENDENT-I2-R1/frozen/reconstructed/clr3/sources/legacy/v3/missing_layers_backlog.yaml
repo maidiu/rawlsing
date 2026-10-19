@@ -1,0 +1,323 @@
+# missing_layers_backlog.yaml
+# Canonical backlog for layers from new_version.txt, spec.txt, specLLM.txt, starter_engine.txt
+# that are missing or stubbed in v3. Reference: v3/MISSING_LAYERS_FROM_SPECS.md.
+# Use this file to drive implementation; update status as tasks complete.
+
+meta:
+  name: "missing_layers_backlog"
+  version: "0.1"
+  source_docs:
+    - "v3/new_version.txt"
+    - "v3/spec.txt"
+    - "v3/specLLM.txt"
+    - "v3/starter_engine.txt"
+  summary_doc: "v3/MISSING_LAYERS_FROM_SPECS.md"
+  trace_order:  # recommended implementation order
+    - pass2_empty_scenes_and_deltas
+    - psychological_capacity
+    - wound_vector
+    - strata_and_field_pressures
+    - calibration_and_boundary_map
+    - particularity_and_jaggedness
+    - rupture_and_metabolization
+    - expectation_baselines_and_striving
+
+# --- TRACE 1: Pass 2 empty scenes / no deltas (wire logging, fix prompt/parse) ---
+tasks:
+  pass2_empty_scenes_and_deltas:
+    source: "PERSONA_SHEET_EMPTY_AND_MISSING_WIRING.md"
+    description: "Log Pass 1 raw + selected counts; log Pass 2 raw when scene empty or parse fails; fix Pass 2 prompt/parse so 11/15/22 and final year get non-empty scenes; optional fallback when Pass 1 packet empty so deltas still run."
+    status: done
+    done: "Pass 1: raw excerpt + selected counts in run log; parse_candidate_packet_with_fallback in runner so deltas run when 0/0. Pass 2: phenomenology logs empty/parse failure with raw excerpt; empty-scene placeholder; validation retry. No year-specific 11/15/22 prompt (generic robustness)."
+    artifacts:
+      - "v2/run_full_simulation_with_llm_log.py"  # add logging
+      - "v3/render/phenomenology.py"              # log Pass 2 raw on empty/fail
+      - "v3/engine/prompts.py"                    # Pass 2 require non-empty scene
+      - "v3/engine/llm_contract.py"               # parse_render_output robustness
+    depends_on: []
+
+  pass1_fallback_packet:
+    source: "BUILD_BACKLOG_COMPLETE.md, PERSONA_SHEET §3"
+    description: "When Pass 1 returns 0 event_candidates and 0 magnet_candidates, use minimal fallback packet so deltas still run."
+    status: done
+    done: "make_fallback_event(), fallback_candidate_packet_if_empty(); parse_candidate_packet_with_fallback() for one-call parse+fallback in pipelines."
+    artifacts:
+      - "v3/engine/llm_contract.py"
+    depends_on: []
+
+  # --- TRACE 2: Psychological capacity (spec's 7 dimensions) ---
+  psychological_capacity:
+    source: "spec.txt, new_version.txt"
+    description: "Add spec's psychological capacity vector (vitality, aperture, reality_anchor, binding, coherence, agency, transmutation) as stored state; decide relation to material Capacity; wire scoring and deltas."
+    status: done
+    done: "PsychologicalCapacity in state + codec; state_summary_from_backbone uses psychological capacity; scoring uses capacity fields."
+    schema_additions:
+      v3config: "stored_state_schema.psychological_capacity (or extend capacity with a second block)"
+      state_py: "PsychologicalCapacity dataclass or capacity_psychological: 7 fields 0-100"
+    artifacts:
+      - "v3/config/v3config.yaml"   # schema
+      - "v3/core/state.py"
+      - "v3/io/json_codec.py"
+      - "v3/engine/llm_contract.py" # state_summary_from_backbone
+      - "v3/engine/scoring.py"
+    depends_on: []
+
+  # --- TRACE 3: Wound vector ---
+  wound_vector:
+    source: "spec.txt, specLLM.txt"
+    description: "Add wound_vector to state (sensitivities per hook: shame, fear, anger, abandonment, control, recognition, loss; default coping channels). Wire state summary and scoring wound_fit."
+    status: done
+    done: "WoundVector in state + codec; state summary wound; scoring wound_fit."
+    schema_additions:
+      wound_sensitivities: "0-100 per hook"
+      default_coping_channels: "list of channel ids"
+    artifacts:
+      - "v3config.yaml or missing_layers_backlog (schema)"
+      - "v3/core/state.py"
+      - "v3/io/json_codec.py"
+      - "v3/engine/llm_contract.py"
+      - "v3/engine/scoring.py"
+    depends_on: []
+
+  # --- TRACE 4: Strata + field pressures ---
+  strata_and_field_pressures:
+    source: "new_version.txt, spec.txt"
+    description: "Strata stack as first-class objects (or structured strata_salience) with provision_strength, coercion_strength, contradiction_load, visibility_of_complicity, salience. Feed into step and state summary."
+    status: done
+    done: "Stratum dataclass + state.strata_stack; state.strata_salience; field.py; state summary salient_strata from strata_stack/strata_salience."
+    schema_additions:
+      stratum: "level, name, provision, coercion, contradiction, visibility, salience"
+    artifacts:
+      - "v3/core/state.py"           # Stratum dataclass or strata_salience shape
+      - "v3/systems/field.py"
+      - "v3/engine/llm_contract.py"
+    depends_on: []
+
+  # --- TRACE 5: Calibration + BoundaryMap ---
+  calibration_and_boundary_map:
+    source: "spec.txt"
+    description: "CalibrationRegime (per nation/sect_class/school/work: norm_center, uniqueness_norm, outlier_penalties/incentives, dream_window). BoundaryMap per domain (discouraged/permitted/incentivized, trigger conditions). Add to state or config; use in affordances and selection."
+    status: done
+    done: "CalibrationRegime + BoundaryMapEntry in state + codec; llm_contract uses them in state summary (channels, boundary_map_summary); v3/systems/affordances.py affordances_from_state() for reuse."
+    schema_additions:
+      CalibrationRegime: "norm_center, uniqueness_norm, outlier_penalties, outlier_incentives, dream_window"
+      BoundaryMap: "per domain: discouraged/permitted/incentivized positions, trigger_conditions"
+    artifacts:
+      - "v3/core/state.py"
+      - "v3/io/json_codec.py"
+      - "v3/engine/llm_contract.py"
+      - "v3/systems/affordances.py"
+    depends_on: [strata_and_field_pressures]
+
+  # --- TRACE 6: Particularity + jaggedness (Pass 2) ---
+  particularity_and_jaggedness:
+    source: "specLLM.txt"
+    description: "Add particularity block (8 anchors: place, object, schedule, money, language, power, body, social_risk) and jaggedness (2 contradiction pairs) to Pass 2 output schema; validators validate_particularity, validate_jaggedness; re-prompt on failure."
+    status: done
+    done: "parse_render_output has particularity (8 anchors), jaggedness, micro_causality, person_stubs; v3/engine/validators.py (validate_particularity, validate_jaggedness, validate_no_repeats, validate_render_output); phenomenology runs validation + one corrective retry via config.render_validation_history."
+    schema_additions:
+      RenderOutput: "particularity: { place_anchor, object_anchor, ... }, jaggedness: [ {a,b}, {a,b} ]"
+    artifacts:
+      - "v3/engine/llm_contract.py"
+      - "v3/engine/prompts.py"
+      - "v3/engine/validators.py"
+      - "v3/render/phenomenology.py"
+    depends_on: [pass2_empty_scenes_and_deltas]
+
+  # --- TRACE 7: Rupture / metabolization ---
+  rupture_and_metabolization:
+    source: "specLLM.txt, starter_engine.txt"
+    description: "Epistemic rupture event kind; RuptureShard persistence; MetabolizationProcess (mode, status, plasticity_years_left, narrators, provisional_frame, downstream_biases); NarrationSupport; reconfiguration clusters; plasticity window; rupture_templates.yaml."
+    status: done
+    done: "rupture_templates.yaml; RuptureShard/MetabolizationProcess in state+codec; epistemic_rupture in EVENT_KINDS+sanitizer; create_rupture_shard_from_event, apply_deltas selected_events; is_malheur, MALHEUR_MULTIPLIER in metabolization_effects."
+    schema_additions:
+      RuptureShard: "opacity, prediction_error, violated_assumption, ..."
+      MetabolizationProcess: "mode, status, plasticity_years_left, narrators, provisional_frame, downstream_biases"
+      plasticity_window: "years_left, framework_switch_sensitivity, magnet_susceptibility, crack_rewrite_probability"
+    artifacts:
+      - "v3/engine/effects/rupture_templates.yaml"
+      - "v3/core/state.py"
+      - "v3/engine/effects/metabolization_effects.py"
+      - "v3/engine/effects/delta_templates.py"
+      - "v3/engine/llm_contract.py"
+    depends_on: [wound_vector]
+
+  # --- TRACE 8: Expectation baselines + striving objects ---
+  expectation_baselines_and_striving:
+    source: "starter_engine.txt, need_axis_rules.yaml, proxy_striving_map.yaml"
+    description: "ExpectationEvent, StrivingObject; expectation_baseline (entitled/hopeful/forbidden/hopeless) per NeedAxis in state; parent_expectation_baseline + TransmissionRegime; derive_child_expectation_baseline; wire need_axis_rules and proxy_striving_map."
+    status: done
+    done: "state.expectation_baseline, striving_objects; expectation_baseline.py (load_need_axis_rules, derive_child_expectation_baseline); striving_objects.py (spawn_striving_objects_for_age, update_striving_step); striving_update step; GiftShard/DisruptionShard; need_axis_rules.yaml."
+    schema_additions:
+      expectation_baseline: "dict[NeedAxis, BaselineState]"
+      StrivingObject: "id, label, need_axis, investment, identity_load, feasibility_belief, ..."
+      parent_expectation_baseline: "for parent models"
+    artifacts:
+      - "v3/core/state.py"
+      - "v3/io/json_codec.py"
+      - "v3/engine/expectation_baseline.py"
+      - "v3/engine/striving_objects.py"
+      - "v3/need_axis_rules.yaml"
+    depends_on: []
+
+  # --- ADDITIONAL MISSING (not in trace order above; implement as needed) ---
+  framework_operators:
+    source: "spec.txt, new_version.txt"
+    description: "Frameworks as metabolic operators: acute_delta, chronic_delta, half_life, failure_mode, enemy_requirement, institutional_affinities. Extend Framework beyond id+weight."
+    status: done
+    done: "Framework in state has all operator fields; json_codec _dict_to_framework reads them. frameworks_update step still weight-only; optional future: apply acute/chronic delta to capacity."
+    artifacts:
+      - "v3/core/state.py"
+      - "v3/io/json_codec.py"
+      - "v3/systems/frameworks.py"
+      - "v3config.yaml"
+    depends_on: []
+
+  registers_and_latent_aim:
+    source: "spec.txt"
+    description: "Registers (public_expression_gate, private_expression_gate, inner_load). Domains: latent_aim vs expressed_aim gated by registers; mis_aim rules."
+    status: done
+    done: "State: Registers, DomainState.latent_aim/expressed_aim; codec; derived mis_aim_risk. aim.py optional for explicit gating."
+    artifacts:
+      - "v3/core/state.py"
+      - "v3/io/json_codec.py"
+      - "v3/core/derived.py"
+      - "v3/systems/domains.py"
+    depends_on: [calibration_and_boundary_map]
+
+  psyche_package:
+    source: "spec.txt"
+    description: "psyche/ package: vitality.py, wound.py, metabolism.py, registers.py, channels.py. Metabolic style (current, trend) in state."
+    status: done
+    done: "v3/psyche/ created: vitality (vitality_value, regulation_cost stub), wound (wound_vector, sensitivities_dict), metabolism (metabolic_style_from_state, update_metabolic_style), registers (registers, clamp_registers), channels (CHANNEL_IDS, default_channels, is_valid_channel)."
+    artifacts:
+      - "v3/psyche/__init__.py"
+      - "v3/psyche/vitality.py"
+      - "v3/psyche/wound.py"
+      - "v3/psyche/metabolism.py"
+      - "v3/psyche/registers.py"
+      - "v3/psyche/channels.py"
+    depends_on: [psychological_capacity, wound_vector]
+
+  alienation_vector:
+    source: "new_version.txt"
+    description: "Alienation as multi-dimensional vector with update rules (not single float)."
+    status: done
+    done: "AlienationVector (structural, affective, institutional); state.alienation_vector + state.alienation sync; codec; update_alienation and apply_deltas use vector."
+    artifacts:
+      - "v3/core/state.py"
+      - "v3/systems/alienation.py"
+      - "v3/io/json_codec.py"
+      - "v3/engine/effects/delta_templates.py"
+    depends_on: []
+
+  domain_awareness_viscerality:
+    source: "new_version.txt"
+    description: "A/S/V/Aim as structured: Awareness (unknown/distorted/partial/structural), Solidarity (aligned/partial/none + buffer), Viscerality (target/proximate/...), Aim latent vs expressed."
+    status: done
+    done: "AwarenessLevel, SolidarityLevel, VisceralityLevel in enums; domain_axis_to_label(A/S/V, value); state summary domain_axes (A/S/V labels per domain). latent_aim/expressed_aim already in DomainState."
+    artifacts:
+      - "v3/core/state.py"
+      - "v3/core/enums.py"
+      - "v3/engine/llm_contract.py"
+    depends_on: [registers_and_latent_aim]
+
+  magnet_persistence:
+    source: "specLLM.txt"
+    description: "Persistent Magnet objects in state (active_magnets list); magnet_type, offers, costs, compatibility, trajectory_branches. Core done: Magnet in state, codec, apply_deltas selected_magnets, active_magnets_update yearly step (decay/floor/cap)."
+    status: done
+    artifacts:
+      - "v3/core/state.py"
+      - "v3/io/json_codec.py"
+      - "v3/engine/active_magnets.py"
+      - "v3/engine/effects/delta_templates.py"
+    depends_on: []
+
+  particularity_micro_causality_person_stub:
+    source: "specLLM.txt"
+    description: "Micro_causality (detail → caused) in schema; PersonStub (name, role, signature, moral_edge, speech_tic, status_marker, pressure_point) for new magnets."
+    status: done
+    done: "parse_render_output: micro_causality (detail/caused), person_stubs (name, role, signature, moral_edge, speech_tic, status_marker, pressure_point); Pass 2 prompts already reference both."
+    artifacts:
+      - "v3/engine/llm_contract.py"
+      - "v3/engine/prompts.py"
+    depends_on: [particularity_and_jaggedness]
+
+  child_model_rupture_validation:
+    source: "specLLM.txt"
+    description: "Child model (assumed_rules, taboos, what_counts_as_possible) for rupture validation in Pass 1 input."
+    status: done
+    done: "state.child_model; state_summary_from_backbone includes child_model; score_event_candidate rupture_assumption_fit when kind==epistemic_rupture (penalty if violated_assumption not in assumed_rules)."
+    artifacts:
+      - "v3/core/state.py"
+      - "v3/engine/llm_contract.py"
+      - "v3/engine/scoring.py"
+    depends_on: [rupture_and_metabolization]
+
+  malheur_operationalization:
+    source: "specLLM.txt"
+    description: "Malheur: severity + status loss + isolation + no narrators; operationalize in events/effects."
+    status: done
+    done: "is_malheur(severity, status_shock, isolation_spike, narration_availability) in metabolization_effects; MALHEUR_MULTIPLIER in compute_metabolization_delta; severity micro|major|malheur in state/templates."
+    artifacts:
+      - "v3/engine/effects/metabolization_effects.py"
+      - "v3/engine/effects/delta_templates.py"
+    depends_on: [rupture_and_metabolization]
+
+  che_jesus_gating:
+    source: "starter_engine.txt"
+    description: "Che/Jesus gating: SL + AC + orientation; base rates as first-class logic."
+    status: done
+    done: "orientation_liberatory(state), compute_che_jesus_eligible(); DerivedIndices.che_jesus_eligible; v3config che_jesus_gates; peak_regime + liberatory OR = rare gate."
+    artifacts:
+      - "v3/core/derived.py"
+      - "v3/v3config.yaml"
+      - "v3/v3_yearly_step_order.yaml"
+      - "v3/engine/yearly_step.py"
+    depends_on: []
+
+  field_injection_from_harmonization:
+    source: "WHAT_RUNS_AND_ABSENT, build_plan w5"
+    description: "field_update reads driver_model, civic_soul, imperial_block; map to state.field and strata salience."
+    status: done
+    done: "build_field_raw_from_civic_soul, build_field_raw_from_imperial_block, build_field_injection_from_harmonization(driver_model, civic_soul, imperial_block, world_slice, driver_vec). field_update merges config['field_injection']; strata_salience from harmonization optional later."
+    artifacts:
+      - "v3/systems/field.py"
+      - "v3/io/field_injection.py"
+    depends_on: []
+
+  v2_identity_to_backbone_seeding:
+    source: "MISSING_LAYERS_FROM_SPECS §5"
+    description: "Full v2 identity pipeline (country, region, SES, barometers) → BackboneState seeding (beyond identity_override in persona_sheet)."
+    status: done
+    done: "identity_to_backbone: get_identity_from_data (v2 generate_identity_context), backbone_state_from_identity (capacity, reproduction_constraints, practice_stack.spiritual, state.field.raw from get_field_injection when country_code set)."
+    artifacts:
+      - "v3/io/identity_to_backbone.py"
+      - "v3/io/field_injection.py"
+      - "v2/identity_generator.py"  # or adapter
+    depends_on: []
+
+  voice_profile_and_micrograph_wiring:
+    source: "PERSONA_SHEET_EMPTY_AND_MISSING_WIRING.md"
+    description: "Wire voice_profile (identity_scripts, moral_loops) and bands[].micrograph (caregivers, peers, institutions, key_events, norm_conflicts) from v3 state or Pass 1/2."
+    status: done
+    done: "_voice_profile_from_state (peak_routing, style_traits, wound_vector → scripts/loops); _micrograph_from_state (active_magnets, events_this_year, cracks, rendered). identity_override can override voice_profile."
+    artifacts:
+      - "v3/io/persona_sheet.py"
+    depends_on: [pass2_empty_scenes_and_deltas]
+
+  band_label_and_life_snapshot_job:
+    source: "PERSONA_SHEET_EMPTY_AND_MISSING_WIRING.md"
+    description: "Fix band age_band label (22 → 22-29 not 17-21); wire life_snapshot.job_type from state or identity."
+    status: done
+    done: "age_band bands 0-3, 4-11, 12-16, 17-21, 22-29, 30-45, 46+; job_type from identity_override (job_type/occupation) or _derive_job_type(state) from practice_stack."
+    artifacts:
+      - "v3/io/persona_sheet.py"
+    depends_on: []
+
+# Optional: reference build_plan phases so backlog tasks can map to waves
+build_plan_alignment:
+  trace_1: "diagnostic + prompt/parse; unblocks w4_render_integration quality"
+  trace_2_3_4_5: "state/schema extensions; can precede or follow w4"
+  trace_6: "w4 Pass 2 schema extension"
+  trace_7_8: "post-w4 or parallel to w5"

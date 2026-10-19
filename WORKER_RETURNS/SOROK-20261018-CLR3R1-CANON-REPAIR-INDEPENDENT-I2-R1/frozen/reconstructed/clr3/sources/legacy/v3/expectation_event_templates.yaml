@@ -1,0 +1,418 @@
+# expectation_event_templates.yaml
+# Paired fulfillment/violation templates per need_axis; targets match striving tags for event-striving targeting.
+# Used for: scoring boost when event targets a striving; GiftShard/DisruptionShard creation on apply.
+
+meta:
+  age_brackets: [3, 7, 11, 14, 17, 24, 35]
+  valence: [positive, negative, mixed]
+  type: [fulfillment, violation, mixed]
+  need_axes:
+    - attachment
+    - safety
+    - belonging
+    - status
+    - competence
+    - autonomy
+    - meaning
+    - justice
+    - beauty_play
+    - eros_intimacy
+
+templates:
+  - id: EV_COM_014_TEAM_MADE
+    need_axis: competence
+    type: fulfillment
+    valence: positive
+    targets: [sports, performance, coach_validation, team]
+    baseline_high_impact: [hopeless, forbidden, hopeful]
+    notes: "Success installs feasibility belief; increases identity_load."
+
+  - id: EV_COM_017_CAREER_ENDING_INJURY
+    need_axis: competence
+    type: violation
+    valence: negative
+    targets: [sports, performance, team, body]
+    baseline_high_impact: [entitled, hopeful]
+    notes: "If identity_load on target striving is high, malheur_risk."
+
+  - id: EV_ATT_003_RETURN_AFTER_FEAR
+    need_axis: attachment
+    type: fulfillment
+    valence: positive
+    targets: [return_to_parent, comfort, attunement]
+    baseline_high_impact: [hopeless, forbidden]
+    notes: "Creates GiftShard: 'people return.'"
+
+  - id: EV_ATT_007_ABANDONMENT_EPISODE
+    need_axis: attachment
+    type: violation
+    valence: negative
+    targets: [absence, unpredictability, loss]
+    baseline_high_impact: [entitled, hopeful]
+    notes: "Often creates volatility + people-pleasing or withdrawal proxies."
+
+  - id: EV_BEL_011_CHOSEN_BY_FRIEND
+    need_axis: belonging
+    type: fulfillment
+    valence: positive
+    targets: [friendship, loyalty, chosen, peer_validation]
+    baseline_high_impact: [hopeless, forbidden, hopeful]
+    notes: "GiftShard: 'I can be chosen.'"
+
+  - id: EV_BEL_014_SOCIAL_EXPULSION
+    need_axis: belonging
+    type: violation
+    valence: negative
+    targets: [friend_group, humiliation, exclusion]
+    baseline_high_impact: [entitled, hopeful]
+    notes: "Drives subculture adoption, superiority detachment, or people-pleasing."
+
+  - id: EV_AUT_011_TRUSTED_WITH_RESPONSIBILITY
+    need_axis: autonomy
+    type: fulfillment
+    valence: positive
+    targets: [choice, responsibility, trust, privacy_respected]
+    baseline_high_impact: [forbidden, hopeless]
+    notes: "GiftShard: 'I can choose without punishment.'"
+
+  - id: EV_AUT_014_CONTROL_CLAMPDOWN
+    need_axis: autonomy
+    type: violation
+    valence: negative
+    targets: [surveillance, punishment, no_privacy, control]
+    baseline_high_impact: [entitled, hopeful]
+    notes: "Often spawns rebellion-style or secret competence proxies."
+
+  # -------------------------
+  # MEANING
+  # -------------------------
+  - id: EV_MEA_014_INTERPRETIVE_KEY_OPENS
+    need_axis: meaning
+    type: fulfillment
+    valence: positive
+    targets: [book, mentor, interpretive_key, coherence]
+    baseline_high_impact: [hopeless, forbidden, hopeful]
+    notes: "Key opens channel; installs feasibility belief."
+
+  - id: EV_MEA_017_BETRAYAL_BY_MEANING_SYSTEM
+    need_axis: meaning
+    type: violation
+    valence: negative
+    targets: [hypocrisy, betrayal, meaning_collapse, authority]
+    baseline_high_impact: [entitled, hopeful]
+    notes: "Cynic realism or integrative reconstruction."
+
+  - id: EV_MEA_FUL_TRANSCENDENCE_CONTACT
+    need_axis: meaning
+    type: fulfillment
+    valence: positive
+    targets: [awe, prayer_real, mystery, presence]
+    baseline_high_impact: [hopeless, forbidden]
+    notes: "Positive shock installs meaning scaffold."
+
+  - id: EV_MEA_VIO_ROOTLESSNESS_SPIRAL
+    need_axis: meaning
+    type: violation
+    valence: mixed
+    targets: [rootlessness, incoherence, drifting, numbing]
+    baseline_high_impact: [entitled, hopeful]
+    notes: "Often yields mental-health-as-exit routing."
+
+  # -------------------------
+  # JUSTICE
+  # -------------------------
+  - id: EV_JUS_17_SMALL_COLLECTIVE_WIN
+    need_axis: justice
+    type: fulfillment
+    valence: positive
+    targets: [organizing, solidarity, efficacy, collective_win]
+    baseline_high_impact: [hopeless, forbidden, hopeful]
+    notes: "Creates efficacy memory resource."
+
+  - id: EV_JUS_24_BETRAYAL_BY_CAUSE
+    need_axis: justice
+    type: violation
+    valence: negative
+    targets: [movement_betrayal, hypocrisy, disillusionment]
+    baseline_high_impact: [entitled, hopeful]
+    notes: "Cynicism or deepened structural clarity."
+
+  - id: EV_JUS_FUL_TRUTH_WITNESS_SEEN
+    need_axis: justice
+    type: fulfillment
+    valence: positive
+    targets: [truth, witness, naming, dignity]
+    baseline_high_impact: [hopeless, forbidden]
+    notes: "Injustice becomes legible; can trigger organizing."
+
+  - id: EV_JUS_VIO_PUNISHED_FOR_DISSENT
+    need_axis: justice
+    type: violation
+    valence: negative
+    targets: [dissent, punishment, retaliation, fear]
+    baseline_high_impact: [entitled, hopeful]
+    notes: "Often shrinks justice into rule purity or private outrage."
+
+  # -------------------------
+  # BEAUTY_PLAY
+  # -------------------------
+  - id: EV_BEA_011_BEAUTY_CONTACT
+    need_axis: beauty_play
+    type: fulfillment
+    valence: positive
+    targets: [art, nature, awe, absorption]
+    baseline_high_impact: [hopeless, forbidden]
+    notes: "GiftShard: beauty is real and free."
+
+  - id: EV_BEA_014_MOCKED_FOR_SENSITIVITY
+    need_axis: beauty_play
+    type: violation
+    valence: negative
+    targets: [mockery, tenderness_punished, shame]
+    baseline_high_impact: [entitled, hopeful]
+    notes: "Irony/edgelord aesthetic or secret devotion."
+
+  - id: EV_BEA_FUL_CREATIVE_SCENE_BELONGING
+    need_axis: beauty_play
+    type: fulfillment
+    valence: positive
+    targets: [band, poetry, art_scene, expression]
+    baseline_high_impact: [hopeless, forbidden, hopeful]
+    notes: "Aesthetic channel becomes identity."
+
+  - id: EV_BEA_VIO_PLAY_PUNISHED_AS_LAZINESS
+    need_axis: beauty_play
+    type: violation
+    valence: mixed
+    targets: [play_punished, laziness_accusation, duty]
+    baseline_high_impact: [entitled, hopeful]
+    notes: "Productivity ideology or secret play."
+
+  # -------------------------
+  # EROS_INTIMACY
+  # -------------------------
+  - id: EV_ERO_017_FIRST_EROTIC_RESPECT
+    need_axis: eros_intimacy
+    type: fulfillment
+    valence: positive
+    targets: [consent, tenderness, chosen, mutuality]
+    baseline_high_impact: [forbidden, hopeless, hopeful]
+    notes: "GiftShard: respect and mutuality possible."
+
+  - id: EV_ERO_014_SHAME_EVENT_AROUND_DESIRE
+    need_axis: eros_intimacy
+    type: violation
+    valence: negative
+    targets: [sexual_shame, policing, exposure]
+    baseline_high_impact: [entitled, hopeful]
+    notes: "Sealing or transmutation depending on resources."
+
+  - id: EV_ERO_FUL_INTIMACY_SAFE_VULNERABILITY
+    need_axis: eros_intimacy
+    type: fulfillment
+    valence: positive
+    targets: [vulnerability_accepted, trust, reciprocity]
+    baseline_high_impact: [hopeless, forbidden]
+    notes: "Stable intimacy scaffold."
+
+  - id: EV_ERO_VIO_BETRAYAL_IN_INTIMACY
+    need_axis: eros_intimacy
+    type: violation
+    valence: negative
+    targets: [betrayal, breach_of_trust, exposure]
+    baseline_high_impact: [entitled, hopeful]
+    notes: "Guarding or collapse; can increase malheur risk."
+
+  # --- meaning ---
+  - id: EV_MEA_014_INTERPRETIVE_KEY_OPENS
+    need_axis: meaning
+    type: fulfillment
+    valence: positive
+    targets: [book, mentor, interpretive_key, coherence]
+    baseline_high_impact: [hopeless, forbidden, hopeful]
+    notes: "Key opens channel; installs feasibility belief."
+  - id: EV_MEA_017_BETRAYAL_BY_MEANING_SYSTEM
+    need_axis: meaning
+    type: violation
+    valence: negative
+    targets: [hypocrisy, betrayal, meaning_collapse, authority]
+    baseline_high_impact: [entitled, hopeful]
+    notes: "Cynic realism or integrative reconstruction."
+  - id: EV_MEA_FUL_TRANSCENDENCE_CONTACT
+    need_axis: meaning
+    type: fulfillment
+    valence: positive
+    targets: [awe, prayer_real, mystery, presence]
+    baseline_high_impact: [hopeless, forbidden]
+    notes: "Positive shock installs meaning scaffold."
+  - id: EV_MEA_VIO_ROOTLESSNESS_SPIRAL
+    need_axis: meaning
+    type: violation
+    valence: mixed
+    targets: [rootlessness, incoherence, drifting, numbing]
+    baseline_high_impact: [entitled, hopeful]
+    notes: "Often yields mental-health-as-exit routing."
+
+  # --- justice ---
+  - id: EV_JUS_17_SMALL_COLLECTIVE_WIN
+    need_axis: justice
+    type: fulfillment
+    valence: positive
+    targets: [organizing, solidarity, efficacy, collective_win]
+    baseline_high_impact: [hopeless, forbidden, hopeful]
+    notes: "Creates efficacy memory resource."
+  - id: EV_JUS_24_BETRAYAL_BY_CAUSE
+    need_axis: justice
+    type: violation
+    valence: negative
+    targets: [movement_betrayal, hypocrisy, disillusionment]
+    baseline_high_impact: [entitled, hopeful]
+    notes: "Cynicism or deepened structural clarity."
+  - id: EV_JUS_FUL_TRUTH_WITNESS_SEEN
+    need_axis: justice
+    type: fulfillment
+    valence: positive
+    targets: [truth, witness, naming, dignity]
+    baseline_high_impact: [hopeless, forbidden]
+    notes: "Injustice becomes legible; defiance-organizing."
+  - id: EV_JUS_VIO_PUNISHED_FOR_DISSENT
+    need_axis: justice
+    type: violation
+    valence: negative
+    targets: [dissent, punishment, retaliation, fear]
+    baseline_high_impact: [entitled, hopeful]
+    notes: "Shrinks justice into rule purity or private outrage."
+  - id: EV_JUS_FUL_PROTECTS_SOMEONE_WEAKER
+    need_axis: justice
+    type: fulfillment
+    valence: positive
+    targets: [protection, courage, intervention, care_repair]
+    baseline_high_impact: [hopeless, forbidden]
+    notes: "Dignity reservoir; strengthens agency + justice baseline."
+
+  # --- beauty_play ---
+  - id: EV_BEA_011_BEAUTY_CONTACT
+    need_axis: beauty_play
+    type: fulfillment
+    valence: positive
+    targets: [art, nature, awe, absorption]
+    baseline_high_impact: [hopeless, forbidden]
+    notes: "GiftShard: beauty is real and free."
+  - id: EV_BEA_014_MOCKED_FOR_SENSITIVITY
+    need_axis: beauty_play
+    type: violation
+    valence: negative
+    targets: [mockery, tenderness_punished, shame]
+    baseline_high_impact: [entitled, hopeful]
+    notes: "Irony/edgelord aesthetic or secret devotion."
+  - id: EV_BEA_FUL_CREATIVE_SCENE_BELONGING
+    need_axis: beauty_play
+    type: fulfillment
+    valence: positive
+    targets: [band, poetry, art_scene, expression]
+    baseline_high_impact: [hopeless, forbidden, hopeful]
+    notes: "Aesthetic channel becomes identity."
+  - id: EV_BEA_VIO_CREATIVE_SHAMING_BY_AUTHORITY
+    need_axis: beauty_play
+    type: violation
+    valence: negative
+    targets: [authority, shaming, pointless_art, contempt]
+    baseline_high_impact: [entitled, hopeful]
+    notes: "Practicality obsession or secret artistic vocation."
+  - id: EV_BEA_FUL_PLAY_ALLOWED_NO_STRINGS
+    need_axis: beauty_play
+    type: fulfillment
+    valence: positive
+    targets: [play, unserious_joy, laughter, ease]
+    baseline_high_impact: [hopeless, forbidden]
+    notes: "Vitality intensification; increases openness."
+
+  # --- eros_intimacy ---
+  - id: EV_ERO_017_FIRST_EROTIC_RESPECT
+    need_axis: eros_intimacy
+    type: fulfillment
+    valence: positive
+    targets: [consent, tenderness, chosen, mutuality]
+    baseline_high_impact: [forbidden, hopeless, hopeful]
+    notes: "GiftShard: respect and mutuality possible."
+  - id: EV_ERO_014_SHAME_EVENT_AROUND_DESIRE
+    need_axis: eros_intimacy
+    type: violation
+    valence: negative
+    targets: [sexual_shame, policing, exposure]
+    baseline_high_impact: [entitled, hopeful]
+    notes: "Sealing or transmutation depending on resources."
+  - id: EV_ERO_FUL_INTIMACY_WITHOUT_VIOLATION
+    need_axis: eros_intimacy
+    type: fulfillment
+    valence: positive
+    targets: [safety, trust, vulnerability_accepted]
+    baseline_high_impact: [forbidden, hopeless]
+    notes: "Stable intimacy scaffold."
+  - id: EV_ERO_VIO_BETRAYAL_OR_EXPLOITATION
+    need_axis: eros_intimacy
+    type: violation
+    valence: negative
+    targets: [betrayal, exploitation, objectification]
+    baseline_high_impact: [entitled, hopeful]
+    notes: "High identity_load: malheur_risk; sealing common."
+
+  # --- safety ---
+  - id: EV_SAF_007_SAFE_PLAY_SPACE
+    need_axis: safety
+    type: fulfillment
+    valence: positive
+    targets: [predictability, trusted_adult, play_safe]
+    baseline_high_impact: [hopeless, forbidden]
+    notes: "Increases confidence in fairness of systems."
+  - id: EV_SAF_011_THREAT_OR_CHAOS
+    need_axis: safety
+    type: violation
+    valence: negative
+    targets: [violence, unpredictability, loss_of_safety]
+    baseline_high_impact: [entitled, hopeful]
+    notes: "Hypervigilance or fatalism depending on baseline."
+  - id: EV_SAF_FUL_CONSISTENT_CAREGIVER
+    need_axis: safety
+    type: fulfillment
+    valence: positive
+    targets: [return_to_parent, consistency, attunement]
+    baseline_high_impact: [hopeless, forbidden]
+    notes: "Safety scaffold for exploration."
+  - id: EV_SAF_VIO_ABANDONMENT_OR_BETRAYAL
+    need_axis: safety
+    type: violation
+    valence: negative
+    targets: [absence, betrayal, abandonment]
+    baseline_high_impact: [entitled, hopeful]
+    notes: "Vigilance or withdrawal."
+
+  # --- status ---
+  - id: EV_STA_014_RECOGNITION_WIN
+    need_axis: status
+    type: fulfillment
+    valence: positive
+    targets: [rank, awards, recognition, visibility]
+    baseline_high_impact: [hopeless, forbidden, hopeful]
+    notes: "Increases identity_load on status striving."
+  - id: EV_STA_017_PUBLIC_HUMILIATION
+    need_axis: status
+    type: violation
+    valence: negative
+    targets: [humiliation, invisibility, shame, exclusion]
+    baseline_high_impact: [entitled, hopeful]
+    notes: "Invisibility or revenge status; shame loops."
+  - id: EV_STA_FUL_EARNED_RESPECT
+    need_axis: status
+    type: fulfillment
+    valence: positive
+    targets: [respect, earned_place, belonging_via_competence]
+    baseline_high_impact: [hopeless, forbidden]
+    notes: "Stable status scaffold."
+  - id: EV_STA_VIO_DISCRIMINATION_OR_BLOCKED
+    need_axis: status
+    type: violation
+    valence: negative
+    targets: [discrimination, blocked_path, rigged]
+    baseline_high_impact: [entitled, hopeful]
+    notes: "Austerity morality, resentment, or structural critique."

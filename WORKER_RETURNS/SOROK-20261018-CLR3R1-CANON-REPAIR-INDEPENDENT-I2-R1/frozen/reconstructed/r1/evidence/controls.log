@@ -1,0 +1,32 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.11.3, pytest-9.1.1, pluggy-1.6.0 -- <PYTHON>
+cachedir: .pytest_cache
+rootdir: <RETURN_ROOT>
+collecting ... collected 23 items
+
+test_controls.py::test_relabeling_does_not_change_behavior[HOURS_CUT] PASSED [  4%]
+test_controls.py::test_relabeling_does_not_change_behavior[RAISE_WITH_OVERTIME] PASSED [  8%]
+test_controls.py::test_relabeling_does_not_change_behavior[ROUTINE] PASSED [ 13%]
+test_controls.py::test_same_label_different_materials_changes_behavior PASSED [ 17%]
+test_controls.py::test_different_encounters_same_downstream PASSED       [ 21%]
+test_controls.py::test_no_change_with_large_reserve_and_protected_time PASSED [ 26%]
+test_controls.py::test_prior_father_practices_same_event PASSED          [ 30%]
+test_controls.py::test_unrelated_neighbor_changes_neither_child_nor_work PASSED [ 34%]
+test_controls.py::test_late_notification_cannot_parent_earlier_response[1081] PASSED [ 39%]
+test_controls.py::test_late_notification_cannot_parent_earlier_response[1082] PASSED [ 43%]
+test_controls.py::test_late_notification_cannot_parent_earlier_response[1200] PASSED [ 47%]
+test_controls.py::test_earlier_notification_no_behavior_change PASSED    [ 52%]
+test_controls.py::test_competing_overtime_conserves_time_but_not_pay_model PASSED [ 56%]
+test_controls.py::test_zero_child_slots_blocks_parent_repair_offer_uptake PASSED [ 60%]
+test_controls.py::test_material_feasibility_boundary PASSED              [ 65%]
+test_controls.py::test_determinism_across_process_hash_seeds PASSED      [ 69%]
+test_controls.py::test_seed_sweep_is_only_selection_not_development PASSED [ 73%]
+test_controls.py::test_source_readset_spy_father_does_not_consume_label PASSED [ 78%]
+test_controls.py::test_child_policy_does_not_receive_employer_facts PASSED [ 82%]
+test_controls.py::test_later_rule_threshold_is_authored_not_necessarily_changed_by_encounter PASSED [ 86%]
+test_controls.py::test_one_literal_threshold_mutation_changes_later_action_without_history_change PASSED [ 91%]
+test_controls.py::test_label_only_policy_mutant_is_killed_by_same_label_material_control PASSED [ 95%]
+test_controls.py::test_clamped_encounter_blocks_workplace_effect_on_child PASSED [100%]
+
+- generated xml file: <RETURN_ROOT>/evidence/controls.xml -
+============================== 23 passed in 0.61s ==============================

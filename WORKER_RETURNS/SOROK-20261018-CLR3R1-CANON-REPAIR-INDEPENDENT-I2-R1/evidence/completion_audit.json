@@ -1,0 +1,40 @@
+{
+  "observed_utc": "2026-10-19T00:14:56.540374+00:00",
+  "verdict": "ACCEPT_SCOPED",
+  "repaired_pass": 89,
+  "original_six_red": 6,
+  "original_i2_baseline": {
+    "PASS": 4,
+    "RED": 2
+  },
+  "new_local_repair_red": 0,
+  "errors": 0,
+  "skips": 0,
+  "original_independent_sealed_files_unchanged": 301,
+  "staged_git_blobs_unchanged": 338,
+  "closure_files": 65,
+  "selected_members": 31,
+  "qualified_runtime_member_matches": 16,
+  "historically_unqualified_extra_pins": 49,
+  "archive_container": "HOLD_MISMATCH",
+  "native_runtime_and_actor_permission": "HOLD",
+  "producer_authentication": "HOLD",
+  "repaired_frozen_suites_edited": false,
+  "self_adoption": false,
+  "post_return_owner": "HQ",
+  "tests_changed_after_first_fresh_run": false,
+  "operational_commands": {
+    "preflight": "python3 --version; python3 imports pytest/yaml (yaml initially missing)",
+    "setup": "python3 -m venv RETURN/.venv; RETURN/.venv/bin/python -m pip install pytest==9.1.1 PyYAML==6.0.2",
+    "court": "RETURN/.venv/bin/python RETURN/run_court.py",
+    "source_audit": "RETURN/.venv/bin/python RETURN/audit_independent.py SOURCE_ARCHIVE",
+    "replay": "RETURN/.venv/bin/python RETURN/replay_independent.py",
+    "rehydrate_check": "RETURN/.venv/bin/python RETURN/materialize_frozen.py"
+  },
+  "aliases": {
+    "RETURN": "assigned new reviewer return directory",
+    "SOURCE_ARCHIVE": "local available Rawlsing_code_bundle_staging.zip; path withheld; exact hash in source_audit.json"
+  },
+  "publication": "pending ordinary non-force push; final remote SHA is supplied by direct readback, not inferred from local state",
+  "packaging_diagnostic": "Initial seal utility matched its own literal privacy search pattern. Pattern construction corrected; no candidate/test/source bytes changed."
+}

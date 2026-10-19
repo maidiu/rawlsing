@@ -1,0 +1,143 @@
+# Rupture templates by age bracket (specLLM: cluster_candidates, mode_priors, narrator_priors, severity_prior).
+# Age brackets: 3, 7, 11, 14, 17, 24, 35
+# Clusters: hardening_protection, sensitivity_exposure, meaning_rebinding, cynicism_sealing, justice_engagement
+
+- id: "early_childhood_3"
+  age_prior: 3
+  cluster_candidates:
+    - "hardening_protection"
+    - "sensitivity_exposure"
+    - "meaning_rebinding"
+  mode_priors:
+    assimilation: 0.4
+    accommodation: 0.4
+    sealing: 0.1
+    collapse: 0.05
+    transmutation: 0.05
+  narrator_priors:
+    - "parent"
+    - "caregiver"
+    - "sibling"
+  severity_prior: "major"
+
+- id: "middle_childhood_7"
+  age_prior: 7
+  cluster_candidates:
+    - "hardening_protection"
+    - "sensitivity_exposure"
+    - "meaning_rebinding"
+    - "justice_engagement"
+  mode_priors:
+    assimilation: 0.35
+    accommodation: 0.35
+    sealing: 0.15
+    collapse: 0.1
+    transmutation: 0.05
+  narrator_priors:
+    - "parent"
+    - "teacher"
+    - "peer"
+    - "sibling"
+  severity_prior: "major"
+
+- id: "late_childhood_11"
+  age_prior: 11
+  cluster_candidates:
+    - "sensitivity_exposure"
+    - "meaning_rebinding"
+    - "justice_engagement"
+    - "cynicism_sealing"
+  mode_priors:
+    assimilation: 0.3
+    accommodation: 0.3
+    sealing: 0.2
+    collapse: 0.15
+    transmutation: 0.05
+  narrator_priors:
+    - "parent"
+    - "teacher"
+    - "peer"
+    - "authority"
+  severity_prior: "major"
+
+- id: "early_adolescence_14"
+  age_prior: 14
+  cluster_candidates:
+    - "sensitivity_exposure"
+    - "meaning_rebinding"
+    - "justice_engagement"
+    - "cynicism_sealing"
+  mode_priors:
+    assimilation: 0.25
+    accommodation: 0.35
+    sealing: 0.25
+    collapse: 0.1
+    transmutation: 0.05
+  narrator_priors:
+    - "parent"
+    - "teacher"
+    - "peer"
+    - "romantic_partner"
+  severity_prior: "major"
+
+- id: "late_adolescence_17"
+  age_prior: 17
+  cluster_candidates:
+    - "meaning_rebinding"
+    - "justice_engagement"
+    - "cynicism_sealing"
+    - "hardening_protection"
+  mode_priors:
+    assimilation: 0.2
+    accommodation: 0.3
+    sealing: 0.3
+    collapse: 0.15
+    transmutation: 0.05
+  narrator_priors:
+    - "peer"
+    - "romantic_partner"
+    - "authority"
+    - "mentor"
+  severity_prior: "major"
+
+- id: "young_adulthood_24"
+  age_prior: 24
+  cluster_candidates:
+    - "meaning_rebinding"
+    - "justice_engagement"
+    - "cynicism_sealing"
+    - "hardening_protection"
+    - "sensitivity_exposure"
+  mode_priors:
+    assimilation: 0.15
+    accommodation: 0.25
+    sealing: 0.35
+    collapse: 0.2
+    transmutation: 0.05
+  narrator_priors:
+    - "romantic_partner"
+    - "friend"
+    - "colleague"
+    - "authority"
+  severity_prior: "major"
+
+- id: "adulthood_35"
+  age_prior: 35
+  cluster_candidates:
+    - "justice_engagement"
+    - "cynicism_sealing"
+    - "hardening_protection"
+    - "meaning_rebinding"
+    - "sensitivity_exposure"
+  mode_priors:
+    assimilation: 0.1
+    accommodation: 0.2
+    sealing: 0.4
+    collapse: 0.25
+    transmutation: 0.05
+  narrator_priors:
+    - "romantic_partner"
+    - "colleague"
+    - "authority"
+    - "community"
+  severity_prior: "major"

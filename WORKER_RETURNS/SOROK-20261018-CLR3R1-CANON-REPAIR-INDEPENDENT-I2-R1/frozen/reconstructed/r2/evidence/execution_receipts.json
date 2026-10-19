@@ -1,0 +1,86 @@
+{
+  "observed_utc": "2026-10-18T17:32:59.545741+00:00",
+  "pytest": "pytest 9.1.1",
+  "python": "3.11.3",
+  "reassessed_commit": "0c718dfc69a453510bfad921ef60f0b3c271d648",
+  "redaction": "Host checkout/interpreter prefixes and JUnit hostname only; test values unchanged",
+  "scope": "Author reassessment; positive audit observations are not fixes to old falsifiers",
+  "suites": [
+    {
+      "command": [
+        "python3",
+        "-m",
+        "pytest",
+        "-v",
+        "-p",
+        "no:cacheprovider",
+        "test_world_intersection.py",
+        "--junitxml=../../../SOROK_CONTINGENT_LIVES_CAUSAL_COURT_R2_REASSESSMENT/evidence/inherited.xml"
+      ],
+      "cwd": "WORKER_RETURNS/SOROK_CONTINGENT_LIVES_CAUSAL_COURT_R1/inherited/causal_experiment",
+      "errors": 0,
+      "exit_code": 0,
+      "failures": 0,
+      "skipped": 0,
+      "suite": "inherited",
+      "tests": 24
+    },
+    {
+      "command": [
+        "python3",
+        "-m",
+        "pytest",
+        "-v",
+        "-p",
+        "no:cacheprovider",
+        "test_controls.py",
+        "--junitxml=../SOROK_CONTINGENT_LIVES_CAUSAL_COURT_R2_REASSESSMENT/evidence/controls.xml"
+      ],
+      "cwd": "WORKER_RETURNS/SOROK_CONTINGENT_LIVES_CAUSAL_COURT_R1",
+      "errors": 0,
+      "exit_code": 0,
+      "failures": 0,
+      "skipped": 0,
+      "suite": "controls",
+      "tests": 23
+    },
+    {
+      "command": [
+        "python3",
+        "-m",
+        "pytest",
+        "-v",
+        "-p",
+        "no:cacheprovider",
+        "test_falsifiers.py",
+        "--junitxml=../SOROK_CONTINGENT_LIVES_CAUSAL_COURT_R2_REASSESSMENT/evidence/original_falsifiers.xml"
+      ],
+      "cwd": "WORKER_RETURNS/SOROK_CONTINGENT_LIVES_CAUSAL_COURT_R1",
+      "errors": 0,
+      "exit_code": 1,
+      "failures": 6,
+      "skipped": 0,
+      "suite": "original_falsifiers",
+      "tests": 6
+    },
+    {
+      "command": [
+        "python3",
+        "-m",
+        "pytest",
+        "-v",
+        "-p",
+        "no:cacheprovider",
+        "test_adjudication.py",
+        "--junitxml=evidence/adjudication.xml"
+      ],
+      "cwd": "WORKER_RETURNS/SOROK_CONTINGENT_LIVES_CAUSAL_COURT_R2_REASSESSMENT",
+      "errors": 0,
+      "exit_code": 0,
+      "failures": 0,
+      "skipped": 0,
+      "suite": "adjudication",
+      "tests": 18
+    }
+  ]
+}

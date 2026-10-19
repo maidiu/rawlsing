@@ -1,0 +1,19 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.11.3, pytest-9.1.1, pluggy-1.7.0 -- WORKTREE/WORKER_RETURNS/SOROK-20261018-CLR3R1-CANON-REPAIR-INDEPENDENT-I2-R1/.venv/bin/python
+cachedir: .pytest_cache
+CLR3 repair candidate binding verified: repair_r1/candidate/recursive_court.py
+rootdir: /dev
+configfile: null
+collecting ... collected 34 items / 32 deselected / 2 selected
+
+../../../../../../../../dev::test_N01_conflict_atomicity_retry[slots0] <- ..WORKTREE/WORKER_RETURNS/SOROK-20261018-CLR3R1-CANON-REPAIR-INDEPENDENT-I2-R1/test_fresh.py PASSED [ 50%]
+../../../../../../../../dev::test_N01_conflict_atomicity_retry[slots1] <- ..WORKTREE/WORKER_RETURNS/SOROK-20261018-CLR3R1-CANON-REPAIR-INDEPENDENT-I2-R1/test_fresh.py PASSED [100%]
+
+=============================== warnings summary ===============================
+.venv/lib/python3.11/site-packages/_pytest/cacheprovider.py:469
+  WORKTREE/WORKER_RETURNS/SOROK-20261018-CLR3R1-CANON-REPAIR-INDEPENDENT-I2-R1/.venv/lib/python3.11/site-packages/_pytest/cacheprovider.py:469: PytestCacheWarning: could not create cache path /dev/.pytest_cache/v/cache/nodeids: [Errno 1] Operation not permitted: '/dev/pytest-cache-files-gpjzpzak'
+    config.cache.set("cache/nodeids", sorted(self.cached_nodeids))
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated xml file: WORKTREE/WORKER_RETURNS/SOROK-20261018-CLR3R1-CANON-REPAIR-INDEPENDENT-I2-R1/evidence/early.xml -
+================= 2 passed, 32 deselected, 1 warning in 1.22s ==================

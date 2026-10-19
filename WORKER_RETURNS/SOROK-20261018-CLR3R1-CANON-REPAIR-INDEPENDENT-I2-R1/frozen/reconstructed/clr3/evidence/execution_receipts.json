@@ -1,0 +1,56 @@
+{
+  "dependencies": {
+    "PyYAML": "6.0.2"
+  },
+  "full_traces": {
+    "path": "evidence/full_trajectories.json.gz",
+    "sha256": "8198031428a3da0c54486369146295a9c3d74d1a1d327e0ecf1a3322ad537c70",
+    "uncompressed_bytes": 2999843
+  },
+  "observed_utc": "2026-10-18T19:15:52.917909+00:00",
+  "pytest": "pytest 9.1.1",
+  "python": "3.11.3",
+  "scope": "Historical provisional engine executed; current/native owner contracts UNISSUED; no independent acceptance",
+  "source_files_verified": 65,
+  "stdout_redaction": "absolute CLR3 checkout/interpreter paths; JUnit host alias only",
+  "suites": [
+    {
+      "command": [
+        "python3",
+        "-m",
+        "pytest",
+        "-v",
+        "-p",
+        "no:cacheprovider",
+        "test_recursive_court.py",
+        "--junitxml=evidence/clr3.xml"
+      ],
+      "cwd": ".",
+      "errors": 0,
+      "exit_code": 0,
+      "failures": 0,
+      "skipped": 0,
+      "suite": "clr3",
+      "tests": 38
+    },
+    {
+      "command": [
+        "python3",
+        "-m",
+        "pytest",
+        "-v",
+        "-p",
+        "no:cacheprovider",
+        "test_falsifiers.py",
+        "--junitxml=../../evidence/original_six_red.xml"
+      ],
+      "cwd": "preserved/r1_court",
+      "errors": 0,
+      "exit_code": 1,
+      "failures": 6,
+      "skipped": 0,
+      "suite": "original_six_red",
+      "tests": 6
+    }
+  ]
+}

@@ -1,0 +1,215 @@
+# rupture_templates.yaml
+# Age brackets: 3, 7, 11, 14, 17, 24, 35
+# Clusters: hardening_protection, sensitivity_exposure, meaning_rebinding, cynicism_sealing, justice_engagement
+# Modes: assimilation, accommodation, sealing, collapse, transmutation, mis_aim
+# Narrators: parent, peer, religion, movement, therapy, art, none, partner, teacher, online
+
+templates:
+  - id: RU_FAM_001_PARENT_DISAPPEARS
+    label: "Caregiver disappears / abandonment episode"
+    violated_assumption: "Caregivers return when I need them"
+    domain: family_household
+    strata_levels: [7]
+    cluster_candidates: [hardening_protection, sensitivity_exposure, meaning_rebinding, collapse]
+    mode_priors: {assimilation: 0.25, accommodation: 0.20, sealing: 0.15, collapse: 0.30, transmutation: 0.03, mis_aim: 0.07}
+    narrator_priors:
+      3: {parent: 0.60, religion: 0.15, none: 0.20, therapy: 0.05}
+      7: {parent: 0.55, peer: 0.10, religion: 0.15, none: 0.15, therapy: 0.05}
+      11: {parent: 0.40, peer: 0.20, religion: 0.10, none: 0.20, therapy: 0.10}
+      14: {parent: 0.30, peer: 0.30, religion: 0.10, none: 0.20, therapy: 0.10}
+      17: {parent: 0.25, peer: 0.25, religion: 0.10, none: 0.25, therapy: 0.15}
+      24: {peer: 0.25, partner: 0.15, therapy: 0.25, none: 0.20, religion: 0.10, art: 0.05}
+      35: {partner: 0.15, therapy: 0.30, none: 0.25, religion: 0.15, art: 0.15}
+    severity_prior:
+      3: major
+      7: major
+      11: major
+      14: major
+      17: major
+      24: major
+      35: major
+
+  - id: RU_FAM_002_PARENT_RAGE
+    label: "Parent rage feels bottomless"
+    violated_assumption: "Anger has limits and is safe"
+    domain: family_household
+    strata_levels: [7]
+    cluster_candidates: [hardening_protection, meaning_rebinding, collapse, cynicism_sealing]
+    mode_priors: {assimilation: 0.15, accommodation: 0.10, sealing: 0.30, collapse: 0.25, transmutation: 0.03, mis_aim: 0.17}
+    narrator_priors:
+      3: {parent: 0.40, religion: 0.15, none: 0.35, therapy: 0.10}
+      7: {parent: 0.35, peer: 0.10, religion: 0.15, none: 0.30, therapy: 0.10}
+      11: {parent: 0.25, peer: 0.20, religion: 0.10, none: 0.30, therapy: 0.15}
+      14: {peer: 0.30, parent: 0.20, none: 0.30, therapy: 0.15, religion: 0.05}
+      17: {peer: 0.25, none: 0.35, therapy: 0.20, religion: 0.10, movement: 0.10}
+      24: {partner: 0.20, therapy: 0.30, none: 0.25, religion: 0.10, art: 0.15}
+      35: {partner: 0.25, therapy: 0.30, none: 0.20, religion: 0.15, art: 0.10}
+    severity_prior:
+      3: major
+      7: major
+      11: major
+      14: major
+      17: major
+      24: micro
+      35: micro
+
+  - id: RU_SCH_001_PUBLIC_BETRAYAL
+    label: "Friend betrays in public to save themselves"
+    violated_assumption: "Friends don't sell you out"
+    domain: sect_class
+    strata_levels: [6, 7]
+    cluster_candidates: [hardening_protection, sensitivity_exposure, cynicism_sealing, justice_engagement]
+    mode_priors: {assimilation: 0.20, accommodation: 0.25, sealing: 0.15, collapse: 0.10, transmutation: 0.03, mis_aim: 0.27}
+    narrator_priors:
+      7: {parent: 0.35, teacher: 0.10, peer: 0.25, none: 0.20, religion: 0.10}
+      11: {peer: 0.35, parent: 0.25, online: 0.10, none: 0.20, therapy: 0.10}
+      14: {peer: 0.40, none: 0.25, therapy: 0.15, art: 0.15, parent: 0.05}
+      17: {peer: 0.30, none: 0.25, therapy: 0.20, movement: 0.15, art: 0.10}
+      24: {partner: 0.20, peer: 0.25, therapy: 0.25, none: 0.15, movement: 0.15}
+      35: {therapy: 0.25, partner: 0.20, peer: 0.15, none: 0.20, art: 0.10, movement: 0.10}
+    severity_prior:
+      7: micro
+      11: major
+      14: major
+      17: micro
+      24: micro
+      35: micro
+
+  - id: RU_SCH_003_SOCIAL_DEATH_RUMOR
+    label: "Rumor spreads; social death"
+    violated_assumption: "My social world is stable"
+    domain: family_household
+    strata_levels: [6, 7]
+    cluster_candidates: [hardening_protection, cynicism_sealing, collapse, meaning_rebinding]
+    mode_priors: {assimilation: 0.10, accommodation: 0.15, sealing: 0.25, collapse: 0.25, transmutation: 0.03, mis_aim: 0.22}
+    narrator_priors:
+      11: {peer: 0.30, none: 0.25, parent: 0.20, online: 0.10, therapy: 0.15}
+      14: {peer: 0.35, none: 0.25, therapy: 0.20, art: 0.15, parent: 0.05}
+      17: {peer: 0.25, none: 0.20, therapy: 0.25, movement: 0.20, art: 0.10}
+    severity_prior:
+      11: major
+      14: malheur
+      17: major
+
+  - id: RU_BDY_001_SEXUAL_HUMILIATION
+    label: "Sexual humiliation / boundary violation"
+    violated_assumption: "My body is safe; others will respect it"
+    domain: body_self
+    strata_levels: [6, 7, 8]
+    cluster_candidates: [hardening_protection, collapse, meaning_rebinding, cynicism_sealing]
+    mode_priors: {assimilation: 0.05, accommodation: 0.15, sealing: 0.30, collapse: 0.30, transmutation: 0.03, mis_aim: 0.17}
+    narrator_priors:
+      11: {none: 0.35, parent: 0.20, peer: 0.20, therapy: 0.20, religion: 0.05}
+      14: {none: 0.30, peer: 0.25, therapy: 0.25, art: 0.15, religion: 0.05}
+      17: {therapy: 0.30, peer: 0.20, none: 0.20, partner: 0.10, art: 0.15, religion: 0.05}
+      24: {therapy: 0.35, partner: 0.15, none: 0.15, art: 0.20, movement: 0.10, religion: 0.05}
+      35: {therapy: 0.35, partner: 0.20, none: 0.15, religion: 0.10, art: 0.20}
+    severity_prior:
+      11: major
+      14: malheur
+      17: major
+      24: major
+      35: major
+
+  - id: RU_IDE_001_RELIGIOUS_HYPOCRISY
+    label: "Religious authority hypocrisy revealed"
+    violated_assumption: "The sacred people are morally better"
+    domain: sect_class
+    strata_levels: [5, 7]
+    cluster_candidates: [meaning_rebinding, cynicism_sealing, justice_engagement, sensitivity_exposure]
+    mode_priors: {assimilation: 0.10, accommodation: 0.40, sealing: 0.15, collapse: 0.10, transmutation: 0.08, mis_aim: 0.17}
+    narrator_priors:
+      11: {parent: 0.25, religion: 0.20, none: 0.20, peer: 0.20, online: 0.15}
+      14: {peer: 0.25, none: 0.25, art: 0.15, therapy: 0.15, religion: 0.10, movement: 0.10}
+      17: {none: 0.20, movement: 0.20, therapy: 0.20, art: 0.15, peer: 0.15, religion: 0.10}
+      24: {therapy: 0.25, movement: 0.20, none: 0.15, art: 0.20, religion: 0.10, peer: 0.10}
+      35: {therapy: 0.25, religion: 0.15, none: 0.15, art: 0.15, movement: 0.15, partner: 0.15}
+    severity_prior:
+      11: micro
+      14: major
+      17: major
+      24: micro
+      35: micro
+
+  - id: RU_VIO_001_POLICE_CONTACT
+    label: "Police contact / profiling"
+    violated_assumption: "Law exists to protect me"
+    domain: nation
+    strata_levels: [2, 6]
+    cluster_candidates: [hardening_protection, justice_engagement, cynicism_sealing, collapse]
+    mode_priors: {assimilation: 0.05, accommodation: 0.25, sealing: 0.10, collapse: 0.15, transmutation: 0.03, mis_aim: 0.42}
+    narrator_priors:
+      11: {parent: 0.30, none: 0.30, peer: 0.20, religion: 0.10, therapy: 0.10}
+      14: {peer: 0.25, none: 0.25, movement: 0.20, therapy: 0.15, religion: 0.15}
+      17: {movement: 0.25, peer: 0.20, none: 0.20, therapy: 0.15, religion: 0.10, art: 0.10}
+      24: {movement: 0.25, therapy: 0.20, none: 0.15, partner: 0.10, religion: 0.15, art: 0.15}
+      35: {therapy: 0.20, movement: 0.20, religion: 0.20, none: 0.15, partner: 0.15, art: 0.10}
+    severity_prior:
+      11: major
+      14: major
+      17: major
+      24: micro
+      35: micro
+
+  - id: RU_ECO_001_EVICTION
+    label: "Eviction / forced move"
+    violated_assumption: "Home is stable; adults can keep us housed"
+    domain: family_household
+    strata_levels: [2, 6, 7]
+    cluster_candidates: [hardening_protection, collapse, meaning_rebinding, justice_engagement]
+    mode_priors: {assimilation: 0.05, accommodation: 0.20, sealing: 0.15, collapse: 0.35, transmutation: 0.02, mis_aim: 0.23}
+    narrator_priors:
+      3: {parent: 0.35, religion: 0.20, none: 0.35, therapy: 0.10}
+      7: {parent: 0.30, teacher: 0.10, religion: 0.15, none: 0.30, therapy: 0.15}
+      11: {peer: 0.20, parent: 0.20, none: 0.25, therapy: 0.20, religion: 0.10, art: 0.05}
+      14: {peer: 0.25, none: 0.20, therapy: 0.25, art: 0.15, movement: 0.10, religion: 0.05}
+      17: {peer: 0.20, none: 0.20, movement: 0.20, therapy: 0.20, art: 0.10, religion: 0.10}
+      24: {partner: 0.15, therapy: 0.25, movement: 0.20, none: 0.15, art: 0.15, religion: 0.10}
+      35: {partner: 0.20, therapy: 0.25, none: 0.15, religion: 0.15, art: 0.15, movement: 0.10}
+    severity_prior:
+      3: major
+      7: major
+      11: major
+      14: major
+      17: major
+      24: major
+      35: major
+
+  - id: RU_REL_002_DIVORCE_STATUS_LOSS
+    label: "Divorce with status loss + isolation (malheur vector)"
+    violated_assumption: "My life-story is stable; my community won't abandon me"
+    domain: family_household
+    strata_levels: [7, 8]
+    cluster_candidates: [collapse, hardening_protection, meaning_rebinding, cynicism_sealing, justice_engagement]
+    mode_priors: {assimilation: 0.05, accommodation: 0.20, sealing: 0.15, collapse: 0.30, transmutation: 0.05, mis_aim: 0.25}
+    narrator_priors:
+      24: {therapy: 0.35, none: 0.20, partner: 0.10, religion: 0.15, art: 0.20}
+      35: {therapy: 0.35, none: 0.15, religion: 0.20, art: 0.15, movement: 0.10, partner: 0.05}
+    severity_prior:
+      24: major
+      35: malheur
+
+  - id: RU_LOS_001_PARENT_DEATH
+    label: "Parent death"
+    violated_assumption: "The people above me will keep existing"
+    domain: family_household
+    strata_levels: [7]
+    cluster_candidates: [meaning_rebinding, sensitivity_exposure, collapse, justice_engagement]
+    mode_priors: {assimilation: 0.10, accommodation: 0.25, sealing: 0.10, collapse: 0.25, transmutation: 0.10, mis_aim: 0.20}
+    narrator_priors:
+      7: {parent: 0.20, religion: 0.30, none: 0.20, teacher: 0.10, therapy: 0.20}
+      11: {religion: 0.25, parent: 0.20, peer: 0.20, none: 0.15, therapy: 0.20}
+      14: {peer: 0.25, none: 0.20, therapy: 0.25, religion: 0.15, art: 0.15}
+      17: {therapy: 0.25, peer: 0.20, none: 0.15, religion: 0.15, art: 0.15, movement: 0.10}
+      24: {therapy: 0.30, none: 0.15, partner: 0.15, religion: 0.15, art: 0.20, movement: 0.05}
+      35: {therapy: 0.30, partner: 0.15, none: 0.15, religion: 0.15, art: 0.20, movement: 0.05}
+    severity_prior:
+      7: major
+      11: major
+      14: major
+      17: major
+      24: major
+      35: major
+
+# NOTE: More templates (RU_FAM_003/004/005, RU_SCH_002/004, RU_BDY_002, RU_IDE_002, RU_VIO_002,
+# RU_ECO_002, RU_REL_001, RU_PSY_001, RU_WRK_001/002) can be added by copying blocks from starter_engine.txt.

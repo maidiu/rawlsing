@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "[I2_RETURN]/repair_r1/run_repair.py", line 63, in <module>
+    if __name__=='__main__':raise SystemExit(main())
+                                             ^^^^^^
+  File "[I2_RETURN]/repair_r1/run_repair.py", line 38, in main
+    suite=ET.parse(xml).getroot().find('testsuite')
+          ^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/xml/etree/ElementTree.py", line 1218, in parse
+    tree.parse(source, parser)
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/xml/etree/ElementTree.py", line 580, in parse
+    self._root = parser._parse_whole(source)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+xml.etree.ElementTree.ParseError: mismatched tag: line 6, column 50

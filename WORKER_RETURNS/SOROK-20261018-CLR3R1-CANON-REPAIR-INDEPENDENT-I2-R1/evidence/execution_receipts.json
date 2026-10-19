@@ -1,0 +1,74 @@
+{
+  "observed_utc": "2026-10-19T00:09:13.116013+00:00",
+  "suites": [
+    {
+      "suite": "clr3_unchanged",
+      "exit_code": 0,
+      "candidate_bound": true,
+      "command": "RETURN/.venv/bin/python -m pytest -c /dev/null --rootdir=. --confcutdir=. --import-mode=importlib -p no:cacheprovider -vv -p candidate_binding frozen/reconstructed/clr3/test_recursive_court.py --junitxml=evidence/clr3_unchanged.xml",
+      "pythonpath": "RETURN/frozen/repair_r1",
+      "tests": 38,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "i2_unchanged",
+      "exit_code": 0,
+      "candidate_bound": true,
+      "command": "RETURN/.venv/bin/python -m pytest -c /dev/null --rootdir=. --confcutdir=. --import-mode=importlib -p no:cacheprovider -vv -p candidate_binding frozen/test_independent.py --junitxml=evidence/i2_unchanged.xml",
+      "pythonpath": "RETURN/frozen/repair_r1",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "repair_controls",
+      "exit_code": 0,
+      "candidate_bound": true,
+      "command": "RETURN/.venv/bin/python -m pytest -c /dev/null --rootdir=. --confcutdir=. --import-mode=importlib -p no:cacheprovider -vv -p candidate_binding frozen/repair_r1/test_repair_contracts.py --junitxml=evidence/repair_controls.xml",
+      "pythonpath": "RETURN/frozen/repair_r1",
+      "tests": 11,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "fresh",
+      "exit_code": 0,
+      "candidate_bound": true,
+      "command": "RETURN/.venv/bin/python -m pytest -c /dev/null --rootdir=. --confcutdir=. --import-mode=importlib -p no:cacheprovider -vv -p candidate_binding test_fresh.py --junitxml=evidence/fresh.xml",
+      "pythonpath": "RETURN/frozen/repair_r1",
+      "tests": 34,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "original_six_red",
+      "exit_code": 1,
+      "candidate_bound": false,
+      "command": "RETURN/.venv/bin/python -m pytest -c /dev/null --rootdir=. --confcutdir=. --import-mode=importlib -p no:cacheprovider -vv frozen/reconstructed/clr3/preserved/r1_court/test_falsifiers.py --junitxml=evidence/original_six_red.xml",
+      "pythonpath": "RETURN/frozen/reconstructed/clr3/preserved/r1_court",
+      "tests": 6,
+      "failures": 6,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "original_i2_baseline",
+      "exit_code": 1,
+      "candidate_bound": false,
+      "command": "RETURN/.venv/bin/python -m pytest -c /dev/null --rootdir=. --confcutdir=. --import-mode=importlib -p no:cacheprovider -vv frozen/test_independent.py --junitxml=evidence/original_i2_baseline.xml",
+      "pythonpath": "RETURN/frozen/reconstructed/clr3/preserved/r1_court",
+      "tests": 6,
+      "failures": 2,
+      "errors": 0,
+      "skipped": 0
+    }
+  ],
+  "frozen_blobs_unchanged": 338,
+  "preregistration_sha256": "ada369b06e999d3a6a34bfdf85763326921db8e8dd95fe5ede8abd12dee9a368",
+  "fresh_suite_sha256": "53cea2bc818988a94e917adcca6462c389db597449633490454a112e97915fd8"
+}

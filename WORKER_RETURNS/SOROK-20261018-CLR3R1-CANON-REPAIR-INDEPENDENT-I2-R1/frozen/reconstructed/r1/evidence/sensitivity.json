@@ -1,0 +1,522 @@
+{
+  "baseline": {
+    "parameters": {
+      "child": {
+        "bus_route_accessible": true,
+        "child_id": "child",
+        "practical_bicycle_episodes": 1,
+        "school_transport_required": true,
+        "weekday_practice_slots": 2
+      },
+      "father": {
+        "available_after_work_min": 35,
+        "cash_buffer": 125,
+        "joint_repair_episodes": 4,
+        "protected_care_min": 0,
+        "repair_skill": 3,
+        "worker_id": "father"
+      },
+      "neighbor": {
+        "independent_project": "library_inventory",
+        "independently_scheduled_shift_day4": true,
+        "neighbor_id": "neighbor",
+        "tool_lending_available": false
+      },
+      "repair_material_cost": 18,
+      "replacement_cost": 175
+    },
+    "rows": [
+      {
+        "child_day4_action": "TAKE_BUS",
+        "child_day5_action": "TAKE_BUS",
+        "inferred_psychological_disposition": null,
+        "later_observable_action": "ASK_FOR_ASSISTANCE",
+        "parent_action": "DISCUSS_NONPURCHASE_OPTIONS",
+        "parent_cash_after_work": -50,
+        "parent_time_available": 35,
+        "practical_episodes_enacted": 1,
+        "trace_sha256": "f50241cb93a9a7f35c489c6cd16a559247027a2adb0c86a1900bc522f7a1c906",
+        "workplace": "HOURS_CUT"
+      },
+      {
+        "child_day4_action": "TAKE_BUS",
+        "child_day5_action": "TAKE_BUS",
+        "inferred_psychological_disposition": null,
+        "later_observable_action": "ASK_FOR_ASSISTANCE",
+        "parent_action": "DEFER_CONVERSATION",
+        "parent_cash_after_work": 335,
+        "parent_time_available": 3,
+        "practical_episodes_enacted": 1,
+        "trace_sha256": "7e8375b557356b8ee1204aa58ff6b72d9287a3aae8f54e0a5b3caab0ac05241c",
+        "workplace": "RAISE_WITH_OVERTIME"
+      },
+      {
+        "child_day4_action": "PARTICIPATE_JOINT_REPAIR",
+        "child_day5_action": "REHEARSE_BICYCLE_REPAIR",
+        "inferred_psychological_disposition": null,
+        "later_observable_action": "TRY_INDEPENDENT_REPAIR",
+        "parent_action": "OFFER_JOINT_REPAIR",
+        "parent_cash_after_work": 125,
+        "parent_time_available": 35,
+        "practical_episodes_enacted": 3,
+        "trace_sha256": "a547763a9ee20b867d9d15d18e1be830dbf7a5a86919103733cebe3b42e921b0",
+        "workplace": "ROUTINE"
+      }
+    ]
+  },
+  "cash_reserve_220": {
+    "parameters": {
+      "child": {
+        "bus_route_accessible": true,
+        "child_id": "child",
+        "practical_bicycle_episodes": 1,
+        "school_transport_required": true,
+        "weekday_practice_slots": 2
+      },
+      "father": {
+        "available_after_work_min": 35,
+        "cash_buffer": 220,
+        "joint_repair_episodes": 4,
+        "protected_care_min": 0,
+        "repair_skill": 3,
+        "worker_id": "father"
+      },
+      "neighbor": {
+        "independent_project": "library_inventory",
+        "independently_scheduled_shift_day4": true,
+        "neighbor_id": "neighbor",
+        "tool_lending_available": false
+      },
+      "repair_material_cost": 18,
+      "replacement_cost": 175
+    },
+    "rows": [
+      {
+        "child_day4_action": "PARTICIPATE_JOINT_REPAIR",
+        "child_day5_action": "REHEARSE_BICYCLE_REPAIR",
+        "inferred_psychological_disposition": null,
+        "later_observable_action": "TRY_INDEPENDENT_REPAIR",
+        "parent_action": "OFFER_JOINT_REPAIR",
+        "parent_cash_after_work": 45,
+        "parent_time_available": 35,
+        "practical_episodes_enacted": 3,
+        "trace_sha256": "4f984ec73412b02228730f376f4d4e565f64d4bf2a9ef2a933e089c496da6a6c",
+        "workplace": "HOURS_CUT"
+      },
+      {
+        "child_day4_action": "TAKE_BUS",
+        "child_day5_action": "TAKE_BUS",
+        "inferred_psychological_disposition": null,
+        "later_observable_action": "ASK_FOR_ASSISTANCE",
+        "parent_action": "DEFER_CONVERSATION",
+        "parent_cash_after_work": 430,
+        "parent_time_available": 3,
+        "practical_episodes_enacted": 1,
+        "trace_sha256": "37a3ed152186551349692790a8592f18e474703e9f31868281be3668886c9b70",
+        "workplace": "RAISE_WITH_OVERTIME"
+      },
+      {
+        "child_day4_action": "PARTICIPATE_JOINT_REPAIR",
+        "child_day5_action": "REHEARSE_BICYCLE_REPAIR",
+        "inferred_psychological_disposition": null,
+        "later_observable_action": "TRY_INDEPENDENT_REPAIR",
+        "parent_action": "OFFER_JOINT_REPAIR",
+        "parent_cash_after_work": 220,
+        "parent_time_available": 35,
+        "practical_episodes_enacted": 3,
+        "trace_sha256": "64a065fae1a505e3b512cd05d1d9b4f1dc238aa12e4954d7b33d9378c7ccead6",
+        "workplace": "ROUTINE"
+      }
+    ]
+  },
+  "child_no_practice_slots": {
+    "parameters": {
+      "child": {
+        "bus_route_accessible": true,
+        "child_id": "child",
+        "practical_bicycle_episodes": 1,
+        "school_transport_required": true,
+        "weekday_practice_slots": 0
+      },
+      "father": {
+        "available_after_work_min": 35,
+        "cash_buffer": 125,
+        "joint_repair_episodes": 4,
+        "protected_care_min": 0,
+        "repair_skill": 3,
+        "worker_id": "father"
+      },
+      "neighbor": {
+        "independent_project": "library_inventory",
+        "independently_scheduled_shift_day4": true,
+        "neighbor_id": "neighbor",
+        "tool_lending_available": false
+      },
+      "repair_material_cost": 18,
+      "replacement_cost": 175
+    },
+    "rows": [
+      {
+        "child_day4_action": "TAKE_BUS",
+        "child_day5_action": "TAKE_BUS",
+        "inferred_psychological_disposition": null,
+        "later_observable_action": "ASK_FOR_ASSISTANCE",
+        "parent_action": "DISCUSS_NONPURCHASE_OPTIONS",
+        "parent_cash_after_work": -50,
+        "parent_time_available": 35,
+        "practical_episodes_enacted": 1,
+        "trace_sha256": "126a78d49216e1300a7f3289011d3c497457b9a0069a1d984a7bff72f1eda82c",
+        "workplace": "HOURS_CUT"
+      },
+      {
+        "child_day4_action": "TAKE_BUS",
+        "child_day5_action": "TAKE_BUS",
+        "inferred_psychological_disposition": null,
+        "later_observable_action": "ASK_FOR_ASSISTANCE",
+        "parent_action": "DEFER_CONVERSATION",
+        "parent_cash_after_work": 335,
+        "parent_time_available": 3,
+        "practical_episodes_enacted": 1,
+        "trace_sha256": "346376d8ce08773af20ecdf44384c6f0ecd386276333dd77027e3a8c1abbed2e",
+        "workplace": "RAISE_WITH_OVERTIME"
+      },
+      {
+        "child_day4_action": "TAKE_BUS",
+        "child_day5_action": "TAKE_BUS",
+        "inferred_psychological_disposition": null,
+        "later_observable_action": "ASK_FOR_ASSISTANCE",
+        "parent_action": "OFFER_JOINT_REPAIR",
+        "parent_cash_after_work": 125,
+        "parent_time_available": 35,
+        "practical_episodes_enacted": 1,
+        "trace_sha256": "e6fadc818b720cb402fa32fe70435c42fc4651ad6682762f8933de1c3b721869",
+        "workplace": "ROUTINE"
+      }
+    ]
+  },
+  "child_prior_episodes_3": {
+    "parameters": {
+      "child": {
+        "bus_route_accessible": true,
+        "child_id": "child",
+        "practical_bicycle_episodes": 3,
+        "school_transport_required": true,
+        "weekday_practice_slots": 2
+      },
+      "father": {
+        "available_after_work_min": 35,
+        "cash_buffer": 125,
+        "joint_repair_episodes": 4,
+        "protected_care_min": 0,
+        "repair_skill": 3,
+        "worker_id": "father"
+      },
+      "neighbor": {
+        "independent_project": "library_inventory",
+        "independently_scheduled_shift_day4": true,
+        "neighbor_id": "neighbor",
+        "tool_lending_available": false
+      },
+      "repair_material_cost": 18,
+      "replacement_cost": 175
+    },
+    "rows": [
+      {
+        "child_day4_action": "TAKE_BUS",
+        "child_day5_action": "TAKE_BUS",
+        "inferred_psychological_disposition": null,
+        "later_observable_action": "TRY_INDEPENDENT_REPAIR",
+        "parent_action": "DISCUSS_NONPURCHASE_OPTIONS",
+        "parent_cash_after_work": -50,
+        "parent_time_available": 35,
+        "practical_episodes_enacted": 3,
+        "trace_sha256": "fb2044cd79a6582edb0588a24050d93ed7be78cc3cdbecaac5a238a3edb74e1e",
+        "workplace": "HOURS_CUT"
+      },
+      {
+        "child_day4_action": "TAKE_BUS",
+        "child_day5_action": "TAKE_BUS",
+        "inferred_psychological_disposition": null,
+        "later_observable_action": "TRY_INDEPENDENT_REPAIR",
+        "parent_action": "DEFER_CONVERSATION",
+        "parent_cash_after_work": 335,
+        "parent_time_available": 3,
+        "practical_episodes_enacted": 3,
+        "trace_sha256": "96ab48cb394a945d74c037410fb73870d779d85da3304e5c491934e40412c533",
+        "workplace": "RAISE_WITH_OVERTIME"
+      },
+      {
+        "child_day4_action": "PARTICIPATE_JOINT_REPAIR",
+        "child_day5_action": "REHEARSE_BICYCLE_REPAIR",
+        "inferred_psychological_disposition": null,
+        "later_observable_action": "TRY_INDEPENDENT_REPAIR",
+        "parent_action": "OFFER_JOINT_REPAIR",
+        "parent_cash_after_work": 125,
+        "parent_time_available": 35,
+        "practical_episodes_enacted": 5,
+        "trace_sha256": "85ed56c32168767a8b42a9602fb288cb722bc5e873e22c2f19361ed2b8d55429",
+        "workplace": "ROUTINE"
+      }
+    ]
+  },
+  "large_reserve_protected_care": {
+    "parameters": {
+      "child": {
+        "bus_route_accessible": true,
+        "child_id": "child",
+        "practical_bicycle_episodes": 1,
+        "school_transport_required": true,
+        "weekday_practice_slots": 2
+      },
+      "father": {
+        "available_after_work_min": 35,
+        "cash_buffer": 400,
+        "joint_repair_episodes": 4,
+        "protected_care_min": 35,
+        "repair_skill": 3,
+        "worker_id": "father"
+      },
+      "neighbor": {
+        "independent_project": "library_inventory",
+        "independently_scheduled_shift_day4": true,
+        "neighbor_id": "neighbor",
+        "tool_lending_available": false
+      },
+      "repair_material_cost": 18,
+      "replacement_cost": 175
+    },
+    "rows": [
+      {
+        "child_day4_action": "PARTICIPATE_JOINT_REPAIR",
+        "child_day5_action": "REHEARSE_BICYCLE_REPAIR",
+        "inferred_psychological_disposition": null,
+        "later_observable_action": "TRY_INDEPENDENT_REPAIR",
+        "parent_action": "OFFER_JOINT_REPAIR",
+        "parent_cash_after_work": 225,
+        "parent_time_available": 35,
+        "practical_episodes_enacted": 3,
+        "trace_sha256": "9a1bfa7e2bd6208e0abe819e90831d20bb0cc87a5f1cd7050f3b62fb76780925",
+        "workplace": "HOURS_CUT"
+      },
+      {
+        "child_day4_action": "PARTICIPATE_JOINT_REPAIR",
+        "child_day5_action": "REHEARSE_BICYCLE_REPAIR",
+        "inferred_psychological_disposition": null,
+        "later_observable_action": "TRY_INDEPENDENT_REPAIR",
+        "parent_action": "OFFER_JOINT_REPAIR",
+        "parent_cash_after_work": 610,
+        "parent_time_available": 35,
+        "practical_episodes_enacted": 3,
+        "trace_sha256": "9e43e91e043cd3ca30b172d1f2a64c59f675b9ccf9b6c58aac8f0376f1b48298",
+        "workplace": "RAISE_WITH_OVERTIME"
+      },
+      {
+        "child_day4_action": "PARTICIPATE_JOINT_REPAIR",
+        "child_day5_action": "REHEARSE_BICYCLE_REPAIR",
+        "inferred_psychological_disposition": null,
+        "later_observable_action": "TRY_INDEPENDENT_REPAIR",
+        "parent_action": "OFFER_JOINT_REPAIR",
+        "parent_cash_after_work": 400,
+        "parent_time_available": 35,
+        "practical_episodes_enacted": 3,
+        "trace_sha256": "1d9009c81add56be862680e8229613aa62542b9774cf57edcab0f05fca90fe5d",
+        "workplace": "ROUTINE"
+      }
+    ]
+  },
+  "neighbor_unrelated_garden": {
+    "parameters": {
+      "child": {
+        "bus_route_accessible": true,
+        "child_id": "child",
+        "practical_bicycle_episodes": 1,
+        "school_transport_required": true,
+        "weekday_practice_slots": 2
+      },
+      "father": {
+        "available_after_work_min": 35,
+        "cash_buffer": 125,
+        "joint_repair_episodes": 4,
+        "protected_care_min": 0,
+        "repair_skill": 3,
+        "worker_id": "father"
+      },
+      "neighbor": {
+        "independent_project": "garden",
+        "independently_scheduled_shift_day4": false,
+        "neighbor_id": "neighbor",
+        "tool_lending_available": false
+      },
+      "repair_material_cost": 18,
+      "replacement_cost": 175
+    },
+    "rows": [
+      {
+        "child_day4_action": "TAKE_BUS",
+        "child_day5_action": "TAKE_BUS",
+        "inferred_psychological_disposition": null,
+        "later_observable_action": "ASK_FOR_ASSISTANCE",
+        "parent_action": "DISCUSS_NONPURCHASE_OPTIONS",
+        "parent_cash_after_work": -50,
+        "parent_time_available": 35,
+        "practical_episodes_enacted": 1,
+        "trace_sha256": "20cc6e9b9b2a5ed1269ea9d05d6f782c6a642ffb3312ea0b702a05df4b36b3c6",
+        "workplace": "HOURS_CUT"
+      },
+      {
+        "child_day4_action": "TAKE_BUS",
+        "child_day5_action": "TAKE_BUS",
+        "inferred_psychological_disposition": null,
+        "later_observable_action": "ASK_FOR_ASSISTANCE",
+        "parent_action": "DEFER_CONVERSATION",
+        "parent_cash_after_work": 335,
+        "parent_time_available": 3,
+        "practical_episodes_enacted": 1,
+        "trace_sha256": "cd9a58855c68436d806ef61b933b80ddcd84919983d83fc50594b69333a98b4b",
+        "workplace": "RAISE_WITH_OVERTIME"
+      },
+      {
+        "child_day4_action": "PARTICIPATE_JOINT_REPAIR",
+        "child_day5_action": "REHEARSE_BICYCLE_REPAIR",
+        "inferred_psychological_disposition": null,
+        "later_observable_action": "TRY_INDEPENDENT_REPAIR",
+        "parent_action": "OFFER_JOINT_REPAIR",
+        "parent_cash_after_work": 125,
+        "parent_time_available": 35,
+        "practical_episodes_enacted": 3,
+        "trace_sha256": "a502eb02c5731ff567f1a869fabf1bd13ba8d205aa4ae53b8c9890353b5e143d",
+        "workplace": "ROUTINE"
+      }
+    ]
+  },
+  "no_prior_joint_repair": {
+    "parameters": {
+      "child": {
+        "bus_route_accessible": true,
+        "child_id": "child",
+        "practical_bicycle_episodes": 1,
+        "school_transport_required": true,
+        "weekday_practice_slots": 2
+      },
+      "father": {
+        "available_after_work_min": 35,
+        "cash_buffer": 125,
+        "joint_repair_episodes": 0,
+        "protected_care_min": 0,
+        "repair_skill": 3,
+        "worker_id": "father"
+      },
+      "neighbor": {
+        "independent_project": "library_inventory",
+        "independently_scheduled_shift_day4": true,
+        "neighbor_id": "neighbor",
+        "tool_lending_available": false
+      },
+      "repair_material_cost": 18,
+      "replacement_cost": 175
+    },
+    "rows": [
+      {
+        "child_day4_action": "TAKE_BUS",
+        "child_day5_action": "TAKE_BUS",
+        "inferred_psychological_disposition": null,
+        "later_observable_action": "ASK_FOR_ASSISTANCE",
+        "parent_action": "DISCUSS_NONPURCHASE_OPTIONS",
+        "parent_cash_after_work": -50,
+        "parent_time_available": 35,
+        "practical_episodes_enacted": 1,
+        "trace_sha256": "0e455db82217550750ed836c5187fcca6502357a4aed7a589b560906f3b97a59",
+        "workplace": "HOURS_CUT"
+      },
+      {
+        "child_day4_action": "TAKE_BUS",
+        "child_day5_action": "TAKE_BUS",
+        "inferred_psychological_disposition": null,
+        "later_observable_action": "ASK_FOR_ASSISTANCE",
+        "parent_action": "DEFER_CONVERSATION",
+        "parent_cash_after_work": 335,
+        "parent_time_available": 3,
+        "practical_episodes_enacted": 1,
+        "trace_sha256": "81c521c5877a0d94d41939139172b1c9e96bb977d4aefe43a6cd0b72c81db706",
+        "workplace": "RAISE_WITH_OVERTIME"
+      },
+      {
+        "child_day4_action": "TAKE_BUS",
+        "child_day5_action": "TAKE_BUS",
+        "inferred_psychological_disposition": null,
+        "later_observable_action": "ASK_FOR_ASSISTANCE",
+        "parent_action": "DISCUSS_NONPURCHASE_OPTIONS",
+        "parent_cash_after_work": 125,
+        "parent_time_available": 35,
+        "practical_episodes_enacted": 1,
+        "trace_sha256": "7b171611953401e542a6e63be5c04bab796ac37805928000e22551fdcbc74db0",
+        "workplace": "ROUTINE"
+      }
+    ]
+  },
+  "protected_care_24": {
+    "parameters": {
+      "child": {
+        "bus_route_accessible": true,
+        "child_id": "child",
+        "practical_bicycle_episodes": 1,
+        "school_transport_required": true,
+        "weekday_practice_slots": 2
+      },
+      "father": {
+        "available_after_work_min": 35,
+        "cash_buffer": 125,
+        "joint_repair_episodes": 4,
+        "protected_care_min": 24,
+        "repair_skill": 3,
+        "worker_id": "father"
+      },
+      "neighbor": {
+        "independent_project": "library_inventory",
+        "independently_scheduled_shift_day4": true,
+        "neighbor_id": "neighbor",
+        "tool_lending_available": false
+      },
+      "repair_material_cost": 18,
+      "replacement_cost": 175
+    },
+    "rows": [
+      {
+        "child_day4_action": "TAKE_BUS",
+        "child_day5_action": "TAKE_BUS",
+        "inferred_psychological_disposition": null,
+        "later_observable_action": "ASK_FOR_ASSISTANCE",
+        "parent_action": "DISCUSS_NONPURCHASE_OPTIONS",
+        "parent_cash_after_work": -50,
+        "parent_time_available": 35,
+        "practical_episodes_enacted": 1,
+        "trace_sha256": "5f7d9da9957ee80bb61149222dddedebfe7e11b77da03319879d12888e40cd7a",
+        "workplace": "HOURS_CUT"
+      },
+      {
+        "child_day4_action": "PARTICIPATE_JOINT_REPAIR",
+        "child_day5_action": "REHEARSE_BICYCLE_REPAIR",
+        "inferred_psychological_disposition": null,
+        "later_observable_action": "TRY_INDEPENDENT_REPAIR",
+        "parent_action": "OFFER_JOINT_REPAIR",
+        "parent_cash_after_work": 335,
+        "parent_time_available": 24,
+        "practical_episodes_enacted": 3,
+        "trace_sha256": "0b390a056c4386c16a7056513b600b866db2611b83154aca2641ae4270678f43",
+        "workplace": "RAISE_WITH_OVERTIME"
+      },
+      {
+        "child_day4_action": "PARTICIPATE_JOINT_REPAIR",
+        "child_day5_action": "REHEARSE_BICYCLE_REPAIR",
+        "inferred_psychological_disposition": null,
+        "later_observable_action": "TRY_INDEPENDENT_REPAIR",
+        "parent_action": "OFFER_JOINT_REPAIR",
+        "parent_cash_after_work": 125,
+        "parent_time_available": 35,
+        "practical_episodes_enacted": 3,
+        "trace_sha256": "7390e3f113e7d16ea134d000323bcf2281ed92072377884004b55fca989e0056",
+        "workplace": "ROUTINE"
+      }
+    ]
+  }
+}

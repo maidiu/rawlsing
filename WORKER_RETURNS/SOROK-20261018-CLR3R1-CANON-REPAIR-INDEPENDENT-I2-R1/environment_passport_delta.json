@@ -1,0 +1,505 @@
+{
+  "passport_schema": "SOROK_00D_ENVIRONMENT_PASSPORT_R1",
+  "environment_id": "f8aa161e-170d-47c8-9efa-3e89bf22f099",
+  "epoch_id": "e8e21105-18c1-4a5f-9a8a-da23d8ecfe71",
+  "owner_session_alias": "fresh-clr3r1-independent-i2",
+  "surface": "LOCAL_SHARED_STORE",
+  "machine_alias": "independent-local-host",
+  "conversation_or_account_affinity": "distinct-review-conversation; account separation UNKNOWN",
+  "status": "LIVE_VERIFIED",
+  "last_live_probe_at": "2026-10-19T00:14:56.540374+00:00",
+  "runtime_marker_digest": "fdc9377f28af8b3c6efd4a70642f3ec223fe2c4f4c3acdc99288a9c9149ff20b",
+  "probe_command_and_result": "RETURN/.venv/bin/python: marker read; imports pytest/yaml and exact source paths/digests verified; Git branch/source custody verified",
+  "capabilities": {
+    "python": {
+      "status": "VERIFIED",
+      "version": "3.11.3",
+      "interpreter_alias": "RETURN/.venv/bin/python"
+    },
+    "pytest": {
+      "status": "VERIFIED",
+      "version": "9.1.1"
+    },
+    "git": {
+      "status": "VERIFIED",
+      "version": "git version 2.39.1"
+    },
+    "node": {
+      "status": "VERIFIED",
+      "version": "v18.14.2",
+      "used_for_tests": false
+    },
+    "filesystem": "VERIFIED",
+    "shell": "zsh VERIFIED",
+    "github_transport": "VERIFIED read transport at execution; ordinary push/readback is separately evidenced in publication receipt"
+  },
+  "dependency_versions": {
+    "pytest": "9.1.1",
+    "PyYAML": "6.0.2",
+    "pluggy": "1.7.0",
+    "iniconfig": "2.3.1",
+    "packaging": "26.3",
+    "pygments": "2.21.0"
+  },
+  "errors": [
+    {
+      "phase": "initial base interpreter probe",
+      "error": "ModuleNotFoundError: yaml",
+      "resolution": "new isolated ignored venv; pytest 9.1.1/PyYAML 6.0.2 installed; existing cache used where available; pluggy wheel downloaded"
+    },
+    {
+      "phase": "early two-case pytest",
+      "error": "cache warning attempting /dev/.pytest_cache",
+      "resolution": "cache provider disabled and explicit rootdir/confcutdir in final runner; no candidate/test change"
+    }
+  ],
+  "git_object_store_alias": "existing-rawlsing-shared-store",
+  "worktree_alias": "fresh-independent-sparse-worktree",
+  "branch": "agent/reviewer-sorok-20261018-clr3r1-canon-repair-independent-i2-r1",
+  "checkout_base": "6cd39f339849d724c862a2a55af977dcb8e7e011",
+  "head_at_execution": "6cd39f339849d724c862a2a55af977dcb8e7e011",
+  "clean_at_start": true,
+  "state_at_passport": "only authorized new return files uncommitted; final committed SHA supplied in delivery",
+  "source_family": "available archive top-level V3 and exact original Git closure; no alternative essentials imports",
+  "materialized_source_refs": "staging_manifest.json + evidence/source_audit.json; every row contains exact commit/path/blob/SHA256/staging ref",
+  "verified_imported_modules": [
+    {
+      "module": "r1_world",
+      "module_file": "frozen/reconstructed/clr3/sources/r1_world.py",
+      "sha256": "3b6d0995930664cb03969a0108214b95e67f3cb4ab04391cfdf27aa5059ad4aa",
+      "blob_sha1": "ee6aad38eba225eefafaaa7148666ba15bf7f14d"
+    },
+    {
+      "module": "recursive_court",
+      "module_file": "frozen/repair_r1/candidate/recursive_court.py",
+      "sha256": "48d7213bc54392f6b29c32d6db05c3229226d7c367886124d3daea969f5cab14",
+      "blob_sha1": "e834cb2c726118df3053fcf8e2d88d94f454469e"
+    },
+    {
+      "module": "v3",
+      "module_file": "frozen/reconstructed/clr3/sources/legacy/v3/__init__.py",
+      "sha256": "54b473ae9c448697d7bb3be4316661f3b70cbf3af432c403f3d1d5e0ef5438a7",
+      "blob_sha1": "9662e727ba3196a67ef7b2d0be2e9fe9802fb468"
+    },
+    {
+      "module": "v3.core",
+      "module_file": "frozen/reconstructed/clr3/sources/legacy/v3/core/__init__.py",
+      "sha256": "9aadbc1278cc7ba4e478b0b3efba1d6bf97c44948ee52d8c4ede03d62f7c517b",
+      "blob_sha1": "a2330691aaecdc3c2286ae346e607befe42a4ea6"
+    },
+    {
+      "module": "v3.core.config_loader",
+      "module_file": "frozen/reconstructed/clr3/sources/legacy/v3/core/config_loader.py",
+      "sha256": "5f953d9661f61081187898c3ad06b4567bc4fa99d3d7cd856d30cdd961f78577",
+      "blob_sha1": "f80f413258d9f8b73eee904e0c9fe1af26044f14"
+    },
+    {
+      "module": "v3.core.derived",
+      "module_file": "frozen/reconstructed/clr3/sources/legacy/v3/core/derived.py",
+      "sha256": "e479fc3eba21734752c372742fb2ee247cbdde6a73ac42545dc30b5039301360",
+      "blob_sha1": "8a203b7333c7ef39911e232aa8a2ac0ff5f1c1f4"
+    },
+    {
+      "module": "v3.core.enums",
+      "module_file": "frozen/reconstructed/clr3/sources/legacy/v3/core/enums.py",
+      "sha256": "8c64c18aa4011284e58d3f145a9415f15903de9904c8c707d0dab125a847a895",
+      "blob_sha1": "3d80871235a577b113193f8e054f09a933832181"
+    },
+    {
+      "module": "v3.core.invariants",
+      "module_file": "frozen/reconstructed/clr3/sources/legacy/v3/core/invariants.py",
+      "sha256": "81298f3fc51b46cda8d72d0db914b672b17b9a35e13004fe59a9b0e29dada5e3",
+      "blob_sha1": "41a19e74ed5f10bef2960ad4cbd1a6f3384899f3"
+    },
+    {
+      "module": "v3.core.state",
+      "module_file": "frozen/reconstructed/clr3/sources/legacy/v3/core/state.py",
+      "sha256": "19e968d45e9d81eb7629f1c237dbc55119fec8fc7db0b29e2b39b2476d12ada2",
+      "blob_sha1": "8cbfff0dbe18181cf3ff0ca22c48a7894a5bb3a0"
+    },
+    {
+      "module": "v3.engine",
+      "module_file": "frozen/reconstructed/clr3/sources/legacy/v3/engine/__init__.py",
+      "sha256": "063d61310a30a9b05d5f2ba1a5079a7ec5d7194a225772414390edda67a3572f",
+      "blob_sha1": "9ee3914f440994780801682b700e31e598f5c44b"
+    },
+    {
+      "module": "v3.engine.active_magnets",
+      "module_file": "frozen/reconstructed/clr3/sources/legacy/v3/engine/active_magnets.py",
+      "sha256": "68a7b75aa4bb98f7251f72a05747425edb40d24edbe06611ce998e7b6c26a391",
+      "blob_sha1": "9232cec2e38b72cff99188e5fa01793cb3ced14d"
+    },
+    {
+      "module": "v3.engine.effects",
+      "module_file": "frozen/reconstructed/clr3/sources/legacy/v3/engine/effects/__init__.py",
+      "sha256": "5b8a9062992c9f043d1c2eaa9f56b4f902fa62c988fd70ec0e7683ccff077c27",
+      "blob_sha1": "aedfc92bcd14bb36ef0e2f9d8a99a336584dc484"
+    },
+    {
+      "module": "v3.engine.effects.delta_templates",
+      "module_file": "frozen/reconstructed/clr3/sources/legacy/v3/engine/effects/delta_templates.py",
+      "sha256": "7d99ddf26fd45b52e5e3c10074066ba5e06d17cdaf1fabad06298af3770815f0",
+      "blob_sha1": "fe03a52778e2f634be50e8858aa66e5ccdac0988"
+    },
+    {
+      "module": "v3.engine.effects.metabolization_effects",
+      "module_file": "frozen/reconstructed/clr3/sources/legacy/v3/engine/effects/metabolization_effects.py",
+      "sha256": "d4775271ca097e99e615cee19b381a478ad6d90a25051c5fce1b1e0e3c1adb1e",
+      "blob_sha1": "57f4501bae2191222de6abb82f7b6dfe8c48cc07"
+    },
+    {
+      "module": "v3.engine.event_engine",
+      "module_file": "frozen/reconstructed/clr3/sources/legacy/v3/engine/event_engine.py",
+      "sha256": "b57e7ef4df5dabd996dc7de19c1c2c273ad90ee89d73570df1fd85674dd98ded",
+      "blob_sha1": "22e6db818d107384a8c36636e7a965836b97c51d"
+    },
+    {
+      "module": "v3.engine.expectation_events",
+      "module_file": "frozen/reconstructed/clr3/sources/legacy/v3/engine/expectation_events.py",
+      "sha256": "307ae929a43935170a2f792b4a702a02ac54819a4fa897aa3fef4a099a96cb49",
+      "blob_sha1": "c1f6e4793f3f23d2be660e7534a90f3cc152ed20"
+    },
+    {
+      "module": "v3.engine.llm_contract",
+      "module_file": "frozen/reconstructed/clr3/sources/legacy/v3/engine/llm_contract.py",
+      "sha256": "f024debf7b8a637e91c546689a0bed31baff55d98f1378b06cb82ebb4c0fe9cf",
+      "blob_sha1": "6926da9734200908a78a19d54b681308178a05d8"
+    },
+    {
+      "module": "v3.engine.prompts",
+      "module_file": "frozen/reconstructed/clr3/sources/legacy/v3/engine/prompts.py",
+      "sha256": "4702de20590579c3c4543dfa5139aa4a3ce6df47ed1aee2c92c800d5a3038d57",
+      "blob_sha1": "1c06ebaf5550378d133ec0d80850a4ba158071c9"
+    },
+    {
+      "module": "v3.engine.striving_objects",
+      "module_file": "frozen/reconstructed/clr3/sources/legacy/v3/engine/striving_objects.py",
+      "sha256": "78c79a9312b05aa51220d09bb63c91cafd6bb204f2c398ac1876b1ef3144c1c3",
+      "blob_sha1": "1c748891b106cf31bd1cf9555aceed2f32a417ab"
+    },
+    {
+      "module": "v3.engine.validators",
+      "module_file": "frozen/reconstructed/clr3/sources/legacy/v3/engine/validators.py",
+      "sha256": "b32b41f76e24888aaaebee0efd4ae368fab8f93715684c23a1fe02cfd4f69925",
+      "blob_sha1": "052ab07c58258f5f4885f600a06af1730bc3d3ea"
+    },
+    {
+      "module": "v3.engine.yearly_step",
+      "module_file": "frozen/reconstructed/clr3/sources/legacy/v3/engine/yearly_step.py",
+      "sha256": "da3147c3da7ff2724a61dd26d595055668899c83beb541400f58633568b92acb",
+      "blob_sha1": "6b1ffefbd1e872b01d29a672327867a86e8d325a"
+    },
+    {
+      "module": "v3.io",
+      "module_file": "frozen/reconstructed/clr3/sources/legacy/v3/io/__init__.py",
+      "sha256": "5409fc945d238a72a48636497948fcad98653ef35d94076f22ff5d890dce808a",
+      "blob_sha1": "e35c03920f32780f9cc98b94f5f6960bfdea000c"
+    },
+    {
+      "module": "v3.io.v5_bridge",
+      "module_file": "frozen/reconstructed/clr3/sources/legacy/v3/io/v5_bridge.py",
+      "sha256": "31700b4031a62b0b5ff8257691e460ce47c983f86daaec72f1011bd6f2823baa",
+      "blob_sha1": "18017d8dc63bdd8d16335706ed66c236c871f779"
+    },
+    {
+      "module": "v3.io.v5_field_bridge",
+      "module_file": "frozen/reconstructed/clr3/sources/legacy/v3/io/v5_field_bridge.py",
+      "sha256": "444ed1e074439d006d341808386ca31e0616ac99ce11f5b99f9d101791ff9eea",
+      "blob_sha1": "a516ec65a0ca7fe623d1e477ca925d0b0de8dc30"
+    },
+    {
+      "module": "v3.psyche",
+      "module_file": "frozen/reconstructed/clr3/sources/legacy/v3/psyche/__init__.py",
+      "sha256": "624e9a16d32e192fae26259ea09878420ba5623417d532ddcbee465c1361b841",
+      "blob_sha1": "5e2b6f838c1bebcaee529f293da86b9fadeef9e2"
+    },
+    {
+      "module": "v3.psyche.channels",
+      "module_file": "frozen/reconstructed/clr3/sources/legacy/v3/psyche/channels.py",
+      "sha256": "2d00bf6b8720879e610160e58455f983e1e63fbe8ceef1a93f46844de8a3f111",
+      "blob_sha1": "c71134a4c928ed45c6dd30edf8225d7c5539b20d"
+    },
+    {
+      "module": "v3.psyche.flow",
+      "module_file": "frozen/reconstructed/clr3/sources/legacy/v3/psyche/flow.py",
+      "sha256": "6da4effde2b1ccb7c346f73b17632ceee3a7a8c37a63a10f096753d070ab1d3d",
+      "blob_sha1": "caf9396f4fd7a09b8c229ab928638c1a6b574100"
+    },
+    {
+      "module": "v3.psyche.gating",
+      "module_file": "frozen/reconstructed/clr3/sources/legacy/v3/psyche/gating.py",
+      "sha256": "4a82c7c91828b87bb61cd651c777159f04b5733e64158f8679a24efcec1ccfc6",
+      "blob_sha1": "828485a57f5649963fe80b4a802f37a29b559131"
+    },
+    {
+      "module": "v3.psyche.insulation",
+      "module_file": "frozen/reconstructed/clr3/sources/legacy/v3/psyche/insulation.py",
+      "sha256": "c8dd5f96111d3b247ddcf27b876d09c05460b06d7961193bff039e39e5967d28",
+      "blob_sha1": "f2481874d9f0b89a78088d656edc39e5a2eb775f"
+    },
+    {
+      "module": "v3.psyche.metabolism",
+      "module_file": "frozen/reconstructed/clr3/sources/legacy/v3/psyche/metabolism.py",
+      "sha256": "a456ad861a9e40d1f2bfef9e51c008657eeca86235ca27812f2186683359ebb3",
+      "blob_sha1": "b827ad94ed1b0c72971c0e656c63780078ef9570"
+    },
+    {
+      "module": "v3.psyche.registers",
+      "module_file": "frozen/reconstructed/clr3/sources/legacy/v3/psyche/registers.py",
+      "sha256": "2b493d819101c8d14492340bb785747bffe2e7a7998235916f2dd3ee5e3a766f",
+      "blob_sha1": "a65d940aff86e903d34f580f243d773a7094b587"
+    },
+    {
+      "module": "v3.psyche.vessels",
+      "module_file": "frozen/reconstructed/clr3/sources/legacy/v3/psyche/vessels.py",
+      "sha256": "6f4855eef0c19ef514983d4cb47fc21873d6e2af5368b17ea294f8f187f17438",
+      "blob_sha1": "1b7527159a9301b4c9e2802f57d592d347efe40f"
+    },
+    {
+      "module": "v3.psyche.vitality",
+      "module_file": "frozen/reconstructed/clr3/sources/legacy/v3/psyche/vitality.py",
+      "sha256": "56fed88e37299862774b2401c9a7e43363de6d6bb47a78f8f4744dcc6f91e912",
+      "blob_sha1": "947441192feb2a57406a6f24e3735e79c92e4a45"
+    },
+    {
+      "module": "v3.psyche.wound",
+      "module_file": "frozen/reconstructed/clr3/sources/legacy/v3/psyche/wound.py",
+      "sha256": "cbe41ae1a9535ec96eb7381a456a7ec93aab3bab691a4423074e6d12b3aabc5b",
+      "blob_sha1": "15daa82a9cad87bbced575a9a4ed20a4bce1bc97"
+    },
+    {
+      "module": "v3.render",
+      "module_file": "frozen/reconstructed/clr3/sources/legacy/v3/render/__init__.py",
+      "sha256": "0690b12b5d95881468b17386fff929e7a7a94f9fe08638cccbcaed8e1bd1bbc0",
+      "blob_sha1": "bf6fdadcc14079e74fcb688fc12ce216a390b8c1"
+    },
+    {
+      "module": "v3.render.phenomenology",
+      "module_file": "frozen/reconstructed/clr3/sources/legacy/v3/render/phenomenology.py",
+      "sha256": "f2f18c1d9ba705212846af41b33cb1dfd2ad986dae4b686873687c2e6d1a653d",
+      "blob_sha1": "ee4c7b722735876754cafea28266b4e06b9a4a29"
+    },
+    {
+      "module": "v3.systems",
+      "module_file": "frozen/reconstructed/clr3/sources/legacy/v3/systems/__init__.py",
+      "sha256": "4366d49f2254e5db38ce9118af2422a8903bb29c138af378a73ebc82f27dcf70",
+      "blob_sha1": "5ce66f3c3cec95393ee990cb7a81276e9b6bf678"
+    },
+    {
+      "module": "v3.systems.alienation",
+      "module_file": "frozen/reconstructed/clr3/sources/legacy/v3/systems/alienation.py",
+      "sha256": "2209d8171a14f18c252e847e2d0beb113d574e1378c49d2fb7e7f43513106207",
+      "blob_sha1": "52a59f3927f0ca52120d609915364d0d174b85dd"
+    },
+    {
+      "module": "v3.systems.attention",
+      "module_file": "frozen/reconstructed/clr3/sources/legacy/v3/systems/attention.py",
+      "sha256": "d807fbacf385ab440b9fd61b6172ae1cf8c0ab236c46149cf5de62d0f99ae222",
+      "blob_sha1": "e738407cdb37d237c7f6192e1da5c7a4c42658b6"
+    },
+    {
+      "module": "v3.systems.autonomy_safety",
+      "module_file": "frozen/reconstructed/clr3/sources/legacy/v3/systems/autonomy_safety.py",
+      "sha256": "fdb6ae0d78bbb93041217e7cd98f16526c97d924393c9f6fd51aa56a128b0e56",
+      "blob_sha1": "623248d31f59a341da931dd8149faa4b65a00839"
+    },
+    {
+      "module": "v3.systems.boundary",
+      "module_file": "frozen/reconstructed/clr3/sources/legacy/v3/systems/boundary.py",
+      "sha256": "e8c2495f5bd0699f5737a9e137dd327ec3d8c6953af262460ab03998f249a9c4",
+      "blob_sha1": "72b0714f1668c63d3572a2cc44616d1fc557669e"
+    },
+    {
+      "module": "v3.systems.buffers",
+      "module_file": "frozen/reconstructed/clr3/sources/legacy/v3/systems/buffers.py",
+      "sha256": "9c9ed09001dad364ab4011ee29e8ea2df3c332745db736b1a6e1dbe56e332b35",
+      "blob_sha1": "c2c6c0454521f1b40bafb3fa4773acf2627409f9"
+    },
+    {
+      "module": "v3.systems.capacity",
+      "module_file": "frozen/reconstructed/clr3/sources/legacy/v3/systems/capacity.py",
+      "sha256": "cae31ffd4006601aa860fbb011d1a23697a07a8cc1f0dc8e2897d5f2ed1531c3",
+      "blob_sha1": "d46bbdd2019f70f6f58a187fde9ef01aebde00a7"
+    },
+    {
+      "module": "v3.systems.coherence",
+      "module_file": "frozen/reconstructed/clr3/sources/legacy/v3/systems/coherence.py",
+      "sha256": "1bf8c1bee7a4197e3fb1eea34c89aed115edd3602c92c91888ada6790f575c4a",
+      "blob_sha1": "0e2b9b389931e4d6a6286f7b8f1475891c38cbfa"
+    },
+    {
+      "module": "v3.systems.cracks",
+      "module_file": "frozen/reconstructed/clr3/sources/legacy/v3/systems/cracks.py",
+      "sha256": "b11a87e87be216d78c84f76ff645e26a39bb40512475558c95a279c78796bec3",
+      "blob_sha1": "c7e1f070487144bbcf67600e3bfd54a7d9a02e92"
+    },
+    {
+      "module": "v3.systems.domains",
+      "module_file": "frozen/reconstructed/clr3/sources/legacy/v3/systems/domains.py",
+      "sha256": "24e5215763a11e439075ea7a0f4ac32ae425856a9fd4624744d4a2a744758280",
+      "blob_sha1": "7078e42163220d7623edf68830c92a5daa964603"
+    },
+    {
+      "module": "v3.systems.field",
+      "module_file": "frozen/reconstructed/clr3/sources/legacy/v3/systems/field.py",
+      "sha256": "5f8fdc46153ce10c1a76618c596b7f7d486e8887e084e00fa128b90c94e8c411",
+      "blob_sha1": "5975f9513c7496cb5a4521682874209ac0e2d4f3"
+    },
+    {
+      "module": "v3.systems.frameworks",
+      "module_file": "frozen/reconstructed/clr3/sources/legacy/v3/systems/frameworks.py",
+      "sha256": "0d59fc6e177009da92e39eb61ea729eace97f50392baa93999cb6513f81dd2cb",
+      "blob_sha1": "7a4a1450918d627618ef0cc41c9c515e63048707"
+    },
+    {
+      "module": "v3.systems.health_drift",
+      "module_file": "frozen/reconstructed/clr3/sources/legacy/v3/systems/health_drift.py",
+      "sha256": "ba4608b7b9ab5dc758085ea90ed6eef64b4e40cc20790508e6623e51dc13995b",
+      "blob_sha1": "ab8599412a1f92a531b1ac6cd240f8432be98bfb"
+    },
+    {
+      "module": "v3.systems.infrastructure",
+      "module_file": "frozen/reconstructed/clr3/sources/legacy/v3/systems/infrastructure.py",
+      "sha256": "a062192707bb6697c6d38a1ef3a72ca0ac6daedb759a38fd2fcb2cf4e219c235",
+      "blob_sha1": "34a9f79b96e5f2878ad16d78fad565ca58170237"
+    },
+    {
+      "module": "v3.systems.practices",
+      "module_file": "frozen/reconstructed/clr3/sources/legacy/v3/systems/practices.py",
+      "sha256": "b984397e5e8c24b68d94a6ef06e7cdd7bb07513db45a5480b48f154ece79720d",
+      "blob_sha1": "1828ece38571926c93234b3c48ff0249363d2916"
+    },
+    {
+      "module": "v3.systems.reproduction",
+      "module_file": "frozen/reconstructed/clr3/sources/legacy/v3/systems/reproduction.py",
+      "sha256": "6f3a815d7ef6c5e7fd6003c4b4fd1b3bf1b2dc90cedcdcd332088737ee701916",
+      "blob_sha1": "52f2efa3333721820577be4819c676cece412115"
+    },
+    {
+      "module": "v3.systems.signal",
+      "module_file": "frozen/reconstructed/clr3/sources/legacy/v3/systems/signal.py",
+      "sha256": "8487b9203bddce9797ea4eccc51ae864eaa0f0aa10adee0ac536ebc147388377",
+      "blob_sha1": "bd7d97deb233084d4e4043016ccfae4aabd3aff1"
+    },
+    {
+      "module": "v3.systems.stability_inertia",
+      "module_file": "frozen/reconstructed/clr3/sources/legacy/v3/systems/stability_inertia.py",
+      "sha256": "5a11c8b07eafe2b8f1d7e9864c9cb066a5c45f19c2c45a8d4223b3a64c394c78",
+      "blob_sha1": "8951b77d433f9e32a1359d501c6540920a1229dc"
+    },
+    {
+      "module": "v3.systems.style",
+      "module_file": "frozen/reconstructed/clr3/sources/legacy/v3/systems/style.py",
+      "sha256": "b452414ccd3489b481972a10154f52a0c6749a6225a02898b0e92c4eb773077c",
+      "blob_sha1": "c949de2e4ccdcebcd8a2349d1f7107b60e04b9c8"
+    },
+    {
+      "module": "v3.systems.topology",
+      "module_file": "frozen/reconstructed/clr3/sources/legacy/v3/systems/topology.py",
+      "sha256": "4e3b9b64399dfcfad67a431729d9443767d5e074080ef6b51bc1c8df48711560",
+      "blob_sha1": "665bb9c24eb04cda4da7bcaec2d1d9667791a456"
+    }
+  ],
+  "dependency_closure_status": "BOUNDED_FULL_65_FILE_CLOSURE_VERIFIED",
+  "fixture_query_permission": "commission-authorized sourcefree synthetic fixture only",
+  "science_grade": "sourcefree fixed computational prototype; no actor use/calibration/native permission",
+  "covered_test_suites": [
+    {
+      "suite": "clr3_unchanged",
+      "exit_code": 0,
+      "candidate_bound": true,
+      "command": "RETURN/.venv/bin/python -m pytest -c /dev/null --rootdir=. --confcutdir=. --import-mode=importlib -p no:cacheprovider -vv -p candidate_binding frozen/reconstructed/clr3/test_recursive_court.py --junitxml=evidence/clr3_unchanged.xml",
+      "pythonpath": "RETURN/frozen/repair_r1",
+      "tests": 38,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "i2_unchanged",
+      "exit_code": 0,
+      "candidate_bound": true,
+      "command": "RETURN/.venv/bin/python -m pytest -c /dev/null --rootdir=. --confcutdir=. --import-mode=importlib -p no:cacheprovider -vv -p candidate_binding frozen/test_independent.py --junitxml=evidence/i2_unchanged.xml",
+      "pythonpath": "RETURN/frozen/repair_r1",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "repair_controls",
+      "exit_code": 0,
+      "candidate_bound": true,
+      "command": "RETURN/.venv/bin/python -m pytest -c /dev/null --rootdir=. --confcutdir=. --import-mode=importlib -p no:cacheprovider -vv -p candidate_binding frozen/repair_r1/test_repair_contracts.py --junitxml=evidence/repair_controls.xml",
+      "pythonpath": "RETURN/frozen/repair_r1",
+      "tests": 11,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "fresh",
+      "exit_code": 0,
+      "candidate_bound": true,
+      "command": "RETURN/.venv/bin/python -m pytest -c /dev/null --rootdir=. --confcutdir=. --import-mode=importlib -p no:cacheprovider -vv -p candidate_binding test_fresh.py --junitxml=evidence/fresh.xml",
+      "pythonpath": "RETURN/frozen/repair_r1",
+      "tests": 34,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "original_six_red",
+      "exit_code": 1,
+      "candidate_bound": false,
+      "command": "RETURN/.venv/bin/python -m pytest -c /dev/null --rootdir=. --confcutdir=. --import-mode=importlib -p no:cacheprovider -vv frozen/reconstructed/clr3/preserved/r1_court/test_falsifiers.py --junitxml=evidence/original_six_red.xml",
+      "pythonpath": "RETURN/frozen/reconstructed/clr3/preserved/r1_court",
+      "tests": 6,
+      "failures": 6,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "original_i2_baseline",
+      "exit_code": 1,
+      "candidate_bound": false,
+      "command": "RETURN/.venv/bin/python -m pytest -c /dev/null --rootdir=. --confcutdir=. --import-mode=importlib -p no:cacheprovider -vv frozen/test_independent.py --junitxml=evidence/original_i2_baseline.xml",
+      "pythonpath": "RETURN/frozen/reconstructed/clr3/preserved/r1_court",
+      "tests": 6,
+      "failures": 2,
+      "errors": 0,
+      "skipped": 0
+    }
+  ],
+  "model_provider": "OpenAI via Codex; separate account not attested",
+  "model_configuration": [
+    {
+      "model": "gpt-6.1-sol",
+      "effort": "high"
+    }
+  ],
+  "effort": "high observed in current turn_context",
+  "pricing_class": "UNKNOWN",
+  "observed_credits_usage": null,
+  "cash_known": false,
+  "quota_known": false,
+  "context_cache_reuse": "package cache/Git objects verified; model context caching UNKNOWN",
+  "estimated_total_evidence_cost": "UNKNOWN",
+  "paid_overflow_policy": "no separately authorized paid external model calls; none made",
+  "nearest_expected_slot_reset": null,
+  "independent_review_separation": "fresh conversation/worktree; original CLR3 and repair authors not this reviewer; no author runner reuse",
+  "privacy_source_grant": "sourcefree pinned code/documents only; no private source transport to other model/provider",
+  "assignments_completed": [
+    "independent CLR3R1 local repair court"
+  ],
+  "next_good_affinity_tags": [
+    "CANON",
+    "ADP019",
+    "CAN008",
+    "SOURCE_CUSTODY",
+    "TEMPORAL"
+  ],
+  "staged_state_preservation": "versioned return preserved; ignored venv and marker live at final probe only; no future continuity assumed",
+  "retire_or_rebuild_reason": null,
+  "adoption": false
+}

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="6" time="3.302" timestamp="2026-10-18T17:33:31.272081-04:00" hostname="review-host"><testcase classname="test_independent" name="test_same_actor_object_at_same_time_cannot_occupy_two_places" time="0.389"><failure message="Failed: DID NOT RAISE ValueError">routine = {'grade': 'PROVISIONAL_HISTORICAL_RECURRENCE_AND_RESEARCH_CANON; NATIVE_OWNER_INTERFACES_UNISSUED', 'native_grade': 'C...{'year': 2007, 'source': 'field_update', 'injection': {}, 'event_deltas': {}}}}, 'calibration_regime': None, ...}, ...}
+
+    def test_same_actor_object_at_same_time_cannot_occupy_two_places(routine):
+        """Public admit calls; no privileged ledger edit or checksum replacement."""
+        first = frame(routine)
+        second = deepcopy(first)
+        second['id'] = 'distinct-source-same-episode-time'
+        ledger = c.CanonLedger()
+        original = ledger.admit(first, c.propose_realization(first, 'hall_drawer'))
+        assert original['clock'] == 24
+        other = c.propose_realization(second, 'garage_shelf')
+        assert other['clock'] == original['clock']
+        assert other['facts']['lock_id'] == original['facts']['lock_id']
+&gt;       with pytest.raises(ValueError):
+E       Failed: DID NOT RAISE ValueError
+
+test_independent.py:35: Failed</failure></testcase><testcase classname="test_independent" name="test_inconsistent_producer_frame_not_a_validated_computed_transition" time="0.010"><failure message="Failed: DID NOT RAISE ValueError">routine = {'grade': 'PROVISIONAL_HISTORICAL_RECURRENCE_AND_RESEARCH_CANON; NATIVE_OWNER_INTERFACES_UNISSUED', 'native_grade': 'C...{'year': 2007, 'source': 'field_update', 'injection': {}, 'event_deltas': {}}}}, 'calibration_regime': None, ...}, ...}
+
+    def test_inconsistent_producer_frame_not_a_validated_computed_transition(routine):
+        """Conditional stronger ingress contract: untrusted producer supplies frame.
+    
+        This does not alter an admitted preimage; it probes the initial admission
+        boundary. A trusted producer is an explicit alternative proof assumption.
+        """
+        source = frame(routine)
+        assert any(e['id']=='actual-shared-attention' for e in source['effect']['selected_events'])
+        source['resolved']['father_present'] = False
+        candidate = c.propose_realization(source)
+        assert 'Father was still at work.' in candidate['text']
+&gt;       with pytest.raises(ValueError):
+E       Failed: DID NOT RAISE ValueError
+
+test_independent.py:49: Failed</failure></testcase><testcase classname="test_independent" name="test_material_inputs_not_workplace_labels_control_child_numerics" time="1.868" /><testcase classname="test_independent" name="test_canon_detail_drives_task_while_numerical_outcomes_may_converge" time="0.726" /><testcase classname="test_independent" name="test_owned_source_copy_survives_caller_mutation" time="0.013" /><testcase classname="test_independent" name="test_ordinary_evolution_precedes_incident_without_all_field_delta_requirement" time="0.118" /></testsuite></testsuites>

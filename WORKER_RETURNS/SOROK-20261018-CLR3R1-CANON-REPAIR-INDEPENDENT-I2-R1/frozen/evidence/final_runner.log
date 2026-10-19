@@ -1,0 +1,86 @@
+{
+  "observed_utc": "2026-10-18T21:33:41.036524+00:00",
+  "versions": "3.11.3 9.1.1 6.0.2",
+  "environment": {
+    "PYTHONPATH": "<I2_RETURN>/.runtime",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1"
+  },
+  "suites": [
+    {
+      "suite": "clr3",
+      "command": [
+        "python3",
+        "-m",
+        "pytest",
+        "-c",
+        "/dev/null",
+        "--rootdir=.",
+        "--confcutdir=.",
+        "-v",
+        "-p",
+        "no:cacheprovider",
+        "test_recursive_court.py",
+        "--junitxml=../../evidence/clr3.xml"
+      ],
+      "cwd": "reconstructed/clr3",
+      "exit_code": 0,
+      "tests": 38,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "junit": "evidence/clr3.xml"
+    },
+    {
+      "suite": "original_six_red",
+      "command": [
+        "python3",
+        "-m",
+        "pytest",
+        "-c",
+        "/dev/null",
+        "--rootdir=.",
+        "--confcutdir=.",
+        "-v",
+        "-p",
+        "no:cacheprovider",
+        "test_falsifiers.py",
+        "--junitxml=../../../../evidence/original_six_red.xml"
+      ],
+      "cwd": "reconstructed/clr3/preserved/r1_court",
+      "exit_code": 1,
+      "tests": 6,
+      "failures": 6,
+      "errors": 0,
+      "skipped": 0,
+      "junit": "evidence/original_six_red.xml"
+    },
+    {
+      "suite": "independent",
+      "command": [
+        "python3",
+        "-m",
+        "pytest",
+        "-c",
+        "/dev/null",
+        "--rootdir=.",
+        "--confcutdir=.",
+        "-v",
+        "-p",
+        "no:cacheprovider",
+        "test_independent.py",
+        "--junitxml=evidence/independent.xml"
+      ],
+      "cwd": ".",
+      "exit_code": 1,
+      "tests": 6,
+      "failures": 2,
+      "errors": 0,
+      "skipped": 0,
+      "junit": "evidence/independent.xml"
+    }
+  ],
+  "cold_processes": 4,
+  "source_bytes_verified_before_after": true,
+  "original_assertions_edited": false
+}

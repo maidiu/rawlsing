@@ -1,0 +1,127 @@
+..F.FF.F.....F........F.......FF..                                       [100%]
+=================================== FAILURES ===================================
+______ test_upstream_pair_holds_initial_records_and_unrelated_draws_fixed ______
+
+runs = {'HOURS_CUT': {'grade': 'PROVISIONAL_HISTORICAL_RECURRENCE_AND_RESEARCH_CANON; NATIVE_OWNER_INTERFACES_UNISSUED', 'nat...'year': 2007, 'source': 'field_update', 'injection': {}, 'event_deltas': {}}}}, 'calibration_regime': None, ...}, ...}}
+
+    def test_upstream_pair_holds_initial_records_and_unrelated_draws_fixed(runs):
+        values=list(runs.values())
+        for key in ('initial','pre_encounter','world','proposal'):
+>           assert len({digest(r[key]) for r in values})==1
+E           AssertionError: assert 3 == 1
+E            +  where 3 = len({'3c7c4e36e9f12809b8c0a204632c749937024c001500daa451fc2270d5b5646c', '3ff2438a85871adfaea90a9c4f801f7222c04f40d178833c11a28b572b7e0c0c', '87a861c5fbc03eb83e217de4788087e3fbdeea45175dd12e5ece88086340aab6'})
+
+test_recursive_court.py:33: AssertionError
+________ test_distinct_workplace_circumstances_can_converge_numerically ________
+
+runs = {'HOURS_CUT': {'grade': 'PROVISIONAL_HISTORICAL_RECURRENCE_AND_RESEARCH_CANON; NATIVE_OWNER_INTERFACES_UNISSUED', 'nat...'year': 2007, 'source': 'field_update', 'injection': {}, 'event_deltas': {}}}}, 'calibration_regime': None, ...}, ...}}
+
+    def test_distinct_workplace_circumstances_can_converge_numerically(runs):
+        a,b=runs['ROUTINE'],runs['HOURS_CUT']
+        assert a['resolved']['workplace']!=b['resolved']['workplace']
+>       assert a['immediate']['after_hash']==b['immediate']['after_hash']
+E       AssertionError: assert '1e320822ce6f...b32cf2bf38806' == 'fa24645ee4a6...08ac478cc1b18'
+E         
+E         - fa24645ee4a650e8576818e1b4743ed8909731b616bc42fcc7308ac478cc1b18
+E         + 1e320822ce6f041ee54224a2942be2d41461d673e1a65dd5808b32cf2bf38806
+
+test_recursive_court.py:48: AssertionError
+___________ test_existing_runtime_effect_propagates_across_sections ____________
+
+runs = {'HOURS_CUT': {'grade': 'PROVISIONAL_HISTORICAL_RECURRENCE_AND_RESEARCH_CANON; NATIVE_OWNER_INTERFACES_UNISSUED', 'nat...'year': 2007, 'source': 'field_update', 'injection': {}, 'event_deltas': {}}}}, 'calibration_regime': None, ...}, ...}}
+
+    def test_existing_runtime_effect_propagates_across_sections(runs):
+        a,b=runs['ROUTINE'],runs['RAISE_WITH_OVERTIME']
+        assert len({c['path'].split('.')[0] for c in a['immediate']['numeric_changes']})>1
+        assert a['ticks'][2]['after_hash']!=b['ticks'][2]['after_hash']
+>       assert a['final_state']['pressure_flow_history']!=b['final_state']['pressure_flow_history']
+E       AssertionError: assert [{'schema_version': 'v516_surface_psyche_profile', 'year': 2007, 'age': 7, 'event_context': {'events_this_year_count':...s_this_year_count': 0, 'micro_trace_this_year_count': 0, 'event_type_counts': {}, 'micro_trace_type_counts': {}}, ...}] != [{'schema_version': 'v516_surface_psyche_profile', 'year': 2007, 'age': 7, 'event_context': {'events_this_year_count':...s_this_year_count': 0, 'micro_trace_this_year_count': 0, 'event_type_counts': {}, 'micro_trace_type_counts': {}}, ...}]
+
+test_recursive_court.py:55: AssertionError
+_______________ test_first_call_receives_existing_age_and_state ________________
+
+runs = {'HOURS_CUT': {'grade': 'PROVISIONAL_HISTORICAL_RECURRENCE_AND_RESEARCH_CANON; NATIVE_OWNER_INTERFACES_UNISSUED', 'nat...'year': 2007, 'source': 'field_update', 'injection': {}, 'event_deltas': {}}}}, 'calibration_regime': None, ...}, ...}}
+
+    def test_first_call_receives_existing_age_and_state(runs):
+        r=runs['ROUTINE'];p=r['proposal']
+        assert p['conditioning']['state_hash']==digest(r['pre_encounter']) and p['conditioning']['age']==8
+>       assert len(p['situational_options'])==3 and p['legacy_parsed_packet']['branch_hypotheses']==[]
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'situational_options'
+
+test_recursive_court.py:67: KeyError
+_____ test_nonunique_compatible_flesh_preserves_transition_and_is_consumed _____
+
+    def test_nonunique_compatible_flesh_preserves_transition_and_is_consumed():
+        a=run_trajectory(location='hall_drawer',variant='plain');b=run_trajectory(location='garage_shelf',variant='alternate')
+>       assert a['immediate']==b['immediate'] and a['canon'][0]['text']!=b['canon'][0]['text']
+E       AssertionError: assert ({'clock': 23,...263a0a1', ...} == {'clock': 23,...f7c4242', ...}
+E         
+E         Omitting 8 identical items, use -vv to show
+E         Differing items:
+E         {'after': {'year': 2008, 'age': 8, 'field': {'raw': {'morale': 62.0, 'recruitment': 62.0, 'legitimacy': 58.0, 'fear': ...ar': {'year': 2007, 'source': 'field_update', 'injection': {}, 'event_deltas': {}}}}, 'calibration_regime': None, ...}} != {'after': {'year': 2008, 'age': 8, 'field': {'raw': {'morale': 62.0, 'recruitment': 62.0, 'legitimacy': 58.0, 'fear': ...ar': {'year': 2007, 'source': 'field_update', 'injection': {}, 'event_deltas': {}}}}, 'calibration_regime': None, ...}}
+E         {'after_hash': '409c231ae762b21b5...
+E         
+E         ...Full output truncated (4 lines hidden), use '-vv' to show)
+
+test_recursive_court.py:83: AssertionError
+_______ test_independent_counterpart_refuses_while_canon_detail_is_used ________
+
+runs = {'HOURS_CUT': {'grade': 'PROVISIONAL_HISTORICAL_RECURRENCE_AND_RESEARCH_CANON; NATIVE_OWNER_INTERFACES_UNISSUED', 'nat...'year': 2007, 'source': 'field_update', 'injection': {}, 'event_deltas': {}}}}, 'calibration_regime': None, ...}, ...}}
+
+    def test_independent_counterpart_refuses_while_canon_detail_is_used(runs):
+        r=runs['ROUTINE'];o=r['later']['counterpart']
+        assert o['action']=='DECLINE_CONTACT' and not o['focal_child_state_read']
+        assert r['later']['action']=='FETCH_EXISTING_LOCK'
+        alternative=run_trajectory(busy=False)
+>       assert alternative['later']['counterpart']['action']=='ALLOW_CONTACT' and alternative['immediate']==r['immediate']
+E       AssertionError: assert ('ALLOW_CONTACT' == 'ALLOW_CONTACT'
+E         
+E           ALLOW_CONTACT and {'clock': 23,...83ad382', ...} == {'clock': 23,...340aab6', ...}
+E         
+E         Omitting 8 identical items, use -vv to show
+E         Differing items:
+E         {'after': {'year': 2008, 'age': 8, 'field': {'raw': {'morale': 62.0, 'recruitment': 62.0, 'legitimacy': 58.0, 'fear': ...ar': {'year': 2007, 'source': 'field_update', 'injection': {}, 'event_deltas': {}}}}, 'calibration_regime': None, ...}} != {'after': {'year': 2008, 'age': 8, 'field': {'raw': {'morale': 62.0, 'recruitment': 62.0, 'legitimacy': 58.0, 'fear': ...ar': {'year': 2007, 'source': 'field_update', 'injection': {}, 'event_deltas': {}}}}, 'calibration_regime': None, ...}}
+E         {'after_hash': '8b4a22d1f3a97276b...
+E         
+E         ...Full output truncated (4 lines hidden), use '-vv' to show)
+
+test_recursive_court.py:117: AssertionError
+___________ test_recorded_rng_and_mock_proposal_replay_deterministic ___________
+
+runs = {'HOURS_CUT': {'grade': 'PROVISIONAL_HISTORICAL_RECURRENCE_AND_RESEARCH_CANON; NATIVE_OWNER_INTERFACES_UNISSUED', 'nat...'year': 2007, 'source': 'field_update', 'injection': {}, 'event_deltas': {}}}}, 'calibration_regime': None, ...}, ...}}
+
+    def test_recorded_rng_and_mock_proposal_replay_deterministic(runs):
+>       for w,r in runs.items():assert run_trajectory(w)==r
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: assert {'grade': 'PR...ne, ...}, ...} == {'grade': 'PR...ne, ...}, ...}
+E         
+E         Omitting 7 identical items, use -vv to show
+E         Differing items:
+E         {'recorded_second_call': {'actor': 'child', 'clock': 24, 'source_ref': 'episode-theft', 'prestate_hash': 'a65f8fcaee9a4e1c61984ffaf694163502d494367f565fd00a452887e395702e', ...}} != {'recorded_second_call': {'actor': 'child', 'clock': 24, 'source_ref': 'episode-theft', 'prestate_hash': '3ff2438a85871adfaea90a9c4f801f7222c04f40d178833c11a28b572b7e0c0c', ...}}
+E         {'pre_encounter': {'year': 2008, 'age': 8, 'field': {'raw': {'morale': 62.0, 'recruitment': 62.0, 'legitimacy': 58.0, ...ar': {'year': 2007, 'source': 'field...
+E         
+E         ...Full output truncated (12 lines hidden), use '-vv' to show
+
+test_recursive_court.py:153: AssertionError
+_____________________ test_cross_process_hash_seed_replay ______________________
+
+    def test_cross_process_hash_seed_replay():
+        code="from recursive_court import run_trajectory; print(run_trajectory()['trace_hash'])"
+        outputs=[subprocess.check_output([sys.executable,'-c',code],cwd=ROOT,env={**os.environ,'PYTHONHASHSEED':str(seed),'PYTHONDONTWRITEBYTECODE':'1'},text=True).strip() for seed in (0,1,71)]
+>       assert len(set(outputs))==1
+E       AssertionError: assert 3 == 1
+E        +  where 3 = len({'3479db0019c28226fa18c9cdd6ea4c21948930840edef00a33b497c7e87d6a46', '462dd774f0d7382733eca56e2d2df059418d2a60c68a53327f9f7ec202a3e446', '6dc2b8eb464d900a22ce8dd8ad28bc35a103b98ef69b98cace060ef707398dbf'})
+E        +    where {'3479db0019c28226fa18c9cdd6ea4c21948930840edef00a33b497c7e87d6a46', '462dd774f0d7382733eca56e2d2df059418d2a60c68a53327f9f7ec202a3e446', '6dc2b8eb464d900a22ce8dd8ad28bc35a103b98ef69b98cace060ef707398dbf'} = set(['6dc2b8eb464d900a22ce8dd8ad28bc35a103b98ef69b98cace060ef707398dbf', '462dd774f0d7382733eca56e2d2df059418d2a60c68a53327f9f7ec202a3e446', '3479db0019c28226fa18c9cdd6ea4c21948930840edef00a33b497c7e87d6a46'])
+
+test_recursive_court.py:159: AssertionError
+=========================== short test summary info ============================
+FAILED test_recursive_court.py::test_upstream_pair_holds_initial_records_and_unrelated_draws_fixed
+FAILED test_recursive_court.py::test_distinct_workplace_circumstances_can_converge_numerically
+FAILED test_recursive_court.py::test_existing_runtime_effect_propagates_across_sections
+FAILED test_recursive_court.py::test_first_call_receives_existing_age_and_state
+FAILED test_recursive_court.py::test_nonunique_compatible_flesh_preserves_transition_and_is_consumed
+FAILED test_recursive_court.py::test_independent_counterpart_refuses_while_canon_detail_is_used
+FAILED test_recursive_court.py::test_recorded_rng_and_mock_proposal_replay_deterministic
+FAILED test_recursive_court.py::test_cross_process_hash_seed_replay - Asserti...
+8 failed, 26 passed in 4.19s

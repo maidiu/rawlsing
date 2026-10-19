@@ -1,0 +1,268 @@
+# v3 build plan — attack order
+# Purpose: implement the backbone engine so it steps year-by-year, passes invariants, outputs stable JSON.
+# Reference: OVERVIEW_INTEGRATED.md §12 (v3_yearly_step_order.yaml), §16 (phases), v3config.yaml.
+
+meta:
+  name: "v3_build_plan"
+  version: "0.1"
+  principle: "Engine integrity first; no florid narrative until backbone runs and tests pass."
+  completed_through: "w5_field_injection"  # Wave 4 + v2→v3 connector + Wave 5 field injection. See v3/PLAN_ALIGNMENT.md.
+  missing_layers_backlog: "v3/missing_layers_backlog.yaml"  # Spec gaps and trace order; see MISSING_LAYERS_FROM_SPECS.md.
+
+# Decision gate: must be resolved before Wave 3 (real system logic). Wave 1–2 can proceed with either model or a placeholder.
+design_decisions:
+  - id: capacity_model
+    description: "Two capacity notions in spec: (1) Material — time, money, health, support, skill, mobility, risk_tolerance, legitimacy (v3config; feeds AC). (2) Psychological — vitality, aperture, reality_anchor, binding, coherence, agency, transmutation (spec/OVERVIEW; chronic shaping substrate). Decide: store both vectors, or derive one from the other. Document in OVERVIEW_INTEGRATED §6 and in core/state.py."
+    resolve_before: "Wave 3 (w3_* tasks)"
+    not_blocking: [w1_config_loader, w1_state_schema, w1_derived, w1_runner, w2_systems_stubs, w2_event_engine_stub, w2_render_stub, w2_invariants, w2_seed_and_run]
+
+phases:
+  phase_1_core:
+    goal: "Runnable yearly step with stub systems; invariants pass; no LLM."
+    deliverable: "Run N years on a seed persona JSON; output state JSON each year; all step-order and invariant tests pass."
+    dependencies: []
+
+  phase_2_events:
+    goal: "Event sampling and event-driven deltas; still no LLM proposal."
+    deliverable: "Events (0–3/year) drive capacity/buffer/crack/domain deltas via explicit templates; caps and hysteresis enforced."
+    dependencies: [phase_1_core]
+
+  phase_3_llm_pipeline:
+    goal: "Propose → Score → Apply → Render; LLM proposes candidates, code selects and applies, LLM renders."
+    deliverable: "Full pipeline; persona_sheet.json compatible with run_conversation_chat.py --persona-json."
+    dependencies: [phase_2_events]
+
+  phase_4_field_injection:
+    goal: "Hook harmonization layer (driver_model, civic_soul, imperial_block) into field_update."
+    deliverable: "v3 field-conditioned by country-year civic vectors when available."
+    dependencies: [phase_2_events]
+
+attack_order:
+  # --- WAVE 1: Foundation (no stepping yet) ---
+  - id: w1_config_loader
+    phase: phase_1_core
+    description: "Load v3config.yaml and v3_yearly_step_order.yaml; validate; expose enums, caps, step list."
+    artifacts:
+      - "v3/core/config_loader.py"
+      - "v3/core/enums.py"
+    tests: ["config_loads", "step_order_parseable"]
+
+  - id: w1_state_schema
+    phase: phase_1_core
+    description: "Dataclasses + JSON codec for backbone state from v3config stored_state_schema (capacity, reproduction_constraints, domains, cracks, buffers, frameworks, collective_infrastructure, practice_stack, peak_routing, intensity_and_capture)."
+    artifacts:
+      - "v3/core/state.py"
+      - "v3/io/json_codec.py"
+    tests: ["state_roundtrip_json", "clamp_0_100"]
+
+  - id: w1_derived
+    phase: phase_1_core
+    description: "Compute derived indices from stored state (hostage_index, AC, insulation_score, SL, mis_aim_risk, peak_regime) per v3config formulas. No persistence."
+    artifacts:
+      - "v3/core/derived.py"
+    tests: ["derived_from_fixture_state", "derived_not_mutate_state"]
+    depends_on: [w1_state_schema, w1_config_loader]
+
+  - id: w1_runner
+    phase: phase_1_core
+    description: "Runner that executes steps in v3_yearly_step_order order; each step calls a module; stub modules that no-op or apply trivial deltas."
+    artifacts:
+      - "v3/engine/yearly_step.py"
+      - "v3/engine/step_runner.py"
+    tests: ["step_order_enforced", "runner_10_years_no_crash"]
+    depends_on: [w1_config_loader, w1_state_schema, w1_derived]
+
+  # --- WAVE 2.1: State invariants (DONE) ---
+  - id: w2_1_systems_stubs
+    phase: phase_1_core
+    description: "Create systems/*.py stubs for each step. Each: read inputs, apply capped deltas to outputs_mutate, never touch prohibits_mutation_of."
+    artifacts:
+      - "v3/systems/field.py"
+      - "v3/systems/reproduction.py"
+      - "v3/systems/capacity.py"
+      - "v3/systems/buffers.py"
+      - "v3/systems/frameworks.py"
+      - "v3/systems/domains.py"
+      - "v3/systems/cracks.py"
+      - "v3/systems/alienation.py"
+      - "v3/systems/practices.py"
+      - "v3/systems/infrastructure.py"
+      - "v3/systems/topology.py"
+      - "v3/systems/boundary.py"
+      - "v3/systems/coherence.py"
+      - "v3/systems/attention.py"
+      - "v3/systems/signal.py"
+      - "v3/systems/style.py"
+    tests: ["each_step_mutates_only_declared", "caps_respected", "hysteresis_respected"]
+    depends_on: [w1_runner]
+
+  - id: w2_1_event_engine_stub
+    phase: phase_1_core
+    description: "event_sampling: 0–3 placeholder events; write state.events_this_year only."
+    artifacts:
+      - "v3/engine/event_engine.py"
+    tests: ["events_0_to_3"]
+    depends_on: [w1_runner]
+
+  - id: w2_1_render_stub
+    phase: phase_1_core
+    description: "render_layer: stub writing state + derived to state.rendered_output; must not mutate backbone."
+    artifacts:
+      - "v3/render/phenomenology.py"
+    tests: ["render_does_not_mutate_backbone"]
+    depends_on: [w1_runner]
+
+  - id: w2_1_state_invariants
+    phase: phase_1_core
+    description: "Wave 2.1 state integrity: clamp numerics, cracks/buffers/frameworks limits, no NaNs. Run after 10-year sim."
+    artifacts:
+      - "v3/core/invariants.py"
+      - "v3/tests/test_invariants.py"
+    tests: ["test_invariants.py"]
+    depends_on: [w2_1_systems_stubs]
+
+  - id: w2_1_seed_and_run
+    phase: phase_1_core
+    description: "Seed persona; run 10–20 years; assert no NaNs, state invariants pass; output state JSON."
+    artifacts:
+      - "v3/io/seeds.py"
+      - "v3/tests/test_step_sanity.py"
+    tests: ["test_step_sanity", "seed_20_years_stable"]
+    depends_on: [w2_1_systems_stubs, w2_1_state_invariants]
+
+  # --- WAVE 2.2: Architecture invariants (REQUIRED BEFORE WAVE 3) ---
+  - id: w2_2_architecture_invariants
+    phase: phase_1_core
+    description: "Engine-defining constraints: render does not mutate backbone; events do not write domains/peak_routing; step order immutable; no derived fields in BackboneState."
+    artifacts:
+      - "v3/core/invariants.py"
+      - "v3/tests/test_architecture_invariants.py"
+    tests:
+      - "test_llm_no_backbone_mutation"
+      - "test_events_cannot_write_domains_or_peak_routing"
+      - "test_step_order_immutable"
+      - "test_no_derived_fields_in_backbone_state"
+    depends_on: [w2_1_seed_and_run]
+
+  # --- WAVE 3: Real logic (Phase 2 — events and deltas) ---
+  # Gate: Wave 2.2 must pass first (no real logic until architecture invariants hold).
+  # Attack order (do in this order or later modules act on meaningless zeros):
+  #   reproduction → capacity + buffer costs → domains → cracks + alienation → practice/infra
+  #   → topology/boundary/coherence → attention/capture + signal.
+  # Also resolve design_decisions.capacity_model before w3_* (see meta.design_decisions).
+
+  - id: w3_distribution_smoke
+    phase: phase_2_events
+    description: "Pre–Wave 3 smoke: 50 agents, randomized reproduction + capacity, 20 years headless; assert peak_regime ≤2%%, hostage_index spread, AC not collapsed/saturated. Catches sign errors early."
+    artifacts: ["v3/tests/test_distribution_smoke.py", "v3/io/seeds.py"]
+    tests: ["test_distribution_smoke_50_agents_20_years"]
+    depends_on: [w2_2_architecture_invariants]
+
+  - id: w3_reproduction_logic
+    phase: phase_2_events
+    description: "reproduction_constraints_update: event-driven changes to dependents, housing, debt, etc.; hostage_index formula from v3config."
+    artifacts: ["v3/systems/reproduction.py"]
+    depends_on: [w2_2_architecture_invariants, w3_distribution_smoke]
+
+  - id: w3_capacity_logic
+    phase: phase_2_events
+    description: "capacity_update: event + field → capped deltas to time, money, health, support, skill, mobility, risk_tolerance, legitimacy; AC formula."
+    artifacts: ["v3/systems/capacity.py"]
+    depends_on: [w2_2_architecture_invariants]
+
+  - id: w3_buffers_logic
+    phase: phase_2_events
+    description: "buffers_update: cost_profile pays from capacity; insulation_score formula; crack pressure can intensify buffers."
+    artifacts: ["v3/systems/buffers.py"]
+    depends_on: [w2_2_architecture_invariants]
+
+  - id: w3_domains_logic
+    phase: phase_2_events
+    description: "domains_update: A/S/V/Aim from events, frameworks, insulation, intensity, practice_stack; SL formula from domain lucidity."
+    artifacts: ["v3/systems/domains.py"]
+    depends_on: [w2_2_architecture_invariants]
+
+  - id: w3_cracks_alienation_logic
+    phase: phase_2_events
+    description: "cracks_and_alienation_update: cracks_rules from v3config (spawn, intensify, latent_decay, brittleness); alienation from capacity+domain mismatch; mis_aim_risk formula."
+    artifacts: ["v3/systems/cracks.py", "v3/systems/alienation.py"]
+    depends_on: [w2_2_architecture_invariants]
+
+  - id: w3_topology_boundary_logic
+    phase: phase_2_events
+    description: "topology_and_boundary_update: hysteresis from v3config (consecutive years, requirements for to_reciprocal / to_extractive / to_self_contained; boundary max_step, reversal); coherence update; peak_regime gate."
+    artifacts: ["v3/systems/topology.py", "v3/systems/boundary.py", "v3/systems/coherence.py"]
+    depends_on: [w2_2_architecture_invariants]
+
+  - id: w3_attention_signal_logic
+    phase: phase_2_events
+    description: "attention_and_capture_update, strategy_and_signal_effects: attention/capture formulas; signal profiles by theory_of_change_style; apply to collective_infrastructure."
+    artifacts: ["v3/systems/attention.py", "v3/systems/signal.py"]
+    depends_on: [w2_2_architecture_invariants]
+
+  - id: w3_event_sampling_real
+    phase: phase_2_events
+    description: "event_sampling: sample 0–3 events from a small library or rules conditioned on field, strata, capacity, cracks, intensity; events have type and intensity (minor/major/shock)."
+    artifacts: ["v3/engine/event_engine.py", "v3/engine/effects/event_templates.py"]
+    depends_on: [w3_reproduction_logic, w3_capacity_logic]
+
+  - id: w3_distribution_test
+    phase: phase_2_events
+    description: "Run 500 seeded agents N years; assert peak_regime rate under target; public rage expression in band; no runaway weights."
+    artifacts: ["v3/tests/test_distributions.py"]
+    depends_on: [w3_event_sampling_real, w3_topology_boundary_logic]
+
+  # --- WAVE 4: LLM pipeline (Phase 3) ---
+  - id: w4_llm_contract
+    phase: phase_3_llm_pipeline
+    description: "Pass 1 (CandidatePacket) and Pass 2 (RenderPacket/RenderOutput) schemas and parsers; prompt builders from state summary."
+    artifacts: ["v3/engine/llm_contract.py", "v3/engine/prompts.py"]
+    depends_on: [w3_distribution_test]
+
+  - id: w4_scoring_selection
+    phase: phase_3_llm_pipeline
+    description: "Score candidates (age_fit, channel_available, salience_fit, hostage_fit, capacity_fit, wound_fit, novelty_penalty, coercion_penalty); select ≤2 major, ≤2 minor, ≤1 surprise."
+    artifacts: ["v3/engine/scoring.py"]
+    depends_on: [w4_llm_contract]
+
+  - id: w4_delta_templates
+    phase: phase_3_llm_pipeline
+    description: "Event/magnet kind + intensity → delta templates (capacity, domains, frameworks, cracks); bounded application."
+    artifacts: ["v3/engine/effects/delta_templates.py"]
+    depends_on: [w4_scoring_selection]
+
+  - id: w4_render_integration
+    phase: phase_3_llm_pipeline
+    description: "Replace render stub with LLM call: Pass 2 input (selected events + applied deltas + state summary) → narrative snapshot; enforce rendering_contract (no backbone mutation)."
+    artifacts: ["v3/render/phenomenology.py"]
+    depends_on: [w4_llm_contract]
+
+  - id: w4_persona_sheet_output
+    phase: phase_3_llm_pipeline
+    description: "Emit persona_sheet.json compatible with run_conversation_chat.py --persona-json (backbone + rendered_output + v2-compatible surface if needed)."
+    artifacts: ["v3/io/persona_sheet.py"]
+    depends_on: [w4_render_integration]
+
+  # --- WAVE 5: Field injection (Phase 4) ---
+  - id: w5_field_injection
+    phase: phase_4_field_injection
+    description: "field_update reads from driver_model output / civic_soul / imperial_block when available; map to state.field and strata salience."
+    artifacts: ["v3/systems/field.py", "v3/io/field_injection.py"]
+    depends_on: [w4_persona_sheet_output]
+
+checkpoints:
+  - name: "Wave 2.1 — State invariants"
+    when: "w2_1_seed_and_run done"
+    criterion: "10–20 year run on seed persona; JSON out; clamp/cracks/buffers/frameworks invariants pass."
+  - name: "Wave 2.2 — Architecture invariants (gate for Wave 3)"
+    when: "w2_2_architecture_invariants done"
+    criterion: "test_llm_no_backbone_mutation, test_events_cannot_write_domains_or_peak_routing, test_step_order_immutable, test_no_derived_fields_in_backbone_state pass."
+  - name: "Events drive state"
+    when: "w3_distribution_test done"
+    criterion: "Event sampling + all system logic; distribution tests pass."
+  - name: "Pipeline complete"
+    when: "w4_persona_sheet_output done"
+    criterion: "Propose → Score → Apply → Render; persona_sheet.json accepted by conversation pipeline."
+  - name: "Field conditioned"
+    when: "w5_field_injection done"
+    criterion: "v3 uses harmonized drivers when provided."

@@ -1,0 +1,42 @@
+{
+  "status": "LATEST_EXTANT_V3_V2_IMPLEMENTATION_DESIGN_BASELINE",
+  "source_archive": "Rawlsing_code_bundle_staging.zip",
+  "archive_sha256": "953c9149bd03877206e3cb440d1f4db35dea6473af30b97fd23b7e76c6fc0086",
+  "evidentiary_law": {
+    "v5_ddm_material": "STALE_NONBINDING_WHERE_SUPERSEDED_BY_ACCEPTED_TD_R00_TD_R04",
+    "v3_v2_material": "LATEST_EXTANT_BASELINE_MUST_RECREATE_ADAPT_OR_EXPLICITLY_SUPERSEDE"
+  },
+  "selected_sources": [
+    {"path":"v3/core/state.py","bytes":26310,"sha256":"19e968d45e9d81eb7629f1c237dbc55119fec8fc7db0b29e2b39b2476d12ada2","role":"persistent backbone state ontology"},
+    {"path":"v3/core/derived.py","bytes":15671,"sha256":"e479fc3eba21734752c372742fb2ee247cbdde6a73ac42545dc30b5039301360","role":"stored-vs-derived causal discipline"},
+    {"path":"v3/core/invariants.py","bytes":14846,"sha256":"81298f3fc51b46cda8d72d0db914b672b17b9a35e13004fe59a9b0e29dada5e3","role":"backbone and architecture invariants"},
+    {"path":"v3/core/year_record.py","bytes":2537,"sha256":"4bbd7518a6ec8bc8dd22758a2f9e876882253dfd59021a998a6d541b23e5cfc2","role":"year persistence/replay record"},
+    {"path":"v3/v3_yearly_step_order.yaml","bytes":16520,"sha256":"90496a2cc852ca00ef99c8bd4fcb2b41c9aa43c4aaa9108d3ac8cce0ebe22ffc","role":"causal sequencing contract"},
+    {"path":"v3/engine/yearly_step.py","bytes":9190,"sha256":"da3147c3da7ff2724a61dd26d595055668899c83beb541400f58633568b92acb","role":"ordered yearly mutation engine"},
+    {"path":"v3/engine/step_runner.py","bytes":1183,"sha256":"5a737c1704eaa6dc2c67f6c2db3118a6daa8a213b44d559bc37eadbc9c09d95a","role":"multi-year driver"},
+    {"path":"v3/engine/llm_contract.py","bytes":39455,"sha256":"f024debf7b8a637e91c546689a0bed31baff55d98f1378b06cb82ebb4c0fe9cf","role":"Pass 1 proposal / Pass 2 render contract"},
+    {"path":"v3/engine/run_llm_band.py","bytes":18926,"sha256":"120e177462219e8ccd5d5e0d7fdb23de993639f5af8be6c40a06db36e0b37a38","role":"propose-score-apply-render recursion"},
+    {"path":"v3/engine/event_engine.py","bytes":8371,"sha256":"b57e7ef4df5dabd996dc7de19c1c2c273ad90ee89d73570df1fd85674dd98ded","role":"event sampling semantics"},
+    {"path":"v3/engine/scoring.py","bytes":12955,"sha256":"36833287c72ffa40d0ece1ebc66fb0d685a92fc71aab1d211be9b21bfd0a82cb","role":"candidate selection/scoring evidence"},
+    {"path":"v3/engine/expectation_baseline.py","bytes":5048,"sha256":"632e1e608bfc674a241e57bafa24e91834a2b8bdc3e4ed326dae6fca4e695d43","role":"need-axis expectation initialization"},
+    {"path":"v3/engine/striving_objects.py","bytes":10950,"sha256":"78c79a9312b05aa51220d09bb63c91cafd6bb204f2c398ac1876b1ef3144c1c3","role":"persistent striving/proxy striving"},
+    {"path":"v3/engine/active_magnets.py","bytes":3689,"sha256":"68a7b75aa4bb98f7251f72a05747425edb40d24edbe06611ce998e7b6c26a391","role":"persistent relationship/institution magnets"},
+    {"path":"v3/psyche/flow.py","bytes":40775,"sha256":"6da4effde2b1ccb7c346f73b17632ceee3a7a8c37a63a10f096753d070ab1d3d","role":"actor-specific realized pressure routing/history/memory"},
+    {"path":"v3/psyche/metabolism.py","bytes":1220,"sha256":"a456ad861a9e40d1f2bfef9e51c008657eeca86235ca27812f2186683359ebb3","role":"metabolic style derivation/update"},
+    {"path":"v3/psyche/vitality.py","bytes":6506,"sha256":"56fed88e37299862774b2401c9a7e43363de6d6bb47a78f8f4744dcc6f91e912","role":"vitality/conductance evidence"},
+    {"path":"v3/systems/relational_field.py","bytes":3059,"sha256":"75cfd5f27528ee00306de353b730d50ab3fc028970c11afcf84edea7eea7b8cd","role":"relationship field projection without tenth stratum"},
+    {"path":"v3/systems/alienation.py","bytes":1490,"sha256":"2209d8171a14f18c252e847e2d0beb113d574e1378c49d2fb7e7f43513106207","role":"multidimensional alienation updates"},
+    {"path":"v3/systems/frameworks.py","bytes":4559,"sha256":"0d59fc6e177009da92e39eb61ea729eace97f50392baa93999cb6513f81dd2cb","role":"framework metabolic operators"},
+    {"path":"v3/systems/topology.py","bytes":3792,"sha256":"4e3b9b64399dfcfad67a431729d9443767d5e074080ef6b51bc1c8df48711560","role":"actor peak-routing topology updates"},
+    {"path":"v3/render/phenomenology.py","bytes":7320,"sha256":"f2f18c1d9ba705212846af41b33cb1dfd2ad986dae4b686873687c2e6d1a653d","role":"render-only nonmutation boundary"},
+    {"path":"v3/V3_UNDERLIES_V2_ARTICULATION.md","bytes":11091,"sha256":"5a0f11276a830b959df72653016ca77848dbd81de4adb9fa641bd4244c4f4ced","role":"canonical extant V3-under-V2 design articulation"},
+    {"path":"v3/OVERVIEW_INTEGRATED.md","bytes":24010,"sha256":"b1536a9817108ccf322c59f3ce9e1c3f6b8688394341a081287b5e6518da326a","role":"integrated V3 architecture overview"},
+    {"path":"v3/FLOW_AND_WIRING.md","bytes":12362,"sha256":"0855b62a8bebc12da0014db96ef3165ab7453280f4c0f13016617e1829461efd","role":"current wiring and missing-flow evidence"},
+    {"path":"v3/HOW_BASELINE_STRIVING_MAGNETS_RUPTURE_WORK.md","bytes":8905,"sha256":"308ab6ef75e6e31e63f00f4626a9fcc22b14035a45a62654a04271619b7e9867","role":"expectation/striving/magnet/rupture intent and wiring"},
+    {"path":"v3/EXPECTATION_BASELINE_AND_STRIVING_FLOW.md","bytes":7747,"sha256":"248d1b8d83784cb87198361beab9d0e8b5eaaee29eff53502f628391be3411e6","role":"underwiring audit and intended flow"},
+    {"path":"v2/ENNEAGRAM_EMERGENCE_SYSTEM.md","bytes":7291,"sha256":"95f8876926dda96a33c36925aedacee65645c74863cff68241e6b67457f819ab","role":"latest extant life-course Enneagram emergence intent"},
+    {"path":"v2/PERSONA_CONVERSATION_ENGINE_SPEC.md","bytes":34624,"sha256":"0b0ee1d5e177b22236007ddb15053e4f1d3fc34f69aae8b44e16446def9250d7","role":"latest extant V2 conversation/phenomenology consumer demand"},
+    {"path":"v2/LIFE_SIMULATION_LAYER.md","bytes":12093,"sha256":"e8589a59150e6f9fda963502d28317ca4538b75e368aa3ebfbe5e3b692b890d4","role":"life-container/season/today-state integration evidence"},
+    {"path":"v2/conversation_engine.py","bytes":114499,"sha256":"766bee296379f0faadbede55106bcee0123e9563c965d0e28f8806cedea06135","role":"implemented V2 conversational cognition/render surface"}
+  ]
+}

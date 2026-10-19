@@ -1,0 +1,15 @@
+flowchart TD
+  workplace --> father_receives_work_news
+  father_history --> father_receives_work_news
+  theft --> child_reports_theft
+  child_history --> child_reports_theft
+  father_receives_work_news --> father_response
+  child_reports_theft --> father_response
+  father_history --> father_response
+  neighbor_history --> neighbor_independent_shift
+  father_response --> child_activity_day4
+  child_history --> child_activity_day4
+  child_activity_day4 --> child_activity_day5
+  later_practical_opportunity --> child_later_enacted_response
+  child_activity_day5 --> child_later_enacted_response
+  child_history --> child_later_enacted_response

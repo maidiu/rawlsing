@@ -1,0 +1,19 @@
+{
+  "command": [
+    "RETURN/.venv/bin/python",
+    "-m",
+    "pytest",
+    "-c",
+    "/dev/null",
+    "-p",
+    "candidate_binding",
+    "--import-mode=importlib",
+    "-vv",
+    "RETURN/test_fresh.py",
+    "-k",
+    "N01",
+    "--junitxml=RETURN/evidence/early.xml"
+  ],
+  "exit": 0,
+  "preregistration_sha256": "ada369b06e999d3a6a34bfdf85763326921db8e8dd95fe5ede8abd12dee9a368"
+}
