@@ -1,0 +1,39 @@
+{
+  "schema": "A41_E41_W41_P41_INTEGRATION@1.0.0",
+  "note": "Concurrent campaigns are NOT accepted. This is the exact versioned ingestion contract the A41 assembler will consume when their native returns land.",
+  "ingestion_protocol": "A41_NATIVE_RECEIPT@1.1.0",
+  "assembler_command": "python3 scripts/build_receipt_bank.py  (add the returned native receipt objects), then python3 -m a41.cli assemble",
+  "slots": [
+    {
+      "slot_id": "E41",
+      "campaign": "Full available empirical F1-F4 and N10E computation",
+      "expected_native_output_contract": "A41_NATIVE_RECEIPT@1.1.0",
+      "expected_artifact_kinds": ["computed_slice_evidence", "source_function_reachability_ledger"],
+      "parent_nodes": ["N2", "N3", "N4", "N10E"],
+      "required_receipt_fields": ["receipt_id", "origin_commit", "claim_id", "occupancy_kind", "artifacts", "coverage", "currentness", "unknown_bounds", "method_source", "native_test_ref", "replay_ref"],
+      "state": "PENDING_RETURN__NOT_YET_AVAILABLE",
+      "will_occupy": "per-wave F1-F4 axis cells (280 x axis subset) at their returned exact grade"
+    },
+    {
+      "slot_id": "W41",
+      "campaign": "Source-qualified objective structural, multifield and temporal world F5-F7/N9",
+      "expected_native_output_contract": "A41_NATIVE_RECEIPT@1.1.0",
+      "expected_artifact_kinds": ["selected_objective_world", "n9_current_historical_serving_receipt"],
+      "parent_nodes": ["N5", "N6", "N7", "N8E", "N8S", "N9"],
+      "required_receipt_fields": ["receipt_id", "origin_commit", "claim_id", "occupancy_kind", "artifacts", "coverage", "currentness", "unknown_bounds", "method_source", "native_test_ref", "replay_ref"],
+      "state": "PENDING_RETURN__NOT_YET_AVAILABLE",
+      "will_occupy": "F5/F6/F7 per-wave cells and possibly the global F6/F7 relation edges"
+    },
+    {
+      "slot_id": "P41",
+      "campaign": "Full generic N9->N10E->N10W progressive possibility service F8",
+      "expected_native_output_contract": "A41_NATIVE_RECEIPT@1.1.0",
+      "expected_artifact_kinds": ["progressive_possibility_service_receipt", "consumer_read_refs"],
+      "parent_nodes": ["N10E", "N10W", "N11"],
+      "required_receipt_fields": ["receipt_id", "origin_commit", "claim_id", "occupancy_kind", "artifacts", "coverage", "currentness", "unknown_bounds", "method_source", "native_test_ref", "replay_ref"],
+      "state": "PENDING_RETURN__NOT_YET_AVAILABLE",
+      "will_occupy": "F8 per-wave cells and the global possibility_F8 relation"
+    }
+  ],
+  "acceptance_rule": "A returned receipt is ingested only if every artifact preimage verifies; ORIGINAL_MEASURED_OCCUPANCY still requires an issued U/E_pre and is refused otherwise."
+}

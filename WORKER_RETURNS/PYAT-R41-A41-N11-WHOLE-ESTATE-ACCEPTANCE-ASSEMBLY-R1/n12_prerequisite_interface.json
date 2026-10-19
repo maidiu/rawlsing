@@ -1,0 +1,17 @@
+{
+  "schema": "A41_N12_PREREQUISITE_INTERFACE@1.0.0",
+  "note": "The minimal seam the eventual competent N12 wake decision needs from N11. A41 does NOT wake N12.",
+  "n11_state": "N11_NOT_READY",
+  "n12_wake_allowed": false,
+  "required_before_n12": [
+    "N11 whole-estate acceptance independently issued with all 1,890 cells resolved",
+    "global F6 cross-family relation closed with a real non-pooled product and consumer",
+    "global F7 comparable-wave temporal relation closed with exact comparability",
+    "global F8 progressive possibility service closed with a real consumer",
+    "original35 source/operation U/E_pre issued by the competent owner",
+    "the LiTS C11 missing-preimage blocker resolved or the release reconstructed under warrant"
+  ],
+  "downstream_products_expected": ["prev3_v3_wake_decision.md", "downstream_interface_prerequisites.json"],
+  "issuer": "COMPETENT_N11_ACCEPTANCE_COURT__NOT_A41",
+  "assemble_interface": "consume estate_acceptance_manifest.json verdict + global_relations + blocker_ledger"
+}
