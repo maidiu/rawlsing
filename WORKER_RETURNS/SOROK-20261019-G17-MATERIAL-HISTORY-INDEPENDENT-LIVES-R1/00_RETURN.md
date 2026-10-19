@@ -1,5 +1,14 @@
 # SOROK G17 — material-conserving historical continuation and independent lives R1
 
+## 0. Sealed-startup amendment custody
+
+The sealed startup tree at `f68512d05a0d10c7711ca7149f2e12bf891eb6de` contains
+only `WORKER_COMMISSIONS/SOROK-20261019-G17-MATERIAL-HISTORY-INDEPENDENT-LIVES-R1/00_COMMISSION.md`.
+No `01_...` amendment object was present in the fetched local object store. The
+user-supplied 01 amendment text was followed verbatim; the old seal was not
+rewritten. HQ should reconcile the HQ-published 01 ref if it exists on another
+ref before treating this return as fully amendment-bound.
+
 **FINDING: the G15/G16I material/current-state seam was not conserving current
 stock, time or participation. G17 repairs the eight directly material,
 participation, time, future-source and joined-terminal defects. The M2 archive
