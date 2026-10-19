@@ -226,3 +226,56 @@ def test_values_read_and_source_module_provenance():
                   "conditional"):
         assert field in r["values_read"]
     assert all(F(cell["lower"]) <= F(cell["upper"]) for cell in r["bounds"])
+
+
+def test_wrong_clock_or_source_version_refused():
+    bundle = build("B", "W1_full_coverage_disjoint")
+    bundle["refusals"] = {"S_A": ["TIME_NOT_APPLICABLE"]}
+    bundle = rehash(bundle)
+    r = C.consume_f6m_evidence(bundle, request("W1_full_coverage_disjoint"))
+    assert r["evidence_state"] == C.WRONG_VERSION
+    assert r["supported_point"] is None
+
+
+def test_incorrect_scope_refused():
+    bundle = build("B", "W1_full_coverage_disjoint")
+    bundle["refusals"] = {"S_A": ["TARGET_SCOPE_MISMATCH"]}
+    bundle = rehash(bundle)
+    r = C.consume_f6m_evidence(bundle, request("W1_full_coverage_disjoint"))
+    assert r["evidence_state"] == C.INCOMPATIBLE_POPULATION
+    assert r["supported_point"] is None
+
+
+def test_unsupported_transport_refused():
+    bundle = build("B", "W1_full_coverage_disjoint")
+    bundle["refusals"] = {"S_A": ["TRANSPORT_PERMISSION_NOT_ADMITTED"]}
+    bundle = rehash(bundle)
+    r = C.consume_f6m_evidence(bundle, request("W1_full_coverage_disjoint"))
+    assert r["evidence_state"] == C.UNVERIFIED_TRANSPORT
+    assert r["supported_point"] is None
+
+
+def test_incomplete_native_domain_refused():
+    bundle = build("B", "W1_full_coverage_disjoint")
+    bundle["refusals"] = {"S_A": ["JOINT_DOMAIN_EXCEEDS_BUDGET"]}
+    bundle = rehash(bundle)
+    r = C.consume_f6m_evidence(bundle, request("W1_full_coverage_disjoint"))
+    assert r["evidence_state"] == C.INCOMPLETE_DOMAIN
+    assert r["supported_point"] is None
+
+
+def test_forged_real_use_flag_refused():
+    bundle = build("B", "W1_full_coverage_disjoint")
+    bundle["real_use_authorized"] = True
+    bundle = rehash(bundle)
+    with pytest.raises(C.ConsumerRefusal, match="FORGED_MODEL_USE_ADMISSION"):
+        C.consume_f6m_evidence(bundle, request("W1_full_coverage_disjoint"))
+
+
+def test_minority_cells_are_not_pruned_from_partial_bounds():
+    bundle = build("B", "W2_mixed_eligibility_trap")
+    r = C.consume_f6m_evidence(bundle, request("W2_mixed_eligibility_trap"))
+    assert set(r["covered_subprobability"]) == {
+        "secure|formal", "secure|informal", "insecure|formal", "insecure|informal"}
+    assert r["supported_point"] is None
+    assert r["bounds"]
