@@ -57,7 +57,7 @@
     "pytest": "pytest 9.1.1",
     "python": "3.11.3"
   },
-  "evidence_sanitized_files": 11,
+  "evidence_sanitized_files": 10,
   "historical_red_accounting": {
     "c0i_corrected": "50 PASS",
     "c0i_original": "47 PASS / 3 RED preserved",
@@ -102,26 +102,26 @@
         {
           "baseline": "PASS",
           "claim_id": "C0R3_N9_SELECTION_DRIVES_THE_ACTUAL_C0X_RECEIVER",
-          "fault_path": "candidate/upstream/c0p_two_contract_port.py",
+          "fault_path": "WORKER_RETURNS/SOROK-20261019-C0R3-C0X-ENDTOEND-TRANSPORT-REPAIR-R1/candidate/upstream/c0p_two_contract_port.py",
           "fault_probe": "TARGET_ASSERTION_FAILED",
           "grade": "BOUNDED_MUTATION_DETECTED",
-          "positive_node": "tests/test_c0r3_endtoend.py::test_relocated_candidate_preserves_both_owner_sources_and_json_values"
+          "positive_node": "WORKER_RETURNS/SOROK-20261019-C0R3-C0X-ENDTOEND-TRANSPORT-REPAIR-R1/tests/test_c0r3_endtoend.py::test_relocated_candidate_preserves_both_owner_sources_and_json_values"
         },
         {
           "baseline": "PASS",
           "claim_id": "C0R3_N10_ORDERED_STEPS_DRIVE_THE_ACTUAL_C0X_RECEIVER",
-          "fault_path": "candidate/upstream/c0p_two_contract_port.py",
+          "fault_path": "WORKER_RETURNS/SOROK-20261019-C0R3-C0X-ENDTOEND-TRANSPORT-REPAIR-R1/candidate/upstream/c0p_two_contract_port.py",
           "fault_probe": "TARGET_ASSERTION_FAILED",
           "grade": "BOUNDED_MUTATION_DETECTED",
-          "positive_node": "tests/test_c0r3_endtoend.py::test_relocated_candidate_preserves_both_owner_sources_and_json_values"
+          "positive_node": "WORKER_RETURNS/SOROK-20261019-C0R3-C0X-ENDTOEND-TRANSPORT-REPAIR-R1/tests/test_c0r3_endtoend.py::test_relocated_candidate_preserves_both_owner_sources_and_json_values"
         },
         {
           "baseline": "PASS",
           "claim_id": "C0R3_ROOT_PARENT_REF_IS_MATERIALIZED_NOT_CALLABLE",
-          "fault_path": "candidate/upstream/c0p_two_contract_port.py",
+          "fault_path": "WORKER_RETURNS/SOROK-20261019-C0R3-C0X-ENDTOEND-TRANSPORT-REPAIR-R1/candidate/upstream/c0p_two_contract_port.py",
           "fault_probe": "TARGET_ASSERTION_FAILED",
           "grade": "BOUNDED_MUTATION_DETECTED",
-          "positive_node": "tests/test_c0r3_endtoend.py::test_corrected_parent_ref_is_materialized_exact_ref"
+          "positive_node": "WORKER_RETURNS/SOROK-20261019-C0R3-C0X-ENDTOEND-TRANSPORT-REPAIR-R1/tests/test_c0r3_endtoend.py::test_corrected_parent_ref_is_materialized_exact_ref"
         }
       ],
       "schema": "RAWLSING_PROOF_INTEGRITY_R1",

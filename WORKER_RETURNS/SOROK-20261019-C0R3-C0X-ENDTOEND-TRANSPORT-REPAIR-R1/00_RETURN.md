@@ -117,7 +117,7 @@ The shared proof gate ran three claim-specific severances. Every baseline passed
 | N10 ordered steps drive receiver | new relocation/source-consumer test | `ordered_steps` → `[]` | `TARGET_ASSERTION_FAILED` |
 | Root parent is materialized | new exact-parent test | root parent → `None` | `TARGET_ASSERTION_FAILED` |
 
-Receipt: `evidence/proof_witness_receipt.json`; gate log: `evidence/proof_witness.log`.
+Receipt: `evidence/proof_witness_receipt.json`; gate log: `evidence/proof_witness.log`. The shared changed-test gate also passed on the committed branch: 3 changed test files examined, 1 contract run, `MECHANICAL_PROOF_GATE_PASS_NOT_SCIENTIFIC_ADOPTION`; receipt `evidence/proof_gate_changed.json`.
 
 ## 8. Adversarial consumer results
 
@@ -158,9 +158,11 @@ cd WORKER_RETURNS/SOROK-20261019-C0R3-C0X-ENDTOEND-TRANSPORT-REPAIR-R1
 PYTHONDONTWRITEBYTECODE=1 python3 runner/prepare_historical.py
 PYTHONDONTWRITEBYTECODE=1 python3 runner/build_manifest.py
 PYTHONDONTWRITEBYTECODE=1 python3 runner/run_all.py
-python3 -B candidate/tools/proof_integrity_gate_r1.py witness \
-  tests/test_c0r3_endtoend.py.proof.json --root "$PWD" \
-  --receipt evidence/proof_witness_receipt.json
+
+# from the repository root:
+python3 -B WORKER_RETURNS/SOROK-20261019-C0R3-C0X-ENDTOEND-TRANSPORT-REPAIR-R1/candidate/tools/proof_integrity_gate_r1.py \
+  witness WORKER_RETURNS/SOROK-20261019-C0R3-C0X-ENDTOEND-TRANSPORT-REPAIR-R1/tests/test_c0r3_endtoend.py.proof.json \
+  --root "$PWD" --receipt WORKER_RETURNS/SOROK-20261019-C0R3-C0X-ENDTOEND-TRANSPORT-REPAIR-R1/evidence/proof_witness_receipt.json
 ```
 
 The runtime and historical courts are materialized from exact Git commits; they are not committed as ambient native bytes. The final remote SHA and direct remote readback are reported in the final chat return and in `publication_verification.json`.

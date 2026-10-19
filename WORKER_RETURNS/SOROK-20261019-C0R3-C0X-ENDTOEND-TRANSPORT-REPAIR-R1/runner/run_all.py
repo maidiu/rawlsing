@@ -146,9 +146,10 @@ def main() -> int:
     with gate_log.open("wb") as handle:
         gate = subprocess.run([sys.executable, "-B",
                                str(CAND / "tools/proof_integrity_gate_r1.py"),
-                               "witness", "tests/test_c0r3_endtoend.py.proof.json",
-                               "--root", str(RETURN), "--receipt", str(gate_receipt)],
-                              cwd=RETURN, stdout=handle, stderr=subprocess.STDOUT,
+                               "witness",
+                               str((RETURN / "tests/test_c0r3_endtoend.py.proof.json").relative_to(REPO)),
+                               "--root", str(REPO), "--receipt", str(gate_receipt)],
+                              cwd=REPO, stdout=handle, stderr=subprocess.STDOUT,
                               env={**os.environ, "PYTHONDONTWRITEBYTECODE": "1"})
     gate_payload = json.loads(gate_receipt.read_text()) if gate_receipt.exists() else None
     facade_after = sha(CAND / "upstream/c0p_two_contract_port.py")

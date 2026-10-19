@@ -109,10 +109,12 @@ def main() -> int:
                                sha256=sha256(file), bytes=file.stat().st_size,
                                parent=parent,
                                parent_blob=originals[parent]["git_blob"])
+        original_rel = ("original/c0p_repaired_author.py" if name == "facade"
+                        else "original/c0x_world_receiver.py")
+        target_rel = file.relative_to(RETURN).as_posix()
         diff = subprocess.run(
-            ["diff", "-u", str(RETURN / "original" /
-             ("c0p_repaired_author.py" if name == "facade" else "c0x_world_receiver.py")),
-             str(file)], capture_output=True, text=True)
+            ["diff", "-u", original_rel, target_rel], capture_output=True,
+            text=True, cwd=RETURN)
         patch = PATCHES / (name + "_c0r3.patch")
         patch.write_text(diff.stdout)
         corrected[name]["patch"] = patch.relative_to(RETURN).as_posix()
