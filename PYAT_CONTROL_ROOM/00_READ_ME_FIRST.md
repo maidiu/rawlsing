@@ -1,5 +1,10 @@
 # NEW PYAT HQ: INVALID UNTIL FULL PERSONA-FIRST + INHERITED-METHOD ACCESSION
 
+## Mandatory scientific-proof integrity — 18 October 2026
+
+**BEFORE commissioning, resuming, reporting PASS, reviewing or adopting material code/consumer integrations**, apply [the PRE-MAIN shared falsifiable-test law](../CROSS_HQ_CONTROL_ROOM/PROOF_INTEGRITY_AND_FALSIFIABLE_TEST_LAW_R1.md) and its executable changed-test/fault-injection gate. A claimed I03/I05/M1/M2/B5/I4/E04/N9/Field Forge consumer join requires a genuinely dependent downstream read that becomes RED or refuses when the named upstream release/edge is severed while unrelated inputs remain fixed. `or True`, `else True`, inert loops, optional-field assertion escape and hash-length masquerading as identity are forbidden. Run the fault within the ordinary implementing worker pass, not a new review round. A merely green, coincident, or nonresponsive consumer is `NOT_PROVED`; no automatic reopening of unrelated accepted historical science.
+
+
 ## Standing HQ command check — whole machine before individual returns (16 October 2026)
 
 At first HQ orientation and **every material return intake**, read/apply [the mandatory continuous HQ-command and rabochii delegation law](HQ_CONTINUOUS_COMMAND_AND_RABOCHII_DELEGATION_LAW_20261016_R1.md). Maintain the actual 35-wave source→empirical/F6/EE12→selected historical world→Sorok persona-consumer critical path, verified owner/worker portfolio, alternatives and terminal quality effects. **HQ personally owns this synthesis and the scoped decisions; rabochiis do parallel bounded source/code recovery, implementation, original-science investigations and independent criticism.** Passing local suites and issuing more prompts are not HQ completion. An adopted local sourcefree method remains separate from an independently tested joined pipe, original U/E_pre and all35 N11/N12, or actual person/V3. Read the new law with the incoming HQ gate and 13 fresh-grok before any broad new program; no new source/semantic/actor permissions implied.
