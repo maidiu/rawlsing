@@ -1,5 +1,10 @@
 # SOROK PRODUCT CONTROL ROOM — READ ME FIRST
 
+## MANDATORY CURRENT PROOF-INTEGRITY LAW — 18 OCTOBER 2026
+
+**Effective immediately for new/revised Sorok code and integration claims:** [PRE-MAIN falsifiable-test and negative-control law](https://github.com/maidiu/rawlsing/blob/integration/pre-main-reconciliation-r1/CROSS_HQ_CONTROL_ROOM/PROOF_INTEGRITY_AND_FALSIFIABLE_TEST_LAW_R1.md). No vacuous/optional-fallback assertions or inert verification loops. Freeze the actual downstream claim/consumer and an upstream-edge severance that must fail its named test, then execute the positive and RED in the same worker pass and report `NOT_PROVED` if the real dependency is not established. The existing governed-court PR workflow rejects new/changed inert Python tests and requires executable claim-specific witnesses for changed integration tests. This is NOT an additional reviewer round, actor grant, retrospective test purge, source use or CAN/ADP semantic permission.
+
+
 ## Mandatory live economical agent dispensation — 14 October 2026
 
 **Before any next-round prompts, read and apply** [00D warm-environment passports / cost-aware routing](00D_WARM_ENVIRONMENT_PASSPORT_AND_COST_AWARE_AGENT_DISPENSATION_R1.md) with [00C prompt-dispensation constitution](00C_HQ_PROMPT_DISPENSATION_AGENT_ROUTING_AND_ORCHESTRATION_CONSTITUTION_R1.md). Use verified existing session/worktree/runtime first, the cheapest *qualified* host/model, a small per-session source staging smoke test and a portable sanitized environment passport on return. Browser may have working Python; same tab or quota window never proves persistence. Preserve permission, actor/source/semantic and independent-review law. **Use these rules NOW when generating Sorok's next prompts.** This is a user-directed HQ process change, not scientific adoption, V3 wake or physical weld.
