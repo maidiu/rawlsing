@@ -1,0 +1,87 @@
+{
+  "schema": "E04J_OWNER_BOUNDARY_HOLD@1",
+  "commission": "PYAT-R37-E04J-F1F4-NATIVE-CONSUMER-JOIN-R1",
+  "verdict": "BOUNDED_HOLD",
+  "supersedes_claim": "The E04 consumer consumes the B5/I4-selected learned release.",
+  "prior_claim_status": "WITHDRAWN_AS_UNSUPPORTED",
+  "finding": "The E04 consumer CANNOT be wired to consume the B5-selected learned release without an owner-semantics change that is outside this worker's write scope. The lifecycle executes genuinely on the real E04 EmpiricalFact, but it runs BESIDE the consumer, not INTO it.",
+
+  "structural_reasons": [
+    {
+      "id": "BOUNDARY-1",
+      "statement": "product.nonparent.consume() exposes no release consumption hook.",
+      "evidence": "inspect.signature(NP.consume) == (service, snapshot, *, budget_tokens=5). No 'release', 'release_ref', or 'learned_release' parameter exists.",
+      "consequence": "There is no lawful argument through which a selected release could reach the consumer."
+    },
+    {
+      "id": "BOUNDARY-2",
+      "statement": "The M2/B5/I4 chain carries identity and closure refs only; it never carries evidence values.",
+      "evidence": "M2 ReleaseCore fields are ref-only: authority_closure_ref, dependency_closure_ref, determinant_closure_ref, explanation_lineage_ref, replay_reconstruction_ref, release_contract_ref, semantic_producer_contract_ref, release_subject_ref. resolve_release_exact() returns ResolutionResult(release, subject, receipt) = identity + integrity state. None of these carry cells, raw_numerator_support, or denominators.",
+      "consequence": "Even if a hook existed, the release could not supply the numerator/denominator the consumer needs."
+    },
+    {
+      "id": "BOUNDARY-3",
+      "statement": "The consumer's only empirical reach is the native source path.",
+      "evidence": "consumer_receipt.material.values_read channels are exactly {structural, empirical}; every empirical read carries source_ref. The consumed release is the native C11 REL-e04-base-r1, not the M2 release.",
+      "consequence": "The consumer independently re-derives support from source."
+    },
+    {
+      "id": "BOUNDARY-4",
+      "statement": "No lifecycle-to-consumer data flow exists.",
+      "evidence": "The consumer receipt contains no reference to the M2 release, the B5 selection receipt, or the M1 disposition. The provider trace contains PROVIDER_CACHE_READ, proving the consumer served a step cached by the bridge's own earlier provider.step() call, before the lifecycle ran.",
+      "consequence": "The two subsystems are joined by adjacency in a Python function, not by data flow."
+    }
+  ],
+
+  "what_remains_true": [
+    "The native E04 court executes cold, 7/7, from the pinned owner modules.",
+    "M1 -> M2 -> B5 -> I4 executes for real on the real E04 EmpiricalFact, all terminal_state == RULE_SATISFIED.",
+    "The differential (P(B=1|A=B=C=1) 6/8 vs 7/8 at equal A/B marginals) changes source_universe identity, the EmpiricalFact hash, the disposition, the M2 release, the B5 selection, the selection replay, the B5 subject, and the I4 terminal receipt.",
+    "The consumer's empirical cells track the native step across both configurations.",
+    "route_probability remains None under the correct owner reason code NO_JOINT_EMPIRICAL_STRUCTURAL_ROUTE_MODEL."
+  ],
+
+  "what_is_not_claimed": [
+    "That the consumer consumes, dereferences, or is bound to the B5-selected learned release.",
+    "That the differential propagates THROUGH the lifecycle INTO the consumer.",
+    "Any E04J-specific bridge into product.nonparent, product.service, product.empirical, rawlsing_next, or core."
+  ],
+
+  "required_to_close": [
+    "An owner change adding a learned-release consumption hook to the E04 consumer, and",
+    "A change to the M2/B5/I4 contract carrying denominator and numerator evidence values, not only identity refs.",
+    "Both are owner-semantics decisions and are outside this worker's write scope."
+  ],
+
+  "guard_tests": {
+    "note": "These assert the boundary HOLDS and are deliberately falsifiable. If an owner adds a release hook or release-borne evidence, the named tests FAIL and force this HOLD to be re-earned. They are not vacuous guards.",
+    "tests": [
+      "test_owner_boundary_1_consumer_signature_has_no_release_hook",
+      "test_owner_boundary_2_consumer_reachability_has_no_release_dereference",
+      "test_owner_boundary_3_release_carries_no_evidence_values",
+      "test_owner_boundary_4_consumer_does_not_falsely_claim_the_release",
+      "test_owner_boundary_5_cache_read_proves_no_lifecycle_into_consumer_flow",
+      "test_disposition_conserves_support_but_not_numerators"
+    ]
+  },
+
+  "test_totals": {
+    "e04j_join_hostiles": 10,
+    "e04j_native_original_consumer_join": 7,
+    "e04j_lifecycle_join_science": 12,
+    "e04j_independent_no_drop_oracle": 6,
+    "total": 35,
+    "failed": 0,
+    "errors": 0
+  },
+
+  "scope_compliance": {
+    "owner_modules_modified": 0,
+    "runtime_files_modified": 0,
+    "runtime_blob_sha_nonparent": "2181b832d3c4376d4b9428e13f4354f273be8f32",
+    "runtime_blob_sha_empirical": "475feb9f9aea495c11c40a56b083f0b628c34e15",
+    "writes_confined_to": "WORKER_RETURNS/PYAT-R37-E04J-F1F4-NATIVE-CONSUMER-JOIN-R1/"
+  },
+
+  "reviewer_attention": "Read tests/test_e04j_lifecycle_join_science.py::test_consumer_uses_the_b5_selected_learned_release in the PREVIOUS revision: its name asserted a join its assertions never checked. It has been superseded by the owner-boundary court above. Do not read that test name as a completion claim."
+}

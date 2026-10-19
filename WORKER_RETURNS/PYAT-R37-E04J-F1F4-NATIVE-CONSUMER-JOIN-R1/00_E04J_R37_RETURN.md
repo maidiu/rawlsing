@@ -1,4 +1,23 @@
-# PYAT R37 E04JR — the REAL M1→M2→B5→I4→E04 consumer join
+# PYAT R37 E04JR — M1→M2→B5→I4 lifecycle execution, and a BOUNDED HOLD on the E04 consumer join
+
+> ## ⚠ READ THIS FIRST — a prior completion claim in this return is WITHDRAWN
+>
+> An earlier revision of this document claimed the E04 consumer "consumes the learned
+> release selected by B5/I4". **That claim was not supported and has been withdrawn.**
+>
+> The truth, established by test and by mutation: the lifecycle executes genuinely on the
+> real E04 `EmpiricalFact`, but it runs **beside** the consumer, **not into** it. The
+> consumer receipt contains no reference to the M2 release, the B5 selection, or the M1
+> disposition, and the consumer serves a `PROVIDER_CACHE_READ` populated before the
+> lifecycle ran. The two subsystems are joined by adjacency in a Python function, not by
+> data flow.
+>
+> **Verdict: BOUNDED HOLD**, not completion. See `evidence/owner_boundary_hold.json` and the
+> owner-boundary court in `tests/test_e04j_lifecycle_join_science.py`.
+>
+> One test from the earlier revision,
+> `test_consumer_uses_the_b5_selected_learned_release`, was **named** for a join its
+> assertions never checked. It has been superseded. Do not read that test name as evidence.
 
 **Role.** Existing bounded source-free E04J integration implementer. **NOT** HQ,
 **NOT** an independent reviewer, **NOT** the original survey/source issuer, **NOT** a
@@ -12,11 +31,19 @@ Field Forge issuer, **NOT** an actor. Independent I2 review follows.
 | Original base | `68873526efe5a39a0849aa401666ac997870f156` |
 | Prior E04J return | same branch at `9ef085adb` (PARTIAL / JOINED-LEARNED-PRODUCT HOLD) |
 
-**Prior state closed.** The previous E04J packet recorded: Phase A native court
+**Prior state partially closed.** The previous E04J packet recorded: Phase A native court
 **STAGED ONLY / NOT EXECUTED**, and the learned-product join **NOT BUILT / NOT
-EXECUTED**. Both are now physically executed.
+EXECUTED**.
 
-**Verdict: `E04JR_SOURCEFREE_LEARNED_PRODUCT_JOIN_EXECUTED__I2_REVIEW_REQUIRED`**
+* Phase A native court: now genuinely executed, **7/7 pass**.
+* Learned-product join: the **lifecycle half is executed** (M1→M2→B5→I4 on the real E04
+  fact, both configs, all `RULE_SATISFIED`). The **consumer half is NOT built** — see the
+  banner above.
+
+**Verdict: `E04JR_LIFECYCLE_EXECUTED__CONSUMER_JOIN_BOUNDED_HOLD__I2_REVIEW_REQUIRED`**
+
+The earlier verdict `E04JR_SOURCEFREE_LEARNED_PRODUCT_JOIN_EXECUTED__I2_REVIEW_REQUIRED`
+is **withdrawn as overstated**: it implied a consumer join that does not exist.
 
 ---
 
@@ -55,12 +82,14 @@ independently retained E04 native receipt.
 
 ---
 
-## 2. Phase B — the real lifecycle join (built, not just imported)
+## 2. Phase B — real lifecycle execution; consumer join NOT built
 
 The prior gap was that the E04 `GenericProgressiveProvider` computed directly from its
 synthetic C1/N10E/I03 source and **never dereferenced M1/M2/B5/I4 releases**.
-Importing those owners separately would not close the join. This return builds the
-**smallest lawful source-free bridge** (`e04j_lifecycle_bridge.py`) that:
+Importing those owners separately would not close the join — and, as this return now
+establishes, **the consumer half cannot be closed from inside this worker's scope at
+all**. This return builds the **smallest lawful source-free bridge**
+(`e04j_lifecycle_bridge.py`) that:
 
 1. executes the **genuine E04 native producer** and re-derives the exact
    `EmpiricalQuerySpec`/`EmpiricalPredicate` it used, then re-executes
@@ -74,13 +103,18 @@ Importing those owners separately would not close the join. This return builds t
    (`register_producer_subject`/`constitute_release`) → **B5**
    (REGISTER/PUBLISH/SELECT_CURRENT + audit replay) → **I4** `compose_learned_world`
    (`route=M1_M2_B5`);
-4. re-runs the **original E04 `NONPARENT_OPTIONS`** consumer so its `values_read` is
-   observed against the B5-selected release.
+4. re-runs the **original E04 `NONPARENT_OPTIONS`** consumer.
 
 Owner code is never reimplemented or replaced. Every returned object identity is the
 owner's own.
 
-### Evidence the join is real (per config)
+> **Step 4 does NOT complete a join.** The consumer is re-run, but it is not fed the
+> B5-selected release — it has no parameter to receive one (see
+> `evidence/owner_boundary_hold.json`). The lifecycle in steps 1-3 and the consumer in
+> step 4 are two subsystems that both happen to read the same source. This is the
+> bounded HOLD.
+
+### Lifecycle object identities (per config)
 
 | Stage | Base config | Same-marginals config |
 |---|---|---|
@@ -94,10 +128,21 @@ owner's own.
 | E04 consumer receipt hash | `52e10a2f…` | `0bc36b68…` |
 | Consumer final step (Y\|A,B,C=1) | `{0:2, 1:6}` | `{0:1, 1:7}` |
 
-B5's `selected_release_ref` **equals** the M2 `release.ref` in both configs — the
-selected release is the exact learned release I4 dereferenced, and the consumer output
-is bound to it. The differential carries through **every** lifecycle object and the
-consumer receipt.
+B5's `selected_release_ref` **equals** the M2 `release.ref` in both configs. Read this
+precisely: it is an **internal** consistency property of the lifecycle. The selected
+release is the exact learned release I4 dereferenced **within the lifecycle**.
+
+> **It does NOT follow that the consumer consumes it — and it does not.**
+> The consumer receipt contains no reference to the M2 release, the B5 selection receipt,
+> or the M1 disposition. The consumer independently re-derives its empirical support from
+> the native source (`REL-e04-base-r1`) and serves a `PROVIDER_CACHE_READ` populated before
+> the lifecycle ran. The differential changes every lifecycle object **and** the consumer
+> receipt, but these are two independent consequences of the same changed source — **not** a
+> single causal chain from the release into the consumer.
+>
+> The earlier wording here read "the consumer output is bound to it. The differential
+> carries through **every** lifecycle object and the consumer receipt." That wording
+> implied a join that does not exist. It is withdrawn. See `evidence/owner_boundary_hold.json`.
 
 Conservative effects are correct and unchanged: `consumer_permission_effect`,
 `structural_admission_effect`, `causal_truth_effect`, `field_forge_effect`,
@@ -116,11 +161,14 @@ P(B=1|A=1)=**1**, minority P(B=1|A=1)=**3/4**. Equal marginals cannot substitute
 joint evidence; replay digests differ; minority support is not flattened. **6/6 pass.**
 
 *Native lifecycle carrier (Phase B):* the E04-authorized forward query `Y|A=B=C=1`
-(denominator 8) yields base `{0:2,1:6}` → same-marginals `{0:1,1:7}`; the change
-propagates through the real fact → M1 → M2 → B5 selection → E04 consumer receipt.
+(denominator 8) yields base `{0:2,1:6}` → same-marginals `{0:1,1:7}`. The change
+propagates through the real fact → M1 → M2 → B5 selection (**within the lifecycle**).
+The consumer receipt changes too, but **as an independent consequence of the same changed
+source**, not as a result of the lifecycle feeding it.
 
 **What changes:** E04 empirical fact, M1 disposition, M2 release, B5 selection, source
 universe identity, consumer empirical step and consumer receipt hash.
+**What is *not* shown:** any causal path from the selected release into the consumer.
 
 **What properly remains invariant:** target-share denominators (8 in both),
 structural routes, `route_probability = None` with
@@ -175,15 +223,26 @@ Deliberately breaking a pinned runtime source and confirming the suite fails
 
 | Mutation | Result |
 |---|---|
-| `route_probability=None` → `0.5` (fabricate a merged cross-person probability) | **10 failed, 2 passed, 4 errors — guard bites** |
-| positive-branch `state` → forced `EXACT_SUPPORTED` | **10 passed — did NOT bite** |
+| `route_probability=None` → `0.5` (fabricate a merged cross-person probability) | **10 failed — guard bites** |
+| positive-branch `state` → forced `EXACT_SUPPORTED` | **equivalent mutant — inconclusive, claim WITHDRAWN** |
+| `consume()` gains a `release_ref` parameter | **boundary test 1 FAILS — bites** |
+| consumer gains a third `values_read` channel | **boundary test 2 FAILS — bites** |
+| selected release stamped into consumer receipt | **boundary test 4 FAILS — bites** |
 
-The second mutation is a **real, disclosed coverage gap**: support loss takes the
-separate `evidence is None` early-return branch in `provider.step()`, which never
-reaches the mutated line. The zero-support guard covers the path that actually produces
-`ZERO_SUPPORT`, but the positive-branch `state` field is not independently pinned. A
-future refactor routing zero-support through the positive branch would not be caught.
-Recorded rather than papered over.
+**Correction to the previous revision.** That revision reported the second mutation as "a
+real, disclosed coverage gap". **That was wrong.** `consumed.result_state` already
+evaluates to `'EXACT_SUPPORTED'` on every supported step, so hardcoding it was a **no-op** —
+an equivalent mutant. A byte-identical output diff confirmed zero divergence. A test cannot
+be blamed for failing to catch a mutation that changes nothing. **No coverage gap is claimed
+anywhere in this return.**
+
+**Second correction.** Two boundary mutations were initially reported as "did not bite".
+Those runs were invalid: the anchor strings did not match the source, so the edits never
+applied and the "passed" runs were baseline re-executions. Re-run with verified anchor
+assertions, both bite. Recorded because the failure mode — reading a pass from a mutant
+that was never written — is exactly what a mutation check exists to prevent.
+
+**Net position:** four biting mutations, one withdrawn as equivalent.
 
 ---
 
@@ -193,12 +252,18 @@ Recorded rather than papered over.
 |---|---:|---|
 | Phase-A independent anti-drop oracle | 6 | **6 pass** |
 | Phase-A native E04 consumer court (inherited, unchanged) | 7 | **7 pass** |
-| Phase-B lifecycle-join science | 6 | **6 pass** |
+| Phase-B lifecycle-join science | 12 | **12 pass** |
 | Hostile boundaries | 10 | **10 pass** |
-| **Total** | **29** | **29 pass, 0 fail** |
+| **Total** | **35** | **35 pass, 0 fail** |
 
-Full JUnit: `evidence/e04j_full_junit.xml`. Exact lifecycle object identities:
-`evidence/lifecycle_object_identities.json`. Sanitized environment passport:
+Phase-B grew from 6 to 12: six **owner-boundary** tests were added, and the two
+overclaiming join tests they replaced were removed. The boundary tests assert the HOLD
+*holds* and are deliberately falsifiable — an owner adding a release hook, a third read
+channel, or release-borne evidence forces them to fail.
+
+Full JUnit: `evidence/e04j_full_junit.xml`. Lifecycle object identities:
+`evidence/lifecycle_object_identities.json`. Boundary evidence:
+`evidence/owner_boundary_hold.json`. Sanitized environment passport:
 `environment_passport.json`.
 
 **OpenCode quota / billed usage:** **UNKNOWN** — not measurable from inside this bounded
@@ -208,7 +273,10 @@ session; reported UNKNOWN per cost policy rather than guessed.
 
 ## 6. Honest limits and prohibitions
 
-* The join is a single discovered product through one lifecycle. It is **not** an
+* **THE CONSUMER JOIN IS NOT BUILT — bounded HOLD.** The lifecycle executes on the real
+  E04 fact; the consumer does not consume the selected release. See the banner at the top
+  and `evidence/owner_boundary_hold.json`. This is the headline limit of this return.
+* The lifecycle runs one discovered product through one lifecycle. It is **not** an
   original35 source grant, not all-35 occupancy, not N11/N12.
 * Statistical conditionals are **source-local empirical associations**, not causal
   mechanisms, not an independent person's propensity, not policy route probability.
@@ -227,11 +295,13 @@ method adoption.
 |---|---|
 | `00_E04J_R37_RETURN.md` | this document |
 | `e04j_lifecycle_bridge.py` | smallest lawful source-free integration bridge |
-| `tests/test_e04j_lifecycle_join_science.py` | Phase-B science court |
+| `tests/test_e04j_lifecycle_join_science.py` | Phase-B science court + **owner-boundary court** |
 | `tests/test_e04j_join_hostiles.py` | hostile boundary court |
 | `tests/test_e04j_native_original_consumer_join.py` | Phase-A native court (unchanged) |
 | `tests/test_e04j_independent_no_drop_oracle.py` | Phase-A independent oracle (unchanged) |
-| `evidence/e04j_full_junit.xml` | full 29-test JUnit |
+| `evidence/e04j_full_junit.xml` | full 35-test JUnit |
+| `evidence/owner_boundary_hold.json` | **BOUNDED HOLD** receipt: the four structural reasons the consumer join cannot close |
+| `evidence/hostile_mutation_check.json` | mutation record, incl. two withdrawn corrections |
 | `evidence/lifecycle_object_identities.json` | exact M1/M2/B5/I4/E04 object identities, both configs |
 | `evidence/phase_a_import_receipts.json` | imported module `__file__` + Git blob receipts |
 | `evidence/native_e04j_junit.xml` | Phase-A native court JUnit |

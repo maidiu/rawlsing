@@ -1,27 +1,75 @@
 {
-  "schema": "E04J_R37_HOSTILE_MUTATION_CHECK@1",
-  "purpose": "Verify the 10 hostile assertions are load-bearing, not vacuous. Each mutation deliberately breaks a guard the hostiles protect; the suite must FAIL.",
-  "method": "mutate a pinned runtime source, run the hostile + science courts, restore from git, confirm blob identity.",
-  "mutations": [
+  "schema": "E04J_HOSTILE_MUTATION_CHECK@2",
+  "commission": "PYAT-R37-E04J-F1F4-NATIVE-CONSUMER-JOIN-R1",
+
+  "corrections_in_this_revision": [
     {
-      "id": "M1_FABRICATE_ROUTE_PROBABILITY",
-      "target": "runtime/product/nonparent.py",
-      "mutation": "route_probability=None -> route_probability=0.5",
-      "guards_broken": "fabricates a merged cross-person structural/empirical probability",
-      "result": "10 FAILED, 2 passed, 4 errors",
-      "bit": true
+      "id": "C1",
+      "previous_state": "The revision-1 record disclosed a 'coverage gap' because mutation 2 (state -> EXACT_SUPPORTED) did not bite.",
+      "correction": "That disclosure was WRONG and is withdrawn. Mutation 2 was an EQUIVALENT MUTANT: consumed.result_state already evaluates to 'EXACT_SUPPORTED' on every supported step, so hardcoding it changed no behaviour. A byte-identical output diff confirmed zero divergence. The non-failure said nothing about test strength.",
+      "lesson": "Before reporting a mutation as 'not biting', confirm the mutation is not equivalent."
     },
     {
-      "id": "M2_FORCE_STATE_SUPPORTED",
-      "target": "runtime/product/empirical.py",
-      "mutation": "state=consumed.result_state -> state='EXACT_SUPPORTED' in the positive-evidence branch",
-      "guards_broken": "would hide a typed ZERO_SUPPORT / NO_SUPPORTED_EVIDENCE step",
-      "result": "10 passed (DID NOT BITE)",
-      "bit": false,
-      "coverage_gap_disclosed": "This mutation is NOT detected. Support loss takes the separate `evidence is None` branch in provider.step(), which returns early and never reaches the mutated line. The typed zero-support guard (test_no_support_is_distinct_from_a_fabricated_null) therefore covers the real code path that produces ZERO_SUPPORT, but does not independently pin the positive-branch state field. A future refactor could route zero-support through the positive branch and the guard would not catch it."
+      "id": "C2",
+      "previous_state": "Two boundary mutations were initially run and reported as 'did not bite'.",
+      "correction": "Those mutations had never applied: the anchor strings did not match the source, so the '12 passed' runs were baseline re-executions, not mutant runs. Re-run with verified-anchor assertions, both now bite correctly.",
+      "lesson": "Verify the mutation landed before reading the test result."
     }
   ],
-  "conclusion": "The route-probability guard is strongly load-bearing. The positive-branch state field is not independently pinned; this is disclosed rather than papered over. No guard was found to be vacuous.",
-  "runtime_restored_clean": true,
-  "nonparent_blob_after_restore": "2181b832d3c4376d4b9428e13f4354f273be8f32"
+
+  "hostile_guard_mutations": [
+    {
+      "id": "M1",
+      "target": "route_probability = None -> 0.5",
+      "verdict": "BITES",
+      "result": "10 failed, 2 passed, 4 errors",
+      "interpretation": "The nonparent consumer refuses fabricated merged cross-person probability. Guard is load-bearing."
+    }
+  ],
+
+  "hostile_guard_withdrawn": [
+    {
+      "id": "M2",
+      "target": "state = consumed.result_state -> 'EXACT_SUPPORTED'",
+      "verdict": "INCONCLUSIVE_EQUIVALENT_MUTANT",
+      "reason": "consumed.result_state is already 'EXACT_SUPPORTED' for all supported steps; the substitution was a no-op. Output diff was empty."
+    }
+  ],
+
+  "owner_boundary_mutations": [
+    {
+      "id": "B1",
+      "target": "consume(service,snapshot,*,budget_tokens=5) -> adds release_ref=None",
+      "verdict": "BITES",
+      "result": "FAILED test_owner_boundary_1_consumer_signature_has_no_release_hook",
+      "interpretation": "If an owner adds a release hook, the bounded HOLD is forced to be re-earned."
+    },
+    {
+      "id": "B2",
+      "target": "consumer gains a genuine third values_read channel 'learned_release'",
+      "verdict": "BITES",
+      "result": "FAILED test_owner_boundary_2_consumer_reachability_has_no_release_dereference AND test_phase_a_native_e04_consumer_court_executes_cold",
+      "interpretation": "The channel set is asserted exactly, not by membership."
+    },
+    {
+      "id": "B3",
+      "target": "stamp selected_release_ref.object_id into consumer_receipt.material",
+      "verdict": "BITES",
+      "result": "FAILED test_owner_boundary_4_consumer_does_not_falsely_claim_the_release",
+      "interpretation": "A false join claim in the consumer receipt is detected."
+    }
+  ],
+
+  "net_position": {
+    "valid_biting_mutations": 4,
+    "equivalent_or_inconclusive": 1,
+    "claimed_coverage_gaps": 0,
+    "statement": "Four mutations bite. One prior mutation is withdrawn as equivalent. No coverage gap is claimed anywhere in this return."
+  },
+
+  "source_restoration": {
+    "runtime_product_nonparent_sha256_gitblob": "2181b832d3c4376d4b9428e13f4354f273be8f32",
+    "runtime_product_empirical_sha256_gitblob": "475feb9f9aea495c11c40a56b083f0b628c34e15",
+    "verified_after_all_mutations": true
+  }
 }

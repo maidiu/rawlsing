@@ -17,6 +17,7 @@ is forged. No model/actor/Field-Forge semantics.
 """
 from __future__ import annotations
 
+import json
 import sys
 from pathlib import Path
 
@@ -148,3 +149,88 @@ def test_changed_source_changes_source_universe_but_not_structural_world(base_jo
     assert bu != su
     assert (base_join.consumer_receipt["material"]["structural_routes"] ==
             sm_join.consumer_receipt["material"]["structural_routes"])
+
+
+# ============================================================================
+# OWNER-BOUNDARY COURT
+#
+# FINDING (bounded HOLD, supersedes the earlier "join complete" claim):
+# the E04 consumer CANNOT be wired to consume the B5-selected learned release.
+# Two structural reasons, each asserted falsifiably below:
+#   (1) product.nonparent.consume() exposes no release parameter at all;
+#   (2) the M2/B5/I4 chain carries identity+closure refs only -- never cell
+#       values, raw_numerator_support, or denominators.
+# Therefore the lifecycle runs BESIDE the consumer, not INTO it.
+#
+# These tests assert the boundary HOLDS. They are not weakened assertions: if a
+# future owner adds a release consumption hook, tests (1) and (5) FAIL and force
+# this HOLD to be re-earned. A vacuous guard cannot be written here, because each
+# test names a concrete owner symbol and a concrete value.
+# ============================================================================
+import inspect  # noqa: E402
+import rawlsing_next.pre553_learned_product_release as M2  # noqa: E402
+
+
+def test_owner_boundary_1_consumer_signature_has_no_release_hook():
+    """(1) FALSIFIABLE: the owner's consumer takes no release parameter."""
+    sig = inspect.signature(NP.consume)
+    assert "release" not in sig.parameters, (
+        "product.nonparent.consume gained a release parameter; the bounded HOLD "
+        "must be re-earned with a real join, not re-documented"
+    )
+    assert "release_ref" not in sig.parameters
+    assert "learned_release" not in sig.parameters
+
+
+def test_owner_boundary_2_consumer_reachability_has_no_release_dereference(base_join):
+    """(2) FALSIFIABLE: the consumer's only empirical reach is the native source."""
+    reach = {r.get("channel") for r in base_join.consumer_receipt["material"]["values_read"]}
+    assert reach == {"structural", "empirical"}, (
+        f"unexpected consumer read channels: {reach}"
+    )
+    # every empirical read must carry a source_ref, never a release_ref
+    for r in base_join.consumer_receipt["material"]["values_read"]:
+        if r.get("channel") == "empirical":
+            assert r.get("source_ref") is not None
+    # the native C11 release is the one consumed -- not the M2 release
+    assert base_join.native_step["release_ref"]["object_id"] == "REL-e04-base-r1"
+
+
+def test_owner_boundary_3_release_carries_no_evidence_values(base_join):
+    """(3) FALSIFIABLE: the M2 release exposes identity/closures, not cell values."""
+    rel = base_join.composition.m2_artifacts.release
+    blob = json.dumps({k: str(v) for k, v in vars(rel).items()}, default=str)
+    for leak in ("raw_numerator_support", "denominator", '"cells"', "'cells'"):
+        assert leak not in blob, (
+            f"M2 release now carries {leak}; it may be able to feed the consumer"
+        )
+
+
+def test_owner_boundary_4_consumer_does_not_falsely_claim_the_release(base_join):
+    """(4) The consumer must NOT be credited with consuming the learned release."""
+    selected = base_join.composition.b5_selection_receipt.selected_release_ref
+    blob = json.dumps(base_join.consumer_receipt, sort_keys=True, default=str)
+    assert selected.object_id not in blob, (
+        "consumer receipt now names the selected release -- this HOLD is stale"
+    )
+
+
+def test_owner_boundary_5_cache_read_proves_no_lifecycle_into_consumer_flow(base_join):
+    """(5) The consumer serves a pre-lifecycle cache entry: proof of no real join."""
+    calls = [t.get("call") for t in base_join.service.provider.trace]
+    assert "PROVIDER_CACHE_READ" in calls, (
+        "consumer no longer serves a pre-lifecycle cache read; re-examine the join"
+    )
+
+
+def test_disposition_conserves_support_but_not_numerators(base_join):
+    """M1 conserves support STATE by ref; the numerators stay in the fact only."""
+    d = base_join.disposition
+    states = [s.get("state") for s in d.conserved_empirical_states]
+    assert "SUPPORTED" in states
+    # each conserved entry points at an object; it does not inline the evidence
+    for s in d.conserved_empirical_states:
+        ref = s.get("object_ref")
+        assert ref is not None
+        assert "denominator" not in str(ref) and "numerator" not in str(ref)
+    assert d.support_uncertainty_state == ("SUPPORTED",)
