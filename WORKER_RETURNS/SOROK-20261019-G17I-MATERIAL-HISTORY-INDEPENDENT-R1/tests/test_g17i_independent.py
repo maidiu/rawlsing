@@ -14,7 +14,7 @@ from pathlib import Path
 import pytest
 
 ROOT = Path(__file__).resolve().parents[1]
-CAND = ROOT / "stage/WORKER_RETURNS/SOROK-20261019-G17-MATERIAL-HISTORY-INDEPENDENT-LIVES-R1"
+CAND = ROOT / "target_candidate"
 sys.path.insert(0, str(CAND / "candidate"))
 sys.path.insert(0, str(CAND))
 from lab_sgi1.history import (PersonHistoryBuilder, replay_history, make_event,

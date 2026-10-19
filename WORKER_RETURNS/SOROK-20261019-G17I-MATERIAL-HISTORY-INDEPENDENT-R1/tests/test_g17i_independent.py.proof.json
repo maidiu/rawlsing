@@ -7,7 +7,7 @@
       "claimed_dependency": "the reviewer's sequential stock counterexample fails when PROJECT stops reading current material_remaining",
       "positive_node": "WORKER_RETURNS/SOROK-20261019-G17I-MATERIAL-HISTORY-INDEPENDENT-R1/tests/test_g17i_independent.py::test_stock5_two_conflicting_claims_rejected_with_positive_alternative",
       "fault": {
-        "path": "WORKER_RETURNS/SOROK-20261019-G17I-MATERIAL-HISTORY-INDEPENDENT-R1/stage/WORKER_RETURNS/SOROK-20261019-G17-MATERIAL-HISTORY-INDEPENDENT-LIVES-R1/candidate/lab_sgi1/history.py",
+        "path": "WORKER_RETURNS/SOROK-20261019-G17I-MATERIAL-HISTORY-INDEPENDENT-R1/target_candidate/lab_sgi1/history.py",
         "old": "    units=min(work['skill']//2,state['material_remaining'],state['free_hours'])",
         "new": "    units=min(work['skill']//2,1000000,state['free_hours'])"
       }
