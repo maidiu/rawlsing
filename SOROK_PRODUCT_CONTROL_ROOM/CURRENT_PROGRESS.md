@@ -1,3 +1,13 @@
+# Sorok — progress revision 12, original commission currentness correction (2026-10-19)
+
+**CURRENT WORKING HQ:** `agent/sorok-prea0-psyche-architecture-r1@39b85ac44725c4296646c64893f0319d3dde3559`. This supersedes the *original working-branch 00 commission routing/header only*, not its scientific mission or immutable branch startup. G17/C8OI/C9R `00_COMMISSION.md` files now visibly point to the required exact in-place `01` model/judgment/tri-court amendment, [verified commit](https://github.com/maidiu/rawlsing/commit/39b85ac44725c4296646c64893f0319d3dde3559). PRE-MAIN/Pyat/shared grok mandates effective at `bb7044eb5ac0cadc24a3d1b87bddcbed7d809d6c`, with primary grounded link corrected at `e230149f7aed1546bbff6bb7da67ec2b01d62e6e`. Only user-supplied five-point worker-report summary has been read; local report bytes unavailable. **No agent/process restarted, no account/model pair silently chosen, no new native issuer.**
+
+**ECONOMY:** G17=Codex class recommended after actual model/account confirmation; C8OI and not-yet-launched C9R=MIDDLE exact user choice; low DeepSeek V4.1-Flash only for proven I0/I1, not unsupported I2. The actual worker slots remain UNKNOWN and existing branch tips/seals unchanged. Three independent ENGINEERING/SCIENTIFIC/AUTHORITY courts and four-column FINDING/INTERPRETATION/ACTION/OWNER HQ intake mandatory for future work. Previous terminal grades and Pyat R44 sealed source-positive commissions remain distinct.
+
+---
+
+## Previous revision 11 preserved
+
 # Sorok — current progress revision 11: binding HQ commission-format and model-economy correction (2026-10-19)
 
 **SCOPED PROCEDURAL CHANGE; NO NEW ACTOR/SCIENCE ADOPTION OR WORKER LAUNCH.** New PRE-MAIN [judgment-bearing return and three-court dual-economy law](https://github.com/maidiu/rawlsing/blob/459dee3a354c7e24eb7b9c17fa4d655bc1c63f75/CROSS_HQ_CONTROL_ROOM/HQ_JUDGMENT_BEARING_RETURNS_INTAKE_AND_DUAL_ECONOMY_COMMISSION_LAW_R1.md), canonical [cross-HQ/Pyat protocol propagation](https://github.com/maidiu/rawlsing/commit/bb7044eb5ac0cadc24a3d1b87bddcbed7d809d6c), and Sorok [00C / bootstrap / exact G17-C8OI-C9R corrected amendments](https://github.com/maidiu/rawlsing/commit/f26a5ff252ed26381a93fd30ab04d54736d3c983). Local worker report `/Users/.../HQ_RETURN_INTAKE_COMMISSION_REFINEMENT_REPORT.md` was not accessible; fidelity is to the five user-quoted recommendations and verified existing protocol, not exact locally unread document.
