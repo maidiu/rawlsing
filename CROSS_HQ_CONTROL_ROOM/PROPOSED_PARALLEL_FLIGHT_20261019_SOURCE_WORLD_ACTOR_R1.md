@@ -1,5 +1,8 @@
 # Rawlsing — proposed cross-HQ parallel commission flight, 19 October 2026
 
+> **WITHDRAWN FOR DISPATCH — SOROK HQ OVERREACH CORRECTED 2026-10-19.** This assistant-authored combined Pyat+Sorok launch board improperly dispensed PYAT launches during a Sorok HQ interaction. The user has separately retained PYAT HQ command. **Do not launch, amend, adopt, schedule or reprioritize ANY Pyat worker based on this document.** Pyat R40 is owned exclusively by Pyat HQ. The Pyat entries below remain historical read-only context and are **NOT a current Sorok commission flight**. The corrected Sorok-only three-lane flight is [here](https://github.com/maidiu/rawlsing/blob/agent/sorok-prea0-psyche-architecture-r1/SOROK_PRODUCT_CONTROL_ROOM/SOROK_ONLY_PARALLEL_FLIGHT_20261019_R1.md). The original board is preserved below solely to document and prevent repetition of the scope error. This correction does not change Pyat HQ commissions, branches or authority.
+
+
 **DOCUMENTARY USER-DIRECTED FLIGHT BOARD; not an HQ accession, semantic/actor/original-source grant, worker activation, change of immutable Pyat R40 seal or automatic model/editor assignment.** Built under `CROSS_HQ_CONTROL_ROOM/HQ_PARALLEL_FLIGHTS_AND_ECONOMICAL_MODEL_ROUTING_LAW_R1.md`. Branch status is GitHub-observed; local running session/account quota unknown unless user reports. Each owner retains its real scientific/acceptance jurisdiction.
 
 ## Terminal claim and critical-path effect
