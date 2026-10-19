@@ -1,0 +1,29 @@
+{
+  "examined_tests": [
+    "WORKER_RETURNS/PYAT-R41-P41-GENERIC-PROGRESSIVE-N10E-N10W-SERVING-R1/tests/conftest.py",
+    "WORKER_RETURNS/PYAT-R41-P41-GENERIC-PROGRESSIVE-N10E-N10W-SERVING-R1/tests/replay_receipt.py",
+    "WORKER_RETURNS/PYAT-R41-P41-GENERIC-PROGRESSIVE-N10E-N10W-SERVING-R1/tests/test_p41_clocks_and_invalidation.py",
+    "WORKER_RETURNS/PYAT-R41-P41-GENERIC-PROGRESSIVE-N10E-N10W-SERVING-R1/tests/test_p41_cold_replay.py",
+    "WORKER_RETURNS/PYAT-R41-P41-GENERIC-PROGRESSIVE-N10E-N10W-SERVING-R1/tests/test_p41_generic_trajectories.py",
+    "WORKER_RETURNS/PYAT-R41-P41-GENERIC-PROGRESSIVE-N10E-N10W-SERVING-R1/tests/test_p41_permissions_and_firewall.py",
+    "WORKER_RETURNS/PYAT-R41-P41-GENERIC-PROGRESSIVE-N10E-N10W-SERVING-R1/tests/test_p41_separation.py"
+  ],
+  "witness_contracts_run": 1,
+  "receipts": [
+    {
+      "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+      "status": "MECHANICAL_WITNESS_PASS_NOT_SEMANTIC_ADOPTION",
+      "claims": [
+        {
+          "claim_id": "W3_SELECTION_CURRENTNESS_EDGE_SEVERANCE",
+          "positive_node": "WORKER_RETURNS/PYAT-R41-P41-GENERIC-PROGRESSIVE-N10E-N10W-SERVING-R1/tests/test_p41_clocks_and_invalidation.py::test_declared_no_current_refuses_fresh_serve",
+          "fault_path": "WORKER_RETURNS/PYAT-R41-P41-GENERIC-PROGRESSIVE-N10E-N10W-SERVING-R1/runtime/staged_native/pre553_learned_product_lifecycle.py",
+          "baseline": "PASS",
+          "fault_probe": "TARGET_ASSERTION_FAILED",
+          "grade": "BOUNDED_MUTATION_DETECTED"
+        }
+      ]
+    }
+  ],
+  "state": "MECHANICAL_PROOF_GATE_PASS_NOT_SCIENTIFIC_ADOPTION"
+}
