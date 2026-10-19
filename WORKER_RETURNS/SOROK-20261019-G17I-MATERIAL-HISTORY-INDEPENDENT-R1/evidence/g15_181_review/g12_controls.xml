@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="12" skipped="0" tests="25" time="0.911" timestamp="2026-10-19T17:11:50.225925-04:00" hostname="Matthews-MBP.lan"><testcase classname="test_g12_controls" name="test_independent_conflicting_endpoint_and_mother_preservation[A]" time="0.405" /><testcase classname="test_g12_controls" name="test_independent_conflicting_endpoint_and_mother_preservation[B]" time="0.003" /><testcase classname="test_g12_controls" name="test_older_child_preserved" time="0.001" /><testcase classname="test_g12_controls" name="test_independent_oracle_detects_mutation[forged_endpoint]" time="0.001"><failure message="assert False">test_g12_controls.py:24: in test_independent_oracle_detects_mutation
+    assert x['lab']['endpoint_match']
+E   assert False</failure></testcase><testcase classname="test_g12_controls" name="test_independent_oracle_detects_mutation[missing_parent]" time="0.001"><failure message="assert False">test_g12_controls.py:24: in test_independent_oracle_detects_mutation
+    assert x['lab']['endpoint_match']
+E   assert False</failure></testcase><testcase classname="test_g12_controls" name="test_independent_oracle_detects_mutation[future_endpoint_as_root_parent]" time="0.001"><failure message="assert False">test_g12_controls.py:24: in test_independent_oracle_detects_mutation
+    assert x['lab']['endpoint_match']
+E   assert False</failure></testcase><testcase classname="test_g12_controls" name="test_independent_oracle_detects_mutation[duplicate_effective_index]" time="0.001"><failure message="assert False">test_g12_controls.py:24: in test_independent_oracle_detects_mutation
+    assert x['lab']['endpoint_match']
+E   assert False</failure></testcase><testcase classname="test_g12_controls" name="test_independent_oracle_detects_mutation[route_antecedent_removed]" time="0.001"><failure message="assert False">test_g12_controls.py:24: in test_independent_oracle_detects_mutation
+    assert x['lab']['endpoint_match']
+E   assert False</failure></testcase><testcase classname="test_g12_controls" name="test_embargo_input_counterexample_recorded[target]" time="0.001"><failure message="assert False">test_g12_controls.py:30: in test_embargo_input_counterexample_recorded
+    assert obs['embargo'][path]['sentinel_visible']
+E   assert False</failure></testcase><testcase classname="test_g12_controls" name="test_embargo_input_counterexample_recorded[world]" time="0.001"><failure message="assert False">test_g12_controls.py:30: in test_embargo_input_counterexample_recorded
+    assert obs['embargo'][path]['sentinel_visible']
+E   assert False</failure></testcase><testcase classname="test_g12_controls" name="test_embargo_input_counterexample_recorded[psyche]" time="0.001"><failure message="assert False">test_g12_controls.py:30: in test_embargo_input_counterexample_recorded
+    assert obs['embargo'][path]['sentinel_visible']
+E   assert False</failure></testcase><testcase classname="test_g12_controls" name="test_unchanged_lab_stopping_has_no_missing_parent_detection" time="0.000"><failure message="assert False">test_g12_controls.py:33: in test_unchanged_lab_stopping_has_no_missing_parent_detection
+    assert obs['stopping_corrupt']['sufficient']
+E   assert False</failure></testcase><testcase classname="test_g12_controls" name="test_alien_project_and_counterpart_probe_counterexample" time="0.001"><failure message="assert False">test_g12_controls.py:37: in test_alien_project_and_counterpart_probe_counterexample
+    assert obs['alien_probes']['heldout_independence_pass']
+E   assert False</failure></testcase><testcase classname="test_g12_controls" name="test_candidate_payload_change_is_unbound_in_lab" time="0.001"><failure message="AssertionError: assert 'sha256:a3acc...4010d7196518d' == 'sha256:9e5ad...10475a3a1d1c3'&#10;  &#10;  - sha256:9e5ad161e75e3cc91d3b8942d76bd0f5dcae5418f7fd0cae69410475a3a1d1c3&#10;  + sha256:a3acc289ab4e201054f5d2eb47c697784304fd202200b3753404010d7196518d">test_g12_controls.py:42: in test_candidate_payload_change_is_unbound_in_lab
+    assert a['candidate_set_hash']==b['candidate_set_hash']
+E   AssertionError: assert 'sha256:a3acc...4010d7196518d' == 'sha256:9e5ad...10475a3a1d1c3'
+E     
+E     - sha256:9e5ad161e75e3cc91d3b8942d76bd0f5dcae5418f7fd0cae69410475a3a1d1c3
+E     + sha256:a3acc289ab4e201054f5d2eb47c697784304fd202200b3753404010d7196518d</failure></testcase><testcase classname="test_g12_controls" name="test_exact_prospective_retry_bias" time="0.000" /><testcase classname="test_g12_controls" name="test_zero_draw_laboratory_controls" time="0.000" /><testcase classname="test_g12_controls" name="test_actual_native_candidate_positive_and_idempotent_replay" time="0.001" /><testcase classname="test_g12_controls" name="test_actual_native_project_refusal_and_zero_mutation" time="0.001" /><testcase classname="test_g12_controls" name="test_actual_native_actor_and_future_limits" time="0.000" /><testcase classname="test_g12_controls" name="test_actual_production_denial[ACTOR_INITIALIZATION]" time="0.000" /><testcase classname="test_g12_controls" name="test_actual_production_denial[GENEALOGY_HISTORY_TRACE]" time="0.000" /><testcase classname="test_g12_controls" name="test_actual_production_denial[CONCEPTION_OCCURRED]" time="0.000" /><testcase classname="test_g12_controls" name="test_actual_production_denial[BIRTH_OCCURRED]" time="0.001" /><testcase classname="test_g12_controls" name="test_actual_production_denial[CHILD_GENERATED]" time="0.000" /><testcase classname="test_g12_controls" name="test_original_source_bytes_and_actual_imports" time="0.003"><failure message="AssertionError: assert 'fbecbfae723b...8aab165747259' == '0b5a6dd80f93...0d339cb99e45a'&#10;  &#10;  - 0b5a6dd80f93e6a5d19eb1b6b710d339cb99e45a&#10;  + fbecbfae723bf5e72830b9a59788aab165747259">test_g12_controls.py:85: in test_original_source_bytes_and_actual_imports
+    assert hashlib.sha1(b'blob '+str(len(b)).encode()+b'\0'+b).hexdigest()==row['git_blob_sha1']
+E   AssertionError: assert 'fbecbfae723b...8aab165747259' == '0b5a6dd80f93...0d339cb99e45a'
+E     
+E     - 0b5a6dd80f93e6a5d19eb1b6b710d339cb99e45a
+E     + fbecbfae723bf5e72830b9a59788aab165747259</failure></testcase></testsuite></testsuites>

@@ -1,0 +1,75 @@
+{
+  "schema": "RAWLSING_ENVIRONMENT_PASSPORT@1",
+  "environment_id": "local-g17i-shared-store-1",
+  "epoch_id": "2026-10-19T21:15:07Z",
+  "surface": "LOCAL_SHARED_STORE",
+  "session_alias": "deepseek-harness-g17i",
+  "machine_alias": "local-macos-shared-store",
+  "status": "LIVE_VERIFIED",
+  "live_probe": {
+    "observed_at_utc": "2026-10-19T21:15:07Z",
+    "marker_checked": "VERIFIED",
+    "marker_digest": "g17i:76dfa72f",
+    "python": "3.11.3",
+    "pytest": "9.1.1",
+    "git": "2.39.1",
+    "filesystem": "VERIFIED",
+    "connector": "UNKNOWN",
+    "notes": "independent reviewer worktree; exact G17 candidate and frozen G15/G16I/G17 tests run locally"
+  },
+  "branch": "agent/reviewer-sorok-20261019-g17i-material-historical-life-and-c9-consumer-independent-r1",
+  "checkout_sha": "76dfa72f20eba481763160bc4213997b792279c7",
+  "shared_store_alias": "rawlsing-shared-store",
+  "worktree_alias": "g17i",
+  "source_closure": "BOUNDED",
+  "sources": [
+    {
+      "commit": "a35403cede4f65134da340d46f198f92723db410",
+      "path": "WORKER_RETURNS/SOROK-20261019-G17-MATERIAL-HISTORY-INDEPENDENT-LIVES-R1/candidate/lab_sgi1/history.py",
+      "blob_sha1": "d667448194a1e8eb7eeab874fa0937b6797b79c0",
+      "module_alias": "history",
+      "import_verified": true
+    },
+    {
+      "commit": "a35403cede4f65134da340d46f198f92723db410",
+      "path": "WORKER_RETURNS/SOROK-20261019-G17-MATERIAL-HISTORY-INDEPENDENT-LIVES-R1/candidate/lab_sgi1/continuation.py",
+      "blob_sha1": "c9318dcf33d041a673cfae15aff8fc51712f53e7",
+      "module_alias": "continuation",
+      "import_verified": true
+    },
+    {
+      "commit": "a35403cede4f65134da340d46f198f92723db410",
+      "path": "WORKER_RETURNS/SOROK-20261019-G17-MATERIAL-HISTORY-INDEPENDENT-LIVES-R1/candidate/lab_sgi1/pipeline.py",
+      "blob_sha1": "fc954993ef966d20d1915546e04a122daa93538f",
+      "module_alias": "pipeline",
+      "import_verified": true
+    },
+    {
+      "commit": "a35403cede4f65134da340d46f198f92723db410",
+      "path": "WORKER_RETURNS/SOROK-20261019-G17-MATERIAL-HISTORY-INDEPENDENT-LIVES-R1/c9_handoff_consumer.py",
+      "blob_sha1": "47e59c12b79c04b05c18e73ad76078a29d0d7b3c",
+      "module_alias": "c9_handoff",
+      "import_verified": true
+    }
+  ],
+  "assignments_completed": 1,
+  "next_affinity_tags": [
+    "g17i",
+    "independent-review",
+    "material-history",
+    "c9-handoff"
+  ],
+  "permissions": {
+    "private_repo_access": "VERIFIED",
+    "original_survey_use": "NOT_GRANTED",
+    "external_model_use": "NOT_GRANTED",
+    "actor_execution": "NOT_GRANTED"
+  },
+  "usage": {
+    "provider_model": "DeepSeek V4.1 Flash (commission)",
+    "incremental_cash_usd": null,
+    "quota_state": "UNKNOWN",
+    "usage_observed": "local Git/pytest only; no paid API call observed",
+    "retry_count": 0
+  }
+}
