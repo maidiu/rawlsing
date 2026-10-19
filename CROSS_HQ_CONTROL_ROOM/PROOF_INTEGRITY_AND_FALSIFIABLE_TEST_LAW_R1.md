@@ -28,9 +28,9 @@ E04JR exposed two **different** failure modes: (a) vacuous assertions (such as `
 
 ### Minimal executable per-test proof contract
 
-Place \`test_<name>.py.proof.json\` **beside the changed Python integration test**. Use actual repository-relative paths and exact unique source text. The fault MUST affect the alleged producer/release/consumer edge, not a decorative flag.
+Place `test_<name>.py.proof.json` **beside the changed Python integration test**. Use actual repository-relative paths and exact unique source text. The fault MUST affect the alleged producer/release/consumer edge, not a decorative flag.
 
-\`\`\`json
+```json
 {
   "schema": "RAWLSING_PROOF_INTEGRITY_R1",
   "claims": [{
@@ -45,9 +45,9 @@ Place \`test_<name>.py.proof.json\` **beside the changed Python integration test
     }
   }]
 }
-\`\`\`
+```
 
-Execute the witness as part of normal testing: \`python CROSS_HQ_CONTROL_ROOM/proof_integrity_gate_r1.py witness path/to/test_actual_join.py.proof.json --root . --receipt evidence/proof_witness.json\`. The runner asserts the positive named test passes and the same named test fails **via its assertion** under the injected fault, restoring the original source afterward. It refuses absent/non-unique mutation text, an attempted mutation of the test itself, an unowned contract, missing tests, skips and error-only mutants. CI invokes the same checker for new/changed integration tests; the report still needs competent scrutiny that the mutation genuinely represents the commissioned edge. The worker's qualifying environment must contain the native imports and pytest. Run from a qualified clean or dedicated worktree; protect unpushed work as under 00D.
+Execute the witness as part of normal testing: `python CROSS_HQ_CONTROL_ROOM/proof_integrity_gate_r1.py witness path/to/test_actual_join.py.proof.json --root . --receipt evidence/proof_witness.json`. The runner asserts the positive named test passes and the same named test fails **via its assertion** under the injected fault, restoring the original source afterward. It refuses absent/non-unique mutation text, an attempted mutation of the test itself, an unowned contract, missing tests, skips and error-only mutants. CI invokes the same checker for new/changed integration tests; the report still needs competent scrutiny that the mutation genuinely represents the commissioned edge. The worker's qualifying environment must contain the native imports and pytest. Run from a qualified clean or dedicated worktree; protect unpushed work as under 00D.
 
 ## Mandatory commissioning / worker return fields
 
