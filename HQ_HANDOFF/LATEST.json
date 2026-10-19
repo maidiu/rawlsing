@@ -1,12 +1,12 @@
 {
   "schema": "RAWLSING_HQ_HANDOFF_POINTER@1.1.0",
-  "checkpoint_id": "20261019-PYAT-HQ-R43-USER-ACCEPTED-ORIGINAL35-SELECTED-B-FULL-FLIGHT-R1",
-  "handoff_commit": "1544be199c0a2e0a6dea0e309ab55c16a73bd8ce",
+  "checkpoint_id": "20261019-PYAT-HQ-R43-USER-ACCEPTED-ORIGINAL35-SELECTED-B-FULL-FLIGHT-R2",
+  "handoff_commit": "23e6f3f89666f44a2d46502b2c42989028132062",
   "semantic_pre_main_tip": "1f47063c3205a45888b3c55e81e7485943ed1390",
   "control_branch": "integration/pre-main-reconciliation-r1",
-  "current_md_path": "HQ_HANDOFF/checkpoints/20261019-PYAT-HQ-R43-USER-ACCEPTED-ORIGINAL35-SELECTED-B-FULL-FLIGHT-R1/CURRENT.md",
-  "current_json_path": "HQ_HANDOFF/checkpoints/20261019-PYAT-HQ-R43-USER-ACCEPTED-ORIGINAL35-SELECTED-B-FULL-FLIGHT-R1/CURRENT.json",
-  "manifest_path": "HQ_HANDOFF/checkpoints/20261019-PYAT-HQ-R43-USER-ACCEPTED-ORIGINAL35-SELECTED-B-FULL-FLIGHT-R1/MANIFEST.json",
+  "current_md_path": "HQ_HANDOFF/checkpoints/20261019-PYAT-HQ-R43-USER-ACCEPTED-ORIGINAL35-SELECTED-B-FULL-FLIGHT-R2/CURRENT.md",
+  "current_json_path": "HQ_HANDOFF/checkpoints/20261019-PYAT-HQ-R43-USER-ACCEPTED-ORIGINAL35-SELECTED-B-FULL-FLIGHT-R2/CURRENT.json",
+  "manifest_path": "HQ_HANDOFF/checkpoints/20261019-PYAT-HQ-R43-USER-ACCEPTED-ORIGINAL35-SELECTED-B-FULL-FLIGHT-R2/MANIFEST.json",
   "decision_ledger_path": "HQ_HANDOFF/DECISION_LEDGER.jsonl",
   "protocol_path": "HQ_HANDOFF/PROTOCOL.md",
   "start_here_path": "HQ_HANDOFF/START_HERE.md",
@@ -14,11 +14,11 @@
   "pointer_law": "LATEST_IS_MUTABLE_POINTER_ONLY__CHECKPOINT_AT_HANDOFF_COMMIT_IS_IMMUTABLE_SEALED_HQ_AUTHORITY",
   "temporal_reconciliation_law": "SEALED_CHECKPOINT_AUTHORITY_NE_POST_CHECKPOINT_PENDING_RETURN_NE_UNAUTHORIZED_POST_CHECKPOINT_MOVEMENT",
   "maintenance_law": "AFTER_EVERY_MATERIAL_HQ_STATE_CHANGE__CREATE_NEW_IMMUTABLE_CHECKPOINT__ADVANCE_AND_VERIFY_LATEST_BEFORE_TRANSITION_IS_SEALED",
-  "canonical_control_base": "1544be199c0a2e0a6dea0e309ab55c16a73bd8ce",
+  "canonical_control_base": "23e6f3f89666f44a2d46502b2c42989028132062",
   "qualified_working_hq_branch": "agent/vozhd-pyat-20261019-full-terminal-hq-accession-candidate-r1",
   "qualified_working_hq_commit": "01f5ad8eaa7eba25e4aeb3291497a457bf3b0629",
-  "primary_succession_handoff_path": "HQ_HANDOFF/checkpoints/20261019-PYAT-HQ-R43-USER-ACCEPTED-ORIGINAL35-SELECTED-B-FULL-FLIGHT-R1/CURRENT.md",
-  "pyat_current_handoff": "HQ_HANDOFF/checkpoints/20261019-PYAT-HQ-R43-USER-ACCEPTED-ORIGINAL35-SELECTED-B-FULL-FLIGHT-R1/CURRENT.md",
+  "primary_succession_handoff_path": "HQ_HANDOFF/checkpoints/20261019-PYAT-HQ-R43-USER-ACCEPTED-ORIGINAL35-SELECTED-B-FULL-FLIGHT-R2/CURRENT.md",
+  "pyat_current_handoff": "HQ_HANDOFF/checkpoints/20261019-PYAT-HQ-R43-USER-ACCEPTED-ORIGINAL35-SELECTED-B-FULL-FLIGHT-R2/CURRENT.md",
   "current_progress": {
     "owner": "Pyat",
     "revision": 23,
@@ -26,8 +26,8 @@
     "counterpart": "Sorok working rev8 user four live workers; no Pyat actor grant"
   },
   "previous_handoff": {
-    "checkpoint_id": "20261019-PYAT-HQ-R42-R41-FOUR-RETURN-TERMINAL-FANIN-R1",
-    "handoff_commit": "5ac221ea4bf7a98cbb829f1f6ce46001629bc074"
+    "checkpoint_id": "20261019-PYAT-HQ-R43-USER-ACCEPTED-ORIGINAL35-SELECTED-B-FULL-FLIGHT-R1",
+    "handoff_commit": "1544be199c0a2e0a6dea0e309ab55c16a73bd8ce"
   },
   "full_legacy_pointer_archived": {
     "git_cut": "e1182c32cc40b7908304cecc5964193590bbb1cc",
@@ -53,5 +53,6 @@
   "r43_dispatch_seal": "PYAT_CONTROL_ROOM/R43_EXACT_U43_B43_F43_FULL_SOURCE_TO_PREV3_DISPATCH_SEAL_20261019.md",
   "r43_dispatch_startup": "556dd7e2bf67e2bc0b1772d18880ef0dfaa819e3",
   "hq_succession_reviewed_candidate_sha": "96c801b140e61a99e580fd9f57034bd6d969a000",
-  "hq_user_acceptance": "2026-10-19 explicit Chyelovyek-Vozhd user formal Pyat HQ accession at established command scope"
+  "hq_user_acceptance": "2026-10-19 explicit Chyelovyek-Vozhd user formal Pyat HQ accession at established command scope",
+  "r43_immutable_manifest_semantic_pre_main_tip": "1f47063c3205a45888b3c55e81e7485943ed1390"
 }
