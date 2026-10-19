@@ -243,4 +243,4 @@ Python 3.11.3 · pytest 9.1.1 · Git 2.39.1 · macOS 13.7.8 x86_64 · SQLite std
 
 # EXACT PUSHED REF
 
-Return commit: `<filled after commit>`. Remote verification: `<filled after push>` (`git ls-remote` must match). Ordinary non-force push; only this return subtree changed.
+Return commit: `be3251f2affb9b8f0ad596f098c9e84ad16b47bd`. Remote verification: `git ls-remote` returned the same SHA (`evidence/remote_verification.json`). Ordinary non-force push; only this return subtree changed.
