@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="14" time="11.635" timestamp="2026-10-18T21:03:28.728379-04:00" hostname="MacBook-Pro.lan"><testcase classname="" name="test_a01_values_read_originate_from_named_native_producer" time="0.481" /><testcase classname="" name="test_a02_forward_denominators_and_fractions_recomputed_from_rows" time="0.469" /><testcase classname="" name="test_a03_reverse_conditional_denominator_29_independently_derived" time="0.539" /><testcase classname="" name="test_a04_minority_options_recomputed_from_rows" time="0.623" /><testcase classname="" name="test_a05_same_marginals_intervention_is_a_different_source_change" time="0.923" /><testcase classname="" name="test_a06_zero_support_is_typed_at_service_layer_never_fabricated" time="0.372" /><testcase classname="" name="test_a14_adapter_serve_must_type_zero_support_step_without_keyerror" time="0.358"><failure message="Failed: UNTYPED_CRASH key='binding_order' in adapter.serve instead of a typed partial receipt">def test_a14_adapter_serve_must_type_zero_support_step_without_keyerror():
+        """I2 falsifier: the adapter seam, not just the service, must type no-support.
+    
+        The worker's own test_05 only proves the SERVICE layer types the zero
+        denominator; it never calls adapter.serve() on that path.  This court does.
+        """
+        a = _adapter(support_loss=True)
+        q = E.standard_request(label="CURRENT_TEST_CLOCK")
+        s = a.build_snapshot(q)
+        acc = a.accept(q, s)
+        try:
+&gt;           receipt = a.serve(q, acc, s)
+                      ^^^^^^^^^^^^^^^^^^
+
+../R38-N9TI-joined-temporal-review-wt/_review_evidence/test_i2_adversarial_n9j.py:214: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;e05_n9_selected_world_adapter.N9SelectedWorldAdapter object at 0x10eb8e9d0&gt;
+request = N9SelectedWorldRequest(contract='R11_E05_N9_SELECTED_WORLD_INTERFACE@1', purpose='TEST_ONLY_CONTEXT', structural_keys=...27-09-01', test_now='2027-09-01'), requested_pooling=False, requested_person_exposure=False, requested_model_use=False)
+acceptance = N9SelectedWorldAcceptance(request_hash='4b30d2b774addaf09c7270c2b0460d28bdf1f114be52525ba97cf2b1fb78b983', snapshot_ha...'publication': '2026-03-01', 'revision': 1}}, acceptance_state='ACCEPTED_ATOMIC_SELECTED_SNAPSHOT', inconsistencies=())
+snapshot = SelectedSnapshot(material={'schema': 'E04_TEST_ONLY_SELECTED_WORLD_SNAPSHOT@1', 'catalog_hash': '17300d5b40415bb59a875...: False, 'operative_CURRENT': False}, snapshot_hash='f33e9d7fd65e6a0a56742c74405bbb4ae504f4b6f8d7702113094ed00fddb635')
+
+    def serve(self, request: N9SelectedWorldRequest, acceptance,
+              snapshot, *, consumers=()) -&gt; dict:
+        """Read the actual result-bearing selected-world values.
+    
+        Every channel is read through the accepted atomic snapshot.  The two
+        native fields are carried separately with their own native units and
+        are never pooled, converted or combined.
+        """
+        entry = self.acceptances.get(acceptance.acceptance_hash)
+        if entry is None:
+            raise SelectedWorldInconsistency('ACCEPTANCE_BINDING_MISMATCH')
+        snapshot.verify()
+        if entry['snapshot_material'] != snapshot.material:
+            raise SelectedWorldInconsistency('ACCEPTED_SNAPSHOT_SUBSTITUTION')
+        if entry['acceptance'] != acceptance:
+            raise SelectedWorldInconsistency('ACCEPTANCE_BINDING_MISMATCH')
+    
+        native = entry['native']
+        structural_values = {}
+        structural_refs = {}
+        for key in request.structural_keys:
+            read = self.service.structural(snapshot, key, 'N9_SELECTED_WORLD')
+            structural_refs[key] = (read.get('field_ref'), read.get('requested_ref'))
+            if read['state'] == 'SUPPORTED_TEST_ONLY':
+                structural_values[key] = dict(
+                    value=read['value'], unit=read['payload']['unit'],
+                    field_ref=read['field_ref'], revision=read['payload']['revision'],
+                    publication=read['payload']['publication'],
+                    effective_from=read['payload']['effective_from'],
+                    epistemic_class=read['payload']['epistemic_class'],
+                    currentness_grade=read.get('currentness_grade'),
+                    rsc_ref=read.get('rsc_ref'), validation_ref=read.get('validation_ref'))
+            else:
+                structural_values[key] = dict(
+                    state=read['state'], requested_ref=read.get('requested_ref'))
+    
+        empirical = self.service.possibilities(
+            snapshot, target=request.empirical_target,
+            conditions=request.empirical_conditions, consumer='N9_SELECTED_WORLD')
+        empirical_steps = []
+        for step in empirical['steps']:
+            empirical_steps.append(dict(
+                target=step['target'], conditioners=[list(c) for c in step['conditioners']],
+&gt;               binding_order=step['binding_order'], route=step['route'],
+                              ^^^^^^^^^^^^^^^^^^^^^
+                denominator=step['denominator'],
+                cells=[dict(cell=c['cell'], cell_state=c['cell_state'],
+                            raw_numerator_support=c['raw_numerator_support'],
+                            raw_probability_exact_fraction=
+                            c.get('raw_probability_exact_fraction'))
+                       for c in step['cells']],
+                release_ref=step['release_ref'], risk_set_ref=step['risk_set_ref'],
+                source_universe_ref=step['source_universe_ref'],
+                permission_root=step['permission_root'],
+                evidence_ref=step.get('evidence_ref'),
+                uncertainty=step.get('uncertainty'),
+                measure=step.get('measure')))
+E           KeyError: 'binding_order'
+
+WORKER_RETURNS/PYAT-R37-N9J-SELECTED-WORLD-PROGRESSIVE-CONSUMER-R1/native/e05_n9_selected_world_adapter.py:462: KeyError
+
+During handling of the above exception, another exception occurred:
+
+    def test_a14_adapter_serve_must_type_zero_support_step_without_keyerror():
+        """I2 falsifier: the adapter seam, not just the service, must type no-support.
+    
+        The worker's own test_05 only proves the SERVICE layer types the zero
+        denominator; it never calls adapter.serve() on that path.  This court does.
+        """
+        a = _adapter(support_loss=True)
+        q = E.standard_request(label="CURRENT_TEST_CLOCK")
+        s = a.build_snapshot(q)
+        acc = a.accept(q, s)
+        try:
+            receipt = a.serve(q, acc, s)
+        except KeyError as exc:
+&gt;           pytest.fail("UNTYPED_CRASH key=" + repr(exc.args[0]) +
+                        " in adapter.serve instead of a typed partial receipt")
+E           Failed: UNTYPED_CRASH key='binding_order' in adapter.serve instead of a typed partial receipt
+
+../R38-N9TI-joined-temporal-review-wt/_review_evidence/test_i2_adversarial_n9j.py:216: Failed</failure></testcase><testcase classname="" name="test_a07_source_families_units_and_publications_stay_separate" time="0.467" /><testcase classname="" name="test_a08_effective_publication_asof_clocks_are_three_distinct_things" time="0.491" /><testcase classname="" name="test_a09_revocation_dependency_closure_is_directional" time="0.932" /><testcase classname="" name="test_a10_substitution_and_repooling_are_refused_by_owner_code" time="0.989" /><testcase classname="" name="test_a11_cold_replay_digest_two_fresh_processes_match_and_are_not_constant" time="2.260" /><testcase classname="" name="test_a12_structural_only_leaves_all_empirical_bytes_untouched" time="1.415" /><testcase classname="" name="test_a13_nonparent_and_proposal_are_distinct_implementations_not_clones" time="0.892" /></testsuite></testsuites>

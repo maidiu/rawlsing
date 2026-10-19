@@ -1,0 +1,30 @@
+{
+  "schema": "PYAT_R38_N9TI_INDEPENDENT_REVIEW_ENVIRONMENT_PASSPORT@1",
+  "role": "independent_i2_reviewer",
+  "review_branch": "agent/reviewer-pyat-r38-n9ti-joined-temporal-consumer-r1",
+  "review_base": "68873526efe5a39a0849aa401666ac997870f156",
+  "host": "reviewer-workstation (sanitized)",
+  "platform": "darwin",
+  "arch": "x86_64",
+  "python": "3.11.3",
+  "pytest": "9.0.2",
+  "git": "2.43.0",
+  "neutral_pytest_config": {
+    "path": "reviewer scratch neutral.ini (outside packet)",
+    "sha256": "8250d20f42b419af40706490ead78aabab9feba93eab09a3f626e3de5256e1f4",
+    "reason": "ambient workspace pytest.ini is known-poisonous for these suites"
+  },
+  "run_flags": {
+    "PYTHONHASHSEED": "0",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "pytest_options": ["-c <neutral.ini>", "-p no:cacheprovider", "--junitxml=<evidence>"]
+  },
+  "network": {
+    "used_for_tests": false,
+    "external_actions": [
+      "GitHub Actions run/artifact identity check for N9J run 39173649313 (metadata + artifact download)"
+    ]
+  },
+  "side_effects_on_pins": "none (pins byte-untouched; only read-only execution)",
+  "timestamp_utc": "2026-10-18T21:30:00Z"
+}
