@@ -1,3 +1,9 @@
+# PRE-LAUNCH SUPERSESSION — R44 MODEL/INTELLIGENCE ROUTING CORRECTION
+
+**STATUS:** `SUPERSEDED_FOR_UNLAUNCHED_S44_AND_I44__DO_NOT_DISPATCH_OLD_PROMPTS`. These commissions were published without the mandatory full dual-economy routing, despite the explicit shared PRE-MAIN/Pyat/Sorok rules. Full substantive mission, workers' branches and authority ceilings are unchanged; **do not disturb any locally running worker**. For new launches, use `PYAT_CONTROL_ROOM/R44_DUAL_ECONOMY_S44_I44_CORRECTED_DISPATCH_SEAL_20261019.md` and the amended full `00_COMMISSION.md` files. Old common SHA is preserved as historical evidence, not a valid new launch baseline.
+
+---
+
 # R44 Pyat HQ — exact full-product parallel commission seal
 
 **Authoritative HQ decision:** `PYAT_CONTROL_ROOM/R44_HQ_FULL_R43_RETURN_INTAKE_AND_FIRST_ACTUAL_SOURCE_EXECUTION_CAMPAIGN_20261019.md`.
