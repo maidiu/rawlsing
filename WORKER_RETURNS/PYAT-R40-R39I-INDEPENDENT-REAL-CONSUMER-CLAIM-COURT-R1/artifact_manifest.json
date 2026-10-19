@@ -3,6 +3,7 @@
   "reviewer": "independent I2",
   "model": "DeepSeek V4.1 Flash",
   "base": "1150e836ef58553255abc0f588e66c1327db4932",
+  "branch": "agent/reviewer-pyat-r40-r39i-learned-f6-consumer-independent-r1",
   "targets": {
     "E04L": "daf0d085e930696708c755e687879b155653c215",
     "F6P": "912467aaacb715fd6e80ebc8c2bdd7285c26120b"
@@ -12,11 +13,11 @@
     "F6P": "ACCEPT_SOURCEFREE_TEST_ONLY"
   },
   "test_counts": {
-    "court_a_author": 29,
-    "court_a_reviewer": 10,
+    "court_a_author_reproduced": 29,
+    "court_a_reviewer_independent": 10,
     "court_a_reviewer_fault_witnesses": 2,
-    "court_b_author": 32,
-    "court_b_reviewer": 8,
+    "court_b_author_reproduced": 32,
+    "court_b_reviewer_independent": 8,
     "court_b_reviewer_fault_witnesses": 2
   },
   "files": [
@@ -54,6 +55,11 @@
       "path": "06_COST_RECORD_AND_OUTSTANDING_GRANTS.md",
       "sha256": "35ee6e0365a8192e05e9250efcce64d3d83b6d1469e0bab2feb2209b3ac0859b",
       "bytes": 1879
+    },
+    {
+      "path": "07_PUSHED_SHA_VERIFICATION.txt",
+      "sha256": "93086dc2519d39362c511453d1a6ba0c4eff62775822fb5a24090cff8d9bae49",
+      "bytes": 906
     },
     {
       "path": "evidence/court_a/test_court_a_e04l_independent.py",
