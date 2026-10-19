@@ -1,3 +1,9 @@
+# HISTORICAL / SUPERSEDED FOR UNLAUNCHED S44/I44
+
+The present user correctly pointed out that the routing flowchart in this seal is NOT a concrete HQ assignment. **S44 and I44 have now each been substantively HQ-adjudicated YES to DeepSeek V4.1-Flash at MAX as the primary entire-job local agent**, with S44 moderate and I44 high relative confidence, distinct source-authority holds, Browser S3 feasibility rationale and concrete escalation tests. Do NOT issue new launch from this historical seal. Read instead `PYAT_CONTROL_ROOM/R44_HQ_ADJUDICATED_DEEPSEEK_MAX_S44_I44_DISPATCH_SEAL_20261019.md` and revised full commissions on the new exact startup. Preserve any verified locally active worker; GitHub branch absence does not establish no local session. No new scientific/source/N11/N12 grants.
+
+---
+
 # PYAT HQ R44 — authoritative S44/I44 exact DeepSeek-at-MAX model routing and launch seal
 
 **STATUS:** `USER_CORRECTED__PRELAUNCH_ROUTING_PUBLISHED__NOT_AUTOMATICALLY_LAUNCHED`. **COMMON IMMUTABLE STARTUP: `bde0ef38cdaeac06561385c35e6f3bbe3c27cda3`**. Physically verified both amended complete commissions at this Git tree. This seal supersedes both older S44/I44 launch seals for workers that were not already locally active; do not cancel/restart existing sessions or overwrite existing worktrees. Remote worker branch absence is not proof of no unpushed session.
