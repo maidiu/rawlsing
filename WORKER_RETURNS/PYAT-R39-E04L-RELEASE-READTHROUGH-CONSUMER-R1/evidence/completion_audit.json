@@ -1,0 +1,33 @@
+{
+  "schema": "E04L_REQUIREMENT_COMPLETION_AUDIT_R1",
+  "observed_utc": "2026-10-19T03:02:06.987393+00:00",
+  "startup": "2e6c189fd54b818556a44419b19691938ea76d5a",
+  "actual_original_consumer_blob": "2181b832d3c4376d4b9428e13f4354f273be8f32",
+  "steps": {
+    "1_native_empirical_production": "actual execute_empirical_query/C1/N10E calls and exact fact refs in native_capture.json",
+    "2_native_M1": "actual adjudicate_learned_empirical over producer fact/query/predicate catalog; synthetic validator ceiling explicit",
+    "3_exact_M2": "actual constitute_release with M1 subject and complete refs, no payload schema change",
+    "4_B5_publish_select": "actual register_product/publish_product/select_current calls; selected release exact",
+    "5_I4_verify": "actual compose_learned_world subject/closure conservation after exact M2 read",
+    "6_exact_producer_resolution": "typed full-preimage catalog reads bound to selected subject/dependency refs",
+    "7_service_interface": "unchanged service parent method plus permission-bounded provider/provenance wrapper",
+    "8_original_consumer": "unchanged product.nonparent.consume actual call and pinned blob",
+    "9_values_read": "three empirical entries with actual counts, release/selection/subject/M2/I4/fact/query/predicate refs",
+    "10_sever_source_fixed": "named test removes M2 immutable release while keeping source and native cache fixed",
+    "11_productive_capability_lost": "same unchanged consumer refuses; two injected edge faults produce assertion RED",
+    "12_restore": "exact release restored in named test; original receipt reproduced; mutated source restored and tests rerun green"
+  },
+  "proof_grade": "CLAIM_EDGE_FALSIFIED_BY_CONTROL_AND_POSITIVE_SURVIVED",
+  "new_pass": 22,
+  "original_pass": 7,
+  "expected_mutant_reds": 2,
+  "mutant_errors_or_skips": 0,
+  "cold_capture_byte_equal": true,
+  "imported_modules_verified": 42,
+  "gate": "MECHANICAL_PROOF_GATE_PASS_NOT_SCIENTIFIC_ADOPTION",
+  "source_test_bytes_unchanged_after_gate": true,
+  "high_needed": false,
+  "reason": "Existing E04 service/provider interface and M1/M2 exact references express the authorized TEST_ONLY route without owner-contract changes.",
+  "residual_holds": "original source/scientific/production/current-world/actor/model-use/Field Forge/behavioral probabilities/N11/N12/V3; not silently waived",
+  "adoption": false
+}
