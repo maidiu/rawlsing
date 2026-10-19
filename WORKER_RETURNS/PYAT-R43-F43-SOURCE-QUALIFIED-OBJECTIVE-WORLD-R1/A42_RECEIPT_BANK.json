@@ -1,0 +1,540 @@
+{
+  "schema": "A42_NATIVE_RECEIPT@2.0.0",
+  "receipts": [
+    {
+      "receipt_id": "F43-RETAINED-F5-CONTEXT",
+      "origin_commit": "4fb2058e57291610e23eca1af7f0b27c6730eba8",
+      "claim_id": "retained_view GT2 FF/V554/M4 CONTEXT and J04 source-domain reconstruction",
+      "grade": "HISTORICAL_RETAINED_EVIDENCE",
+      "coverage": {
+        "wave_ids": [
+          "SRC02"
+        ],
+        "axis_ids": [],
+        "f_gate_ids": [
+          "F5"
+        ],
+        "functional_gates": [],
+        "register_151_ids": [],
+        "ledger_101_ids": [],
+        "global_relations": [],
+        "global_contributions": [],
+        "occupancy_grain_note": "Retained or sourcefree exact scope only; zero new original measured cells"
+      },
+      "currentness": {
+        "archive_or_current": "ARCHIVE",
+        "as_of": "2026-10-19",
+        "note": "T35 TEST_CURRENT uses explicit future fixture clocks; never real CURRENT"
+      },
+      "artifacts": [
+        {
+          "commit": "4fb2058e57291610e23eca1af7f0b27c6730eba8",
+          "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/world_products.json",
+          "blob_sha1": "a3d9bea619d69b5d39d78c75e7d4ab502ff5aa57",
+          "sha256": "ecaabf1d232c0514233a9a106e43f06e19fa8664743488622eee12ff644a3c28",
+          "bytes": 24877421
+        },
+        {
+          "commit": "4fb2058e57291610e23eca1af7f0b27c6730eba8",
+          "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/f43_product.py",
+          "blob_sha1": "aa7860ae62dc774e212d376f6daed81553cd7477",
+          "sha256": "9283b1c3e1d040528fd29a5a1f7f31a93a5537fcb21c58765c59751135f64e9a",
+          "bytes": 15669
+        },
+        {
+          "commit": "4fb2058e57291610e23eca1af7f0b27c6730eba8",
+          "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/bounded_methods.py",
+          "blob_sha1": "a9a2d4a18af8d23480e3db805770e3ebd8f49fe3",
+          "sha256": "288b6e073f4a6506efa67f0aeec6dd76d4987e1d20cbf7b349558700fb4c4c7f",
+          "bytes": 9505
+        },
+        {
+          "commit": "4fb2058e57291610e23eca1af7f0b27c6730eba8",
+          "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/00_EXPECTED_WORLD_FREEZE.json",
+          "blob_sha1": "0cc0c8379b79e4a2931f77fdcb57b2f7f8b7a1e3",
+          "sha256": "f8d1c3659a256bd3e8061452d552bc759b60d6b369016a38ec47813363d6e90c",
+          "bytes": 165333
+        },
+        {
+          "commit": "4fb2058e57291610e23eca1af7f0b27c6730eba8",
+          "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/01_METHOD_ORACLE.json",
+          "blob_sha1": "b34b44650db8c5c969ee89c860d66f2dc0802bf3",
+          "sha256": "9fd79a0f89e5269c81ae44c88f0bf3f51f689593f7c214c8a3b92042de1223b4",
+          "bytes": 1768
+        },
+        {
+          "commit": "4fb2058e57291610e23eca1af7f0b27c6730eba8",
+          "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/cell_envelope_bounds.py",
+          "blob_sha1": "5e05296398d6fd5528f07268bc06302c0e75079c",
+          "sha256": "c0d5aad6e444fe1b97b3c2ef8bbf8be615c6cc3115a4f4bd6c08521796a94083",
+          "bytes": 3311
+        },
+        {
+          "commit": "4fb2058e57291610e23eca1af7f0b27c6730eba8",
+          "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/bootstrap_f43.py",
+          "blob_sha1": "f9112504994a0f847da6238e726345ffa2413b39",
+          "sha256": "338b60ac637b2cc56e69f9f342f4bbfc2a6f1ff08bf795eb891530aa2400e1e6",
+          "bytes": 1671
+        },
+        {
+          "commit": "4fb2058e57291610e23eca1af7f0b27c6730eba8",
+          "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/dependency_manifest.json",
+          "blob_sha1": "bad906832b683aba31c457e7cc4a781ca5272e03",
+          "sha256": "e35cf4c46f779264f4ed62a494acfb195fc05cce3870c248a8ae45aeb1603c21",
+          "bytes": 3596
+        },
+        {
+          "commit": "4fb2058e57291610e23eca1af7f0b27c6730eba8",
+          "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/w41_dependency.tar.gz",
+          "blob_sha1": "92a65315ae16904d528c4a9a1b1660d7ec484793",
+          "sha256": "5c4dc2dc35555939e722e4274df919f7bbac9cb9a0d8d1ac4da2a85b486df306",
+          "bytes": 3657763
+        },
+        {
+          "commit": "4fb2058e57291610e23eca1af7f0b27c6730eba8",
+          "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/evidence/imports.json",
+          "blob_sha1": "42566cfb3e635439cfbc5d440dfa2d1bfd4d5be4",
+          "sha256": "56c89a2051aa0486c028fc9077f79174ed28fd10b288d5fcd9efc81af30ed8f4",
+          "bytes": 61985
+        },
+        {
+          "commit": "4fb2058e57291610e23eca1af7f0b27c6730eba8",
+          "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/output_grades.json",
+          "blob_sha1": "637ba93f0e4062a1eabec41fdd6f05d23989507e",
+          "sha256": "7064348e50166ffc277235ba213c4e4bdb86e471fd7ae0765659de04f0c11fac",
+          "bytes": 1994
+        },
+        {
+          "commit": "4fb2058e57291610e23eca1af7f0b27c6730eba8",
+          "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/tests/test_bounded_world.py",
+          "blob_sha1": "a35545bdde44823ea71de5b5bcebff4ccb48a7ee",
+          "sha256": "df54cf81252c1646c6ca26beee40a4c0c5966e1fd5932a6a3433c15681a92a6f",
+          "bytes": 9675
+        },
+        {
+          "commit": "4fb2058e57291610e23eca1af7f0b27c6730eba8",
+          "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/tests/test_bounded_world.py.proof.json",
+          "blob_sha1": "61f188e4a19162fa4127d210246433d797f91614",
+          "sha256": "8693887836dcec46eb47b1ca877a687f7260f52d94dff96f668f37c75d094852",
+          "bytes": 4981
+        },
+        {
+          "commit": "4fb2058e57291610e23eca1af7f0b27c6730eba8",
+          "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/evidence/proof_witness.json",
+          "blob_sha1": "e2807f2669675032923c220ebc353af7d097c7c5",
+          "sha256": "a6b86ad3052c69be039b70e378be98e0f021627fbd29efca5ce4f80d89afc885",
+          "bytes": 3516
+        }
+      ],
+      "unknown_bounds": {
+        "original_measured_occupancy": 0,
+        "observed_temporal_pairs": 0,
+        "real_F6_N9_join": false,
+        "independent_new_method_acceptance": false
+      },
+      "downstream_consumer_read_refs": []
+    },
+    {
+      "receipt_id": "F43-BOUNDED-F6-CANDIDATE",
+      "origin_commit": "4fb2058e57291610e23eca1af7f0b27c6730eba8",
+      "claim_id": "f6_view F6M/F6P partial conditionals; original_N9_admitted=false",
+      "grade": "SOURCEFREE_LOCAL_POSITIVE",
+      "coverage": {
+        "wave_ids": [],
+        "axis_ids": [],
+        "f_gate_ids": [],
+        "functional_gates": [
+          "F6"
+        ],
+        "register_151_ids": [],
+        "ledger_101_ids": [],
+        "global_relations": [],
+        "global_contributions": [
+          "F6"
+        ],
+        "occupancy_grain_note": "Retained or sourcefree exact scope only; zero new original measured cells"
+      },
+      "currentness": {
+        "archive_or_current": "ARCHIVE",
+        "as_of": "2026-10-19",
+        "note": "T35 TEST_CURRENT uses explicit future fixture clocks; never real CURRENT"
+      },
+      "artifacts": [
+        {
+          "commit": "4fb2058e57291610e23eca1af7f0b27c6730eba8",
+          "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/world_products.json",
+          "blob_sha1": "a3d9bea619d69b5d39d78c75e7d4ab502ff5aa57",
+          "sha256": "ecaabf1d232c0514233a9a106e43f06e19fa8664743488622eee12ff644a3c28",
+          "bytes": 24877421
+        },
+        {
+          "commit": "4fb2058e57291610e23eca1af7f0b27c6730eba8",
+          "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/f43_product.py",
+          "blob_sha1": "aa7860ae62dc774e212d376f6daed81553cd7477",
+          "sha256": "9283b1c3e1d040528fd29a5a1f7f31a93a5537fcb21c58765c59751135f64e9a",
+          "bytes": 15669
+        },
+        {
+          "commit": "4fb2058e57291610e23eca1af7f0b27c6730eba8",
+          "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/bounded_methods.py",
+          "blob_sha1": "a9a2d4a18af8d23480e3db805770e3ebd8f49fe3",
+          "sha256": "288b6e073f4a6506efa67f0aeec6dd76d4987e1d20cbf7b349558700fb4c4c7f",
+          "bytes": 9505
+        },
+        {
+          "commit": "4fb2058e57291610e23eca1af7f0b27c6730eba8",
+          "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/00_EXPECTED_WORLD_FREEZE.json",
+          "blob_sha1": "0cc0c8379b79e4a2931f77fdcb57b2f7f8b7a1e3",
+          "sha256": "f8d1c3659a256bd3e8061452d552bc759b60d6b369016a38ec47813363d6e90c",
+          "bytes": 165333
+        },
+        {
+          "commit": "4fb2058e57291610e23eca1af7f0b27c6730eba8",
+          "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/01_METHOD_ORACLE.json",
+          "blob_sha1": "b34b44650db8c5c969ee89c860d66f2dc0802bf3",
+          "sha256": "9fd79a0f89e5269c81ae44c88f0bf3f51f689593f7c214c8a3b92042de1223b4",
+          "bytes": 1768
+        },
+        {
+          "commit": "4fb2058e57291610e23eca1af7f0b27c6730eba8",
+          "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/cell_envelope_bounds.py",
+          "blob_sha1": "5e05296398d6fd5528f07268bc06302c0e75079c",
+          "sha256": "c0d5aad6e444fe1b97b3c2ef8bbf8be615c6cc3115a4f4bd6c08521796a94083",
+          "bytes": 3311
+        },
+        {
+          "commit": "4fb2058e57291610e23eca1af7f0b27c6730eba8",
+          "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/bootstrap_f43.py",
+          "blob_sha1": "f9112504994a0f847da6238e726345ffa2413b39",
+          "sha256": "338b60ac637b2cc56e69f9f342f4bbfc2a6f1ff08bf795eb891530aa2400e1e6",
+          "bytes": 1671
+        },
+        {
+          "commit": "4fb2058e57291610e23eca1af7f0b27c6730eba8",
+          "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/dependency_manifest.json",
+          "blob_sha1": "bad906832b683aba31c457e7cc4a781ca5272e03",
+          "sha256": "e35cf4c46f779264f4ed62a494acfb195fc05cce3870c248a8ae45aeb1603c21",
+          "bytes": 3596
+        },
+        {
+          "commit": "4fb2058e57291610e23eca1af7f0b27c6730eba8",
+          "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/w41_dependency.tar.gz",
+          "blob_sha1": "92a65315ae16904d528c4a9a1b1660d7ec484793",
+          "sha256": "5c4dc2dc35555939e722e4274df919f7bbac9cb9a0d8d1ac4da2a85b486df306",
+          "bytes": 3657763
+        },
+        {
+          "commit": "4fb2058e57291610e23eca1af7f0b27c6730eba8",
+          "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/evidence/imports.json",
+          "blob_sha1": "42566cfb3e635439cfbc5d440dfa2d1bfd4d5be4",
+          "sha256": "56c89a2051aa0486c028fc9077f79174ed28fd10b288d5fcd9efc81af30ed8f4",
+          "bytes": 61985
+        },
+        {
+          "commit": "4fb2058e57291610e23eca1af7f0b27c6730eba8",
+          "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/output_grades.json",
+          "blob_sha1": "637ba93f0e4062a1eabec41fdd6f05d23989507e",
+          "sha256": "7064348e50166ffc277235ba213c4e4bdb86e471fd7ae0765659de04f0c11fac",
+          "bytes": 1994
+        },
+        {
+          "commit": "4fb2058e57291610e23eca1af7f0b27c6730eba8",
+          "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/tests/test_bounded_world.py",
+          "blob_sha1": "a35545bdde44823ea71de5b5bcebff4ccb48a7ee",
+          "sha256": "df54cf81252c1646c6ca26beee40a4c0c5966e1fd5932a6a3433c15681a92a6f",
+          "bytes": 9675
+        },
+        {
+          "commit": "4fb2058e57291610e23eca1af7f0b27c6730eba8",
+          "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/tests/test_bounded_world.py.proof.json",
+          "blob_sha1": "61f188e4a19162fa4127d210246433d797f91614",
+          "sha256": "8693887836dcec46eb47b1ca877a687f7260f52d94dff96f668f37c75d094852",
+          "bytes": 4981
+        },
+        {
+          "commit": "4fb2058e57291610e23eca1af7f0b27c6730eba8",
+          "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/evidence/proof_witness.json",
+          "blob_sha1": "e2807f2669675032923c220ebc353af7d097c7c5",
+          "sha256": "a6b86ad3052c69be039b70e378be98e0f021627fbd29efca5ce4f80d89afc885",
+          "bytes": 3516
+        }
+      ],
+      "unknown_bounds": {
+        "original_measured_occupancy": 0,
+        "observed_temporal_pairs": 0,
+        "real_F6_N9_join": false,
+        "independent_new_method_acceptance": false
+      },
+      "downstream_consumer_read_refs": []
+    },
+    {
+      "receipt_id": "F43-TEMPORAL-CANDIDATE",
+      "origin_commit": "4fb2058e57291610e23eca1af7f0b27c6730eba8",
+      "claim_id": "temporal_view V553/EE1 and strict pre-guard; no observed pair",
+      "grade": "SOURCEFREE_LOCAL_POSITIVE",
+      "coverage": {
+        "wave_ids": [],
+        "axis_ids": [],
+        "f_gate_ids": [],
+        "functional_gates": [
+          "F7"
+        ],
+        "register_151_ids": [],
+        "ledger_101_ids": [],
+        "global_relations": [],
+        "global_contributions": [
+          "F7"
+        ],
+        "occupancy_grain_note": "Retained or sourcefree exact scope only; zero new original measured cells"
+      },
+      "currentness": {
+        "archive_or_current": "ARCHIVE",
+        "as_of": "2026-10-19",
+        "note": "T35 TEST_CURRENT uses explicit future fixture clocks; never real CURRENT"
+      },
+      "artifacts": [
+        {
+          "commit": "4fb2058e57291610e23eca1af7f0b27c6730eba8",
+          "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/world_products.json",
+          "blob_sha1": "a3d9bea619d69b5d39d78c75e7d4ab502ff5aa57",
+          "sha256": "ecaabf1d232c0514233a9a106e43f06e19fa8664743488622eee12ff644a3c28",
+          "bytes": 24877421
+        },
+        {
+          "commit": "4fb2058e57291610e23eca1af7f0b27c6730eba8",
+          "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/f43_product.py",
+          "blob_sha1": "aa7860ae62dc774e212d376f6daed81553cd7477",
+          "sha256": "9283b1c3e1d040528fd29a5a1f7f31a93a5537fcb21c58765c59751135f64e9a",
+          "bytes": 15669
+        },
+        {
+          "commit": "4fb2058e57291610e23eca1af7f0b27c6730eba8",
+          "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/bounded_methods.py",
+          "blob_sha1": "a9a2d4a18af8d23480e3db805770e3ebd8f49fe3",
+          "sha256": "288b6e073f4a6506efa67f0aeec6dd76d4987e1d20cbf7b349558700fb4c4c7f",
+          "bytes": 9505
+        },
+        {
+          "commit": "4fb2058e57291610e23eca1af7f0b27c6730eba8",
+          "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/00_EXPECTED_WORLD_FREEZE.json",
+          "blob_sha1": "0cc0c8379b79e4a2931f77fdcb57b2f7f8b7a1e3",
+          "sha256": "f8d1c3659a256bd3e8061452d552bc759b60d6b369016a38ec47813363d6e90c",
+          "bytes": 165333
+        },
+        {
+          "commit": "4fb2058e57291610e23eca1af7f0b27c6730eba8",
+          "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/01_METHOD_ORACLE.json",
+          "blob_sha1": "b34b44650db8c5c969ee89c860d66f2dc0802bf3",
+          "sha256": "9fd79a0f89e5269c81ae44c88f0bf3f51f689593f7c214c8a3b92042de1223b4",
+          "bytes": 1768
+        },
+        {
+          "commit": "4fb2058e57291610e23eca1af7f0b27c6730eba8",
+          "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/cell_envelope_bounds.py",
+          "blob_sha1": "5e05296398d6fd5528f07268bc06302c0e75079c",
+          "sha256": "c0d5aad6e444fe1b97b3c2ef8bbf8be615c6cc3115a4f4bd6c08521796a94083",
+          "bytes": 3311
+        },
+        {
+          "commit": "4fb2058e57291610e23eca1af7f0b27c6730eba8",
+          "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/bootstrap_f43.py",
+          "blob_sha1": "f9112504994a0f847da6238e726345ffa2413b39",
+          "sha256": "338b60ac637b2cc56e69f9f342f4bbfc2a6f1ff08bf795eb891530aa2400e1e6",
+          "bytes": 1671
+        },
+        {
+          "commit": "4fb2058e57291610e23eca1af7f0b27c6730eba8",
+          "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/dependency_manifest.json",
+          "blob_sha1": "bad906832b683aba31c457e7cc4a781ca5272e03",
+          "sha256": "e35cf4c46f779264f4ed62a494acfb195fc05cce3870c248a8ae45aeb1603c21",
+          "bytes": 3596
+        },
+        {
+          "commit": "4fb2058e57291610e23eca1af7f0b27c6730eba8",
+          "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/w41_dependency.tar.gz",
+          "blob_sha1": "92a65315ae16904d528c4a9a1b1660d7ec484793",
+          "sha256": "5c4dc2dc35555939e722e4274df919f7bbac9cb9a0d8d1ac4da2a85b486df306",
+          "bytes": 3657763
+        },
+        {
+          "commit": "4fb2058e57291610e23eca1af7f0b27c6730eba8",
+          "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/evidence/imports.json",
+          "blob_sha1": "42566cfb3e635439cfbc5d440dfa2d1bfd4d5be4",
+          "sha256": "56c89a2051aa0486c028fc9077f79174ed28fd10b288d5fcd9efc81af30ed8f4",
+          "bytes": 61985
+        },
+        {
+          "commit": "4fb2058e57291610e23eca1af7f0b27c6730eba8",
+          "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/output_grades.json",
+          "blob_sha1": "637ba93f0e4062a1eabec41fdd6f05d23989507e",
+          "sha256": "7064348e50166ffc277235ba213c4e4bdb86e471fd7ae0765659de04f0c11fac",
+          "bytes": 1994
+        },
+        {
+          "commit": "4fb2058e57291610e23eca1af7f0b27c6730eba8",
+          "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/tests/test_bounded_world.py",
+          "blob_sha1": "a35545bdde44823ea71de5b5bcebff4ccb48a7ee",
+          "sha256": "df54cf81252c1646c6ca26beee40a4c0c5966e1fd5932a6a3433c15681a92a6f",
+          "bytes": 9675
+        },
+        {
+          "commit": "4fb2058e57291610e23eca1af7f0b27c6730eba8",
+          "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/tests/test_bounded_world.py.proof.json",
+          "blob_sha1": "61f188e4a19162fa4127d210246433d797f91614",
+          "sha256": "8693887836dcec46eb47b1ca877a687f7260f52d94dff96f668f37c75d094852",
+          "bytes": 4981
+        },
+        {
+          "commit": "4fb2058e57291610e23eca1af7f0b27c6730eba8",
+          "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/evidence/proof_witness.json",
+          "blob_sha1": "e2807f2669675032923c220ebc353af7d097c7c5",
+          "sha256": "a6b86ad3052c69be039b70e378be98e0f021627fbd29efca5ce4f80d89afc885",
+          "bytes": 3516
+        }
+      ],
+      "unknown_bounds": {
+        "original_measured_occupancy": 0,
+        "observed_temporal_pairs": 0,
+        "real_F6_N9_join": false,
+        "independent_new_method_acceptance": false
+      },
+      "downstream_consumer_read_refs": []
+    },
+    {
+      "receipt_id": "F43-ORIGINAL-E04-TEST",
+      "origin_commit": "4fb2058e57291610e23eca1af7f0b27c6730eba8",
+      "claim_id": "unchanged product.nonparent.consume NONPARENT_OPTIONS under T35 TEST_ONLY rules",
+      "grade": "SOURCEFREE_INTEGRATED_POSITIVE",
+      "coverage": {
+        "wave_ids": [],
+        "axis_ids": [],
+        "f_gate_ids": [],
+        "functional_gates": [
+          "F5",
+          "F7"
+        ],
+        "register_151_ids": [],
+        "ledger_101_ids": [],
+        "global_relations": [],
+        "global_contributions": [
+          "F5",
+          "F7"
+        ],
+        "occupancy_grain_note": "Retained or sourcefree exact scope only; zero new original measured cells"
+      },
+      "currentness": {
+        "archive_or_current": "ARCHIVE",
+        "as_of": "2026-10-19",
+        "note": "T35 TEST_CURRENT uses explicit future fixture clocks; never real CURRENT"
+      },
+      "artifacts": [
+        {
+          "commit": "4fb2058e57291610e23eca1af7f0b27c6730eba8",
+          "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/world_products.json",
+          "blob_sha1": "a3d9bea619d69b5d39d78c75e7d4ab502ff5aa57",
+          "sha256": "ecaabf1d232c0514233a9a106e43f06e19fa8664743488622eee12ff644a3c28",
+          "bytes": 24877421
+        },
+        {
+          "commit": "4fb2058e57291610e23eca1af7f0b27c6730eba8",
+          "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/f43_product.py",
+          "blob_sha1": "aa7860ae62dc774e212d376f6daed81553cd7477",
+          "sha256": "9283b1c3e1d040528fd29a5a1f7f31a93a5537fcb21c58765c59751135f64e9a",
+          "bytes": 15669
+        },
+        {
+          "commit": "4fb2058e57291610e23eca1af7f0b27c6730eba8",
+          "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/bounded_methods.py",
+          "blob_sha1": "a9a2d4a18af8d23480e3db805770e3ebd8f49fe3",
+          "sha256": "288b6e073f4a6506efa67f0aeec6dd76d4987e1d20cbf7b349558700fb4c4c7f",
+          "bytes": 9505
+        },
+        {
+          "commit": "4fb2058e57291610e23eca1af7f0b27c6730eba8",
+          "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/00_EXPECTED_WORLD_FREEZE.json",
+          "blob_sha1": "0cc0c8379b79e4a2931f77fdcb57b2f7f8b7a1e3",
+          "sha256": "f8d1c3659a256bd3e8061452d552bc759b60d6b369016a38ec47813363d6e90c",
+          "bytes": 165333
+        },
+        {
+          "commit": "4fb2058e57291610e23eca1af7f0b27c6730eba8",
+          "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/01_METHOD_ORACLE.json",
+          "blob_sha1": "b34b44650db8c5c969ee89c860d66f2dc0802bf3",
+          "sha256": "9fd79a0f89e5269c81ae44c88f0bf3f51f689593f7c214c8a3b92042de1223b4",
+          "bytes": 1768
+        },
+        {
+          "commit": "4fb2058e57291610e23eca1af7f0b27c6730eba8",
+          "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/cell_envelope_bounds.py",
+          "blob_sha1": "5e05296398d6fd5528f07268bc06302c0e75079c",
+          "sha256": "c0d5aad6e444fe1b97b3c2ef8bbf8be615c6cc3115a4f4bd6c08521796a94083",
+          "bytes": 3311
+        },
+        {
+          "commit": "4fb2058e57291610e23eca1af7f0b27c6730eba8",
+          "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/bootstrap_f43.py",
+          "blob_sha1": "f9112504994a0f847da6238e726345ffa2413b39",
+          "sha256": "338b60ac637b2cc56e69f9f342f4bbfc2a6f1ff08bf795eb891530aa2400e1e6",
+          "bytes": 1671
+        },
+        {
+          "commit": "4fb2058e57291610e23eca1af7f0b27c6730eba8",
+          "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/dependency_manifest.json",
+          "blob_sha1": "bad906832b683aba31c457e7cc4a781ca5272e03",
+          "sha256": "e35cf4c46f779264f4ed62a494acfb195fc05cce3870c248a8ae45aeb1603c21",
+          "bytes": 3596
+        },
+        {
+          "commit": "4fb2058e57291610e23eca1af7f0b27c6730eba8",
+          "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/w41_dependency.tar.gz",
+          "blob_sha1": "92a65315ae16904d528c4a9a1b1660d7ec484793",
+          "sha256": "5c4dc2dc35555939e722e4274df919f7bbac9cb9a0d8d1ac4da2a85b486df306",
+          "bytes": 3657763
+        },
+        {
+          "commit": "4fb2058e57291610e23eca1af7f0b27c6730eba8",
+          "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/evidence/imports.json",
+          "blob_sha1": "42566cfb3e635439cfbc5d440dfa2d1bfd4d5be4",
+          "sha256": "56c89a2051aa0486c028fc9077f79174ed28fd10b288d5fcd9efc81af30ed8f4",
+          "bytes": 61985
+        },
+        {
+          "commit": "4fb2058e57291610e23eca1af7f0b27c6730eba8",
+          "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/output_grades.json",
+          "blob_sha1": "637ba93f0e4062a1eabec41fdd6f05d23989507e",
+          "sha256": "7064348e50166ffc277235ba213c4e4bdb86e471fd7ae0765659de04f0c11fac",
+          "bytes": 1994
+        },
+        {
+          "commit": "4fb2058e57291610e23eca1af7f0b27c6730eba8",
+          "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/tests/test_bounded_world.py",
+          "blob_sha1": "a35545bdde44823ea71de5b5bcebff4ccb48a7ee",
+          "sha256": "df54cf81252c1646c6ca26beee40a4c0c5966e1fd5932a6a3433c15681a92a6f",
+          "bytes": 9675
+        },
+        {
+          "commit": "4fb2058e57291610e23eca1af7f0b27c6730eba8",
+          "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/tests/test_bounded_world.py.proof.json",
+          "blob_sha1": "61f188e4a19162fa4127d210246433d797f91614",
+          "sha256": "8693887836dcec46eb47b1ca877a687f7260f52d94dff96f668f37c75d094852",
+          "bytes": 4981
+        },
+        {
+          "commit": "4fb2058e57291610e23eca1af7f0b27c6730eba8",
+          "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/evidence/proof_witness.json",
+          "blob_sha1": "e2807f2669675032923c220ebc353af7d097c7c5",
+          "sha256": "a6b86ad3052c69be039b70e378be98e0f021627fbd29efca5ce4f80d89afc885",
+          "bytes": 3516
+        }
+      ],
+      "unknown_bounds": {
+        "original_measured_occupancy": 0,
+        "observed_temporal_pairs": 0,
+        "real_F6_N9_join": false,
+        "independent_new_method_acceptance": false
+      },
+      "downstream_consumer_read_refs": []
+    }
+  ],
+  "full_original_product_complete": false
+}

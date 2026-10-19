@@ -45,6 +45,10 @@ def make_bank(commit):
     products = json.loads(gp.blob_at(commit, prefix + '/world_products.json'))
     artifact_paths = ['world_products.json', 'f43_product.py', 'bounded_methods.py',
                       '00_EXPECTED_WORLD_FREEZE.json', '01_METHOD_ORACLE.json',
+                      'cell_envelope_bounds.py', 'bootstrap_f43.py',
+                      'dependency_manifest.json', 'w41_dependency.tar.gz',
+                      'evidence/imports.json', 'output_grades.json',
+                      'tests/test_bounded_world.py', 'tests/test_bounded_world.py.proof.json',
                       'evidence/proof_witness.json']
     artifacts = [gp.verify(commit, prefix + '/' + path) for path in artifact_paths]
     defs = [
