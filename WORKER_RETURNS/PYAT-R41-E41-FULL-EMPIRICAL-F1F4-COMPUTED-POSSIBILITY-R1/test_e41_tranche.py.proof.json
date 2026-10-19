@@ -1,0 +1,38 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "claims": [
+    {
+      "claim_id": "E41_NO_DROP_EXPECTED_UNIVERSE_EDGE",
+      "actual_consumer": "e41_tranche.run_tranche submitted-workload execution report (dropped_operations/no_drop_ok fields)",
+      "claimed_dependency": "frozen expected-use universe -> submitted workload must execute every eligible operation; dropping one must be detected",
+      "positive_node": "WORKER_RETURNS/PYAT-R41-E41-FULL-EMPIRICAL-F1F4-COMPUTED-POSSIBILITY-R1/test_e41_tranche.py::test_no_drop_discriminator_a_dropped_eligible_operation_is_detected",
+      "fault": {
+        "path": "WORKER_RETURNS/PYAT-R41-E41-FULL-EMPIRICAL-F1F4-COMPUTED-POSSIBILITY-R1/e41_tranche.py",
+        "old": "    dropped = [op_id for op_id in expected_ids if op_id not in executed_ids]",
+        "new": "    dropped = []"
+      }
+    },
+    {
+      "claim_id": "E41_COMPUTED_SLICE_DENOMINATOR_PROVENANCE_EDGE",
+      "actual_consumer": "original E04 product.nonparent.consume receipt step denominator/cells (via E41ComputedSliceService)",
+      "claimed_dependency": "accepted C1 composition geometry -> E41 N10E computed step -> E04 client-visible denominator 60 and cells yes=54/no=6",
+      "positive_node": "WORKER_RETURNS/PYAT-R41-E41-FULL-EMPIRICAL-F1F4-COMPUTED-POSSIBILITY-R1/test_e41_tranche.py::test_e04_client_receipt_denominator_is_computed_not_fixture",
+      "fault": {
+        "path": "WORKER_RETURNS/PYAT-R41-E41-FULL-EMPIRICAL-F1F4-COMPUTED-POSSIBILITY-R1/e41_e04_service.py",
+        "old": "        \"denominator\": int(result.composition_result.raw_denominator_support),",
+        "new": "        \"denominator\": 999,"
+      }
+    },
+    {
+      "claim_id": "E41_DIRECT_ROUTE_DELEGATION_EDGE",
+      "actual_consumer": "e41_provider_extension direct-route result base_result_or_null (accepted provider function object reuse)",
+      "claimed_dependency": "single-conditioner direct request -> accepted provide_empirical_possibility_slice function itself",
+      "positive_node": "WORKER_RETURNS/PYAT-R41-E41-FULL-EMPIRICAL-F1F4-COMPUTED-POSSIBILITY-R1/test_e41_tranche.py::test_direct_route_delegates_to_accepted_provider_object",
+      "fault": {
+        "path": "WORKER_RETURNS/PYAT-R41-E41-FULL-EMPIRICAL-F1F4-COMPUTED-POSSIBILITY-R1/e41_provider_extension.py",
+        "old": "    if len(consumer_query.conditioner_bindings) != 1:",
+        "new": "    if True:"
+      }
+    }
+  ]
+}
