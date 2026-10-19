@@ -1,0 +1,103 @@
+--- /Users/matthewsmith/Desktop/sorok_c0r3/WORKER_RETURNS/SOROK-20261019-C0R3-C0X-ENDTOEND-TRANSPORT-REPAIR-R1/original/c0p_repaired_author.py	2026-10-19 11:52:24
++++ /Users/matthewsmith/Desktop/sorok_c0r3/WORKER_RETURNS/SOROK-20261019-C0R3-C0X-ENDTOEND-TRANSPORT-REPAIR-R1/candidate/upstream/c0p_two_contract_port.py	2026-10-19 12:06:17
+@@ -1,6 +1,11 @@
+ #!/usr/bin/env python3
+-"""C0P — two-contract transport facade + consumer receipts.
++"""C0P-C0R3 — two-contract transport facade + consumer receipts.
+ 
++C0R3 correction: the root ordered-step parent ref is materialized as the
++declared TEST_ONLY ExactRef (never a callable), and a missing native source_ref
++under an unavailable clock becomes a typed facade refusal, not a TypeError.
++
++
+ SC0's rule, implemented literally:
+ 
+   * Two SEPARATE owners. N9 (selected world) and N10E/N10W (ordered empirical
+@@ -46,6 +51,7 @@
+ if str(RUNTIME) not in sys.path:
+     sys.path.insert(0, str(RUNTIME))
+ 
++C0R3_REVISION = "C0R3_LOSSLESS_PARENT_REF_AND_TYPED_SOURCE_REFUSAL@1"
+ CONTRACT_N9 = "N9"
+ CONTRACT_N10 = "N10E_N10W"
+ ENV_WORLD_SELECTION = "GENERIC_WORLD_SELECTION@1.0.0"
+@@ -71,6 +77,20 @@
+     return {"kind": r["kind"], "id": r["object_id"], "hash": r["content_hash"]}
+ 
+ 
++class TemporalSourceRefUnavailable(FacadeRefusal):
++    """A native value-read has no source_ref under the requested clock.
++
++    This is a Sorok receiving-facade typed refusal. It neither fabricates a
++    reference nor converts the unavailable clock into a positive value.
++    """
++
++    def __init__(self, code: str, consumer: str, fields: list[str]):
++        self.code = code
++        self.consumer = consumer
++        self.fields = tuple(fields)
++        super().__init__(f"{code}:{consumer}:" + ";".join(self.fields))
++
++
+ @dataclass(frozen=True)
+ class TwoContractReceipt:
+     """One receipt PER OWNER. Never a merged estimator object.
+@@ -123,6 +143,19 @@
+     def select(self, **select_kwargs):
+         select_kwargs.setdefault("mode", "AS_OF")
+         return self._service.select(**select_kwargs)
++
++    def _source_value_refs(self, mat, consumer):
++        missing = []
++        for value in mat.get("values_read", []):
++            if not isinstance(value.get("source_ref"), dict):
++                missing.append(
++                    f"{value.get('channel', '?')}:{value.get('scope', '?')}:"
++                    f"{value.get('state', '?')}")
++        if missing:
++            raise TemporalSourceRefUnavailable(
++                "TEMPORAL_SOURCE_REF_UNAVAILABLE_AT_ASOF", consumer, missing)
++        return [_ref_from_native(value["source_ref"])
++                for value in mat.get("values_read", [])]
+ 
+     # -- consumers: each is its own owner-bound call ------------------------
+     def consume_nonparent(self, snapshot, *, budget_tokens=5):
+@@ -200,7 +233,7 @@
+         def er(kind, value):
+             return _ref(kind, f"urn:test:e04:{kind.lower()}:{value}", value)
+ 
+-        values_refs = [_ref_from_native(v["source_ref"]) for v in mat["values_read"]]
++        values_refs = self._source_value_refs(mat, consumer)
+ 
+         native_scopes = [{
+             "native_unit_ref": er("NativeUnit", ident["native_unit"]),
+@@ -319,15 +352,15 @@
+         ident = self._service.catalog.empirical_identity()
+         prov = self._service.provider
+ 
+-        def er0():
+-            return {"kind": "OrderedConditionStep", "id": "urn:test:c0p:step:root",
+-                    "hash": semantic_hash("root")}
++        root_parent_ref = {"kind": "OrderedConditionStep",
++                           "id": "urn:test:c0p:step:root",
++                           "hash": semantic_hash("root")}
+ 
+         steps = []
+         for i, st in enumerate(emp["steps"]):
+             steps.append({
+                 "step_index": i,
+-                "parent_receipt_ref": (er0 if i == 0 else
++                "parent_receipt_ref": (dict(root_parent_ref) if i == 0 else
+                                        {"kind": "OrderedConditionStep",
+                                         "id": f"urn:test:c0p:step:{consumer}:{i-1}",
+                                         "hash": semantic_hash(emp["steps"][i-1])}),
+@@ -407,8 +440,7 @@
+                                     "hash": semantic_hash(consumer)},
+                       "reason": "SOURCEFREE_ORDERED_POSSIBILITY_TEST_ONLY",
+                       "recoverability": "NONE_SOURCE_INTRINSIC"},
+-            "values_read_refs": [_ref_from_native(v["source_ref"])
+-                                 for v in mat["values_read"]],
++            "values_read_refs": self._source_value_refs(mat, consumer),
+             "replay_ref": {"kind": "Replay",
+                            "id": f"urn:test:c0p:replay:{consumer}",
+                            "hash": semantic_hash([snapshot.snapshot_hash,

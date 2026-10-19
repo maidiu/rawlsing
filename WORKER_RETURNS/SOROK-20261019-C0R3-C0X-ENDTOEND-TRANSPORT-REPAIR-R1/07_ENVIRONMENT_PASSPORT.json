@@ -1,0 +1,99 @@
+{
+  "assignments_completed": [
+    "C0R3 two-owner N9/N10 transport and C10 receiver correction"
+  ],
+  "authorization_grade": "BOUNDED_SOURCEFREE_C0_C10_OWNER_RECEIVER_IMPLEMENTATION",
+  "claim_grade": "C0R3_SOURCEFREE_TWO_OWNER_TRANSPORT_REPAIR_PENDING_I2",
+  "custody": {
+    "absolute_host_paths_published": false,
+    "actual_import_modules": 11,
+    "corrected_facade_sha256": "6e828fd83fa71c7797427d00978279d78adca7dab8ae080ba4eca6f9f2469749",
+    "corrected_receiver_sha256": "54fd2f354899214669fa53b162679bd4de573a15234717745be5bf1a6f8aa65b",
+    "native29": {
+      "all_blob_match": true,
+      "bytes": 859712,
+      "closure_resolves": true,
+      "count": 29
+    },
+    "no_native_bytes_committed_in_runtime": true,
+    "original_c0x_receiver_sha256": "a49dae6203789b6558683eaafd61d2051bab6a6afd91369d01f18f79fd6786e0",
+    "original_repaired_facade_sha256": "fa08d5f56fb4316131de1b989796071472d81cc0f968f734ee4e828625af708f"
+  },
+  "environment_id": "local-darwin-shared-store-c0r3",
+  "epoch_id": "c0r3-20261019-1",
+  "expiry_trigger": "retire on interpreter/package change, branch reset, startup/candidate byte change or authority widening",
+  "git": {
+    "command": "git",
+    "version": "git version 2.39.1"
+  },
+  "incremental_money": "UNKNOWN",
+  "interpreter": {
+    "command": "python3",
+    "implementation": "CPython",
+    "version": "3.11.3"
+  },
+  "last_live_probe_at": "2026-10-19T16:09:02Z",
+  "machine_alias": "darwin-x86_64-local",
+  "next_domain_affinity": [
+    "independent I2 of C0R3",
+    "C11 weld owner decision",
+    "Pyat native typed temporal refusal interface"
+  ],
+  "proof": {
+    "all_target_assertions_failed": true,
+    "claims": 3,
+    "facade_restored": true,
+    "gate_return_code": 0
+  },
+  "provider": {
+    "billing_class": "UNKNOWN",
+    "model": "V4.1-Flash",
+    "name": "DeepSeek",
+    "reasoning_effort": "standard"
+  },
+  "pytest": {
+    "command": "python3 -m pytest",
+    "version": "pytest 9.1.1"
+  },
+  "quota_tier": "UNKNOWN",
+  "reviewer_conflicts": [
+    "not R3-I2/C0X author of record for independent adoption",
+    "no self-adoption",
+    "no HQ authority"
+  ],
+  "schema": "SOROK_00D_SANITIZED_ENVIRONMENT_PASSPORT@1",
+  "session_alias": "deepseek-flash-c0r3-sourcefree-owner-receiver",
+  "source_privacy_gate": "no original survey row, SAV/DTA, credential, private source file or actor data read; only private Git source and TEST_ONLY fixtures",
+  "status": "LIVE_VERIFIED",
+  "surface": "existing local full Git checkout worktree with CPython/pytest/subprocess/filesystem",
+  "test_execution": {
+    "c0i_corrected": "50 PASS",
+    "c0i_original": "47 PASS / 3 RED",
+    "c0i_repaired": "50 PASS",
+    "c0p49": "49 PASS",
+    "c0r2_corrected": "23 PASS",
+    "c0r2_repaired": "23 PASS",
+    "c0r3_new": "13 PASS",
+    "c0x_original": "15 PASS (transport HOLD preserved)",
+    "cold": "two fresh processes equal",
+    "errors": 0,
+    "expected_red": 3,
+    "k9k10": "36 PASS fixture",
+    "passed": 306,
+    "skipped": 0,
+    "suites": 9,
+    "tests": 309
+  },
+  "worktree": {
+    "branch": "agent/rabochii-sorok-20261019-c0r3-c0x-endtoend-transport-repair-r1",
+    "c0r2": "55d2daa4bab41c5ff4ffdc196c8d36d300c3d60f",
+    "c0x": "b02deee1bac9393921845caa657841c40408eaf6",
+    "no_sparse_skip_worktree": true,
+    "sealed_startup": "0a0f8e99d9117a88a51d67b3b2b51f4f618cbaab",
+    "startup_parent": "401a14f54624f8a7f627154d2f2f57d7316a1fe0"
+  },
+  "writable_marker": {
+    "path": "WORKER_RETURNS/SOROK-20261019-C0R3-C0X-ENDTOEND-TRANSPORT-REPAIR-R1",
+    "writable": true
+  }
+}

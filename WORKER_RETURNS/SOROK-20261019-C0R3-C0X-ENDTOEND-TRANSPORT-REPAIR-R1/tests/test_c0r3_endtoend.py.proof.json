@@ -1,0 +1,38 @@
+{
+  "claims": [
+    {
+      "actual_consumer": "candidate/c0x_world_receiver.py receive_receipt over the actual C0P N9 WorldReceipt",
+      "claim_id": "C0R3_N9_SELECTION_DRIVES_THE_ACTUAL_C0X_RECEIVER",
+      "claimed_dependency": "the C0X receiving client reads the N9 selected-world selection/payloads through the complete 17-field owner receipt; removing the selection source makes the named end-to-end assertion fail",
+      "fault": {
+        "new": "            \"selection\": [],",
+        "old": "            \"selection\": selection,",
+        "path": "candidate/upstream/c0p_two_contract_port.py"
+      },
+      "positive_node": "tests/test_c0r3_endtoend.py::test_relocated_candidate_preserves_both_owner_sources_and_json_values"
+    },
+    {
+      "actual_consumer": "candidate/c0x_world_receiver.py receive_receipt over the actual C0P N10E_N10W PossibilityReceipt",
+      "claim_id": "C0R3_N10_ORDERED_STEPS_DRIVE_THE_ACTUAL_C0X_RECEIVER",
+      "claimed_dependency": "the C0X receiving client reads the N10E/N10W ordered possibility steps through the complete 20-field owner receipt; removing the steps source makes the named end-to-end assertion fail",
+      "fault": {
+        "new": "            \"ordered_steps\": [],",
+        "old": "            \"ordered_steps\": steps,",
+        "path": "candidate/upstream/c0p_two_contract_port.py"
+      },
+      "positive_node": "tests/test_c0r3_endtoend.py::test_relocated_candidate_preserves_both_owner_sources_and_json_values"
+    },
+    {
+      "actual_consumer": "candidate/c0x_world_receiver.py PARENT_RECEIPT_REF_NOT_EXACT validation and JSON transport of the actual N10E_N10W receipt",
+      "claim_id": "C0R3_ROOT_PARENT_REF_IS_MATERIALIZED_NOT_CALLABLE",
+      "claimed_dependency": "the root ordered-step parent must be a materialized exact {kind,id,hash} ref; replacing it with a non-transportable value makes the named assertion fail",
+      "fault": {
+        "new": "                \"parent_receipt_ref\": (None if i == 0 else",
+        "old": "                \"parent_receipt_ref\": (dict(root_parent_ref) if i == 0 else",
+        "path": "candidate/upstream/c0p_two_contract_port.py"
+      },
+      "positive_node": "tests/test_c0r3_endtoend.py::test_corrected_parent_ref_is_materialized_exact_ref"
+    }
+  ],
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1"
+}

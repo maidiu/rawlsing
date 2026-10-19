@@ -1,0 +1,30 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "status": "MECHANICAL_WITNESS_PASS_NOT_SEMANTIC_ADOPTION",
+  "claims": [
+    {
+      "claim_id": "C0R3_N9_SELECTION_DRIVES_THE_ACTUAL_C0X_RECEIVER",
+      "positive_node": "tests/test_c0r3_endtoend.py::test_relocated_candidate_preserves_both_owner_sources_and_json_values",
+      "fault_path": "candidate/upstream/c0p_two_contract_port.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    },
+    {
+      "claim_id": "C0R3_N10_ORDERED_STEPS_DRIVE_THE_ACTUAL_C0X_RECEIVER",
+      "positive_node": "tests/test_c0r3_endtoend.py::test_relocated_candidate_preserves_both_owner_sources_and_json_values",
+      "fault_path": "candidate/upstream/c0p_two_contract_port.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    },
+    {
+      "claim_id": "C0R3_ROOT_PARENT_REF_IS_MATERIALIZED_NOT_CALLABLE",
+      "positive_node": "tests/test_c0r3_endtoend.py::test_corrected_parent_ref_is_materialized_exact_ref",
+      "fault_path": "candidate/upstream/c0p_two_contract_port.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    }
+  ]
+}

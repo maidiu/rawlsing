@@ -1,0 +1,58 @@
+{
+  "schema": "SOROK_C0R3_SOURCE_AND_CLOCK_LIMITS@1",
+  "clock_roles": {
+    "observation_effective": {"role": "native observation/effective field period", "known_claim": "exact source field time from selected snapshot", "no_archival_known_at_upper_bound": true},
+    "publication_knowledge": {"role": "publication/knowledge clock", "known_claim": "exact publication date and requested knowledge as-of", "no_entitlement_reconstruction": true},
+    "actor_event": {"role": "caller-owned scene/event clock", "known_claim": "caller owns time; no generated actor time", "caller_owns_time": true},
+    "request_currentness": {"role": "consumer request currentness", "known_claim": "requested as-of currentness", "no_operative_current": true}
+  },
+  "mode": "KNOWLEDGE_AS_OF",
+  "prepublication_unavailable_clock": {
+    "observed_native_state": "UNAVAILABLE_PUBLICATION_OR_EFFECTIVE_CLOCK",
+    "original_failure": "TypeError: 'NoneType' object is not subscriptable",
+    "corrected_sorok_refusal": "TEMPORAL_SOURCE_REF_UNAVAILABLE_AT_ASOF",
+    "fields_named": [
+      "structural:training_access:UNAVAILABLE_PUBLICATION_OR_EFFECTIVE_CLOCK",
+      "structural:training_fee:UNAVAILABLE_PUBLICATION_OR_EFFECTIVE_CLOCK",
+      "structural:exit_cost:UNAVAILABLE_PUBLICATION_OR_EFFECTIVE_CLOCK",
+      "structural:civil_open:UNAVAILABLE_PUBLICATION_OR_EFFECTIVE_CLOCK",
+      "structural:civil_sanction:UNAVAILABLE_PUBLICATION_OR_EFFECTIVE_CLOCK",
+      "empirical:empirical:UNAVAILABLE_PUBLICATION_OR_EFFECTIVE_CLOCK"
+    ],
+    "positive_receipt_issued": false,
+    "blank_or_unknown_became_positive": false
+  },
+  "postpublication": {
+    "after_publication_supported": true,
+    "same_complete_owner_contracts": true,
+    "no_archival_known_at_upper_bound": true
+  },
+  "source_ref_limits": {
+    "native_source_ref": "native n9c/E04 value-read source_ref required",
+    "sorok_refusal_is_not_pyat_semantic_repair": true,
+    "pyat_owner_edit": false,
+    "external_interface_request": "If Pyat later issues a richer typed temporal/source refusal, the Sorok facade may consume it; this return does not require or claim that Pyat change.",
+    "fabricated_source_grant": false
+  },
+  "parent_identity": {
+    "root_ref": {"kind": "OrderedConditionStep", "id": "urn:test:c0p:step:root", "hash": "semantic_hash('root')"},
+    "materialized_not_invented": true,
+    "child_refs": "hash of previous native empirical step via previous new_binding.hash",
+    "callable_parent_ref_present_in_corrected_candidate": false
+  },
+  "no_actor_or_probability": {
+    "route_probability": null,
+    "selection_weight": null,
+    "same_respondent_joint_ref": null,
+    "composition_mode": "REFUSED",
+    "actor_generation": false,
+    "person_generation": false,
+    "actual_conception": false
+  },
+  "source_grade": {
+    "native29": "29/29 Git blob match, 859712 bytes, closure resolves",
+    "K9_K10": "SOURCEFREE_FIXTURE_PORT__NOT_OPERATIVE_N9",
+    "C0X_C0R3": "TEST_ONLY_SOURCEFREE_TWO_OWNER_READ_ONLY",
+    "real_source_or_actor": false
+  }
+}

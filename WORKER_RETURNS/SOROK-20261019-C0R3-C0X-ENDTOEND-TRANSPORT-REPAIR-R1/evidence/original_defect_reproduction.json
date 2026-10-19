@@ -1,0 +1,28 @@
+{
+  "original_c0x_root": "SOROK-20261019-C0X-C0-C10-DUAL-OWNER-RECEIVER-COMPLETION-R1",
+  "original_parent_ref": {
+    "callable": true,
+    "path": "possibility_receipt.ordered_steps[0].parent_receipt_ref",
+    "qualname": "TwoContractPort._possibility_receipt.<locals>.er0",
+    "type": "function"
+  },
+  "possibility_json_error": {
+    "message": "Object of type function is not JSON serializable",
+    "type": "TypeError"
+  },
+  "receiver_transport": {
+    "json_serializable": false,
+    "non_transportable_fields": [
+      "possibility_receipt.ordered_steps[0].parent_receipt_ref"
+    ],
+    "possibility_receipt_fields": 20,
+    "state": "NON_TRANSPORTABLE_OWNER_FIELD",
+    "world_receipt_fields": 17
+  },
+  "schema": "SOROK_C0R3_INHERITED_DEFECT_REPRODUCTION@1",
+  "temporal_early_clock": {
+    "message": "'NoneType' object is not subscriptable",
+    "traceback_last_line": "TypeError: 'NoneType' object is not subscriptable",
+    "type": "TypeError"
+  }
+}

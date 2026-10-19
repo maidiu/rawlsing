@@ -1,0 +1,363 @@
+{
+  "all_expected_outcomes": true,
+  "cold": [
+    {
+      "label": "cold_a",
+      "log": "c0r3_cold_cold_a.log",
+      "return_code": 0
+    },
+    {
+      "label": "cold_b",
+      "log": "c0r3_cold_cold_b.log",
+      "return_code": 0
+    }
+  ],
+  "cold_equal": true,
+  "cold_payload": {
+    "conception": {
+      "consumer": "CONCEPTION_SCENARIO_PROPOSALS",
+      "evidence_state": "SUPPORTED",
+      "json_serializable": true,
+      "json_sha256": "84704a3698cbb606071f177e9e93cc6a129ec272b0196871dd8166386d0d2201",
+      "ordered_steps": 3,
+      "owner_receipt_hash": "33251a740daff14a0920c4375b0b8577842cf812f5444e07b8313f5730fc3fde",
+      "parent0": {
+        "hash": "956e6e33fe8b21fbf3e7e43d41c304862c78627deb92e26a72fd2b3b57bc60f2",
+        "id": "urn:test:c0p:step:root",
+        "kind": "OrderedConditionStep"
+      },
+      "possibility_fields": 20,
+      "selection": 5,
+      "transport": "LOSSLESS_TWO_CONTRACT_OBJECT",
+      "values_read": 6,
+      "world_fields": 17
+    },
+    "nonparent": {
+      "consumer": "NONPARENT_OPTIONS",
+      "evidence_state": "SUPPORTED",
+      "json_serializable": true,
+      "json_sha256": "ff7aa59761f2c287e5076d2f716b743cafbe97d714b89eb80c71a79c8ac6aef3",
+      "ordered_steps": 3,
+      "owner_receipt_hash": "52e10a2fd0ce21b30f535b2786d45d4bd88817f174caa006e5ba7f0589d851ec",
+      "parent0": {
+        "hash": "956e6e33fe8b21fbf3e7e43d41c304862c78627deb92e26a72fd2b3b57bc60f2",
+        "id": "urn:test:c0p:step:root",
+        "kind": "OrderedConditionStep"
+      },
+      "possibility_fields": 20,
+      "selection": 5,
+      "transport": "LOSSLESS_TWO_CONTRACT_OBJECT",
+      "values_read": 8,
+      "world_fields": 17
+    }
+  },
+  "corrected_facade_sha256": "6e828fd83fa71c7797427d00978279d78adca7dab8ae080ba4eca6f9f2469749",
+  "corrected_receiver_sha256": "54fd2f354899214669fa53b162679bd4de573a15234717745be5bf1a6f8aa65b",
+  "environment": {
+    "pytest": "pytest 9.1.1",
+    "python": "3.11.3"
+  },
+  "evidence_sanitized_files": 11,
+  "historical_red_accounting": {
+    "c0i_corrected": "50 PASS",
+    "c0i_original": "47 PASS / 3 RED preserved",
+    "c0i_repaired": "50 PASS",
+    "c0r2_vacuous": "23 PASS; vacuous 'or True' preserved, not counted as proof",
+    "c0x_original": "15 PASS; inherited transport HOLD preserved on original",
+    "k9k10": "36 PASS; SOURCEFREE_FIXTURE_PORT__NOT_OPERATIVE_N9"
+  },
+  "original_defect": {
+    "original_c0x_root": "SOROK-20261019-C0X-C0-C10-DUAL-OWNER-RECEIVER-COMPLETION-R1",
+    "original_parent_ref": {
+      "callable": true,
+      "path": "possibility_receipt.ordered_steps[0].parent_receipt_ref",
+      "qualname": "TwoContractPort._possibility_receipt.<locals>.er0",
+      "type": "function"
+    },
+    "possibility_json_error": {
+      "message": "Object of type function is not JSON serializable",
+      "type": "TypeError"
+    },
+    "receiver_transport": {
+      "json_serializable": false,
+      "non_transportable_fields": [
+        "possibility_receipt.ordered_steps[0].parent_receipt_ref"
+      ],
+      "possibility_receipt_fields": 20,
+      "state": "NON_TRANSPORTABLE_OWNER_FIELD",
+      "world_receipt_fields": 17
+    },
+    "schema": "SOROK_C0R3_INHERITED_DEFECT_REPRODUCTION@1",
+    "temporal_early_clock": {
+      "message": "'NoneType' object is not subscriptable",
+      "traceback_last_line": "TypeError: 'NoneType' object is not subscriptable",
+      "type": "TypeError"
+    }
+  },
+  "proof_gate": {
+    "expected_facade": "6e828fd83fa71c7797427d00978279d78adca7dab8ae080ba4eca6f9f2469749",
+    "facade_after": "6e828fd83fa71c7797427d00978279d78adca7dab8ae080ba4eca6f9f2469749",
+    "receipt": {
+      "claims": [
+        {
+          "baseline": "PASS",
+          "claim_id": "C0R3_N9_SELECTION_DRIVES_THE_ACTUAL_C0X_RECEIVER",
+          "fault_path": "candidate/upstream/c0p_two_contract_port.py",
+          "fault_probe": "TARGET_ASSERTION_FAILED",
+          "grade": "BOUNDED_MUTATION_DETECTED",
+          "positive_node": "tests/test_c0r3_endtoend.py::test_relocated_candidate_preserves_both_owner_sources_and_json_values"
+        },
+        {
+          "baseline": "PASS",
+          "claim_id": "C0R3_N10_ORDERED_STEPS_DRIVE_THE_ACTUAL_C0X_RECEIVER",
+          "fault_path": "candidate/upstream/c0p_two_contract_port.py",
+          "fault_probe": "TARGET_ASSERTION_FAILED",
+          "grade": "BOUNDED_MUTATION_DETECTED",
+          "positive_node": "tests/test_c0r3_endtoend.py::test_relocated_candidate_preserves_both_owner_sources_and_json_values"
+        },
+        {
+          "baseline": "PASS",
+          "claim_id": "C0R3_ROOT_PARENT_REF_IS_MATERIALIZED_NOT_CALLABLE",
+          "fault_path": "candidate/upstream/c0p_two_contract_port.py",
+          "fault_probe": "TARGET_ASSERTION_FAILED",
+          "grade": "BOUNDED_MUTATION_DETECTED",
+          "positive_node": "tests/test_c0r3_endtoend.py::test_corrected_parent_ref_is_materialized_exact_ref"
+        }
+      ],
+      "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+      "status": "MECHANICAL_WITNESS_PASS_NOT_SEMANTIC_ADOPTION"
+    },
+    "restored": true,
+    "return_code": 0
+  },
+  "schema": "SOROK_C0R3_EXECUTION_SUMMARY@1",
+  "suites": [
+    {
+      "actual": {
+        "errors": 0,
+        "failed": 0,
+        "failing": [],
+        "passed": 49,
+        "skipped": 0,
+        "tests": 49
+      },
+      "cwd": "historical/WORKER_RETURNS/SOROK-R3-HQ319-C0P-GENERIC-PORT-POSITIVE-R1",
+      "expected": {
+        "failed": 0,
+        "passed": 49,
+        "tests": 49
+      },
+      "files": [
+        "tests/test_c0p_generic_port.py"
+      ],
+      "log": "c0p49_original.log",
+      "matched": true,
+      "name": "c0p49_original",
+      "return_code": 0,
+      "xml": "c0p49_original.xml"
+    },
+    {
+      "actual": {
+        "errors": 0,
+        "failed": 3,
+        "failing": [
+          "test_port_runtime_binding_uses_actual_imported_native_module_tree",
+          "test_facade_exposes_two_distinct_owner_contract_receipts_not_two_N9_clients",
+          "test_facade_receipt_roundtrips_frozen_SC0_envelope_not_only_a_consumer_hash"
+        ],
+        "passed": 47,
+        "skipped": 0,
+        "tests": 50
+      },
+      "cwd": "historical/c0i_original/SOROK-R3-HQ320-C0I-C0P-INDEPENDENT-R1",
+      "expected": {
+        "failed": 3,
+        "passed": 47,
+        "tests": 50
+      },
+      "files": [
+        "repro/test_c0i.py"
+      ],
+      "log": "c0i50_original.log",
+      "matched": true,
+      "name": "c0i50_original",
+      "return_code": 1,
+      "xml": "c0i50_original.xml"
+    },
+    {
+      "actual": {
+        "errors": 0,
+        "failed": 0,
+        "failing": [],
+        "passed": 50,
+        "skipped": 0,
+        "tests": 50
+      },
+      "cwd": "historical/c0i_repaired/SOROK-R3-HQ320-C0I-C0P-INDEPENDENT-R1",
+      "expected": {
+        "failed": 0,
+        "passed": 50,
+        "tests": 50
+      },
+      "files": [
+        "repro/test_c0i.py"
+      ],
+      "log": "c0i50_repaired.log",
+      "matched": true,
+      "name": "c0i50_repaired",
+      "return_code": 0,
+      "xml": "c0i50_repaired.xml"
+    },
+    {
+      "actual": {
+        "errors": 0,
+        "failed": 0,
+        "failing": [],
+        "passed": 50,
+        "skipped": 0,
+        "tests": 50
+      },
+      "cwd": "historical/c0i_corrected/SOROK-R3-HQ320-C0I-C0P-INDEPENDENT-R1",
+      "expected": {
+        "failed": 0,
+        "passed": 50,
+        "tests": 50
+      },
+      "files": [
+        "repro/test_c0i.py"
+      ],
+      "log": "c0i50_corrected.log",
+      "matched": true,
+      "name": "c0i50_corrected",
+      "return_code": 0,
+      "xml": "c0i50_corrected.xml"
+    },
+    {
+      "actual": {
+        "errors": 0,
+        "failed": 0,
+        "failing": [],
+        "passed": 23,
+        "skipped": 0,
+        "tests": 23
+      },
+      "cwd": "historical/c0r2_repaired/SOROK-V2-HQ323-C0R2-GIT-BACKED-REPAIR-R1",
+      "expected": {
+        "failed": 0,
+        "passed": 23,
+        "tests": 23
+      },
+      "files": [
+        "tests/test_c0r2_adversarial.py"
+      ],
+      "log": "c0r2_23_repaired.log",
+      "matched": true,
+      "name": "c0r2_23_repaired",
+      "return_code": 0,
+      "xml": "c0r2_23_repaired.xml"
+    },
+    {
+      "actual": {
+        "errors": 0,
+        "failed": 0,
+        "failing": [],
+        "passed": 23,
+        "skipped": 0,
+        "tests": 23
+      },
+      "cwd": "historical/c0r2_corrected/SOROK-V2-HQ323-C0R2-GIT-BACKED-REPAIR-R1",
+      "expected": {
+        "failed": 0,
+        "passed": 23,
+        "tests": 23
+      },
+      "files": [
+        "tests/test_c0r2_adversarial.py"
+      ],
+      "log": "c0r2_23_corrected.log",
+      "matched": true,
+      "name": "c0r2_23_corrected",
+      "return_code": 0,
+      "xml": "c0r2_23_corrected.xml"
+    },
+    {
+      "actual": {
+        "errors": 0,
+        "failed": 0,
+        "failing": [],
+        "passed": 15,
+        "skipped": 0,
+        "tests": 15
+      },
+      "cwd": "historical/WORKER_RETURNS/SOROK-20261019-C0X-C0-C10-DUAL-OWNER-RECEIVER-COMPLETION-R1",
+      "expected": {
+        "failed": 0,
+        "passed": 15,
+        "tests": 15
+      },
+      "files": [
+        "tests/test_c0x_receiving_consumer.py"
+      ],
+      "log": "c0x15_original.log",
+      "matched": true,
+      "name": "c0x15_original",
+      "return_code": 0,
+      "xml": "c0x15_original.xml"
+    },
+    {
+      "actual": {
+        "errors": 0,
+        "failed": 0,
+        "failing": [],
+        "passed": 36,
+        "skipped": 0,
+        "tests": 36
+      },
+      "cwd": "historical/WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/port",
+      "expected": {
+        "failed": 0,
+        "passed": 36,
+        "tests": 36
+      },
+      "files": [
+        "port/test_k9_provider_swap.py",
+        "port/test_k10_structural_conservation.py"
+      ],
+      "log": "k9k10_36.log",
+      "matched": true,
+      "name": "k9k10_36",
+      "return_code": 0,
+      "xml": "k9k10_36.xml"
+    },
+    {
+      "actual": {
+        "errors": 0,
+        "failed": 0,
+        "failing": [],
+        "passed": 13,
+        "skipped": 0,
+        "tests": 13
+      },
+      "cwd": ".",
+      "expected": {
+        "failed": 0,
+        "passed": 13,
+        "tests": 13
+      },
+      "files": [
+        "tests/test_c0r3_endtoend.py"
+      ],
+      "log": "c0r3_new_13.log",
+      "matched": true,
+      "name": "c0r3_new_13",
+      "return_code": 0,
+      "xml": "c0r3_new_13.xml"
+    }
+  ],
+  "verdict": {
+    "ASSERTION_EFFICACY": true,
+    "C10_TRANSPORT": "PASS at two-owner object/read+JSON+cold grain",
+    "C11_WELD": "NOT RUN / NOT AUTHORIZED",
+    "EXECUTED_GREEN": true
+  }
+}
