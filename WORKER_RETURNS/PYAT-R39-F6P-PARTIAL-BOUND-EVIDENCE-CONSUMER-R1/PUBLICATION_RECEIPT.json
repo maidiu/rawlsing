@@ -1,0 +1,157 @@
+{
+  "schema": "PYAT_R39_F6P_PUBLICATION_RECEIPT@1",
+  "repository": "maidiu/rawlsing (PRIVATE)",
+  "role": "independent bounded source-free F6 scientific-evidence consumer implementer; not HQ, F6 semantic issuer, original-source owner, N10W route-model issuer, independent scientific acceptance reviewer or Sorok actor",
+  "branch": "agent/rabochii-pyat-r39-f6p-partial-bound-evidence-consumer-r1",
+  "sealed_startup": "2e6c189fd54b818556a44419b19691938ea76d5a",
+  "f6c_author_return": "c1ebe091fa2bd12b254e5599cf37975fe438d462",
+  "f6m_blob": "2df811d76db258d98d89ffb43c830cb221ff9a7d",
+  "a_corrected": {
+    "commit": "1428c2e92bce1a49efd87378cb23df936d646dc5",
+    "blob": "fc5e37fa5b2f0eb689593b42d95479d1327cb94c"
+  },
+  "a0_control": {
+    "blob": "182cc7970d7624f6614015f5a51d0602e1630d52",
+    "role": "HISTORICAL_NEGATIVE_CONTROL_NOT_A"
+  },
+  "evidence_commit": "e75541d74d0db0ae2a654edb679a5862521521d2",
+  "docs_commit": "016870e86913e6f7a811a51db6aba2d741bcfe58",
+  "remote_head_verified_before_receipt": "016870e86913e6f7a811a51db6aba2d741bcfe58",
+  "verified_by": "git ls-remote origin refs/heads/agent/rabochii-pyat-r39-f6p-partial-bound-evidence-consumer-r1",
+  "consumer": {
+    "module": "f6p_partial_bound_evidence_consumer.consume_f6m_evidence",
+    "schema": "F6P_PARTIAL_BOUND_EVIDENCE@1",
+    "scientific_ceiling": "SOURCEFREE_TEST_ONLY_NO_ROUTE_PROBABILITY_NO_SELECTION_WEIGHT_NO_MODEL_USE"
+  },
+  "courts": {
+    "native": 32,
+    "native_failures": 0,
+    "cold_0": 32,
+    "cold_1": 32,
+    "post_gate_cold_0": 32,
+    "post_gate_cold_1": 32
+  },
+  "proof": {
+    "claim_id": "F6P_F6M_PARTIAL_BOUND_CONSUMER_DEPENDS_ON_ACTUAL_F6M_PRODUCT",
+    "positive_node": "tests/test_f6p_consumer.py::test_w2_partial_preserves_uncovered_mass",
+    "baseline": "PASS",
+    "fault_probe": "TARGET_ASSERTION_FAILED",
+    "grade": "BOUNDED_MUTATION_DETECTED",
+    "fault_path": "native/rawlsing_next/pre553_heterogeneous_synthesis.py",
+    "restored_blob": "2df811d76db258d98d89ffb43c830cb221ff9a7d",
+    "restored_sha256": "2930b5cd15c899146e9552b2e6b0efa3fc5835e57e58a6c16d756093e21d3871",
+    "gate_state": "MECHANICAL_PROOF_GATE_PASS_NOT_SCIENTIFIC_ADOPTION"
+  },
+  "consumer_states": {
+    "W1": "SUPPORTED_SYNTHESIS",
+    "W2": "PARTIAL_IDENTIFICATION",
+    "W7": "PARTIAL_IDENTIFICATION",
+    "W3": "PARTIAL_IDENTIFICATION",
+    "W4": "SELF_CONDITIONING",
+    "W6": "INCOMPATIBLE_RESPONDENT",
+    "W8": "CATEGORY_OUTSIDE_SUPPORT",
+    "A_W2": "FALSE_FULL_COVERAGE",
+    "A_W7": "FALSE_FULL_COVERAGE",
+    "A_W3": "PRODUCT_INCONSISTENT"
+  },
+  "abc": {
+    "W1_A_conditional": {
+      "formal": "5/8",
+      "informal": "3/8"
+    },
+    "W1_B_conditional": {
+      "formal": "5/8",
+      "informal": "3/8"
+    },
+    "W1_C_total_unknown": "1",
+    "W2_A_uncovered": "0",
+    "W2_B_uncovered": "1/4",
+    "W2_C_total_unknown": "1",
+    "W7_A_uncovered": "0",
+    "W7_B_uncovered": "1/2",
+    "W7_C_total_unknown": "1"
+  },
+  "custody": {
+    "F6M": {
+      "blob": "2df811d76db258d98d89ffb43c830cb221ff9a7d",
+      "sha256": "2930b5cd15c899146e9552b2e6b0efa3fc5835e57e58a6c16d756093e21d3871"
+    },
+    "A": {
+      "blob": "fc5e37fa5b2f0eb689593b42d95479d1327cb94c"
+    },
+    "A0": {
+      "blob": "182cc7970d7624f6614015f5a51d0602e1630d52"
+    },
+    "shared": {
+      "blob": "a61365b994e5c3c50de0f598fcf40e90abf757b6"
+    },
+    "frozen_oracle_sha256": "ef97a4e9c8187343503a49e214a8208906893185c8eb6df0e57314371bee1b23"
+  },
+  "cost": {
+    "billed_api_cash": "UNKNOWN",
+    "included_quota": "UNKNOWN",
+    "execution_surface": "local warm Git/pytest; no paid API call observed"
+  },
+  "unresolved_owner_edge": "competent owner-issued real-use/transport admission (or equivalent F6M consumer acceptance); R35 sealed obsolete-A-pin amendment remains an HQ succession issue",
+  "non_grants": [
+    "original-source F6 issuance",
+    "installed N9/OC05 world",
+    "joint structural/empirical route model",
+    "behavioral route probability",
+    "Field Forge semantic authority",
+    "Sorok C0/actor execution",
+    "N11/N12",
+    "V3",
+    "production merge/self-acceptance"
+  ],
+  "artifact_sha256": {
+    "00_RESULT_AND_VERDICT.md": {
+      "sha256": "e080d4f2ba35119025b5dca4a2b388fff2d25cdf616c7ed7b7a3587f85386162",
+      "bytes": 9138
+    },
+    "00_PHASE_A_PREFREEZE.md": {
+      "sha256": "3e7b5ed42bbfaade508f1f78e6bbcb28c6177e9a3d46e634317998fd15484080",
+      "bytes": 6570
+    },
+    "00_FROZEN_CLAIM_AND_ORACLE.json": {
+      "sha256": "53a681d4e5294b77fb4fc9ede28be5801f6e02b39b3f262369bc190e41ff87f9",
+      "bytes": 5913
+    },
+    "f6p_partial_bound_evidence_consumer.py": {
+      "sha256": "0bf56dd2f073691575a03f57b02c4a3784400174ace72bddfdfb92b883b82c87",
+      "bytes": 16038
+    },
+    "tests/test_f6p_consumer.py": {
+      "sha256": "10f937f2dde5f67b5f020ed7536d003b7f5053336d6e7fb8f2d8faa29b88293b",
+      "bytes": 11831
+    },
+    "tests/test_f6p_abc_oracle.py": {
+      "sha256": "898d44e6344ebfad4e39de4c22c85f9921545e35c57926a94557b9f7793047b3",
+      "bytes": 5105
+    },
+    "tests/test_f6p_consumer.py.proof.json": {
+      "sha256": "464824a2aa46fb298a96c2399b0cab6d120d23c18b465ce345296ed6fa9254c1",
+      "bytes": 855
+    },
+    "native/rawlsing_next/pre553_heterogeneous_synthesis.py": {
+      "sha256": "2930b5cd15c899146e9552b2e6b0efa3fc5835e57e58a6c16d756093e21d3871",
+      "bytes": 25763
+    },
+    "oracle/01_FROZEN_ESTIMANDS_AND_INDEPENDENT_ORACLE.json": {
+      "sha256": "ef97a4e9c8187343503a49e214a8208906893185c8eb6df0e57314371bee1b23",
+      "bytes": 19143
+    },
+    "evidence/execution_receipts.json": {
+      "sha256": "e402f99bba358b9bca41395398d9d94f0dfb98604ebc5a7ded4ab6fdf722cbbc",
+      "bytes": 12845
+    },
+    "evidence/proof_gate_changed_receipt.json": {
+      "sha256": "4f5854bfa37d524fd4081904d7efdfc292da0c3399a7ba2e9705a169cf53529b",
+      "bytes": 1125
+    },
+    "environment_passport_delta.json": {
+      "sha256": "3f93dd9f9c816851a26f48f7d3b5a694ba842c3725f85f086b800c03f482819b",
+      "bytes": 3148
+    }
+  }
+}
