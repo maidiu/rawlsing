@@ -36,6 +36,7 @@ REQUIRED_PROOFS = {
     "end_product_test_and_sensitivity",
     "scientific_scope_35wave_and_authority",
     "resource_privacy_and_worktree",
+    "parallel_flight_and_model_economy",
 }
 VALID_DECISIONS = {
     "REUSE_AS_IS",
@@ -92,6 +93,62 @@ def check(record):
                                                     ("repository_path_or_source", "source_commit_or_sha",
                                                      "verified_fact", "currentness")):
                     errors.append(f"proof {cat}[{i}]: lacks exact source/evidence/currentness")
+
+    # User-directed 2026-10-18: fail accession when only the latest return is
+    # processed and no whole-machine, capacity-aware parallel flight is evidenced.
+    # This is only a STRUCTURAL check; factual capacity, model sufficiency,
+    # independence, and semantic authority still require competent review.
+    flight = record.get("parallel_flight_board") or {}
+    if flight.get("status") != "PASS":
+        errors.append("parallel_flight_board: not PASS")
+    lanes = flight.get("lanes")
+    if not isinstance(lanes, list) or not lanes:
+        errors.append("parallel_flight_board: no critical-path lanes")
+        lanes = []
+    if len(lanes) < 4 and not meaningful(flight.get("fewer_than_four_lanes_justification")):
+        errors.append("parallel_flight_board: fewer than four candidate lanes without evidence")
+    valid_states = {
+        "READY_PARALLEL", "ACTIVE_VERIFIED", "PUBLISHED_NOT_LAUNCHED",
+        "RETURNED_NEEDS_HQ_DECISION", "DEPENDENCY_HELD",
+        "RESOURCE_HELD", "COMPLETED_SCOPED", "NOT_SELECTED",
+    }
+    selected_count = 0
+    seen_lanes = set()
+    for i, lane in enumerate(lanes):
+        if not isinstance(lane, dict):
+            errors.append(f"parallel_flight_board.lanes[{i}]: not an object")
+            continue
+        lid = lane.get("lane_id")
+        if not meaningful(lid) or lid in seen_lanes:
+            errors.append(f"parallel_flight_board.lanes[{i}]: missing/duplicate lane_id")
+        if isinstance(lid, str):
+            seen_lanes.add(lid)
+        if lane.get("parallel_status") not in valid_states:
+            errors.append(f"parallel_flight_board.lanes[{i}]: invalid parallel_status")
+        for key in (
+            "terminal_persona_effect", "owner_and_target", "dependency_or_none_with_evidence",
+            "model_recommended_or_none", "model_sufficiency_rationale", "execution_needs",
+            "surface_choice", "editor_harness_status", "capacity_slot_or_unknown",
+            "dispatch_decision",
+        ):
+            if not meaningful(lane.get(key)):
+                errors.append(f"parallel_flight_board.lanes[{i}]: missing {key}")
+        if lane.get("dispatch_decision") == "DISPATCH_NEW":
+            selected_count += 1
+    if selected_count == 1 and not meaningful(flight.get("one_commission_sequentialism_exception")):
+        errors.append("parallel_flight_board: one new commission requires serialism/resource justification")
+    for key in ("terminal_persona_chain_delta", "reviewer_independence_plan",
+                "model_economy_evidence", "live_ref_timestamp"):
+        if not meaningful(flight.get(key)):
+            errors.append(f"parallel_flight_board: missing {key}")
+    if flight.get("editor_harness_user_choice_respected") is not True:
+        errors.append("parallel_flight_board: editor/harness user choice not attested")
+    capacity = flight.get("capacity_matrix") or {}
+    for slot in ("machine_A", "machine_B", "chatgpt_codex_account_A",
+                 "chatgpt_codex_account_B", "opencode_account_A", "opencode_account_B"):
+        entry = capacity.get(slot) or {}
+        if entry.get("status") not in {"UNKNOWN", "LIVE_VERIFIED", "UNAVAILABLE", "STALE_RECHECK_REQUIRED", "RESOURCE_HELD"}:
+            errors.append(f"parallel_flight_board.capacity_matrix.{slot}: invalid/missing status")
 
     got = set()
     for row in record.get("function_adjudications") or []:
