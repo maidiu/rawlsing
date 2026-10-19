@@ -25,6 +25,30 @@ E04JR exposed two **different** failure modes: (a) vacuous assertions (such as `
 - These automated gates are **necessary but not sufficient**: a selected mutation may be irrelevant or the tested consumer may be a stand-in. The claim/edge/consumer must be accurately identified in the frozen commission and HQ's ordinary scientific judgment. No claim that arbitrary test quality is mathematically guaranteed.
 - Historical tests are linted only when touched; this law neither deems the pre-existing codebase sound nor revokes earlier accepted scope wholesale. Evidence that a particular existing accepted claim relied on inert assertions or a missing edge **is** grounds for targeted regrading at its exact proof grain, not a universal stop-work.
 
+
+### Minimal executable per-test proof contract
+
+Place \`test_<name>.py.proof.json\` **beside the changed Python integration test**. Use actual repository-relative paths and exact unique source text. The fault MUST affect the alleged producer/release/consumer edge, not a decorative flag.
+
+\`\`\`json
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "claims": [{
+    "claim_id": "EXACT_COMMISSIONED_EDGE",
+    "actual_consumer": "the real consumer API and product",
+    "claimed_dependency": "selected release -> dereference -> consumer values-read",
+    "positive_node": "WORKER_RETURNS/.../tests/test_actual_join.py::test_release_drives_consumer",
+    "fault": {
+      "path": "WORKER_RETURNS/.../actual_bridge.py",
+      "old": "exact unique source text for the real binding",
+      "new": "source text that severs the real binding"
+    }
+  }]
+}
+\`\`\`
+
+Execute the witness as part of normal testing: \`python CROSS_HQ_CONTROL_ROOM/proof_integrity_gate_r1.py witness path/to/test_actual_join.py.proof.json --root . --receipt evidence/proof_witness.json\`. The runner asserts the positive named test passes and the same named test fails **via its assertion** under the injected fault, restoring the original source afterward. It refuses absent/non-unique mutation text, an attempted mutation of the test itself, an unowned contract, missing tests, skips and error-only mutants. CI invokes the same checker for new/changed integration tests; the report still needs competent scrutiny that the mutation genuinely represents the commissioned edge. The worker's qualifying environment must contain the native imports and pytest. Run from a qualified clean or dedicated worktree; protect unpushed work as under 00D.
+
 ## Mandatory commissioning / worker return fields
 
 For a material implementation or consumer claim: `claim_id`, `actual_target_consumer`, `claimed_dependency`, `frozen_positive_oracle`, `fault_injection_target_and_expected_RED`, `positive_test_node`, `actual_negative_control_result`, `proof_grade`, `exact_source_and_test_refs`, and any `NOT_RUN/NOT_PROVED` residual. Preserve normal provider/model/effort, warm host, source authority, JUnit, cost, Git SHA and independent-review controls.
