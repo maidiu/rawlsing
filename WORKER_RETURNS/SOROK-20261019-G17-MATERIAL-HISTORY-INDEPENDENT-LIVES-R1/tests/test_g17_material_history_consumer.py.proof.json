@@ -1,0 +1,82 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "claims": [
+    {
+      "claim_id": "G17_STOCK_LEDGER_EDGE",
+      "actual_consumer": "lab_sgi1.history.replay_history",
+      "claimed_dependency": "PROJECT consumes the current material stock, not the unchanged world root",
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-G17-MATERIAL-HISTORY-INDEPENDENT-LIVES-R1/tests/test_g17_material_history_consumer.py::test_repeated_project_cannot_spend_same_material_twice",
+      "fault": {
+        "path": "WORKER_RETURNS/SOROK-20261019-G17-MATERIAL-HISTORY-INDEPENDENT-LIVES-R1/candidate/lab_sgi1/history.py",
+        "old": "    units=min(work['skill']//2,state['material_remaining'],state['free_hours'])",
+        "new": "    units=min(work['skill']//2,1000000,state['free_hours'])"
+      }
+    },
+    {
+      "claim_id": "G17_FREE_HOURS_CLOCK_EDGE",
+      "actual_consumer": "lab_sgi1.history.replay_history",
+      "claimed_dependency": "SCHOOLING spends current free_hours, not the ORIGIN root's initial stock",
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-G17-MATERIAL-HISTORY-INDEPENDENT-LIVES-R1/tests/test_g17_material_history_consumer.py::test_repeated_training_cannot_overspend_current_time",
+      "fault": {
+        "path": "WORKER_RETURNS/SOROK-20261019-G17-MATERIAL-HISTORY-INDEPENDENT-LIVES-R1/candidate/lab_sgi1/history.py",
+        "old": "    hours=number(p.get('hours'),'hours',1);require(hours<=state['free_hours'],'TRAINING_TIME_UNAVAILABLE')",
+        "new": "    hours=number(p.get('hours'),'hours',1);require(hours<=root['free_hours'],'TRAINING_TIME_UNAVAILABLE')"
+      }
+    },
+    {
+      "claim_id": "G17_TOOL_STOCK_EDGE",
+      "actual_consumer": "lab_sgi1.history.replay_history",
+      "claimed_dependency": "PEER_ACTION consumes the current peer tool stock, not the initial peer root",
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-G17-MATERIAL-HISTORY-INDEPENDENT-LIVES-R1/tests/test_g17_material_history_consumer.py::test_repeated_peer_actions_cannot_return_nonexistent_tools",
+      "fault": {
+        "path": "WORKER_RETURNS/SOROK-20261019-G17-MATERIAL-HISTORY-INDEPENDENT-LIVES-R1/candidate/lab_sgi1/history.py",
+        "old": "    require(units<=state['tools_remaining'],'PEER_TOOLS_UNAVAILABLE')",
+        "new": "    require(units<=project['tool_units'],'PEER_TOOLS_UNAVAILABLE')"
+      }
+    },
+    {
+      "claim_id": "G17_PARTICIPATION_AFTERSTATE_EDGE",
+      "actual_consumer": "lab_sgi1.continuation.continue_person",
+      "claimed_dependency": "participation after-state is recomputed from the actual material event, not trusted from the caller",
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-G17-MATERIAL-HISTORY-INDEPENDENT-LIVES-R1/tests/test_g17_material_history_consumer.py::test_forged_participation_cannot_supply_unperformed_cash",
+      "fault": {
+        "path": "WORKER_RETURNS/SOROK-20261019-G17-MATERIAL-HISTORY-INDEPENDENT-LIVES-R1/candidate/lab_sgi1/continuation.py",
+        "old": "  if participation.get('after')!=expected:return None",
+        "new": "  if False:return None"
+      }
+    },
+    {
+      "claim_id": "G17_FUTURE_CHILD_PARTITION_EDGE",
+      "actual_consumer": "lab_sgi1.pipeline.run_pipeline",
+      "claimed_dependency": "future-child partition names in joined material are refused before a committed causal output",
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-G17-MATERIAL-HISTORY-INDEPENDENT-LIVES-R1/tests/test_g17_material_history_consumer.py::test_future_child_material_cannot_enter_committed_causal_output",
+      "fault": {
+        "path": "WORKER_RETURNS/SOROK-20261019-G17-MATERIAL-HISTORY-INDEPENDENT-LIVES-R1/candidate/lab_sgi1/pipeline.py",
+        "old": "    if leaked[\"status\"] == S.FUTURE_CHILD_INFORMATION_LEAK:",
+        "new": "    if False:"
+      }
+    },
+    {
+      "claim_id": "G17_JOINED_TERMINAL_STOCK_EDGE",
+      "actual_consumer": "lab_sgi1.pipeline.run_pipeline",
+      "claimed_dependency": "joined terminal does not commit a second-parent history that overspends material",
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-G17-MATERIAL-HISTORY-INDEPENDENT-LIVES-R1/tests/test_g17_material_history_consumer.py::test_joined_terminal_refuses_material_overspend",
+      "fault": {
+        "path": "WORKER_RETURNS/SOROK-20261019-G17-MATERIAL-HISTORY-INDEPENDENT-LIVES-R1/candidate/lab_sgi1/history.py",
+        "old": "    units=min(work['skill']//2,state['material_remaining'],state['free_hours'])",
+        "new": "    units=min(work['skill']//2,1000000,state['free_hours'])"
+      }
+    },
+    {
+      "claim_id": "G17_C9_MATERIAL_HANDOFF_EDGE",
+      "actual_consumer": "c9_handoff_consumer.receive_handoff",
+      "claimed_dependency": "the C9 material handoff refuses a handoff whose actual material event was severed from its causal parents",
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-G17-MATERIAL-HISTORY-INDEPENDENT-LIVES-R1/tests/test_g17_material_history_consumer.py::test_c9_handoff_refuses_severed_material_source",
+      "fault": {
+        "path": "WORKER_RETURNS/SOROK-20261019-G17-MATERIAL-HISTORY-INDEPENDENT-LIVES-R1/c9_handoff_consumer.py",
+        "old": "    if material_source_id not in parents:",
+        "new": "    if False:"
+      }
+    }
+  ]
+}

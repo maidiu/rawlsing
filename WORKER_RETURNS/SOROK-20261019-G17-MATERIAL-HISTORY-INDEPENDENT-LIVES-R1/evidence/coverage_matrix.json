@@ -1,0 +1,175 @@
+{
+  "schema": "SOROK_G17_COVERAGE_AND_TERMINAL_DELTA@1",
+  "g17_startup": "f68512d05a0d10c7711ca7149f2e12bf891eb6de",
+  "g15_parent": "fbc84ba4b5ec8befcf7954357a2ba1c576f5d7a5",
+  "g16i_review": "683aa56828cda76ea70792a2c8b39cf78624e8dc",
+  "courts": {
+    "g13_181": {
+      "pass": 108,
+      "red": 73,
+      "red_ids_identical_to_g15": true,
+      "original_17_preserved": true,
+      "compatibility_56_all_preserved": true
+    },
+    "g14_67": {
+      "pass": 67,
+      "red": 0
+    },
+    "g15_75": {
+      "pass": 75,
+      "red": 0
+    },
+    "g16i_24_independent": {
+      "pass": 22,
+      "red": 2,
+      "repaired": 8,
+      "typed_hold": [
+        "M2_ARCHIVE_CONTINUATION",
+        "MP_KNOWN_COUNTERPART_REUSE"
+      ]
+    },
+    "g17_material_consumer": {
+      "pass": 13,
+      "red": 0
+    },
+    "c9_material_handoff": {
+      "pass": 2,
+      "red": 0,
+      "full_E1_E2": "HOLD_UNISSUED"
+    }
+  },
+  "g16i_10_new_reds": {
+    "test_repeated_project_cannot_spend_same_material_twice": "REPAIRED_CURRENT_STOCK_LEDGER",
+    "test_repeated_training_cannot_overspend_current_time": "REPAIRED_CURRENT_FREE_HOURS",
+    "test_repeated_peer_actions_cannot_return_nonexistent_tools": "REPAIRED_CURRENT_TOOL_STOCK",
+    "test_forged_participation_cannot_supply_unperformed_cash": "REPAIRED_ACTUAL_MATERIAL_EVENT_RECOMPUTE",
+    "test_late_actual_participation_cannot_parent_earlier_continuation": "REPAIRED_EFFECTIVE_TIME_BOUND",
+    "test_singular_owned_event_cannot_silently_add_other_actor": "REPAIRED_SINGULAR_OWNER",
+    "test_future_child_material_cannot_enter_committed_causal_output": "REPAIRED_FUTURE_PARTITION_GUARD",
+    "test_joined_terminal_refuses_material_overspend": "REPAIRED_JOINED_TERMINAL",
+    "test_archived_m2_can_continue_legitimate_prior_life": "TYPED_COVERAGE_HOLD_ARCHIVE_GRAMMAR_INCOMPATIBLE",
+    "test_known_counterpart_has_positive_history_reuse_path": "TYPED_COVERAGE_HOLD_KNOWN_COUNTERPART_HISTORY_NOT_MATERIALIZED"
+  },
+  "compatibility_56": {
+    "all_56_preserved_RED": true,
+    "exact_ids_identical_to_G15": true,
+    "classifications_from": "G16I 02_COMPATIBILITY_56.json"
+  },
+  "original_17": {
+    "all_17_preserved_RED": true
+  },
+  "participating_actors": [
+    "G17_ADULT (sourcefree adult history)",
+    "LAB_MOTHER_M0 (frozen sourcefree mother checkpoint)",
+    "G15_NONKIN peer (sourcefree independent other)"
+  ],
+  "material_values": {
+    "stock5_second_project": {
+      "valid": false,
+      "error": "PROJECT_PERFORMANCE_CLAIM_MISMATCH",
+      "material_remaining": 2
+    },
+    "free_hours_second_training": {
+      "valid": false,
+      "error": "TRAINING_TIME_UNAVAILABLE",
+      "free_hours": 13
+    },
+    "tools3_second_return": {
+      "valid": false,
+      "error": "PEER_TOOLS_UNAVAILABLE",
+      "returned": 2,
+      "remaining": 1
+    },
+    "forged_participation": {
+      "accepted": false
+    },
+    "late_1101_participation": {
+      "continuation_events": 0,
+      "admitted": false
+    },
+    "extra_actor": {
+      "valid": false,
+      "error": "SINGULAR_EVENT_REQUIRES_ONE_ACTOR"
+    },
+    "future_child_material": {
+      "terminal": "FUTURE_CHILD_INFORMATION_LEAK"
+    },
+    "joined_terminal_overspend": {
+      "terminal": "HISTORY_SEARCH_EXHAUSTED",
+      "spent": 6,
+      "available": 5
+    },
+    "positive_material_remainder": {
+      "valid": true,
+      "units_performed": 2,
+      "completed_units": 5
+    }
+  },
+  "c9_handoff": {
+    "accepted": true,
+    "after_completed_units": 4,
+    "e2_later_authority": "HOLD_UNISSUED",
+    "severed": "SEVERED_MATERIAL_SOURCE",
+    "route_probability": null,
+    "selection_weight": null
+  },
+  "archive_holds": {
+    "M2": {
+      "status": "TYPED_COVERAGE_HOLD",
+      "reason": "FROZEN_ARCHIVE_GRAMMAR_INCOMPATIBLE_WITH_CURRENT_EVENT_REPLAY",
+      "child_refs": [
+        "LAB_OLDER_CHILD_O1"
+      ],
+      "continuation_admitted": false,
+      "new_child_generated": false
+    },
+    "MP": {
+      "status": "TYPED_COVERAGE_HOLD",
+      "reason": "KNOWN_COUNTERPART_F_EXISTING_HAS_NO_SOURCE_QUALIFIED_SECOND_PARENT_HISTORY",
+      "terminal": "SHARED_HISTORY_CONTRADICTION_HOLD",
+      "no_duplicate_actor": true,
+      "new_counterpart_generated": false
+    }
+  },
+  "proof": {
+    "claims": 7,
+    "all_baseline": "PASS",
+    "all_fault_probe": "TARGET_ASSERTION_FAILED",
+    "grade": "BOUNDED_MUTATION_DETECTED"
+  },
+  "three_dispositions": {
+    "engineering": "BOUNDED_ACCEPT \u2014 8/10 direct material/participation/future/terminal counterexamples repaired; joined 181/67/75 preserved; 7/7 same-node faults; 2/10 typed coverage HOLD",
+    "scientific": "BOUNDED_ACCEPT_METHOD / GENERAL_HOLD \u2014 current material conservation and independent lives are real at the tested finite grain; no calibrated psychology, native person, M2/MP positive, or general life formation is claimed",
+    "authority": "HOLD \u2014 no source/model/actor/biology/C9 E1-E2/C11 issuance; original 17 and 56 compatibility remain RED"
+  },
+  "actions_and_owners": [
+    {
+      "action": "material ledger repair acceptance",
+      "owner": "Sorok HQ intake"
+    },
+    {
+      "action": "M2 archive and MP known-counterpart grammar/history materialization or explicit coverage HOLD",
+      "owner": "competent ADP015/020/CAN008/CAN011/Sorok HQ owner"
+    },
+    {
+      "action": "C9 E1/RULE_A/RULE_T/E2 native receiving authority",
+      "owner": "C9P/C9PI and CAN/ADP competent owners"
+    },
+    {
+      "action": "independent scientific acceptance",
+      "owner": "later I2/HQ, not G17"
+    }
+  ],
+  "non_grants": [
+    "native person/child/biology",
+    "original survey source",
+    "model/actor issuance",
+    "RULE_A/RULE_T",
+    "C9 E2",
+    "N11/N12",
+    "V3",
+    "C11 physical weld",
+    "production adoption"
+  ],
+  "scientific_ceiling": "SOURCEFREE_FINITE_F3_GRADE_MATERIAL_TRANSITION_AND_C9_MATERIAL_HANDOFF_ONLY"
+}
