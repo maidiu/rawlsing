@@ -1,0 +1,30 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "status": "MECHANICAL_WITNESS_PASS_NOT_SEMANTIC_ADOPTION",
+  "claims": [
+    {
+      "claim_id": "W2_W41_MATERIAL_RULE_SEVERANCE",
+      "positive_node": "WORKER_RETURNS/PYAT-R42-J42-COMPLETE-E41-W41-P41-ACTUAL-JOINT-PREV3-CONSUMER-R1/tests/test_j42_breadth_oracle.py::test_route_oracle_all_84",
+      "fault_path": "WORKER_RETURNS/PYAT-R42-J42-COMPLETE-E41-W41-P41-ACTUAL-JOINT-PREV3-CONSUMER-R1/vendor/w41/objective_world.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    },
+    {
+      "claim_id": "W4_ASOF_SELECTION_SEVERANCE",
+      "positive_node": "WORKER_RETURNS/PYAT-R42-J42-COMPLETE-E41-W41-P41-ACTUAL-JOINT-PREV3-CONSUMER-R1/tests/test_j42_breadth_oracle.py::test_published_boundary_selection",
+      "fault_path": "WORKER_RETURNS/PYAT-R42-J42-COMPLETE-E41-W41-P41-ACTUAL-JOINT-PREV3-CONSUMER-R1/vendor/w41/objective_world.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    },
+    {
+      "claim_id": "W5_JOIN_FAMILY_NO_DROP_SEVERANCE",
+      "positive_node": "WORKER_RETURNS/PYAT-R42-J42-COMPLETE-E41-W41-P41-ACTUAL-JOINT-PREV3-CONSUMER-R1/tests/test_j42_breadth_oracle.py::test_no_drop_all_84_families",
+      "fault_path": "WORKER_RETURNS/PYAT-R42-J42-COMPLETE-E41-W41-P41-ACTUAL-JOINT-PREV3-CONSUMER-R1/runtime/j42_join.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    }
+  ]
+}

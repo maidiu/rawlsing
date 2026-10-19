@@ -1,0 +1,165 @@
+{
+  "gate": "F3",
+  "matched_count": 14,
+  "operation_count": 14,
+  "rows": [
+    {
+      "actual_cells": {
+        "0": [
+          7,
+          10
+        ],
+        "1": [
+          3,
+          10
+        ]
+      },
+      "actual_denominator": 10,
+      "actual_state": "EXACT_SUPPORTED",
+      "family_id": "AT10_BRANCH_STRUCTURE",
+      "matched": true,
+      "op_id": "f3.at10.branch_A"
+    },
+    {
+      "actual_cells": {
+        "0": [
+          0,
+          8
+        ],
+        "1": [
+          8,
+          8
+        ]
+      },
+      "actual_denominator": 8,
+      "actual_state": "EXACT_SUPPORTED",
+      "family_id": "AT10_BRANCH_STRUCTURE",
+      "matched": true,
+      "op_id": "f3.at10.branch_B"
+    },
+    {
+      "actual_cells": {
+        "0": [
+          0,
+          2
+        ],
+        "1": [
+          2,
+          2
+        ]
+      },
+      "actual_denominator": 2,
+      "actual_state": "EXACT_SUPPORTED",
+      "family_id": "AT10_BRANCH_STRUCTURE",
+      "matched": true,
+      "op_id": "f3.at10.branch_C"
+    },
+    {
+      "actual_cells": {
+        "0": [
+          0,
+          2
+        ],
+        "1": [
+          2,
+          2
+        ]
+      },
+      "actual_denominator": 2,
+      "actual_state": "DISCOVERED_RESULT_SUPPORTED",
+      "family_id": "AT10_BRANCH_STRUCTURE",
+      "matched": true,
+      "op_id": "f3.at10.discovery_cotravel"
+    },
+    {
+      "actual_cells": {
+        "0": [
+          1,
+          2
+        ],
+        "1": [
+          1,
+          2
+        ]
+      },
+      "actual_denominator": 2,
+      "actual_state": "EXACT_SUPPORTED",
+      "family_id": "AT11_RECURSIVE",
+      "matched": true,
+      "op_id": "f3.at11.recursive_depth2"
+    },
+    {
+      "actual_cells": {},
+      "actual_denominator": 2,
+      "actual_state": "SUPPORTED",
+      "family_id": "AT14_16_TYPED_STATES",
+      "matched": true,
+      "op_id": "state.observed_zero"
+    },
+    {
+      "actual_cells": {},
+      "actual_denominator": 0,
+      "actual_state": "ZERO_SUPPORT",
+      "family_id": "AT14_16_TYPED_STATES",
+      "matched": true,
+      "op_id": "state.zero_support"
+    },
+    {
+      "actual_cells": {},
+      "actual_denominator": 2,
+      "actual_state": "VALID_EMPTY",
+      "family_id": "AT14_16_TYPED_STATES",
+      "matched": true,
+      "op_id": "state.valid_empty"
+    },
+    {
+      "actual_cells": {},
+      "actual_denominator": null,
+      "actual_state": "INSUFFICIENT_SUPPORT",
+      "family_id": "AT14_16_TYPED_STATES",
+      "matched": true,
+      "op_id": "state.underpowered"
+    },
+    {
+      "actual_cells": {},
+      "actual_denominator": 3,
+      "actual_state": "UNRESOLVED",
+      "family_id": "AT14_16_TYPED_STATES",
+      "matched": true,
+      "op_id": "state.unresolved"
+    },
+    {
+      "actual_cells": {},
+      "actual_denominator": 0,
+      "actual_state": "NONCOMPARABLE",
+      "family_id": "AT14_16_TYPED_STATES",
+      "matched": true,
+      "op_id": "state.noncomparable"
+    },
+    {
+      "actual_cells": {},
+      "actual_denominator": null,
+      "actual_state": "INTEGRITY_FAILURE",
+      "family_id": "AT14_16_TYPED_STATES",
+      "matched": true,
+      "op_id": "state.integrity_failure"
+    },
+    {
+      "actual_cells": {},
+      "actual_denominator": null,
+      "actual_state": "PARTIAL_BUDGET_EXHAUSTED",
+      "family_id": "AT14_16_TYPED_STATES",
+      "matched": true,
+      "op_id": "state.adaptive_unvisited"
+    },
+    {
+      "actual_cells": {},
+      "actual_denominator": null,
+      "actual_state": "BLOCKED_REQUIRED_AUTHORITY",
+      "family_id": "AT14_16_TYPED_STATES",
+      "matched": true,
+      "op_id": "state.blocked_required_authority"
+    }
+  ],
+  "schema": "E41_F3_BRANCH_ALTERNATIVES@1"
+}

@@ -1,0 +1,837 @@
+{
+  "all_expected_reached": true,
+  "executed_operation_count": 31,
+  "expected_operation_count": 31,
+  "frozen_universe_sha256": "6545ef2cdda5f9dff0c5053c20c290a1f09120a05a2b22035c05cd220ce1000a",
+  "grades_present": [
+    "ADOPTED_FREEZE",
+    "SOURCEFREE_FIXTURE",
+    "SOURCEFREE_TEST_ONLY"
+  ],
+  "held_original_scope": {
+    "authorized_original_reads_this_pass": 0,
+    "law": "held_original_scope is NOT counted as completion and NOT reported as refusal; it remains a finite issuer/custodian obligation outside this campaign's rights",
+    "lits_original_c11_blocker": {
+      "custodian_request": "WORKER_RETURNS/PYAT-R40-O35B-ORIGINAL35-AUTHORITY-OPERATION-BINDING-R1/evidence/C11_REPLAY_CUSTODIAN_DELIVERY_REQUEST.json",
+      "missing": "all 15 native C11 SourceReleaseCandidate sections including respondent internal records/events/routing/manifest",
+      "o35b_commit": "c714af26a5a749706c6da06df40ac0ef026c6296",
+      "semantic_hash": "192926fabd9c9c3d40e43b1d7705ca2bcfe7f8d06e286be26d4b886d436df43f",
+      "source_release_ref": "LITS1-I02-F02-SUCCESSOR-7cac43e2ca5b31cb-bf305bf3f169d669",
+      "state": "BLOCKED"
+    },
+    "o35b_accounting": {
+      "candidate_units_held": 127813,
+      "lits_checkpoint_bytes": 3404445161,
+      "o35e_active": 18259,
+      "o35e_only": 9,
+      "original_facts_recovered": 3,
+      "overlap": 18250,
+      "p2_active": 18276,
+      "p2_only": 26,
+      "p2_only_carrier_admin": 6,
+      "p2_only_substantive": 20
+    },
+    "original35_u_epre_state": "UNISSUED_HELD"
+  },
+  "no_drop_ok": true,
+  "original_source_occupied_count": 0,
+  "rows": [
+    {
+      "actual_cells": {
+        "no": [
+          6,
+          60
+        ],
+        "yes": [
+          54,
+          60
+        ]
+      },
+      "actual_denominator": 60,
+      "actual_state": "EXACT_SUPPORTED",
+      "diffs": [],
+      "expected_cells": {
+        "no": [
+          6,
+          60
+        ],
+        "yes": [
+          54,
+          60
+        ]
+      },
+      "expected_denominator": 60,
+      "expected_state": "EXACT_SUPPORTED",
+      "family_id": "AT07_BIDIRECTIONAL_DIRECT",
+      "gate": "F2",
+      "grade": "SOURCEFREE_FIXTURE",
+      "matched": true,
+      "op_id": "f2.at07.forward",
+      "route_actual": "DIRECT_VIA_ACCEPTED_PROVIDER_FUNCTION",
+      "status": "EXECUTED"
+    },
+    {
+      "actual_cells": {
+        "P1": [
+          54,
+          62
+        ],
+        "P2": [
+          8,
+          62
+        ]
+      },
+      "actual_denominator": 62,
+      "actual_state": "EXACT_SUPPORTED",
+      "diffs": [],
+      "expected_cells": {
+        "P1": [
+          54,
+          62
+        ],
+        "P2": [
+          8,
+          62
+        ]
+      },
+      "expected_denominator": 62,
+      "expected_state": "EXACT_SUPPORTED",
+      "family_id": "AT07_BIDIRECTIONAL_DIRECT",
+      "gate": "F2",
+      "grade": "SOURCEFREE_FIXTURE",
+      "matched": true,
+      "op_id": "f2.at07.reverse",
+      "route_actual": "DIRECT_VIA_ACCEPTED_PROVIDER_FUNCTION",
+      "status": "EXECUTED"
+    },
+    {
+      "actual_cells": {
+        "oppose": [
+          6,
+          60
+        ],
+        "support": [
+          54,
+          60
+        ]
+      },
+      "actual_denominator": 60,
+      "actual_state": "EXACT_SUPPORTED",
+      "diffs": [],
+      "expected_cells": {
+        "oppose": [
+          6,
+          60
+        ],
+        "support": [
+          54,
+          60
+        ]
+      },
+      "expected_denominator": 60,
+      "expected_state": "EXACT_SUPPORTED",
+      "family_id": "AT08_ATTITUDE_CONDITIONAL",
+      "gate": "F2",
+      "grade": "SOURCEFREE_FIXTURE",
+      "matched": true,
+      "op_id": "f2.at08.agree_to_att2",
+      "route_actual": "DIRECT_VIA_ACCEPTED_PROVIDER_FUNCTION",
+      "status": "EXECUTED"
+    },
+    {
+      "actual_cells": {
+        "oppose": [
+          32,
+          40
+        ],
+        "support": [
+          8,
+          40
+        ]
+      },
+      "actual_denominator": 40,
+      "actual_state": "EXACT_SUPPORTED",
+      "diffs": [],
+      "expected_cells": {
+        "oppose": [
+          32,
+          40
+        ],
+        "support": [
+          8,
+          40
+        ]
+      },
+      "expected_denominator": 40,
+      "expected_state": "EXACT_SUPPORTED",
+      "family_id": "AT08_ATTITUDE_CONDITIONAL",
+      "gate": "F2",
+      "grade": "SOURCEFREE_FIXTURE",
+      "matched": true,
+      "op_id": "f2.at08.disagree_to_att2",
+      "route_actual": "DIRECT_VIA_ACCEPTED_PROVIDER_FUNCTION",
+      "status": "EXECUTED"
+    },
+    {
+      "actual_cells": {
+        "0": [
+          0,
+          1
+        ],
+        "1": [
+          1,
+          1
+        ]
+      },
+      "actual_denominator": 1,
+      "actual_state": "EXACT_SUPPORTED",
+      "diffs": [],
+      "expected_cells": {
+        "0": [
+          0,
+          1
+        ],
+        "1": [
+          1,
+          1
+        ]
+      },
+      "expected_denominator": 1,
+      "expected_state": "EXACT_SUPPORTED",
+      "family_id": "AT09_JOINT_CONFIGURATION",
+      "gate": "F4",
+      "grade": "SOURCEFREE_FIXTURE",
+      "matched": true,
+      "op_id": "f4.at09.xor_joint",
+      "route_actual": "DIRECT_MULTI_CONDITIONER_VIA_ACCEPTED_COMPOSITION",
+      "status": "EXECUTED"
+    },
+    {
+      "actual_cells": {
+        "0": [
+          0,
+          2
+        ],
+        "1": [
+          2,
+          2
+        ]
+      },
+      "actual_denominator": 2,
+      "actual_state": "EXACT_SUPPORTED",
+      "diffs": [],
+      "expected_cells": {
+        "0": [
+          0,
+          2
+        ],
+        "1": [
+          2,
+          2
+        ]
+      },
+      "expected_denominator": 2,
+      "expected_state": "EXACT_SUPPORTED",
+      "family_id": "AT09_JOINT_CONFIGURATION",
+      "gate": "F4",
+      "grade": "SOURCEFREE_FIXTURE",
+      "matched": true,
+      "op_id": "f4.at09.equal_marginals_left",
+      "route_actual": "DIRECT_VIA_ACCEPTED_PROVIDER_FUNCTION",
+      "status": "EXECUTED"
+    },
+    {
+      "actual_cells": {
+        "0": [
+          2,
+          2
+        ],
+        "1": [
+          0,
+          2
+        ]
+      },
+      "actual_denominator": 2,
+      "actual_state": "EXACT_SUPPORTED",
+      "diffs": [],
+      "expected_cells": {
+        "0": [
+          2,
+          2
+        ],
+        "1": [
+          0,
+          2
+        ]
+      },
+      "expected_denominator": 2,
+      "expected_state": "EXACT_SUPPORTED",
+      "family_id": "AT09_JOINT_CONFIGURATION",
+      "gate": "F4",
+      "grade": "SOURCEFREE_FIXTURE",
+      "matched": true,
+      "op_id": "f4.at09.equal_marginals_right",
+      "route_actual": "DIRECT_VIA_ACCEPTED_PROVIDER_FUNCTION",
+      "status": "EXECUTED"
+    },
+    {
+      "actual_cells": {
+        "0": [
+          7,
+          10
+        ],
+        "1": [
+          3,
+          10
+        ]
+      },
+      "actual_denominator": 10,
+      "actual_state": "EXACT_SUPPORTED",
+      "diffs": [],
+      "expected_cells": {
+        "0": [
+          7,
+          10
+        ],
+        "1": [
+          3,
+          10
+        ]
+      },
+      "expected_denominator": 10,
+      "expected_state": "EXACT_SUPPORTED",
+      "family_id": "AT10_BRANCH_STRUCTURE",
+      "gate": "F3",
+      "grade": "SOURCEFREE_FIXTURE",
+      "matched": true,
+      "op_id": "f3.at10.branch_A",
+      "route_actual": "DIRECT_VIA_ACCEPTED_PROVIDER_FUNCTION",
+      "status": "EXECUTED"
+    },
+    {
+      "actual_cells": {
+        "0": [
+          0,
+          8
+        ],
+        "1": [
+          8,
+          8
+        ]
+      },
+      "actual_denominator": 8,
+      "actual_state": "EXACT_SUPPORTED",
+      "diffs": [],
+      "expected_cells": {
+        "0": [
+          0,
+          8
+        ],
+        "1": [
+          8,
+          8
+        ]
+      },
+      "expected_denominator": 8,
+      "expected_state": "EXACT_SUPPORTED",
+      "family_id": "AT10_BRANCH_STRUCTURE",
+      "gate": "F3",
+      "grade": "SOURCEFREE_FIXTURE",
+      "matched": true,
+      "op_id": "f3.at10.branch_B",
+      "route_actual": "DIRECT_VIA_ACCEPTED_PROVIDER_FUNCTION",
+      "status": "EXECUTED"
+    },
+    {
+      "actual_cells": {
+        "0": [
+          0,
+          2
+        ],
+        "1": [
+          2,
+          2
+        ]
+      },
+      "actual_denominator": 2,
+      "actual_state": "EXACT_SUPPORTED",
+      "diffs": [],
+      "expected_cells": {
+        "0": [
+          0,
+          2
+        ],
+        "1": [
+          2,
+          2
+        ]
+      },
+      "expected_denominator": 2,
+      "expected_state": "EXACT_SUPPORTED",
+      "family_id": "AT10_BRANCH_STRUCTURE",
+      "gate": "F3",
+      "grade": "SOURCEFREE_FIXTURE",
+      "matched": true,
+      "op_id": "f3.at10.branch_C",
+      "route_actual": "DIRECT_VIA_ACCEPTED_PROVIDER_FUNCTION",
+      "status": "EXECUTED"
+    },
+    {
+      "actual_cells": {
+        "0": [
+          0,
+          2
+        ],
+        "1": [
+          2,
+          2
+        ]
+      },
+      "actual_denominator": 2,
+      "actual_state": "DISCOVERED_RESULT_SUPPORTED",
+      "diffs": [],
+      "expected_cells": {
+        "0": [
+          0,
+          2
+        ],
+        "1": [
+          2,
+          2
+        ]
+      },
+      "expected_denominator": 2,
+      "expected_state": "DISCOVERED_RESULT_SUPPORTED",
+      "family_id": "AT10_BRANCH_STRUCTURE",
+      "gate": "F3",
+      "grade": "SOURCEFREE_FIXTURE",
+      "matched": true,
+      "op_id": "f3.at10.discovery_cotravel",
+      "route_actual": "I05_EXACT_BOUNDED_VIA_ACCEPTED_COMPOSITION",
+      "status": "EXECUTED"
+    },
+    {
+      "actual_cells": {
+        "0": [
+          1,
+          2
+        ],
+        "1": [
+          1,
+          2
+        ]
+      },
+      "actual_denominator": 2,
+      "actual_state": "EXACT_SUPPORTED",
+      "diffs": [],
+      "expected_cells": {
+        "0": [
+          1,
+          2
+        ],
+        "1": [
+          1,
+          2
+        ]
+      },
+      "expected_denominator": 2,
+      "expected_state": "EXACT_SUPPORTED",
+      "family_id": "AT11_RECURSIVE",
+      "gate": "F3",
+      "grade": "SOURCEFREE_FIXTURE",
+      "matched": true,
+      "op_id": "f3.at11.recursive_depth2",
+      "route_actual": "MX01R2_RECURSIVE_VIA_ACCEPTED_COMPOSITION",
+      "status": "EXECUTED"
+    },
+    {
+      "actual_cells": {
+        "0": [
+          1,
+          3
+        ],
+        "1": [
+          2,
+          3
+        ]
+      },
+      "actual_denominator": 3,
+      "actual_state": "EXACT_SUPPORTED",
+      "diffs": [],
+      "expected_cells": {
+        "0": [
+          1,
+          3
+        ],
+        "1": [
+          2,
+          3
+        ]
+      },
+      "expected_denominator": 3,
+      "expected_state": "EXACT_SUPPORTED",
+      "family_id": "AT12_CLOUD_COTRAVEL",
+      "gate": "F4",
+      "grade": "SOURCEFREE_FIXTURE",
+      "matched": true,
+      "op_id": "f4.at12.cotravel_cloud",
+      "route_actual": "DIRECT_VIA_ACCEPTED_PROVIDER_FUNCTION",
+      "status": "EXECUTED"
+    },
+    {
+      "actual_cells": {
+        "HIGH|LOW": [
+          3,
+          3
+        ],
+        "LOW|HIGH": [
+          0,
+          3
+        ]
+      },
+      "actual_denominator": 3,
+      "actual_state": "EXACT_SUPPORTED",
+      "diffs": [],
+      "expected_cells": {
+        "HIGH|LOW": [
+          3,
+          3
+        ],
+        "LOW|HIGH": [
+          0,
+          3
+        ]
+      },
+      "expected_denominator": 3,
+      "expected_state": "EXACT_SUPPORTED",
+      "family_id": "AT13_RANKED_NONSCALAR",
+      "gate": "F4",
+      "grade": "SOURCEFREE_FIXTURE",
+      "matched": true,
+      "op_id": "f4.at13.ranked_modal",
+      "route_actual": "DIRECT_VIA_ACCEPTED_PROVIDER_FUNCTION",
+      "status": "EXECUTED"
+    },
+    {
+      "actual_cells": {
+        "HIGH|LOW": [
+          0,
+          3
+        ],
+        "LOW|HIGH": [
+          3,
+          3
+        ]
+      },
+      "actual_denominator": 3,
+      "actual_state": "EXACT_SUPPORTED",
+      "diffs": [],
+      "expected_cells": {
+        "HIGH|LOW": [
+          0,
+          3
+        ],
+        "LOW|HIGH": [
+          3,
+          3
+        ]
+      },
+      "expected_denominator": 3,
+      "expected_state": "EXACT_SUPPORTED",
+      "family_id": "AT13_RANKED_NONSCALAR",
+      "gate": "F4",
+      "grade": "SOURCEFREE_FIXTURE",
+      "matched": true,
+      "op_id": "f4.at13.ranked_reidentified",
+      "route_actual": "DIRECT_VIA_ACCEPTED_PROVIDER_FUNCTION",
+      "status": "EXECUTED"
+    },
+    {
+      "actual_cells": {},
+      "actual_denominator": 2,
+      "actual_state": "SUPPORTED",
+      "diffs": [],
+      "expected_cells": {},
+      "expected_denominator": null,
+      "expected_state": "SUPPORTED",
+      "family_id": "AT14_16_TYPED_STATES",
+      "gate": "F3",
+      "grade": "SOURCEFREE_FIXTURE",
+      "matched": true,
+      "op_id": "state.observed_zero",
+      "route_actual": "OWNER_TYPED_STATE",
+      "status": "EXECUTED"
+    },
+    {
+      "actual_cells": {},
+      "actual_denominator": 0,
+      "actual_state": "ZERO_SUPPORT",
+      "diffs": [],
+      "expected_cells": {},
+      "expected_denominator": null,
+      "expected_state": "ZERO_SUPPORT",
+      "family_id": "AT14_16_TYPED_STATES",
+      "gate": "F3",
+      "grade": "SOURCEFREE_FIXTURE",
+      "matched": true,
+      "op_id": "state.zero_support",
+      "route_actual": "OWNER_TYPED_STATE",
+      "status": "EXECUTED"
+    },
+    {
+      "actual_cells": {},
+      "actual_denominator": 2,
+      "actual_state": "VALID_EMPTY",
+      "diffs": [],
+      "expected_cells": {},
+      "expected_denominator": null,
+      "expected_state": "VALID_EMPTY",
+      "family_id": "AT14_16_TYPED_STATES",
+      "gate": "F3",
+      "grade": "SOURCEFREE_FIXTURE",
+      "matched": true,
+      "op_id": "state.valid_empty",
+      "route_actual": "OWNER_TYPED_STATE",
+      "status": "EXECUTED"
+    },
+    {
+      "actual_cells": {},
+      "actual_denominator": null,
+      "actual_state": "INSUFFICIENT_SUPPORT",
+      "diffs": [],
+      "expected_cells": {},
+      "expected_denominator": null,
+      "expected_state": "INSUFFICIENT_SUPPORT",
+      "family_id": "AT14_16_TYPED_STATES",
+      "gate": "F3",
+      "grade": "SOURCEFREE_FIXTURE",
+      "matched": true,
+      "op_id": "state.underpowered",
+      "route_actual": "OWNER_TYPED_STATE",
+      "status": "EXECUTED"
+    },
+    {
+      "actual_cells": {},
+      "actual_denominator": 3,
+      "actual_state": "UNRESOLVED",
+      "diffs": [],
+      "expected_cells": {},
+      "expected_denominator": null,
+      "expected_state": "UNRESOLVED",
+      "family_id": "AT14_16_TYPED_STATES",
+      "gate": "F3",
+      "grade": "SOURCEFREE_FIXTURE",
+      "matched": true,
+      "op_id": "state.unresolved",
+      "route_actual": "OWNER_TYPED_STATE",
+      "status": "EXECUTED"
+    },
+    {
+      "actual_cells": {},
+      "actual_denominator": 0,
+      "actual_state": "NONCOMPARABLE",
+      "diffs": [],
+      "expected_cells": {},
+      "expected_denominator": null,
+      "expected_state": "NONCOMPARABLE",
+      "family_id": "AT14_16_TYPED_STATES",
+      "gate": "F3",
+      "grade": "SOURCEFREE_FIXTURE",
+      "matched": true,
+      "op_id": "state.noncomparable",
+      "route_actual": "OWNER_TYPED_STATE",
+      "status": "EXECUTED"
+    },
+    {
+      "actual_cells": {},
+      "actual_denominator": null,
+      "actual_state": "INTEGRITY_FAILURE",
+      "diffs": [],
+      "expected_cells": {},
+      "expected_denominator": null,
+      "expected_state": "INTEGRITY_FAILURE",
+      "family_id": "AT14_16_TYPED_STATES",
+      "gate": "F3",
+      "grade": "SOURCEFREE_FIXTURE",
+      "matched": true,
+      "op_id": "state.integrity_failure",
+      "route_actual": "OWNER_TYPED_STATE",
+      "status": "EXECUTED"
+    },
+    {
+      "actual_cells": {},
+      "actual_denominator": null,
+      "actual_state": "PARTIAL_BUDGET_EXHAUSTED",
+      "diffs": [],
+      "expected_cells": {},
+      "expected_denominator": null,
+      "expected_state": "PARTIAL_BUDGET_EXHAUSTED",
+      "family_id": "AT14_16_TYPED_STATES",
+      "gate": "F3",
+      "grade": "SOURCEFREE_FIXTURE",
+      "matched": true,
+      "op_id": "state.adaptive_unvisited",
+      "route_actual": "OWNER_TYPED_STATE",
+      "status": "EXECUTED"
+    },
+    {
+      "actual_cells": {},
+      "actual_denominator": null,
+      "actual_state": "BLOCKED_REQUIRED_AUTHORITY",
+      "diffs": [],
+      "expected_cells": {},
+      "expected_denominator": null,
+      "expected_state": "BLOCKED_REQUIRED_AUTHORITY",
+      "family_id": "AT14_16_TYPED_STATES",
+      "gate": "F3",
+      "grade": "SOURCEFREE_FIXTURE",
+      "matched": true,
+      "op_id": "state.blocked_required_authority",
+      "route_actual": "OWNER_TYPED_STATE",
+      "status": "EXECUTED"
+    },
+    {
+      "actual_cells": {
+        "successor_identity_digest": "01c381d3f3c386cfc22fd2f57b8e2c244771ddf1529d4f8ab8c7b1cf41bd50dd"
+      },
+      "actual_denominator": 60,
+      "actual_state": "EXACT_SUPPORTED",
+      "diffs": [],
+      "expected_cells": {
+        "successor_identity_digest": "01c381d3f3c386cfc22fd2f57b8e2c244771ddf1529d4f8ab8c7b1cf41bd50dd"
+      },
+      "expected_denominator": null,
+      "expected_state": "EXACT_SUPPORTED",
+      "family_id": "AT17_SUCCESSOR",
+      "gate": "F2",
+      "grade": "ADOPTED_FREEZE",
+      "matched": true,
+      "op_id": "replay.at17.successor_forward",
+      "route_actual": "DIRECT_VIA_ACCEPTED_PROVIDER_FUNCTION",
+      "status": "EXECUTED"
+    },
+    {
+      "actual_cells": {
+        "successor_identity_digest": "a3bd7e85ae14babb5ac5a12b0bcc57a8cdf3eccf8f43394895903dc43aca40ca"
+      },
+      "actual_denominator": 62,
+      "actual_state": "EXACT_SUPPORTED",
+      "diffs": [],
+      "expected_cells": {
+        "successor_identity_digest": "a3bd7e85ae14babb5ac5a12b0bcc57a8cdf3eccf8f43394895903dc43aca40ca"
+      },
+      "expected_denominator": null,
+      "expected_state": "EXACT_SUPPORTED",
+      "family_id": "AT17_SUCCESSOR",
+      "gate": "F2",
+      "grade": "ADOPTED_FREEZE",
+      "matched": true,
+      "op_id": "replay.at17.successor_reverse",
+      "route_actual": "DIRECT_VIA_ACCEPTED_PROVIDER_FUNCTION",
+      "status": "EXECUTED"
+    },
+    {
+      "actual_cells": {
+        "fresh_process_identity": "1ab68fd8ef9849d7f1a49d98ded9b3694e98c23eab275bb945008575382f49e4",
+        "identity_relation": "EQUAL",
+        "in_process_accepted_provider_identity": "1ab68fd8ef9849d7f1a49d98ded9b3694e98c23eab275bb945008575382f49e4"
+      },
+      "actual_denominator": 60,
+      "actual_state": "IDENTICAL_IDENTITY_ON_REPLAY",
+      "diffs": [],
+      "expected_cells": {
+        "identity_relation": "EQUAL"
+      },
+      "expected_denominator": null,
+      "expected_state": "IDENTICAL_IDENTITY_ON_REPLAY",
+      "family_id": "AT18_REPLAY",
+      "gate": "F1",
+      "grade": "SOURCEFREE_FIXTURE",
+      "matched": true,
+      "op_id": "replay.at18.fresh_process",
+      "route_actual": "DIRECT_VIA_ACCEPTED_PROVIDER_FUNCTION",
+      "status": "EXECUTED"
+    },
+    {
+      "actual_cells": {
+        "affected": "2",
+        "declared_dependents": "3",
+        "sibling_unaffected": "True",
+        "unaffected": "1"
+      },
+      "actual_denominator": null,
+      "actual_state": "ONLY_GRAPH_DECLARED_DEPENDENTS_AFFECTED",
+      "diffs": [],
+      "expected_cells": {},
+      "expected_denominator": null,
+      "expected_state": "ONLY_GRAPH_DECLARED_DEPENDENTS_AFFECTED",
+      "family_id": "AT19_INVALIDATION",
+      "gate": "F1",
+      "grade": "SOURCEFREE_FIXTURE",
+      "matched": true,
+      "op_id": "replay.at19.selective_invalidation",
+      "route_actual": "OWNER_LIFECYCLE_TRANSITION",
+      "status": "EXECUTED"
+    },
+    {
+      "actual_cells": {
+        "b5_current_selection": "True",
+        "b5_publication": "True",
+        "b5_registration": "True"
+      },
+      "actual_denominator": null,
+      "actual_state": "RULE_SATISFIED",
+      "diffs": [],
+      "expected_cells": {},
+      "expected_denominator": null,
+      "expected_state": "RULE_SATISFIED",
+      "family_id": "LEARNED_RELEASE_CHAIN",
+      "gate": "F1",
+      "grade": "SOURCEFREE_FIXTURE",
+      "matched": true,
+      "op_id": "learned.full_chain_composition",
+      "route_actual": "M01_M1_M2_B5_I4_COMPOSITION",
+      "status": "EXECUTED"
+    },
+    {
+      "actual_cells": {
+        "public_objects": "11",
+        "release_replays_identically": "True"
+      },
+      "actual_denominator": 11,
+      "actual_state": "SUPPORTED",
+      "diffs": [],
+      "expected_cells": {},
+      "expected_denominator": null,
+      "expected_state": "SUPPORTED",
+      "family_id": "SOURCE_BACKED_FACADE",
+      "gate": "F1",
+      "grade": "SOURCEFREE_FIXTURE",
+      "matched": true,
+      "op_id": "sourcebacked.stream_query",
+      "route_actual": "PHYSICAL_STREAM_TO_C11_TO_I03",
+      "status": "EXECUTED"
+    },
+    {
+      "actual_cells": {
+        "empirical_state": "PRODUCTIVE_TEST_ONLY",
+        "route_probability_is_null": "True",
+        "values_read_count": "7"
+      },
+      "actual_denominator": null,
+      "actual_state": "OPTIONS_AND_SOURCE_SUPPORT_PRODUCED",
+      "diffs": [],
+      "expected_cells": {},
+      "expected_denominator": null,
+      "expected_state": "OPTIONS_AND_SOURCE_SUPPORT_PRODUCED",
+      "family_id": "E04_ORIGINAL_CONSUMER",
+      "gate": "F8",
+      "grade": "SOURCEFREE_TEST_ONLY",
+      "matched": true,
+      "op_id": "e04.nonparent_consumption",
+      "route_actual": "POSITIONED_SERVICE_TO_NONPARENT_OPTIONS",
+      "status": "EXECUTED"
+    }
+  ],
+  "schema": "E41_F1F4_COVERAGE_LEDGER@1"
+}

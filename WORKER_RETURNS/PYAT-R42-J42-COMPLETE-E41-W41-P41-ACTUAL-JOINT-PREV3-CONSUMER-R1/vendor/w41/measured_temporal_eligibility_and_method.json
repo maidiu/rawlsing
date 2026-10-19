@@ -1,0 +1,579 @@
+{
+  "Ghana_measured_change": null,
+  "authority": "SOURCEFREE_PROBE_ONLY_NOT_MEASURED_ISSUANCE",
+  "cases": {
+    "annual_gap": {
+      "gaps": [
+        {
+          "canonical_wave": "2021",
+          "comparability_status": "unknown_noncomparable",
+          "compiler_version": "v553_temporal_pressure_0.2_sparse",
+          "country_code": "ZZ",
+          "created_at": "EXECUTION_TIMESTAMP_NOT_SCIENTIFIC_IDENTITY",
+          "missing_authority_kinds_json": "[\"semantic\", \"directionality\", \"position\"]",
+          "register_kind": "missing_year",
+          "register_reason": "missing_gap_stays_unknown_noncomparable",
+          "register_status": "unknown_noncomparable",
+          "run_id": "ee1_run",
+          "schema_version": "v0.2",
+          "source": "TESTONLY_EE1_PANEL",
+          "source_family": "TESTONLY_EE1_PANEL",
+          "wave": "2021",
+          "year": 2021
+        }
+      ],
+      "identity": {
+        "state": "IDENTITY_OK",
+        "wave_count": 2,
+        "years": [
+          2020,
+          2022
+        ]
+      },
+      "state": "MISSING_GAP_UNKNOWN"
+    },
+    "comparable_probe": {
+      "authorization": {
+        "authorized_anchor_count": 2,
+        "directionality_compatibility_status": "compatible_by_harmonizer_shared_contract",
+        "distinct_wave_count": 2,
+        "eligible_wave_count": 2,
+        "harmonization_authority_status": "multi_wave_authorized",
+        "multi_wave_authorization_reason": "at_least_two_probe_ready_resolved_structural_anchors",
+        "multi_wave_authorization_status": "AUTHORIZED_SPARSE_TEMPORAL_KEY",
+        "position_compatibility_status": "compatible_by_harmonizer_shared_contract",
+        "probe_anchor_count": 0,
+        "probe_ready_wave_count": 2,
+        "ready_for_v554": true,
+        "resolved_wave_count": 2,
+        "semantic_compatibility_status": "compatible_by_canonical_key",
+        "structural_identity_compatibility_status": "compatible_by_comparable_temporal_key"
+      },
+      "delta": {
+        "authority_delta": 0.0,
+        "authorized_structural_delta_value": null,
+        "blocked_reason": "probe_only_temporal_field",
+        "comparability_status": "probe_only",
+        "comparable_temporal_key": "v553ck_ee1_demo",
+        "compiler_version": "v553_temporal_pressure_0.2_sparse",
+        "confidence_delta": 0.0,
+        "country": "ZZ",
+        "coverage_delta_value": 0.1,
+        "created_at": "EXECUTION_TIMESTAMP_NOT_SCIENTIFIC_IDENTITY",
+        "delta_basis": "probe_pressure_value",
+        "delta_direction": "up",
+        "delta_interpretation_permission": false,
+        "delta_magnitude_class": "small",
+        "delta_value": 0.15,
+        "delta_value_kind": "probe_delta",
+        "from_wave_id": "2020",
+        "from_year": 2020,
+        "probe_delta_value": 0.15,
+        "run_id": "ee1_run",
+        "schema_version": "v0.2",
+        "structural_delta_value": null,
+        "temporal_pressure_key": "v553ck_ee1_demo",
+        "to_wave_id": "2022",
+        "to_year": 2022
+      },
+      "gap_annotation": [
+        2021
+      ],
+      "identity": {
+        "state": "IDENTITY_OK",
+        "wave_count": 2,
+        "years": [
+          2020,
+          2022
+        ]
+      },
+      "report": {
+        "authority_overlay_coverage": {
+          "2020": {
+            "directionality": 0,
+            "position": 0,
+            "semantic": 0
+          },
+          "2022": {
+            "directionality": 0,
+            "position": 0,
+            "semantic": 0
+          }
+        },
+        "blocking_conditions": [
+          "at_least_two_waves",
+          "one_explicit_survey_family_and_country",
+          "shared_semantic_directionality_and_position_signal_columns",
+          "wave_specific_certified_authority_rows"
+        ],
+        "comparability_status": "comparability_authorized",
+        "comparison_authority_status": "multi_wave_authorized",
+        "compiler_version": "v553_wave_harmonization_0.1",
+        "country_code": "ZZ",
+        "created_at": "EXECUTION_TIMESTAMP_NOT_SCIENTIFIC_IDENTITY",
+        "cross_wave_comparability_matrix": [
+          {
+            "comparability_status": "comparable",
+            "current_wave": "2022",
+            "pair_missing_authority_count": 0,
+            "prior_wave": "2020",
+            "shared_directionality_column_count": 2,
+            "shared_driver_facet_id_count": 1,
+            "shared_horizon_constraint_id_count": 1,
+            "shared_position_column_count": 2,
+            "shared_relation_axis_id_count": 1,
+            "shared_semantic_column_count": 3,
+            "shared_structural_channel_id_count": 1,
+            "shared_target_entity_id_count": 1,
+            "wave_pair_evidence_score": 1.0
+          }
+        ],
+        "cross_wave_noncomparability_matrix": [],
+        "harmonization_scope": "multi_wave_authority_comparison",
+        "harmonization_score": 0.6000000000000001,
+        "multiple_waves_present": true,
+        "overall_status": "STATUS: READY_FOR_V553_WAVE_HARMONIZATION",
+        "overlay_presence_score": 0.0,
+        "per_wave_absence_summary": {
+          "2020": {
+            "absence_status": "complete",
+            "missing_authority_count": 0,
+            "missing_authority_kinds": []
+          },
+          "2022": {
+            "absence_status": "complete",
+            "missing_authority_count": 0,
+            "missing_authority_kinds": []
+          }
+        },
+        "per_wave_authority_summary": {
+          "2020": {
+            "authority_overlay_count": 0,
+            "authority_overlay_total_count": 3,
+            "missing_authority_kinds": [],
+            "shared_driver_facet_id_count": 1,
+            "shared_horizon_constraint_id_count": 1,
+            "shared_relation_axis_id_count": 1,
+            "shared_structural_channel_id_count": 1,
+            "shared_target_entity_id_count": 1,
+            "thin_layer_count": 0,
+            "thin_ready": false,
+            "thin_status": "",
+            "v552j_blocker_context_count": 0,
+            "v552j_handoff_authority_status": "",
+            "v552j_readiness_status": "",
+            "wave_status": "complete"
+          },
+          "2022": {
+            "authority_overlay_count": 0,
+            "authority_overlay_total_count": 3,
+            "missing_authority_kinds": [],
+            "shared_driver_facet_id_count": 1,
+            "shared_horizon_constraint_id_count": 1,
+            "shared_relation_axis_id_count": 1,
+            "shared_structural_channel_id_count": 1,
+            "shared_target_entity_id_count": 1,
+            "thin_layer_count": 0,
+            "thin_ready": false,
+            "thin_status": "",
+            "v552j_blocker_context_count": 0,
+            "v552j_handoff_authority_status": "",
+            "v552j_readiness_status": "",
+            "wave_status": "complete"
+          }
+        },
+        "per_wave_coverage_summary": {
+          "2020": {
+            "authority_overlay_count": 0,
+            "coverage_status": "complete",
+            "directionality_rows": 0,
+            "driver_facet_ids": [
+              "DRIVER_EE1"
+            ],
+            "horizon_constraint_ids": [
+              "HORIZON_EE1"
+            ],
+            "position_rows": 0,
+            "raw_directionality_rows": 0,
+            "raw_position_rows": 0,
+            "raw_semantic_rows": 0,
+            "relation_axis_ids": [
+              "AXIS_EE1"
+            ],
+            "semantic_rows": 0,
+            "structural_channel_ids": [
+              "CHANNEL_EE1"
+            ],
+            "target_entity_ids": [
+              "TARGET_EE1"
+            ]
+          },
+          "2022": {
+            "authority_overlay_count": 0,
+            "coverage_status": "complete",
+            "directionality_rows": 0,
+            "driver_facet_ids": [
+              "DRIVER_EE1"
+            ],
+            "horizon_constraint_ids": [
+              "HORIZON_EE1"
+            ],
+            "position_rows": 0,
+            "raw_directionality_rows": 0,
+            "raw_position_rows": 0,
+            "raw_semantic_rows": 0,
+            "relation_axis_ids": [
+              "AXIS_EE1"
+            ],
+            "semantic_rows": 0,
+            "structural_channel_ids": [
+              "CHANNEL_EE1"
+            ],
+            "target_entity_ids": [
+              "TARGET_EE1"
+            ]
+          }
+        },
+        "readiness_score": 0.7000000000000001,
+        "ready_for_v553": true,
+        "required_authority_kinds": [
+          "semantic",
+          "directionality",
+          "position"
+        ],
+        "required_shared_structure": [
+          "shared_semantic_columns",
+          "shared_directionality_columns",
+          "shared_position_columns"
+        ],
+        "schema_version": "v553_wave_harmonization_0.1",
+        "shared_directionality_columns": [
+          "directionality_policy",
+          "signed_polarity_status"
+        ],
+        "shared_directionality_score": 0.4,
+        "shared_driver_facet_ids": [
+          "DRIVER_EE1"
+        ],
+        "shared_horizon_constraint_ids": [
+          "HORIZON_EE1"
+        ],
+        "shared_position_columns": [
+          "position_conditioning",
+          "structural_mapping_status"
+        ],
+        "shared_position_score": 0.4,
+        "shared_relation_axis_ids": [
+          "AXIS_EE1"
+        ],
+        "shared_semantic_columns": [
+          "evidence_lane",
+          "semantic_lane",
+          "semantic_role"
+        ],
+        "shared_semantic_score": 0.6,
+        "shared_structural_channel_ids": [
+          "CHANNEL_EE1"
+        ],
+        "shared_target_entity_ids": [
+          "TARGET_EE1"
+        ],
+        "source": "testonly_ee1_panel",
+        "source_family": "testonly_ee1_panel",
+        "v552j_blocker_context_count": 0,
+        "v552j_handoff_authority_status_counts": {
+          "unknown": 2
+        },
+        "v552j_readiness_status_counts": {
+          "unknown": 2
+        },
+        "wave_count": 2,
+        "wave_coverage_score": 1.0,
+        "wave_differences": [
+          {
+            "canonical_wave": "2020",
+            "difference_kind": "shared_temporal_authority_surface",
+            "difference_reason": "wave-specific authority and structural id inventory",
+            "directionality_overlay_rows": 0,
+            "missing_authority_kinds_json": "[]",
+            "position_overlay_rows": 0,
+            "semantic_overlay_rows": 0,
+            "shared_driver_facet_id_count": 1,
+            "shared_driver_facet_ids_json": "[\"DRIVER_EE1\"]",
+            "shared_horizon_constraint_id_count": 1,
+            "shared_horizon_constraint_ids_json": "[\"HORIZON_EE1\"]",
+            "shared_relation_axis_id_count": 1,
+            "shared_relation_axis_ids_json": "[\"AXIS_EE1\"]",
+            "shared_structural_channel_id_count": 1,
+            "shared_structural_channel_ids_json": "[\"CHANNEL_EE1\"]",
+            "shared_target_entity_id_count": 1,
+            "shared_target_entity_ids_json": "[\"TARGET_EE1\"]",
+            "source": "TESTONLY_EE1_PANEL",
+            "thin_layer_count": 0,
+            "thin_ready": false,
+            "thin_status": "",
+            "v552j_blocker_context_count": 0,
+            "v552j_handoff_authority_status": "",
+            "v552j_readiness_status": "",
+            "wave": "2020",
+            "wave_status": "complete"
+          },
+          {
+            "canonical_wave": "2022",
+            "difference_kind": "shared_temporal_authority_surface",
+            "difference_reason": "wave-specific authority and structural id inventory",
+            "directionality_overlay_rows": 0,
+            "missing_authority_kinds_json": "[]",
+            "position_overlay_rows": 0,
+            "semantic_overlay_rows": 0,
+            "shared_driver_facet_id_count": 1,
+            "shared_driver_facet_ids_json": "[\"DRIVER_EE1\"]",
+            "shared_horizon_constraint_id_count": 1,
+            "shared_horizon_constraint_ids_json": "[\"HORIZON_EE1\"]",
+            "shared_relation_axis_id_count": 1,
+            "shared_relation_axis_ids_json": "[\"AXIS_EE1\"]",
+            "shared_structural_channel_id_count": 1,
+            "shared_structural_channel_ids_json": "[\"CHANNEL_EE1\"]",
+            "shared_target_entity_id_count": 1,
+            "shared_target_entity_ids_json": "[\"TARGET_EE1\"]",
+            "source": "TESTONLY_EE1_PANEL",
+            "thin_layer_count": 0,
+            "thin_ready": false,
+            "thin_status": "",
+            "v552j_blocker_context_count": 0,
+            "v552j_handoff_authority_status": "",
+            "v552j_readiness_status": "",
+            "wave": "2022",
+            "wave_status": "complete"
+          }
+        ],
+        "wave_names": [
+          "2020",
+          "2022"
+        ],
+        "wave_pair_count": 1,
+        "wave_pair_evidence": [
+          {
+            "compiler_version": "v553_wave_harmonization_0.1",
+            "created_at": "EXECUTION_TIMESTAMP_NOT_SCIENTIFIC_IDENTITY",
+            "current_canonical_wave": "2022",
+            "current_wave": "2022",
+            "current_wave_status": "complete",
+            "pair_harmonization_score": 1.0,
+            "pair_harmonization_status": "aligned",
+            "pair_missing_authority_count": 0,
+            "prior_canonical_wave": "2020",
+            "prior_wave": "2020",
+            "prior_wave_status": "complete",
+            "run_id": "2020_to_2022",
+            "schema_version": "v553_wave_harmonization_0.1",
+            "shared_directionality_column_count": 2,
+            "shared_directionality_columns_json": "[\"directionality_policy\", \"signed_polarity_status\"]",
+            "shared_driver_facet_id_count": 1,
+            "shared_driver_facet_ids_json": "[\"DRIVER_EE1\"]",
+            "shared_horizon_constraint_id_count": 1,
+            "shared_horizon_constraint_ids_json": "[\"HORIZON_EE1\"]",
+            "shared_position_column_count": 2,
+            "shared_position_columns_json": "[\"position_conditioning\", \"structural_mapping_status\"]",
+            "shared_relation_axis_id_count": 1,
+            "shared_relation_axis_ids_json": "[\"AXIS_EE1\"]",
+            "shared_semantic_column_count": 3,
+            "shared_semantic_columns_json": "[\"evidence_lane\", \"semantic_lane\", \"semantic_role\"]",
+            "shared_structural_channel_id_count": 1,
+            "shared_structural_channel_ids_json": "[\"CHANNEL_EE1\"]",
+            "shared_target_entity_id_count": 1,
+            "shared_target_entity_ids_json": "[\"TARGET_EE1\"]",
+            "source": "TESTONLY_EE1_PANEL"
+          }
+        ],
+        "wave_rows": [
+          {
+            "canonical_wave": "2020",
+            "country_code": "ZZ",
+            "missing_authority_kinds": [],
+            "overlay_columns": {
+              "directionality": [
+                "directionality_policy",
+                "signed_polarity_status"
+              ],
+              "position": [
+                "position_conditioning",
+                "structural_mapping_status"
+              ],
+              "semantic": [
+                "semantic_role",
+                "semantic_lane",
+                "evidence_lane"
+              ]
+            },
+            "overlay_paths": {
+              "directionality": "SOURCEFREE_OVERLAY_ROOT/2020/directionality.csv",
+              "position": "SOURCEFREE_OVERLAY_ROOT/2020/position.csv",
+              "semantic": "SOURCEFREE_OVERLAY_ROOT/2020/semantic.csv"
+            },
+            "source": "TESTONLY_EE1_PANEL",
+            "temporal_year": 2020,
+            "wave": "2020",
+            "wave_driver_facet_ids": [
+              "DRIVER_EE1"
+            ],
+            "wave_horizon_constraint_ids": [
+              "HORIZON_EE1"
+            ],
+            "wave_relation_axis_ids": [
+              "AXIS_EE1"
+            ],
+            "wave_status": "complete",
+            "wave_structural_channel_ids": [
+              "CHANNEL_EE1"
+            ],
+            "wave_target_entity_ids": [
+              "TARGET_EE1"
+            ]
+          },
+          {
+            "canonical_wave": "2022",
+            "country_code": "ZZ",
+            "missing_authority_kinds": [],
+            "overlay_columns": {
+              "directionality": [
+                "directionality_policy",
+                "signed_polarity_status"
+              ],
+              "position": [
+                "position_conditioning",
+                "structural_mapping_status"
+              ],
+              "semantic": [
+                "semantic_role",
+                "semantic_lane",
+                "evidence_lane"
+              ]
+            },
+            "overlay_paths": {
+              "directionality": "SOURCEFREE_OVERLAY_ROOT/2022/directionality.csv",
+              "position": "SOURCEFREE_OVERLAY_ROOT/2022/position.csv",
+              "semantic": "SOURCEFREE_OVERLAY_ROOT/2022/semantic.csv"
+            },
+            "source": "TESTONLY_EE1_PANEL",
+            "temporal_year": 2022,
+            "wave": "2022",
+            "wave_driver_facet_ids": [
+              "DRIVER_EE1"
+            ],
+            "wave_horizon_constraint_ids": [
+              "HORIZON_EE1"
+            ],
+            "wave_relation_axis_ids": [
+              "AXIS_EE1"
+            ],
+            "wave_status": "complete",
+            "wave_structural_channel_ids": [
+              "CHANNEL_EE1"
+            ],
+            "wave_target_entity_ids": [
+              "TARGET_EE1"
+            ]
+          }
+        ],
+        "wave_status_counts": {
+          "complete": 2
+        }
+      },
+      "state": "COMPARABLE_PROBE_ONLY"
+    },
+    "duplicate_year": {
+      "identity": {
+        "reason": "V553 temporal input requires one anchor per calendar year; 2020 is used by 2020 and 2021",
+        "state": "DUPLICATE_YEAR_ANCHOR"
+      },
+      "state": "DUPLICATE_YEAR_ANCHOR"
+    },
+    "estimand_change": {
+      "identity": {
+        "state": "IDENTITY_OK",
+        "wave_count": 2,
+        "years": [
+          2020,
+          2022
+        ]
+      },
+      "population": {
+        "differing_fields": [
+          "estimand"
+        ],
+        "reason": "period populations/estimands/designs are not exact-key identical",
+        "state": "NONCOMPARABLE_POPULATION_OR_ESTIMAND"
+      },
+      "state": "NONCOMPARABLE_POPULATION_OR_ESTIMAND"
+    },
+    "future_evidence": {
+      "clock": {
+        "asof": "2026-04-15",
+        "evidence_publication": "2027-06-01",
+        "state": "FUTURE_EVIDENCE_AT_HISTORICAL_AS_OF"
+      },
+      "identity": {
+        "state": "IDENTITY_OK",
+        "wave_count": 2,
+        "years": [
+          2020,
+          2022
+        ]
+      },
+      "state": "FUTURE_EVIDENCE_AT_HISTORICAL_AS_OF"
+    },
+    "future_rule": {
+      "clock": {
+        "asof": "2026-04-15",
+        "rule_publication": "2027-06-01",
+        "state": "FUTURE_RULE_AT_HISTORICAL_AS_OF"
+      },
+      "identity": {
+        "state": "IDENTITY_OK",
+        "wave_count": 2,
+        "years": [
+          2020,
+          2022
+        ]
+      },
+      "state": "FUTURE_RULE_AT_HISTORICAL_AS_OF"
+    },
+    "mixed_country": {
+      "identity": {
+        "reason": "V553 temporal input requires exactly one explicit country_code; found ['UT', 'ZZ']",
+        "state": "NONCOMPARABLE_COUNTRY"
+      },
+      "state": "NONCOMPARABLE_COUNTRY"
+    },
+    "mixed_family": {
+      "identity": {
+        "reason": "V553 temporal input requires exactly one explicit survey family; found ['testonly_ee1_other', 'testonly_ee1_panel']",
+        "state": "NONCOMPARABLE_SOURCE_FAMILY"
+      },
+      "state": "NONCOMPARABLE_SOURCE_FAMILY"
+    },
+    "population_change": {
+      "identity": {
+        "state": "IDENTITY_OK",
+        "wave_count": 2,
+        "years": [
+          2020,
+          2022
+        ]
+      },
+      "population": {
+        "differing_fields": [
+          "target_population"
+        ],
+        "reason": "period populations/estimands/designs are not exact-key identical",
+        "state": "NONCOMPARABLE_POPULATION_OR_ESTIMAND"
+      },
+      "state": "NONCOMPARABLE_POPULATION_OR_ESTIMAND"
+    }
+  },
+  "measured_delta": null,
+  "measured_pairs": [],
+  "measured_state": "HELD_UNISSUED_EE12",
+  "method": "INHERITED_V553_WITH_EE1_IDENTITY_POPULATION_CLOCK_GATE"
+}

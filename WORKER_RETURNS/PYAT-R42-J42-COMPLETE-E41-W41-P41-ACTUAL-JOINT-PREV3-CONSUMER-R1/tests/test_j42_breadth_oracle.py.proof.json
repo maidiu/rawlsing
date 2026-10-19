@@ -1,0 +1,38 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "claims": [
+    {
+      "claim_id": "W2_W41_MATERIAL_RULE_SEVERANCE",
+      "actual_consumer": "J42 independent 84-view route oracle against actual W41 ObjectiveWorld reads",
+      "claimed_dependency": "W41 family material rule fee_only -> actual structural training route at fixed E41 source",
+      "positive_node": "WORKER_RETURNS/PYAT-R42-J42-COMPLETE-E41-W41-P41-ACTUAL-JOINT-PREV3-CONSUMER-R1/tests/test_j42_breadth_oracle.py::test_route_oracle_all_84",
+      "fault": {
+        "path": "WORKER_RETURNS/PYAT-R42-J42-COMPLETE-E41-W41-P41-ACTUAL-JOINT-PREV3-CONSUMER-R1/vendor/w41/objective_world.py",
+        "old": " 'fee_only':('training_fee',6),",
+        "new": " 'fee_only':('training_fee',2),"
+      }
+    },
+    {
+      "claim_id": "W4_ASOF_SELECTION_SEVERANCE",
+      "actual_consumer": "J42 published-boundary selection assertion over actual W41 worlds",
+      "claimed_dependency": "AS_OF publication boundary 2027-05-01 -> rev1 selection; TEST_CURRENT -> rev2",
+      "positive_node": "WORKER_RETURNS/PYAT-R42-J42-COMPLETE-E41-W41-P41-ACTUAL-JOINT-PREV3-CONSUMER-R1/tests/test_j42_breadth_oracle.py::test_published_boundary_selection",
+      "fault": {
+        "path": "WORKER_RETURNS/PYAT-R42-J42-COMPLETE-E41-W41-P41-ACTUAL-JOINT-PREV3-CONSUMER-R1/vendor/w41/objective_world.py",
+        "old": " 'AS_OF':t35.clock('AS_OF','2027-09-01','2027-05-01'),",
+        "new": " 'AS_OF':t35.clock('AS_OF','2027-09-01','2027-06-01'),"
+      }
+    },
+    {
+      "claim_id": "W5_JOIN_FAMILY_NO_DROP_SEVERANCE",
+      "actual_consumer": "J42 declared compatible-universe no-drop coverage assertion",
+      "claimed_dependency": "frozen 7-family compatible universe -> 84 executed joined views",
+      "positive_node": "WORKER_RETURNS/PYAT-R42-J42-COMPLETE-E41-W41-P41-ACTUAL-JOINT-PREV3-CONSUMER-R1/tests/test_j42_breadth_oracle.py::test_no_drop_all_84_families",
+      "fault": {
+        "path": "WORKER_RETURNS/PYAT-R42-J42-COMPLETE-E41-W41-P41-ACTUAL-JOINT-PREV3-CONSUMER-R1/runtime/j42_join.py",
+        "old": "JOIN_FAMILIES = (\"base\", \"two_epoch\", \"formal\", \"civil_sanction\",\n                 \"civil_closed\", \"exit_only\", \"fee_only\")",
+        "new": "JOIN_FAMILIES = (\"base\", \"two_epoch\", \"formal\", \"civil_sanction\",\n                 \"civil_closed\", \"exit_only\")"
+      }
+    }
+  ]
+}

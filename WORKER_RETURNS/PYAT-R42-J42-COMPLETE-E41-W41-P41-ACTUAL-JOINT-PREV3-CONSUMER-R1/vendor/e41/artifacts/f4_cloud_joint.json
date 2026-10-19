@@ -1,0 +1,110 @@
+{
+  "gate": "F4",
+  "matched_count": 6,
+  "operation_count": 6,
+  "rows": [
+    {
+      "actual_cells": {
+        "0": [
+          0,
+          1
+        ],
+        "1": [
+          1,
+          1
+        ]
+      },
+      "actual_denominator": 1,
+      "actual_state": "EXACT_SUPPORTED",
+      "family_id": "AT09_JOINT_CONFIGURATION",
+      "matched": true,
+      "op_id": "f4.at09.xor_joint"
+    },
+    {
+      "actual_cells": {
+        "0": [
+          0,
+          2
+        ],
+        "1": [
+          2,
+          2
+        ]
+      },
+      "actual_denominator": 2,
+      "actual_state": "EXACT_SUPPORTED",
+      "family_id": "AT09_JOINT_CONFIGURATION",
+      "matched": true,
+      "op_id": "f4.at09.equal_marginals_left"
+    },
+    {
+      "actual_cells": {
+        "0": [
+          2,
+          2
+        ],
+        "1": [
+          0,
+          2
+        ]
+      },
+      "actual_denominator": 2,
+      "actual_state": "EXACT_SUPPORTED",
+      "family_id": "AT09_JOINT_CONFIGURATION",
+      "matched": true,
+      "op_id": "f4.at09.equal_marginals_right"
+    },
+    {
+      "actual_cells": {
+        "0": [
+          1,
+          3
+        ],
+        "1": [
+          2,
+          3
+        ]
+      },
+      "actual_denominator": 3,
+      "actual_state": "EXACT_SUPPORTED",
+      "family_id": "AT12_CLOUD_COTRAVEL",
+      "matched": true,
+      "op_id": "f4.at12.cotravel_cloud"
+    },
+    {
+      "actual_cells": {
+        "HIGH|LOW": [
+          3,
+          3
+        ],
+        "LOW|HIGH": [
+          0,
+          3
+        ]
+      },
+      "actual_denominator": 3,
+      "actual_state": "EXACT_SUPPORTED",
+      "family_id": "AT13_RANKED_NONSCALAR",
+      "matched": true,
+      "op_id": "f4.at13.ranked_modal"
+    },
+    {
+      "actual_cells": {
+        "HIGH|LOW": [
+          0,
+          3
+        ],
+        "LOW|HIGH": [
+          3,
+          3
+        ]
+      },
+      "actual_denominator": 3,
+      "actual_state": "EXACT_SUPPORTED",
+      "family_id": "AT13_RANKED_NONSCALAR",
+      "matched": true,
+      "op_id": "f4.at13.ranked_reidentified"
+    }
+  ],
+  "schema": "E41_F4_CLOUD_JOINT@1"
+}

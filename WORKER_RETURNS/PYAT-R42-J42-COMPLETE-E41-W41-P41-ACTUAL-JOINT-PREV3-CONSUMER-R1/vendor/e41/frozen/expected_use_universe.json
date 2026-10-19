@@ -1,0 +1,598 @@
+{
+  "derivation": "hand arithmetic on literal frozen source tables plus adopted identity freezes",
+  "frozen_before_candidate_outputs": true,
+  "operation_count": 31,
+  "operations": [
+    {
+      "conditioners": [
+        "POSITION=P1"
+      ],
+      "direction": "forward",
+      "expected_cells": {
+        "no": [
+          6,
+          60
+        ],
+        "yes": [
+          54,
+          60
+        ]
+      },
+      "expected_denominator": 60,
+      "expected_producer_or_consumer_state": "EXACT_SUPPORTED",
+      "family_id": "AT07_BIDIRECTIONAL_DIRECT",
+      "gate": "F2",
+      "grade": "SOURCEFREE_FIXTURE",
+      "notes": "independent arithmetic: 54 yes / 60 P1 respondents",
+      "op_id": "f2.at07.forward",
+      "route_expected": "DIRECT_I03_TO_POSITIONED_SUBJECT",
+      "target": "ANSWER"
+    },
+    {
+      "conditioners": [
+        "ANSWER=yes"
+      ],
+      "direction": "reverse",
+      "expected_cells": {
+        "P1": [
+          54,
+          62
+        ],
+        "P2": [
+          8,
+          62
+        ]
+      },
+      "expected_denominator": 62,
+      "expected_producer_or_consumer_state": "EXACT_SUPPORTED",
+      "family_id": "AT07_BIDIRECTIONAL_DIRECT",
+      "gate": "F2",
+      "grade": "SOURCEFREE_FIXTURE",
+      "notes": "independent arithmetic: 54 P1 / 62 yes respondents",
+      "op_id": "f2.at07.reverse",
+      "route_expected": "DIRECT_I03_TO_POSITIONED_SUBJECT",
+      "target": "POSITION"
+    },
+    {
+      "conditioners": [
+        "ATT1=agree"
+      ],
+      "expected_cells": {
+        "oppose": [
+          6,
+          60
+        ],
+        "support": [
+          54,
+          60
+        ]
+      },
+      "expected_denominator": 60,
+      "expected_producer_or_consumer_state": "EXACT_SUPPORTED",
+      "family_id": "AT08_ATTITUDE_CONDITIONAL",
+      "gate": "F2",
+      "grade": "SOURCEFREE_FIXTURE",
+      "notes": "position/attitude -> different attitude possibility",
+      "op_id": "f2.at08.agree_to_att2",
+      "route_expected": "DIRECT_I03_TO_POSITIONED_SUBJECT",
+      "target": "ATT2"
+    },
+    {
+      "conditioners": [
+        "ATT1=disagree"
+      ],
+      "expected_cells": {
+        "oppose": [
+          32,
+          40
+        ],
+        "support": [
+          8,
+          40
+        ]
+      },
+      "expected_denominator": 40,
+      "expected_producer_or_consumer_state": "EXACT_SUPPORTED",
+      "family_id": "AT08_ATTITUDE_CONDITIONAL",
+      "gate": "F2",
+      "grade": "SOURCEFREE_FIXTURE",
+      "notes": "",
+      "op_id": "f2.at08.disagree_to_att2",
+      "route_expected": "DIRECT_I03_TO_POSITIONED_SUBJECT",
+      "target": "ATT2"
+    },
+    {
+      "conditioners": [
+        "A=1",
+        "B=0"
+      ],
+      "expected_cells": {
+        "0": [
+          0,
+          1
+        ],
+        "1": [
+          1,
+          1
+        ]
+      },
+      "expected_denominator": 1,
+      "expected_producer_or_consumer_state": "EXACT_SUPPORTED",
+      "family_id": "AT09_JOINT_CONFIGURATION",
+      "gate": "F4",
+      "grade": "SOURCEFREE_FIXTURE",
+      "notes": "joint decisive (A=1,B=0 -> C=1); every unary marginal is flat 1/2",
+      "op_id": "f4.at09.xor_joint",
+      "route_expected": "DIRECT_I03_TO_POSITIONED_SUBJECT",
+      "target": "C"
+    },
+    {
+      "conditioners": [
+        "A=1"
+      ],
+      "expected_cells": {
+        "0": [
+          0,
+          2
+        ],
+        "1": [
+          2,
+          2
+        ]
+      },
+      "expected_denominator": 2,
+      "expected_producer_or_consumer_state": "EXACT_SUPPORTED",
+      "family_id": "AT09_JOINT_CONFIGURATION",
+      "gate": "F4",
+      "grade": "SOURCEFREE_FIXTURE",
+      "notes": "identical A/B marginals (2/4 ones each), different joint pairing",
+      "op_id": "f4.at09.equal_marginals_left",
+      "route_expected": "DIRECT_I03_TO_POSITIONED_SUBJECT",
+      "target": "B"
+    },
+    {
+      "conditioners": [
+        "A=1"
+      ],
+      "expected_cells": {
+        "0": [
+          2,
+          2
+        ],
+        "1": [
+          0,
+          2
+        ]
+      },
+      "expected_denominator": 2,
+      "expected_producer_or_consumer_state": "EXACT_SUPPORTED",
+      "family_id": "AT09_JOINT_CONFIGURATION",
+      "gate": "F4",
+      "grade": "SOURCEFREE_FIXTURE",
+      "notes": "identical A/B marginals (2/4 ones each), different joint pairing",
+      "op_id": "f4.at09.equal_marginals_right",
+      "route_expected": "DIRECT_I03_TO_POSITIONED_SUBJECT",
+      "target": "B"
+    },
+    {
+      "conditioners": [
+        "G=A"
+      ],
+      "expected_cells": {
+        "0": [
+          7,
+          10
+        ],
+        "1": [
+          3,
+          10
+        ]
+      },
+      "expected_denominator": 10,
+      "expected_producer_or_consumer_state": "EXACT_SUPPORTED",
+      "family_id": "AT10_BRANCH_STRUCTURE",
+      "gate": "F3",
+      "grade": "SOURCEFREE_FIXTURE",
+      "notes": "modal majority branch (10)",
+      "op_id": "f3.at10.branch_A",
+      "route_expected": "DIRECT_I03_TO_POSITIONED_SUBJECT",
+      "target": "Y"
+    },
+    {
+      "conditioners": [
+        "G=B"
+      ],
+      "expected_cells": {
+        "0": [
+          0,
+          8
+        ],
+        "1": [
+          8,
+          8
+        ]
+      },
+      "expected_denominator": 8,
+      "expected_producer_or_consumer_state": "EXACT_SUPPORTED",
+      "family_id": "AT10_BRANCH_STRUCTURE",
+      "gate": "F3",
+      "grade": "SOURCEFREE_FIXTURE",
+      "notes": "supported minority branch (8)",
+      "op_id": "f3.at10.branch_B",
+      "route_expected": "DIRECT_I03_TO_POSITIONED_SUBJECT",
+      "target": "Y"
+    },
+    {
+      "conditioners": [
+        "G=C"
+      ],
+      "expected_cells": {
+        "0": [
+          0,
+          2
+        ],
+        "1": [
+          2,
+          2
+        ]
+      },
+      "expected_denominator": 2,
+      "expected_producer_or_consumer_state": "EXACT_SUPPORTED",
+      "family_id": "AT10_BRANCH_STRUCTURE",
+      "gate": "F3",
+      "grade": "SOURCEFREE_FIXTURE",
+      "notes": "supported counterpattern branch (2)",
+      "op_id": "f3.at10.branch_C",
+      "route_expected": "DIRECT_I03_TO_POSITIONED_SUBJECT",
+      "target": "Y"
+    },
+    {
+      "conditioners": [
+        "X=1"
+      ],
+      "expected_cells": {
+        "0": [
+          0,
+          2
+        ],
+        "1": [
+          2,
+          2
+        ]
+      },
+      "expected_denominator": 2,
+      "expected_producer_or_consumer_state": "DISCOVERED_RESULT_SUPPORTED",
+      "family_id": "AT10_BRANCH_STRUCTURE",
+      "gate": "F3",
+      "grade": "SOURCEFREE_FIXTURE",
+      "notes": "exact-bounded discovery frontier; supported relation X=1 -> Y",
+      "op_id": "f3.at10.discovery_cotravel",
+      "route_expected": "I05_EXACT_BOUNDED_TO_POSITIONED_SUBJECT",
+      "target": "Y"
+    },
+    {
+      "conditioners": [
+        "X=1",
+        "H=1"
+      ],
+      "expected_cells": {
+        "0": [
+          1,
+          2
+        ],
+        "1": [
+          1,
+          2
+        ]
+      },
+      "expected_denominator": 2,
+      "expected_producer_or_consumer_state": "EXACT_SUPPORTED",
+      "family_id": "AT11_RECURSIVE",
+      "gate": "F3",
+      "grade": "SOURCEFREE_FIXTURE",
+      "notes": "generation two strictly nested inside generation one (4 -> 2), own lineage",
+      "op_id": "f3.at11.recursive_depth2",
+      "route_expected": "MX01R2_RECURSIVE_TO_POSITIONED_SUBJECT",
+      "target": "Y"
+    },
+    {
+      "conditioners": [
+        "X=1"
+      ],
+      "expected_cells": {
+        "0": [
+          1,
+          3
+        ],
+        "1": [
+          2,
+          3
+        ]
+      },
+      "expected_denominator": 3,
+      "expected_producer_or_consumer_state": "EXACT_SUPPORTED",
+      "family_id": "AT12_CLOUD_COTRAVEL",
+      "gate": "F4",
+      "grade": "SOURCEFREE_FIXTURE",
+      "notes": "exact same-respondent co-travel cohort {R1,R2,R3}; R4 excluded by cohort",
+      "op_id": "f4.at12.cotravel_cloud",
+      "route_expected": "DIRECT_I03_TO_POSITIONED_SUBJECT",
+      "target": "Y"
+    },
+    {
+      "conditioners": [
+        "ATT=1"
+      ],
+      "expected_cells": {
+        "HIGH|LOW": [
+          3,
+          3
+        ],
+        "LOW|HIGH": [
+          0,
+          3
+        ]
+      },
+      "expected_denominator": 3,
+      "expected_producer_or_consumer_state": "EXACT_SUPPORTED",
+      "family_id": "AT13_RANKED_NONSCALAR",
+      "gate": "F4",
+      "grade": "SOURCEFREE_FIXTURE",
+      "notes": "source-native rank order preserved; modal vector HIGH,LOW; scalarization forbidden",
+      "op_id": "f4.at13.ranked_modal",
+      "route_expected": "DIRECT_I03_TO_POSITIONED_SUBJECT",
+      "target": "RANK"
+    },
+    {
+      "conditioners": [
+        "ATT=1"
+      ],
+      "expected_cells": {
+        "HIGH|LOW": [
+          0,
+          3
+        ],
+        "LOW|HIGH": [
+          3,
+          3
+        ]
+      },
+      "expected_denominator": 3,
+      "expected_producer_or_consumer_state": "EXACT_SUPPORTED",
+      "family_id": "AT13_RANKED_NONSCALAR",
+      "gate": "F4",
+      "grade": "SOURCEFREE_FIXTURE",
+      "notes": "reverse order variant; re-identification must follow the source order field",
+      "op_id": "f4.at13.ranked_reidentified",
+      "route_expected": "DIRECT_I03_TO_POSITIONED_SUBJECT",
+      "target": "RANK"
+    },
+    {
+      "conditioners": [],
+      "expected_cells": {},
+      "expected_denominator": null,
+      "expected_producer_or_consumer_state": "SUPPORTED",
+      "family_id": "AT14_16_TYPED_STATES",
+      "gate": "F3",
+      "grade": "SOURCEFREE_FIXTURE",
+      "notes": "positive denominator, exact zero numerator cell",
+      "op_id": "state.observed_zero",
+      "route_expected": "OWNER_TYPED_STATE",
+      "target": "-"
+    },
+    {
+      "conditioners": [],
+      "expected_cells": {},
+      "expected_denominator": null,
+      "expected_producer_or_consumer_state": "ZERO_SUPPORT",
+      "family_id": "AT14_16_TYPED_STATES",
+      "gate": "F3",
+      "grade": "SOURCEFREE_FIXTURE",
+      "notes": "nonempty risk set, zero selected denominator",
+      "op_id": "state.zero_support",
+      "route_expected": "OWNER_TYPED_STATE",
+      "target": "-"
+    },
+    {
+      "conditioners": [],
+      "expected_cells": {},
+      "expected_denominator": null,
+      "expected_producer_or_consumer_state": "VALID_EMPTY",
+      "family_id": "AT14_16_TYPED_STATES",
+      "gate": "F3",
+      "grade": "SOURCEFREE_FIXTURE",
+      "notes": "query-declared exact target domain empty",
+      "op_id": "state.valid_empty",
+      "route_expected": "OWNER_TYPED_STATE",
+      "target": "-"
+    },
+    {
+      "conditioners": [],
+      "expected_cells": {},
+      "expected_denominator": null,
+      "expected_producer_or_consumer_state": "INSUFFICIENT_SUPPORT",
+      "family_id": "AT14_16_TYPED_STATES",
+      "gate": "F3",
+      "grade": "SOURCEFREE_FIXTURE",
+      "notes": "supported branch below exact minimum raw denominator",
+      "op_id": "state.underpowered",
+      "route_expected": "OWNER_TYPED_STATE",
+      "target": "-"
+    },
+    {
+      "conditioners": [],
+      "expected_cells": {},
+      "expected_denominator": null,
+      "expected_producer_or_consumer_state": "UNRESOLVED",
+      "family_id": "AT14_16_TYPED_STATES",
+      "gate": "F3",
+      "grade": "SOURCEFREE_FIXTURE",
+      "notes": "positive denominator with unresolved target member",
+      "op_id": "state.unresolved",
+      "route_expected": "OWNER_TYPED_STATE",
+      "target": "-"
+    },
+    {
+      "conditioners": [],
+      "expected_cells": {},
+      "expected_denominator": null,
+      "expected_producer_or_consumer_state": "NONCOMPARABLE",
+      "family_id": "AT14_16_TYPED_STATES",
+      "gate": "F3",
+      "grade": "SOURCEFREE_FIXTURE",
+      "notes": "multi-universe composition without pooling authority",
+      "op_id": "state.noncomparable",
+      "route_expected": "OWNER_TYPED_STATE",
+      "target": "-"
+    },
+    {
+      "conditioners": [],
+      "expected_cells": {},
+      "expected_denominator": null,
+      "expected_producer_or_consumer_state": "INTEGRITY_FAILURE",
+      "family_id": "AT14_16_TYPED_STATES",
+      "gate": "F3",
+      "grade": "SOURCEFREE_FIXTURE",
+      "notes": "tampered identity refused by empirical owner",
+      "op_id": "state.integrity_failure",
+      "route_expected": "OWNER_TYPED_STATE",
+      "target": "-"
+    },
+    {
+      "conditioners": [],
+      "expected_cells": {},
+      "expected_denominator": null,
+      "expected_producer_or_consumer_state": "PARTIAL_BUDGET_EXHAUSTED",
+      "family_id": "AT14_16_TYPED_STATES",
+      "gate": "F3",
+      "grade": "SOURCEFREE_FIXTURE",
+      "notes": "adaptive exploration budget truncation",
+      "op_id": "state.adaptive_unvisited",
+      "route_expected": "OWNER_TYPED_STATE",
+      "target": "-"
+    },
+    {
+      "conditioners": [],
+      "expected_cells": {},
+      "expected_denominator": null,
+      "expected_producer_or_consumer_state": "BLOCKED_REQUIRED_AUTHORITY",
+      "family_id": "AT14_16_TYPED_STATES",
+      "gate": "F3",
+      "grade": "SOURCEFREE_FIXTURE",
+      "notes": "required authority absent",
+      "op_id": "state.blocked_required_authority",
+      "route_expected": "OWNER_TYPED_STATE",
+      "target": "-"
+    },
+    {
+      "conditioners": [
+        "POSITION=P1"
+      ],
+      "direction": "forward",
+      "expected_cells": {
+        "successor_identity_digest": "01c381d3f3c386cfc22fd2f57b8e2c244771ddf1529d4f8ab8c7b1cf41bd50dd"
+      },
+      "expected_denominator": null,
+      "expected_producer_or_consumer_state": "EXACT_SUPPORTED",
+      "family_id": "AT17_SUCCESSOR",
+      "gate": "F2",
+      "grade": "ADOPTED_FREEZE",
+      "notes": "production identity must equal the adopted successor preimage",
+      "op_id": "replay.at17.successor_forward",
+      "route_expected": "DIRECT_I03_TO_POSITIONED_SUBJECT",
+      "target": "ANSWER"
+    },
+    {
+      "conditioners": [
+        "ANSWER=yes"
+      ],
+      "direction": "reverse",
+      "expected_cells": {
+        "successor_identity_digest": "a3bd7e85ae14babb5ac5a12b0bcc57a8cdf3eccf8f43394895903dc43aca40ca"
+      },
+      "expected_denominator": null,
+      "expected_producer_or_consumer_state": "EXACT_SUPPORTED",
+      "family_id": "AT17_SUCCESSOR",
+      "gate": "F2",
+      "grade": "ADOPTED_FREEZE",
+      "notes": "",
+      "op_id": "replay.at17.successor_reverse",
+      "route_expected": "DIRECT_I03_TO_POSITIONED_SUBJECT",
+      "target": "POSITION"
+    },
+    {
+      "conditioners": [
+        "POSITION=P1"
+      ],
+      "expected_cells": {
+        "identity_relation": "EQUAL"
+      },
+      "expected_denominator": null,
+      "expected_producer_or_consumer_state": "IDENTICAL_IDENTITY_ON_REPLAY",
+      "family_id": "AT18_REPLAY",
+      "gate": "F1",
+      "grade": "SOURCEFREE_FIXTURE",
+      "notes": "fresh-process replay of retained determinants reproduces identical hashes",
+      "op_id": "replay.at18.fresh_process",
+      "route_expected": "DIRECT_I03_TO_POSITIONED_SUBJECT",
+      "target": "ANSWER"
+    },
+    {
+      "conditioners": [],
+      "expected_cells": {},
+      "expected_denominator": null,
+      "expected_producer_or_consumer_state": "ONLY_GRAPH_DECLARED_DEPENDENTS_AFFECTED",
+      "family_id": "AT19_INVALIDATION",
+      "gate": "F1",
+      "grade": "SOURCEFREE_FIXTURE",
+      "notes": "sealed successor replacement; zero-release and unknown stay not-governed",
+      "op_id": "replay.at19.selective_invalidation",
+      "route_expected": "OWNER_LIFECYCLE_TRANSITION",
+      "target": "-"
+    },
+    {
+      "conditioners": [],
+      "expected_cells": {},
+      "expected_denominator": null,
+      "expected_producer_or_consumer_state": "RULE_SATISFIED",
+      "family_id": "LEARNED_RELEASE_CHAIN",
+      "gate": "F1",
+      "grade": "SOURCEFREE_FIXTURE",
+      "notes": "full synthetic M01->M1->M2->B5 composition succeeds with exact refs (accepted court t01 asserts terminal_state == RULE_SATISFIED)",
+      "op_id": "learned.full_chain_composition",
+      "route_expected": "M01_M1_M2_B5_I4_COMPOSITION",
+      "target": "-"
+    },
+    {
+      "conditioners": [],
+      "expected_cells": {},
+      "expected_denominator": null,
+      "expected_producer_or_consumer_state": "SUPPORTED",
+      "family_id": "SOURCE_BACKED_FACADE",
+      "gate": "F1",
+      "grade": "SOURCEFREE_FIXTURE",
+      "notes": "validated physical stream -> C11 release -> exact I03 query",
+      "op_id": "sourcebacked.stream_query",
+      "route_expected": "PHYSICAL_STREAM_TO_C11_TO_I03",
+      "target": "-"
+    },
+    {
+      "conditioners": [
+        "A=1",
+        "B=1",
+        "C=1"
+      ],
+      "expected_cells": {},
+      "expected_denominator": null,
+      "expected_producer_or_consumer_state": "OPTIONS_AND_SOURCE_SUPPORT_PRODUCED",
+      "family_id": "E04_ORIGINAL_CONSUMER",
+      "gate": "F8",
+      "grade": "SOURCEFREE_TEST_ONLY",
+      "notes": "original E04 NONPARENT_OPTIONS client over E41-computed slices",
+      "op_id": "e04.nonparent_consumption",
+      "route_expected": "POSITIONED_SERVICE_TO_NONPARENT_OPTIONS",
+      "target": "Y"
+    }
+  ],
+  "schema": "E41_FROZEN_EXPECTED_USE_UNIVERSE@1"
+}

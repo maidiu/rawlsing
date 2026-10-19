@@ -1,0 +1,62 @@
+{
+  "schema": "PYAT_R42_J42_FROZEN_JOIN_PLAN@1",
+  "sealed_startup": "cebb6c4197e101a28f07ab7f088221250d225056",
+  "upstreams": {
+    "E41": "6e123bafe749d6997c764ae117fb5e68e0139ed7",
+    "W41": "b0a68e4ff5d5e2ca62b080376fda6b5f5431a6c2",
+    "P41": "f27d1101048638bba395143a48efb7ef00bfcda4"
+  },
+  "staging_law": "Each producer is reconstructed from exact packet bytes and executed in its own isolated process, matching W41's own replay law (conflicting bootstraps). The J42 join consumes their FRESH run outputs by exact identity; no returned artifact values are pasted into the consumer.",
+  "compatible_universe": {
+    "same_source": "The E04 synthetic 58-row TEST_ONLY source (TEST_ONLY_E04_SOURCE_ROOT) is shared by W41 ObjectiveWorld, P41 progressive fixtures and the E41-native computation over product.empirical.build_source.",
+    "w41_views": "7 families x 3 modes x 4 budgets = 84",
+    "w41_families": ["base", "two_epoch", "formal", "civil_sanction", "civil_closed", "exit_only", "fee_only"],
+    "w41_modes": ["HISTORICAL", "AS_OF", "TEST_CURRENT"],
+    "w41_budgets": [0, 2, 5, 10],
+    "p41_depths": [1, 2, 3],
+    "joined_receipts_expected": 252,
+    "e41_depths": [1, 2, 3],
+    "e41_reverse": "A conditioned on Y (18/29)",
+    "e41_returned_bank": "18 computed slices / 31-operation ledger, dereferenced by hash as returned evidence"
+  },
+  "frozen_independent_route_oracle": {
+    "law": "HISTORICAL (valid 2026-06-01, published 2026-04-15) and AS_OF (valid 2027-09-01, published 2027-05-01) both select rev1 (rev2 publication 2027-06-01); TEST_CURRENT (2027-09-01/2027-09-01) selects rev2 and applies the family override.",
+    "base_rules_all_clock_modes": {"training_access": true, "training_fee": 2, "exit_cost": 2, "civil_open": true, "civil_sanction": false},
+    "rev2_overrides_by_family": {
+      "base": {}, "two_epoch": {"training_fee": 6, "exit_cost": 8},
+      "formal": {"training_access": false}, "civil_sanction": {"civil_sanction": true},
+      "civil_closed": {"civil_open": false}, "exit_only": {"exit_cost": 8},
+      "fee_only": {"training_fee": 6}
+    },
+    "route_law": "training = BLOCKED_BY_MODELED_RULE if not access or fee > budget else ELIGIBLE; exit_constraint = RESOURCE_CONSTRAINED if exit > budget else WITHIN_MODELED_BUDGET; civil = BLOCKED_BY_MODELED_RULE if not open or sanction else ELIGIBLE",
+    "expected_counts": "84 views; 252 joined P41 receipts (3 depths each)"
+  },
+  "frozen_e41_expectations": {
+    "depths": [{"depth": 1, "conditioners": [["A", 1]], "denominator": 32, "cells": {"0": 14, "1": 18}, "route": "DIRECT_VIA_ACCEPTED_PROVIDER_FUNCTION"},
+               {"depth": 2, "conditioners": [["A", 1], ["B", 1]], "denominator": 16, "cells": {"0": 6, "1": 10}, "route": "DIRECT_MULTI_CONDITIONER_VIA_ACCEPTED_COMPOSITION"},
+               {"depth": 3, "conditioners": [["A", 1], ["B", 1], ["C", 1]], "denominator": 8, "cells": {"0": 2, "1": 6}, "route": "DIRECT_MULTI_CONDITIONER_VIA_ACCEPTED_COMPOSITION"}],
+    "reverse_A_given_Y": {"denominator": 29, "cells": {"0": 11, "1": 18}},
+    "required_identity": "provider_state EXACT_SUPPORTED_SLICE_PRODUCED; composer fact_state SUPPORTED; consumer_state EXACT_SUPPORTED; evidence ref and composed_result_identity_hash come from the extension result object (not J42 literals)"
+  },
+  "frozen_p41_join_expectations": {
+    "each_joined_receipt": "n10e_steps cells/denominators equal the E41 fresh run values for the same depth; structural routes equal the W41 view routes; providers identify E41/W41/P41; firewall flags false/zero; route_probability null",
+    "progressive_identity": "three distinct progressive identities per receipt",
+    "unknown": "EXACT_SUPPORT_ON_CONDITIONED_RISK_SET",
+    "minority": "depth-3 smallest cell = 2 (raw numerator) preserved"
+  },
+  "typed_holds": {
+    "E41_heterogeneous_slice_families": "SAME_SOURCE_JOIN_UNISSUED for AT08/attitude-family slices relative to the W41 E04 world (displayed as returned evidence only, never fused into the same-source empirical channel)",
+    "retained_GT2_J04": "NO_AUTHORIZED_JOIN / retained context only (W41 evidence_view law)",
+    "F6M_F6P": "separate typed evidence; no N9 transport admission",
+    "consumer_purposes": "CONCEPTION_SCENARIO_PROPOSALS and N9_SELECTED_WORLD remain HOLD (W41 purpose_refusals)",
+    "original35": "UNISSUED_HELD (no source read)"
+  },
+  "mutation_edges": {
+    "W1_E41_PRODUCER_VALUE": {"path": "runtime/e41_driver.py", "target": "fresh source rows before E41 native computation", "expected_RED": "joined consumer step cells/denominator assertion"},
+    "W2_W41_RULE": {"path": "vendor/w41/objective_world.py", "target": "fee_only family fee value", "expected_RED": "84-view route oracle assertion for fee_only/TEST_CURRENT/budget5"},
+    "W3_P41_PROGRESSIVE_EDGE": {"path": "vendor/p41/runtime/p41_service.py", "target": "provider progressive step wiring", "expected_RED": "joined P41 receipt n10e_steps assertion"},
+    "W4_ASOF_SELECTION": {"path": "vendor/w41/objective_world.py", "target": "AS_OF published_asof clock", "expected_RED": "selection/currentness assertion (published boundary)"},
+    "W5_NO_DROP": {"path": "runtime/j42_join.py", "target": "declared join family tuple", "expected_RED": "no-drop coverage assertion"}
+  },
+  "grades": {"measured_original": "NOT_RUN (no warrant)", "sourcefree_same_source_join": "EXECUTED_GREEN expected", "cross_source": "TYPED_HELD", "actor/N11/N12": "NOT TOUCHED"}
+}

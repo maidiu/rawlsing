@@ -1,0 +1,96 @@
+{
+  "gate": "F2",
+  "matched_count": 6,
+  "operation_count": 6,
+  "rows": [
+    {
+      "actual_cells": {
+        "no": [
+          6,
+          60
+        ],
+        "yes": [
+          54,
+          60
+        ]
+      },
+      "actual_denominator": 60,
+      "actual_state": "EXACT_SUPPORTED",
+      "family_id": "AT07_BIDIRECTIONAL_DIRECT",
+      "matched": true,
+      "op_id": "f2.at07.forward"
+    },
+    {
+      "actual_cells": {
+        "P1": [
+          54,
+          62
+        ],
+        "P2": [
+          8,
+          62
+        ]
+      },
+      "actual_denominator": 62,
+      "actual_state": "EXACT_SUPPORTED",
+      "family_id": "AT07_BIDIRECTIONAL_DIRECT",
+      "matched": true,
+      "op_id": "f2.at07.reverse"
+    },
+    {
+      "actual_cells": {
+        "oppose": [
+          6,
+          60
+        ],
+        "support": [
+          54,
+          60
+        ]
+      },
+      "actual_denominator": 60,
+      "actual_state": "EXACT_SUPPORTED",
+      "family_id": "AT08_ATTITUDE_CONDITIONAL",
+      "matched": true,
+      "op_id": "f2.at08.agree_to_att2"
+    },
+    {
+      "actual_cells": {
+        "oppose": [
+          32,
+          40
+        ],
+        "support": [
+          8,
+          40
+        ]
+      },
+      "actual_denominator": 40,
+      "actual_state": "EXACT_SUPPORTED",
+      "family_id": "AT08_ATTITUDE_CONDITIONAL",
+      "matched": true,
+      "op_id": "f2.at08.disagree_to_att2"
+    },
+    {
+      "actual_cells": {
+        "successor_identity_digest": "01c381d3f3c386cfc22fd2f57b8e2c244771ddf1529d4f8ab8c7b1cf41bd50dd"
+      },
+      "actual_denominator": 60,
+      "actual_state": "EXACT_SUPPORTED",
+      "family_id": "AT17_SUCCESSOR",
+      "matched": true,
+      "op_id": "replay.at17.successor_forward"
+    },
+    {
+      "actual_cells": {
+        "successor_identity_digest": "a3bd7e85ae14babb5ac5a12b0bcc57a8cdf3eccf8f43394895903dc43aca40ca"
+      },
+      "actual_denominator": 62,
+      "actual_state": "EXACT_SUPPORTED",
+      "family_id": "AT17_SUCCESSOR",
+      "matched": true,
+      "op_id": "replay.at17.successor_reverse"
+    }
+  ],
+  "schema": "E41_F2_PREDICTOR_SURFACE@1"
+}

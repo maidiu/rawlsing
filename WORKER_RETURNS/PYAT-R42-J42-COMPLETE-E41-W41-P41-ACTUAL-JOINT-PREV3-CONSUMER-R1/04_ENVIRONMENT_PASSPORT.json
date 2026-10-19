@@ -1,0 +1,22 @@
+{
+  "schema": "PYAT_R42_J42_ENVIRONMENT_PASSPORT@1",
+  "worker": "R42 J42 full native joint PRE-V3 consumer",
+  "branch": "agent/rabochii-pyat-r42-j42-full-native-joint-prev3-consumer-r1",
+  "sealed_startup": "cebb6c4197e101a28f07ab7f088221250d225056",
+  "upstreams": {
+    "E41": "6e123bafe749d6997c764ae117fb5e68e0139ed7",
+    "W41": "b0a68e4ff5d5e2ca62b080376fda6b5f5431a6c2",
+    "P41": "f27d1101048638bba395143a48efb7ef00bfcda4"
+  },
+  "host": "reviewer-workstation (sanitized)",
+  "platform": "darwin",
+  "python": "3.11.3",
+  "pytest": "9.0.2",
+  "git": "2.43.0",
+  "staging": "E41 and W41 fresh runs in isolated subprocesses; W41 owner archive reconstructed and verified (133 files); P41 staged byte-identical (13 files)",
+  "run_flags": {"PYTHONHASHSEED": "0", "PYTHONDONTWRITEBYTECODE": "1"},
+  "network": {"used": false},
+  "source_access": {"original_source_read": false},
+  "side_effects": "witness mutations confined to packet copies and restored; final tree clean",
+  "timestamp_utc": "2026-10-19T17:10:00Z"
+}
