@@ -2,14 +2,71 @@
   "schema": "F43_PROSPECTIVE_METHOD_ORACLE@1",
   "basis": "Hand algebra from frozen source tables and independent R39I reported covered masses; no F43 candidate output used",
   "conditional_formal": {
-    "W1": {"unknown": "0", "lower": "5/8", "upper": "5/8"},
-    "W2": {"unknown": "1/4", "lower": "2/5", "upper": "4/5"},
-    "W3": {"unknown": "1/5", "lower": "2/5", "upper": "11/15"},
-    "W7": {"unknown": "1/2", "lower": "1/5", "upper": "13/15"}
+    "W1": {
+      "unknown": "0",
+      "lower": "5/8",
+      "upper": "5/8"
+    },
+    "W2": {
+      "unknown": "1/4",
+      "lower": "2/5",
+      "upper": "4/5"
+    },
+    "W3": {
+      "unknown": "1/5",
+      "lower": "2/5",
+      "upper": "11/15"
+    },
+    "W7": {
+      "unknown": "1/2",
+      "lower": "1/5",
+      "upper": "13/15"
+    }
   },
-  "W2_sensitivity": {"missing_condition_share": "1", "missing_event_given_condition": "1/2", "value": "3/5"},
-  "marginals": {"p": "3/5", "q": "1/2", "joint_lower": "1/10", "joint_upper": "1/2", "conditional_lower": "1/5", "conditional_upper": "1"},
-  "temporal": {"before": "2/5", "after": "11/20", "delta": "3/20", "variance_before": "1/400", "variance_after": "1/400", "independent_difference_variance": "1/200", "unknown_covariance_SE_range": [0.0, 0.1]},
-  "native_unchanged_consumer": {"historical_training": "ELIGIBLE", "test_current_training": "BLOCKED_BY_MODELED_RULE", "civil": "ELIGIBLE"},
-  "source_grades": {"retained_context_paths": 2, "original_measured_compositions": 0, "observed_temporal_pairs": 0}
+  "W2_sensitivity": {
+    "missing_condition_share": "1",
+    "missing_event_given_condition": "1/2",
+    "value": "3/5"
+  },
+  "marginals": {
+    "p": "3/5",
+    "q": "1/2",
+    "joint_lower": "1/10",
+    "joint_upper": "1/2",
+    "conditional_lower": "1/5",
+    "conditional_upper": "1"
+  },
+  "temporal": {
+    "before": "2/5",
+    "after": "11/20",
+    "delta": "3/20",
+    "variance_before": "1/400",
+    "variance_after": "1/400",
+    "independent_difference_variance": "1/200",
+    "unknown_covariance_SE_range": [
+      0.0,
+      0.1
+    ]
+  },
+  "native_unchanged_consumer": {
+    "historical_training": "ELIGIBLE",
+    "test_current_training": "BLOCKED_BY_MODELED_RULE",
+    "civil": "ELIGIBLE"
+  },
+  "source_grades": {
+    "retained_context_paths": 2,
+    "original_measured_compositions": 0,
+    "observed_temporal_pairs": 0
+  },
+  "W2_conditional_envelope": {
+    "source_disagreement": {
+      "lower": "8/25",
+      "upper": "22/25"
+    },
+    "bias_sensitivity": {
+      "lower": "28/125",
+      "upper": "122/125"
+    },
+    "basis": "Native supplied cell intervals, normalization p(A,C)+p(not A,C)+p(not C)=1, hand extrema at a,n=(1/5,17/40),(11/20,3/40) and (7/50,97/200),(61/100,3/200)"
+  }
 }
