@@ -1,5 +1,10 @@
 # SOROK 00D — Warm-environment passports and cost-aware agent dispensation R1
 
+## MANDATORY CURRENT PROOF-INTEGRITY LAW — 18 OCTOBER 2026
+
+**Effective immediately for new/revised Sorok code and integration claims:** [PRE-MAIN falsifiable-test and negative-control law](https://github.com/maidiu/rawlsing/blob/integration/pre-main-reconciliation-r1/CROSS_HQ_CONTROL_ROOM/PROOF_INTEGRITY_AND_FALSIFIABLE_TEST_LAW_R1.md). No vacuous/optional-fallback assertions or inert verification loops. Freeze the actual downstream claim/consumer and an upstream-edge severance that must fail its named test, then execute the positive and RED in the same worker pass and report `NOT_PROVED` if the real dependency is not established. The existing governed-court PR workflow rejects new/changed inert Python tests and requires executable claim-specific witnesses for changed integration tests. This is NOT an additional reviewer round, actor grant, retrospective test purge, source use or CAN/ADP semantic permission.
+
+
 **Status:** USER-DIRECTED MANDATORY SOROK HQ OPERATING / COMMISSIONING DISCIPLINE. **Effective:** 2026-10-14. Governs new and resumed Sorok worker assignments. Applies to Pyat↔Sorok shared-execution work as relevant. THIS IS RESOURCE/PROCESS LAW ONLY; not ADP, CAN, V3 actor, N12, source/model-use, canonical-semantic or architecture adoption.
 
 ## 0. Governing economic principle
