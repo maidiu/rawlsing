@@ -1,0 +1,64 @@
+{
+  "record": "PYAT-R35-F6C-CORRECTIVE-AMENDMENT-AND-AUTHORIZATION-BLOCKER@1",
+
+  "summary": "This worker applied the corrected S03FO source identity in execution, because competent HQ already established it by addendum. This worker did NOT rewrite the sealed R35 commission, and does NOT hold authority to re-seal it. Formal amendment of the R35 commission text remains OUTSTANDING and is reported here as an exact blocker, not as a claimed substitution.",
+
+  "what_was_NOT_done": [
+    "WORKER_COMMISSIONS/PYAT-R35-F6C-HETEROGENEOUS-NATIVE-METHOD-COMPARATIVE-R1/00_COMMISSION.md was NOT edited, amended, superseded or annotated.",
+    "No R22, R23, R24, R25 or R26 text was rewritten. All prior records remain verbatim.",
+    "No correction was smuggled in by editing a test, a fixture or an expectation.",
+    "No claim is made that this worker authorized the substitution."
+  ],
+
+  "where_the_correction_already_has_competent_hq_basis": {
+    "hq_addendum": {
+      "path": "WORKER_COMMISSIONS/PYAT-R23-F6C-NATIVE-F6-COMPARATIVE-CONTINUATION-R1/01_HQ_R24_S03FO_EXACT_BLOB_CORRECTION_AND_NATIVE_PROOF.md",
+      "commit": "11f5fd5710cf974dd1a2a399f3d1254011189b4b",
+      "effect": "mandatory same-lane correction superseding ONLY the erroneous blob SHA on the F6C commission series",
+      "verbatim": "This addendum supersedes only the erroneous blob SHA, not the commissioned F6C scope or its originally independent scientific expectation."
+    },
+    "r25_checkpoint": {
+      "path": "HQ_HANDOFF/checkpoints/20261017-PYAT-HQ-R25-R24-SEALED-F6C-BLOB-AND-SOROK-C0I-INTAKE-R1/CURRENT.md",
+      "present_at_sealed_head": "fec96baf6b9a1e3379d308e486230a39b67ab2b8",
+      "verbatim": "R25 F6C source-identity correction: agent/rabochii-pyat-r23-f6b-native-comparative-continuation-r1@11f5fd5710cf974dd1a2a399f3d1254011189b4b adds mandatory 01_HQ_R24_S03FO_EXACT_BLOB_CORRECTION_AND_NATIVE_PROOF.md; pinned 1428c2e9...:rawlsing_next/pre553_heterogeneous_synthesis.py actual blob fc5e37fa5b2f0eb689593b42d95479d1327cb94c, NOT older misquoted 182cc7970d7624f6614015f5a51d0602e1630d52."
+    },
+    "r24_prior_flag": "R24 already recorded this as a documentary identity exception requiring competent HQ reconciliation before claiming reproduction of the expected producer.",
+    "r26_independent_reviewer_confirmed": "agent/reviewer-pyat-r26-f6c-heterogeneous-synthesis-independent-r1@6d99650bed01eed8365ec38bd888741a88888a45 states: 'corrected S03FO blob fc5e37fa verified at 1428c2e92 (older 182cc797 absent at 9f4a23ce)'."
+  },
+
+  "the_exact_blocker": {
+    "what_is_wrong_on_this_lane": "WORKER_COMMISSIONS/PYAT-R35-F6C-HETEROGENEOUS-NATIVE-METHOD-COMPARATIVE-R1/ at fec96baf6 contains exactly one file, 00_COMMISSION.md, which pins S03FO to the superseded blob 182cc7970d7624f6614015f5a51d0602e1630d52. No addendum accompanies it.",
+    "why_this_worker_cannot_fix_it": "This worker is bounded to a scientific comparative court and is explicitly NOT HQ and NOT an original-source issuer. Issuing or re-sealing a commission addendum is a commissioning act, not a scientific one. No delegation of that act exists in this lane.",
+    "who_can_fix_it": "competent HQ, by attaching to this lane an equivalent of the R24 addendum, or by recording that the R25 correction already governs the R35 pin by succession.",
+    "minimum_competent_action_requested": "One of: (a) attach the R24 blob-correction addendum verbatim to WORKER_COMMISSIONS/PYAT-R35-F6C-HETEROGENEOUS-NATIVE-METHOD-COMPARATIVE-R1/ and re-seal this lane's commission head; or (b) record an explicit succession note that the R25 correction governs the R35 S03FO pin, so the R35 text's stale pin is superseded by reference rather than by edit.",
+    "risk_if_left_unresolved": "A future worker reading only the R35 00_COMMISSION.md will stage the superseded blob 182cc797 as comparison A. That blob silently manufactures an omitted category as an observed zero and emits a fake predictive conditional. Executed proof is in this return: on the positivity case the obsolete blob returns {formal 22/35, informal 13/35} where both corrected producers refuse with SynthesisError.",
+    "status": "OPEN - unresolved by this worker, by design"
+  },
+
+  "interim_handling_used_by_this_worker": {
+    "principle": "execute at the corrected identity; disclose the discrepancy; never edit the sealed record.",
+    "actions": [
+      "Staged comparison A at fc5e37fa5b2f0eb689593b42d95479d1327cb94c from commit 1428c2e92bce1a49efd87378cb23df936d646dc5, blob asserted before every exec.",
+      "Retained the superseded blob 182cc7970d7624f6614015f5a51d0602e1630d52 as a clearly labelled historical custody negative control, explicitly NOT comparison A.",
+      "Recomputed all blob SHA-1 values with the method the HQ addendum specifies: hashlib.sha1(b'blob ' + str(len(bytes)).encode() + b'\\0' + bytes).",
+      "Frozen the independent oracle BEFORE importing or running any candidate, per HQ addendum action 3.",
+      "Recorded this blocker as an artifact inside this worker's authorized write scope only."
+    ],
+    "what_this_does_not_establish": "It does not make the R35 commission text correct, and it does not constitute an authorized substitution."
+  },
+
+  "correction_the_court_additionally_records_for_competent_hq": {
+    "finding": "The R35 commission pins F6M at commit 5ed8e5389dd3510cf29a4947b04bd05901c8d213 (a custody/publication manifest commit), whereas the user-supplied corrected reference names 1f1c72f883d0d7a6d11d7df8bad75c37d06c3ffa (the implementation commit).",
+    "adjudication": "NOT A DEFECT. Both commits contain the identical blob 2df811d76db258d98d89ffb43c830cb221ff9a7d at the identical path. Verified by git ls-tree against both. The difference is commit provenance only, with zero effect on executed bytes.",
+    "recommendation": "No amendment needed. Optionally record 1f1c72f88 as the implementation commit of record for clarity."
+  },
+
+  "preserved_historical_records_not_altered": [
+    "F6B return c23fd5a4ffbfa4da089331c5ab05096e89a3c572 and its HOLD disposition",
+    "F6B's recorded producer claim naming 182cc797 (left intact as the historical claim that was wrong)",
+    "R22/R23 narrative blob quotations",
+    "R24 documentary identity exception text",
+    "R25 F6C source-identity correction paragraph",
+    "R26 F6I REVIEW_HOLD at 6d99650be"
+  ]
+}

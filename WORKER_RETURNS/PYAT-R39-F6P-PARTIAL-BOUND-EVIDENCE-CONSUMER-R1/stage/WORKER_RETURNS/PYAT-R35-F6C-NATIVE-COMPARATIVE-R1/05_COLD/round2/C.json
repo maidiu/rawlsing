@@ -1,0 +1,1835 @@
+{
+  "candidate": "C",
+  "identity": {
+    "role": "NO_POOLING_CONSERVATIVE_BOUNDS_COMPARISON_C",
+    "pinned_blob": null,
+    "observed_blob": null,
+    "physical_path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r35f6c/WORKER_RETURNS/PYAT-R35-F6C-NATIVE-COMPARATIVE-R1/repro/f6c_method_c.py",
+    "module_name": "f6c_method_c",
+    "module_file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r35f6c/WORKER_RETURNS/PYAT-R35-F6C-NATIVE-COMPARATIVE-R1/repro/f6c_method_c.py",
+    "authority": "INDEPENDENT_METHOD_PREPARATION_NOT_AN_ORIGINAL_SOURCE",
+    "native_primitive_reused": "complementary_binary_bounds from pinned blob fc5e37fa5b2f0eb689593b42d95479d1327cb94c"
+  },
+  "results": {
+    "W1_full_coverage_disjoint": {
+      "consumer_request": {
+        "conditions": {
+          "material_security": "secure"
+        },
+        "outcome": "employment_position"
+      },
+      "target_strata": {
+        "majority": "1/2",
+        "minority": "1/2"
+      },
+      "source_strata_coverage": {
+        "S_A": {
+          "majority": 100,
+          "minority": 100
+        },
+        "S_B": {
+          "majority": 100,
+          "minority": 100
+        }
+      },
+      "minimum_raw_support": 30,
+      "bounds": {
+        "method": "R35F6C_NO_POOLING_CONSERVATIVE_BOUNDS@1",
+        "authority": "INDEPENDENT_METHOD_PREPARATION_NOT_AN_ORIGINAL_SOURCE",
+        "pooling": "NONE",
+        "positivity": "COMPLETE_NATIVE_JOINT_DOMAIN_REQUIRED_PER_STRATUM",
+        "distinct_respondents": "LINEAGE_AND_SAMPLE_ID_MUST_BE_UNIQUE",
+        "strata": {
+          "majority": {
+            "target_share": "1/2",
+            "admissible": [
+              "S_A",
+              "S_B"
+            ],
+            "admitted": [],
+            "point_identified": false,
+            "unknown_share": "1/2",
+            "pooling_applied": "NONE"
+          },
+          "minority": {
+            "target_share": "1/2",
+            "admissible": [
+              "S_A",
+              "S_B"
+            ],
+            "admitted": [],
+            "point_identified": false,
+            "unknown_share": "1/2",
+            "pooling_applied": "NONE"
+          }
+        },
+        "per_source_native_descriptives": [
+          {
+            "source_id": "S_A",
+            "raw_support": 100,
+            "weighted_support": "100",
+            "scope": "SOURCE_NATIVE_ONLY_NO_TARGET_REPRESENTATION_CLAIMED",
+            "stratum_marginal": {
+              "formal": "2/5",
+              "informal": "1/10"
+            },
+            "mixed_with_other_sources": false,
+            "used_as_target_estimate": false
+          },
+          {
+            "source_id": "S_B",
+            "raw_support": 100,
+            "weighted_support": "100",
+            "scope": "SOURCE_NATIVE_ONLY_NO_TARGET_REPRESENTATION_CLAIMED",
+            "stratum_marginal": {
+              "formal": "1/5",
+              "informal": "3/10"
+            },
+            "mixed_with_other_sources": false,
+            "used_as_target_estimate": false
+          },
+          {
+            "source_id": "S_A",
+            "raw_support": 100,
+            "weighted_support": "100",
+            "scope": "SOURCE_NATIVE_ONLY_NO_TARGET_REPRESENTATION_CLAIMED",
+            "stratum_marginal": {
+              "formal": "1/4",
+              "informal": "1/4"
+            },
+            "mixed_with_other_sources": false,
+            "used_as_target_estimate": false
+          },
+          {
+            "source_id": "S_B",
+            "raw_support": 100,
+            "weighted_support": "100",
+            "scope": "SOURCE_NATIVE_ONLY_NO_TARGET_REPRESENTATION_CLAIMED",
+            "stratum_marginal": {
+              "formal": "2/5",
+              "informal": "1/10"
+            },
+            "mixed_with_other_sources": false,
+            "used_as_target_estimate": false
+          }
+        ],
+        "target_marginal_bounds_employment_position": {
+          "formal": {
+            "lower": "0",
+            "upper": "1"
+          },
+          "informal": {
+            "lower": "0",
+            "upper": "1"
+          }
+        },
+        "target_marginal_bounds_material_security": {
+          "secure": {
+            "lower": "0",
+            "upper": "1"
+          },
+          "insecure": {
+            "lower": "0",
+            "upper": "1"
+          }
+        },
+        "identified_point_component": {
+          "material_security": {
+            "secure": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "insecure": {
+              "lower": "0",
+              "upper": "1"
+            }
+          },
+          "employment_position": {
+            "formal": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "informal": {
+              "lower": "0",
+              "upper": "1"
+            }
+          }
+        },
+        "total_unknown_mass": "1",
+        "joint_status": "NOT_IDENTIFIED_NO_POOLING_NO_TRANSPORT_PERMISSION",
+        "unidentified_cross_channel": {
+          "evidence_mode": "INFERRED",
+          "dependence": "UNIDENTIFIED",
+          "lower": "0",
+          "upper": "0",
+          "independence_scenario": "0",
+          "scenario_is_measured": false
+        },
+        "refusals": [
+          "NO_POINT_DISTRIBUTION_WITHOUT_SINGLE_SOURCE_TRANSPORT_PERMISSION",
+          "NO_CROSS_SOURCE_POOLING",
+          "NO_RESPONDENT_LEVEL_JOIN",
+          "NO_ROUTE_ACTOR_OR_SELECTION_QUANTITY"
+        ],
+        "claims_not_made": [
+          "these are not population point estimates",
+          "26/31-style figures are not a generated person's life-route probability",
+          "no target stratum is claimed to be represented by any survey"
+        ]
+      },
+      "conditional": {
+        "ok": true,
+        "result": {
+          "state": "UNAVAILABLE",
+          "reason": "NO_POOLING_NO_TRANSPORT_PERMISSION",
+          "bounds": {
+            "formal": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "informal": {
+              "lower": "0",
+              "upper": "1"
+            }
+          },
+          "bounds_material_security": {
+            "secure": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "insecure": {
+              "lower": "0",
+              "upper": "1"
+            }
+          },
+          "identified_point_component": {
+            "material_security": {
+              "secure": {
+                "lower": "0",
+                "upper": "1"
+              },
+              "insecure": {
+                "lower": "0",
+                "upper": "1"
+              }
+            },
+            "employment_position": {
+              "formal": {
+                "lower": "0",
+                "upper": "1"
+              },
+              "informal": {
+                "lower": "0",
+                "upper": "1"
+              }
+            }
+          },
+          "total_unknown_mass": "1",
+          "note": "C reports bounds. It does not emit a predictive conditional, because emitting one would require either pooling across surveys or an admitted transport assumption."
+        }
+      },
+      "conditional_standard_request": {
+        "state": "UNAVAILABLE",
+        "reason": "NO_POOLING_NO_TRANSPORT_PERMISSION",
+        "bounds": {
+          "formal": {
+            "lower": "0",
+            "upper": "1"
+          },
+          "informal": {
+            "lower": "0",
+            "upper": "1"
+          }
+        },
+        "bounds_material_security": {
+          "secure": {
+            "lower": "0",
+            "upper": "1"
+          },
+          "insecure": {
+            "lower": "0",
+            "upper": "1"
+          }
+        },
+        "identified_point_component": {
+          "material_security": {
+            "secure": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "insecure": {
+              "lower": "0",
+              "upper": "1"
+            }
+          },
+          "employment_position": {
+            "formal": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "informal": {
+              "lower": "0",
+              "upper": "1"
+            }
+          }
+        },
+        "total_unknown_mass": "1",
+        "note": "C reports bounds. It does not emit a predictive conditional, because emitting one would require either pooling across surveys or an admitted transport assumption."
+      },
+      "bounds_with_single_stratum_transport_admitted": {
+        "strata": {
+          "majority": {
+            "target_share": "1/2",
+            "admissible": [
+              "S_A",
+              "S_B"
+            ],
+            "admitted": [
+              "S_A"
+            ],
+            "point_identified": true,
+            "unknown_share": "0",
+            "pooling_applied": "NONE"
+          },
+          "minority": {
+            "target_share": "1/2",
+            "admissible": [
+              "S_A",
+              "S_B"
+            ],
+            "admitted": [],
+            "point_identified": false,
+            "unknown_share": "1/2",
+            "pooling_applied": "NONE"
+          }
+        },
+        "target_marginal_bounds_employment_position": {
+          "formal": {
+            "lower": "13/40",
+            "upper": "33/40"
+          },
+          "informal": {
+            "lower": "7/40",
+            "upper": "27/40"
+          }
+        },
+        "total_unknown_mass": "1/2",
+        "joint_status": "PARTIAL_STRATUM_ADMITTED_NO_POOLING"
+      }
+    },
+    "W2_mixed_eligibility_trap": {
+      "consumer_request": {
+        "conditions": {
+          "material_security": "secure"
+        },
+        "outcome": "employment_position"
+      },
+      "target_strata": {
+        "majority": "1/2",
+        "minority": "1/2"
+      },
+      "source_strata_coverage": {
+        "S_A": {
+          "majority": 100,
+          "minority": 10
+        },
+        "S_B": {
+          "majority": 100,
+          "minority": 100
+        }
+      },
+      "minimum_raw_support": 30,
+      "bounds": {
+        "method": "R35F6C_NO_POOLING_CONSERVATIVE_BOUNDS@1",
+        "authority": "INDEPENDENT_METHOD_PREPARATION_NOT_AN_ORIGINAL_SOURCE",
+        "pooling": "NONE",
+        "positivity": "COMPLETE_NATIVE_JOINT_DOMAIN_REQUIRED_PER_STRATUM",
+        "distinct_respondents": "LINEAGE_AND_SAMPLE_ID_MUST_BE_UNIQUE",
+        "strata": {
+          "majority": {
+            "target_share": "1/2",
+            "admissible": [
+              "S_A",
+              "S_B"
+            ],
+            "admitted": [],
+            "point_identified": false,
+            "unknown_share": "1/2",
+            "pooling_applied": "NONE"
+          },
+          "minority": {
+            "target_share": "1/2",
+            "admissible": [
+              "S_B"
+            ],
+            "admitted": [],
+            "point_identified": false,
+            "unknown_share": "1/2",
+            "pooling_applied": "NONE"
+          }
+        },
+        "per_source_native_descriptives": [
+          {
+            "source_id": "S_A",
+            "raw_support": 100,
+            "weighted_support": "100",
+            "scope": "SOURCE_NATIVE_ONLY_NO_TARGET_REPRESENTATION_CLAIMED",
+            "stratum_marginal": {
+              "formal": "2/5",
+              "informal": "1/10"
+            },
+            "mixed_with_other_sources": false,
+            "used_as_target_estimate": false
+          },
+          {
+            "source_id": "S_B",
+            "raw_support": 100,
+            "weighted_support": "100",
+            "scope": "SOURCE_NATIVE_ONLY_NO_TARGET_REPRESENTATION_CLAIMED",
+            "stratum_marginal": {
+              "formal": "1/5",
+              "informal": "3/10"
+            },
+            "mixed_with_other_sources": false,
+            "used_as_target_estimate": false
+          },
+          {
+            "source_id": "S_B",
+            "raw_support": 100,
+            "weighted_support": "100",
+            "scope": "SOURCE_NATIVE_ONLY_NO_TARGET_REPRESENTATION_CLAIMED",
+            "stratum_marginal": {
+              "formal": "2/5",
+              "informal": "1/10"
+            },
+            "mixed_with_other_sources": false,
+            "used_as_target_estimate": false
+          }
+        ],
+        "target_marginal_bounds_employment_position": {
+          "formal": {
+            "lower": "0",
+            "upper": "1"
+          },
+          "informal": {
+            "lower": "0",
+            "upper": "1"
+          }
+        },
+        "target_marginal_bounds_material_security": {
+          "secure": {
+            "lower": "0",
+            "upper": "1"
+          },
+          "insecure": {
+            "lower": "0",
+            "upper": "1"
+          }
+        },
+        "identified_point_component": {
+          "material_security": {
+            "secure": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "insecure": {
+              "lower": "0",
+              "upper": "1"
+            }
+          },
+          "employment_position": {
+            "formal": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "informal": {
+              "lower": "0",
+              "upper": "1"
+            }
+          }
+        },
+        "total_unknown_mass": "1",
+        "joint_status": "NOT_IDENTIFIED_NO_POOLING_NO_TRANSPORT_PERMISSION",
+        "unidentified_cross_channel": {
+          "evidence_mode": "INFERRED",
+          "dependence": "UNIDENTIFIED",
+          "lower": "0",
+          "upper": "0",
+          "independence_scenario": "0",
+          "scenario_is_measured": false
+        },
+        "refusals": [
+          "NO_POINT_DISTRIBUTION_WITHOUT_SINGLE_SOURCE_TRANSPORT_PERMISSION",
+          "NO_CROSS_SOURCE_POOLING",
+          "NO_RESPONDENT_LEVEL_JOIN",
+          "NO_ROUTE_ACTOR_OR_SELECTION_QUANTITY"
+        ],
+        "claims_not_made": [
+          "these are not population point estimates",
+          "26/31-style figures are not a generated person's life-route probability",
+          "no target stratum is claimed to be represented by any survey"
+        ]
+      },
+      "conditional": {
+        "ok": true,
+        "result": {
+          "state": "UNAVAILABLE",
+          "reason": "NO_POOLING_NO_TRANSPORT_PERMISSION",
+          "bounds": {
+            "formal": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "informal": {
+              "lower": "0",
+              "upper": "1"
+            }
+          },
+          "bounds_material_security": {
+            "secure": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "insecure": {
+              "lower": "0",
+              "upper": "1"
+            }
+          },
+          "identified_point_component": {
+            "material_security": {
+              "secure": {
+                "lower": "0",
+                "upper": "1"
+              },
+              "insecure": {
+                "lower": "0",
+                "upper": "1"
+              }
+            },
+            "employment_position": {
+              "formal": {
+                "lower": "0",
+                "upper": "1"
+              },
+              "informal": {
+                "lower": "0",
+                "upper": "1"
+              }
+            }
+          },
+          "total_unknown_mass": "1",
+          "note": "C reports bounds. It does not emit a predictive conditional, because emitting one would require either pooling across surveys or an admitted transport assumption."
+        }
+      },
+      "conditional_standard_request": {
+        "state": "UNAVAILABLE",
+        "reason": "NO_POOLING_NO_TRANSPORT_PERMISSION",
+        "bounds": {
+          "formal": {
+            "lower": "0",
+            "upper": "1"
+          },
+          "informal": {
+            "lower": "0",
+            "upper": "1"
+          }
+        },
+        "bounds_material_security": {
+          "secure": {
+            "lower": "0",
+            "upper": "1"
+          },
+          "insecure": {
+            "lower": "0",
+            "upper": "1"
+          }
+        },
+        "identified_point_component": {
+          "material_security": {
+            "secure": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "insecure": {
+              "lower": "0",
+              "upper": "1"
+            }
+          },
+          "employment_position": {
+            "formal": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "informal": {
+              "lower": "0",
+              "upper": "1"
+            }
+          }
+        },
+        "total_unknown_mass": "1",
+        "note": "C reports bounds. It does not emit a predictive conditional, because emitting one would require either pooling across surveys or an admitted transport assumption."
+      },
+      "bounds_with_single_stratum_transport_admitted": {
+        "strata": {
+          "majority": {
+            "target_share": "1/2",
+            "admissible": [
+              "S_A",
+              "S_B"
+            ],
+            "admitted": [
+              "S_A"
+            ],
+            "point_identified": true,
+            "unknown_share": "0",
+            "pooling_applied": "NONE"
+          },
+          "minority": {
+            "target_share": "1/2",
+            "admissible": [
+              "S_B"
+            ],
+            "admitted": [],
+            "point_identified": false,
+            "unknown_share": "1/2",
+            "pooling_applied": "NONE"
+          }
+        },
+        "target_marginal_bounds_employment_position": {
+          "formal": {
+            "lower": "13/40",
+            "upper": "33/40"
+          },
+          "informal": {
+            "lower": "7/40",
+            "upper": "27/40"
+          }
+        },
+        "total_unknown_mass": "1/2",
+        "joint_status": "PARTIAL_STRATUM_ADMITTED_NO_POOLING"
+      }
+    },
+    "W3_minority_whole_stratum_absent": {
+      "consumer_request": {
+        "conditions": {
+          "material_security": "secure"
+        },
+        "outcome": "employment_position"
+      },
+      "target_strata": {
+        "majority": "4/5",
+        "minority": "1/5"
+      },
+      "source_strata_coverage": {
+        "S_A": {
+          "majority": 100
+        },
+        "S_B": {
+          "majority": 100
+        }
+      },
+      "minimum_raw_support": 30,
+      "bounds": {
+        "method": "R35F6C_NO_POOLING_CONSERVATIVE_BOUNDS@1",
+        "authority": "INDEPENDENT_METHOD_PREPARATION_NOT_AN_ORIGINAL_SOURCE",
+        "pooling": "NONE",
+        "positivity": "COMPLETE_NATIVE_JOINT_DOMAIN_REQUIRED_PER_STRATUM",
+        "distinct_respondents": "LINEAGE_AND_SAMPLE_ID_MUST_BE_UNIQUE",
+        "strata": {
+          "majority": {
+            "target_share": "4/5",
+            "admissible": [
+              "S_A",
+              "S_B"
+            ],
+            "admitted": [],
+            "point_identified": false,
+            "unknown_share": "4/5",
+            "pooling_applied": "NONE"
+          },
+          "minority": {
+            "target_share": "1/5",
+            "admissible": [],
+            "admitted": [],
+            "point_identified": false,
+            "unknown_share": "1/5",
+            "pooling_applied": "NONE"
+          }
+        },
+        "per_source_native_descriptives": [
+          {
+            "source_id": "S_A",
+            "raw_support": 100,
+            "weighted_support": "100",
+            "scope": "SOURCE_NATIVE_ONLY_NO_TARGET_REPRESENTATION_CLAIMED",
+            "stratum_marginal": {
+              "formal": "2/5",
+              "informal": "1/10"
+            },
+            "mixed_with_other_sources": false,
+            "used_as_target_estimate": false
+          },
+          {
+            "source_id": "S_B",
+            "raw_support": 100,
+            "weighted_support": "100",
+            "scope": "SOURCE_NATIVE_ONLY_NO_TARGET_REPRESENTATION_CLAIMED",
+            "stratum_marginal": {
+              "formal": "1/5",
+              "informal": "3/10"
+            },
+            "mixed_with_other_sources": false,
+            "used_as_target_estimate": false
+          }
+        ],
+        "target_marginal_bounds_employment_position": {
+          "formal": {
+            "lower": "0",
+            "upper": "1"
+          },
+          "informal": {
+            "lower": "0",
+            "upper": "1"
+          }
+        },
+        "target_marginal_bounds_material_security": {
+          "secure": {
+            "lower": "0",
+            "upper": "1"
+          },
+          "insecure": {
+            "lower": "0",
+            "upper": "1"
+          }
+        },
+        "identified_point_component": {
+          "material_security": {
+            "secure": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "insecure": {
+              "lower": "0",
+              "upper": "1"
+            }
+          },
+          "employment_position": {
+            "formal": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "informal": {
+              "lower": "0",
+              "upper": "1"
+            }
+          }
+        },
+        "total_unknown_mass": "1",
+        "joint_status": "NOT_IDENTIFIED_NO_POOLING_NO_TRANSPORT_PERMISSION",
+        "unidentified_cross_channel": {
+          "evidence_mode": "INFERRED",
+          "dependence": "UNIDENTIFIED",
+          "lower": "0",
+          "upper": "0",
+          "independence_scenario": "0",
+          "scenario_is_measured": false
+        },
+        "refusals": [
+          "NO_POINT_DISTRIBUTION_WITHOUT_SINGLE_SOURCE_TRANSPORT_PERMISSION",
+          "NO_CROSS_SOURCE_POOLING",
+          "NO_RESPONDENT_LEVEL_JOIN",
+          "NO_ROUTE_ACTOR_OR_SELECTION_QUANTITY"
+        ],
+        "claims_not_made": [
+          "these are not population point estimates",
+          "26/31-style figures are not a generated person's life-route probability",
+          "no target stratum is claimed to be represented by any survey"
+        ]
+      },
+      "conditional": {
+        "ok": true,
+        "result": {
+          "state": "UNAVAILABLE",
+          "reason": "NO_POOLING_NO_TRANSPORT_PERMISSION",
+          "bounds": {
+            "formal": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "informal": {
+              "lower": "0",
+              "upper": "1"
+            }
+          },
+          "bounds_material_security": {
+            "secure": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "insecure": {
+              "lower": "0",
+              "upper": "1"
+            }
+          },
+          "identified_point_component": {
+            "material_security": {
+              "secure": {
+                "lower": "0",
+                "upper": "1"
+              },
+              "insecure": {
+                "lower": "0",
+                "upper": "1"
+              }
+            },
+            "employment_position": {
+              "formal": {
+                "lower": "0",
+                "upper": "1"
+              },
+              "informal": {
+                "lower": "0",
+                "upper": "1"
+              }
+            }
+          },
+          "total_unknown_mass": "1",
+          "note": "C reports bounds. It does not emit a predictive conditional, because emitting one would require either pooling across surveys or an admitted transport assumption."
+        }
+      },
+      "conditional_standard_request": {
+        "state": "UNAVAILABLE",
+        "reason": "NO_POOLING_NO_TRANSPORT_PERMISSION",
+        "bounds": {
+          "formal": {
+            "lower": "0",
+            "upper": "1"
+          },
+          "informal": {
+            "lower": "0",
+            "upper": "1"
+          }
+        },
+        "bounds_material_security": {
+          "secure": {
+            "lower": "0",
+            "upper": "1"
+          },
+          "insecure": {
+            "lower": "0",
+            "upper": "1"
+          }
+        },
+        "identified_point_component": {
+          "material_security": {
+            "secure": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "insecure": {
+              "lower": "0",
+              "upper": "1"
+            }
+          },
+          "employment_position": {
+            "formal": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "informal": {
+              "lower": "0",
+              "upper": "1"
+            }
+          }
+        },
+        "total_unknown_mass": "1",
+        "note": "C reports bounds. It does not emit a predictive conditional, because emitting one would require either pooling across surveys or an admitted transport assumption."
+      },
+      "bounds_with_single_stratum_transport_admitted": {
+        "strata": {
+          "majority": {
+            "target_share": "4/5",
+            "admissible": [
+              "S_A",
+              "S_B"
+            ],
+            "admitted": [
+              "S_A"
+            ],
+            "point_identified": true,
+            "unknown_share": "0",
+            "pooling_applied": "NONE"
+          },
+          "minority": {
+            "target_share": "1/5",
+            "admissible": [],
+            "admitted": [],
+            "point_identified": false,
+            "unknown_share": "1/5",
+            "pooling_applied": "NONE"
+          }
+        },
+        "target_marginal_bounds_employment_position": {
+          "formal": {
+            "lower": "13/25",
+            "upper": "18/25"
+          },
+          "informal": {
+            "lower": "7/25",
+            "upper": "12/25"
+          }
+        },
+        "total_unknown_mass": "1/5",
+        "joint_status": "PARTIAL_STRATUM_ADMITTED_NO_POOLING"
+      }
+    },
+    "W4_outcome_leakage": {
+      "consumer_request": {
+        "conditions": {
+          "employment_position": "formal"
+        },
+        "outcome": "employment_position"
+      },
+      "target_strata": {
+        "majority": "1/2",
+        "minority": "1/2"
+      },
+      "source_strata_coverage": {
+        "S_A": {
+          "majority": 100,
+          "minority": 100
+        },
+        "S_B": {
+          "majority": 100,
+          "minority": 100
+        }
+      },
+      "minimum_raw_support": 30,
+      "bounds": {
+        "method": "R35F6C_NO_POOLING_CONSERVATIVE_BOUNDS@1",
+        "authority": "INDEPENDENT_METHOD_PREPARATION_NOT_AN_ORIGINAL_SOURCE",
+        "pooling": "NONE",
+        "positivity": "COMPLETE_NATIVE_JOINT_DOMAIN_REQUIRED_PER_STRATUM",
+        "distinct_respondents": "LINEAGE_AND_SAMPLE_ID_MUST_BE_UNIQUE",
+        "strata": {
+          "majority": {
+            "target_share": "1/2",
+            "admissible": [
+              "S_A",
+              "S_B"
+            ],
+            "admitted": [],
+            "point_identified": false,
+            "unknown_share": "1/2",
+            "pooling_applied": "NONE"
+          },
+          "minority": {
+            "target_share": "1/2",
+            "admissible": [
+              "S_A",
+              "S_B"
+            ],
+            "admitted": [],
+            "point_identified": false,
+            "unknown_share": "1/2",
+            "pooling_applied": "NONE"
+          }
+        },
+        "per_source_native_descriptives": [
+          {
+            "source_id": "S_A",
+            "raw_support": 100,
+            "weighted_support": "100",
+            "scope": "SOURCE_NATIVE_ONLY_NO_TARGET_REPRESENTATION_CLAIMED",
+            "stratum_marginal": {
+              "formal": "2/5",
+              "informal": "1/10"
+            },
+            "mixed_with_other_sources": false,
+            "used_as_target_estimate": false
+          },
+          {
+            "source_id": "S_B",
+            "raw_support": 100,
+            "weighted_support": "100",
+            "scope": "SOURCE_NATIVE_ONLY_NO_TARGET_REPRESENTATION_CLAIMED",
+            "stratum_marginal": {
+              "formal": "1/5",
+              "informal": "3/10"
+            },
+            "mixed_with_other_sources": false,
+            "used_as_target_estimate": false
+          },
+          {
+            "source_id": "S_A",
+            "raw_support": 100,
+            "weighted_support": "100",
+            "scope": "SOURCE_NATIVE_ONLY_NO_TARGET_REPRESENTATION_CLAIMED",
+            "stratum_marginal": {
+              "formal": "1/4",
+              "informal": "1/4"
+            },
+            "mixed_with_other_sources": false,
+            "used_as_target_estimate": false
+          },
+          {
+            "source_id": "S_B",
+            "raw_support": 100,
+            "weighted_support": "100",
+            "scope": "SOURCE_NATIVE_ONLY_NO_TARGET_REPRESENTATION_CLAIMED",
+            "stratum_marginal": {
+              "formal": "2/5",
+              "informal": "1/10"
+            },
+            "mixed_with_other_sources": false,
+            "used_as_target_estimate": false
+          }
+        ],
+        "target_marginal_bounds_employment_position": {
+          "formal": {
+            "lower": "0",
+            "upper": "1"
+          },
+          "informal": {
+            "lower": "0",
+            "upper": "1"
+          }
+        },
+        "target_marginal_bounds_material_security": {
+          "secure": {
+            "lower": "0",
+            "upper": "1"
+          },
+          "insecure": {
+            "lower": "0",
+            "upper": "1"
+          }
+        },
+        "identified_point_component": {
+          "material_security": {
+            "secure": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "insecure": {
+              "lower": "0",
+              "upper": "1"
+            }
+          },
+          "employment_position": {
+            "formal": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "informal": {
+              "lower": "0",
+              "upper": "1"
+            }
+          }
+        },
+        "total_unknown_mass": "1",
+        "joint_status": "NOT_IDENTIFIED_NO_POOLING_NO_TRANSPORT_PERMISSION",
+        "unidentified_cross_channel": {
+          "evidence_mode": "INFERRED",
+          "dependence": "UNIDENTIFIED",
+          "lower": "0",
+          "upper": "0",
+          "independence_scenario": "0",
+          "scenario_is_measured": false
+        },
+        "refusals": [
+          "NO_POINT_DISTRIBUTION_WITHOUT_SINGLE_SOURCE_TRANSPORT_PERMISSION",
+          "NO_CROSS_SOURCE_POOLING",
+          "NO_RESPONDENT_LEVEL_JOIN",
+          "NO_ROUTE_ACTOR_OR_SELECTION_QUANTITY"
+        ],
+        "claims_not_made": [
+          "these are not population point estimates",
+          "26/31-style figures are not a generated person's life-route probability",
+          "no target stratum is claimed to be represented by any survey"
+        ]
+      },
+      "conditional": {
+        "ok": true,
+        "result": {
+          "state": "UNAVAILABLE",
+          "reason": "NO_POOLING_NO_TRANSPORT_PERMISSION",
+          "bounds": {
+            "formal": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "informal": {
+              "lower": "0",
+              "upper": "1"
+            }
+          },
+          "bounds_material_security": {
+            "secure": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "insecure": {
+              "lower": "0",
+              "upper": "1"
+            }
+          },
+          "identified_point_component": {
+            "material_security": {
+              "secure": {
+                "lower": "0",
+                "upper": "1"
+              },
+              "insecure": {
+                "lower": "0",
+                "upper": "1"
+              }
+            },
+            "employment_position": {
+              "formal": {
+                "lower": "0",
+                "upper": "1"
+              },
+              "informal": {
+                "lower": "0",
+                "upper": "1"
+              }
+            }
+          },
+          "total_unknown_mass": "1",
+          "note": "C reports bounds. It does not emit a predictive conditional, because emitting one would require either pooling across surveys or an admitted transport assumption."
+        }
+      },
+      "conditional_standard_request": {
+        "state": "UNAVAILABLE",
+        "reason": "NO_POOLING_NO_TRANSPORT_PERMISSION",
+        "bounds": {
+          "formal": {
+            "lower": "0",
+            "upper": "1"
+          },
+          "informal": {
+            "lower": "0",
+            "upper": "1"
+          }
+        },
+        "bounds_material_security": {
+          "secure": {
+            "lower": "0",
+            "upper": "1"
+          },
+          "insecure": {
+            "lower": "0",
+            "upper": "1"
+          }
+        },
+        "identified_point_component": {
+          "material_security": {
+            "secure": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "insecure": {
+              "lower": "0",
+              "upper": "1"
+            }
+          },
+          "employment_position": {
+            "formal": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "informal": {
+              "lower": "0",
+              "upper": "1"
+            }
+          }
+        },
+        "total_unknown_mass": "1",
+        "note": "C reports bounds. It does not emit a predictive conditional, because emitting one would require either pooling across surveys or an admitted transport assumption."
+      },
+      "bounds_with_single_stratum_transport_admitted": {
+        "strata": {
+          "majority": {
+            "target_share": "1/2",
+            "admissible": [
+              "S_A",
+              "S_B"
+            ],
+            "admitted": [
+              "S_A"
+            ],
+            "point_identified": true,
+            "unknown_share": "0",
+            "pooling_applied": "NONE"
+          },
+          "minority": {
+            "target_share": "1/2",
+            "admissible": [
+              "S_A",
+              "S_B"
+            ],
+            "admitted": [],
+            "point_identified": false,
+            "unknown_share": "1/2",
+            "pooling_applied": "NONE"
+          }
+        },
+        "target_marginal_bounds_employment_position": {
+          "formal": {
+            "lower": "13/40",
+            "upper": "33/40"
+          },
+          "informal": {
+            "lower": "7/40",
+            "upper": "27/40"
+          }
+        },
+        "total_unknown_mass": "1/2",
+        "joint_status": "PARTIAL_STRATUM_ADMITTED_NO_POOLING"
+      }
+    },
+    "W5_positivity_incomplete_native_domain": {
+      "consumer_request": {
+        "conditions": {
+          "material_security": "secure"
+        },
+        "outcome": "employment_position"
+      },
+      "target_strata": {
+        "majority": "1"
+      },
+      "source_strata_coverage": {
+        "S_A": {
+          "majority": 75
+        },
+        "S_B": {
+          "majority": 100
+        }
+      },
+      "minimum_raw_support": 30,
+      "bounds": {
+        "ok": false,
+        "error_type": "BoundRefusal",
+        "error": "POSITIVITY_INCOMPLETE_NATIVE_JOINT_DOMAIN_majority(3/4)"
+      }
+    },
+    "W6_overlap_duplicate_sample": {
+      "consumer_request": {
+        "conditions": {
+          "material_security": "secure"
+        },
+        "outcome": "employment_position"
+      },
+      "target_strata": {
+        "majority": "1"
+      },
+      "source_strata_coverage": {
+        "S_A": {
+          "majority": 100
+        },
+        "S_B": {
+          "majority": 100
+        }
+      },
+      "minimum_raw_support": 30,
+      "bounds": {
+        "ok": false,
+        "error_type": "BoundRefusal",
+        "error": "INDISTINCT_SAMPLE_UNRESOLVED:S_A|S_B"
+      }
+    },
+    "W7_source_excluded_all_strata": {
+      "consumer_request": {
+        "conditions": {
+          "material_security": "secure"
+        },
+        "outcome": "employment_position"
+      },
+      "target_strata": {
+        "majority": "1/2",
+        "minority": "1/2"
+      },
+      "source_strata_coverage": {
+        "S_A": {
+          "majority": 6,
+          "minority": 5
+        },
+        "S_B": {
+          "majority": 100,
+          "minority": 100
+        }
+      },
+      "minimum_raw_support": 30,
+      "bounds": {
+        "method": "R35F6C_NO_POOLING_CONSERVATIVE_BOUNDS@1",
+        "authority": "INDEPENDENT_METHOD_PREPARATION_NOT_AN_ORIGINAL_SOURCE",
+        "pooling": "NONE",
+        "positivity": "COMPLETE_NATIVE_JOINT_DOMAIN_REQUIRED_PER_STRATUM",
+        "distinct_respondents": "LINEAGE_AND_SAMPLE_ID_MUST_BE_UNIQUE",
+        "strata": {
+          "majority": {
+            "target_share": "1/2",
+            "admissible": [
+              "S_B"
+            ],
+            "admitted": [],
+            "point_identified": false,
+            "unknown_share": "1/2",
+            "pooling_applied": "NONE"
+          },
+          "minority": {
+            "target_share": "1/2",
+            "admissible": [
+              "S_B"
+            ],
+            "admitted": [],
+            "point_identified": false,
+            "unknown_share": "1/2",
+            "pooling_applied": "NONE"
+          }
+        },
+        "per_source_native_descriptives": [
+          {
+            "source_id": "S_B",
+            "raw_support": 100,
+            "weighted_support": "100",
+            "scope": "SOURCE_NATIVE_ONLY_NO_TARGET_REPRESENTATION_CLAIMED",
+            "stratum_marginal": {
+              "formal": "1/5",
+              "informal": "3/10"
+            },
+            "mixed_with_other_sources": false,
+            "used_as_target_estimate": false
+          },
+          {
+            "source_id": "S_B",
+            "raw_support": 100,
+            "weighted_support": "100",
+            "scope": "SOURCE_NATIVE_ONLY_NO_TARGET_REPRESENTATION_CLAIMED",
+            "stratum_marginal": {
+              "formal": "2/5",
+              "informal": "1/10"
+            },
+            "mixed_with_other_sources": false,
+            "used_as_target_estimate": false
+          }
+        ],
+        "target_marginal_bounds_employment_position": {
+          "formal": {
+            "lower": "0",
+            "upper": "1"
+          },
+          "informal": {
+            "lower": "0",
+            "upper": "1"
+          }
+        },
+        "target_marginal_bounds_material_security": {
+          "secure": {
+            "lower": "0",
+            "upper": "1"
+          },
+          "insecure": {
+            "lower": "0",
+            "upper": "1"
+          }
+        },
+        "identified_point_component": {
+          "material_security": {
+            "secure": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "insecure": {
+              "lower": "0",
+              "upper": "1"
+            }
+          },
+          "employment_position": {
+            "formal": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "informal": {
+              "lower": "0",
+              "upper": "1"
+            }
+          }
+        },
+        "total_unknown_mass": "1",
+        "joint_status": "NOT_IDENTIFIED_NO_POOLING_NO_TRANSPORT_PERMISSION",
+        "unidentified_cross_channel": {
+          "evidence_mode": "INFERRED",
+          "dependence": "UNIDENTIFIED",
+          "lower": "0",
+          "upper": "0",
+          "independence_scenario": "0",
+          "scenario_is_measured": false
+        },
+        "refusals": [
+          "NO_POINT_DISTRIBUTION_WITHOUT_SINGLE_SOURCE_TRANSPORT_PERMISSION",
+          "NO_CROSS_SOURCE_POOLING",
+          "NO_RESPONDENT_LEVEL_JOIN",
+          "NO_ROUTE_ACTOR_OR_SELECTION_QUANTITY"
+        ],
+        "claims_not_made": [
+          "these are not population point estimates",
+          "26/31-style figures are not a generated person's life-route probability",
+          "no target stratum is claimed to be represented by any survey"
+        ]
+      },
+      "conditional": {
+        "ok": true,
+        "result": {
+          "state": "UNAVAILABLE",
+          "reason": "NO_POOLING_NO_TRANSPORT_PERMISSION",
+          "bounds": {
+            "formal": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "informal": {
+              "lower": "0",
+              "upper": "1"
+            }
+          },
+          "bounds_material_security": {
+            "secure": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "insecure": {
+              "lower": "0",
+              "upper": "1"
+            }
+          },
+          "identified_point_component": {
+            "material_security": {
+              "secure": {
+                "lower": "0",
+                "upper": "1"
+              },
+              "insecure": {
+                "lower": "0",
+                "upper": "1"
+              }
+            },
+            "employment_position": {
+              "formal": {
+                "lower": "0",
+                "upper": "1"
+              },
+              "informal": {
+                "lower": "0",
+                "upper": "1"
+              }
+            }
+          },
+          "total_unknown_mass": "1",
+          "note": "C reports bounds. It does not emit a predictive conditional, because emitting one would require either pooling across surveys or an admitted transport assumption."
+        }
+      },
+      "conditional_standard_request": {
+        "state": "UNAVAILABLE",
+        "reason": "NO_POOLING_NO_TRANSPORT_PERMISSION",
+        "bounds": {
+          "formal": {
+            "lower": "0",
+            "upper": "1"
+          },
+          "informal": {
+            "lower": "0",
+            "upper": "1"
+          }
+        },
+        "bounds_material_security": {
+          "secure": {
+            "lower": "0",
+            "upper": "1"
+          },
+          "insecure": {
+            "lower": "0",
+            "upper": "1"
+          }
+        },
+        "identified_point_component": {
+          "material_security": {
+            "secure": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "insecure": {
+              "lower": "0",
+              "upper": "1"
+            }
+          },
+          "employment_position": {
+            "formal": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "informal": {
+              "lower": "0",
+              "upper": "1"
+            }
+          }
+        },
+        "total_unknown_mass": "1",
+        "note": "C reports bounds. It does not emit a predictive conditional, because emitting one would require either pooling across surveys or an admitted transport assumption."
+      },
+      "bounds_with_single_stratum_transport_admitted": {
+        "strata": {
+          "majority": {
+            "target_share": "1/2",
+            "admissible": [
+              "S_B"
+            ],
+            "admitted": [],
+            "point_identified": false,
+            "unknown_share": "1/2",
+            "pooling_applied": "NONE"
+          },
+          "minority": {
+            "target_share": "1/2",
+            "admissible": [
+              "S_B"
+            ],
+            "admitted": [],
+            "point_identified": false,
+            "unknown_share": "1/2",
+            "pooling_applied": "NONE"
+          }
+        },
+        "target_marginal_bounds_employment_position": {
+          "formal": {
+            "lower": "0",
+            "upper": "1"
+          },
+          "informal": {
+            "lower": "0",
+            "upper": "1"
+          }
+        },
+        "total_unknown_mass": "1",
+        "joint_status": "NOT_IDENTIFIED_NO_POOLING_NO_TRANSPORT_PERMISSION"
+      }
+    },
+    "W8_condition_outside_mapped_support": {
+      "consumer_request": {
+        "conditions": {
+          "material_security": "unknown_third_state"
+        },
+        "outcome": "employment_position"
+      },
+      "target_strata": {
+        "majority": "1/2",
+        "minority": "1/2"
+      },
+      "source_strata_coverage": {
+        "S_A": {
+          "majority": 100,
+          "minority": 100
+        },
+        "S_B": {
+          "majority": 100,
+          "minority": 100
+        }
+      },
+      "minimum_raw_support": 30,
+      "bounds": {
+        "method": "R35F6C_NO_POOLING_CONSERVATIVE_BOUNDS@1",
+        "authority": "INDEPENDENT_METHOD_PREPARATION_NOT_AN_ORIGINAL_SOURCE",
+        "pooling": "NONE",
+        "positivity": "COMPLETE_NATIVE_JOINT_DOMAIN_REQUIRED_PER_STRATUM",
+        "distinct_respondents": "LINEAGE_AND_SAMPLE_ID_MUST_BE_UNIQUE",
+        "strata": {
+          "majority": {
+            "target_share": "1/2",
+            "admissible": [
+              "S_A",
+              "S_B"
+            ],
+            "admitted": [],
+            "point_identified": false,
+            "unknown_share": "1/2",
+            "pooling_applied": "NONE"
+          },
+          "minority": {
+            "target_share": "1/2",
+            "admissible": [
+              "S_A",
+              "S_B"
+            ],
+            "admitted": [],
+            "point_identified": false,
+            "unknown_share": "1/2",
+            "pooling_applied": "NONE"
+          }
+        },
+        "per_source_native_descriptives": [
+          {
+            "source_id": "S_A",
+            "raw_support": 100,
+            "weighted_support": "100",
+            "scope": "SOURCE_NATIVE_ONLY_NO_TARGET_REPRESENTATION_CLAIMED",
+            "stratum_marginal": {
+              "formal": "2/5",
+              "informal": "1/10"
+            },
+            "mixed_with_other_sources": false,
+            "used_as_target_estimate": false
+          },
+          {
+            "source_id": "S_B",
+            "raw_support": 100,
+            "weighted_support": "100",
+            "scope": "SOURCE_NATIVE_ONLY_NO_TARGET_REPRESENTATION_CLAIMED",
+            "stratum_marginal": {
+              "formal": "1/5",
+              "informal": "3/10"
+            },
+            "mixed_with_other_sources": false,
+            "used_as_target_estimate": false
+          },
+          {
+            "source_id": "S_A",
+            "raw_support": 100,
+            "weighted_support": "100",
+            "scope": "SOURCE_NATIVE_ONLY_NO_TARGET_REPRESENTATION_CLAIMED",
+            "stratum_marginal": {
+              "formal": "1/4",
+              "informal": "1/4"
+            },
+            "mixed_with_other_sources": false,
+            "used_as_target_estimate": false
+          },
+          {
+            "source_id": "S_B",
+            "raw_support": 100,
+            "weighted_support": "100",
+            "scope": "SOURCE_NATIVE_ONLY_NO_TARGET_REPRESENTATION_CLAIMED",
+            "stratum_marginal": {
+              "formal": "2/5",
+              "informal": "1/10"
+            },
+            "mixed_with_other_sources": false,
+            "used_as_target_estimate": false
+          }
+        ],
+        "target_marginal_bounds_employment_position": {
+          "formal": {
+            "lower": "0",
+            "upper": "1"
+          },
+          "informal": {
+            "lower": "0",
+            "upper": "1"
+          }
+        },
+        "target_marginal_bounds_material_security": {
+          "secure": {
+            "lower": "0",
+            "upper": "1"
+          },
+          "insecure": {
+            "lower": "0",
+            "upper": "1"
+          }
+        },
+        "identified_point_component": {
+          "material_security": {
+            "secure": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "insecure": {
+              "lower": "0",
+              "upper": "1"
+            }
+          },
+          "employment_position": {
+            "formal": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "informal": {
+              "lower": "0",
+              "upper": "1"
+            }
+          }
+        },
+        "total_unknown_mass": "1",
+        "joint_status": "NOT_IDENTIFIED_NO_POOLING_NO_TRANSPORT_PERMISSION",
+        "unidentified_cross_channel": {
+          "evidence_mode": "INFERRED",
+          "dependence": "UNIDENTIFIED",
+          "lower": "0",
+          "upper": "0",
+          "independence_scenario": "0",
+          "scenario_is_measured": false
+        },
+        "refusals": [
+          "NO_POINT_DISTRIBUTION_WITHOUT_SINGLE_SOURCE_TRANSPORT_PERMISSION",
+          "NO_CROSS_SOURCE_POOLING",
+          "NO_RESPONDENT_LEVEL_JOIN",
+          "NO_ROUTE_ACTOR_OR_SELECTION_QUANTITY"
+        ],
+        "claims_not_made": [
+          "these are not population point estimates",
+          "26/31-style figures are not a generated person's life-route probability",
+          "no target stratum is claimed to be represented by any survey"
+        ]
+      },
+      "conditional": {
+        "ok": true,
+        "result": {
+          "state": "UNAVAILABLE",
+          "reason": "NO_POOLING_NO_TRANSPORT_PERMISSION",
+          "bounds": {
+            "formal": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "informal": {
+              "lower": "0",
+              "upper": "1"
+            }
+          },
+          "bounds_material_security": {
+            "secure": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "insecure": {
+              "lower": "0",
+              "upper": "1"
+            }
+          },
+          "identified_point_component": {
+            "material_security": {
+              "secure": {
+                "lower": "0",
+                "upper": "1"
+              },
+              "insecure": {
+                "lower": "0",
+                "upper": "1"
+              }
+            },
+            "employment_position": {
+              "formal": {
+                "lower": "0",
+                "upper": "1"
+              },
+              "informal": {
+                "lower": "0",
+                "upper": "1"
+              }
+            }
+          },
+          "total_unknown_mass": "1",
+          "note": "C reports bounds. It does not emit a predictive conditional, because emitting one would require either pooling across surveys or an admitted transport assumption."
+        }
+      },
+      "conditional_standard_request": {
+        "state": "UNAVAILABLE",
+        "reason": "NO_POOLING_NO_TRANSPORT_PERMISSION",
+        "bounds": {
+          "formal": {
+            "lower": "0",
+            "upper": "1"
+          },
+          "informal": {
+            "lower": "0",
+            "upper": "1"
+          }
+        },
+        "bounds_material_security": {
+          "secure": {
+            "lower": "0",
+            "upper": "1"
+          },
+          "insecure": {
+            "lower": "0",
+            "upper": "1"
+          }
+        },
+        "identified_point_component": {
+          "material_security": {
+            "secure": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "insecure": {
+              "lower": "0",
+              "upper": "1"
+            }
+          },
+          "employment_position": {
+            "formal": {
+              "lower": "0",
+              "upper": "1"
+            },
+            "informal": {
+              "lower": "0",
+              "upper": "1"
+            }
+          }
+        },
+        "total_unknown_mass": "1",
+        "note": "C reports bounds. It does not emit a predictive conditional, because emitting one would require either pooling across surveys or an admitted transport assumption."
+      },
+      "bounds_with_single_stratum_transport_admitted": {
+        "strata": {
+          "majority": {
+            "target_share": "1/2",
+            "admissible": [
+              "S_A",
+              "S_B"
+            ],
+            "admitted": [
+              "S_A"
+            ],
+            "point_identified": true,
+            "unknown_share": "0",
+            "pooling_applied": "NONE"
+          },
+          "minority": {
+            "target_share": "1/2",
+            "admissible": [
+              "S_A",
+              "S_B"
+            ],
+            "admitted": [],
+            "point_identified": false,
+            "unknown_share": "1/2",
+            "pooling_applied": "NONE"
+          }
+        },
+        "target_marginal_bounds_employment_position": {
+          "formal": {
+            "lower": "13/40",
+            "upper": "33/40"
+          },
+          "informal": {
+            "lower": "7/40",
+            "upper": "27/40"
+          }
+        },
+        "total_unknown_mass": "1/2",
+        "joint_status": "PARTIAL_STRATUM_ADMITTED_NO_POOLING"
+      }
+    }
+  },
+  "environment": {
+    "python": "3.11.3",
+    "executable": "/usr/local/bin/python3",
+    "pid": 83153,
+    "hostname": "Matthews-MBP.lan",
+    "platform": "macOS-13.7.8-x86_64-i386-64bit",
+    "cold_round": "2",
+    "cwd": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r35f6c",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  }
+}
