@@ -1,0 +1,673 @@
+{
+  "base_progressive": {
+    "content_hash": "b1359b060a453d9f82734a91905e3530f6cc45689ecc8b604b126bac4168c5c3",
+    "n10w_state": "EXACT_PROGRESSIVE_CHAIN",
+    "query": {
+      "ordered_conditions": [
+        [
+          "A",
+          1
+        ],
+        [
+          "B",
+          1
+        ],
+        [
+          "C",
+          1
+        ]
+      ],
+      "query_identity_hash": "8fce7d0b5482a50683a5435fdee097753e17fb84639c9ae81990863e12722cd2",
+      "role_authority_refs": [
+        {
+          "content_hash": "04c858ea88b4f950f32db9a0bb681c209406ce051df9ab67d85e3a69f6a4fdc2",
+          "kind": "QUESTION_NATIVE",
+          "object_id": "urn:test:i03:question_native:E04_NATIVE_BINARY-Y"
+        }
+      ],
+      "role_class": "FORWARD_AUTHORIZED",
+      "target": "Y"
+    },
+    "routes": {
+      "civil": "ELIGIBLE",
+      "exit_constraint": "WITHIN_MODELED_BUDGET",
+      "training": "ELIGIBLE"
+    },
+    "steps": [
+      {
+        "cells": {
+          "0": 14,
+          "1": 18
+        },
+        "conditioners": [
+          [
+            "A",
+            1
+          ]
+        ],
+        "denominator": 32,
+        "route": "N10E_PUBLIC_SINGLE",
+        "state": "EXACT_SUPPORTED",
+        "uncertainty": "UNCERTAINTY_UNQUANTIFIED"
+      },
+      {
+        "cells": {
+          "0": 6,
+          "1": 10
+        },
+        "conditioners": [
+          [
+            "A",
+            1
+          ],
+          [
+            "B",
+            1
+          ]
+        ],
+        "denominator": 16,
+        "route": "C1_PUBLIC_MULTI_BINDING",
+        "state": "EXACT_SUPPORTED",
+        "uncertainty": "UNCERTAINTY_UNQUANTIFIED"
+      },
+      {
+        "cells": {
+          "0": 2,
+          "1": 6
+        },
+        "conditioners": [
+          [
+            "A",
+            1
+          ],
+          [
+            "B",
+            1
+          ],
+          [
+            "C",
+            1
+          ]
+        ],
+        "denominator": 8,
+        "route": "C1_PUBLIC_MULTI_BINDING",
+        "state": "EXACT_SUPPORTED",
+        "uncertainty": "UNCERTAINTY_UNQUANTIFIED"
+      }
+    ],
+    "unknown": {
+      "evidence_state": "EXACT_SUPPORT_ON_CONDITIONED_RISK_SET",
+      "never_fabricated_zero": true,
+      "zero_support_steps": []
+    }
+  },
+  "learned_same_marginals": {
+    "content_hash": "109c3f1339903c856d62db51fcd0bf1d7b007dc2deff2b3bbbb18dec6d018341",
+    "n10w_state": "EXACT_PROGRESSIVE_CHAIN",
+    "query": {
+      "ordered_conditions": [
+        [
+          "A",
+          1
+        ],
+        [
+          "B",
+          1
+        ],
+        [
+          "C",
+          1
+        ]
+      ],
+      "query_identity_hash": "8fce7d0b5482a50683a5435fdee097753e17fb84639c9ae81990863e12722cd2",
+      "role_authority_refs": [
+        {
+          "content_hash": "04c858ea88b4f950f32db9a0bb681c209406ce051df9ab67d85e3a69f6a4fdc2",
+          "kind": "QUESTION_NATIVE",
+          "object_id": "urn:test:i03:question_native:E04_NATIVE_BINARY-Y"
+        }
+      ],
+      "role_class": "FORWARD_AUTHORIZED",
+      "target": "Y"
+    },
+    "routes": {
+      "civil": "ELIGIBLE",
+      "exit_constraint": "WITHIN_MODELED_BUDGET",
+      "training": "ELIGIBLE"
+    },
+    "steps": [
+      {
+        "cells": {
+          "0": 13,
+          "1": 19
+        },
+        "conditioners": [
+          [
+            "A",
+            1
+          ]
+        ],
+        "denominator": 32,
+        "route": "N10E_PUBLIC_SINGLE",
+        "state": "EXACT_SUPPORTED",
+        "uncertainty": "UNCERTAINTY_UNQUANTIFIED"
+      },
+      {
+        "cells": {
+          "0": 5,
+          "1": 11
+        },
+        "conditioners": [
+          [
+            "A",
+            1
+          ],
+          [
+            "B",
+            1
+          ]
+        ],
+        "denominator": 16,
+        "route": "C1_PUBLIC_MULTI_BINDING",
+        "state": "EXACT_SUPPORTED",
+        "uncertainty": "UNCERTAINTY_UNQUANTIFIED"
+      },
+      {
+        "cells": {
+          "0": 1,
+          "1": 7
+        },
+        "conditioners": [
+          [
+            "A",
+            1
+          ],
+          [
+            "B",
+            1
+          ],
+          [
+            "C",
+            1
+          ]
+        ],
+        "denominator": 8,
+        "route": "C1_PUBLIC_MULTI_BINDING",
+        "state": "EXACT_SUPPORTED",
+        "uncertainty": "UNCERTAINTY_UNQUANTIFIED"
+      }
+    ],
+    "unknown": {
+      "evidence_state": "EXACT_SUPPORT_ON_CONDITIONED_RISK_SET",
+      "never_fabricated_zero": true,
+      "zero_support_steps": []
+    }
+  },
+  "measured_null": {
+    "content_hash": "303692742b79f1003d8ee9546ff39cd1f7beb858afbd4c8c2c626cb50cfcffc8",
+    "n10w_state": "EXACT_PROGRESSIVE_CHAIN",
+    "query": {
+      "ordered_conditions": [
+        [
+          "A",
+          1
+        ],
+        [
+          "B",
+          1
+        ],
+        [
+          "C",
+          1
+        ]
+      ],
+      "query_identity_hash": "8fce7d0b5482a50683a5435fdee097753e17fb84639c9ae81990863e12722cd2",
+      "role_authority_refs": [
+        {
+          "content_hash": "04c858ea88b4f950f32db9a0bb681c209406ce051df9ab67d85e3a69f6a4fdc2",
+          "kind": "QUESTION_NATIVE",
+          "object_id": "urn:test:i03:question_native:E04_NATIVE_BINARY-Y"
+        }
+      ],
+      "role_class": "FORWARD_AUTHORIZED",
+      "target": "Y"
+    },
+    "routes": {
+      "civil": "ELIGIBLE",
+      "exit_constraint": "WITHIN_MODELED_BUDGET",
+      "training": "ELIGIBLE"
+    },
+    "steps": [
+      {
+        "cells": {
+          "0": 16,
+          "1": 16
+        },
+        "conditioners": [
+          [
+            "A",
+            1
+          ]
+        ],
+        "denominator": 32,
+        "route": "N10E_PUBLIC_SINGLE",
+        "state": "EXACT_SUPPORTED",
+        "uncertainty": "UNCERTAINTY_UNQUANTIFIED"
+      },
+      {
+        "cells": {
+          "0": 8,
+          "1": 8
+        },
+        "conditioners": [
+          [
+            "A",
+            1
+          ],
+          [
+            "B",
+            1
+          ]
+        ],
+        "denominator": 16,
+        "route": "C1_PUBLIC_MULTI_BINDING",
+        "state": "EXACT_SUPPORTED",
+        "uncertainty": "UNCERTAINTY_UNQUANTIFIED"
+      },
+      {
+        "cells": {
+          "0": 4,
+          "1": 4
+        },
+        "conditioners": [
+          [
+            "A",
+            1
+          ],
+          [
+            "B",
+            1
+          ],
+          [
+            "C",
+            1
+          ]
+        ],
+        "denominator": 8,
+        "route": "C1_PUBLIC_MULTI_BINDING",
+        "state": "EXACT_SUPPORTED",
+        "uncertainty": "UNCERTAINTY_UNQUANTIFIED"
+      }
+    ],
+    "unknown": {
+      "evidence_state": "EXACT_SUPPORT_ON_CONDITIONED_RISK_SET",
+      "never_fabricated_zero": true,
+      "zero_support_steps": []
+    }
+  },
+  "providers": {
+    "learned_release": "E04L_M1_M2_B5_READTHROUGH@1",
+    "n10e_empirical": "N10E_PUBLIC_SINGLE|C1_PUBLIC_MULTI_BINDING",
+    "n10w_progressive": "E03_PROGRESSIVE_CHAIN@1",
+    "n9_structural_consumer": "NONPARENT_OPTIONS@1",
+    "n9_world": "E04_TEST_ONLY_SELECTED_WORLD_M4_M5@1"
+  },
+  "reverse_role": {
+    "content_hash": "6e24058a300525008b3a48be721cb593551dff843f02afed739d0ff8f792115f",
+    "n10w_state": "EXACT_PROGRESSIVE_CHAIN",
+    "query": {
+      "ordered_conditions": [
+        [
+          "Y",
+          1
+        ]
+      ],
+      "query_identity_hash": "83677e5c53605e785431be201ae04a39244a7979d2d276ceac2584d1208583a3",
+      "role_authority_refs": [
+        {
+          "content_hash": "8ad58721c6eba35193f85de2b8c224362f2aa3939cabc975bdf8b1b566e46025",
+          "kind": "QUESTION_NATIVE",
+          "object_id": "urn:test:i03:question_native:E04_NATIVE_BINARY-A"
+        }
+      ],
+      "role_class": "REVERSE_AUTHORIZED",
+      "target": "A"
+    },
+    "routes": {
+      "civil": "ELIGIBLE",
+      "exit_constraint": "WITHIN_MODELED_BUDGET",
+      "training": "ELIGIBLE"
+    },
+    "steps": [
+      {
+        "cells": {
+          "0": 11,
+          "1": 18
+        },
+        "conditioners": [
+          [
+            "Y",
+            1
+          ]
+        ],
+        "denominator": 29,
+        "route": "N10E_PUBLIC_SINGLE",
+        "state": "EXACT_SUPPORTED",
+        "uncertainty": "UNCERTAINTY_UNQUANTIFIED"
+      }
+    ],
+    "unknown": {
+      "evidence_state": "EXACT_SUPPORT_ON_CONDITIONED_RISK_SET",
+      "never_fabricated_zero": true,
+      "zero_support_steps": []
+    }
+  },
+  "schema": "PYAT_R41_P41_COMPUTED_PROGRESSIVE_CONDITIONING_RECEIPTS@1",
+  "structural_rule_revision_fixed_empirical": {
+    "early_clock": {
+      "content_hash": "8be63f19e8396defd12b086c7e8d503987e46813ec6db312358aa2c0cd1df905",
+      "n10w_state": "EXACT_PROGRESSIVE_CHAIN",
+      "query": {
+        "ordered_conditions": [
+          [
+            "A",
+            1
+          ],
+          [
+            "B",
+            1
+          ],
+          [
+            "C",
+            1
+          ]
+        ],
+        "query_identity_hash": "8fce7d0b5482a50683a5435fdee097753e17fb84639c9ae81990863e12722cd2",
+        "role_authority_refs": [
+          {
+            "content_hash": "04c858ea88b4f950f32db9a0bb681c209406ce051df9ab67d85e3a69f6a4fdc2",
+            "kind": "QUESTION_NATIVE",
+            "object_id": "urn:test:i03:question_native:E04_NATIVE_BINARY-Y"
+          }
+        ],
+        "role_class": "FORWARD_AUTHORIZED",
+        "target": "Y"
+      },
+      "routes": {
+        "civil": "ELIGIBLE",
+        "exit_constraint": "WITHIN_MODELED_BUDGET",
+        "training": "ELIGIBLE"
+      },
+      "steps": [
+        {
+          "cells": {
+            "0": 14,
+            "1": 18
+          },
+          "conditioners": [
+            [
+              "A",
+              1
+            ]
+          ],
+          "denominator": 32,
+          "route": "N10E_PUBLIC_SINGLE",
+          "state": "EXACT_SUPPORTED",
+          "uncertainty": "UNCERTAINTY_UNQUANTIFIED"
+        },
+        {
+          "cells": {
+            "0": 6,
+            "1": 10
+          },
+          "conditioners": [
+            [
+              "A",
+              1
+            ],
+            [
+              "B",
+              1
+            ]
+          ],
+          "denominator": 16,
+          "route": "C1_PUBLIC_MULTI_BINDING",
+          "state": "EXACT_SUPPORTED",
+          "uncertainty": "UNCERTAINTY_UNQUANTIFIED"
+        },
+        {
+          "cells": {
+            "0": 2,
+            "1": 6
+          },
+          "conditioners": [
+            [
+              "A",
+              1
+            ],
+            [
+              "B",
+              1
+            ],
+            [
+              "C",
+              1
+            ]
+          ],
+          "denominator": 8,
+          "route": "C1_PUBLIC_MULTI_BINDING",
+          "state": "EXACT_SUPPORTED",
+          "uncertainty": "UNCERTAINTY_UNQUANTIFIED"
+        }
+      ],
+      "unknown": {
+        "evidence_state": "EXACT_SUPPORT_ON_CONDITIONED_RISK_SET",
+        "never_fabricated_zero": true,
+        "zero_support_steps": []
+      }
+    },
+    "revised": {
+      "content_hash": "3f806d43f1f2eccb0409f660db9af46ed24e1098e20eddaca956d9f47bb13ad3",
+      "n10w_state": "EXACT_PROGRESSIVE_CHAIN",
+      "query": {
+        "ordered_conditions": [
+          [
+            "A",
+            1
+          ],
+          [
+            "B",
+            1
+          ],
+          [
+            "C",
+            1
+          ]
+        ],
+        "query_identity_hash": "8fce7d0b5482a50683a5435fdee097753e17fb84639c9ae81990863e12722cd2",
+        "role_authority_refs": [
+          {
+            "content_hash": "04c858ea88b4f950f32db9a0bb681c209406ce051df9ab67d85e3a69f6a4fdc2",
+            "kind": "QUESTION_NATIVE",
+            "object_id": "urn:test:i03:question_native:E04_NATIVE_BINARY-Y"
+          }
+        ],
+        "role_class": "FORWARD_AUTHORIZED",
+        "target": "Y"
+      },
+      "routes": {
+        "civil": "ELIGIBLE",
+        "exit_constraint": "RESOURCE_CONSTRAINED",
+        "training": "BLOCKED_BY_MODELED_RULE"
+      },
+      "steps": [
+        {
+          "cells": {
+            "0": 14,
+            "1": 18
+          },
+          "conditioners": [
+            [
+              "A",
+              1
+            ]
+          ],
+          "denominator": 32,
+          "route": "N10E_PUBLIC_SINGLE",
+          "state": "EXACT_SUPPORTED",
+          "uncertainty": "UNCERTAINTY_UNQUANTIFIED"
+        },
+        {
+          "cells": {
+            "0": 6,
+            "1": 10
+          },
+          "conditioners": [
+            [
+              "A",
+              1
+            ],
+            [
+              "B",
+              1
+            ]
+          ],
+          "denominator": 16,
+          "route": "C1_PUBLIC_MULTI_BINDING",
+          "state": "EXACT_SUPPORTED",
+          "uncertainty": "UNCERTAINTY_UNQUANTIFIED"
+        },
+        {
+          "cells": {
+            "0": 2,
+            "1": 6
+          },
+          "conditioners": [
+            [
+              "A",
+              1
+            ],
+            [
+              "B",
+              1
+            ],
+            [
+              "C",
+              1
+            ]
+          ],
+          "denominator": 8,
+          "route": "C1_PUBLIC_MULTI_BINDING",
+          "state": "EXACT_SUPPORTED",
+          "uncertainty": "UNCERTAINTY_UNQUANTIFIED"
+        }
+      ],
+      "unknown": {
+        "evidence_state": "EXACT_SUPPORT_ON_CONDITIONED_RISK_SET",
+        "never_fabricated_zero": true,
+        "zero_support_steps": []
+      }
+    }
+  },
+  "support_loss": {
+    "content_hash": "2b74542ba4abe7b2cf6b6e91273371da37084ea7ee3e783d0f3f301daaddc6b5",
+    "n10w_state": "TYPED_PARTIAL_OR_UNKNOWN",
+    "query": {
+      "ordered_conditions": [
+        [
+          "A",
+          1
+        ],
+        [
+          "B",
+          1
+        ],
+        [
+          "C",
+          1
+        ]
+      ],
+      "query_identity_hash": "8fce7d0b5482a50683a5435fdee097753e17fb84639c9ae81990863e12722cd2",
+      "role_authority_refs": [
+        {
+          "content_hash": "04c858ea88b4f950f32db9a0bb681c209406ce051df9ab67d85e3a69f6a4fdc2",
+          "kind": "QUESTION_NATIVE",
+          "object_id": "urn:test:i03:question_native:E04_NATIVE_BINARY-Y"
+        }
+      ],
+      "role_class": "FORWARD_AUTHORIZED",
+      "target": "Y"
+    },
+    "routes": {
+      "civil": "ELIGIBLE",
+      "exit_constraint": "WITHIN_MODELED_BUDGET",
+      "training": "ELIGIBLE"
+    },
+    "steps": [
+      {
+        "cells": {
+          "0": 12,
+          "1": 12
+        },
+        "conditioners": [
+          [
+            "A",
+            1
+          ]
+        ],
+        "denominator": 24,
+        "route": "N10E_PUBLIC_SINGLE",
+        "state": "EXACT_SUPPORTED",
+        "uncertainty": "UNCERTAINTY_UNQUANTIFIED"
+      },
+      {
+        "cells": {
+          "0": 4,
+          "1": 4
+        },
+        "conditioners": [
+          [
+            "A",
+            1
+          ],
+          [
+            "B",
+            1
+          ]
+        ],
+        "denominator": 8,
+        "route": "C1_PUBLIC_MULTI_BINDING",
+        "state": "EXACT_SUPPORTED",
+        "uncertainty": "UNCERTAINTY_UNQUANTIFIED"
+      },
+      {
+        "cells": {},
+        "conditioners": [
+          [
+            "A",
+            1
+          ],
+          [
+            "B",
+            1
+          ],
+          [
+            "C",
+            1
+          ]
+        ],
+        "denominator": 0,
+        "route": null,
+        "state": "ZERO_SUPPORT",
+        "uncertainty": "NO_SUPPORTED_EVIDENCE"
+      }
+    ],
+    "unknown": {
+      "evidence_state": "NO_SUPPORTED_EVIDENCE",
+      "never_fabricated_zero": true,
+      "zero_support_steps": [
+        3
+      ]
+    }
+  }
+}

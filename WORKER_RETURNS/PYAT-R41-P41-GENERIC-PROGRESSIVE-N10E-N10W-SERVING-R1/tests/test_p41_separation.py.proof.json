@@ -1,0 +1,16 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "claims": [
+    {
+      "claim_id": "W2_N9_STRUCTURAL_EDGE_SEVERANCE",
+      "actual_consumer": "P41 service structural block (actual NONPARENT_OPTIONS consumer material)",
+      "claimed_dependency": "actual M4/M5+catalog structural routes -> receipt structural_routes under fixed empirical evidence",
+      "positive_node": "WORKER_RETURNS/PYAT-R41-P41-GENERIC-PROGRESSIVE-N10E-N10W-SERVING-R1/tests/test_p41_separation.py::test_rule_revision_changes_routes_not_empirical",
+      "fault": {
+        "path": "WORKER_RETURNS/PYAT-R41-P41-GENERIC-PROGRESSIVE-N10E-N10W-SERVING-R1/runtime/p41_service.py",
+        "old": "        material = consume(self.readthrough, snap)[\"material\"]",
+        "new": "        material = {\"state\": \"OPTIONS_AND_SOURCE_SUPPORT_PRODUCED\", \"structural_routes\": {\"training\": {\"state\": \"ELIGIBLE\"}, \"civil\": {\"state\": \"ELIGIBLE\"}, \"exit_constraint\": {\"state\": \"WITHIN_MODELED_BUDGET\"}}, \"route_probability\": None, \"route_probability_reason\": \"NO_JOINT_EMPIRICAL_STRUCTURAL_ROUTE_MODEL\", \"actor_executions\": 0, \"model_calls\": 0, \"snapshot_ref\": None}"
+      }
+    }
+  ]
+}

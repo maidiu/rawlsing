@@ -1,0 +1,16 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "claims": [
+    {
+      "claim_id": "W3_SELECTION_CURRENTNESS_EDGE_SEVERANCE",
+      "actual_consumer": "E04L learned-release read-through fresh serve path used by the P41 service",
+      "claimed_dependency": "exact current selection/no-current receipt identity -> fresh serve; otherwise typed refusal (stale/asof/archive cannot serve fresh)",
+      "positive_node": "WORKER_RETURNS/PYAT-R41-P41-GENERIC-PROGRESSIVE-N10E-N10W-SERVING-R1/tests/test_p41_clocks_and_invalidation.py::test_declared_no_current_refuses_fresh_serve",
+      "fault": {
+        "path": "WORKER_RETURNS/PYAT-R41-P41-GENERIC-PROGRESSIVE-N10E-N10W-SERVING-R1/runtime/staged_native/pre553_learned_product_lifecycle.py",
+        "old": "        if expected != supplied:\n            raise LearnedProductLifecycleError(\n                \"currentness requires the exact current selection/no-current receipt\"\n            )\n        state = self._selection_state_for_key(key.ref)",
+        "new": "        state = \"CURRENT_SELECTED\""
+      }
+    }
+  ]
+}

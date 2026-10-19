@@ -1,0 +1,17 @@
+{
+  "schema": "PYAT_R41_P41_ENVIRONMENT_PASSPORT@1",
+  "worker": "R41 P41 generic progressive N9/N10E/N10W serving",
+  "branch": "agent/rabochii-pyat-r41-p41-generic-progressive-n10w-service-r1",
+  "sealed_startup": "c4934fd71120d37a4d06f7c830891e6e97fe4ecf",
+  "host": "reviewer-workstation (sanitized)",
+  "platform": "darwin",
+  "python": "3.11.3",
+  "pytest": "9.0.2",
+  "git": "2.43.0",
+  "run_flags": {"PYTHONHASHSEED": "0", "PYTHONDONTWRITEBYTECODE": "1",
+                "pytest": ["-q", "-p no:cacheprovider", "--junitxml=<evidence>"]},
+  "network": {"used": false},
+  "source_access": {"original_source_read": false},
+  "side_effects": "shared tree untouched (witness mutations confined to packet copies; staged files restored byte-identical)",
+  "timestamp_utc": "2026-10-19T06:40:00Z"
+}

@@ -1,0 +1,16 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "claims": [
+    {
+      "claim_id": "W1_N10E_COMPUTED_EDGE_SEVERANCE",
+      "actual_consumer": "P41 generic positioned possibility service receipt n10e_steps",
+      "claimed_dependency": "actual computed N10E/C1 provider progressive output -> receipt cells/denominators/routes",
+      "positive_node": "WORKER_RETURNS/PYAT-R41-P41-GENERIC-PROGRESSIVE-N10E-N10W-SERVING-R1/tests/test_p41_generic_trajectories.py::test_computed_progressive_chain_exact",
+      "fault": {
+        "path": "WORKER_RETURNS/PYAT-R41-P41-GENERIC-PROGRESSIVE-N10E-N10W-SERVING-R1/runtime/p41_service.py",
+        "old": "        steps = self.provider.progressive(target, ordered)",
+        "new": "        steps = [{\"target\": target, \"conditioners\": [list(c) for c in ordered[:1]], \"state\": \"EXACT_SUPPORTED\", \"denominator\": 99, \"cells\": [{\"cell\": \"1\", \"raw_numerator_support\": 99}], \"route\": \"FABRICATED\"}]"
+      }
+    }
+  ]
+}

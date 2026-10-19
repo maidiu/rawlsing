@@ -1,0 +1,238 @@
+{
+  "clock_matrix": {
+    "early_2026": {
+      "content_hash": "8be63f19e8396defd12b086c7e8d503987e46813ec6db312358aa2c0cd1df905",
+      "n10w_state": "EXACT_PROGRESSIVE_CHAIN",
+      "query": {
+        "ordered_conditions": [
+          [
+            "A",
+            1
+          ],
+          [
+            "B",
+            1
+          ],
+          [
+            "C",
+            1
+          ]
+        ],
+        "query_identity_hash": "8fce7d0b5482a50683a5435fdee097753e17fb84639c9ae81990863e12722cd2",
+        "role_authority_refs": [
+          {
+            "content_hash": "04c858ea88b4f950f32db9a0bb681c209406ce051df9ab67d85e3a69f6a4fdc2",
+            "kind": "QUESTION_NATIVE",
+            "object_id": "urn:test:i03:question_native:E04_NATIVE_BINARY-Y"
+          }
+        ],
+        "role_class": "FORWARD_AUTHORIZED",
+        "target": "Y"
+      },
+      "routes": {
+        "civil": "ELIGIBLE",
+        "exit_constraint": "WITHIN_MODELED_BUDGET",
+        "training": "ELIGIBLE"
+      },
+      "steps": [
+        {
+          "cells": {
+            "0": 14,
+            "1": 18
+          },
+          "conditioners": [
+            [
+              "A",
+              1
+            ]
+          ],
+          "denominator": 32,
+          "route": "N10E_PUBLIC_SINGLE",
+          "state": "EXACT_SUPPORTED",
+          "uncertainty": "UNCERTAINTY_UNQUANTIFIED"
+        },
+        {
+          "cells": {
+            "0": 6,
+            "1": 10
+          },
+          "conditioners": [
+            [
+              "A",
+              1
+            ],
+            [
+              "B",
+              1
+            ]
+          ],
+          "denominator": 16,
+          "route": "C1_PUBLIC_MULTI_BINDING",
+          "state": "EXACT_SUPPORTED",
+          "uncertainty": "UNCERTAINTY_UNQUANTIFIED"
+        },
+        {
+          "cells": {
+            "0": 2,
+            "1": 6
+          },
+          "conditioners": [
+            [
+              "A",
+              1
+            ],
+            [
+              "B",
+              1
+            ],
+            [
+              "C",
+              1
+            ]
+          ],
+          "denominator": 8,
+          "route": "C1_PUBLIC_MULTI_BINDING",
+          "state": "EXACT_SUPPORTED",
+          "uncertainty": "UNCERTAINTY_UNQUANTIFIED"
+        }
+      ],
+      "unknown": {
+        "evidence_state": "EXACT_SUPPORT_ON_CONDITIONED_RISK_SET",
+        "never_fabricated_zero": true,
+        "zero_support_steps": []
+      }
+    },
+    "late_2027": {
+      "content_hash": "3f806d43f1f2eccb0409f660db9af46ed24e1098e20eddaca956d9f47bb13ad3",
+      "n10w_state": "EXACT_PROGRESSIVE_CHAIN",
+      "query": {
+        "ordered_conditions": [
+          [
+            "A",
+            1
+          ],
+          [
+            "B",
+            1
+          ],
+          [
+            "C",
+            1
+          ]
+        ],
+        "query_identity_hash": "8fce7d0b5482a50683a5435fdee097753e17fb84639c9ae81990863e12722cd2",
+        "role_authority_refs": [
+          {
+            "content_hash": "04c858ea88b4f950f32db9a0bb681c209406ce051df9ab67d85e3a69f6a4fdc2",
+            "kind": "QUESTION_NATIVE",
+            "object_id": "urn:test:i03:question_native:E04_NATIVE_BINARY-Y"
+          }
+        ],
+        "role_class": "FORWARD_AUTHORIZED",
+        "target": "Y"
+      },
+      "routes": {
+        "civil": "ELIGIBLE",
+        "exit_constraint": "RESOURCE_CONSTRAINED",
+        "training": "BLOCKED_BY_MODELED_RULE"
+      },
+      "steps": [
+        {
+          "cells": {
+            "0": 14,
+            "1": 18
+          },
+          "conditioners": [
+            [
+              "A",
+              1
+            ]
+          ],
+          "denominator": 32,
+          "route": "N10E_PUBLIC_SINGLE",
+          "state": "EXACT_SUPPORTED",
+          "uncertainty": "UNCERTAINTY_UNQUANTIFIED"
+        },
+        {
+          "cells": {
+            "0": 6,
+            "1": 10
+          },
+          "conditioners": [
+            [
+              "A",
+              1
+            ],
+            [
+              "B",
+              1
+            ]
+          ],
+          "denominator": 16,
+          "route": "C1_PUBLIC_MULTI_BINDING",
+          "state": "EXACT_SUPPORTED",
+          "uncertainty": "UNCERTAINTY_UNQUANTIFIED"
+        },
+        {
+          "cells": {
+            "0": 2,
+            "1": 6
+          },
+          "conditioners": [
+            [
+              "A",
+              1
+            ],
+            [
+              "B",
+              1
+            ],
+            [
+              "C",
+              1
+            ]
+          ],
+          "denominator": 8,
+          "route": "C1_PUBLIC_MULTI_BINDING",
+          "state": "EXACT_SUPPORTED",
+          "uncertainty": "UNCERTAINTY_UNQUANTIFIED"
+        }
+      ],
+      "unknown": {
+        "evidence_state": "EXACT_SUPPORT_ON_CONDITIONED_RISK_SET",
+        "never_fabricated_zero": true,
+        "zero_support_steps": []
+      }
+    }
+  },
+  "declared_no_current": {
+    "archived": {
+      "archival_only": true,
+      "fresh_use_authorized": false,
+      "material_equal": true
+    },
+    "fresh_serve_refusal": "LearnedProductLifecycleError: currentness requires the exact current selection/no-current receipt"
+  },
+  "schema": "PYAT_R41_P41_CURRENT_HISTORICAL_SERVING_INVALIDATION@1",
+  "source_permission_revocation": {
+    "consumer_state": "PARTIAL_OPTIONS_OR_EMPIRICAL_SUPPORT",
+    "consumer_steps": [],
+    "producer_channel_steps": [
+      "EXACT_SUPPORTED",
+      "EXACT_SUPPORTED",
+      "EXACT_SUPPORTED"
+    ],
+    "scope": "empirical"
+  },
+  "structural_selective_invalidation": {
+    "affected_receipts": 1,
+    "after_routes": {
+      "civil": "UNAVAILABLE_AUTHORITY_OR_CLOCK",
+      "exit_constraint": "WITHIN_MODELED_BUDGET",
+      "training": "ELIGIBLE"
+    },
+    "empirical_steps_unchanged": true,
+    "scope": "civil_sanction",
+    "unaffected_receipts": 0
+  }
+}
