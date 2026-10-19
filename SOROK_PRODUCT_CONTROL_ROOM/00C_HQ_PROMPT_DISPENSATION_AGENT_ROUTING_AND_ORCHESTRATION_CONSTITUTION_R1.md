@@ -1,5 +1,13 @@
 # SOROK HQ PROMPT DISPENSATION, AGENT ROUTING AND ORCHESTRATION CONSTITUTION R1
 
+## PRIORITY-ZERO USER COMMAND — DO NOT CALL THE ABSENCE OF A FUNCTION A PERMANENT EXTERNAL BLOCK
+
+**Binding cross-HQ PRE-MAIN source:** `CROSS_HQ_CONTROL_ROOM/MISSING_FUNCTION_DISCOVERY_USER_CHECK_AND_BUILD_OR_REUSE_CONSTITUTION_R1.md`, published under canonical `integration/pre-main-reconciliation-r1`. This is a working-Sorok process amendment only, not actor model production, source/Rule_A/Rule_T issuance, or a restart of an active worker.
+
+Every Sorok C0–C12 blocked return and every user-facing 00C §9 commission MUST identify in plain English: **actual upstream inputs → exact missing computational/decision function → required native output and its consuming generated-person state/transition → live falsifiable positive**. Search existing adopted V3, ADP, psyche/actor/model generators and prior authority, and tell the user specifically whether an implementation is located, partial, or unknown. **If function existence is unresolved, HQ MUST ask the user directly: "Has this exact function already been built or adjudicated anywhere in Rawlsing? If so, where?"** before asserting it cannot be done. If not built, HQ owns an economical genuine build/recovery commission with existing authority conservation. Separately legitimate rule/actor/source issuers still grant their own rights; do not self-issue. A second repeated `blocked` return with no new actual person/world delta triggers this user consultation **before** another reviewer/fixture/issuer-wait worker. Preserve already running C8O/C9R/G17I etc. No automatic reroutes or serial bureaucratic gate.
+
+
+
 ## User-specific MAX reasoning clarification for every DeepSeek routing decision
 
 **DEEPSEEK means `DeepSeek V4.1-Flash` at `REASONING=MAX`** in all Sorok model competency, provider/account and copy-paste launch comparisons. This is not a new model name or an entitlement claim: it is the user's specified reasoning configuration, subject to actual selected provider offering Max. Evaluate whole-task I0–I3 sufficiency at MAX before escalating to Codex GPT-6.1 High or user-selected middle. A Flash result at default/low effort cannot falsify the user's proposed MAX capability. Full route: Browser if actually capable → DeepSeek V4.1-Flash at MAX if capable → Codex GPT-6.1 High only on proven necessity → otherwise middle model/account/editor user-selected. Include exact model and `REASONING=MAX` in the user-facing full 00C §9 header and every lodged commission. If Max is unavailable on the chosen provider, mark unverified/unavailable and seek user decision; no silent downgrade/provider shift. This overrides prior shorthand but does not touch any active Sorok worker or source/actor authority.
