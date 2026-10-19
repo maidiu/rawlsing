@@ -1,0 +1,11 @@
+{
+  "schema": "B43_WG0L_PROVENANCE_REPAIR_RECEIPT@1",
+  "wg0l_source": "bec9a128922e4e431ce2ed862aa7802c902813ed",
+  "repairs": [
+    {"red": "source_edition", "repair": "B43_ADMISSION_BOUND_SOURCE_EDITION_MISMATCH", "status": "CLOSED_BY_ADMISSION_CONTROL"},
+    {"red": "native_item_ids", "repair": "B43_ADMISSION_BOUND_NATIVE_ITEM_IDS_MISMATCH", "status": "CLOSED_BY_ADMISSION_CONTROL"},
+    {"red": "release_tag", "repair": "B43_ADMISSION_BOUND_RELEASE_TAG_MISMATCH before I03", "status": "CLOSED_BY_ADMISSION_CONTROL"}
+  ],
+  "witness": "evidence/logs/b43_four_edge_witness.json",
+  "note": "repairs are admission-control within the B43 parent; no accepted owner was modified"
+}
