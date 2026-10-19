@@ -1,0 +1,22 @@
+.............F.                                                          [100%]
+=================================== FAILURES ===================================
+____________ test_rolled_back_external_ddl_does_not_falsely_refuse _____________
+
+tmp_path = PosixPath('<TEMP>')
+
+    def test_rolled_back_external_ddl_does_not_falsely_refuse(tmp_path):
+     f,a,e,path=setup(tmp_path);before=cold(path)
+     def fault(stage):
+      if stage=='after_target_effect_before_commit':
+       db=sqlite3.connect(path);db.execute('BEGIN IMMEDIATE');db.execute('CREATE INDEX rolled_back_index ON b3_source(body)');db.rollback();db.close()
+     e.fault=fault;r=e.run(f);after=cold(path);e.close();save('repair_ddl_rollback',before=before,result=r,after=after)
+>    assert r['status']=='ELIGIBLE_NONCAUSAL' and before['schema']==after['schema']
+E    AssertionError: assert ('REFUSED' == 'ELIGIBLE_NONCAUSAL'
+E      
+E      - ELIGIBLE_NONCAUSAL
+E      + REFUSED)
+
+test_schema_repair.py:57: AssertionError
+=========================== short test summary info ============================
+FAILED test_schema_repair.py::test_rolled_back_external_ddl_does_not_falsely_refuse
+1 failed, 14 passed, 18 deselected in 12.53s

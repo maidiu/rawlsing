@@ -1,0 +1,152 @@
+[
+  {
+    "label": "before_fix",
+    "command": "pytest frozen_review/test_reviewer_hostiles.py -k \"schema_only_race or schema_change_on_refusal\"",
+    "exit": 1,
+    "elapsed_seconds": 2.2538630962371826
+  },
+  {
+    "label": "schema_repair",
+    "command": "pytest frozen_review/test_reviewer_hostiles.py test_schema_repair.py -k schema-and-metadata-controls",
+    "exit": 1
+  },
+  {
+    "label": "schema_repair",
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "<REPAIR_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-R1/frozen_review/test_reviewer_hostiles.py",
+      "<REPAIR_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-R1/test_schema_repair.py",
+      "--junitxml=<REPAIR_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-R1/evidence/schema_repair.xml"
+    ],
+    "cwd": "<REPAIR_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-R1",
+    "exit": 0,
+    "expected": 0,
+    "elapsed_seconds": 32.94373416900635
+  },
+  {
+    "label": "seeded_refusals",
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "<REPAIR_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-R1/frozen_review/test_seeded_refusals.py",
+      "--junitxml=<REPAIR_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-R1/evidence/seeded_refusals.xml"
+    ],
+    "cwd": "<REPAIR_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-R1",
+    "exit": 0,
+    "expected": 0,
+    "elapsed_seconds": 1.0599889755249023
+  },
+  {
+    "label": "b3",
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "test_integration_b3.py",
+      "--junitxml=<REPAIR_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-R1/evidence/b3.xml"
+    ],
+    "cwd": "<REPAIR_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-R1/candidate",
+    "exit": 0,
+    "expected": 0,
+    "elapsed_seconds": 34.58092999458313
+  },
+  {
+    "label": "atomic",
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "<REPAIR_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-R1/test_atomic.py",
+      "<REPAIR_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-R1/test_projected_atomic.py",
+      "--junitxml=<REPAIR_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-R1/evidence/atomic.xml"
+    ],
+    "cwd": "<REPAIR_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-R1",
+    "exit": 0,
+    "expected": 0,
+    "elapsed_seconds": 77.75847482681274
+  },
+  {
+    "label": "f2",
+    "command": [
+      "/usr/local/bin/python3",
+      "run_f2.py"
+    ],
+    "cwd": "<REPAIR_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-R1/candidate",
+    "exit": 0,
+    "expected": 0,
+    "elapsed_seconds": 25.354264974594116
+  },
+  {
+    "label": "x3",
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "<REPAIR_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-R1/frozen_x3/test_independent.py",
+      "--junitxml=<REPAIR_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-R1/evidence/x3.xml"
+    ],
+    "cwd": "<REPAIR_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-R1",
+    "exit": 1,
+    "expected": 1,
+    "elapsed_seconds": 10.396286249160767
+  },
+  {
+    "label": "f2_blinded",
+    "command": [
+      "/usr/local/bin/python3",
+      "<REPAIR_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-R1/frozen_x3/audit_f2.py"
+    ],
+    "cwd": "<REPAIR_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-R1",
+    "exit": 0,
+    "expected": 0,
+    "elapsed_seconds": 124.0715799331665
+  },
+  {
+    "label": "loops",
+    "command": [
+      "/usr/local/bin/python3",
+      "developmental_loop.py",
+      "evidence/loop"
+    ],
+    "cwd": "<REPAIR_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-R1/candidate",
+    "exit": 0,
+    "expected": 0,
+    "elapsed_seconds": 4.485985040664673
+  },
+  {
+    "label": "positive_cold",
+    "command": [
+      "/usr/local/bin/python3",
+      "developmental_loop.py",
+      "replay",
+      "evidence/loop/positive.json",
+      "evidence/loop/positive_cold.sqlite"
+    ],
+    "cwd": "<REPAIR_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-R1/candidate",
+    "exit": 0,
+    "expected": 0,
+    "elapsed_seconds": 2.2661869525909424
+  },
+  {
+    "label": "permission_absent_cold",
+    "command": [
+      "/usr/local/bin/python3",
+      "developmental_loop.py",
+      "replay",
+      "evidence/loop/permission_absent.json",
+      "evidence/loop/permission_absent_cold.sqlite"
+    ],
+    "cwd": "<REPAIR_WORKTREE>/WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-R1/candidate",
+    "exit": 0,
+    "expected": 0,
+    "elapsed_seconds": 2.304474115371704
+  }
+]

@@ -1,0 +1,45 @@
+{
+  "only_changed_inherited_file": "candidate/integration.py",
+  "pinned_source_entries_verified": 199,
+  "actual_imports_verified": 11,
+  "unchanged_schema_falsifiers": "2 RED before -> 2 PASS after",
+  "extended_court": "33 PASS",
+  "regressions": {
+    "before_fix.xml": [
+      2,
+      2
+    ],
+    "development_schema_repair.xml": [
+      15,
+      1
+    ],
+    "schema_repair.xml": [
+      33,
+      0
+    ],
+    "seeded_refusals.xml": [
+      4,
+      0
+    ],
+    "b3.xml": [
+      71,
+      0
+    ],
+    "atomic.xml": [
+      63,
+      0
+    ],
+    "candidate/f2/junit.xml": [
+      42,
+      0
+    ],
+    "x3.xml": [
+      28,
+      4
+    ]
+  },
+  "blinded_f2": "42 PASS / 20 eligible",
+  "cold_replay": "EXACT_ALL_RECEIPTS_AND_TABLES",
+  "independent_acceptance": false,
+  "no_candidate_or_review_test_edits": true
+}

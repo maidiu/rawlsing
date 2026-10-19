@@ -1,0 +1,82 @@
+--- reviewed-8bd4d6b/candidate/integration.py
++++ schema-repair/candidate/integration.py
+@@ -17,7 +17,7 @@
+   try:yield
+   finally:fcntl.flock(handle,fcntl.LOCK_UN)
+ 
+-GRADE='TEST_ONLY_B3_ATOMIC_ADMISSION_R1_PENDING_I2'
++GRADE='TEST_ONLY_B3_SCHEMA_READSET_REPAIR_R1_PENDING_I2'
+ RESPONSE_RULE='B3_SITUATED_PRACTICAL_RESPONSE@1'
+ def digest(x):return m2.digest(x)
+ def seal(x):return dict(x,hash=digest(x))
+@@ -156,7 +156,23 @@
+  def close(self):self.bridge.close()
+  def snapshot(self):
+   names=[r[0] for r in self.db.execute("SELECT name FROM sqlite_master WHERE type='table' ORDER BY name")]
+-  return {n:self.db.execute('SELECT * FROM '+n+' ORDER BY 1').fetchall() for n in names}
++  return {n:self.db.execute('SELECT * FROM "'+n.replace('"','""')+'" ORDER BY 1').fetchall() for n in names}
++ def _database_snapshot(self):
++  """Capture one consistent main-database readset without ending a caller's tx.
++
++  Keep snapshot()'s row-only API for existing consumers. Publication additionally
++  binds schema objects and durable version metadata, including schema-only ABA.
++  Connection-local settings and physical SQLite file bytes are outside this
++  logical readset; this is not authentication against an arbitrary SQL writer.
++  """
++  own_transaction=not self.db.in_transaction
++  if own_transaction:self.db.execute('BEGIN')
++  try:
++   return dict(schema=self.db.execute('SELECT type,name,tbl_name,sql FROM sqlite_master ORDER BY type,name').fetchall(),
++    metadata={name:self.db.execute('PRAGMA '+name).fetchone()[0] for name in ('schema_version','user_version','application_id')},
++    tables=self.snapshot())
++  finally:
++   if own_transaction:self.db.execute('ROLLBACK')
+  def middle(self):return [json.loads(r[0]) for r in self.db.execute('SELECT body FROM b3_transition ORDER BY id')]
+  def admit_projection(self,projection,records):
+   external=dict(id=projection.id,owner='TEST_WORLD_REGISTRY',time=projection.time,admitted=True,
+@@ -183,7 +199,7 @@
+   BEGIN IMMEDIATE + exact readset comparison closes staging/publication races.
+   """
+   with locked(self.path):
+-   before=self.snapshot()
++   before=self._database_snapshot()
+    # A private directory is not a recovery journal or an actor/source registry.
+    # A killed worker may leave a scratch file; it is never opened on reentry.
+    with tempfile.TemporaryDirectory(prefix='b3-atomic-') as directory:
+@@ -194,17 +210,21 @@
+     stage=Integration(stage_path,self.authority)
+     stage.fault=self.fault
+     try:
++     # SQLite backup may advance the destination's schema cookie. Compare that
++     # per-database counter to its own post-backup baseline, never across files.
++     stage_before=stage._database_snapshot()
+      result=stage._run(data,owner_permission=owner_permission,registered_permissions=registered_permissions)
+-     after=stage.snapshot()
++     after=stage._database_snapshot()
+     finally:stage.close()
+     if result['status']!='ELIGIBLE_NONCAUSAL':
+-     return dict(result,no_mutation=self.snapshot()==before,owner_effect_committed=False)
++     return dict(result,no_mutation=self._database_snapshot()==before,owner_effect_committed=False)
+     self.db.execute('BEGIN IMMEDIATE')
+     try:
+-     require(self.snapshot()==before,'PUBLICATION_READSET_CHANGED')
+-     require(after.keys()==before.keys(),'PUBLICATION_SCHEMA_CHANGED')
+-     for table,rows in after.items():
+-      old=set(before[table]);new=set(rows)
++     require(self._database_snapshot()==before,'PUBLICATION_READSET_CHANGED')
++     require(after['schema']==before['schema'] and after['metadata']==stage_before['metadata'] and
++      all(after['metadata'][name]==before['metadata'][name] for name in ('user_version','application_id')),'PUBLICATION_SCHEMA_CHANGED')
++     for table,rows in after['tables'].items():
++      old=set(before['tables'][table]);new=set(rows)
+       require(old<=new,'PUBLICATION_NONADDITIVE_CHANGE')
+       # Column count and names originate solely in our pinned SQLite schema.
+       quoted='"'+table.replace('"','""')+'"'
+@@ -217,7 +237,7 @@
+      if self.db.in_transaction:self.db.execute('ROLLBACK')
+      # A provisional admission/transition receipt is not a published effect.
+      refusal={k:result[k] for k in ('case_id','grade','issued_production_authority','selected_affect','asserted_culprit_group','imports')}
+-     return dict(refusal,status='REFUSED',code=str(exc),owner_effect_committed=False,new_event_count=0,no_mutation=self.snapshot()==before)
++     return dict(refusal,status='REFUSED',code=str(exc),owner_effect_committed=False,new_event_count=0,no_mutation=self._database_snapshot()==before)
+     except BaseException:
+      if self.db.in_transaction:self.db.execute('ROLLBACK')
+      raise

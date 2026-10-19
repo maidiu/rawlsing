@@ -1,0 +1,18 @@
+{
+  "frozen_at_utc": "2026-10-19T00:03:55.111191+00:00",
+  "before_any_reviewer_test_execution": true,
+  "candidate": "8bd4d6b01fd402e7e6a8d07903f2c3cada837f55",
+  "predictions": {
+    "schema_only_race": "Hypothesis: current row-only snapshot may accept schema change; prospective requirement REFUSE and preserve external schema, no own rows",
+    "external_row_and_table": "REFUSE with no_mutation false; preserve independent fact/table",
+    "late_target_refusal": "no partial published event/target; cold replay lawful empty",
+    "tampering_replay": "exact origin/clock/source checks refuse; replay unchanged originals",
+    "SIGKILL": "four precommit boundaries roll back; after-return success survives; two seed strata",
+    "schema_on_refusal": "no_mutation false required even if rows unchanged"
+  },
+  "files": {
+    "test_reviewer_hostiles.py": "30baf690d09ac079d370f7730c06114481848403efd52629f279ec2aceb9246f",
+    "reviewer_worker.py": "c0f15116b759ce67db67c5d7ffc979433b22fa94272c06e9c2e825c9db66e948"
+  },
+  "interpretation_rule": "Keep failed assertions RED; raw SQL adversary scope distinct from lawful B2 writer; no repair; SIGKILL not powerloss."
+}

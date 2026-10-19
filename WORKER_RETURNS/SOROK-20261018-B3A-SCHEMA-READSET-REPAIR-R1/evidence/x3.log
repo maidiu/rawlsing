@@ -1,0 +1,77 @@
+.F.........F.......F.....F..                                             [100%]
+=================================== FAILURES ===================================
+______________ test_duplicate_physical_check_cannot_form_practice ______________
+
+tmp_path = PosixPath('<TEMP>')
+
+    def test_duplicate_physical_check_cannot_form_practice(tmp_path):
+        f=frame_at(); f['evidence']=[x for x in f['evidence'] if x['id']!='check:2']
+        x=deepcopy(next(x for x in f['evidence'] if x['id']=='check:7'))
+        x['id']='same-check-second-id';rehash(x);f['evidence'].append(x)
+        # Both records now describe the same clock, actor, observer, object and result.
+        f['readset']=[x['id'] for x in f['evidence'] if x['actor']=='child']+[s['witness'] for s in f['utterances']]
+        e,a=engine(tmp_path,f);before=e.snapshot();p=permission_for([],f)
+        try:
+            r=e.run(f,owner_permission=p,registered_permissions=(p,));receipt('duplicate_activity',e,before,r)
+>           assert not r['owner_effect_committed'], 'two IDs of one witnessed activity counted as repetition'
+E           AssertionError: two IDs of one witnessed activity counted as repetition
+E           assert not True
+
+frozen_x3/test_independent.py:58: AssertionError
+______________ test_guard_rejects_missing_previously_used_sources ______________
+
+    def test_guard_rejects_missing_previously_used_sources():
+        s=m2.seed_scene();old=source_guard.preimages(s)
+        removed=replace(s,speech=(),speech_actions=(),exposures=())
+        # The helper's claimed immutable continuation should not drop its readset.
+>       with pytest.raises(m2.Refusal):source_guard.check(old,removed)
+E       Failed: DID NOT RAISE Refusal
+
+frozen_x3/test_independent.py:102: Failed
+__________ test_before_and_after_loss_practice_requires_pre_loss_act ___________
+
+tmp_path = PosixPath('<TEMP>')
+
+    def test_before_and_after_loss_practice_requires_pre_loss_act(tmp_path):
+        f=frame_at()
+        x=next(x for x in f['evidence'] if x['id']=='check:2');x['time']=6;rehash(x)
+        e,a=engine(tmp_path,f);before=e.snapshot();p=permission_for([],f)
+        try:
+            r=e.run(f,owner_permission=p,registered_permissions=(p,));receipt('no_pre_loss_act',e,before,r)
+>           assert not r['owner_effect_committed'], 'both checks occurred after loss; pre-loss activity absent'
+E           AssertionError: both checks occurred after loss; pre-loss activity absent
+E           assert not True
+
+frozen_x3/test_independent.py:148: AssertionError
+_ test_privileged_second_connection_between_guard_and_commit_is_detected_only_on_reentry _
+
+tmp_path = PosixPath('<TEMP>')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10b9c9110>
+
+    def test_privileged_second_connection_between_guard_and_commit_is_detected_only_on_reentry(tmp_path,monkeypatch):
+        import sqlite3
+        f=frame_at();e,a=engine(tmp_path,f);before=e.snapshot();original=source_guard.check;fired=[]
+        def race(old,scene):
+            result=original(old,scene)
+            if not fired:
+                # Ignore B3's advisory file lock: this is an explicitly privileged SQL adversary.
+                other=sqlite3.connect(e.path)
+                key='check:2';bad=deepcopy(next(x for x in f['evidence'] if x['id']==key));bad['note']='SQL replacement after guard'
+                other.execute('INSERT OR REPLACE INTO b3_preimage VALUES (?,?)',(key,m2.canonical(bad)));other.commit();other.close();fired.append(True)
+            return result
+        monkeypatch.setattr(source_guard,'check',race)
+        try:
+            r=e.run(f);receipt('privileged_guard_to_commit_race',e,before,r)
+>           assert r['status']=='ELIGIBLE_NONCAUSAL' and fired
+E           AssertionError: assert ('REFUSED' == 'ELIGIBLE_NONCAUSAL'
+E             
+E             - ELIGIBLE_NONCAUSAL
+E             + REFUSED)
+
+frozen_x3/test_independent.py:198: AssertionError
+=========================== short test summary info ============================
+FAILED frozen_x3/test_independent.py::test_duplicate_physical_check_cannot_form_practice
+FAILED frozen_x3/test_independent.py::test_guard_rejects_missing_previously_used_sources
+FAILED frozen_x3/test_independent.py::test_before_and_after_loss_practice_requires_pre_loss_act
+FAILED frozen_x3/test_independent.py::test_privileged_second_connection_between_guard_and_commit_is_detected_only_on_reentry
+4 failed, 24 passed in 10.05s

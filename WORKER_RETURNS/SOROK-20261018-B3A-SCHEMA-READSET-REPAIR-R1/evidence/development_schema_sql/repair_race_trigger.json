@@ -1,0 +1,573 @@
+{
+  "before": {
+    "pid": 43541,
+    "integrity": "ok",
+    "schema": [
+      [
+        "index",
+        "sqlite_autoindex_b2_event_identity_1",
+        "b2_event_identity",
+        null
+      ],
+      [
+        "index",
+        "sqlite_autoindex_b2_ingress_1",
+        "b2_ingress",
+        null
+      ],
+      [
+        "index",
+        "sqlite_autoindex_b3_audit_1",
+        "b3_audit",
+        null
+      ],
+      [
+        "index",
+        "sqlite_autoindex_b3_m2_sources_1",
+        "b3_m2_sources",
+        null
+      ],
+      [
+        "index",
+        "sqlite_autoindex_b3_preimage_1",
+        "b3_preimage",
+        null
+      ],
+      [
+        "index",
+        "sqlite_autoindex_b3_response_1",
+        "b3_response",
+        null
+      ],
+      [
+        "index",
+        "sqlite_autoindex_b3_source_1",
+        "b3_source",
+        null
+      ],
+      [
+        "index",
+        "sqlite_autoindex_b3_transition_1",
+        "b3_transition",
+        null
+      ],
+      [
+        "index",
+        "sqlite_autoindex_joint_receipt_1",
+        "joint_receipt",
+        null
+      ],
+      [
+        "index",
+        "sqlite_autoindex_occurrence_1",
+        "occurrence",
+        null
+      ],
+      [
+        "table",
+        "b2_event_identity",
+        "b2_event_identity",
+        "CREATE TABLE b2_event_identity\n            (event_id TEXT PRIMARY KEY NOT NULL, binding TEXT NOT NULL,\n             event_ref TEXT NOT NULL, ingress_ref TEXT NOT NULL)"
+      ],
+      [
+        "table",
+        "b2_ingress",
+        "b2_ingress",
+        "CREATE TABLE b2_ingress (id TEXT PRIMARY KEY, body TEXT)"
+      ],
+      [
+        "table",
+        "b3_audit",
+        "b3_audit",
+        "CREATE TABLE b3_audit (id TEXT PRIMARY KEY, body TEXT NOT NULL)"
+      ],
+      [
+        "table",
+        "b3_clock",
+        "b3_clock",
+        "CREATE TABLE b3_clock (clock INTEGER PRIMARY KEY)"
+      ],
+      [
+        "table",
+        "b3_m2_sources",
+        "b3_m2_sources",
+        "CREATE TABLE b3_m2_sources (id TEXT PRIMARY KEY, body TEXT NOT NULL)"
+      ],
+      [
+        "table",
+        "b3_preimage",
+        "b3_preimage",
+        "CREATE TABLE b3_preimage (id TEXT PRIMARY KEY, body TEXT NOT NULL)"
+      ],
+      [
+        "table",
+        "b3_response",
+        "b3_response",
+        "CREATE TABLE b3_response (id TEXT PRIMARY KEY, body TEXT NOT NULL)"
+      ],
+      [
+        "table",
+        "b3_source",
+        "b3_source",
+        "CREATE TABLE b3_source (id TEXT PRIMARY KEY, body TEXT NOT NULL)"
+      ],
+      [
+        "table",
+        "b3_transition",
+        "b3_transition",
+        "CREATE TABLE b3_transition (id TEXT PRIMARY KEY, body TEXT NOT NULL)"
+      ],
+      [
+        "table",
+        "checkpoint",
+        "checkpoint",
+        "CREATE TABLE checkpoint (id INTEGER PRIMARY KEY, body TEXT)"
+      ],
+      [
+        "table",
+        "joint_receipt",
+        "joint_receipt",
+        "CREATE TABLE joint_receipt (hash TEXT PRIMARY KEY, body TEXT)"
+      ],
+      [
+        "table",
+        "occurrence",
+        "occurrence",
+        "CREATE TABLE occurrence (hash TEXT PRIMARY KEY, body TEXT)"
+      ]
+    ],
+    "tables": {
+      "b2_event_identity": [
+        [
+          "I2-independent-before-request",
+          "{\"actor\":\"child\",\"context\":{\"action_opportunities\":{\"OP-CARE-REPORT\":{\"act_kind\":\"REPORT_MISSING_BIKE\",\"actor_ref\":\"CARE-1\",\"place_ref\":\"GARAGE-1\",\"time\":\"2026-10-17T10:00:03Z\"},\"OP-CARE-SPEAK\":{\"act_kind\":\"SPEAK_TO_CHILD\",\"actor_ref\":\"CARE-1\",\"place_ref\":\"GARAGE-1\",\"time\":\"2026-10-17T10:00:03Z\"},\"OP-CHILD-SEARCH\":{\"act_kind\":\"CHECK_GARAGE\",\"actor_ref\":\"CHILD-1\",\"place_ref\":\"GARAGE-1\",\"time\":\"2026-10-17T10:00:03Z\"},\"OP-PEER-SPEAK\":{\"act_kind\":\"SPEAK_TO_CHILD\",\"actor_ref\":\"PEER-1\",\"place_ref\":\"GARAGE-1\",\"time\":\"2026-10-17T10:00:03Z\"}},\"actor_access\":{\"CARE-1\":[\"THEFT-1\"],\"CHILD-1\":[\"THEFT-1\"],\"NEIGHBOR-1\":[],\"PEER-1\":[\"THEFT-1\"]},\"allowed_role_refs\":[\"CHILD\",\"CAREGIVER\",\"PEER\",\"NEIGHBOR\"],\"as_of\":\"2026-10-17T10:00:03Z\",\"context_hash\":\"baa320465412d5914f756085dd8fe153b35dd9fea7f0e3ee5f961c89b2adfb29\",\"facts\":{\"DENIED-PAST-THEFT\":{\"epistemic_class\":\"ADMITTED_OBJECTIVE_EVENT\",\"kind\":\"OTHER_THEFT\",\"occurred\":false,\"time\":\"2026-10-16T09:00:00Z\"},\"PRIVATE-CAREGIVER-1\":{\"epistemic_class\":\"PRIVATE_ACTOR_STATE\",\"kind\":\"UNREADABLE_CAREGIVER_CONCERN\",\"occurred\":true,\"time\":\"2026-10-17T08:00:00Z\"},\"THEFT-1\":{\"epistemic_class\":\"ADMITTED_OBJECTIVE_EVENT\",\"kind\":\"BIKE_STOLEN\",\"known_culprit\":null,\"material_object_ref\":\"BIKE-CHILD-1\",\"occurred\":true,\"time\":\"2026-10-17T09:00:00Z\"}},\"histories\":{\"H-CARE-CONTROL\":{\"owner\":\"CARE-1\",\"source\":\"SYNTHETIC_HISTORY\",\"summary\":\"caregiver has history of intrusive scrutiny and material safety concern\"},\"H-CARE-PROTECT\":{\"owner\":\"CARE-1\",\"source\":\"B2_INDEPENDENT_TYPED_PARTICIPANT\",\"summary\":\"typed participant digest a193ddb11c4338d9612d1d6e2d81510ba46e0ab91544735785fa2332904d702f\"},\"H-CHILD-1\":{\"owner\":\"CHILD-1\",\"source\":\"B2_EXACT_SYNTHETIC_PREHISTORY\",\"summary\":\"typed history digest 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945\"},\"H-CHILD-2\":{\"owner\":\"CHILD-1\",\"source\":\"SYNTHETIC_HISTORY\",\"summary\":\"child bicycle gift and repeated arbitrary searches; reacts to control with caution\"},\"H-NEIGHBOR-INDEPENDENT\":{\"owner\":\"NEIGHBOR-1\",\"source\":\"SYNTHETIC_HISTORY\",\"summary\":\"neighbor has independent daily schedule unrelated to theft\"},\"H-PEER-BELONGING\":{\"owner\":\"PEER-1\",\"source\":\"B2_INDEPENDENT_TYPED_PARTICIPANT\",\"summary\":\"typed participant digest 947b8a4774423252204592913fa41f5c16032c2662f0615d197d04886c040044\"}},\"material_affordances\":[\"GARAGE_ACCESS\",\"PHONE_AVAILABLE\"],\"people\":{\"CARE-1\":{\"history_ref\":\"H-CARE-PROTECT\",\"role\":\"CAREGIVER\"},\"CHILD-1\":{\"history_ref\":\"H-CHILD-1\",\"role\":\"CHILD\"},\"NEIGHBOR-1\":{\"history_ref\":\"H-NEIGHBOR-INDEPENDENT\",\"role\":\"NEIGHBOR\"},\"PEER-1\":{\"history_ref\":\"H-PEER-BELONGING\",\"role\":\"PEER\"}},\"places\":[\"GARAGE-1\"],\"schema\":\"P1_SYNTHETIC_CONTEXT_V1\",\"world_ref\":\"WORLD-BIKE-1\"},\"packet\":{\"as_of\":\"2026-10-17T10:00:03Z\",\"candidates\":[{\"action_refs\":[{\"act_kind\":\"SPEAK_TO_CHILD\",\"actor_ref\":\"CARE-1\",\"opportunity_ref\":\"OP-CARE-SPEAK\"}],\"candidate_id\":\"ALT-CARE\",\"courses\":[{\"action_ref\":\"OP-CARE-SPEAK\",\"actor_ref\":\"CARE-1\",\"course_id\":\"COURSE-CARE-SPEAK\",\"description\":\"Caregiver considers reassurance or practical protective speech\"}],\"family\":\"OBSERVABLE_UTTERANCE\",\"interpretations\":[],\"parent_event_ref\":\"THEFT-1\",\"participants\":[\"CHILD-1\",\"CARE-1\"],\"place_ref\":\"GARAGE-1\",\"possible_effects\":[{\"description\":\"Child may perceive factual prudence yet feel emotionally unheard\",\"effect_kind\":\"MAY_RETAIN_CONTRADICTION\",\"epistemic_class\":\"HYPOTHESIS_ONLY\",\"owner_required\":\"CAN011_EXTERNAL_OWNER\",\"target_actor_ref\":\"CHILD-1\"}],\"prerequisites\":[{\"kind\":\"WORLD_FACT_TRUE\",\"ref\":\"THEFT-1\"},{\"kind\":\"ACTOR_ACCESS\",\"ref\":\"CARE-1|THEFT-1\"},{\"kind\":\"HISTORY_PRESENT\",\"ref\":\"CARE-1|H-CARE-PROTECT\"},{\"kind\":\"HISTORY_PRESENT\",\"ref\":\"CHILD-1|H-CHILD-1\"}],\"prospective_participants\":[],\"readset\":[\"THEFT-1\"],\"time\":\"2026-10-17T10:00:03Z\",\"uncertainty\":\"Competing possible receptions, no privileged insight or fixed psychological consequence\",\"visibility\":[\"CHILD-1\",\"CARE-1\"]},{\"action_refs\":[{\"act_kind\":\"SPEAK_TO_CHILD\",\"actor_ref\":\"PEER-1\",\"opportunity_ref\":\"OP-PEER-SPEAK\"}],\"candidate_id\":\"ALT-PEER\",\"courses\":[{\"action_ref\":\"OP-PEER-SPEAK\",\"actor_ref\":\"PEER-1\",\"course_id\":\"COURSE-PEER-SPEAK\",\"description\":\"Peer might circulate unsupported scapegoating rumor\"}],\"family\":\"OBSERVABLE_UTTERANCE\",\"interpretations\":[],\"parent_event_ref\":\"THEFT-1\",\"participants\":[\"CHILD-1\",\"PEER-1\"],\"place_ref\":\"GARAGE-1\",\"possible_effects\":[{\"description\":\"Child could reject or absorb peer narrative, unknown\",\"effect_kind\":\"MAY_RETAIN_CONTRADICTION\",\"epistemic_class\":\"HYPOTHESIS_ONLY\",\"owner_required\":\"CAN011_EXTERNAL_OWNER\",\"target_actor_ref\":\"CHILD-1\"}],\"prerequisites\":[{\"kind\":\"WORLD_FACT_TRUE\",\"ref\":\"THEFT-1\"},{\"kind\":\"ACTOR_ACCESS\",\"ref\":\"PEER-1|THEFT-1\"},{\"kind\":\"HISTORY_PRESENT\",\"ref\":\"PEER-1|H-PEER-BELONGING\"},{\"kind\":\"HISTORY_PRESENT\",\"ref\":\"CHILD-1|H-CHILD-1\"}],\"prospective_participants\":[],\"readset\":[\"THEFT-1\"],\"time\":\"2026-10-17T10:00:03Z\",\"uncertainty\":\"Competing possible receptions, no privileged insight or fixed psychological consequence\",\"visibility\":[\"CHILD-1\",\"PEER-1\"]},{\"action_refs\":[{\"act_kind\":\"CHECK_GARAGE\",\"actor_ref\":\"CHILD-1\",\"opportunity_ref\":\"OP-CHILD-SEARCH\"}],\"candidate_id\":\"ALT-CHILD-SEARCH\",\"courses\":[{\"action_ref\":\"OP-CHILD-SEARCH\",\"actor_ref\":\"CHILD-1\",\"course_id\":\"COURSE-CHILD-SEARCH\",\"description\":\"Child might look for lock marks before deciding what happened\"}],\"family\":\"MATERIAL_ACTION_PROPOSAL\",\"interpretations\":[],\"parent_event_ref\":\"THEFT-1\",\"participants\":[\"CHILD-1\"],\"place_ref\":\"GARAGE-1\",\"possible_effects\":[{\"description\":\"No durable response is required\",\"effect_kind\":\"NO_CHANGE\",\"epistemic_class\":\"HYPOTHESIS_ONLY\",\"owner_required\":\"CAN011_EXTERNAL_OWNER\",\"target_actor_ref\":\"CHILD-1\"}],\"prerequisites\":[{\"kind\":\"WORLD_FACT_TRUE\",\"ref\":\"THEFT-1\"},{\"kind\":\"MATERIAL_AFFORDANCE\",\"ref\":\"GARAGE_ACCESS\"},{\"kind\":\"HISTORY_PRESENT\",\"ref\":\"CHILD-1|H-CHILD-1\"}],\"prospective_participants\":[],\"readset\":[\"THEFT-1\"],\"time\":\"2026-10-17T10:00:03Z\",\"uncertainty\":\"Competing possible receptions, no privileged insight or fixed psychological consequence\",\"visibility\":[\"CHILD-1\"]},{\"action_refs\":[],\"candidate_id\":\"ALT-NONE\",\"courses\":[],\"family\":\"NONOCCURRENCE\",\"interpretations\":[],\"parent_event_ref\":\"THEFT-1\",\"participants\":[\"CHILD-1\"],\"place_ref\":\"GARAGE-1\",\"possible_effects\":[],\"prerequisites\":[{\"kind\":\"WORLD_FACT_TRUE\",\"ref\":\"THEFT-1\"},{\"kind\":\"HISTORY_PRESENT\",\"ref\":\"CHILD-1|H-CHILD-1\"}],\"prospective_participants\":[],\"readset\":[\"THEFT-1\"],\"time\":\"2026-10-17T10:00:03Z\",\"uncertainty\":\"Competing possible receptions, no privileged insight or fixed psychological consequence\",\"visibility\":[\"CHILD-1\"]}],\"context_hash\":\"baa320465412d5914f756085dd8fe153b35dd9fea7f0e3ee5f961c89b2adfb29\",\"epistemic_class\":\"LLM_PROPOSAL\",\"model\":{\"model_version\":\"SYNTH-1\",\"prompt_sha256\":\"09c625dda784aa41702a734b8c2141b520726e69809e3f20aa053c231413dae6\",\"prompt_version\":\"P1-PROMPT-1\",\"provider_label\":\"FROZEN_FABRICATED_PACKET_NO_LIVE_MODEL\",\"sampling_record\":{\"kind\":\"FROZEN_AUTHOR_SYNTHETIC\",\"model_draws\":\"NOT_RECORDED_NOT_CAUSAL\"}},\"proposal_hash\":\"26795de284148847061d065b321c03491d295c74660c53d051046ab2e3e8a09f\",\"proposal_id\":\"B2-PACKET-1\",\"schema\":\"P1_LLM_ALTERNATIVES_PROPOSAL_V1\",\"world_ref\":\"WORLD-BIKE-1\"},\"policy\":{\"calibration_grade\":\"PROVISIONAL_NOT_CALIBRATED\",\"candidate_set_hash\":\"b1ede88e2ea3e0ca4754ec2ab0d06ba2d60010a64b861b7d4e5b392937e58e96\",\"parameter_source\":\"AUTHORED_DESIGN_HYPOTHESIS_TEST_ONLY\",\"policy_hash\":\"8feec98c459c822e0a807ec6ae093f302257ce89942a374f8a81744637b80eb1\",\"policy_id\":\"B2-TEST-COORDINATE\",\"policy_version\":\"1.0.0\",\"schema\":\"P1_TEST_ONLY_AUTHORED_SELECTION_POLICY_V1\",\"weight_units\":{\"ALT-CARE\":1,\"ALT-CHILD-SEARCH\":0,\"ALT-NONE\":0,\"ALT-PEER\":0}},\"rule\":\"B2_SYNTHETIC_WITNESSED_INGRESS@1\",\"selected_candidate_id\":\"ALT-CARE\",\"witness\":{\"candidate_hash\":\"c6c9e8f397b26c4d33c96efa2422e3241170f60621472a3260ab732b48fc68da\",\"context_hash\":\"baa320465412d5914f756085dd8fe153b35dd9fea7f0e3ee5f961c89b2adfb29\",\"event_id\":\"I2-independent-before-request\",\"expected_actor_state_hash\":\"d8ea29fab4df7f6fb40f42fade1f8544dc8b5a82bec4e3e5bba4ee6e5a14e567\",\"external_occurrence\":{\"admitted\":true,\"content\":{\"fact\":\"stolen\",\"known_culprit\":null,\"object\":\"bike-child\",\"place\":\"garage\"},\"content_hash\":\"7343ad0dceff4df24d51adf9c45d4e76da970ad1b712ef42bd0097811d3df2c5\",\"id\":\"I2-independent-before-request\",\"owner\":\"TEST_WORLD_REGISTRY\",\"time\":3},\"hash\":\"8d65eaf53dbfaf2f5e1341d6a6be82bc47769d1f4a50ae87f9dc37c65fa2ae6d\",\"interrupted\":true,\"issuer\":\"B2_WORLD_FIXTURE_AUTHORIZER\",\"m2_projection\":{\"action\":null,\"action_owner\":null,\"id\":\"I2-independent-before-request\",\"issuer\":\"TEST_ONLY_INDEPENDENT_WORLD_FIXTURE\",\"kind\":\"LOSS\",\"material\":[{\"kind\":\"RESOURCE_STATUS\",\"object_ref\":\"bike-child\",\"owner\":\"TEST_ONLY_INDEPENDENT_WORLD_FIXTURE\",\"source_ref\":\"e0c2f311f65759d0cc74bf86f8e681b9c3db3638bdaa988764b6d286538bfe15\",\"value\":\"MISSING\"}],\"observer\":\"child\",\"parent_event_hash\":null,\"parent_event_id\":null,\"participants\":[\"child\",\"caregiver\",\"peer\"],\"time\":3},\"m2_projection_hash\":\"81dadd899c77e18f40071a6f3ee34abdcebe55e1955ac69857241a1cb5fb21a3\",\"number\":2,\"objective_occurrence\":\"stolen\",\"observed_interpretations\":[],\"other_actions\":[{\"action\":\"joint_inventory\",\"p1_actor\":\"CARE-1\",\"participant\":{\"actor_id\":\"caretaker\",\"history\":[{\"activity\":\"REPAIR_TOOLS\",\"actor_access\":\"EXPLICIT\",\"actor_id\":\"caretaker\",\"counterpart\":\"workshop\",\"episode_id\":\"tools\",\"outcome\":\"tools_available\",\"parent_refs\":[],\"project\":\"own_work\",\"provenance\":\"B3_SOURCEFREE_COMPATIBILITY_PROJECTION:f5655dd3160a37da7f171278441ff083ad69af47525cdff16d9e82db82a7141d\",\"time\":1}],\"project\":\"own_work\"},\"source_history_hash\":\"a193ddb11c4338d9612d1d6e2d81510ba46e0ab91544735785fa2332904d702f\"}],\"outcome\":\"OCCURRED\",\"parent_fact_hash\":\"42fb867561347435fef23470d2dc17c5681ace69d6aefe9c467bfb32324a5ee7\",\"participants\":[\"CHILD-1\",\"CARE-1\"],\"place\":\"GARAGE-1\",\"project\":\"bike_security\",\"proposal_hash\":\"26795de284148847061d065b321c03491d295c74660c53d051046ab2e3e8a09f\",\"schema\":\"B2_INDEPENDENT_SYNTHETIC_OCCURRENCE_WITNESS@1\",\"time\":\"2026-10-17T10:00:03Z\",\"world_facts\":{\"group_criminality\":\"NOT_ESTABLISHED\",\"known_thief\":null},\"world_ref\":\"WORLD-BIKE-1\"}}",
+          "bf0419aec16c6e2c60a49c5489c0bb804f2d446d1198d423af26f272b5ae94e8",
+          "4d69c02149987d82df4c56043e0c795b883a4a89298a35f291383659adaaac37"
+        ]
+      ],
+      "b2_ingress": [
+        [
+          "4d69c02149987d82df4c56043e0c795b883a4a89298a35f291383659adaaac37",
+          "{\"attributed_claims\":[],\"event_ref\":\"bf0419aec16c6e2c60a49c5489c0bb804f2d446d1198d423af26f272b5ae94e8\",\"hash\":\"4d69c02149987d82df4c56043e0c795b883a4a89298a35f291383659adaaac37\",\"objective_world_facts\":{\"group_criminality\":\"NOT_ESTABLISHED\",\"known_thief\":null},\"proposal_ref\":\"26795de284148847061d065b321c03491d295c74660c53d051046ab2e3e8a09f\",\"rule\":\"B2_SYNTHETIC_WITNESSED_INGRESS@1\",\"selected_candidate_id\":\"ALT-CARE\",\"status\":\"ADMITTED_SYNTHETIC_FIXTURE_ONLY\",\"witness_ref\":\"8d65eaf53dbfaf2f5e1341d6a6be82bc47769d1f4a50ae87f9dc37c65fa2ae6d\"}"
+        ]
+      ],
+      "b3_audit": [],
+      "b3_clock": [],
+      "b3_m2_sources": [],
+      "b3_preimage": [],
+      "b3_response": [],
+      "b3_source": [],
+      "b3_transition": [],
+      "checkpoint": [
+        [
+          1,
+          "{\"actor_id\":\"child\",\"capabilities\":[\"compare_enacted_plans\"],\"epistemic\":{\"beliefs\":[\"locking_reduces_access\"],\"inaccessible\":[],\"unknown\":[\"thief_identity\",\"thief_motive\"]},\"history\":[],\"middle\":[],\"project\":\"repair_route\",\"responses\":[],\"schema\":\"B1_CANDIDATE_ADAPTER@1.0.0\",\"transitions\":[]}"
+        ]
+      ],
+      "joint_receipt": [],
+      "occurrence": [
+        [
+          "bf0419aec16c6e2c60a49c5489c0bb804f2d446d1198d423af26f272b5ae94e8",
+          "{\"actor_id\":\"child\",\"admission_grade\":\"ADMITTED_SYNTHETIC_FIXTURE_ONLY\",\"event_id\":\"I2-independent-before-request\",\"hash\":\"bf0419aec16c6e2c60a49c5489c0bb804f2d446d1198d423af26f272b5ae94e8\",\"interrupted\":true,\"objective_occurrence\":\"stolen\",\"offers\":[],\"power_ref\":\"power:caretaker_controls_tools\",\"project\":\"bike_security\",\"provenance\":\"B1_AUTHORED_SOURCEFREE\",\"relation_refs\":[\"relation:child:caretaker\"],\"time\":3,\"world_ref\":\"WORLD-BIKE-1\"}"
+        ]
+      ]
+    }
+  },
+  "result": {
+    "case_id": "SYNTHETIC_DEVELOPMENTAL_LOOP",
+    "grade": "TEST_ONLY_B3_SCHEMA_READSET_REPAIR_R1_PENDING_I2",
+    "issued_production_authority": false,
+    "selected_affect": null,
+    "asserted_culprit_group": null,
+    "imports": [
+      {
+        "module": "b3_fixed_b2",
+        "relative_file": ".runtime/b2/bridge.py",
+        "sha256": "9c112a7984b0581e965394983acf0e38064847083b78096e2d8215b48932250f"
+      },
+      {
+        "module": "b2_pinned_bfirst",
+        "relative_file": ".runtime/b2/imports/B1/bfirst.py",
+        "sha256": "478b989730f49a5def41a367b6f53e4aae9c80961f7f466fe669c7dbd92201a3"
+      },
+      {
+        "module": "b2_pinned_p1",
+        "relative_file": ".runtime/b2/imports/P1/p1_contract.py",
+        "sha256": "df31a147ab037385c5488801b5fa7413f9bcf5c63c97ba6328f859c8fcd92d38"
+      },
+      {
+        "module": "b3_frozen_m2",
+        "relative_file": ".runtime/m2/kernel.py",
+        "sha256": "888d73fff63f70a22932f1001f5c9003104b0e5a9cdef84e93456151428676c8"
+      }
+    ],
+    "status": "REFUSED",
+    "code": "PUBLICATION_READSET_CHANGED",
+    "owner_effect_committed": false,
+    "new_event_count": 0,
+    "no_mutation": false
+  },
+  "after": {
+    "pid": 43548,
+    "integrity": "ok",
+    "schema": [
+      [
+        "index",
+        "sqlite_autoindex_b2_event_identity_1",
+        "b2_event_identity",
+        null
+      ],
+      [
+        "index",
+        "sqlite_autoindex_b2_ingress_1",
+        "b2_ingress",
+        null
+      ],
+      [
+        "index",
+        "sqlite_autoindex_b3_audit_1",
+        "b3_audit",
+        null
+      ],
+      [
+        "index",
+        "sqlite_autoindex_b3_m2_sources_1",
+        "b3_m2_sources",
+        null
+      ],
+      [
+        "index",
+        "sqlite_autoindex_b3_preimage_1",
+        "b3_preimage",
+        null
+      ],
+      [
+        "index",
+        "sqlite_autoindex_b3_response_1",
+        "b3_response",
+        null
+      ],
+      [
+        "index",
+        "sqlite_autoindex_b3_source_1",
+        "b3_source",
+        null
+      ],
+      [
+        "index",
+        "sqlite_autoindex_b3_transition_1",
+        "b3_transition",
+        null
+      ],
+      [
+        "index",
+        "sqlite_autoindex_joint_receipt_1",
+        "joint_receipt",
+        null
+      ],
+      [
+        "index",
+        "sqlite_autoindex_occurrence_1",
+        "occurrence",
+        null
+      ],
+      [
+        "table",
+        "b2_event_identity",
+        "b2_event_identity",
+        "CREATE TABLE b2_event_identity\n            (event_id TEXT PRIMARY KEY NOT NULL, binding TEXT NOT NULL,\n             event_ref TEXT NOT NULL, ingress_ref TEXT NOT NULL)"
+      ],
+      [
+        "table",
+        "b2_ingress",
+        "b2_ingress",
+        "CREATE TABLE b2_ingress (id TEXT PRIMARY KEY, body TEXT)"
+      ],
+      [
+        "table",
+        "b3_audit",
+        "b3_audit",
+        "CREATE TABLE b3_audit (id TEXT PRIMARY KEY, body TEXT NOT NULL)"
+      ],
+      [
+        "table",
+        "b3_clock",
+        "b3_clock",
+        "CREATE TABLE b3_clock (clock INTEGER PRIMARY KEY)"
+      ],
+      [
+        "table",
+        "b3_m2_sources",
+        "b3_m2_sources",
+        "CREATE TABLE b3_m2_sources (id TEXT PRIMARY KEY, body TEXT NOT NULL)"
+      ],
+      [
+        "table",
+        "b3_preimage",
+        "b3_preimage",
+        "CREATE TABLE b3_preimage (id TEXT PRIMARY KEY, body TEXT NOT NULL)"
+      ],
+      [
+        "table",
+        "b3_response",
+        "b3_response",
+        "CREATE TABLE b3_response (id TEXT PRIMARY KEY, body TEXT NOT NULL)"
+      ],
+      [
+        "table",
+        "b3_source",
+        "b3_source",
+        "CREATE TABLE b3_source (id TEXT PRIMARY KEY, body TEXT NOT NULL)"
+      ],
+      [
+        "table",
+        "b3_transition",
+        "b3_transition",
+        "CREATE TABLE b3_transition (id TEXT PRIMARY KEY, body TEXT NOT NULL)"
+      ],
+      [
+        "table",
+        "checkpoint",
+        "checkpoint",
+        "CREATE TABLE checkpoint (id INTEGER PRIMARY KEY, body TEXT)"
+      ],
+      [
+        "table",
+        "joint_receipt",
+        "joint_receipt",
+        "CREATE TABLE joint_receipt (hash TEXT PRIMARY KEY, body TEXT)"
+      ],
+      [
+        "table",
+        "occurrence",
+        "occurrence",
+        "CREATE TABLE occurrence (hash TEXT PRIMARY KEY, body TEXT)"
+      ],
+      [
+        "trigger",
+        "repair_external_trigger",
+        "b3_source",
+        "CREATE TRIGGER repair_external_trigger AFTER INSERT ON b3_source BEGIN SELECT 1; END"
+      ]
+    ],
+    "tables": {
+      "b2_event_identity": [
+        [
+          "I2-independent-before-request",
+          "{\"actor\":\"child\",\"context\":{\"action_opportunities\":{\"OP-CARE-REPORT\":{\"act_kind\":\"REPORT_MISSING_BIKE\",\"actor_ref\":\"CARE-1\",\"place_ref\":\"GARAGE-1\",\"time\":\"2026-10-17T10:00:03Z\"},\"OP-CARE-SPEAK\":{\"act_kind\":\"SPEAK_TO_CHILD\",\"actor_ref\":\"CARE-1\",\"place_ref\":\"GARAGE-1\",\"time\":\"2026-10-17T10:00:03Z\"},\"OP-CHILD-SEARCH\":{\"act_kind\":\"CHECK_GARAGE\",\"actor_ref\":\"CHILD-1\",\"place_ref\":\"GARAGE-1\",\"time\":\"2026-10-17T10:00:03Z\"},\"OP-PEER-SPEAK\":{\"act_kind\":\"SPEAK_TO_CHILD\",\"actor_ref\":\"PEER-1\",\"place_ref\":\"GARAGE-1\",\"time\":\"2026-10-17T10:00:03Z\"}},\"actor_access\":{\"CARE-1\":[\"THEFT-1\"],\"CHILD-1\":[\"THEFT-1\"],\"NEIGHBOR-1\":[],\"PEER-1\":[\"THEFT-1\"]},\"allowed_role_refs\":[\"CHILD\",\"CAREGIVER\",\"PEER\",\"NEIGHBOR\"],\"as_of\":\"2026-10-17T10:00:03Z\",\"context_hash\":\"baa320465412d5914f756085dd8fe153b35dd9fea7f0e3ee5f961c89b2adfb29\",\"facts\":{\"DENIED-PAST-THEFT\":{\"epistemic_class\":\"ADMITTED_OBJECTIVE_EVENT\",\"kind\":\"OTHER_THEFT\",\"occurred\":false,\"time\":\"2026-10-16T09:00:00Z\"},\"PRIVATE-CAREGIVER-1\":{\"epistemic_class\":\"PRIVATE_ACTOR_STATE\",\"kind\":\"UNREADABLE_CAREGIVER_CONCERN\",\"occurred\":true,\"time\":\"2026-10-17T08:00:00Z\"},\"THEFT-1\":{\"epistemic_class\":\"ADMITTED_OBJECTIVE_EVENT\",\"kind\":\"BIKE_STOLEN\",\"known_culprit\":null,\"material_object_ref\":\"BIKE-CHILD-1\",\"occurred\":true,\"time\":\"2026-10-17T09:00:00Z\"}},\"histories\":{\"H-CARE-CONTROL\":{\"owner\":\"CARE-1\",\"source\":\"SYNTHETIC_HISTORY\",\"summary\":\"caregiver has history of intrusive scrutiny and material safety concern\"},\"H-CARE-PROTECT\":{\"owner\":\"CARE-1\",\"source\":\"B2_INDEPENDENT_TYPED_PARTICIPANT\",\"summary\":\"typed participant digest a193ddb11c4338d9612d1d6e2d81510ba46e0ab91544735785fa2332904d702f\"},\"H-CHILD-1\":{\"owner\":\"CHILD-1\",\"source\":\"B2_EXACT_SYNTHETIC_PREHISTORY\",\"summary\":\"typed history digest 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945\"},\"H-CHILD-2\":{\"owner\":\"CHILD-1\",\"source\":\"SYNTHETIC_HISTORY\",\"summary\":\"child bicycle gift and repeated arbitrary searches; reacts to control with caution\"},\"H-NEIGHBOR-INDEPENDENT\":{\"owner\":\"NEIGHBOR-1\",\"source\":\"SYNTHETIC_HISTORY\",\"summary\":\"neighbor has independent daily schedule unrelated to theft\"},\"H-PEER-BELONGING\":{\"owner\":\"PEER-1\",\"source\":\"B2_INDEPENDENT_TYPED_PARTICIPANT\",\"summary\":\"typed participant digest 947b8a4774423252204592913fa41f5c16032c2662f0615d197d04886c040044\"}},\"material_affordances\":[\"GARAGE_ACCESS\",\"PHONE_AVAILABLE\"],\"people\":{\"CARE-1\":{\"history_ref\":\"H-CARE-PROTECT\",\"role\":\"CAREGIVER\"},\"CHILD-1\":{\"history_ref\":\"H-CHILD-1\",\"role\":\"CHILD\"},\"NEIGHBOR-1\":{\"history_ref\":\"H-NEIGHBOR-INDEPENDENT\",\"role\":\"NEIGHBOR\"},\"PEER-1\":{\"history_ref\":\"H-PEER-BELONGING\",\"role\":\"PEER\"}},\"places\":[\"GARAGE-1\"],\"schema\":\"P1_SYNTHETIC_CONTEXT_V1\",\"world_ref\":\"WORLD-BIKE-1\"},\"packet\":{\"as_of\":\"2026-10-17T10:00:03Z\",\"candidates\":[{\"action_refs\":[{\"act_kind\":\"SPEAK_TO_CHILD\",\"actor_ref\":\"CARE-1\",\"opportunity_ref\":\"OP-CARE-SPEAK\"}],\"candidate_id\":\"ALT-CARE\",\"courses\":[{\"action_ref\":\"OP-CARE-SPEAK\",\"actor_ref\":\"CARE-1\",\"course_id\":\"COURSE-CARE-SPEAK\",\"description\":\"Caregiver considers reassurance or practical protective speech\"}],\"family\":\"OBSERVABLE_UTTERANCE\",\"interpretations\":[],\"parent_event_ref\":\"THEFT-1\",\"participants\":[\"CHILD-1\",\"CARE-1\"],\"place_ref\":\"GARAGE-1\",\"possible_effects\":[{\"description\":\"Child may perceive factual prudence yet feel emotionally unheard\",\"effect_kind\":\"MAY_RETAIN_CONTRADICTION\",\"epistemic_class\":\"HYPOTHESIS_ONLY\",\"owner_required\":\"CAN011_EXTERNAL_OWNER\",\"target_actor_ref\":\"CHILD-1\"}],\"prerequisites\":[{\"kind\":\"WORLD_FACT_TRUE\",\"ref\":\"THEFT-1\"},{\"kind\":\"ACTOR_ACCESS\",\"ref\":\"CARE-1|THEFT-1\"},{\"kind\":\"HISTORY_PRESENT\",\"ref\":\"CARE-1|H-CARE-PROTECT\"},{\"kind\":\"HISTORY_PRESENT\",\"ref\":\"CHILD-1|H-CHILD-1\"}],\"prospective_participants\":[],\"readset\":[\"THEFT-1\"],\"time\":\"2026-10-17T10:00:03Z\",\"uncertainty\":\"Competing possible receptions, no privileged insight or fixed psychological consequence\",\"visibility\":[\"CHILD-1\",\"CARE-1\"]},{\"action_refs\":[{\"act_kind\":\"SPEAK_TO_CHILD\",\"actor_ref\":\"PEER-1\",\"opportunity_ref\":\"OP-PEER-SPEAK\"}],\"candidate_id\":\"ALT-PEER\",\"courses\":[{\"action_ref\":\"OP-PEER-SPEAK\",\"actor_ref\":\"PEER-1\",\"course_id\":\"COURSE-PEER-SPEAK\",\"description\":\"Peer might circulate unsupported scapegoating rumor\"}],\"family\":\"OBSERVABLE_UTTERANCE\",\"interpretations\":[],\"parent_event_ref\":\"THEFT-1\",\"participants\":[\"CHILD-1\",\"PEER-1\"],\"place_ref\":\"GARAGE-1\",\"possible_effects\":[{\"description\":\"Child could reject or absorb peer narrative, unknown\",\"effect_kind\":\"MAY_RETAIN_CONTRADICTION\",\"epistemic_class\":\"HYPOTHESIS_ONLY\",\"owner_required\":\"CAN011_EXTERNAL_OWNER\",\"target_actor_ref\":\"CHILD-1\"}],\"prerequisites\":[{\"kind\":\"WORLD_FACT_TRUE\",\"ref\":\"THEFT-1\"},{\"kind\":\"ACTOR_ACCESS\",\"ref\":\"PEER-1|THEFT-1\"},{\"kind\":\"HISTORY_PRESENT\",\"ref\":\"PEER-1|H-PEER-BELONGING\"},{\"kind\":\"HISTORY_PRESENT\",\"ref\":\"CHILD-1|H-CHILD-1\"}],\"prospective_participants\":[],\"readset\":[\"THEFT-1\"],\"time\":\"2026-10-17T10:00:03Z\",\"uncertainty\":\"Competing possible receptions, no privileged insight or fixed psychological consequence\",\"visibility\":[\"CHILD-1\",\"PEER-1\"]},{\"action_refs\":[{\"act_kind\":\"CHECK_GARAGE\",\"actor_ref\":\"CHILD-1\",\"opportunity_ref\":\"OP-CHILD-SEARCH\"}],\"candidate_id\":\"ALT-CHILD-SEARCH\",\"courses\":[{\"action_ref\":\"OP-CHILD-SEARCH\",\"actor_ref\":\"CHILD-1\",\"course_id\":\"COURSE-CHILD-SEARCH\",\"description\":\"Child might look for lock marks before deciding what happened\"}],\"family\":\"MATERIAL_ACTION_PROPOSAL\",\"interpretations\":[],\"parent_event_ref\":\"THEFT-1\",\"participants\":[\"CHILD-1\"],\"place_ref\":\"GARAGE-1\",\"possible_effects\":[{\"description\":\"No durable response is required\",\"effect_kind\":\"NO_CHANGE\",\"epistemic_class\":\"HYPOTHESIS_ONLY\",\"owner_required\":\"CAN011_EXTERNAL_OWNER\",\"target_actor_ref\":\"CHILD-1\"}],\"prerequisites\":[{\"kind\":\"WORLD_FACT_TRUE\",\"ref\":\"THEFT-1\"},{\"kind\":\"MATERIAL_AFFORDANCE\",\"ref\":\"GARAGE_ACCESS\"},{\"kind\":\"HISTORY_PRESENT\",\"ref\":\"CHILD-1|H-CHILD-1\"}],\"prospective_participants\":[],\"readset\":[\"THEFT-1\"],\"time\":\"2026-10-17T10:00:03Z\",\"uncertainty\":\"Competing possible receptions, no privileged insight or fixed psychological consequence\",\"visibility\":[\"CHILD-1\"]},{\"action_refs\":[],\"candidate_id\":\"ALT-NONE\",\"courses\":[],\"family\":\"NONOCCURRENCE\",\"interpretations\":[],\"parent_event_ref\":\"THEFT-1\",\"participants\":[\"CHILD-1\"],\"place_ref\":\"GARAGE-1\",\"possible_effects\":[],\"prerequisites\":[{\"kind\":\"WORLD_FACT_TRUE\",\"ref\":\"THEFT-1\"},{\"kind\":\"HISTORY_PRESENT\",\"ref\":\"CHILD-1|H-CHILD-1\"}],\"prospective_participants\":[],\"readset\":[\"THEFT-1\"],\"time\":\"2026-10-17T10:00:03Z\",\"uncertainty\":\"Competing possible receptions, no privileged insight or fixed psychological consequence\",\"visibility\":[\"CHILD-1\"]}],\"context_hash\":\"baa320465412d5914f756085dd8fe153b35dd9fea7f0e3ee5f961c89b2adfb29\",\"epistemic_class\":\"LLM_PROPOSAL\",\"model\":{\"model_version\":\"SYNTH-1\",\"prompt_sha256\":\"09c625dda784aa41702a734b8c2141b520726e69809e3f20aa053c231413dae6\",\"prompt_version\":\"P1-PROMPT-1\",\"provider_label\":\"FROZEN_FABRICATED_PACKET_NO_LIVE_MODEL\",\"sampling_record\":{\"kind\":\"FROZEN_AUTHOR_SYNTHETIC\",\"model_draws\":\"NOT_RECORDED_NOT_CAUSAL\"}},\"proposal_hash\":\"26795de284148847061d065b321c03491d295c74660c53d051046ab2e3e8a09f\",\"proposal_id\":\"B2-PACKET-1\",\"schema\":\"P1_LLM_ALTERNATIVES_PROPOSAL_V1\",\"world_ref\":\"WORLD-BIKE-1\"},\"policy\":{\"calibration_grade\":\"PROVISIONAL_NOT_CALIBRATED\",\"candidate_set_hash\":\"b1ede88e2ea3e0ca4754ec2ab0d06ba2d60010a64b861b7d4e5b392937e58e96\",\"parameter_source\":\"AUTHORED_DESIGN_HYPOTHESIS_TEST_ONLY\",\"policy_hash\":\"8feec98c459c822e0a807ec6ae093f302257ce89942a374f8a81744637b80eb1\",\"policy_id\":\"B2-TEST-COORDINATE\",\"policy_version\":\"1.0.0\",\"schema\":\"P1_TEST_ONLY_AUTHORED_SELECTION_POLICY_V1\",\"weight_units\":{\"ALT-CARE\":1,\"ALT-CHILD-SEARCH\":0,\"ALT-NONE\":0,\"ALT-PEER\":0}},\"rule\":\"B2_SYNTHETIC_WITNESSED_INGRESS@1\",\"selected_candidate_id\":\"ALT-CARE\",\"witness\":{\"candidate_hash\":\"c6c9e8f397b26c4d33c96efa2422e3241170f60621472a3260ab732b48fc68da\",\"context_hash\":\"baa320465412d5914f756085dd8fe153b35dd9fea7f0e3ee5f961c89b2adfb29\",\"event_id\":\"I2-independent-before-request\",\"expected_actor_state_hash\":\"d8ea29fab4df7f6fb40f42fade1f8544dc8b5a82bec4e3e5bba4ee6e5a14e567\",\"external_occurrence\":{\"admitted\":true,\"content\":{\"fact\":\"stolen\",\"known_culprit\":null,\"object\":\"bike-child\",\"place\":\"garage\"},\"content_hash\":\"7343ad0dceff4df24d51adf9c45d4e76da970ad1b712ef42bd0097811d3df2c5\",\"id\":\"I2-independent-before-request\",\"owner\":\"TEST_WORLD_REGISTRY\",\"time\":3},\"hash\":\"8d65eaf53dbfaf2f5e1341d6a6be82bc47769d1f4a50ae87f9dc37c65fa2ae6d\",\"interrupted\":true,\"issuer\":\"B2_WORLD_FIXTURE_AUTHORIZER\",\"m2_projection\":{\"action\":null,\"action_owner\":null,\"id\":\"I2-independent-before-request\",\"issuer\":\"TEST_ONLY_INDEPENDENT_WORLD_FIXTURE\",\"kind\":\"LOSS\",\"material\":[{\"kind\":\"RESOURCE_STATUS\",\"object_ref\":\"bike-child\",\"owner\":\"TEST_ONLY_INDEPENDENT_WORLD_FIXTURE\",\"source_ref\":\"e0c2f311f65759d0cc74bf86f8e681b9c3db3638bdaa988764b6d286538bfe15\",\"value\":\"MISSING\"}],\"observer\":\"child\",\"parent_event_hash\":null,\"parent_event_id\":null,\"participants\":[\"child\",\"caregiver\",\"peer\"],\"time\":3},\"m2_projection_hash\":\"81dadd899c77e18f40071a6f3ee34abdcebe55e1955ac69857241a1cb5fb21a3\",\"number\":2,\"objective_occurrence\":\"stolen\",\"observed_interpretations\":[],\"other_actions\":[{\"action\":\"joint_inventory\",\"p1_actor\":\"CARE-1\",\"participant\":{\"actor_id\":\"caretaker\",\"history\":[{\"activity\":\"REPAIR_TOOLS\",\"actor_access\":\"EXPLICIT\",\"actor_id\":\"caretaker\",\"counterpart\":\"workshop\",\"episode_id\":\"tools\",\"outcome\":\"tools_available\",\"parent_refs\":[],\"project\":\"own_work\",\"provenance\":\"B3_SOURCEFREE_COMPATIBILITY_PROJECTION:f5655dd3160a37da7f171278441ff083ad69af47525cdff16d9e82db82a7141d\",\"time\":1}],\"project\":\"own_work\"},\"source_history_hash\":\"a193ddb11c4338d9612d1d6e2d81510ba46e0ab91544735785fa2332904d702f\"}],\"outcome\":\"OCCURRED\",\"parent_fact_hash\":\"42fb867561347435fef23470d2dc17c5681ace69d6aefe9c467bfb32324a5ee7\",\"participants\":[\"CHILD-1\",\"CARE-1\"],\"place\":\"GARAGE-1\",\"project\":\"bike_security\",\"proposal_hash\":\"26795de284148847061d065b321c03491d295c74660c53d051046ab2e3e8a09f\",\"schema\":\"B2_INDEPENDENT_SYNTHETIC_OCCURRENCE_WITNESS@1\",\"time\":\"2026-10-17T10:00:03Z\",\"world_facts\":{\"group_criminality\":\"NOT_ESTABLISHED\",\"known_thief\":null},\"world_ref\":\"WORLD-BIKE-1\"}}",
+          "bf0419aec16c6e2c60a49c5489c0bb804f2d446d1198d423af26f272b5ae94e8",
+          "4d69c02149987d82df4c56043e0c795b883a4a89298a35f291383659adaaac37"
+        ]
+      ],
+      "b2_ingress": [
+        [
+          "4d69c02149987d82df4c56043e0c795b883a4a89298a35f291383659adaaac37",
+          "{\"attributed_claims\":[],\"event_ref\":\"bf0419aec16c6e2c60a49c5489c0bb804f2d446d1198d423af26f272b5ae94e8\",\"hash\":\"4d69c02149987d82df4c56043e0c795b883a4a89298a35f291383659adaaac37\",\"objective_world_facts\":{\"group_criminality\":\"NOT_ESTABLISHED\",\"known_thief\":null},\"proposal_ref\":\"26795de284148847061d065b321c03491d295c74660c53d051046ab2e3e8a09f\",\"rule\":\"B2_SYNTHETIC_WITNESSED_INGRESS@1\",\"selected_candidate_id\":\"ALT-CARE\",\"status\":\"ADMITTED_SYNTHETIC_FIXTURE_ONLY\",\"witness_ref\":\"8d65eaf53dbfaf2f5e1341d6a6be82bc47769d1f4a50ae87f9dc37c65fa2ae6d\"}"
+        ]
+      ],
+      "b3_audit": [],
+      "b3_clock": [],
+      "b3_m2_sources": [],
+      "b3_preimage": [],
+      "b3_response": [],
+      "b3_source": [],
+      "b3_transition": [],
+      "checkpoint": [
+        [
+          1,
+          "{\"actor_id\":\"child\",\"capabilities\":[\"compare_enacted_plans\"],\"epistemic\":{\"beliefs\":[\"locking_reduces_access\"],\"inaccessible\":[],\"unknown\":[\"thief_identity\",\"thief_motive\"]},\"history\":[],\"middle\":[],\"project\":\"repair_route\",\"responses\":[],\"schema\":\"B1_CANDIDATE_ADAPTER@1.0.0\",\"transitions\":[]}"
+        ]
+      ],
+      "joint_receipt": [],
+      "occurrence": [
+        [
+          "bf0419aec16c6e2c60a49c5489c0bb804f2d446d1198d423af26f272b5ae94e8",
+          "{\"actor_id\":\"child\",\"admission_grade\":\"ADMITTED_SYNTHETIC_FIXTURE_ONLY\",\"event_id\":\"I2-independent-before-request\",\"hash\":\"bf0419aec16c6e2c60a49c5489c0bb804f2d446d1198d423af26f272b5ae94e8\",\"interrupted\":true,\"objective_occurrence\":\"stolen\",\"offers\":[],\"power_ref\":\"power:caretaker_controls_tools\",\"project\":\"bike_security\",\"provenance\":\"B1_AUTHORED_SOURCEFREE\",\"relation_refs\":[\"relation:child:caretaker\"],\"time\":3,\"world_ref\":\"WORLD-BIKE-1\"}"
+        ]
+      ]
+    }
+  },
+  "metadata": {
+    "schema": [
+      [
+        "index",
+        "sqlite_autoindex_b2_event_identity_1",
+        "b2_event_identity",
+        null
+      ],
+      [
+        "index",
+        "sqlite_autoindex_b2_ingress_1",
+        "b2_ingress",
+        null
+      ],
+      [
+        "index",
+        "sqlite_autoindex_b3_audit_1",
+        "b3_audit",
+        null
+      ],
+      [
+        "index",
+        "sqlite_autoindex_b3_m2_sources_1",
+        "b3_m2_sources",
+        null
+      ],
+      [
+        "index",
+        "sqlite_autoindex_b3_preimage_1",
+        "b3_preimage",
+        null
+      ],
+      [
+        "index",
+        "sqlite_autoindex_b3_response_1",
+        "b3_response",
+        null
+      ],
+      [
+        "index",
+        "sqlite_autoindex_b3_source_1",
+        "b3_source",
+        null
+      ],
+      [
+        "index",
+        "sqlite_autoindex_b3_transition_1",
+        "b3_transition",
+        null
+      ],
+      [
+        "index",
+        "sqlite_autoindex_joint_receipt_1",
+        "joint_receipt",
+        null
+      ],
+      [
+        "index",
+        "sqlite_autoindex_occurrence_1",
+        "occurrence",
+        null
+      ],
+      [
+        "table",
+        "b2_event_identity",
+        "b2_event_identity",
+        "CREATE TABLE b2_event_identity\n            (event_id TEXT PRIMARY KEY NOT NULL, binding TEXT NOT NULL,\n             event_ref TEXT NOT NULL, ingress_ref TEXT NOT NULL)"
+      ],
+      [
+        "table",
+        "b2_ingress",
+        "b2_ingress",
+        "CREATE TABLE b2_ingress (id TEXT PRIMARY KEY, body TEXT)"
+      ],
+      [
+        "table",
+        "b3_audit",
+        "b3_audit",
+        "CREATE TABLE b3_audit (id TEXT PRIMARY KEY, body TEXT NOT NULL)"
+      ],
+      [
+        "table",
+        "b3_clock",
+        "b3_clock",
+        "CREATE TABLE b3_clock (clock INTEGER PRIMARY KEY)"
+      ],
+      [
+        "table",
+        "b3_m2_sources",
+        "b3_m2_sources",
+        "CREATE TABLE b3_m2_sources (id TEXT PRIMARY KEY, body TEXT NOT NULL)"
+      ],
+      [
+        "table",
+        "b3_preimage",
+        "b3_preimage",
+        "CREATE TABLE b3_preimage (id TEXT PRIMARY KEY, body TEXT NOT NULL)"
+      ],
+      [
+        "table",
+        "b3_response",
+        "b3_response",
+        "CREATE TABLE b3_response (id TEXT PRIMARY KEY, body TEXT NOT NULL)"
+      ],
+      [
+        "table",
+        "b3_source",
+        "b3_source",
+        "CREATE TABLE b3_source (id TEXT PRIMARY KEY, body TEXT NOT NULL)"
+      ],
+      [
+        "table",
+        "b3_transition",
+        "b3_transition",
+        "CREATE TABLE b3_transition (id TEXT PRIMARY KEY, body TEXT NOT NULL)"
+      ],
+      [
+        "table",
+        "checkpoint",
+        "checkpoint",
+        "CREATE TABLE checkpoint (id INTEGER PRIMARY KEY, body TEXT)"
+      ],
+      [
+        "table",
+        "joint_receipt",
+        "joint_receipt",
+        "CREATE TABLE joint_receipt (hash TEXT PRIMARY KEY, body TEXT)"
+      ],
+      [
+        "table",
+        "occurrence",
+        "occurrence",
+        "CREATE TABLE occurrence (hash TEXT PRIMARY KEY, body TEXT)"
+      ],
+      [
+        "trigger",
+        "repair_external_trigger",
+        "b3_source",
+        "CREATE TRIGGER repair_external_trigger AFTER INSERT ON b3_source BEGIN SELECT 1; END"
+      ]
+    ],
+    "metadata": {
+      "schema_version": 13,
+      "user_version": 0,
+      "application_id": 0
+    },
+    "tables": {
+      "b2_event_identity": [
+        [
+          "I2-independent-before-request",
+          "{\"actor\":\"child\",\"context\":{\"action_opportunities\":{\"OP-CARE-REPORT\":{\"act_kind\":\"REPORT_MISSING_BIKE\",\"actor_ref\":\"CARE-1\",\"place_ref\":\"GARAGE-1\",\"time\":\"2026-10-17T10:00:03Z\"},\"OP-CARE-SPEAK\":{\"act_kind\":\"SPEAK_TO_CHILD\",\"actor_ref\":\"CARE-1\",\"place_ref\":\"GARAGE-1\",\"time\":\"2026-10-17T10:00:03Z\"},\"OP-CHILD-SEARCH\":{\"act_kind\":\"CHECK_GARAGE\",\"actor_ref\":\"CHILD-1\",\"place_ref\":\"GARAGE-1\",\"time\":\"2026-10-17T10:00:03Z\"},\"OP-PEER-SPEAK\":{\"act_kind\":\"SPEAK_TO_CHILD\",\"actor_ref\":\"PEER-1\",\"place_ref\":\"GARAGE-1\",\"time\":\"2026-10-17T10:00:03Z\"}},\"actor_access\":{\"CARE-1\":[\"THEFT-1\"],\"CHILD-1\":[\"THEFT-1\"],\"NEIGHBOR-1\":[],\"PEER-1\":[\"THEFT-1\"]},\"allowed_role_refs\":[\"CHILD\",\"CAREGIVER\",\"PEER\",\"NEIGHBOR\"],\"as_of\":\"2026-10-17T10:00:03Z\",\"context_hash\":\"baa320465412d5914f756085dd8fe153b35dd9fea7f0e3ee5f961c89b2adfb29\",\"facts\":{\"DENIED-PAST-THEFT\":{\"epistemic_class\":\"ADMITTED_OBJECTIVE_EVENT\",\"kind\":\"OTHER_THEFT\",\"occurred\":false,\"time\":\"2026-10-16T09:00:00Z\"},\"PRIVATE-CAREGIVER-1\":{\"epistemic_class\":\"PRIVATE_ACTOR_STATE\",\"kind\":\"UNREADABLE_CAREGIVER_CONCERN\",\"occurred\":true,\"time\":\"2026-10-17T08:00:00Z\"},\"THEFT-1\":{\"epistemic_class\":\"ADMITTED_OBJECTIVE_EVENT\",\"kind\":\"BIKE_STOLEN\",\"known_culprit\":null,\"material_object_ref\":\"BIKE-CHILD-1\",\"occurred\":true,\"time\":\"2026-10-17T09:00:00Z\"}},\"histories\":{\"H-CARE-CONTROL\":{\"owner\":\"CARE-1\",\"source\":\"SYNTHETIC_HISTORY\",\"summary\":\"caregiver has history of intrusive scrutiny and material safety concern\"},\"H-CARE-PROTECT\":{\"owner\":\"CARE-1\",\"source\":\"B2_INDEPENDENT_TYPED_PARTICIPANT\",\"summary\":\"typed participant digest a193ddb11c4338d9612d1d6e2d81510ba46e0ab91544735785fa2332904d702f\"},\"H-CHILD-1\":{\"owner\":\"CHILD-1\",\"source\":\"B2_EXACT_SYNTHETIC_PREHISTORY\",\"summary\":\"typed history digest 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945\"},\"H-CHILD-2\":{\"owner\":\"CHILD-1\",\"source\":\"SYNTHETIC_HISTORY\",\"summary\":\"child bicycle gift and repeated arbitrary searches; reacts to control with caution\"},\"H-NEIGHBOR-INDEPENDENT\":{\"owner\":\"NEIGHBOR-1\",\"source\":\"SYNTHETIC_HISTORY\",\"summary\":\"neighbor has independent daily schedule unrelated to theft\"},\"H-PEER-BELONGING\":{\"owner\":\"PEER-1\",\"source\":\"B2_INDEPENDENT_TYPED_PARTICIPANT\",\"summary\":\"typed participant digest 947b8a4774423252204592913fa41f5c16032c2662f0615d197d04886c040044\"}},\"material_affordances\":[\"GARAGE_ACCESS\",\"PHONE_AVAILABLE\"],\"people\":{\"CARE-1\":{\"history_ref\":\"H-CARE-PROTECT\",\"role\":\"CAREGIVER\"},\"CHILD-1\":{\"history_ref\":\"H-CHILD-1\",\"role\":\"CHILD\"},\"NEIGHBOR-1\":{\"history_ref\":\"H-NEIGHBOR-INDEPENDENT\",\"role\":\"NEIGHBOR\"},\"PEER-1\":{\"history_ref\":\"H-PEER-BELONGING\",\"role\":\"PEER\"}},\"places\":[\"GARAGE-1\"],\"schema\":\"P1_SYNTHETIC_CONTEXT_V1\",\"world_ref\":\"WORLD-BIKE-1\"},\"packet\":{\"as_of\":\"2026-10-17T10:00:03Z\",\"candidates\":[{\"action_refs\":[{\"act_kind\":\"SPEAK_TO_CHILD\",\"actor_ref\":\"CARE-1\",\"opportunity_ref\":\"OP-CARE-SPEAK\"}],\"candidate_id\":\"ALT-CARE\",\"courses\":[{\"action_ref\":\"OP-CARE-SPEAK\",\"actor_ref\":\"CARE-1\",\"course_id\":\"COURSE-CARE-SPEAK\",\"description\":\"Caregiver considers reassurance or practical protective speech\"}],\"family\":\"OBSERVABLE_UTTERANCE\",\"interpretations\":[],\"parent_event_ref\":\"THEFT-1\",\"participants\":[\"CHILD-1\",\"CARE-1\"],\"place_ref\":\"GARAGE-1\",\"possible_effects\":[{\"description\":\"Child may perceive factual prudence yet feel emotionally unheard\",\"effect_kind\":\"MAY_RETAIN_CONTRADICTION\",\"epistemic_class\":\"HYPOTHESIS_ONLY\",\"owner_required\":\"CAN011_EXTERNAL_OWNER\",\"target_actor_ref\":\"CHILD-1\"}],\"prerequisites\":[{\"kind\":\"WORLD_FACT_TRUE\",\"ref\":\"THEFT-1\"},{\"kind\":\"ACTOR_ACCESS\",\"ref\":\"CARE-1|THEFT-1\"},{\"kind\":\"HISTORY_PRESENT\",\"ref\":\"CARE-1|H-CARE-PROTECT\"},{\"kind\":\"HISTORY_PRESENT\",\"ref\":\"CHILD-1|H-CHILD-1\"}],\"prospective_participants\":[],\"readset\":[\"THEFT-1\"],\"time\":\"2026-10-17T10:00:03Z\",\"uncertainty\":\"Competing possible receptions, no privileged insight or fixed psychological consequence\",\"visibility\":[\"CHILD-1\",\"CARE-1\"]},{\"action_refs\":[{\"act_kind\":\"SPEAK_TO_CHILD\",\"actor_ref\":\"PEER-1\",\"opportunity_ref\":\"OP-PEER-SPEAK\"}],\"candidate_id\":\"ALT-PEER\",\"courses\":[{\"action_ref\":\"OP-PEER-SPEAK\",\"actor_ref\":\"PEER-1\",\"course_id\":\"COURSE-PEER-SPEAK\",\"description\":\"Peer might circulate unsupported scapegoating rumor\"}],\"family\":\"OBSERVABLE_UTTERANCE\",\"interpretations\":[],\"parent_event_ref\":\"THEFT-1\",\"participants\":[\"CHILD-1\",\"PEER-1\"],\"place_ref\":\"GARAGE-1\",\"possible_effects\":[{\"description\":\"Child could reject or absorb peer narrative, unknown\",\"effect_kind\":\"MAY_RETAIN_CONTRADICTION\",\"epistemic_class\":\"HYPOTHESIS_ONLY\",\"owner_required\":\"CAN011_EXTERNAL_OWNER\",\"target_actor_ref\":\"CHILD-1\"}],\"prerequisites\":[{\"kind\":\"WORLD_FACT_TRUE\",\"ref\":\"THEFT-1\"},{\"kind\":\"ACTOR_ACCESS\",\"ref\":\"PEER-1|THEFT-1\"},{\"kind\":\"HISTORY_PRESENT\",\"ref\":\"PEER-1|H-PEER-BELONGING\"},{\"kind\":\"HISTORY_PRESENT\",\"ref\":\"CHILD-1|H-CHILD-1\"}],\"prospective_participants\":[],\"readset\":[\"THEFT-1\"],\"time\":\"2026-10-17T10:00:03Z\",\"uncertainty\":\"Competing possible receptions, no privileged insight or fixed psychological consequence\",\"visibility\":[\"CHILD-1\",\"PEER-1\"]},{\"action_refs\":[{\"act_kind\":\"CHECK_GARAGE\",\"actor_ref\":\"CHILD-1\",\"opportunity_ref\":\"OP-CHILD-SEARCH\"}],\"candidate_id\":\"ALT-CHILD-SEARCH\",\"courses\":[{\"action_ref\":\"OP-CHILD-SEARCH\",\"actor_ref\":\"CHILD-1\",\"course_id\":\"COURSE-CHILD-SEARCH\",\"description\":\"Child might look for lock marks before deciding what happened\"}],\"family\":\"MATERIAL_ACTION_PROPOSAL\",\"interpretations\":[],\"parent_event_ref\":\"THEFT-1\",\"participants\":[\"CHILD-1\"],\"place_ref\":\"GARAGE-1\",\"possible_effects\":[{\"description\":\"No durable response is required\",\"effect_kind\":\"NO_CHANGE\",\"epistemic_class\":\"HYPOTHESIS_ONLY\",\"owner_required\":\"CAN011_EXTERNAL_OWNER\",\"target_actor_ref\":\"CHILD-1\"}],\"prerequisites\":[{\"kind\":\"WORLD_FACT_TRUE\",\"ref\":\"THEFT-1\"},{\"kind\":\"MATERIAL_AFFORDANCE\",\"ref\":\"GARAGE_ACCESS\"},{\"kind\":\"HISTORY_PRESENT\",\"ref\":\"CHILD-1|H-CHILD-1\"}],\"prospective_participants\":[],\"readset\":[\"THEFT-1\"],\"time\":\"2026-10-17T10:00:03Z\",\"uncertainty\":\"Competing possible receptions, no privileged insight or fixed psychological consequence\",\"visibility\":[\"CHILD-1\"]},{\"action_refs\":[],\"candidate_id\":\"ALT-NONE\",\"courses\":[],\"family\":\"NONOCCURRENCE\",\"interpretations\":[],\"parent_event_ref\":\"THEFT-1\",\"participants\":[\"CHILD-1\"],\"place_ref\":\"GARAGE-1\",\"possible_effects\":[],\"prerequisites\":[{\"kind\":\"WORLD_FACT_TRUE\",\"ref\":\"THEFT-1\"},{\"kind\":\"HISTORY_PRESENT\",\"ref\":\"CHILD-1|H-CHILD-1\"}],\"prospective_participants\":[],\"readset\":[\"THEFT-1\"],\"time\":\"2026-10-17T10:00:03Z\",\"uncertainty\":\"Competing possible receptions, no privileged insight or fixed psychological consequence\",\"visibility\":[\"CHILD-1\"]}],\"context_hash\":\"baa320465412d5914f756085dd8fe153b35dd9fea7f0e3ee5f961c89b2adfb29\",\"epistemic_class\":\"LLM_PROPOSAL\",\"model\":{\"model_version\":\"SYNTH-1\",\"prompt_sha256\":\"09c625dda784aa41702a734b8c2141b520726e69809e3f20aa053c231413dae6\",\"prompt_version\":\"P1-PROMPT-1\",\"provider_label\":\"FROZEN_FABRICATED_PACKET_NO_LIVE_MODEL\",\"sampling_record\":{\"kind\":\"FROZEN_AUTHOR_SYNTHETIC\",\"model_draws\":\"NOT_RECORDED_NOT_CAUSAL\"}},\"proposal_hash\":\"26795de284148847061d065b321c03491d295c74660c53d051046ab2e3e8a09f\",\"proposal_id\":\"B2-PACKET-1\",\"schema\":\"P1_LLM_ALTERNATIVES_PROPOSAL_V1\",\"world_ref\":\"WORLD-BIKE-1\"},\"policy\":{\"calibration_grade\":\"PROVISIONAL_NOT_CALIBRATED\",\"candidate_set_hash\":\"b1ede88e2ea3e0ca4754ec2ab0d06ba2d60010a64b861b7d4e5b392937e58e96\",\"parameter_source\":\"AUTHORED_DESIGN_HYPOTHESIS_TEST_ONLY\",\"policy_hash\":\"8feec98c459c822e0a807ec6ae093f302257ce89942a374f8a81744637b80eb1\",\"policy_id\":\"B2-TEST-COORDINATE\",\"policy_version\":\"1.0.0\",\"schema\":\"P1_TEST_ONLY_AUTHORED_SELECTION_POLICY_V1\",\"weight_units\":{\"ALT-CARE\":1,\"ALT-CHILD-SEARCH\":0,\"ALT-NONE\":0,\"ALT-PEER\":0}},\"rule\":\"B2_SYNTHETIC_WITNESSED_INGRESS@1\",\"selected_candidate_id\":\"ALT-CARE\",\"witness\":{\"candidate_hash\":\"c6c9e8f397b26c4d33c96efa2422e3241170f60621472a3260ab732b48fc68da\",\"context_hash\":\"baa320465412d5914f756085dd8fe153b35dd9fea7f0e3ee5f961c89b2adfb29\",\"event_id\":\"I2-independent-before-request\",\"expected_actor_state_hash\":\"d8ea29fab4df7f6fb40f42fade1f8544dc8b5a82bec4e3e5bba4ee6e5a14e567\",\"external_occurrence\":{\"admitted\":true,\"content\":{\"fact\":\"stolen\",\"known_culprit\":null,\"object\":\"bike-child\",\"place\":\"garage\"},\"content_hash\":\"7343ad0dceff4df24d51adf9c45d4e76da970ad1b712ef42bd0097811d3df2c5\",\"id\":\"I2-independent-before-request\",\"owner\":\"TEST_WORLD_REGISTRY\",\"time\":3},\"hash\":\"8d65eaf53dbfaf2f5e1341d6a6be82bc47769d1f4a50ae87f9dc37c65fa2ae6d\",\"interrupted\":true,\"issuer\":\"B2_WORLD_FIXTURE_AUTHORIZER\",\"m2_projection\":{\"action\":null,\"action_owner\":null,\"id\":\"I2-independent-before-request\",\"issuer\":\"TEST_ONLY_INDEPENDENT_WORLD_FIXTURE\",\"kind\":\"LOSS\",\"material\":[{\"kind\":\"RESOURCE_STATUS\",\"object_ref\":\"bike-child\",\"owner\":\"TEST_ONLY_INDEPENDENT_WORLD_FIXTURE\",\"source_ref\":\"e0c2f311f65759d0cc74bf86f8e681b9c3db3638bdaa988764b6d286538bfe15\",\"value\":\"MISSING\"}],\"observer\":\"child\",\"parent_event_hash\":null,\"parent_event_id\":null,\"participants\":[\"child\",\"caregiver\",\"peer\"],\"time\":3},\"m2_projection_hash\":\"81dadd899c77e18f40071a6f3ee34abdcebe55e1955ac69857241a1cb5fb21a3\",\"number\":2,\"objective_occurrence\":\"stolen\",\"observed_interpretations\":[],\"other_actions\":[{\"action\":\"joint_inventory\",\"p1_actor\":\"CARE-1\",\"participant\":{\"actor_id\":\"caretaker\",\"history\":[{\"activity\":\"REPAIR_TOOLS\",\"actor_access\":\"EXPLICIT\",\"actor_id\":\"caretaker\",\"counterpart\":\"workshop\",\"episode_id\":\"tools\",\"outcome\":\"tools_available\",\"parent_refs\":[],\"project\":\"own_work\",\"provenance\":\"B3_SOURCEFREE_COMPATIBILITY_PROJECTION:f5655dd3160a37da7f171278441ff083ad69af47525cdff16d9e82db82a7141d\",\"time\":1}],\"project\":\"own_work\"},\"source_history_hash\":\"a193ddb11c4338d9612d1d6e2d81510ba46e0ab91544735785fa2332904d702f\"}],\"outcome\":\"OCCURRED\",\"parent_fact_hash\":\"42fb867561347435fef23470d2dc17c5681ace69d6aefe9c467bfb32324a5ee7\",\"participants\":[\"CHILD-1\",\"CARE-1\"],\"place\":\"GARAGE-1\",\"project\":\"bike_security\",\"proposal_hash\":\"26795de284148847061d065b321c03491d295c74660c53d051046ab2e3e8a09f\",\"schema\":\"B2_INDEPENDENT_SYNTHETIC_OCCURRENCE_WITNESS@1\",\"time\":\"2026-10-17T10:00:03Z\",\"world_facts\":{\"group_criminality\":\"NOT_ESTABLISHED\",\"known_thief\":null},\"world_ref\":\"WORLD-BIKE-1\"}}",
+          "bf0419aec16c6e2c60a49c5489c0bb804f2d446d1198d423af26f272b5ae94e8",
+          "4d69c02149987d82df4c56043e0c795b883a4a89298a35f291383659adaaac37"
+        ]
+      ],
+      "b2_ingress": [
+        [
+          "4d69c02149987d82df4c56043e0c795b883a4a89298a35f291383659adaaac37",
+          "{\"attributed_claims\":[],\"event_ref\":\"bf0419aec16c6e2c60a49c5489c0bb804f2d446d1198d423af26f272b5ae94e8\",\"hash\":\"4d69c02149987d82df4c56043e0c795b883a4a89298a35f291383659adaaac37\",\"objective_world_facts\":{\"group_criminality\":\"NOT_ESTABLISHED\",\"known_thief\":null},\"proposal_ref\":\"26795de284148847061d065b321c03491d295c74660c53d051046ab2e3e8a09f\",\"rule\":\"B2_SYNTHETIC_WITNESSED_INGRESS@1\",\"selected_candidate_id\":\"ALT-CARE\",\"status\":\"ADMITTED_SYNTHETIC_FIXTURE_ONLY\",\"witness_ref\":\"8d65eaf53dbfaf2f5e1341d6a6be82bc47769d1f4a50ae87f9dc37c65fa2ae6d\"}"
+        ]
+      ],
+      "b3_audit": [],
+      "b3_clock": [],
+      "b3_m2_sources": [],
+      "b3_preimage": [],
+      "b3_response": [],
+      "b3_source": [],
+      "b3_transition": [],
+      "checkpoint": [
+        [
+          1,
+          "{\"actor_id\":\"child\",\"capabilities\":[\"compare_enacted_plans\"],\"epistemic\":{\"beliefs\":[\"locking_reduces_access\"],\"inaccessible\":[],\"unknown\":[\"thief_identity\",\"thief_motive\"]},\"history\":[],\"middle\":[],\"project\":\"repair_route\",\"responses\":[],\"schema\":\"B1_CANDIDATE_ADAPTER@1.0.0\",\"transitions\":[]}"
+        ]
+      ],
+      "joint_receipt": [],
+      "occurrence": [
+        [
+          "bf0419aec16c6e2c60a49c5489c0bb804f2d446d1198d423af26f272b5ae94e8",
+          "{\"actor_id\":\"child\",\"admission_grade\":\"ADMITTED_SYNTHETIC_FIXTURE_ONLY\",\"event_id\":\"I2-independent-before-request\",\"hash\":\"bf0419aec16c6e2c60a49c5489c0bb804f2d446d1198d423af26f272b5ae94e8\",\"interrupted\":true,\"objective_occurrence\":\"stolen\",\"offers\":[],\"power_ref\":\"power:caretaker_controls_tools\",\"project\":\"bike_security\",\"provenance\":\"B1_AUTHORED_SOURCEFREE\",\"relation_refs\":[\"relation:child:caretaker\"],\"time\":3,\"world_ref\":\"WORLD-BIKE-1\"}"
+        ]
+      ]
+    }
+  }
+}

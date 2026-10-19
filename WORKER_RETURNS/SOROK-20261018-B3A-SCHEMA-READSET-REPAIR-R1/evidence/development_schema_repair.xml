@@ -1,0 +1,15 @@
+<testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="15" time="12.523" timestamp="2026-10-18T20:32:05.745192-04:00" hostname="local-host"><testcase classname="frozen_review.test_reviewer_hostiles" name="test_schema_only_race_is_rejected" time="1.191" /><testcase classname="frozen_review.test_reviewer_hostiles" name="test_schema_change_on_refusal_sets_no_mutation_false" time="0.747" /><testcase classname="test_schema_repair" name="test_schema_or_metadata_race_preserves_existing_facts_and_refuses[index]" time="1.033" /><testcase classname="test_schema_repair" name="test_schema_or_metadata_race_preserves_existing_facts_and_refuses[view]" time="0.983" /><testcase classname="test_schema_repair" name="test_schema_or_metadata_race_preserves_existing_facts_and_refuses[trigger]" time="0.866" /><testcase classname="test_schema_repair" name="test_schema_or_metadata_race_preserves_existing_facts_and_refuses[schema_version]" time="0.802" /><testcase classname="test_schema_repair" name="test_schema_or_metadata_race_preserves_existing_facts_and_refuses[user_version]" time="0.777" /><testcase classname="test_schema_repair" name="test_schema_or_metadata_race_preserves_existing_facts_and_refuses[application_id]" time="0.809" /><testcase classname="test_schema_repair" name="test_schema_or_metadata_race_preserves_existing_facts_and_refuses[quoted_table]" time="0.744" /><testcase classname="test_schema_repair" name="test_schema_or_metadata_race_preserves_existing_facts_and_refuses[schema_aba]" time="0.756" /><testcase classname="test_schema_repair" name="test_external_metadata_after_domain_refusal_reports_mutation[index]" time="0.815" /><testcase classname="test_schema_repair" name="test_external_metadata_after_domain_refusal_reports_mutation[user_version]" time="1.037" /><testcase classname="test_schema_repair" name="test_private_schema_change_cannot_publish_rows" time="0.831" /><testcase classname="test_schema_repair" name="test_rolled_back_external_ddl_does_not_falsely_refuse" time="0.724"><failure message="AssertionError: assert ('REFUSED' == 'ELIGIBLE_NONCAUSAL'&#10;  &#10;  - ELIGIBLE_NONCAUSAL&#10;  + REFUSED)">tmp_path = PosixPath('&lt;TEMP&gt;')
+
+    def test_rolled_back_external_ddl_does_not_falsely_refuse(tmp_path):
+     f,a,e,path=setup(tmp_path);before=cold(path)
+     def fault(stage):
+      if stage=='after_target_effect_before_commit':
+       db=sqlite3.connect(path);db.execute('BEGIN IMMEDIATE');db.execute('CREATE INDEX rolled_back_index ON b3_source(body)');db.rollback();db.close()
+     e.fault=fault;r=e.run(f);after=cold(path);e.close();save('repair_ddl_rollback',before=before,result=r,after=after)
+&gt;    assert r['status']=='ELIGIBLE_NONCAUSAL' and before['schema']==after['schema']
+E    AssertionError: assert ('REFUSED' == 'ELIGIBLE_NONCAUSAL'
+E      
+E      - ELIGIBLE_NONCAUSAL
+E      + REFUSED)
+
+test_schema_repair.py:57: AssertionError</failure></testcase><testcase classname="test_schema_repair" name="test_snapshot_keeps_existing_transaction_uncommitted" time="0.177" /></testsuite></testsuites>

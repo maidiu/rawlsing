@@ -1,0 +1,40 @@
+{
+  "passport_schema": "SOROK_WARM_ENVIRONMENT_PASSPORT_R1",
+  "environment_id": "f6481554-2387-4d73-aaf8-4fd82401a388",
+  "epoch_id": "402e14fd-5150-4a3c-88a2-bc54a8a190c4",
+  "owner_session_alias": "B3A_SCHEMA_REPAIR_AUTHOR",
+  "surface": "LOCAL_SHARED_STORE",
+  "status": "LIVE_VERIFIED",
+  "last_live_probe_at": "2026-10-19T00:37:32.150202+00:00",
+  "runtime_marker_digest": "a57e9aa83dd9565f958c396c5a15675a75611d88ce4f24540f09e29fa2ee03ea",
+  "branch": "codex/sorok-b3a-schema-readset-repair-r1",
+  "exact_checkout_base": "8bd4d6b01fd402e7e6a8d07903f2c3cada837f55",
+  "probe_command_and_result": {
+    "python": "3.11.3",
+    "pytest": "9.1.1",
+    "sqlite": "3.40.1",
+    "git": "git version 2.39.1",
+    "node": "v18.14.2"
+  },
+  "capabilities": {
+    "python": "VERIFIED",
+    "pytest": "VERIFIED",
+    "sqlite": "VERIFIED",
+    "git": "VERIFIED",
+    "node": "VERIFIED",
+    "subprocess": "VERIFIED",
+    "SIGKILL": "VERIFIED",
+    "filesystem": "VERIFIED"
+  },
+  "materialized_source_refs": "candidate/source_manifest.json",
+  "dependency_closure_status": "BOUNDED_PINNED_SOURCEFREE",
+  "science_grade": "USER_DIRECTED_AUTHOR_REPAIR_NOT_FRESH_INDEPENDENT_ACCEPTANCE",
+  "independent_review_separation": "Prior B3A reviewer is now repair author; new independent acceptance must use a distinct reviewer. Frozen prior review untouched.",
+  "model_provider": "EXISTING_LOCAL_CODEX_NO_SWITCH",
+  "cash_known": "UNKNOWN",
+  "quota_known": "UNKNOWN",
+  "original_source_or_actor_calls": false,
+  "source_permission": "USER_AUTHORIZED_SYNTHETIC_REPAIR_ONLY",
+  "publication_status": "LOCAL_PROVISIONAL_NO_NEW_HQ_SEAL_CLAIMED",
+  "staged_state_preservation": "RECONSTRUCTABLE_PINNED_RUNTIME_RECHECK_ON_RESUME"
+}
