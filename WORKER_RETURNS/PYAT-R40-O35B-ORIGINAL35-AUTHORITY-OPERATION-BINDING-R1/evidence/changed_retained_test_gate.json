@@ -1,0 +1,37 @@
+{
+  "base": "7fa5bb86c994107e08b3734a2e9f916ee4a34253",
+  "tested_implementation": "5f70b0cbee67d4626825151c6f62f52b6f8399ef",
+  "exit_code": 0,
+  "result": {
+    "examined_tests": [
+      "WORKER_RETURNS/PYAT-R40-O35B-ORIGINAL35-AUTHORITY-OPERATION-BINDING-R1/test_retained_catalog.py"
+    ],
+    "witness_contracts_run": 1,
+    "receipts": [
+      {
+        "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+        "status": "MECHANICAL_WITNESS_PASS_NOT_SEMANTIC_ADOPTION",
+        "claims": [
+          {
+            "claim_id": "O35B_RETAINED_ORIGINAL_PREIMAGE_TO_NATIVE_OBJECT_DESERIALIZATION",
+            "positive_node": "WORKER_RETURNS/PYAT-R40-O35B-ORIGINAL35-AUTHORITY-OPERATION-BINDING-R1/test_retained_catalog.py::test_retained_original_query_consumer_preimages_no_drop",
+            "fault_path": "WORKER_RETURNS/PYAT-R40-O35B-ORIGINAL35-AUTHORITY-OPERATION-BINDING-R1/retained_catalog.py",
+            "baseline": "PASS",
+            "fault_probe": "TARGET_ASSERTION_FAILED",
+            "grade": "BOUNDED_MUTATION_DETECTED"
+          },
+          {
+            "claim_id": "O35B_EXACT_ORIGINAL_QUERY_PACKET_TO_SCOPED_NATIVE_CATALOG",
+            "positive_node": "WORKER_RETURNS/PYAT-R40-O35B-ORIGINAL35-AUTHORITY-OPERATION-BINDING-R1/test_retained_catalog.py::test_original_scoped_catalog_consumer_no_drop",
+            "fault_path": "WORKER_RETURNS/PYAT-R40-O35B-ORIGINAL35-AUTHORITY-OPERATION-BINDING-R1/retained_catalog.py",
+            "baseline": "PASS",
+            "fault_probe": "TARGET_ASSERTION_FAILED",
+            "grade": "BOUNDED_MUTATION_DETECTED"
+          }
+        ]
+      }
+    ],
+    "state": "MECHANICAL_PROOF_GATE_PASS_NOT_SCIENTIFIC_ADOPTION"
+  },
+  "scope": "Retained native object and scoped catalog binding only; original I03/Batch/M1 still NOT_PROVED"
+}
