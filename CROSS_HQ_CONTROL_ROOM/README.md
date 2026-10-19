@@ -1,5 +1,10 @@
 # Pyat ↔ Sorok shared grounding and progress
 
+## PRIORITY ZERO — WHAT FINISHED RAWLSING MUST ACTUALLY PRODUCE (2026-10-19)
+
+**Before any fresh/resumed HQ grok, return assessment or commissioning, read the [MANDATORY terminal-deliverable continuity / anti-microfocus law](HQ_TERMINAL_DELIVERABLE_CONTINUITY_AND_ANTI_MICROFOCUS_LAW_R1.md).** Every Pyat run works backward from original35 source→F1–F8 populated artifacts→N9/N10E/N10W real possibility consumer→N11 estate acceptance→N12 seam decision; every Sorok run works backward from an actually generated, historically developing person and C0–C12/A0–A5. A parallel flight of small successful tests is not a completion campaign. Select the largest lawful coherent substantive tranche first; then assign economical agents, independent evidence, and load-bearing tests. Publish the compact terminal completion strip in the EXISTING owner progress pair. No extra reviewer, source permission or Sorok/Pyat jurisdiction transfer.
+
+
 ## Mandatory code-test proof integrity — 18 October 2026
 
 [**Shared falsifiable-test and negative-control law**](PROOF_INTEGRITY_AND_FALSIFIABLE_TEST_LAW_R1.md) governs new/revised implementation claims across PRE-MAIN, Pyat and Sorok. The executable [AST/mutation checker](proof_integrity_gate_r1.py) is wired into the existing governed-court PR workflow; no additional reviewer round or blanket historic test reopening is created. No green suite proves a downstream integration without claim-specific producer/release severance and a real consumer response.
