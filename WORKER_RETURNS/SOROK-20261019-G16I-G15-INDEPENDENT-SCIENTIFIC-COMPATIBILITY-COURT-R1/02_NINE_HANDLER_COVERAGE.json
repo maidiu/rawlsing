@@ -1,0 +1,272 @@
+{
+  "count": 9,
+  "groups": [
+    {
+      "actual_exception": {
+        "exception": "'NoneType' object is not subscriptable",
+        "exception_type": "TypeError",
+        "status": "LEGACY_HANDLER_NOT_EVALUABLE",
+        "traceback": "Traceback (most recent call last):\n  File \"$STAGED_ROOT/sources/sgi1/01_LAB_IMPLEMENTATION/lab_sgi1/k11_runner.py\", line 314, in run_all\n    assertion_results, observed, evidence, extra = handler()\n                                                   ^^^^^^^^^\n  File \"$STAGED_ROOT/sources/sgi1/01_LAB_IMPLEMENTATION/lab_sgi1/k11_runner.py\", line 383, in case_base_local\n    bool(r1[\"selection_summary\"][\"policy_name\"]\n         ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^\nTypeError: 'NoneType' object is not subscriptable\n"
+      },
+      "case_id": "K11-BASE-LOCAL",
+      "complete_replacement": false,
+      "native_positive": false,
+      "new_allowed_positive_nodes": [
+        "test_variable_task_cost_reaches_continued_context",
+        "test_cold_replay_uses_actual_saved_sources"
+      ],
+      "original_behavior_and_judgment": "Finite positive execution, two histories, exact replay and post-contact continuation are legitimate scientific duties. Captured candidates are now held at the output membrane; selection_summary=None makes the handler unevaluable. Clean research input independently commits and replays, with variable task costs read by continuation. This replaces a narrow positive, not all original source coverage.",
+      "original_handler": {
+        "assertions": [],
+        "line": 350,
+        "path": "sources/g15/frozen/g13/03_POSTREPAIR_COURT/sources/sgi1/01_LAB_IMPLEMENTATION/lab_sgi1/k11_runner.py",
+        "source": "def case_base_local(self):\n        r1 = self._pipe(\"M0\", \"M0_LOCAL\", \"RUN_BASE\", \"R0\",\n                        route_filter=\"ROUTE_LOCAL_CLOSED\")\n        r2 = self._pipe(\"M0\", \"M0_LOCAL\", \"RUN_BASE\", \"R0\",\n                        route_filter=\"ROUTE_LOCAL_CLOSED\")\n        rec = self._records[\"M0_LOCAL\"]\n        dad_hash1, dad_hash2 = _dad_event_hashes(r1), _dad_event_hashes(r2)\n        guard_ok = r1[\"guard\"][\"status\"] == S.LAB_PASS\n\n        def qual_payload(r):\n            return [e[\"payload\"] for e in r[\"ledger\"][\"entries\"]\n                    if e[\"kind\"] == \"QUALIFICATION\"]\n\n        assertion_results = {\n            \"mother_checkpoint_byte_identity_unchanged\":\n                bool(r1[\"terminal\"].get(\"mother_checkpoint_byte_identity_unchanged\")),\n            \"proposal_set_finite\":\n                bool(rec.dedup[\"n_classes\"] >= 1 and rec.dedup[\"n_classes\"] < 50\n                     and len(rec.parsed_candidates) < 50),\n            \"generic_query_receipts_exact\":\n                h_obj(qual_payload(r1)) == h_obj(qual_payload(r2)),\n            \"selection_policy_labeled\":\n                bool(r1[\"selection_summary\"][\"policy_name\"]\n                     and r1[\"selection_summary\"][\"policy_hash\"]\n                     and r1[\"selection_summary\"].get(\"no_population_frequency_claim\")),\n            \"father_whole_domains_valid\":\n                bool(r1[\"construction_summary\"][\"attempts\"][-1][\"stopping\"][\"sufficient\"]),\n            \"forward_endpoint_match\":\n                bool(r1[\"construction_summary\"][\"attempts\"][-1][\"endpoint_match\"]),\n            \"shared_occurrence_once\":\n                bool(r1[\"relation\"][\"objective_relation\"][\"single_objective_record\"]\n                     and len(r1[\"relation\"][\"objective_relation\"][\"shared_event_refs\"]) == 1),\n            \"post_conception_both_continue\":\n                bool(r1[\"continuation\"][\"both_parents_continue_independently\"]),\n            \"child_exposure_changes_only_after_admission\":\n                bool(r1[\"child_fixture\"][\"exposure_changes_only_after_admission\"]),\n            \"exact_replay_hash_equal\":\n                dad_hash1 == dad_hash2\n                and _selection_identity(r1) == _selection_identity(r2)\n                and _endpoint_state(r1) == _endpoint_state(r2),\n        }\n        observed = {\n            \"terminal\": r1[\"terminal\"], \"guard\": guard_ok,\n            \"selection\": _selection_identity(r1),\n            \"dad_event_hash\": dad_hash1, \"dad_event_hash_replay\": dad_hash2,\n        }\n        evidence = [\"ledger:\" + r1[\"ledger_hash\"], \"proposal:\" + rec.proposal_hash]\n        extra = {\n            \"intervention\": {\"route_filter\": \"ROUTE_LOCAL_CLOSED\", \"seed\": \"R0\"},\n            \"input_hashes\": {\"mother_anchor\": self._fh(\"M0\"),\n                             \"proposal\": rec.proposal_hash},\n            \"cost\": r1[\"cost\"],\n            \"replay_result\": {\"exact_replay\": assertion_results[\"exact_replay_hash_equal\"],\n                              \"dad_hash_1\": dad_hash1, \"dad_hash_2\": dad_hash2},\n        }\n        self.measurements[\"base_local\"] = {\"cost\": r1[\"cost\"]}\n        return assertion_results, observed, evidence, extra"
+      },
+      "original_predicate_names": [
+        "mother_checkpoint_byte_identity_unchanged",
+        "proposal_set_finite",
+        "generic_query_receipts_exact",
+        "selection_policy_labeled",
+        "father_whole_domains_valid",
+        "forward_endpoint_match",
+        "shared_occurrence_once",
+        "post_conception_both_continue",
+        "child_exposure_changes_only_after_admission",
+        "exact_replay_hash_equal"
+      ],
+      "replacement_grade": "PARTIAL_POSITIVE"
+    },
+    {
+      "actual_exception": {
+        "exception": "'NoneType' object is not subscriptable",
+        "exception_type": "TypeError",
+        "status": "LEGACY_HANDLER_NOT_EVALUABLE",
+        "traceback": "Traceback (most recent call last):\n  File \"$STAGED_ROOT/sources/sgi1/01_LAB_IMPLEMENTATION/lab_sgi1/k11_runner.py\", line 314, in run_all\n    assertion_results, observed, evidence, extra = handler()\n                                                   ^^^^^^^^^\n  File \"$STAGED_ROOT/sources/sgi1/01_LAB_IMPLEMENTATION/lab_sgi1/k11_runner.py\", line 445, in case_route_discordant\n    rd[\"selection_summary\"][\"upstream_class_set_hash\"]\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^\nTypeError: 'NoneType' object is not subscriptable\n"
+      },
+      "case_id": "K11-ROUTE-DISCORDANT",
+      "complete_replacement": false,
+      "native_positive": false,
+      "new_allowed_positive_nodes": [
+        "test_competing_offer_changes_actual_attendance"
+      ],
+      "original_behavior_and_judgment": "The old conventional/institutional contrast must not be waived just because both captures now hold. Default generated history always chooses the highest net local offer; it cannot reach a separately selected institutional endpoint. Refusal to rewrite history is correct; a competent source-admitted institutional positive is still required. Direct builder opportunity variation demonstrates capability only below the full joined selection interface.",
+      "original_handler": {
+        "assertions": [],
+        "line": 408,
+        "path": "sources/g15/frozen/g13/03_POSTREPAIR_COURT/sources/sgi1/01_LAB_IMPLEMENTATION/lab_sgi1/k11_runner.py",
+        "source": "def case_route_discordant(self):\n        rb = self._pipe(\"M0\", \"M0_LOCAL\", \"RUN_DISC_B\", \"R0\",\n                        route_filter=\"ROUTE_LOCAL_CLOSED\")\n        rd = self._pipe(\"M0\", \"M0_INST\", \"RUN_DISC_D\", \"R1\",\n                        route_filter=\"ROUTE_INSTITUTIONAL\")\n        rd2 = self._pipe(\"M0\", \"M0_INST\", \"RUN_DISC_D\", \"R1\",\n                         route_filter=\"ROUTE_INSTITUTIONAL\")\n        rec_d = self._records[\"M0_INST\"]\n        contrast = (\n            rec_d.dedup[\"class_set_hash\"] != self._records[\"M0_LOCAL\"].dedup[\"class_set_hash\"]\n            or _selection_identity(rd)[\"selected_class_key\"]\n            != _selection_identity(rb)[\"selected_class_key\"]\n        )\n        hard_receipt = None\n        for e in rd[\"ledger\"][\"entries\"]:\n            if e[\"kind\"] == \"QUALIFICATION\":\n                hard_receipt = e[\"payload\"][\"per_class\"]\n        assertion_results = {\n            \"contrast_in_typed_candidates_and_eligibility\": bool(contrast),\n            \"qualified_route_truth\": bool(\n                hard_receipt and any(\n                    x.get(\"route_id\") == \"ROUTE_INSTITUTIONAL\"\n                    and x.get(\"route_truth_note\") for x in hard_receipt\n                )\n            ),\n            \"candidate_set_hash_binding\":\n                rd[\"selection_summary\"][\"upstream_class_set_hash\"]\n                == rec_d.dedup[\"class_set_hash\"]\n                and rd[\"selection_summary\"][\"selected_class_key\"] in rec_d.dedup[\"canonical_order\"],\n            \"deterministic_replay_per_route\":\n                _dad_event_hashes(rd) == _dad_event_hashes(rd2)\n                and _selection_identity(rd) == _selection_identity(rd2),\n        }\n        observed = {\n            \"base_class_set\": self._records[\"M0_LOCAL\"].dedup[\"class_set_hash\"],\n            \"discordant_class_set\": rec_d.dedup[\"class_set_hash\"],\n            \"contrast\": contrast,\n            \"selection_base\": _selection_identity(rb),\n            \"selection_discordant\": _selection_identity(rd),\n        }\n        extra = {\n            \"intervention\": {\"change\": \"route/institution only\", \"seed\": \"R1\",\n                             \"world_premise_preserved\": True},\n            \"input_hashes\": {\"mother_anchor\": self._fh(\"M0\"),\n                             \"proposal\": rec_d.proposal_hash},\n            \"cost\": rd[\"cost\"],\n            \"replay_result\": {\"per_route_deterministic\":\n                              assertion_results[\"deterministic_replay_per_route\"]},\n        }\n        return assertion_results, observed, [\"ledger:\" + rd[\"ledger_hash\"]], extra"
+      },
+      "original_predicate_names": [
+        "contrast_in_typed_candidates_and_eligibility",
+        "qualified_route_truth",
+        "candidate_set_hash_binding",
+        "deterministic_replay_per_route"
+      ],
+      "replacement_grade": "PARTIAL_LOWER_LEVEL_ONLY"
+    },
+    {
+      "actual_exception": {
+        "exception": "'NoneType' object is not subscriptable",
+        "exception_type": "TypeError",
+        "status": "LEGACY_HANDLER_NOT_EVALUABLE",
+        "traceback": "Traceback (most recent call last):\n  File \"$STAGED_ROOT/sources/sgi1/01_LAB_IMPLEMENTATION/lab_sgi1/k11_runner.py\", line 314, in run_all\n    assertion_results, observed, evidence, extra = handler()\n                                                   ^^^^^^^^^\n  File \"$STAGED_ROOT/sources/sgi1/01_LAB_IMPLEMENTATION/lab_sgi1/k11_runner.py\", line 555, in case_route_unconventional\n    r1[\"selection_summary\"][\"selected_class_key\"] is not None\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^\nTypeError: 'NoneType' object is not subscriptable\n"
+      },
+      "case_id": "K11-ROUTE-UNCONVENTIONAL",
+      "complete_replacement": false,
+      "native_positive": false,
+      "new_allowed_positive_nodes": [
+        "test_lawful_unconventional_and_mobility_routes_have_positive_history_controls"
+      ],
+      "original_behavior_and_judgment": "An unconventional endpoint is a legitimate alternative when materials and permission permit it. Historical capture output fails the closed vocabulary; default material optimization produces local attendance. The endpoint must not force an invented past. A varied-source actual community attendance control passes, while full joined unconventional source capability remains absent.",
+      "original_handler": {
+        "assertions": [],
+        "line": 508,
+        "path": "sources/g15/frozen/g13/03_POSTREPAIR_COURT/sources/sgi1/01_LAB_IMPLEMENTATION/lab_sgi1/k11_runner.py",
+        "source": "def case_route_unconventional(self):\n        r1 = self._pipe(\"M0\", \"M0_UNCONVENTIONAL\", \"RUN_UNC\", \"R2\",\n                        route_filter=\"ROUTE_UNCONVENTIONAL\")\n        r2 = self._pipe(\"M0\", \"M0_UNCONVENTIONAL\", \"RUN_UNC\", \"R2\",\n                        route_filter=\"ROUTE_UNCONVENTIONAL\")\n        from .mother import validate_no_demographic_psyche\n        anchor_cp = build_mother_checkpoint(\"FIX_M0\", \"M0\")\n        psyche_ok = validate_no_demographic_psyche(anchor_cp)[\"status\"] == S.LAB_PASS\n        # no typicality/typicality mandate may exist as a MECHANISM (keys/weights),\n        # even though the world premise note may truthfully state \"no typicality mandate\"\n        def _mechanism_keys(obj, out):\n            if isinstance(obj, dict):\n                for k, v in obj.items():\n                    out.append(str(k))\n                    _mechanism_keys(v, out)\n            elif isinstance(obj, list):\n                for v in obj:\n                    _mechanism_keys(v, out)\n\n        mech_keys: List[str] = []\n        _mechanism_keys(\n            {\"ledger\": r1[\"ledger\"], \"selection\": r1.get(\"selection_summary\"),\n             \"dad_psyche\": r1.get(\"dad_psyche\"),\n             \"policy\": POLICIES}, mech_keys)\n        no_typicality = not any(\n            (\"typicality\" in k.lower() or \"stereotype\" in k.lower())\n            for k in mech_keys\n        )\n        weights_blob = json.dumps((r1.get(\"selection_summary\") or {})\n                                  .get(\"class_weights\", []))\n        no_typicality = no_typicality and (\"typicality\" not in weights_blob.lower())\n        qual = [x for e in r1[\"ledger\"][\"entries\"] if e[\"kind\"] == \"QUALIFICATION\"\n                for x in e[\"payload\"][\"per_class\"]]\n        assertion_results = {\n            \"no_typicality_mandate\": no_typicality,\n            \"actual_route_constraint_preserved\":\n                r1[\"selection_summary\"][\"selected_class_key\"] is not None\n                and any(x.get(\"route_id\") == \"ROUTE_UNCONVENTIONAL\"\n                        and x.get(\"route_truth_note\") for x in qual),\n            \"no_stereotype_mapping\": psyche_ok,\n            \"exact_replay\":\n                _dad_event_hashes(r1) == _dad_event_hashes(r2)\n                and _selection_identity(r1) == _selection_identity(r2),\n        }\n        observed = {\n            \"no_typicality_language_in_receipts\": no_typicality,\n            \"psyche_causal_ancestry_ok\": psyche_ok,\n        }\n        extra = {\n            \"intervention\": {\"route_filter\": \"ROUTE_UNCONVENTIONAL\", \"seed\": \"R2\"},\n            \"input_hashes\": {\"mother_anchor\": self._fh(\"M0\")},\n            \"cost\": r1[\"cost\"],\n            \"replay_result\": {\"exact_replay\": assertion_results[\"exact_replay\"]},\n        }\n        return assertion_results, observed, [\"ledger:\" + r1[\"ledger_hash\"]], extra"
+      },
+      "original_predicate_names": [
+        "no_typicality_mandate",
+        "actual_route_constraint_preserved",
+        "no_stereotype_mapping",
+        "exact_replay"
+      ],
+      "replacement_grade": "PARTIAL_LOWER_LEVEL_ONLY"
+    },
+    {
+      "actual_exception": {
+        "exception": "'NoneType' object is not subscriptable",
+        "exception_type": "TypeError",
+        "status": "LEGACY_HANDLER_NOT_EVALUABLE",
+        "traceback": "Traceback (most recent call last):\n  File \"$STAGED_ROOT/sources/sgi1/01_LAB_IMPLEMENTATION/lab_sgi1/k11_runner.py\", line 314, in run_all\n    assertion_results, observed, evidence, extra = handler()\n                                                   ^^^^^^^^^\n  File \"$STAGED_ROOT/sources/sgi1/01_LAB_IMPLEMENTATION/lab_sgi1/k11_runner.py\", line 591, in case_future_child_embargo\n    and r0[\"selection_summary\"][\"candidate_set_hash\"]\n        ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^\nTypeError: 'NoneType' object is not subscriptable\n"
+      },
+      "case_id": "K11-A-FUTURE-CHILD-EMBARGO",
+      "complete_replacement": false,
+      "native_positive": false,
+      "new_allowed_positive_nodes": [
+        "test_future_shadow_is_stable_and_false_lineage_diverges",
+        "test_future_child_material_cannot_enter_committed_causal_output"
+      ],
+      "original_behavior_and_judgment": "Old handler cannot compare two positive selections because refusal produces None. This does not disprove noninterference. Independent clean positive is exactly invariant under hidden future-shadow change. Separately, the actual joint-material source accepts an unknown future_child_personality field and commits it into causal output; broader embargo closure needs revision.",
+      "original_handler": {
+        "assertions": [],
+        "line": 564,
+        "path": "sources/g15/frozen/g13/03_POSTREPAIR_COURT/sources/sgi1/01_LAB_IMPLEMENTATION/lab_sgi1/k11_runner.py",
+        "source": "def case_future_child_embargo(self):\n        shadow0 = {\"future_child_outcome_label\": \"L0_HEALTHY_CALM\"}\n        shadow1 = {\"future_child_outcome_label\": \"L1_ADVERSE_DIFFICULT\"}\n        r0 = self._pipe(\"M0\", \"M0_GENERAL\", \"RUN_EMB\", \"R0\",\n                        future_child_shadow=shadow0)\n        r1 = self._pipe(\"M0\", \"M0_GENERAL\", \"RUN_EMB\", \"R0\",\n                        future_child_shadow=shadow1)\n        rec = self._records[\"M0_GENERAL\"]\n        prompt_blob = rec.prompt_text + rec.system_text + \\\n            json.dumps(r0[\"selection_summary\"], sort_keys=True)\n        no_future_keys = all(b not in prompt_blob for b in\n                            (\"future_child\", \"L0_\", \"L1_\", \"desired_adversity\",\n                             \"outcome_label\", \"personality\"))\n        assertion_results = {\n            \"candidate_set_hash_equal\":\n                rec.dedup[\"class_set_hash\"] == self._records[\"M0_GENERAL\"].dedup[\"class_set_hash\"]\n                and r0[\"selection_summary\"][\"candidate_set_hash\"]\n                == r1[\"selection_summary\"][\"candidate_set_hash\"],\n            \"generic_query_request_hashes_equal\":\n                h_obj(r0[\"scenario\"]) == h_obj(r1[\"scenario\"]),\n            \"selection_decision_identity_equal\":\n                _selection_identity(r0) == _selection_identity(r1),\n            \"father_history_event_hashes_equal\":\n                _dad_event_hashes(r0) == _dad_event_hashes(r1),\n            \"endpoint_same\":\n                _endpoint_state(r0) == _endpoint_state(r1),\n            \"no_future_metadata_read\":\n                r0[\"guard\"][\"status\"] == S.LAB_PASS\n                and r1[\"guard\"][\"status\"] == S.LAB_PASS and no_future_keys,\n        }\n        observed = {\n            \"shadow_a\": \"sealed L0\", \"shadow_b\": \"sealed L1\",\n            \"guard_a\": r0[\"guard\"][\"status\"], \"guard_b\": r1[\"guard\"][\"status\"],\n            \"selection_a\": _selection_identity(r0),\n            \"selection_b\": _selection_identity(r1),\n            \"dad_hash_a\": _dad_event_hashes(r0), \"dad_hash_b\": _dad_event_hashes(r1),\n        }\n        extra = {\n            \"intervention\": {\"changed\": \"sealed future-child label only\",\n                             \"visible_inputs_identical\": True},\n            \"input_hashes\": {\"mother_anchor\": self._fh(\"M0\"),\n                             \"proposal\": rec.proposal_hash},\n            \"cost\": {\"run_a\": r0[\"cost\"], \"run_b\": r1[\"cost\"]},\n            \"replay_result\": {\"embargo_invariant\": all(assertion_results.values())},\n        }\n        return assertion_results, observed, [\"ledger:\" + r0[\"ledger_hash\"]], extra"
+      },
+      "original_predicate_names": [
+        "candidate_set_hash_equal",
+        "generic_query_request_hashes_equal",
+        "selection_decision_identity_equal",
+        "father_history_event_hashes_equal",
+        "endpoint_same",
+        "no_future_metadata_read"
+      ],
+      "replacement_grade": "POSITIVE_INVARIANCE_WITH_NEW_RED"
+    },
+    {
+      "actual_exception": {
+        "exception": "'NoneType' object has no attribute 'get'",
+        "exception_type": "AttributeError",
+        "status": "LEGACY_HANDLER_NOT_EVALUABLE",
+        "traceback": "Traceback (most recent call last):\n  File \"$STAGED_ROOT/sources/sgi1/01_LAB_IMPLEMENTATION/lab_sgi1/k11_runner.py\", line 314, in run_all\n    assertion_results, observed, evidence, extra = handler()\n                                                   ^^^^^^^^^\n  File \"$STAGED_ROOT/sources/sgi1/01_LAB_IMPLEMENTATION/lab_sgi1/k11_runner.py\", line 629, in case_desired_wound\n    seed_blob = json.dumps(r0[\"selection_summary\"].get(\"scope_hash\", \"\"))\n                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAttributeError: 'NoneType' object has no attribute 'get'\n"
+      },
+      "case_id": "K11-A2-DESIRED-WOUND-COUNTERFACTUAL",
+      "complete_replacement": false,
+      "native_positive": false,
+      "new_allowed_positive_nodes": [
+        "test_future_shadow_is_stable_and_false_lineage_diverges"
+      ],
+      "original_behavior_and_judgment": "Changing a hidden preferred wound must not author an ancestor. Captured proposal refusal prevents handler evaluation, so all-unproved is correct bookkeeping rather than a scientific negative. Independent clean positive preserves complete causal record under wound-label injection; material-source leak remains a separate boundary defect.",
+      "original_handler": {
+        "assertions": [],
+        "line": 611,
+        "path": "sources/g15/frozen/g13/03_POSTREPAIR_COURT/sources/sgi1/01_LAB_IMPLEMENTATION/lab_sgi1/k11_runner.py",
+        "source": "def case_desired_wound(self):\n        shadow = {\"future_child_desired_adversity_tag\": \"DESIRE_CHILDHOOD_TRAUMA\"}\n        r0 = self._pipe(\"M0\", \"M0_GENERAL\", \"RUN_WND\", \"R0\")\n        r1 = self._pipe(\"M0\", \"M0_GENERAL\", \"RUN_WND\", \"R0\",\n                        future_child_shadow=shadow)\n        rec = self._records[\"M0_GENERAL\"]\n        prompt_blob = rec.prompt_text + rec.system_text\n        seed_blob = json.dumps(r0[\"selection_summary\"].get(\"scope_hash\", \"\"))\n        no_keys = all(b not in prompt_blob + seed_blob for b in\n                      (\"trauma\", \"adversity\", \"wound\", \"abuse\", \"future_child\"))\n        dad0, dad1 = _dad_event_hashes(r0), _dad_event_hashes(r1)\n        blob0 = json.dumps(r0.get(\"dad_events\") or [], sort_keys=True).lower()\n        blob1 = json.dumps(r1.get(\"dad_events\") or [], sort_keys=True).lower()\n        no_abuse = all(w not in blob0 + blob1 for w in\n                       (\"abuse\", \"trauma\", \"beat\", \"assault\", \"maltreat\"))\n        assertion_results = {\n            \"no_father_abuse_generated_as_function_of_label\": no_abuse,\n            \"byte_equal_father_ledger\":\n                canon(r0.get(\"dad_events\") or []) == canon(r1.get(\"dad_events\") or []),\n            \"no_child_future_key_in_model_prompt_or_seed\": no_keys,\n        }\n        observed = {\"dad_hash_a\": dad0, \"dad_hash_b\": dad1,\n                    \"guard_a\": r0[\"guard\"][\"status\"],\n                    \"guard_b\": r1[\"guard\"][\"status\"]}\n        extra = {\n            \"intervention\": {\"changed\": \"future child desired adversity tag only\"},\n            \"input_hashes\": {\"mother_anchor\": self._fh(\"M0\"),\n                             \"proposal\": rec.proposal_hash},\n            \"cost\": {\"run_a\": r0[\"cost\"], \"run_b\": r1[\"cost\"]},\n            \"replay_result\": {\"invariant\": all(assertion_results.values())},\n        }\n        return assertion_results, observed, [\"ledger:\" + r0[\"ledger_hash\"]], extra"
+      },
+      "original_predicate_names": [
+        "no_father_abuse_generated_as_function_of_label",
+        "byte_equal_father_ledger",
+        "no_child_future_key_in_model_prompt_or_seed"
+      ],
+      "replacement_grade": "POSITIVE_AT_DECLARED_SHADOW_BOUNDARY"
+    },
+    {
+      "actual_exception": {
+        "exception": "'NoneType' object is not subscriptable",
+        "exception_type": "TypeError",
+        "status": "LEGACY_HANDLER_NOT_EVALUABLE",
+        "traceback": "Traceback (most recent call last):\n  File \"$STAGED_ROOT/sources/sgi1/01_LAB_IMPLEMENTATION/lab_sgi1/k11_runner.py\", line 314, in run_all\n    assertion_results, observed, evidence, extra = handler()\n                                                   ^^^^^^^^^\n  File \"$STAGED_ROOT/sources/sgi1/01_LAB_IMPLEMENTATION/lab_sgi1/k11_runner.py\", line 665, in case_independent_history\n    r1[\"construction_summary\"][\"terminal_status\"] == S.COMMITTED\n    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^\nTypeError: 'NoneType' object is not subscriptable\n"
+      },
+      "case_id": "K11-B-INDEPENDENT-HISTORY",
+      "complete_replacement": false,
+      "native_positive": false,
+      "new_allowed_positive_nodes": [
+        "test_two_material_lives_reach_same_endpoint_without_retrofit"
+      ],
+      "original_behavior_and_judgment": "Two endpoint-compatible lives must differ in actual material/formed/action state, not only IDs. The old nonmother_projects_distinct predicate accepts any nonempty project list via `proj1 != proj2 or bool(proj1)`; that predicate alone never proved project diversity. Closed capture refusal loses the original positive. Independent material2 versus5 histories reach the same endpoint with practice2 versus3 and performed-work after3 versus4. This supports bounded variation; fixed repair/finishing project and formation formulas do not establish general independent persons.",
+      "original_handler": {
+        "assertions": [],
+        "line": 644,
+        "path": "sources/g15/frozen/g13/03_POSTREPAIR_COURT/sources/sgi1/01_LAB_IMPLEMENTATION/lab_sgi1/k11_runner.py",
+        "source": "def case_independent_history(self):\n        seeds_a = [\"HIST_A_SEED_1\", \"HIST_A_SEED_2\", \"HIST_A_SEED_3\", \"HIST_A_SEED_4\"]\n        seeds_b = [\"HIST_B_SEED_9\", \"HIST_B_SEED_8\", \"HIST_B_SEED_7\", \"HIST_B_SEED_6\"]\n        r1 = self._pipe(\"M0\", \"M0_GENERAL\", \"RUN_IH\", \"R0\",\n                        dad_attempt_seeds=seeds_a)\n        r2 = self._pipe(\"M0\", \"M0_GENERAL\", \"RUN_IH\", \"R0\",\n                        dad_attempt_seeds=seeds_b)\n        ev1, ev2 = r1.get(\"dad_events\") or [], r2.get(\"dad_events\") or []\n        distinct = h_obj(ev1) != h_obj(ev2)\n        both_valid = (\n            r1[\"construction_summary\"][\"terminal_status\"] == S.COMMITTED\n            and r2[\"construction_summary\"][\"terminal_status\"] == S.COMMITTED\n            and r1[\"construction_summary\"][\"attempts\"][-1][\"endpoint_match\"]\n            and r2[\"construction_summary\"][\"attempts\"][-1][\"endpoint_match\"]\n        )\n        proj1 = [e[\"payload\"].get(\"project\") for e in ev1 if e[\"kind\"] == \"PROJECT\"]\n        proj2 = [e[\"payload\"].get(\"project\") for e in ev2 if e[\"kind\"] == \"PROJECT\"]\n        nonendpoint_diff = any(\n            e1[\"payload\"] != e2[\"payload\"]\n            for e1, e2 in zip(ev1, ev2) if e1[\"kind\"] == e2[\"kind\"]\n        ) or len(ev1) != len(ev2)\n        typed_machine = all(\n            e.get(\"kind\") and e.get(\"payload\") is not None\n            and \"causal_parent_event_ids\" in e for e in ev1 + ev2\n        )\n        idx_ok1 = all(\n            e2[\"effective_index\"] > e1[\"effective_index\"]\n            for e1, e2 in zip(ev1, ev1[1:])\n        )\n        idx_ok2 = all(\n            e2[\"effective_index\"] > e1[\"effective_index\"]\n            for e1, e2 in zip(ev2, ev2[1:])\n        )\n        assertion_results = {\n            \"at_least_two_endpoint_valid_distinct_nonendpoint_causal_histories_where_fixture_supports_alternatives\":\n                both_valid and distinct and nonendpoint_diff,\n            \"nonmother_projects_distinct\": proj1 != proj2 or bool(proj1),\n            \"identity_or_histories_not_merely_prose\": typed_machine,\n            \"endpoint_hash_constraints_equal\":\n                h_obj(r1[\"scenario\"][\"endpoint_constraints\"])\n                == h_obj(r2[\"scenario\"][\"endpoint_constraints\"]),\n            \"no_hidden_backdating\": idx_ok1 and idx_ok2,\n        }\n        observed = {\n            \"run_a_events\": len(ev1), \"run_b_events\": len(ev2),\n            \"distinct_histories\": distinct, \"both_endpoint_valid\": both_valid,\n            \"projects_a\": proj1, \"projects_b\": proj2,\n        }\n        extra = {\n            \"intervention\": {\"varied\": \"second-parent past seeds only\",\n                             \"endpoint_constraints_fixed\": True},\n            \"input_hashes\": {\"mother_anchor\": self._fh(\"M0\")},\n            \"cost\": {\"run_a\": r1[\"cost\"], \"run_b\": r2[\"cost\"]},\n            \"replay_result\": {\"two_distinct_valid_histories\": both_valid and distinct},\n        }\n        return assertion_results, observed, [\"ledger:\" + r1[\"ledger_hash\"]], extra"
+      },
+      "original_predicate_names": [
+        "at_least_two_endpoint_valid_distinct_nonendpoint_causal_histories_where_fixture_supports_alternatives",
+        "nonmother_projects_distinct",
+        "identity_or_histories_not_merely_prose",
+        "endpoint_hash_constraints_equal",
+        "no_hidden_backdating"
+      ],
+      "replacement_grade": "PARTIAL_POSITIVE_NOT_GENERAL_PERSON"
+    },
+    {
+      "actual_exception": {
+        "exception": "'NoneType' object is not subscriptable",
+        "exception_type": "TypeError",
+        "status": "LEGACY_HANDLER_NOT_EVALUABLE",
+        "traceback": "Traceback (most recent call last):\n  File \"$STAGED_ROOT/sources/sgi1/01_LAB_IMPLEMENTATION/lab_sgi1/k11_runner.py\", line 314, in run_all\n    assertion_results, observed, evidence, extra = handler()\n                                                   ^^^^^^^^^\n  File \"$STAGED_ROOT/sources/sgi1/01_LAB_IMPLEMENTATION/lab_sgi1/k11_runner.py\", line 826, in case_independent_project\n    and r1[\"construction_summary\"][\"attempts\"][-1][\"endpoint_match\"],\n        ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^\nTypeError: 'NoneType' object is not subscriptable\n"
+      },
+      "case_id": "K11-E-INDEPENDENT-PROJECT",
+      "complete_replacement": false,
+      "native_positive": false,
+      "new_allowed_positive_nodes": [
+        "test_peer_quantity_reaches_actual_settlement",
+        "test_joined_terminal_refuses_material_overspend"
+      ],
+      "original_behavior_and_judgment": "Legitimate nonmother project and nonkin action coverage cannot be replaced by a refusal. Independent one-tool return changes debt and actual settlement; material history changes formed practice and performed work. However repeated tool returns exceed tool stock, and repeated projects overspend material even at the joined terminal. Thus the narrower positive exists but resource-valid scientific continuation is not qualified.",
+      "original_handler": {
+        "assertions": [],
+        "line": 791,
+        "path": "sources/g15/frozen/g13/03_POSTREPAIR_COURT/sources/sgi1/01_LAB_IMPLEMENTATION/lab_sgi1/k11_runner.py",
+        "source": "def case_independent_project(self):\n        r1 = self._pipe(\"M0\", \"M0_GENERAL\", \"RUN_EIP\", \"R0\")\n        r2 = self._pipe(\"M0\", \"M0_GENERAL\", \"RUN_EIP\", \"R0\")\n        evs = r1.get(\"dad_events\") or []\n        proj = [e for e in evs if e[\"kind\"] == \"PROJECT\"]\n        rels = [e for e in evs if e[\"kind\"] == \"NONMOTHER_RELATIONSHIP\"]\n        probe_block = None\n        for a in (r1[\"construction_summary\"] or {}).get(\"attempts\", []):\n            if a.get(\"endpoint_match\"):\n                probe_block = a.get(\"probes\")\n        has_effect = any(p[\"payload\"].get(\"durable_effect\") and\n                         p[\"payload\"].get(\"nonmother\") for p in proj)\n        third_party = any(x.get(\"third_party\") for x in [p[\"payload\"] for p in proj]) \\\n            and all(l[\"payload\"].get(\"counterpart\") for l in rels)\n        probes_ok = bool(probe_block and probe_block[\"heldout_independence_pass\"]\n                         and all(not p[\"mom_or_child_in_prompt\"]\n                                 for p in probe_block[\"probes\"]))\n        typed_ok = all(e.get(\"kind\") and \"causal_parent_event_ids\" in e for e in evs)\n        assertion_results = {\n            \"nonmother_project_has_causal_effect_record\": has_effect,\n            \"third_party_relationship_remains_actor_specific\": third_party,\n            \"father_can_act_without_mother_prompt\": probes_ok,\n            \"exact_forward_replay\":\n                _dad_event_hashes(r1) == _dad_event_hashes(r2)\n                and r1[\"construction_summary\"][\"attempts\"][-1][\"endpoint_match\"],\n            \"not_biography_prose\": typed_ok and bool(probe_block)\n                and all(not p[\"is_prose_only\"] for p in probe_block[\"probes\"]),\n        }\n        observed = {\n            \"projects\": [p[\"payload\"].get(\"project\") for p in proj],\n            \"relations\": [l[\"payload\"].get(\"counterpart\") for l in rels],\n            \"probes\": probe_block,\n        }\n        extra = {\n            \"intervention\": {\"heldout_probes\": 2, \"mom_or_child_in_prompt\": False},\n            \"input_hashes\": {\"mother_anchor\": self._fh(\"M0\")},\n            \"cost\": r1[\"cost\"],\n            \"replay_result\": {\"exact\": assertion_results[\"exact_forward_replay\"]},\n        }\n        return assertion_results, observed, [\"ledger:\" + r1[\"ledger_hash\"]], extra"
+      },
+      "original_predicate_names": [
+        "nonmother_project_has_causal_effect_record",
+        "third_party_relationship_remains_actor_specific",
+        "father_can_act_without_mother_prompt",
+        "exact_forward_replay",
+        "not_biography_prose"
+      ],
+      "replacement_grade": "PARTIAL_POSITIVE_WITH_CURRENT_BEHAVIORAL_DEFECT"
+    },
+    {
+      "actual_exception": {
+        "exception": "'NoneType' object is not subscriptable",
+        "exception_type": "TypeError",
+        "status": "LEGACY_HANDLER_NOT_EVALUABLE",
+        "traceback": "Traceback (most recent call last):\n  File \"$STAGED_ROOT/sources/sgi1/01_LAB_IMPLEMENTATION/lab_sgi1/k11_runner.py\", line 314, in run_all\n    assertion_results, observed, evidence, extra = handler()\n                                                   ^^^^^^^^^\n  File \"$STAGED_ROOT/sources/sgi1/01_LAB_IMPLEMENTATION/lab_sgi1/k11_runner.py\", line 1006, in case_retry_bias\n    c2_feasible = r_ok[\"construction_summary\"][\"terminal_status\"] == S.COMMITTED\n                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^\nTypeError: 'NoneType' object is not subscriptable\n"
+      },
+      "case_id": "K11-RETRY-BIAS",
+      "complete_replacement": false,
+      "native_positive": false,
+      "new_allowed_positive_nodes": [
+        "test_retry_empty_and_authority_outcomes_remain_distinct"
+      ],
+      "original_behavior_and_judgment": "An actually selected infeasible endpoint must retain four attempts and no silent redraw; a successful alternative must remain possible. Capture refusal prevents the original handler. Independent clean joined positive and impossible endpoint produce exactly the declared four failed attempts with bias-report fields, verified by same-assertion source fault. Acceptance rates of unselected classes remain unmeasured.",
+      "original_handler": {
+        "assertions": [],
+        "line": 990,
+        "path": "sources/g15/frozen/g13/03_POSTREPAIR_COURT/sources/sgi1/01_LAB_IMPLEMENTATION/lab_sgi1/k11_runner.py",
+        "source": "def case_retry_bias(self):\n        r_fail = self._pipe(\"M0\", \"M0_GENERAL\", \"RUN_RB\", \"R0\",\n                            force_selection_index=0,\n                            endpoint_place_override=\"IMPOSSIBLE_UNCONSTRUCTIBLE_PLACE\")\n        r_ok = self._pipe(\"M0\", \"M0_GENERAL\", \"RUN_RB_OK\", \"R0\")\n        c2_feasible = r_ok[\"construction_summary\"][\"terminal_status\"] == S.COMMITTED\n        attempts = (r_fail.get(\"construction_summary\") or {}).get(\"attempts\") or []\n        persisted = len(attempts) == 4 and all(\n            a.get(\"status\") for a in attempts)\n        bias = r_fail[\"terminal\"].get(\"effective_selection_bias_report\")\n        assertion_results = {\n            \"failed_attempt_receipt_persisted\": persisted,\n            \"no_silent_resample\":\n                bool(r_fail[\"terminal\"].get(\"silent_resample_performed\") is False)\n                and (r_fail.get(\"selection_summary\") is None\n                     or (r_fail[\"selection_summary\"] or {}).get(\"n_draws\", 0) <= 1),\n            \"effective_selection_bias_report_or_HOLD\":\n                bias is not None\n                or r_fail[\"terminal\"][\"status\"] == S.SELECTION_BIAS_UNQUANTIFIED_HOLD,\n            \"no_causal_commit_for_C1\":\n                r_fail[\"terminal\"][\"status\"] != S.COMMITTED\n                and r_fail.get(\"relation\") is None\n                and r_fail.get(\"child_fixture\") is None and c2_feasible,\n        }\n        observed = {\n            \"terminal\": r_fail[\"terminal\"], \"n_attempts\": len(attempts),\n            \"c2_independently_feasible\": c2_feasible,\n        }\n        extra = {\n            \"intervention\": {\"forced_selected_scenario_endpoint_unconstructible\": True,\n                             \"comparison_scenario_feasible\": c2_feasible},\n            \"input_hashes\": {\"mother_anchor\": self._fh(\"M0\")},\n            \"cost\": {\"forced_fail\": r_fail[\"cost\"], \"feasible_run\": r_ok[\"cost\"]},\n            \"replay_result\": {\"bias_report\": bias},\n        }\n        return assertion_results, observed, [\"ledger:\" + r_fail[\"ledger_hash\"]], extra"
+      },
+      "original_predicate_names": [
+        "failed_attempt_receipt_persisted",
+        "no_silent_resample",
+        "effective_selection_bias_report_or_HOLD",
+        "no_causal_commit_for_C1"
+      ],
+      "replacement_grade": "LEGITIMATE_ALTERNATIVE_POSITIVE"
+    },
+    {
+      "actual_exception": {
+        "exception": "'NoneType' object is not subscriptable",
+        "exception_type": "TypeError",
+        "status": "LEGACY_HANDLER_NOT_EVALUABLE",
+        "traceback": "Traceback (most recent call last):\n  File \"$STAGED_ROOT/sources/sgi1/01_LAB_IMPLEMENTATION/lab_sgi1/k11_runner.py\", line 314, in run_all\n    assertion_results, observed, evidence, extra = handler()\n                                                   ^^^^^^^^^\n  File \"$STAGED_ROOT/sources/sgi1/01_LAB_IMPLEMENTATION/lab_sgi1/k11_runner.py\", line 1090, in case_relation_asymmetry\n    obj = rel[\"objective_relation\"]\n          ~~~^^^^^^^^^^^^^^^^^^^^^^\nTypeError: 'NoneType' object is not subscriptable\n"
+      },
+      "case_id": "K11-RELATION-ASYMMETRY",
+      "complete_replacement": false,
+      "native_positive": false,
+      "new_allowed_positive_nodes": [
+        "test_variable_task_cost_reaches_continued_context",
+        "test_task_contact_preserves_unknown_views_and_native_limits"
+      ],
+      "original_behavior_and_judgment": "Old solo work and force_mom_affectionate_dad_unknown=True do not provide a joint forming witness or an affection-formation source. Refusal of that unsupported positive is legitimate. Independent witnessed task contact binds two real fixture histories, keeps both views unknown, and infers no reciprocity/household. A source-qualified differentiated subjective state remains unproved; unknown/unknown is not an affectionate/unknown replacement.",
+      "original_handler": {
+        "assertions": [],
+        "line": 1073,
+        "path": "sources/g15/frozen/g13/03_POSTREPAIR_COURT/sources/sgi1/01_LAB_IMPLEMENTATION/lab_sgi1/k11_runner.py",
+        "source": "def case_relation_asymmetry(self):\n        r1 = self._pipe(\"M0\", \"M0_GENERAL\", \"RUN_RA\", \"R0\",\n                        force_mom_affectionate_dad_unknown=True)\n        r2 = self._pipe(\"M0\", \"M0_GENERAL\", \"RUN_RA\", \"R0\",\n                        force_mom_affectionate_dad_unknown=True)\n        rel = r1[\"relation\"]\n        obj = rel[\"objective_relation\"]\n        per = rel[\"perceived_states\"]\n        assertion_results = {\n            \"one_objective_relation_event\":\n                obj[\"single_objective_record\"]\n                and len(obj[\"shared_event_refs\"]) == 1,\n            \"two_distinct_perspective_states_where_admitted\":\n                len(per) == 2 and per[0][\"perceived_state\"] != per[1][\"perceived_state\"],\n            \"no_reciprocity_inference\": rel[\"reciprocity_inferred\"] is False,\n            \"zero_auto_household_membership\":\n                rel[\"household_membership_auto\"] is False,\n            \"both_continuations_replay\":\n                r1[\"continuation\"][\"both_parents_continue_independently\"]\n                and h_obj(r1[\"continuation\"]) == h_obj(r2[\"continuation\"]),\n        }\n        observed = {\"objective\": obj, \"perceived\": per}\n        extra = {\n            \"intervention\": {\"mom_affectionate\": True, \"dad_state\": \"UNKNOWN_OR_NONRECIPROCAL\"},\n            \"input_hashes\": {\"mother_anchor\": self._fh(\"M0\")},\n            \"cost\": r1[\"cost\"],\n            \"replay_result\": {\"continuations_stable\":\n                              assertion_results[\"both_continuations_replay\"]},\n        }\n        return assertion_results, observed, [\"ledger:\" + r1[\"ledger_hash\"]], extra"
+      },
+      "original_predicate_names": [
+        "one_objective_relation_event",
+        "two_distinct_perspective_states_where_admitted",
+        "no_reciprocity_inference",
+        "zero_auto_household_membership",
+        "both_continuations_replay"
+      ],
+      "replacement_grade": "PARTIAL_UNKNOWN_VIEWS_ONLY"
+    }
+  ],
+  "interpretation": "Every distinct behavior is investigated and positive alternatives executed where representable. Partial and absent replacements block genealogy adoption; no all-false adapter row is scientific evidence against all original predicates."
+}

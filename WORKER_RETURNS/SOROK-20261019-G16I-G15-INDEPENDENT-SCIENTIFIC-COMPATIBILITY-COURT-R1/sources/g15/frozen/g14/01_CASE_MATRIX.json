@@ -1,0 +1,2351 @@
+{
+  "denominators": {
+    "g13_author_tests": 87,
+    "historical_sgi1_separate": 25,
+    "independent_g14": 67,
+    "inherited_original_tests": 94,
+    "original_k11_atomic_predicates": 98,
+    "original_k11_cases": 24,
+    "target_total": 181,
+    "warning": "98 predicates are nested in 24 cases; 28 author checks repeat those cases. Do not add predicates, cases, fingerprints and pytest rows as independent evidence."
+  },
+  "historical_control": [
+    {
+      "command": [
+        "python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-s",
+        "-p",
+        "no:cacheprovider",
+        "--tb=short",
+        "test_original_sgi1.py",
+        "--junitxml=../../execution/sgi1_historical.xml"
+      ],
+      "cwd": "historical/03_POSTREPAIR_COURT",
+      "exit_status": 0,
+      "junit": "execution/sgi1_historical.xml",
+      "portability_substitution": "$WORKTREE replaces absolute checkout prefix only; python3 names selected interpreter",
+      "seconds": 0.5932514788582921,
+      "stdout": "execution/sgi1_historical.txt",
+      "suite": "sgi1_historical",
+      "tests": [
+        {
+          "classname": "test_original_sgi1",
+          "name": "test_literal_original_k11_case[K11-BASE-LOCAL]",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_original_sgi1",
+          "name": "test_literal_original_k11_case[K11-ROUTE-DISCORDANT]",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_original_sgi1",
+          "name": "test_literal_original_k11_case[K11-ROUTE-MOBILITY]",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_original_sgi1",
+          "name": "test_literal_original_k11_case[K11-ROUTE-UNCONVENTIONAL]",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_original_sgi1",
+          "name": "test_literal_original_k11_case[K11-A-FUTURE-CHILD-EMBARGO]",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_original_sgi1",
+          "name": "test_literal_original_k11_case[K11-A2-DESIRED-WOUND-COUNTERFACTUAL]",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_original_sgi1",
+          "name": "test_literal_original_k11_case[K11-B-INDEPENDENT-HISTORY]",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_original_sgi1",
+          "name": "test_literal_original_k11_case[K11-C-EXISTING-PARTNER]",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_original_sgi1",
+          "name": "test_literal_original_k11_case[K11-C2-EXISTING-SHARED-EVENT]",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_original_sgi1",
+          "name": "test_literal_original_k11_case[K11-D-PARITY]",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_original_sgi1",
+          "name": "test_literal_original_k11_case[K11-E-INDEPENDENT-PROJECT]",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_original_sgi1",
+          "name": "test_literal_original_k11_case[K11-GRAPH-CONSTRUCTION-VS-CAUSAL]",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_original_sgi1",
+          "name": "test_literal_original_k11_case[K11-DEDUPE]",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_original_sgi1",
+          "name": "test_literal_original_k11_case[K11-EMPIRICAL-CEILING]",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_original_sgi1",
+          "name": "test_literal_original_k11_case[K11-WEIGHT-ORDINAL]",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_original_sgi1",
+          "name": "test_literal_original_k11_case[K11-WEIGHT-SENSITIVITY]",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_original_sgi1",
+          "name": "test_literal_original_k11_case[K11-RETRY-BIAS]",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_original_sgi1",
+          "name": "test_literal_original_k11_case[K11-VALID-EMPTY]",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_original_sgi1",
+          "name": "test_literal_original_k11_case[K11-UNKNOWN-REQUIRED]",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_original_sgi1",
+          "name": "test_literal_original_k11_case[K11-RELATION-ASYMMETRY]",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_original_sgi1",
+          "name": "test_literal_original_k11_case[K11-CONCEPTION-CHILDGEN-BOUNDARY]",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_original_sgi1",
+          "name": "test_literal_original_k11_case[K11-MISSING-HISTORY]",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_original_sgi1",
+          "name": "test_literal_original_k11_case[K11-SCHEDULER-SAME-TIME]",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_original_sgi1",
+          "name": "test_literal_original_k11_case[K11-REPLAY-ALTER-SUBJECT]",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_original_sgi1",
+          "name": "test_complete_denominator_and_offline",
+          "status": "PASS"
+        }
+      ]
+    }
+  ],
+  "independent_counts": {
+    "PASS": 40,
+    "RED": 27
+  },
+  "independent_g14": [
+    {
+      "assertion": null,
+      "classname": "WORKER_RETURNS.SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1.test_g14_science",
+      "evidence": "execution/g14_observations.json; execution/g14_science.xml",
+      "expected_assertions": [
+        "assert a['endpoint_match'] and b['endpoint_match']",
+        "assert a['recomputed_state']==b['recomputed_state']"
+      ],
+      "expected_exception_controls": [],
+      "family": "F1",
+      "interpretation": "Tested dependency/guard holds",
+      "name": "test_f1_clean_and_shuffled_replay_have_same_state",
+      "scientific_question": "f1 clean and shuffled replay have same state",
+      "source_file": "test_g14_science.py",
+      "source_line": 81,
+      "status": "PASS"
+    },
+    {
+      "assertion": null,
+      "classname": "WORKER_RETURNS.SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1.test_g14_science",
+      "evidence": "execution/g14_observations.json; execution/g14_science.xml",
+      "expected_assertions": [
+        "assert not r['endpoint_match']"
+      ],
+      "expected_exception_controls": [],
+      "family": "F1",
+      "interpretation": "Tested dependency/guard holds",
+      "name": "test_f1_dependency_severance_and_forgery_refused[missing_parent]",
+      "scientific_question": "f1 dependency severance and forgery refused",
+      "source_file": "test_g14_science.py",
+      "source_line": 89,
+      "status": "PASS"
+    },
+    {
+      "assertion": null,
+      "classname": "WORKER_RETURNS.SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1.test_g14_science",
+      "evidence": "execution/g14_observations.json; execution/g14_science.xml",
+      "expected_assertions": [
+        "assert not r['endpoint_match']"
+      ],
+      "expected_exception_controls": [],
+      "family": "F1",
+      "interpretation": "Tested dependency/guard holds",
+      "name": "test_f1_dependency_severance_and_forgery_refused[future_parent]",
+      "scientific_question": "f1 dependency severance and forgery refused",
+      "source_file": "test_g14_science.py",
+      "source_line": 89,
+      "status": "PASS"
+    },
+    {
+      "assertion": null,
+      "classname": "WORKER_RETURNS.SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1.test_g14_science",
+      "evidence": "execution/g14_observations.json; execution/g14_science.xml",
+      "expected_assertions": [
+        "assert not r['endpoint_match']"
+      ],
+      "expected_exception_controls": [],
+      "family": "F1",
+      "interpretation": "Tested dependency/guard holds",
+      "name": "test_f1_dependency_severance_and_forgery_refused[self_parent]",
+      "scientific_question": "f1 dependency severance and forgery refused",
+      "source_file": "test_g14_science.py",
+      "source_line": 89,
+      "status": "PASS"
+    },
+    {
+      "assertion": null,
+      "classname": "WORKER_RETURNS.SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1.test_g14_science",
+      "evidence": "execution/g14_observations.json; execution/g14_science.xml",
+      "expected_assertions": [
+        "assert not r['endpoint_match']"
+      ],
+      "expected_exception_controls": [],
+      "family": "F1",
+      "interpretation": "Tested dependency/guard holds",
+      "name": "test_f1_dependency_severance_and_forgery_refused[duplicate_id]",
+      "scientific_question": "f1 dependency severance and forgery refused",
+      "source_file": "test_g14_science.py",
+      "source_line": 89,
+      "status": "PASS"
+    },
+    {
+      "assertion": null,
+      "classname": "WORKER_RETURNS.SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1.test_g14_science",
+      "evidence": "execution/g14_observations.json; execution/g14_science.xml",
+      "expected_assertions": [
+        "assert not r['endpoint_match']"
+      ],
+      "expected_exception_controls": [],
+      "family": "F1",
+      "interpretation": "Tested dependency/guard holds",
+      "name": "test_f1_dependency_severance_and_forgery_refused[duplicate_index]",
+      "scientific_question": "f1 dependency severance and forgery refused",
+      "source_file": "test_g14_science.py",
+      "source_line": 89,
+      "status": "PASS"
+    },
+    {
+      "assertion": null,
+      "classname": "WORKER_RETURNS.SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1.test_g14_science",
+      "evidence": "execution/g14_observations.json; execution/g14_science.xml",
+      "expected_assertions": [
+        "assert not r['endpoint_match']"
+      ],
+      "expected_exception_controls": [],
+      "family": "F1",
+      "interpretation": "Tested dependency/guard holds",
+      "name": "test_f1_dependency_severance_and_forgery_refused[orphan]",
+      "scientific_question": "f1 dependency severance and forgery refused",
+      "source_file": "test_g14_science.py",
+      "source_line": 89,
+      "status": "PASS"
+    },
+    {
+      "assertion": null,
+      "classname": "WORKER_RETURNS.SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1.test_g14_science",
+      "evidence": "execution/g14_observations.json; execution/g14_science.xml",
+      "expected_assertions": [
+        "assert not r['endpoint_match']"
+      ],
+      "expected_exception_controls": [],
+      "family": "F1",
+      "interpretation": "Tested dependency/guard holds",
+      "name": "test_f1_dependency_severance_and_forgery_refused[endpoint_place]",
+      "scientific_question": "f1 dependency severance and forgery refused",
+      "source_file": "test_g14_science.py",
+      "source_line": 89,
+      "status": "PASS"
+    },
+    {
+      "assertion": null,
+      "classname": "WORKER_RETURNS.SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1.test_g14_science",
+      "evidence": "execution/g14_observations.json; execution/g14_science.xml",
+      "expected_assertions": [
+        "assert not r['endpoint_match']"
+      ],
+      "expected_exception_controls": [],
+      "family": "F1",
+      "interpretation": "Tested dependency/guard holds",
+      "name": "test_f1_dependency_severance_and_forgery_refused[endpoint_availability]",
+      "scientific_question": "f1 dependency severance and forgery refused",
+      "source_file": "test_g14_science.py",
+      "source_line": 89,
+      "status": "PASS"
+    },
+    {
+      "assertion": null,
+      "classname": "WORKER_RETURNS.SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1.test_g14_science",
+      "evidence": "execution/g14_observations.json; execution/g14_science.xml",
+      "expected_assertions": [
+        "assert not r['endpoint_match']"
+      ],
+      "expected_exception_controls": [],
+      "family": "F1",
+      "interpretation": "Tested dependency/guard holds",
+      "name": "test_f1_dependency_severance_and_forgery_refused[route_removed]",
+      "scientific_question": "f1 dependency severance and forgery refused",
+      "source_file": "test_g14_science.py",
+      "source_line": 89,
+      "status": "PASS"
+    },
+    {
+      "assertion": "AssertionError: root existence cannot prove commissioned-work competence\nassert not True",
+      "classname": "WORKER_RETURNS.SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1.test_g14_science",
+      "evidence": "execution/g14_observations.json; execution/g14_science.xml",
+      "expected_assertions": [
+        "assert not r['stopping']['sufficient'], 'root existence cannot prove commissioned-work competence'"
+      ],
+      "expected_exception_controls": [],
+      "family": "F1",
+      "interpretation": "Stronger scientific or custody claim falsified at tested helper boundary; see seven-family adjudication",
+      "name": "test_f1_route_parent_substitution_cannot_replace_work_formation",
+      "scientific_question": "f1 route parent substitution cannot replace work formation",
+      "source_file": "test_g14_science.py",
+      "source_line": 104,
+      "status": "RED"
+    },
+    {
+      "assertion": null,
+      "classname": "WORKER_RETURNS.SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1.test_g14_science",
+      "evidence": "execution/g14_observations.json; execution/g14_science.xml",
+      "expected_assertions": [
+        "assert not r['stopping']['sufficient']"
+      ],
+      "expected_exception_controls": [],
+      "family": "F2",
+      "interpretation": "Tested dependency/guard holds",
+      "name": "test_f2_required_domain_severance_refuses_sufficiency[WORK_POSITION]",
+      "scientific_question": "f2 required domain severance refuses sufficiency",
+      "source_file": "test_g14_science.py",
+      "source_line": 114,
+      "status": "PASS"
+    },
+    {
+      "assertion": null,
+      "classname": "WORKER_RETURNS.SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1.test_g14_science",
+      "evidence": "execution/g14_observations.json; execution/g14_science.xml",
+      "expected_assertions": [
+        "assert not r['stopping']['sufficient']"
+      ],
+      "expected_exception_controls": [],
+      "family": "F2",
+      "interpretation": "Tested dependency/guard holds",
+      "name": "test_f2_required_domain_severance_refuses_sufficiency[ORGANISMIC_EVENT]",
+      "scientific_question": "f2 required domain severance refuses sufficiency",
+      "source_file": "test_g14_science.py",
+      "source_line": 114,
+      "status": "PASS"
+    },
+    {
+      "assertion": null,
+      "classname": "WORKER_RETURNS.SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1.test_g14_science",
+      "evidence": "execution/g14_observations.json; execution/g14_science.xml",
+      "expected_assertions": [
+        "assert not r['stopping']['sufficient']"
+      ],
+      "expected_exception_controls": [],
+      "family": "F2",
+      "interpretation": "Tested dependency/guard holds",
+      "name": "test_f2_required_domain_severance_refuses_sufficiency[PROJECT]",
+      "scientific_question": "f2 required domain severance refuses sufficiency",
+      "source_file": "test_g14_science.py",
+      "source_line": 114,
+      "status": "PASS"
+    },
+    {
+      "assertion": null,
+      "classname": "WORKER_RETURNS.SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1.test_g14_science",
+      "evidence": "execution/g14_observations.json; execution/g14_science.xml",
+      "expected_assertions": [
+        "assert not r['stopping']['sufficient']"
+      ],
+      "expected_exception_controls": [],
+      "family": "F2",
+      "interpretation": "Tested dependency/guard holds",
+      "name": "test_f2_required_domain_severance_refuses_sufficiency[NONMOTHER_RELATIONSHIP]",
+      "scientific_question": "f2 required domain severance refuses sufficiency",
+      "source_file": "test_g14_science.py",
+      "source_line": 114,
+      "status": "PASS"
+    },
+    {
+      "assertion": null,
+      "classname": "WORKER_RETURNS.SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1.test_g14_science",
+      "evidence": "execution/g14_observations.json; execution/g14_science.xml",
+      "expected_assertions": [
+        "assert not r['stopping']['sufficient']"
+      ],
+      "expected_exception_controls": [],
+      "family": "F2",
+      "interpretation": "Tested dependency/guard holds",
+      "name": "test_f2_required_domain_severance_refuses_sufficiency[PRACTICE_FORMATION]",
+      "scientific_question": "f2 required domain severance refuses sufficiency",
+      "source_file": "test_g14_science.py",
+      "source_line": 114,
+      "status": "PASS"
+    },
+    {
+      "assertion": null,
+      "classname": "WORKER_RETURNS.SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1.test_g14_science",
+      "evidence": "execution/g14_observations.json; execution/g14_science.xml",
+      "expected_assertions": [
+        "assert not r['stopping']['sufficient']"
+      ],
+      "expected_exception_controls": [],
+      "family": "F2",
+      "interpretation": "Tested dependency/guard holds",
+      "name": "test_f2_required_domain_severance_refuses_sufficiency[MEMORY_TRACE]",
+      "scientific_question": "f2 required domain severance refuses sufficiency",
+      "source_file": "test_g14_science.py",
+      "source_line": 114,
+      "status": "PASS"
+    },
+    {
+      "assertion": "assert not True",
+      "classname": "WORKER_RETURNS.SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1.test_g14_science",
+      "evidence": "execution/g14_observations.json; execution/g14_science.xml",
+      "expected_assertions": [
+        "assert not r['stopping']['sufficient']"
+      ],
+      "expected_exception_controls": [],
+      "family": "F2",
+      "interpretation": "Stronger scientific or custody claim falsified at tested helper boundary; see seven-family adjudication",
+      "name": "test_f2_nonempty_but_unresolvable_psyche_refs_refused",
+      "scientific_question": "f2 nonempty but unresolvable psyche refs refused",
+      "source_file": "test_g14_science.py",
+      "source_line": 120,
+      "status": "RED"
+    },
+    {
+      "assertion": "assert not True",
+      "classname": "WORKER_RETURNS.SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1.test_g14_science",
+      "evidence": "execution/g14_observations.json; execution/g14_science.xml",
+      "expected_assertions": [
+        "assert not r['stopping']['sufficient']"
+      ],
+      "expected_exception_controls": [],
+      "family": "F2",
+      "interpretation": "Stronger scientific or custody claim falsified at tested helper boundary; see seven-family adjudication",
+      "name": "test_f2_memory_experienced_basis_must_resolve",
+      "scientific_question": "f2 memory experienced basis must resolve",
+      "source_file": "test_g14_science.py",
+      "source_line": 128,
+      "status": "RED"
+    },
+    {
+      "assertion": "assert not True",
+      "classname": "WORKER_RETURNS.SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1.test_g14_science",
+      "evidence": "execution/g14_observations.json; execution/g14_science.xml",
+      "expected_assertions": [
+        "assert not r['stopping']['sufficient']"
+      ],
+      "expected_exception_controls": [],
+      "family": "F2",
+      "interpretation": "Stronger scientific or custody claim falsified at tested helper boundary; see seven-family adjudication",
+      "name": "test_f2_empty_psyche_cannot_certify_existing_formation",
+      "scientific_question": "f2 empty psyche cannot certify existing formation",
+      "source_file": "test_g14_science.py",
+      "source_line": 136,
+      "status": "RED"
+    },
+    {
+      "assertion": null,
+      "classname": "WORKER_RETURNS.SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1.test_g14_science",
+      "evidence": "execution/g14_observations.json; execution/g14_science.xml",
+      "expected_assertions": [
+        "assert not pr['probes'][0]['pass']"
+      ],
+      "expected_exception_controls": [],
+      "family": "F3",
+      "interpretation": "Tested dependency/guard holds",
+      "name": "test_f3_removing_project_consequence_disables_action",
+      "scientific_question": "f3 removing project consequence disables action",
+      "source_file": "test_g14_science.py",
+      "source_line": 141,
+      "status": "PASS"
+    },
+    {
+      "assertion": "AssertionError: actions must depend on represented actor motivation/formation\nassert not True",
+      "classname": "WORKER_RETURNS.SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1.test_g14_science",
+      "evidence": "execution/g14_observations.json; execution/g14_science.xml",
+      "expected_assertions": [
+        "assert not b['heldout_independence_pass'], 'actions must depend on represented actor motivation/formation'"
+      ],
+      "expected_exception_controls": [],
+      "family": "F3",
+      "interpretation": "Stronger scientific or custody claim falsified at tested helper boundary; see seven-family adjudication",
+      "name": "test_f3_removing_actor_psyche_disables_motivated_actions",
+      "scientific_question": "f3 removing actor psyche disables motivated actions",
+      "source_file": "test_g14_science.py",
+      "source_line": 149,
+      "status": "RED"
+    },
+    {
+      "assertion": "assert not True",
+      "classname": "WORKER_RETURNS.SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1.test_g14_science",
+      "evidence": "execution/g14_observations.json; execution/g14_science.xml",
+      "expected_assertions": [
+        "assert not pr['probes'][0]['pass']"
+      ],
+      "expected_exception_controls": [],
+      "family": "F3",
+      "interpretation": "Stronger scientific or custody claim falsified at tested helper boundary; see seven-family adjudication",
+      "name": "test_f3_unrelated_false_consequence_is_not_capability_evidence",
+      "scientific_question": "f3 unrelated false consequence is not capability evidence",
+      "source_file": "test_g14_science.py",
+      "source_line": 155,
+      "status": "RED"
+    },
+    {
+      "assertion": "assert not True",
+      "classname": "WORKER_RETURNS.SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1.test_g14_science",
+      "evidence": "execution/g14_observations.json; execution/g14_science.xml",
+      "expected_assertions": [
+        "assert not pr['probes'][1]['pass']"
+      ],
+      "expected_exception_controls": [],
+      "family": "F3",
+      "interpretation": "Stronger scientific or custody claim falsified at tested helper boundary; see seven-family adjudication",
+      "name": "test_f3_missing_peer_identity_cannot_prove_actor_specific_obligation",
+      "scientific_question": "f3 missing peer identity cannot prove actor specific obligation",
+      "source_file": "test_g14_science.py",
+      "source_line": 163,
+      "status": "RED"
+    },
+    {
+      "assertion": null,
+      "classname": "WORKER_RETURNS.SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1.test_g14_science",
+      "evidence": "execution/g14_observations.json; execution/g14_science.xml",
+      "expected_assertions": [
+        "assert secret not in prompt"
+      ],
+      "expected_exception_controls": [],
+      "family": "F4",
+      "interpretation": "Tested dependency/guard holds",
+      "name": "test_f4_all_visible_prompt_paths_are_embargoed[target]",
+      "scientific_question": "f4 all visible prompt paths are embargoed",
+      "source_file": "test_g14_science.py",
+      "source_line": 172,
+      "status": "PASS"
+    },
+    {
+      "assertion": null,
+      "classname": "WORKER_RETURNS.SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1.test_g14_science",
+      "evidence": "execution/g14_observations.json; execution/g14_science.xml",
+      "expected_assertions": [
+        "assert secret not in prompt"
+      ],
+      "expected_exception_controls": [],
+      "family": "F4",
+      "interpretation": "Tested dependency/guard holds",
+      "name": "test_f4_all_visible_prompt_paths_are_embargoed[world]",
+      "scientific_question": "f4 all visible prompt paths are embargoed",
+      "source_file": "test_g14_science.py",
+      "source_line": 172,
+      "status": "PASS"
+    },
+    {
+      "assertion": null,
+      "classname": "WORKER_RETURNS.SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1.test_g14_science",
+      "evidence": "execution/g14_observations.json; execution/g14_science.xml",
+      "expected_assertions": [
+        "assert secret not in prompt"
+      ],
+      "expected_exception_controls": [],
+      "family": "F4",
+      "interpretation": "Tested dependency/guard holds",
+      "name": "test_f4_all_visible_prompt_paths_are_embargoed[psyche]",
+      "scientific_question": "f4 all visible prompt paths are embargoed",
+      "source_file": "test_g14_science.py",
+      "source_line": 172,
+      "status": "PASS"
+    },
+    {
+      "assertion": "assert 'G14_FUTURE_...WOUND_SECRET' not in '{\"hard_rule...ummary\": {}}'\n  \n  'G14_FUTURE_CHILD_WOUND_SECRET' is contained here:\n    filter\": \"G14_FUTURE_CHILD_WOUND_SECRET\", \"scenario_grammar_version\": \"SCENARIO_CANDIDATE_GRAMMAR@1.0-LAB\", \"world_summary\": {}}\n  ?           +++++++++++++++++++++++++++++",
+      "classname": "WORKER_RETURNS.SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1.test_g14_science",
+      "evidence": "execution/g14_observations.json; execution/g14_science.xml",
+      "expected_assertions": [
+        "assert secret not in prompt"
+      ],
+      "expected_exception_controls": [],
+      "family": "F4",
+      "interpretation": "Stronger scientific or custody claim falsified at tested helper boundary; see seven-family adjudication",
+      "name": "test_f4_all_visible_prompt_paths_are_embargoed[route]",
+      "scientific_question": "f4 all visible prompt paths are embargoed",
+      "source_file": "test_g14_science.py",
+      "source_line": 172,
+      "status": "RED"
+    },
+    {
+      "assertion": "assert 'G14_FUTURE_...WOUND_SECRET' not in '{\"hard_rule..._SECRET\"}]}}'\n  \n  'G14_FUTURE_CHILD_WOUND_SECRET' is contained here:\n    nality\": \"G14_FUTURE_CHILD_WOUND_SECRET\"}]}}",
+      "classname": "WORKER_RETURNS.SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1.test_g14_science",
+      "evidence": "execution/g14_observations.json; execution/g14_science.xml",
+      "expected_assertions": [
+        "assert secret not in prompt"
+      ],
+      "expected_exception_controls": [],
+      "family": "F4",
+      "interpretation": "Stronger scientific or custody claim falsified at tested helper boundary; see seven-family adjudication",
+      "name": "test_f4_all_visible_prompt_paths_are_embargoed[tuple]",
+      "scientific_question": "f4 all visible prompt paths are embargoed",
+      "source_file": "test_g14_science.py",
+      "source_line": 172,
+      "status": "RED"
+    },
+    {
+      "assertion": "assert 'The future ...lected wound' not in '{\"hard_rule...ted wound\"}}'\n  \n  'The future child w... the selected wound' is contained here:\n    {\"note\": \"The future child will develop the selected wound\"}}",
+      "classname": "WORKER_RETURNS.SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1.test_g14_science",
+      "evidence": "execution/g14_observations.json; execution/g14_science.xml",
+      "expected_assertions": [
+        "assert secret not in prompt"
+      ],
+      "expected_exception_controls": [],
+      "family": "F4",
+      "interpretation": "Stronger scientific or custody claim falsified at tested helper boundary; see seven-family adjudication",
+      "name": "test_f4_all_visible_prompt_paths_are_embargoed[spaced_literal]",
+      "scientific_question": "f4 all visible prompt paths are embargoed",
+      "source_file": "test_g14_science.py",
+      "source_line": 172,
+      "status": "RED"
+    },
+    {
+      "assertion": null,
+      "classname": "WORKER_RETURNS.SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1.test_g14_science",
+      "evidence": "execution/g14_observations.json; execution/g14_science.xml",
+      "expected_assertions": [
+        "assert p['mother_anchor_visible_fields']['already_generated_child_refs']==['LAB_OLDER_CHILD_O1']",
+        "assert a==before"
+      ],
+      "expected_exception_controls": [],
+      "family": "F4",
+      "interpretation": "Tested dependency/guard holds",
+      "name": "test_f4_clean_older_child_history_preserved",
+      "scientific_question": "f4 clean older child history preserved",
+      "source_file": "test_g14_science.py",
+      "source_line": 186,
+      "status": "PASS"
+    },
+    {
+      "assertion": "AssertionError: a system-prompt prohibition is not output admission enforcement\nassert not True",
+      "classname": "WORKER_RETURNS.SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1.test_g14_science",
+      "evidence": "execution/g14_observations.json; execution/g14_science.xml",
+      "expected_assertions": [
+        "assert not q['eligibility']['eligible'], 'a system-prompt prohibition is not output admission enforcement'"
+      ],
+      "expected_exception_controls": [],
+      "family": "F4",
+      "interpretation": "Stronger scientific or custody claim falsified at tested helper boundary; see seven-family adjudication",
+      "name": "test_f4_embargoed_output_cannot_become_eligible_candidate",
+      "scientific_question": "f4 embargoed output cannot become eligible candidate",
+      "source_file": "test_g14_science.py",
+      "source_line": 192,
+      "status": "RED"
+    },
+    {
+      "assertion": null,
+      "classname": "WORKER_RETURNS.SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1.test_g14_science",
+      "evidence": "execution/g14_observations.json; execution/g14_science.xml",
+      "expected_assertions": [
+        "assert r['status']=='NOT_EXECUTED_AUTHORITY_HOLD' and r['n_draws']==0"
+      ],
+      "expected_exception_controls": [],
+      "family": "F5",
+      "interpretation": "Tested dependency/guard holds",
+      "name": "test_f5_unknown_roots_refuse_without_draw[short]",
+      "scientific_question": "f5 unknown roots refuse without draw",
+      "source_file": "test_g14_science.py",
+      "source_line": 202,
+      "status": "PASS"
+    },
+    {
+      "assertion": null,
+      "classname": "WORKER_RETURNS.SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1.test_g14_science",
+      "evidence": "execution/g14_observations.json; execution/g14_science.xml",
+      "expected_assertions": [
+        "assert r['status']=='NOT_EXECUTED_AUTHORITY_HOLD' and r['n_draws']==0"
+      ],
+      "expected_exception_controls": [],
+      "family": "F5",
+      "interpretation": "Tested dependency/guard holds",
+      "name": "test_f5_unknown_roots_refuse_without_draw[NOT_A_TOKEN]",
+      "scientific_question": "f5 unknown roots refuse without draw",
+      "source_file": "test_g14_science.py",
+      "source_line": 202,
+      "status": "PASS"
+    },
+    {
+      "assertion": null,
+      "classname": "WORKER_RETURNS.SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1.test_g14_science",
+      "evidence": "execution/g14_observations.json; execution/g14_science.xml",
+      "expected_assertions": [
+        "assert r['status']=='NOT_EXECUTED_AUTHORITY_HOLD' and r['n_draws']==0"
+      ],
+      "expected_exception_controls": [],
+      "family": "F5",
+      "interpretation": "Tested dependency/guard holds",
+      "name": "test_f5_unknown_roots_refuse_without_draw[ABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABAB]",
+      "scientific_question": "f5 unknown roots refuse without draw",
+      "source_file": "test_g14_science.py",
+      "source_line": 202,
+      "status": "PASS"
+    },
+    {
+      "assertion": null,
+      "classname": "WORKER_RETURNS.SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1.test_g14_science",
+      "evidence": "execution/g14_observations.json; execution/g14_science.xml",
+      "expected_assertions": [
+        "assert r['status']=='NOT_EXECUTED_AUTHORITY_HOLD' and r['n_draws']==0"
+      ],
+      "expected_exception_controls": [],
+      "family": "F5",
+      "interpretation": "Tested dependency/guard holds",
+      "name": "test_f5_unknown_roots_refuse_without_draw[00000000000000000000000000000000000000000000000000000000000000]",
+      "scientific_question": "f5 unknown roots refuse without draw",
+      "source_file": "test_g14_science.py",
+      "source_line": 202,
+      "status": "PASS"
+    },
+    {
+      "assertion": null,
+      "classname": "WORKER_RETURNS.SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1.test_g14_science",
+      "evidence": "execution/g14_observations.json; execution/g14_science.xml",
+      "expected_assertions": [
+        "assert r['status']=='NOT_EXECUTED_AUTHORITY_HOLD' and r['n_draws']==0"
+      ],
+      "expected_exception_controls": [],
+      "family": "F5",
+      "interpretation": "Tested dependency/guard holds",
+      "name": "test_f5_unknown_roots_refuse_without_draw[gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg]",
+      "scientific_question": "f5 unknown roots refuse without draw",
+      "source_file": "test_g14_science.py",
+      "source_line": 202,
+      "status": "PASS"
+    },
+    {
+      "assertion": "AssertionError: assert ('COMMITTED' == 'NOT_EXECUTED_AUTHORITY_HOLD'\n  \n  - NOT_EXECUTED_AUTHORITY_HOLD\n  + COMMITTED)",
+      "classname": "WORKER_RETURNS.SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1.test_g14_science",
+      "evidence": "execution/g14_observations.json; execution/g14_science.xml",
+      "expected_assertions": [
+        "assert r['status']=='NOT_EXECUTED_AUTHORITY_HOLD' and r['n_draws']==0"
+      ],
+      "expected_exception_controls": [],
+      "family": "F5",
+      "interpretation": "Stronger scientific or custody claim falsified at tested helper boundary; see seven-family adjudication",
+      "name": "test_f5_unknown_roots_refuse_without_draw[1313131313131313131313131313131313131313131313131313131313131313\\n]",
+      "scientific_question": "f5 unknown roots refuse without draw",
+      "source_file": "test_g14_science.py",
+      "source_line": 202,
+      "status": "RED"
+    },
+    {
+      "assertion": null,
+      "classname": "WORKER_RETURNS.SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1.test_g14_science",
+      "evidence": "execution/g14_observations.json; execution/g14_science.xml",
+      "expected_assertions": [
+        "assert r['adp020_entitlement']=='NOT_GRANTED'",
+        "assert r['adp020_hold']=='ADP020_REAL_ROOT_SEED_REQUIRED'",
+        "assert r['draw']['scope_seed_sha256']==''"
+      ],
+      "expected_exception_controls": [],
+      "family": "F5",
+      "interpretation": "Tested dependency/guard holds",
+      "name": "test_f5_each_legacy_token_explicitly_not_granted[R0]",
+      "scientific_question": "f5 each legacy token explicitly not granted",
+      "source_file": "test_g14_science.py",
+      "source_line": 208,
+      "status": "PASS"
+    },
+    {
+      "assertion": null,
+      "classname": "WORKER_RETURNS.SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1.test_g14_science",
+      "evidence": "execution/g14_observations.json; execution/g14_science.xml",
+      "expected_assertions": [
+        "assert r['adp020_entitlement']=='NOT_GRANTED'",
+        "assert r['adp020_hold']=='ADP020_REAL_ROOT_SEED_REQUIRED'",
+        "assert r['draw']['scope_seed_sha256']==''"
+      ],
+      "expected_exception_controls": [],
+      "family": "F5",
+      "interpretation": "Tested dependency/guard holds",
+      "name": "test_f5_each_legacy_token_explicitly_not_granted[R1]",
+      "scientific_question": "f5 each legacy token explicitly not granted",
+      "source_file": "test_g14_science.py",
+      "source_line": 208,
+      "status": "PASS"
+    },
+    {
+      "assertion": null,
+      "classname": "WORKER_RETURNS.SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1.test_g14_science",
+      "evidence": "execution/g14_observations.json; execution/g14_science.xml",
+      "expected_assertions": [
+        "assert r['adp020_entitlement']=='NOT_GRANTED'",
+        "assert r['adp020_hold']=='ADP020_REAL_ROOT_SEED_REQUIRED'",
+        "assert r['draw']['scope_seed_sha256']==''"
+      ],
+      "expected_exception_controls": [],
+      "family": "F5",
+      "interpretation": "Tested dependency/guard holds",
+      "name": "test_f5_each_legacy_token_explicitly_not_granted[R2]",
+      "scientific_question": "f5 each legacy token explicitly not granted",
+      "source_file": "test_g14_science.py",
+      "source_line": 208,
+      "status": "PASS"
+    },
+    {
+      "assertion": null,
+      "classname": "WORKER_RETURNS.SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1.test_g14_science",
+      "evidence": "execution/g14_observations.json; execution/g14_science.xml",
+      "expected_assertions": [
+        "assert r['adp020_entitlement']=='NOT_GRANTED'",
+        "assert r['adp020_hold']=='ADP020_REAL_ROOT_SEED_REQUIRED'",
+        "assert r['draw']['scope_seed_sha256']==''"
+      ],
+      "expected_exception_controls": [],
+      "family": "F5",
+      "interpretation": "Tested dependency/guard holds",
+      "name": "test_f5_each_legacy_token_explicitly_not_granted[G12]",
+      "scientific_question": "f5 each legacy token explicitly not granted",
+      "source_file": "test_g14_science.py",
+      "source_line": 208,
+      "status": "PASS"
+    },
+    {
+      "assertion": null,
+      "classname": "WORKER_RETURNS.SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1.test_g14_science",
+      "evidence": "execution/g14_observations.json; execution/g14_science.xml",
+      "expected_assertions": [
+        "assert r['adp020_entitlement']=='NOT_GRANTED'",
+        "assert r['adp020_hold']=='ADP020_REAL_ROOT_SEED_REQUIRED'",
+        "assert r['draw']['scope_seed_sha256']==''"
+      ],
+      "expected_exception_controls": [],
+      "family": "F5",
+      "interpretation": "Tested dependency/guard holds",
+      "name": "test_f5_each_legacy_token_explicitly_not_granted[G12_SEED]",
+      "scientific_question": "f5 each legacy token explicitly not granted",
+      "source_file": "test_g14_science.py",
+      "source_line": 208,
+      "status": "PASS"
+    },
+    {
+      "assertion": null,
+      "classname": "WORKER_RETURNS.SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1.test_g14_science",
+      "evidence": "execution/g14_observations.json; execution/g14_science.xml",
+      "expected_assertions": [
+        "assert r['accepted_raw_u64']==raw and r['draw_value']==raw%7"
+      ],
+      "expected_exception_controls": [],
+      "family": "F5",
+      "interpretation": "Tested dependency/guard holds",
+      "name": "test_f5_hmac_entropy_matches_independent_reference",
+      "scientific_question": "f5 hmac entropy matches independent reference",
+      "source_file": "test_g14_science.py",
+      "source_line": 223,
+      "status": "PASS"
+    },
+    {
+      "assertion": "AssertionError: assert 'f8b12dd412db...dc7827bde90a8' == '7e9d475ba3f4...5dad4e93a3244'\n  \n  - 7e9d475ba3f41edbe5faa0bc2b22adfc2aff155b6e5804368355dad4e93a3244\n  + f8b12dd412dbad933be8a3d22715048d8578188a82905e95124dc7827bde90a8",
+      "classname": "WORKER_RETURNS.SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1.test_g14_science",
+      "evidence": "execution/g14_observations.json; execution/g14_science.xml",
+      "expected_assertions": [
+        "assert r['scope_seed_sha256']==hashlib.sha256(ss).hexdigest()",
+        "assert r['stream_seed_sha256']==hashlib.sha256(st).hexdigest()"
+      ],
+      "expected_exception_controls": [],
+      "family": "F5",
+      "interpretation": "Stronger scientific or custody claim falsified at tested helper boundary; see seven-family adjudication",
+      "name": "test_f5_lineage_digest_fields_are_digests_of_derived_seeds",
+      "scientific_question": "f5 lineage digest fields are digests of derived seeds",
+      "source_file": "test_g14_science.py",
+      "source_line": 234,
+      "status": "RED"
+    },
+    {
+      "assertion": null,
+      "classname": "WORKER_RETURNS.SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1.test_g14_science",
+      "evidence": "execution/g14_observations.json; execution/g14_science.xml",
+      "expected_assertions": [
+        "assert r.entropy_block_count==3 and r.draw_index==0 and rng.draw_count==1 and r.draw_value==2"
+      ],
+      "expected_exception_controls": [],
+      "family": "F5",
+      "interpretation": "Tested dependency/guard holds",
+      "name": "test_f5_rejection_control_preserves_one_semantic_draw",
+      "scientific_question": "f5 rejection control preserves one semantic draw",
+      "source_file": "test_g14_science.py",
+      "source_line": 241,
+      "status": "PASS"
+    },
+    {
+      "assertion": "TypeError: 'NoneType' object is not subscriptable",
+      "classname": "WORKER_RETURNS.SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1.test_g14_science",
+      "evidence": "execution/g14_observations.json; execution/g14_science.xml",
+      "expected_assertions": [
+        "assert r['adp020_entitlement']=='NOT_GRANTED'"
+      ],
+      "expected_exception_controls": [],
+      "family": "F5",
+      "interpretation": "Stronger scientific or custody claim falsified at tested helper boundary; see seven-family adjudication",
+      "name": "test_f5_fresh_legacy_lineage_receipt_never_claims_adp020",
+      "scientific_question": "f5 fresh legacy lineage receipt never claims adp020",
+      "source_file": "test_g14_science.py",
+      "source_line": 248,
+      "status": "RED"
+    },
+    {
+      "assertion": "Failed: DID NOT RAISE ValueError",
+      "classname": "WORKER_RETURNS.SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1.test_g14_science",
+      "evidence": "execution/g14_observations.json; execution/g14_science.xml",
+      "expected_assertions": [],
+      "expected_exception_controls": [
+        "with pytest.raises(ValueError):\n        ScopedRNG(SEED,'v3.causal.unissued_g14_stream','G13_SCOPE').draw(7,'slot','set')"
+      ],
+      "family": "F5",
+      "interpretation": "Stronger scientific or custody claim falsified at tested helper boundary; see seven-family adjudication",
+      "name": "test_f5_namespace_pattern_does_not_register_arbitrary_stream",
+      "scientific_question": "f5 namespace pattern does not register arbitrary stream",
+      "source_file": "test_g14_science.py",
+      "source_line": 257,
+      "status": "RED"
+    },
+    {
+      "assertion": "AssertionError: assert 'sha256:dbee2...346c5ecfae5a8' == 'sha256:df7be...c519301db3ba1'\n  \n  - sha256:df7bed19d5f05649f0fba675c79db1b3b22adf7b82d1b9006cfc519301db3ba1\n  + sha256:dbee2e1b96c9845ee4740093d396475b23e483204e93114b5b3346c5ecfae5a8",
+      "classname": "WORKER_RETURNS.SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1.test_g14_science",
+      "evidence": "execution/g14_observations.json; execution/g14_science.xml",
+      "expected_assertions": [
+        "assert r['draw_coordinate_hash']==h_obj(co)"
+      ],
+      "expected_exception_controls": [],
+      "family": "F5",
+      "interpretation": "Stronger scientific or custody claim falsified at tested helper boundary; see seven-family adjudication",
+      "name": "test_f5_draw_receipt_binds_actual_full_entropy_coordinate",
+      "scientific_question": "f5 draw receipt binds actual full entropy coordinate",
+      "source_file": "test_g14_science.py",
+      "source_line": 261,
+      "status": "RED"
+    },
+    {
+      "assertion": "AssertionError: assert {'causal_run_id', 'decision_replay_identity_hash', 'semantic_rule_id', 'semantic_rule_registry_hash', 'semantic_rule_version', 'stochastic_parameters_hash'} <= dict_keys(['decision_kind', 'decision_semantics_version', 'stream', 'scope_hash', 'root_seed', 'root_seed_provenance',...receipts', 'n_draws', 'draw_mode', 'selected_class_key', 'selected_representative_id', 'status', 'unreported_redraws'])\n +  where dict_keys(['decision_kind', 'decision_semantics_version', 'stream', 'scope_hash', 'root_seed', 'root_seed_provenance',...receipts', 'n_draws', 'draw_mode', 'selected_class_key', 'selected_representative_id', 'status', 'unreported_redraws']) = <built-in method keys of dict object at 0x10f444e00>()\n +    where <built-in method keys of dict object at 0x10f444e00> = {'decision_kind': 'CONCEPTION_SCENARIO_SELECTION', 'decision_semantics_version': 'SELECTION_DECISION_SEMANTICS@1.1-G13-REPAIRED', 'stream': 'v3.causal.adp015.conception_scenario_selection', 'scope_hash': 'G13_SCOPE', ...}.keys",
+      "classname": "WORKER_RETURNS.SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1.test_g14_science",
+      "evidence": "execution/g14_observations.json; execution/g14_science.xml",
+      "expected_assertions": [
+        "assert required<=r.keys()"
+      ],
+      "expected_exception_controls": [],
+      "family": "F5",
+      "interpretation": "Stronger scientific or custody claim falsified at tested helper boundary; see seven-family adjudication",
+      "name": "test_f5_decision_receipt_contains_rule_and_replay_custody",
+      "scientific_question": "f5 decision receipt contains rule and replay custody",
+      "source_file": "test_g14_science.py",
+      "source_line": 271,
+      "status": "RED"
+    },
+    {
+      "assertion": null,
+      "classname": "WORKER_RETURNS.SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1.test_g14_science",
+      "evidence": "execution/g14_observations.json; execution/g14_science.xml",
+      "expected_assertions": [
+        "assert before==fresh"
+      ],
+      "expected_exception_controls": [],
+      "family": "F5",
+      "interpretation": "Tested dependency/guard holds",
+      "name": "test_f5_other_scope_draws_do_not_perturb_existing_parent",
+      "scientific_question": "f5 other scope draws do not perturb existing parent",
+      "source_file": "test_g14_science.py",
+      "source_line": 278,
+      "status": "PASS"
+    },
+    {
+      "assertion": null,
+      "classname": "WORKER_RETURNS.SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1.test_g14_science",
+      "evidence": "execution/g14_observations.json; execution/g14_science.xml",
+      "expected_assertions": [
+        "assert a['candidate_set_hash']!=b['candidate_set_hash']"
+      ],
+      "expected_exception_controls": [],
+      "family": "F6",
+      "interpretation": "Tested dependency/guard holds",
+      "name": "test_f6_real_endpoint_mutation_changes_identity",
+      "scientific_question": "f6 real endpoint mutation changes identity",
+      "source_file": "test_g14_science.py",
+      "source_line": 285,
+      "status": "PASS"
+    },
+    {
+      "assertion": null,
+      "classname": "WORKER_RETURNS.SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1.test_g14_science",
+      "evidence": "execution/g14_observations.json; execution/g14_science.xml",
+      "expected_assertions": [
+        "assert a==b==d"
+      ],
+      "expected_exception_controls": [],
+      "family": "F6",
+      "interpretation": "Tested dependency/guard holds",
+      "name": "test_f6_candidate_permutation_and_exact_replay",
+      "scientific_question": "f6 candidate permutation and exact replay",
+      "source_file": "test_g14_science.py",
+      "source_line": 293,
+      "status": "PASS"
+    },
+    {
+      "assertion": null,
+      "classname": "WORKER_RETURNS.SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1.test_g14_science",
+      "evidence": "execution/g14_observations.json; execution/g14_science.xml",
+      "expected_assertions": [
+        "assert candidate_replay_hash(a)==candidate_replay_hash(b)"
+      ],
+      "expected_exception_controls": [],
+      "family": "F6",
+      "interpretation": "Tested dependency/guard holds",
+      "name": "test_f6_multiplicity_bookkeeping_does_not_change_payload_identity",
+      "scientific_question": "f6 multiplicity bookkeeping does not change payload identity",
+      "source_file": "test_g14_science.py",
+      "source_line": 297,
+      "status": "PASS"
+    },
+    {
+      "assertion": "AssertionError: assert 'sha256:c9cf4...051131e42e737' == 'sha256:a07d2...2fc3c3f2885e2'\n  \n  - sha256:a07d20f4d4025b4b2efbdc7ddc02870d68d24c5709f809466182fc3c3f2885e2\n  + sha256:c9cf4c14ed34235a6f103b7a9a55e5a7d914b7d2aa07bad88f4051131e42e737",
+      "classname": "WORKER_RETURNS.SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1.test_g14_science",
+      "evidence": "execution/g14_observations.json; execution/g14_science.xml",
+      "expected_assertions": [
+        "assert a['candidate_set_hash']==b['candidate_set_hash']"
+      ],
+      "expected_exception_controls": [],
+      "family": "F6",
+      "interpretation": "Stronger scientific or custody claim falsified at tested helper boundary; see seven-family adjudication",
+      "name": "test_f6_new_lower_id_paraphrase_preserves_selection_identity",
+      "scientific_question": "f6 new lower id paraphrase preserves selection identity",
+      "source_file": "test_g14_science.py",
+      "source_line": 301,
+      "status": "RED"
+    },
+    {
+      "assertion": "assert 1 == 2",
+      "classname": "WORKER_RETURNS.SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1.test_g14_science",
+      "evidence": "execution/g14_observations.json; execution/g14_science.xml",
+      "expected_assertions": [
+        "assert d['n_classes']==2"
+      ],
+      "expected_exception_controls": [],
+      "family": "F6",
+      "interpretation": "Stronger scientific or custody claim falsified at tested helper boundary; see seven-family adjudication",
+      "name": "test_f6_conflicting_required_endpoint_states_do_not_dedup",
+      "scientific_question": "f6 conflicting required endpoint states do not dedup",
+      "source_file": "test_g14_science.py",
+      "source_line": 310,
+      "status": "RED"
+    },
+    {
+      "assertion": "AssertionError: assert ('COMMITTED' != 'COMMITTED')",
+      "classname": "WORKER_RETURNS.SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1.test_g14_science",
+      "evidence": "execution/g14_observations.json; execution/g14_science.xml",
+      "expected_assertions": [
+        "assert a['status']!='COMMITTED' and b['status']!='COMMITTED'"
+      ],
+      "expected_exception_controls": [],
+      "family": "F6",
+      "interpretation": "Stronger scientific or custody claim falsified at tested helper boundary; see seven-family adjudication",
+      "name": "test_f6_duplicate_class_keys_refuse_instead_of_order_dependent_winner",
+      "scientific_question": "f6 duplicate class keys refuse instead of order dependent winner",
+      "source_file": "test_g14_science.py",
+      "source_line": 318,
+      "status": "RED"
+    },
+    {
+      "assertion": "AssertionError: assert 'COMMITTED' != 'COMMITTED'",
+      "classname": "WORKER_RETURNS.SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1.test_g14_science",
+      "evidence": "execution/g14_observations.json; execution/g14_science.xml",
+      "expected_assertions": [
+        "assert result['terminal']['status']!='COMMITTED'"
+      ],
+      "expected_exception_controls": [],
+      "family": "F6",
+      "interpretation": "Stronger scientific or custody claim falsified at tested helper boundary; see seven-family adjudication",
+      "name": "test_f6_pipeline_preserves_selected_candidate_required_endpoint_state",
+      "scientific_question": "f6 pipeline preserves selected candidate required endpoint state",
+      "source_file": "test_g14_science.py",
+      "source_line": 324,
+      "status": "RED"
+    },
+    {
+      "assertion": null,
+      "classname": "WORKER_RETURNS.SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1.test_g14_science",
+      "evidence": "execution/g14_observations.json; execution/g14_science.xml",
+      "expected_assertions": [
+        "assert r['status']!='COMMITTED' and not c['paternal_continuation_admitted']"
+      ],
+      "expected_exception_controls": [],
+      "family": "F7",
+      "interpretation": "Tested dependency/guard holds",
+      "name": "test_f7_empty_history_refuses_relation_and_paternal_continuation",
+      "scientific_question": "f7 empty history refuses relation and paternal continuation",
+      "source_file": "test_g14_science.py",
+      "source_line": 333,
+      "status": "PASS"
+    },
+    {
+      "assertion": "AssertionError: assert 'COMMITTED' != 'COMMITTED'",
+      "classname": "WORKER_RETURNS.SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1.test_g14_science",
+      "evidence": "execution/g14_observations.json; execution/g14_science.xml",
+      "expected_assertions": [
+        "assert r['status']!='COMMITTED'"
+      ],
+      "expected_exception_controls": [],
+      "family": "F7",
+      "interpretation": "Stronger scientific or custody claim falsified at tested helper boundary; see seven-family adjudication",
+      "name": "test_f7_witness_for_different_actor_cannot_admit_relation",
+      "scientific_question": "f7 witness for different actor cannot admit relation",
+      "source_file": "test_g14_science.py",
+      "source_line": 338,
+      "status": "RED"
+    },
+    {
+      "assertion": "AssertionError: work at a site is not a joint relationship-forming witness\nassert 'COMMITTED' != 'COMMITTED'",
+      "classname": "WORKER_RETURNS.SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1.test_g14_science",
+      "evidence": "execution/g14_observations.json; execution/g14_science.xml",
+      "expected_assertions": [
+        "assert r['status']!='COMMITTED', 'work at a site is not a joint relationship-forming witness'"
+      ],
+      "expected_exception_controls": [],
+      "family": "F7",
+      "interpretation": "Stronger scientific or custody claim falsified at tested helper boundary; see seven-family adjudication",
+      "name": "test_f7_own_work_without_shared_maternal_encounter_cannot_form_relation",
+      "scientific_question": "f7 own work without shared maternal encounter cannot form relation",
+      "source_file": "test_g14_science.py",
+      "source_line": 346,
+      "status": "RED"
+    },
+    {
+      "assertion": "AssertionError: assert (not [{'event_id': 'sha256:b3fcb74f5c5d39a7f36629760a1badde1788015539a9c40ff9fe49d6638803db', 'kind': 'PARENT_CONTINUATION'...red_route', 'causal_basis': 'pre_boundary project and striving events', 'second_parent_history_event_count': 14}, ...}] or False)\n +  where False = all(<generator object test_f7_severed_project_cannot_continue_as_fixed_repair_project.<locals>.<genexpr> at 0x10f120ba0>)",
+      "classname": "WORKER_RETURNS.SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1.test_g14_science",
+      "evidence": "execution/g14_observations.json; execution/g14_science.xml",
+      "expected_assertions": [
+        "assert not paternal or all('repair_bench' not in json.dumps(x) for x in paternal)"
+      ],
+      "expected_exception_controls": [],
+      "family": "F7",
+      "interpretation": "Stronger scientific or custody claim falsified at tested helper boundary; see seven-family adjudication",
+      "name": "test_f7_severed_project_cannot_continue_as_fixed_repair_project",
+      "scientific_question": "f7 severed project cannot continue as fixed repair project",
+      "source_file": "test_g14_science.py",
+      "source_line": 352,
+      "status": "RED"
+    },
+    {
+      "assertion": "AssertionError: assert (not [{'exposure_id': 'EXP_PATERNAL_PROJECT_PRESENCE_PERIODIC', 'material_context': 'periodic_repair_bench_presence_and_cooperative_rotation_schedule', 'causal_parent_events': [], 'effective_after_admission': True}] or False)\n +  where False = all(<generator object test_f7_absent_paternal_continuation_cannot_emit_positive_paternal_exposure.<locals>.<genexpr> at 0x10f121d20>)",
+      "classname": "WORKER_RETURNS.SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1.test_g14_science",
+      "evidence": "execution/g14_observations.json; execution/g14_science.xml",
+      "expected_assertions": [
+        "assert not bad or all(not x.get('effective_after_admission') for x in bad)"
+      ],
+      "expected_exception_controls": [],
+      "family": "F7",
+      "interpretation": "Stronger scientific or custody claim falsified at tested helper boundary; see seven-family adjudication",
+      "name": "test_f7_absent_paternal_continuation_cannot_emit_positive_paternal_exposure",
+      "scientific_question": "f7 absent paternal continuation cannot emit positive paternal exposure",
+      "source_file": "test_g14_science.py",
+      "source_line": 361,
+      "status": "RED"
+    },
+    {
+      "assertion": "assert not True\n +  where True = any(<generator object test_f7_no_household_admission_cannot_justify_combined_income_exposure.<locals>.<genexpr> at 0x10f1e4930>)",
+      "classname": "WORKER_RETURNS.SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1.test_g14_science",
+      "evidence": "execution/g14_observations.json; execution/g14_science.xml",
+      "expected_assertions": [
+        "assert not any(x['material_context']=='combined_wage_artisan_income_band' for x in out['exposures'])"
+      ],
+      "expected_exception_controls": [],
+      "family": "F7",
+      "interpretation": "Stronger scientific or custody claim falsified at tested helper boundary; see seven-family adjudication",
+      "name": "test_f7_no_household_admission_cannot_justify_combined_income_exposure",
+      "scientific_question": "f7 no household admission cannot justify combined income exposure",
+      "source_file": "test_g14_science.py",
+      "source_line": 368,
+      "status": "RED"
+    },
+    {
+      "assertion": "AssertionError: assert 'LAB_SECOND_PARENT_CAND_sha256:676' != 'LAB_SECOND_PARENT_CAND_sha256:676'",
+      "classname": "WORKER_RETURNS.SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1.test_g14_science",
+      "evidence": "execution/g14_observations.json; execution/g14_science.xml",
+      "expected_assertions": [
+        "assert aid!=bid"
+      ],
+      "expected_exception_controls": [],
+      "family": "F7",
+      "interpretation": "Stronger scientific or custody claim falsified at tested helper boundary; see seven-family adjudication",
+      "name": "test_f7_distinct_full_candidate_keys_cannot_alias_parent_identity",
+      "scientific_question": "f7 distinct full candidate keys cannot alias parent identity",
+      "source_file": "test_g14_science.py",
+      "source_line": 375,
+      "status": "RED"
+    },
+    {
+      "assertion": null,
+      "classname": "WORKER_RETURNS.SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1.test_g14_science",
+      "evidence": "execution/g14_observations.json; execution/g14_science.xml",
+      "expected_assertions": [
+        "assert out['terminal_status']=='HISTORY_SEARCH_EXHAUSTED' and out['n_attempts']==4",
+        "assert out['selected_events'] is None and m==before",
+        "assert m['already_generated_child_refs']==['LAB_OLDER_CHILD_O1']",
+        "assert b['child_generated_events']==0 and not b['birth_alias']"
+      ],
+      "expected_exception_controls": [],
+      "family": "CEILINGS",
+      "interpretation": "Tested dependency/guard holds",
+      "name": "test_ceilings_mother_older_child_and_impossible_endpoint_preserved",
+      "scientific_question": "ceilings mother older child and impossible endpoint preserved",
+      "source_file": "test_g14_science.py",
+      "source_line": 392,
+      "status": "PASS"
+    },
+    {
+      "assertion": null,
+      "classname": "WORKER_RETURNS.SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1.test_g14_science",
+      "evidence": "execution/g14_observations.json; execution/g14_science.xml",
+      "expected_assertions": [
+        "assert keys",
+        "assert all(without_timing(a[k])==without_timing(b[k]) for k in keys)",
+        "assert NETWORK==[]"
+      ],
+      "expected_exception_controls": [],
+      "family": "CEILINGS",
+      "interpretation": "Tested dependency/guard holds",
+      "name": "test_ceilings_offline_pipeline_hidden_future_noninterference",
+      "scientific_question": "ceilings offline pipeline hidden future noninterference",
+      "source_file": "test_g14_science.py",
+      "source_line": 401,
+      "status": "PASS"
+    }
+  ],
+  "target_181": [
+    {
+      "classname": "test_original_sgi1",
+      "name": "test_literal_original_k11_case[K11-BASE-LOCAL]",
+      "status": "RED",
+      "suite": "sgi1_target"
+    },
+    {
+      "classname": "test_original_sgi1",
+      "name": "test_literal_original_k11_case[K11-ROUTE-DISCORDANT]",
+      "status": "RED",
+      "suite": "sgi1_target"
+    },
+    {
+      "classname": "test_original_sgi1",
+      "name": "test_literal_original_k11_case[K11-ROUTE-MOBILITY]",
+      "status": "PASS",
+      "suite": "sgi1_target"
+    },
+    {
+      "classname": "test_original_sgi1",
+      "name": "test_literal_original_k11_case[K11-ROUTE-UNCONVENTIONAL]",
+      "status": "PASS",
+      "suite": "sgi1_target"
+    },
+    {
+      "classname": "test_original_sgi1",
+      "name": "test_literal_original_k11_case[K11-A-FUTURE-CHILD-EMBARGO]",
+      "status": "RED",
+      "suite": "sgi1_target"
+    },
+    {
+      "classname": "test_original_sgi1",
+      "name": "test_literal_original_k11_case[K11-A2-DESIRED-WOUND-COUNTERFACTUAL]",
+      "status": "RED",
+      "suite": "sgi1_target"
+    },
+    {
+      "classname": "test_original_sgi1",
+      "name": "test_literal_original_k11_case[K11-B-INDEPENDENT-HISTORY]",
+      "status": "PASS",
+      "suite": "sgi1_target"
+    },
+    {
+      "classname": "test_original_sgi1",
+      "name": "test_literal_original_k11_case[K11-C-EXISTING-PARTNER]",
+      "status": "PASS",
+      "suite": "sgi1_target"
+    },
+    {
+      "classname": "test_original_sgi1",
+      "name": "test_literal_original_k11_case[K11-C2-EXISTING-SHARED-EVENT]",
+      "status": "PASS",
+      "suite": "sgi1_target"
+    },
+    {
+      "classname": "test_original_sgi1",
+      "name": "test_literal_original_k11_case[K11-D-PARITY]",
+      "status": "PASS",
+      "suite": "sgi1_target"
+    },
+    {
+      "classname": "test_original_sgi1",
+      "name": "test_literal_original_k11_case[K11-E-INDEPENDENT-PROJECT]",
+      "status": "PASS",
+      "suite": "sgi1_target"
+    },
+    {
+      "classname": "test_original_sgi1",
+      "name": "test_literal_original_k11_case[K11-GRAPH-CONSTRUCTION-VS-CAUSAL]",
+      "status": "PASS",
+      "suite": "sgi1_target"
+    },
+    {
+      "classname": "test_original_sgi1",
+      "name": "test_literal_original_k11_case[K11-DEDUPE]",
+      "status": "PASS",
+      "suite": "sgi1_target"
+    },
+    {
+      "classname": "test_original_sgi1",
+      "name": "test_literal_original_k11_case[K11-EMPIRICAL-CEILING]",
+      "status": "PASS",
+      "suite": "sgi1_target"
+    },
+    {
+      "classname": "test_original_sgi1",
+      "name": "test_literal_original_k11_case[K11-WEIGHT-ORDINAL]",
+      "status": "PASS",
+      "suite": "sgi1_target"
+    },
+    {
+      "classname": "test_original_sgi1",
+      "name": "test_literal_original_k11_case[K11-WEIGHT-SENSITIVITY]",
+      "status": "PASS",
+      "suite": "sgi1_target"
+    },
+    {
+      "classname": "test_original_sgi1",
+      "name": "test_literal_original_k11_case[K11-RETRY-BIAS]",
+      "status": "PASS",
+      "suite": "sgi1_target"
+    },
+    {
+      "classname": "test_original_sgi1",
+      "name": "test_literal_original_k11_case[K11-VALID-EMPTY]",
+      "status": "PASS",
+      "suite": "sgi1_target"
+    },
+    {
+      "classname": "test_original_sgi1",
+      "name": "test_literal_original_k11_case[K11-UNKNOWN-REQUIRED]",
+      "status": "PASS",
+      "suite": "sgi1_target"
+    },
+    {
+      "classname": "test_original_sgi1",
+      "name": "test_literal_original_k11_case[K11-RELATION-ASYMMETRY]",
+      "status": "PASS",
+      "suite": "sgi1_target"
+    },
+    {
+      "classname": "test_original_sgi1",
+      "name": "test_literal_original_k11_case[K11-CONCEPTION-CHILDGEN-BOUNDARY]",
+      "status": "PASS",
+      "suite": "sgi1_target"
+    },
+    {
+      "classname": "test_original_sgi1",
+      "name": "test_literal_original_k11_case[K11-MISSING-HISTORY]",
+      "status": "PASS",
+      "suite": "sgi1_target"
+    },
+    {
+      "classname": "test_original_sgi1",
+      "name": "test_literal_original_k11_case[K11-SCHEDULER-SAME-TIME]",
+      "status": "PASS",
+      "suite": "sgi1_target"
+    },
+    {
+      "classname": "test_original_sgi1",
+      "name": "test_literal_original_k11_case[K11-REPLAY-ALTER-SUBJECT]",
+      "status": "PASS",
+      "suite": "sgi1_target"
+    },
+    {
+      "classname": "test_original_sgi1",
+      "name": "test_complete_denominator_and_offline",
+      "status": "PASS",
+      "suite": "sgi1_target"
+    },
+    {
+      "classname": "sources.g11.test_g11_solver",
+      "name": "test_frozen_hash",
+      "status": "PASS",
+      "suite": "g11"
+    },
+    {
+      "classname": "sources.g11.test_g11_solver",
+      "name": "test_sourcefree_baseline_8_of_8_with_distinct_parents_and_alternative_endpoints",
+      "status": "PASS",
+      "suite": "g11"
+    },
+    {
+      "classname": "sources.g11.test_g11_solver",
+      "name": "test_forward_forecasts_are_not_events",
+      "status": "PASS",
+      "suite": "g11"
+    },
+    {
+      "classname": "sources.g11.test_g11_solver",
+      "name": "test_deterministic_replay_and_input_enumeration",
+      "status": "PASS",
+      "suite": "g11"
+    },
+    {
+      "classname": "sources.g11.test_g11_solver",
+      "name": "test_no_backedge_or_graph_cycle",
+      "status": "PASS",
+      "suite": "g11"
+    },
+    {
+      "classname": "sources.g11.test_g11_solver",
+      "name": "test_mutual_parent_dependency_cycle",
+      "status": "PASS",
+      "suite": "g11"
+    },
+    {
+      "classname": "sources.g11.test_g11_solver",
+      "name": "test_forbidden_teleological_edge",
+      "status": "PASS",
+      "suite": "g11"
+    },
+    {
+      "classname": "sources.g11.test_g11_solver",
+      "name": "test_mother_history_immutable",
+      "status": "PASS",
+      "suite": "g11"
+    },
+    {
+      "classname": "sources.g11.test_g11_solver",
+      "name": "test_father_history_immutable",
+      "status": "PASS",
+      "suite": "g11"
+    },
+    {
+      "classname": "sources.g11.test_g11_solver",
+      "name": "test_late_inserted_memory_refused",
+      "status": "PASS",
+      "suite": "g11"
+    },
+    {
+      "classname": "sources.g11.test_g11_solver",
+      "name": "test_inverted_preconception_history_refused",
+      "status": "PASS",
+      "suite": "g11"
+    },
+    {
+      "classname": "sources.g11.test_g11_solver",
+      "name": "test_older_child_preservation",
+      "status": "PASS",
+      "suite": "g11"
+    },
+    {
+      "classname": "sources.g11.test_g11_solver",
+      "name": "test_conception_before_checkpoint_rejected",
+      "status": "PASS",
+      "suite": "g11"
+    },
+    {
+      "classname": "sources.g11.test_g11_solver",
+      "name": "test_parent_underage_rejected",
+      "status": "PASS",
+      "suite": "g11"
+    },
+    {
+      "classname": "sources.g11.test_g11_solver",
+      "name": "test_no_objective_route_support",
+      "status": "PASS",
+      "suite": "g11"
+    },
+    {
+      "classname": "sources.g11.test_g11_solver",
+      "name": "test_proposal_outside_all_support",
+      "status": "PASS",
+      "suite": "g11"
+    },
+    {
+      "classname": "sources.g11.test_g11_solver",
+      "name": "test_birth_child_provenance_temporal_rejection",
+      "status": "PASS",
+      "suite": "g11"
+    },
+    {
+      "classname": "sources.g11.test_g11_solver",
+      "name": "test_future_outcome_input_embargo",
+      "status": "PASS",
+      "suite": "g11"
+    },
+    {
+      "classname": "sources.g11.test_g11_solver",
+      "name": "test_heldout_child_swap_exact_indifference",
+      "status": "PASS",
+      "suite": "g11"
+    },
+    {
+      "classname": "sources.g11.test_g11_solver",
+      "name": "test_child_outcome_rank_selection_refused",
+      "status": "PASS",
+      "suite": "g11"
+    },
+    {
+      "classname": "sources.g11.test_g11_solver",
+      "name": "test_authority_no_draw_for_weighting",
+      "status": "PASS",
+      "suite": "g11"
+    },
+    {
+      "classname": "sources.g11.test_g11_solver",
+      "name": "test_rejection_selection_bias_counterexample",
+      "status": "PASS",
+      "suite": "g11"
+    },
+    {
+      "classname": "sources.g11.test_g11_solver",
+      "name": "test_invented_extra_candidate_does_not_silently_multiply",
+      "status": "PASS",
+      "suite": "g11"
+    },
+    {
+      "classname": "sources.g11.test_g11_solver",
+      "name": "test_malformed_dag_unknown_node",
+      "status": "PASS",
+      "suite": "g11"
+    },
+    {
+      "classname": "sources.g11.test_g11_solver",
+      "name": "test_violated_no_actor_policy",
+      "status": "PASS",
+      "suite": "g11"
+    },
+    {
+      "classname": "test_g12_controls",
+      "name": "test_independent_conflicting_endpoint_and_mother_preservation[A]",
+      "status": "PASS",
+      "suite": "g12_controls"
+    },
+    {
+      "classname": "test_g12_controls",
+      "name": "test_independent_conflicting_endpoint_and_mother_preservation[B]",
+      "status": "PASS",
+      "suite": "g12_controls"
+    },
+    {
+      "classname": "test_g12_controls",
+      "name": "test_older_child_preserved",
+      "status": "PASS",
+      "suite": "g12_controls"
+    },
+    {
+      "classname": "test_g12_controls",
+      "name": "test_independent_oracle_detects_mutation[forged_endpoint]",
+      "status": "RED",
+      "suite": "g12_controls"
+    },
+    {
+      "classname": "test_g12_controls",
+      "name": "test_independent_oracle_detects_mutation[missing_parent]",
+      "status": "RED",
+      "suite": "g12_controls"
+    },
+    {
+      "classname": "test_g12_controls",
+      "name": "test_independent_oracle_detects_mutation[future_endpoint_as_root_parent]",
+      "status": "RED",
+      "suite": "g12_controls"
+    },
+    {
+      "classname": "test_g12_controls",
+      "name": "test_independent_oracle_detects_mutation[duplicate_effective_index]",
+      "status": "RED",
+      "suite": "g12_controls"
+    },
+    {
+      "classname": "test_g12_controls",
+      "name": "test_independent_oracle_detects_mutation[route_antecedent_removed]",
+      "status": "RED",
+      "suite": "g12_controls"
+    },
+    {
+      "classname": "test_g12_controls",
+      "name": "test_embargo_input_counterexample_recorded[target]",
+      "status": "RED",
+      "suite": "g12_controls"
+    },
+    {
+      "classname": "test_g12_controls",
+      "name": "test_embargo_input_counterexample_recorded[world]",
+      "status": "RED",
+      "suite": "g12_controls"
+    },
+    {
+      "classname": "test_g12_controls",
+      "name": "test_embargo_input_counterexample_recorded[psyche]",
+      "status": "RED",
+      "suite": "g12_controls"
+    },
+    {
+      "classname": "test_g12_controls",
+      "name": "test_unchanged_lab_stopping_has_no_missing_parent_detection",
+      "status": "RED",
+      "suite": "g12_controls"
+    },
+    {
+      "classname": "test_g12_controls",
+      "name": "test_alien_project_and_counterpart_probe_counterexample",
+      "status": "RED",
+      "suite": "g12_controls"
+    },
+    {
+      "classname": "test_g12_controls",
+      "name": "test_candidate_payload_change_is_unbound_in_lab",
+      "status": "RED",
+      "suite": "g12_controls"
+    },
+    {
+      "classname": "test_g12_controls",
+      "name": "test_exact_prospective_retry_bias",
+      "status": "PASS",
+      "suite": "g12_controls"
+    },
+    {
+      "classname": "test_g12_controls",
+      "name": "test_zero_draw_laboratory_controls",
+      "status": "PASS",
+      "suite": "g12_controls"
+    },
+    {
+      "classname": "test_g12_controls",
+      "name": "test_actual_native_candidate_positive_and_idempotent_replay",
+      "status": "PASS",
+      "suite": "g12_controls"
+    },
+    {
+      "classname": "test_g12_controls",
+      "name": "test_actual_native_project_refusal_and_zero_mutation",
+      "status": "PASS",
+      "suite": "g12_controls"
+    },
+    {
+      "classname": "test_g12_controls",
+      "name": "test_actual_native_actor_and_future_limits",
+      "status": "PASS",
+      "suite": "g12_controls"
+    },
+    {
+      "classname": "test_g12_controls",
+      "name": "test_actual_production_denial[ACTOR_INITIALIZATION]",
+      "status": "PASS",
+      "suite": "g12_controls"
+    },
+    {
+      "classname": "test_g12_controls",
+      "name": "test_actual_production_denial[GENEALOGY_HISTORY_TRACE]",
+      "status": "PASS",
+      "suite": "g12_controls"
+    },
+    {
+      "classname": "test_g12_controls",
+      "name": "test_actual_production_denial[CONCEPTION_OCCURRED]",
+      "status": "PASS",
+      "suite": "g12_controls"
+    },
+    {
+      "classname": "test_g12_controls",
+      "name": "test_actual_production_denial[BIRTH_OCCURRED]",
+      "status": "PASS",
+      "suite": "g12_controls"
+    },
+    {
+      "classname": "test_g12_controls",
+      "name": "test_actual_production_denial[CHILD_GENERATED]",
+      "status": "PASS",
+      "suite": "g12_controls"
+    },
+    {
+      "classname": "test_g12_controls",
+      "name": "test_original_source_bytes_and_actual_imports",
+      "status": "RED",
+      "suite": "g12_controls"
+    },
+    {
+      "classname": "test_g12_literal_contract",
+      "name": "test_forward_validator_refuses_invalid_causal_history[forged_endpoint]",
+      "status": "PASS",
+      "suite": "g12_literal"
+    },
+    {
+      "classname": "test_g12_literal_contract",
+      "name": "test_forward_validator_refuses_invalid_causal_history[missing_parent]",
+      "status": "PASS",
+      "suite": "g12_literal"
+    },
+    {
+      "classname": "test_g12_literal_contract",
+      "name": "test_forward_validator_refuses_invalid_causal_history[future_endpoint_as_root_parent]",
+      "status": "PASS",
+      "suite": "g12_literal"
+    },
+    {
+      "classname": "test_g12_literal_contract",
+      "name": "test_forward_validator_refuses_invalid_causal_history[duplicate_effective_index]",
+      "status": "PASS",
+      "suite": "g12_literal"
+    },
+    {
+      "classname": "test_g12_literal_contract",
+      "name": "test_forward_validator_refuses_invalid_causal_history[route_antecedent_removed]",
+      "status": "PASS",
+      "suite": "g12_literal"
+    },
+    {
+      "classname": "test_g12_literal_contract",
+      "name": "test_model_input_membrane_blocks_future_child_metadata[target]",
+      "status": "PASS",
+      "suite": "g12_literal"
+    },
+    {
+      "classname": "test_g12_literal_contract",
+      "name": "test_model_input_membrane_blocks_future_child_metadata[world]",
+      "status": "PASS",
+      "suite": "g12_literal"
+    },
+    {
+      "classname": "test_g12_literal_contract",
+      "name": "test_model_input_membrane_blocks_future_child_metadata[psyche]",
+      "status": "PASS",
+      "suite": "g12_literal"
+    },
+    {
+      "classname": "test_g12_literal_contract",
+      "name": "test_stopping_law_requires_actual_antecedent_closure",
+      "status": "PASS",
+      "suite": "g12_literal"
+    },
+    {
+      "classname": "test_g12_literal_contract",
+      "name": "test_project_specific_heldout_probe_refuses_unrelated_project",
+      "status": "PASS",
+      "suite": "g12_literal"
+    },
+    {
+      "classname": "test_g12_literal_contract",
+      "name": "test_same_candidate_id_changed_payload_changes_replay_identity",
+      "status": "PASS",
+      "suite": "g12_literal"
+    },
+    {
+      "classname": "test_g12_literal_contract",
+      "name": "test_lab_sampler_is_accepted_adp020_algorithm",
+      "status": "RED",
+      "suite": "g12_literal"
+    },
+    {
+      "classname": "test_g12_supplemental",
+      "name": "test_invalid_root_seed_is_refused",
+      "status": "PASS",
+      "suite": "g12_supplemental"
+    },
+    {
+      "classname": "test_g12_supplemental",
+      "name": "test_mapping_rejects_entropy_outside_unbiased_range",
+      "status": "PASS",
+      "suite": "g12_supplemental"
+    },
+    {
+      "classname": "test_g12_supplemental",
+      "name": "test_no_relationship_admission_without_second_parent_or_witness",
+      "status": "PASS",
+      "suite": "g12_supplemental"
+    },
+    {
+      "classname": "test_g12_supplemental",
+      "name": "test_objective_relation_binds_actual_second_parent_identity",
+      "status": "PASS",
+      "suite": "g12_supplemental"
+    },
+    {
+      "classname": "test_g12_supplemental",
+      "name": "test_empty_parent_history_cannot_emit_paternal_world_continuation",
+      "status": "PASS",
+      "suite": "g12_supplemental"
+    },
+    {
+      "classname": "test_g12_supplemental",
+      "name": "test_explicit_asymmetry_and_no_automatic_household_control",
+      "status": "PASS",
+      "suite": "g12_supplemental"
+    },
+    {
+      "classname": "test_candidate_boundary",
+      "name": "test_changed_actual_endpoint_payload_invalidates_selection_identity",
+      "status": "PASS",
+      "suite": "candidate_boundary"
+    },
+    {
+      "classname": "test_g13_author_court",
+      "name": "test_f1_clean_history_still_reaches_endpoint",
+      "status": "PASS",
+      "suite": "g13_author"
+    },
+    {
+      "classname": "test_g13_author_court",
+      "name": "test_f1_forged_endpoint_place_refused",
+      "status": "PASS",
+      "suite": "g13_author"
+    },
+    {
+      "classname": "test_g13_author_court",
+      "name": "test_f1_endpoint_claim_cannot_overwrite_derived_place",
+      "status": "PASS",
+      "suite": "g13_author"
+    },
+    {
+      "classname": "test_g13_author_court",
+      "name": "test_f1_invalid_causal_ancestry_refused[<lambda>-MISSING_CAUSAL_PARENT]",
+      "status": "PASS",
+      "suite": "g13_author"
+    },
+    {
+      "classname": "test_g13_author_court",
+      "name": "test_f1_invalid_causal_ancestry_refused[<lambda>-FUTURE_CAUSAL_PARENT]",
+      "status": "PASS",
+      "suite": "g13_author"
+    },
+    {
+      "classname": "test_g13_author_court",
+      "name": "test_f1_invalid_causal_ancestry_refused[<lambda>-DUPLICATE_EFFECTIVE_INDEX]",
+      "status": "PASS",
+      "suite": "g13_author"
+    },
+    {
+      "classname": "test_g13_author_court",
+      "name": "test_f1_invalid_causal_ancestry_refused[<lambda>-NONFORWARD_CAUSAL_PARENT]",
+      "status": "PASS",
+      "suite": "g13_author"
+    },
+    {
+      "classname": "test_g13_author_court",
+      "name": "test_f1_removed_route_antecedent_refused",
+      "status": "PASS",
+      "suite": "g13_author"
+    },
+    {
+      "classname": "test_g13_author_court",
+      "name": "test_f1_only_declared_place_establishing_kinds_derive_place",
+      "status": "PASS",
+      "suite": "g13_author"
+    },
+    {
+      "classname": "test_g13_author_court",
+      "name": "test_f1_undeclared_root_refused",
+      "status": "PASS",
+      "suite": "g13_author"
+    },
+    {
+      "classname": "test_g13_author_court",
+      "name": "test_f2_clean_history_is_sufficient_and_not_a_hold",
+      "status": "PASS",
+      "suite": "g13_author"
+    },
+    {
+      "classname": "test_g13_author_court",
+      "name": "test_f2_stopping_constants_are_no_longer_constants",
+      "status": "PASS",
+      "suite": "g13_author"
+    },
+    {
+      "classname": "test_g13_author_court",
+      "name": "test_f2_unknown_required_history_yields_typed_hold",
+      "status": "PASS",
+      "suite": "g13_author"
+    },
+    {
+      "classname": "test_g13_author_court",
+      "name": "test_f2_missing_domain_coverage_yields_typed_hold",
+      "status": "PASS",
+      "suite": "g13_author"
+    },
+    {
+      "classname": "test_g13_author_court",
+      "name": "test_f3_genuine_project_and_peer_relation_satisfy_probes",
+      "status": "PASS",
+      "suite": "g13_author"
+    },
+    {
+      "classname": "test_g13_author_court",
+      "name": "test_f3_unrelated_archive_project_cannot_satisfy_p1",
+      "status": "PASS",
+      "suite": "g13_author"
+    },
+    {
+      "classname": "test_g13_author_court",
+      "name": "test_f3_unrelated_sibling_cannot_satisfy_p2",
+      "status": "PASS",
+      "suite": "g13_author"
+    },
+    {
+      "classname": "test_g13_author_court",
+      "name": "test_f3_generic_attitude_tags_alone_are_insufficient",
+      "status": "PASS",
+      "suite": "g13_author"
+    },
+    {
+      "classname": "test_g13_author_court",
+      "name": "test_f3_uncausally_anchored_project_cannot_satisfy_p1",
+      "status": "PASS",
+      "suite": "g13_author"
+    },
+    {
+      "classname": "test_g13_author_court",
+      "name": "test_f4_no_future_child_material_reaches_the_prompt[target]",
+      "status": "PASS",
+      "suite": "g13_author"
+    },
+    {
+      "classname": "test_g13_author_court",
+      "name": "test_f4_no_future_child_material_reaches_the_prompt[world]",
+      "status": "PASS",
+      "suite": "g13_author"
+    },
+    {
+      "classname": "test_g13_author_court",
+      "name": "test_f4_no_future_child_material_reaches_the_prompt[psyche]",
+      "status": "PASS",
+      "suite": "g13_author"
+    },
+    {
+      "classname": "test_g13_author_court",
+      "name": "test_f4_no_future_child_material_reaches_the_prompt[nested_psyche]",
+      "status": "PASS",
+      "suite": "g13_author"
+    },
+    {
+      "classname": "test_g13_author_court",
+      "name": "test_f4_no_future_child_material_reaches_the_prompt[list_in_world]",
+      "status": "PASS",
+      "suite": "g13_author"
+    },
+    {
+      "classname": "test_g13_author_court",
+      "name": "test_f4_no_future_child_material_reaches_the_prompt[nested_target]",
+      "status": "PASS",
+      "suite": "g13_author"
+    },
+    {
+      "classname": "test_g13_author_court",
+      "name": "test_f4_prohibited_keys_are_redacted_not_dropped",
+      "status": "PASS",
+      "suite": "g13_author"
+    },
+    {
+      "classname": "test_g13_author_court",
+      "name": "test_f4_clean_inputs_are_unchanged_by_the_membrane",
+      "status": "PASS",
+      "suite": "g13_author"
+    },
+    {
+      "classname": "test_g13_author_court",
+      "name": "test_f4_legitimate_older_child_history_is_preserved_end_to_end",
+      "status": "PASS",
+      "suite": "g13_author"
+    },
+    {
+      "classname": "test_g13_author_court",
+      "name": "test_f4_future_child_outcome_counterfactual_cannot_change_selection",
+      "status": "PASS",
+      "suite": "g13_author"
+    },
+    {
+      "classname": "test_g13_author_court",
+      "name": "test_f4_scope_identity_never_contains_future_child_material",
+      "status": "PASS",
+      "suite": "g13_author"
+    },
+    {
+      "classname": "test_g13_author_court",
+      "name": "test_f5_invalid_root_is_refused_before_any_draw",
+      "status": "PASS",
+      "suite": "g13_author"
+    },
+    {
+      "classname": "test_g13_author_court",
+      "name": "test_f5_exact_32_byte_root_uses_accepted_adp020_mechanism",
+      "status": "PASS",
+      "suite": "g13_author"
+    },
+    {
+      "classname": "test_g13_author_court",
+      "name": "test_f5_rejection_sampling_is_unbiased",
+      "status": "PASS",
+      "suite": "g13_author"
+    },
+    {
+      "classname": "test_g13_author_court",
+      "name": "test_f5_modulo_bias_limit_is_correct",
+      "status": "PASS",
+      "suite": "g13_author"
+    },
+    {
+      "classname": "test_g13_author_court",
+      "name": "test_f5_seed_lineage_is_isolated_per_scope_and_stream",
+      "status": "PASS",
+      "suite": "g13_author"
+    },
+    {
+      "classname": "test_g13_author_court",
+      "name": "test_f5_legacy_token_is_receipted_as_non_adp020_and_never_disguised",
+      "status": "PASS",
+      "suite": "g13_author"
+    },
+    {
+      "classname": "test_g13_author_court",
+      "name": "test_f5_undeclared_token_is_refused",
+      "status": "PASS",
+      "suite": "g13_author"
+    },
+    {
+      "classname": "test_g13_author_court",
+      "name": "test_f5_unregistered_stream_is_refused",
+      "status": "PASS",
+      "suite": "g13_author"
+    },
+    {
+      "classname": "test_g13_author_court",
+      "name": "test_f5_empty_and_singleton_consume_zero_draws",
+      "status": "PASS",
+      "suite": "g13_author"
+    },
+    {
+      "classname": "test_g13_author_court",
+      "name": "test_f5_domain_separator_is_the_accepted_adp020_one",
+      "status": "PASS",
+      "suite": "g13_author"
+    },
+    {
+      "classname": "test_g13_author_court",
+      "name": "test_f6_changed_payload_same_class_key_changes_selection_identity",
+      "status": "PASS",
+      "suite": "g13_author"
+    },
+    {
+      "classname": "test_g13_author_court",
+      "name": "test_f6_candidate_replay_hash_changes_with_content",
+      "status": "PASS",
+      "suite": "g13_author"
+    },
+    {
+      "classname": "test_g13_author_court",
+      "name": "test_f6_phrasing_multiplicity_does_not_change_identity",
+      "status": "PASS",
+      "suite": "g13_author"
+    },
+    {
+      "classname": "test_g13_author_court",
+      "name": "test_f6_input_order_does_not_change_identity",
+      "status": "PASS",
+      "suite": "g13_author"
+    },
+    {
+      "classname": "test_g13_author_court",
+      "name": "test_f6_unregistered_policy_is_a_no_draw_hold",
+      "status": "PASS",
+      "suite": "g13_author"
+    },
+    {
+      "classname": "test_g13_author_court",
+      "name": "test_f6_invalid_root_yields_typed_hold_not_infeasible",
+      "status": "PASS",
+      "suite": "g13_author"
+    },
+    {
+      "classname": "test_g13_author_court",
+      "name": "test_f7_no_relationship_without_second_parent_history_or_witness",
+      "status": "PASS",
+      "suite": "g13_author"
+    },
+    {
+      "classname": "test_g13_author_court",
+      "name": "test_f7_history_without_forming_witness_is_refused",
+      "status": "PASS",
+      "suite": "g13_author"
+    },
+    {
+      "classname": "test_g13_author_court",
+      "name": "test_f7_actor_id_is_bound_from_actual_history_not_a_placeholder",
+      "status": "PASS",
+      "suite": "g13_author"
+    },
+    {
+      "classname": "test_g13_author_court",
+      "name": "test_f7_two_independently_derived_paternal_histories_bind_distinct_actors",
+      "status": "PASS",
+      "suite": "g13_author"
+    },
+    {
+      "classname": "test_g13_author_court",
+      "name": "test_f7_empty_history_emits_no_paternal_continuation",
+      "status": "PASS",
+      "suite": "g13_author"
+    },
+    {
+      "classname": "test_g13_author_court",
+      "name": "test_f7_real_history_admits_paternal_continuation",
+      "status": "PASS",
+      "suite": "g13_author"
+    },
+    {
+      "classname": "test_g13_author_court",
+      "name": "test_f7_asymmetry_and_no_auto_household_preserved",
+      "status": "PASS",
+      "suite": "g13_author"
+    },
+    {
+      "classname": "test_g13_author_court",
+      "name": "test_ceilings_no_child_generated_no_birth_no_conception",
+      "status": "PASS",
+      "suite": "g13_author"
+    },
+    {
+      "classname": "test_g13_author_court",
+      "name": "test_ceilings_negative_endpoint_constraint_is_refused_not_rewritten",
+      "status": "PASS",
+      "suite": "g13_author"
+    },
+    {
+      "classname": "test_g13_author_court",
+      "name": "test_ceilings_m0_and_m2_mother_histories_both_construct",
+      "status": "PASS",
+      "suite": "g13_author"
+    },
+    {
+      "classname": "test_g13_author_court",
+      "name": "test_ceilings_lab_rule_remains_not_adopted",
+      "status": "PASS",
+      "suite": "g13_author"
+    },
+    {
+      "classname": "test_g13_author_court",
+      "name": "test_f5_lab_sampler_conforms_to_the_accepted_adp020_algorithm",
+      "status": "PASS",
+      "suite": "g13_author"
+    },
+    {
+      "classname": "test_g13_author_court",
+      "name": "test_f5_g12_literal_assertion_is_unfalsifiable_by_any_laboratory",
+      "status": "PASS",
+      "suite": "g13_author"
+    },
+    {
+      "classname": "test_g13_postrepair_original",
+      "name": "test_postrepair_case_identity_and_predicates_unchanged[K11-BASE-LOCAL]",
+      "status": "PASS",
+      "suite": "g13_postrepair"
+    },
+    {
+      "classname": "test_g13_postrepair_original",
+      "name": "test_postrepair_case_identity_and_predicates_unchanged[K11-ROUTE-DISCORDANT]",
+      "status": "PASS",
+      "suite": "g13_postrepair"
+    },
+    {
+      "classname": "test_g13_postrepair_original",
+      "name": "test_postrepair_case_identity_and_predicates_unchanged[K11-ROUTE-MOBILITY]",
+      "status": "PASS",
+      "suite": "g13_postrepair"
+    },
+    {
+      "classname": "test_g13_postrepair_original",
+      "name": "test_postrepair_case_identity_and_predicates_unchanged[K11-ROUTE-UNCONVENTIONAL]",
+      "status": "PASS",
+      "suite": "g13_postrepair"
+    },
+    {
+      "classname": "test_g13_postrepair_original",
+      "name": "test_postrepair_case_identity_and_predicates_unchanged[K11-A-FUTURE-CHILD-EMBARGO]",
+      "status": "PASS",
+      "suite": "g13_postrepair"
+    },
+    {
+      "classname": "test_g13_postrepair_original",
+      "name": "test_postrepair_case_identity_and_predicates_unchanged[K11-A2-DESIRED-WOUND-COUNTERFACTUAL]",
+      "status": "PASS",
+      "suite": "g13_postrepair"
+    },
+    {
+      "classname": "test_g13_postrepair_original",
+      "name": "test_postrepair_case_identity_and_predicates_unchanged[K11-B-INDEPENDENT-HISTORY]",
+      "status": "PASS",
+      "suite": "g13_postrepair"
+    },
+    {
+      "classname": "test_g13_postrepair_original",
+      "name": "test_postrepair_case_identity_and_predicates_unchanged[K11-C-EXISTING-PARTNER]",
+      "status": "PASS",
+      "suite": "g13_postrepair"
+    },
+    {
+      "classname": "test_g13_postrepair_original",
+      "name": "test_postrepair_case_identity_and_predicates_unchanged[K11-C2-EXISTING-SHARED-EVENT]",
+      "status": "PASS",
+      "suite": "g13_postrepair"
+    },
+    {
+      "classname": "test_g13_postrepair_original",
+      "name": "test_postrepair_case_identity_and_predicates_unchanged[K11-D-PARITY]",
+      "status": "PASS",
+      "suite": "g13_postrepair"
+    },
+    {
+      "classname": "test_g13_postrepair_original",
+      "name": "test_postrepair_case_identity_and_predicates_unchanged[K11-E-INDEPENDENT-PROJECT]",
+      "status": "PASS",
+      "suite": "g13_postrepair"
+    },
+    {
+      "classname": "test_g13_postrepair_original",
+      "name": "test_postrepair_case_identity_and_predicates_unchanged[K11-GRAPH-CONSTRUCTION-VS-CAUSAL]",
+      "status": "PASS",
+      "suite": "g13_postrepair"
+    },
+    {
+      "classname": "test_g13_postrepair_original",
+      "name": "test_postrepair_case_identity_and_predicates_unchanged[K11-DEDUPE]",
+      "status": "PASS",
+      "suite": "g13_postrepair"
+    },
+    {
+      "classname": "test_g13_postrepair_original",
+      "name": "test_postrepair_case_identity_and_predicates_unchanged[K11-EMPIRICAL-CEILING]",
+      "status": "PASS",
+      "suite": "g13_postrepair"
+    },
+    {
+      "classname": "test_g13_postrepair_original",
+      "name": "test_postrepair_case_identity_and_predicates_unchanged[K11-WEIGHT-ORDINAL]",
+      "status": "PASS",
+      "suite": "g13_postrepair"
+    },
+    {
+      "classname": "test_g13_postrepair_original",
+      "name": "test_postrepair_case_identity_and_predicates_unchanged[K11-WEIGHT-SENSITIVITY]",
+      "status": "PASS",
+      "suite": "g13_postrepair"
+    },
+    {
+      "classname": "test_g13_postrepair_original",
+      "name": "test_postrepair_case_identity_and_predicates_unchanged[K11-RETRY-BIAS]",
+      "status": "PASS",
+      "suite": "g13_postrepair"
+    },
+    {
+      "classname": "test_g13_postrepair_original",
+      "name": "test_postrepair_case_identity_and_predicates_unchanged[K11-VALID-EMPTY]",
+      "status": "PASS",
+      "suite": "g13_postrepair"
+    },
+    {
+      "classname": "test_g13_postrepair_original",
+      "name": "test_postrepair_case_identity_and_predicates_unchanged[K11-UNKNOWN-REQUIRED]",
+      "status": "PASS",
+      "suite": "g13_postrepair"
+    },
+    {
+      "classname": "test_g13_postrepair_original",
+      "name": "test_postrepair_case_identity_and_predicates_unchanged[K11-RELATION-ASYMMETRY]",
+      "status": "PASS",
+      "suite": "g13_postrepair"
+    },
+    {
+      "classname": "test_g13_postrepair_original",
+      "name": "test_postrepair_case_identity_and_predicates_unchanged[K11-CONCEPTION-CHILDGEN-BOUNDARY]",
+      "status": "PASS",
+      "suite": "g13_postrepair"
+    },
+    {
+      "classname": "test_g13_postrepair_original",
+      "name": "test_postrepair_case_identity_and_predicates_unchanged[K11-MISSING-HISTORY]",
+      "status": "PASS",
+      "suite": "g13_postrepair"
+    },
+    {
+      "classname": "test_g13_postrepair_original",
+      "name": "test_postrepair_case_identity_and_predicates_unchanged[K11-SCHEDULER-SAME-TIME]",
+      "status": "PASS",
+      "suite": "g13_postrepair"
+    },
+    {
+      "classname": "test_g13_postrepair_original",
+      "name": "test_postrepair_case_identity_and_predicates_unchanged[K11-REPLAY-ALTER-SUBJECT]",
+      "status": "PASS",
+      "suite": "g13_postrepair"
+    },
+    {
+      "classname": "test_g13_postrepair_original",
+      "name": "test_postrepair_denominators_complete_and_offline",
+      "status": "PASS",
+      "suite": "g13_postrepair"
+    },
+    {
+      "classname": "test_g13_postrepair_original",
+      "name": "test_postrepair_fingerprints_match_repaired_manifest",
+      "status": "PASS",
+      "suite": "g13_postrepair"
+    },
+    {
+      "classname": "test_g13_postrepair_original",
+      "name": "test_postrepair_exactly_four_fingerprints_were_rebased",
+      "status": "PASS",
+      "suite": "g13_postrepair"
+    },
+    {
+      "classname": "test_g13_postrepair_original",
+      "name": "test_postrepair_no_case_has_a_false_predicate",
+      "status": "PASS",
+      "suite": "g13_postrepair"
+    }
+  ],
+  "target_counts": {
+    "PASS": 164,
+    "RED": 17
+  }
+}

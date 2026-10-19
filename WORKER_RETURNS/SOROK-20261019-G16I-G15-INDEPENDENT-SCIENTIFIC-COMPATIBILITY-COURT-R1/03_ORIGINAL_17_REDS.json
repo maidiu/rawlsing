@@ -1,0 +1,295 @@
+{
+  "all_remain_RED": true,
+  "cases": [
+    {
+      "independent_baseline_failure": {
+        "message": "assert False",
+        "text": "test_original_sgi1.py:8: in test_literal_original_k11_case\n    assert SUMMARY['comparison'][case['case_id']]['equal']\nE   assert False"
+      },
+      "independent_candidate_failure": {
+        "message": "AssertionError: {'mother_checkpoint_byte_identity_unchanged': False, 'proposal_set_finite': False, 'generic_query_receipts_exact': False, 'selection_policy_labeled': False, ...}\nassert False\n +  where False = all(dict_values([False, False, False, False, False, False, False, False, False, False]))\n +    where dict_values([False, False, False, False, False, False, False, False, False, False]) = <built-in method values of dict object at 0x1059dcb40>()\n +      where <built-in method values of dict object at 0x1059dcb40> = {'mother_checkpoint_byte_identity_unchanged': False, 'proposal_set_finite': False, 'generic_query_receipts_exact': False, 'selection_policy_labeled': False, ...}.values",
+        "text": "test_original_sgi1.py:7: in test_literal_original_k11_case\n    assert all(case['assertion_results'].values()),case['assertion_results']\nE   AssertionError: {'mother_checkpoint_byte_identity_unchanged': False, 'proposal_set_finite': False, 'generic_query_receipts_exact': False, 'selection_policy_labeled': False, ...}\nE   assert False\nE    +  where False = all(dict_values([False, False, False, False, False, False, False, False, False, False]))\nE    +    where dict_values([False, False, False, False, False, False, False, False, False, False]) = <built-in method values of dict object at 0x1059dcb40>()\nE    +      where <built-in method values of dict object at 0x1059dcb40> = {'mother_checkpoint_byte_identity_unchanged': False, 'proposal_set_finite': False, 'generic_query_receipts_exact': False, 'selection_policy_labeled': False, ...}.values"
+      },
+      "original": {
+        "classification": "FINGERPRINT_REBASE__EXPECTED_IDENTITY_CHANGE__ORIGINAL_RED_RETAINED",
+        "literal_status": "RED",
+        "name": "test_literal_original_k11_case[K11-BASE-LOCAL]",
+        "suite": "sgi1_target",
+        "waived": false
+      }
+    },
+    {
+      "independent_baseline_failure": {
+        "message": "assert False",
+        "text": "test_original_sgi1.py:8: in test_literal_original_k11_case\n    assert SUMMARY['comparison'][case['case_id']]['equal']\nE   assert False"
+      },
+      "independent_candidate_failure": {
+        "message": "AssertionError: {'contrast_in_typed_candidates_and_eligibility': False, 'qualified_route_truth': False, 'candidate_set_hash_binding': False, 'deterministic_replay_per_route': False}\nassert False\n +  where False = all(dict_values([False, False, False, False]))\n +    where dict_values([False, False, False, False]) = <built-in method values of dict object at 0x1059cffc0>()\n +      where <built-in method values of dict object at 0x1059cffc0> = {'contrast_in_typed_candidates_and_eligibility': False, 'qualified_route_truth': False, 'candidate_set_hash_binding': False, 'deterministic_replay_per_route': False}.values",
+        "text": "test_original_sgi1.py:7: in test_literal_original_k11_case\n    assert all(case['assertion_results'].values()),case['assertion_results']\nE   AssertionError: {'contrast_in_typed_candidates_and_eligibility': False, 'qualified_route_truth': False, 'candidate_set_hash_binding': False, 'deterministic_replay_per_route': False}\nE   assert False\nE    +  where False = all(dict_values([False, False, False, False]))\nE    +    where dict_values([False, False, False, False]) = <built-in method values of dict object at 0x1059cffc0>()\nE    +      where <built-in method values of dict object at 0x1059cffc0> = {'contrast_in_typed_candidates_and_eligibility': False, 'qualified_route_truth': False, 'candidate_set_hash_binding': False, 'deterministic_replay_per_route': False}.values"
+      },
+      "original": {
+        "classification": "FINGERPRINT_REBASE__EXPECTED_IDENTITY_CHANGE__ORIGINAL_RED_RETAINED",
+        "literal_status": "RED",
+        "name": "test_literal_original_k11_case[K11-ROUTE-DISCORDANT]",
+        "suite": "sgi1_target",
+        "waived": false
+      }
+    },
+    {
+      "independent_baseline_failure": {
+        "message": "assert False",
+        "text": "test_original_sgi1.py:8: in test_literal_original_k11_case\n    assert SUMMARY['comparison'][case['case_id']]['equal']\nE   assert False"
+      },
+      "independent_candidate_failure": {
+        "message": "AssertionError: {'candidate_set_hash_equal': False, 'generic_query_request_hashes_equal': False, 'selection_decision_identity_equal': False, 'father_history_event_hashes_equal': False, ...}\nassert False\n +  where False = all(dict_values([False, False, False, False, False, False]))\n +    where dict_values([False, False, False, False, False, False]) = <built-in method values of dict object at 0x1059de5c0>()\n +      where <built-in method values of dict object at 0x1059de5c0> = {'candidate_set_hash_equal': False, 'generic_query_request_hashes_equal': False, 'selection_decision_identity_equal': False, 'father_history_event_hashes_equal': False, ...}.values",
+        "text": "test_original_sgi1.py:7: in test_literal_original_k11_case\n    assert all(case['assertion_results'].values()),case['assertion_results']\nE   AssertionError: {'candidate_set_hash_equal': False, 'generic_query_request_hashes_equal': False, 'selection_decision_identity_equal': False, 'father_history_event_hashes_equal': False, ...}\nE   assert False\nE    +  where False = all(dict_values([False, False, False, False, False, False]))\nE    +    where dict_values([False, False, False, False, False, False]) = <built-in method values of dict object at 0x1059de5c0>()\nE    +      where <built-in method values of dict object at 0x1059de5c0> = {'candidate_set_hash_equal': False, 'generic_query_request_hashes_equal': False, 'selection_decision_identity_equal': False, 'father_history_event_hashes_equal': False, ...}.values"
+      },
+      "original": {
+        "classification": "FINGERPRINT_REBASE__EXPECTED_IDENTITY_CHANGE__ORIGINAL_RED_RETAINED",
+        "literal_status": "RED",
+        "name": "test_literal_original_k11_case[K11-A-FUTURE-CHILD-EMBARGO]",
+        "suite": "sgi1_target",
+        "waived": false
+      }
+    },
+    {
+      "independent_baseline_failure": {
+        "message": "assert False",
+        "text": "test_original_sgi1.py:8: in test_literal_original_k11_case\n    assert SUMMARY['comparison'][case['case_id']]['equal']\nE   assert False"
+      },
+      "independent_candidate_failure": {
+        "message": "AssertionError: {'no_father_abuse_generated_as_function_of_label': False, 'byte_equal_father_ledger': False, 'no_child_future_key_in_model_prompt_or_seed': False}\nassert False\n +  where False = all(dict_values([False, False, False]))\n +    where dict_values([False, False, False]) = <built-in method values of dict object at 0x1059cc940>()\n +      where <built-in method values of dict object at 0x1059cc940> = {'no_father_abuse_generated_as_function_of_label': False, 'byte_equal_father_ledger': False, 'no_child_future_key_in_model_prompt_or_seed': False}.values",
+        "text": "test_original_sgi1.py:7: in test_literal_original_k11_case\n    assert all(case['assertion_results'].values()),case['assertion_results']\nE   AssertionError: {'no_father_abuse_generated_as_function_of_label': False, 'byte_equal_father_ledger': False, 'no_child_future_key_in_model_prompt_or_seed': False}\nE   assert False\nE    +  where False = all(dict_values([False, False, False]))\nE    +    where dict_values([False, False, False]) = <built-in method values of dict object at 0x1059cc940>()\nE    +      where <built-in method values of dict object at 0x1059cc940> = {'no_father_abuse_generated_as_function_of_label': False, 'byte_equal_father_ledger': False, 'no_child_future_key_in_model_prompt_or_seed': False}.values"
+      },
+      "original": {
+        "classification": "FINGERPRINT_REBASE__EXPECTED_IDENTITY_CHANGE__ORIGINAL_RED_RETAINED",
+        "literal_status": "RED",
+        "name": "test_literal_original_k11_case[K11-A2-DESIRED-WOUND-COUNTERFACTUAL]",
+        "suite": "sgi1_target",
+        "waived": false
+      }
+    },
+    {
+      "independent_baseline_failure": {
+        "message": "assert False",
+        "text": "test_g12_controls.py:24: in test_independent_oracle_detects_mutation\n    assert x['lab']['endpoint_match']\nE   assert False"
+      },
+      "independent_candidate_failure": {
+        "message": "assert False",
+        "text": "test_g12_controls.py:24: in test_independent_oracle_detects_mutation\n    assert x['lab']['endpoint_match']\nE   assert False"
+      },
+      "original": {
+        "classification": "OLD_DEFECT_CHARACTERIZATION_INVERTED_BY_REAL_REPAIR",
+        "literal_status": "RED",
+        "name": "test_independent_oracle_detects_mutation[forged_endpoint]",
+        "suite": "g12_controls",
+        "waived": false
+      }
+    },
+    {
+      "independent_baseline_failure": {
+        "message": "assert False",
+        "text": "test_g12_controls.py:24: in test_independent_oracle_detects_mutation\n    assert x['lab']['endpoint_match']\nE   assert False"
+      },
+      "independent_candidate_failure": {
+        "message": "assert False",
+        "text": "test_g12_controls.py:24: in test_independent_oracle_detects_mutation\n    assert x['lab']['endpoint_match']\nE   assert False"
+      },
+      "original": {
+        "classification": "OLD_DEFECT_CHARACTERIZATION_INVERTED_BY_REAL_REPAIR",
+        "literal_status": "RED",
+        "name": "test_independent_oracle_detects_mutation[missing_parent]",
+        "suite": "g12_controls",
+        "waived": false
+      }
+    },
+    {
+      "independent_baseline_failure": {
+        "message": "assert False",
+        "text": "test_g12_controls.py:24: in test_independent_oracle_detects_mutation\n    assert x['lab']['endpoint_match']\nE   assert False"
+      },
+      "independent_candidate_failure": {
+        "message": "assert False",
+        "text": "test_g12_controls.py:24: in test_independent_oracle_detects_mutation\n    assert x['lab']['endpoint_match']\nE   assert False"
+      },
+      "original": {
+        "classification": "OLD_DEFECT_CHARACTERIZATION_INVERTED_BY_REAL_REPAIR",
+        "literal_status": "RED",
+        "name": "test_independent_oracle_detects_mutation[future_endpoint_as_root_parent]",
+        "suite": "g12_controls",
+        "waived": false
+      }
+    },
+    {
+      "independent_baseline_failure": {
+        "message": "assert False",
+        "text": "test_g12_controls.py:24: in test_independent_oracle_detects_mutation\n    assert x['lab']['endpoint_match']\nE   assert False"
+      },
+      "independent_candidate_failure": {
+        "message": "assert False",
+        "text": "test_g12_controls.py:24: in test_independent_oracle_detects_mutation\n    assert x['lab']['endpoint_match']\nE   assert False"
+      },
+      "original": {
+        "classification": "OLD_DEFECT_CHARACTERIZATION_INVERTED_BY_REAL_REPAIR",
+        "literal_status": "RED",
+        "name": "test_independent_oracle_detects_mutation[duplicate_effective_index]",
+        "suite": "g12_controls",
+        "waived": false
+      }
+    },
+    {
+      "independent_baseline_failure": {
+        "message": "assert False",
+        "text": "test_g12_controls.py:24: in test_independent_oracle_detects_mutation\n    assert x['lab']['endpoint_match']\nE   assert False"
+      },
+      "independent_candidate_failure": {
+        "message": "assert False",
+        "text": "test_g12_controls.py:24: in test_independent_oracle_detects_mutation\n    assert x['lab']['endpoint_match']\nE   assert False"
+      },
+      "original": {
+        "classification": "OLD_DEFECT_CHARACTERIZATION_INVERTED_BY_REAL_REPAIR",
+        "literal_status": "RED",
+        "name": "test_independent_oracle_detects_mutation[route_antecedent_removed]",
+        "suite": "g12_controls",
+        "waived": false
+      }
+    },
+    {
+      "independent_baseline_failure": {
+        "message": "assert False",
+        "text": "test_g12_controls.py:30: in test_embargo_input_counterexample_recorded\n    assert obs['embargo'][path]['sentinel_visible']\nE   assert False"
+      },
+      "independent_candidate_failure": {
+        "message": "assert False",
+        "text": "test_g12_controls.py:30: in test_embargo_input_counterexample_recorded\n    assert obs['embargo'][path]['sentinel_visible']\nE   assert False"
+      },
+      "original": {
+        "classification": "OLD_DEFECT_CHARACTERIZATION_INVERTED_BY_REAL_REPAIR",
+        "literal_status": "RED",
+        "name": "test_embargo_input_counterexample_recorded[target]",
+        "suite": "g12_controls",
+        "waived": false
+      }
+    },
+    {
+      "independent_baseline_failure": {
+        "message": "assert False",
+        "text": "test_g12_controls.py:30: in test_embargo_input_counterexample_recorded\n    assert obs['embargo'][path]['sentinel_visible']\nE   assert False"
+      },
+      "independent_candidate_failure": {
+        "message": "assert False",
+        "text": "test_g12_controls.py:30: in test_embargo_input_counterexample_recorded\n    assert obs['embargo'][path]['sentinel_visible']\nE   assert False"
+      },
+      "original": {
+        "classification": "OLD_DEFECT_CHARACTERIZATION_INVERTED_BY_REAL_REPAIR",
+        "literal_status": "RED",
+        "name": "test_embargo_input_counterexample_recorded[world]",
+        "suite": "g12_controls",
+        "waived": false
+      }
+    },
+    {
+      "independent_baseline_failure": {
+        "message": "assert False",
+        "text": "test_g12_controls.py:30: in test_embargo_input_counterexample_recorded\n    assert obs['embargo'][path]['sentinel_visible']\nE   assert False"
+      },
+      "independent_candidate_failure": {
+        "message": "assert False",
+        "text": "test_g12_controls.py:30: in test_embargo_input_counterexample_recorded\n    assert obs['embargo'][path]['sentinel_visible']\nE   assert False"
+      },
+      "original": {
+        "classification": "OLD_DEFECT_CHARACTERIZATION_INVERTED_BY_REAL_REPAIR",
+        "literal_status": "RED",
+        "name": "test_embargo_input_counterexample_recorded[psyche]",
+        "suite": "g12_controls",
+        "waived": false
+      }
+    },
+    {
+      "independent_baseline_failure": {
+        "message": "assert False",
+        "text": "test_g12_controls.py:33: in test_unchanged_lab_stopping_has_no_missing_parent_detection\n    assert obs['stopping_corrupt']['sufficient']\nE   assert False"
+      },
+      "independent_candidate_failure": {
+        "message": "assert False",
+        "text": "test_g12_controls.py:33: in test_unchanged_lab_stopping_has_no_missing_parent_detection\n    assert obs['stopping_corrupt']['sufficient']\nE   assert False"
+      },
+      "original": {
+        "classification": "OLD_DEFECT_CHARACTERIZATION_INVERTED_BY_REAL_REPAIR",
+        "literal_status": "RED",
+        "name": "test_unchanged_lab_stopping_has_no_missing_parent_detection",
+        "suite": "g12_controls",
+        "waived": false
+      }
+    },
+    {
+      "independent_baseline_failure": {
+        "message": "assert False",
+        "text": "test_g12_controls.py:37: in test_alien_project_and_counterpart_probe_counterexample\n    assert obs['alien_probes']['heldout_independence_pass']\nE   assert False"
+      },
+      "independent_candidate_failure": {
+        "message": "assert False",
+        "text": "test_g12_controls.py:37: in test_alien_project_and_counterpart_probe_counterexample\n    assert obs['alien_probes']['heldout_independence_pass']\nE   assert False"
+      },
+      "original": {
+        "classification": "OLD_DEFECT_CHARACTERIZATION_INVERTED_BY_REAL_REPAIR",
+        "literal_status": "RED",
+        "name": "test_alien_project_and_counterpart_probe_counterexample",
+        "suite": "g12_controls",
+        "waived": false
+      }
+    },
+    {
+      "independent_baseline_failure": {
+        "message": "AssertionError: assert 'sha256:d8f4b...8dda57753dcb6' == 'sha256:d5096...868fd224f92a3'\n  \n  - sha256:d509644543e070c53139102aa174b3c5408ca882bedcff08887868fd224f92a3\n  + sha256:d8f4b18a7126626f2efb2aad8b6c0a4425096e15d505ad07e428dda57753dcb6",
+        "text": "test_g12_controls.py:42: in test_candidate_payload_change_is_unbound_in_lab\n    assert a['candidate_set_hash']==b['candidate_set_hash']\nE   AssertionError: assert 'sha256:d8f4b...8dda57753dcb6' == 'sha256:d5096...868fd224f92a3'\nE     \nE     - sha256:d509644543e070c53139102aa174b3c5408ca882bedcff08887868fd224f92a3\nE     + sha256:d8f4b18a7126626f2efb2aad8b6c0a4425096e15d505ad07e428dda57753dcb6"
+      },
+      "independent_candidate_failure": {
+        "message": "AssertionError: assert 'sha256:a3acc...4010d7196518d' == 'sha256:9e5ad...10475a3a1d1c3'\n  \n  - sha256:9e5ad161e75e3cc91d3b8942d76bd0f5dcae5418f7fd0cae69410475a3a1d1c3\n  + sha256:a3acc289ab4e201054f5d2eb47c697784304fd202200b3753404010d7196518d",
+        "text": "test_g12_controls.py:42: in test_candidate_payload_change_is_unbound_in_lab\n    assert a['candidate_set_hash']==b['candidate_set_hash']\nE   AssertionError: assert 'sha256:a3acc...4010d7196518d' == 'sha256:9e5ad...10475a3a1d1c3'\nE     \nE     - sha256:9e5ad161e75e3cc91d3b8942d76bd0f5dcae5418f7fd0cae69410475a3a1d1c3\nE     + sha256:a3acc289ab4e201054f5d2eb47c697784304fd202200b3753404010d7196518d"
+      },
+      "original": {
+        "classification": "OLD_DEFECT_CHARACTERIZATION_INVERTED_BY_REAL_REPAIR",
+        "literal_status": "RED",
+        "name": "test_candidate_payload_change_is_unbound_in_lab",
+        "suite": "g12_controls",
+        "waived": false
+      }
+    },
+    {
+      "independent_baseline_failure": {
+        "message": "AssertionError: assert 'f1e9ca48cffc...2fb82c3ed51cf' == '8bc7c1a5d8d9...4fdbf5b222fe7'\n  \n  - 8bc7c1a5d8d96112b313326445c4fdbf5b222fe7\n  + f1e9ca48cffc26f83a8e4c82f582fb82c3ed51cf",
+        "text": "test_g12_controls.py:85: in test_original_source_bytes_and_actual_imports\n    assert hashlib.sha1(b'blob '+str(len(b)).encode()+b'\\0'+b).hexdigest()==row['git_blob_sha1']\nE   AssertionError: assert 'f1e9ca48cffc...2fb82c3ed51cf' == '8bc7c1a5d8d9...4fdbf5b222fe7'\nE     \nE     - 8bc7c1a5d8d96112b313326445c4fdbf5b222fe7\nE     + f1e9ca48cffc26f83a8e4c82f582fb82c3ed51cf"
+      },
+      "independent_candidate_failure": {
+        "message": "AssertionError: assert 'fbecbfae723b...8aab165747259' == '0b5a6dd80f93...0d339cb99e45a'\n  \n  - 0b5a6dd80f93e6a5d19eb1b6b710d339cb99e45a\n  + fbecbfae723bf5e72830b9a59788aab165747259",
+        "text": "test_g12_controls.py:85: in test_original_source_bytes_and_actual_imports\n    assert hashlib.sha1(b'blob '+str(len(b)).encode()+b'\\0'+b).hexdigest()==row['git_blob_sha1']\nE   AssertionError: assert 'fbecbfae723b...8aab165747259' == '0b5a6dd80f93...0d339cb99e45a'\nE     \nE     - 0b5a6dd80f93e6a5d19eb1b6b710d339cb99e45a\nE     + fbecbfae723bf5e72830b9a59788aab165747259"
+      },
+      "original": {
+        "classification": "G12_ORIGINAL_SOURCE_PIN_STALE__REPinned_BY_INDEPENDENT_G14_CUSTODY",
+        "literal_status": "RED",
+        "name": "test_original_source_bytes_and_actual_imports",
+        "suite": "g12_controls",
+        "waived": false
+      }
+    },
+    {
+      "independent_baseline_failure": {
+        "message": "AssertionError: assert 'SHA256_CONCAT_MODULO' == 'ADP020_HMAC_...ELOW_V1@1.0.0'\n  \n  - ADP020_HMAC_SHA256_UNIFORM_BELOW_V1@1.0.0\n  + SHA256_CONCAT_MODULO",
+        "text": "test_g12_literal_contract.py:20: in test_lab_sampler_is_accepted_adp020_algorithm\n    assert obs['rng_algorithm']['actual']==obs['rng_algorithm']['required']\nE   AssertionError: assert 'SHA256_CONCAT_MODULO' == 'ADP020_HMAC_...ELOW_V1@1.0.0'\nE     \nE     - ADP020_HMAC_SHA256_UNIFORM_BELOW_V1@1.0.0\nE     + SHA256_CONCAT_MODULO"
+      },
+      "independent_candidate_failure": {
+        "message": "AssertionError: assert 'SHA256_CONCAT_MODULO' == 'ADP020_HMAC_...ELOW_V1@1.0.0'\n  \n  - ADP020_HMAC_SHA256_UNIFORM_BELOW_V1@1.0.0\n  + SHA256_CONCAT_MODULO",
+        "text": "test_g12_literal_contract.py:20: in test_lab_sampler_is_accepted_adp020_algorithm\n    assert obs['rng_algorithm']['actual']==obs['rng_algorithm']['required']\nE   AssertionError: assert 'SHA256_CONCAT_MODULO' == 'ADP020_HMAC_...ELOW_V1@1.0.0'\nE     \nE     - ADP020_HMAC_SHA256_UNIFORM_BELOW_V1@1.0.0\nE     + SHA256_CONCAT_MODULO"
+      },
+      "original": {
+        "classification": "FROZEN_LITERAL_VS_LITERAL_HARNESS_DEFECT__NOT_A_LIVE_SAMPLER_TEST",
+        "literal_status": "RED",
+        "name": "test_lab_sampler_is_accepted_adp020_algorithm",
+        "suite": "g12_literal",
+        "waived": false
+      }
+    }
+  ],
+  "count": 17
+}

@@ -1,0 +1,12 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+______ test_every_joint_and_continuation_parent_resolves_strictly_earlier ______
+WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py:335: in test_every_joint_and_continuation_parent_resolves_strictly_earlier
+    assert result['terminal']['status']=='COMMITTED'
+E   AssertionError: assert 'CAUSAL_TEMPORAL_INVERSION' == 'COMMITTED'
+E     
+E     - COMMITTED
+E     + CAUSAL_TEMPORAL_INVERSION
+=========================== short test summary info ============================
+FAILED WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py::test_every_joint_and_continuation_parent_resolves_strictly_earlier
+1 failed in 0.44s

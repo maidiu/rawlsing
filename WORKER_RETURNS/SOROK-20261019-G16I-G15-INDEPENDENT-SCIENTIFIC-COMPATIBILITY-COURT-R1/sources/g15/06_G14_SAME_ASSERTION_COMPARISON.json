@@ -1,0 +1,832 @@
+{
+  "baseline": {
+    "PASS": 40,
+    "RED": 27
+  },
+  "candidate": {
+    "PASS": 67
+  },
+  "cases": [
+    {
+      "baseline": "PASS",
+      "candidate": "PASS",
+      "classification": "PRESERVED_CONTROL",
+      "expected_assertions": [
+        "assert a['endpoint_match'] and b['endpoint_match']",
+        "assert a['recomputed_state']==b['recomputed_state']"
+      ],
+      "family": "F1",
+      "grade": "EXECUTED_CONTROL",
+      "name": "test_f1_clean_and_shuffled_replay_have_same_state",
+      "original_source_file": "frozen/g14/test_g14_science.py"
+    },
+    {
+      "baseline": "PASS",
+      "candidate": "PASS",
+      "classification": "PRESERVED_CONTROL",
+      "expected_assertions": [
+        "assert not r['endpoint_match']"
+      ],
+      "family": "F1",
+      "grade": "EXECUTED_CONTROL",
+      "name": "test_f1_dependency_severance_and_forgery_refused[missing_parent]",
+      "original_source_file": "frozen/g14/test_g14_science.py"
+    },
+    {
+      "baseline": "PASS",
+      "candidate": "PASS",
+      "classification": "PRESERVED_CONTROL",
+      "expected_assertions": [
+        "assert not r['endpoint_match']"
+      ],
+      "family": "F1",
+      "grade": "EXECUTED_CONTROL",
+      "name": "test_f1_dependency_severance_and_forgery_refused[future_parent]",
+      "original_source_file": "frozen/g14/test_g14_science.py"
+    },
+    {
+      "baseline": "PASS",
+      "candidate": "PASS",
+      "classification": "PRESERVED_CONTROL",
+      "expected_assertions": [
+        "assert not r['endpoint_match']"
+      ],
+      "family": "F1",
+      "grade": "EXECUTED_CONTROL",
+      "name": "test_f1_dependency_severance_and_forgery_refused[self_parent]",
+      "original_source_file": "frozen/g14/test_g14_science.py"
+    },
+    {
+      "baseline": "PASS",
+      "candidate": "PASS",
+      "classification": "PRESERVED_CONTROL",
+      "expected_assertions": [
+        "assert not r['endpoint_match']"
+      ],
+      "family": "F1",
+      "grade": "EXECUTED_CONTROL",
+      "name": "test_f1_dependency_severance_and_forgery_refused[duplicate_id]",
+      "original_source_file": "frozen/g14/test_g14_science.py"
+    },
+    {
+      "baseline": "PASS",
+      "candidate": "PASS",
+      "classification": "PRESERVED_CONTROL",
+      "expected_assertions": [
+        "assert not r['endpoint_match']"
+      ],
+      "family": "F1",
+      "grade": "EXECUTED_CONTROL",
+      "name": "test_f1_dependency_severance_and_forgery_refused[duplicate_index]",
+      "original_source_file": "frozen/g14/test_g14_science.py"
+    },
+    {
+      "baseline": "PASS",
+      "candidate": "PASS",
+      "classification": "PRESERVED_CONTROL",
+      "expected_assertions": [
+        "assert not r['endpoint_match']"
+      ],
+      "family": "F1",
+      "grade": "EXECUTED_CONTROL",
+      "name": "test_f1_dependency_severance_and_forgery_refused[orphan]",
+      "original_source_file": "frozen/g14/test_g14_science.py"
+    },
+    {
+      "baseline": "PASS",
+      "candidate": "PASS",
+      "classification": "PRESERVED_CONTROL",
+      "expected_assertions": [
+        "assert not r['endpoint_match']"
+      ],
+      "family": "F1",
+      "grade": "EXECUTED_CONTROL",
+      "name": "test_f1_dependency_severance_and_forgery_refused[endpoint_place]",
+      "original_source_file": "frozen/g14/test_g14_science.py"
+    },
+    {
+      "baseline": "PASS",
+      "candidate": "PASS",
+      "classification": "PRESERVED_CONTROL",
+      "expected_assertions": [
+        "assert not r['endpoint_match']"
+      ],
+      "family": "F1",
+      "grade": "EXECUTED_CONTROL",
+      "name": "test_f1_dependency_severance_and_forgery_refused[endpoint_availability]",
+      "original_source_file": "frozen/g14/test_g14_science.py"
+    },
+    {
+      "baseline": "PASS",
+      "candidate": "PASS",
+      "classification": "PRESERVED_CONTROL",
+      "expected_assertions": [
+        "assert not r['endpoint_match']"
+      ],
+      "family": "F1",
+      "grade": "EXECUTED_CONTROL",
+      "name": "test_f1_dependency_severance_and_forgery_refused[route_removed]",
+      "original_source_file": "frozen/g14/test_g14_science.py"
+    },
+    {
+      "baseline": "RED",
+      "candidate": "PASS",
+      "classification": "TECHNICAL_DEFECT_AND_RESEARCH_HYPOTHESIS",
+      "expected_assertions": [
+        "assert not r['stopping']['sufficient'], 'root existence cannot prove commissioned-work competence'"
+      ],
+      "family": "F1",
+      "grade": "ASSERTION_EFFICACY_PROVED_AT_SOURCEFREE_SCOPE",
+      "name": "test_f1_route_parent_substitution_cannot_replace_work_formation",
+      "original_source_file": "frozen/g14/test_g14_science.py"
+    },
+    {
+      "baseline": "PASS",
+      "candidate": "PASS",
+      "classification": "PRESERVED_CONTROL",
+      "expected_assertions": [
+        "assert not r['stopping']['sufficient']"
+      ],
+      "family": "F2",
+      "grade": "EXECUTED_CONTROL",
+      "name": "test_f2_required_domain_severance_refuses_sufficiency[WORK_POSITION]",
+      "original_source_file": "frozen/g14/test_g14_science.py"
+    },
+    {
+      "baseline": "PASS",
+      "candidate": "PASS",
+      "classification": "PRESERVED_CONTROL",
+      "expected_assertions": [
+        "assert not r['stopping']['sufficient']"
+      ],
+      "family": "F2",
+      "grade": "EXECUTED_CONTROL",
+      "name": "test_f2_required_domain_severance_refuses_sufficiency[ORGANISMIC_EVENT]",
+      "original_source_file": "frozen/g14/test_g14_science.py"
+    },
+    {
+      "baseline": "PASS",
+      "candidate": "PASS",
+      "classification": "PRESERVED_CONTROL",
+      "expected_assertions": [
+        "assert not r['stopping']['sufficient']"
+      ],
+      "family": "F2",
+      "grade": "EXECUTED_CONTROL",
+      "name": "test_f2_required_domain_severance_refuses_sufficiency[PROJECT]",
+      "original_source_file": "frozen/g14/test_g14_science.py"
+    },
+    {
+      "baseline": "PASS",
+      "candidate": "PASS",
+      "classification": "PRESERVED_CONTROL",
+      "expected_assertions": [
+        "assert not r['stopping']['sufficient']"
+      ],
+      "family": "F2",
+      "grade": "EXECUTED_CONTROL",
+      "name": "test_f2_required_domain_severance_refuses_sufficiency[NONMOTHER_RELATIONSHIP]",
+      "original_source_file": "frozen/g14/test_g14_science.py"
+    },
+    {
+      "baseline": "PASS",
+      "candidate": "PASS",
+      "classification": "PRESERVED_CONTROL",
+      "expected_assertions": [
+        "assert not r['stopping']['sufficient']"
+      ],
+      "family": "F2",
+      "grade": "EXECUTED_CONTROL",
+      "name": "test_f2_required_domain_severance_refuses_sufficiency[PRACTICE_FORMATION]",
+      "original_source_file": "frozen/g14/test_g14_science.py"
+    },
+    {
+      "baseline": "PASS",
+      "candidate": "PASS",
+      "classification": "PRESERVED_CONTROL",
+      "expected_assertions": [
+        "assert not r['stopping']['sufficient']"
+      ],
+      "family": "F2",
+      "grade": "EXECUTED_CONTROL",
+      "name": "test_f2_required_domain_severance_refuses_sufficiency[MEMORY_TRACE]",
+      "original_source_file": "frozen/g14/test_g14_science.py"
+    },
+    {
+      "baseline": "RED",
+      "candidate": "PASS",
+      "classification": "TECHNICAL_DEFECT",
+      "expected_assertions": [
+        "assert not r['stopping']['sufficient']"
+      ],
+      "family": "F2",
+      "grade": "ASSERTION_EFFICACY_PROVED_AT_SOURCEFREE_SCOPE",
+      "name": "test_f2_nonempty_but_unresolvable_psyche_refs_refused",
+      "original_source_file": "frozen/g14/test_g14_science.py"
+    },
+    {
+      "baseline": "RED",
+      "candidate": "PASS",
+      "classification": "TECHNICAL_DEFECT",
+      "expected_assertions": [
+        "assert not r['stopping']['sufficient']"
+      ],
+      "family": "F2",
+      "grade": "ASSERTION_EFFICACY_PROVED_AT_SOURCEFREE_SCOPE",
+      "name": "test_f2_memory_experienced_basis_must_resolve",
+      "original_source_file": "frozen/g14/test_g14_science.py"
+    },
+    {
+      "baseline": "RED",
+      "candidate": "PASS",
+      "classification": "TECHNICAL_DEFECT",
+      "expected_assertions": [
+        "assert not r['stopping']['sufficient']"
+      ],
+      "family": "F2",
+      "grade": "ASSERTION_EFFICACY_PROVED_AT_SOURCEFREE_SCOPE",
+      "name": "test_f2_empty_psyche_cannot_certify_existing_formation",
+      "original_source_file": "frozen/g14/test_g14_science.py"
+    },
+    {
+      "baseline": "PASS",
+      "candidate": "PASS",
+      "classification": "PRESERVED_CONTROL",
+      "expected_assertions": [
+        "assert not pr['probes'][0]['pass']"
+      ],
+      "family": "F3",
+      "grade": "EXECUTED_CONTROL",
+      "name": "test_f3_removing_project_consequence_disables_action",
+      "original_source_file": "frozen/g14/test_g14_science.py"
+    },
+    {
+      "baseline": "RED",
+      "candidate": "PASS",
+      "classification": "TECHNICAL_DEFECT_AND_STRONGER_UNISSUED_ORACLE",
+      "expected_assertions": [
+        "assert not b['heldout_independence_pass'], 'actions must depend on represented actor motivation/formation'"
+      ],
+      "family": "F3",
+      "grade": "ASSERTION_EFFICACY_PROVED_AT_SOURCEFREE_SCOPE",
+      "name": "test_f3_removing_actor_psyche_disables_motivated_actions",
+      "original_source_file": "frozen/g14/test_g14_science.py"
+    },
+    {
+      "baseline": "RED",
+      "candidate": "PASS",
+      "classification": "TECHNICAL_DEFECT_AND_STRONGER_UNISSUED_ORACLE",
+      "expected_assertions": [
+        "assert not pr['probes'][0]['pass']"
+      ],
+      "family": "F3",
+      "grade": "ASSERTION_EFFICACY_PROVED_AT_SOURCEFREE_SCOPE",
+      "name": "test_f3_unrelated_false_consequence_is_not_capability_evidence",
+      "original_source_file": "frozen/g14/test_g14_science.py"
+    },
+    {
+      "baseline": "RED",
+      "candidate": "PASS",
+      "classification": "TECHNICAL_DEFECT_AND_STRONGER_UNISSUED_ORACLE",
+      "expected_assertions": [
+        "assert not pr['probes'][1]['pass']"
+      ],
+      "family": "F3",
+      "grade": "ASSERTION_EFFICACY_PROVED_AT_SOURCEFREE_SCOPE",
+      "name": "test_f3_missing_peer_identity_cannot_prove_actor_specific_obligation",
+      "original_source_file": "frozen/g14/test_g14_science.py"
+    },
+    {
+      "baseline": "PASS",
+      "candidate": "PASS",
+      "classification": "PRESERVED_CONTROL",
+      "expected_assertions": [
+        "assert secret not in prompt"
+      ],
+      "family": "F4",
+      "grade": "EXECUTED_CONTROL",
+      "name": "test_f4_all_visible_prompt_paths_are_embargoed[target]",
+      "original_source_file": "frozen/g14/test_g14_science.py"
+    },
+    {
+      "baseline": "PASS",
+      "candidate": "PASS",
+      "classification": "PRESERVED_CONTROL",
+      "expected_assertions": [
+        "assert secret not in prompt"
+      ],
+      "family": "F4",
+      "grade": "EXECUTED_CONTROL",
+      "name": "test_f4_all_visible_prompt_paths_are_embargoed[world]",
+      "original_source_file": "frozen/g14/test_g14_science.py"
+    },
+    {
+      "baseline": "PASS",
+      "candidate": "PASS",
+      "classification": "PRESERVED_CONTROL",
+      "expected_assertions": [
+        "assert secret not in prompt"
+      ],
+      "family": "F4",
+      "grade": "EXECUTED_CONTROL",
+      "name": "test_f4_all_visible_prompt_paths_are_embargoed[psyche]",
+      "original_source_file": "frozen/g14/test_g14_science.py"
+    },
+    {
+      "baseline": "RED",
+      "candidate": "PASS",
+      "classification": "TECHNICAL_DEFECT_AT_DECLARED_BOUNDARY",
+      "expected_assertions": [
+        "assert secret not in prompt"
+      ],
+      "family": "F4",
+      "grade": "ASSERTION_EFFICACY_PROVED_AT_SOURCEFREE_SCOPE",
+      "name": "test_f4_all_visible_prompt_paths_are_embargoed[route]",
+      "original_source_file": "frozen/g14/test_g14_science.py"
+    },
+    {
+      "baseline": "RED",
+      "candidate": "PASS",
+      "classification": "TECHNICAL_DEFECT_AT_DECLARED_BOUNDARY",
+      "expected_assertions": [
+        "assert secret not in prompt"
+      ],
+      "family": "F4",
+      "grade": "ASSERTION_EFFICACY_PROVED_AT_SOURCEFREE_SCOPE",
+      "name": "test_f4_all_visible_prompt_paths_are_embargoed[tuple]",
+      "original_source_file": "frozen/g14/test_g14_science.py"
+    },
+    {
+      "baseline": "RED",
+      "candidate": "PASS",
+      "classification": "TECHNICAL_DEFECT_AT_DECLARED_BOUNDARY",
+      "expected_assertions": [
+        "assert secret not in prompt"
+      ],
+      "family": "F4",
+      "grade": "ASSERTION_EFFICACY_PROVED_AT_SOURCEFREE_SCOPE",
+      "name": "test_f4_all_visible_prompt_paths_are_embargoed[spaced_literal]",
+      "original_source_file": "frozen/g14/test_g14_science.py"
+    },
+    {
+      "baseline": "PASS",
+      "candidate": "PASS",
+      "classification": "PRESERVED_CONTROL",
+      "expected_assertions": [
+        "assert p['mother_anchor_visible_fields']['already_generated_child_refs']==['LAB_OLDER_CHILD_O1']",
+        "assert a==before"
+      ],
+      "family": "F4",
+      "grade": "EXECUTED_CONTROL",
+      "name": "test_f4_clean_older_child_history_preserved",
+      "original_source_file": "frozen/g14/test_g14_science.py"
+    },
+    {
+      "baseline": "RED",
+      "candidate": "PASS",
+      "classification": "TECHNICAL_DEFECT_AT_DECLARED_BOUNDARY",
+      "expected_assertions": [
+        "assert not q['eligibility']['eligible'], 'a system-prompt prohibition is not output admission enforcement'"
+      ],
+      "family": "F4",
+      "grade": "ASSERTION_EFFICACY_PROVED_AT_SOURCEFREE_SCOPE",
+      "name": "test_f4_embargoed_output_cannot_become_eligible_candidate",
+      "original_source_file": "frozen/g14/test_g14_science.py"
+    },
+    {
+      "baseline": "PASS",
+      "candidate": "PASS",
+      "classification": "PRESERVED_CONTROL",
+      "expected_assertions": [
+        "assert r['status']=='NOT_EXECUTED_AUTHORITY_HOLD' and r['n_draws']==0"
+      ],
+      "family": "F5",
+      "grade": "EXECUTED_CONTROL",
+      "name": "test_f5_unknown_roots_refuse_without_draw[short]",
+      "original_source_file": "frozen/g14/test_g14_science.py"
+    },
+    {
+      "baseline": "PASS",
+      "candidate": "PASS",
+      "classification": "PRESERVED_CONTROL",
+      "expected_assertions": [
+        "assert r['status']=='NOT_EXECUTED_AUTHORITY_HOLD' and r['n_draws']==0"
+      ],
+      "family": "F5",
+      "grade": "EXECUTED_CONTROL",
+      "name": "test_f5_unknown_roots_refuse_without_draw[NOT_A_TOKEN]",
+      "original_source_file": "frozen/g14/test_g14_science.py"
+    },
+    {
+      "baseline": "PASS",
+      "candidate": "PASS",
+      "classification": "PRESERVED_CONTROL",
+      "expected_assertions": [
+        "assert r['status']=='NOT_EXECUTED_AUTHORITY_HOLD' and r['n_draws']==0"
+      ],
+      "family": "F5",
+      "grade": "EXECUTED_CONTROL",
+      "name": "test_f5_unknown_roots_refuse_without_draw[ABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABAB]",
+      "original_source_file": "frozen/g14/test_g14_science.py"
+    },
+    {
+      "baseline": "PASS",
+      "candidate": "PASS",
+      "classification": "PRESERVED_CONTROL",
+      "expected_assertions": [
+        "assert r['status']=='NOT_EXECUTED_AUTHORITY_HOLD' and r['n_draws']==0"
+      ],
+      "family": "F5",
+      "grade": "EXECUTED_CONTROL",
+      "name": "test_f5_unknown_roots_refuse_without_draw[00000000000000000000000000000000000000000000000000000000000000]",
+      "original_source_file": "frozen/g14/test_g14_science.py"
+    },
+    {
+      "baseline": "PASS",
+      "candidate": "PASS",
+      "classification": "PRESERVED_CONTROL",
+      "expected_assertions": [
+        "assert r['status']=='NOT_EXECUTED_AUTHORITY_HOLD' and r['n_draws']==0"
+      ],
+      "family": "F5",
+      "grade": "EXECUTED_CONTROL",
+      "name": "test_f5_unknown_roots_refuse_without_draw[gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg]",
+      "original_source_file": "frozen/g14/test_g14_science.py"
+    },
+    {
+      "baseline": "RED",
+      "candidate": "PASS",
+      "classification": "TECHNICAL_DEFECT_WITH_OWNER_ISSUANCE_LIMIT",
+      "expected_assertions": [
+        "assert r['status']=='NOT_EXECUTED_AUTHORITY_HOLD' and r['n_draws']==0"
+      ],
+      "family": "F5",
+      "grade": "ASSERTION_EFFICACY_PROVED_AT_SOURCEFREE_SCOPE",
+      "name": "test_f5_unknown_roots_refuse_without_draw[1313131313131313131313131313131313131313131313131313131313131313\\n]",
+      "original_source_file": "frozen/g14/test_g14_science.py"
+    },
+    {
+      "baseline": "PASS",
+      "candidate": "PASS",
+      "classification": "PRESERVED_CONTROL",
+      "expected_assertions": [
+        "assert r['adp020_entitlement']=='NOT_GRANTED'",
+        "assert r['adp020_hold']=='ADP020_REAL_ROOT_SEED_REQUIRED'",
+        "assert r['draw']['scope_seed_sha256']==''"
+      ],
+      "family": "F5",
+      "grade": "EXECUTED_CONTROL",
+      "name": "test_f5_each_legacy_token_explicitly_not_granted[R0]",
+      "original_source_file": "frozen/g14/test_g14_science.py"
+    },
+    {
+      "baseline": "PASS",
+      "candidate": "PASS",
+      "classification": "PRESERVED_CONTROL",
+      "expected_assertions": [
+        "assert r['adp020_entitlement']=='NOT_GRANTED'",
+        "assert r['adp020_hold']=='ADP020_REAL_ROOT_SEED_REQUIRED'",
+        "assert r['draw']['scope_seed_sha256']==''"
+      ],
+      "family": "F5",
+      "grade": "EXECUTED_CONTROL",
+      "name": "test_f5_each_legacy_token_explicitly_not_granted[R1]",
+      "original_source_file": "frozen/g14/test_g14_science.py"
+    },
+    {
+      "baseline": "PASS",
+      "candidate": "PASS",
+      "classification": "PRESERVED_CONTROL",
+      "expected_assertions": [
+        "assert r['adp020_entitlement']=='NOT_GRANTED'",
+        "assert r['adp020_hold']=='ADP020_REAL_ROOT_SEED_REQUIRED'",
+        "assert r['draw']['scope_seed_sha256']==''"
+      ],
+      "family": "F5",
+      "grade": "EXECUTED_CONTROL",
+      "name": "test_f5_each_legacy_token_explicitly_not_granted[R2]",
+      "original_source_file": "frozen/g14/test_g14_science.py"
+    },
+    {
+      "baseline": "PASS",
+      "candidate": "PASS",
+      "classification": "PRESERVED_CONTROL",
+      "expected_assertions": [
+        "assert r['adp020_entitlement']=='NOT_GRANTED'",
+        "assert r['adp020_hold']=='ADP020_REAL_ROOT_SEED_REQUIRED'",
+        "assert r['draw']['scope_seed_sha256']==''"
+      ],
+      "family": "F5",
+      "grade": "EXECUTED_CONTROL",
+      "name": "test_f5_each_legacy_token_explicitly_not_granted[G12]",
+      "original_source_file": "frozen/g14/test_g14_science.py"
+    },
+    {
+      "baseline": "PASS",
+      "candidate": "PASS",
+      "classification": "PRESERVED_CONTROL",
+      "expected_assertions": [
+        "assert r['adp020_entitlement']=='NOT_GRANTED'",
+        "assert r['adp020_hold']=='ADP020_REAL_ROOT_SEED_REQUIRED'",
+        "assert r['draw']['scope_seed_sha256']==''"
+      ],
+      "family": "F5",
+      "grade": "EXECUTED_CONTROL",
+      "name": "test_f5_each_legacy_token_explicitly_not_granted[G12_SEED]",
+      "original_source_file": "frozen/g14/test_g14_science.py"
+    },
+    {
+      "baseline": "PASS",
+      "candidate": "PASS",
+      "classification": "PRESERVED_CONTROL",
+      "expected_assertions": [
+        "assert r['accepted_raw_u64']==raw and r['draw_value']==raw%7"
+      ],
+      "family": "F5",
+      "grade": "EXECUTED_CONTROL",
+      "name": "test_f5_hmac_entropy_matches_independent_reference",
+      "original_source_file": "frozen/g14/test_g14_science.py"
+    },
+    {
+      "baseline": "RED",
+      "candidate": "PASS",
+      "classification": "TECHNICAL_DEFECT_WITH_OWNER_ISSUANCE_LIMIT",
+      "expected_assertions": [
+        "assert r['scope_seed_sha256']==hashlib.sha256(ss).hexdigest()",
+        "assert r['stream_seed_sha256']==hashlib.sha256(st).hexdigest()"
+      ],
+      "family": "F5",
+      "grade": "ASSERTION_EFFICACY_PROVED_AT_SOURCEFREE_SCOPE",
+      "name": "test_f5_lineage_digest_fields_are_digests_of_derived_seeds",
+      "original_source_file": "frozen/g14/test_g14_science.py"
+    },
+    {
+      "baseline": "PASS",
+      "candidate": "PASS",
+      "classification": "PRESERVED_CONTROL",
+      "expected_assertions": [
+        "assert r.entropy_block_count==3 and r.draw_index==0 and rng.draw_count==1 and r.draw_value==2"
+      ],
+      "family": "F5",
+      "grade": "EXECUTED_CONTROL",
+      "name": "test_f5_rejection_control_preserves_one_semantic_draw",
+      "original_source_file": "frozen/g14/test_g14_science.py"
+    },
+    {
+      "baseline": "RED",
+      "candidate": "PASS",
+      "classification": "TECHNICAL_DEFECT_WITH_OWNER_ISSUANCE_LIMIT",
+      "expected_assertions": [
+        "assert r['adp020_entitlement']=='NOT_GRANTED'"
+      ],
+      "family": "F5",
+      "grade": "ASSERTION_EFFICACY_PROVED_AT_SOURCEFREE_SCOPE",
+      "name": "test_f5_fresh_legacy_lineage_receipt_never_claims_adp020",
+      "original_source_file": "frozen/g14/test_g14_science.py"
+    },
+    {
+      "baseline": "RED",
+      "candidate": "PASS",
+      "classification": "TECHNICAL_DEFECT_WITH_OWNER_ISSUANCE_LIMIT",
+      "expected_assertions": [],
+      "family": "F5",
+      "grade": "ASSERTION_EFFICACY_PROVED_AT_SOURCEFREE_SCOPE",
+      "name": "test_f5_namespace_pattern_does_not_register_arbitrary_stream",
+      "original_source_file": "frozen/g14/test_g14_science.py"
+    },
+    {
+      "baseline": "RED",
+      "candidate": "PASS",
+      "classification": "TECHNICAL_DEFECT_WITH_OWNER_ISSUANCE_LIMIT",
+      "expected_assertions": [
+        "assert r['draw_coordinate_hash']==h_obj(co)"
+      ],
+      "family": "F5",
+      "grade": "ASSERTION_EFFICACY_PROVED_AT_SOURCEFREE_SCOPE",
+      "name": "test_f5_draw_receipt_binds_actual_full_entropy_coordinate",
+      "original_source_file": "frozen/g14/test_g14_science.py"
+    },
+    {
+      "baseline": "RED",
+      "candidate": "PASS",
+      "classification": "TECHNICAL_DEFECT_WITH_OWNER_ISSUANCE_LIMIT",
+      "expected_assertions": [
+        "assert required<=r.keys()"
+      ],
+      "family": "F5",
+      "grade": "ASSERTION_EFFICACY_PROVED_AT_SOURCEFREE_SCOPE",
+      "name": "test_f5_decision_receipt_contains_rule_and_replay_custody",
+      "original_source_file": "frozen/g14/test_g14_science.py"
+    },
+    {
+      "baseline": "PASS",
+      "candidate": "PASS",
+      "classification": "PRESERVED_CONTROL",
+      "expected_assertions": [
+        "assert before==fresh"
+      ],
+      "family": "F5",
+      "grade": "EXECUTED_CONTROL",
+      "name": "test_f5_other_scope_draws_do_not_perturb_existing_parent",
+      "original_source_file": "frozen/g14/test_g14_science.py"
+    },
+    {
+      "baseline": "PASS",
+      "candidate": "PASS",
+      "classification": "PRESERVED_CONTROL",
+      "expected_assertions": [
+        "assert a['candidate_set_hash']!=b['candidate_set_hash']"
+      ],
+      "family": "F6",
+      "grade": "EXECUTED_CONTROL",
+      "name": "test_f6_real_endpoint_mutation_changes_identity",
+      "original_source_file": "frozen/g14/test_g14_science.py"
+    },
+    {
+      "baseline": "PASS",
+      "candidate": "PASS",
+      "classification": "PRESERVED_CONTROL",
+      "expected_assertions": [
+        "assert a==b==d"
+      ],
+      "family": "F6",
+      "grade": "EXECUTED_CONTROL",
+      "name": "test_f6_candidate_permutation_and_exact_replay",
+      "original_source_file": "frozen/g14/test_g14_science.py"
+    },
+    {
+      "baseline": "PASS",
+      "candidate": "PASS",
+      "classification": "PRESERVED_CONTROL",
+      "expected_assertions": [
+        "assert candidate_replay_hash(a)==candidate_replay_hash(b)"
+      ],
+      "family": "F6",
+      "grade": "EXECUTED_CONTROL",
+      "name": "test_f6_multiplicity_bookkeeping_does_not_change_payload_identity",
+      "original_source_file": "frozen/g14/test_g14_science.py"
+    },
+    {
+      "baseline": "RED",
+      "candidate": "PASS",
+      "classification": "TECHNICAL_DEFECT",
+      "expected_assertions": [
+        "assert a['candidate_set_hash']==b['candidate_set_hash']"
+      ],
+      "family": "F6",
+      "grade": "ASSERTION_EFFICACY_PROVED_AT_SOURCEFREE_SCOPE",
+      "name": "test_f6_new_lower_id_paraphrase_preserves_selection_identity",
+      "original_source_file": "frozen/g14/test_g14_science.py"
+    },
+    {
+      "baseline": "RED",
+      "candidate": "PASS",
+      "classification": "TECHNICAL_DEFECT",
+      "expected_assertions": [
+        "assert d['n_classes']==2"
+      ],
+      "family": "F6",
+      "grade": "ASSERTION_EFFICACY_PROVED_AT_SOURCEFREE_SCOPE",
+      "name": "test_f6_conflicting_required_endpoint_states_do_not_dedup",
+      "original_source_file": "frozen/g14/test_g14_science.py"
+    },
+    {
+      "baseline": "RED",
+      "candidate": "PASS",
+      "classification": "TECHNICAL_DEFECT",
+      "expected_assertions": [
+        "assert a['status']!='COMMITTED' and b['status']!='COMMITTED'"
+      ],
+      "family": "F6",
+      "grade": "ASSERTION_EFFICACY_PROVED_AT_SOURCEFREE_SCOPE",
+      "name": "test_f6_duplicate_class_keys_refuse_instead_of_order_dependent_winner",
+      "original_source_file": "frozen/g14/test_g14_science.py"
+    },
+    {
+      "baseline": "RED",
+      "candidate": "PASS",
+      "classification": "TECHNICAL_DEFECT",
+      "expected_assertions": [
+        "assert result['terminal']['status']!='COMMITTED'"
+      ],
+      "family": "F6",
+      "grade": "ASSERTION_EFFICACY_PROVED_AT_SOURCEFREE_SCOPE",
+      "name": "test_f6_pipeline_preserves_selected_candidate_required_endpoint_state",
+      "original_source_file": "frozen/g14/test_g14_science.py"
+    },
+    {
+      "baseline": "PASS",
+      "candidate": "PASS",
+      "classification": "PRESERVED_CONTROL",
+      "expected_assertions": [
+        "assert r['status']!='COMMITTED' and not c['paternal_continuation_admitted']"
+      ],
+      "family": "F7",
+      "grade": "EXECUTED_CONTROL",
+      "name": "test_f7_empty_history_refuses_relation_and_paternal_continuation",
+      "original_source_file": "frozen/g14/test_g14_science.py"
+    },
+    {
+      "baseline": "RED",
+      "candidate": "PASS",
+      "classification": "TECHNICAL_DEFECT_AND_DISALLOWED_SOLO_WORK_POSITIVE",
+      "expected_assertions": [
+        "assert r['status']!='COMMITTED'"
+      ],
+      "family": "F7",
+      "grade": "ASSERTION_EFFICACY_PROVED_AT_SOURCEFREE_SCOPE",
+      "name": "test_f7_witness_for_different_actor_cannot_admit_relation",
+      "original_source_file": "frozen/g14/test_g14_science.py"
+    },
+    {
+      "baseline": "RED",
+      "candidate": "PASS",
+      "classification": "TECHNICAL_DEFECT_AND_DISALLOWED_SOLO_WORK_POSITIVE",
+      "expected_assertions": [
+        "assert r['status']!='COMMITTED', 'work at a site is not a joint relationship-forming witness'"
+      ],
+      "family": "F7",
+      "grade": "ASSERTION_EFFICACY_PROVED_AT_SOURCEFREE_SCOPE",
+      "name": "test_f7_own_work_without_shared_maternal_encounter_cannot_form_relation",
+      "original_source_file": "frozen/g14/test_g14_science.py"
+    },
+    {
+      "baseline": "RED",
+      "candidate": "PASS",
+      "classification": "TECHNICAL_DEFECT_AND_DISALLOWED_SOLO_WORK_POSITIVE",
+      "expected_assertions": [
+        "assert not paternal or all('repair_bench' not in json.dumps(x) for x in paternal)"
+      ],
+      "family": "F7",
+      "grade": "ASSERTION_EFFICACY_PROVED_AT_SOURCEFREE_SCOPE",
+      "name": "test_f7_severed_project_cannot_continue_as_fixed_repair_project",
+      "original_source_file": "frozen/g14/test_g14_science.py"
+    },
+    {
+      "baseline": "RED",
+      "candidate": "PASS",
+      "classification": "TECHNICAL_DEFECT_AND_DISALLOWED_SOLO_WORK_POSITIVE",
+      "expected_assertions": [
+        "assert not bad or all(not x.get('effective_after_admission') for x in bad)"
+      ],
+      "family": "F7",
+      "grade": "ASSERTION_EFFICACY_PROVED_AT_SOURCEFREE_SCOPE",
+      "name": "test_f7_absent_paternal_continuation_cannot_emit_positive_paternal_exposure",
+      "original_source_file": "frozen/g14/test_g14_science.py"
+    },
+    {
+      "baseline": "RED",
+      "candidate": "PASS",
+      "classification": "TECHNICAL_DEFECT_AND_DISALLOWED_SOLO_WORK_POSITIVE",
+      "expected_assertions": [
+        "assert not any(x['material_context']=='combined_wage_artisan_income_band' for x in out['exposures'])"
+      ],
+      "family": "F7",
+      "grade": "ASSERTION_EFFICACY_PROVED_AT_SOURCEFREE_SCOPE",
+      "name": "test_f7_no_household_admission_cannot_justify_combined_income_exposure",
+      "original_source_file": "frozen/g14/test_g14_science.py"
+    },
+    {
+      "baseline": "RED",
+      "candidate": "PASS",
+      "classification": "TECHNICAL_DEFECT_AND_DISALLOWED_SOLO_WORK_POSITIVE",
+      "expected_assertions": [
+        "assert aid!=bid"
+      ],
+      "family": "F7",
+      "grade": "ASSERTION_EFFICACY_PROVED_AT_SOURCEFREE_SCOPE",
+      "name": "test_f7_distinct_full_candidate_keys_cannot_alias_parent_identity",
+      "original_source_file": "frozen/g14/test_g14_science.py"
+    },
+    {
+      "baseline": "PASS",
+      "candidate": "PASS",
+      "classification": "PRESERVED_CONTROL",
+      "expected_assertions": [
+        "assert out['terminal_status']=='HISTORY_SEARCH_EXHAUSTED' and out['n_attempts']==4",
+        "assert out['selected_events'] is None and m==before",
+        "assert m['already_generated_child_refs']==['LAB_OLDER_CHILD_O1']",
+        "assert b['child_generated_events']==0 and not b['birth_alias']"
+      ],
+      "family": "CEILINGS",
+      "grade": "EXECUTED_CONTROL",
+      "name": "test_ceilings_mother_older_child_and_impossible_endpoint_preserved",
+      "original_source_file": "frozen/g14/test_g14_science.py"
+    },
+    {
+      "baseline": "PASS",
+      "candidate": "PASS",
+      "classification": "PRESERVED_CONTROL",
+      "expected_assertions": [
+        "assert keys",
+        "assert all(without_timing(a[k])==without_timing(b[k]) for k in keys)",
+        "assert NETWORK==[]"
+      ],
+      "family": "CEILINGS",
+      "grade": "EXECUTED_CONTROL",
+      "name": "test_ceilings_offline_pipeline_hidden_future_noninterference",
+      "original_source_file": "frozen/g14/test_g14_science.py"
+    }
+  ],
+  "count": 67
+}

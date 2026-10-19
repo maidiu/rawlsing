@@ -1,0 +1,155 @@
+[
+  {
+    "cases": [
+      {
+        "classname": "test_original_sgi1",
+        "name": "test_literal_original_k11_case[K11-BASE-LOCAL]",
+        "status": "PASS"
+      },
+      {
+        "classname": "test_original_sgi1",
+        "name": "test_literal_original_k11_case[K11-ROUTE-DISCORDANT]",
+        "status": "PASS"
+      },
+      {
+        "classname": "test_original_sgi1",
+        "name": "test_literal_original_k11_case[K11-ROUTE-MOBILITY]",
+        "status": "PASS"
+      },
+      {
+        "classname": "test_original_sgi1",
+        "name": "test_literal_original_k11_case[K11-ROUTE-UNCONVENTIONAL]",
+        "status": "PASS"
+      },
+      {
+        "classname": "test_original_sgi1",
+        "name": "test_literal_original_k11_case[K11-A-FUTURE-CHILD-EMBARGO]",
+        "status": "PASS"
+      },
+      {
+        "classname": "test_original_sgi1",
+        "name": "test_literal_original_k11_case[K11-A2-DESIRED-WOUND-COUNTERFACTUAL]",
+        "status": "PASS"
+      },
+      {
+        "classname": "test_original_sgi1",
+        "name": "test_literal_original_k11_case[K11-B-INDEPENDENT-HISTORY]",
+        "status": "PASS"
+      },
+      {
+        "classname": "test_original_sgi1",
+        "name": "test_literal_original_k11_case[K11-C-EXISTING-PARTNER]",
+        "status": "PASS"
+      },
+      {
+        "classname": "test_original_sgi1",
+        "name": "test_literal_original_k11_case[K11-C2-EXISTING-SHARED-EVENT]",
+        "status": "PASS"
+      },
+      {
+        "classname": "test_original_sgi1",
+        "name": "test_literal_original_k11_case[K11-D-PARITY]",
+        "status": "PASS"
+      },
+      {
+        "classname": "test_original_sgi1",
+        "name": "test_literal_original_k11_case[K11-E-INDEPENDENT-PROJECT]",
+        "status": "PASS"
+      },
+      {
+        "classname": "test_original_sgi1",
+        "name": "test_literal_original_k11_case[K11-GRAPH-CONSTRUCTION-VS-CAUSAL]",
+        "status": "PASS"
+      },
+      {
+        "classname": "test_original_sgi1",
+        "name": "test_literal_original_k11_case[K11-DEDUPE]",
+        "status": "PASS"
+      },
+      {
+        "classname": "test_original_sgi1",
+        "name": "test_literal_original_k11_case[K11-EMPIRICAL-CEILING]",
+        "status": "PASS"
+      },
+      {
+        "classname": "test_original_sgi1",
+        "name": "test_literal_original_k11_case[K11-WEIGHT-ORDINAL]",
+        "status": "PASS"
+      },
+      {
+        "classname": "test_original_sgi1",
+        "name": "test_literal_original_k11_case[K11-WEIGHT-SENSITIVITY]",
+        "status": "PASS"
+      },
+      {
+        "classname": "test_original_sgi1",
+        "name": "test_literal_original_k11_case[K11-RETRY-BIAS]",
+        "status": "PASS"
+      },
+      {
+        "classname": "test_original_sgi1",
+        "name": "test_literal_original_k11_case[K11-VALID-EMPTY]",
+        "status": "PASS"
+      },
+      {
+        "classname": "test_original_sgi1",
+        "name": "test_literal_original_k11_case[K11-UNKNOWN-REQUIRED]",
+        "status": "PASS"
+      },
+      {
+        "classname": "test_original_sgi1",
+        "name": "test_literal_original_k11_case[K11-RELATION-ASYMMETRY]",
+        "status": "PASS"
+      },
+      {
+        "classname": "test_original_sgi1",
+        "name": "test_literal_original_k11_case[K11-CONCEPTION-CHILDGEN-BOUNDARY]",
+        "status": "PASS"
+      },
+      {
+        "classname": "test_original_sgi1",
+        "name": "test_literal_original_k11_case[K11-MISSING-HISTORY]",
+        "status": "PASS"
+      },
+      {
+        "classname": "test_original_sgi1",
+        "name": "test_literal_original_k11_case[K11-SCHEDULER-SAME-TIME]",
+        "status": "PASS"
+      },
+      {
+        "classname": "test_original_sgi1",
+        "name": "test_literal_original_k11_case[K11-REPLAY-ALTER-SUBJECT]",
+        "status": "PASS"
+      },
+      {
+        "classname": "test_original_sgi1",
+        "name": "test_complete_denominator_and_offline",
+        "status": "PASS"
+      }
+    ],
+    "command": [
+      "python3",
+      "-B",
+      "-m",
+      "pytest",
+      "-q",
+      "-s",
+      "-p",
+      "no:cacheprovider",
+      "--tb=short",
+      "test_original_sgi1.py",
+      "--junitxml=$WORKTREE/WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/execution/preservation/sgi1_historical.xml"
+    ],
+    "counts": {
+      "ERROR": 0,
+      "PASS": 25,
+      "RED": 0,
+      "SKIP": 0
+    },
+    "cwd": "runs/historical/reproduction/03_POSTREPAIR_COURT",
+    "exit": 0,
+    "junit": "execution/preservation/sgi1_historical.xml",
+    "seconds": 1.4881037848535925,
+    "suite": "sgi1_historical"
+  }
+]

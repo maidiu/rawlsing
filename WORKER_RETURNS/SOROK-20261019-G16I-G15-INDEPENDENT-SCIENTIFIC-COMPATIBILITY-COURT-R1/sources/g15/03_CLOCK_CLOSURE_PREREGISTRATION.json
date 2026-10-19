@@ -1,0 +1,9 @@
+{
+ "frozen_before_graph_edit": true,
+ "discovered_defect": "Inherited DAG helper ignores unresolved parents; old joint material/action/witness clocks were equal",
+ "edge": "earlier material event -> actor action -> independent witness -> later continuation -> later contact",
+ "positive_node": "test_every_joint_and_continuation_parent_resolves_strictly_earlier",
+ "oracle": "every emitted causal parent resolves in the complete event closure and has a strictly lower effective_index; terminal succeeds only with that closure",
+ "fault": "remove only first joint material source from graph closure; same terminal/closure assertion must RED",
+ "scope": "sourcefree research, no native or child admission"
+}

@@ -1,0 +1,17 @@
+{
+  "candidate_courts": "court_runner.py candidate",
+  "faults": "run_witnesses.py",
+  "prospective": [
+    "python3",
+    "-B",
+    "-m",
+    "pytest",
+    "-q",
+    "-s",
+    "-p",
+    "no:cacheprovider",
+    "--tb=short",
+    "test_g15_causal.py",
+    "--junitxml=$WORKTREE/WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/execution/prospective/g15_causal.xml"
+  ]
+}

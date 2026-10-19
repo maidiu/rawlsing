@@ -1,0 +1,16 @@
+...F.F
+=================================== FAILURES ===================================
+_________ test_objective_relation_binds_actual_second_parent_identity __________
+test_g12_supplemental.py:38: in test_objective_relation_binds_actual_second_parent_identity
+    assert result['objective_relation']['participants'][1]=='G12_ACTUAL_SECOND_PARENT'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   KeyError: 'objective_relation'
+__________ test_explicit_asymmetry_and_no_automatic_household_control __________
+test_g12_supplemental.py:51: in test_explicit_asymmetry_and_no_automatic_household_control
+    assert result['perceived_states'][0]['perceived_state']=='affectionate_bond_perceived'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   KeyError: 'perceived_states'
+=========================== short test summary info ============================
+FAILED test_g12_supplemental.py::test_objective_relation_binds_actual_second_parent_identity
+FAILED test_g12_supplemental.py::test_explicit_asymmetry_and_no_automatic_household_control
+2 failed, 4 passed in 0.15s

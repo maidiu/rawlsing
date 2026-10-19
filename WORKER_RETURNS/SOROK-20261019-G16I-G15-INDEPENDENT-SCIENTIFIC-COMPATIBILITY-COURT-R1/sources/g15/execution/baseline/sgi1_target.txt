@@ -1,0 +1,35 @@
+{
+  "n_cases": 24,
+  "n_assertions": 98,
+  "n_assertions_pass": 98,
+  "cases_failed": [],
+  "new_provider_calls": 0,
+  "network_attempts": [],
+  "wall_seconds": 0.1736065959557891,
+  "historical_usage_in_frozen_records_is_not_new_usage": true
+}
+EXACT_FINGERPRINT_MATCHES 20
+FF..FF...................
+=================================== FAILURES ===================================
+________________ test_literal_original_k11_case[K11-BASE-LOCAL] ________________
+test_original_sgi1.py:8: in test_literal_original_k11_case
+    assert SUMMARY['comparison'][case['case_id']]['equal']
+E   assert False
+_____________ test_literal_original_k11_case[K11-ROUTE-DISCORDANT] _____________
+test_original_sgi1.py:8: in test_literal_original_k11_case
+    assert SUMMARY['comparison'][case['case_id']]['equal']
+E   assert False
+__________ test_literal_original_k11_case[K11-A-FUTURE-CHILD-EMBARGO] __________
+test_original_sgi1.py:8: in test_literal_original_k11_case
+    assert SUMMARY['comparison'][case['case_id']]['equal']
+E   assert False
+_____ test_literal_original_k11_case[K11-A2-DESIRED-WOUND-COUNTERFACTUAL] ______
+test_original_sgi1.py:8: in test_literal_original_k11_case
+    assert SUMMARY['comparison'][case['case_id']]['equal']
+E   assert False
+=========================== short test summary info ============================
+FAILED test_original_sgi1.py::test_literal_original_k11_case[K11-BASE-LOCAL]
+FAILED test_original_sgi1.py::test_literal_original_k11_case[K11-ROUTE-DISCORDANT]
+FAILED test_original_sgi1.py::test_literal_original_k11_case[K11-A-FUTURE-CHILD-EMBARGO]
+FAILED test_original_sgi1.py::test_literal_original_k11_case[K11-A2-DESIRED-WOUND-COUNTERFACTUAL]
+4 failed, 21 passed in 0.39s

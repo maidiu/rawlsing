@@ -1,0 +1,12 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+____________________ test_selected_endpoint_drives_terminal ____________________
+WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py:82: in test_selected_endpoint_drives_terminal
+    assert result['terminal']['status']=='COMMITTED'
+E   AssertionError: assert 'HISTORY_SEARCH_EXHAUSTED' == 'COMMITTED'
+E     
+E     - COMMITTED
+E     + HISTORY_SEARCH_EXHAUSTED
+=========================== short test summary info ============================
+FAILED WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py::test_selected_endpoint_drives_terminal
+1 failed in 0.69s

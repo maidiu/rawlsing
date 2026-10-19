@@ -1,0 +1,174 @@
+..........F......FFF.FFF...FFF.F.....F......F.FFFF....FFFF.FFFFFF..
+=================================== FAILURES ===================================
+_______ test_f1_route_parent_substitution_cannot_replace_work_formation ________
+test_g14_science.py:110: in test_f1_route_parent_substitution_cannot_replace_work_formation
+    assert not r['stopping']['sufficient'], 'root existence cannot prove commissioned-work competence'
+E   AssertionError: root existence cannot prove commissioned-work competence
+E   assert not True
+____________ test_f2_nonempty_but_unresolvable_psyche_refs_refused _____________
+test_g14_science.py:126: in test_f2_nonempty_but_unresolvable_psyche_refs_refused
+    assert not r['stopping']['sufficient']
+E   assert not True
+________________ test_f2_memory_experienced_basis_must_resolve _________________
+test_g14_science.py:134: in test_f2_memory_experienced_basis_must_resolve
+    assert not r['stopping']['sufficient']
+E   assert not True
+____________ test_f2_empty_psyche_cannot_certify_existing_formation ____________
+test_g14_science.py:139: in test_f2_empty_psyche_cannot_certify_existing_formation
+    assert not r['stopping']['sufficient']
+E   assert not True
+___________ test_f3_removing_actor_psyche_disables_motivated_actions ___________
+test_g14_science.py:153: in test_f3_removing_actor_psyche_disables_motivated_actions
+    assert not b['heldout_independence_pass'], 'actions must depend on represented actor motivation/formation'
+E   AssertionError: actions must depend on represented actor motivation/formation
+E   assert not True
+________ test_f3_unrelated_false_consequence_is_not_capability_evidence ________
+test_g14_science.py:161: in test_f3_unrelated_false_consequence_is_not_capability_evidence
+    assert not pr['probes'][0]['pass']
+E   assert not True
+_____ test_f3_missing_peer_identity_cannot_prove_actor_specific_obligation _____
+test_g14_science.py:169: in test_f3_missing_peer_identity_cannot_prove_actor_specific_obligation
+    assert not pr['probes'][1]['pass']
+E   assert not True
+____________ test_f4_all_visible_prompt_paths_are_embargoed[route] _____________
+test_g14_science.py:184: in test_f4_all_visible_prompt_paths_are_embargoed
+    assert secret not in prompt
+E   assert 'G14_FUTURE_...WOUND_SECRET' not in '{"hard_rule...ummary": {}}'
+E     
+E     'G14_FUTURE_CHILD_WOUND_SECRET' is contained here:
+E       filter": "G14_FUTURE_CHILD_WOUND_SECRET", "scenario_grammar_version": "SCENARIO_CANDIDATE_GRAMMAR@1.0-LAB", "world_summary": {}}
+E     ?           +++++++++++++++++++++++++++++
+____________ test_f4_all_visible_prompt_paths_are_embargoed[tuple] _____________
+test_g14_science.py:184: in test_f4_all_visible_prompt_paths_are_embargoed
+    assert secret not in prompt
+E   assert 'G14_FUTURE_...WOUND_SECRET' not in '{"hard_rule..._SECRET"}]}}'
+E     
+E     'G14_FUTURE_CHILD_WOUND_SECRET' is contained here:
+E       nality": "G14_FUTURE_CHILD_WOUND_SECRET"}]}}
+________ test_f4_all_visible_prompt_paths_are_embargoed[spaced_literal] ________
+test_g14_science.py:184: in test_f4_all_visible_prompt_paths_are_embargoed
+    assert secret not in prompt
+E   assert 'The future ...lected wound' not in '{"hard_rule...ted wound"}}'
+E     
+E     'The future child w... the selected wound' is contained here:
+E       {"note": "The future child will develop the selected wound"}}
+__________ test_f4_embargoed_output_cannot_become_eligible_candidate ___________
+test_g14_science.py:199: in test_f4_embargoed_output_cannot_become_eligible_candidate
+    assert not q['eligibility']['eligible'], 'a system-prompt prohibition is not output admission enforcement'
+E   AssertionError: a system-prompt prohibition is not output admission enforcement
+E   assert not True
+_ test_f5_unknown_roots_refuse_without_draw[1313131313131313131313131313131313131313131313131313131313131313\n] _
+test_g14_science.py:205: in test_f5_unknown_roots_refuse_without_draw
+    assert r['status']=='NOT_EXECUTED_AUTHORITY_HOLD' and r['n_draws']==0
+E   AssertionError: assert ('COMMITTED' == 'NOT_EXECUTED_AUTHORITY_HOLD'
+E     
+E     - NOT_EXECUTED_AUTHORITY_HOLD
+E     + COMMITTED)
+__________ test_f5_lineage_digest_fields_are_digests_of_derived_seeds __________
+test_g14_science.py:238: in test_f5_lineage_digest_fields_are_digests_of_derived_seeds
+    assert r['scope_seed_sha256']==hashlib.sha256(ss).hexdigest()
+E   AssertionError: assert 'f8b12dd412db...dc7827bde90a8' == '7e9d475ba3f4...5dad4e93a3244'
+E     
+E     - 7e9d475ba3f41edbe5faa0bc2b22adfc2aff155b6e5804368355dad4e93a3244
+E     + f8b12dd412dbad933be8a3d22715048d8578188a82905e95124dc7827bde90a8
+___________ test_f5_fresh_legacy_lineage_receipt_never_claims_adp020 ___________
+test_g14_science.py:250: in test_f5_fresh_legacy_lineage_receipt_never_claims_adp020
+    r=ScopedRNG('R0',STREAM,'G13_SCOPE').lineage_receipt()
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+reproduction/03_POSTREPAIR_COURT/sources/sgi1/01_LAB_IMPLEMENTATION/lab_sgi1/core.py:452: in lineage_receipt
+    "adp020_entitlement": self._classification["adp020_entitlement"],
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: 'NoneType' object is not subscriptable
+_________ test_f5_namespace_pattern_does_not_register_arbitrary_stream _________
+test_g14_science.py:258: in test_f5_namespace_pattern_does_not_register_arbitrary_stream
+    with pytest.raises(ValueError):
+E   Failed: DID NOT RAISE ValueError
+__________ test_f5_draw_receipt_binds_actual_full_entropy_coordinate ___________
+test_g14_science.py:269: in test_f5_draw_receipt_binds_actual_full_entropy_coordinate
+    assert r['draw_coordinate_hash']==h_obj(co)
+E   AssertionError: assert 'sha256:dbee2...346c5ecfae5a8' == 'sha256:df7be...c519301db3ba1'
+E     
+E     - sha256:df7bed19d5f05649f0fba675c79db1b3b22adf7b82d1b9006cfc519301db3ba1
+E     + sha256:dbee2e1b96c9845ee4740093d396475b23e483204e93114b5b3346c5ecfae5a8
+__________ test_f5_decision_receipt_contains_rule_and_replay_custody ___________
+test_g14_science.py:276: in test_f5_decision_receipt_contains_rule_and_replay_custody
+    assert required<=r.keys()
+E   AssertionError: assert {'causal_run_id', 'decision_replay_identity_hash', 'semantic_rule_id', 'semantic_rule_registry_hash', 'semantic_rule_version', 'stochastic_parameters_hash'} <= dict_keys(['decision_kind', 'decision_semantics_version', 'stream', 'scope_hash', 'root_seed', 'root_seed_provenance',...receipts', 'n_draws', 'draw_mode', 'selected_class_key', 'selected_representative_id', 'status', 'unreported_redraws'])
+E    +  where dict_keys(['decision_kind', 'decision_semantics_version', 'stream', 'scope_hash', 'root_seed', 'root_seed_provenance',...receipts', 'n_draws', 'draw_mode', 'selected_class_key', 'selected_representative_id', 'status', 'unreported_redraws']) = <built-in method keys of dict object at 0x105a11d80>()
+E    +    where <built-in method keys of dict object at 0x105a11d80> = {'decision_kind': 'CONCEPTION_SCENARIO_SELECTION', 'decision_semantics_version': 'SELECTION_DECISION_SEMANTICS@1.1-G13-REPAIRED', 'stream': 'v3.causal.adp015.conception_scenario_selection', 'scope_hash': 'G13_SCOPE', ...}.keys
+_________ test_f6_new_lower_id_paraphrase_preserves_selection_identity _________
+test_g14_science.py:308: in test_f6_new_lower_id_paraphrase_preserves_selection_identity
+    assert a['candidate_set_hash']==b['candidate_set_hash']
+E   AssertionError: assert 'sha256:c9cf4...051131e42e737' == 'sha256:a07d2...2fc3c3f2885e2'
+E     
+E     - sha256:a07d20f4d4025b4b2efbdc7ddc02870d68d24c5709f809466182fc3c3f2885e2
+E     + sha256:c9cf4c14ed34235a6f103b7a9a55e5a7d914b7d2aa07bad88f4051131e42e737
+__________ test_f6_conflicting_required_endpoint_states_do_not_dedup ___________
+test_g14_science.py:316: in test_f6_conflicting_required_endpoint_states_do_not_dedup
+    assert d['n_classes']==2
+E   assert 1 == 2
+____ test_f6_duplicate_class_keys_refuse_instead_of_order_dependent_winner _____
+test_g14_science.py:322: in test_f6_duplicate_class_keys_refuse_instead_of_order_dependent_winner
+    assert a['status']!='COMMITTED' and b['status']!='COMMITTED'
+E   AssertionError: assert ('COMMITTED' != 'COMMITTED')
+____ test_f6_pipeline_preserves_selected_candidate_required_endpoint_state _____
+test_g14_science.py:331: in test_f6_pipeline_preserves_selected_candidate_required_endpoint_state
+    assert result['terminal']['status']!='COMMITTED'
+E   AssertionError: assert 'COMMITTED' != 'COMMITTED'
+__________ test_f7_witness_for_different_actor_cannot_admit_relation ___________
+test_g14_science.py:344: in test_f7_witness_for_different_actor_cannot_admit_relation
+    assert r['status']!='COMMITTED'
+E   AssertionError: assert 'COMMITTED' != 'COMMITTED'
+___ test_f7_own_work_without_shared_maternal_encounter_cannot_form_relation ____
+test_g14_science.py:350: in test_f7_own_work_without_shared_maternal_encounter_cannot_form_relation
+    assert r['status']!='COMMITTED', 'work at a site is not a joint relationship-forming witness'
+E   AssertionError: work at a site is not a joint relationship-forming witness
+E   assert 'COMMITTED' != 'COMMITTED'
+_______ test_f7_severed_project_cannot_continue_as_fixed_repair_project ________
+test_g14_science.py:359: in test_f7_severed_project_cannot_continue_as_fixed_repair_project
+    assert not paternal or all('repair_bench' not in json.dumps(x) for x in paternal)
+E   AssertionError: assert (not [{'event_id': 'sha256:b3fcb74f5c5d39a7f36629760a1badde1788015539a9c40ff9fe49d6638803db', 'kind': 'PARENT_CONTINUATION'...red_route', 'causal_basis': 'pre_boundary project and striving events', 'second_parent_history_event_count': 14}, ...}] or False)
+E    +  where False = all(<generator object test_f7_severed_project_cannot_continue_as_fixed_repair_project.<locals>.<genexpr> at 0x1056983c0>)
+_ test_f7_absent_paternal_continuation_cannot_emit_positive_paternal_exposure __
+test_g14_science.py:366: in test_f7_absent_paternal_continuation_cannot_emit_positive_paternal_exposure
+    assert not bad or all(not x.get('effective_after_admission') for x in bad)
+E   AssertionError: assert (not [{'exposure_id': 'EXP_PATERNAL_PROJECT_PRESENCE_PERIODIC', 'material_context': 'periodic_repair_bench_presence_and_cooperative_rotation_schedule', 'causal_parent_events': [], 'effective_after_admission': True}] or False)
+E    +  where False = all(<generator object test_f7_absent_paternal_continuation_cannot_emit_positive_paternal_exposure.<locals>.<genexpr> at 0x105699e00>)
+____ test_f7_no_household_admission_cannot_justify_combined_income_exposure ____
+test_g14_science.py:373: in test_f7_no_household_admission_cannot_justify_combined_income_exposure
+    assert not any(x['material_context']=='combined_wage_artisan_income_band' for x in out['exposures'])
+E   assert not True
+E    +  where True = any(<generator object test_f7_no_household_admission_cannot_justify_combined_income_exposure.<locals>.<genexpr> at 0x105752e90>)
+______ test_f7_distinct_full_candidate_keys_cannot_alias_parent_identity _______
+test_g14_science.py:390: in test_f7_distinct_full_candidate_keys_cannot_alias_parent_identity
+    assert aid!=bid
+E   AssertionError: assert 'LAB_SECOND_PARENT_CAND_sha256:676' != 'LAB_SECOND_PARENT_CAND_sha256:676'
+=========================== short test summary info ============================
+FAILED test_g14_science.py::test_f1_route_parent_substitution_cannot_replace_work_formation
+FAILED test_g14_science.py::test_f2_nonempty_but_unresolvable_psyche_refs_refused
+FAILED test_g14_science.py::test_f2_memory_experienced_basis_must_resolve - a...
+FAILED test_g14_science.py::test_f2_empty_psyche_cannot_certify_existing_formation
+FAILED test_g14_science.py::test_f3_removing_actor_psyche_disables_motivated_actions
+FAILED test_g14_science.py::test_f3_unrelated_false_consequence_is_not_capability_evidence
+FAILED test_g14_science.py::test_f3_missing_peer_identity_cannot_prove_actor_specific_obligation
+FAILED test_g14_science.py::test_f4_all_visible_prompt_paths_are_embargoed[route]
+FAILED test_g14_science.py::test_f4_all_visible_prompt_paths_are_embargoed[tuple]
+FAILED test_g14_science.py::test_f4_all_visible_prompt_paths_are_embargoed[spaced_literal]
+FAILED test_g14_science.py::test_f4_embargoed_output_cannot_become_eligible_candidate
+FAILED test_g14_science.py::test_f5_unknown_roots_refuse_without_draw[1313131313131313131313131313131313131313131313131313131313131313\n]
+FAILED test_g14_science.py::test_f5_lineage_digest_fields_are_digests_of_derived_seeds
+FAILED test_g14_science.py::test_f5_fresh_legacy_lineage_receipt_never_claims_adp020
+FAILED test_g14_science.py::test_f5_namespace_pattern_does_not_register_arbitrary_stream
+FAILED test_g14_science.py::test_f5_draw_receipt_binds_actual_full_entropy_coordinate
+FAILED test_g14_science.py::test_f5_decision_receipt_contains_rule_and_replay_custody
+FAILED test_g14_science.py::test_f6_new_lower_id_paraphrase_preserves_selection_identity
+FAILED test_g14_science.py::test_f6_conflicting_required_endpoint_states_do_not_dedup
+FAILED test_g14_science.py::test_f6_duplicate_class_keys_refuse_instead_of_order_dependent_winner
+FAILED test_g14_science.py::test_f6_pipeline_preserves_selected_candidate_required_endpoint_state
+FAILED test_g14_science.py::test_f7_witness_for_different_actor_cannot_admit_relation
+FAILED test_g14_science.py::test_f7_own_work_without_shared_maternal_encounter_cannot_form_relation
+FAILED test_g14_science.py::test_f7_severed_project_cannot_continue_as_fixed_repair_project
+FAILED test_g14_science.py::test_f7_absent_paternal_continuation_cannot_emit_positive_paternal_exposure
+FAILED test_g14_science.py::test_f7_no_household_admission_cannot_justify_combined_income_exposure
+FAILED test_g14_science.py::test_f7_distinct_full_candidate_keys_cannot_alias_parent_identity
+27 failed, 40 passed in 0.86s

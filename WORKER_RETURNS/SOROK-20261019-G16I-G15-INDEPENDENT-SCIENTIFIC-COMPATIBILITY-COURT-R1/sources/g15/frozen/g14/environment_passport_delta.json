@@ -1,0 +1,437 @@
+{
+  "passport_schema": "SOROK_00D_ENVIRONMENT_PASSPORT_R1",
+  "environment_id": "fd91059f-6b24-4852-872d-fcb1e07b3c4a",
+  "epoch_id": "407d69e6-128e-4128-b036-76d597df7f45",
+  "owner_session_alias": "G14-independent-reviewer",
+  "surface": "LOCAL_SHARED_STORE",
+  "machine_alias": "authorized-local-runner",
+  "conversation_or_account_affinity": "current-commission-only",
+  "status": "RECONSTRUCTED",
+  "last_live_probe_at": "2026-10-19T15:14:18.870653+00:00",
+  "runtime_marker_digest": "19ae590aad05e52183d3611d0ee191e6e3e7a5511f5e855970aece979b86ee66",
+  "probe_command_and_result": "Python/pytest/git versions observed; marker verified locally; fourteen actual imports matched target Git blobs",
+  "capabilities": {
+    "python": {
+      "status": "VERIFIED",
+      "version": "3.11.3"
+    },
+    "pytest": {
+      "status": "VERIFIED",
+      "version": "pytest 9.1.1"
+    },
+    "git": {
+      "status": "VERIFIED",
+      "version": "git version 2.39.1"
+    },
+    "filesystem_shell": {
+      "status": "VERIFIED"
+    },
+    "node": {
+      "status": "UNKNOWN",
+      "needed": false
+    },
+    "github_ref_access": {
+      "status": "VERIFIED"
+    }
+  },
+  "git_object_store_alias": "existing-shared-store",
+  "worktree_alias": "assigned-g14-worktree",
+  "branch": "agent/reviewer-sorok-v2-hq322-g14-g13-science-independent-r1",
+  "exact_checkout_base": "f4e0d218997777d7975db9f35e7cfde9825f3b5f",
+  "reviewed_target": "47bca2a56d34ed37186a436e7490cbaa417bfe5c",
+  "checkout_state": "new reviewer evidence only; final commit identity supplied separately",
+  "source_family": "sourcefree-SGI1-G13-G11-G12",
+  "materialized_source_refs": [
+    {
+      "actual_import": "reproduction/03_POSTREPAIR_COURT/sources/sgi1/01_LAB_IMPLEMENTATION/lab_sgi1/__init__.py",
+      "actual_import_blob_sha1": "0b5a6dd80f93e6a5d19eb1b6b710d339cb99e45a",
+      "changed": false,
+      "module": "lab_sgi1/__init__.py",
+      "original_blob_sha1": "0b5a6dd80f93e6a5d19eb1b6b710d339cb99e45a",
+      "original_commit": "27ca1f2792a5213064c0b5ea2e27b89e8acce0c3",
+      "original_path": "WORKER_RETURNS/SOROK-SGI1-SOURCEFREE-K11-LAB-R1/01_LAB_IMPLEMENTATION/lab_sgi1/__init__.py",
+      "target_blob_sha1": "0b5a6dd80f93e6a5d19eb1b6b710d339cb99e45a",
+      "target_commit": "47bca2a56d34ed37186a436e7490cbaa417bfe5c",
+      "target_path": "WORKER_RETURNS/SOROK-R3-HQ320-G13-K11-LAB-MECHANISM-REPAIR-R1/02_REPAIRED_LAB/lab_sgi1/__init__.py"
+    },
+    {
+      "actual_import": "reproduction/03_POSTREPAIR_COURT/sources/sgi1/01_LAB_IMPLEMENTATION/lab_sgi1/construction.py",
+      "actual_import_blob_sha1": "f1e9ca48cffc26f83a8e4c82f582fb82c3ed51cf",
+      "changed": true,
+      "module": "lab_sgi1/construction.py",
+      "original_blob_sha1": "8bc7c1a5d8d96112b313326445c4fdbf5b222fe7",
+      "original_commit": "27ca1f2792a5213064c0b5ea2e27b89e8acce0c3",
+      "original_path": "WORKER_RETURNS/SOROK-SGI1-SOURCEFREE-K11-LAB-R1/01_LAB_IMPLEMENTATION/lab_sgi1/construction.py",
+      "target_blob_sha1": "f1e9ca48cffc26f83a8e4c82f582fb82c3ed51cf",
+      "target_commit": "47bca2a56d34ed37186a436e7490cbaa417bfe5c",
+      "target_path": "WORKER_RETURNS/SOROK-R3-HQ320-G13-K11-LAB-MECHANISM-REPAIR-R1/02_REPAIRED_LAB/lab_sgi1/construction.py"
+    },
+    {
+      "actual_import": "reproduction/03_POSTREPAIR_COURT/sources/sgi1/01_LAB_IMPLEMENTATION/lab_sgi1/continuation.py",
+      "actual_import_blob_sha1": "03813193a048c72c22ee4915c54c42666cafde97",
+      "changed": true,
+      "module": "lab_sgi1/continuation.py",
+      "original_blob_sha1": "bebccd994cb10a9295400d3286b7f9c04ab0cdfa",
+      "original_commit": "27ca1f2792a5213064c0b5ea2e27b89e8acce0c3",
+      "original_path": "WORKER_RETURNS/SOROK-SGI1-SOURCEFREE-K11-LAB-R1/01_LAB_IMPLEMENTATION/lab_sgi1/continuation.py",
+      "target_blob_sha1": "03813193a048c72c22ee4915c54c42666cafde97",
+      "target_commit": "47bca2a56d34ed37186a436e7490cbaa417bfe5c",
+      "target_path": "WORKER_RETURNS/SOROK-R3-HQ320-G13-K11-LAB-MECHANISM-REPAIR-R1/02_REPAIRED_LAB/lab_sgi1/continuation.py"
+    },
+    {
+      "actual_import": "reproduction/03_POSTREPAIR_COURT/sources/sgi1/01_LAB_IMPLEMENTATION/lab_sgi1/core.py",
+      "actual_import_blob_sha1": "dda72e79393c3bce25dfd55f546a564b4e2b66c3",
+      "changed": true,
+      "module": "lab_sgi1/core.py",
+      "original_blob_sha1": "39f0f8503c543171815a5031d20552adc4178f25",
+      "original_commit": "27ca1f2792a5213064c0b5ea2e27b89e8acce0c3",
+      "original_path": "WORKER_RETURNS/SOROK-SGI1-SOURCEFREE-K11-LAB-R1/01_LAB_IMPLEMENTATION/lab_sgi1/core.py",
+      "target_blob_sha1": "dda72e79393c3bce25dfd55f546a564b4e2b66c3",
+      "target_commit": "47bca2a56d34ed37186a436e7490cbaa417bfe5c",
+      "target_path": "WORKER_RETURNS/SOROK-R3-HQ320-G13-K11-LAB-MECHANISM-REPAIR-R1/02_REPAIRED_LAB/lab_sgi1/core.py"
+    },
+    {
+      "actual_import": "reproduction/03_POSTREPAIR_COURT/sources/sgi1/01_LAB_IMPLEMENTATION/lab_sgi1/dag.py",
+      "actual_import_blob_sha1": "25818e2c1a6131641e3e7a6b73bbff1c6de3d6c2",
+      "changed": false,
+      "module": "lab_sgi1/dag.py",
+      "original_blob_sha1": "25818e2c1a6131641e3e7a6b73bbff1c6de3d6c2",
+      "original_commit": "27ca1f2792a5213064c0b5ea2e27b89e8acce0c3",
+      "original_path": "WORKER_RETURNS/SOROK-SGI1-SOURCEFREE-K11-LAB-R1/01_LAB_IMPLEMENTATION/lab_sgi1/dag.py",
+      "target_blob_sha1": "25818e2c1a6131641e3e7a6b73bbff1c6de3d6c2",
+      "target_commit": "47bca2a56d34ed37186a436e7490cbaa417bfe5c",
+      "target_path": "WORKER_RETURNS/SOROK-R3-HQ320-G13-K11-LAB-MECHANISM-REPAIR-R1/02_REPAIRED_LAB/lab_sgi1/dag.py"
+    },
+    {
+      "actual_import": "reproduction/03_POSTREPAIR_COURT/sources/sgi1/01_LAB_IMPLEMENTATION/lab_sgi1/k11_contract.py",
+      "actual_import_blob_sha1": "00496669e9ed25c610cb44996f16282fa8bf4b97",
+      "changed": false,
+      "module": "lab_sgi1/k11_contract.py",
+      "original_blob_sha1": "00496669e9ed25c610cb44996f16282fa8bf4b97",
+      "original_commit": "27ca1f2792a5213064c0b5ea2e27b89e8acce0c3",
+      "original_path": "WORKER_RETURNS/SOROK-SGI1-SOURCEFREE-K11-LAB-R1/01_LAB_IMPLEMENTATION/lab_sgi1/k11_contract.py",
+      "target_blob_sha1": "00496669e9ed25c610cb44996f16282fa8bf4b97",
+      "target_commit": "47bca2a56d34ed37186a436e7490cbaa417bfe5c",
+      "target_path": "WORKER_RETURNS/SOROK-R3-HQ320-G13-K11-LAB-MECHANISM-REPAIR-R1/02_REPAIRED_LAB/lab_sgi1/k11_contract.py"
+    },
+    {
+      "actual_import": "reproduction/03_POSTREPAIR_COURT/sources/sgi1/01_LAB_IMPLEMENTATION/lab_sgi1/k11_runner.py",
+      "actual_import_blob_sha1": "90802c8fc95ca8caea34414511eb39a1aec62643",
+      "changed": false,
+      "module": "lab_sgi1/k11_runner.py",
+      "original_blob_sha1": "90802c8fc95ca8caea34414511eb39a1aec62643",
+      "original_commit": "27ca1f2792a5213064c0b5ea2e27b89e8acce0c3",
+      "original_path": "WORKER_RETURNS/SOROK-SGI1-SOURCEFREE-K11-LAB-R1/01_LAB_IMPLEMENTATION/lab_sgi1/k11_runner.py",
+      "target_blob_sha1": "90802c8fc95ca8caea34414511eb39a1aec62643",
+      "target_commit": "47bca2a56d34ed37186a436e7490cbaa417bfe5c",
+      "target_path": "WORKER_RETURNS/SOROK-R3-HQ320-G13-K11-LAB-MECHANISM-REPAIR-R1/02_REPAIRED_LAB/lab_sgi1/k11_runner.py"
+    },
+    {
+      "actual_import": "reproduction/03_POSTREPAIR_COURT/sources/sgi1/01_LAB_IMPLEMENTATION/lab_sgi1/mother.py",
+      "actual_import_blob_sha1": "2f44ce5efd8564c88f0a0a36dcb2b96bde042262",
+      "changed": false,
+      "module": "lab_sgi1/mother.py",
+      "original_blob_sha1": "2f44ce5efd8564c88f0a0a36dcb2b96bde042262",
+      "original_commit": "27ca1f2792a5213064c0b5ea2e27b89e8acce0c3",
+      "original_path": "WORKER_RETURNS/SOROK-SGI1-SOURCEFREE-K11-LAB-R1/01_LAB_IMPLEMENTATION/lab_sgi1/mother.py",
+      "target_blob_sha1": "2f44ce5efd8564c88f0a0a36dcb2b96bde042262",
+      "target_commit": "47bca2a56d34ed37186a436e7490cbaa417bfe5c",
+      "target_path": "WORKER_RETURNS/SOROK-R3-HQ320-G13-K11-LAB-MECHANISM-REPAIR-R1/02_REPAIRED_LAB/lab_sgi1/mother.py"
+    },
+    {
+      "actual_import": "reproduction/03_POSTREPAIR_COURT/sources/sgi1/01_LAB_IMPLEMENTATION/lab_sgi1/pipeline.py",
+      "actual_import_blob_sha1": "cf91c99b90e485bf3a1d8f4f87fad2e4c7f22f51",
+      "changed": false,
+      "module": "lab_sgi1/pipeline.py",
+      "original_blob_sha1": "cf91c99b90e485bf3a1d8f4f87fad2e4c7f22f51",
+      "original_commit": "27ca1f2792a5213064c0b5ea2e27b89e8acce0c3",
+      "original_path": "WORKER_RETURNS/SOROK-SGI1-SOURCEFREE-K11-LAB-R1/01_LAB_IMPLEMENTATION/lab_sgi1/pipeline.py",
+      "target_blob_sha1": "cf91c99b90e485bf3a1d8f4f87fad2e4c7f22f51",
+      "target_commit": "47bca2a56d34ed37186a436e7490cbaa417bfe5c",
+      "target_path": "WORKER_RETURNS/SOROK-R3-HQ320-G13-K11-LAB-MECHANISM-REPAIR-R1/02_REPAIRED_LAB/lab_sgi1/pipeline.py"
+    },
+    {
+      "actual_import": "reproduction/03_POSTREPAIR_COURT/sources/sgi1/01_LAB_IMPLEMENTATION/lab_sgi1/proposal.py",
+      "actual_import_blob_sha1": "a4d0e4de2d51b07d2d659655a8a46592218da5e0",
+      "changed": true,
+      "module": "lab_sgi1/proposal.py",
+      "original_blob_sha1": "68c9d4520ea4591d750b605a77ffcc2370e367b2",
+      "original_commit": "27ca1f2792a5213064c0b5ea2e27b89e8acce0c3",
+      "original_path": "WORKER_RETURNS/SOROK-SGI1-SOURCEFREE-K11-LAB-R1/01_LAB_IMPLEMENTATION/lab_sgi1/proposal.py",
+      "target_blob_sha1": "a4d0e4de2d51b07d2d659655a8a46592218da5e0",
+      "target_commit": "47bca2a56d34ed37186a436e7490cbaa417bfe5c",
+      "target_path": "WORKER_RETURNS/SOROK-R3-HQ320-G13-K11-LAB-MECHANISM-REPAIR-R1/02_REPAIRED_LAB/lab_sgi1/proposal.py"
+    },
+    {
+      "actual_import": "reproduction/03_POSTREPAIR_COURT/sources/sgi1/01_LAB_IMPLEMENTATION/lab_sgi1/qualification.py",
+      "actual_import_blob_sha1": "645b69f56bc07d9c8e78fa12e4b4247e01b11770",
+      "changed": false,
+      "module": "lab_sgi1/qualification.py",
+      "original_blob_sha1": "645b69f56bc07d9c8e78fa12e4b4247e01b11770",
+      "original_commit": "27ca1f2792a5213064c0b5ea2e27b89e8acce0c3",
+      "original_path": "WORKER_RETURNS/SOROK-SGI1-SOURCEFREE-K11-LAB-R1/01_LAB_IMPLEMENTATION/lab_sgi1/qualification.py",
+      "target_blob_sha1": "645b69f56bc07d9c8e78fa12e4b4247e01b11770",
+      "target_commit": "47bca2a56d34ed37186a436e7490cbaa417bfe5c",
+      "target_path": "WORKER_RETURNS/SOROK-R3-HQ320-G13-K11-LAB-MECHANISM-REPAIR-R1/02_REPAIRED_LAB/lab_sgi1/qualification.py"
+    },
+    {
+      "actual_import": "reproduction/03_POSTREPAIR_COURT/sources/sgi1/01_LAB_IMPLEMENTATION/lab_sgi1/relation.py",
+      "actual_import_blob_sha1": "681349d770e3c1c0f8c6d2c695cb780ddce5ff9a",
+      "changed": true,
+      "module": "lab_sgi1/relation.py",
+      "original_blob_sha1": "15025ea85358c2f91ac0026bd6f2e14c88a4c5de",
+      "original_commit": "27ca1f2792a5213064c0b5ea2e27b89e8acce0c3",
+      "original_path": "WORKER_RETURNS/SOROK-SGI1-SOURCEFREE-K11-LAB-R1/01_LAB_IMPLEMENTATION/lab_sgi1/relation.py",
+      "target_blob_sha1": "681349d770e3c1c0f8c6d2c695cb780ddce5ff9a",
+      "target_commit": "47bca2a56d34ed37186a436e7490cbaa417bfe5c",
+      "target_path": "WORKER_RETURNS/SOROK-R3-HQ320-G13-K11-LAB-MECHANISM-REPAIR-R1/02_REPAIRED_LAB/lab_sgi1/relation.py"
+    },
+    {
+      "actual_import": "reproduction/03_POSTREPAIR_COURT/sources/sgi1/01_LAB_IMPLEMENTATION/lab_sgi1/selection.py",
+      "actual_import_blob_sha1": "0e42a4419d63b0a0079efccd40e7780495ff3c6e",
+      "changed": true,
+      "module": "lab_sgi1/selection.py",
+      "original_blob_sha1": "0190587cf938575d488bba0d2c3e177aa3f9c3bd",
+      "original_commit": "27ca1f2792a5213064c0b5ea2e27b89e8acce0c3",
+      "original_path": "WORKER_RETURNS/SOROK-SGI1-SOURCEFREE-K11-LAB-R1/01_LAB_IMPLEMENTATION/lab_sgi1/selection.py",
+      "target_blob_sha1": "0e42a4419d63b0a0079efccd40e7780495ff3c6e",
+      "target_commit": "47bca2a56d34ed37186a436e7490cbaa417bfe5c",
+      "target_path": "WORKER_RETURNS/SOROK-R3-HQ320-G13-K11-LAB-MECHANISM-REPAIR-R1/02_REPAIRED_LAB/lab_sgi1/selection.py"
+    },
+    {
+      "actual_import": "reproduction/03_POSTREPAIR_COURT/sources/sgi1/01_LAB_IMPLEMENTATION/lab_sgi1/world.py",
+      "actual_import_blob_sha1": "7212c483a36207951cac9354c18ad4d21e7b2a9f",
+      "changed": false,
+      "module": "lab_sgi1/world.py",
+      "original_blob_sha1": "7212c483a36207951cac9354c18ad4d21e7b2a9f",
+      "original_commit": "27ca1f2792a5213064c0b5ea2e27b89e8acce0c3",
+      "original_path": "WORKER_RETURNS/SOROK-SGI1-SOURCEFREE-K11-LAB-R1/01_LAB_IMPLEMENTATION/lab_sgi1/world.py",
+      "target_blob_sha1": "7212c483a36207951cac9354c18ad4d21e7b2a9f",
+      "target_commit": "47bca2a56d34ed37186a436e7490cbaa417bfe5c",
+      "target_path": "WORKER_RETURNS/SOROK-R3-HQ320-G13-K11-LAB-MECHANISM-REPAIR-R1/02_REPAIRED_LAB/lab_sgi1/world.py"
+    }
+  ],
+  "dependency_closure_status": "FULL",
+  "closure_scope": "fourteen-module source-free lab and pinned tests/native controls, not full production V3",
+  "fixture_source_permission": "commissioned synthetic fixture replay/mutation only; no original respondent data",
+  "covered_test_suites": [
+    {
+      "suite": "sgi1_target",
+      "command": [
+        "python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-s",
+        "-p",
+        "no:cacheprovider",
+        "--tb=short",
+        "test_original_sgi1.py",
+        "--junitxml=../../execution/sgi1_target.xml"
+      ],
+      "cwd": "reproduction/03_POSTREPAIR_COURT",
+      "exit_status": 1,
+      "junit": "execution/sgi1_target.xml"
+    },
+    {
+      "suite": "g11",
+      "command": [
+        "python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-s",
+        "-p",
+        "no:cacheprovider",
+        "--tb=short",
+        "sources/g11/test_g11_solver.py",
+        "--junitxml=../../execution/g11.xml"
+      ],
+      "cwd": "reproduction/03_POSTREPAIR_COURT",
+      "exit_status": 0,
+      "junit": "execution/g11.xml"
+    },
+    {
+      "suite": "g12_controls",
+      "command": [
+        "python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-s",
+        "-p",
+        "no:cacheprovider",
+        "--tb=short",
+        "test_g12_controls.py",
+        "--junitxml=../../execution/g12_controls.xml"
+      ],
+      "cwd": "reproduction/03_POSTREPAIR_COURT",
+      "exit_status": 1,
+      "junit": "execution/g12_controls.xml"
+    },
+    {
+      "suite": "g12_literal",
+      "command": [
+        "python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-s",
+        "-p",
+        "no:cacheprovider",
+        "--tb=short",
+        "test_g12_literal_contract.py",
+        "--junitxml=../../execution/g12_literal.xml"
+      ],
+      "cwd": "reproduction/03_POSTREPAIR_COURT",
+      "exit_status": 1,
+      "junit": "execution/g12_literal.xml"
+    },
+    {
+      "suite": "g12_supplemental",
+      "command": [
+        "python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-s",
+        "-p",
+        "no:cacheprovider",
+        "--tb=short",
+        "test_g12_supplemental.py",
+        "--junitxml=../../execution/g12_supplemental.xml"
+      ],
+      "cwd": "reproduction/03_POSTREPAIR_COURT",
+      "exit_status": 0,
+      "junit": "execution/g12_supplemental.xml"
+    },
+    {
+      "suite": "candidate_boundary",
+      "command": [
+        "python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-s",
+        "-p",
+        "no:cacheprovider",
+        "--tb=short",
+        "test_candidate_boundary.py",
+        "--junitxml=../../execution/candidate_boundary.xml"
+      ],
+      "cwd": "reproduction/03_POSTREPAIR_COURT",
+      "exit_status": 0,
+      "junit": "execution/candidate_boundary.xml"
+    },
+    {
+      "suite": "g13_author",
+      "command": [
+        "python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-s",
+        "-p",
+        "no:cacheprovider",
+        "--tb=short",
+        "test_g13_author_court.py",
+        "--junitxml=../../execution/g13_author.xml"
+      ],
+      "cwd": "reproduction/04_G13_AUTHOR_COURT",
+      "exit_status": 0,
+      "junit": "execution/g13_author.xml"
+    },
+    {
+      "suite": "g13_postrepair",
+      "command": [
+        "python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-s",
+        "-p",
+        "no:cacheprovider",
+        "--tb=short",
+        "test_g13_postrepair_original.py",
+        "--junitxml=../../execution/g13_postrepair.xml"
+      ],
+      "cwd": "reproduction/04_G13_AUTHOR_COURT",
+      "exit_status": 0,
+      "junit": "execution/g13_postrepair.xml"
+    },
+    {
+      "suite": "sgi1_historical",
+      "command": [
+        "python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-s",
+        "-p",
+        "no:cacheprovider",
+        "--tb=short",
+        "test_original_sgi1.py",
+        "--junitxml=../../execution/sgi1_historical.xml"
+      ],
+      "cwd": "historical/03_POSTREPAIR_COURT",
+      "exit_status": 0,
+      "junit": "execution/sgi1_historical.xml"
+    },
+    {
+      "suite": "g14_science",
+      "command": "PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python3 -B -m pytest -q -s -p no:cacheprovider --tb=short WORKER_RETURNS/SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1/test_g14_science.py --junitxml=WORKER_RETURNS/SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1/execution/g14_science.xml",
+      "exit_status": 1,
+      "PASS": 40,
+      "RED": 27,
+      "junit": "execution/g14_science.xml"
+    }
+  ],
+  "science_grade": "independent sourcefree scientific review; REVIEW_REVISE; no native actor/biological/calibration proof",
+  "editor_harness": "Codex local",
+  "model_provider": "OpenAI via current Codex environment",
+  "model_family": "GPT-6 family per session instruction",
+  "exact_model_configuration": "UNKNOWN_NOT_EXPOSED_BY_RUNTIME",
+  "reasoning_class": "I2 independent high-reasoning scientific review",
+  "effort": "High required by commission; exact UI configuration not independently observed",
+  "pricing_class": "UNKNOWN",
+  "cash_known": false,
+  "quota_known": false,
+  "observed_usage": null,
+  "expected_reset": null,
+  "paid_overflow_policy": "NO_PROVIDER_CALLS_AUTHORIZED",
+  "context_cache_reuse": "UNKNOWN",
+  "retries": "ordinary local test refinement and custody packaging only; no provider retries",
+  "estimated_total_evidence_cost": "UNKNOWN; zero new model API calls",
+  "review_independence": "fresh reviewer; no authorship of G13/SGI1/G11/G12 in this session; HQ controls later intake",
+  "privacy_source_grant": "private repository local source-free review only",
+  "assignments_completed": [
+    "G14 independent court"
+  ],
+  "next_good_affinity_tags": [
+    "GENEALOGY",
+    "CAUSAL_GRAPH",
+    "SELECTOR_REPLAY"
+  ],
+  "staged_state_preservation": "exact sources retained locally in ignored reproduction/historical directories; rehydrate with review_runner.py; marker remains local",
+  "retire_or_rebuild_reason": "reprobe marker/import bytes on resume; no continuation is scheduled",
+  "permission_holds": {
+    "ADP015": "HELD_NEW_CONSTRUCTION_AND_SELECTION_RULE_UNISSUED",
+    "ADP020": "HELD_STREAM_POLICY_CANDIDATE_AUTHORITY_AND_COMPLETE_RECEIPTS",
+    "POPULATION_CALIBRATION": "HELD",
+    "BIOLOGY_OCCURRENCE": "HELD",
+    "NATIVE_ACTOR_CREATION_DEVELOPMENT": "HELD",
+    "ORIGINAL_SOURCE_EXECUTION": "HELD",
+    "MODEL_PROVIDER_TRIAL": "NOT_AUTHORIZED",
+    "N12_WAKE_RELEASE_ADOPTION": "HELD"
+  },
+  "attestation": "00C_READ=YES;00D_WARM_PASSPORT_READ=YES;LIVE_RESOURCE_CHECK=YES;REAL_SESSION_CONTINUITY_VERIFIED_OR_NEW=YES;CHEAPEST_QUALIFIED_ROUTE_EVALUATED=YES;INDEPENDENCE_AND_AUTHORITY_PRESERVED=YES"
+}

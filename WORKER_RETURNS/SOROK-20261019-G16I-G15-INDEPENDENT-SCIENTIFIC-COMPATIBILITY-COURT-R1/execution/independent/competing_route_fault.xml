@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="0.305" timestamp="2026-10-19T13:16:38.178904-04:00" hostname="LOCAL_RUNNER_A"><testcase classname="WORKER_RETURNS.SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1.test_g16i_science" name="test_competing_offer_changes_actual_attendance" time="0.037"><failure message="AssertionError: assert 'INST_WORKSHOP_A' == 'INST_TRANSIT_E'&#10;  &#10;  - INST_TRANSIT_E&#10;  + INST_WORKSHOP_A">WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/test_g16i_science.py:80: in test_competing_offer_changes_actual_attendance
+    assert r['state']['place']=='INST_TRANSIT_E'
+E   AssertionError: assert 'INST_WORKSHOP_A' == 'INST_TRANSIT_E'
+E     
+E     - INST_TRANSIT_E
+E     + INST_WORKSHOP_A</failure></testcase></testsuite></testsuites>

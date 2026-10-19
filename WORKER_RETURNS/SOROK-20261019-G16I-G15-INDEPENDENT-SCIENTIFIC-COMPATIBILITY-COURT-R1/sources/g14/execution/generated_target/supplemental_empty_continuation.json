@@ -1,0 +1,46 @@
+{
+  "continuation_version": "FORWARD_CONTINUATION@2.0-G13-REPAIRED",
+  "continuation_events": [
+    {
+      "event_id": "sha256:fe336647ae31b2e532b56a74b4f40aa058a207b3b02a975a5443e273ec92641f",
+      "kind": "PARENT_CONTINUATION",
+      "actor": "LAB_MOTHER_M0",
+      "payload": {
+        "project_change": "evening_certificate_completion_window",
+        "care_or_absence": "continuing_care_routine_for_household",
+        "causal_basis": "pre_boundary striving and enrollment events"
+      },
+      "effective_index": 1000
+    },
+    {
+      "event_id": "sha256:ec7b2d3f299cd986349e3f15bf339d4d296a4d68e7f6a798900e422f445183f4",
+      "kind": "RELATION_CONTINUATION",
+      "actor": "PAIR",
+      "payload": {
+        "objective_relation_continues": false,
+        "household_membership": "NOT_AUTOMATICALLY_ESTABLISHED",
+        "note": "relationship continuation distinct from household admission",
+        "paternal_continuation_admitted": false
+      },
+      "effective_index": 1002
+    }
+  ],
+  "both_parents_continue_independently": false,
+  "maternal_continuation_admitted": true,
+  "paternal_continuation_admitted": false,
+  "paternal_continuation_requires_supplied_history": true,
+  "parent_project_change_registered_as_event": true,
+  "care_or_absence_registered_as_event": true,
+  "no_fixed_family_labels": true,
+  "unformed_actor_continuation_minted": false,
+  "typed_hold": {
+    "hold_state": "NOT_EXECUTED_AUTHORITY_HOLD",
+    "hold_reasons": [
+      "NO_SECOND_PARENT_HISTORY_SUPPLIED",
+      "NO_FORMING_WITNESS_EVENT"
+    ],
+    "paternal_events_emitted": 0,
+    "claimed_unformed_participant": "G12_UNFORMED",
+    "is_HOLD_not_world_truth": true
+  }
+}

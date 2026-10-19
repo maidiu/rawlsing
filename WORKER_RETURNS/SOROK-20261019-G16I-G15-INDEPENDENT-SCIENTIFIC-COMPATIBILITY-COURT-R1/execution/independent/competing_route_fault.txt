@@ -1,0 +1,12 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+________________ test_competing_offer_changes_actual_attendance ________________
+WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/test_g16i_science.py:80: in test_competing_offer_changes_actual_attendance
+    assert r['state']['place']=='INST_TRANSIT_E'
+E   AssertionError: assert 'INST_WORKSHOP_A' == 'INST_TRANSIT_E'
+E     
+E     - INST_TRANSIT_E
+E     + INST_WORKSHOP_A
+=========================== short test summary info ============================
+FAILED WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/test_g16i_science.py::test_competing_offer_changes_actual_attendance
+1 failed in 0.30s

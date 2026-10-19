@@ -1,0 +1,651 @@
+{
+  "imports": [
+    {
+      "blob_sha1": "fbecbfae723bf5e72830b9a59788aab165747259",
+      "module": "lab_sgi1",
+      "path": "sandbox/candidate/lab_sgi1/__init__.py",
+      "sha256": "c9c5dbab3d2409f022df3794257418d0b85a14fe28a18a7c3652fbe86005ed92"
+    },
+    {
+      "blob_sha1": "6b6ff10a9d2f7c906b07d20f274d80cf014d399f",
+      "module": "lab_sgi1.construction",
+      "path": "sandbox/candidate/lab_sgi1/construction.py",
+      "sha256": "5afebf0195ebffd97fbbafd7909709f87bb927568248444271304afc45e578e0"
+    },
+    {
+      "blob_sha1": "c0234c92e2279425411e4e82250e5b97fdf1b7a0",
+      "module": "lab_sgi1.continuation",
+      "path": "sandbox/candidate/lab_sgi1/continuation.py",
+      "sha256": "7dc5da789a74a6b7a8185df4ee537e92d33de962bfd37983e07dbcd94d0f0c62"
+    },
+    {
+      "blob_sha1": "51a919a660338d7c6fa75d06aa997a87994f87ce",
+      "module": "lab_sgi1.core",
+      "path": "sandbox/candidate/lab_sgi1/core.py",
+      "sha256": "4c18ffe4a7c16cebfbca9b25c99f3c6296bcc80c706bb45e338a0ba6ccc5a1fb"
+    },
+    {
+      "blob_sha1": "df830f1c6592aae913e3ed315aede15245fc3c39",
+      "module": "lab_sgi1.dag",
+      "path": "sandbox/candidate/lab_sgi1/dag.py",
+      "sha256": "cfba770dcb1c2576acf7a2523c9e259a69bc6326732b76d44d1446835e942b53"
+    },
+    {
+      "blob_sha1": "a06c1e281dde7725caaf00f94211a38e769c4427",
+      "module": "lab_sgi1.history",
+      "path": "sandbox/candidate/lab_sgi1/history.py",
+      "sha256": "99f98512e3bd9023b148bd4197be9189f37062bdd553972e3755546ae780e31a"
+    },
+    {
+      "blob_sha1": "8f970ce7d97392ad8bed4289469f036d61aef91c",
+      "module": "lab_sgi1.joint",
+      "path": "sandbox/candidate/lab_sgi1/joint.py",
+      "sha256": "ba0a7e190ae4b572e55176e5683680f2eee6d49c344f44d0c887bb92e469c2ea"
+    },
+    {
+      "blob_sha1": "49f2d98a473c20556d31d0f6c5f9281f4ab05eb4",
+      "module": "lab_sgi1.membrane",
+      "path": "sandbox/candidate/lab_sgi1/membrane.py",
+      "sha256": "ac5f3527e0657ce92fa1d508f154eceb372efaf603a374724845e8ba064a2b6d"
+    },
+    {
+      "blob_sha1": "52c8003efbd7be356beb800bb7b3239041b31146",
+      "module": "lab_sgi1.mother",
+      "path": "sandbox/candidate/lab_sgi1/mother.py",
+      "sha256": "17112976edf8e00994a16ec01de5327fbcb4ec04e48f17e24df9f69fe52f19e0"
+    },
+    {
+      "blob_sha1": "8ae8737b4f4c7f3cf4c9f9f0059b1ecdbeeb0104",
+      "module": "lab_sgi1.pipeline",
+      "path": "sandbox/candidate/lab_sgi1/pipeline.py",
+      "sha256": "8322549ab869738398a9a713cdb2d681faddee0cbccc29e19884d1e4a60ca9e2"
+    },
+    {
+      "blob_sha1": "1af414448766e222ad9eff83b8ee5841b2ef2331",
+      "module": "lab_sgi1.proposal",
+      "path": "sandbox/candidate/lab_sgi1/proposal.py",
+      "sha256": "5300ac3eb8045f065e30b9f4da64d71dcdcedbe928843f8a7c937959ee7f0d5f"
+    },
+    {
+      "blob_sha1": "ff8cfc00279599e5109abd414e8ea51b8846cc06",
+      "module": "lab_sgi1.qualification",
+      "path": "sandbox/candidate/lab_sgi1/qualification.py",
+      "sha256": "98f14d9fa9dae05af521a3968932b4d0bb69c5e4468707e6f015c43b6063aad0"
+    },
+    {
+      "blob_sha1": "758f0f2dd2d0c90db4e5409368868eb5700cfb47",
+      "module": "lab_sgi1.relation",
+      "path": "sandbox/candidate/lab_sgi1/relation.py",
+      "sha256": "f6415c31f8f9d19f9962a1ace0a38a2561a15c9a0fd8002d6045071621d5b04f"
+    },
+    {
+      "blob_sha1": "d5d252f39d5ed8fdb65b2aaa77152f83dbc97c24",
+      "module": "lab_sgi1.research",
+      "path": "sandbox/candidate/lab_sgi1/research.py",
+      "sha256": "267b273f1b3460d32ca9104f8a41b69c62255afa592e3d94f8d8641928a190a6"
+    },
+    {
+      "blob_sha1": "c8eae8f088bb493e257ec76ce18f9543fa37c06c",
+      "module": "lab_sgi1.selection",
+      "path": "sandbox/candidate/lab_sgi1/selection.py",
+      "sha256": "cc992d58a0f0463c7cd851565ae8f2867b00ff39f0d76d934d43a0bac2188ab5"
+    },
+    {
+      "blob_sha1": "7212c483a36207951cac9354c18ad4d21e7b2a9f",
+      "module": "lab_sgi1.world",
+      "path": "sandbox/candidate/lab_sgi1/world.py",
+      "sha256": "fd8bdf430e53eed123afce25f6055e58e620153b99f25359f03ab02c083ea9c1"
+    }
+  ],
+  "network_attempts": [],
+  "observations": {
+    "operative_dedup": {
+      "original": {
+        "canonical_order": [
+          "sha256:d44b6a930fbf6731fb6ae202ca7ca3485568e3c3e102b81b27eaaf01f5c8f472"
+        ],
+        "class_member_index": {
+          "sha256:d44b6a930fbf6731fb6ae202ca7ca3485568e3c3e102b81b27eaaf01f5c8f472": [
+            "C_FROZEN_0",
+            "G15_SECOND_ENDPOINT_CLASS"
+          ]
+        },
+        "class_set_hash": "sha256:51db79fa389a32c94b2c88dba6045410391c24a993f4ca55b95017c06f64639a",
+        "classes": [
+          {
+            "candidate": {
+              "candidate_kind": "PROVISIONAL_COUNTERPART",
+              "candidate_local_id": "SEM_d44b6a930fbf6731fb6ae202ca7ca3485568e3c3e102b81b27eaaf01f5c8f472",
+              "endpoint_constraints": {
+                "conception_witness_requirements": [
+                  "ENCOUNTER_WITNESS_MIN_1"
+                ],
+                "required_relation_objective_refs": [
+                  "REL_ENCOUNTER_WITNESSED"
+                ],
+                "second_parent_structure_and_position_constraints": [
+                  "waged_artisan_local"
+                ],
+                "time_or_interval": "T_ENCOUNTER_LAB_WINDOW"
+              },
+              "route_kind_id": "ROUTE_LOCAL_CLOSED"
+            },
+            "class_key": "sha256:d44b6a930fbf6731fb6ae202ca7ca3485568e3c3e102b81b27eaaf01f5c8f472",
+            "member_count": 2,
+            "member_ids": [
+              "C_FROZEN_0",
+              "G15_SECOND_ENDPOINT_CLASS"
+            ],
+            "raw_proposals": [
+              {
+                "assumptions": [
+                  "workplace adjacency contact"
+                ],
+                "candidate_kind": "PROVISIONAL_COUNTERPART",
+                "candidate_local_id": "C_FROZEN_0",
+                "endpoint_constraints": {
+                  "conception_witness_requirements": [
+                    "ENCOUNTER_WITNESS_MIN_1"
+                  ],
+                  "required_relation_objective_refs": [
+                    "REL_ENCOUNTER_WITNESSED"
+                  ],
+                  "second_parent_structure_and_position_constraints": [
+                    "waged_artisan_local"
+                  ],
+                  "time_or_interval": "T_ENCOUNTER_LAB_WINDOW"
+                },
+                "falsifiers": [
+                  "no shared shift overlap"
+                ],
+                "plausibility_rank_ordinal": 1,
+                "route_kind_id": "ROUTE_LOCAL_CLOSED"
+              },
+              {
+                "assumptions": [
+                  "workplace adjacency contact"
+                ],
+                "candidate_kind": "PROVISIONAL_COUNTERPART",
+                "candidate_local_id": "G15_SECOND_ENDPOINT_CLASS",
+                "endpoint_constraints": {
+                  "conception_witness_requirements": [
+                    "ENCOUNTER_WITNESS_MIN_1"
+                  ],
+                  "required_relation_objective_refs": [
+                    "REL_ENCOUNTER_WITNESSED"
+                  ],
+                  "required_state_predicates": [
+                    {
+                      "equals": "waged_repair",
+                      "field": "material_position"
+                    }
+                  ],
+                  "second_parent_structure_and_position_constraints": [
+                    "waged_artisan_local"
+                  ],
+                  "time_or_interval": "T_ENCOUNTER_LAB_WINDOW"
+                },
+                "falsifiers": [
+                  "no shared shift overlap"
+                ],
+                "plausibility_rank_ordinal": 1,
+                "route_kind_id": "ROUTE_LOCAL_CLOSED"
+              }
+            ],
+            "representative_id": "CLS_d44b6a930fbf6731fb6ae202ca7ca3485568e3c3e102b81b27eaaf01f5c8f472"
+          }
+        ],
+        "coverage_receipt": {
+          "OTHER_UNRESOLVED": true,
+          "note": "finite research grammar; not exhaustive"
+        },
+        "hold_reasons": [],
+        "merge_receipts": [],
+        "n_classes": 1,
+        "n_input_candidates": 2,
+        "status": "COMMITTED"
+      },
+      "paraphrased": {
+        "canonical_order": [
+          "sha256:d44b6a930fbf6731fb6ae202ca7ca3485568e3c3e102b81b27eaaf01f5c8f472"
+        ],
+        "class_member_index": {
+          "sha256:d44b6a930fbf6731fb6ae202ca7ca3485568e3c3e102b81b27eaaf01f5c8f472": [
+            "A_PARAPHRASE",
+            "C_FROZEN_0",
+            "G15_SECOND_ENDPOINT_CLASS"
+          ]
+        },
+        "class_set_hash": "sha256:51db79fa389a32c94b2c88dba6045410391c24a993f4ca55b95017c06f64639a",
+        "classes": [
+          {
+            "candidate": {
+              "candidate_kind": "PROVISIONAL_COUNTERPART",
+              "candidate_local_id": "SEM_d44b6a930fbf6731fb6ae202ca7ca3485568e3c3e102b81b27eaaf01f5c8f472",
+              "endpoint_constraints": {
+                "conception_witness_requirements": [
+                  "ENCOUNTER_WITNESS_MIN_1"
+                ],
+                "required_relation_objective_refs": [
+                  "REL_ENCOUNTER_WITNESSED"
+                ],
+                "second_parent_structure_and_position_constraints": [
+                  "waged_artisan_local"
+                ],
+                "time_or_interval": "T_ENCOUNTER_LAB_WINDOW"
+              },
+              "route_kind_id": "ROUTE_LOCAL_CLOSED"
+            },
+            "class_key": "sha256:d44b6a930fbf6731fb6ae202ca7ca3485568e3c3e102b81b27eaaf01f5c8f472",
+            "member_count": 3,
+            "member_ids": [
+              "A_PARAPHRASE",
+              "C_FROZEN_0",
+              "G15_SECOND_ENDPOINT_CLASS"
+            ],
+            "raw_proposals": [
+              {
+                "assumptions": [
+                  "same workplace adjacency in different wording"
+                ],
+                "candidate_kind": "PROVISIONAL_COUNTERPART",
+                "candidate_local_id": "A_PARAPHRASE",
+                "endpoint_constraints": {
+                  "conception_witness_requirements": [
+                    "ENCOUNTER_WITNESS_MIN_1"
+                  ],
+                  "required_relation_objective_refs": [
+                    "REL_ENCOUNTER_WITNESSED"
+                  ],
+                  "second_parent_structure_and_position_constraints": [
+                    "waged_artisan_local"
+                  ],
+                  "time_or_interval": "T_ENCOUNTER_LAB_WINDOW"
+                },
+                "falsifiers": [
+                  "no shared shift overlap"
+                ],
+                "plausibility_rank_ordinal": 1,
+                "route_kind_id": "ROUTE_LOCAL_CLOSED"
+              },
+              {
+                "assumptions": [
+                  "workplace adjacency contact"
+                ],
+                "candidate_kind": "PROVISIONAL_COUNTERPART",
+                "candidate_local_id": "C_FROZEN_0",
+                "endpoint_constraints": {
+                  "conception_witness_requirements": [
+                    "ENCOUNTER_WITNESS_MIN_1"
+                  ],
+                  "required_relation_objective_refs": [
+                    "REL_ENCOUNTER_WITNESSED"
+                  ],
+                  "second_parent_structure_and_position_constraints": [
+                    "waged_artisan_local"
+                  ],
+                  "time_or_interval": "T_ENCOUNTER_LAB_WINDOW"
+                },
+                "falsifiers": [
+                  "no shared shift overlap"
+                ],
+                "plausibility_rank_ordinal": 1,
+                "route_kind_id": "ROUTE_LOCAL_CLOSED"
+              },
+              {
+                "assumptions": [
+                  "workplace adjacency contact"
+                ],
+                "candidate_kind": "PROVISIONAL_COUNTERPART",
+                "candidate_local_id": "G15_SECOND_ENDPOINT_CLASS",
+                "endpoint_constraints": {
+                  "conception_witness_requirements": [
+                    "ENCOUNTER_WITNESS_MIN_1"
+                  ],
+                  "required_relation_objective_refs": [
+                    "REL_ENCOUNTER_WITNESSED"
+                  ],
+                  "required_state_predicates": [
+                    {
+                      "equals": "waged_repair",
+                      "field": "material_position"
+                    }
+                  ],
+                  "second_parent_structure_and_position_constraints": [
+                    "waged_artisan_local"
+                  ],
+                  "time_or_interval": "T_ENCOUNTER_LAB_WINDOW"
+                },
+                "falsifiers": [
+                  "no shared shift overlap"
+                ],
+                "plausibility_rank_ordinal": 1,
+                "route_kind_id": "ROUTE_LOCAL_CLOSED"
+              }
+            ],
+            "representative_id": "CLS_d44b6a930fbf6731fb6ae202ca7ca3485568e3c3e102b81b27eaaf01f5c8f472"
+          }
+        ],
+        "coverage_receipt": {
+          "OTHER_UNRESOLVED": true,
+          "note": "finite research grammar; not exhaustive"
+        },
+        "hold_reasons": [],
+        "merge_receipts": [],
+        "n_classes": 1,
+        "n_input_candidates": 3,
+        "status": "COMMITTED"
+      },
+      "selection": {
+        "adp020_entitlement": "NOT_GRANTED",
+        "adp020_hold": "ADP020_SEMANTIC_STREAM_RULE_ISSUANCE_REQUIRED",
+        "candidate_replay_hashes": {
+          "sha256:d44b6a930fbf6731fb6ae202ca7ca3485568e3c3e102b81b27eaaf01f5c8f472": "sha256:8ea9465c2e8fead3b4ffaed98b6c1e5ff3cfb42d455de34a86b473a464d4bc96"
+        },
+        "candidate_set_hash": "sha256:cc5275cb8fac356cc8120d69f83615bddca24037c56b32b1f82dfcf263aa8fa2",
+        "candidate_set_hash_binds_payload": true,
+        "candidate_set_record": [
+          {
+            "candidate": {
+              "candidate_kind": "PROVISIONAL_COUNTERPART",
+              "candidate_local_id": "SEM_d44b6a930fbf6731fb6ae202ca7ca3485568e3c3e102b81b27eaaf01f5c8f472",
+              "endpoint_constraints": {
+                "conception_witness_requirements": [
+                  "ENCOUNTER_WITNESS_MIN_1"
+                ],
+                "required_relation_objective_refs": [
+                  "REL_ENCOUNTER_WITNESSED"
+                ],
+                "second_parent_structure_and_position_constraints": [
+                  "waged_artisan_local"
+                ],
+                "time_or_interval": "T_ENCOUNTER_LAB_WINDOW"
+              },
+              "route_kind_id": "ROUTE_LOCAL_CLOSED"
+            },
+            "class_key": "sha256:d44b6a930fbf6731fb6ae202ca7ca3485568e3c3e102b81b27eaaf01f5c8f472",
+            "member_count": 3,
+            "member_ids": [
+              "A_PARAPHRASE",
+              "C_FROZEN_0",
+              "G15_SECOND_ENDPOINT_CLASS"
+            ],
+            "raw_proposals": [
+              {
+                "assumptions": [
+                  "same workplace adjacency in different wording"
+                ],
+                "candidate_kind": "PROVISIONAL_COUNTERPART",
+                "candidate_local_id": "A_PARAPHRASE",
+                "endpoint_constraints": {
+                  "conception_witness_requirements": [
+                    "ENCOUNTER_WITNESS_MIN_1"
+                  ],
+                  "required_relation_objective_refs": [
+                    "REL_ENCOUNTER_WITNESSED"
+                  ],
+                  "second_parent_structure_and_position_constraints": [
+                    "waged_artisan_local"
+                  ],
+                  "time_or_interval": "T_ENCOUNTER_LAB_WINDOW"
+                },
+                "falsifiers": [
+                  "no shared shift overlap"
+                ],
+                "plausibility_rank_ordinal": 1,
+                "route_kind_id": "ROUTE_LOCAL_CLOSED"
+              },
+              {
+                "assumptions": [
+                  "workplace adjacency contact"
+                ],
+                "candidate_kind": "PROVISIONAL_COUNTERPART",
+                "candidate_local_id": "C_FROZEN_0",
+                "endpoint_constraints": {
+                  "conception_witness_requirements": [
+                    "ENCOUNTER_WITNESS_MIN_1"
+                  ],
+                  "required_relation_objective_refs": [
+                    "REL_ENCOUNTER_WITNESSED"
+                  ],
+                  "second_parent_structure_and_position_constraints": [
+                    "waged_artisan_local"
+                  ],
+                  "time_or_interval": "T_ENCOUNTER_LAB_WINDOW"
+                },
+                "falsifiers": [
+                  "no shared shift overlap"
+                ],
+                "plausibility_rank_ordinal": 1,
+                "route_kind_id": "ROUTE_LOCAL_CLOSED"
+              },
+              {
+                "assumptions": [
+                  "workplace adjacency contact"
+                ],
+                "candidate_kind": "PROVISIONAL_COUNTERPART",
+                "candidate_local_id": "G15_SECOND_ENDPOINT_CLASS",
+                "endpoint_constraints": {
+                  "conception_witness_requirements": [
+                    "ENCOUNTER_WITNESS_MIN_1"
+                  ],
+                  "required_relation_objective_refs": [
+                    "REL_ENCOUNTER_WITNESSED"
+                  ],
+                  "required_state_predicates": [
+                    {
+                      "equals": "waged_repair",
+                      "field": "material_position"
+                    }
+                  ],
+                  "second_parent_structure_and_position_constraints": [
+                    "waged_artisan_local"
+                  ],
+                  "time_or_interval": "T_ENCOUNTER_LAB_WINDOW"
+                },
+                "falsifiers": [
+                  "no shared shift overlap"
+                ],
+                "plausibility_rank_ordinal": 1,
+                "route_kind_id": "ROUTE_LOCAL_CLOSED"
+              }
+            ],
+            "representative_id": "CLS_d44b6a930fbf6731fb6ae202ca7ca3485568e3c3e102b81b27eaaf01f5c8f472"
+          }
+        ],
+        "canonical_class_order": [
+          "sha256:d44b6a930fbf6731fb6ae202ca7ca3485568e3c3e102b81b27eaaf01f5c8f472"
+        ],
+        "causal_run_id": "G13_SCOPE",
+        "class_weights": [
+          {
+            "class_key": "sha256:d44b6a930fbf6731fb6ae202ca7ca3485568e3c3e102b81b27eaaf01f5c8f472",
+            "weight_units": 1
+          }
+        ],
+        "coordinate_profile": "G14_FROZEN_DIAGNOSTIC_NOT_NATIVE_ANCHOR",
+        "decision_coordinate": {
+          "anchor_event_id_or_init_checkpoint_hash": "INIT:573a77da31260147816241ebd69d89503bba6d20aeff36c15c1d3a4a5269ebb5",
+          "anchor_event_index": -1,
+          "decision_slot": "conception_scenario_selection",
+          "occurrence_index": 0,
+          "rule_invocation_id": "LAB_SOROK_G13_REPAIRED",
+          "scope_id": "G13_SCOPE",
+          "scope_kind": "GENEALOGY",
+          "stream_name": "v3.causal.adp015.conception_scenario_selection"
+        },
+        "decision_kind": "CONCEPTION_SCENARIO_SELECTION",
+        "decision_receipt_id": "sha256:04094eac8ba69b30f64b5e8a542b87cd2de4cbb21c3614a1455eb351d4e1dc55",
+        "decision_replay_identity_hash": "sha256:2a0f7a48a1978a77f8c02b8365ea41c9475be80c22cac1248830ee426800d4a0",
+        "decision_replay_preimage": {
+          "candidate_set_hash": "sha256:cc5275cb8fac356cc8120d69f83615bddca24037c56b32b1f82dfcf263aa8fa2",
+          "causal_run_id": "G13_SCOPE",
+          "decision_coordinate": {
+            "anchor_event_id_or_init_checkpoint_hash": "INIT:573a77da31260147816241ebd69d89503bba6d20aeff36c15c1d3a4a5269ebb5",
+            "anchor_event_index": -1,
+            "decision_slot": "conception_scenario_selection",
+            "occurrence_index": 0,
+            "rule_invocation_id": "LAB_SOROK_G13_REPAIRED",
+            "scope_id": "G13_SCOPE",
+            "scope_kind": "GENEALOGY",
+            "stream_name": "v3.causal.adp015.conception_scenario_selection"
+          },
+          "decision_semantics_version": "SELECTION_DECISION_SEMANTICS@2.0-G15",
+          "declared_intervention": null,
+          "draw_mode": "DETERMINISTIC_SINGLETON_ZERO_DRAWS",
+          "draw_replay_hashes": [],
+          "entropy_coordinates": [],
+          "lineage": {
+            "adp020_entitlement": "NOT_GRANTED",
+            "authority": "ADP-020@1.0.0",
+            "hold": "ADP020_SEMANTIC_STREAM_RULE_ISSUANCE_REQUIRED",
+            "root_seed_sha256": "ebec2554dbc09345eccdeea2246d08bc4f9a1d396b77e7e40512b71602738145",
+            "sampler": "ADP020_HMAC_SHA256_UNIFORM_BELOW_V1@1.0.0",
+            "scope_id": "G13_SCOPE",
+            "scope_kind": "GENEALOGY",
+            "scope_registration": {
+              "native_grant": "NOT_GRANTED",
+              "scope_id": "G13_SCOPE",
+              "scope_kind": "GENEALOGY",
+              "source": "FROZEN_G12_G13_G14_DIAGNOSTIC_INPUT"
+            },
+            "scope_seed_sha256": "565c096155ea61be62ac992428045c2dc47a36589955440aaa35c6c154179d95",
+            "seed_scheme": "V3_CAUSAL_HMAC_SHA256_COUNTER_V1@1.0.0",
+            "stream_name": "v3.causal.adp015.conception_scenario_selection",
+            "stream_registration": {
+              "native_grant": "NOT_GRANTED",
+              "operation": "UNIFORM_BELOW",
+              "scope_kind": "GENEALOGY",
+              "source_authority": "G15_SOURCEFREE_RESEARCH_ONLY"
+            },
+            "stream_seed_sha256": "1be832d33b06d98c82692ae8f13464ce62bbe9e11fa85baf9a745a60d0a26905"
+          },
+          "selected_candidate_replay_hash": "sha256:8ea9465c2e8fead3b4ffaed98b6c1e5ff3cfb42d455de34a86b473a464d4bc96",
+          "selected_class_key": "sha256:d44b6a930fbf6731fb6ae202ca7ca3485568e3c3e102b81b27eaaf01f5c8f472",
+          "semantic_rule_id": "G15_SOURCEFREE_FINITE_SELECTION",
+          "semantic_rule_registry_hash": "sha256:1cdd0865a5076d98e46986e2958a989bb9ebd4e6195a71ae75473cc305edae83",
+          "semantic_rule_version": "1.0.0",
+          "stochastic_parameters_hash": "sha256:45dd5549d67bba55177641f3aa0dd23eafbce8d4a880048783edeb85b66dd966"
+        },
+        "decision_semantics_version": "SELECTION_DECISION_SEMANTICS@2.0-G15",
+        "draw": null,
+        "draw_consumed": false,
+        "draw_mode": "DETERMINISTIC_SINGLETON_ZERO_DRAWS",
+        "draw_receipts": [],
+        "eligible_set": [
+          "CLS_d44b6a930fbf6731fb6ae202ca7ca3485568e3c3e102b81b27eaaf01f5c8f472"
+        ],
+        "exact_candidate_packet_hash": "sha256:6abb96f9ad32ce8dbeb9d526d9132e399b3dc1e354e9b7119802908a078ad478",
+        "lineage": {
+          "adp020_entitlement": "NOT_GRANTED",
+          "authority": "ADP-020@1.0.0",
+          "hold": "ADP020_SEMANTIC_STREAM_RULE_ISSUANCE_REQUIRED",
+          "root_seed_sha256": "ebec2554dbc09345eccdeea2246d08bc4f9a1d396b77e7e40512b71602738145",
+          "sampler": "ADP020_HMAC_SHA256_UNIFORM_BELOW_V1@1.0.0",
+          "scope_id": "G13_SCOPE",
+          "scope_kind": "GENEALOGY",
+          "scope_registration": {
+            "native_grant": "NOT_GRANTED",
+            "scope_id": "G13_SCOPE",
+            "scope_kind": "GENEALOGY",
+            "source": "FROZEN_G12_G13_G14_DIAGNOSTIC_INPUT"
+          },
+          "scope_seed_sha256": "565c096155ea61be62ac992428045c2dc47a36589955440aaa35c6c154179d95",
+          "seed_scheme": "V3_CAUSAL_HMAC_SHA256_COUNTER_V1@1.0.0",
+          "stream_name": "v3.causal.adp015.conception_scenario_selection",
+          "stream_registration": {
+            "native_grant": "NOT_GRANTED",
+            "operation": "UNIFORM_BELOW",
+            "scope_kind": "GENEALOGY",
+            "source_authority": "G15_SOURCEFREE_RESEARCH_ONLY"
+          },
+          "stream_seed_sha256": "1be832d33b06d98c82692ae8f13464ce62bbe9e11fa85baf9a745a60d0a26905"
+        },
+        "n_draws": 0,
+        "native_semantic_grant": "NOT_GRANTED",
+        "no_population_frequency_claim": true,
+        "occurrence_index": 0,
+        "policy_hash": "sha256:bb8fff7da303849fc090918ddb1f2458edeca5f424a2ce70d1998c9f61d028b7",
+        "policy_name": "SIM_UNIFORM_CLASSES",
+        "policy_status": "SIMULATION_POLICY",
+        "raw_proposal_record_hashes": [
+          "sha256:5eea1736bd9c6bf27db3646e6d3b6a8ed9b44b3e6ebdaa34c8467bd7a2b9ec7e",
+          "sha256:560797728b5cd64032325b08027fd91a199cdb4a4021ea15e23fdf6a8705a07d",
+          "sha256:01108ca7b74ca9d53d42e6a30c7a141238d23d927be798b034cbe247590eff35"
+        ],
+        "result_v3_event_id": null,
+        "result_v3_event_index": null,
+        "root_seed": "4747474747474747474747474747474747474747474747474747474747474747",
+        "root_seed_provenance": "EXPLICIT_CALLER_SEED",
+        "sampler": null,
+        "scope_hash": "G13_SCOPE",
+        "selected_candidate_replay_hash": "sha256:8ea9465c2e8fead3b4ffaed98b6c1e5ff3cfb42d455de34a86b473a464d4bc96",
+        "selected_class_key": "sha256:d44b6a930fbf6731fb6ae202ca7ca3485568e3c3e102b81b27eaaf01f5c8f472",
+        "selected_representative_id": "CLS_d44b6a930fbf6731fb6ae202ca7ca3485568e3c3e102b81b27eaaf01f5c8f472",
+        "semantic_rule_id": "G15_SOURCEFREE_FINITE_SELECTION",
+        "semantic_rule_registration": {
+          "issuing_scope": "WORKER_RESEARCH_ONLY",
+          "native_semantic_grant": "NOT_GRANTED",
+          "operations": [
+            "UNIFORM_CANDIDATE",
+            "WEIGHTED_CANDIDATE_INTEGER"
+          ],
+          "policies": {
+            "SIM_INTEGER_WEIGHT_A": {
+              "integer_weight_units": [
+                3,
+                2,
+                1,
+                1,
+                1,
+                1
+              ],
+              "method": "WEIGHTED_CANDIDATE_INTEGER",
+              "no_claim_of_population_frequency_IF_SIMULATION": true,
+              "status": "SIMULATION_POLICY"
+            },
+            "SIM_INTEGER_WEIGHT_B": {
+              "integer_weight_units": [
+                1,
+                1,
+                3,
+                2,
+                1,
+                1
+              ],
+              "method": "WEIGHTED_CANDIDATE_INTEGER",
+              "no_claim_of_population_frequency_IF_SIMULATION": true,
+              "status": "SIMULATION_POLICY"
+            },
+            "SIM_UNIFORM_CLASSES": {
+              "integer_weight_units": null,
+              "method": "UNIFORM_CANDIDATE",
+              "no_claim_of_population_frequency_IF_SIMULATION": true,
+              "status": "SIMULATION_POLICY"
+            }
+          },
+          "semantic_rule_id": "G15_SOURCEFREE_FINITE_SELECTION",
+          "semantic_rule_version": "1.0.0",
+          "stream": "v3.causal.adp015.conception_scenario_selection"
+        },
+        "semantic_rule_registry_hash": "sha256:1cdd0865a5076d98e46986e2958a989bb9ebd4e6195a71ae75473cc305edae83",
+        "semantic_rule_version": "1.0.0",
+        "status": "COMMITTED",
+        "stochastic_parameters": {
+          "class_weights": [
+            {
+              "class_key": "sha256:d44b6a930fbf6731fb6ae202ca7ca3485568e3c3e102b81b27eaaf01f5c8f472",
+              "weight_units": 1
+            }
+          ],
+          "operation": "UNIFORM_CANDIDATE"
+        },
+        "stochastic_parameters_hash": "sha256:45dd5549d67bba55177641f3aa0dd23eafbce8d4a880048783edeb85b66dd966",
+        "stream": "v3.causal.adp015.conception_scenario_selection",
+        "total_weight_units": 1,
+        "unreported_redraws": 0,
+        "upstream_class_set_hash": null
+      }
+    }
+  }
+}

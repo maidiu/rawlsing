@@ -1,0 +1,795 @@
+[
+  {
+    "claim": {
+      "actual_consumer": "candidate/lab_sgi1/history.py; actual public downstream function exercised by test_typed_history_drives_endpoint",
+      "claim_id": "F1_TYPED_WORK_TO_ENDPOINT",
+      "claimed_dependency": "typed work and performed practice -> attendance -> selected endpoint",
+      "fault": {
+        "new": "work=get({'ORIGIN_FAMILY'},owner=actor);project=get({'PROJECT'},owner=actor);practice=get({'PRACTICE_FORMATION'},owner=actor)",
+        "old": "work=get({'WORK_POSITION'},owner=actor);project=get({'PROJECT'},owner=actor);practice=get({'PRACTICE_FORMATION'},owner=actor)",
+        "path": "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/candidate/lab_sgi1/history.py"
+      },
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py::test_typed_history_drives_endpoint"
+    },
+    "fault": {
+      "assertion_failure": true,
+      "command": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--tb=short",
+        "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py::test_typed_history_drives_endpoint",
+        "--junitxml=$WORKTREE/WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/execution/faults/f1_typed_work_to_endpoint_fault.xml"
+      ],
+      "error": false,
+      "exit": 1,
+      "failure_message": "assert False is True",
+      "junit": "execution/faults/f1_typed_work_to_endpoint_fault.xml",
+      "node": "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py::test_typed_history_drives_endpoint",
+      "skip": false,
+      "stdout": "execution/faults/f1_typed_work_to_endpoint_fault.txt"
+    },
+    "positive": {
+      "assertion_failure": false,
+      "command": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--tb=short",
+        "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py::test_typed_history_drives_endpoint",
+        "--junitxml=$WORKTREE/WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/execution/faults/f1_typed_work_to_endpoint_positive.xml"
+      ],
+      "error": false,
+      "exit": 0,
+      "failure_message": null,
+      "junit": "execution/faults/f1_typed_work_to_endpoint_positive.xml",
+      "node": "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py::test_typed_history_drives_endpoint",
+      "skip": false,
+      "stdout": "execution/faults/f1_typed_work_to_endpoint_positive.txt"
+    },
+    "proof_grade": "CLAIM_EDGE_FALSIFIED_BY_CONTROL_AND_POSITIVE_SURVIVED",
+    "restored_sha256": "99f98512e3bd9023b148bd4197be9189f37062bdd553972e3755546ae780e31a",
+    "source_before_sha256": "99f98512e3bd9023b148bd4197be9189f37062bdd553972e3755546ae780e31a",
+    "source_fault_sha256": "c9e43bb71a94198c8a352e11b60d4c4778496159c424f114ad78673b7659722c"
+  },
+  {
+    "claim": {
+      "actual_consumer": "candidate/lab_sgi1/history.py; actual public downstream function exercised by test_formation_drives_sufficiency",
+      "claim_id": "F2_EXPERIENCE_TO_FORMATION",
+      "claimed_dependency": "actual earlier experienced consequence -> sufficient prehistory",
+      "fault": {
+        "new": "ref='ABSENT_PARENT';require(ref in parents,'EXPERIENCE_NOT_DIRECT_PARENT')",
+        "old": "ref=p.get('experienced_basis_event');require(ref in parents,'EXPERIENCE_NOT_DIRECT_PARENT')",
+        "path": "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/candidate/lab_sgi1/history.py"
+      },
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py::test_formation_drives_sufficiency"
+    },
+    "fault": {
+      "assertion_failure": true,
+      "command": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--tb=short",
+        "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py::test_formation_drives_sufficiency",
+        "--junitxml=$WORKTREE/WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/execution/faults/f2_experience_to_formation_fault.xml"
+      ],
+      "error": false,
+      "exit": 1,
+      "failure_message": "assert False is True",
+      "junit": "execution/faults/f2_experience_to_formation_fault.xml",
+      "node": "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py::test_formation_drives_sufficiency",
+      "skip": false,
+      "stdout": "execution/faults/f2_experience_to_formation_fault.txt"
+    },
+    "positive": {
+      "assertion_failure": false,
+      "command": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--tb=short",
+        "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py::test_formation_drives_sufficiency",
+        "--junitxml=$WORKTREE/WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/execution/faults/f2_experience_to_formation_positive.xml"
+      ],
+      "error": false,
+      "exit": 0,
+      "failure_message": null,
+      "junit": "execution/faults/f2_experience_to_formation_positive.xml",
+      "node": "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py::test_formation_drives_sufficiency",
+      "skip": false,
+      "stdout": "execution/faults/f2_experience_to_formation_positive.txt"
+    },
+    "proof_grade": "CLAIM_EDGE_FALSIFIED_BY_CONTROL_AND_POSITIVE_SURVIVED",
+    "restored_sha256": "99f98512e3bd9023b148bd4197be9189f37062bdd553972e3755546ae780e31a",
+    "source_before_sha256": "99f98512e3bd9023b148bd4197be9189f37062bdd553972e3755546ae780e31a",
+    "source_fault_sha256": "6c3c6abb842f0e220e3ec7e42802b738d507b0caccc89b5771b35354543c392e"
+  },
+  {
+    "claim": {
+      "actual_consumer": "candidate/lab_sgi1/history.py; actual public downstream function exercised by test_peer_action_drives_obligation",
+      "claim_id": "F3_SEPARATE_PEER_ACTION",
+      "claimed_dependency": "independently owned performed tool action -> actor-specific debt and response",
+      "fault": {
+        "new": "units<=project['tool_units'] and False",
+        "old": "units<=project['tool_units'] and p.get('performed') is True",
+        "path": "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/candidate/lab_sgi1/history.py"
+      },
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py::test_peer_action_drives_obligation"
+    },
+    "fault": {
+      "assertion_failure": true,
+      "command": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--tb=short",
+        "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py::test_peer_action_drives_obligation",
+        "--junitxml=$WORKTREE/WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/execution/faults/f3_separate_peer_action_fault.xml"
+      ],
+      "error": false,
+      "exit": 1,
+      "failure_message": "assert 0 == 2",
+      "junit": "execution/faults/f3_separate_peer_action_fault.xml",
+      "node": "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py::test_peer_action_drives_obligation",
+      "skip": false,
+      "stdout": "execution/faults/f3_separate_peer_action_fault.txt"
+    },
+    "positive": {
+      "assertion_failure": false,
+      "command": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--tb=short",
+        "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py::test_peer_action_drives_obligation",
+        "--junitxml=$WORKTREE/WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/execution/faults/f3_separate_peer_action_positive.xml"
+      ],
+      "error": false,
+      "exit": 0,
+      "failure_message": null,
+      "junit": "execution/faults/f3_separate_peer_action_positive.xml",
+      "node": "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py::test_peer_action_drives_obligation",
+      "skip": false,
+      "stdout": "execution/faults/f3_separate_peer_action_positive.txt"
+    },
+    "proof_grade": "CLAIM_EDGE_FALSIFIED_BY_CONTROL_AND_POSITIVE_SURVIVED",
+    "restored_sha256": "99f98512e3bd9023b148bd4197be9189f37062bdd553972e3755546ae780e31a",
+    "source_before_sha256": "99f98512e3bd9023b148bd4197be9189f37062bdd553972e3755546ae780e31a",
+    "source_fault_sha256": "452d71d4bb69679079dab2362ecc7d81f6d2e0c1ea171ad327baf6870fe62c8a"
+  },
+  {
+    "claim": {
+      "actual_consumer": "candidate/lab_sgi1/qualification.py; actual public downstream function exercised by test_output_membrane_drives_eligibility",
+      "claim_id": "F4_OUTPUT_ELIGIBILITY",
+      "claimed_dependency": "output schema/provenance boundary -> refusal before eligibility",
+      "fault": {
+        "new": "if False else hard_world_court(candidate, anchor, world)",
+        "old": "if findings else hard_world_court(candidate, anchor, world)",
+        "path": "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/candidate/lab_sgi1/qualification.py"
+      },
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py::test_output_membrane_drives_eligibility"
+    },
+    "fault": {
+      "assertion_failure": true,
+      "command": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--tb=short",
+        "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py::test_output_membrane_drives_eligibility",
+        "--junitxml=$WORKTREE/WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/execution/faults/f4_output_eligibility_fault.xml"
+      ],
+      "error": false,
+      "exit": 1,
+      "failure_message": "assert True is False",
+      "junit": "execution/faults/f4_output_eligibility_fault.xml",
+      "node": "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py::test_output_membrane_drives_eligibility",
+      "skip": false,
+      "stdout": "execution/faults/f4_output_eligibility_fault.txt"
+    },
+    "positive": {
+      "assertion_failure": false,
+      "command": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--tb=short",
+        "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py::test_output_membrane_drives_eligibility",
+        "--junitxml=$WORKTREE/WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/execution/faults/f4_output_eligibility_positive.xml"
+      ],
+      "error": false,
+      "exit": 0,
+      "failure_message": null,
+      "junit": "execution/faults/f4_output_eligibility_positive.xml",
+      "node": "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py::test_output_membrane_drives_eligibility",
+      "skip": false,
+      "stdout": "execution/faults/f4_output_eligibility_positive.txt"
+    },
+    "proof_grade": "CLAIM_EDGE_FALSIFIED_BY_CONTROL_AND_POSITIVE_SURVIVED",
+    "restored_sha256": "98f14d9fa9dae05af521a3968932b4d0bb69c5e4468707e6f015c43b6063aad0",
+    "source_before_sha256": "98f14d9fa9dae05af521a3968932b4d0bb69c5e4468707e6f015c43b6063aad0",
+    "source_fault_sha256": "b39680a2906f914e0e29e3df7b29887da3cf80e73285f2eb40f95d61fc262363"
+  },
+  {
+    "claim": {
+      "actual_consumer": "candidate/lab_sgi1/core.py; actual public downstream function exercised by test_entropy_coordinate_drives_receipt",
+      "claim_id": "F5_ENTROPY_RECEIPT_CUSTODY",
+      "claimed_dependency": "actual complete entropy coordinate -> draw receipt hash and cold replay",
+      "fault": {
+        "new": "coordinate_hash = h_obj({k:v for k,v in full_coordinate.items() if k!='anchor_event_id_or_init_checkpoint_hash'})",
+        "old": "coordinate_hash = h_obj(full_coordinate)",
+        "path": "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/candidate/lab_sgi1/core.py"
+      },
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py::test_entropy_coordinate_drives_receipt"
+    },
+    "fault": {
+      "assertion_failure": true,
+      "command": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--tb=short",
+        "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py::test_entropy_coordinate_drives_receipt",
+        "--junitxml=$WORKTREE/WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/execution/faults/f5_entropy_receipt_custody_fault.xml"
+      ],
+      "error": false,
+      "exit": 1,
+      "failure_message": "AssertionError: assert 'sha256:1886e...f277ce6a89527' == 'sha256:9f6a2...15d4f5800fb34'\n  \n  - sha256:9f6a2dace6756fde0990a2ad9d21a27da6b2072e57b7d44999715d4f5800fb34\n  + sha256:1886ee4397ab58508e6450da2b25f0462bb5d34e2ee54ce8010f277ce6a89527",
+      "junit": "execution/faults/f5_entropy_receipt_custody_fault.xml",
+      "node": "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py::test_entropy_coordinate_drives_receipt",
+      "skip": false,
+      "stdout": "execution/faults/f5_entropy_receipt_custody_fault.txt"
+    },
+    "positive": {
+      "assertion_failure": false,
+      "command": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--tb=short",
+        "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py::test_entropy_coordinate_drives_receipt",
+        "--junitxml=$WORKTREE/WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/execution/faults/f5_entropy_receipt_custody_positive.xml"
+      ],
+      "error": false,
+      "exit": 0,
+      "failure_message": null,
+      "junit": "execution/faults/f5_entropy_receipt_custody_positive.xml",
+      "node": "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py::test_entropy_coordinate_drives_receipt",
+      "skip": false,
+      "stdout": "execution/faults/f5_entropy_receipt_custody_positive.txt"
+    },
+    "proof_grade": "CLAIM_EDGE_FALSIFIED_BY_CONTROL_AND_POSITIVE_SURVIVED",
+    "restored_sha256": "4c18ffe4a7c16cebfbca9b25c99f3c6296bcc80c706bb45e338a0ba6ccc5a1fb",
+    "source_before_sha256": "4c18ffe4a7c16cebfbca9b25c99f3c6296bcc80c706bb45e338a0ba6ccc5a1fb",
+    "source_fault_sha256": "997bbb8c25022ae2bcd72464bef48e7b00d5255dca7dc45553c8d4ef51c21d94"
+  },
+  {
+    "claim": {
+      "actual_consumer": "candidate/lab_sgi1/pipeline.py; actual public downstream function exercised by test_selected_endpoint_drives_terminal",
+      "claim_id": "F6_SELECTED_ENDPOINT_TERMINAL",
+      "claimed_dependency": "actual selected predicate -> construction -> terminal commitment",
+      "fault": {
+        "new": "ec_full=copy.deepcopy(ec); ec_full['required_state_predicates']=[dict(field='place',equals='IMPOSSIBLE_SITE')]",
+        "old": "ec_full=copy.deepcopy(ec)",
+        "path": "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/candidate/lab_sgi1/pipeline.py"
+      },
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py::test_selected_endpoint_drives_terminal"
+    },
+    "fault": {
+      "assertion_failure": true,
+      "command": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--tb=short",
+        "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py::test_selected_endpoint_drives_terminal",
+        "--junitxml=$WORKTREE/WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/execution/faults/f6_selected_endpoint_terminal_fault.xml"
+      ],
+      "error": false,
+      "exit": 1,
+      "failure_message": "AssertionError: assert 'HISTORY_SEARCH_EXHAUSTED' == 'COMMITTED'\n  \n  - COMMITTED\n  + HISTORY_SEARCH_EXHAUSTED",
+      "junit": "execution/faults/f6_selected_endpoint_terminal_fault.xml",
+      "node": "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py::test_selected_endpoint_drives_terminal",
+      "skip": false,
+      "stdout": "execution/faults/f6_selected_endpoint_terminal_fault.txt"
+    },
+    "positive": {
+      "assertion_failure": false,
+      "command": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--tb=short",
+        "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py::test_selected_endpoint_drives_terminal",
+        "--junitxml=$WORKTREE/WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/execution/faults/f6_selected_endpoint_terminal_positive.xml"
+      ],
+      "error": false,
+      "exit": 0,
+      "failure_message": null,
+      "junit": "execution/faults/f6_selected_endpoint_terminal_positive.xml",
+      "node": "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py::test_selected_endpoint_drives_terminal",
+      "skip": false,
+      "stdout": "execution/faults/f6_selected_endpoint_terminal_positive.txt"
+    },
+    "proof_grade": "CLAIM_EDGE_FALSIFIED_BY_CONTROL_AND_POSITIVE_SURVIVED",
+    "restored_sha256": "8322549ab869738398a9a713cdb2d681faddee0cbccc29e19884d1e4a60ca9e2",
+    "source_before_sha256": "8322549ab869738398a9a713cdb2d681faddee0cbccc29e19884d1e4a60ca9e2",
+    "source_fault_sha256": "66f40c80453da45ead5fd1956468d2cda52e6674ff24de3ac26164d57a0c1653"
+  },
+  {
+    "claim": {
+      "actual_consumer": "candidate/lab_sgi1/joint.py; actual public downstream function exercised by test_joint_actions_drive_relation",
+      "claim_id": "F7_TWO_ACTION_WITNESS",
+      "claimed_dependency": "second actor performed action -> separate observation -> task relation",
+      "fault": {
+        "new": "b=perform_participation(dad_events,material); b['status']='REFUSED'",
+        "old": "b=perform_participation(dad_events,material)",
+        "path": "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/candidate/lab_sgi1/joint.py"
+      },
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py::test_joint_actions_drive_relation"
+    },
+    "fault": {
+      "assertion_failure": true,
+      "command": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--tb=short",
+        "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py::test_joint_actions_drive_relation",
+        "--junitxml=$WORKTREE/WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/execution/faults/f7_two_action_witness_fault.xml"
+      ],
+      "error": false,
+      "exit": 1,
+      "failure_message": "assert False is True",
+      "junit": "execution/faults/f7_two_action_witness_fault.xml",
+      "node": "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py::test_joint_actions_drive_relation",
+      "skip": false,
+      "stdout": "execution/faults/f7_two_action_witness_fault.txt"
+    },
+    "positive": {
+      "assertion_failure": false,
+      "command": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--tb=short",
+        "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py::test_joint_actions_drive_relation",
+        "--junitxml=$WORKTREE/WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/execution/faults/f7_two_action_witness_positive.xml"
+      ],
+      "error": false,
+      "exit": 0,
+      "failure_message": null,
+      "junit": "execution/faults/f7_two_action_witness_positive.xml",
+      "node": "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py::test_joint_actions_drive_relation",
+      "skip": false,
+      "stdout": "execution/faults/f7_two_action_witness_positive.txt"
+    },
+    "proof_grade": "CLAIM_EDGE_FALSIFIED_BY_CONTROL_AND_POSITIVE_SURVIVED",
+    "restored_sha256": "ba0a7e190ae4b572e55176e5683680f2eee6d49c344f44d0c887bb92e469c2ea",
+    "source_before_sha256": "ba0a7e190ae4b572e55176e5683680f2eee6d49c344f44d0c887bb92e469c2ea",
+    "source_fault_sha256": "e371819642c1737b982eb5f5993faf57851ef11f84ed049db12b9f93bfa09ee2"
+  },
+  {
+    "claim": {
+      "actual_consumer": "candidate/lab_sgi1/continuation.py; actual public downstream function exercised by test_parent_history_drives_continuation_context",
+      "claim_id": "F7_PATERNAL_CONTINUING_PROJECT",
+      "claimed_dependency": "actual supplied paternal continuing history -> earned resources and potential context",
+      "fault": {
+        "new": "dad=continue_person([],participation=actions.get(dad_actor))",
+        "old": "dad=continue_person(dad_events or [],participation=actions.get(dad_actor))",
+        "path": "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/candidate/lab_sgi1/continuation.py"
+      },
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py::test_parent_history_drives_continuation_context"
+    },
+    "fault": {
+      "assertion_failure": true,
+      "command": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--tb=short",
+        "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py::test_parent_history_drives_continuation_context",
+        "--junitxml=$WORKTREE/WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/execution/faults/f7_paternal_continuing_project_fault.xml"
+      ],
+      "error": false,
+      "exit": 1,
+      "failure_message": "assert False is True",
+      "junit": "execution/faults/f7_paternal_continuing_project_fault.xml",
+      "node": "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py::test_parent_history_drives_continuation_context",
+      "skip": false,
+      "stdout": "execution/faults/f7_paternal_continuing_project_fault.txt"
+    },
+    "positive": {
+      "assertion_failure": false,
+      "command": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--tb=short",
+        "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py::test_parent_history_drives_continuation_context",
+        "--junitxml=$WORKTREE/WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/execution/faults/f7_paternal_continuing_project_positive.xml"
+      ],
+      "error": false,
+      "exit": 0,
+      "failure_message": null,
+      "junit": "execution/faults/f7_paternal_continuing_project_positive.xml",
+      "node": "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py::test_parent_history_drives_continuation_context",
+      "skip": false,
+      "stdout": "execution/faults/f7_paternal_continuing_project_positive.txt"
+    },
+    "proof_grade": "CLAIM_EDGE_FALSIFIED_BY_CONTROL_AND_POSITIVE_SURVIVED",
+    "restored_sha256": "7dc5da789a74a6b7a8185df4ee537e92d33de962bfd37983e07dbcd94d0f0c62",
+    "source_before_sha256": "7dc5da789a74a6b7a8185df4ee537e92d33de962bfd37983e07dbcd94d0f0c62",
+    "source_fault_sha256": "356689b63c747158f9d96d78d051ccdb134e4758cd165d43cf688b3523e107e3"
+  },
+  {
+    "claim": {
+      "actual_consumer": "candidate/lab_sgi1/continuation.py; actual public downstream function exercised by test_joint_payment_flows_to_continuing_resources",
+      "claim_id": "F7_JOINT_PAYMENT_TO_LATER_RESOURCES",
+      "claimed_dependency": "actual preceding joint payment and time cost -> later adult continuation values",
+      "fault": {
+        "new": "s=deepcopy(participation['before'])",
+        "old": "s=deepcopy(participation['after'])",
+        "path": "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/candidate/lab_sgi1/continuation.py"
+      },
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py::test_joint_payment_flows_to_continuing_resources"
+    },
+    "fault": {
+      "assertion_failure": true,
+      "command": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--tb=short",
+        "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py::test_joint_payment_flows_to_continuing_resources",
+        "--junitxml=$WORKTREE/WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/execution/faults/f7_joint_payment_to_later_resources_fault.xml"
+      ],
+      "error": false,
+      "exit": 1,
+      "failure_message": "assert 53 == (53 + 2)",
+      "junit": "execution/faults/f7_joint_payment_to_later_resources_fault.xml",
+      "node": "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py::test_joint_payment_flows_to_continuing_resources",
+      "skip": false,
+      "stdout": "execution/faults/f7_joint_payment_to_later_resources_fault.txt"
+    },
+    "positive": {
+      "assertion_failure": false,
+      "command": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--tb=short",
+        "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py::test_joint_payment_flows_to_continuing_resources",
+        "--junitxml=$WORKTREE/WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/execution/faults/f7_joint_payment_to_later_resources_positive.xml"
+      ],
+      "error": false,
+      "exit": 0,
+      "failure_message": null,
+      "junit": "execution/faults/f7_joint_payment_to_later_resources_positive.xml",
+      "node": "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py::test_joint_payment_flows_to_continuing_resources",
+      "skip": false,
+      "stdout": "execution/faults/f7_joint_payment_to_later_resources_positive.txt"
+    },
+    "proof_grade": "CLAIM_EDGE_FALSIFIED_BY_CONTROL_AND_POSITIVE_SURVIVED",
+    "restored_sha256": "7dc5da789a74a6b7a8185df4ee537e92d33de962bfd37983e07dbcd94d0f0c62",
+    "source_before_sha256": "7dc5da789a74a6b7a8185df4ee537e92d33de962bfd37983e07dbcd94d0f0c62",
+    "source_fault_sha256": "7580bc31338ccac3c96bfe8c411ae2ada3b70692e7e432ded127511ab2a98397"
+  },
+  {
+    "claim": {
+      "actual_consumer": "candidate/lab_sgi1/joint.py; actual public downstream function exercised by test_later_relationship_contact_requires_second_material_witness",
+      "claim_id": "F7_LATER_RELATIONSHIP_PERMISSION",
+      "claimed_dependency": "separate later material permission -> two continuing actions -> witnessed later contact",
+      "fault": {
+        "new": "and False)\n    actions=[]",
+        "old": "and material.get('permit') is True)\n    actions=[]",
+        "path": "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/candidate/lab_sgi1/joint.py"
+      },
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py::test_later_relationship_contact_requires_second_material_witness"
+    },
+    "fault": {
+      "assertion_failure": true,
+      "command": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--tb=short",
+        "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py::test_later_relationship_contact_requires_second_material_witness",
+        "--junitxml=$WORKTREE/WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/execution/faults/f7_later_relationship_permission_fault.xml"
+      ],
+      "error": false,
+      "exit": 1,
+      "failure_message": "assert False is True",
+      "junit": "execution/faults/f7_later_relationship_permission_fault.xml",
+      "node": "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py::test_later_relationship_contact_requires_second_material_witness",
+      "skip": false,
+      "stdout": "execution/faults/f7_later_relationship_permission_fault.txt"
+    },
+    "positive": {
+      "assertion_failure": false,
+      "command": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--tb=short",
+        "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py::test_later_relationship_contact_requires_second_material_witness",
+        "--junitxml=$WORKTREE/WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/execution/faults/f7_later_relationship_permission_positive.xml"
+      ],
+      "error": false,
+      "exit": 0,
+      "failure_message": null,
+      "junit": "execution/faults/f7_later_relationship_permission_positive.xml",
+      "node": "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py::test_later_relationship_contact_requires_second_material_witness",
+      "skip": false,
+      "stdout": "execution/faults/f7_later_relationship_permission_positive.txt"
+    },
+    "proof_grade": "CLAIM_EDGE_FALSIFIED_BY_CONTROL_AND_POSITIVE_SURVIVED",
+    "restored_sha256": "ba0a7e190ae4b572e55176e5683680f2eee6d49c344f44d0c887bb92e469c2ea",
+    "source_before_sha256": "ba0a7e190ae4b572e55176e5683680f2eee6d49c344f44d0c887bb92e469c2ea",
+    "source_fault_sha256": "4fdb7bd49d930bd8f4d13697546c65da52ac68329e774116705490f7721e4d99"
+  },
+  {
+    "claim": {
+      "actual_consumer": "pipeline -> complete DAG validation -> terminal",
+      "claim_id": "F1_COMPLETE_EVENT_CLOCK_CLOSURE",
+      "claimed_dependency": "actual material source of joint action must resolve in full strict causal clock closure",
+      "fault": {
+        "new": "closure.extend([*witness['actions'],witness])",
+        "old": "closure.extend([dict(material,causal_parent_event_ids=[]),*witness['actions'],witness])",
+        "path": "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/candidate/lab_sgi1/joint.py"
+      },
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py::test_every_joint_and_continuation_parent_resolves_strictly_earlier"
+    },
+    "fault": {
+      "assertion_failure": true,
+      "command": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--tb=short",
+        "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py::test_every_joint_and_continuation_parent_resolves_strictly_earlier",
+        "--junitxml=$WORKTREE/WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/execution/faults/f1_complete_event_clock_closure_fault.xml"
+      ],
+      "error": false,
+      "exit": 1,
+      "failure_message": "AssertionError: assert 'CAUSAL_TEMPORAL_INVERSION' == 'COMMITTED'\n  \n  - COMMITTED\n  + CAUSAL_TEMPORAL_INVERSION",
+      "junit": "execution/faults/f1_complete_event_clock_closure_fault.xml",
+      "node": "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py::test_every_joint_and_continuation_parent_resolves_strictly_earlier",
+      "skip": false,
+      "stdout": "execution/faults/f1_complete_event_clock_closure_fault.txt"
+    },
+    "positive": {
+      "assertion_failure": false,
+      "command": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--tb=short",
+        "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py::test_every_joint_and_continuation_parent_resolves_strictly_earlier",
+        "--junitxml=$WORKTREE/WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/execution/faults/f1_complete_event_clock_closure_positive.xml"
+      ],
+      "error": false,
+      "exit": 0,
+      "failure_message": null,
+      "junit": "execution/faults/f1_complete_event_clock_closure_positive.xml",
+      "node": "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py::test_every_joint_and_continuation_parent_resolves_strictly_earlier",
+      "skip": false,
+      "stdout": "execution/faults/f1_complete_event_clock_closure_positive.txt"
+    },
+    "proof_grade": "CLAIM_EDGE_FALSIFIED_BY_CONTROL_AND_POSITIVE_SURVIVED",
+    "restored_sha256": "ba0a7e190ae4b572e55176e5683680f2eee6d49c344f44d0c887bb92e469c2ea",
+    "source_before_sha256": "ba0a7e190ae4b572e55176e5683680f2eee6d49c344f44d0c887bb92e469c2ea",
+    "source_fault_sha256": "bc0c7da87bccedea227aadcf2a63c4dd459756716e24ec3fa617b1c540dac9de"
+  },
+  {
+    "claim": {
+      "actual_consumer": "joined pipeline actual stochastic decision receipt",
+      "claim_id": "F5_ACTUAL_HISTORY_ANCHOR",
+      "claimed_dependency": "last actual maternal event and caller causal run -> entropy coordinate",
+      "fault": {
+        "new": "coordinate['anchor_event_id_or_init_checkpoint_hash']='INIT:'+self._scope_seed.hex()",
+        "old": "coordinate['anchor_event_id_or_init_checkpoint_hash']=source['anchor_event_id_or_init_checkpoint_hash']",
+        "path": "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/candidate/lab_sgi1/core.py"
+      },
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py::test_actual_pipeline_entropy_anchor_uses_frozen_history_cut"
+    },
+    "fault": {
+      "assertion_failure": true,
+      "command": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--tb=short",
+        "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py::test_actual_pipeline_entropy_anchor_uses_frozen_history_cut",
+        "--junitxml=$WORKTREE/WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/execution/faults/f5_actual_history_anchor_fault.xml"
+      ],
+      "error": false,
+      "exit": 1,
+      "failure_message": "AssertionError: assert 'INIT:7879407...2eb7035b4e0b6' == 'sha256:b3e1c...dd88a02f15510'\n  \n  - sha256:b3e1cf72aef80174e8b6372cb10f5adb9534f1da0534fabc509dd88a02f15510\n  + INIT:7879407e5374278bae6fd07dd2a1a4cdc92bfc8398bc34880122eb7035b4e0b6",
+      "junit": "execution/faults/f5_actual_history_anchor_fault.xml",
+      "node": "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py::test_actual_pipeline_entropy_anchor_uses_frozen_history_cut",
+      "skip": false,
+      "stdout": "execution/faults/f5_actual_history_anchor_fault.txt"
+    },
+    "positive": {
+      "assertion_failure": false,
+      "command": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--tb=short",
+        "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py::test_actual_pipeline_entropy_anchor_uses_frozen_history_cut",
+        "--junitxml=$WORKTREE/WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/execution/faults/f5_actual_history_anchor_positive.xml"
+      ],
+      "error": false,
+      "exit": 0,
+      "failure_message": null,
+      "junit": "execution/faults/f5_actual_history_anchor_positive.xml",
+      "node": "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py::test_actual_pipeline_entropy_anchor_uses_frozen_history_cut",
+      "skip": false,
+      "stdout": "execution/faults/f5_actual_history_anchor_positive.txt"
+    },
+    "proof_grade": "CLAIM_EDGE_FALSIFIED_BY_CONTROL_AND_POSITIVE_SURVIVED",
+    "restored_sha256": "4c18ffe4a7c16cebfbca9b25c99f3c6296bcc80c706bb45e338a0ba6ccc5a1fb",
+    "source_before_sha256": "4c18ffe4a7c16cebfbca9b25c99f3c6296bcc80c706bb45e338a0ba6ccc5a1fb",
+    "source_fault_sha256": "208cd8b997a0b707b62173dacfb678dafa42d80e3e7ecf36c6e67c26a98138eb"
+  },
+  {
+    "claim": {
+      "actual_consumer": "construction prehistory replay and pipeline terminal",
+      "claim_id": "F6_FULL_SELECTED_STRUCTURE_CONSUMER",
+      "claimed_dependency": "selected structural predicate -> actual history evidence -> terminal refuses when false",
+      "fault": {
+        "new": "constraints=[]",
+        "old": "constraints=ec.get('second_parent_structure_and_position_constraints',[])",
+        "path": "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/candidate/lab_sgi1/endpoint.py"
+      },
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py::test_selected_structure_constraints_reach_actual_replay"
+    },
+    "fault": {
+      "assertion_failure": true,
+      "command": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--tb=short",
+        "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py::test_selected_structure_constraints_reach_actual_replay",
+        "--junitxml=$WORKTREE/WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/execution/faults/f6_full_selected_structure_consumer_fault.xml"
+      ],
+      "error": false,
+      "exit": 1,
+      "failure_message": "AssertionError: assert 'COMMITTED' != 'COMMITTED'",
+      "junit": "execution/faults/f6_full_selected_structure_consumer_fault.xml",
+      "node": "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py::test_selected_structure_constraints_reach_actual_replay",
+      "skip": false,
+      "stdout": "execution/faults/f6_full_selected_structure_consumer_fault.txt"
+    },
+    "positive": {
+      "assertion_failure": false,
+      "command": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--tb=short",
+        "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py::test_selected_structure_constraints_reach_actual_replay",
+        "--junitxml=$WORKTREE/WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/execution/faults/f6_full_selected_structure_consumer_positive.xml"
+      ],
+      "error": false,
+      "exit": 0,
+      "failure_message": null,
+      "junit": "execution/faults/f6_full_selected_structure_consumer_positive.xml",
+      "node": "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py::test_selected_structure_constraints_reach_actual_replay",
+      "skip": false,
+      "stdout": "execution/faults/f6_full_selected_structure_consumer_positive.txt"
+    },
+    "proof_grade": "CLAIM_EDGE_FALSIFIED_BY_CONTROL_AND_POSITIVE_SURVIVED",
+    "restored_sha256": "087dce65120c889fbbb8229f03757dadadc756d067c13d78901592599c556fe6",
+    "source_before_sha256": "087dce65120c889fbbb8229f03757dadadc756d067c13d78901592599c556fe6",
+    "source_fault_sha256": "394652d58b3ec150dfec4e058043f89a1d809c6dfae4ffcb2bea0e969fabd32e"
+  }
+]

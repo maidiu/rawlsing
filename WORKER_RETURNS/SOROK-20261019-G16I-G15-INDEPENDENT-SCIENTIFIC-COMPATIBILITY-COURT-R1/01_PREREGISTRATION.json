@@ -1,0 +1,137 @@
+{
+  "schema": "G16I_PREREGISTRATION_R1",
+  "at": "2026-10-19T17:12:28.094452+00:00",
+  "target": "fbc84ba4b5ec8befcf7954357a2ba1c576f5d7a5",
+  "status": "FROZEN_BEFORE_NEW_TEST_EXECUTION",
+  "scope": "SOURCEFREE_RESEARCH_ONLY",
+  "controls": [
+    {
+      "id": "MATERIAL_REMAINDER",
+      "node": "test_material_remainder_controls_later_performed_work",
+      "module": "continuation.py",
+      "old": "remaining=project[-1]['effect']['remaining_material_units']",
+      "new": "remaining=0",
+      "oracle": "5 available units minus 3 performed = 2 later; 3 minus 3 permits no later work",
+      "expected": "PASS; SAME NODE ASSERTION RED UNDER SOURCE FAULT; RESTORE"
+    },
+    {
+      "id": "COMPETING_ROUTE",
+      "node": "test_competing_offer_changes_actual_attendance",
+      "module": "history.py",
+      "old": "chosen=max(lawful,key=lambda e:(r['effects'][e['event_id']]['net'],e['payload']['route']))",
+      "new": "chosen=max([e for e in lawful if e['payload']['route']!='ROUTE_MOBILITY'],key=lambda e:(r['effects'][e['event_id']]['net'],e['payload']['route']))",
+      "oracle": "permitted mobility net 91 beats local9; revoke it and local9 wins",
+      "expected": "PASS; SAME NODE ASSERTION RED UNDER SOURCE FAULT; RESTORE"
+    },
+    {
+      "id": "PEER_BALANCE",
+      "node": "test_peer_quantity_reaches_actual_settlement",
+      "module": "history.py",
+      "old": "state['debt_units']=expected['obligation_units'];state['nonmother_relations'].append(cp)",
+      "new": "state['debt_units']=0;state['nonmother_relations'].append(cp)",
+      "oracle": "one actually returned tool yields one debt unit; settled action yields zero",
+      "expected": "PASS; SAME NODE ASSERTION RED UNDER SOURCE FAULT; RESTORE"
+    },
+    {
+      "id": "EXPERIENCED_VALUES",
+      "node": "test_experienced_values_reach_memory_and_formation",
+      "module": "history.py",
+      "old": "experienced_effect=get({admitted[ref]['kind']},owner=actor)",
+      "new": "experienced_effect={}",
+      "oracle": "project memory must contain performed project values, practice checks3",
+      "expected": "PASS; SAME NODE ASSERTION RED UNDER SOURCE FAULT; RESTORE"
+    },
+    {
+      "id": "TASK_COST",
+      "node": "test_variable_task_cost_reaches_continued_context",
+      "module": "joint.py",
+      "old": "if lawful:\n  after['cash']+=material['payment_per_actor'];after['free_hours']-=material['task_hours'];after['completed_units']+=material['material_units']",
+      "new": "if lawful:\n  after['cash']+=0;after['free_hours']-=material['task_hours'];after['completed_units']+=material['material_units']",
+      "oracle": "task pays7 costs2 hours; continuing state and context must consume exactly that",
+      "expected": "PASS; SAME NODE ASSERTION RED UNDER SOURCE FAULT; RESTORE"
+    },
+    {
+      "id": "LATER_TIME",
+      "node": "test_separate_later_time_controls_second_contact",
+      "module": "joint.py",
+      "old": "and material['effective_index']>max([e['effective_index'] for e in continuations]+[obj.get('witness',{}).get('effective_index',-1)])",
+      "new": "and material['effective_index']<max([e['effective_index'] for e in continuations]+[obj.get('witness',{}).get('effective_index',-1)])",
+      "oracle": "1200 permits second contact;999 precedes continuation and refuses",
+      "expected": "PASS; SAME NODE ASSERTION RED UNDER SOURCE FAULT; RESTORE"
+    },
+    {
+      "id": "OPERATIVE_DEDUP",
+      "node": "test_operative_constraints_survive_paraphrase_selection",
+      "module": "proposal.py",
+      "old": "return h_obj(semantic_candidate(c))",
+      "new": "return h_obj({k:v for k,v in semantic_candidate(c).items() if k!='endpoint_constraints'})",
+      "oracle": "different operative material-position constraints retain two classes; paraphrase preserves two",
+      "expected": "PASS; SAME NODE ASSERTION RED UNDER SOURCE FAULT; RESTORE"
+    },
+    {
+      "id": "CURRENT_ENTROPY",
+      "node": "test_current_seed_reaches_independent_entropy_reference",
+      "module": "core.py",
+      "old": "digest = hmac.new(self._stream_seed,",
+      "new": "digest = hmac.new(bytes(32),",
+      "oracle": "fresh seeds current stream and full coordinate yield independently computed HMAC64/rejection",
+      "expected": "PASS; SAME NODE ASSERTION RED UNDER SOURCE FAULT; RESTORE"
+    }
+  ],
+  "hostiles": [
+    {
+      "id": "RESOURCE_REUSE",
+      "oracle": "Repeated valid-looking project events must not consume more than finite material root"
+    },
+    {
+      "id": "TRAINING_BUDGET",
+      "oracle": "Repeated schooling must not leave negative current free_hours"
+    },
+    {
+      "id": "PEER_TOOL_REUSE",
+      "oracle": "Repeated peer actions cannot return more tools than peer owns"
+    },
+    {
+      "id": "FORGED_PARTICIPATION",
+      "oracle": "continuation must refuse fabricated participation.after not established by real action"
+    },
+    {
+      "id": "LATE_PARTICIPATION",
+      "oracle": "continuation at1000 must refuse a participation after1000"
+    },
+    {
+      "id": "MULTI_ACTOR_EVENT",
+      "oracle": "independently owned history event cannot silently add other participants"
+    },
+    {
+      "id": "FUTURE_OUTPUT",
+      "oracle": "unknown future-child field in actual joint material must not enter committed causal output"
+    },
+    {
+      "id": "ARCHIVE_M2",
+      "oracle": "read-only prior child source must stay unchanged; legitimate archived maternal continuation needs competent alternative or explicit coverage HOLD"
+    },
+    {
+      "id": "ARCHIVE_MP",
+      "oracle": "reuse exact known counterpart must have positive scientific representation or explicit coverage HOLD"
+    },
+    {
+      "id": "REPLAY_TAMPER",
+      "oracle": "tampered saved current source must diverge in cold process"
+    },
+    {
+      "id": "SELECTED_ROUTE",
+      "oracle": "all permitted route types should have positive histories under material variation; impossible selection must refuse without editing prior events"
+    },
+    {
+      "id": "FALSE_LINEAGE",
+      "oracle": "changed source record must not retain original receipt identity"
+    }
+  ],
+  "rules": [
+    "No frozen tests or candidate edits; faults only in disposable byte-exact candidate sandbox",
+    "Expected hostiles remain literal assertion RED when violated, no xfail/exception-to-pass",
+    "New controls use public existing readers; no copied author tests",
+    "No native actor/child/biology or authority issuance"
+  ]
+}

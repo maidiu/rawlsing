@@ -1,0 +1,394 @@
+{
+  "frozen_before_candidate_edits": true,
+  "baseline_181": {
+    "PASS": 164,
+    "RED": 17
+  },
+  "baseline_g14": {
+    "PASS": 40,
+    "RED": 27
+  },
+  "original_red_ids_preserved": true,
+  "reds": [
+    {
+      "name": "test_f1_route_parent_substitution_cannot_replace_work_formation",
+      "family": "F1",
+      "baseline": "RED",
+      "expected_assertions": [
+        "assert not r['stopping']['sufficient'], 'root existence cannot prove commissioned-work competence'"
+      ],
+      "classification": "TECHNICAL_DEFECT_AND_RESEARCH_HYPOTHESIS",
+      "source_consumer": "typed earlier work/formation -> route performance -> endpoint/sufficiency",
+      "expected_candidate": "REFUSE_ATTACK_AT_SAME_ASSERTION",
+      "authority": "SOURCEFREE_RESEARCH_ONLY_NOT_NATIVE"
+    },
+    {
+      "name": "test_f2_nonempty_but_unresolvable_psyche_refs_refused",
+      "family": "F2",
+      "baseline": "RED",
+      "expected_assertions": [
+        "assert not r['stopping']['sufficient']"
+      ],
+      "classification": "TECHNICAL_DEFECT",
+      "source_consumer": "resolved performed experience -> specific formation -> exact psyche -> stopping",
+      "expected_candidate": "REFUSE_ATTACK_AT_SAME_ASSERTION",
+      "authority": "SOURCEFREE_RESEARCH_ONLY_NOT_NATIVE"
+    },
+    {
+      "name": "test_f2_memory_experienced_basis_must_resolve",
+      "family": "F2",
+      "baseline": "RED",
+      "expected_assertions": [
+        "assert not r['stopping']['sufficient']"
+      ],
+      "classification": "TECHNICAL_DEFECT",
+      "source_consumer": "resolved performed experience -> specific formation -> exact psyche -> stopping",
+      "expected_candidate": "REFUSE_ATTACK_AT_SAME_ASSERTION",
+      "authority": "SOURCEFREE_RESEARCH_ONLY_NOT_NATIVE"
+    },
+    {
+      "name": "test_f2_empty_psyche_cannot_certify_existing_formation",
+      "family": "F2",
+      "baseline": "RED",
+      "expected_assertions": [
+        "assert not r['stopping']['sufficient']"
+      ],
+      "classification": "TECHNICAL_DEFECT",
+      "source_consumer": "resolved performed experience -> specific formation -> exact psyche -> stopping",
+      "expected_candidate": "REFUSE_ATTACK_AT_SAME_ASSERTION",
+      "authority": "SOURCEFREE_RESEARCH_ONLY_NOT_NATIVE"
+    },
+    {
+      "name": "test_f3_removing_actor_psyche_disables_motivated_actions",
+      "family": "F3",
+      "baseline": "RED",
+      "expected_assertions": [
+        "assert not b['heldout_independence_pass'], 'actions must depend on represented actor motivation/formation'"
+      ],
+      "classification": "TECHNICAL_DEFECT_AND_STRONGER_UNISSUED_ORACLE",
+      "source_consumer": "independent peer project and numeric action consequence -> motivated heldout action",
+      "expected_candidate": "REFUSE_ATTACK_AT_SAME_ASSERTION",
+      "authority": "SOURCEFREE_RESEARCH_ONLY_NOT_NATIVE"
+    },
+    {
+      "name": "test_f3_unrelated_false_consequence_is_not_capability_evidence",
+      "family": "F3",
+      "baseline": "RED",
+      "expected_assertions": [
+        "assert not pr['probes'][0]['pass']"
+      ],
+      "classification": "TECHNICAL_DEFECT_AND_STRONGER_UNISSUED_ORACLE",
+      "source_consumer": "independent peer project and numeric action consequence -> motivated heldout action",
+      "expected_candidate": "REFUSE_ATTACK_AT_SAME_ASSERTION",
+      "authority": "SOURCEFREE_RESEARCH_ONLY_NOT_NATIVE"
+    },
+    {
+      "name": "test_f3_missing_peer_identity_cannot_prove_actor_specific_obligation",
+      "family": "F3",
+      "baseline": "RED",
+      "expected_assertions": [
+        "assert not pr['probes'][1]['pass']"
+      ],
+      "classification": "TECHNICAL_DEFECT_AND_STRONGER_UNISSUED_ORACLE",
+      "source_consumer": "independent peer project and numeric action consequence -> motivated heldout action",
+      "expected_candidate": "REFUSE_ATTACK_AT_SAME_ASSERTION",
+      "authority": "SOURCEFREE_RESEARCH_ONLY_NOT_NATIVE"
+    },
+    {
+      "name": "test_f4_all_visible_prompt_paths_are_embargoed[route]",
+      "family": "F4",
+      "baseline": "RED",
+      "expected_assertions": [
+        "assert secret not in prompt"
+      ],
+      "classification": "TECHNICAL_DEFECT_AT_DECLARED_BOUNDARY",
+      "source_consumer": "closed field/provenance grammar -> screened input/output -> eligibility/selection",
+      "expected_candidate": "REFUSE_ATTACK_AT_SAME_ASSERTION",
+      "authority": "SOURCEFREE_RESEARCH_ONLY_NOT_NATIVE"
+    },
+    {
+      "name": "test_f4_all_visible_prompt_paths_are_embargoed[tuple]",
+      "family": "F4",
+      "baseline": "RED",
+      "expected_assertions": [
+        "assert secret not in prompt"
+      ],
+      "classification": "TECHNICAL_DEFECT_AT_DECLARED_BOUNDARY",
+      "source_consumer": "closed field/provenance grammar -> screened input/output -> eligibility/selection",
+      "expected_candidate": "REFUSE_ATTACK_AT_SAME_ASSERTION",
+      "authority": "SOURCEFREE_RESEARCH_ONLY_NOT_NATIVE"
+    },
+    {
+      "name": "test_f4_all_visible_prompt_paths_are_embargoed[spaced_literal]",
+      "family": "F4",
+      "baseline": "RED",
+      "expected_assertions": [
+        "assert secret not in prompt"
+      ],
+      "classification": "TECHNICAL_DEFECT_AT_DECLARED_BOUNDARY",
+      "source_consumer": "closed field/provenance grammar -> screened input/output -> eligibility/selection",
+      "expected_candidate": "REFUSE_ATTACK_AT_SAME_ASSERTION",
+      "authority": "SOURCEFREE_RESEARCH_ONLY_NOT_NATIVE"
+    },
+    {
+      "name": "test_f4_embargoed_output_cannot_become_eligible_candidate",
+      "family": "F4",
+      "baseline": "RED",
+      "expected_assertions": [
+        "assert not q['eligibility']['eligible'], 'a system-prompt prohibition is not output admission enforcement'"
+      ],
+      "classification": "TECHNICAL_DEFECT_AT_DECLARED_BOUNDARY",
+      "source_consumer": "closed field/provenance grammar -> screened input/output -> eligibility/selection",
+      "expected_candidate": "REFUSE_ATTACK_AT_SAME_ASSERTION",
+      "authority": "SOURCEFREE_RESEARCH_ONLY_NOT_NATIVE"
+    },
+    {
+      "name": "test_f5_unknown_roots_refuse_without_draw[1313131313131313131313131313131313131313131313131313131313131313\\n]",
+      "family": "F5",
+      "baseline": "RED",
+      "expected_assertions": [
+        "assert r['status']=='NOT_EXECUTED_AUTHORITY_HOLD' and r['n_draws']==0"
+      ],
+      "classification": "TECHNICAL_DEFECT_WITH_OWNER_ISSUANCE_LIMIT",
+      "source_consumer": "exact local research registration -> entropy coordinate -> complete decision receipt; no ADP020 grant",
+      "expected_candidate": "REFUSE_ATTACK_AT_SAME_ASSERTION",
+      "authority": "SOURCEFREE_RESEARCH_ONLY_NOT_NATIVE"
+    },
+    {
+      "name": "test_f5_lineage_digest_fields_are_digests_of_derived_seeds",
+      "family": "F5",
+      "baseline": "RED",
+      "expected_assertions": [
+        "assert r['scope_seed_sha256']==hashlib.sha256(ss).hexdigest()",
+        "assert r['stream_seed_sha256']==hashlib.sha256(st).hexdigest()"
+      ],
+      "classification": "TECHNICAL_DEFECT_WITH_OWNER_ISSUANCE_LIMIT",
+      "source_consumer": "exact local research registration -> entropy coordinate -> complete decision receipt; no ADP020 grant",
+      "expected_candidate": "REFUSE_ATTACK_AT_SAME_ASSERTION",
+      "authority": "SOURCEFREE_RESEARCH_ONLY_NOT_NATIVE"
+    },
+    {
+      "name": "test_f5_fresh_legacy_lineage_receipt_never_claims_adp020",
+      "family": "F5",
+      "baseline": "RED",
+      "expected_assertions": [
+        "assert r['adp020_entitlement']=='NOT_GRANTED'"
+      ],
+      "classification": "TECHNICAL_DEFECT_WITH_OWNER_ISSUANCE_LIMIT",
+      "source_consumer": "exact local research registration -> entropy coordinate -> complete decision receipt; no ADP020 grant",
+      "expected_candidate": "REFUSE_ATTACK_AT_SAME_ASSERTION",
+      "authority": "SOURCEFREE_RESEARCH_ONLY_NOT_NATIVE"
+    },
+    {
+      "name": "test_f5_namespace_pattern_does_not_register_arbitrary_stream",
+      "family": "F5",
+      "baseline": "RED",
+      "expected_assertions": [],
+      "classification": "TECHNICAL_DEFECT_WITH_OWNER_ISSUANCE_LIMIT",
+      "source_consumer": "exact local research registration -> entropy coordinate -> complete decision receipt; no ADP020 grant",
+      "expected_candidate": "REFUSE_ATTACK_AT_SAME_ASSERTION",
+      "authority": "SOURCEFREE_RESEARCH_ONLY_NOT_NATIVE"
+    },
+    {
+      "name": "test_f5_draw_receipt_binds_actual_full_entropy_coordinate",
+      "family": "F5",
+      "baseline": "RED",
+      "expected_assertions": [
+        "assert r['draw_coordinate_hash']==h_obj(co)"
+      ],
+      "classification": "TECHNICAL_DEFECT_WITH_OWNER_ISSUANCE_LIMIT",
+      "source_consumer": "exact local research registration -> entropy coordinate -> complete decision receipt; no ADP020 grant",
+      "expected_candidate": "REFUSE_ATTACK_AT_SAME_ASSERTION",
+      "authority": "SOURCEFREE_RESEARCH_ONLY_NOT_NATIVE"
+    },
+    {
+      "name": "test_f5_decision_receipt_contains_rule_and_replay_custody",
+      "family": "F5",
+      "baseline": "RED",
+      "expected_assertions": [
+        "assert required<=r.keys()"
+      ],
+      "classification": "TECHNICAL_DEFECT_WITH_OWNER_ISSUANCE_LIMIT",
+      "source_consumer": "exact local research registration -> entropy coordinate -> complete decision receipt; no ADP020 grant",
+      "expected_candidate": "REFUSE_ATTACK_AT_SAME_ASSERTION",
+      "authority": "SOURCEFREE_RESEARCH_ONLY_NOT_NATIVE"
+    },
+    {
+      "name": "test_f6_new_lower_id_paraphrase_preserves_selection_identity",
+      "family": "F6",
+      "baseline": "RED",
+      "expected_assertions": [
+        "assert a['candidate_set_hash']==b['candidate_set_hash']"
+      ],
+      "classification": "TECHNICAL_DEFECT",
+      "source_consumer": "semantic constraints/unique ids -> selected endpoint -> real replay",
+      "expected_candidate": "REFUSE_ATTACK_AT_SAME_ASSERTION",
+      "authority": "SOURCEFREE_RESEARCH_ONLY_NOT_NATIVE"
+    },
+    {
+      "name": "test_f6_conflicting_required_endpoint_states_do_not_dedup",
+      "family": "F6",
+      "baseline": "RED",
+      "expected_assertions": [
+        "assert d['n_classes']==2"
+      ],
+      "classification": "TECHNICAL_DEFECT",
+      "source_consumer": "semantic constraints/unique ids -> selected endpoint -> real replay",
+      "expected_candidate": "REFUSE_ATTACK_AT_SAME_ASSERTION",
+      "authority": "SOURCEFREE_RESEARCH_ONLY_NOT_NATIVE"
+    },
+    {
+      "name": "test_f6_duplicate_class_keys_refuse_instead_of_order_dependent_winner",
+      "family": "F6",
+      "baseline": "RED",
+      "expected_assertions": [
+        "assert a['status']!='COMMITTED' and b['status']!='COMMITTED'"
+      ],
+      "classification": "TECHNICAL_DEFECT",
+      "source_consumer": "semantic constraints/unique ids -> selected endpoint -> real replay",
+      "expected_candidate": "REFUSE_ATTACK_AT_SAME_ASSERTION",
+      "authority": "SOURCEFREE_RESEARCH_ONLY_NOT_NATIVE"
+    },
+    {
+      "name": "test_f6_pipeline_preserves_selected_candidate_required_endpoint_state",
+      "family": "F6",
+      "baseline": "RED",
+      "expected_assertions": [
+        "assert result['terminal']['status']!='COMMITTED'"
+      ],
+      "classification": "TECHNICAL_DEFECT",
+      "source_consumer": "semantic constraints/unique ids -> selected endpoint -> real replay",
+      "expected_candidate": "REFUSE_ATTACK_AT_SAME_ASSERTION",
+      "authority": "SOURCEFREE_RESEARCH_ONLY_NOT_NATIVE"
+    },
+    {
+      "name": "test_f7_witness_for_different_actor_cannot_admit_relation",
+      "family": "F7",
+      "baseline": "RED",
+      "expected_assertions": [
+        "assert r['status']!='COMMITTED'"
+      ],
+      "classification": "TECHNICAL_DEFECT_AND_DISALLOWED_SOLO_WORK_POSITIVE",
+      "source_consumer": "separate actor actions and witnessed joint event -> relation; continuing projects -> context; distinct exposure hold",
+      "expected_candidate": "REFUSE_ATTACK_AT_SAME_ASSERTION",
+      "authority": "SOURCEFREE_RESEARCH_ONLY_NOT_NATIVE"
+    },
+    {
+      "name": "test_f7_own_work_without_shared_maternal_encounter_cannot_form_relation",
+      "family": "F7",
+      "baseline": "RED",
+      "expected_assertions": [
+        "assert r['status']!='COMMITTED', 'work at a site is not a joint relationship-forming witness'"
+      ],
+      "classification": "TECHNICAL_DEFECT_AND_DISALLOWED_SOLO_WORK_POSITIVE",
+      "source_consumer": "separate actor actions and witnessed joint event -> relation; continuing projects -> context; distinct exposure hold",
+      "expected_candidate": "REFUSE_ATTACK_AT_SAME_ASSERTION",
+      "authority": "SOURCEFREE_RESEARCH_ONLY_NOT_NATIVE"
+    },
+    {
+      "name": "test_f7_severed_project_cannot_continue_as_fixed_repair_project",
+      "family": "F7",
+      "baseline": "RED",
+      "expected_assertions": [
+        "assert not paternal or all('repair_bench' not in json.dumps(x) for x in paternal)"
+      ],
+      "classification": "TECHNICAL_DEFECT_AND_DISALLOWED_SOLO_WORK_POSITIVE",
+      "source_consumer": "separate actor actions and witnessed joint event -> relation; continuing projects -> context; distinct exposure hold",
+      "expected_candidate": "REFUSE_ATTACK_AT_SAME_ASSERTION",
+      "authority": "SOURCEFREE_RESEARCH_ONLY_NOT_NATIVE"
+    },
+    {
+      "name": "test_f7_absent_paternal_continuation_cannot_emit_positive_paternal_exposure",
+      "family": "F7",
+      "baseline": "RED",
+      "expected_assertions": [
+        "assert not bad or all(not x.get('effective_after_admission') for x in bad)"
+      ],
+      "classification": "TECHNICAL_DEFECT_AND_DISALLOWED_SOLO_WORK_POSITIVE",
+      "source_consumer": "separate actor actions and witnessed joint event -> relation; continuing projects -> context; distinct exposure hold",
+      "expected_candidate": "REFUSE_ATTACK_AT_SAME_ASSERTION",
+      "authority": "SOURCEFREE_RESEARCH_ONLY_NOT_NATIVE"
+    },
+    {
+      "name": "test_f7_no_household_admission_cannot_justify_combined_income_exposure",
+      "family": "F7",
+      "baseline": "RED",
+      "expected_assertions": [
+        "assert not any(x['material_context']=='combined_wage_artisan_income_band' for x in out['exposures'])"
+      ],
+      "classification": "TECHNICAL_DEFECT_AND_DISALLOWED_SOLO_WORK_POSITIVE",
+      "source_consumer": "separate actor actions and witnessed joint event -> relation; continuing projects -> context; distinct exposure hold",
+      "expected_candidate": "REFUSE_ATTACK_AT_SAME_ASSERTION",
+      "authority": "SOURCEFREE_RESEARCH_ONLY_NOT_NATIVE"
+    },
+    {
+      "name": "test_f7_distinct_full_candidate_keys_cannot_alias_parent_identity",
+      "family": "F7",
+      "baseline": "RED",
+      "expected_assertions": [
+        "assert aid!=bid"
+      ],
+      "classification": "TECHNICAL_DEFECT_AND_DISALLOWED_SOLO_WORK_POSITIVE",
+      "source_consumer": "separate actor actions and witnessed joint event -> relation; continuing projects -> context; distinct exposure hold",
+      "expected_candidate": "REFUSE_ATTACK_AT_SAME_ASSERTION",
+      "authority": "SOURCEFREE_RESEARCH_ONLY_NOT_NATIVE"
+    }
+  ],
+  "prospective": [
+    {
+      "node": "test_typed_history_drives_endpoint",
+      "positive": "prior skill practice and world contract produce site attendance",
+      "fault": "replace work parent with origin; same endpoint assertion RED"
+    },
+    {
+      "node": "test_formation_drives_sufficiency",
+      "positive": "resolved psyche and memory sufficient",
+      "fault": "sever formation experience; same sufficiency assertion RED"
+    },
+    {
+      "node": "test_peer_action_drives_obligation",
+      "positive": "peer project/tool action changes borrower balance then heldout response",
+      "fault": "revoke independent peer action; same performed action assertion RED"
+    },
+    {
+      "node": "test_selected_endpoint_drives_terminal",
+      "positive": "selected actual place accepted",
+      "fault": "replace only selected required place by impossible; same terminal COMMITTED assertion RED"
+    },
+    {
+      "node": "test_joint_actions_drive_relation",
+      "positive": "separate histories and joint witness permit relation",
+      "fault": "sever second performed action; same relation assertion RED"
+    },
+    {
+      "node": "test_parent_history_drives_continuation_context",
+      "positive": "history cash/project plus fresh opportunity give numeric continuation context",
+      "fault": "remove paternal project history; same paternal output assertion RED"
+    },
+    {
+      "node": "test_entropy_coordinate_drives_receipt",
+      "positive": "receipt reconstructs entropy/replay and decision",
+      "fault": "drop anchor from hashed coordinate; same exact equality assertion RED"
+    },
+    {
+      "node": "test_output_membrane_drives_eligibility",
+      "positive": "lawful finite output accepted",
+      "fault": "bypass output screening with marked field; same refusal assertion RED"
+    }
+  ],
+  "legitimate_invariance": [
+    "input event permutation",
+    "duplicate paraphrase semantic identity",
+    "irrelevant future shadow",
+    "other scope draw",
+    "empty world/no action",
+    "no relationship with solo work",
+    "cold complete semantic receipt replay"
+  ],
+  "limitations": [
+    "No calibrated prior or posterior",
+    "No biological admission or generated child",
+    "No native ADP015/020/CAN/ACTOR issuance",
+    "Historical positive fixture expectations may be scientifically disallowed; retain literal REDs"
+  ]
+}

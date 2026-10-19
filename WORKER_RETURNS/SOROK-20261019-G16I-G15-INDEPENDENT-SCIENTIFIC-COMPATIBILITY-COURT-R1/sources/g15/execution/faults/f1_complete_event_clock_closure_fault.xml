@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="0.442" timestamp="2026-10-19T12:31:58.370225-04:00" hostname="local-runner"><testcase classname="WORKER_RETURNS.SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1.test_g15_causal" name="test_every_joint_and_continuation_parent_resolves_strictly_earlier" time="0.173"><failure message="AssertionError: assert 'CAUSAL_TEMPORAL_INVERSION' == 'COMMITTED'&#10;  &#10;  - COMMITTED&#10;  + CAUSAL_TEMPORAL_INVERSION">WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py:335: in test_every_joint_and_continuation_parent_resolves_strictly_earlier
+    assert result['terminal']['status']=='COMMITTED'
+E   AssertionError: assert 'CAUSAL_TEMPORAL_INVERSION' == 'COMMITTED'
+E     
+E     - COMMITTED
+E     + CAUSAL_TEMPORAL_INVERSION</failure></testcase></testsuite></testsuites>

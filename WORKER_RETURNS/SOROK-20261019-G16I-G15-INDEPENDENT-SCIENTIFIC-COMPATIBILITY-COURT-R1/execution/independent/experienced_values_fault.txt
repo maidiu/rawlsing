@@ -1,0 +1,18 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+______________ test_experienced_values_reach_memory_and_formation ______________
+WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/test_g16i_science.py:105: in test_experienced_values_reach_memory_and_formation
+    assert m['effect']['experienced_effect']==r['effects'][project['event_id']]
+E   AssertionError: assert {} == {'completed_u..._repair', ...}
+E     
+E     Right contains 7 more items:
+E     {'cash': 45,
+E      'completed_units': 3,
+E      'materials_used': 3,
+E      'payment': 6,
+E      'project': 'communal_irrigation_pump_repair',...
+E     
+E     ...Full output truncated (3 lines hidden), use '-vv' to show
+=========================== short test summary info ============================
+FAILED WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/test_g16i_science.py::test_experienced_values_reach_memory_and_formation
+1 failed in 0.29s

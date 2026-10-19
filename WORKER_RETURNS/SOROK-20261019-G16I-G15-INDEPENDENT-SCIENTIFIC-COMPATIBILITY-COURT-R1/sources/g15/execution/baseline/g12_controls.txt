@@ -1,0 +1,70 @@
+...FFFFFFFFFFF..........F
+=================================== FAILURES ===================================
+__________ test_independent_oracle_detects_mutation[forged_endpoint] ___________
+test_g12_controls.py:24: in test_independent_oracle_detects_mutation
+    assert x['lab']['endpoint_match']
+E   assert False
+___________ test_independent_oracle_detects_mutation[missing_parent] ___________
+test_g12_controls.py:24: in test_independent_oracle_detects_mutation
+    assert x['lab']['endpoint_match']
+E   assert False
+___ test_independent_oracle_detects_mutation[future_endpoint_as_root_parent] ___
+test_g12_controls.py:24: in test_independent_oracle_detects_mutation
+    assert x['lab']['endpoint_match']
+E   assert False
+_____ test_independent_oracle_detects_mutation[duplicate_effective_index] ______
+test_g12_controls.py:24: in test_independent_oracle_detects_mutation
+    assert x['lab']['endpoint_match']
+E   assert False
+______ test_independent_oracle_detects_mutation[route_antecedent_removed] ______
+test_g12_controls.py:24: in test_independent_oracle_detects_mutation
+    assert x['lab']['endpoint_match']
+E   assert False
+______________ test_embargo_input_counterexample_recorded[target] ______________
+test_g12_controls.py:30: in test_embargo_input_counterexample_recorded
+    assert obs['embargo'][path]['sentinel_visible']
+E   assert False
+______________ test_embargo_input_counterexample_recorded[world] _______________
+test_g12_controls.py:30: in test_embargo_input_counterexample_recorded
+    assert obs['embargo'][path]['sentinel_visible']
+E   assert False
+______________ test_embargo_input_counterexample_recorded[psyche] ______________
+test_g12_controls.py:30: in test_embargo_input_counterexample_recorded
+    assert obs['embargo'][path]['sentinel_visible']
+E   assert False
+_________ test_unchanged_lab_stopping_has_no_missing_parent_detection __________
+test_g12_controls.py:33: in test_unchanged_lab_stopping_has_no_missing_parent_detection
+    assert obs['stopping_corrupt']['sufficient']
+E   assert False
+___________ test_alien_project_and_counterpart_probe_counterexample ____________
+test_g12_controls.py:37: in test_alien_project_and_counterpart_probe_counterexample
+    assert obs['alien_probes']['heldout_independence_pass']
+E   assert False
+_______________ test_candidate_payload_change_is_unbound_in_lab ________________
+test_g12_controls.py:42: in test_candidate_payload_change_is_unbound_in_lab
+    assert a['candidate_set_hash']==b['candidate_set_hash']
+E   AssertionError: assert 'sha256:d8f4b...8dda57753dcb6' == 'sha256:d5096...868fd224f92a3'
+E     
+E     - sha256:d509644543e070c53139102aa174b3c5408ca882bedcff08887868fd224f92a3
+E     + sha256:d8f4b18a7126626f2efb2aad8b6c0a4425096e15d505ad07e428dda57753dcb6
+________________ test_original_source_bytes_and_actual_imports _________________
+test_g12_controls.py:85: in test_original_source_bytes_and_actual_imports
+    assert hashlib.sha1(b'blob '+str(len(b)).encode()+b'\0'+b).hexdigest()==row['git_blob_sha1']
+E   AssertionError: assert 'f1e9ca48cffc...2fb82c3ed51cf' == '8bc7c1a5d8d9...4fdbf5b222fe7'
+E     
+E     - 8bc7c1a5d8d96112b313326445c4fdbf5b222fe7
+E     + f1e9ca48cffc26f83a8e4c82f582fb82c3ed51cf
+=========================== short test summary info ============================
+FAILED test_g12_controls.py::test_independent_oracle_detects_mutation[forged_endpoint]
+FAILED test_g12_controls.py::test_independent_oracle_detects_mutation[missing_parent]
+FAILED test_g12_controls.py::test_independent_oracle_detects_mutation[future_endpoint_as_root_parent]
+FAILED test_g12_controls.py::test_independent_oracle_detects_mutation[duplicate_effective_index]
+FAILED test_g12_controls.py::test_independent_oracle_detects_mutation[route_antecedent_removed]
+FAILED test_g12_controls.py::test_embargo_input_counterexample_recorded[target]
+FAILED test_g12_controls.py::test_embargo_input_counterexample_recorded[world]
+FAILED test_g12_controls.py::test_embargo_input_counterexample_recorded[psyche]
+FAILED test_g12_controls.py::test_unchanged_lab_stopping_has_no_missing_parent_detection
+FAILED test_g12_controls.py::test_alien_project_and_counterpart_probe_counterexample
+FAILED test_g12_controls.py::test_candidate_payload_change_is_unbound_in_lab
+FAILED test_g12_controls.py::test_original_source_bytes_and_actual_imports - ...
+12 failed, 13 passed in 0.27s

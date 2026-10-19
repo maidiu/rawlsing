@@ -1,0 +1,270 @@
+{
+  "n_cases": 24,
+  "n_assertions": 98,
+  "n_assertions_pass": 20,
+  "cases_failed": [
+    "K11-BASE-LOCAL",
+    "K11-ROUTE-DISCORDANT",
+    "K11-ROUTE-MOBILITY",
+    "K11-ROUTE-UNCONVENTIONAL",
+    "K11-A-FUTURE-CHILD-EMBARGO",
+    "K11-A2-DESIRED-WOUND-COUNTERFACTUAL",
+    "K11-B-INDEPENDENT-HISTORY",
+    "K11-C-EXISTING-PARTNER",
+    "K11-C2-EXISTING-SHARED-EVENT",
+    "K11-D-PARITY",
+    "K11-E-INDEPENDENT-PROJECT",
+    "K11-GRAPH-CONSTRUCTION-VS-CAUSAL",
+    "K11-EMPIRICAL-CEILING",
+    "K11-WEIGHT-ORDINAL",
+    "K11-WEIGHT-SENSITIVITY",
+    "K11-RETRY-BIAS",
+    "K11-VALID-EMPTY",
+    "K11-UNKNOWN-REQUIRED",
+    "K11-RELATION-ASYMMETRY",
+    "K11-CONCEPTION-CHILDGEN-BOUNDARY",
+    "K11-MISSING-HISTORY",
+    "K11-SCHEDULER-SAME-TIME"
+  ],
+  "new_provider_calls": 0,
+  "network_attempts": [],
+  "wall_seconds": 0.940793776884675,
+  "historical_usage_in_frozen_records_is_not_new_usage": true
+}
+EXACT_FINGERPRINT_MATCHES 2
+FFFFFFFFFFFF.FFFFFFFFFF.FFFF
+=================================== FAILURES ===================================
+____ test_postrepair_case_identity_and_predicates_unchanged[K11-BASE-LOCAL] ____
+test_g13_postrepair_original.py:39: in test_postrepair_case_identity_and_predicates_unchanged
+    assert all(case["assertion_results"].values()), case["assertion_results"]
+E   AssertionError: {'mother_checkpoint_byte_identity_unchanged': False, 'proposal_set_finite': False, 'generic_query_receipts_exact': False, 'selection_policy_labeled': False, ...}
+E   assert False
+E    +  where False = all(dict_values([False, False, False, False, False, False, False, False, False, False]))
+E    +    where dict_values([False, False, False, False, False, False, False, False, False, False]) = <built-in method values of dict object at 0x104c21f00>()
+E    +      where <built-in method values of dict object at 0x104c21f00> = {'mother_checkpoint_byte_identity_unchanged': False, 'proposal_set_finite': False, 'generic_query_receipts_exact': False, 'selection_policy_labeled': False, ...}.values
+_ test_postrepair_case_identity_and_predicates_unchanged[K11-ROUTE-DISCORDANT] _
+test_g13_postrepair_original.py:39: in test_postrepair_case_identity_and_predicates_unchanged
+    assert all(case["assertion_results"].values()), case["assertion_results"]
+E   AssertionError: {'contrast_in_typed_candidates_and_eligibility': False, 'qualified_route_truth': False, 'candidate_set_hash_binding': False, 'deterministic_replay_per_route': False}
+E   assert False
+E    +  where False = all(dict_values([False, False, False, False]))
+E    +    where dict_values([False, False, False, False]) = <built-in method values of dict object at 0x104ac62c0>()
+E    +      where <built-in method values of dict object at 0x104ac62c0> = {'contrast_in_typed_candidates_and_eligibility': False, 'qualified_route_truth': False, 'candidate_set_hash_binding': False, 'deterministic_replay_per_route': False}.values
+__ test_postrepair_case_identity_and_predicates_unchanged[K11-ROUTE-MOBILITY] __
+test_g13_postrepair_original.py:39: in test_postrepair_case_identity_and_predicates_unchanged
+    assert all(case["assertion_results"].values()), case["assertion_results"]
+E   AssertionError: {'no_backdated_mother_mobility': False, 'permitted_route_expansion': False, 'source_uses_generic_not_parent_specific': True, 'invariant_unrelated_history': True}
+E   assert False
+E    +  where False = all(dict_values([False, False, True, True]))
+E    +    where dict_values([False, False, True, True]) = <built-in method values of dict object at 0x104c15200>()
+E    +      where <built-in method values of dict object at 0x104c15200> = {'no_backdated_mother_mobility': False, 'permitted_route_expansion': False, 'source_uses_generic_not_parent_specific': True, 'invariant_unrelated_history': True}.values
+_ test_postrepair_case_identity_and_predicates_unchanged[K11-ROUTE-UNCONVENTIONAL] _
+test_g13_postrepair_original.py:39: in test_postrepair_case_identity_and_predicates_unchanged
+    assert all(case["assertion_results"].values()), case["assertion_results"]
+E   AssertionError: {'no_typicality_mandate': False, 'actual_route_constraint_preserved': False, 'no_stereotype_mapping': False, 'exact_replay': False}
+E   assert False
+E    +  where False = all(dict_values([False, False, False, False]))
+E    +    where dict_values([False, False, False, False]) = <built-in method values of dict object at 0x104c6a240>()
+E    +      where <built-in method values of dict object at 0x104c6a240> = {'no_typicality_mandate': False, 'actual_route_constraint_preserved': False, 'no_stereotype_mapping': False, 'exact_replay': False}.values
+_ test_postrepair_case_identity_and_predicates_unchanged[K11-A-FUTURE-CHILD-EMBARGO] _
+test_g13_postrepair_original.py:39: in test_postrepair_case_identity_and_predicates_unchanged
+    assert all(case["assertion_results"].values()), case["assertion_results"]
+E   AssertionError: {'candidate_set_hash_equal': False, 'generic_query_request_hashes_equal': False, 'selection_decision_identity_equal': False, 'father_history_event_hashes_equal': False, ...}
+E   assert False
+E    +  where False = all(dict_values([False, False, False, False, False, False]))
+E    +    where dict_values([False, False, False, False, False, False]) = <built-in method values of dict object at 0x104c4c980>()
+E    +      where <built-in method values of dict object at 0x104c4c980> = {'candidate_set_hash_equal': False, 'generic_query_request_hashes_equal': False, 'selection_decision_identity_equal': False, 'father_history_event_hashes_equal': False, ...}.values
+_ test_postrepair_case_identity_and_predicates_unchanged[K11-A2-DESIRED-WOUND-COUNTERFACTUAL] _
+test_g13_postrepair_original.py:39: in test_postrepair_case_identity_and_predicates_unchanged
+    assert all(case["assertion_results"].values()), case["assertion_results"]
+E   AssertionError: {'no_father_abuse_generated_as_function_of_label': False, 'byte_equal_father_ledger': False, 'no_child_future_key_in_model_prompt_or_seed': False}
+E   assert False
+E    +  where False = all(dict_values([False, False, False]))
+E    +    where dict_values([False, False, False]) = <built-in method values of dict object at 0x104c4d280>()
+E    +      where <built-in method values of dict object at 0x104c4d280> = {'no_father_abuse_generated_as_function_of_label': False, 'byte_equal_father_ledger': False, 'no_child_future_key_in_model_prompt_or_seed': False}.values
+_ test_postrepair_case_identity_and_predicates_unchanged[K11-B-INDEPENDENT-HISTORY] _
+test_g13_postrepair_original.py:39: in test_postrepair_case_identity_and_predicates_unchanged
+    assert all(case["assertion_results"].values()), case["assertion_results"]
+E   AssertionError: {'at_least_two_endpoint_valid_distinct_nonendpoint_causal_histories_where_fixture_supports_alternatives': False, 'nonm...jects_distinct': False, 'identity_or_histories_not_merely_prose': False, 'endpoint_hash_constraints_equal': False, ...}
+E   assert False
+E    +  where False = all(dict_values([False, False, False, False, False]))
+E    +    where dict_values([False, False, False, False, False]) = <built-in method values of dict object at 0x104c219c0>()
+E    +      where <built-in method values of dict object at 0x104c219c0> = {'at_least_two_endpoint_valid_distinct_nonendpoint_causal_histories_where_fixture_supports_alternatives': False, 'nonm...jects_distinct': False, 'identity_or_histories_not_merely_prose': False, 'endpoint_hash_constraints_equal': False, ...}.values
+_ test_postrepair_case_identity_and_predicates_unchanged[K11-C-EXISTING-PARTNER] _
+test_g13_postrepair_original.py:39: in test_postrepair_case_identity_and_predicates_unchanged
+    assert all(case["assertion_results"].values()), case["assertion_results"]
+E   AssertionError: {'existing_actor_reused_or_exact_contradiction_HOLD': False, 'no_duplicate_actor_or_event': False, 'mother_history_unchanged': True, 'zero_unapproved_RNG': True}
+E   assert False
+E    +  where False = all(dict_values([False, False, True, True]))
+E    +    where dict_values([False, False, True, True]) = <built-in method values of dict object at 0x104c4f100>()
+E    +      where <built-in method values of dict object at 0x104c4f100> = {'existing_actor_reused_or_exact_contradiction_HOLD': False, 'no_duplicate_actor_or_event': False, 'mother_history_unchanged': True, 'zero_unapproved_RNG': True}.values
+_ test_postrepair_case_identity_and_predicates_unchanged[K11-C2-EXISTING-SHARED-EVENT] _
+test_g13_postrepair_original.py:39: in test_postrepair_case_identity_and_predicates_unchanged
+    assert all(case["assertion_results"].values()), case["assertion_results"]
+E   AssertionError: {'HOLD_before_any_new_shared_event': False, 'unchanged_existing_E_pre_hash': True, 'no_retroactive_repair': False}
+E   assert False
+E    +  where False = all(dict_values([False, True, False]))
+E    +    where dict_values([False, True, False]) = <built-in method values of dict object at 0x104c68ac0>()
+E    +      where <built-in method values of dict object at 0x104c68ac0> = {'HOLD_before_any_new_shared_event': False, 'unchanged_existing_E_pre_hash': True, 'no_retroactive_repair': False}.values
+_____ test_postrepair_case_identity_and_predicates_unchanged[K11-D-PARITY] _____
+test_g13_postrepair_original.py:39: in test_postrepair_case_identity_and_predicates_unchanged
+    assert all(case["assertion_results"].values()), case["assertion_results"]
+E   AssertionError: {'older_child_actor_id_unchanged': None, 'older_child_actor_stream_unchanged': None, 'historical_membership_unchanged': None, 'new_target_not_assumed_first_child': True, ...}
+E   assert False
+E    +  where False = all(dict_values([None, None, None, True, None]))
+E    +    where dict_values([None, None, None, True, None]) = <built-in method values of dict object at 0x104c14140>()
+E    +      where <built-in method values of dict object at 0x104c14140> = {'older_child_actor_id_unchanged': None, 'older_child_actor_stream_unchanged': None, 'historical_membership_unchanged': None, 'new_target_not_assumed_first_child': True, ...}.values
+_ test_postrepair_case_identity_and_predicates_unchanged[K11-E-INDEPENDENT-PROJECT] _
+test_g13_postrepair_original.py:39: in test_postrepair_case_identity_and_predicates_unchanged
+    assert all(case["assertion_results"].values()), case["assertion_results"]
+E   AssertionError: {'nonmother_project_has_causal_effect_record': False, 'third_party_relationship_remains_actor_specific': False, 'father_can_act_without_mother_prompt': False, 'exact_forward_replay': False, ...}
+E   assert False
+E    +  where False = all(dict_values([False, False, False, False, False]))
+E    +    where dict_values([False, False, False, False, False]) = <built-in method values of dict object at 0x104c5a400>()
+E    +      where <built-in method values of dict object at 0x104c5a400> = {'nonmother_project_has_causal_effect_record': False, 'third_party_relationship_remains_actor_specific': False, 'father_can_act_without_mother_prompt': False, 'exact_forward_replay': False, ...}.values
+_ test_postrepair_case_identity_and_predicates_unchanged[K11-GRAPH-CONSTRUCTION-VS-CAUSAL] _
+test_g13_postrepair_original.py:39: in test_postrepair_case_identity_and_predicates_unchanged
+    assert all(case["assertion_results"].values()), case["assertion_results"]
+E   AssertionError: {'construction_E_to_H_edge_allowed_and_typed_only': False, 'causal_childhood_to_endpoint_chronology': False, 'zero_causal_endpoint_to_childhood_edges': False, 'both_graphs_acyclic': False}
+E   assert False
+E    +  where False = all(dict_values([False, False, False, False]))
+E    +    where dict_values([False, False, False, False]) = <built-in method values of dict object at 0x104c23000>()
+E    +      where <built-in method values of dict object at 0x104c23000> = {'construction_E_to_H_edge_allowed_and_typed_only': False, 'causal_childhood_to_endpoint_chronology': False, 'zero_causal_endpoint_to_childhood_edges': False, 'both_graphs_acyclic': False}.values
+_ test_postrepair_case_identity_and_predicates_unchanged[K11-EMPIRICAL-CEILING] _
+test_g13_postrepair_original.py:39: in test_postrepair_case_identity_and_predicates_unchanged
+    assert all(case["assertion_results"].values()), case["assertion_results"]
+E   AssertionError: {'generic_empirical_receipt_NOT_ESTIMABLE_or_ceiling_limited': True, 'no_population_coupling_inferred': True, 'selection_no_frequency_claim': False}
+E   assert False
+E    +  where False = all(dict_values([True, True, False]))
+E    +    where dict_values([True, True, False]) = <built-in method values of dict object at 0x104c4d140>()
+E    +      where <built-in method values of dict object at 0x104c4d140> = {'generic_empirical_receipt_NOT_ESTIMABLE_or_ceiling_limited': True, 'no_population_coupling_inferred': True, 'selection_no_frequency_claim': False}.values
+__ test_postrepair_case_identity_and_predicates_unchanged[K11-WEIGHT-ORDINAL] __
+test_g13_postrepair_original.py:39: in test_postrepair_case_identity_and_predicates_unchanged
+    assert all(case["assertion_results"].values()), case["assertion_results"]
+E   AssertionError: {'SELECTION_AUTHORITY_UNBOUND': False, 'RNG_draw_count_zero': False, 'no_ordinal_to_weight_normalization': False}
+E   assert False
+E    +  where False = all(dict_values([False, False, False]))
+E    +    where dict_values([False, False, False]) = <built-in method values of dict object at 0x104c4f400>()
+E    +      where <built-in method values of dict object at 0x104c4f400> = {'SELECTION_AUTHORITY_UNBOUND': False, 'RNG_draw_count_zero': False, 'no_ordinal_to_weight_normalization': False}.values
+_ test_postrepair_case_identity_and_predicates_unchanged[K11-WEIGHT-SENSITIVITY] _
+test_g13_postrepair_original.py:39: in test_postrepair_case_identity_and_predicates_unchanged
+    assert all(case["assertion_results"].values()), case["assertion_results"]
+E   AssertionError: {'each_policy_hash_unique': True, 'outcomes_replay_exact': True, 'sensitivity_distribution_reported_without_population_claim': False, 'no_best_child_based_policy_choice': True}
+E   assert False
+E    +  where False = all(dict_values([True, True, False, True]))
+E    +    where dict_values([True, True, False, True]) = <built-in method values of dict object at 0x104c5b8c0>()
+E    +      where <built-in method values of dict object at 0x104c5b8c0> = {'each_policy_hash_unique': True, 'outcomes_replay_exact': True, 'sensitivity_distribution_reported_without_population_claim': False, 'no_best_child_based_policy_choice': True}.values
+____ test_postrepair_case_identity_and_predicates_unchanged[K11-RETRY-BIAS] ____
+test_g13_postrepair_original.py:39: in test_postrepair_case_identity_and_predicates_unchanged
+    assert all(case["assertion_results"].values()), case["assertion_results"]
+E   AssertionError: {'failed_attempt_receipt_persisted': False, 'no_silent_resample': False, 'effective_selection_bias_report_or_HOLD': False, 'no_causal_commit_for_C1': False}
+E   assert False
+E    +  where False = all(dict_values([False, False, False, False]))
+E    +    where dict_values([False, False, False, False]) = <built-in method values of dict object at 0x104c6ba40>()
+E    +      where <built-in method values of dict object at 0x104c6ba40> = {'failed_attempt_receipt_persisted': False, 'no_silent_resample': False, 'effective_selection_bias_report_or_HOLD': False, 'no_causal_commit_for_C1': False}.values
+___ test_postrepair_case_identity_and_predicates_unchanged[K11-VALID-EMPTY] ____
+test_g13_postrepair_original.py:39: in test_postrepair_case_identity_and_predicates_unchanged
+    assert all(case["assertion_results"].values()), case["assertion_results"]
+E   AssertionError: {'typed_SCENARIOS_VALID_EMPTY_or_INFEASIBLE': False, 'no_unsupported_father_created': True, 'zero_RNG_draws': True, 'zero_genealogy_events': True}
+E   assert False
+E    +  where False = all(dict_values([False, True, True, True]))
+E    +    where dict_values([False, True, True, True]) = <built-in method values of dict object at 0x104c58800>()
+E    +      where <built-in method values of dict object at 0x104c58800> = {'typed_SCENARIOS_VALID_EMPTY_or_INFEASIBLE': False, 'no_unsupported_father_created': True, 'zero_RNG_draws': True, 'zero_genealogy_events': True}.values
+_ test_postrepair_case_identity_and_predicates_unchanged[K11-UNKNOWN-REQUIRED] _
+test_g13_postrepair_original.py:39: in test_postrepair_case_identity_and_predicates_unchanged
+    assert all(case["assertion_results"].values()), case["assertion_results"]
+E   AssertionError: {'HOLD_not_INFEASIBLE': False, 'no_filler_fact_or_event': False, 'exact_missing_authority_list': False}
+E   assert False
+E    +  where False = all(dict_values([False, False, False]))
+E    +    where dict_values([False, False, False]) = <built-in method values of dict object at 0x104c693c0>()
+E    +      where <built-in method values of dict object at 0x104c693c0> = {'HOLD_not_INFEASIBLE': False, 'no_filler_fact_or_event': False, 'exact_missing_authority_list': False}.values
+_ test_postrepair_case_identity_and_predicates_unchanged[K11-RELATION-ASYMMETRY] _
+test_g13_postrepair_original.py:39: in test_postrepair_case_identity_and_predicates_unchanged
+    assert all(case["assertion_results"].values()), case["assertion_results"]
+E   AssertionError: {'one_objective_relation_event': False, 'two_distinct_perspective_states_where_admitted': False, 'no_reciprocity_inference': False, 'zero_auto_household_membership': False, ...}
+E   assert False
+E    +  where False = all(dict_values([False, False, False, False, False]))
+E    +    where dict_values([False, False, False, False, False]) = <built-in method values of dict object at 0x104c5b300>()
+E    +      where <built-in method values of dict object at 0x104c5b300> = {'one_objective_relation_event': False, 'two_distinct_perspective_states_where_admitted': False, 'no_reciprocity_inference': False, 'zero_auto_household_membership': False, ...}.values
+_ test_postrepair_case_identity_and_predicates_unchanged[K11-CONCEPTION-CHILDGEN-BOUNDARY] _
+test_g13_postrepair_original.py:39: in test_postrepair_case_identity_and_predicates_unchanged
+    assert all(case["assertion_results"].values()), case["assertion_results"]
+E   AssertionError: {'PENDING_not_ADMITTED_CONCEPTION': False, 'zero_CHILD_GENERATED_events': False, 'no_birth_alias': False, 'CONCEPTION_BIOLOGY_AUTHORITY_HOLD': False}
+E   assert False
+E    +  where False = all(dict_values([False, False, False, False]))
+E    +    where dict_values([False, False, False, False]) = <built-in method values of dict object at 0x104c4f6c0>()
+E    +      where <built-in method values of dict object at 0x104c4f6c0> = {'PENDING_not_ADMITTED_CONCEPTION': False, 'zero_CHILD_GENERATED_events': False, 'no_birth_alias': False, 'CONCEPTION_BIOLOGY_AUTHORITY_HOLD': False}.values
+_ test_postrepair_case_identity_and_predicates_unchanged[K11-MISSING-HISTORY] __
+test_g13_postrepair_original.py:39: in test_postrepair_case_identity_and_predicates_unchanged
+    assert all(case["assertion_results"].values()), case["assertion_results"]
+E   AssertionError: {'INDEPENDENT_PROJECT_PROOF_MISSING_or_PREHISTORY_OWNER_RULE_MISSING': False, 'no_child_generation_commit': False}
+E   assert False
+E    +  where False = all(dict_values([False, False]))
+E    +    where dict_values([False, False]) = <built-in method values of dict object at 0x104c4d200>()
+E    +      where <built-in method values of dict object at 0x104c4d200> = {'INDEPENDENT_PROJECT_PROOF_MISSING_or_PREHISTORY_OWNER_RULE_MISSING': False, 'no_child_generation_commit': False}.values
+_ test_postrepair_case_identity_and_predicates_unchanged[K11-SCHEDULER-SAME-TIME] _
+test_g13_postrepair_original.py:39: in test_postrepair_case_identity_and_predicates_unchanged
+    assert all(case["assertion_results"].values()), case["assertion_results"]
+E   AssertionError: {'AMBIGUOUS_SAME_TIME_CAUSAL_ORDER': False, 'no_lexicographic_priority': False, 'zero_fictitious_events': False}
+E   assert False
+E    +  where False = all(dict_values([False, False, False]))
+E    +    where dict_values([False, False, False]) = <built-in method values of dict object at 0x104c5be00>()
+E    +      where <built-in method values of dict object at 0x104c5be00> = {'AMBIGUOUS_SAME_TIME_CAUSAL_ORDER': False, 'no_lexicographic_priority': False, 'zero_fictitious_events': False}.values
+______________ test_postrepair_denominators_complete_and_offline _______________
+test_g13_postrepair_original.py:46: in test_postrepair_denominators_complete_and_offline
+    assert RESULT["n_assertions_pass"] == 98
+E   assert 20 == 98
+_____________ test_postrepair_fingerprints_match_repaired_manifest _____________
+test_g13_postrepair_original.py:65: in test_postrepair_fingerprints_match_repaired_manifest
+    assert not mismatched, mismatched
+E   AssertionError: ['K11-BASE-LOCAL', 'K11-ROUTE-DISCORDANT', 'K11-ROUTE-MOBILITY', 'K11-ROUTE-UNCONVENTIONAL', 'K11-A-FUTURE-CHILD-EMBARGO', 'K11-A2-DESIRED-WOUND-COUNTERFACTUAL', ...]
+E   assert not ['K11-BASE-LOCAL', 'K11-ROUTE-DISCORDANT', 'K11-ROUTE-MOBILITY', 'K11-ROUTE-UNCONVENTIONAL', 'K11-A-FUTURE-CHILD-EMBARGO', 'K11-A2-DESIRED-WOUND-COUNTERFACTUAL', ...]
+____________ test_postrepair_exactly_four_fingerprints_were_rebased ____________
+test_g13_postrepair_original.py:73: in test_postrepair_exactly_four_fingerprints_were_rebased
+    assert rebased == expected
+E   AssertionError: assert ['K11-A-FUTUR...D-EVENT', ...] == ['K11-A-FUTUR...E-DISCORDANT']
+E     
+E     At index 2 diff: 'K11-B-INDEPENDENT-HISTORY' != 'K11-BASE-LOCAL'
+E     Left contains 18 more items, first extra item: 'K11-C-EXISTING-PARTNER'
+E     Use -v to get more diff
+________________ test_postrepair_no_case_has_a_false_predicate _________________
+test_g13_postrepair_original.py:82: in test_postrepair_no_case_has_a_false_predicate
+    assert false_predicates == {}
+E   AssertionError: assert {'K11-BASE-LO...replay'], ...} == {}
+E     
+E     Left contains 22 more items:
+E     {'K11-A-FUTURE-CHILD-EMBARGO': ['candidate_set_hash_equal',
+E                                     'generic_query_request_hashes_equal',
+E                                     'selection_decision_identity_equal',
+E                                     'father_history_event_hashes_equal',
+E                                     'endpoint_same',...
+E     
+E     ...Full output truncated (74 lines hidden), use '-vv' to show
+=========================== short test summary info ============================
+FAILED test_g13_postrepair_original.py::test_postrepair_case_identity_and_predicates_unchanged[K11-BASE-LOCAL]
+FAILED test_g13_postrepair_original.py::test_postrepair_case_identity_and_predicates_unchanged[K11-ROUTE-DISCORDANT]
+FAILED test_g13_postrepair_original.py::test_postrepair_case_identity_and_predicates_unchanged[K11-ROUTE-MOBILITY]
+FAILED test_g13_postrepair_original.py::test_postrepair_case_identity_and_predicates_unchanged[K11-ROUTE-UNCONVENTIONAL]
+FAILED test_g13_postrepair_original.py::test_postrepair_case_identity_and_predicates_unchanged[K11-A-FUTURE-CHILD-EMBARGO]
+FAILED test_g13_postrepair_original.py::test_postrepair_case_identity_and_predicates_unchanged[K11-A2-DESIRED-WOUND-COUNTERFACTUAL]
+FAILED test_g13_postrepair_original.py::test_postrepair_case_identity_and_predicates_unchanged[K11-B-INDEPENDENT-HISTORY]
+FAILED test_g13_postrepair_original.py::test_postrepair_case_identity_and_predicates_unchanged[K11-C-EXISTING-PARTNER]
+FAILED test_g13_postrepair_original.py::test_postrepair_case_identity_and_predicates_unchanged[K11-C2-EXISTING-SHARED-EVENT]
+FAILED test_g13_postrepair_original.py::test_postrepair_case_identity_and_predicates_unchanged[K11-D-PARITY]
+FAILED test_g13_postrepair_original.py::test_postrepair_case_identity_and_predicates_unchanged[K11-E-INDEPENDENT-PROJECT]
+FAILED test_g13_postrepair_original.py::test_postrepair_case_identity_and_predicates_unchanged[K11-GRAPH-CONSTRUCTION-VS-CAUSAL]
+FAILED test_g13_postrepair_original.py::test_postrepair_case_identity_and_predicates_unchanged[K11-EMPIRICAL-CEILING]
+FAILED test_g13_postrepair_original.py::test_postrepair_case_identity_and_predicates_unchanged[K11-WEIGHT-ORDINAL]
+FAILED test_g13_postrepair_original.py::test_postrepair_case_identity_and_predicates_unchanged[K11-WEIGHT-SENSITIVITY]
+FAILED test_g13_postrepair_original.py::test_postrepair_case_identity_and_predicates_unchanged[K11-RETRY-BIAS]
+FAILED test_g13_postrepair_original.py::test_postrepair_case_identity_and_predicates_unchanged[K11-VALID-EMPTY]
+FAILED test_g13_postrepair_original.py::test_postrepair_case_identity_and_predicates_unchanged[K11-UNKNOWN-REQUIRED]
+FAILED test_g13_postrepair_original.py::test_postrepair_case_identity_and_predicates_unchanged[K11-RELATION-ASYMMETRY]
+FAILED test_g13_postrepair_original.py::test_postrepair_case_identity_and_predicates_unchanged[K11-CONCEPTION-CHILDGEN-BOUNDARY]
+FAILED test_g13_postrepair_original.py::test_postrepair_case_identity_and_predicates_unchanged[K11-MISSING-HISTORY]
+FAILED test_g13_postrepair_original.py::test_postrepair_case_identity_and_predicates_unchanged[K11-SCHEDULER-SAME-TIME]
+FAILED test_g13_postrepair_original.py::test_postrepair_denominators_complete_and_offline
+FAILED test_g13_postrepair_original.py::test_postrepair_fingerprints_match_repaired_manifest
+FAILED test_g13_postrepair_original.py::test_postrepair_exactly_four_fingerprints_were_rebased
+FAILED test_g13_postrepair_original.py::test_postrepair_no_case_has_a_false_predicate
+26 failed, 2 passed in 1.35s

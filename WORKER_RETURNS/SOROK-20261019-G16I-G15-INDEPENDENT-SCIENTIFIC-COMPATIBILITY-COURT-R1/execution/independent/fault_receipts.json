@@ -1,0 +1,884 @@
+[
+  {
+    "before_sha256": "7dc5da789a74a6b7a8185df4ee537e92d33de962bfd37983e07dbcd94d0f0c62",
+    "claim": {
+      "actual_consumer": "candidate lab_sgi1/continuation.py public downstream reader",
+      "claim_id": "MATERIAL_REMAINDER",
+      "claimed_dependency": "5 available units minus 3 performed = 2 later; 3 minus 3 permits no later work",
+      "fault": {
+        "new": "remaining=0",
+        "old": "remaining=project[-1]['effect']['remaining_material_units']",
+        "path": "WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/sandbox/candidate/lab_sgi1/continuation.py"
+      },
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/test_g16i_science.py::test_material_remainder_controls_later_performed_work"
+    },
+    "fault": {
+      "cases": [
+        {
+          "classname": "WORKER_RETURNS.SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1.test_g16i_science",
+          "failure_message": "assert None is not None",
+          "failure_type": null,
+          "name": "test_material_remainder_controls_later_performed_work",
+          "status": "RED"
+        }
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--tb=short",
+        "WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/test_g16i_science.py::test_material_remainder_controls_later_performed_work",
+        "--junitxml=$WORKTREE/WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/execution/independent/material_remainder_fault.xml"
+      ],
+      "exit": 1,
+      "junit": "execution/independent/material_remainder_fault.xml",
+      "observations": "execution/independent/material_remainder_fault_observations.json",
+      "seconds": 0.7383421109989285
+    },
+    "fault_sha256": "d3ad92ace0005fa8dd6bc8ccee08d28b40b374ff05dbc447876cf946d90e517c",
+    "positive": {
+      "cases": [
+        {
+          "classname": "WORKER_RETURNS.SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1.test_g16i_science",
+          "failure_message": null,
+          "failure_type": null,
+          "name": "test_material_remainder_controls_later_performed_work",
+          "status": "PASS"
+        }
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--tb=short",
+        "WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/test_g16i_science.py::test_material_remainder_controls_later_performed_work",
+        "--junitxml=$WORKTREE/WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/execution/independent/material_remainder_positive.xml"
+      ],
+      "exit": 0,
+      "junit": "execution/independent/material_remainder_positive.xml",
+      "observations": "execution/independent/material_remainder_positive_observations.json",
+      "seconds": 1.1214928121771663
+    },
+    "proof_grade": "CLAIM_EDGE_FALSIFIED_BY_CONTROL_AND_POSITIVE_SURVIVED",
+    "restore_sha256": "7dc5da789a74a6b7a8185df4ee537e92d33de962bfd37983e07dbcd94d0f0c62",
+    "restored": {
+      "cases": [
+        {
+          "classname": "WORKER_RETURNS.SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1.test_g16i_science",
+          "failure_message": null,
+          "failure_type": null,
+          "name": "test_material_remainder_controls_later_performed_work",
+          "status": "PASS"
+        }
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--tb=short",
+        "WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/test_g16i_science.py::test_material_remainder_controls_later_performed_work",
+        "--junitxml=$WORKTREE/WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/execution/independent/material_remainder_restored.xml"
+      ],
+      "exit": 0,
+      "junit": "execution/independent/material_remainder_restored.xml",
+      "observations": "execution/independent/material_remainder_restored_observations.json",
+      "seconds": 0.6148788889404386
+    }
+  },
+  {
+    "before_sha256": "99f98512e3bd9023b148bd4197be9189f37062bdd553972e3755546ae780e31a",
+    "claim": {
+      "actual_consumer": "candidate lab_sgi1/history.py public downstream reader",
+      "claim_id": "COMPETING_ROUTE",
+      "claimed_dependency": "permitted mobility net 91 beats local9; revoke it and local9 wins",
+      "fault": {
+        "new": "chosen=max([e for e in lawful if e['payload']['route']!='ROUTE_MOBILITY'],key=lambda e:(r['effects'][e['event_id']]['net'],e['payload']['route']))",
+        "old": "chosen=max(lawful,key=lambda e:(r['effects'][e['event_id']]['net'],e['payload']['route']))",
+        "path": "WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/sandbox/candidate/lab_sgi1/history.py"
+      },
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/test_g16i_science.py::test_competing_offer_changes_actual_attendance"
+    },
+    "fault": {
+      "cases": [
+        {
+          "classname": "WORKER_RETURNS.SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1.test_g16i_science",
+          "failure_message": "AssertionError: assert 'INST_WORKSHOP_A' == 'INST_TRANSIT_E'\n  \n  - INST_TRANSIT_E\n  + INST_WORKSHOP_A",
+          "failure_type": null,
+          "name": "test_competing_offer_changes_actual_attendance",
+          "status": "RED"
+        }
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--tb=short",
+        "WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/test_g16i_science.py::test_competing_offer_changes_actual_attendance",
+        "--junitxml=$WORKTREE/WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/execution/independent/competing_route_fault.xml"
+      ],
+      "exit": 1,
+      "junit": "execution/independent/competing_route_fault.xml",
+      "observations": "execution/independent/competing_route_fault_observations.json",
+      "seconds": 0.656310040038079
+    },
+    "fault_sha256": "42ab7b23707b65260b6ad86ed81da98d275ee80777b4a1ff2c5e4a4e4531e109",
+    "positive": {
+      "cases": [
+        {
+          "classname": "WORKER_RETURNS.SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1.test_g16i_science",
+          "failure_message": null,
+          "failure_type": null,
+          "name": "test_competing_offer_changes_actual_attendance",
+          "status": "PASS"
+        }
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--tb=short",
+        "WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/test_g16i_science.py::test_competing_offer_changes_actual_attendance",
+        "--junitxml=$WORKTREE/WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/execution/independent/competing_route_positive.xml"
+      ],
+      "exit": 0,
+      "junit": "execution/independent/competing_route_positive.xml",
+      "observations": "execution/independent/competing_route_positive_observations.json",
+      "seconds": 0.5781434630043805
+    },
+    "proof_grade": "CLAIM_EDGE_FALSIFIED_BY_CONTROL_AND_POSITIVE_SURVIVED",
+    "restore_sha256": "99f98512e3bd9023b148bd4197be9189f37062bdd553972e3755546ae780e31a",
+    "restored": {
+      "cases": [
+        {
+          "classname": "WORKER_RETURNS.SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1.test_g16i_science",
+          "failure_message": null,
+          "failure_type": null,
+          "name": "test_competing_offer_changes_actual_attendance",
+          "status": "PASS"
+        }
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--tb=short",
+        "WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/test_g16i_science.py::test_competing_offer_changes_actual_attendance",
+        "--junitxml=$WORKTREE/WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/execution/independent/competing_route_restored.xml"
+      ],
+      "exit": 0,
+      "junit": "execution/independent/competing_route_restored.xml",
+      "observations": "execution/independent/competing_route_restored_observations.json",
+      "seconds": 0.6052662539295852
+    }
+  },
+  {
+    "before_sha256": "99f98512e3bd9023b148bd4197be9189f37062bdd553972e3755546ae780e31a",
+    "claim": {
+      "actual_consumer": "candidate lab_sgi1/history.py public downstream reader",
+      "claim_id": "PEER_BALANCE",
+      "claimed_dependency": "one actually returned tool yields one debt unit; settled action yields zero",
+      "fault": {
+        "new": "state['debt_units']=0;state['nonmother_relations'].append(cp)",
+        "old": "state['debt_units']=expected['obligation_units'];state['nonmother_relations'].append(cp)",
+        "path": "WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/sandbox/candidate/lab_sgi1/history.py"
+      },
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/test_g16i_science.py::test_peer_quantity_reaches_actual_settlement"
+    },
+    "fault": {
+      "cases": [
+        {
+          "classname": "WORKER_RETURNS.SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1.test_g16i_science",
+          "failure_message": "assert 0 == 1",
+          "failure_type": null,
+          "name": "test_peer_quantity_reaches_actual_settlement",
+          "status": "RED"
+        }
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--tb=short",
+        "WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/test_g16i_science.py::test_peer_quantity_reaches_actual_settlement",
+        "--junitxml=$WORKTREE/WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/execution/independent/peer_balance_fault.xml"
+      ],
+      "exit": 1,
+      "junit": "execution/independent/peer_balance_fault.xml",
+      "observations": "execution/independent/peer_balance_fault_observations.json",
+      "seconds": 0.7168445400893688
+    },
+    "fault_sha256": "cc3620edb0660ed36c792cb637837b733f5834b1e977f40be350b89b8176afed",
+    "positive": {
+      "cases": [
+        {
+          "classname": "WORKER_RETURNS.SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1.test_g16i_science",
+          "failure_message": null,
+          "failure_type": null,
+          "name": "test_peer_quantity_reaches_actual_settlement",
+          "status": "PASS"
+        }
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--tb=short",
+        "WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/test_g16i_science.py::test_peer_quantity_reaches_actual_settlement",
+        "--junitxml=$WORKTREE/WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/execution/independent/peer_balance_positive.xml"
+      ],
+      "exit": 0,
+      "junit": "execution/independent/peer_balance_positive.xml",
+      "observations": "execution/independent/peer_balance_positive_observations.json",
+      "seconds": 0.7260195619892329
+    },
+    "proof_grade": "CLAIM_EDGE_FALSIFIED_BY_CONTROL_AND_POSITIVE_SURVIVED",
+    "restore_sha256": "99f98512e3bd9023b148bd4197be9189f37062bdd553972e3755546ae780e31a",
+    "restored": {
+      "cases": [
+        {
+          "classname": "WORKER_RETURNS.SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1.test_g16i_science",
+          "failure_message": null,
+          "failure_type": null,
+          "name": "test_peer_quantity_reaches_actual_settlement",
+          "status": "PASS"
+        }
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--tb=short",
+        "WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/test_g16i_science.py::test_peer_quantity_reaches_actual_settlement",
+        "--junitxml=$WORKTREE/WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/execution/independent/peer_balance_restored.xml"
+      ],
+      "exit": 0,
+      "junit": "execution/independent/peer_balance_restored.xml",
+      "observations": "execution/independent/peer_balance_restored_observations.json",
+      "seconds": 0.9045910590793937
+    }
+  },
+  {
+    "before_sha256": "99f98512e3bd9023b148bd4197be9189f37062bdd553972e3755546ae780e31a",
+    "claim": {
+      "actual_consumer": "candidate lab_sgi1/history.py public downstream reader",
+      "claim_id": "EXPERIENCED_VALUES",
+      "claimed_dependency": "project memory must contain performed project values, practice checks3",
+      "fault": {
+        "new": "experienced_effect={}",
+        "old": "experienced_effect=get({admitted[ref]['kind']},owner=actor)",
+        "path": "WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/sandbox/candidate/lab_sgi1/history.py"
+      },
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/test_g16i_science.py::test_experienced_values_reach_memory_and_formation"
+    },
+    "fault": {
+      "cases": [
+        {
+          "classname": "WORKER_RETURNS.SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1.test_g16i_science",
+          "failure_message": "AssertionError: assert {} == {'completed_u..._repair', ...}\n  \n  Right contains 7 more items:\n  {'cash': 45,\n   'completed_units': 3,\n   'materials_used': 3,\n   'payment': 6,\n   'project': 'communal_irrigation_pump_repair',...\n  \n  ...Full output truncated (3 lines hidden), use '-vv' to show",
+          "failure_type": null,
+          "name": "test_experienced_values_reach_memory_and_formation",
+          "status": "RED"
+        }
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--tb=short",
+        "WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/test_g16i_science.py::test_experienced_values_reach_memory_and_formation",
+        "--junitxml=$WORKTREE/WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/execution/independent/experienced_values_fault.xml"
+      ],
+      "exit": 1,
+      "junit": "execution/independent/experienced_values_fault.xml",
+      "observations": "execution/independent/experienced_values_fault_observations.json",
+      "seconds": 0.6648838319815695
+    },
+    "fault_sha256": "dd42d0ea08a1cc50a9c41b4ddb3ae8c94170a56f595b3e90df0a3168cee24ea9",
+    "positive": {
+      "cases": [
+        {
+          "classname": "WORKER_RETURNS.SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1.test_g16i_science",
+          "failure_message": null,
+          "failure_type": null,
+          "name": "test_experienced_values_reach_memory_and_formation",
+          "status": "PASS"
+        }
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--tb=short",
+        "WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/test_g16i_science.py::test_experienced_values_reach_memory_and_formation",
+        "--junitxml=$WORKTREE/WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/execution/independent/experienced_values_positive.xml"
+      ],
+      "exit": 0,
+      "junit": "execution/independent/experienced_values_positive.xml",
+      "observations": "execution/independent/experienced_values_positive_observations.json",
+      "seconds": 0.6685791951604187
+    },
+    "proof_grade": "CLAIM_EDGE_FALSIFIED_BY_CONTROL_AND_POSITIVE_SURVIVED",
+    "restore_sha256": "99f98512e3bd9023b148bd4197be9189f37062bdd553972e3755546ae780e31a",
+    "restored": {
+      "cases": [
+        {
+          "classname": "WORKER_RETURNS.SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1.test_g16i_science",
+          "failure_message": null,
+          "failure_type": null,
+          "name": "test_experienced_values_reach_memory_and_formation",
+          "status": "PASS"
+        }
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--tb=short",
+        "WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/test_g16i_science.py::test_experienced_values_reach_memory_and_formation",
+        "--junitxml=$WORKTREE/WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/execution/independent/experienced_values_restored.xml"
+      ],
+      "exit": 0,
+      "junit": "execution/independent/experienced_values_restored.xml",
+      "observations": "execution/independent/experienced_values_restored_observations.json",
+      "seconds": 0.737106234068051
+    }
+  },
+  {
+    "before_sha256": "ba0a7e190ae4b572e55176e5683680f2eee6d49c344f44d0c887bb92e469c2ea",
+    "claim": {
+      "actual_consumer": "candidate lab_sgi1/joint.py public downstream reader",
+      "claim_id": "TASK_COST",
+      "claimed_dependency": "task pays7 costs2 hours; continuing state and context must consume exactly that",
+      "fault": {
+        "new": "if lawful:\n  after['cash']+=0;after['free_hours']-=material['task_hours'];after['completed_units']+=material['material_units']",
+        "old": "if lawful:\n  after['cash']+=material['payment_per_actor'];after['free_hours']-=material['task_hours'];after['completed_units']+=material['material_units']",
+        "path": "WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/sandbox/candidate/lab_sgi1/joint.py"
+      },
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/test_g16i_science.py::test_variable_task_cost_reaches_continued_context"
+    },
+    "fault": {
+      "cases": [
+        {
+          "classname": "WORKER_RETURNS.SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1.test_g16i_science",
+          "failure_message": "assert 54 == (54 + 7)",
+          "failure_type": null,
+          "name": "test_variable_task_cost_reaches_continued_context",
+          "status": "RED"
+        }
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--tb=short",
+        "WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/test_g16i_science.py::test_variable_task_cost_reaches_continued_context",
+        "--junitxml=$WORKTREE/WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/execution/independent/task_cost_fault.xml"
+      ],
+      "exit": 1,
+      "junit": "execution/independent/task_cost_fault.xml",
+      "observations": "execution/independent/task_cost_fault_observations.json",
+      "seconds": 1.0015948680229485
+    },
+    "fault_sha256": "00d2dcb07a34d6a2f4c617082fab0a36e5d799964803db5eb359786379287247",
+    "positive": {
+      "cases": [
+        {
+          "classname": "WORKER_RETURNS.SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1.test_g16i_science",
+          "failure_message": null,
+          "failure_type": null,
+          "name": "test_variable_task_cost_reaches_continued_context",
+          "status": "PASS"
+        }
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--tb=short",
+        "WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/test_g16i_science.py::test_variable_task_cost_reaches_continued_context",
+        "--junitxml=$WORKTREE/WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/execution/independent/task_cost_positive.xml"
+      ],
+      "exit": 0,
+      "junit": "execution/independent/task_cost_positive.xml",
+      "observations": "execution/independent/task_cost_positive_observations.json",
+      "seconds": 0.9855182999745011
+    },
+    "proof_grade": "CLAIM_EDGE_FALSIFIED_BY_CONTROL_AND_POSITIVE_SURVIVED",
+    "restore_sha256": "ba0a7e190ae4b572e55176e5683680f2eee6d49c344f44d0c887bb92e469c2ea",
+    "restored": {
+      "cases": [
+        {
+          "classname": "WORKER_RETURNS.SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1.test_g16i_science",
+          "failure_message": null,
+          "failure_type": null,
+          "name": "test_variable_task_cost_reaches_continued_context",
+          "status": "PASS"
+        }
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--tb=short",
+        "WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/test_g16i_science.py::test_variable_task_cost_reaches_continued_context",
+        "--junitxml=$WORKTREE/WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/execution/independent/task_cost_restored.xml"
+      ],
+      "exit": 0,
+      "junit": "execution/independent/task_cost_restored.xml",
+      "observations": "execution/independent/task_cost_restored_observations.json",
+      "seconds": 0.8446722079534084
+    }
+  },
+  {
+    "before_sha256": "ba0a7e190ae4b572e55176e5683680f2eee6d49c344f44d0c887bb92e469c2ea",
+    "claim": {
+      "actual_consumer": "candidate lab_sgi1/joint.py public downstream reader",
+      "claim_id": "LATER_TIME",
+      "claimed_dependency": "1200 permits second contact;999 precedes continuation and refuses",
+      "fault": {
+        "new": "and material['effective_index']<max([e['effective_index'] for e in continuations]+[obj.get('witness',{}).get('effective_index',-1)])",
+        "old": "and material['effective_index']>max([e['effective_index'] for e in continuations]+[obj.get('witness',{}).get('effective_index',-1)])",
+        "path": "WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/sandbox/candidate/lab_sgi1/joint.py"
+      },
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/test_g16i_science.py::test_separate_later_time_controls_second_contact"
+    },
+    "fault": {
+      "cases": [
+        {
+          "classname": "WORKER_RETURNS.SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1.test_g16i_science",
+          "failure_message": "assert False is True",
+          "failure_type": null,
+          "name": "test_separate_later_time_controls_second_contact",
+          "status": "RED"
+        }
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--tb=short",
+        "WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/test_g16i_science.py::test_separate_later_time_controls_second_contact",
+        "--junitxml=$WORKTREE/WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/execution/independent/later_time_fault.xml"
+      ],
+      "exit": 1,
+      "junit": "execution/independent/later_time_fault.xml",
+      "observations": "execution/independent/later_time_fault_observations.json",
+      "seconds": 0.944311129162088
+    },
+    "fault_sha256": "84d53b86a8c82b433f4a42425b79d30a9eabc43d213d8d7f1936d5a93dbb38a0",
+    "positive": {
+      "cases": [
+        {
+          "classname": "WORKER_RETURNS.SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1.test_g16i_science",
+          "failure_message": null,
+          "failure_type": null,
+          "name": "test_separate_later_time_controls_second_contact",
+          "status": "PASS"
+        }
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--tb=short",
+        "WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/test_g16i_science.py::test_separate_later_time_controls_second_contact",
+        "--junitxml=$WORKTREE/WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/execution/independent/later_time_positive.xml"
+      ],
+      "exit": 0,
+      "junit": "execution/independent/later_time_positive.xml",
+      "observations": "execution/independent/later_time_positive_observations.json",
+      "seconds": 0.8767885519191623
+    },
+    "proof_grade": "CLAIM_EDGE_FALSIFIED_BY_CONTROL_AND_POSITIVE_SURVIVED",
+    "restore_sha256": "ba0a7e190ae4b572e55176e5683680f2eee6d49c344f44d0c887bb92e469c2ea",
+    "restored": {
+      "cases": [
+        {
+          "classname": "WORKER_RETURNS.SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1.test_g16i_science",
+          "failure_message": null,
+          "failure_type": null,
+          "name": "test_separate_later_time_controls_second_contact",
+          "status": "PASS"
+        }
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--tb=short",
+        "WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/test_g16i_science.py::test_separate_later_time_controls_second_contact",
+        "--junitxml=$WORKTREE/WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/execution/independent/later_time_restored.xml"
+      ],
+      "exit": 0,
+      "junit": "execution/independent/later_time_restored.xml",
+      "observations": "execution/independent/later_time_restored_observations.json",
+      "seconds": 0.8214784890878946
+    }
+  },
+  {
+    "before_sha256": "190f009f8746008d215838a2cd12a483ef606d7475e7cf43d1f9094d2ecc46a6",
+    "claim": {
+      "actual_consumer": "candidate lab_sgi1/proposal.py public downstream reader",
+      "claim_id": "OPERATIVE_DEDUP",
+      "claimed_dependency": "different operative material-position constraints retain two classes; paraphrase preserves two",
+      "fault": {
+        "new": "return h_obj({k:v for k,v in semantic_candidate(c).items() if k!='endpoint_constraints'})",
+        "old": "return h_obj(semantic_candidate(c))",
+        "path": "WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/sandbox/candidate/lab_sgi1/proposal.py"
+      },
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/test_g16i_science.py::test_operative_constraints_survive_paraphrase_selection"
+    },
+    "fault": {
+      "cases": [
+        {
+          "classname": "WORKER_RETURNS.SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1.test_g16i_science",
+          "failure_message": "assert 1 == 2",
+          "failure_type": null,
+          "name": "test_operative_constraints_survive_paraphrase_selection",
+          "status": "RED"
+        }
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--tb=short",
+        "WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/test_g16i_science.py::test_operative_constraints_survive_paraphrase_selection",
+        "--junitxml=$WORKTREE/WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/execution/independent/operative_dedup_fault.xml"
+      ],
+      "exit": 1,
+      "junit": "execution/independent/operative_dedup_fault.xml",
+      "observations": "execution/independent/operative_dedup_fault_observations.json",
+      "seconds": 0.9629702989477664
+    },
+    "fault_sha256": "5300ac3eb8045f065e30b9f4da64d71dcdcedbe928843f8a7c937959ee7f0d5f",
+    "positive": {
+      "cases": [
+        {
+          "classname": "WORKER_RETURNS.SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1.test_g16i_science",
+          "failure_message": null,
+          "failure_type": null,
+          "name": "test_operative_constraints_survive_paraphrase_selection",
+          "status": "PASS"
+        }
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--tb=short",
+        "WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/test_g16i_science.py::test_operative_constraints_survive_paraphrase_selection",
+        "--junitxml=$WORKTREE/WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/execution/independent/operative_dedup_positive.xml"
+      ],
+      "exit": 0,
+      "junit": "execution/independent/operative_dedup_positive.xml",
+      "observations": "execution/independent/operative_dedup_positive_observations.json",
+      "seconds": 0.5621839789673686
+    },
+    "proof_grade": "CLAIM_EDGE_FALSIFIED_BY_CONTROL_AND_POSITIVE_SURVIVED",
+    "restore_sha256": "190f009f8746008d215838a2cd12a483ef606d7475e7cf43d1f9094d2ecc46a6",
+    "restored": {
+      "cases": [
+        {
+          "classname": "WORKER_RETURNS.SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1.test_g16i_science",
+          "failure_message": null,
+          "failure_type": null,
+          "name": "test_operative_constraints_survive_paraphrase_selection",
+          "status": "PASS"
+        }
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--tb=short",
+        "WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/test_g16i_science.py::test_operative_constraints_survive_paraphrase_selection",
+        "--junitxml=$WORKTREE/WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/execution/independent/operative_dedup_restored.xml"
+      ],
+      "exit": 0,
+      "junit": "execution/independent/operative_dedup_restored.xml",
+      "observations": "execution/independent/operative_dedup_restored_observations.json",
+      "seconds": 1.2154197818599641
+    }
+  },
+  {
+    "before_sha256": "4c18ffe4a7c16cebfbca9b25c99f3c6296bcc80c706bb45e338a0ba6ccc5a1fb",
+    "claim": {
+      "actual_consumer": "candidate lab_sgi1/core.py public downstream reader",
+      "claim_id": "CURRENT_ENTROPY",
+      "claimed_dependency": "fresh seeds current stream and full coordinate yield independently computed HMAC64/rejection",
+      "fault": {
+        "new": "digest = hmac.new(bytes(32),",
+        "old": "digest = hmac.new(self._stream_seed,",
+        "path": "WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/sandbox/candidate/lab_sgi1/core.py"
+      },
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/test_g16i_science.py::test_current_seed_reaches_independent_entropy_reference"
+    },
+    "fault": {
+      "cases": [
+        {
+          "classname": "WORKER_RETURNS.SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1.test_g16i_science",
+          "failure_message": "assert 16230013332245922299 == 9064692562978321423",
+          "failure_type": null,
+          "name": "test_current_seed_reaches_independent_entropy_reference",
+          "status": "RED"
+        }
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--tb=short",
+        "WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/test_g16i_science.py::test_current_seed_reaches_independent_entropy_reference",
+        "--junitxml=$WORKTREE/WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/execution/independent/current_entropy_fault.xml"
+      ],
+      "exit": 1,
+      "junit": "execution/independent/current_entropy_fault.xml",
+      "observations": "execution/independent/current_entropy_fault_observations.json",
+      "seconds": 0.9431715838145465
+    },
+    "fault_sha256": "8472bc028d2127a208591dadeec6f6f1d27590e5eadbec80a3887ad172213a01",
+    "positive": {
+      "cases": [
+        {
+          "classname": "WORKER_RETURNS.SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1.test_g16i_science",
+          "failure_message": null,
+          "failure_type": null,
+          "name": "test_current_seed_reaches_independent_entropy_reference",
+          "status": "PASS"
+        }
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--tb=short",
+        "WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/test_g16i_science.py::test_current_seed_reaches_independent_entropy_reference",
+        "--junitxml=$WORKTREE/WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/execution/independent/current_entropy_positive.xml"
+      ],
+      "exit": 0,
+      "junit": "execution/independent/current_entropy_positive.xml",
+      "observations": "execution/independent/current_entropy_positive_observations.json",
+      "seconds": 0.9187836400233209
+    },
+    "proof_grade": "CLAIM_EDGE_FALSIFIED_BY_CONTROL_AND_POSITIVE_SURVIVED",
+    "restore_sha256": "4c18ffe4a7c16cebfbca9b25c99f3c6296bcc80c706bb45e338a0ba6ccc5a1fb",
+    "restored": {
+      "cases": [
+        {
+          "classname": "WORKER_RETURNS.SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1.test_g16i_science",
+          "failure_message": null,
+          "failure_type": null,
+          "name": "test_current_seed_reaches_independent_entropy_reference",
+          "status": "PASS"
+        }
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--tb=short",
+        "WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/test_g16i_science.py::test_current_seed_reaches_independent_entropy_reference",
+        "--junitxml=$WORKTREE/WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/execution/independent/current_entropy_restored.xml"
+      ],
+      "exit": 0,
+      "junit": "execution/independent/current_entropy_restored.xml",
+      "observations": "execution/independent/current_entropy_restored_observations.json",
+      "seconds": 0.7954581389203668
+    }
+  },
+  {
+    "before_sha256": "5afebf0195ebffd97fbbafd7909709f87bb927568248444271304afc45e578e0",
+    "claim": {
+      "actual_consumer": "forward_replay_to_endpoint -> construct_second_parent -> pipeline terminal",
+      "claim_id": "RETRY_EXACT_SELECTED_SOURCE",
+      "claimed_dependency": "exact selected endpoint rejects impossible history with four receipts without erasing legitimate positives",
+      "fault": {
+        "new": "match=r['valid'] and bool(predicates)",
+        "old": "match=r['valid'] and bool(predicates) and not mismatches",
+        "path": "WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/sandbox/candidate/lab_sgi1/construction.py"
+      },
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/test_g16i_science.py::test_retry_empty_and_authority_outcomes_remain_distinct"
+    },
+    "fault": {
+      "cases": [
+        {
+          "classname": "WORKER_RETURNS.SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1.test_g16i_science",
+          "failure_message": "AssertionError: assert 'COMMITTED' == 'HISTORY_SEARCH_EXHAUSTED'\n  \n  - HISTORY_SEARCH_EXHAUSTED\n  + COMMITTED",
+          "failure_type": null,
+          "name": "test_retry_empty_and_authority_outcomes_remain_distinct",
+          "status": "RED"
+        }
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--tb=short",
+        "WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/test_g16i_science.py::test_retry_empty_and_authority_outcomes_remain_distinct",
+        "--junitxml=$WORKTREE/WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/execution/independent/retry_exact_selected_source_fault.xml"
+      ],
+      "exit": 1,
+      "junit": "execution/independent/retry_exact_selected_source_fault.xml",
+      "observations": "execution/independent/retry_exact_selected_source_fault_observations.json",
+      "seconds": 1.586425749817863
+    },
+    "fault_sha256": "0687fb55537d551ce4afbbaffa977e219b308e86e756df0e015761bd84e9b4d4",
+    "positive": {
+      "cases": [
+        {
+          "classname": "WORKER_RETURNS.SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1.test_g16i_science",
+          "failure_message": null,
+          "failure_type": null,
+          "name": "test_retry_empty_and_authority_outcomes_remain_distinct",
+          "status": "PASS"
+        }
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--tb=short",
+        "WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/test_g16i_science.py::test_retry_empty_and_authority_outcomes_remain_distinct",
+        "--junitxml=$WORKTREE/WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/execution/independent/retry_exact_selected_source_positive.xml"
+      ],
+      "exit": 0,
+      "junit": "execution/independent/retry_exact_selected_source_positive.xml",
+      "observations": "execution/independent/retry_exact_selected_source_positive_observations.json",
+      "seconds": 1.902025309856981
+    },
+    "proof_grade": "CLAIM_EDGE_FALSIFIED_BY_CONTROL_AND_POSITIVE_SURVIVED",
+    "restore_sha256": "5afebf0195ebffd97fbbafd7909709f87bb927568248444271304afc45e578e0",
+    "restored": {
+      "cases": [
+        {
+          "classname": "WORKER_RETURNS.SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1.test_g16i_science",
+          "failure_message": null,
+          "failure_type": null,
+          "name": "test_retry_empty_and_authority_outcomes_remain_distinct",
+          "status": "PASS"
+        }
+      ],
+      "command": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--tb=short",
+        "WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/test_g16i_science.py::test_retry_empty_and_authority_outcomes_remain_distinct",
+        "--junitxml=$WORKTREE/WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/execution/independent/retry_exact_selected_source_restored.xml"
+      ],
+      "exit": 0,
+      "junit": "execution/independent/retry_exact_selected_source_restored.xml",
+      "observations": "execution/independent/retry_exact_selected_source_restored_observations.json",
+      "seconds": 1.6593317920342088
+    }
+  }
+]

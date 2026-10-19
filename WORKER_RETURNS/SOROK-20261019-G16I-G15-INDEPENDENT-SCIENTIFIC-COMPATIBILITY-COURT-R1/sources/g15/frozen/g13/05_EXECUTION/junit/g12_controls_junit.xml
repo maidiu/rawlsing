@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="12" skipped="0" tests="25" time="0.347" timestamp="2026-10-16T21:27:56.578103-04:00" hostname="Matthews-MBP.lan"><testcase classname="test_g12_controls" name="test_independent_conflicting_endpoint_and_mother_preservation[A]" time="0.097" /><testcase classname="test_g12_controls" name="test_independent_conflicting_endpoint_and_mother_preservation[B]" time="0.000" /><testcase classname="test_g12_controls" name="test_older_child_preserved" time="0.000" /><testcase classname="test_g12_controls" name="test_independent_oracle_detects_mutation[forged_endpoint]" time="0.000"><failure message="assert False">obs = {'scenarios': {'A': {'mother_before': 'sha256:b22e7c5569efa58a1d9414ab9412c4991981c167510ce551c6b199e059e0bd99', 'moth..._evaluable_without_mom_prompt': False, ...}, 'sufficient': False, 'status': 'PREHISTORY_OWNER_RULE_MISSING', ...}, ...}
+name = 'forged_endpoint'
+
+    @pytest.mark.parametrize('name',['forged_endpoint','missing_parent','future_endpoint_as_root_parent','duplicate_effective_index','route_antecedent_removed'])
+    def test_independent_oracle_detects_mutation(obs,name):
+        x=obs['attacks'][name]
+&gt;       assert x['lab']['endpoint_match']
+E       assert False
+
+test_g12_controls.py:24: AssertionError</failure></testcase><testcase classname="test_g12_controls" name="test_independent_oracle_detects_mutation[missing_parent]" time="0.000"><failure message="assert False">obs = {'scenarios': {'A': {'mother_before': 'sha256:b22e7c5569efa58a1d9414ab9412c4991981c167510ce551c6b199e059e0bd99', 'moth..._evaluable_without_mom_prompt': False, ...}, 'sufficient': False, 'status': 'PREHISTORY_OWNER_RULE_MISSING', ...}, ...}
+name = 'missing_parent'
+
+    @pytest.mark.parametrize('name',['forged_endpoint','missing_parent','future_endpoint_as_root_parent','duplicate_effective_index','route_antecedent_removed'])
+    def test_independent_oracle_detects_mutation(obs,name):
+        x=obs['attacks'][name]
+&gt;       assert x['lab']['endpoint_match']
+E       assert False
+
+test_g12_controls.py:24: AssertionError</failure></testcase><testcase classname="test_g12_controls" name="test_independent_oracle_detects_mutation[future_endpoint_as_root_parent]" time="0.000"><failure message="assert False">obs = {'scenarios': {'A': {'mother_before': 'sha256:b22e7c5569efa58a1d9414ab9412c4991981c167510ce551c6b199e059e0bd99', 'moth..._evaluable_without_mom_prompt': False, ...}, 'sufficient': False, 'status': 'PREHISTORY_OWNER_RULE_MISSING', ...}, ...}
+name = 'future_endpoint_as_root_parent'
+
+    @pytest.mark.parametrize('name',['forged_endpoint','missing_parent','future_endpoint_as_root_parent','duplicate_effective_index','route_antecedent_removed'])
+    def test_independent_oracle_detects_mutation(obs,name):
+        x=obs['attacks'][name]
+&gt;       assert x['lab']['endpoint_match']
+E       assert False
+
+test_g12_controls.py:24: AssertionError</failure></testcase><testcase classname="test_g12_controls" name="test_independent_oracle_detects_mutation[duplicate_effective_index]" time="0.000"><failure message="assert False">obs = {'scenarios': {'A': {'mother_before': 'sha256:b22e7c5569efa58a1d9414ab9412c4991981c167510ce551c6b199e059e0bd99', 'moth..._evaluable_without_mom_prompt': False, ...}, 'sufficient': False, 'status': 'PREHISTORY_OWNER_RULE_MISSING', ...}, ...}
+name = 'duplicate_effective_index'
+
+    @pytest.mark.parametrize('name',['forged_endpoint','missing_parent','future_endpoint_as_root_parent','duplicate_effective_index','route_antecedent_removed'])
+    def test_independent_oracle_detects_mutation(obs,name):
+        x=obs['attacks'][name]
+&gt;       assert x['lab']['endpoint_match']
+E       assert False
+
+test_g12_controls.py:24: AssertionError</failure></testcase><testcase classname="test_g12_controls" name="test_independent_oracle_detects_mutation[route_antecedent_removed]" time="0.001"><failure message="assert False">obs = {'scenarios': {'A': {'mother_before': 'sha256:b22e7c5569efa58a1d9414ab9412c4991981c167510ce551c6b199e059e0bd99', 'moth..._evaluable_without_mom_prompt': False, ...}, 'sufficient': False, 'status': 'PREHISTORY_OWNER_RULE_MISSING', ...}, ...}
+name = 'route_antecedent_removed'
+
+    @pytest.mark.parametrize('name',['forged_endpoint','missing_parent','future_endpoint_as_root_parent','duplicate_effective_index','route_antecedent_removed'])
+    def test_independent_oracle_detects_mutation(obs,name):
+        x=obs['attacks'][name]
+&gt;       assert x['lab']['endpoint_match']
+E       assert False
+
+test_g12_controls.py:24: AssertionError</failure></testcase><testcase classname="test_g12_controls" name="test_embargo_input_counterexample_recorded[target]" time="0.000"><failure message="assert False">obs = {'scenarios': {'A': {'mother_before': 'sha256:b22e7c5569efa58a1d9414ab9412c4991981c167510ce551c6b199e059e0bd99', 'moth..._evaluable_without_mom_prompt': False, ...}, 'sufficient': False, 'status': 'PREHISTORY_OWNER_RULE_MISSING', ...}, ...}
+path = 'target'
+
+    @pytest.mark.parametrize('path',['target','world','psyche'])
+    def test_embargo_input_counterexample_recorded(obs,path):
+&gt;       assert obs['embargo'][path]['sentinel_visible']
+E       assert False
+
+test_g12_controls.py:30: AssertionError</failure></testcase><testcase classname="test_g12_controls" name="test_embargo_input_counterexample_recorded[world]" time="0.000"><failure message="assert False">obs = {'scenarios': {'A': {'mother_before': 'sha256:b22e7c5569efa58a1d9414ab9412c4991981c167510ce551c6b199e059e0bd99', 'moth..._evaluable_without_mom_prompt': False, ...}, 'sufficient': False, 'status': 'PREHISTORY_OWNER_RULE_MISSING', ...}, ...}
+path = 'world'
+
+    @pytest.mark.parametrize('path',['target','world','psyche'])
+    def test_embargo_input_counterexample_recorded(obs,path):
+&gt;       assert obs['embargo'][path]['sentinel_visible']
+E       assert False
+
+test_g12_controls.py:30: AssertionError</failure></testcase><testcase classname="test_g12_controls" name="test_embargo_input_counterexample_recorded[psyche]" time="0.000"><failure message="assert False">obs = {'scenarios': {'A': {'mother_before': 'sha256:b22e7c5569efa58a1d9414ab9412c4991981c167510ce551c6b199e059e0bd99', 'moth..._evaluable_without_mom_prompt': False, ...}, 'sufficient': False, 'status': 'PREHISTORY_OWNER_RULE_MISSING', ...}, ...}
+path = 'psyche'
+
+    @pytest.mark.parametrize('path',['target','world','psyche'])
+    def test_embargo_input_counterexample_recorded(obs,path):
+&gt;       assert obs['embargo'][path]['sentinel_visible']
+E       assert False
+
+test_g12_controls.py:30: AssertionError</failure></testcase><testcase classname="test_g12_controls" name="test_unchanged_lab_stopping_has_no_missing_parent_detection" time="0.000"><failure message="assert False">obs = {'scenarios': {'A': {'mother_before': 'sha256:b22e7c5569efa58a1d9414ab9412c4991981c167510ce551c6b199e059e0bd99', 'moth..._evaluable_without_mom_prompt': False, ...}, 'sufficient': False, 'status': 'PREHISTORY_OWNER_RULE_MISSING', ...}, ...}
+
+    def test_unchanged_lab_stopping_has_no_missing_parent_detection(obs):
+&gt;       assert obs['stopping_corrupt']['sufficient']
+E       assert False
+
+test_g12_controls.py:33: AssertionError</failure></testcase><testcase classname="test_g12_controls" name="test_alien_project_and_counterpart_probe_counterexample" time="0.000"><failure message="assert False">obs = {'scenarios': {'A': {'mother_before': 'sha256:b22e7c5569efa58a1d9414ab9412c4991981c167510ce551c6b199e059e0bd99', 'moth..._evaluable_without_mom_prompt': False, ...}, 'sufficient': False, 'status': 'PREHISTORY_OWNER_RULE_MISSING', ...}, ...}
+
+    def test_alien_project_and_counterpart_probe_counterexample(obs):
+&gt;       assert obs['alien_probes']['heldout_independence_pass']
+E       assert False
+
+test_g12_controls.py:37: AssertionError</failure></testcase><testcase classname="test_g12_controls" name="test_candidate_payload_change_is_unbound_in_lab" time="0.001"><failure message="AssertionError: assert 'sha256:d8f4b...8dda57753dcb6' == 'sha256:d5096...868fd224f92a3'&#10;  &#10;  - sha256:d509644543e070c53139102aa174b3c5408ca882bedcff08887868fd224f92a3&#10;  + sha256:d8f4b18a7126626f2efb2aad8b6c0a4425096e15d505ad07e428dda57753dcb6">obs = {'scenarios': {'A': {'mother_before': 'sha256:b22e7c5569efa58a1d9414ab9412c4991981c167510ce551c6b199e059e0bd99', 'moth..._evaluable_without_mom_prompt': False, ...}, 'sufficient': False, 'status': 'PREHISTORY_OWNER_RULE_MISSING', ...}, ...}
+
+    def test_candidate_payload_change_is_unbound_in_lab(obs):
+        a=obs['candidate_payload']['before'];b=obs['candidate_payload']['after']
+&gt;       assert a['candidate_set_hash']==b['candidate_set_hash']
+E       AssertionError: assert 'sha256:d8f4b...8dda57753dcb6' == 'sha256:d5096...868fd224f92a3'
+E         
+E         - sha256:d509644543e070c53139102aa174b3c5408ca882bedcff08887868fd224f92a3
+E         + sha256:d8f4b18a7126626f2efb2aad8b6c0a4425096e15d505ad07e428dda57753dcb6
+
+test_g12_controls.py:42: AssertionError</failure></testcase><testcase classname="test_g12_controls" name="test_exact_prospective_retry_bias" time="0.000" /><testcase classname="test_g12_controls" name="test_zero_draw_laboratory_controls" time="0.000" /><testcase classname="test_g12_controls" name="test_actual_native_candidate_positive_and_idempotent_replay" time="0.000" /><testcase classname="test_g12_controls" name="test_actual_native_project_refusal_and_zero_mutation" time="0.000" /><testcase classname="test_g12_controls" name="test_actual_native_actor_and_future_limits" time="0.000" /><testcase classname="test_g12_controls" name="test_actual_production_denial[ACTOR_INITIALIZATION]" time="0.000" /><testcase classname="test_g12_controls" name="test_actual_production_denial[GENEALOGY_HISTORY_TRACE]" time="0.000" /><testcase classname="test_g12_controls" name="test_actual_production_denial[CONCEPTION_OCCURRED]" time="0.000" /><testcase classname="test_g12_controls" name="test_actual_production_denial[BIRTH_OCCURRED]" time="0.000" /><testcase classname="test_g12_controls" name="test_actual_production_denial[CHILD_GENERATED]" time="0.000" /><testcase classname="test_g12_controls" name="test_original_source_bytes_and_actual_imports" time="0.004"><failure message="AssertionError: assert 'f1e9ca48cffc...2fb82c3ed51cf' == '8bc7c1a5d8d9...4fdbf5b222fe7'&#10;  &#10;  - 8bc7c1a5d8d96112b313326445c4fdbf5b222fe7&#10;  + f1e9ca48cffc26f83a8e4c82f582fb82c3ed51cf">obs = {'scenarios': {'A': {'mother_before': 'sha256:b22e7c5569efa58a1d9414ab9412c4991981c167510ce551c6b199e059e0bd99', 'moth..._evaluable_without_mom_prompt': False, ...}, 'sufficient': False, 'status': 'PREHISTORY_OWNER_RULE_MISSING', ...}, ...}
+
+    def test_original_source_bytes_and_actual_imports(obs):
+        import hashlib
+        rows=json.loads((ROOT/'source_manifest.json').read_text())+json.loads((ROOT/'native_source_manifest.json').read_text())
+        for row in rows:
+            b=(ROOT/row['staged_path']).read_bytes()
+&gt;           assert hashlib.sha1(b'blob '+str(len(b)).encode()+b'\0'+b).hexdigest()==row['git_blob_sha1']
+E           AssertionError: assert 'f1e9ca48cffc...2fb82c3ed51cf' == '8bc7c1a5d8d9...4fdbf5b222fe7'
+E             
+E             - 8bc7c1a5d8d96112b313326445c4fdbf5b222fe7
+E             + f1e9ca48cffc26f83a8e4c82f582fb82c3ed51cf
+
+test_g12_controls.py:85: AssertionError</failure></testcase></testsuite></testsuites>

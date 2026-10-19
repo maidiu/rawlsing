@@ -1,0 +1,657 @@
+{
+  "authority": {
+    "authority_id": "ADP-017",
+    "must_id": "MUST-017",
+    "canonical_name": "V3_ACTOR_KNOWLEDGE_ACCESSIBILITY_RULE",
+    "version": "1.0.0",
+    "owner": "V3 Actor Developmental Causality Engine",
+    "mode": "POST_ARCHITECTURE_AUTHORITY_CREATION_ONLY",
+    "whole_machine_architecture": "CLOSED",
+    "w0_authority_foundation": "CLOSED",
+    "production_implementation_authorized": false,
+    "verdict": "PASS",
+    "direct_dependency": {
+      "authority_id": "ADP-016",
+      "canonical_name": "V3_CAUSAL_MEMORY_FORMATION_FORGETTING_RECALL_RULE",
+      "version": "1.0.0",
+      "status": "ACCEPTED"
+    },
+    "consumer_release_sufficiency": "SUFFICIENT",
+    "sufficiency_scope": "Fully supplies MUST-017 generic semantic authority only; every other MUST/CAN/EXT dependency remains independently binding.",
+    "final_token": "ADP_017_V3_ACTOR_ACCESS_AUTHORITY = PASS"
+  },
+  "source_verification": {
+    "historical_archive": {
+      "logical_name": "Rawlsing_code_bundle_staging.zip",
+      "expected_sha256": "953c9149bd03877206e3cb440d1f4db35dea6473af30b97fd23b7e76c6fc0086",
+      "computed_sha256": "953c9149bd03877206e3cb440d1f4db35dea6473af30b97fd23b7e76c6fc0086",
+      "match": "EXACT_MATCH",
+      "entry_count": 13138,
+      "authority_limit": "Recovered V3/V2/server material is continuity/authority-recovery/negative-boundary evidence only; historical archive V5/DDM has zero authority over current V550+."
+    },
+    "focused_historical_tests": [
+      {
+        "scope": [
+          "v3/tests/test_v5_pressure_flow.py",
+          "v3/tests/test_v5_pressureflow_golden_run.py",
+          "v3/tests/test_persona_sheet_integrity.py"
+        ],
+        "result": "25 passed"
+      },
+      {
+        "scope": [
+          "v3/tests/test_v5_v2_chat_prompt_no_raw_v5_leaks.py",
+          "v3/tests/test_v5_voice_packet_surface_allowlist.py",
+          "v3/tests/test_v5_render_surface_psyche.py",
+          "v3/tests/test_v5_persona_sheet_surface_psyche.py",
+          "v3/tests/test_persona_sheet_integrity.py"
+        ],
+        "result": "8 passed"
+      }
+    ],
+    "current_repo_v3_v2_source_status": "NO_TOP_LEVEL_CURRENT_V3_OR_V2_IMPLEMENTATION_TREE_PRESENT_AT_EXACT_BASE; current integration/architecture/authority artifacts govern."
+  },
+  "binding_evidence": [
+    "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/state/CURRENT_STATE.md",
+    "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/RAWLSING_GOVERNING_SPIRIT.md",
+    "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/integration/WHOLE_MACHINE_ARCHITECTURE_CLOSURE_RULING.md",
+    "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/integration/IMPLEMENTATION_RELEASE_SYNTHESIS_RULING.md",
+    "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/integration/W0_AUTHORITY_FOUNDATION_CLOSURE_RULING.md",
+    "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/integration/V3_COMPLETION_IMPLEMENTATION_RULING.md",
+    "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/integration/V2_COMPLETION_IMPLEMENTATION_RULING.md",
+    "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/integration/SEAM_INTEGRITY_CLOSURE_RULING.md",
+    "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/closure/TD_R07_WHOLE_MACHINE_SYNTHETIC_LIFE/RESULT.md",
+    "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/release/RA_R00_RULE_AUTHORITY_IMPLEMENTATION_RELEASE/RESULT.md",
+    "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/release/W0_AUTHORITY_FOUNDATION/ADP_016_V3_CAUSAL_MEMORY/AUTHORITY.md",
+    "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/release/W0_AUTHORITY_FOUNDATION/ADP_016_V3_CAUSAL_MEMORY/AUTHORITY.json",
+    "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/release/W1_CRITICAL_AUTHORITY_EXPANSION/LAUNCH_REGISTER.md"
+  ],
+  "recovered_evidence": [
+    {
+      "path": "v3/core/state.py",
+      "use": "Positive continuity evidence for explicit runtime/analyst pressure-flow state separation from persona voice."
+    },
+    {
+      "path": "v3/psyche/flow.py",
+      "use": "Positive continuity evidence for distinct surface and analyst products; analyst causal account is not persona consciousness."
+    },
+    {
+      "path": "v3/io/persona_sheet.py",
+      "use": "Surface integrity continuity only; rendered/backstory prose cannot create actor epistemic authority."
+    },
+    {
+      "path": "v3/tools/distill_memory.py",
+      "use": "Negative evidence: provenance-bearing LLM prose specificity does not create causal memory, knowledge, belief or claim permission."
+    },
+    {
+      "path": "v3/V3_UNDERLIES_V2_ARTICULATION.md",
+      "use": "Continuity evidence for V3 causal truth under V2 articulation, not objective-state to belief promotion."
+    },
+    {
+      "path": "v2/PERSONA_CONVERSATION_ENGINE_SPEC.md",
+      "use": "Consumer-boundary evidence for renderer-not-decider, standpoint, ignorance and disclosure needs."
+    },
+    {
+      "path": "v2/conversation_engine.py",
+      "use": "Positive surface-allowlist continuity plus negative evidence from anchored-memory/keyword surfacing shortcuts."
+    },
+    {
+      "path": "server/chat/turn.py",
+      "use": "Negative evidence: legacy deep-memory keyword trigger and prompt injection cannot create V3 accessibility."
+    },
+    {
+      "path": "server/session_db.py; server/session_state.py",
+      "use": "Consumer-boundary evidence: transcript/session persistence never creates V3 epistemic state."
+    }
+  ],
+  "constitutional_noncollapse": [
+    "OBJECTIVE_GENERATED_FACT != V3_CAUSAL_MEMORY",
+    "V3_CAUSAL_MEMORY != CURRENT_MEMORY_ACCESSIBILITY",
+    "CURRENT_MEMORY_ACCESSIBILITY != GENERATED_ACTOR_EPISTEMIC_STANCE",
+    "GENERATED_ACTOR_EPISTEMIC_STANCE != CURRENT_CLAIM_ACCESSIBILITY",
+    "CURRENT_CLAIM_ACCESSIBILITY != FIRST_PERSON_CLAIM_PERMISSION",
+    "FIRST_PERSON_CLAIM_PERMISSION != V2_PHENOMENOLOGICAL_PROJECTION",
+    "V2_PHENOMENOLOGICAL_PROJECTION != RENDERED_EXPRESSION",
+    "ANALYST_ONLY_TRUTH != ACTOR_KNOWLEDGE",
+    "STRUCTURAL_CAUSATION != ACTOR_CAUSAL_INTERPRETATION",
+    "SYSTEM_MISSING_AUTHORITY != ACTOR_NONKNOWLEDGE"
+  ],
+  "jurisdiction": {
+    "owns": [
+      "canonical claim/proposition identity for actor epistemic state",
+      "admission and persistence of generated actor epistemic stances",
+      "knowledge/belief/uncertainty/nonknowledge/system-unknown categorical separation",
+      "current claim accessibility distinct from memory accessibility",
+      "analyst-only classification and first-person exclusion",
+      "analyst-side misrecognition relation only over already-generated actor belief/interpretation and exact comparable objective truth",
+      "contradiction and coexisting-belief preservation",
+      "deterministic first-person semantic permission derivation",
+      "immutable ActorAccessibleRenderEnvelope construction",
+      "epistemic transition/permission/envelope provenance and replay",
+      "fail-closed prevention of V2/session/structural/analyst widening"
+    ],
+    "does_not_own": [
+      "objective event/fact admission or truth",
+      "ADP-016 memory formation/forgetting/recall/accessibility transitions",
+      "domain-specific belief content absent an owning causal rule",
+      "invented actor explanations for structural causation",
+      "V2 phenomenology/salience/register/response/relationship expression/rendering",
+      "V2 transcript/session retention",
+      "external-event admission",
+      "structural-prior interpretation or raw V558 access",
+      "causal RNG semantics",
+      "causal scheduler cadence",
+      "scalar coherence/confidence score",
+      "LLM/free-text semantic similarity as epistemic authority",
+      "automatic actor meta-knowledge of misrecognition"
+    ]
+  },
+  "claim_model": {
+    "type": "CanonicalClaimRef",
+    "required_fields": [
+      "claim_id",
+      "claim_schema_version",
+      "subject_ref",
+      "predicate_ref",
+      "object_or_value",
+      "polarity",
+      "temporal_scope",
+      "subject_scope",
+      "referent_refs",
+      "canonical_content_hash",
+      "integrity_state"
+    ],
+    "identity_law": "claim_id = SHA256('V3_CANONICAL_CLAIM' || claim_schema_version || canonical_json(subject_ref,predicate_ref,object_or_value,polarity,temporal_scope,subject_scope,referent_refs))",
+    "free_text_participates_in_identity": false,
+    "claim_relation_requires_governed_semantics": true,
+    "text_similarity_or_llm_comparison_authorized": false,
+    "objective_relation": [
+      "OBJECTIVE_SUPPORTED",
+      "OBJECTIVE_CONTRADICTED",
+      "OBJECTIVE_UNRESOLVED",
+      "NOT_OBJECTIVE_TRUTH_CLAIM"
+    ],
+    "objective_relation_default_visibility": "ANALYST_ONLY"
+  },
+  "epistemic_state_model": {
+    "type": "ActorEpistemicStateSet",
+    "required_fields": [
+      "actor_id",
+      "claim_id",
+      "active_stance_records",
+      "current_claim_accessibility",
+      "accessibility_basis_refs",
+      "analyst_relation",
+      "current_state_hash",
+      "last_transition_ref",
+      "integrity_state"
+    ],
+    "active_stances_are_set_not_single_winner": true,
+    "stance_kind": [
+      "KNOWLEDGE",
+      "BELIEF",
+      "UNCERTAINTY",
+      "NONKNOWLEDGE"
+    ],
+    "system_summary_when_no_governed_stance": "EPISTEMIC_STATE_UNKNOWN",
+    "system_unknown_is_actor_nonknowledge": false,
+    "automatic_implications_forbidden": [
+      "OBJECTIVE_SUPPORTED -> KNOWLEDGE",
+      "MEMORY_ACCESSIBLE -> KNOWLEDGE",
+      "KNOWLEDGE -> implicit BELIEF record",
+      "BELIEF -> KNOWLEDGE",
+      "OBJECTIVE_CONTRADICTED -> actor recognizes error",
+      "EPISTEMIC_STATE_UNKNOWN -> NONKNOWLEDGE",
+      "STRUCTURAL_CAUSATION -> actor explanation",
+      "INACCESSIBLE -> objective fact forgotten/deleted"
+    ]
+  },
+  "knowledge_gate": {
+    "all_required": [
+      "exact canonical claim verifies",
+      "claim is OBJECTIVE_SUPPORTED in same temporal/subject scope",
+      "exact generated/admitted actor-facing acquisition or recognition basis exists",
+      "owning V3 rule explicitly emits KNOWLEDGE ActorEpistemicEffect for exact claim",
+      "actor role under owning rule is sufficient",
+      "causal parent and pre-state integrity verifies",
+      "all required authority exists"
+    ],
+    "objective_truth_necessary": true,
+    "objective_truth_sufficient": false,
+    "co_presence_or_system_observability_sufficient": false
+  },
+  "belief_gate": {
+    "all_required": [
+      "exact canonical claim",
+      "exact generated/admitted V3 causal parent or actor-state transition",
+      "owning V3 rule explicitly emits exact belief content/polarity",
+      "verified actor/time/rule/pre-state/provenance",
+      "no prohibited source promotion"
+    ],
+    "objective_relation_allowed": [
+      "OBJECTIVE_SUPPORTED",
+      "OBJECTIVE_CONTRADICTED",
+      "OBJECTIVE_UNRESOLVED"
+    ],
+    "objective_status_auto_creates_or_edits_belief": false
+  },
+  "uncertainty_nonknowledge_law": {
+    "uncertainty_requires_generated_effect": true,
+    "missing_data_or_missing_authority_creates_actor_uncertainty": false,
+    "nonknowledge_requires_generated_actor_effect": true,
+    "absence_of_knowledge_record_creates_actor_nonknowledge": false
+  },
+  "epistemic_effect": {
+    "type": "ActorEpistemicEffect",
+    "required_fields": [
+      "effect_id",
+      "actor_id",
+      "claim_ref",
+      "stance_kind",
+      "stance_operation",
+      "causal_parent_refs",
+      "actor_facing_basis_refs",
+      "memory_basis_refs",
+      "owning_rule_id",
+      "owning_rule_version",
+      "owning_rule_hash",
+      "effective_causal_time"
+    ],
+    "stance_operation": [
+      "ADD",
+      "WITHDRAW",
+      "SUPERSEDE_EXACT_RECORD",
+      "NO_CHANGE"
+    ],
+    "bulk_make_coherent_operation": false,
+    "decision_states": [
+      "APPLIED_EPISTEMIC_TRANSITION",
+      "NO_EPISTEMIC_TRANSITION",
+      "DEFERRED_MISSING_EPISTEMIC_BASIS",
+      "DENIED_NON_ACTOR_SOURCE",
+      "DENIED_UNAUTHORIZED_PROMOTION",
+      "BLOCKED_INTEGRITY_FAILURE"
+    ],
+    "no_transition_means_no_epistemic_state_change": true
+  },
+  "memory_interaction": {
+    "memory_owner": "ADP-016",
+    "adp017_consumes": [
+      "memory_id",
+      "representation_kind",
+      "source-bound feature states",
+      "retention state",
+      "current memory-accessibility state",
+      "uncertainty state",
+      "provenance/integrity",
+      "analyst-only causal-trace designation"
+    ],
+    "noncollapse": [
+      "MEMORY_EXISTS != CLAIM_EXISTS",
+      "CLAIM_EXISTS != ACTOR_KNOWS",
+      "ACTOR_KNOWS != ACTOR_BELIEVES",
+      "ACTOR_BELIEVES != ACTOR_MAY_CLAIM"
+    ],
+    "accessible_memory_auto_creates_stance": false,
+    "causal_trace_memory_first_person_basis": false,
+    "memory_inaccessibility_auto_erases_stance": false,
+    "stance_persistence_guarantees_current_access": false,
+    "accessibility_requires_exact_basis_refs": true,
+    "sole_memory_basis_rule": "If the only lawful claim-accessibility basis becomes INACCESSIBLE or UNAVAILABLE under ADP-016, claim permission from that basis fails closed until another exact actor-facing generated basis exists.",
+    "analyst_rehydration_forbidden": true,
+    "reacquisition_requires_new_actor_facing_generated_or_admitted_event": true
+  },
+  "claim_accessibility": {
+    "states": [
+      "CLAIM_ACCESSIBLE",
+      "CLAIM_PARTIALLY_ACCESSIBLE",
+      "CLAIM_INACCESSIBLE",
+      "CLAIM_ACCESS_UNKNOWN"
+    ],
+    "partial_access_requires_exact_component_refs": true,
+    "forbidden_direct_bases": [
+      "objective truth alone",
+      "analyst system access",
+      "structural provenance reachability",
+      "memory record existence alone",
+      "V2 keyword hook",
+      "transcript recency",
+      "prompt demand"
+    ]
+  },
+  "misrecognition_law": {
+    "supported_relation": "MISRECOGNITION_SUPPORTED",
+    "all_required": [
+      "exact active generated BELIEF or actor interpretation claim exists",
+      "belief has verified causal parentage and rule authority",
+      "exact relevant objective generated fact/claim exists",
+      "versioned comparison/claim-relation rule establishes mismatch",
+      "both sides pass integrity checks"
+    ],
+    "failure_states": [
+      "MISRECOGNITION_UNRESOLVED",
+      "NOT_EVALUATED"
+    ],
+    "default_visibility": "ANALYST_ONLY",
+    "creates_actor_meta_knowledge": false,
+    "structural_causation_without_generated_actor_explanation_creates_belief": false,
+    "governing_statement": "Determination is not transparency."
+  },
+  "contradiction_and_coexisting_belief": {
+    "forced_global_coherence": false,
+    "allowed_coexistence_examples": [
+      "BELIEF(P) + UNCERTAINTY(P)",
+      "BELIEF(P) + BELIEF(not-P) when exact governed relation establishes contradiction",
+      "time-scoped KNOWLEDGE(P@t1) + later BELIEF(not-P@t2)",
+      "context/relationship/stratum-scoped incompatible beliefs"
+    ],
+    "forbidden_resolution": [
+      "scalar winner",
+      "averaged confidence",
+      "silent old-record deletion",
+      "automatic reconciliation"
+    ],
+    "active_until_exact_transition": true,
+    "historical_transition_receipts_immutable": true,
+    "v2_may_synthesize_hidden_resolution": false
+  },
+  "first_person_permission": {
+    "classes": [
+      "PERMIT_FIRST_PERSON_KNOWLEDGE",
+      "PERMIT_FIRST_PERSON_BELIEF",
+      "PERMIT_FIRST_PERSON_UNCERTAINTY",
+      "PERMIT_FIRST_PERSON_NONKNOWLEDGE",
+      "DENY_FIRST_PERSON_CLAIM",
+      "DEFER_MISSING_AUTHORITY"
+    ],
+    "mapping": [
+      {
+        "stance": "KNOWLEDGE",
+        "accessibility": "CLAIM_ACCESSIBLE",
+        "permission": "PERMIT_FIRST_PERSON_KNOWLEDGE"
+      },
+      {
+        "stance": "BELIEF",
+        "accessibility": "CLAIM_ACCESSIBLE",
+        "permission": "PERMIT_FIRST_PERSON_BELIEF"
+      },
+      {
+        "stance": "UNCERTAINTY",
+        "accessibility": "CLAIM_ACCESSIBLE",
+        "permission": "PERMIT_FIRST_PERSON_UNCERTAINTY"
+      },
+      {
+        "stance": "NONKNOWLEDGE",
+        "accessibility": "CLAIM_ACCESSIBLE",
+        "permission": "PERMIT_FIRST_PERSON_NONKNOWLEDGE"
+      },
+      {
+        "stance": "ANY",
+        "accessibility": "CLAIM_INACCESSIBLE",
+        "permission": "DENY_FIRST_PERSON_CLAIM"
+      },
+      {
+        "stance": "ANY",
+        "accessibility": "CLAIM_ACCESS_UNKNOWN",
+        "permission": "DEFER_MISSING_AUTHORITY"
+      },
+      {
+        "stance": "NO_GOVERNED_STANCE",
+        "accessibility": "ANY",
+        "permission": "DENY_FIRST_PERSON_CLAIM"
+      }
+    ],
+    "partial_access_permission_scope": "Exact enumerated subclaim/component refs only.",
+    "downstream_may_narrow": true,
+    "downstream_may_widen": false,
+    "permitted_claim_join_inference": false,
+    "snapshot_bound_to_exact_v3_state_hash": true
+  },
+  "actor_safe_render_envelope": {
+    "type": "ActorAccessibleRenderEnvelope",
+    "required_fields": [
+      "envelope_id",
+      "envelope_schema_version",
+      "actor_id",
+      "as_of_causal_time",
+      "source_generated_person_record_hash",
+      "source_actor_state_hash",
+      "source_memory_state_hash",
+      "source_epistemic_state_hash",
+      "adp017_authority_version",
+      "adp017_authority_hash",
+      "allowed_claim_entries",
+      "explicit_denial_refs",
+      "opaque_provenance_refs",
+      "envelope_hash",
+      "integrity_state"
+    ],
+    "entry_type": "ActorSafeClaimEntry",
+    "entry_fields": [
+      "claim_ref",
+      "stance_record_ref",
+      "accessibility_state",
+      "permitted_component_refs",
+      "first_person_permission",
+      "memory_refs",
+      "actor_perceived_view_refs",
+      "source_transition_refs",
+      "entry_hash"
+    ],
+    "boundary_mode": "ALLOWLIST",
+    "full_generated_person_record_exposed_to_v2": false,
+    "excluded_semantic_content": [
+      "objective generated facts without actor stance",
+      "raw DevelopmentalEventLedger facts",
+      "inaccessible/unavailable memory features",
+      "ADP-016 analyst-only CAUSAL_TRACE_MEMORY",
+      "pressure-flow history/memory and analyst_pressure_account",
+      "structural evidence and V553-V558 objects",
+      "ResolvedStructuralContext and SelectionRecords",
+      "structural causal explanations not actor-acquired",
+      "analyst objective-supported/contradicted labels that reveal hidden truth",
+      "analyst MISRECOGNITION_SUPPORTED unless actor meta-knowledge independently exists",
+      "objective relationship/household/genealogy truth beyond actor-perceived accessible views",
+      "pending/rejected external-interaction proposals",
+      "V2 transcript/session state as V3 truth",
+      "renderer prompt/model/audit material as biography"
+    ],
+    "opaque_provenance_dereference_for_persona_authority": false,
+    "v2_allowed_operations": [
+      "select subset of allowed entries",
+      "omit allowed claim",
+      "preserve supplied stance/uncertainty/nonknowledge boundary",
+      "render wording under separately accepted V2 rules"
+    ],
+    "v2_forbidden_operations": [
+      "add claim not present",
+      "raise permission class",
+      "infer hidden claim by joining permitted entries",
+      "dereference opaque provenance",
+      "convert objective ref/hash into actor knowledge",
+      "use transcript/user mention/keyword/prior render to widen access",
+      "convert analyst misrecognition metadata into actor self-awareness",
+      "mutate V3 epistemic state"
+    ]
+  },
+  "analyst_only_exclusions": [
+    {
+      "class": "ANALYST_ONLY_OBJECTIVE_TRUTH",
+      "law": "Exact generated truth without actor epistemic/access authority remains replay/causal/audit-only."
+    },
+    {
+      "class": "ANALYST_ONLY_CAUSAL_PROVENANCE",
+      "law": "Structural/developmental causal reachability never grants actor access."
+    },
+    {
+      "class": "ANALYST_ONLY_MISRECOGNITION_RELATION",
+      "law": "Comparison of generated belief to objective truth is not actor awareness."
+    },
+    {
+      "class": "ANALYST_ONLY_CAUSAL_TRACE",
+      "law": "Nondeclarative ADP-016 trace may affect causation without conscious claimability."
+    },
+    {
+      "class": "SYSTEM_EPISTEMIC_UNKNOWN",
+      "law": "System lack of authority is not actor ignorance and cannot be rendered as such."
+    }
+  ],
+  "provenance_replay": {
+    "epistemic_transition_record_type": "EpistemicTransitionRecord",
+    "permission_record_type": "ClaimPermissionRecord",
+    "transition_id_deterministic": true,
+    "required_replay_inputs": [
+      "immutable V3 causal event ledger/generated fact state",
+      "exact ADP-016 memory objects and transition states",
+      "canonical claim registry/content hashes",
+      "epistemic effect and transition records",
+      "owning V3 rule IDs/versions/hashes",
+      "actor-state checkpoint hashes",
+      "ADP-017 authority version/hash",
+      "exact causal parent sequence"
+    ],
+    "must_reproduce": [
+      "active stance sets",
+      "objective relations used for validation",
+      "accessibility states/bases",
+      "analyst misrecognition relations",
+      "permission records",
+      "envelope entries/id/hash"
+    ],
+    "forbidden_replay_inputs": [
+      "hidden wall clock",
+      "filesystem order",
+      "mutable latest",
+      "unrecorded network lookup",
+      "V2 transcript retention/summary",
+      "prompt wording",
+      "renderer/model randomness",
+      "keyword hook selection",
+      "unrecorded LLM interpretation",
+      "analyst free-text annotation"
+    ],
+    "missing_replay_material_behavior": "BLOCK_OR_UNKNOWN_OR_DENY; NEVER_HEURISTICALLY_RECONSTRUCT"
+  },
+  "fail_closed_states": [
+    "EPISTEMIC_STATE_UNKNOWN",
+    "CLAIM_ACCESS_UNKNOWN",
+    "DEFERRED_MISSING_EPISTEMIC_BASIS",
+    "DENIED_NON_ACTOR_SOURCE",
+    "DENIED_UNAUTHORIZED_PROMOTION",
+    "UNKNOWN_CLAIM_ID",
+    "CLAIM_HASH_MISMATCH",
+    "MISSING_OBJECTIVE_SUPPORT_FOR_KNOWLEDGE",
+    "MISSING_ACTOR_FACING_BASIS",
+    "MISSING_MEMORY_BASIS",
+    "MEMORY_BASIS_INACCESSIBLE",
+    "UNAUTHORIZED_CAUSAL_TRACE_EXPORT",
+    "MISRECOGNITION_UNRESOLVED",
+    "UNAUTHORIZED_ANALYST_LEAK",
+    "UNAUTHORIZED_V2_WIDENING",
+    "STALE_RENDER_ENVELOPE",
+    "PRE_STATE_HASH_MISMATCH",
+    "MISSING_RULE_VERSION",
+    "INTEGRITY_FAILURE"
+  ],
+  "hostile_fixtures": [
+    {"id":"H01","case":"objective generated fact with no actor epistemic effect","required":"no knowledge; analyst-only for first-person use"},
+    {"id":"H02","case":"structural prior/proxy/SelectionRecord as actor knowledge","required":"DENIED_NON_ACTOR_SOURCE"},
+    {"id":"H03","case":"actor participates in event but owning rule emits no epistemic effect","required":"NO_EPISTEMIC_TRANSITION"},
+    {"id":"H04","case":"ADP-016 memory ACCESSIBLE but no ADP-017 stance","required":"no knowledge/belief/claim permission"},
+    {"id":"H05","case":"objective event remains true while sole memory basis becomes inaccessible","required":"objective truth preserved; permission from that basis denied/deferred"},
+    {"id":"H06","case":"analyst ledger restores lost claim access","required":"reject analyst rehydration"},
+    {"id":"H07","case":"CAUSAL_TRACE_MEMORY affects future conductance","required":"causal effect may persist; conscious export denied"},
+    {"id":"H08","case":"V2 transcript says I know X without V3 knowledge state","required":"transcript cannot create knowledge or later permission"},
+    {"id":"H09","case":"keyword father triggers legacy deep-memory surfacing","required":"no V3 accessibility change"},
+    {"id":"H10","case":"V2 receives full GeneratedPersonRecord and infers first-person answer","required":"reject; actor-safe envelope only"},
+    {"id":"H11","case":"V2 dereferences V558 provenance for belief/personality","required":"reject"},
+    {"id":"H12","case":"generated accessible BELIEF(P)","required":"belief permission only; no knowledge upgrade"},
+    {"id":"H13","case":"generated BELIEF(P) objectively contradicted with comparison authority","required":"analyst MISRECOGNITION_SUPPORTED; actor wrongness does not leak"},
+    {"id":"H14","case":"analyst knows structural causation but actor has no explanation","required":"no invented belief/misrecognition"},
+    {"id":"H15","case":"generated accessible UNCERTAINTY(P)","required":"uncertainty permission only"},
+    {"id":"H16","case":"system lacks stance authority","required":"EPISTEMIC_STATE_UNKNOWN; no invented first-person nonknowledge"},
+    {"id":"H17","case":"generated accessible NONKNOWLEDGE(P)","required":"may permit first-person nonknowledge"},
+    {"id":"H18","case":"two separately generated contradictory beliefs active and accessible","required":"preserve both; no scalar winner/averaging/auto-resolution"},
+    {"id":"H19","case":"later governed revision withdraws one belief","required":"only exact transition changes active set; prior belief remains historical"},
+    {"id":"H20","case":"new admitted event re-exposes lost information","required":"new memory/epistemic transition may restore through new actor-facing basis"},
+    {"id":"H21","case":"claim partially accessible","required":"only exact permitted subclaims/components exposed"},
+    {"id":"H22","case":"analyst_pressure_account or pressure-flow history offered to render","required":"exclude unless independently actor-acquired claim exists"},
+    {"id":"H23","case":"objective relationship differs from actor-perceived relationship view","required":"V2 receives actor-safe view only"},
+    {"id":"H24","case":"permitted belief carries opaque structural provenance refs","required":"audit preservation allowed; dereference for persona authority forbidden"},
+    {"id":"H25","case":"V2 joins permitted claims to infer unlisted hidden claim","required":"UNAUTHORIZED_V2_WIDENING"},
+    {"id":"H26","case":"V3 state changes after envelope creation; stale envelope reused","required":"STALE_RENDER_ENVELOPE"},
+    {"id":"H27","case":"renderer says I remember X where permission is BELIEF only","required":"reject/repair render plan; no permission-class escalation"},
+    {"id":"H28","case":"same epistemic effect replayed twice","required":"idempotent; conflicting duplicate integrity failure"},
+    {"id":"H29","case":"fact true at t1 changes at t2","required":"temporal scope prevents timeless laundering"},
+    {"id":"H30","case":"objective truth supports plausible belief but causal provenance absent","required":"no belief record"},
+    {"id":"H31","case":"analyst labels plausible misrecognition without generated belief","required":"MISRECOGNITION_UNRESOLVED; do not manufacture belief"},
+    {"id":"H32","case":"V2 session summary preserves past claim after V3 withdraws current access","required":"session persistence cannot widen current actor access"}
+  ],
+  "compatibility": {
+    "preserve_or_adapt": [
+      "explicit surface-vs-analyst separation",
+      "surface allowlisting and raw-field leak tests",
+      "immutable hashes/provenance for audit",
+      "renderer-not-decider direction",
+      "V2 expression machinery over an already-safe actor surface",
+      "server session persistence as noncausal continuity only"
+    ],
+    "demote_or_remove_as_actor_state_authority": [
+      "backstory arrays as anchored first-person memories",
+      "LLM-distilled lived-memory prose",
+      "V2 keyword/deep-memory surfacing as accessibility logic",
+      "historical-country or structural context injected directly into voice",
+      "inferred standalone psychological dimensions as belief truth",
+      "V2/session user facts promoted to V3 knowledge without causal admission/effect",
+      "raw analyst fields in persona/chat surfaces",
+      "rendered self-description as proof of preexisting belief/knowledge"
+    ]
+  },
+  "consumers": {
+    "direct_implementation": [
+      "V3-P12",
+      "V2-P1",
+      "V2-P2",
+      "V2-P6"
+    ],
+    "downstream_authority_after_vozhd_acceptance": [
+      "ADP-022 / MUST-022 V2 uncertainty-disclosure rule"
+    ]
+  },
+  "governing_spirit_check": {
+    "status": "APPLICABLE__PASS",
+    "ambiguity": "Hard architecture requires actor knowledge/belief/accessibility separation but does not uniquely choose a flattened single winning epistemic label versus orthogonal provenance-bound stance/access/permission records; it also leaves open whether hidden structural causation should manufacture misrecognition or whether misrecognition requires a separately generated actor belief.",
+    "lawful_alternatives": [
+      "flattened single current epistemic winner plus consumer-friendly inferred misrecognition",
+      "sparse stance set plus exact accessibility, first-person permission, analyst-only truth/misrecognition and no belief invention"
+    ],
+    "chosen_design": "sparse stance set plus exact accessibility, first-person permission, analyst-only truth/misrecognition and no belief invention",
+    "decisive_principles": [
+      "Determination is not transparency",
+      "actor opacity and misrecognition rather than analyst omniscience",
+      "contradiction and multiplicity without forced coherence",
+      "uncertainty and lawful absence without fabrication",
+      "dynamic causal history over static classification",
+      "never let downstream vividness exceed upstream authority",
+      "minimum sufficient machinery"
+    ],
+    "constraint": "The Governing Spirit supplies no belief content; misrecognition is represented only after hard generated causal authority establishes the actor belief/interpretation."
+  },
+  "implementation_acceptance_requirements": [
+    "objective fact alone never creates actor knowledge",
+    "ADP-016 memory alone never creates knowledge/belief/claim permission",
+    "system unknown remains distinct from generated actor nonknowledge",
+    "generated uncertainty remains distinct from missing authority",
+    "belief can remain objectively false/unresolved without analyst rewrite",
+    "misrecognition requires independently generated belief/interpretation",
+    "contradictory/coexisting beliefs remain independently replayable and non-scalar",
+    "causal-trace memory may affect development while remaining first-person inaccessible",
+    "claim accessibility records exact basis and fails closed when sole basis becomes unavailable",
+    "actor-safe envelope is allowlist with no hidden analyst semantic content",
+    "V2 may narrow but never widen or infer omitted claims",
+    "opaque provenance cannot be dereferenced by V2 for persona authority",
+    "stale envelope state fails closed",
+    "replay reproduces exact stance sets, permissions and envelope hash",
+    "renderer/session output cannot mutate V3 epistemic state without separately admitted causal events/effects"
+  ]
+}

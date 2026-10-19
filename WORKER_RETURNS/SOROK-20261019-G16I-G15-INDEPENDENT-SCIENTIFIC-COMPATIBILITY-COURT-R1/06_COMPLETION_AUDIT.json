@@ -1,0 +1,107 @@
+{
+  "schema": "G16I_COMPLETION_AUDIT_R1",
+  "at": "2026-10-19T17:41:37.994720+00:00",
+  "review_completed_not_candidate_accepted": true,
+  "requirements": [
+    {
+      "requirement": "sealed startup, assigned branch and independence",
+      "evidence": "startup_custody.json",
+      "status": "VERIFIED_IN_CURRENT_LOCAL_EVIDENCE"
+    },
+    {
+      "requirement": "complete commission and grounding/source identity",
+      "evidence": "grounding/custody.json; source_custody.json; sources/g15/frozen/source_manifest.json",
+      "status": "VERIFIED_IN_CURRENT_LOCAL_EVIDENCE"
+    },
+    {
+      "requirement": "unchanged G13 historical181 and G14 hostile67",
+      "evidence": "execution/reproduced_g15/baseline/results.json",
+      "status": "VERIFIED_IN_CURRENT_LOCAL_EVIDENCE"
+    },
+    {
+      "requirement": "unchanged inherited181 and G14_67 on G15",
+      "evidence": "execution/reproduced_g15/candidate/results.json",
+      "status": "VERIFIED_IN_CURRENT_LOCAL_EVIDENCE"
+    },
+    {
+      "requirement": "G15 prospective75",
+      "evidence": "execution/reproduced_g15/prospective/results.json",
+      "status": "VERIFIED_IN_CURRENT_LOCAL_EVIDENCE"
+    },
+    {
+      "requirement": "13 author fresh-process source-fault witnesses rerun",
+      "evidence": "execution/reproduced_g15/faults/receipts.json",
+      "status": "VERIFIED_IN_CURRENT_LOCAL_EVIDENCE"
+    },
+    {
+      "requirement": "separate original SGI1_25, full capture audit and replay limits",
+      "evidence": "execution/reproduced_g15/preservation/results.json; execution/reproduced_g15/preservation/full_replay_audit_historical.json",
+      "status": "VERIFIED_IN_CURRENT_LOCAL_EVIDENCE"
+    },
+    {
+      "requirement": "all56 new inherited REDs individually adjudicated",
+      "evidence": "02_COMPATIBILITY_56.json; 02_COMPATIBILITY_56.md",
+      "status": "VERIFIED_IN_CURRENT_LOCAL_EVIDENCE"
+    },
+    {
+      "requirement": "nine unavailable handlers, each distinct legitimate behavior, alternative controls and incomplete positives",
+      "evidence": "02_NINE_HANDLER_COVERAGE.json; execution/independent/final_court_observations.json",
+      "status": "VERIFIED_IN_CURRENT_LOCAL_EVIDENCE"
+    },
+    {
+      "requirement": "original17 RED identities preserved without oracle edits",
+      "evidence": "03_ORIGINAL_17_REDS.json; custody_validation.json",
+      "status": "VERIFIED_IN_CURRENT_LOCAL_EVIDENCE"
+    },
+    {
+      "requirement": "new >=8 substantive hostile tests preregistered and independently executed",
+      "evidence": "01_PREREGISTRATION.json; 01B_COVERAGE_PREREGISTRATION.json; 01C_JOINED_PREREGISTRATION.json; execution/independent/final_court.xml",
+      "status": "VERIFIED_IN_CURRENT_LOCAL_EVIDENCE"
+    },
+    {
+      "requirement": "same named downstream assertions RED in fresh processes when actual sources severed, exact restoration",
+      "evidence": "test_g16i_science.py.proof.json; execution/independent/fault_receipts.json; execution/shared_witness.json",
+      "status": "VERIFIED_IN_CURRENT_LOCAL_EVIDENCE"
+    },
+    {
+      "requirement": "actual sourcefree causal mechanism and all seven family grades",
+      "evidence": "04_SEVEN_FAMILY_SCIENCE.md",
+      "status": "VERIFIED_IN_CURRENT_LOCAL_EVIDENCE"
+    },
+    {
+      "requirement": "selected endpoint, candidate identity, current entropy/lineage, whole causal cold replay",
+      "evidence": "execution/independent/final_court_observations.json; execution/reproduced_g15/joined_cold_replay.json",
+      "status": "VERIFIED_IN_CURRENT_LOCAL_EVIDENCE"
+    },
+    {
+      "requirement": "actual JUnit and precise source/import/fault receipts",
+      "evidence": "execution/; source_custody.json; custody_validation.json",
+      "status": "VERIFIED_IN_CURRENT_LOCAL_EVIDENCE"
+    },
+    {
+      "requirement": "scientifically justified REVISE/HOLD, narrow ACCEPT_SCOPED, coherent substantive repair target",
+      "evidence": "00_RETURN.md; 04_SEVEN_FAMILY_SCIENCE.md",
+      "status": "VERIFIED_IN_CURRENT_LOCAL_EVIDENCE"
+    },
+    {
+      "requirement": "sourcefree/native owner matrix, C4->C9->C12, remaining grants and no native biology/child/Pyat/adoption",
+      "evidence": "05_AUTHORITY_AND_TERMINAL.md",
+      "status": "VERIFIED_IN_CURRENT_LOCAL_EVIDENCE"
+    },
+    {
+      "requirement": "sanitized 00D environment/cash/quota passport",
+      "evidence": "environment_passport_delta.json",
+      "status": "VERIFIED_IN_CURRENT_LOCAL_EVIDENCE"
+    },
+    {
+      "requirement": "only assigned independent-return files and no candidate/frozen edits",
+      "evidence": "custody_validation.json; final Git staged-path audit",
+      "status": "VERIFIED_IN_CURRENT_LOCAL_EVIDENCE"
+    }
+  ],
+  "publication": {
+    "status": "EXACT_COMMIT_PUSH_AND_DIRECT_REMOTE_READBACK_ATTESTED_OUTSIDE_COMMIT_TO_AVOID_SELF_REFERENCE",
+    "self_referential_final_sha_not_stored_in_commit": true
+  },
+  "no_new_court": true
+}

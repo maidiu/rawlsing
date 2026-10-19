@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="0.232" timestamp="2026-10-19T12:31:52.081255-04:00" hostname="local-runner"><testcase classname="WORKER_RETURNS.SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1.test_g15_causal" name="test_entropy_coordinate_drives_receipt" time="0.008"><failure message="AssertionError: assert 'sha256:1886e...f277ce6a89527' == 'sha256:9f6a2...15d4f5800fb34'&#10;  &#10;  - sha256:9f6a2dace6756fde0990a2ad9d21a27da6b2072e57b7d44999715d4f5800fb34&#10;  + sha256:1886ee4397ab58508e6450da2b25f0462bb5d34e2ee54ce8010f277ce6a89527">WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/test_g15_causal.py:111: in test_entropy_coordinate_drives_receipt
+    assert d['draw_coordinate_hash']==h_obj(d['entropy_coordinate'])
+E   AssertionError: assert 'sha256:1886e...f277ce6a89527' == 'sha256:9f6a2...15d4f5800fb34'
+E     
+E     - sha256:9f6a2dace6756fde0990a2ad9d21a27da6b2072e57b7d44999715d4f5800fb34
+E     + sha256:1886ee4397ab58508e6450da2b25f0462bb5d34e2ee54ce8010f277ce6a89527</failure></testcase></testsuite></testsuites>

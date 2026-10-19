@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="0.295" timestamp="2026-10-19T13:16:42.464611-04:00" hostname="LOCAL_RUNNER_A"><testcase classname="WORKER_RETURNS.SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1.test_g16i_science" name="test_experienced_values_reach_memory_and_formation" time="0.024"><failure message="AssertionError: assert {} == {'completed_u..._repair', ...}&#10;  &#10;  Right contains 7 more items:&#10;  {'cash': 45,&#10;   'completed_units': 3,&#10;   'materials_used': 3,&#10;   'payment': 6,&#10;   'project': 'communal_irrigation_pump_repair',...&#10;  &#10;  ...Full output truncated (3 lines hidden), use '-vv' to show">WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/test_g16i_science.py:105: in test_experienced_values_reach_memory_and_formation
+    assert m['effect']['experienced_effect']==r['effects'][project['event_id']]
+E   AssertionError: assert {} == {'completed_u..._repair', ...}
+E     
+E     Right contains 7 more items:
+E     {'cash': 45,
+E      'completed_units': 3,
+E      'materials_used': 3,
+E      'payment': 6,
+E      'project': 'communal_irrigation_pump_repair',...
+E     
+E     ...Full output truncated (3 lines hidden), use '-vv' to show</failure></testcase></testsuite></testsuites>

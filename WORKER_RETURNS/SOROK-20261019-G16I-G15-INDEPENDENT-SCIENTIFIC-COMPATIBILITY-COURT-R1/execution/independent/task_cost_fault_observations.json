@@ -1,0 +1,1811 @@
+{
+  "imports": [
+    {
+      "blob_sha1": "fbecbfae723bf5e72830b9a59788aab165747259",
+      "module": "lab_sgi1",
+      "path": "sandbox/candidate/lab_sgi1/__init__.py",
+      "sha256": "c9c5dbab3d2409f022df3794257418d0b85a14fe28a18a7c3652fbe86005ed92"
+    },
+    {
+      "blob_sha1": "6b6ff10a9d2f7c906b07d20f274d80cf014d399f",
+      "module": "lab_sgi1.construction",
+      "path": "sandbox/candidate/lab_sgi1/construction.py",
+      "sha256": "5afebf0195ebffd97fbbafd7909709f87bb927568248444271304afc45e578e0"
+    },
+    {
+      "blob_sha1": "c0234c92e2279425411e4e82250e5b97fdf1b7a0",
+      "module": "lab_sgi1.continuation",
+      "path": "sandbox/candidate/lab_sgi1/continuation.py",
+      "sha256": "7dc5da789a74a6b7a8185df4ee537e92d33de962bfd37983e07dbcd94d0f0c62"
+    },
+    {
+      "blob_sha1": "51a919a660338d7c6fa75d06aa997a87994f87ce",
+      "module": "lab_sgi1.core",
+      "path": "sandbox/candidate/lab_sgi1/core.py",
+      "sha256": "4c18ffe4a7c16cebfbca9b25c99f3c6296bcc80c706bb45e338a0ba6ccc5a1fb"
+    },
+    {
+      "blob_sha1": "df830f1c6592aae913e3ed315aede15245fc3c39",
+      "module": "lab_sgi1.dag",
+      "path": "sandbox/candidate/lab_sgi1/dag.py",
+      "sha256": "cfba770dcb1c2576acf7a2523c9e259a69bc6326732b76d44d1446835e942b53"
+    },
+    {
+      "blob_sha1": "a06c1e281dde7725caaf00f94211a38e769c4427",
+      "module": "lab_sgi1.history",
+      "path": "sandbox/candidate/lab_sgi1/history.py",
+      "sha256": "99f98512e3bd9023b148bd4197be9189f37062bdd553972e3755546ae780e31a"
+    },
+    {
+      "blob_sha1": "309984fb734a08eef78c9fef279c661480eb4aa5",
+      "module": "lab_sgi1.joint",
+      "path": "sandbox/candidate/lab_sgi1/joint.py",
+      "sha256": "00d2dcb07a34d6a2f4c617082fab0a36e5d799964803db5eb359786379287247"
+    },
+    {
+      "blob_sha1": "52c8003efbd7be356beb800bb7b3239041b31146",
+      "module": "lab_sgi1.mother",
+      "path": "sandbox/candidate/lab_sgi1/mother.py",
+      "sha256": "17112976edf8e00994a16ec01de5327fbcb4ec04e48f17e24df9f69fe52f19e0"
+    },
+    {
+      "blob_sha1": "8ae8737b4f4c7f3cf4c9f9f0059b1ecdbeeb0104",
+      "module": "lab_sgi1.pipeline",
+      "path": "sandbox/candidate/lab_sgi1/pipeline.py",
+      "sha256": "8322549ab869738398a9a713cdb2d681faddee0cbccc29e19884d1e4a60ca9e2"
+    },
+    {
+      "blob_sha1": "58befad965c4f2a40e560ecbb3509bf1af1b98b8",
+      "module": "lab_sgi1.proposal",
+      "path": "sandbox/candidate/lab_sgi1/proposal.py",
+      "sha256": "190f009f8746008d215838a2cd12a483ef606d7475e7cf43d1f9094d2ecc46a6"
+    },
+    {
+      "blob_sha1": "ff8cfc00279599e5109abd414e8ea51b8846cc06",
+      "module": "lab_sgi1.qualification",
+      "path": "sandbox/candidate/lab_sgi1/qualification.py",
+      "sha256": "98f14d9fa9dae05af521a3968932b4d0bb69c5e4468707e6f015c43b6063aad0"
+    },
+    {
+      "blob_sha1": "758f0f2dd2d0c90db4e5409368868eb5700cfb47",
+      "module": "lab_sgi1.relation",
+      "path": "sandbox/candidate/lab_sgi1/relation.py",
+      "sha256": "f6415c31f8f9d19f9962a1ace0a38a2561a15c9a0fd8002d6045071621d5b04f"
+    },
+    {
+      "blob_sha1": "d5d252f39d5ed8fdb65b2aaa77152f83dbc97c24",
+      "module": "lab_sgi1.research",
+      "path": "sandbox/candidate/lab_sgi1/research.py",
+      "sha256": "267b273f1b3460d32ca9104f8a41b69c62255afa592e3d94f8d8641928a190a6"
+    },
+    {
+      "blob_sha1": "c8eae8f088bb493e257ec76ce18f9543fa37c06c",
+      "module": "lab_sgi1.selection",
+      "path": "sandbox/candidate/lab_sgi1/selection.py",
+      "sha256": "cc992d58a0f0463c7cd851565ae8f2867b00ff39f0d76d934d43a0bac2188ab5"
+    },
+    {
+      "blob_sha1": "7212c483a36207951cac9354c18ad4d21e7b2a9f",
+      "module": "lab_sgi1.world",
+      "path": "sandbox/candidate/lab_sgi1/world.py",
+      "sha256": "fd8bdf430e53eed123afce25f6055e58e620153b99f25359f03ab02c083ea9c1"
+    }
+  ],
+  "network_attempts": [],
+  "observations": {
+    "variable_task_cost": {
+      "context": {
+        "birth_alias": false,
+        "child_generated_events": 0,
+        "developmental_effects_mechanism": "NOT_EXECUTED_CHILD_EXPOSURE_AND_UPTAKE_NOT_GRANTED",
+        "exposure_changes_only_after_admission": true,
+        "exposures": [],
+        "fixture_id": "sha256:90461e925930f5e86af4904fec2d18daaef8bdcc56b757af877c4b5d7deb9622",
+        "fixture_kind": "LAB_CHILD_DEVELOPMENTAL_ENVIRONMENT_FIXTURE",
+        "is_PREV3_parent_object": false,
+        "is_admitted_child_actor": false,
+        "lab_conception_boundary": "LAB_CONCEPTION_BOUNDARY",
+        "lab_rule": "PROVISIONAL_LAB_RULE__NOT_ADOPTED",
+        "personality_assigned_from_parent_profile": false,
+        "potential_material_contexts": [
+          {
+            "actor": "LAB_MOTHER_M0",
+            "causal_parent_events": [
+              "sha256:e1844b970de124006ecafffb2d779f167afe6553f03c829e62733c2d125cf048"
+            ],
+            "context_id": "sha256:09f11c5096569b02aa5246bb54008dcb821249d2c15a332c648979cc88d566cf",
+            "effective_after_admission": false,
+            "material_context": {
+              "cash_after": 63,
+              "earned": 8,
+              "project": "apprentice_finishing_work"
+            }
+          },
+          {
+            "actor": "G16I_ADULT",
+            "causal_parent_events": [
+              "sha256:ea20c0d8c1d1ff830aae6f06ba95e2e12ea6304ece43fc0c8e214694c727b62d"
+            ],
+            "context_id": "sha256:5c5d2fd911548f3d37255f6f3be770069709ad56522cf645dfdf2e19ee4fba29",
+            "effective_after_admission": false,
+            "material_context": {
+              "cash_after": 58,
+              "earned": 4,
+              "project": "communal_irrigation_pump_repair"
+            }
+          }
+        ]
+      },
+      "continuation": {
+        "both_parents_continue_independently": true,
+        "care_or_absence_registered_as_event": false,
+        "continuation_events": [
+          {
+            "actor": "LAB_MOTHER_M0",
+            "causal_parent_event_ids": [
+              "sha256:8a9856318f559d0ef5dfd6f2cb0a27d36b2e2a0b6b622c21833e380459e18089",
+              "sha256:2f81d79c797ce1b6765411c4c2824285711049f385fd67cca981f8353e42bf09",
+              "sha256:9251af717bbff9e076464dba340e445c85b7c7e65b442cc8fabacbaf9838b7b3",
+              "sha256:9889ef476fc1276d3c1ba1ca04e24833bddf7e4daf2b2c62e309b5534f9ef401"
+            ],
+            "effective_index": 1000,
+            "event_id": "sha256:e1844b970de124006ecafffb2d779f167afe6553f03c829e62733c2d125cf048",
+            "history_hash": "sha256:7e43d00699875820f91e1b186c8b748f566f7e15db1a215f7c63ece880c9d204",
+            "kind": "PARENT_CONTINUATION",
+            "owner_id": "LAB_MOTHER_M0",
+            "payload": {
+              "after": {
+                "actor_id": "LAB_MOTHER_M0",
+                "attitudes": [
+                  "reciprocity_in_work_obligations"
+                ],
+                "availability_status": "available_for_encounter",
+                "cash": 63,
+                "completed_units": 8,
+                "debt_units": 2,
+                "free_hours": 7,
+                "health": "recovered",
+                "material_position": "waged_finishing",
+                "nonmother_relations": [
+                  "G15_NONKIN_fe79f0398ed97e03f5f5173d74911e67f44a7e710159d1ea59646b164a02dfc5"
+                ],
+                "place": "INST_WORKSHOP_A",
+                "practices": [
+                  "scheduled_finishing_ledger_discipline"
+                ],
+                "projects": [
+                  "apprentice_finishing_work"
+                ],
+                "role": "finishing",
+                "skill": 6
+              },
+              "before": {
+                "actor_id": "LAB_MOTHER_M0",
+                "attitudes": [
+                  "reciprocity_in_work_obligations"
+                ],
+                "availability_status": "available_for_encounter",
+                "cash": 55,
+                "completed_units": 4,
+                "debt_units": 2,
+                "free_hours": 11,
+                "health": "recovered",
+                "material_position": "waged_finishing",
+                "nonmother_relations": [
+                  "G15_NONKIN_fe79f0398ed97e03f5f5173d74911e67f44a7e710159d1ea59646b164a02dfc5"
+                ],
+                "place": "INST_WORKSHOP_A",
+                "practices": [
+                  "scheduled_finishing_ledger_discipline"
+                ],
+                "projects": [
+                  "apprentice_finishing_work"
+                ],
+                "role": "finishing",
+                "skill": 6
+              },
+              "earned": 8,
+              "goal": "fund_finishing_equipment",
+              "project_change": "apprentice_finishing_work",
+              "units_performed": 4,
+              "values_read": [
+                {
+                  "after": {
+                    "actor_id": "LAB_MOTHER_M0",
+                    "attitudes": [],
+                    "availability_status": "unavailable",
+                    "cash": 46,
+                    "completed_units": 3,
+                    "debt_units": 0,
+                    "free_hours": 15,
+                    "health": null,
+                    "material_position": "waged_finishing",
+                    "nonmother_relations": [],
+                    "place": null,
+                    "practices": [],
+                    "projects": [
+                      "apprentice_finishing_work"
+                    ],
+                    "role": "finishing",
+                    "skill": 6
+                  },
+                  "before": {
+                    "actor_id": "LAB_MOTHER_M0",
+                    "attitudes": [],
+                    "availability_status": "unavailable",
+                    "cash": 40,
+                    "completed_units": 0,
+                    "debt_units": 0,
+                    "free_hours": 18,
+                    "health": null,
+                    "material_position": "waged_finishing",
+                    "nonmother_relations": [],
+                    "place": null,
+                    "practices": [],
+                    "projects": [],
+                    "role": "finishing",
+                    "skill": 6
+                  },
+                  "effect": {
+                    "cash": 46,
+                    "completed_units": 3,
+                    "materials_used": 3,
+                    "payment": 6,
+                    "project": "apprentice_finishing_work",
+                    "remaining_material_units": 4,
+                    "role": "finishing"
+                  },
+                  "effective_index": 5,
+                  "event_id": "sha256:8a9856318f559d0ef5dfd6f2cb0a27d36b2e2a0b6b622c21833e380459e18089",
+                  "kind": "PROJECT",
+                  "owner_id": "LAB_MOTHER_M0",
+                  "readset": [
+                    {
+                      "event_id": "sha256:43650f89d770cdf74ab53a0e8a6e82171db92f6c0eb18329b6be8e002f2d6e63",
+                      "owner_id": "LAB_MOTHER_M0",
+                      "path": "effect",
+                      "value": {
+                        "cash": 40,
+                        "earned": 8,
+                        "hours": 4,
+                        "role": "finishing",
+                        "skill": 6
+                      }
+                    },
+                    {
+                      "event_id": "sha256:9251af717bbff9e076464dba340e445c85b7c7e65b442cc8fabacbaf9838b7b3",
+                      "owner_id": "G15_WORLD",
+                      "path": "effect",
+                      "value": {
+                        "material_units": 7,
+                        "offers": {
+                          "ROUTE_INSTITUTIONAL": {
+                            "hours": 2,
+                            "payment": 5,
+                            "permit": true,
+                            "place": "INST_EVENING_CLASS_B",
+                            "travel_cost": 4
+                          },
+                          "ROUTE_LOCAL_CLOSED": {
+                            "hours": 2,
+                            "payment": 12,
+                            "permit": true,
+                            "place": "INST_WORKSHOP_A",
+                            "travel_cost": 3
+                          },
+                          "ROUTE_MOBILITY": {
+                            "hours": 2,
+                            "payment": 10,
+                            "permit": true,
+                            "place": "INST_TRANSIT_E",
+                            "travel_cost": 9
+                          },
+                          "ROUTE_UNCONVENTIONAL": {
+                            "hours": 2,
+                            "payment": 6,
+                            "permit": true,
+                            "place": "INST_COMMUNITY_D",
+                            "travel_cost": 5
+                          }
+                        },
+                        "permission": "SOURCEFREE_MATERIAL_ONLY",
+                        "project_id": "apprentice_finishing_work",
+                        "project_permit": true,
+                        "tool_return_permit": true,
+                        "unit_payment": 2
+                      }
+                    }
+                  ]
+                },
+                {
+                  "after": {
+                    "actor_id": "LAB_MOTHER_M0",
+                    "attitudes": [
+                      "reciprocity_in_work_obligations"
+                    ],
+                    "availability_status": "unavailable",
+                    "cash": 46,
+                    "completed_units": 3,
+                    "debt_units": 2,
+                    "free_hours": 15,
+                    "health": null,
+                    "material_position": "waged_finishing",
+                    "nonmother_relations": [
+                      "G15_NONKIN_fe79f0398ed97e03f5f5173d74911e67f44a7e710159d1ea59646b164a02dfc5"
+                    ],
+                    "place": null,
+                    "practices": [
+                      "scheduled_finishing_ledger_discipline"
+                    ],
+                    "projects": [
+                      "apprentice_finishing_work"
+                    ],
+                    "role": "finishing",
+                    "skill": 6
+                  },
+                  "before": {
+                    "actor_id": "LAB_MOTHER_M0",
+                    "attitudes": [
+                      "reciprocity_in_work_obligations"
+                    ],
+                    "availability_status": "unavailable",
+                    "cash": 46,
+                    "completed_units": 3,
+                    "debt_units": 2,
+                    "free_hours": 15,
+                    "health": null,
+                    "material_position": "waged_finishing",
+                    "nonmother_relations": [
+                      "G15_NONKIN_fe79f0398ed97e03f5f5173d74911e67f44a7e710159d1ea59646b164a02dfc5"
+                    ],
+                    "place": null,
+                    "practices": [
+                      "scheduled_finishing_ledger_discipline"
+                    ],
+                    "projects": [
+                      "apprentice_finishing_work"
+                    ],
+                    "role": "finishing",
+                    "skill": 6
+                  },
+                  "effect": {
+                    "budget": 6,
+                    "role": "finishing",
+                    "striving": "fund_finishing_equipment"
+                  },
+                  "effective_index": 13,
+                  "event_id": "sha256:2f81d79c797ce1b6765411c4c2824285711049f385fd67cca981f8353e42bf09",
+                  "kind": "STRIVING",
+                  "owner_id": "LAB_MOTHER_M0",
+                  "readset": [
+                    {
+                      "event_id": "sha256:43650f89d770cdf74ab53a0e8a6e82171db92f6c0eb18329b6be8e002f2d6e63",
+                      "owner_id": "LAB_MOTHER_M0",
+                      "path": "effect",
+                      "value": {
+                        "cash": 40,
+                        "earned": 8,
+                        "hours": 4,
+                        "role": "finishing",
+                        "skill": 6
+                      }
+                    },
+                    {
+                      "event_id": "sha256:8a9856318f559d0ef5dfd6f2cb0a27d36b2e2a0b6b622c21833e380459e18089",
+                      "owner_id": "LAB_MOTHER_M0",
+                      "path": "effect",
+                      "value": {
+                        "cash": 46,
+                        "completed_units": 3,
+                        "materials_used": 3,
+                        "payment": 6,
+                        "project": "apprentice_finishing_work",
+                        "remaining_material_units": 4,
+                        "role": "finishing"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "event_id": "sha256:9251af717bbff9e076464dba340e445c85b7c7e65b442cc8fabacbaf9838b7b3",
+                  "owner_id": "G15_WORLD",
+                  "path": "payload",
+                  "value": {
+                    "material_units": 7,
+                    "offers": {
+                      "ROUTE_INSTITUTIONAL": {
+                        "hours": 2,
+                        "payment": 5,
+                        "permit": true,
+                        "place": "INST_EVENING_CLASS_B",
+                        "travel_cost": 4
+                      },
+                      "ROUTE_LOCAL_CLOSED": {
+                        "hours": 2,
+                        "payment": 12,
+                        "permit": true,
+                        "place": "INST_WORKSHOP_A",
+                        "travel_cost": 3
+                      },
+                      "ROUTE_MOBILITY": {
+                        "hours": 2,
+                        "payment": 10,
+                        "permit": true,
+                        "place": "INST_TRANSIT_E",
+                        "travel_cost": 9
+                      },
+                      "ROUTE_UNCONVENTIONAL": {
+                        "hours": 2,
+                        "payment": 6,
+                        "permit": true,
+                        "place": "INST_COMMUNITY_D",
+                        "travel_cost": 5
+                      }
+                    },
+                    "permission": "SOURCEFREE_MATERIAL_ONLY",
+                    "project_id": "apprentice_finishing_work",
+                    "project_permit": true,
+                    "tool_return_permit": true,
+                    "unit_payment": 2
+                  }
+                },
+                {
+                  "event_id": "sha256:9889ef476fc1276d3c1ba1ca04e24833bddf7e4daf2b2c62e309b5534f9ef401",
+                  "owner_id": "LAB_MOTHER_M0",
+                  "path": "after",
+                  "value": {
+                    "actor_id": "LAB_MOTHER_M0",
+                    "attitudes": [
+                      "reciprocity_in_work_obligations"
+                    ],
+                    "availability_status": "available_for_encounter",
+                    "cash": 55,
+                    "completed_units": 4,
+                    "debt_units": 2,
+                    "free_hours": 11,
+                    "health": "recovered",
+                    "material_position": "waged_finishing",
+                    "nonmother_relations": [
+                      "G15_NONKIN_fe79f0398ed97e03f5f5173d74911e67f44a7e710159d1ea59646b164a02dfc5"
+                    ],
+                    "place": "INST_WORKSHOP_A",
+                    "practices": [
+                      "scheduled_finishing_ledger_discipline"
+                    ],
+                    "projects": [
+                      "apprentice_finishing_work"
+                    ],
+                    "role": "finishing",
+                    "skill": 6
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "actor": "G16I_ADULT",
+            "causal_parent_event_ids": [
+              "sha256:1b76486a6a9b944dacfe843302547b2f97b7b7b5cd994abb3c9ec11e969070e4",
+              "sha256:8ac73b6f3db1a048a7b8db00e078f9f087e267da6a6c1195fd5f4f6a19db3530",
+              "sha256:c9cbdd40165dd477e53e1415c59fc798da799f68ebbd078317b628a7d75e4d77",
+              "sha256:6ce79570fcf85386a47c4857704f8680eddc1e53b056bbcb774710979b5abf97"
+            ],
+            "effective_index": 1000,
+            "event_id": "sha256:ea20c0d8c1d1ff830aae6f06ba95e2e12ea6304ece43fc0c8e214694c727b62d",
+            "history_hash": "sha256:2a90ba5527504c08cd6622110a09527adaee0573dae20c23fcfd8fedda073e19",
+            "kind": "PARENT_CONTINUATION",
+            "owner_id": "G16I_ADULT",
+            "payload": {
+              "after": {
+                "actor_id": "G16I_ADULT",
+                "attitudes": [
+                  "reciprocity_in_work_obligations"
+                ],
+                "availability_status": "available_for_encounter",
+                "cash": 58,
+                "completed_units": 6,
+                "debt_units": 2,
+                "free_hours": 9,
+                "health": "recovered",
+                "material_position": "waged_repair",
+                "nonmother_relations": [
+                  "G15_NONKIN_af4e8e368084ca0e8424f38764d1f3afbc5c96d5deb40db23e0882f30578b6fe"
+                ],
+                "place": "INST_WORKSHOP_A",
+                "practices": [
+                  "scheduled_repair_ledger_discipline"
+                ],
+                "projects": [
+                  "communal_irrigation_pump_repair"
+                ],
+                "role": "repair",
+                "skill": 6
+              },
+              "before": {
+                "actor_id": "G16I_ADULT",
+                "attitudes": [
+                  "reciprocity_in_work_obligations"
+                ],
+                "availability_status": "available_for_encounter",
+                "cash": 54,
+                "completed_units": 4,
+                "debt_units": 2,
+                "free_hours": 11,
+                "health": "recovered",
+                "material_position": "waged_repair",
+                "nonmother_relations": [
+                  "G15_NONKIN_af4e8e368084ca0e8424f38764d1f3afbc5c96d5deb40db23e0882f30578b6fe"
+                ],
+                "place": "INST_WORKSHOP_A",
+                "practices": [
+                  "scheduled_repair_ledger_discipline"
+                ],
+                "projects": [
+                  "communal_irrigation_pump_repair"
+                ],
+                "role": "repair",
+                "skill": 6
+              },
+              "earned": 4,
+              "goal": "fund_repair_equipment",
+              "project_change": "communal_irrigation_pump_repair",
+              "units_performed": 2,
+              "values_read": [
+                {
+                  "after": {
+                    "actor_id": "G16I_ADULT",
+                    "attitudes": [],
+                    "availability_status": "unavailable",
+                    "cash": 45,
+                    "completed_units": 3,
+                    "debt_units": 0,
+                    "free_hours": 15,
+                    "health": null,
+                    "material_position": "waged_repair",
+                    "nonmother_relations": [],
+                    "place": null,
+                    "practices": [],
+                    "projects": [
+                      "communal_irrigation_pump_repair"
+                    ],
+                    "role": "repair",
+                    "skill": 6
+                  },
+                  "before": {
+                    "actor_id": "G16I_ADULT",
+                    "attitudes": [],
+                    "availability_status": "unavailable",
+                    "cash": 39,
+                    "completed_units": 0,
+                    "debt_units": 0,
+                    "free_hours": 18,
+                    "health": null,
+                    "material_position": "waged_repair",
+                    "nonmother_relations": [],
+                    "place": null,
+                    "practices": [],
+                    "projects": [],
+                    "role": "repair",
+                    "skill": 6
+                  },
+                  "effect": {
+                    "cash": 45,
+                    "completed_units": 3,
+                    "materials_used": 3,
+                    "payment": 6,
+                    "project": "communal_irrigation_pump_repair",
+                    "remaining_material_units": 2,
+                    "role": "repair"
+                  },
+                  "effective_index": 5,
+                  "event_id": "sha256:1b76486a6a9b944dacfe843302547b2f97b7b7b5cd994abb3c9ec11e969070e4",
+                  "kind": "PROJECT",
+                  "owner_id": "G16I_ADULT",
+                  "readset": [
+                    {
+                      "event_id": "sha256:228f4d66bfcc2bc782d2a8a53dd8e803042484237ea3a84228fbfb3b098b877d",
+                      "owner_id": "G16I_ADULT",
+                      "path": "effect",
+                      "value": {
+                        "cash": 39,
+                        "earned": 8,
+                        "hours": 4,
+                        "role": "repair",
+                        "skill": 6
+                      }
+                    },
+                    {
+                      "event_id": "sha256:c9cbdd40165dd477e53e1415c59fc798da799f68ebbd078317b628a7d75e4d77",
+                      "owner_id": "G15_WORLD",
+                      "path": "effect",
+                      "value": {
+                        "material_units": 5,
+                        "offers": {
+                          "ROUTE_INSTITUTIONAL": {
+                            "hours": 2,
+                            "payment": 5,
+                            "permit": true,
+                            "place": "INST_EVENING_CLASS_B",
+                            "travel_cost": 4
+                          },
+                          "ROUTE_LOCAL_CLOSED": {
+                            "hours": 2,
+                            "payment": 12,
+                            "permit": true,
+                            "place": "INST_WORKSHOP_A",
+                            "travel_cost": 3
+                          },
+                          "ROUTE_MOBILITY": {
+                            "hours": 2,
+                            "payment": 10,
+                            "permit": true,
+                            "place": "INST_TRANSIT_E",
+                            "travel_cost": 9
+                          },
+                          "ROUTE_UNCONVENTIONAL": {
+                            "hours": 2,
+                            "payment": 6,
+                            "permit": true,
+                            "place": "INST_COMMUNITY_D",
+                            "travel_cost": 5
+                          }
+                        },
+                        "permission": "SOURCEFREE_MATERIAL_ONLY",
+                        "project_id": "communal_irrigation_pump_repair",
+                        "project_permit": true,
+                        "tool_return_permit": true,
+                        "unit_payment": 2
+                      }
+                    }
+                  ]
+                },
+                {
+                  "after": {
+                    "actor_id": "G16I_ADULT",
+                    "attitudes": [
+                      "reciprocity_in_work_obligations"
+                    ],
+                    "availability_status": "unavailable",
+                    "cash": 45,
+                    "completed_units": 3,
+                    "debt_units": 2,
+                    "free_hours": 15,
+                    "health": null,
+                    "material_position": "waged_repair",
+                    "nonmother_relations": [
+                      "G15_NONKIN_af4e8e368084ca0e8424f38764d1f3afbc5c96d5deb40db23e0882f30578b6fe"
+                    ],
+                    "place": null,
+                    "practices": [
+                      "scheduled_repair_ledger_discipline"
+                    ],
+                    "projects": [
+                      "communal_irrigation_pump_repair"
+                    ],
+                    "role": "repair",
+                    "skill": 6
+                  },
+                  "before": {
+                    "actor_id": "G16I_ADULT",
+                    "attitudes": [
+                      "reciprocity_in_work_obligations"
+                    ],
+                    "availability_status": "unavailable",
+                    "cash": 45,
+                    "completed_units": 3,
+                    "debt_units": 2,
+                    "free_hours": 15,
+                    "health": null,
+                    "material_position": "waged_repair",
+                    "nonmother_relations": [
+                      "G15_NONKIN_af4e8e368084ca0e8424f38764d1f3afbc5c96d5deb40db23e0882f30578b6fe"
+                    ],
+                    "place": null,
+                    "practices": [
+                      "scheduled_repair_ledger_discipline"
+                    ],
+                    "projects": [
+                      "communal_irrigation_pump_repair"
+                    ],
+                    "role": "repair",
+                    "skill": 6
+                  },
+                  "effect": {
+                    "budget": 6,
+                    "role": "repair",
+                    "striving": "fund_repair_equipment"
+                  },
+                  "effective_index": 13,
+                  "event_id": "sha256:8ac73b6f3db1a048a7b8db00e078f9f087e267da6a6c1195fd5f4f6a19db3530",
+                  "kind": "STRIVING",
+                  "owner_id": "G16I_ADULT",
+                  "readset": [
+                    {
+                      "event_id": "sha256:228f4d66bfcc2bc782d2a8a53dd8e803042484237ea3a84228fbfb3b098b877d",
+                      "owner_id": "G16I_ADULT",
+                      "path": "effect",
+                      "value": {
+                        "cash": 39,
+                        "earned": 8,
+                        "hours": 4,
+                        "role": "repair",
+                        "skill": 6
+                      }
+                    },
+                    {
+                      "event_id": "sha256:1b76486a6a9b944dacfe843302547b2f97b7b7b5cd994abb3c9ec11e969070e4",
+                      "owner_id": "G16I_ADULT",
+                      "path": "effect",
+                      "value": {
+                        "cash": 45,
+                        "completed_units": 3,
+                        "materials_used": 3,
+                        "payment": 6,
+                        "project": "communal_irrigation_pump_repair",
+                        "remaining_material_units": 2,
+                        "role": "repair"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "event_id": "sha256:c9cbdd40165dd477e53e1415c59fc798da799f68ebbd078317b628a7d75e4d77",
+                  "owner_id": "G15_WORLD",
+                  "path": "payload",
+                  "value": {
+                    "material_units": 5,
+                    "offers": {
+                      "ROUTE_INSTITUTIONAL": {
+                        "hours": 2,
+                        "payment": 5,
+                        "permit": true,
+                        "place": "INST_EVENING_CLASS_B",
+                        "travel_cost": 4
+                      },
+                      "ROUTE_LOCAL_CLOSED": {
+                        "hours": 2,
+                        "payment": 12,
+                        "permit": true,
+                        "place": "INST_WORKSHOP_A",
+                        "travel_cost": 3
+                      },
+                      "ROUTE_MOBILITY": {
+                        "hours": 2,
+                        "payment": 10,
+                        "permit": true,
+                        "place": "INST_TRANSIT_E",
+                        "travel_cost": 9
+                      },
+                      "ROUTE_UNCONVENTIONAL": {
+                        "hours": 2,
+                        "payment": 6,
+                        "permit": true,
+                        "place": "INST_COMMUNITY_D",
+                        "travel_cost": 5
+                      }
+                    },
+                    "permission": "SOURCEFREE_MATERIAL_ONLY",
+                    "project_id": "communal_irrigation_pump_repair",
+                    "project_permit": true,
+                    "tool_return_permit": true,
+                    "unit_payment": 2
+                  }
+                },
+                {
+                  "event_id": "sha256:6ce79570fcf85386a47c4857704f8680eddc1e53b056bbcb774710979b5abf97",
+                  "owner_id": "G16I_ADULT",
+                  "path": "after",
+                  "value": {
+                    "actor_id": "G16I_ADULT",
+                    "attitudes": [
+                      "reciprocity_in_work_obligations"
+                    ],
+                    "availability_status": "available_for_encounter",
+                    "cash": 54,
+                    "completed_units": 4,
+                    "debt_units": 2,
+                    "free_hours": 11,
+                    "health": "recovered",
+                    "material_position": "waged_repair",
+                    "nonmother_relations": [
+                      "G15_NONKIN_af4e8e368084ca0e8424f38764d1f3afbc5c96d5deb40db23e0882f30578b6fe"
+                    ],
+                    "place": "INST_WORKSHOP_A",
+                    "practices": [
+                      "scheduled_repair_ledger_discipline"
+                    ],
+                    "projects": [
+                      "communal_irrigation_pump_repair"
+                    ],
+                    "role": "repair",
+                    "skill": 6
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "continuation_version": "G15_VALUE_CONTINUATION_R1",
+        "household_admission": "NOT_GRANTED",
+        "maternal_continuation_admitted": true,
+        "no_fixed_family_labels": true,
+        "parent_project_change_registered_as_event": true,
+        "parental_status": "NOT_GRANTED",
+        "paternal_continuation_admitted": true,
+        "paternal_continuation_requires_supplied_history": true,
+        "previous_task_contact_resolves": true,
+        "relationship_continuation_admitted": false,
+        "research_relation_continuation": null,
+        "typed_hold": {
+          "hold_reasons": [
+            "SEPARATE_RELATIONSHIP_CONTINUATION_REQUIRED",
+            "NO_HOUSEHOLD_ADMISSION",
+            "NO_CHILD_EXPOSURE_ADMISSION"
+          ],
+          "hold_state": "NO_RELATIONSHIP_OR_PARENTAL_CONTINUATION_OWNER_GRANT"
+        },
+        "unformed_actor_continuation_minted": false
+      },
+      "witness": {
+        "actions": [
+          {
+            "after": {
+              "actor_id": "LAB_MOTHER_M0",
+              "attitudes": [
+                "reciprocity_in_work_obligations"
+              ],
+              "availability_status": "available_for_encounter",
+              "cash": 55,
+              "completed_units": 4,
+              "debt_units": 2,
+              "free_hours": 11,
+              "health": "recovered",
+              "material_position": "waged_finishing",
+              "nonmother_relations": [
+                "G15_NONKIN_fe79f0398ed97e03f5f5173d74911e67f44a7e710159d1ea59646b164a02dfc5"
+              ],
+              "place": "INST_WORKSHOP_A",
+              "practices": [
+                "scheduled_finishing_ledger_discipline"
+              ],
+              "projects": [
+                "apprentice_finishing_work"
+              ],
+              "role": "finishing",
+              "skill": 6
+            },
+            "before": {
+              "actor_id": "LAB_MOTHER_M0",
+              "attitudes": [
+                "reciprocity_in_work_obligations"
+              ],
+              "availability_status": "available_for_encounter",
+              "cash": 55,
+              "completed_units": 3,
+              "debt_units": 2,
+              "free_hours": 13,
+              "health": "recovered",
+              "material_position": "waged_finishing",
+              "nonmother_relations": [
+                "G15_NONKIN_fe79f0398ed97e03f5f5173d74911e67f44a7e710159d1ea59646b164a02dfc5"
+              ],
+              "place": "INST_WORKSHOP_A",
+              "practices": [
+                "scheduled_finishing_ledger_discipline"
+              ],
+              "projects": [
+                "apprentice_finishing_work"
+              ],
+              "role": "finishing",
+              "skill": 6
+            },
+            "causal_parent_event_ids": [
+              "sha256:8a9856318f559d0ef5dfd6f2cb0a27d36b2e2a0b6b622c21833e380459e18089",
+              "sha256:0344118957c59cc20c3fedb3009f65a1b516a21f7bcc48fd952215996c0e01d5",
+              "sha256:2f81d79c797ce1b6765411c4c2824285711049f385fd67cca981f8353e42bf09",
+              "sha256:1839be1ac14ad00a6b9e40c989fe7619f89f1f7ffb8606fe05cc4f411fbc072d",
+              "sha256:19287407c1a20c44e134f15df3f259d194ccd3456183f04c9251fd266954e830"
+            ],
+            "effective_index": 101,
+            "event_id": "sha256:9889ef476fc1276d3c1ba1ca04e24833bddf7e4daf2b2c62e309b5534f9ef401",
+            "history_hash": "sha256:7e43d00699875820f91e1b186c8b748f566f7e15db1a215f7c63ece880c9d204",
+            "kind": "PARTICIPATION_ACTION",
+            "material_event_ref": "sha256:19287407c1a20c44e134f15df3f259d194ccd3456183f04c9251fd266954e830",
+            "owner_id": "LAB_MOTHER_M0",
+            "status": "PERFORMED",
+            "values_read": [
+              {
+                "after": {
+                  "actor_id": "LAB_MOTHER_M0",
+                  "attitudes": [],
+                  "availability_status": "unavailable",
+                  "cash": 46,
+                  "completed_units": 3,
+                  "debt_units": 0,
+                  "free_hours": 15,
+                  "health": null,
+                  "material_position": "waged_finishing",
+                  "nonmother_relations": [],
+                  "place": null,
+                  "practices": [],
+                  "projects": [
+                    "apprentice_finishing_work"
+                  ],
+                  "role": "finishing",
+                  "skill": 6
+                },
+                "before": {
+                  "actor_id": "LAB_MOTHER_M0",
+                  "attitudes": [],
+                  "availability_status": "unavailable",
+                  "cash": 40,
+                  "completed_units": 0,
+                  "debt_units": 0,
+                  "free_hours": 18,
+                  "health": null,
+                  "material_position": "waged_finishing",
+                  "nonmother_relations": [],
+                  "place": null,
+                  "practices": [],
+                  "projects": [],
+                  "role": "finishing",
+                  "skill": 6
+                },
+                "effect": {
+                  "cash": 46,
+                  "completed_units": 3,
+                  "materials_used": 3,
+                  "payment": 6,
+                  "project": "apprentice_finishing_work",
+                  "remaining_material_units": 4,
+                  "role": "finishing"
+                },
+                "effective_index": 5,
+                "event_id": "sha256:8a9856318f559d0ef5dfd6f2cb0a27d36b2e2a0b6b622c21833e380459e18089",
+                "kind": "PROJECT",
+                "owner_id": "LAB_MOTHER_M0",
+                "readset": [
+                  {
+                    "event_id": "sha256:43650f89d770cdf74ab53a0e8a6e82171db92f6c0eb18329b6be8e002f2d6e63",
+                    "owner_id": "LAB_MOTHER_M0",
+                    "path": "effect",
+                    "value": {
+                      "cash": 40,
+                      "earned": 8,
+                      "hours": 4,
+                      "role": "finishing",
+                      "skill": 6
+                    }
+                  },
+                  {
+                    "event_id": "sha256:9251af717bbff9e076464dba340e445c85b7c7e65b442cc8fabacbaf9838b7b3",
+                    "owner_id": "G15_WORLD",
+                    "path": "effect",
+                    "value": {
+                      "material_units": 7,
+                      "offers": {
+                        "ROUTE_INSTITUTIONAL": {
+                          "hours": 2,
+                          "payment": 5,
+                          "permit": true,
+                          "place": "INST_EVENING_CLASS_B",
+                          "travel_cost": 4
+                        },
+                        "ROUTE_LOCAL_CLOSED": {
+                          "hours": 2,
+                          "payment": 12,
+                          "permit": true,
+                          "place": "INST_WORKSHOP_A",
+                          "travel_cost": 3
+                        },
+                        "ROUTE_MOBILITY": {
+                          "hours": 2,
+                          "payment": 10,
+                          "permit": true,
+                          "place": "INST_TRANSIT_E",
+                          "travel_cost": 9
+                        },
+                        "ROUTE_UNCONVENTIONAL": {
+                          "hours": 2,
+                          "payment": 6,
+                          "permit": true,
+                          "place": "INST_COMMUNITY_D",
+                          "travel_cost": 5
+                        }
+                      },
+                      "permission": "SOURCEFREE_MATERIAL_ONLY",
+                      "project_id": "apprentice_finishing_work",
+                      "project_permit": true,
+                      "tool_return_permit": true,
+                      "unit_payment": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "after": {
+                  "actor_id": "LAB_MOTHER_M0",
+                  "attitudes": [],
+                  "availability_status": "unavailable",
+                  "cash": 46,
+                  "completed_units": 3,
+                  "debt_units": 2,
+                  "free_hours": 15,
+                  "health": null,
+                  "material_position": "waged_finishing",
+                  "nonmother_relations": [
+                    "G15_NONKIN_fe79f0398ed97e03f5f5173d74911e67f44a7e710159d1ea59646b164a02dfc5"
+                  ],
+                  "place": null,
+                  "practices": [
+                    "scheduled_finishing_ledger_discipline"
+                  ],
+                  "projects": [
+                    "apprentice_finishing_work"
+                  ],
+                  "role": "finishing",
+                  "skill": 6
+                },
+                "before": {
+                  "actor_id": "LAB_MOTHER_M0",
+                  "attitudes": [],
+                  "availability_status": "unavailable",
+                  "cash": 46,
+                  "completed_units": 3,
+                  "debt_units": 2,
+                  "free_hours": 15,
+                  "health": null,
+                  "material_position": "waged_finishing",
+                  "nonmother_relations": [
+                    "G15_NONKIN_fe79f0398ed97e03f5f5173d74911e67f44a7e710159d1ea59646b164a02dfc5"
+                  ],
+                  "place": null,
+                  "practices": [],
+                  "projects": [
+                    "apprentice_finishing_work"
+                  ],
+                  "role": "finishing",
+                  "skill": 6
+                },
+                "effect": {
+                  "checks": 3,
+                  "practice": "scheduled_finishing_ledger_discipline",
+                  "role": "finishing"
+                },
+                "effective_index": 9,
+                "event_id": "sha256:0344118957c59cc20c3fedb3009f65a1b516a21f7bcc48fd952215996c0e01d5",
+                "kind": "PRACTICE_FORMATION",
+                "owner_id": "LAB_MOTHER_M0",
+                "readset": [
+                  {
+                    "event_id": "sha256:8a9856318f559d0ef5dfd6f2cb0a27d36b2e2a0b6b622c21833e380459e18089",
+                    "owner_id": "LAB_MOTHER_M0",
+                    "path": "effect",
+                    "value": {
+                      "cash": 46,
+                      "completed_units": 3,
+                      "materials_used": 3,
+                      "payment": 6,
+                      "project": "apprentice_finishing_work",
+                      "remaining_material_units": 4,
+                      "role": "finishing"
+                    }
+                  }
+                ]
+              },
+              {
+                "after": {
+                  "actor_id": "LAB_MOTHER_M0",
+                  "attitudes": [
+                    "reciprocity_in_work_obligations"
+                  ],
+                  "availability_status": "unavailable",
+                  "cash": 46,
+                  "completed_units": 3,
+                  "debt_units": 2,
+                  "free_hours": 15,
+                  "health": null,
+                  "material_position": "waged_finishing",
+                  "nonmother_relations": [
+                    "G15_NONKIN_fe79f0398ed97e03f5f5173d74911e67f44a7e710159d1ea59646b164a02dfc5"
+                  ],
+                  "place": null,
+                  "practices": [
+                    "scheduled_finishing_ledger_discipline"
+                  ],
+                  "projects": [
+                    "apprentice_finishing_work"
+                  ],
+                  "role": "finishing",
+                  "skill": 6
+                },
+                "before": {
+                  "actor_id": "LAB_MOTHER_M0",
+                  "attitudes": [
+                    "reciprocity_in_work_obligations"
+                  ],
+                  "availability_status": "unavailable",
+                  "cash": 46,
+                  "completed_units": 3,
+                  "debt_units": 2,
+                  "free_hours": 15,
+                  "health": null,
+                  "material_position": "waged_finishing",
+                  "nonmother_relations": [
+                    "G15_NONKIN_fe79f0398ed97e03f5f5173d74911e67f44a7e710159d1ea59646b164a02dfc5"
+                  ],
+                  "place": null,
+                  "practices": [
+                    "scheduled_finishing_ledger_discipline"
+                  ],
+                  "projects": [
+                    "apprentice_finishing_work"
+                  ],
+                  "role": "finishing",
+                  "skill": 6
+                },
+                "effect": {
+                  "budget": 6,
+                  "role": "finishing",
+                  "striving": "fund_finishing_equipment"
+                },
+                "effective_index": 13,
+                "event_id": "sha256:2f81d79c797ce1b6765411c4c2824285711049f385fd67cca981f8353e42bf09",
+                "kind": "STRIVING",
+                "owner_id": "LAB_MOTHER_M0",
+                "readset": [
+                  {
+                    "event_id": "sha256:43650f89d770cdf74ab53a0e8a6e82171db92f6c0eb18329b6be8e002f2d6e63",
+                    "owner_id": "LAB_MOTHER_M0",
+                    "path": "effect",
+                    "value": {
+                      "cash": 40,
+                      "earned": 8,
+                      "hours": 4,
+                      "role": "finishing",
+                      "skill": 6
+                    }
+                  },
+                  {
+                    "event_id": "sha256:8a9856318f559d0ef5dfd6f2cb0a27d36b2e2a0b6b622c21833e380459e18089",
+                    "owner_id": "LAB_MOTHER_M0",
+                    "path": "effect",
+                    "value": {
+                      "cash": 46,
+                      "completed_units": 3,
+                      "materials_used": 3,
+                      "payment": 6,
+                      "project": "apprentice_finishing_work",
+                      "remaining_material_units": 4,
+                      "role": "finishing"
+                    }
+                  }
+                ]
+              },
+              {
+                "after": {
+                  "actor_id": "LAB_MOTHER_M0",
+                  "attitudes": [
+                    "reciprocity_in_work_obligations"
+                  ],
+                  "availability_status": "available_for_encounter",
+                  "cash": 55,
+                  "completed_units": 3,
+                  "debt_units": 2,
+                  "free_hours": 13,
+                  "health": "recovered",
+                  "material_position": "waged_finishing",
+                  "nonmother_relations": [
+                    "G15_NONKIN_fe79f0398ed97e03f5f5173d74911e67f44a7e710159d1ea59646b164a02dfc5"
+                  ],
+                  "place": "INST_WORKSHOP_A",
+                  "practices": [
+                    "scheduled_finishing_ledger_discipline"
+                  ],
+                  "projects": [
+                    "apprentice_finishing_work"
+                  ],
+                  "role": "finishing",
+                  "skill": 6
+                },
+                "before": {
+                  "actor_id": "LAB_MOTHER_M0",
+                  "attitudes": [
+                    "reciprocity_in_work_obligations"
+                  ],
+                  "availability_status": "unavailable",
+                  "cash": 46,
+                  "completed_units": 3,
+                  "debt_units": 2,
+                  "free_hours": 15,
+                  "health": "recovered",
+                  "material_position": "waged_finishing",
+                  "nonmother_relations": [
+                    "G15_NONKIN_fe79f0398ed97e03f5f5173d74911e67f44a7e710159d1ea59646b164a02dfc5"
+                  ],
+                  "place": null,
+                  "practices": [
+                    "scheduled_finishing_ledger_discipline"
+                  ],
+                  "projects": [
+                    "apprentice_finishing_work"
+                  ],
+                  "role": "finishing",
+                  "skill": 6
+                },
+                "effect": {
+                  "cash": 55,
+                  "free_hours": 13,
+                  "net": 9,
+                  "place": "INST_WORKSHOP_A",
+                  "route": "ROUTE_LOCAL_CLOSED"
+                },
+                "effective_index": 19,
+                "event_id": "sha256:1839be1ac14ad00a6b9e40c989fe7619f89f1f7ffb8606fe05cc4f411fbc072d",
+                "kind": "COMMISSIONED_WORK",
+                "owner_id": "LAB_MOTHER_M0",
+                "readset": [
+                  {
+                    "event_id": "sha256:43650f89d770cdf74ab53a0e8a6e82171db92f6c0eb18329b6be8e002f2d6e63",
+                    "owner_id": "LAB_MOTHER_M0",
+                    "path": "effect",
+                    "value": {
+                      "cash": 40,
+                      "earned": 8,
+                      "hours": 4,
+                      "role": "finishing",
+                      "skill": 6
+                    }
+                  },
+                  {
+                    "event_id": "sha256:8a9856318f559d0ef5dfd6f2cb0a27d36b2e2a0b6b622c21833e380459e18089",
+                    "owner_id": "LAB_MOTHER_M0",
+                    "path": "effect",
+                    "value": {
+                      "cash": 46,
+                      "completed_units": 3,
+                      "materials_used": 3,
+                      "payment": 6,
+                      "project": "apprentice_finishing_work",
+                      "remaining_material_units": 4,
+                      "role": "finishing"
+                    }
+                  },
+                  {
+                    "event_id": "sha256:0344118957c59cc20c3fedb3009f65a1b516a21f7bcc48fd952215996c0e01d5",
+                    "owner_id": "LAB_MOTHER_M0",
+                    "path": "effect",
+                    "value": {
+                      "checks": 3,
+                      "practice": "scheduled_finishing_ledger_discipline",
+                      "role": "finishing"
+                    }
+                  },
+                  {
+                    "event_id": "sha256:7197086aecca1894803009ee78cff3fa1ee9f011fc1b884e803d16cfde5f8ae4",
+                    "owner_id": "LAB_MOTHER_M0",
+                    "path": "effect",
+                    "value": {
+                      "goal": "fund_finishing_equipment",
+                      "net": 9,
+                      "offer": {
+                        "hours": 2,
+                        "payment": 12,
+                        "permit": true,
+                        "place": "INST_WORKSHOP_A",
+                        "travel_cost": 3
+                      },
+                      "route": "ROUTE_LOCAL_CLOSED",
+                      "skill": 6
+                    }
+                  },
+                  {
+                    "event_id": "sha256:f026b00ef2073e93f81f834da4c614331dff82593dbe30d7da1d8cad6a48ed91",
+                    "owner_id": "LAB_MOTHER_M0",
+                    "path": "effect",
+                    "value": {
+                      "recovered": true,
+                      "rest_hours": 3
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "after": {
+              "actor_id": "G16I_ADULT",
+              "attitudes": [
+                "reciprocity_in_work_obligations"
+              ],
+              "availability_status": "available_for_encounter",
+              "cash": 54,
+              "completed_units": 4,
+              "debt_units": 2,
+              "free_hours": 11,
+              "health": "recovered",
+              "material_position": "waged_repair",
+              "nonmother_relations": [
+                "G15_NONKIN_af4e8e368084ca0e8424f38764d1f3afbc5c96d5deb40db23e0882f30578b6fe"
+              ],
+              "place": "INST_WORKSHOP_A",
+              "practices": [
+                "scheduled_repair_ledger_discipline"
+              ],
+              "projects": [
+                "communal_irrigation_pump_repair"
+              ],
+              "role": "repair",
+              "skill": 6
+            },
+            "before": {
+              "actor_id": "G16I_ADULT",
+              "attitudes": [
+                "reciprocity_in_work_obligations"
+              ],
+              "availability_status": "available_for_encounter",
+              "cash": 54,
+              "completed_units": 3,
+              "debt_units": 2,
+              "free_hours": 13,
+              "health": "recovered",
+              "material_position": "waged_repair",
+              "nonmother_relations": [
+                "G15_NONKIN_af4e8e368084ca0e8424f38764d1f3afbc5c96d5deb40db23e0882f30578b6fe"
+              ],
+              "place": "INST_WORKSHOP_A",
+              "practices": [
+                "scheduled_repair_ledger_discipline"
+              ],
+              "projects": [
+                "communal_irrigation_pump_repair"
+              ],
+              "role": "repair",
+              "skill": 6
+            },
+            "causal_parent_event_ids": [
+              "sha256:1b76486a6a9b944dacfe843302547b2f97b7b7b5cd994abb3c9ec11e969070e4",
+              "sha256:18bac9497a15af1c8c8ef976e716ba1fa6f96ba09d39d70b40a1634ab14492f4",
+              "sha256:8ac73b6f3db1a048a7b8db00e078f9f087e267da6a6c1195fd5f4f6a19db3530",
+              "sha256:64d4ce7cc7f61a50c113f83297134e217dfc7f105b08aaa3574da43a12a18d03",
+              "sha256:19287407c1a20c44e134f15df3f259d194ccd3456183f04c9251fd266954e830"
+            ],
+            "effective_index": 101,
+            "event_id": "sha256:6ce79570fcf85386a47c4857704f8680eddc1e53b056bbcb774710979b5abf97",
+            "history_hash": "sha256:2a90ba5527504c08cd6622110a09527adaee0573dae20c23fcfd8fedda073e19",
+            "kind": "PARTICIPATION_ACTION",
+            "material_event_ref": "sha256:19287407c1a20c44e134f15df3f259d194ccd3456183f04c9251fd266954e830",
+            "owner_id": "G16I_ADULT",
+            "status": "PERFORMED",
+            "values_read": [
+              {
+                "after": {
+                  "actor_id": "G16I_ADULT",
+                  "attitudes": [],
+                  "availability_status": "unavailable",
+                  "cash": 45,
+                  "completed_units": 3,
+                  "debt_units": 0,
+                  "free_hours": 15,
+                  "health": null,
+                  "material_position": "waged_repair",
+                  "nonmother_relations": [],
+                  "place": null,
+                  "practices": [],
+                  "projects": [
+                    "communal_irrigation_pump_repair"
+                  ],
+                  "role": "repair",
+                  "skill": 6
+                },
+                "before": {
+                  "actor_id": "G16I_ADULT",
+                  "attitudes": [],
+                  "availability_status": "unavailable",
+                  "cash": 39,
+                  "completed_units": 0,
+                  "debt_units": 0,
+                  "free_hours": 18,
+                  "health": null,
+                  "material_position": "waged_repair",
+                  "nonmother_relations": [],
+                  "place": null,
+                  "practices": [],
+                  "projects": [],
+                  "role": "repair",
+                  "skill": 6
+                },
+                "effect": {
+                  "cash": 45,
+                  "completed_units": 3,
+                  "materials_used": 3,
+                  "payment": 6,
+                  "project": "communal_irrigation_pump_repair",
+                  "remaining_material_units": 2,
+                  "role": "repair"
+                },
+                "effective_index": 5,
+                "event_id": "sha256:1b76486a6a9b944dacfe843302547b2f97b7b7b5cd994abb3c9ec11e969070e4",
+                "kind": "PROJECT",
+                "owner_id": "G16I_ADULT",
+                "readset": [
+                  {
+                    "event_id": "sha256:228f4d66bfcc2bc782d2a8a53dd8e803042484237ea3a84228fbfb3b098b877d",
+                    "owner_id": "G16I_ADULT",
+                    "path": "effect",
+                    "value": {
+                      "cash": 39,
+                      "earned": 8,
+                      "hours": 4,
+                      "role": "repair",
+                      "skill": 6
+                    }
+                  },
+                  {
+                    "event_id": "sha256:c9cbdd40165dd477e53e1415c59fc798da799f68ebbd078317b628a7d75e4d77",
+                    "owner_id": "G15_WORLD",
+                    "path": "effect",
+                    "value": {
+                      "material_units": 5,
+                      "offers": {
+                        "ROUTE_INSTITUTIONAL": {
+                          "hours": 2,
+                          "payment": 5,
+                          "permit": true,
+                          "place": "INST_EVENING_CLASS_B",
+                          "travel_cost": 4
+                        },
+                        "ROUTE_LOCAL_CLOSED": {
+                          "hours": 2,
+                          "payment": 12,
+                          "permit": true,
+                          "place": "INST_WORKSHOP_A",
+                          "travel_cost": 3
+                        },
+                        "ROUTE_MOBILITY": {
+                          "hours": 2,
+                          "payment": 10,
+                          "permit": true,
+                          "place": "INST_TRANSIT_E",
+                          "travel_cost": 9
+                        },
+                        "ROUTE_UNCONVENTIONAL": {
+                          "hours": 2,
+                          "payment": 6,
+                          "permit": true,
+                          "place": "INST_COMMUNITY_D",
+                          "travel_cost": 5
+                        }
+                      },
+                      "permission": "SOURCEFREE_MATERIAL_ONLY",
+                      "project_id": "communal_irrigation_pump_repair",
+                      "project_permit": true,
+                      "tool_return_permit": true,
+                      "unit_payment": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "after": {
+                  "actor_id": "G16I_ADULT",
+                  "attitudes": [],
+                  "availability_status": "unavailable",
+                  "cash": 45,
+                  "completed_units": 3,
+                  "debt_units": 2,
+                  "free_hours": 15,
+                  "health": null,
+                  "material_position": "waged_repair",
+                  "nonmother_relations": [
+                    "G15_NONKIN_af4e8e368084ca0e8424f38764d1f3afbc5c96d5deb40db23e0882f30578b6fe"
+                  ],
+                  "place": null,
+                  "practices": [
+                    "scheduled_repair_ledger_discipline"
+                  ],
+                  "projects": [
+                    "communal_irrigation_pump_repair"
+                  ],
+                  "role": "repair",
+                  "skill": 6
+                },
+                "before": {
+                  "actor_id": "G16I_ADULT",
+                  "attitudes": [],
+                  "availability_status": "unavailable",
+                  "cash": 45,
+                  "completed_units": 3,
+                  "debt_units": 2,
+                  "free_hours": 15,
+                  "health": null,
+                  "material_position": "waged_repair",
+                  "nonmother_relations": [
+                    "G15_NONKIN_af4e8e368084ca0e8424f38764d1f3afbc5c96d5deb40db23e0882f30578b6fe"
+                  ],
+                  "place": null,
+                  "practices": [],
+                  "projects": [
+                    "communal_irrigation_pump_repair"
+                  ],
+                  "role": "repair",
+                  "skill": 6
+                },
+                "effect": {
+                  "checks": 3,
+                  "practice": "scheduled_repair_ledger_discipline",
+                  "role": "repair"
+                },
+                "effective_index": 9,
+                "event_id": "sha256:18bac9497a15af1c8c8ef976e716ba1fa6f96ba09d39d70b40a1634ab14492f4",
+                "kind": "PRACTICE_FORMATION",
+                "owner_id": "G16I_ADULT",
+                "readset": [
+                  {
+                    "event_id": "sha256:1b76486a6a9b944dacfe843302547b2f97b7b7b5cd994abb3c9ec11e969070e4",
+                    "owner_id": "G16I_ADULT",
+                    "path": "effect",
+                    "value": {
+                      "cash": 45,
+                      "completed_units": 3,
+                      "materials_used": 3,
+                      "payment": 6,
+                      "project": "communal_irrigation_pump_repair",
+                      "remaining_material_units": 2,
+                      "role": "repair"
+                    }
+                  }
+                ]
+              },
+              {
+                "after": {
+                  "actor_id": "G16I_ADULT",
+                  "attitudes": [
+                    "reciprocity_in_work_obligations"
+                  ],
+                  "availability_status": "unavailable",
+                  "cash": 45,
+                  "completed_units": 3,
+                  "debt_units": 2,
+                  "free_hours": 15,
+                  "health": null,
+                  "material_position": "waged_repair",
+                  "nonmother_relations": [
+                    "G15_NONKIN_af4e8e368084ca0e8424f38764d1f3afbc5c96d5deb40db23e0882f30578b6fe"
+                  ],
+                  "place": null,
+                  "practices": [
+                    "scheduled_repair_ledger_discipline"
+                  ],
+                  "projects": [
+                    "communal_irrigation_pump_repair"
+                  ],
+                  "role": "repair",
+                  "skill": 6
+                },
+                "before": {
+                  "actor_id": "G16I_ADULT",
+                  "attitudes": [
+                    "reciprocity_in_work_obligations"
+                  ],
+                  "availability_status": "unavailable",
+                  "cash": 45,
+                  "completed_units": 3,
+                  "debt_units": 2,
+                  "free_hours": 15,
+                  "health": null,
+                  "material_position": "waged_repair",
+                  "nonmother_relations": [
+                    "G15_NONKIN_af4e8e368084ca0e8424f38764d1f3afbc5c96d5deb40db23e0882f30578b6fe"
+                  ],
+                  "place": null,
+                  "practices": [
+                    "scheduled_repair_ledger_discipline"
+                  ],
+                  "projects": [
+                    "communal_irrigation_pump_repair"
+                  ],
+                  "role": "repair",
+                  "skill": 6
+                },
+                "effect": {
+                  "budget": 6,
+                  "role": "repair",
+                  "striving": "fund_repair_equipment"
+                },
+                "effective_index": 13,
+                "event_id": "sha256:8ac73b6f3db1a048a7b8db00e078f9f087e267da6a6c1195fd5f4f6a19db3530",
+                "kind": "STRIVING",
+                "owner_id": "G16I_ADULT",
+                "readset": [
+                  {
+                    "event_id": "sha256:228f4d66bfcc2bc782d2a8a53dd8e803042484237ea3a84228fbfb3b098b877d",
+                    "owner_id": "G16I_ADULT",
+                    "path": "effect",
+                    "value": {
+                      "cash": 39,
+                      "earned": 8,
+                      "hours": 4,
+                      "role": "repair",
+                      "skill": 6
+                    }
+                  },
+                  {
+                    "event_id": "sha256:1b76486a6a9b944dacfe843302547b2f97b7b7b5cd994abb3c9ec11e969070e4",
+                    "owner_id": "G16I_ADULT",
+                    "path": "effect",
+                    "value": {
+                      "cash": 45,
+                      "completed_units": 3,
+                      "materials_used": 3,
+                      "payment": 6,
+                      "project": "communal_irrigation_pump_repair",
+                      "remaining_material_units": 2,
+                      "role": "repair"
+                    }
+                  }
+                ]
+              },
+              {
+                "after": {
+                  "actor_id": "G16I_ADULT",
+                  "attitudes": [
+                    "reciprocity_in_work_obligations"
+                  ],
+                  "availability_status": "available_for_encounter",
+                  "cash": 54,
+                  "completed_units": 3,
+                  "debt_units": 2,
+                  "free_hours": 13,
+                  "health": "recovered",
+                  "material_position": "waged_repair",
+                  "nonmother_relations": [
+                    "G15_NONKIN_af4e8e368084ca0e8424f38764d1f3afbc5c96d5deb40db23e0882f30578b6fe"
+                  ],
+                  "place": "INST_WORKSHOP_A",
+                  "practices": [
+                    "scheduled_repair_ledger_discipline"
+                  ],
+                  "projects": [
+                    "communal_irrigation_pump_repair"
+                  ],
+                  "role": "repair",
+                  "skill": 6
+                },
+                "before": {
+                  "actor_id": "G16I_ADULT",
+                  "attitudes": [
+                    "reciprocity_in_work_obligations"
+                  ],
+                  "availability_status": "unavailable",
+                  "cash": 45,
+                  "completed_units": 3,
+                  "debt_units": 2,
+                  "free_hours": 15,
+                  "health": "recovered",
+                  "material_position": "waged_repair",
+                  "nonmother_relations": [
+                    "G15_NONKIN_af4e8e368084ca0e8424f38764d1f3afbc5c96d5deb40db23e0882f30578b6fe"
+                  ],
+                  "place": null,
+                  "practices": [
+                    "scheduled_repair_ledger_discipline"
+                  ],
+                  "projects": [
+                    "communal_irrigation_pump_repair"
+                  ],
+                  "role": "repair",
+                  "skill": 6
+                },
+                "effect": {
+                  "cash": 54,
+                  "free_hours": 13,
+                  "net": 9,
+                  "place": "INST_WORKSHOP_A",
+                  "route": "ROUTE_LOCAL_CLOSED"
+                },
+                "effective_index": 19,
+                "event_id": "sha256:64d4ce7cc7f61a50c113f83297134e217dfc7f105b08aaa3574da43a12a18d03",
+                "kind": "COMMISSIONED_WORK",
+                "owner_id": "G16I_ADULT",
+                "readset": [
+                  {
+                    "event_id": "sha256:228f4d66bfcc2bc782d2a8a53dd8e803042484237ea3a84228fbfb3b098b877d",
+                    "owner_id": "G16I_ADULT",
+                    "path": "effect",
+                    "value": {
+                      "cash": 39,
+                      "earned": 8,
+                      "hours": 4,
+                      "role": "repair",
+                      "skill": 6
+                    }
+                  },
+                  {
+                    "event_id": "sha256:1b76486a6a9b944dacfe843302547b2f97b7b7b5cd994abb3c9ec11e969070e4",
+                    "owner_id": "G16I_ADULT",
+                    "path": "effect",
+                    "value": {
+                      "cash": 45,
+                      "completed_units": 3,
+                      "materials_used": 3,
+                      "payment": 6,
+                      "project": "communal_irrigation_pump_repair",
+                      "remaining_material_units": 2,
+                      "role": "repair"
+                    }
+                  },
+                  {
+                    "event_id": "sha256:18bac9497a15af1c8c8ef976e716ba1fa6f96ba09d39d70b40a1634ab14492f4",
+                    "owner_id": "G16I_ADULT",
+                    "path": "effect",
+                    "value": {
+                      "checks": 3,
+                      "practice": "scheduled_repair_ledger_discipline",
+                      "role": "repair"
+                    }
+                  },
+                  {
+                    "event_id": "sha256:4ebe6f3cb467de64cacf8b5b56603cab21086f337f83e94402420a0673332c9b",
+                    "owner_id": "G16I_ADULT",
+                    "path": "effect",
+                    "value": {
+                      "goal": "fund_repair_equipment",
+                      "net": 9,
+                      "offer": {
+                        "hours": 2,
+                        "payment": 12,
+                        "permit": true,
+                        "place": "INST_WORKSHOP_A",
+                        "travel_cost": 3
+                      },
+                      "route": "ROUTE_LOCAL_CLOSED",
+                      "skill": 6
+                    }
+                  },
+                  {
+                    "event_id": "sha256:604c187a2628be58cf65b99246e589f097ff4e9eec5c638e2f2f6fdf43d47bb9",
+                    "owner_id": "G16I_ADULT",
+                    "path": "effect",
+                    "value": {
+                      "recovered": true,
+                      "rest_hours": 3
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "causal_parent_event_ids": [
+          "sha256:19287407c1a20c44e134f15df3f259d194ccd3456183f04c9251fd266954e830",
+          "sha256:9889ef476fc1276d3c1ba1ca04e24833bddf7e4daf2b2c62e309b5534f9ef401",
+          "sha256:6ce79570fcf85386a47c4857704f8680eddc1e53b056bbcb774710979b5abf97"
+        ],
+        "effective_index": 102,
+        "event_id": "sha256:384587f7fcdcc6cd5eae75623a74b57d797e30ac4953de52c41f11cd8d0efb62",
+        "kind": "JOINT_TASK_WITNESS",
+        "material": {
+          "effective_index": 100,
+          "event_id": "sha256:19287407c1a20c44e134f15df3f259d194ccd3456183f04c9251fd266954e830",
+          "material_units": 1,
+          "owner_id": "G15_INDEPENDENT_MATERIAL_OBSERVER",
+          "payment_per_actor": 7,
+          "permission": "RESEARCH_JOINT_WITNESS_ONLY",
+          "permit": true,
+          "place": "INST_WORKSHOP_A",
+          "task_hours": 2
+        },
+        "maternal_history_hash": "sha256:7e43d00699875820f91e1b186c8b748f566f7e15db1a215f7c63ece880c9d204",
+        "owner_id": "G15_INDEPENDENT_MATERIAL_OBSERVER",
+        "participants": [
+          "LAB_MOTHER_M0",
+          "G16I_ADULT"
+        ],
+        "paternal_history_hash": "sha256:2a90ba5527504c08cd6622110a09527adaee0573dae20c23fcfd8fedda073e19",
+        "registry_hash": "sha256:2316f1c0329c151fad4b151a733d5f8e6b843923d35d5c95eea4eb8e8379b1d4",
+        "status": "WITNESSED"
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+___________ test_retry_empty_and_authority_outcomes_remain_distinct ____________
+WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/test_g16i_science.py:273: in test_retry_empty_and_authority_outcomes_remain_distinct
+    assert bad['terminal']['status']=='HISTORY_SEARCH_EXHAUSTED'
+E   AssertionError: assert 'COMMITTED' == 'HISTORY_SEARCH_EXHAUSTED'
+E     
+E     - HISTORY_SEARCH_EXHAUSTED
+E     + COMMITTED
+=========================== short test summary info ============================
+FAILED WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/test_g16i_science.py::test_retry_empty_and_authority_outcomes_remain_distinct
+1 failed in 1.19s
