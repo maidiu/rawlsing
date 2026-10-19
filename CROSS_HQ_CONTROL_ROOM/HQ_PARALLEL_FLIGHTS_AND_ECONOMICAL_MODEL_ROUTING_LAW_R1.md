@@ -1,5 +1,10 @@
 # RAWLSING — Mandatory HQ parallel commission flights and minimum-sufficient model routing R1
 
+## TERMINAL PRODUCT COUNTERWEIGHT — mandatory 2026-10-19
+
+**PARALLEL != PRODUCTIVE.** This flight law must be read with [shared terminal deliverable continuity/anti-microfocus law](HQ_TERMINAL_DELIVERABLE_CONTINUITY_AND_ANTI_MICROFOCUS_LAW_R1.md). Four sourcefree canary/review lanes can satisfy parallelism and still leave all35 F1–F8/N11 or Sorok real-actor C12/A0 unfinished. Every flight must tie its selected substantial campaigns to the **named terminal acceptance artifact**, state the largest lawful implementable tranche and real consumer, and identify what fraction of required productive obligation actually gains evidence (no invented percent). Purely local test-count or refusal gains are labeled `LOCAL_ONLY__NO_TERMINAL_DELTA` rather than celebrated as terminal completion. Small critical fixes remain permitted only with a named parent completion campaign and explicit blocking relationship; unrelated source/actor/semantic permissions stay held. Failure triggers `HQ_TERMINAL_SCOPE_DRIFT__REPLAN_BEFORE_NEW_DISPATCH`, not another reviewer or a stop on running jobs.
+
+
 **Status: USER-DIRECTED MANDATORY SHARED PRE-MAIN / PYAT / SOROK HQ GROK, INTAKE, DISPATCH AND SUCCESSION LAW. Effective 2026-10-18.**
 
 **Problem corrected:** An HQ can properly review and repair each return yet abandon global forward motion by repeating `one return → one next review/repair → wait → one next commission`. This is **SEQ-DRIFT**, an HQ orchestration failure even when each local test, source custody or independent disposition is valid. "A previous worker returned" is not itself a ranking of what the whole machine needs next. Existing Pyat continuous-command, Sorok 00C/00D, cross-HQ progress, proof-integrity and source/semantic/actor governance remain in force. This law makes their portfolio obligation impossible to omit from a valid HQ grok or return intake. **It grants no source, semantic, model-use, production, actor, HQ succession or autonomous dispatch permission.**
