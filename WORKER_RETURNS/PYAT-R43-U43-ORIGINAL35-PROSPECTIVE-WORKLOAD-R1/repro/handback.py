@@ -40,6 +40,7 @@ def main():
         source_decision_packets="original35_issuer_decision_packets.json",
         source_specific_demands=175,unmatched_register_demands=81,
         native_entrypoint="rawlsing_next.pre553_issued_workload.execute_issued_workload",
+        consumer_backward_graph="CONSUMER_BACKWARD_NATIVE_GRAPH.json",
         actual_native_types=["GovernedC11Projection","RuntimeObjectCatalog","I03ExecutionRequest","DiscoveryAuthority","BatchManifest","UnitExecutionReceipt"],
         source_factory_binding="NativeWorkload.source_factory_ref; called only after authenticated current source/host/purpose and scientific record admission",
         issuer_resolver="External competent custody CurrentDecisionResolver.resolve_current; no signer or issuance by U43",
