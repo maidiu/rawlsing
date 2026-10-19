@@ -1,5 +1,10 @@
 # Pyat HQ operating requirements — effective delivery
 
+## MANDATORY COMPLETION SCALE CLARIFICATION — 19 October 2026
+
+“One outcome, one owner, one working loop” below means **one substantially productive coherent terminal-capability tranche**, NOT “one small source-free probe, one wrapper, or one green court.” Before applying its effective-delivery/economy mechanics read [shared PRE-MAIN terminal deliverable continuity law](../CROSS_HQ_CONTROL_ROOM/HQ_TERMINAL_DELIVERABLE_CONTINUITY_AND_ANTI_MICROFOCUS_LAW_R1.md). Assign all lawful in-scope producer→source-backed artifact→real consumer implementation, expected-set/no-drop and necessary tests together where scientific owners permit. An independent I2 court or critical microscopic defect may remain separately bounded but MUST name the major N11/N12 or Sorok person/consumer campaign it actually unblocks; it cannot define the whole HQ flight. Shortest working task is not the optimizing objective: **accepted terminal functionality per user attention, correct sources and real evidence** is. Do not turn this correction into extra reviews, new reports or unauthorized source/actor semantics.
+
+
 > **MANDATORY 2026-10-14 RESOURCE UPDATE:** Apply [00D warm execution passport/money-first agent dispensation](00D_WARM_EXECUTION_PASSPORT_AND_MONEY_FIRST_AGENT_DISPENSATION_R1.md) alongside this file. Supersede a reflexive Browser High/Browser Economy assignment with the cheapest qualified existing host and a verified warm session where lawful, avoiding repeat repository downloads and import setup; respect shared-store worktrees, scientific and actor-source boundaries.
 Status: USER_DIRECTED_OPERATING_REFINEMENT
 Record: USER_DIRECTED_PYAT_HQ_EFFECTIVENESS_20260930
