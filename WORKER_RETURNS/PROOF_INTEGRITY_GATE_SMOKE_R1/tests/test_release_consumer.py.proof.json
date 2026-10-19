@@ -1,0 +1,16 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "claims": [
+    {
+      "claim_id": "CI_SMOKE_RELEASE_EDGE",
+      "actual_consumer": "consume_selected_release",
+      "claimed_dependency": "release['value'] -> consumer",
+      "positive_node": "WORKER_RETURNS/PROOF_INTEGRITY_GATE_SMOKE_R1/tests/test_release_consumer.py::test_consumer_depends_on_selected_release",
+      "fault": {
+        "path": "WORKER_RETURNS/PROOF_INTEGRITY_GATE_SMOKE_R1/edge.py",
+        "old": "    return release['value']",
+        "new": "    return 7"
+      }
+    }
+  ]
+}
