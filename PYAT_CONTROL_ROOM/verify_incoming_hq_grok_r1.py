@@ -37,6 +37,7 @@ REQUIRED_PROOFS = {
     "scientific_scope_35wave_and_authority",
     "resource_privacy_and_worktree",
     "parallel_flight_and_model_economy",
+    "terminal_artifact_continuity",
 }
 VALID_DECISIONS = {
     "REUSE_AS_IS",
@@ -149,6 +150,43 @@ def check(record):
         entry = capacity.get(slot) or {}
         if entry.get("status") not in {"UNKNOWN", "LIVE_VERIFIED", "UNAVAILABLE", "STALE_RECHECK_REQUIRED", "RESOURCE_HELD"}:
             errors.append(f"parallel_flight_board.capacity_matrix.{slot}: invalid/missing status")
+
+    # 2026-10-19 terminal-first accession safeguard. This is structural ONLY:
+    # a competent HQ must judge scope, actual product maturity and owner permissions.
+    # A filled field cannot by itself prove scientific validity or dispatch authority.
+    terminal = record.get("terminal_artifact_continuity") or {}
+    if terminal.get("status") != "PASS":
+        errors.append("terminal_artifact_continuity: not PASS")
+    for key in (
+        "adopted_HQD125_HQD216_and_Astra_R3_read_ref",
+        "missing_n11_artifacts_and_scope",
+        "missing_n12_seam_artifacts_and_permissions",
+        "estate_f1_f8_current_qualified_status",
+        "largest_lawfully_completable_productive_tranche",
+        "why_this_outcome_over_next_microtest",
+        "real_original_or_generic_consumer_to_be_changed",
+        "exact_source_issuer_actor_holds_and_parallel_work",
+        "return_intake_terminal_delta_or_not_applicable",
+        "verified_current_progress_pair_ref",
+    ):
+        if not meaningful(terminal.get(key)):
+            errors.append(f"terminal_artifact_continuity.{key}: missing")
+    scopes = terminal.get("candidate_new_commission_scopes")
+    if not isinstance(scopes, list) or not scopes:
+        errors.append("terminal_artifact_continuity: no named terminal completion campaign")
+        scopes = []
+    for i, scope in enumerate(scopes):
+        if not isinstance(scope, dict):
+            errors.append(f"terminal_artifact_continuity.scopes[{i}]: non-object")
+            continue
+        for key in (
+            "parent_terminal_artifact", "current_missing_product",
+            "largest_lawful_tranche", "actual_consumer", "inherited_current_owner",
+            "independent_falsification", "terminal_hand_back",
+            "small_job_exception_or_not_applicable",
+        ):
+            if not meaningful(scope.get(key)):
+                errors.append(f"terminal_artifact_continuity.scopes[{i}].{key}: missing")
 
     got = set()
     for row in record.get("function_adjudications") or []:
