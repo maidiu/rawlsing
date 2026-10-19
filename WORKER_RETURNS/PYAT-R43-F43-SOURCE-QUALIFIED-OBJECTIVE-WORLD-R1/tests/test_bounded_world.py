@@ -35,7 +35,7 @@ def test_native_f6_conditional_bounds(case):
 def test_w2_native_unknown_mass_drives_new_consumer_bounds():
     import f43_product as product
     out = product.f6_view('W2')
-    assert out['bounded_conditional']['state'] == 'PARTIAL_CONDITIONAL_IDENTIFICATION', out
+    assert out['state'] == 'PARTIAL_CONDITIONAL_IDENTIFICATION', out
     assert out['bounded_conditional']['bounds']['formal']['lower'] == '2/5'
     assert out['bounded_conditional']['bounds']['formal']['upper'] == '4/5'
     assert out['native_evidence']['evidence']['uncovered_target_mass'] == '1/4'
@@ -56,6 +56,27 @@ def test_bounded_conditional_sharpness_and_interior_allocations():
     assert lo <= Q(2, 3) <= hi  # naive covered-only value is only a scenario
     assert m.missing_sensitivity(str(a), str(b), str(u), missing_condition_share='1',
                                  missing_event_given_condition='1/2')['value'] == '3/5'
+
+
+def test_native_source_and_bias_envelopes_widen_conditional_uncertainty():
+    import f43_product as product
+    out = product.f6_view('W2')
+    oracle = ORACLE['W2_conditional_envelope']
+    for name, expected in [('source_disagreement_conditional_envelope', oracle['source_disagreement']),
+                           ('bias_sensitivity_conditional_envelope', oracle['bias_sensitivity'])]:
+        actual = out[name]['bounds']['formal']
+        assert (actual['lower'], actual['upper']) == (expected['lower'], expected['upper'])
+        assert out[name]['point'] is None
+    assert Q(out['bias_sensitivity_conditional_envelope']['bounds']['formal']['lower']) < Q('2/5')
+    assert Q(out['bias_sensitivity_conditional_envelope']['bounds']['formal']['upper']) > Q('4/5')
+
+
+def test_infeasible_cell_envelope_rejected():
+    from cell_envelope_bounds import conditional_envelope
+    rows = [dict(categories=['C', 'yes'], lower='3/4', upper='1'),
+            dict(categories=['C', 'no'], lower='3/4', upper='1')]
+    with pytest.raises(m.MethodError, match='INFEASIBLE_CELL_ENVELOPE'):
+        conditional_envelope(rows, ['condition', 'outcome'], {'condition': 'C'}, 'outcome')
 
 
 @pytest.mark.parametrize('fault', ['lost_unknown', 'negative', 'duplicate', 'self', 'outside'])
@@ -119,6 +140,13 @@ def test_missing_equal_temporal_identity_is_unknown(field):
     assert m.strict_temporal_gate(pair, w.periods.ASOF, w.ee1)['state'] == 'UNKNOWN_TEMPORAL_IDENTITY'
 
 
+def test_missing_equal_population_identity_is_unknown():
+    pair = w.periods.comparable_pair()
+    for p in pair: p.pop('target_population')
+    assert w.ee1.population_estimand_gate(pair)['state'] == 'POPULATION_OK'
+    assert m.strict_temporal_gate(pair, w.periods.ASOF, w.ee1)['state'] == 'UNKNOWN_TEMPORAL_IDENTITY'
+
+
 def test_rev1_label_cannot_bypass_future_publication():
     pair = w.periods.comparable_pair()
     for p in pair: p['rule_publication'] = '2027-01-01'
@@ -160,3 +188,11 @@ def test_scope_cannot_drop_wave_cell_or_pair():
     assert len(scope['waves']) == 35 and len(scope['cells']) == 105 and len(scope['pairs']) == 595
     with pytest.raises(ValueError, match='PROSPECTIVE_SCOPE_OMISSION'):
         product.validate_scope(scope, scope['waves'][:-1], scope['pairs'])
+    actual = product.estate(scope)
+    actual['cells'].pop()
+    with pytest.raises(ValueError, match='EXPECTED_F5_F7_CELL_OMISSION_OR_DUPLICATION'):
+        product.validate_estate(scope, actual)
+    actual = product.estate(scope)
+    actual['pairs'].pop()
+    with pytest.raises(ValueError, match='PROSPECTIVE_SCOPE_OMISSION'):
+        product.validate_estate(scope, actual)

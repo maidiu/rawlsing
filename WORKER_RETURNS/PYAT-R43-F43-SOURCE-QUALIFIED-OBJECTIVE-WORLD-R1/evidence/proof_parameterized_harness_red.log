@@ -1,0 +1,23 @@
+PROOF_INTEGRITY_GATE_RED: F43_STRICT_MISSING_IDENTITY: exact target test did not fail by assertion (failure=False, error=False, skipped=False);
+F                                                                        [100%]
+=================================== FAILURES ===================================
+______ test_missing_equal_temporal_identity_is_unknown[target_population] ______
+
+field = 'target_population'
+
+    @pytest.mark.parametrize('field', m.IDENTITY)
+    def test_missing_equal_temporal_identity_is_unknown(field):
+        pair = w.periods.comparable_pair()
+        for p in pair: p.pop(field)
+        assert w.ee1.population_estimand_gate(pair)['state'] == 'POPULATION_OK'
+>       assert m.strict_temporal_gate(pair, w.periods.ASOF, w.ee1)['state'] == 'UNKNOWN_TEMPORAL_IDENTITY'
+E       AssertionError: assert 'POPULATION_OK' == 'UNKNOWN_TEMPORAL_IDENTITY'
+E         
+E         - UNKNOWN_TEMPORAL_IDENTITY
+E         + POPULATION_OK
+
+WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/tests/test_bounded_world.py:119: AssertionError
+=========================== short test summary info ============================
+FAILED WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/tests/test_bounded_world.py::test_missing_equal_temporal_identity_is_unknown[target_population]
+1 failed in 2.67s
+

@@ -1,0 +1,82 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "claims": [
+    {
+      "claim_id": "F43_RETAINED_FF_CONTEXT",
+      "actual_consumer": "retained_view native CONTEXT client; not original E04",
+      "claimed_dependency": "FF actual count profile through V554/M4 into native retained context",
+      "positive_node": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/tests/test_bounded_world.py::test_native_ff_values_reach_context_consumer",
+      "fault": {
+        "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/deps/w41/owners/native/rawlsing_next/field_forge_conditional_support.py",
+        "old": "\"joint_support_count\": count,",
+        "new": "\"joint_support_count\": 0,"
+      }
+    },
+    {
+      "claim_id": "F43_F6_UNCOVERED_CONDITIONAL",
+      "actual_consumer": "f6_view F6P-backed bounded conditional consumer; no N9 admission",
+      "claimed_dependency": "F6M source planned-share loss -> partial conditional bounds",
+      "positive_node": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/tests/test_bounded_world.py::test_w2_native_unknown_mass_drives_new_consumer_bounds",
+      "fault": {
+        "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/deps/w41/owners/f6p/native/rawlsing_next/pre553_heterogeneous_synthesis.py",
+        "old": "\"uncovered_target_mass\": str(uncovered),",
+        "new": "\"uncovered_target_mass\": \"0\","
+      }
+    },
+    {
+      "claim_id": "F43_TEMPORAL_POPULATION",
+      "actual_consumer": "temporal_view native V553/EE1 read-only consumer",
+      "claimed_dependency": "EE1 population/estimand gate -> source-free comparison refusal",
+      "positive_node": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/tests/test_bounded_world.py::test_native_temporal_population_gate_changes_f43_view",
+      "fault": {
+        "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/deps/w41/owners/ee1/runtime/ee1_temporal_owner.py",
+        "old": "if len(signatures) == 1:",
+        "new": "if len(signatures) >= 1:"
+      }
+    },
+    {
+      "claim_id": "F43_T35_UNCHANGED_E04",
+      "actual_consumer": "unchanged product.nonparent.consume NONPARENT_OPTIONS",
+      "claimed_dependency": "actual T35 fee revision through selected world -> original training eligibility",
+      "positive_node": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/tests/test_bounded_world.py::test_t35_rule_drives_unchanged_original_e04",
+      "fault": {
+        "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/deps/w41/owners/wv1/vendor/two_epoch_world.py",
+        "old": "catalog._publish(\"training_fee\", 6, RULE_REVISION[\"effective_from\"],",
+        "new": "catalog._publish(\"training_fee\", 2, RULE_REVISION[\"effective_from\"],"
+      }
+    },
+    {
+      "claim_id": "F43_STRICT_MISSING_IDENTITY",
+      "actual_consumer": "strict_temporal_gate candidate only",
+      "claimed_dependency": "missing identity must precede equality test",
+      "positive_node": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/tests/test_bounded_world.py::test_missing_equal_population_identity_is_unknown",
+      "fault": {
+        "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/bounded_methods.py",
+        "old": "if missing:\n        return dict(state='UNKNOWN_TEMPORAL_IDENTITY', missing=missing)",
+        "new": "if False:\n        return dict(state='UNKNOWN_TEMPORAL_IDENTITY', missing=missing)"
+      }
+    },
+    {
+      "claim_id": "F43_STRICT_PUBLICATION",
+      "actual_consumer": "strict_temporal_gate candidate only",
+      "claimed_dependency": "publication as-of guard including rev1 label",
+      "positive_node": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/tests/test_bounded_world.py::test_rev1_label_cannot_bypass_future_publication",
+      "fault": {
+        "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/bounded_methods.py",
+        "old": "if stamp > cutoff:",
+        "new": "if stamp > cutoff and p.get(\"rule_vintage\") != \"rev1_selected\":"
+      }
+    },
+    {
+      "claim_id": "F43_F6_BIAS_ENVELOPE",
+      "actual_consumer": "f6_view conservative conditional envelope candidate, no N9 admission",
+      "claimed_dependency": "actual F6M mapping/transport bias radius -> native cell bounds -> F43 conditional uncertainty",
+      "positive_node": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/tests/test_bounded_world.py::test_native_source_and_bias_envelopes_widen_conditional_uncertainty",
+      "fault": {
+        "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/deps/w41/owners/f6p/native/rawlsing_next/pre553_heterogeneous_synthesis.py",
+        "old": "radius = sum(_q(policy[k]) for k in (\"mapping_bias_radius\", \"transport_bias_radius\", \"target_share_bias_radius\"))",
+        "new": "radius = F(0)"
+      }
+    }
+  ]
+}
