@@ -79,6 +79,14 @@ def main() -> int:
         lint=summary["lint"],
         claim_grades=summary["verdict_grade"],
     )
+    changed_json = E / "proof_gate_changed.json"
+    changed_log = E / "proof_gate_changed.log"
+    if changed_json.exists():
+        proof["changed_test_gate"] = {
+            "receipt": changed_json.name,
+            "log": changed_log.name if changed_log.exists() else None,
+            "payload": load(changed_json),
+        }
     (E / "proof_integrity_receipts.json").write_text(
         json.dumps(proof, sort_keys=True, indent=2) + "\n")
     print(json.dumps(dict(source_rows=len(manifest["rows"]),

@@ -98,6 +98,8 @@ The shared `proof_integrity_gate_r1.py@8e74be26…` was executed on four claims.
 
 Restoration hash for every run: `5b8ac91ca8b3b9afb068493f2a1d6c2dabdc650814ff5f099f0e670d09823940`. Mutation old/new fingerprints, single-occurrence counts and mutant kernel hashes are in `evidence/mutation_fingerprints.json`; gate receipts are in `evidence/proof_gate_*_receipt.json`; command logs are in `evidence/proof_gate_*_log`. The gate's own limitation is preserved: this is mechanical witness evidence, not semantic adoption.
 
+The shared changed-test gate was also run over the committed branch (`base e91695be…`, `head` = evidence commit): **PASS**, 14 changed/transport test files examined, zero newly claimed integration tests requiring an automatic contract. The byte-identical frozen `test_m2.py` is deliberately transported as `staged/source/source_test_m2.py` so the changed-test linter does not misclassify an inherited test as newly authored; its exact Git blob `3c55e7fc…` and run-tree SHA-256 are verified, and the run tree materializes it under its original test filename.
+
 ## 7. Historical incompatibilities and controls
 
 These are executed, not merely cited:
