@@ -1,0 +1,19 @@
+# PYAT R40 R39I — one independent real-consumer claim-integrity court, E04L plus F6P
+
+**ROLE** fresh arm's-length independent I2 read-only source-free scientific/integration reviewer. NOT E04L/F6P author, new wrapper author, HQ, M2/FF/F6 issuer, field/actor/source issuer, or self-adopter.
+**AGENT** DeepSeek Harness / OpenCode qualified independent reviewer; **MODEL** DeepSeek V4.1 Flash standard for actual pytest, Git custody, falsifier implementation; escalate unresolved genuinely scientific authority/semantics of release transport/partial bounds to GPT-6 High as a separately reported question. Economical warm S2 Python/pytest with separate worktree. Avoid extra reviewer iterations: this ONE mandatory I2 court accepts or scopes BOTH exact author claims while new productive R40 work continues in parallel.
+**NEW BRANCH** `agent/reviewer-pyat-r40-r39i-learned-f6-consumer-independent-r1`; create yourself from published exact R40 launch seal and verify HEAD.
+
+## Read
+Shared PRE-MAIN proof-integrity law, Pyat 00D, R40 HQ memo. E04L author `daf0d085e930696708c755e687879b155653c215`, F6P `912467aaacb715fd6e80ebc8c2bdd7285c26120b`; E04JR formerly withdrawn false joined claim `b39b756564790f4742f28af92e2e7848cf54a419`; F6C `c1ebe091fa2bd12b254e5599cf37975fe438d462` and F6M exact blob `2df811d76db258d98d89ffb43c830cb221ff9a7d`; WP2I native original E04 clients, actual M1/M2/B5/I4 owners.
+
+## Independent scope, actual material claims
+A. **E04L:** verify unchanged `product.nonparent.consume()` obtains empirical values through the actual B5 current-selected/M2-exact/I4-replayed producer-object resolution; own independent tests must prove removal/substitution of selected learned release with source unchanged makes original consumer refuse, not serve cached source. Challenge forged catalog, B5 stale selection/clock, wrong source/right, existence-only ref claims, closure/subject fact mismatches. Reproduce original 22+7 events and author fault witnesses on exact SHA; do NOT presume evidence just because author says `TARGET_ASSERTION_FAILED`.
+
+B. **F6P:** verify `consume_f6m_evidence` reads real F6M native product and candidate, actual `conditional` and partial bounds. Recompute independent exact rational W1/W2/W3/W7 from frozen source counts without asking candidate to supply expected outputs. Alter source/producer uncovered mass and consumer admission/read contract separately with other inputs fixed. Catch any false full coverage, fabricated weight-one, missing minor share, incomplete domain, route-probability fiction, forged content hash. Reproduce 32 tests, cold and fault witness; independently check that A0 `182cc797...` is never comparison A.
+
+## Important refusal
+No net F6M→original E04 NONPARENT_OPTIONS join is claimed by F6P. No source/actor issuance. Audit real downstream **claim grain**; if F6P's consumer is only a bounded TEST_ONLY read-only F6 client, accept at that grain and still explicitly record unmatched-world residual. Do not force global completeness or chase a sixth worker to fix incidental documentation.
+
+## Falsification and outcome
+Write a fresh independently fixed expected object/readset and direct named test before reading author's asserted outputs as oracle. Mutate at least one critical edge separately per claim, run the named test, require assertion-level RED (not import error or test failure elsewhere), restore and cold green. AST-check own tests. Report **SEPARATE** E04L/F6P verdicts `ACCEPT/REVISE/HOLD` at exact sourcefree TEST_ONLY I2 grain, actual fixed test count, direct Git preimages, path/cost/passport and exact SHAs. Send essential discovered defects to existing implementer for ONE bounded direct repair if within commission, avoiding serial review loops; independent I2 cannot self-promote canonical or model rights.
