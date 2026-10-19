@@ -224,3 +224,17 @@ Prohibitions respected: no trusted-writer issuance, no native actor/event
 admission, no production installation, no Pyat mutation, no ADP019/CAN issuance,
 no semantic adoption, no V3 claim, no self-acceptance, no independent-I2 claim,
 no historical RED suppression, zero model switches.
+
+## Addendum — shared proof-gate scope (second commit)
+
+The shared CROSS_HQ proof gate (`severance/proof_integrity_gate_r1.py`, blob
+`774d338cdbeea68ab09006807431cc8d17a22345`) was used three ways:
+`lint` on all six authored court test files (**6/6 AST_LINT_PASS**);
+`witness` on the authored proof contract (**5/5** baseline PASS + same-named
+assertion RED under exact source fault); and `changed` over the whole return
+commit, which REDs **only** on 24 lines inside byte-exact staged inherited frozen
+test sources (historical S27/S28 `assert True`/self-comparison oracles and
+OUT13's frozen `or True` honesty lines) that the commission forbids editing —
+**zero** findings in authored files. Inventory: `evidence/proof_gate_scope.json`,
+full output `logs/proof_gate_changed_full.log`. These inherited proof-holes are
+recorded, not repaired and not laundered through this return.

@@ -1,0 +1,37 @@
+{
+  "schema": "SOROK_C8O_PROOF_GATE_SCOPE@1",
+  "shared_gate": "severance/proof_integrity_gate_r1.py",
+  "shared_gate_git_blob_sha1": "774d338cdbeea68ab09006807431cc8d17a22345",
+  "shared_gate_origin": "CROSS_HQ_CONTROL_ROOM/proof_integrity_gate_r1.py@563afd16e",
+  "authored_test_files_lint": {
+    "court/test_c8o_concurrency_court.py": "AST_LINT_PASS",
+    "court/test_c8o_crash_custody.py": "AST_LINT_PASS",
+    "court/test_c8o_legacy_writer_bypass.py": "AST_LINT_PASS",
+    "court/test_c8o_rollback_and_capability.py": "AST_LINT_PASS",
+    "court/test_c8o_consumer_severance.py": "AST_LINT_PASS",
+    "court/test_c8o_source_ledger.py": "AST_LINT_PASS"
+  },
+  "authored_proof_contract_witness": {
+    "contract": "court/test_c8o_consumer_severance.py.proof.json",
+    "claims": 5,
+    "result": "MECHANICAL_WITNESS_PASS_NOT_SEMANTIC_ADOPTION",
+    "each": "baseline PASS + fault_probe TARGET_ASSERTION_FAILED + grade BOUNDED_MUTATION_DETECTED",
+    "receipt": "evidence/proof_witness_consumer.json"
+  },
+  "changed_mode_full_repo_diff": {
+    "command": "proof_integrity_gate_r1.py changed --base 27c3a802ff4d55cc9ad0c045cf56b32a48e15884 --head 34e4482a0c1f40a6d88bab408f4d4003d9ca5622",
+    "exit": 1,
+    "flagged_lines_total": 24,
+    "flagged_in_authored_files": 0,
+    "all_flagged_files": [
+      "runtime/stage_out12/test_sr_28_falsifier_court.py",
+      "runtime/stage_out14/test_sr_28_falsifier_court.py",
+      "runtime/out13_return/test_out13_hostile.py",
+      "runtime/out13_return/runtime/candidate/test_sr_28_falsifier_court.py",
+      "runtime/out13_return_out14/test_out13_hostile.py",
+      "runtime/out13_return_out14/runtime/candidate/test_sr_28_falsifier_court.py"
+    ],
+    "interpretation": "every flagged line is in byte-exact staged INHERITED FROZEN test sources (the historical S27/S28 fixture oracles with 'assert True'/self-comparison and OUT13's frozen 'or True' honesty lines). Commission forbids editing those frozen tests, so these inherited proof-holes are inventoried here, not repaired. All authored C8O test files pass the same gate's AST lint.",
+    "full_log": "logs/proof_gate_changed_full.log"
+  }
+}
