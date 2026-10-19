@@ -1,0 +1,16 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "claims": [
+    {
+      "claim_id": "W3_FUTURE_RULE_GATE_SEVERANCE",
+      "actual_consumer": "EE1 temporal owner clock gate -> historical comparison consumer",
+      "claimed_dependency": "rule vintage publication vs comparison as-of -> typed FUTURE_RULE_AT_HISTORICAL_AS_OF refusal",
+      "positive_node": "WORKER_RETURNS/PYAT-R40-EE1-HISTORICAL-SOURCE-QUALIFIED-TEMPORAL-METHOD-CONSUMER-R1/tests/test_ee1_clock_discipline_and_future_rule.py::test_future_rule_at_historical_asof_typed",
+      "fault": {
+        "path": "WORKER_RETURNS/PYAT-R40-EE1-HISTORICAL-SOURCE-QUALIFIED-TEMPORAL-METHOD-CONSUMER-R1/runtime/ee1_temporal_owner.py",
+        "old": "    if str(period.get(\"rule_publication\", \"\")) > asof and \\\n            period.get(\"rule_vintage\") != \"rev1_selected\":",
+        "new": "    if str(period.get(\"rule_publication\", \"\")) > \"9999-12-31\" and \\\n            period.get(\"rule_vintage\") != \"rev1_selected\":"
+      }
+    }
+  ]
+}

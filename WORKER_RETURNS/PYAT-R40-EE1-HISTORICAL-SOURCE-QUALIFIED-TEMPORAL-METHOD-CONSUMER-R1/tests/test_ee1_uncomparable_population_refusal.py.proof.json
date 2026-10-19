@@ -1,0 +1,16 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "claims": [
+    {
+      "claim_id": "W2_POPULATION_GATE_SEVERANCE",
+      "actual_consumer": "EE1 temporal owner compare_periods -> historical comparison consumer",
+      "claimed_dependency": "period descriptor population/estimand identity -> typed NONCOMPARABLE_POPULATION_OR_ESTIMAND refusal instead of a manufactured delta",
+      "positive_node": "WORKER_RETURNS/PYAT-R40-EE1-HISTORICAL-SOURCE-QUALIFIED-TEMPORAL-METHOD-CONSUMER-R1/tests/test_ee1_uncomparable_population_refusal.py::test_population_change_is_typed_refusal",
+      "fault": {
+        "path": "WORKER_RETURNS/PYAT-R40-EE1-HISTORICAL-SOURCE-QUALIFIED-TEMPORAL-METHOD-CONSUMER-R1/runtime/ee1_temporal_owner.py",
+        "old": "    if len(signatures) == 1:",
+        "new": "    if True:"
+      }
+    }
+  ]
+}
