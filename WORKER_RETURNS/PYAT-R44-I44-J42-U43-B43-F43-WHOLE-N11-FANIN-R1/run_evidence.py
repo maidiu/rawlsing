@@ -70,7 +70,7 @@ def main() -> int:
         results.append(
             _run(
                 name,
-                [sys.executable, "-m", "pytest", target, "-q", "--junitxml", str(ROOT / junit)],
+                [sys.executable, "-m", "pytest", target, "-q", "--junitxml", str(RETURN_DIR / junit)],
                 cwd,
                 env_extra=env_extra,
             )
