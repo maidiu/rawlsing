@@ -1,0 +1,38 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "claims": [
+    {
+      "claim_id": "WV1_SELECTED_LEARNED_RELEASE",
+      "actual_consumer": "Unchanged original E04 product.nonparent.consume",
+      "claimed_dependency": "B5 selected M2 release -> E04L exact fact read -> original E04 cells",
+      "positive_node": "WORKER_RETURNS/PYAT-R40-WV1-COHERENT-SELECTED-WORLD-R1/test_world_consumer.py::test_actual_selected_release_reaches_original_consumer",
+      "fault": {
+        "path": "WORKER_RETURNS/PYAT-R40-WV1-COHERENT-SELECTED-WORLD-R1/vendor/readthrough.py",
+        "old": "resolution=m2.resolve_release_exact(p.repository,selected.selected_release_ref)",
+        "new": "p.repository._releases.clear()\n        resolution=m2.resolve_release_exact(p.repository,selected.selected_release_ref)"
+      }
+    },
+    {
+      "claim_id": "WV1_T35_RULE_REVISION",
+      "actual_consumer": "Unchanged original E04 product.nonparent.consume",
+      "claimed_dependency": "T35 revision -> M4/M5 selected payload -> original training eligibility",
+      "positive_node": "WORKER_RETURNS/PYAT-R40-WV1-COHERENT-SELECTED-WORLD-R1/test_world_consumer.py::test_two_epochs_original_training_observable",
+      "fault": {
+        "path": "WORKER_RETURNS/PYAT-R40-WV1-COHERENT-SELECTED-WORLD-R1/vendor/two_epoch_world.py",
+        "old": "catalog._publish(\"training_fee\", 6, RULE_REVISION[\"effective_from\"],",
+        "new": "catalog._publish(\"training_fee\", 2, RULE_REVISION[\"effective_from\"],"
+      }
+    },
+    {
+      "claim_id": "WV1_NAMED_M4_STRUCTURAL_OWNER",
+      "actual_consumer": "Unchanged original E04 product.nonparent.consume",
+      "claimed_dependency": "Actual M4 exact permission resolution -> M5 RSC payload -> original structural route",
+      "positive_node": "WORKER_RETURNS/PYAT-R40-WV1-COHERENT-SELECTED-WORLD-R1/test_world_consumer.py::test_named_m4_m5_structural_owner_reaches_original_consumer",
+      "fault": {
+        "path": "rawlsing_next/m4_v557_v558_publication_repository.py",
+        "old": "requested = set(item.requested_uses)",
+        "new": "requested = set(item.requested_uses) | {\"CAUSAL\"}"
+      }
+    }
+  ]
+}

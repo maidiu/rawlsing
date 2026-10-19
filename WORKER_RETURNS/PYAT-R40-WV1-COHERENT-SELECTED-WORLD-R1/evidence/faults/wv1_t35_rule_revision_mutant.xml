@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="3.020" timestamp="2026-10-19T00:16:42.908867-04:00" hostname="ISOLATED_LOCAL_S2"><testcase classname="WORKER_RETURNS.PYAT-R40-WV1-COHERENT-SELECTED-WORLD-R1.test_world_consumer" name="test_two_epochs_original_training_observable" time="2.590"><failure message="AssertionError: assert 'ELIGIBLE' == 'BLOCKED_BY_MODELED_RULE'&#10;  &#10;  - BLOCKED_BY_MODELED_RULE&#10;  + ELIGIBLE">def test_two_epochs_original_training_observable():
+        w=SelectedWorld();a=w.epoch(t35.E1);b=w.epoch(t35.E2)
+        for year,out in [('2026',a),('2027',b)]:
+            expected=FROZEN['epochs'][year];m=out['nonparent']['material'];slots=out['snapshot']['fields']
+&gt;           assert m['structural_routes']['training']['state']==expected['training']
+E           AssertionError: assert 'ELIGIBLE' == 'BLOCKED_BY_MODELED_RULE'
+E             
+E             - BLOCKED_BY_MODELED_RULE
+E             + ELIGIBLE
+
+WORKER_RETURNS/PYAT-R40-WV1-COHERENT-SELECTED-WORLD-R1/test_world_consumer.py:43: AssertionError</failure></testcase></testsuite></testsuites>

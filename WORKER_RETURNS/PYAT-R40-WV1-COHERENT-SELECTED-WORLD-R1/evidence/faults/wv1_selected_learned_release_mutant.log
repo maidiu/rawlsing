@@ -1,0 +1,18 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+____________ test_actual_selected_release_reaches_original_consumer ____________
+
+    def test_actual_selected_release_reaches_original_consumer():
+        w=SelectedWorld();snapshot=w.snapshot(t35.E1)
+        value=attempt(w,snapshot)
+>       assert value['state']=='PRODUCT', 'SELECTED_RELEASE_TO_ORIGINAL_CONSUMER_NOT_PRODUCTIVE'
+E       AssertionError: SELECTED_RELEASE_TO_ORIGINAL_CONSUMER_NOT_PRODUCTIVE
+E       assert 'REFUSED' == 'PRODUCT'
+E         
+E         - PRODUCT
+E         + REFUSED
+
+WORKER_RETURNS/PYAT-R40-WV1-COHERENT-SELECTED-WORLD-R1/test_world_consumer.py:27: AssertionError
+=========================== short test summary info ============================
+FAILED WORKER_RETURNS/PYAT-R40-WV1-COHERENT-SELECTED-WORLD-R1/test_world_consumer.py::test_actual_selected_release_reaches_original_consumer
+1 failed in 1.77s

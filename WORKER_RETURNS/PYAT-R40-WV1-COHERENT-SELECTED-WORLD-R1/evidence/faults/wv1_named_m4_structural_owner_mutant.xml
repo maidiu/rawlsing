@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="2.290" timestamp="2026-10-19T00:16:53.259290-04:00" hostname="ISOLATED_LOCAL_S2"><testcase classname="WORKER_RETURNS.PYAT-R40-WV1-COHERENT-SELECTED-WORLD-R1.test_world_consumer" name="test_named_m4_m5_structural_owner_reaches_original_consumer" time="1.880"><failure message="AssertionError: STRUCTURAL_OWNER_NOT_CONSUMED&#10;assert 'UNAVAILABLE_...RITY_OR_CLOCK' == 'BLOCKED_BY_MODELED_RULE'&#10;  &#10;  - BLOCKED_BY_MODELED_RULE&#10;  + UNAVAILABLE_AUTHORITY_OR_CLOCK">def test_named_m4_m5_structural_owner_reaches_original_consumer():
+        w=SelectedWorld();out=w.epoch(t35.E2);m=out['nonparent']['material']
+&gt;       assert m['structural_routes']['training']['state']=='BLOCKED_BY_MODELED_RULE', 'STRUCTURAL_OWNER_NOT_CONSUMED'
+E       AssertionError: STRUCTURAL_OWNER_NOT_CONSUMED
+E       assert 'UNAVAILABLE_...RITY_OR_CLOCK' == 'BLOCKED_BY_MODELED_RULE'
+E         
+E         - BLOCKED_BY_MODELED_RULE
+E         + UNAVAILABLE_AUTHORITY_OR_CLOCK
+
+WORKER_RETURNS/PYAT-R40-WV1-COHERENT-SELECTED-WORLD-R1/test_world_consumer.py:56: AssertionError</failure></testcase></testsuite></testsuites>

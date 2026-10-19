@@ -1,0 +1,18 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_________________ test_two_epochs_original_training_observable _________________
+
+    def test_two_epochs_original_training_observable():
+        w=SelectedWorld();a=w.epoch(t35.E1);b=w.epoch(t35.E2)
+        for year,out in [('2026',a),('2027',b)]:
+            expected=FROZEN['epochs'][year];m=out['nonparent']['material'];slots=out['snapshot']['fields']
+>           assert m['structural_routes']['training']['state']==expected['training']
+E           AssertionError: assert 'ELIGIBLE' == 'BLOCKED_BY_MODELED_RULE'
+E             
+E             - BLOCKED_BY_MODELED_RULE
+E             + ELIGIBLE
+
+WORKER_RETURNS/PYAT-R40-WV1-COHERENT-SELECTED-WORLD-R1/test_world_consumer.py:43: AssertionError
+=========================== short test summary info ============================
+FAILED WORKER_RETURNS/PYAT-R40-WV1-COHERENT-SELECTED-WORLD-R1/test_world_consumer.py::test_two_epochs_original_training_observable
+1 failed in 3.02s

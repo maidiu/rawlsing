@@ -1,0 +1,32 @@
+[
+  {
+    "claim_id": "WV1_SELECTED_LEARNED_RELEASE",
+    "positive_node": "WORKER_RETURNS/PYAT-R40-WV1-COHERENT-SELECTED-WORLD-R1/test_world_consumer.py::test_actual_selected_release_reaches_original_consumer",
+    "positive": "PASS",
+    "mutant": "ASSERTION_RED",
+    "assertion": "AssertionError: SELECTED_RELEASE_TO_ORIGINAL_CONSUMER_NOT_PRODUCTIVE\nassert 'REFUSED' == 'PRODUCT'\n  \n  - PRODUCT\n  + REFUSED",
+    "restored": "PASS",
+    "original_bytes_restored": true,
+    "restored_sha256": "35e34bb95d1bdd562fd5de71bb903c751d4ddb172b38b02bef3d02b8d0ace080"
+  },
+  {
+    "claim_id": "WV1_T35_RULE_REVISION",
+    "positive_node": "WORKER_RETURNS/PYAT-R40-WV1-COHERENT-SELECTED-WORLD-R1/test_world_consumer.py::test_two_epochs_original_training_observable",
+    "positive": "PASS",
+    "mutant": "ASSERTION_RED",
+    "assertion": "AssertionError: assert 'ELIGIBLE' == 'BLOCKED_BY_MODELED_RULE'\n  \n  - BLOCKED_BY_MODELED_RULE\n  + ELIGIBLE",
+    "restored": "PASS",
+    "original_bytes_restored": true,
+    "restored_sha256": "a41fcde42554cfe84b31bbd24c9ed500714f1c91f1a9bc722a135b8eecf062d7"
+  },
+  {
+    "claim_id": "WV1_NAMED_M4_STRUCTURAL_OWNER",
+    "positive_node": "WORKER_RETURNS/PYAT-R40-WV1-COHERENT-SELECTED-WORLD-R1/test_world_consumer.py::test_named_m4_m5_structural_owner_reaches_original_consumer",
+    "positive": "PASS",
+    "mutant": "ASSERTION_RED",
+    "assertion": "AssertionError: STRUCTURAL_OWNER_NOT_CONSUMED\nassert 'UNAVAILABLE_...RITY_OR_CLOCK' == 'BLOCKED_BY_MODELED_RULE'\n  \n  - BLOCKED_BY_MODELED_RULE\n  + UNAVAILABLE_AUTHORITY_OR_CLOCK",
+    "restored": "PASS",
+    "original_bytes_restored": true,
+    "restored_sha256": "b35581669d8a75d70972d9a6aecee9caa94e6bcef950595acc17a6c16e85f9e7"
+  }
+]

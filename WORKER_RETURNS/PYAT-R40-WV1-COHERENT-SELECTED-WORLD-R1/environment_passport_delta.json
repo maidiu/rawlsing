@@ -1,0 +1,73 @@
+{
+  "schema": "WV1_EXECUTION_PASSPORT@1",
+  "environment_id": "WV1_LOCAL_S2",
+  "epoch_id": "a1e7762c-658c-4d87-9e99-43d124bf0be6",
+  "session_alias": "WV1_R40",
+  "surface": "Codex desktop local S2",
+  "machine_alias": "LOCAL_ISOLATED_SHARED_STORE",
+  "status": "LIVE_VERIFIED",
+  "last_live_probe_at": "2026-10-19T04:18:28.537471+00:00",
+  "startup": "1150e836ef58553255abc0f588e66c1327db4932",
+  "branch": "agent/rabochii-pyat-r40-wv1-coherent-selected-world-consumer-r1",
+  "worktree": "ISOLATED_TASK_WORKTREE",
+  "shared_object_store": true,
+  "sparse_scope": [
+    "CROSS_HQ_CONTROL_ROOM",
+    "PYAT_CONTROL_ROOM",
+    "WORKER_COMMISSIONS/PYAT-R40-WV1-COHERENT-SELECTED-HISTORICAL-WORLD-NATIVE-CONSUMER-R1",
+    "WORKER_RETURNS/PYAT-R40-WV1-COHERENT-SELECTED-WORLD-R1",
+    "rawlsing_next"
+  ],
+  "qualification": {
+    "python": "3.11.3",
+    "pytest": "pytest 9.1.1",
+    "git": "git version 2.39.1",
+    "writable_marker": ".environment_marker",
+    "sourcefree": true,
+    "original_source_access": "NOT_REQUESTED_NOT_EXECUTED"
+  },
+  "sources": {
+    "exact_imports": "evidence/imports.json",
+    "pinned_vendor_commit_path_blobs": "source_manifest.json",
+    "closure_grade": "BOUNDED_ACTUALLY_IMPORTED_PYTHON_CLOSURE",
+    "file_path_policy": "Actual module.__file__ recorded relative to isolated worktree; personal absolute prefix omitted",
+    "owner_changes": "NONE; proof mutations restored byte-for-byte"
+  },
+  "execution": {
+    "native_command": "python3 -B WORKER_RETURNS/PYAT-R40-WV1-COHERENT-SELECTED-WORLD-R1/replay_native.py",
+    "exit": 0,
+    "passed": 235,
+    "failed": 0,
+    "skipped": 0,
+    "junit": "evidence/final_native.xml",
+    "cold_replay": "evidence/cold_replay.json",
+    "claim_witnesses": "test_world_consumer.py.proof.json"
+  },
+  "usage": {
+    "provider": "OpenAI through Codex",
+    "system_model_identity": "GPT-6",
+    "exact_backend_model_id": "UNKNOWN",
+    "reasoning_effort": "External session setting; UNKNOWN to runtime; no escalation requested",
+    "billing_tier": "UNKNOWN",
+    "incremental_cost": "UNKNOWN",
+    "billable_tokens": "UNKNOWN",
+    "paid_escalation": false,
+    "subagents": 0
+  },
+  "claim_grade": "AUTHOR_SOURCEFREE_NONPARENT_POSITIVE__PROPOSAL_AND_R13_SERVE_HOLD__I2_NOT_YET",
+  "assignments_completed": [
+    "WV1 bounded empirical/structural/temporal nonparent join",
+    "Explicit exact-purpose proposal and N9 serve HOLDs"
+  ],
+  "continuation": "RELATED_SOURCEFREE_CONSUMER_WORK_ONLY_WITH_NEW_AUTHORIZATION",
+  "expiry": "REPROBE_AFTER_RUNTIME_RESET_OR_SOURCE_CHANGE",
+  "independent_review_conflict": "AUTHOR_CANNOT_INDEPENDENTLY_ACCEPT_OWN_IMPLEMENTATION",
+  "privacy_gate": "SYNTHETIC_SOURCEFREE_ONLY_NO_ORIGINAL_RESPONDENTS_OR_CREDENTIALS",
+  "remaining_authority": [
+    "Exact learned CONCEPTION_SCENARIO_PROPOSALS admission",
+    "Exact learned N9_SELECTED_WORLD admission",
+    "F6 matched source/estimand/transport",
+    "Original source/universe/operation binding",
+    "Sorok C0 actor authority"
+  ]
+}

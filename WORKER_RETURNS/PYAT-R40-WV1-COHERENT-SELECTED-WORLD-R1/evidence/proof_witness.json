@@ -1,0 +1,30 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "status": "MECHANICAL_WITNESS_PASS_NOT_SEMANTIC_ADOPTION",
+  "claims": [
+    {
+      "claim_id": "WV1_SELECTED_LEARNED_RELEASE",
+      "positive_node": "WORKER_RETURNS/PYAT-R40-WV1-COHERENT-SELECTED-WORLD-R1/test_world_consumer.py::test_actual_selected_release_reaches_original_consumer",
+      "fault_path": "WORKER_RETURNS/PYAT-R40-WV1-COHERENT-SELECTED-WORLD-R1/vendor/readthrough.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    },
+    {
+      "claim_id": "WV1_T35_RULE_REVISION",
+      "positive_node": "WORKER_RETURNS/PYAT-R40-WV1-COHERENT-SELECTED-WORLD-R1/test_world_consumer.py::test_two_epochs_original_training_observable",
+      "fault_path": "WORKER_RETURNS/PYAT-R40-WV1-COHERENT-SELECTED-WORLD-R1/vendor/two_epoch_world.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    },
+    {
+      "claim_id": "WV1_NAMED_M4_STRUCTURAL_OWNER",
+      "positive_node": "WORKER_RETURNS/PYAT-R40-WV1-COHERENT-SELECTED-WORLD-R1/test_world_consumer.py::test_named_m4_m5_structural_owner_reaches_original_consumer",
+      "fault_path": "rawlsing_next/m4_v557_v558_publication_repository.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    }
+  ]
+}

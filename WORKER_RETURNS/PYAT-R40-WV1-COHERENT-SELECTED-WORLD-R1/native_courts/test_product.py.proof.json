@@ -1,0 +1,16 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "claims": [
+    {
+      "claim_id": "WV1_UNCHANGED_E04_NATIVE_COURT",
+      "actual_consumer": "Unchanged original E04 product.nonparent.consume",
+      "claimed_dependency": "Actual M4 exact permission resolution -> M5 RSC payload -> original structural route",
+      "positive_node": "WORKER_RETURNS/PYAT-R40-WV1-COHERENT-SELECTED-WORLD-R1/native_courts/test_product.py::test_structural_intervention_changes_routes_not_empirical_geometry",
+      "fault": {
+        "path": "rawlsing_next/m4_v557_v558_publication_repository.py",
+        "old": "requested = set(item.requested_uses)",
+        "new": "requested = set(item.requested_uses) | {\"CAUSAL\"}"
+      }
+    }
+  ]
+}
