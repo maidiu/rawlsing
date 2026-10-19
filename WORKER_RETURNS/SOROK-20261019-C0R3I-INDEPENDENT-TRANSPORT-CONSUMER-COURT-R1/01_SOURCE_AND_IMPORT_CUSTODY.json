@@ -1,0 +1,466 @@
+{
+  "actual_imports": {
+    "modules": [
+      {
+        "bytes": 2966,
+        "file": "candidate/stage/runtime/product/nonparent.py",
+        "module": "product.nonparent",
+        "sha256": "3635f0f6ad4891718c26c99f0f9860263d5e054517059f3dfe0409ec66d6287e"
+      },
+      {
+        "bytes": 3412,
+        "file": "candidate/stage/runtime/product/scenario.py",
+        "module": "product.scenario",
+        "sha256": "f60169b2076f32cd34b5495b570cef24984d2bd2c6e4678fe1f5710cf41cbca6"
+      },
+      {
+        "bytes": 4520,
+        "file": "candidate/stage/runtime/product/service.py",
+        "module": "product.service",
+        "sha256": "e87049107c1de433fce81b8c45a8f31f5bd226608a2cfe8e960b96ebe0bfd868"
+      },
+      {
+        "bytes": 10960,
+        "file": "candidate/stage/runtime/product/world.py",
+        "module": "product.world",
+        "sha256": "40955b11bcd4872d00b4682d4b89975162559b1e4637bc7c021c56e37bbe1e65"
+      },
+      {
+        "bytes": 15061,
+        "file": "candidate/stage/runtime/product/empirical.py",
+        "module": "product.empirical",
+        "sha256": "74b6cfb7e6cf1b9bc488732ac1a13e08b323a6b182d4ec84828254dcb0ebee7b"
+      },
+      {
+        "bytes": 73599,
+        "file": "candidate/stage/runtime/rawlsing_next/m4_v557_v558_publication_repository.py",
+        "module": "rawlsing_next.m4_v557_v558_publication_repository",
+        "sha256": "b35581669d8a75d70972d9a6aecee9caa94e6bcef950595acc17a6c16e85f9e7"
+      },
+      {
+        "bytes": 48975,
+        "file": "candidate/stage/runtime/rawlsing_next/m5_runtime_rsc_peer_prior.py",
+        "module": "rawlsing_next.m5_runtime_rsc_peer_prior",
+        "sha256": "ffac990688f3e4596c129787f236f1c26cf4f38f829c4f9a141fc05b1611e518"
+      },
+      {
+        "bytes": 28005,
+        "file": "candidate/stage/runtime/rawlsing_next/pre553_empirical_possibility_provider.py",
+        "module": "rawlsing_next.pre553_empirical_possibility_provider",
+        "sha256": "99d716051f23e1ef75990a5184afec612aa7855078a67893f6436b44f57b4697"
+      },
+      {
+        "bytes": 59605,
+        "file": "candidate/stage/runtime/rawlsing_next/pre553_analytical_composition.py",
+        "module": "rawlsing_next.pre553_analytical_composition",
+        "sha256": "d83bf9fba14ab7a3c5bb2a4fad30e4746345f29f4d10c16fbc1d2b5d0030bcfe"
+      },
+      {
+        "bytes": 23305,
+        "file": "candidate/stage/runtime/rawlsing_next/source_backed_positioned_subject_possibility.py",
+        "module": "rawlsing_next.source_backed_positioned_subject_possibility",
+        "sha256": "9c041cb134a7b9198d12f75a1eb82a7e37cdb781adf5f68033b5ad21e62dbc01"
+      },
+      {
+        "bytes": 19293,
+        "file": "candidate/stage/runtime/rawlsing_next/pre553_n9_n10w_progressive_candidate.py",
+        "module": "rawlsing_next.pre553_n9_n10w_progressive_candidate",
+        "sha256": "78f85aea938e9a087167af2938ab11aabbf5a731e852194f021918cf21044c8d"
+      }
+    ],
+    "python": "3.11.3",
+    "runtime": "candidate/stage/runtime",
+    "schema": "SOROK_C0R3_ACTUAL_IMPORTS@1"
+  },
+  "branch": "agent/rabochii-sorok-20261019-c0r3-c0x-endtoend-transport-repair-r1",
+  "c0r2_vacuous_test": {
+    "commit": "55d2daa4bab41c5ff4ffdc196c8d36d300c3d60f",
+    "git_blob": "89a0f1191f7f0ec6d2ff3c3f240a70add8840f6f",
+    "line_text": "        json.dumps(a.owner_payload, sort_keys=True, default=str).encode()).hexdigest() or True",
+    "note": "The inherited 'or True' line is not edited and is not counted as proof; the new relocation/source-consumer test replaces its evidentiary role.",
+    "original_line": 72,
+    "path": "WORKER_RETURNS/SOROK-V2-HQ323-C0R2-GIT-BACKED-REPAIR-R1/tests/test_c0r2_adversarial.py",
+    "preserved_byte_exact": true,
+    "sha256": "f4c3968eb1b274c98432f1cdac2aa2f4512d520f8c02d1265a9c5132cc783c93",
+    "test": "test_r1_relocation_changes_no_consumer_value"
+  },
+  "corrected": {
+    "facade": {
+      "bytes": 24888,
+      "parent": "original_c0p_repaired_author",
+      "parent_blob": "855bb72f494d64083cee706e12f4f3d58c47dec3",
+      "patch": "candidate/patches/facade_c0r3.patch",
+      "patch_sha256": "59599181978ef0798676ad97c5b9da94bb5f1e69f21cdf35dafa6a0c3617b5e2",
+      "path": "candidate/upstream/c0p_two_contract_port.py",
+      "sha256": "6e828fd83fa71c7797427d00978279d78adca7dab8ae080ba4eca6f9f2469749"
+    },
+    "receiver": {
+      "bytes": 18843,
+      "parent": "original_c0x_receiver",
+      "parent_blob": "8d80b5a4cb63a781f8c82e4d780246ef35ccf123",
+      "patch": "candidate/patches/receiver_c0r3.patch",
+      "patch_sha256": "3a25e336f1bcddd7236fee1630a5230bd4e0a52f40371b7ba1e879ac9f065a26",
+      "path": "candidate/c0x_world_receiver.py",
+      "sha256": "54fd2f354899214669fa53b162679bd4de573a15234717745be5bf1a6f8aa65b"
+    }
+  },
+  "historical_tests": {
+    "c0i50": {
+      "commit": "2dacd87636352a6c805e03b3d07581193a06264b",
+      "git_blob": "419f5cf1e82fb3f5817f78d48fce79265dd8d3f7",
+      "repo_path": "WORKER_RETURNS/SOROK-R3-HQ320-C0I-C0P-INDEPENDENT-R1/repro/test_c0i.py"
+    },
+    "c0p49": {
+      "commit": "154a4dd5615d47f014ca90eb1234b16e983bf5c1",
+      "git_blob": "c35b8b8da6d6fd1f4b884f04a8868a098505522b",
+      "repo_path": "WORKER_RETURNS/SOROK-R3-HQ319-C0P-GENERIC-PORT-POSITIVE-R1/tests/test_c0p_generic_port.py"
+    },
+    "c0r2_23": {
+      "commit": "55d2daa4bab41c5ff4ffdc196c8d36d300c3d60f",
+      "git_blob": "89a0f1191f7f0ec6d2ff3c3f240a70add8840f6f",
+      "repo_path": "WORKER_RETURNS/SOROK-V2-HQ323-C0R2-GIT-BACKED-REPAIR-R1/tests/test_c0r2_adversarial.py"
+    },
+    "c0x_15": {
+      "commit": "b02deee1bac9393921845caa657841c40408eaf6",
+      "git_blob": "90d6c2f3754331a28a5a45dd7e77dd1914a9a162",
+      "repo_path": "WORKER_RETURNS/SOROK-20261019-C0X-C0-C10-DUAL-OWNER-RECEIVER-COMPLETION-R1/tests/test_c0x_receiving_consumer.py"
+    },
+    "k10_28": {
+      "commit": "9831293f9fd53813db04d33be5bbdc177542f8ce",
+      "git_blob": "44c725bd1a18e22c5314bf73b7a9dc538c5b08aa",
+      "repo_path": "WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/port/port/test_k10_structural_conservation.py"
+    },
+    "k9_8": {
+      "commit": "9831293f9fd53813db04d33be5bbdc177542f8ce",
+      "git_blob": "1e25d7951411c1d33c2185f88496c453adbc194e",
+      "repo_path": "WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/port/port/test_k9_provider_swap.py"
+    }
+  },
+  "native29": {
+    "all_git_blob_match": true,
+    "closure_resolves": true,
+    "count": 29,
+    "modules": [
+      {
+        "bytes": 19293,
+        "expected_git_blob": "84d404147547767be8ecd4b6e1541f5fa3a8c8a2",
+        "git_blob": "84d404147547767be8ecd4b6e1541f5fa3a8c8a2",
+        "git_blob_match": true,
+        "sha256": "78f85aea938e9a087167af2938ab11aabbf5a731e852194f021918cf21044c8d",
+        "source_commit": "0e0ed50dbce2dd1434d3a3c84b937b9a956adba9",
+        "source_path": "rawlsing_next/pre553_n9_n10w_progressive_candidate.py",
+        "staged": "rawlsing_next/pre553_n9_n10w_progressive_candidate.py"
+      },
+      {
+        "bytes": 81,
+        "expected_git_blob": "59a7e3c47435f944193ec10e82fe0e5e0fb5585f",
+        "git_blob": "59a7e3c47435f944193ec10e82fe0e5e0fb5585f",
+        "git_blob_match": true,
+        "sha256": "bb8eda74a6d4f1bbff9127a72e058968a8c4ea01e8ace8592fc7525a6c1746c3",
+        "source_commit": "79cb8244a5291218bde17142b93fc2419eade396",
+        "source_path": "WORKER_RETURNS/PYAT-USERDIRECT-20261016-R15-E04T-NATIVE-CURRENT-GRANT-REPAIR-R1/product/__init__.py",
+        "staged": "product/__init__.py"
+      },
+      {
+        "bytes": 15061,
+        "expected_git_blob": "2fdae6e07d72b5840d437f130751e2e2ef66dd33",
+        "git_blob": "2fdae6e07d72b5840d437f130751e2e2ef66dd33",
+        "git_blob_match": true,
+        "sha256": "74b6cfb7e6cf1b9bc488732ac1a13e08b323a6b182d4ec84828254dcb0ebee7b",
+        "source_commit": "79cb8244a5291218bde17142b93fc2419eade396",
+        "source_path": "WORKER_RETURNS/PYAT-USERDIRECT-20261016-R15-E04T-NATIVE-CURRENT-GRANT-REPAIR-R1/product/empirical.py",
+        "staged": "product/empirical.py"
+      },
+      {
+        "bytes": 10960,
+        "expected_git_blob": "06a74caebda69f7d1baa8719a99138ef57d9c07b",
+        "git_blob": "06a74caebda69f7d1baa8719a99138ef57d9c07b",
+        "git_blob_match": true,
+        "sha256": "40955b11bcd4872d00b4682d4b89975162559b1e4637bc7c021c56e37bbe1e65",
+        "source_commit": "79cb8244a5291218bde17142b93fc2419eade396",
+        "source_path": "WORKER_RETURNS/PYAT-USERDIRECT-20261016-R15-E04T-NATIVE-CURRENT-GRANT-REPAIR-R1/product/world.py",
+        "staged": "product/world.py"
+      },
+      {
+        "bytes": 4520,
+        "expected_git_blob": "facf1c86911a8a4c37db112be51d8c7109cd9f3b",
+        "git_blob": "facf1c86911a8a4c37db112be51d8c7109cd9f3b",
+        "git_blob_match": true,
+        "sha256": "e87049107c1de433fce81b8c45a8f31f5bd226608a2cfe8e960b96ebe0bfd868",
+        "source_commit": "79cb8244a5291218bde17142b93fc2419eade396",
+        "source_path": "WORKER_RETURNS/PYAT-USERDIRECT-20261016-R15-E04T-NATIVE-CURRENT-GRANT-REPAIR-R1/product/service.py",
+        "staged": "product/service.py"
+      },
+      {
+        "bytes": 2966,
+        "expected_git_blob": "2181b832d3c4376d4b9428e13f4354f273be8f32",
+        "git_blob": "2181b832d3c4376d4b9428e13f4354f273be8f32",
+        "git_blob_match": true,
+        "sha256": "3635f0f6ad4891718c26c99f0f9860263d5e054517059f3dfe0409ec66d6287e",
+        "source_commit": "79cb8244a5291218bde17142b93fc2419eade396",
+        "source_path": "WORKER_RETURNS/PYAT-USERDIRECT-20261016-R15-E04T-NATIVE-CURRENT-GRANT-REPAIR-R1/product/nonparent.py",
+        "staged": "product/nonparent.py"
+      },
+      {
+        "bytes": 3412,
+        "expected_git_blob": "b7e568166cd277c1ba127374ea1a350d1b3841a2",
+        "git_blob": "b7e568166cd277c1ba127374ea1a350d1b3841a2",
+        "git_blob_match": true,
+        "sha256": "f60169b2076f32cd34b5495b570cef24984d2bd2c6e4678fe1f5710cf41cbca6",
+        "source_commit": "79cb8244a5291218bde17142b93fc2419eade396",
+        "source_path": "WORKER_RETURNS/PYAT-USERDIRECT-20261016-R15-E04T-NATIVE-CURRENT-GRANT-REPAIR-R1/product/scenario.py",
+        "staged": "product/scenario.py"
+      },
+      {
+        "bytes": 73599,
+        "expected_git_blob": "8ec5c8e1c1a3cb7e998bb6cf0972ac87f396e360",
+        "git_blob": "8ec5c8e1c1a3cb7e998bb6cf0972ac87f396e360",
+        "git_blob_match": true,
+        "sha256": "b35581669d8a75d70972d9a6aecee9caa94e6bcef950595acc17a6c16e85f9e7",
+        "source_commit": "79cb8244a5291218bde17142b93fc2419eade396",
+        "source_path": "rawlsing_next/m4_v557_v558_publication_repository.py",
+        "staged": "rawlsing_next/m4_v557_v558_publication_repository.py"
+      },
+      {
+        "bytes": 48975,
+        "expected_git_blob": "18735bdb31a220aed032aa722574d685e2bdddf5",
+        "git_blob": "18735bdb31a220aed032aa722574d685e2bdddf5",
+        "git_blob_match": true,
+        "sha256": "ffac990688f3e4596c129787f236f1c26cf4f38f829c4f9a141fc05b1611e518",
+        "source_commit": "79cb8244a5291218bde17142b93fc2419eade396",
+        "source_path": "rawlsing_next/m5_runtime_rsc_peer_prior.py",
+        "staged": "rawlsing_next/m5_runtime_rsc_peer_prior.py"
+      },
+      {
+        "bytes": 42711,
+        "expected_git_blob": "a61365b994e5c3c50de0f598fcf40e90abf757b6",
+        "git_blob": "a61365b994e5c3c50de0f598fcf40e90abf757b6",
+        "git_blob_match": true,
+        "sha256": "9cd1d71440a7e8c1861dda73274529e07211edc14335583e93ad91c0833e9ab4",
+        "source_commit": "79cb8244a5291218bde17142b93fc2419eade396",
+        "source_path": "rawlsing_next/pre553_empirical_objects.py",
+        "staged": "rawlsing_next/pre553_empirical_objects.py"
+      },
+      {
+        "bytes": 14311,
+        "expected_git_blob": "ca65a7fd4d52f0c44447434559b1d09412e7aa39",
+        "git_blob": "ca65a7fd4d52f0c44447434559b1d09412e7aa39",
+        "git_blob_match": true,
+        "sha256": "c32b96cd67274d2bcb44ca509afd87e085748bd2e32565716c10313b0609a29a",
+        "source_commit": "79cb8244a5291218bde17142b93fc2419eade396",
+        "source_path": "rawlsing_next/pre553_empirical_authority.py",
+        "staged": "rawlsing_next/pre553_empirical_authority.py"
+      },
+      {
+        "bytes": 28005,
+        "expected_git_blob": "23167aa25291fb148b1e3cf210ac33fe7769b783",
+        "git_blob": "23167aa25291fb148b1e3cf210ac33fe7769b783",
+        "git_blob_match": true,
+        "sha256": "99d716051f23e1ef75990a5184afec612aa7855078a67893f6436b44f57b4697",
+        "source_commit": "79cb8244a5291218bde17142b93fc2419eade396",
+        "source_path": "rawlsing_next/pre553_empirical_possibility_provider.py",
+        "staged": "rawlsing_next/pre553_empirical_possibility_provider.py"
+      },
+      {
+        "bytes": 24140,
+        "expected_git_blob": "03facecf70890bfd13b80418620d274cbcd69d02",
+        "git_blob": "03facecf70890bfd13b80418620d274cbcd69d02",
+        "git_blob_match": true,
+        "sha256": "d45ad313bc57e94c8c3652b4123c7cb03b0fc18d38d577aaaae94435664ef4cb",
+        "source_commit": "79cb8244a5291218bde17142b93fc2419eade396",
+        "source_path": "rawlsing_next/pre553_empirical_query.py",
+        "staged": "rawlsing_next/pre553_empirical_query.py"
+      },
+      {
+        "bytes": 63964,
+        "expected_git_blob": "cc7d93db1f87d9c311170c229dbe3506937b404a",
+        "git_blob": "cc7d93db1f87d9c311170c229dbe3506937b404a",
+        "git_blob_match": true,
+        "sha256": "eacc63ca9a067ebde53005fec9c859ce304cbedcf42b1b338b4fece49158b720",
+        "source_commit": "79cb8244a5291218bde17142b93fc2419eade396",
+        "source_path": "rawlsing_next/tests/test_pre553_empirical_query.py",
+        "staged": "rawlsing_next/tests/test_pre553_empirical_query.py"
+      },
+      {
+        "bytes": 33012,
+        "expected_git_blob": "0393cc8c17a313b7944b2a5287d0406d6cbe3849",
+        "git_blob": "0393cc8c17a313b7944b2a5287d0406d6cbe3849",
+        "git_blob_match": true,
+        "sha256": "ce88e393d107eada13e37bdceb8f956789452281a54563cf5e5aee3304337332",
+        "source_commit": "79cb8244a5291218bde17142b93fc2419eade396",
+        "source_path": "rawlsing_next/tests/c1_at08_at13_fixture.py",
+        "staged": "rawlsing_next/tests/c1_at08_at13_fixture.py"
+      },
+      {
+        "bytes": 59605,
+        "expected_git_blob": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b",
+        "git_blob": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b",
+        "git_blob_match": true,
+        "sha256": "d83bf9fba14ab7a3c5bb2a4fad30e4746345f29f4d10c16fbc1d2b5d0030bcfe",
+        "source_commit": "79cb8244a5291218bde17142b93fc2419eade396",
+        "source_path": "rawlsing_next/pre553_analytical_composition.py",
+        "staged": "rawlsing_next/pre553_analytical_composition.py"
+      },
+      {
+        "bytes": 16875,
+        "expected_git_blob": "938a6b03a63dd34ef4f0f63655ed8f11f65c5d92",
+        "git_blob": "938a6b03a63dd34ef4f0f63655ed8f11f65c5d92",
+        "git_blob_match": true,
+        "sha256": "496320f7e089e4cc73b1a55023ed906d3f016e939f548cebc4ec59bddd4847b2",
+        "source_commit": "79cb8244a5291218bde17142b93fc2419eade396",
+        "source_path": "rawlsing_next/_pre553_query_common.py",
+        "staged": "rawlsing_next/_pre553_query_common.py"
+      },
+      {
+        "bytes": 25344,
+        "expected_git_blob": "7c59aa13a2b7c8e3ab0dc90a1400df645b0b4bbd",
+        "git_blob": "7c59aa13a2b7c8e3ab0dc90a1400df645b0b4bbd",
+        "git_blob_match": true,
+        "sha256": "3963facef5c8ae2981991ffa8c5c5c9b717fb4e09f342eec277198fc5cf38a33",
+        "source_commit": "79cb8244a5291218bde17142b93fc2419eade396",
+        "source_path": "rawlsing_next/pre553_c11_integrity.py",
+        "staged": "rawlsing_next/pre553_c11_integrity.py"
+      },
+      {
+        "bytes": 5278,
+        "expected_git_blob": "67c6eb6494522cd11aab1b93d0e73f9cef6036f3",
+        "git_blob": "67c6eb6494522cd11aab1b93d0e73f9cef6036f3",
+        "git_blob_match": true,
+        "sha256": "84a71fe43307cca30f9eeaaedb269d8390468a4744a0fac251aebc2cda7b498e",
+        "source_commit": "79cb8244a5291218bde17142b93fc2419eade396",
+        "source_path": "rawlsing_next/pre553_c11_repository.py",
+        "staged": "rawlsing_next/pre553_c11_repository.py"
+      },
+      {
+        "bytes": 31123,
+        "expected_git_blob": "f808dfcd2008cc71e9203de3cadf1abe14223974",
+        "git_blob": "f808dfcd2008cc71e9203de3cadf1abe14223974",
+        "git_blob_match": true,
+        "sha256": "c72d7d35bfa5d3cb4b406bdd90530b2822416850bba48cdd12ce784ba10cd670",
+        "source_commit": "79cb8244a5291218bde17142b93fc2419eade396",
+        "source_path": "rawlsing_next/_pre553_query_eval.py",
+        "staged": "rawlsing_next/_pre553_query_eval.py"
+      },
+      {
+        "bytes": 20870,
+        "expected_git_blob": "8590bacf464b2c61f319f581820a3af76ed1e60c",
+        "git_blob": "8590bacf464b2c61f319f581820a3af76ed1e60c",
+        "git_blob_match": true,
+        "sha256": "f6e5484371ce1bf15abea25a7db408ab00cf4194154358e995608e67b833cbd7",
+        "source_commit": "79cb8244a5291218bde17142b93fc2419eade396",
+        "source_path": "rawlsing_next/_pre553_query_predicate.py",
+        "staged": "rawlsing_next/_pre553_query_predicate.py"
+      },
+      {
+        "bytes": 68522,
+        "expected_git_blob": "896c7094124a4aaea23eec550178e4bf8e73ac68",
+        "git_blob": "896c7094124a4aaea23eec550178e4bf8e73ac68",
+        "git_blob_match": true,
+        "sha256": "027aa551973b3ba6a560b322c9a704c4577f250d57a0c5564b8d9de71cbbb1d2",
+        "source_commit": "79cb8244a5291218bde17142b93fc2419eade396",
+        "source_path": "rawlsing_next/pre553_runtime_authority.py",
+        "staged": "rawlsing_next/pre553_runtime_authority.py"
+      },
+      {
+        "bytes": 59317,
+        "expected_git_blob": "905f24d114419dbdd93879ad2bee5b59dd2f23af",
+        "git_blob": "905f24d114419dbdd93879ad2bee5b59dd2f23af",
+        "git_blob_match": true,
+        "sha256": "808fd0bd8e2423c047268285c00ca43f0f4cdbff80ed1ad286e3c6c56b8f7217",
+        "source_commit": "79cb8244a5291218bde17142b93fc2419eade396",
+        "source_path": "rawlsing_next/pre553_discovery_exact.py",
+        "staged": "rawlsing_next/pre553_discovery_exact.py"
+      },
+      {
+        "bytes": 34026,
+        "expected_git_blob": "868f43bf9869af5501fd67c3de7a2703ba4cb1b4",
+        "git_blob": "868f43bf9869af5501fd67c3de7a2703ba4cb1b4",
+        "git_blob_match": true,
+        "sha256": "15474ae325a1712c497d473eef30aebeb2b924718a7044ef962f6ac317709185",
+        "source_commit": "79cb8244a5291218bde17142b93fc2419eade396",
+        "source_path": "rawlsing_next/pre553_recursive_handoff.py",
+        "staged": "rawlsing_next/pre553_recursive_handoff.py"
+      },
+      {
+        "bytes": 23305,
+        "expected_git_blob": "62e5eced47b64512f47b004e3e13a6ef3fe21de7",
+        "git_blob": "62e5eced47b64512f47b004e3e13a6ef3fe21de7",
+        "git_blob_match": true,
+        "sha256": "9c041cb134a7b9198d12f75a1eb82a7e37cdb781adf5f68033b5ad21e62dbc01",
+        "source_commit": "79cb8244a5291218bde17142b93fc2419eade396",
+        "source_path": "rawlsing_next/source_backed_positioned_subject_possibility.py",
+        "staged": "rawlsing_next/source_backed_positioned_subject_possibility.py"
+      },
+      {
+        "bytes": 40034,
+        "expected_git_blob": "37cd35fa2e3420a3eea272a2902e96ab9ba38aba",
+        "git_blob": "37cd35fa2e3420a3eea272a2902e96ab9ba38aba",
+        "git_blob_match": true,
+        "sha256": "0c56a0f6f656547a096982a6adab21c9b47d749385411a5d159f2b5390eec8bf",
+        "source_commit": "79cb8244a5291218bde17142b93fc2419eade396",
+        "source_path": "rawlsing_next/pre553_c11_ingest.py",
+        "staged": "rawlsing_next/pre553_c11_ingest.py"
+      },
+      {
+        "bytes": 23847,
+        "expected_git_blob": "e8bd6376720a2de132b384e7771d71d8d39cf261",
+        "git_blob": "e8bd6376720a2de132b384e7771d71d8d39cf261",
+        "git_blob_match": true,
+        "sha256": "5f6bf653d287dab8063696f2b81a79ab4083e44eaa9b901cfb5aa4589a098ec0",
+        "source_commit": "79cb8244a5291218bde17142b93fc2419eade396",
+        "source_path": "rawlsing_next/m1_temporal_v554_admission_dedup.py",
+        "staged": "rawlsing_next/m1_temporal_v554_admission_dedup.py"
+      },
+      {
+        "bytes": 16377,
+        "expected_git_blob": "deef8a60613635a10faf7d89cd8cdf0c3b8a0710",
+        "git_blob": "deef8a60613635a10faf7d89cd8cdf0c3b8a0710",
+        "git_blob_match": true,
+        "sha256": "71fcd8b2acb0f9ce4fbed470420b38131a3b9246028b7e764bfda8ca4d04582c",
+        "source_commit": "79cb8244a5291218bde17142b93fc2419eade396",
+        "source_path": "rawlsing_next/m2_v555_atomic_route.py",
+        "staged": "rawlsing_next/m2_v555_atomic_route.py"
+      },
+      {
+        "bytes": 50179,
+        "expected_git_blob": "9a4b26b214686364a43d108dabf0d57dac0ed3b2",
+        "git_blob": "9a4b26b214686364a43d108dabf0d57dac0ed3b2",
+        "git_blob_match": true,
+        "sha256": "736c17d8d6b6792e9befd3792f3754f7b8153fb415a2070b5628a030d44b00ed",
+        "source_commit": "79cb8244a5291218bde17142b93fc2419eade396",
+        "source_path": "rawlsing_next/m3_v556_higher_order_structural.py",
+        "staged": "rawlsing_next/m3_v556_higher_order_structural.py"
+      }
+    ],
+    "total_bytes": 859712
+  },
+  "native_adp_can_authority": "NONE",
+  "originals": {
+    "original_c0p_first_author": {
+      "bytes": 5965,
+      "commit": "154a4dd5615d47f014ca90eb1234b16e983bf5c1",
+      "git_blob": "3762e9c2561b4237ee8f63bc35eac3f42f56c5d7",
+      "match": true,
+      "repo_path": "WORKER_RETURNS/SOROK-R3-HQ319-C0P-GENERIC-PORT-POSITIVE-R1/repro/c0p_two_contract_port.py",
+      "sha256": "0409e3273f886080a251a1588c72c99e575801e57e7debce712e904b72b24b59"
+    },
+    "original_c0p_repaired_author": {
+      "bytes": 23508,
+      "commit": "55d2daa4bab41c5ff4ffdc196c8d36d300c3d60f",
+      "git_blob": "855bb72f494d64083cee706e12f4f3d58c47dec3",
+      "match": true,
+      "repo_path": "WORKER_RETURNS/SOROK-R3-HQ319-C0P-GENERIC-PORT-POSITIVE-R1/repro/c0p_two_contract_port.py",
+      "sha256": "fa08d5f56fb4316131de1b989796071472d81cc0f968f734ee4e828625af708f"
+    },
+    "original_c0x_receiver": {
+      "bytes": 16753,
+      "commit": "b02deee1bac9393921845caa657841c40408eaf6",
+      "git_blob": "8d80b5a4cb63a781f8c82e4d780246ef35ccf123",
+      "match": true,
+      "repo_path": "WORKER_RETURNS/SOROK-20261019-C0X-C0-C10-DUAL-OWNER-RECEIVER-COMPLETION-R1/c0x_world_receiver.py",
+      "sha256": "a49dae6203789b6558683eaafd61d2051bab6a6afd91369d01f18f79fd6786e0"
+    }
+  },
+  "schema": "SOROK_C0R3_SOURCE_AND_IMPORT_CUSTODY@1",
+  "sealed_startup": "0a0f8e99d9117a88a51d67b3b2b51f4f618cbaab"
+}

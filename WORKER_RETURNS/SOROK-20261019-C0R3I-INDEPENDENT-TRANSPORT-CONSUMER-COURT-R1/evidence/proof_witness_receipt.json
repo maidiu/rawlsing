@@ -1,0 +1,30 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "status": "MECHANICAL_WITNESS_PASS_NOT_SEMANTIC_ADOPTION",
+  "claims": [
+    {
+      "claim_id": "C0R3I_CONSUMER_READS_ACTUAL_VALUES_READ",
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/tests/test_c0r3i_independent_court.py::test_consumer_reads_actual_values_not_mere_serialization",
+      "fault_path": "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/candidate/c0x_world_receiver.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    },
+    {
+      "claim_id": "C0R3I_LOSSLESS_TWO_CONTRACT_TRANSPORT",
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/tests/test_c0r3i_independent_court.py::test_complete_17_field_n9_and_20_field_n10_receipts",
+      "fault_path": "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/candidate/c0x_world_receiver.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    },
+    {
+      "claim_id": "C0R3I_JSON_ROUNDTRIP_VERIFIED",
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/tests/test_c0r3i_independent_court.py::test_consumer_reads_actual_values_not_mere_serialization",
+      "fault_path": "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/candidate/c0x_world_receiver.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    }
+  ]
+}

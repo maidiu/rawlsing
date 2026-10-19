@@ -1,0 +1,49 @@
+..............................................F.FF                       [100%]
+=================================== FAILURES ===================================
+______ test_port_runtime_binding_uses_actual_imported_native_module_tree _______
+
+    def test_port_runtime_binding_uses_actual_imported_native_module_tree():
+        p=port_module(relocate=False)
+        note(declared_runtime=str(p.RUNTIME),actual_runtime='staging/runtime',nonparent_module_file=str(Path(nonparent.__file__).relative_to(R)))
+>       assert p.RUNTIME.resolve()==Path(nonparent.__file__).resolve().parent.parent,'Hardcoded /tmp path is not the fresh imported native runtime'
+E       AssertionError: Hardcoded /tmp path is not the fresh imported native runtime
+E       assert PosixPath('/private/tmp/c0p-runtime') == PosixPath('/Users/matthewsmith/Desktop/Rawlsing_Worktrees/c0r3i/WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/historical/c0i_original/SOROK-R3-HQ320-C0I-C0P-INDEPENDENT-R1/staging/runtime')
+E        +  where PosixPath('/private/tmp/c0p-runtime') = resolve()
+E        +    where resolve = PosixPath('/tmp/c0p-runtime').resolve
+E        +      where PosixPath('/tmp/c0p-runtime') = <module 'c0p_port_under_review' from '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/c0r3i/WORKER_RETURNS/SOROK-202610...MER-COURT-R1/historical/c0i_original/SOROK-R3-HQ320-C0I-C0P-INDEPENDENT-R1/staging/c0p/repro/c0p_two_contract_port.py'>.RUNTIME
+E        +  and   PosixPath('/Users/matthewsmith/Desktop/Rawlsing_Worktrees/c0r3i/WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/historical/c0i_original/SOROK-R3-HQ320-C0I-C0P-INDEPENDENT-R1/staging/runtime') = PosixPath('/Users/matthewsmith/Desktop/Rawlsing_Worktrees/c0r3i/WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/historical/c0i_original/SOROK-R3-HQ320-C0I-C0P-INDEPENDENT-R1/staging/runtime/product').parent
+E        +    where PosixPath('/Users/matthewsmith/Desktop/Rawlsing_Worktrees/c0r3i/WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/historical/c0i_original/SOROK-R3-HQ320-C0I-C0P-INDEPENDENT-R1/staging/runtime/product') = PosixPath('/Users/matthewsmith/Desktop/Rawlsing_Worktrees/c0r3i/WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/historical/c0i_original/SOROK-R3-HQ320-C0I-C0P-INDEPENDENT-R1/staging/runtime/product/nonparent.py').parent
+E        +      where PosixPath('/Users/matthewsmith/Desktop/Rawlsing_Worktrees/c0r3i/WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/historical/c0i_original/SOROK-R3-HQ320-C0I-C0P-INDEPENDENT-R1/staging/runtime/product/nonparent.py') = resolve()
+E        +        where resolve = PosixPath('/Users/matthewsmith/Desktop/Rawlsing_Worktrees/c0r3i/WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/historical/c0i_original/SOROK-R3-HQ320-C0I-C0P-INDEPENDENT-R1/staging/runtime/product/nonparent.py').resolve
+E        +          where PosixPath('/Users/matthewsmith/Desktop/Rawlsing_Worktrees/c0r3i/WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/historical/c0i_original/SOROK-R3-HQ320-C0I-C0P-INDEPENDENT-R1/staging/runtime/product/nonparent.py') = Path('/Users/matthewsmith/Desktop/Rawlsing_Worktrees/c0r3i/WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/historical/c0i_original/SOROK-R3-HQ320-C0I-C0P-INDEPENDENT-R1/staging/runtime/product/nonparent.py')
+E        +            where '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/c0r3i/WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/historical/c0i_original/SOROK-R3-HQ320-C0I-C0P-INDEPENDENT-R1/staging/runtime/product/nonparent.py' = nonparent.__file__
+
+repro/test_c0i.py:165: AssertionError
+_ test_facade_exposes_two_distinct_owner_contract_receipts_not_two_N9_clients __
+
+    def test_facade_exposes_two_distinct_owner_contract_receipts_not_two_N9_clients():
+        p=port_module();port=p.TwoContractPort();ss=port.select(valid_at='2027-09-01',published_asof='2027-09-01');a=port.consume_nonparent(ss);b=port.consume_conception_proposals(ss,[dict(scenario_id='M',route='institutional')]);note(A=a.as_dict(),B=b.as_dict())
+>       assert {a.contract,b.contract}=={port.CONTRACT_N9,port.CONTRACT_N10},'Two consumer hashes do not demonstrate two separately exposed owner contracts'
+E       AssertionError: Two consumer hashes do not demonstrate two separately exposed owner contracts
+E       assert {'N9'} == {'N10E_N10W', 'N9'}
+E         
+E         Extra items in the right set:
+E         'N10E_N10W'
+E         Use -v to get more diff
+
+repro/test_c0i.py:178: AssertionError
+_ test_facade_receipt_roundtrips_frozen_SC0_envelope_not_only_a_consumer_hash __
+
+    def test_facade_receipt_roundtrips_frozen_SC0_envelope_not_only_a_consumer_hash():
+        p=port_module();port=p.TwoContractPort();ss=port.select(valid_at='2027-09-01',published_asof='2027-09-01');out=port.consume_nonparent(ss).as_dict()
+        schema=json.loads((R/'staging/oracles/sc0/01_envelope.json').read_text());requirements=schema['$defs']['WorldReceipt']['required'];missing=sorted(set(requirements)-set(out));note(receipt=out,missing_fields=missing,expected_contract='GENERIC_WORLD_SELECTION@1.0.0')
+>       assert not missing and out['contract']=='GENERIC_WORLD_SELECTION@1.0.0','Claimed literal SC0 envelope is not provided'
+E       AssertionError: Claimed literal SC0 envelope is not provided
+E       assert (not ['clock', 'demand_ref', 'dependency_closure', 'generated_criteria_echo', 'grade', 'issuer_and_use', ...])
+
+repro/test_c0i.py:184: AssertionError
+=========================== short test summary info ============================
+FAILED repro/test_c0i.py::test_port_runtime_binding_uses_actual_imported_native_module_tree
+FAILED repro/test_c0i.py::test_facade_exposes_two_distinct_owner_contract_receipts_not_two_N9_clients
+FAILED repro/test_c0i.py::test_facade_receipt_roundtrips_frozen_SC0_envelope_not_only_a_consumer_hash
+3 failed, 47 passed in 38.78s

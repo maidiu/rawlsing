@@ -1,0 +1,38 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "claims": [
+    {
+      "claim_id": "C0R3I_CONSUMER_READS_ACTUAL_VALUES_READ",
+      "actual_consumer": "candidate/c0x_world_receiver.py receive_receipt values_read propagation",
+      "claimed_dependency": "TwoContractReceipt.values_read -> receiver result values_read -> consumer assertion",
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/tests/test_c0r3i_independent_court.py::test_consumer_reads_actual_values_not_mere_serialization",
+      "fault": {
+        "path": "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/candidate/c0x_world_receiver.py",
+        "old": "\"values_read\": owner.get(\"values_read\"),",
+        "new": "\"values_read\": [],"
+      }
+    },
+    {
+      "claim_id": "C0R3I_LOSSLESS_TWO_CONTRACT_TRANSPORT",
+      "actual_consumer": "candidate/c0x_world_receiver.py receive_receipt transport state",
+      "claimed_dependency": "JSON-serializable owner receipts -> transport state LOSSLESS_TWO_CONTRACT_OBJECT -> consumer assertion",
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/tests/test_c0r3i_independent_court.py::test_complete_17_field_n9_and_20_field_n10_receipts",
+      "fault": {
+        "path": "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/candidate/c0x_world_receiver.py",
+        "old": "\"state\": (\"NON_TRANSPORTABLE_OWNER_FIELD\" if non_transportable",
+        "new": "\"state\": (\"NON_TRANSPORTABLE_OWNER_FIELD\" if True"
+      }
+    },
+    {
+      "claim_id": "C0R3I_JSON_ROUNDTRIP_VERIFIED",
+      "actual_consumer": "candidate/c0x_world_receiver.py receive_receipt owner_receipts_json_roundtrip",
+      "claimed_dependency": "json.dumps/loads of owner receipts -> roundtrip flag True -> consumer assertion",
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/tests/test_c0r3i_independent_court.py::test_consumer_reads_actual_values_not_mere_serialization",
+      "fault": {
+        "path": "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/candidate/c0x_world_receiver.py",
+        "old": "\"owner_receipts_json_roundtrip\": True,",
+        "new": "\"owner_receipts_json_roundtrip\": False,"
+      }
+    }
+  ]
+}
