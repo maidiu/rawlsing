@@ -1,0 +1,22 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "status": "MECHANICAL_WITNESS_PASS_NOT_SEMANTIC_ADOPTION",
+  "claims": [
+    {
+      "claim_id": "A41_FULL_ESTATE_REQUIRES_ACCOUNTING_RECEIPT",
+      "positive_node": "WORKER_RETURNS/PYAT-R41-A41-N11-WHOLE-ESTATE-ACCEPTANCE-ASSEMBLY-R1/tests/test_a41_falsifiers.py::test_a41_full_estate_requires_the_accounting_receipt",
+      "fault_path": "WORKER_RETURNS/PYAT-R41-A41-N11-WHOLE-ESTATE-ACCEPTANCE-ASSEMBLY-R1/a41/receipt_bank.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    },
+    {
+      "claim_id": "A41_PRESERVES_F6_UNKNOWN_MASS",
+      "positive_node": "WORKER_RETURNS/PYAT-R41-A41-N11-WHOLE-ESTATE-ACCEPTANCE-ASSEMBLY-R1/tests/test_a41_falsifiers.py::test_a41_preserves_f6_unknown_mass",
+      "fault_path": "WORKER_RETURNS/PYAT-R41-A41-N11-WHOLE-ESTATE-ACCEPTANCE-ASSEMBLY-R1/a41/estate_assessor.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    }
+  ]
+}

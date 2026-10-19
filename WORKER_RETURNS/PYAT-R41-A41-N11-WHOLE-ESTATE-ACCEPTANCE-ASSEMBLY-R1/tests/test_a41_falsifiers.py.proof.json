@@ -1,0 +1,27 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "claims": [
+    {
+      "claim_id": "A41_FULL_ESTATE_REQUIRES_ACCOUNTING_RECEIPT",
+      "actual_consumer": "A41 estate_assessor over the frozen scope and preimage-verified bank",
+      "claimed_dependency": "the O35B documentary identity reconciliation receipt -> all 35 waves S01/S02 identity cells",
+      "positive_node": "WORKER_RETURNS/PYAT-R41-A41-N11-WHOLE-ESTATE-ACCEPTANCE-ASSEMBLY-R1/tests/test_a41_falsifiers.py::test_a41_full_estate_requires_the_accounting_receipt",
+      "fault": {
+        "path": "WORKER_RETURNS/PYAT-R41-A41-N11-WHOLE-ESTATE-ACCEPTANCE-ASSEMBLY-R1/a41/receipt_bank.py",
+        "old": "        ingested.append(ingest_receipt(receipt, gp, expected_scope=expected_scope))",
+        "new": "        _rec = ingest_receipt(receipt, gp, expected_scope=expected_scope)\n        if _rec[\"occupancy_kind\"] != \"DOCUMENTARY_IDENTITY_RECONCILIATION\":\n            ingested.append(_rec)"
+      }
+    },
+    {
+      "claim_id": "A41_PRESERVES_F6_UNKNOWN_MASS",
+      "actual_consumer": "A41 estate_assessor preserved_unknown_bounds carried into the manifest",
+      "claimed_dependency": "the F6P receipt uncovered target masses (1/4, 1/2, 1/5) are preserved as unknown, never dropped or renamed to a point",
+      "positive_node": "WORKER_RETURNS/PYAT-R41-A41-N11-WHOLE-ESTATE-ACCEPTANCE-ASSEMBLY-R1/tests/test_a41_falsifiers.py::test_a41_preserves_f6_unknown_mass",
+      "fault": {
+        "path": "WORKER_RETURNS/PYAT-R41-A41-N11-WHOLE-ESTATE-ACCEPTANCE-ASSEMBLY-R1/a41/estate_assessor.py",
+        "old": "        \"unknown_bounds\": r.get(\"unknown_bounds\") or r[\"coverage\"].get(\"unknown_bounds\") or {},",
+        "new": "        \"unknown_bounds\": {},  # reviewer-injected: drop preserved unknown mass"
+      }
+    }
+  ]
+}

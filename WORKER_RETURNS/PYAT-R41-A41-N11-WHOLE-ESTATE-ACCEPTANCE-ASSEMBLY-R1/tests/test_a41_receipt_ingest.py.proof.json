@@ -1,0 +1,27 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "claims": [
+    {
+      "claim_id": "A41_REJECTS_SOURCEFREE_PROMOTION_TO_ORIGINAL",
+      "actual_consumer": "A41 receipt_bank.ingest_receipt promotion guard",
+      "claimed_dependency": "an ORIGINAL_MEASURED_OCCUPANCY claim must be refused unless the frozen scope issued U/E_pre for the covered waves",
+      "positive_node": "WORKER_RETURNS/PYAT-R41-A41-N11-WHOLE-ESTATE-ACCEPTANCE-ASSEMBLY-R1/tests/test_a41_receipt_ingest.py::test_sourcefree_promoted_to_original_occupancy_is_refused",
+      "fault": {
+        "path": "WORKER_RETURNS/PYAT-R41-A41-N11-WHOLE-ESTATE-ACCEPTANCE-ASSEMBLY-R1/a41/receipt_bank.py",
+        "old": "    if receipt[\"occupancy_kind\"] in ORIGINALLY_ADMISSIBLE:",
+        "new": "    if False:  # reviewer-injected: disable original-occupancy promotion guards"
+      }
+    },
+    {
+      "claim_id": "A41_REJECTS_FORGED_CONSUMER_REF",
+      "actual_consumer": "A41 receipt_bank.ingest_receipt consumer registry check",
+      "claimed_dependency": "every downstream consumer read ref must be a declared consumer; a forged/stale ref is refused typed",
+      "positive_node": "WORKER_RETURNS/PYAT-R41-A41-N11-WHOLE-ESTATE-ACCEPTANCE-ASSEMBLY-R1/tests/test_a41_receipt_ingest.py::test_forged_consumer_ref_is_refused",
+      "fault": {
+        "path": "WORKER_RETURNS/PYAT-R41-A41-N11-WHOLE-ESTATE-ACCEPTANCE-ASSEMBLY-R1/a41/receipt_bank.py",
+        "old": "        if declared:",
+        "new": "        if False:  # reviewer-injected: disable declared-consumer check"
+      }
+    }
+  ]
+}
