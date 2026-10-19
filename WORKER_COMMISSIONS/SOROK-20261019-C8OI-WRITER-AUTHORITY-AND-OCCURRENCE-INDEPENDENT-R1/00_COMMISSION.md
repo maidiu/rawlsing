@@ -1,5 +1,8 @@
 # SOROK C8OI — INDEPENDENT ACCEPTANCE OF COMPLETE DURABLE WRITER, OCCURRENCE AND CONSUMER
 
+> **MANDATORY CURRENT HQ ARTICULATION CORRECTION, 2026-10-19.** This original R1 commission's mission and immutable worker startup remain historically valid, but the original routing/header/acceptance text alone does **NOT** meet live Sorok 00C §9. Before any NOT-YET-LAUNCHED user-facing prompt, read and apply **[`01_MANDATORY_00C_MODEL_JUDGMENT_AND_THREE_COURT_AMENDMENT_R1.md`](./01_MANDATORY_00C_MODEL_JUDGMENT_AND_THREE_COURT_AMENDMENT_R1.md)** at `agent/sorok-prea0-psyche-architecture-r1` in full, together with the PRE-MAIN three-tier model/judgment law. `STATUS=MIDDLE_USER_DECISION_REQUIRED__NO_AUTOMATIC_LAUNCH__IF_ALREADY_ACTIVE_DO_NOT_DISTURB`. Full prompt must name model and editor independently, source/authority, engineering/scientific/authority ACCEPT/RED/HOLD and actual return interpretation. An already-running worker is not restarted, interrupted or silently rerouted by this notice. Sourcefree passes still do not create native actor/source/security authority.
+
+
 **REPOSITORY:** private `maidiu/rawlsing`.
 **ROLE:** fresh independent I2 reviewer and adversarial sourcefree security/consumer court. NOT C8O author, OUT9/12/13/14 author, HQ, CAN/ADP issuer, Pyat, C9R implementer or C8 writer-owner signer.
 **PARENT TERMINAL:** C8 durable authenticated occurrence and V2 read-only projection → independently qualified C9 E1 person-event state, separately performed E2 consumer → eventual C12. Reviewer cannot issue trusted authority. This is the one independently necessary acceptance court for the entire complete C8O author return, not a patch per RED.

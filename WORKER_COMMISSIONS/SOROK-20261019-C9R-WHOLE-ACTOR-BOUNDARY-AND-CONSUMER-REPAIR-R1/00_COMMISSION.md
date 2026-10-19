@@ -1,5 +1,8 @@
 # SOROK C9R — WHOLE ACTOR-BOUNDARY AND REAL CONSUMER RESTORATION R1
 
+> **MANDATORY CURRENT HQ ARTICULATION CORRECTION, 2026-10-19.** This original R1 commission's mission and immutable worker startup remain historically valid, but the original routing/header/acceptance text alone does **NOT** meet live Sorok 00C §9. Before any NOT-YET-LAUNCHED user-facing prompt, read and apply **[`01_PROSPECTIVE_00C_MODEL_JUDGMENT_AND_THREE_COURT_CLARIFICATION_R1.md`](./01_PROSPECTIVE_00C_MODEL_JUDGMENT_AND_THREE_COURT_CLARIFICATION_R1.md)** at `agent/sorok-prea0-psyche-architecture-r1` in full, together with the PRE-MAIN three-tier model/judgment law. `STATUS=MIDDLE_USER_DECISION_IF_NOT_YET_LAUNCHED__IF_LIVE_PRESERVE_ACTUAL_MODEL_AND_HOST`. Full prompt must name model and editor independently, source/authority, engineering/scientific/authority ACCEPT/RED/HOLD and actual return interpretation. An already-running worker is not restarted, interrupted or silently rerouted by this notice. Sourcefree passes still do not create native actor/source/security authority.
+
+
 **Issuing controller:** Sorok HQ, scoped W55 receipt `3d8b7b90927bdfc2bba269697bbe2c0c0ad1e180`, substantive C9PI decision `78546846bfceb87f70f9b1efd6adda53c70a8ec3`.
 
 **Parent finish-line:** Sorok C9–C10 actor×event→durable owner state→later independent performed-action consumer, feeding eventual C11/C12; absent cells are concrete actor/rule validity, full target preimage and exact owner/source identity, independently read committed state, genuine performed-action registration. This commission is the **largest qualified implementable sourcefree C9/C10 technical and custody tranche**, not native C9 admission and not a completed person.

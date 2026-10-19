@@ -1,5 +1,8 @@
 # LAUNCH / CONTINUE — SOROK G17 — MATERIAL-CONSERVING, INDEPENDENT HISTORICAL LIFE REPAIR
 
+> **MANDATORY CURRENT HQ ARTICULATION CORRECTION, 2026-10-19.** This original R1 commission's mission and immutable worker startup remain historically valid, but the original routing/header/acceptance text alone does **NOT** meet live Sorok 00C §9. Before any NOT-YET-LAUNCHED user-facing prompt, read and apply **[`01_MANDATORY_00C_MODEL_JUDGMENT_AND_THREE_COURT_AMENDMENT_R1.md`](./01_MANDATORY_00C_MODEL_JUDGMENT_AND_THREE_COURT_AMENDMENT_R1.md)** at `agent/sorok-prea0-psyche-architecture-r1` in full, together with the PRE-MAIN three-tier model/judgment law. `STATUS=CODEX_RECOMMENDED__EXACT_ACCOUNT_MODEL_USER_CONFIRM__IF_ALREADY_ACTIVE_DO_NOT_DISTURB`. Full prompt must name model and editor independently, source/authority, engineering/scientific/authority ACCEPT/RED/HOLD and actual return interpretation. An already-running worker is not restarted, interrupted or silently rerouted by this notice. Sourcefree passes still do not create native actor/source/security authority.
+
+
 **PROJECT:** private `maidiu/rawlsing`.
 **PARENT TERMINAL:** C4 independent historically generated lives and lawful genealogical continuation → C6 real scheduler/recipient → C9 person×world×event → C12 pipeline-generated person. The goal is one coherent corrected sourcefree scientific causal machine, not one example, graph-only assertion or parental prose fixture.
 **ROLE:** one accountable sourcefree corrective implementation scientist; independent of G15 author, G16I reviewer, C9PI reviewer, C8O author, Sorok HQ, Pyat HQ, CAN/ADP/domain/biology issuers. Keep later acceptance-review role separate.
