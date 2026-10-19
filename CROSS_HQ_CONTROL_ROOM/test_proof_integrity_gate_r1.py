@@ -42,11 +42,44 @@ class ProofIntegrityGateTests(unittest.TestCase):
         )
         self.assertEqual(gate.lint_text(code), [])
 
-    def test_requires_witness_for_claiming_join(self):
+    def test_classifies_claim_word(self):
         code = "def test_release_to_consumer_join():\n    assert receipt == expected\n"
         self.assertTrue(gate.claimed_integration(code, "test_service.py"))
         self.assertFalse(gate.claimed_integration(
             "def test_hash_storage():\n    assert digest == expected\n", "test_hash_storage.py"))
+
+
+    def test_executable_release_severance_witness(self):
+        import json
+        import tempfile
+        with tempfile.TemporaryDirectory(prefix="proof-gate-selftest-") as d:
+            root = Path(d)
+            (root / "release.py").write_text("def get_release():\\n    return 3\\n".replace("\\n", "\n"), encoding="utf-8")
+            (root / "test_link.py").write_text(
+                "from release import get_release\\n"
+                "def test_link_dependency():\\n"
+                "    assert get_release() == 3\\n".replace("\\n", "\n"),
+                encoding="utf-8",
+            )
+            manifest = root / "test_link.py.proof.json"
+            manifest.write_text(json.dumps({
+                "schema": gate.SCHEMA,
+                "claims": [{
+                    "claim_id": "SELFTEST_RELEASE_LINK",
+                    "actual_consumer": "test_link_dependency",
+                    "claimed_dependency": "release.get_release -> consumer",
+                    "positive_node": "test_link.py::test_link_dependency",
+                    "fault": {
+                        "path": "release.py",
+                        "old": "    return 3",
+                        "new": "    return 4"
+                    }
+                }]
+            }), encoding="utf-8")
+            receipt = gate.witness(manifest, root)
+            self.assertEqual(receipt["claims"][0]["fault_probe"], "TARGET_ASSERTION_FAILED")
+            self.assertIn("return 3", (root / "release.py").read_text(encoding="utf-8"))
+
 
 
 if __name__ == "__main__":
