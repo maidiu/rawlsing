@@ -1,0 +1,157 @@
+{
+  "schema": "SOROK_C0X_PUBLICATION_RECEIPT@1",
+  "repository": "maidiu/rawlsing (PRIVATE)",
+  "role": "bounded Sorok C0/C10 receiving-facade and real-consumer implementation worker; not Pyat producer, HQ, semantic issuer or C11 welder",
+  "branch": "agent/rabochii-sorok-20261019-c0x-dual-owner-receiver-completion-r1",
+  "sealed_startup": "6925ece4a2e5ccd647ac909904c2db40b55260a7",
+  "c0r2": "55d2daa4bab41c5ff4ffdc196c8d36d300c3d60f",
+  "facade": {
+    "blob_sha1": "855bb72f494d64083cee706e12f4f3d58c47dec3",
+    "sha256": "fa08d5f56fb4316131de1b989796071472d81cc0f968f734ee4e828625af708f",
+    "bytes": 23508
+  },
+  "native29": {
+    "modules": 29,
+    "bytes": 859712,
+    "all_blob_match": true,
+    "closure_resolves": true,
+    "committed_tree_duplication": false
+  },
+  "evidence_commit": "824b6a95c559f5dcb7e58eb3771044b2b54a17e3",
+  "docs_commit": "bf34f625ad827826526d2f8775c3e78ad9167305",
+  "remote_head_verified": "bf34f625ad827826526d2f8775c3e78ad9167305",
+  "remote_ref": "refs/heads/agent/rabochii-sorok-20261019-c0x-dual-owner-receiver-completion-r1",
+  "verified_by": "git ls-remote origin refs/heads/agent/rabochii-sorok-20261019-c0x-dual-owner-receiver-completion-r1",
+  "courts": {
+    "c0p_author_49": 49,
+    "c0i_unrepaired_50": {
+      "pass": 47,
+      "red": 3
+    },
+    "c0i_repaired_50": 50,
+    "c0r2_author_23": 23,
+    "k9": 8,
+    "k10": 28,
+    "k9k10_total": 36,
+    "c0x_native": 15,
+    "c0x_postproof": 15,
+    "c0x_cold_0": 15,
+    "c0x_cold_1": 15,
+    "c0x_post_gate_cold_0": 15,
+    "c0x_post_gate_cold_1": 15
+  },
+  "k9k10_grade": "SOURCEFREE_FIXTURE_PORT__NOT_OPERATIVE_N9",
+  "c0x_receiver": {
+    "schema": "SOROK_C0X_WORLD_RECEIVER@1",
+    "version": "1.0.0",
+    "nonparent": "SUPPORTED",
+    "conception": "SUPPORTED",
+    "provider_replacement": "PARTIAL",
+    "source_revocation": "PARTIAL",
+    "temporal_before_publication": "UNKNOWN",
+    "owner_substitution": "REFUSED",
+    "missing_contract": "REFUSED",
+    "reverse": "REFUSED",
+    "real_use": "REFUSED"
+  },
+  "proof": {
+    "claim_id": "C0X_RECEIVER_DEPENDS_ON_ACTUAL_N9_SELECTED_WORLD_OUTPUT",
+    "positive_node": "tests/test_c0x_receiving_consumer.py::test_nonparent_receipt_reads_actual_upstream_selection",
+    "baseline": "PASS",
+    "fault_probe": "TARGET_ASSERTION_FAILED",
+    "grade": "BOUNDED_MUTATION_DETECTED",
+    "gate_state": "MECHANICAL_PROOF_GATE_PASS_NOT_SCIENTIFIC_ADOPTION",
+    "restored_facade_blob": "855bb72f494d64083cee706e12f4f3d58c47dec3"
+  },
+  "terminal_matrix": "evidence/terminal_matrix.json",
+  "overall": "BOUNDED C0/C10 READ-ONLY TWO-OWNER RECEIVER IMPLEMENTED AND EXECUTED; C0R2 AUTHOR CANDIDATE NOT SELF-ACCEPTED; FULL C10 TRANSPORT AND C11 WELD HOLD",
+  "findings": [
+    "C0R2 PossibilityReceipt ordered_steps[].parent_receipt_ref is a callable, not a transportable ExactRef; full C10 JSON transport HOLD.",
+    "Pre-publication temporal read raises upstream TypeError; C0X types UNKNOWN; upstream should return typed temporal refusal.",
+    "C0R2 23-test court contains inherited 'or True' vacuous assertion at test_c0r2_adversarial.py:72; not proof.",
+    "Four clock roles present; actor scene caller-owned and actor/request values may coincide; graded, not complete.",
+    "K9/K10 36/36 are sourcefree fixture port, not operative native N9.",
+    "C0R2 is author candidate pending I2; no self-acceptance."
+  ],
+  "unresolved_owner_edge": "transportable ordered-possibility parent receipt ref (not callable) and typed temporal refusal at the C0P/C0R2 owner; independent I2/C0 acceptance; C11 physical weld remains separate",
+  "scientific_ceiling": "SOURCEFREE_TEST_ONLY_READ_ONLY_TWO_OWNER_NO_C11_WELD_NO_ACTOR_PERSON_NO_ROUTE_PROBABILITY",
+  "cost": {
+    "billed_api_cash": "UNKNOWN",
+    "included_quota": "UNKNOWN",
+    "execution_surface": "local warm Git/pytest; no paid API call observed"
+  },
+  "non_grants": [
+    "original survey/source operation",
+    "original U/E_pre",
+    "model-use grant",
+    "behavioral route probability",
+    "selection weight",
+    "actor/person generation",
+    "N11/N12",
+    "V3",
+    "C11 physical weld",
+    "production adoption"
+  ],
+  "artifact_sha256": {
+    "00_RETURN.md": {
+      "sha256": "7ca1f9679f9b075944e9768aaa7edd9e3057453df20fdb9562b861da37b3d3cc",
+      "bytes": 9287
+    },
+    "c0x_world_receiver.py": {
+      "sha256": "a49dae6203789b6558683eaafd61d2051bab6a6afd91369d01f18f79fd6786e0",
+      "bytes": 16753
+    },
+    "upstream/c0p_two_contract_port.py": {
+      "sha256": "fa08d5f56fb4316131de1b989796071472d81cc0f968f734ee4e828625af708f",
+      "bytes": 23508
+    },
+    "tests/test_c0x_receiving_consumer.py": {
+      "sha256": "6b1c8751fd07c64ab1934b7d912f9294b0c91c8ec0ab1b25f835ee48c417a5f0",
+      "bytes": 11323
+    },
+    "tests/test_c0x_receiving_consumer.py.proof.json": {
+      "sha256": "0557a8e89da14d316235a6bf82e6f0ac502c8685659f3205cfb5c381b59b3b01",
+      "bytes": 838
+    },
+    "evidence/execution_receipts.json": {
+      "sha256": "908f585f61d39da5ece07cd3ac620626f0d18efab526be425806c1b9bbced884",
+      "bytes": 5431
+    },
+    "evidence/terminal_matrix.json": {
+      "sha256": "7d28fafb61aa2f0c71d36036ac2e270a8042315511989932fed6b11a301f5e73",
+      "bytes": 3726
+    },
+    "evidence/source_import_custody.json": {
+      "sha256": "e25ebe44b0646311e8ba0a5b1eda61f634f7140ea0bf7838f254cdabb1626a4c",
+      "bytes": 3872
+    },
+    "evidence/native29_verification.json": {
+      "sha256": "d12277dd0c93df71669a0e0a644b12a9d40fd1f967aaaf28843860afd878517d",
+      "bytes": 11732
+    },
+    "evidence/k9k10_manifest.json": {
+      "sha256": "3b609389ebbb01e8bbf63e2bb686a909f96f245b6ee076bc97c558a891d62341",
+      "bytes": 3377
+    },
+    "evidence/inherited_courts.json": {
+      "sha256": "a8d00cc73bee8a555eaf0f7a4d9c835821f1b19bca185931d916f2e6d5d6306d",
+      "bytes": 1383
+    },
+    "evidence/c0x_readings.json": {
+      "sha256": "1e91f8ea1c64df6c435757e43e57cf80907d9b5317e6c23e809a19ad18f756de",
+      "bytes": 95614
+    },
+    "evidence/proof_witness_receipt.json": {
+      "sha256": "7bd92f6e33db01bdd6ea894ed2174aef6bcac1044bba24416f873ebcfec9c87b",
+      "bytes": 658
+    },
+    "evidence/proof_gate_changed_receipt.json": {
+      "sha256": "b0abcc0db6c2a576ed6593aba0786bf5db6391da8302e36aefc4d9c17533c4f8",
+      "bytes": 978
+    },
+    "environment_passport_delta.json": {
+      "sha256": "15ed796a7c6e6d9ba486d78d334ba2a7b03468549417050910972ea2d3c41602",
+      "bytes": 2560
+    }
+  }
+}
