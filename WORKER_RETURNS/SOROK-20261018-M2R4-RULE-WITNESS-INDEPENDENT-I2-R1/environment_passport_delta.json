@@ -1,0 +1,68 @@
+{
+  "passport_schema": "SOROK_00D_ENVIRONMENT_PASSPORT_R1",
+  "environment_id": "BROWSER-GITHUB-FORENSIC-20261019-I2",
+  "epoch_id": "THIS_CONVERSATION_NONPERSISTENCE_UNPROVEN",
+  "owner_session_alias": "SOROK_M2R4_I2",
+  "surface": "BROWSER_CONTAINER_WITH_GITHUB_CONNECTOR",
+  "machine_alias": null,
+  "status": "RECONSTRUCTED",
+  "last_live_probe_at": "2026-10-19",
+  "probe_command_and_result": "python -V -> 3.13.5; pytest --version -> 9.0.2; git --version -> 2.47.3; git ls-remote private repo -> DNS failure",
+  "python": {
+    "status": "VERIFIED",
+    "version": "3.13.5"
+  },
+  "pytest": {
+    "status": "VERIFIED",
+    "version": "9.0.2"
+  },
+  "git": {
+    "status": "VERIFIED",
+    "version": "2.47.3"
+  },
+  "filesystem": {
+    "status": "VERIFIED",
+    "stage_relative": "sorok_m2r4_i2_stage",
+    "complete_importable_closure": false
+  },
+  "node": {
+    "status": "UNKNOWN"
+  },
+  "git_object_store_alias": null,
+  "worktree_alias": null,
+  "branch": "agent/reviewer-sorok-20261018-m2r4-rule-witness-independent-i2-r1",
+  "checkout_base": "d53b36a2e5b1f665061a736b26584806c4deaa6c",
+  "real_checkout_head": null,
+  "source_family": "SOROK_M2_SOURCEFREE",
+  "materialized_source_refs": [],
+  "dependency_closure_status": "PARTIAL_REMOTE_ONLY",
+  "source_permission": "connected private repository read, no native ADP/CAN or original survey permission",
+  "covered_test_suites": [
+    {
+      "suite": "R3 I2 six cross-version",
+      "result": "NOT_RUN"
+    },
+    {
+      "suite": "R4 author 153",
+      "result": "NOT_RUN"
+    },
+    {
+      "suite": "new independent 12",
+      "result": "NOT_RUN"
+    }
+  ],
+  "science_grade": "DOCUMENTARY_SOURCE_IDENTITY_ONLY",
+  "model_provider": "OpenAI ChatGPT GPT-6",
+  "effort": "UNKNOWN_TO_RUNNER",
+  "cash_known": null,
+  "quota_known": null,
+  "retries": 0,
+  "independent_review_separation": "fresh reviewer, not R4 author",
+  "staged_state_preservation": "NOT_PORTABLE_IMPORTS",
+  "next_good_affinity_tags": [
+    "M2_R4_TEST_EXECUTION",
+    "HISTORICAL_RULE",
+    "WITNESS_CUSTODY"
+  ],
+  "retire_or_rebuild_reason": "required pinned source staging not completed and no actual imports"
+}
