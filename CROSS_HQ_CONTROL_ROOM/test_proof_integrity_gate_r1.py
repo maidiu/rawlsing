@@ -54,11 +54,13 @@ class ProofIntegrityGateTests(unittest.TestCase):
         import tempfile
         with tempfile.TemporaryDirectory(prefix="proof-gate-selftest-") as d:
             root = Path(d)
-            (root / "release.py").write_text("def get_release():\\n    return 3\\n".replace("\\n", "\n"), encoding="utf-8")
+            (root / "release.py").write_text(
+                "def get_release():\n    return 3\n", encoding="utf-8"
+            )
             (root / "test_link.py").write_text(
-                "from release import get_release\\n"
-                "def test_link_dependency():\\n"
-                "    assert get_release() == 3\\n".replace("\\n", "\n"),
+                "from release import get_release\n"
+                "def test_link_dependency():\n"
+                "    assert get_release() == 3\n",
                 encoding="utf-8",
             )
             manifest = root / "test_link.py.proof.json"
