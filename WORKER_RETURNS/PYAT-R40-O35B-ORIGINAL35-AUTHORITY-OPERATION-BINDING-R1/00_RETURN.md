@@ -16,6 +16,13 @@ are superseded only at their exact grains. The full objective remains
 incomplete: original I03/Batch replay, its execution-plan omission witness and
 full35 competent scientific bindings remain unproved.
 
+**Remaining replay prerequisite:** the fresh native-retention audit shows that
+the saved empirical closure omits the original C11 carrier/internal record
+preimages needed by the 15-section candidate validator. The exact unsent
+custodian delivery packet and three-turn external-block audit are in
+`08_EXACT_C11_REPLAY_PREREQUISITE.md`. This does not undo the proved M1 repair
+or turn the original replay requirement into a metadata-only completion.
+
 **HOLD on the commissioned original-source I03/Batch-to-learned-consumer positive.** The exact 26-plus-nine decision tree, all35 inherited operation accounting, original owner-row audit, omission-sensitive metadata comparison and an exact retained LiTS query packet entering the native catalog are delivered. No original authority or permission is issued. This is an implementing author's return, not independent acceptance or HQ adoption.
 
 The branch starts at the requested seal `1150e836ef58553255abc0f588e66c1327db4932`. Its parent is `c58b02445334f253116bc13031340d3bab3168b4`; the seal's own added commission concerns R39I, while this O35B commission is inherited. The requested seal was followed exactly. One isolated sparse worktree reuses the local Git object store and qualified warm Python. No clone, subagent, model switch, package install or raw respondent read was performed.

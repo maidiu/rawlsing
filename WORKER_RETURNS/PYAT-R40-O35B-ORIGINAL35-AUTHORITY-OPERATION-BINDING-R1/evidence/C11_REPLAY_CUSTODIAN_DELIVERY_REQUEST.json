@@ -1,0 +1,87 @@
+{
+  "schema": "O35B_EXACT_C11_CUSTODIAN_DELIVERY_REQUEST@1",
+  "status": "PREPARED_UNSENT__NO_GRANT_ISSUED",
+  "recipient_role": "Competent custodian of the original validated LiTS Wave I C11 input",
+  "reason": "Saved empirical closure retains results and release/replay identity but not full original C11 candidate records",
+  "expected_release_ref": {
+    "kind": "C11LogicalRelease",
+    "object_id": "LITS1-I02-F02-SUCCESSOR-7cac43e2ca5b31cb-bf305bf3f169d669",
+    "content_hash": "192926fabd9c9c3d40e43b1d7705ca2bcfe7f8d06e286be26d4b886d436df43f"
+  },
+  "preferred_delivery": "Already retained complete original C11 candidate/repository with all public/internal record preimages and exact manifest/section/TypedAbsence bindings",
+  "required_candidate_sections": [
+    {
+      "field": "source_release_manifest",
+      "native_type": "SourceReleaseManifest"
+    },
+    {
+      "field": "empirical_universes",
+      "native_type": "tuple[EmpiricalUniverse, ...]"
+    },
+    {
+      "field": "respondent_identities",
+      "native_type": "tuple[RespondentIdentity, ...]"
+    },
+    {
+      "field": "question_variable_bindings",
+      "native_type": "tuple[QuestionVariableBinding, ...]"
+    },
+    {
+      "field": "respondent_events",
+      "native_type": "tuple[RespondentEvent, ...]"
+    },
+    {
+      "field": "routing_eligibility_facts_or_exact_rules",
+      "native_type": "tuple[RoutingEligibilityFact, ...]"
+    },
+    {
+      "field": "empirical_coordinate_facts",
+      "native_type": "tuple[EmpiricalCoordinateFact, ...]"
+    },
+    {
+      "field": "weight_measure_facts_or_typed_absence",
+      "native_type": "tuple[WeightMeasureFact, ...] | TypedAbsence"
+    },
+    {
+      "field": "authority_snapshots",
+      "native_type": "tuple[AuthoritySnapshot, ...]"
+    },
+    {
+      "field": "source_universe_relations_or_explicit_distinct_default",
+      "native_type": "tuple[SourceUniverseRelation, ...] | TypedAbsence"
+    },
+    {
+      "field": "predicate_replay_bindings_when_retained_objects_require_them",
+      "native_type": "tuple[EmpiricalPredicateReplayBinding, ...] | TypedAbsence"
+    },
+    {
+      "field": "comparator_replay_bindings_or_typed_deferred_state",
+      "native_type": "tuple[ComparatorReplayBinding, ...] | TypedAbsence"
+    },
+    {
+      "field": "discovery_branch_replay_bindings_or_typed_deferred_state",
+      "native_type": "tuple[DiscoveryBranchReplayBinding, ...] | TypedAbsence"
+    },
+    {
+      "field": "structural_admission_replay_bindings_or_typed_not_applicable_state",
+      "native_type": "tuple[StructuralAdmissionReplayBinding, ...] | TypedAbsence"
+    },
+    {
+      "field": "candidate_replay_manifest",
+      "native_type": "ReplayManifest | None"
+    }
+  ],
+  "native_validation_entrypoint": "rawlsing_next.pre553_c11_ingest.validate_c11_source_release(candidate)",
+  "repository_entrypoint": "rawlsing_next.pre553_c11_repository.C11Repository((validated_release,))",
+  "positive_test": "Exact original semantic release ref validates and resolves, then a separately verified already-governed original native query plan executes with independent expected-vs-executed omission control",
+  "proof_limits": "C11 delivery does not itself issue all35 U/E_pre, learned family-rule, source/model/actor or N11 rights",
+  "alternative_if_preimages_not_retained": "Competent exact current source/host/purpose reconstruction warrant using existing original native builders; no raw read authorized by this packet",
+  "no_shortcuts": [
+    "No hash inversion from Facts",
+    "No invented default weights or TypedAbsence",
+    "No copied private validation seal",
+    "No metadata-only C11 release",
+    "No new generic workload grammar"
+  ],
+  "dependent_existing_M1_proof": "45555f984c906a3c97d8072374cb3c2e97493091; reuse without repeating snapshot repair"
+}

@@ -1,0 +1,139 @@
+{
+  "schema": "O35B_C11_RETENTION_PREIMAGE_GAP_AUDIT@1",
+  "scope": "EXACT_SUCCESS_CUSTODY_METADATA_AND_SEALED_NATIVE_SOURCE_ONLY; NOT_A_GLOBAL_ABSENCE_SEARCH",
+  "inventory_sha256": "c4bd4f9c993ba6e12ed18cc6450976bd832ac1aff07eb92863c0e6022efc2b92",
+  "inventory_bytes": 1932,
+  "closure_identity": "f264dd8f83a0794716583d1ea8445947cc9470b99475e5d51fc2383e7196f415",
+  "public_empirical_object_count": 234,
+  "public_empirical_inventory": {
+    "AuthoritySnapshot@1.0.0": 24,
+    "DiscoveryAuthority@1.0.0": 1,
+    "DiscoveryResultReceipt@1.0.0": 50,
+    "EmpiricalFact@1.0.0": 60,
+    "EmpiricalPredicate@1.0.0": 35,
+    "EmpiricalQuerySpec@1.0.0": 63,
+    "EmpiricalUniverse@1.0.0": 1
+  },
+  "native_candidate_sections": [
+    {
+      "field": "source_release_manifest",
+      "native_type": "SourceReleaseManifest"
+    },
+    {
+      "field": "empirical_universes",
+      "native_type": "tuple[EmpiricalUniverse, ...]"
+    },
+    {
+      "field": "respondent_identities",
+      "native_type": "tuple[RespondentIdentity, ...]"
+    },
+    {
+      "field": "question_variable_bindings",
+      "native_type": "tuple[QuestionVariableBinding, ...]"
+    },
+    {
+      "field": "respondent_events",
+      "native_type": "tuple[RespondentEvent, ...]"
+    },
+    {
+      "field": "routing_eligibility_facts_or_exact_rules",
+      "native_type": "tuple[RoutingEligibilityFact, ...]"
+    },
+    {
+      "field": "empirical_coordinate_facts",
+      "native_type": "tuple[EmpiricalCoordinateFact, ...]"
+    },
+    {
+      "field": "weight_measure_facts_or_typed_absence",
+      "native_type": "tuple[WeightMeasureFact, ...] | TypedAbsence"
+    },
+    {
+      "field": "authority_snapshots",
+      "native_type": "tuple[AuthoritySnapshot, ...]"
+    },
+    {
+      "field": "source_universe_relations_or_explicit_distinct_default",
+      "native_type": "tuple[SourceUniverseRelation, ...] | TypedAbsence"
+    },
+    {
+      "field": "predicate_replay_bindings_when_retained_objects_require_them",
+      "native_type": "tuple[EmpiricalPredicateReplayBinding, ...] | TypedAbsence"
+    },
+    {
+      "field": "comparator_replay_bindings_or_typed_deferred_state",
+      "native_type": "tuple[ComparatorReplayBinding, ...] | TypedAbsence"
+    },
+    {
+      "field": "discovery_branch_replay_bindings_or_typed_deferred_state",
+      "native_type": "tuple[DiscoveryBranchReplayBinding, ...] | TypedAbsence"
+    },
+    {
+      "field": "structural_admission_replay_bindings_or_typed_not_applicable_state",
+      "native_type": "tuple[StructuralAdmissionReplayBinding, ...] | TypedAbsence"
+    },
+    {
+      "field": "candidate_replay_manifest",
+      "native_type": "ReplayManifest | None"
+    }
+  ],
+  "retention_document_literal_keys": [
+    "schema",
+    "release_ref",
+    "source_artifact_ref",
+    "source_release_manifest_hash",
+    "semantic_release_hash",
+    "replay_ref",
+    "replay_manifest",
+    "m01_m18_coverage"
+  ],
+  "retention_writer_release_attributes": [
+    "m01_m18_coverage",
+    "release_ref",
+    "replay_manifest",
+    "semantic_release_hash",
+    "source_artifact_ref",
+    "source_release_manifest_hash"
+  ],
+  "omitted_carrier_families": [
+    "RespondentIdentity",
+    "QuestionVariableBinding",
+    "RespondentEvent",
+    "RoutingEligibilityFact",
+    "EmpiricalCoordinateFact"
+  ],
+  "internal_record_preimages_in_release_writer": "NOT_SERIALIZED; writer does not access release.internal_records",
+  "public_record_preimages_in_release_writer": "NOT_SERIALIZED; separate closure retains only selected public families",
+  "source_release_manifest": "HASH_ONLY_IN_RETENTION_DOCUMENT; full original manifest still required",
+  "candidate_replay_manifest": "COMPLETE_PREIMAGE_SERIALIZED_BY_WRITER; not sufficient for omitted sections",
+  "zero_count_interpretation": "A zero in empirical inventory is not an exact TypedAbsence value for the C11 candidate; never infer weights, routing, or absence defaults",
+  "validated_release_requirement": "Only validate_c11_source_release on the complete exact candidate may create the native validation seal",
+  "retained_gap": "NO_COMPLETE_C11_CANDIDATE_PREIMAGE_IN_THIS_DECLARED_CLOSURE",
+  "external_alternatives": "An independently retained complete original candidate/repository may exist elsewhere; otherwise a verified exact reconstruction warrant and competent owners are needed",
+  "sources": [
+    {
+      "path": "rawlsing_next/pre553_c11_ingest.py",
+      "commit": "1150e836ef58553255abc0f588e66c1327db4932",
+      "bytes": 40034,
+      "sha256": "0c56a0f6f656547a096982a6adab21c9b47d749385411a5d159f2b5390eec8bf",
+      "git_blob_sha1": "37cd35fa2e3420a3eea272a2902e96ab9ba38aba"
+    },
+    {
+      "path": "rawlsing_next/fiabc_final_oracle_freeze_producers.py",
+      "commit": "1150e836ef58553255abc0f588e66c1327db4932",
+      "bytes": 99601,
+      "sha256": "e61011cf62865e1dc45bc8cc2218790896bb63a1b667252786941a9395ed033e",
+      "git_blob_sha1": "9b67df148528fbc35813cac473c27a28485d1f91"
+    },
+    {
+      "path": "rawlsing_next/pre553_c11_repository.py",
+      "commit": "1150e836ef58553255abc0f588e66c1327db4932",
+      "bytes": 5278,
+      "sha256": "84a71fe43307cca30f9eeaaedb269d8390468a4744a0fac251aebc2cda7b498e",
+      "git_blob_sha1": "67c6eb6494522cd11aab1b93d0e73f9cef6036f3"
+    }
+  ],
+  "raw_source_reads": 0,
+  "row_values_output": 0,
+  "new_C11_seals": 0,
+  "new_I03_Batch_executions": 0
+}

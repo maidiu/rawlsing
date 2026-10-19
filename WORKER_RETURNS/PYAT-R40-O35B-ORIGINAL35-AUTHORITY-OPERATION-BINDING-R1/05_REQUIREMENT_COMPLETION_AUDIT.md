@@ -24,7 +24,7 @@ declaration of goal status.
 | Existing-versus-missing generator determination | 15 named pinned functions/classes and native seam inspection | Existing generators proved; missing generic grammar not established |
 | Actual retained original query packet enters native catalog | Recovered verified portable export; 122 exact native object imports; scoped13-snapshot/35-predicate/63-query native catalog | Proved sourcefree technical binding; no permission adoption |
 | Full historical archive can serve as one registry | Actual whole24-snapshot catalog fails six conflicting envelope pairs | Contradicted at union grain; original RED preserved |
-| Original native I03/Batch execution | Exact original query reaches actual Batch constructor; exact validated C11 release absent | Incomplete / NOT_RUN |
+| Original native I03/Batch execution | Exact original query reaches actual Batch constructor; fresh boundary rejects unrecovered exact validated C11 release; retention writer omits full original candidate record sections | Incomplete / NOT_RUN; exact custody delivery or qualified reconstruction needed |
 | Named original learned consumer | Three exact selected P1 Facts pass real native M1 verification after exact projection snapshot append; original frozen missing-rule hold test and exact joint-deletion/restored-positive witness pass | Retained-object integrity edge proved to typed rule hold; no learned relation or original execution completion |
 | Independent expected original execution workload | Eight AS2B operations frozen; accepted63 query refs independently pinned; original operation eligibility/U/E_pre remain unissued | Partial; not an issued current execution set |
 | Remove original operation from actual native execution plan, assert anti-join RED, restore GREEN | Metadata, native-object and scoped-catalog omission witnesses exist; no original execution plan ran | Incomplete; three narrower witnesses do not discharge it |
@@ -50,3 +50,11 @@ blocked audit before checkpoint recovery. Its absent-checkpoint observation is
 superseded by the live continuation receipt. It does not establish a new
 three-turn block audit after resume. This continuation made material recovery
 and real-consumer progress while preserving the unmet original objective.
+
+The fresh `evidence/resumed_three_turn_c11_block_audit.json` is a separate
+current audit after that resume. It traces the exact persistent C11 prerequisite
+through checkpoint recovery, the M1 repair and the native retention/validator
+audit. `08_EXACT_C11_REPLAY_PREREQUISITE.md` specifies the missing record bodies,
+fresh Batch refusal and exact unsent custody request. Further dependent
+original execution requires external preimages or a verified reconstruction
+warrant; the full objective remains incomplete and externally blocked.

@@ -8,7 +8,7 @@
   "sealed_startup": "1150e836ef58553255abc0f588e66c1327db4932",
   "epoch_id": "dd32d116a9714d7797a568cd6a0c09cb",
   "status": "LIVE_VERIFIED",
-  "last_live_probe_at": "2026-10-19T05:33:11.629986+00:00",
+  "last_live_probe_at": "2026-10-19T05:41:20.272200+00:00",
   "head_at_probe": "60b224360ce95aedd0eb371413934d23d752eb71",
   "continuation_parent": "03cb37da391b47bd1030de59280633c05f377542",
   "writable_marker": "KNOWN_VALUE_WRITE_READ_EQUALITY_VERIFIED_IGNORED_RUNTIME",
@@ -300,7 +300,7 @@
     "direct_180_second_CLI": "NOT_RUN; native positive exceeds budget",
     "restored_positive": "PASS; SAME_NATIVE_NAMED_TEST"
   },
-  "broader_objective": "INCOMPLETE; current original execution/C11 preimage and scientific owner bindings missing",
+  "broader_objective": "INCOMPLETE; external C11 custody/reconstruction and competent scientific bindings required",
   "actual_native_M1_witness": [
     {
       "phase": "baseline",
@@ -331,5 +331,16 @@
     "O35B_BOUND_OWNER_ACCOUNTING",
     "EXACT_P1_RETAINED_OBJECT_RECOVERY",
     "RETURN_ONLY_NATIVE_M1_PROJECTION_BINDING_REPAIR_AND_DIRECT_FACT_SEVERANCE_PROOF"
-  ]
+  ],
+  "head_at_latest_replay_audit": "45555f984c906a3c97d8072374cb3c2e97493091",
+  "C11_current_audit": {
+    "source_seal": "1150e836ef58553255abc0f588e66c1327db4932",
+    "inventory_bytes": 1932,
+    "inventory_sha256": "c4bd4f9c993ba6e12ed18cc6450976bd832ac1aff07eb92863c0e6022efc2b92",
+    "candidate_sections": 15,
+    "retained_empirical_objects": 234,
+    "native_Batch_negative_recheck": "1 PASSED; expected missing release refusal, NOT_ORIGINAL_EXECUTION",
+    "C11_reconstruction": "NOT_RUN; missing complete candidate preimages and no verified current raw reconstruction warrant"
+  },
+  "latest_audit_incremental_cash": "UNKNOWN; existing local Python reused, no installs or model/API calls"
 }
