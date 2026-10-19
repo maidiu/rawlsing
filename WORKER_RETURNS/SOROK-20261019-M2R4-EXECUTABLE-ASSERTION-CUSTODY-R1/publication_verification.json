@@ -1,0 +1,42 @@
+{
+  "author_153": {
+    "failed": 0,
+    "passed": 153,
+    "tests": 153
+  },
+  "branch": "agent/reviewer-sorok-20261019-m2r4-executable-assertion-custody-r1",
+  "cold_full_153_equal": true,
+  "direct_readback_matches_evidence_commit": true,
+  "direct_remote_readback": "147fc84a9e1d9f9434cf81584a9fe008d35272f7",
+  "evidence_commit": "147fc84a9e1d9f9434cf81584a9fe008d35272f7",
+  "evidence_commit_parent": "e91695beaa282eae46fd1a330d00dddca55bbcdf",
+  "historical_r3_i2": {
+    "r3": "4 PASS / 2 RED",
+    "r4": "6 PASS"
+  },
+  "independent_12": {
+    "failed": 0,
+    "passed": 12,
+    "tests": 12
+  },
+  "junit_events": {
+    "errors": 0,
+    "events": 770,
+    "expected_red": 47,
+    "junit_xml": 23,
+    "passed": 723,
+    "skipped": 0
+  },
+  "kernel_restored_sha256": "5b8ac91ca8b3b9afb068493f2a1d6c2dabdc650814ff5f099f0e670d09823940",
+  "proof_claims": 4,
+  "publication_receipt_note": "This receipt is committed after the evidence commit. The final branch tip containing this receipt is reported in the final chat return and is the tip that must be read by direct git ls-remote for acceptance.",
+  "remote_head_after_push": "147fc84a9e1d9f9434cf81584a9fe008d35272f7",
+  "remote_head_before_push": "e91695beaa282eae46fd1a330d00dddca55bbcdf",
+  "schema": "SOROK_M2R4E_PUBLICATION_VERIFICATION@1",
+  "sealed_startup": "e91695beaa282eae46fd1a330d00dddca55bbcdf",
+  "verification_commands": [
+    "git ls-remote origin refs/heads/agent/reviewer-sorok-20261019-m2r4-executable-assertion-custody-r1",
+    "git rev-parse HEAD"
+  ],
+  "verified_at_utc": "2026-10-19T06:49:12Z"
+}
