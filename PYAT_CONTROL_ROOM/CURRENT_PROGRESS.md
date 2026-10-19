@@ -1,4 +1,15 @@
-# Pyat HQ — current whole-machine state and scientific trajectory (revision 26)
+# Pyat HQ — current whole-machine state and scientific trajectory (revision 27)
+
+## R44 actual HQ adjudication — both workers assigned DeepSeek V4.1-Flash MAX (2026-10-19)
+
+**USER QUESTION ANSWERED AND HQ DECISION ISSUED:** The previous R44 MAX seal merely copied the general Browser→DeepSeek→High-if-needed→Middle rule instead of deciding what S44 and I44 REQUIRE. It was **an incomplete HQ dispatch**, superseded *for unlaunched workers* by `PYAT_CONTROL_ROOM/R44_HQ_ADJUDICATED_DEEPSEEK_MAX_S44_I44_DISPATCH_SEAL_20261019.md`. **EXACT STARTUP: `50aca94f93e1f4481e5230e5413bce00c6f0ba93`**, actual full amended commissions at immutable Git blobs **S44 `6d46db11617af736bd4e2db4fe3c45a7555dcad3`**, **I44 `8ff7dd6d4a40496ac0e9c4cd619739d705faa8bc`**. The startup has been physically read; new seal at `65cc69b0a567a5054ddd4b620515dd4b001c6d1f`.
+
+**S44 decision:** `MODEL=DeepSeek V4.1-Flash, THINKING=MAX` **YES**, confidence MODERATE as a *whole-product first accountable technical executor*. I3/S3 secure qualified original source→selected B/I03/I05/Batch→learned E41/N10E→genuine unchanged E04→A42. Browser was considered but not selected as a whole S3 private-source runtime because its authenticated source host/stream permissions aren't verified. U43/B43 have known native contract and plan-envelope tests, inherited real LiTS/WVS7 source method evidence; technical integration/operation with already governed source semantics is within sensible MAX candidate capability. No positive evidence yet requires Codex GPT-6.1 High; no Middle until real insufficiency. **Separate original licence/host/purpose and actual U/E_pre scientific issuer decisions cannot be filled by either DeepSeek or Codex.** A reproduced novel source-native method/architecture problem exceeding Max is a narrowly scoped HQ reallocation trigger, not a high-default.
+
+**I44 decision:** `MODEL=DeepSeek V4.1-Flash, THINKING=MAX` **YES**, confidence HIGH for *assignment fit*, not false evidence that whole I44 was already benchmarked on the model. I2/S3 native four returned heads joined to unchanged A42 and E04/P41, pre-frozen J42 84 views / 252 steps, U43/B43 trust, F43 and existing assessor. Browser whole S3 complex large W41 subprocess closure is less evidently economical; DeepSeek MAX has a materially bounded integrated task. Codex High not justified absent a proven novel blocker; Middle likewise unwarranted as initial assignment.
+
+**USER MODEL/HARNESS CHOICE REMAINS:** HQ has done model/intelligence adjudication, user chooses which exact account/host/editor among actual available OpenCode/DeepSeek-Harness options and checks that Max is offered. The reported mainMac Codex 5h limit/resets remain user-local and not guessed. **S44/I44 are physically commissioned but NOT automatically launched; no remote worker branch was resolvable when adjudicated, local sessions UNKNOWN**. If active worker found, do not duplicate/reassign/restart. All earlier unlaunched R44 seals are historical; no source, model, FF/F6, actor, N11/N12 rights added, no original measured occupancy change.
+
 
 ## R44 Max-specific execution economy and Sorok rev13 currentness — user clarification (2026-10-19)
 
