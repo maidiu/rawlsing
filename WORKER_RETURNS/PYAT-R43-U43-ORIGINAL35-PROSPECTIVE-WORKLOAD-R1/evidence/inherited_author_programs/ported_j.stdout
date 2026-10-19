@@ -1,0 +1,53 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.11.3, pytest-9.1.1, pluggy-1.7.0 -- <HOME>/Desktop/Rawlsing/R43-U43-wt/LOCAL_COURTS/u43-venv/bin/python
+rootdir: <WORKTREE>/runtime_phase_b/candidate
+configfile: pytest.ini
+collecting ... collected 44 items
+
+tests/test_wg0j_adapter_v1.py::test_exact_frozen_25_operations <- pinned/predecessors/j/tests/test_independent.py PASSED [  2%]
+tests/test_wg0j_adapter_v1.py::test_actual_owners_and_source_record_numerics <- pinned/predecessors/j/tests/test_independent.py PASSED [  4%]
+tests/test_wg0j_adapter_v1.py::test_independent_mr_profiles_and_indicator_totals <- pinned/predecessors/j/tests/test_independent.py PASSED [  6%]
+tests/test_wg0j_adapter_v1.py::test_native_options_must_affect_computation_or_hold <- pinned/predecessors/j/tests/test_independent.py PASSED [  9%]
+tests/test_wg0j_adapter_v1.py::test_native_metadata_must_bind_release_or_hold[wave-W99] <- pinned/predecessors/j/tests/test_independent.py PASSED [ 11%]
+tests/test_wg0j_adapter_v1.py::test_native_metadata_must_bind_release_or_hold[unit-household] <- pinned/predecessors/j/tests/test_independent.py PASSED [ 13%]
+tests/test_wg0j_adapter_v1.py::test_native_metadata_must_bind_release_or_hold[source_id-FOREIGN] <- pinned/predecessors/j/tests/test_independent.py PASSED [ 15%]
+tests/test_wg0j_adapter_v1.py::test_native_metadata_must_bind_release_or_hold[form_id-Q-FOREIGN] <- pinned/predecessors/j/tests/test_independent.py PASSED [ 18%]
+tests/test_wg0j_adapter_v1.py::test_native_metadata_must_bind_release_or_hold[response_kind-MULTIPLE_RESPONSE] <- pinned/predecessors/j/tests/test_independent.py PASSED [ 20%]
+tests/test_wg0j_adapter_v1.py::test_same_operation_id_changed_semantics_rejected[conditioners-value0] <- pinned/predecessors/j/tests/test_independent.py PASSED [ 22%]
+tests/test_wg0j_adapter_v1.py::test_same_operation_id_changed_semantics_rejected[op_class-CONDITIONAL] <- pinned/predecessors/j/tests/test_independent.py PASSED [ 25%]
+tests/test_wg0j_adapter_v1.py::test_same_operation_id_changed_semantics_rejected[disposition_reason-UNPROVED] <- pinned/predecessors/j/tests/test_independent.py PASSED [ 27%]
+tests/test_wg0j_adapter_v1.py::test_missing_nonproduced_operation_rejected[HELD] <- pinned/predecessors/j/tests/test_independent.py PASSED [ 29%]
+tests/test_wg0j_adapter_v1.py::test_missing_nonproduced_operation_rejected[INADMISSIBLE] <- pinned/predecessors/j/tests/test_independent.py PASSED [ 31%]
+tests/test_wg0j_adapter_v1.py::test_same_key_altered_target_must_not_execute_original_source <- pinned/predecessors/j/tests/test_independent.py PASSED [ 34%]
+tests/test_wg0j_adapter_v1.py::test_unknown_operation_has_no_fallback <- pinned/predecessors/j/tests/test_independent.py PASSED [ 36%]
+tests/test_wg0j_adapter_v1.py::test_unknown_withdrawn_grants_hold[UNKNOWN] <- pinned/predecessors/j/tests/test_independent.py PASSED [ 38%]
+tests/test_wg0j_adapter_v1.py::test_unknown_withdrawn_grants_hold[WITHDRAWN] <- pinned/predecessors/j/tests/test_independent.py PASSED [ 40%]
+tests/test_wg0j_adapter_v1.py::test_unknown_withdrawn_grants_hold[] <- pinned/predecessors/j/tests/test_independent.py PASSED [ 43%]
+tests/test_wg0j_adapter_v1.py::test_unknown_withdrawn_grants_hold[forged-license] <- pinned/predecessors/j/tests/test_independent.py PASSED [ 45%]
+tests/test_wg0j_adapter_v1.py::test_late_revocation_blocks_current_read <- pinned/predecessors/j/tests/test_independent.py PASSED [ 47%]
+tests/test_wg0j_adapter_v1.py::test_fact_payload_is_bound_at_read PASSED [ 50%]
+tests/test_wg0j_adapter_v1.py::test_wrong_release_bound_to_unit_is_rejected PASSED [ 52%]
+tests/test_wg0j_adapter_v1.py::test_inconsistent_mr_native_sets_rejected <- pinned/predecessors/j/tests/test_independent.py PASSED [ 54%]
+tests/test_wg0j_adapter_v1.py::test_invalid_native_response_rejected[None] <- pinned/predecessors/j/tests/test_independent.py PASSED [ 56%]
+tests/test_wg0j_adapter_v1.py::test_invalid_native_response_rejected[-1] <- pinned/predecessors/j/tests/test_independent.py PASSED [ 59%]
+tests/test_wg0j_adapter_v1.py::test_invalid_native_response_rejected[foreign] <- pinned/predecessors/j/tests/test_independent.py PASSED [ 61%]
+tests/test_wg0j_adapter_v1.py::test_missing_special_9_not_substantive <- pinned/predecessors/j/tests/test_independent.py PASSED [ 63%]
+tests/test_wg0j_adapter_v1.py::test_zero_risk_and_positive_conditional_actual_i03 <- pinned/predecessors/j/tests/test_independent.py PASSED [ 65%]
+tests/test_wg0j_adapter_v1.py::test_absent_joint_split_ballot_holds <- pinned/predecessors/j/tests/test_independent.py PASSED [ 68%]
+tests/test_wg0j_adapter_v1.py::test_source_bytes_mutation_changes_source_artifact_identity <- pinned/predecessors/j/tests/test_independent.py PASSED [ 70%]
+tests/test_wg0j_adapter_v1.py::test_unavailable_unit_release_ref_rejected <- pinned/predecessors/j/tests/test_independent.py PASSED [ 72%]
+tests/test_wg0j_adapter_v1.py::test_freeze_binds_native_fields[options-value0] <- pinned/predecessors/j/tests/test_independent.py PASSED [ 75%]
+tests/test_wg0j_adapter_v1.py::test_freeze_binds_native_fields[missing_codes-value1] <- pinned/predecessors/j/tests/test_independent.py PASSED [ 77%]
+tests/test_wg0j_adapter_v1.py::test_freeze_binds_native_fields[grant-WITHDRAWN] <- pinned/predecessors/j/tests/test_independent.py PASSED [ 79%]
+tests/test_wg0j_adapter_v1.py::test_freeze_binds_native_fields[route_evidence-new-route] <- pinned/predecessors/j/tests/test_independent.py PASSED [ 81%]
+tests/test_wg0j_adapter_v1.py::test_freeze_binds_native_fields[version-v2] <- pinned/predecessors/j/tests/test_independent.py PASSED [ 84%]
+tests/test_wg0j_adapter_v1.py::test_conflicting_carrier_and_changed_target_duplicate_refused <- pinned/predecessors/j/tests/test_independent.py PASSED [ 86%]
+tests/test_wg0j_adapter_v1.py::test_positive_conditional_through_independent_qualified_manifest <- pinned/predecessors/j/tests/test_independent.py PASSED [ 88%]
+tests/test_wg0j_adapter_v1.py::test_frozen_product_path_has_no_positive_conditionals <- pinned/predecessors/j/tests/test_independent.py PASSED [ 90%]
+tests/test_wg0j_adapter_v1.py::test_typed_owner_authority_deny_fails_closed <- pinned/predecessors/j/tests/test_independent.py PASSED [ 93%]
+tests/test_wg0j_adapter_v1.py::test_cold_replay_and_shard_values <- pinned/predecessors/j/tests/test_independent.py PASSED [ 95%]
+tests/test_wg0j_adapter_v1.py::test_cold_resume_restores_published_fact_custody <- pinned/predecessors/j/tests/test_independent.py PASSED [ 97%]
+tests/test_wg0j_adapter_v1.py::test_wave2_source_universe_has_correct_wave <- pinned/predecessors/j/tests/test_independent.py PASSED [100%]
+
+- generated xml file: <WORKTREE>/runtime_phase_b/candidate/observations/ported_j.xml -
+============================= 44 passed in 10.96s ==============================

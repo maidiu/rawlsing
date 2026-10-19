@@ -1,0 +1,16 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "claims": [
+    {
+      "claim_id": "U43_CURRENT_ISSUER_FULL_DESCRIPTOR_TO_NATIVE_CONSUMER_ADMISSION",
+      "actual_consumer": "execute_issued_workload -> actual Route B/C11/I03/I05/Batch native owners",
+      "claimed_dependency": "Current independent issuer envelope controls copied source edition before source factory and native execution",
+      "positive_node": "WORKER_RETURNS/PYAT-R43-U43-ORIGINAL35-PROSPECTIVE-WORKLOAD-R1/tests/test_issued_workload.py::test_consumer_cannot_execute_copied_issued_descriptor",
+      "fault": {
+        "path": "rawlsing_next/pre553_issued_workload.py",
+        "old": "if semantic_hash(workload.envelope()) != record.envelope_sha256:",
+        "new": "if False:  # deliberate severance of issuer descriptor binding"
+      }
+    }
+  ]
+}

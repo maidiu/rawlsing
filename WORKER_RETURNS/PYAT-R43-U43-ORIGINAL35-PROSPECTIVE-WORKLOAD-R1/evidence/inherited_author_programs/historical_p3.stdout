@@ -1,0 +1,45 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.11.3, pytest-9.1.1, pluggy-1.7.0 -- <HOME>/Desktop/Rawlsing/R43-U43-wt/LOCAL_COURTS/u43-venv/bin/python
+rootdir: <WORKTREE>/runtime_phase_b/candidate
+configfile: pytest.ini
+collecting ... collected 36 items
+
+pinned/predecessors/p3/tests/test_wg0p3_repair.py::test_native_options_must_affect_computation_or_hold PASSED [  2%]
+pinned/predecessors/p3/tests/test_wg0p3_repair.py::test_native_metadata_must_bind_release_or_hold[wave-W99] PASSED [  5%]
+pinned/predecessors/p3/tests/test_wg0p3_repair.py::test_native_metadata_must_bind_release_or_hold[unit-household] PASSED [  8%]
+pinned/predecessors/p3/tests/test_wg0p3_repair.py::test_native_metadata_must_bind_release_or_hold[source_id-FOREIGN] PASSED [ 11%]
+pinned/predecessors/p3/tests/test_wg0p3_repair.py::test_native_metadata_must_bind_release_or_hold[form_id-Q-FOREIGN] PASSED [ 13%]
+pinned/predecessors/p3/tests/test_wg0p3_repair.py::test_native_metadata_must_bind_release_or_hold[response_kind-MULTIPLE_RESPONSE] PASSED [ 16%]
+pinned/predecessors/p3/tests/test_wg0p3_repair.py::test_same_operation_id_changed_semantics_rejected[conditioners-value0] PASSED [ 19%]
+pinned/predecessors/p3/tests/test_wg0p3_repair.py::test_same_operation_id_changed_semantics_rejected[op_class-CONDITIONAL] PASSED [ 22%]
+pinned/predecessors/p3/tests/test_wg0p3_repair.py::test_same_operation_id_changed_semantics_rejected[disposition_reason-UNPROVED] PASSED [ 25%]
+pinned/predecessors/p3/tests/test_wg0p3_repair.py::test_same_key_altered_target_must_not_execute_original_source PASSED [ 27%]
+pinned/predecessors/p3/tests/test_wg0p3_repair.py::test_wrong_release_bound_to_unit_is_rejected PASSED [ 30%]
+pinned/predecessors/p3/tests/test_wg0p3_repair.py::test_missing_nonproduced_operation_rejected[HELD] PASSED [ 33%]
+pinned/predecessors/p3/tests/test_wg0p3_repair.py::test_missing_nonproduced_operation_rejected[INADMISSIBLE] PASSED [ 36%]
+pinned/predecessors/p3/tests/test_wg0p3_repair.py::test_frontier_enforcement_rejects_injected_status PASSED [ 38%]
+pinned/predecessors/p3/tests/test_wg0p3_repair.py::test_frontier_receipts_must_match_expected PASSED [ 41%]
+pinned/predecessors/p3/tests/test_wg0p3_repair.py::test_late_revocation_blocks_current_read PASSED [ 44%]
+pinned/predecessors/p3/tests/test_wg0p3_repair.py::test_fact_payload_is_bound_at_read PASSED [ 47%]
+pinned/predecessors/p3/tests/test_wg0p3_repair.py::test_inconsistent_mr_native_sets_rejected PASSED [ 50%]
+pinned/predecessors/p3/tests/test_wg0p3_repair.py::test_invalid_native_response_rejected[None] PASSED [ 52%]
+pinned/predecessors/p3/tests/test_wg0p3_repair.py::test_invalid_native_response_rejected[-1] PASSED [ 55%]
+pinned/predecessors/p3/tests/test_wg0p3_repair.py::test_invalid_native_response_rejected[foreign] PASSED [ 58%]
+pinned/predecessors/p3/tests/test_wg0p3_repair.py::test_missing_special_9_not_substantive PASSED [ 61%]
+pinned/predecessors/p3/tests/test_wg0p3_repair.py::test_source_bytes_mutation_changes_source_artifact_identity PASSED [ 63%]
+pinned/predecessors/p3/tests/test_wg0p3_repair.py::test_cold_checkpoint_resume_restores_facts PASSED [ 66%]
+pinned/predecessors/p3/tests/test_wg0p3_repair.py::test_forged_checkpoint_rejected PASSED [ 69%]
+pinned/predecessors/p3/tests/test_wg0p3_repair.py::test_stale_checkpoint_rejected PASSED [ 72%]
+pinned/predecessors/p3/tests/test_wg0p3_repair.py::test_swapped_release_identity_rejected PASSED [ 75%]
+pinned/predecessors/p3/tests/test_wg0p3_repair.py::test_stripped_held_frontier_rejected PASSED [ 77%]
+pinned/predecessors/p3/tests/test_wg0p3_repair.py::test_stale_permission_at_consumer_read PASSED [ 80%]
+pinned/predecessors/p3/tests/test_wg0p3_repair.py::test_cold_payload_forgery_rejected PASSED [ 83%]
+pinned/predecessors/p3/tests/test_wg0p3_repair.py::test_mr_inconsistency_rejected PASSED [ 86%]
+pinned/predecessors/p3/tests/test_wg0p3_repair.py::test_data_leaf_mutation_changes_source PASSED [ 88%]
+pinned/predecessors/p3/tests/test_wg0p3_repair.py::test_positive_conditional_through_batch_product_path PASSED [ 91%]
+pinned/predecessors/p3/tests/test_wg0p3_repair.py::test_original_native_values_preserved PASSED [ 94%]
+pinned/predecessors/p3/tests/test_wg0p3_repair.py::test_mr_profiles_preserved PASSED [ 97%]
+pinned/predecessors/p3/tests/test_wg0p3_repair.py::test_real_owner_pipeline_preserved PASSED [100%]
+
+- generated xml file: <WORKTREE>/runtime_phase_b/candidate/observations/historical_p3.xml -
+============================== 36 passed in 2.04s ==============================

@@ -1,0 +1,25 @@
+--- WG0P4@20d781c8/repro/wg0p4_workload.py
++++ U43/repro/wg0p4_workload.py
+@@ -292,19 +292,20 @@
+     manifest=BatchManifest(tuple(units.values()));repo=next(iter(releases.values())).repo
+     if any(r.repo is not repo for r in releases.values()):raise IdentityError('RELEASES_NOT_ONE_ACCEPTED_REPOSITORY')
+     source={k:_release_material(v) for k,v in releases.items()}
+-    contract={'manifest':manifest.semantic_projection(),'science':science,'freeze':freeze_hash,'bindings':{k:dict(unit=u.semantic_projection(),query=specs[k].query.semantic_projection(),predicate=specs[k].predicate.semantic_projection()) for k,u in units.items()}}
++    contract={'manifest':manifest.semantic_projection(),'science':science,'freeze':freeze_hash,'bindings':{k:dict(unit=u.semantic_projection(),query=specs[k].query.semantic_projection(),predicate=specs[k].predicate.semantic_projection(),descriptor=_plain(vars(specs[k]))) for k,u in units.items()}}
+     plan=ExecutablePlan(manifest,MappingProxyType(units),MappingProxyType(specs),MappingProxyType(dict(releases)),MappingProxyType({k:r.release_ref for k,r in releases.items()}),repo,tuple(expected_rows(mode)),{'grant':PERMITTED_GRANT,'scope':'TEST_ONLY_HINT_CANNOT_ISSUE_PERMISSION'},freeze_hash,mode,science,owner,canonical(snapshot),canonical(source),canonical(contract))
+     owner._register_compiled_plan(plan)
+     return plan
+ 
+ def _check_plan(plan):
++    if set(plan.op_specs)!=set(plan.units_by_op):raise IdentityError('COMPLETE_DESCRIPTOR_UNIT_KEYSET_MISMATCH')
+     plan.fixture_owner.assert_plan_issued(plan)
+     validate_frontier_receipts(plan.frontier_receipts,mode=plan.frontier_mode)
+     if plan.science_root!=frontier_root(plan.frontier_mode):raise FrontierError('STALE_OR_ALTERED_EXTERNAL_FRONTIER')
+     if plan.source_issuer_grant!={'grant':PERMITTED_GRANT,'scope':'TEST_ONLY_HINT_CANNOT_ISSUE_PERMISSION'}:raise RevocationError('CALLER_GRANT_HINT_MUTATED; NOT_AUTHORITY')
+     plan.fixture_owner.check_current(json.loads(plan.owner_snapshot),[s.release_tag for s in plan.op_specs.values()])
+     if canonical({k:_release_material(r) for k,r in plan.releases.items()})!=plan.source_material:raise IdentityError('SOURCE_C11_READSET_CHANGED')
+-    contract={'manifest':plan.manifest.semantic_projection(),'science':plan.science_root,'freeze':plan.freeze_hash,'bindings':{k:dict(unit=u.semantic_projection(),query=plan.op_specs[k].query.semantic_projection(),predicate=plan.op_specs[k].predicate.semantic_projection()) for k,u in plan.units_by_op.items()}}
++    contract={'manifest':plan.manifest.semantic_projection(),'science':plan.science_root,'freeze':plan.freeze_hash,'bindings':{k:dict(unit=u.semantic_projection(),query=plan.op_specs[k].query.semantic_projection(),predicate=plan.op_specs[k].predicate.semantic_projection(),descriptor=_plain(vars(plan.op_specs[k]))) for k,u in plan.units_by_op.items()}}
+     if canonical(contract)!=plan.contract:raise IdentityError('UNIT_QUERY_PREDICATE_OR_SOURCE_BINDING_CHANGED')
+ 
+ def _fact_entry(op,spec,fact):

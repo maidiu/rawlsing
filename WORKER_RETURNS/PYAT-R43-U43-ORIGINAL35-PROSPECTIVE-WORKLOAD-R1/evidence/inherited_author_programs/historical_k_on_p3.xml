@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="10" skipped="0" tests="11" time="0.513" timestamp="2026-10-19T14:25:32.747703-04:00" hostname="MacBook-Pro.lan"><testcase classname="pinned.predecessors.k.repro.test_wg0k_full_module_hostiles" name="test_positive_25_frozen_count_unchanged" time="0.002" /><testcase classname="pinned.predecessors.k.repro.test_wg0k_full_module_hostiles" name="test_red_equal_count_held_identity_substitution" time="0.001"><failure message="Failed: DID NOT RAISE FrontierError">pinned/predecessors/k/repro/test_wg0k_full_module_hostiles.py:53: in test_red_equal_count_held_identity_substitution
+    with pytest.raises(FrontierError):
+E   Failed: DID NOT RAISE FrontierError</failure></testcase><testcase classname="pinned.predecessors.k.repro.test_wg0k_full_module_hostiles" name="test_red_equal_count_changed_reason" time="0.001"><failure message="Failed: DID NOT RAISE FrontierError">pinned/predecessors/k/repro/test_wg0k_full_module_hostiles.py:62: in test_red_equal_count_changed_reason
+    with pytest.raises(FrontierError):
+E   Failed: DID NOT RAISE FrontierError</failure></testcase><testcase classname="pinned.predecessors.k.repro.test_wg0k_full_module_hostiles" name="test_red_circular_expected_ops_cannot_be_source_oracle" time="0.001"><failure message="Failed: DID NOT RAISE FrontierError">pinned/predecessors/k/repro/test_wg0k_full_module_hostiles.py:70: in test_red_circular_expected_ops_cannot_be_source_oracle
+    with pytest.raises(FrontierError):
+E   Failed: DID NOT RAISE FrontierError</failure></testcase><testcase classname="pinned.predecessors.k.repro.test_wg0k_full_module_hostiles" name="test_red_store_alias_cannot_corrupt_immutable_published_fact" time="0.001"><failure message="wg0p3_workload.IdentityError: fact hash mismatch for exact-real-fact-ref: tampered">pinned/predecessors/k/repro/test_wg0k_full_module_hostiles.py:79: in test_red_store_alias_cannot_corrupt_immutable_published_fact
+    assert custody.read("exact-real-fact-ref")["cells"][0]["n"]==2
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pinned/predecessors/p3/repro/wg0p3_workload.py:910: in read
+    raise IdentityError(f"fact hash mismatch for {fact_ref_key}: tampered")
+E   wg0p3_workload.IdentityError: fact hash mismatch for exact-real-fact-ref: tampered</failure></testcase><testcase classname="pinned.predecessors.k.repro.test_wg0k_full_module_hostiles" name="test_red_read_alias_cannot_corrupt_immutable_published_fact" time="0.001"><failure message="wg0p3_workload.IdentityError: fact hash mismatch for exact-real-fact-ref: tampered">pinned/predecessors/k/repro/test_wg0k_full_module_hostiles.py:87: in test_red_read_alias_cannot_corrupt_immutable_published_fact
+    assert custody.read("exact-real-fact-ref")["cells"][0]["n"]==2
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pinned/predecessors/p3/repro/wg0p3_workload.py:910: in read
+    raise IdentityError(f"fact hash mismatch for {fact_ref_key}: tampered")
+E   wg0p3_workload.IdentityError: fact hash mismatch for exact-real-fact-ref: tampered</failure></testcase><testcase classname="pinned.predecessors.k.repro.test_wg0k_full_module_hostiles" name="test_red_snapshot_alias_cannot_corrupt_immutable_published_fact" time="0.001"><failure message="wg0p3_workload.IdentityError: fact hash mismatch for exact-real-fact-ref: tampered">pinned/predecessors/k/repro/test_wg0k_full_module_hostiles.py:95: in test_red_snapshot_alias_cannot_corrupt_immutable_published_fact
+    assert custody.read("exact-real-fact-ref")["cells"][0]["n"]==2
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pinned/predecessors/p3/repro/wg0p3_workload.py:910: in read
+    raise IdentityError(f"fact hash mismatch for {fact_ref_key}: tampered")
+E   wg0p3_workload.IdentityError: fact hash mismatch for exact-real-fact-ref: tampered</failure></testcase><testcase classname="pinned.predecessors.k.repro.test_wg0k_full_module_hostiles" name="test_red_key_cannot_be_rebound_to_different_fact" time="0.001"><failure message="Failed: DID NOT RAISE IdentityError">pinned/predecessors/k/repro/test_wg0k_full_module_hostiles.py:101: in test_red_key_cannot_be_rebound_to_different_fact
+    with pytest.raises(IdentityError):
+E   Failed: DID NOT RAISE IdentityError</failure></testcase><testcase classname="pinned.predecessors.k.repro.test_wg0k_full_module_hostiles" name="test_red_checkpoint_is_not_caller_issued_grant" time="0.001"><failure message="AssertionError: untrusted string was accepted as upgraded permission&#10;assert 'ISSUED_ORIGINAL_SOURCE_PERMISSION' == 'GRANTED_FIXTURE'&#10;  &#10;  - GRANTED_FIXTURE&#10;  + ISSUED_ORIGINAL_SOURCE_PERMISSION">pinned/predecessors/k/repro/test_wg0k_full_module_hostiles.py:112: in test_red_checkpoint_is_not_caller_issued_grant
+    assert opened.grant_state=="GRANTED_FIXTURE", "untrusted string was accepted as upgraded permission"
+E   AssertionError: untrusted string was accepted as upgraded permission
+E   assert 'ISSUED_ORIGINAL_SOURCE_PERMISSION' == 'GRANTED_FIXTURE'
+E     
+E     - GRANTED_FIXTURE
+E     + ISSUED_ORIGINAL_SOURCE_PERMISSION</failure></testcase><testcase classname="pinned.predecessors.k.repro.test_wg0k_full_module_hostiles" name="test_red_cold_checkpoint_contains_full_batch_receipts" time="0.001"><failure message="AssertionError: completed unit name alone cannot replay immutable original UnitExecutionReceipt&#10;assert False&#10; +  where False = hasattr(ColdCheckpoint(plan_freeze_hash='F', completed_units={'U': 'COMPLETED'}, fact_custody_snapshot={'facts': {'fact': {'n': 2}}, 'hashes': {'fact': 'fcb7ecf22a686fde527cafa2dd308d1c321ff6d1baddedf24668afbba85a7d64'}}, source_editions={'R': 'E'}, grant_state='GRANTED_FIXTURE', checkpoint_hash='38138f4eddf4c1bb40ce038e9ac6dfe16d35d2d65cbf0ed37cc75d7cd28f7126'), 'prior_receipts')">pinned/predecessors/k/repro/test_wg0k_full_module_hostiles.py:119: in test_red_cold_checkpoint_contains_full_batch_receipts
+    assert hasattr(cp,"prior_receipts"), "completed unit name alone cannot replay immutable original UnitExecutionReceipt"
+E   AssertionError: completed unit name alone cannot replay immutable original UnitExecutionReceipt
+E   assert False
+E    +  where False = hasattr(ColdCheckpoint(plan_freeze_hash='F', completed_units={'U': 'COMPLETED'}, fact_custody_snapshot={'facts': {'fact': {'n': 2}}, 'hashes': {'fact': 'fcb7ecf22a686fde527cafa2dd308d1c321ff6d1baddedf24668afbba85a7d64'}}, source_editions={'R': 'E'}, grant_state='GRANTED_FIXTURE', checkpoint_hash='38138f4eddf4c1bb40ce038e9ac6dfe16d35d2d65cbf0ed37cc75d7cd28f7126'), 'prior_receipts')</failure></testcase><testcase classname="pinned.predecessors.k.repro.test_wg0k_full_module_hostiles" name="test_red_positive_conditional_compiles_via_common_builder" time="0.001"><failure message="AssertionError: no ordinary conditional compiler admission API&#10;assert False&#10; +  where False = hasattr(WorkloadBuilder, 'add_joint_risk_authority')">pinned/predecessors/k/repro/test_wg0k_full_module_hostiles.py:128: in test_red_positive_conditional_compiles_via_common_builder
+    assert hasattr(WorkloadBuilder,"add_joint_risk_authority"), "no ordinary conditional compiler admission API"
+E   AssertionError: no ordinary conditional compiler admission API
+E   assert False
+E    +  where False = hasattr(WorkloadBuilder, 'add_joint_risk_authority')</failure></testcase></testsuite></testsuites>

@@ -1,0 +1,29 @@
+{
+  "name": "historical_k_on_p3",
+  "command": [
+    "<HOME>/Desktop/Rawlsing/R43-U43-wt/LOCAL_COURTS/u43-venv/bin/python",
+    "-m",
+    "pytest",
+    "-c",
+    "<WORKTREE>/runtime_phase_b/candidate/pytest.ini",
+    "<WORKTREE>/runtime_phase_b/candidate/pinned/predecessors/k/repro/test_wg0k_full_module_hostiles.py",
+    "-vv",
+    "--tb=short",
+    "--junitxml=<WORKTREE>/runtime_phase_b/candidate/observations/historical_k_on_p3.xml"
+  ],
+  "cwd": "<RETURN>",
+  "pythonpath": [
+    "<WORKTREE>/runtime_phase_b/candidate/pinned",
+    "<WORKTREE>/runtime_phase_b/candidate/pinned/predecessors/p3/repro"
+  ],
+  "exit": 1,
+  "seconds": 0.9969198703765869,
+  "log_redaction": "Only personal filesystem root aliases; otherwise complete real stdout/stderr. Unredacted local execution output kept ignored runtime/raw_logs.",
+  "source": "Exact frozen sources for historical modes; separately versioned implementer compatibility adapters for ported modes.",
+  "candidate_sha256": "6f90114c1176797f2aec3abf0e08b18011cccd2aa3345d1ba7011a7104a7d6c2",
+  "test_file_sha256": "4b812406a844de193fd81e6986e66c3d7450559fcf534a20d7e5179766322b4a",
+  "tests": 11,
+  "failures": 10,
+  "errors": 0,
+  "skips": 0
+}

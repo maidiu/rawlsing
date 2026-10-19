@@ -1,0 +1,30 @@
+FFF                                                                      [100%]
+=================================== FAILURES ===================================
+_ test_bound_descriptor_cannot_change_served_provenance[source_edition-FORGED_CALLER_EDITION] _
+tests/phase_b/test_additional_descriptor_binding_red.py:16: in test_bound_descriptor_cannot_change_served_provenance
+    assert actual==expected, 'Caller copied a plan with unbound descriptor metadata; native issued result carries forged provenance'
+E   AssertionError: Caller copied a plan with unbound descriptor metadata; native issued result carries forged provenance
+E   assert 'FORGED_CALLER_EDITION' == 'SRC-EDITION-REL-A-W1-W1-v1'
+E     
+E     - SRC-EDITION-REL-A-W1-W1-v1
+E     + FORGED_CALLER_EDITION
+_ test_bound_descriptor_cannot_change_served_provenance[native_item_ids-forged1] _
+tests/phase_b/test_additional_descriptor_binding_red.py:16: in test_bound_descriptor_cannot_change_served_provenance
+    assert actual==expected, 'Caller copied a plan with unbound descriptor metadata; native issued result carries forged provenance'
+E   AssertionError: Caller copied a plan with unbound descriptor metadata; native issued result carries forged provenance
+E   assert ['FOREIGN_NATIVE_ITEM'] == ['WG0P-ORD-01']
+E     
+E     At index 0 diff: 'FOREIGN_NATIVE_ITEM' != 'WG0P-ORD-01'
+E     Use -v to get more diff
+__________ test_copied_release_descriptor_refused_before_native_query __________
+tests/phase_b/test_additional_descriptor_binding_red.py:27: in test_copied_release_descriptor_refused_before_native_query
+    assert isinstance(error,w.IdentityError) and not any(c['name']=='execute_empirical_query' for c in calls), 'Unbound release tag reaches native query and fails later with a topology KeyError'
+E   AssertionError: Unbound release tag reaches native query and fails later with a topology KeyError
+E   assert (False)
+E    +  where False = isinstance(KeyError('complete_cell_semantic_projection'), <class 'wg0p4_workload.IdentityError'>)
+E    +    where <class 'wg0p4_workload.IdentityError'> = w.IdentityError
+=========================== short test summary info ============================
+FAILED tests/phase_b/test_additional_descriptor_binding_red.py::test_bound_descriptor_cannot_change_served_provenance[source_edition-FORGED_CALLER_EDITION]
+FAILED tests/phase_b/test_additional_descriptor_binding_red.py::test_bound_descriptor_cannot_change_served_provenance[native_item_ids-forged1]
+FAILED tests/phase_b/test_additional_descriptor_binding_red.py::test_copied_release_descriptor_refused_before_native_query
+3 failed in 3.20s
