@@ -74,8 +74,12 @@ exposes:
 * `same_respondent_joint_ref = null`, `composition_mode = REFUSED`,
   `route_probability = null`, `selection_weight = null`.
 
-Positive C0X court: **15 / 15 native**, and **15 / 15** in two cold replay seeds.
-The actual receiver outputs are in `evidence/c0x_readings.json`.
+Positive C0X court: **15 / 15 native**, **15 / 15** in two pre-gate cold replay
+seeds, and **15 / 15** in two post-gate cold replays after the shared proof gate
+restored the exact upstream facade. The changed proof gate examined only this
+worker's C0X test, ran the witness, and returned
+`MECHANICAL_PROOF_GATE_PASS_NOT_SCIENTIFIC_ADOPTION`. The actual receiver outputs
+are in `evidence/c0x_readings.json`.
 
 ### Positive and hostile states
 

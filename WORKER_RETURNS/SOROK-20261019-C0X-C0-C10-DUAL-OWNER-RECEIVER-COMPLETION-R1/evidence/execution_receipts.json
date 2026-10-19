@@ -1,0 +1,169 @@
+{
+  "schema": "SOROK_C0X_EXECUTION_RECEIPTS@1",
+  "commission_basis": {
+    "startup": "6925ece4a2e5ccd647ac909904c2db40b55260a7",
+    "branch": "agent/rabochii-sorok-20261019-c0x-dual-owner-receiver-completion-r1",
+    "c0r2": "55d2daa4bab41c5ff4ffdc196c8d36d300c3d60f",
+    "facade_blob": "855bb72f494d64083cee706e12f4f3d58c47dec3",
+    "native29": {
+      "modules": 29,
+      "bytes": 859712,
+      "all_match": true
+    }
+  },
+  "courts": {
+    "c0p49": {
+      "tests": 49,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "c0i50_unrepaired": {
+      "tests": 50,
+      "failures": 3,
+      "errors": 0,
+      "skipped": 0
+    },
+    "c0i50_repaired": {
+      "tests": 50,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "c0r2_23": {
+      "tests": 23,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "k9k10": {
+      "tests": 36,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "c0x_native": {
+      "tests": 15,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "c0x_postproof": {
+      "tests": 15,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "c0x_cold_0": {
+      "tests": 15,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "c0x_cold_1": {
+      "tests": 15,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "c0x_post_gate_cold_0": {
+      "tests": 15,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "c0x_post_gate_cold_1": {
+      "tests": 15,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "k9_k10": {
+    "k9_cases": 8,
+    "k10_cases": 28,
+    "total": 36,
+    "grade": "SOURCEFREE_FIXTURE_PORT__NOT_OPERATIVE_N9"
+  },
+  "c0x_positive_states": {
+    "nonparent": "SUPPORTED",
+    "conception": "SUPPORTED",
+    "provider_replacement": "PARTIAL",
+    "source_revocation": "PARTIAL",
+    "temporal_before_publication": "UNKNOWN",
+    "temporal_after_publication": "SUPPORTED"
+  },
+  "c0x_hostiles": {
+    "owner_substitution": "REFUSED",
+    "missing_contract": "REFUSED",
+    "swapped_forged_contract": "REFUSED",
+    "reverse_direction": "REFUSED",
+    "real_use": "REFUSED",
+    "unknown_demand": "REFUSED"
+  },
+  "proof": {
+    "witness": {
+      "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+      "status": "MECHANICAL_WITNESS_PASS_NOT_SEMANTIC_ADOPTION",
+      "claims": [
+        {
+          "claim_id": "C0X_RECEIVER_DEPENDS_ON_ACTUAL_N9_SELECTED_WORLD_OUTPUT",
+          "positive_node": "WORKER_RETURNS/SOROK-20261019-C0X-C0-C10-DUAL-OWNER-RECEIVER-COMPLETION-R1/tests/test_c0x_receiving_consumer.py::test_nonparent_receipt_reads_actual_upstream_selection",
+          "fault_path": "WORKER_RETURNS/SOROK-20261019-C0X-C0-C10-DUAL-OWNER-RECEIVER-COMPLETION-R1/upstream/c0p_two_contract_port.py",
+          "baseline": "PASS",
+          "fault_probe": "TARGET_ASSERTION_FAILED",
+          "grade": "BOUNDED_MUTATION_DETECTED"
+        }
+      ]
+    },
+    "changed_gate": {
+      "examined_tests": [
+        "WORKER_RETURNS/SOROK-20261019-C0X-C0-C10-DUAL-OWNER-RECEIVER-COMPLETION-R1/tests/test_c0x_receiving_consumer.py"
+      ],
+      "witness_contracts_run": 1,
+      "receipts": [
+        {
+          "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+          "status": "MECHANICAL_WITNESS_PASS_NOT_SEMANTIC_ADOPTION",
+          "claims": [
+            {
+              "claim_id": "C0X_RECEIVER_DEPENDS_ON_ACTUAL_N9_SELECTED_WORLD_OUTPUT",
+              "positive_node": "WORKER_RETURNS/SOROK-20261019-C0X-C0-C10-DUAL-OWNER-RECEIVER-COMPLETION-R1/tests/test_c0x_receiving_consumer.py::test_nonparent_receipt_reads_actual_upstream_selection",
+              "fault_path": "WORKER_RETURNS/SOROK-20261019-C0X-C0-C10-DUAL-OWNER-RECEIVER-COMPLETION-R1/upstream/c0p_two_contract_port.py",
+              "baseline": "PASS",
+              "fault_probe": "TARGET_ASSERTION_FAILED",
+              "grade": "BOUNDED_MUTATION_DETECTED"
+            }
+          ]
+        }
+      ],
+      "state": "MECHANICAL_PROOF_GATE_PASS_NOT_SCIENTIFIC_ADOPTION"
+    }
+  },
+  "findings": [
+    "C0R2 PossibilityReceipt ordered_steps[].parent_receipt_ref is a callable function, not a transportable ExactRef; full C10 JSON transport HOLD.",
+    "Pre-publication temporal read raises upstream TypeError (None source ref); C0X types it UNKNOWN without a fabricated receipt; upstream typed refusal remains an owner edge.",
+    "C0R2 23-test court contains an inherited 'or True' vacuous assertion at test_c0r2_adversarial.py:72; its green is not proof.",
+    "Four clock roles are present; actor scene is caller-owned and actor/request values coincide in the after-publication case; graded, not complete.",
+    "K9/K10 36/36 are the sourcefree fixture port, not operative native N9; grade recorded.",
+    "C0R2 is an author candidate pending I2; no self-acceptance."
+  ],
+  "scientific_ceiling": "SOURCEFREE_TEST_ONLY_READ_ONLY_TWO_OWNER_NO_C11_WELD_NO_ACTOR_PERSON_NO_ROUTE_PROBABILITY",
+  "cost": {
+    "billed_api_cash": "UNKNOWN",
+    "included_quota": "UNKNOWN",
+    "execution_surface": "local warm Git/pytest; no paid API call observed"
+  },
+  "non_grants": [
+    "original survey/source operation",
+    "original U/E_pre",
+    "model-use grant",
+    "behavioral route probability",
+    "selection weight",
+    "actor/person generation",
+    "N11/N12",
+    "V3",
+    "C11 physical weld",
+    "production adoption"
+  ]
+}
