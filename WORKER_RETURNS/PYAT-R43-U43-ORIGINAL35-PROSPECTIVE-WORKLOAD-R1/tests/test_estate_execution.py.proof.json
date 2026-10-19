@@ -1,0 +1,14 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "claims": [{
+    "claim_id": "U43_EXPECTED_ORIGINAL35_ROSTER_TO_ACTUAL_NATIVE_PACKET_ADMISSION",
+    "actual_consumer": "execute_current_permitted -> execute_issued_workload -> unchanged Route B/C11/I03/I05/Batch",
+    "claimed_dependency": "The independently frozen wave identity passed by the estate executor controls native packet admission and receipt attribution; all expected shards execute without promoting sourcefree receipts to original measurements.",
+    "positive_node": "WORKER_RETURNS/PYAT-R43-U43-ORIGINAL35-PROSPECTIVE-WORKLOAD-R1/tests/test_estate_execution.py::test_native_estate_consumer_preserves_complete_current_packet_set",
+    "fault": {
+      "path": "WORKER_RETURNS/PYAT-R43-U43-ORIGINAL35-PROSPECTIVE-WORKLOAD-R1/repro/execute_permitted.py",
+      "old": "expected_wave=wave,allow_test_only=allow_test_only)",
+      "new": "expected_wave=type(wave)(wave.atlas_id,wave.dataset_id,wave.source_family,'CORRUPTED_WAVE'),allow_test_only=allow_test_only)"
+    }
+  }]
+}

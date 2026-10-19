@@ -2,6 +2,8 @@
 
 **Disposition: AUTHOR_IMPLEMENTATION_AND_SOURCEFREE_NATIVE_PROOF_RETURNED__ORIGINAL35_U_E_PRE_AND_SOURCE_EXECUTION_UNISSUED.** This is not completion of the original35 source-native scientific workload. Original measured products are **0**; the complete administered-item U and eligible E_pre counts remain **unknown**, not zero. No source, scientific, semantic, model, structural, N11/N12 or actor permission is issued or adopted here.
 
+**Continuation correction:** [estate-binding follow-up](ESTATE_BINDING_FOLLOWUP.md) closes a latent roster-to-packet gap in the first return. Original native packets now bind exact atlas/dataset/family/wave and issuer-native universe refs; an independently supplied current packet census catches omissions and equal-count substitutions before source open and preserves multiple country/shard packets per wave. The current 64-check suite passes warm/cold, with a new named native edge fault and restored GREEN. Original measured science remains0; R44 assigns original activation to S44 and grants no new source rights.
+
 Branch: `agent/rabochii-pyat-r43-u43-full-original35-prospective-workload-r1`. Exact startup `556dd7e2bf67e2bc0b1772d18880ef0dfaa819e3`; own isolated checkout/venv, startup verified before work. The full commission, R43 HQ program and remote exact common dispatch seal were read. No duplicate U43 branch/session was found. J42 and other workers' checkouts were untouched. Initial independent inputs were committed at `4d5a46eb9` before implementation/results; the original freeze remains unchanged. The exact repaired WG0R flags were additionally frozen in `WG0R_INPUT_FREEZE.json` before final metadata regeneration. No raw original SAV/DTA was opened.
 
 ## Concrete product

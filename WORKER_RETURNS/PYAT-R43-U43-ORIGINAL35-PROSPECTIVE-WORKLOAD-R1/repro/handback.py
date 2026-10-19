@@ -45,6 +45,8 @@ def main():
         source_factory_binding="NativeWorkload.source_factory_ref; called only after authenticated current source/host/purpose and scientific record admission",
         issuer_resolver="External competent custody CurrentDecisionResolver.resolve_current; no signer or issuance by U43",
         immutable_identity="Complete projection/catalog/descriptor/request/discovery/U/E_pre envelope hashed; independent resolver holds issued hash and exact expected job multiset",
+        original_wave_binding="OriginalWaveIdentity binds atlas/dataset/family/wave in the issued envelope and record; exact issuer native_universe_refs bind native aliases. The estate command supplies the independently frozen expected wave to admission.",
+        independent_current_packet_census="Authenticated resolve_estate_frontier scheduling read, composed from separately verified per-source rights. Exact packet multiset reconciled before source open; supports multiple countries/shards/purposes per wave. No additional global source/scientific grant is created.",
         restore="Existing WG0P4 authenticated owner/fact/receipt checkpoint path; new ingress rejects bare caller prior_receipts",
         E41_input="Native QueryExecutionResult, ExactBoundedDiscoveryResult and complete source/target/condition/risk/weight refs; existing E41 v1.1 provider/composition additionally needs its separately admitted binding witness and model rule",
         W41_F43_input="Source-native structural facts, country/carrier and separately admitted F5/F6/F7 method scopes; empirical facts alone do not authorize transport or time comparison",

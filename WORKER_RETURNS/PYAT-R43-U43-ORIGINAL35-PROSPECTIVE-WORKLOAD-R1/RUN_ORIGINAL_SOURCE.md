@@ -14,8 +14,8 @@ To unlock actual production, the competent source/deployment operator must suppl
 
 | Runtime member | Required owning input |
 | --- | --- |
-| `resolver` | `CurrentDecisionResolver.resolve_current(ExactRef)` authenticating competent issuer, source permission, scientific permissions, host, purpose, currentness/revocation and the independently issued entire execution envelope/U/E_pre/job multiset |
-| `workloads` | Mapping from existing `SRC01`–`SRC35` IDs to `NativeWorkload`; every admitted source-native `GovernedC11Projection`, `RuntimeObjectCatalog`, immutable `I03ExecutionRequest`, exact discovery ref and descriptor preimage comes from current competent owners |
+| `resolver` | `CurrentDecisionResolver.resolve_current(ExactRef)` authenticating competent issuer, source permission, scientific permissions, host, purpose, currentness/revocation and the independently issued entire execution envelope/U/E_pre/job multiset. Original records additionally bind `OriginalWaveIdentity` and exact `native_universe_refs`. The estate command also reads `resolve_estate_frontier()` for an independent current permitted-packet census. |
+| `workloads` | Mapping from existing `SRC01`–`SRC35` IDs to a `NativeWorkload` or tuple of such packets for multiple countries/shards/purposes. Every admitted source-native `GovernedC11Projection`, `RuntimeObjectCatalog`, immutable `I03ExecutionRequest`, exact discovery ref and descriptor preimage comes from current competent owners. |
 | `source_factory` | Qualified exact source reader/stream factory bound to `source_factory_ref`; called only after current source/host/purpose/scientific admission |
 | `host`, `purpose` | Exact authenticated strings matching the issuer record, not inferred from this runbook |
 | `persist_native_result` | Optional deployment-owned persistence hook for native result/receipt preimages in governed private custody; never respondent exports |
@@ -27,6 +27,8 @@ python3 -B WORKER_RETURNS/PYAT-R43-U43-ORIGINAL35-PROSPECTIVE-WORKLOAD-R1/repro/
 ```
 
 `original35_issuer_decision_packets.json` contains 35 source-specific, unsigned requests with the exact recorded physical edition/name, available historical country/source hashes and rows, research identity root, form/carrier/response/routing/design gaps and five competent decisions per wave. **Neither this packet nor the wrapper supplies missing issuer judgment.** A complete administered U may add source-native occurrences beyond the research union; E_pre must be frozen independently before outcome inspection. Parent/subitem aliases, all-pairs eligibility, reverse conditioning, household/person linkage and source pooling are never inferred.
+
+The estate executor reconciles the submitted packet multiset against `IssuedEstateFrontier.expected_workloads` before any source factory call. That authenticated scheduling read binds each existing roster/dataset/family/wave identity, decision ref and complete envelope hash. It is composed from already verified per-source permissions by the qualified deployment operator; **it is not another global source/scientific grant and does not require waiting for the other 34 waves before one permitted wave runs**. Unissued waves stay in the denominator. Native universe aliases are bound by exact issuer refs, never guessed from family/wave strings. A packet may not be copied into another wave's roster slot. Complete currently permitted country/shard packet sets may not be silently reduced to one packet per wave.
 
 The newly commissioned transport delegates actual computation to the unchanged selected C11/Route-B/I03/I05/Batch owners. There is no second empirical compiler. Source-native item and operation generation remains with existing V550/J, HARVEST/P10 and source/scientific owners. No demonstrated warrant exists to replace their scientific grammar while original U/E_pre is unissued.
 

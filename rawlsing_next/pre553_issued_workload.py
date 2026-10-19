@@ -60,6 +60,21 @@ def operation_jobs(requests, discoveries):
 
 
 @dataclass(frozen=True)
+class OriginalWaveIdentity:
+    """Canonical roster identity; native aliases require the issuer's own binding."""
+    atlas_id: str
+    dataset_id: str
+    source_family: str
+    wave: str
+
+    def __post_init__(self):
+        if any(not isinstance(value, str) or not value.strip() for value in (
+            self.atlas_id, self.dataset_id, self.source_family, self.wave
+        )):
+            raise WorkloadAdmissionError("COMPLETE_ORIGINAL_WAVE_IDENTITY_REQUIRED")
+
+
+@dataclass(frozen=True)
 class IssuedWorkloadRecord:
     """Read result from external competent custody; never created by this worker."""
     decision_ref: ExactRef
@@ -74,12 +89,85 @@ class IssuedWorkloadRecord:
     expected_jobs: tuple[tuple[str, str, str], ...]
     currentness: str
     scope: str
+    original_wave_identity: OriginalWaveIdentity | None = None
+    native_universe_refs: tuple[ExactRef, ...] = ()
 
 
 class CurrentDecisionResolver(Protocol):
     def resolve_current(self, decision_ref: ExactRef) -> IssuedWorkloadRecord:
         """Authenticate issuer, scope, source/host/purpose and revocation externally."""
         ...
+
+
+@dataclass(frozen=True)
+class ExpectedWorkloadBinding:
+    original_wave_identity: OriginalWaveIdentity
+    decision_ref: ExactRef
+    envelope_sha256: str
+
+
+@dataclass(frozen=True)
+class IssuedEstateFrontier:
+    """Authenticated scheduling read, composed from separately competent issuers.
+
+    This is a permitted-packet census for the current phase, not an issuer of
+    original source rights, administered U, or scientific E_pre. Its custody is
+    independent of the submitted workload mapping, just like expected_jobs.
+    """
+    frontier_ref: ExactRef
+    host: str
+    purpose: str
+    roster_identity: str
+    expected_workloads: tuple[ExpectedWorkloadBinding, ...]
+    currentness: str
+    scope: str
+
+
+def original35_roster(waves) -> tuple[OriginalWaveIdentity, ...]:
+    roster = tuple(sorted((OriginalWaveIdentity(
+        w["atlas_id"], w["original_manifest_identity"]["dataset_id"], w["family"], w["wave"]
+    ) for w in waves), key=lambda w: w.atlas_id))
+    if len(roster) != 35 or len({w.atlas_id for w in roster}) != 35:
+        raise WorkloadAdmissionError("INDEPENDENT_ORIGINAL35_ROSTER_REQUIRED")
+    return roster
+
+
+def reconcile_estate_workloads(waves, workloads, frontier: IssuedEstateFrontier):
+    """No-drop transport for all independently expected permitted native packets.
+
+    A wave can have multiple country/shard/purpose packets. No source is opened
+    and no empirical/scientific candidate is generated during reconciliation.
+    """
+    roster = original35_roster(waves)
+    by_atlas = {w.atlas_id: w for w in roster}
+    if semantic_hash(material(roster)) != frontier.roster_identity:
+        raise WorkloadAdmissionError("ISSUED_ESTATE_ROSTER_IDENTITY_MISMATCH")
+    if not set(workloads) <= set(by_atlas):
+        raise WorkloadAdmissionError("UNEXPECTED_WAVE_OUTSIDE_ORIGINAL35")
+    expected = []
+    for entry in frontier.expected_workloads:
+        wave = entry.original_wave_identity
+        if by_atlas.get(wave.atlas_id) != wave:
+            raise WorkloadAdmissionError("ISSUER_FRONTIER_WAVE_NOT_IN_FROZEN_ROSTER")
+        expected.append((wave.atlas_id, entry.decision_ref.key, entry.envelope_sha256))
+    if len(expected) != len(set(expected)):
+        raise WorkloadAdmissionError("ISSUER_FRONTIER_DUPLICATE_NATIVE_PACKET")
+    submitted = []
+    prepared = []
+    for atlas_id, values in workloads.items():
+        packets = (values,) if isinstance(values, NativeWorkload) else tuple(values)
+        for packet in packets:
+            if not isinstance(packet, NativeWorkload):
+                raise WorkloadAdmissionError("EXACT_NATIVE_WORKLOAD_REQUIRED")
+            if packet.original_wave_identity != by_atlas[atlas_id]:
+                raise WorkloadAdmissionError("ORIGINAL35_ROSTER_TO_NATIVE_PACKET_MISMATCH")
+            submitted.append((atlas_id, packet.decision_ref.key, semantic_hash(packet.envelope())))
+            prepared.append((by_atlas[atlas_id], packet))
+    if Counter(submitted) != Counter(expected):
+        raise WorkloadAdmissionError("EXPECTED_NATIVE_PACKET_IDENTITY_MULTISET_MISMATCH")
+    return tuple(sorted(prepared, key=lambda pair: (
+        pair[0].atlas_id, pair[1].decision_ref.key, semantic_hash(pair[1].envelope())
+    )))
 
 
 DESCRIPTOR_FIELDS = frozenset({
@@ -100,6 +188,7 @@ class NativeWorkload:
     discoveries: tuple[ExactRef, ...]
     original_u_root: str
     expected_frontier_root: str
+    original_wave_identity: OriginalWaveIdentity | None = None
 
     def envelope(self):
         descriptor = json.loads(self.descriptor)
@@ -107,17 +196,21 @@ class NativeWorkload:
             raise WorkloadAdmissionError("CLOSED_CANONICAL_COMPLETE_DESCRIPTOR_REQUIRED")
         if any(v is None or v == "UNBOUND" for v in descriptor.values()):
             raise WorkloadAdmissionError("ISSUED_DESCRIPTOR_HAS_UNBOUND_REQUIRED_FIELD")
-        return dict(
+        envelope = dict(
             descriptor=descriptor, projection=material(self.projection),
             catalog=material(self.catalog), source_factory_ref=self.source_factory_ref.as_dict(),
             requests=[r.as_dict() for r in self.requests],
             discoveries=[r.as_dict() for r in self.discoveries],
             original_u_root=self.original_u_root, expected_frontier_root=self.expected_frontier_root,
         )
+        if self.original_wave_identity is not None:
+            envelope["original_wave_identity"] = material(self.original_wave_identity)
+        return envelope
 
 
 def admit(workload: NativeWorkload, resolver: CurrentDecisionResolver, *, host: str,
-          purpose: str, allow_test_only: bool = False) -> IssuedWorkloadRecord:
+          purpose: str, allow_test_only: bool = False,
+          expected_wave: OriginalWaveIdentity | None = None) -> IssuedWorkloadRecord:
     """Refuse copied/rehash descriptors and no-drop violations before source open."""
     record = resolver.resolve_current(workload.decision_ref)
     if not isinstance(record, IssuedWorkloadRecord) or record.decision_ref != workload.decision_ref:
@@ -129,6 +222,14 @@ def admit(workload: NativeWorkload, resolver: CurrentDecisionResolver, *, host: 
         raise WorkloadAdmissionError("CURRENT_COMPETENT_SOURCE_AND_SCIENCE_DECISION_REQUIRED")
     if (record.host, record.purpose) != (host, purpose):
         raise WorkloadAdmissionError("SOURCE_HOST_PURPOSE_MISMATCH")
+    if record.scope == "ORIGINAL_SOURCE_GRANTED" or expected_wave is not None:
+        identity = workload.original_wave_identity
+        if not isinstance(identity, OriginalWaveIdentity) or record.original_wave_identity != identity:
+            raise WorkloadAdmissionError("ISSUED_ORIGINAL_WAVE_BINDING_REQUIRED")
+        if expected_wave is not None and identity != expected_wave:
+            raise WorkloadAdmissionError("ORIGINAL35_ROSTER_TO_NATIVE_PACKET_MISMATCH")
+        if Counter(record.native_universe_refs) != Counter(u.ref for u in workload.projection.universes):
+            raise WorkloadAdmissionError("ISSUED_NATIVE_UNIVERSE_TO_ORIGINAL_WAVE_MISMATCH")
     if not record.scientific_permission_refs or not isinstance(record.source_permission_ref, ExactRef):
         raise WorkloadAdmissionError("SEPARATE_SOURCE_AND_SCIENTIFIC_PERMISSIONS_REQUIRED")
     if (record.original_u_root, record.expected_frontier_root) != (
@@ -163,11 +264,13 @@ class NativeWorkloadResult:
     decision_ref: ExactRef
     scope: str
     summary: Any
+    original_wave_identity: OriginalWaveIdentity | None = None
 
 
 def execute_issued_workload(workload: NativeWorkload, resolver: CurrentDecisionResolver, *,
                             source_factory: Callable[[ExactRef], Any], host: str, purpose: str,
-                            allow_test_only: bool = False, prior_receipts=(), max_units=None):
+                            allow_test_only: bool = False, prior_receipts=(), max_units=None,
+                            expected_wave: OriginalWaveIdentity | None = None):
     """Reuse C11, Route B, I03, I05 and Batch; eligibility comes from external U/E_pre.
 
     A factory is called only after admission. Source bytes stay inside the native
@@ -175,7 +278,8 @@ def execute_issued_workload(workload: NativeWorkload, resolver: CurrentDecisionR
     Exact receipt persistence and preimages remain the existing Batch/C11 custody
     responsibility; prior receipts must resolve in the rebuilt native repository.
     """
-    record = admit(workload, resolver, host=host, purpose=purpose, allow_test_only=allow_test_only)
+    record = admit(workload, resolver, host=host, purpose=purpose, allow_test_only=allow_test_only,
+                   expected_wave=expected_wave)
     # The native Batch owner verifies receipt structure, not external issuance.
     # Do not accept caller-rehashed historical receipts through this new ingress.
     # P4's separately authenticated fact/receipt custody is the proven cold path.
@@ -183,7 +287,8 @@ def execute_issued_workload(workload: NativeWorkload, resolver: CurrentDecisionR
         raise WorkloadAdmissionError("RESTORE_THROUGH_EXISTING_ISSUED_FACT_RECEIPT_CUSTODY_REQUIRED")
 
     def check_current():
-        current = admit(workload, resolver, host=host, purpose=purpose, allow_test_only=allow_test_only)
+        current = admit(workload, resolver, host=host, purpose=purpose, allow_test_only=allow_test_only,
+                        expected_wave=expected_wave)
         if current != record:
             raise WorkloadAdmissionError("ISSUER_SNAPSHOT_CHANGED_DURING_EXECUTION")
 
@@ -233,4 +338,5 @@ def execute_issued_workload(workload: NativeWorkload, resolver: CurrentDecisionR
         raise NativeWorkloadExecutionError("NATIVE_EXECUTION_INCOMPLETE_SEE_RECEIPTS")
     return NativeWorkloadResult(routes, tuple(outputs[k] for k in sorted(outputs)), manifest, runner.receipts,
         tuple(ref for r in runner.receipts for ref in r.result_refs),
-        record.envelope_sha256, record.decision_ref, record.scope, runner.summary())
+        record.envelope_sha256, record.decision_ref, record.scope, runner.summary(),
+        record.original_wave_identity)

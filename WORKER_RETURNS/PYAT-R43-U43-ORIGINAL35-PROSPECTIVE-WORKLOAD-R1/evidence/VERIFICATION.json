@@ -13,28 +13,34 @@
       "warm": "461a0ff7e707e260254117292e165a3ca122860f916d2bcd933d0e497fcc9ef8"
     },
     {
+      "cold": "67f1d7a420bb2e03bb3b8ac2d6543b0d3413eef710173fc02b8a9b83bd174fc3",
+      "equal": true,
+      "path": "original35_issuer_decision_packets.json",
+      "warm": "67f1d7a420bb2e03bb3b8ac2d6543b0d3413eef710173fc02b8a9b83bd174fc3"
+    },
+    {
       "cold": "42f92d8d0491419561e531cc8535197c37d86ab3d1e8086a14f9a36371f122e2",
       "equal": true,
       "path": "original35_wave_execution_manifest.json",
       "warm": "42f92d8d0491419561e531cc8535197c37d86ab3d1e8086a14f9a36371f122e2"
     },
     {
-      "cold": "2ceb3f711189510f6cb71fd845db8b16e2cc9dd1875d8e5965182a158ead2d77",
-      "equal": true,
-      "path": "original35_issuer_decision_packets.json",
-      "warm": "2ceb3f711189510f6cb71fd845db8b16e2cc9dd1875d8e5965182a158ead2d77"
-    },
-    {
-      "cold": "5b0f79da79f239cf719ae97b02f6cf07b68d741ea5d700bd910712ca26ee352b",
+      "cold": "4d434aee1dbb4216c446c1e73e87b6225444bdbe2b5edb973ac24d36d0287b21",
       "equal": true,
       "path": "currently_permitted_native_manifests.json",
-      "warm": "5b0f79da79f239cf719ae97b02f6cf07b68d741ea5d700bd910712ca26ee352b"
+      "warm": "4d434aee1dbb4216c446c1e73e87b6225444bdbe2b5edb973ac24d36d0287b21"
     },
     {
       "cold": "d1ccbcaa6ba433508342e7ce6aa9870ed029ceb479a58588335f72b382aa199d",
       "equal": true,
       "path": "evidence/native_sourcefree_execution.json",
       "warm": "d1ccbcaa6ba433508342e7ce6aa9870ed029ceb479a58588335f72b382aa199d"
+    },
+    {
+      "cold": "2bd0111ebdb7e280556963b48b78ab337cd5a694104f3c0b06ff2857dcc67713",
+      "equal": true,
+      "path": "evidence/estate_binding_followup/native_estate_fixture.json",
+      "warm": "2bd0111ebdb7e280556963b48b78ab337cd5a694104f3c0b06ff2857dcc67713"
     }
   ],
   "courts": {
@@ -43,6 +49,24 @@
       "failures": 0,
       "skips": 0,
       "tests": 74
+    },
+    "estate_binding_followup/exact_restored_green.xml": {
+      "errors": 0,
+      "failures": 0,
+      "skips": 0,
+      "tests": 1
+    },
+    "estate_binding_followup/final64_cold.xml": {
+      "errors": 0,
+      "failures": 0,
+      "skips": 0,
+      "tests": 64
+    },
+    "estate_binding_followup/final64_warm.xml": {
+      "errors": 0,
+      "failures": 0,
+      "skips": 0,
+      "tests": 64
     },
     "final_metadata_cold.xml": {
       "errors": 0,
@@ -105,6 +129,7 @@
       "tests": 65
     }
   },
+  "estate_binding_followup": "64 current tests warm/cold; complete permitted packet census and original-wave/native-universe binding. Sourcefree fixture receipts never count as original measurements.",
   "historical_program_reds": "Old J-on-P2:20 and K-on-P3:10 remain recorded against old owners; current successor transports44/11 pass. First ENOSPC-contaminated runs are retained and not counted as passed.",
   "new_scientific_permission_issued": false,
   "original_E_pre": null,
