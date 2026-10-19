@@ -135,6 +135,8 @@ def witness(contract_file: Path, root: Path) -> dict:
         node = claim["positive_node"]
         test_relative = node.split("::", 1)[0]
         test_file = safe_file(root, test_relative)
+        if contract_file.resolve() != Path(str(test_file) + ".proof.json"):
+            raise ValueError("witness contract must belong to the exact named test module")
         if not is_test(test_file) or "::" not in node:
             raise ValueError("positive_node must name a specific Python test")
         target_name = node.split("::")[-1].split("[")[0]
