@@ -23,3 +23,13 @@ a source-right or estimand-compatibility receipt.
 New measured original cells = **0**; global F5/F6/F7 closure = **false**.
 N11 acceptance and N12 wake remain separate competent decisions. J42 remains
 untouched; this package consumes no unpublished J42/U43 material.
+
+The subsequent published U43 metadata cut `dcf71f1afbfdbe8a084844cea5fffbc73d9d91ef`
+is reconciled in `U43_F43_RECONCILIATION.json`: all35 identities and 175 exact
+source-owner decision IDs match the unchanged F43 scope. This is a documentary
+metadata supplement to the four native intake receipts, not an additional
+measured product or new A42 occupancy. The U43 original native manifest count
+remains zero and independently issued U/E_pre remains null. Historical source
+hashes/country overlap narrow issuer questions without granting transport or
+observed-wave comparison. `u43_metadata_read_cut_manifest.json` identifies the
+exact source preimages; `reconcile_u43.py` replays the no-drop reconciliation.

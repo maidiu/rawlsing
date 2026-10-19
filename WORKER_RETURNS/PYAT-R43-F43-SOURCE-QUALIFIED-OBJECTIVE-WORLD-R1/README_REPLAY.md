@@ -33,3 +33,15 @@ them; a new clone must explicitly fetch the pinned owning branches/objects.
 Hashes identify evidence; they never grant permission or independent acceptance.
 
 For the full cold scientific comparison, capture the same committed package in a separate worktree and run `check_cold_replay.py /absolute/path/to/cold/WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1`. It validates each inherited native path-derived hash before removing exactly the 14 documented hash fields for the scientific comparison.
+
+The subsequent U43 metadata reconciliation is independently replayable without
+source access or native runtime execution:
+
+```bash
+python3 -B WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/reconcile_u43.py
+```
+
+It verifies the exact published metadata archive and matches all35 identities,
+175 issuer-decision IDs and 595 unchanged prospective pair candidates. Historical
+country overlap remains candidate metadata; zero new original manifests or
+scientific permissions follow. Existing scientific product bytes are unchanged.

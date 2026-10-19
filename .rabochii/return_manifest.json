@@ -9,7 +9,7 @@
   },
   "return_packet": {
     "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/00_RETURN.md",
-    "blob_sha": "311f2db8b7635797fac0511cb43fdf24b96561d8"
+    "blob_sha": "7ac9c50f00f0038f828838282604df59845bf832"
   },
   "required_outputs": [
     {
@@ -30,7 +30,7 @@
       "name": "finite_source_and_method_decisions.json",
       "kind": "path",
       "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/finite_source_and_method_decisions.json",
-      "blob_sha": "b52fd63d88d99a13091f97967c1f701ebeb32461",
+      "blob_sha": "4669b4c09309cc16a1b1ad80d3cd0029bdb0d4ca",
       "status": "DURABLE"
     },
     {
@@ -72,14 +72,14 @@
       "name": "artifact_manifest.json",
       "kind": "path",
       "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/artifact_manifest.json",
-      "blob_sha": "e3ea92f3b8c3e26b59c6007676b465e84ae0b873",
+      "blob_sha": "72f05cba6dcd029d9609deb085fc4fa852a73b3c",
       "status": "DURABLE"
     },
     {
       "name": "README_REPLAY.md",
       "kind": "path",
       "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/README_REPLAY.md",
-      "blob_sha": "cb9b642f2dcbdf3137e12c23e0e23824f82b1f8c",
+      "blob_sha": "ceab10dbf9759a3f1c128edf4913b25ec8b9999d",
       "status": "DURABLE"
     },
     {
@@ -101,6 +101,34 @@
       "kind": "path",
       "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/environment_passport_delta.json",
       "blob_sha": "8460aca742d21f0bfedc167823ec915d8842763e",
+      "status": "DURABLE"
+    },
+    {
+      "name": "U43_F43_RECONCILIATION.json",
+      "kind": "path",
+      "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/U43_F43_RECONCILIATION.json",
+      "blob_sha": "7e73ae8cf773c5ba2dc61b6d4eb0af15bbbb474f",
+      "status": "DURABLE"
+    },
+    {
+      "name": "reconcile_u43.py",
+      "kind": "path",
+      "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/reconcile_u43.py",
+      "blob_sha": "5ebf0d5e61df73c12d278a9a8d25bd97a3c160ca",
+      "status": "DURABLE"
+    },
+    {
+      "name": "u43_metadata_read_cut_manifest.json",
+      "kind": "path",
+      "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/u43_metadata_read_cut_manifest.json",
+      "blob_sha": "65257f73064d59626742627ce2ed5f3fae86659d",
+      "status": "DURABLE"
+    },
+    {
+      "name": "u43_metadata_read_cut.tar.gz",
+      "kind": "path",
+      "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/u43_metadata_read_cut.tar.gz",
+      "blob_sha": "db3892b7bed3381996dc7763814f0f2958001b95",
       "status": "DURABLE"
     }
   ],
@@ -135,5 +163,12 @@
       "terminal_state_entered": true
     },
     "scope_note": "Complete lawful blocked worker-turn outcome; full original-source project mission remains externally blocked, not achieved or promoted"
+  },
+  "subsequent_U43_reconciliation": {
+    "published_read_cut": "dcf71f1afbfdbe8a084844cea5fffbc73d9d91ef",
+    "exact_source_decisions": 175,
+    "waves": 35,
+    "permitted_original_manifests": 0,
+    "scientific_product_bytes_unchanged": true
   }
 }

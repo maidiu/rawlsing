@@ -138,6 +138,28 @@ J42/U43 material was consumed. No source FF/model/actor rights, source reconstru
 strong mechanism, generated person, route probability, Sorok action or N11/N12
 decision was self-issued.
 
+### Published U43 continuation reconciliation
+
+After the initial F43 return, U43 published metadata at exact read cut
+`dcf71f1afbfdbe8a084844cea5fffbc73d9d91ef`. F43 reconciled it through
+`reconcile_u43.py`; `U43_F43_RECONCILIATION.json` binds the unchanged prospective
+35 waves / 105 cells / 595 pair candidates to all **175 exact U43 owner-decision
+IDs**. The archived input metadata has verified Git blob and SHA256 preimages.
+This completes the commission's reconcile-when-available requirement at that
+published metadata grain, without treating U43 as an authenticated source issuer
+or independently accepting its new runtime implementation.
+
+Historical hashes and country metadata exist for 32 waves. Sixty same-family
+pair candidates have documented historical country overlap; those candidates
+still lack qualified population/estimand/design/time and operation/use decisions.
+Neither overlap nor missing overlap proves measured comparability or intrinsic
+nonapplicability. No candidate was dropped or converted into an eligible operation.
+All35 U43 current native manifests remain `NOT_YET_ISSUED`, with original U and
+eligible E_pre null, permitted original manifests 0 and new original occupancy 0.
+The original F43 scientific products, seven native fault proofs and four A42
+receipt grades are unchanged. The exact U43 demands supplement the F43 method/use
+requests; they do not replace the separate FF/F6/F7 and receiving-purpose issuers.
+
 The authorized executable work and blocked-scope return are durable. No local
 required implementation or background job remains in this worker turn. The full
 original-source mission remains externally blocked on the named owners above.
