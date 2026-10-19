@@ -1,0 +1,43 @@
+{
+  "examined_tests": [
+    "WORKER_RETURNS/PYAT-R40-EE1-HISTORICAL-SOURCE-QUALIFIED-TEMPORAL-METHOD-CONSUMER-R1/tests/conftest.py",
+    "WORKER_RETURNS/PYAT-R40-EE1-HISTORICAL-SOURCE-QUALIFIED-TEMPORAL-METHOD-CONSUMER-R1/tests/test_ee1_clock_discipline_and_future_rule.py",
+    "WORKER_RETURNS/PYAT-R40-EE1-HISTORICAL-SOURCE-QUALIFIED-TEMPORAL-METHOD-CONSUMER-R1/tests/test_ee1_ghana_hold_and_null.py",
+    "WORKER_RETURNS/PYAT-R40-EE1-HISTORICAL-SOURCE-QUALIFIED-TEMPORAL-METHOD-CONSUMER-R1/tests/test_ee1_oracle_cross_check.py",
+    "WORKER_RETURNS/PYAT-R40-EE1-HISTORICAL-SOURCE-QUALIFIED-TEMPORAL-METHOD-CONSUMER-R1/tests/test_ee1_t35_rule_only_positive.py",
+    "WORKER_RETURNS/PYAT-R40-EE1-HISTORICAL-SOURCE-QUALIFIED-TEMPORAL-METHOD-CONSUMER-R1/tests/test_ee1_temporal_method_reuse.py",
+    "WORKER_RETURNS/PYAT-R40-EE1-HISTORICAL-SOURCE-QUALIFIED-TEMPORAL-METHOD-CONSUMER-R1/tests/test_ee1_uncomparable_population_refusal.py"
+  ],
+  "witness_contracts_run": 2,
+  "receipts": [
+    {
+      "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+      "status": "MECHANICAL_WITNESS_PASS_NOT_SEMANTIC_ADOPTION",
+      "claims": [
+        {
+          "claim_id": "W5_CONSUMER_DELTA_PERMISSION_SEVERANCE",
+          "positive_node": "WORKER_RETURNS/PYAT-R40-EE1-HISTORICAL-SOURCE-QUALIFIED-TEMPORAL-METHOD-CONSUMER-R1/tests/test_ee1_t35_rule_only_positive.py::test_consumer_product_reports_institutional_only_change",
+          "fault_path": "WORKER_RETURNS/PYAT-R40-EE1-HISTORICAL-SOURCE-QUALIFIED-TEMPORAL-METHOD-CONSUMER-R1/runtime/ee1_historical_consumer.py",
+          "baseline": "PASS",
+          "fault_probe": "TARGET_ASSERTION_FAILED",
+          "grade": "BOUNDED_MUTATION_DETECTED"
+        }
+      ]
+    },
+    {
+      "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+      "status": "MECHANICAL_WITNESS_PASS_NOT_SEMANTIC_ADOPTION",
+      "claims": [
+        {
+          "claim_id": "W2_POPULATION_GATE_SEVERANCE",
+          "positive_node": "WORKER_RETURNS/PYAT-R40-EE1-HISTORICAL-SOURCE-QUALIFIED-TEMPORAL-METHOD-CONSUMER-R1/tests/test_ee1_uncomparable_population_refusal.py::test_population_change_is_typed_refusal",
+          "fault_path": "WORKER_RETURNS/PYAT-R40-EE1-HISTORICAL-SOURCE-QUALIFIED-TEMPORAL-METHOD-CONSUMER-R1/runtime/ee1_temporal_owner.py",
+          "baseline": "PASS",
+          "fault_probe": "TARGET_ASSERTION_FAILED",
+          "grade": "BOUNDED_MUTATION_DETECTED"
+        }
+      ]
+    }
+  ],
+  "state": "MECHANICAL_PROOF_GATE_PASS_NOT_SCIENTIFIC_ADOPTION"
+}
