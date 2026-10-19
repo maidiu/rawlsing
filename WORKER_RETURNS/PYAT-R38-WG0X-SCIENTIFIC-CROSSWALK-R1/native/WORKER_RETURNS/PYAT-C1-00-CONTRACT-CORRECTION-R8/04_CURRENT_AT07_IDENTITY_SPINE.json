@@ -1,0 +1,101 @@
+{
+  "schema": "PYAT_C1_00_R8_CURRENT_AT07_IDENTITY_SPINE@1",
+  "status": "EXECUTED_SOURCE_FREE_CURRENT_IDENTITY",
+  "identity_spine": {
+    "universe_ref": {
+      "kind": "EmpiricalUniverse@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:ca5ee1320b1c0e0685eccb6585b35c1e74094516802545bde42fa11191ea43c2",
+      "content_hash": "ca5ee1320b1c0e0685eccb6585b35c1e74094516802545bde42fa11191ea43c2"
+    },
+    "release_ref": {
+      "kind": "C11LogicalRelease",
+      "object_id": "REL-c1-at07",
+      "content_hash": "dfd6ca5e08d1abe0f1494b4dc0e38869925739cceb306c62a3540922b12ff5b3"
+    },
+    "query_authority_ref": {
+      "authority_id": "C1-AT07-QUERY",
+      "authority_version": "1.0.0",
+      "authority_content_hash": "b59ef578314515268fa7b280a8480b4c95c80c9cfd831c39c2bfc4214b6fd767"
+    },
+    "forward": {
+      "producer_predicate_ref": {
+        "kind": "EmpiricalPredicate@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:8fe1a7e827ee09d8ab8121fe76fc1b219c1518b74e743098adba1a754dd7a3ac",
+        "content_hash": "8fe1a7e827ee09d8ab8121fe76fc1b219c1518b74e743098adba1a754dd7a3ac"
+      },
+      "producer_predicate_hash": "fc7ee1774226e94491688b14a395acfbf9c5ccfc9184744963e01af1ee52dc55",
+      "producer_query_ref": {
+        "kind": "EmpiricalQuerySpec@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:ebef7e841e4b6bcbde599118a9c993fa9a96a3b4c84bd743c862c1790548f371",
+        "content_hash": "ebef7e841e4b6bcbde599118a9c993fa9a96a3b4c84bd743c862c1790548f371"
+      },
+      "producer_fact_ref": {
+        "kind": "EmpiricalFact@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:20f35003c7d11a38c1c7d3cea9f334de4ba5b89d1f26fccbff1254c05904bdd1",
+        "content_hash": "20f35003c7d11a38c1c7d3cea9f334de4ba5b89d1f26fccbff1254c05904bdd1"
+      },
+      "producer_replay_ref": {
+        "kind": "PRE553_I03_QUERY_REPLAY",
+        "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:1700ec1a1256824fd2c4538466b372492793809adb2ad6bb2f75ab658e087a24",
+        "content_hash": "1700ec1a1256824fd2c4538466b372492793809adb2ad6bb2f75ab658e087a24"
+      },
+      "consumer_query_ref": {
+        "kind": "POSITIONED_SUBJECT_EMPIRICAL_POSSIBILITY_QUERY@1",
+        "object_id": "urn:rawlsing:learned-world:positioned-subject-query:sha256:0e966cca9805e4fedce532812cfd6587cd7f7cf6cd858ac982c531abd6f61330",
+        "content_hash": "0e966cca9805e4fedce532812cfd6587cd7f7cf6cd858ac982c531abd6f61330"
+      },
+      "witness_ref": {
+        "kind": "C1_CONDITION_VALUE_BINDING_WITNESS@2",
+        "object_id": "urn:test:c1:at07:condition-value-witness:r6-forward-p1",
+        "content_hash": "fb3a3b566e2a65a522344ddf5145ec5754d02959237c75a0287fc57bd6c84db5"
+      },
+      "evidence_ref": {
+        "kind": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+        "object_id": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:b2407eeb3d22cc0d71e5d13308b0149338761efc4ef40921ab363c3cd9c78307",
+        "content_hash": "b2407eeb3d22cc0d71e5d13308b0149338761efc4ef40921ab363c3cd9c78307"
+      },
+      "composed_result_identity_hash": "03610f9d91b23cfb6f862dc91b5de92c7f4e4b8e44a53b9efdacb1cf73af6b9e",
+      "raw_denominator_support": 60
+    },
+    "reverse": {
+      "producer_predicate_ref": {
+        "kind": "EmpiricalPredicate@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:81080d5b877742bc883073604ac2f002908e248d50fd518a74e86135e6115201",
+        "content_hash": "81080d5b877742bc883073604ac2f002908e248d50fd518a74e86135e6115201"
+      },
+      "producer_predicate_hash": "20d43386e508f7bb26b7219d06f858c0df42d736ce9a4de6e6f0f80ffd33d8e6",
+      "producer_query_ref": {
+        "kind": "EmpiricalQuerySpec@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:7463900ecc05d0924a49b0a056537d9984f6f97491709c788bd54b8fcce2121b",
+        "content_hash": "7463900ecc05d0924a49b0a056537d9984f6f97491709c788bd54b8fcce2121b"
+      },
+      "producer_fact_ref": {
+        "kind": "EmpiricalFact@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:68ad841bd8e5ab8df10318c7660e91ab4809cf2d3ad76459581d940379668289",
+        "content_hash": "68ad841bd8e5ab8df10318c7660e91ab4809cf2d3ad76459581d940379668289"
+      },
+      "producer_replay_ref": {
+        "kind": "PRE553_I03_QUERY_REPLAY",
+        "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:e4a8b3beb62f55a2de211c3342916fcfe796c18d038a7d57be3dc045b8ec539a",
+        "content_hash": "e4a8b3beb62f55a2de211c3342916fcfe796c18d038a7d57be3dc045b8ec539a"
+      },
+      "consumer_query_ref": {
+        "kind": "POSITIONED_SUBJECT_EMPIRICAL_POSSIBILITY_QUERY@1",
+        "object_id": "urn:rawlsing:learned-world:positioned-subject-query:sha256:02b3eabf5887bf85615328830c1f5d97c42935cbb8463b4f3a69eca57715f323",
+        "content_hash": "02b3eabf5887bf85615328830c1f5d97c42935cbb8463b4f3a69eca57715f323"
+      },
+      "witness_ref": {
+        "kind": "C1_CONDITION_VALUE_BINDING_WITNESS@2",
+        "object_id": "urn:test:c1:at07:condition-value-witness:r6-reverse-yes",
+        "content_hash": "0c75b6cad16aafcc1c6fdc9664f3c4cd5d09cc3c9b8b549dfc736b1a9a3bf2df"
+      },
+      "evidence_ref": {
+        "kind": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+        "object_id": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:e40c31eaf25c8e4f163ff340f968f0dc5ee650fc8383a586ea251a43ee8851d6",
+        "content_hash": "e40c31eaf25c8e4f163ff340f968f0dc5ee650fc8383a586ea251a43ee8851d6"
+      },
+      "composed_result_identity_hash": "1202822cf98d802c04440328496dc64ee02e6d6030a3da6c9bf10ef1a6490a3c",
+      "raw_denominator_support": 62
+    }
+  }
+}
