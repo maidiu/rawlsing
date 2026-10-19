@@ -1,0 +1,39 @@
+{
+  "schema": "W41_ACTUAL_TEST_RESULTS@1",
+  "core": {
+    "passed": 94,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "proof": "native_final.xml core cases only",
+    "W41": 25,
+    "original_E04": 37,
+    "F6P": 32
+  },
+  "EE1": {
+    "passed": 33,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "proof": "ee1_isolated.xml"
+  },
+  "unique_scoped_checks_passed": 128,
+  "exploratory_mixed_process": {
+    "passed": 121,
+    "failed": 6,
+    "reason": "accepted EE1 assert_staged rejects WV1 bootstrap; corrected by separate process; native owners unchanged",
+    "proof": "native_final.xml"
+  },
+  "severances": {
+    "count": 6,
+    "baseline": "PASS",
+    "fault": "TARGET_ASSERTION_FAILED",
+    "source_restored": true
+  },
+  "independent_scientific_acceptance": false,
+  "temporal_replay_regression": {
+    "passed": 1,
+    "failed": 0,
+    "proof": "replay_regression.xml"
+  }
+}

@@ -1,0 +1,5088 @@
+{
+  "F6_N9_join": "HOLD_EXACT_F6_REAL_USE_AND_WORLD_PURPOSE_ADMISSION_REQUIRED",
+  "independent_source_fields": {
+    "as_of": "2027-09-01",
+    "dependency_readset": [
+      "TESTONLY_FIELD:83b0b3fdf1fa2a3e346c95211987b32fc5ff646d053a3577d1f695fd62507d45",
+      "TESTONLY_FIELD:d21dc005bdc40b56f0641dc75982880f74405f89691c55e532c87798f527b106"
+    ],
+    "execution_grade": "ISOLATED_SOURCEFREE_TEST_ONLY",
+    "issued_EE13": false,
+    "issued_N5N6": false,
+    "model_use": false,
+    "operative_OC05": false,
+    "person_exposure": false,
+    "pooling": false,
+    "real_N9_consumer": false,
+    "refusals": [],
+    "schema": "PRE553_HQ297_N9C_SOURCEFREE_VALUES_READER@1",
+    "selected_fixture_refs": [
+      "TESTONLY_FIELD:83b0b3fdf1fa2a3e346c95211987b32fc5ff646d053a3577d1f695fd62507d45",
+      "TESTONLY_FIELD:d21dc005bdc40b56f0641dc75982880f74405f89691c55e532c87798f527b106"
+    ],
+    "state": "TWO_VALUES_READ_TEST_ONLY",
+    "successful_value_refset": [
+      "TESTONLY_FIELD:83b0b3fdf1fa2a3e346c95211987b32fc5ff646d053a3577d1f695fd62507d45",
+      "TESTONLY_FIELD:d21dc005bdc40b56f0641dc75982880f74405f89691c55e532c87798f527b106"
+    ],
+    "test_snapshot_ref": "TESTONLY_SNAPSHOT:9c30d0d17140bf52244829b6474334b1870410c9cd1f3633eb59452eeb441bb7",
+    "values_read": [
+      {
+        "fixture_ref": "TESTONLY_FIELD:83b0b3fdf1fa2a3e346c95211987b32fc5ff646d053a3577d1f695fd62507d45",
+        "native_geography": "GHANA_RURAL",
+        "native_measure": "ELECTRICITY_MAIN_LIGHTING_ALL_SUBTYPES",
+        "native_unit": "RURAL_OCCUPIED_HOUSEHOLD_MAIN_LIGHTING",
+        "observation_period": "2021 PHC",
+        "publication_date": "2022-02-24",
+        "publisher": "Ghana Statistical Service",
+        "role": "GSS_RURAL_LIGHTING",
+        "source_family": "GH_GSS_PHC_2021",
+        "uncertainty": "CENSUS_NONSAMPLING_UNQUANTIFIED",
+        "values": {
+          "denominator": 3288063,
+          "electricity_subtypes": {
+            "community_grid": 74490,
+            "generator": 3640,
+            "mains": 2288193,
+            "solar_inverter": 21512,
+            "wind": 357
+          },
+          "numerator": 2388192,
+          "published_percent": 72.6
+        }
+      },
+      {
+        "fixture_ref": "TESTONLY_FIELD:d21dc005bdc40b56f0641dc75982880f74405f89691c55e532c87798f527b106",
+        "native_geography": "GHANA_NATIONAL",
+        "native_measure": "ACTIVE_MOBILE_DATA_90_DAY_TRAFFIC",
+        "native_unit": "ACTIVE_MOBILE_DATA_SUBSCRIPTIONS_NOT_UNIQUE_PERSONS",
+        "observation_period": "2021-Q4 (90-day activity definition)",
+        "publication_date": "2022-07-08",
+        "publisher": "National Communications Authority",
+        "role": "NCA_NATIONAL_MOBILE_DATA",
+        "source_family": "GH_NCA_LICENSEE_REPORTS_2021Q4",
+        "uncertainty": "LICENSEE_REPORTING_ERROR_UNQUANTIFIED",
+        "values": {
+          "active_subscriptions": 23414527,
+          "postpaid": 177189,
+          "prepaid": 23237338
+        }
+      }
+    ],
+    "world_clock": "HISTORICAL_PUBLICATION_AWARE"
+  },
+  "matched": [
+    {
+      "case": "W1",
+      "state": "SUPPORTED_SYNTHESIS",
+      "use": "SOURCEFREE_EXPERIMENT_ONLY"
+    }
+  ],
+  "native_F6_evidence": {
+    "W1": {
+      "case": "W1",
+      "display_class": "POINT_AT_TEST_ESTIMAND",
+      "evidence": {
+        "bias_sensitivity_bounds": [
+          {
+            "categories": [
+              "secure",
+              "formal"
+            ],
+            "lower": "33/200",
+            "upper": "23/50"
+          },
+          {
+            "categories": [
+              "secure",
+              "informal"
+            ],
+            "lower": "1/25",
+            "upper": "67/200"
+          },
+          {
+            "categories": [
+              "insecure",
+              "formal"
+            ],
+            "lower": "23/200",
+            "upper": "31/100"
+          },
+          {
+            "categories": [
+              "insecure",
+              "informal"
+            ],
+            "lower": "19/100",
+            "upper": "77/200"
+          }
+        ],
+        "bounds": [
+          {
+            "categories": [
+              "secure",
+              "formal"
+            ],
+            "lower": "9/40",
+            "upper": "2/5"
+          },
+          {
+            "categories": [
+              "secure",
+              "informal"
+            ],
+            "lower": "1/10",
+            "upper": "11/40"
+          },
+          {
+            "categories": [
+              "insecure",
+              "formal"
+            ],
+            "lower": "7/40",
+            "upper": "1/4"
+          },
+          {
+            "categories": [
+              "insecure",
+              "informal"
+            ],
+            "lower": "1/4",
+            "upper": "13/40"
+          }
+        ],
+        "conditional": {
+          "bundle_hash": "2550b1d2486769d771cb248c9fe8069539da1f2a3007d27c19fe104e987af465",
+          "conditions": {
+            "material_security": "secure"
+          },
+          "evidence_mode": "INFERRED",
+          "model_denominator_mass": "1/2",
+          "observed_denominator": null,
+          "outcome": "employment_position",
+          "output_hash": "89e9c891f8a63e0f84979bad2b447b1e5dc79a344bd1ceb97bdd1859a6dfb3fa",
+          "owner_admission_status": "UNVERIFIED_INTEGRATION_BOUNDARY",
+          "probabilities": {
+            "formal": "5/8",
+            "informal": "3/8"
+          },
+          "real_use_authorized": false,
+          "state": "SUPPORTED_MODEL",
+          "uncertainty": "CONDITIONAL_UNCERTAINTY_NOT_IDENTIFIED",
+          "use_scope": "SOURCEFREE_EXPERIMENT_ONLY",
+          "values_read_hash": "eff3b5ae5b20ed1ccad344ef76c468177da0ace97338eb62d627ece405742282"
+        },
+        "consumer_id": "F6P_F6M_PARTIAL_BOUND_CONSUMER@1",
+        "covered_subprobability": {
+          "insecure|formal": "17/80",
+          "insecure|informal": "23/80",
+          "secure|formal": "5/16",
+          "secure|informal": "3/16"
+        },
+        "evidence_reasons": [
+          "COMPLETE_MEASURED_TARGET_JOINT"
+        ],
+        "evidence_state": "SUPPORTED_SYNTHESIS",
+        "exclusions": [],
+        "input_bundle": {
+          "content_hash": "2550b1d2486769d771cb248c9fe8069539da1f2a3007d27c19fe104e987af465",
+          "decision": "SYNTHETIC_CANDIDATE",
+          "implementation_version": "F6M_NATIVE_DECISION_ADMISSION_REPAIR@1",
+          "owner_admission_status": "UNVERIFIED_INTEGRATION_BOUNDARY",
+          "real_use_authorized": false,
+          "target_joint_status": "COMPLETE_EXPERIMENTAL_TARGET_JOINT",
+          "test_origin": true,
+          "use_scope": "SOURCEFREE_EXPERIMENT_ONLY"
+        },
+        "lost_planned_source_share": [],
+        "native_output_hash": "4df4a97fc526e2dfd6735d111a17214eacc94af01091e7bfd554ff4d33a52087",
+        "no_common_respondent_inference": true,
+        "no_route_probability": true,
+        "no_selection_weight": true,
+        "overlap": [],
+        "portable_projection_hash": "fa53b021c1ecf0fe6d900abbafbd07e3b454e891734ac870c5dca17b5d259673",
+        "real_use_authorized": false,
+        "request": {
+          "conditions": {
+            "material_security": "secure"
+          },
+          "outcome": "employment_position"
+        },
+        "sampling": {
+          "design_known": true,
+          "note": "unknown design/weight is exposed as unknown, never set to 1",
+          "population_estimate_permitted": true,
+          "population_estimate_requested": false,
+          "sampling_status": "EXTERNAL_DESIGN_DIAGONAL_ONLY",
+          "sampling_variance_present": true,
+          "weight_defaulted_to_one": false,
+          "weight_imputation": "NONE"
+        },
+        "schema": "F6P_PARTIAL_BOUND_EVIDENCE@1",
+        "scientific_ceiling": "SOURCEFREE_TEST_ONLY_NO_ROUTE_PROBABILITY_NO_SELECTION_WEIGHT_NO_MODEL_USE",
+        "source_product": {
+          "module_file": "owners/f6p/native/rawlsing_next/pre553_heterogeneous_synthesis.py",
+          "module_git_blob": "2df811d76db258d98d89ffb43c830cb221ff9a7d",
+          "module_sha256": "2930b5cd15c899146e9552b2e6b0efa3fc5835e57e58a6c16d756093e21d3871"
+        },
+        "supported_point": {
+          "formal": "5/8",
+          "informal": "3/8"
+        },
+        "transport": {
+          "note": "no owner transport/model-use permission is issued by this consumer",
+          "permitted": false,
+          "status": "UNVERIFIED_INTEGRATION_BOUNDARY"
+        },
+        "uncertainty": {
+          "bias_sensitivity_bounds": [
+            {
+              "categories": [
+                "secure",
+                "formal"
+              ],
+              "lower": "33/200",
+              "upper": "23/50"
+            },
+            {
+              "categories": [
+                "secure",
+                "informal"
+              ],
+              "lower": "1/25",
+              "upper": "67/200"
+            },
+            {
+              "categories": [
+                "insecure",
+                "formal"
+              ],
+              "lower": "23/200",
+              "upper": "31/100"
+            },
+            {
+              "categories": [
+                "insecure",
+                "informal"
+              ],
+              "lower": "19/100",
+              "upper": "77/200"
+            }
+          ],
+          "limitations": "Sensitivity envelopes are not confidence intervals; fixed target shares and disjoint sources/strata for sampling variance; covariance and conditional uncertainty unavailable.",
+          "radii": {
+            "mapping_bias_radius": "1/100",
+            "target_share_bias_radius": 0,
+            "transport_bias_radius": "1/20"
+          },
+          "sampling_status": "EXTERNAL_DESIGN_DIAGONAL_ONLY",
+          "sampling_variance": [
+            {
+              "categories": [
+                "insecure",
+                "formal"
+              ],
+              "variance": "261/640000"
+            },
+            {
+              "categories": [
+                "insecure",
+                "informal"
+              ],
+              "variance": "321/640000"
+            },
+            {
+              "categories": [
+                "secure",
+                "formal"
+              ],
+              "variance": "331/640000"
+            },
+            {
+              "categories": [
+                "secure",
+                "informal"
+              ],
+              "variance": "231/640000"
+            }
+          ],
+          "source_disagreement_and_uncovered_bounds": [
+            {
+              "categories": [
+                "secure",
+                "formal"
+              ],
+              "lower": "9/40",
+              "upper": "2/5"
+            },
+            {
+              "categories": [
+                "secure",
+                "informal"
+              ],
+              "lower": "1/10",
+              "upper": "11/40"
+            },
+            {
+              "categories": [
+                "insecure",
+                "formal"
+              ],
+              "lower": "7/40",
+              "upper": "1/4"
+            },
+            {
+              "categories": [
+                "insecure",
+                "informal"
+              ],
+              "lower": "1/4",
+              "upper": "13/40"
+            }
+          ]
+        },
+        "uncovered_target_mass": "0",
+        "values_read": [
+          "content_hash",
+          "decision",
+          "target_joint_status",
+          "candidate",
+          "candidate.covered_subprobability",
+          "candidate.uncovered_target_mass",
+          "candidate.support",
+          "candidate.uncertainty",
+          "candidate.uncertainty.source_disagreement_and_uncovered_bounds",
+          "candidate.uncertainty.sampling_status",
+          "refusals",
+          "overlap_diagnostics",
+          "conditional"
+        ]
+      },
+      "native_sources": [
+        {
+          "axes": [
+            {
+              "category_map": {
+                "A_insecure": "insecure",
+                "A_secure": "secure"
+              },
+              "construct_ref": "material_security",
+              "instrument_ref": "r35f6c-S_A-instrument@1",
+              "item_ref": "r35f6c-S_A-item-0@1",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "r35f6c-S_A-mapping-0@1",
+              "polarity_ref": "categories-not-score@1",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "r35f6c-S_A-named-response-meanings@1",
+              "review_status": "REVIEWED",
+              "scale_ref": "named-categories@1",
+              "scale_status": "REVIEWED"
+            },
+            {
+              "category_map": {
+                "A_formal": "formal",
+                "A_informal": "informal"
+              },
+              "construct_ref": "employment_position",
+              "instrument_ref": "r35f6c-S_A-instrument@1",
+              "item_ref": "r35f6c-S_A-item-1@1",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "r35f6c-S_A-mapping-1@1",
+              "polarity_ref": "categories-not-score@1",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "r35f6c-S_A-named-response-meanings@1",
+              "review_status": "REVIEWED",
+              "scale_ref": "named-categories@1",
+              "scale_status": "REVIEWED"
+            }
+          ],
+          "coadministration_ref": "r35f6c-W1-S_A-coadministration@1",
+          "dependence_kind": "MEASURED_SAME_SURVEY_JOINT",
+          "design_ref": "r35f6c-W1-S_A-stratified-fixed-n@1",
+          "joint_frontier_ref": "r35f6c-W1-two-item-complete@1",
+          "measure_basis": "UNWEIGHTED",
+          "missingness_ref": "r35f6c-no-missing@1",
+          "permission_ref": "SYNTHETIC_ONLY_NO_TRANSPORT_PERMISSION",
+          "product_ref": "r35f6c-W1-S_A-joint-product@1",
+          "risk_set_ref": "r35f6c-W1-S_A-eligible-asked-complete@1",
+          "routing_ref": "r35f6c-W1-shared-eligibility@1",
+          "sample_id": "r35f6c-W1-independent-sample-S_A",
+          "sampling_limitations": "Invented fixed-stratum tables built for this court; no real-source design, coverage or weighting validation; not a population estimate",
+          "scope": {
+            "boundary_ref": "r35f6c-boundary-one@1",
+            "end_year": 1995,
+            "fieldwork_ref": "r35f6c-1995-W1@1",
+            "geography": "Synthetic Region one",
+            "population": "resident adults in the eligible-and-asked work risk set",
+            "start_year": 1995,
+            "unit": "adult respondent"
+          },
+          "source_id": "S_A",
+          "strata": {
+            "majority": {
+              "cells": [
+                {
+                  "categories": [
+                    "A_secure",
+                    "A_formal"
+                  ],
+                  "mass": 40,
+                  "n": 40
+                },
+                {
+                  "categories": [
+                    "A_secure",
+                    "A_informal"
+                  ],
+                  "mass": 10,
+                  "n": 10
+                },
+                {
+                  "categories": [
+                    "A_insecure",
+                    "A_formal"
+                  ],
+                  "mass": 25,
+                  "n": 25
+                },
+                {
+                  "categories": [
+                    "A_insecure",
+                    "A_informal"
+                  ],
+                  "mass": 25,
+                  "n": 25
+                }
+              ],
+              "design_variance": {
+                "cells": [
+                  {
+                    "categories": [
+                      "secure",
+                      "formal"
+                    ],
+                    "variance": "3/1250"
+                  },
+                  {
+                    "categories": [
+                      "secure",
+                      "informal"
+                    ],
+                    "variance": "9/10000"
+                  },
+                  {
+                    "categories": [
+                      "insecure",
+                      "formal"
+                    ],
+                    "variance": "3/1600"
+                  },
+                  {
+                    "categories": [
+                      "insecure",
+                      "informal"
+                    ],
+                    "variance": "3/1600"
+                  }
+                ],
+                "method_ref": "R35F6C_FIXED_STRATUM_MULTINOMIAL_PLUGIN@1"
+              },
+              "eligible_n": 100,
+              "excluded_n": 0,
+              "support_ref": "r35f6c-W1-S_A-majority-support@1",
+              "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET"
+            },
+            "minority": {
+              "cells": [
+                {
+                  "categories": [
+                    "A_secure",
+                    "A_formal"
+                  ],
+                  "mass": 25,
+                  "n": 25
+                },
+                {
+                  "categories": [
+                    "A_secure",
+                    "A_informal"
+                  ],
+                  "mass": 25,
+                  "n": 25
+                },
+                {
+                  "categories": [
+                    "A_insecure",
+                    "A_formal"
+                  ],
+                  "mass": 10,
+                  "n": 10
+                },
+                {
+                  "categories": [
+                    "A_insecure",
+                    "A_informal"
+                  ],
+                  "mass": 40,
+                  "n": 40
+                }
+              ],
+              "design_variance": {
+                "cells": [
+                  {
+                    "categories": [
+                      "secure",
+                      "formal"
+                    ],
+                    "variance": "3/1600"
+                  },
+                  {
+                    "categories": [
+                      "secure",
+                      "informal"
+                    ],
+                    "variance": "3/1600"
+                  },
+                  {
+                    "categories": [
+                      "insecure",
+                      "formal"
+                    ],
+                    "variance": "9/10000"
+                  },
+                  {
+                    "categories": [
+                      "insecure",
+                      "informal"
+                    ],
+                    "variance": "3/1250"
+                  }
+                ],
+                "method_ref": "R35F6C_FIXED_STRATUM_MULTINOMIAL_PLUGIN@1"
+              },
+              "eligible_n": 100,
+              "excluded_n": 0,
+              "support_ref": "r35f6c-W1-S_A-minority-support@1",
+              "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET"
+            }
+          },
+          "survey_lineage": "r35f6c-W1-survey-S_A",
+          "test_origin": true,
+          "weight_ref": "unit-weight@1"
+        },
+        {
+          "axes": [
+            {
+              "category_map": {
+                "B_C1": "secure",
+                "B_C2": "insecure"
+              },
+              "construct_ref": "material_security",
+              "instrument_ref": "r35f6c-S_B-instrument@1",
+              "item_ref": "r35f6c-S_B-item-0@1",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "r35f6c-S_B-mapping-0@1",
+              "polarity_ref": "categories-not-score@1",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "r35f6c-S_B-named-response-meanings@1",
+              "review_status": "REVIEWED",
+              "scale_ref": "named-categories@1",
+              "scale_status": "REVIEWED"
+            },
+            {
+              "category_map": {
+                "B_E1": "formal",
+                "B_E2": "informal"
+              },
+              "construct_ref": "employment_position",
+              "instrument_ref": "r35f6c-S_B-instrument@1",
+              "item_ref": "r35f6c-S_B-item-1@1",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "r35f6c-S_B-mapping-1@1",
+              "polarity_ref": "categories-not-score@1",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "r35f6c-S_B-named-response-meanings@1",
+              "review_status": "REVIEWED",
+              "scale_ref": "named-categories@1",
+              "scale_status": "REVIEWED"
+            }
+          ],
+          "coadministration_ref": "r35f6c-W1-S_B-coadministration@1",
+          "dependence_kind": "MEASURED_SAME_SURVEY_JOINT",
+          "design_ref": "r35f6c-W1-S_B-stratified-fixed-n@1",
+          "joint_frontier_ref": "r35f6c-W1-two-item-complete@1",
+          "measure_basis": "UNWEIGHTED",
+          "missingness_ref": "r35f6c-no-missing@1",
+          "permission_ref": "SYNTHETIC_ONLY_NO_TRANSPORT_PERMISSION",
+          "product_ref": "r35f6c-W1-S_B-joint-product@1",
+          "risk_set_ref": "r35f6c-W1-S_B-eligible-asked-complete@1",
+          "routing_ref": "r35f6c-W1-shared-eligibility@1",
+          "sample_id": "r35f6c-W1-independent-sample-S_B",
+          "sampling_limitations": "Invented fixed-stratum tables built for this court; no real-source design, coverage or weighting validation; not a population estimate",
+          "scope": {
+            "boundary_ref": "r35f6c-boundary-one@1",
+            "end_year": 1995,
+            "fieldwork_ref": "r35f6c-1995-W1@1",
+            "geography": "Synthetic Region one",
+            "population": "resident adults in the eligible-and-asked work risk set",
+            "start_year": 1995,
+            "unit": "adult respondent"
+          },
+          "source_id": "S_B",
+          "strata": {
+            "majority": {
+              "cells": [
+                {
+                  "categories": [
+                    "B_C1",
+                    "B_E1"
+                  ],
+                  "mass": 20,
+                  "n": 20
+                },
+                {
+                  "categories": [
+                    "B_C1",
+                    "B_E2"
+                  ],
+                  "mass": 30,
+                  "n": 30
+                },
+                {
+                  "categories": [
+                    "B_C2",
+                    "B_E1"
+                  ],
+                  "mass": 25,
+                  "n": 25
+                },
+                {
+                  "categories": [
+                    "B_C2",
+                    "B_E2"
+                  ],
+                  "mass": 25,
+                  "n": 25
+                }
+              ],
+              "design_variance": {
+                "cells": [
+                  {
+                    "categories": [
+                      "secure",
+                      "formal"
+                    ],
+                    "variance": "1/625"
+                  },
+                  {
+                    "categories": [
+                      "secure",
+                      "informal"
+                    ],
+                    "variance": "21/10000"
+                  },
+                  {
+                    "categories": [
+                      "insecure",
+                      "formal"
+                    ],
+                    "variance": "3/1600"
+                  },
+                  {
+                    "categories": [
+                      "insecure",
+                      "informal"
+                    ],
+                    "variance": "3/1600"
+                  }
+                ],
+                "method_ref": "R35F6C_FIXED_STRATUM_MULTINOMIAL_PLUGIN@1"
+              },
+              "eligible_n": 100,
+              "excluded_n": 0,
+              "support_ref": "r35f6c-W1-S_B-majority-support@1",
+              "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET"
+            },
+            "minority": {
+              "cells": [
+                {
+                  "categories": [
+                    "B_C1",
+                    "B_E1"
+                  ],
+                  "mass": 40,
+                  "n": 40
+                },
+                {
+                  "categories": [
+                    "B_C1",
+                    "B_E2"
+                  ],
+                  "mass": 10,
+                  "n": 10
+                },
+                {
+                  "categories": [
+                    "B_C2",
+                    "B_E1"
+                  ],
+                  "mass": 25,
+                  "n": 25
+                },
+                {
+                  "categories": [
+                    "B_C2",
+                    "B_E2"
+                  ],
+                  "mass": 25,
+                  "n": 25
+                }
+              ],
+              "design_variance": {
+                "cells": [
+                  {
+                    "categories": [
+                      "secure",
+                      "formal"
+                    ],
+                    "variance": "3/1250"
+                  },
+                  {
+                    "categories": [
+                      "secure",
+                      "informal"
+                    ],
+                    "variance": "9/10000"
+                  },
+                  {
+                    "categories": [
+                      "insecure",
+                      "formal"
+                    ],
+                    "variance": "3/1600"
+                  },
+                  {
+                    "categories": [
+                      "insecure",
+                      "informal"
+                    ],
+                    "variance": "3/1600"
+                  }
+                ],
+                "method_ref": "R35F6C_FIXED_STRATUM_MULTINOMIAL_PLUGIN@1"
+              },
+              "eligible_n": 100,
+              "excluded_n": 0,
+              "support_ref": "r35f6c-W1-S_B-minority-support@1",
+              "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET"
+            }
+          },
+          "survey_lineage": "r35f6c-W1-survey-S_B",
+          "test_origin": true,
+          "weight_ref": "unit-weight@1"
+        }
+      ],
+      "policy": {
+        "conditional_invariance_ref": "r35f6c-W1-equal-risk-set-law-assumption@1",
+        "conditional_invariance_status": "REVIEWED_ASSUMPTION",
+        "mapping_bias_radius": "1/100",
+        "mapping_hashes": {
+          "S_A": "5e477398996e0281699c1efa796423035b3d8ccaef072f82bd4d808e9f138e35",
+          "S_B": "0dfafad61962a4aeb70cb2fd2955f744b9dce68ba6407345aeae03bbea487761"
+        },
+        "maximum_joint_cells": 64,
+        "minimum_raw_support": 30,
+        "overlap_reviews": {
+          "S_A|S_B": {
+            "review_ref": "r35f6c-independent-sampling-review@1",
+            "status": "DISJOINT"
+          }
+        },
+        "policy_ref": "r35f6c-W1-standardization-decision@1",
+        "scope_review_ref": "r35f6c-W1-scope-review@1",
+        "source_weights": {
+          "S_A": 1,
+          "S_B": 1
+        },
+        "target_share_bias_radius": 0,
+        "target_support_ref": "r35f6c-W1-target-support@1",
+        "transport_bias_radius": "1/20"
+      },
+      "product_ref": "2550b1d2486769d771cb248c9fe8069539da1f2a3007d27c19fe104e987af465",
+      "route_probability": null,
+      "state": "SUPPORTED_SYNTHESIS",
+      "target": {
+        "boundary_ref": "r35f6c-boundary-one@1",
+        "geography": "Synthetic Region one",
+        "population": "resident adults in the eligible-and-asked work risk set",
+        "strata": {
+          "majority": "1/2",
+          "minority": "1/2"
+        },
+        "strata_ref": "r35f6c-population-register-one@1",
+        "target_id": "R35F6C_W1_1995_ADULT_ELIGIBLE_ASKED_RISK_SET",
+        "unit": "adult respondent",
+        "year": 1995
+      },
+      "world_joint": null,
+      "world_use": "SEPARATE_SOURCEFREE_EVIDENCE_ONLY__NO_N9_TRANSPORT_ADMISSION"
+    },
+    "W2": {
+      "case": "W2",
+      "display_class": "BOUNDS_AND_UNKNOWN",
+      "evidence": {
+        "bias_sensitivity_bounds": [
+          {
+            "categories": [
+              "secure",
+              "formal"
+            ],
+            "lower": "7/50",
+            "upper": "61/100"
+          },
+          {
+            "categories": [
+              "secure",
+              "informal"
+            ],
+            "lower": "3/200",
+            "upper": "97/200"
+          },
+          {
+            "categories": [
+              "insecure",
+              "formal"
+            ],
+            "lower": "51/400",
+            "upper": "199/400"
+          },
+          {
+            "categories": [
+              "insecure",
+              "informal"
+            ],
+            "lower": "51/400",
+            "upper": "199/400"
+          }
+        ],
+        "bounds": [
+          {
+            "categories": [
+              "secure",
+              "formal"
+            ],
+            "lower": "1/5",
+            "upper": "11/20"
+          },
+          {
+            "categories": [
+              "secure",
+              "informal"
+            ],
+            "lower": "3/40",
+            "upper": "17/40"
+          },
+          {
+            "categories": [
+              "insecure",
+              "formal"
+            ],
+            "lower": "3/16",
+            "upper": "7/16"
+          },
+          {
+            "categories": [
+              "insecure",
+              "informal"
+            ],
+            "lower": "3/16",
+            "upper": "7/16"
+          }
+        ],
+        "conditional": {
+          "bundle_hash": "cf9c584164baf4b7a13d199c3545ad878ca6d9677052c829508b8058291a371a",
+          "reason": "NO_COMPLETE_TARGET_JOINT",
+          "state": "UNAVAILABLE"
+        },
+        "consumer_id": "F6P_F6M_PARTIAL_BOUND_CONSUMER@1",
+        "covered_subprobability": {
+          "insecure|formal": "3/16",
+          "insecure|informal": "3/16",
+          "secure|formal": "1/4",
+          "secure|informal": "1/8"
+        },
+        "evidence_reasons": [
+          "INCOMPLETE_TARGET_COVERAGE"
+        ],
+        "evidence_state": "PARTIAL_IDENTIFICATION",
+        "exclusions": [
+          {
+            "planned_source_share_lost": "1/4",
+            "reason": "AGGREGATE_SUPPORT_OR_MASS_INSUFFICIENT",
+            "source_id": "S_A",
+            "stratum": "minority",
+            "uncovered_target_share": "1/4"
+          }
+        ],
+        "input_bundle": {
+          "content_hash": "cf9c584164baf4b7a13d199c3545ad878ca6d9677052c829508b8058291a371a",
+          "decision": "PARTIAL_IDENTIFICATION_ONLY",
+          "implementation_version": "F6M_NATIVE_DECISION_ADMISSION_REPAIR@1",
+          "owner_admission_status": "UNVERIFIED_INTEGRATION_BOUNDARY",
+          "real_use_authorized": false,
+          "target_joint_status": "NO_COMPLETE_TARGET_JOINT",
+          "test_origin": true,
+          "use_scope": "SOURCEFREE_EXPERIMENT_ONLY"
+        },
+        "lost_planned_source_share": [
+          {
+            "planned_source_share_lost": "1/4",
+            "reason": "AGGREGATE_SUPPORT_OR_MASS_INSUFFICIENT",
+            "source_id": "S_A",
+            "stratum": "minority",
+            "uncovered_target_share": "1/4"
+          }
+        ],
+        "native_output_hash": "f34b2290bdb0f8eb258a26bdabc614a88df01ad379f939974260150b8bfd83d9",
+        "no_common_respondent_inference": true,
+        "no_route_probability": true,
+        "no_selection_weight": true,
+        "overlap": [],
+        "portable_projection_hash": "2ae1ef0937bae73ead14224f0836e04421493c071d1557bde5be6dc97b96c58c",
+        "real_use_authorized": false,
+        "request": {
+          "conditions": {
+            "material_security": "secure"
+          },
+          "outcome": "employment_position"
+        },
+        "sampling": {
+          "design_known": false,
+          "note": "unknown design/weight is exposed as unknown, never set to 1",
+          "population_estimate_permitted": false,
+          "population_estimate_requested": false,
+          "sampling_status": "UNKNOWN_DESIGN",
+          "sampling_variance_present": false,
+          "weight_defaulted_to_one": false,
+          "weight_imputation": "NONE"
+        },
+        "schema": "F6P_PARTIAL_BOUND_EVIDENCE@1",
+        "scientific_ceiling": "SOURCEFREE_TEST_ONLY_NO_ROUTE_PROBABILITY_NO_SELECTION_WEIGHT_NO_MODEL_USE",
+        "source_product": {
+          "module_file": "owners/f6p/native/rawlsing_next/pre553_heterogeneous_synthesis.py",
+          "module_git_blob": "2df811d76db258d98d89ffb43c830cb221ff9a7d",
+          "module_sha256": "2930b5cd15c899146e9552b2e6b0efa3fc5835e57e58a6c16d756093e21d3871"
+        },
+        "supported_point": null,
+        "transport": {
+          "note": "no owner transport/model-use permission is issued by this consumer",
+          "permitted": false,
+          "status": "UNVERIFIED_INTEGRATION_BOUNDARY"
+        },
+        "uncertainty": {
+          "bias_sensitivity_bounds": [
+            {
+              "categories": [
+                "secure",
+                "formal"
+              ],
+              "lower": "7/50",
+              "upper": "61/100"
+            },
+            {
+              "categories": [
+                "secure",
+                "informal"
+              ],
+              "lower": "3/200",
+              "upper": "97/200"
+            },
+            {
+              "categories": [
+                "insecure",
+                "formal"
+              ],
+              "lower": "51/400",
+              "upper": "199/400"
+            },
+            {
+              "categories": [
+                "insecure",
+                "informal"
+              ],
+              "lower": "51/400",
+              "upper": "199/400"
+            }
+          ],
+          "limitations": "Sensitivity envelopes are not confidence intervals; fixed target shares and disjoint sources/strata for sampling variance; covariance and conditional uncertainty unavailable.",
+          "radii": {
+            "mapping_bias_radius": "1/100",
+            "target_share_bias_radius": 0,
+            "transport_bias_radius": "1/20"
+          },
+          "sampling_status": "UNKNOWN_DESIGN",
+          "sampling_variance": null,
+          "source_disagreement_and_uncovered_bounds": [
+            {
+              "categories": [
+                "secure",
+                "formal"
+              ],
+              "lower": "1/5",
+              "upper": "11/20"
+            },
+            {
+              "categories": [
+                "secure",
+                "informal"
+              ],
+              "lower": "3/40",
+              "upper": "17/40"
+            },
+            {
+              "categories": [
+                "insecure",
+                "formal"
+              ],
+              "lower": "3/16",
+              "upper": "7/16"
+            },
+            {
+              "categories": [
+                "insecure",
+                "informal"
+              ],
+              "lower": "3/16",
+              "upper": "7/16"
+            }
+          ]
+        },
+        "uncovered_target_mass": "1/4",
+        "values_read": [
+          "content_hash",
+          "decision",
+          "target_joint_status",
+          "candidate",
+          "candidate.covered_subprobability",
+          "candidate.uncovered_target_mass",
+          "candidate.support",
+          "candidate.uncertainty",
+          "candidate.uncertainty.source_disagreement_and_uncovered_bounds",
+          "candidate.uncertainty.sampling_status",
+          "refusals",
+          "overlap_diagnostics",
+          "conditional"
+        ]
+      },
+      "native_sources": [
+        {
+          "axes": [
+            {
+              "category_map": {
+                "A_insecure": "insecure",
+                "A_secure": "secure"
+              },
+              "construct_ref": "material_security",
+              "instrument_ref": "r35f6c-S_A-instrument@1",
+              "item_ref": "r35f6c-S_A-item-0@1",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "r35f6c-S_A-mapping-0@1",
+              "polarity_ref": "categories-not-score@1",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "r35f6c-S_A-named-response-meanings@1",
+              "review_status": "REVIEWED",
+              "scale_ref": "named-categories@1",
+              "scale_status": "REVIEWED"
+            },
+            {
+              "category_map": {
+                "A_formal": "formal",
+                "A_informal": "informal"
+              },
+              "construct_ref": "employment_position",
+              "instrument_ref": "r35f6c-S_A-instrument@1",
+              "item_ref": "r35f6c-S_A-item-1@1",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "r35f6c-S_A-mapping-1@1",
+              "polarity_ref": "categories-not-score@1",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "r35f6c-S_A-named-response-meanings@1",
+              "review_status": "REVIEWED",
+              "scale_ref": "named-categories@1",
+              "scale_status": "REVIEWED"
+            }
+          ],
+          "coadministration_ref": "r35f6c-W2-S_A-coadministration@1",
+          "dependence_kind": "MEASURED_SAME_SURVEY_JOINT",
+          "design_ref": "r35f6c-W2-S_A-stratified-fixed-n@1",
+          "joint_frontier_ref": "r35f6c-W2-two-item-complete@1",
+          "measure_basis": "UNWEIGHTED",
+          "missingness_ref": "r35f6c-no-missing@1",
+          "permission_ref": "SYNTHETIC_ONLY_NO_TRANSPORT_PERMISSION",
+          "product_ref": "r35f6c-W2-S_A-joint-product@1",
+          "risk_set_ref": "r35f6c-W2-S_A-eligible-asked-complete@1",
+          "routing_ref": "r35f6c-W2-shared-eligibility@1",
+          "sample_id": "r35f6c-W2-independent-sample-S_A",
+          "sampling_limitations": "Invented fixed-stratum tables built for this court; no real-source design, coverage or weighting validation; not a population estimate",
+          "scope": {
+            "boundary_ref": "r35f6c-boundary-two@1",
+            "end_year": 1995,
+            "fieldwork_ref": "r35f6c-1995-W2@1",
+            "geography": "Synthetic Region two",
+            "population": "resident adults in the eligible-and-asked work risk set",
+            "start_year": 1995,
+            "unit": "adult respondent"
+          },
+          "source_id": "S_A",
+          "strata": {
+            "majority": {
+              "cells": [
+                {
+                  "categories": [
+                    "A_secure",
+                    "A_formal"
+                  ],
+                  "mass": 40,
+                  "n": 40
+                },
+                {
+                  "categories": [
+                    "A_secure",
+                    "A_informal"
+                  ],
+                  "mass": 10,
+                  "n": 10
+                },
+                {
+                  "categories": [
+                    "A_insecure",
+                    "A_formal"
+                  ],
+                  "mass": 25,
+                  "n": 25
+                },
+                {
+                  "categories": [
+                    "A_insecure",
+                    "A_informal"
+                  ],
+                  "mass": 25,
+                  "n": 25
+                }
+              ],
+              "design_variance": {
+                "cells": [
+                  {
+                    "categories": [
+                      "secure",
+                      "formal"
+                    ],
+                    "variance": "3/1250"
+                  },
+                  {
+                    "categories": [
+                      "secure",
+                      "informal"
+                    ],
+                    "variance": "9/10000"
+                  },
+                  {
+                    "categories": [
+                      "insecure",
+                      "formal"
+                    ],
+                    "variance": "3/1600"
+                  },
+                  {
+                    "categories": [
+                      "insecure",
+                      "informal"
+                    ],
+                    "variance": "3/1600"
+                  }
+                ],
+                "method_ref": "R35F6C_FIXED_STRATUM_MULTINOMIAL_PLUGIN@1"
+              },
+              "eligible_n": 100,
+              "excluded_n": 0,
+              "support_ref": "r35f6c-W2-S_A-majority-support@1",
+              "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET"
+            },
+            "minority": {
+              "cells": [
+                {
+                  "categories": [
+                    "A_secure",
+                    "A_formal"
+                  ],
+                  "mass": 4,
+                  "n": 4
+                },
+                {
+                  "categories": [
+                    "A_secure",
+                    "A_informal"
+                  ],
+                  "mass": 2,
+                  "n": 2
+                },
+                {
+                  "categories": [
+                    "A_insecure",
+                    "A_formal"
+                  ],
+                  "mass": 1,
+                  "n": 1
+                },
+                {
+                  "categories": [
+                    "A_insecure",
+                    "A_informal"
+                  ],
+                  "mass": 3,
+                  "n": 3
+                }
+              ],
+              "design_variance": {
+                "cells": [
+                  {
+                    "categories": [
+                      "secure",
+                      "formal"
+                    ],
+                    "variance": "3/125"
+                  },
+                  {
+                    "categories": [
+                      "secure",
+                      "informal"
+                    ],
+                    "variance": "2/125"
+                  },
+                  {
+                    "categories": [
+                      "insecure",
+                      "formal"
+                    ],
+                    "variance": "9/1000"
+                  },
+                  {
+                    "categories": [
+                      "insecure",
+                      "informal"
+                    ],
+                    "variance": "21/1000"
+                  }
+                ],
+                "method_ref": "R35F6C_FIXED_STRATUM_MULTINOMIAL_PLUGIN@1"
+              },
+              "eligible_n": 10,
+              "excluded_n": 0,
+              "support_ref": "r35f6c-W2-S_A-minority-support@1",
+              "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET"
+            }
+          },
+          "survey_lineage": "r35f6c-W2-survey-S_A",
+          "test_origin": true,
+          "weight_ref": "unit-weight@1"
+        },
+        {
+          "axes": [
+            {
+              "category_map": {
+                "B_C1": "secure",
+                "B_C2": "insecure"
+              },
+              "construct_ref": "material_security",
+              "instrument_ref": "r35f6c-S_B-instrument@1",
+              "item_ref": "r35f6c-S_B-item-0@1",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "r35f6c-S_B-mapping-0@1",
+              "polarity_ref": "categories-not-score@1",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "r35f6c-S_B-named-response-meanings@1",
+              "review_status": "REVIEWED",
+              "scale_ref": "named-categories@1",
+              "scale_status": "REVIEWED"
+            },
+            {
+              "category_map": {
+                "B_E1": "formal",
+                "B_E2": "informal"
+              },
+              "construct_ref": "employment_position",
+              "instrument_ref": "r35f6c-S_B-instrument@1",
+              "item_ref": "r35f6c-S_B-item-1@1",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "r35f6c-S_B-mapping-1@1",
+              "polarity_ref": "categories-not-score@1",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "r35f6c-S_B-named-response-meanings@1",
+              "review_status": "REVIEWED",
+              "scale_ref": "named-categories@1",
+              "scale_status": "REVIEWED"
+            }
+          ],
+          "coadministration_ref": "r35f6c-W2-S_B-coadministration@1",
+          "dependence_kind": "MEASURED_SAME_SURVEY_JOINT",
+          "design_ref": "r35f6c-W2-S_B-stratified-fixed-n@1",
+          "joint_frontier_ref": "r35f6c-W2-two-item-complete@1",
+          "measure_basis": "UNWEIGHTED",
+          "missingness_ref": "r35f6c-no-missing@1",
+          "permission_ref": "SYNTHETIC_ONLY_NO_TRANSPORT_PERMISSION",
+          "product_ref": "r35f6c-W2-S_B-joint-product@1",
+          "risk_set_ref": "r35f6c-W2-S_B-eligible-asked-complete@1",
+          "routing_ref": "r35f6c-W2-shared-eligibility@1",
+          "sample_id": "r35f6c-W2-independent-sample-S_B",
+          "sampling_limitations": "Invented fixed-stratum tables built for this court; no real-source design, coverage or weighting validation; not a population estimate",
+          "scope": {
+            "boundary_ref": "r35f6c-boundary-two@1",
+            "end_year": 1995,
+            "fieldwork_ref": "r35f6c-1995-W2@1",
+            "geography": "Synthetic Region two",
+            "population": "resident adults in the eligible-and-asked work risk set",
+            "start_year": 1995,
+            "unit": "adult respondent"
+          },
+          "source_id": "S_B",
+          "strata": {
+            "majority": {
+              "cells": [
+                {
+                  "categories": [
+                    "B_C1",
+                    "B_E1"
+                  ],
+                  "mass": 20,
+                  "n": 20
+                },
+                {
+                  "categories": [
+                    "B_C1",
+                    "B_E2"
+                  ],
+                  "mass": 30,
+                  "n": 30
+                },
+                {
+                  "categories": [
+                    "B_C2",
+                    "B_E1"
+                  ],
+                  "mass": 25,
+                  "n": 25
+                },
+                {
+                  "categories": [
+                    "B_C2",
+                    "B_E2"
+                  ],
+                  "mass": 25,
+                  "n": 25
+                }
+              ],
+              "design_variance": {
+                "cells": [
+                  {
+                    "categories": [
+                      "secure",
+                      "formal"
+                    ],
+                    "variance": "1/625"
+                  },
+                  {
+                    "categories": [
+                      "secure",
+                      "informal"
+                    ],
+                    "variance": "21/10000"
+                  },
+                  {
+                    "categories": [
+                      "insecure",
+                      "formal"
+                    ],
+                    "variance": "3/1600"
+                  },
+                  {
+                    "categories": [
+                      "insecure",
+                      "informal"
+                    ],
+                    "variance": "3/1600"
+                  }
+                ],
+                "method_ref": "R35F6C_FIXED_STRATUM_MULTINOMIAL_PLUGIN@1"
+              },
+              "eligible_n": 100,
+              "excluded_n": 0,
+              "support_ref": "r35f6c-W2-S_B-majority-support@1",
+              "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET"
+            },
+            "minority": {
+              "cells": [
+                {
+                  "categories": [
+                    "B_C1",
+                    "B_E1"
+                  ],
+                  "mass": 40,
+                  "n": 40
+                },
+                {
+                  "categories": [
+                    "B_C1",
+                    "B_E2"
+                  ],
+                  "mass": 10,
+                  "n": 10
+                },
+                {
+                  "categories": [
+                    "B_C2",
+                    "B_E1"
+                  ],
+                  "mass": 25,
+                  "n": 25
+                },
+                {
+                  "categories": [
+                    "B_C2",
+                    "B_E2"
+                  ],
+                  "mass": 25,
+                  "n": 25
+                }
+              ],
+              "design_variance": {
+                "cells": [
+                  {
+                    "categories": [
+                      "secure",
+                      "formal"
+                    ],
+                    "variance": "3/1250"
+                  },
+                  {
+                    "categories": [
+                      "secure",
+                      "informal"
+                    ],
+                    "variance": "9/10000"
+                  },
+                  {
+                    "categories": [
+                      "insecure",
+                      "formal"
+                    ],
+                    "variance": "3/1600"
+                  },
+                  {
+                    "categories": [
+                      "insecure",
+                      "informal"
+                    ],
+                    "variance": "3/1600"
+                  }
+                ],
+                "method_ref": "R35F6C_FIXED_STRATUM_MULTINOMIAL_PLUGIN@1"
+              },
+              "eligible_n": 100,
+              "excluded_n": 0,
+              "support_ref": "r35f6c-W2-S_B-minority-support@1",
+              "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET"
+            }
+          },
+          "survey_lineage": "r35f6c-W2-survey-S_B",
+          "test_origin": true,
+          "weight_ref": "unit-weight@1"
+        }
+      ],
+      "policy": {
+        "conditional_invariance_ref": "r35f6c-W2-equal-risk-set-law-assumption@1",
+        "conditional_invariance_status": "REVIEWED_ASSUMPTION",
+        "mapping_bias_radius": "1/100",
+        "mapping_hashes": {
+          "S_A": "5e477398996e0281699c1efa796423035b3d8ccaef072f82bd4d808e9f138e35",
+          "S_B": "0dfafad61962a4aeb70cb2fd2955f744b9dce68ba6407345aeae03bbea487761"
+        },
+        "maximum_joint_cells": 64,
+        "minimum_raw_support": 30,
+        "overlap_reviews": {
+          "S_A|S_B": {
+            "review_ref": "r35f6c-independent-sampling-review@1",
+            "status": "DISJOINT"
+          }
+        },
+        "policy_ref": "r35f6c-W2-standardization-decision@1",
+        "scope_review_ref": "r35f6c-W2-scope-review@1",
+        "source_weights": {
+          "S_A": 1,
+          "S_B": 1
+        },
+        "target_share_bias_radius": 0,
+        "target_support_ref": "r35f6c-W2-target-support@1",
+        "transport_bias_radius": "1/20"
+      },
+      "product_ref": "cf9c584164baf4b7a13d199c3545ad878ca6d9677052c829508b8058291a371a",
+      "route_probability": null,
+      "state": "PARTIAL_IDENTIFICATION",
+      "target": {
+        "boundary_ref": "r35f6c-boundary-two@1",
+        "geography": "Synthetic Region two",
+        "population": "resident adults in the eligible-and-asked work risk set",
+        "strata": {
+          "majority": "1/2",
+          "minority": "1/2"
+        },
+        "strata_ref": "r35f6c-population-register-two@1",
+        "target_id": "R35F6C_W2_1995_ADULT_ELIGIBLE_ASKED_RISK_SET",
+        "unit": "adult respondent",
+        "year": 1995
+      },
+      "world_joint": null,
+      "world_use": "SEPARATE_SOURCEFREE_EVIDENCE_ONLY__NO_N9_TRANSPORT_ADMISSION"
+    },
+    "W3": {
+      "case": "W3",
+      "display_class": "BOUNDS_AND_UNKNOWN",
+      "evidence": {
+        "bias_sensitivity_bounds": [
+          {
+            "categories": [
+              "secure",
+              "formal"
+            ],
+            "lower": "1/10",
+            "upper": "29/50"
+          },
+          {
+            "categories": [
+              "secure",
+              "informal"
+            ],
+            "lower": "1/50",
+            "upper": "1/2"
+          },
+          {
+            "categories": [
+              "insecure",
+              "formal"
+            ],
+            "lower": "7/50",
+            "upper": "23/50"
+          },
+          {
+            "categories": [
+              "insecure",
+              "informal"
+            ],
+            "lower": "7/50",
+            "upper": "23/50"
+          }
+        ],
+        "bounds": [
+          {
+            "categories": [
+              "secure",
+              "formal"
+            ],
+            "lower": "4/25",
+            "upper": "13/25"
+          },
+          {
+            "categories": [
+              "secure",
+              "informal"
+            ],
+            "lower": "2/25",
+            "upper": "11/25"
+          },
+          {
+            "categories": [
+              "insecure",
+              "formal"
+            ],
+            "lower": "1/5",
+            "upper": "2/5"
+          },
+          {
+            "categories": [
+              "insecure",
+              "informal"
+            ],
+            "lower": "1/5",
+            "upper": "2/5"
+          }
+        ],
+        "conditional": {
+          "bundle_hash": "3b2af0864f037d38af0a44169b20e9ea7db479548936ff9a27d4ad0daa4ea054",
+          "reason": "NO_COMPLETE_TARGET_JOINT",
+          "state": "UNAVAILABLE"
+        },
+        "consumer_id": "F6P_F6M_PARTIAL_BOUND_CONSUMER@1",
+        "covered_subprobability": {
+          "insecure|formal": "1/5",
+          "insecure|informal": "1/5",
+          "secure|formal": "6/25",
+          "secure|informal": "4/25"
+        },
+        "evidence_reasons": [
+          "INCOMPLETE_TARGET_COVERAGE"
+        ],
+        "evidence_state": "PARTIAL_IDENTIFICATION",
+        "exclusions": [
+          {
+            "planned_source_share_lost": "1/5",
+            "reason": "NO_SOURCE_STRATUM",
+            "source_id": "S_A",
+            "stratum": "minority",
+            "uncovered_target_share": "1/5"
+          },
+          {
+            "planned_source_share_lost": "1/5",
+            "reason": "NO_SOURCE_STRATUM",
+            "source_id": "S_B",
+            "stratum": "minority",
+            "uncovered_target_share": "1/5"
+          }
+        ],
+        "input_bundle": {
+          "content_hash": "3b2af0864f037d38af0a44169b20e9ea7db479548936ff9a27d4ad0daa4ea054",
+          "decision": "PARTIAL_IDENTIFICATION_ONLY",
+          "implementation_version": "F6M_NATIVE_DECISION_ADMISSION_REPAIR@1",
+          "owner_admission_status": "UNVERIFIED_INTEGRATION_BOUNDARY",
+          "real_use_authorized": false,
+          "target_joint_status": "NO_COMPLETE_TARGET_JOINT",
+          "test_origin": true,
+          "use_scope": "SOURCEFREE_EXPERIMENT_ONLY"
+        },
+        "lost_planned_source_share": [
+          {
+            "planned_source_share_lost": "1/5",
+            "reason": "NO_SOURCE_STRATUM",
+            "source_id": "S_A",
+            "stratum": "minority",
+            "uncovered_target_share": "1/5"
+          },
+          {
+            "planned_source_share_lost": "1/5",
+            "reason": "NO_SOURCE_STRATUM",
+            "source_id": "S_B",
+            "stratum": "minority",
+            "uncovered_target_share": "1/5"
+          }
+        ],
+        "native_output_hash": "6f66a2d4f5cb2463437c7a403981e7298fd96aa9fb26dfec2db8cbd100e95cb4",
+        "no_common_respondent_inference": true,
+        "no_route_probability": true,
+        "no_selection_weight": true,
+        "overlap": [],
+        "portable_projection_hash": "35e66b24b27a99d4cf288e1a606c06c7aa08439a57d240c708bd2d433b72a114",
+        "real_use_authorized": false,
+        "request": {
+          "conditions": {
+            "material_security": "secure"
+          },
+          "outcome": "employment_position"
+        },
+        "sampling": {
+          "design_known": false,
+          "note": "unknown design/weight is exposed as unknown, never set to 1",
+          "population_estimate_permitted": false,
+          "population_estimate_requested": false,
+          "sampling_status": "UNKNOWN_DESIGN",
+          "sampling_variance_present": false,
+          "weight_defaulted_to_one": false,
+          "weight_imputation": "NONE"
+        },
+        "schema": "F6P_PARTIAL_BOUND_EVIDENCE@1",
+        "scientific_ceiling": "SOURCEFREE_TEST_ONLY_NO_ROUTE_PROBABILITY_NO_SELECTION_WEIGHT_NO_MODEL_USE",
+        "source_product": {
+          "module_file": "owners/f6p/native/rawlsing_next/pre553_heterogeneous_synthesis.py",
+          "module_git_blob": "2df811d76db258d98d89ffb43c830cb221ff9a7d",
+          "module_sha256": "2930b5cd15c899146e9552b2e6b0efa3fc5835e57e58a6c16d756093e21d3871"
+        },
+        "supported_point": null,
+        "transport": {
+          "note": "no owner transport/model-use permission is issued by this consumer",
+          "permitted": false,
+          "status": "UNVERIFIED_INTEGRATION_BOUNDARY"
+        },
+        "uncertainty": {
+          "bias_sensitivity_bounds": [
+            {
+              "categories": [
+                "secure",
+                "formal"
+              ],
+              "lower": "1/10",
+              "upper": "29/50"
+            },
+            {
+              "categories": [
+                "secure",
+                "informal"
+              ],
+              "lower": "1/50",
+              "upper": "1/2"
+            },
+            {
+              "categories": [
+                "insecure",
+                "formal"
+              ],
+              "lower": "7/50",
+              "upper": "23/50"
+            },
+            {
+              "categories": [
+                "insecure",
+                "informal"
+              ],
+              "lower": "7/50",
+              "upper": "23/50"
+            }
+          ],
+          "limitations": "Sensitivity envelopes are not confidence intervals; fixed target shares and disjoint sources/strata for sampling variance; covariance and conditional uncertainty unavailable.",
+          "radii": {
+            "mapping_bias_radius": "1/100",
+            "target_share_bias_radius": 0,
+            "transport_bias_radius": "1/20"
+          },
+          "sampling_status": "UNKNOWN_DESIGN",
+          "sampling_variance": null,
+          "source_disagreement_and_uncovered_bounds": [
+            {
+              "categories": [
+                "secure",
+                "formal"
+              ],
+              "lower": "4/25",
+              "upper": "13/25"
+            },
+            {
+              "categories": [
+                "secure",
+                "informal"
+              ],
+              "lower": "2/25",
+              "upper": "11/25"
+            },
+            {
+              "categories": [
+                "insecure",
+                "formal"
+              ],
+              "lower": "1/5",
+              "upper": "2/5"
+            },
+            {
+              "categories": [
+                "insecure",
+                "informal"
+              ],
+              "lower": "1/5",
+              "upper": "2/5"
+            }
+          ]
+        },
+        "uncovered_target_mass": "1/5",
+        "values_read": [
+          "content_hash",
+          "decision",
+          "target_joint_status",
+          "candidate",
+          "candidate.covered_subprobability",
+          "candidate.uncovered_target_mass",
+          "candidate.support",
+          "candidate.uncertainty",
+          "candidate.uncertainty.source_disagreement_and_uncovered_bounds",
+          "candidate.uncertainty.sampling_status",
+          "refusals",
+          "overlap_diagnostics",
+          "conditional"
+        ]
+      },
+      "native_sources": [
+        {
+          "axes": [
+            {
+              "category_map": {
+                "A_insecure": "insecure",
+                "A_secure": "secure"
+              },
+              "construct_ref": "material_security",
+              "instrument_ref": "r35f6c-S_A-instrument@1",
+              "item_ref": "r35f6c-S_A-item-0@1",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "r35f6c-S_A-mapping-0@1",
+              "polarity_ref": "categories-not-score@1",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "r35f6c-S_A-named-response-meanings@1",
+              "review_status": "REVIEWED",
+              "scale_ref": "named-categories@1",
+              "scale_status": "REVIEWED"
+            },
+            {
+              "category_map": {
+                "A_formal": "formal",
+                "A_informal": "informal"
+              },
+              "construct_ref": "employment_position",
+              "instrument_ref": "r35f6c-S_A-instrument@1",
+              "item_ref": "r35f6c-S_A-item-1@1",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "r35f6c-S_A-mapping-1@1",
+              "polarity_ref": "categories-not-score@1",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "r35f6c-S_A-named-response-meanings@1",
+              "review_status": "REVIEWED",
+              "scale_ref": "named-categories@1",
+              "scale_status": "REVIEWED"
+            }
+          ],
+          "coadministration_ref": "r35f6c-W3-S_A-coadministration@1",
+          "dependence_kind": "MEASURED_SAME_SURVEY_JOINT",
+          "design_ref": "r35f6c-W3-S_A-stratified-fixed-n@1",
+          "joint_frontier_ref": "r35f6c-W3-two-item-complete@1",
+          "measure_basis": "UNWEIGHTED",
+          "missingness_ref": "r35f6c-no-missing@1",
+          "permission_ref": "SYNTHETIC_ONLY_NO_TRANSPORT_PERMISSION",
+          "product_ref": "r35f6c-W3-S_A-joint-product@1",
+          "risk_set_ref": "r35f6c-W3-S_A-eligible-asked-complete@1",
+          "routing_ref": "r35f6c-W3-shared-eligibility@1",
+          "sample_id": "r35f6c-W3-independent-sample-S_A",
+          "sampling_limitations": "Invented fixed-stratum tables built for this court; no real-source design, coverage or weighting validation; not a population estimate",
+          "scope": {
+            "boundary_ref": "r35f6c-boundary-three@1",
+            "end_year": 1995,
+            "fieldwork_ref": "r35f6c-1995-W3@1",
+            "geography": "Synthetic Region three",
+            "population": "resident adults in the eligible-and-asked work risk set",
+            "start_year": 1995,
+            "unit": "adult respondent"
+          },
+          "source_id": "S_A",
+          "strata": {
+            "majority": {
+              "cells": [
+                {
+                  "categories": [
+                    "A_secure",
+                    "A_formal"
+                  ],
+                  "mass": 40,
+                  "n": 40
+                },
+                {
+                  "categories": [
+                    "A_secure",
+                    "A_informal"
+                  ],
+                  "mass": 10,
+                  "n": 10
+                },
+                {
+                  "categories": [
+                    "A_insecure",
+                    "A_formal"
+                  ],
+                  "mass": 25,
+                  "n": 25
+                },
+                {
+                  "categories": [
+                    "A_insecure",
+                    "A_informal"
+                  ],
+                  "mass": 25,
+                  "n": 25
+                }
+              ],
+              "design_variance": {
+                "cells": [
+                  {
+                    "categories": [
+                      "secure",
+                      "formal"
+                    ],
+                    "variance": "3/1250"
+                  },
+                  {
+                    "categories": [
+                      "secure",
+                      "informal"
+                    ],
+                    "variance": "9/10000"
+                  },
+                  {
+                    "categories": [
+                      "insecure",
+                      "formal"
+                    ],
+                    "variance": "3/1600"
+                  },
+                  {
+                    "categories": [
+                      "insecure",
+                      "informal"
+                    ],
+                    "variance": "3/1600"
+                  }
+                ],
+                "method_ref": "R35F6C_FIXED_STRATUM_MULTINOMIAL_PLUGIN@1"
+              },
+              "eligible_n": 100,
+              "excluded_n": 0,
+              "support_ref": "r35f6c-W3-S_A-majority-support@1",
+              "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET"
+            }
+          },
+          "survey_lineage": "r35f6c-W3-survey-S_A",
+          "test_origin": true,
+          "weight_ref": "unit-weight@1"
+        },
+        {
+          "axes": [
+            {
+              "category_map": {
+                "B_C1": "secure",
+                "B_C2": "insecure"
+              },
+              "construct_ref": "material_security",
+              "instrument_ref": "r35f6c-S_B-instrument@1",
+              "item_ref": "r35f6c-S_B-item-0@1",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "r35f6c-S_B-mapping-0@1",
+              "polarity_ref": "categories-not-score@1",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "r35f6c-S_B-named-response-meanings@1",
+              "review_status": "REVIEWED",
+              "scale_ref": "named-categories@1",
+              "scale_status": "REVIEWED"
+            },
+            {
+              "category_map": {
+                "B_E1": "formal",
+                "B_E2": "informal"
+              },
+              "construct_ref": "employment_position",
+              "instrument_ref": "r35f6c-S_B-instrument@1",
+              "item_ref": "r35f6c-S_B-item-1@1",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "r35f6c-S_B-mapping-1@1",
+              "polarity_ref": "categories-not-score@1",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "r35f6c-S_B-named-response-meanings@1",
+              "review_status": "REVIEWED",
+              "scale_ref": "named-categories@1",
+              "scale_status": "REVIEWED"
+            }
+          ],
+          "coadministration_ref": "r35f6c-W3-S_B-coadministration@1",
+          "dependence_kind": "MEASURED_SAME_SURVEY_JOINT",
+          "design_ref": "r35f6c-W3-S_B-stratified-fixed-n@1",
+          "joint_frontier_ref": "r35f6c-W3-two-item-complete@1",
+          "measure_basis": "UNWEIGHTED",
+          "missingness_ref": "r35f6c-no-missing@1",
+          "permission_ref": "SYNTHETIC_ONLY_NO_TRANSPORT_PERMISSION",
+          "product_ref": "r35f6c-W3-S_B-joint-product@1",
+          "risk_set_ref": "r35f6c-W3-S_B-eligible-asked-complete@1",
+          "routing_ref": "r35f6c-W3-shared-eligibility@1",
+          "sample_id": "r35f6c-W3-independent-sample-S_B",
+          "sampling_limitations": "Invented fixed-stratum tables built for this court; no real-source design, coverage or weighting validation; not a population estimate",
+          "scope": {
+            "boundary_ref": "r35f6c-boundary-three@1",
+            "end_year": 1995,
+            "fieldwork_ref": "r35f6c-1995-W3@1",
+            "geography": "Synthetic Region three",
+            "population": "resident adults in the eligible-and-asked work risk set",
+            "start_year": 1995,
+            "unit": "adult respondent"
+          },
+          "source_id": "S_B",
+          "strata": {
+            "majority": {
+              "cells": [
+                {
+                  "categories": [
+                    "B_C1",
+                    "B_E1"
+                  ],
+                  "mass": 20,
+                  "n": 20
+                },
+                {
+                  "categories": [
+                    "B_C1",
+                    "B_E2"
+                  ],
+                  "mass": 30,
+                  "n": 30
+                },
+                {
+                  "categories": [
+                    "B_C2",
+                    "B_E1"
+                  ],
+                  "mass": 25,
+                  "n": 25
+                },
+                {
+                  "categories": [
+                    "B_C2",
+                    "B_E2"
+                  ],
+                  "mass": 25,
+                  "n": 25
+                }
+              ],
+              "design_variance": {
+                "cells": [
+                  {
+                    "categories": [
+                      "secure",
+                      "formal"
+                    ],
+                    "variance": "1/625"
+                  },
+                  {
+                    "categories": [
+                      "secure",
+                      "informal"
+                    ],
+                    "variance": "21/10000"
+                  },
+                  {
+                    "categories": [
+                      "insecure",
+                      "formal"
+                    ],
+                    "variance": "3/1600"
+                  },
+                  {
+                    "categories": [
+                      "insecure",
+                      "informal"
+                    ],
+                    "variance": "3/1600"
+                  }
+                ],
+                "method_ref": "R35F6C_FIXED_STRATUM_MULTINOMIAL_PLUGIN@1"
+              },
+              "eligible_n": 100,
+              "excluded_n": 0,
+              "support_ref": "r35f6c-W3-S_B-majority-support@1",
+              "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET"
+            }
+          },
+          "survey_lineage": "r35f6c-W3-survey-S_B",
+          "test_origin": true,
+          "weight_ref": "unit-weight@1"
+        }
+      ],
+      "policy": {
+        "conditional_invariance_ref": "r35f6c-W3-equal-risk-set-law-assumption@1",
+        "conditional_invariance_status": "REVIEWED_ASSUMPTION",
+        "mapping_bias_radius": "1/100",
+        "mapping_hashes": {
+          "S_A": "5e477398996e0281699c1efa796423035b3d8ccaef072f82bd4d808e9f138e35",
+          "S_B": "0dfafad61962a4aeb70cb2fd2955f744b9dce68ba6407345aeae03bbea487761"
+        },
+        "maximum_joint_cells": 64,
+        "minimum_raw_support": 30,
+        "overlap_reviews": {
+          "S_A|S_B": {
+            "review_ref": "r35f6c-independent-sampling-review@1",
+            "status": "DISJOINT"
+          }
+        },
+        "policy_ref": "r35f6c-W3-standardization-decision@1",
+        "scope_review_ref": "r35f6c-W3-scope-review@1",
+        "source_weights": {
+          "S_A": 1,
+          "S_B": 1
+        },
+        "target_share_bias_radius": 0,
+        "target_support_ref": "r35f6c-W3-target-support@1",
+        "transport_bias_radius": "1/20"
+      },
+      "product_ref": "3b2af0864f037d38af0a44169b20e9ea7db479548936ff9a27d4ad0daa4ea054",
+      "route_probability": null,
+      "state": "PARTIAL_IDENTIFICATION",
+      "target": {
+        "boundary_ref": "r35f6c-boundary-three@1",
+        "geography": "Synthetic Region three",
+        "population": "resident adults in the eligible-and-asked work risk set",
+        "strata": {
+          "majority": "4/5",
+          "minority": "1/5"
+        },
+        "strata_ref": "r35f6c-population-register-three@1",
+        "target_id": "R35F6C_W3_1995_ADULT_ELIGIBLE_ASKED_RISK_SET",
+        "unit": "adult respondent",
+        "year": 1995
+      },
+      "world_joint": null,
+      "world_use": "SEPARATE_SOURCEFREE_EVIDENCE_ONLY__NO_N9_TRANSPORT_ADMISSION"
+    },
+    "W4": {
+      "case": "W4",
+      "display_class": "TYPED_LIMITATION",
+      "evidence": {
+        "bias_sensitivity_bounds": [
+          {
+            "categories": [
+              "secure",
+              "formal"
+            ],
+            "lower": "33/200",
+            "upper": "23/50"
+          },
+          {
+            "categories": [
+              "secure",
+              "informal"
+            ],
+            "lower": "1/25",
+            "upper": "67/200"
+          },
+          {
+            "categories": [
+              "insecure",
+              "formal"
+            ],
+            "lower": "23/200",
+            "upper": "31/100"
+          },
+          {
+            "categories": [
+              "insecure",
+              "informal"
+            ],
+            "lower": "19/100",
+            "upper": "77/200"
+          }
+        ],
+        "bounds": [
+          {
+            "categories": [
+              "secure",
+              "formal"
+            ],
+            "lower": "9/40",
+            "upper": "2/5"
+          },
+          {
+            "categories": [
+              "secure",
+              "informal"
+            ],
+            "lower": "1/10",
+            "upper": "11/40"
+          },
+          {
+            "categories": [
+              "insecure",
+              "formal"
+            ],
+            "lower": "7/40",
+            "upper": "1/4"
+          },
+          {
+            "categories": [
+              "insecure",
+              "informal"
+            ],
+            "lower": "1/4",
+            "upper": "13/40"
+          }
+        ],
+        "conditional": {
+          "bundle_hash": "2550b1d2486769d771cb248c9fe8069539da1f2a3007d27c19fe104e987af465",
+          "conditions": {
+            "employment_position": "formal"
+          },
+          "evidence_mode": "INFERRED",
+          "model_denominator_mass": "21/40",
+          "observed_denominator": null,
+          "outcome": "employment_position",
+          "output_hash": "fe9f4d340c99f892f7a30fa6ba54f0a3ee0dee3c7fd3ccefd69329acd132db42",
+          "owner_admission_status": "UNVERIFIED_INTEGRATION_BOUNDARY",
+          "probabilities": {
+            "formal": "1"
+          },
+          "real_use_authorized": false,
+          "self_conditioning_status": "OUTCOME_LEAKAGE_TAUTOLOGY",
+          "state": "DESCRIPTIVE_SELF_CONDITIONING",
+          "uncertainty": "CONDITIONAL_UNCERTAINTY_NOT_IDENTIFIED",
+          "use_scope": "SOURCEFREE_EXPERIMENT_ONLY",
+          "values_read_hash": "eff3b5ae5b20ed1ccad344ef76c468177da0ace97338eb62d627ece405742282"
+        },
+        "consumer_id": "F6P_F6M_PARTIAL_BOUND_CONSUMER@1",
+        "covered_subprobability": {
+          "insecure|formal": "17/80",
+          "insecure|informal": "23/80",
+          "secure|formal": "5/16",
+          "secure|informal": "3/16"
+        },
+        "evidence_reasons": [
+          "OUTCOME_LEAKAGE_TAUTOLOGY"
+        ],
+        "evidence_state": "SELF_CONDITIONING",
+        "exclusions": [],
+        "input_bundle": {
+          "content_hash": "2550b1d2486769d771cb248c9fe8069539da1f2a3007d27c19fe104e987af465",
+          "decision": "SYNTHETIC_CANDIDATE",
+          "implementation_version": "F6M_NATIVE_DECISION_ADMISSION_REPAIR@1",
+          "owner_admission_status": "UNVERIFIED_INTEGRATION_BOUNDARY",
+          "real_use_authorized": false,
+          "target_joint_status": "COMPLETE_EXPERIMENTAL_TARGET_JOINT",
+          "test_origin": true,
+          "use_scope": "SOURCEFREE_EXPERIMENT_ONLY"
+        },
+        "lost_planned_source_share": [],
+        "native_output_hash": "eb224fd2eb91328e615e1824c2a4adb368e7c4fcb2b45050e1ef9118d2094ba8",
+        "no_common_respondent_inference": true,
+        "no_route_probability": true,
+        "no_selection_weight": true,
+        "overlap": [],
+        "portable_projection_hash": "ebacf906120267a24b6bfe8ab17621e71d8bfddfa41a193cae17c0b7948e5f1d",
+        "real_use_authorized": false,
+        "request": {
+          "conditions": {
+            "employment_position": "formal"
+          },
+          "outcome": "employment_position"
+        },
+        "sampling": {
+          "note": "no sampling block read",
+          "weight_defaulted_to_one": false,
+          "weight_imputation": "NONE"
+        },
+        "schema": "F6P_PARTIAL_BOUND_EVIDENCE@1",
+        "scientific_ceiling": "SOURCEFREE_TEST_ONLY_NO_ROUTE_PROBABILITY_NO_SELECTION_WEIGHT_NO_MODEL_USE",
+        "source_product": {
+          "module_file": "owners/f6p/native/rawlsing_next/pre553_heterogeneous_synthesis.py",
+          "module_git_blob": "2df811d76db258d98d89ffb43c830cb221ff9a7d",
+          "module_sha256": "2930b5cd15c899146e9552b2e6b0efa3fc5835e57e58a6c16d756093e21d3871"
+        },
+        "supported_point": null,
+        "transport": {
+          "note": "no owner transport/model-use permission is issued by this consumer",
+          "permitted": false,
+          "status": "UNVERIFIED_INTEGRATION_BOUNDARY"
+        },
+        "uncertainty": {
+          "bias_sensitivity_bounds": [
+            {
+              "categories": [
+                "secure",
+                "formal"
+              ],
+              "lower": "33/200",
+              "upper": "23/50"
+            },
+            {
+              "categories": [
+                "secure",
+                "informal"
+              ],
+              "lower": "1/25",
+              "upper": "67/200"
+            },
+            {
+              "categories": [
+                "insecure",
+                "formal"
+              ],
+              "lower": "23/200",
+              "upper": "31/100"
+            },
+            {
+              "categories": [
+                "insecure",
+                "informal"
+              ],
+              "lower": "19/100",
+              "upper": "77/200"
+            }
+          ],
+          "limitations": "Sensitivity envelopes are not confidence intervals; fixed target shares and disjoint sources/strata for sampling variance; covariance and conditional uncertainty unavailable.",
+          "radii": {
+            "mapping_bias_radius": "1/100",
+            "target_share_bias_radius": 0,
+            "transport_bias_radius": "1/20"
+          },
+          "sampling_status": "EXTERNAL_DESIGN_DIAGONAL_ONLY",
+          "sampling_variance": [
+            {
+              "categories": [
+                "insecure",
+                "formal"
+              ],
+              "variance": "261/640000"
+            },
+            {
+              "categories": [
+                "insecure",
+                "informal"
+              ],
+              "variance": "321/640000"
+            },
+            {
+              "categories": [
+                "secure",
+                "formal"
+              ],
+              "variance": "331/640000"
+            },
+            {
+              "categories": [
+                "secure",
+                "informal"
+              ],
+              "variance": "231/640000"
+            }
+          ],
+          "source_disagreement_and_uncovered_bounds": [
+            {
+              "categories": [
+                "secure",
+                "formal"
+              ],
+              "lower": "9/40",
+              "upper": "2/5"
+            },
+            {
+              "categories": [
+                "secure",
+                "informal"
+              ],
+              "lower": "1/10",
+              "upper": "11/40"
+            },
+            {
+              "categories": [
+                "insecure",
+                "formal"
+              ],
+              "lower": "7/40",
+              "upper": "1/4"
+            },
+            {
+              "categories": [
+                "insecure",
+                "informal"
+              ],
+              "lower": "1/4",
+              "upper": "13/40"
+            }
+          ]
+        },
+        "uncovered_target_mass": "0",
+        "values_read": [
+          "content_hash",
+          "decision",
+          "target_joint_status",
+          "candidate",
+          "candidate.covered_subprobability",
+          "candidate.uncovered_target_mass",
+          "candidate.support",
+          "candidate.uncertainty",
+          "candidate.uncertainty.source_disagreement_and_uncovered_bounds",
+          "candidate.uncertainty.sampling_status",
+          "refusals",
+          "overlap_diagnostics",
+          "conditional"
+        ]
+      },
+      "native_sources": [
+        {
+          "axes": [
+            {
+              "category_map": {
+                "A_insecure": "insecure",
+                "A_secure": "secure"
+              },
+              "construct_ref": "material_security",
+              "instrument_ref": "r35f6c-S_A-instrument@1",
+              "item_ref": "r35f6c-S_A-item-0@1",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "r35f6c-S_A-mapping-0@1",
+              "polarity_ref": "categories-not-score@1",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "r35f6c-S_A-named-response-meanings@1",
+              "review_status": "REVIEWED",
+              "scale_ref": "named-categories@1",
+              "scale_status": "REVIEWED"
+            },
+            {
+              "category_map": {
+                "A_formal": "formal",
+                "A_informal": "informal"
+              },
+              "construct_ref": "employment_position",
+              "instrument_ref": "r35f6c-S_A-instrument@1",
+              "item_ref": "r35f6c-S_A-item-1@1",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "r35f6c-S_A-mapping-1@1",
+              "polarity_ref": "categories-not-score@1",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "r35f6c-S_A-named-response-meanings@1",
+              "review_status": "REVIEWED",
+              "scale_ref": "named-categories@1",
+              "scale_status": "REVIEWED"
+            }
+          ],
+          "coadministration_ref": "r35f6c-W1-S_A-coadministration@1",
+          "dependence_kind": "MEASURED_SAME_SURVEY_JOINT",
+          "design_ref": "r35f6c-W1-S_A-stratified-fixed-n@1",
+          "joint_frontier_ref": "r35f6c-W1-two-item-complete@1",
+          "measure_basis": "UNWEIGHTED",
+          "missingness_ref": "r35f6c-no-missing@1",
+          "permission_ref": "SYNTHETIC_ONLY_NO_TRANSPORT_PERMISSION",
+          "product_ref": "r35f6c-W1-S_A-joint-product@1",
+          "risk_set_ref": "r35f6c-W1-S_A-eligible-asked-complete@1",
+          "routing_ref": "r35f6c-W1-shared-eligibility@1",
+          "sample_id": "r35f6c-W1-independent-sample-S_A",
+          "sampling_limitations": "Invented fixed-stratum tables built for this court; no real-source design, coverage or weighting validation; not a population estimate",
+          "scope": {
+            "boundary_ref": "r35f6c-boundary-one@1",
+            "end_year": 1995,
+            "fieldwork_ref": "r35f6c-1995-W1@1",
+            "geography": "Synthetic Region one",
+            "population": "resident adults in the eligible-and-asked work risk set",
+            "start_year": 1995,
+            "unit": "adult respondent"
+          },
+          "source_id": "S_A",
+          "strata": {
+            "majority": {
+              "cells": [
+                {
+                  "categories": [
+                    "A_secure",
+                    "A_formal"
+                  ],
+                  "mass": 40,
+                  "n": 40
+                },
+                {
+                  "categories": [
+                    "A_secure",
+                    "A_informal"
+                  ],
+                  "mass": 10,
+                  "n": 10
+                },
+                {
+                  "categories": [
+                    "A_insecure",
+                    "A_formal"
+                  ],
+                  "mass": 25,
+                  "n": 25
+                },
+                {
+                  "categories": [
+                    "A_insecure",
+                    "A_informal"
+                  ],
+                  "mass": 25,
+                  "n": 25
+                }
+              ],
+              "design_variance": {
+                "cells": [
+                  {
+                    "categories": [
+                      "secure",
+                      "formal"
+                    ],
+                    "variance": "3/1250"
+                  },
+                  {
+                    "categories": [
+                      "secure",
+                      "informal"
+                    ],
+                    "variance": "9/10000"
+                  },
+                  {
+                    "categories": [
+                      "insecure",
+                      "formal"
+                    ],
+                    "variance": "3/1600"
+                  },
+                  {
+                    "categories": [
+                      "insecure",
+                      "informal"
+                    ],
+                    "variance": "3/1600"
+                  }
+                ],
+                "method_ref": "R35F6C_FIXED_STRATUM_MULTINOMIAL_PLUGIN@1"
+              },
+              "eligible_n": 100,
+              "excluded_n": 0,
+              "support_ref": "r35f6c-W1-S_A-majority-support@1",
+              "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET"
+            },
+            "minority": {
+              "cells": [
+                {
+                  "categories": [
+                    "A_secure",
+                    "A_formal"
+                  ],
+                  "mass": 25,
+                  "n": 25
+                },
+                {
+                  "categories": [
+                    "A_secure",
+                    "A_informal"
+                  ],
+                  "mass": 25,
+                  "n": 25
+                },
+                {
+                  "categories": [
+                    "A_insecure",
+                    "A_formal"
+                  ],
+                  "mass": 10,
+                  "n": 10
+                },
+                {
+                  "categories": [
+                    "A_insecure",
+                    "A_informal"
+                  ],
+                  "mass": 40,
+                  "n": 40
+                }
+              ],
+              "design_variance": {
+                "cells": [
+                  {
+                    "categories": [
+                      "secure",
+                      "formal"
+                    ],
+                    "variance": "3/1600"
+                  },
+                  {
+                    "categories": [
+                      "secure",
+                      "informal"
+                    ],
+                    "variance": "3/1600"
+                  },
+                  {
+                    "categories": [
+                      "insecure",
+                      "formal"
+                    ],
+                    "variance": "9/10000"
+                  },
+                  {
+                    "categories": [
+                      "insecure",
+                      "informal"
+                    ],
+                    "variance": "3/1250"
+                  }
+                ],
+                "method_ref": "R35F6C_FIXED_STRATUM_MULTINOMIAL_PLUGIN@1"
+              },
+              "eligible_n": 100,
+              "excluded_n": 0,
+              "support_ref": "r35f6c-W1-S_A-minority-support@1",
+              "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET"
+            }
+          },
+          "survey_lineage": "r35f6c-W1-survey-S_A",
+          "test_origin": true,
+          "weight_ref": "unit-weight@1"
+        },
+        {
+          "axes": [
+            {
+              "category_map": {
+                "B_C1": "secure",
+                "B_C2": "insecure"
+              },
+              "construct_ref": "material_security",
+              "instrument_ref": "r35f6c-S_B-instrument@1",
+              "item_ref": "r35f6c-S_B-item-0@1",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "r35f6c-S_B-mapping-0@1",
+              "polarity_ref": "categories-not-score@1",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "r35f6c-S_B-named-response-meanings@1",
+              "review_status": "REVIEWED",
+              "scale_ref": "named-categories@1",
+              "scale_status": "REVIEWED"
+            },
+            {
+              "category_map": {
+                "B_E1": "formal",
+                "B_E2": "informal"
+              },
+              "construct_ref": "employment_position",
+              "instrument_ref": "r35f6c-S_B-instrument@1",
+              "item_ref": "r35f6c-S_B-item-1@1",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "r35f6c-S_B-mapping-1@1",
+              "polarity_ref": "categories-not-score@1",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "r35f6c-S_B-named-response-meanings@1",
+              "review_status": "REVIEWED",
+              "scale_ref": "named-categories@1",
+              "scale_status": "REVIEWED"
+            }
+          ],
+          "coadministration_ref": "r35f6c-W1-S_B-coadministration@1",
+          "dependence_kind": "MEASURED_SAME_SURVEY_JOINT",
+          "design_ref": "r35f6c-W1-S_B-stratified-fixed-n@1",
+          "joint_frontier_ref": "r35f6c-W1-two-item-complete@1",
+          "measure_basis": "UNWEIGHTED",
+          "missingness_ref": "r35f6c-no-missing@1",
+          "permission_ref": "SYNTHETIC_ONLY_NO_TRANSPORT_PERMISSION",
+          "product_ref": "r35f6c-W1-S_B-joint-product@1",
+          "risk_set_ref": "r35f6c-W1-S_B-eligible-asked-complete@1",
+          "routing_ref": "r35f6c-W1-shared-eligibility@1",
+          "sample_id": "r35f6c-W1-independent-sample-S_B",
+          "sampling_limitations": "Invented fixed-stratum tables built for this court; no real-source design, coverage or weighting validation; not a population estimate",
+          "scope": {
+            "boundary_ref": "r35f6c-boundary-one@1",
+            "end_year": 1995,
+            "fieldwork_ref": "r35f6c-1995-W1@1",
+            "geography": "Synthetic Region one",
+            "population": "resident adults in the eligible-and-asked work risk set",
+            "start_year": 1995,
+            "unit": "adult respondent"
+          },
+          "source_id": "S_B",
+          "strata": {
+            "majority": {
+              "cells": [
+                {
+                  "categories": [
+                    "B_C1",
+                    "B_E1"
+                  ],
+                  "mass": 20,
+                  "n": 20
+                },
+                {
+                  "categories": [
+                    "B_C1",
+                    "B_E2"
+                  ],
+                  "mass": 30,
+                  "n": 30
+                },
+                {
+                  "categories": [
+                    "B_C2",
+                    "B_E1"
+                  ],
+                  "mass": 25,
+                  "n": 25
+                },
+                {
+                  "categories": [
+                    "B_C2",
+                    "B_E2"
+                  ],
+                  "mass": 25,
+                  "n": 25
+                }
+              ],
+              "design_variance": {
+                "cells": [
+                  {
+                    "categories": [
+                      "secure",
+                      "formal"
+                    ],
+                    "variance": "1/625"
+                  },
+                  {
+                    "categories": [
+                      "secure",
+                      "informal"
+                    ],
+                    "variance": "21/10000"
+                  },
+                  {
+                    "categories": [
+                      "insecure",
+                      "formal"
+                    ],
+                    "variance": "3/1600"
+                  },
+                  {
+                    "categories": [
+                      "insecure",
+                      "informal"
+                    ],
+                    "variance": "3/1600"
+                  }
+                ],
+                "method_ref": "R35F6C_FIXED_STRATUM_MULTINOMIAL_PLUGIN@1"
+              },
+              "eligible_n": 100,
+              "excluded_n": 0,
+              "support_ref": "r35f6c-W1-S_B-majority-support@1",
+              "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET"
+            },
+            "minority": {
+              "cells": [
+                {
+                  "categories": [
+                    "B_C1",
+                    "B_E1"
+                  ],
+                  "mass": 40,
+                  "n": 40
+                },
+                {
+                  "categories": [
+                    "B_C1",
+                    "B_E2"
+                  ],
+                  "mass": 10,
+                  "n": 10
+                },
+                {
+                  "categories": [
+                    "B_C2",
+                    "B_E1"
+                  ],
+                  "mass": 25,
+                  "n": 25
+                },
+                {
+                  "categories": [
+                    "B_C2",
+                    "B_E2"
+                  ],
+                  "mass": 25,
+                  "n": 25
+                }
+              ],
+              "design_variance": {
+                "cells": [
+                  {
+                    "categories": [
+                      "secure",
+                      "formal"
+                    ],
+                    "variance": "3/1250"
+                  },
+                  {
+                    "categories": [
+                      "secure",
+                      "informal"
+                    ],
+                    "variance": "9/10000"
+                  },
+                  {
+                    "categories": [
+                      "insecure",
+                      "formal"
+                    ],
+                    "variance": "3/1600"
+                  },
+                  {
+                    "categories": [
+                      "insecure",
+                      "informal"
+                    ],
+                    "variance": "3/1600"
+                  }
+                ],
+                "method_ref": "R35F6C_FIXED_STRATUM_MULTINOMIAL_PLUGIN@1"
+              },
+              "eligible_n": 100,
+              "excluded_n": 0,
+              "support_ref": "r35f6c-W1-S_B-minority-support@1",
+              "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET"
+            }
+          },
+          "survey_lineage": "r35f6c-W1-survey-S_B",
+          "test_origin": true,
+          "weight_ref": "unit-weight@1"
+        }
+      ],
+      "policy": {
+        "conditional_invariance_ref": "r35f6c-W1-equal-risk-set-law-assumption@1",
+        "conditional_invariance_status": "REVIEWED_ASSUMPTION",
+        "mapping_bias_radius": "1/100",
+        "mapping_hashes": {
+          "S_A": "5e477398996e0281699c1efa796423035b3d8ccaef072f82bd4d808e9f138e35",
+          "S_B": "0dfafad61962a4aeb70cb2fd2955f744b9dce68ba6407345aeae03bbea487761"
+        },
+        "maximum_joint_cells": 64,
+        "minimum_raw_support": 30,
+        "overlap_reviews": {
+          "S_A|S_B": {
+            "review_ref": "r35f6c-independent-sampling-review@1",
+            "status": "DISJOINT"
+          }
+        },
+        "policy_ref": "r35f6c-W1-standardization-decision@1",
+        "scope_review_ref": "r35f6c-W1-scope-review@1",
+        "source_weights": {
+          "S_A": 1,
+          "S_B": 1
+        },
+        "target_share_bias_radius": 0,
+        "target_support_ref": "r35f6c-W1-target-support@1",
+        "transport_bias_radius": "1/20"
+      },
+      "product_ref": "2550b1d2486769d771cb248c9fe8069539da1f2a3007d27c19fe104e987af465",
+      "route_probability": null,
+      "state": "SELF_CONDITIONING",
+      "target": {
+        "boundary_ref": "r35f6c-boundary-one@1",
+        "geography": "Synthetic Region one",
+        "population": "resident adults in the eligible-and-asked work risk set",
+        "strata": {
+          "majority": "1/2",
+          "minority": "1/2"
+        },
+        "strata_ref": "r35f6c-population-register-one@1",
+        "target_id": "R35F6C_W1_1995_ADULT_ELIGIBLE_ASKED_RISK_SET",
+        "unit": "adult respondent",
+        "year": 1995
+      },
+      "world_joint": null,
+      "world_use": "SEPARATE_SOURCEFREE_EVIDENCE_ONLY__NO_N9_TRANSPORT_ADMISSION"
+    },
+    "W5": {
+      "case": "W5",
+      "display_class": "TYPED_LIMITATION",
+      "evidence": null,
+      "native_sources": [
+        {
+          "axes": [
+            {
+              "category_map": {
+                "A_insecure": "insecure",
+                "A_secure": "secure"
+              },
+              "construct_ref": "material_security",
+              "instrument_ref": "r35f6c-S_A-instrument@1",
+              "item_ref": "r35f6c-S_A-item-0@1",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "r35f6c-S_A-mapping-0@1",
+              "polarity_ref": "categories-not-score@1",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "r35f6c-S_A-named-response-meanings@1",
+              "review_status": "REVIEWED",
+              "scale_ref": "named-categories@1",
+              "scale_status": "REVIEWED"
+            },
+            {
+              "category_map": {
+                "A_formal": "formal",
+                "A_informal": "informal"
+              },
+              "construct_ref": "employment_position",
+              "instrument_ref": "r35f6c-S_A-instrument@1",
+              "item_ref": "r35f6c-S_A-item-1@1",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "r35f6c-S_A-mapping-1@1",
+              "polarity_ref": "categories-not-score@1",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "r35f6c-S_A-named-response-meanings@1",
+              "review_status": "REVIEWED",
+              "scale_ref": "named-categories@1",
+              "scale_status": "REVIEWED"
+            }
+          ],
+          "coadministration_ref": "r35f6c-W5-S_A-coadministration@1",
+          "dependence_kind": "MEASURED_SAME_SURVEY_JOINT",
+          "design_ref": "r35f6c-W5-S_A-stratified-fixed-n@1",
+          "joint_frontier_ref": "r35f6c-W5-two-item-complete@1",
+          "measure_basis": "UNWEIGHTED",
+          "missingness_ref": "r35f6c-no-missing@1",
+          "permission_ref": "SYNTHETIC_ONLY_NO_TRANSPORT_PERMISSION",
+          "product_ref": "r35f6c-W5-S_A-joint-product@1",
+          "risk_set_ref": "r35f6c-W5-S_A-eligible-asked-complete@1",
+          "routing_ref": "r35f6c-W5-shared-eligibility@1",
+          "sample_id": "r35f6c-W5-independent-sample-S_A",
+          "sampling_limitations": "Invented fixed-stratum tables built for this court; no real-source design, coverage or weighting validation; not a population estimate",
+          "scope": {
+            "boundary_ref": "r35f6c-boundary-five@1",
+            "end_year": 1995,
+            "fieldwork_ref": "r35f6c-1995-W5@1",
+            "geography": "Synthetic Region five",
+            "population": "resident adults in the eligible-and-asked work risk set",
+            "start_year": 1995,
+            "unit": "adult respondent"
+          },
+          "source_id": "S_A",
+          "strata": {
+            "majority": {
+              "cells": [
+                {
+                  "categories": [
+                    "A_secure",
+                    "A_formal"
+                  ],
+                  "mass": 40,
+                  "n": 40
+                },
+                {
+                  "categories": [
+                    "A_secure",
+                    "A_informal"
+                  ],
+                  "mass": 10,
+                  "n": 10
+                },
+                {
+                  "categories": [
+                    "A_insecure",
+                    "A_formal"
+                  ],
+                  "mass": 25,
+                  "n": 25
+                }
+              ],
+              "design_variance": {
+                "cells": [
+                  {
+                    "categories": [
+                      "secure",
+                      "formal"
+                    ],
+                    "variance": "56/16875"
+                  },
+                  {
+                    "categories": [
+                      "secure",
+                      "informal"
+                    ],
+                    "variance": "26/16875"
+                  },
+                  {
+                    "categories": [
+                      "insecure",
+                      "formal"
+                    ],
+                    "variance": "2/675"
+                  },
+                  {
+                    "categories": [
+                      "insecure",
+                      "informal"
+                    ],
+                    "variance": "0"
+                  }
+                ],
+                "method_ref": "R35F6C_FIXED_STRATUM_MULTINOMIAL_PLUGIN@1"
+              },
+              "eligible_n": 75,
+              "excluded_n": 0,
+              "support_ref": "r35f6c-W5-S_A-majority-support@1",
+              "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET"
+            }
+          },
+          "survey_lineage": "r35f6c-W5-survey-S_A",
+          "test_origin": true,
+          "weight_ref": "unit-weight@1"
+        },
+        {
+          "axes": [
+            {
+              "category_map": {
+                "B_C1": "secure",
+                "B_C2": "insecure"
+              },
+              "construct_ref": "material_security",
+              "instrument_ref": "r35f6c-S_B-instrument@1",
+              "item_ref": "r35f6c-S_B-item-0@1",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "r35f6c-S_B-mapping-0@1",
+              "polarity_ref": "categories-not-score@1",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "r35f6c-S_B-named-response-meanings@1",
+              "review_status": "REVIEWED",
+              "scale_ref": "named-categories@1",
+              "scale_status": "REVIEWED"
+            },
+            {
+              "category_map": {
+                "B_E1": "formal",
+                "B_E2": "informal"
+              },
+              "construct_ref": "employment_position",
+              "instrument_ref": "r35f6c-S_B-instrument@1",
+              "item_ref": "r35f6c-S_B-item-1@1",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "r35f6c-S_B-mapping-1@1",
+              "polarity_ref": "categories-not-score@1",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "r35f6c-S_B-named-response-meanings@1",
+              "review_status": "REVIEWED",
+              "scale_ref": "named-categories@1",
+              "scale_status": "REVIEWED"
+            }
+          ],
+          "coadministration_ref": "r35f6c-W5-S_B-coadministration@1",
+          "dependence_kind": "MEASURED_SAME_SURVEY_JOINT",
+          "design_ref": "r35f6c-W5-S_B-stratified-fixed-n@1",
+          "joint_frontier_ref": "r35f6c-W5-two-item-complete@1",
+          "measure_basis": "UNWEIGHTED",
+          "missingness_ref": "r35f6c-no-missing@1",
+          "permission_ref": "SYNTHETIC_ONLY_NO_TRANSPORT_PERMISSION",
+          "product_ref": "r35f6c-W5-S_B-joint-product@1",
+          "risk_set_ref": "r35f6c-W5-S_B-eligible-asked-complete@1",
+          "routing_ref": "r35f6c-W5-shared-eligibility@1",
+          "sample_id": "r35f6c-W5-independent-sample-S_B",
+          "sampling_limitations": "Invented fixed-stratum tables built for this court; no real-source design, coverage or weighting validation; not a population estimate",
+          "scope": {
+            "boundary_ref": "r35f6c-boundary-five@1",
+            "end_year": 1995,
+            "fieldwork_ref": "r35f6c-1995-W5@1",
+            "geography": "Synthetic Region five",
+            "population": "resident adults in the eligible-and-asked work risk set",
+            "start_year": 1995,
+            "unit": "adult respondent"
+          },
+          "source_id": "S_B",
+          "strata": {
+            "majority": {
+              "cells": [
+                {
+                  "categories": [
+                    "B_C1",
+                    "B_E1"
+                  ],
+                  "mass": 20,
+                  "n": 20
+                },
+                {
+                  "categories": [
+                    "B_C1",
+                    "B_E2"
+                  ],
+                  "mass": 30,
+                  "n": 30
+                },
+                {
+                  "categories": [
+                    "B_C2",
+                    "B_E1"
+                  ],
+                  "mass": 25,
+                  "n": 25
+                },
+                {
+                  "categories": [
+                    "B_C2",
+                    "B_E2"
+                  ],
+                  "mass": 25,
+                  "n": 25
+                }
+              ],
+              "design_variance": {
+                "cells": [
+                  {
+                    "categories": [
+                      "secure",
+                      "formal"
+                    ],
+                    "variance": "1/625"
+                  },
+                  {
+                    "categories": [
+                      "secure",
+                      "informal"
+                    ],
+                    "variance": "21/10000"
+                  },
+                  {
+                    "categories": [
+                      "insecure",
+                      "formal"
+                    ],
+                    "variance": "3/1600"
+                  },
+                  {
+                    "categories": [
+                      "insecure",
+                      "informal"
+                    ],
+                    "variance": "3/1600"
+                  }
+                ],
+                "method_ref": "R35F6C_FIXED_STRATUM_MULTINOMIAL_PLUGIN@1"
+              },
+              "eligible_n": 100,
+              "excluded_n": 0,
+              "support_ref": "r35f6c-W5-S_B-majority-support@1",
+              "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET"
+            }
+          },
+          "survey_lineage": "r35f6c-W5-survey-S_B",
+          "test_origin": true,
+          "weight_ref": "unit-weight@1"
+        }
+      ],
+      "policy": {
+        "conditional_invariance_ref": "r35f6c-W5-equal-risk-set-law-assumption@1",
+        "conditional_invariance_status": "REVIEWED_ASSUMPTION",
+        "mapping_bias_radius": "1/100",
+        "mapping_hashes": {
+          "S_A": "5e477398996e0281699c1efa796423035b3d8ccaef072f82bd4d808e9f138e35",
+          "S_B": "0dfafad61962a4aeb70cb2fd2955f744b9dce68ba6407345aeae03bbea487761"
+        },
+        "maximum_joint_cells": 64,
+        "minimum_raw_support": 30,
+        "overlap_reviews": {
+          "S_A|S_B": {
+            "review_ref": "r35f6c-independent-sampling-review@1",
+            "status": "DISJOINT"
+          }
+        },
+        "policy_ref": "r35f6c-W5-standardization-decision@1",
+        "scope_review_ref": "r35f6c-W5-scope-review@1",
+        "source_weights": {
+          "S_A": 1,
+          "S_B": 1
+        },
+        "target_share_bias_radius": 0,
+        "target_support_ref": "r35f6c-W5-target-support@1",
+        "transport_bias_radius": "1/20"
+      },
+      "product_ref": null,
+      "reason": "incomplete native joint domain; omitted category cannot be silently manufactured as zero (domain_size=4, observed=3)",
+      "route_probability": null,
+      "state": "INCOMPLETE_NATIVE_JOINT_DOMAIN",
+      "target": {
+        "boundary_ref": "r35f6c-boundary-five@1",
+        "geography": "Synthetic Region five",
+        "population": "resident adults in the eligible-and-asked work risk set",
+        "strata": {
+          "majority": "1"
+        },
+        "strata_ref": "r35f6c-population-register-five@1",
+        "target_id": "R35F6C_W5_1995_ADULT_ELIGIBLE_ASKED_RISK_SET",
+        "unit": "adult respondent",
+        "year": 1995
+      },
+      "world_joint": null,
+      "world_use": "TYPED_SOURCEFREE_PRODUCER_REFUSAL"
+    },
+    "W6": {
+      "case": "W6",
+      "display_class": "TYPED_LIMITATION",
+      "evidence": {
+        "bias_sensitivity_bounds": [],
+        "bounds": [],
+        "conditional": null,
+        "consumer_id": "F6P_F6M_PARTIAL_BOUND_CONSUMER@1",
+        "covered_subprobability": {},
+        "evidence_reasons": [
+          "DUPLICATE_OR_FICTITIOUS_COMMON_RESPONDENTS"
+        ],
+        "evidence_state": "INCOMPATIBLE_RESPONDENT",
+        "exclusions": [],
+        "input_bundle": {
+          "content_hash": "5f210f9e7f619f667d635409d173867ad0b21d73218da50add497b8b2e3ebaaf",
+          "decision": "SOURCE_INDEXED_BACKOFF",
+          "implementation_version": "F6M_NATIVE_DECISION_ADMISSION_REPAIR@1",
+          "owner_admission_status": "UNVERIFIED_INTEGRATION_BOUNDARY",
+          "real_use_authorized": false,
+          "target_joint_status": null,
+          "test_origin": true,
+          "use_scope": "SOURCEFREE_EXPERIMENT_ONLY"
+        },
+        "lost_planned_source_share": [],
+        "native_output_hash": "74ab5fb5e92ea75505583f67fe7f3ff20e010959cefb26d525724db7e8efef54",
+        "no_common_respondent_inference": true,
+        "no_route_probability": true,
+        "no_selection_weight": true,
+        "overlap": [
+          {
+            "pair": "S_A|S_B",
+            "reason": "DUPLICATE_SAMPLE"
+          }
+        ],
+        "portable_projection_hash": "b91ead971375b4d36eefbb7aacc5e7a34a37a285eff1145e954d7e5d5ce114b7",
+        "real_use_authorized": false,
+        "request": {
+          "conditions": {
+            "material_security": "secure"
+          },
+          "outcome": "employment_position"
+        },
+        "sampling": {
+          "note": "no sampling block read",
+          "weight_defaulted_to_one": false,
+          "weight_imputation": "NONE"
+        },
+        "schema": "F6P_PARTIAL_BOUND_EVIDENCE@1",
+        "scientific_ceiling": "SOURCEFREE_TEST_ONLY_NO_ROUTE_PROBABILITY_NO_SELECTION_WEIGHT_NO_MODEL_USE",
+        "source_product": {
+          "module_file": "owners/f6p/native/rawlsing_next/pre553_heterogeneous_synthesis.py",
+          "module_git_blob": "2df811d76db258d98d89ffb43c830cb221ff9a7d",
+          "module_sha256": "2930b5cd15c899146e9552b2e6b0efa3fc5835e57e58a6c16d756093e21d3871"
+        },
+        "supported_point": null,
+        "transport": {
+          "note": "no owner transport/model-use permission is issued by this consumer",
+          "permitted": false,
+          "status": "UNVERIFIED_INTEGRATION_BOUNDARY"
+        },
+        "uncertainty": null,
+        "uncovered_target_mass": null,
+        "values_read": [
+          "content_hash",
+          "decision",
+          "target_joint_status",
+          "candidate",
+          "candidate.covered_subprobability",
+          "candidate.uncovered_target_mass",
+          "candidate.support",
+          "candidate.uncertainty",
+          "candidate.uncertainty.source_disagreement_and_uncovered_bounds",
+          "candidate.uncertainty.sampling_status",
+          "refusals",
+          "overlap_diagnostics",
+          "conditional"
+        ]
+      },
+      "native_sources": [
+        {
+          "axes": [
+            {
+              "category_map": {
+                "A_insecure": "insecure",
+                "A_secure": "secure"
+              },
+              "construct_ref": "material_security",
+              "instrument_ref": "r35f6c-S_A-instrument@1",
+              "item_ref": "r35f6c-S_A-item-0@1",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "r35f6c-S_A-mapping-0@1",
+              "polarity_ref": "categories-not-score@1",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "r35f6c-S_A-named-response-meanings@1",
+              "review_status": "REVIEWED",
+              "scale_ref": "named-categories@1",
+              "scale_status": "REVIEWED"
+            },
+            {
+              "category_map": {
+                "A_formal": "formal",
+                "A_informal": "informal"
+              },
+              "construct_ref": "employment_position",
+              "instrument_ref": "r35f6c-S_A-instrument@1",
+              "item_ref": "r35f6c-S_A-item-1@1",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "r35f6c-S_A-mapping-1@1",
+              "polarity_ref": "categories-not-score@1",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "r35f6c-S_A-named-response-meanings@1",
+              "review_status": "REVIEWED",
+              "scale_ref": "named-categories@1",
+              "scale_status": "REVIEWED"
+            }
+          ],
+          "coadministration_ref": "r35f6c-W6-S_A-coadministration@1",
+          "dependence_kind": "MEASURED_SAME_SURVEY_JOINT",
+          "design_ref": "r35f6c-W6-S_A-stratified-fixed-n@1",
+          "joint_frontier_ref": "r35f6c-W6-two-item-complete@1",
+          "measure_basis": "UNWEIGHTED",
+          "missingness_ref": "r35f6c-no-missing@1",
+          "permission_ref": "SYNTHETIC_ONLY_NO_TRANSPORT_PERMISSION",
+          "product_ref": "r35f6c-W6-S_A-joint-product@1",
+          "risk_set_ref": "r35f6c-W6-S_A-eligible-asked-complete@1",
+          "routing_ref": "r35f6c-W6-shared-eligibility@1",
+          "sample_id": "r35f6c-W6-shared-sample",
+          "sampling_limitations": "Invented fixed-stratum tables built for this court; no real-source design, coverage or weighting validation; not a population estimate",
+          "scope": {
+            "boundary_ref": "r35f6c-boundary-six@1",
+            "end_year": 1995,
+            "fieldwork_ref": "r35f6c-1995-W6@1",
+            "geography": "Synthetic Region six",
+            "population": "resident adults in the eligible-and-asked work risk set",
+            "start_year": 1995,
+            "unit": "adult respondent"
+          },
+          "source_id": "S_A",
+          "strata": {
+            "majority": {
+              "cells": [
+                {
+                  "categories": [
+                    "A_secure",
+                    "A_formal"
+                  ],
+                  "mass": 40,
+                  "n": 40
+                },
+                {
+                  "categories": [
+                    "A_secure",
+                    "A_informal"
+                  ],
+                  "mass": 10,
+                  "n": 10
+                },
+                {
+                  "categories": [
+                    "A_insecure",
+                    "A_formal"
+                  ],
+                  "mass": 25,
+                  "n": 25
+                },
+                {
+                  "categories": [
+                    "A_insecure",
+                    "A_informal"
+                  ],
+                  "mass": 25,
+                  "n": 25
+                }
+              ],
+              "design_variance": {
+                "cells": [
+                  {
+                    "categories": [
+                      "secure",
+                      "formal"
+                    ],
+                    "variance": "3/1250"
+                  },
+                  {
+                    "categories": [
+                      "secure",
+                      "informal"
+                    ],
+                    "variance": "9/10000"
+                  },
+                  {
+                    "categories": [
+                      "insecure",
+                      "formal"
+                    ],
+                    "variance": "3/1600"
+                  },
+                  {
+                    "categories": [
+                      "insecure",
+                      "informal"
+                    ],
+                    "variance": "3/1600"
+                  }
+                ],
+                "method_ref": "R35F6C_FIXED_STRATUM_MULTINOMIAL_PLUGIN@1"
+              },
+              "eligible_n": 100,
+              "excluded_n": 0,
+              "support_ref": "r35f6c-W6-S_A-majority-support@1",
+              "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET"
+            }
+          },
+          "survey_lineage": "r35f6c-W6-shared-survey",
+          "test_origin": true,
+          "weight_ref": "unit-weight@1"
+        },
+        {
+          "axes": [
+            {
+              "category_map": {
+                "B_C1": "secure",
+                "B_C2": "insecure"
+              },
+              "construct_ref": "material_security",
+              "instrument_ref": "r35f6c-S_B-instrument@1",
+              "item_ref": "r35f6c-S_B-item-0@1",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "r35f6c-S_B-mapping-0@1",
+              "polarity_ref": "categories-not-score@1",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "r35f6c-S_B-named-response-meanings@1",
+              "review_status": "REVIEWED",
+              "scale_ref": "named-categories@1",
+              "scale_status": "REVIEWED"
+            },
+            {
+              "category_map": {
+                "B_E1": "formal",
+                "B_E2": "informal"
+              },
+              "construct_ref": "employment_position",
+              "instrument_ref": "r35f6c-S_B-instrument@1",
+              "item_ref": "r35f6c-S_B-item-1@1",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "r35f6c-S_B-mapping-1@1",
+              "polarity_ref": "categories-not-score@1",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "r35f6c-S_B-named-response-meanings@1",
+              "review_status": "REVIEWED",
+              "scale_ref": "named-categories@1",
+              "scale_status": "REVIEWED"
+            }
+          ],
+          "coadministration_ref": "r35f6c-W6-S_B-coadministration@1",
+          "dependence_kind": "MEASURED_SAME_SURVEY_JOINT",
+          "design_ref": "r35f6c-W6-S_B-stratified-fixed-n@1",
+          "joint_frontier_ref": "r35f6c-W6-two-item-complete@1",
+          "measure_basis": "UNWEIGHTED",
+          "missingness_ref": "r35f6c-no-missing@1",
+          "permission_ref": "SYNTHETIC_ONLY_NO_TRANSPORT_PERMISSION",
+          "product_ref": "r35f6c-W6-S_B-joint-product@1",
+          "risk_set_ref": "r35f6c-W6-S_B-eligible-asked-complete@1",
+          "routing_ref": "r35f6c-W6-shared-eligibility@1",
+          "sample_id": "r35f6c-W6-shared-sample",
+          "sampling_limitations": "Invented fixed-stratum tables built for this court; no real-source design, coverage or weighting validation; not a population estimate",
+          "scope": {
+            "boundary_ref": "r35f6c-boundary-six@1",
+            "end_year": 1995,
+            "fieldwork_ref": "r35f6c-1995-W6@1",
+            "geography": "Synthetic Region six",
+            "population": "resident adults in the eligible-and-asked work risk set",
+            "start_year": 1995,
+            "unit": "adult respondent"
+          },
+          "source_id": "S_B",
+          "strata": {
+            "majority": {
+              "cells": [
+                {
+                  "categories": [
+                    "B_C1",
+                    "B_E1"
+                  ],
+                  "mass": 20,
+                  "n": 20
+                },
+                {
+                  "categories": [
+                    "B_C1",
+                    "B_E2"
+                  ],
+                  "mass": 30,
+                  "n": 30
+                },
+                {
+                  "categories": [
+                    "B_C2",
+                    "B_E1"
+                  ],
+                  "mass": 25,
+                  "n": 25
+                },
+                {
+                  "categories": [
+                    "B_C2",
+                    "B_E2"
+                  ],
+                  "mass": 25,
+                  "n": 25
+                }
+              ],
+              "design_variance": {
+                "cells": [
+                  {
+                    "categories": [
+                      "secure",
+                      "formal"
+                    ],
+                    "variance": "1/625"
+                  },
+                  {
+                    "categories": [
+                      "secure",
+                      "informal"
+                    ],
+                    "variance": "21/10000"
+                  },
+                  {
+                    "categories": [
+                      "insecure",
+                      "formal"
+                    ],
+                    "variance": "3/1600"
+                  },
+                  {
+                    "categories": [
+                      "insecure",
+                      "informal"
+                    ],
+                    "variance": "3/1600"
+                  }
+                ],
+                "method_ref": "R35F6C_FIXED_STRATUM_MULTINOMIAL_PLUGIN@1"
+              },
+              "eligible_n": 100,
+              "excluded_n": 0,
+              "support_ref": "r35f6c-W6-S_B-majority-support@1",
+              "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET"
+            }
+          },
+          "survey_lineage": "r35f6c-W6-shared-survey",
+          "test_origin": true,
+          "weight_ref": "unit-weight@1"
+        }
+      ],
+      "policy": {
+        "conditional_invariance_ref": "r35f6c-W6-equal-risk-set-law-assumption@1",
+        "conditional_invariance_status": "REVIEWED_ASSUMPTION",
+        "mapping_bias_radius": "1/100",
+        "mapping_hashes": {
+          "S_A": "5e477398996e0281699c1efa796423035b3d8ccaef072f82bd4d808e9f138e35",
+          "S_B": "0dfafad61962a4aeb70cb2fd2955f744b9dce68ba6407345aeae03bbea487761"
+        },
+        "maximum_joint_cells": 64,
+        "minimum_raw_support": 30,
+        "overlap_reviews": {
+          "S_A|S_B": {
+            "review_ref": "r35f6c-independent-sampling-review@1",
+            "status": "DISJOINT"
+          }
+        },
+        "policy_ref": "r35f6c-W6-standardization-decision@1",
+        "scope_review_ref": "r35f6c-W6-scope-review@1",
+        "source_weights": {
+          "S_A": 1,
+          "S_B": 1
+        },
+        "target_share_bias_radius": 0,
+        "target_support_ref": "r35f6c-W6-target-support@1",
+        "transport_bias_radius": "1/20"
+      },
+      "product_ref": "5f210f9e7f619f667d635409d173867ad0b21d73218da50add497b8b2e3ebaaf",
+      "route_probability": null,
+      "state": "INCOMPATIBLE_RESPONDENT",
+      "target": {
+        "boundary_ref": "r35f6c-boundary-six@1",
+        "geography": "Synthetic Region six",
+        "population": "resident adults in the eligible-and-asked work risk set",
+        "strata": {
+          "majority": "1"
+        },
+        "strata_ref": "r35f6c-population-register-six@1",
+        "target_id": "R35F6C_W6_1995_ADULT_ELIGIBLE_ASKED_RISK_SET",
+        "unit": "adult respondent",
+        "year": 1995
+      },
+      "world_joint": null,
+      "world_use": "SEPARATE_SOURCEFREE_EVIDENCE_ONLY__NO_N9_TRANSPORT_ADMISSION"
+    },
+    "W7": {
+      "case": "W7",
+      "display_class": "BOUNDS_AND_UNKNOWN",
+      "evidence": {
+        "bias_sensitivity_bounds": [
+          {
+            "categories": [
+              "secure",
+              "formal"
+            ],
+            "lower": "9/100",
+            "upper": "71/100"
+          },
+          {
+            "categories": [
+              "secure",
+              "informal"
+            ],
+            "lower": "1/25",
+            "upper": "33/50"
+          },
+          {
+            "categories": [
+              "insecure",
+              "formal"
+            ],
+            "lower": "13/200",
+            "upper": "137/200"
+          },
+          {
+            "categories": [
+              "insecure",
+              "informal"
+            ],
+            "lower": "13/200",
+            "upper": "137/200"
+          }
+        ],
+        "bounds": [
+          {
+            "categories": [
+              "secure",
+              "formal"
+            ],
+            "lower": "3/20",
+            "upper": "13/20"
+          },
+          {
+            "categories": [
+              "secure",
+              "informal"
+            ],
+            "lower": "1/10",
+            "upper": "3/5"
+          },
+          {
+            "categories": [
+              "insecure",
+              "formal"
+            ],
+            "lower": "1/8",
+            "upper": "5/8"
+          },
+          {
+            "categories": [
+              "insecure",
+              "informal"
+            ],
+            "lower": "1/8",
+            "upper": "5/8"
+          }
+        ],
+        "conditional": {
+          "bundle_hash": "7752462221d10c41aa3932ce8b7b21da5ac83b4cdaf5aaecb90f5c52d18702f6",
+          "reason": "NO_COMPLETE_TARGET_JOINT",
+          "state": "UNAVAILABLE"
+        },
+        "consumer_id": "F6P_F6M_PARTIAL_BOUND_CONSUMER@1",
+        "covered_subprobability": {
+          "insecure|formal": "1/8",
+          "insecure|informal": "1/8",
+          "secure|formal": "3/20",
+          "secure|informal": "1/10"
+        },
+        "evidence_reasons": [
+          "INCOMPLETE_TARGET_COVERAGE"
+        ],
+        "evidence_state": "PARTIAL_IDENTIFICATION",
+        "exclusions": [
+          {
+            "planned_source_share_lost": "1/4",
+            "reason": "AGGREGATE_SUPPORT_OR_MASS_INSUFFICIENT",
+            "source_id": "S_A",
+            "stratum": "majority",
+            "uncovered_target_share": "1/4"
+          },
+          {
+            "planned_source_share_lost": "1/4",
+            "reason": "AGGREGATE_SUPPORT_OR_MASS_INSUFFICIENT",
+            "source_id": "S_A",
+            "stratum": "minority",
+            "uncovered_target_share": "1/4"
+          }
+        ],
+        "input_bundle": {
+          "content_hash": "7752462221d10c41aa3932ce8b7b21da5ac83b4cdaf5aaecb90f5c52d18702f6",
+          "decision": "PARTIAL_IDENTIFICATION_ONLY",
+          "implementation_version": "F6M_NATIVE_DECISION_ADMISSION_REPAIR@1",
+          "owner_admission_status": "UNVERIFIED_INTEGRATION_BOUNDARY",
+          "real_use_authorized": false,
+          "target_joint_status": "NO_COMPLETE_TARGET_JOINT",
+          "test_origin": true,
+          "use_scope": "SOURCEFREE_EXPERIMENT_ONLY"
+        },
+        "lost_planned_source_share": [
+          {
+            "planned_source_share_lost": "1/4",
+            "reason": "AGGREGATE_SUPPORT_OR_MASS_INSUFFICIENT",
+            "source_id": "S_A",
+            "stratum": "majority",
+            "uncovered_target_share": "1/4"
+          },
+          {
+            "planned_source_share_lost": "1/4",
+            "reason": "AGGREGATE_SUPPORT_OR_MASS_INSUFFICIENT",
+            "source_id": "S_A",
+            "stratum": "minority",
+            "uncovered_target_share": "1/4"
+          }
+        ],
+        "native_output_hash": "64b6221f748734512fdfb9fb32231cd7dd5d38a5cf4415d3e4363d73a2a3c101",
+        "no_common_respondent_inference": true,
+        "no_route_probability": true,
+        "no_selection_weight": true,
+        "overlap": [],
+        "portable_projection_hash": "640083a3441b2419bd7f6d2023a0a04ebd85febc81babc2aade733628bb2449c",
+        "real_use_authorized": false,
+        "request": {
+          "conditions": {
+            "material_security": "secure"
+          },
+          "outcome": "employment_position"
+        },
+        "sampling": {
+          "design_known": false,
+          "note": "unknown design/weight is exposed as unknown, never set to 1",
+          "population_estimate_permitted": false,
+          "population_estimate_requested": false,
+          "sampling_status": "UNKNOWN_DESIGN",
+          "sampling_variance_present": false,
+          "weight_defaulted_to_one": false,
+          "weight_imputation": "NONE"
+        },
+        "schema": "F6P_PARTIAL_BOUND_EVIDENCE@1",
+        "scientific_ceiling": "SOURCEFREE_TEST_ONLY_NO_ROUTE_PROBABILITY_NO_SELECTION_WEIGHT_NO_MODEL_USE",
+        "source_product": {
+          "module_file": "owners/f6p/native/rawlsing_next/pre553_heterogeneous_synthesis.py",
+          "module_git_blob": "2df811d76db258d98d89ffb43c830cb221ff9a7d",
+          "module_sha256": "2930b5cd15c899146e9552b2e6b0efa3fc5835e57e58a6c16d756093e21d3871"
+        },
+        "supported_point": null,
+        "transport": {
+          "note": "no owner transport/model-use permission is issued by this consumer",
+          "permitted": false,
+          "status": "UNVERIFIED_INTEGRATION_BOUNDARY"
+        },
+        "uncertainty": {
+          "bias_sensitivity_bounds": [
+            {
+              "categories": [
+                "secure",
+                "formal"
+              ],
+              "lower": "9/100",
+              "upper": "71/100"
+            },
+            {
+              "categories": [
+                "secure",
+                "informal"
+              ],
+              "lower": "1/25",
+              "upper": "33/50"
+            },
+            {
+              "categories": [
+                "insecure",
+                "formal"
+              ],
+              "lower": "13/200",
+              "upper": "137/200"
+            },
+            {
+              "categories": [
+                "insecure",
+                "informal"
+              ],
+              "lower": "13/200",
+              "upper": "137/200"
+            }
+          ],
+          "limitations": "Sensitivity envelopes are not confidence intervals; fixed target shares and disjoint sources/strata for sampling variance; covariance and conditional uncertainty unavailable.",
+          "radii": {
+            "mapping_bias_radius": "1/100",
+            "target_share_bias_radius": 0,
+            "transport_bias_radius": "1/20"
+          },
+          "sampling_status": "UNKNOWN_DESIGN",
+          "sampling_variance": null,
+          "source_disagreement_and_uncovered_bounds": [
+            {
+              "categories": [
+                "secure",
+                "formal"
+              ],
+              "lower": "3/20",
+              "upper": "13/20"
+            },
+            {
+              "categories": [
+                "secure",
+                "informal"
+              ],
+              "lower": "1/10",
+              "upper": "3/5"
+            },
+            {
+              "categories": [
+                "insecure",
+                "formal"
+              ],
+              "lower": "1/8",
+              "upper": "5/8"
+            },
+            {
+              "categories": [
+                "insecure",
+                "informal"
+              ],
+              "lower": "1/8",
+              "upper": "5/8"
+            }
+          ]
+        },
+        "uncovered_target_mass": "1/2",
+        "values_read": [
+          "content_hash",
+          "decision",
+          "target_joint_status",
+          "candidate",
+          "candidate.covered_subprobability",
+          "candidate.uncovered_target_mass",
+          "candidate.support",
+          "candidate.uncertainty",
+          "candidate.uncertainty.source_disagreement_and_uncovered_bounds",
+          "candidate.uncertainty.sampling_status",
+          "refusals",
+          "overlap_diagnostics",
+          "conditional"
+        ]
+      },
+      "native_sources": [
+        {
+          "axes": [
+            {
+              "category_map": {
+                "A_insecure": "insecure",
+                "A_secure": "secure"
+              },
+              "construct_ref": "material_security",
+              "instrument_ref": "r35f6c-S_A-instrument@1",
+              "item_ref": "r35f6c-S_A-item-0@1",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "r35f6c-S_A-mapping-0@1",
+              "polarity_ref": "categories-not-score@1",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "r35f6c-S_A-named-response-meanings@1",
+              "review_status": "REVIEWED",
+              "scale_ref": "named-categories@1",
+              "scale_status": "REVIEWED"
+            },
+            {
+              "category_map": {
+                "A_formal": "formal",
+                "A_informal": "informal"
+              },
+              "construct_ref": "employment_position",
+              "instrument_ref": "r35f6c-S_A-instrument@1",
+              "item_ref": "r35f6c-S_A-item-1@1",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "r35f6c-S_A-mapping-1@1",
+              "polarity_ref": "categories-not-score@1",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "r35f6c-S_A-named-response-meanings@1",
+              "review_status": "REVIEWED",
+              "scale_ref": "named-categories@1",
+              "scale_status": "REVIEWED"
+            }
+          ],
+          "coadministration_ref": "r35f6c-W7-S_A-coadministration@1",
+          "dependence_kind": "MEASURED_SAME_SURVEY_JOINT",
+          "design_ref": "r35f6c-W7-S_A-stratified-fixed-n@1",
+          "joint_frontier_ref": "r35f6c-W7-two-item-complete@1",
+          "measure_basis": "UNWEIGHTED",
+          "missingness_ref": "r35f6c-no-missing@1",
+          "permission_ref": "SYNTHETIC_ONLY_NO_TRANSPORT_PERMISSION",
+          "product_ref": "r35f6c-W7-S_A-joint-product@1",
+          "risk_set_ref": "r35f6c-W7-S_A-eligible-asked-complete@1",
+          "routing_ref": "r35f6c-W7-shared-eligibility@1",
+          "sample_id": "r35f6c-W7-independent-sample-S_A",
+          "sampling_limitations": "Invented fixed-stratum tables built for this court; no real-source design, coverage or weighting validation; not a population estimate",
+          "scope": {
+            "boundary_ref": "r35f6c-boundary-seven@1",
+            "end_year": 1995,
+            "fieldwork_ref": "r35f6c-1995-W7@1",
+            "geography": "Synthetic Region seven",
+            "population": "resident adults in the eligible-and-asked work risk set",
+            "start_year": 1995,
+            "unit": "adult respondent"
+          },
+          "source_id": "S_A",
+          "strata": {
+            "majority": {
+              "cells": [
+                {
+                  "categories": [
+                    "A_secure",
+                    "A_formal"
+                  ],
+                  "mass": 2,
+                  "n": 2
+                },
+                {
+                  "categories": [
+                    "A_secure",
+                    "A_informal"
+                  ],
+                  "mass": 1,
+                  "n": 1
+                },
+                {
+                  "categories": [
+                    "A_insecure",
+                    "A_formal"
+                  ],
+                  "mass": 1,
+                  "n": 1
+                },
+                {
+                  "categories": [
+                    "A_insecure",
+                    "A_informal"
+                  ],
+                  "mass": 2,
+                  "n": 2
+                }
+              ],
+              "design_variance": {
+                "cells": [
+                  {
+                    "categories": [
+                      "secure",
+                      "formal"
+                    ],
+                    "variance": "1/27"
+                  },
+                  {
+                    "categories": [
+                      "secure",
+                      "informal"
+                    ],
+                    "variance": "5/216"
+                  },
+                  {
+                    "categories": [
+                      "insecure",
+                      "formal"
+                    ],
+                    "variance": "5/216"
+                  },
+                  {
+                    "categories": [
+                      "insecure",
+                      "informal"
+                    ],
+                    "variance": "1/27"
+                  }
+                ],
+                "method_ref": "R35F6C_FIXED_STRATUM_MULTINOMIAL_PLUGIN@1"
+              },
+              "eligible_n": 6,
+              "excluded_n": 0,
+              "support_ref": "r35f6c-W7-S_A-majority-support@1",
+              "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET"
+            },
+            "minority": {
+              "cells": [
+                {
+                  "categories": [
+                    "A_secure",
+                    "A_formal"
+                  ],
+                  "mass": 1,
+                  "n": 1
+                },
+                {
+                  "categories": [
+                    "A_secure",
+                    "A_informal"
+                  ],
+                  "mass": 1,
+                  "n": 1
+                },
+                {
+                  "categories": [
+                    "A_insecure",
+                    "A_formal"
+                  ],
+                  "mass": 1,
+                  "n": 1
+                },
+                {
+                  "categories": [
+                    "A_insecure",
+                    "A_informal"
+                  ],
+                  "mass": 2,
+                  "n": 2
+                }
+              ],
+              "design_variance": {
+                "cells": [
+                  {
+                    "categories": [
+                      "secure",
+                      "formal"
+                    ],
+                    "variance": "4/125"
+                  },
+                  {
+                    "categories": [
+                      "secure",
+                      "informal"
+                    ],
+                    "variance": "4/125"
+                  },
+                  {
+                    "categories": [
+                      "insecure",
+                      "formal"
+                    ],
+                    "variance": "4/125"
+                  },
+                  {
+                    "categories": [
+                      "insecure",
+                      "informal"
+                    ],
+                    "variance": "6/125"
+                  }
+                ],
+                "method_ref": "R35F6C_FIXED_STRATUM_MULTINOMIAL_PLUGIN@1"
+              },
+              "eligible_n": 5,
+              "excluded_n": 0,
+              "support_ref": "r35f6c-W7-S_A-minority-support@1",
+              "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET"
+            }
+          },
+          "survey_lineage": "r35f6c-W7-survey-S_A",
+          "test_origin": true,
+          "weight_ref": "unit-weight@1"
+        },
+        {
+          "axes": [
+            {
+              "category_map": {
+                "B_C1": "secure",
+                "B_C2": "insecure"
+              },
+              "construct_ref": "material_security",
+              "instrument_ref": "r35f6c-S_B-instrument@1",
+              "item_ref": "r35f6c-S_B-item-0@1",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "r35f6c-S_B-mapping-0@1",
+              "polarity_ref": "categories-not-score@1",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "r35f6c-S_B-named-response-meanings@1",
+              "review_status": "REVIEWED",
+              "scale_ref": "named-categories@1",
+              "scale_status": "REVIEWED"
+            },
+            {
+              "category_map": {
+                "B_E1": "formal",
+                "B_E2": "informal"
+              },
+              "construct_ref": "employment_position",
+              "instrument_ref": "r35f6c-S_B-instrument@1",
+              "item_ref": "r35f6c-S_B-item-1@1",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "r35f6c-S_B-mapping-1@1",
+              "polarity_ref": "categories-not-score@1",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "r35f6c-S_B-named-response-meanings@1",
+              "review_status": "REVIEWED",
+              "scale_ref": "named-categories@1",
+              "scale_status": "REVIEWED"
+            }
+          ],
+          "coadministration_ref": "r35f6c-W7-S_B-coadministration@1",
+          "dependence_kind": "MEASURED_SAME_SURVEY_JOINT",
+          "design_ref": "r35f6c-W7-S_B-stratified-fixed-n@1",
+          "joint_frontier_ref": "r35f6c-W7-two-item-complete@1",
+          "measure_basis": "UNWEIGHTED",
+          "missingness_ref": "r35f6c-no-missing@1",
+          "permission_ref": "SYNTHETIC_ONLY_NO_TRANSPORT_PERMISSION",
+          "product_ref": "r35f6c-W7-S_B-joint-product@1",
+          "risk_set_ref": "r35f6c-W7-S_B-eligible-asked-complete@1",
+          "routing_ref": "r35f6c-W7-shared-eligibility@1",
+          "sample_id": "r35f6c-W7-independent-sample-S_B",
+          "sampling_limitations": "Invented fixed-stratum tables built for this court; no real-source design, coverage or weighting validation; not a population estimate",
+          "scope": {
+            "boundary_ref": "r35f6c-boundary-seven@1",
+            "end_year": 1995,
+            "fieldwork_ref": "r35f6c-1995-W7@1",
+            "geography": "Synthetic Region seven",
+            "population": "resident adults in the eligible-and-asked work risk set",
+            "start_year": 1995,
+            "unit": "adult respondent"
+          },
+          "source_id": "S_B",
+          "strata": {
+            "majority": {
+              "cells": [
+                {
+                  "categories": [
+                    "B_C1",
+                    "B_E1"
+                  ],
+                  "mass": 20,
+                  "n": 20
+                },
+                {
+                  "categories": [
+                    "B_C1",
+                    "B_E2"
+                  ],
+                  "mass": 30,
+                  "n": 30
+                },
+                {
+                  "categories": [
+                    "B_C2",
+                    "B_E1"
+                  ],
+                  "mass": 25,
+                  "n": 25
+                },
+                {
+                  "categories": [
+                    "B_C2",
+                    "B_E2"
+                  ],
+                  "mass": 25,
+                  "n": 25
+                }
+              ],
+              "design_variance": {
+                "cells": [
+                  {
+                    "categories": [
+                      "secure",
+                      "formal"
+                    ],
+                    "variance": "1/625"
+                  },
+                  {
+                    "categories": [
+                      "secure",
+                      "informal"
+                    ],
+                    "variance": "21/10000"
+                  },
+                  {
+                    "categories": [
+                      "insecure",
+                      "formal"
+                    ],
+                    "variance": "3/1600"
+                  },
+                  {
+                    "categories": [
+                      "insecure",
+                      "informal"
+                    ],
+                    "variance": "3/1600"
+                  }
+                ],
+                "method_ref": "R35F6C_FIXED_STRATUM_MULTINOMIAL_PLUGIN@1"
+              },
+              "eligible_n": 100,
+              "excluded_n": 0,
+              "support_ref": "r35f6c-W7-S_B-majority-support@1",
+              "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET"
+            },
+            "minority": {
+              "cells": [
+                {
+                  "categories": [
+                    "B_C1",
+                    "B_E1"
+                  ],
+                  "mass": 40,
+                  "n": 40
+                },
+                {
+                  "categories": [
+                    "B_C1",
+                    "B_E2"
+                  ],
+                  "mass": 10,
+                  "n": 10
+                },
+                {
+                  "categories": [
+                    "B_C2",
+                    "B_E1"
+                  ],
+                  "mass": 25,
+                  "n": 25
+                },
+                {
+                  "categories": [
+                    "B_C2",
+                    "B_E2"
+                  ],
+                  "mass": 25,
+                  "n": 25
+                }
+              ],
+              "design_variance": {
+                "cells": [
+                  {
+                    "categories": [
+                      "secure",
+                      "formal"
+                    ],
+                    "variance": "3/1250"
+                  },
+                  {
+                    "categories": [
+                      "secure",
+                      "informal"
+                    ],
+                    "variance": "9/10000"
+                  },
+                  {
+                    "categories": [
+                      "insecure",
+                      "formal"
+                    ],
+                    "variance": "3/1600"
+                  },
+                  {
+                    "categories": [
+                      "insecure",
+                      "informal"
+                    ],
+                    "variance": "3/1600"
+                  }
+                ],
+                "method_ref": "R35F6C_FIXED_STRATUM_MULTINOMIAL_PLUGIN@1"
+              },
+              "eligible_n": 100,
+              "excluded_n": 0,
+              "support_ref": "r35f6c-W7-S_B-minority-support@1",
+              "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET"
+            }
+          },
+          "survey_lineage": "r35f6c-W7-survey-S_B",
+          "test_origin": true,
+          "weight_ref": "unit-weight@1"
+        }
+      ],
+      "policy": {
+        "conditional_invariance_ref": "r35f6c-W7-equal-risk-set-law-assumption@1",
+        "conditional_invariance_status": "REVIEWED_ASSUMPTION",
+        "mapping_bias_radius": "1/100",
+        "mapping_hashes": {
+          "S_A": "5e477398996e0281699c1efa796423035b3d8ccaef072f82bd4d808e9f138e35",
+          "S_B": "0dfafad61962a4aeb70cb2fd2955f744b9dce68ba6407345aeae03bbea487761"
+        },
+        "maximum_joint_cells": 64,
+        "minimum_raw_support": 30,
+        "overlap_reviews": {
+          "S_A|S_B": {
+            "review_ref": "r35f6c-independent-sampling-review@1",
+            "status": "DISJOINT"
+          }
+        },
+        "policy_ref": "r35f6c-W7-standardization-decision@1",
+        "scope_review_ref": "r35f6c-W7-scope-review@1",
+        "source_weights": {
+          "S_A": 1,
+          "S_B": 1
+        },
+        "target_share_bias_radius": 0,
+        "target_support_ref": "r35f6c-W7-target-support@1",
+        "transport_bias_radius": "1/20"
+      },
+      "product_ref": "7752462221d10c41aa3932ce8b7b21da5ac83b4cdaf5aaecb90f5c52d18702f6",
+      "route_probability": null,
+      "state": "PARTIAL_IDENTIFICATION",
+      "target": {
+        "boundary_ref": "r35f6c-boundary-seven@1",
+        "geography": "Synthetic Region seven",
+        "population": "resident adults in the eligible-and-asked work risk set",
+        "strata": {
+          "majority": "1/2",
+          "minority": "1/2"
+        },
+        "strata_ref": "r35f6c-population-register-seven@1",
+        "target_id": "R35F6C_W7_1995_ADULT_ELIGIBLE_ASKED_RISK_SET",
+        "unit": "adult respondent",
+        "year": 1995
+      },
+      "world_joint": null,
+      "world_use": "SEPARATE_SOURCEFREE_EVIDENCE_ONLY__NO_N9_TRANSPORT_ADMISSION"
+    },
+    "W8": {
+      "case": "W8",
+      "display_class": "TYPED_LIMITATION",
+      "evidence": {
+        "bias_sensitivity_bounds": [
+          {
+            "categories": [
+              "secure",
+              "formal"
+            ],
+            "lower": "33/200",
+            "upper": "23/50"
+          },
+          {
+            "categories": [
+              "secure",
+              "informal"
+            ],
+            "lower": "1/25",
+            "upper": "67/200"
+          },
+          {
+            "categories": [
+              "insecure",
+              "formal"
+            ],
+            "lower": "23/200",
+            "upper": "31/100"
+          },
+          {
+            "categories": [
+              "insecure",
+              "informal"
+            ],
+            "lower": "19/100",
+            "upper": "77/200"
+          }
+        ],
+        "bounds": [
+          {
+            "categories": [
+              "secure",
+              "formal"
+            ],
+            "lower": "9/40",
+            "upper": "2/5"
+          },
+          {
+            "categories": [
+              "secure",
+              "informal"
+            ],
+            "lower": "1/10",
+            "upper": "11/40"
+          },
+          {
+            "categories": [
+              "insecure",
+              "formal"
+            ],
+            "lower": "7/40",
+            "upper": "1/4"
+          },
+          {
+            "categories": [
+              "insecure",
+              "informal"
+            ],
+            "lower": "1/4",
+            "upper": "13/40"
+          }
+        ],
+        "conditional": {
+          "bundle_hash": "2550b1d2486769d771cb248c9fe8069539da1f2a3007d27c19fe104e987af465",
+          "reason": "CATEGORY_OUTSIDE_MAPPED_SUPPORT",
+          "state": "UNAVAILABLE"
+        },
+        "consumer_id": "F6P_F6M_PARTIAL_BOUND_CONSUMER@1",
+        "covered_subprobability": {
+          "insecure|formal": "17/80",
+          "insecure|informal": "23/80",
+          "secure|formal": "5/16",
+          "secure|informal": "3/16"
+        },
+        "evidence_reasons": [
+          "CATEGORY_OUTSIDE_MAPPED_SUPPORT"
+        ],
+        "evidence_state": "CATEGORY_OUTSIDE_SUPPORT",
+        "exclusions": [],
+        "input_bundle": {
+          "content_hash": "2550b1d2486769d771cb248c9fe8069539da1f2a3007d27c19fe104e987af465",
+          "decision": "SYNTHETIC_CANDIDATE",
+          "implementation_version": "F6M_NATIVE_DECISION_ADMISSION_REPAIR@1",
+          "owner_admission_status": "UNVERIFIED_INTEGRATION_BOUNDARY",
+          "real_use_authorized": false,
+          "target_joint_status": "COMPLETE_EXPERIMENTAL_TARGET_JOINT",
+          "test_origin": true,
+          "use_scope": "SOURCEFREE_EXPERIMENT_ONLY"
+        },
+        "lost_planned_source_share": [],
+        "native_output_hash": "571472cb2f6f9b85d04adaf9a42ad4493cc5cee35defa85c619a0937073a8eca",
+        "no_common_respondent_inference": true,
+        "no_route_probability": true,
+        "no_selection_weight": true,
+        "overlap": [],
+        "portable_projection_hash": "7ba14c17229784f8f36abb783d919c7e0dedc37e13e18721fd6c6f64515dbc10",
+        "real_use_authorized": false,
+        "request": {
+          "conditions": {
+            "material_security": "unknown_third_state"
+          },
+          "outcome": "employment_position"
+        },
+        "sampling": {
+          "note": "no sampling block read",
+          "weight_defaulted_to_one": false,
+          "weight_imputation": "NONE"
+        },
+        "schema": "F6P_PARTIAL_BOUND_EVIDENCE@1",
+        "scientific_ceiling": "SOURCEFREE_TEST_ONLY_NO_ROUTE_PROBABILITY_NO_SELECTION_WEIGHT_NO_MODEL_USE",
+        "source_product": {
+          "module_file": "owners/f6p/native/rawlsing_next/pre553_heterogeneous_synthesis.py",
+          "module_git_blob": "2df811d76db258d98d89ffb43c830cb221ff9a7d",
+          "module_sha256": "2930b5cd15c899146e9552b2e6b0efa3fc5835e57e58a6c16d756093e21d3871"
+        },
+        "supported_point": null,
+        "transport": {
+          "note": "no owner transport/model-use permission is issued by this consumer",
+          "permitted": false,
+          "status": "UNVERIFIED_INTEGRATION_BOUNDARY"
+        },
+        "uncertainty": {
+          "bias_sensitivity_bounds": [
+            {
+              "categories": [
+                "secure",
+                "formal"
+              ],
+              "lower": "33/200",
+              "upper": "23/50"
+            },
+            {
+              "categories": [
+                "secure",
+                "informal"
+              ],
+              "lower": "1/25",
+              "upper": "67/200"
+            },
+            {
+              "categories": [
+                "insecure",
+                "formal"
+              ],
+              "lower": "23/200",
+              "upper": "31/100"
+            },
+            {
+              "categories": [
+                "insecure",
+                "informal"
+              ],
+              "lower": "19/100",
+              "upper": "77/200"
+            }
+          ],
+          "limitations": "Sensitivity envelopes are not confidence intervals; fixed target shares and disjoint sources/strata for sampling variance; covariance and conditional uncertainty unavailable.",
+          "radii": {
+            "mapping_bias_radius": "1/100",
+            "target_share_bias_radius": 0,
+            "transport_bias_radius": "1/20"
+          },
+          "sampling_status": "EXTERNAL_DESIGN_DIAGONAL_ONLY",
+          "sampling_variance": [
+            {
+              "categories": [
+                "insecure",
+                "formal"
+              ],
+              "variance": "261/640000"
+            },
+            {
+              "categories": [
+                "insecure",
+                "informal"
+              ],
+              "variance": "321/640000"
+            },
+            {
+              "categories": [
+                "secure",
+                "formal"
+              ],
+              "variance": "331/640000"
+            },
+            {
+              "categories": [
+                "secure",
+                "informal"
+              ],
+              "variance": "231/640000"
+            }
+          ],
+          "source_disagreement_and_uncovered_bounds": [
+            {
+              "categories": [
+                "secure",
+                "formal"
+              ],
+              "lower": "9/40",
+              "upper": "2/5"
+            },
+            {
+              "categories": [
+                "secure",
+                "informal"
+              ],
+              "lower": "1/10",
+              "upper": "11/40"
+            },
+            {
+              "categories": [
+                "insecure",
+                "formal"
+              ],
+              "lower": "7/40",
+              "upper": "1/4"
+            },
+            {
+              "categories": [
+                "insecure",
+                "informal"
+              ],
+              "lower": "1/4",
+              "upper": "13/40"
+            }
+          ]
+        },
+        "uncovered_target_mass": "0",
+        "values_read": [
+          "content_hash",
+          "decision",
+          "target_joint_status",
+          "candidate",
+          "candidate.covered_subprobability",
+          "candidate.uncovered_target_mass",
+          "candidate.support",
+          "candidate.uncertainty",
+          "candidate.uncertainty.source_disagreement_and_uncovered_bounds",
+          "candidate.uncertainty.sampling_status",
+          "refusals",
+          "overlap_diagnostics",
+          "conditional"
+        ]
+      },
+      "native_sources": [
+        {
+          "axes": [
+            {
+              "category_map": {
+                "A_insecure": "insecure",
+                "A_secure": "secure"
+              },
+              "construct_ref": "material_security",
+              "instrument_ref": "r35f6c-S_A-instrument@1",
+              "item_ref": "r35f6c-S_A-item-0@1",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "r35f6c-S_A-mapping-0@1",
+              "polarity_ref": "categories-not-score@1",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "r35f6c-S_A-named-response-meanings@1",
+              "review_status": "REVIEWED",
+              "scale_ref": "named-categories@1",
+              "scale_status": "REVIEWED"
+            },
+            {
+              "category_map": {
+                "A_formal": "formal",
+                "A_informal": "informal"
+              },
+              "construct_ref": "employment_position",
+              "instrument_ref": "r35f6c-S_A-instrument@1",
+              "item_ref": "r35f6c-S_A-item-1@1",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "r35f6c-S_A-mapping-1@1",
+              "polarity_ref": "categories-not-score@1",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "r35f6c-S_A-named-response-meanings@1",
+              "review_status": "REVIEWED",
+              "scale_ref": "named-categories@1",
+              "scale_status": "REVIEWED"
+            }
+          ],
+          "coadministration_ref": "r35f6c-W1-S_A-coadministration@1",
+          "dependence_kind": "MEASURED_SAME_SURVEY_JOINT",
+          "design_ref": "r35f6c-W1-S_A-stratified-fixed-n@1",
+          "joint_frontier_ref": "r35f6c-W1-two-item-complete@1",
+          "measure_basis": "UNWEIGHTED",
+          "missingness_ref": "r35f6c-no-missing@1",
+          "permission_ref": "SYNTHETIC_ONLY_NO_TRANSPORT_PERMISSION",
+          "product_ref": "r35f6c-W1-S_A-joint-product@1",
+          "risk_set_ref": "r35f6c-W1-S_A-eligible-asked-complete@1",
+          "routing_ref": "r35f6c-W1-shared-eligibility@1",
+          "sample_id": "r35f6c-W1-independent-sample-S_A",
+          "sampling_limitations": "Invented fixed-stratum tables built for this court; no real-source design, coverage or weighting validation; not a population estimate",
+          "scope": {
+            "boundary_ref": "r35f6c-boundary-one@1",
+            "end_year": 1995,
+            "fieldwork_ref": "r35f6c-1995-W1@1",
+            "geography": "Synthetic Region one",
+            "population": "resident adults in the eligible-and-asked work risk set",
+            "start_year": 1995,
+            "unit": "adult respondent"
+          },
+          "source_id": "S_A",
+          "strata": {
+            "majority": {
+              "cells": [
+                {
+                  "categories": [
+                    "A_secure",
+                    "A_formal"
+                  ],
+                  "mass": 40,
+                  "n": 40
+                },
+                {
+                  "categories": [
+                    "A_secure",
+                    "A_informal"
+                  ],
+                  "mass": 10,
+                  "n": 10
+                },
+                {
+                  "categories": [
+                    "A_insecure",
+                    "A_formal"
+                  ],
+                  "mass": 25,
+                  "n": 25
+                },
+                {
+                  "categories": [
+                    "A_insecure",
+                    "A_informal"
+                  ],
+                  "mass": 25,
+                  "n": 25
+                }
+              ],
+              "design_variance": {
+                "cells": [
+                  {
+                    "categories": [
+                      "secure",
+                      "formal"
+                    ],
+                    "variance": "3/1250"
+                  },
+                  {
+                    "categories": [
+                      "secure",
+                      "informal"
+                    ],
+                    "variance": "9/10000"
+                  },
+                  {
+                    "categories": [
+                      "insecure",
+                      "formal"
+                    ],
+                    "variance": "3/1600"
+                  },
+                  {
+                    "categories": [
+                      "insecure",
+                      "informal"
+                    ],
+                    "variance": "3/1600"
+                  }
+                ],
+                "method_ref": "R35F6C_FIXED_STRATUM_MULTINOMIAL_PLUGIN@1"
+              },
+              "eligible_n": 100,
+              "excluded_n": 0,
+              "support_ref": "r35f6c-W1-S_A-majority-support@1",
+              "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET"
+            },
+            "minority": {
+              "cells": [
+                {
+                  "categories": [
+                    "A_secure",
+                    "A_formal"
+                  ],
+                  "mass": 25,
+                  "n": 25
+                },
+                {
+                  "categories": [
+                    "A_secure",
+                    "A_informal"
+                  ],
+                  "mass": 25,
+                  "n": 25
+                },
+                {
+                  "categories": [
+                    "A_insecure",
+                    "A_formal"
+                  ],
+                  "mass": 10,
+                  "n": 10
+                },
+                {
+                  "categories": [
+                    "A_insecure",
+                    "A_informal"
+                  ],
+                  "mass": 40,
+                  "n": 40
+                }
+              ],
+              "design_variance": {
+                "cells": [
+                  {
+                    "categories": [
+                      "secure",
+                      "formal"
+                    ],
+                    "variance": "3/1600"
+                  },
+                  {
+                    "categories": [
+                      "secure",
+                      "informal"
+                    ],
+                    "variance": "3/1600"
+                  },
+                  {
+                    "categories": [
+                      "insecure",
+                      "formal"
+                    ],
+                    "variance": "9/10000"
+                  },
+                  {
+                    "categories": [
+                      "insecure",
+                      "informal"
+                    ],
+                    "variance": "3/1250"
+                  }
+                ],
+                "method_ref": "R35F6C_FIXED_STRATUM_MULTINOMIAL_PLUGIN@1"
+              },
+              "eligible_n": 100,
+              "excluded_n": 0,
+              "support_ref": "r35f6c-W1-S_A-minority-support@1",
+              "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET"
+            }
+          },
+          "survey_lineage": "r35f6c-W1-survey-S_A",
+          "test_origin": true,
+          "weight_ref": "unit-weight@1"
+        },
+        {
+          "axes": [
+            {
+              "category_map": {
+                "B_C1": "secure",
+                "B_C2": "insecure"
+              },
+              "construct_ref": "material_security",
+              "instrument_ref": "r35f6c-S_B-instrument@1",
+              "item_ref": "r35f6c-S_B-item-0@1",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "r35f6c-S_B-mapping-0@1",
+              "polarity_ref": "categories-not-score@1",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "r35f6c-S_B-named-response-meanings@1",
+              "review_status": "REVIEWED",
+              "scale_ref": "named-categories@1",
+              "scale_status": "REVIEWED"
+            },
+            {
+              "category_map": {
+                "B_E1": "formal",
+                "B_E2": "informal"
+              },
+              "construct_ref": "employment_position",
+              "instrument_ref": "r35f6c-S_B-instrument@1",
+              "item_ref": "r35f6c-S_B-item-1@1",
+              "mapping_confidence": "HIGH",
+              "mapping_ref": "r35f6c-S_B-mapping-1@1",
+              "polarity_ref": "categories-not-score@1",
+              "polarity_status": "REVIEWED",
+              "response_semantics_ref": "r35f6c-S_B-named-response-meanings@1",
+              "review_status": "REVIEWED",
+              "scale_ref": "named-categories@1",
+              "scale_status": "REVIEWED"
+            }
+          ],
+          "coadministration_ref": "r35f6c-W1-S_B-coadministration@1",
+          "dependence_kind": "MEASURED_SAME_SURVEY_JOINT",
+          "design_ref": "r35f6c-W1-S_B-stratified-fixed-n@1",
+          "joint_frontier_ref": "r35f6c-W1-two-item-complete@1",
+          "measure_basis": "UNWEIGHTED",
+          "missingness_ref": "r35f6c-no-missing@1",
+          "permission_ref": "SYNTHETIC_ONLY_NO_TRANSPORT_PERMISSION",
+          "product_ref": "r35f6c-W1-S_B-joint-product@1",
+          "risk_set_ref": "r35f6c-W1-S_B-eligible-asked-complete@1",
+          "routing_ref": "r35f6c-W1-shared-eligibility@1",
+          "sample_id": "r35f6c-W1-independent-sample-S_B",
+          "sampling_limitations": "Invented fixed-stratum tables built for this court; no real-source design, coverage or weighting validation; not a population estimate",
+          "scope": {
+            "boundary_ref": "r35f6c-boundary-one@1",
+            "end_year": 1995,
+            "fieldwork_ref": "r35f6c-1995-W1@1",
+            "geography": "Synthetic Region one",
+            "population": "resident adults in the eligible-and-asked work risk set",
+            "start_year": 1995,
+            "unit": "adult respondent"
+          },
+          "source_id": "S_B",
+          "strata": {
+            "majority": {
+              "cells": [
+                {
+                  "categories": [
+                    "B_C1",
+                    "B_E1"
+                  ],
+                  "mass": 20,
+                  "n": 20
+                },
+                {
+                  "categories": [
+                    "B_C1",
+                    "B_E2"
+                  ],
+                  "mass": 30,
+                  "n": 30
+                },
+                {
+                  "categories": [
+                    "B_C2",
+                    "B_E1"
+                  ],
+                  "mass": 25,
+                  "n": 25
+                },
+                {
+                  "categories": [
+                    "B_C2",
+                    "B_E2"
+                  ],
+                  "mass": 25,
+                  "n": 25
+                }
+              ],
+              "design_variance": {
+                "cells": [
+                  {
+                    "categories": [
+                      "secure",
+                      "formal"
+                    ],
+                    "variance": "1/625"
+                  },
+                  {
+                    "categories": [
+                      "secure",
+                      "informal"
+                    ],
+                    "variance": "21/10000"
+                  },
+                  {
+                    "categories": [
+                      "insecure",
+                      "formal"
+                    ],
+                    "variance": "3/1600"
+                  },
+                  {
+                    "categories": [
+                      "insecure",
+                      "informal"
+                    ],
+                    "variance": "3/1600"
+                  }
+                ],
+                "method_ref": "R35F6C_FIXED_STRATUM_MULTINOMIAL_PLUGIN@1"
+              },
+              "eligible_n": 100,
+              "excluded_n": 0,
+              "support_ref": "r35f6c-W1-S_B-majority-support@1",
+              "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET"
+            },
+            "minority": {
+              "cells": [
+                {
+                  "categories": [
+                    "B_C1",
+                    "B_E1"
+                  ],
+                  "mass": 40,
+                  "n": 40
+                },
+                {
+                  "categories": [
+                    "B_C1",
+                    "B_E2"
+                  ],
+                  "mass": 10,
+                  "n": 10
+                },
+                {
+                  "categories": [
+                    "B_C2",
+                    "B_E1"
+                  ],
+                  "mass": 25,
+                  "n": 25
+                },
+                {
+                  "categories": [
+                    "B_C2",
+                    "B_E2"
+                  ],
+                  "mass": 25,
+                  "n": 25
+                }
+              ],
+              "design_variance": {
+                "cells": [
+                  {
+                    "categories": [
+                      "secure",
+                      "formal"
+                    ],
+                    "variance": "3/1250"
+                  },
+                  {
+                    "categories": [
+                      "secure",
+                      "informal"
+                    ],
+                    "variance": "9/10000"
+                  },
+                  {
+                    "categories": [
+                      "insecure",
+                      "formal"
+                    ],
+                    "variance": "3/1600"
+                  },
+                  {
+                    "categories": [
+                      "insecure",
+                      "informal"
+                    ],
+                    "variance": "3/1600"
+                  }
+                ],
+                "method_ref": "R35F6C_FIXED_STRATUM_MULTINOMIAL_PLUGIN@1"
+              },
+              "eligible_n": 100,
+              "excluded_n": 0,
+              "support_ref": "r35f6c-W1-S_B-minority-support@1",
+              "table_status": "EXHAUSTIVE_DECLARED_JOINT_RISK_SET"
+            }
+          },
+          "survey_lineage": "r35f6c-W1-survey-S_B",
+          "test_origin": true,
+          "weight_ref": "unit-weight@1"
+        }
+      ],
+      "policy": {
+        "conditional_invariance_ref": "r35f6c-W1-equal-risk-set-law-assumption@1",
+        "conditional_invariance_status": "REVIEWED_ASSUMPTION",
+        "mapping_bias_radius": "1/100",
+        "mapping_hashes": {
+          "S_A": "5e477398996e0281699c1efa796423035b3d8ccaef072f82bd4d808e9f138e35",
+          "S_B": "0dfafad61962a4aeb70cb2fd2955f744b9dce68ba6407345aeae03bbea487761"
+        },
+        "maximum_joint_cells": 64,
+        "minimum_raw_support": 30,
+        "overlap_reviews": {
+          "S_A|S_B": {
+            "review_ref": "r35f6c-independent-sampling-review@1",
+            "status": "DISJOINT"
+          }
+        },
+        "policy_ref": "r35f6c-W1-standardization-decision@1",
+        "scope_review_ref": "r35f6c-W1-scope-review@1",
+        "source_weights": {
+          "S_A": 1,
+          "S_B": 1
+        },
+        "target_share_bias_radius": 0,
+        "target_support_ref": "r35f6c-W1-target-support@1",
+        "transport_bias_radius": "1/20"
+      },
+      "product_ref": "2550b1d2486769d771cb248c9fe8069539da1f2a3007d27c19fe104e987af465",
+      "route_probability": null,
+      "state": "CATEGORY_OUTSIDE_SUPPORT",
+      "target": {
+        "boundary_ref": "r35f6c-boundary-one@1",
+        "geography": "Synthetic Region one",
+        "population": "resident adults in the eligible-and-asked work risk set",
+        "strata": {
+          "majority": "1/2",
+          "minority": "1/2"
+        },
+        "strata_ref": "r35f6c-population-register-one@1",
+        "target_id": "R35F6C_W1_1995_ADULT_ELIGIBLE_ASKED_RISK_SET",
+        "unit": "adult respondent",
+        "year": 1995
+      },
+      "world_joint": null,
+      "world_use": "SEPARATE_SOURCEFREE_EVIDENCE_ONLY__NO_N9_TRANSPORT_ADMISSION"
+    }
+  },
+  "unmatched": [
+    {
+      "evidence": "W1",
+      "state": "NO_MATCHED_SOURCE_ESTIMAND_OR_TRANSPORT_CONTRACT",
+      "world": "E04_ABC_Y_SYNTHETIC_RELEASE"
+    },
+    {
+      "evidence": "W2",
+      "state": "NO_MATCHED_SOURCE_ESTIMAND_OR_TRANSPORT_CONTRACT",
+      "world": "E04_ABC_Y_SYNTHETIC_RELEASE"
+    },
+    {
+      "evidence": "W3",
+      "state": "NO_MATCHED_SOURCE_ESTIMAND_OR_TRANSPORT_CONTRACT",
+      "world": "E04_ABC_Y_SYNTHETIC_RELEASE"
+    },
+    {
+      "evidence": "W4",
+      "state": "NO_MATCHED_SOURCE_ESTIMAND_OR_TRANSPORT_CONTRACT",
+      "world": "E04_ABC_Y_SYNTHETIC_RELEASE"
+    },
+    {
+      "evidence": "W5",
+      "state": "NO_MATCHED_SOURCE_ESTIMAND_OR_TRANSPORT_CONTRACT",
+      "world": "E04_ABC_Y_SYNTHETIC_RELEASE"
+    },
+    {
+      "evidence": "W6",
+      "state": "NO_MATCHED_SOURCE_ESTIMAND_OR_TRANSPORT_CONTRACT",
+      "world": "E04_ABC_Y_SYNTHETIC_RELEASE"
+    },
+    {
+      "evidence": "W7",
+      "state": "NO_MATCHED_SOURCE_ESTIMAND_OR_TRANSPORT_CONTRACT",
+      "world": "E04_ABC_Y_SYNTHETIC_RELEASE"
+    },
+    {
+      "evidence": "W8",
+      "state": "NO_MATCHED_SOURCE_ESTIMAND_OR_TRANSPORT_CONTRACT",
+      "world": "E04_ABC_Y_SYNTHETIC_RELEASE"
+    }
+  ],
+  "world_consumer": "ObjectiveWorld.evidence_view reads actual F6P, changes display class and preserves bounds; separate scope; not an authorized N9 F6 join"
+}

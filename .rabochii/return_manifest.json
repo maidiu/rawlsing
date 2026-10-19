@@ -1,14 +1,14 @@
 {
   "schema_id": "RABOCHII_RETURN_MANIFEST@1.0.0",
-  "task_id": "PYAT-HQ118-I2-M2-RELEASE-RUNTIME-R1",
-  "branch": "agent/rabochii-pyat-hq118-i2-m2-release-runtime-r1",
+  "task_id": "PYAT-R41-W41-OBJECTIVE-MULTIFIELD-TEMPORAL-N9-ESTATE-R1",
+  "branch": "agent/rabochii-pyat-r41-w41-objective-multifield-temporal-n9-r1",
   "commission": {
-    "authority_ref": "d709ce3a64eced97c69c05506ead8a9e66292d67",
-    "exact_start_sha": "d709ce3a64eced97c69c05506ead8a9e66292d67"
+    "authority_ref": "c4934fd71120d37a4d06f7c830891e6e97fe4ecf",
+    "exact_start_sha": "c4934fd71120d37a4d06f7c830891e6e97fe4ecf"
   },
   "return": {
     "result": "PASS",
-    "terminal": "PYAT_HQ118_I2_PASS__M2_RELEASE_CORE_AND_RESOLUTION_RUNTIME_SOURCE_FREE_GREEN__NO_LIFECYCLE_PUBLICATION_COLLAPSE__RETURN_TO_HQ",
+    "terminal": "W41_SCOPED_NATIVE_WORLD_PRODUCT_PASS__ORIGINAL_ESTATE_AUTHORITY_HELD__RETURN_TO_PYAT_HQ",
     "phase": "CLOSURE_ONLY",
     "completion": {
       "commission_consumed": true,
@@ -25,86 +25,139 @@
     "no_uncommissioned_review": true
   },
   "return_packet": {
-    "path": "WORKER_RETURNS/PYAT-HQ118-I2-M2-RELEASE-RUNTIME-R1/00_RETURN.md",
-    "blob_sha": "f30629ffad6d64b3b3c7bbc4e63ee7bcdab5f4c3"
+    "path": "WORKER_RETURNS/PYAT-R41-W41-OBJECTIVE-WORLD-R1/00_RETURN.md",
+    "blob_sha": "96ce965d27282be7d500c5c1259ecdce68bcef6d"
   },
   "required_outputs": [
     {
-      "name": "m2_runtime",
+      "name": "objective_world.py",
       "kind": "path",
-      "path": "rawlsing_next/pre553_learned_product_release.py",
-      "blob_sha": "f76c390665f06ef126968ccf1a6b2d816f43ae92",
+      "path": "WORKER_RETURNS/PYAT-R41-W41-OBJECTIVE-WORLD-R1/objective_world.py",
+      "blob_sha": "79a91fc027d4be5428e19ef7a14cac0c19e96e4d",
       "status": "DURABLE"
     },
     {
-      "name": "m2_tests",
+      "name": "00_FROZEN_CONSUMER_ORACLE.json",
       "kind": "path",
-      "path": "rawlsing_next/tests/test_pre553_learned_product_release.py",
-      "blob_sha": "d45b54190815b4c6af506579962a9aac8a7074c2",
+      "path": "WORKER_RETURNS/PYAT-R41-W41-OBJECTIVE-WORLD-R1/00_FROZEN_CONSUMER_ORACLE.json",
+      "blob_sha": "eef9c50e97e3d9ea31f4f54a30c9ccbe8b957daf",
       "status": "DURABLE"
     },
     {
-      "name": "return_packet",
+      "name": "source_field_and_structural_owner_inventory.json",
       "kind": "path",
-      "path": "WORKER_RETURNS/PYAT-HQ118-I2-M2-RELEASE-RUNTIME-R1/00_RETURN.md",
-      "blob_sha": "f30629ffad6d64b3b3c7bbc4e63ee7bcdab5f4c3",
+      "path": "WORKER_RETURNS/PYAT-R41-W41-OBJECTIVE-WORLD-R1/source_field_and_structural_owner_inventory.json",
+      "blob_sha": "ee14647968146f28161f59b994e1e8c39105bd26",
       "status": "DURABLE"
     },
     {
-      "name": "changed_files",
+      "name": "field_forge_structural_product_refs.json",
       "kind": "path",
-      "path": "WORKER_RETURNS/PYAT-HQ118-I2-M2-RELEASE-RUNTIME-R1/01_CHANGED_FILES.tsv",
-      "blob_sha": "d5a7b353bf85954cb3b2712ccf963caafa494f1e",
+      "path": "WORKER_RETURNS/PYAT-R41-W41-OBJECTIVE-WORLD-R1/field_forge_structural_product_refs.json",
+      "blob_sha": "6a628a7f436140ea83a3936d1f013036918a5cba",
       "status": "DURABLE"
     },
     {
-      "name": "public_api_owner_receipt",
+      "name": "multifield_nonpooling_and_bounds_receipts.json",
       "kind": "path",
-      "path": "WORKER_RETURNS/PYAT-HQ118-I2-M2-RELEASE-RUNTIME-R1/02_PUBLIC_API_AND_OWNER_RECEIPT.md",
-      "blob_sha": "4a40b119d4cdc8617b6cdf4c524608ddc7e3bb3a",
+      "path": "WORKER_RETURNS/PYAT-R41-W41-OBJECTIVE-WORLD-R1/multifield_nonpooling_and_bounds_receipts.json",
+      "blob_sha": "2a56391a26a68f9727ceeec52dfa05b37650ecef",
       "status": "DURABLE"
     },
     {
-      "name": "hostile_test_ledger",
+      "name": "measured_temporal_eligibility_and_method.json",
       "kind": "path",
-      "path": "WORKER_RETURNS/PYAT-HQ118-I2-M2-RELEASE-RUNTIME-R1/03_HOSTILE_TEST_LEDGER.tsv",
-      "blob_sha": "e5e37c29fa1b9e3859b4c970209625b5d43f4727",
+      "path": "WORKER_RETURNS/PYAT-R41-W41-OBJECTIVE-WORLD-R1/measured_temporal_eligibility_and_method.json",
+      "blob_sha": "069be782d589cf907dcc77c3da7d632d8fb5ae37",
       "status": "DURABLE"
     },
     {
-      "name": "m1_m2_interface_receipt",
+      "name": "world_snapshot_and_dependency_graph.json",
       "kind": "path",
-      "path": "WORKER_RETURNS/PYAT-HQ118-I2-M2-RELEASE-RUNTIME-R1/04_M1_TO_M2_INTERFACE_RECEIPT.md",
-      "blob_sha": "759428d57ab03bf0b7c7cf07ef20b896426cf7cc",
+      "path": "WORKER_RETURNS/PYAT-R41-W41-OBJECTIVE-WORLD-R1/world_snapshot_and_dependency_graph.json",
+      "blob_sha": "61d430f2994692291172fd71c7380466d73721b2",
       "status": "DURABLE"
     },
     {
-      "name": "representation_parity_receipt",
+      "name": "current_historical_asof_world_consumer_receipts.json",
       "kind": "path",
-      "path": "WORKER_RETURNS/PYAT-HQ118-I2-M2-RELEASE-RUNTIME-R1/05_VIRTUAL_MATERIALIZED_PARITY_RECEIPT.md",
-      "blob_sha": "6326a85da3eb3067456c483025d8a224b07a59b0",
+      "path": "WORKER_RETURNS/PYAT-R41-W41-OBJECTIVE-WORLD-R1/current_historical_asof_world_consumer_receipts.json",
+      "blob_sha": "eeb662a44bf9a8798316c1d31900a7c98f6b9fb0",
       "status": "DURABLE"
     },
     {
-      "name": "publication_boundary_receipt",
+      "name": "f5_f7_family_global_maturity_matrix.json",
       "kind": "path",
-      "path": "WORKER_RETURNS/PYAT-HQ118-I2-M2-RELEASE-RUNTIME-R1/06_PUBLICATION_BOUNDARY_RECEIPT.md",
-      "blob_sha": "210ef8b5e94ef09e95fb255c1f88e2fd7eafd8c2",
+      "path": "WORKER_RETURNS/PYAT-R41-W41-OBJECTIVE-WORLD-R1/f5_f7_family_global_maturity_matrix.json",
+      "blob_sha": "98956643add617d2ecb12fc77c1a1957302a754a",
       "status": "DURABLE"
     },
     {
-      "name": "qualified_semantic_candidate",
-      "kind": "commit",
-      "sha": "805f4ec04c5beff82ac5ac6bc346464d074dc1b0",
+      "name": "P41_A41_HAND_BACK.json",
+      "kind": "path",
+      "path": "WORKER_RETURNS/PYAT-R41-W41-OBJECTIVE-WORLD-R1/P41_A41_HAND_BACK.json",
+      "blob_sha": "80d95655d2882dfc89b1df71306ea07020fe36a8",
+      "status": "DURABLE"
+    },
+    {
+      "name": "finite_owner_decisions.json",
+      "kind": "path",
+      "path": "WORKER_RETURNS/PYAT-R41-W41-OBJECTIVE-WORLD-R1/finite_owner_decisions.json",
+      "blob_sha": "8620e1d0c1f6f15052adad52924b8c33269d83fe",
+      "status": "DURABLE"
+    },
+    {
+      "name": "native_owners.tar.gz",
+      "kind": "path",
+      "path": "WORKER_RETURNS/PYAT-R41-W41-OBJECTIVE-WORLD-R1/native_owners.tar.gz",
+      "blob_sha": "10dedb13cf2b5b2b5dd4bc21441b9984e2dba957",
+      "status": "DURABLE"
+    },
+    {
+      "name": "owner_pins.json",
+      "kind": "path",
+      "path": "WORKER_RETURNS/PYAT-R41-W41-OBJECTIVE-WORLD-R1/owner_pins.json",
+      "blob_sha": "358d71ba589000d58c61fa16e34df1d11d0c6065",
+      "status": "DURABLE"
+    },
+    {
+      "name": "artifact_manifest.json",
+      "kind": "path",
+      "path": "WORKER_RETURNS/PYAT-R41-W41-OBJECTIVE-WORLD-R1/artifact_manifest.json",
+      "blob_sha": "8fc5cf7d5329c041fe990419b16b96d5a77cd3f5",
+      "status": "DURABLE"
+    },
+    {
+      "name": "evidence/cold_replay.json",
+      "kind": "path",
+      "path": "WORKER_RETURNS/PYAT-R41-W41-OBJECTIVE-WORLD-R1/evidence/cold_replay.json",
+      "blob_sha": "59b29539e1641506db138036310deccd73cb057f",
+      "status": "DURABLE"
+    },
+    {
+      "name": "evidence/proof_witness.json",
+      "kind": "path",
+      "path": "WORKER_RETURNS/PYAT-R41-W41-OBJECTIVE-WORLD-R1/evidence/proof_witness.json",
+      "blob_sha": "040301994d9008ea58a62a73ff6eb7d23830f302",
+      "status": "DURABLE"
+    },
+    {
+      "name": "evidence/test_summary.json",
+      "kind": "path",
+      "path": "WORKER_RETURNS/PYAT-R41-W41-OBJECTIVE-WORLD-R1/evidence/test_summary.json",
+      "blob_sha": "994d76f50386e2ca621514605d9c15f1244fd274",
+      "status": "DURABLE"
+    },
+    {
+      "name": "environment_passport_delta.json",
+      "kind": "path",
+      "path": "WORKER_RETURNS/PYAT-R41-W41-OBJECTIVE-WORLD-R1/environment_passport_delta.json",
+      "blob_sha": "31330c708bcf95cb33e453756294106cf16cf462",
       "status": "DURABLE"
     }
   ],
   "evidence": {
-    "required": true,
-    "workflow_run_id": 36326255638,
-    "workflow_name": "Rabochii Governed Bounded Court",
-    "conclusion": "success",
-    "evidence_execution_sha": "4ba26b7e1501e8cbb2ef6e84ccd4a5d2dd8c890a",
-    "artifact_id": 10934510122
+    "required": false,
+    "reason": "Qualified native local JUnit, six executed shared-checker witnesses, explicit AST and cold replay; no GitHub Actions execution claimed"
   }
 }

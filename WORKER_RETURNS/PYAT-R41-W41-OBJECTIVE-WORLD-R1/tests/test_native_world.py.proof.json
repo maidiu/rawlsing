@@ -1,0 +1,71 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "claims": [
+    {
+      "claim_id": "W41_FF_NATIVE_CONTEXT",
+      "actual_consumer": "objective_world.retained_context exact native context client",
+      "claimed_dependency": "actual FF profile -> admitted V554 -> M4 resolved F1 -> readonly context",
+      "positive_node": "WORKER_RETURNS/PYAT-R41-W41-OBJECTIVE-WORLD-R1/tests/test_native_world.py::test_ff_context_reaches_readonly_consumer",
+      "fault": {
+        "path": "WORKER_RETURNS/PYAT-R41-W41-OBJECTIVE-WORLD-R1/owners/native/rawlsing_next/field_forge_conditional_support.py",
+        "old": "\"joint_support_count\": count,",
+        "new": "\"joint_support_count\": 0,"
+      }
+    },
+    {
+      "claim_id": "W41_F6_NATIVE_EVIDENCE",
+      "actual_consumer": "ObjectiveWorld.evidence_view; separate SOURCEFREE_EXPERIMENT use; no N9 join",
+      "claimed_dependency": "actual F6M uncovered mass -> F6P partial bounds -> readonly world evidence view",
+      "positive_node": "WORKER_RETURNS/PYAT-R41-W41-OBJECTIVE-WORLD-R1/tests/test_native_world.py::test_f6_native_partial_drives_world_evidence_view",
+      "fault": {
+        "path": "WORKER_RETURNS/PYAT-R41-W41-OBJECTIVE-WORLD-R1/owners/f6p/native/rawlsing_next/pre553_heterogeneous_synthesis.py",
+        "old": "\"uncovered_target_mass\": str(uncovered),",
+        "new": "\"uncovered_target_mass\": \"0\","
+      }
+    },
+    {
+      "claim_id": "W41_T35_RULE_TO_ORIGINAL_CLIENT",
+      "actual_consumer": "unchanged product.nonparent.consume",
+      "claimed_dependency": "actual T35 fee revision -> M4/M5 -> original nonparent training eligibility",
+      "positive_node": "WORKER_RETURNS/PYAT-R41-W41-OBJECTIVE-WORLD-R1/tests/test_native_world.py::test_temporal_revision_drives_original_consumer",
+      "fault": {
+        "path": "WORKER_RETURNS/PYAT-R41-W41-OBJECTIVE-WORLD-R1/owners/wv1/vendor/two_epoch_world.py",
+        "old": "catalog._publish(\"training_fee\", 6, RULE_REVISION[\"effective_from\"],",
+        "new": "catalog._publish(\"training_fee\", 2, RULE_REVISION[\"effective_from\"],"
+      }
+    },
+    {
+      "claim_id": "W41_RELEASE_TO_ORIGINAL_CLIENT",
+      "actual_consumer": "unchanged product.nonparent.consume",
+      "claimed_dependency": "actual B5 selection -> M2 exact release -> original E04 source balances",
+      "positive_node": "WORKER_RETURNS/PYAT-R41-W41-OBJECTIVE-WORLD-R1/tests/test_native_world.py::test_selected_release_drives_original_consumer",
+      "fault": {
+        "path": "WORKER_RETURNS/PYAT-R41-W41-OBJECTIVE-WORLD-R1/owners/wv1/vendor/readthrough.py",
+        "old": "resolution=m2.resolve_release_exact(p.repository,selected.selected_release_ref)",
+        "new": "p.repository._releases.clear()\n        resolution=m2.resolve_release_exact(p.repository,selected.selected_release_ref)"
+      }
+    },
+    {
+      "claim_id": "W41_M4_TO_ORIGINAL_CLIENT",
+      "actual_consumer": "unchanged product.nonparent.consume",
+      "claimed_dependency": "actual M4 resolution -> M5 RSC -> original client structural values",
+      "positive_node": "WORKER_RETURNS/PYAT-R41-W41-OBJECTIVE-WORLD-R1/tests/test_native_world.py::test_m4_resolution_drives_original_consumer",
+      "fault": {
+        "path": "WORKER_RETURNS/PYAT-R41-W41-OBJECTIVE-WORLD-R1/owners/native/rawlsing_next/m4_v557_v558_publication_repository.py",
+        "old": "requested = set(item.requested_uses)",
+        "new": "requested = set(item.requested_uses) | {\"CAUSAL\"}"
+      }
+    },
+    {
+      "claim_id": "W41_EE1_POPULATION_GATE",
+      "actual_consumer": "objective_world.temporal_methods",
+      "claimed_dependency": "actual EE1 population-estimand gate -> readonly temporal comparisons",
+      "positive_node": "WORKER_RETURNS/PYAT-R41-W41-OBJECTIVE-WORLD-R1/tests/test_native_world.py::test_native_temporal_population_gate_drives_view",
+      "fault": {
+        "path": "WORKER_RETURNS/PYAT-R41-W41-OBJECTIVE-WORLD-R1/owners/ee1/runtime/ee1_temporal_owner.py",
+        "old": "if len(signatures) == 1:",
+        "new": "if len(signatures) >= 1:"
+      }
+    }
+  ]
+}
