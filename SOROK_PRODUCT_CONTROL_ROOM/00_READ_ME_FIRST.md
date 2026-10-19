@@ -1,5 +1,10 @@
 # Sorok PRE-MAIN grounding and reciprocal progress front door
 
+## MANDATORY SOROK HQ PARALLEL-FLIGHT GROK — 18 OCTOBER 2026
+
+Read [shared HQ parallel flights and model-economy law](../CROSS_HQ_CONTROL_ROOM/HQ_PARALLEL_FLIGHTS_AND_ECONOMICAL_MODEL_ROUTING_LAW_R1.md) before fresh/resumed Sorok grok, after each material return and before new dispatch. A single return→repair→I2 loop is NOT a substitute for a whole C0–C12/A0–A5 critical-path flight, actual CAN008/011 owner question and simultaneous independent source/actor/world/consumer work. Require live/unknown resource board across the user's two potential computers, two Codex/ChatGPT and two OpenCode accounts, exact readiness/authority/writer segregation and credible reasons for every serial edge. Recommend minimum qualified model **separately** from user-selected editor/harness: consider verifiably sufficient DeepSeek V4.1-Flash for local mechanical/bounded work, Browser High for high reasoning with no heavy local test surface, not reflexive Codex 6.1 High. If just one next commission is proposed without the other lanes, `SOROK_HQ_FLIGHT_GROK_INCOMPLETE__SEQ_DRIFT__REPLAN`. Read working 00C/00D and shared proof-integrity law; this adds no actor, source or semantic authority.
+
+
 ## Mandatory falsifiable actor/world proof discipline — 18 October 2026
 
 Before Sorok commissioning, returning or promoting a C0–C12, A0–A5, CAN/ADP, provenance, outbox or actor-consumer integration, apply [the shared PRE-MAIN proof-integrity law](../CROSS_HQ_CONTROL_ROOM/PROOF_INTEGRITY_AND_FALSIFIABLE_TEST_LAW_R1.md). A consumer/world or actor/event/outbox dependency is not proved by two components producing coincident values. Freeze the exact behavior that must fail when the claimed edge is severed/revoked/substituted, execute that control within the normal worker pass, and verify the named assertion fails (not merely an unrelated import or fixture check). Reject vacuous assertions and inert loops. Do not add a new ritual review round or self-issue actor/semantic authority.
