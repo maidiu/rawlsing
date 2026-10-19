@@ -1,0 +1,636 @@
+{
+  "schema": "PYAT_R37_WG0I_WG0R_COMPARISON@1",
+  "wg0r_commit": "0310d94dfab57f811110027c1c801b725fdba5c1",
+  "oracle_digest": "682b74202e618b0f5f5a5f56a89f46b246b9ca63de2f6afa2992510bfe179c5b",
+  "author_evidence": {
+    "accounting_rows": 18276,
+    "unique_implementation_ids": 18276,
+    "unique_identity_hashes": 18276,
+    "waves": 35,
+    "wave_sum": 18276,
+    "families": 9,
+    "author_court": {
+      "tests": 82,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "cold_court": {
+      "tests": 82,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "cold_receipt": {
+      "scope": "COLD_RELOCATED_SOURCEFREE_REPLAY__NOT_ORIGINAL_SURVEY",
+      "exit_code": 0,
+      "duration_seconds": 18.296,
+      "fixture_json_sha256": "a06f80879ccfea66857cb8cbbac74579da5a94c0b327b6310db96457a81adfab",
+      "two_fresh_process_outputs_identical": true,
+      "new_batch_executions_on_resume": 0,
+      "copy": "[WG0R_RETURN]/.runtime/cold_replay",
+      "runtime": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]",
+      "test_source_cut": "EXACT_CONTROL_BASE_68873526",
+      "network_required_during_court": false
+    }
+  },
+  "wg0r_claims": {
+    "implementations": 18276,
+    "unique_ids": 18276,
+    "active_waves": 35,
+    "families": 9,
+    "duplicate_ids": [],
+    "missing_waves": [],
+    "unexpected_waves": [],
+    "p2_sha256": "d38301588fae27c66f6b8627c5007fb0d8ed4ac3d7eb25f32c74228c367b86b6",
+    "all35_operation_execution": "UNVERIFIED__NO_RAW_READS_OR_SOURCE_WARRANT_ISSUED",
+    "pending_edge": "EXACT_ACCEPTED_AUTHORITY_TO_OPERATION_CATALOG_BINDING_AND_FULL_FRONTIER_WITNESS",
+    "p10_accounting_units": 65354,
+    "p10_exact_held_states": 76,
+    "disposition_carrier": {
+      "claimed_bytes": 18276,
+      "claimed_sha256": "64a43ba2d7564d7681770065b843273330dc368b8d01bf328a8af7b19878bd98",
+      "observed_bytes": 18387,
+      "observed_sha256": "3bee6f0ec5cae74c112f2896b517b23ab7e880c9400bf019d1df6d0b3157edee",
+      "reserved_bit_violations": 2114,
+      "scope": "RETAINED_LOCAL_DOCUMENTARY_COPY_ONLY__UPSTREAM_SEMANTIC_AUTHORITY_NOT_REVOKED",
+      "state": "DISPOSITION_PAYLOAD_MISMATCH"
+    }
+  },
+  "crosswalk": {
+    "o35e_rows": 18259,
+    "o35e_non_none_identity_hashes": 18250,
+    "o35e_none_identity_rows": 9,
+    "o35e_duplicate_identity_hashes": 0,
+    "common_identity_hashes": 18250,
+    "p2_only_hashes": 26,
+    "p2_only_carrier_variables": [
+      "numero",
+      "party",
+      "enc",
+      "pais",
+      "region",
+      "casenumb",
+      "wt"
+    ],
+    "p2_only_measurement_candidates": [
+      {
+        "family": "Latinobar\u00f3metro",
+        "wave": "1995",
+        "variable": "p46f",
+        "hash": "0fa0a9f546132c54f98c1114abadfc4c600edb9652d027c5d804033026d1837a"
+      },
+      {
+        "family": "Latinobar\u00f3metro",
+        "wave": "1995",
+        "variable": "p46e",
+        "hash": "23f75ff1ae9fa5f9e8321d1a003a36e13d42c0da6219233a83f4b44508c2fc21"
+      },
+      {
+        "family": "Latinobar\u00f3metro",
+        "wave": "1995",
+        "variable": "p43a",
+        "hash": "30e308d2f5b1add44a693a4572d68eae2b644ab754c3b2058a93ab3c3ca39640"
+      },
+      {
+        "family": "Latinobar\u00f3metro",
+        "wave": "2024",
+        "variable": "Q8NCVA",
+        "hash": "50b49a78bd42f4ccc762733a600e89f6c11dd1457ca30007e73fb35e3a0cb981"
+      },
+      {
+        "family": "Latinobar\u00f3metro",
+        "wave": "1995",
+        "variable": "p47b",
+        "hash": "62f74db198472da0b525ca2252a0ee4d0bb399681a12585c9aef45157099ff22"
+      },
+      {
+        "family": "Latinobar\u00f3metro",
+        "wave": "1995",
+        "variable": "p46a",
+        "hash": "715c3c525b8d7aea42ccbd39e5fa769103f500dafe29fab5e2db1e775aab79eb"
+      },
+      {
+        "family": "Latinobar\u00f3metro",
+        "wave": "1995",
+        "variable": "p46h",
+        "hash": "7207b6d4db8252fc0c906f79a6b96de911d29198292f3d3b4a682da281ca1360"
+      },
+      {
+        "family": "Latinobar\u00f3metro",
+        "wave": "2024",
+        "variable": "Q47STC",
+        "hash": "79ced092c7ce65377c1ce222745ab00cdd0b797af713d9a0b8d4b817fecb5ee6"
+      },
+      {
+        "family": "Latinobar\u00f3metro",
+        "wave": "1995",
+        "variable": "p46c",
+        "hash": "7dbb9eae2776776e6ea9e88bea2a65adf2266e06097746967cc8c364e2ca5476"
+      },
+      {
+        "family": "Latinobar\u00f3metro",
+        "wave": "2024",
+        "variable": "Q8NCVC",
+        "hash": "8399e795f61d5c85360987d3f5a5477d7e863ade35d4173cdc6ad6a1843032f5"
+      },
+      {
+        "family": "Latinobar\u00f3metro",
+        "wave": "2024",
+        "variable": "Q45ST",
+        "hash": "9e4cec8d21b7bd803dd5906eb5427f35f52b9c98bece0b51a0e2f6807be3acef"
+      },
+      {
+        "family": "Latinobar\u00f3metro",
+        "wave": "1995",
+        "variable": "p46b",
+        "hash": "a4d13df93b0b5f774305cf4c076e5ecf94fd4653ab0187e70847e5056e503bc9"
+      },
+      {
+        "family": "Latinobar\u00f3metro",
+        "wave": "1995",
+        "variable": "p47c",
+        "hash": "b347c6c99a427d8b7c48175d111f68fdefa3f47cdee4a1b4212ba38a200c527e"
+      },
+      {
+        "family": "Latinobar\u00f3metro",
+        "wave": "1995",
+        "variable": "p47a",
+        "hash": "b5595cebe965f664cb27dfc7fbe50d0d9428df9e6d76c80881371ea051911136"
+      },
+      {
+        "family": "Afrobarometer",
+        "wave": "R1",
+        "variable": "xstronld",
+        "hash": "c1b201b575e7490270a829aa2879c858334b16d548ad0ff279b9f6a6482f226e"
+      },
+      {
+        "family": "Latinobar\u00f3metro",
+        "wave": "1995",
+        "variable": "p33b",
+        "hash": "e02d1acbdbe0dd0d28ca2f28364a6ef9bd4aa48c42e93342e2d4489c43ac6caa"
+      },
+      {
+        "family": "Latinobar\u00f3metro",
+        "wave": "1995",
+        "variable": "p46g",
+        "hash": "ec543f8a2afb10e7974a053c0e5c51c95ee15577c2c362b1ae077cbf427c2ba8"
+      },
+      {
+        "family": "Latinobar\u00f3metro",
+        "wave": "1995",
+        "variable": "p46d",
+        "hash": "f86530d3805d17e8e918397e909cc731a2e78a25951957d11267ee29c11c8955"
+      },
+      {
+        "family": "Latinobar\u00f3metro",
+        "wave": "2024",
+        "variable": "Q8NCVB",
+        "hash": "f90eff21049e70ac36bfefe820046d9b08240f5b7a658b9dc88d3de016aa969f"
+      }
+    ],
+    "net_count_delta": 17,
+    "arithmetic": "26 P2-only hashes - 9 O35E None-identity rows = 17 net count delta",
+    "o35e_none_rows": [
+      {
+        "wave": "SRC01",
+        "question_id": "Afrobarometer:R1:pid",
+        "status": "BLOCKED_IDENTITY_OR_AUTHORITY_JOIN"
+      },
+      {
+        "wave": "SRC01",
+        "question_id": "Afrobarometer:R1:respnumb",
+        "status": "BLOCKED_IDENTITY_OR_AUTHORITY_JOIN"
+      },
+      {
+        "wave": "SRC24",
+        "question_id": "Latinobar\u00f3metro:1995:P15",
+        "status": "BLOCKED_IDENTITY_OR_AUTHORITY_JOIN"
+      },
+      {
+        "wave": "SRC24",
+        "question_id": "Latinobar\u00f3metro:1995:P43",
+        "status": "BLOCKED_IDENTITY_OR_AUTHORITY_JOIN"
+      },
+      {
+        "wave": "SRC24",
+        "question_id": "Latinobar\u00f3metro:1995:P47",
+        "status": "BLOCKED_IDENTITY_OR_AUTHORITY_JOIN"
+      },
+      {
+        "wave": "SRC26",
+        "question_id": "Latinobar\u00f3metro:2024:Q12STGBS",
+        "status": "BLOCKED_IDENTITY_OR_AUTHORITY_JOIN"
+      },
+      {
+        "wave": "SRC26",
+        "question_id": "Latinobar\u00f3metro:2024:Q28ST",
+        "status": "BLOCKED_IDENTITY_OR_AUTHORITY_JOIN"
+      },
+      {
+        "wave": "SRC26",
+        "question_id": "Latinobar\u00f3metro:2024:Q47ST",
+        "status": "BLOCKED_IDENTITY_OR_AUTHORITY_JOIN"
+      },
+      {
+        "wave": "SRC26",
+        "question_id": "Latinobar\u00f3metro:2024:Q56ST",
+        "status": "BLOCKED_IDENTITY_OR_AUTHORITY_JOIN"
+      }
+    ],
+    "duplicate_rows": {},
+    "wave_deltas": [
+      {
+        "family": "Afrobarometer",
+        "wave": "R1",
+        "atlas_id": "SRC01",
+        "o35e": 143,
+        "wg0r": 144,
+        "delta": 1,
+        "status": "CROSSWALK_DELTA_REQUIRES_OWNER_TYPING"
+      },
+      {
+        "family": "Latinobar\u00f3metro",
+        "wave": "1995",
+        "atlas_id": "SRC24",
+        "o35e": 188,
+        "wg0r": 203,
+        "delta": 15,
+        "status": "CROSSWALK_DELTA_REQUIRES_OWNER_TYPING"
+      },
+      {
+        "family": "Latinobar\u00f3metro",
+        "wave": "2024",
+        "atlas_id": "SRC26",
+        "o35e": 194,
+        "wg0r": 195,
+        "delta": 1,
+        "status": "CROSSWALK_DELTA_REQUIRES_OWNER_TYPING"
+      }
+    ],
+    "all_wave_statuses": [
+      {
+        "family": "Afrobarometer",
+        "wave": "R1",
+        "atlas_id": "SRC01",
+        "o35e": 143,
+        "wg0r": 144,
+        "delta": 1,
+        "status": "CROSSWALK_DELTA_REQUIRES_OWNER_TYPING"
+      },
+      {
+        "family": "Afrobarometer",
+        "wave": "R5",
+        "atlas_id": "SRC02",
+        "o35e": 348,
+        "wg0r": 348,
+        "delta": 0,
+        "status": "EXACT_MATCH"
+      },
+      {
+        "family": "Afrobarometer",
+        "wave": "R9",
+        "atlas_id": "SRC03",
+        "o35e": 421,
+        "wg0r": 421,
+        "delta": 0,
+        "status": "EXACT_MATCH"
+      },
+      {
+        "family": "Arab Barometer",
+        "wave": "I",
+        "atlas_id": "SRC04",
+        "o35e": 181,
+        "wg0r": 181,
+        "delta": 0,
+        "status": "EXACT_MATCH"
+      },
+      {
+        "family": "Arab Barometer",
+        "wave": "II",
+        "atlas_id": "SRC05",
+        "o35e": 468,
+        "wg0r": 468,
+        "delta": 0,
+        "status": "EXACT_MATCH"
+      },
+      {
+        "family": "Arab Barometer",
+        "wave": "V",
+        "atlas_id": "SRC06",
+        "o35e": 359,
+        "wg0r": 359,
+        "delta": 0,
+        "status": "EXACT_MATCH"
+      },
+      {
+        "family": "Arab Barometer",
+        "wave": "VIII",
+        "atlas_id": "SRC07",
+        "o35e": 690,
+        "wg0r": 690,
+        "delta": 0,
+        "status": "EXACT_MATCH"
+      },
+      {
+        "family": "Asian Barometer",
+        "wave": "W1",
+        "atlas_id": "SRC08",
+        "o35e": 217,
+        "wg0r": 217,
+        "delta": 0,
+        "status": "EXACT_MATCH"
+      },
+      {
+        "family": "Asian Barometer",
+        "wave": "W4",
+        "atlas_id": "SRC09",
+        "o35e": 289,
+        "wg0r": 289,
+        "delta": 0,
+        "status": "EXACT_MATCH"
+      },
+      {
+        "family": "Asian Barometer",
+        "wave": "W5",
+        "atlas_id": "SRC10",
+        "o35e": 308,
+        "wg0r": 308,
+        "delta": 0,
+        "status": "EXACT_MATCH"
+      },
+      {
+        "family": "EVS",
+        "wave": "1981",
+        "atlas_id": "SRC11",
+        "o35e": 370,
+        "wg0r": 370,
+        "delta": 0,
+        "status": "EXACT_MATCH"
+      },
+      {
+        "family": "EVS",
+        "wave": "1990",
+        "atlas_id": "SRC12",
+        "o35e": 390,
+        "wg0r": 390,
+        "delta": 0,
+        "status": "EXACT_MATCH"
+      },
+      {
+        "family": "EVS",
+        "wave": "1999",
+        "atlas_id": "SRC13",
+        "o35e": 513,
+        "wg0r": 513,
+        "delta": 0,
+        "status": "EXACT_MATCH"
+      },
+      {
+        "family": "EVS",
+        "wave": "2008",
+        "atlas_id": "SRC14",
+        "o35e": 477,
+        "wg0r": 477,
+        "delta": 0,
+        "status": "EXACT_MATCH"
+      },
+      {
+        "family": "EVS",
+        "wave": "2017",
+        "atlas_id": "SRC15",
+        "o35e": 474,
+        "wg0r": 474,
+        "delta": 0,
+        "status": "EXACT_MATCH"
+      },
+      {
+        "family": "GSS",
+        "wave": "1972",
+        "atlas_id": "SRC16",
+        "o35e": 216,
+        "wg0r": 216,
+        "delta": 0,
+        "status": "EXACT_MATCH"
+      },
+      {
+        "family": "GSS",
+        "wave": "1973",
+        "atlas_id": "SRC17",
+        "o35e": 339,
+        "wg0r": 339,
+        "delta": 0,
+        "status": "EXACT_MATCH"
+      },
+      {
+        "family": "GSS",
+        "wave": "1984",
+        "atlas_id": "SRC18",
+        "o35e": 675,
+        "wg0r": 675,
+        "delta": 0,
+        "status": "EXACT_MATCH"
+      },
+      {
+        "family": "GSS",
+        "wave": "1993",
+        "atlas_id": "SRC19",
+        "o35e": 752,
+        "wg0r": 752,
+        "delta": 0,
+        "status": "EXACT_MATCH"
+      },
+      {
+        "family": "GSS",
+        "wave": "2002",
+        "atlas_id": "SRC20",
+        "o35e": 1119,
+        "wg0r": 1119,
+        "delta": 0,
+        "status": "EXACT_MATCH"
+      },
+      {
+        "family": "GSS",
+        "wave": "2010",
+        "atlas_id": "SRC21",
+        "o35e": 922,
+        "wg0r": 922,
+        "delta": 0,
+        "status": "EXACT_MATCH"
+      },
+      {
+        "family": "GSS",
+        "wave": "2016",
+        "atlas_id": "SRC22",
+        "o35e": 1018,
+        "wg0r": 1018,
+        "delta": 0,
+        "status": "EXACT_MATCH"
+      },
+      {
+        "family": "GSS",
+        "wave": "2024",
+        "atlas_id": "SRC23",
+        "o35e": 980,
+        "wg0r": 980,
+        "delta": 0,
+        "status": "EXACT_MATCH"
+      },
+      {
+        "family": "Latinobar\u00f3metro",
+        "wave": "1995",
+        "atlas_id": "SRC24",
+        "o35e": 188,
+        "wg0r": 203,
+        "delta": 15,
+        "status": "CROSSWALK_DELTA_REQUIRES_OWNER_TYPING"
+      },
+      {
+        "family": "Latinobar\u00f3metro",
+        "wave": "2011",
+        "atlas_id": "SRC25",
+        "o35e": 414,
+        "wg0r": 414,
+        "delta": 0,
+        "status": "EXACT_MATCH"
+      },
+      {
+        "family": "Latinobar\u00f3metro",
+        "wave": "2024",
+        "atlas_id": "SRC26",
+        "o35e": 194,
+        "wg0r": 195,
+        "delta": 1,
+        "status": "CROSSWALK_DELTA_REQUIRES_OWNER_TYPING"
+      },
+      {
+        "family": "LiTS",
+        "wave": "2006",
+        "atlas_id": "SRC27",
+        "o35e": 1198,
+        "wg0r": 1198,
+        "delta": 0,
+        "status": "EXACT_MATCH"
+      },
+      {
+        "family": "LiTS",
+        "wave": "II",
+        "atlas_id": "SRC28",
+        "o35e": 627,
+        "wg0r": 627,
+        "delta": 0,
+        "status": "EXACT_MATCH"
+      },
+      {
+        "family": "LiTS",
+        "wave": "III",
+        "atlas_id": "SRC29",
+        "o35e": 1290,
+        "wg0r": 1290,
+        "delta": 0,
+        "status": "EXACT_MATCH"
+      },
+      {
+        "family": "LiTS",
+        "wave": "IV",
+        "atlas_id": "SRC30",
+        "o35e": 1319,
+        "wg0r": 1319,
+        "delta": 0,
+        "status": "EXACT_MATCH"
+      },
+      {
+        "family": "South Asia",
+        "wave": "W1",
+        "atlas_id": "SRC31",
+        "o35e": 68,
+        "wg0r": 68,
+        "delta": 0,
+        "status": "EXACT_MATCH"
+      },
+      {
+        "family": "South Asia",
+        "wave": "W2",
+        "atlas_id": "SRC32",
+        "o35e": 73,
+        "wg0r": 73,
+        "delta": 0,
+        "status": "EXACT_MATCH"
+      },
+      {
+        "family": "WVS",
+        "wave": "W1",
+        "atlas_id": "SRC33",
+        "o35e": 188,
+        "wg0r": 188,
+        "delta": 0,
+        "status": "EXACT_MATCH"
+      },
+      {
+        "family": "WVS",
+        "wave": "W4",
+        "atlas_id": "SRC34",
+        "o35e": 418,
+        "wg0r": 418,
+        "delta": 0,
+        "status": "EXACT_MATCH"
+      },
+      {
+        "family": "WVS",
+        "wave": "W7",
+        "atlas_id": "SRC35",
+        "o35e": 613,
+        "wg0r": 613,
+        "delta": 0,
+        "status": "EXACT_MATCH"
+      }
+    ],
+    "classification": "CROSSWALK_DELTA_REQUIRES_OWNER_TYPING__NOT_AN_AUTOMATIC_OMISSION__NOT_A_WG0R_DEFECT"
+  },
+  "carrier": {
+    "claimed_bytes": 18276,
+    "claimed_sha256": "64a43ba2d7564d7681770065b843273330dc368b8d01bf328a8af7b19878bd98",
+    "observed_bytes": 18387,
+    "observed_sha256": "3bee6f0ec5cae74c112f2896b517b23ab7e880c9400bf019d1df6d0b3157edee",
+    "reserved_bit_violations": 2114,
+    "state": "DISPOSITION_PAYLOAD_MISMATCH",
+    "local_archive_copy_sha256": "c1d5a9a9b2905f7ed783a21f43eeef91bc173d6e5e077751a67f7025408ee7ad",
+    "fail_closed": true
+  },
+  "p2_skeleton": {
+    "source_path": "Rawlsing_Authority_Document_Archive_2026-08-24/documents/source-and-question-authority/08_P2_PHASE0/Rawlsing_P2_Phase0_Question_Node_Skeleton_v1.csv",
+    "local_path": "sources/local_archive/Rawlsing_P2_Phase0_Question_Node_Skeleton_v1.csv",
+    "sha256": "d38301588fae27c66f6b8627c5007fb0d8ed4ac3d7eb25f32c74228c367b86b6",
+    "bytes": 7709908,
+    "custody": "EXACT_ACCEPTED_P2_METADATA__NOT_RAW_RESPONDENT_SOURCE"
+  },
+  "typed_pending": [
+    {
+      "id": "PEND-01",
+      "state": "RETAINED_CARRIER_INTEGRITY_RED"
+    },
+    {
+      "id": "PEND-02",
+      "state": "FULL_ORIGINAL_AUTHORITY_TO_OPERATION_BINDING_UNWITNESSED"
+    },
+    {
+      "id": "PEND-03",
+      "state": "ALL35_ELIGIBLE_OPERATION_EXECUTION_UNVERIFIED"
+    },
+    {
+      "id": "PEND-04",
+      "state": "76_ACCEPTED_HELD_STATES_PRESERVED"
+    },
+    {
+      "id": "PEND-05",
+      "state": "FRESH_INDEPENDENT_ACCEPTANCE_NOT_PERFORMED"
+    }
+  ],
+  "full_frontier_claim": "UNVERIFIED",
+  "independent_decision": {
+    "bounded_fixture_and_identity_accounting": "ACCEPT_AT_OWN_GRAIN",
+    "retained_disposition_carrier": "REVISE__RED__EXACT_REPUBLICATION_REQUIRED",
+    "17_row_crosswalk": "REVISE__OWNER_TYPING_REQUIRED",
+    "full_original35_item_operation_frontier": "HOLD"
+  }
+}

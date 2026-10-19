@@ -1,0 +1,575 @@
+{
+  "at": "2026-10-17T03:21:09.820681+00:00",
+  "candidate_sha": "20d781c8502662bf788b60b828e46df55898d687",
+  "candidate_direct_remote_sha": "20d781c8502662bf788b60b828e46df55898d687",
+  "candidate_startup": "c1e88fb26f3ef757f13bad7cf901cd6529a368c8",
+  "changed_paths": [
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/.gitignore",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/00_RETURN.md",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/01_WG0K_RED_AND_FULL_OWNER_CLOSURE.json",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/02_EXTERNAL_ORIGINAL_FRONTIER_AND_NATIVE_SOURCE_BINDING.md",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/03_IMMUTABLE_FACT_CURRENT_USE_AND_COLD_OWNER_REPLAY.md",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/04_TRUE_CONDITIONAL_AND_ORIGINAL_EMPIRICAL_NUMERICS.md",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/05_ACTUAL_PYTEST_JUNIT_IMPORTED_BLOBS_AND_ADOPTION_CEILING.md",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/ARTIFACT_MANIFEST.json",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/CONDITIONAL_FRONTIER.json",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/FREEZE_README.md",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/ORIGINAL_FRONTIER.json",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/RETURN_MANIFEST.json",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/environment_passport_delta.json",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/observations/attempt1_source_hashes.json",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/observations/baseline.json",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/observations/cold_comparison.json",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/observations/cold_processes.stdout.json",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/observations/denied_authority.json",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/observations/fresh_process_attack_grant.json",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/observations/fresh_process_attack_knowledge_clock.json",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/observations/fresh_process_attack_missing_payload.json",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/observations/fresh_process_attack_receipt_provenance.json",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/observations/fresh_process_attack_revoked_owner.json",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/observations/fresh_process_attack_source_leaf.json",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/observations/historical_j.stdout",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/observations/historical_j.terminal.json",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/observations/historical_j.xml",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/observations/historical_j_cold.stdout",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/observations/historical_j_cold.terminal.json",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/observations/historical_j_probe.stdout",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/observations/historical_j_probe.terminal.json",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/observations/historical_k_on_p3.stdout",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/observations/historical_k_on_p3.terminal.json",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/observations/historical_k_on_p3.xml",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/observations/historical_p2.stdout",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/observations/historical_p2.terminal.json",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/observations/historical_p2.xml",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/observations/historical_p3.stdout",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/observations/historical_p3.terminal.json",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/observations/historical_p3.xml",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/observations/native_cold_crash.json",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/observations/native_cold_resume.json",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/observations/ordinary_conditional.json",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/observations/ported_j.attempt1.stdout",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/observations/ported_j.attempt1.terminal.json",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/observations/ported_j.attempt1.xml",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/observations/ported_j.stdout",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/observations/ported_j.terminal.json",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/observations/ported_j.xml",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/observations/ported_k.stdout",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/observations/ported_k.terminal.json",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/observations/ported_k.xml",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/observations/positive_conditional_batch.json",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/observations/prepare_native.stdout",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/observations/prepare_native.terminal.json",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/observations/source_custody.json",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/observations/wg0p4.attempt1.stdout",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/observations/wg0p4.attempt1.terminal.json",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/observations/wg0p4.attempt1.xml",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/observations/wg0p4.stdout",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/observations/wg0p4.terminal.json",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/observations/wg0p4.xml",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/predecessors/j/01_FROZEN_ORACLE_AND_PINNED_OWNERS.json",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/predecessors/j/observations/baseline.json",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/predecessors/j/observations/cold_checkpoint.json",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/predecessors/j/observations/cold_comparison.json",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/predecessors/j/observations/cold_full1.json",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/predecessors/j/observations/cold_full2.json",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/predecessors/j/observations/cold_resume.json",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/predecessors/j/observations/cold_shard0.json",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/predecessors/j/observations/cold_shard1.json",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/predecessors/j/observations/denied_authority.json",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/predecessors/j/observations/independent_native_reconstruction.json",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/predecessors/j/observations/positive_conditional_batch.json",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/predecessors/j/repro/cold.py",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/predecessors/j/repro/common.py",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/predecessors/j/repro/numerics.py",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/predecessors/j/repro/probe.py",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/predecessors/j/tests/test_independent.py",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/predecessors/k/01_FROZEN_EXPECTATIONS_AND_OWNER_PREIMAGES.json",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/predecessors/k/repro/test_wg0k_full_module_hostiles.py",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/predecessors/p2/repro/test_wg0p2_repair.py",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/predecessors/p2/repro/wg0p2_workload.py",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/predecessors/p3/conftest.py",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/predecessors/p3/repro/wg0p3_workload.py",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/predecessors/p3/tests/test_wg0p3_repair.py",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/rawlsing_next/_pre553_query_common.py",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/rawlsing_next/_pre553_query_eval.py",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/rawlsing_next/_pre553_query_predicate.py",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/rawlsing_next/pre553_batch_runner.py",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/rawlsing_next/pre553_c11_ingest.py",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/rawlsing_next/pre553_c11_integrity.py",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/rawlsing_next/pre553_c11_repository.py",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/rawlsing_next/pre553_discovery_exact.py",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/rawlsing_next/pre553_empirical_authority.py",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/rawlsing_next/pre553_empirical_objects.py",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/rawlsing_next/pre553_empirical_query.py",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/rawlsing_next/pre553_runtime_authority.py",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/rawlsing_next/pre553_runtime_composition.py",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/rawlsing_next/pre553_runtime_context.py",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pytest.ini",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/repro/cold_attack_worker.py",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/repro/cold_worker.py",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/repro/common_v1.py",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/repro/prepare_evidence.py",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/repro/reconstruct_sources.py",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/repro/run_suites.py",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/repro/verify_return.py",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/repro/wg0p4_workload.py",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/source_selector.json",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/tests/test_wg0j_adapter_v1.py",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/tests/test_wg0k_adapter_v1.py",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/tests/test_wg0p4.py"
+  ],
+  "return_only": true,
+  "reviewer_precommit": "aa4e361e9fbed79c395cb986c51798354bb3d6cd",
+  "oracle_sha256": "4261fbc277d446dccc8311962ff1aa003dabef9f8bebe86b5c0d14796078944e",
+  "source_import_not_yet_executed": true,
+  "source_rows": [
+    {
+      "commit": "20d781c8502662bf788b60b828e46df55898d687",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/.gitignore",
+      "git_blob_sha1": "119ec3874d3f031e5e6ab9442a65fbbcb08519f3",
+      "sha256": "201025246bd8daf828a178a74ac3ba4807a08decbfee6ff64ad619f35e9f1f80",
+      "staged_path": "runtime_phase_b/candidate/.gitignore"
+    },
+    {
+      "commit": "20d781c8502662bf788b60b828e46df55898d687",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/00_RETURN.md",
+      "git_blob_sha1": "cc9576aed92c6ff28c6f01b129446665ceaa4991",
+      "sha256": "51868dbbed31a092d9fbbf8d75cd1cccf66c180de587b61148d74d2258a80ab0",
+      "staged_path": "runtime_phase_b/candidate/00_RETURN.md"
+    },
+    {
+      "commit": "20d781c8502662bf788b60b828e46df55898d687",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/01_WG0K_RED_AND_FULL_OWNER_CLOSURE.json",
+      "git_blob_sha1": "971b93f756c10dda67bf590aff0e5d47f4fffc15",
+      "sha256": "a2bf1893c760f68059b79bc52876671cf7ed3fca137a5292f4f906271a9c58bb",
+      "staged_path": "runtime_phase_b/candidate/01_WG0K_RED_AND_FULL_OWNER_CLOSURE.json"
+    },
+    {
+      "commit": "20d781c8502662bf788b60b828e46df55898d687",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/02_EXTERNAL_ORIGINAL_FRONTIER_AND_NATIVE_SOURCE_BINDING.md",
+      "git_blob_sha1": "06a1e23f0815e07ab8d54f08834a1e6238af806b",
+      "sha256": "fab151e6d3828e6030fbe83d7ca4190dc72b85a67dbd0c7dfa3a57d75b5f99f0",
+      "staged_path": "runtime_phase_b/candidate/02_EXTERNAL_ORIGINAL_FRONTIER_AND_NATIVE_SOURCE_BINDING.md"
+    },
+    {
+      "commit": "20d781c8502662bf788b60b828e46df55898d687",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/03_IMMUTABLE_FACT_CURRENT_USE_AND_COLD_OWNER_REPLAY.md",
+      "git_blob_sha1": "44c249b6d968efbeb253871dfab99ac13ac58dd9",
+      "sha256": "9ef08637e410bc4e60b0aa608f3179666c6d1c44022be4acb5fb1dd43c089206",
+      "staged_path": "runtime_phase_b/candidate/03_IMMUTABLE_FACT_CURRENT_USE_AND_COLD_OWNER_REPLAY.md"
+    },
+    {
+      "commit": "20d781c8502662bf788b60b828e46df55898d687",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/04_TRUE_CONDITIONAL_AND_ORIGINAL_EMPIRICAL_NUMERICS.md",
+      "git_blob_sha1": "7d5c4194b4a6075311938bf582791af506eee209",
+      "sha256": "d4a3be060577596b9da5e126b6e5c280ff1f0c9051c3eda8e627d34fd6f55f5a",
+      "staged_path": "runtime_phase_b/candidate/04_TRUE_CONDITIONAL_AND_ORIGINAL_EMPIRICAL_NUMERICS.md"
+    },
+    {
+      "commit": "20d781c8502662bf788b60b828e46df55898d687",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/05_ACTUAL_PYTEST_JUNIT_IMPORTED_BLOBS_AND_ADOPTION_CEILING.md",
+      "git_blob_sha1": "2a39c6a8b86dfbc9fab227e80b37fd3c62442625",
+      "sha256": "01ea35dbfc766000777e890d79c1b92f253db754780722a89a300271fce9d94c",
+      "staged_path": "runtime_phase_b/candidate/05_ACTUAL_PYTEST_JUNIT_IMPORTED_BLOBS_AND_ADOPTION_CEILING.md"
+    },
+    {
+      "commit": "20d781c8502662bf788b60b828e46df55898d687",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/ARTIFACT_MANIFEST.json",
+      "git_blob_sha1": "923021025a190a1b400233b5546a494249d425a3",
+      "sha256": "db9da3936c0a32c5ac25f821a7bc82d172627781497a885c0d307cdb845e87a0",
+      "staged_path": "runtime_phase_b/candidate/ARTIFACT_MANIFEST.json"
+    },
+    {
+      "commit": "20d781c8502662bf788b60b828e46df55898d687",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/CONDITIONAL_FRONTIER.json",
+      "git_blob_sha1": "0eafa1acc47f47a96abeb82f54d324569f825d0c",
+      "sha256": "2f6826e52f46cfecf5c96f0abccd48891e3220ffe0e88f222924f66f15804abe",
+      "staged_path": "runtime_phase_b/candidate/CONDITIONAL_FRONTIER.json"
+    },
+    {
+      "commit": "20d781c8502662bf788b60b828e46df55898d687",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/FREEZE_README.md",
+      "git_blob_sha1": "8c2fbcaf3ff3e9d80c616a50555a06fa12f312e7",
+      "sha256": "e0427c9ac169d89f5d440ecf0dec9ecfdd0dca0fb9e9e0e4611b84e6f53393ac",
+      "staged_path": "runtime_phase_b/candidate/FREEZE_README.md"
+    },
+    {
+      "commit": "20d781c8502662bf788b60b828e46df55898d687",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/ORIGINAL_FRONTIER.json",
+      "git_blob_sha1": "b974c1bf94f81fcafe7120b921e4ac19686eece5",
+      "sha256": "1af4d869c1b63046d0439ef607642f649dd13727394ae796a86399bc9e22023f",
+      "staged_path": "runtime_phase_b/candidate/ORIGINAL_FRONTIER.json"
+    },
+    {
+      "commit": "20d781c8502662bf788b60b828e46df55898d687",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/RETURN_MANIFEST.json",
+      "git_blob_sha1": "5ad1d0a7be718612d371d446fecf649118af3935",
+      "sha256": "315162b453d157e983562f96cdb4e600fe683234b1216507365b44c7f5f0991d",
+      "staged_path": "runtime_phase_b/candidate/RETURN_MANIFEST.json"
+    },
+    {
+      "commit": "20d781c8502662bf788b60b828e46df55898d687",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/environment_passport_delta.json",
+      "git_blob_sha1": "98426e48a3ec63643a82178d08695d4dc4bde39c",
+      "sha256": "49d311d8bd145860bdfc8a934dc2d4a64a6778e198177f60806e8f1471017843",
+      "staged_path": "runtime_phase_b/candidate/environment_passport_delta.json"
+    },
+    {
+      "commit": "20d781c8502662bf788b60b828e46df55898d687",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/predecessors/j/01_FROZEN_ORACLE_AND_PINNED_OWNERS.json",
+      "git_blob_sha1": "4a070aa062c59c0cda556b622ed01a09a93def89",
+      "sha256": "5144c481300e8f8c158cfe67fbcf2ee2746f66529fc5ac2757f1a65b5f330f58",
+      "staged_path": "runtime_phase_b/candidate/pinned/predecessors/j/01_FROZEN_ORACLE_AND_PINNED_OWNERS.json"
+    },
+    {
+      "commit": "20d781c8502662bf788b60b828e46df55898d687",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/predecessors/j/observations/baseline.json",
+      "git_blob_sha1": "967771ee97a446cac1def6ff71f1999ca56b81a3",
+      "sha256": "428ae4cd6f5d47ce8e2133d714ce13284b6584fef7a4876df850c363570d78a9",
+      "staged_path": "runtime_phase_b/candidate/pinned/predecessors/j/observations/baseline.json"
+    },
+    {
+      "commit": "20d781c8502662bf788b60b828e46df55898d687",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/predecessors/j/observations/cold_checkpoint.json",
+      "git_blob_sha1": "f31185d8af8f059bd5d257dab40f440e40b8037c",
+      "sha256": "18f7e8957f971205259a9d69e357431cdd611584eaa5d0801e75eddbfab52bae",
+      "staged_path": "runtime_phase_b/candidate/pinned/predecessors/j/observations/cold_checkpoint.json"
+    },
+    {
+      "commit": "20d781c8502662bf788b60b828e46df55898d687",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/predecessors/j/observations/cold_comparison.json",
+      "git_blob_sha1": "4902cc1a8eeab3ca848666c7aff81dfbcf7001bf",
+      "sha256": "4127c28c73a60f81e02f0deef739c6e09cd95cda82fdeb9a5020ea1a24fedf92",
+      "staged_path": "runtime_phase_b/candidate/pinned/predecessors/j/observations/cold_comparison.json"
+    },
+    {
+      "commit": "20d781c8502662bf788b60b828e46df55898d687",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/predecessors/j/observations/cold_full1.json",
+      "git_blob_sha1": "3a3bf41bd0a96357168aaedc2a017e1ed4f7f980",
+      "sha256": "71c36b233dc17876172d98cdbbf075d486a3343e9368d15b996593538338ceba",
+      "staged_path": "runtime_phase_b/candidate/pinned/predecessors/j/observations/cold_full1.json"
+    },
+    {
+      "commit": "20d781c8502662bf788b60b828e46df55898d687",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/predecessors/j/observations/cold_full2.json",
+      "git_blob_sha1": "ec29e2f19182b96bd19af042c2ed735461a6482f",
+      "sha256": "06d18e54ccc3ed88dc30aa04b8488203dc7c245e0006e2d1535426af19d92a99",
+      "staged_path": "runtime_phase_b/candidate/pinned/predecessors/j/observations/cold_full2.json"
+    },
+    {
+      "commit": "20d781c8502662bf788b60b828e46df55898d687",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/predecessors/j/observations/cold_resume.json",
+      "git_blob_sha1": "83c9a555786e80eee7b63ffcfb87a822e518a2f6",
+      "sha256": "3f4c5b879e4b07978260c56acc24ea9aea8891f1a8972058b5eb68b23a1c532e",
+      "staged_path": "runtime_phase_b/candidate/pinned/predecessors/j/observations/cold_resume.json"
+    },
+    {
+      "commit": "20d781c8502662bf788b60b828e46df55898d687",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/predecessors/j/observations/cold_shard0.json",
+      "git_blob_sha1": "a7312c238db92e008f08f6e209ed617691659ac9",
+      "sha256": "8f3f810588beb057c5c6e3489462800ed1ccc41bb33203a6211afb71b8a98efb",
+      "staged_path": "runtime_phase_b/candidate/pinned/predecessors/j/observations/cold_shard0.json"
+    },
+    {
+      "commit": "20d781c8502662bf788b60b828e46df55898d687",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/predecessors/j/observations/cold_shard1.json",
+      "git_blob_sha1": "5fc56783483d84c66a7424d14eef3adee25ca910",
+      "sha256": "13f96760c02d9a2f52f1fda9106b5fcdb25a22dedcf055d5efd848df46c6f803",
+      "staged_path": "runtime_phase_b/candidate/pinned/predecessors/j/observations/cold_shard1.json"
+    },
+    {
+      "commit": "20d781c8502662bf788b60b828e46df55898d687",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/predecessors/j/observations/denied_authority.json",
+      "git_blob_sha1": "71b7aa4f95d658dd3f479c939c9de96d27197e41",
+      "sha256": "c40f91a0247afd68c2f803e62dfe3693cbd6972ddbb2310a6f83eecb86a5309c",
+      "staged_path": "runtime_phase_b/candidate/pinned/predecessors/j/observations/denied_authority.json"
+    },
+    {
+      "commit": "20d781c8502662bf788b60b828e46df55898d687",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/predecessors/j/observations/independent_native_reconstruction.json",
+      "git_blob_sha1": "09b0e298e5ee669ba2ca010e58b8f555aba0f743",
+      "sha256": "3047078a2a5619f9130e1de45df0f3763e2ab6c82acdf9394410f7bfd3aacdc8",
+      "staged_path": "runtime_phase_b/candidate/pinned/predecessors/j/observations/independent_native_reconstruction.json"
+    },
+    {
+      "commit": "20d781c8502662bf788b60b828e46df55898d687",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/predecessors/j/observations/positive_conditional_batch.json",
+      "git_blob_sha1": "fde2de56664051b94db4f462b1bdd2b59cb360c0",
+      "sha256": "67f8e0b6f0831e727ba0c3d3f999b4abed2d9b017507eee8d5ca596a4e8ce19a",
+      "staged_path": "runtime_phase_b/candidate/pinned/predecessors/j/observations/positive_conditional_batch.json"
+    },
+    {
+      "commit": "20d781c8502662bf788b60b828e46df55898d687",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/predecessors/j/repro/cold.py",
+      "git_blob_sha1": "49e2962295a2fcca0b68514c0a9eaf003c00e3f7",
+      "sha256": "de3f1f541826f2752c8d98bc09328ce724bc3150babeba8e13244bc4ddde564d",
+      "staged_path": "runtime_phase_b/candidate/pinned/predecessors/j/repro/cold.py"
+    },
+    {
+      "commit": "20d781c8502662bf788b60b828e46df55898d687",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/predecessors/j/repro/common.py",
+      "git_blob_sha1": "b45db59aa6fc5860ee221639642b43a2e9d81435",
+      "sha256": "50d0c0ea4c5671f338241fd04f4772476df51fd7762a09e89d1e6e6983b03274",
+      "staged_path": "runtime_phase_b/candidate/pinned/predecessors/j/repro/common.py"
+    },
+    {
+      "commit": "20d781c8502662bf788b60b828e46df55898d687",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/predecessors/j/repro/numerics.py",
+      "git_blob_sha1": "891571e288f8deb0ef8424f64315bbe3dd0fd6e1",
+      "sha256": "80406b6ebda247973fa616a0abc78da562861910b149e36465e12fbb1c527887",
+      "staged_path": "runtime_phase_b/candidate/pinned/predecessors/j/repro/numerics.py"
+    },
+    {
+      "commit": "20d781c8502662bf788b60b828e46df55898d687",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/predecessors/j/repro/probe.py",
+      "git_blob_sha1": "4626934433a80bc23e85b073e62a1a5a183664bd",
+      "sha256": "29075dab27ef1d24e4d6c0e23a88815a2bf3bf5afc3ef33720f1409b54c79aa9",
+      "staged_path": "runtime_phase_b/candidate/pinned/predecessors/j/repro/probe.py"
+    },
+    {
+      "commit": "20d781c8502662bf788b60b828e46df55898d687",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/predecessors/j/tests/test_independent.py",
+      "git_blob_sha1": "8b7691338f6086a89a16e0ef6c709d7330923faa",
+      "sha256": "97d17926aff45692cabb3e9103a81cd30d9fc3ef1e1d1ad13d5ebec5f999d98d",
+      "staged_path": "runtime_phase_b/candidate/pinned/predecessors/j/tests/test_independent.py"
+    },
+    {
+      "commit": "20d781c8502662bf788b60b828e46df55898d687",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/predecessors/k/01_FROZEN_EXPECTATIONS_AND_OWNER_PREIMAGES.json",
+      "git_blob_sha1": "394337f885e93e2d6f0c466639653606034e25e6",
+      "sha256": "79256a032262e93015800adf8980fbc424f8501c710607dd27f2ba6a4f6107e4",
+      "staged_path": "runtime_phase_b/candidate/pinned/predecessors/k/01_FROZEN_EXPECTATIONS_AND_OWNER_PREIMAGES.json"
+    },
+    {
+      "commit": "20d781c8502662bf788b60b828e46df55898d687",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/predecessors/k/repro/test_wg0k_full_module_hostiles.py",
+      "git_blob_sha1": "bb4dd6f15a3e7186d75214b6b84ac7499b8e59ba",
+      "sha256": "4b812406a844de193fd81e6986e66c3d7450559fcf534a20d7e5179766322b4a",
+      "staged_path": "runtime_phase_b/candidate/pinned/predecessors/k/repro/test_wg0k_full_module_hostiles.py"
+    },
+    {
+      "commit": "20d781c8502662bf788b60b828e46df55898d687",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/predecessors/p2/repro/test_wg0p2_repair.py",
+      "git_blob_sha1": "d25863a32ce88edecc65db08257a78c25deb4b67",
+      "sha256": "5acc64a2287645dfbe9a131d352e2be446c263002d4e80ed2728e35f1ee4aeda",
+      "staged_path": "runtime_phase_b/candidate/pinned/predecessors/p2/repro/test_wg0p2_repair.py"
+    },
+    {
+      "commit": "20d781c8502662bf788b60b828e46df55898d687",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/predecessors/p2/repro/wg0p2_workload.py",
+      "git_blob_sha1": "99cd007d62bb1882b1bca9a05214905f1277ff4b",
+      "sha256": "b168f032f28fcbfccf028444521f6c14b089bbee61084c42d6c19d27a6b11dc9",
+      "staged_path": "runtime_phase_b/candidate/pinned/predecessors/p2/repro/wg0p2_workload.py"
+    },
+    {
+      "commit": "20d781c8502662bf788b60b828e46df55898d687",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/predecessors/p3/conftest.py",
+      "git_blob_sha1": "5672afe47970d661e0f26cedff570aa6be2d74e2",
+      "sha256": "dacf4b3afd06e5409f1e908d8a21e3abb0e93980d132c82ff8c2136261e13b8d",
+      "staged_path": "runtime_phase_b/candidate/pinned/predecessors/p3/conftest.py"
+    },
+    {
+      "commit": "20d781c8502662bf788b60b828e46df55898d687",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/predecessors/p3/repro/wg0p3_workload.py",
+      "git_blob_sha1": "e38a392980ef2eda27cb792408aabfca604e9784",
+      "sha256": "dd44bea05f55f99ab33ce829c4c03935852d7be46d2ae648ef5308f93334877f",
+      "staged_path": "runtime_phase_b/candidate/pinned/predecessors/p3/repro/wg0p3_workload.py"
+    },
+    {
+      "commit": "20d781c8502662bf788b60b828e46df55898d687",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/predecessors/p3/tests/test_wg0p3_repair.py",
+      "git_blob_sha1": "10b981763b5e836c15996ba65a4e241762ee82e6",
+      "sha256": "8e8b81a97e24b91573c543c326deca9883ed10f48f0defdf18cb578cf1179ac0",
+      "staged_path": "runtime_phase_b/candidate/pinned/predecessors/p3/tests/test_wg0p3_repair.py"
+    },
+    {
+      "commit": "20d781c8502662bf788b60b828e46df55898d687",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/rawlsing_next/_pre553_query_common.py",
+      "git_blob_sha1": "938a6b03a63dd34ef4f0f63655ed8f11f65c5d92",
+      "sha256": "496320f7e089e4cc73b1a55023ed906d3f016e939f548cebc4ec59bddd4847b2",
+      "staged_path": "runtime_phase_b/candidate/pinned/rawlsing_next/_pre553_query_common.py"
+    },
+    {
+      "commit": "20d781c8502662bf788b60b828e46df55898d687",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/rawlsing_next/_pre553_query_eval.py",
+      "git_blob_sha1": "f808dfcd2008cc71e9203de3cadf1abe14223974",
+      "sha256": "c72d7d35bfa5d3cb4b406bdd90530b2822416850bba48cdd12ce784ba10cd670",
+      "staged_path": "runtime_phase_b/candidate/pinned/rawlsing_next/_pre553_query_eval.py"
+    },
+    {
+      "commit": "20d781c8502662bf788b60b828e46df55898d687",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/rawlsing_next/_pre553_query_predicate.py",
+      "git_blob_sha1": "8590bacf464b2c61f319f581820a3af76ed1e60c",
+      "sha256": "f6e5484371ce1bf15abea25a7db408ab00cf4194154358e995608e67b833cbd7",
+      "staged_path": "runtime_phase_b/candidate/pinned/rawlsing_next/_pre553_query_predicate.py"
+    },
+    {
+      "commit": "20d781c8502662bf788b60b828e46df55898d687",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/rawlsing_next/pre553_batch_runner.py",
+      "git_blob_sha1": "2d291600b9a10c56d9c6f6de7f7d619f6c52e829",
+      "sha256": "5071bde0180db05f59386884d5de2bdea503cd26db2024806a92887d2a5a1e04",
+      "staged_path": "runtime_phase_b/candidate/pinned/rawlsing_next/pre553_batch_runner.py"
+    },
+    {
+      "commit": "20d781c8502662bf788b60b828e46df55898d687",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/rawlsing_next/pre553_c11_ingest.py",
+      "git_blob_sha1": "37cd35fa2e3420a3eea272a2902e96ab9ba38aba",
+      "sha256": "0c56a0f6f656547a096982a6adab21c9b47d749385411a5d159f2b5390eec8bf",
+      "staged_path": "runtime_phase_b/candidate/pinned/rawlsing_next/pre553_c11_ingest.py"
+    },
+    {
+      "commit": "20d781c8502662bf788b60b828e46df55898d687",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/rawlsing_next/pre553_c11_integrity.py",
+      "git_blob_sha1": "7c59aa13a2b7c8e3ab0dc90a1400df645b0b4bbd",
+      "sha256": "3963facef5c8ae2981991ffa8c5c5c9b717fb4e09f342eec277198fc5cf38a33",
+      "staged_path": "runtime_phase_b/candidate/pinned/rawlsing_next/pre553_c11_integrity.py"
+    },
+    {
+      "commit": "20d781c8502662bf788b60b828e46df55898d687",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/rawlsing_next/pre553_c11_repository.py",
+      "git_blob_sha1": "67c6eb6494522cd11aab1b93d0e73f9cef6036f3",
+      "sha256": "84a71fe43307cca30f9eeaaedb269d8390468a4744a0fac251aebc2cda7b498e",
+      "staged_path": "runtime_phase_b/candidate/pinned/rawlsing_next/pre553_c11_repository.py"
+    },
+    {
+      "commit": "20d781c8502662bf788b60b828e46df55898d687",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/rawlsing_next/pre553_discovery_exact.py",
+      "git_blob_sha1": "905f24d114419dbdd93879ad2bee5b59dd2f23af",
+      "sha256": "808fd0bd8e2423c047268285c00ca43f0f4cdbff80ed1ad286e3c6c56b8f7217",
+      "staged_path": "runtime_phase_b/candidate/pinned/rawlsing_next/pre553_discovery_exact.py"
+    },
+    {
+      "commit": "20d781c8502662bf788b60b828e46df55898d687",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/rawlsing_next/pre553_empirical_authority.py",
+      "git_blob_sha1": "ca65a7fd4d52f0c44447434559b1d09412e7aa39",
+      "sha256": "c32b96cd67274d2bcb44ca509afd87e085748bd2e32565716c10313b0609a29a",
+      "staged_path": "runtime_phase_b/candidate/pinned/rawlsing_next/pre553_empirical_authority.py"
+    },
+    {
+      "commit": "20d781c8502662bf788b60b828e46df55898d687",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/rawlsing_next/pre553_empirical_objects.py",
+      "git_blob_sha1": "a61365b994e5c3c50de0f598fcf40e90abf757b6",
+      "sha256": "9cd1d71440a7e8c1861dda73274529e07211edc14335583e93ad91c0833e9ab4",
+      "staged_path": "runtime_phase_b/candidate/pinned/rawlsing_next/pre553_empirical_objects.py"
+    },
+    {
+      "commit": "20d781c8502662bf788b60b828e46df55898d687",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/rawlsing_next/pre553_empirical_query.py",
+      "git_blob_sha1": "03facecf70890bfd13b80418620d274cbcd69d02",
+      "sha256": "d45ad313bc57e94c8c3652b4123c7cb03b0fc18d38d577aaaae94435664ef4cb",
+      "staged_path": "runtime_phase_b/candidate/pinned/rawlsing_next/pre553_empirical_query.py"
+    },
+    {
+      "commit": "20d781c8502662bf788b60b828e46df55898d687",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/rawlsing_next/pre553_runtime_authority.py",
+      "git_blob_sha1": "896c7094124a4aaea23eec550178e4bf8e73ac68",
+      "sha256": "027aa551973b3ba6a560b322c9a704c4577f250d57a0c5564b8d9de71cbbb1d2",
+      "staged_path": "runtime_phase_b/candidate/pinned/rawlsing_next/pre553_runtime_authority.py"
+    },
+    {
+      "commit": "20d781c8502662bf788b60b828e46df55898d687",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/rawlsing_next/pre553_runtime_composition.py",
+      "git_blob_sha1": "3753c183ddb25b1b0eb0ce84db1868f39f50d3fa",
+      "sha256": "25d84acf3b14f85b0ec146c3272275b1e0a5d54d665c44213806120eaa93e1da",
+      "staged_path": "runtime_phase_b/candidate/pinned/rawlsing_next/pre553_runtime_composition.py"
+    },
+    {
+      "commit": "20d781c8502662bf788b60b828e46df55898d687",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pinned/rawlsing_next/pre553_runtime_context.py",
+      "git_blob_sha1": "4fc50793871e176f164442c04ef2501eba9d5dfa",
+      "sha256": "e37b8d16ea2636ad78bcd8239b3ebdc498d0528605bf32353b65415739c0de1e",
+      "staged_path": "runtime_phase_b/candidate/pinned/rawlsing_next/pre553_runtime_context.py"
+    },
+    {
+      "commit": "20d781c8502662bf788b60b828e46df55898d687",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/pytest.ini",
+      "git_blob_sha1": "d3a9c8c5eb796e3b001efce8f06b07cd7a6089c8",
+      "sha256": "aaabed120d2fb059160bb38bf8843dc0bbb6abca5f013dffb5228bfffb9a3404",
+      "staged_path": "runtime_phase_b/candidate/pytest.ini"
+    },
+    {
+      "commit": "20d781c8502662bf788b60b828e46df55898d687",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/repro/cold_attack_worker.py",
+      "git_blob_sha1": "cc7e6c9edc9979a4cca78718f6cac90894d2bc3b",
+      "sha256": "dfcd41808a5ba4fcb42a7dd2d8b8c18169a50249d71b045ce3db0e66aa973468",
+      "staged_path": "runtime_phase_b/candidate/repro/cold_attack_worker.py"
+    },
+    {
+      "commit": "20d781c8502662bf788b60b828e46df55898d687",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/repro/cold_worker.py",
+      "git_blob_sha1": "3e805d8ec35ea7b33d0571684b1897b2ff86db6c",
+      "sha256": "dddf8898bbb3534b25884ac98c02a975c4944e3bf2b22a5415532520d2a0bf83",
+      "staged_path": "runtime_phase_b/candidate/repro/cold_worker.py"
+    },
+    {
+      "commit": "20d781c8502662bf788b60b828e46df55898d687",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/repro/common_v1.py",
+      "git_blob_sha1": "f1e9678f952da2a7224d1d4df13a7adf04ffcaaa",
+      "sha256": "eaa0e93eae6ba2e0f42ac5c39347910a8c612364343d9048d136795d4c23b861",
+      "staged_path": "runtime_phase_b/candidate/repro/common_v1.py"
+    },
+    {
+      "commit": "20d781c8502662bf788b60b828e46df55898d687",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/repro/prepare_evidence.py",
+      "git_blob_sha1": "7a1eebc6951ba4668bdf5f1259de16eddd2a6ee8",
+      "sha256": "397d0adcc64e13b4886e0d461183c7ae584b8ad8e68843a417542d4707f780a2",
+      "staged_path": "runtime_phase_b/candidate/repro/prepare_evidence.py"
+    },
+    {
+      "commit": "20d781c8502662bf788b60b828e46df55898d687",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/repro/reconstruct_sources.py",
+      "git_blob_sha1": "ad2d789572df2bd50086c2ad65d458d3694a920b",
+      "sha256": "0e64b3230837a549e19c820ee029dd1cd250c22d3e32df23ec3afec5634c0b3c",
+      "staged_path": "runtime_phase_b/candidate/repro/reconstruct_sources.py"
+    },
+    {
+      "commit": "20d781c8502662bf788b60b828e46df55898d687",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/repro/run_suites.py",
+      "git_blob_sha1": "a1994899994dd96d03b1304f530773894bfd66de",
+      "sha256": "ffb811b44ec4d58b85c34b4380019f8117589dd0f75fb3171b4dc7186844345d",
+      "staged_path": "runtime_phase_b/candidate/repro/run_suites.py"
+    },
+    {
+      "commit": "20d781c8502662bf788b60b828e46df55898d687",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/repro/verify_return.py",
+      "git_blob_sha1": "ca1b05d41766b65217d6019f2a5b63689b98ed11",
+      "sha256": "92e48ff2311072969b044778fd66a41ed1e56b8b2bf306f4b24f6ecffc025237",
+      "staged_path": "runtime_phase_b/candidate/repro/verify_return.py"
+    },
+    {
+      "commit": "20d781c8502662bf788b60b828e46df55898d687",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/repro/wg0p4_workload.py",
+      "git_blob_sha1": "554d4adebdff1659f7213eabd6db050858533ce5",
+      "sha256": "c74b34d14c5a79993e7b56908ac017b2e35a97df422460f4d62beb30b63821f8",
+      "staged_path": "runtime_phase_b/candidate/repro/wg0p4_workload.py"
+    },
+    {
+      "commit": "20d781c8502662bf788b60b828e46df55898d687",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/source_selector.json",
+      "git_blob_sha1": "4cbb72a5cbbec8ec7ebb3e36356d9a30765f6282",
+      "sha256": "8726342e7e7d896602ac3ee698ffebf7a08e6c7baddac8b28f63506a83161c90",
+      "staged_path": "runtime_phase_b/candidate/source_selector.json"
+    },
+    {
+      "commit": "20d781c8502662bf788b60b828e46df55898d687",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/tests/test_wg0j_adapter_v1.py",
+      "git_blob_sha1": "3c06b3a5ac2270cce5bbd7d6cfc476414498c157",
+      "sha256": "2cfd3b86c1a49560fb48344c8b80b924b1a4f87d13d4ecc2555670e99d992caa",
+      "staged_path": "runtime_phase_b/candidate/tests/test_wg0j_adapter_v1.py"
+    },
+    {
+      "commit": "20d781c8502662bf788b60b828e46df55898d687",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/tests/test_wg0k_adapter_v1.py",
+      "git_blob_sha1": "d616298dceeab5bb465c37436a0954a153bda332",
+      "sha256": "eb5f2d2af6ae54441c643e1911c1d17e5f20b21f3e94cba60791870098d7b375",
+      "staged_path": "runtime_phase_b/candidate/tests/test_wg0k_adapter_v1.py"
+    },
+    {
+      "commit": "20d781c8502662bf788b60b828e46df55898d687",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R9-WG0P4-EXACT-FRONTIER-COLD-REPAIR-R1/tests/test_wg0p4.py",
+      "git_blob_sha1": "61e64fa76c45599910d5f1e2c10ad72a58b71424",
+      "sha256": "d867d1ed02691c46314506d0cd74aa9ac27faf0af8af1182e82f1ae3aa7c12a0",
+      "staged_path": "runtime_phase_b/candidate/tests/test_wg0p4.py"
+    }
+  ]
+}
