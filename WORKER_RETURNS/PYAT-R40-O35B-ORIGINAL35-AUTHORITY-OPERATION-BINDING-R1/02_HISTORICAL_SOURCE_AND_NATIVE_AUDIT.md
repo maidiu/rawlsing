@@ -1,5 +1,10 @@
 # Historical source and existing producer audit
 
+**Historical cut:** the later continuation recovered the exact checkpoint and
+selected P1 Fact preimages. Its new native M1 authority-closure RED is recorded
+in `06_CHECKPOINT_RECOVERY_AND_NATIVE_M1_RED.md`; older absence findings below
+are retained as pre-recovery evidence.
+
 `source_manifest.json` pins 53 distinct committed metadata/code preimages by commit, repository path, Git blob SHA-1, SHA-256 and byte length. `rehydrate_inputs.py` recovers exactly those blobs into ignored staging, verifies both hashes and does not open recorded raw respondent paths. Original registers may contain host locator columns; those original preimages remain ignored. Only sanitized selected owner rows are republished. All 110 selected logical CSV records match every projected field and the complete original logical-row hash, including duplicate ordinals. UTF-8 BOM handling is explicit. No raw SAV/DTA was opened, decoded, hashed or sampled.
 
 The initial CSV field-limit error, BOM header mismatch and two development test KeyErrors were corrected before final qualification. They were technical authoring failures, not scientific falsifiers or successful hostile RED witnesses. Final cold receipts and the named proof witness are reported separately.

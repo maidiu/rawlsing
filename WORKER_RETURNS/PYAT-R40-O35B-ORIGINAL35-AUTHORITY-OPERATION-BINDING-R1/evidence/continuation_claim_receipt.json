@@ -1,0 +1,35 @@
+{
+  "schema": "O35B_CONTINUATION_CLAIM_RECEIPT@1",
+  "claim_id": "EXACT_RETAINED_P1_FACTS_TO_NATIVE_M1_TYPED_RULE_HOLD",
+  "actual_target_consumer": "rawlsing_next.pre553_learned_empirical_adjudication.build_m1_adjudication_input_bundle/adjudicate_learned_empirical",
+  "claimed_dependency": "exact retained P1 joint plus marginal Facts close the selected original receipt for native verification before missing family-rule hold",
+  "frozen_positive_oracle": "evidence/CONTINUATION_P1_FREEZE.json unchanged; independent HQ261 Fact refs and supports",
+  "positive_test_node": "WORKER_RETURNS/PYAT-R40-O35B-ORIGINAL35-AUTHORITY-OPERATION-BINDING-R1/test_retained_p1_consumer.py::test_original_p1_native_consumer_receives_exact_facts_and_preserves_rule_hold",
+  "positive": {
+    "state": "EXECUTED_RED",
+    "pytest_exit": 1,
+    "tests": 1,
+    "failures": 1,
+    "errors": 0,
+    "skips": 0,
+    "seconds": 264.66,
+    "expected": "BLOCKED__MISSING_FAMILY_VALIDATION_RULE_AUTHORITY",
+    "actual": "BLOCKED__MISSING_AUTHORITY_CLOSURE",
+    "junit": "evidence/continuation_p1_m1_frozen_claim.junit.xml"
+  },
+  "fault_injection_target_and_expected_RED": "Remove original JOINT from actual empirical_fact_catalog; named assertion must RED; source restored and positive GREEN",
+  "actual_negative_control_result": "NOT_RUN; positive already fails before the claimed edge can be qualified",
+  "shared_gate": {
+    "AST": "PASS",
+    "witness": "NOT_RUN",
+    "known_per_node_timeout_seconds": 180,
+    "observed_positive_seconds": 264.66,
+    "native_checker_unchanged": true
+  },
+  "proof_grade": "NOT_PROVED__FROZEN_POSITIVE_CONTRADICTED; NOT_A_SEVERANCE_WITNESS",
+  "broader_original_I03_Batch_positive": "NOT_PROVED",
+  "original_execution_plan_omission": "NOT_RUN",
+  "exact_source_and_test_refs": "evidence/continuation_final_source_manifest.json",
+  "new_source_model_grants": 0,
+  "original35_current_PERMITTED": 0
+}

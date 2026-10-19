@@ -1,5 +1,12 @@
 # Retained-packet recovery and actual native binding
 
+**Historical cut:** the later continuation recovered the exact full checkpoint
+and the three permitted P1 Fact preimages. See
+`06_CHECKPOINT_RECOVERY_AND_NATIVE_M1_RED.md`. The portable export's deferred
+Facts and full-archive registry conflicts described here remain historical
+properties of that export; they no longer imply absence of P1's complete
+preimages from local custody.
+
 The continuation found the transferred `PYAT_D2P_PORTABLE_EXPORT_20261002` directory through a filename-only sourcefree artifact search. This changes the earlier evidence: the full checkpoint remains absent, but complete query/predicate/snapshot preimages are locally available. Its manifest SHA-256 is `46b38c21f2b331575b12f2eadd09348299ab9c6736983f9f281fd48644ff8106`. All seven manifested file sizes/hashes and all nine SHA256SUMS entries verify. The extraction script was hashed, never executed here. No raw respondent file was read or statted.
 
 The donor recorded a fresh checkpoint size/hash match but explicitly did not verify its semantic checkpoint/closure identities during extraction. This worker verified the transferred packet, not the absent 3.4GB checkpoint. The donor's stated upstream HQ approval of deferred payloads is documentary context, not a new authority adopted here. Binding-level export and complete native object availability have different proof grains.

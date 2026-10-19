@@ -1,0 +1,18 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_ test_original_p1_native_consumer_receives_exact_facts_and_preserves_rule_hold _
+
+    def test_original_p1_native_consumer_receives_exact_facts_and_preserves_rule_hold():
+        frozen=json.loads((HERE/'evidence/CONTINUATION_P1_FREEZE.json').read_text())
+        expected={s['hash'] for s in frozen['facts'].values()}
+        result=run_consumer()
+>       assert result['state']=='BLOCKED__MISSING_FAMILY_VALIDATION_RULE_AUTHORITY'
+E       AssertionError: assert 'BLOCKED__MIS...ORITY_CLOSURE' == 'BLOCKED__MIS...ULE_AUTHORITY'
+E
+E         - BLOCKED__MISSING_FAMILY_VALIDATION_RULE_AUTHORITY
+E         + BLOCKED__MISSING_AUTHORITY_CLOSURE
+
+WORKER_RETURNS/PYAT-R40-O35B-ORIGINAL35-AUTHORITY-OPERATION-BINDING-R1/test_retained_p1_consumer.py:19: AssertionError
+=========================== short test summary info ============================
+FAILED WORKER_RETURNS/PYAT-R40-O35B-ORIGINAL35-AUTHORITY-OPERATION-BINDING-R1/test_retained_p1_consumer.py::test_original_p1_native_consumer_receives_exact_facts_and_preserves_rule_hold
+1 failed in 264.66s (0:04:24)

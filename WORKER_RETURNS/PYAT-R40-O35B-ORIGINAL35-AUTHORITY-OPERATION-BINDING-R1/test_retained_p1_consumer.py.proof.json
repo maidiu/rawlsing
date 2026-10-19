@@ -1,0 +1,14 @@
+{
+  "schema":"RAWLSING_PROOF_INTEGRITY_R1",
+  "claims":[{
+    "claim_id":"EXACT_RETAINED_P1_FACTS_TO_NATIVE_M1_TYPED_RULE_HOLD",
+    "actual_consumer":"Native build_m1_adjudication_input_bundle and adjudicate_learned_empirical; no family-rule grant; typed missing-rule hold",
+    "claimed_dependency":"Actual original retained JOINT and two marginal Fact preimages close the selected P1 receipt before native M1 verifies it and preserves the missing-family-rule hold. Not an I03/Batch execution claim.",
+    "positive_node":"WORKER_RETURNS/PYAT-R40-O35B-ORIGINAL35-AUTHORITY-OPERATION-BINDING-R1/test_retained_p1_consumer.py::test_original_p1_native_consumer_receives_exact_facts_and_preserves_rule_hold",
+    "fault":{
+      "path":"WORKER_RETURNS/PYAT-R40-O35B-ORIGINAL35-AUTHORITY-OPERATION-BINDING-R1/retained_p1_consumer.py",
+      "old":"            empirical_fact_catalog=facts,",
+      "new":"            empirical_fact_catalog=tuple(f for f in facts if f.content_hash != JOINT_HASH),"
+    }
+  }]
+}

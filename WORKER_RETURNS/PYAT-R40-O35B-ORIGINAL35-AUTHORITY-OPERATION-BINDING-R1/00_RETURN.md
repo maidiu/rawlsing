@@ -1,5 +1,15 @@
 # O35B original35 authority binding — bounded author return
 
+**Continuation update:** the exact retained checkpoint and all three permitted
+P1 Fact preimages have now been recovered and verified. Actual native M1 ran
+and returned `BLOCKED__MISSING_AUTHORITY_CLOSURE`; the independently frozen
+missing-rule positive is RED. See
+`06_CHECKPOINT_RECOVERY_AND_NATIVE_M1_RED.md` and the continuation passport.
+The earlier absence/deferred-P1 findings below describe the pre-continuation
+cut and are superseded at that exact grain. The full objective remains
+incomplete; original I03/Batch replay and its execution-plan omission witness
+remain unproved.
+
 **HOLD on the commissioned original-source I03/Batch-to-learned-consumer positive.** The exact 26-plus-nine decision tree, all35 inherited operation accounting, original owner-row audit, omission-sensitive metadata comparison and an exact retained LiTS query packet entering the native catalog are delivered. No original authority or permission is issued. This is an implementing author's return, not independent acceptance or HQ adoption.
 
 The branch starts at the requested seal `1150e836ef58553255abc0f588e66c1327db4932`. Its parent is `c58b02445334f253116bc13031340d3bab3168b4`; the seal's own added commission concerns R39I, while this O35B commission is inherited. The requested seal was followed exactly. One isolated sparse worktree reuses the local Git object store and qualified warm Python. No clone, subagent, model switch, package install or raw respondent read was performed.

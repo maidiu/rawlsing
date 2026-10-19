@@ -2,6 +2,12 @@
 
 The full objective is incomplete. This audit preserves the original scope and does not redefine completion around metadata or the new catalog positive.
 
+**Resumed-cut update:** exact checkpoint bytes and the three selected P1 Fact
+preimages are now recovered. Native M1 was executed and failed the frozen
+missing-rule expectation with an earlier missing-authority-closure hold. The
+old blocked audit at the end is historical, not a fresh declaration of goal
+status. See `06_CHECKPOINT_RECOVERY_AND_NATIVE_M1_RED.md`.
+
 | Objective requirement | Authoritative evidence / current state | Completion |
 |---|---|---|
 | Exact seal, assigned branch, isolated sparse worktree, shared object store | Git ancestry from `1150e836ef58553255abc0f588e66c1327db4932`, clean dedicated branch before continuation, passports | Proved |
@@ -15,7 +21,7 @@ The full objective is incomplete. This audit preserves the original scope and do
 | Actual retained original query packet enters native catalog | Recovered verified portable export; 122 exact native object imports; scoped13-snapshot/35-predicate/63-query native catalog | Proved sourcefree technical binding; no permission adoption |
 | Full historical archive can serve as one registry | Actual whole24-snapshot catalog fails six conflicting envelope pairs | Contradicted at union grain; original RED preserved |
 | Original native I03/Batch execution | Exact original query reaches actual Batch constructor; exact validated C11 release absent | Incomplete / NOT_RUN |
-| Named original learned consumer | M1 owner exists; complete original Fact preimages deferred and unmaterializable | Incomplete / NOT_RUN |
+| Named original learned consumer | Three exact selected P1 Facts recovered and passed to real M1; authority closure blocks before full verification and the expected missing-rule hold | Executed native boundary; frozen positive RED / integration NOT_PROVED |
 | Independent expected original execution workload | Eight AS2B operations frozen; accepted63 query refs independently pinned; original operation eligibility/U/E_pre remain unissued | Partial; not an issued current execution set |
 | Remove original operation from actual native execution plan, assert anti-join RED, restore GREEN | Metadata, native-object and scoped-catalog omission witnesses exist; no original execution plan ran | Incomplete; three narrower witnesses do not discharge it |
 | Claim-specific proof contracts, actual assertion RED and restored GREEN | Initial metadata proof; retained-object and scoped-catalog proof contracts and execution receipts | Proved only for their explicitly bounded edges |
@@ -25,6 +31,16 @@ The full objective is incomplete. This audit preserves the original scope and do
 | JUnit, Git/code preimages, sanitized passport, committed return and remote SHA | Initial pushed return plus continuation receipts/commit and direct readback | Proved for delivered author work |
 | No self-adoption, source/semantic issuance, actor, FF/model, N11/N12 or V3 | Passive worker-return changes; native owners unchanged; remaining rights explicitly held | Proved scope boundary |
 
-Completion is not established. The remaining execution/consumer proof needs externally retained exact Fact arrays and a validated C11 release, or a separately verified specific source/host/purpose warrant for new computation. Full35 scientific binding also needs competent issuer decisions. This worker cannot make those prerequisites true by widening claims or selecting among conflicting authority envelopes.
+Completion is not established. The selected P1 Fact arrays are now available.
+The remaining execution/consumer proof needs the exact validated C11 release
+and an identity-preserving compatible M1 authority packet. An original rebuild
+would require a separately verified specific source/host/purpose warrant.
+Full35 scientific binding and any learned family rule remain competent issuer
+decisions. This worker cannot make those prerequisites true by widening claims
+or selecting among conflicting authority envelopes.
 
-The final blocked audit in `evidence/final_block_audit.json` revalidates the same prerequisite failure on the third consecutive goal turn. The previous turn made real progress through portable-packet recovery and scoped native catalog binding. The fresh boundary probes still reject deferred Facts and the absent exact validated C11 release; the recorded full checkpoint remains absent. No process is being waited on and no original execution is claimed. Further execution progress requires the external preimages or a verified specific current warrant and competent owner bindings. The chat goal is therefore to be marked blocked after this evidence is committed and its remote SHA verified.
+The earlier `evidence/final_block_audit.json` records a historical three-turn
+blocked audit before checkpoint recovery. Its absent-checkpoint observation is
+superseded by the live continuation receipt. It does not establish a new
+three-turn block audit after resume. This continuation made material recovery
+and real-consumer progress while preserving the unmet original objective.

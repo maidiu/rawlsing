@@ -1,0 +1,30 @@
+{
+  "schema": "O35B_RESUMED_P1_PRE_RESULT_FREEZE@1",
+  "time_utc": "2026-10-19T04:58:12.132740+00:00",
+  "parent": "60b224360ce95aedd0eb371413934d23d752eb71",
+  "claim_id": "EXACT_RETAINED_P1_FACTS_TO_NATIVE_M1_TYPED_RULE_HOLD",
+  "scope": "read-only original retained P1; no new I03/Batch/source/FF execution or semantic relation",
+  "authority": "PYAT_CONTROL_ROOM/HQ261_LITS_I_RETAINED_CANONICAL_P1_READ_ONLY_CUSTODY_INSPECTION_R1.md at seal1150e836",
+  "document_sha256": "2704fd3fadc9c898a512183aaf5eebf0ca48d78c47e75a19d47e17281eaa5726",
+  "closure_sha256": "f264dd8f83a0794716583d1ea8445947cc9470b99475e5d51fc2383e7196f415",
+  "candidate_hash": "0373f9117bb342746a870d61e743e6420a02757df76d4e46e6335b98acccf2e3",
+  "facts": {
+    "JOINT": {
+      "hash": "fb8bd6e50f27d77ed97827ba3ff712df5951e438d60b5a0194f9953107e3614b",
+      "raw_denominator": 24630
+    },
+    "MARGINAL_0": {
+      "hash": "4e72458484c1dd560f32987ac49c81908ddd47ccad325e2d617f5109792d3145",
+      "raw_denominator": 24897
+    },
+    "MARGINAL_1": {
+      "hash": "ef51aa329781a81d8bf6034a907e936ba2bba0c28cafb95209ee50aa92809765",
+      "raw_denominator": 28325
+    }
+  },
+  "consumer": "native M1 build_m1_adjudication_input_bundle/adjudicate_learned_empirical; family_rule_binding=None; empty validator registry",
+  "positive": "three exact Facts materialize; exact raw supports preserved; native M1 returns BLOCKED__MISSING_FAMILY_VALIDATION_RULE_AUTHORITY, without semantic effect",
+  "fault": "omit original JOINT fact from actual M1 input catalog; named consumer assertion must RED; restore then GREEN",
+  "other_required_claims": "Original I03/Batch execution plan omission remains NOT_RUN until exact validated C11 release and appropriate authority are available",
+  "privacy": "all full Fact payloads and fragments remain in ignored local runtime; committed results contain refs/aggregate/hash only"
+}
