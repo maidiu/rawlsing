@@ -1,0 +1,78 @@
+{
+  "schema": "WV1_FROZEN_EXPECTATIONS@1",
+  "startup": "1150e836ef58553255abc0f588e66c1327db4932",
+  "basis": "Commission + T35 publisher source + E04L producer fixtures; frozen before WV1 join implementation",
+  "epochs": {
+    "2026": {
+      "mode": "AS_OF",
+      "valid_at": "2026-06-01",
+      "published_asof": "2026-04-15",
+      "training_access": true,
+      "training_fee": 2,
+      "exit_cost": 2,
+      "training": "ELIGIBLE",
+      "exit_constraint": "WITHIN_MODELED_BUDGET"
+    },
+    "2027": {
+      "mode": "TEST_CURRENT",
+      "valid_at": "2027-09-01",
+      "published_asof": "2027-09-01",
+      "test_now": "2027-09-01",
+      "training_access": true,
+      "training_fee": 6,
+      "exit_cost": 8,
+      "training": "BLOCKED_BY_MODELED_RULE",
+      "exit_constraint": "RESOURCE_CONSTRAINED"
+    }
+  },
+  "denominators": [
+    32,
+    16,
+    8
+  ],
+  "base_cells": [
+    {
+      "0": 14,
+      "1": 18
+    },
+    {
+      "0": 6,
+      "1": 10
+    },
+    {
+      "0": 2,
+      "1": 6
+    }
+  ],
+  "alternate_cells": [
+    {
+      "0": 13,
+      "1": 19
+    },
+    {
+      "0": 5,
+      "1": 11
+    },
+    {
+      "0": 1,
+      "1": 7
+    }
+  ],
+  "civil": "ELIGIBLE",
+  "rule_revision": {
+    "effective_from": "2027-01-01",
+    "publication": "2027-06-01",
+    "revision": 2
+  },
+  "faults": {
+    "empirical": "Remove selected M2 release while source/catalog fixed -> NONPARENT_OPTIONS ValueError; named positive assertion RED",
+    "temporal": "T35 fee revision 6 -> 2 -> named training BLOCKED assertion RED; empirical unchanged",
+    "structural": "M4 resolves no selected entries -> named structural availability assertion RED",
+    "freshness": "Withdraw B5 selected release -> fresh historical consume ValueError, archive unchanged"
+  },
+  "permission_holds": {
+    "proposal": "E04L TEST_ONLY_CONSUMER_PERMISSION_UNAVAILABLE; consumer purpose NONPARENT_OPTIONS only",
+    "R13_serve": "Requires N9_SELECTED_WORLD empirical read, outside E04L permission; snapshot build/accept permitted",
+    "F6P": "NO_AUTHORIZED_JOIN: no exact source/estimand/transport binding"
+  }
+}
