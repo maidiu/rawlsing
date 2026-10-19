@@ -1,0 +1,74 @@
+{
+  "acknowledged_occurrence_ids": [
+    "OCC-0001",
+    "OCC-0002",
+    "OCC-0003",
+    "OCC-0004",
+    "OCC-0005"
+  ],
+  "cold_reopen": {
+    "count": 5,
+    "ids": [
+      "OCC-0001",
+      "OCC-0002",
+      "OCC-0003",
+      "OCC-0004",
+      "OCC-0005"
+    ],
+    "receipt_id": "600a1e6f3dedc06e25599f0064977dc317c822e47fcbdca269ea58b948d4c2c8",
+    "status": "VERSIONED_VALID",
+    "version": 5,
+    "writer_id": "W1"
+  },
+  "committed_versions": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "durable_occurrence_ids": [
+    "OCC-0001",
+    "OCC-0002",
+    "OCC-0003",
+    "OCC-0004",
+    "OCC-0005"
+  ],
+  "writers": [
+    {
+      "err": "",
+      "out": "{\"writer\": \"W0\", \"pid\": 97249, \"mode\": \"cas\", \"attempts\": [{\"recovered\": 2, \"committed\": 3, \"receipt_id\": \"5ddbcf69fac40e160a780136d150fc8fea9e61557b55d0cf7d600060989b765e\", \"acknowledged\": [\"OCC-0001\", \"OCC-0002\", \"OCC-0003\"]}]}",
+      "pid": 97249,
+      "rc": 0,
+      "writer": "W0"
+    },
+    {
+      "err": "",
+      "out": "{\"writer\": \"W1\", \"pid\": 97250, \"mode\": \"cas\", \"attempts\": [{\"conflict\": {\"expected\": 1, \"actual\": 4}}, {\"recovered\": 4, \"committed\": 5, \"receipt_id\": \"600a1e6f3dedc06e25599f0064977dc317c822e47fcbdca269ea58b948d4c2c8\", \"acknowledged\": [\"OCC-0001\", \"OCC-0002\", \"OCC-0003\", \"OCC-0004\", \"OCC-0005\"]}]}",
+      "pid": 97250,
+      "rc": 0,
+      "writer": "W1"
+    },
+    {
+      "err": "",
+      "out": "{\"writer\": \"W2\", \"pid\": 97251, \"mode\": \"cas\", \"attempts\": [{\"recovered\": 3, \"committed\": 4, \"receipt_id\": \"fdf27f192a6348d5d63216925cf1e7344f1fcbfdd2b9b09784684d1e44e3007c\", \"acknowledged\": [\"OCC-0001\", \"OCC-0002\", \"OCC-0003\", \"OCC-0004\"]}]}",
+      "pid": 97251,
+      "rc": 0,
+      "writer": "W2"
+    },
+    {
+      "err": "",
+      "out": "{\"writer\": \"W3\", \"pid\": 97252, \"mode\": \"cas\", \"attempts\": [{\"recovered\": 1, \"committed\": 2, \"receipt_id\": \"9fa7347fb74a6b421dacd14f8beda92de265a5fa95f808aa9d1b1d499fa932e3\", \"acknowledged\": [\"OCC-0001\", \"OCC-0002\"]}]}",
+      "pid": 97252,
+      "rc": 0,
+      "writer": "W3"
+    },
+    {
+      "err": "",
+      "out": "{\"writer\": \"W4\", \"pid\": 97253, \"mode\": \"cas\", \"attempts\": [{\"recovered\": 0, \"committed\": 1, \"receipt_id\": \"203908e1014338ee862f050d018e5ab1e261ac0b79ebcd0e2720132cfcfbeaa9\", \"acknowledged\": [\"OCC-0001\"]}]}",
+      "pid": 97253,
+      "rc": 0,
+      "writer": "W4"
+    }
+  ]
+}

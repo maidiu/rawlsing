@@ -1,0 +1,46 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "status": "MECHANICAL_WITNESS_PASS_NOT_SEMANTIC_ADOPTION",
+  "claims": [
+    {
+      "claim_id": "C8_CONSUMER_READS_EXACT_COMMITTED_SOURCE",
+      "positive_node": "court/test_c8o_consumer_severance.py::test_consumer_reads_exact_committed_source",
+      "fault_path": "consumer/c8_readonly_consumer.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    },
+    {
+      "claim_id": "C8_CONSUMER_READSET_BOUND_TO_COMMITTED_DIGESTS",
+      "positive_node": "court/test_c8o_consumer_severance.py::test_consumer_readset_matches_independently_recomputed_digests",
+      "fault_path": "consumer/c8_readonly_consumer.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    },
+    {
+      "claim_id": "C8_CONSUMER_OWNER_IDENTITY_BINDING",
+      "positive_node": "court/test_c8o_consumer_severance.py::test_consumer_owner_identity_mismatch_is_typed",
+      "fault_path": "consumer/c8_readonly_consumer.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    },
+    {
+      "claim_id": "C8_CONSUMER_REFUSES_UNREADABLE_COMMITTED_SOURCE",
+      "positive_node": "court/test_c8o_consumer_severance.py::test_consumer_refuses_unreadable_source",
+      "fault_path": "consumer/c8_readonly_consumer.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    },
+    {
+      "claim_id": "C8_CONSUMER_DETECTS_LEGACY_WRITER_OVERWRITE",
+      "positive_node": "court/test_c8o_consumer_severance.py::test_consumer_refuses_legacy_overwritten_source",
+      "fault_path": "consumer/c8_readonly_consumer.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    }
+  ]
+}

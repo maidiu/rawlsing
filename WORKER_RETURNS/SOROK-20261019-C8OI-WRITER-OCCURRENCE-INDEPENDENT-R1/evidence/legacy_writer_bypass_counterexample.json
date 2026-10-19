@@ -1,0 +1,40 @@
+{
+  "accepted_api": "outbox_prototype.Journal.commit(p)",
+  "after": {
+    "bytes_len": 1104,
+    "occurrence_ids": [
+      "OCC-0001"
+    ],
+    "writer_version_key_present": false
+  },
+  "attacker": {
+    "pid": 97276,
+    "rc": 0,
+    "writer": "ATTACKER"
+  },
+  "authority_form": "LEGACY_WRITER_AUTHORIZATION_BYPASS_UNCLOSED",
+  "before": {
+    "bytes_len": 3357,
+    "occurrence_ids": [
+      "OCC-0001",
+      "OCC-0002",
+      "OCC-0003"
+    ],
+    "sha_state": "fd407b0bd51d49a13240959506399e0c56eb37c7b8c44e228d667cf44500b87f",
+    "writer_version": 1
+  },
+  "claim": "DETECTED_AFTER_DESTRUCTION_NOT_PREVENTED",
+  "destroyed_acknowledged_occurrence_ids": [
+    "OCC-0001",
+    "OCC-0002",
+    "OCC-0003"
+  ],
+  "detection": {
+    "authority_form": "LEGACY_WRITER_AUTHORIZATION_BYPASS_UNCLOSED",
+    "bypass_detected": true,
+    "code": "LEGACY_WRITER_BYPASS_DETECTED",
+    "prevention": "NOT_POSSIBLE_WITH_CURRENT_LEGAL_CALLABLE_API",
+    "reason": "LEGACY_UNVERSIONED_OVERWRITE",
+    "status": "LEGACY_UNVERSIONED_OVERWRITE"
+  }
+}

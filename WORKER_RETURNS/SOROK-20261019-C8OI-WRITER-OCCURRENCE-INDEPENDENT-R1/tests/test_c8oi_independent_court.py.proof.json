@@ -1,0 +1,38 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "claims": [
+    {
+      "claim_id": "C8OI_CONSUMER_READSET_BINDS_COMMITTED_RECEIPT",
+      "actual_consumer": "consumer/c8_readonly_consumer.py C8ReadOnlyConsumer.load C8Readset construction",
+      "claimed_dependency": "committed journal receipt state_digest -> consumer readset -> downstream assertion",
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/tests/test_c8oi_independent_court.py::test_committed_receipt_reaches_consumer_with_readset",
+      "fault": {
+        "path": "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/consumer/c8_readonly_consumer.py",
+        "old": "state_digest=receipt[\"state_digest\"],",
+        "new": "state_digest=\"SEVERED\","
+      }
+    },
+    {
+      "claim_id": "C8OI_CONSUMER_READSET_BINDS_VERSION_STATE_DIGEST",
+      "actual_consumer": "consumer/c8_readonly_consumer.py C8ReadOnlyConsumer.load C8Readset construction",
+      "claimed_dependency": "committed journal receipt version_state_digest -> consumer readset -> downstream assertion",
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/tests/test_c8oi_independent_court.py::test_committed_receipt_reaches_consumer_with_readset",
+      "fault": {
+        "path": "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/consumer/c8_readonly_consumer.py",
+        "old": "version_state_digest=receipt[\"version_state_digest\"],",
+        "new": "version_state_digest=\"SEVERED\","
+      }
+    },
+    {
+      "claim_id": "C8OI_CONSUMER_READSET_BINDS_LEDGER_PREFIX_DIGEST",
+      "actual_consumer": "consumer/c8_readonly_consumer.py C8ReadOnlyConsumer.load C8Readset construction",
+      "claimed_dependency": "committed journal receipt ledger_prefix_digest -> consumer readset -> downstream assertion",
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/tests/test_c8oi_independent_court.py::test_committed_receipt_reaches_consumer_with_readset",
+      "fault": {
+        "path": "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/consumer/c8_readonly_consumer.py",
+        "old": "ledger_prefix_digest=receipt[\"ledger_prefix_digest\"],",
+        "new": "ledger_prefix_digest=\"SEVERED\","
+      }
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "boundary": "SIGKILL_AFTER_COMMIT",
+  "cold_reopen": {
+    "count": 2,
+    "ids": [
+      "OCC-0001",
+      "OCC-0002"
+    ],
+    "receipt_id": "be43c6a9cbe358f7345207ec280da24cf0cbcd3e3e47c1629018cd63f557cfdc",
+    "status": "VERSIONED_VALID",
+    "version": 2,
+    "writer_id": "CRASH"
+  },
+  "expected_returncode": -9,
+  "journal_byte_identical_to_prior": false,
+  "os_returncode": -9,
+  "signal_semantics": "negative returncode == death by that signal"
+}

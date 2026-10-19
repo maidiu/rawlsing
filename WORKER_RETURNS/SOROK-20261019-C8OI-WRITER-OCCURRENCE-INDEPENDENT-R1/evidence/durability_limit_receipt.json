@@ -1,0 +1,15 @@
+{
+  "authority_form": "PROCESS_DEATH_RECOVERY_ONLY_NOT_POWER_LOSS_DURABILITY",
+  "not_proved": [
+    "media-level durability under power loss",
+    "fdatasync/syncfs barrier semantics",
+    "exactly-once client delivery",
+    "survival on exotic or network filesystems"
+  ],
+  "proved": [
+    "temp file fsync before rename",
+    "same-directory atomic os.replace",
+    "parent directory fsync before acknowledgement",
+    "prior state byte-identical when death occurs before rename"
+  ]
+}

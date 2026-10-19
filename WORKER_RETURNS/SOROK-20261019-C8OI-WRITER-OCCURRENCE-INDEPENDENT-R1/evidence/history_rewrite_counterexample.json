@@ -1,0 +1,19 @@
+{
+  "accepted_reader_verdict": "VERSIONED_VALID",
+  "meaning": "any actor allowed to rewrite the file can rewrite history and recompute every unkeyed digest",
+  "occurrence_ids": [
+    "OCC-0001",
+    "OCC-0002"
+  ],
+  "recomputed": [
+    "content_hash",
+    "identity_digest",
+    "state_digest",
+    "version_state_digest",
+    "commit_receipt_id"
+  ],
+  "rewritten_payload": {
+    "utterance": "REWROTE-HISTORY"
+  },
+  "security_claim": "NOT_PROVED"
+}

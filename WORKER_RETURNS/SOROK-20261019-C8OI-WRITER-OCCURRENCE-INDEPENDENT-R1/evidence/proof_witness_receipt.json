@@ -1,0 +1,30 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "status": "MECHANICAL_WITNESS_PASS_NOT_SEMANTIC_ADOPTION",
+  "claims": [
+    {
+      "claim_id": "C8OI_CONSUMER_READSET_BINDS_COMMITTED_RECEIPT",
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/tests/test_c8oi_independent_court.py::test_committed_receipt_reaches_consumer_with_readset",
+      "fault_path": "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/consumer/c8_readonly_consumer.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    },
+    {
+      "claim_id": "C8OI_CONSUMER_READSET_BINDS_VERSION_STATE_DIGEST",
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/tests/test_c8oi_independent_court.py::test_committed_receipt_reaches_consumer_with_readset",
+      "fault_path": "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/consumer/c8_readonly_consumer.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    },
+    {
+      "claim_id": "C8OI_CONSUMER_READSET_BINDS_LEDGER_PREFIX_DIGEST",
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/tests/test_c8oi_independent_court.py::test_committed_receipt_reaches_consumer_with_readset",
+      "fault_path": "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/consumer/c8_readonly_consumer.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "claims": [
+    {
+      "claim_id": "C8_CONSUMER_READS_EXACT_COMMITTED_SOURCE",
+      "actual_consumer": "consumer.c8_readonly_consumer.C8ReadOnlyConsumer.load with C8CommittedView.events",
+      "claimed_dependency": "committed journal receipt bytes -> canonical byte-exact read -> consumer view events equal committed ledger",
+      "positive_node": "court/test_c8o_consumer_severance.py::test_consumer_reads_exact_committed_source",
+      "fault": {
+        "path": "consumer/c8_readonly_consumer.py",
+        "old": "events=list(state.get(\"ledger\", []))",
+        "new": "events=[]"
+      }
+    },
+    {
+      "claim_id": "C8_CONSUMER_READSET_BOUND_TO_COMMITTED_DIGESTS",
+      "actual_consumer": "consumer.c8_readonly_consumer.C8ReadOnlyConsumer.readset",
+      "claimed_dependency": "committed envelope digests -> consumer readset -> independent recomputation cross-check",
+      "positive_node": "court/test_c8o_consumer_severance.py::test_consumer_readset_matches_independently_recomputed_digests",
+      "fault": {
+        "path": "consumer/c8_readonly_consumer.py",
+        "old": "version_state_digest=receipt[\"version_state_digest\"],",
+        "new": "version_state_digest=\"\","
+      }
+    },
+    {
+      "claim_id": "C8_CONSUMER_OWNER_IDENTITY_BINDING",
+      "actual_consumer": "consumer.c8_readonly_consumer.C8ReadOnlyConsumer._check_owner_identity",
+      "claimed_dependency": "expected event/actor/action owner identity -> committed occurrence identity -> typed mismatch refusal",
+      "positive_node": "court/test_c8o_consumer_severance.py::test_consumer_owner_identity_mismatch_is_typed",
+      "fault": {
+        "path": "consumer/c8_readonly_consumer.py",
+        "old": "raise OwnerIdentityMismatch({key: value}, {key: actual.get(key)})",
+        "new": "pass"
+      }
+    },
+    {
+      "claim_id": "C8_CONSUMER_REFUSES_UNREADABLE_COMMITTED_SOURCE",
+      "actual_consumer": "consumer.c8_readonly_consumer.C8ReadOnlyConsumer._assert_byte_exact",
+      "claimed_dependency": "version-state custody classification -> typed refusal of corrupt committed source",
+      "positive_node": "court/test_c8o_consumer_severance.py::test_consumer_refuses_unreadable_source",
+      "fault": {
+        "path": "consumer/c8_readonly_consumer.py",
+        "old": "if custody.status != \"VERSIONED_VALID\":",
+        "new": "if False:"
+      }
+    },
+    {
+      "claim_id": "C8_CONSUMER_DETECTS_LEGACY_WRITER_OVERWRITE",
+      "actual_consumer": "consumer.c8_readonly_consumer.C8ReadOnlyConsumer._assert_byte_exact",
+      "claimed_dependency": "legacy unversioned overwrite of the committed source -> typed LEGACY_WRITER_BYPASS_DETECTED refusal",
+      "positive_node": "court/test_c8o_consumer_severance.py::test_consumer_refuses_legacy_overwritten_source",
+      "fault": {
+        "path": "consumer/c8_readonly_consumer.py",
+        "old": "raise LegacyWriterBypassDetected(self.journal_path)",
+        "new": "raise VersionStateUnreadable(self.journal_path, \"LEGACY_DISGUISED\")"
+      }
+    }
+  ]
+}

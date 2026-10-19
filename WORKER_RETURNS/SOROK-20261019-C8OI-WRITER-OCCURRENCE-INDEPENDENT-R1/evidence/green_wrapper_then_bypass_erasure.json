@@ -1,0 +1,15 @@
+{
+  "after_bypass_occurrence_ids": [
+    "OCC-0001"
+  ],
+  "green_proof": {
+    "wrapper_commit_acknowledged": [
+      "OCC-0001",
+      "OCC-0002"
+    ],
+    "wrapper_commit_version": 1,
+    "wrapper_digest_valid": true
+  },
+  "interpretation": "a green wrapper commit receipt does not bind the legacy writer; state acknowledged before the bypass is already erased",
+  "wrapper_cold_reopen": "LEGACY_WRITER_BYPASS_DETECTED"
+}
