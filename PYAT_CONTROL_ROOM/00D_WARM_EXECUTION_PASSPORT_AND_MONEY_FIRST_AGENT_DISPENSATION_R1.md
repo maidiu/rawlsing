@@ -1,5 +1,10 @@
 # PYAT 00D — Warm execution passport / money-first agent dispensation R1
 
+## Mandatory cross-lane model-only flight routing — 18 October 2026
+
+Read [PRE-MAIN shared parallel-flights/economical-model law](../CROSS_HQ_CONTROL_ROOM/HQ_PARALLEL_FLIGHTS_AND_ECONOMICAL_MODEL_ROUTING_LAW_R1.md) **before each dispatch, and after every material worker return**. Economical per-worker routing without a *parallel whole-machine FLIGHT_BOARD* is insufficient. Check simultaneous independent critical-path lanes, two possible machines, separate Codex/ChatGPT and OpenCode slots, actual quota and separate Git stores/worktrees; unknown remains UNKNOWN. **Specify recommended MODEL/effort independently of editor/harness** unless the user selected a pair. If a task genuinely fits a cheap model such as DeepSeek V4.1-Flash, propose it by name **conditional on observed sufficiency/availability**, and leave OpenCode vs DeepSeek-Harness to user choice. Do not default complex reasoning without heavy Python/files to local Codex: use Browser High first when qualified; do not burn Codex 6.1 High on mechanical custody, hashing and bounded pytest. Review/source/actor authority and session safety remain unchanged. Default one-return-at-a-time dispatch is `SEQ_DRIFT__REPLAN` unless the flight board documents a real constraint.
+
+
 ## Mandatory single-pass proof-integrity requirement — 18 October 2026
 
 New and continued Pyat worker commissions MUST inherit [the PRE-MAIN proof-integrity law](../CROSS_HQ_CONTROL_ROOM/PROOF_INTEGRITY_AND_FALSIFIABLE_TEST_LAW_R1.md): frozen claim-to-consumer observable, explicit upstream-edge severance, actual test RED for the named assertion in the same qualified implementation pass, nonvacuous assertions, and faithful `NOT_PROVED` where absent. CI checks changed Python tests and executes supplied integration fault witnesses. This is within the current warm execution and cost budget, NOT an added mandatory agent/reviewer round. Add the exact claim/fault/positive/RED test node to the return passport; provider/model/effort obligations remain unchanged.
