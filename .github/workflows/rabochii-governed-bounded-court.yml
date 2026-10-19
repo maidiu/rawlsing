@@ -41,6 +41,28 @@ jobs:
       - name: Install court dependency
         run: python -m pip install --disable-pip-version-check pytest
 
+      - name: Checkout canonical PRE-MAIN proof-integrity checker
+        uses: actions/checkout@v4
+        with:
+          ref: integration/pre-main-reconciliation-r1
+          path: .proof-policy
+          persist-credentials: false
+          sparse-checkout: |
+            CROSS_HQ_CONTROL_ROOM/proof_integrity_gate_r1.py
+            CROSS_HQ_CONTROL_ROOM/test_proof_integrity_gate_r1.py
+
+      - name: Self-test proof-integrity checker
+        run: python -m unittest discover -s .proof-policy/CROSS_HQ_CONTROL_ROOM -p test_proof_integrity_gate_r1.py -v
+
+      - name: Check changed tests and execute their claim-specific fault witnesses
+        if: ${{ github.event_name == 'pull_request' }}
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          git fetch --no-tags --depth=1 origin "$BASE_SHA"
+          python .proof-policy/CROSS_HQ_CONTROL_ROOM/proof_integrity_gate_r1.py changed --root . --base "$BASE_SHA" --head "$HEAD_SHA"
+
       - name: Protocol self-test
         run: >-
           python -m pytest -q
