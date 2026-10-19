@@ -1,0 +1,16 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "claims": [
+    {
+      "claim_id": "C0X_RECEIVER_DEPENDS_ON_ACTUAL_N9_SELECTED_WORLD_OUTPUT",
+      "actual_consumer": "c0x_world_receiver.receive_receipt",
+      "claimed_dependency": "the receiver's N9 selection/native-unit evidence comes from the actual repaired C0P two-contract facade, not from a fixture or stale cache",
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-C0X-C0-C10-DUAL-OWNER-RECEIVER-COMPLETION-R1/tests/test_c0x_receiving_consumer.py::test_nonparent_receipt_reads_actual_upstream_selection",
+      "fault": {
+        "path": "WORKER_RETURNS/SOROK-20261019-C0X-C0-C10-DUAL-OWNER-RECEIVER-COMPLETION-R1/upstream/c0p_two_contract_port.py",
+        "old": "            \"selection\": selection,",
+        "new": "            \"selection\": [],"
+      }
+    }
+  ]
+}

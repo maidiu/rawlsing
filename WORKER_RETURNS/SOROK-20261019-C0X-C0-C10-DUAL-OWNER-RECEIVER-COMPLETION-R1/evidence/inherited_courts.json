@@ -1,0 +1,53 @@
+{
+  "schema": "SOROK_C0X_INHERITED_COURTS@1",
+  "c0p_author_49": {
+    "junit": {
+      "tests": 49,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "c0i_frozen_50_unrepaired": {
+    "junit": {
+      "tests": 50,
+      "failures": 3,
+      "errors": 0,
+      "skipped": 0
+    },
+    "red_tests": [
+      "test_port_runtime_binding_uses_actual_imported_native_module_tree",
+      "test_facade_exposes_two_distinct_owner_contract_receipts_not_two_N9_clients",
+      "test_facade_receipt_roundtrips_frozen_SC0_envelope_not_only_a_consumer_hash"
+    ]
+  },
+  "c0i_frozen_50_repaired": {
+    "junit": {
+      "tests": 50,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "c0r2_author_23": {
+    "junit": {
+      "tests": 23,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "finding": "INHERITED_VACUOUS_ASSERTION: tests/test_c0r2_adversarial.py::test_r1_relocation_changes_no_consumer_value ends with 'or True'; its green does not prove that assertion"
+  },
+  "k9_k10": {
+    "junit": {
+      "tests": 36,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "k9_cases": 8,
+    "k10_cases": 28,
+    "grade": "SOURCEFREE_FIXTURE_PORT__NOT_OPERATIVE_N9"
+  },
+  "note": "C0P/C0I/C0R2/K9/K10 are inherited author/independent evidence re-executed here; they are not this worker's independent acceptance."
+}

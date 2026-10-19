@@ -1,0 +1,2830 @@
+{
+  "schema": "SOROK_C0X_RECEIVER_READINGS@1",
+  "nonparent": {
+    "evidence_state": "SUPPORTED",
+    "evidence_reasons": [],
+    "owner_contracts": {
+      "N9": {
+        "contract_version": "GENERIC_WORLD_SELECTION@1.0.0",
+        "field_count": 17,
+        "selection_count": 5,
+        "payload_count": 5
+      },
+      "N10E_N10W": {
+        "contract_version": "GENERIC_ORDERED_POSSIBILITY@1.0.0",
+        "field_count": 20,
+        "ordered_steps": 3,
+        "options": 3
+      }
+    },
+    "owner_identities": {
+      "distinct": true,
+      "contract_versions_distinct": true,
+      "owner_outputs_distinct": true,
+      "receipt_refs_equal": false,
+      "note": "distinct owner contract versions and outputs; a shared consumer receipt ref is recorded, not hidden",
+      "world_receipt_ref": {
+        "kind": "WorldReceipt",
+        "id": "urn:test:c0p:world_receipt:NONPARENT_OPTIONS",
+        "hash": "52e10a2fd0ce21b30f535b2786d45d4bd88817f174caa006e5ba7f0589d851ec"
+      },
+      "possibility_receipt_ref": {
+        "kind": "PossibilityReceipt",
+        "id": "urn:test:c0p:possibility_receipt:NONPARENT_OPTIONS",
+        "hash": "52e10a2fd0ce21b30f535b2786d45d4bd88817f174caa006e5ba7f0589d851ec"
+      },
+      "consumer_receipt_hash": "52e10a2fd0ce21b30f535b2786d45d4bd88817f174caa006e5ba7f0589d851ec"
+    },
+    "native_unit_id": "urn:test:e04:nativeunit:SYNTHETIC_INDIVIDUAL_RESPONDENT",
+    "four_clocks": {
+      "observation_effective": {
+        "valid_from": "2027-09-01",
+        "valid_to": null,
+        "evidence_ref": {
+          "kind": "ClockEvidence",
+          "id": "urn:test:e04:clockevidence:2027-09-01",
+          "hash": "d4c9cf1bedab33ce02a2e767e4cb6d96b3abe088166354e875f1b0be819bfe3e"
+        }
+      },
+      "publication_knowledge": {
+        "published_at": "2026-03-01",
+        "knowledge_as_of": "2027-09-01"
+      },
+      "actor_event": {
+        "scene_at": "2027-09-01",
+        "caller_owns_time": true
+      },
+      "request_currentness": {
+        "requested_at": "2027-09-01",
+        "currentness": "AS_OF_REQUEST"
+      },
+      "mode": "KNOWLEDGE_AS_OF"
+    },
+    "source_permission": {
+      "issuer_refs": [
+        {
+          "kind": "Issuer",
+          "id": "urn:test:e04:issuer:TEST_ONLY_E04_SOURCE_ROOT",
+          "hash": "394ec64cae8751cf013d927a3e9c29b2930d97749e09d5812e7650847a49e907"
+        }
+      ],
+      "source_allowed_use_atoms": [
+        "TEST_ONLY_CONTEXT"
+      ],
+      "requested_use_atoms": [
+        "TEST_ONLY_CONTEXT"
+      ],
+      "effective_use_atoms": [
+        "TEST_ONLY_CONTEXT"
+      ],
+      "model_use_ref": null
+    },
+    "values_read_count": 8,
+    "values_read": [
+      {
+        "consumer": "NONPARENT_OPTIONS",
+        "channel": "structural",
+        "scope": "training_access",
+        "source_ref": {
+          "kind": "E04_TEST_ONLY_FIELD",
+          "object_id": "urn:test:e04:field:training_access:1",
+          "content_hash": "3b4b4859dcbe858480d097147c719ce9458d4e1d88b4f47898a0416fe01e7174"
+        },
+        "state": "SUPPORTED_TEST_ONLY",
+        "value_read": true,
+        "native_unit": "modeled policy eligibility boolean",
+        "snapshot_ref": "faf846a0ff926c42fb9360f322c344c1e57793214ab07d57bf2d41aa430bab5c"
+      },
+      {
+        "consumer": "NONPARENT_OPTIONS",
+        "channel": "structural",
+        "scope": "training_fee",
+        "source_ref": {
+          "kind": "E04_TEST_ONLY_FIELD",
+          "object_id": "urn:test:e04:field:training_fee:1",
+          "content_hash": "7b81073f295d8eafe81abb7aaaac58251cd172d109325d87e2deb2f0b9b6f166"
+        },
+        "state": "SUPPORTED_TEST_ONLY",
+        "value_read": 2,
+        "native_unit": "modeled resource tokens",
+        "snapshot_ref": "faf846a0ff926c42fb9360f322c344c1e57793214ab07d57bf2d41aa430bab5c"
+      },
+      {
+        "consumer": "NONPARENT_OPTIONS",
+        "channel": "structural",
+        "scope": "exit_cost",
+        "source_ref": {
+          "kind": "E04_TEST_ONLY_FIELD",
+          "object_id": "urn:test:e04:field:exit_cost:1",
+          "content_hash": "5281accc231a8cbedce249f25863bffeca0c4cc2a6fdd755c085b2e19092fbfd"
+        },
+        "state": "SUPPORTED_TEST_ONLY",
+        "value_read": 2,
+        "native_unit": "modeled resource tokens",
+        "snapshot_ref": "faf846a0ff926c42fb9360f322c344c1e57793214ab07d57bf2d41aa430bab5c"
+      },
+      {
+        "consumer": "NONPARENT_OPTIONS",
+        "channel": "structural",
+        "scope": "civil_open",
+        "source_ref": {
+          "kind": "E04_TEST_ONLY_FIELD",
+          "object_id": "urn:test:e04:field:civil_open:1",
+          "content_hash": "704f450297cc2d79fdb4f4998bc5336c63524350a9983d378f5f500da920e27e"
+        },
+        "state": "SUPPORTED_TEST_ONLY",
+        "value_read": true,
+        "native_unit": "modeled route eligibility boolean",
+        "snapshot_ref": "faf846a0ff926c42fb9360f322c344c1e57793214ab07d57bf2d41aa430bab5c"
+      },
+      {
+        "consumer": "NONPARENT_OPTIONS",
+        "channel": "structural",
+        "scope": "civil_sanction",
+        "source_ref": {
+          "kind": "E04_TEST_ONLY_FIELD",
+          "object_id": "urn:test:e04:field:civil_sanction:1",
+          "content_hash": "fc9a722d4333076c338b0ad8993bac001e97de3d49ee816edebaacd85eb5154e"
+        },
+        "state": "SUPPORTED_TEST_ONLY",
+        "value_read": false,
+        "native_unit": "modeled sanction boolean",
+        "snapshot_ref": "faf846a0ff926c42fb9360f322c344c1e57793214ab07d57bf2d41aa430bab5c"
+      },
+      {
+        "consumer": "NONPARENT_OPTIONS",
+        "channel": "empirical",
+        "scope": "empirical",
+        "state": "EXACT_SUPPORTED",
+        "evidence_ref": {
+          "kind": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+          "object_id": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:65d1ea06184dcbf33579165cdf4d4228719844989ebd05efdc6fa6ce9cc7cc39",
+          "content_hash": "65d1ea06184dcbf33579165cdf4d4228719844989ebd05efdc6fa6ce9cc7cc39"
+        },
+        "source_ref": {
+          "kind": "EmpiricalUniverse@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:f677fb8b8478ba78b9b526d5dcd7b3aa54070d4a4b90a1d2de6dc219ec177cda",
+          "content_hash": "f677fb8b8478ba78b9b526d5dcd7b3aa54070d4a4b90a1d2de6dc219ec177cda"
+        },
+        "release_ref": {
+          "kind": "C11LogicalRelease",
+          "object_id": "REL-e04-base-r1",
+          "content_hash": "5e795c3fd62b89aa00ca133777ff31df3cb42501d25a9b431fe0de03c54d161f"
+        },
+        "value_read": [
+          {
+            "cell": "0",
+            "cell_state": "OBSERVED_POSITIVE",
+            "raw_numerator_support": 14,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                7,
+                16
+              ]
+            },
+            "weighted_numerator_support_if_authorized": null,
+            "weighted_probability_exact_fraction_if_authorized": null
+          },
+          {
+            "cell": "1",
+            "cell_state": "OBSERVED_POSITIVE",
+            "raw_numerator_support": 18,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                9,
+                16
+              ]
+            },
+            "weighted_numerator_support_if_authorized": null,
+            "weighted_probability_exact_fraction_if_authorized": null
+          }
+        ],
+        "denominator": 32,
+        "query_condition_order": [
+          [
+            "A",
+            1
+          ]
+        ],
+        "target": "Y",
+        "snapshot_ref": "faf846a0ff926c42fb9360f322c344c1e57793214ab07d57bf2d41aa430bab5c"
+      },
+      {
+        "consumer": "NONPARENT_OPTIONS",
+        "channel": "empirical",
+        "scope": "empirical",
+        "state": "EXACT_SUPPORTED",
+        "evidence_ref": {
+          "kind": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+          "object_id": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:860e86c1e1264a8a7efaccd904a95b297e44514e37b90ae8ae4d148c13c8dacf",
+          "content_hash": "860e86c1e1264a8a7efaccd904a95b297e44514e37b90ae8ae4d148c13c8dacf"
+        },
+        "source_ref": {
+          "kind": "EmpiricalUniverse@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:f677fb8b8478ba78b9b526d5dcd7b3aa54070d4a4b90a1d2de6dc219ec177cda",
+          "content_hash": "f677fb8b8478ba78b9b526d5dcd7b3aa54070d4a4b90a1d2de6dc219ec177cda"
+        },
+        "release_ref": {
+          "kind": "C11LogicalRelease",
+          "object_id": "REL-e04-base-r1",
+          "content_hash": "5e795c3fd62b89aa00ca133777ff31df3cb42501d25a9b431fe0de03c54d161f"
+        },
+        "value_read": [
+          {
+            "cell": "0",
+            "cell_state": "OBSERVED_POSITIVE",
+            "raw_numerator_support": 6,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                3,
+                8
+              ]
+            },
+            "weighted_numerator_support_if_authorized": null,
+            "weighted_probability_exact_fraction_if_authorized": null
+          },
+          {
+            "cell": "1",
+            "cell_state": "OBSERVED_POSITIVE",
+            "raw_numerator_support": 10,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                5,
+                8
+              ]
+            },
+            "weighted_numerator_support_if_authorized": null,
+            "weighted_probability_exact_fraction_if_authorized": null
+          }
+        ],
+        "denominator": 16,
+        "query_condition_order": [
+          [
+            "A",
+            1
+          ],
+          [
+            "B",
+            1
+          ]
+        ],
+        "target": "Y",
+        "snapshot_ref": "faf846a0ff926c42fb9360f322c344c1e57793214ab07d57bf2d41aa430bab5c"
+      },
+      {
+        "consumer": "NONPARENT_OPTIONS",
+        "channel": "empirical",
+        "scope": "empirical",
+        "state": "EXACT_SUPPORTED",
+        "evidence_ref": {
+          "kind": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+          "object_id": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:f94ac5deadc6375daa5d0f253bf6b5e9da52a0589c2f2e95e2c213f4a8d1f1dd",
+          "content_hash": "f94ac5deadc6375daa5d0f253bf6b5e9da52a0589c2f2e95e2c213f4a8d1f1dd"
+        },
+        "source_ref": {
+          "kind": "EmpiricalUniverse@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:f677fb8b8478ba78b9b526d5dcd7b3aa54070d4a4b90a1d2de6dc219ec177cda",
+          "content_hash": "f677fb8b8478ba78b9b526d5dcd7b3aa54070d4a4b90a1d2de6dc219ec177cda"
+        },
+        "release_ref": {
+          "kind": "C11LogicalRelease",
+          "object_id": "REL-e04-base-r1",
+          "content_hash": "5e795c3fd62b89aa00ca133777ff31df3cb42501d25a9b431fe0de03c54d161f"
+        },
+        "value_read": [
+          {
+            "cell": "0",
+            "cell_state": "OBSERVED_POSITIVE",
+            "raw_numerator_support": 2,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                1,
+                4
+              ]
+            },
+            "weighted_numerator_support_if_authorized": null,
+            "weighted_probability_exact_fraction_if_authorized": null
+          },
+          {
+            "cell": "1",
+            "cell_state": "OBSERVED_POSITIVE",
+            "raw_numerator_support": 6,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                3,
+                4
+              ]
+            },
+            "weighted_numerator_support_if_authorized": null,
+            "weighted_probability_exact_fraction_if_authorized": null
+          }
+        ],
+        "denominator": 8,
+        "query_condition_order": [
+          [
+            "A",
+            1
+          ],
+          [
+            "B",
+            1
+          ],
+          [
+            "C",
+            1
+          ]
+        ],
+        "target": "Y",
+        "snapshot_ref": "faf846a0ff926c42fb9360f322c344c1e57793214ab07d57bf2d41aa430bab5c"
+      }
+    ],
+    "structural_routes": {
+      "training": {
+        "state": "ELIGIBLE",
+        "dependencies": [
+          "training_access",
+          "training_fee"
+        ],
+        "value_refs": [
+          {
+            "kind": "E04_TEST_ONLY_FIELD",
+            "object_id": "urn:test:e04:field:training_access:1",
+            "content_hash": "3b4b4859dcbe858480d097147c719ce9458d4e1d88b4f47898a0416fe01e7174"
+          },
+          {
+            "kind": "E04_TEST_ONLY_FIELD",
+            "object_id": "urn:test:e04:field:training_fee:1",
+            "content_hash": "7b81073f295d8eafe81abb7aaaac58251cd172d109325d87e2deb2f0b9b6f166"
+          }
+        ]
+      },
+      "civil": {
+        "state": "ELIGIBLE",
+        "dependencies": [
+          "civil_open",
+          "civil_sanction"
+        ],
+        "value_refs": [
+          {
+            "kind": "E04_TEST_ONLY_FIELD",
+            "object_id": "urn:test:e04:field:civil_open:1",
+            "content_hash": "704f450297cc2d79fdb4f4998bc5336c63524350a9983d378f5f500da920e27e"
+          },
+          {
+            "kind": "E04_TEST_ONLY_FIELD",
+            "object_id": "urn:test:e04:field:civil_sanction:1",
+            "content_hash": "fc9a722d4333076c338b0ad8993bac001e97de3d49ee816edebaacd85eb5154e"
+          }
+        ]
+      },
+      "exit_constraint": {
+        "state": "WITHIN_MODELED_BUDGET",
+        "dependencies": [
+          "exit_cost"
+        ],
+        "value_refs": [
+          {
+            "kind": "E04_TEST_ONLY_FIELD",
+            "object_id": "urn:test:e04:field:exit_cost:1",
+            "content_hash": "5281accc231a8cbedce249f25863bffeca0c4cc2a6fdd755c085b2e19092fbfd"
+          }
+        ]
+      }
+    },
+    "empirical_state": "PRODUCTIVE_TEST_ONLY",
+    "steps": [
+      {
+        "denominator": 32,
+        "cells": [
+          {
+            "cell": "0",
+            "cell_state": "OBSERVED_POSITIVE",
+            "raw_numerator_support": 14,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                7,
+                16
+              ]
+            },
+            "weighted_numerator_support_if_authorized": null,
+            "weighted_probability_exact_fraction_if_authorized": null
+          },
+          {
+            "cell": "1",
+            "cell_state": "OBSERVED_POSITIVE",
+            "raw_numerator_support": 18,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                9,
+                16
+              ]
+            },
+            "weighted_numerator_support_if_authorized": null,
+            "weighted_probability_exact_fraction_if_authorized": null
+          }
+        ],
+        "state": "EXACT_SUPPORTED"
+      },
+      {
+        "denominator": 16,
+        "cells": [
+          {
+            "cell": "0",
+            "cell_state": "OBSERVED_POSITIVE",
+            "raw_numerator_support": 6,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                3,
+                8
+              ]
+            },
+            "weighted_numerator_support_if_authorized": null,
+            "weighted_probability_exact_fraction_if_authorized": null
+          },
+          {
+            "cell": "1",
+            "cell_state": "OBSERVED_POSITIVE",
+            "raw_numerator_support": 10,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                5,
+                8
+              ]
+            },
+            "weighted_numerator_support_if_authorized": null,
+            "weighted_probability_exact_fraction_if_authorized": null
+          }
+        ],
+        "state": "EXACT_SUPPORTED"
+      },
+      {
+        "denominator": 8,
+        "cells": [
+          {
+            "cell": "0",
+            "cell_state": "OBSERVED_POSITIVE",
+            "raw_numerator_support": 2,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                1,
+                4
+              ]
+            },
+            "weighted_numerator_support_if_authorized": null,
+            "weighted_probability_exact_fraction_if_authorized": null
+          },
+          {
+            "cell": "1",
+            "cell_state": "OBSERVED_POSITIVE",
+            "raw_numerator_support": 6,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                3,
+                4
+              ]
+            },
+            "weighted_numerator_support_if_authorized": null,
+            "weighted_probability_exact_fraction_if_authorized": null
+          }
+        ],
+        "state": "EXACT_SUPPORTED"
+      }
+    ],
+    "scenarios": null,
+    "transport": {
+      "state": "NON_TRANSPORTABLE_OWNER_FIELD",
+      "json_serializable": false,
+      "non_transportable_fields": [
+        "possibility_receipt.ordered_steps[0].parent_receipt_ref"
+      ],
+      "world_receipt_fields": 17,
+      "possibility_receipt_fields": 20
+    },
+    "transport_hold": true,
+    "generated_conditioner_limits": {
+      "generated_criteria_echo": [],
+      "same_respondent_joint_ref": null,
+      "composition_mode": "REFUSED",
+      "model_use_ref": null,
+      "actor_generation": false,
+      "person_generation": false,
+      "actual_conception": false
+    },
+    "route_probability": null,
+    "selection_weight": null,
+    "no_joint_probability": true,
+    "real_use_authorized": false
+  },
+  "conception": {
+    "evidence_state": "SUPPORTED",
+    "evidence_reasons": [],
+    "owner_contracts": {
+      "N9": {
+        "contract_version": "GENERIC_WORLD_SELECTION@1.0.0",
+        "field_count": 17,
+        "selection_count": 5,
+        "payload_count": 5
+      },
+      "N10E_N10W": {
+        "contract_version": "GENERIC_ORDERED_POSSIBILITY@1.0.0",
+        "field_count": 20,
+        "ordered_steps": 3,
+        "options": 0
+      }
+    },
+    "owner_identities": {
+      "distinct": true,
+      "contract_versions_distinct": true,
+      "owner_outputs_distinct": true,
+      "receipt_refs_equal": false,
+      "note": "distinct owner contract versions and outputs; a shared consumer receipt ref is recorded, not hidden",
+      "world_receipt_ref": {
+        "kind": "WorldReceipt",
+        "id": "urn:test:c0p:world_receipt:CONCEPTION_SCENARIO_PROPOSALS",
+        "hash": "33251a740daff14a0920c4375b0b8577842cf812f5444e07b8313f5730fc3fde"
+      },
+      "possibility_receipt_ref": {
+        "kind": "PossibilityReceipt",
+        "id": "urn:test:c0p:possibility_receipt:CONCEPTION_SCENARIO_PROPOSALS",
+        "hash": "33251a740daff14a0920c4375b0b8577842cf812f5444e07b8313f5730fc3fde"
+      },
+      "consumer_receipt_hash": "33251a740daff14a0920c4375b0b8577842cf812f5444e07b8313f5730fc3fde"
+    },
+    "native_unit_id": "urn:test:e04:nativeunit:SYNTHETIC_INDIVIDUAL_RESPONDENT",
+    "four_clocks": {
+      "observation_effective": {
+        "valid_from": "2027-09-01",
+        "valid_to": null,
+        "evidence_ref": {
+          "kind": "ClockEvidence",
+          "id": "urn:test:e04:clockevidence:2027-09-01",
+          "hash": "d4c9cf1bedab33ce02a2e767e4cb6d96b3abe088166354e875f1b0be819bfe3e"
+        }
+      },
+      "publication_knowledge": {
+        "published_at": "2026-03-01",
+        "knowledge_as_of": "2027-09-01"
+      },
+      "actor_event": {
+        "scene_at": "2027-09-01",
+        "caller_owns_time": true
+      },
+      "request_currentness": {
+        "requested_at": "2027-09-01",
+        "currentness": "AS_OF_REQUEST"
+      },
+      "mode": "KNOWLEDGE_AS_OF"
+    },
+    "source_permission": {
+      "issuer_refs": [
+        {
+          "kind": "Issuer",
+          "id": "urn:test:e04:issuer:TEST_ONLY_E04_SOURCE_ROOT",
+          "hash": "394ec64cae8751cf013d927a3e9c29b2930d97749e09d5812e7650847a49e907"
+        }
+      ],
+      "source_allowed_use_atoms": [
+        "TEST_ONLY_CONTEXT"
+      ],
+      "requested_use_atoms": [
+        "TEST_ONLY_CONTEXT"
+      ],
+      "effective_use_atoms": [
+        "TEST_ONLY_CONTEXT"
+      ],
+      "model_use_ref": null
+    },
+    "values_read_count": 6,
+    "values_read": [
+      {
+        "consumer": "CONCEPTION_SCENARIO_PROPOSALS",
+        "channel": "empirical",
+        "scope": "empirical",
+        "state": "EXACT_SUPPORTED",
+        "evidence_ref": {
+          "kind": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+          "object_id": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:65d1ea06184dcbf33579165cdf4d4228719844989ebd05efdc6fa6ce9cc7cc39",
+          "content_hash": "65d1ea06184dcbf33579165cdf4d4228719844989ebd05efdc6fa6ce9cc7cc39"
+        },
+        "source_ref": {
+          "kind": "EmpiricalUniverse@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:f677fb8b8478ba78b9b526d5dcd7b3aa54070d4a4b90a1d2de6dc219ec177cda",
+          "content_hash": "f677fb8b8478ba78b9b526d5dcd7b3aa54070d4a4b90a1d2de6dc219ec177cda"
+        },
+        "release_ref": {
+          "kind": "C11LogicalRelease",
+          "object_id": "REL-e04-base-r1",
+          "content_hash": "5e795c3fd62b89aa00ca133777ff31df3cb42501d25a9b431fe0de03c54d161f"
+        },
+        "value_read": [
+          {
+            "cell": "0",
+            "cell_state": "OBSERVED_POSITIVE",
+            "raw_numerator_support": 14,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                7,
+                16
+              ]
+            },
+            "weighted_numerator_support_if_authorized": null,
+            "weighted_probability_exact_fraction_if_authorized": null
+          },
+          {
+            "cell": "1",
+            "cell_state": "OBSERVED_POSITIVE",
+            "raw_numerator_support": 18,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                9,
+                16
+              ]
+            },
+            "weighted_numerator_support_if_authorized": null,
+            "weighted_probability_exact_fraction_if_authorized": null
+          }
+        ],
+        "denominator": 32,
+        "query_condition_order": [
+          [
+            "A",
+            1
+          ]
+        ],
+        "target": "Y",
+        "snapshot_ref": "faf846a0ff926c42fb9360f322c344c1e57793214ab07d57bf2d41aa430bab5c"
+      },
+      {
+        "consumer": "CONCEPTION_SCENARIO_PROPOSALS",
+        "channel": "empirical",
+        "scope": "empirical",
+        "state": "EXACT_SUPPORTED",
+        "evidence_ref": {
+          "kind": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+          "object_id": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:860e86c1e1264a8a7efaccd904a95b297e44514e37b90ae8ae4d148c13c8dacf",
+          "content_hash": "860e86c1e1264a8a7efaccd904a95b297e44514e37b90ae8ae4d148c13c8dacf"
+        },
+        "source_ref": {
+          "kind": "EmpiricalUniverse@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:f677fb8b8478ba78b9b526d5dcd7b3aa54070d4a4b90a1d2de6dc219ec177cda",
+          "content_hash": "f677fb8b8478ba78b9b526d5dcd7b3aa54070d4a4b90a1d2de6dc219ec177cda"
+        },
+        "release_ref": {
+          "kind": "C11LogicalRelease",
+          "object_id": "REL-e04-base-r1",
+          "content_hash": "5e795c3fd62b89aa00ca133777ff31df3cb42501d25a9b431fe0de03c54d161f"
+        },
+        "value_read": [
+          {
+            "cell": "0",
+            "cell_state": "OBSERVED_POSITIVE",
+            "raw_numerator_support": 6,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                3,
+                8
+              ]
+            },
+            "weighted_numerator_support_if_authorized": null,
+            "weighted_probability_exact_fraction_if_authorized": null
+          },
+          {
+            "cell": "1",
+            "cell_state": "OBSERVED_POSITIVE",
+            "raw_numerator_support": 10,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                5,
+                8
+              ]
+            },
+            "weighted_numerator_support_if_authorized": null,
+            "weighted_probability_exact_fraction_if_authorized": null
+          }
+        ],
+        "denominator": 16,
+        "query_condition_order": [
+          [
+            "A",
+            1
+          ],
+          [
+            "B",
+            1
+          ]
+        ],
+        "target": "Y",
+        "snapshot_ref": "faf846a0ff926c42fb9360f322c344c1e57793214ab07d57bf2d41aa430bab5c"
+      },
+      {
+        "consumer": "CONCEPTION_SCENARIO_PROPOSALS",
+        "channel": "empirical",
+        "scope": "empirical",
+        "state": "EXACT_SUPPORTED",
+        "evidence_ref": {
+          "kind": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+          "object_id": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:f94ac5deadc6375daa5d0f253bf6b5e9da52a0589c2f2e95e2c213f4a8d1f1dd",
+          "content_hash": "f94ac5deadc6375daa5d0f253bf6b5e9da52a0589c2f2e95e2c213f4a8d1f1dd"
+        },
+        "source_ref": {
+          "kind": "EmpiricalUniverse@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:f677fb8b8478ba78b9b526d5dcd7b3aa54070d4a4b90a1d2de6dc219ec177cda",
+          "content_hash": "f677fb8b8478ba78b9b526d5dcd7b3aa54070d4a4b90a1d2de6dc219ec177cda"
+        },
+        "release_ref": {
+          "kind": "C11LogicalRelease",
+          "object_id": "REL-e04-base-r1",
+          "content_hash": "5e795c3fd62b89aa00ca133777ff31df3cb42501d25a9b431fe0de03c54d161f"
+        },
+        "value_read": [
+          {
+            "cell": "0",
+            "cell_state": "OBSERVED_POSITIVE",
+            "raw_numerator_support": 2,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                1,
+                4
+              ]
+            },
+            "weighted_numerator_support_if_authorized": null,
+            "weighted_probability_exact_fraction_if_authorized": null
+          },
+          {
+            "cell": "1",
+            "cell_state": "OBSERVED_POSITIVE",
+            "raw_numerator_support": 6,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                3,
+                4
+              ]
+            },
+            "weighted_numerator_support_if_authorized": null,
+            "weighted_probability_exact_fraction_if_authorized": null
+          }
+        ],
+        "denominator": 8,
+        "query_condition_order": [
+          [
+            "A",
+            1
+          ],
+          [
+            "B",
+            1
+          ],
+          [
+            "C",
+            1
+          ]
+        ],
+        "target": "Y",
+        "snapshot_ref": "faf846a0ff926c42fb9360f322c344c1e57793214ab07d57bf2d41aa430bab5c"
+      },
+      {
+        "consumer": "CONCEPTION_SCENARIO_PROPOSALS",
+        "channel": "structural",
+        "scope": "training_access",
+        "source_ref": {
+          "kind": "E04_TEST_ONLY_FIELD",
+          "object_id": "urn:test:e04:field:training_access:1",
+          "content_hash": "3b4b4859dcbe858480d097147c719ce9458d4e1d88b4f47898a0416fe01e7174"
+        },
+        "state": "SUPPORTED_TEST_ONLY",
+        "value_read": true,
+        "native_unit": "modeled policy eligibility boolean",
+        "snapshot_ref": "faf846a0ff926c42fb9360f322c344c1e57793214ab07d57bf2d41aa430bab5c"
+      },
+      {
+        "consumer": "CONCEPTION_SCENARIO_PROPOSALS",
+        "channel": "structural",
+        "scope": "civil_open",
+        "source_ref": {
+          "kind": "E04_TEST_ONLY_FIELD",
+          "object_id": "urn:test:e04:field:civil_open:1",
+          "content_hash": "704f450297cc2d79fdb4f4998bc5336c63524350a9983d378f5f500da920e27e"
+        },
+        "state": "SUPPORTED_TEST_ONLY",
+        "value_read": true,
+        "native_unit": "modeled route eligibility boolean",
+        "snapshot_ref": "faf846a0ff926c42fb9360f322c344c1e57793214ab07d57bf2d41aa430bab5c"
+      },
+      {
+        "consumer": "CONCEPTION_SCENARIO_PROPOSALS",
+        "channel": "structural",
+        "scope": "civil_sanction",
+        "source_ref": {
+          "kind": "E04_TEST_ONLY_FIELD",
+          "object_id": "urn:test:e04:field:civil_sanction:1",
+          "content_hash": "fc9a722d4333076c338b0ad8993bac001e97de3d49ee816edebaacd85eb5154e"
+        },
+        "state": "SUPPORTED_TEST_ONLY",
+        "value_read": false,
+        "native_unit": "modeled sanction boolean",
+        "snapshot_ref": "faf846a0ff926c42fb9360f322c344c1e57793214ab07d57bf2d41aa430bab5c"
+      }
+    ],
+    "structural_routes": {},
+    "empirical_state": "PRODUCTIVE_TEST_ONLY",
+    "steps": [
+      {
+        "denominator": 32,
+        "cells": [
+          {
+            "cell": "0",
+            "cell_state": "OBSERVED_POSITIVE",
+            "raw_numerator_support": 14,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                7,
+                16
+              ]
+            },
+            "weighted_numerator_support_if_authorized": null,
+            "weighted_probability_exact_fraction_if_authorized": null
+          },
+          {
+            "cell": "1",
+            "cell_state": "OBSERVED_POSITIVE",
+            "raw_numerator_support": 18,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                9,
+                16
+              ]
+            },
+            "weighted_numerator_support_if_authorized": null,
+            "weighted_probability_exact_fraction_if_authorized": null
+          }
+        ],
+        "state": "EXACT_SUPPORTED"
+      },
+      {
+        "denominator": 16,
+        "cells": [
+          {
+            "cell": "0",
+            "cell_state": "OBSERVED_POSITIVE",
+            "raw_numerator_support": 6,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                3,
+                8
+              ]
+            },
+            "weighted_numerator_support_if_authorized": null,
+            "weighted_probability_exact_fraction_if_authorized": null
+          },
+          {
+            "cell": "1",
+            "cell_state": "OBSERVED_POSITIVE",
+            "raw_numerator_support": 10,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                5,
+                8
+              ]
+            },
+            "weighted_numerator_support_if_authorized": null,
+            "weighted_probability_exact_fraction_if_authorized": null
+          }
+        ],
+        "state": "EXACT_SUPPORTED"
+      },
+      {
+        "denominator": 8,
+        "cells": [
+          {
+            "cell": "0",
+            "cell_state": "OBSERVED_POSITIVE",
+            "raw_numerator_support": 2,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                1,
+                4
+              ]
+            },
+            "weighted_numerator_support_if_authorized": null,
+            "weighted_probability_exact_fraction_if_authorized": null
+          },
+          {
+            "cell": "1",
+            "cell_state": "OBSERVED_POSITIVE",
+            "raw_numerator_support": 6,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                3,
+                4
+              ]
+            },
+            "weighted_numerator_support_if_authorized": null,
+            "weighted_probability_exact_fraction_if_authorized": null
+          }
+        ],
+        "state": "EXACT_SUPPORTED"
+      }
+    ],
+    "scenarios": [
+      {
+        "scenario_id": "S1",
+        "route": "institutional",
+        "feasibility": "FEASIBLE_MODELED_PREMISE",
+        "structural_value_refs": [
+          {
+            "kind": "E04_TEST_ONLY_FIELD",
+            "object_id": "urn:test:e04:field:training_access:1",
+            "content_hash": "3b4b4859dcbe858480d097147c719ce9458d4e1d88b4f47898a0416fe01e7174"
+          }
+        ],
+        "empirical_profiles": [
+          {
+            "denominator": 32,
+            "complete_native_cells": [
+              {
+                "cell": "0",
+                "cell_state": "OBSERVED_POSITIVE",
+                "raw_numerator_support": 14,
+                "raw_probability_exact_fraction": {
+                  "$exact_fraction": [
+                    7,
+                    16
+                  ]
+                },
+                "weighted_numerator_support_if_authorized": null,
+                "weighted_probability_exact_fraction_if_authorized": null
+              },
+              {
+                "cell": "1",
+                "cell_state": "OBSERVED_POSITIVE",
+                "raw_numerator_support": 18,
+                "raw_probability_exact_fraction": {
+                  "$exact_fraction": [
+                    9,
+                    16
+                  ]
+                },
+                "weighted_numerator_support_if_authorized": null,
+                "weighted_probability_exact_fraction_if_authorized": null
+              }
+            ],
+            "conditioners": [
+              [
+                "A",
+                1
+              ]
+            ],
+            "evidence_ref": {
+              "kind": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+              "object_id": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:65d1ea06184dcbf33579165cdf4d4228719844989ebd05efdc6fa6ce9cc7cc39",
+              "content_hash": "65d1ea06184dcbf33579165cdf4d4228719844989ebd05efdc6fa6ce9cc7cc39"
+            }
+          },
+          {
+            "denominator": 16,
+            "complete_native_cells": [
+              {
+                "cell": "0",
+                "cell_state": "OBSERVED_POSITIVE",
+                "raw_numerator_support": 6,
+                "raw_probability_exact_fraction": {
+                  "$exact_fraction": [
+                    3,
+                    8
+                  ]
+                },
+                "weighted_numerator_support_if_authorized": null,
+                "weighted_probability_exact_fraction_if_authorized": null
+              },
+              {
+                "cell": "1",
+                "cell_state": "OBSERVED_POSITIVE",
+                "raw_numerator_support": 10,
+                "raw_probability_exact_fraction": {
+                  "$exact_fraction": [
+                    5,
+                    8
+                  ]
+                },
+                "weighted_numerator_support_if_authorized": null,
+                "weighted_probability_exact_fraction_if_authorized": null
+              }
+            ],
+            "conditioners": [
+              [
+                "A",
+                1
+              ],
+              [
+                "B",
+                1
+              ]
+            ],
+            "evidence_ref": {
+              "kind": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+              "object_id": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:860e86c1e1264a8a7efaccd904a95b297e44514e37b90ae8ae4d148c13c8dacf",
+              "content_hash": "860e86c1e1264a8a7efaccd904a95b297e44514e37b90ae8ae4d148c13c8dacf"
+            }
+          },
+          {
+            "denominator": 8,
+            "complete_native_cells": [
+              {
+                "cell": "0",
+                "cell_state": "OBSERVED_POSITIVE",
+                "raw_numerator_support": 2,
+                "raw_probability_exact_fraction": {
+                  "$exact_fraction": [
+                    1,
+                    4
+                  ]
+                },
+                "weighted_numerator_support_if_authorized": null,
+                "weighted_probability_exact_fraction_if_authorized": null
+              },
+              {
+                "cell": "1",
+                "cell_state": "OBSERVED_POSITIVE",
+                "raw_numerator_support": 6,
+                "raw_probability_exact_fraction": {
+                  "$exact_fraction": [
+                    3,
+                    4
+                  ]
+                },
+                "weighted_numerator_support_if_authorized": null,
+                "weighted_probability_exact_fraction_if_authorized": null
+              }
+            ],
+            "conditioners": [
+              [
+                "A",
+                1
+              ],
+              [
+                "B",
+                1
+              ],
+              [
+                "C",
+                1
+              ]
+            ],
+            "evidence_ref": {
+              "kind": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+              "object_id": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:f94ac5deadc6375daa5d0f253bf6b5e9da52a0589c2f2e95e2c213f4a8d1f1dd",
+              "content_hash": "f94ac5deadc6375daa5d0f253bf6b5e9da52a0589c2f2e95e2c213f4a8d1f1dd"
+            }
+          }
+        ],
+        "selection_weight": null,
+        "weight_reason": "NO_SCENARIO_SELECTION_MODEL_OR_ISSUER",
+        "dependencies": [
+          "training_access"
+        ]
+      },
+      {
+        "scenario_id": "S2",
+        "route": "civil",
+        "feasibility": "FEASIBLE_MODELED_PREMISE",
+        "structural_value_refs": [
+          {
+            "kind": "E04_TEST_ONLY_FIELD",
+            "object_id": "urn:test:e04:field:civil_open:1",
+            "content_hash": "704f450297cc2d79fdb4f4998bc5336c63524350a9983d378f5f500da920e27e"
+          },
+          {
+            "kind": "E04_TEST_ONLY_FIELD",
+            "object_id": "urn:test:e04:field:civil_sanction:1",
+            "content_hash": "fc9a722d4333076c338b0ad8993bac001e97de3d49ee816edebaacd85eb5154e"
+          }
+        ],
+        "empirical_profiles": [
+          {
+            "denominator": 32,
+            "complete_native_cells": [
+              {
+                "cell": "0",
+                "cell_state": "OBSERVED_POSITIVE",
+                "raw_numerator_support": 14,
+                "raw_probability_exact_fraction": {
+                  "$exact_fraction": [
+                    7,
+                    16
+                  ]
+                },
+                "weighted_numerator_support_if_authorized": null,
+                "weighted_probability_exact_fraction_if_authorized": null
+              },
+              {
+                "cell": "1",
+                "cell_state": "OBSERVED_POSITIVE",
+                "raw_numerator_support": 18,
+                "raw_probability_exact_fraction": {
+                  "$exact_fraction": [
+                    9,
+                    16
+                  ]
+                },
+                "weighted_numerator_support_if_authorized": null,
+                "weighted_probability_exact_fraction_if_authorized": null
+              }
+            ],
+            "conditioners": [
+              [
+                "A",
+                1
+              ]
+            ],
+            "evidence_ref": {
+              "kind": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+              "object_id": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:65d1ea06184dcbf33579165cdf4d4228719844989ebd05efdc6fa6ce9cc7cc39",
+              "content_hash": "65d1ea06184dcbf33579165cdf4d4228719844989ebd05efdc6fa6ce9cc7cc39"
+            }
+          },
+          {
+            "denominator": 16,
+            "complete_native_cells": [
+              {
+                "cell": "0",
+                "cell_state": "OBSERVED_POSITIVE",
+                "raw_numerator_support": 6,
+                "raw_probability_exact_fraction": {
+                  "$exact_fraction": [
+                    3,
+                    8
+                  ]
+                },
+                "weighted_numerator_support_if_authorized": null,
+                "weighted_probability_exact_fraction_if_authorized": null
+              },
+              {
+                "cell": "1",
+                "cell_state": "OBSERVED_POSITIVE",
+                "raw_numerator_support": 10,
+                "raw_probability_exact_fraction": {
+                  "$exact_fraction": [
+                    5,
+                    8
+                  ]
+                },
+                "weighted_numerator_support_if_authorized": null,
+                "weighted_probability_exact_fraction_if_authorized": null
+              }
+            ],
+            "conditioners": [
+              [
+                "A",
+                1
+              ],
+              [
+                "B",
+                1
+              ]
+            ],
+            "evidence_ref": {
+              "kind": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+              "object_id": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:860e86c1e1264a8a7efaccd904a95b297e44514e37b90ae8ae4d148c13c8dacf",
+              "content_hash": "860e86c1e1264a8a7efaccd904a95b297e44514e37b90ae8ae4d148c13c8dacf"
+            }
+          },
+          {
+            "denominator": 8,
+            "complete_native_cells": [
+              {
+                "cell": "0",
+                "cell_state": "OBSERVED_POSITIVE",
+                "raw_numerator_support": 2,
+                "raw_probability_exact_fraction": {
+                  "$exact_fraction": [
+                    1,
+                    4
+                  ]
+                },
+                "weighted_numerator_support_if_authorized": null,
+                "weighted_probability_exact_fraction_if_authorized": null
+              },
+              {
+                "cell": "1",
+                "cell_state": "OBSERVED_POSITIVE",
+                "raw_numerator_support": 6,
+                "raw_probability_exact_fraction": {
+                  "$exact_fraction": [
+                    3,
+                    4
+                  ]
+                },
+                "weighted_numerator_support_if_authorized": null,
+                "weighted_probability_exact_fraction_if_authorized": null
+              }
+            ],
+            "conditioners": [
+              [
+                "A",
+                1
+              ],
+              [
+                "B",
+                1
+              ],
+              [
+                "C",
+                1
+              ]
+            ],
+            "evidence_ref": {
+              "kind": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+              "object_id": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:f94ac5deadc6375daa5d0f253bf6b5e9da52a0589c2f2e95e2c213f4a8d1f1dd",
+              "content_hash": "f94ac5deadc6375daa5d0f253bf6b5e9da52a0589c2f2e95e2c213f4a8d1f1dd"
+            }
+          }
+        ],
+        "selection_weight": null,
+        "weight_reason": "NO_SCENARIO_SELECTION_MODEL_OR_ISSUER",
+        "dependencies": [
+          "civil_open",
+          "civil_sanction"
+        ]
+      }
+    ],
+    "transport": {
+      "state": "NON_TRANSPORTABLE_OWNER_FIELD",
+      "json_serializable": false,
+      "non_transportable_fields": [
+        "possibility_receipt.ordered_steps[0].parent_receipt_ref"
+      ],
+      "world_receipt_fields": 17,
+      "possibility_receipt_fields": 20
+    },
+    "transport_hold": true,
+    "generated_conditioner_limits": {
+      "generated_criteria_echo": [],
+      "same_respondent_joint_ref": null,
+      "composition_mode": "REFUSED",
+      "model_use_ref": null,
+      "actor_generation": false,
+      "person_generation": false,
+      "actual_conception": false
+    },
+    "route_probability": null,
+    "selection_weight": null,
+    "no_joint_probability": true,
+    "real_use_authorized": false
+  },
+  "provider_replacement": {
+    "evidence_state": "PARTIAL",
+    "evidence_reasons": [
+      "MATERIAL_ROUTE_BLOCKED"
+    ],
+    "owner_contracts": {
+      "N9": {
+        "contract_version": "GENERIC_WORLD_SELECTION@1.0.0",
+        "field_count": 17,
+        "selection_count": 5,
+        "payload_count": 5
+      },
+      "N10E_N10W": {
+        "contract_version": "GENERIC_ORDERED_POSSIBILITY@1.0.0",
+        "field_count": 20,
+        "ordered_steps": 3,
+        "options": 3
+      }
+    },
+    "owner_identities": {
+      "distinct": true,
+      "contract_versions_distinct": true,
+      "owner_outputs_distinct": true,
+      "receipt_refs_equal": false,
+      "note": "distinct owner contract versions and outputs; a shared consumer receipt ref is recorded, not hidden",
+      "world_receipt_ref": {
+        "kind": "WorldReceipt",
+        "id": "urn:test:c0p:world_receipt:NONPARENT_OPTIONS",
+        "hash": "2e281c3d85cd0debb91018b6ab55d51bebd1239d61aa4c3702285b4d9a125f50"
+      },
+      "possibility_receipt_ref": {
+        "kind": "PossibilityReceipt",
+        "id": "urn:test:c0p:possibility_receipt:NONPARENT_OPTIONS",
+        "hash": "2e281c3d85cd0debb91018b6ab55d51bebd1239d61aa4c3702285b4d9a125f50"
+      },
+      "consumer_receipt_hash": "2e281c3d85cd0debb91018b6ab55d51bebd1239d61aa4c3702285b4d9a125f50"
+    },
+    "native_unit_id": "urn:test:e04:nativeunit:SYNTHETIC_INDIVIDUAL_RESPONDENT",
+    "four_clocks": {
+      "observation_effective": {
+        "valid_from": "2027-09-01",
+        "valid_to": null,
+        "evidence_ref": {
+          "kind": "ClockEvidence",
+          "id": "urn:test:e04:clockevidence:2027-09-01",
+          "hash": "d4c9cf1bedab33ce02a2e767e4cb6d96b3abe088166354e875f1b0be819bfe3e"
+        }
+      },
+      "publication_knowledge": {
+        "published_at": "2026-03-01",
+        "knowledge_as_of": "2027-09-01"
+      },
+      "actor_event": {
+        "scene_at": "2027-09-01",
+        "caller_owns_time": true
+      },
+      "request_currentness": {
+        "requested_at": "2027-09-01",
+        "currentness": "AS_OF_REQUEST"
+      },
+      "mode": "KNOWLEDGE_AS_OF"
+    },
+    "source_permission": {
+      "issuer_refs": [
+        {
+          "kind": "Issuer",
+          "id": "urn:test:e04:issuer:TEST_ONLY_E04_SOURCE_ROOT",
+          "hash": "394ec64cae8751cf013d927a3e9c29b2930d97749e09d5812e7650847a49e907"
+        }
+      ],
+      "source_allowed_use_atoms": [
+        "TEST_ONLY_CONTEXT"
+      ],
+      "requested_use_atoms": [
+        "TEST_ONLY_CONTEXT"
+      ],
+      "effective_use_atoms": [
+        "TEST_ONLY_CONTEXT"
+      ],
+      "model_use_ref": null
+    },
+    "values_read_count": 8,
+    "values_read": [
+      {
+        "consumer": "NONPARENT_OPTIONS",
+        "channel": "structural",
+        "scope": "training_access",
+        "source_ref": {
+          "kind": "E04_TEST_ONLY_FIELD",
+          "object_id": "urn:test:e04:field:training_access:2",
+          "content_hash": "cd91e67dda69e7d93128ba9e41306f3a0321290b849aa8628db0dc02daf246bb"
+        },
+        "state": "SUPPORTED_TEST_ONLY",
+        "value_read": false,
+        "native_unit": "modeled policy eligibility boolean",
+        "snapshot_ref": "2dbff4eaa4e03739b489940dcc41fa81ff6ea205735c1a27c5c4a1c3a8100bde"
+      },
+      {
+        "consumer": "NONPARENT_OPTIONS",
+        "channel": "structural",
+        "scope": "training_fee",
+        "source_ref": {
+          "kind": "E04_TEST_ONLY_FIELD",
+          "object_id": "urn:test:e04:field:training_fee:1",
+          "content_hash": "7b81073f295d8eafe81abb7aaaac58251cd172d109325d87e2deb2f0b9b6f166"
+        },
+        "state": "SUPPORTED_TEST_ONLY",
+        "value_read": 2,
+        "native_unit": "modeled resource tokens",
+        "snapshot_ref": "2dbff4eaa4e03739b489940dcc41fa81ff6ea205735c1a27c5c4a1c3a8100bde"
+      },
+      {
+        "consumer": "NONPARENT_OPTIONS",
+        "channel": "structural",
+        "scope": "exit_cost",
+        "source_ref": {
+          "kind": "E04_TEST_ONLY_FIELD",
+          "object_id": "urn:test:e04:field:exit_cost:2",
+          "content_hash": "4e69e0588de3faefae9511aa75c59f342a08694f42f67d4457063d99d1470b69"
+        },
+        "state": "SUPPORTED_TEST_ONLY",
+        "value_read": 8,
+        "native_unit": "modeled resource tokens",
+        "snapshot_ref": "2dbff4eaa4e03739b489940dcc41fa81ff6ea205735c1a27c5c4a1c3a8100bde"
+      },
+      {
+        "consumer": "NONPARENT_OPTIONS",
+        "channel": "structural",
+        "scope": "civil_open",
+        "source_ref": {
+          "kind": "E04_TEST_ONLY_FIELD",
+          "object_id": "urn:test:e04:field:civil_open:1",
+          "content_hash": "704f450297cc2d79fdb4f4998bc5336c63524350a9983d378f5f500da920e27e"
+        },
+        "state": "SUPPORTED_TEST_ONLY",
+        "value_read": true,
+        "native_unit": "modeled route eligibility boolean",
+        "snapshot_ref": "2dbff4eaa4e03739b489940dcc41fa81ff6ea205735c1a27c5c4a1c3a8100bde"
+      },
+      {
+        "consumer": "NONPARENT_OPTIONS",
+        "channel": "structural",
+        "scope": "civil_sanction",
+        "source_ref": {
+          "kind": "E04_TEST_ONLY_FIELD",
+          "object_id": "urn:test:e04:field:civil_sanction:1",
+          "content_hash": "fc9a722d4333076c338b0ad8993bac001e97de3d49ee816edebaacd85eb5154e"
+        },
+        "state": "SUPPORTED_TEST_ONLY",
+        "value_read": false,
+        "native_unit": "modeled sanction boolean",
+        "snapshot_ref": "2dbff4eaa4e03739b489940dcc41fa81ff6ea205735c1a27c5c4a1c3a8100bde"
+      },
+      {
+        "consumer": "NONPARENT_OPTIONS",
+        "channel": "empirical",
+        "scope": "empirical",
+        "state": "EXACT_SUPPORTED",
+        "evidence_ref": {
+          "kind": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+          "object_id": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:65d1ea06184dcbf33579165cdf4d4228719844989ebd05efdc6fa6ce9cc7cc39",
+          "content_hash": "65d1ea06184dcbf33579165cdf4d4228719844989ebd05efdc6fa6ce9cc7cc39"
+        },
+        "source_ref": {
+          "kind": "EmpiricalUniverse@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:f677fb8b8478ba78b9b526d5dcd7b3aa54070d4a4b90a1d2de6dc219ec177cda",
+          "content_hash": "f677fb8b8478ba78b9b526d5dcd7b3aa54070d4a4b90a1d2de6dc219ec177cda"
+        },
+        "release_ref": {
+          "kind": "C11LogicalRelease",
+          "object_id": "REL-e04-base-r1",
+          "content_hash": "5e795c3fd62b89aa00ca133777ff31df3cb42501d25a9b431fe0de03c54d161f"
+        },
+        "value_read": [
+          {
+            "cell": "0",
+            "cell_state": "OBSERVED_POSITIVE",
+            "raw_numerator_support": 14,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                7,
+                16
+              ]
+            },
+            "weighted_numerator_support_if_authorized": null,
+            "weighted_probability_exact_fraction_if_authorized": null
+          },
+          {
+            "cell": "1",
+            "cell_state": "OBSERVED_POSITIVE",
+            "raw_numerator_support": 18,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                9,
+                16
+              ]
+            },
+            "weighted_numerator_support_if_authorized": null,
+            "weighted_probability_exact_fraction_if_authorized": null
+          }
+        ],
+        "denominator": 32,
+        "query_condition_order": [
+          [
+            "A",
+            1
+          ]
+        ],
+        "target": "Y",
+        "snapshot_ref": "2dbff4eaa4e03739b489940dcc41fa81ff6ea205735c1a27c5c4a1c3a8100bde"
+      },
+      {
+        "consumer": "NONPARENT_OPTIONS",
+        "channel": "empirical",
+        "scope": "empirical",
+        "state": "EXACT_SUPPORTED",
+        "evidence_ref": {
+          "kind": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+          "object_id": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:860e86c1e1264a8a7efaccd904a95b297e44514e37b90ae8ae4d148c13c8dacf",
+          "content_hash": "860e86c1e1264a8a7efaccd904a95b297e44514e37b90ae8ae4d148c13c8dacf"
+        },
+        "source_ref": {
+          "kind": "EmpiricalUniverse@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:f677fb8b8478ba78b9b526d5dcd7b3aa54070d4a4b90a1d2de6dc219ec177cda",
+          "content_hash": "f677fb8b8478ba78b9b526d5dcd7b3aa54070d4a4b90a1d2de6dc219ec177cda"
+        },
+        "release_ref": {
+          "kind": "C11LogicalRelease",
+          "object_id": "REL-e04-base-r1",
+          "content_hash": "5e795c3fd62b89aa00ca133777ff31df3cb42501d25a9b431fe0de03c54d161f"
+        },
+        "value_read": [
+          {
+            "cell": "0",
+            "cell_state": "OBSERVED_POSITIVE",
+            "raw_numerator_support": 6,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                3,
+                8
+              ]
+            },
+            "weighted_numerator_support_if_authorized": null,
+            "weighted_probability_exact_fraction_if_authorized": null
+          },
+          {
+            "cell": "1",
+            "cell_state": "OBSERVED_POSITIVE",
+            "raw_numerator_support": 10,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                5,
+                8
+              ]
+            },
+            "weighted_numerator_support_if_authorized": null,
+            "weighted_probability_exact_fraction_if_authorized": null
+          }
+        ],
+        "denominator": 16,
+        "query_condition_order": [
+          [
+            "A",
+            1
+          ],
+          [
+            "B",
+            1
+          ]
+        ],
+        "target": "Y",
+        "snapshot_ref": "2dbff4eaa4e03739b489940dcc41fa81ff6ea205735c1a27c5c4a1c3a8100bde"
+      },
+      {
+        "consumer": "NONPARENT_OPTIONS",
+        "channel": "empirical",
+        "scope": "empirical",
+        "state": "EXACT_SUPPORTED",
+        "evidence_ref": {
+          "kind": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+          "object_id": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:f94ac5deadc6375daa5d0f253bf6b5e9da52a0589c2f2e95e2c213f4a8d1f1dd",
+          "content_hash": "f94ac5deadc6375daa5d0f253bf6b5e9da52a0589c2f2e95e2c213f4a8d1f1dd"
+        },
+        "source_ref": {
+          "kind": "EmpiricalUniverse@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:f677fb8b8478ba78b9b526d5dcd7b3aa54070d4a4b90a1d2de6dc219ec177cda",
+          "content_hash": "f677fb8b8478ba78b9b526d5dcd7b3aa54070d4a4b90a1d2de6dc219ec177cda"
+        },
+        "release_ref": {
+          "kind": "C11LogicalRelease",
+          "object_id": "REL-e04-base-r1",
+          "content_hash": "5e795c3fd62b89aa00ca133777ff31df3cb42501d25a9b431fe0de03c54d161f"
+        },
+        "value_read": [
+          {
+            "cell": "0",
+            "cell_state": "OBSERVED_POSITIVE",
+            "raw_numerator_support": 2,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                1,
+                4
+              ]
+            },
+            "weighted_numerator_support_if_authorized": null,
+            "weighted_probability_exact_fraction_if_authorized": null
+          },
+          {
+            "cell": "1",
+            "cell_state": "OBSERVED_POSITIVE",
+            "raw_numerator_support": 6,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                3,
+                4
+              ]
+            },
+            "weighted_numerator_support_if_authorized": null,
+            "weighted_probability_exact_fraction_if_authorized": null
+          }
+        ],
+        "denominator": 8,
+        "query_condition_order": [
+          [
+            "A",
+            1
+          ],
+          [
+            "B",
+            1
+          ],
+          [
+            "C",
+            1
+          ]
+        ],
+        "target": "Y",
+        "snapshot_ref": "2dbff4eaa4e03739b489940dcc41fa81ff6ea205735c1a27c5c4a1c3a8100bde"
+      }
+    ],
+    "structural_routes": {
+      "training": {
+        "state": "BLOCKED_BY_MODELED_RULE",
+        "dependencies": [
+          "training_access",
+          "training_fee"
+        ],
+        "value_refs": [
+          {
+            "kind": "E04_TEST_ONLY_FIELD",
+            "object_id": "urn:test:e04:field:training_access:2",
+            "content_hash": "cd91e67dda69e7d93128ba9e41306f3a0321290b849aa8628db0dc02daf246bb"
+          },
+          {
+            "kind": "E04_TEST_ONLY_FIELD",
+            "object_id": "urn:test:e04:field:training_fee:1",
+            "content_hash": "7b81073f295d8eafe81abb7aaaac58251cd172d109325d87e2deb2f0b9b6f166"
+          }
+        ]
+      },
+      "civil": {
+        "state": "ELIGIBLE",
+        "dependencies": [
+          "civil_open",
+          "civil_sanction"
+        ],
+        "value_refs": [
+          {
+            "kind": "E04_TEST_ONLY_FIELD",
+            "object_id": "urn:test:e04:field:civil_open:1",
+            "content_hash": "704f450297cc2d79fdb4f4998bc5336c63524350a9983d378f5f500da920e27e"
+          },
+          {
+            "kind": "E04_TEST_ONLY_FIELD",
+            "object_id": "urn:test:e04:field:civil_sanction:1",
+            "content_hash": "fc9a722d4333076c338b0ad8993bac001e97de3d49ee816edebaacd85eb5154e"
+          }
+        ]
+      },
+      "exit_constraint": {
+        "state": "RESOURCE_CONSTRAINED",
+        "dependencies": [
+          "exit_cost"
+        ],
+        "value_refs": [
+          {
+            "kind": "E04_TEST_ONLY_FIELD",
+            "object_id": "urn:test:e04:field:exit_cost:2",
+            "content_hash": "4e69e0588de3faefae9511aa75c59f342a08694f42f67d4457063d99d1470b69"
+          }
+        ]
+      }
+    },
+    "empirical_state": "PRODUCTIVE_TEST_ONLY",
+    "steps": [
+      {
+        "denominator": 32,
+        "cells": [
+          {
+            "cell": "0",
+            "cell_state": "OBSERVED_POSITIVE",
+            "raw_numerator_support": 14,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                7,
+                16
+              ]
+            },
+            "weighted_numerator_support_if_authorized": null,
+            "weighted_probability_exact_fraction_if_authorized": null
+          },
+          {
+            "cell": "1",
+            "cell_state": "OBSERVED_POSITIVE",
+            "raw_numerator_support": 18,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                9,
+                16
+              ]
+            },
+            "weighted_numerator_support_if_authorized": null,
+            "weighted_probability_exact_fraction_if_authorized": null
+          }
+        ],
+        "state": "EXACT_SUPPORTED"
+      },
+      {
+        "denominator": 16,
+        "cells": [
+          {
+            "cell": "0",
+            "cell_state": "OBSERVED_POSITIVE",
+            "raw_numerator_support": 6,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                3,
+                8
+              ]
+            },
+            "weighted_numerator_support_if_authorized": null,
+            "weighted_probability_exact_fraction_if_authorized": null
+          },
+          {
+            "cell": "1",
+            "cell_state": "OBSERVED_POSITIVE",
+            "raw_numerator_support": 10,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                5,
+                8
+              ]
+            },
+            "weighted_numerator_support_if_authorized": null,
+            "weighted_probability_exact_fraction_if_authorized": null
+          }
+        ],
+        "state": "EXACT_SUPPORTED"
+      },
+      {
+        "denominator": 8,
+        "cells": [
+          {
+            "cell": "0",
+            "cell_state": "OBSERVED_POSITIVE",
+            "raw_numerator_support": 2,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                1,
+                4
+              ]
+            },
+            "weighted_numerator_support_if_authorized": null,
+            "weighted_probability_exact_fraction_if_authorized": null
+          },
+          {
+            "cell": "1",
+            "cell_state": "OBSERVED_POSITIVE",
+            "raw_numerator_support": 6,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                3,
+                4
+              ]
+            },
+            "weighted_numerator_support_if_authorized": null,
+            "weighted_probability_exact_fraction_if_authorized": null
+          }
+        ],
+        "state": "EXACT_SUPPORTED"
+      }
+    ],
+    "scenarios": null,
+    "transport": {
+      "state": "NON_TRANSPORTABLE_OWNER_FIELD",
+      "json_serializable": false,
+      "non_transportable_fields": [
+        "possibility_receipt.ordered_steps[0].parent_receipt_ref"
+      ],
+      "world_receipt_fields": 17,
+      "possibility_receipt_fields": 20
+    },
+    "transport_hold": true,
+    "generated_conditioner_limits": {
+      "generated_criteria_echo": [],
+      "same_respondent_joint_ref": null,
+      "composition_mode": "REFUSED",
+      "model_use_ref": null,
+      "actor_generation": false,
+      "person_generation": false,
+      "actual_conception": false
+    },
+    "route_probability": null,
+    "selection_weight": null,
+    "no_joint_probability": true,
+    "real_use_authorized": false
+  },
+  "source_revocation": {
+    "evidence_state": "PARTIAL",
+    "evidence_reasons": [
+      "MATERIAL_ROUTE_UNAVAILABLE"
+    ],
+    "owner_contracts": {
+      "N9": {
+        "contract_version": "GENERIC_WORLD_SELECTION@1.0.0",
+        "field_count": 17,
+        "selection_count": 5,
+        "payload_count": 5
+      },
+      "N10E_N10W": {
+        "contract_version": "GENERIC_ORDERED_POSSIBILITY@1.0.0",
+        "field_count": 20,
+        "ordered_steps": 3,
+        "options": 3
+      }
+    },
+    "owner_identities": {
+      "distinct": true,
+      "contract_versions_distinct": true,
+      "owner_outputs_distinct": true,
+      "receipt_refs_equal": false,
+      "note": "distinct owner contract versions and outputs; a shared consumer receipt ref is recorded, not hidden",
+      "world_receipt_ref": {
+        "kind": "WorldReceipt",
+        "id": "urn:test:c0p:world_receipt:NONPARENT_OPTIONS",
+        "hash": "e93707cef6d6f6e1a04ac0326aa262d6f2a9a5869f27236f0c074cfd5fc2b0d7"
+      },
+      "possibility_receipt_ref": {
+        "kind": "PossibilityReceipt",
+        "id": "urn:test:c0p:possibility_receipt:NONPARENT_OPTIONS",
+        "hash": "e93707cef6d6f6e1a04ac0326aa262d6f2a9a5869f27236f0c074cfd5fc2b0d7"
+      },
+      "consumer_receipt_hash": "e93707cef6d6f6e1a04ac0326aa262d6f2a9a5869f27236f0c074cfd5fc2b0d7"
+    },
+    "native_unit_id": "urn:test:e04:nativeunit:SYNTHETIC_INDIVIDUAL_RESPONDENT",
+    "four_clocks": {
+      "observation_effective": {
+        "valid_from": "2027-09-01",
+        "valid_to": null,
+        "evidence_ref": {
+          "kind": "ClockEvidence",
+          "id": "urn:test:e04:clockevidence:2027-09-01",
+          "hash": "d4c9cf1bedab33ce02a2e767e4cb6d96b3abe088166354e875f1b0be819bfe3e"
+        }
+      },
+      "publication_knowledge": {
+        "published_at": "2026-03-01",
+        "knowledge_as_of": "2027-09-01"
+      },
+      "actor_event": {
+        "scene_at": "2027-09-01",
+        "caller_owns_time": true
+      },
+      "request_currentness": {
+        "requested_at": "2027-09-01",
+        "currentness": "AS_OF_REQUEST"
+      },
+      "mode": "KNOWLEDGE_AS_OF"
+    },
+    "source_permission": {
+      "issuer_refs": [
+        {
+          "kind": "Issuer",
+          "id": "urn:test:e04:issuer:TEST_ONLY_E04_SOURCE_ROOT",
+          "hash": "394ec64cae8751cf013d927a3e9c29b2930d97749e09d5812e7650847a49e907"
+        }
+      ],
+      "source_allowed_use_atoms": [
+        "TEST_ONLY_CONTEXT"
+      ],
+      "requested_use_atoms": [
+        "TEST_ONLY_CONTEXT"
+      ],
+      "effective_use_atoms": [
+        "TEST_ONLY_CONTEXT"
+      ],
+      "model_use_ref": null
+    },
+    "values_read_count": 8,
+    "values_read": [
+      {
+        "consumer": "NONPARENT_OPTIONS",
+        "channel": "structural",
+        "scope": "training_access",
+        "source_ref": {
+          "kind": "E04_TEST_ONLY_FIELD",
+          "object_id": "urn:test:e04:field:training_access:1",
+          "content_hash": "3b4b4859dcbe858480d097147c719ce9458d4e1d88b4f47898a0416fe01e7174"
+        },
+        "state": "REVOKED",
+        "value_read": null,
+        "native_unit": null,
+        "snapshot_ref": "faf846a0ff926c42fb9360f322c344c1e57793214ab07d57bf2d41aa430bab5c"
+      },
+      {
+        "consumer": "NONPARENT_OPTIONS",
+        "channel": "structural",
+        "scope": "training_fee",
+        "source_ref": {
+          "kind": "E04_TEST_ONLY_FIELD",
+          "object_id": "urn:test:e04:field:training_fee:1",
+          "content_hash": "7b81073f295d8eafe81abb7aaaac58251cd172d109325d87e2deb2f0b9b6f166"
+        },
+        "state": "SUPPORTED_TEST_ONLY",
+        "value_read": 2,
+        "native_unit": "modeled resource tokens",
+        "snapshot_ref": "faf846a0ff926c42fb9360f322c344c1e57793214ab07d57bf2d41aa430bab5c"
+      },
+      {
+        "consumer": "NONPARENT_OPTIONS",
+        "channel": "structural",
+        "scope": "exit_cost",
+        "source_ref": {
+          "kind": "E04_TEST_ONLY_FIELD",
+          "object_id": "urn:test:e04:field:exit_cost:1",
+          "content_hash": "5281accc231a8cbedce249f25863bffeca0c4cc2a6fdd755c085b2e19092fbfd"
+        },
+        "state": "SUPPORTED_TEST_ONLY",
+        "value_read": 2,
+        "native_unit": "modeled resource tokens",
+        "snapshot_ref": "faf846a0ff926c42fb9360f322c344c1e57793214ab07d57bf2d41aa430bab5c"
+      },
+      {
+        "consumer": "NONPARENT_OPTIONS",
+        "channel": "structural",
+        "scope": "civil_open",
+        "source_ref": {
+          "kind": "E04_TEST_ONLY_FIELD",
+          "object_id": "urn:test:e04:field:civil_open:1",
+          "content_hash": "704f450297cc2d79fdb4f4998bc5336c63524350a9983d378f5f500da920e27e"
+        },
+        "state": "SUPPORTED_TEST_ONLY",
+        "value_read": true,
+        "native_unit": "modeled route eligibility boolean",
+        "snapshot_ref": "faf846a0ff926c42fb9360f322c344c1e57793214ab07d57bf2d41aa430bab5c"
+      },
+      {
+        "consumer": "NONPARENT_OPTIONS",
+        "channel": "structural",
+        "scope": "civil_sanction",
+        "source_ref": {
+          "kind": "E04_TEST_ONLY_FIELD",
+          "object_id": "urn:test:e04:field:civil_sanction:1",
+          "content_hash": "fc9a722d4333076c338b0ad8993bac001e97de3d49ee816edebaacd85eb5154e"
+        },
+        "state": "SUPPORTED_TEST_ONLY",
+        "value_read": false,
+        "native_unit": "modeled sanction boolean",
+        "snapshot_ref": "faf846a0ff926c42fb9360f322c344c1e57793214ab07d57bf2d41aa430bab5c"
+      },
+      {
+        "consumer": "NONPARENT_OPTIONS",
+        "channel": "empirical",
+        "scope": "empirical",
+        "state": "EXACT_SUPPORTED",
+        "evidence_ref": {
+          "kind": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+          "object_id": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:65d1ea06184dcbf33579165cdf4d4228719844989ebd05efdc6fa6ce9cc7cc39",
+          "content_hash": "65d1ea06184dcbf33579165cdf4d4228719844989ebd05efdc6fa6ce9cc7cc39"
+        },
+        "source_ref": {
+          "kind": "EmpiricalUniverse@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:f677fb8b8478ba78b9b526d5dcd7b3aa54070d4a4b90a1d2de6dc219ec177cda",
+          "content_hash": "f677fb8b8478ba78b9b526d5dcd7b3aa54070d4a4b90a1d2de6dc219ec177cda"
+        },
+        "release_ref": {
+          "kind": "C11LogicalRelease",
+          "object_id": "REL-e04-base-r1",
+          "content_hash": "5e795c3fd62b89aa00ca133777ff31df3cb42501d25a9b431fe0de03c54d161f"
+        },
+        "value_read": [
+          {
+            "cell": "0",
+            "cell_state": "OBSERVED_POSITIVE",
+            "raw_numerator_support": 14,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                7,
+                16
+              ]
+            },
+            "weighted_numerator_support_if_authorized": null,
+            "weighted_probability_exact_fraction_if_authorized": null
+          },
+          {
+            "cell": "1",
+            "cell_state": "OBSERVED_POSITIVE",
+            "raw_numerator_support": 18,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                9,
+                16
+              ]
+            },
+            "weighted_numerator_support_if_authorized": null,
+            "weighted_probability_exact_fraction_if_authorized": null
+          }
+        ],
+        "denominator": 32,
+        "query_condition_order": [
+          [
+            "A",
+            1
+          ]
+        ],
+        "target": "Y",
+        "snapshot_ref": "faf846a0ff926c42fb9360f322c344c1e57793214ab07d57bf2d41aa430bab5c"
+      },
+      {
+        "consumer": "NONPARENT_OPTIONS",
+        "channel": "empirical",
+        "scope": "empirical",
+        "state": "EXACT_SUPPORTED",
+        "evidence_ref": {
+          "kind": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+          "object_id": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:860e86c1e1264a8a7efaccd904a95b297e44514e37b90ae8ae4d148c13c8dacf",
+          "content_hash": "860e86c1e1264a8a7efaccd904a95b297e44514e37b90ae8ae4d148c13c8dacf"
+        },
+        "source_ref": {
+          "kind": "EmpiricalUniverse@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:f677fb8b8478ba78b9b526d5dcd7b3aa54070d4a4b90a1d2de6dc219ec177cda",
+          "content_hash": "f677fb8b8478ba78b9b526d5dcd7b3aa54070d4a4b90a1d2de6dc219ec177cda"
+        },
+        "release_ref": {
+          "kind": "C11LogicalRelease",
+          "object_id": "REL-e04-base-r1",
+          "content_hash": "5e795c3fd62b89aa00ca133777ff31df3cb42501d25a9b431fe0de03c54d161f"
+        },
+        "value_read": [
+          {
+            "cell": "0",
+            "cell_state": "OBSERVED_POSITIVE",
+            "raw_numerator_support": 6,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                3,
+                8
+              ]
+            },
+            "weighted_numerator_support_if_authorized": null,
+            "weighted_probability_exact_fraction_if_authorized": null
+          },
+          {
+            "cell": "1",
+            "cell_state": "OBSERVED_POSITIVE",
+            "raw_numerator_support": 10,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                5,
+                8
+              ]
+            },
+            "weighted_numerator_support_if_authorized": null,
+            "weighted_probability_exact_fraction_if_authorized": null
+          }
+        ],
+        "denominator": 16,
+        "query_condition_order": [
+          [
+            "A",
+            1
+          ],
+          [
+            "B",
+            1
+          ]
+        ],
+        "target": "Y",
+        "snapshot_ref": "faf846a0ff926c42fb9360f322c344c1e57793214ab07d57bf2d41aa430bab5c"
+      },
+      {
+        "consumer": "NONPARENT_OPTIONS",
+        "channel": "empirical",
+        "scope": "empirical",
+        "state": "EXACT_SUPPORTED",
+        "evidence_ref": {
+          "kind": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+          "object_id": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:f94ac5deadc6375daa5d0f253bf6b5e9da52a0589c2f2e95e2c213f4a8d1f1dd",
+          "content_hash": "f94ac5deadc6375daa5d0f253bf6b5e9da52a0589c2f2e95e2c213f4a8d1f1dd"
+        },
+        "source_ref": {
+          "kind": "EmpiricalUniverse@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:f677fb8b8478ba78b9b526d5dcd7b3aa54070d4a4b90a1d2de6dc219ec177cda",
+          "content_hash": "f677fb8b8478ba78b9b526d5dcd7b3aa54070d4a4b90a1d2de6dc219ec177cda"
+        },
+        "release_ref": {
+          "kind": "C11LogicalRelease",
+          "object_id": "REL-e04-base-r1",
+          "content_hash": "5e795c3fd62b89aa00ca133777ff31df3cb42501d25a9b431fe0de03c54d161f"
+        },
+        "value_read": [
+          {
+            "cell": "0",
+            "cell_state": "OBSERVED_POSITIVE",
+            "raw_numerator_support": 2,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                1,
+                4
+              ]
+            },
+            "weighted_numerator_support_if_authorized": null,
+            "weighted_probability_exact_fraction_if_authorized": null
+          },
+          {
+            "cell": "1",
+            "cell_state": "OBSERVED_POSITIVE",
+            "raw_numerator_support": 6,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                3,
+                4
+              ]
+            },
+            "weighted_numerator_support_if_authorized": null,
+            "weighted_probability_exact_fraction_if_authorized": null
+          }
+        ],
+        "denominator": 8,
+        "query_condition_order": [
+          [
+            "A",
+            1
+          ],
+          [
+            "B",
+            1
+          ],
+          [
+            "C",
+            1
+          ]
+        ],
+        "target": "Y",
+        "snapshot_ref": "faf846a0ff926c42fb9360f322c344c1e57793214ab07d57bf2d41aa430bab5c"
+      }
+    ],
+    "structural_routes": {
+      "training": {
+        "state": "UNAVAILABLE_AUTHORITY_OR_CLOCK",
+        "dependencies": [
+          "training_access",
+          "training_fee"
+        ],
+        "value_refs": [
+          null,
+          {
+            "kind": "E04_TEST_ONLY_FIELD",
+            "object_id": "urn:test:e04:field:training_fee:1",
+            "content_hash": "7b81073f295d8eafe81abb7aaaac58251cd172d109325d87e2deb2f0b9b6f166"
+          }
+        ]
+      },
+      "civil": {
+        "state": "ELIGIBLE",
+        "dependencies": [
+          "civil_open",
+          "civil_sanction"
+        ],
+        "value_refs": [
+          {
+            "kind": "E04_TEST_ONLY_FIELD",
+            "object_id": "urn:test:e04:field:civil_open:1",
+            "content_hash": "704f450297cc2d79fdb4f4998bc5336c63524350a9983d378f5f500da920e27e"
+          },
+          {
+            "kind": "E04_TEST_ONLY_FIELD",
+            "object_id": "urn:test:e04:field:civil_sanction:1",
+            "content_hash": "fc9a722d4333076c338b0ad8993bac001e97de3d49ee816edebaacd85eb5154e"
+          }
+        ]
+      },
+      "exit_constraint": {
+        "state": "WITHIN_MODELED_BUDGET",
+        "dependencies": [
+          "exit_cost"
+        ],
+        "value_refs": [
+          {
+            "kind": "E04_TEST_ONLY_FIELD",
+            "object_id": "urn:test:e04:field:exit_cost:1",
+            "content_hash": "5281accc231a8cbedce249f25863bffeca0c4cc2a6fdd755c085b2e19092fbfd"
+          }
+        ]
+      }
+    },
+    "empirical_state": "PRODUCTIVE_TEST_ONLY",
+    "steps": [
+      {
+        "denominator": 32,
+        "cells": [
+          {
+            "cell": "0",
+            "cell_state": "OBSERVED_POSITIVE",
+            "raw_numerator_support": 14,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                7,
+                16
+              ]
+            },
+            "weighted_numerator_support_if_authorized": null,
+            "weighted_probability_exact_fraction_if_authorized": null
+          },
+          {
+            "cell": "1",
+            "cell_state": "OBSERVED_POSITIVE",
+            "raw_numerator_support": 18,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                9,
+                16
+              ]
+            },
+            "weighted_numerator_support_if_authorized": null,
+            "weighted_probability_exact_fraction_if_authorized": null
+          }
+        ],
+        "state": "EXACT_SUPPORTED"
+      },
+      {
+        "denominator": 16,
+        "cells": [
+          {
+            "cell": "0",
+            "cell_state": "OBSERVED_POSITIVE",
+            "raw_numerator_support": 6,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                3,
+                8
+              ]
+            },
+            "weighted_numerator_support_if_authorized": null,
+            "weighted_probability_exact_fraction_if_authorized": null
+          },
+          {
+            "cell": "1",
+            "cell_state": "OBSERVED_POSITIVE",
+            "raw_numerator_support": 10,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                5,
+                8
+              ]
+            },
+            "weighted_numerator_support_if_authorized": null,
+            "weighted_probability_exact_fraction_if_authorized": null
+          }
+        ],
+        "state": "EXACT_SUPPORTED"
+      },
+      {
+        "denominator": 8,
+        "cells": [
+          {
+            "cell": "0",
+            "cell_state": "OBSERVED_POSITIVE",
+            "raw_numerator_support": 2,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                1,
+                4
+              ]
+            },
+            "weighted_numerator_support_if_authorized": null,
+            "weighted_probability_exact_fraction_if_authorized": null
+          },
+          {
+            "cell": "1",
+            "cell_state": "OBSERVED_POSITIVE",
+            "raw_numerator_support": 6,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                3,
+                4
+              ]
+            },
+            "weighted_numerator_support_if_authorized": null,
+            "weighted_probability_exact_fraction_if_authorized": null
+          }
+        ],
+        "state": "EXACT_SUPPORTED"
+      }
+    ],
+    "scenarios": null,
+    "transport": {
+      "state": "NON_TRANSPORTABLE_OWNER_FIELD",
+      "json_serializable": false,
+      "non_transportable_fields": [
+        "possibility_receipt.ordered_steps[0].parent_receipt_ref"
+      ],
+      "world_receipt_fields": 17,
+      "possibility_receipt_fields": 20
+    },
+    "transport_hold": true,
+    "generated_conditioner_limits": {
+      "generated_criteria_echo": [],
+      "same_respondent_joint_ref": null,
+      "composition_mode": "REFUSED",
+      "model_use_ref": null,
+      "actor_generation": false,
+      "person_generation": false,
+      "actual_conception": false
+    },
+    "route_probability": null,
+    "selection_weight": null,
+    "no_joint_probability": true,
+    "real_use_authorized": false
+  },
+  "temporal_before_publication": {
+    "evidence_state": "UNKNOWN",
+    "evidence_reasons": [
+      "UPSTREAM_TEMPORAL_OR_REFERENCE_REFUSAL"
+    ],
+    "upstream_refusal_detail": "'NoneType' object is not subscriptable",
+    "route_probability": null,
+    "selection_weight": null,
+    "no_joint_probability": true,
+    "real_use_authorized": false
+  },
+  "temporal_after_publication": {
+    "evidence_state": "SUPPORTED",
+    "evidence_reasons": [],
+    "owner_contracts": {
+      "N9": {
+        "contract_version": "GENERIC_WORLD_SELECTION@1.0.0",
+        "field_count": 17,
+        "selection_count": 5,
+        "payload_count": 5
+      },
+      "N10E_N10W": {
+        "contract_version": "GENERIC_ORDERED_POSSIBILITY@1.0.0",
+        "field_count": 20,
+        "ordered_steps": 3,
+        "options": 3
+      }
+    },
+    "owner_identities": {
+      "distinct": true,
+      "contract_versions_distinct": true,
+      "owner_outputs_distinct": true,
+      "receipt_refs_equal": false,
+      "note": "distinct owner contract versions and outputs; a shared consumer receipt ref is recorded, not hidden",
+      "world_receipt_ref": {
+        "kind": "WorldReceipt",
+        "id": "urn:test:c0p:world_receipt:NONPARENT_OPTIONS",
+        "hash": "09c72047842117a2e1dc43a1fbde986ea5a68249477abc3b8be08c0750ca696b"
+      },
+      "possibility_receipt_ref": {
+        "kind": "PossibilityReceipt",
+        "id": "urn:test:c0p:possibility_receipt:NONPARENT_OPTIONS",
+        "hash": "09c72047842117a2e1dc43a1fbde986ea5a68249477abc3b8be08c0750ca696b"
+      },
+      "consumer_receipt_hash": "09c72047842117a2e1dc43a1fbde986ea5a68249477abc3b8be08c0750ca696b"
+    },
+    "native_unit_id": "urn:test:e04:nativeunit:SYNTHETIC_INDIVIDUAL_RESPONDENT",
+    "four_clocks": {
+      "observation_effective": {
+        "valid_from": "2026-06-01",
+        "valid_to": null,
+        "evidence_ref": {
+          "kind": "ClockEvidence",
+          "id": "urn:test:e04:clockevidence:2026-06-01",
+          "hash": "9efb1762dc5dd1b45429a9d2dc8e9452a792efbbfd64d1c43ace06479908e29e"
+        }
+      },
+      "publication_knowledge": {
+        "published_at": "2026-03-01",
+        "knowledge_as_of": "2026-03-01"
+      },
+      "actor_event": {
+        "scene_at": "2026-03-01",
+        "caller_owns_time": true
+      },
+      "request_currentness": {
+        "requested_at": "2026-03-01",
+        "currentness": "AS_OF_REQUEST"
+      },
+      "mode": "KNOWLEDGE_AS_OF"
+    },
+    "source_permission": {
+      "issuer_refs": [
+        {
+          "kind": "Issuer",
+          "id": "urn:test:e04:issuer:TEST_ONLY_E04_SOURCE_ROOT",
+          "hash": "394ec64cae8751cf013d927a3e9c29b2930d97749e09d5812e7650847a49e907"
+        }
+      ],
+      "source_allowed_use_atoms": [
+        "TEST_ONLY_CONTEXT"
+      ],
+      "requested_use_atoms": [
+        "TEST_ONLY_CONTEXT"
+      ],
+      "effective_use_atoms": [
+        "TEST_ONLY_CONTEXT"
+      ],
+      "model_use_ref": null
+    },
+    "values_read_count": 8,
+    "values_read": [
+      {
+        "consumer": "NONPARENT_OPTIONS",
+        "channel": "structural",
+        "scope": "training_access",
+        "source_ref": {
+          "kind": "E04_TEST_ONLY_FIELD",
+          "object_id": "urn:test:e04:field:training_access:1",
+          "content_hash": "3b4b4859dcbe858480d097147c719ce9458d4e1d88b4f47898a0416fe01e7174"
+        },
+        "state": "SUPPORTED_TEST_ONLY",
+        "value_read": true,
+        "native_unit": "modeled policy eligibility boolean",
+        "snapshot_ref": "e895050a1dda31a56826b06bdf3647fbd035328eb49a304699c07f7c90559ee5"
+      },
+      {
+        "consumer": "NONPARENT_OPTIONS",
+        "channel": "structural",
+        "scope": "training_fee",
+        "source_ref": {
+          "kind": "E04_TEST_ONLY_FIELD",
+          "object_id": "urn:test:e04:field:training_fee:1",
+          "content_hash": "7b81073f295d8eafe81abb7aaaac58251cd172d109325d87e2deb2f0b9b6f166"
+        },
+        "state": "SUPPORTED_TEST_ONLY",
+        "value_read": 2,
+        "native_unit": "modeled resource tokens",
+        "snapshot_ref": "e895050a1dda31a56826b06bdf3647fbd035328eb49a304699c07f7c90559ee5"
+      },
+      {
+        "consumer": "NONPARENT_OPTIONS",
+        "channel": "structural",
+        "scope": "exit_cost",
+        "source_ref": {
+          "kind": "E04_TEST_ONLY_FIELD",
+          "object_id": "urn:test:e04:field:exit_cost:1",
+          "content_hash": "5281accc231a8cbedce249f25863bffeca0c4cc2a6fdd755c085b2e19092fbfd"
+        },
+        "state": "SUPPORTED_TEST_ONLY",
+        "value_read": 2,
+        "native_unit": "modeled resource tokens",
+        "snapshot_ref": "e895050a1dda31a56826b06bdf3647fbd035328eb49a304699c07f7c90559ee5"
+      },
+      {
+        "consumer": "NONPARENT_OPTIONS",
+        "channel": "structural",
+        "scope": "civil_open",
+        "source_ref": {
+          "kind": "E04_TEST_ONLY_FIELD",
+          "object_id": "urn:test:e04:field:civil_open:1",
+          "content_hash": "704f450297cc2d79fdb4f4998bc5336c63524350a9983d378f5f500da920e27e"
+        },
+        "state": "SUPPORTED_TEST_ONLY",
+        "value_read": true,
+        "native_unit": "modeled route eligibility boolean",
+        "snapshot_ref": "e895050a1dda31a56826b06bdf3647fbd035328eb49a304699c07f7c90559ee5"
+      },
+      {
+        "consumer": "NONPARENT_OPTIONS",
+        "channel": "structural",
+        "scope": "civil_sanction",
+        "source_ref": {
+          "kind": "E04_TEST_ONLY_FIELD",
+          "object_id": "urn:test:e04:field:civil_sanction:1",
+          "content_hash": "fc9a722d4333076c338b0ad8993bac001e97de3d49ee816edebaacd85eb5154e"
+        },
+        "state": "SUPPORTED_TEST_ONLY",
+        "value_read": false,
+        "native_unit": "modeled sanction boolean",
+        "snapshot_ref": "e895050a1dda31a56826b06bdf3647fbd035328eb49a304699c07f7c90559ee5"
+      },
+      {
+        "consumer": "NONPARENT_OPTIONS",
+        "channel": "empirical",
+        "scope": "empirical",
+        "state": "EXACT_SUPPORTED",
+        "evidence_ref": {
+          "kind": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+          "object_id": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:65d1ea06184dcbf33579165cdf4d4228719844989ebd05efdc6fa6ce9cc7cc39",
+          "content_hash": "65d1ea06184dcbf33579165cdf4d4228719844989ebd05efdc6fa6ce9cc7cc39"
+        },
+        "source_ref": {
+          "kind": "EmpiricalUniverse@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:f677fb8b8478ba78b9b526d5dcd7b3aa54070d4a4b90a1d2de6dc219ec177cda",
+          "content_hash": "f677fb8b8478ba78b9b526d5dcd7b3aa54070d4a4b90a1d2de6dc219ec177cda"
+        },
+        "release_ref": {
+          "kind": "C11LogicalRelease",
+          "object_id": "REL-e04-base-r1",
+          "content_hash": "5e795c3fd62b89aa00ca133777ff31df3cb42501d25a9b431fe0de03c54d161f"
+        },
+        "value_read": [
+          {
+            "cell": "0",
+            "cell_state": "OBSERVED_POSITIVE",
+            "raw_numerator_support": 14,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                7,
+                16
+              ]
+            },
+            "weighted_numerator_support_if_authorized": null,
+            "weighted_probability_exact_fraction_if_authorized": null
+          },
+          {
+            "cell": "1",
+            "cell_state": "OBSERVED_POSITIVE",
+            "raw_numerator_support": 18,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                9,
+                16
+              ]
+            },
+            "weighted_numerator_support_if_authorized": null,
+            "weighted_probability_exact_fraction_if_authorized": null
+          }
+        ],
+        "denominator": 32,
+        "query_condition_order": [
+          [
+            "A",
+            1
+          ]
+        ],
+        "target": "Y",
+        "snapshot_ref": "e895050a1dda31a56826b06bdf3647fbd035328eb49a304699c07f7c90559ee5"
+      },
+      {
+        "consumer": "NONPARENT_OPTIONS",
+        "channel": "empirical",
+        "scope": "empirical",
+        "state": "EXACT_SUPPORTED",
+        "evidence_ref": {
+          "kind": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+          "object_id": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:860e86c1e1264a8a7efaccd904a95b297e44514e37b90ae8ae4d148c13c8dacf",
+          "content_hash": "860e86c1e1264a8a7efaccd904a95b297e44514e37b90ae8ae4d148c13c8dacf"
+        },
+        "source_ref": {
+          "kind": "EmpiricalUniverse@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:f677fb8b8478ba78b9b526d5dcd7b3aa54070d4a4b90a1d2de6dc219ec177cda",
+          "content_hash": "f677fb8b8478ba78b9b526d5dcd7b3aa54070d4a4b90a1d2de6dc219ec177cda"
+        },
+        "release_ref": {
+          "kind": "C11LogicalRelease",
+          "object_id": "REL-e04-base-r1",
+          "content_hash": "5e795c3fd62b89aa00ca133777ff31df3cb42501d25a9b431fe0de03c54d161f"
+        },
+        "value_read": [
+          {
+            "cell": "0",
+            "cell_state": "OBSERVED_POSITIVE",
+            "raw_numerator_support": 6,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                3,
+                8
+              ]
+            },
+            "weighted_numerator_support_if_authorized": null,
+            "weighted_probability_exact_fraction_if_authorized": null
+          },
+          {
+            "cell": "1",
+            "cell_state": "OBSERVED_POSITIVE",
+            "raw_numerator_support": 10,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                5,
+                8
+              ]
+            },
+            "weighted_numerator_support_if_authorized": null,
+            "weighted_probability_exact_fraction_if_authorized": null
+          }
+        ],
+        "denominator": 16,
+        "query_condition_order": [
+          [
+            "A",
+            1
+          ],
+          [
+            "B",
+            1
+          ]
+        ],
+        "target": "Y",
+        "snapshot_ref": "e895050a1dda31a56826b06bdf3647fbd035328eb49a304699c07f7c90559ee5"
+      },
+      {
+        "consumer": "NONPARENT_OPTIONS",
+        "channel": "empirical",
+        "scope": "empirical",
+        "state": "EXACT_SUPPORTED",
+        "evidence_ref": {
+          "kind": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+          "object_id": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:f94ac5deadc6375daa5d0f253bf6b5e9da52a0589c2f2e95e2c213f4a8d1f1dd",
+          "content_hash": "f94ac5deadc6375daa5d0f253bf6b5e9da52a0589c2f2e95e2c213f4a8d1f1dd"
+        },
+        "source_ref": {
+          "kind": "EmpiricalUniverse@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:f677fb8b8478ba78b9b526d5dcd7b3aa54070d4a4b90a1d2de6dc219ec177cda",
+          "content_hash": "f677fb8b8478ba78b9b526d5dcd7b3aa54070d4a4b90a1d2de6dc219ec177cda"
+        },
+        "release_ref": {
+          "kind": "C11LogicalRelease",
+          "object_id": "REL-e04-base-r1",
+          "content_hash": "5e795c3fd62b89aa00ca133777ff31df3cb42501d25a9b431fe0de03c54d161f"
+        },
+        "value_read": [
+          {
+            "cell": "0",
+            "cell_state": "OBSERVED_POSITIVE",
+            "raw_numerator_support": 2,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                1,
+                4
+              ]
+            },
+            "weighted_numerator_support_if_authorized": null,
+            "weighted_probability_exact_fraction_if_authorized": null
+          },
+          {
+            "cell": "1",
+            "cell_state": "OBSERVED_POSITIVE",
+            "raw_numerator_support": 6,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                3,
+                4
+              ]
+            },
+            "weighted_numerator_support_if_authorized": null,
+            "weighted_probability_exact_fraction_if_authorized": null
+          }
+        ],
+        "denominator": 8,
+        "query_condition_order": [
+          [
+            "A",
+            1
+          ],
+          [
+            "B",
+            1
+          ],
+          [
+            "C",
+            1
+          ]
+        ],
+        "target": "Y",
+        "snapshot_ref": "e895050a1dda31a56826b06bdf3647fbd035328eb49a304699c07f7c90559ee5"
+      }
+    ],
+    "structural_routes": {
+      "training": {
+        "state": "ELIGIBLE",
+        "dependencies": [
+          "training_access",
+          "training_fee"
+        ],
+        "value_refs": [
+          {
+            "kind": "E04_TEST_ONLY_FIELD",
+            "object_id": "urn:test:e04:field:training_access:1",
+            "content_hash": "3b4b4859dcbe858480d097147c719ce9458d4e1d88b4f47898a0416fe01e7174"
+          },
+          {
+            "kind": "E04_TEST_ONLY_FIELD",
+            "object_id": "urn:test:e04:field:training_fee:1",
+            "content_hash": "7b81073f295d8eafe81abb7aaaac58251cd172d109325d87e2deb2f0b9b6f166"
+          }
+        ]
+      },
+      "civil": {
+        "state": "ELIGIBLE",
+        "dependencies": [
+          "civil_open",
+          "civil_sanction"
+        ],
+        "value_refs": [
+          {
+            "kind": "E04_TEST_ONLY_FIELD",
+            "object_id": "urn:test:e04:field:civil_open:1",
+            "content_hash": "704f450297cc2d79fdb4f4998bc5336c63524350a9983d378f5f500da920e27e"
+          },
+          {
+            "kind": "E04_TEST_ONLY_FIELD",
+            "object_id": "urn:test:e04:field:civil_sanction:1",
+            "content_hash": "fc9a722d4333076c338b0ad8993bac001e97de3d49ee816edebaacd85eb5154e"
+          }
+        ]
+      },
+      "exit_constraint": {
+        "state": "WITHIN_MODELED_BUDGET",
+        "dependencies": [
+          "exit_cost"
+        ],
+        "value_refs": [
+          {
+            "kind": "E04_TEST_ONLY_FIELD",
+            "object_id": "urn:test:e04:field:exit_cost:1",
+            "content_hash": "5281accc231a8cbedce249f25863bffeca0c4cc2a6fdd755c085b2e19092fbfd"
+          }
+        ]
+      }
+    },
+    "empirical_state": "PRODUCTIVE_TEST_ONLY",
+    "steps": [
+      {
+        "denominator": 32,
+        "cells": [
+          {
+            "cell": "0",
+            "cell_state": "OBSERVED_POSITIVE",
+            "raw_numerator_support": 14,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                7,
+                16
+              ]
+            },
+            "weighted_numerator_support_if_authorized": null,
+            "weighted_probability_exact_fraction_if_authorized": null
+          },
+          {
+            "cell": "1",
+            "cell_state": "OBSERVED_POSITIVE",
+            "raw_numerator_support": 18,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                9,
+                16
+              ]
+            },
+            "weighted_numerator_support_if_authorized": null,
+            "weighted_probability_exact_fraction_if_authorized": null
+          }
+        ],
+        "state": "EXACT_SUPPORTED"
+      },
+      {
+        "denominator": 16,
+        "cells": [
+          {
+            "cell": "0",
+            "cell_state": "OBSERVED_POSITIVE",
+            "raw_numerator_support": 6,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                3,
+                8
+              ]
+            },
+            "weighted_numerator_support_if_authorized": null,
+            "weighted_probability_exact_fraction_if_authorized": null
+          },
+          {
+            "cell": "1",
+            "cell_state": "OBSERVED_POSITIVE",
+            "raw_numerator_support": 10,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                5,
+                8
+              ]
+            },
+            "weighted_numerator_support_if_authorized": null,
+            "weighted_probability_exact_fraction_if_authorized": null
+          }
+        ],
+        "state": "EXACT_SUPPORTED"
+      },
+      {
+        "denominator": 8,
+        "cells": [
+          {
+            "cell": "0",
+            "cell_state": "OBSERVED_POSITIVE",
+            "raw_numerator_support": 2,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                1,
+                4
+              ]
+            },
+            "weighted_numerator_support_if_authorized": null,
+            "weighted_probability_exact_fraction_if_authorized": null
+          },
+          {
+            "cell": "1",
+            "cell_state": "OBSERVED_POSITIVE",
+            "raw_numerator_support": 6,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                3,
+                4
+              ]
+            },
+            "weighted_numerator_support_if_authorized": null,
+            "weighted_probability_exact_fraction_if_authorized": null
+          }
+        ],
+        "state": "EXACT_SUPPORTED"
+      }
+    ],
+    "scenarios": null,
+    "transport": {
+      "state": "NON_TRANSPORTABLE_OWNER_FIELD",
+      "json_serializable": false,
+      "non_transportable_fields": [
+        "possibility_receipt.ordered_steps[0].parent_receipt_ref"
+      ],
+      "world_receipt_fields": 17,
+      "possibility_receipt_fields": 20
+    },
+    "transport_hold": true,
+    "generated_conditioner_limits": {
+      "generated_criteria_echo": [],
+      "same_respondent_joint_ref": null,
+      "composition_mode": "REFUSED",
+      "model_use_ref": null,
+      "actor_generation": false,
+      "person_generation": false,
+      "actual_conception": false
+    },
+    "route_probability": null,
+    "selection_weight": null,
+    "no_joint_probability": true,
+    "real_use_authorized": false
+  }
+}

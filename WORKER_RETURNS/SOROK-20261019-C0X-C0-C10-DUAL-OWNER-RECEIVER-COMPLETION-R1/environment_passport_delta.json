@@ -1,0 +1,75 @@
+{
+  "schema": "RAWLSING_ENVIRONMENT_PASSPORT@1",
+  "environment_id": "local-c0x-shared-store-1",
+  "epoch_id": "2026-10-19T06:37:28Z",
+  "surface": "LOCAL_SHARED_STORE",
+  "session_alias": "deepseek-harness-c0x",
+  "machine_alias": "local-macos-shared-store",
+  "status": "LIVE_VERIFIED",
+  "live_probe": {
+    "observed_at_utc": "2026-10-19T06:37:28Z",
+    "marker_checked": "VERIFIED",
+    "marker_digest": "c0x:855bb72f",
+    "python": "3.11.3",
+    "pytest": "9.1.1",
+    "git": "2.39.1",
+    "filesystem": "VERIFIED",
+    "connector": "UNKNOWN",
+    "notes": "isolated linked worktree in the existing Rawlsing shared object store; native29 staged from Git and C0P/C0I/K9/K10 executed locally"
+  },
+  "branch": "agent/rabochii-sorok-20261019-c0x-dual-owner-receiver-completion-r1",
+  "checkout_sha": "6925ece4a2e5ccd647ac909904c2db40b55260a7",
+  "shared_store_alias": "rawlsing-shared-store",
+  "worktree_alias": "c0x",
+  "source_closure": "BOUNDED",
+  "sources": [
+    {
+      "commit": "79cb8244a5291218bde17142b93fc2419eade396",
+      "path": "product/world.py",
+      "blob_sha1": "06a74caebda69f7d1baa8719a99138ef57d9c07b",
+      "module_alias": "product.world",
+      "import_verified": true
+    },
+    {
+      "commit": "79cb8244a5291218bde17142b93fc2419eade396",
+      "path": "product/nonparent.py",
+      "blob_sha1": "2181b832d3c4376d4b9428e13f4354f273be8f32",
+      "module_alias": "product.nonparent",
+      "import_verified": true
+    },
+    {
+      "commit": "79cb8244a5291218bde17142b93fc2419eade396",
+      "path": "rawlsing_next/pre553_empirical_possibility_provider.py",
+      "blob_sha1": "23167aa25291fb148b1e3cf210ac33fe7769b783",
+      "module_alias": "N10E_provider",
+      "import_verified": true
+    },
+    {
+      "commit": "0e0ed50dbce2dd1434d3a3c84b937b9a956adba9",
+      "path": "rawlsing_next/pre553_n9_n10w_progressive_candidate.py",
+      "blob_sha1": "84d404147547767be8ecd4b6e1541f5fa3a8c8a2",
+      "module_alias": "N9_N10W_candidate",
+      "import_verified": true
+    }
+  ],
+  "assignments_completed": 1,
+  "next_affinity_tags": [
+    "sorok",
+    "c0x",
+    "c0-c10-receiver",
+    "i2-review"
+  ],
+  "permissions": {
+    "private_repo_access": "VERIFIED",
+    "original_survey_use": "NOT_GRANTED",
+    "external_model_use": "NOT_GRANTED",
+    "actor_execution": "NOT_GRANTED"
+  },
+  "usage": {
+    "provider_model": "DeepSeek V4.1 Flash (commission)",
+    "incremental_cash_usd": null,
+    "quota_state": "UNKNOWN",
+    "usage_observed": "local Git/pytest only; no paid API call observed",
+    "retry_count": 0
+  }
+}

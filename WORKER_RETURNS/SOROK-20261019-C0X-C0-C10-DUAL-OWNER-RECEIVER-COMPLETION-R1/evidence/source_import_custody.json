@@ -1,0 +1,83 @@
+{
+  "schema": "SOROK_C0X_SOURCE_IMPORT_CUSTODY@1",
+  "startup": "6925ece4a2e5ccd647ac909904c2db40b55260a7",
+  "branch": "agent/rabochii-sorok-20261019-c0x-dual-owner-receiver-completion-r1",
+  "c0r2": "55d2daa4bab41c5ff4ffdc196c8d36d300c3d60f",
+  "native29": {
+    "ledger": "evidence/_c0p_runtime_ledger.json",
+    "sha256": "0ca823711b115846aba99b520a98216ef5f2d1cf3c1bf56605255e196790dafa",
+    "module_count": 29,
+    "all_blob_match": true,
+    "closure_resolves": true,
+    "total_bytes": 859712,
+    "committed_receiver_runtime_modules": 0,
+    "runtime_materialization": "Git-backed on-demand staging from E03/E04T pinned blobs via tools/c0p_stage_runtime.py; 29/29 ledger verified at receiver import"
+  },
+  "facade": {
+    "commit": "55d2daa4bab41c5ff4ffdc196c8d36d300c3d60f",
+    "repo_path": "WORKER_RETURNS/SOROK-R3-HQ319-C0P-GENERIC-PORT-POSITIVE-R1/repro/c0p_two_contract_port.py",
+    "blob_sha1": "855bb72f494d64083cee706e12f4f3d58c47dec3",
+    "sha256": "fa08d5f56fb4316131de1b989796071472d81cc0f968f734ee4e828625af708f",
+    "bytes": 23508
+  },
+  "inherited_tests": {
+    "c0p49": {
+      "commit": "154a4dd5615d47f014ca90eb1234b16e983bf5c1",
+      "repo_path": "WORKER_RETURNS/SOROK-R3-HQ319-C0P-GENERIC-PORT-POSITIVE-R1/tests/test_c0p_generic_port.py",
+      "blob_sha1": "c35b8b8da6d6fd1f4b884f04a8868a098505522b"
+    },
+    "c0i50": {
+      "commit": "884e7e8059ba0a4e243cfc81024ea2917838a37b",
+      "repo_path": "WORKER_RETURNS/PYAT-R32-WP2-NATIVE-WORLD-POSSIBILITY-R1/readonly_shapes/c0i_test_c0i.py",
+      "blob_sha1": "419f5cf1e82fb3f5817f78d48fce79265dd8d3f7"
+    },
+    "c0r2_23": {
+      "commit": "55d2daa4bab41c5ff4ffdc196c8d36d300c3d60f",
+      "repo_path": "WORKER_RETURNS/SOROK-V2-HQ323-C0R2-GIT-BACKED-REPAIR-R1/tests/test_c0r2_adversarial.py",
+      "blob_sha1": "89a0f1191f7f0ec6d2ff3c3f240a70add8840f6f"
+    }
+  },
+  "k9k10": {
+    "commit": "9831293f9fd53813db04d33be5bbdc177542f8ce",
+    "manifest": "evidence/k9k10_manifest.json"
+  },
+  "c0x": {
+    "module": {
+      "path": "c0x_world_receiver.py",
+      "blob_sha1": "8d80b5a4cb63a781f8c82e4d780246ef35ccf123",
+      "sha256": "a49dae6203789b6558683eaafd61d2051bab6a6afd91369d01f18f79fd6786e0"
+    },
+    "test": {
+      "path": "tests/test_c0x_receiving_consumer.py",
+      "blob_sha1": "90d6c2f3754331a28a5a45dd7e77dd1914a9a162",
+      "sha256": "6b1c8751fd07c64ab1934b7d912f9294b0c91c8ec0ab1b25f835ee48c417a5f0"
+    },
+    "proof": {
+      "path": "tests/test_c0x_receiving_consumer.py.proof.json",
+      "blob_sha1": "d7c39cbf2dabfadae3d2a36cfd595f00c13802fb",
+      "sha256": "0557a8e89da14d316235a6bf82e6f0ac502c8685659f3205cfb5c381b59b3b01"
+    }
+  },
+  "actual_imports": [
+    {
+      "module": "product.nonparent",
+      "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/c0x/WORKER_RETURNS/SOROK-20261019-C0X-C0-C10-DUAL-OWNER-RECEIVER-COMPLETION-R1/stage/runtime/product/nonparent.py"
+    },
+    {
+      "module": "product.world",
+      "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/c0x/WORKER_RETURNS/SOROK-20261019-C0X-C0-C10-DUAL-OWNER-RECEIVER-COMPLETION-R1/stage/runtime/product/world.py"
+    },
+    {
+      "module": "product.service",
+      "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/c0x/WORKER_RETURNS/SOROK-20261019-C0X-C0-C10-DUAL-OWNER-RECEIVER-COMPLETION-R1/stage/runtime/product/service.py"
+    },
+    {
+      "module": "product.scenario",
+      "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/c0x/WORKER_RETURNS/SOROK-20261019-C0X-C0-C10-DUAL-OWNER-RECEIVER-COMPLETION-R1/stage/runtime/product/scenario.py"
+    },
+    {
+      "module": "rawlsing_next.pre553_empirical_possibility_provider",
+      "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/c0x/WORKER_RETURNS/SOROK-20261019-C0X-C0-C10-DUAL-OWNER-RECEIVER-COMPLETION-R1/stage/runtime/rawlsing_next/pre553_empirical_possibility_provider.py"
+    }
+  ]
+}
