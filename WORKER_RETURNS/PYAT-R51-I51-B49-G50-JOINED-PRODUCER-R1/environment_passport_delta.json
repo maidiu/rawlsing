@@ -1,0 +1,77 @@
+{
+  "schema": "RAWLSING_ENVIRONMENT_PASSPORT@1",
+  "environment_id": "local-r51-shared-store-1",
+  "epoch_id": "2026-10-20T16:44:29Z",
+  "surface": "LOCAL_SHARED_STORE",
+  "session_alias": "deepseek-harness-r51",
+  "machine_alias": "local-macos-shared-store",
+  "status": "LIVE_VERIFIED",
+  "live_probe": {
+    "observed_at_utc": "2026-10-20T16:44:29Z",
+    "marker_checked": "VERIFIED",
+    "marker_digest": "r51:104c14ae6",
+    "python": "3.11.3",
+    "pytest": "9.1.1",
+    "git": "2.39.1",
+    "filesystem": "VERIFIED",
+    "connector": "UNKNOWN",
+    "notes": "local Git/python/pytest, real U43/C11/I03/Batch, no raw source"
+  },
+  "branch": "agent/rabochii-pyat-r51-i51-b49-g50-real-native-joined-science-producer-r1",
+  "checkout_sha": "104c14ae6a6a1f7e28912c15d08c98ab35c9c0aa",
+  "shared_store_alias": "rawlsing-shared-store",
+  "worktree_alias": "pyat_r51",
+  "source_closure": "BOUNDED",
+  "sources": [
+    {
+      "commit": "b5600da96358f8526471d635a1befa8daa3f098b",
+      "path": "rawlsing_next/pre553_inherited_source_rules.py",
+      "blob_sha1": "5f6efaceb18d92a362d065d12fdca4076d53fa16",
+      "module_alias": "b49_source_rules",
+      "import_verified": true
+    },
+    {
+      "commit": "b5600da96358f8526471d635a1befa8daa3f098b",
+      "path": "rawlsing_next/pre553_native_workload_binding.py",
+      "blob_sha1": "bc88720c2bbcf52a43b799526c7dade094ccd9f8",
+      "module_alias": "b49_native_binding",
+      "import_verified": true
+    },
+    {
+      "commit": "d379bafe36b8d89da27ea5bf33614d33aca7f2d2",
+      "path": "WORKER_RETURNS/PYAT-R50-G50-GOVERNED-OPERATION-GRAMMAR-R1/g50/types.py",
+      "blob_sha1": "a376edad00a3b40f69fc3a87c83658b4406bc67b",
+      "module_alias": "g50_types",
+      "import_verified": true
+    },
+    {
+      "commit": "d379bafe36b8d89da27ea5bf33614d33aca7f2d2",
+      "path": "WORKER_RETURNS/PYAT-R50-G50-GOVERNED-OPERATION-GRAMMAR-R1/g50/enumerate.py",
+      "blob_sha1": "f610ef2dea39519a51a5b57fd35bbe245fb9dc9b",
+      "module_alias": "g50_enumerate",
+      "import_verified": true
+    }
+  ],
+  "assignments_completed": 1,
+  "next_affinity_tags": [
+    "r51",
+    "b49",
+    "g50",
+    "native-join",
+    "i05-u43"
+  ],
+  "permissions": {
+    "private_repo_access": "VERIFIED",
+    "raw_respondent": "NOT_GRANTED",
+    "source_license": "NOT_GRANTED",
+    "actor": "NOT_GRANTED",
+    "production": "NOT_GRANTED"
+  },
+  "usage": {
+    "provider_model": "OpenCode DeepSeek V4.1-Flash MAX",
+    "incremental_cash_usd": null,
+    "quota_state": "UNKNOWN",
+    "usage_observed": "local Git/pytest/processes only; no paid API observed",
+    "retry_count": 0
+  }
+}

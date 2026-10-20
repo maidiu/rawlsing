@@ -1,0 +1,46 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "status": "MECHANICAL_WITNESS_PASS_NOT_SEMANTIC_ADOPTION",
+  "claims": [
+    {
+      "claim_id": "R51_SOURCE_VALUE_TO_SAME_CONSUMER",
+      "positive_node": "WORKER_RETURNS/PYAT-R51-I51-B49-G50-JOINED-PRODUCER-R1/tests/test_r51_joined_source_consumer.py::test_source_value_mutation_changes_same_downstream_fact_but_not_epre",
+      "fault_path": "WORKER_RETURNS/PYAT-R51-I51-B49-G50-JOINED-PRODUCER-R1/candidate/rawlsing_next/pre553_source_native_preimage_adapter.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    },
+    {
+      "claim_id": "R51_G50_POLICY_REMOVES_OPERATION",
+      "positive_node": "WORKER_RETURNS/PYAT-R51-I51-B49-G50-JOINED-PRODUCER-R1/tests/test_r51_joined_source_consumer.py::test_policy_mutation_removes_the_eligible_native_operation_and_restores",
+      "fault_path": "WORKER_RETURNS/PYAT-R51-I51-B49-G50-JOINED-PRODUCER-R1/candidate/g50/enumerate.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    },
+    {
+      "claim_id": "R51_B49_SOURCE_IDENTITY",
+      "positive_node": "WORKER_RETURNS/PYAT-R51-I51-B49-G50-JOINED-PRODUCER-R1/tests/test_r51_joined_source_consumer.py::test_g50_bundle_keeps_b49_source_identity_and_not_g50_toy",
+      "fault_path": "WORKER_RETURNS/PYAT-R51-I51-B49-G50-JOINED-PRODUCER-R1/candidate/r51_joined_source_producer.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    },
+    {
+      "claim_id": "R51_B49_JOINT_NOT_FLATTENED",
+      "positive_node": "WORKER_RETURNS/PYAT-R51-I51-B49-G50-JOINED-PRODUCER-R1/tests/test_r51_joined_source_consumer.py::test_joint_operation_is_not_flattened_to_one_target",
+      "fault_path": "WORKER_RETURNS/PYAT-R51-I51-B49-G50-JOINED-PRODUCER-R1/candidate/r51_joined_source_producer.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    },
+    {
+      "claim_id": "R51_B49_NATIVE_TARGET",
+      "positive_node": "WORKER_RETURNS/PYAT-R51-I51-B49-G50-JOINED-PRODUCER-R1/tests/test_r51_joined_source_consumer.py::test_joined_g50_operation_executes_real_b49_native_consumer",
+      "fault_path": "WORKER_RETURNS/PYAT-R51-I51-B49-G50-JOINED-PRODUCER-R1/candidate/r51_joined_source_producer.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    }
+  ]
+}

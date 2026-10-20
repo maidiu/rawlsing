@@ -1,0 +1,60 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "claims": [
+    {
+      "claim_id": "R51_SOURCE_VALUE_TO_SAME_CONSUMER",
+      "actual_consumer": "r51_joined_source_producer.execute_joined",
+      "claimed_dependency": "a changed B49 synthetic source answer changes the same B49-I03 downstream fact",
+      "positive_node": "WORKER_RETURNS/PYAT-R51-I51-B49-G50-JOINED-PRODUCER-R1/tests/test_r51_joined_source_consumer.py::test_source_value_mutation_changes_same_downstream_fact_but_not_epre",
+      "fault": {
+        "path": "WORKER_RETURNS/PYAT-R51-I51-B49-G50-JOINED-PRODUCER-R1/candidate/rawlsing_next/pre553_source_native_preimage_adapter.py",
+        "old": "    return tuple(seen)",
+        "new": "    return tuple(seen[:1])"
+      }
+    },
+    {
+      "claim_id": "R51_G50_POLICY_REMOVES_OPERATION",
+      "actual_consumer": "g50.enumerate.enumerate_frontier",
+      "claimed_dependency": "removing q301_2 from the G50 target roles removes the native operation",
+      "positive_node": "WORKER_RETURNS/PYAT-R51-I51-B49-G50-JOINED-PRODUCER-R1/tests/test_r51_joined_source_consumer.py::test_policy_mutation_removes_the_eligible_native_operation_and_restores",
+      "fault": {
+        "path": "WORKER_RETURNS/PYAT-R51-I51-B49-G50-JOINED-PRODUCER-R1/candidate/g50/enumerate.py",
+        "old": "        if item.target_role and item_id in policy.target_roles",
+        "new": "        if item.target_role"
+      }
+    },
+    {
+      "claim_id": "R51_B49_SOURCE_IDENTITY",
+      "actual_consumer": "r51_joined_source_producer.g50_bundle",
+      "claimed_dependency": "the G50 bundle carries the B49 source identity, not the G50 SYNTH-SRC-A toy",
+      "positive_node": "WORKER_RETURNS/PYAT-R51-I51-B49-G50-JOINED-PRODUCER-R1/tests/test_r51_joined_source_consumer.py::test_g50_bundle_keeps_b49_source_identity_and_not_g50_toy",
+      "fault": {
+        "path": "WORKER_RETURNS/PYAT-R51-I51-B49-G50-JOINED-PRODUCER-R1/candidate/r51_joined_source_producer.py",
+        "old": "        source_id=package.source.source_id, wave=package.source.wave,",
+        "new": "        source_id=\"SYNTH-SRC-A\", wave=package.source.wave,"
+      }
+    },
+    {
+      "claim_id": "R51_B49_JOINT_NOT_FLATTENED",
+      "actual_consumer": "r51_joined_source_producer.lower_to_b49",
+      "claimed_dependency": "a G50 joint operation is a typed unsupported arity, not silently reduced to one target",
+      "positive_node": "WORKER_RETURNS/PYAT-R51-I51-B49-G50-JOINED-PRODUCER-R1/tests/test_r51_joined_source_consumer.py::test_joint_operation_is_not_flattened_to_one_target",
+      "fault": {
+        "path": "WORKER_RETURNS/PYAT-R51-I51-B49-G50-JOINED-PRODUCER-R1/candidate/r51_joined_source_producer.py",
+        "old": "    if len(operation.targets) != 1:",
+        "new": "    if False:"
+      }
+    },
+    {
+      "claim_id": "R51_B49_NATIVE_TARGET",
+      "actual_consumer": "r51_joined_source_producer.execute_joined",
+      "claimed_dependency": "the joined receipt names the exact B49 target executed",
+      "positive_node": "WORKER_RETURNS/PYAT-R51-I51-B49-G50-JOINED-PRODUCER-R1/tests/test_r51_joined_source_consumer.py::test_joined_g50_operation_executes_real_b49_native_consumer",
+      "fault": {
+        "path": "WORKER_RETURNS/PYAT-R51-I51-B49-G50-JOINED-PRODUCER-R1/candidate/r51_joined_source_producer.py",
+        "old": "        \"b49_target_variable_code\": fixture.target_variable_code,",
+        "new": "        \"b49_target_variable_code\": \"q301_7\","
+      }
+    }
+  ]
+}
