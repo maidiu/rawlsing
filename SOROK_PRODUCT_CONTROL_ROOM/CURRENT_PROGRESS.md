@@ -1,3 +1,11 @@
+# Sorok revision 18 — 00A qualification wired; actual inherited V3/ADP candidate code found, status honestly bounded
+
+**SOURCE-CODE PRIORITY LEADS:** [actual Git-blob-backed V3/ADP source carrier headers with explicit boundaries](https://github.com/maidiu/rawlsing/blob/86255b3e5aa952a1a93d4bbc7856082c0af6d472/SOROK_PRODUCT_CONTROL_ROOM/HQ_MOTIONS/20261019_P0_PA0_EXISTING_V3_ADP_PFF_SOURCECODE_EXISTENCE_PRIORITY_LEADS_R1.md). Current source tree includes `gt34_u2_v3p1_authenticated_subject_materializer.py` (subject identity, expressly **nonactor**), `v3_adp010_oee_executor_authenticated.py` (AVAILABLE→OPPORTUNITY→ENCOUNTER, expressly **no actor-state/CAN008 or positive V3**), `v3_psepf_zero_positive_guard.py` and `wsc_gt0_v3_runtime.py` (explicit zero-positive guard), and `sdtf_r4_mechanism_rule_authority_binding.py`/`sdtf_r4_world_response_redrive.py` (bindings/redrive, not actual issuing rules/world response). These are targeted **existing implementation leads**, not a claim that native person production exists or is impossible. PA0 and P0 must trace live consumers/adoption and recover/extend lawful code instead of reimplementing from scratch.
+
+**00E HQ PASS WIRING:** The relational-psyche takeover `SOROK_PRODUCT_CONTROL_ROOM/00A_VOZHD_TAKEOVER_RELATIONAL_PSYCHIC_GATE_R1.md` now independently invokes mandatory 00E, in addition to 00_READ, 00_FULL, 00B, 00C, 06 and 07. Existing worker seals P0/PS0/PA0, G18/C9RI remain unchanged; no new native actor/scientific/source rights and no worker auto-launched.
+
+## Previous revision 17 preserved
+
 # Sorok HQ CURRENT — revision 17: mandatory needs-first person-production grok and genuine build/reuse architecture flight
 
 **HQ LAW NOW BANKED:** `SOROK_PRODUCT_CONTROL_ROOM/00E_NEEDS_FIRST_PERSON_PRODUCTION_HQ_GROK_QUALIFICATION_R1.md` at working Sorok P0-era source, wired into 00_READ, 00_FULL, 07_FRESH, 00C dispatch, 00B feasibility, 06 operating method. Failure status `SOROK_HQ_NEEDS_FIRST_PERSON_PRODUCTION_GROK_INCOMPLETE__NO_NEW_MATERIAL_DISPATCH`. This is qualification (not a new scientific/native person or source grant and not an extra review committee).
