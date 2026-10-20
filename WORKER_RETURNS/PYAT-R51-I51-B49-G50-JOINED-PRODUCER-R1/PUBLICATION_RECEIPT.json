@@ -2,13 +2,73 @@
   "schema": "PYAT_R51_PUBLICATION_RECEIPT@1",
   "branch": "agent/rabochii-pyat-r51-i51-b49-g50-real-native-joined-science-producer-r1",
   "sealed_startup": "104c14ae6a6a1f7e28912c15d08c98ab35c9c0aa",
-  "inputs": {"b49": "b5600da96358f8526471d635a1befa8daa3f098b", "g50": "d379bafe36b8d89da27ea5bf33614d33aca7f2d2", "m48": "91f70358a7682e983276e79777bc591841162392"},
+  "inputs": {
+    "b49": "b5600da96358f8526471d635a1befa8daa3f098b",
+    "g50": "d379bafe36b8d89da27ea5bf33614d33aca7f2d2",
+    "m48": "91f70358a7682e983276e79777bc591841162392"
+  },
   "join_operation": "urn:g50:op:b547e734c8fda66149098b314f5037aaa7325740f450ffc939f0a55e9249ffef",
   "join_fact_baseline": "245098cf814e67594c60120226cfea5591f160c25379254b0b155fcb9c9c6911",
   "join_fact_mutated": "e3e7799bc9e21c99e27079e7dfac84e0e87ad3203c2641a7781abec10a97748d",
   "frontier_e_pre_root": "1a9bffbe9fb7698e474052943a373fac018c49d2256be2ab611ec1dba7e77cc5",
-  "courts": {"b49_new": {"pass": 29, "red": 0}, "b49_existing": {"pass": 41, "red": 0}, "g50": {"pass": 13, "red": 0}, "r51_joined": {"pass": 10, "red": 0}, "proof_claims": {"pass": 5, "red": 0}},
-  "typed_holds": ["R51_I05_NATIVE_JOIN_HOLD", "B49_ONE_TARGET_PAIR_JOINT_HOLD", "R51_E04_TERMINAL_HOLD", "ORIGINAL35_U_EPRE_NULL", "SOURCE_RIGHT_WITHHELD", "M48_POLICY_PROPOSED_TEST_ONLY"],
-  "three_dispositions": {"engineering": "REVISE", "scientific": "ACCEPT_SCOPED_SOURCEFREE_SYNTHETIC_JOIN__ORIGINAL_NULL", "authority": "HOLD"},
-  "final_remote_sha": "TO_BE_BOUND_AFTER_PUSH"
+  "courts": {
+    "b49_new": {
+      "pass": 29,
+      "red": 0
+    },
+    "b49_existing": {
+      "pass": 41,
+      "red": 0
+    },
+    "g50": {
+      "pass": 13,
+      "red": 0
+    },
+    "r51_joined": {
+      "pass": 10,
+      "red": 0
+    },
+    "proof_claims": {
+      "pass": 5,
+      "red": 0
+    }
+  },
+  "typed_holds": [
+    "R51_I05_NATIVE_JOIN_HOLD",
+    "B49_ONE_TARGET_PAIR_JOINT_HOLD",
+    "R51_E04_TERMINAL_HOLD",
+    "ORIGINAL35_U_EPRE_NULL",
+    "SOURCE_RIGHT_WITHHELD",
+    "M48_POLICY_PROPOSED_TEST_ONLY"
+  ],
+  "three_dispositions": {
+    "engineering": "REVISE",
+    "scientific": "ACCEPT_SCOPED_SOURCEFREE_SYNTHETIC_JOIN__ORIGINAL_NULL",
+    "authority": "HOLD"
+  },
+  "final_remote_sha": "TO_BE_BOUND_AFTER_PUSH",
+  "evidence_commit": "76a871b2f477b52c8ef8e6f5be3512707f1b2af4",
+  "code_head": "9915192539e5ceb2b0c3ce8e23a7a07ab600efbf",
+  "remote_head_before_receipt": "9915192539e5ceb2b0c3ce8e23a7a07ab600efbf",
+  "remote_ref": "refs/heads/agent/rabochii-pyat-r51-i51-b49-g50-real-native-joined-science-producer-r1",
+  "final_remote_sha_note": "The final receipt commit SHA is reported in the final response after ordinary push; the code/test head verified before this receipt is 9915192539e5ceb2b0c3ce8e23a7a07ab600efbf.",
+  "test_counts": {
+    "b49_new": 29,
+    "b49_existing": 41,
+    "g50": 13,
+    "r51_joined": 10,
+    "proof_claims": 5,
+    "cold": 10
+  },
+  "original35": {
+    "count": 35,
+    "original_u": null,
+    "original_e_pre": null,
+    "measured_occupancy": "0 / 1890"
+  },
+  "sourcefree_synthetic_join": true,
+  "current_source_host_purpose_grant": null,
+  "adp019": "ABSENT",
+  "e2_performed": false,
+  "native_actor": false
 }
