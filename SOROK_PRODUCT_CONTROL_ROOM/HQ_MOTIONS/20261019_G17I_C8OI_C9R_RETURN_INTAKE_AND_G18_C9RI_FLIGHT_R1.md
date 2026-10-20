@@ -1,0 +1,27 @@
+# Sorok HQ: G17I, C8OI and C9R return intake — 2026-10-19
+
+Status: scoped Sorok W55 evidence and commissioning, not a native CAN/ADP or Pyat issuance.
+
+## Exact evidence
+- G17I `156b84cc8481b65c4196b42574010eb7920d6f44`, INDEPENDENT REVISE: 11 PASS / 3 RED. Forged owner packet yields cash 100058, nested future-child metadata produces COMMITTED, forged C9 material handoff yields cash 100055. G17 inherited 181=108/73 (17+56 preserved), G14 67/67, G15 75/75, G16I 22/24 with M2/MP coverage HOLDS, G17 13/13. Seven G17 author source-fault witnesses pass on narrower paths. Material resource conservation is real locally; independently sourced actors and a valid C9 material receipt not proved.
+- C8OI `f4200eb0938a1b74c8b738e0a344224edfb4d0eb`, independent scoped engineering/science ACCEPT. 272=270/2, OUT12 9/9, OUT13 23/23, OUT14 27/27, C8O 62/62. Read-only OUT9 consumer/source faults reproduced. Legally callable old writer erases acknowledged journal; unkeyed digest/token and byte-valid rollback not authenticated. Native D1 old writer exclusivity, D2 trust anchor/key and D3 ADP019/C9 occurrence issuer held.
+- C9R `6fa2939972ce5a2c0cc4f2b033946b276f1c2934`, author C9PI negative 26+3 RED corrected 29/29 PASS, 10 direct C9 consumer, six source faults, two cold DB. But original author 90 currently 62 PASS / 28 RED, author identifies all as stricter refusals. Independently test productive and compatibility effect before any scoped positive adoption. TEST_ONLY and native separate; concrete RULE_A/RULE_T and actual E1/E2 held.
+
+## Four-object HQ findings / interpretations / actions / owners
+
+1. G17I: new source-credential and nested future input REDs defeat G17 full authentic-life claim. Action: ENGINEERING REVISE, SCIENCE REVISE, native AUTHORITY HOLD; ONE G18 joined source-owner and C4→C9 consumer repair, not three separate canary workers. Owner G18 implementer, subsequent scoped Sorok HQ, ADP015/020/CAN008/CAN011 native.
+2. C8OI: real OS process/crash/multiwriter and unchanged read-only positive prove scoped mechanisms, not exclusive authenticated writer. Action: scoped engineering/science ACCEPT, native security and D1–D3 HOLD, no redundant C8 review. Owners accepted writer custodian, separate trust root, ADP019/C9 real event custodian.
+3. C9R: 29 hostile tests fixed at test-only grain; 28 historic positives may be illegal earlier approvals OR important lost capability. Action: bank author sourcefree candidate, independent C9RI one combined compatibility, 28-row explanation and actual E1→stored state→performed E2 sourcefree consumer positive. Native authority HOLD. Owners C9RI independent reviewer and competent CAN/ADP issuers.
+
+## Whole-machine parallel flight
+
+- G18 commission at `19503a3ea09bdf840a5ce98a9697650c387787fa`, reviewer-independent implementation branch `agent/rabochii-sorok-20261019-g18-authenticated-material-history-whole-c4-c9-repair-r1`; NOT automatically launched. DeepSeek V4.1-Flash MAX, I2, isolated qualified local S2 recommended. Repair 3 G17I bypasses at producing source AND C9 consumer, preserve two historical M2/MP HOLDS and original 17+56 RED.
+- C9RI commission at `85d78d928d03d33f80d59d259a6aad9c57967a98`, independent branch `agent/reviewer-sorok-20261019-c9ri-independent-positive-compatibility-e2-consumer-r1`; NOT automatically launched. DeepSeek V4.1-Flash MAX, I2, qualified isolated local S2 recommended. Resolve 28 old positive divergences without reverting 29 security fixes, prove actual lawful sourcefree positive/no-change/denied alternatives.
+- C8 D1/D2/D3, genuine native C9 actor-rule/ADP and M2/MP historical sources remain competent-owner work in PARALLEL, not automatically issued by a test writer. Pyat original35/N11/N12 distinct HQ, last progress rev30 read-only. Real C11 and C12 person not done.
+
+## Missing-function cards — direct user consultation required
+**C8 trusted writer:** existing original OUT9 journal and new candidate must reach a single exclusively admitted append writer and independent monotonic anti-rollback receipt consumed by OUT9 read-only client/C9. C8O and C8OI prove cooperative transactions and readsets, NOT trusted old-writer retirement/key/anchor. Exact existing operative replacement outside known evidence UNKNOWN. Ask user whether already built on another branch/host/Library; otherwise HQ owns technical recovery/build, separately competent authorization.
+**Native C9 actual actor:** governed person history + admitted real encounter + issued concrete CAN008 response rule and separate CAN011 target rule must emit an actual state-changing response and an independently performed later action C10/C12 consumes. C9R is full TEST_ONLY adapter, not proved real issuer/native actor. Exact prior V3/ADP actor compiler current executable not located from this bounded read. Ask user if built/adjudicated elsewhere, then recover/wire or commission build with real separate native science.
+**M2/MP:** archived 23-event mother timeline and known `F_EXISTING` must be translated to current causal material grammar without minting a father/child. Existing accepted source carrier not yet verified; ask user for retained implementation.
+
+No fake owner grant, false production person or forced machine account inference. User's Codex spent; use DeepSeek MAX if qualified, not merely for I0. Other host/cash/slot UNKNOWN. C8 independent acceptance and G17I independent RED remain exact, C9 original-positive conservation unresolved. Every new return gets distinct engineering/scientific/authority grades and whole C12 delta.
