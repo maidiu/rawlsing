@@ -1,5 +1,10 @@
 # SOROK VOZHD — Full Rawlsing Grounding Gate R1
 
+## PERMANENT HQ ACCESSION COMPETENCE & REVIEW GATE — SOROK 08
+
+Before any *new* Sorok HQ takes governing command, apply full timeless `SOROK_PRODUCT_CONTROL_ROOM/08_PERENNIAL_FRESH_HQ_FULL_ACCESSION_AND_GROK_PROTOCOL_R1.md`; all 15 source-grain proof sections and 00E needs-first consumer-backward person producer mapping must be demonstrated in isolated candidate dossier then independently judged and user-authorized. `SOROK_PRODUCT_CONTROL_ROOM/prompts/GENERIC_FULL_ACCESSION_NEW_SOROK_HQ_LAUNCH_PROMPT_R1.md` is the reusable launch. Neither model status nor a candidate's PASS grants command; incumbent's scoped decision and precise current read-cut are required. Native V3/CAN/ADP/Pyat/original-source and C11 rights remain separate, no fictive full-project accreditation.
+
+
 ## NEW NON-OPTIONAL WHOLE-PERSON PRODUCER GROK — 00E
 
 This general Rawlsing-to-Sorok HQ qualification MUST pass `SOROK_PRODUCT_CONTROL_ROOM/00E_NEEDS_FIRST_PERSON_PRODUCTION_HQ_GROK_QUALIFICATION_R1.md` after ordinary PRE-MAIN / Pyat / V3 / Sorok inheritance and BEFORE material worker dispensation. Prove backward C12→C0 receiving behavior and concrete creation of historically formed person, independent E1 event→CAN008 RULE_A→CAN011 RULE_T→performed later E2, original-world and actor-limited V2; map each missing function to exact inherited adopted scientific resource, current engine or absent code/wiring/issuer permission. An exact `HOLD` is never itself a design/build plan. Record functional positive/negative/no-effect, build-vs-reuse and actual owner in existing HQ motion and progress. If user is uncertain, HQ investigates; it does not ask the user to design the gap. No new material dispatch on `SOROK_HQ_NEEDS_FIRST_PERSON_PRODUCTION_GROK_INCOMPLETE`. Source/semantic/actor sovereignty unaffected; no automatic new reviewer or interference with active workers.
