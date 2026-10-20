@@ -1,0 +1,138 @@
+{
+  "checkout": "7623742bb9acd113d21de2d4528a1d5a35017989",
+  "invocations": [
+    {
+      "all_severed": true,
+      "invocation": "A",
+      "module": {
+        "file": "rawlsing_next/gt34_u2_v3p1_authenticated_subject_materializer.py",
+        "git_blob": "b0cb39a9a975381f3f3b4a03e7e435b2932e89b9",
+        "module": "rawlsing_next.gt34_u2_v3p1_authenticated_subject_materializer",
+        "sha256": "7afe52891056caab57d037214f14f85d6ca39ea17e3026784c3dffc12dde3c6f"
+      },
+      "positive": {
+        "accepted_owner_root_hash": "1563a1661d3e0a76e6781633f1b590147e26ab21014674bbe732f68cef6acfa8",
+        "adoption_artifact_blob": "f561765bad4fdad2bbf4591f35fe7f81f8486428",
+        "adoption_artifact_blob_content_sha256": "7585a2028c922d6183e9ccc393cd6072579fd8e1eda2b9f91e86a26b27f8ce1c",
+        "integrity_state": "AUTHENTICATED_FRESH_OBL053_ROOT__OWNER_BOUND_INPUT_VERIFIED",
+        "materialization_permit_hash": "3eeea2dcfa0a70f1a5b6ce15d41d9f83d84e39ecde816896150fff21e77573dc",
+        "receipt_hash": "e8bb714f46a12dd1643e71a0e4a209ba3f7253be9d350d212b696146da11807f",
+        "receipt_id": "urn:rawlsing:v3:authenticated-subject-materialization-receipt:sha256:e8bb714f46a12dd1643e71a0e4a209ba3f7253be9d350d212b696146da11807f",
+        "scope": "CURRENT_ACCEPTED_NONACTOR_SUBJECT__NOT_A_PERSON",
+        "semantic_fields_interpreted": false,
+        "semantic_object_bytes_len": 1769,
+        "semantic_object_bytes_sha256": "9a5fbe9a7c272cb2a60e425f09b206f0d25dd2d95caa07028bdb021130c32547",
+        "semantic_object_facts": {
+          "entity_family": "NONACTOR_FACILITY",
+          "facility_domain": "HEALTHCARE_DELIVERY",
+          "facility_form": "CLINIC",
+          "facility_function": "OUTPATIENT_HEALTHCARE_SERVICE_DELIVERY",
+          "ownership_status": "PUBLIC_SECTOR"
+        },
+        "semantic_object_ref": {
+          "kind": "GT34_OBL053_ONE_OBJECT_NONACTOR_SUBJECT_SEMANTIC_OBJECT",
+          "ref_id": "urn:rawlsing:gt34:generated-nonactor-subject-semantic-object:sha256:9a5fbe9a7c272cb2a60e425f09b206f0d25dd2d95caa07028bdb021130c32547",
+          "sha256": "9a5fbe9a7c272cb2a60e425f09b206f0d25dd2d95caa07028bdb021130c32547"
+        },
+        "semantic_owner_transfer": false,
+        "subject_ref": "urn:rawlsing:v3:subject:sha256:a0d7805874dc8449fa81770254a59accde050871aed13501902502e317273f33",
+        "subject_ref_hash": "a0d7805874dc8449fa81770254a59accde050871aed13501902502e317273f33"
+      },
+      "producer": "rawlsing_next.gt34_u2_v3p1_authenticated_subject_materializer.materialize_owner_bound_subject",
+      "severances": [
+        {
+          "edge": "semantic_object_bytes",
+          "expected": "typed refusal, no receipt",
+          "mutation": "append one byte while keeping the adopted object ref",
+          "observed": "SubjectMaterializationError: semantic object bytes/hash mismatch",
+          "positive_absent": true
+        },
+        {
+          "edge": "semantic_owner_authority_id",
+          "expected": "AcceptedOwnerAuthenticationError",
+          "mutation": "replace owner id with PA0_FORGED_OWNER",
+          "observed": "AcceptedOwnerAuthenticationError: semantic owner id mismatch",
+          "positive_absent": true
+        },
+        {
+          "edge": "adopted_root_currentness",
+          "expected": "MaterializationPermitError",
+          "mutation": "use the historical invalid OBL053 adoption blob",
+          "observed": "MaterializationPermitError: permit does not terminate in the current accepted OBL053 root",
+          "positive_absent": true
+        }
+      ]
+    },
+    {
+      "all_severed": true,
+      "invocation": "B",
+      "module": {
+        "file": "rawlsing_next/v3_adp010_oee_executor_authenticated.py",
+        "git_blob": "54d9acba40f0eb1db8bb03aec3c1bb900f849588",
+        "module": "rawlsing_next.v3_adp010_oee_executor_authenticated",
+        "sha256": "d549509da14636ca3c2ab838e069950569b7780c56f2e96452ac4e3ce4287cd9"
+      },
+      "positive": {
+        "actor_ids": [
+          "urn:w2:synthetic:actor:actor"
+        ],
+        "authority": {
+          "id": "V3_OPPORTUNITY_ENCOUNTER_EXPOSURE_REALIZATION_RULE",
+          "registry": "V3_OEE_REALIZATION_RULE_REGISTRY",
+          "version": "1.0.0"
+        },
+        "effect_kinds": [
+          null,
+          "OEE_OPPORTUNITY_ESTABLISHED",
+          "OEE_ENCOUNTER_OCCURRED"
+        ],
+        "encounter_event_id": "urn:rawlsing:v3:oee:event:sha256:57a7a2674b98e925371d95f1d06055b8a667ce6170f8e6e9afa626bd793186f3",
+        "record_hashes": [
+          "0e37b0b52ae95e52b8f57b290a1f9c0917073e1b4e693128a6898baf87318da8",
+          "6374fd784345cc01caa1d561c979662082a3cd1a44e7cdc9d527e20f0e295cdb",
+          "fafe20c3c069384666a08054b58462c7c7e9e57eec5df868db04a0c33d116b04"
+        ],
+        "scope": "NONCURRENT_SYNTHETIC_TEST_ONLY__NOT_NATIVE_ADP010__NOT_A_PERSON",
+        "source_candidate_replay_hashes": [
+          "0986a9e4bd090409c00282b2d085cd4b0ca25174829e079de96dd02a51243e1f",
+          "5d8fc6d65ea40015f6bd549ff790f300c422ddcc096edd08aef8bf5039991c3b",
+          "abd8e5532f3e6747f3a1c12663017e34e201f808a9226acf7a8620811301af06"
+        ],
+        "states": [
+          "AVAILABLE",
+          "OPPORTUNITY",
+          "ENCOUNTER"
+        ],
+        "subject_refs": [
+          "urn:rawlsing:v3:subject:sha256:ddeeedf9926b97f03466ee540abac36f7201b6abd249d947f0edff45c5a91371"
+        ]
+      },
+      "producer": "rawlsing_next.v3_adp010_oee_executor_authenticated._admit_*_noncurrent_for_test",
+      "severances": [
+        {
+          "edge": "contact_occurrence_semantic",
+          "expected": "typed refusal, no ENCOUNTER",
+          "mutation": "replace CONTACT_OCCURRENCE with COLOCATION",
+          "observed": "OEEAdmissionError: contact witness does not assert CONTACT_OCCURRENCE",
+          "positive_absent": true
+        },
+        {
+          "edge": "parent_opportunity_record",
+          "expected": "typed refusal",
+          "mutation": "pass the AVAILABLE record as the OPPORTUNITY parent",
+          "observed": "OEEAdmissionError: expected OPPORTUNITY parent",
+          "positive_absent": true
+        },
+        {
+          "edge": "production CURRENT_ACCEPTED executor",
+          "expected": "typed currentness refusal",
+          "mutation": "present NONCURRENT synthetic subject/actor to the installed production executor",
+          "observed": "OEEAdmissionError: subject currentness must be CURRENT_ACCEPTED",
+          "positive_absent": true
+        }
+      ]
+    }
+  ],
+  "python": "3.11.3",
+  "schema": "SOROK_PA0_SMOKE@1"
+}

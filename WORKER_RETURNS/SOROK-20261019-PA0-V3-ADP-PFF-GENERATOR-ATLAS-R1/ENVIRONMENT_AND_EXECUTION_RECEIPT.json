@@ -1,0 +1,204 @@
+{
+  "schema": "SOROK_PA0_ENVIRONMENT_AND_EXECUTION_RECEIPT@1",
+  "worktree": "isolated local Git worktree",
+  "branch": "agent/rabochii-sorok-20261019-pa0-v3-adp-pff-generator-authority-implementation-atlas-r1",
+  "sealed_startup": "7623742bb9acd113d21de2d4528a1d5a35017989",
+  "checkout_head": "7623742bb9acd113d21de2d4528a1d5a35017989",
+  "model": "DeepSeek V4.1-Flash, reasoning MAX, single agent; no model/harness switch",
+  "harness": "OpenCode (user-selected)",
+  "runtime": {
+    "python": "3.11.3",
+    "python_full": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]",
+    "pytest": "9.1.1",
+    "git": "git version 2.39.1",
+    "sqlite": "3.40.1",
+    "platform": "macOS-13.7.8-x86_64-i386-64bit",
+    "machine": "x86_64"
+  },
+  "capabilities": {
+    "git_object_store": true,
+    "python": true,
+    "pytest": true,
+    "sqlite": true,
+    "subprocess": true,
+    "grep": true,
+    "no_network_needed": true
+  },
+  "source_custody": {
+    "modules": [
+      {
+        "path": "rawlsing_next/gt34_u2_v3p1_authenticated_subject_materializer.py",
+        "git_blob": "b0cb39a9a975381f3f3b4a03e7e435b2932e89b9",
+        "head_ref_blob": "b0cb39a9a975381f3f3b4a03e7e435b2932e89b9",
+        "match": true,
+        "sha256": "7afe52891056caab57d037214f14f85d6ca39ea17e3026784c3dffc12dde3c6f"
+      },
+      {
+        "path": "rawlsing_next/gt34_s2_v3p1_subject_registry_materializer.py",
+        "git_blob": "0ac1df8ef4c91b9004f3ffb8d00fefcadc2980cf",
+        "head_ref_blob": "0ac1df8ef4c91b9004f3ffb8d00fefcadc2980cf",
+        "match": true,
+        "sha256": "a66111401afef3c65dea2f99d2b889655beef8bb680f7bc16ad82cc4929b25c9"
+      },
+      {
+        "path": "rawlsing_next/v3_adp010_oee_executor_authenticated.py",
+        "git_blob": "54d9acba40f0eb1db8bb03aec3c1bb900f849588",
+        "head_ref_blob": "54d9acba40f0eb1db8bb03aec3c1bb900f849588",
+        "match": true,
+        "sha256": "d549509da14636ca3c2ab838e069950569b7780c56f2e96452ac4e3ce4287cd9"
+      },
+      {
+        "path": "rawlsing_next/v3_adp010_oee_executor_obl055_acceptance_bound.py",
+        "git_blob": "fa169dbb525475c17b2495a5b35aa300aa809881",
+        "head_ref_blob": "fa169dbb525475c17b2495a5b35aa300aa809881",
+        "match": true,
+        "sha256": "bc20402140aead70b36d38394c01979c496d980381778e9b5fa5e3225bbf7d23"
+      },
+      {
+        "path": "rawlsing_next/v3_adp010_oee_executor_obl055_replay_canonical.py",
+        "git_blob": "e8c6edab3b310b797997a3826b8acb32f7f08ce9",
+        "head_ref_blob": "e8c6edab3b310b797997a3826b8acb32f7f08ce9",
+        "match": true,
+        "sha256": "aa2090dc08e236f34208b32bb633041f9edd3df493a816952b990736171d41ff"
+      },
+      {
+        "path": "rawlsing_next/v3_adp010_oee_executor_obl055_replay_reconstructed.py",
+        "git_blob": "eb9c91b705a01868d99d3e3a564b611749e028f8",
+        "head_ref_blob": "eb9c91b705a01868d99d3e3a564b611749e028f8",
+        "match": true,
+        "sha256": "df988bde8d099ef80a869d385366503f3f20b772ee6925cd07ddf59c581b6e74"
+      },
+      {
+        "path": "rawlsing_next/v3_psepf_zero_positive_guard.py",
+        "git_blob": "e0528d65215cb431196570c38bac4eae94217a1b",
+        "head_ref_blob": "e0528d65215cb431196570c38bac4eae94217a1b",
+        "match": true,
+        "sha256": "12b2c49f664662cbfe993fc4817751ed9edfff3ce89c44cac489a00cb5e42177"
+      },
+      {
+        "path": "rawlsing_next/wsc_gt0_v3_runtime.py",
+        "git_blob": "6c0494def59fc683241d8bff45bcbd68a25a7f3d",
+        "head_ref_blob": "6c0494def59fc683241d8bff45bcbd68a25a7f3d",
+        "match": true,
+        "sha256": "37cc07ed89920fe21ed7146aaa21eb81d10adcc496df7a86ae0844a6eb40dae7"
+      },
+      {
+        "path": "rawlsing_next/wsc_gt0_v2_mediation.py",
+        "git_blob": "8a040ffd27185aff17ad1e5e30176b6d864c235f",
+        "head_ref_blob": "8a040ffd27185aff17ad1e5e30176b6d864c235f",
+        "match": true,
+        "sha256": "d52b319dff4d722268078e8ee91f583b4b368ec1b63bfaabc1bb446d7a525305"
+      },
+      {
+        "path": "rawlsing_next/wsc_gt0_end_to_end.py",
+        "git_blob": "62b6ea39c605874af6d7aef85693472f88087f57",
+        "head_ref_blob": "62b6ea39c605874af6d7aef85693472f88087f57",
+        "match": true,
+        "sha256": "b9c513e961a417852b610bc9743ace27bd34886788c6a721231696ee8510b83f"
+      },
+      {
+        "path": "rawlsing_next/m6_actor_safe_expression.py",
+        "git_blob": "74d9701cdc7dabccf61eb5089498db290c1efd9c",
+        "head_ref_blob": "74d9701cdc7dabccf61eb5089498db290c1efd9c",
+        "match": true,
+        "sha256": "b8df4e17fdcb4fbc51aae76524fdf3179f322b8ae38b5a52b799f748c64b9662"
+      },
+      {
+        "path": "rawlsing_next/render_bounded_expression.py",
+        "git_blob": "eef88095d1d647b5332aa5186a3a5df218fcf9f8",
+        "head_ref_blob": "eef88095d1d647b5332aa5186a3a5df218fcf9f8",
+        "match": true,
+        "sha256": "4c46593c352e63746acdd45439ec67c38d80919803e6fa7efac991bd9e08bec3"
+      },
+      {
+        "path": "rawlsing_next/m5_runtime_rsc_peer_prior.py",
+        "git_blob": "18735bdb31a220aed032aa722574d685e2bdddf5",
+        "head_ref_blob": "18735bdb31a220aed032aa722574d685e2bdddf5",
+        "match": true,
+        "sha256": "ffac990688f3e4596c129787f236f1c26cf4f38f829c4f9a141fc05b1611e518"
+      },
+      {
+        "path": "rawlsing_next/sdtf_r4_mechanism_rule_authority_binding.py",
+        "git_blob": "c94997f5c7f2bbee9cd99c570554fd48c0f47556",
+        "head_ref_blob": "c94997f5c7f2bbee9cd99c570554fd48c0f47556",
+        "match": true,
+        "sha256": "ab9f2089e4d5470efaeb43d165b3380ce8553c109d7fa5af4a66027683b52c1c"
+      },
+      {
+        "path": "rawlsing_next/sdtf_r4_world_response_redrive.py",
+        "git_blob": "9964a24e25467fa53cc9f5529b6f40be9f11f53a",
+        "head_ref_blob": "9964a24e25467fa53cc9f5529b6f40be9f11f53a",
+        "match": true,
+        "sha256": "63f3dd0f2471c8d2067f83d786049bc84ca2c07e845ca4d001d0df4a58950d58"
+      },
+      {
+        "path": "rawlsing_next/sdtf_r4_d1_hosting_replay.py",
+        "git_blob": "7f5a2f677e60cd4d218737faa61140dddc55cc28",
+        "head_ref_blob": "7f5a2f677e60cd4d218737faa61140dddc55cc28",
+        "match": true,
+        "sha256": "dd79c26b90ab88307c7dda72ba82cc1f7dfdceb2b59eac0ecf84ab8326fe88a6"
+      },
+      {
+        "path": "rawlsing_next/fiabc_derivative_parentage.py",
+        "git_blob": "95d806a709ef4f4a0f33a8bf15b122a721a72e68",
+        "head_ref_blob": "95d806a709ef4f4a0f33a8bf15b122a721a72e68",
+        "match": true,
+        "sha256": "af2c30c5d5f733578eade3876af8cc65513da2513014225a68e5f1ff7e20c5aa"
+      }
+    ],
+    "all_match": true
+  },
+  "executed_courts": [
+    {
+      "suite": "seven-priority-module targeted tests",
+      "files": 7,
+      "result": "154 passed",
+      "exit": 0
+    },
+    {
+      "suite": "broader V3/ADP/WSC/SDTF/PSEPF targeted tests",
+      "files": 14,
+      "result": "249 passed",
+      "exit": 0
+    },
+    {
+      "suite": "PA0 smoke consumer (two invocations, six severances)",
+      "result": "exit 0; all severances typed; no positive under severance",
+      "exit": 0,
+      "receipt": "evidence/smoke_run.json"
+    }
+  ],
+  "smoke_summary": {
+    "checkout": "7623742bb9acd113d21de2d4528a1d5a35017989",
+    "invocations": [
+      {
+        "id": "A",
+        "scope": "CURRENT_ACCEPTED_NONACTOR_SUBJECT__NOT_A_PERSON",
+        "all_severed": true
+      },
+      {
+        "id": "B",
+        "scope": "NONCURRENT_SYNTHETIC_TEST_ONLY__NOT_NATIVE_ADP010__NOT_A_PERSON",
+        "all_severed": true
+      }
+    ]
+  },
+  "negative_finders": {
+    "generated_person_record_python_refs": 0,
+    "developmental_event_ledger_python_refs": 0,
+    "v3_render_context_python_refs": 0,
+    "pff_python_modules": 0
+  },
+  "not_run": [
+    "native C9/C10/C12 positive",
+    "G18 author court",
+    "C9RI independent positive court",
+    "full rawlsing_next test suite",
+    "private user Mac archive",
+    "raw respondent or licensed survey payloads",
+    "any production installation or Pyat mutation"
+  ],
+  "write_scope": "WORKER_RETURNS/SOROK-20261019-PA0-V3-ADP-PFF-GENERATOR-ATLAS-R1/ only",
+  "secrets_or_private_data_used": false,
+  "sanitization": "no tokens, credentials, respondent data or non-repo absolute paths recorded"
+}
