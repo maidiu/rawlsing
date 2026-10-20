@@ -1,0 +1,571 @@
+{
+  "result": {
+    "artifacts": {
+      "anchor_log": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/bp2p4j/WORKER_RETURNS/SOROK-20261020-BP2P4J-ACTUAL-JOINED-ALPHA-R1/evidence/runtime/main/cli_demo/bp2/anchor/rows.json",
+      "anchor_watermark": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/bp2p4j/WORKER_RETURNS/SOROK-20261020-BP2P4J-ACTUAL-JOINED-ALPHA-R1/evidence/runtime/main/cli_demo/bp2/anchor/watermark.json",
+      "as_of": 207,
+      "c8_canonical_bytes_sha256": "c7642ba34162b7d50232162bea4cb5325796e04c3e3c0c3536f856b0e7702e6a",
+      "c8_commit_receipt_id": "43a4259edd9feb23e82846a0dc6ac85cead4e7532ab957c1ccfaba95785d0cee",
+      "c8_content_hash": "8675e3aacd340d66ee977cb1fc6aa995799ed7a6d6fe277816b34ff3781776e2",
+      "c8_identity_digest": "f4227419cbc64e6eb198b3802b044af7472a667e32d6013a0d70ac031dc37ef2",
+      "c8_ledger_prefix_digest": "4effd40390439217910fedb3a15357d1f38bc6fb53ccf24bc2f014df2a7cd7d2",
+      "c8_state_digest": "058d006c1ce79d2783b02a3bb4e2f92d0672aec9b406b5f3312453f9c5608b4b",
+      "c8_writer_version": 1,
+      "c9_authorization_hash": "ab1f281040ebf4b4eda5d2cc324d3878559b62e708d65ea9b1386598ee30ca0b",
+      "c9_commit_receipt_hash": "8b6ecedeb95f74c69995d5cfced7deb90d66578b1126ac8fdb329efea58aef4d",
+      "c9_path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/bp2p4j/WORKER_RETURNS/SOROK-20261020-BP2P4J-ACTUAL-JOINED-ALPHA-R1/evidence/runtime/main/cli_demo/bp2/c9.sqlite",
+      "consumed_state_hash": "09327625e96f7f8a0ab4d2233add2b65b625d8ac200559e0105086616f5d1bfa",
+      "e1_event_hash": "876bc3cfd4479956a729a5495c2decf9005cf3ddcc648f2a917bd7d19b8acd15",
+      "e1_event_id": "TEST_ONLY_BP2_E1_OCC-0001",
+      "e2_receipt_hash": "980bb4e76fbb1aac985b53c8bea318a0e195a917c8074aace9a0afa229c4e3e3",
+      "emission_order": [
+        "BP2_C8_COMMIT",
+        "BP2_C9_TARGET_COMMIT",
+        "BP2_E2_ADMISSION"
+      ],
+      "event_time": 202,
+      "grant_hash": "212d5360dbb5944277a591e0f474db315a309048820730e00ca74c4f5adcf874",
+      "journal_path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/bp2p4j/WORKER_RETURNS/SOROK-20261020-BP2P4J-ACTUAL-JOINED-ALPHA-R1/evidence/runtime/main/cli_demo/bp2/journal/journal.json",
+      "key_id": "BP2-TEST-KEY",
+      "key_path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/bp2p4j/WORKER_RETURNS/SOROK-20261020-BP2P4J-ACTUAL-JOINED-ALPHA-R1/evidence/runtime/main/cli_demo/bp2/keys/writer_keys.json",
+      "later_as_of": 217,
+      "mode": "FRESH",
+      "native_grant": "NOT_GRANTED",
+      "occurrence_id": "OCC-0001",
+      "practice_label": "coordinated_material_inspection",
+      "response_hash": "69f0ceeef8c0df567401d29a354eed87de57a18e0e5b9b0146858f4c0ca05974",
+      "root": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/bp2p4j/WORKER_RETURNS/SOROK-20261020-BP2P4J-ACTUAL-JOINED-ALPHA-R1/evidence/runtime/main/cli_demo/bp2",
+      "rule_a_content_hash": "aa5033ca2b5f6321203652bf32537618fefbde4836ada572404702bef1869574",
+      "rule_t_content_hash": "457894cf45902c8a4db1077bb1d043feef1b9c7bba67ad1e231e19978d1da3cb",
+      "rule_t_dependency_hash": "aa5033ca2b5f6321203652bf32537618fefbde4836ada572404702bef1869574",
+      "schema": "BP2P4J_BP2_ARTIFACT_BINDING@1",
+      "target_id": "9d0871006470e3e41cb872d5824d80dba6f1ebab0a9ba5796ee66f2691277c87",
+      "target_record_hash": "eac2e3509b6123544ba58029cf970344223b225a57421a689bcd117acf777e38"
+    },
+    "c12": {
+      "branch_id": "root",
+      "last_clock": 10
+    },
+    "clock": {
+      "basis": "The BP4 world root is created in the same process only after the BP2 C8 keyed commit, the C9 target commit and the independent E2 admission have been physically verified. The two logical clock domains are never compared numerically; no BP2 time is treated as a BP4 world time or vice versa.",
+      "bp2_domain": "BP2_TEST_ONLY_LOGICAL_CLOCK",
+      "bp2_e2_action_time": 217,
+      "bp2_event_time": 202,
+      "bp2_target_commit_time": 202,
+      "bp4_domain": "BP4_TEST_ONLY_WORLD_CLOCK",
+      "bp4_world_origin_clock": 10,
+      "hold_code": "",
+      "numeric_ordering_used": false,
+      "process_order": [
+        "BP2_C8_COMMIT",
+        "BP2_C9_TARGET_COMMIT",
+        "BP2_E2_ADMISSION",
+        "BP4_SEED_BIND",
+        "BP4_WORLD_ROOT_CREATE"
+      ],
+      "relation": "DECLARED_PROCESS_ORDER_NOT_NUMERIC_COMPARISON"
+    },
+    "custody": {
+      "adp019_admission_receipt": "ADP019_ADMISSION_RECEIPT_ABSENT",
+      "c8_commit_receipt_id": "43a4259edd9feb23e82846a0dc6ac85cead4e7532ab957c1ccfaba95785d0cee",
+      "c8_occurrence_id": "OCC-0001",
+      "c8_state_digest": "058d006c1ce79d2783b02a3bb4e2f92d0672aec9b406b5f3312453f9c5608b4b",
+      "c8_writer_version": 1,
+      "c9_authorization_hash": "ab1f281040ebf4b4eda5d2cc324d3878559b62e708d65ea9b1386598ee30ca0b",
+      "c9_commit_receipt_hash": "8b6ecedeb95f74c69995d5cfced7deb90d66578b1126ac8fdb329efea58aef4d",
+      "clock": {
+        "basis": "The BP4 world root is created in the same process only after the BP2 C8 keyed commit, the C9 target commit and the independent E2 admission have been physically verified. The two logical clock domains are never compared numerically; no BP2 time is treated as a BP4 world time or vice versa.",
+        "bp2_domain": "BP2_TEST_ONLY_LOGICAL_CLOCK",
+        "bp2_e2_action_time": 217,
+        "bp2_event_time": 202,
+        "bp2_target_commit_time": 202,
+        "bp4_domain": "BP4_TEST_ONLY_WORLD_CLOCK",
+        "bp4_world_origin_clock": 10,
+        "hold_code": "",
+        "numeric_ordering_used": false,
+        "process_order": [
+          "BP2_C8_COMMIT",
+          "BP2_C9_TARGET_COMMIT",
+          "BP2_E2_ADMISSION",
+          "BP4_SEED_BIND",
+          "BP4_WORLD_ROOT_CREATE"
+        ],
+        "relation": "DECLARED_PROCESS_ORDER_NOT_NUMERIC_COMPARISON"
+      },
+      "commit_receipt_present": true,
+      "consumed_state_hash": "09327625e96f7f8a0ab4d2233add2b65b625d8ac200559e0105086616f5d1bfa",
+      "e1_event_hash": "876bc3cfd4479956a729a5495c2decf9005cf3ddcc648f2a917bd7d19b8acd15",
+      "e1_event_id": "TEST_ONLY_BP2_E1_OCC-0001",
+      "e2_admitted": true,
+      "e2_receipt_hash": "980bb4e76fbb1aac985b53c8bea318a0e195a917c8074aace9a0afa229c4e3e3",
+      "envelope_validation": {
+        "bp4_contract_status": "AWAITING_ACTUAL_BP2_PRODUCER__COMPAT_CONTRACT_NOT_EMITTED",
+        "e2_receipt_bound": true,
+        "fields_checked": 17,
+        "mode": "FRESH",
+        "ok": true,
+        "recomputed_from_artifacts": true,
+        "schema": "BP2_JOINED_EVENT_HISTORY_TARGET_E2_ENVELOPE@1",
+        "target_digest_equal_consumed": true
+      },
+      "grade": "TEST_ONLY_SOURCEFREE_BP2P4J_SEED_NOT_NATIVE",
+      "grant_hash": "212d5360dbb5944277a591e0f474db315a309048820730e00ca74c4f5adcf874",
+      "mode": "FRESH",
+      "native": false,
+      "native_grants": {
+        "actor": false,
+        "adp019": false,
+        "c11": false,
+        "c12": false,
+        "c8_trust": false,
+        "e2": false,
+        "rule": false,
+        "world": false
+      },
+      "practice": {
+        "e2_receipt_hash": "980bb4e76fbb1aac985b53c8bea318a0e195a917c8074aace9a0afa229c4e3e3",
+        "effective_from": 202,
+        "established": true,
+        "grade": "TEST_ONLY_SOURCEFREE_TECHNICAL",
+        "native": false,
+        "performed_act": "inspect_with_tool",
+        "practice_label": "coordinated_material_inspection",
+        "source_target_ref": "eac2e3509b6123544ba58029cf970344223b225a57421a689bcd117acf777e38"
+      },
+      "response_hash": "69f0ceeef8c0df567401d29a354eed87de57a18e0e5b9b0146858f4c0ca05974",
+      "response_row_present": true,
+      "rule_a_content_hash": "aa5033ca2b5f6321203652bf32537618fefbde4836ada572404702bef1869574",
+      "rule_t_content_hash": "457894cf45902c8a4db1077bb1d043feef1b9c7bba67ad1e231e19978d1da3cb",
+      "rule_t_dependency_hash": "aa5033ca2b5f6321203652bf32537618fefbde4836ada572404702bef1869574",
+      "schema": "BP2P4J_JOINED_SEED@1",
+      "target_id": "9d0871006470e3e41cb872d5824d80dba6f1ebab0a9ba5796ee66f2691277c87",
+      "target_journal_present": true,
+      "target_record_hash": "eac2e3509b6123544ba58029cf970344223b225a57421a689bcd117acf777e38"
+    },
+    "envelope": {
+      "hash": "8b6fca2fd38c8c390eb2407bfa7de34f64c803aef3b2725baf77935546afd1ee",
+      "producer": {
+        "mode": "FRESH",
+        "module": "bp2_joined.producer.JoinedProducer",
+        "name": "BP2_JOINED_PRODUCER",
+        "named_assertion": "bp2_joined.producer.joined_consumer_assertion",
+        "return_commit": "5065e2e6934e9d5bca800cbf88c79e461bcf2393"
+      },
+      "schema": "BP2_JOINED_EVENT_HISTORY_TARGET_E2_ENVELOPE@1",
+      "validation": {
+        "bp4_contract_status": "AWAITING_ACTUAL_BP2_PRODUCER__COMPAT_CONTRACT_NOT_EMITTED",
+        "e2_receipt_bound": true,
+        "fields_checked": 17,
+        "mode": "FRESH",
+        "ok": true,
+        "recomputed_from_artifacts": true,
+        "schema": "BP2_JOINED_EVENT_HISTORY_TARGET_E2_ENVELOPE@1",
+        "target_digest_equal_consumed": true
+      }
+    },
+    "grade": "TEST_ONLY_SOURCEFREE_JOINED_PRODUCT_ALPHA_NOT_NATIVE",
+    "native": false,
+    "native_grants": {
+      "actor": false,
+      "adp019": false,
+      "c11": false,
+      "c12": false,
+      "c8_trust": false,
+      "e2": false,
+      "rule": false,
+      "world": false
+    },
+    "practice": {
+      "e2_receipt_hash": "980bb4e76fbb1aac985b53c8bea318a0e195a917c8074aace9a0afa229c4e3e3",
+      "effective_from": 202,
+      "established": true,
+      "grade": "TEST_ONLY_SOURCEFREE_TECHNICAL",
+      "native": false,
+      "performed_act": "inspect_with_tool",
+      "practice_label": "coordinated_material_inspection",
+      "source_target_ref": "eac2e3509b6123544ba58029cf970344223b225a57421a689bcd117acf777e38"
+    },
+    "schema": "BP2P4J_JOINED_SOURCE@1",
+    "world": {
+      "clock": 10,
+      "hash": "726ccd9276b2e071a08cd4c8e2acc17e627ded7663ea2b5d47bdd8cb337bb8c0",
+      "tool_available": true
+    }
+  },
+  "step": "SOURCE"
+}
+{
+  "result": {
+    "actor": "A",
+    "branch_id": "root",
+    "c10_receipt": {
+      "actor_as_of": 201,
+      "actor_id": "A",
+      "actor_source_grade": "SOURCEFREE_FIXTURE_ACTOR_NOT_NATIVE",
+      "branch_id": "root",
+      "c8_occurrence_count": 1,
+      "c8_state_digest": "058d006c1ce79d2783b02a3bb4e2f92d0672aec9b406b5f3312453f9c5608b4b",
+      "c8_writer_version": 1,
+      "c9_e2_admitted": true,
+      "c9_target_commit_time": 202,
+      "c9_target_id": "9d0871006470e3e41cb872d5824d80dba6f1ebab0a9ba5796ee66f2691277c87",
+      "grade": "TEST_ONLY_SOURCEFREE_C10_NOT_NATIVE",
+      "native": false,
+      "objective_world_clock": 10,
+      "receipt_hash": "da4ddc526e6e4fb0cc49505b8b499fdda87cb945ae080eac029a6e3ec3ae1c69",
+      "schema": "BP4_C10_COUPLED_RECEIVER@1",
+      "v2_claim_count": 1,
+      "world_grade": "TEST_ONLY_SOURCEFREE_WORLD_NOT_NATIVE"
+    },
+    "c8": {
+      "occurrence_count": 1,
+      "state_digest": "058d006c1ce79d2783b02a3bb4e2f92d0672aec9b406b5f3312453f9c5608b4b",
+      "writer_version": 1
+    },
+    "c9": {
+      "e2_admitted": true,
+      "state_hash": "09327625e96f7f8a0ab4d2233add2b65b625d8ac200559e0105086616f5d1bfa",
+      "target_commit_time": 202,
+      "target_id": "9d0871006470e3e41cb872d5824d80dba6f1ebab0a9ba5796ee66f2691277c87"
+    },
+    "claims": [
+      {
+        "claim_hash": "afc33ad31b1fc95827f7c4ab14e77bccd11e954071338b473edbeccb0d7e1d34",
+        "clock": 10,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_e8ef27fc37b15575b8b2da8e65b49f456d020d220175b29445994c4aee64d787",
+        "kind": "ARRIVAL",
+        "m6_permission": "PERMIT_FIRST_PERSON_KNOWLEDGE",
+        "m6_receiver_state": "READY_FULL_CLAIM_SCOPE",
+        "summary": "The finishing worker is already at the workshop bench."
+      }
+    ],
+    "clock": 10,
+    "grade": "TEST_ONLY_SOURCEFREE_PRODUCT_ALPHA_NOT_NATIVE",
+    "native": false,
+    "native_claims": {
+      "actor": false,
+      "c11": false,
+      "c12": false,
+      "c8_trust": false,
+      "rule": false,
+      "world": false
+    },
+    "note": "TEST_ONLY sourcefree technical alpha; not a native generated person.",
+    "others_present": [
+      {
+        "actor": "B",
+        "public_role": "finishing"
+      }
+    ],
+    "schema": "BP4_A0_A3_PRODUCT@1",
+    "self": {
+      "history_hash": "dd7234edf12a069d69d1a4d940f59bf723aa15db7f35c40d801461cd6ab5e0ee",
+      "position": "workshop",
+      "state": {
+        "cash": 55,
+        "completed_units": 4,
+        "debt_units": 2,
+        "free_hours": 12,
+        "material_remaining": 2,
+        "projects": [
+          {
+            "actor_id": "TEST_ONLY_BP1_ACTOR_A",
+            "e2_receipt_hash": "980bb4e76fbb1aac985b53c8bea318a0e195a917c8074aace9a0afa229c4e3e3",
+            "effective_from": 202,
+            "grade": "TEST_ONLY_SOURCEFREE_TECHNICAL",
+            "native": false,
+            "performed_act": "inspect_with_tool",
+            "practice_label": "coordinated_material_inspection",
+            "source_target_ref": "eac2e3509b6123544ba58029cf970344223b225a57421a689bcd117acf777e38"
+          }
+        ],
+        "role": "repair",
+        "skill": 6,
+        "tools_remaining": 1
+      }
+    },
+    "status": "OK",
+    "v2_state": "READY"
+  },
+  "step": "A0"
+}
+{
+  "result": {
+    "admitted": true,
+    "attempted": true,
+    "clock": 10,
+    "event_id": "TEST_ONLY_BP4_WORLD_EVT_7daed8f0b474efe49d7813877807fa6cfc521ae972187858587ac3879ea7fe0a",
+    "grade": "TEST_ONLY_SOURCEFREE_PRODUCT_ALPHA_NOT_NATIVE",
+    "native": false,
+    "observable_by": [
+      "A",
+      "B"
+    ],
+    "status": "OK"
+  },
+  "step": "A1_SAY"
+}
+{
+  "result": {
+    "changed": false,
+    "clock": 10,
+    "event_id": "TEST_ONLY_BP4_WORLD_EVT_3b6d9ac232f8cd8d30583be2910bb1dc70794fc26c21b39f8f758af88474524f",
+    "status": "NO_CHANGE"
+  },
+  "step": "A1_DO_INSPECT"
+}
+{
+  "result": {
+    "actor_state": {
+      "actor_id": "TEST_ONLY_BP1_ACTOR_A",
+      "attitudes": [
+        "reciprocity_in_work_obligations"
+      ],
+      "availability_status": "available_for_encounter",
+      "cash": 57,
+      "completed_units": 5,
+      "debt_units": 2,
+      "free_hours": 11,
+      "health": "recovered",
+      "material_position": "waged_repair",
+      "material_remaining": 1,
+      "nonmother_relations": [
+        "G15_NONKIN_e284ae4306e43444d26d0646abf5076fa63ba096b1db426b84f20628c9a1b87a"
+      ],
+      "place": "INST_WORKSHOP_A",
+      "practices": [
+        "scheduled_repair_ledger_discipline"
+      ],
+      "projects": [
+        {
+          "actor_id": "TEST_ONLY_BP1_ACTOR_A",
+          "e2_receipt_hash": "980bb4e76fbb1aac985b53c8bea318a0e195a917c8074aace9a0afa229c4e3e3",
+          "effective_from": 202,
+          "grade": "TEST_ONLY_SOURCEFREE_TECHNICAL",
+          "native": false,
+          "performed_act": "inspect_with_tool",
+          "practice_label": "coordinated_material_inspection",
+          "source_target_ref": "eac2e3509b6123544ba58029cf970344223b225a57421a689bcd117acf777e38"
+        }
+      ],
+      "role": "repair",
+      "skill": 6,
+      "tools_remaining": 1
+    },
+    "admitted": true,
+    "attempted": true,
+    "clock": 10,
+    "event_id": "TEST_ONLY_BP4_WORLD_EVT_8fc00bb01ff48007bfd181440f6c3747c2ec6b1549484d1bc2dc6da2d133b3c6",
+    "status": "OK"
+  },
+  "step": "A1_DO_REPAIR"
+}
+{
+  "result": {
+    "changed": true,
+    "clock": 40,
+    "offscreen_events": [
+      "TEST_ONLY_BP4_WORLD_EVT_6d3c77579b1fd4248afb1713067e940e1503218b0e2db920838c5d08445dc435",
+      "TEST_ONLY_BP4_WORLD_EVT_766f567bfeaf08b05c821c0450a1b9402e0916158d805d0dfc9ef71af042997e"
+    ],
+    "status": "OK"
+  },
+  "step": "A2_WAIT"
+}
+{
+  "result": {
+    "branch_id": "root",
+    "clock": 40,
+    "grade": "TEST_ONLY_SOURCEFREE_PRODUCT_ALPHA_NOT_NATIVE",
+    "native": false,
+    "other_actor": "B",
+    "private_fields_hidden": [
+      "cash",
+      "material_remaining",
+      "free_hours",
+      "debt_units"
+    ],
+    "public": {
+      "completed_units": 4,
+      "position": "market",
+      "public_work_events": [
+        "TEST_ONLY_BP4_WORLD_EVT_766f567bfeaf08b05c821c0450a1b9402e0916158d805d0dfc9ef71af042997e"
+      ],
+      "role": "finishing"
+    },
+    "schema": "BP4_A0_A3_PRODUCT@1",
+    "status": "OK"
+  },
+  "step": "A3_OTHER"
+}
+{
+  "result": {
+    "admitted": true,
+    "clock": 40,
+    "event_id": "TEST_ONLY_BP4_WORLD_EVT_deece046749ee6b98699004062748b2e9e36dc5ea9065026ab702ab2386aff6f",
+    "position": "market",
+    "status": "OK"
+  },
+  "step": "A2_TRAVEL"
+}
+{
+  "result": {
+    "changed": false,
+    "clock": 40,
+    "new_knowledge": [
+      "TEST_ONLY_BP4_WORLD_EVT_6d3c77579b1fd4248afb1713067e940e1503218b0e2db920838c5d08445dc435",
+      "TEST_ONLY_BP4_WORLD_EVT_766f567bfeaf08b05c821c0450a1b9402e0916158d805d0dfc9ef71af042997e"
+    ],
+    "status": "NO_CHANGE"
+  },
+  "step": "A2_ATTEND"
+}
+{
+  "result": {
+    "actor": "A",
+    "branch_id": "root",
+    "c10_receipt": {
+      "actor_as_of": 201,
+      "actor_id": "A",
+      "actor_source_grade": "SOURCEFREE_FIXTURE_ACTOR_NOT_NATIVE",
+      "branch_id": "root",
+      "c8_occurrence_count": 1,
+      "c8_state_digest": "058d006c1ce79d2783b02a3bb4e2f92d0672aec9b406b5f3312453f9c5608b4b",
+      "c8_writer_version": 1,
+      "c9_e2_admitted": true,
+      "c9_target_commit_time": 202,
+      "c9_target_id": "9d0871006470e3e41cb872d5824d80dba6f1ebab0a9ba5796ee66f2691277c87",
+      "grade": "TEST_ONLY_SOURCEFREE_C10_NOT_NATIVE",
+      "native": false,
+      "objective_world_clock": 40,
+      "receipt_hash": "74678f4170080c5d10dabb1ac37c8e0d7a4cc79ec3d5863c58f728052428d868",
+      "schema": "BP4_C10_COUPLED_RECEIVER@1",
+      "v2_claim_count": 7,
+      "world_grade": "TEST_ONLY_SOURCEFREE_WORLD_NOT_NATIVE"
+    },
+    "c8": {
+      "occurrence_count": 1,
+      "state_digest": "058d006c1ce79d2783b02a3bb4e2f92d0672aec9b406b5f3312453f9c5608b4b",
+      "writer_version": 1
+    },
+    "c9": {
+      "e2_admitted": true,
+      "state_hash": "09327625e96f7f8a0ab4d2233add2b65b625d8ac200559e0105086616f5d1bfa",
+      "target_commit_time": 202,
+      "target_id": "9d0871006470e3e41cb872d5824d80dba6f1ebab0a9ba5796ee66f2691277c87"
+    },
+    "claims": [
+      {
+        "claim_hash": "afc33ad31b1fc95827f7c4ab14e77bccd11e954071338b473edbeccb0d7e1d34",
+        "clock": 10,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_e8ef27fc37b15575b8b2da8e65b49f456d020d220175b29445994c4aee64d787",
+        "kind": "ARRIVAL",
+        "m6_permission": "PERMIT_FIRST_PERSON_KNOWLEDGE",
+        "m6_receiver_state": "READY_FULL_CLAIM_SCOPE",
+        "summary": "The finishing worker is already at the workshop bench."
+      },
+      {
+        "claim_hash": "36e2cc817e3254f5a616cee176d1db6335fc71f96aa4855e7e9a575418727378",
+        "clock": 10,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_7daed8f0b474efe49d7813877807fa6cfc521ae972187858587ac3879ea7fe0a",
+        "kind": "SPEECH",
+        "m6_permission": "PERMIT_FIRST_PERSON_KNOWLEDGE",
+        "m6_receiver_state": "READY_FULL_CLAIM_SCOPE",
+        "summary": "A says: I am here about the bench."
+      },
+      {
+        "claim_hash": "5c5c274501074e1848dee9b01d74e222d37a26686b57edbdbad2c748ce664db1",
+        "clock": 10,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_3b6d9ac232f8cd8d30583be2910bb1dc70794fc26c21b39f8f758af88474524f",
+        "kind": "INSPECT",
+        "m6_permission": "PERMIT_FIRST_PERSON_KNOWLEDGE",
+        "m6_receiver_state": "READY_FULL_CLAIM_SCOPE",
+        "summary": "The actor inspects the present material but changes nothing."
+      },
+      {
+        "claim_hash": "3c1b7b956d011e25708e076241e3be1deaec22ac15ac7bbbf7e7f95ffa363535",
+        "clock": 10,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_8fc00bb01ff48007bfd181440f6c3747c2ec6b1549484d1bc2dc6da2d133b3c6",
+        "kind": "REPAIR",
+        "m6_permission": "PERMIT_FIRST_PERSON_KNOWLEDGE",
+        "m6_receiver_state": "READY_FULL_CLAIM_SCOPE",
+        "summary": "A material repair is performed in the workshop."
+      },
+      {
+        "claim_hash": "3d7416b44b607721c39ffb4e02a6e526377cf56d2cc3d40094b884df70c9a631",
+        "clock": 40,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_6d3c77579b1fd4248afb1713067e940e1503218b0e2db920838c5d08445dc435",
+        "kind": "MOVE",
+        "m6_permission": "PERMIT_FIRST_PERSON_KNOWLEDGE",
+        "m6_receiver_state": "READY_FULL_CLAIM_SCOPE",
+        "summary": "The finishing worker takes the completed pieces to the market."
+      },
+      {
+        "claim_hash": "05036d9b7342177bf4bd659973f52b4309e9d0f640093e1e9249c5f685e540ef",
+        "clock": 40,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_766f567bfeaf08b05c821c0450a1b9402e0916158d805d0dfc9ef71af042997e",
+        "kind": "OFFSCREEN_REPAIR",
+        "m6_permission": "PERMIT_FIRST_PERSON_KNOWLEDGE",
+        "m6_receiver_state": "READY_FULL_CLAIM_SCOPE",
+        "summary": "A market stall is refurbished while the user is away."
+      },
+      {
+        "claim_hash": "a2bd99d3df6f43b4aa7f5254131ff92cb3e12ff10782026a2ddf37f91d8236b8",
+        "clock": 40,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_deece046749ee6b98699004062748b2e9e36dc5ea9065026ab702ab2386aff6f",
+        "kind": "MOVE",
+        "m6_permission": "PERMIT_FIRST_PERSON_KNOWLEDGE",
+        "m6_receiver_state": "READY_FULL_CLAIM_SCOPE",
+        "summary": "A moves to market."
+      }
+    ],
+    "clock": 40,
+    "grade": "TEST_ONLY_SOURCEFREE_PRODUCT_ALPHA_NOT_NATIVE",
+    "native": false,
+    "native_claims": {
+      "actor": false,
+      "c11": false,
+      "c12": false,
+      "c8_trust": false,
+      "rule": false,
+      "world": false
+    },
+    "note": "TEST_ONLY sourcefree technical alpha; not a native generated person.",
+    "others_present": [
+      {
+        "actor": "B",
+        "public_role": "finishing"
+      }
+    ],
+    "schema": "BP4_A0_A3_PRODUCT@1",
+    "self": {
+      "history_hash": "dd7234edf12a069d69d1a4d940f59bf723aa15db7f35c40d801461cd6ab5e0ee",
+      "position": "market",
+      "state": {
+        "cash": 57,
+        "completed_units": 5,
+        "debt_units": 2,
+        "free_hours": 11,
+        "material_remaining": 1,
+        "projects": [
+          {
+            "actor_id": "TEST_ONLY_BP1_ACTOR_A",
+            "e2_receipt_hash": "980bb4e76fbb1aac985b53c8bea318a0e195a917c8074aace9a0afa229c4e3e3",
+            "effective_from": 202,
+            "grade": "TEST_ONLY_SOURCEFREE_TECHNICAL",
+            "native": false,
+            "performed_act": "inspect_with_tool",
+            "practice_label": "coordinated_material_inspection",
+            "source_target_ref": "eac2e3509b6123544ba58029cf970344223b225a57421a689bcd117acf777e38"
+          }
+        ],
+        "role": "repair",
+        "skill": 6,
+        "tools_remaining": 1
+      }
+    },
+    "status": "OK",
+    "v2_state": "READY"
+  },
+  "step": "A2_REENTRY"
+}

@@ -1,0 +1,61 @@
+{
+  "rows": [
+    {
+      "dimension": "source",
+      "native": "Pyat source-qualified world",
+      "owner": "Pyat HQ",
+      "status": "HOLD",
+      "test_only": "BP1 fixture actors + G18 material receipts"
+    },
+    {
+      "dimension": "actor",
+      "native": "ADP007 genesis + ADP015 other",
+      "owner": "ADP007/ADP015",
+      "status": "HOLD",
+      "test_only": "two distinct TEST_ONLY_BP1 actor histories"
+    },
+    {
+      "dimension": "event",
+      "native": "ADP019 admitted occurrence",
+      "owner": "ADP019",
+      "status": "HOLD",
+      "test_only": "TEST_ONLY C8 occurrence + TEST_ONLY E1"
+    },
+    {
+      "dimension": "rule",
+      "native": "issued RULE_A and RULE_T/grant",
+      "owner": "CAN008/CAN011",
+      "status": "HOLD",
+      "test_only": "TEST_ONLY CAN008/CAN011 rules"
+    },
+    {
+      "dimension": "performer",
+      "native": "native actuator/occurrence owner",
+      "owner": "action owner",
+      "status": "HOLD",
+      "test_only": "TEST_ONLY_ACTUATOR_BP2_INDEPENDENT"
+    },
+    {
+      "dimension": "clock",
+      "native": "trusted time and source-authorized as-of",
+      "owner": "C8/ADP019",
+      "status": "HOLD",
+      "test_only": "two declared logical domains with process-order bridge"
+    },
+    {
+      "dimension": "writer",
+      "native": "C8 D1 cutover and D2 KMS/anchor",
+      "owner": "C8 D1/D2",
+      "status": "HOLD",
+      "test_only": "TEST_ONLY HMAC key + path-bound journal"
+    },
+    {
+      "dimension": "person",
+      "native": "pipeline-generated C12 person",
+      "owner": "C11/C12",
+      "status": "HOLD",
+      "test_only": "C12 technical continuation over TEST_ONLY state"
+    }
+  ],
+  "schema": "BP2P4J_SOURCE_ACTOR_PERFORMER_CLOCK_GAP@1"
+}

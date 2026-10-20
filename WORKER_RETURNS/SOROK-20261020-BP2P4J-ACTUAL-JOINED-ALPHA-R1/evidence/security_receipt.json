@@ -1,0 +1,67 @@
+{
+  "c12_db_path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/bp2p4j/WORKER_RETURNS/SOROK-20261020-BP2P4J-ACTUAL-JOINED-ALPHA-R1/evidence/runtime/main/security/c12.sqlite",
+  "chain_digest_before_attack": "feb5c9334cd845950a56f04bfc44dc879f78761112a5828293f647d98443a1f8",
+  "closed_in_candidate": [
+    "shape-valid envelope with unbacked BP2 identities refused",
+    "native-smuggling envelope refused",
+    "self-actuator and self-occurrence E2 refused",
+    "forged world owner receipt refused",
+    "C12 append-only triggers refuse UPDATE/DELETE",
+    "retroactive and future-child rows refused",
+    "forged actor perception caught by the same A0/A2 assertion",
+    "BP4 C10 refuses a tampered sealed target preimage"
+  ],
+  "independent_chain_verify": {
+    "branch_id": "root",
+    "counts": {
+      "checkpoint": 2,
+      "episode": 1,
+      "perception": 4,
+      "world_event": 2
+    },
+    "errors": [
+      "episode:0:body_hash_mismatch"
+    ],
+    "ok": false
+  },
+  "schema": "BP2P4J_SECURITY_RECEIPT@1",
+  "typed_residuals": [
+    "raw SQLite access can DROP the C12 append-only trigger and delete rows; remaining rows stay valid and completeness is only detectable against an out-of-band chain digest",
+    "BP4 C12Store.verify recomputes digest(body) including the body hash, so it reports false errors on intact rows; this return verifies independently",
+    "BP2 C8 key/anchor remain TEST_ONLY fixtures, not production KMS",
+    "no ADP019 admission, native rule, native E2 or native actor"
+  ],
+  "upstream_verify_defect": {
+    "agrees": true,
+    "independent_verify": {
+      "branch_id": "root",
+      "counts": {
+        "checkpoint": 2,
+        "episode": 1,
+        "perception": 4,
+        "world_event": 2
+      },
+      "errors": [
+        "episode:0:body_hash_mismatch"
+      ],
+      "ok": false
+    },
+    "upstream_defect": "BP4 C12Store.verify recomputes digest(body) including the body's own hash field; the rows were written as digest(body without hash).",
+    "upstream_verify": {
+      "counts": {
+        "checkpoints": 2,
+        "episodes": 1,
+        "perceptions": 4,
+        "world_events": 2
+      },
+      "errors": [
+        "episode:0",
+        "world_event:0",
+        "world_event:1",
+        "checkpoint:0",
+        "checkpoint:1"
+      ],
+      "ok": false
+    }
+  }
+}

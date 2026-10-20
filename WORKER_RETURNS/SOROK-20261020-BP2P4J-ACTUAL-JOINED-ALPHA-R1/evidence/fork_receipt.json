@@ -1,0 +1,56 @@
+{
+  "divergent": true,
+  "fork": {
+    "branch": {
+      "actor_ids": [
+        "A",
+        "B"
+      ],
+      "branch_id": "branch_leave",
+      "created_clock": 10,
+      "fork_clock": 10,
+      "parent_branch_id": "root",
+      "root_counts": {
+        "checkpoint": 2,
+        "episode": 1,
+        "perception": 4,
+        "world_event": 2
+      },
+      "root_hash": "2a4682a25ceb9a433015c79b42a282a72cb5344ad9cbb54b0c6987279c097749"
+    },
+    "shared_root": {
+      "detail": {
+        "checkpoint": {
+          "count": 2,
+          "equal": true
+        },
+        "episode": {
+          "count": 1,
+          "equal": true
+        },
+        "perception": {
+          "count": 4,
+          "equal": true
+        },
+        "world_event": {
+          "count": 2,
+          "equal": true
+        }
+      },
+      "equal": true,
+      "fork_clock": 10,
+      "mode": "parent_child"
+    },
+    "status": "OK"
+  },
+  "leave_branch_completed_units": 4,
+  "leave_public_events": [
+    "TEST_ONLY_BP4_WORLD_EVT_324b154fd7cc0e3e5c8c662e535300bf9311c1e39f146b23e31f7a0d979929cd"
+  ],
+  "schema": "BP2P4J_FORK@1",
+  "shared_root_equal": true,
+  "take_branch_completed_units": 3,
+  "take_public_events": [
+    "TEST_ONLY_BP4_WORLD_EVT_6dfd2d700c69638b3fcbc6942af16b86d23278e4122e2fc9958018379f4cce70"
+  ]
+}

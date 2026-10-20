@@ -1,0 +1,48 @@
+{
+  "declared_bridge": {
+    "basis": "The BP4 world root is created in the same process only after the BP2 C8 keyed commit, the C9 target commit and the independent E2 admission have been physically verified. The two logical clock domains are never compared numerically; no BP2 time is treated as a BP4 world time or vice versa.",
+    "bp2_domain": "BP2_TEST_ONLY_LOGICAL_CLOCK",
+    "bp2_e2_action_time": 217,
+    "bp2_event_time": 202,
+    "bp2_target_commit_time": 202,
+    "bp4_domain": "BP4_TEST_ONLY_WORLD_CLOCK",
+    "bp4_world_origin_clock": 10,
+    "hold_code": "",
+    "numeric_ordering_used": false,
+    "process_order": [
+      "BP2_C8_COMMIT",
+      "BP2_C9_TARGET_COMMIT",
+      "BP2_E2_ADMISSION",
+      "BP4_SEED_BIND",
+      "BP4_WORLD_ROOT_CREATE"
+    ],
+    "relation": "DECLARED_PROCESS_ORDER_NOT_NUMERIC_COMPARISON"
+  },
+  "domains": {
+    "bp2": {
+      "authority": "TEST_ONLY_FIXTURE_CLOCK_NOT_TRUSTED_TIME",
+      "e2_action_time": 217,
+      "event_time": 202,
+      "name": "BP2_TEST_ONLY_LOGICAL_CLOCK",
+      "target_commit_time": 202
+    },
+    "bp4": {
+      "authority": "TEST_ONLY_SOURCEFREE_WORLD_CLOCK",
+      "name": "BP4_TEST_ONLY_WORLD_CLOCK",
+      "offscreen_event_clock": 40,
+      "origin": 10
+    }
+  },
+  "literal_origin_present": true,
+  "numeric_ordering_used": false,
+  "process_order": [
+    "BP2_C8_COMMIT",
+    "BP2_C9_TARGET_COMMIT",
+    "BP2_E2_ADMISSION",
+    "BP4_SEED_BIND",
+    "BP4_WORLD_ROOT_CREATE"
+  ],
+  "relation": "DECLARED_PROCESS_ORDER_NOT_NUMERIC_COMPARISON",
+  "schema": "BP2P4J_CLOCK_DOCKET@1",
+  "time_coordinate_hold": "an existing C12 root without the post-BP2 world-root marker is refused with TIME_COORDINATE_HOLD"
+}

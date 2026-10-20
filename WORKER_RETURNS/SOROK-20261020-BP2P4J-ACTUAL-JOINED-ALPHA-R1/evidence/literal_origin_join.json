@@ -1,0 +1,404 @@
+{
+  "assertion_receipt": {
+    "a0": {
+      "claim_hashes": [
+        "afc33ad31b1fc95827f7c4ab14e77bccd11e954071338b473edbeccb0d7e1d34"
+      ],
+      "claims": [
+        "ARRIVAL"
+      ],
+      "clock": 10,
+      "position": "workshop",
+      "projects": [
+        {
+          "actor_id": "TEST_ONLY_BP1_ACTOR_A",
+          "e2_receipt_hash": "19349fd6fded91f222d50ef5774deab1203619c390fb554e2bd4970e9c7f05aa",
+          "effective_from": 202,
+          "grade": "TEST_ONLY_SOURCEFREE_TECHNICAL",
+          "native": false,
+          "performed_act": "inspect_with_tool",
+          "practice_label": "coordinated_material_inspection",
+          "source_target_ref": "8d784d48096f4d32d0df3d7c659a23b501681877a948580e0c0150ac60efcd3e"
+        }
+      ],
+      "tools_remaining": 1
+    },
+    "a1": {
+      "inspect": {
+        "changed": false,
+        "clock": 10,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_3b6d9ac232f8cd8d30583be2910bb1dc70794fc26c21b39f8f758af88474524f",
+        "status": "NO_CHANGE"
+      },
+      "say": {
+        "admitted": true,
+        "attempted": true,
+        "clock": 10,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_7daed8f0b474efe49d7813877807fa6cfc521ae972187858587ac3879ea7fe0a",
+        "grade": "TEST_ONLY_SOURCEFREE_PRODUCT_ALPHA_NOT_NATIVE",
+        "native": false,
+        "observable_by": [
+          "A",
+          "B"
+        ],
+        "status": "OK"
+      }
+    },
+    "a2": {
+      "attend": {
+        "changed": false,
+        "clock": 40,
+        "new_knowledge": [
+          "TEST_ONLY_BP4_WORLD_EVT_5cdf3a5cbddb18d8ebbb51d0f4bf0759bd79f356de64e27ef2b822482f09269d",
+          "TEST_ONLY_BP4_WORLD_EVT_324b154fd7cc0e3e5c8c662e535300bf9311c1e39f146b23e31f7a0d979929cd"
+        ],
+        "status": "NO_CHANGE"
+      },
+      "m6_hidden_before_attend": {
+        "code": "NO_ACTOR_PERCEPTION",
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_324b154fd7cc0e3e5c8c662e535300bf9311c1e39f146b23e31f7a0d979929cd",
+        "state": "NONRENDERABLE"
+      },
+      "offscreen_event_hash": "bdd9ec323ff19154673fcc8bb86d2a3dd74c0680432decb3dcf2ca25ce410984",
+      "offscreen_event_id": "TEST_ONLY_BP4_WORLD_EVT_324b154fd7cc0e3e5c8c662e535300bf9311c1e39f146b23e31f7a0d979929cd",
+      "other_completed_units": 4,
+      "reentry_claim_hashes": {
+        "ARRIVAL": "afc33ad31b1fc95827f7c4ab14e77bccd11e954071338b473edbeccb0d7e1d34",
+        "INSPECT": "5c5c274501074e1848dee9b01d74e222d37a26686b57edbdbad2c748ce664db1",
+        "MOVE": "45da3ce73235d37332eb5acaa9c474b102c306be7732d40f318562f3f4d5cf5c",
+        "OFFSCREEN_REPAIR": "897b83fd70fff86ba8e9a3d0dca6df0a6c8bdff82e3dd8c1fd94bf3c4725f8de",
+        "SPEECH": "36e2cc817e3254f5a616cee176d1db6335fc71f96aa4855e7e9a575418727378"
+      },
+      "reentry_claim_kinds": [
+        "ARRIVAL",
+        "SPEECH",
+        "INSPECT",
+        "MOVE",
+        "OFFSCREEN_REPAIR",
+        "MOVE"
+      ],
+      "reentry_target": "950a4c7903cbe832c72d234a0095946720910c23c8235a28c3118afd8fc1b9f8",
+      "travel": {
+        "admitted": true,
+        "clock": 40,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_67c543d3fd3f6194679660dd3ab2403484d82fb93dbb3d4adbf98c5e4b8f9f89",
+        "position": "market",
+        "status": "OK"
+      },
+      "wait": {
+        "changed": true,
+        "clock": 40,
+        "offscreen_events": [
+          "TEST_ONLY_BP4_WORLD_EVT_5cdf3a5cbddb18d8ebbb51d0f4bf0759bd79f356de64e27ef2b822482f09269d",
+          "TEST_ONLY_BP4_WORLD_EVT_324b154fd7cc0e3e5c8c662e535300bf9311c1e39f146b23e31f7a0d979929cd"
+        ],
+        "status": "OK"
+      }
+    },
+    "assertion": "bp2p4.assertion.joined_downstream_a0_a2_assertion",
+    "c8_commit_receipt_id": "95ac61ff1bbb8af04278d2e7ce321f56189e1f526f167b079de55c0194306e93",
+    "c8_occurrence_id": "OCC-0001",
+    "c8_state_digest": "058d006c1ce79d2783b02a3bb4e2f92d0672aec9b406b5f3312453f9c5608b4b",
+    "clock": {
+      "basis": "The BP4 world root is created in the same process only after the BP2 C8 keyed commit, the C9 target commit and the independent E2 admission have been physically verified. The two logical clock domains are never compared numerically; no BP2 time is treated as a BP4 world time or vice versa.",
+      "bp2_domain": "BP2_TEST_ONLY_LOGICAL_CLOCK",
+      "bp2_e2_action_time": 217,
+      "bp2_event_time": 202,
+      "bp2_target_commit_time": 202,
+      "bp4_domain": "BP4_TEST_ONLY_WORLD_CLOCK",
+      "bp4_world_origin_clock": 10,
+      "hold_code": "",
+      "numeric_ordering_used": false,
+      "process_order": [
+        "BP2_C8_COMMIT",
+        "BP2_C9_TARGET_COMMIT",
+        "BP2_E2_ADMISSION",
+        "BP4_SEED_BIND",
+        "BP4_WORLD_ROOT_CREATE"
+      ],
+      "relation": "DECLARED_PROCESS_ORDER_NOT_NUMERIC_COMPARISON"
+    },
+    "consumed_state_hash": "4907a662d2494d9f7949d1f809195264e001f90d39021feb73e5a75cc31c656d",
+    "e1_event_hash": "f043e3b3d264e93abb0a7abeafe971ca5d524bab2c6101b63af29649995f6197",
+    "e2_admitted": true,
+    "e2_receipt_hash": "19349fd6fded91f222d50ef5774deab1203619c390fb554e2bd4970e9c7f05aa",
+    "envelope": {
+      "hash": "89c856d9f0ec69229d01c621b51017ca9304e18c9c45b76a83f2d2c610fbbd40",
+      "producer": {
+        "mode": "ORIGIN_LITERAL",
+        "module": "bp2_joined.producer.JoinedProducer",
+        "name": "BP2_JOINED_PRODUCER",
+        "named_assertion": "bp2_joined.producer.joined_consumer_assertion",
+        "return_commit": "5065e2e6934e9d5bca800cbf88c79e461bcf2393"
+      },
+      "schema": "BP2_JOINED_EVENT_HISTORY_TARGET_E2_ENVELOPE@1",
+      "validation": {
+        "bp4_contract_status": "AWAITING_ACTUAL_BP2_PRODUCER__COMPAT_CONTRACT_NOT_EMITTED",
+        "e2_receipt_bound": true,
+        "fields_checked": 17,
+        "mode": "ORIGIN_LITERAL",
+        "ok": true,
+        "recomputed_from_artifacts": true,
+        "schema": "BP2_JOINED_EVENT_HISTORY_TARGET_E2_ENVELOPE@1",
+        "target_digest_equal_consumed": true
+      }
+    },
+    "grade": "TEST_ONLY_SOURCEFREE_JOINED_PRODUCT_ALPHA_NOT_NATIVE",
+    "grant_hash": "3236a56072294efecd81b7817b6b54ec4afa31be33ec5886ad8852a9172bd970",
+    "mode": "ORIGIN_LITERAL",
+    "native": false,
+    "practice": {
+      "e2_receipt_hash": "19349fd6fded91f222d50ef5774deab1203619c390fb554e2bd4970e9c7f05aa",
+      "effective_from": 202,
+      "established": true,
+      "grade": "TEST_ONLY_SOURCEFREE_TECHNICAL",
+      "native": false,
+      "performed_act": "inspect_with_tool",
+      "practice_label": "coordinated_material_inspection",
+      "source_target_ref": "8d784d48096f4d32d0df3d7c659a23b501681877a948580e0c0150ac60efcd3e"
+    },
+    "receipt_hash": "e7d8e6e287e7b25201855e49d42f3d3e5d4c95983eb72821563b43a7d8248c5d",
+    "response_hash": "757eecb20ad793d556daa08e2cb31cf2a59406901dfe6de888da98d32990fda0",
+    "rule_a_content_hash": "aa5033ca2b5f6321203652bf32537618fefbde4836ada572404702bef1869574",
+    "rule_t_content_hash": "457894cf45902c8a4db1077bb1d043feef1b9c7bba67ad1e231e19978d1da3cb",
+    "schema": "BP2P4J_JOINED_A0_A2_ASSERTION@1",
+    "status": "PASS",
+    "target_id": "950a4c7903cbe832c72d234a0095946720910c23c8235a28c3118afd8fc1b9f8",
+    "target_record_hash": "8d784d48096f4d32d0df3d7c659a23b501681877a948580e0c0150ac60efcd3e"
+  },
+  "bp2_artifacts": {
+    "anchor_log": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/bp2/WORKER_RETURNS/SOROK-20261020-BP2-JOINED-ACTOR-EVENT-RULE-ACTION-R1/evidence/runtime/positive/anchor/rows.json",
+    "anchor_watermark": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/bp2/WORKER_RETURNS/SOROK-20261020-BP2-JOINED-ACTOR-EVENT-RULE-ACTION-R1/evidence/runtime/positive/anchor/watermark.json",
+    "as_of": 207,
+    "c8_canonical_bytes_sha256": "3a0d583cd03f004936a94d72961cf8f6715f19a062cab2e1ca66bcc2f709177a",
+    "c8_commit_receipt_id": "95ac61ff1bbb8af04278d2e7ce321f56189e1f526f167b079de55c0194306e93",
+    "c8_content_hash": "8675e3aacd340d66ee977cb1fc6aa995799ed7a6d6fe277816b34ff3781776e2",
+    "c8_identity_digest": "f4227419cbc64e6eb198b3802b044af7472a667e32d6013a0d70ac031dc37ef2",
+    "c8_ledger_prefix_digest": "4effd40390439217910fedb3a15357d1f38bc6fb53ccf24bc2f014df2a7cd7d2",
+    "c8_state_digest": "058d006c1ce79d2783b02a3bb4e2f92d0672aec9b406b5f3312453f9c5608b4b",
+    "c8_writer_version": 1,
+    "c9_authorization_hash": "18c85828af145307f37430f05761693757419088cd191147cf143c26dbffa2b5",
+    "c9_commit_receipt_hash": "b4d518ed47d32a01bc1d59156dfdce23275c0b6d149f4665f36cd311983de280",
+    "c9_path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/bp2/WORKER_RETURNS/SOROK-20261020-BP2-JOINED-ACTOR-EVENT-RULE-ACTION-R1/evidence/runtime/positive/c9.sqlite",
+    "consumed_state_hash": "4907a662d2494d9f7949d1f809195264e001f90d39021feb73e5a75cc31c656d",
+    "e1_event_hash": "f043e3b3d264e93abb0a7abeafe971ca5d524bab2c6101b63af29649995f6197",
+    "e1_event_id": "TEST_ONLY_BP2_E1_OCC-0001",
+    "e2_receipt_hash": "19349fd6fded91f222d50ef5774deab1203619c390fb554e2bd4970e9c7f05aa",
+    "emission_order": [
+      "BP2_C8_COMMIT",
+      "BP2_C9_TARGET_COMMIT",
+      "BP2_E2_ADMISSION"
+    ],
+    "event_time": 202,
+    "grant_hash": "3236a56072294efecd81b7817b6b54ec4afa31be33ec5886ad8852a9172bd970",
+    "journal_path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/bp2/WORKER_RETURNS/SOROK-20261020-BP2-JOINED-ACTOR-EVENT-RULE-ACTION-R1/evidence/runtime/positive/journal/journal.json",
+    "key_id": "BP2-TEST-KEY",
+    "key_path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/bp2/WORKER_RETURNS/SOROK-20261020-BP2-JOINED-ACTOR-EVENT-RULE-ACTION-R1/evidence/runtime/positive/keys/writer_keys.json",
+    "later_as_of": 217,
+    "mode": "ORIGIN_LITERAL",
+    "native_grant": "NOT_GRANTED",
+    "occurrence_id": "OCC-0001",
+    "practice_label": "coordinated_material_inspection",
+    "response_hash": "757eecb20ad793d556daa08e2cb31cf2a59406901dfe6de888da98d32990fda0",
+    "root": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/bp2/WORKER_RETURNS/SOROK-20261020-BP2-JOINED-ACTOR-EVENT-RULE-ACTION-R1/evidence/runtime/positive",
+    "rule_a_content_hash": "aa5033ca2b5f6321203652bf32537618fefbde4836ada572404702bef1869574",
+    "rule_t_content_hash": "457894cf45902c8a4db1077bb1d043feef1b9c7bba67ad1e231e19978d1da3cb",
+    "rule_t_dependency_hash": "aa5033ca2b5f6321203652bf32537618fefbde4836ada572404702bef1869574",
+    "schema": "BP2P4J_BP2_ARTIFACT_BINDING@1",
+    "target_id": "950a4c7903cbe832c72d234a0095946720910c23c8235a28c3118afd8fc1b9f8",
+    "target_record_hash": "8d784d48096f4d32d0df3d7c659a23b501681877a948580e0c0150ac60efcd3e"
+  },
+  "local_only": true,
+  "note": "The BP2 origin runtime contains a random TEST_ONLY key and a journal identity bound to its absolute path, so the literal target cannot be reproduced from committed sources. This direct literal cross-check is recorded when the surviving runtime is present.",
+  "origin_runtime": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/bp2/WORKER_RETURNS/SOROK-20261020-BP2-JOINED-ACTOR-EVENT-RULE-ACTION-R1/evidence/runtime/positive",
+  "reconciliation": {
+    "exact_count": 30,
+    "explanation": "BP2's C8 commit receipt identity binds a random TEST_ONLY HMAC key and the absolute journal path (capability nonce = f(journal_id), issuer_ref carries journal_id). The key is generated per run and excluded from the committed return, so the literal commit receipt, E1 hash, response/grant hashes, target id, record hash and consumed hash cannot be reproduced at another root. Every value that does not depend on the key or path - occurrence id, C8 state/content/identity digests, writer version, both actor source/snapshot hashes, RULE_A/RULE_T semantic hashes, practice label, E2 act/actuator/occurrence and the logical clocks - MUST and does match exactly.",
+    "recomputed_count": 0,
+    "rows": [
+      {
+        "actual": "OCC-0001",
+        "class": "EXACT",
+        "expected": "OCC-0001",
+        "field": "c8_occurrence_id"
+      },
+      {
+        "actual": "058d006c1ce79d2783b02a3bb4e2f92d0672aec9b406b5f3312453f9c5608b4b",
+        "class": "EXACT",
+        "expected": "058d006c1ce79d2783b02a3bb4e2f92d0672aec9b406b5f3312453f9c5608b4b",
+        "field": "c8_state_digest"
+      },
+      {
+        "actual": "8675e3aacd340d66ee977cb1fc6aa995799ed7a6d6fe277816b34ff3781776e2",
+        "class": "EXACT",
+        "expected": "8675e3aacd340d66ee977cb1fc6aa995799ed7a6d6fe277816b34ff3781776e2",
+        "field": "c8_content_hash"
+      },
+      {
+        "actual": "f4227419cbc64e6eb198b3802b044af7472a667e32d6013a0d70ac031dc37ef2",
+        "class": "EXACT",
+        "expected": "f4227419cbc64e6eb198b3802b044af7472a667e32d6013a0d70ac031dc37ef2",
+        "field": "c8_identity_digest"
+      },
+      {
+        "actual": 1,
+        "class": "EXACT",
+        "expected": 1,
+        "field": "c8_writer_version"
+      },
+      {
+        "actual": "TEST_ONLY_BP1_ACTOR_A",
+        "class": "EXACT",
+        "expected": "TEST_ONLY_BP1_ACTOR_A",
+        "field": "actor_id"
+      },
+      {
+        "actual": "TEST_ONLY_BP1_ACTOR_B",
+        "class": "EXACT",
+        "expected": "TEST_ONLY_BP1_ACTOR_B",
+        "field": "other_actor_id"
+      },
+      {
+        "actual": "bf80ce4a1cddafa2eadab57fdda43942c70cca999bd49c864a34e9c1e33f82e2",
+        "class": "EXACT",
+        "expected": "bf80ce4a1cddafa2eadab57fdda43942c70cca999bd49c864a34e9c1e33f82e2",
+        "field": "actor_source_hash"
+      },
+      {
+        "actual": "ba1266db1726ce17c426df62ec7e4a028b47ee09f7388b243e2ae47dc3ab0fcb",
+        "class": "EXACT",
+        "expected": "ba1266db1726ce17c426df62ec7e4a028b47ee09f7388b243e2ae47dc3ab0fcb",
+        "field": "other_source_hash"
+      },
+      {
+        "actual": "6b65980d0fbb2ecc8dca657e0f6f12daf98a6d4789d2d35a0e129ed23de80bb6",
+        "class": "EXACT",
+        "expected": "6b65980d0fbb2ecc8dca657e0f6f12daf98a6d4789d2d35a0e129ed23de80bb6",
+        "field": "actor_snapshot_hash"
+      },
+      {
+        "actual": "aa5033ca2b5f6321203652bf32537618fefbde4836ada572404702bef1869574",
+        "class": "EXACT",
+        "expected": "aa5033ca2b5f6321203652bf32537618fefbde4836ada572404702bef1869574",
+        "field": "rule_a_content_hash"
+      },
+      {
+        "actual": "457894cf45902c8a4db1077bb1d043feef1b9c7bba67ad1e231e19978d1da3cb",
+        "class": "EXACT",
+        "expected": "457894cf45902c8a4db1077bb1d043feef1b9c7bba67ad1e231e19978d1da3cb",
+        "field": "rule_t_content_hash"
+      },
+      {
+        "actual": 202,
+        "class": "EXACT",
+        "expected": 202,
+        "field": "event_time"
+      },
+      {
+        "actual": "95ac61ff1bbb8af04278d2e7ce321f56189e1f526f167b079de55c0194306e93",
+        "class": "LITERAL_ORIGIN_MATCHED",
+        "field": "c8_commit_receipt_id",
+        "literal_origin": "95ac61ff1bbb8af04278d2e7ce321f56189e1f526f167b079de55c0194306e93"
+      },
+      {
+        "actual": "TEST_ONLY_BP2_E1_OCC-0001",
+        "class": "LITERAL_ORIGIN_MATCHED",
+        "field": "e1_event_id",
+        "literal_origin": "TEST_ONLY_BP2_E1_OCC-0001"
+      },
+      {
+        "actual": "f043e3b3d264e93abb0a7abeafe971ca5d524bab2c6101b63af29649995f6197",
+        "class": "LITERAL_ORIGIN_MATCHED",
+        "field": "e1_event_hash",
+        "literal_origin": "f043e3b3d264e93abb0a7abeafe971ca5d524bab2c6101b63af29649995f6197"
+      },
+      {
+        "actual": "757eecb20ad793d556daa08e2cb31cf2a59406901dfe6de888da98d32990fda0",
+        "class": "LITERAL_ORIGIN_MATCHED",
+        "field": "response_hash",
+        "literal_origin": "757eecb20ad793d556daa08e2cb31cf2a59406901dfe6de888da98d32990fda0"
+      },
+      {
+        "actual": "3236a56072294efecd81b7817b6b54ec4afa31be33ec5886ad8852a9172bd970",
+        "class": "LITERAL_ORIGIN_MATCHED",
+        "field": "grant_hash",
+        "literal_origin": "3236a56072294efecd81b7817b6b54ec4afa31be33ec5886ad8852a9172bd970"
+      },
+      {
+        "actual": "950a4c7903cbe832c72d234a0095946720910c23c8235a28c3118afd8fc1b9f8",
+        "class": "LITERAL_ORIGIN_MATCHED",
+        "field": "target_id",
+        "literal_origin": "950a4c7903cbe832c72d234a0095946720910c23c8235a28c3118afd8fc1b9f8"
+      },
+      {
+        "actual": "8d784d48096f4d32d0df3d7c659a23b501681877a948580e0c0150ac60efcd3e",
+        "class": "LITERAL_ORIGIN_MATCHED",
+        "field": "target_record_hash",
+        "literal_origin": "8d784d48096f4d32d0df3d7c659a23b501681877a948580e0c0150ac60efcd3e"
+      },
+      {
+        "actual": "4907a662d2494d9f7949d1f809195264e001f90d39021feb73e5a75cc31c656d",
+        "class": "LITERAL_ORIGIN_MATCHED",
+        "field": "consumed_state_hash",
+        "literal_origin": "4907a662d2494d9f7949d1f809195264e001f90d39021feb73e5a75cc31c656d"
+      },
+      {
+        "actual": "19349fd6fded91f222d50ef5774deab1203619c390fb554e2bd4970e9c7f05aa",
+        "class": "LITERAL_ORIGIN_MATCHED",
+        "field": "e2_receipt_hash",
+        "literal_origin": "19349fd6fded91f222d50ef5774deab1203619c390fb554e2bd4970e9c7f05aa"
+      },
+      {
+        "actual": "b4d518ed47d32a01bc1d59156dfdce23275c0b6d149f4665f36cd311983de280",
+        "class": "LITERAL_ORIGIN_MATCHED",
+        "field": "c9_commit_receipt_hash",
+        "literal_origin": "b4d518ed47d32a01bc1d59156dfdce23275c0b6d149f4665f36cd311983de280"
+      },
+      {
+        "actual": "18c85828af145307f37430f05761693757419088cd191147cf143c26dbffa2b5",
+        "class": "LITERAL_ORIGIN_MATCHED",
+        "field": "c9_authorization_hash",
+        "literal_origin": "18c85828af145307f37430f05761693757419088cd191147cf143c26dbffa2b5"
+      },
+      {
+        "actual": "coordinated_material_inspection",
+        "class": "EXACT",
+        "expected": "coordinated_material_inspection",
+        "field": "practice_label"
+      },
+      {
+        "actual": "inspect_with_tool",
+        "class": "EXACT",
+        "expected": "inspect_with_tool",
+        "field": "e2_act"
+      },
+      {
+        "actual": "TEST_ONLY_ACTUATOR_BP2_INDEPENDENT",
+        "class": "EXACT",
+        "expected": "TEST_ONLY_ACTUATOR_BP2_INDEPENDENT",
+        "field": "e2_actuator_ref"
+      },
+      {
+        "actual": "TEST_ONLY_OCCURRENCE_BP2_E2",
+        "class": "EXACT",
+        "expected": "TEST_ONLY_OCCURRENCE_BP2_E2",
+        "field": "e2_occurrence_ref"
+      },
+      {
+        "actual": 202,
+        "class": "EXACT",
+        "expected": 202,
+        "field": "target_commit_time"
+      },
+      {
+        "actual": 217,
+        "class": "EXACT",
+        "expected": 217,
+        "field": "e2_action_time"
+      }
+    ],
+    "schema": "BP2P4J_ORIGIN_RECONCILIATION@1"
+  },
+  "reproducible_from_committed_sources": false,
+  "schema": "BP2P4J_LITERAL_ORIGIN_JOIN@1"
+}

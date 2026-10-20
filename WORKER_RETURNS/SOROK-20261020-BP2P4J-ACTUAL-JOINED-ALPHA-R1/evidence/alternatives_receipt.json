@@ -1,0 +1,127 @@
+{
+  "bp2_deny": {
+    "failure_code": "PERMISSION_SELF_ISSUED",
+    "occurrence_rows": 1,
+    "ok": false,
+    "response_status": "RESPONSE_COMMITTED",
+    "stage": "later_e2",
+    "target_branch": "DENY",
+    "target_reason": "PERMISSION_SELF_ISSUED",
+    "target_rows": 0
+  },
+  "bp2_no_change": {
+    "failure_code": "NO_PROPOSAL",
+    "occurrence_rows": 1,
+    "ok": false,
+    "response_status": "REFUSED",
+    "stage": "later_e2",
+    "target_branch": "NO_CHANGE",
+    "target_reason": "NO_PROPOSAL",
+    "target_rows": 0
+  },
+  "no_performed_e2_alternative": {
+    "a0_e2_admitted": false,
+    "a0_projects": [],
+    "a0_tools_remaining": 0,
+    "note": "same committed target, E2 not performed: no practice, no tool, and the offscreen life becomes a lawful NO_CHANGE",
+    "offscreen_completed_units": 3,
+    "offscreen_kind": "OFFSCREEN_NO_CHANGE"
+  },
+  "product_deny": {
+    "address_absent_other": {
+      "admitted": false,
+      "attempted": true,
+      "clock": 10,
+      "code": "OTHER_ACTOR_NOT_PRESENT",
+      "status": "DENY"
+    },
+    "repair_material_exhausted": {
+      "admitted": false,
+      "attempted": true,
+      "clock": 10,
+      "code": "MATERIAL_EXHAUSTED",
+      "status": "DENY"
+    },
+    "repair_wrong_location": {
+      "admitted": false,
+      "attempted": true,
+      "clock": 10,
+      "code": "WRONG_LOCATION",
+      "status": "DENY"
+    },
+    "travel_unknown_location": {
+      "clock": 10,
+      "code": "WORLD_LOCATION_UNKNOWN",
+      "status": "DENY"
+    }
+  },
+  "product_no_change": {
+    "attend": {
+      "changed": false,
+      "clock": 10,
+      "new_knowledge": [],
+      "status": "NO_CHANGE"
+    },
+    "inspect": {
+      "changed": false,
+      "clock": 10,
+      "event_id": "TEST_ONLY_BP4_WORLD_EVT_a50e6ddd6c2d3d51395af292a177534b3f3ef629ee409f88df9cf7e78e1785a2",
+      "status": "NO_CHANGE"
+    }
+  },
+  "product_positive": {
+    "practice_label": "coordinated_material_inspection",
+    "repair_calls": 3,
+    "repair_first": {
+      "actor_state": {
+        "actor_id": "TEST_ONLY_BP1_ACTOR_A",
+        "attitudes": [
+          "reciprocity_in_work_obligations"
+        ],
+        "availability_status": "available_for_encounter",
+        "cash": 57,
+        "completed_units": 5,
+        "debt_units": 2,
+        "free_hours": 11,
+        "health": "recovered",
+        "material_position": "waged_repair",
+        "material_remaining": 1,
+        "nonmother_relations": [
+          "G15_NONKIN_e284ae4306e43444d26d0646abf5076fa63ba096b1db426b84f20628c9a1b87a"
+        ],
+        "place": "INST_WORKSHOP_A",
+        "practices": [
+          "scheduled_repair_ledger_discipline"
+        ],
+        "projects": [
+          {
+            "actor_id": "TEST_ONLY_BP1_ACTOR_A",
+            "e2_receipt_hash": "96d42baf4af487b70838449726c4da84373ad3a39e695fbd32aee455eceb2241",
+            "effective_from": 202,
+            "grade": "TEST_ONLY_SOURCEFREE_TECHNICAL",
+            "native": false,
+            "performed_act": "inspect_with_tool",
+            "practice_label": "coordinated_material_inspection",
+            "source_target_ref": "d6ae692cde44fe76bd63f932dc0c9f2218580bad2e504f86835952a05ef1984f"
+          }
+        ],
+        "role": "repair",
+        "skill": 6,
+        "tools_remaining": 1
+      },
+      "admitted": true,
+      "attempted": true,
+      "clock": 10,
+      "event_id": "TEST_ONLY_BP4_WORLD_EVT_510eef5493c41459b59f4466d75e514c834e97df33f01ed564af2f5cd1d5cbb6",
+      "status": "OK"
+    },
+    "travel_to_market": {
+      "admitted": true,
+      "clock": 10,
+      "event_id": "TEST_ONLY_BP4_WORLD_EVT_22fc448a7dcc5c603316c98c9900a9e506fb4579b7f8ad7f114cfad543df768d",
+      "position": "market",
+      "status": "OK"
+    }
+  },
+  "schema": "BP2P4J_ALTERNATIVES@1"
+}

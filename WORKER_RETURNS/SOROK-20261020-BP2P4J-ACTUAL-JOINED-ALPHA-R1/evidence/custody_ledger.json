@@ -1,0 +1,195 @@
+{
+  "schema": "BP2P4J_CROSS_DOMAIN_CUSTODY@1",
+  "steps": [
+    {
+      "causal_parents": [],
+      "hash": "ccef17a3360c20e9bb1834d8ea4f6ec88cf7ad74784c50de87e571338313a303",
+      "ref": "TEST_ONLY_BP1_EVT_ccef17a3360c20e9bb1834d8ea4f6ec88cf7ad74784c50de87e571338313a303",
+      "stage": "BP1_A_PRIOR_HISTORY"
+    },
+    {
+      "causal_parents": [
+        "TEST_ONLY_BP1_EVT_ccef17a3360c20e9bb1834d8ea4f6ec88cf7ad74784c50de87e571338313a303"
+      ],
+      "hash": "e1808747e9e3fcdf70c27cb6e8f8c3b72471ba099faa1a15801f97f3140c560d",
+      "ref": "TEST_ONLY_BP1_EVT_e1808747e9e3fcdf70c27cb6e8f8c3b72471ba099faa1a15801f97f3140c560d",
+      "stage": "BP1_A_SHARED_OBJECTIVE"
+    },
+    {
+      "causal_parents": [
+        "TEST_ONLY_BP1_EVT_ccef17a3360c20e9bb1834d8ea4f6ec88cf7ad74784c50de87e571338313a303",
+        "TEST_ONLY_BP1_EVT_e1808747e9e3fcdf70c27cb6e8f8c3b72471ba099faa1a15801f97f3140c560d"
+      ],
+      "hash": "da03a5bfcc30ad8f258e091036a18c0e908127a22a8173e0a153644a3ba44fe3",
+      "ref": "TEST_ONLY_BP1_EVT_da03a5bfcc30ad8f258e091036a18c0e908127a22a8173e0a153644a3ba44fe3",
+      "stage": "BP1_A_PERFORMED_ACTION"
+    },
+    {
+      "causal_parents": [
+        "TEST_ONLY_BP1_EVT_e1808747e9e3fcdf70c27cb6e8f8c3b72471ba099faa1a15801f97f3140c560d"
+      ],
+      "hash": "1054a5d2d15415a9228a18718abe078c2b4fcb5955f84258fc975152e49c8bbe",
+      "ref": "TEST_ONLY_BP1_EVT_1054a5d2d15415a9228a18718abe078c2b4fcb5955f84258fc975152e49c8bbe",
+      "stage": "BP1_A_OTHER_ACTION"
+    },
+    {
+      "causal_parents": [
+        "TEST_ONLY_BP1_EVT_1054a5d2d15415a9228a18718abe078c2b4fcb5955f84258fc975152e49c8bbe"
+      ],
+      "hash": "049a1e0a6c3735da361fae2be37ba5842d25ec18c6cfe7d29e9533565a440d4a",
+      "ref": "TEST_ONLY_BP1_EVT_049a1e0a6c3735da361fae2be37ba5842d25ec18c6cfe7d29e9533565a440d4a",
+      "stage": "BP1_A_RELATION_VIEW"
+    },
+    {
+      "commit_receipt_id": "78bf538eef0123adec6dafd6d8d495420e97ac858a7a05d588db129c20b51059",
+      "occurrence_id": "OCC-0001",
+      "stage": "BP2_C8_OCCURRENCE",
+      "state_digest": "058d006c1ce79d2783b02a3bb4e2f92d0672aec9b406b5f3312453f9c5608b4b",
+      "writer_version": 1
+    },
+    {
+      "adp019_admission_receipt": "ADP019_ADMISSION_RECEIPT_ABSENT",
+      "event_hash": "4efa4bd8d29cde07c054e903833a1d99aca28e36cc03ad1e46812038e7250141",
+      "event_id": "TEST_ONLY_BP2_E1_OCC-0001",
+      "stage": "BP2_E1_EVENT"
+    },
+    {
+      "response_hash": "9b881a3a39128254f57c203043b2822b0191fbefc18c60a67eabe5b3a3b98564",
+      "rule_a_content_hash": "aa5033ca2b5f6321203652bf32537618fefbde4836ada572404702bef1869574",
+      "stage": "BP2_CAN008_RULE_A"
+    },
+    {
+      "dependency_hash": "aa5033ca2b5f6321203652bf32537618fefbde4836ada572404702bef1869574",
+      "grant_hash": "4559239007d776a0a95d795c439db275391fe03c417fceae495abe3bfb65da34",
+      "rule_t_content_hash": "457894cf45902c8a4db1077bb1d043feef1b9c7bba67ad1e231e19978d1da3cb",
+      "stage": "BP2_CAN011_RULE_T"
+    },
+    {
+      "authorization_hash": "aaa97ca7161449e9a4c5b9c3ec7c0181e7a2528ea3699e8a8b3b028a4e6e70bc",
+      "commit_receipt_hash": "33086b627711bdb62df54d8fa5e4c1d588d39a91fb7baa4fca4844ab31a74c9f",
+      "publication_grade": "TEST_ONLY_SOURCEFREE_TECHNICAL",
+      "stage": "BP2_C9_TARGET_COMMIT",
+      "target_id": "d9f25cc655c237870abc661096f168aee0a9dd2bcd49e03f2e1552db803d0ecc",
+      "target_record_hash": "0f75841f64092748d5a1db6535ce7449428556c4955f0237520bf4952dbebe15"
+    },
+    {
+      "act": "inspect_with_tool",
+      "actuator_ref": "TEST_ONLY_ACTUATOR_BP2_INDEPENDENT",
+      "consumed_state_hash": "60a4734e8811b547ddf4cc8f71234092f8d9cb803f2a8636ea4d174aaf41dfe4",
+      "occurrence_ref": "TEST_ONLY_OCCURRENCE_BP2_E2",
+      "receipt_hash": "94da6f9a3ee2e2272305dab6f46fe30b8958aafaed071df04c64c24bbbe321eb",
+      "stage": "BP2_INDEPENDENT_E2"
+    },
+    {
+      "actor_world_clock": 10,
+      "receipt_hash": "afc33ad31b1fc95827f7c4ab14e77bccd11e954071338b473edbeccb0d7e1d34",
+      "stage": "BP4_C10_COUPLED_READ"
+    },
+    {
+      "branch_id": "root",
+      "practice_target_ref": "0f75841f64092748d5a1db6535ce7449428556c4955f0237520bf4952dbebe15",
+      "stage": "BP4_C12_ROOT_CHECKPOINT",
+      "world_clock": 10
+    },
+    {
+      "claim_hashes": [
+        "afc33ad31b1fc95827f7c4ab14e77bccd11e954071338b473edbeccb0d7e1d34"
+      ],
+      "claim_kinds": [
+        "ARRIVAL"
+      ],
+      "stage": "BP4_M6_ACTOR_SAFE_CLAIM"
+    },
+    {
+      "clock": 10,
+      "position": "workshop",
+      "practice_label": "coordinated_material_inspection",
+      "stage": "A0_ENCOUNTER_OBSERVATION"
+    },
+    {
+      "completed_units": 4,
+      "event_hash": "bdd9ec323ff19154673fcc8bb86d2a3dd74c0680432decb3dcf2ca25ce410984",
+      "event_id": "TEST_ONLY_BP4_WORLD_EVT_324b154fd7cc0e3e5c8c662e535300bf9311c1e39f146b23e31f7a0d979929cd",
+      "stage": "A2_OFFSCREEN_LIFE"
+    },
+    {
+      "code": "NO_ACTOR_PERCEPTION",
+      "stage": "A2_M6_HIDDEN_BEFORE_ATTEND",
+      "state": "NONRENDERABLE"
+    },
+    {
+      "claims": [
+        "ARRIVAL",
+        "SPEECH",
+        "INSPECT",
+        "MOVE",
+        "OFFSCREEN_REPAIR",
+        "MOVE"
+      ],
+      "stage": "A2_REENTRY",
+      "target_id": "d9f25cc655c237870abc661096f168aee0a9dd2bcd49e03f2e1552db803d0ecc"
+    }
+  ],
+  "summary": {
+    "a0_claim_hashes": [
+      "afc33ad31b1fc95827f7c4ab14e77bccd11e954071338b473edbeccb0d7e1d34"
+    ],
+    "a2_offscreen_event_id": "TEST_ONLY_BP4_WORLD_EVT_324b154fd7cc0e3e5c8c662e535300bf9311c1e39f146b23e31f7a0d979929cd",
+    "c8_state_digest": "058d006c1ce79d2783b02a3bb4e2f92d0672aec9b406b5f3312453f9c5608b4b",
+    "consumed_state_hash": "60a4734e8811b547ddf4cc8f71234092f8d9cb803f2a8636ea4d174aaf41dfe4",
+    "e2_receipt_hash": "94da6f9a3ee2e2272305dab6f46fe30b8958aafaed071df04c64c24bbbe321eb",
+    "target_id": "d9f25cc655c237870abc661096f168aee0a9dd2bcd49e03f2e1552db803d0ecc"
+  },
+  "verified_links": [
+    {
+      "check": "actor/other source + snapshot hashes and BP1 causal parents inside the committed payload",
+      "from": "BP1 histories",
+      "to": "BP2 C8 occurrence"
+    },
+    {
+      "check": "E1 content hash carries occurrence id, C8 state digest and commit receipt id",
+      "from": "BP2 C8 occurrence",
+      "to": "BP2 E1"
+    },
+    {
+      "check": "response receipt hash over the E1 event hash, rule and conditioning readset",
+      "from": "BP2 E1",
+      "to": "BP2 CAN008 RULE_A"
+    },
+    {
+      "check": "target dependency hash equals the response-rule content hash",
+      "from": "BP2 CAN008 RULE_A",
+      "to": "BP2 CAN011 RULE_T"
+    },
+    {
+      "check": "sealed record embeds response hash, permission ref and authorization digest",
+      "from": "BP2 CAN011 RULE_T/grant",
+      "to": "BP2 C9 target commit"
+    },
+    {
+      "check": "E2 receipt consumed_state_hash equals the committed record digest",
+      "from": "BP2 C9 target commit",
+      "to": "BP2 independent E2"
+    },
+    {
+      "check": "BP4 re-verifies the C8 keyed proof/OUT9, the sealed target row digest and both BP1 snapshots",
+      "from": "BP2 C9 target + E2",
+      "to": "BP4 C10"
+    },
+    {
+      "check": "practice materialized from the committed target and the performed E2 act",
+      "from": "BP2 target + E2",
+      "to": "BP4 C12 practice"
+    },
+    {
+      "check": "only actor-perceived events become claims; unperceived offscreen event is NONRENDERABLE",
+      "from": "BP4 C12 world",
+      "to": "BP4 M6 claim"
+    },
+    {
+      "check": "offscreen REPAIR at world clock 40 uses the workshop tool available from the BP2 E2",
+      "from": "BP4 C12 world time",
+      "to": "A2 offscreen life"
+    }
+  ]
+}

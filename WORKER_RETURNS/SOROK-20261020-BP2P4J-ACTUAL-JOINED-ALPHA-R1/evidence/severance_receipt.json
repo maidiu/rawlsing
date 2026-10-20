@@ -1,0 +1,515 @@
+{
+  "all_primary_proved": true,
+  "all_supplementary_proved": true,
+  "cut_descriptions": {
+    "BP2_ACTOR_HISTORY": "the BP1 actor source presented to the consumer is not the source inside the committed C8 occurrence",
+    "BP2_C8_PROOF": "the external monotonic anchor watermark is rewritten so the keyed journal proof refuses",
+    "BP2_E2": "the performed E2 owner receipt binds the focal actor as its own actuator",
+    "BP2_E2_NOT_PERFORMED": "no independently performed E2 receipt is presented",
+    "BP2_OTHER_HISTORY_ALIASED": "the independent other actor's snapshot is replaced by the focal actor's snapshot",
+    "BP2_PRACTICE_NOT_MATERIALIZED": "the committed practice is not materialized into the actor/world state",
+    "BP2_RULE_A": "the committed CAN008 response row is deleted from the BP2 C9 store",
+    "BP2_RULE_T": "the separate CAN011 authorization row is deleted from the BP2 C9 store",
+    "BP2_TARGET_HASH": "the sealed target record preimage is rewritten, breaking the committed record digest",
+    "BP4_C10_M6_ACCESS": "actor A's durable perception of the arrival event is deleted, dropping the actor-visible claim source"
+  },
+  "declared_edges": [
+    "BP2_C8_PROOF",
+    "BP2_ACTOR_HISTORY",
+    "BP2_RULE_A",
+    "BP2_RULE_T",
+    "BP2_TARGET_HASH",
+    "BP2_E2",
+    "BP4_C10_M6_ACCESS"
+  ],
+  "declared_supplementary": [
+    "BP2_OTHER_HISTORY_ALIASED",
+    "BP2_E2_NOT_PERFORMED",
+    "BP2_PRACTICE_NOT_MATERIALIZED"
+  ],
+  "edge_count": 7,
+  "edges": [
+    "BP2_C8_PROOF",
+    "BP2_ACTOR_HISTORY",
+    "BP2_RULE_A",
+    "BP2_RULE_T",
+    "BP2_TARGET_HASH",
+    "BP2_E2",
+    "BP4_C10_M6_ACCESS"
+  ],
+  "named_assertion": "bp2p4.assertion.joined_downstream_a0_a2_assertion",
+  "schema": "BP2P4J_SEVERANCE_RECEIPT@1",
+  "supplementary_count": 3,
+  "trials": [
+    {
+      "assertion": "bp2p4.assertion.joined_downstream_a0_a2_assertion",
+      "baseline": {
+        "c8_state_digest": "058d006c1ce79d2783b02a3bb4e2f92d0672aec9b406b5f3312453f9c5608b4b",
+        "consumed_state_hash": "60a4734e8811b547ddf4cc8f71234092f8d9cb803f2a8636ea4d174aaf41dfe4",
+        "offscreen_completed_units": 4,
+        "practice_established": true,
+        "receipt_hash": "d5c8305e10ec091439fdb6c23457a88aaf7cf27b73c4f430f03e7c9a70383ce7",
+        "red": false,
+        "reentry_claims": [
+          "ARRIVAL",
+          "SPEECH",
+          "INSPECT",
+          "MOVE",
+          "OFFSCREEN_REPAIR",
+          "MOVE"
+        ],
+        "target_id": "d9f25cc655c237870abc661096f168aee0a9dd2bcd49e03f2e1552db803d0ecc"
+      },
+      "cut": "the external monotonic anchor watermark is rewritten so the keyed journal proof refuses",
+      "edge": "BP2_C8_PROOF",
+      "proves": true,
+      "red": {
+        "message": "JOINED_PRODUCT_SOURCE: BP2_C8_PROOF_INVALID",
+        "red": true
+      },
+      "restore_basis": "same_root_exact_bytes_restored",
+      "restored": {
+        "c8_state_digest": "058d006c1ce79d2783b02a3bb4e2f92d0672aec9b406b5f3312453f9c5608b4b",
+        "consumed_state_hash": "eb8b4775b36ebcfef09dec45d180c8efb7025d3f367bd6b57e3da645c7a3a8ad",
+        "offscreen_completed_units": 4,
+        "practice_established": true,
+        "receipt_hash": "a81f8f1c2710f121cf0b031e0a4a9b2b44ab863fddd5c0594ea085f70fb725b6",
+        "red": false,
+        "reentry_claims": [
+          "ARRIVAL",
+          "SPEECH",
+          "INSPECT",
+          "MOVE",
+          "OFFSCREEN_REPAIR",
+          "MOVE"
+        ],
+        "target_id": "1757ee75a06de091b62f05b6be0bec6f6d4049da03484df39cec47c1f385b78f"
+      },
+      "same_root": true,
+      "supplementary": false
+    },
+    {
+      "assertion": "bp2p4.assertion.joined_downstream_a0_a2_assertion",
+      "baseline": {
+        "c8_state_digest": "058d006c1ce79d2783b02a3bb4e2f92d0672aec9b406b5f3312453f9c5608b4b",
+        "consumed_state_hash": "60a4734e8811b547ddf4cc8f71234092f8d9cb803f2a8636ea4d174aaf41dfe4",
+        "offscreen_completed_units": 4,
+        "practice_established": true,
+        "receipt_hash": "d5c8305e10ec091439fdb6c23457a88aaf7cf27b73c4f430f03e7c9a70383ce7",
+        "red": false,
+        "reentry_claims": [
+          "ARRIVAL",
+          "SPEECH",
+          "INSPECT",
+          "MOVE",
+          "OFFSCREEN_REPAIR",
+          "MOVE"
+        ],
+        "target_id": "d9f25cc655c237870abc661096f168aee0a9dd2bcd49e03f2e1552db803d0ecc"
+      },
+      "cut": "the BP1 actor source presented to the consumer is not the source inside the committed C8 occurrence",
+      "edge": "BP2_ACTOR_HISTORY",
+      "proves": true,
+      "red": {
+        "message": "JOINED_PRODUCT_SOURCE: BP1_ACTOR_SOURCE_NOT_MATCHING_BP2_C8",
+        "red": true
+      },
+      "restore_basis": "same_root_original_source_restored",
+      "restored": {
+        "c8_state_digest": "058d006c1ce79d2783b02a3bb4e2f92d0672aec9b406b5f3312453f9c5608b4b",
+        "consumed_state_hash": "60a4734e8811b547ddf4cc8f71234092f8d9cb803f2a8636ea4d174aaf41dfe4",
+        "offscreen_completed_units": 4,
+        "practice_established": true,
+        "receipt_hash": "d5c8305e10ec091439fdb6c23457a88aaf7cf27b73c4f430f03e7c9a70383ce7",
+        "red": false,
+        "reentry_claims": [
+          "ARRIVAL",
+          "SPEECH",
+          "INSPECT",
+          "MOVE",
+          "OFFSCREEN_REPAIR",
+          "MOVE"
+        ],
+        "target_id": "d9f25cc655c237870abc661096f168aee0a9dd2bcd49e03f2e1552db803d0ecc"
+      },
+      "same_root": true,
+      "supplementary": false
+    },
+    {
+      "assertion": "bp2p4.assertion.joined_downstream_a0_a2_assertion",
+      "baseline": {
+        "c8_state_digest": "058d006c1ce79d2783b02a3bb4e2f92d0672aec9b406b5f3312453f9c5608b4b",
+        "consumed_state_hash": "60a4734e8811b547ddf4cc8f71234092f8d9cb803f2a8636ea4d174aaf41dfe4",
+        "offscreen_completed_units": 4,
+        "practice_established": true,
+        "receipt_hash": "d5c8305e10ec091439fdb6c23457a88aaf7cf27b73c4f430f03e7c9a70383ce7",
+        "red": false,
+        "reentry_claims": [
+          "ARRIVAL",
+          "SPEECH",
+          "INSPECT",
+          "MOVE",
+          "OFFSCREEN_REPAIR",
+          "MOVE"
+        ],
+        "target_id": "d9f25cc655c237870abc661096f168aee0a9dd2bcd49e03f2e1552db803d0ecc"
+      },
+      "cut": "the committed CAN008 response row is deleted from the BP2 C9 store",
+      "edge": "BP2_RULE_A",
+      "proves": true,
+      "red": {
+        "message": "JOINED_PRODUCT_SOURCE: BP2_RULE_A_RESPONSE_ABSENT",
+        "red": true
+      },
+      "restore_basis": "same_root_exact_bytes_restored",
+      "restored": {
+        "c8_state_digest": "058d006c1ce79d2783b02a3bb4e2f92d0672aec9b406b5f3312453f9c5608b4b",
+        "consumed_state_hash": "3a72ff44cc13e96883ce83a892248e1d7a4020187f862cc1e47a75a566c1ad9e",
+        "offscreen_completed_units": 4,
+        "practice_established": true,
+        "receipt_hash": "b438f1b52d00c62d2a27867de49a6392c3ad85c8721e5c066f786944f569f8ee",
+        "red": false,
+        "reentry_claims": [
+          "ARRIVAL",
+          "SPEECH",
+          "INSPECT",
+          "MOVE",
+          "OFFSCREEN_REPAIR",
+          "MOVE"
+        ],
+        "target_id": "180324ff70bea48d9dceb4b0a8519cde61d9eb85f56b678dd00d61274066e348"
+      },
+      "same_root": true,
+      "supplementary": false
+    },
+    {
+      "assertion": "bp2p4.assertion.joined_downstream_a0_a2_assertion",
+      "baseline": {
+        "c8_state_digest": "058d006c1ce79d2783b02a3bb4e2f92d0672aec9b406b5f3312453f9c5608b4b",
+        "consumed_state_hash": "60a4734e8811b547ddf4cc8f71234092f8d9cb803f2a8636ea4d174aaf41dfe4",
+        "offscreen_completed_units": 4,
+        "practice_established": true,
+        "receipt_hash": "d5c8305e10ec091439fdb6c23457a88aaf7cf27b73c4f430f03e7c9a70383ce7",
+        "red": false,
+        "reentry_claims": [
+          "ARRIVAL",
+          "SPEECH",
+          "INSPECT",
+          "MOVE",
+          "OFFSCREEN_REPAIR",
+          "MOVE"
+        ],
+        "target_id": "d9f25cc655c237870abc661096f168aee0a9dd2bcd49e03f2e1552db803d0ecc"
+      },
+      "cut": "the separate CAN011 authorization row is deleted from the BP2 C9 store",
+      "edge": "BP2_RULE_T",
+      "proves": true,
+      "red": {
+        "message": "JOINED_PRODUCT_SOURCE: BP2_RULE_T_AUTHORIZATION_ABSENT",
+        "red": true
+      },
+      "restore_basis": "same_root_exact_bytes_restored",
+      "restored": {
+        "c8_state_digest": "058d006c1ce79d2783b02a3bb4e2f92d0672aec9b406b5f3312453f9c5608b4b",
+        "consumed_state_hash": "661b4e93f07032d50658f37d58c3f21e6308e1dd244e56a95c668cef9a156e07",
+        "offscreen_completed_units": 4,
+        "practice_established": true,
+        "receipt_hash": "a6c082265c753a7cce231ed997febdfb64861f6c193ccabde1684fdb77ce587d",
+        "red": false,
+        "reentry_claims": [
+          "ARRIVAL",
+          "SPEECH",
+          "INSPECT",
+          "MOVE",
+          "OFFSCREEN_REPAIR",
+          "MOVE"
+        ],
+        "target_id": "fca3ce214e27a508efd06fc1c9c29a2a4c048c12125d311ec351cad0c751f7ef"
+      },
+      "same_root": true,
+      "supplementary": false
+    },
+    {
+      "assertion": "bp2p4.assertion.joined_downstream_a0_a2_assertion",
+      "baseline": {
+        "c8_state_digest": "058d006c1ce79d2783b02a3bb4e2f92d0672aec9b406b5f3312453f9c5608b4b",
+        "consumed_state_hash": "60a4734e8811b547ddf4cc8f71234092f8d9cb803f2a8636ea4d174aaf41dfe4",
+        "offscreen_completed_units": 4,
+        "practice_established": true,
+        "receipt_hash": "d5c8305e10ec091439fdb6c23457a88aaf7cf27b73c4f430f03e7c9a70383ce7",
+        "red": false,
+        "reentry_claims": [
+          "ARRIVAL",
+          "SPEECH",
+          "INSPECT",
+          "MOVE",
+          "OFFSCREEN_REPAIR",
+          "MOVE"
+        ],
+        "target_id": "d9f25cc655c237870abc661096f168aee0a9dd2bcd49e03f2e1552db803d0ecc"
+      },
+      "cut": "the sealed target record preimage is rewritten, breaking the committed record digest",
+      "edge": "BP2_TARGET_HASH",
+      "proves": true,
+      "red": {
+        "message": "JOINED_PRODUCT_SOURCE: BP2_C9_CONSUMED_HASH_MISMATCH",
+        "red": true
+      },
+      "restore_basis": "same_root_exact_bytes_restored",
+      "restored": {
+        "c8_state_digest": "058d006c1ce79d2783b02a3bb4e2f92d0672aec9b406b5f3312453f9c5608b4b",
+        "consumed_state_hash": "d226c0ddf134bccc1ac97cdfaa691d5f5544fb1a8cc268469c442859293574a4",
+        "offscreen_completed_units": 4,
+        "practice_established": true,
+        "receipt_hash": "b492bc619aa60f042f4e2953625d66abc05494c73f2b2bb152b219426788bf39",
+        "red": false,
+        "reentry_claims": [
+          "ARRIVAL",
+          "SPEECH",
+          "INSPECT",
+          "MOVE",
+          "OFFSCREEN_REPAIR",
+          "MOVE"
+        ],
+        "target_id": "aceb9039ded883bb37224d738155c7c7a2c7a0fa4d10d8e76e18e35f1d5c522a"
+      },
+      "same_root": true,
+      "supplementary": false
+    },
+    {
+      "assertion": "bp2p4.assertion.joined_downstream_a0_a2_assertion",
+      "baseline": {
+        "c8_state_digest": "058d006c1ce79d2783b02a3bb4e2f92d0672aec9b406b5f3312453f9c5608b4b",
+        "consumed_state_hash": "60a4734e8811b547ddf4cc8f71234092f8d9cb803f2a8636ea4d174aaf41dfe4",
+        "offscreen_completed_units": 4,
+        "practice_established": true,
+        "receipt_hash": "d5c8305e10ec091439fdb6c23457a88aaf7cf27b73c4f430f03e7c9a70383ce7",
+        "red": false,
+        "reentry_claims": [
+          "ARRIVAL",
+          "SPEECH",
+          "INSPECT",
+          "MOVE",
+          "OFFSCREEN_REPAIR",
+          "MOVE"
+        ],
+        "target_id": "d9f25cc655c237870abc661096f168aee0a9dd2bcd49e03f2e1552db803d0ecc"
+      },
+      "cut": "the performed E2 owner receipt binds the focal actor as its own actuator",
+      "edge": "BP2_E2",
+      "proves": true,
+      "red": {
+        "message": "JOINED_PRODUCT_SOURCE: BP2_E2_SELF_PERFORMED",
+        "red": true
+      },
+      "restore_basis": "same_root_original_source_restored",
+      "restored": {
+        "c8_state_digest": "058d006c1ce79d2783b02a3bb4e2f92d0672aec9b406b5f3312453f9c5608b4b",
+        "consumed_state_hash": "60a4734e8811b547ddf4cc8f71234092f8d9cb803f2a8636ea4d174aaf41dfe4",
+        "offscreen_completed_units": 4,
+        "practice_established": true,
+        "receipt_hash": "d5c8305e10ec091439fdb6c23457a88aaf7cf27b73c4f430f03e7c9a70383ce7",
+        "red": false,
+        "reentry_claims": [
+          "ARRIVAL",
+          "SPEECH",
+          "INSPECT",
+          "MOVE",
+          "OFFSCREEN_REPAIR",
+          "MOVE"
+        ],
+        "target_id": "d9f25cc655c237870abc661096f168aee0a9dd2bcd49e03f2e1552db803d0ecc"
+      },
+      "same_root": true,
+      "supplementary": false
+    },
+    {
+      "assertion": "bp2p4.assertion.joined_downstream_a0_a2_assertion",
+      "baseline": {
+        "c8_state_digest": "058d006c1ce79d2783b02a3bb4e2f92d0672aec9b406b5f3312453f9c5608b4b",
+        "consumed_state_hash": "60a4734e8811b547ddf4cc8f71234092f8d9cb803f2a8636ea4d174aaf41dfe4",
+        "offscreen_completed_units": 4,
+        "practice_established": true,
+        "receipt_hash": "d5c8305e10ec091439fdb6c23457a88aaf7cf27b73c4f430f03e7c9a70383ce7",
+        "red": false,
+        "reentry_claims": [
+          "ARRIVAL",
+          "SPEECH",
+          "INSPECT",
+          "MOVE",
+          "OFFSCREEN_REPAIR",
+          "MOVE"
+        ],
+        "target_id": "d9f25cc655c237870abc661096f168aee0a9dd2bcd49e03f2e1552db803d0ecc"
+      },
+      "cut": "actor A's durable perception of the arrival event is deleted, dropping the actor-visible claim source",
+      "edge": "BP4_C10_M6_ACCESS",
+      "proves": true,
+      "red": {
+        "message": "A0_CLAIM_SET: ",
+        "red": true
+      },
+      "restore_basis": "fresh_c12_root_same_bp2_artifacts",
+      "restored": {
+        "c8_state_digest": "058d006c1ce79d2783b02a3bb4e2f92d0672aec9b406b5f3312453f9c5608b4b",
+        "consumed_state_hash": "60a4734e8811b547ddf4cc8f71234092f8d9cb803f2a8636ea4d174aaf41dfe4",
+        "offscreen_completed_units": 4,
+        "practice_established": true,
+        "receipt_hash": "d5c8305e10ec091439fdb6c23457a88aaf7cf27b73c4f430f03e7c9a70383ce7",
+        "red": false,
+        "reentry_claims": [
+          "ARRIVAL",
+          "SPEECH",
+          "INSPECT",
+          "MOVE",
+          "OFFSCREEN_REPAIR",
+          "MOVE"
+        ],
+        "target_id": "d9f25cc655c237870abc661096f168aee0a9dd2bcd49e03f2e1552db803d0ecc"
+      },
+      "same_root": false,
+      "supplementary": false
+    },
+    {
+      "assertion": "bp2p4.assertion.joined_downstream_a0_a2_assertion",
+      "baseline": {
+        "c8_state_digest": "058d006c1ce79d2783b02a3bb4e2f92d0672aec9b406b5f3312453f9c5608b4b",
+        "consumed_state_hash": "60a4734e8811b547ddf4cc8f71234092f8d9cb803f2a8636ea4d174aaf41dfe4",
+        "offscreen_completed_units": 4,
+        "practice_established": true,
+        "receipt_hash": "d5c8305e10ec091439fdb6c23457a88aaf7cf27b73c4f430f03e7c9a70383ce7",
+        "red": false,
+        "reentry_claims": [
+          "ARRIVAL",
+          "SPEECH",
+          "INSPECT",
+          "MOVE",
+          "OFFSCREEN_REPAIR",
+          "MOVE"
+        ],
+        "target_id": "d9f25cc655c237870abc661096f168aee0a9dd2bcd49e03f2e1552db803d0ecc"
+      },
+      "cut": "the independent other actor's snapshot is replaced by the focal actor's snapshot",
+      "edge": "BP2_OTHER_HISTORY_ALIASED",
+      "proves": true,
+      "red": {
+        "message": "JOINED_PRODUCT_SOURCE: BP1_OTHER_SNAPSHOT_NOT_MATCHING_BP2_C8",
+        "red": true
+      },
+      "restore_basis": "same_root_original_source_restored",
+      "restored": {
+        "c8_state_digest": "058d006c1ce79d2783b02a3bb4e2f92d0672aec9b406b5f3312453f9c5608b4b",
+        "consumed_state_hash": "60a4734e8811b547ddf4cc8f71234092f8d9cb803f2a8636ea4d174aaf41dfe4",
+        "offscreen_completed_units": 4,
+        "practice_established": true,
+        "receipt_hash": "d5c8305e10ec091439fdb6c23457a88aaf7cf27b73c4f430f03e7c9a70383ce7",
+        "red": false,
+        "reentry_claims": [
+          "ARRIVAL",
+          "SPEECH",
+          "INSPECT",
+          "MOVE",
+          "OFFSCREEN_REPAIR",
+          "MOVE"
+        ],
+        "target_id": "d9f25cc655c237870abc661096f168aee0a9dd2bcd49e03f2e1552db803d0ecc"
+      },
+      "same_root": true,
+      "supplementary": true
+    },
+    {
+      "assertion": "bp2p4.assertion.joined_downstream_a0_a2_assertion",
+      "baseline": {
+        "c8_state_digest": "058d006c1ce79d2783b02a3bb4e2f92d0672aec9b406b5f3312453f9c5608b4b",
+        "consumed_state_hash": "60a4734e8811b547ddf4cc8f71234092f8d9cb803f2a8636ea4d174aaf41dfe4",
+        "offscreen_completed_units": 4,
+        "practice_established": true,
+        "receipt_hash": "d5c8305e10ec091439fdb6c23457a88aaf7cf27b73c4f430f03e7c9a70383ce7",
+        "red": false,
+        "reentry_claims": [
+          "ARRIVAL",
+          "SPEECH",
+          "INSPECT",
+          "MOVE",
+          "OFFSCREEN_REPAIR",
+          "MOVE"
+        ],
+        "target_id": "d9f25cc655c237870abc661096f168aee0a9dd2bcd49e03f2e1552db803d0ecc"
+      },
+      "cut": "no independently performed E2 receipt is presented",
+      "edge": "BP2_E2_NOT_PERFORMED",
+      "proves": true,
+      "red": {
+        "message": "A0_E2_ADMITTED: BP2 performed E2 not admitted",
+        "red": true
+      },
+      "restore_basis": "same_root_original_source_restored",
+      "restored": {
+        "c8_state_digest": "058d006c1ce79d2783b02a3bb4e2f92d0672aec9b406b5f3312453f9c5608b4b",
+        "consumed_state_hash": "60a4734e8811b547ddf4cc8f71234092f8d9cb803f2a8636ea4d174aaf41dfe4",
+        "offscreen_completed_units": 4,
+        "practice_established": true,
+        "receipt_hash": "d5c8305e10ec091439fdb6c23457a88aaf7cf27b73c4f430f03e7c9a70383ce7",
+        "red": false,
+        "reentry_claims": [
+          "ARRIVAL",
+          "SPEECH",
+          "INSPECT",
+          "MOVE",
+          "OFFSCREEN_REPAIR",
+          "MOVE"
+        ],
+        "target_id": "d9f25cc655c237870abc661096f168aee0a9dd2bcd49e03f2e1552db803d0ecc"
+      },
+      "same_root": true,
+      "supplementary": true
+    },
+    {
+      "assertion": "bp2p4.assertion.joined_downstream_a0_a2_assertion",
+      "baseline": {
+        "c8_state_digest": "058d006c1ce79d2783b02a3bb4e2f92d0672aec9b406b5f3312453f9c5608b4b",
+        "consumed_state_hash": "60a4734e8811b547ddf4cc8f71234092f8d9cb803f2a8636ea4d174aaf41dfe4",
+        "offscreen_completed_units": 4,
+        "practice_established": true,
+        "receipt_hash": "d5c8305e10ec091439fdb6c23457a88aaf7cf27b73c4f430f03e7c9a70383ce7",
+        "red": false,
+        "reentry_claims": [
+          "ARRIVAL",
+          "SPEECH",
+          "INSPECT",
+          "MOVE",
+          "OFFSCREEN_REPAIR",
+          "MOVE"
+        ],
+        "target_id": "d9f25cc655c237870abc661096f168aee0a9dd2bcd49e03f2e1552db803d0ecc"
+      },
+      "cut": "the committed practice is not materialized into the actor/world state",
+      "edge": "BP2_PRACTICE_NOT_MATERIALIZED",
+      "proves": true,
+      "red": {
+        "message": "A0_PRACTICE_NOT_ESTABLISHED",
+        "red": true
+      },
+      "restore_basis": "same_root_original_source_restored",
+      "restored": {
+        "c8_state_digest": "058d006c1ce79d2783b02a3bb4e2f92d0672aec9b406b5f3312453f9c5608b4b",
+        "consumed_state_hash": "60a4734e8811b547ddf4cc8f71234092f8d9cb803f2a8636ea4d174aaf41dfe4",
+        "offscreen_completed_units": 4,
+        "practice_established": true,
+        "receipt_hash": "d5c8305e10ec091439fdb6c23457a88aaf7cf27b73c4f430f03e7c9a70383ce7",
+        "red": false,
+        "reentry_claims": [
+          "ARRIVAL",
+          "SPEECH",
+          "INSPECT",
+          "MOVE",
+          "OFFSCREEN_REPAIR",
+          "MOVE"
+        ],
+        "target_id": "d9f25cc655c237870abc661096f168aee0a9dd2bcd49e03f2e1552db803d0ecc"
+      },
+      "same_root": true,
+      "supplementary": true
+    }
+  ]
+}

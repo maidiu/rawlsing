@@ -1,0 +1,108 @@
+{
+  "product": {
+    "A0": {
+      "status": "OK",
+      "clock": 10,
+      "admitted": null,
+      "claims": [
+        "ARRIVAL"
+      ],
+      "code": null,
+      "completed_units": null
+    },
+    "A1_SAY": {
+      "status": "OK",
+      "clock": 10,
+      "admitted": true,
+      "claims": [],
+      "code": null,
+      "completed_units": null
+    },
+    "A1_INSPECT": {
+      "status": "NO_CHANGE",
+      "clock": 10,
+      "admitted": null,
+      "claims": [],
+      "code": null,
+      "completed_units": null
+    },
+    "A1_REPAIR": {
+      "status": "OK",
+      "clock": 10,
+      "admitted": true,
+      "claims": [],
+      "code": null,
+      "completed_units": null
+    },
+    "A2_WAIT": {
+      "status": "OK",
+      "clock": 40,
+      "admitted": null,
+      "claims": [],
+      "code": null,
+      "completed_units": null
+    },
+    "A3_OTHER": {
+      "status": "OK",
+      "clock": 40,
+      "admitted": null,
+      "claims": [],
+      "code": null,
+      "completed_units": 4
+    },
+    "A2_TRAVEL": {
+      "status": "OK",
+      "clock": 40,
+      "admitted": true,
+      "claims": [],
+      "code": null,
+      "completed_units": null
+    },
+    "A2_ATTEND": {
+      "status": "NO_CHANGE",
+      "clock": 40,
+      "admitted": null,
+      "claims": [],
+      "code": null,
+      "completed_units": null
+    },
+    "A2_REENTRY": {
+      "status": "OK",
+      "clock": 40,
+      "admitted": null,
+      "claims": [
+        "ARRIVAL",
+        "SPEECH",
+        "INSPECT",
+        "REPAIR",
+        "MOVE",
+        "OFFSCREEN_REPAIR",
+        "MOVE"
+      ],
+      "code": null,
+      "completed_units": null
+    },
+    "DENY_REPAIR": {
+      "status": "DENY",
+      "clock": 40,
+      "admitted": false,
+      "claims": [],
+      "code": "WRONG_LOCATION",
+      "completed_units": null
+    },
+    "ADDRESS_OTHER_PRESENT": {
+      "status": "OK",
+      "clock": 40,
+      "admitted": true,
+      "claims": [],
+      "code": null,
+      "completed_units": null
+    }
+  },
+  "cold_clock_equal": true,
+  "cold_claims_equal": true,
+  "fork_shared": true,
+  "fork_diverged": true,
+  "severance_all_pass": true,
+  "source_rows": 37
+}
