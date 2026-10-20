@@ -1,0 +1,21 @@
+# PYAT R49 — real recovery-and-build flight after A48/H48 return
+
+**STATUS:** COMMITTED, EXACT SHA VERIFIED; NOT AUTOMATICALLY LAUNCHED. **CONTROLLING RETURN JUDGMENT:** PYAT_CONTROL_ROOM/R49_H48_A48_RETURN_ADJUDICATION_AND_M48_BUILD_DECONFLICTION_20261020.md. A48 and H48 are ALREADY RETURNED; do not relaunch either.
+
+## B49 concrete accountable engineering assignment
+**AGENT:** qualified local OpenCode worker
+**MODEL:** DeepSeek V4.1-Flash; **REASONING EFFORT MAX**, **INTELLIGENCE I2+**, **EXECUTION S3** Python/git/sourcefree approved local archive. HQ explicitly adjudicates DeepSeek MAX sufficient for bounded T1/T2/T4 native engineering using existing code; Browser not chosen for full local archive/runtime S3, Codex GPT-6.1 High not justified for recovered deterministic implementation, Middle not initial recommendation. User selects actually available local account/editor/host and checks Max availability. The H48 actual executor was user-selected Codex; do not misreport it as DeepSeek.
+**BRANCH:** agent/rabochii-pyat-r49-b49-reuse-first-authority-native-adapter-r1. Create branch from exact startup after verifying no existing local/remote worker; do not disturb I44 or other worktrees.
+**SEALED EXACT 40-HEX WORKER STARTUP:** cff2b1c98acb5848a1dd427d18f3a6bbf8144d48.
+**FULL 00_COMMISSION:** WORKER_COMMISSIONS/PYAT-R49-B49-REUSE-FIRST-AUTHORITY-TO-NATIVE-SOURCE-ADAPTER-R1/00_COMMISSION.md
+**VERIFIED COMMISSION GIT BLOB:** 132341e66020aee000be72e6b812f3b6b5f90c6b.
+
+**Mission:** recover and reuse known V550/V550J and current V550 QUC/structure producer functionality to implement EXACT T1 existing authority rule selection, T2 source-native administered-U & C11/Catalog descriptors from governed static semantics, and T4 real existing U43/Route B/I03/I05/Batch sourcefree consumption of supplied appropriately TEST_ONLY scientific operation fixture. Full all35 source identity and typed current original science NULL, independent no-drop/hostile/cold witnesses. **DO NOT IMPLEMENT SCIENTIFIC E_pre eligibility**, issue source data access, open respondents, reimplement I05/Batch/C11 or manufacture all-pairs science. Deliver usable candidate modules/tests and actual native same client rather than another requirements/block report.
+
+## The two earlier commissioned research lanes after physical returns
+**A48** already returned remote 485831d5f5eed9f64943d38c36ff818a2b3a8570; its R48 bounded actual V550/V550J code recovery and final hybrid architecture are INCLUDED as candidate evidence in B49, NOT a reason to start the old Browser A48 again. **H48** already returned remote 359ddabc89d78ceb4c8fa45561588ee4cad7dd11; 119 inherited tests, 7 hostile witnesses and 446 real preimages are infrastructure evidence only, not original source scientific grant.
+**M48** remains distinctly justified independent contested scientific-method constitution **Codex GPT-6.1 High / I3+** at exact old startup 9561723cfe0932869e781f2be27e9c80b050ad7a, branch agent/vozhd-pyat-r48-m48-independent-scientific-requirements-r1 (not resolving remotely at HQ check). **Do not narrow it into a perfunctory audit:** it must determine prospectively meaningful finite source E_pre, item/response and risk/weight/design/estimand, adverse all-pairs/overconservative loss, minority/recursive/Simpson/directed/household, F5–F7 and reverse inference scientific boundaries. Its independence rule freezes scientific requirements before reading A/H author interpretations. Its original full commission remains unchanged. No fresh A/H worker/review.
+
+**RETURN / PRODUCT:** Sourcefree B49 should compile exact already adopted/historically scoped metadata into actual real callable source-native projection/catalog, and consume provided frozen TEST_ONLY operations through unchanged native U43/B. Native multiwave first tranche still needs independently competent current scientific E_pre and true licensed source+host+purpose; only then genuine original E04/A42 positive is possible. No current original measured status changes (0/1890), all35 obligation and N11 HOLD remain. No auto account/provider allocation.
+
+**No bureaucratic ratchet:** Once B49 and M48 return, HQ must marry real rule/adapter implementation to scientific grammar and first current permitted original data, not commission another broad scan.
