@@ -300,7 +300,7 @@ only the exact pinned source/tests are vendored for preservation.
 ### 5.3 Exact source/import identities
 
 Full manifest: `evidence/source_manifest.json` — **446 files**, tree hash
-`e2f3ebac9fde19d4cc3dc17e69e506913e789ba22c393867278da9c8584d4238`.
+`3d597410a97256e6b956683d2e820b984c3e9ab1855267850771d5013f4a3db9`.
 
 | Source | SHA-256 | Git blob SHA-1 |
 |---|---|---|

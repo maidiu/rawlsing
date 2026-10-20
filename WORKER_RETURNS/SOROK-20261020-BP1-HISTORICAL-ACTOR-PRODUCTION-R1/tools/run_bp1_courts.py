@@ -250,8 +250,14 @@ def main():
 
     bp1 = run_pytest("bp1_15", RETURN, "tests/test_bp1_actor_production.py",
                      (15, 0, 0, 0))
+    c9r_env = dict(os.environ)
+    c9r_env["PYTHONPATH"] = os.pathsep.join([
+        str(RETURN / "vendor/c9r/native_env"),
+        str(RETURN / "vendor/c9r"),
+    ])
     c9r = run_pytest("c9r_10", RETURN / "vendor/c9r",
-                     "tests/test_c9r_consumer.py", (10, 0, 0, 0))
+                     "tests/test_c9r_consumer.py", (10, 0, 0, 0),
+                     env_extra=dict(PYTHONPATH=c9r_env["PYTHONPATH"]))
     g18_matrix, _ = g18_regression()
     proof = proof_witness()
     export = run_script("export_bp1_life",

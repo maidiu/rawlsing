@@ -19,7 +19,7 @@ for _path in (
     ROOT / "candidate",
     ROOT / "vendor/g18/candidate",
     ROOT / "vendor/c9r",
-    ROOT / "vendor/c9r/runtime/native",
+    ROOT / "vendor/c9r/native_env",
 ):
     if str(_path) not in sys.path:
         sys.path.insert(0, str(_path))
