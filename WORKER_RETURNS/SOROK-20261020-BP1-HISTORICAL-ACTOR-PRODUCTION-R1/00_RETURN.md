@@ -385,12 +385,16 @@ native law claim.
 |---|---|
 | Branch | `agent/rabochii-sorok-20261020-bp1-historical-actor-production-c4-c9-positive-r1` |
 | Startup parent | `529232d9867a5bdc0889f43fb5293131ef806055` |
-| Substantive return commit | `__RETURN_COMMIT__` |
-| Evidence/verification commit | `__EVIDENCE_COMMIT__` |
-| Remote verification | `__REMOTE_VERIFICATION__` |
-| Final pushed tip | `__FINAL_TIP__` |
+| Substantive return commit | `3e95acd5dc523507f654368520e37c884b998ce0` |
+| Evidence/verification commit | `d8588d3aeb061d2b0e63ebc6c1bd4177a65fd275` |
+| Remote verification of that tip | `git ls-remote origin refs/heads/agent/rabochii-sorok-20261020-bp1-historical-actor-production-c4-c9-positive-r1` returned `d8588d3aeb061d2b0e63ebc6c1bd4177a65fd275` (ordinary non-force push; parent `529232d9867a5bdc0889f43fb5293131ef806055`) |
+| Final pushed tip at verification | `d8588d3aeb061d2b0e63ebc6c1bd4177a65fd275` |
 | Publication receipt | `PUBLICATION_RECEIPT.json` |
 
 Only this branch is committed and pushed (ordinary non-force push). No
 self-adoption; Sorok HQ owns the post-return review decision. C9RI remains the
 independent reviewer of its own sourcefree 28-row verdict; G18 remains frozen.
+
+This publication record is the docs delta committed after the verified evidence
+tip; the branch tip after that delta is the exact SHA returned by the final
+direct `git ls-remote` readback in the worker's final response.
