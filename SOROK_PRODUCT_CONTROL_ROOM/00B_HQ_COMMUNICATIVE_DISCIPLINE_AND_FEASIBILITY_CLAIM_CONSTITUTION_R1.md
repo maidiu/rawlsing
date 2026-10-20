@@ -1,5 +1,10 @@
 # SOROK HQ — Communicative Discipline and Feasibility-Claim Constitution R1
 
+## Mandatory 00E feasibility disclosure — missing PERSON PRODUCER is not a vague 'issuer hold'
+
+Before describing native V3/C4/C9/C12 readiness, apply `SOROK_PRODUCT_CONTROL_ROOM/00E_NEEDS_FIRST_PERSON_PRODUCTION_HQ_GROK_QUALIFICATION_R1.md`. A correct refusal is not evidence an absent upstream generator cannot be built; a plausible generator design is not evidence it already exists. Give exact C12-backward consumer behavior, current accepted native scientific carrier, software/resource/wiring/access gap, responsible build/reuse/competent decision and actual downstream positive. Identify whether a proposed solution solves genuine historical person formation or merely better filters fabricated inputs. If architecture is unknown, lead with needs-first reconstruction and explicit feasible next steps, not a confident missing-engine assertion, a permanent blocker label or a claim that the user must remember the code location. An original science/actor/source right remains a separate real permission. Do not infer production feasibility from a finite sourcefree fixture. Failure of 00E disables new material dispatch until demonstrated, not ongoing work.
+
+
 **Status:** `MANDATORY_SOROK_HQ_GOVERNANCE__COMMUNICATIVE_AND_EPISTEMIC_DISCIPLINE__NON_DISPOSITIVE_TO_PREMAIN_SEMANTIC_AUTHORITY`
 
 **Date:** 2026-10-12
