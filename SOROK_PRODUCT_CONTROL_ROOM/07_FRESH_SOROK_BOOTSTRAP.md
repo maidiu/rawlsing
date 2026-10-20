@@ -1,5 +1,10 @@
 # Fresh Sorok Bootstrap
 
+## REQUIRED BEFORE ANY FRESH-HQ ACCESSION — SOROK 08 (PERENNIAL)
+
+Run the exact 15-category evidence test and independent acceptance procedure in `SOROK_PRODUCT_CONTROL_ROOM/08_PERENNIAL_FRESH_HQ_FULL_ACCESSION_AND_GROK_PROTOCOL_R1.md` and use `SOROK_PRODUCT_CONTROL_ROOM/prompts/GENERIC_FULL_ACCESSION_NEW_SOROK_HQ_LAUNCH_PROMPT_R1.md` for a complete copy-paste launch. A candidate may source-ground and submit an isolated evidence dossier but may NOT appoint itself or make incumbent, canonical PRE-MAIN, native actor/science/worker edits. Mandatory actual currentness and 00E producer/function diagnosis at current repo heads; user assent and incumbent decision must be separately documented at scoped authority. No repeated generic regrok when a specific finite defect is sufficient, and no duplicate running worker.
+
+
 ## PASS 00E — needs-first native person-production qualification (MANDATORY before material command)
 
 Read `SOROK_PRODUCT_CONTROL_ROOM/00E_NEEDS_FIRST_PERSON_PRODUCTION_HQ_GROK_QUALIFICATION_R1.md` and shared PRE-MAIN missing-function constitution before any fresh/successor HQ accession, return-to-flight judgment, or NEW material dispatch. Demonstrate actual C12→C0 consumer-backward need, inherited existing function versus missing code/governed scientific resource/wiring/permission, exact first native/sourcefree positive and owner-led build/reuse/creation plan. Do **not** call a correct `HOLD` an explanation of the absent producer; do **not** expect the user to know architectural needs or where inherited code lives. If already answered UNKNOWN, `NO_REASK` and HQ reconstructs. After two no-product-delta returns on same prerequisite, no another denial/test socket unless real producer diagnosis and constructive plan. Failing HQ = `SOROK_HQ_NEEDS_FIRST_PERSON_PRODUCTION_GROK_INCOMPLETE__NO_NEW_MATERIAL_DISPATCH`; preserve active workers and distinct native source/actor rights. Record PASS evidence in existing progress/motion, no extra review board.
