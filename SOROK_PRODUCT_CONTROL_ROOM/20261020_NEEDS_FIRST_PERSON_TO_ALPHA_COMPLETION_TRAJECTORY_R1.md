@@ -1,5 +1,19 @@
 # Sorok — needs-first C0→C12→A0–A5 completion trajectory R1
 
+## LIVE RETURN AMENDMENT — BP3 C8 sourcefree security worker returned (2026-10-20)
+
+**Direct remote:** agent/rabochii-sorok-20261020-bp3-c8-exclusive-writer-external-anchor-r1 at **7faaa0722336231335d974bebc70c1282c79ce3e**; return 00_RETURN.md source blob 93fbe3801bbf0e8c7e2560952b37058c1b626ff5. Supersedes the earlier Gate 2 and current-inventory wording **BP3 result pending / remote absent**; the rest of the trajectory remains controlling. BP1 remote branch still absent at this HQ check; user's local dispatch retained, NO duplicate.
+
+**What is actually built:** import-time replacement of exact old Journal.commit and admit_and_queue by LegacyWriterRouteClosed; a keyed sourcefree compare-and-append ExclusiveJournal with externally placed test key and separately held monotonically advancing anchor; real C8O accepted OUT9 cold read and C9 event-ingress sourcefree consumer. Reported 18/18 BP3 court, five/five same-assertion source-fault, cold 18/18 seeds, preserved original 272=270/2 historical, OUT12 9/9 OUT13 23/23 OUT14 27/27 C8O 62/62 C8OI 17/17, 2/3/5 subprocess cases, byte-valid rollback refusal and NO_CHANGE. **HQ grade: ACCEPT_SCOPED_SOURCEFREE_CANDIDATE_FOR_REUSE (author evidence), NOT native D1/D2/D3 security adoption.**
+
+**Critical still OPEN:**
+- D1 original writer cutover: gating only works in processes that import BP3; processes without import and direct filesystem modification remain able to bypass; physical original owner cutover, OS permissions and migration needed.
+- D2 actual trust: protected production key/KMS and independent persistent monotonic anchor, key rotation/compromise, availability, out-of-band rollback and crash recovery are not issued by a test key. After journal rename before proof-sidecar commit, raw journal can be visible but unacknowledged; verifier refuses, reconciler still needed.
+- D3 actual ADP019 admission and independently performed later E2 source owner absent; C9 ingress returns typed admission absent, not native actor history.
+
+**Trajectory effect:** sourcefree Gate 2 has moved from WAITING_BUILD to **RETURNED_ENGINEERING_CANDIDATE**; the next competent action is **actual D1 cutover + D2 independent trust deployment/repair + D3 native source decision**, not another generic BP3 audit. BP2 and BP4 must consume BP3 only at honest sourcefree grade until D1–D3. No additional worker commissioned here. BP1 remains user's second dispatched job and its latest actual source/consumer evidence determines the next material producer integration. Real C12 persons still 0.
+
+
 **2026-10-20 | CURRENT SOROK HQ COMPLETION PLAN.** Enriches P0's returned 07_TERMINAL_BUILD_PROGRAM_AND_PARALLEL_DEPENDENCIES, Sorok 05_PROGRAM_MAP, 03_REAL_ALPHA_SPINE, 100_MINIMAL_WHITE_WHALE_ALPHA and binding 101 actor/phenomenal rendering law. Does not replace PRE-MAIN terminal and missing-function law, Sorok mandatory 00E HQ grok, accepted CAN/ADP science, Pyat HQ, or actual native authorization. Supersedes earlier P0 scheduling assumptions where later P0/PS0/PA0/G18/C9RI physical returns changed the evidence. No extra review committee or automatic dispatch.
 
 ## A. The two finish lines and three evidence grades
