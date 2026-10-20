@@ -385,10 +385,10 @@ native law claim.
 |---|---|
 | Branch | `agent/rabochii-sorok-20261020-bp1-historical-actor-production-c4-c9-positive-r1` |
 | Startup parent | `529232d9867a5bdc0889f43fb5293131ef806055` |
-| Substantive return commit | `3e95acd5dc523507f654368520e37c884b998ce0` |
-| Evidence/verification commit | `d8588d3aeb061d2b0e63ebc6c1bd4177a65fd275` |
-| Remote verification of that tip | `git ls-remote origin refs/heads/agent/rabochii-sorok-20261020-bp1-historical-actor-production-c4-c9-positive-r1` returned `d8588d3aeb061d2b0e63ebc6c1bd4177a65fd275` (ordinary non-force push; parent `529232d9867a5bdc0889f43fb5293131ef806055`) |
-| Final pushed tip at verification | `d8588d3aeb061d2b0e63ebc6c1bd4177a65fd275` |
+| Substantive return commit | `50fd7ce0eef6b6d13a4873351c46397176a07708` |
+| Evidence/verification commit | `50fd7ce0eef6b6d13a4873351c46397176a07708` |
+| Remote verification of that tip | `git ls-remote origin refs/heads/agent/rabochii-sorok-20261020-bp1-historical-actor-production-c4-c9-positive-r1` returned `50fd7ce0eef6b6d13a4873351c46397176a07708` (ordinary non-force push; parent `529232d9867a5bdc0889f43fb5293131ef806055`) |
+| Final pushed tip at verification | `50fd7ce0eef6b6d13a4873351c46397176a07708` |
 | Publication receipt | `PUBLICATION_RECEIPT.json` |
 
 Only this branch is committed and pushed (ordinary non-force push). No
