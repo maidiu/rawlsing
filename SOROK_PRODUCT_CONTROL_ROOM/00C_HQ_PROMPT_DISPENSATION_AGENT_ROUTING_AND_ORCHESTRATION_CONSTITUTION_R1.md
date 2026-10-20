@@ -1,5 +1,10 @@
 # SOROK HQ PROMPT DISPENSATION, AGENT ROUTING AND ORCHESTRATION CONSTITUTION R1
 
+## BINDING 00E MATERIAL-DISPATCH GATE — ACTUAL MISSING PERSON-PRODUCER FUNCTION
+
+`SOROK_PRODUCT_CONTROL_ROOM/00E_NEEDS_FIRST_PERSON_PRODUCTION_HQ_GROK_QUALIFICATION_R1.md` is REQUIRED before every NEW Sorok 00C §9 material launch. Explicitly show a C12→C0 consumer-backward first real positive, existing native/adopted code and ruled resources at exact grades, whether missing thing is software / compiled scientific authority / runtime decision / wiring / independent scientific ruling / source permission, precise build-reuse-create owner, negative/no-effect and same-consumer source-fault. A `HOLD`/unissued external-issuer reference ALONE invalidates new commissioning when the engineering producer has not been analyzed. If person-production architecture is unclear, HQ must determine needs-first from consuming code and accepted V3/ADP/PFF, not ask the user to design an absent actor compiler. If user says UNKNOWN, record and investigate without repeated question. Two sourcefree returns with no person/world delta require functional reconstruction before another adjacent microreview. `SOROK_HQ_NEEDS_FIRST_PERSON_PRODUCTION_GROK_INCOMPLETE__NO_NEW_MATERIAL_DISPATCH`. This does not modify live worker briefs or authorize CAN/ADP/Pyat/security rights; maintain MODEL=DeepSeek V4.1-Flash REASONING=MAX as user-specified where actually qualified, full 00C §9 chat copy-paste, native three-court grades.
+
+
 ## PRIORITY-ZERO USER COMMAND — DO NOT CALL THE ABSENCE OF A FUNCTION A PERMANENT EXTERNAL BLOCK
 
 **Binding cross-HQ PRE-MAIN source:** `CROSS_HQ_CONTROL_ROOM/MISSING_FUNCTION_DISCOVERY_USER_CHECK_AND_BUILD_OR_REUSE_CONSTITUTION_R1.md`, published under canonical `integration/pre-main-reconciliation-r1`. This is a working-Sorok process amendment only, not actor model production, source/Rule_A/Rule_T issuance, or a restart of an active worker.
