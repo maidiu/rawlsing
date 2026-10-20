@@ -1,0 +1,22 @@
+{
+  "built": [
+    "candidate/bp1/source.py \u2014 explicit sourcefree fixture actor source",
+    "candidate/bp1/ledger.py \u2014 per-actor append-only ledger, own-state conservation, durable snapshot",
+    "candidate/bp1/composer.py \u2014 two-actor historical lives, shared objective facts, NO_CHANGE/DENY, future firewall",
+    "candidate/bp1/c9_bridge.py \u2014 actor snapshot \u2192 C9R E1 \u2192 target \u2192 later E2",
+    "tests/test_bp1_actor_production.py \u2014 15 author tests"
+  ],
+  "native_authority": "NOT_GRANTED",
+  "not_used": [
+    "native U2 subject identity as actor (U2 is NONACTOR; no actor self-issue)",
+    "native ADP007/ADP010/ADP015/ADP019 receipts (absent)",
+    "CAN008/CAN011 concrete native rules (absent)",
+    "Pyat N11/N12, C8 D1/D2/D3, C11 weld, production (absent/separate)"
+  ],
+  "reused": [
+    "G18 61713eafe source-issued material/action receipts and historical frozen courts",
+    "C9R 6fa29399 exact sourcefree actor/event/conditioning/rule/target/transaction/later-action code",
+    "C9RI 5753d9b4 independent 28-row compatibility verdict and C9R reuse release"
+  ],
+  "schema": "BP1_CODE_EXISTENCE_AND_BUILD_REUSE@1"
+}

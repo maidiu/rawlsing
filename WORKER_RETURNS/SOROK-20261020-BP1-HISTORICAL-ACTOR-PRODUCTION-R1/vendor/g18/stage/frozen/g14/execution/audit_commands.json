@@ -1,0 +1,22 @@
+[
+  {
+    "command": [
+      "python3",
+      "-B",
+      "audit_replay.py"
+    ],
+    "cwd": "reproduction/03_POSTREPAIR_COURT",
+    "exit_status": 0,
+    "stdout": "execution/audit_target.txt"
+  },
+  {
+    "command": [
+      "python3",
+      "-B",
+      "audit_replay.py"
+    ],
+    "cwd": "historical/03_POSTREPAIR_COURT",
+    "exit_status": 0,
+    "stdout": "execution/audit_historical.txt"
+  }
+]

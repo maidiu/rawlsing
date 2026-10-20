@@ -1,0 +1,60 @@
+{
+  "cards": [
+    {
+      "consumer": "BP1 native actor source \u2192 C4 ledger \u2192 C9R ingress",
+      "decision": "competent actor genesis/activation, sparse defaults/unknowns, no personality seed",
+      "effect": "actual native actor; currently BP1 fixture actors only",
+      "function": "ADP007_NATIVE_ACTOR_GENESIS",
+      "input": "qualified ADP007 subject + source-qualified parent(s) + world/time",
+      "owner": "V3 ADP007/ADP015 competent owners",
+      "receipt": "ADP007 activation receipt + source/genealogy binding"
+    },
+    {
+      "consumer": "C9R E1 event witness",
+      "decision": "actual occurrence admission; no co-presence-only inference",
+      "effect": "actual public event; currently TEST_ONLY declared event",
+      "function": "ADP019_NATIVE_E1",
+      "input": "ADP010 encounter + independently observed other action",
+      "owner": "ADP019 + C8 D3",
+      "receipt": "ADP019 occurrence receipt + C8 committed event"
+    },
+    {
+      "consumer": "C9R response lookup",
+      "decision": "one scoped response rule with alternatives/VALID_EMPTY; no trait/affect coefficients",
+      "effect": "actual immediate response; currently TEST_ONLY rule",
+      "function": "CAN008_CONCRETE_RULE_A",
+      "input": "actor history/receptivity + E1 + world/material constraints",
+      "owner": "CAN008 R2 issuer",
+      "receipt": "signed rule id/version/hash/scope/effective/revocation"
+    },
+    {
+      "consumer": "C9R target/transaction; later E2 reader",
+      "decision": "CREATE/NO_CHANGE/DENY for one scoped V3MS_PRACTICE target",
+      "effect": "actual durable practice; currently TEST_ONLY target",
+      "function": "CAN011_CONCRETE_RULE_T_GRANT",
+      "input": "RULE_A response + before-state + performed activity + target owner",
+      "owner": "CAN011 separate target owner",
+      "receipt": "target rule + exact grant + prestate/expiry/revocation"
+    },
+    {
+      "consumer": "C10/C12 continuation",
+      "decision": "actual performed action after commit; plan/narration insufficient",
+      "effect": "actual later action; BP1 E2 is TEST_ONLY",
+      "function": "NATIVE_E2_PERFORMED_ACTION",
+      "input": "committed target state + independent actuator + occurrence",
+      "owner": "ADP019/E2 performer owner",
+      "receipt": "owner performed-action receipt bound to consumed state hash"
+    },
+    {
+      "consumer": "product person",
+      "decision": "couple actual actor/world; physically weld only under C11",
+      "effect": "actual C12 person; not attempted",
+      "function": "C10_C11_C12",
+      "input": "C9 committed state + qualified world + C11 permission",
+      "owner": "C10/C11/C12 competent owners",
+      "receipt": "C10 read/C11 weld/C12 continuity receipts"
+    }
+  ],
+  "native_authority": "NOT_GRANTED",
+  "schema": "BP1_NATIVE_FUNCTIONAL_GAP@1"
+}

@@ -1,0 +1,16 @@
+{
+  "schema":"HQ297_G11_SOURCEFREE_EXECUTION_RECEIPT_R1",
+  "status":"EXECUTED_ON_PERMITTED_LOCAL_PYTHON_NO_ACTOR",
+  "invocation":"cd /mnt/data/g11_workspace && PYTHONPATH=. python -m pytest -q --junitxml=06_PYTEST_JUNIT.xml",
+  "host":{"python":"3.13.5","pytest":"9.0.2","git":"2.47.3","physical_provider":"local_container","model_provider_used":false,"quota_provider":"UNKNOWN"},
+  "import_observed":"/mnt/data/g11_workspace/g11_solver.py",
+  "PYTHONPATH_before":"UNSET",
+  "PYTHONPATH_at_invocation":".",
+  "pytest":{"status":"PASS","exit_code":0,"passed":25,"failed":0,"skipped":0,"elapsed_seconds_reported":0.07,"stdout":".........................                                                [100%]\n25 passed in 0.07s\n","stderr":"NONE_CAPTURED"},
+  "sourcefree_witnesses":{"count":8,"cartesian":"M0,M1 x F0,F1 x C0,C1","valid":8,"rejected":0,"mother_sha256_prefixes":["0f27ad279217","46a6a72f007b"],"father_sha256_prefixes":["e83387346a42","54c9b5547f4c"],"birth_forecasts_not_events":["2021-03-08","2021-08-08"],"attempted_actor_construction":0},
+  "benchmark":{"sourcefree_solver_runs":2000,"median_ms":0.23068,"p95_ms":0.36506,"max_ms":1.9319,"status":"OBSERVED_CONTAINER_ONLY_NOT_REAL_GENERATION_COST"},
+  "pinned_file_identities":{"oracle_sha256":"091b81c1604f856fb33d4b2da38d1aedf9d0e35b41e0831cdfad84f12fe2f055","oracle_git_blob":"99a8c6e42d3a5d4926ab64cda9a3f0510f6318eb","solver_git_blob":"11443bd674d8b9ea14541d64d8946d2ca2aee47d","tests_git_blob":"05afa5e70f0cb2a3a64dec613c678a831b23fd71","uploaded_code_bytes_exact":true},
+  "capability_probe":{"filesystem_write_import":"PASS","repo_network_git_ls_remote":"FAILED_DNS_COULD_NOT_RESOLVE_GITHUB_COM","github_connector_read":"PASS","github_connector_branch_write":"PASS"},
+  "permissions":{"actor_calls":0,"LLM_calls":0,"survey_raw_rows":0,"new_adp_issuance":0,"real_child_events":0},
+  "interpretation":"This record describes executed frozen-fixture temporal satisfiability tests. JUnit was generated locally; see pytest summary. No whole-repo suite, actor generation, source qualification, posterior or original survey data accessed."
+}

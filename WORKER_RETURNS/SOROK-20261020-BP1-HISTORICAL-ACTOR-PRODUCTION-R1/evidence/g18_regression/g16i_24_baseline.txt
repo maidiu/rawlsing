@@ -1,0 +1,17 @@
+...............FF.......                                                 [100%]
+=================================== FAILURES ===================================
+_____________ test_archived_m2_can_continue_legitimate_prior_life ______________
+test_g16i_science.py:204: in test_archived_m2_can_continue_legitimate_prior_life
+    assert out['maternal_continuation_admitted'] is True
+E   assert False is True
+____________ test_known_counterpart_has_positive_history_reuse_path ____________
+test_g16i_science.py:210: in test_known_counterpart_has_positive_history_reuse_path
+    assert out['terminal']['status']=='COMMITTED'
+E   AssertionError: assert 'SHARED_HISTO...ADICTION_HOLD' == 'COMMITTED'
+E     
+E     - COMMITTED
+E     + SHARED_HISTORY_CONTRADICTION_HOLD
+=========================== short test summary info ============================
+FAILED test_g16i_science.py::test_archived_m2_can_continue_legitimate_prior_life
+FAILED test_g16i_science.py::test_known_counterpart_has_positive_history_reuse_path
+2 failed, 22 passed in 4.25s

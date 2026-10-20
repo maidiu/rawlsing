@@ -1,0 +1,54 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "status": "MECHANICAL_WITNESS_PASS_NOT_SEMANTIC_ADOPTION",
+  "claims": [
+    {
+      "claim_id": "BP1_ACTOR_SOURCE_EDGE",
+      "positive_node": "WORKER_RETURNS/SOROK-20261020-BP1-HISTORICAL-ACTOR-PRODUCTION-R1/tests/test_bp1_actor_production.py::test_forged_actor_source_refused",
+      "fault_path": "WORKER_RETURNS/SOROK-20261020-BP1-HISTORICAL-ACTOR-PRODUCTION-R1/candidate/bp1/source.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    },
+    {
+      "claim_id": "BP1_PERFORMED_ACTION_EDGE",
+      "positive_node": "WORKER_RETURNS/SOROK-20261020-BP1-HISTORICAL-ACTOR-PRODUCTION-R1/tests/test_bp1_actor_production.py::test_fake_afterstate_action_refused",
+      "fault_path": "WORKER_RETURNS/SOROK-20261020-BP1-HISTORICAL-ACTOR-PRODUCTION-R1/candidate/bp1/ledger.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    },
+    {
+      "claim_id": "BP1_MATERIAL_SOURCE_EDGE",
+      "positive_node": "WORKER_RETURNS/SOROK-20261020-BP1-HISTORICAL-ACTOR-PRODUCTION-R1/tests/test_bp1_actor_production.py::test_forged_material_source_refused",
+      "fault_path": "WORKER_RETURNS/SOROK-20261020-BP1-HISTORICAL-ACTOR-PRODUCTION-R1/candidate/bp1/ledger.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    },
+    {
+      "claim_id": "BP1_FUTURE_CHILD_EDGE",
+      "positive_node": "WORKER_RETURNS/SOROK-20261020-BP1-HISTORICAL-ACTOR-PRODUCTION-R1/tests/test_bp1_actor_production.py::test_future_child_payload_refused",
+      "fault_path": "WORKER_RETURNS/SOROK-20261020-BP1-HISTORICAL-ACTOR-PRODUCTION-R1/candidate/bp1/composer.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    },
+    {
+      "claim_id": "BP1_C9_ACTOR_SOURCE_EDGE",
+      "positive_node": "WORKER_RETURNS/SOROK-20261020-BP1-HISTORICAL-ACTOR-PRODUCTION-R1/tests/test_bp1_actor_production.py::test_c9_source_fault_snapshot_is_refused",
+      "fault_path": "WORKER_RETURNS/SOROK-20261020-BP1-HISTORICAL-ACTOR-PRODUCTION-R1/candidate/bp1/c9_bridge.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    },
+    {
+      "claim_id": "BP1_C9_CONSUMED_STATE_EDGE",
+      "positive_node": "WORKER_RETURNS/SOROK-20261020-BP1-HISTORICAL-ACTOR-PRODUCTION-R1/tests/test_bp1_actor_production.py::test_c9_end_to_end_positive_and_exact_consumed_state",
+      "fault_path": "WORKER_RETURNS/SOROK-20261020-BP1-HISTORICAL-ACTOR-PRODUCTION-R1/candidate/bp1/c9_bridge.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    }
+  ]
+}

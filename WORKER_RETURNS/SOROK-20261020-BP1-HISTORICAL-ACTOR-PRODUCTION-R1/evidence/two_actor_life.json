@@ -1,0 +1,290 @@
+{
+  "actor_ids": [
+    "TEST_ONLY_BP1_ACTOR_A",
+    "TEST_ONLY_BP1_ACTOR_B"
+  ],
+  "claim": "TWO_SOURCEFREE_HISTORICAL_ACTOR_LEDGERS_WITH_INDEPENDENT_PERFORMED_ACTIONS_AND_SHARED_OBJECTIVE_FACTS_NOT_NATIVE_ACTORS",
+  "g18_history_hashes": [
+    "sha256:90febf29dc5a1fdfd80d5baaa617571cb9712e3ed5c44f40f57f914b1cce78cd",
+    "sha256:9ead43543abaf6c6710fecc5971a72940723423efa2b759edcef8ba8d440b298"
+  ],
+  "history_hashes": [
+    "dd7234edf12a069d69d1a4d940f59bf723aa15db7f35c40d801461cd6ab5e0ee",
+    "c2be4b1ac57bb2f4554b1b81bec602b27e10374625bf6a831e050ed395c19be6"
+  ],
+  "ledger_event_refs": {
+    "TEST_ONLY_BP1_ACTOR_A": [
+      "TEST_ONLY_BP1_EVT_ccef17a3360c20e9bb1834d8ea4f6ec88cf7ad74784c50de87e571338313a303",
+      "TEST_ONLY_BP1_EVT_e1808747e9e3fcdf70c27cb6e8f8c3b72471ba099faa1a15801f97f3140c560d",
+      "TEST_ONLY_BP1_EVT_da03a5bfcc30ad8f258e091036a18c0e908127a22a8173e0a153644a3ba44fe3",
+      "TEST_ONLY_BP1_EVT_1054a5d2d15415a9228a18718abe078c2b4fcb5955f84258fc975152e49c8bbe",
+      "TEST_ONLY_BP1_EVT_049a1e0a6c3735da361fae2be37ba5842d25ec18c6cfe7d29e9533565a440d4a"
+    ],
+    "TEST_ONLY_BP1_ACTOR_B": [
+      "TEST_ONLY_BP1_EVT_c179cf39e46f8cbc09c6167c7f2560e2f6bb8117b759278491752b50f7b4f50d",
+      "TEST_ONLY_BP1_EVT_6729c7c9b139116c32da1c82c6ee8a3fa054a04661daf96cfac5654bed1eedff",
+      "TEST_ONLY_BP1_EVT_1d883aee562ac33ba3b57cf56c0848e32e6831cfa00e3a06e5bdbf13380aca97",
+      "TEST_ONLY_BP1_EVT_688a8c6a743dc1e9f668f6cc3329d6884b9b9b8c8c18c9b8c4c1ab02e6865b7a",
+      "TEST_ONLY_BP1_EVT_a263df23422bb35eb1700079fc64992dd4b15dda2afec1b7457b52f4a2a2c2cd"
+    ]
+  },
+  "material_event_ref": "sha256:f2b331667a7018ea849ada4570d658a4425d0b990895f1a9db33f02b0f6f47ae",
+  "material_receipt_id": "c68bcaf8de8f226c5f86febad320dd86dd7f0dd5bac2ba6f6e9c32a211ecdf96",
+  "native_actor_claim": false,
+  "native_grant": "NOT_GRANTED",
+  "performed_actions": [
+    {
+      "after": {
+        "actor_id": "TEST_ONLY_BP1_ACTOR_A",
+        "attitudes": [
+          "reciprocity_in_work_obligations"
+        ],
+        "availability_status": "available_for_encounter",
+        "cash": 55,
+        "completed_units": 4,
+        "debt_units": 2,
+        "free_hours": 12,
+        "health": "recovered",
+        "material_position": "waged_repair",
+        "material_remaining": 2,
+        "nonmother_relations": [
+          "G15_NONKIN_e284ae4306e43444d26d0646abf5076fa63ba096b1db426b84f20628c9a1b87a"
+        ],
+        "place": "INST_WORKSHOP_A",
+        "practices": [
+          "scheduled_repair_ledger_discipline"
+        ],
+        "projects": [
+          "communal_irrigation_pump_repair"
+        ],
+        "role": "repair",
+        "skill": 6,
+        "tools_remaining": 1
+      },
+      "before": {
+        "actor_id": "TEST_ONLY_BP1_ACTOR_A",
+        "attitudes": [
+          "reciprocity_in_work_obligations"
+        ],
+        "availability_status": "available_for_encounter",
+        "cash": 53,
+        "completed_units": 3,
+        "debt_units": 2,
+        "free_hours": 13,
+        "health": "recovered",
+        "material_position": "waged_repair",
+        "material_remaining": 2,
+        "nonmother_relations": [
+          "G15_NONKIN_e284ae4306e43444d26d0646abf5076fa63ba096b1db426b84f20628c9a1b87a"
+        ],
+        "place": "INST_WORKSHOP_A",
+        "practices": [
+          "scheduled_repair_ledger_discipline"
+        ],
+        "projects": [
+          "communal_irrigation_pump_repair"
+        ],
+        "role": "repair",
+        "skill": 6,
+        "tools_remaining": 1
+      },
+      "event_id": "sha256:d1b75691f9c0c9a793687735452b0fcb7903a8fec28725a529d6555b11dd99b6",
+      "material_event_ref": "sha256:f2b331667a7018ea849ada4570d658a4425d0b990895f1a9db33f02b0f6f47ae",
+      "owner_id": "TEST_ONLY_BP1_ACTOR_A",
+      "receipt_id": "795f884900c625d4d04a3869947322a857392e2aeecb757ca8c6ddd5178a4d33"
+    },
+    {
+      "after": {
+        "actor_id": "TEST_ONLY_BP1_ACTOR_B",
+        "attitudes": [
+          "reciprocity_in_work_obligations"
+        ],
+        "availability_status": "available_for_encounter",
+        "cash": 54,
+        "completed_units": 3,
+        "debt_units": 2,
+        "free_hours": 13,
+        "health": "recovered",
+        "material_position": "waged_finishing",
+        "material_remaining": 0,
+        "nonmother_relations": [
+          "G15_NONKIN_b45807ec00772f81e963723ca68f2caba499a5f075dd5036343eb2b2b55de990"
+        ],
+        "place": "INST_WORKSHOP_A",
+        "practices": [
+          "scheduled_finishing_ledger_discipline"
+        ],
+        "projects": [
+          "communal_irrigation_pump_repair"
+        ],
+        "role": "finishing",
+        "skill": 6,
+        "tools_remaining": 1
+      },
+      "before": {
+        "actor_id": "TEST_ONLY_BP1_ACTOR_B",
+        "attitudes": [
+          "reciprocity_in_work_obligations"
+        ],
+        "availability_status": "available_for_encounter",
+        "cash": 52,
+        "completed_units": 2,
+        "debt_units": 2,
+        "free_hours": 14,
+        "health": "recovered",
+        "material_position": "waged_finishing",
+        "material_remaining": 0,
+        "nonmother_relations": [
+          "G15_NONKIN_b45807ec00772f81e963723ca68f2caba499a5f075dd5036343eb2b2b55de990"
+        ],
+        "place": "INST_WORKSHOP_A",
+        "practices": [
+          "scheduled_finishing_ledger_discipline"
+        ],
+        "projects": [
+          "communal_irrigation_pump_repair"
+        ],
+        "role": "finishing",
+        "skill": 6,
+        "tools_remaining": 1
+      },
+      "event_id": "sha256:977a526573a2c3e18e67b3e324e04d8394732d21af0ddd199a30222dd59cdcbc",
+      "material_event_ref": "sha256:f2b331667a7018ea849ada4570d658a4425d0b990895f1a9db33f02b0f6f47ae",
+      "owner_id": "TEST_ONLY_BP1_ACTOR_B",
+      "receipt_id": "30e27cd636104f5066800b44a0b8d99722b0a72dcedaa586454ac28a51d8c543"
+    }
+  ],
+  "psychology_claim": false,
+  "schema": "BP1_TWO_ACTOR_LIFE@1",
+  "shared_objective_hash": "6e188ea5436f94d3f7b78efbc7b844486fe888e55e6c5ff1333135b7aff0eb4f",
+  "shared_objective_ref": "TEST_ONLY_BP1_OBJ_6e188ea5436f94d3f7b78efbc7b844486fe888e55e6c5ff1333135b7aff0eb4f",
+  "snapshots": [
+    {
+      "actor_id": "TEST_ONLY_BP1_ACTOR_A",
+      "event_count": 5,
+      "event_head": "TEST_ONLY_BP1_EVT_049a1e0a6c3735da361fae2be37ba5842d25ec18c6cfe7d29e9533565a440d4a",
+      "hash": "6b65980d0fbb2ecc8dca657e0f6f12daf98a6d4789d2d35a0e129ed23de80bb6",
+      "history_hash": "dd7234edf12a069d69d1a4d940f59bf723aa15db7f35c40d801461cd6ab5e0ee",
+      "known_unknowns": [
+        "PSYCHOLOGICAL_LAW_UNISSUED",
+        "NATIVE_ACTOR_SOURCE_NOT_GRANTED"
+      ],
+      "last_clock": 201,
+      "native_actor_claim": false,
+      "native_grant": "NOT_GRANTED",
+      "objective_refs": [
+        "TEST_ONLY_BP1_EVT_e1808747e9e3fcdf70c27cb6e8f8c3b72471ba099faa1a15801f97f3140c560d"
+      ],
+      "other_actor_id": "TEST_ONLY_BP1_ACTOR_B",
+      "performed_action_refs": [
+        "TEST_ONLY_BP1_EVT_da03a5bfcc30ad8f258e091036a18c0e908127a22a8173e0a153644a3ba44fe3"
+      ],
+      "prior_history_hash": "sha256:90febf29dc5a1fdfd80d5baaa617571cb9712e3ed5c44f40f57f914b1cce78cd",
+      "psychology_claim": false,
+      "role": "repair",
+      "schema": "BP1_ACTOR_SNAPSHOT@1",
+      "source_grade": "SOURCEFREE_FIXTURE_ACTOR_NOT_NATIVE",
+      "source_hash": "bf80ce4a1cddafa2eadab57fdda43942c70cca999bd49c864a34e9c1e33f82e2",
+      "source_ref": "TEST_ONLY_BP1_SOURCE_ACTOR_A",
+      "state": {
+        "actor_id": "TEST_ONLY_BP1_ACTOR_A",
+        "attitudes": [
+          "reciprocity_in_work_obligations"
+        ],
+        "availability_status": "available_for_encounter",
+        "cash": 55,
+        "completed_units": 4,
+        "debt_units": 2,
+        "free_hours": 12,
+        "health": "recovered",
+        "material_position": "waged_repair",
+        "material_remaining": 2,
+        "nonmother_relations": [
+          "G15_NONKIN_e284ae4306e43444d26d0646abf5076fa63ba096b1db426b84f20628c9a1b87a"
+        ],
+        "place": "INST_WORKSHOP_A",
+        "practices": [
+          "scheduled_repair_ledger_discipline"
+        ],
+        "projects": [
+          "communal_irrigation_pump_repair"
+        ],
+        "role": "repair",
+        "skill": 6,
+        "tools_remaining": 1
+      },
+      "state_hash": "b5fa11db55d46e2a59d5b32788a952c10939960d9fa1a3be5fe8b63ad69e2bfb"
+    },
+    {
+      "actor_id": "TEST_ONLY_BP1_ACTOR_B",
+      "event_count": 5,
+      "event_head": "TEST_ONLY_BP1_EVT_a263df23422bb35eb1700079fc64992dd4b15dda2afec1b7457b52f4a2a2c2cd",
+      "hash": "8fcfb8aacbbb563ee9d6efc000359df8262ec23c6380d40f51184dc5964ff7d7",
+      "history_hash": "c2be4b1ac57bb2f4554b1b81bec602b27e10374625bf6a831e050ed395c19be6",
+      "known_unknowns": [
+        "PSYCHOLOGICAL_LAW_UNISSUED",
+        "NATIVE_ACTOR_SOURCE_NOT_GRANTED"
+      ],
+      "last_clock": 201,
+      "native_actor_claim": false,
+      "native_grant": "NOT_GRANTED",
+      "objective_refs": [
+        "TEST_ONLY_BP1_EVT_6729c7c9b139116c32da1c82c6ee8a3fa054a04661daf96cfac5654bed1eedff"
+      ],
+      "other_actor_id": "TEST_ONLY_BP1_ACTOR_A",
+      "performed_action_refs": [
+        "TEST_ONLY_BP1_EVT_1d883aee562ac33ba3b57cf56c0848e32e6831cfa00e3a06e5bdbf13380aca97"
+      ],
+      "prior_history_hash": "sha256:9ead43543abaf6c6710fecc5971a72940723423efa2b759edcef8ba8d440b298",
+      "psychology_claim": false,
+      "role": "finishing",
+      "schema": "BP1_ACTOR_SNAPSHOT@1",
+      "source_grade": "SOURCEFREE_FIXTURE_ACTOR_NOT_NATIVE",
+      "source_hash": "ba1266db1726ce17c426df62ec7e4a028b47ee09f7388b243e2ae47dc3ab0fcb",
+      "source_ref": "TEST_ONLY_BP1_SOURCE_ACTOR_B",
+      "state": {
+        "actor_id": "TEST_ONLY_BP1_ACTOR_B",
+        "attitudes": [
+          "reciprocity_in_work_obligations"
+        ],
+        "availability_status": "available_for_encounter",
+        "cash": 54,
+        "completed_units": 3,
+        "debt_units": 2,
+        "free_hours": 13,
+        "health": "recovered",
+        "material_position": "waged_finishing",
+        "material_remaining": 0,
+        "nonmother_relations": [
+          "G15_NONKIN_b45807ec00772f81e963723ca68f2caba499a5f075dd5036343eb2b2b55de990"
+        ],
+        "place": "INST_WORKSHOP_A",
+        "practices": [
+          "scheduled_finishing_ledger_discipline"
+        ],
+        "projects": [
+          "communal_irrigation_pump_repair"
+        ],
+        "role": "finishing",
+        "skill": 6,
+        "tools_remaining": 1
+      },
+      "state_hash": "effc83bfecdf2f95d176b95d952c0d45312037b07bd9e2bdb7251fea507a603e"
+    }
+  ],
+  "source_grade": "SOURCEFREE_FIXTURE_ACTOR_NOT_NATIVE",
+  "source_hashes": [
+    "bf80ce4a1cddafa2eadab57fdda43942c70cca999bd49c864a34e9c1e33f82e2",
+    "ba1266db1726ce17c426df62ec7e4a028b47ee09f7388b243e2ae47dc3ab0fcb"
+  ],
+  "source_refs": [
+    "TEST_ONLY_BP1_SOURCE_ACTOR_A",
+    "TEST_ONLY_BP1_SOURCE_ACTOR_B"
+  ],
+  "state_hashes": [
+    "b5fa11db55d46e2a59d5b32788a952c10939960d9fa1a3be5fe8b63ad69e2bfb",
+    "effc83bfecdf2f95d176b95d952c0d45312037b07bd9e2bdb7251fea507a603e"
+  ],
+  "witness_ref": "sha256:0cbf9f5962088188834995b0f6d50af0e21d5fe2d7fd5e0e0f5ce3cb37c0ff76",
+  "witness_status": "WITNESSED"
+}

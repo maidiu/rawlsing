@@ -1,0 +1,353 @@
+{
+  "schema_id": "SG_K11_CONSTRUCTION_VS_CAUSAL_DAGS",
+  "version": "0.1.0-PROPOSAL",
+  "status": "NOT_EXECUTED__NONADOPTED",
+  "source_basis": {
+    "astra_amendment_blob": "202e754aebc4e984fa84e5ab194ea5bb110dad3c",
+    "adp015_blob": "a4dab0a12102aaa0b584ef6ff4fdc9206a28d456",
+    "adp020_blob": "1911352f4bd5b04dfeaa0f26930e6702998bb76d",
+    "v3_completion_blob": "49095f763c5c371d98bb57a01aaf5f47dc7b1ae1",
+    "td_r05_blob": "dfcc7e4fc7b6e907218d7a368ceb9d269a49206d"
+  },
+  "identity_disclaimer": "Schematic node symbols only; no generated mother, second parent, conception, child or history is asserted to exist.",
+  "node_types": [
+    {
+      "id": "world_pre",
+      "kind": "WORLD_SNAPSHOT",
+      "time": "t_pre"
+    },
+    {
+      "id": "mother_root",
+      "kind": "ADP007_ROOT",
+      "time": "t_m_root"
+    },
+    {
+      "id": "mother_history",
+      "kind": "V3_ACTOR_HISTORY",
+      "time": "t_m_root..t_conception_minus"
+    },
+    {
+      "id": "older_child_existing",
+      "kind": "PREEXISTING_ACTOR_AND_GENEALOGY",
+      "time": "t_before_focal",
+      "optional_for": "M0",
+      "required_for": "M1"
+    },
+    {
+      "id": "mother_anchor",
+      "kind": "IMMUTABLE_PRE_EVENT_STATE",
+      "time": "t_conception_minus"
+    },
+    {
+      "id": "situation",
+      "kind": "NONCAUSAL_TARGET",
+      "time": "t_conception_target"
+    },
+    {
+      "id": "scenario_set",
+      "kind": "NONCAUSAL_MODEL_PROPOSALS",
+      "time": "construction_only"
+    },
+    {
+      "id": "generic_evidence",
+      "kind": "PREV3_GENERIC_POSSIBILITY",
+      "time": "source_native_times"
+    },
+    {
+      "id": "selection",
+      "kind": "NONCAUSAL_PENDING_ADP020_DECISION",
+      "time": "construction_only"
+    },
+    {
+      "id": "endpoint_constraints",
+      "kind": "NECESSARY_ENDPOINT_FACTS",
+      "time": "t_conception_target"
+    },
+    {
+      "id": "second_parent_root",
+      "kind": "ADP007_ROOT",
+      "time": "t_s_root_less_than_t_conception"
+    },
+    {
+      "id": "second_parent_history",
+      "kind": "V3_FORWARD_REPLAYED_HISTORY",
+      "time": "t_s_root..t_conception_minus"
+    },
+    {
+      "id": "endpoint_validation",
+      "kind": "NONCAUSAL_FORWARD_CHECK",
+      "time": "construction_only"
+    },
+    {
+      "id": "encounter",
+      "kind": "V3_EVENT_ADMITTED_IF_GOVERNED",
+      "time": "t_encounter<=t_conception"
+    },
+    {
+      "id": "shared_relationship",
+      "kind": "ADP015_RELATIONSHIP_IF_WITNESSED",
+      "time": "t_shared"
+    },
+    {
+      "id": "conception",
+      "kind": "PROPOSED_SEPARATE_OCCURRENCE",
+      "time": "t_conception"
+    },
+    {
+      "id": "child_generated",
+      "kind": "ADP015_CHILD_GENERATED_IF_TRIGGERED",
+      "time": "t_child_gen_not_necessarily_t_conception"
+    },
+    {
+      "id": "birth",
+      "kind": "PROPOSED_SEPARATE_BIRTH_OCCURRENCE",
+      "time": "t_birth_if_governed"
+    },
+    {
+      "id": "child_initialized",
+      "kind": "ADP007_INIT_AFTER_CHILD_REF",
+      "time": "after_child_generated"
+    },
+    {
+      "id": "child_life",
+      "kind": "CHILD_OWN_CAUSAL_HISTORY",
+      "time": "after_child_initialization"
+    }
+  ],
+  "construction_dependency_dag": {
+    "note": "Edges below encode planner computation dependencies only. They must NEVER be serialized as represented V3 causal parents, V3 memories, occurrences, child facts or accepted biography.",
+    "edges": [
+      [
+        "mother_anchor",
+        "situation",
+        "CONSTRAINT_INPUT"
+      ],
+      [
+        "world_pre",
+        "situation",
+        "CONSTRAINT_INPUT"
+      ],
+      [
+        "older_child_existing",
+        "situation",
+        "CASE_M1_HARD_CONSTRAINT"
+      ],
+      [
+        "situation",
+        "scenario_set",
+        "PROPOSAL_PROMPT_INPUT"
+      ],
+      [
+        "generic_evidence",
+        "scenario_set",
+        "REVISION_SCREENING_INPUT"
+      ],
+      [
+        "scenario_set",
+        "selection",
+        "SEALED_LAWFUL_SET_INPUT"
+      ],
+      [
+        "generic_evidence",
+        "selection",
+        "MODELED_USE_IF_AUTHORIZED"
+      ],
+      [
+        "selection",
+        "endpoint_constraints",
+        "PENDING_SELECTED_TARGET"
+      ],
+      [
+        "endpoint_constraints",
+        "second_parent_root",
+        "RETROSPECTIVE_SEARCH_CONDITION"
+      ],
+      [
+        "endpoint_constraints",
+        "second_parent_history",
+        "RETROSPECTIVE_SEARCH_CONDITION"
+      ],
+      [
+        "second_parent_root",
+        "second_parent_history",
+        "FORWARD_VALIDATION_INPUT"
+      ],
+      [
+        "second_parent_history",
+        "endpoint_validation",
+        "CHECK_INPUT"
+      ],
+      [
+        "mother_anchor",
+        "endpoint_validation",
+        "EXACT_FIXED_ANCHOR"
+      ],
+      [
+        "endpoint_constraints",
+        "endpoint_validation",
+        "PREDICATE_TO_VERIFY"
+      ]
+    ],
+    "terminal_statuses": [
+      "SELECTED_PENDING_HISTORY_VALIDATION",
+      "HOLD_UNCONSTRUCTIBLE",
+      "HOLD_AUTHORITY_MISSING",
+      "VALIDATED_NOT_YET_OCCURRENCE"
+    ]
+  },
+  "represented_causal_dag": {
+    "note": "Only admitted facts/events and owner effects belong to this graph; chronological edges cannot point backward from conception/child to antecedent parent history.",
+    "edges": [
+      [
+        "world_pre",
+        "mother_history",
+        "SITUATED_WORLD_CONDITIONING"
+      ],
+      [
+        "mother_root",
+        "mother_history",
+        "ACTOR_DEVELOPMENT"
+      ],
+      [
+        "mother_history",
+        "mother_anchor",
+        "IMMUTABLE_CHECKPOINT"
+      ],
+      [
+        "older_child_existing",
+        "mother_anchor",
+        "M1_PREEXISTING_CONTEXT_ONLY"
+      ],
+      [
+        "world_pre",
+        "second_parent_history",
+        "SITUATED_WORLD_CONDITIONING"
+      ],
+      [
+        "second_parent_root",
+        "second_parent_history",
+        "ACTOR_DEVELOPMENT"
+      ],
+      [
+        "mother_history",
+        "encounter",
+        "EXACT_ACTOR_ROUTE_IF_WITNESSED"
+      ],
+      [
+        "second_parent_history",
+        "encounter",
+        "EXACT_ACTOR_ROUTE_IF_WITNESSED"
+      ],
+      [
+        "encounter",
+        "shared_relationship",
+        "REQUIRES_SEPARATE_FORMATION_WITNESS"
+      ],
+      [
+        "mother_anchor",
+        "conception",
+        "REQUIRED_HISTORY_ANCHOR_IF_ISSUED"
+      ],
+      [
+        "second_parent_history",
+        "conception",
+        "REQUIRED_HISTORY_ANCHOR_IF_ISSUED"
+      ],
+      [
+        "encounter",
+        "conception",
+        "ONLY_IF_REQUIRED_BY_ISSUED_RULE"
+      ],
+      [
+        "conception",
+        "child_generated",
+        "ONLY_IF_FUTURE_RULE_EXPLICITLY_BINDS"
+      ],
+      [
+        "child_generated",
+        "child_initialized",
+        "NEW_ACTOR_REF_PREREQUISITE"
+      ],
+      [
+        "conception",
+        "birth",
+        "ONLY_IF_LAWFULLY_ADMITTED_TEMPORAL_RULE"
+      ],
+      [
+        "child_initialized",
+        "child_life",
+        "OWN_TRANSITIONS"
+      ],
+      [
+        "shared_relationship",
+        "child_life",
+        "ONLY_EXPOSURE_MEDIATED_IF_ADMITTED"
+      ],
+      [
+        "birth",
+        "child_life",
+        "ONLY_IF_GOVERNED"
+      ]
+    ],
+    "chronology_constraints": [
+      "second_parent_root time < second_parent_history final pre-event anchor <= admitted encounter/conception time",
+      "mother prior child identity/event is older than focal conception in M1; no root/mother-anchor retcon",
+      "construction edges from endpoint to historical candidates are not causal ancestry",
+      "conception != CHILD_GENERATED != birth, and no automatic causal edges absent issuer",
+      "child future/evaluator labels have zero dependency path into candidates, selection, second_parent_root or second_parent_history"
+    ]
+  },
+  "invariant_oracles": [
+    {
+      "id": "DAG01",
+      "assert": "construction and causal edge namespaces are disjoint; construction edge never included in causal_parent_refs",
+      "on_failure": "NO_GO"
+    },
+    {
+      "id": "DAG02",
+      "assert": "causal graph acyclic and non-retrograde under admitted effective time, same-time order ruled by ADP021",
+      "on_failure": "NO_GO"
+    },
+    {
+      "id": "DAG03",
+      "assert": "existing partner/older child/household anchors unchanged from mother pre-event checkpoint",
+      "on_failure": "NO_GO"
+    },
+    {
+      "id": "DAG04",
+      "assert": "both genealogy parent anchors independently replayable before CHILD_GENERATED and stable thereafter",
+      "on_failure": "NO_GO"
+    },
+    {
+      "id": "DAG05",
+      "assert": "selected endpoint is noncausal until exact occurrence and owner witnesses; rejected attempts produce zero causal events",
+      "on_failure": "NO_GO"
+    },
+    {
+      "id": "DAG06",
+      "assert": "no path from held-out future child/desired arc metadata to parent selection or history",
+      "on_failure": "NO_GO"
+    },
+    {
+      "id": "DAG07",
+      "assert": "second-parent non-mother events owned by actual ordinary forward developmental transitions, not narrative backfill",
+      "on_failure": "NO_GO"
+    },
+    {
+      "id": "DAG08",
+      "assert": "shared events single canonical entity with distinct perspective-bound states; no inferred reciprocity/household",
+      "on_failure": "NO_GO"
+    },
+    {
+      "id": "DAG09",
+      "assert": "child generation and birth only under separate accepted owner triggers and unique stable identities",
+      "on_failure": "HOLD_IF_UNISSUED"
+    },
+    {
+      "id": "DAG10",
+      "assert": "child outcome changes only through child exposure/uptake/own state rules",
+      "on_failure": "NO_GO"
+    }
+  ],
+  "tests": "NOT_EXECUTED"
+}

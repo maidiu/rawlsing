@@ -1,0 +1,31 @@
+{
+  "g18_integrity": {
+    "do_not_revert": "G18 refuses post-issuance caller-mutated payment/task schedule; source-issued variable schedule is the lawful path",
+    "g13_181": "108 PASS / 73 RED exact 56+17",
+    "g16i_24": "21 PASS / 3 RED strict; 2 typed holds + 1 documented legacy schedule supersession"
+  },
+  "m2": {
+    "action": "preserve typed coverage hold; no fabricated mother/child",
+    "archive_sha256": "9e0efc335e2bfc1e1d9f9bc25604af6d04578e7b6acddb31e439b6ff117a3ab7",
+    "event_count": 23,
+    "frozen_test": "test_archived_m2_can_continue_legitimate_prior_life",
+    "observed_failure": "EVENT_OWNER_IDENTITY_INVALID and MISSING_CAUSAL_PARENT; no current WORLD_MATERIAL root",
+    "owner": "ADP015/ADP020/CAN008/CAN011 or Sorok HQ formal coverage acceptance",
+    "result": "RED in G18 strict G16I 21/3",
+    "status": "HOLD_C4_M2"
+  },
+  "mp": {
+    "action": "preserve typed coverage hold; no fabricated father/second parent",
+    "counterpart_refs": [
+      "F_EXISTING",
+      "REL_ADMITTED_F_EXISTING"
+    ],
+    "frozen_test": "test_known_counterpart_has_positive_history_reuse_path",
+    "observed_result": "SHARED_HISTORY_CONTRADICTION_HOLD; no_duplicate_actor_or_event=True",
+    "owner": "ADP015/ADP020/CAN008/CAN011 or Sorok HQ formal coverage acceptance",
+    "result": "RED in G18 strict G16I 21/3",
+    "status": "HOLD_C4_MP"
+  },
+  "native_authority": "NOT_GRANTED",
+  "schema": "BP1_M2_MP_TYPED_HOLDS@1"
+}

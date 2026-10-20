@@ -1,0 +1,71 @@
+{
+  "claims": [
+    {
+      "actual_consumer": "bp1.source.verify_actor_source",
+      "claim_id": "BP1_ACTOR_SOURCE_EDGE",
+      "claimed_dependency": "a rehashed source with a native/non-TEST_ONLY source reference is refused",
+      "fault": {
+        "new": "    if False:\n        return \"ACTOR_SOURCE_REF_NOT_TEST_ONLY_BP1\"",
+        "old": "    if not body[\"source_ref\"].startswith(TEST_ONLY_PREFIX):\n        return \"ACTOR_SOURCE_REF_NOT_TEST_ONLY_BP1\"",
+        "path": "WORKER_RETURNS/SOROK-20261020-BP1-HISTORICAL-ACTOR-PRODUCTION-R1/candidate/bp1/source.py"
+      },
+      "positive_node": "WORKER_RETURNS/SOROK-20261020-BP1-HISTORICAL-ACTOR-PRODUCTION-R1/tests/test_bp1_actor_production.py::test_forged_actor_source_refused"
+    },
+    {
+      "actual_consumer": "bp1.ledger.ActorLedger.append_performed_action",
+      "claim_id": "BP1_PERFORMED_ACTION_EDGE",
+      "claimed_dependency": "a performed action with a forged after-state cannot be admitted by the per-actor ledger",
+      "fault": {
+        "new": "        accepted, reason = True, None\n        if not accepted:\n            raise LedgerRefusal(\"PERFORMED_ACTION_NOT_AUTHENTICATED:\" + str(reason))",
+        "old": "        accepted, reason = verify_performed_action(action, material)\n        if not accepted:\n            raise LedgerRefusal(\"PERFORMED_ACTION_NOT_AUTHENTICATED:\" + str(reason))",
+        "path": "WORKER_RETURNS/SOROK-20261020-BP1-HISTORICAL-ACTOR-PRODUCTION-R1/candidate/bp1/ledger.py"
+      },
+      "positive_node": "WORKER_RETURNS/SOROK-20261020-BP1-HISTORICAL-ACTOR-PRODUCTION-R1/tests/test_bp1_actor_production.py::test_fake_afterstate_action_refused"
+    },
+    {
+      "actual_consumer": "bp1.ledger.ActorLedger.append_performed_action",
+      "claim_id": "BP1_MATERIAL_SOURCE_EDGE",
+      "claimed_dependency": "a forged G18 material source (100000 payment) is refused before a performed action",
+      "fault": {
+        "new": "        accepted, reason, material_payload = True, None, material\n        if not accepted:\n            raise LedgerRefusal(\"MATERIAL_SOURCE_NOT_AUTHENTICATED:\" + str(reason))",
+        "old": "        accepted, reason, material_payload = verify_material_source(material)\n        if not accepted:\n            raise LedgerRefusal(\"MATERIAL_SOURCE_NOT_AUTHENTICATED:\" + str(reason))",
+        "path": "WORKER_RETURNS/SOROK-20261020-BP1-HISTORICAL-ACTOR-PRODUCTION-R1/candidate/bp1/ledger.py"
+      },
+      "positive_node": "WORKER_RETURNS/SOROK-20261020-BP1-HISTORICAL-ACTOR-PRODUCTION-R1/tests/test_bp1_actor_production.py::test_forged_material_source_refused"
+    },
+    {
+      "actual_consumer": "bp1.composer.future_child_findings",
+      "claim_id": "BP1_FUTURE_CHILD_EDGE",
+      "claimed_dependency": "nested future-child material in a shared/actor payload is found and refused",
+      "fault": {
+        "new": "    from lab_sgi1.proposal import find_future_child_material\n    return []",
+        "old": "    from lab_sgi1.proposal import find_future_child_material\n    return find_future_child_material(value, \"$\")",
+        "path": "WORKER_RETURNS/SOROK-20261020-BP1-HISTORICAL-ACTOR-PRODUCTION-R1/candidate/bp1/composer.py"
+      },
+      "positive_node": "WORKER_RETURNS/SOROK-20261020-BP1-HISTORICAL-ACTOR-PRODUCTION-R1/tests/test_bp1_actor_production.py::test_future_child_payload_refused"
+    },
+    {
+      "actual_consumer": "bp1.c9_bridge.build_c9_actor_record",
+      "claim_id": "BP1_C9_ACTOR_SOURCE_EDGE",
+      "claimed_dependency": "a forged/rehashed historical actor snapshot is refused before C9 ingress",
+      "fault": {
+        "new": "    accepted, reason = True, None\n    if not accepted:\n        raise BP1C9Refusal(\"ACTOR_SNAPSHOT_NOT_AUTHENTICATED:\" + str(reason))",
+        "old": "    accepted, reason = verify_snapshot(snapshot, expected_hash=expected)\n    if not accepted:\n        raise BP1C9Refusal(\"ACTOR_SNAPSHOT_NOT_AUTHENTICATED:\" + str(reason))",
+        "path": "WORKER_RETURNS/SOROK-20261020-BP1-HISTORICAL-ACTOR-PRODUCTION-R1/candidate/bp1/c9_bridge.py"
+      },
+      "positive_node": "WORKER_RETURNS/SOROK-20261020-BP1-HISTORICAL-ACTOR-PRODUCTION-R1/tests/test_bp1_actor_production.py::test_c9_source_fault_snapshot_is_refused"
+    },
+    {
+      "actual_consumer": "bp1.c9_bridge._consumed_state",
+      "claim_id": "BP1_C9_CONSUMED_STATE_EDGE",
+      "claimed_dependency": "the later E2 reader consumes the exact committed target state hash, not a fixed default",
+      "fault": {
+        "new": "    return \"sha256:\" + \"00\" * 32",
+        "old": "    return pipeline.later_read.state_hash",
+        "path": "WORKER_RETURNS/SOROK-20261020-BP1-HISTORICAL-ACTOR-PRODUCTION-R1/candidate/bp1/c9_bridge.py"
+      },
+      "positive_node": "WORKER_RETURNS/SOROK-20261020-BP1-HISTORICAL-ACTOR-PRODUCTION-R1/tests/test_bp1_actor_production.py::test_c9_end_to_end_positive_and_exact_consumed_state"
+    }
+  ],
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1"
+}

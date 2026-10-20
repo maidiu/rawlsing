@@ -1,0 +1,576 @@
+{
+  "adoption": "NOT_SELF_ADOPTED",
+  "bp1_actor_court": {
+    "cases": [
+      {
+        "id": "tests.test_bp1_actor_production::test_two_actor_sourcefree_lives_are_distinct_not_one_seeded_adult",
+        "name": "test_two_actor_sourcefree_lives_are_distinct_not_one_seeded_adult",
+        "status": "PASS"
+      },
+      {
+        "id": "tests.test_bp1_actor_production::test_shared_objective_event_does_not_change_actor_state",
+        "name": "test_shared_objective_event_does_not_change_actor_state",
+        "status": "PASS"
+      },
+      {
+        "id": "tests.test_bp1_actor_production::test_actor_own_action_changes_only_own_state",
+        "name": "test_actor_own_action_changes_only_own_state",
+        "status": "PASS"
+      },
+      {
+        "id": "tests.test_bp1_actor_production::test_no_change_exhausted_actor_is_lawful",
+        "name": "test_no_change_exhausted_actor_is_lawful",
+        "status": "PASS"
+      },
+      {
+        "id": "tests.test_bp1_actor_production::test_denied_actor_is_lawful",
+        "name": "test_denied_actor_is_lawful",
+        "status": "PASS"
+      },
+      {
+        "id": "tests.test_bp1_actor_production::test_future_child_payload_refused",
+        "name": "test_future_child_payload_refused",
+        "status": "PASS"
+      },
+      {
+        "id": "tests.test_bp1_actor_production::test_forged_actor_source_refused",
+        "name": "test_forged_actor_source_refused",
+        "status": "PASS"
+      },
+      {
+        "id": "tests.test_bp1_actor_production::test_forged_material_source_refused",
+        "name": "test_forged_material_source_refused",
+        "status": "PASS"
+      },
+      {
+        "id": "tests.test_bp1_actor_production::test_fake_afterstate_action_refused",
+        "name": "test_fake_afterstate_action_refused",
+        "status": "PASS"
+      },
+      {
+        "id": "tests.test_bp1_actor_production::test_c9_actor_ingress_is_explicitly_test_only",
+        "name": "test_c9_actor_ingress_is_explicitly_test_only",
+        "status": "PASS"
+      },
+      {
+        "id": "tests.test_bp1_actor_production::test_c9_end_to_end_positive_and_exact_consumed_state",
+        "name": "test_c9_end_to_end_positive_and_exact_consumed_state",
+        "status": "PASS"
+      },
+      {
+        "id": "tests.test_bp1_actor_production::test_c9_consumed_state_fault_is_held",
+        "name": "test_c9_consumed_state_fault_is_held",
+        "status": "PASS"
+      },
+      {
+        "id": "tests.test_bp1_actor_production::test_c9_source_fault_snapshot_is_refused",
+        "name": "test_c9_source_fault_snapshot_is_refused",
+        "status": "PASS"
+      },
+      {
+        "id": "tests.test_bp1_actor_production::test_c9_cold_reopen_reads_exact_committed_record",
+        "name": "test_c9_cold_reopen_reads_exact_committed_record",
+        "status": "PASS"
+      },
+      {
+        "id": "tests.test_bp1_actor_production::test_c9_fixed_default_consumed_state_would_break_positive",
+        "name": "test_c9_fixed_default_consumed_state_would_break_positive",
+        "status": "PASS"
+      }
+    ],
+    "counts": {
+      "ERROR": 0,
+      "PASS": 15,
+      "RED": 0,
+      "SKIP": 0
+    }
+  },
+  "branch": "agent/rabochii-sorok-20261020-bp1-historical-actor-production-c4-c9-positive-r1",
+  "c9r_consumer_recourse": {
+    "cases": [
+      {
+        "id": "tests.test_c9r_consumer::test_full_e1_to_e2_consumer_path",
+        "name": "test_full_e1_to_e2_consumer_path",
+        "status": "PASS"
+      },
+      {
+        "id": "tests.test_c9r_consumer::test_second_full_run_admits_independently_performed_e2",
+        "name": "test_second_full_run_admits_independently_performed_e2",
+        "status": "PASS"
+      },
+      {
+        "id": "tests.test_c9r_consumer::test_valid_no_change_preserves_occurrence_and_creates_no_target",
+        "name": "test_valid_no_change_preserves_occurrence_and_creates_no_target",
+        "status": "PASS"
+      },
+      {
+        "id": "tests.test_c9r_consumer::test_removed_enacted_source_cannot_create",
+        "name": "test_removed_enacted_source_cannot_create",
+        "status": "PASS"
+      },
+      {
+        "id": "tests.test_c9r_consumer::test_corrupt_target_preimage_is_refused",
+        "name": "test_corrupt_target_preimage_is_refused",
+        "status": "PASS"
+      },
+      {
+        "id": "tests.test_c9r_consumer::test_revoked_permission_between_proposal_and_commit_is_refused",
+        "name": "test_revoked_permission_between_proposal_and_commit_is_refused",
+        "status": "PASS"
+      },
+      {
+        "id": "tests.test_c9r_consumer::test_substituted_consumer_body_is_refused",
+        "name": "test_substituted_consumer_body_is_refused",
+        "status": "PASS"
+      },
+      {
+        "id": "tests.test_c9r_consumer::test_mismatched_performed_action_is_refused",
+        "name": "test_mismatched_performed_action_is_refused",
+        "status": "PASS"
+      },
+      {
+        "id": "tests.test_c9r_consumer::test_native_guard_denial_holds_native_positive_claim",
+        "name": "test_native_guard_denial_holds_native_positive_claim",
+        "status": "PASS"
+      },
+      {
+        "id": "tests.test_c9r_consumer::test_test_only_publication_is_never_native_authority",
+        "name": "test_test_only_publication_is_never_native_authority",
+        "status": "PASS"
+      }
+    ],
+    "counts": {
+      "ERROR": 0,
+      "PASS": 10,
+      "RED": 0,
+      "SKIP": 0
+    }
+  },
+  "cold_replay": {
+    "actor_id": "TEST_ONLY_BP1_ACTOR_A",
+    "actor_source_grade": "SOURCEFREE_FIXTURE_ACTOR_NOT_NATIVE",
+    "build_process": "fresh interpreter",
+    "c9_committed": true,
+    "cold_record_equal": true,
+    "consumed_state_hash": "680508467d46a673036b1db1737a0c648b7c7be68f2a394f080ed36a25f21aba",
+    "e2_admitted": true,
+    "native_grant": "NOT_GRANTED",
+    "schema": "BP1_COLD_REPLAY@1",
+    "target_id": "08a8d89a2fca443c668288880a3c889cf3c06c40f12771a10050993ff16a62a6",
+    "verify_process": "separate fresh interpreter"
+  },
+  "deny": {
+    "ledger_event_kinds": [
+      "PRIOR_HISTORY",
+      "SHARED_OBJECTIVE",
+      "DENY"
+    ],
+    "refusal": "ACTOR_PERMISSION_DENIED:PERFORMED_ACTION",
+    "state_unchanged": true
+  },
+  "environment": {
+    "git": "git version 2.39.1",
+    "platform": "macOS-13.7.8-x86_64-i386-64bit",
+    "pytest": "9.1.1",
+    "python": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]"
+  },
+  "g18_regression": {
+    "g13_181": {
+      "counts": {
+        "ERROR": 0,
+        "PASS": 108,
+        "RED": 73,
+        "SKIP": 0
+      },
+      "red_ids": [
+        "test_g12_controls::test_alien_project_and_counterpart_probe_counterexample",
+        "test_g12_controls::test_candidate_payload_change_is_unbound_in_lab",
+        "test_g12_controls::test_embargo_input_counterexample_recorded[psyche]",
+        "test_g12_controls::test_embargo_input_counterexample_recorded[target]",
+        "test_g12_controls::test_embargo_input_counterexample_recorded[world]",
+        "test_g12_controls::test_independent_oracle_detects_mutation[duplicate_effective_index]",
+        "test_g12_controls::test_independent_oracle_detects_mutation[forged_endpoint]",
+        "test_g12_controls::test_independent_oracle_detects_mutation[future_endpoint_as_root_parent]",
+        "test_g12_controls::test_independent_oracle_detects_mutation[missing_parent]",
+        "test_g12_controls::test_independent_oracle_detects_mutation[route_antecedent_removed]",
+        "test_g12_controls::test_original_source_bytes_and_actual_imports",
+        "test_g12_controls::test_unchanged_lab_stopping_has_no_missing_parent_detection",
+        "test_g12_literal_contract::test_lab_sampler_is_accepted_adp020_algorithm",
+        "test_g12_supplemental::test_explicit_asymmetry_and_no_automatic_household_control",
+        "test_g12_supplemental::test_objective_relation_binds_actual_second_parent_identity",
+        "test_g13_author_court::test_ceilings_m0_and_m2_mother_histories_both_construct",
+        "test_g13_author_court::test_f1_invalid_causal_ancestry_refused[<lambda>-NONFORWARD_CAUSAL_PARENT]",
+        "test_g13_author_court::test_f1_removed_route_antecedent_refused",
+        "test_g13_author_court::test_f4_future_child_outcome_counterfactual_cannot_change_selection",
+        "test_g13_author_court::test_f5_exact_32_byte_root_uses_accepted_adp020_mechanism",
+        "test_g13_author_court::test_f5_lab_sampler_conforms_to_the_accepted_adp020_algorithm",
+        "test_g13_author_court::test_f7_actor_id_is_bound_from_actual_history_not_a_placeholder",
+        "test_g13_author_court::test_f7_asymmetry_and_no_auto_household_preserved",
+        "test_g13_author_court::test_f7_two_independently_derived_paternal_histories_bind_distinct_actors",
+        "test_g13_postrepair_original::test_postrepair_case_identity_and_predicates_unchanged[K11-A-FUTURE-CHILD-EMBARGO]",
+        "test_g13_postrepair_original::test_postrepair_case_identity_and_predicates_unchanged[K11-A2-DESIRED-WOUND-COUNTERFACTUAL]",
+        "test_g13_postrepair_original::test_postrepair_case_identity_and_predicates_unchanged[K11-B-INDEPENDENT-HISTORY]",
+        "test_g13_postrepair_original::test_postrepair_case_identity_and_predicates_unchanged[K11-BASE-LOCAL]",
+        "test_g13_postrepair_original::test_postrepair_case_identity_and_predicates_unchanged[K11-C-EXISTING-PARTNER]",
+        "test_g13_postrepair_original::test_postrepair_case_identity_and_predicates_unchanged[K11-C2-EXISTING-SHARED-EVENT]",
+        "test_g13_postrepair_original::test_postrepair_case_identity_and_predicates_unchanged[K11-CONCEPTION-CHILDGEN-BOUNDARY]",
+        "test_g13_postrepair_original::test_postrepair_case_identity_and_predicates_unchanged[K11-D-PARITY]",
+        "test_g13_postrepair_original::test_postrepair_case_identity_and_predicates_unchanged[K11-E-INDEPENDENT-PROJECT]",
+        "test_g13_postrepair_original::test_postrepair_case_identity_and_predicates_unchanged[K11-EMPIRICAL-CEILING]",
+        "test_g13_postrepair_original::test_postrepair_case_identity_and_predicates_unchanged[K11-GRAPH-CONSTRUCTION-VS-CAUSAL]",
+        "test_g13_postrepair_original::test_postrepair_case_identity_and_predicates_unchanged[K11-MISSING-HISTORY]",
+        "test_g13_postrepair_original::test_postrepair_case_identity_and_predicates_unchanged[K11-RELATION-ASYMMETRY]",
+        "test_g13_postrepair_original::test_postrepair_case_identity_and_predicates_unchanged[K11-RETRY-BIAS]",
+        "test_g13_postrepair_original::test_postrepair_case_identity_and_predicates_unchanged[K11-ROUTE-DISCORDANT]",
+        "test_g13_postrepair_original::test_postrepair_case_identity_and_predicates_unchanged[K11-ROUTE-MOBILITY]",
+        "test_g13_postrepair_original::test_postrepair_case_identity_and_predicates_unchanged[K11-ROUTE-UNCONVENTIONAL]",
+        "test_g13_postrepair_original::test_postrepair_case_identity_and_predicates_unchanged[K11-SCHEDULER-SAME-TIME]",
+        "test_g13_postrepair_original::test_postrepair_case_identity_and_predicates_unchanged[K11-UNKNOWN-REQUIRED]",
+        "test_g13_postrepair_original::test_postrepair_case_identity_and_predicates_unchanged[K11-VALID-EMPTY]",
+        "test_g13_postrepair_original::test_postrepair_case_identity_and_predicates_unchanged[K11-WEIGHT-ORDINAL]",
+        "test_g13_postrepair_original::test_postrepair_case_identity_and_predicates_unchanged[K11-WEIGHT-SENSITIVITY]",
+        "test_g13_postrepair_original::test_postrepair_denominators_complete_and_offline",
+        "test_g13_postrepair_original::test_postrepair_exactly_four_fingerprints_were_rebased",
+        "test_g13_postrepair_original::test_postrepair_fingerprints_match_repaired_manifest",
+        "test_g13_postrepair_original::test_postrepair_no_case_has_a_false_predicate",
+        "test_original_sgi1::test_complete_denominator_and_offline",
+        "test_original_sgi1::test_literal_original_k11_case[K11-A-FUTURE-CHILD-EMBARGO]",
+        "test_original_sgi1::test_literal_original_k11_case[K11-A2-DESIRED-WOUND-COUNTERFACTUAL]",
+        "test_original_sgi1::test_literal_original_k11_case[K11-B-INDEPENDENT-HISTORY]",
+        "test_original_sgi1::test_literal_original_k11_case[K11-BASE-LOCAL]",
+        "test_original_sgi1::test_literal_original_k11_case[K11-C-EXISTING-PARTNER]",
+        "test_original_sgi1::test_literal_original_k11_case[K11-C2-EXISTING-SHARED-EVENT]",
+        "test_original_sgi1::test_literal_original_k11_case[K11-CONCEPTION-CHILDGEN-BOUNDARY]",
+        "test_original_sgi1::test_literal_original_k11_case[K11-D-PARITY]",
+        "test_original_sgi1::test_literal_original_k11_case[K11-E-INDEPENDENT-PROJECT]",
+        "test_original_sgi1::test_literal_original_k11_case[K11-EMPIRICAL-CEILING]",
+        "test_original_sgi1::test_literal_original_k11_case[K11-GRAPH-CONSTRUCTION-VS-CAUSAL]",
+        "test_original_sgi1::test_literal_original_k11_case[K11-MISSING-HISTORY]",
+        "test_original_sgi1::test_literal_original_k11_case[K11-RELATION-ASYMMETRY]",
+        "test_original_sgi1::test_literal_original_k11_case[K11-RETRY-BIAS]",
+        "test_original_sgi1::test_literal_original_k11_case[K11-ROUTE-DISCORDANT]",
+        "test_original_sgi1::test_literal_original_k11_case[K11-ROUTE-MOBILITY]",
+        "test_original_sgi1::test_literal_original_k11_case[K11-ROUTE-UNCONVENTIONAL]",
+        "test_original_sgi1::test_literal_original_k11_case[K11-SCHEDULER-SAME-TIME]",
+        "test_original_sgi1::test_literal_original_k11_case[K11-UNKNOWN-REQUIRED]",
+        "test_original_sgi1::test_literal_original_k11_case[K11-VALID-EMPTY]",
+        "test_original_sgi1::test_literal_original_k11_case[K11-WEIGHT-ORDINAL]",
+        "test_original_sgi1::test_literal_original_k11_case[K11-WEIGHT-SENSITIVITY]"
+      ]
+    },
+    "g14_67": {
+      "counts": {
+        "ERROR": 0,
+        "PASS": 67,
+        "RED": 0,
+        "SKIP": 0
+      }
+    },
+    "g15_75": {
+      "counts": {
+        "ERROR": 0,
+        "PASS": 75,
+        "RED": 0,
+        "SKIP": 0
+      }
+    },
+    "g16i_24": {
+      "baseline": {
+        "ERROR": 0,
+        "PASS": 22,
+        "RED": 2,
+        "SKIP": 0
+      },
+      "documented_legacy_supersession": [
+        "test_variable_task_cost_reaches_continued_context"
+      ],
+      "strict": {
+        "ERROR": 0,
+        "PASS": 21,
+        "RED": 3,
+        "SKIP": 0
+      },
+      "typed_holds": [
+        "test_archived_m2_can_continue_legitimate_prior_life",
+        "test_known_counterpart_has_positive_history_reuse_path"
+      ]
+    },
+    "g17_13": {
+      "counts": {
+        "ERROR": 0,
+        "PASS": 13,
+        "RED": 0,
+        "SKIP": 0
+      }
+    },
+    "g17i_14": {
+      "baseline": {
+        "ERROR": 0,
+        "PASS": 11,
+        "RED": 3,
+        "SKIP": 0
+      },
+      "baseline_reds": [
+        "test_c9_forged_material_event_must_be_refused",
+        "test_forged_material_event_supplying_cash_must_be_refused",
+        "test_future_child_nested_alias_must_be_refused"
+      ],
+      "repaired": {
+        "ERROR": 0,
+        "PASS": 14,
+        "RED": 0,
+        "SKIP": 0
+      }
+    },
+    "g18_20": {
+      "counts": {
+        "ERROR": 0,
+        "PASS": 20,
+        "RED": 0,
+        "SKIP": 0
+      }
+    },
+    "native_authority": "NOT_GRANTED",
+    "red_identity": {
+      "compatibility_56": {
+        "all_present": true,
+        "count": 56
+      },
+      "exact_set_equal": true,
+      "original_17": {
+        "all_present": true,
+        "count": 17
+      }
+    },
+    "schema": "BP1_G18_REGRESSION@1",
+    "source": "G18 61713eafe0e7a5386a8f0aed4836b15f3d921ed5 vendored byte-identical"
+  },
+  "generated_utc": "2026-10-20T08:00:34Z",
+  "native_authority": "NOT_GRANTED",
+  "no_change": {
+    "ledger_event_kinds": [
+      "PRIOR_HISTORY",
+      "SHARED_OBJECTIVE",
+      "NO_CHANGE"
+    ],
+    "refusal": "OWN_MATERIAL_EXHAUSTED",
+    "state_unchanged": true
+  },
+  "parent_dispatch": "529232d9867a5bdc0889f43fb5293131ef806055",
+  "productive_adequacy": "EXECUTABLE_PRODUCER_AND_ACTUAL_CHANGED_HISTORY",
+  "proof": {
+    "claims": [
+      "BP1_ACTOR_SOURCE_EDGE",
+      "BP1_PERFORMED_ACTION_EDGE",
+      "BP1_MATERIAL_SOURCE_EDGE",
+      "BP1_FUTURE_CHILD_EDGE",
+      "BP1_C9_ACTOR_SOURCE_EDGE",
+      "BP1_C9_CONSUMED_STATE_EDGE"
+    ],
+    "counts": 6,
+    "status": "MECHANICAL_WITNESS_PASS_NOT_SEMANTIC_ADOPTION"
+  },
+  "schema": "BP1_COURT_MATRIX@1",
+  "source_manifest": {
+    "files": 446,
+    "tree_hash": "e2f3ebac9fde19d4cc3dc17e69e506913e789ba22c393867278da9c8584d4238"
+  },
+  "two_actor": {
+    "actor_ids": [
+      "TEST_ONLY_BP1_ACTOR_A",
+      "TEST_ONLY_BP1_ACTOR_B"
+    ],
+    "claim": "TWO_SOURCEFREE_HISTORICAL_ACTOR_LEDGERS_WITH_INDEPENDENT_PERFORMED_ACTIONS_AND_SHARED_OBJECTIVE_FACTS_NOT_NATIVE_ACTORS",
+    "history_hashes": [
+      "dd7234edf12a069d69d1a4d940f59bf723aa15db7f35c40d801461cd6ab5e0ee",
+      "c2be4b1ac57bb2f4554b1b81bec602b27e10374625bf6a831e050ed395c19be6"
+    ],
+    "native_actor_claim": false,
+    "performed_actions": [
+      {
+        "after": {
+          "actor_id": "TEST_ONLY_BP1_ACTOR_A",
+          "attitudes": [
+            "reciprocity_in_work_obligations"
+          ],
+          "availability_status": "available_for_encounter",
+          "cash": 55,
+          "completed_units": 4,
+          "debt_units": 2,
+          "free_hours": 12,
+          "health": "recovered",
+          "material_position": "waged_repair",
+          "material_remaining": 2,
+          "nonmother_relations": [
+            "G15_NONKIN_e284ae4306e43444d26d0646abf5076fa63ba096b1db426b84f20628c9a1b87a"
+          ],
+          "place": "INST_WORKSHOP_A",
+          "practices": [
+            "scheduled_repair_ledger_discipline"
+          ],
+          "projects": [
+            "communal_irrigation_pump_repair"
+          ],
+          "role": "repair",
+          "skill": 6,
+          "tools_remaining": 1
+        },
+        "before": {
+          "actor_id": "TEST_ONLY_BP1_ACTOR_A",
+          "attitudes": [
+            "reciprocity_in_work_obligations"
+          ],
+          "availability_status": "available_for_encounter",
+          "cash": 53,
+          "completed_units": 3,
+          "debt_units": 2,
+          "free_hours": 13,
+          "health": "recovered",
+          "material_position": "waged_repair",
+          "material_remaining": 2,
+          "nonmother_relations": [
+            "G15_NONKIN_e284ae4306e43444d26d0646abf5076fa63ba096b1db426b84f20628c9a1b87a"
+          ],
+          "place": "INST_WORKSHOP_A",
+          "practices": [
+            "scheduled_repair_ledger_discipline"
+          ],
+          "projects": [
+            "communal_irrigation_pump_repair"
+          ],
+          "role": "repair",
+          "skill": 6,
+          "tools_remaining": 1
+        },
+        "event_id": "sha256:d1b75691f9c0c9a793687735452b0fcb7903a8fec28725a529d6555b11dd99b6",
+        "material_event_ref": "sha256:f2b331667a7018ea849ada4570d658a4425d0b990895f1a9db33f02b0f6f47ae",
+        "owner_id": "TEST_ONLY_BP1_ACTOR_A",
+        "receipt_id": "795f884900c625d4d04a3869947322a857392e2aeecb757ca8c6ddd5178a4d33"
+      },
+      {
+        "after": {
+          "actor_id": "TEST_ONLY_BP1_ACTOR_B",
+          "attitudes": [
+            "reciprocity_in_work_obligations"
+          ],
+          "availability_status": "available_for_encounter",
+          "cash": 54,
+          "completed_units": 3,
+          "debt_units": 2,
+          "free_hours": 13,
+          "health": "recovered",
+          "material_position": "waged_finishing",
+          "material_remaining": 0,
+          "nonmother_relations": [
+            "G15_NONKIN_b45807ec00772f81e963723ca68f2caba499a5f075dd5036343eb2b2b55de990"
+          ],
+          "place": "INST_WORKSHOP_A",
+          "practices": [
+            "scheduled_finishing_ledger_discipline"
+          ],
+          "projects": [
+            "communal_irrigation_pump_repair"
+          ],
+          "role": "finishing",
+          "skill": 6,
+          "tools_remaining": 1
+        },
+        "before": {
+          "actor_id": "TEST_ONLY_BP1_ACTOR_B",
+          "attitudes": [
+            "reciprocity_in_work_obligations"
+          ],
+          "availability_status": "available_for_encounter",
+          "cash": 52,
+          "completed_units": 2,
+          "debt_units": 2,
+          "free_hours": 14,
+          "health": "recovered",
+          "material_position": "waged_finishing",
+          "material_remaining": 0,
+          "nonmother_relations": [
+            "G15_NONKIN_b45807ec00772f81e963723ca68f2caba499a5f075dd5036343eb2b2b55de990"
+          ],
+          "place": "INST_WORKSHOP_A",
+          "practices": [
+            "scheduled_finishing_ledger_discipline"
+          ],
+          "projects": [
+            "communal_irrigation_pump_repair"
+          ],
+          "role": "finishing",
+          "skill": 6,
+          "tools_remaining": 1
+        },
+        "event_id": "sha256:977a526573a2c3e18e67b3e324e04d8394732d21af0ddd199a30222dd59cdcbc",
+        "material_event_ref": "sha256:f2b331667a7018ea849ada4570d658a4425d0b990895f1a9db33f02b0f6f47ae",
+        "owner_id": "TEST_ONLY_BP1_ACTOR_B",
+        "receipt_id": "30e27cd636104f5066800b44a0b8d99722b0a72dcedaa586454ac28a51d8c543"
+      }
+    ],
+    "psychology_claim": false,
+    "shared_objective_hash": "6e188ea5436f94d3f7b78efbc7b844486fe888e55e6c5ff1333135b7aff0eb4f",
+    "shared_objective_ref": "TEST_ONLY_BP1_OBJ_6e188ea5436f94d3f7b78efbc7b844486fe888e55e6c5ff1333135b7aff0eb4f",
+    "state_hashes": [
+      "b5fa11db55d46e2a59d5b32788a952c10939960d9fa1a3be5fe8b63ad69e2bfb",
+      "effc83bfecdf2f95d176b95d952c0d45312037b07bd9e2bdb7251fea507a603e"
+    ],
+    "states": [
+      {
+        "actor_id": "TEST_ONLY_BP1_ACTOR_A",
+        "attitudes": [
+          "reciprocity_in_work_obligations"
+        ],
+        "availability_status": "available_for_encounter",
+        "cash": 55,
+        "completed_units": 4,
+        "debt_units": 2,
+        "free_hours": 12,
+        "health": "recovered",
+        "material_position": "waged_repair",
+        "material_remaining": 2,
+        "nonmother_relations": [
+          "G15_NONKIN_e284ae4306e43444d26d0646abf5076fa63ba096b1db426b84f20628c9a1b87a"
+        ],
+        "place": "INST_WORKSHOP_A",
+        "practices": [
+          "scheduled_repair_ledger_discipline"
+        ],
+        "projects": [
+          "communal_irrigation_pump_repair"
+        ],
+        "role": "repair",
+        "skill": 6,
+        "tools_remaining": 1
+      },
+      {
+        "actor_id": "TEST_ONLY_BP1_ACTOR_B",
+        "attitudes": [
+          "reciprocity_in_work_obligations"
+        ],
+        "availability_status": "available_for_encounter",
+        "cash": 54,
+        "completed_units": 3,
+        "debt_units": 2,
+        "free_hours": 13,
+        "health": "recovered",
+        "material_position": "waged_finishing",
+        "material_remaining": 0,
+        "nonmother_relations": [
+          "G15_NONKIN_b45807ec00772f81e963723ca68f2caba499a5f075dd5036343eb2b2b55de990"
+        ],
+        "place": "INST_WORKSHOP_A",
+        "practices": [
+          "scheduled_finishing_ledger_discipline"
+        ],
+        "projects": [
+          "communal_irrigation_pump_repair"
+        ],
+        "role": "finishing",
+        "skill": 6,
+        "tools_remaining": 1
+      }
+    ],
+    "witness_status": "WITNESSED"
+  }
+}

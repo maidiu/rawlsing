@@ -1,0 +1,561 @@
+{
+ "fixture": "M0",
+ "note": "declared K11 dedup control input (ten phrasings + reorder)",
+ "record": {
+  "candidate_ids": [
+   "C0_A",
+   "C0_PH0",
+   "C0_PH1",
+   "C0_PH2",
+   "C0_PH3",
+   "C0_PH4",
+   "C0_PH5",
+   "C0_PH6",
+   "C0_PH7",
+   "C0_PH8",
+   "C0_PH9",
+   "C2_A",
+   "C1_A"
+  ],
+  "dedup": {
+   "canonical_order": [
+    "sha256:31a48e9145df438320c712bcbda5b33ff7c6e330ef472d11f7e585b1b9bfab2e",
+    "sha256:581d783e555c17deb4c46f14531cd2a6dd27a09d32e8d01d35714ee84b67d55e",
+    "sha256:cf1537017554b978e868993d5a3c5127e75c1098b59a40af99f242af40581409"
+   ],
+   "class_member_index": {
+    "sha256:31a48e9145df438320c712bcbda5b33ff7c6e330ef472d11f7e585b1b9bfab2e": [
+     "C1_A"
+    ],
+    "sha256:581d783e555c17deb4c46f14531cd2a6dd27a09d32e8d01d35714ee84b67d55e": [
+     "C0_A",
+     "C0_PH0",
+     "C0_PH1",
+     "C0_PH2",
+     "C0_PH3",
+     "C0_PH4",
+     "C0_PH5",
+     "C0_PH6",
+     "C0_PH7",
+     "C0_PH8",
+     "C0_PH9"
+    ],
+    "sha256:cf1537017554b978e868993d5a3c5127e75c1098b59a40af99f242af40581409": [
+     "C2_A"
+    ]
+   },
+   "class_set_hash": "sha256:ae2689513e4399ebbacf920ebcc6af30f2f02476fbd3eff91263655e23f0eff8",
+   "classes": [
+    {
+     "candidate": {
+      "assumptions": [
+       "evening class enrollment"
+      ],
+      "candidate_kind": "PROVISIONAL_COUNTERPART",
+      "candidate_local_id": "C1_A",
+      "endpoint_constraints": {
+       "conception_witness_requirements": [
+        "ENCOUNTER_WITNESS_MIN_1"
+       ],
+       "required_relation_objective_refs": [
+        "REL_ENCOUNTER_WITNESSED"
+       ],
+       "second_parent_structure_and_position_constraints": [
+        "class_attendee"
+       ],
+       "time_or_interval": "T_ENCOUNTER_LAB_WINDOW"
+      },
+      "falsifiers": [
+       "class not attended"
+      ],
+      "plausibility_rank_ordinal": 2,
+      "route_kind_id": "ROUTE_INSTITUTIONAL"
+     },
+     "class_key": "sha256:31a48e9145df438320c712bcbda5b33ff7c6e330ef472d11f7e585b1b9bfab2e",
+     "member_count": 1,
+     "member_ids": [
+      "C1_A"
+     ],
+     "representative_id": "CLS_31a48e9145df438320c712bc"
+    },
+    {
+     "candidate": {
+      "assumptions": [
+       "workplace adjacency contact"
+      ],
+      "candidate_kind": "PROVISIONAL_COUNTERPART",
+      "candidate_local_id": "C0_A",
+      "endpoint_constraints": {
+       "conception_witness_requirements": [
+        "ENCOUNTER_WITNESS_MIN_1"
+       ],
+       "required_relation_objective_refs": [
+        "REL_ENCOUNTER_WITNESSED"
+       ],
+       "second_parent_structure_and_position_constraints": [
+        "local_artisan"
+       ],
+       "time_or_interval": "T_ENCOUNTER_LAB_WINDOW"
+      },
+      "falsifiers": [
+       "no shared shift overlap"
+      ],
+      "plausibility_rank_ordinal": 1,
+      "route_kind_id": "ROUTE_LOCAL_CLOSED"
+     },
+     "class_key": "sha256:581d783e555c17deb4c46f14531cd2a6dd27a09d32e8d01d35714ee84b67d55e",
+     "member_count": 11,
+     "member_ids": [
+      "C0_A",
+      "C0_PH0",
+      "C0_PH1",
+      "C0_PH2",
+      "C0_PH3",
+      "C0_PH4",
+      "C0_PH5",
+      "C0_PH6",
+      "C0_PH7",
+      "C0_PH8",
+      "C0_PH9"
+     ],
+     "representative_id": "CLS_581d783e555c17deb4c46f14"
+    },
+    {
+     "candidate": {
+      "assumptions": [
+       "committee emergency callout"
+      ],
+      "candidate_kind": "PROVISIONAL_COUNTERPART",
+      "candidate_local_id": "C2_A",
+      "endpoint_constraints": {
+       "conception_witness_requirements": [
+        "ENCOUNTER_WITNESS_MIN_1"
+       ],
+       "required_relation_objective_refs": [
+        "REL_ENCOUNTER_WITNESSED"
+       ],
+       "second_parent_structure_and_position_constraints": [
+        "mechanic_callout"
+       ],
+       "time_or_interval": "T_ENCOUNTER_LAB_WINDOW"
+      },
+      "falsifiers": [
+       "callout not attended"
+      ],
+      "plausibility_rank_ordinal": 3,
+      "route_kind_id": "ROUTE_UNCONVENTIONAL"
+     },
+     "class_key": "sha256:cf1537017554b978e868993d5a3c5127e75c1098b59a40af99f242af40581409",
+     "member_count": 1,
+     "member_ids": [
+      "C2_A"
+     ],
+     "representative_id": "CLS_cf1537017554b978e868993d"
+    }
+   ],
+   "coverage_receipt": {
+    "OTHER_UNRESOLVED": true,
+    "note": "unenumerated scenarios may exist; completeness NOT claimed"
+   },
+   "merge_receipts": [
+    {
+     "action": "MERGE_INTO_CLASS",
+     "class_key": "sha256:581d783e555c17deb4c46f14531cd2a6dd27a09d32e8d01d35714ee84b67d55e",
+     "member": "C0_PH0",
+     "representative": "CLS_581d783e555c17deb4c46f14"
+    },
+    {
+     "action": "MERGE_INTO_CLASS",
+     "class_key": "sha256:581d783e555c17deb4c46f14531cd2a6dd27a09d32e8d01d35714ee84b67d55e",
+     "member": "C0_PH1",
+     "representative": "CLS_581d783e555c17deb4c46f14"
+    },
+    {
+     "action": "MERGE_INTO_CLASS",
+     "class_key": "sha256:581d783e555c17deb4c46f14531cd2a6dd27a09d32e8d01d35714ee84b67d55e",
+     "member": "C0_PH2",
+     "representative": "CLS_581d783e555c17deb4c46f14"
+    },
+    {
+     "action": "MERGE_INTO_CLASS",
+     "class_key": "sha256:581d783e555c17deb4c46f14531cd2a6dd27a09d32e8d01d35714ee84b67d55e",
+     "member": "C0_PH3",
+     "representative": "CLS_581d783e555c17deb4c46f14"
+    },
+    {
+     "action": "MERGE_INTO_CLASS",
+     "class_key": "sha256:581d783e555c17deb4c46f14531cd2a6dd27a09d32e8d01d35714ee84b67d55e",
+     "member": "C0_PH4",
+     "representative": "CLS_581d783e555c17deb4c46f14"
+    },
+    {
+     "action": "MERGE_INTO_CLASS",
+     "class_key": "sha256:581d783e555c17deb4c46f14531cd2a6dd27a09d32e8d01d35714ee84b67d55e",
+     "member": "C0_PH5",
+     "representative": "CLS_581d783e555c17deb4c46f14"
+    },
+    {
+     "action": "MERGE_INTO_CLASS",
+     "class_key": "sha256:581d783e555c17deb4c46f14531cd2a6dd27a09d32e8d01d35714ee84b67d55e",
+     "member": "C0_PH6",
+     "representative": "CLS_581d783e555c17deb4c46f14"
+    },
+    {
+     "action": "MERGE_INTO_CLASS",
+     "class_key": "sha256:581d783e555c17deb4c46f14531cd2a6dd27a09d32e8d01d35714ee84b67d55e",
+     "member": "C0_PH7",
+     "representative": "CLS_581d783e555c17deb4c46f14"
+    },
+    {
+     "action": "MERGE_INTO_CLASS",
+     "class_key": "sha256:581d783e555c17deb4c46f14531cd2a6dd27a09d32e8d01d35714ee84b67d55e",
+     "member": "C0_PH8",
+     "representative": "CLS_581d783e555c17deb4c46f14"
+    },
+    {
+     "action": "MERGE_INTO_CLASS",
+     "class_key": "sha256:581d783e555c17deb4c46f14531cd2a6dd27a09d32e8d01d35714ee84b67d55e",
+     "member": "C0_PH9",
+     "representative": "CLS_581d783e555c17deb4c46f14"
+    }
+   ],
+   "n_classes": 3,
+   "n_input_candidates": 13
+  },
+  "fixture_id": "DEDUPE_DUP",
+  "lmm_automated_status": "AUTOMATED_LLM_PROPOSAL_NOT_TESTED",
+  "model_requested": "NONE",
+  "model_returned": null,
+  "parsed_candidates": [
+   {
+    "assumptions": [
+     "workplace adjacency contact"
+    ],
+    "candidate_kind": "PROVISIONAL_COUNTERPART",
+    "candidate_local_id": "C0_A",
+    "endpoint_constraints": {
+     "conception_witness_requirements": [
+      "ENCOUNTER_WITNESS_MIN_1"
+     ],
+     "required_relation_objective_refs": [
+      "REL_ENCOUNTER_WITNESSED"
+     ],
+     "second_parent_structure_and_position_constraints": [
+      "local_artisan"
+     ],
+     "time_or_interval": "T_ENCOUNTER_LAB_WINDOW"
+    },
+    "falsifiers": [
+     "no shared shift overlap"
+    ],
+    "plausibility_rank_ordinal": 1,
+    "route_kind_id": "ROUTE_LOCAL_CLOSED"
+   },
+   {
+    "assumptions": [
+     "someone from the workshop shift leads to contact"
+    ],
+    "candidate_kind": "PROVISIONAL_COUNTERPART",
+    "candidate_local_id": "C0_PH0",
+    "endpoint_constraints": {
+     "conception_witness_requirements": [
+      "ENCOUNTER_WITNESS_MIN_1"
+     ],
+     "required_relation_objective_refs": [
+      "REL_ENCOUNTER_WITNESSED"
+     ],
+     "second_parent_structure_and_position_constraints": [
+      "local_artisan"
+     ],
+     "time_or_interval": "T_ENCOUNTER_LAB_WINDOW"
+    },
+    "falsifiers": [
+     "no someone from the workshop shift"
+    ],
+    "plausibility_rank_ordinal": 1,
+    "route_kind_id": "ROUTE_LOCAL_CLOSED"
+   },
+   {
+    "assumptions": [
+     "a person on the same work floor leads to contact"
+    ],
+    "candidate_kind": "PROVISIONAL_COUNTERPART",
+    "candidate_local_id": "C0_PH1",
+    "endpoint_constraints": {
+     "conception_witness_requirements": [
+      "ENCOUNTER_WITNESS_MIN_1"
+     ],
+     "required_relation_objective_refs": [
+      "REL_ENCOUNTER_WITNESSED"
+     ],
+     "second_parent_structure_and_position_constraints": [
+      "local_artisan"
+     ],
+     "time_or_interval": "T_ENCOUNTER_LAB_WINDOW"
+    },
+    "falsifiers": [
+     "no a person on the same work floor"
+    ],
+    "plausibility_rank_ordinal": 1,
+    "route_kind_id": "ROUTE_LOCAL_CLOSED"
+   },
+   {
+    "assumptions": [
+     "a fellow workshop worker leads to contact"
+    ],
+    "candidate_kind": "PROVISIONAL_COUNTERPART",
+    "candidate_local_id": "C0_PH2",
+    "endpoint_constraints": {
+     "conception_witness_requirements": [
+      "ENCOUNTER_WITNESS_MIN_1"
+     ],
+     "required_relation_objective_refs": [
+      "REL_ENCOUNTER_WITNESSED"
+     ],
+     "second_parent_structure_and_position_constraints": [
+      "local_artisan"
+     ],
+     "time_or_interval": "T_ENCOUNTER_LAB_WINDOW"
+    },
+    "falsifiers": [
+     "no a fellow workshop worker"
+    ],
+    "plausibility_rank_ordinal": 1,
+    "route_kind_id": "ROUTE_LOCAL_CLOSED"
+   },
+   {
+    "assumptions": [
+     "another hand at the fabrication shop leads to contact"
+    ],
+    "candidate_kind": "PROVISIONAL_COUNTERPART",
+    "candidate_local_id": "C0_PH3",
+    "endpoint_constraints": {
+     "conception_witness_requirements": [
+      "ENCOUNTER_WITNESS_MIN_1"
+     ],
+     "required_relation_objective_refs": [
+      "REL_ENCOUNTER_WITNESSED"
+     ],
+     "second_parent_structure_and_position_constraints": [
+      "local_artisan"
+     ],
+     "time_or_interval": "T_ENCOUNTER_LAB_WINDOW"
+    },
+    "falsifiers": [
+     "no another hand at the fabrication shop"
+    ],
+    "plausibility_rank_ordinal": 1,
+    "route_kind_id": "ROUTE_LOCAL_CLOSED"
+   },
+   {
+    "assumptions": [
+     "a colleague from the day shift leads to contact"
+    ],
+    "candidate_kind": "PROVISIONAL_COUNTERPART",
+    "candidate_local_id": "C0_PH4",
+    "endpoint_constraints": {
+     "conception_witness_requirements": [
+      "ENCOUNTER_WITNESS_MIN_1"
+     ],
+     "required_relation_objective_refs": [
+      "REL_ENCOUNTER_WITNESSED"
+     ],
+     "second_parent_structure_and_position_constraints": [
+      "local_artisan"
+     ],
+     "time_or_interval": "T_ENCOUNTER_LAB_WINDOW"
+    },
+    "falsifiers": [
+     "no a colleague from the day shift"
+    ],
+    "plausibility_rank_ordinal": 1,
+    "route_kind_id": "ROUTE_LOCAL_CLOSED"
+   },
+   {
+    "assumptions": [
+     "a coworker at riverside workshop leads to contact"
+    ],
+    "candidate_kind": "PROVISIONAL_COUNTERPART",
+    "candidate_local_id": "C0_PH5",
+    "endpoint_constraints": {
+     "conception_witness_requirements": [
+      "ENCOUNTER_WITNESS_MIN_1"
+     ],
+     "required_relation_objective_refs": [
+      "REL_ENCOUNTER_WITNESSED"
+     ],
+     "second_parent_structure_and_position_constraints": [
+      "local_artisan"
+     ],
+     "time_or_interval": "T_ENCOUNTER_LAB_WINDOW"
+    },
+    "falsifiers": [
+     "no a coworker at riverside workshop"
+    ],
+    "plausibility_rank_ordinal": 1,
+    "route_kind_id": "ROUTE_LOCAL_CLOSED"
+   },
+   {
+    "assumptions": [
+     "a workshop-mate on adjacency leads to contact"
+    ],
+    "candidate_kind": "PROVISIONAL_COUNTERPART",
+    "candidate_local_id": "C0_PH6",
+    "endpoint_constraints": {
+     "conception_witness_requirements": [
+      "ENCOUNTER_WITNESS_MIN_1"
+     ],
+     "required_relation_objective_refs": [
+      "REL_ENCOUNTER_WITNESSED"
+     ],
+     "second_parent_structure_and_position_constraints": [
+      "local_artisan"
+     ],
+     "time_or_interval": "T_ENCOUNTER_LAB_WINDOW"
+    },
+    "falsifiers": [
+     "no a workshop-mate on adjacency"
+    ],
+    "plausibility_rank_ordinal": 1,
+    "route_kind_id": "ROUTE_LOCAL_CLOSED"
+   },
+   {
+    "assumptions": [
+     "a shop-floor acquaintance leads to contact"
+    ],
+    "candidate_kind": "PROVISIONAL_COUNTERPART",
+    "candidate_local_id": "C0_PH7",
+    "endpoint_constraints": {
+     "conception_witness_requirements": [
+      "ENCOUNTER_WITNESS_MIN_1"
+     ],
+     "required_relation_objective_refs": [
+      "REL_ENCOUNTER_WITNESSED"
+     ],
+     "second_parent_structure_and_position_constraints": [
+      "local_artisan"
+     ],
+     "time_or_interval": "T_ENCOUNTER_LAB_WINDOW"
+    },
+    "falsifiers": [
+     "no a shop-floor acquaintance"
+    ],
+    "plausibility_rank_ordinal": 1,
+    "route_kind_id": "ROUTE_LOCAL_CLOSED"
+   },
+   {
+    "assumptions": [
+     "a person sharing the workshop leads to contact"
+    ],
+    "candidate_kind": "PROVISIONAL_COUNTERPART",
+    "candidate_local_id": "C0_PH8",
+    "endpoint_constraints": {
+     "conception_witness_requirements": [
+      "ENCOUNTER_WITNESS_MIN_1"
+     ],
+     "required_relation_objective_refs": [
+      "REL_ENCOUNTER_WITNESSED"
+     ],
+     "second_parent_structure_and_position_constraints": [
+      "local_artisan"
+     ],
+     "time_or_interval": "T_ENCOUNTER_LAB_WINDOW"
+    },
+    "falsifiers": [
+     "no a person sharing the workshop"
+    ],
+    "plausibility_rank_ordinal": 1,
+    "route_kind_id": "ROUTE_LOCAL_CLOSED"
+   },
+   {
+    "assumptions": [
+     "someone on the finishing line leads to contact"
+    ],
+    "candidate_kind": "PROVISIONAL_COUNTERPART",
+    "candidate_local_id": "C0_PH9",
+    "endpoint_constraints": {
+     "conception_witness_requirements": [
+      "ENCOUNTER_WITNESS_MIN_1"
+     ],
+     "required_relation_objective_refs": [
+      "REL_ENCOUNTER_WITNESSED"
+     ],
+     "second_parent_structure_and_position_constraints": [
+      "local_artisan"
+     ],
+     "time_or_interval": "T_ENCOUNTER_LAB_WINDOW"
+    },
+    "falsifiers": [
+     "no someone on the finishing line"
+    ],
+    "plausibility_rank_ordinal": 1,
+    "route_kind_id": "ROUTE_LOCAL_CLOSED"
+   },
+   {
+    "assumptions": [
+     "committee emergency callout"
+    ],
+    "candidate_kind": "PROVISIONAL_COUNTERPART",
+    "candidate_local_id": "C2_A",
+    "endpoint_constraints": {
+     "conception_witness_requirements": [
+      "ENCOUNTER_WITNESS_MIN_1"
+     ],
+     "required_relation_objective_refs": [
+      "REL_ENCOUNTER_WITNESSED"
+     ],
+     "second_parent_structure_and_position_constraints": [
+      "mechanic_callout"
+     ],
+     "time_or_interval": "T_ENCOUNTER_LAB_WINDOW"
+    },
+    "falsifiers": [
+     "callout not attended"
+    ],
+    "plausibility_rank_ordinal": 3,
+    "route_kind_id": "ROUTE_UNCONVENTIONAL"
+   },
+   {
+    "assumptions": [
+     "evening class enrollment"
+    ],
+    "candidate_kind": "PROVISIONAL_COUNTERPART",
+    "candidate_local_id": "C1_A",
+    "endpoint_constraints": {
+     "conception_witness_requirements": [
+      "ENCOUNTER_WITNESS_MIN_1"
+     ],
+     "required_relation_objective_refs": [
+      "REL_ENCOUNTER_WITNESSED"
+     ],
+     "second_parent_structure_and_position_constraints": [
+      "class_attendee"
+     ],
+     "time_or_interval": "T_ENCOUNTER_LAB_WINDOW"
+    },
+    "falsifiers": [
+     "class not attended"
+    ],
+    "plausibility_rank_ordinal": 2,
+    "route_kind_id": "ROUTE_INSTITUTIONAL"
+   }
+  ],
+  "prompt_hash": "sha256:89886ca048e7c768685270c6bab7083679b487545bbde51ae8ac9fa3ca686f2b",
+  "prompt_text": "",
+  "proposal_hash": "sha256:89886ca048e7c768685270c6bab7083679b487545bbde51ae8ac9fa3ca686f2b",
+  "provider": "declared_test_intervention",
+  "raw_output": "[{\"candidate_local_id\": \"C0_A\", \"candidate_kind\": \"PROVISIONAL_COUNTERPART\", \"route_kind_id\": \"ROUTE_LOCAL_CLOSED\", \"endpoint_constraints\": {\"time_or_interval\": \"T_ENCOUNTER_LAB_WINDOW\", \"required_relation_objective_refs\": [\"REL_ENCOUNTER_WITNESSED\"], \"second_parent_structure_and_position_constraints\": [\"local_artisan\"], \"conception_witness_requirements\": [\"ENCOUNTER_WITNESS_MIN_1\"]}, \"assumptions\": [\"workplace adjacency contact\"], \"falsifiers\": [\"no shared shift overlap\"], \"plausibility_rank_ordinal\": 1}, {\"candidate_local_id\": \"C0_PH0\", \"candidate_kind\": \"PROVISIONAL_COUNTERPART\", \"route_kind_id\": \"ROUTE_LOCAL_CLOSED\", \"endpoint_constraints\": {\"time_or_interval\": \"T_ENCOUNTER_LAB_WINDOW\", \"required_relation_objective_refs\": [\"REL_ENCOUNTER_WITNESSED\"], \"second_parent_structure_and_position_constraints\": [\"local_artisan\"], \"conception_witness_requirements\": [\"ENCOUNTER_WITNESS_MIN_1\"]}, \"assumptions\": [\"someone from the workshop shift leads to contact\"], \"falsifiers\": [\"no someone from the workshop shift\"], \"plausibility_rank_ordinal\": 1}, {\"candidate_local_id\": \"C0_PH1\", \"candidate_kind\": \"PROVISIONAL_COUNTERPART\", \"route_kind_id\": \"ROUTE_LOCAL_CLOSED\", \"endpoint_constraints\": {\"time_or_interval\": \"T_ENCOUNTER_LAB_WINDOW\", \"required_relation_objective_refs\": [\"REL_ENCOUNTER_WITNESSED\"], \"second_parent_structure_and_position_constraints\": [\"local_artisan\"], \"conception_witness_requirements\": [\"ENCOUNTER_WITNESS_MIN_1\"]}, \"assumptions\": [\"a person on the same work floor leads to contact\"], \"falsifiers\": [\"no a person on the same work floor\"], \"plausibility_rank_ordinal\": 1}, {\"candidate_local_id\": \"C0_PH2\", \"candidate_kind\": \"PROVISIONAL_COUNTERPART\", \"route_kind_id\": \"ROUTE_LOCAL_CLOSED\", \"endpoint_constraints\": {\"time_or_interval\": \"T_ENCOUNTER_LAB_WINDOW\", \"required_relation_objective_refs\": [\"REL_ENCOUNTER_WITNESSED\"], \"second_parent_structure_and_position_constraints\": [\"local_artisan\"], \"conception_witness_requirements\": [\"ENCOUNTER_WITNESS_MIN_1\"]}, \"assumptions\": [\"a fellow workshop worker leads to contact\"], \"falsifiers\": [\"no a fellow workshop worker\"], \"plausibility_rank_ordinal\": 1}, {\"candidate_local_id\": \"C0_PH3\", \"candidate_kind\": \"PROVISIONAL_COUNTERPART\", \"route_kind_id\": \"ROUTE_LOCAL_CLOSED\", \"endpoint_constraints\": {\"time_or_interval\": \"T_ENCOUNTER_LAB_WINDOW\", \"required_relation_objective_refs\": [\"REL_ENCOUNTER_WITNESSED\"], \"second_parent_structure_and_position_constraints\": [\"local_artisan\"], \"conception_witness_requirements\": [\"ENCOUNTER_WITNESS_MIN_1\"]}, \"assumptions\": [\"another hand at the fabrication shop leads to contact\"], \"falsifiers\": [\"no another hand at the fabrication shop\"], \"plausibility_rank_ordinal\": 1}, {\"candidate_local_id\": \"C0_PH4\", \"candidate_kind\": \"PROVISIONAL_COUNTERPART\", \"route_kind_id\": \"ROUTE_LOCAL_CLOSED\", \"endpoint_constraints\": {\"time_or_interval\": \"T_ENCOUNTER_LAB_WINDOW\", \"required_relation_objective_refs\": [\"REL_ENCOUNTER_WITNESSED\"], \"second_parent_structure_and_position_constraints\": [\"local_artisan\"], \"conception_witness_requirements\": [\"ENCOUNTER_WITNESS_MIN_1\"]}, \"assumptions\": [\"a colleague from the day shift leads to contact\"], \"falsifiers\": [\"no a colleague from the day shift\"], \"plausibility_rank_ordinal\": 1}, {\"candidate_local_id\": \"C0_PH5\", \"candidate_kind\": \"PROVISIONAL_COUNTERPART\", \"route_kind_id\": \"ROUTE_LOCAL_CLOSED\", \"endpoint_constraints\": {\"time_or_interval\": \"T_ENCOUNTER_LAB_WINDOW\", \"required_relation_objective_refs\": [\"REL_ENCOUNTER_WITNESSED\"], \"second_parent_structure_and_position_constraints\": [\"local_artisan\"], \"conception_witness_requirements\": [\"ENCOUNTER_WITNESS_MIN_1\"]}, \"assumptions\": [\"a coworker at riverside workshop leads to contact\"], \"falsifiers\": [\"no a coworker at riverside workshop\"], \"plausibility_rank_ordinal\": 1}, {\"candidate_local_id\": \"C0_PH6\", \"candidate_kind\": \"PROVISIONAL_COUNTERPART\", \"route_kind_id\": \"ROUTE_LOCAL_CLOSED\", \"endpoint_constraints\": {\"time_or_interval\": \"T_ENCOUNTER_LAB_WINDOW\", \"required_relation_objective_refs\": [\"REL_ENCOUNTER_WITNESSED\"], \"second_parent_structure_and_position_constraints\": [\"local_artisan\"], \"conception_witness_requirements\": [\"ENCOUNTER_WITNESS_MIN_1\"]}, \"assumptions\": [\"a workshop-mate on adjacency leads to contact\"], \"falsifiers\": [\"no a workshop-mate on adjacency\"], \"plausibility_rank_ordinal\": 1}, {\"candidate_local_id\": \"C0_PH7\", \"candidate_kind\": \"PROVISIONAL_COUNTERPART\", \"route_kind_id\": \"ROUTE_LOCAL_CLOSED\", \"endpoint_constraints\": {\"time_or_interval\": \"T_ENCOUNTER_LAB_WINDOW\", \"required_relation_objective_refs\": [\"REL_ENCOUNTER_WITNESSED\"], \"second_parent_structure_and_position_constraints\": [\"local_artisan\"], \"conception_witness_requirements\": [\"ENCOUNTER_WITNESS_MIN_1\"]}, \"assumptions\": [\"a shop-floor acquaintance leads to contact\"], \"falsifiers\": [\"no a shop-floor acquaintance\"], \"plausibility_rank_ordinal\": 1}, {\"candidate_local_id\": \"C0_PH8\", \"candidate_kind\": \"PROVISIONAL_COUNTERPART\", \"route_kind_id\": \"ROUTE_LOCAL_CLOSED\", \"endpoint_constraints\": {\"time_or_interval\": \"T_ENCOUNTER_LAB_WINDOW\", \"required_relation_objective_refs\": [\"REL_ENCOUNTER_WITNESSED\"], \"second_parent_structure_and_position_constraints\": [\"local_artisan\"], \"conception_witness_requirements\": [\"ENCOUNTER_WITNESS_MIN_1\"]}, \"assumptions\": [\"a person sharing the workshop leads to contact\"], \"falsifiers\": [\"no a person sharing the workshop\"], \"plausibility_rank_ordinal\": 1}, {\"candidate_local_id\": \"C0_PH9\", \"candidate_kind\": \"PROVISIONAL_COUNTERPART\", \"route_kind_id\": \"ROUTE_LOCAL_CLOSED\", \"endpoint_constraints\": {\"time_or_interval\": \"T_ENCOUNTER_LAB_WINDOW\", \"required_relation_objective_refs\": [\"REL_ENCOUNTER_WITNESSED\"], \"second_parent_structure_and_position_constraints\": [\"local_artisan\"], \"conception_witness_requirements\": [\"ENCOUNTER_WITNESS_MIN_1\"]}, \"assumptions\": [\"someone on the finishing line leads to contact\"], \"falsifiers\": [\"no someone on the finishing line\"], \"plausibility_rank_ordinal\": 1}, {\"candidate_local_id\": \"C2_A\", \"candidate_kind\": \"PROVISIONAL_COUNTERPART\", \"route_kind_id\": \"ROUTE_UNCONVENTIONAL\", \"endpoint_constraints\": {\"time_or_interval\": \"T_ENCOUNTER_LAB_WINDOW\", \"required_relation_objective_refs\": [\"REL_ENCOUNTER_WITNESSED\"], \"second_parent_structure_and_position_constraints\": [\"mechanic_callout\"], \"conception_witness_requirements\": [\"ENCOUNTER_WITNESS_MIN_1\"]}, \"assumptions\": [\"committee emergency callout\"], \"falsifiers\": [\"callout not attended\"], \"plausibility_rank_ordinal\": 3}, {\"candidate_local_id\": \"C1_A\", \"candidate_kind\": \"PROVISIONAL_COUNTERPART\", \"route_kind_id\": \"ROUTE_INSTITUTIONAL\", \"endpoint_constraints\": {\"time_or_interval\": \"T_ENCOUNTER_LAB_WINDOW\", \"required_relation_objective_refs\": [\"REL_ENCOUNTER_WITNESSED\"], \"second_parent_structure_and_position_constraints\": [\"class_attendee\"], \"conception_witness_requirements\": [\"ENCOUNTER_WITNESS_MIN_1\"]}, \"assumptions\": [\"evening class enrollment\"], \"falsifiers\": [\"class not attended\"], \"plausibility_rank_ordinal\": 2}]",
+  "raw_output_hash": "sha256:c0ad7fd364e252802b6ec32a225dd3115f5b1d631d6c47c94dd09383dec7716f",
+  "record_id": "sha256:34e0d74c590717c66d8b667ac265f3ba72e4dcbf893229511d6adb9cf0707c5f",
+  "route_filter": null,
+  "system_hash": "sha256:12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+  "system_text": "",
+  "usage": {
+   "completion_tokens": 0,
+   "prompt_tokens": 0,
+   "total_tokens": 0
+  },
+  "wall_seconds": 0.0
+ },
+ "record_key": "DEDUPE_DUP"
+}
