@@ -176,4 +176,4 @@ Native Pyat world/N11/N12, original ADP007/010/015/016/017/019/020, genuine E2, 
 
 ## EXACT PUSHED REF
 
-Return commit: `<filled after commit>`. Remote verification: `<filled after push>` (`git ls-remote` must match). Ordinary non-force push; only this BP4 return subtree changed.
+Return commit: `959a75940388c83b922cf680e02cc4ad9a57d88e`. Remote verification: `git ls-remote` returned the same SHA (`evidence/remote_verification.json`). Ordinary non-force push; only this BP4 return subtree changed.
