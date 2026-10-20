@@ -358,10 +358,14 @@ receipt, blocked consumer and scientific effect.
 |---|---|
 | Branch | `agent/rabochii-sorok-20261019-g18-authenticated-material-history-whole-c4-c9-repair-r1` |
 | Sealed startup | `19503a3ea09bdf840a5ce98a9697650c387787fa` |
-| Substantive return commit | `__RETURN_COMMIT__` |
-| Remote verification | `__REMOTE_VERIFICATION__` |
-| Final pushed tip | `__FINAL_TIP__` |
+| Substantive return commit | `caedb710d955a2da04e9ecfe65fa2d3d9f14cfe8` |
+| Evidence/contract commit | `9d93f31f4b725bf633f4065bafa223c4c75c97f9` |
+| Remote verification of that tip | `git ls-remote origin refs/heads/agent/rabochii-sorok-20261019-g18-authenticated-material-history-whole-c4-c9-repair-r1` returned `9d93f31f4b725bf633f4065bafa223c4c75c97f9` (ordinary non-force push; parent `19503a3ea09bdf840a5ce98a9697650c387787fa`) |
+| Final pushed tip at verification | `9d93f31f4b725bf633f4065bafa223c4c75c97f9` |
 | Publication receipt | `PUBLICATION_RECEIPT.json` |
 
-Only this branch is committed and pushed (ordinary non-force push). No
-self-adoption; Sorok HQ owns the post-return review decision.
+This publication record is the docs delta committed after the verified evidence
+tip; the branch tip after that delta is the exact SHA returned by the final
+direct `git ls-remote` readback in the worker's final response. Only this branch
+is committed and pushed (ordinary non-force push). No self-adoption; Sorok HQ
+owns the post-return review decision.

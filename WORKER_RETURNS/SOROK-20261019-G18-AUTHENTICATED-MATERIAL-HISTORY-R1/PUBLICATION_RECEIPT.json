@@ -1,26 +1,14 @@
 {
-  "schema": "SOROK_G18_PUBLICATION_RECEIPT@1",
-  "repository": "maidiu/rawlsing (PRIVATE)",
-  "role": "one accountable sourcefree authenticated-material-history implementation scientist; not G17I reviewer, Sorok HQ, Pyat HQ, native actor/biology issuer or CAN/ADP authority",
+  "adoption": "NOT_SELF_ADOPTED",
   "branch": "agent/rabochii-sorok-20261019-g18-authenticated-material-history-whole-c4-c9-repair-r1",
-  "sealed_startup": "19503a3ea09bdf840a5ce98a9697650c387787fa",
-  "g17_return": "90d0eb7925de54635559a879ee76fc1b97b9ff61",
-  "g17i_review": "156b84cc8481b65c4196b42574010eb7920d6f44",
   "c9r_receiving_candidate": "6fa2939972ce5a2c0cc4f2b033946b276f1c2934",
-  "g16i_review": "683aa56828cda76ea70792a2c8b39cf78624e8dc",
-  "return_commit": "__RETURN_COMMIT__",
-  "docs_commit": "__DOCS_COMMIT__",
-  "remote_head_verified_before_receipt": "__REMOTE_HEAD__",
-  "final_pushed_tip": "__FINAL_TIP__",
-  "remote_ref": "refs/heads/agent/rabochii-sorok-20261019-g18-authenticated-material-history-whole-c4-c9-repair-r1",
-  "verified_by": "git ls-remote origin <ref> after ordinary non-force push",
   "courts": {
     "g13_181": {
+      "compatibility_56_all_preserved": true,
+      "original_17_preserved": true,
       "pass": 108,
       "red": 73,
-      "red_ids_identical_to_g15": true,
-      "original_17_preserved": true,
-      "compatibility_56_all_preserved": true
+      "red_ids_identical_to_g15": true
     },
     "g14_67": {
       "pass": 67,
@@ -35,9 +23,14 @@
       "baseline_red": 2,
       "strict_pass": 21,
       "strict_red": 3,
-      "typed_coverage_holds": ["M2", "MP"],
-      "superseded_legacy_interface": ["test_variable_task_cost_reaches_continued_context"],
-      "strict_red_reason": "MATERIAL_BODY_HASH_MISMATCH on a post-issuance caller-mutated payment/task schedule; same science proved through source-issued variable schedule"
+      "strict_red_reason": "MATERIAL_BODY_HASH_MISMATCH on a post-issuance caller-mutated payment/task schedule; same science proved through source-issued variable schedule",
+      "superseded_legacy_interface": [
+        "test_variable_task_cost_reaches_continued_context"
+      ],
+      "typed_coverage_holds": [
+        "M2",
+        "MP"
+      ]
     },
     "g17_13": {
       "pass": 13,
@@ -46,48 +39,17 @@
     "g17i_14": {
       "baseline_pass": 11,
       "baseline_red": 3,
-      "repaired_pass": 14,
-      "repaired_red": 0,
       "oracle_sha256": "0e4535a708d83a85d763c592f3d206f0b21dbc599846d7ffcd89cd82f145a5e6",
-      "oracle_unmodified": true
+      "oracle_unmodified": true,
+      "repaired_pass": 14,
+      "repaired_red": 0
     },
     "g18_20": {
       "pass": 20,
       "red": 0
     }
   },
-  "repaired_edges": [
-    "source-issued material owner/scope/permission/schedule receipt",
-    "source-issued performed-action receipt bound to history and after-state",
-    "recursive nested/alias/serialized future-child partition refusal",
-    "strict source packet allowlist against rehashed wrappers",
-    "C9 consumer reads only authenticated material and performed action",
-    "bounded schedule and no fake 100000 cash",
-    "lawful material remainder, NO_CHANGE, stock/time/tool conservation"
-  ],
-  "proof": {
-    "claims": 14,
-    "g17_claims": 7,
-    "g18_claims": 7,
-    "all_baseline": "PASS",
-    "all_fault_probe": "TARGET_ASSERTION_FAILED",
-    "all_restored": true,
-    "grade": "MECHANICAL_WITNESS_PASS_NOT_SEMANTIC_ADOPTION"
-  },
-  "three_dispositions": {
-    "engineering": "ACCEPT_SCOPED_SOURCEFREE_AUTHENTICATED_MATERIAL with one documented legacy-interface supersession (G16I strict 21/3; 2 typed HOLDs + the frozen unauthenticated schedule test)",
-    "scientific": "ACCEPT_SCOPED_TEST_ONLY_AUTHENTICATED_MATERIAL_MECHANISM / GENERAL_HOLD; bounded finite two-actor material variation, not human lives or psychological/biological law",
-    "authority": "HOLD; no native CAN/ADP/Pyat/person/biology/psychology/C9 E2/C11/production issuance"
-  },
-  "typed_holds": {
-    "M2": "TYPED_COVERAGE_HOLD_ARCHIVE_GRAMMAR_INCOMPATIBLE",
-    "MP": "TYPED_COVERAGE_HOLD_KNOWN_COUNTERPART_HISTORY_NOT_MATERIALIZED",
-    "C9_E1_E2": "HOLD_UNISSUED",
-    "C11": "HOLD_UNISSUED",
-    "C12": "NO_NATIVE_PERSON_GENERATED"
-  },
-  "native_authority": "NOT_GRANTED",
-  "adoption": "NOT_SELF_ADOPTED",
+  "docs_commit": "9d93f31f4b725bf633f4065bafa223c4c75c97f9",
   "evidence": [
     "evidence/court_matrix.json",
     "evidence/red_identity_comparison.json",
@@ -108,11 +70,56 @@
     "evidence/junit/",
     "evidence/logs/"
   ],
+  "final_pushed_tip": "9d93f31f4b725bf633f4065bafa223c4c75c97f9",
+  "g16i_review": "683aa56828cda76ea70792a2c8b39cf78624e8dc",
+  "g17_return": "90d0eb7925de54635559a879ee76fc1b97b9ff61",
+  "g17i_review": "156b84cc8481b65c4196b42574010eb7920d6f44",
   "local_usage": {
-    "provider_model": "DeepSeek V4.1-Flash reasoning MAX (user-selected)",
     "incremental_cash_usd": null,
+    "model_or_harness_switches": 0,
+    "provider_model": "DeepSeek V4.1-Flash reasoning MAX (user-selected)",
     "quota_state": "UNKNOWN",
-    "usage_observed": "local Git/pytest/cold subprocess only; no paid API call observed",
-    "model_or_harness_switches": 0
-  }
+    "usage_observed": "local Git/pytest/cold subprocess only; no paid API call observed"
+  },
+  "native_authority": "NOT_GRANTED",
+  "proof": {
+    "all_baseline": "PASS",
+    "all_fault_probe": "TARGET_ASSERTION_FAILED",
+    "all_restored": true,
+    "claims": 14,
+    "g17_claims": 7,
+    "g18_claims": 7,
+    "grade": "MECHANICAL_WITNESS_PASS_NOT_SEMANTIC_ADOPTION"
+  },
+  "remote_head_verified_before_receipt": "9d93f31f4b725bf633f4065bafa223c4c75c97f9",
+  "remote_ref": "refs/heads/agent/rabochii-sorok-20261019-g18-authenticated-material-history-whole-c4-c9-repair-r1",
+  "remote_verification_output": "9d93f31f4b725bf633f4065bafa223c4c75c97f9\trefs/heads/agent/rabochii-sorok-20261019-g18-authenticated-material-history-whole-c4-c9-repair-r1",
+  "repaired_edges": [
+    "source-issued material owner/scope/permission/schedule receipt",
+    "source-issued performed-action receipt bound to history and after-state",
+    "recursive nested/alias/serialized future-child partition refusal",
+    "strict source packet allowlist against rehashed wrappers",
+    "C9 consumer reads only authenticated material and performed action",
+    "bounded schedule and no fake 100000 cash",
+    "lawful material remainder, NO_CHANGE, stock/time/tool conservation"
+  ],
+  "repository": "maidiu/rawlsing (PRIVATE)",
+  "return_commit": "caedb710d955a2da04e9ecfe65fa2d3d9f14cfe8",
+  "role": "one accountable sourcefree authenticated-material-history implementation scientist; not G17I reviewer, Sorok HQ, Pyat HQ, native actor/biology issuer or CAN/ADP authority",
+  "schema": "SOROK_G18_PUBLICATION_RECEIPT@1",
+  "sealed_startup": "19503a3ea09bdf840a5ce98a9697650c387787fa",
+  "three_dispositions": {
+    "authority": "HOLD; no native CAN/ADP/Pyat/person/biology/psychology/C9 E2/C11/production issuance",
+    "engineering": "ACCEPT_SCOPED_SOURCEFREE_AUTHENTICATED_MATERIAL with one documented legacy-interface supersession (G16I strict 21/3; 2 typed HOLDs + the frozen unauthenticated schedule test)",
+    "scientific": "ACCEPT_SCOPED_TEST_ONLY_AUTHENTICATED_MATERIAL_MECHANISM / GENERAL_HOLD; bounded finite two-actor material variation, not human lives or psychological/biological law"
+  },
+  "typed_holds": {
+    "C11": "HOLD_UNISSUED",
+    "C12": "NO_NATIVE_PERSON_GENERATED",
+    "C9_E1_E2": "HOLD_UNISSUED",
+    "M2": "TYPED_COVERAGE_HOLD_ARCHIVE_GRAMMAR_INCOMPATIBLE",
+    "MP": "TYPED_COVERAGE_HOLD_KNOWN_COUNTERPART_HISTORY_NOT_MATERIALIZED"
+  },
+  "verification_note": "git ls-remote origin <ref> after ordinary non-force push returned the exact evidence/docs tip. This publication record is the docs delta committed after that readback; the final branch tip is the SHA reported by the final direct git ls-remote check in the worker response.",
+  "verified_by": "git ls-remote origin <ref> after ordinary non-force push"
 }
