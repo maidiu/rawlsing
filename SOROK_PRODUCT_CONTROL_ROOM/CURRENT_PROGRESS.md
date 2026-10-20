@@ -1,3 +1,29 @@
+# SOROK CANONICAL PROGRESS REVISION 24 — ACCEPTED SUCCESSOR BP2/BP4 RETURNS AND TRUE END-TO-END PRODUCT JOIN
+
+**Canonical parent:** `315cbb0ff64949399d7a8796377088fadac70789`; source read from same immutable PRE-MAIN for Sorok/Pyat; **Sorok owner successor** `agent/vozhd-sorok-20261020-accepted-successor-hq-r1@267e97ff88acc4b19ea832bf8147f3ac2fa3bc81` after independent scoped acceptance `98e94f36eea171092da3dba9ac66e67f161a411b`. This is reporting-only, not CAN/ADP/Pyat/global/source/security or C11 authority.
+
+**BP2 RETURNED_AUTHOR:** `5065e2e6934e9d5bca800cbf88c79e461bcf2393` actual TEST_ONLY BP3 C8 occurrence→BP1 two materially distinct actor histories→C9R separate RULE_A/RULE_T target/committed record→postcommit independent TEST_ONLY E2. Worker reports **50/50 PASS**, six principal plus four supplemental source-edge faults, cold process. HQ grades **AUTHOR_L1_SOURCEFREE_JOINED_PRODUCER_CANDIDATE_FOR_COMPOSITION**; psychology/native rules/actor/ADP actual source held.
+
+**BP4 RETURNED_AUTHOR:** `d868e82c7c83def2df18295244d93af9706e647f` actual SOURCEFREE C10/C12 SQLite history/world, two actor futures, offscreen work, user SAY/DO/ATTEND, M6 limited experience, fork, cold reentry. Worker reports **15/15 PASS**, five product-edge faults. HQ grades **AUTHOR_L1_TECHNICAL_ALPHA_CANDIDATE_FOR_COMPOSITION**; not native generated person or human experiential acceptance.
+
+**JOIN BLOCKER IS CONCRETE:** BP2 C9 target `950a4c7903cbe832c72d234a0095946720910c23c8235a28c3118afd8fc1b9f8`, C8 digest `058d006c1ce79d2783b02a3bb4e2f92d0672aec9b406b5f3312453f9c5608b4b`; BP4 actual A0/A2 consumes older target `08a8d89a2fca443c668288880a3c889cf3c06c40f12771a10050993ff16a62a6`, C8 digest `d5d3c3199985e79cf7350a9913f1d1f256de4ec415c79d4b3c330d9b8a8efd29`. BP4 BP2 envelope schema validates shape, **not yet actual BP2 emitted source/readset**. Full C8→C9→C10→C12→A0/A2 actual same-root effect therefore **NOT_PROVED**, despite two positive worker returns. Different BP2 logical and BP4 world clock domains must be explicitly related, not silently compared.
+
+**NEXT CAMPAIGN PUBLISHED AND SEALED:** `agent/rabochii-sorok-20261020-bp2p4j-joined-technical-alpha-r1@267e97ff88acc4b19ea832bf8147f3ac2fa3bc81`, commission `WORKER_COMMISSIONS/SOROK-20261020-BP2P4J-ACTUAL-JOINED-SOURCEFREE-PERSON-ALPHA-R1/00_COMMISSION.md`. One large sourcefree engineering positive: actual BP2 output→BP4 unchanged C10/C12/M6 A0–A3 with seven same-observation severances, cold/forks, original test preservation and exact owner/clock closure. **NO AUTO START, local session unknown.** DeepSeek V4.1-Flash MAX I2+ on user-selected qualified local S2 editor recommended; no automatic model/harness switching.
+
+**PYAT R53 USER STOP:** J52/W52 stopped and held pending Pyat universal machine root-cause review, independent of Sorok. Preserve Pyat own current progress and original35 N11/N12 not-ready status; no Sorok workaround, source rights or C11 grant.
+
+## DONE / REMAINING / CRITICAL BLOCKERS / LARGEST PRODUCTIVE MOVE / FLIGHT / DELTA
+
+- **DONE:** BP2 author 50 L1 tests and BP4 author 15 L1 tests plus older independently accepted C9RI and returned BP1/BP3; neither is a native person.
+- **REMAINING:** physical actual BP2 to BP4 combined source→world/user product, original CAN008 RULE_A and separate CAN011 RULE_T, ADP actual actor/encounter/performed E2, C8 D1/D2/D3 protected credentials, M2/MP, Pyat N11/N12, C11 and L3 human A4/A5.
+- **CRITICAL BLOCKERS:** physically different C8/C9 source roots across BP2 and BP4; BP4 shape-only BP2 compat; sourcefree clock-domain mapping; actual native grant and original data rights.
+- **LARGEST PRODUCTIVE MOVE:** run the one newly sealed real-sourcefree BP2P4J whole-chain joined technical alpha; finite independently competent scientific and security decisions in parallel; no extra review treadmill.
+- **FLIGHT:** BP2 RETURNED_AUTHOR; BP4 RETURNED_AUTHOR; BP2P4J SEALED_NOT_EXECUTED; competent original owners separate and Pyat R53 STOP respected.
+- **DELTA:** genuine joined internal BP2 producer and real BP4 user-product technical alpha now exist, but their final causal integration, native C12 persons (0), C11 welds (0), human A5 (NOT_RUN) remain absent.
+
+**Substantive three-court and effective-cut receipt:** `SOROK_PRODUCT_CONTROL_ROOM/HQ_MOTIONS/20261020_SOROK_SUCCESSOR_EFFECTIVE_CUT_AND_BP2_BP4_TWO_RETURN_INTAKE_R1.md` at `267e97ff88acc4b19ea832bf8147f3ac2fa3bc81`. Historical revision 23 and earlier follow unchanged below.
+
+---
 # SOROK CANONICAL PROGRESS REVISION 23 — SUCCESSOR INDEPENDENTLY ACCEPTED AT EXISTING BOUNDED HQ SCOPE
 
 **SCOPED ACCESSION:** [Independent incumbent formal acceptance of 2026-10-20 successor](https://github.com/maidiu/rawlsing/blob/98e94f36eea171092da3dba9ac66e67f161a411b/SOROK_PRODUCT_CONTROL_ROOM/HQ_SUCCESSION_REVIEWS/20261020_INDEPENDENT_INCUMBENT_ACCEPTANCE_SOROK_SUCCESSOR_BOUNDED_R1.md) reviewed candidate `6b87d0c792bbc4e57a517841fda676152f80dc49` and **ACCEPTED existing Sorok HQ sourcefree whole-product program command only** under user's direct succession decision request. The accepted candidate is NOT a native CAN/ADP, original-source, Pyat N11/N12, C8 production-security, C11 weld or global Rawlsing authority. **No worker/process mutation** occurred. The incumbent's last Sorok owner branch at this publication was `0eae4cb22324c42973594e3909da56e4b2e5e45b`; accepted successor first operates on an isolated authorized effective-cut branch and must freshly reconcile currentness, not force/overwrite incumbent or candidate evidence.
