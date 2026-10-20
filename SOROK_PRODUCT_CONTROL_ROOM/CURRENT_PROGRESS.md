@@ -1,3 +1,9 @@
+# Sorok revision 16 — live worker-ledger currentness correction
+
+G17's original author return is already independently adjudicated **REVISE** by G17I `156b84cc8481b65c4196b42574010eb7920d6f44` (three new authentic-source/nested-future/C9 handoff REDs). Previous rev15 G17 worker row text `INDEPENDENT_G17I_PENDING` is superseded; G18 is the distinct next whole C4→C9 repair commission at `19503a3ea09bdf840a5ce98a9697650c387787fa`. No original worker relaunch, no new user account assignment, no native adoption. All other rev15 judgments stand.
+
+---
+
 # Sorok HQ — current progress revision 15: G17I/C8OI/C9R all-return three-court intake and substantive G18/C9RI flight
 
 **SOURCE-CURRENT MOTION:** [exact finding / interpretation / HQ action / owner, three court dispositions, functional blockers and parallel terminal flight](https://github.com/maidiu/rawlsing/blob/36f4bf12cf5b5f0f2ffed11e0cd10e6b4f922933/SOROK_PRODUCT_CONTROL_ROOM/HQ_MOTIONS/20261019_G17I_C8OI_C9R_RETURN_INTAKE_AND_G18_C9RI_FLIGHT_R1.md). **No new real native person, no security/actor issuer self-grant, no worker automatically launched.**
