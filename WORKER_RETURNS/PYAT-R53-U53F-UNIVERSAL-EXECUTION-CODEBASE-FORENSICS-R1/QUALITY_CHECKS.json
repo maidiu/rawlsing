@@ -1,0 +1,80 @@
+{
+  "checks": {
+    "a_tree_census_count": {
+      "pass_": true,
+      "tracked": 7615,
+      "tsv_rows": 7615
+    },
+    "all_pass": true,
+    "b_refs_ledger": {
+      "diff_rows_inventory": 79487,
+      "diff_rows_tsv": 79487,
+      "material_refs": 966,
+      "observed_refs": {
+        "heads": 39,
+        "other": 0,
+        "remotes": 2574,
+        "tags": 0
+      },
+      "pass_": true
+    },
+    "c_graph_anchoring": {
+      "anchored": 51,
+      "edges": 51,
+      "nodes": 22,
+      "pass_": true
+    },
+    "d_bounded_unknowns": {
+      "pass_": true,
+      "unresolved_rows": 9
+    },
+    "e_scan_coverage": {
+      "pass_": true,
+      "scanned": 11305,
+      "targets": 11305
+    },
+    "f_closed35_roster": {
+      "pass_": true,
+      "permission_columns_bounded": true,
+      "rows": 35,
+      "u_epre_bounded": true,
+      "unique": 35
+    },
+    "g_negative_control": {
+      "canonical_literal_hits": 0,
+      "i51_literal_hits": 19,
+      "pass_": true
+    },
+    "h_seeded_leak": {
+      "detected": true,
+      "hits": 4,
+      "pass_": true,
+      "temp_path_not_repository": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/r53-u53f-seeded-qgewz9ev/seeded_fake_fixture_leak.py"
+    },
+    "i_determinism": {
+      "after": {
+        "01_REPOSITORY_SCOPE_AND_COMPLETENESS.json": "372e95f0c4cb713fd8d0d362f66b1df9400053d01e4c4c75f6658f928fd52c84",
+        "02_ALL_PINNED_TREE_FILES.tsv": "cd15ef2dea7cfd9ac255c09e48a08e0ea576e8805bd86e1c1fe11fc70129c0e5",
+        "04_UNIVERSAL_PRODUCER_CONSUMER_GRAPH.jsonl": "2e767cc4711b1cf9859d5583c526cc7ee31e4f6ff019832ddf72239a565475cd",
+        "05_UNRESOLVED_DYNAMIC_AND_MISSING_EDGES.tsv": "51053b1ceea71a63cd900afdcd948f511f1519b51e9ef0bb79344c35d1d1d689",
+        "06B_DOCUMENT_REFERENCE_COUNTS.tsv": "bd5da8920dba6cef81df56b35919d477bcd4428df054817452515332195cd386",
+        "06_SOURCE_SPECIFICITY_AND_FIXTURE_LEAKAGE.tsv": "710e2353a27c1128cc22b6eb6cbfe151bfe9163cd309000c835adada8efc9e6a",
+        "07_HISTORIC_REQUIREMENT_TO_ACCEPTANCE_PROPAGATION.tsv": "abe9e2e33608b4163a386f1aa5d9735e2a4d37ba29b67af98c4e0353d7f5bada",
+        "08_CLOSED35_UNIVERSAL_EXECUTION_COVERAGE.tsv": "40641f175122dee5dc730cb1027ceeec119e2b8651cae2ef30391b784d3c4b77"
+      },
+      "before": {
+        "01_REPOSITORY_SCOPE_AND_COMPLETENESS.json": "372e95f0c4cb713fd8d0d362f66b1df9400053d01e4c4c75f6658f928fd52c84",
+        "02_ALL_PINNED_TREE_FILES.tsv": "cd15ef2dea7cfd9ac255c09e48a08e0ea576e8805bd86e1c1fe11fc70129c0e5",
+        "04_UNIVERSAL_PRODUCER_CONSUMER_GRAPH.jsonl": "2e767cc4711b1cf9859d5583c526cc7ee31e4f6ff019832ddf72239a565475cd",
+        "05_UNRESOLVED_DYNAMIC_AND_MISSING_EDGES.tsv": "51053b1ceea71a63cd900afdcd948f511f1519b51e9ef0bb79344c35d1d1d689",
+        "06B_DOCUMENT_REFERENCE_COUNTS.tsv": "bd5da8920dba6cef81df56b35919d477bcd4428df054817452515332195cd386",
+        "06_SOURCE_SPECIFICITY_AND_FIXTURE_LEAKAGE.tsv": "710e2353a27c1128cc22b6eb6cbfe151bfe9163cd309000c835adada8efc9e6a",
+        "07_HISTORIC_REQUIREMENT_TO_ACCEPTANCE_PROPAGATION.tsv": "abe9e2e33608b4163a386f1aa5d9735e2a4d37ba29b67af98c4e0353d7f5bada",
+        "08_CLOSED35_UNIVERSAL_EXECUTION_COVERAGE.tsv": "40641f175122dee5dc730cb1027ceeec119e2b8651cae2ef30391b784d3c4b77"
+      },
+      "pass_": true
+    }
+  },
+  "law": "Checks a\u2013i from the commission; mechanical, not scientific adoption.",
+  "schema": "R53_U53F_QUALITY_CHECKS@1"
+}

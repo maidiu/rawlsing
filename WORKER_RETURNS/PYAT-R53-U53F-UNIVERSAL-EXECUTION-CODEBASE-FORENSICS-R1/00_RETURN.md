@@ -1,0 +1,48 @@
+# PYAT R53 U53F — universal-execution codebase and lineage forensic evidence
+
+**Sealed startup:** `f148f9ba34deb0ae2ad3983fe94bbcef8f004b03` (user-supplied; branch self-created and HEAD verified; no existing R53 lane).
+**Branch:** `agent/rabochii-pyat-r53-u53f-universal-execution-codebase-forensics-r1`.
+**Role:** independent read-only forensic enumerator, not Astra/HQ/source/semantic/actor issuer and not an architectural adjudicator.
+**Model / runtime:** DeepSeek V4.1-Flash (user-routed), OpenCode, macOS 13.2.1 x86_64, Python 3.11.3, Git 2.43.0, SQLite stdlib. No model or harness switch. R52 J52/W52 remain USER_STOPPED and were not resumed.
+**Custody note:** the named R53 dispatch-seal file is absent at the sealed SHA; the user supplied the exact 40-hex startup directly. The sealed commission blob is `7e6d907d…`; the referenced STOP document blob `e2a04d6f…` matches its committed file.
+
+## FINDING
+
+1. **Complete pinned-tree census (mechanical, not grep-derived).** `git ls-tree -r -z f148f9ba…` yields **7,615 tracked files**; every path is classified in `02_ALL_PINNED_TREE_FILES.tsv` (168 production code, 305 legacy build code, 221 tests, 14 source/archive binaries, 611 authority/registry, 1,816 control/commission, 712 worker-return artifacts, etc.), with per-parent category counts and a manifest hash in `01_REPOSITORY_SCOPE_AND_COMPLETENESS.json`. Untracked material elsewhere is marked UNKNOWN, not assumed absent.
+2. **Refs and material branches.** 2,615 observed refs (39 local heads, 2,574 remotes, 0 tags); an explicit name/subject rule plus mandated return commits selects **966 material refs**; their diffs produce **79,487 file-blob rows** across two deterministic shards (`03_…part00/01.tsv`, index in the evidence receipt). Non-material refs are counted with exclusion reasons. No inaccessible ref is represented as scanned.
+3. **Whole-code source-specificity scan.** All **730 sealed-tree Python paths** plus **2,587 unique branch-only Python blobs** (lazily materialized read-only from the promisor remote) were statically parsed; **45,431 candidate hits** in `06_SOURCE_SPECIFICITY_AND_FIXTURE_LEAKAGE.tsv` (45,431 includes generic program-shape hits; the high-signal set is below). No repository test or production code was executed.
+4. **High-signal leakage findings (candidate classifications; Astra adjudicates):**
+   * `rawlsing_next/pre553_candidate_c_production_binding.py` — generic-named “current production binding” whose only source specifications are **LITS_I and WVS7** (`:115-143`), with LiTS-I-specific entrypoints (`:362`); consumed by `rawlsing_next/ee_p2x_darwin_stage_backend.py` (`:1019`, `:1490`) and by `fiabc_live_terminal_control.py` / `fiabc_succession_producer.py`. Candidate: **GENERIC_RUNTIME_DEFECT / SEMANTIC_AUTHORITY_DEPENDENCY**; consumer consequence: a generic production path can only realize 2 of 35 sources.
+   * `rawlsing_next/ee_p2x_darwin_stage_backend.py` — `EXPECTED_SOURCE = {"LITS_I": …, "WVS7": …}` (`:72`), per-source raw decoders (`:724`), and `_assert_lits_common_c11_identity` usage (`:1339`). Candidate: **GENERIC_RUNTIME_DEFECT** at the orchestration layer; a two-source proving backend is wired under a generic stage name.
+   * `rawlsing_next/pre553_independent_parity_oracle.py` — generic-named oracle containing **LiTS- and WVS-specific oracle builders** (`:512`, `:516`, `:578`). Candidate: **SEMANTIC_AUTHORITY_DEPENDENCY**: a generic parity path can assume LiTS/WVS accepted truth.
+   * `rawlsing_next/fiabc_final_oracle_freeze_producers.py` — freeze-producer registry of LiTS artifacts (`:79-82`) and a “common LiTS semantic path” (`:1246`). Candidate: **PROPER_LOCAL_SOURCE_ADAPTER** at bounded LiTS scope, but its generic name invites universal use; no generic all-source dispatcher found.
+   * **G50 native producer:** `g50/native_i05.py` imports `rawlsing_next.tests` fixture/query helpers (`:13`, `:16`) and declares a fixed `DIST-Y` operation (`:73`, `:117`). Candidate: **GENERIC_RUNTIME_DEFECT / TEST_SCAFFOLD_CONTAMINATION**; the source-neutral grammar prototype is not a B49-bound native producer.
+   * **I51 joined producer:** `candidate/r51_joined_source_producer.py` contains LiTS and q301 literals (`:37`, `:43`, `:73`, `:132`, `:155`, `:179`). Candidate: **GENERIC_RUNTIME_DEFECT**; this is the known sourcefree join, not universal execution.
+   * **Negative control:** the four canonical PRE553 modules (`pre553_source_backed_c11_facade`, `pre553_route_b_production`, `pre553_discovery_exact`, `pre553_batch_runner`) contain **zero LiTS/q301 literals**; I51 is detected. A seeded fake fixture leak in a temporary copy was detected by the same scanner (`QUALITY_CHECKS.json`).
+5. **Anchored producer→consumer graph.** `04_UNIVERSAL_PRODUCER_CONSUMER_GRAPH.jsonl` has **22 nodes and 51 edges** (40 exact AST import/call edges + 11 documentary anchored edges), every edge anchored to a caller blob plus line or document, spanning source authority → U/E_pre → compiler → C11/Route B/I03/I05 → learned F1–F4 → F5/F6/F7 products → N9/W41 → J42/P41 → unmodified E04 consumer. `05_UNRESOLVED_DYNAMIC_AND_MISSING_EDGES.tsv` records **9** unresolved edges (source-indexed operation issuance, universal workload planner, exact compiler→batch join, F5/F6/F7→N9 original joins, canonical N9→E04, N11 adoption).
+6. **35-wave roster.** `08_CLOSED35_UNIVERSAL_EXECUTION_COVERAGE.tsv` has **exactly 35 unique source/wave rows** from the 700-row active authority CSV; no Asian Barometer W6. Source permission/runtime is **UNKNOWN/NOT_GRANTED** and original U/E_pre is **NOT_ISSUED/NULL** for every row; F6/F7 pairs and F8 service are explicitly not single-wave fields; N11 1,890 cells are accounting, not query count.
+7. **Propagation timeline.** `07_HISTORIC_REQUIREMENT_TO_ACCEPTANCE_PROPAGATION.tsv` (19 rows) anchors: 35-wave authority (2026-07-14), universality base-spine output lineage (2026-07-25), AS2A/AS2B two-event bounded release, nine-family vertical proof, HQ276 fixed-all35 doctrine, Atlas P0 `ONE_CANARY_UNIVERSALIZATION` (line 12), Atlas LiTS bounded disposition, B49/G50/I51 returns, F43 bounded bank, the R52 HQ self-correction (line 7: “we promoted the convenient LiTS-I sourcefree fixture to the center”), and the R53 STOP.
+
+## INTERPRETATION (hypotheses only; Astra owns adjudication)
+
+* **Established:** the governing doctrine and pre-existing Atlas register required all35/fixed-estate generalization and already classified one-canary universalization as P0; nevertheless the late R52 commissions centered a LiTS/q301 proving fixture.
+* **Hypothesis A (highest support, code-level):** the executable generic surface was never completed end-to-end. Two-source production bindings (`Candidate C`, Darwin stage backend) and bounded returns (F43/F6/F7/join lanes) provided working local evidence, while the universal planner/issuer edges remained unresolved (`05_…`). Reusing the proven canary is therefore the path of least code resistance. Confidence: **HIGH** for the code gap; **MEDIUM** for the causal claim.
+* **Hypothesis B:** source-native all35 issuance/authority was genuinely unavailable, so workers substituted the only fully evidenced sourcefree lane. This is consistent with the roster’s UNKNOWN/NOT_ISSUED permissions, but does not explain why the *definition of the next machine* became the canary. Confidence: **MEDIUM**.
+* **Hypothesis C:** the Atlas P0 warning and HQ276 doctrine were not encoded as enforceable acceptance gates; commissions could be drafted and accepted without a 35-row readiness/product gate. Confidence: **HIGH** for the absence of an enforceable gate in code/commission acceptance; motive remains unproven.
+* The exact promotion boundary is **not established** by this index; candidate transitions are documented in `07_…`, and the decisive step may predate I51. No psychological or managerial cause is asserted.
+
+## EFFECT (consumer consequences)
+
+* Local LiTS/B49/G50/I51/F43 positive claims are **not invalidated at their own bounded proof grain**.
+* A universal execution claim for the other waves is **unproved**, and generic orchestration paths may silently serve only LiTS/WVS (direct consumer consequence recorded per high-signal row in `06_…`).
+* No silent mutation of any production/authority file was made; the STOP and all local stopped work remain unchanged.
+
+## ACTION_FOR_ASTRA / OWNER / DECISION
+
+**Owner:** Astra (whole-system adjudication); HQ for program acceptance; source/semantic owners for real issuance. **Questions for Astra (not answers):** why the P0 warning did not bind later commissions; where bounded proving releases became the default model; whether to retain B49/G50/PRE553 kernels and rebuild a source-parameterized planner; how to enforce a 35-row readiness/product gate and forbid a `LiTS-I-SYNTHETIC` general entrypoint. **Decision:** this return is an evidence index and hypotheses; **no adoption, repair, source grant, N11/N12 wake, or actor**.
+
+## THREE SEPARATE CONCLUSIONS
+
+* **ENGINEERING-EVIDENCE:** census/refs/scan/graph/roster/quality checks completed mechanically; every claimed graph edge anchored; negative control and seeded-leak checks pass; deterministic rerun equal. Scope is bounded as stated (static only, no production execution, remote refs not re-fetched).
+* **SCIENTIFIC-AUTHORITY-HOLD:** no original measured wave-pair, F6 transport/target grant, FF semantic issuance, or N11 acceptance is asserted; F43/F6/F7 grades remain the authors’ bounded grades.
+* **SOURCE/ACTOR-AUTHORITY-HOLD:** no source read, licence, actor, Sorok/CAN/ADP, N11/N12 or production authority is created. The user STOP remains unchanged.

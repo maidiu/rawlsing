@@ -1,0 +1,21 @@
+{
+  "classification_counts": {
+    "DEAD_OR_INACCESSIBLE": 6361,
+    "GENERIC_RUNTIME_DEFECT": 3208,
+    "PROPER_LOCAL_SOURCE_ADAPTER": 1860,
+    "SEMANTIC_AUTHORITY_DEPENDENCY": 2465,
+    "TEST_FIXTURE_ALLOWED": 12647,
+    "UNTESTED_ASSUMPTION": 18890
+  },
+  "limitations": [
+    "Static AST/literal scan only; no repository test or production code was executed.",
+    "Dynamic reachability of a flagged edge is not asserted.",
+    "Documentation literals are handled in the timeline, not counted as code leakage."
+  ],
+  "scan_scope": "all sealed-tree .py + branch-only .py blobs from the material-ref diff ledger",
+  "scanned_python_blobs": 11305,
+  "schema": "R53_U53F_LEAK_SCAN_RECEIPT@1",
+  "syntax_errors": 0,
+  "targets": 11305,
+  "total_hits": 45431
+}
