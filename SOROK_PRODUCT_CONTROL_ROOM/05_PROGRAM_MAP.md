@@ -1,5 +1,10 @@
 # Sorok Program Map
 
+## Current binding-needs completion trajectory (2026-10-20)
+
+For actual progress from qualified person/world construction through C12 native acceptance and A0–A5 product experience, read **SOROK_PRODUCT_CONTROL_ROOM/20261020_NEEDS_FIRST_PERSON_TO_ALPHA_COMPLETION_TRAJECTORY_R1.md** after Sorok 00E and canonical CURRENT_PROGRESS. It enriches this S0–S13 exploratory map and P0's returned five-tranche program; it does **not** replace the program's relational/ethical/UX requirements or competent CAN/ADP/Pyat grants. P0/PS0/PA0/G18/C9RI have returned at their separately stated grades. The user reports **two new jobs dispatched: BP1 actual historical actor production and BP3 C8 writer/antirollback security**; their intended remote branches were still absent at HQ's last check (local status unknown), so no duplication/restart. BP2 current rule/actor-event/E2 owner composition and BP4 C10/C12 coupled continuity are planned later, not dispatched. The terminal measure is actual sourcefree/native/user-product positive at distinct L1/L2/L3 grades, not a growing refusal-only suite.
+
+
 Status: `ACTIVE_EXPLORATORY_PROGRAM_R1`
 
 Sorok organizes product work by bounded workstream. Each workstream may spawn dockets. Cross-cutting decisions are reconciled here before becoming requirements.
