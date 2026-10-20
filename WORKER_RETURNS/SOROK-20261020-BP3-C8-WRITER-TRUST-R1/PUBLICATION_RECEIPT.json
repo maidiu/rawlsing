@@ -1,0 +1,239 @@
+{
+  "schema": "SOROK_BP3_PUBLICATION_RECEIPT@1",
+  "repository": "maidiu/rawlsing (PRIVATE)",
+  "role": "independent sourcefree C8 exclusive writer and external monotonic anchor implementation worker; not C8O/C8OI author, HQ, ADP019 issuer, key/anchor custodian, C9RI worker or production installer",
+  "branch": "agent/rabochii-sorok-20261020-bp3-c8-exclusive-writer-external-anchor-r1",
+  "sealed_startup_used": "529232d9867a5bdc0889f43fb5293131ef806055",
+  "startup_note": "Launch omitted a literal physical SHA; 529232d98 is the latest HQ commit containing the BP3 commission, four-return adjudication and C9RI acceptance. No floating branch was used.",
+  "c8o": "9784bc1dbae0c9ac13670d5e442ed9cabb6be7fe",
+  "c8oi": "f4200eb0938a1b74c8b738e0a344224edfb4d0eb",
+  "evidence_commit": "c2711a3386a6eec34d541f6c1fe504b9de0bc1ad",
+  "gate_commit": "b6b7b2c716be2c04b7964ec85287d8551491f6bc",
+  "remote_head_verified_before_receipt": "b6b7b2c716be2c04b7964ec85287d8551491f6bc",
+  "remote_ref": "refs/heads/agent/rabochii-sorok-20261020-bp3-c8-exclusive-writer-external-anchor-r1",
+  "verified_by": "git ls-remote origin <ref> after ordinary non-force push",
+  "courts": {
+    "bp3_writer_anchor_consumer_os": {
+      "pass": 18,
+      "red": 0
+    },
+    "bp3_proof_claims": {
+      "pass": 5,
+      "red": 0
+    },
+    "bp3_cold_0": {
+      "pass": 18,
+      "red": 0
+    },
+    "bp3_cold_1": {
+      "pass": 18,
+      "red": 0
+    },
+    "c8o_62": {
+      "pass": 62,
+      "red": 0
+    },
+    "c8oi_17": {
+      "pass": 17,
+      "red": 0
+    },
+    "historical": {
+      "original_272": {
+        "pass": 270,
+        "red": 2
+      },
+      "out12_author_9": {
+        "pass": 9,
+        "red": 0
+      },
+      "out13_hostile_23": {
+        "pass": 23,
+        "red": 0
+      },
+      "out14_new_court": {
+        "pass": 27,
+        "red": 0
+      },
+      "regression_272_under_out14": {
+        "pass": 270,
+        "red": 2
+      },
+      "regression_out13_23_under_out14": {
+        "pass": 22,
+        "red": 1
+      }
+    }
+  },
+  "historical_preserved_reds": [
+    "test_replay_manual_two_writers_can_lose_first_committed_event",
+    "test_s27_material_move_needs_world_owner"
+  ],
+  "inherited_regression": "test_hp8_corrupting_writer_version_resets_to_zero_and_defeats_the_CAS (OUT13 under OUT14, 22/1, inherited and preserved)",
+  "old_writer_gate": {
+    "method": "outbox_prototype.Journal.commit / admit_and_queue",
+    "gate": "install_exclusive_gate() -> LegacyWriterRouteClosed",
+    "test": "test_old_journal_commit_route_closed_preserves_acknowledged_bytes",
+    "scope": "candidate process only; D1 native cutover held"
+  },
+  "keyed_append": {
+    "capability": "HMAC-SHA256 TEST_ONLY, exact journal/role/writer/expiry",
+    "proof": "journal id, nonce, writer/version, receipt/state/version-state, anchor sequence/row",
+    "key_store": "external file; key inside journal dir refused"
+  },
+  "external_anchor": {
+    "mechanism": "keyed monotonic rows + separately held watermark outside journal",
+    "rollback": "AnchorRollbackDetected",
+    "offline_or_rotated": "AnchorUnavailable",
+    "residual": "anchor log + watermark rolled back together; key leak"
+  },
+  "out9_positive": {
+    "consumer": "c8_readonly_consumer.C8ReadOnlyConsumer",
+    "actual_receipt": true,
+    "count": 1,
+    "test": "test_exclusive_append_reaches_actual_out9_consumer"
+  },
+  "c9_ingress": {
+    "state": "TEST_ONLY_EVENT_AVAILABLE",
+    "adp019": "ADP019_ADMISSION_RECEIPT_ABSENT",
+    "e2_performed": false,
+    "native_actor_admitted": false,
+    "proof_verifier_required": true,
+    "test": "test_c9_ingress_reads_actual_c8_receipt_without_native_claim"
+  },
+  "crash": {
+    "before_rename": "prior bytes preserved",
+    "after_commit": "journal visible, proof sidecar stale, verify_journal refuses (unacknowledged)"
+  },
+  "multiwriter": {
+    "2": "pass",
+    "3": "pass",
+    "5": "pass",
+    "cold_reopen": "pass"
+  },
+  "residual": [
+    "D1 process-not-importing-candidate / raw filesystem / OS privilege / original API cutover",
+    "D2 real key/anchor custodian, rotation/revocation, key leak, anchor+watermark rollback",
+    "D3 ADP019 native occurrence and performed E2",
+    "crash after journal rename before proof sidecar repair",
+    "fsync/power-failure assumptions"
+  ],
+  "three_dispositions": {
+    "engineering": "ACCEPT_SCOPED_SOURCEFREE_C8_WRITER_CANDIDATE",
+    "scientific": "ACCEPT_SCOPED_CUSTODY_DISTINCTION__HOLD_NATIVE_ADP019_E2",
+    "authority": "HOLD_D1_D2_D3_NATIVE"
+  },
+  "hq_action_request": [
+    "D1 accepted owner review/authorize cutover and old API retirement",
+    "D2 independent custodian provision real key/anchor, rotation/revocation and protected stores",
+    "D3 ADP019 real occurrence and performed E2",
+    "keep sourcefree candidate separate from production security proof"
+  ],
+  "accountable_owner": "C8 accepted Journal custodian for D1; independent key/anchor custodian for D2; V3 External Admission Court/ADP019 and actual action owner for D3; C8O/C8OI/C9RI/Pyat owners unchanged",
+  "not_run": [
+    "native ADP019 admission",
+    "native actor occurrence",
+    "performed E2",
+    "C9R native binding",
+    "C11 physical weld",
+    "Pyat N11/N12",
+    "production key/anchor install",
+    "raw OS/power-failure proof",
+    "production original API modification"
+  ],
+  "cost": {
+    "billed_api_cash": "UNKNOWN",
+    "included_quota": "UNKNOWN",
+    "execution_surface": "local Git/pytest/OS processes; no paid API observed"
+  },
+  "source_blobs": {
+    "outbox_prototype.py": "331840768ce0b5f6f73e5e93094ca0d217ddaebf",
+    "c8o_trusted_outbox.py": "7d785d35be09ab2ca5877a89a7880c70f2fe488c",
+    "c8_readonly_consumer.py": "5ae9360963a98d7a715ea94ef8883e35d5f3442d"
+  },
+  "artifact_sha256": {
+    "00_RETURN.md": {
+      "sha256": "138c523025e979b5d044910e1160e3f149c5592ce83f18d66d7c8c5f09c67c44",
+      "bytes": 10080
+    },
+    "OWNER_HANDBACK_D1_D2_D3.md": {
+      "sha256": "3a3bf0a811e8d393f65058bfb9e7efc3b67de2b210e3fa647c37585b9143ead5",
+      "bytes": 3528
+    },
+    "THREAT_MODEL.md": {
+      "sha256": "2a1e6f37be29021bb967bdc38f6678652cd925c66c329496530f4b0af14b23c4",
+      "bytes": 1825
+    },
+    "CODE_MAP.md": {
+      "sha256": "28b44538891000476cb15cb2e8a41be7fd52ab7b2ef7fc5be0c5b628047685ff",
+      "bytes": 1917
+    },
+    "c8_exclusive_writer.py": {
+      "sha256": "334e591779dcd2f409f5afcf87cda26341ce4407da2a77b604c65c212d9c4263",
+      "bytes": 15845
+    },
+    "c9_event_ingress.py": {
+      "sha256": "d75c49e22ec78465c5703515d65bcb74706cb45d6893dc64cbc37a7f84a386cc",
+      "bytes": 2164
+    },
+    "bp3_worker.py": {
+      "sha256": "c5761fd1f3e5101d0f63f7f7f4c6f67a833cb6c8c51966e5b5be6ecf2accddc6",
+      "bytes": 1356
+    },
+    "bp3_crash_worker.py": {
+      "sha256": "448b4aed3d3787b82f87340942e5b2554ff33a31b610f14c959379315df23144",
+      "bytes": 782
+    },
+    "tests/test_bp3_exclusive_writer_consumer.py": {
+      "sha256": "0fd51c75e07b5532422591d06b0a1fb1b33d8b1d9c21afcf78a3e310c3c79c18",
+      "bytes": 14131
+    },
+    "tests/test_bp3_exclusive_writer_consumer.py.proof.json": {
+      "sha256": "5154690037fd6c1976be448880254005cbaa7cbb3f4e52f52237d878c35089bc",
+      "bytes": 3286
+    },
+    "environment_passport_delta.json": {
+      "sha256": "1dde2293e0baf8b838b60ad5ea9c7939e7dd686dc8cf72409c68311a34d0a242",
+      "bytes": 2499
+    },
+    "evidence/source_provenance.json": {
+      "sha256": "7a2c9fa06d60fcb36d42b33fc39c3f2ad7fa7e9b04c16cccf81001a368e13582",
+      "bytes": 3938
+    },
+    "evidence/c8o_historical_status.json": {
+      "sha256": "eeef07de4140db73271a093b7bafda3e1f58ed928d18897bea374358b8e82997",
+      "bytes": 1554
+    },
+    "evidence/bp3_native.xml": {
+      "sha256": "fab4ed09f24a34432dc0bbc4dd4c82416eec461b6a7d6a3b89b24994e76923c1",
+      "bytes": 2675
+    },
+    "evidence/bp3_post_witness.xml": {
+      "sha256": "4dc01ee7cc3e3c3d6efa3cd8eb1ef1c0495e5c8f069c55fe5ab7262c0caffb13",
+      "bytes": 2675
+    },
+    "evidence/bp3_cold_0.xml": {
+      "sha256": "e1f20a291a90cc965bbfc9dd17e9b4acab2ce4075054e631aec2e66b7821fc4d",
+      "bytes": 2675
+    },
+    "evidence/bp3_cold_1.xml": {
+      "sha256": "7a7e7196787311910d014da79f620760c016528b436a78bb7a030329263a7a44",
+      "bytes": 2675
+    },
+    "evidence/proof_witness_receipt.json": {
+      "sha256": "68ad3f696b32640a1adda6fb91b6812b1cfaf98267ce2afca0266f199dbf0694",
+      "bytes": 2372
+    },
+    "evidence/proof_gate_changed_receipt.json": {
+      "sha256": "eddfe525df3c137f74f43481e8bf11717ad02e0ba1d24e60049812a134cd9d57",
+      "bytes": 2805
+    },
+    "evidence/c8o_62.xml": {
+      "sha256": "54da54caae116684156954e98c45af1c6780c94167ba7bcf3492d899519b4563",
+      "bytes": 8760
+    },
+    "evidence/c8oi_17.xml": {
+      "sha256": "670bde70d46d3fc1b397cc9414a2858723bc841832a72d19a11b590c4aa1db6e",
+      "bytes": 2311
+    }
+  }
+}
