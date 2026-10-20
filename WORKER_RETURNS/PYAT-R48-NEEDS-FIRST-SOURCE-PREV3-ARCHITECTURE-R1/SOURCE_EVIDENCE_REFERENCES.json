@@ -168,5 +168,55 @@
     "perwave_A42_missing_total": 1778,
     "perwave_A42_total": 1890,
     "function_crosswalk_rows": 33
+  },
+  "post_initial_bounded_code_read": {
+    "result": "LEGACY_WAVE_QUESTION_AND_JOINT_COMPILERS_EXIST__REUSE_FIRST__CURRENT_U_EPRE_COMPILATION_UNPROVED",
+    "sources": [
+      {
+        "path": "WORKER_RETURNS/PYAT-R43-U43-ORIGINAL35-PROSPECTIVE-WORKLOAD-R1/inputs/wg0x/sources/v550_worklist.py",
+        "blob": "04f3a3646d8b468660385087d92541f03f860cb0",
+        "ref": "98877a1755cab9f8afd453c450f3d1e15001eede",
+        "functions": [
+          "main",
+          "_build_question_list",
+          "_question_rows_from_cache",
+          "_prepare_v550_question_row_cache"
+        ]
+      },
+      {
+        "path": "WORKER_RETURNS/PYAT-R43-U43-ORIGINAL35-PROSPECTIVE-WORKLOAD-R1/inputs/wg0x/sources/v550j_joint_operator.py",
+        "blob": "644aab23675b26134040d1df5cc25538b613e163",
+        "ref": "98877a1755cab9f8afd453c450f3d1e15001eede",
+        "functions": [
+          "compile_v550j_family_tables",
+          "_association_eligibility_funnel",
+          "_association_candidate_trace_rows_fast"
+        ]
+      },
+      {
+        "path": "WORKER_RETURNS/PYAT-R43-U43-ORIGINAL35-PROSPECTIVE-WORKLOAD-R1/inputs/wg0x/sources/WG0P10_repaired_workload.py",
+        "blob": "554d4adebdff1659f7213eabd6db050858533ce5",
+        "ref": "98877a1755cab9f8afd453c450f3d1e15001eede",
+        "scope": "TEST_ONLY"
+      },
+      {
+        "path": "data/ddm_build_copy/ddm_v550_question_use.py",
+        "blob": "8d90a5116fd05b5db17e9b4645638a3aa6fc1131",
+        "ref": "e7512c43a07bdf52d0b2f3081cf448e00a08f9d0"
+      },
+      {
+        "path": "data/ddm_build_copy/ddm_v550_source_structure.py",
+        "blob": "3a6e83db84c200d2ea5f50bc54b1302ac2a579c4",
+        "ref": "e7512c43a07bdf52d0b2f3081cf448e00a08f9d0"
+      },
+      {
+        "path": "data/ddm_build_copy/ddm_v550_readiness.py",
+        "blob": "556ce74cdde48e344c083b8bae1678d6cadd72de",
+        "ref": "e7512c43a07bdf52d0b2f3081cf448e00a08f9d0"
+      }
+    ],
+    "current_original_e_pre_compiler": "UNPROVED",
+    "current_original_grants": "UNVERIFIED",
+    "source_data_read": false
   }
 }
