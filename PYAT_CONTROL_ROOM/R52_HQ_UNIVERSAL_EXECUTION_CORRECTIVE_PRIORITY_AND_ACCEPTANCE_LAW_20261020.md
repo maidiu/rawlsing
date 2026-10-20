@@ -1,0 +1,60 @@
+# PYAT HQ R52 — UNIVERSAL-EXECUTION PRIORITY CORRECTION (user-directed)
+
+**STATUS:** **BINDING NEW HQ PRODUCT PRIORITY**, 2026-10-20, made after user's explicit correction: “why are we focused, still, on LiTS-specific things? And not on universal-execution?” **NOT** a new source/semantic/science permission or actual worker launch. PRE-MAIN private `maidiu/rawlsing`.
+
+## 0. HQ diagnosis and responsibility
+
+Pyat's governing `PYAT_CONTROL_ROOM/00_WHOLE_MACHINE_AUTOMATION_DOCTRINE_R1.md` (HQ276) defines a “GENERALIZED, AUTOMATED, SOURCE-NATIVE, SEMANTICALLY GOVERNED EMPIRICAL-PROCESSING AND SOCIOLOGICAL-WORLD-CONSTRUCTION MACHINE” consuming a **fixed all35** original 31 SAV / 4 DTA estate. It **explicitly forbids** successive hand-selected survey-question campaigns, and says scientifically qualified source packets are **inputs** to the general engine. This binding conception preceded R52. **HQ has drifted:** after legitimate bounded canaries, we promoted the convenient LiTS-I sourcefree fixture to the center of R52 J52 and over-focused on obtaining a specific SRC27 D1–D5 license. The user's correction is right. **R52 J52 as drafted was underpowered as a universal-product acceptance test** even if it achieved native CONDITIONAL and JOINT on the same q301_2/q301_7 synthetic rows and E04.
+
+Not a total lack of generic machinery: current PRE553 physical decoder/source-backed virtual C11/I03/I05/adaptive recursion/Batch and current B49 source authority corpus, generic selected source rules, G50 SourceDecisionBundle and symbolic grammar EXIST. They are not globally accepted original source permission. **The missing function is the reusable source-parameterized composition**: for every original35 source descriptor, take legitimately independently issued source semantics and target/condition/routing/unit/design/method policy, derive complete *prospective* U/E_pre with no-drop, materialize abstract executable source-backed C11/queries/discovery/batches, run those on real original data where rights allow, and transmit actual F1–F8 evidence and original35 reception manifests. No one source family/item or manually selected canary may define the executor.
+
+**Observed precise accidental specialization:** `rawlsing_next/pre553_inherited_source_rules.select_source_rules` and `all35_coverage_ledger` are generic; `pre553_source_native_preimage_adapter.materialize_native_preimages` has convenience defaults `source_family="LiTS"`, `study_product_id="LiTS-I-SYNTHETIC"` but accepts selected packages and inventories; `pre553_native_workload_binding.OperationFixture` is expressly ONE TEST_ONLY operation, not general workload compiler. G50 generic type/frontier exists, but `g50/native_i05.py` imports `rawlsing_next.tests.*` helper constructors and exercises fixture-specific `SYNTH-SRC-A`. I51 `candidate/r51_joined_source_producer.py` hardcodes `SCOPE="LiTS-I-SYNTHETIC"`, `SOURCE_COLUMNS=("q301_2","q301_7","country","w1","id")`, `SOURCE_ROWS` and two named q301 administered fields, demonstrating only ONE `DIST` sourcefree fact and no source-derived I05 or E04. These code facts locate *binding/execution universality debt*, not a warrant to rewrite entire existing semantic production DAG or condemn valid I51 tests.
+
+## 1. Controlling universal target
+
+```text
+FIXED ALL35 SOURCE INDEX (35 of 35 expected; no convenient omission)
+  + SOURCE-SPECIFIC AUTHORITY ENVELOPES
+     exact edition/item occurrence/meaning/population/respondent-household/routing/
+     forms/splits/MR/rank/repeat/missing/weight/design/clock/
+     independent source/host/purpose/operation permissions
+  → UNIVERSAL SOURCE-ADAPTER / NORMALIZED ELIGIBLE ITEM+UNIT+RISK INVENTORY
+  → PROSPECTIVE SCIENTIFIC OPERATION-GRAMMAR COMPILER
+     independently issued meaning vs proposed TEST_ONLY, all relevant eligible
+     DIST, bidirectional CONDITIONAL, JOINT, COTRAVEL, FORK, INTERACTION,
+     REVERSAL, STATE_ROBUSTNESS and valid recursions,
+     typed impossible/unknown/held/deferred, exact expected-set no-drop
+  → GENERIC SELECTED B PHYSICAL→C11→I03/I05/ADAPTIVE/Batch
+     actual source values only at right-bearing private host; restart/replay/version
+  → F1 distributions, F2 predictors, F3 minority/outlier/forks, F4 clouds/joints
+  → learned accepted release and F5 source-indexed FF, F6 genuinely multiple
+     independent fields/partial bounds, F7 actually comparable empirical time
+  → N9 selected as-of world, N10E/N10W generic progressive possibilities
+  → ACTUAL existing nonperson consumer, N11 all35 qualified scientific estate
+  → separately granted N12 and Sorok actor (NOT automatically upstream-created).
+```
+
+**Everything before the actual data reader and after the source-specific source-authority packet must be parameterized and reused.** A source with no legal grant still appears as an expected wave with `SOURCE_RIGHT_HOLD`; a source with no authenticated codebook/instrument carries `SEMANTIC_UNKNOWN`; source-intrinsic inapplicability requires specific original-source proof. These are neither silently skipped nor “completed.” A legally permitted source runs the complete authorized, prospective scientifically justified workload—*not* a hand-chosen positive and not whole35 blanket license. F6 and F7 cross-source/pair targets have their OWN scientifically qualified expected universe, not 35 independent scalar results.
+
+## 2. Corrected J52 acceptance — **UNIVERSALITY IS NECESSARY**
+
+The previously sealed `WORKER_COMMISSIONS/PYAT-R52-J52-REAL-MULTITARGET-I05-E04-NATIVE-CONSUMER-COMPLETION-R1/00_COMMISSION.md` remains an immutable historical instruction with startup `31f2d739d88d17629948ebe62e650f953b92aea0`. Its mission is **expanded/clarified prospectively** by the attached noninterrupting `01_MANDATORY_UNIVERSAL_EXECUTION_CORRECTIVE_ADDENDUM.md` (binding for NEW sessions when user elects launch; if same local worker is already active and unreconciled, no interrupt/restart/overlapping writer—request user-directed safe handoff to addendum). J52 must implement missing generic joint/I05 consumer features **in a source-parameterized reusable compiler**, not only LiTS values.
+
+The following **five separate acceptance gates** must be reported:
+- **G1 ARCHITECTURE PARAMETRICITY:** reusable public function takes `SourceAuthorityCorpus/SelectedSourceRulePackage`, independently frozen `InstrumentInventory/PhysicalSourceIncidence` or exact typed source carrier, source-specific competence-issued `ScientificGrammarPolicy`, resource/consumer permission and clock; does not hardcode family LiTS, selected q301 variables, synthetic source ID, fixed sample row labels or a helper imported from a test module in the **production-facing execution**. Separate optional fixture builders may use named LiTS. Dynamic semantics are INJECTED, never inferred from column label.
+- **G2 HETEROGENEOUS SOURCE TEST BASIS:** exercise **at least three different source/shape configurations with genuinely distinct exact source IDs and native variable names** (include at least one SAV-shaped and one DTA-shaped carrier and a genuinely different routing/unit/weight/form/repeat/MR representation; sourcefree fixtures ONLY where source rights absent). Identity-only relabeling of LiTS dataset is NOT heterogeneity. Each positive must actually call existing PRE553 native engine; failed configurations remain typed and must carry exact reason. A small basis is a GENERIC OPERATOR TEST, **not** all35 source-original science.
+- **G3 FULL35 DECLARED UNIVERSAL FRONTIER ACCOUNTING:** run the actual original35 source-authority corpus/accepted identities (35/35) through the same batch planner/semantic readiness and source eligibility normalizer, producing one versioned source-indexed status for each, independently traceable expected vs emitted original U/E_pre and native operation reach. A source with no original D1–D5 is **NULL original U/E_pre and held/unknown**, NOT a fabricated sourcefree U count. The 35 retained source IDs are a conservation proof; only sourcefree executable **shape coverage** can be claimed unless actual qualified original sources executed. Expose all missing/unsupported source classes, no convenient seven waves omitted to report success.
+- **G4 NATIVE PRODUCER AND CONSUMER:** at least two distinct source-shapes execute native `I03` and actual **B49-source-derived** `I05`, with at least one real same-respondent JOINT and one ordered CONDITIONAL where eligible, source values materially change their own *existing* native downstream fact under same assertion; expose F2/F3/F4 product/consumer through actual current learned/release/N10E/E04 path if legal TEST_ONLY or exactly type why currently unreachable. Show Batch/cold restart, stable E_pre through value changes, source edition/grant/role error refusals and correct minority/valid empirical null/zero-denominator classification. **Not two unrelated synthetic demos.**
+- **G5 SCIENTIFIC/PERMISSION CALIBRATION:** full G1–G4 sourcefree green = `UNIVERSAL_ENGINE_SOURCEFREE_SHAPE_PROVED_SCOPED`, **never** `ORIGINAL35_SCIENTIFIC_COMPLETED`. Actual 35 source-positive U/Epre and N11 cells need independently grounded edition, licence, scientific eligibility, methodological validator and original data execution on approved host. Separate by authentic source-specific functionality need, not an imaginary external blanket signer or LiTS-only SOURCE_HOLD.
+
+**A 2-item LiTS joint+E04 green WITHOUT G1/G2/G3 is REVISE,** not ACCEPT at universal-engine scope. **G1–G3 sourcefree success without a genuine native producer/reader is also REVISE.** Do not expand runtime to 35 × all-pairs exhaustive unbounded materialization; finite scientifically governed frontier with monotone expected ledger, typed deferral and checkpoint/restart is required.
+
+## 3. HQ priority correction / no meaningless microjobs
+
+**First technical priority:** generic J52 builder under these universality gates. Not another LiTS licence chase, not a new 35-wave archaeology cycle, not a third route, not an extra E04 fixture. Real original-data D1–D5 from any currently authorized wave is concurrently valuable. SRC27 is **one possible first source**, not project's privileged source or blocking HQ focus; scan already-governed source grants and method packets for ANY of 35 before ordering new source-specific permissions. Form genuine per-wave readiness/hold matrix and obtain only actual missing source/host/method permissions where a source is valuable and ready. A scientifically correct original observed null remains a product. No source can simply disappear.
+
+**Second independent world move:** W52 is still orthogonal F5/F6/F7 real N9/E04 world-consumer work, but does not substitute for universally executed empirical substrate and should not become another survey-specific field manual test. It may run parallel on separate qualified resource if true receiver gap; broader development priorities favor universal original estate positive capability first.
+
+**Correct model/capacity:** Browser High can judge generic architecture and source-method boundaries but native S3 sourcefree Python Git/cold execution on user's host not independently verified here. DeepSeek V4.1-Flash MAX demonstrably authored B49/G50/I51 sourcefree native code, qualified first executor if host verified; do not assert Codex GPT-6.1 High is necessary without a real MAX capability failure. Source science/admission independent of AI model. All current host slots and any prior J52 local session = UNKNOWN; remote J52 branch absent at this cut. No automatic launch/quiet restart. If existing J52 locally running, do not send mandatory scope switch without user-directed safe confirmation and preserved worktree.
+
+**HQ explicit disposition:** `R52_J52_LITS_FIXTURE_OVERFOCUS_CORRECTED__UNIVERSAL_EXECUTION_REQUIRED__NO_SOURCE_ISSUANCE__NO_EXISTING_WORKER_RELAUNCH`. User's challenge is a scientifically consequential correction and must guide acceptance of next return and all35 N11 trajectory. Next sealed command revision should record it; DO NOT change immutable R52 handoff in place.
