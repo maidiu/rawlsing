@@ -1,3 +1,11 @@
+# Sorok progress revision 20 — BP3 returned, scoped C8 writer and anchor build; BP1 still user-dispatched remotely unverified
+
+**LIVE COMPLETION TRAJECTORY:** [C0→C12→A0–A5 plan including BP3 exact return, native D1–D3 residuals](https://github.com/maidiu/rawlsing/blob/605880836f4806b90017c8d45ae74f97b7510144/SOROK_PRODUCT_CONTROL_ROOM/20261020_NEEDS_FIRST_PERSON_TO_ALPHA_COMPLETION_TRAJECTORY_R1.md). **BP3 physically returned:** [exact scoped C8 sourcefree author return](https://github.com/maidiu/rawlsing/blob/7faaa0722336231335d974bebc70c1282c79ce3e/WORKER_RETURNS/SOROK-20261020-BP3-C8-WRITER-TRUST-R1/00_RETURN.md) at `7faaa0722336231335d974bebc70c1282c79ce3e`. 18/18 sourcefree new court, 5/5 dependency faults, old 272=270/2 RED preserved, OUT12 9/9, OUT13 23/23, OUT14 27/27, C8O 62, C8OI 17; real OUT9 read and sourcefree C9 ingress. **Scope:** old accepted Journal.commit/admit_and_queue refused *in processes importing the candidate*; native D1 old-writer OS/production cutover NOT done, D2 protected key/monotonic anchor deployment and post-rename pre-proof recovery NOT done, D3 ADP019/E2 real source NOT issued. **Author-scoped method only; no security/native scientific adoption.**
+
+**BP1:** user dispatched whole historical actor producer, requested GitHub worker branch still absent at last direct remote check. Local worker state unknown; no relaunch, no extra commission. **BP2/BP4:** still prospective and not dispatched. C9RI independently scoped-accepted C9R sourcefree E1→target→later performed E2 remains the real receiving positive. **Pyat** original source/world and N11/N12 remain other HQ. No native C12 or C11 weld.
+
+## Prior revision 19 retained
+
 # Sorok HQ current progress revision 19 — five returns reconciled; actionable completion trajectory to native person and alpha
 
 **CURRENT COMPLETION PLAN:** [needs-first C0→C12→A0–A5 trajectory, gates, positive/negative/no-effect, owner decisions and parallel dependencies](https://github.com/maidiu/rawlsing/blob/32d20f5322f28dbd75bae5991aebcce96fe69259/SOROK_PRODUCT_CONTROL_ROOM/20261020_NEEDS_FIRST_PERSON_TO_ALPHA_COMPLETION_TRAJECTORY_R1.md). Enriches P0 07 five-tranche plan, Sorok 05 program map, 100/101 alpha constitution, and mandatory 00E HQ grok. Does not grant native source/actor science, C11, or production permission.
