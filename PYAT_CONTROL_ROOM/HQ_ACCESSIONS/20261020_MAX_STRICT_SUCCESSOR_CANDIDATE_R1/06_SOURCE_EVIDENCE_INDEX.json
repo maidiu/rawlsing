@@ -1,0 +1,432 @@
+{
+  "schema": "PYAT_ACCESSION_SOURCE_EVIDENCE_INDEX_CANDIDATE_R1",
+  "operative_authority": false,
+  "current_candidate_branch": "agent/vozhd-pyat-20261020-max-strict-succession-candidate-r1",
+  "pinned_base_sha": "511ad5c5f15f23990d1bbe7431bfe69d18d5a8af",
+  "later_live_control_read_sha": "3d13eadab9ce89d4f5566e3f6b8681fd0db91fc9",
+  "last_sealed_handoff_sha": "81b75c8e67b425ecf70be9ad2bf3dfbb6963c17a",
+  "protected_semantic_pre_main_sha": "1f47063c3205a45888b3c55e81e7485943ed1390",
+  "r53_stop_user_directive": "J52_AND_W52_STOPPED_NO_IMPLEMENTATION_RELAUNCH_WITHOUT_FORENSIC_VERDICT_AND_NEW_USER_DECISION",
+  "exact_git_manifest_comparison": {
+    "at_handoff_commit": "81b75c8e67b425ecf70be9ad2bf3dfbb6963c17a",
+    "file_count_checked": 7,
+    "verified_matches": 7,
+    "mismatches": 0
+  },
+  "remote_worker_status": {
+    "I51": "ACTUAL_RETURNED@9bbf9e0509411beb210331d28160324b005a784e",
+    "J52": "NO_REMOTE_REF__USER_STOPPED__LOCAL_UNKNOWN",
+    "W52": "NO_REMOTE_REF__USER_STOPPED__LOCAL_UNKNOWN"
+  },
+  "source_original_rights": "NOT_ISSUED_BY_APPLICANT",
+  "original_e_pre": "NULL_NOT_ZERO",
+  "measured_n11_as_R52": "0_of_1890_requirements_not_actual_science_denominator",
+  "sorok": "SEPARATE_HQ_REV23_NO_NATIVE_C12_PERSON_AT_READ_CUT",
+  "native_test_execution_this_candidate": "NONE",
+  "private_source_microdata_access_this_candidate": "NONE",
+  "official_python_structural_checker_run": "NOT_RUN__RUNTIME_UNAVAILABLE",
+  "independent_acceptance": "NOT_REVIEWED",
+  "required_user_acceptance": "NOT_GIVEN_FOR_THIS_APPLICANT",
+  "sources": [
+    {
+      "id": "master",
+      "repository_path_or_source": "PYAT_CONTROL_ROOM/SUCCESSION_TEMPLATES/GENERIC_MAXIMUM_STRICT_PYAT_HQ_FULL_ACCESSION_MASTER_PROMPT_R1.md",
+      "source_commit_or_sha": "182bb96d296f6c22651799e8fc23c742d33fff41",
+      "git_blob_sha": "14d904943565890b1e84c7d22481649b25e3652f",
+      "read_grade": "DIRECT_FETCH",
+      "currentness": "Exact historical/worker branch code as of cited ref",
+      "claim_limit": "Historical generic exact master; subordinate to newer law"
+    },
+    {
+      "id": "pointer",
+      "repository_path_or_source": "HQ_HANDOFF/LATEST.json",
+      "source_commit_or_sha": "3d13eadab9ce89d4f5566e3f6b8681fd0db91fc9",
+      "git_blob_sha": "2829433cde06d2a75349408203fffa19aa144010",
+      "read_grade": "DIRECT_FETCH",
+      "currentness": "Latest live directive at inspection",
+      "claim_limit": "Mutable pointer still R52 at later inspected cut; not proof that no subsequent source directives exist"
+    },
+    {
+      "id": "sealed_current_md",
+      "repository_path_or_source": "HQ_HANDOFF/checkpoints/20261020-PYAT-HQ-R52-USER-ACCESSION-I51-SCOPED-RETURN-J52-W52-TRUE-PRODUCT-R1/CURRENT.md",
+      "source_commit_or_sha": "81b75c8e67b425ecf70be9ad2bf3dfbb6963c17a",
+      "git_blob_sha": "28d7d110dc1a810f733315d850aa29068bc3ce4c",
+      "read_grade": "MANIFEST_GIT_BLOB_VERIFIED",
+      "currentness": "Immutable R52 sealed authority at own cut",
+      "claim_limit": "Immutable operative R52 exact cut; J/W ready then, superseded by R53 STOP"
+    },
+    {
+      "id": "sealed_current_json",
+      "repository_path_or_source": "HQ_HANDOFF/checkpoints/20261020-PYAT-HQ-R52-USER-ACCESSION-I51-SCOPED-RETURN-J52-W52-TRUE-PRODUCT-R1/CURRENT.json",
+      "source_commit_or_sha": "81b75c8e67b425ecf70be9ad2bf3dfbb6963c17a",
+      "git_blob_sha": "10a297cc3a77dedd8b17c22caf1c5de03a86b60c",
+      "read_grade": "MANIFEST_GIT_BLOB_VERIFIED",
+      "currentness": "Immutable R52 sealed authority at own cut",
+      "claim_limit": "R52 dependencies, source original U/E_pre NULL, incumbent accession, exact J/W commissioned"
+    },
+    {
+      "id": "sealed_manifest",
+      "repository_path_or_source": "HQ_HANDOFF/checkpoints/20261020-PYAT-HQ-R52-USER-ACCESSION-I51-SCOPED-RETURN-J52-W52-TRUE-PRODUCT-R1/MANIFEST.json",
+      "source_commit_or_sha": "81b75c8e67b425ecf70be9ad2bf3dfbb6963c17a",
+      "git_blob_sha": "91d9c63a5684617da33b621302f24451af34dfb3",
+      "read_grade": "DIRECT_FETCH",
+      "currentness": "Immutable R52 sealed authority at own cut",
+      "claim_limit": "7/7 manifest bound SHA matches checked directly, not self-reference"
+    },
+    {
+      "id": "pyat_progress_md",
+      "repository_path_or_source": "PYAT_CONTROL_ROOM/CURRENT_PROGRESS.md",
+      "source_commit_or_sha": "81b75c8e67b425ecf70be9ad2bf3dfbb6963c17a",
+      "git_blob_sha": "562fca0b2a9c71dc7ff63fdf4c2533b8c84cf39a",
+      "read_grade": "MANIFEST_GIT_BLOB_VERIFIED",
+      "currentness": "Immutable R52 sealed authority at own cut",
+      "claim_limit": "R52 revision36 and historic status; static source at sealed cut"
+    },
+    {
+      "id": "pyat_progress_json",
+      "repository_path_or_source": "PYAT_CONTROL_ROOM/CURRENT_PROGRESS.json",
+      "source_commit_or_sha": "81b75c8e67b425ecf70be9ad2bf3dfbb6963c17a",
+      "git_blob_sha": "c070aeeedc7d473255d5ba7ea15e5beb88c1ce36",
+      "read_grade": "MANIFEST_GIT_BLOB_VERIFIED",
+      "currentness": "Immutable R52 sealed authority at own cut",
+      "claim_limit": "Exact current at R52 sealed cut; not original source science"
+    },
+    {
+      "id": "ledger",
+      "repository_path_or_source": "HQ_HANDOFF/DECISION_LEDGER.jsonl",
+      "source_commit_or_sha": "81b75c8e67b425ecf70be9ad2bf3dfbb6963c17a",
+      "git_blob_sha": "bf26298744246e66d960fdc9e95b3fefa8b6f16a",
+      "read_grade": "MANIFEST_GIT_BLOB_VERIFIED",
+      "currentness": "Immutable R52 sealed authority at own cut",
+      "claim_limit": "Append-only adopted decision ledger exact snapshot"
+    },
+    {
+      "id": "operative_review",
+      "repository_path_or_source": "PYAT_CONTROL_ROOM/HQ_ACCESSION_20261020/01_R52_POST_REVIEW_OPERATIVE_ATTESTATION.json",
+      "source_commit_or_sha": "81b75c8e67b425ecf70be9ad2bf3dfbb6963c17a",
+      "git_blob_sha": "714133dee2a5bfc4b659432f2e3dd1782eeffbc6",
+      "read_grade": "MANIFEST_GIT_BLOB_VERIFIED",
+      "currentness": "Immutable R52 sealed authority at own cut",
+      "claim_limit": "Existing separately user-accepted HQ, not applicant rights"
+    },
+    {
+      "id": "r52_seal",
+      "repository_path_or_source": "PYAT_CONTROL_ROOM/R52_EXACT_J52_W52_PRODUCT_COMPLETION_DISPATCH_SEAL_20261020.md",
+      "source_commit_or_sha": "81b75c8e67b425ecf70be9ad2bf3dfbb6963c17a",
+      "git_blob_sha": "f03e077e3f1e69dbdb3990dd7dc64f3ab884275d",
+      "read_grade": "MANIFEST_GIT_BLOB_VERIFIED",
+      "currentness": "Immutable R52 sealed authority at own cut",
+      "claim_limit": "Historic commission publication without worker launch; now STOP"
+    },
+    {
+      "id": "protocol",
+      "repository_path_or_source": "HQ_HANDOFF/PROTOCOL.md",
+      "source_commit_or_sha": "511ad5c5f15f23990d1bbe7431bfe69d18d5a8af",
+      "git_blob_sha": "a990c3823c2bea29be20cf6533a59694828227a7",
+      "read_grade": "DIRECT_FETCH",
+      "currentness": "Candidate pinned initial canonical control cut",
+      "claim_limit": "Mutable pointer vs immutable packet vs protected semantic tip"
+    },
+    {
+      "id": "persona_gate",
+      "repository_path_or_source": "PYAT_CONTROL_ROOM/00_INCOMING_HQ_VALIDITY_AND_PERSONA_END_PRODUCT_GATE_R1.md",
+      "source_commit_or_sha": "511ad5c5f15f23990d1bbe7431bfe69d18d5a8af",
+      "git_blob_sha": "9ecfcfbd9d71b23d7d9256837baa38c1f49ee55e",
+      "read_grade": "DIRECT_FETCH",
+      "currentness": "Candidate pinned initial canonical control cut",
+      "claim_limit": "Persona-first 15-proof candidate accession law; project process, not science grant"
+    },
+    {
+      "id": "grok_protocol",
+      "repository_path_or_source": "PYAT_CONTROL_ROOM/13_FRESH_HQ_FULL_GROK_PROTOCOL.md",
+      "source_commit_or_sha": "511ad5c5f15f23990d1bbe7431bfe69d18d5a8af",
+      "git_blob_sha": "f0f0e92eab346e85cc1969c7d31f6fe56ea1fa08",
+      "read_grade": "DIRECT_FETCH",
+      "currentness": "Candidate pinned initial canonical control cut",
+      "claim_limit": "Passes 0/A–M and no mere memory certification; incomplete primary breadth remains"
+    },
+    {
+      "id": "grok_template",
+      "repository_path_or_source": "PYAT_CONTROL_ROOM/INCOMING_HQ_GROK_ATTESTATION_TEMPLATE_R1.json",
+      "source_commit_or_sha": "511ad5c5f15f23990d1bbe7431bfe69d18d5a8af",
+      "git_blob_sha": "2d69a3056b7950f3ebd9334e656bec9d9f69977b",
+      "read_grade": "DIRECT_FETCH",
+      "currentness": "Candidate pinned initial canonical control cut",
+      "claim_limit": "Fail-closed 15+8 schema; not actual granted accession"
+    },
+    {
+      "id": "grok_verifier",
+      "repository_path_or_source": "PYAT_CONTROL_ROOM/verify_incoming_hq_grok_r1.py",
+      "source_commit_or_sha": "511ad5c5f15f23990d1bbe7431bfe69d18d5a8af",
+      "git_blob_sha": "648f706cb17c791148075bc4234ac4990d08c152",
+      "read_grade": "DIRECT_FETCH",
+      "currentness": "Candidate pinned initial canonical control cut",
+      "claim_limit": "Script structural-only, actual Python execution not performed"
+    },
+    {
+      "id": "readme",
+      "repository_path_or_source": "PYAT_CONTROL_ROOM/00_READ_ME_FIRST.md",
+      "source_commit_or_sha": "511ad5c5f15f23990d1bbe7431bfe69d18d5a8af",
+      "git_blob_sha": null,
+      "read_grade": "READ_CONTENT_BLOB_NOT_RETAINED",
+      "currentness": "Candidate pinned initial canonical control cut",
+      "claim_limit": "Live worker truth, sparse worktrees, old routing supersession, source boundaries"
+    },
+    {
+      "id": "source_gap_law",
+      "repository_path_or_source": "CROSS_HQ_CONTROL_ROOM/MISSING_FUNCTION_DISCOVERY_USER_CHECK_AND_BUILD_OR_REUSE_CONSTITUTION_R1.md",
+      "source_commit_or_sha": "511ad5c5f15f23990d1bbe7431bfe69d18d5a8af",
+      "git_blob_sha": "796fa5ba15272b5c59efd495cd72f3c6b77c912a",
+      "read_grade": "DIRECT_FETCH",
+      "currentness": "Candidate pinned initial canonical control cut",
+      "claim_limit": "User answered DOES_NOT_KNOW older F001, ask no duplicate; exact function description and reuse/build"
+    },
+    {
+      "id": "proof_integrity",
+      "repository_path_or_source": "CROSS_HQ_CONTROL_ROOM/PROOF_INTEGRITY_AND_FALSIFIABLE_TEST_LAW_R1.md",
+      "source_commit_or_sha": "511ad5c5f15f23990d1bbe7431bfe69d18d5a8af",
+      "git_blob_sha": null,
+      "read_grade": "READ_CONTENT_BLOB_NOT_RETAINED",
+      "currentness": "Candidate pinned initial canonical control cut",
+      "claim_limit": "Proof integrity current law, source tamper same consumer; exact blob not recorded"
+    },
+    {
+      "id": "dual_economy",
+      "repository_path_or_source": "CROSS_HQ_CONTROL_ROOM/HQ_JUDGMENT_BEARING_RETURNS_INTAKE_AND_DUAL_ECONOMY_COMMISSION_LAW_R1.md",
+      "source_commit_or_sha": "511ad5c5f15f23990d1bbe7431bfe69d18d5a8af",
+      "git_blob_sha": "ca4d1bc7fd94f520f3869f2870b71fbcc3e2d5de",
+      "read_grade": "DIRECT_FETCH",
+      "currentness": "Candidate pinned initial canonical control cut",
+      "claim_limit": "Browser→DeepSeek MAX→affirmative High→Middle; user chooses editor; no model runtime verified"
+    },
+    {
+      "id": "hq_command",
+      "repository_path_or_source": "PYAT_CONTROL_ROOM/HQ_CONTINUOUS_COMMAND_AND_RABOCHII_DELEGATION_LAW_20261016_R1.md",
+      "source_commit_or_sha": "511ad5c5f15f23990d1bbe7431bfe69d18d5a8af",
+      "git_blob_sha": "268750db4854b8791115c117a58af61383c5d595",
+      "read_grade": "DIRECT_FETCH",
+      "currentness": "Candidate pinned initial canonical control cut",
+      "claim_limit": "Whole machine HQ critical path and no return-to-microjob cycle"
+    },
+    {
+      "id": "astra",
+      "repository_path_or_source": "CROSS_HQ_CONTROL_ROOM/ASTRA_R3_ADVISORY_INDEX_R1.md",
+      "source_commit_or_sha": "511ad5c5f15f23990d1bbe7431bfe69d18d5a8af",
+      "git_blob_sha": "d1a8676c9757060d9082c7d01c59ffcdc34e21a9",
+      "read_grade": "DIRECT_FETCH",
+      "currentness": "Candidate pinned initial canonical control cut",
+      "claim_limit": "Astra amendment16 documentary advisory not original adopted model/actor rights"
+    },
+    {
+      "id": "sorok_rev23",
+      "repository_path_or_source": "SOROK_PRODUCT_CONTROL_ROOM/CURRENT_PROGRESS.md",
+      "source_commit_or_sha": "511ad5c5f15f23990d1bbe7431bfe69d18d5a8af",
+      "git_blob_sha": "22e7e3c93f74efbeb66af75093f35d4b2158c023",
+      "read_grade": "DIRECT_FETCH",
+      "currentness": "Candidate pinned initial canonical control cut",
+      "claim_limit": "Sorok independent accepted successor; no native C12 people or C11 weld at rev23"
+    },
+    {
+      "id": "governing_spirit",
+      "repository_path_or_source": "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/RAWLSING_GOVERNING_SPIRIT.md",
+      "source_commit_or_sha": "511ad5c5f15f23990d1bbe7431bfe69d18d5a8af",
+      "git_blob_sha": "588cf3954c33417665c5f9bac04e8b27e75d7f7c",
+      "read_grade": "DIRECT_FETCH",
+      "currentness": "Candidate pinned initial canonical control cut",
+      "claim_limit": "Binding terminal person causally intelligible but not inevitable"
+    },
+    {
+      "id": "terminal_envelope",
+      "repository_path_or_source": "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/TERMINAL_DEMAND_ENVELOPE.md",
+      "source_commit_or_sha": "511ad5c5f15f23990d1bbe7431bfe69d18d5a8af",
+      "git_blob_sha": "6b698f37c034a2bf87cde0fdc68f217081cbe3fd",
+      "read_grade": "DIRECT_FETCH",
+      "currentness": "Candidate pinned initial canonical control cut",
+      "claim_limit": "Nine structural strata, Absolute Horizon, V3/V2 stage ownership"
+    },
+    {
+      "id": "architecture_law",
+      "repository_path_or_source": "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/ARCHITECTURE_PASS_LAW.md",
+      "source_commit_or_sha": "511ad5c5f15f23990d1bbe7431bfe69d18d5a8af",
+      "git_blob_sha": "8f3b2db350109bc0b5839252968e35c8a064aef9",
+      "read_grade": "DIRECT_FETCH",
+      "currentness": "Candidate pinned initial canonical control cut",
+      "claim_limit": "Stage ownership, preserved refs, not direct downstream actor issuance"
+    },
+    {
+      "id": "r49",
+      "repository_path_or_source": "PYAT_CONTROL_ROOM/R49_H48_A48_RETURN_ADJUDICATION_AND_M48_BUILD_DECONFLICTION_20261020.md",
+      "source_commit_or_sha": "511ad5c5f15f23990d1bbe7431bfe69d18d5a8af",
+      "git_blob_sha": "7040c381c7536306dc129c04ebc6381c18235b7b",
+      "read_grade": "DIRECT_FETCH",
+      "currentness": "Candidate pinned initial canonical control cut",
+      "claim_limit": "Historic H48/A48 return and initial reuse decisions; exact bounded grade"
+    },
+    {
+      "id": "r50",
+      "repository_path_or_source": "PYAT_CONTROL_ROOM/R50_M48_SCIENTIFIC_CONSTITUTION_INTAKE_AND_B49_G50_PRODUCT_DIVISION_20261020.md",
+      "source_commit_or_sha": "511ad5c5f15f23990d1bbe7431bfe69d18d5a8af",
+      "git_blob_sha": "c5edbc4ddd1ee0f2ed8acb8431be33df3cf786d4",
+      "read_grade": "DIRECT_FETCH",
+      "currentness": "Candidate pinned initial canonical control cut",
+      "claim_limit": "M48 grammar J3/K2/D2 proposal, sourcefree only, D1–D5 issued science missing"
+    },
+    {
+      "id": "r51",
+      "repository_path_or_source": "PYAT_CONTROL_ROOM/R51_B49_G50_TWO_REAL_RETURNS_AND_JOINED_PRODUCT_GATE_20261020.md",
+      "source_commit_or_sha": "511ad5c5f15f23990d1bbe7431bfe69d18d5a8af",
+      "git_blob_sha": "0e61ba26ea16373a2d7c812b9327216ecc9d2770",
+      "read_grade": "DIRECT_FETCH",
+      "currentness": "Candidate pinned initial canonical control cut",
+      "claim_limit": "B49 50 candidate 2 synthetic, G50 432 symbolic/15 native, distinct from real source"
+    },
+    {
+      "id": "r52_new",
+      "repository_path_or_source": "PYAT_CONTROL_ROOM/R52_HQ_UNIVERSAL_EXECUTION_CORRECTIVE_PRIORITY_AND_ACCEPTANCE_LAW_20261020.md",
+      "source_commit_or_sha": "3d13eadab9ce89d4f5566e3f6b8681fd0db91fc9",
+      "git_blob_sha": "fbdbf79a11a6acdfb526acc9680abafecbe1a17d",
+      "read_grade": "DIRECT_FETCH",
+      "currentness": "Latest live directive at inspection",
+      "claim_limit": "G1–G5 corrective source-neutral universal qualification, J52 amendment no longer actionable"
+    },
+    {
+      "id": "r53_stop",
+      "repository_path_or_source": "PYAT_CONTROL_ROOM/R53_USER_STOP_J52_W52_AND_UNIVERSAL_MACHINE_FORENSIC_FREEZE_20261020.md",
+      "source_commit_or_sha": "3d13eadab9ce89d4f5566e3f6b8681fd0db91fc9",
+      "git_blob_sha": "e2a04d6fc82bea95d0f88a14c7ebf38af6dd4f63",
+      "read_grade": "DIRECT_FETCH",
+      "currentness": "Latest live directive at inspection",
+      "claim_limit": "Current later user STOP both J52/W52, no workaround, forensic verdict before user unpause"
+    },
+    {
+      "id": "old_universal",
+      "repository_path_or_source": "data/ddm_build_copy/run_20var_allwaves_v550_552j_smoke.py",
+      "source_commit_or_sha": "511ad5c5f15f23990d1bbe7431bfe69d18d5a8af",
+      "git_blob_sha": "446196773920cd0296c9d78ecaae4e5dbef93d4c",
+      "read_grade": "CODE_READ",
+      "currentness": "Candidate pinned initial canonical control cut",
+      "claim_limit": "Original all35 smoke design; not currently adopted respondent source licence"
+    },
+    {
+      "id": "i05",
+      "repository_path_or_source": "rawlsing_next/pre553_discovery_exact.py",
+      "source_commit_or_sha": "511ad5c5f15f23990d1bbe7431bfe69d18d5a8af",
+      "git_blob_sha": "905f24d114419dbdd93879ad2bee5b59dd2f23af",
+      "read_grade": "CODE_READ",
+      "currentness": "Candidate pinned initial canonical control cut",
+      "claim_limit": "Actual finite frontier/XOR/I05; not prospective original E_pre issuance"
+    },
+    {
+      "id": "mx",
+      "repository_path_or_source": "rawlsing_next/pre553_recursive_handoff.py",
+      "source_commit_or_sha": "511ad5c5f15f23990d1bbe7431bfe69d18d5a8af",
+      "git_blob_sha": "868f43bf9869af5501fd67c3de7a2703ba4cb1b4",
+      "read_grade": "CODE_READ",
+      "currentness": "Candidate pinned initial canonical control cut",
+      "claim_limit": "Recursive N+1 persisted parent, not source permissions"
+    },
+    {
+      "id": "c11",
+      "repository_path_or_source": "rawlsing_next/pre553_c11_ingest.py",
+      "source_commit_or_sha": "511ad5c5f15f23990d1bbe7431bfe69d18d5a8af",
+      "git_blob_sha": "37cd35fa2e3420a3eea272a2902e96ab9ba38aba",
+      "read_grade": "CODE_READ",
+      "currentness": "Candidate pinned initial canonical control cut",
+      "claim_limit": "Native C11 release/routing/authority validation, not source semantic issuer"
+    },
+    {
+      "id": "v550j",
+      "repository_path_or_source": "data/ddm_build_copy/ddm_v550j_joint_patterns.py",
+      "source_commit_or_sha": "511ad5c5f15f23990d1bbe7431bfe69d18d5a8af",
+      "git_blob_sha": "644aab23675b26134040d1df5cc25538b613e163",
+      "read_grade": "CODE_READ",
+      "currentness": "Candidate pinned initial canonical control cut",
+      "claim_limit": "Historic joint/crosswave code; must prove scope before reuse"
+    },
+    {
+      "id": "v553harm",
+      "repository_path_or_source": "data/ddm_build_copy/ddm_v553_canonical_harmonization.py",
+      "source_commit_or_sha": "511ad5c5f15f23990d1bbe7431bfe69d18d5a8af",
+      "git_blob_sha": "1951ada5cb7453108939eae9af91fcbfc90ad517",
+      "read_grade": "CODE_READ",
+      "currentness": "Candidate pinned initial canonical control cut",
+      "claim_limit": "Actual temporal handoff/harmonization code, no F7 original legitimacy implied"
+    },
+    {
+      "id": "v553temp",
+      "repository_path_or_source": "data/ddm_build_copy/ddm_v553_temporal_pressure.py",
+      "source_commit_or_sha": "511ad5c5f15f23990d1bbe7431bfe69d18d5a8af",
+      "git_blob_sha": "5304b70f9f6522c5ae3893eff215c1d445681983",
+      "read_grade": "CODE_READ",
+      "currentness": "Candidate pinned initial canonical control cut",
+      "claim_limit": "Sparse temporal and interpolation code, not actual observed source time series"
+    },
+    {
+      "id": "b49rules",
+      "repository_path_or_source": "rawlsing_next/pre553_inherited_source_rules.py",
+      "source_commit_or_sha": "b5600da96358f8526471d635a1befa8daa3f098b",
+      "git_blob_sha": "5f6efaceb18d92a362d065d12fdca4076d53fa16",
+      "read_grade": "CODE_READ",
+      "currentness": "Exact historical/worker branch code as of cited ref",
+      "claim_limit": "Generic corpus/selector/all35 ledger actual code on worker branch, not canonical adoption"
+    },
+    {
+      "id": "b49adapter",
+      "repository_path_or_source": "rawlsing_next/pre553_source_native_preimage_adapter.py",
+      "source_commit_or_sha": "b5600da96358f8526471d635a1befa8daa3f098b",
+      "git_blob_sha": "e27c116b9a5654a8709aff1042322dc51d3296d3",
+      "read_grade": "CODE_READ",
+      "currentness": "Exact historical/worker branch code as of cited ref",
+      "claim_limit": "Parameters general but default LiTS synthetic; production use must remove defaults"
+    },
+    {
+      "id": "b49fixture",
+      "repository_path_or_source": "rawlsing_next/pre553_native_workload_binding.py",
+      "source_commit_or_sha": "b5600da96358f8526471d635a1befa8daa3f098b",
+      "git_blob_sha": "bc88720c2bbcf52a43b799526c7dade094ccd9f8",
+      "read_grade": "CODE_READ",
+      "currentness": "Exact historical/worker branch code as of cited ref",
+      "claim_limit": "One TEST_ONLY OperationFixture; not source-independent scientific frontier"
+    },
+    {
+      "id": "g50native",
+      "repository_path_or_source": "WORKER_RETURNS/PYAT-R50-G50-GOVERNED-OPERATION-GRAMMAR-R1/g50/native_i05.py",
+      "source_commit_or_sha": "d379bafe36b8d89da27ea5bf33614d33aca7f2d2",
+      "git_blob_sha": "96bf1778fddd108037be83a3bb5fdafc2259c602",
+      "read_grade": "CODE_READ",
+      "currentness": "Exact historical/worker branch code as of cited ref",
+      "claim_limit": "G50 sourcefree native path imports pytest fixture helpers, not standalone generalized source production"
+    },
+    {
+      "id": "i51native",
+      "repository_path_or_source": "WORKER_RETURNS/PYAT-R51-I51-B49-G50-JOINED-PRODUCER-R1/candidate/r51_joined_source_producer.py",
+      "source_commit_or_sha": "9bbf9e0509411beb210331d28160324b005a784e",
+      "git_blob_sha": "31eb9d6a17788b577b7aab46a290d68f12a59288",
+      "read_grade": "CODE_READ",
+      "currentness": "Exact historical/worker branch code as of cited ref",
+      "claim_limit": "Actual hardcoded LiTS q301 two-field one-DIST joined producer, scoped technical proof only"
+    }
+  ],
+  "project_attachments": [
+    {
+      "file_id": "file-4SaDS3mh7a823DejenD5Hk",
+      "title": "Full Rawlsing Vector Pipeline.pdf",
+      "grade": "HISTORICAL_DESIGN_ATTACHMENT",
+      "claim_limit": "Creative design; not accepted original source measured inference or contemporary authority"
+    },
+    {
+      "file_id": "file-9Lu3trBgwCSZjMcw3GrD3x",
+      "title": "Cross Cultural Enneagram Model.pdf",
+      "grade": "HISTORICAL_DESIGN_ATTACHMENT",
+      "claim_limit": "Psychic strategies/weights proposal; no individual calibrated type inference"
+    }
+  ],
+  "open_primary_checks": [
+    "Fetch and compare full source decision 38–40 W46/W47 44-LMX/30-LMQ with current owners and exact adoption",
+    "Complete original SRC01-SRC35 × AT01–35 and N0–N12 per-node empirically eligible topology against issued current source science",
+    "Independently retrieve and replay current actual N9/N10E/N10W/E04/FF/F6/EE12 consumer call edges where allowed",
+    "Find earliest specific commission/review that elevated LiTS proving fixture to universal acceptance target, seek counterproof",
+    "Run native official Python verifier if compliant sandbox becomes available; expect review-only failure",
+    "Independent review and separate explicit user accession acceptance"
+  ]
+}
