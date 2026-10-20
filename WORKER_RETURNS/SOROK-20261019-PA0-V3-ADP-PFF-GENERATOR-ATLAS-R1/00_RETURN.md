@@ -126,4 +126,4 @@ CAN008 concrete RULE_A, CAN011 RULE_T/grant, ADP007/008/010/016/019/020 issuance
 
 ## Exact pushed ref
 
-Return commit: `<filled after commit>`. Remote verification: `<filled after push>` (`git ls-remote` must match). Ordinary non-force push; only this return subtree changed.
+Return commit: `b7205ee502250a2dc1b721741f0d231417b3daef`. Remote verification: `git ls-remote` returned the same SHA (`evidence/remote_verification.json`). Ordinary non-force push; only this return subtree changed.
