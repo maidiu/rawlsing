@@ -104,3 +104,14 @@ The 35 accepted source-wave identity rows are all accounted in `evidence/all35_c
 OpenCode, DeepSeek V4.1-Flash, MAX reasoning. Local qualified Git object store, CPython 3.11.3, pytest 9.1.1, pandas. Cash/quota: UNKNOWN. No model/provider switch, no delegation.
 
 **Final:** `SOURCEFREE_T1_T2_T4_EXECUTED__29_OF_29_NEW__41_OF_41_REGRESSION__PROOF_WITNESS_RED_ON_SEVERANCE__PROSPECTIVE_ORIGINAL_E_PRE_NULL__T3_M48_UNISSUED__T5_LIVE_SOURCE_WITHHELD__ADOPTION_HOLD`.
+
+## Remote publication
+
+| Item | Value |
+|---|---|
+| Branch | `agent/rabochii-pyat-r49-b49-reuse-first-authority-native-adapter-r1` |
+| Sealed startup | `cff2b1c98acb5848a1dd427d18f3a6bbf8144d48` |
+| Published implementation commit | `6105d9e3063305d8259df70285fd6cd5e8885e33` |
+| `git ls-remote` verified | `6105d9e3063305d8259df70285fd6cd5e8885e33` = local HEAD |
+
+Changed paths: four new `rawlsing_next/` candidate modules (three T1/T2/T4 modules plus the byte-exact U43 stage), one new native test module and its proof contract, and the `WORKER_RETURNS/PYAT-R49-B49-REUSE-FIRST-AUTHORITY-NATIVE-ADAPTER-R1/` return tree. No adopted semantic or source authority was mutated; no existing test expectation was edited.
