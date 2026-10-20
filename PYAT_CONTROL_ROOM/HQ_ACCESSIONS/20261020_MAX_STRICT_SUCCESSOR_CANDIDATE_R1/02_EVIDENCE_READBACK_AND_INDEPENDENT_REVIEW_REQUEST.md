@@ -27,6 +27,10 @@
 
 **Classification refinement:** R52 packet labels J/W pending user-launch checks; the later *user STOP* is direct positive lifecycle authority. No remote ref alone never proves local inactivity or failure. If returned from a pre-stop local session, preserve bytes and let incumbent decide lawful banking, not adopt retroactively.
 
+## 2A. New historical source-verified root-cause court (see Appendix 07)
+
+Original AS2A adopted a **deliberately narrow** LiTS proving release on 2026-08-27, with all 1,198 source slots accounted but only q301_2/q301_7 promoted to C11 events and no default weight (source blob e17c718dedac22da99dcebeaafc0e05dd92902ea). AS2B actually proved this *bounded* source route on real LiTS, not a synthetic forgery: 29,002 respondents, 58,004 events and 8 I03 executions (Verkhovod original blob a4a0fc33eb7f528f0c13fe50e6c0df93597d4f79). Original current35 corpus also had 18,276 implementations, 9 **families**, not 9 waves. The contemporary I51 sourcefree join nonetheless hardcodes the *same* q301 pair and LiTS name again. Thus the source-specific proof itself was valid; the **later promotion of its fixture into universal native integration acceptance** is the regression hypothesis. Precise first intermediate adoption causing that promotion remains unproven. See `07_R53_UNIVERSAL_MACHINE_ROOT_CAUSE_FORENSIC_VERDICT_CANDIDATE.md` for the primary chronology, evidence layers and defeater test. Reviewer should attack that distinction directly; a source right neither creates universal code nor excuses narrowing.
+
 ## 3. Native code independent read evidence
 
 The applicant directly fetched real source and inspected function signatures/imports/literals:
