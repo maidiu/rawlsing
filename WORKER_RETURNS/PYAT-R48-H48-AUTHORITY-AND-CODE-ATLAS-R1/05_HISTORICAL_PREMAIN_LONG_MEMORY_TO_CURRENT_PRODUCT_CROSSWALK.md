@@ -1,0 +1,29 @@
+# Historical authority to current products
+
+| Inherited resource | What survives | Present consumer / missing binding | Ceiling |
+|---|---|---|---|
+| P2 identity + deep catalogs + nine manual packets | Exact implementations, question text/options, role/topology, response and use rules, unresolved states | C11 QuestionVariableBinding/ResponseSlotRule, source-local universe and predicate/template adapter | 18,276 inventory rows are not complete administered U or E_pre |
+| SWID + four-stage wave registry | CLOSED35 release aliases and 140 exact-byte source-specific stage bindings | OriginalWaveIdentity and exact source descriptor selection | Asian W6 is recognized/excluded; EVS1999 is included; aliases do not grant scientific equivalence |
+| O06/O08 + source context/structure objects | Routing clauses, unresolved routing, native person/household keys, default-weight decisions, source instrument pointers | RoutingEligibilityFact, RowRespondentBinding, risk-set and design rules | Unresolved-row count is not a count of missing scientific decisions; no default positive pooling or weights |
+| QSM/FQRA/V525b/d62 inheritance | Meaning, manual rationales, negative/evidence-ceiling distinctions and separately grained structural coordinates | `apply_question_relation_authority` plus exact future rule selector | No last-row-wins; retain `forbidden_inference`/`does_not_measure`; explicit P2-ID joins have 26 unmatched inventory IDs |
+| P3C R184 | Proposition-family identities, variants, exclusions and exact split boundaries | Canonical question mapping where that exact claim/use is admitted | 397 memberships do not grant response portability, respondent joins or all35 joint configurations |
+| Section85 J authority | 9 bounded configurations / 26 configured items, exact source/country crosswalk | Historical J registry→V550J→V551J→V552J | Only 3 items P3-bound; 23 source-local. No archived respondent substrate and no full production completeness |
+| V551 scale v5 / bounded QRA700 | 236 directional selected rows and 145 contracts at the historical package's declared scope | Historical V551 scale gate, exact source rule conversion | REC04 identifies four QRA defects, 11 O07 corrections and six source-limited rows; candidates are not installed successors |
+| PRE-MAIN P10/G1A | 45 nonoverlapping preservation census rows / 65,354 authority-function accounting units; 76 exact unresolved states conserved | Exact retained references and typed succession before new serialization | Accepted preservation closes its jurisdiction; it does not promote a runtime or grant original sources |
+| Long Memory W46/W47 | Function succession, category-error corrections, exact historical/current distinctions | T1 source-rule resolver and T6 targeted recovery; reuse existing ledgers | Historical backend/test fixture is not a timeless product prerequisite |
+| Layer1 audit | Deterministic 20–50-variable selection per wave and runnable old multi-stage plan | Reuse selection/morphology metadata as planning evidence | 35-wave plan validated, not live executed; not exhaustive scientific E_pre |
+| AS2A/AS2B LiTS + later FIABC producer | Real bounded C11 projection/query/oracle code and retained original-source results | Rebind exact rules to current native descriptors at permitted scope | Historic measured ≠ current grant; two-question AS2B and old four-question snapshot ≠ whole LiTS |
+| WVS7 R6S/HB01 | Exact two-question projection/materialization and physical-representation precedent | Current facade projection at separately granted source scope | S44 found no executed WVS7 fact in its inspected historical commit; do not upgrade precedent to that claim |
+| WG0P4 → U43/B43/S44 | Finite executable plans, anti-drop and descriptor custody, grant gates, actual owner callbacks | T2/T3 outputs enter existing U43, then unchanged E04/A42 | Native wrappers do not create original U/Epre or legal rights |
+
+## Governing settlement
+
+P10 acceptance (E91141a850abd) positively preserves historical scientific capital and exact unresolved states. It is not evidence that every future runtime is implemented. W47 (E0d84e583a852) separates proposition identity, truth claim, authority instance, lifecycle/current selection and permission. A byte-equal row cannot stand in for all five.
+
+The archive's selected-commit metadata is a retrieval binding; its `selected_commit_date` is not semantic currentness. Historical revalidation retains O06 routing at its declared scope while forbidding d62 flat precedence and global QSM retirement. REC03/04/05X/06 preserve exact defect/candidate sets; this return does not silently install them. Examples: stale LiTS Q3.13 runtime topology is not current O03; Arab Q518 has a source-resolved ordered-battery conflict; Q60A–G driver corrections remain candidate work at their own grain. See the per-wave quality routes in 02.
+
+## Productive evidence retained without reexecution
+
+At `923f2c00b6145182a5e2be5038f579845951da19`, aggregate AS2B receipts show 29,002 respondents, 58,004 response events/routing facts, 145,010 coordinates, no weight facts and 8 executed I03 operations. One supported result has 5,155/5,155 support; seven typed nonpositive results remain. The receipt/candidate/replay identities were reread, not raw records. Source access, source purpose and scientific-use currentness are not renewed by this inspection.
+
+S44's historical-only A42 path records this source positive without raising current original occupancy. Current native E04 inputs remain query/predicate/repository/release/authority plus consumer query, model rule and condition-binding witness. A42 requires the exact expected estate/cell/product/consumer receipts; a source fact does not supply F5 structural admission, F6 transport/composability, F7 time comparability or actor permission.

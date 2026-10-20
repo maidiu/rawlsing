@@ -1,0 +1,1217 @@
+{
+  "evidence_id": "Ec30832bf3723",
+  "grade": "HISTORICAL_REGISTRY_AND_DECLARED_SOURCE_DIGEST_NOT_CURRENT_GRANT",
+  "sources": [
+    {
+      "source_id": "01",
+      "family": "Afrobarometer",
+      "wave_or_release": "Round 1",
+      "canonical_filename": "Afro Barometer Round 1.sav",
+      "canonical_sha256": "6c9869a7cc7321cc74efb708835e21c8b65286a25c76deac45aba84d75697ee2",
+      "source_format": "SAV",
+      "size_bytes": 4492565,
+      "accepted_decoder_mode": "SAV_NATIVE_GOVERNED",
+      "accepted_compatibility_mode": "NO_SOURCE_SPECIFIC_COMPATIBILITY_OVERRIDE",
+      "compatibility_semantic_scope": "NO_COMPATIBILITY_OVERRIDE__NO_SEMANTIC_CLAIM",
+      "source_identity_rule": "SOURCE_SHA256+ROW_ORDINAL",
+      "authority72_launch_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_sav",
+        "encoding": null,
+        "generic_decoder_admission": "SUPPORTED"
+      },
+      "expected_shape": {
+        "rows": 21531
+      },
+      "edge_classes": [
+        "EC01",
+        "EC05",
+        "EC07",
+        "EC12",
+        "EC13"
+      ],
+      "governed_surface_ids": [
+        "S020",
+        "S021"
+      ],
+      "accepted_physical_hazards": "REFNUMB/CASENUMB identity distinction; ordinary SUPDEM special codes; 12-country coordinate; five weights",
+      "documentary_unknowns": "CASENUMB-to-codebook RESPNUMB relation and national-instrument equivalence stay bounded UNKNOWN"
+    },
+    {
+      "source_id": "02",
+      "family": "Afrobarometer",
+      "wave_or_release": "Round 5",
+      "canonical_filename": "Afro Barometer Round 5.sav",
+      "canonical_sha256": "c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651",
+      "source_format": "SAV",
+      "size_bytes": 49689458,
+      "accepted_decoder_mode": "SAV_NATIVE_GOVERNED",
+      "accepted_compatibility_mode": "NO_SOURCE_SPECIFIC_COMPATIBILITY_OVERRIDE",
+      "compatibility_semantic_scope": "NO_COMPATIBILITY_OVERRIDE__NO_SEMANTIC_CLAIM",
+      "source_identity_rule": "SOURCE_SHA256+ROW_ORDINAL",
+      "authority72_launch_class": "L2_DOCUMENTARY_AUTHORITY_REQUIRED_BEFORE_SEMANTIC_CERTIFICATION",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_sav",
+        "encoding": null,
+        "generic_decoder_admission": "SUPPORTED"
+      },
+      "expected_shape": {
+        "rows": 51587
+      },
+      "edge_classes": [
+        "EC01",
+        "EC05",
+        "EC10",
+        "EC12",
+        "EC13"
+      ],
+      "governed_surface_ids": [
+        "S016"
+      ],
+      "accepted_physical_hazards": "997 declarations/incidence vs system missing; routing carriers; COUNTRY coordinate; WITHINWT",
+      "documentary_unknowns": "Q10B/Q47C=997 semantics and COUNTRY/codebook carrier binding"
+    },
+    {
+      "source_id": "03",
+      "family": "Afrobarometer",
+      "wave_or_release": "Round 9",
+      "canonical_filename": "Afro Barometer Round 9.sav",
+      "canonical_sha256": "3afcecd08d2f4b531a926d455a943084d9f71c1276b4f3a58e77a9162e6879d8",
+      "source_format": "SAV",
+      "size_bytes": 70621348,
+      "accepted_decoder_mode": "SAV_NATIVE_GOVERNED",
+      "accepted_compatibility_mode": "NO_SOURCE_SPECIFIC_COMPATIBILITY_OVERRIDE",
+      "compatibility_semantic_scope": "NO_COMPATIBILITY_OVERRIDE__NO_SEMANTIC_CLAIM",
+      "source_identity_rule": "SOURCE_SHA256+ROW_ORDINAL",
+      "authority72_launch_class": "L2_DOCUMENTARY_AUTHORITY_REQUIRED_BEFORE_SEMANTIC_CERTIFICATION",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_sav",
+        "encoding": null,
+        "generic_decoder_admission": "SUPPORTED"
+      },
+      "expected_shape": {
+        "rows": 53444
+      },
+      "edge_classes": [
+        "EC01",
+        "EC05",
+        "EC09",
+        "EC12",
+        "EC14"
+      ],
+      "governed_surface_ids": [
+        "S017",
+        "S018",
+        "S019"
+      ],
+      "accepted_physical_hazards": "unexercised Q78F=-1 declaration; Q118 eleven slots; ordinary 9996; old/new weights",
+      "documentary_unknowns": "Q78F, Q118_11, Q47C=94, V397_A/V399_A documentary bindings"
+    },
+    {
+      "source_id": "04",
+      "family": "Arab Barometer",
+      "wave_or_release": "Wave 1",
+      "canonical_filename": "Arab Barometer Wave 1.sav",
+      "canonical_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18",
+      "source_format": "SAV",
+      "size_bytes": 1531099,
+      "accepted_decoder_mode": "SAV_NATIVE_GOVERNED",
+      "accepted_compatibility_mode": "NO_SOURCE_SPECIFIC_COMPATIBILITY_OVERRIDE",
+      "compatibility_semantic_scope": "NO_COMPATIBILITY_OVERRIDE__NO_SEMANTIC_CLAIM",
+      "source_identity_rule": "SOURCE_SHA256+ROW_ORDINAL",
+      "authority72_launch_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_sav",
+        "encoding": null,
+        "generic_decoder_admission": "SUPPORTED"
+      },
+      "expected_shape": {
+        "status": "NOT_FROZEN_IN_REP35_INPUTS__METADATA_OBSERVE_ONLY"
+      },
+      "edge_classes": [
+        "EC01",
+        "EC07",
+        "EC10",
+        "EC14"
+      ],
+      "governed_surface_ids": [
+        "S022",
+        "S023"
+      ],
+      "accepted_physical_hazards": "literal C1 text; duplicate SER identity; Morocco routing split; no inferred design",
+      "documentary_unknowns": "display-text normalization and design/routing details remain bounded UNKNOWN"
+    },
+    {
+      "source_id": "05",
+      "family": "Arab Barometer",
+      "wave_or_release": "Wave 2",
+      "canonical_filename": "Arab Barometer Wave 2.sav",
+      "canonical_sha256": "6529841b97bd56463490d810ad24ceaa4866066d12e4651a7081682d413606a1",
+      "source_format": "SAV",
+      "size_bytes": 7192678,
+      "accepted_decoder_mode": "SAV_NATIVE_GOVERNED",
+      "accepted_compatibility_mode": "NO_SOURCE_SPECIFIC_COMPATIBILITY_OVERRIDE",
+      "compatibility_semantic_scope": "NO_COMPATIBILITY_OVERRIDE__NO_SEMANTIC_CLAIM",
+      "source_identity_rule": "SOURCE_SHA256+ROW_ORDINAL",
+      "authority72_launch_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_sav",
+        "encoding": null,
+        "generic_decoder_admission": "SUPPORTED"
+      },
+      "expected_shape": {
+        "rows": 12782,
+        "logical_variables": 468
+      },
+      "edge_classes": [
+        "EC01",
+        "EC05",
+        "EC09",
+        "EC10",
+        "EC12",
+        "EC14"
+      ],
+      "governed_surface_ids": [
+        "S035",
+        "S036"
+      ],
+      "accepted_physical_hazards": "q2062 SYSTEM_MISSING plus ordinary 0 labeled missing; ranked challenge/routing; WT",
+      "documentary_unknowns": "ordinary code-0 semantics and WT estimand remain bounded UNKNOWN"
+    },
+    {
+      "source_id": "06",
+      "family": "Arab Barometer",
+      "wave_or_release": "Wave 5",
+      "canonical_filename": "Arab Barometer Wave 5.sav",
+      "canonical_sha256": "6a5cbad637ce1546833a1d4812ba6d1e8d75f85b5b199b0cf3ec5cf456068dbc",
+      "source_format": "SAV",
+      "size_bytes": 11637259,
+      "accepted_decoder_mode": "SAV_NATIVE_GOVERNED",
+      "accepted_compatibility_mode": "NO_SOURCE_SPECIFIC_COMPATIBILITY_OVERRIDE",
+      "compatibility_semantic_scope": "NO_COMPATIBILITY_OVERRIDE__NO_SEMANTIC_CLAIM",
+      "source_identity_rule": "SOURCE_SHA256+ROW_ORDINAL",
+      "authority72_launch_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_sav",
+        "encoding": null,
+        "generic_decoder_admission": "SUPPORTED"
+      },
+      "expected_shape": {
+        "rows": 27850,
+        "logical_variables": 359,
+        "storage_slots": 361
+      },
+      "edge_classes": [
+        "EC01",
+        "EC05",
+        "EC07",
+        "EC09",
+        "EC10",
+        "EC11",
+        "EC12"
+      ],
+      "governed_surface_ids": [
+        "S037",
+        "S038"
+      ],
+      "accepted_physical_hazards": "ID collisions; WT/PSU missingness; Q101 extra dictionary codes; split/ranked/Unicode",
+      "documentary_unknowns": "design and extra dictionary-code semantics remain bounded UNKNOWN"
+    },
+    {
+      "source_id": "07",
+      "family": "Arab Barometer",
+      "wave_or_release": "Wave 8",
+      "canonical_filename": "Arab Barometer Wave 8.sav",
+      "canonical_sha256": "a5e83a953f03dd890e076a51da473051f1cfd1ca2e8ab93c2172eeb2517af998",
+      "source_format": "SAV",
+      "size_bytes": 12275728,
+      "accepted_decoder_mode": "SAV_NATIVE_GOVERNED",
+      "accepted_compatibility_mode": "NO_SOURCE_SPECIFIC_COMPATIBILITY_OVERRIDE",
+      "compatibility_semantic_scope": "NO_COMPATIBILITY_OVERRIDE__NO_SEMANTIC_CLAIM",
+      "source_identity_rule": "SOURCE_SHA256+ROW_ORDINAL",
+      "authority72_launch_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_sav",
+        "encoding": null,
+        "generic_decoder_admission": "SUPPORTED"
+      },
+      "expected_shape": {
+        "rows": 15627,
+        "logical_variables": 690,
+        "storage_slots": 692
+      },
+      "edge_classes": [
+        "EC01",
+        "EC05",
+        "EC07",
+        "EC10",
+        "EC12",
+        "EC14"
+      ],
+      "governed_surface_ids": [],
+      "accepted_physical_hazards": "2,400 ID=0 rows; 2,408 ordinary blank BLOCK_ID; routing modules; Q1==STRATUM without alias authority",
+      "documentary_unknowns": "BLOCK_ID and weight/stratum semantics remain bounded UNKNOWN"
+    },
+    {
+      "source_id": "08",
+      "family": "Asian Barometer",
+      "wave_or_release": "Wave 1",
+      "canonical_filename": "Asian Barometer Wave 1.sav",
+      "canonical_sha256": "ac0b8bc1ddb2fa6b952417e35b6379ce6a2cf8596776a43282ba44f48e0ae1a2",
+      "source_format": "SAV",
+      "size_bytes": 3451655,
+      "accepted_decoder_mode": "SAV_SOURCE_DECLARED_BIG5",
+      "accepted_compatibility_mode": "NO_SOURCE_SPECIFIC_COMPATIBILITY_OVERRIDE",
+      "compatibility_semantic_scope": "NO_COMPATIBILITY_OVERRIDE__NO_SEMANTIC_CLAIM",
+      "source_identity_rule": "SOURCE_SHA256+ROW_ORDINAL",
+      "authority72_launch_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_sav",
+        "encoding": "BIG5",
+        "generic_decoder_admission": "GAP",
+        "generic_debt": "GENERIC_SAV_DECLARED_ENCODING_ADMISSION_GAP"
+      },
+      "expected_shape": {
+        "status": "NOT_FROZEN_IN_REP35_INPUTS__METADATA_OBSERVE_ONLY"
+      },
+      "edge_classes": [
+        "EC01",
+        "EC02",
+        "EC05",
+        "EC07",
+        "EC09",
+        "EC12",
+        "EC13",
+        "EC14"
+      ],
+      "governed_surface_ids": [
+        "S024",
+        "S025"
+      ],
+      "accepted_physical_hazards": "BIG-5; heavy typed missingness; country-scoped identity; nine weights; ranked q097",
+      "documentary_unknowns": "exact W1 questionnaire/codebook/routing/weight authority not recovered; preserve UNKNOWN"
+    },
+    {
+      "source_id": "09",
+      "family": "Asian Barometer",
+      "wave_or_release": "Wave 4",
+      "canonical_filename": "Asian Barometer Wave 4.sav",
+      "canonical_sha256": "4d914817509d0e5f3adde49707df148f696992055937f085080a016002a39200",
+      "source_format": "SAV",
+      "size_bytes": 7735596,
+      "accepted_decoder_mode": "SAV_NATIVE_GOVERNED",
+      "accepted_compatibility_mode": "NO_SOURCE_SPECIFIC_COMPATIBILITY_OVERRIDE",
+      "compatibility_semantic_scope": "NO_COMPATIBILITY_OVERRIDE__NO_SEMANTIC_CLAIM",
+      "source_identity_rule": "SOURCE_SHA256+ROW_ORDINAL",
+      "authority72_launch_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_sav",
+        "encoding": null,
+        "generic_decoder_admission": "SUPPORTED"
+      },
+      "expected_shape": {
+        "status": "NOT_FROZEN_IN_REP35_INPUTS__METADATA_OBSERVE_ONLY"
+      },
+      "edge_classes": [
+        "EC01",
+        "EC05",
+        "EC09",
+        "EC10",
+        "EC12",
+        "EC13"
+      ],
+      "governed_surface_ids": [],
+      "accepted_physical_hazards": "ordinary -1; merged-data vs instrument country-code drift; ranked slots; ASEAN-only q172; w/w_cross",
+      "documentary_unknowns": "merged geography, -1 semantics, exact routing and weight roles remain bounded UNKNOWN"
+    },
+    {
+      "source_id": "10",
+      "family": "Asian Barometer",
+      "wave_or_release": "Wave 5",
+      "canonical_filename": "Asian Barometer Wave 5.sav",
+      "canonical_sha256": "2576e428ff8de3c8d93a418c9120a1c2955ab7b1f35961d8c18fa562bc4b5e63",
+      "source_format": "SAV",
+      "size_bytes": 10688196,
+      "accepted_decoder_mode": "SAV_NATIVE_GOVERNED",
+      "accepted_compatibility_mode": "NO_SOURCE_SPECIFIC_COMPATIBILITY_OVERRIDE",
+      "compatibility_semantic_scope": "NO_COMPATIBILITY_OVERRIDE__NO_SEMANTIC_CLAIM",
+      "source_identity_rule": "SOURCE_SHA256+ROW_ORDINAL",
+      "authority72_launch_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_sav",
+        "encoding": null,
+        "generic_decoder_admission": "SUPPORTED"
+      },
+      "expected_shape": {
+        "status": "NOT_FROZEN_IN_REP35_INPUTS__METADATA_OBSERVE_ONLY"
+      },
+      "edge_classes": [
+        "EC01",
+        "EC07",
+        "EC08",
+        "EC10",
+        "EC12",
+        "EC13",
+        "EC14"
+      ],
+      "governed_surface_ids": [],
+      "accepted_physical_hazards": "duplicate country+ID; three native MR sets; Q112/SE15 overlap; India/ASEAN routing",
+      "documentary_unknowns": "Q112 MR semantic alias, India module, geography and weight authority remain bounded UNKNOWN"
+    },
+    {
+      "source_id": "11",
+      "family": "EVS",
+      "wave_or_release": "1981",
+      "canonical_filename": "EVS 1981.sav",
+      "canonical_sha256": "5b703173845c086382fd93252f1cbc91dfef74007755459adfc73785389172f2",
+      "source_format": "SAV",
+      "size_bytes": 11815613,
+      "accepted_decoder_mode": "SAV_SOURCE_DECLARED_WINDOWS1252",
+      "accepted_compatibility_mode": "NO_SOURCE_SPECIFIC_COMPATIBILITY_OVERRIDE",
+      "compatibility_semantic_scope": "NO_COMPATIBILITY_OVERRIDE__NO_SEMANTIC_CLAIM",
+      "source_identity_rule": "SOURCE_SHA256+ROW_ORDINAL",
+      "authority72_launch_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_sav",
+        "encoding": "WINDOWS-1252",
+        "generic_decoder_admission": "GAP",
+        "generic_debt": "GENERIC_SAV_DECLARED_ENCODING_ADMISSION_GAP"
+      },
+      "expected_shape": {
+        "rows": 19378,
+        "variables": 370
+      },
+      "edge_classes": [
+        "EC01",
+        "EC02",
+        "EC05",
+        "EC09",
+        "EC12",
+        "EC13"
+      ],
+      "governed_surface_ids": [
+        "S026",
+        "S027",
+        "S028",
+        "S029"
+      ],
+      "accepted_physical_hazards": "positive user-missing v308=3; ranked slots; release-specific coordinates; weight_g",
+      "documentary_unknowns": "native-ID scope and weight estimand remain bounded UNKNOWN"
+    },
+    {
+      "source_id": "12",
+      "family": "EVS",
+      "wave_or_release": "1990",
+      "canonical_filename": "EVS 1990.sav",
+      "canonical_sha256": "66252a92c59bf6759b79a6b35b2be658b98a433373212a70c8ec94755d3e02ec",
+      "source_format": "SAV",
+      "size_bytes": 24341244,
+      "accepted_decoder_mode": "SAV_SOURCE_DECLARED_WINDOWS1252",
+      "accepted_compatibility_mode": "NO_SOURCE_SPECIFIC_COMPATIBILITY_OVERRIDE",
+      "compatibility_semantic_scope": "NO_COMPATIBILITY_OVERRIDE__NO_SEMANTIC_CLAIM",
+      "source_identity_rule": "SOURCE_SHA256+ROW_ORDINAL",
+      "authority72_launch_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_sav",
+        "encoding": "WINDOWS-1252",
+        "generic_decoder_admission": "GAP",
+        "generic_debt": "GENERIC_SAV_DECLARED_ENCODING_ADMISSION_GAP"
+      },
+      "expected_shape": {
+        "rows": 38213,
+        "variables": 390
+      },
+      "edge_classes": [
+        "EC01",
+        "EC02",
+        "EC05",
+        "EC06",
+        "EC09",
+        "EC12",
+        "EC13"
+      ],
+      "governed_surface_ids": [],
+      "accepted_physical_hazards": "all-user-missing q745; ranked triplets; split-up coordinates; weight_g/weight_s",
+      "documentary_unknowns": "native-ID scope and weight estimand remain bounded UNKNOWN"
+    },
+    {
+      "source_id": "13",
+      "family": "EVS",
+      "wave_or_release": "1999",
+      "canonical_filename": "EVS 1999.sav",
+      "canonical_sha256": "6058644a9308aad574b95fa0afd1b026fedea289c6c95aca043aefb41ae0ab8a",
+      "source_format": "SAV",
+      "size_bytes": 31857144,
+      "accepted_decoder_mode": "SAV_LATIN1_COMPAT_PHYSICAL_ONLY__SOURCE_DECLARES_UTF8",
+      "accepted_compatibility_mode": "COMPATIBILITY_EXECUTION_ONLY__NOT_SOURCE_TEXT_ENCODING_AUTHORITY",
+      "compatibility_semantic_scope": "PHYSICAL_EXTRACTION_ONLY__NO_SOURCE_TEXT_OR_SEMANTIC_AUTHORITY",
+      "source_identity_rule": "SOURCE_SHA256+ROW_ORDINAL",
+      "authority72_launch_class": "L2_DOCUMENTARY_AUTHORITY_REQUIRED_BEFORE_SEMANTIC_CERTIFICATION",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_sav",
+        "encoding": "latin1",
+        "generic_decoder_admission": "SUPPORTED_EXACT_SHA_COMPATIBILITY_ONLY"
+      },
+      "expected_shape": {
+        "rows": 41125,
+        "variables": 513
+      },
+      "edge_classes": [
+        "EC01",
+        "EC02",
+        "EC03",
+        "EC10",
+        "EC14"
+      ],
+      "governed_surface_ids": [],
+      "accepted_physical_hazards": "source declares UTF-8 but contains malformed human-language bytes; routing filters",
+      "documentary_unknowns": "producer-authoritative field-level malformed-text repair/alignment rule missing"
+    },
+    {
+      "source_id": "14",
+      "family": "EVS",
+      "wave_or_release": "2008",
+      "canonical_filename": "EVS 2008.sav",
+      "canonical_sha256": "5469e3b39cbbb6d7230ff9894426cc75fe074541d284633235df4af3442ac379",
+      "source_format": "SAV",
+      "size_bytes": 63832833,
+      "accepted_decoder_mode": "SAV_LATIN1_COMPAT_PHYSICAL_ONLY__SOURCE_DECLARES_UTF8",
+      "accepted_compatibility_mode": "COMPATIBILITY_EXECUTION_ONLY__NOT_SOURCE_TEXT_ENCODING_AUTHORITY",
+      "compatibility_semantic_scope": "PHYSICAL_EXTRACTION_ONLY__NO_SOURCE_TEXT_OR_SEMANTIC_AUTHORITY",
+      "source_identity_rule": "SOURCE_SHA256+ROW_ORDINAL",
+      "authority72_launch_class": "L2_DOCUMENTARY_AUTHORITY_REQUIRED_BEFORE_SEMANTIC_CERTIFICATION",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_sav",
+        "encoding": "latin1",
+        "generic_decoder_admission": "SUPPORTED_EXACT_SHA_COMPATIBILITY_ONLY"
+      },
+      "expected_shape": {
+        "rows": 66280,
+        "variables": 477
+      },
+      "edge_classes": [
+        "EC01",
+        "EC02",
+        "EC03",
+        "EC08",
+        "EC14"
+      ],
+      "governed_surface_ids": [],
+      "accepted_physical_hazards": "declared UTF-8 with malformed text; 13 native MR sets; alias/overlap; flag/date sentinels",
+      "documentary_unknowns": "producer-authoritative text repair/alignment rule missing; MR label semantics affected"
+    },
+    {
+      "source_id": "15",
+      "family": "EVS",
+      "wave_or_release": "2017",
+      "canonical_filename": "EVS 2017.sav",
+      "canonical_sha256": "95096c2474b81ef12004726e4ed5b0919b1ea7bb672baff676ae40fb1b629bd2",
+      "source_format": "SAV",
+      "size_bytes": 53499063,
+      "accepted_decoder_mode": "SAV_NATIVE_GOVERNED",
+      "accepted_compatibility_mode": "NO_SOURCE_SPECIFIC_COMPATIBILITY_OVERRIDE",
+      "compatibility_semantic_scope": "NO_COMPATIBILITY_OVERRIDE__NO_SEMANTIC_CLAIM",
+      "source_identity_rule": "SOURCE_SHA256+ROW_ORDINAL",
+      "authority72_launch_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_sav",
+        "encoding": null,
+        "generic_decoder_admission": "SUPPORTED"
+      },
+      "expected_shape": {
+        "rows": 59438,
+        "variables": 474
+      },
+      "edge_classes": [
+        "EC01",
+        "EC02",
+        "EC05",
+        "EC08",
+        "EC10",
+        "EC12"
+      ],
+      "governed_surface_ids": [],
+      "accepted_physical_hazards": "11 system-missing cells; dweight=-4 declaration; MR sets Q4/Q11; matrix/mixed mode",
+      "documentary_unknowns": "exact matrix routing and weight estimand remain bounded UNKNOWN"
+    },
+    {
+      "source_id": "16",
+      "family": "GSS",
+      "wave_or_release": "1972",
+      "canonical_filename": "GSS1972.sav",
+      "canonical_sha256": "e368fc0f1d141b201900185c919c48ab1de1c4c7815bccf83a6e4fb224293204",
+      "source_format": "SAV",
+      "size_bytes": 1647241,
+      "accepted_decoder_mode": "SAV_NATIVE_GOVERNED",
+      "accepted_compatibility_mode": "NO_SOURCE_SPECIFIC_COMPATIBILITY_OVERRIDE",
+      "compatibility_semantic_scope": "NO_COMPATIBILITY_OVERRIDE__NO_SEMANTIC_CLAIM",
+      "source_identity_rule": "SOURCE_SHA256+ROW_ORDINAL",
+      "authority72_launch_class": "L2_DOCUMENTARY_AUTHORITY_REQUIRED_BEFORE_SEMANTIC_CERTIFICATION",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_sav",
+        "encoding": null,
+        "generic_decoder_admission": "SUPPORTED"
+      },
+      "expected_shape": {
+        "rows": 1613
+      },
+      "edge_classes": [
+        "EC01",
+        "EC07",
+        "EC10",
+        "EC12"
+      ],
+      "governed_surface_ids": [],
+      "accepted_physical_hazards": "early block-quota frame; routing/weight binding; no cross-release ID",
+      "documentary_unknowns": "exhaustive occurrence/routing and lawful analytical weight/design binding"
+    },
+    {
+      "source_id": "17",
+      "family": "GSS",
+      "wave_or_release": "1973",
+      "canonical_filename": "GSS1973.sav",
+      "canonical_sha256": "59e65801dc26818bbcf15f9ed985cf8f1faafa65a3eb59e2d3180a7b13a5c1c2",
+      "source_format": "SAV",
+      "size_bytes": 1984639,
+      "accepted_decoder_mode": "SAV_NATIVE_GOVERNED",
+      "accepted_compatibility_mode": "NO_SOURCE_SPECIFIC_COMPATIBILITY_OVERRIDE",
+      "compatibility_semantic_scope": "NO_COMPATIBILITY_OVERRIDE__NO_SEMANTIC_CLAIM",
+      "source_identity_rule": "SOURCE_SHA256+ROW_ORDINAL",
+      "authority72_launch_class": "L2_DOCUMENTARY_AUTHORITY_REQUIRED_BEFORE_SEMANTIC_CERTIFICATION",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_sav",
+        "encoding": null,
+        "generic_decoder_admission": "SUPPORTED"
+      },
+      "expected_shape": {
+        "rows": 1504
+      },
+      "edge_classes": [
+        "EC01",
+        "EC10",
+        "EC12"
+      ],
+      "governed_surface_ids": [],
+      "accepted_physical_hazards": "split-form X/Y; routing and weight binding; income rename no equivalence",
+      "documentary_unknowns": "exhaustive form/routing and lawful weight/design binding"
+    },
+    {
+      "source_id": "18",
+      "family": "GSS",
+      "wave_or_release": "1984",
+      "canonical_filename": "GSS1984.sav",
+      "canonical_sha256": "1da2df0c0e0692817081a46856deeaa6c78891101e53cf0139a971de16f7ac18",
+      "source_format": "SAV",
+      "size_bytes": 4309530,
+      "accepted_decoder_mode": "SAV_NATIVE_GOVERNED",
+      "accepted_compatibility_mode": "NO_SOURCE_SPECIFIC_COMPATIBILITY_OVERRIDE",
+      "compatibility_semantic_scope": "NO_COMPATIBILITY_OVERRIDE__NO_SEMANTIC_CLAIM",
+      "source_identity_rule": "SOURCE_SHA256+ROW_ORDINAL",
+      "authority72_launch_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_sav",
+        "encoding": null,
+        "generic_decoder_admission": "SUPPORTED"
+      },
+      "expected_shape": {
+        "rows": 1473
+      },
+      "edge_classes": [
+        "EC01",
+        "EC09",
+        "EC10",
+        "EC12",
+        "EC14"
+      ],
+      "governed_surface_ids": [],
+      "accepted_physical_hazards": "three forms; FORMWT; VPSU/VSTRAT; MAS/SAQ; ordered household slots",
+      "documentary_unknowns": "unmapped routing/weight/longitudinal claims remain bounded UNKNOWN"
+    },
+    {
+      "source_id": "19",
+      "family": "GSS",
+      "wave_or_release": "1993",
+      "canonical_filename": "GSS1993.sav",
+      "canonical_sha256": "7fc409cc07172f9a556bf88c5df8d2ea5e539b2a6ff37348711eeb21b4355ae8",
+      "source_format": "SAV",
+      "size_bytes": 5506397,
+      "accepted_decoder_mode": "SAV_NATIVE_GOVERNED",
+      "accepted_compatibility_mode": "NO_SOURCE_SPECIFIC_COMPATIBILITY_OVERRIDE",
+      "compatibility_semantic_scope": "NO_COMPATIBILITY_OVERRIDE__NO_SEMANTIC_CLAIM",
+      "source_identity_rule": "SOURCE_SHA256+ROW_ORDINAL",
+      "authority72_launch_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_sav",
+        "encoding": null,
+        "generic_decoder_admission": "SUPPORTED"
+      },
+      "expected_shape": {
+        "rows": 1606
+      },
+      "edge_classes": [
+        "EC01",
+        "EC09",
+        "EC10",
+        "EC12",
+        "EC14"
+      ],
+      "governed_surface_ids": [],
+      "accepted_physical_hazards": "ballot A/B/C; SAQ/ISSP; ranked slots; design coordinates",
+      "documentary_unknowns": "unmapped routing/weight/longitudinal claims remain bounded UNKNOWN"
+    },
+    {
+      "source_id": "20",
+      "family": "GSS",
+      "wave_or_release": "2002",
+      "canonical_filename": "GSS2002.sav",
+      "canonical_sha256": "8ece381105237a1800051eec3617dad9dd05bf137e34fa833653464a58222be1",
+      "source_format": "SAV",
+      "size_bytes": 17746227,
+      "accepted_decoder_mode": "SAV_NATIVE_GOVERNED",
+      "accepted_compatibility_mode": "NO_SOURCE_SPECIFIC_COMPATIBILITY_OVERRIDE",
+      "compatibility_semantic_scope": "NO_COMPATIBILITY_OVERRIDE__NO_SEMANTIC_CLAIM",
+      "source_identity_rule": "SOURCE_SHA256+ROW_ORDINAL",
+      "authority72_launch_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_sav",
+        "encoding": null,
+        "generic_decoder_admission": "SUPPORTED"
+      },
+      "expected_shape": {
+        "rows": 2765
+      },
+      "edge_classes": [
+        "EC01",
+        "EC09",
+        "EC10",
+        "EC12",
+        "EC14"
+      ],
+      "governed_surface_ids": [],
+      "accepted_physical_hazards": "six versions; manual map; ballot/form weighting; 14-slot ordering",
+      "documentary_unknowns": "unmapped routing/weight/longitudinal claims remain bounded UNKNOWN"
+    },
+    {
+      "source_id": "21",
+      "family": "GSS",
+      "wave_or_release": "2010",
+      "canonical_filename": "GSS2010.sav",
+      "canonical_sha256": "c229aff7430c12f246678f385e0776b089681ae9830bac88423e0964ac34ee05",
+      "source_format": "SAV",
+      "size_bytes": 10170184,
+      "accepted_decoder_mode": "SAV_NATIVE_GOVERNED",
+      "accepted_compatibility_mode": "NO_SOURCE_SPECIFIC_COMPATIBILITY_OVERRIDE",
+      "compatibility_semantic_scope": "NO_COMPATIBILITY_OVERRIDE__NO_SEMANTIC_CLAIM",
+      "source_identity_rule": "SOURCE_SHA256+ROW_ORDINAL",
+      "authority72_launch_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_sav",
+        "encoding": null,
+        "generic_decoder_admission": "SUPPORTED"
+      },
+      "expected_shape": {
+        "rows": 2044
+      },
+      "edge_classes": [
+        "EC01",
+        "EC10",
+        "EC12"
+      ],
+      "governed_surface_ids": [
+        "S005",
+        "S006",
+        "S007",
+        "S008",
+        "S009",
+        "S010"
+      ],
+      "accepted_physical_hazards": "two-phase nonresponse subsampling; mode/phase/subsamprate; historical weights",
+      "documentary_unknowns": "exact routing/weight/longitudinal claims bounded to release"
+    },
+    {
+      "source_id": "22",
+      "family": "GSS",
+      "wave_or_release": "2016",
+      "canonical_filename": "GSS2016.sav",
+      "canonical_sha256": "a053bdc5661eb2c1dd9a2d3a5d054601c66955a178fb266be9cef1023aea9b07",
+      "source_format": "SAV",
+      "size_bytes": 16989724,
+      "accepted_decoder_mode": "SAV_NATIVE_GOVERNED",
+      "accepted_compatibility_mode": "NO_SOURCE_SPECIFIC_COMPATIBILITY_OVERRIDE",
+      "compatibility_semantic_scope": "NO_COMPATIBILITY_OVERRIDE__NO_SEMANTIC_CLAIM",
+      "source_identity_rule": "SOURCE_SHA256+ROW_ORDINAL",
+      "authority72_launch_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_sav",
+        "encoding": null,
+        "generic_decoder_admission": "SUPPORTED"
+      },
+      "expected_shape": {
+        "rows": 2867
+      },
+      "edge_classes": [
+        "EC01",
+        "EC10",
+        "EC12"
+      ],
+      "governed_surface_ids": [],
+      "accepted_physical_hazards": "2010-like phase/mode subset with release-specific ordinals/randomization/ballots",
+      "documentary_unknowns": "exact routing/weight/longitudinal claims bounded to release"
+    },
+    {
+      "source_id": "23",
+      "family": "GSS",
+      "wave_or_release": "2024",
+      "canonical_filename": "GSS2024.sav",
+      "canonical_sha256": "27166a481ba6e240aca68293464a2b1fd9a9171a3ddba89a038038a32b8d1eef",
+      "source_format": "SAV",
+      "size_bytes": 20922610,
+      "accepted_decoder_mode": "SAV_NATIVE_GOVERNED",
+      "accepted_compatibility_mode": "NO_SOURCE_SPECIFIC_COMPATIBILITY_OVERRIDE",
+      "compatibility_semantic_scope": "NO_COMPATIBILITY_OVERRIDE__NO_SEMANTIC_CLAIM",
+      "source_identity_rule": "SOURCE_SHA256+ROW_ORDINAL",
+      "authority72_launch_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_sav",
+        "encoding": null,
+        "generic_decoder_admission": "SUPPORTED"
+      },
+      "expected_shape": {
+        "rows": 3986
+      },
+      "edge_classes": [
+        "EC01",
+        "EC10",
+        "EC12",
+        "EC14"
+      ],
+      "governed_surface_ids": [],
+      "accepted_physical_hazards": "hard break: baseline+AmeriSpeak frames; GSS Next; *_next/*_as weights; mode experiments",
+      "documentary_unknowns": "mode-specific experimental weighting unavailable; other claims bounded UNKNOWN"
+    },
+    {
+      "source_id": "24",
+      "family": "Latinobarometro",
+      "wave_or_release": "1995",
+      "canonical_filename": "Latinobarometro 1995.sav",
+      "canonical_sha256": "4b7fc6da17dfddafd6a835717e8dc06981208eb4120fa33bdd16e12ae95926f7",
+      "source_format": "SAV",
+      "size_bytes": 2224483,
+      "accepted_decoder_mode": "SAV_NATIVE_GOVERNED",
+      "accepted_compatibility_mode": "NO_SOURCE_SPECIFIC_COMPATIBILITY_OVERRIDE",
+      "compatibility_semantic_scope": "NO_COMPATIBILITY_OVERRIDE__NO_SEMANTIC_CLAIM",
+      "source_identity_rule": "SOURCE_SHA256+ROW_ORDINAL",
+      "authority72_launch_class": "L2_DOCUMENTARY_AUTHORITY_REQUIRED_BEFORE_SEMANTIC_CERTIFICATION",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_sav",
+        "encoding": null,
+        "generic_decoder_admission": "SUPPORTED"
+      },
+      "expected_shape": {
+        "rows": 9069,
+        "variables": 203
+      },
+      "edge_classes": [
+        "EC01",
+        "EC07",
+        "EC12"
+      ],
+      "governed_surface_ids": [
+        "S011",
+        "S012",
+        "S013"
+      ],
+      "accepted_physical_hazards": "Brazil raw n=1200 vs official technical n=1080; noninjective interview IDs; WT",
+      "documentary_unknowns": "producer/release provenance for 120-row Brazil discrepancy"
+    },
+    {
+      "source_id": "25",
+      "family": "Latinobarometro",
+      "wave_or_release": "2011",
+      "canonical_filename": "Latinobarometro 2011.sav",
+      "canonical_sha256": "a44e89e08e564e4e175199eeeabfa6163f32f4ba0a19a6c3f5b4752de6cca22e",
+      "source_format": "SAV",
+      "size_bytes": 9900209,
+      "accepted_decoder_mode": "SAV_NATIVE_GOVERNED",
+      "accepted_compatibility_mode": "NO_SOURCE_SPECIFIC_COMPATIBILITY_OVERRIDE",
+      "compatibility_semantic_scope": "NO_COMPATIBILITY_OVERRIDE__NO_SEMANTIC_CLAIM",
+      "source_identity_rule": "SOURCE_SHA256+ROW_ORDINAL",
+      "authority72_launch_class": "L0_EXECUTION_PACKET_READY__NO_NAMED_DOCUMENTARY_BLOCKER",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_sav",
+        "encoding": null,
+        "generic_decoder_admission": "SUPPORTED"
+      },
+      "expected_shape": {
+        "rows": 20204,
+        "variables": 414
+      },
+      "edge_classes": [
+        "EC01",
+        "EC05",
+        "EC12",
+        "EC13"
+      ],
+      "governed_surface_ids": [],
+      "accepted_physical_hazards": "18-country counts match methodology; row ordinal identity; physical missing declarations; WT",
+      "documentary_unknowns": "none named before source-local launch; no invented aggregate estimand"
+    },
+    {
+      "source_id": "26",
+      "family": "Latinobarometro",
+      "wave_or_release": "2024",
+      "canonical_filename": "Latinobarometro 2024.sav",
+      "canonical_sha256": "ff5cef18c87969026e7f993d09f10c38a547bf81d5d398784fb59b960b7b0a40",
+      "source_format": "SAV",
+      "size_bytes": 7886834,
+      "accepted_decoder_mode": "SAV_NATIVE_GOVERNED",
+      "accepted_compatibility_mode": "NO_SOURCE_SPECIFIC_COMPATIBILITY_OVERRIDE",
+      "compatibility_semantic_scope": "NO_COMPATIBILITY_OVERRIDE__NO_SEMANTIC_CLAIM",
+      "source_identity_rule": "SOURCE_SHA256+ROW_ORDINAL",
+      "authority72_launch_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_sav",
+        "encoding": null,
+        "generic_decoder_admission": "SUPPORTED"
+      },
+      "expected_shape": {
+        "rows": 19214,
+        "variables": 332
+      },
+      "edge_classes": [
+        "EC01",
+        "EC04",
+        "EC11",
+        "EC12",
+        "EC14"
+      ],
+      "governed_surface_ids": [],
+      "accepted_physical_hazards": "raw header nominal_case_size=174 vs 332 dictionary/stream; WT raw max19.7793 vs published 0.01-10; 47 reused names relabeled",
+      "documentary_unknowns": "WT semantic/domain conflict and full Q-to-P crosswalk remain bounded; raw layout controlled by executable fixture"
+    },
+    {
+      "source_id": "27",
+      "family": "LiTS",
+      "wave_or_release": "I",
+      "canonical_filename": "LiTS_I.dta",
+      "canonical_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+      "source_format": "DTA",
+      "size_bytes": 139531180,
+      "accepted_decoder_mode": "DTA_DECODE_LATIN1_COMPAT_PHYSICAL_ONLY",
+      "accepted_compatibility_mode": "COMPATIBILITY_EXECUTION_ONLY__NOT_SOURCE_TEXT_ENCODING_AUTHORITY",
+      "compatibility_semantic_scope": "PHYSICAL_EXTRACTION_ONLY__NO_SOURCE_TEXT_OR_SEMANTIC_AUTHORITY",
+      "source_identity_rule": "SOURCE_SHA256+ROW_ORDINAL",
+      "authority72_launch_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_dta",
+        "encoding": "latin1",
+        "generic_decoder_admission": "SUPPORTED_EXACT_SHA_COMPATIBILITY_ONLY"
+      },
+      "expected_shape": {
+        "rows": 29002,
+        "variables": 1198
+      },
+      "edge_classes": [
+        "EC01",
+        "EC02",
+        "EC05",
+        "EC06",
+        "EC09",
+        "EC12"
+      ],
+      "governed_surface_ids": [
+        "S001",
+        "S002",
+        "S030",
+        "S031",
+        "S032"
+      ],
+      "accepted_physical_hazards": "designated DTA proving source; ordinary semantic-looking codes; all-system repeated slot; three weights each 29000+2",
+      "documentary_unknowns": "intended text encoding/default weight remain bounded UNKNOWN"
+    },
+    {
+      "source_id": "28",
+      "family": "LiTS",
+      "wave_or_release": "II",
+      "canonical_filename": "LiTS_II.dta",
+      "canonical_sha256": "c43d0e1821c51398817d7dfdfad2c0a4a5bb0d492f6a58096670e623bb6130e9",
+      "source_format": "DTA",
+      "size_bytes": 199716969,
+      "accepted_decoder_mode": "DTA_DECODE_LATIN1_COMPAT_PHYSICAL_ONLY",
+      "accepted_compatibility_mode": "COMPATIBILITY_EXECUTION_ONLY__NOT_SOURCE_TEXT_ENCODING_AUTHORITY",
+      "compatibility_semantic_scope": "PHYSICAL_EXTRACTION_ONLY__NO_SOURCE_TEXT_OR_SEMANTIC_AUTHORITY",
+      "source_identity_rule": "SOURCE_SHA256+ROW_ORDINAL",
+      "authority72_launch_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_dta",
+        "encoding": "latin1",
+        "generic_decoder_admission": "SUPPORTED_EXACT_SHA_COMPATIBILITY_ONLY"
+      },
+      "expected_shape": {
+        "rows": 38864,
+        "variables": 627
+      },
+      "edge_classes": [
+        "EC01",
+        "EC02",
+        "EC05",
+        "EC12"
+      ],
+      "governed_surface_ids": [],
+      "accepted_physical_hazards": "localized system missing; ordinary -99/-98/-97; SerialID; democratic/federal weights",
+      "documentary_unknowns": "intended text encoding/default estimand remain bounded UNKNOWN"
+    },
+    {
+      "source_id": "29",
+      "family": "LiTS",
+      "wave_or_release": "III",
+      "canonical_filename": "LiTS_III.dta",
+      "canonical_sha256": "368ae5d07a44975a2f0a9ce3b1e564988a966b2632e28075c56a24d60065bcc8",
+      "source_format": "DTA",
+      "size_bytes": 170487994,
+      "accepted_decoder_mode": "DTA_DECODE_LATIN1_COMPAT_PHYSICAL_ONLY",
+      "accepted_compatibility_mode": "COMPATIBILITY_EXECUTION_ONLY__NOT_SOURCE_TEXT_ENCODING_AUTHORITY",
+      "compatibility_semantic_scope": "PHYSICAL_EXTRACTION_ONLY__NO_SOURCE_TEXT_OR_SEMANTIC_AUTHORITY",
+      "source_identity_rule": "SOURCE_SHA256+ROW_ORDINAL",
+      "authority72_launch_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_dta",
+        "encoding": "latin1",
+        "generic_decoder_admission": "SUPPORTED_EXACT_SHA_COMPATIBILITY_ONLY"
+      },
+      "expected_shape": {
+        "rows": 51206,
+        "variables": 1290
+      },
+      "edge_classes": [
+        "EC01",
+        "EC02",
+        "EC05",
+        "EC07",
+        "EC10",
+        "EC12",
+        "EC14"
+      ],
+      "governed_surface_ids": [],
+      "accepted_physical_hazards": "308 PR + 308 SR namespaces; sparse/noninjective hhid; mixed missingness; three weights",
+      "documentary_unknowns": "per-variable module applicability/text/default weight remain bounded UNKNOWN"
+    },
+    {
+      "source_id": "30",
+      "family": "LiTS",
+      "wave_or_release": "IV",
+      "canonical_filename": "LiTS_IV.dta",
+      "canonical_sha256": "14e1032755c4f42d8d3dc61647097ccd7605ba281551e53953c76d22a223cd1c",
+      "source_format": "DTA",
+      "size_bytes": 110465945,
+      "accepted_decoder_mode": "DTA_DECODE_LATIN1_COMPAT_PHYSICAL_ONLY",
+      "accepted_compatibility_mode": "COMPATIBILITY_EXECUTION_ONLY__NOT_SOURCE_TEXT_ENCODING_AUTHORITY",
+      "compatibility_semantic_scope": "PHYSICAL_EXTRACTION_ONLY__NO_SOURCE_TEXT_OR_SEMANTIC_AUTHORITY",
+      "source_identity_rule": "SOURCE_SHA256+ROW_ORDINAL",
+      "authority72_launch_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_dta",
+        "encoding": "latin1",
+        "generic_decoder_admission": "SUPPORTED_EXACT_SHA_COMPATIBILITY_ONLY"
+      },
+      "expected_shape": {
+        "rows": 37478,
+        "variables": 1319
+      },
+      "edge_classes": [
+        "EC01",
+        "EC02",
+        "EC05",
+        "EC09",
+        "EC10",
+        "EC12",
+        "EC14"
+      ],
+      "governed_surface_ids": [],
+      "accepted_physical_hazards": "reader-option negative; 134 *_skip; 10 visits; four base/pop/top-up weights; complementary missingness",
+      "documentary_unknowns": "intended text encoding, TR token/top-up scope, exact skip semantics/default weight remain bounded UNKNOWN"
+    },
+    {
+      "source_id": "31",
+      "family": "South Asia",
+      "wave_or_release": "Wave 1",
+      "canonical_filename": "South Asia Wave 1.sav",
+      "canonical_sha256": "de7b51f9abf455b072555a84c5592e3ac46bb32c4f9f61bc055160f7d871e571",
+      "source_format": "SAV",
+      "size_bytes": 595974,
+      "accepted_decoder_mode": "SAV_NATIVE_GOVERNED",
+      "accepted_compatibility_mode": "NO_SOURCE_SPECIFIC_COMPATIBILITY_OVERRIDE",
+      "compatibility_semantic_scope": "NO_COMPATIBILITY_OVERRIDE__NO_SEMANTIC_CLAIM",
+      "source_identity_rule": "SOURCE_SHA256+ROW_ORDINAL",
+      "authority72_launch_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_sav",
+        "encoding": null,
+        "generic_decoder_admission": "SUPPORTED"
+      },
+      "expected_shape": {
+        "rows": 8442,
+        "variables": 68
+      },
+      "edge_classes": [
+        "EC01",
+        "EC05",
+        "EC07",
+        "EC10",
+        "EC14"
+      ],
+      "governed_surface_ids": [
+        "S014",
+        "S015"
+      ],
+      "accepted_physical_hazards": "no safe native ID; code8 No opinion user-missing on c12 but ordinary on b7; India mask",
+      "documentary_unknowns": "W1 instrument/routing/semantic/design docs absent; preserve affected states UNKNOWN"
+    },
+    {
+      "source_id": "32",
+      "family": "South Asia",
+      "wave_or_release": "Wave 2",
+      "canonical_filename": "South Asia Wave 2.sav",
+      "canonical_sha256": "6a5329ea16f4546188167edd691e0e6adbeae0737a015470aa26df0e01206f22",
+      "source_format": "SAV",
+      "size_bytes": 894051,
+      "accepted_decoder_mode": "SAV_NATIVE_GOVERNED",
+      "accepted_compatibility_mode": "NO_SOURCE_SPECIFIC_COMPATIBILITY_OVERRIDE",
+      "compatibility_semantic_scope": "NO_COMPATIBILITY_OVERRIDE__NO_SEMANTIC_CLAIM",
+      "source_identity_rule": "SOURCE_SHA256+ROW_ORDINAL",
+      "authority72_launch_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_sav",
+        "encoding": null,
+        "generic_decoder_admission": "SUPPORTED"
+      },
+      "expected_shape": {
+        "rows": 10617,
+        "variables": 73
+      },
+      "edge_classes": [
+        "EC01",
+        "EC05",
+        "EC07",
+        "EC09",
+        "EC10",
+        "EC12",
+        "EC13",
+        "EC14"
+      ],
+      "governed_surface_ids": [],
+      "accepted_physical_hazards": "resno collisions + Pakistan missing block; country-code drift; ordinary -1; ranked GBC31; routing masks",
+      "documentary_unknowns": "country-form/resno/minus1/weight/design semantics remain bounded UNKNOWN"
+    },
+    {
+      "source_id": "33",
+      "family": "WVS",
+      "wave_or_release": "Wave 1",
+      "canonical_filename": "WVS Wave 1.sav",
+      "canonical_sha256": "051bf450568f44181559a5b2bfbe58b4f05b58bc806643d0c63353c937ff0824",
+      "source_format": "SAV",
+      "size_bytes": 6358941,
+      "accepted_decoder_mode": "SAV_NATIVE_GOVERNED",
+      "accepted_compatibility_mode": "NO_SOURCE_SPECIFIC_COMPATIBILITY_OVERRIDE",
+      "compatibility_semantic_scope": "NO_COMPATIBILITY_OVERRIDE__NO_SEMANTIC_CLAIM",
+      "source_identity_rule": "SOURCE_SHA256+ROW_ORDINAL",
+      "authority72_launch_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_sav",
+        "encoding": null,
+        "generic_decoder_admission": "SUPPORTED"
+      },
+      "expected_shape": {
+        "status": "NOT_FROZEN_IN_REP35_INPUTS__METADATA_OBSERVE_ONLY"
+      },
+      "edge_classes": [
+        "EC01",
+        "EC04",
+        "EC05",
+        "EC06",
+        "EC12",
+        "EC14"
+      ],
+      "governed_surface_ids": [
+        "S033",
+        "S034"
+      ],
+      "accepted_physical_hazards": "S007 display F2.0 vs 9-10 digit raw IDs; typed missing; 13 weights; all-system columns",
+      "documentary_unknowns": "identity/weight/design/routing semantics remain bounded UNKNOWN; raw magnitude preservation closed"
+    },
+    {
+      "source_id": "34",
+      "family": "WVS",
+      "wave_or_release": "Wave 4",
+      "canonical_filename": "WVS Wave 4.sav",
+      "canonical_sha256": "c6757ed187655c8b9af88ae4c23c00f066696a641af2f316b4343272ea1d4a0a",
+      "source_format": "SAV",
+      "size_bytes": 41997221,
+      "accepted_decoder_mode": "SAV_NATIVE_GOVERNED",
+      "accepted_compatibility_mode": "NO_SOURCE_SPECIFIC_COMPATIBILITY_OVERRIDE",
+      "compatibility_semantic_scope": "NO_COMPATIBILITY_OVERRIDE__NO_SEMANTIC_CLAIM",
+      "source_identity_rule": "SOURCE_SHA256+ROW_ORDINAL",
+      "authority72_launch_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_sav",
+        "encoding": null,
+        "generic_decoder_admission": "SUPPORTED"
+      },
+      "expected_shape": {
+        "status": "NOT_FROZEN_IN_REP35_INPUTS__METADATA_OBSERVE_ONLY"
+      },
+      "edge_classes": [
+        "EC01",
+        "EC05",
+        "EC06",
+        "EC07",
+        "EC11",
+        "EC12",
+        "EC13",
+        "EC14"
+      ],
+      "governed_surface_ids": [],
+      "accepted_physical_hazards": "country+V3 collisions and typed-missing IDs; four all-row typed-missing cols; V220/Q223_LOCAL equal vectors distinct dictionaries",
+      "documentary_unknowns": "label relation/semantic codes/weight-design/scope semantics remain bounded UNKNOWN"
+    },
+    {
+      "source_id": "35",
+      "family": "WVS",
+      "wave_or_release": "Wave 7",
+      "canonical_filename": "WVS Wave 7.sav",
+      "canonical_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+      "source_format": "SAV",
+      "size_bytes": 185163494,
+      "accepted_decoder_mode": "HB01_WVS7_SAV_SELECTED_DECODER_C__SPSS_BYTECODE__FRESH_RAW_REPLAY",
+      "accepted_compatibility_mode": "NO_TEXT_COMPATIBILITY_OVERRIDE_CLAIMED__SELECTED_NUMERIC_RAW_DECODE",
+      "compatibility_semantic_scope": "PHYSICAL_EXTRACTION_ONLY__NO_SOURCE_TEXT_OR_SEMANTIC_AUTHORITY_FROM_DECODER",
+      "source_identity_rule": "SOURCE_SHA256_PLUS_SOURCE_ROW_ORDINAL",
+      "authority72_launch_class": "NOT_IN_AUTHORITY72__WVS7_INTENTIONALLY_EXCLUDED",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_sav",
+        "encoding": null,
+        "generic_decoder_admission": "BOUNDED_WVS7_NUMERIC_LANE"
+      },
+      "expected_shape": {
+        "rows": 97220,
+        "variables": 613,
+        "storage_slots": 645
+      },
+      "edge_classes": [
+        "EC01",
+        "EC05",
+        "EC07",
+        "EC09",
+        "EC10",
+        "EC12",
+        "EC13"
+      ],
+      "governed_surface_ids": [
+        "S003",
+        "S004"
+      ],
+      "accepted_physical_hazards": "SPSS_BYTECODE; case_size=645 8-byte slots for 613 released variables; D_INTERVIEW noninjective (value 858069901 occurs 1000 times); S007 uniqueness does not authorize identity; exact replay must remain source-SHA+row-ordinal",
+      "documentary_unknowns": "HB01 D03 person-position routing remains ROUTING_UNKNOWN; population certification separate; no weight/pooling/harmonization authority implied"
+    }
+  ]
+}
