@@ -344,9 +344,11 @@ python3 run_joined.py --root DIR --origin <bp2-origin-runtime> assert
 |---|---|
 | Branch | `agent/rabochii-sorok-20261020-bp2p4j-joined-technical-alpha-r1` |
 | Exact sealed startup | `267e97ff88acc4b19ea832bf8147f3ac2fa3bc81` |
-| Substantive return commit | recorded by the commit carrying this file |
-| Push | ordinary non-force |
-| Final remote SHA | `PUBLICATION_RECEIPT.json` plus the direct `git ls-remote` readback reported in the worker's final response |
+| Substantive return commit | `9e7143f53271c1079bbbdc92ab49c314e606d6d6` |
+| Delta commit (origin override + refreshed evidence) | `d405a065a3ca0429a4a81d325d7c7b8a5f1c6564` |
+| Remote verification of that tip | `git ls-remote` returned `d405a065a3ca0429a4a81d325d7c7b8a5f1c6564`, and a detached worktree at that exact SHA re-ran the whole court green |
+| Push | ordinary non-force (`267e97ff8..9e7143f53..d405a065a`) |
+| Final remote SHA | `PUBLICATION_RECEIPT.json`, `evidence/remote_readback.json`, and the direct `git ls-remote` readback reported in the worker's final response |
 
 Only this return subtree is committed. No upstream file, test, native module, Pyat artifact, PRE-MAIN
 document, production path or other worker branch was modified. No self-adoption, no additional reviewer,
