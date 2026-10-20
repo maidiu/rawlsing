@@ -631,7 +631,19 @@ def recover(root) -> BP2Artifacts:
 # ORIGIN_LITERAL mode
 # ---------------------------------------------------------------------------
 def origin_runtime_available(path: str | Path | None = None) -> Path | None:
-    candidate = Path(path or DEFAULT_ORIGIN_RUNTIME)
+    """Return the surviving literal BP2 origin runtime, or None.
+
+    ``path`` or the ``BP2P4J_ORIGIN_RUNTIME`` environment variable may point at a
+    different runtime; the values ``none``/``off`` disable the local-only check
+    so a fresh clone runs every reproducible court and skips only the literal one.
+    """
+    import os
+
+    override = path if path is not None else os.environ.get(
+        "BP2P4J_ORIGIN_RUNTIME", DEFAULT_ORIGIN_RUNTIME)
+    if override is None or str(override).strip().lower() in {"", "none", "off"}:
+        return None
+    candidate = Path(override)
     required = (candidate / "c9.sqlite", candidate / "journal" / "journal.json",
                 candidate / "keys" / "writer_keys.json",
                 candidate / "anchor" / "rows.json",

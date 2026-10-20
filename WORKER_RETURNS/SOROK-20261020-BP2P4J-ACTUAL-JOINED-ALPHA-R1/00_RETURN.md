@@ -324,7 +324,8 @@ python3 run_joined.py --root DIR --origin <bp2-origin-runtime> assert
 1. **No native authority.** Every actor, world, rule, grant, event and performed action is TEST_ONLY.
 2. **Literal origin is local-only.** The BP2 origin runtime contains a random key and a path-bound
    journal; a fresh clone will skip that cross-check (`BP2_ORIGIN_RUNTIME_ABSENT`) and still run every
-   reproducible court.
+   reproducible court. Set `BP2P4J_ORIGIN_RUNTIME=<dir>` to point at a preserved runtime, or
+   `BP2P4J_ORIGIN_RUNTIME=none` to force the absence path.
 3. **The fresh target differs from the literal target** by the documented path/key binding; all
    path-independent identities match exactly.
 4. **Historical upstream REDs not re-run here**: G13's 73 RED, C9R's 62/28 author divergence and the other
