@@ -1,0 +1,140 @@
+{
+  "branch": "agent/rabochii-pyat-r50-g50-governed-operation-grammar-native-producer-r1",
+  "deliverables": {
+    "b49_plan": "B49_INTERFACE_PLAN.md",
+    "canaries": "artifacts/28_CANARY_DISPOSITION.csv",
+    "census": "artifacts/original35_census.json",
+    "decisions": "artifacts/DECISION_DEMANDS.json",
+    "expected_root": "artifacts/expected_frontier_root.json",
+    "frontier": "artifacts/frontier_summary.json",
+    "junit": "evidence/g50_junit.xml",
+    "native_receipts": "artifacts/native_i05_receipts.json",
+    "plan": "artifacts/native_construction_plan.json",
+    "proof_witness": "evidence/proof_witness.json"
+  },
+  "files": [
+    {
+      "path": ".gitignore",
+      "sha256": "862263fa1f46c20f0d1e4dac5ffcc75abd55c08211b2c3864c5f8764b9d87793"
+    },
+    {
+      "path": "00_RETURN.md",
+      "sha256": "bb2f53b6cc4464bc37d1048b101cd2dfde754bfbf1bd64b30bf74c1ca2cea259"
+    },
+    {
+      "path": "B49_INTERFACE_PLAN.md",
+      "sha256": "4595d74e7d9d5cca129f3ab31d1739cc42f1bc6365b71640a1163b7bf8c2c0b9"
+    },
+    {
+      "path": "artifacts/28_CANARY_DISPOSITION.csv",
+      "sha256": "58ec6e686581d5f2773a87492cf6718bcb094770fdd987bf3594b17031189037"
+    },
+    {
+      "path": "artifacts/DECISION_DEMANDS.json",
+      "sha256": "e92638a248e536cc28c605eac9844a3585cd3084d340810b0672577a1a3ee588"
+    },
+    {
+      "path": "artifacts/canary_matrix.json",
+      "sha256": "2f7a4a099dcac567938f324de0285bcf0e876a553d827f456413cce1212912dc"
+    },
+    {
+      "path": "artifacts/expected_frontier_root.json",
+      "sha256": "fa99743ae4962af3612d8abfd3455e7ddcf36ee4de507acb4007545c9b940bb6"
+    },
+    {
+      "path": "artifacts/frontier_operations.json",
+      "sha256": "06ffe23c5c19607a9c73e52f5427825a013bde8eab5e41b1c5daf13514b34e08"
+    },
+    {
+      "path": "artifacts/frontier_summary.json",
+      "sha256": "385aee9008b6d474346a8e8dc25c47536d6649c3dcb44cac71a18a40fb145373"
+    },
+    {
+      "path": "artifacts/mutation_receipt.json",
+      "sha256": "87e64fded775f4dad670e8f28e95d9b662c8e07f27dd3a6493c49418f53561c7"
+    },
+    {
+      "path": "artifacts/native_construction_plan.json",
+      "sha256": "f55766edb78de931afb7e76a49392668f30dcd09da2094887aba43f00d2c2c10"
+    },
+    {
+      "path": "artifacts/native_i05_receipts.json",
+      "sha256": "548197403cdc33e292a4674afacf79fcbcfe4be4548dcb2843e9a2541f867e03"
+    },
+    {
+      "path": "artifacts/original35_census.json",
+      "sha256": "aa7326ada1779f42fc9b2bd34ca3a7e87d9548ed9fa54a3828533eae3f4db911"
+    },
+    {
+      "path": "bootstrap.py",
+      "sha256": "17afcf2d5c93a10ca6ed8221c5bfa39f3aa75cc21c1f8b4b76dc1c33a169d474"
+    },
+    {
+      "path": "environment_passport.json",
+      "sha256": "88a5252347139e1f5ffb8b60a257da5fc02c1694fc53720775824656f9373a68"
+    },
+    {
+      "path": "evidence/artifact_hashes.json",
+      "sha256": "f29c546e1138449052c6e46af25a5d86d9f52eeca6378520da7ae84ee2903c47"
+    },
+    {
+      "path": "evidence/g50_junit.xml",
+      "sha256": "6f03c4568aef8ce62b3b126e7d3335a45a1a752cd55225e9a3e4f992ef04ce6e"
+    },
+    {
+      "path": "evidence/proof_witness.json",
+      "sha256": "9a7c9a9c441c298b27f39ddafe6740f24985bd239f474721387d0ef26db0a873"
+    },
+    {
+      "path": "g50/canaries.py",
+      "sha256": "8ecb06adaf454a25b5b4b7a422e044d1de41806a6e9b6c6394e514b18dd6858e"
+    },
+    {
+      "path": "g50/enumerate.py",
+      "sha256": "9f2ba07633f3d9f4b656ba5d33b7b9695c290e09cfb6f789e8347d643543ec55"
+    },
+    {
+      "path": "g50/fixture.py",
+      "sha256": "faaa29a2e7123e3e7978c99432ebb4d60e0af4a877d53c7632beea04f93bc0e6"
+    },
+    {
+      "path": "g50/native_i05.py",
+      "sha256": "36634ec0765864e82d5fb6adc54b0c71b9a4c41812342da28454caf90cafdcbb"
+    },
+    {
+      "path": "g50/native_map.py",
+      "sha256": "71d79dc57077b83557696a2a8c6d980213192098778c5ab58dd7a163d7d7ca4e"
+    },
+    {
+      "path": "g50/oracle.py",
+      "sha256": "20d297905b541e4cad04e7503fc639fa35d11a4e7adc8aba85ef9ce6909f9365"
+    },
+    {
+      "path": "g50/plan.py",
+      "sha256": "f44c1a87af7eaf7d7e1041fabf0981881d47cb6cf96e75949926c49db4f3d038"
+    },
+    {
+      "path": "g50/types.py",
+      "sha256": "e5d91ca5aa00df46818c9a076bf162667c66ae43fbd92cbe6090e706f80da427"
+    },
+    {
+      "path": "scripts/build_artifacts.py",
+      "sha256": "a287cda044c8ca52b8268f2b97708fd19257b99302ece2ccefdfb7709257992a"
+    },
+    {
+      "path": "seal.py",
+      "sha256": "0c6273ee80cac118dabb3a8185a4d4387b9a97226092d9e2fc9962629d67edad"
+    },
+    {
+      "path": "tests/test_g50_frontier.py",
+      "sha256": "22982fb1f76f6a88cdc9f9b532b4c620b454a5bdec0d50a02c7a90ada02b51b6"
+    },
+    {
+      "path": "tests/test_g50_frontier.py.proof.json",
+      "sha256": "edda1750fb911b939494ecdc6b5a4633a498a14cfda2d4f7d8aa04fe8d274eb6"
+    }
+  ],
+  "no_authority_granted": true,
+  "schema": "G50_RETURN_MANIFEST@1",
+  "startup": "5a67ab44fc9d96f8040d89557ba462a74df2cecc"
+}

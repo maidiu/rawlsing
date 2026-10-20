@@ -1,0 +1,29 @@
+id,class,disposition,evidence,detail
+C01,Administrative ID as attitude,TYPED_REFUSAL,urn:g50:op:2dcd27fadebfca8b9db45d5b3ba074134bb8b5febd73ad524112c52de003400a,administrative ID is excluded from target/condition roles; explicit prohibition retained
+C02,Household selected adult,TYPED_REFUSAL,urn:g50:op:de50e3e703af5a8cc53391574977bd6b5f39b28a45cab900019ff90362af9c89,adult/household joint stays UNRESOLVED_UNIT_LINK without a sanctioned transform
+C03,Unknown routing,TYPED_REFUSAL,urn:g50:op:42a85f5d379ed3cea263a3519f114dcccbd0114130cd927ac1cb235ec52c5a2b,UNKNOWN route is not promoted to true/false; no eligible operation
+C04,Split ballot,TYPED_REFUSAL,urn:g50:op:c3260595bbd61d4b1bd9564841f99410027dd2c05233b0373f8a6ef4f4b2577d,disjoint forms proved INAPPLICABLE for a shared-administration joint
+C05,DK and refusal,SPEC_ONLY_NATIVE_UNSUPPORTED,urn:g50:op:44391db802489d4ee725b41a8a9b44a8456fcd1232b81e6ed11e99fab7c83e94,special states preserved in state map; no native recode is performed
+C06,MR respondent inflation,TYPED_REFUSAL,urn:g50:op:f102de5be5d204c0ca1db8ba87042ebcc8293c8f3e9a7fd6d6d0d25b11831ba5,MULTI_SELECT_SET topology is not silently scalarized; UNSUPPORTED_RUNTIME
+C07,Rank and repeated occasions,TYPED_REFUSAL,"urn:g50:op:c56eebc1c4c5ec7351821d7a4edd2645b98964730f961f4feb4bcd2a0495772d,urn:g50:op:743f199043c10a00365462a4eb43d334184c9495994f78da072e4eca31332c32",RANKED/REPEATED topologies remain exact unsupported obligations
+C08,Missing population weights,TYPED_REFUSAL,urn:g50:op:b22d3396c03b973cf5cc55e4d527e4513c2b43bb815bba8b048fe6438b408777,"population variant held; no weight/design invented, sample variant remains separate"
+C09,Kish as full design,TYPED_REFUSAL,measure_plan:M-POP,design variance/replicates absent; population inference held
+C10,Sample zero versus impossible,NATIVE_EXECUTED,native observed_zero_cells=5; empty_probe_zero_denominator=1,observed-zero cells stay zero with positive denominator; impossible joint has zero denominator
+C11,Unary-screen XOR,NATIVE_EXECUTED,"GRID-AB,XOR-AB",4 grid + 1 exactly-one candidates executed
+C12,Unlisted minority branch,NATIVE_EXECUTED,COND-M1,M=1 minority condition executed independently of outcome-based whitelists
+C13,Semantic relation absence,NATIVE_EXECUTED,JOINT-YM + CO_TRAVEL,descriptive co-travel eligible; STRUCTURAL stays separately DEFERRED
+C14,Same marginals different joint,SPEC_ONLY_NATIVE_UNSUPPORTED,M48 toy oracle,native joint validator executed for Y-M dependence; distinct-joint contrast remains model-only
+C15,Reverse denominator,TYPED_REFUSAL,urn:g50:op:d087bbd878c4aed1655d400f727239ed5a72c654a6ce0fc759e91f20fc7b1a3d,reverse role requires its own risk/role issue; explicit prohibition
+C16,False cross-survey person,POLICY_HOLD,CROSS_SOURCE,cross-source class is method-gated; no respondent join
+C17,F6 missing target mass,POLICY_HOLD,CROSS_SOURCE/STRUCTURAL,transport/F6 method remains separately deferred
+C18,Country/time comparability,POLICY_HOLD,TEMPORAL,comparability method not issued; no observed comparable pair
+C19,Future publication leakage,TYPED_REFUSAL,currentness:CURRENT_SOURCE_HOST_PURPOSE_NOT_GRANTED,no current selection; current host/purpose held
+C20,Unknown crosswave covariance,POLICY_HOLD,TEMPORAL,covariance not silently zero; temporal interval method deferred
+C21,Exact discovery as validation,TYPED_REFUSAL,validation_status_exploratory=True,I05 exact support never self-issues statistical validation
+C22,Budget stop as absence,NATIVE_EXECUTED,budget_state=PARTIAL; pending=422,budget exhaustion is PARTIAL with explicit pending identities; E_pre root unchanged
+C23,Historical LiTS rights,POLICY_HOLD,current_permission=NOT_ASSERTED,historical positive does not authorize a current source read; no source factory call
+C24,All35 unissued counts,POLICY_HOLD,original35_census,35 identities preserved; original U/E_pre NULL with cause
+C25,Actor and route inference,TYPED_REFUSAL,no actor/route_probability fields,"no actor belief, route probability or person claim is emitted"
+C26,Target leakage alias,TYPED_REFUSAL,role_disposition:TARGET_LEAKAGE,target as conditioner is denied; deterministic alias is not predictor evidence
+C27,Source extra and manual ceiling,TYPED_REFUSAL,incomplete_e_pre=None,incomplete declared inventory refuses a complete U root; no silent polarity/omission
+C28,Empty jointly applicable risk,NATIVE_EXECUTED,empty_probe=VALID_EMPTY,eligible operation persists with VALID_EMPTY and a zero denominator; no fake probability

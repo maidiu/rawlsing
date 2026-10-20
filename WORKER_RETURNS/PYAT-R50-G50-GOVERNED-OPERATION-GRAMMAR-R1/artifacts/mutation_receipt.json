@@ -1,0 +1,71 @@
+{
+  "baseline": true,
+  "dropped_rule": "COND-M1",
+  "mutated_no_drop": {
+    "candidate_count_ok": false,
+    "count_mismatches": {
+      "COND-M1": {
+        "actual": 0,
+        "expected": 1
+      }
+    },
+    "expected_rule_coverage": {
+      "COND-A0": [
+        "urn:g50:op:4cff437b60d8eb82009ec6eddeaf394ff0460e3b005ba1fb143dd6ad6fd13e8a"
+      ],
+      "COND-A1": [
+        "urn:g50:op:4ad76a56fd75f113b2f2030ad50a30826db4800f4118ed461c2b8a075d50d92d"
+      ],
+      "COND-B0": [
+        "urn:g50:op:09441fdfd8cbfb12e266c50742a16d66345cc2758073b631c36b8f7cd282f4aa"
+      ],
+      "COND-B1": [
+        "urn:g50:op:321a31e82e4e49cc15014ad0648eaede79e80af714925da4f175f29ce983e444"
+      ],
+      "COND-M0": [
+        "urn:g50:op:e855749a46c432dbe7e44936cd72b19f5c69e0ce6b1ef4f9e222134adcb2aaa2"
+      ],
+      "COND-M1": [
+        "urn:g50:op:8c2a63f8058cb1aef511fc727b03871d946c7786fda474c44b06d20a49271827"
+      ],
+      "DIST-Y": [
+        "urn:g50:op:8d0e8c1ea79368040e3ab5e7daf120587c071fbcd6b755f20a6d8a908d29239e"
+      ],
+      "FORK-A1-M1": [
+        "urn:g50:op:d651f6c6206d8fed2ae0b17ace089cabd2abfe90e36e6c9b66f8534804279590"
+      ],
+      "GRID-AB": [
+        "urn:g50:op:4ebb15a922a6920e7cb5cf9f8e90ffac7b39579380762f1ce21ddf06a5af5d3e",
+        "urn:g50:op:934508dbd03f79515a0234dffff260a9d5bbc13ea2142f1eade2cba4ad180ea8",
+        "urn:g50:op:95f8383fbff296b746e02cd948070d6967bd27dab04dfa27fed2cbe9c3199dae",
+        "urn:g50:op:bed750f4b69e5bf01ff83c257a0a464c5922086e04aaba597f4325c685fc15c5"
+      ],
+      "JOINT-YM": [
+        "urn:g50:op:bba7b6de1efa11c806099a54ecefe1846e7a63c56fc5d13d66c0b0b10f80e2f1",
+        "urn:g50:op:cbed04a08abbf0c44f02224faff0292c275cdf32b046f30f380298801a43ad63"
+      ],
+      "XOR-AB": [
+        "urn:g50:op:a0a4b9739782fe5be379a829fa73437a35968f90c39ccc52d3a5b8a83c938aa2"
+      ]
+    },
+    "missing_rules": [
+      "COND-M1"
+    ],
+    "no_drop_ok": false,
+    "received_rule_counts": {
+      "COND-A0": 1,
+      "COND-A1": 1,
+      "COND-B0": 1,
+      "COND-B1": 1,
+      "COND-M0": 1,
+      "DIST-Y": 2,
+      "FORK-A1-M1": 1,
+      "GRID-AB": 4,
+      "JOINT-YM": 1,
+      "XOR-AB": 1
+    },
+    "unexpected_rules": []
+  },
+  "restored": true,
+  "schema": "G50_MUTATION_RECEIPT@1"
+}

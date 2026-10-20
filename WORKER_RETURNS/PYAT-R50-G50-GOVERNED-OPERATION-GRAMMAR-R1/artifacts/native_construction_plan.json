@@ -1,0 +1,45 @@
+{
+  "bundle_id": "SYNTH-G50-BUNDLE-1",
+  "candidate_count": 15,
+  "coverage": "EXACT_DECLARED_FRONTIER",
+  "frontier_hash": "1be842f82248683e47bdebd5194d3dab59420473786c5fe21a60a8e4392ba726",
+  "frontier_ref_hash": "055ac17d9df4d696c205e98a4dc20c8f357e86adc0335448552c4b2c16e737b6",
+  "grammar_hash": "af7382479cc61fe0db823647c4afa4e6fc45a5c83c762cae2e2a6f91b03db4e4",
+  "native_rule_counts": {
+    "COND-A0": 1,
+    "COND-A1": 1,
+    "COND-B0": 1,
+    "COND-B1": 1,
+    "COND-M0": 1,
+    "COND-M1": 1,
+    "DIST-Y": 2,
+    "FORK-A1-M1": 1,
+    "GRID-AB": 4,
+    "JOINT-YM": 1,
+    "XOR-AB": 1
+  },
+  "no_new_batch_writer": true,
+  "no_new_c11_engine": true,
+  "no_original_source_grant": true,
+  "owners": {
+    "batch": "existing U43/Batch boundary (not rebuilt by G50)",
+    "c11": "existing C11 repository (not rebuilt by G50)",
+    "executor": "rawlsing_next.pre553_discovery_exact.execute_exact_bounded_discovery",
+    "grammar": "rawlsing_next.pre553_discovery_exact._compile_frontier (existing)",
+    "query": "rawlsing_next.pre553_empirical_query.execute_empirical_query"
+  },
+  "plan_hash": "48604837b339a6a1c896b07d9facf2bc9afaca52b59aa569c13b83d60e6e8330",
+  "policy_id": "SYNTH-M48-POLICY-CANDIDATE-1",
+  "replay_ref_hash": "d4b141f82ae0481ea4dcba6d27db3637ec105756e59b43d6528299d303513c5c",
+  "schema": "NativeConstructionPlan@candidate1",
+  "unsupported_classes": [
+    "CONDITIONAL",
+    "CO_TRAVEL",
+    "DIST",
+    "FORK",
+    "INTERACTION",
+    "JOINT",
+    "STATE_ROBUSTNESS"
+  ],
+  "unsupported_disposition": "SPEC_ONLY_NATIVE_UNSUPPORTED_OR_POLICY_ONLY"
+}

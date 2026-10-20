@@ -1,0 +1,208 @@
+{
+  "count": 28,
+  "dispositions": {
+    "NATIVE_EXECUTED": 6,
+    "POLICY_HOLD": 6,
+    "SPEC_ONLY_NATIVE_UNSUPPORTED": 2,
+    "TYPED_REFUSAL": 14
+  },
+  "rows": [
+    {
+      "class": "Administrative ID as attitude",
+      "detail": "administrative ID is excluded from target/condition roles; explicit prohibition retained",
+      "disposition": "TYPED_REFUSAL",
+      "evidence": "urn:g50:op:2dcd27fadebfca8b9db45d5b3ba074134bb8b5febd73ad524112c52de003400a",
+      "id": "C01"
+    },
+    {
+      "class": "Household selected adult",
+      "detail": "adult/household joint stays UNRESOLVED_UNIT_LINK without a sanctioned transform",
+      "disposition": "TYPED_REFUSAL",
+      "evidence": "urn:g50:op:de50e3e703af5a8cc53391574977bd6b5f39b28a45cab900019ff90362af9c89",
+      "id": "C02"
+    },
+    {
+      "class": "Unknown routing",
+      "detail": "UNKNOWN route is not promoted to true/false; no eligible operation",
+      "disposition": "TYPED_REFUSAL",
+      "evidence": "urn:g50:op:42a85f5d379ed3cea263a3519f114dcccbd0114130cd927ac1cb235ec52c5a2b",
+      "id": "C03"
+    },
+    {
+      "class": "Split ballot",
+      "detail": "disjoint forms proved INAPPLICABLE for a shared-administration joint",
+      "disposition": "TYPED_REFUSAL",
+      "evidence": "urn:g50:op:c3260595bbd61d4b1bd9564841f99410027dd2c05233b0373f8a6ef4f4b2577d",
+      "id": "C04"
+    },
+    {
+      "class": "DK and refusal",
+      "detail": "special states preserved in state map; no native recode is performed",
+      "disposition": "SPEC_ONLY_NATIVE_UNSUPPORTED",
+      "evidence": "urn:g50:op:44391db802489d4ee725b41a8a9b44a8456fcd1232b81e6ed11e99fab7c83e94",
+      "id": "C05"
+    },
+    {
+      "class": "MR respondent inflation",
+      "detail": "MULTI_SELECT_SET topology is not silently scalarized; UNSUPPORTED_RUNTIME",
+      "disposition": "TYPED_REFUSAL",
+      "evidence": "urn:g50:op:f102de5be5d204c0ca1db8ba87042ebcc8293c8f3e9a7fd6d6d0d25b11831ba5",
+      "id": "C06"
+    },
+    {
+      "class": "Rank and repeated occasions",
+      "detail": "RANKED/REPEATED topologies remain exact unsupported obligations",
+      "disposition": "TYPED_REFUSAL",
+      "evidence": "urn:g50:op:c56eebc1c4c5ec7351821d7a4edd2645b98964730f961f4feb4bcd2a0495772d,urn:g50:op:743f199043c10a00365462a4eb43d334184c9495994f78da072e4eca31332c32",
+      "id": "C07"
+    },
+    {
+      "class": "Missing population weights",
+      "detail": "population variant held; no weight/design invented, sample variant remains separate",
+      "disposition": "TYPED_REFUSAL",
+      "evidence": "urn:g50:op:b22d3396c03b973cf5cc55e4d527e4513c2b43bb815bba8b048fe6438b408777",
+      "id": "C08"
+    },
+    {
+      "class": "Kish as full design",
+      "detail": "design variance/replicates absent; population inference held",
+      "disposition": "TYPED_REFUSAL",
+      "evidence": "measure_plan:M-POP",
+      "id": "C09"
+    },
+    {
+      "class": "Sample zero versus impossible",
+      "detail": "observed-zero cells stay zero with positive denominator; impossible joint has zero denominator",
+      "disposition": "NATIVE_EXECUTED",
+      "evidence": "native observed_zero_cells=5; empty_probe_zero_denominator=1",
+      "id": "C10"
+    },
+    {
+      "class": "Unary-screen XOR",
+      "detail": "4 grid + 1 exactly-one candidates executed",
+      "disposition": "NATIVE_EXECUTED",
+      "evidence": "GRID-AB,XOR-AB",
+      "id": "C11"
+    },
+    {
+      "class": "Unlisted minority branch",
+      "detail": "M=1 minority condition executed independently of outcome-based whitelists",
+      "disposition": "NATIVE_EXECUTED",
+      "evidence": "COND-M1",
+      "id": "C12"
+    },
+    {
+      "class": "Semantic relation absence",
+      "detail": "descriptive co-travel eligible; STRUCTURAL stays separately DEFERRED",
+      "disposition": "NATIVE_EXECUTED",
+      "evidence": "JOINT-YM + CO_TRAVEL",
+      "id": "C13"
+    },
+    {
+      "class": "Same marginals different joint",
+      "detail": "native joint validator executed for Y-M dependence; distinct-joint contrast remains model-only",
+      "disposition": "SPEC_ONLY_NATIVE_UNSUPPORTED",
+      "evidence": "M48 toy oracle",
+      "id": "C14"
+    },
+    {
+      "class": "Reverse denominator",
+      "detail": "reverse role requires its own risk/role issue; explicit prohibition",
+      "disposition": "TYPED_REFUSAL",
+      "evidence": "urn:g50:op:d087bbd878c4aed1655d400f727239ed5a72c654a6ce0fc759e91f20fc7b1a3d",
+      "id": "C15"
+    },
+    {
+      "class": "False cross-survey person",
+      "detail": "cross-source class is method-gated; no respondent join",
+      "disposition": "POLICY_HOLD",
+      "evidence": "CROSS_SOURCE",
+      "id": "C16"
+    },
+    {
+      "class": "F6 missing target mass",
+      "detail": "transport/F6 method remains separately deferred",
+      "disposition": "POLICY_HOLD",
+      "evidence": "CROSS_SOURCE/STRUCTURAL",
+      "id": "C17"
+    },
+    {
+      "class": "Country/time comparability",
+      "detail": "comparability method not issued; no observed comparable pair",
+      "disposition": "POLICY_HOLD",
+      "evidence": "TEMPORAL",
+      "id": "C18"
+    },
+    {
+      "class": "Future publication leakage",
+      "detail": "no current selection; current host/purpose held",
+      "disposition": "TYPED_REFUSAL",
+      "evidence": "currentness:CURRENT_SOURCE_HOST_PURPOSE_NOT_GRANTED",
+      "id": "C19"
+    },
+    {
+      "class": "Unknown crosswave covariance",
+      "detail": "covariance not silently zero; temporal interval method deferred",
+      "disposition": "POLICY_HOLD",
+      "evidence": "TEMPORAL",
+      "id": "C20"
+    },
+    {
+      "class": "Exact discovery as validation",
+      "detail": "I05 exact support never self-issues statistical validation",
+      "disposition": "TYPED_REFUSAL",
+      "evidence": "validation_status_exploratory=True",
+      "id": "C21"
+    },
+    {
+      "class": "Budget stop as absence",
+      "detail": "budget exhaustion is PARTIAL with explicit pending identities; E_pre root unchanged",
+      "disposition": "NATIVE_EXECUTED",
+      "evidence": "budget_state=PARTIAL; pending=422",
+      "id": "C22"
+    },
+    {
+      "class": "Historical LiTS rights",
+      "detail": "historical positive does not authorize a current source read; no source factory call",
+      "disposition": "POLICY_HOLD",
+      "evidence": "current_permission=NOT_ASSERTED",
+      "id": "C23"
+    },
+    {
+      "class": "All35 unissued counts",
+      "detail": "35 identities preserved; original U/E_pre NULL with cause",
+      "disposition": "POLICY_HOLD",
+      "evidence": "original35_census",
+      "id": "C24"
+    },
+    {
+      "class": "Actor and route inference",
+      "detail": "no actor belief, route probability or person claim is emitted",
+      "disposition": "TYPED_REFUSAL",
+      "evidence": "no actor/route_probability fields",
+      "id": "C25"
+    },
+    {
+      "class": "Target leakage alias",
+      "detail": "target as conditioner is denied; deterministic alias is not predictor evidence",
+      "disposition": "TYPED_REFUSAL",
+      "evidence": "role_disposition:TARGET_LEAKAGE",
+      "id": "C26"
+    },
+    {
+      "class": "Source extra and manual ceiling",
+      "detail": "incomplete declared inventory refuses a complete U root; no silent polarity/omission",
+      "disposition": "TYPED_REFUSAL",
+      "evidence": "incomplete_e_pre=None",
+      "id": "C27"
+    },
+    {
+      "class": "Empty jointly applicable risk",
+      "detail": "eligible operation persists with VALID_EMPTY and a zero denominator; no fake probability",
+      "disposition": "NATIVE_EXECUTED",
+      "evidence": "empty_probe=VALID_EMPTY",
+      "id": "C28"
+    }
+  ],
+  "schema": "G50_CANARY_MATRIX@1"
+}

@@ -1,0 +1,49 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "claims": [
+    {
+      "claim_id": "G50_EPRE_ROOT_INDEPENDENT_ORACLE_EDGE",
+      "actual_consumer": "g50.enumerate.enumerate_frontier eligible E_pre multiset/root vs g50.oracle independent multiset",
+      "claimed_dependency": "the composer must enumerate every policy-eligible operation, including the M minority conditioner, without unary/outcome pruning",
+      "positive_node": "WORKER_RETURNS/PYAT-R50-G50-GOVERNED-OPERATION-GRAMMAR-R1/tests/test_g50_frontier.py::test_frontier_matches_independent_oracle_and_expected_root",
+      "fault": {
+        "path": "WORKER_RETURNS/PYAT-R50-G50-GOVERNED-OPERATION-GRAMMAR-R1/g50/enumerate.py",
+        "old": "        if item.conditioner_role and item_id in policy.conditioner_roles",
+        "new": "        if item.conditioner_role and item_id in policy.conditioner_roles and item_id != \"M\""
+      }
+    },
+    {
+      "claim_id": "G50_NATIVE_I05_NO_DROP_EDGE",
+      "actual_consumer": "real rawlsing_next.pre553_discovery_exact.execute_exact_bounded_discovery via g50.native_i05 rule map",
+      "claimed_dependency": "every generated native-supported symbolic operation must be covered by an actual compiled/evaluated I05 candidate",
+      "positive_node": "WORKER_RETURNS/PYAT-R50-G50-GOVERNED-OPERATION-GRAMMAR-R1/tests/test_g50_frontier.py::test_native_i05_executes_generated_grammar_and_no_drop",
+      "fault": {
+        "path": "WORKER_RETURNS/PYAT-R50-G50-GOVERNED-OPERATION-GRAMMAR-R1/g50/native_i05.py",
+        "old": "    for item in (\"A\", \"B\", \"M\"):\n        for value in (0, 1):\n            rules.append(_rule(",
+        "new": "    for item in (\"A\", \"B\"):\n        for value in (0, 1):\n            rules.append(_rule("
+      }
+    },
+    {
+      "claim_id": "G50_ADMIN_ROLE_DENIAL_EDGE",
+      "actual_consumer": "g50.enumerate.role_disposition -> frontier typed refusals",
+      "claimed_dependency": "administrative ID may never acquire a scientific target role; the exact denial reason must be emitted",
+      "positive_node": "WORKER_RETURNS/PYAT-R50-G50-GOVERNED-OPERATION-GRAMMAR-R1/tests/test_g50_frontier.py::test_nonsemantic_impossible_roles_and_authority_denied",
+      "fault": {
+        "path": "WORKER_RETURNS/PYAT-R50-G50-GOVERNED-OPERATION-GRAMMAR-R1/g50/enumerate.py",
+        "old": "    if any(t in policy.denied_roles for t in targets):",
+        "new": "    if False:"
+      }
+    },
+    {
+      "claim_id": "G50_BUDGET_PARTIAL_EDGE",
+      "actual_consumer": "g50.enumerate.enumerate_frontier budget_state/pending identities",
+      "claimed_dependency": "budget exhaustion must be PARTIAL with explicit pending operation ids, never silent absence or a changed E_pre root",
+      "positive_node": "WORKER_RETURNS/PYAT-R50-G50-GOVERNED-OPERATION-GRAMMAR-R1/tests/test_g50_frontier.py::test_budget_partial_and_incomplete_inventory",
+      "fault": {
+        "path": "WORKER_RETURNS/PYAT-R50-G50-GOVERNED-OPERATION-GRAMMAR-R1/g50/enumerate.py",
+        "old": "    if budget is not None and len(eligible) > budget:",
+        "new": "    if False:"
+      }
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "decisions": [
+    {
+      "affected": "all original execution",
+      "current_state": "NOT_ISSUED",
+      "decision": "D1",
+      "finite": true,
+      "id": "SOURCE_HOST_PURPOSE_LICENCE",
+      "owner_role": "source custodian + deployment/use owner",
+      "software_done": "grant interface and early guard"
+    },
+    {
+      "affected": "U_item/U_app completeness",
+      "current_state": "UNRESOLVED",
+      "decision": "D2",
+      "finite": true,
+      "id": "COMPLETE_ADMINISTERED_OCCURRENCES",
+      "owner_role": "source-semantic specialist",
+      "software_done": "inventory reconciliation and typed gaps"
+    },
+    {
+      "affected": "UNKNOWN routes, household/adult link",
+      "current_state": "UNRESOLVED",
+      "decision": "D3",
+      "finite": true,
+      "id": "ROUTE_UNIT_STATE",
+      "owner_role": "source specialist + survey-method owner",
+      "software_done": "three-valued route and unit checker"
+    },
+    {
+      "affected": "population variants",
+      "current_state": "NOT_ISSUED",
+      "decision": "D4",
+      "finite": true,
+      "id": "POPULATION_MEASURE",
+      "owner_role": "survey-method statistician",
+      "software_done": "parameterized sample/population split; no invented weights"
+    },
+    {
+      "affected": "J/K/D, validation semantics",
+      "current_state": "PROPOSED_TEST_ONLY",
+      "decision": "D5",
+      "finite": true,
+      "id": "GRAMMAR_AND_VALIDATION_POLICY",
+      "owner_role": "competent empirical-method owner",
+      "software_done": "finite enumerator, independent oracle, native bridge"
+    },
+    {
+      "affected": "STRUCTURAL class",
+      "current_state": "HELD",
+      "decision": "D6",
+      "finite": true,
+      "id": "STRUCTURAL_USE",
+      "owner_role": "Field Forge semantic/use owner",
+      "software_done": "capability declaration only"
+    },
+    {
+      "affected": "CROSS_SOURCE/F6",
+      "current_state": "HELD",
+      "decision": "D7",
+      "finite": true,
+      "id": "F6_TRANSPORT",
+      "owner_role": "comparative-method and target-use owner",
+      "software_done": "typed hold only"
+    },
+    {
+      "affected": "TEMPORAL/F7",
+      "current_state": "HELD",
+      "decision": "D8",
+      "finite": true,
+      "id": "F7_TEMPORAL",
+      "owner_role": "temporal-method/source/use owner",
+      "software_done": "typed hold only"
+    },
+    {
+      "affected": "reverse roles/POSSIBILITY",
+      "current_state": "HELD",
+      "decision": "D9",
+      "finite": true,
+      "id": "REVERSE_POSSIBILITY_USE",
+      "owner_role": "empirical possibility/model and consumer-use owner",
+      "software_done": "role-asymmetry refusal"
+    }
+  ],
+  "schema": "G50_DECISION_DEMANDS@1"
+}

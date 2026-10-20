@@ -1,0 +1,25 @@
+{
+  "schema": "PYAT_00D_ENVIRONMENT_PASSPORT@1",
+  "environment_id": "opencode-main-mac-r50-g50",
+  "session_alias": "user-main-mac-opencode",
+  "surface": "OpenCode",
+  "machine_alias": "user-main-mac",
+  "status": "LIVE_VERIFIED",
+  "interpreter": {"command": "python3", "version": "3.11.3", "status": "OK"},
+  "pytest": {"version": "9.0.2", "status": "OK"},
+  "git": {"status": "OK"},
+  "worktree_alias": "R50-G50-wt",
+  "branch": "agent/rabochii-pyat-r50-g50-governed-operation-grammar-native-producer-r1",
+  "startup": "5a67ab44fc9d96f8040d89557ba462a74df2cecc",
+  "pinned_inputs": {
+    "M48": "91f70358a7682e983276e79777bc591841162392",
+    "A48": "485831d5f5eed9f64943d38c36ff818a2b3a8570",
+    "H48": "359ddabc89d78ceb4c8fa45561588ee4cad7dd11",
+    "B49_commission": "cff2b1c98acb5848a1dd427d18f3a6bbf8144d48"
+  },
+  "tests": {"command": "PYTHONPATH=. python3 -m pytest tests -q", "result": "13 passed", "junit": "evidence/g50_junit.xml"},
+  "proof_witness": {"result": "4/4 BASELINE PASS / TARGET_ASSERTION_FAILED", "receipt": "evidence/proof_witness.json"},
+  "provider_model_effort": {"provider": "OpenCode", "model": "DeepSeek V4.1 Flash", "effort": "MAX"},
+  "incremental_money": "UNKNOWN",
+  "privacy_gate": "synthetic nonrespondent fixture only; no personal paths or respondent data"
+}
