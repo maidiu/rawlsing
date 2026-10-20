@@ -1,0 +1,24 @@
+{
+  "conclusion": "strict candidate refuses caller-mutated schedule; the identical scientific effect is proved through the source-issued schedule API",
+  "frozen_test": "test_variable_task_cost_reaches_continued_context",
+  "frozen_test_behavior": "mutates payment_per_actor=7 task_hours=2 after issuance and recomputes only the public event_id",
+  "native_grant": "NOT_GRANTED",
+  "same_science_authenticated_path": {
+    "expected_effect": "cash +7, free_hours -2, continued context cash_after = before.cash + 11",
+    "issuer": "material_joint_opportunity(payment_per_actor=7, task_hours=2)",
+    "test": "test_source_issued_variable_schedule_reaches_continued_context"
+  },
+  "schema": "SOROK_G18_LEGACY_SCHEDULE_SUPERSESSION@1",
+  "strict_joint_witness": {
+    "action_statuses": [
+      "REFUSED",
+      "REFUSED"
+    ],
+    "status": "REFUSED"
+  },
+  "strict_material_verify": {
+    "accepted": false,
+    "reason": "MATERIAL_BODY_HASH_MISMATCH"
+  },
+  "superseded_interface": true
+}

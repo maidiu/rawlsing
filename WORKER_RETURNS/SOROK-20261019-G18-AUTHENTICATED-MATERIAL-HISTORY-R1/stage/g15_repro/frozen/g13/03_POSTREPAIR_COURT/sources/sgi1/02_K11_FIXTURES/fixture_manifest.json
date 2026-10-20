@@ -1,0 +1,50 @@
+{
+ "fixture_hashes": {
+  "M0": "sha256:4c10ea65b3ac1fb22b943e34f19f3557c194e3f768687fc8543471885fea26af",
+  "M2": "sha256:f3b064ee62bbf8560bafc69a6067611b1bd0a936f6c5e1a312c16f570bfd3b78",
+  "MP": "sha256:84e1e6675891a90d3b641fafb0624a6123fe001c1def1f461970532e1b1b5396"
+ },
+ "fixtures": {
+  "M0": {
+   "anchor_hash": "sha256:4c10ea65b3ac1fb22b943e34f19f3557c194e3f768687fc8543471885fea26af",
+   "children": [],
+   "fixture_id": "FIX_M0",
+   "has_mobility_history": false,
+   "history_prefix_commit_hash": "sha256:9c8a3b3a304e798195d219949465f2828911302f65540660af50806764a33a1a",
+   "known_counterpart": null,
+   "n_events": 18,
+   "prospective_opportunity": true
+  },
+  "M2": {
+   "anchor_hash": "sha256:f3b064ee62bbf8560bafc69a6067611b1bd0a936f6c5e1a312c16f570bfd3b78",
+   "children": [
+    "LAB_OLDER_CHILD_O1"
+   ],
+   "fixture_id": "FIX_M2",
+   "has_mobility_history": true,
+   "history_prefix_commit_hash": "sha256:9b7d109b6ff8ed401e8e56394df52d4b84a497478c4e93b15747a8b3c7777d55",
+   "known_counterpart": null,
+   "n_events": 23,
+   "prospective_opportunity": false
+  },
+  "MP": {
+   "anchor_hash": "sha256:84e1e6675891a90d3b641fafb0624a6123fe001c1def1f461970532e1b1b5396",
+   "children": [],
+   "fixture_id": "FIX_MP",
+   "has_mobility_history": true,
+   "history_prefix_commit_hash": "sha256:5812b160581ed834f9dee96c5863be327dae3c5a5b77ae67e6dc1d3834405a50",
+   "known_counterpart": "F_EXISTING",
+   "n_events": 21,
+   "prospective_opportunity": false
+  }
+ },
+ "lab_rule": "PROVISIONAL_LAB_RULE__NOT_ADOPTED",
+ "prohibited_future_input_partition": [
+  "future_child_outcome_label",
+  "future_child_personality",
+  "future_child_desired_adversity_tag",
+  "future_child_health_outcome",
+  "future_child_education_outcome",
+  "any_field_derived_from_future_child"
+ ]
+}

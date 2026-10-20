@@ -1,0 +1,850 @@
+{
+  "archives": {
+    "M2": {
+      "actor_id": "LAB_MOTHER_M2",
+      "admitted_partner_relationship_refs": [],
+      "already_generated_child_refs": [
+        "LAB_OLDER_CHILD_O1"
+      ],
+      "anchor_id": "ANCHOR_FIX_M2",
+      "fixture_id": "FIX_M2",
+      "history_events": [
+        {
+          "actors": [
+            "LAB_MOTHER_M2"
+          ],
+          "causal_parent_event_ids": [],
+          "effective_index": 0,
+          "event_id": "sha256:0b2b93151c3f701013f4dd7159c490c3c6c17eb597a323e672cf5bd1445d97bd",
+          "kind": "ORIGIN_FAMILY",
+          "payload": {
+            "household_occupation": "mixed_fabrication_and_market_trade",
+            "known_siblings": 2,
+            "region": "RIVERSIDE_DISTRICT",
+            "root_status": "LAB_ROOT_ADMITTED"
+          }
+        },
+        {
+          "actors": [
+            "LAB_MOTHER_M2"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:0b2b93151c3f701013f4dd7159c490c3c6c17eb597a323e672cf5bd1445d97bd"
+          ],
+          "effective_index": 1,
+          "event_id": "sha256:270cbaa0cae6d61a73185097ce7c0adfe83d011ce5d5a23dfd0f321e1bdead2a",
+          "kind": "SCHOOLING",
+          "payload": {
+            "level": "secondary_complete_plus_one_year_vocational",
+            "site": "MUNICIPAL_VOCATIONAL_ANNEX"
+          }
+        },
+        {
+          "actors": [
+            "LAB_MOTHER_M2"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:270cbaa0cae6d61a73185097ce7c0adfe83d011ce5d5a23dfd0f321e1bdead2a"
+          ],
+          "effective_index": 2,
+          "event_id": "sha256:054e4376f4d02063d55919d5282f13a4f7e4b9e3809ae5b2af05b1d979bcf56d",
+          "kind": "WORK_POSITION",
+          "payload": {
+            "material_position": "waged_artisan",
+            "role": "junior_finisher",
+            "workplace": "RIVERSIDE_FABRICATION_WORKSHOP"
+          }
+        },
+        {
+          "actors": [
+            "LAB_MOTHER_M2"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:054e4376f4d02063d55919d5282f13a4f7e4b9e3809ae5b2af05b1d979bcf56d"
+          ],
+          "effective_index": 3,
+          "event_id": "sha256:4e8b2b7160fd6aeb6bd4fe11cfcb301a44ca6e97498084638f86f87946145e4e",
+          "kind": "PRACTICE_FORMATION",
+          "payload": {
+            "causal_basis": "repeated supervised finishing work with rework costs",
+            "practice": "measure_twice_cut_once_workshop_discipline"
+          }
+        },
+        {
+          "actors": [
+            "LAB_MOTHER_M2"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:054e4376f4d02063d55919d5282f13a4f7e4b9e3809ae5b2af05b1d979bcf56d",
+            "sha256:4e8b2b7160fd6aeb6bd4fe11cfcb301a44ca6e97498084638f86f87946145e4e"
+          ],
+          "effective_index": 4,
+          "event_id": "sha256:10abc4e4467aa6c8dbdbee7702e1f603bcfea2a656b235de0b5a43a5f5472cbb",
+          "kind": "ATTITUDE_FORMATION",
+          "payload": {
+            "attitude": "self_reliance_under_deadline",
+            "causal_basis": "piece_rate pressure and rework experience"
+          }
+        },
+        {
+          "actors": [
+            "LAB_MOTHER_M2"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:054e4376f4d02063d55919d5282f13a4f7e4b9e3809ae5b2af05b1d979bcf56d",
+            "sha256:4e8b2b7160fd6aeb6bd4fe11cfcb301a44ca6e97498084638f86f87946145e4e"
+          ],
+          "effective_index": 5,
+          "event_id": "sha256:f7f05046b048c8fe4cdeb95f17446a0ad54008f9d696fde72e31c1ecee261a7c",
+          "kind": "PROJECT",
+          "payload": {
+            "consequential": true,
+            "duration_index_span": [
+              40,
+              88
+            ],
+            "nonmother": true,
+            "project": "mentor_two_apprentices_through_journeyman_exam",
+            "third_party": [
+              "APPRENTICE_ONE",
+              "APPRENTICE_TWO"
+            ]
+          }
+        },
+        {
+          "actors": [
+            "LAB_MOTHER_M2"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:0b2b93151c3f701013f4dd7159c490c3c6c17eb597a323e672cf5bd1445d97bd"
+          ],
+          "effective_index": 6,
+          "event_id": "sha256:3015cb11841bfe8ebb068ad7ced1dfa3d605634ab9924a037746885d049d6bd6",
+          "kind": "NONMOTHER_RELATIONSHIP",
+          "payload": {
+            "consequential": true,
+            "counterpart": "SIBLING_R",
+            "nonmother": true,
+            "relation_kind": "sibling_care_obligation"
+          }
+        },
+        {
+          "actors": [
+            "LAB_MOTHER_M2"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:054e4376f4d02063d55919d5282f13a4f7e4b9e3809ae5b2af05b1d979bcf56d"
+          ],
+          "effective_index": 7,
+          "event_id": "sha256:6c9bdf925e505774a2f4c7d7c56aa438b99944c948a92ec70cf06b243ec44e4f",
+          "kind": "MEMORY_TRACE",
+          "payload": {
+            "experienced_basis_event": "sha256:054e4376f4d02063d55919d5282f13a4f7e4b9e3809ae5b2af05b1d979bcf56d",
+            "trace": "remembered_rework_loss_from_measurement_error"
+          }
+        },
+        {
+          "actors": [
+            "LAB_MOTHER_M2"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:f7f05046b048c8fe4cdeb95f17446a0ad54008f9d696fde72e31c1ecee261a7c"
+          ],
+          "effective_index": 8,
+          "event_id": "sha256:94b356e1f743b53afca63943734effe5fc8d46f6cdca92fde53213eb24e65a01",
+          "kind": "MEMORY_TRACE",
+          "payload": {
+            "experienced_basis_event": "sha256:f7f05046b048c8fe4cdeb95f17446a0ad54008f9d696fde72e31c1ecee261a7c",
+            "trace": "remembered_apprentice_exam_failure_then_recovery"
+          }
+        },
+        {
+          "actors": [
+            "LAB_MOTHER_M2"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:054e4376f4d02063d55919d5282f13a4f7e4b9e3809ae5b2af05b1d979bcf56d",
+            "sha256:10abc4e4467aa6c8dbdbee7702e1f603bcfea2a656b235de0b5a43a5f5472cbb"
+          ],
+          "effective_index": 9,
+          "event_id": "sha256:c92c010cf177307efd9170ba3676fe071cc7ae8ee6b51c80e804bf90194a359c",
+          "kind": "STRIVING",
+          "payload": {
+            "causal_basis": "blocked promotion without certificate",
+            "striving": "complete_evening_technical_certificate"
+          }
+        },
+        {
+          "actors": [
+            "LAB_MOTHER_M2"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:c92c010cf177307efd9170ba3676fe071cc7ae8ee6b51c80e804bf90194a359c"
+          ],
+          "effective_index": 10,
+          "event_id": "sha256:eaef7bfb049372c18c048d69a5a2ba0b3a58ac339a00ad454b54c43ed12aef1c",
+          "kind": "ENROLLMENT",
+          "payload": {
+            "course": "structural_mechanics_ii",
+            "institution": "MUNICIPAL_EVENING_TECHNICAL_CLASS"
+          }
+        },
+        {
+          "actors": [
+            "LAB_MOTHER_M2"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:054e4376f4d02063d55919d5282f13a4f7e4b9e3809ae5b2af05b1d979bcf56d",
+            "sha256:f7f05046b048c8fe4cdeb95f17446a0ad54008f9d696fde72e31c1ecee261a7c"
+          ],
+          "effective_index": 11,
+          "event_id": "sha256:6d4a1140585c2dcad25437e5a9ed16d2b2c412d8fc8e146145eec373159f1ced",
+          "kind": "WORK_POSITION",
+          "payload": {
+            "material_position": "waged_artisan_senior",
+            "role": "finisher_specialist",
+            "workplace": "RIVERSIDE_FABRICATION_WORKSHOP"
+          }
+        },
+        {
+          "actors": [
+            "LAB_MOTHER_M2"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:6d4a1140585c2dcad25437e5a9ed16d2b2c412d8fc8e146145eec373159f1ced"
+          ],
+          "effective_index": 12,
+          "event_id": "sha256:9a44a046736df0e348e81f0a74416190773b0b84f8a78e0fb6bc096e40ab7b05",
+          "kind": "HOUSEHOLD_STATE",
+          "payload": {
+            "membership": [
+              "LAB_MOTHER_M2"
+            ],
+            "residence": "RIVERSIDE_RENTED_ROOM_SHARED_KITCHEN"
+          }
+        },
+        {
+          "actors": [
+            "LAB_MOTHER_M2"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:6d4a1140585c2dcad25437e5a9ed16d2b2c412d8fc8e146145eec373159f1ced"
+          ],
+          "effective_index": 13,
+          "event_id": "sha256:2d5eaca9c6385896e10fcb8a62397c72cd35475f0c72da42e936d69fde0a6217",
+          "kind": "RELATIONSHIP_ADMISSION",
+          "payload": {
+            "counterpart": "PRIOR_PARTNER_P",
+            "objective_relation": true,
+            "relation_kind": "partner_relationship"
+          }
+        },
+        {
+          "actors": [
+            "LAB_MOTHER_M2"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:2d5eaca9c6385896e10fcb8a62397c72cd35475f0c72da42e936d69fde0a6217"
+          ],
+          "effective_index": 14,
+          "event_id": "sha256:3a89f3f15970ceb67b20ebfa5f3d098bd04b8ac4b46683f1b68923dbdd95f6d6",
+          "kind": "CHILD_GENERATED",
+          "payload": {
+            "child_actor": "LAB_OLDER_CHILD_O1",
+            "generation_boundary": "PRIOR_ADMITTED_GENERATION",
+            "note": "prior admitted child; stable actor stream"
+          }
+        },
+        {
+          "actors": [
+            "LAB_MOTHER_M2"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:3a89f3f15970ceb67b20ebfa5f3d098bd04b8ac4b46683f1b68923dbdd95f6d6"
+          ],
+          "effective_index": 15,
+          "event_id": "sha256:a91c06dcf61fa14ad24d35362e151e6fa5b0da34ae3692afe0f63a39ee106bcf",
+          "kind": "RELATIONSHIP_CHANGE",
+          "payload": {
+            "change": "separation",
+            "counterpart": "PRIOR_PARTNER_P"
+          }
+        },
+        {
+          "actors": [
+            "LAB_MOTHER_M2"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:3a89f3f15970ceb67b20ebfa5f3d098bd04b8ac4b46683f1b68923dbdd95f6d6",
+            "sha256:a91c06dcf61fa14ad24d35362e151e6fa5b0da34ae3692afe0f63a39ee106bcf"
+          ],
+          "effective_index": 16,
+          "event_id": "sha256:7b180c8322322c077b125e4701e726fb11ac406141b1301e132b671ce9f25e86",
+          "kind": "HOUSEHOLD_STATE",
+          "payload": {
+            "membership": [
+              "LAB_MOTHER_M2",
+              "LAB_OLDER_CHILD_O1"
+            ],
+            "residence": "RIVERSIDE_RENTED_FLAT_TWO_ROOM"
+          }
+        },
+        {
+          "actors": [
+            "LAB_MOTHER_M2"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:3a89f3f15970ceb67b20ebfa5f3d098bd04b8ac4b46683f1b68923dbdd95f6d6"
+          ],
+          "effective_index": 17,
+          "event_id": "sha256:ee9f1a20988e3c3fb42e5ddacfc323a3c0979fa83a83234b1666a0e5adf9f23d",
+          "kind": "CARE_ROUTINE",
+          "payload": {
+            "routine": "school_run_and_evening_supervision",
+            "subject": "LAB_OLDER_CHILD_O1"
+          }
+        },
+        {
+          "actors": [
+            "LAB_MOTHER_M2"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:6d4a1140585c2dcad25437e5a9ed16d2b2c412d8fc8e146145eec373159f1ced"
+          ],
+          "effective_index": 18,
+          "event_id": "sha256:f7a3a44d2f8eac77de22661f3a5c4dc266afbf04cca12159f698c48230dfd910",
+          "kind": "ROUTE_AVAILABILITY",
+          "payload": {
+            "basis": "employment adjacency",
+            "route": "ROUTE_LOCAL_CLOSED",
+            "via": "INST_WORKSHOP_A"
+          }
+        },
+        {
+          "actors": [
+            "LAB_MOTHER_M2"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:eaef7bfb049372c18c048d69a5a2ba0b3a58ac339a00ad454b54c43ed12aef1c"
+          ],
+          "effective_index": 19,
+          "event_id": "sha256:0a44cc25c5fb7a0234513644071c58c9722b144be12defe56e9c96c1eedf571c",
+          "kind": "ROUTE_AVAILABILITY",
+          "payload": {
+            "basis": "evening enrollment",
+            "route": "ROUTE_INSTITUTIONAL",
+            "via": "INST_EVENING_CLASS_B"
+          }
+        },
+        {
+          "actors": [
+            "LAB_MOTHER_M2"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:7b180c8322322c077b125e4701e726fb11ac406141b1301e132b671ce9f25e86"
+          ],
+          "effective_index": 20,
+          "event_id": "sha256:ba7ff84713b57cde8ebaef571a69e2a6136ea55e4a5304f88d745e691d570e87",
+          "kind": "ROUTE_AVAILABILITY",
+          "payload": {
+            "basis": "residency in riverside district water committee catchment",
+            "route": "ROUTE_UNCONVENTIONAL",
+            "via": "INST_COMMUNITY_D"
+          }
+        },
+        {
+          "actors": [
+            "LAB_MOTHER_M2"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:6d4a1140585c2dcad25437e5a9ed16d2b2c412d8fc8e146145eec373159f1ced"
+          ],
+          "effective_index": 21,
+          "event_id": "sha256:f6d58c693bf19a50525de9ed1690fa91477907d864cc9acc66761fcd90ee20c9",
+          "kind": "MOBILITY_HISTORY",
+          "payload": {
+            "detail": "one 3-month commissioned installation at regional interchange town",
+            "kind": "seasonal_relocation_for_commissioned_work",
+            "route_basis": "ROUTE_MOBILITY"
+          }
+        },
+        {
+          "actors": [
+            "LAB_MOTHER_M2"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:7b180c8322322c077b125e4701e726fb11ac406141b1301e132b671ce9f25e86"
+          ],
+          "effective_index": 22,
+          "event_id": "sha256:e3da449c42b11b9184d86590d43ef9b824283b5117847ba1039fe20f25bd3f78",
+          "kind": "NEGATIVE_OR_UNKNOWN_FACTS",
+          "payload": {
+            "unknowns": [
+              "no admitted prior encounter with unknown counterpart",
+              "no admitted family wealth"
+            ]
+          }
+        }
+      ],
+      "history_prefix_commit_hash": "sha256:9b7d109b6ff8ed401e8e56394df52d4b84a497478c4e93b15747a8b3c7777d55",
+      "known_counterpart_identity_ref_or_null": null,
+      "lab_rule": "PROVISIONAL_LAB_RULE__NOT_ADOPTED",
+      "mobility_history_present": true,
+      "prohibited_future_input_hash": "sha256:f1877502f08803706f22a181b0e5ecac377c3509327549ee55bbcdad2e697a4d",
+      "prospective_opportunity_refs": [],
+      "psyche": {
+        "attitudes": [
+          {
+            "attitude": "self_reliance_under_deadline",
+            "causal_event_refs": [
+              "sha256:10abc4e4467aa6c8dbdbee7702e1f603bcfea2a656b235de0b5a43a5f5472cbb",
+              "sha256:054e4376f4d02063d55919d5282f13a4f7e4b9e3809ae5b2af05b1d979bcf56d",
+              "sha256:4e8b2b7160fd6aeb6bd4fe11cfcb301a44ca6e97498084638f86f87946145e4e"
+            ]
+          }
+        ],
+        "practices": [
+          {
+            "causal_event_refs": [
+              "sha256:4e8b2b7160fd6aeb6bd4fe11cfcb301a44ca6e97498084638f86f87946145e4e",
+              "sha256:054e4376f4d02063d55919d5282f13a4f7e4b9e3809ae5b2af05b1d979bcf56d"
+            ],
+            "practice": "measure_twice_cut_once_workshop_discipline"
+          }
+        ],
+        "strivings": [
+          {
+            "causal_event_refs": [
+              "sha256:c92c010cf177307efd9170ba3676fe071cc7ae8ee6b51c80e804bf90194a359c",
+              "sha256:054e4376f4d02063d55919d5282f13a4f7e4b9e3809ae5b2af05b1d979bcf56d",
+              "sha256:10abc4e4467aa6c8dbdbee7702e1f603bcfea2a656b235de0b5a43a5f5472cbb"
+            ],
+            "striving": "complete_evening_technical_certificate"
+          }
+        ]
+      },
+      "read_cut": "BEFORE_TARGET_OCCURRENCE",
+      "route_availability": [
+        "ROUTE_INSTITUTIONAL",
+        "ROUTE_LOCAL_CLOSED",
+        "ROUTE_MOBILITY",
+        "ROUTE_UNCONVENTIONAL"
+      ],
+      "schema": "MotherPreconceptionAnchor@1-LAB",
+      "t_preconception": "T_PRECONCEPTION_LAB_BOUNDARY",
+      "variant": "M2"
+    },
+    "MP": {
+      "actor_id": "LAB_MOTHER_MP",
+      "admitted_partner_relationship_refs": [
+        "REL_ADMITTED_F_EXISTING"
+      ],
+      "already_generated_child_refs": [],
+      "anchor_id": "ANCHOR_FIX_MP",
+      "fixture_id": "FIX_MP",
+      "history_events": [
+        {
+          "actors": [
+            "LAB_MOTHER_MP"
+          ],
+          "causal_parent_event_ids": [],
+          "effective_index": 0,
+          "event_id": "sha256:0f95826ed35a330f718d11d2e16ffd2d7e559dae2738499710da2863bca97583",
+          "kind": "ORIGIN_FAMILY",
+          "payload": {
+            "household_occupation": "mixed_fabrication_and_market_trade",
+            "known_siblings": 2,
+            "region": "RIVERSIDE_DISTRICT",
+            "root_status": "LAB_ROOT_ADMITTED"
+          }
+        },
+        {
+          "actors": [
+            "LAB_MOTHER_MP"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:0f95826ed35a330f718d11d2e16ffd2d7e559dae2738499710da2863bca97583"
+          ],
+          "effective_index": 1,
+          "event_id": "sha256:a1062b3c6f4209f186023f812532785034eb7fb6c3b37df46a6cffa55541dce2",
+          "kind": "SCHOOLING",
+          "payload": {
+            "level": "secondary_complete_plus_one_year_vocational",
+            "site": "MUNICIPAL_VOCATIONAL_ANNEX"
+          }
+        },
+        {
+          "actors": [
+            "LAB_MOTHER_MP"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:a1062b3c6f4209f186023f812532785034eb7fb6c3b37df46a6cffa55541dce2"
+          ],
+          "effective_index": 2,
+          "event_id": "sha256:eb6ab8475905d1c6a6c8ae8e7919344d514ef75642d6dea9c7b914e1a98ae12f",
+          "kind": "WORK_POSITION",
+          "payload": {
+            "material_position": "waged_artisan",
+            "role": "junior_finisher",
+            "workplace": "RIVERSIDE_FABRICATION_WORKSHOP"
+          }
+        },
+        {
+          "actors": [
+            "LAB_MOTHER_MP"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:eb6ab8475905d1c6a6c8ae8e7919344d514ef75642d6dea9c7b914e1a98ae12f"
+          ],
+          "effective_index": 3,
+          "event_id": "sha256:b4fa25ee879dcdf1cea8fea2ce2262cc820f567a314635501212cc26deab0e2b",
+          "kind": "PRACTICE_FORMATION",
+          "payload": {
+            "causal_basis": "repeated supervised finishing work with rework costs",
+            "practice": "measure_twice_cut_once_workshop_discipline"
+          }
+        },
+        {
+          "actors": [
+            "LAB_MOTHER_MP"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:eb6ab8475905d1c6a6c8ae8e7919344d514ef75642d6dea9c7b914e1a98ae12f",
+            "sha256:b4fa25ee879dcdf1cea8fea2ce2262cc820f567a314635501212cc26deab0e2b"
+          ],
+          "effective_index": 4,
+          "event_id": "sha256:6744514569012bbc5133b95fb2671d773dd2ff10109f2adbd37ec21ff3bc5105",
+          "kind": "ATTITUDE_FORMATION",
+          "payload": {
+            "attitude": "self_reliance_under_deadline",
+            "causal_basis": "piece_rate pressure and rework experience"
+          }
+        },
+        {
+          "actors": [
+            "LAB_MOTHER_MP"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:eb6ab8475905d1c6a6c8ae8e7919344d514ef75642d6dea9c7b914e1a98ae12f",
+            "sha256:b4fa25ee879dcdf1cea8fea2ce2262cc820f567a314635501212cc26deab0e2b"
+          ],
+          "effective_index": 5,
+          "event_id": "sha256:d459773e7ed761947615a99477bd5ae0de9b7f9603031fcc257da56153c1723e",
+          "kind": "PROJECT",
+          "payload": {
+            "consequential": true,
+            "duration_index_span": [
+              40,
+              88
+            ],
+            "nonmother": true,
+            "project": "mentor_two_apprentices_through_journeyman_exam",
+            "third_party": [
+              "APPRENTICE_ONE",
+              "APPRENTICE_TWO"
+            ]
+          }
+        },
+        {
+          "actors": [
+            "LAB_MOTHER_MP"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:0f95826ed35a330f718d11d2e16ffd2d7e559dae2738499710da2863bca97583"
+          ],
+          "effective_index": 6,
+          "event_id": "sha256:cc26f1bec641e07d614227b2af1e5f4ba85a798dcecfbab5a503459a336df838",
+          "kind": "NONMOTHER_RELATIONSHIP",
+          "payload": {
+            "consequential": true,
+            "counterpart": "SIBLING_R",
+            "nonmother": true,
+            "relation_kind": "sibling_care_obligation"
+          }
+        },
+        {
+          "actors": [
+            "LAB_MOTHER_MP"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:eb6ab8475905d1c6a6c8ae8e7919344d514ef75642d6dea9c7b914e1a98ae12f"
+          ],
+          "effective_index": 7,
+          "event_id": "sha256:b544d1e9fe3dc3e09122ba92ed33eb888b4c2c0317c4cb0e47e6a2218513414b",
+          "kind": "MEMORY_TRACE",
+          "payload": {
+            "experienced_basis_event": "sha256:eb6ab8475905d1c6a6c8ae8e7919344d514ef75642d6dea9c7b914e1a98ae12f",
+            "trace": "remembered_rework_loss_from_measurement_error"
+          }
+        },
+        {
+          "actors": [
+            "LAB_MOTHER_MP"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:d459773e7ed761947615a99477bd5ae0de9b7f9603031fcc257da56153c1723e"
+          ],
+          "effective_index": 8,
+          "event_id": "sha256:72fd9c3957c96d012b9106bce6fbbf4acc803d16951811edfa39b79d813a6a9a",
+          "kind": "MEMORY_TRACE",
+          "payload": {
+            "experienced_basis_event": "sha256:d459773e7ed761947615a99477bd5ae0de9b7f9603031fcc257da56153c1723e",
+            "trace": "remembered_apprentice_exam_failure_then_recovery"
+          }
+        },
+        {
+          "actors": [
+            "LAB_MOTHER_MP"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:eb6ab8475905d1c6a6c8ae8e7919344d514ef75642d6dea9c7b914e1a98ae12f",
+            "sha256:6744514569012bbc5133b95fb2671d773dd2ff10109f2adbd37ec21ff3bc5105"
+          ],
+          "effective_index": 9,
+          "event_id": "sha256:38e55af59a4baacb78a3eb4354250afddfede576b28dba3e8c97ce81541e7b29",
+          "kind": "STRIVING",
+          "payload": {
+            "causal_basis": "blocked promotion without certificate",
+            "striving": "complete_evening_technical_certificate"
+          }
+        },
+        {
+          "actors": [
+            "LAB_MOTHER_MP"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:38e55af59a4baacb78a3eb4354250afddfede576b28dba3e8c97ce81541e7b29"
+          ],
+          "effective_index": 10,
+          "event_id": "sha256:5a4360c2490df4bbb0b93d33a0b18c4a5248d8c6af9d704340b59d5a8ee33023",
+          "kind": "ENROLLMENT",
+          "payload": {
+            "course": "structural_mechanics_ii",
+            "institution": "MUNICIPAL_EVENING_TECHNICAL_CLASS"
+          }
+        },
+        {
+          "actors": [
+            "LAB_MOTHER_MP"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:eb6ab8475905d1c6a6c8ae8e7919344d514ef75642d6dea9c7b914e1a98ae12f",
+            "sha256:d459773e7ed761947615a99477bd5ae0de9b7f9603031fcc257da56153c1723e"
+          ],
+          "effective_index": 11,
+          "event_id": "sha256:9d6bcb1f6fd4e1caa38bf6b9e8637ea80c01dd3b857f9d626fcd5b92f4ec05b5",
+          "kind": "WORK_POSITION",
+          "payload": {
+            "material_position": "waged_artisan_senior",
+            "role": "finisher_specialist",
+            "workplace": "RIVERSIDE_FABRICATION_WORKSHOP"
+          }
+        },
+        {
+          "actors": [
+            "LAB_MOTHER_MP"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:9d6bcb1f6fd4e1caa38bf6b9e8637ea80c01dd3b857f9d626fcd5b92f4ec05b5"
+          ],
+          "effective_index": 12,
+          "event_id": "sha256:b5874b74ca5821e0e68465815d19e6ac11ce2f69867b4b45e6a2f8b49ad6f13b",
+          "kind": "HOUSEHOLD_STATE",
+          "payload": {
+            "membership": [
+              "LAB_MOTHER_MP"
+            ],
+            "residence": "RIVERSIDE_RENTED_ROOM_SHARED_KITCHEN"
+          }
+        },
+        {
+          "actors": [
+            "LAB_MOTHER_MP"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:9d6bcb1f6fd4e1caa38bf6b9e8637ea80c01dd3b857f9d626fcd5b92f4ec05b5"
+          ],
+          "effective_index": 13,
+          "event_id": "sha256:6e913a060e2e09b543582c7c82fe5d354e4fd38fc535641b94339f0ef4808213",
+          "kind": "NONMOTHER_RELATIONSHIP",
+          "payload": {
+            "counterpart": "F_EXISTING",
+            "identity_evidence": "mutual_household_registration_and_witnessed_introduction",
+            "known_counterpart_identity": true,
+            "objective_relation": true,
+            "relation_kind": "acknowledged_partner"
+          }
+        },
+        {
+          "actors": [
+            "LAB_MOTHER_MP"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:6e913a060e2e09b543582c7c82fe5d354e4fd38fc535641b94339f0ef4808213"
+          ],
+          "effective_index": 14,
+          "event_id": "sha256:31385ce22f25b9194e7a4e98c457dc2a6ea07c94e9fec01686b156a9f0419c1f",
+          "kind": "SHARED_ENCOUNTER",
+          "payload": {
+            "counterpart": "F_EXISTING",
+            "note": "existing admitted shared event E_pre",
+            "place": "WATER_COMMITTEE_MEETING",
+            "witnesses": [
+              "W1",
+              "W2"
+            ]
+          }
+        },
+        {
+          "actors": [
+            "LAB_MOTHER_MP"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:31385ce22f25b9194e7a4e98c457dc2a6ea07c94e9fec01686b156a9f0419c1f"
+          ],
+          "effective_index": 15,
+          "event_id": "sha256:8864a853b3a9116191326f7f4a36882e486ccd265390361ad87d3507fbe7c6c3",
+          "kind": "RELATIONSHIP_STATE",
+          "payload": {
+            "counterpart": "F_EXISTING",
+            "state": "ongoing_partner_relationship"
+          }
+        },
+        {
+          "actors": [
+            "LAB_MOTHER_MP"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:9d6bcb1f6fd4e1caa38bf6b9e8637ea80c01dd3b857f9d626fcd5b92f4ec05b5"
+          ],
+          "effective_index": 16,
+          "event_id": "sha256:5d9b4669fc2678bd3f69690f8fee5124c7c50a0c90e642339b4440d5df35bc39",
+          "kind": "ROUTE_AVAILABILITY",
+          "payload": {
+            "basis": "employment adjacency",
+            "route": "ROUTE_LOCAL_CLOSED",
+            "via": "INST_WORKSHOP_A"
+          }
+        },
+        {
+          "actors": [
+            "LAB_MOTHER_MP"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:5a4360c2490df4bbb0b93d33a0b18c4a5248d8c6af9d704340b59d5a8ee33023"
+          ],
+          "effective_index": 17,
+          "event_id": "sha256:b6da4f2bcbf7c73176f54a3a488adb27a08eb52584130330ef6c11856b81cff9",
+          "kind": "ROUTE_AVAILABILITY",
+          "payload": {
+            "basis": "evening enrollment",
+            "route": "ROUTE_INSTITUTIONAL",
+            "via": "INST_EVENING_CLASS_B"
+          }
+        },
+        {
+          "actors": [
+            "LAB_MOTHER_MP"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:b5874b74ca5821e0e68465815d19e6ac11ce2f69867b4b45e6a2f8b49ad6f13b"
+          ],
+          "effective_index": 18,
+          "event_id": "sha256:3c44b5831782552c2c16b7e36cbc533a6c613907f72db5ff04d0f6c4761b828c",
+          "kind": "ROUTE_AVAILABILITY",
+          "payload": {
+            "basis": "residency in riverside district water committee catchment",
+            "route": "ROUTE_UNCONVENTIONAL",
+            "via": "INST_COMMUNITY_D"
+          }
+        },
+        {
+          "actors": [
+            "LAB_MOTHER_MP"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:9d6bcb1f6fd4e1caa38bf6b9e8637ea80c01dd3b857f9d626fcd5b92f4ec05b5"
+          ],
+          "effective_index": 19,
+          "event_id": "sha256:3c02547154f770c1221781815d85b07c60ad66df176c5b44c34ff47587fa1942",
+          "kind": "MOBILITY_HISTORY",
+          "payload": {
+            "detail": "one 3-month commissioned installation at regional interchange town",
+            "kind": "seasonal_relocation_for_commissioned_work",
+            "route_basis": "ROUTE_MOBILITY"
+          }
+        },
+        {
+          "actors": [
+            "LAB_MOTHER_MP"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:b5874b74ca5821e0e68465815d19e6ac11ce2f69867b4b45e6a2f8b49ad6f13b"
+          ],
+          "effective_index": 20,
+          "event_id": "sha256:829f3ec5db774d42cee006176c91945e5707393cadc924b65a8bfc39f5171df5",
+          "kind": "NEGATIVE_OR_UNKNOWN_FACTS",
+          "payload": {
+            "unknowns": [
+              "no admitted prior encounter with unknown counterpart",
+              "no admitted family wealth"
+            ]
+          }
+        }
+      ],
+      "history_prefix_commit_hash": "sha256:5812b160581ed834f9dee96c5863be327dae3c5a5b77ae67e6dc1d3834405a50",
+      "known_counterpart_identity_ref_or_null": "F_EXISTING",
+      "lab_rule": "PROVISIONAL_LAB_RULE__NOT_ADOPTED",
+      "mobility_history_present": true,
+      "prohibited_future_input_hash": "sha256:f1877502f08803706f22a181b0e5ecac377c3509327549ee55bbcdad2e697a4d",
+      "prospective_opportunity_refs": [],
+      "psyche": {
+        "attitudes": [
+          {
+            "attitude": "self_reliance_under_deadline",
+            "causal_event_refs": [
+              "sha256:6744514569012bbc5133b95fb2671d773dd2ff10109f2adbd37ec21ff3bc5105",
+              "sha256:eb6ab8475905d1c6a6c8ae8e7919344d514ef75642d6dea9c7b914e1a98ae12f",
+              "sha256:b4fa25ee879dcdf1cea8fea2ce2262cc820f567a314635501212cc26deab0e2b"
+            ]
+          }
+        ],
+        "practices": [
+          {
+            "causal_event_refs": [
+              "sha256:b4fa25ee879dcdf1cea8fea2ce2262cc820f567a314635501212cc26deab0e2b",
+              "sha256:eb6ab8475905d1c6a6c8ae8e7919344d514ef75642d6dea9c7b914e1a98ae12f"
+            ],
+            "practice": "measure_twice_cut_once_workshop_discipline"
+          }
+        ],
+        "strivings": [
+          {
+            "causal_event_refs": [
+              "sha256:38e55af59a4baacb78a3eb4354250afddfede576b28dba3e8c97ce81541e7b29",
+              "sha256:eb6ab8475905d1c6a6c8ae8e7919344d514ef75642d6dea9c7b914e1a98ae12f",
+              "sha256:6744514569012bbc5133b95fb2671d773dd2ff10109f2adbd37ec21ff3bc5105"
+            ],
+            "striving": "complete_evening_technical_certificate"
+          }
+        ]
+      },
+      "read_cut": "BEFORE_TARGET_OCCURRENCE",
+      "route_availability": [
+        "ROUTE_INSTITUTIONAL",
+        "ROUTE_LOCAL_CLOSED",
+        "ROUTE_MOBILITY",
+        "ROUTE_UNCONVENTIONAL"
+      ],
+      "schema": "MotherPreconceptionAnchor@1-LAB",
+      "t_preconception": "T_PRECONCEPTION_LAB_BOUNDARY",
+      "variant": "MP"
+    }
+  },
+  "expected_anchor_hashes": {
+    "M2": "sha256:f3b064ee62bbf8560bafc69a6067611b1bd0a936f6c5e1a312c16f570bfd3b78",
+    "MP": "sha256:84e1e6675891a90d3b641fafb0624a6123fe001c1def1f461970532e1b1b5396"
+  },
+  "reconstruction": "EXACT_ORIGINAL_PREEXISTING_SOURCEFREE_FIXTURES_NOT_NEW_ACTORS",
+  "source_commit": "47bca2a56d34ed37186a436e7490cbaa417bfe5c"
+}

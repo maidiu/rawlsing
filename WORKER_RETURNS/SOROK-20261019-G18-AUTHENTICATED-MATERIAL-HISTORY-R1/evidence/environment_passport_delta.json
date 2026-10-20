@@ -1,0 +1,84 @@
+{
+  "assignments_completed": 1,
+  "branch": "agent/rabochii-sorok-20261019-g18-authenticated-material-history-whole-c4-c9-repair-r1",
+  "checkout_sha": "19503a3ea09bdf840a5ce98a9697650c387787fa",
+  "environment_id": "local-g18-authenticated-material-shared-store-1",
+  "epoch_id": "2026-10-20T07:15:24Z",
+  "live_probe": {
+    "connector": "UNKNOWN",
+    "filesystem": "VERIFIED",
+    "git": "git version 2.39.1",
+    "marker_checked": "VERIFIED",
+    "marker_digest": "g18:authenticated-material-source",
+    "notes": "isolated linked worktree in the existing Rawlsing shared object store; sourcefree frozen courts and cold replay executed locally",
+    "observed_at_utc": "2026-10-20T07:15:24Z",
+    "pytest": "9.1.1",
+    "python": "3.11.3"
+  },
+  "machine_alias": "local-macos-shared-store",
+  "next_affinity_tags": [
+    "sorok",
+    "g18",
+    "authenticated-material-source",
+    "c9-handoff",
+    "i2-review"
+  ],
+  "permissions": {
+    "actor_execution": "NOT_GRANTED",
+    "external_model_use": "NOT_GRANTED",
+    "native_can_adp_issuance": "NOT_GRANTED",
+    "original_survey_use": "NOT_GRANTED",
+    "private_repo_access": "VERIFIED"
+  },
+  "schema": "RAWLSING_ENVIRONMENT_PASSPORT@1",
+  "session_alias": "deepseek-harness-g18",
+  "shared_store_alias": "rawlsing-shared-store",
+  "source_closure": "BOUNDED",
+  "sources": [
+    {
+      "blob_sha1": "325c4eb738cd61b1803ddc8f7cb8ce97c41ba17f",
+      "commit": "19503a3ea09bdf840a5ce98a9697650c387787fa",
+      "import_verified": true,
+      "module_alias": "joint",
+      "path": "candidate/lab_sgi1/joint.py"
+    },
+    {
+      "blob_sha1": "fa05ede477200779fcfe706b9a36b4288f3cba5b",
+      "commit": "19503a3ea09bdf840a5ce98a9697650c387787fa",
+      "import_verified": true,
+      "module_alias": "continuation",
+      "path": "candidate/lab_sgi1/continuation.py"
+    },
+    {
+      "blob_sha1": "966993e64a800c999e962650eec086f669bc447f",
+      "commit": "19503a3ea09bdf840a5ce98a9697650c387787fa",
+      "import_verified": true,
+      "module_alias": "pipeline",
+      "path": "candidate/lab_sgi1/pipeline.py"
+    },
+    {
+      "blob_sha1": "3cb3a80a6c259c20a804ddfc5b8d7e8844845bd5",
+      "commit": "19503a3ea09bdf840a5ce98a9697650c387787fa",
+      "import_verified": true,
+      "module_alias": "proposal",
+      "path": "candidate/lab_sgi1/proposal.py"
+    },
+    {
+      "blob_sha1": "27e2a5cc4a0434c81b1837d519c9a7db7b7dff40",
+      "commit": "19503a3ea09bdf840a5ce98a9697650c387787fa",
+      "import_verified": true,
+      "module_alias": "c9_handoff_consumer",
+      "path": "c9_handoff_consumer.py"
+    }
+  ],
+  "status": "LIVE_VERIFIED",
+  "surface": "LOCAL_SHARED_STORE",
+  "usage": {
+    "incremental_cash_usd": null,
+    "provider_model": "DeepSeek V4.1-Flash reasoning MAX (user-selected commission)",
+    "quota_state": "UNKNOWN",
+    "retry_count": 0,
+    "usage_observed": "local Git/pytest only; no paid API call observed"
+  },
+  "worktree_alias": "g18"
+}

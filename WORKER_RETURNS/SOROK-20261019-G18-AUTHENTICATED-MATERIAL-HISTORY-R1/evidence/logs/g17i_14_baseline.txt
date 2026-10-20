@@ -1,0 +1,20 @@
+....F...F....F                                                           [100%]
+=================================== FAILURES ===================================
+__________ test_forged_material_event_supplying_cash_must_be_refused ___________
+tests/test_g17i_independent.py:119: in test_forged_material_event_supplying_cash_must_be_refused
+    assert continue_person(e, participation=act, material_event=mat) is None
+E   AssertionError: assert {'event_id': 'sha256:ffd4691bb41ce780b58339580c00c9192d59e738cebac8eb15a9c8100a9496bf', 'kind': 'PARENT_CONTINUATION', 'actor': 'R', 'owner_id': 'R', ...} is None
+E    +  where {'event_id': 'sha256:ffd4691bb41ce780b58339580c00c9192d59e738cebac8eb15a9c8100a9496bf', 'kind': 'PARENT_CONTINUATION', 'actor': 'R', 'owner_id': 'R', ...} = continue_person([{'event_id': 'sha256:eb47c8c38ea36693103d812dd022de7e7d5f0cfdc22da4b1f91ca997e05f888e', 'effective_index': 0, 'kind':...8e427e6548623130e44ea4abc4a2d57250081d76c787e49c', 'effective_index': 5, 'kind': 'PROJECT', 'actors': ['R'], ...}, ...], participation={'event_id': 'sha256:3a95b7a8a2c2fcc92e90899390feb626ed3ec40481e02065623fc491afec2159', 'owner_id': 'R', 'kind': 'PARTICIPATION_ACTION', 'status': 'PERFORMED', ...}, material_event={'event_id': 'sha256:bbfb9d35d90851fa5e6b168b27baf612cc158ce54d7e9f2227fc42568ae862d6', 'owner_id': 'G15_INDEPENDENT_MATERIAL_OBSERVER', 'permission': 'RESEARCH_JOINT_WITNESS_ONLY', 'effective_index': 100, ...})
+________________ test_future_child_nested_alias_must_be_refused ________________
+tests/test_g17i_independent.py:156: in test_future_child_nested_alias_must_be_refused
+    assert out["terminal"]["status"] != "COMMITTED"
+E   AssertionError: assert 'COMMITTED' != 'COMMITTED'
+________________ test_c9_forged_material_event_must_be_refused _________________
+tests/test_g17i_independent.py:241: in test_c9_forged_material_event_must_be_refused
+    with pytest.raises(C9.C9Refusal):
+E   Failed: DID NOT RAISE C9Refusal
+=========================== short test summary info ============================
+FAILED tests/test_g17i_independent.py::test_forged_material_event_supplying_cash_must_be_refused
+FAILED tests/test_g17i_independent.py::test_future_child_nested_alias_must_be_refused
+FAILED tests/test_g17i_independent.py::test_c9_forged_material_event_must_be_refused
+3 failed, 11 passed in 0.75s

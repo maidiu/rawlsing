@@ -1,0 +1,4543 @@
+{
+  "alien_probes": {
+    "heldout_independence_pass": false,
+    "n_pass": 0,
+    "n_probes": 2,
+    "probe_version": "HELDOUT_INDEPENDENT_PROBE_EVIDENCE@1.0-G13-REPAIRED",
+    "probes": [
+      {
+        "acted_from_actor_state_without_mom_prompt": false,
+        "generic_attitude_tags_insufficient": true,
+        "is_prose_only": false,
+        "mom_or_child_in_prompt": false,
+        "pass": false,
+        "probe_id": "PROBE_P1_WORK_COLLECTIVE_OBLIGATION",
+        "supporting_evidence": [],
+        "third_party_relationship_actor_specific": false,
+        "typed_action": {
+          "decision": "TAKE_REPAIR_ROTATION_LEAD_AND_UPDATE_LEDGER",
+          "durable_effect": "rotation_ledger_entry_plus_uptime_commitment_extended",
+          "state_change_refs": []
+        },
+        "typed_causal_effect_record": {
+          "causal_basis_events": [],
+          "effect": "rotation_ledger_entry_plus_uptime_commitment_extended"
+        }
+      },
+      {
+        "acted_from_actor_state_without_mom_prompt": false,
+        "generic_attitude_tags_insufficient": true,
+        "is_prose_only": false,
+        "mom_or_child_in_prompt": false,
+        "pass": false,
+        "probe_id": "PROBE_P2_FRIENDSHIP_CONFLICT",
+        "supporting_evidence": [],
+        "third_party_relationship_actor_specific": false,
+        "typed_action": {
+          "decision": "REPAIR_TOOLS_AND_LEDGER_DEBT_PARTIAL_CREDIT_AGAINST_STANDING_DEBT",
+          "durable_effect": "friend_favor_ledger_updated_plus_tool_repair_completed",
+          "state_change_refs": []
+        },
+        "typed_causal_effect_record": {
+          "causal_basis_events": [],
+          "effect": "friend_favor_ledger_updated_plus_tool_repair_completed"
+        }
+      }
+    ]
+  },
+  "attacks": {
+    "duplicate_effective_index": {
+      "constraints": {
+        "required_state_predicates": [
+          {
+            "equals": "INST_WORKSHOP_A",
+            "field": "place"
+          },
+          {
+            "equals": "available_for_encounter",
+            "field": "availability_status"
+          }
+        ],
+        "route_kind_id": "ROUTE_LOCAL_CLOSED",
+        "time_or_interval": "T_ENCOUNTER_LAB_WINDOW"
+      },
+      "events": [
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [],
+          "effective_index": 0,
+          "event_id": "sha256:5676ddf84dcb4c4d9464730534be69f4d114257778d26b058dee2a6d81b293b8",
+          "kind": "ORIGIN_FAMILY",
+          "payload": {
+            "household_occupation": "mixed_smallholding_and_repair_trade",
+            "region": "LOWLAND_DISTRICT",
+            "root_status": "LAB_ROOT_ADMITTED"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:5676ddf84dcb4c4d9464730534be69f4d114257778d26b058dee2a6d81b293b8"
+          ],
+          "effective_index": 0,
+          "event_id": "sha256:92e3fdb225e75dcb88cab965205a2718d4032392a90bf76daeaae5ba69f02b08",
+          "kind": "SCHOOLING",
+          "payload": {
+            "level": "secondary_complete",
+            "site": "COUNTY_SECONDARY"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:92e3fdb225e75dcb88cab965205a2718d4032392a90bf76daeaae5ba69f02b08"
+          ],
+          "effective_index": 2,
+          "event_id": "sha256:2ecbf841ab1726b32f97cac79ce0a7b9a973230c211c1295a87121a8d2d6445d",
+          "kind": "WORK_POSITION",
+          "payload": {
+            "material_position": "waged_trades",
+            "role": "apprentice_mechanic",
+            "workplace": "COUNTY_REPAIR_COOPERATIVE"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:2ecbf841ab1726b32f97cac79ce0a7b9a973230c211c1295a87121a8d2d6445d"
+          ],
+          "effective_index": 3,
+          "event_id": "sha256:b096f9a28880487440024df160fa2250eef7cdb6a53ebf6dbcbd25cb9874b314",
+          "kind": "WORK_POSITION",
+          "payload": {
+            "material_position": "waged_trades_senior",
+            "role": "journeyman_mechanic",
+            "workplace": "COUNTY_REPAIR_COOPERATIVE"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:b096f9a28880487440024df160fa2250eef7cdb6a53ebf6dbcbd25cb9874b314"
+          ],
+          "effective_index": 4,
+          "event_id": "sha256:666663210d844a30fad8006b01c8767b613c4a342990316af7a52ea730343b7b",
+          "kind": "PROJECT",
+          "payload": {
+            "consequential": true,
+            "durable_effect": "uptime_commitment_and_rotation_ledger",
+            "duration_index_span": [
+              30,
+              96
+            ],
+            "nonmother": true,
+            "project": "shared_grain_silo_refit_and_rotation_ledger",
+            "third_party": [
+              "WORK_COLLECTIVE",
+              "NEIGHBOR_FARMER"
+            ]
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:b096f9a28880487440024df160fa2250eef7cdb6a53ebf6dbcbd25cb9874b314"
+          ],
+          "effective_index": 5,
+          "event_id": "sha256:13bcee494773a7d845113e19b5e23c4fe8fe0dc535d26cd769991262800acf65",
+          "kind": "NONMOTHER_RELATIONSHIP",
+          "payload": {
+            "consequential": true,
+            "counterpart": "FRIEND_K",
+            "durable_effect": "tool_lending_and_repair_favor_ledger",
+            "nonmother": true,
+            "relation_kind": "close_friendship_with_mutual_aid_debt"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:5676ddf84dcb4c4d9464730534be69f4d114257778d26b058dee2a6d81b293b8"
+          ],
+          "effective_index": 6,
+          "event_id": "sha256:0305eecdd2348126a3bf1f5725a98705b4cd93e45ec01539e8a65d0f4eac13e2",
+          "kind": "NONMOTHER_RELATIONSHIP",
+          "payload": {
+            "consequential": true,
+            "counterpart": "SIBLING_M",
+            "nonmother": true,
+            "relation_kind": "sibling_support_obligation"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:666663210d844a30fad8006b01c8767b613c4a342990316af7a52ea730343b7b"
+          ],
+          "effective_index": 7,
+          "event_id": "sha256:d5db13a5da60a1680f6c559b53cd6815a3a5d5ba20dd2a1f137926bbf525dcf0",
+          "kind": "PRACTICE_FORMATION",
+          "payload": {
+            "causal_basis": "shared_grain_silo_refit_and_rotation_ledger failures from unscheduled neglect",
+            "causal_event_refs": [
+              "sha256:666663210d844a30fad8006b01c8767b613c4a342990316af7a52ea730343b7b"
+            ],
+            "practice": "scheduled_maintenance_ledger_discipline"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:666663210d844a30fad8006b01c8767b613c4a342990316af7a52ea730343b7b",
+            "sha256:13bcee494773a7d845113e19b5e23c4fe8fe0dc535d26cd769991262800acf65"
+          ],
+          "effective_index": 8,
+          "event_id": "sha256:c723cb69a5e755bb8b2fa11091782d6df6fb29af02d2db2887e27bd28457e335",
+          "kind": "ATTITUDE_FORMATION",
+          "payload": {
+            "attitude": "reciprocity_in_work_obligations",
+            "causal_basis": "collective rotation dependence and friend mutual-aid debt",
+            "causal_event_refs": [
+              "sha256:666663210d844a30fad8006b01c8767b613c4a342990316af7a52ea730343b7b",
+              "sha256:13bcee494773a7d845113e19b5e23c4fe8fe0dc535d26cd769991262800acf65"
+            ]
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:b096f9a28880487440024df160fa2250eef7cdb6a53ebf6dbcbd25cb9874b314"
+          ],
+          "effective_index": 9,
+          "event_id": "sha256:f170389e72cacf9f096b025ff3c344956b760a49fdc0e9d657b8fcc4de88890a",
+          "kind": "ATTITUDE_FORMATION",
+          "payload": {
+            "attitude": "deliberate_under_uncertainty",
+            "causal_basis": "repeated diagnosis work under time pressure",
+            "causal_event_refs": [
+              "sha256:b096f9a28880487440024df160fa2250eef7cdb6a53ebf6dbcbd25cb9874b314"
+            ]
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:666663210d844a30fad8006b01c8767b613c4a342990316af7a52ea730343b7b"
+          ],
+          "effective_index": 10,
+          "event_id": "sha256:6ba288f9a66a066487b9a84d80a28ca487f278b255e56d285adf80f49a81631e",
+          "kind": "MEMORY_TRACE",
+          "payload": {
+            "experienced_basis_event": "sha256:666663210d844a30fad8006b01c8767b613c4a342990316af7a52ea730343b7b",
+            "trace": "remembered_shared_grain_silo_refit_and_rotation_ledger_failure_episode"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:13bcee494773a7d845113e19b5e23c4fe8fe0dc535d26cd769991262800acf65"
+          ],
+          "effective_index": 11,
+          "event_id": "sha256:77867f1135d06761999661b6006f3af8008b0028f302defd42a49edbb810dd10",
+          "kind": "MEMORY_TRACE",
+          "payload": {
+            "experienced_basis_event": "sha256:13bcee494773a7d845113e19b5e23c4fe8fe0dc535d26cd769991262800acf65",
+            "trace": "remembered_friend_repaying_debt_after_repair"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:b096f9a28880487440024df160fa2250eef7cdb6a53ebf6dbcbd25cb9874b314"
+          ],
+          "effective_index": 12,
+          "event_id": "sha256:c64d0e62f3cb8fc3388ded79ee9a1dbbe48d4dec906ea4ba8cd5e38a1a787ca6",
+          "kind": "STRIVING",
+          "payload": {
+            "causal_basis": "journeyman wage ceiling and cooperative seniority rules",
+            "striving": "own_a_small_repair_bench_within_five_years"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:b096f9a28880487440024df160fa2250eef7cdb6a53ebf6dbcbd25cb9874b314"
+          ],
+          "effective_index": 13,
+          "event_id": "sha256:40f8794925262ea2530c4f130bf5f1fbde6d219203818e29dc126b20c9556fa3",
+          "kind": "ORGANISMIC_EVENT",
+          "payload": {
+            "event": "full_recovery_from_workplace_hand_injury",
+            "index_span": [
+              55,
+              70
+            ]
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:b096f9a28880487440024df160fa2250eef7cdb6a53ebf6dbcbd25cb9874b314",
+            "sha256:c64d0e62f3cb8fc3388ded79ee9a1dbbe48d4dec906ea4ba8cd5e38a1a787ca6"
+          ],
+          "effective_index": 14,
+          "event_id": "sha256:61d0eb66bfd1e205f76c9b2143b2160e8d2a954d687d4836cb789e4002949995",
+          "kind": "ROUTE_AVAILABILITY",
+          "payload": {
+            "basis": "evening course enrollment for advanced fabrication certification",
+            "route": "ROUTE_INSTITUTIONAL",
+            "via": "INST_EVENING_CLASS_B"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:b096f9a28880487440024df160fa2250eef7cdb6a53ebf6dbcbd25cb9874b314"
+          ],
+          "effective_index": 15,
+          "event_id": "sha256:93ee39317c3d7b549ce3e187e7e051d5926ce78ef54f0f49bf3ead0857312c73",
+          "kind": "ROUTE_AVAILABILITY",
+          "payload": {
+            "basis": "commissioned repair contract at riverside workshop",
+            "route": "ROUTE_LOCAL_CLOSED",
+            "via": "INST_WORKSHOP_A"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:666663210d844a30fad8006b01c8767b613c4a342990316af7a52ea730343b7b"
+          ],
+          "effective_index": 16,
+          "event_id": "sha256:10c361f907452f4a2299435b5e4b6973742b83d6b7be7540ccbab9fcb2c8d3d1",
+          "kind": "ROUTE_AVAILABILITY",
+          "payload": {
+            "basis": "called to water-committee emergency repair as mechanic",
+            "route": "ROUTE_UNCONVENTIONAL",
+            "via": "INST_COMMUNITY_D"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:b096f9a28880487440024df160fa2250eef7cdb6a53ebf6dbcbd25cb9874b314"
+          ],
+          "effective_index": 17,
+          "event_id": "sha256:ff4083d733107d1376c7fb20d362909e347f4404d135994e3908cc2b14bf788b",
+          "kind": "COMMISSIONED_WORK",
+          "payload": {
+            "note": "route-establishing: workshop adjacency at encounter time",
+            "workplace": "INST_WORKSHOP_A"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:ff4083d733107d1376c7fb20d362909e347f4404d135994e3908cc2b14bf788b"
+          ],
+          "effective_index": 18,
+          "event_id": "sha256:3c287b27205fde1ae8e3738e8a6cc1aef5ddf4ea954e6be433841581695f6936",
+          "kind": "ENDPOINT_STATE",
+          "payload": {
+            "availability_status": "available_for_encounter",
+            "derived_from_event_id": "sha256:ff4083d733107d1376c7fb20d362909e347f4404d135994e3908cc2b14bf788b",
+            "derived_from_events": true,
+            "effective_time": "T_ENCOUNTER_LAB_WINDOW",
+            "place": "INST_WORKSHOP_A"
+          }
+        }
+      ],
+      "independent": {
+        "accepted": false,
+        "derived_place": "INST_WORKSHOP_A",
+        "errors": [
+          "NONFORWARD_CAUSAL_PARENT",
+          "DUPLICATE_EFFECTIVE_INDEX"
+        ]
+      },
+      "lab": {
+        "causal_edges_verified": 20,
+        "causal_error_codes": [
+          "DUPLICATE_EFFECTIVE_INDEX",
+          "NONFORWARD_CAUSAL_PARENT"
+        ],
+        "causal_integrity_errors": [
+          {
+            "code": "DUPLICATE_EFFECTIVE_INDEX",
+            "effective_index": 0,
+            "event_ids": [
+              "sha256:5676ddf84dcb4c4d9464730534be69f4d114257778d26b058dee2a6d81b293b8",
+              "sha256:92e3fdb225e75dcb88cab965205a2718d4032392a90bf76daeaae5ba69f02b08"
+            ]
+          },
+          {
+            "child_index": 0,
+            "code": "NONFORWARD_CAUSAL_PARENT",
+            "event_id": "sha256:92e3fdb225e75dcb88cab965205a2718d4032392a90bf76daeaae5ba69f02b08",
+            "parent": "sha256:5676ddf84dcb4c4d9464730534be69f4d114257778d26b058dee2a6d81b293b8",
+            "parent_index": 0
+          }
+        ],
+        "endpoint_match": false,
+        "endpoint_state_derived_from_antecedent": true,
+        "endpoint_state_overwrite_by_endpoint_claim": "REFUSED",
+        "lab_rule": "PROVISIONAL_LAB_RULE__NOT_ADOPTED",
+        "n_events_replayed": 19,
+        "recomputed_state": {
+          "attitudes": [
+            "deliberate_under_uncertainty",
+            "reciprocity_in_work_obligations"
+          ],
+          "availability_status": "available_for_encounter",
+          "material_position": "waged_trades_senior",
+          "nonmother_relations": [
+            "FRIEND_K",
+            "SIBLING_M"
+          ],
+          "place": "INST_WORKSHOP_A",
+          "practices": [
+            "scheduled_maintenance_ledger_discipline"
+          ],
+          "projects": [
+            "shared_grain_silo_refit_and_rotation_ledger"
+          ]
+        },
+        "replay_seconds": 1.9e-05,
+        "status": "INTEGRITY_FAILURE",
+        "temporal_inversions": 0
+      }
+    },
+    "forged_endpoint": {
+      "constraints": {
+        "required_state_predicates": [
+          {
+            "equals": "UNREACHABLE_SITE",
+            "field": "place"
+          },
+          {
+            "equals": "available_for_encounter",
+            "field": "availability_status"
+          }
+        ],
+        "route_kind_id": "ROUTE_LOCAL_CLOSED",
+        "time_or_interval": "T_ENCOUNTER_LAB_WINDOW"
+      },
+      "events": [
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [],
+          "effective_index": 0,
+          "event_id": "sha256:5676ddf84dcb4c4d9464730534be69f4d114257778d26b058dee2a6d81b293b8",
+          "kind": "ORIGIN_FAMILY",
+          "payload": {
+            "household_occupation": "mixed_smallholding_and_repair_trade",
+            "region": "LOWLAND_DISTRICT",
+            "root_status": "LAB_ROOT_ADMITTED"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:5676ddf84dcb4c4d9464730534be69f4d114257778d26b058dee2a6d81b293b8"
+          ],
+          "effective_index": 1,
+          "event_id": "sha256:92e3fdb225e75dcb88cab965205a2718d4032392a90bf76daeaae5ba69f02b08",
+          "kind": "SCHOOLING",
+          "payload": {
+            "level": "secondary_complete",
+            "site": "COUNTY_SECONDARY"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:92e3fdb225e75dcb88cab965205a2718d4032392a90bf76daeaae5ba69f02b08"
+          ],
+          "effective_index": 2,
+          "event_id": "sha256:2ecbf841ab1726b32f97cac79ce0a7b9a973230c211c1295a87121a8d2d6445d",
+          "kind": "WORK_POSITION",
+          "payload": {
+            "material_position": "waged_trades",
+            "role": "apprentice_mechanic",
+            "workplace": "COUNTY_REPAIR_COOPERATIVE"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:2ecbf841ab1726b32f97cac79ce0a7b9a973230c211c1295a87121a8d2d6445d"
+          ],
+          "effective_index": 3,
+          "event_id": "sha256:b096f9a28880487440024df160fa2250eef7cdb6a53ebf6dbcbd25cb9874b314",
+          "kind": "WORK_POSITION",
+          "payload": {
+            "material_position": "waged_trades_senior",
+            "role": "journeyman_mechanic",
+            "workplace": "COUNTY_REPAIR_COOPERATIVE"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:b096f9a28880487440024df160fa2250eef7cdb6a53ebf6dbcbd25cb9874b314"
+          ],
+          "effective_index": 4,
+          "event_id": "sha256:666663210d844a30fad8006b01c8767b613c4a342990316af7a52ea730343b7b",
+          "kind": "PROJECT",
+          "payload": {
+            "consequential": true,
+            "durable_effect": "uptime_commitment_and_rotation_ledger",
+            "duration_index_span": [
+              30,
+              96
+            ],
+            "nonmother": true,
+            "project": "shared_grain_silo_refit_and_rotation_ledger",
+            "third_party": [
+              "WORK_COLLECTIVE",
+              "NEIGHBOR_FARMER"
+            ]
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:b096f9a28880487440024df160fa2250eef7cdb6a53ebf6dbcbd25cb9874b314"
+          ],
+          "effective_index": 5,
+          "event_id": "sha256:13bcee494773a7d845113e19b5e23c4fe8fe0dc535d26cd769991262800acf65",
+          "kind": "NONMOTHER_RELATIONSHIP",
+          "payload": {
+            "consequential": true,
+            "counterpart": "FRIEND_K",
+            "durable_effect": "tool_lending_and_repair_favor_ledger",
+            "nonmother": true,
+            "relation_kind": "close_friendship_with_mutual_aid_debt"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:5676ddf84dcb4c4d9464730534be69f4d114257778d26b058dee2a6d81b293b8"
+          ],
+          "effective_index": 6,
+          "event_id": "sha256:0305eecdd2348126a3bf1f5725a98705b4cd93e45ec01539e8a65d0f4eac13e2",
+          "kind": "NONMOTHER_RELATIONSHIP",
+          "payload": {
+            "consequential": true,
+            "counterpart": "SIBLING_M",
+            "nonmother": true,
+            "relation_kind": "sibling_support_obligation"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:666663210d844a30fad8006b01c8767b613c4a342990316af7a52ea730343b7b"
+          ],
+          "effective_index": 7,
+          "event_id": "sha256:d5db13a5da60a1680f6c559b53cd6815a3a5d5ba20dd2a1f137926bbf525dcf0",
+          "kind": "PRACTICE_FORMATION",
+          "payload": {
+            "causal_basis": "shared_grain_silo_refit_and_rotation_ledger failures from unscheduled neglect",
+            "causal_event_refs": [
+              "sha256:666663210d844a30fad8006b01c8767b613c4a342990316af7a52ea730343b7b"
+            ],
+            "practice": "scheduled_maintenance_ledger_discipline"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:666663210d844a30fad8006b01c8767b613c4a342990316af7a52ea730343b7b",
+            "sha256:13bcee494773a7d845113e19b5e23c4fe8fe0dc535d26cd769991262800acf65"
+          ],
+          "effective_index": 8,
+          "event_id": "sha256:c723cb69a5e755bb8b2fa11091782d6df6fb29af02d2db2887e27bd28457e335",
+          "kind": "ATTITUDE_FORMATION",
+          "payload": {
+            "attitude": "reciprocity_in_work_obligations",
+            "causal_basis": "collective rotation dependence and friend mutual-aid debt",
+            "causal_event_refs": [
+              "sha256:666663210d844a30fad8006b01c8767b613c4a342990316af7a52ea730343b7b",
+              "sha256:13bcee494773a7d845113e19b5e23c4fe8fe0dc535d26cd769991262800acf65"
+            ]
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:b096f9a28880487440024df160fa2250eef7cdb6a53ebf6dbcbd25cb9874b314"
+          ],
+          "effective_index": 9,
+          "event_id": "sha256:f170389e72cacf9f096b025ff3c344956b760a49fdc0e9d657b8fcc4de88890a",
+          "kind": "ATTITUDE_FORMATION",
+          "payload": {
+            "attitude": "deliberate_under_uncertainty",
+            "causal_basis": "repeated diagnosis work under time pressure",
+            "causal_event_refs": [
+              "sha256:b096f9a28880487440024df160fa2250eef7cdb6a53ebf6dbcbd25cb9874b314"
+            ]
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:666663210d844a30fad8006b01c8767b613c4a342990316af7a52ea730343b7b"
+          ],
+          "effective_index": 10,
+          "event_id": "sha256:6ba288f9a66a066487b9a84d80a28ca487f278b255e56d285adf80f49a81631e",
+          "kind": "MEMORY_TRACE",
+          "payload": {
+            "experienced_basis_event": "sha256:666663210d844a30fad8006b01c8767b613c4a342990316af7a52ea730343b7b",
+            "trace": "remembered_shared_grain_silo_refit_and_rotation_ledger_failure_episode"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:13bcee494773a7d845113e19b5e23c4fe8fe0dc535d26cd769991262800acf65"
+          ],
+          "effective_index": 11,
+          "event_id": "sha256:77867f1135d06761999661b6006f3af8008b0028f302defd42a49edbb810dd10",
+          "kind": "MEMORY_TRACE",
+          "payload": {
+            "experienced_basis_event": "sha256:13bcee494773a7d845113e19b5e23c4fe8fe0dc535d26cd769991262800acf65",
+            "trace": "remembered_friend_repaying_debt_after_repair"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:b096f9a28880487440024df160fa2250eef7cdb6a53ebf6dbcbd25cb9874b314"
+          ],
+          "effective_index": 12,
+          "event_id": "sha256:c64d0e62f3cb8fc3388ded79ee9a1dbbe48d4dec906ea4ba8cd5e38a1a787ca6",
+          "kind": "STRIVING",
+          "payload": {
+            "causal_basis": "journeyman wage ceiling and cooperative seniority rules",
+            "striving": "own_a_small_repair_bench_within_five_years"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:b096f9a28880487440024df160fa2250eef7cdb6a53ebf6dbcbd25cb9874b314"
+          ],
+          "effective_index": 13,
+          "event_id": "sha256:40f8794925262ea2530c4f130bf5f1fbde6d219203818e29dc126b20c9556fa3",
+          "kind": "ORGANISMIC_EVENT",
+          "payload": {
+            "event": "full_recovery_from_workplace_hand_injury",
+            "index_span": [
+              55,
+              70
+            ]
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:b096f9a28880487440024df160fa2250eef7cdb6a53ebf6dbcbd25cb9874b314",
+            "sha256:c64d0e62f3cb8fc3388ded79ee9a1dbbe48d4dec906ea4ba8cd5e38a1a787ca6"
+          ],
+          "effective_index": 14,
+          "event_id": "sha256:61d0eb66bfd1e205f76c9b2143b2160e8d2a954d687d4836cb789e4002949995",
+          "kind": "ROUTE_AVAILABILITY",
+          "payload": {
+            "basis": "evening course enrollment for advanced fabrication certification",
+            "route": "ROUTE_INSTITUTIONAL",
+            "via": "INST_EVENING_CLASS_B"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:b096f9a28880487440024df160fa2250eef7cdb6a53ebf6dbcbd25cb9874b314"
+          ],
+          "effective_index": 15,
+          "event_id": "sha256:93ee39317c3d7b549ce3e187e7e051d5926ce78ef54f0f49bf3ead0857312c73",
+          "kind": "ROUTE_AVAILABILITY",
+          "payload": {
+            "basis": "commissioned repair contract at riverside workshop",
+            "route": "ROUTE_LOCAL_CLOSED",
+            "via": "INST_WORKSHOP_A"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:666663210d844a30fad8006b01c8767b613c4a342990316af7a52ea730343b7b"
+          ],
+          "effective_index": 16,
+          "event_id": "sha256:10c361f907452f4a2299435b5e4b6973742b83d6b7be7540ccbab9fcb2c8d3d1",
+          "kind": "ROUTE_AVAILABILITY",
+          "payload": {
+            "basis": "called to water-committee emergency repair as mechanic",
+            "route": "ROUTE_UNCONVENTIONAL",
+            "via": "INST_COMMUNITY_D"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:b096f9a28880487440024df160fa2250eef7cdb6a53ebf6dbcbd25cb9874b314"
+          ],
+          "effective_index": 17,
+          "event_id": "sha256:ff4083d733107d1376c7fb20d362909e347f4404d135994e3908cc2b14bf788b",
+          "kind": "COMMISSIONED_WORK",
+          "payload": {
+            "note": "route-establishing: workshop adjacency at encounter time",
+            "workplace": "INST_WORKSHOP_A"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:ff4083d733107d1376c7fb20d362909e347f4404d135994e3908cc2b14bf788b"
+          ],
+          "effective_index": 18,
+          "event_id": "sha256:3c287b27205fde1ae8e3738e8a6cc1aef5ddf4ea954e6be433841581695f6936",
+          "kind": "ENDPOINT_STATE",
+          "payload": {
+            "availability_status": "available_for_encounter",
+            "derived_from_event_id": "sha256:ff4083d733107d1376c7fb20d362909e347f4404d135994e3908cc2b14bf788b",
+            "derived_from_events": true,
+            "effective_time": "T_ENCOUNTER_LAB_WINDOW",
+            "place": "UNREACHABLE_SITE"
+          }
+        }
+      ],
+      "independent": {
+        "accepted": false,
+        "derived_place": "INST_WORKSHOP_A",
+        "errors": [
+          "ENDPOINT_ASSERTION_WITHOUT_ANTECEDENT"
+        ]
+      },
+      "lab": {
+        "causal_edges_verified": 20,
+        "causal_error_codes": [
+          "ENDPOINT_ASSERTION_WITHOUT_ANTECEDENT"
+        ],
+        "causal_integrity_errors": [
+          {
+            "antecedent_place_basis_event_id": "sha256:ff4083d733107d1376c7fb20d362909e347f4404d135994e3908cc2b14bf788b",
+            "claimed_place": "UNREACHABLE_SITE",
+            "code": "ENDPOINT_ASSERTION_WITHOUT_ANTECEDENT",
+            "derived_place_from_antecedent": "INST_WORKSHOP_A",
+            "event_id": "sha256:3c287b27205fde1ae8e3738e8a6cc1aef5ddf4ea954e6be433841581695f6936"
+          }
+        ],
+        "endpoint_match": false,
+        "endpoint_state_derived_from_antecedent": true,
+        "endpoint_state_overwrite_by_endpoint_claim": "REFUSED",
+        "lab_rule": "PROVISIONAL_LAB_RULE__NOT_ADOPTED",
+        "n_events_replayed": 19,
+        "recomputed_state": {
+          "attitudes": [
+            "deliberate_under_uncertainty",
+            "reciprocity_in_work_obligations"
+          ],
+          "availability_status": "available_for_encounter",
+          "material_position": "waged_trades_senior",
+          "nonmother_relations": [
+            "FRIEND_K",
+            "SIBLING_M"
+          ],
+          "place": "INST_WORKSHOP_A",
+          "practices": [
+            "scheduled_maintenance_ledger_discipline"
+          ],
+          "projects": [
+            "shared_grain_silo_refit_and_rotation_ledger"
+          ]
+        },
+        "replay_seconds": 2.6e-05,
+        "status": "INTEGRITY_FAILURE",
+        "temporal_inversions": 0
+      }
+    },
+    "future_endpoint_as_root_parent": {
+      "constraints": {
+        "required_state_predicates": [
+          {
+            "equals": "INST_WORKSHOP_A",
+            "field": "place"
+          },
+          {
+            "equals": "available_for_encounter",
+            "field": "availability_status"
+          }
+        ],
+        "route_kind_id": "ROUTE_LOCAL_CLOSED",
+        "time_or_interval": "T_ENCOUNTER_LAB_WINDOW"
+      },
+      "events": [
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:3c287b27205fde1ae8e3738e8a6cc1aef5ddf4ea954e6be433841581695f6936"
+          ],
+          "effective_index": 0,
+          "event_id": "sha256:5676ddf84dcb4c4d9464730534be69f4d114257778d26b058dee2a6d81b293b8",
+          "kind": "ORIGIN_FAMILY",
+          "payload": {
+            "household_occupation": "mixed_smallholding_and_repair_trade",
+            "region": "LOWLAND_DISTRICT",
+            "root_status": "LAB_ROOT_ADMITTED"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:5676ddf84dcb4c4d9464730534be69f4d114257778d26b058dee2a6d81b293b8"
+          ],
+          "effective_index": 1,
+          "event_id": "sha256:92e3fdb225e75dcb88cab965205a2718d4032392a90bf76daeaae5ba69f02b08",
+          "kind": "SCHOOLING",
+          "payload": {
+            "level": "secondary_complete",
+            "site": "COUNTY_SECONDARY"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:92e3fdb225e75dcb88cab965205a2718d4032392a90bf76daeaae5ba69f02b08"
+          ],
+          "effective_index": 2,
+          "event_id": "sha256:2ecbf841ab1726b32f97cac79ce0a7b9a973230c211c1295a87121a8d2d6445d",
+          "kind": "WORK_POSITION",
+          "payload": {
+            "material_position": "waged_trades",
+            "role": "apprentice_mechanic",
+            "workplace": "COUNTY_REPAIR_COOPERATIVE"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:2ecbf841ab1726b32f97cac79ce0a7b9a973230c211c1295a87121a8d2d6445d"
+          ],
+          "effective_index": 3,
+          "event_id": "sha256:b096f9a28880487440024df160fa2250eef7cdb6a53ebf6dbcbd25cb9874b314",
+          "kind": "WORK_POSITION",
+          "payload": {
+            "material_position": "waged_trades_senior",
+            "role": "journeyman_mechanic",
+            "workplace": "COUNTY_REPAIR_COOPERATIVE"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:b096f9a28880487440024df160fa2250eef7cdb6a53ebf6dbcbd25cb9874b314"
+          ],
+          "effective_index": 4,
+          "event_id": "sha256:666663210d844a30fad8006b01c8767b613c4a342990316af7a52ea730343b7b",
+          "kind": "PROJECT",
+          "payload": {
+            "consequential": true,
+            "durable_effect": "uptime_commitment_and_rotation_ledger",
+            "duration_index_span": [
+              30,
+              96
+            ],
+            "nonmother": true,
+            "project": "shared_grain_silo_refit_and_rotation_ledger",
+            "third_party": [
+              "WORK_COLLECTIVE",
+              "NEIGHBOR_FARMER"
+            ]
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:b096f9a28880487440024df160fa2250eef7cdb6a53ebf6dbcbd25cb9874b314"
+          ],
+          "effective_index": 5,
+          "event_id": "sha256:13bcee494773a7d845113e19b5e23c4fe8fe0dc535d26cd769991262800acf65",
+          "kind": "NONMOTHER_RELATIONSHIP",
+          "payload": {
+            "consequential": true,
+            "counterpart": "FRIEND_K",
+            "durable_effect": "tool_lending_and_repair_favor_ledger",
+            "nonmother": true,
+            "relation_kind": "close_friendship_with_mutual_aid_debt"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:5676ddf84dcb4c4d9464730534be69f4d114257778d26b058dee2a6d81b293b8"
+          ],
+          "effective_index": 6,
+          "event_id": "sha256:0305eecdd2348126a3bf1f5725a98705b4cd93e45ec01539e8a65d0f4eac13e2",
+          "kind": "NONMOTHER_RELATIONSHIP",
+          "payload": {
+            "consequential": true,
+            "counterpart": "SIBLING_M",
+            "nonmother": true,
+            "relation_kind": "sibling_support_obligation"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:666663210d844a30fad8006b01c8767b613c4a342990316af7a52ea730343b7b"
+          ],
+          "effective_index": 7,
+          "event_id": "sha256:d5db13a5da60a1680f6c559b53cd6815a3a5d5ba20dd2a1f137926bbf525dcf0",
+          "kind": "PRACTICE_FORMATION",
+          "payload": {
+            "causal_basis": "shared_grain_silo_refit_and_rotation_ledger failures from unscheduled neglect",
+            "causal_event_refs": [
+              "sha256:666663210d844a30fad8006b01c8767b613c4a342990316af7a52ea730343b7b"
+            ],
+            "practice": "scheduled_maintenance_ledger_discipline"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:666663210d844a30fad8006b01c8767b613c4a342990316af7a52ea730343b7b",
+            "sha256:13bcee494773a7d845113e19b5e23c4fe8fe0dc535d26cd769991262800acf65"
+          ],
+          "effective_index": 8,
+          "event_id": "sha256:c723cb69a5e755bb8b2fa11091782d6df6fb29af02d2db2887e27bd28457e335",
+          "kind": "ATTITUDE_FORMATION",
+          "payload": {
+            "attitude": "reciprocity_in_work_obligations",
+            "causal_basis": "collective rotation dependence and friend mutual-aid debt",
+            "causal_event_refs": [
+              "sha256:666663210d844a30fad8006b01c8767b613c4a342990316af7a52ea730343b7b",
+              "sha256:13bcee494773a7d845113e19b5e23c4fe8fe0dc535d26cd769991262800acf65"
+            ]
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:b096f9a28880487440024df160fa2250eef7cdb6a53ebf6dbcbd25cb9874b314"
+          ],
+          "effective_index": 9,
+          "event_id": "sha256:f170389e72cacf9f096b025ff3c344956b760a49fdc0e9d657b8fcc4de88890a",
+          "kind": "ATTITUDE_FORMATION",
+          "payload": {
+            "attitude": "deliberate_under_uncertainty",
+            "causal_basis": "repeated diagnosis work under time pressure",
+            "causal_event_refs": [
+              "sha256:b096f9a28880487440024df160fa2250eef7cdb6a53ebf6dbcbd25cb9874b314"
+            ]
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:666663210d844a30fad8006b01c8767b613c4a342990316af7a52ea730343b7b"
+          ],
+          "effective_index": 10,
+          "event_id": "sha256:6ba288f9a66a066487b9a84d80a28ca487f278b255e56d285adf80f49a81631e",
+          "kind": "MEMORY_TRACE",
+          "payload": {
+            "experienced_basis_event": "sha256:666663210d844a30fad8006b01c8767b613c4a342990316af7a52ea730343b7b",
+            "trace": "remembered_shared_grain_silo_refit_and_rotation_ledger_failure_episode"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:13bcee494773a7d845113e19b5e23c4fe8fe0dc535d26cd769991262800acf65"
+          ],
+          "effective_index": 11,
+          "event_id": "sha256:77867f1135d06761999661b6006f3af8008b0028f302defd42a49edbb810dd10",
+          "kind": "MEMORY_TRACE",
+          "payload": {
+            "experienced_basis_event": "sha256:13bcee494773a7d845113e19b5e23c4fe8fe0dc535d26cd769991262800acf65",
+            "trace": "remembered_friend_repaying_debt_after_repair"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:b096f9a28880487440024df160fa2250eef7cdb6a53ebf6dbcbd25cb9874b314"
+          ],
+          "effective_index": 12,
+          "event_id": "sha256:c64d0e62f3cb8fc3388ded79ee9a1dbbe48d4dec906ea4ba8cd5e38a1a787ca6",
+          "kind": "STRIVING",
+          "payload": {
+            "causal_basis": "journeyman wage ceiling and cooperative seniority rules",
+            "striving": "own_a_small_repair_bench_within_five_years"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:b096f9a28880487440024df160fa2250eef7cdb6a53ebf6dbcbd25cb9874b314"
+          ],
+          "effective_index": 13,
+          "event_id": "sha256:40f8794925262ea2530c4f130bf5f1fbde6d219203818e29dc126b20c9556fa3",
+          "kind": "ORGANISMIC_EVENT",
+          "payload": {
+            "event": "full_recovery_from_workplace_hand_injury",
+            "index_span": [
+              55,
+              70
+            ]
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:b096f9a28880487440024df160fa2250eef7cdb6a53ebf6dbcbd25cb9874b314",
+            "sha256:c64d0e62f3cb8fc3388ded79ee9a1dbbe48d4dec906ea4ba8cd5e38a1a787ca6"
+          ],
+          "effective_index": 14,
+          "event_id": "sha256:61d0eb66bfd1e205f76c9b2143b2160e8d2a954d687d4836cb789e4002949995",
+          "kind": "ROUTE_AVAILABILITY",
+          "payload": {
+            "basis": "evening course enrollment for advanced fabrication certification",
+            "route": "ROUTE_INSTITUTIONAL",
+            "via": "INST_EVENING_CLASS_B"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:b096f9a28880487440024df160fa2250eef7cdb6a53ebf6dbcbd25cb9874b314"
+          ],
+          "effective_index": 15,
+          "event_id": "sha256:93ee39317c3d7b549ce3e187e7e051d5926ce78ef54f0f49bf3ead0857312c73",
+          "kind": "ROUTE_AVAILABILITY",
+          "payload": {
+            "basis": "commissioned repair contract at riverside workshop",
+            "route": "ROUTE_LOCAL_CLOSED",
+            "via": "INST_WORKSHOP_A"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:666663210d844a30fad8006b01c8767b613c4a342990316af7a52ea730343b7b"
+          ],
+          "effective_index": 16,
+          "event_id": "sha256:10c361f907452f4a2299435b5e4b6973742b83d6b7be7540ccbab9fcb2c8d3d1",
+          "kind": "ROUTE_AVAILABILITY",
+          "payload": {
+            "basis": "called to water-committee emergency repair as mechanic",
+            "route": "ROUTE_UNCONVENTIONAL",
+            "via": "INST_COMMUNITY_D"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:b096f9a28880487440024df160fa2250eef7cdb6a53ebf6dbcbd25cb9874b314"
+          ],
+          "effective_index": 17,
+          "event_id": "sha256:ff4083d733107d1376c7fb20d362909e347f4404d135994e3908cc2b14bf788b",
+          "kind": "COMMISSIONED_WORK",
+          "payload": {
+            "note": "route-establishing: workshop adjacency at encounter time",
+            "workplace": "INST_WORKSHOP_A"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:ff4083d733107d1376c7fb20d362909e347f4404d135994e3908cc2b14bf788b"
+          ],
+          "effective_index": 18,
+          "event_id": "sha256:3c287b27205fde1ae8e3738e8a6cc1aef5ddf4ea954e6be433841581695f6936",
+          "kind": "ENDPOINT_STATE",
+          "payload": {
+            "availability_status": "available_for_encounter",
+            "derived_from_event_id": "sha256:ff4083d733107d1376c7fb20d362909e347f4404d135994e3908cc2b14bf788b",
+            "derived_from_events": true,
+            "effective_time": "T_ENCOUNTER_LAB_WINDOW",
+            "place": "INST_WORKSHOP_A"
+          }
+        }
+      ],
+      "independent": {
+        "accepted": false,
+        "derived_place": "INST_WORKSHOP_A",
+        "errors": [
+          "MISSING_OR_FUTURE_CAUSAL_PARENT"
+        ]
+      },
+      "lab": {
+        "causal_edges_verified": 21,
+        "causal_error_codes": [
+          "FUTURE_CAUSAL_PARENT"
+        ],
+        "causal_integrity_errors": [
+          {
+            "code": "FUTURE_CAUSAL_PARENT",
+            "event_id": "sha256:5676ddf84dcb4c4d9464730534be69f4d114257778d26b058dee2a6d81b293b8",
+            "parent": "sha256:3c287b27205fde1ae8e3738e8a6cc1aef5ddf4ea954e6be433841581695f6936"
+          }
+        ],
+        "endpoint_match": false,
+        "endpoint_state_derived_from_antecedent": true,
+        "endpoint_state_overwrite_by_endpoint_claim": "REFUSED",
+        "lab_rule": "PROVISIONAL_LAB_RULE__NOT_ADOPTED",
+        "n_events_replayed": 19,
+        "recomputed_state": {
+          "attitudes": [
+            "deliberate_under_uncertainty",
+            "reciprocity_in_work_obligations"
+          ],
+          "availability_status": "available_for_encounter",
+          "material_position": "waged_trades_senior",
+          "nonmother_relations": [
+            "FRIEND_K",
+            "SIBLING_M"
+          ],
+          "place": "INST_WORKSHOP_A",
+          "practices": [
+            "scheduled_maintenance_ledger_discipline"
+          ],
+          "projects": [
+            "shared_grain_silo_refit_and_rotation_ledger"
+          ]
+        },
+        "replay_seconds": 1.9e-05,
+        "status": "INTEGRITY_FAILURE",
+        "temporal_inversions": 0
+      }
+    },
+    "missing_parent": {
+      "constraints": {
+        "required_state_predicates": [
+          {
+            "equals": "INST_WORKSHOP_A",
+            "field": "place"
+          },
+          {
+            "equals": "available_for_encounter",
+            "field": "availability_status"
+          }
+        ],
+        "route_kind_id": "ROUTE_LOCAL_CLOSED",
+        "time_or_interval": "T_ENCOUNTER_LAB_WINDOW"
+      },
+      "events": [
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [],
+          "effective_index": 0,
+          "event_id": "sha256:5676ddf84dcb4c4d9464730534be69f4d114257778d26b058dee2a6d81b293b8",
+          "kind": "ORIGIN_FAMILY",
+          "payload": {
+            "household_occupation": "mixed_smallholding_and_repair_trade",
+            "region": "LOWLAND_DISTRICT",
+            "root_status": "LAB_ROOT_ADMITTED"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:5676ddf84dcb4c4d9464730534be69f4d114257778d26b058dee2a6d81b293b8"
+          ],
+          "effective_index": 1,
+          "event_id": "sha256:92e3fdb225e75dcb88cab965205a2718d4032392a90bf76daeaae5ba69f02b08",
+          "kind": "SCHOOLING",
+          "payload": {
+            "level": "secondary_complete",
+            "site": "COUNTY_SECONDARY"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:92e3fdb225e75dcb88cab965205a2718d4032392a90bf76daeaae5ba69f02b08"
+          ],
+          "effective_index": 2,
+          "event_id": "sha256:2ecbf841ab1726b32f97cac79ce0a7b9a973230c211c1295a87121a8d2d6445d",
+          "kind": "WORK_POSITION",
+          "payload": {
+            "material_position": "waged_trades",
+            "role": "apprentice_mechanic",
+            "workplace": "COUNTY_REPAIR_COOPERATIVE"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:2ecbf841ab1726b32f97cac79ce0a7b9a973230c211c1295a87121a8d2d6445d"
+          ],
+          "effective_index": 3,
+          "event_id": "sha256:b096f9a28880487440024df160fa2250eef7cdb6a53ebf6dbcbd25cb9874b314",
+          "kind": "WORK_POSITION",
+          "payload": {
+            "material_position": "waged_trades_senior",
+            "role": "journeyman_mechanic",
+            "workplace": "COUNTY_REPAIR_COOPERATIVE"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "ABSENT_PARENT"
+          ],
+          "effective_index": 4,
+          "event_id": "sha256:666663210d844a30fad8006b01c8767b613c4a342990316af7a52ea730343b7b",
+          "kind": "PROJECT",
+          "payload": {
+            "consequential": true,
+            "durable_effect": "uptime_commitment_and_rotation_ledger",
+            "duration_index_span": [
+              30,
+              96
+            ],
+            "nonmother": true,
+            "project": "shared_grain_silo_refit_and_rotation_ledger",
+            "third_party": [
+              "WORK_COLLECTIVE",
+              "NEIGHBOR_FARMER"
+            ]
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:b096f9a28880487440024df160fa2250eef7cdb6a53ebf6dbcbd25cb9874b314"
+          ],
+          "effective_index": 5,
+          "event_id": "sha256:13bcee494773a7d845113e19b5e23c4fe8fe0dc535d26cd769991262800acf65",
+          "kind": "NONMOTHER_RELATIONSHIP",
+          "payload": {
+            "consequential": true,
+            "counterpart": "FRIEND_K",
+            "durable_effect": "tool_lending_and_repair_favor_ledger",
+            "nonmother": true,
+            "relation_kind": "close_friendship_with_mutual_aid_debt"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:5676ddf84dcb4c4d9464730534be69f4d114257778d26b058dee2a6d81b293b8"
+          ],
+          "effective_index": 6,
+          "event_id": "sha256:0305eecdd2348126a3bf1f5725a98705b4cd93e45ec01539e8a65d0f4eac13e2",
+          "kind": "NONMOTHER_RELATIONSHIP",
+          "payload": {
+            "consequential": true,
+            "counterpart": "SIBLING_M",
+            "nonmother": true,
+            "relation_kind": "sibling_support_obligation"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:666663210d844a30fad8006b01c8767b613c4a342990316af7a52ea730343b7b"
+          ],
+          "effective_index": 7,
+          "event_id": "sha256:d5db13a5da60a1680f6c559b53cd6815a3a5d5ba20dd2a1f137926bbf525dcf0",
+          "kind": "PRACTICE_FORMATION",
+          "payload": {
+            "causal_basis": "shared_grain_silo_refit_and_rotation_ledger failures from unscheduled neglect",
+            "causal_event_refs": [
+              "sha256:666663210d844a30fad8006b01c8767b613c4a342990316af7a52ea730343b7b"
+            ],
+            "practice": "scheduled_maintenance_ledger_discipline"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:666663210d844a30fad8006b01c8767b613c4a342990316af7a52ea730343b7b",
+            "sha256:13bcee494773a7d845113e19b5e23c4fe8fe0dc535d26cd769991262800acf65"
+          ],
+          "effective_index": 8,
+          "event_id": "sha256:c723cb69a5e755bb8b2fa11091782d6df6fb29af02d2db2887e27bd28457e335",
+          "kind": "ATTITUDE_FORMATION",
+          "payload": {
+            "attitude": "reciprocity_in_work_obligations",
+            "causal_basis": "collective rotation dependence and friend mutual-aid debt",
+            "causal_event_refs": [
+              "sha256:666663210d844a30fad8006b01c8767b613c4a342990316af7a52ea730343b7b",
+              "sha256:13bcee494773a7d845113e19b5e23c4fe8fe0dc535d26cd769991262800acf65"
+            ]
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:b096f9a28880487440024df160fa2250eef7cdb6a53ebf6dbcbd25cb9874b314"
+          ],
+          "effective_index": 9,
+          "event_id": "sha256:f170389e72cacf9f096b025ff3c344956b760a49fdc0e9d657b8fcc4de88890a",
+          "kind": "ATTITUDE_FORMATION",
+          "payload": {
+            "attitude": "deliberate_under_uncertainty",
+            "causal_basis": "repeated diagnosis work under time pressure",
+            "causal_event_refs": [
+              "sha256:b096f9a28880487440024df160fa2250eef7cdb6a53ebf6dbcbd25cb9874b314"
+            ]
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:666663210d844a30fad8006b01c8767b613c4a342990316af7a52ea730343b7b"
+          ],
+          "effective_index": 10,
+          "event_id": "sha256:6ba288f9a66a066487b9a84d80a28ca487f278b255e56d285adf80f49a81631e",
+          "kind": "MEMORY_TRACE",
+          "payload": {
+            "experienced_basis_event": "sha256:666663210d844a30fad8006b01c8767b613c4a342990316af7a52ea730343b7b",
+            "trace": "remembered_shared_grain_silo_refit_and_rotation_ledger_failure_episode"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:13bcee494773a7d845113e19b5e23c4fe8fe0dc535d26cd769991262800acf65"
+          ],
+          "effective_index": 11,
+          "event_id": "sha256:77867f1135d06761999661b6006f3af8008b0028f302defd42a49edbb810dd10",
+          "kind": "MEMORY_TRACE",
+          "payload": {
+            "experienced_basis_event": "sha256:13bcee494773a7d845113e19b5e23c4fe8fe0dc535d26cd769991262800acf65",
+            "trace": "remembered_friend_repaying_debt_after_repair"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:b096f9a28880487440024df160fa2250eef7cdb6a53ebf6dbcbd25cb9874b314"
+          ],
+          "effective_index": 12,
+          "event_id": "sha256:c64d0e62f3cb8fc3388ded79ee9a1dbbe48d4dec906ea4ba8cd5e38a1a787ca6",
+          "kind": "STRIVING",
+          "payload": {
+            "causal_basis": "journeyman wage ceiling and cooperative seniority rules",
+            "striving": "own_a_small_repair_bench_within_five_years"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:b096f9a28880487440024df160fa2250eef7cdb6a53ebf6dbcbd25cb9874b314"
+          ],
+          "effective_index": 13,
+          "event_id": "sha256:40f8794925262ea2530c4f130bf5f1fbde6d219203818e29dc126b20c9556fa3",
+          "kind": "ORGANISMIC_EVENT",
+          "payload": {
+            "event": "full_recovery_from_workplace_hand_injury",
+            "index_span": [
+              55,
+              70
+            ]
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:b096f9a28880487440024df160fa2250eef7cdb6a53ebf6dbcbd25cb9874b314",
+            "sha256:c64d0e62f3cb8fc3388ded79ee9a1dbbe48d4dec906ea4ba8cd5e38a1a787ca6"
+          ],
+          "effective_index": 14,
+          "event_id": "sha256:61d0eb66bfd1e205f76c9b2143b2160e8d2a954d687d4836cb789e4002949995",
+          "kind": "ROUTE_AVAILABILITY",
+          "payload": {
+            "basis": "evening course enrollment for advanced fabrication certification",
+            "route": "ROUTE_INSTITUTIONAL",
+            "via": "INST_EVENING_CLASS_B"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:b096f9a28880487440024df160fa2250eef7cdb6a53ebf6dbcbd25cb9874b314"
+          ],
+          "effective_index": 15,
+          "event_id": "sha256:93ee39317c3d7b549ce3e187e7e051d5926ce78ef54f0f49bf3ead0857312c73",
+          "kind": "ROUTE_AVAILABILITY",
+          "payload": {
+            "basis": "commissioned repair contract at riverside workshop",
+            "route": "ROUTE_LOCAL_CLOSED",
+            "via": "INST_WORKSHOP_A"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:666663210d844a30fad8006b01c8767b613c4a342990316af7a52ea730343b7b"
+          ],
+          "effective_index": 16,
+          "event_id": "sha256:10c361f907452f4a2299435b5e4b6973742b83d6b7be7540ccbab9fcb2c8d3d1",
+          "kind": "ROUTE_AVAILABILITY",
+          "payload": {
+            "basis": "called to water-committee emergency repair as mechanic",
+            "route": "ROUTE_UNCONVENTIONAL",
+            "via": "INST_COMMUNITY_D"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:b096f9a28880487440024df160fa2250eef7cdb6a53ebf6dbcbd25cb9874b314"
+          ],
+          "effective_index": 17,
+          "event_id": "sha256:ff4083d733107d1376c7fb20d362909e347f4404d135994e3908cc2b14bf788b",
+          "kind": "COMMISSIONED_WORK",
+          "payload": {
+            "note": "route-establishing: workshop adjacency at encounter time",
+            "workplace": "INST_WORKSHOP_A"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:ff4083d733107d1376c7fb20d362909e347f4404d135994e3908cc2b14bf788b"
+          ],
+          "effective_index": 18,
+          "event_id": "sha256:3c287b27205fde1ae8e3738e8a6cc1aef5ddf4ea954e6be433841581695f6936",
+          "kind": "ENDPOINT_STATE",
+          "payload": {
+            "availability_status": "available_for_encounter",
+            "derived_from_event_id": "sha256:ff4083d733107d1376c7fb20d362909e347f4404d135994e3908cc2b14bf788b",
+            "derived_from_events": true,
+            "effective_time": "T_ENCOUNTER_LAB_WINDOW",
+            "place": "INST_WORKSHOP_A"
+          }
+        }
+      ],
+      "independent": {
+        "accepted": false,
+        "derived_place": "INST_WORKSHOP_A",
+        "errors": [
+          "MISSING_OR_FUTURE_CAUSAL_PARENT"
+        ]
+      },
+      "lab": {
+        "causal_edges_verified": 20,
+        "causal_error_codes": [
+          "MISSING_CAUSAL_PARENT"
+        ],
+        "causal_integrity_errors": [
+          {
+            "code": "MISSING_CAUSAL_PARENT",
+            "event_id": "sha256:666663210d844a30fad8006b01c8767b613c4a342990316af7a52ea730343b7b",
+            "parent": "ABSENT_PARENT"
+          }
+        ],
+        "endpoint_match": false,
+        "endpoint_state_derived_from_antecedent": true,
+        "endpoint_state_overwrite_by_endpoint_claim": "REFUSED",
+        "lab_rule": "PROVISIONAL_LAB_RULE__NOT_ADOPTED",
+        "n_events_replayed": 19,
+        "recomputed_state": {
+          "attitudes": [
+            "deliberate_under_uncertainty",
+            "reciprocity_in_work_obligations"
+          ],
+          "availability_status": "available_for_encounter",
+          "material_position": "waged_trades_senior",
+          "nonmother_relations": [
+            "FRIEND_K",
+            "SIBLING_M"
+          ],
+          "place": "INST_WORKSHOP_A",
+          "practices": [
+            "scheduled_maintenance_ledger_discipline"
+          ],
+          "projects": [
+            "shared_grain_silo_refit_and_rotation_ledger"
+          ]
+        },
+        "replay_seconds": 2e-05,
+        "status": "INTEGRITY_FAILURE",
+        "temporal_inversions": 0
+      }
+    },
+    "route_antecedent_removed": {
+      "constraints": {
+        "required_state_predicates": [
+          {
+            "equals": "INST_WORKSHOP_A",
+            "field": "place"
+          },
+          {
+            "equals": "available_for_encounter",
+            "field": "availability_status"
+          }
+        ],
+        "route_kind_id": "ROUTE_LOCAL_CLOSED",
+        "time_or_interval": "T_ENCOUNTER_LAB_WINDOW"
+      },
+      "events": [
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [],
+          "effective_index": 0,
+          "event_id": "sha256:5676ddf84dcb4c4d9464730534be69f4d114257778d26b058dee2a6d81b293b8",
+          "kind": "ORIGIN_FAMILY",
+          "payload": {
+            "household_occupation": "mixed_smallholding_and_repair_trade",
+            "region": "LOWLAND_DISTRICT",
+            "root_status": "LAB_ROOT_ADMITTED"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:5676ddf84dcb4c4d9464730534be69f4d114257778d26b058dee2a6d81b293b8"
+          ],
+          "effective_index": 1,
+          "event_id": "sha256:92e3fdb225e75dcb88cab965205a2718d4032392a90bf76daeaae5ba69f02b08",
+          "kind": "SCHOOLING",
+          "payload": {
+            "level": "secondary_complete",
+            "site": "COUNTY_SECONDARY"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:92e3fdb225e75dcb88cab965205a2718d4032392a90bf76daeaae5ba69f02b08"
+          ],
+          "effective_index": 2,
+          "event_id": "sha256:2ecbf841ab1726b32f97cac79ce0a7b9a973230c211c1295a87121a8d2d6445d",
+          "kind": "WORK_POSITION",
+          "payload": {
+            "material_position": "waged_trades",
+            "role": "apprentice_mechanic",
+            "workplace": "COUNTY_REPAIR_COOPERATIVE"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:2ecbf841ab1726b32f97cac79ce0a7b9a973230c211c1295a87121a8d2d6445d"
+          ],
+          "effective_index": 3,
+          "event_id": "sha256:b096f9a28880487440024df160fa2250eef7cdb6a53ebf6dbcbd25cb9874b314",
+          "kind": "WORK_POSITION",
+          "payload": {
+            "material_position": "waged_trades_senior",
+            "role": "journeyman_mechanic",
+            "workplace": "COUNTY_REPAIR_COOPERATIVE"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:b096f9a28880487440024df160fa2250eef7cdb6a53ebf6dbcbd25cb9874b314"
+          ],
+          "effective_index": 4,
+          "event_id": "sha256:666663210d844a30fad8006b01c8767b613c4a342990316af7a52ea730343b7b",
+          "kind": "PROJECT",
+          "payload": {
+            "consequential": true,
+            "durable_effect": "uptime_commitment_and_rotation_ledger",
+            "duration_index_span": [
+              30,
+              96
+            ],
+            "nonmother": true,
+            "project": "shared_grain_silo_refit_and_rotation_ledger",
+            "third_party": [
+              "WORK_COLLECTIVE",
+              "NEIGHBOR_FARMER"
+            ]
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:b096f9a28880487440024df160fa2250eef7cdb6a53ebf6dbcbd25cb9874b314"
+          ],
+          "effective_index": 5,
+          "event_id": "sha256:13bcee494773a7d845113e19b5e23c4fe8fe0dc535d26cd769991262800acf65",
+          "kind": "NONMOTHER_RELATIONSHIP",
+          "payload": {
+            "consequential": true,
+            "counterpart": "FRIEND_K",
+            "durable_effect": "tool_lending_and_repair_favor_ledger",
+            "nonmother": true,
+            "relation_kind": "close_friendship_with_mutual_aid_debt"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:5676ddf84dcb4c4d9464730534be69f4d114257778d26b058dee2a6d81b293b8"
+          ],
+          "effective_index": 6,
+          "event_id": "sha256:0305eecdd2348126a3bf1f5725a98705b4cd93e45ec01539e8a65d0f4eac13e2",
+          "kind": "NONMOTHER_RELATIONSHIP",
+          "payload": {
+            "consequential": true,
+            "counterpart": "SIBLING_M",
+            "nonmother": true,
+            "relation_kind": "sibling_support_obligation"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:666663210d844a30fad8006b01c8767b613c4a342990316af7a52ea730343b7b"
+          ],
+          "effective_index": 7,
+          "event_id": "sha256:d5db13a5da60a1680f6c559b53cd6815a3a5d5ba20dd2a1f137926bbf525dcf0",
+          "kind": "PRACTICE_FORMATION",
+          "payload": {
+            "causal_basis": "shared_grain_silo_refit_and_rotation_ledger failures from unscheduled neglect",
+            "causal_event_refs": [
+              "sha256:666663210d844a30fad8006b01c8767b613c4a342990316af7a52ea730343b7b"
+            ],
+            "practice": "scheduled_maintenance_ledger_discipline"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:666663210d844a30fad8006b01c8767b613c4a342990316af7a52ea730343b7b",
+            "sha256:13bcee494773a7d845113e19b5e23c4fe8fe0dc535d26cd769991262800acf65"
+          ],
+          "effective_index": 8,
+          "event_id": "sha256:c723cb69a5e755bb8b2fa11091782d6df6fb29af02d2db2887e27bd28457e335",
+          "kind": "ATTITUDE_FORMATION",
+          "payload": {
+            "attitude": "reciprocity_in_work_obligations",
+            "causal_basis": "collective rotation dependence and friend mutual-aid debt",
+            "causal_event_refs": [
+              "sha256:666663210d844a30fad8006b01c8767b613c4a342990316af7a52ea730343b7b",
+              "sha256:13bcee494773a7d845113e19b5e23c4fe8fe0dc535d26cd769991262800acf65"
+            ]
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:b096f9a28880487440024df160fa2250eef7cdb6a53ebf6dbcbd25cb9874b314"
+          ],
+          "effective_index": 9,
+          "event_id": "sha256:f170389e72cacf9f096b025ff3c344956b760a49fdc0e9d657b8fcc4de88890a",
+          "kind": "ATTITUDE_FORMATION",
+          "payload": {
+            "attitude": "deliberate_under_uncertainty",
+            "causal_basis": "repeated diagnosis work under time pressure",
+            "causal_event_refs": [
+              "sha256:b096f9a28880487440024df160fa2250eef7cdb6a53ebf6dbcbd25cb9874b314"
+            ]
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:666663210d844a30fad8006b01c8767b613c4a342990316af7a52ea730343b7b"
+          ],
+          "effective_index": 10,
+          "event_id": "sha256:6ba288f9a66a066487b9a84d80a28ca487f278b255e56d285adf80f49a81631e",
+          "kind": "MEMORY_TRACE",
+          "payload": {
+            "experienced_basis_event": "sha256:666663210d844a30fad8006b01c8767b613c4a342990316af7a52ea730343b7b",
+            "trace": "remembered_shared_grain_silo_refit_and_rotation_ledger_failure_episode"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:13bcee494773a7d845113e19b5e23c4fe8fe0dc535d26cd769991262800acf65"
+          ],
+          "effective_index": 11,
+          "event_id": "sha256:77867f1135d06761999661b6006f3af8008b0028f302defd42a49edbb810dd10",
+          "kind": "MEMORY_TRACE",
+          "payload": {
+            "experienced_basis_event": "sha256:13bcee494773a7d845113e19b5e23c4fe8fe0dc535d26cd769991262800acf65",
+            "trace": "remembered_friend_repaying_debt_after_repair"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:b096f9a28880487440024df160fa2250eef7cdb6a53ebf6dbcbd25cb9874b314"
+          ],
+          "effective_index": 12,
+          "event_id": "sha256:c64d0e62f3cb8fc3388ded79ee9a1dbbe48d4dec906ea4ba8cd5e38a1a787ca6",
+          "kind": "STRIVING",
+          "payload": {
+            "causal_basis": "journeyman wage ceiling and cooperative seniority rules",
+            "striving": "own_a_small_repair_bench_within_five_years"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:b096f9a28880487440024df160fa2250eef7cdb6a53ebf6dbcbd25cb9874b314"
+          ],
+          "effective_index": 13,
+          "event_id": "sha256:40f8794925262ea2530c4f130bf5f1fbde6d219203818e29dc126b20c9556fa3",
+          "kind": "ORGANISMIC_EVENT",
+          "payload": {
+            "event": "full_recovery_from_workplace_hand_injury",
+            "index_span": [
+              55,
+              70
+            ]
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL"
+          ],
+          "causal_parent_event_ids": [
+            "sha256:ff4083d733107d1376c7fb20d362909e347f4404d135994e3908cc2b14bf788b"
+          ],
+          "effective_index": 18,
+          "event_id": "sha256:3c287b27205fde1ae8e3738e8a6cc1aef5ddf4ea954e6be433841581695f6936",
+          "kind": "ENDPOINT_STATE",
+          "payload": {
+            "availability_status": "available_for_encounter",
+            "derived_from_event_id": "sha256:ff4083d733107d1376c7fb20d362909e347f4404d135994e3908cc2b14bf788b",
+            "derived_from_events": true,
+            "effective_time": "T_ENCOUNTER_LAB_WINDOW",
+            "place": "INST_WORKSHOP_A"
+          }
+        }
+      ],
+      "independent": {
+        "accepted": false,
+        "derived_place": null,
+        "errors": [
+          "MISSING_OR_FUTURE_CAUSAL_PARENT",
+          "ENDPOINT_ASSERTION_WITHOUT_ANTECEDENT"
+        ]
+      },
+      "lab": {
+        "causal_edges_verified": 15,
+        "causal_error_codes": [
+          "ENDPOINT_ASSERTION_WITHOUT_ANTECEDENT",
+          "ENDPOINT_AVAILABILITY_OVERWRITE_ATTEMPT",
+          "MISSING_CAUSAL_PARENT"
+        ],
+        "causal_integrity_errors": [
+          {
+            "code": "MISSING_CAUSAL_PARENT",
+            "event_id": "sha256:3c287b27205fde1ae8e3738e8a6cc1aef5ddf4ea954e6be433841581695f6936",
+            "parent": "sha256:ff4083d733107d1376c7fb20d362909e347f4404d135994e3908cc2b14bf788b"
+          },
+          {
+            "antecedent_place_basis_event_id": null,
+            "claimed_place": "INST_WORKSHOP_A",
+            "code": "ENDPOINT_ASSERTION_WITHOUT_ANTECEDENT",
+            "derived_place_from_antecedent": null,
+            "event_id": "sha256:3c287b27205fde1ae8e3738e8a6cc1aef5ddf4ea954e6be433841581695f6936"
+          },
+          {
+            "claimed": "available_for_encounter",
+            "code": "ENDPOINT_AVAILABILITY_OVERWRITE_ATTEMPT",
+            "derived_from_antecedent": "unavailable",
+            "event_id": "sha256:3c287b27205fde1ae8e3738e8a6cc1aef5ddf4ea954e6be433841581695f6936"
+          }
+        ],
+        "endpoint_match": false,
+        "endpoint_state_derived_from_antecedent": true,
+        "endpoint_state_overwrite_by_endpoint_claim": "REFUSED",
+        "lab_rule": "PROVISIONAL_LAB_RULE__NOT_ADOPTED",
+        "n_events_replayed": 15,
+        "recomputed_state": {
+          "attitudes": [
+            "deliberate_under_uncertainty",
+            "reciprocity_in_work_obligations"
+          ],
+          "availability_status": "unavailable",
+          "material_position": "waged_trades_senior",
+          "nonmother_relations": [
+            "FRIEND_K",
+            "SIBLING_M"
+          ],
+          "place": null,
+          "practices": [
+            "scheduled_maintenance_ledger_discipline"
+          ],
+          "projects": [
+            "shared_grain_silo_refit_and_rotation_ledger"
+          ]
+        },
+        "replay_seconds": 1.6e-05,
+        "status": "INTEGRITY_FAILURE",
+        "temporal_inversions": 0
+      }
+    }
+  },
+  "candidate_payload": {
+    "after": {
+      "adp020_entitlement": "NOT_GRANTED",
+      "adp020_hold": "ADP020_REAL_ROOT_SEED_REQUIRED",
+      "candidate_replay_hashes": {
+        "A": "sha256:98b728e7c55edc94d62a21495b8c0a9379e2b1fd159e8cafdb097604024a51f9",
+        "B": "sha256:11c24392647d350e9f9932b144da569de4925fc44b95416ce87ba36798b1faa6"
+      },
+      "candidate_set_hash": "sha256:d509644543e070c53139102aa174b3c5408ca882bedcff08887868fd224f92a3",
+      "candidate_set_hash_binds_payload": true,
+      "canonical_class_order": [
+        "A",
+        "B"
+      ],
+      "class_weights": [
+        {
+          "class_key": "A",
+          "weight_units": 1
+        },
+        {
+          "class_key": "B",
+          "weight_units": 1
+        }
+      ],
+      "decision_kind": "CONCEPTION_SCENARIO_SELECTION",
+      "decision_semantics_version": "SELECTION_DECISION_SEMANTICS@1.1-G13-REPAIRED",
+      "draw": {
+        "accepted_raw_u64": 8261584487138915715,
+        "adp020_entitlement": "NOT_GRANTED",
+        "authority": "NONE__NOT_ADP020",
+        "bound": 2,
+        "candidate_set_hash": "sha256:d509644543e070c53139102aa174b3c5408ca882bedcff08887868fd224f92a3",
+        "draw_coordinate_hash": "",
+        "draw_index": 0,
+        "draw_replay_hash": "",
+        "draw_value": 1,
+        "entropy_block_count": 1,
+        "hold": "ADP020_REAL_ROOT_SEED_REQUIRED",
+        "occurrence_index": 0,
+        "receipt_id": "sha256:feb4b7a31e474c12b8e5ac5aa896d0bc2df6ea70787a652e799a4ea03d9c44e8",
+        "rejection_limit_u64": 0,
+        "root_seed": "G12_SEED",
+        "root_seed_provenance": "LEGACY_LAB_ROOT_TOKEN",
+        "root_seed_sha256": "7bb2ca4e79af1522271e869f8fcb0e02eb3a96e75786b421ed5b2ca0acc5d0b9",
+        "sampler": "LEGACY_LAB_SHA256_CONCAT_MODULO_NOT_ADP020",
+        "scope_hash": "G12_SCOPE",
+        "scope_id": "G12_SCOPE",
+        "scope_kind": "GENEALOGY",
+        "scope_seed_sha256": "",
+        "seed_scheme": "LEGACY_LAB_SHA256_CONCAT_V0",
+        "slot": "conception_scenario_selection",
+        "stream": "v3.causal.adp015.conception_scenario_selection",
+        "stream_seed_sha256": ""
+      },
+      "draw_mode": "SCOPED_DETERMINISTIC_STREAM",
+      "draw_receipts": [
+        {
+          "accepted_raw_u64": 8261584487138915715,
+          "adp020_entitlement": "NOT_GRANTED",
+          "authority": "NONE__NOT_ADP020",
+          "bound": 2,
+          "candidate_set_hash": "sha256:d509644543e070c53139102aa174b3c5408ca882bedcff08887868fd224f92a3",
+          "draw_coordinate_hash": "",
+          "draw_index": 0,
+          "draw_replay_hash": "",
+          "draw_value": 1,
+          "entropy_block_count": 1,
+          "hold": "ADP020_REAL_ROOT_SEED_REQUIRED",
+          "occurrence_index": 0,
+          "receipt_id": "sha256:feb4b7a31e474c12b8e5ac5aa896d0bc2df6ea70787a652e799a4ea03d9c44e8",
+          "rejection_limit_u64": 0,
+          "root_seed": "G12_SEED",
+          "root_seed_provenance": "LEGACY_LAB_ROOT_TOKEN",
+          "root_seed_sha256": "7bb2ca4e79af1522271e869f8fcb0e02eb3a96e75786b421ed5b2ca0acc5d0b9",
+          "sampler": "LEGACY_LAB_SHA256_CONCAT_MODULO_NOT_ADP020",
+          "scope_hash": "G12_SCOPE",
+          "scope_id": "G12_SCOPE",
+          "scope_kind": "GENEALOGY",
+          "scope_seed_sha256": "",
+          "seed_scheme": "LEGACY_LAB_SHA256_CONCAT_V0",
+          "slot": "conception_scenario_selection",
+          "stream": "v3.causal.adp015.conception_scenario_selection",
+          "stream_seed_sha256": ""
+        }
+      ],
+      "eligible_set": [
+        "A",
+        "B"
+      ],
+      "n_draws": 1,
+      "no_population_frequency_claim": true,
+      "occurrence_index": 0,
+      "policy_hash": "sha256:bb8fff7da303849fc090918ddb1f2458edeca5f424a2ce70d1998c9f61d028b7",
+      "policy_name": "SIM_UNIFORM_CLASSES",
+      "policy_status": "SIMULATION_POLICY",
+      "root_seed": "G12_SEED",
+      "root_seed_provenance": "LEGACY_LAB_ROOT_TOKEN",
+      "sampler": null,
+      "scope_hash": "G12_SCOPE",
+      "selected_class_key": "B",
+      "selected_representative_id": "B",
+      "status": "COMMITTED",
+      "stream": "v3.causal.adp015.conception_scenario_selection",
+      "total_weight_units": 2,
+      "unreported_redraws": 0,
+      "upstream_class_set_hash": null
+    },
+    "before": {
+      "adp020_entitlement": "NOT_GRANTED",
+      "adp020_hold": "ADP020_REAL_ROOT_SEED_REQUIRED",
+      "candidate_replay_hashes": {
+        "A": "sha256:bdf8f9bc62c610d97fc5ff694b204e6fd062da93db41e0fefec7971de85775ad",
+        "B": "sha256:11c24392647d350e9f9932b144da569de4925fc44b95416ce87ba36798b1faa6"
+      },
+      "candidate_set_hash": "sha256:d8f4b18a7126626f2efb2aad8b6c0a4425096e15d505ad07e428dda57753dcb6",
+      "candidate_set_hash_binds_payload": true,
+      "canonical_class_order": [
+        "A",
+        "B"
+      ],
+      "class_weights": [
+        {
+          "class_key": "A",
+          "weight_units": 1
+        },
+        {
+          "class_key": "B",
+          "weight_units": 1
+        }
+      ],
+      "decision_kind": "CONCEPTION_SCENARIO_SELECTION",
+      "decision_semantics_version": "SELECTION_DECISION_SEMANTICS@1.1-G13-REPAIRED",
+      "draw": {
+        "accepted_raw_u64": 8261584487138915715,
+        "adp020_entitlement": "NOT_GRANTED",
+        "authority": "NONE__NOT_ADP020",
+        "bound": 2,
+        "candidate_set_hash": "sha256:d8f4b18a7126626f2efb2aad8b6c0a4425096e15d505ad07e428dda57753dcb6",
+        "draw_coordinate_hash": "",
+        "draw_index": 0,
+        "draw_replay_hash": "",
+        "draw_value": 1,
+        "entropy_block_count": 1,
+        "hold": "ADP020_REAL_ROOT_SEED_REQUIRED",
+        "occurrence_index": 0,
+        "receipt_id": "sha256:feb4b7a31e474c12b8e5ac5aa896d0bc2df6ea70787a652e799a4ea03d9c44e8",
+        "rejection_limit_u64": 0,
+        "root_seed": "G12_SEED",
+        "root_seed_provenance": "LEGACY_LAB_ROOT_TOKEN",
+        "root_seed_sha256": "7bb2ca4e79af1522271e869f8fcb0e02eb3a96e75786b421ed5b2ca0acc5d0b9",
+        "sampler": "LEGACY_LAB_SHA256_CONCAT_MODULO_NOT_ADP020",
+        "scope_hash": "G12_SCOPE",
+        "scope_id": "G12_SCOPE",
+        "scope_kind": "GENEALOGY",
+        "scope_seed_sha256": "",
+        "seed_scheme": "LEGACY_LAB_SHA256_CONCAT_V0",
+        "slot": "conception_scenario_selection",
+        "stream": "v3.causal.adp015.conception_scenario_selection",
+        "stream_seed_sha256": ""
+      },
+      "draw_mode": "SCOPED_DETERMINISTIC_STREAM",
+      "draw_receipts": [
+        {
+          "accepted_raw_u64": 8261584487138915715,
+          "adp020_entitlement": "NOT_GRANTED",
+          "authority": "NONE__NOT_ADP020",
+          "bound": 2,
+          "candidate_set_hash": "sha256:d8f4b18a7126626f2efb2aad8b6c0a4425096e15d505ad07e428dda57753dcb6",
+          "draw_coordinate_hash": "",
+          "draw_index": 0,
+          "draw_replay_hash": "",
+          "draw_value": 1,
+          "entropy_block_count": 1,
+          "hold": "ADP020_REAL_ROOT_SEED_REQUIRED",
+          "occurrence_index": 0,
+          "receipt_id": "sha256:feb4b7a31e474c12b8e5ac5aa896d0bc2df6ea70787a652e799a4ea03d9c44e8",
+          "rejection_limit_u64": 0,
+          "root_seed": "G12_SEED",
+          "root_seed_provenance": "LEGACY_LAB_ROOT_TOKEN",
+          "root_seed_sha256": "7bb2ca4e79af1522271e869f8fcb0e02eb3a96e75786b421ed5b2ca0acc5d0b9",
+          "sampler": "LEGACY_LAB_SHA256_CONCAT_MODULO_NOT_ADP020",
+          "scope_hash": "G12_SCOPE",
+          "scope_id": "G12_SCOPE",
+          "scope_kind": "GENEALOGY",
+          "scope_seed_sha256": "",
+          "seed_scheme": "LEGACY_LAB_SHA256_CONCAT_V0",
+          "slot": "conception_scenario_selection",
+          "stream": "v3.causal.adp015.conception_scenario_selection",
+          "stream_seed_sha256": ""
+        }
+      ],
+      "eligible_set": [
+        "A",
+        "B"
+      ],
+      "n_draws": 1,
+      "no_population_frequency_claim": true,
+      "occurrence_index": 0,
+      "policy_hash": "sha256:bb8fff7da303849fc090918ddb1f2458edeca5f424a2ce70d1998c9f61d028b7",
+      "policy_name": "SIM_UNIFORM_CLASSES",
+      "policy_status": "SIMULATION_POLICY",
+      "root_seed": "G12_SEED",
+      "root_seed_provenance": "LEGACY_LAB_ROOT_TOKEN",
+      "sampler": null,
+      "scope_hash": "G12_SCOPE",
+      "selected_class_key": "B",
+      "selected_representative_id": "B",
+      "status": "COMMITTED",
+      "stream": "v3.causal.adp015.conception_scenario_selection",
+      "total_weight_units": 2,
+      "unreported_redraws": 0,
+      "upstream_class_set_hash": null
+    }
+  },
+  "embargo": {
+    "psyche": {
+      "prompt": "{\"hard_rules\": [\"candidate_kind in {KNOWN_COUNTERPART, PROVISIONAL_COUNTERPART, NONOCCURRENCE}\", \"plausibility_rank_ordinal is an ordinal rank only, never a frequency\", \"no future-child outcome may be referenced anywhere\"], \"instruction\": \"Propose finite conception-scenario encounter candidates for the pending target.\", \"max_proposals\": 4, \"mother_anchor_visible_fields\": {\"actor_id\": \"LAB_MOTHER_M0\", \"already_generated_child_refs\": [], \"known_counterpart_identity_ref_or_null\": null, \"mobility_history_present\": false, \"psyche\": {\"attitudes\": [{\"attitude\": \"self_reliance_under_deadline\", \"causal_event_refs\": [\"sha256:8adf0e9a6b0766412658b4ca3823acdea0b2d186de3b85407e6f833e1e0fb2d3\", \"sha256:a610a7868905cedbf89b6fb7c94d1cb7d2d97ee1a905b799adcf870e59610885\", \"sha256:a0832ec66870ad8c83dc97d18807e29371b0cf01553bbce9f70cefc678be5b1f\"]}], \"future_child_desired_adversity_tag\": \"__FUTURE_CHILD_MATERIAL_REDACTED_EMBARGO__\", \"practices\": [{\"causal_event_refs\": [\"sha256:a0832ec66870ad8c83dc97d18807e29371b0cf01553bbce9f70cefc678be5b1f\", \"sha256:a610a7868905cedbf89b6fb7c94d1cb7d2d97ee1a905b799adcf870e59610885\"], \"practice\": \"measure_twice_cut_once_workshop_discipline\"}], \"strivings\": [{\"causal_event_refs\": [\"sha256:ce8a5de77bc75eb1284e3c675dd49a0a53dae714573273257ec0500ebd67ead4\", \"sha256:a610a7868905cedbf89b6fb7c94d1cb7d2d97ee1a905b799adcf870e59610885\", \"sha256:8adf0e9a6b0766412658b4ca3823acdea0b2d186de3b85407e6f833e1e0fb2d3\"], \"striving\": \"complete_evening_technical_certificate\"}]}, \"route_availability\": [\"ROUTE_INSTITUTIONAL\", \"ROUTE_LOCAL_CLOSED\", \"ROUTE_MOBILITY\", \"ROUTE_UNCONVENTIONAL\"], \"t_preconception\": \"T_PRECONCEPTION_LAB_BOUNDARY\", \"variant\": \"M0\"}, \"pending_target\": {\"target_status\": \"PENDING_NONCAUSAL\"}, \"required_candidate_fields\": [\"candidate_local_id\", \"candidate_kind\", \"route_kind_id\", \"endpoint_constraints\", \"assumptions\", \"falsifiers\", \"plausibility_rank_ordinal\"], \"route_filter\": null, \"scenario_grammar_version\": \"SCENARIO_CANDIDATE_GRAMMAR@1.0-LAB\", \"world_summary\": {\"world_id\": \"G12_WORLD\"}}",
+      "sentinel_visible": false
+    },
+    "target": {
+      "prompt": "{\"hard_rules\": [\"candidate_kind in {KNOWN_COUNTERPART, PROVISIONAL_COUNTERPART, NONOCCURRENCE}\", \"plausibility_rank_ordinal is an ordinal rank only, never a frequency\", \"no future-child outcome may be referenced anywhere\"], \"instruction\": \"Propose finite conception-scenario encounter candidates for the pending target.\", \"max_proposals\": 4, \"mother_anchor_visible_fields\": {\"actor_id\": \"LAB_MOTHER_M0\", \"already_generated_child_refs\": [], \"known_counterpart_identity_ref_or_null\": null, \"mobility_history_present\": false, \"psyche\": {\"attitudes\": [{\"attitude\": \"self_reliance_under_deadline\", \"causal_event_refs\": [\"sha256:8adf0e9a6b0766412658b4ca3823acdea0b2d186de3b85407e6f833e1e0fb2d3\", \"sha256:a610a7868905cedbf89b6fb7c94d1cb7d2d97ee1a905b799adcf870e59610885\", \"sha256:a0832ec66870ad8c83dc97d18807e29371b0cf01553bbce9f70cefc678be5b1f\"]}], \"practices\": [{\"causal_event_refs\": [\"sha256:a0832ec66870ad8c83dc97d18807e29371b0cf01553bbce9f70cefc678be5b1f\", \"sha256:a610a7868905cedbf89b6fb7c94d1cb7d2d97ee1a905b799adcf870e59610885\"], \"practice\": \"measure_twice_cut_once_workshop_discipline\"}], \"strivings\": [{\"causal_event_refs\": [\"sha256:ce8a5de77bc75eb1284e3c675dd49a0a53dae714573273257ec0500ebd67ead4\", \"sha256:a610a7868905cedbf89b6fb7c94d1cb7d2d97ee1a905b799adcf870e59610885\", \"sha256:8adf0e9a6b0766412658b4ca3823acdea0b2d186de3b85407e6f833e1e0fb2d3\"], \"striving\": \"complete_evening_technical_certificate\"}]}, \"route_availability\": [\"ROUTE_INSTITUTIONAL\", \"ROUTE_LOCAL_CLOSED\", \"ROUTE_MOBILITY\", \"ROUTE_UNCONVENTIONAL\"], \"t_preconception\": \"T_PRECONCEPTION_LAB_BOUNDARY\", \"variant\": \"M0\"}, \"pending_target\": {\"future_child_desired_adversity_tag\": \"__FUTURE_CHILD_MATERIAL_REDACTED_EMBARGO__\", \"target_status\": \"PENDING_NONCAUSAL\"}, \"required_candidate_fields\": [\"candidate_local_id\", \"candidate_kind\", \"route_kind_id\", \"endpoint_constraints\", \"assumptions\", \"falsifiers\", \"plausibility_rank_ordinal\"], \"route_filter\": null, \"scenario_grammar_version\": \"SCENARIO_CANDIDATE_GRAMMAR@1.0-LAB\", \"world_summary\": {\"world_id\": \"G12_WORLD\"}}",
+      "sentinel_visible": false
+    },
+    "world": {
+      "prompt": "{\"hard_rules\": [\"candidate_kind in {KNOWN_COUNTERPART, PROVISIONAL_COUNTERPART, NONOCCURRENCE}\", \"plausibility_rank_ordinal is an ordinal rank only, never a frequency\", \"no future-child outcome may be referenced anywhere\"], \"instruction\": \"Propose finite conception-scenario encounter candidates for the pending target.\", \"max_proposals\": 4, \"mother_anchor_visible_fields\": {\"actor_id\": \"LAB_MOTHER_M0\", \"already_generated_child_refs\": [], \"known_counterpart_identity_ref_or_null\": null, \"mobility_history_present\": false, \"psyche\": {\"attitudes\": [{\"attitude\": \"self_reliance_under_deadline\", \"causal_event_refs\": [\"sha256:8adf0e9a6b0766412658b4ca3823acdea0b2d186de3b85407e6f833e1e0fb2d3\", \"sha256:a610a7868905cedbf89b6fb7c94d1cb7d2d97ee1a905b799adcf870e59610885\", \"sha256:a0832ec66870ad8c83dc97d18807e29371b0cf01553bbce9f70cefc678be5b1f\"]}], \"practices\": [{\"causal_event_refs\": [\"sha256:a0832ec66870ad8c83dc97d18807e29371b0cf01553bbce9f70cefc678be5b1f\", \"sha256:a610a7868905cedbf89b6fb7c94d1cb7d2d97ee1a905b799adcf870e59610885\"], \"practice\": \"measure_twice_cut_once_workshop_discipline\"}], \"strivings\": [{\"causal_event_refs\": [\"sha256:ce8a5de77bc75eb1284e3c675dd49a0a53dae714573273257ec0500ebd67ead4\", \"sha256:a610a7868905cedbf89b6fb7c94d1cb7d2d97ee1a905b799adcf870e59610885\", \"sha256:8adf0e9a6b0766412658b4ca3823acdea0b2d186de3b85407e6f833e1e0fb2d3\"], \"striving\": \"complete_evening_technical_certificate\"}]}, \"route_availability\": [\"ROUTE_INSTITUTIONAL\", \"ROUTE_LOCAL_CLOSED\", \"ROUTE_MOBILITY\", \"ROUTE_UNCONVENTIONAL\"], \"t_preconception\": \"T_PRECONCEPTION_LAB_BOUNDARY\", \"variant\": \"M0\"}, \"pending_target\": {\"target_status\": \"PENDING_NONCAUSAL\"}, \"required_candidate_fields\": [\"candidate_local_id\", \"candidate_kind\", \"route_kind_id\", \"endpoint_constraints\", \"assumptions\", \"falsifiers\", \"plausibility_rank_ordinal\"], \"route_filter\": null, \"scenario_grammar_version\": \"SCENARIO_CANDIDATE_GRAMMAR@1.0-LAB\", \"world_summary\": {\"future_child_desired_adversity_tag\": \"__FUTURE_CHILD_MATERIAL_REDACTED_EMBARGO__\", \"world_id\": \"G12_WORLD\"}}",
+      "sentinel_visible": false
+    }
+  },
+  "empty": {
+    "lab_rule": "PROVISIONAL_LAB_RULE__NOT_ADOPTED",
+    "n_draws": 0,
+    "reason": "no eligible classes; zero draws",
+    "status": "SCENARIOS_VALID_EMPTY"
+  },
+  "native": {
+    "chain": {
+      "adp016_trace": {
+        "content_first_person_readable": false,
+        "memory_accessibility_state": "NOT_APPLICABLE_CAUSAL_TRACE",
+        "memory_id": "752391fcda301daec63b65356eae38e6c2b9e654eda9c6031124d088603eb787",
+        "must_not_output": [
+          "actor_knows",
+          "actor_believes",
+          "may_claim_first_person",
+          "V2_may_render_as_fact"
+        ],
+        "representation_kind": "CAUSAL_TRACE_MEMORY",
+        "retention_state": "RETAINED",
+        "status": "ADP016_TRACE_COMMITTED_IN_FIXTURE"
+      },
+      "adp017_epistemic": {
+        "accessible_memory_auto_creates_stance": false,
+        "decision_state": "APPLIED_EPISTEMIC_TRANSITION",
+        "grade": "TEST_ONLY_CANDIDATE_STATE",
+        "stance_kind": "BELIEF",
+        "stance_operation": "ADD"
+      },
+      "causal_order_enforced": true,
+      "chain_grain": "SOURCEFREE_CANDIDATE_CHAIN__NOT_ADOPTED__NOT_V3_OPERATION",
+      "chain_version": "CAN2_SOURCEFREE_CHAIN@2",
+      "coupling_decision_state": "COUPLING_EVALUATED",
+      "event_snapshots": [
+        {
+          "candidate_only": true,
+          "event": "EV1_FEEDBACK_WINDOW_ENCOUNTER",
+          "ledger_hash": "2974d4810176cc6fd455291962c0d84ac5a79fa930077d2dc699da751e6544de",
+          "state_hash": "a734e1557e12e6c941d3571aaf8cbd15c331048a1a417f7bf42587b34b9b6c0e"
+        }
+      ],
+      "full_replay_digest": "0cab0d9241712c10a35668bc46dd3bf139bdf846dc6bfeff9bdd2ea601d07e06",
+      "later_event_response": {
+        "candidate_state_read_hash": "a734e1557e12e6c941d3571aaf8cbd15c331048a1a417f7bf42587b34b9b6c0e",
+        "commit": "COMMITTED_IN_CAUSAL_ORDER",
+        "effect_kind": "DEFLECT",
+        "event2_id": "EV2_LATER_SHIFT_CHANGE_REQUEST",
+        "prior_effect_read": true,
+        "prior_effect_refs": [
+          "e1ffc7bd327fed31f3a8ae4b993de80d46b74fb0c9d988dc3fc4dab8628b59be"
+        ],
+        "receipt2_hash": "676b72b7827f6b2df645bde836b9b870b95d4fa753bb158581e52454cdbe8376"
+      },
+      "later_response_typed_difference": {
+        "control_digest": "8a8cf5fee22ca732bba3d05d7e39ecd03da5ef15376a463a57b31e9c0ac682ee",
+        "control_executed": true,
+        "control_without_prior_effect": "AMPLIFY",
+        "typed_difference": true,
+        "with_prior_effect": "DEFLECT"
+      },
+      "ledger_hash": "4bd74f8186bcf9a4dbaaf9b2dd1cf6ddf418005d97789f9fbaed03fc58872611",
+      "n_ledger_entries": 4,
+      "occurrence_gate": {
+        "event_hash": "bded26ff9bc599e7c8e08c7f52c4b1c31e9a1b5050a1fe9ddf34a2adc7376002",
+        "event_id": "EV1_FEEDBACK_WINDOW_ENCOUNTER",
+        "status": "ADMITTED_OCCURRENCE"
+      },
+      "production_owner_hold": "HOLD_NO_ACCEPTED_DESTINATION_OWNER_AUTHORITY",
+      "public_standing_hold": "HOLD_NO_PUBLIC_RATIFICATION_OWNER",
+      "receivability": "RECEIVABLE",
+      "response_durability": "NON_DURABLE_CURRENT_CONSEQUENCE",
+      "response_effect_kind": "BUFFER",
+      "response_receipt_hash": "b685b6ffccf7e18fb22c803961cfaa2c693c3e630555f7ae7b22e378a6363e9f",
+      "rule_registration": {
+        "fixture_grain": "SOURCEFREE_CANDIDATE_FIXTURE__NOT_ACCEPTED_AUTHORIZATION",
+        "fixture_id": "WORKER_CANDIDATE_REGISTRY_FIXTURE",
+        "production_registry_mutated": false,
+        "rule_key": "CAND_R_CAN008_COUPLING_RESPONSE@2.0.0-candidate",
+        "status": "CANDIDATE_REGISTERED_IN_FIXTURE"
+      },
+      "situated_recruitment": [
+        "ASK_CLARIFICATION",
+        "KEEP_STABLE_SHIFT"
+      ],
+      "state": {
+        "actor_id": "ACTOR_SYNTH_1",
+        "claims": {
+          "b9da423ad1d139ebfb7c7beae4c15a7d59f24468d56bade091c0ab8a345903b4": {
+            "canonical_content_hash": "fd985e1fc4a7e248d5a714fb8639cee459a37488f881e52124cc7bd517e5205c",
+            "claim_id": "b9da423ad1d139ebfb7c7beae4c15a7d59f24468d56bade091c0ab8a345903b4",
+            "claim_schema_version": "1",
+            "integrity_state": "INTACT",
+            "object_or_value": "RESPECTED",
+            "polarity": "POSITIVE",
+            "predicate_ref": "FIXTURE_PRIVATE_FEEDBACK_APPRAISAL",
+            "referent_refs": [
+              "EV1_FEEDBACK_WINDOW_ENCOUNTER"
+            ],
+            "subject_ref": "ACTOR_SYNTH_1",
+            "subject_scope": "ACTOR_SYNTH_1",
+            "temporal_scope": "1998-10-03T16:00:00Z"
+          }
+        },
+        "emissions": {
+          "b9da423ad1d139ebfb7c7beae4c15a7d59f24468d56bade091c0ab8a345903b4": {
+            "event_hash": "bded26ff9bc599e7c8e08c7f52c4b1c31e9a1b5050a1fe9ddf34a2adc7376002",
+            "event_id": "EV1_FEEDBACK_WINDOW_ENCOUNTER",
+            "operations": [
+              "ADD",
+              "WITHDRAW",
+              "SUPERSEDE_EXACT_RECORD",
+              "NO_CHANGE"
+            ],
+            "rule_hash": "34327f61afd18355201144b813ac0164540594fc17d7a0a3c0d9793810eb3a2a",
+            "stance_kind": "BELIEF"
+          }
+        },
+        "epistemic_transitions": [
+          {
+            "actor_id": "ACTOR_SYNTH_1",
+            "authority_hash": "eece4f3f2f3f9288ab9bbc645dc81e20a99e1280",
+            "causal_parent_refs": [
+              "EV1_FEEDBACK_WINDOW_ENCOUNTER"
+            ],
+            "effect": {
+              "actor_facing_basis_refs": [
+                "EV1_FEEDBACK_WINDOW_ENCOUNTER:bded26ff9bc599e7c8e08c7f52c4b1c31e9a1b5050a1fe9ddf34a2adc7376002"
+              ],
+              "actor_id": "ACTOR_SYNTH_1",
+              "causal_parent_refs": [
+                "EV1_FEEDBACK_WINDOW_ENCOUNTER"
+              ],
+              "claim_ref": "b9da423ad1d139ebfb7c7beae4c15a7d59f24468d56bade091c0ab8a345903b4",
+              "effect_id": "c18e28ca4e2205695bc031a38bfcc8e1e8034ef6b3d2a68d8216b0486ef2661b",
+              "effective_causal_time": "1998-10-03T16:00:00Z",
+              "memory_basis_refs": [
+                "752391fcda301daec63b65356eae38e6c2b9e654eda9c6031124d088603eb787"
+              ],
+              "owning_rule_hash": "34327f61afd18355201144b813ac0164540594fc17d7a0a3c0d9793810eb3a2a",
+              "owning_rule_id": "CAND_R_CAN008_COUPLING_RESPONSE",
+              "owning_rule_version": "2.0.0-candidate",
+              "stance_kind": "BELIEF",
+              "stance_operation": "ADD"
+            },
+            "post_stance_set_hash": "5bae1c63d98f36b9f41d0e9c54b6b1c95dfd98057a6dab8f9394f82a1c9c21b4",
+            "post_state_set_hash": "1aafc5b8a4aaa5e98f421287367826701cdbe5eb8f5f276bc07073edc5e5a125",
+            "pre_state_hash": "438954b6bd08fe2f5959d893a72682798d8d173bf357f67e4af724e6a38a2a22",
+            "target_record_ref": null,
+            "transition_id": "675e7cb71a6b02bc5f4b220a39d7755a4b4dd36fcab79fd0bf477fe04b786921"
+          }
+        ],
+        "memories": {
+          "752391fcda301daec63b65356eae38e6c2b9e654eda9c6031124d088603eb787": {
+            "actor_id": "ACTOR_SYNTH_1",
+            "current_state_hash": "cd33820303d561b21ef5aa29509b94f24683260eb1f19a244bc47b8d474cd666",
+            "formation_transition_id": "c8d9d8cb310d4627aae74cba1c169d37095cf585a9bfdb35814793df13f6111d",
+            "integrity_state": "INTACT",
+            "last_transition_effective_time": "1998-10-03T16:00:00Z",
+            "last_transition_id": "c8d9d8cb310d4627aae74cba1c169d37095cf585a9bfdb35814793df13f6111d",
+            "memory_accessibility_state": "NOT_APPLICABLE_CAUSAL_TRACE",
+            "memory_id": "752391fcda301daec63b65356eae38e6c2b9e654eda9c6031124d088603eb787",
+            "objective_source_event_refs": [
+              "EV1_FEEDBACK_WINDOW_ENCOUNTER:bded26ff9bc599e7c8e08c7f52c4b1c31e9a1b5050a1fe9ddf34a2adc7376002"
+            ],
+            "representation_kind": "CAUSAL_TRACE_MEMORY",
+            "retention_state": "RETAINED",
+            "source_feature_bindings": [
+              "{\"feature\":\"shift_feedback_window_open\",\"source_event\":\"EV1_FEEDBACK_WINDOW_ENCOUNTER:bded26ff9bc599e7c8e08c7f52c4b1c31e9a1b5050a1fe9ddf34a2adc7376002\",\"state\":\"AVAILABLE_SOURCE_BOUND\"}",
+              "{\"feature\":\"supervisor_solicits_comment\",\"source_event\":\"EV1_FEEDBACK_WINDOW_ENCOUNTER:bded26ff9bc599e7c8e08c7f52c4b1c31e9a1b5050a1fe9ddf34a2adc7376002\",\"state\":\"AVAILABLE_SOURCE_BOUND\"}"
+            ],
+            "uncertainty_state": "CERTAIN"
+          }
+        },
+        "memory_transitions": {
+          "c8d9d8cb310d4627aae74cba1c169d37095cf585a9bfdb35814793df13f6111d": {
+            "actor_id": "ACTOR_SYNTH_1",
+            "authority_id": "WORKER_CANDIDATE_FIXTURE",
+            "authority_or_rule_hash": "34327f61afd18355201144b813ac0164540594fc17d7a0a3c0d9793810eb3a2a",
+            "authority_version": "1",
+            "causal_parent_event_refs": [
+              "EV1_FEEDBACK_WINDOW_ENCOUNTER"
+            ],
+            "cue_or_trigger_refs": [],
+            "decision_state": "FORMATION_VALIDATED_IN_FIXTURE",
+            "effective_causal_time": "1998-10-03T16:00:00Z",
+            "feature_state_after_hash": "3891c7c58257a4157c72584fc99150c22345e3a17558f697cf8fd998c92c65eb",
+            "feature_state_before_hash": "2f5272d0a8559c1ab70414e66804f02bf4897dcc7c8921153bb643afaf22392c",
+            "integrity_state": "INTACT",
+            "memory_id": "752391fcda301daec63b65356eae38e6c2b9e654eda9c6031124d088603eb787",
+            "memory_rule_hash": "a9b8c5b24407b0e03a99cd33d54a3f4725e28fb463fe41c7603a92e2010bd6e6",
+            "memory_rule_id": "CAND_ADP016_TRACE_COMMIT",
+            "memory_rule_version": "2.0.0-candidate",
+            "memory_transition_id": "c8d9d8cb310d4627aae74cba1c169d37095cf585a9bfdb35814793df13f6111d",
+            "objective_source_event_refs": [
+              "EV1_FEEDBACK_WINDOW_ENCOUNTER:bded26ff9bc599e7c8e08c7f52c4b1c31e9a1b5050a1fe9ddf34a2adc7376002"
+            ],
+            "post_state_hash": "cd33820303d561b21ef5aa29509b94f24683260eb1f19a244bc47b8d474cd666",
+            "pre_state_hash": "8cc61c5d9b64d375c2c59a69d695d6b4b65358d7864a5d2da4c595445c122440",
+            "transition_kind": "FORMATION"
+          }
+        },
+        "permissions": {
+          "b9da423ad1d139ebfb7c7beae4c15a7d59f24468d56bade091c0ab8a345903b4": {
+            "actor_id": "ACTOR_SYNTH_1",
+            "basis_refs": [
+              "EV1_FEEDBACK_WINDOW_ENCOUNTER:bded26ff9bc599e7c8e08c7f52c4b1c31e9a1b5050a1fe9ddf34a2adc7376002"
+            ],
+            "claim_id": "b9da423ad1d139ebfb7c7beae4c15a7d59f24468d56bade091c0ab8a345903b4",
+            "epistemic_state_hash": "1aafc5b8a4aaa5e98f421287367826701cdbe5eb8f5f276bc07073edc5e5a125",
+            "hidden_origin_claimable": false,
+            "permission": "PERMIT_FIRST_PERSON_BELIEF",
+            "permission_source": "TEST_ONLY_CANDIDATE_STATE; NOT_ACCEPTED_OWNER"
+          }
+        },
+        "stances": {
+          "c18e28ca4e2205695bc031a38bfcc8e1e8034ef6b3d2a68d8216b0486ef2661b": {
+            "actor_facing_basis_refs": [
+              "EV1_FEEDBACK_WINDOW_ENCOUNTER:bded26ff9bc599e7c8e08c7f52c4b1c31e9a1b5050a1fe9ddf34a2adc7376002"
+            ],
+            "actor_id": "ACTOR_SYNTH_1",
+            "causal_parent_refs": [
+              "EV1_FEEDBACK_WINDOW_ENCOUNTER"
+            ],
+            "claim_ref": "b9da423ad1d139ebfb7c7beae4c15a7d59f24468d56bade091c0ab8a345903b4",
+            "effect_id": "c18e28ca4e2205695bc031a38bfcc8e1e8034ef6b3d2a68d8216b0486ef2661b",
+            "effective_causal_time": "1998-10-03T16:00:00Z",
+            "memory_basis_refs": [
+              "752391fcda301daec63b65356eae38e6c2b9e654eda9c6031124d088603eb787"
+            ],
+            "owning_rule_hash": "34327f61afd18355201144b813ac0164540594fc17d7a0a3c0d9793810eb3a2a",
+            "owning_rule_id": "CAND_R_CAN008_COUPLING_RESPONSE",
+            "owning_rule_version": "2.0.0-candidate",
+            "stance_kind": "BELIEF",
+            "stance_operation": "ADD"
+          }
+        },
+        "state_sets": {
+          "b9da423ad1d139ebfb7c7beae4c15a7d59f24468d56bade091c0ab8a345903b4": {
+            "accessibility_basis_refs": [
+              "EV1_FEEDBACK_WINDOW_ENCOUNTER:bded26ff9bc599e7c8e08c7f52c4b1c31e9a1b5050a1fe9ddf34a2adc7376002"
+            ],
+            "active_stance_records": [
+              {
+                "actor_facing_basis_refs": [
+                  "EV1_FEEDBACK_WINDOW_ENCOUNTER:bded26ff9bc599e7c8e08c7f52c4b1c31e9a1b5050a1fe9ddf34a2adc7376002"
+                ],
+                "actor_id": "ACTOR_SYNTH_1",
+                "causal_parent_refs": [
+                  "EV1_FEEDBACK_WINDOW_ENCOUNTER"
+                ],
+                "claim_ref": "b9da423ad1d139ebfb7c7beae4c15a7d59f24468d56bade091c0ab8a345903b4",
+                "effect_id": "c18e28ca4e2205695bc031a38bfcc8e1e8034ef6b3d2a68d8216b0486ef2661b",
+                "effective_causal_time": "1998-10-03T16:00:00Z",
+                "memory_basis_refs": [
+                  "752391fcda301daec63b65356eae38e6c2b9e654eda9c6031124d088603eb787"
+                ],
+                "owning_rule_hash": "34327f61afd18355201144b813ac0164540594fc17d7a0a3c0d9793810eb3a2a",
+                "owning_rule_id": "CAND_R_CAN008_COUPLING_RESPONSE",
+                "owning_rule_version": "2.0.0-candidate",
+                "stance_kind": "BELIEF",
+                "stance_operation": "ADD"
+              }
+            ],
+            "actor_id": "ACTOR_SYNTH_1",
+            "analyst_relation": "OBJECTIVE_UNRESOLVED",
+            "claim_id": "b9da423ad1d139ebfb7c7beae4c15a7d59f24468d56bade091c0ab8a345903b4",
+            "current_claim_accessibility": "CLAIM_ACCESSIBLE",
+            "current_state_hash": "1aafc5b8a4aaa5e98f421287367826701cdbe5eb8f5f276bc07073edc5e5a125",
+            "integrity_state": "INTACT",
+            "last_transition_ref": "675e7cb71a6b02bc5f4b220a39d7755a4b4dd36fcab79fd0bf477fe04b786921",
+            "objective_relation_authority": "HOLD_NO_OBJECTIVE_TRUTH_OWNER"
+          }
+        }
+      },
+      "state_hash": "a734e1557e12e6c941d3571aaf8cbd15c331048a1a417f7bf42587b34b9b6c0e",
+      "target_commit_scope": "CAN008_CURRENT_HISTORY_ONLY; fixture ADP state is separate",
+      "target_owner_effect_committed": true,
+      "terminal": "CHAIN_COMPLETE",
+      "uptake_appraisal_projection": {
+        "basis": [
+          "shift_feedback_window_open",
+          "supervisor_solicits_comment"
+        ],
+        "is_durable_belief": false,
+        "is_machine_reading": false,
+        "projection": "bounded public-feature appraisal"
+      },
+      "wall_seconds": 0.047783
+    },
+    "control_admission": {
+      "event_hash": "2201b7dc928e800d03ad47d78bc6e25492dbb73d1d8b0a5c360b6766a61ed9c1",
+      "event_id": "G12_EXACT_FEEDBACK",
+      "issuer_authority_id": "ISSUER_AUTH_WORLD_SCHED",
+      "issuer_authority_version": "1",
+      "kind": "EVENT_IDENTITY",
+      "status": "EVENT_IDENTITY_ADMITTED_IN_FIXTURE"
+    },
+    "control_commit": {
+      "memory_id": "5a5bc7dab9ca72bd7b5e906151e4087dbff2da184b9e13661bd9390aed9b11aa",
+      "production_owner_commit": false,
+      "state_hash": "4fa9d2a27132d83b3335986f19f4bf5afc2c3ad9f59e9d6709d0b3f8cf4db757",
+      "status": "ADP016_TRACE_COMMITTED_IN_FIXTURE"
+    },
+    "control_proposal": {
+      "committed": false,
+      "exports_to_adp017_only": true,
+      "first_person_origin_claimable": false,
+      "hold": "NO_ACCEPTED_DESTINATION_OWNER_AUTHORITY",
+      "memory": {
+        "actor_id": "ACTOR_SYNTH_1",
+        "current_state_hash": "bd9b2a1e414f17e2155ddbc00fb849ea93d8173d49b93ac31e558136158cb33b",
+        "formation_transition_id": "b3cbb373f3e779773a5ee1132758a71a2a475514dd38b9f1e1062e559dd30def",
+        "integrity_state": "INTACT",
+        "last_transition_effective_time": "1998-10-03T16:00:00Z",
+        "last_transition_id": "b3cbb373f3e779773a5ee1132758a71a2a475514dd38b9f1e1062e559dd30def",
+        "memory_accessibility_state": "NOT_APPLICABLE_CAUSAL_TRACE",
+        "memory_id": "5a5bc7dab9ca72bd7b5e906151e4087dbff2da184b9e13661bd9390aed9b11aa",
+        "objective_source_event_refs": [
+          "G12_EXACT_FEEDBACK:2201b7dc928e800d03ad47d78bc6e25492dbb73d1d8b0a5c360b6766a61ed9c1"
+        ],
+        "representation_kind": "CAUSAL_TRACE_MEMORY",
+        "retention_state": "RETAINED",
+        "source_feature_bindings": [
+          "{\"feature\":\"shift_feedback_window_open\",\"source_event\":\"G12_EXACT_FEEDBACK:2201b7dc928e800d03ad47d78bc6e25492dbb73d1d8b0a5c360b6766a61ed9c1\",\"state\":\"AVAILABLE_SOURCE_BOUND\"}",
+          "{\"feature\":\"supervisor_solicits_comment\",\"source_event\":\"G12_EXACT_FEEDBACK:2201b7dc928e800d03ad47d78bc6e25492dbb73d1d8b0a5c360b6766a61ed9c1\",\"state\":\"AVAILABLE_SOURCE_BOUND\"}"
+        ],
+        "uncertainty_state": "CERTAIN"
+      },
+      "must_not_output": [
+        "actor_knows",
+        "actor_believes",
+        "may_claim_first_person",
+        "V2_may_render_as_fact"
+      ],
+      "pre_state_hash": "8cc61c5d9b64d375c2c59a69d695d6b4b65358d7864a5d2da4c595445c122440",
+      "production_owner_commit": false,
+      "status": "ADP016_FORMATION_VALIDATED_IN_FIXTURE",
+      "transition": {
+        "actor_id": "ACTOR_SYNTH_1",
+        "authority_id": "WORKER_CANDIDATE_FIXTURE",
+        "authority_or_rule_hash": "34327f61afd18355201144b813ac0164540594fc17d7a0a3c0d9793810eb3a2a",
+        "authority_version": "1",
+        "causal_parent_event_refs": [
+          "G12_EXACT_FEEDBACK"
+        ],
+        "cue_or_trigger_refs": [],
+        "decision_state": "FORMATION_VALIDATED_IN_FIXTURE",
+        "effective_causal_time": "1998-10-03T16:00:00Z",
+        "feature_state_after_hash": "492342937976e16327835484c15c224dfa117a11d4a74ba52a0024f1435621ed",
+        "feature_state_before_hash": "2f5272d0a8559c1ab70414e66804f02bf4897dcc7c8921153bb643afaf22392c",
+        "integrity_state": "INTACT",
+        "memory_id": "5a5bc7dab9ca72bd7b5e906151e4087dbff2da184b9e13661bd9390aed9b11aa",
+        "memory_rule_hash": "a9b8c5b24407b0e03a99cd33d54a3f4725e28fb463fe41c7603a92e2010bd6e6",
+        "memory_rule_id": "CAND_ADP016_TRACE_COMMIT",
+        "memory_rule_version": "2.0.0-candidate",
+        "memory_transition_id": "b3cbb373f3e779773a5ee1132758a71a2a475514dd38b9f1e1062e559dd30def",
+        "objective_source_event_refs": [
+          "G12_EXACT_FEEDBACK:2201b7dc928e800d03ad47d78bc6e25492dbb73d1d8b0a5c360b6766a61ed9c1"
+        ],
+        "post_state_hash": "bd9b2a1e414f17e2155ddbc00fb849ea93d8173d49b93ac31e558136158cb33b",
+        "pre_state_hash": "8cc61c5d9b64d375c2c59a69d695d6b4b65358d7864a5d2da4c595445c122440",
+        "transition_kind": "FORMATION"
+      }
+    },
+    "control_replay": {
+      "memory_id": "5a5bc7dab9ca72bd7b5e906151e4087dbff2da184b9e13661bd9390aed9b11aa",
+      "production_owner_commit": false,
+      "state_hash": "4fa9d2a27132d83b3335986f19f4bf5afc2c3ad9f59e9d6709d0b3f8cf4db757",
+      "status": "IDEMPOTENT_REPLAY"
+    },
+    "control_state_changed": true,
+    "future_event": {
+      "code": "BLOCK_HIDDEN_FUTURE_LEAK",
+      "status": "REFUSED"
+    },
+    "imports": {
+      "native_candidate.adopted_contract": {
+        "git_blob_sha1": "259ff9da129f7d644f8ac9fd8f739ad6041a3edf",
+        "module_file": "sources/native_candidate/adopted_contract.py"
+      },
+      "native_candidate.can008_candidate_rule": {
+        "git_blob_sha1": "61d933d98ffb39d553a0dbc670388fc2bd3e89d3",
+        "module_file": "sources/native_candidate/can008_candidate_rule.py"
+      },
+      "native_candidate.candidate_registry_fixture": {
+        "git_blob_sha1": "0d978f89fb3c5e836a52f25849240db360f97f8f",
+        "module_file": "sources/native_candidate/candidate_registry_fixture.py"
+      },
+      "native_candidate.owner_transitions": {
+        "git_blob_sha1": "ac943d07459f68ba2e27baf05b442d9ecbddefd5",
+        "module_file": "sources/native_candidate/owner_transitions.py"
+      },
+      "native_candidate.positive_chain": {
+        "git_blob_sha1": "226cd42f81538f1b81ea7ea2e494776069142405",
+        "module_file": "sources/native_candidate/positive_chain.py"
+      },
+      "production.v3_psepf_zero_positive_guard": {
+        "git_blob_sha1": "e0528d65215cb431196570c38bac4eae94217a1b",
+        "module_file": "sources/production/v3_psepf_zero_positive_guard.py"
+      }
+    },
+    "production": {
+      "ACTOR_INITIALIZATION": {
+        "actor_id": "G12_PROVISIONAL",
+        "actor_state_effect": "ZERO",
+        "causal_cursor_delta": 0,
+        "causal_ledger_appends": 0,
+        "delegated_owner_rule_id": null,
+        "guard_id": "IG_PSEPF_ZERO_POSITIVE_GUARD",
+        "guard_version": "ACTIVE_ZERO_POSITIVE_FIRST_TRANCHE@1",
+        "operation_class": "ACTOR_INITIALIZATION",
+        "outcome": "DENY_ZERO_EFFECT",
+        "post_guard_state_fingerprint": {
+          "actor_state_hash": "actor-hash",
+          "causal_cursor": "0",
+          "causal_ledger_hash": "ledger-hash",
+          "rng_state_hash": "rng-hash",
+          "scheduler_state_hash": "scheduler-hash"
+        },
+        "pre_state_fingerprint": {
+          "actor_state_hash": "actor-hash",
+          "causal_cursor": "0",
+          "causal_ledger_hash": "ledger-hash",
+          "rng_state_hash": "rng-hash",
+          "scheduler_state_hash": "scheduler-hash"
+        },
+        "reason": "ZERO_POSITIVE_REGISTRY",
+        "rng_mutations": 0,
+        "scheduler_mutations": 0,
+        "source_class": "ReplayReceipt",
+        "transition_surface_id": "G12.ACTOR_INITIALIZATION",
+        "zero_effect": true
+      },
+      "BIRTH_OCCURRED": {
+        "actor_id": "G12_PROVISIONAL",
+        "actor_state_effect": "ZERO",
+        "causal_cursor_delta": 0,
+        "causal_ledger_appends": 0,
+        "delegated_owner_rule_id": null,
+        "guard_id": "IG_PSEPF_ZERO_POSITIVE_GUARD",
+        "guard_version": "ACTIVE_ZERO_POSITIVE_FIRST_TRANCHE@1",
+        "operation_class": "BIRTH_OCCURRED",
+        "outcome": "DENY_ZERO_EFFECT",
+        "post_guard_state_fingerprint": {
+          "actor_state_hash": "actor-hash",
+          "causal_cursor": "0",
+          "causal_ledger_hash": "ledger-hash",
+          "rng_state_hash": "rng-hash",
+          "scheduler_state_hash": "scheduler-hash"
+        },
+        "pre_state_fingerprint": {
+          "actor_state_hash": "actor-hash",
+          "causal_cursor": "0",
+          "causal_ledger_hash": "ledger-hash",
+          "rng_state_hash": "rng-hash",
+          "scheduler_state_hash": "scheduler-hash"
+        },
+        "reason": "ZERO_POSITIVE_REGISTRY",
+        "rng_mutations": 0,
+        "scheduler_mutations": 0,
+        "source_class": "ReplayReceipt",
+        "transition_surface_id": "G12.BIRTH_OCCURRED",
+        "zero_effect": true
+      },
+      "CHILD_GENERATED": {
+        "actor_id": "G12_PROVISIONAL",
+        "actor_state_effect": "ZERO",
+        "causal_cursor_delta": 0,
+        "causal_ledger_appends": 0,
+        "delegated_owner_rule_id": null,
+        "guard_id": "IG_PSEPF_ZERO_POSITIVE_GUARD",
+        "guard_version": "ACTIVE_ZERO_POSITIVE_FIRST_TRANCHE@1",
+        "operation_class": "CHILD_GENERATED",
+        "outcome": "DENY_ZERO_EFFECT",
+        "post_guard_state_fingerprint": {
+          "actor_state_hash": "actor-hash",
+          "causal_cursor": "0",
+          "causal_ledger_hash": "ledger-hash",
+          "rng_state_hash": "rng-hash",
+          "scheduler_state_hash": "scheduler-hash"
+        },
+        "pre_state_fingerprint": {
+          "actor_state_hash": "actor-hash",
+          "causal_cursor": "0",
+          "causal_ledger_hash": "ledger-hash",
+          "rng_state_hash": "rng-hash",
+          "scheduler_state_hash": "scheduler-hash"
+        },
+        "reason": "ZERO_POSITIVE_REGISTRY",
+        "rng_mutations": 0,
+        "scheduler_mutations": 0,
+        "source_class": "ReplayReceipt",
+        "transition_surface_id": "G12.CHILD_GENERATED",
+        "zero_effect": true
+      },
+      "CONCEPTION_OCCURRED": {
+        "actor_id": "G12_PROVISIONAL",
+        "actor_state_effect": "ZERO",
+        "causal_cursor_delta": 0,
+        "causal_ledger_appends": 0,
+        "delegated_owner_rule_id": null,
+        "guard_id": "IG_PSEPF_ZERO_POSITIVE_GUARD",
+        "guard_version": "ACTIVE_ZERO_POSITIVE_FIRST_TRANCHE@1",
+        "operation_class": "CONCEPTION_OCCURRED",
+        "outcome": "DENY_ZERO_EFFECT",
+        "post_guard_state_fingerprint": {
+          "actor_state_hash": "actor-hash",
+          "causal_cursor": "0",
+          "causal_ledger_hash": "ledger-hash",
+          "rng_state_hash": "rng-hash",
+          "scheduler_state_hash": "scheduler-hash"
+        },
+        "pre_state_fingerprint": {
+          "actor_state_hash": "actor-hash",
+          "causal_cursor": "0",
+          "causal_ledger_hash": "ledger-hash",
+          "rng_state_hash": "rng-hash",
+          "scheduler_state_hash": "scheduler-hash"
+        },
+        "reason": "ZERO_POSITIVE_REGISTRY",
+        "rng_mutations": 0,
+        "scheduler_mutations": 0,
+        "source_class": "ReplayReceipt",
+        "transition_surface_id": "G12.CONCEPTION_OCCURRED",
+        "zero_effect": true
+      },
+      "GENEALOGY_HISTORY_TRACE": {
+        "actor_id": "G12_PROVISIONAL",
+        "actor_state_effect": "ZERO",
+        "causal_cursor_delta": 0,
+        "causal_ledger_appends": 0,
+        "delegated_owner_rule_id": null,
+        "guard_id": "IG_PSEPF_ZERO_POSITIVE_GUARD",
+        "guard_version": "ACTIVE_ZERO_POSITIVE_FIRST_TRANCHE@1",
+        "operation_class": "GENEALOGY_HISTORY_TRACE",
+        "outcome": "DENY_ZERO_EFFECT",
+        "post_guard_state_fingerprint": {
+          "actor_state_hash": "actor-hash",
+          "causal_cursor": "0",
+          "causal_ledger_hash": "ledger-hash",
+          "rng_state_hash": "rng-hash",
+          "scheduler_state_hash": "scheduler-hash"
+        },
+        "pre_state_fingerprint": {
+          "actor_state_hash": "actor-hash",
+          "causal_cursor": "0",
+          "causal_ledger_hash": "ledger-hash",
+          "rng_state_hash": "rng-hash",
+          "scheduler_state_hash": "scheduler-hash"
+        },
+        "reason": "ZERO_POSITIVE_REGISTRY",
+        "rng_mutations": 0,
+        "scheduler_mutations": 0,
+        "source_class": "ReplayReceipt",
+        "transition_surface_id": "G12.GENEALOGY_HISTORY_TRACE",
+        "zero_effect": true
+      }
+    },
+    "project_admission": {
+      "event_hash": "8c2e9cab3f5814d97ad919aee54d4bda33664df77e034a107dcd020102aff552",
+      "event_id": "G12_GENEALOGY_PROJECT",
+      "issuer_authority_id": "ISSUER_AUTH_WORLD_SCHED",
+      "issuer_authority_version": "1",
+      "kind": "EVENT_IDENTITY",
+      "status": "EVENT_IDENTITY_ADMITTED_IN_FIXTURE"
+    },
+    "project_refusal": "UNAUTHORIZED_TRANSITION",
+    "project_zero_mutation": true,
+    "registry_empty": true,
+    "wrong_actor": {
+      "code": "BLOCK_WRONG_ACTOR_SCOPE",
+      "status": "REFUSED"
+    }
+  },
+  "retry": {
+    "attempt_seeds": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ],
+    "attempts": [
+      {
+        "attempt_id": "sha256:32ec2ea716561f773c6af9348c253632c172d84b7c7b56046f66168d26f10128",
+        "attempt_seed": "A",
+        "endpoint_match": false,
+        "independence_pass": true,
+        "n_events": 19,
+        "probes": {
+          "heldout_independence_pass": true,
+          "n_pass": 2,
+          "n_probes": 2,
+          "probe_version": "HELDOUT_INDEPENDENT_PROBE_EVIDENCE@1.0-G13-REPAIRED",
+          "probes": [
+            {
+              "acted_from_actor_state_without_mom_prompt": true,
+              "generic_attitude_tags_insufficient": true,
+              "is_prose_only": false,
+              "mom_or_child_in_prompt": false,
+              "pass": true,
+              "probe_id": "PROBE_P1_WORK_COLLECTIVE_OBLIGATION",
+              "supporting_evidence": [
+                {
+                  "capability_tokens": [
+                    "PUMP",
+                    "REBUILD",
+                    "MAINTENANCE",
+                    "ROTATION"
+                  ],
+                  "causal_parents": [
+                    "sha256:472a28d6714bdb3a824b88b02eea09badc5936f7d4446619b7bb977346ce0a19"
+                  ],
+                  "durable_effect": "uptime_commitment_and_rotation_ledger",
+                  "event_id": "sha256:54659cbc73ac8b71cae555d208bf2a5aa8c4d67b230073a20a70df6c5346f58d"
+                }
+              ],
+              "third_party_relationship_actor_specific": true,
+              "typed_action": {
+                "decision": "TAKE_REPAIR_ROTATION_LEAD_AND_UPDATE_LEDGER",
+                "durable_effect": "rotation_ledger_entry_plus_uptime_commitment_extended",
+                "state_change_refs": [
+                  "PROJECT:sha256:54659cbc73ac8b71cae555d208bf2a5aa8c4d67b230073a20a70df6c5346f58d"
+                ]
+              },
+              "typed_causal_effect_record": {
+                "causal_basis_events": [
+                  "sha256:54659cbc73ac8b71cae555d208bf2a5aa8c4d67b230073a20a70df6c5346f58d"
+                ],
+                "effect": "rotation_ledger_entry_plus_uptime_commitment_extended"
+              }
+            },
+            {
+              "acted_from_actor_state_without_mom_prompt": true,
+              "generic_attitude_tags_insufficient": true,
+              "is_prose_only": false,
+              "mom_or_child_in_prompt": false,
+              "pass": true,
+              "probe_id": "PROBE_P2_FRIENDSHIP_CONFLICT",
+              "supporting_evidence": [
+                {
+                  "causal_parents": [
+                    "sha256:472a28d6714bdb3a824b88b02eea09badc5936f7d4446619b7bb977346ce0a19"
+                  ],
+                  "counterpart": "FRIEND_L",
+                  "durable_effect": "tool_lending_and_repair_favor_ledger",
+                  "event_id": "sha256:ce1eafc93d397d3d88517c3ef2d9e17dcd1d4852ceeee45d2ca770942f0386b5"
+                }
+              ],
+              "third_party_relationship_actor_specific": true,
+              "typed_action": {
+                "decision": "REPAIR_TOOLS_AND_LEDGER_DEBT_PARTIAL_CREDIT_AGAINST_STANDING_DEBT",
+                "durable_effect": "friend_favor_ledger_updated_plus_tool_repair_completed",
+                "state_change_refs": [
+                  "NONMOTHER_RELATIONSHIP:sha256:ce1eafc93d397d3d88517c3ef2d9e17dcd1d4852ceeee45d2ca770942f0386b5"
+                ]
+              },
+              "typed_causal_effect_record": {
+                "causal_basis_events": [
+                  "sha256:ce1eafc93d397d3d88517c3ef2d9e17dcd1d4852ceeee45d2ca770942f0386b5"
+                ],
+                "effect": "friend_favor_ledger_updated_plus_tool_repair_completed"
+              }
+            }
+          ]
+        },
+        "replay": {
+          "causal_edges_verified": 20,
+          "causal_integrity_errors": [],
+          "endpoint_match": false,
+          "endpoint_place_basis_event_id": "sha256:37c7dbef306e6bd8f17405d41438e9993dbd952ef09b423ca71e76aca40145b6",
+          "endpoint_state_derived_from_antecedent": true,
+          "endpoint_state_overwrite_by_endpoint_claim": "REFUSED",
+          "mismatches": [
+            {
+              "have": "INST_WORKSHOP_A",
+              "predicate": {
+                "equals": "IMPOSSIBLE_SITE",
+                "field": "place"
+              }
+            }
+          ],
+          "n_events_replayed": 19,
+          "recomputed_state": {
+            "attitudes": [
+              "deliberate_under_uncertainty",
+              "reciprocity_in_work_obligations"
+            ],
+            "availability_status": "available_for_encounter",
+            "material_position": "waged_trades_senior",
+            "nonmother_relations": [
+              "FRIEND_L",
+              "SIBLING_M"
+            ],
+            "place": "INST_WORKSHOP_A",
+            "practices": [
+              "scheduled_maintenance_ledger_discipline"
+            ],
+            "projects": [
+              "communal_irrigation_pump_rebuild_and_maintenance_rotation"
+            ]
+          },
+          "replay_seconds": 2.6e-05,
+          "status": "ENDPOINT_INFEASIBLE",
+          "temporal_inversions": 0
+        },
+        "status": "ENDPOINT_INFEASIBLE",
+        "stopping": {
+          "checks": {
+            "bounded_observational_closure": true,
+            "endpoint_fields_have_lawful_histories": false,
+            "forward_replay_entails_endpoint": false,
+            "heldout_nonmother_action_evaluable_without_mom_prompt": true,
+            "material_organismic_relational_project_practice_memory_domains_present": true,
+            "no_outstanding_mandatory_antecedent_missing_authority": true,
+            "nonmother_project_effects_persist_into_independent_future_test": true,
+            "psyche_fields_have_causal_ancestry": true
+          },
+          "status": "PREHISTORY_OWNER_RULE_MISSING",
+          "stopping_law_version": "SUFFICIENT_PREHISTORY_STOPPING_LAW@1.0-G13-REPAIRED",
+          "sufficient": false,
+          "typed_hold": {
+            "hold_reasons": [],
+            "hold_state": "PREHISTORY_OWNER_RULE_MISSING",
+            "is_HOLD_not_INFEASIBLE": true,
+            "outstanding_mandatory_antecedents": [],
+            "psyche_fields_without_ancestry": [],
+            "unanchored_domains": [],
+            "unsupported_required_predicates": []
+          }
+        },
+        "stopping_sufficient": false
+      },
+      {
+        "attempt_id": "sha256:6daea17d7af8ab33117d90eb5543f919c4b4d4a664b4bfe61fb3f7fd52d63b05",
+        "attempt_seed": "B",
+        "endpoint_match": false,
+        "independence_pass": true,
+        "n_events": 19,
+        "probes": {
+          "heldout_independence_pass": true,
+          "n_pass": 2,
+          "n_probes": 2,
+          "probe_version": "HELDOUT_INDEPENDENT_PROBE_EVIDENCE@1.0-G13-REPAIRED",
+          "probes": [
+            {
+              "acted_from_actor_state_without_mom_prompt": true,
+              "generic_attitude_tags_insufficient": true,
+              "is_prose_only": false,
+              "mom_or_child_in_prompt": false,
+              "pass": true,
+              "probe_id": "PROBE_P1_WORK_COLLECTIVE_OBLIGATION",
+              "supporting_evidence": [
+                {
+                  "capability_tokens": [
+                    "BRIDGE",
+                    "REPAIR",
+                    "UPKEEP",
+                    "ROTA"
+                  ],
+                  "causal_parents": [
+                    "sha256:472a28d6714bdb3a824b88b02eea09badc5936f7d4446619b7bb977346ce0a19"
+                  ],
+                  "durable_effect": "uptime_commitment_and_rotation_ledger",
+                  "event_id": "sha256:2b2fb39159deb412d412bbf2f227ee031e8570629151951b083338b9f5c5c1e6"
+                }
+              ],
+              "third_party_relationship_actor_specific": true,
+              "typed_action": {
+                "decision": "TAKE_REPAIR_ROTATION_LEAD_AND_UPDATE_LEDGER",
+                "durable_effect": "rotation_ledger_entry_plus_uptime_commitment_extended",
+                "state_change_refs": [
+                  "PROJECT:sha256:2b2fb39159deb412d412bbf2f227ee031e8570629151951b083338b9f5c5c1e6"
+                ]
+              },
+              "typed_causal_effect_record": {
+                "causal_basis_events": [
+                  "sha256:2b2fb39159deb412d412bbf2f227ee031e8570629151951b083338b9f5c5c1e6"
+                ],
+                "effect": "rotation_ledger_entry_plus_uptime_commitment_extended"
+              }
+            },
+            {
+              "acted_from_actor_state_without_mom_prompt": true,
+              "generic_attitude_tags_insufficient": true,
+              "is_prose_only": false,
+              "mom_or_child_in_prompt": false,
+              "pass": true,
+              "probe_id": "PROBE_P2_FRIENDSHIP_CONFLICT",
+              "supporting_evidence": [
+                {
+                  "causal_parents": [
+                    "sha256:472a28d6714bdb3a824b88b02eea09badc5936f7d4446619b7bb977346ce0a19"
+                  ],
+                  "counterpart": "FRIEND_J",
+                  "durable_effect": "tool_lending_and_repair_favor_ledger",
+                  "event_id": "sha256:fdc5d9883b80cf91268f2772456a4cc7a7fa6df44818d956f9a738a440959c60"
+                }
+              ],
+              "third_party_relationship_actor_specific": true,
+              "typed_action": {
+                "decision": "REPAIR_TOOLS_AND_LEDGER_DEBT_PARTIAL_CREDIT_AGAINST_STANDING_DEBT",
+                "durable_effect": "friend_favor_ledger_updated_plus_tool_repair_completed",
+                "state_change_refs": [
+                  "NONMOTHER_RELATIONSHIP:sha256:fdc5d9883b80cf91268f2772456a4cc7a7fa6df44818d956f9a738a440959c60"
+                ]
+              },
+              "typed_causal_effect_record": {
+                "causal_basis_events": [
+                  "sha256:fdc5d9883b80cf91268f2772456a4cc7a7fa6df44818d956f9a738a440959c60"
+                ],
+                "effect": "friend_favor_ledger_updated_plus_tool_repair_completed"
+              }
+            }
+          ]
+        },
+        "replay": {
+          "causal_edges_verified": 20,
+          "causal_integrity_errors": [],
+          "endpoint_match": false,
+          "endpoint_place_basis_event_id": "sha256:37c7dbef306e6bd8f17405d41438e9993dbd952ef09b423ca71e76aca40145b6",
+          "endpoint_state_derived_from_antecedent": true,
+          "endpoint_state_overwrite_by_endpoint_claim": "REFUSED",
+          "mismatches": [
+            {
+              "have": "INST_WORKSHOP_A",
+              "predicate": {
+                "equals": "IMPOSSIBLE_SITE",
+                "field": "place"
+              }
+            }
+          ],
+          "n_events_replayed": 19,
+          "recomputed_state": {
+            "attitudes": [
+              "deliberate_under_uncertainty",
+              "reciprocity_in_work_obligations"
+            ],
+            "availability_status": "available_for_encounter",
+            "material_position": "waged_trades_senior",
+            "nonmother_relations": [
+              "FRIEND_J",
+              "SIBLING_M"
+            ],
+            "place": "INST_WORKSHOP_A",
+            "practices": [
+              "scheduled_maintenance_ledger_discipline"
+            ],
+            "projects": [
+              "village_road_bridge_repair_and_upkeep_rota"
+            ]
+          },
+          "replay_seconds": 2.9e-05,
+          "status": "ENDPOINT_INFEASIBLE",
+          "temporal_inversions": 0
+        },
+        "status": "ENDPOINT_INFEASIBLE",
+        "stopping": {
+          "checks": {
+            "bounded_observational_closure": true,
+            "endpoint_fields_have_lawful_histories": false,
+            "forward_replay_entails_endpoint": false,
+            "heldout_nonmother_action_evaluable_without_mom_prompt": true,
+            "material_organismic_relational_project_practice_memory_domains_present": true,
+            "no_outstanding_mandatory_antecedent_missing_authority": true,
+            "nonmother_project_effects_persist_into_independent_future_test": true,
+            "psyche_fields_have_causal_ancestry": true
+          },
+          "status": "PREHISTORY_OWNER_RULE_MISSING",
+          "stopping_law_version": "SUFFICIENT_PREHISTORY_STOPPING_LAW@1.0-G13-REPAIRED",
+          "sufficient": false,
+          "typed_hold": {
+            "hold_reasons": [],
+            "hold_state": "PREHISTORY_OWNER_RULE_MISSING",
+            "is_HOLD_not_INFEASIBLE": true,
+            "outstanding_mandatory_antecedents": [],
+            "psyche_fields_without_ancestry": [],
+            "unanchored_domains": [],
+            "unsupported_required_predicates": []
+          }
+        },
+        "stopping_sufficient": false
+      },
+      {
+        "attempt_id": "sha256:a3a4aec3f464c9459a91d212832fbc6b8c104f2711bf51955c1d5126eea4f71b",
+        "attempt_seed": "C",
+        "endpoint_match": false,
+        "independence_pass": true,
+        "n_events": 19,
+        "probes": {
+          "heldout_independence_pass": true,
+          "n_pass": 2,
+          "n_probes": 2,
+          "probe_version": "HELDOUT_INDEPENDENT_PROBE_EVIDENCE@1.0-G13-REPAIRED",
+          "probes": [
+            {
+              "acted_from_actor_state_without_mom_prompt": true,
+              "generic_attitude_tags_insufficient": true,
+              "is_prose_only": false,
+              "mom_or_child_in_prompt": false,
+              "pass": true,
+              "probe_id": "PROBE_P1_WORK_COLLECTIVE_OBLIGATION",
+              "supporting_evidence": [
+                {
+                  "capability_tokens": [
+                    "PUMP",
+                    "REBUILD",
+                    "MAINTENANCE",
+                    "ROTATION"
+                  ],
+                  "causal_parents": [
+                    "sha256:472a28d6714bdb3a824b88b02eea09badc5936f7d4446619b7bb977346ce0a19"
+                  ],
+                  "durable_effect": "uptime_commitment_and_rotation_ledger",
+                  "event_id": "sha256:54659cbc73ac8b71cae555d208bf2a5aa8c4d67b230073a20a70df6c5346f58d"
+                }
+              ],
+              "third_party_relationship_actor_specific": true,
+              "typed_action": {
+                "decision": "TAKE_REPAIR_ROTATION_LEAD_AND_UPDATE_LEDGER",
+                "durable_effect": "rotation_ledger_entry_plus_uptime_commitment_extended",
+                "state_change_refs": [
+                  "PROJECT:sha256:54659cbc73ac8b71cae555d208bf2a5aa8c4d67b230073a20a70df6c5346f58d"
+                ]
+              },
+              "typed_causal_effect_record": {
+                "causal_basis_events": [
+                  "sha256:54659cbc73ac8b71cae555d208bf2a5aa8c4d67b230073a20a70df6c5346f58d"
+                ],
+                "effect": "rotation_ledger_entry_plus_uptime_commitment_extended"
+              }
+            },
+            {
+              "acted_from_actor_state_without_mom_prompt": true,
+              "generic_attitude_tags_insufficient": true,
+              "is_prose_only": false,
+              "mom_or_child_in_prompt": false,
+              "pass": true,
+              "probe_id": "PROBE_P2_FRIENDSHIP_CONFLICT",
+              "supporting_evidence": [
+                {
+                  "causal_parents": [
+                    "sha256:472a28d6714bdb3a824b88b02eea09badc5936f7d4446619b7bb977346ce0a19"
+                  ],
+                  "counterpart": "FRIEND_K",
+                  "durable_effect": "tool_lending_and_repair_favor_ledger",
+                  "event_id": "sha256:94bcb650698bf772ad897b8d0da5c6760bdc0a6500e1d98436ecb2f2c2eb0fbb"
+                }
+              ],
+              "third_party_relationship_actor_specific": true,
+              "typed_action": {
+                "decision": "REPAIR_TOOLS_AND_LEDGER_DEBT_PARTIAL_CREDIT_AGAINST_STANDING_DEBT",
+                "durable_effect": "friend_favor_ledger_updated_plus_tool_repair_completed",
+                "state_change_refs": [
+                  "NONMOTHER_RELATIONSHIP:sha256:94bcb650698bf772ad897b8d0da5c6760bdc0a6500e1d98436ecb2f2c2eb0fbb"
+                ]
+              },
+              "typed_causal_effect_record": {
+                "causal_basis_events": [
+                  "sha256:94bcb650698bf772ad897b8d0da5c6760bdc0a6500e1d98436ecb2f2c2eb0fbb"
+                ],
+                "effect": "friend_favor_ledger_updated_plus_tool_repair_completed"
+              }
+            }
+          ]
+        },
+        "replay": {
+          "causal_edges_verified": 20,
+          "causal_integrity_errors": [],
+          "endpoint_match": false,
+          "endpoint_place_basis_event_id": "sha256:37c7dbef306e6bd8f17405d41438e9993dbd952ef09b423ca71e76aca40145b6",
+          "endpoint_state_derived_from_antecedent": true,
+          "endpoint_state_overwrite_by_endpoint_claim": "REFUSED",
+          "mismatches": [
+            {
+              "have": "INST_WORKSHOP_A",
+              "predicate": {
+                "equals": "IMPOSSIBLE_SITE",
+                "field": "place"
+              }
+            }
+          ],
+          "n_events_replayed": 19,
+          "recomputed_state": {
+            "attitudes": [
+              "deliberate_under_uncertainty",
+              "reciprocity_in_work_obligations"
+            ],
+            "availability_status": "available_for_encounter",
+            "material_position": "waged_trades_senior",
+            "nonmother_relations": [
+              "FRIEND_K",
+              "SIBLING_M"
+            ],
+            "place": "INST_WORKSHOP_A",
+            "practices": [
+              "scheduled_maintenance_ledger_discipline"
+            ],
+            "projects": [
+              "communal_irrigation_pump_rebuild_and_maintenance_rotation"
+            ]
+          },
+          "replay_seconds": 3.1e-05,
+          "status": "ENDPOINT_INFEASIBLE",
+          "temporal_inversions": 0
+        },
+        "status": "ENDPOINT_INFEASIBLE",
+        "stopping": {
+          "checks": {
+            "bounded_observational_closure": true,
+            "endpoint_fields_have_lawful_histories": false,
+            "forward_replay_entails_endpoint": false,
+            "heldout_nonmother_action_evaluable_without_mom_prompt": true,
+            "material_organismic_relational_project_practice_memory_domains_present": true,
+            "no_outstanding_mandatory_antecedent_missing_authority": true,
+            "nonmother_project_effects_persist_into_independent_future_test": true,
+            "psyche_fields_have_causal_ancestry": true
+          },
+          "status": "PREHISTORY_OWNER_RULE_MISSING",
+          "stopping_law_version": "SUFFICIENT_PREHISTORY_STOPPING_LAW@1.0-G13-REPAIRED",
+          "sufficient": false,
+          "typed_hold": {
+            "hold_reasons": [],
+            "hold_state": "PREHISTORY_OWNER_RULE_MISSING",
+            "is_HOLD_not_INFEASIBLE": true,
+            "outstanding_mandatory_antecedents": [],
+            "psyche_fields_without_ancestry": [],
+            "unanchored_domains": [],
+            "unsupported_required_predicates": []
+          }
+        },
+        "stopping_sufficient": false
+      },
+      {
+        "attempt_id": "sha256:c44f5bb88e05f9d250e98179994a20858e87eabfc92634ceccc6a00e844df46e",
+        "attempt_seed": "D",
+        "endpoint_match": false,
+        "independence_pass": true,
+        "n_events": 19,
+        "probes": {
+          "heldout_independence_pass": true,
+          "n_pass": 2,
+          "n_probes": 2,
+          "probe_version": "HELDOUT_INDEPENDENT_PROBE_EVIDENCE@1.0-G13-REPAIRED",
+          "probes": [
+            {
+              "acted_from_actor_state_without_mom_prompt": true,
+              "generic_attitude_tags_insufficient": true,
+              "is_prose_only": false,
+              "mom_or_child_in_prompt": false,
+              "pass": true,
+              "probe_id": "PROBE_P1_WORK_COLLECTIVE_OBLIGATION",
+              "supporting_evidence": [
+                {
+                  "capability_tokens": [
+                    "SILO",
+                    "REFIT",
+                    "ROTATION"
+                  ],
+                  "causal_parents": [
+                    "sha256:472a28d6714bdb3a824b88b02eea09badc5936f7d4446619b7bb977346ce0a19"
+                  ],
+                  "durable_effect": "uptime_commitment_and_rotation_ledger",
+                  "event_id": "sha256:dbf92008f2282d9e376baa5c5af30e3a721f3b29e63aaebe807327ed4e4a053e"
+                }
+              ],
+              "third_party_relationship_actor_specific": true,
+              "typed_action": {
+                "decision": "TAKE_REPAIR_ROTATION_LEAD_AND_UPDATE_LEDGER",
+                "durable_effect": "rotation_ledger_entry_plus_uptime_commitment_extended",
+                "state_change_refs": [
+                  "PROJECT:sha256:dbf92008f2282d9e376baa5c5af30e3a721f3b29e63aaebe807327ed4e4a053e"
+                ]
+              },
+              "typed_causal_effect_record": {
+                "causal_basis_events": [
+                  "sha256:dbf92008f2282d9e376baa5c5af30e3a721f3b29e63aaebe807327ed4e4a053e"
+                ],
+                "effect": "rotation_ledger_entry_plus_uptime_commitment_extended"
+              }
+            },
+            {
+              "acted_from_actor_state_without_mom_prompt": true,
+              "generic_attitude_tags_insufficient": true,
+              "is_prose_only": false,
+              "mom_or_child_in_prompt": false,
+              "pass": true,
+              "probe_id": "PROBE_P2_FRIENDSHIP_CONFLICT",
+              "supporting_evidence": [
+                {
+                  "causal_parents": [
+                    "sha256:472a28d6714bdb3a824b88b02eea09badc5936f7d4446619b7bb977346ce0a19"
+                  ],
+                  "counterpart": "FRIEND_J",
+                  "durable_effect": "tool_lending_and_repair_favor_ledger",
+                  "event_id": "sha256:fdc5d9883b80cf91268f2772456a4cc7a7fa6df44818d956f9a738a440959c60"
+                }
+              ],
+              "third_party_relationship_actor_specific": true,
+              "typed_action": {
+                "decision": "REPAIR_TOOLS_AND_LEDGER_DEBT_PARTIAL_CREDIT_AGAINST_STANDING_DEBT",
+                "durable_effect": "friend_favor_ledger_updated_plus_tool_repair_completed",
+                "state_change_refs": [
+                  "NONMOTHER_RELATIONSHIP:sha256:fdc5d9883b80cf91268f2772456a4cc7a7fa6df44818d956f9a738a440959c60"
+                ]
+              },
+              "typed_causal_effect_record": {
+                "causal_basis_events": [
+                  "sha256:fdc5d9883b80cf91268f2772456a4cc7a7fa6df44818d956f9a738a440959c60"
+                ],
+                "effect": "friend_favor_ledger_updated_plus_tool_repair_completed"
+              }
+            }
+          ]
+        },
+        "replay": {
+          "causal_edges_verified": 20,
+          "causal_integrity_errors": [],
+          "endpoint_match": false,
+          "endpoint_place_basis_event_id": "sha256:37c7dbef306e6bd8f17405d41438e9993dbd952ef09b423ca71e76aca40145b6",
+          "endpoint_state_derived_from_antecedent": true,
+          "endpoint_state_overwrite_by_endpoint_claim": "REFUSED",
+          "mismatches": [
+            {
+              "have": "INST_WORKSHOP_A",
+              "predicate": {
+                "equals": "IMPOSSIBLE_SITE",
+                "field": "place"
+              }
+            }
+          ],
+          "n_events_replayed": 19,
+          "recomputed_state": {
+            "attitudes": [
+              "deliberate_under_uncertainty",
+              "reciprocity_in_work_obligations"
+            ],
+            "availability_status": "available_for_encounter",
+            "material_position": "waged_trades_senior",
+            "nonmother_relations": [
+              "FRIEND_J",
+              "SIBLING_M"
+            ],
+            "place": "INST_WORKSHOP_A",
+            "practices": [
+              "scheduled_maintenance_ledger_discipline"
+            ],
+            "projects": [
+              "shared_grain_silo_refit_and_rotation_ledger"
+            ]
+          },
+          "replay_seconds": 2.6e-05,
+          "status": "ENDPOINT_INFEASIBLE",
+          "temporal_inversions": 0
+        },
+        "status": "ENDPOINT_INFEASIBLE",
+        "stopping": {
+          "checks": {
+            "bounded_observational_closure": true,
+            "endpoint_fields_have_lawful_histories": false,
+            "forward_replay_entails_endpoint": false,
+            "heldout_nonmother_action_evaluable_without_mom_prompt": true,
+            "material_organismic_relational_project_practice_memory_domains_present": true,
+            "no_outstanding_mandatory_antecedent_missing_authority": true,
+            "nonmother_project_effects_persist_into_independent_future_test": true,
+            "psyche_fields_have_causal_ancestry": true
+          },
+          "status": "PREHISTORY_OWNER_RULE_MISSING",
+          "stopping_law_version": "SUFFICIENT_PREHISTORY_STOPPING_LAW@1.0-G13-REPAIRED",
+          "sufficient": false,
+          "typed_hold": {
+            "hold_reasons": [],
+            "hold_state": "PREHISTORY_OWNER_RULE_MISSING",
+            "is_HOLD_not_INFEASIBLE": true,
+            "outstanding_mandatory_antecedents": [],
+            "psyche_fields_without_ancestry": [],
+            "unanchored_domains": [],
+            "unsupported_required_predicates": []
+          }
+        },
+        "stopping_sufficient": false
+      }
+    ],
+    "construction_version": "SECOND_PARENT_CONSTRUCTION@2.0-G13-REPAIRED",
+    "n_attempts": 4,
+    "selected_attempt_id": null,
+    "selected_events": null,
+    "selected_psyche": null,
+    "terminal_status": "HISTORY_SEARCH_EXHAUSTED",
+    "wall_seconds": 0.001714
+  },
+  "rng_algorithm": {
+    "actual": "SHA256_CONCAT_MODULO",
+    "rejection_mapping_implemented": false,
+    "required": "ADP020_HMAC_SHA256_UNIFORM_BELOW_V1@1.0.0",
+    "root_32_bytes_required_by_lab": false
+  },
+  "scenarios": {
+    "A": {
+      "birth": "NOT_ISSUED",
+      "child_generation": "NOT_ISSUED",
+      "conception": "PENDING_NONCAUSAL",
+      "history": [
+        {
+          "actors": [
+            "G12_PROVISIONAL_SECOND_PARENT_A"
+          ],
+          "causal_parent_event_ids": [],
+          "effective_index": 0,
+          "event_id": "G12_A_0",
+          "kind": "PARTIAL_ROOT",
+          "payload": {
+            "antecedents": "UNKNOWN_EXPLICIT_ROOT"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL_SECOND_PARENT_A"
+          ],
+          "causal_parent_event_ids": [
+            "G12_A_0"
+          ],
+          "effective_index": 1,
+          "event_id": "G12_A_1",
+          "kind": "WORK_POSITION",
+          "payload": {
+            "material_position": "independent_worker"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL_SECOND_PARENT_A"
+          ],
+          "causal_parent_event_ids": [
+            "G12_A_1"
+          ],
+          "effective_index": 2,
+          "event_id": "G12_A_2",
+          "kind": "PROJECT",
+          "payload": {
+            "durable_effect": "TEST_DESCRIPTION_ONLY",
+            "nonmother": true,
+            "project": "night_shift_union_safety_project"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL_SECOND_PARENT_A"
+          ],
+          "causal_parent_event_ids": [
+            "G12_A_0"
+          ],
+          "effective_index": 3,
+          "event_id": "G12_A_3",
+          "kind": "NONMOTHER_RELATIONSHIP",
+          "payload": {
+            "counterpart": "CO_WORKER_N",
+            "nonmother": true
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL_SECOND_PARENT_A"
+          ],
+          "causal_parent_event_ids": [
+            "G12_A_2"
+          ],
+          "effective_index": 4,
+          "event_id": "G12_A_4",
+          "kind": "COMMISSIONED_WORK",
+          "payload": {
+            "workplace": "REMOTE_REPAIR_DEPOT"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL_SECOND_PARENT_A"
+          ],
+          "causal_parent_event_ids": [
+            "G12_A_4"
+          ],
+          "effective_index": 5,
+          "event_id": "G12_A_5",
+          "kind": "ENDPOINT_STATE",
+          "payload": {
+            "availability_status": "unavailable",
+            "place": "REMOTE_REPAIR_DEPOT"
+          }
+        }
+      ],
+      "mother": {
+        "actor_id": "LAB_MOTHER_M0",
+        "admitted_partner_relationship_refs": [],
+        "already_generated_child_refs": [],
+        "anchor_id": "ANCHOR_G12_MOTHER_A",
+        "fixture_id": "G12_MOTHER_A",
+        "history_events": [
+          {
+            "actors": [
+              "LAB_MOTHER_M0"
+            ],
+            "causal_parent_event_ids": [],
+            "effective_index": 0,
+            "event_id": "sha256:cc9e6ca2a712b5b489c1124eb7b04e62591ba59ebb5093573e05f438f9adc33a",
+            "kind": "ORIGIN_FAMILY",
+            "payload": {
+              "household_occupation": "mixed_fabrication_and_market_trade",
+              "known_siblings": 2,
+              "region": "RIVERSIDE_DISTRICT",
+              "root_status": "LAB_ROOT_ADMITTED"
+            }
+          },
+          {
+            "actors": [
+              "LAB_MOTHER_M0"
+            ],
+            "causal_parent_event_ids": [
+              "sha256:cc9e6ca2a712b5b489c1124eb7b04e62591ba59ebb5093573e05f438f9adc33a"
+            ],
+            "effective_index": 1,
+            "event_id": "sha256:fd045ee5308c5a21d8190c7abafd3745fa1aea90778c85dd3b3e68dc035c8a8c",
+            "kind": "SCHOOLING",
+            "payload": {
+              "level": "secondary_complete_plus_one_year_vocational",
+              "site": "MUNICIPAL_VOCATIONAL_ANNEX"
+            }
+          },
+          {
+            "actors": [
+              "LAB_MOTHER_M0"
+            ],
+            "causal_parent_event_ids": [
+              "sha256:fd045ee5308c5a21d8190c7abafd3745fa1aea90778c85dd3b3e68dc035c8a8c"
+            ],
+            "effective_index": 2,
+            "event_id": "sha256:a610a7868905cedbf89b6fb7c94d1cb7d2d97ee1a905b799adcf870e59610885",
+            "kind": "WORK_POSITION",
+            "payload": {
+              "material_position": "waged_artisan",
+              "role": "junior_finisher",
+              "workplace": "RIVERSIDE_FABRICATION_WORKSHOP"
+            }
+          },
+          {
+            "actors": [
+              "LAB_MOTHER_M0"
+            ],
+            "causal_parent_event_ids": [
+              "sha256:a610a7868905cedbf89b6fb7c94d1cb7d2d97ee1a905b799adcf870e59610885"
+            ],
+            "effective_index": 3,
+            "event_id": "sha256:a0832ec66870ad8c83dc97d18807e29371b0cf01553bbce9f70cefc678be5b1f",
+            "kind": "PRACTICE_FORMATION",
+            "payload": {
+              "causal_basis": "repeated supervised finishing work with rework costs",
+              "practice": "measure_twice_cut_once_workshop_discipline"
+            }
+          },
+          {
+            "actors": [
+              "LAB_MOTHER_M0"
+            ],
+            "causal_parent_event_ids": [
+              "sha256:a610a7868905cedbf89b6fb7c94d1cb7d2d97ee1a905b799adcf870e59610885",
+              "sha256:a0832ec66870ad8c83dc97d18807e29371b0cf01553bbce9f70cefc678be5b1f"
+            ],
+            "effective_index": 4,
+            "event_id": "sha256:8adf0e9a6b0766412658b4ca3823acdea0b2d186de3b85407e6f833e1e0fb2d3",
+            "kind": "ATTITUDE_FORMATION",
+            "payload": {
+              "attitude": "self_reliance_under_deadline",
+              "causal_basis": "piece_rate pressure and rework experience"
+            }
+          },
+          {
+            "actors": [
+              "LAB_MOTHER_M0"
+            ],
+            "causal_parent_event_ids": [
+              "sha256:a610a7868905cedbf89b6fb7c94d1cb7d2d97ee1a905b799adcf870e59610885",
+              "sha256:a0832ec66870ad8c83dc97d18807e29371b0cf01553bbce9f70cefc678be5b1f"
+            ],
+            "effective_index": 5,
+            "event_id": "sha256:05578b86682d6d2b883f7a892e7368fb4d8469b409e0e3a76a504c96289b2ab1",
+            "kind": "PROJECT",
+            "payload": {
+              "consequential": true,
+              "duration_index_span": [
+                40,
+                88
+              ],
+              "nonmother": true,
+              "project": "mentor_two_apprentices_through_journeyman_exam",
+              "third_party": [
+                "APPRENTICE_ONE",
+                "APPRENTICE_TWO"
+              ]
+            }
+          },
+          {
+            "actors": [
+              "LAB_MOTHER_M0"
+            ],
+            "causal_parent_event_ids": [
+              "sha256:cc9e6ca2a712b5b489c1124eb7b04e62591ba59ebb5093573e05f438f9adc33a"
+            ],
+            "effective_index": 6,
+            "event_id": "sha256:f901a95313d11364221c8827c022a7fd9fa9b79b9747f72583cf14be42c47693",
+            "kind": "NONMOTHER_RELATIONSHIP",
+            "payload": {
+              "consequential": true,
+              "counterpart": "SIBLING_R",
+              "nonmother": true,
+              "relation_kind": "sibling_care_obligation"
+            }
+          },
+          {
+            "actors": [
+              "LAB_MOTHER_M0"
+            ],
+            "causal_parent_event_ids": [
+              "sha256:a610a7868905cedbf89b6fb7c94d1cb7d2d97ee1a905b799adcf870e59610885"
+            ],
+            "effective_index": 7,
+            "event_id": "sha256:07abc4b538adb7995eec0ec0aabdfbf2934ff12cfed7eac9b384c16713045bb5",
+            "kind": "MEMORY_TRACE",
+            "payload": {
+              "experienced_basis_event": "sha256:a610a7868905cedbf89b6fb7c94d1cb7d2d97ee1a905b799adcf870e59610885",
+              "trace": "remembered_rework_loss_from_measurement_error"
+            }
+          },
+          {
+            "actors": [
+              "LAB_MOTHER_M0"
+            ],
+            "causal_parent_event_ids": [
+              "sha256:05578b86682d6d2b883f7a892e7368fb4d8469b409e0e3a76a504c96289b2ab1"
+            ],
+            "effective_index": 8,
+            "event_id": "sha256:68e4ed6f1b0d325f320a989d72700fc2eb732a6963c774b970863d057d5c02ea",
+            "kind": "MEMORY_TRACE",
+            "payload": {
+              "experienced_basis_event": "sha256:05578b86682d6d2b883f7a892e7368fb4d8469b409e0e3a76a504c96289b2ab1",
+              "trace": "remembered_apprentice_exam_failure_then_recovery"
+            }
+          },
+          {
+            "actors": [
+              "LAB_MOTHER_M0"
+            ],
+            "causal_parent_event_ids": [
+              "sha256:a610a7868905cedbf89b6fb7c94d1cb7d2d97ee1a905b799adcf870e59610885",
+              "sha256:8adf0e9a6b0766412658b4ca3823acdea0b2d186de3b85407e6f833e1e0fb2d3"
+            ],
+            "effective_index": 9,
+            "event_id": "sha256:ce8a5de77bc75eb1284e3c675dd49a0a53dae714573273257ec0500ebd67ead4",
+            "kind": "STRIVING",
+            "payload": {
+              "causal_basis": "blocked promotion without certificate",
+              "striving": "complete_evening_technical_certificate"
+            }
+          },
+          {
+            "actors": [
+              "LAB_MOTHER_M0"
+            ],
+            "causal_parent_event_ids": [
+              "sha256:ce8a5de77bc75eb1284e3c675dd49a0a53dae714573273257ec0500ebd67ead4"
+            ],
+            "effective_index": 10,
+            "event_id": "sha256:a7cf5fbb2a64f88bfba23adbc33f55a4a7bcaaaadcd40a50456f3b4d78fe6384",
+            "kind": "ENROLLMENT",
+            "payload": {
+              "course": "structural_mechanics_ii",
+              "institution": "MUNICIPAL_EVENING_TECHNICAL_CLASS"
+            }
+          },
+          {
+            "actors": [
+              "LAB_MOTHER_M0"
+            ],
+            "causal_parent_event_ids": [
+              "sha256:a610a7868905cedbf89b6fb7c94d1cb7d2d97ee1a905b799adcf870e59610885",
+              "sha256:05578b86682d6d2b883f7a892e7368fb4d8469b409e0e3a76a504c96289b2ab1"
+            ],
+            "effective_index": 11,
+            "event_id": "sha256:967e650efdf5519c7a3d52bff2c91ef8a3c02b1305219d7435fee859c1a8901b",
+            "kind": "WORK_POSITION",
+            "payload": {
+              "material_position": "waged_artisan_senior",
+              "role": "finisher_specialist",
+              "workplace": "RIVERSIDE_FABRICATION_WORKSHOP"
+            }
+          },
+          {
+            "actors": [
+              "LAB_MOTHER_M0"
+            ],
+            "causal_parent_event_ids": [
+              "sha256:967e650efdf5519c7a3d52bff2c91ef8a3c02b1305219d7435fee859c1a8901b"
+            ],
+            "effective_index": 12,
+            "event_id": "sha256:3b36f3819c2491607630efd291f465c556d7ea3f936459c24e50b3f40ac0b179",
+            "kind": "HOUSEHOLD_STATE",
+            "payload": {
+              "membership": [
+                "LAB_MOTHER_M0"
+              ],
+              "residence": "RIVERSIDE_RENTED_ROOM_SHARED_KITCHEN"
+            }
+          },
+          {
+            "actors": [
+              "LAB_MOTHER_M0"
+            ],
+            "causal_parent_event_ids": [
+              "sha256:967e650efdf5519c7a3d52bff2c91ef8a3c02b1305219d7435fee859c1a8901b"
+            ],
+            "effective_index": 13,
+            "event_id": "sha256:ca086df1c6a05ace19d59459c1fe9b89f4b1e87f322e59bdb47d81cab3ee86cf",
+            "kind": "ROUTE_AVAILABILITY",
+            "payload": {
+              "basis": "employment adjacency",
+              "route": "ROUTE_LOCAL_CLOSED",
+              "via": "INST_WORKSHOP_A"
+            }
+          },
+          {
+            "actors": [
+              "LAB_MOTHER_M0"
+            ],
+            "causal_parent_event_ids": [
+              "sha256:a7cf5fbb2a64f88bfba23adbc33f55a4a7bcaaaadcd40a50456f3b4d78fe6384"
+            ],
+            "effective_index": 14,
+            "event_id": "sha256:62b64ee60a4615f6344ef34071d0004a0d4647ef82574c5396899f88c3ca1089",
+            "kind": "ROUTE_AVAILABILITY",
+            "payload": {
+              "basis": "evening enrollment",
+              "route": "ROUTE_INSTITUTIONAL",
+              "via": "INST_EVENING_CLASS_B"
+            }
+          },
+          {
+            "actors": [
+              "LAB_MOTHER_M0"
+            ],
+            "causal_parent_event_ids": [
+              "sha256:3b36f3819c2491607630efd291f465c556d7ea3f936459c24e50b3f40ac0b179"
+            ],
+            "effective_index": 15,
+            "event_id": "sha256:58a5d4f1578068c3cea28047b77edadf77c4ba0711a2dadaa838b8e3525a9c30",
+            "kind": "ROUTE_AVAILABILITY",
+            "payload": {
+              "basis": "residency in riverside district water committee catchment",
+              "route": "ROUTE_UNCONVENTIONAL",
+              "via": "INST_COMMUNITY_D"
+            }
+          },
+          {
+            "actors": [
+              "LAB_MOTHER_M0"
+            ],
+            "causal_parent_event_ids": [
+              "sha256:967e650efdf5519c7a3d52bff2c91ef8a3c02b1305219d7435fee859c1a8901b"
+            ],
+            "effective_index": 16,
+            "event_id": "sha256:bba44dcb5f3d007b1525ca1b6048a25ea9f97e801f5901f2f47b642b0425eda5",
+            "kind": "PROSPECTIVE_OPPORTUNITY",
+            "payload": {
+              "is_past_mobility": false,
+              "lawful_reachable": true,
+              "note": "prospective reachable opportunity in immutable checkpoint; not a mobility history fact",
+              "opportunity": "REGIONAL_INTERCHANGE_ONE_DAY_COMMISSION_OPEN_TO_HER",
+              "route_basis": "ROUTE_MOBILITY"
+            }
+          },
+          {
+            "actors": [
+              "LAB_MOTHER_M0"
+            ],
+            "causal_parent_event_ids": [
+              "sha256:3b36f3819c2491607630efd291f465c556d7ea3f936459c24e50b3f40ac0b179"
+            ],
+            "effective_index": 17,
+            "event_id": "sha256:b5bd0daf5a6e95ae1b24095406a88dd996a05f2a0b6f145b6be3cf81dae9be6b",
+            "kind": "NEGATIVE_OR_UNKNOWN_FACTS",
+            "payload": {
+              "unknowns": [
+                "no admitted prior encounter with unknown counterpart",
+                "no admitted family wealth"
+              ]
+            }
+          }
+        ],
+        "history_prefix_commit_hash": "sha256:9c8a3b3a304e798195d219949465f2828911302f65540660af50806764a33a1a",
+        "known_counterpart_identity_ref_or_null": null,
+        "lab_rule": "PROVISIONAL_LAB_RULE__NOT_ADOPTED",
+        "mobility_history_present": false,
+        "prohibited_future_input_hash": "sha256:f1877502f08803706f22a181b0e5ecac377c3509327549ee55bbcdad2e697a4d",
+        "prospective_opportunity_refs": [
+          {
+            "is_past_mobility": false,
+            "lawful_reachable": true,
+            "note": "prospective reachable opportunity in immutable checkpoint; not a mobility history fact",
+            "opportunity": "REGIONAL_INTERCHANGE_ONE_DAY_COMMISSION_OPEN_TO_HER",
+            "route_basis": "ROUTE_MOBILITY"
+          }
+        ],
+        "psyche": {
+          "attitudes": [
+            {
+              "attitude": "self_reliance_under_deadline",
+              "causal_event_refs": [
+                "sha256:8adf0e9a6b0766412658b4ca3823acdea0b2d186de3b85407e6f833e1e0fb2d3",
+                "sha256:a610a7868905cedbf89b6fb7c94d1cb7d2d97ee1a905b799adcf870e59610885",
+                "sha256:a0832ec66870ad8c83dc97d18807e29371b0cf01553bbce9f70cefc678be5b1f"
+              ]
+            }
+          ],
+          "practices": [
+            {
+              "causal_event_refs": [
+                "sha256:a0832ec66870ad8c83dc97d18807e29371b0cf01553bbce9f70cefc678be5b1f",
+                "sha256:a610a7868905cedbf89b6fb7c94d1cb7d2d97ee1a905b799adcf870e59610885"
+              ],
+              "practice": "measure_twice_cut_once_workshop_discipline"
+            }
+          ],
+          "strivings": [
+            {
+              "causal_event_refs": [
+                "sha256:ce8a5de77bc75eb1284e3c675dd49a0a53dae714573273257ec0500ebd67ead4",
+                "sha256:a610a7868905cedbf89b6fb7c94d1cb7d2d97ee1a905b799adcf870e59610885",
+                "sha256:8adf0e9a6b0766412658b4ca3823acdea0b2d186de3b85407e6f833e1e0fb2d3"
+              ],
+              "striving": "complete_evening_technical_certificate"
+            }
+          ]
+        },
+        "read_cut": "BEFORE_TARGET_OCCURRENCE",
+        "route_availability": [
+          "ROUTE_INSTITUTIONAL",
+          "ROUTE_LOCAL_CLOSED",
+          "ROUTE_MOBILITY",
+          "ROUTE_UNCONVENTIONAL"
+        ],
+        "schema": "MotherPreconceptionAnchor@1-LAB",
+        "t_preconception": "T_PRECONCEPTION_LAB_BOUNDARY",
+        "variant": "M0"
+      },
+      "mother_after": "sha256:b22e7c5569efa58a1d9414ab9412c4991981c167510ce551c6b199e059e0bd99",
+      "mother_before": "sha256:b22e7c5569efa58a1d9414ab9412c4991981c167510ce551c6b199e059e0bd99",
+      "new_actor_created": false,
+      "oracle": {
+        "accepted": true,
+        "derived_place": "REMOTE_REPAIR_DEPOT",
+        "errors": []
+      },
+      "prior_child_refs": [],
+      "replay": {
+        "causal_edges_verified": 5,
+        "causal_error_codes": [
+          "ENDPOINT_AVAILABILITY_OVERWRITE_ATTEMPT"
+        ],
+        "causal_integrity_errors": [
+          {
+            "claimed": "unavailable",
+            "code": "ENDPOINT_AVAILABILITY_OVERWRITE_ATTEMPT",
+            "derived_from_antecedent": "available_for_encounter",
+            "event_id": "G12_A_5"
+          }
+        ],
+        "endpoint_match": false,
+        "endpoint_state_derived_from_antecedent": true,
+        "endpoint_state_overwrite_by_endpoint_claim": "REFUSED",
+        "lab_rule": "PROVISIONAL_LAB_RULE__NOT_ADOPTED",
+        "n_events_replayed": 6,
+        "recomputed_state": {
+          "attitudes": [],
+          "availability_status": "available_for_encounter",
+          "material_position": "independent_worker",
+          "nonmother_relations": [
+            "CO_WORKER_N"
+          ],
+          "place": "REMOTE_REPAIR_DEPOT",
+          "practices": [],
+          "projects": [
+            "night_shift_union_safety_project"
+          ]
+        },
+        "replay_seconds": 2.2e-05,
+        "status": "INTEGRITY_FAILURE",
+        "temporal_inversions": 0
+      }
+    },
+    "B": {
+      "birth": "NOT_ISSUED",
+      "child_generation": "NOT_ISSUED",
+      "conception": "PENDING_NONCAUSAL",
+      "history": [
+        {
+          "actors": [
+            "G12_PROVISIONAL_SECOND_PARENT_B"
+          ],
+          "causal_parent_event_ids": [],
+          "effective_index": 0,
+          "event_id": "G12_B_0",
+          "kind": "PARTIAL_ROOT",
+          "payload": {
+            "antecedents": "UNKNOWN_EXPLICIT_ROOT"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL_SECOND_PARENT_B"
+          ],
+          "causal_parent_event_ids": [
+            "G12_B_0"
+          ],
+          "effective_index": 1,
+          "event_id": "G12_B_1",
+          "kind": "WORK_POSITION",
+          "payload": {
+            "material_position": "independent_worker"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL_SECOND_PARENT_B"
+          ],
+          "causal_parent_event_ids": [
+            "G12_B_1"
+          ],
+          "effective_index": 2,
+          "event_id": "G12_B_2",
+          "kind": "PROJECT",
+          "payload": {
+            "durable_effect": "TEST_DESCRIPTION_ONLY",
+            "nonmother": true,
+            "project": "coastal_flood_relief_project"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL_SECOND_PARENT_B"
+          ],
+          "causal_parent_event_ids": [
+            "G12_B_0"
+          ],
+          "effective_index": 3,
+          "event_id": "G12_B_3",
+          "kind": "NONMOTHER_RELATIONSHIP",
+          "payload": {
+            "counterpart": "SIBLING_C",
+            "nonmother": true
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL_SECOND_PARENT_B"
+          ],
+          "causal_parent_event_ids": [
+            "G12_B_2"
+          ],
+          "effective_index": 4,
+          "event_id": "G12_B_4",
+          "kind": "COMMISSIONED_WORK",
+          "payload": {
+            "workplace": "COASTAL_RESCUE_STATION"
+          }
+        },
+        {
+          "actors": [
+            "G12_PROVISIONAL_SECOND_PARENT_B"
+          ],
+          "causal_parent_event_ids": [
+            "G12_B_4"
+          ],
+          "effective_index": 5,
+          "event_id": "G12_B_5",
+          "kind": "ENDPOINT_STATE",
+          "payload": {
+            "availability_status": "unavailable",
+            "place": "COASTAL_RESCUE_STATION"
+          }
+        }
+      ],
+      "mother": {
+        "actor_id": "LAB_MOTHER_M2",
+        "admitted_partner_relationship_refs": [],
+        "already_generated_child_refs": [
+          "LAB_OLDER_CHILD_O1"
+        ],
+        "anchor_id": "ANCHOR_G12_MOTHER_B",
+        "fixture_id": "G12_MOTHER_B",
+        "history_events": [
+          {
+            "actors": [
+              "LAB_MOTHER_M2"
+            ],
+            "causal_parent_event_ids": [],
+            "effective_index": 0,
+            "event_id": "sha256:0b2b93151c3f701013f4dd7159c490c3c6c17eb597a323e672cf5bd1445d97bd",
+            "kind": "ORIGIN_FAMILY",
+            "payload": {
+              "household_occupation": "mixed_fabrication_and_market_trade",
+              "known_siblings": 2,
+              "region": "RIVERSIDE_DISTRICT",
+              "root_status": "LAB_ROOT_ADMITTED"
+            }
+          },
+          {
+            "actors": [
+              "LAB_MOTHER_M2"
+            ],
+            "causal_parent_event_ids": [
+              "sha256:0b2b93151c3f701013f4dd7159c490c3c6c17eb597a323e672cf5bd1445d97bd"
+            ],
+            "effective_index": 1,
+            "event_id": "sha256:270cbaa0cae6d61a73185097ce7c0adfe83d011ce5d5a23dfd0f321e1bdead2a",
+            "kind": "SCHOOLING",
+            "payload": {
+              "level": "secondary_complete_plus_one_year_vocational",
+              "site": "MUNICIPAL_VOCATIONAL_ANNEX"
+            }
+          },
+          {
+            "actors": [
+              "LAB_MOTHER_M2"
+            ],
+            "causal_parent_event_ids": [
+              "sha256:270cbaa0cae6d61a73185097ce7c0adfe83d011ce5d5a23dfd0f321e1bdead2a"
+            ],
+            "effective_index": 2,
+            "event_id": "sha256:054e4376f4d02063d55919d5282f13a4f7e4b9e3809ae5b2af05b1d979bcf56d",
+            "kind": "WORK_POSITION",
+            "payload": {
+              "material_position": "waged_artisan",
+              "role": "junior_finisher",
+              "workplace": "RIVERSIDE_FABRICATION_WORKSHOP"
+            }
+          },
+          {
+            "actors": [
+              "LAB_MOTHER_M2"
+            ],
+            "causal_parent_event_ids": [
+              "sha256:054e4376f4d02063d55919d5282f13a4f7e4b9e3809ae5b2af05b1d979bcf56d"
+            ],
+            "effective_index": 3,
+            "event_id": "sha256:4e8b2b7160fd6aeb6bd4fe11cfcb301a44ca6e97498084638f86f87946145e4e",
+            "kind": "PRACTICE_FORMATION",
+            "payload": {
+              "causal_basis": "repeated supervised finishing work with rework costs",
+              "practice": "measure_twice_cut_once_workshop_discipline"
+            }
+          },
+          {
+            "actors": [
+              "LAB_MOTHER_M2"
+            ],
+            "causal_parent_event_ids": [
+              "sha256:054e4376f4d02063d55919d5282f13a4f7e4b9e3809ae5b2af05b1d979bcf56d",
+              "sha256:4e8b2b7160fd6aeb6bd4fe11cfcb301a44ca6e97498084638f86f87946145e4e"
+            ],
+            "effective_index": 4,
+            "event_id": "sha256:10abc4e4467aa6c8dbdbee7702e1f603bcfea2a656b235de0b5a43a5f5472cbb",
+            "kind": "ATTITUDE_FORMATION",
+            "payload": {
+              "attitude": "self_reliance_under_deadline",
+              "causal_basis": "piece_rate pressure and rework experience"
+            }
+          },
+          {
+            "actors": [
+              "LAB_MOTHER_M2"
+            ],
+            "causal_parent_event_ids": [
+              "sha256:054e4376f4d02063d55919d5282f13a4f7e4b9e3809ae5b2af05b1d979bcf56d",
+              "sha256:4e8b2b7160fd6aeb6bd4fe11cfcb301a44ca6e97498084638f86f87946145e4e"
+            ],
+            "effective_index": 5,
+            "event_id": "sha256:f7f05046b048c8fe4cdeb95f17446a0ad54008f9d696fde72e31c1ecee261a7c",
+            "kind": "PROJECT",
+            "payload": {
+              "consequential": true,
+              "duration_index_span": [
+                40,
+                88
+              ],
+              "nonmother": true,
+              "project": "mentor_two_apprentices_through_journeyman_exam",
+              "third_party": [
+                "APPRENTICE_ONE",
+                "APPRENTICE_TWO"
+              ]
+            }
+          },
+          {
+            "actors": [
+              "LAB_MOTHER_M2"
+            ],
+            "causal_parent_event_ids": [
+              "sha256:0b2b93151c3f701013f4dd7159c490c3c6c17eb597a323e672cf5bd1445d97bd"
+            ],
+            "effective_index": 6,
+            "event_id": "sha256:3015cb11841bfe8ebb068ad7ced1dfa3d605634ab9924a037746885d049d6bd6",
+            "kind": "NONMOTHER_RELATIONSHIP",
+            "payload": {
+              "consequential": true,
+              "counterpart": "SIBLING_R",
+              "nonmother": true,
+              "relation_kind": "sibling_care_obligation"
+            }
+          },
+          {
+            "actors": [
+              "LAB_MOTHER_M2"
+            ],
+            "causal_parent_event_ids": [
+              "sha256:054e4376f4d02063d55919d5282f13a4f7e4b9e3809ae5b2af05b1d979bcf56d"
+            ],
+            "effective_index": 7,
+            "event_id": "sha256:6c9bdf925e505774a2f4c7d7c56aa438b99944c948a92ec70cf06b243ec44e4f",
+            "kind": "MEMORY_TRACE",
+            "payload": {
+              "experienced_basis_event": "sha256:054e4376f4d02063d55919d5282f13a4f7e4b9e3809ae5b2af05b1d979bcf56d",
+              "trace": "remembered_rework_loss_from_measurement_error"
+            }
+          },
+          {
+            "actors": [
+              "LAB_MOTHER_M2"
+            ],
+            "causal_parent_event_ids": [
+              "sha256:f7f05046b048c8fe4cdeb95f17446a0ad54008f9d696fde72e31c1ecee261a7c"
+            ],
+            "effective_index": 8,
+            "event_id": "sha256:94b356e1f743b53afca63943734effe5fc8d46f6cdca92fde53213eb24e65a01",
+            "kind": "MEMORY_TRACE",
+            "payload": {
+              "experienced_basis_event": "sha256:f7f05046b048c8fe4cdeb95f17446a0ad54008f9d696fde72e31c1ecee261a7c",
+              "trace": "remembered_apprentice_exam_failure_then_recovery"
+            }
+          },
+          {
+            "actors": [
+              "LAB_MOTHER_M2"
+            ],
+            "causal_parent_event_ids": [
+              "sha256:054e4376f4d02063d55919d5282f13a4f7e4b9e3809ae5b2af05b1d979bcf56d",
+              "sha256:10abc4e4467aa6c8dbdbee7702e1f603bcfea2a656b235de0b5a43a5f5472cbb"
+            ],
+            "effective_index": 9,
+            "event_id": "sha256:c92c010cf177307efd9170ba3676fe071cc7ae8ee6b51c80e804bf90194a359c",
+            "kind": "STRIVING",
+            "payload": {
+              "causal_basis": "blocked promotion without certificate",
+              "striving": "complete_evening_technical_certificate"
+            }
+          },
+          {
+            "actors": [
+              "LAB_MOTHER_M2"
+            ],
+            "causal_parent_event_ids": [
+              "sha256:c92c010cf177307efd9170ba3676fe071cc7ae8ee6b51c80e804bf90194a359c"
+            ],
+            "effective_index": 10,
+            "event_id": "sha256:eaef7bfb049372c18c048d69a5a2ba0b3a58ac339a00ad454b54c43ed12aef1c",
+            "kind": "ENROLLMENT",
+            "payload": {
+              "course": "structural_mechanics_ii",
+              "institution": "MUNICIPAL_EVENING_TECHNICAL_CLASS"
+            }
+          },
+          {
+            "actors": [
+              "LAB_MOTHER_M2"
+            ],
+            "causal_parent_event_ids": [
+              "sha256:054e4376f4d02063d55919d5282f13a4f7e4b9e3809ae5b2af05b1d979bcf56d",
+              "sha256:f7f05046b048c8fe4cdeb95f17446a0ad54008f9d696fde72e31c1ecee261a7c"
+            ],
+            "effective_index": 11,
+            "event_id": "sha256:6d4a1140585c2dcad25437e5a9ed16d2b2c412d8fc8e146145eec373159f1ced",
+            "kind": "WORK_POSITION",
+            "payload": {
+              "material_position": "waged_artisan_senior",
+              "role": "finisher_specialist",
+              "workplace": "RIVERSIDE_FABRICATION_WORKSHOP"
+            }
+          },
+          {
+            "actors": [
+              "LAB_MOTHER_M2"
+            ],
+            "causal_parent_event_ids": [
+              "sha256:6d4a1140585c2dcad25437e5a9ed16d2b2c412d8fc8e146145eec373159f1ced"
+            ],
+            "effective_index": 12,
+            "event_id": "sha256:9a44a046736df0e348e81f0a74416190773b0b84f8a78e0fb6bc096e40ab7b05",
+            "kind": "HOUSEHOLD_STATE",
+            "payload": {
+              "membership": [
+                "LAB_MOTHER_M2"
+              ],
+              "residence": "RIVERSIDE_RENTED_ROOM_SHARED_KITCHEN"
+            }
+          },
+          {
+            "actors": [
+              "LAB_MOTHER_M2"
+            ],
+            "causal_parent_event_ids": [
+              "sha256:6d4a1140585c2dcad25437e5a9ed16d2b2c412d8fc8e146145eec373159f1ced"
+            ],
+            "effective_index": 13,
+            "event_id": "sha256:2d5eaca9c6385896e10fcb8a62397c72cd35475f0c72da42e936d69fde0a6217",
+            "kind": "RELATIONSHIP_ADMISSION",
+            "payload": {
+              "counterpart": "PRIOR_PARTNER_P",
+              "objective_relation": true,
+              "relation_kind": "partner_relationship"
+            }
+          },
+          {
+            "actors": [
+              "LAB_MOTHER_M2"
+            ],
+            "causal_parent_event_ids": [
+              "sha256:2d5eaca9c6385896e10fcb8a62397c72cd35475f0c72da42e936d69fde0a6217"
+            ],
+            "effective_index": 14,
+            "event_id": "sha256:3a89f3f15970ceb67b20ebfa5f3d098bd04b8ac4b46683f1b68923dbdd95f6d6",
+            "kind": "CHILD_GENERATED",
+            "payload": {
+              "child_actor": "LAB_OLDER_CHILD_O1",
+              "generation_boundary": "PRIOR_ADMITTED_GENERATION",
+              "note": "prior admitted child; stable actor stream"
+            }
+          },
+          {
+            "actors": [
+              "LAB_MOTHER_M2"
+            ],
+            "causal_parent_event_ids": [
+              "sha256:3a89f3f15970ceb67b20ebfa5f3d098bd04b8ac4b46683f1b68923dbdd95f6d6"
+            ],
+            "effective_index": 15,
+            "event_id": "sha256:a91c06dcf61fa14ad24d35362e151e6fa5b0da34ae3692afe0f63a39ee106bcf",
+            "kind": "RELATIONSHIP_CHANGE",
+            "payload": {
+              "change": "separation",
+              "counterpart": "PRIOR_PARTNER_P"
+            }
+          },
+          {
+            "actors": [
+              "LAB_MOTHER_M2"
+            ],
+            "causal_parent_event_ids": [
+              "sha256:3a89f3f15970ceb67b20ebfa5f3d098bd04b8ac4b46683f1b68923dbdd95f6d6",
+              "sha256:a91c06dcf61fa14ad24d35362e151e6fa5b0da34ae3692afe0f63a39ee106bcf"
+            ],
+            "effective_index": 16,
+            "event_id": "sha256:7b180c8322322c077b125e4701e726fb11ac406141b1301e132b671ce9f25e86",
+            "kind": "HOUSEHOLD_STATE",
+            "payload": {
+              "membership": [
+                "LAB_MOTHER_M2",
+                "LAB_OLDER_CHILD_O1"
+              ],
+              "residence": "RIVERSIDE_RENTED_FLAT_TWO_ROOM"
+            }
+          },
+          {
+            "actors": [
+              "LAB_MOTHER_M2"
+            ],
+            "causal_parent_event_ids": [
+              "sha256:3a89f3f15970ceb67b20ebfa5f3d098bd04b8ac4b46683f1b68923dbdd95f6d6"
+            ],
+            "effective_index": 17,
+            "event_id": "sha256:ee9f1a20988e3c3fb42e5ddacfc323a3c0979fa83a83234b1666a0e5adf9f23d",
+            "kind": "CARE_ROUTINE",
+            "payload": {
+              "routine": "school_run_and_evening_supervision",
+              "subject": "LAB_OLDER_CHILD_O1"
+            }
+          },
+          {
+            "actors": [
+              "LAB_MOTHER_M2"
+            ],
+            "causal_parent_event_ids": [
+              "sha256:6d4a1140585c2dcad25437e5a9ed16d2b2c412d8fc8e146145eec373159f1ced"
+            ],
+            "effective_index": 18,
+            "event_id": "sha256:f7a3a44d2f8eac77de22661f3a5c4dc266afbf04cca12159f698c48230dfd910",
+            "kind": "ROUTE_AVAILABILITY",
+            "payload": {
+              "basis": "employment adjacency",
+              "route": "ROUTE_LOCAL_CLOSED",
+              "via": "INST_WORKSHOP_A"
+            }
+          },
+          {
+            "actors": [
+              "LAB_MOTHER_M2"
+            ],
+            "causal_parent_event_ids": [
+              "sha256:eaef7bfb049372c18c048d69a5a2ba0b3a58ac339a00ad454b54c43ed12aef1c"
+            ],
+            "effective_index": 19,
+            "event_id": "sha256:0a44cc25c5fb7a0234513644071c58c9722b144be12defe56e9c96c1eedf571c",
+            "kind": "ROUTE_AVAILABILITY",
+            "payload": {
+              "basis": "evening enrollment",
+              "route": "ROUTE_INSTITUTIONAL",
+              "via": "INST_EVENING_CLASS_B"
+            }
+          },
+          {
+            "actors": [
+              "LAB_MOTHER_M2"
+            ],
+            "causal_parent_event_ids": [
+              "sha256:7b180c8322322c077b125e4701e726fb11ac406141b1301e132b671ce9f25e86"
+            ],
+            "effective_index": 20,
+            "event_id": "sha256:ba7ff84713b57cde8ebaef571a69e2a6136ea55e4a5304f88d745e691d570e87",
+            "kind": "ROUTE_AVAILABILITY",
+            "payload": {
+              "basis": "residency in riverside district water committee catchment",
+              "route": "ROUTE_UNCONVENTIONAL",
+              "via": "INST_COMMUNITY_D"
+            }
+          },
+          {
+            "actors": [
+              "LAB_MOTHER_M2"
+            ],
+            "causal_parent_event_ids": [
+              "sha256:6d4a1140585c2dcad25437e5a9ed16d2b2c412d8fc8e146145eec373159f1ced"
+            ],
+            "effective_index": 21,
+            "event_id": "sha256:f6d58c693bf19a50525de9ed1690fa91477907d864cc9acc66761fcd90ee20c9",
+            "kind": "MOBILITY_HISTORY",
+            "payload": {
+              "detail": "one 3-month commissioned installation at regional interchange town",
+              "kind": "seasonal_relocation_for_commissioned_work",
+              "route_basis": "ROUTE_MOBILITY"
+            }
+          },
+          {
+            "actors": [
+              "LAB_MOTHER_M2"
+            ],
+            "causal_parent_event_ids": [
+              "sha256:7b180c8322322c077b125e4701e726fb11ac406141b1301e132b671ce9f25e86"
+            ],
+            "effective_index": 22,
+            "event_id": "sha256:e3da449c42b11b9184d86590d43ef9b824283b5117847ba1039fe20f25bd3f78",
+            "kind": "NEGATIVE_OR_UNKNOWN_FACTS",
+            "payload": {
+              "unknowns": [
+                "no admitted prior encounter with unknown counterpart",
+                "no admitted family wealth"
+              ]
+            }
+          }
+        ],
+        "history_prefix_commit_hash": "sha256:9b7d109b6ff8ed401e8e56394df52d4b84a497478c4e93b15747a8b3c7777d55",
+        "known_counterpart_identity_ref_or_null": null,
+        "lab_rule": "PROVISIONAL_LAB_RULE__NOT_ADOPTED",
+        "mobility_history_present": true,
+        "prohibited_future_input_hash": "sha256:f1877502f08803706f22a181b0e5ecac377c3509327549ee55bbcdad2e697a4d",
+        "prospective_opportunity_refs": [],
+        "psyche": {
+          "attitudes": [
+            {
+              "attitude": "self_reliance_under_deadline",
+              "causal_event_refs": [
+                "sha256:10abc4e4467aa6c8dbdbee7702e1f603bcfea2a656b235de0b5a43a5f5472cbb",
+                "sha256:054e4376f4d02063d55919d5282f13a4f7e4b9e3809ae5b2af05b1d979bcf56d",
+                "sha256:4e8b2b7160fd6aeb6bd4fe11cfcb301a44ca6e97498084638f86f87946145e4e"
+              ]
+            }
+          ],
+          "practices": [
+            {
+              "causal_event_refs": [
+                "sha256:4e8b2b7160fd6aeb6bd4fe11cfcb301a44ca6e97498084638f86f87946145e4e",
+                "sha256:054e4376f4d02063d55919d5282f13a4f7e4b9e3809ae5b2af05b1d979bcf56d"
+              ],
+              "practice": "measure_twice_cut_once_workshop_discipline"
+            }
+          ],
+          "strivings": [
+            {
+              "causal_event_refs": [
+                "sha256:c92c010cf177307efd9170ba3676fe071cc7ae8ee6b51c80e804bf90194a359c",
+                "sha256:054e4376f4d02063d55919d5282f13a4f7e4b9e3809ae5b2af05b1d979bcf56d",
+                "sha256:10abc4e4467aa6c8dbdbee7702e1f603bcfea2a656b235de0b5a43a5f5472cbb"
+              ],
+              "striving": "complete_evening_technical_certificate"
+            }
+          ]
+        },
+        "read_cut": "BEFORE_TARGET_OCCURRENCE",
+        "route_availability": [
+          "ROUTE_INSTITUTIONAL",
+          "ROUTE_LOCAL_CLOSED",
+          "ROUTE_MOBILITY",
+          "ROUTE_UNCONVENTIONAL"
+        ],
+        "schema": "MotherPreconceptionAnchor@1-LAB",
+        "t_preconception": "T_PRECONCEPTION_LAB_BOUNDARY",
+        "variant": "M2"
+      },
+      "mother_after": "sha256:2adbc3f040bfaa32477308cdb342be2b6946471ff534a74adb3114c72ec39ce9",
+      "mother_before": "sha256:2adbc3f040bfaa32477308cdb342be2b6946471ff534a74adb3114c72ec39ce9",
+      "new_actor_created": false,
+      "oracle": {
+        "accepted": true,
+        "derived_place": "COASTAL_RESCUE_STATION",
+        "errors": []
+      },
+      "prior_child_refs": [
+        "LAB_OLDER_CHILD_O1"
+      ],
+      "replay": {
+        "causal_edges_verified": 5,
+        "causal_error_codes": [
+          "ENDPOINT_AVAILABILITY_OVERWRITE_ATTEMPT"
+        ],
+        "causal_integrity_errors": [
+          {
+            "claimed": "unavailable",
+            "code": "ENDPOINT_AVAILABILITY_OVERWRITE_ATTEMPT",
+            "derived_from_antecedent": "available_for_encounter",
+            "event_id": "G12_B_5"
+          }
+        ],
+        "endpoint_match": false,
+        "endpoint_state_derived_from_antecedent": true,
+        "endpoint_state_overwrite_by_endpoint_claim": "REFUSED",
+        "lab_rule": "PROVISIONAL_LAB_RULE__NOT_ADOPTED",
+        "n_events_replayed": 6,
+        "recomputed_state": {
+          "attitudes": [],
+          "availability_status": "available_for_encounter",
+          "material_position": "independent_worker",
+          "nonmother_relations": [
+            "SIBLING_C"
+          ],
+          "place": "COASTAL_RESCUE_STATION",
+          "practices": [],
+          "projects": [
+            "coastal_flood_relief_project"
+          ]
+        },
+        "replay_seconds": 1.3e-05,
+        "status": "INTEGRITY_FAILURE",
+        "temporal_inversions": 0
+      }
+    }
+  },
+  "singleton": {
+    "adp020_entitlement": "NOT_GRANTED",
+    "adp020_hold": "ADP020_REAL_ROOT_SEED_REQUIRED",
+    "candidate_replay_hashes": {
+      "A": "sha256:bdf8f9bc62c610d97fc5ff694b204e6fd062da93db41e0fefec7971de85775ad"
+    },
+    "candidate_set_hash": "sha256:28ebb0f8a20393179cde4e508f23f62951ae279aa0083eb56027b621ff533017",
+    "candidate_set_hash_binds_payload": true,
+    "canonical_class_order": [
+      "A"
+    ],
+    "class_weights": [
+      {
+        "class_key": "A",
+        "weight_units": 1
+      }
+    ],
+    "decision_kind": "CONCEPTION_SCENARIO_SELECTION",
+    "decision_semantics_version": "SELECTION_DECISION_SEMANTICS@1.1-G13-REPAIRED",
+    "draw": null,
+    "draw_mode": "DETERMINISTIC_SINGLETON_ZERO_DRAWS",
+    "draw_receipts": [],
+    "eligible_set": [
+      "A"
+    ],
+    "n_draws": 0,
+    "no_population_frequency_claim": true,
+    "occurrence_index": 0,
+    "policy_hash": "sha256:bb8fff7da303849fc090918ddb1f2458edeca5f424a2ce70d1998c9f61d028b7",
+    "policy_name": "SIM_UNIFORM_CLASSES",
+    "policy_status": "SIMULATION_POLICY",
+    "root_seed": "G12",
+    "root_seed_provenance": "LEGACY_LAB_ROOT_TOKEN",
+    "sampler": null,
+    "scope_hash": "S",
+    "selected_class_key": "A",
+    "selected_representative_id": "A",
+    "status": "COMMITTED",
+    "stream": "v3.causal.adp015.conception_scenario_selection",
+    "total_weight_units": 1,
+    "unreported_redraws": 0,
+    "upstream_class_set_hash": null
+  },
+  "stopping_corrupt": {
+    "checks": {
+      "bounded_observational_closure": false,
+      "endpoint_fields_have_lawful_histories": false,
+      "forward_replay_entails_endpoint": false,
+      "heldout_nonmother_action_evaluable_without_mom_prompt": false,
+      "material_organismic_relational_project_practice_memory_domains_present": true,
+      "no_outstanding_mandatory_antecedent_missing_authority": false,
+      "nonmother_project_effects_persist_into_independent_future_test": true,
+      "psyche_fields_have_causal_ancestry": true
+    },
+    "status": "PREHISTORY_OWNER_RULE_MISSING",
+    "stopping_law_version": "SUFFICIENT_PREHISTORY_STOPPING_LAW@1.0-G13-REPAIRED",
+    "sufficient": false,
+    "typed_hold": {
+      "hold_reasons": [
+        "OUTSTANDING_MANDATORY_ANTECEDENT",
+        "DOMAIN_COVERAGE_NOT_CAUSALLY_ANCHORED",
+        "CAUSAL_INTEGRITY_FAILURE"
+      ],
+      "hold_state": "PREHISTORY_OWNER_RULE_MISSING",
+      "is_HOLD_not_INFEASIBLE": true,
+      "outstanding_mandatory_antecedents": [
+        {
+          "event_id": "sha256:666663210d844a30fad8006b01c8767b613c4a342990316af7a52ea730343b7b",
+          "missing_parent": "ABSENT_PARENT",
+          "reason": "MANDATORY_ANTECEDENT_NOT_REPLAYABLE"
+        },
+        {
+          "code": "MISSING_CAUSAL_PARENT",
+          "reason": "CAUSAL_INTEGRITY_ERROR_PRESENT"
+        }
+      ],
+      "psyche_fields_without_ancestry": [],
+      "unanchored_domains": [
+        "PROJECT:NOT_CAUSALLY_ANCHORED"
+      ],
+      "unsupported_required_predicates": []
+    }
+  },
+  "survivor_fractions": [
+    "4/5",
+    "1/5"
+  ],
+  "unissued": {
+    "lab_rule": "PROVISIONAL_LAB_RULE__NOT_ADOPTED",
+    "policy": "UNISSUED_POLICY",
+    "reason": "policy not registered",
+    "status": "SELECTION_AUTHORITY_UNBOUND"
+  }
+}

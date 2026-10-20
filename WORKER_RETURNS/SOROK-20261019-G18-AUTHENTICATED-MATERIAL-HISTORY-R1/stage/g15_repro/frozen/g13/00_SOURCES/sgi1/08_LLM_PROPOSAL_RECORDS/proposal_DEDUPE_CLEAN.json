@@ -1,0 +1,230 @@
+{
+ "fixture": "M0",
+ "note": "declared K11 dedup control input (clean enumeration)",
+ "record": {
+  "candidate_ids": [
+   "C0_A",
+   "C1_A",
+   "C2_A"
+  ],
+  "dedup": {
+   "canonical_order": [
+    "sha256:31a48e9145df438320c712bcbda5b33ff7c6e330ef472d11f7e585b1b9bfab2e",
+    "sha256:581d783e555c17deb4c46f14531cd2a6dd27a09d32e8d01d35714ee84b67d55e",
+    "sha256:cf1537017554b978e868993d5a3c5127e75c1098b59a40af99f242af40581409"
+   ],
+   "class_member_index": {
+    "sha256:31a48e9145df438320c712bcbda5b33ff7c6e330ef472d11f7e585b1b9bfab2e": [
+     "C1_A"
+    ],
+    "sha256:581d783e555c17deb4c46f14531cd2a6dd27a09d32e8d01d35714ee84b67d55e": [
+     "C0_A"
+    ],
+    "sha256:cf1537017554b978e868993d5a3c5127e75c1098b59a40af99f242af40581409": [
+     "C2_A"
+    ]
+   },
+   "class_set_hash": "sha256:ae2689513e4399ebbacf920ebcc6af30f2f02476fbd3eff91263655e23f0eff8",
+   "classes": [
+    {
+     "candidate": {
+      "assumptions": [
+       "evening class enrollment"
+      ],
+      "candidate_kind": "PROVISIONAL_COUNTERPART",
+      "candidate_local_id": "C1_A",
+      "endpoint_constraints": {
+       "conception_witness_requirements": [
+        "ENCOUNTER_WITNESS_MIN_1"
+       ],
+       "required_relation_objective_refs": [
+        "REL_ENCOUNTER_WITNESSED"
+       ],
+       "second_parent_structure_and_position_constraints": [
+        "class_attendee"
+       ],
+       "time_or_interval": "T_ENCOUNTER_LAB_WINDOW"
+      },
+      "falsifiers": [
+       "class not attended"
+      ],
+      "plausibility_rank_ordinal": 2,
+      "route_kind_id": "ROUTE_INSTITUTIONAL"
+     },
+     "class_key": "sha256:31a48e9145df438320c712bcbda5b33ff7c6e330ef472d11f7e585b1b9bfab2e",
+     "member_count": 1,
+     "member_ids": [
+      "C1_A"
+     ],
+     "representative_id": "CLS_31a48e9145df438320c712bc"
+    },
+    {
+     "candidate": {
+      "assumptions": [
+       "workplace adjacency contact"
+      ],
+      "candidate_kind": "PROVISIONAL_COUNTERPART",
+      "candidate_local_id": "C0_A",
+      "endpoint_constraints": {
+       "conception_witness_requirements": [
+        "ENCOUNTER_WITNESS_MIN_1"
+       ],
+       "required_relation_objective_refs": [
+        "REL_ENCOUNTER_WITNESSED"
+       ],
+       "second_parent_structure_and_position_constraints": [
+        "local_artisan"
+       ],
+       "time_or_interval": "T_ENCOUNTER_LAB_WINDOW"
+      },
+      "falsifiers": [
+       "no shared shift overlap"
+      ],
+      "plausibility_rank_ordinal": 1,
+      "route_kind_id": "ROUTE_LOCAL_CLOSED"
+     },
+     "class_key": "sha256:581d783e555c17deb4c46f14531cd2a6dd27a09d32e8d01d35714ee84b67d55e",
+     "member_count": 1,
+     "member_ids": [
+      "C0_A"
+     ],
+     "representative_id": "CLS_581d783e555c17deb4c46f14"
+    },
+    {
+     "candidate": {
+      "assumptions": [
+       "committee emergency callout"
+      ],
+      "candidate_kind": "PROVISIONAL_COUNTERPART",
+      "candidate_local_id": "C2_A",
+      "endpoint_constraints": {
+       "conception_witness_requirements": [
+        "ENCOUNTER_WITNESS_MIN_1"
+       ],
+       "required_relation_objective_refs": [
+        "REL_ENCOUNTER_WITNESSED"
+       ],
+       "second_parent_structure_and_position_constraints": [
+        "mechanic_callout"
+       ],
+       "time_or_interval": "T_ENCOUNTER_LAB_WINDOW"
+      },
+      "falsifiers": [
+       "callout not attended"
+      ],
+      "plausibility_rank_ordinal": 3,
+      "route_kind_id": "ROUTE_UNCONVENTIONAL"
+     },
+     "class_key": "sha256:cf1537017554b978e868993d5a3c5127e75c1098b59a40af99f242af40581409",
+     "member_count": 1,
+     "member_ids": [
+      "C2_A"
+     ],
+     "representative_id": "CLS_cf1537017554b978e868993d"
+    }
+   ],
+   "coverage_receipt": {
+    "OTHER_UNRESOLVED": true,
+    "note": "unenumerated scenarios may exist; completeness NOT claimed"
+   },
+   "merge_receipts": [],
+   "n_classes": 3,
+   "n_input_candidates": 3
+  },
+  "fixture_id": "DEDUPE_CLEAN",
+  "lmm_automated_status": "AUTOMATED_LLM_PROPOSAL_NOT_TESTED",
+  "model_requested": "NONE",
+  "model_returned": null,
+  "parsed_candidates": [
+   {
+    "assumptions": [
+     "workplace adjacency contact"
+    ],
+    "candidate_kind": "PROVISIONAL_COUNTERPART",
+    "candidate_local_id": "C0_A",
+    "endpoint_constraints": {
+     "conception_witness_requirements": [
+      "ENCOUNTER_WITNESS_MIN_1"
+     ],
+     "required_relation_objective_refs": [
+      "REL_ENCOUNTER_WITNESSED"
+     ],
+     "second_parent_structure_and_position_constraints": [
+      "local_artisan"
+     ],
+     "time_or_interval": "T_ENCOUNTER_LAB_WINDOW"
+    },
+    "falsifiers": [
+     "no shared shift overlap"
+    ],
+    "plausibility_rank_ordinal": 1,
+    "route_kind_id": "ROUTE_LOCAL_CLOSED"
+   },
+   {
+    "assumptions": [
+     "evening class enrollment"
+    ],
+    "candidate_kind": "PROVISIONAL_COUNTERPART",
+    "candidate_local_id": "C1_A",
+    "endpoint_constraints": {
+     "conception_witness_requirements": [
+      "ENCOUNTER_WITNESS_MIN_1"
+     ],
+     "required_relation_objective_refs": [
+      "REL_ENCOUNTER_WITNESSED"
+     ],
+     "second_parent_structure_and_position_constraints": [
+      "class_attendee"
+     ],
+     "time_or_interval": "T_ENCOUNTER_LAB_WINDOW"
+    },
+    "falsifiers": [
+     "class not attended"
+    ],
+    "plausibility_rank_ordinal": 2,
+    "route_kind_id": "ROUTE_INSTITUTIONAL"
+   },
+   {
+    "assumptions": [
+     "committee emergency callout"
+    ],
+    "candidate_kind": "PROVISIONAL_COUNTERPART",
+    "candidate_local_id": "C2_A",
+    "endpoint_constraints": {
+     "conception_witness_requirements": [
+      "ENCOUNTER_WITNESS_MIN_1"
+     ],
+     "required_relation_objective_refs": [
+      "REL_ENCOUNTER_WITNESSED"
+     ],
+     "second_parent_structure_and_position_constraints": [
+      "mechanic_callout"
+     ],
+     "time_or_interval": "T_ENCOUNTER_LAB_WINDOW"
+    },
+    "falsifiers": [
+     "callout not attended"
+    ],
+    "plausibility_rank_ordinal": 3,
+    "route_kind_id": "ROUTE_UNCONVENTIONAL"
+   }
+  ],
+  "prompt_hash": "sha256:73edbbc551b82fe9a0ba7ace9422347e17cada181ca269488724ea12fe086c64",
+  "prompt_text": "",
+  "proposal_hash": "sha256:73edbbc551b82fe9a0ba7ace9422347e17cada181ca269488724ea12fe086c64",
+  "provider": "declared_test_intervention",
+  "raw_output": "[{\"candidate_local_id\": \"C0_A\", \"candidate_kind\": \"PROVISIONAL_COUNTERPART\", \"route_kind_id\": \"ROUTE_LOCAL_CLOSED\", \"endpoint_constraints\": {\"time_or_interval\": \"T_ENCOUNTER_LAB_WINDOW\", \"required_relation_objective_refs\": [\"REL_ENCOUNTER_WITNESSED\"], \"second_parent_structure_and_position_constraints\": [\"local_artisan\"], \"conception_witness_requirements\": [\"ENCOUNTER_WITNESS_MIN_1\"]}, \"assumptions\": [\"workplace adjacency contact\"], \"falsifiers\": [\"no shared shift overlap\"], \"plausibility_rank_ordinal\": 1}, {\"candidate_local_id\": \"C1_A\", \"candidate_kind\": \"PROVISIONAL_COUNTERPART\", \"route_kind_id\": \"ROUTE_INSTITUTIONAL\", \"endpoint_constraints\": {\"time_or_interval\": \"T_ENCOUNTER_LAB_WINDOW\", \"required_relation_objective_refs\": [\"REL_ENCOUNTER_WITNESSED\"], \"second_parent_structure_and_position_constraints\": [\"class_attendee\"], \"conception_witness_requirements\": [\"ENCOUNTER_WITNESS_MIN_1\"]}, \"assumptions\": [\"evening class enrollment\"], \"falsifiers\": [\"class not attended\"], \"plausibility_rank_ordinal\": 2}, {\"candidate_local_id\": \"C2_A\", \"candidate_kind\": \"PROVISIONAL_COUNTERPART\", \"route_kind_id\": \"ROUTE_UNCONVENTIONAL\", \"endpoint_constraints\": {\"time_or_interval\": \"T_ENCOUNTER_LAB_WINDOW\", \"required_relation_objective_refs\": [\"REL_ENCOUNTER_WITNESSED\"], \"second_parent_structure_and_position_constraints\": [\"mechanic_callout\"], \"conception_witness_requirements\": [\"ENCOUNTER_WITNESS_MIN_1\"]}, \"assumptions\": [\"committee emergency callout\"], \"falsifiers\": [\"callout not attended\"], \"plausibility_rank_ordinal\": 3}]",
+  "raw_output_hash": "sha256:163b3cdf53088b82f441e35c05bf8f5812b3df1bba4c2cb672e361171b3ac095",
+  "record_id": "sha256:d233399f2acdea339490175c3ca91079dd74f49772eed78e07848ef151068e91",
+  "route_filter": null,
+  "system_hash": "sha256:12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+  "system_text": "",
+  "usage": {
+   "completion_tokens": 0,
+   "prompt_tokens": 0,
+   "total_tokens": 0
+  },
+  "wall_seconds": 0.0
+ },
+ "record_key": "DEDUPE_CLEAN"
+}

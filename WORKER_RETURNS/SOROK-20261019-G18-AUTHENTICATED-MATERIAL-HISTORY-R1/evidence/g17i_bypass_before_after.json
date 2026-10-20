@@ -1,0 +1,84 @@
+{
+  "baseline": {
+    "candidate": "stage/g17_baseline_candidate/candidate",
+    "result": {
+      "c9_dir": "$WORKTREE/WORKER_RETURNS/SOROK-20261019-G18-AUTHENTICATED-MATERIAL-HISTORY-R1/stage/g17_baseline_candidate",
+      "c9_fabricated_cash": {
+        "accepted": true,
+        "received_cash": 100055,
+        "status": "ACCEPTED"
+      },
+      "candidate_dir": "$WORKTREE/WORKER_RETURNS/SOROK-20261019-G18-AUTHENTICATED-MATERIAL-HISTORY-R1/stage/g17_baseline_candidate/candidate",
+      "forged_material_cash": {
+        "continuation_cash": 100058,
+        "returned_continuation": true,
+        "status": "ACCEPTED"
+      },
+      "nested_future_child": {
+        "committed": true,
+        "status": "COMMITTED"
+      }
+    },
+    "source_commit": "90d0eb7925de54635559a879ee76fc1b97b9ff61"
+  },
+  "conclusion": "All three independent alternate-interface bypasses are closed; the genuine positive paths and the exact 181/67/75/13 matrices survive.",
+  "native_authority": "NOT_GRANTED",
+  "oracle": {
+    "origin_commit": "156b84cc8481b65c4196b42574010eb7920d6f44",
+    "path": "tests/reviewer_oracle/test_g17i_independent.py",
+    "sha256": "0e4535a708d83a85d763c592f3d206f0b21dbc599846d7ffcd89cd82f145a5e6",
+    "unmodified": true
+  },
+  "per_bypass": [
+    {
+      "after": "continue_person returned None; material receipt refused",
+      "after_cash": null,
+      "after_status": "REFUSED",
+      "before": "continue_person accepted the forged source and returned cash 100058",
+      "before_cash": 100058,
+      "before_status": "ACCEPTED",
+      "id": "FORGED_MATERIAL_100058",
+      "test": "test_forged_material_event_supplying_cash_must_be_refused"
+    },
+    {
+      "after": "recursive partition scan refuses before any proposal/selection/construction",
+      "after_status": "FUTURE_CHILD_INFORMATION_LEAK",
+      "before": "nested joint_material_opportunity.metadata produced COMMITTED",
+      "before_status": "COMMITTED",
+      "id": "NESTED_FUTURE_CHILD_COMMITTED",
+      "test": "test_future_child_nested_alias_must_be_refused"
+    },
+    {
+      "after": "C9.build_handoff refuses the unauthenticated material source",
+      "after_refusal": "MATERIAL_SOURCE_NOT_AUTHENTICATED:MATERIAL_BODY_HASH_MISMATCH",
+      "after_status": "REFUSED",
+      "before": "C9.receive_handoff accepted the forged source with cash 100055",
+      "before_cash": 100055,
+      "before_status": "ACCEPTED",
+      "id": "C9_FORGED_MATERIAL_100055",
+      "test": "test_c9_forged_material_event_must_be_refused"
+    }
+  ],
+  "repaired": {
+    "candidate": "candidate",
+    "result": {
+      "c9_dir": "$WORKTREE/WORKER_RETURNS/SOROK-20261019-G18-AUTHENTICATED-MATERIAL-HISTORY-R1",
+      "c9_fabricated_cash": {
+        "accepted": false,
+        "refusal": "MATERIAL_SOURCE_NOT_AUTHENTICATED:MATERIAL_BODY_HASH_MISMATCH",
+        "status": "REFUSED"
+      },
+      "candidate_dir": "$WORKTREE/WORKER_RETURNS/SOROK-20261019-G18-AUTHENTICATED-MATERIAL-HISTORY-R1/candidate",
+      "forged_material_cash": {
+        "continuation_cash": null,
+        "returned_continuation": false,
+        "status": "REFUSED"
+      },
+      "nested_future_child": {
+        "committed": false,
+        "status": "FUTURE_CHILD_INFORMATION_LEAK"
+      }
+    }
+  },
+  "schema": "SOROK_G18_G17I_BYPASS_BEFORE_AFTER@1"
+}

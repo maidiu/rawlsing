@@ -1,0 +1,18 @@
+{
+  "positive_processes": [
+    0,
+    0
+  ],
+  "positive_terminal": "COMMITTED",
+  "replayed_equal": true,
+  "schema": "SOROK_G18_COLD_REPLAY@1",
+  "stdout": [
+    "{\"causal_replay_hash\": \"sha256:44737432c4f54d64e62ec668e5cc88ed9371be8d714a61dda3a1b7194cd260a4\", \"complete_causal_record_equal\": null, \"terminal\": \"COMMITTED\"}",
+    "{\"causal_replay_hash\": \"sha256:44737432c4f54d64e62ec668e5cc88ed9371be8d714a61dda3a1b7194cd260a4\", \"complete_causal_record_equal\": true, \"terminal\": \"COMMITTED\"}",
+    "{\"causal_replay_hash\": \"sha256:c77095d8ec9e2db4b2040e617838f5f5e93b2637b43a0ee880a1fe964df2d8be\", \"complete_causal_record_equal\": false, \"terminal\": \"UNAUTHENTICATED_MATERIAL_SOURCE\"}"
+  ],
+  "tamper_process": 1,
+  "tampered_equal": false,
+  "tampered_reason": "MATERIAL_BODY_HASH_MISMATCH",
+  "tampered_terminal": "UNAUTHENTICATED_MATERIAL_SOURCE"
+}

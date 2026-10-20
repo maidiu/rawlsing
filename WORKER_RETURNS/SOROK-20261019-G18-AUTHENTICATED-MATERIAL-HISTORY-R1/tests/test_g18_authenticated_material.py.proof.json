@@ -1,0 +1,82 @@
+{
+  "claims": [
+    {
+      "actual_consumer": "lab_sgi1.joint.verify_material_source",
+      "claim_id": "G18_MATERIAL_SOURCE_RECEIPT_EDGE",
+      "claimed_dependency": "a forged 100000 material packet is refused by the fixture-origin receipt gate",
+      "fault": {
+        "new": "    if False:\n        return False, problem, None\n    return True, None, _material_payload(material)",
+        "old": "    if problem is not None:\n        return False, problem, None\n    return True, None, _material_payload(material)",
+        "path": "WORKER_RETURNS/SOROK-20261019-G18-AUTHENTICATED-MATERIAL-HISTORY-R1/candidate/lab_sgi1/joint.py"
+      },
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-G18-AUTHENTICATED-MATERIAL-HISTORY-R1/tests/test_g18_authenticated_material.py::test_forged_100000_material_is_refused"
+    },
+    {
+      "actual_consumer": "lab_sgi1.joint.verify_performed_action",
+      "claim_id": "G18_PERFORMED_ACTION_EDGE",
+      "claimed_dependency": "a performed-action afterstate forged outside the source receipt is refused",
+      "fault": {
+        "new": "    if False:\n        return False, problem\n    return True, None",
+        "old": "    if problem is not None:\n        return False, problem\n    return True, None",
+        "path": "WORKER_RETURNS/SOROK-20261019-G18-AUTHENTICATED-MATERIAL-HISTORY-R1/candidate/lab_sgi1/joint.py"
+      },
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-G18-AUTHENTICATED-MATERIAL-HISTORY-R1/tests/test_g18_authenticated_material.py::test_forged_action_afterstate_is_refused"
+    },
+    {
+      "actual_consumer": "lab_sgi1.proposal.find_future_child_material",
+      "claim_id": "G18_NESTED_FUTURE_CHILD_EDGE",
+      "claimed_dependency": "nested metadata future-child material is found recursively and refused before COMMITTED",
+      "fault": {
+        "new": "    if findings is None:\n        findings = []\n    return findings\n    if isinstance(value, dict):\n        for k, v in value.items():\n            child_path = f\"{path}.{k}\"\n            if _key_is_prohibited(k):\n                findings.append({\"path\": child_path, \"reason\": \"PROHIBITED_KEY\",\n                                 \"key\": k})\n            findings = find_future_child_material(v, child_path, findings)\n        return findings",
+        "old": "    if findings is None:\n        findings = []\n    if isinstance(value, dict):\n        for k, v in value.items():\n            child_path = f\"{path}.{k}\"\n            if _key_is_prohibited(k):\n                findings.append({\"path\": child_path, \"reason\": \"PROHIBITED_KEY\",\n                                 \"key\": k})\n            findings = find_future_child_material(v, child_path, findings)\n        return findings",
+        "path": "WORKER_RETURNS/SOROK-20261019-G18-AUTHENTICATED-MATERIAL-HISTORY-R1/candidate/lab_sgi1/proposal.py"
+      },
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-G18-AUTHENTICATED-MATERIAL-HISTORY-R1/tests/test_g18_authenticated_material.py::test_nested_future_child_metadata_refused_before_commit"
+    },
+    {
+      "actual_consumer": "lab_sgi1.proposal.find_future_child_material",
+      "claim_id": "G18_SERIALIZED_FUTURE_CHILD_EDGE",
+      "claimed_dependency": "future-child material in an opaque serialized string is found and refused",
+      "fault": {
+        "new": "    if False:\n        if _FUTURE_CHILD_KEY_RE.search(value):\n            findings.append({\"path\": path, \"reason\": \"PROHIBITED_VALUE_LITERAL\"})",
+        "old": "    if isinstance(value, str):\n        if _FUTURE_CHILD_KEY_RE.search(value):\n            findings.append({\"path\": path, \"reason\": \"PROHIBITED_VALUE_LITERAL\"})",
+        "path": "WORKER_RETURNS/SOROK-20261019-G18-AUTHENTICATED-MATERIAL-HISTORY-R1/candidate/lab_sgi1/proposal.py"
+      },
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-G18-AUTHENTICATED-MATERIAL-HISTORY-R1/tests/test_g18_authenticated_material.py::test_serialized_future_child_string_refused"
+    },
+    {
+      "actual_consumer": "c9_handoff_consumer.build_handoff",
+      "claim_id": "G18_C9_MATERIAL_SOURCE_EDGE",
+      "claimed_dependency": "the C9 handoff builder refuses a forged material source before emitting a handoff",
+      "fault": {
+        "new": "    accepted, reason, _payload = True, None, None\n    if not accepted:\n        raise C9Refusal(\"MATERIAL_SOURCE_NOT_AUTHENTICATED:\" + str(reason))",
+        "old": "    accepted, reason, _payload = api[\"verify_material_source\"](material)\n    if not accepted:\n        raise C9Refusal(\"MATERIAL_SOURCE_NOT_AUTHENTICATED:\" + str(reason))",
+        "path": "WORKER_RETURNS/SOROK-20261019-G18-AUTHENTICATED-MATERIAL-HISTORY-R1/c9_handoff_consumer.py"
+      },
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-G18-AUTHENTICATED-MATERIAL-HISTORY-R1/tests/test_g18_authenticated_material.py::test_c9_forged_material_is_refused"
+    },
+    {
+      "actual_consumer": "lab_sgi1.joint.material_joint_opportunity",
+      "claim_id": "G18_ISSUER_PAYMENT_BOUND_EDGE",
+      "claimed_dependency": "the fixture issuer refuses a payment outside the declared source schedule",
+      "fault": {
+        "new": "    if False:\n        raise ValueError('MATERIAL_PAYMENT_OUTSIDE_SOURCE_SCHEDULE')",
+        "old": "    if type(payment_per_actor) is not int or not (\n            1 <= payment_per_actor <= MATERIAL_MAX_PAYMENT):\n        raise ValueError('MATERIAL_PAYMENT_OUTSIDE_SOURCE_SCHEDULE')",
+        "path": "WORKER_RETURNS/SOROK-20261019-G18-AUTHENTICATED-MATERIAL-HISTORY-R1/candidate/lab_sgi1/joint.py"
+      },
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-G18-AUTHENTICATED-MATERIAL-HISTORY-R1/tests/test_g18_authenticated_material.py::test_issuer_refuses_out_of_schedule_material"
+    },
+    {
+      "actual_consumer": "lab_sgi1.joint.verify_material_source",
+      "claim_id": "G18_SOURCE_SCHEMA_ALLOWLIST_EDGE",
+      "claimed_dependency": "an extra nested key on a rehashed source wrapper is refused by the strict source allowlist",
+      "fault": {
+        "new": "    if False:\n        return 'MATERIAL_PACKET_SHAPE_NOT_SOURCE_SCHEMA'",
+        "old": "    if set(material) != _MATERIAL_PACKET_FIELDS:\n        return 'MATERIAL_PACKET_SHAPE_NOT_SOURCE_SCHEMA'",
+        "path": "WORKER_RETURNS/SOROK-20261019-G18-AUTHENTICATED-MATERIAL-HISTORY-R1/candidate/lab_sgi1/joint.py"
+      },
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-G18-AUTHENTICATED-MATERIAL-HISTORY-R1/tests/test_g18_authenticated_material.py::test_rehashed_source_wrapper_with_extra_nested_key_is_refused"
+    }
+  ],
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1"
+}
