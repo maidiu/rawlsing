@@ -56,26 +56,33 @@ Original estate: 35 sources (31 SAV, 4 DTA, as checkpoint), 1,890 **requirements
 
 **Six independent adjudication dimensions:** (1) measurement/semantic legitimacy, (2) source permission/host/privacy, (3) code native executable correctness, (4) scientific/inferential validation with designs and uncertainty, (5) separate structural/temporal/population use licence, (6) actual downstream world/person consumer and independent N11/N12/actor acceptance. None entails the next. No contemporaneous original respondent read by this candidate.
 
-### N0–N12 fifteen-node acceptance map (named subnodes counted separately)
-| Node | Necessary transformation and terminal benefit | Reality at this cut; next material positive |
-|---|---|---|
-| N0 | SRC01–35 instrument/edition→issued U_item/U_unit/U_app and source rights; protects possible represented populations | Harvest/P10/historic LiTS positive; current D1–D5 U/Epre null. Competent owner issue first genuine tranche, then all35 no-drop |
-| N1 | trusted semantic response/role/source identities→source meaning usable without ecological substitution | 18,276 implementation references/manual overlays preserved; 26 unmatched and active routing/role science held. B49 partial selection |
-| N2 | native C11/Route B projected respondents/events→I03 source-specific factual distributions and conditionals | C11/I03 code and historic real source positive; current B49/I51 synthetic one fact; full35 original joined stream held |
-| N3 | empirical fact→permitted learned source field/cache/grant and real nonperson E04 consumers | E04 bounded test-only grants; no current original full-world serving |
-| N4 | eligible governed grammar→I05/Batch issued prospective workload, execution, coverage and discovery | I05 implemented; G50 symbolic 432/15 synthetic I05; J52 necessary generic native n-ary/actual readset; E_pre issuer pending |
-| N5 | Field Forge: F5 situated position/carrier/relation, genuine structural mediation, anti-fabrication | typed FF local cases, F43/W52 pending; generic source/position semantic original estate not issued |
-| N6 | structural field continuity (geography/institutions/households/resources) and contexts | bounded tests and original Dva architecture; source-qualified all35 fields and actual N9 use incomplete |
-| N7 | F6 target-population cross-source synthesis, partial bounds, no respondent joins | methods/candidates F6M/F43; no accepted original transport or joint individual population |
-| N8E | F7 empirical wave/cohort temporality; measured comparability and provenance | V553 old compiler + T9 test-only; real comparable EE12 source series open |
-| N8S | structural as-of change/pressure-flow historical world | time topology and limited tests; original population-clock product held |
-| N9 | constructed objective world and positioned opportunity service | test-only selected N9/N10 uses; W52 must demonstrate a genuinely new FF/F6/F7 field read |
-| N10E | enumerated actual eligible objective opportunities for position/use | accepted scoped E04 interfaces, not actor-generated facts; need source-right and concrete consumer |
-| N10W | progressive selected-world possibility with permission/clock and unsupported probability left null | WP2I/N10WM restricted tests, not arbitrary route probability or actor belief |
-| N11 | independent all35 F1–F8, AT01–35, actual consumer/no-drop and release acceptance | NOT_READY, original measured A42 0/1890, U/Epre unknown |
-| N12 | explicitly separately authorized PRE-V3→Sorok actor weld and scientific/person use | HOLD; cannot wake merely because sourcefree test passes |
+### Corrected adopted dependency nomenclature — Astra 16-node conditional DAG (not invented stages)
 
-F1–F4 must materialize genuinely measured distributions, directional conditional, same-unit joint, higher-order/recursive and minority/null patterns as applicable. F5 is structurally admitted position and mediation, F6 heterogeneous population-level synthesis under explicit transport/partial identification, F7 genuinely observed comparable time and uncertainty, F8 position-conditioned reverse *possibility* not an assigned actor history or belief. One valid tranche can make positive F1–F4 progress without finishing F5–F8, while conserving every SRC/AT and the full original E_pre census. **False end state:** 1,890 refusal terminals counted as fulfilled science.
+**Correction to initial candidate map:** the real Astra `PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/DEPENDENCY_DAG.md` blob `e7971a2d18463cdbf6b385b7cd8f7b664e9e7c26` explicitly defines **16 nodes**, counting N8E/N8S, N10E/N10W and N13, with conditional edges. The prior draft misnamed N0/N1/N2/N3/N7/N10E; this table supersedes it **completely**. A number in this graph is not a mandatory serial executor stage, nor an adopted new source/actor grant. The generic master prompt's “15-node” shorthand does not erase actually present N13.
+
+| Actual node name | Scientific/consumer function at this scope | Current acceptance and wake limit |
+|---|---|---|
+| **N0 — Current authority succession and estate coverage** | exact original35 source-semantic, measurement, routing and comparison owner inputs, no-drop | original `U_item/U_unit/U_app/E_pre` not yet issued all35, D1–D5 source/method rights held; historic census not equivalent |
+| **N1 — Accept and integrate current representation repairs** | physical decoder/codec/governed C11 facade repairs and identity | bounded implemented owners and original LiTS real route, full35 new-source current admission not accepted |
+| **N2 — Compose generic predictors, recursive forks and empirical clouds** | I03/I05 analytic composition: F2–F4, higher-order XOR, minority forks, genuine same-respondent co-travel | genuine current generic operators exist; source-complete automatically composed workloads and all eligible product consumers not yet proved |
+| **N3 — Bind required family adjudication, release and lifecycle** | M1/M2/B5/I4 substantive scientific family rule and learned product reception/use | tested scoped owners; actual original products/full release and lifecycle remain source/method dependent |
+| **N4 — Current scoped empirical production and horizontal proof** | source/authority dependent Route B/C11/I03/I05/Batch from original or accepted retained products to analytic readsets | I51 SOURCEFREE one LiTS-like DIST real native read; current original all35 not occupied. J52 **USER_STOPPED by R53** |
+| **N5 — Admit DDM products into actor-independent structural meaning** | Field Forge claim-specific structural relation admissibility, F5; N13 dependency conditional | selected structural evidence exists, no unrestricted source→causal or actor promotion; original F5 estate incomplete |
+| **N6 — Populate only demanded objective PRE-V3 functions** | objective position, context, opportunity, mediation, topology/consequence using admitted FF evidence | bounded fixtures/proofs, not general populated measured original world |
+| **N7 — Compose multiple lawful structural fields** | several distinct admitted F5/EE12/13 objective fields and common world use; F6 multi-family evidence is separately scientifically qualified | F6 bounds/transport conditional and no invented respondent joins, actual full original world consumption unproven |
+| **N8E — Produce lawful empirical temporal comparison** | F7 EE12 comparable observed source-wave measures, design/cohort uncertainty | historical V553 temporal machinery exists; no automatically qualified original observed comparable pair/all pairs |
+| **N8S — Produce structural temporal pressure** | authorized structural time/context/pressure downstream of N5 and conditional N8E | model interpolation and historical clock distinct from source-observed F7; no unwarranted future leak |
+| **N9 — Serve coherent objective-world snapshots** | real sourced current/as-of/historical world snapshots and actual native receiver | selected bounded TEST_ONLY world path, W52 **USER_STOPPED** by R53 |
+| **N10E — Compute empirical possibility slices** | evidence-conditioned probabilities/distributions and uncertainty from N2/N3/N4; *not* actor opportunities or beliefs | N10E previous scoped provider method, source-eligible original empirical slice work remains |
+| **N10W — Expose world-conditioned parent/coparent possibility** | N9 + N10E qualified positioned world possibilities with model/use grants, not guaranteed individual development | prior N10W/WP2I bounded, actor use independent |
+| **N11 — Join full declared-estate F1–F8 acceptance** | independent all35 + scientific `E_pre` no-drop/AT01–AT35 and actual receiver positives | NOT_READY; R52 original newly measured A42 0/1890 requirements cells (not E_pre denominator) |
+| **N12 — Decide whether to wake PRE-V3 to V3** | **separate** conscious permissioned seam, after N11; Sorok actor owns life and V2 | HOLD, cannot infer grant from test-only E04 or a candidate HQ dossier |
+| **N13 — Resolve exact LiTS D2 relation preimages when demanded** | conditional exact source/structural link for selected LiTS D2 claims | LiTS-specific retained authority and source rights require exact scope; **not** a global prerequisite or priority, not permission to narrow all35 |
+
+**DAG shape:** N2→N3; current scoped N4 conditionally consumes N0/N1/N2/N3; N5 may consume N4 and conditional N13; N5→N6 and conditional N7/N8S; N4 may feed N8E and N9 and N10E; N8E feeds N8S only if selected structural claim requires it; N9 + N10E→N10W; N0 + N10W→N11 with scope-specific N4–N8 obligations; N11→N12. No edge self-issues current original source law. N13 is conditional, not a mission to chase SRC27 LiTS again.
+
+F1–F4 must materialize genuinely measured distributions, directional conditional, same-unit joint, higher-order/recursive and minority/null patterns as applicable. F5 is structurally admitted position and mediation; F6 heterogeneous population-level synthesis under explicit transport/partial identification; F7 genuinely observed comparable time and uncertainty; F8 progressive positioned possibility not an assigned actor history or belief. One valid tranche can make positive F1–F4 progress without finishing F5–F8, while conserving every SRC/AT and full original E_pre census. **False end state:** 1,890 refusal terminals counted as fulfilled science.
+
 
 ## 5. Fresh source-native method judgments, not an old-code cult
 
