@@ -1,0 +1,46 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "status": "MECHANICAL_WITNESS_PASS_NOT_SEMANTIC_ADOPTION",
+  "claims": [
+    {
+      "claim_id": "BP3_OLD_WRITER_GATE",
+      "positive_node": "WORKER_RETURNS/SOROK-20261020-BP3-C8-WRITER-TRUST-R1/tests/test_bp3_exclusive_writer_consumer.py::test_old_journal_commit_route_closed_preserves_acknowledged_bytes",
+      "fault_path": "WORKER_RETURNS/SOROK-20261020-BP3-C8-WRITER-TRUST-R1/c8_exclusive_writer.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    },
+    {
+      "claim_id": "BP3_KEYED_CAPABILITY",
+      "positive_node": "WORKER_RETURNS/SOROK-20261020-BP3-C8-WRITER-TRUST-R1/tests/test_bp3_exclusive_writer_consumer.py::test_forged_capability_refused",
+      "fault_path": "WORKER_RETURNS/SOROK-20261020-BP3-C8-WRITER-TRUST-R1/c8_exclusive_writer.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    },
+    {
+      "claim_id": "BP3_ANCHOR_ROLLBACK",
+      "positive_node": "WORKER_RETURNS/SOROK-20261020-BP3-C8-WRITER-TRUST-R1/tests/test_bp3_exclusive_writer_consumer.py::test_byte_valid_rollback_detected_by_external_anchor",
+      "fault_path": "WORKER_RETURNS/SOROK-20261020-BP3-C8-WRITER-TRUST-R1/c8_exclusive_writer.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    },
+    {
+      "claim_id": "BP3_C9_INGRESS_RECEIPT",
+      "positive_node": "WORKER_RETURNS/SOROK-20261020-BP3-C8-WRITER-TRUST-R1/tests/test_bp3_exclusive_writer_consumer.py::test_c9_ingress_reads_actual_c8_receipt_without_native_claim",
+      "fault_path": "WORKER_RETURNS/SOROK-20261020-BP3-C8-WRITER-TRUST-R1/c9_event_ingress.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    },
+    {
+      "claim_id": "BP3_OUT9_CONSUMER_RECEIPT",
+      "positive_node": "WORKER_RETURNS/SOROK-20261020-BP3-C8-WRITER-TRUST-R1/tests/test_bp3_exclusive_writer_consumer.py::test_exclusive_append_reaches_actual_out9_consumer",
+      "fault_path": "WORKER_RETURNS/SOROK-20261020-BP3-C8-WRITER-TRUST-R1/vendor/c8_readonly_consumer.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    }
+  ]
+}

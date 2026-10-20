@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="23" time="13.019" timestamp="2026-10-19T13:40:47.741349-04:00" hostname="Matthews-MBP.lan"><testcase classname="test_out13_hostile" name="test_staged_sources_are_blob_verified_and_unedited" time="0.001" /><testcase classname="test_out13_hostile" name="test_imports_resolve_inside_this_return" time="0.001" /><testcase classname="test_out13_hostile" name="test_independence_disclosure_is_recorded" time="0.001" /><testcase classname="test_out13_hostile" name="test_hp1_no_lost_acknowledged_committed_event[2]" time="0.879" /><testcase classname="test_out13_hostile" name="test_hp1_no_lost_acknowledged_committed_event[3]" time="0.905" /><testcase classname="test_out13_hostile" name="test_hp1_no_lost_acknowledged_committed_event[5]" time="1.004" /><testcase classname="test_out13_hostile" name="test_hp3_writer_version_is_monotone_and_equals_commit_count[2]" time="0.688" /><testcase classname="test_out13_hostile" name="test_hp3_writer_version_is_monotone_and_equals_commit_count[3]" time="0.706" /><testcase classname="test_out13_hostile" name="test_hp3_writer_version_is_monotone_and_equals_commit_count[5]" time="0.647" /><testcase classname="test_out13_hostile" name="test_hp2_stale_snapshot_is_typed_conflict_then_lawful_retry_succeeds" time="0.021" /><testcase classname="test_out13_hostile" name="test_hp6_bypassing_caller_gets_NO_lock_and_NO_version_enforcement" time="0.010" /><testcase classname="test_out13_hostile" name="test_hp6b_accepted_journal_loss_is_demonstrated_by_two_processes_not_in_process" time="0.487" /><testcase classname="test_out13_hostile" name="test_hp7_writer_version_lies_outside_the_accepted_state_digest" time="0.733" /><testcase classname="test_out13_hostile" name="test_hp8_corrupting_writer_version_resets_to_zero_and_defeats_the_CAS" time="0.626"><failure message="multiwriter_journal.VersionStateUnreadable: VERSION_STATE_UNREADABLE reason=ValueError:VERSION_NOT_POSITIVE_INTEGER path=/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/out13-hagw31hn/journal.json">self = &lt;multiwriter_journal.MultiwriterJournal object at 0x10900e210&gt;
+
+    def _read_version(self) -&gt; int:
+        """Validate one exact version-bound canonical receipt or reject.
+    
+        A nonexistent file is the ONLY valid genesis version 0. An existing
+        unversioned/legacy, truncated, injected, or malformed file is NOT a
+        fresh journal. An unkeyed digest cannot authenticate the writer or
+        detect replay of an entirely previous valid receipt; owner grants
+        and trusted anti-rollback custody remain separate prerequisites.
+        """
+        if not self.path.exists():
+            return 0
+        try:
+            contents = self.path.read_text(encoding="utf8")
+            receipt = json.loads(contents)
+            if not isinstance(receipt, dict):
+                raise ValueError("NON_OBJECT")
+            required = {"schema", "state", "state_digest",
+                        "writer_version", "version_state_digest"}
+            if set(receipt) != required:
+                raise ValueError("MISSING_OR_UNKNOWN_ENVELOPE_FIELDS")
+            if receipt["schema"] != SCHEMA:
+                raise ValueError("UNSUPPORTED_SCHEMA")
+            ver = receipt["writer_version"]
+            if type(ver) is not int or ver &lt; 1:
+&gt;               raise ValueError("VERSION_NOT_POSITIVE_INTEGER")
+E               ValueError: VERSION_NOT_POSITIVE_INTEGER
+
+runtime/candidate/multiwriter_journal.py:124: ValueError
+
+The above exception was the direct cause of the following exception:
+
+    def test_hp8_corrupting_writer_version_resets_to_zero_and_defeats_the_CAS():
+        d = H.tmpdir()
+        p = d / "journal.json"
+        rows = H.parse(H.spawn("cas", d, ["A", "B"]))
+        v_before = H.writer_version(p)
+        assert v_before == 2
+        r = H.raw(p)
+        r["writer_version"] = "CORRUPT-NOT-AN-INT"
+        p.write_text(_canonical(r))
+        # _read_version swallows the parse failure and returns 0
+        j = MultiwriterJournal(p)
+&gt;       _s, v_seen = j.recover()
+                     ^^^^^^^^^^^
+
+test_out13_hostile.py:187: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+runtime/candidate/multiwriter_journal.py:143: in recover
+    version = self._read_version()
+              ^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;multiwriter_journal.MultiwriterJournal object at 0x10900e210&gt;
+
+    def _read_version(self) -&gt; int:
+        """Validate one exact version-bound canonical receipt or reject.
+    
+        A nonexistent file is the ONLY valid genesis version 0. An existing
+        unversioned/legacy, truncated, injected, or malformed file is NOT a
+        fresh journal. An unkeyed digest cannot authenticate the writer or
+        detect replay of an entirely previous valid receipt; owner grants
+        and trusted anti-rollback custody remain separate prerequisites.
+        """
+        if not self.path.exists():
+            return 0
+        try:
+            contents = self.path.read_text(encoding="utf8")
+            receipt = json.loads(contents)
+            if not isinstance(receipt, dict):
+                raise ValueError("NON_OBJECT")
+            required = {"schema", "state", "state_digest",
+                        "writer_version", "version_state_digest"}
+            if set(receipt) != required:
+                raise ValueError("MISSING_OR_UNKNOWN_ENVELOPE_FIELDS")
+            if receipt["schema"] != SCHEMA:
+                raise ValueError("UNSUPPORTED_SCHEMA")
+            ver = receipt["writer_version"]
+            if type(ver) is not int or ver &lt; 1:
+                raise ValueError("VERSION_NOT_POSITIVE_INTEGER")
+            if not isinstance(receipt["state"], dict):
+                raise ValueError("STATE_NOT_OBJECT")
+            if receipt["state_digest"] != _hash(receipt["state"]):
+                raise ValueError("STATE_DIGEST_MISMATCH")
+            sealed = {"schema": SCHEMA, "state": receipt["state"],
+                      "writer_version": ver}
+            if receipt["version_state_digest"] != _hash(sealed):
+                raise ValueError("VERSION_STATE_DIGEST_MISMATCH")
+            if _canonical(receipt) != contents:
+                raise ValueError("NONCANONICAL_RECEIPT")
+            return ver
+        except (OSError, UnicodeError, ValueError, TypeError, KeyError) as exc:
+&gt;           raise VersionStateUnreadable(self.path, type(exc).__name__ + ":" + str(exc)) from exc
+E           multiwriter_journal.VersionStateUnreadable: VERSION_STATE_UNREADABLE reason=ValueError:VERSION_NOT_POSITIVE_INTEGER path=/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/out13-hagw31hn/journal.json
+
+runtime/candidate/multiwriter_journal.py:137: VersionStateUnreadable</failure></testcase><testcase classname="test_out13_hostile" name="test_hp5_lock_timeout_is_typed_and_a_later_writer_still_succeeds" time="1.007" /><testcase classname="test_out13_hostile" name="test_hp9a_crash_before_rename_leaves_prior_state_byte_identical" time="1.536" /><testcase classname="test_out13_hostile" name="test_hp9b_crash_after_commit_yields_the_newest_state_durable" time="0.942" /><testcase classname="test_out13_hostile" name="test_hp10_out12_sigkill_label_is_actually_os_exit_79_not_a_signal" time="1.186" /><testcase classname="test_out13_hostile" name="test_hp10b_os_exit_still_skips_finally_blocks_like_a_signal_would" time="0.064" /><testcase classname="test_out13_hostile" name="test_hp11_process_death_is_not_power_loss_durability" time="0.002" /><testcase classname="test_out13_hostile" name="test_hp4_revocation_and_ack_integrity_survive_competing_transactions" time="0.541" /><testcase classname="test_out13_hostile" name="test_hp12_journal_version_consistency_and_rollback" time="0.475" /><testcase classname="test_out13_hostile" name="test_no_production_authority_claimed" time="0.001" /></testsuite></testsuites>

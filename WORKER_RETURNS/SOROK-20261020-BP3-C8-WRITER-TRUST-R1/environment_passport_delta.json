@@ -1,0 +1,69 @@
+{
+  "schema": "RAWLSING_ENVIRONMENT_PASSPORT@1",
+  "environment_id": "local-bp3-shared-store-1",
+  "epoch_id": "2026-10-20T07:55:20Z",
+  "surface": "LOCAL_SHARED_STORE",
+  "session_alias": "deepseek-harness-bp3",
+  "machine_alias": "local-macos-shared-store",
+  "status": "LIVE_VERIFIED",
+  "live_probe": {
+    "observed_at_utc": "2026-10-20T07:55:20Z",
+    "marker_checked": "VERIFIED",
+    "marker_digest": "bp3:529232d98",
+    "python": "3.11.3",
+    "pytest": "9.1.1",
+    "git": "2.39.1",
+    "filesystem": "VERIFIED",
+    "connector": "UNKNOWN",
+    "notes": "OS fcntl locks, subprocess 2/3/5 writers, SIGKILL/_exit crash workers, local pytest"
+  },
+  "branch": "agent/rabochii-sorok-20261020-bp3-c8-exclusive-writer-external-anchor-r1",
+  "checkout_sha": "529232d9867a5bdc0889f43fb5293131ef806055",
+  "shared_store_alias": "rawlsing-shared-store",
+  "worktree_alias": "bp3",
+  "source_closure": "BOUNDED",
+  "sources": [
+    {
+      "commit": "9784bc1dbae0c9ac13670d5e442ed9cabb6be7fe",
+      "path": "WORKER_RETURNS/SOROK-20261019-C8O-OUT14-WRITER-AUTHORITY-EXECUTABLE-BOUNDARY-R1/runtime/stage_out12/outbox_prototype.py",
+      "blob_sha1": "331840768ce0b5f6f73e5e93094ca0d217ddaebf",
+      "module_alias": "outbox_prototype",
+      "import_verified": true
+    },
+    {
+      "commit": "9784bc1dbae0c9ac13670d5e442ed9cabb6be7fe",
+      "path": "WORKER_RETURNS/SOROK-20261019-C8O-OUT14-WRITER-AUTHORITY-EXECUTABLE-BOUNDARY-R1/candidate/c8o_trusted_outbox.py",
+      "blob_sha1": "7d785d35be09ab2ca5877a89a7880c70f2fe488c",
+      "module_alias": "c8o_trusted_outbox",
+      "import_verified": true
+    },
+    {
+      "commit": "9784bc1dbae0c9ac13670d5e442ed9cabb6be7fe",
+      "path": "WORKER_RETURNS/SOROK-20261019-C8O-OUT14-WRITER-AUTHORITY-EXECUTABLE-BOUNDARY-R1/consumer/c8_readonly_consumer.py",
+      "blob_sha1": "5ae9360963a98d7a715ea94ef8883e35d5f3442d",
+      "module_alias": "c8_readonly_consumer",
+      "import_verified": true
+    }
+  ],
+  "assignments_completed": 1,
+  "next_affinity_tags": [
+    "bp3",
+    "c8",
+    "exclusive-writer",
+    "anchor",
+    "out9-c9"
+  ],
+  "permissions": {
+    "private_repo_access": "VERIFIED",
+    "raw_respondent": "NOT_GRANTED",
+    "native_actor": "NOT_GRANTED",
+    "production_install": "NOT_GRANTED"
+  },
+  "usage": {
+    "provider_model": "DeepSeek V4.1-Flash MAX",
+    "incremental_cash_usd": null,
+    "quota_state": "UNKNOWN",
+    "usage_observed": "local Git/pytest/processes only; no paid API observed",
+    "retry_count": 0
+  }
+}

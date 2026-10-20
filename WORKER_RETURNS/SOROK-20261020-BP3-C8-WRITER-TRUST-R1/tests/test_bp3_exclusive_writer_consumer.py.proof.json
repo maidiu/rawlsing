@@ -1,0 +1,60 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "claims": [
+    {
+      "claim_id": "BP3_OLD_WRITER_GATE",
+      "actual_consumer": "outbox_prototype.Journal.commit",
+      "claimed_dependency": "installing the candidate closes the accepted old writer route before it can erase an acknowledged journal",
+      "positive_node": "WORKER_RETURNS/SOROK-20261020-BP3-C8-WRITER-TRUST-R1/tests/test_bp3_exclusive_writer_consumer.py::test_old_journal_commit_route_closed_preserves_acknowledged_bytes",
+      "fault": {
+        "path": "WORKER_RETURNS/SOROK-20261020-BP3-C8-WRITER-TRUST-R1/c8_exclusive_writer.py",
+        "old": "\ninstall_exclusive_gate()\n",
+        "new": "\npass\n"
+      }
+    },
+    {
+      "claim_id": "BP3_KEYED_CAPABILITY",
+      "actual_consumer": "c8_exclusive_writer.ExclusiveJournal.commit",
+      "claimed_dependency": "a forged capability signature cannot authorize an append",
+      "positive_node": "WORKER_RETURNS/SOROK-20261020-BP3-C8-WRITER-TRUST-R1/tests/test_bp3_exclusive_writer_consumer.py::test_forged_capability_refused",
+      "fault": {
+        "path": "WORKER_RETURNS/SOROK-20261020-BP3-C8-WRITER-TRUST-R1/c8_exclusive_writer.py",
+        "old": "        if not hmac.compare_digest(expected, self.signature):",
+        "new": "        if False:"
+      }
+    },
+    {
+      "claim_id": "BP3_ANCHOR_ROLLBACK",
+      "actual_consumer": "c8_exclusive_writer.ExclusiveJournal.verify_journal",
+      "claimed_dependency": "a byte-valid rollback to an older journal and proof is detected against the separately held watermark",
+      "positive_node": "WORKER_RETURNS/SOROK-20261020-BP3-C8-WRITER-TRUST-R1/tests/test_bp3_exclusive_writer_consumer.py::test_byte_valid_rollback_detected_by_external_anchor",
+      "fault": {
+        "path": "WORKER_RETURNS/SOROK-20261020-BP3-C8-WRITER-TRUST-R1/c8_exclusive_writer.py",
+        "old": "        if writer_version < witness[\"version\"] or (",
+        "new": "        if False and ("
+      }
+    },
+    {
+      "claim_id": "BP3_C9_INGRESS_RECEIPT",
+      "actual_consumer": "c9_event_ingress.receive_event",
+      "claimed_dependency": "C9 ingress publishes the actual C8 state digest it read",
+      "positive_node": "WORKER_RETURNS/SOROK-20261020-BP3-C8-WRITER-TRUST-R1/tests/test_bp3_exclusive_writer_consumer.py::test_c9_ingress_reads_actual_c8_receipt_without_native_claim",
+      "fault": {
+        "path": "WORKER_RETURNS/SOROK-20261020-BP3-C8-WRITER-TRUST-R1/c9_event_ingress.py",
+        "old": "        \"state_digest\": readset[\"state_digest\"],",
+        "new": "        \"state_digest\": \"SEVERED\","
+      }
+    },
+    {
+      "claim_id": "BP3_OUT9_CONSUMER_RECEIPT",
+      "actual_consumer": "c8_readonly_consumer.C8ReadOnlyConsumer",
+      "claimed_dependency": "the accepted OUT9-compatible read-only consumer reads the actual committed state digest",
+      "positive_node": "WORKER_RETURNS/SOROK-20261020-BP3-C8-WRITER-TRUST-R1/tests/test_bp3_exclusive_writer_consumer.py::test_exclusive_append_reaches_actual_out9_consumer",
+      "fault": {
+        "path": "WORKER_RETURNS/SOROK-20261020-BP3-C8-WRITER-TRUST-R1/vendor/c8_readonly_consumer.py",
+        "old": "            state_digest=receipt[\"state_digest\"],",
+        "new": "            state_digest=\"SEVERED\","
+      }
+    }
+  ]
+}

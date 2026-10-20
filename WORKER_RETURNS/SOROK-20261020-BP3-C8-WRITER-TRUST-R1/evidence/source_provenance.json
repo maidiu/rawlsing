@@ -1,0 +1,131 @@
+{
+  "schema": "BP3_SOURCE_PROVENANCE@1",
+  "startup": "529232d9867a5bdc0889f43fb5293131ef806055",
+  "c8o_commit": "9784bc1dbae0c9ac13670d5e442ed9cabb6be7fe",
+  "c8oi_commit": "f4200eb0938a1b74c8b738e0a344224edfb4d0eb",
+  "vendor": {
+    "outbox_prototype.py": {
+      "sha256": "5c994f29a8c3cf870cb8a18ce4c300fa51d9ab45c34caabc5f10a0f1973708ed",
+      "git_blob": "331840768ce0b5f6f73e5e93094ca0d217ddaebf"
+    },
+    "c8o_trusted_outbox.py": {
+      "sha256": "e872862baf85d9508ee70eaf70492cbab65242e1ae98f251503a3ce7b708d691",
+      "git_blob": "7d785d35be09ab2ca5877a89a7880c70f2fe488c"
+    },
+    "c8_readonly_consumer.py": {
+      "sha256": "d11b8d2007d0db1fd56e4bf7ee99dae2587f775985c302a90d7d9b0da590914a",
+      "git_blob": "5ae9360963a98d7a715ea94ef8883e35d5f3442d"
+    }
+  },
+  "candidate": {
+    "c8_exclusive_writer.py": {
+      "sha256": "334e591779dcd2f409f5afcf87cda26341ce4407da2a77b604c65c212d9c4263",
+      "git_blob": "3632e1ef785041bc2612acbd31c3f01b7cff4341"
+    },
+    "c9_event_ingress.py": {
+      "sha256": "d75c49e22ec78465c5703515d65bcb74706cb45d6893dc64cbc37a7f84a386cc",
+      "git_blob": "ed9bed435d75e8232241a355efaefeaa3d93c9eb"
+    },
+    "bp3_worker.py": {
+      "sha256": "c5761fd1f3e5101d0f63f7f7f4c6f67a833cb6c8c51966e5b5be6ecf2accddc6",
+      "git_blob": "49da2afd2ac8afacf667aabdfddec02219aa4be2"
+    },
+    "bp3_crash_worker.py": {
+      "sha256": "448b4aed3d3787b82f87340942e5b2554ff33a31b610f14c959379315df23144",
+      "git_blob": "cf17288d6544a09f7c1d07931676c3b2be285de5"
+    },
+    "test_bp3_exclusive_writer_consumer.py": {
+      "sha256": "0fd51c75e07b5532422591d06b0a1fb1b33d8b1d9c21afcf78a3e310c3c79c18",
+      "git_blob": "1aa30105997cc20bfc067eae3498c841d23880c7"
+    },
+    "test_bp3_exclusive_writer_consumer.py.proof.json": {
+      "sha256": "5154690037fd6c1976be448880254005cbaa7cbb3f4e52f52237d878c35089bc",
+      "git_blob": "b722b46f2ac10e7cebedf4ee083f03537762e6ff"
+    }
+  },
+  "historical": {
+    "schema": "BP3_C8O_HISTORICAL_STATUS@1",
+    "source_commits": {
+      "c8o": "9784bc1dbae0c9ac13670d5e442ed9cabb6be7fe",
+      "c8oi": "f4200eb0938a1b74c8b738e0a344224edfb4d0eb"
+    },
+    "rows": {
+      "original_272": {
+        "tests": 272,
+        "pass": 270,
+        "red": 2,
+        "error": 0,
+        "failed": [
+          "test_replay_manual_two_writers_can_lose_first_committed_event",
+          "test_s27_material_move_needs_world_owner"
+        ]
+      },
+      "out12_author_9": {
+        "tests": 9,
+        "pass": 9,
+        "red": 0,
+        "error": 0,
+        "failed": []
+      },
+      "out13_hostile_23": {
+        "tests": 23,
+        "pass": 23,
+        "red": 0,
+        "error": 0,
+        "failed": []
+      },
+      "out14_new_court": {
+        "tests": 27,
+        "pass": 27,
+        "red": 0,
+        "error": 0,
+        "failed": []
+      },
+      "c8o_62": {
+        "tests": 62,
+        "pass": 62,
+        "red": 0,
+        "error": 0,
+        "failed": []
+      },
+      "regression_272_under_out14": {
+        "tests": 272,
+        "pass": 270,
+        "red": 2,
+        "error": 0,
+        "failed": [
+          "test_replay_manual_two_writers_can_lose_first_committed_event",
+          "test_s27_material_move_needs_world_owner"
+        ]
+      },
+      "regression_out12_9_under_out14": {
+        "tests": 9,
+        "pass": 9,
+        "red": 0,
+        "error": 0,
+        "failed": []
+      },
+      "regression_out13_23_under_out14": {
+        "tests": 23,
+        "pass": 22,
+        "red": 1,
+        "error": 0,
+        "failed": [
+          "test_hp8_corrupting_writer_version_resets_to_zero_and_defeats_the_CAS"
+        ]
+      }
+    }
+  },
+  "c8oi_17": {
+    "junit": "evidence/c8oi_17.xml",
+    "tests": 17,
+    "pass": 17,
+    "red": 0
+  },
+  "imports": [
+    "outbox_prototype.Journal",
+    "c8o_trusted_outbox.C8OccurrenceJournal",
+    "c8_readonly_consumer.C8ReadOnlyConsumer",
+    "c9_event_ingress.receive_event"
+  ]
+}
