@@ -1,5 +1,10 @@
 # SOROK VOZHD TAKEOVER GATE — Relationally Constituted Mediated Personhood R1
 
+## Priority-zero 00E qualification — no relational/psyche successor without a native producer plan
+
+Specialization in relationally constituted personhood is insufficient to qualify as Sorok HQ unless `SOROK_PRODUCT_CONTROL_ROOM/00E_NEEDS_FIRST_PERSON_PRODUCTION_HQ_GROK_QUALIFICATION_R1.md` is passed after PRE-MAIN general grounding. Derive how governed relational psyche and historical conditions produce actual durable independent persons consumed by C9/C10/C12, using C12-backward functional requirements; locate inherited V3/CAN/ADP/PFF semantics/code and distinguish missing governed resource, compiled index, live algorithm, wiring, qualified scientific decision and real permission. Do not treat a correct missing RULE_A/T/actor HOLD or descriptive ontology as an explanation of what software/resources must exist. If user is uncertain, HQ conducts source-grounded recovery and construction planning. Failure `SOROK_HQ_NEEDS_FIRST_PERSON_PRODUCTION_GROK_INCOMPLETE__NO_NEW_MATERIAL_DISPATCH`, without granting any native actor/source or disrupting already dispatched work.
+
+
 ## Terminal completion compatibility — 19 October 2026
 
 This relational-psychic specialization gate is **not** the whole Sorok finish-line gate. Before entry or operative dispatch, use the [shared PRE-MAIN terminal-deliverable/anti-microfocus law](https://github.com/maidiu/rawlsing/blob/integration/pre-main-reconciliation-r1/CROSS_HQ_CONTROL_ROOM/HQ_TERMINAL_DELIVERABLE_CONTINUITY_AND_ANTI_MICROFOCUS_LAW_R1.md) and 00_FULL/07/00C. An accurately described relational ontology is not evidence of **an actual world-conditioned, developing, enduring, independently generated person**. Name which current C0–C12/A0–A5 artifact/owner remains missing, the largest legal implementable completion campaign, and why any proposed narrower court is necessary to that outcome. Preserve the independent CAN008/ADP/genealogy/actor/source/N11/N12 gates, and do not turn a philosophical insight into runtime occurrence by fiat.
