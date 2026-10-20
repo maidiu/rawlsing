@@ -395,9 +395,11 @@ passport: `evidence/environment_passport.json`.
 | Branch | `agent/rabochii-sorok-20261020-bp2-joined-event-rule-action-positive-r1` |
 | Exact sealed startup | `e699fed59925a3d7b3f02805f85771ae2df32be8` |
 | Remote BP2 tip before work | `e699fed59925a3d7b3f02805f85771ae2df32be8` (no prior worker commits) |
-| Substantive return commit | recorded by the commit carrying this file |
-| Push | ordinary non-force |
-| Final remote SHA | recorded in the worker's final response after a direct `git ls-remote` readback, and in `PUBLICATION_RECEIPT.json` |
+| Substantive return commit | `b2734bc21d79619c4718fc8a070a3582ad2de327` |
+| Remote verification of that tip | `git ls-remote origin refs/heads/agent/rabochii-sorok-20261020-bp2-joined-event-rule-action-positive-r1` returned `b2734bc21d79619c4718fc8a070a3582ad2de327` |
+| Push | ordinary non-force (`e699fed59..b2734bc21`) |
+| Docs delta | this file and `PUBLICATION_RECEIPT.json`; the final remote tip after that delta is the exact SHA returned by the final direct `git ls-remote` readback in the worker's final response |
+| Publication receipt | `PUBLICATION_RECEIPT.json` |
 
 Only this return subtree is committed. No upstream file, frozen test, native module, Pyat
 artifact, PRE-MAIN document, production path or other worker's branch was modified. No
