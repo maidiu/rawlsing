@@ -1,0 +1,38 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "status": "MECHANICAL_WITNESS_PASS_NOT_SEMANTIC_ADOPTION",
+  "claims": [
+    {
+      "claim_id": "M48_ROLE_DENIAL",
+      "positive_node": "WORKER_RETURNS/PYAT-R48-M48-INDEPENDENT-SCIENTIFIC-REQUIREMENTS-R1/proof/test_constitution.py::test_invalid_meaning_denied",
+      "fault_path": "WORKER_RETURNS/PYAT-R48-M48-INDEPENDENT-SCIENTIFIC-REQUIREMENTS-R1/proof/grammar_model.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    },
+    {
+      "claim_id": "M48_XOR_REACHABILITY",
+      "positive_node": "WORKER_RETURNS/PYAT-R48-M48-INDEPENDENT-SCIENTIFIC-REQUIREMENTS-R1/proof/test_constitution.py::test_xor_reached_without_unary_screen",
+      "fault_path": "WORKER_RETURNS/PYAT-R48-M48-INDEPENDENT-SCIENTIFIC-REQUIREMENTS-R1/proof/grammar_model.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    },
+    {
+      "claim_id": "M48_MINORITY_REACHABILITY",
+      "positive_node": "WORKER_RETURNS/PYAT-R48-M48-INDEPENDENT-SCIENTIFIC-REQUIREMENTS-R1/proof/test_constitution.py::test_unlisted_minority_survives",
+      "fault_path": "WORKER_RETURNS/PYAT-R48-M48-INDEPENDENT-SCIENTIFIC-REQUIREMENTS-R1/proof/grammar_model.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    },
+    {
+      "claim_id": "M48_NULL_NOT_ZERO",
+      "positive_node": "WORKER_RETURNS/PYAT-R48-M48-INDEPENDENT-SCIENTIFIC-REQUIREMENTS-R1/proof/test_constitution.py::test_all35_unknown_counts_conserved",
+      "fault_path": "WORKER_RETURNS/PYAT-R48-M48-INDEPENDENT-SCIENTIFIC-REQUIREMENTS-R1/proof/grammar_model.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    }
+  ]
+}

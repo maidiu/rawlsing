@@ -1,0 +1,49 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "claims": [
+    {
+      "claim_id": "M48_ROLE_DENIAL",
+      "actual_consumer": "M48 sourcefree grammar model test only; not a native product integration",
+      "claimed_dependency": "declared target role -> model eligibility denial",
+      "positive_node": "WORKER_RETURNS/PYAT-R48-M48-INDEPENDENT-SCIENTIFIC-REQUIREMENTS-R1/proof/test_constitution.py::test_invalid_meaning_denied",
+      "fault": {
+        "path": "WORKER_RETURNS/PYAT-R48-M48-INDEPENDENT-SCIENTIFIC-REQUIREMENTS-R1/proof/grammar_model.py",
+        "old": "return \"DENY_TARGET_ROLE\"",
+        "new": "return \"ELIGIBLE\""
+      }
+    },
+    {
+      "claim_id": "M48_XOR_REACHABILITY",
+      "actual_consumer": "M48 sourcefree grammar model test only; not a native product integration",
+      "claimed_dependency": "two-condition grammar -> evaluated XOR model distribution",
+      "positive_node": "WORKER_RETURNS/PYAT-R48-M48-INDEPENDENT-SCIENTIFIC-REQUIREMENTS-R1/proof/test_constitution.py::test_xor_reached_without_unary_screen",
+      "fault": {
+        "path": "WORKER_RETURNS/PYAT-R48-M48-INDEPENDENT-SCIENTIFIC-REQUIREMENTS-R1/proof/grammar_model.py",
+        "old": "ledger[op] = eligibility(op, catalog)",
+        "new": "ledger[op] = \"UNKNOWN\" if len(op.conditions) > 1 else eligibility(op, catalog)"
+      }
+    },
+    {
+      "claim_id": "M48_MINORITY_REACHABILITY",
+      "actual_consumer": "M48 sourcefree grammar model test only; not a native product integration",
+      "claimed_dependency": "unlisted admissible minority conditioner -> model distribution",
+      "positive_node": "WORKER_RETURNS/PYAT-R48-M48-INDEPENDENT-SCIENTIFIC-REQUIREMENTS-R1/proof/test_constitution.py::test_unlisted_minority_survives",
+      "fault": {
+        "path": "WORKER_RETURNS/PYAT-R48-M48-INDEPENDENT-SCIENTIFIC-REQUIREMENTS-R1/proof/grammar_model.py",
+        "old": "ledger[op] = eligibility(op, catalog)",
+        "new": "ledger[op] = \"UNKNOWN\" if any(n == \"M\" for n, v in op.conditions) else eligibility(op, catalog)"
+      }
+    },
+    {
+      "claim_id": "M48_NULL_NOT_ZERO",
+      "actual_consumer": "M48 sourcefree grammar model test only; not a native product integration",
+      "claimed_dependency": "all35 pending inventory -> null-with-cause accounting",
+      "positive_node": "WORKER_RETURNS/PYAT-R48-M48-INDEPENDENT-SCIENTIFIC-REQUIREMENTS-R1/proof/test_constitution.py::test_all35_unknown_counts_conserved",
+      "fault": {
+        "path": "WORKER_RETURNS/PYAT-R48-M48-INDEPENDENT-SCIENTIFIC-REQUIREMENTS-R1/proof/grammar_model.py",
+        "old": "\"original_E_pre_count\": None",
+        "new": "\"original_E_pre_count\": 0"
+      }
+    }
+  ]
+}
