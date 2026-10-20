@@ -1,0 +1,71 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "claims": [
+    {
+      "claim_id": "C9P_LATER_ACTION_CONSUMER_READS_COMMITTED_TARGET_STATE",
+      "actual_consumer": "candidate.later_action.read_target_for_later_action with LaterActionConsumer.read_target",
+      "claimed_dependency": "committed target_state row -> consumer read_target -> state_hash compared to digest(committed_record)",
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_severance_witnesses.py::test_later_action_consumer_reads_committed_target_state",
+      "fault": {
+        "path": "WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/candidate/later_action.py",
+        "old": "record, state_hash = consumer.read_target(store, middle_state_id, as_of)",
+        "new": "record, state_hash = None, \"\""
+      }
+    },
+    {
+      "claim_id": "C9P_RESPONSE_LOOKUP_CONSUMES_EXACT_RULE_REGISTRY_ENTRY",
+      "actual_consumer": "candidate.response_rules.lookup_rule registry table read",
+      "claimed_dependency": "response rule registry entry -> lookup_rule key dereference -> FOUND result consumed by evaluate_response",
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_severance_witnesses.py::test_response_lookup_consumes_exact_rule_registry_entry",
+      "fault": {
+        "path": "WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/candidate/response_rules.py",
+        "old": "entry = registry.rules.get(key)",
+        "new": "entry = None"
+      }
+    },
+    {
+      "claim_id": "C9P_TARGET_DECISION_CONSUMES_INDEPENDENT_PERMISSION",
+      "actual_consumer": "candidate.target_rules.evaluate_target permission validation branch",
+      "claimed_dependency": "separately authenticated TargetPermission -> permission validity check -> CREATE branch",
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_severance_witnesses.py::test_target_decision_consumes_independent_permission",
+      "fault": {
+        "path": "WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/candidate/target_rules.py",
+        "old": "if not _valid(permission):",
+        "new": "if True:"
+      }
+    },
+    {
+      "claim_id": "C9P_CONDITIONING_READSET_BINDS_PERSON_WORLD_SOURCES",
+      "actual_consumer": "candidate.conditioning.bind_conditioning readset construction",
+      "claimed_dependency": "person/world ConditioningSource -> readset append -> ConditioningView.readset_refs consumed by evaluate_response",
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_severance_witnesses.py::test_conditioning_readset_binds_person_world_sources",
+      "fault": {
+        "path": "WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/candidate/conditioning.py",
+        "old": "readset.append(source_ref)",
+        "new": "readset.append(\"SEVERED_SOURCE_REF\")"
+      }
+    },
+    {
+      "claim_id": "C9P_ACTION_ADMISSION_BINDS_PERFORMED_ACTION_RECEIPT",
+      "actual_consumer": "candidate.action_admission.admit_performed_action owner-receipt validation",
+      "claimed_dependency": "performed-action owner receipt -> admit_performed_action -> PerformedActionAdmission.receipt_hash bound",
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_severance_witnesses.py::test_action_admission_binds_performed_action_receipt",
+      "fault": {
+        "path": "WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/candidate/action_admission.py",
+        "old": "if owner_receipt is None:",
+        "new": "if True:"
+      }
+    },
+    {
+      "claim_id": "C9P_TRANSACTION_READSET_BINDS_ADMITTED_EVENT_WITNESS",
+      "actual_consumer": "candidate.transaction.CandidateStore.commit receipt readset and joint transaction identity",
+      "claimed_dependency": "admitted occurrence witness -> commit readset_refs and sealed receipt hash -> receipt identity consumed by later stages",
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/tests/test_severance_witnesses.py::test_transaction_readset_binds_admitted_event_witness",
+      "fault": {
+        "path": "WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/candidate/transaction.py",
+        "old": "joint_transaction_id=receipt[\"hash\"],",
+        "new": "joint_transaction_id=\"SEVERED\","
+      }
+    }
+  ]
+}

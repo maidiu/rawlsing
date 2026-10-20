@@ -1,0 +1,280 @@
+{
+  "baseline_counts": {
+    "hostile": {
+      "ERROR": 0,
+      "PASS": 11,
+      "RED": 26,
+      "SKIP": 0,
+      "tests": 37
+    },
+    "record_custody": {
+      "ERROR": 0,
+      "PASS": 0,
+      "RED": 3,
+      "SKIP": 0,
+      "tests": 3
+    }
+  },
+  "baseline_reds": 29,
+  "repaired_counts": {
+    "hostile": {
+      "ERROR": 0,
+      "PASS": 37,
+      "RED": 0,
+      "SKIP": 0,
+      "tests": 37
+    },
+    "record_custody": {
+      "ERROR": 0,
+      "PASS": 3,
+      "RED": 0,
+      "SKIP": 0,
+      "tests": 3
+    }
+  },
+  "repaired_reds": 0,
+  "rows": [
+    {
+      "baseline": "RED",
+      "court": "hostile",
+      "repaired": "PASS",
+      "test": "test_forged_actor_original_source_refused"
+    },
+    {
+      "baseline": "RED",
+      "court": "hostile",
+      "repaired": "PASS",
+      "test": "test_wrong_actor_event_refused"
+    },
+    {
+      "baseline": "RED",
+      "court": "hostile",
+      "repaired": "PASS",
+      "test": "test_forged_native_receipt_refused"
+    },
+    {
+      "baseline": "PASS",
+      "court": "hostile",
+      "repaired": "PASS",
+      "test": "test_foreign_conditioning_subject_refused"
+    },
+    {
+      "baseline": "RED",
+      "court": "hostile",
+      "repaired": "PASS",
+      "test": "test_ineligible_world_does_not_create[future]"
+    },
+    {
+      "baseline": "RED",
+      "court": "hostile",
+      "repaired": "PASS",
+      "test": "test_ineligible_world_does_not_create[wrong-scene]"
+    },
+    {
+      "baseline": "RED",
+      "court": "hostile",
+      "repaired": "PASS",
+      "test": "test_ineligible_world_does_not_create[denied-material-access]"
+    },
+    {
+      "baseline": "RED",
+      "court": "hostile",
+      "repaired": "PASS",
+      "test": "test_rehashed_source_false_identity_refused"
+    },
+    {
+      "baseline": "RED",
+      "court": "hostile",
+      "repaired": "PASS",
+      "test": "test_observer_privileged_truth_not_actor_practice"
+    },
+    {
+      "baseline": "RED",
+      "court": "hostile",
+      "repaired": "PASS",
+      "test": "test_unissued_rule_not_adopted_by_r2_label"
+    },
+    {
+      "baseline": "RED",
+      "court": "hostile",
+      "repaired": "PASS",
+      "test": "test_rule_content_rehash_not_authenticated"
+    },
+    {
+      "baseline": "RED",
+      "court": "hostile",
+      "repaired": "PASS",
+      "test": "test_locally_minted_target_registry_and_grant_refused"
+    },
+    {
+      "baseline": "RED",
+      "court": "hostile",
+      "repaired": "PASS",
+      "test": "test_target_grant_exact_binding[response_hash-WRONG_RESPONSE]"
+    },
+    {
+      "baseline": "RED",
+      "court": "hostile",
+      "repaired": "PASS",
+      "test": "test_target_grant_exact_binding[issued_at-999]"
+    },
+    {
+      "baseline": "RED",
+      "court": "hostile",
+      "repaired": "PASS",
+      "test": "test_target_grant_exact_binding[issuer_scope-REVOKED_SCOPE]"
+    },
+    {
+      "baseline": "RED",
+      "court": "hostile",
+      "repaired": "PASS",
+      "test": "test_unwitnessed_history_not_practice[single-invented]"
+    },
+    {
+      "baseline": "RED",
+      "court": "hostile",
+      "repaired": "PASS",
+      "test": "test_unwitnessed_history_not_practice[duplicate]"
+    },
+    {
+      "baseline": "RED",
+      "court": "hostile",
+      "repaired": "PASS",
+      "test": "test_unwitnessed_history_not_practice[future-foreign]"
+    },
+    {
+      "baseline": "RED",
+      "court": "hostile",
+      "repaired": "PASS",
+      "test": "test_own_offer_not_independent_p_action"
+    },
+    {
+      "baseline": "PASS",
+      "court": "hostile",
+      "repaired": "PASS",
+      "test": "test_valid_empty_and_denied_preserve_occurrence[empty-history]"
+    },
+    {
+      "baseline": "PASS",
+      "court": "hostile",
+      "repaired": "PASS",
+      "test": "test_valid_empty_and_denied_preserve_occurrence[absent-offer]"
+    },
+    {
+      "baseline": "PASS",
+      "court": "hostile",
+      "repaired": "PASS",
+      "test": "test_valid_empty_and_denied_preserve_occurrence[absent-material]"
+    },
+    {
+      "baseline": "PASS",
+      "court": "hostile",
+      "repaired": "PASS",
+      "test": "test_valid_empty_and_denied_preserve_occurrence[missing-permission]"
+    },
+    {
+      "baseline": "PASS",
+      "court": "hostile",
+      "repaired": "PASS",
+      "test": "test_valid_empty_and_denied_preserve_occurrence[unissued-target]"
+    },
+    {
+      "baseline": "RED",
+      "court": "hostile",
+      "repaired": "PASS",
+      "test": "test_revocation_between_evaluation_and_commit_refused"
+    },
+    {
+      "baseline": "RED",
+      "court": "hostile",
+      "repaired": "PASS",
+      "test": "test_missing_original_source_not_read_at_commit"
+    },
+    {
+      "baseline": "PASS",
+      "court": "hostile",
+      "repaired": "PASS",
+      "test": "test_atomic_interference_cold_no_ghost[row-trigger]"
+    },
+    {
+      "baseline": "PASS",
+      "court": "hostile",
+      "repaired": "PASS",
+      "test": "test_atomic_interference_cold_no_ghost[schema]"
+    },
+    {
+      "baseline": "PASS",
+      "court": "hostile",
+      "repaired": "PASS",
+      "test": "test_later_omitted_mediator_refused"
+    },
+    {
+      "baseline": "RED",
+      "court": "hostile",
+      "repaired": "PASS",
+      "test": "test_later_counterfeit_body_with_real_hash_refused"
+    },
+    {
+      "baseline": "RED",
+      "court": "hostile",
+      "repaired": "PASS",
+      "test": "test_fictional_performed_receipt_not_admitted[mismatched-target]"
+    },
+    {
+      "baseline": "RED",
+      "court": "hostile",
+      "repaired": "PASS",
+      "test": "test_fictional_performed_receipt_not_admitted[pre-commit-time]"
+    },
+    {
+      "baseline": "PASS",
+      "court": "hostile",
+      "repaired": "PASS",
+      "test": "test_seven_default_holds_remain"
+    },
+    {
+      "baseline": "RED",
+      "court": "hostile",
+      "repaired": "PASS",
+      "test": "test_raw_caller_flag_cannot_clear_authenticated_hold"
+    },
+    {
+      "baseline": "RED",
+      "court": "hostile",
+      "repaired": "PASS",
+      "test": "test_duplicate_event_id_different_content_refused"
+    },
+    {
+      "baseline": "RED",
+      "court": "hostile",
+      "repaired": "PASS",
+      "test": "test_conditioning_view_rejects_mutation"
+    },
+    {
+      "baseline": "PASS",
+      "court": "hostile",
+      "repaired": "PASS",
+      "test": "test_guard_denial_does_not_prove_native_effect_guard"
+    },
+    {
+      "baseline": "RED",
+      "court": "record_custody",
+      "repaired": "PASS",
+      "test": "test_committed_semantic_record_survives_cold_reopen"
+    },
+    {
+      "baseline": "RED",
+      "court": "record_custody",
+      "repaired": "PASS",
+      "test": "test_explicit_validated_target_identity_is_committed_identity"
+    },
+    {
+      "baseline": "RED",
+      "court": "record_custody",
+      "repaired": "PASS",
+      "test": "test_fabricated_decision_cannot_bypass_target_owner"
+    }
+  ],
+  "schema": "SOROK_C9R_HOSTILE_LEDGER@1",
+  "unrepaired": []
+}

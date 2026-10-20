@@ -1,0 +1,93 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "claims": [
+    {
+      "claim_id": "C9RI_W1_ACTOR_CLOCK_SEVERANCE",
+      "actual_consumer": "candidate actor ingress -> pipeline downstream stages",
+      "claimed_dependency": "actor currentness/as-of gate -> typed STANDING_STATE_STALE refusal",
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-C9RI-INDEPENDENT-PRODUCTIVE-COMPATIBILITY-R1/tests/test_c9ri_independent_court.py::test_stale_actor_clock_context_refused",
+      "fault": {
+        "path": "WORKER_RETURNS/SOROK-20261019-C9RI-INDEPENDENT-PRODUCTIVE-COMPATIBILITY-R1/vendor/c9r/candidate/identity.py",
+        "old": "    if currentness > as_of:\n        return _refused(IngressReason.STANDING_STATE_STALE, raw.get(\"hash\", \"\"))",
+        "new": "    if False:\n        return _refused(IngressReason.STANDING_STATE_STALE, raw.get(\"hash\", \"\"))"
+      }
+    },
+    {
+      "claim_id": "C9RI_W2_SOURCE_OWNER_READSET_SEVERANCE",
+      "actual_consumer": "event witness ingress readset",
+      "claimed_dependency": "presented owner source ref -> ingress readset identity",
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-C9RI-INDEPENDENT-PRODUCTIVE-COMPATIBILITY-R1/tests/test_c9ri_independent_court.py::test_event_presented_source_controls_readset",
+      "fault": {
+        "path": "WORKER_RETURNS/SOROK-20261019-C9RI-INDEPENDENT-PRODUCTIVE-COMPATIBILITY-R1/vendor/c9r/candidate/events.py",
+        "old": "    readset = [owner_ref]",
+        "new": "    readset = []"
+      }
+    },
+    {
+      "claim_id": "C9RI_W3_TARGET_RECORD_PREIMAGE_SEVERANCE",
+      "actual_consumer": "CandidateStore.commit target record custody",
+      "claimed_dependency": "sealed full record preimage -> commit acceptance",
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-C9RI-INDEPENDENT-PRODUCTIVE-COMPATIBILITY-R1/tests/test_c9ri_independent_court.py::test_manual_decision_commit_refused",
+      "fault": {
+        "path": "WORKER_RETURNS/SOROK-20261019-C9RI-INDEPENDENT-PRODUCTIVE-COMPATIBILITY-R1/vendor/c9r/candidate/transaction.py",
+        "old": "        record = decision.record_body\n        if not isinstance(record, Mapping) or not valid(dict(record)):\n            raise TransactionRefusal(\"TARGET_RECORD_PREIMAGE_MISSING\")\n        record_body = {k: v for k, v in record.items() if k != \"hash\"}",
+        "new": "        record = decision.record_body or {}\n        record_body = {k: v for k, v in record.items() if k != \"hash\"}"
+      }
+    },
+    {
+      "claim_id": "C9RI_W4_PERMISSION_REVOCATION_SEVERANCE",
+      "actual_consumer": "evaluate_target target branch under revoked grant",
+      "claimed_dependency": "permission.revoked -> DENY PERMISSION_REVOKED",
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-C9RI-INDEPENDENT-PRODUCTIVE-COMPATIBILITY-R1/tests/test_c9ri_independent_court.py::test_revoked_permission_denied",
+      "fault": {
+        "path": "WORKER_RETURNS/SOROK-20261019-C9RI-INDEPENDENT-PRODUCTIVE-COMPATIBILITY-R1/vendor/c9r/candidate/target_rules.py",
+        "old": "    if permission.get(\"revoked\"):",
+        "new": "    if False:"
+      }
+    },
+    {
+      "claim_id": "C9RI_W5_CONSUMED_STATE_SEVERANCE",
+      "actual_consumer": "admit_performed_action consumed-state binding",
+      "claimed_dependency": "owner receipt consumed state hash -> performed action admission",
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-C9RI-INDEPENDENT-PRODUCTIVE-COMPATIBILITY-R1/tests/test_c9ri_independent_court.py::test_forged_consumed_state_refused",
+      "fault": {
+        "path": "WORKER_RETURNS/SOROK-20261019-C9RI-INDEPENDENT-PRODUCTIVE-COMPATIBILITY-R1/vendor/c9r/candidate/action_admission.py",
+        "old": "    if not consumed_state_hash or receipt_consumed != consumed_state_hash:",
+        "new": "    if False:"
+      }
+    },
+    {
+      "claim_id": "C9RI_W6_PERFORMED_ACTION_COMMIT_TIME_SEVERANCE",
+      "actual_consumer": "admit_performed_action performed-action ordering",
+      "claimed_dependency": "action time >= target commit time -> admission",
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-C9RI-INDEPENDENT-PRODUCTIVE-COMPATIBILITY-R1/tests/test_c9ri_independent_court.py::test_pre_commit_action_refused",
+      "fault": {
+        "path": "WORKER_RETURNS/SOROK-20261019-C9RI-INDEPENDENT-PRODUCTIVE-COMPATIBILITY-R1/vendor/c9r/candidate/action_admission.py",
+        "old": "    if action_time < lower_bound:",
+        "new": "    if False:"
+      }
+    },
+    {
+      "claim_id": "C9RI_W7_SQLITE_READSET_BINDING_SEVERANCE",
+      "actual_consumer": "CandidateStore.commit SQLite readset/transaction binding",
+      "claimed_dependency": "decision readset refs must be in the committed readset",
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-C9RI-INDEPENDENT-PRODUCTIVE-COMPATIBILITY-R1/tests/test_c9ri_independent_court.py::test_commit_readset_binding_refused",
+      "fault": {
+        "path": "WORKER_RETURNS/SOROK-20261019-C9RI-INDEPENDENT-PRODUCTIVE-COMPATIBILITY-R1/vendor/c9r/candidate/transaction.py",
+        "old": "                missing = [ref for ref in decision.readset_refs if ref not in readset_refs]\n                if missing:\n                    raise TransactionRefusal(\"COMMIT_READSET_MISSING\")",
+        "new": "                missing = []\n                if missing:\n                    raise TransactionRefusal(\"COMMIT_READSET_MISSING\")"
+      }
+    },
+    {
+      "claim_id": "C9RI_W8_RESPONSE_BINDING_SEVERANCE",
+      "actual_consumer": "evaluate_target target branch under a misbound declared response",
+      "claimed_dependency": "declared grant response hash -> exact response binding -> DENY on mismatch",
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-C9RI-INDEPENDENT-PRODUCTIVE-COMPATIBILITY-R1/tests/test_c9ri_independent_court.py::test_declared_response_binding_refused",
+      "fault": {
+        "path": "WORKER_RETURNS/SOROK-20261019-C9RI-INDEPENDENT-PRODUCTIVE-COMPATIBILITY-R1/vendor/c9r/candidate/target_rules.py",
+        "old": "        if not response_hash or declared_response != response_hash:",
+        "new": "        if False:"
+      }
+    }
+  ]
+}

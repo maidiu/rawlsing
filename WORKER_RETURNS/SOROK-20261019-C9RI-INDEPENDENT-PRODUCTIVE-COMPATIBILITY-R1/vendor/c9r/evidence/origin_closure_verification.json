@@ -1,0 +1,883 @@
+{
+  "c9p": {
+    "commit": "38fba47614e82a86fc5a3fa3f50c27048493e808",
+    "files": [
+      {
+        "blob": "7a60b85e148f80966a550e5ab6a762a907c69ca6",
+        "match": true,
+        "path": ".gitignore"
+      },
+      {
+        "blob": "34a329d3d9b84a323754ec71c49d0578740dfa3b",
+        "match": true,
+        "path": "00_RETURN.md"
+      },
+      {
+        "blob": "796b05ee7c97b3d926fb190b66de394f3f5eba98",
+        "match": true,
+        "path": "01_SOURCE_AND_JURIDICAL_INVENTORY.md"
+      },
+      {
+        "blob": "30c413e25abcfff9de67a8577783250a40ad4826",
+        "match": true,
+        "path": "02_CANDIDATE_TRANSACTION_PATH.md"
+      },
+      {
+        "blob": "d10e8467f1679c948b23260eaa31c263654f3034",
+        "match": true,
+        "path": "03_OWNER_RELEASE_GATE.md"
+      },
+      {
+        "blob": "7f8fd93039cab2b3467ad84aa503a63932c48825",
+        "match": true,
+        "path": "04_CONSUMER_PROOF_AND_SEVERANCE.md"
+      },
+      {
+        "blob": "930e71875ed8c530f9fdde2db9c0c63cdd59cc3a",
+        "match": true,
+        "path": "05_TERMINAL_C9_C12_PROGRESS_MATRIX.md"
+      },
+      {
+        "blob": "c617615101285746ccad0440e4e49df7b5cee27f",
+        "match": true,
+        "path": "README.md"
+      },
+      {
+        "blob": "594e98fbe3db9e6dfeac9bac2d48320629d017e7",
+        "match": true,
+        "path": "candidate/__init__.py"
+      },
+      {
+        "blob": "8967eb5016930f96b82d8a5294d53a5d2736f5af",
+        "match": true,
+        "path": "candidate/action_admission.py"
+      },
+      {
+        "blob": "4000bed5d309a1eb0e7a1963bba23133cf7bf04d",
+        "match": true,
+        "path": "candidate/canon.py"
+      },
+      {
+        "blob": "71c2033fec48f6557a7967755a352797d2f9694b",
+        "match": true,
+        "path": "candidate/conditioning.py"
+      },
+      {
+        "blob": "bc42640782085cd277902a826f0215569903f409",
+        "match": true,
+        "path": "candidate/events.py"
+      },
+      {
+        "blob": "1322d0b7e4635887a4087772c81ca05d588e86a2",
+        "match": true,
+        "path": "candidate/identity.py"
+      },
+      {
+        "blob": "498b2ba83d3e167844e66e83e6484b6dbb3f4d5c",
+        "match": true,
+        "path": "candidate/later_action.py"
+      },
+      {
+        "blob": "27cebab679ec7a6d644170f0fc135bdd6b1eb944",
+        "match": true,
+        "path": "candidate/native_custody.py"
+      },
+      {
+        "blob": "3ceabbaf0eaca3a5c01432a9967ad7edcd6760bf",
+        "match": true,
+        "path": "candidate/pipeline.py"
+      },
+      {
+        "blob": "344b6874c5c4151795b6e8de0892f05d7df9ba5b",
+        "match": true,
+        "path": "candidate/release_gate.py"
+      },
+      {
+        "blob": "a31d2fecf4d54c8c17615fc3df3ea03736c0db8c",
+        "match": true,
+        "path": "candidate/response_rules.py"
+      },
+      {
+        "blob": "aedd6f2cac37ae7e5cdb5f327edff9cf90366dfd",
+        "match": true,
+        "path": "candidate/target_rules.py"
+      },
+      {
+        "blob": "75c13ce609a7c7f58dc72baede291a9172d35fc2",
+        "match": true,
+        "path": "candidate/transaction.py"
+      },
+      {
+        "blob": "88db1ef9889f9ca3dff658be3df945df5d760a5f",
+        "match": true,
+        "path": "case_matrix.json"
+      },
+      {
+        "blob": "34042942898c7ebd742579c049f30b1959723494",
+        "match": true,
+        "path": "environment_passport.json"
+      },
+      {
+        "blob": "3f91839e50d4b6d4cd5df032def5cb92277a3068",
+        "match": true,
+        "path": "native_source_import_owner_graph.md"
+      },
+      {
+        "blob": "e4dbf9119fa4de5c8d43530466d4829c2d671d06",
+        "match": true,
+        "path": "run_repro.sh"
+      },
+      {
+        "blob": "2bd1fbe022d5956e588e61ecfe58c1ea5bd597da",
+        "match": true,
+        "path": "severance/run_severance.py"
+      },
+      {
+        "blob": "32c5c41c5139bc6c79b94ad5aee23845d88de1a4",
+        "match": true,
+        "path": "tests/conftest.py"
+      },
+      {
+        "blob": "bac39432a45a8bf59c53e0a6ae96a24e2e233f35",
+        "match": true,
+        "path": "tests/test_action_admission.py"
+      },
+      {
+        "blob": "d1a736cb969887a3d8a96fa7da0163976c3c0ba7",
+        "match": true,
+        "path": "tests/test_atomic_rollback_no_ghost.py"
+      },
+      {
+        "blob": "6c637a5c444d061119ef5263686118b672483268",
+        "match": true,
+        "path": "tests/test_conditioning_readonly.py"
+      },
+      {
+        "blob": "4c355143e79e6d7e5f672d605f62ad96ed353edf",
+        "match": true,
+        "path": "tests/test_create_chain.py"
+      },
+      {
+        "blob": "fb4ca07d737c62c646010a256c220288924c807c",
+        "match": true,
+        "path": "tests/test_event_witness.py"
+      },
+      {
+        "blob": "b82c8112763888e03e87251852221b262392d726",
+        "match": true,
+        "path": "tests/test_identity_ingress.py"
+      },
+      {
+        "blob": "ca3b233210536846bb0314e03c6c55852883fe19",
+        "match": true,
+        "path": "tests/test_later_action_consumer.py"
+      },
+      {
+        "blob": "f5c26cd61ac7511bc0301d1d9777a047e3c61238",
+        "match": true,
+        "path": "tests/test_later_action_consumer.py.proof.json"
+      },
+      {
+        "blob": "454b789d41fdb5b04ba2336736944777d44b083f",
+        "match": true,
+        "path": "tests/test_native_custody.py"
+      },
+      {
+        "blob": "fc783106503648695a89297bf3dcb59a4d50ed8f",
+        "match": true,
+        "path": "tests/test_pipeline_native_ceiling.py"
+      },
+      {
+        "blob": "72a2b7a6b861a1bd9c6cf41fa1f485f364a29acf",
+        "match": true,
+        "path": "tests/test_release_gate.py"
+      },
+      {
+        "blob": "e3a9eebef8c2a8c22ec0e7984c64b40861551762",
+        "match": true,
+        "path": "tests/test_response_rule_lookup.py"
+      },
+      {
+        "blob": "d34dcbb24704cdc9dec4188d796b3dc63a35311a",
+        "match": true,
+        "path": "tests/test_severance_witnesses.py"
+      },
+      {
+        "blob": "f1652dc0dcb7f4bf684b4de31b5999b3afa0bdf0",
+        "match": true,
+        "path": "tests/test_severance_witnesses.py.proof.json"
+      },
+      {
+        "blob": "e48ab52750a3079d2b56ab0e9607d801ea0819ff",
+        "match": true,
+        "path": "tests/test_target_rule_branches.py"
+      }
+    ]
+  },
+  "c9pi": {
+    "commit": "df2382b8d9478f0a904dcff06ee45bb0119a1bda",
+    "files": [
+      {
+        "blob": "791b032ac191dd0d49d9eb37677af7abef558391",
+        "match": true,
+        "path": ".gitignore"
+      },
+      {
+        "blob": "1c732d35f21f9d61359e8964a4976edfb44fa912",
+        "match": true,
+        "path": "00_RETURN.md"
+      },
+      {
+        "blob": "52d181042d3598b63445df98b8975159f23e33c6",
+        "match": true,
+        "path": "01B_SUPPLEMENTAL_PREREGISTRATION.md"
+      },
+      {
+        "blob": "b36ee2994492a7e5fea9bccbb7a8d6b0ac26497e",
+        "match": true,
+        "path": "01_PREREGISTRATION.md"
+      },
+      {
+        "blob": "ef8cf6308c16ec0e9a76584982aa512b2e3f19d3",
+        "match": true,
+        "path": "02_TECHNICAL_FINDINGS.md"
+      },
+      {
+        "blob": "f6cd7e6c1295d26bc504b935f49efcc01937b430",
+        "match": true,
+        "path": "03_SCIENTIFIC_AND_OWNER_ASSESSMENT.md"
+      },
+      {
+        "blob": "8f4df43d62793f8e35a06d0becafe733296a6a93",
+        "match": true,
+        "path": "04_TERMINAL_DELTA.md"
+      },
+      {
+        "blob": "50ed3207754a1c3a086727289e74cee834453215",
+        "match": true,
+        "path": "README.md"
+      },
+      {
+        "blob": "979fbacb9841e57b6ebbb2a12f38e2cad887fc43",
+        "match": true,
+        "path": "cold_replay.py"
+      },
+      {
+        "blob": "68692324eb0f00b69fa916a9d9bb1378fab76968",
+        "match": true,
+        "path": "collect_authorities.py"
+      },
+      {
+        "blob": "1db7cc9a3a41e0ac2a9de801cd6262b71528cb2e",
+        "match": true,
+        "path": "custody/authority_preimages.json"
+      },
+      {
+        "blob": "33e15abe69ca6feaaef9b3539db2f7c3bb9ad9f1",
+        "match": true,
+        "path": "custody/edge_test_preimages.json"
+      },
+      {
+        "blob": "24d0f393bb668c85e8f53d174a78940c9899904f",
+        "match": true,
+        "path": "custody/hostile_test_preimages.json"
+      },
+      {
+        "blob": "05d0b5ce73bc3ba632531da0d55aa77ef8131426",
+        "match": true,
+        "path": "custody/native_sources.json"
+      },
+      {
+        "blob": "0e8dc62466c5d6fbd3bfdd37cc15db3e80edd668",
+        "match": true,
+        "path": "custody/packet_hashes.json"
+      },
+      {
+        "blob": "c8c20616864bc9420e4cadd4979a3649ad601d40",
+        "match": true,
+        "path": "custody/preregistration.sha256"
+      },
+      {
+        "blob": "ad92974b12d3ee0764a7e717a51c97f9c7723f80",
+        "match": true,
+        "path": "custody/reviewer_final_preimages.json"
+      },
+      {
+        "blob": "48b27f4b69a4be454684fa168a6cec13ceed759e",
+        "match": true,
+        "path": "custody/source_preimages.json"
+      },
+      {
+        "blob": "9f5e67ce4a60713933af4df464600478d311191c",
+        "match": true,
+        "path": "custody/startup_and_native_binding_search.json"
+      },
+      {
+        "blob": "5256905bb287fb25d163801d5acaeeaaaf03c2f0",
+        "match": true,
+        "path": "custody/supplemental_preregistration.sha256"
+      },
+      {
+        "blob": "dd999fc1f04c7fa88f2a58600c9e510a22b6402f",
+        "match": true,
+        "path": "environment_passport_delta.json"
+      },
+      {
+        "blob": "e7aa5a90f1c7e7bfb7436bf779d98b5c424222f5",
+        "match": true,
+        "path": "frozen/authorities/00A_VOZHD_TAKEOVER_RELATIONAL_PSYCHIC_GATE_R1.md"
+      },
+      {
+        "blob": "c1f12f5aa98f027af48ec6a358db966fbfe800b8",
+        "match": true,
+        "path": "frozen/authorities/00B_HQ_COMMUNICATIVE_DISCIPLINE_AND_FEASIBILITY_CLAIM_CONSTITUTION_R1.md"
+      },
+      {
+        "blob": "53694fd6ca272421dd40df8af7a17e08275281bb",
+        "match": true,
+        "path": "frozen/authorities/00C_HQ_PROMPT_DISPENSATION_AGENT_ROUTING_AND_ORCHESTRATION_CONSTITUTION_R1.md"
+      },
+      {
+        "blob": "b1379d086b751e2e1079ad364e4444944674ac8f",
+        "match": true,
+        "path": "frozen/authorities/00D_WARM_ENVIRONMENT_PASSPORT_AND_COST_AWARE_AGENT_DISPENSATION_R1.md"
+      },
+      {
+        "blob": "da85006f1a68fd1731df4e13c7c2ce8b54f87a0b",
+        "match": true,
+        "path": "frozen/authorities/00_COMMISSION.md"
+      },
+      {
+        "blob": "28cbe297b7089702e9a59dfc8c75a784f070e5d5",
+        "match": true,
+        "path": "frozen/authorities/00_DOCKET.md"
+      },
+      {
+        "blob": "39fba7e8844f06616a2f92e8786979b5fc86a6f4",
+        "match": true,
+        "path": "frozen/authorities/00_FULL_RAWLSING_VOZHD_GROUNDING_GATE_R1.md"
+      },
+      {
+        "blob": "c0843fac2c54ef41347d5f08a7720fa65e7dfab3",
+        "match": true,
+        "path": "frozen/authorities/00_GROUNDING_RECEIPT.md"
+      },
+      {
+        "blob": "983d4133838ad9783eda1e9439ea97f2e1a68b4f",
+        "match": true,
+        "path": "frozen/authorities/00_PRE_A0_ARCHITECTURAL_BANK_R1.md"
+      },
+      {
+        "blob": "de81db67ef02228b95c1a6cf2a2fb8a3ee2fc29d",
+        "match": true,
+        "path": "frozen/authorities/00_READ_ME.md"
+      },
+      {
+        "blob": "1cc69afb7c0fade79a228aaadc74d5627a09bd3e",
+        "match": true,
+        "path": "frozen/authorities/00_READ_ME_FIRST.md"
+      },
+      {
+        "blob": "9263fb466ccd658e1e17ecf8be10176d365a74fc",
+        "match": true,
+        "path": "frozen/authorities/07_FRESH_SOROK_BOOTSTRAP.md"
+      },
+      {
+        "blob": "28813c575c681abf3c6235ff23c6f01f7123acc7",
+        "match": true,
+        "path": "frozen/authorities/ADP007.md"
+      },
+      {
+        "blob": "6428e26f4e85ede66a10ea2761362ff0cd84fc5e",
+        "match": true,
+        "path": "frozen/authorities/ADP008.md"
+      },
+      {
+        "blob": "0b7bbe29f6509e31ac7d842962a2bf3d636daa2c",
+        "match": true,
+        "path": "frozen/authorities/ADP016.md"
+      },
+      {
+        "blob": "6b4162df27003bec413074178c46fea6360d71a0",
+        "match": true,
+        "path": "frozen/authorities/ADP017.md"
+      },
+      {
+        "blob": "5c38772ea193e5a3f20da23c16df086a153ab2f2",
+        "match": true,
+        "path": "frozen/authorities/ADP019.md"
+      },
+      {
+        "blob": "1911352f4bd5b04dfeaa0f26930e6702998bb76d",
+        "match": true,
+        "path": "frozen/authorities/ADP020.md"
+      },
+      {
+        "blob": "f17e2b6b306c5d3cf58c483fa1185a9c5e01138d",
+        "match": true,
+        "path": "frozen/authorities/ADP_010_V3_ENCOUNTER_EXPOSURE.md"
+      },
+      {
+        "blob": "8b08b511c72d5beac4ddba92a009b0ffe4b5333e",
+        "match": true,
+        "path": "frozen/authorities/ADP_021_V3_HYBRID_SCHEDULER.md"
+      },
+      {
+        "blob": "00c61b3f712721f2ea4dc74fd305f9213303fa52",
+        "match": true,
+        "path": "frozen/authorities/B3AS.md"
+      },
+      {
+        "blob": "15bf71d44d24a7f445b6b1f8ab57a1e0cc0490c6",
+        "match": true,
+        "path": "frozen/authorities/B3AS_limitations.md"
+      },
+      {
+        "blob": "a6bc1555489271e1adb2271ed02d46bb7f888170",
+        "match": true,
+        "path": "frozen/authorities/CAN008_R2_adoption.md"
+      },
+      {
+        "blob": "b80dd6925066510ecbbfec7b427bf9f688475663",
+        "match": true,
+        "path": "frozen/authorities/CAN008_R2_body.md"
+      },
+      {
+        "blob": "976c59086b938992114f68621f149687670e306d",
+        "match": true,
+        "path": "frozen/authorities/CAN008_v1.md"
+      },
+      {
+        "blob": "1ed04e62a363493bc7032a99139454a3126e6ea0",
+        "match": true,
+        "path": "frozen/authorities/CAN011.md"
+      },
+      {
+        "blob": "84122a49bef9582ebefbd66e799aff04625cd5df",
+        "match": true,
+        "path": "frozen/authorities/HQ_PARALLEL_FLIGHTS_AND_ECONOMICAL_MODEL_ROUTING_LAW_R1.md"
+      },
+      {
+        "blob": "e40db4d7961b95cfe63ca4aa0910eb23fbb74725",
+        "match": true,
+        "path": "frozen/authorities/LIFE1.md"
+      },
+      {
+        "blob": "cc14b6634d5a55b84389a609d1b0b5a789c94c39",
+        "match": true,
+        "path": "frozen/authorities/PROPOSED_PARALLEL_FLIGHT_20261019_SOURCE_WORLD_ACTOR_R1.md"
+      },
+      {
+        "blob": "c5b04977459103582a37073944464c57c11e206e",
+        "match": true,
+        "path": "frozen/authorities/SOROK_ONLY_PARALLEL_FLIGHT_20261019_R1.md"
+      },
+      {
+        "blob": "a83d054a656ff9d7bf32b18495bd0a1843c02da9",
+        "match": true,
+        "path": "frozen/authorities/proof_law.md"
+      },
+      {
+        "blob": "a625f98836744494304f52977780b8c858f5346e",
+        "match": true,
+        "path": "frozen/authorities/terminal_law.md"
+      },
+      {
+        "blob": "811d708f8ac64fd15d6d22edc787c95db60d06cd",
+        "match": true,
+        "path": "frozen/c9o/00_RETURN.md"
+      },
+      {
+        "blob": "b46ac4522cf3ad694f14c66661a56b52405e68a4",
+        "match": true,
+        "path": "frozen/c9o/01_COMPETENT_OWNER_AND_GRANT_GRAPH.md"
+      },
+      {
+        "blob": "5bb218531f57a0cb04ee36339635dc340ca32257",
+        "match": true,
+        "path": "frozen/c9o/02_COMPETING_SITUATED_RULES_AND_FALSIFIERS.md"
+      },
+      {
+        "blob": "8d5161ce0da6b79182180c1bf8cf6ebc0d867ecc",
+        "match": true,
+        "path": "frozen/c9o/03_MINIMUM_OWNER_DECISION_AND_HQ_MOTION.md"
+      },
+      {
+        "blob": "7d1bb7183d5eb02ef7a24ed9d3559cec610cb428",
+        "match": true,
+        "path": "frozen/c9o/04_TERMINAL_PERSONA_CRITICAL_PATH_DELTA.md"
+      },
+      {
+        "blob": "ef6d0a8dabddceb49fb6e39fc964437d1e004fde",
+        "match": true,
+        "path": "frozen/c9o/05_MEMORY_M01_M02_MS4_SOURCE_RECONCILIATION.md"
+      },
+      {
+        "blob": "52e16f448ecad6bf4ef8ebd3ca06929692a401ff",
+        "match": true,
+        "path": "frozen/c9o/environment_passport_delta.json"
+      },
+      {
+        "blob": "7a60b85e148f80966a550e5ab6a762a907c69ca6",
+        "match": true,
+        "path": "frozen/c9p/.gitignore"
+      },
+      {
+        "blob": "34a329d3d9b84a323754ec71c49d0578740dfa3b",
+        "match": true,
+        "path": "frozen/c9p/00_RETURN.md"
+      },
+      {
+        "blob": "796b05ee7c97b3d926fb190b66de394f3f5eba98",
+        "match": true,
+        "path": "frozen/c9p/01_SOURCE_AND_JURIDICAL_INVENTORY.md"
+      },
+      {
+        "blob": "30c413e25abcfff9de67a8577783250a40ad4826",
+        "match": true,
+        "path": "frozen/c9p/02_CANDIDATE_TRANSACTION_PATH.md"
+      },
+      {
+        "blob": "d10e8467f1679c948b23260eaa31c263654f3034",
+        "match": true,
+        "path": "frozen/c9p/03_OWNER_RELEASE_GATE.md"
+      },
+      {
+        "blob": "7f8fd93039cab2b3467ad84aa503a63932c48825",
+        "match": true,
+        "path": "frozen/c9p/04_CONSUMER_PROOF_AND_SEVERANCE.md"
+      },
+      {
+        "blob": "930e71875ed8c530f9fdde2db9c0c63cdd59cc3a",
+        "match": true,
+        "path": "frozen/c9p/05_TERMINAL_C9_C12_PROGRESS_MATRIX.md"
+      },
+      {
+        "blob": "c617615101285746ccad0440e4e49df7b5cee27f",
+        "match": true,
+        "path": "frozen/c9p/README.md"
+      },
+      {
+        "blob": "594e98fbe3db9e6dfeac9bac2d48320629d017e7",
+        "match": true,
+        "path": "frozen/c9p/candidate/__init__.py"
+      },
+      {
+        "blob": "8967eb5016930f96b82d8a5294d53a5d2736f5af",
+        "match": true,
+        "path": "frozen/c9p/candidate/action_admission.py"
+      },
+      {
+        "blob": "4000bed5d309a1eb0e7a1963bba23133cf7bf04d",
+        "match": true,
+        "path": "frozen/c9p/candidate/canon.py"
+      },
+      {
+        "blob": "71c2033fec48f6557a7967755a352797d2f9694b",
+        "match": true,
+        "path": "frozen/c9p/candidate/conditioning.py"
+      },
+      {
+        "blob": "bc42640782085cd277902a826f0215569903f409",
+        "match": true,
+        "path": "frozen/c9p/candidate/events.py"
+      },
+      {
+        "blob": "1322d0b7e4635887a4087772c81ca05d588e86a2",
+        "match": true,
+        "path": "frozen/c9p/candidate/identity.py"
+      },
+      {
+        "blob": "498b2ba83d3e167844e66e83e6484b6dbb3f4d5c",
+        "match": true,
+        "path": "frozen/c9p/candidate/later_action.py"
+      },
+      {
+        "blob": "27cebab679ec7a6d644170f0fc135bdd6b1eb944",
+        "match": true,
+        "path": "frozen/c9p/candidate/native_custody.py"
+      },
+      {
+        "blob": "3ceabbaf0eaca3a5c01432a9967ad7edcd6760bf",
+        "match": true,
+        "path": "frozen/c9p/candidate/pipeline.py"
+      },
+      {
+        "blob": "344b6874c5c4151795b6e8de0892f05d7df9ba5b",
+        "match": true,
+        "path": "frozen/c9p/candidate/release_gate.py"
+      },
+      {
+        "blob": "a31d2fecf4d54c8c17615fc3df3ea03736c0db8c",
+        "match": true,
+        "path": "frozen/c9p/candidate/response_rules.py"
+      },
+      {
+        "blob": "aedd6f2cac37ae7e5cdb5f327edff9cf90366dfd",
+        "match": true,
+        "path": "frozen/c9p/candidate/target_rules.py"
+      },
+      {
+        "blob": "75c13ce609a7c7f58dc72baede291a9172d35fc2",
+        "match": true,
+        "path": "frozen/c9p/candidate/transaction.py"
+      },
+      {
+        "blob": "88db1ef9889f9ca3dff658be3df945df5d760a5f",
+        "match": true,
+        "path": "frozen/c9p/case_matrix.json"
+      },
+      {
+        "blob": "34042942898c7ebd742579c049f30b1959723494",
+        "match": true,
+        "path": "frozen/c9p/environment_passport.json"
+      },
+      {
+        "blob": "4a8d9054515595efb73ed98f916721df6b36dfab",
+        "match": true,
+        "path": "frozen/c9p/evidence/junit_full.xml"
+      },
+      {
+        "blob": "15b7558d496da08be0831f25f43b1067e20d9251",
+        "match": true,
+        "path": "frozen/c9p/evidence/proof_witness_consumer.json"
+      },
+      {
+        "blob": "bee35569bf2ea8a5cb1081e21f79aa1ce66f813f",
+        "match": true,
+        "path": "frozen/c9p/evidence/proof_witness_severance.json"
+      },
+      {
+        "blob": "ce106e1a973aac594936c2c4a0c16b31744c0521",
+        "match": true,
+        "path": "frozen/c9p/evidence/severance_receipt.json"
+      },
+      {
+        "blob": "d0445dafa3d5e13cdcf08eda26d684e5c7cc5f91",
+        "match": true,
+        "path": "frozen/c9p/evidence/source_hashes.json"
+      },
+      {
+        "blob": "3f91839e50d4b6d4cd5df032def5cb92277a3068",
+        "match": true,
+        "path": "frozen/c9p/native_source_import_owner_graph.md"
+      },
+      {
+        "blob": "e4dbf9119fa4de5c8d43530466d4829c2d671d06",
+        "match": true,
+        "path": "frozen/c9p/run_repro.sh"
+      },
+      {
+        "blob": "2bd1fbe022d5956e588e61ecfe58c1ea5bd597da",
+        "match": true,
+        "path": "frozen/c9p/severance/run_severance.py"
+      },
+      {
+        "blob": "32c5c41c5139bc6c79b94ad5aee23845d88de1a4",
+        "match": true,
+        "path": "frozen/c9p/tests/conftest.py"
+      },
+      {
+        "blob": "bac39432a45a8bf59c53e0a6ae96a24e2e233f35",
+        "match": true,
+        "path": "frozen/c9p/tests/test_action_admission.py"
+      },
+      {
+        "blob": "d1a736cb969887a3d8a96fa7da0163976c3c0ba7",
+        "match": true,
+        "path": "frozen/c9p/tests/test_atomic_rollback_no_ghost.py"
+      },
+      {
+        "blob": "6c637a5c444d061119ef5263686118b672483268",
+        "match": true,
+        "path": "frozen/c9p/tests/test_conditioning_readonly.py"
+      },
+      {
+        "blob": "4c355143e79e6d7e5f672d605f62ad96ed353edf",
+        "match": true,
+        "path": "frozen/c9p/tests/test_create_chain.py"
+      },
+      {
+        "blob": "fb4ca07d737c62c646010a256c220288924c807c",
+        "match": true,
+        "path": "frozen/c9p/tests/test_event_witness.py"
+      },
+      {
+        "blob": "b82c8112763888e03e87251852221b262392d726",
+        "match": true,
+        "path": "frozen/c9p/tests/test_identity_ingress.py"
+      },
+      {
+        "blob": "ca3b233210536846bb0314e03c6c55852883fe19",
+        "match": true,
+        "path": "frozen/c9p/tests/test_later_action_consumer.py"
+      },
+      {
+        "blob": "f5c26cd61ac7511bc0301d1d9777a047e3c61238",
+        "match": true,
+        "path": "frozen/c9p/tests/test_later_action_consumer.py.proof.json"
+      },
+      {
+        "blob": "454b789d41fdb5b04ba2336736944777d44b083f",
+        "match": true,
+        "path": "frozen/c9p/tests/test_native_custody.py"
+      },
+      {
+        "blob": "fc783106503648695a89297bf3dcb59a4d50ed8f",
+        "match": true,
+        "path": "frozen/c9p/tests/test_pipeline_native_ceiling.py"
+      },
+      {
+        "blob": "72a2b7a6b861a1bd9c6cf41fa1f485f364a29acf",
+        "match": true,
+        "path": "frozen/c9p/tests/test_release_gate.py"
+      },
+      {
+        "blob": "e3a9eebef8c2a8c22ec0e7984c64b40861551762",
+        "match": true,
+        "path": "frozen/c9p/tests/test_response_rule_lookup.py"
+      },
+      {
+        "blob": "d34dcbb24704cdc9dec4188d796b3dc63a35311a",
+        "match": true,
+        "path": "frozen/c9p/tests/test_severance_witnesses.py"
+      },
+      {
+        "blob": "f1652dc0dcb7f4bf684b4de31b5999b3afa0bdf0",
+        "match": true,
+        "path": "frozen/c9p/tests/test_severance_witnesses.py.proof.json"
+      },
+      {
+        "blob": "e48ab52750a3079d2b56ab0e9607d801ea0819ff",
+        "match": true,
+        "path": "frozen/c9p/tests/test_target_rule_branches.py"
+      },
+      {
+        "blob": "e0528d65215cb431196570c38bac4eae94217a1b",
+        "match": true,
+        "path": "frozen/native/rawlsing_next/v3_psepf_zero_positive_guard.py"
+      },
+      {
+        "blob": "243630dcbcb64f0c717c46d3a4303320e70e515a",
+        "match": true,
+        "path": "frozen/native/rawlsing_next/wsc_gt0_protocol.py"
+      },
+      {
+        "blob": "6c0494def59fc683241d8bff45bcbd68a25a7f3d",
+        "match": true,
+        "path": "frozen/native/rawlsing_next/wsc_gt0_v3_runtime.py"
+      },
+      {
+        "blob": "01b881ebd42cbd6fd8ee7454e2c264c5efbd15cf",
+        "match": true,
+        "path": "frozen/s1/00_RETURN.md"
+      },
+      {
+        "blob": "22fdaf0227bb68e1b2b7751063f4ac2c7cd360d1",
+        "match": true,
+        "path": "frozen/s1/01_EVIDENCE_AND_GRADE_MATRIX.json"
+      },
+      {
+        "blob": "8bc91ce8f24ac2afb84ec7bb9516e40ea35a17b9",
+        "match": true,
+        "path": "frozen/s1/02_INDEPENDENT_SCIENCE_AND_AUTHORITY_FALSIFIERS.md"
+      },
+      {
+        "blob": "2a926e734d5eb7a6c4dd56f58d686164db69aedb",
+        "match": true,
+        "path": "frozen/s1/03_FALSIFIER_REGISTER.json"
+      },
+      {
+        "blob": "05b2a0125d9556dc4ec74326681bc905aaaa8f62",
+        "match": true,
+        "path": "frozen/s1/04_EXTERNAL_SCIENCE_AND_OWNER_BASIS.md"
+      },
+      {
+        "blob": "b2f5650a8f7cba97511ff70b0d1e35c3858c233e",
+        "match": true,
+        "path": "frozen/s1/environment_passport_delta.json"
+      },
+      {
+        "blob": "69f03a2c93442d5c84914b4fb064408b18c1d177",
+        "match": true,
+        "path": "make_contracts.py"
+      },
+      {
+        "blob": "cba64ee060a61ccf4d21d189c7bcb32c47f1ba0c",
+        "match": true,
+        "path": "prepare_runtime.py"
+      },
+      {
+        "blob": "a1fc69858414f953083c7f6c0f5ccae82bc6e334",
+        "match": true,
+        "path": "probe_closure.py"
+      },
+      {
+        "blob": "461c8ac0e25ad2078f834ad3071fc1499b140ca1",
+        "match": true,
+        "path": "proof_integrity_gate_r1.py"
+      },
+      {
+        "blob": "3774649bb732f69727ab67f2448f7793497287a9",
+        "match": true,
+        "path": "review/conftest.py"
+      },
+      {
+        "blob": "da703df8f9df7941f0823fa0ecc6884e4bdeddda",
+        "match": true,
+        "path": "review/support.py"
+      },
+      {
+        "blob": "d3bec59795ce11d33e31504237bab743f127ee83",
+        "match": true,
+        "path": "review/test_edges.py"
+      },
+      {
+        "blob": "79a04563a51f9fc7751a8c1651b01b442d82b7f1",
+        "match": true,
+        "path": "review/test_edges.py.proof.json"
+      },
+      {
+        "blob": "12b97e09e531ee492a6993fe0aa1223b37b888da",
+        "match": true,
+        "path": "review/test_hostile.py"
+      },
+      {
+        "blob": "655717782b77b2a6b5ebad95893f0a2b60377566",
+        "match": true,
+        "path": "review/test_record_custody.py"
+      },
+      {
+        "blob": "980c9805b72d29066d3304a752ac62d398625c3e",
+        "match": true,
+        "path": "run_faults.py"
+      },
+      {
+        "blob": "396fbf7df6d4785cac84ee80cdf2fb6b91c5a032",
+        "match": true,
+        "path": "run_review.py"
+      },
+      {
+        "blob": "fab3b611a206feb12dbb54a7fb6e4be12b4986ba",
+        "match": true,
+        "path": "run_shared_gate.py"
+      },
+      {
+        "blob": "05197f56c2e56944dd1b67ade1e26eda8f725d9e",
+        "match": true,
+        "path": "sanitize_evidence.py"
+      },
+      {
+        "blob": "755497f06b338a007c1775c1226c628cf6e6b7af",
+        "match": true,
+        "path": "stage_review.py"
+      },
+      {
+        "blob": "0a1f56ed2d14e6052aa80148cb3c038e025e9270",
+        "match": true,
+        "path": "summarize_evidence.py"
+      }
+    ]
+  },
+  "schema": "C9RI_ORIGIN_CLOSURE_VERIFICATION@1"
+}

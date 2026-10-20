@@ -1,0 +1,238 @@
+{
+  "note": "Each row independently adjudicated from the failing assertion, the frozen test source and the repaired candidate gate; classification vocabulary per commission.",
+  "rows": [
+    {
+      "baseline": "PASS",
+      "classification": "HISTORICAL_FALSE_POSITIVE_FIXED",
+      "note": "old receipt omitted target_commit_time; exact commit-time binding now required (C9PI pre-commit-time hostile); lawful ADMITTED retained with bound receipt in new positive",
+      "repaired": "RED",
+      "test": "test_genuine_receipt_is_admitted",
+      "trace": "action_admission.py:246-253 TARGET_COMMIT_TIME_UNBOUND"
+    },
+    {
+      "baseline": "PASS",
+      "classification": "SCIENTIFIC_ADAPTER_INCOMPATIBILITY",
+      "note": "refusal preserved; commit-time bound is checked before NO_CONSUMED_TARGET_STATE",
+      "repaired": "RED",
+      "test": "test_no_consumed_state_is_refused",
+      "trace": "action_admission.py:246-253 precedence"
+    },
+    {
+      "baseline": "PASS",
+      "classification": "SCIENTIFIC_ADAPTER_INCOMPATIBILITY",
+      "note": "abort preserved; manual decision now refused for missing sealed record preimage before STALE_TARGET_PRESTATE",
+      "repaired": "RED",
+      "test": "test_create_decision_requires_matching_prestate",
+      "trace": "transaction.py:191-196 TARGET_RECORD_PREIMAGE_MISSING"
+    },
+    {
+      "baseline": "PASS",
+      "classification": "HISTORICAL_FALSE_POSITIVE_FIXED",
+      "note": "old fixture bound actor_role ACTOR_A not the focal actor and used label-only material; both are C9PI-required bindings; lawful CREATE retained",
+      "repaired": "RED",
+      "test": "test_test_only_full_create_chain_commits_target_and_reads_it",
+      "trace": "events.py:214-225 focal-actor binding; conditioning material eligibility"
+    },
+    {
+      "baseline": "PASS",
+      "classification": "HISTORICAL_FALSE_POSITIVE_FIXED",
+      "note": "same non-conforming event/material fixture; lawful cold-reopen positive retained",
+      "repaired": "RED",
+      "test": "test_test_only_create_chain_survives_cold_reopen",
+      "trace": "events.py:214-225; conditioning.py material eligibility"
+    },
+    {
+      "baseline": "PASS",
+      "classification": "SCIENTIFIC_ADAPTER_INCOMPATIBILITY",
+      "note": "helper committed a manual decision; MISSING_CONSUMER is reachable with a lawful committed target",
+      "repaired": "RED",
+      "test": "test_missing_consumer_is_typed_refusal",
+      "trace": "transaction.py:191-196"
+    },
+    {
+      "baseline": "PASS",
+      "classification": "HISTORICAL_FALSE_POSITIVE_FIXED",
+      "note": "old read followed a fabricated manual commit; lawful exact-read retained",
+      "repaired": "RED",
+      "test": "test_consumer_reads_exact_committed_state",
+      "trace": "transaction.py:191-196"
+    },
+    {
+      "baseline": "PASS",
+      "classification": "HISTORICAL_FALSE_POSITIVE_FIXED",
+      "note": "old READ_OK used the fabricated commit; lawful READ_OK retained",
+      "repaired": "RED",
+      "test": "test_consumer_read_with_owner_admission_is_read_ok",
+      "trace": "transaction.py:191-196"
+    },
+    {
+      "baseline": "PASS",
+      "classification": "SCIENTIFIC_ADAPTER_INCOMPATIBILITY",
+      "note": "AS_OF_BEFORE_COMMIT reachable with a lawful commit; helper refused earlier",
+      "repaired": "RED",
+      "test": "test_as_of_before_commit_is_refused",
+      "trace": "transaction.py:191-196"
+    },
+    {
+      "baseline": "PASS",
+      "classification": "SCIENTIFIC_ADAPTER_INCOMPATIBILITY",
+      "note": "counterfeit-consumer mismatch preserved (reviewer counterfeit test)",
+      "repaired": "RED",
+      "test": "test_consumer_readset_mismatch_is_typed",
+      "trace": "transaction.py:191-196"
+    },
+    {
+      "baseline": "PASS",
+      "classification": "SCIENTIFIC_ADAPTER_INCOMPATIBILITY",
+      "note": "old fixture aborts at non-focal event; production registries still refuse and gate stays HELD",
+      "repaired": "RED",
+      "test": "test_native_ceiling_production_registries_refuse_everything",
+      "trace": "events.py:214-225"
+    },
+    {
+      "baseline": "PASS",
+      "classification": "SCIENTIFIC_ADAPTER_INCOMPATIBILITY",
+      "note": "old fixture never reaches commit; denied/empty occurrence preservation retained",
+      "repaired": "RED",
+      "test": "test_test_only_chain_commits_and_reads_committed_state",
+      "trace": "events.py:214-225"
+    },
+    {
+      "baseline": "PASS",
+      "classification": "SCIENTIFIC_ADAPTER_INCOMPATIBILITY",
+      "note": "old events were refused for non-focal role; two lawful trajectories are distinct (reviewer differential test)",
+      "repaired": "RED",
+      "test": "test_two_distinct_trajectories_are_materially_distinct",
+      "trace": "events.py:214-225"
+    },
+    {
+      "baseline": "PASS",
+      "classification": "SCIENTIFIC_ADAPTER_INCOMPATIBILITY",
+      "note": "old path never reached the injected commit fault; rollback/no-ghost retained (reviewer fault test + C9PI atomic test)",
+      "repaired": "RED",
+      "test": "test_no_ghost_under_injected_storage_fault",
+      "trace": "events.py:214-225"
+    },
+    {
+      "baseline": "PASS",
+      "classification": "SCIENTIFIC_ADAPTER_INCOMPATIBILITY",
+      "note": "old path never reached performed-action stage; owner-receipt hold retained",
+      "repaired": "RED",
+      "test": "test_performed_action_is_held_without_owner_receipt",
+      "trace": "events.py:214-225"
+    },
+    {
+      "baseline": "PASS",
+      "classification": "SCIENTIFIC_ADAPTER_INCOMPATIBILITY",
+      "note": "same; independent performed-action binding retained",
+      "repaired": "RED",
+      "test": "test_hand_authored_action_path_is_refused",
+      "trace": "events.py:214-225"
+    },
+    {
+      "baseline": "PASS",
+      "classification": "HISTORICAL_FALSE_POSITIVE_FIXED",
+      "note": "old hold composition asserted from a caller issuer boolean; booleans no longer alter holds",
+      "repaired": "RED",
+      "test": "test_partial_issuer_evidence_still_held",
+      "trace": "release_gate.py boolean-ignoring holds"
+    },
+    {
+      "baseline": "PASS",
+      "classification": "HISTORICAL_FALSE_POSITIVE_FIXED",
+      "note": "same; boolean-derived hold list no longer accepted",
+      "repaired": "RED",
+      "test": "test_empty_positive_registry_alone_holds",
+      "trace": "release_gate.py boolean-ignoring holds"
+    },
+    {
+      "baseline": "PASS",
+      "classification": "NATIVE_AUTHORITY_PREVIOUSLY_UNISSUED",
+      "note": "expected native AUTHORIZED from caller booleans; no native RULE_A/RULE_T/ADP issuer was ever issued; HELD is correct",
+      "repaired": "RED",
+      "test": "test_all_surfaces_cleared_authorizes",
+      "trace": "release_gate.py: IssuedAuthorityEvidence required"
+    },
+    {
+      "baseline": "PASS",
+      "classification": "HISTORICAL_FALSE_POSITIVE_FIXED",
+      "note": "label-only h-a/h-b/offer-1/world-1 now VALID_EMPTY; one-proposal positive retained with TEST_ONLY_ declared refs",
+      "repaired": "RED",
+      "test": "test_found_rule_with_full_inputs_emits_exactly_one_proposal",
+      "trace": "response_rules.py:241-270 declared-evidence qualification"
+    },
+    {
+      "baseline": "PASS",
+      "classification": "HISTORICAL_FALSE_POSITIVE_FIXED",
+      "note": "old read used a fabricated commit; lawful later read retained",
+      "repaired": "RED",
+      "test": "test_later_action_consumer_reads_committed_target_state",
+      "trace": "transaction.py:191-196"
+    },
+    {
+      "baseline": "PASS",
+      "classification": "HISTORICAL_FALSE_POSITIVE_FIXED",
+      "note": "grant response_hash resp-sev did not bind the actual response; exact binding required by C9PI; lawful CREATE retained",
+      "repaired": "RED",
+      "test": "test_target_decision_consumes_independent_permission",
+      "trace": "target_rules.py:382-387 response binding"
+    },
+    {
+      "baseline": "PASS",
+      "classification": "SCIENTIFIC_ADAPTER_INCOMPATIBILITY",
+      "note": "DENY preserved; issuer namespace check precedes foreign-owner check",
+      "repaired": "RED",
+      "test": "test_foreign_owner_permission_is_denied",
+      "trace": "target_rules.py:347-354 deny precedence"
+    },
+    {
+      "baseline": "PASS",
+      "classification": "SCIENTIFIC_ADAPTER_INCOMPATIBILITY",
+      "note": "DENY preserved; response-binding check precedes prestate conflict",
+      "repaired": "RED",
+      "test": "test_stale_prestate_conflict_is_denied",
+      "trace": "target_rules.py:382-389 deny precedence"
+    },
+    {
+      "baseline": "PASS",
+      "classification": "SCIENTIFIC_ADAPTER_INCOMPATIBILITY",
+      "note": "old grant was unbound; NO_CHANGE retained with exact grant (reviewer no-change + C9R test)",
+      "repaired": "RED",
+      "test": "test_insufficient_enacted_history_yields_no_change",
+      "trace": "target_rules.py:360-389"
+    },
+    {
+      "baseline": "PASS",
+      "classification": "HISTORICAL_FALSE_POSITIVE_FIXED",
+      "note": "label-only evidence now VALID_EMPTY; end-to-end CREATE retained with TEST_ONLY_ declared refs",
+      "repaired": "RED",
+      "test": "test_response_to_target_end_to_end_create",
+      "trace": "response_rules.py:241-270 declared evidence"
+    },
+    {
+      "baseline": "PASS",
+      "classification": "HISTORICAL_FALSE_POSITIVE_FIXED",
+      "note": "old grant response_hash r1 was not the actual response; lawful CREATE retained",
+      "repaired": "RED",
+      "test": "test_valid_grant_with_enacted_history_yields_create",
+      "trace": "target_rules.py:382-389"
+    },
+    {
+      "baseline": "PASS",
+      "classification": "HISTORICAL_FALSE_POSITIVE_FIXED",
+      "note": "old receipt had no target_commit_time; bound ADMITTED retained in new positive",
+      "repaired": "RED",
+      "test": "test_action_admission_binds_performed_action_receipt",
+      "trace": "action_admission.py:246-253"
+    }
+  ],
+  "schema": "SOROK_C9RI_28_ROW_COMPATIBILITY_LEDGER@1",
+  "summary": {
+    "HISTORICAL_FALSE_POSITIVE_FIXED": 13,
+    "LEGITIMATE_FUNCTIONAL_POSITIVE_LOST": 0,
+    "NATIVE_AUTHORITY_PREVIOUSLY_UNISSUED": 1,
+    "PREIMAGE_NOT_REPRODUCIBLE": 0,
+    "SCIENTIFIC_ADAPTER_INCOMPATIBILITY": 14,
+    "rows": 28
+  }
+}

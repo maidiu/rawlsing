@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="0.259" timestamp="2026-10-20T03:20:45.056727-04:00" hostname="MacBook-Pro.lan"><testcase classname="SOROK-C9RI-review-wt.WORKER_RETURNS.SOROK-20261019-C9RI-INDEPENDENT-PRODUCTIVE-COMPATIBILITY-R1.vendor.c9r.tests.test_c9r_consumer" name="test_mismatched_performed_action_is_refused" time="0.004"><failure message="AssertionError: assert not True&#10; +  where True = getattr(PerformedActionAdmission(status=&lt;AdmissionStatus.ADMITTED: 'ADMITTED'&gt;, reason=&lt;AdmissionReason.OK: 'OK'&gt;, actor_id='T...fc1586a65476d383b8ddc389fa8d89851ac237ee8e', target_commit_time=15, publication_grade='TEST_ONLY_SOURCEFREE_TECHNICAL'), 'admitted', False)">tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-38/test_mismatched_performed_acti0')
+
+    def test_mismatched_performed_action_is_refused(tmp_path):
+        consumed = "a" * 64
+        receipt = make_performed_action_receipt(
+            actor_id=A,
+            act="inspect_with_tool",
+            actuator_ref="TEST_ONLY_ACTUATOR_P",
+            occurrence_ref="TEST_ONLY_OCCURRENCE_E2",
+            action_time=25,
+            consumed_state_hash="b" * 64,
+            target_commit_time=15,
+        )
+        result = admit_performed_action(
+            owner_receipt=receipt,
+            expected_actor_id=A,
+            expected_act="inspect_with_tool",
+            consumed_state_hash=consumed,
+            as_of=30,
+            target_commit_time=15,
+        )
+&gt;       assert not getattr(result, "admitted", False)
+E       AssertionError: assert not True
+E        +  where True = getattr(PerformedActionAdmission(status=&lt;AdmissionStatus.ADMITTED: 'ADMITTED'&gt;, reason=&lt;AdmissionReason.OK: 'OK'&gt;, actor_id='T...fc1586a65476d383b8ddc389fa8d89851ac237ee8e', target_commit_time=15, publication_grade='TEST_ONLY_SOURCEFREE_TECHNICAL'), 'admitted', False)
+
+tests/test_c9r_consumer.py:435: AssertionError</failure></testcase></testsuite></testsuites>

@@ -1,0 +1,160 @@
+{
+  "baseline": {
+    "ERROR": 0,
+    "PASS": 90,
+    "RED": 0,
+    "SKIP": 0,
+    "tests": 90
+  },
+  "divergences": [
+    {
+      "baseline": "PASS",
+      "repaired": "RED",
+      "test": "test_genuine_receipt_is_admitted"
+    },
+    {
+      "baseline": "PASS",
+      "repaired": "RED",
+      "test": "test_no_consumed_state_is_refused"
+    },
+    {
+      "baseline": "PASS",
+      "repaired": "RED",
+      "test": "test_create_decision_requires_matching_prestate"
+    },
+    {
+      "baseline": "PASS",
+      "repaired": "RED",
+      "test": "test_test_only_create_chain_survives_cold_reopen"
+    },
+    {
+      "baseline": "PASS",
+      "repaired": "RED",
+      "test": "test_test_only_full_create_chain_commits_target_and_reads_it"
+    },
+    {
+      "baseline": "PASS",
+      "repaired": "RED",
+      "test": "test_as_of_before_commit_is_refused"
+    },
+    {
+      "baseline": "PASS",
+      "repaired": "RED",
+      "test": "test_consumer_read_with_owner_admission_is_read_ok"
+    },
+    {
+      "baseline": "PASS",
+      "repaired": "RED",
+      "test": "test_consumer_reads_exact_committed_state"
+    },
+    {
+      "baseline": "PASS",
+      "repaired": "RED",
+      "test": "test_consumer_readset_mismatch_is_typed"
+    },
+    {
+      "baseline": "PASS",
+      "repaired": "RED",
+      "test": "test_missing_consumer_is_typed_refusal"
+    },
+    {
+      "baseline": "PASS",
+      "repaired": "RED",
+      "test": "test_hand_authored_action_path_is_refused"
+    },
+    {
+      "baseline": "PASS",
+      "repaired": "RED",
+      "test": "test_native_ceiling_production_registries_refuse_everything"
+    },
+    {
+      "baseline": "PASS",
+      "repaired": "RED",
+      "test": "test_no_ghost_under_injected_storage_fault"
+    },
+    {
+      "baseline": "PASS",
+      "repaired": "RED",
+      "test": "test_performed_action_is_held_without_owner_receipt"
+    },
+    {
+      "baseline": "PASS",
+      "repaired": "RED",
+      "test": "test_test_only_chain_commits_and_reads_committed_state"
+    },
+    {
+      "baseline": "PASS",
+      "repaired": "RED",
+      "test": "test_two_distinct_trajectories_are_materially_distinct"
+    },
+    {
+      "baseline": "PASS",
+      "repaired": "RED",
+      "test": "test_all_surfaces_cleared_authorizes"
+    },
+    {
+      "baseline": "PASS",
+      "repaired": "RED",
+      "test": "test_empty_positive_registry_alone_holds"
+    },
+    {
+      "baseline": "PASS",
+      "repaired": "RED",
+      "test": "test_partial_issuer_evidence_still_held"
+    },
+    {
+      "baseline": "PASS",
+      "repaired": "RED",
+      "test": "test_found_rule_with_full_inputs_emits_exactly_one_proposal"
+    },
+    {
+      "baseline": "PASS",
+      "repaired": "RED",
+      "test": "test_action_admission_binds_performed_action_receipt"
+    },
+    {
+      "baseline": "PASS",
+      "repaired": "RED",
+      "test": "test_later_action_consumer_reads_committed_target_state"
+    },
+    {
+      "baseline": "PASS",
+      "repaired": "RED",
+      "test": "test_target_decision_consumes_independent_permission"
+    },
+    {
+      "baseline": "PASS",
+      "repaired": "RED",
+      "test": "test_foreign_owner_permission_is_denied"
+    },
+    {
+      "baseline": "PASS",
+      "repaired": "RED",
+      "test": "test_insufficient_enacted_history_yields_no_change"
+    },
+    {
+      "baseline": "PASS",
+      "repaired": "RED",
+      "test": "test_response_to_target_end_to_end_create"
+    },
+    {
+      "baseline": "PASS",
+      "repaired": "RED",
+      "test": "test_stale_prestate_conflict_is_denied"
+    },
+    {
+      "baseline": "PASS",
+      "repaired": "RED",
+      "test": "test_valid_grant_with_enacted_history_yields_create"
+    }
+  ],
+  "note": "Author tests that encode the pre-repair permissive caller-label contract change status under the hardened candidate. They are baseline evidence, not the repair acceptance oracle; no frozen author test was edited.",
+  "repaired": {
+    "ERROR": 0,
+    "PASS": 62,
+    "RED": 28,
+    "SKIP": 0,
+    "tests": 90
+  },
+  "schema": "SOROK_C9R_AUTHOR_DIVERGENCE@1"
+}

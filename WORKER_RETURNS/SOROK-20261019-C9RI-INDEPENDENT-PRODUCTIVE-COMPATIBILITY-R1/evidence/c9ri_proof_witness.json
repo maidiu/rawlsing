@@ -1,0 +1,70 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "status": "MECHANICAL_WITNESS_PASS_NOT_SEMANTIC_ADOPTION",
+  "claims": [
+    {
+      "claim_id": "C9RI_W1_ACTOR_CLOCK_SEVERANCE",
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-C9RI-INDEPENDENT-PRODUCTIVE-COMPATIBILITY-R1/tests/test_c9ri_independent_court.py::test_stale_actor_clock_context_refused",
+      "fault_path": "WORKER_RETURNS/SOROK-20261019-C9RI-INDEPENDENT-PRODUCTIVE-COMPATIBILITY-R1/vendor/c9r/candidate/identity.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    },
+    {
+      "claim_id": "C9RI_W2_SOURCE_OWNER_READSET_SEVERANCE",
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-C9RI-INDEPENDENT-PRODUCTIVE-COMPATIBILITY-R1/tests/test_c9ri_independent_court.py::test_event_presented_source_controls_readset",
+      "fault_path": "WORKER_RETURNS/SOROK-20261019-C9RI-INDEPENDENT-PRODUCTIVE-COMPATIBILITY-R1/vendor/c9r/candidate/events.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    },
+    {
+      "claim_id": "C9RI_W3_TARGET_RECORD_PREIMAGE_SEVERANCE",
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-C9RI-INDEPENDENT-PRODUCTIVE-COMPATIBILITY-R1/tests/test_c9ri_independent_court.py::test_manual_decision_commit_refused",
+      "fault_path": "WORKER_RETURNS/SOROK-20261019-C9RI-INDEPENDENT-PRODUCTIVE-COMPATIBILITY-R1/vendor/c9r/candidate/transaction.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    },
+    {
+      "claim_id": "C9RI_W4_PERMISSION_REVOCATION_SEVERANCE",
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-C9RI-INDEPENDENT-PRODUCTIVE-COMPATIBILITY-R1/tests/test_c9ri_independent_court.py::test_revoked_permission_denied",
+      "fault_path": "WORKER_RETURNS/SOROK-20261019-C9RI-INDEPENDENT-PRODUCTIVE-COMPATIBILITY-R1/vendor/c9r/candidate/target_rules.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    },
+    {
+      "claim_id": "C9RI_W5_CONSUMED_STATE_SEVERANCE",
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-C9RI-INDEPENDENT-PRODUCTIVE-COMPATIBILITY-R1/tests/test_c9ri_independent_court.py::test_forged_consumed_state_refused",
+      "fault_path": "WORKER_RETURNS/SOROK-20261019-C9RI-INDEPENDENT-PRODUCTIVE-COMPATIBILITY-R1/vendor/c9r/candidate/action_admission.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    },
+    {
+      "claim_id": "C9RI_W6_PERFORMED_ACTION_COMMIT_TIME_SEVERANCE",
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-C9RI-INDEPENDENT-PRODUCTIVE-COMPATIBILITY-R1/tests/test_c9ri_independent_court.py::test_pre_commit_action_refused",
+      "fault_path": "WORKER_RETURNS/SOROK-20261019-C9RI-INDEPENDENT-PRODUCTIVE-COMPATIBILITY-R1/vendor/c9r/candidate/action_admission.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    },
+    {
+      "claim_id": "C9RI_W7_SQLITE_READSET_BINDING_SEVERANCE",
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-C9RI-INDEPENDENT-PRODUCTIVE-COMPATIBILITY-R1/tests/test_c9ri_independent_court.py::test_commit_readset_binding_refused",
+      "fault_path": "WORKER_RETURNS/SOROK-20261019-C9RI-INDEPENDENT-PRODUCTIVE-COMPATIBILITY-R1/vendor/c9r/candidate/transaction.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    },
+    {
+      "claim_id": "C9RI_W8_RESPONSE_BINDING_SEVERANCE",
+      "positive_node": "WORKER_RETURNS/SOROK-20261019-C9RI-INDEPENDENT-PRODUCTIVE-COMPATIBILITY-R1/tests/test_c9ri_independent_court.py::test_declared_response_binding_refused",
+      "fault_path": "WORKER_RETURNS/SOROK-20261019-C9RI-INDEPENDENT-PRODUCTIVE-COMPATIBILITY-R1/vendor/c9r/candidate/target_rules.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    }
+  ]
+}

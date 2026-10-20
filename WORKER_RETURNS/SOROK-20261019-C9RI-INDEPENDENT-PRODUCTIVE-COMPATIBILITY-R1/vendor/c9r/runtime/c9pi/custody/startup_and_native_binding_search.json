@@ -1,0 +1,36 @@
+[
+  {
+    "command": [
+      "git",
+      "grep",
+      "-n",
+      "-E",
+      "run_candidate_path|C9P_TARGET_RECORD|C9P_LATER_ACTION_READ",
+      "38fba47614e82a86fc5a3fa3f50c27048493e808",
+      "--",
+      "rawlsing_next"
+    ],
+    "exit": 1,
+    "output": ""
+  },
+  {
+    "command": [
+      "git",
+      "diff",
+      "--name-only",
+      "4a806ab74e1c348805a546658c8b2c71fbdd53d8^",
+      "4a806ab74e1c348805a546658c8b2c71fbdd53d8"
+    ],
+    "exit": 0,
+    "output": "WORKER_COMMISSIONS/SOROK-20261019-C9PI-C9P-NATIVE-BOUNDARY-INDEPENDENT-R1/00_COMMISSION.md\n"
+  },
+  {
+    "command": [
+      "git",
+      "rev-parse",
+      "4a806ab74e1c348805a546658c8b2c71fbdd53d8^"
+    ],
+    "exit": 0,
+    "output": "401a14f54624f8a7f627154d2f2f57d7316a1fe0\n"
+  }
+]

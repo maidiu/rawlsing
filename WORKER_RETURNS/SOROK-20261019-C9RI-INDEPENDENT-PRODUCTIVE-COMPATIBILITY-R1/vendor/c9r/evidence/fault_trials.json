@@ -1,0 +1,138 @@
+{
+  "all_pass": true,
+  "schema": "SOROK_C9R_FAULT_TRIALS@1",
+  "trials": [
+    {
+      "claim_id": "C9R_CONSUMER_READS_EXACT_COMMITTED_SEMANTIC_RECORD",
+      "pass": true,
+      "phases": {
+        "fault": {
+          "exit": 1,
+          "junit": "junit/faults/00_fault.xml",
+          "named_status": "RED"
+        },
+        "positive": {
+          "exit": 0,
+          "junit": "junit/faults/00_positive.xml",
+          "named_status": "PASS"
+        },
+        "restored": {
+          "exit": 0,
+          "junit": "junit/faults/00_restored.xml",
+          "named_status": "PASS"
+        }
+      },
+      "positive_node": "tests/test_c9r_consumer.py::test_full_e1_to_e2_consumer_path"
+    },
+    {
+      "claim_id": "C9R_CONSUMER_BODY_BOUND_TO_COMMITTED_DIGEST",
+      "pass": true,
+      "phases": {
+        "fault": {
+          "exit": 1,
+          "junit": "junit/faults/01_fault.xml",
+          "named_status": "RED"
+        },
+        "positive": {
+          "exit": 0,
+          "junit": "junit/faults/01_positive.xml",
+          "named_status": "PASS"
+        },
+        "restored": {
+          "exit": 0,
+          "junit": "junit/faults/01_restored.xml",
+          "named_status": "PASS"
+        }
+      },
+      "positive_node": "tests/test_c9r_consumer.py::test_substituted_consumer_body_is_refused"
+    },
+    {
+      "claim_id": "C9R_PERFORMED_ACTION_CONSUMED_STATE_BOUND",
+      "pass": true,
+      "phases": {
+        "fault": {
+          "exit": 1,
+          "junit": "junit/faults/02_fault.xml",
+          "named_status": "RED"
+        },
+        "positive": {
+          "exit": 0,
+          "junit": "junit/faults/02_positive.xml",
+          "named_status": "PASS"
+        },
+        "restored": {
+          "exit": 0,
+          "junit": "junit/faults/02_restored.xml",
+          "named_status": "PASS"
+        }
+      },
+      "positive_node": "tests/test_c9r_consumer.py::test_mismatched_performed_action_is_refused"
+    },
+    {
+      "claim_id": "C9R_ENACTED_SOURCE_REQUIRED_FOR_CREATE",
+      "pass": true,
+      "phases": {
+        "fault": {
+          "exit": 1,
+          "junit": "junit/faults/03_fault.xml",
+          "named_status": "RED"
+        },
+        "positive": {
+          "exit": 0,
+          "junit": "junit/faults/03_positive.xml",
+          "named_status": "PASS"
+        },
+        "restored": {
+          "exit": 0,
+          "junit": "junit/faults/03_restored.xml",
+          "named_status": "PASS"
+        }
+      },
+      "positive_node": "tests/test_c9r_consumer.py::test_removed_enacted_source_cannot_create"
+    },
+    {
+      "claim_id": "C9R_NATIVE_POSITIVE_HELD_UNDER_GUARD_DENIAL",
+      "pass": true,
+      "phases": {
+        "fault": {
+          "exit": 1,
+          "junit": "junit/faults/04_fault.xml",
+          "named_status": "RED"
+        },
+        "positive": {
+          "exit": 0,
+          "junit": "junit/faults/04_positive.xml",
+          "named_status": "PASS"
+        },
+        "restored": {
+          "exit": 0,
+          "junit": "junit/faults/04_restored.xml",
+          "named_status": "PASS"
+        }
+      },
+      "positive_node": "tests/test_c9r_consumer.py::test_native_guard_denial_holds_native_positive_claim"
+    },
+    {
+      "claim_id": "C9R_REVOCATION_REVALIDATED_AT_COMMIT",
+      "pass": true,
+      "phases": {
+        "fault": {
+          "exit": 1,
+          "junit": "junit/faults/05_fault.xml",
+          "named_status": "RED"
+        },
+        "positive": {
+          "exit": 0,
+          "junit": "junit/faults/05_positive.xml",
+          "named_status": "PASS"
+        },
+        "restored": {
+          "exit": 0,
+          "junit": "junit/faults/05_restored.xml",
+          "named_status": "PASS"
+        }
+      },
+      "positive_node": "tests/test_c9r_consumer.py::test_revoked_permission_between_proposal_and_commit_is_refused"
+    }
+  ]
+}

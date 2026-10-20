@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="2.173" timestamp="2026-10-20T03:20:34.769299-04:00" hostname="MacBook-Pro.lan"><testcase classname="SOROK-C9RI-review-wt.WORKER_RETURNS.SOROK-20261019-C9RI-INDEPENDENT-PRODUCTIVE-COMPATIBILITY-R1.vendor.c9r.tests.test_c9r_consumer" name="test_full_e1_to_e2_consumer_path" time="0.166"><failure message="AssertionError: assert None == 'c9p:coordinated_material_inspection'&#10; +  where None = &lt;built-in method get of dict object at 0x108d189c0&gt;('semantic_object_ref')&#10; +    where &lt;built-in method get of dict object at 0x108d189c0&gt; = {'record_hash': 'df4788344e30cb3bb00518394e731c8d418c44f7a3c962fde1dc989a74ce745c', 'record_preimage': {'actor_id': 'T...reation_rule_key': ['TEST_ONLY_CAN011', '1', 'b9efddad61b27bae918149af334cee8bcc1881c49f9119fc095925506d8bb4ef'], ...}}.get">tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-32/test_full_e1_to_e2_consumer_pa0')
+
+    def test_full_e1_to_e2_consumer_path(tmp_path):
+        path = tmp_path / "consumer.sqlite"
+        with CandidateStore(path) as store:
+            first = _run(store)
+            assert first.receipt.committed
+            assert first.decision.branch is TargetBranch.CREATE
+            target_id = first.decision.target_id
+            committed = store.read_target_state(target_id)
+            assert committed is not None
+&gt;           assert committed.get("semantic_object_ref") == "c9p:coordinated_material_inspection"
+E           AssertionError: assert None == 'c9p:coordinated_material_inspection'
+E            +  where None = &lt;built-in method get of dict object at 0x108d189c0&gt;('semantic_object_ref')
+E            +    where &lt;built-in method get of dict object at 0x108d189c0&gt; = {'record_hash': 'df4788344e30cb3bb00518394e731c8d418c44f7a3c962fde1dc989a74ce745c', 'record_preimage': {'actor_id': 'T...reation_rule_key': ['TEST_ONLY_CAN011', '1', 'b9efddad61b27bae918149af334cee8bcc1881c49f9119fc095925506d8bb4ef'], ...}}.get
+
+tests/test_c9r_consumer.py:198: AssertionError</failure></testcase></testsuite></testsuites>
