@@ -1,0 +1,273 @@
+{
+  "all_expected_red": true,
+  "clean_control": {
+    "actual": "GREEN",
+    "expected": "GREEN",
+    "pass": true,
+    "summary": {
+      "candidate": null,
+      "checks_failed": [],
+      "exit_code": 0,
+      "files_failed": [],
+      "stderr_tail": ""
+    }
+  },
+  "final_clean_control": {
+    "actual": "GREEN",
+    "expected": "GREEN",
+    "pass": true,
+    "summary": {
+      "candidate": null,
+      "checks_failed": [],
+      "exit_code": 0,
+      "files_failed": [],
+      "stderr_tail": ""
+    }
+  },
+  "limitations": [
+    "Each test copies the corpus to a temporary directory outside the repository.",
+    "The actual committed chunks are never mutated; their hashes are checked after the run."
+  ],
+  "middle_part": 60,
+  "next_part": 61,
+  "real_shard_integrity": {
+    "actual_sha256": "f6a5eeb509c41196330f19ac3fe64e457775fb36d56e13ef5bbfa52547653d00",
+    "expected_sha256": "f6a5eeb509c41196330f19ac3fe64e457775fb36d56e13ef5bbfa52547653d00",
+    "match": true,
+    "path": "shards/S05_06_SOURCE_SPECIFICITY/part-0060.txt"
+  },
+  "schema": "R53_P53E_NEGATIVE_REASSEMBLY_RESULTS@1",
+  "target_original": "06_SOURCE_SPECIFICITY_AND_FIXTURE_LEAKAGE.tsv",
+  "target_shard": "shards/S05_06_SOURCE_SPECIFICITY",
+  "temp_root_outside_repo": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/p53e_adversarial_puvadx7d",
+  "tests": [
+    {
+      "actual": "RED",
+      "expected": "RED",
+      "id": "middle_shard_byte_flip",
+      "note": "flipped byte 98236 in part 60",
+      "pass": true,
+      "summary": {
+        "candidate": null,
+        "checks_failed": [
+          {
+            "check": "all_files",
+            "message": "35/36 files pass"
+          }
+        ],
+        "exit_code": 1,
+        "files_failed": [
+          {
+            "errors": [
+              "chunk 60: sha256 mismatch",
+              "chunk 60: git blob id mismatch",
+              "reassembled bytes differ from original",
+              "reassembled sha256 differs from original"
+            ],
+            "path": "06_SOURCE_SPECIFICITY_AND_FIXTURE_LEAKAGE.tsv"
+          }
+        ],
+        "stderr_tail": ""
+      }
+    },
+    {
+      "actual": "RED",
+      "expected": "RED",
+      "id": "missing_shard",
+      "note": "deleted part 61",
+      "pass": true,
+      "summary": {
+        "candidate": null,
+        "checks_failed": [
+          {
+            "check": "manifest_summary_recomputation",
+            "message": "manifest summary does not match recomputed values"
+          },
+          {
+            "check": "all_files",
+            "message": "35/36 files pass"
+          }
+        ],
+        "exit_code": 1,
+        "files_failed": [
+          {
+            "errors": [
+              "chunk missing: shards/S05_06_SOURCE_SPECIFICITY/part-0061.txt",
+              "chunk 62: byte_start 12173167 != cursor 11976909",
+              "chunk 62: byte_end 12369723 != 12173465",
+              "chunk 62: row_start manifest=21030 independent=20665"
+            ],
+            "path": "06_SOURCE_SPECIFICITY_AND_FIXTURE_LEAKAGE.tsv"
+          }
+        ],
+        "stderr_tail": ""
+      }
+    },
+    {
+      "actual": "RED",
+      "expected": "RED",
+      "id": "duplicate_shard_over_next",
+      "note": "part 61 overwritten with part 60",
+      "pass": true,
+      "summary": {
+        "candidate": null,
+        "checks_failed": [
+          {
+            "check": "all_files",
+            "message": "35/36 files pass"
+          }
+        ],
+        "exit_code": 1,
+        "files_failed": [
+          {
+            "errors": [
+              "chunk 61: bytes 196473 != manifest 196258",
+              "chunk 61: sha256 mismatch",
+              "chunk 61: git blob id mismatch",
+              "chunk 61: byte_end 12173167 != 12173382"
+            ],
+            "path": "06_SOURCE_SPECIFICITY_AND_FIXTURE_LEAKAGE.tsv"
+          }
+        ],
+        "stderr_tail": ""
+      }
+    },
+    {
+      "actual": "RED",
+      "expected": "RED",
+      "id": "reordered_shards",
+      "note": "parts 60 and 61 swapped",
+      "pass": true,
+      "summary": {
+        "candidate": null,
+        "checks_failed": [
+          {
+            "check": "all_files",
+            "message": "35/36 files pass"
+          }
+        ],
+        "exit_code": 1,
+        "files_failed": [
+          {
+            "errors": [
+              "chunk 60: bytes 196258 != manifest 196473",
+              "chunk 60: sha256 mismatch",
+              "chunk 60: git blob id mismatch",
+              "chunk 60: byte_end 11976909 != 11976694"
+            ],
+            "path": "06_SOURCE_SPECIFICITY_AND_FIXTURE_LEAKAGE.tsv"
+          }
+        ],
+        "stderr_tail": ""
+      }
+    },
+    {
+      "actual": "RED",
+      "expected": "RED",
+      "id": "candidate_duplicate_row",
+      "note": "one middle row duplicated; candidate compared against the pinned original",
+      "pass": true,
+      "summary": {
+        "candidate": {
+          "candidate": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/p53e_adversarial_puvadx7d/candidate_duplicate_row.tsv",
+          "candidate_bytes": 23453290,
+          "candidate_sha256": "fcb9ed92b25f06a54861a2f1c89bbe457362a82b5cf1f7e843732fa66d9be723",
+          "first_difference_byte": 13073172,
+          "first_difference_line": 22718,
+          "message": "candidate bytes differ from the pinned original",
+          "original_bytes": 23452783,
+          "original_sha256": "710e2353a27c1128cc22b6eb6cbfe151bfe9163cd309000c835adada8efc9e6a",
+          "pass": false,
+          "path": "06_SOURCE_SPECIFICITY_AND_FIXTURE_LEAKAGE.tsv"
+        },
+        "checks_failed": [
+          {
+            "check": "candidate_exact_bytes",
+            "message": "candidate bytes differ from the pinned original"
+          }
+        ],
+        "exit_code": 1,
+        "files_failed": [],
+        "stderr_tail": ""
+      }
+    },
+    {
+      "actual": "RED",
+      "expected": "RED",
+      "id": "altered_claimed_source_blob",
+      "note": "manifest claims a different real blob and hash for the first original",
+      "pass": true,
+      "summary": {
+        "candidate": null,
+        "checks_failed": [
+          {
+            "check": "all_files",
+            "message": "35/36 files pass"
+          }
+        ],
+        "exit_code": 1,
+        "files_failed": [
+          {
+            "errors": [
+              "sha256: manifest='0c93fc2a27e1204f1a605dce9695554cb47ee9dcc03b7e936c695f059e59ce18' independent='de4bbb15d44dca384b396fd5f77a4c730b8b51d4024d6c504c8f8c9ad1e4edb9'",
+              "manifest_bytes: manifest=7116 independent=9697",
+              "manifest_sha256: manifest='0c93fc2a27e1204f1a605dce9695554cb47ee9dcc03b7e936c695f059e59ce18' independent='de4bbb15d44dca384b396fd5f77a4c730b8b51d4024d6c504c8f8c9ad1e4edb9'",
+              "git_blob: manifest='a8a8248e5e8c25a6855a6ee9706e2709e57c694c' independent='da6f90c0adbea1a5d661b81e8533ad98b9076bc4'"
+            ],
+            "path": "00_RETURN.md"
+          }
+        ],
+        "stderr_tail": ""
+      }
+    },
+    {
+      "actual": "RED",
+      "expected": "RED",
+      "id": "misleading_summary_metadata",
+      "note": "summary totals altered while all chunks remain intact",
+      "pass": true,
+      "summary": {
+        "candidate": null,
+        "checks_failed": [
+          {
+            "check": "manifest_summary_recomputation",
+            "message": "manifest summary does not match recomputed values"
+          }
+        ],
+        "exit_code": 1,
+        "files_failed": [],
+        "stderr_tail": ""
+      }
+    },
+    {
+      "actual": "RED",
+      "expected": "RED",
+      "id": "candidate_omitted_line",
+      "note": "one middle line omitted from the candidate ('summary excludes a relevant line')",
+      "pass": true,
+      "summary": {
+        "candidate": {
+          "candidate": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/p53e_adversarial_puvadx7d/candidate_omitted_line.tsv",
+          "candidate_bytes": 23452276,
+          "candidate_sha256": "94cf530145d5f70a843bef7f97e6f2e88186e1e3e79a60f963ec04debd454081",
+          "first_difference_byte": 13072665,
+          "first_difference_line": 22717,
+          "message": "candidate bytes differ from the pinned original",
+          "original_bytes": 23452783,
+          "original_sha256": "710e2353a27c1128cc22b6eb6cbfe151bfe9163cd309000c835adada8efc9e6a",
+          "pass": false,
+          "path": "06_SOURCE_SPECIFICITY_AND_FIXTURE_LEAKAGE.tsv"
+        },
+        "checks_failed": [
+          {
+            "check": "candidate_exact_bytes",
+            "message": "candidate bytes differ from the pinned original"
+          }
+        ],
+        "exit_code": 1,
+        "files_failed": [],
+        "stderr_tail": ""
+      }
+    }
+  ]
+}

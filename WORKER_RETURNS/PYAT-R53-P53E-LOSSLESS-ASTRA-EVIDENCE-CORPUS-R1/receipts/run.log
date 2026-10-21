@@ -1,0 +1,110 @@
+P53E deterministic run start: 2026-10-21T04:06:01Z
+{
+ "head": "f6fd6cdfebe8f0d76a3aa0e2de150065f261709d",
+ "branch": "agent/rabochii-pyat-r53-p53e-u53f-corpus-browser-access-and-proof-r1",
+ "status_count": 11
+}
+S01_01_REPOSITORY_SCOPE: 523645 bytes -> 3 chunks (13352 lines)
+S02_02_ALL_PINNED_TREE_FILES: 1712461 bytes -> 9 chunks (7616 lines)
+S03_03_MATERIAL_DIFF_PART00: 23268989 bytes -> 119 chunks (50001 lines)
+S04_03_MATERIAL_DIFF_PART01: 14082081 bytes -> 72 chunks (29488 lines)
+S06_06B_DOCUMENT_REFERENCE_COUNTS: 340019 bytes -> 2 chunks (1399 lines)
+S05_06_SOURCE_SPECIFICITY: 23452783 bytes -> 120 chunks (45432 lines)
+S08_NESTED_01_REPOSITORY_SCOPE: 525229 bytes -> 3 chunks (13342 lines)
+S07_EVIDENCE_REF_INVENTORY: 468784 bytes -> 3 chunks (10653 lines)
+{
+ "originals": 36,
+ "sharded": 8,
+ "direct": 28,
+ "chunks": 331,
+ "bytes": 64562521,
+ "all_manifest_match": true,
+ "all_reconstruction": true,
+ "max_chunk_bytes": 196608
+}
+{
+ "pass": true,
+ "checks": {
+  "manifest_path_set": true,
+  "manifest_summary_recomputation": true,
+  "all_files": true,
+  "chunk_bound": true
+ },
+ "files": "36/36",
+ "chunks": 331,
+ "bytes": 64562521,
+ "max_chunk": 196608,
+ "candidate": null
+}
+{
+ "checks": {
+  "tree_ledger_equality_at_f148f9ba": true,
+  "tree_ledger_sizes": true,
+  "tree_census_counts": true,
+  "ref_snapshot_and_material_selection": true,
+  "diff_rows_79487": true,
+  "material_refs_contributing_rows": true,
+  "scan_hits_45431": true,
+  "graph_22_nodes_51_edges": true,
+  "unresolved_edges_9": true,
+  "timeline_19_rows": true,
+  "closed35_roster_identity_and_nulls": true,
+  "document_reference_counts_1398": true,
+  "current_remote_ref_snapshot": true,
+  "manifest_head_self_reference": false
+ },
+ "counts": {
+  "tree_rows": 7615,
+  "tree_bytes": 510792397,
+  "refs_snapshot": 2615,
+  "material_refs": 966,
+  "contributing_refs": 847,
+  "zero_diff_refs": 119,
+  "diff_rows": 79487,
+  "scan_hits": 45431,
+  "scan_unique_blobs": 1228,
+  "scan_blobs_missing_locally": 0,
+  "graph_nodes": 22,
+  "graph_edges": 51,
+  "unresolved_edges": 9,
+  "timeline_rows": 19,
+  "roster_rows": 35,
+  "registry_rows": 700,
+  "remote_refs_current": 3139,
+  "remote_added": 25,
+  "remote_removed": 0,
+  "remote_moved": 6,
+  "remote_pull_refs": 539,
+  "remote_head_refs": 1,
+  "remote_tag_refs": 0
+ },
+ "anomalies": 1
+}
+{
+ "lookup_rows": 1884,
+ "denominator_rows": 3204,
+ "readback_targets": 35
+}
+{
+ "clean": "GREEN",
+ "tests": {
+  "middle_shard_byte_flip": "RED",
+  "missing_shard": "RED",
+  "duplicate_shard_over_next": "RED",
+  "reordered_shards": "RED",
+  "candidate_duplicate_row": "RED",
+  "altered_claimed_source_blob": "RED",
+  "misleading_summary_metadata": "RED",
+  "candidate_omitted_line": "RED"
+ },
+ "final_clean": "GREEN",
+ "all_expected_red": true,
+ "real_shard_match": true
+}
+{
+ "bytes": 16424,
+ "head": "f6fd6cdfebe8f0d76a3aa0e2de150065f261709d",
+ "browser_status": "UNKNOWN_NOT_TESTED_IN_THIS_HARNESS",
+ "api_status": "NOT_YET_TESTED"
+}
+P53E deterministic run end: 2026-10-21T04:09:28Z
