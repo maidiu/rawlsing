@@ -16,3 +16,5 @@ Next bounded job: assemble final A-G director delta, implementation-ready R00-R0
 
 The UR program's A-G package and actual repair campaign are not complete. No implementation commissioned or authorized. J52/W52 USER_STOPPED; originalU/E_pre unissued/null; N11NOT_READY; N12HOLD. Separate explicit user unpause, competent source/science decisions and CI administration remain required. No new external worker launched by this ruling.
 No local worktree mutation or uncommitted work; guarded GitHub object publication only.
+
+Decision publication verified: bc5ca38b41259d493ddf4a163225a163b5d88764; five scoped files, one ahead/zero behind, all five byte-exact readbacks. M3/00_COMMISSION.md and M3/LAUNCH_PROMPT.md now provide the complete Browser assignment; its startup is the decision commit above. Launch status: NOT_LAUNCHED_BY_DIRECTOR. User may submit the pinned launch prompt to Browser. Current custody is12_DECISION_PUBLICATION_CUSTODY.json. Latest observed quota39%five-hour/51%weekly consumed; recheck on continuation.
