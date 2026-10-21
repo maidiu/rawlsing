@@ -1,0 +1,11 @@
+{
+  "schema": "UR_B_FROZEN_ORACLE@1",
+  "instrument_count": 3,
+  "operation_count": 30,
+  "instruments": {
+    "S1": {"format": "sav", "rows": 16, "operations": ["DIST_A_RAW", "DIST_B_RAW", "DIST_Y_RAW", "DIST_A_WEIGHTED", "DIST_B_WEIGHTED", "DIST_Y_WEIGHTED", "COND_Y_GIVEN_A1", "COND_Y_GIVEN_B1", "JOINT_A_B_Y", "ZERO_SUPPORT_Z"], "expected": {"A": [8, 8], "B": [8, 8], "Y": [8, 8], "G": [8, 8], "weight_sum": 24, "weighted_ABY": [12, 12], "A1_Y": [4, 4], "B1_Y": [4, 4], "joint_cells": 8, "Z": "ALL_MISSING", "U": "UNADMINISTERED_EXCLUDED"}},
+    "S2": {"format": "dta", "households": 8, "persons": 16, "operations": ["OUTCOME_WEIGHTED", "PITEM_P1_WEIGHTED", "PITEM_B_P1_WEIGHTED", "HMEAS_HOUSEHOLD", "OUTCOME_BY_PERSON", "OUTCOME_BY_HOUSEHOLD_HALF", "PITEM_ELIGIBILITY", "PITEM_FORM_CONTRAST", "SECOND_OCCURRENCE_IDENTITY", "WRONG_UNIT_REFUSED", "DUPLICATE_NAME_COLLAPSE_REFUSED", "PERSON_HOUSEHOLD_SEPARATION"], "expected": {"OUTCOME_WEIGHTED": [21, 27, 24], "OUTCOME_DENOMINATOR": 72, "PITEM_P1_WEIGHTED": [9, 12, 15], "PITEM_B_P1_WEIGHTED": [15, 9, 12], "PITEM_DENOMINATOR": 36, "HMEAS": [4, 4]}},
+    "S3": {"format": "sav", "persons": 12, "occasions": 2, "operations": ["REPEATED_SCORE", "SCORE_BY_OCCASION", "MR1_T0", "MR2_T1", "RANK_T0", "RANK_T1", "FORM", "FLATTEN_REFUSED"], "expected": {"REPEATED_SCORE": [8, 8, 8], "SCORE_T0": [4, 4, 4], "SCORE_T1": [4, 4, 4], "MR1_T0": [6, 6], "MR2_T1": [6, 6], "RANK_T0": [4, 4, 4], "RANK_T1": [4, 4, 4], "FORM": [6, 6], "FLATTEN": "MUST_NOT_BE_ACCEPTED"}}
+  },
+  "authority": {"original_source": false, "original_u_epre": false, "native_person": false, "production": false}
+}
