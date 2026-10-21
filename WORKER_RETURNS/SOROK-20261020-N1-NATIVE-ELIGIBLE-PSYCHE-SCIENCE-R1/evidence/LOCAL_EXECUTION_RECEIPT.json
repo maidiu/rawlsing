@@ -1,0 +1,46 @@
+{
+  "schema": "SOROK_N1_EXECUTION_CUSTODY@1",
+  "sealed_startup": "a413a3ed0cce3d364991ad3c3b48c0201375926c",
+  "branch": "agent/scientist-sorok-20261020-n1-native-eligible-development-first-rule-r1",
+  "source_neutral_module_git_blob": "03b7e092c87c7133313598ca024948ef030b70bb",
+  "source_neutral_test_git_blob": "bff019ef8ab01c9429c7c4b41096d305c8adc8d9",
+  "bp2_actual_ports_integration_test_git_blob": "c3aee4f5310bbfb4d674f0d031df5effda8b097d",
+  "verified_environment": {
+    "python": "3.13.5",
+    "pytest": "9.0.2",
+    "git": "available",
+    "surface": "isolated local container /mnt/data/n1_worker",
+    "private_full_git_checkout": false
+  },
+  "executed": {
+    "command": "python3 -m pytest -q test_n1_eligibility.py",
+    "test_count": 21,
+    "passed": 21,
+    "failed": 0,
+    "skipped": 0,
+    "duration_seconds": 0.04,
+    "repeat_final_pass": true,
+    "tested_claim": "source-neutral deterministic method classification and negative/unknown/contradictory cases only"
+  },
+  "not_run": [
+    {
+      "test": "tests/test_bp2_actual_ports.py",
+      "reason": "source vendor/bp2/bp2_joined package not staged in verified local Python runtime; exact source and import syntax documented and test committed"
+    },
+    {
+      "test": "BP2P4J full same-consumer C9→C12→A0/A2",
+      "reason": "not staged/rerun locally; prior author sourcefree return separately cited"
+    },
+    {
+      "test": "native RULE_A / RULE_T / ADP actor/encounter/event/E2 / original35 / Pyat N11/N12 / C11",
+      "reason": "current real source, scientific and permission issuers absent/ungranted"
+    }
+  ],
+  "native_actor_created": false,
+  "native_rule_issued": false,
+  "source_permission_granted": false,
+  "production_changed": false,
+  "original_surveys_read": false,
+  "limits": "TEST_ONLY source owner names and hashes are not original owner authentication, not human source method independence, and not proof of individual acquired practice.",
+  "final_commit_identity": "the verified final branch SHA after return publication; not pre-written into a self-hashing commit"
+}
