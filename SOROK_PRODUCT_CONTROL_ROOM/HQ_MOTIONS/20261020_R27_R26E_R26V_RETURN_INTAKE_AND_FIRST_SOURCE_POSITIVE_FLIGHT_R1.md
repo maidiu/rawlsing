@@ -1,0 +1,23 @@
+# Sorok HQ R27 — R26E/R26V first historical person-production integration and original-source positive path
+
+CONTROL parent dba95216d5627513ea36323f459cf97413b504d1. PRE-MAIN seen 20cc84eae582a681ee4315767734b45b0a55fe71, Sorok rev25, Pyat rev37 R53 J52/W52 user STOP. Scoped successor Sorok HQ only. No CAN/ADP/Pyat/production/C11/first-native-person authority.
+
+## Four-object return intake
+
+FINDING R26E: eb0a2b90eb1bfc1f1020cc854ed8ae1243deceb6, return 00 blob 42cde6e1cd7f62f90136888e9d191694471208de. AUTHOR 129/129 tests: BP2P4J 33, BP2 50, BP4 15, N1 21, real BP2 ports 2, R26E new 8. Repaired populated-episode C12 verifier in OWNED derivative by hashing episodes minus hash and post-hash episode_id; cold correct. Same A0/A2 seven+three faults; actual N1 method compile returns grant NONE, production registries EMPTY. Raw SQLite deletion possible; same-user witness/key compromise still possible.
+INTERPRETATION R26E: real executable sourcefree integrity repair, not original BP4 code repair or production independent protection. N1 science screen does not itself change a person, H0 remains live.
+ACTION R26E: ENGINEERING ACCEPT_SCOPED_AUTHOR_L1_FOR_NEW_COMPOSITION, SCIENCE TEST_ONLY_ACCEPT_SCOPED, AUTHORITY HOLD. Whole final product use must verify again after historical actor source changes.
+OWNERS R26E: next R27P integrated producer, original BP4 store owner for actual cutover, separate protected trust custodian, original CAN/ADP scientific owners.
+
+FINDING R26V: fd32e0b28349aa54a01d46a2116c7a401fde0a60, return 00 blob a372a2da3543396858d785c749611d054c34581a. AUTHOR 10/10 actor tests, new A/B historical sources, B independently refuses and A declines, original BP2/C9/E2 and BP4 A0/A2 consume changed histories; native ports 10/10 fail closed. But live builder globally patches bp2_joined.producer.build_two_actor_life and bp2p4.reunion.build_two_actor_life; only limited source cuts run, full seven new-actor edge matrix incomplete.
+INTERPRETATION R26V: meaningful first historical sourcefree actor-history software, not a scientifically warranted native developmental person; H0 may be true, role/occupation fixture not psyche. Global patch can leak across runs and undermines typed owner injection.
+ACTION R26V: ENGINEERING REVISE_FOR_NON_GLOBAL_ACTOR_SOURCE_INJECTION_AND_7_SAME_USER_PRODUCT_EDGE_CUTS. SCIENCE TEST_ONLY_ACCEPT_SCOPED. AUTHORITY HOLD.
+OWNERS R26V: R27P whole integrator, original ADP007/010/015/019 and CAN008/011/actor-action source issuers for native use.
+
+## R27 independent nonoverlapping campaigns
+R27P: whole qualified local DeepSeek V4.1-Flash MAX I2+ S2 engineering. Combine NEW R26V generated own+other history with R26E corrected populated C12/N1 real ports and actual BP2 C8/E1/CAN008 A / distinct CAN011 T + grant/committed C9/E2 into C10/C12 M6 A0/A2. Remove GLOBAL patch by explicit actor-producer dependency or correct typed adapter. New actor source fault matrix 7 SAME A0/A2 positive->RED->restored, original 129 +10 and negative/cold/fork executed. No native rights.
+R27S: independent Browser GPT-6 High I3 scientific/original native-source investigator. Locate first actually accepted actor A/other B/ADP010 real opportunity+ADP019 E1/independent performed E2 and concrete CAN008 RULE_A + separate CAN011 RULE_T and current rights/issuer. If lawful current original source-positive possible, physically witness it. If not, deliver exact missing owner/artifact/source edition/host/purpose and an executable fail-closed native input preflight with finite original science decision, NOT another PS0/N1 overview. No permission self-issuance. Pyat R53 STOP preserved.
+
+## Whole-machine status
+DONE: R26E 129 scoped author greens and R26V 10 scoped author greens; first material sourcefree actor-to-product possible. REMAINING: stable single new-history owner-injected real A0/A2 with repaired C12, first actual original source-actor and scientifically justified rule A/T/E2, independent C8 and C12 protected key and custody, Pyat separate original N11/N12, C11 native weld, C12 native person, A4/A5 human product. BLOCKERS: global mutable seam, 7 history faults, no issued original human evidence, KMS boundary and Pyat R53 hold. LARGEST MOVE R27P + R27S. FLIGHT issued exact commits only; check branch and local sessions, no auto-start. DELTA physical L1 advance, L2 native generated persons 0, C11 welds 0, A5 NOT_RUN.
+Model economy: R27P user-selected OpenCode or DeepSeek-Harness DeepSeek MAX, one qualified S2 local whole-task agent; R27S I3 Browser High GitHub and verified bounded source-neutral Python only. No autonomous harness/model/agent switching, account and quota UNKNOWN. No duplicate worker, no original respondent access without permission.
