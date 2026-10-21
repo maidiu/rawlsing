@@ -81,6 +81,18 @@ PY
 
 For a byte range: locate the chunk whose `byte_start <= offset < byte_end` in the manifest; for a row: use `row_start`/`row_end` in the manifest or `04_TOPIC_TO_SHARD_LOOKUP.tsv`.
 
+A dedicated check-only/affine script is also provided:
+
+```bash
+python3 $R/tools/reassemble.py --path 06_SOURCE_SPECIFICITY_AND_FIXTURE_LEAKAGE.tsv --json-out /tmp/p53e_one.json
+python3 $R/tools/reassemble.py --all --json-out /tmp/p53e_all.json
+# add --out /tmp/original.tsv to write the reconstructed bytes
+```
+
+`--all` verifies all 36 originals (8 from chunks, 28 direct from the pinned ref); the actual run returned **36/36 passed, 0 failed**.
+
+**Navigation-path distinction in `04`:** `FILE_MAP`/`TOPIC_CHUNK` `original_path` is the evidence container (e.g. `06_SOURCE_SPECIFICITY_AND_FIXTURE_LEAKAGE.tsv`); `TOPIC_FILE_TOP`/`TOPIC_SAMPLE`/`T7` `original_path` is the source-code path, with the container and physical row in `note`. File-top counts are occurrence counts, not unique rows. This lookup is navigation, not a complete per-source row universe; the complete bytes remain in the shards.
+
 ## Reproduce the whole corpus
 
 ```bash

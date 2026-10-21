@@ -1,7 +1,7 @@
 # PYAT R53 P53E — Astra minimum index (read this first)
 
 **Repository** `maidiu/rawlsing` (private). **Branch** `agent/rabochii-pyat-r53-p53e-u53f-corpus-browser-access-and-proof-r1`.  
-**This return head** `991625f3efb5f1f3e563c65197c6de10e7d0f880`. **Original U53F evidence** `fdc4d03537e649cd56c19a458ebeb3292298ff3f`.  
+**Corpus/readback head** `991625f3efb5f1f3e563c65197c6de10e7d0f880`. **Original U53F evidence** `fdc4d03537e649cd56c19a458ebeb3292298ff3f`.  
 **Corpus status** `36/36` U53F manifest files byte-verified; 
 331 lossless chunks; 64,562,521 bytes.  
 **Browser connector readback** `UNKNOWN_NOT_TESTED_IN_THIS_HARNESS`.  
@@ -122,4 +122,5 @@ PY
 - [`05_UNEXAMINED_REF_AND_SCOPE_DENOMINATOR.tsv`](https://github.com/maidiu/rawlsing/blob/agent/rabochii-pyat-r53-p53e-u53f-corpus-browser-access-and-proof-r1/WORKER_RETURNS/PYAT-R53-P53E-LOSSLESS-ASTRA-EVIDENCE-CORPUS-R1/05_UNEXAMINED_REF_AND_SCOPE_DENOMINATOR.tsv)
 - [`07_NEGATIVE_REASSEMBLY_RESULTS.json`](https://github.com/maidiu/rawlsing/blob/agent/rabochii-pyat-r53-p53e-u53f-corpus-browser-access-and-proof-r1/WORKER_RETURNS/PYAT-R53-P53E-LOSSLESS-ASTRA-EVIDENCE-CORPUS-R1/07_NEGATIVE_REASSEMBLY_RESULTS.json)
 - [`tools/verify_corpus.py`](https://github.com/maidiu/rawlsing/blob/agent/rabochii-pyat-r53-p53e-u53f-corpus-browser-access-and-proof-r1/WORKER_RETURNS/PYAT-R53-P53E-LOSSLESS-ASTRA-EVIDENCE-CORPUS-R1/tools/verify_corpus.py)
+- [`tools/reassemble.py`](https://github.com/maidiu/rawlsing/blob/agent/rabochii-pyat-r53-p53e-u53f-corpus-browser-access-and-proof-r1/WORKER_RETURNS/PYAT-R53-P53E-LOSSLESS-ASTRA-EVIDENCE-CORPUS-R1/tools/reassemble.py)
 

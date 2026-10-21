@@ -29,6 +29,7 @@ The ~1.7 MB tree ledger, ~37 MB diff shards, ~23 MB leakage ledger and the other
 | Every U53F manifest-declared file rechecked at `fdc4d…` | **PASS** 36/36; 64,562,521/64,562,521 bytes; 0 SHA/size mismatches | `01_ORIGINAL_MANIFEST_INDEPENDENT_RECHECK.json` |
 | Large originals sharded losslessly | **PASS** 8 originals → 331 chunks; 0 mid-row splits; max chunk 196,608 B | `02_LOSSLESS_ORDERED_SHARD_MANIFEST.json` |
 | Each sharded original reassembles to original bytes | **PASS** 8/8 byte-identical and SHA-identical | `receipts/verify_corpus.json` |
+| All 36 originals reconstruct from chunks/direct ref | **PASS** 36/36 via `tools/reassemble.py --all` | `receipts/reassemble_all.json` |
 | Rows and byte ranges conserved | **PASS** all chunk offsets/rows contiguous; no extra/missing chunk | `tools/verify_corpus.py` |
 | Tree ledger equality at `f148f9ba…` | **PASS** 7,615 paths; 0 missing/extra/mismatch; 510,792,397 bytes | `receipts/scope_challenge.json` |
 | U53F 966-ref selection independently recomputed | **PASS** exact set equality; 847 contribute rows; 119 zero-diff | `receipts/scope_challenge.json` |
@@ -104,4 +105,4 @@ This return is an **evidence-access and custody artifact only**. It does not ado
 
 `00_RETURN_AND_ASTRA_READ_FIRST.md`, `01_ORIGINAL_MANIFEST_INDEPENDENT_RECHECK.json`, `02_LOSSLESS_ORDERED_SHARD_MANIFEST.json`, `03_REPRODUCIBLE_SHARD_READBACK_AND_REASSEMBLY.md`, `04_TOPIC_TO_SHARD_LOOKUP.tsv`, `05_UNEXAMINED_REF_AND_SCOPE_DENOMINATOR.tsv`, `06_ASTRA_MINIMUM_INDEX.md`, `07_NEGATIVE_REASSEMBLY_RESULTS.json`, `tools/`, `shards/`, `receipts/`.
 
-**Execution log:** `receipts/run.log` — SHA-256 `0585f751d2148f09aec4cd53db1c58f52a338c7048df4ab1eecc3ef179ca75b0`.
+**Execution log:** `receipts/run.log` — SHA-256 `7a0d6d0ef862b40c7f65fd3ede7c6825485de5a819e89971abd5b7103f203cb2`.

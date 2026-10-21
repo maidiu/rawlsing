@@ -51,7 +51,7 @@ def main():
     lines = []
     lines.append("# PYAT R53 P53E — Astra minimum index (read this first)\n")
     lines.append(f"**Repository** `maidiu/rawlsing` (private). **Branch** `{BRANCH}`.  ")
-    lines.append(f"**This return head** `{head}`. **Original U53F evidence** `{C.SOURCE_REF}`.  ")
+    lines.append(f"**Corpus/readback head** `{head}`. **Original U53F evidence** `{C.SOURCE_REF}`.  ")
     lines.append(f"**Corpus status** `{corpus['summary']['original_files']}/{corpus['summary']['original_files']}` U53F manifest files byte-verified; ")
     lines.append(f"{corpus['summary']['chunk_count']} lossless chunks; {corpus['summary']['total_original_bytes']:,} bytes.  ")
     lines.append(f"**Browser connector readback** `{readback.get('browser_connector_status', 'UNKNOWN_NOT_TESTED_IN_THIS_HARNESS')}`.  ")
@@ -188,6 +188,7 @@ def main():
         "05_UNEXAMINED_REF_AND_SCOPE_DENOMINATOR.tsv",
         "07_NEGATIVE_REASSEMBLY_RESULTS.json",
         "tools/verify_corpus.py",
+        "tools/reassemble.py",
     ):
         lines.append(f"- [`{name}`]({url(C.P53E_RETURN + '/' + name)})")
     lines.append("")
