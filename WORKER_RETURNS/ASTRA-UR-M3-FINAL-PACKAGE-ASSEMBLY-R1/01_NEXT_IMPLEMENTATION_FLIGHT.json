@@ -1,0 +1,1098 @@
+{
+  "schema": "ASTRA_UR_M3_PROPOSED_IMPLEMENTATION_FLIGHT_V1",
+  "status": "PROPOSED_ONLY__NOT_SENT_NOT_GRANTED_NOT_LAUNCHED",
+  "governing_decision": {
+    "commit": "bc5ca38b41259d493ddf4a163225a163b5d88764",
+    "path": "WORKER_COMMISSIONS/ASTRA-UR-PROGRAM-SOURCEFREE-INVESTIGATIONS-R1/12_BOUNDED_REPAIR_ALLOCATION_DECISION.md",
+    "blob": "4208d989c8fe9a147ce5f2d6b638ce0eae58c549"
+  },
+  "inherited_program": {
+    "commit": "d7988b3d5d313902d883d2d8c244fd2526058410",
+    "path": "WORKER_RETURNS/PYAT-R53-U53A-ASTRA-UNIVERSAL-EXECUTION-COURT-R1/08_PRIORITY_ORDERED_MINIMAL_REPAIR_DAG.json",
+    "blob": "eb63744064aa72dd867416647fecd0e7c63274e2"
+  },
+  "node_count": 10,
+  "node_order": [
+    "R00",
+    "R01",
+    "R02",
+    "R03",
+    "R04",
+    "R05",
+    "R06",
+    "R07",
+    "R08",
+    "R09"
+  ],
+  "final_node_graph": {
+    "R00": [],
+    "R01": [
+      "R00"
+    ],
+    "R02": [
+      "R00"
+    ],
+    "R03": [
+      "R01",
+      "R02"
+    ],
+    "R04": [
+      "R03"
+    ],
+    "R05": [
+      "R03",
+      "R08"
+    ],
+    "R06": [
+      "R05"
+    ],
+    "R07": [
+      "R03",
+      "R04",
+      "R05",
+      "R06",
+      "R09"
+    ],
+    "R08": [
+      "R00"
+    ],
+    "R09": [
+      "R00"
+    ]
+  },
+  "exact_P0_cuts": {
+    "P0-W": [
+      "R01",
+      "R02",
+      "R03"
+    ],
+    "P0-E": [
+      "R08"
+    ],
+    "P0-B": [
+      "R04.BYTE_EARLY"
+    ],
+    "P0-G": [
+      "R00",
+      "R09"
+    ]
+  },
+  "shared_file_ownership": {
+    "path": "rawlsing_next/pre553_issued_workload.py",
+    "rule": "R03_OWNER_WRITES_FIRST_ONLY_AFTER_R03_ACCEPTED_R04_JOINED_WRITES; NEVER_CONCURRENT",
+    "R02_vs_R04_decoder": "R02 may not edit R04.byte decoder concurrently"
+  },
+  "phases": [
+    {
+      "phase": "AUTHORITY_AND_R00",
+      "deps": [],
+      "work": [
+        "R00 policy/oracle acceptance",
+        "distinct implementation grant from user/HQ",
+        "current adopted head and owner seals"
+      ],
+      "permission": "REQUIRED_NOT_GRANTED"
+    },
+    {
+      "phase": "PARALLEL_DISJOINT_EARLY",
+      "deps": [
+        "R00"
+      ],
+      "work": [
+        "R02.ROW_OCCASION",
+        "R04.BYTE_EARLY",
+        "R01.FRONTIER",
+        "R08.EXACT_K_AND_CONSUMER",
+        "R09.TRUSTED_RUNNER_AND_ADMIN"
+      ],
+      "permission": "IMPLEMENTATION_UNPAUSE_PLUS_INDEPENDENT_OWNERS"
+    },
+    {
+      "phase": "NATIVE_FANIN",
+      "deps": [
+        "R01",
+        "R02"
+      ],
+      "work": [
+        "R03.LOWER",
+        "apply R04.BYTE_EARLY to actual source path"
+      ],
+      "permission": "BINARY_CUSTODY_RELEASE_REQUIRED"
+    },
+    {
+      "phase": "JOINED_CUSTODY",
+      "deps": [
+        "R03",
+        "R04.BYTE_EARLY"
+      ],
+      "work": [
+        "R04.JOINED_POST_R03"
+      ],
+      "permission": "SEQUENTIAL_ISSUED_WORKLOAD_OWNERSHIP"
+    },
+    {
+      "phase": "LEARNED",
+      "deps": [
+        "R03",
+        "R08"
+      ],
+      "work": [
+        "R05.LEARNED_PRODUCT_AND_CANONICAL_READ"
+      ],
+      "release_gates": [
+        "R04.BYTE_EARLY",
+        "R04.JOINED_POST_R03 as applicable"
+      ],
+      "permission": "NO_NEW_FAMILY_SEMANTICS_WITHOUT_ISSUER"
+    },
+    {
+      "phase": "WORLD",
+      "deps": [
+        "R05"
+      ],
+      "work": [
+        "R06.SOURCE_SEPARATED_WORLD"
+      ],
+      "permission": "SEPARATE_FF_F6_F7_ISSUANCE"
+    },
+    {
+      "phase": "ORIGINAL_N11",
+      "deps": [
+        "R03",
+        "R04",
+        "R05",
+        "R06",
+        "R09",
+        "CURRENT_ORIGINAL_U_Epre"
+      ],
+      "work": [
+        "R07.AUTHORIZED_TRANCHE_N11"
+      ],
+      "permission": "ORIGINAL_RIGHTS_AND_INDEPENDENT_ADOPTION_REQUIRED"
+    }
+  ],
+  "initial_pilot_limits": {
+    "shape_floor": 3,
+    "family_floor": 2,
+    "formats": [
+      "SAV",
+      "DTA"
+    ],
+    "scientific_bounds_never_shrunk_for_budget": true,
+    "capacity": "MEASURE_OPERATION_COUNT_RUNTIME_MEMORY_CHECKPOINT_INTERVAL_BEFORE_SCALE"
+  },
+  "wave_accounting": {
+    "sources": 35,
+    "sav": 31,
+    "dta": 4,
+    "per_wave": {
+      "source": 30,
+      "empirical": 16,
+      "F": 8
+    },
+    "per_wave_total": 54,
+    "total_cells": 1890,
+    "global_additional": [
+      "F6",
+      "F7",
+      "F8"
+    ],
+    "original_U_item": null,
+    "original_U_unit": null,
+    "original_U_app": null,
+    "original_E_pre": null,
+    "new_original_cells_from_this_packet": 0
+  },
+  "hold_status": {
+    "J52": "USER_STOPPED",
+    "W52": "USER_STOPPED",
+    "N11": "NOT_READY",
+    "N12": "HOLD",
+    "N10E_in_URB": "NOT_REACHED",
+    "Z": "UNRESOLVED_DENOMINATOR16"
+  },
+  "nodes": [
+    {
+      "node": "R00",
+      "priority": "P0",
+      "proposed_only": true,
+      "implementation_state": "NOT_COMMISSIONED_NOT_GRANTED_NOT_RUN",
+      "inherited_title": "Protected obligation and promotion contract",
+      "decision": "REVISE_WITH_REUSE",
+      "functional_owner": "HQ acceptance gate owner",
+      "named_maintainer": "UNAPPOINTED__SEAL_BY_COMPETENT_AUTHORITY",
+      "packages": [
+        "R00.POLICY"
+      ],
+      "dependencies": {
+        "node_completion": [],
+        "work_packages": {
+          "R00.POLICY": []
+        }
+      },
+      "inherited_code_allowlist_from_U53A08": [
+        "CROSS_HQ_CONTROL_ROOM/universal_execution_policy/",
+        "CROSS_HQ_CONTROL_ROOM/universal_promotion_gate.py",
+        "tests/universal_execution_oracle/"
+      ],
+      "allowed_only_after_explicit_grant": true,
+      "required_scope_amendments": [
+        "A42 retained global-label ingress changes require a separately named A42 maintainer and explicit R00 scope amendment; no R00 implied A42 edit"
+      ],
+      "source_recovery_refs": [
+        {
+          "id": "oracle",
+          "commit": "a79dfcf85c65195c9b6d264fd366b50a71b4b5a2",
+          "path": "WORKER_RETURNS/PYAT-R53-U53A-ASTRA-UNIVERSAL-EXECUTION-COURT-R1/01_INDEPENDENT_UNIVERSAL_DEMAND_ORACLE.md",
+          "blob": "0aaf795c56026bc11cc52210375e22325ae3d4f3"
+        },
+        {
+          "id": "estate",
+          "commit": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+          "path": "PYAT_CONTROL_ROOM/WHOLE_MACHINE_COMPLETION_R1/ESTATE_35X_REQUIREMENTS_MATRIX.json",
+          "blob": "2ad9a001aefef4889d8ac48a2a81cd806dec50d6"
+        },
+        {
+          "id": "ci",
+          "commit": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+          "path": ".github/workflows/rabochii-governed-bounded-court.yml",
+          "blob": "3e045885c9593392836871cbe5f4a210bee8eb79"
+        },
+        {
+          "id": "Hcode",
+          "commit": "026a6ba3075817b7f0370619843ee7227967bc8e",
+          "path": "WORKER_RETURNS/PYAT-R53-B53H-HISTORICAL-RECURRENCE-AND-ACCEPTANCE-FAILURE-COURT-R1/09_trusted_oracle_prefilter.py",
+          "blob": "c7eea07999752a5101cacd8c3ede68fb24f061e7"
+        }
+      ],
+      "reference_base_not_launch": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+      "candidate_branch": "UNSEALED__FUTURE_COMPETENT_LAUNCH_REQUIRED",
+      "candidate_startup": "UNSEALED__FUTURE_COMPETENT_LAUNCH_REQUIRED",
+      "inputs": "Independent frozen U53A01 + ESTATE_35X matrix, claim grade rules, G0–G8 oracle",
+      "outputs": "Independent policy/expected-set root and claim-transition fail-closed evaluator",
+      "qualification": {
+        "native_positive": "known correct local/test-only claim retains grade; protected policies read from independent source",
+        "native_hostile": "two-q301/3 renamed fixtures; missing obligation; candidate self-authored oracle must fail",
+        "native_cold_replay": "sealed policy preimage reloaded independently and wrong digest fails",
+        "independent_reviewer": "Independent acceptance-policy verifier not candidate author",
+        "author_native_receipt_is_independent": false
+      },
+      "routing": {
+        "TASK_ID": "P0_POLICY",
+        "REQUIRED_INTELLIGENCE": "I2_POLICY_I3PLUS_IF_NOVEL_SCIENTIFIC_RULE",
+        "EXECUTION_REQUIREMENT": "S1_S2_POLICY_AUTHORING_PLUS_S3_NATIVE_GATE_TESTS",
+        "MODEL": "BROWSER_DESIGN__QUALIFIED_NATIVE_IMPLEMENTER_TESTS",
+        "REASONING_EFFORT": "REPORT_ACTUAL",
+        "WHY_THIS_MODEL": "Policy is independent of candidate engine; tests need native",
+        "CHEAPER_ALTERNATIVE": "Light documentary checking",
+        "AUTHORITY": "SEPARATE_R00_POLICY_ADOPTION_REQUIRED",
+        "STOP_CONDITION": "Independent oracle signed off; reject candidate-self-oracle",
+        "EXPECTED_TERMINAL_DELTA": "Protected frozen obligations"
+      },
+      "terminal_persona_contribution": "Authentic global-qualification eligibility without inflating measured N11",
+      "exact_grant_required": "BOUNDED_CODE_IMPLEMENTATION_AND_INDEPENDENT_ACCEPTANCE",
+      "stop_condition": "Stop exact unsupported semantic/permission edge; preserve complete remaining frontier; do not substitute easier fixture",
+      "critical_extra_holds": []
+    },
+    {
+      "node": "R01",
+      "priority": "P0",
+      "proposed_only": true,
+      "implementation_state": "NOT_COMMISSIONED_NOT_GRANTED_NOT_RUN",
+      "inherited_title": "G50 arbitrary-inventory repair",
+      "decision": "REVISE_WITH_REUSE",
+      "functional_owner": "G50 owner",
+      "named_maintainer": "UNAPPOINTED__SEAL_BY_COMPETENT_AUTHORITY",
+      "packages": [
+        "R01.FRONTIER"
+      ],
+      "dependencies": {
+        "node_completion": [
+          "R00"
+        ],
+        "work_packages": {
+          "R01.FRONTIER": [
+            "R00"
+          ]
+        }
+      },
+      "inherited_code_allowlist_from_U53A08": [
+        "rawlsing_next/universal_grammar/types.py",
+        "rawlsing_next/universal_grammar/enumerate.py",
+        "rawlsing_next/universal_grammar/native_map.py",
+        "rawlsing_next/tests/test_universal_grammar.py"
+      ],
+      "allowed_only_after_explicit_grant": true,
+      "required_scope_amendments": [],
+      "source_recovery_refs": [
+        {
+          "id": "G50enum",
+          "commit": "d379bafe36b8d89da27ea5bf33614d33aca7f2d2",
+          "path": "WORKER_RETURNS/PYAT-R50-G50-GOVERNED-OPERATION-GRAMMAR-R1/g50/enumerate.py",
+          "blob": "f610ef2dea39519a51a5b57fd35bbe245fb9dc9b"
+        },
+        {
+          "id": "G50map",
+          "commit": "d379bafe36b8d89da27ea5bf33614d33aca7f2d2",
+          "path": "WORKER_RETURNS/PYAT-R50-G50-GOVERNED-OPERATION-GRAMMAR-R1/g50/native_map.py",
+          "blob": "b7a0d3193667013b81dae9eeeef07d26da88fcc3"
+        },
+        {
+          "id": "G50native",
+          "commit": "d379bafe36b8d89da27ea5bf33614d33aca7f2d2",
+          "path": "WORKER_RETURNS/PYAT-R50-G50-GOVERNED-OPERATION-GRAMMAR-R1/g50/native_i05.py",
+          "blob": "96bf1778fddd108037be83a3bb5fdafc2259c602"
+        }
+      ],
+      "reference_base_not_launch": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+      "candidate_branch": "UNSEALED__FUTURE_COMPETENT_LAUNCH_REQUIRED",
+      "candidate_startup": "UNSEALED__FUTURE_COMPETENT_LAUNCH_REQUIRED",
+      "inputs": "R00 policy, governed inventory/occurrences/administration/roles, candidate G50 artifacts",
+      "outputs": "Complete finite symbolic candidate multiset, authorized dispositions, immutable expected frontier roots",
+      "qualification": {
+        "native_positive": "arbitrary names/non-ID-Y target; bijective labels preserve semantic results and no-drop identities",
+        "native_hostile": "duplicate keys, unadministered target, missing conditioners/ordered tuple, outcome-dependent truncation fail",
+        "native_cold_replay": "frozen enumeration partitions after resume exactly match independently committed expected set",
+        "independent_reviewer": "Independent grammar/semantic-policy qualification reviewer",
+        "author_native_receipt_is_independent": false
+      },
+      "routing": {
+        "TASK_ID": "P1",
+        "REQUIRED_INTELLIGENCE": "I2-I3_BOUNDED_IMPLEMENTATION",
+        "EXECUTION_REQUIREMENT": "S3_ISOLATED_NATIVE_PYTHON_GIT_AND_COLD_PROCESS",
+        "MODEL": "BROWSER_IF_FULL_NATIVE_QUALIFIED_ELSE_DEEPSEEK_V4_1_FLASH_MAX_USER_SELECTED",
+        "REASONING_EFFORT": "MAX_IF_DEEPSEEK; OTHERWISE_RECORD_SELECTED",
+        "WHY_THIS_MODEL": "Actual bounded repair and test execution, not high-level re-adjudication",
+        "CHEAPER_ALTERNATIVE": "Browser native if fully qualified",
+        "AUTHORITY": "UNSENT__EXPLICIT_USER_HQ_SCOPED_IMPLEMENTATION_GRANT_REQUIRED",
+        "STOP_CONDITION": "One exact owner-bounded implementation plus independent positive/hostile/cold evidence, else typed HOLD",
+        "EXPECTED_TERMINAL_DELTA": "Locally repaired prospective/source/evidence/world function with real consumer proof; not N11"
+      },
+      "terminal_persona_contribution": "Makes every authorized prospective F1–F8 operation countable",
+      "exact_grant_required": "BOUNDED_CODE_IMPLEMENTATION_AND_INDEPENDENT_ACCEPTANCE",
+      "stop_condition": "Stop exact unsupported semantic/permission edge; preserve complete remaining frontier; do not substitute easier fixture",
+      "critical_extra_holds": []
+    },
+    {
+      "node": "R02",
+      "priority": "P0",
+      "proposed_only": true,
+      "implementation_state": "NOT_COMMISSIONED_NOT_GRANTED_NOT_RUN",
+      "inherited_title": "B49 source-native projection and roles",
+      "decision": "REVISE_WITH_REUSE",
+      "functional_owner": "B49 owner",
+      "named_maintainer": "UNAPPOINTED__SEAL_BY_COMPETENT_AUTHORITY",
+      "packages": [
+        "R02.ROW_OCCASION"
+      ],
+      "dependencies": {
+        "node_completion": [
+          "R00"
+        ],
+        "work_packages": {
+          "R02.ROW_OCCASION": [
+            "R00"
+          ]
+        }
+      },
+      "inherited_code_allowlist_from_U53A08": [
+        "rawlsing_next/pre553_source_native_preimage_adapter.py",
+        "rawlsing_next/tests/test_universal_source_projection.py"
+      ],
+      "allowed_only_after_explicit_grant": true,
+      "required_scope_amendments": [
+        "If modifying rawlsing_next/pre553_source_backed_c11_facade.py, explicitly authorize C11 facade maintainer + amended write scope.",
+        "If modifying rawlsing_next/pre553_physical_c11_bridge.py, explicitly authorize physical bridge maintainer + amended write scope.",
+        "If modifying rawlsing_next/pre553_route_b_production.py, explicitly authorize Route-B maintainer + amended write scope.",
+        "Do not hardcode fixture floor/modulo identity as generic source law; do not claim callback existence equals qualified integration."
+      ],
+      "source_recovery_refs": [
+        {
+          "id": "B49rules",
+          "commit": "b5600da96358f8526471d635a1befa8daa3f098b",
+          "path": "rawlsing_next/pre553_inherited_source_rules.py",
+          "blob": "5f6efaceb18d92a362d065d12fdca4076d53fa16"
+        },
+        {
+          "id": "B49preimage",
+          "commit": "b5600da96358f8526471d635a1befa8daa3f098b",
+          "path": "rawlsing_next/pre553_source_native_preimage_adapter.py",
+          "blob": "e27c116b9a5654a8709aff1042322dc51d3296d3"
+        }
+      ],
+      "reference_base_not_launch": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+      "candidate_branch": "UNSEALED__FUTURE_COMPETENT_LAUNCH_REQUIRED",
+      "candidate_startup": "UNSEALED__FUTURE_COMPETENT_LAUNCH_REQUIRED",
+      "inputs": "R00, qualified source PID/OCC/risk/units/design, B49 adapter, validated C11 and physical bridge",
+      "outputs": "Governed row→respondent and row→occurrence/projected topology; C11 release actually used by Route-B",
+      "qualification": {
+        "native_positive": "12 people ×2 adjacent occasions → exactly24 SCORE, exact values and MR/rank/form; row permutation with governed mapping invariant",
+        "native_hostile": "wrong cycling map and dual occurrence must fail; equal values different occasion must not collapse; unlinked unit rejected",
+        "native_cold_replay": "cold decoder/projector replay exact row+occasion identity and same repeated-query result",
+        "independent_reviewer": "Independent C11/topology reviewer and real I03 consumer verifier",
+        "author_native_receipt_is_independent": false
+      },
+      "routing": {
+        "TASK_ID": "P1",
+        "REQUIRED_INTELLIGENCE": "I2-I3_BOUNDED_IMPLEMENTATION",
+        "EXECUTION_REQUIREMENT": "S3_ISOLATED_NATIVE_PYTHON_GIT_AND_COLD_PROCESS",
+        "MODEL": "BROWSER_IF_FULL_NATIVE_QUALIFIED_ELSE_DEEPSEEK_V4_1_FLASH_MAX_USER_SELECTED",
+        "REASONING_EFFORT": "MAX_IF_DEEPSEEK; OTHERWISE_RECORD_SELECTED",
+        "WHY_THIS_MODEL": "Actual bounded repair and test execution, not high-level re-adjudication",
+        "CHEAPER_ALTERNATIVE": "Browser native if fully qualified",
+        "AUTHORITY": "UNSENT__EXPLICIT_USER_HQ_SCOPED_IMPLEMENTATION_GRANT_REQUIRED",
+        "STOP_CONDITION": "One exact owner-bounded implementation plus independent positive/hostile/cold evidence, else typed HOLD",
+        "EXPECTED_TERMINAL_DELTA": "Locally repaired prospective/source/evidence/world function with real consumer proof; not N11"
+      },
+      "terminal_persona_contribution": "Permitted source-native repeated science reaches query facts without false respondent identities",
+      "exact_grant_required": "BOUNDED_CODE_IMPLEMENTATION_AND_INDEPENDENT_ACCEPTANCE",
+      "stop_condition": "Stop exact unsupported semantic/permission edge; preserve complete remaining frontier; do not substitute easier fixture",
+      "critical_extra_holds": []
+    },
+    {
+      "node": "R03",
+      "priority": "P0",
+      "proposed_only": true,
+      "implementation_state": "NOT_COMMISSIONED_NOT_GRANTED_NOT_RUN",
+      "inherited_title": "Total native lowering and execution",
+      "decision": "REVISE_WITH_REUSE",
+      "functional_owner": "native integration owner",
+      "named_maintainer": "UNAPPOINTED__SEAL_BY_COMPETENT_AUTHORITY",
+      "packages": [
+        "R03.LOWER"
+      ],
+      "dependencies": {
+        "node_completion": [
+          "R01",
+          "R02"
+        ],
+        "work_packages": {
+          "R03.LOWER": [
+            "R01",
+            "R02"
+          ]
+        }
+      },
+      "inherited_code_allowlist_from_U53A08": [
+        "rawlsing_next/pre553_native_workload_binding.py",
+        "rawlsing_next/pre553_universal_workload.py",
+        "rawlsing_next/tests/test_universal_workload.py",
+        "rawlsing_next/pre553_issued_workload.py"
+      ],
+      "allowed_only_after_explicit_grant": true,
+      "required_scope_amendments": [
+        "Shared rawlsing_next/pre553_issued_workload.py is R03-exclusive until accepted and then sequentially R04.joined-owned."
+      ],
+      "source_recovery_refs": [
+        {
+          "id": "B49bind",
+          "commit": "b5600da96358f8526471d635a1befa8daa3f098b",
+          "path": "rawlsing_next/pre553_native_workload_binding.py",
+          "blob": "bc88720c2bbcf52a43b799526c7dade094ccd9f8"
+        },
+        {
+          "id": "issued",
+          "commit": "9bbf9e0509411beb210331d28160324b005a784e",
+          "path": "WORKER_RETURNS/PYAT-R51-I51-B49-G50-JOINED-PRODUCER-R1/candidate/rawlsing_next/pre553_issued_workload.py",
+          "blob": "31e84f49d624f5524906e9e7839d2873106f8249"
+        },
+        {
+          "id": "routeb",
+          "commit": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+          "path": "rawlsing_next/pre553_route_b_production.py",
+          "blob": "2385cd327dced3c5b887b59085aa0d21b04d78c3"
+        },
+        {
+          "id": "exact",
+          "commit": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+          "path": "rawlsing_next/pre553_discovery_exact.py",
+          "blob": "905f24d114419dbdd93879ad2bee5b59dd2f23af"
+        }
+      ],
+      "reference_base_not_launch": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+      "candidate_branch": "UNSEALED__FUTURE_COMPETENT_LAUNCH_REQUIRED",
+      "candidate_startup": "UNSEALED__FUTURE_COMPETENT_LAUNCH_REQUIRED",
+      "inputs": "Accepted R01 frontier + R02 C11 projection and governed roles; retained U43/I51/B49/native I03/I05/Batch",
+      "outputs": "Complete independent operation→adequate query/discovery/Batch roles/typed refusal ledger and actual I03/I05 facts",
+      "qualification": {
+        "native_positive": "multi-target ordered joint/conditioner, null/zero/recursive/minority and semantic-direction coverage anti-join",
+        "native_hostile": "omitted joint and count-preserving swap, duplicate I05 evaluation, same-name occurrence collapse must fail",
+        "native_cold_replay": "cold Batch resume exact frontier/receipts with no duplicate scientific unit",
+        "independent_reviewer": "Independent native integration reviewer with expected-set and real consumer witness",
+        "author_native_receipt_is_independent": false
+      },
+      "routing": {
+        "TASK_ID": "P1",
+        "REQUIRED_INTELLIGENCE": "I2-I3_BOUNDED_IMPLEMENTATION",
+        "EXECUTION_REQUIREMENT": "S3_ISOLATED_NATIVE_PYTHON_GIT_AND_COLD_PROCESS",
+        "MODEL": "BROWSER_IF_FULL_NATIVE_QUALIFIED_ELSE_DEEPSEEK_V4_1_FLASH_MAX_USER_SELECTED",
+        "REASONING_EFFORT": "MAX_IF_DEEPSEEK; OTHERWISE_RECORD_SELECTED",
+        "WHY_THIS_MODEL": "Actual bounded repair and test execution, not high-level re-adjudication",
+        "CHEAPER_ALTERNATIVE": "Browser native if fully qualified",
+        "AUTHORITY": "UNSENT__EXPLICIT_USER_HQ_SCOPED_IMPLEMENTATION_GRANT_REQUIRED",
+        "STOP_CONDITION": "One exact owner-bounded implementation plus independent positive/hostile/cold evidence, else typed HOLD",
+        "EXPECTED_TERMINAL_DELTA": "Locally repaired prospective/source/evidence/world function with real consumer proof; not N11"
+      },
+      "terminal_persona_contribution": "Whole eligible prospective workload genuinely lowered to existing engines",
+      "exact_grant_required": "BOUNDED_CODE_IMPLEMENTATION_AND_INDEPENDENT_ACCEPTANCE",
+      "stop_condition": "Stop exact unsupported semantic/permission edge; preserve complete remaining frontier; do not substitute easier fixture",
+      "critical_extra_holds": []
+    },
+    {
+      "node": "R04",
+      "priority": "P0",
+      "proposed_only": true,
+      "implementation_state": "NOT_COMMISSIONED_NOT_GRANTED_NOT_RUN",
+      "inherited_title": "Source byte custody, restart and bounded scheduling",
+      "decision": "REVISE_WITH_REUSE",
+      "functional_owner": "Source snapshot/decoder custody owner with Batch owner",
+      "named_maintainer": "UNAPPOINTED__SEAL_BY_COMPETENT_AUTHORITY",
+      "packages": [
+        "R04.BYTE_EARLY",
+        "R04.JOINED_POST_R03"
+      ],
+      "dependencies": {
+        "node_completion": [
+          "R03"
+        ],
+        "work_packages": {
+          "R04.BYTE_EARLY": [
+            "R00",
+            "CURRENT_COMPATIBLE_DECODER"
+          ],
+          "R04.JOINED_POST_R03": [
+            "R03_ACCEPTED",
+            "R04.BYTE_EARLY_ACCEPTED"
+          ]
+        }
+      },
+      "inherited_code_allowlist_from_U53A08": [
+        "rawlsing_next/pre553_issued_workload.py",
+        "rawlsing_next/tests/test_universal_workload_custody.py",
+        "rawlsing_next/pre553_physical_decoder.py",
+        "rawlsing_next/tests/test_universal_source_byte_custody.py"
+      ],
+      "allowed_only_after_explicit_grant": true,
+      "required_scope_amendments": [
+        "R04.byte may edit only inherited rawlsing_next/pre553_physical_decoder.py and tests/test_universal_source_byte_custody.py after R00, before R03.",
+        "R04.joined may edit only inherited rawlsing_next/pre553_issued_workload.py and tests/test_universal_workload_custody.py after R03 and R04.byte.",
+        "No simultaneous edit of pre553_issued_workload.py by R03 and R04; no duplicate R02 decoder edit.",
+        "Whole R04 not accepted until joined proof; local byte P0 proof is not release of the entire R04 node."
+      ],
+      "source_recovery_refs": [
+        {
+          "id": "issued",
+          "commit": "9bbf9e0509411beb210331d28160324b005a784e",
+          "path": "WORKER_RETURNS/PYAT-R51-I51-B49-G50-JOINED-PRODUCER-R1/candidate/rawlsing_next/pre553_issued_workload.py",
+          "blob": "31e84f49d624f5524906e9e7839d2873106f8249"
+        },
+        {
+          "id": "batch",
+          "commit": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+          "path": "rawlsing_next/pre553_batch_runner.py",
+          "blob": "2d291600b9a10c56d9c6f6de7f7d619f6c52e829"
+        },
+        {
+          "id": "adaptive",
+          "commit": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+          "path": "rawlsing_next/pre553_discovery_adaptive.py",
+          "blob": "58e32770381fa8d901701d6a2c676f28261aa3e3"
+        },
+        {
+          "id": "cx_decoder",
+          "commit": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+          "path": "rawlsing_next/pre553_physical_decoder.py",
+          "blob": "d2a074a41fb556a1cd5928a5fe1421ef3672a4e5"
+        }
+      ],
+      "reference_base_not_launch": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+      "candidate_branch": "UNSEALED__FUTURE_COMPETENT_LAUNCH_REQUIRED",
+      "candidate_startup": "UNSEALED__FUTURE_COMPETENT_LAUNCH_REQUIRED",
+      "inputs": "R00 frozen custody policy + current decoder; joined package additionally accepted R03 exact operation/attempt identities",
+      "outputs": "Immutable verified consumed-byte identity locally; later joined partial resume/dedup/permission-currentness protocol",
+      "qualification": {
+        "native_positive": "source bytes used by decoder metadata+values+C11/I03 match original digest and real caller; joined partial pending cold restore equals uninterrupted",
+        "native_hostile": "replace path between hash/metadata/value/lazy read/cold restore; revoke grant; duplicate or omitted scientific attempt must fail",
+        "native_cold_replay": "restart mid-pending, replay exact operation/attempt receipts and refuse revoked or stale authorities",
+        "independent_reviewer": "Independent snapshot/decoder reviewer for BYTE; separate Batch/cold-replay reviewer for JOINED",
+        "author_native_receipt_is_independent": false
+      },
+      "routing": {
+        "TASK_ID": "P1",
+        "REQUIRED_INTELLIGENCE": "I2-I3_BOUNDED_IMPLEMENTATION",
+        "EXECUTION_REQUIREMENT": "S3_ISOLATED_NATIVE_PYTHON_GIT_AND_COLD_PROCESS",
+        "MODEL": "BROWSER_IF_FULL_NATIVE_QUALIFIED_ELSE_DEEPSEEK_V4_1_FLASH_MAX_USER_SELECTED",
+        "REASONING_EFFORT": "MAX_IF_DEEPSEEK; OTHERWISE_RECORD_SELECTED",
+        "WHY_THIS_MODEL": "Actual bounded repair and test execution, not high-level re-adjudication",
+        "CHEAPER_ALTERNATIVE": "Browser native if fully qualified",
+        "AUTHORITY": "UNSENT__EXPLICIT_USER_HQ_SCOPED_IMPLEMENTATION_GRANT_REQUIRED",
+        "STOP_CONDITION": "One exact owner-bounded implementation plus independent positive/hostile/cold evidence, else typed HOLD",
+        "EXPECTED_TERMINAL_DELTA": "Locally repaired prospective/source/evidence/world function with real consumer proof; not N11"
+      },
+      "terminal_persona_contribution": "Replayable non-equivocating empirical identity before released/persona product",
+      "exact_grant_required": "BOUNDED_CODE_IMPLEMENTATION_AND_INDEPENDENT_ACCEPTANCE",
+      "stop_condition": "Stop exact unsupported semantic/permission edge; preserve complete remaining frontier; do not substitute easier fixture",
+      "critical_extra_holds": []
+    },
+    {
+      "node": "R05",
+      "priority": "P0",
+      "proposed_only": true,
+      "implementation_state": "NOT_COMMISSIONED_NOT_GRANTED_NOT_RUN",
+      "inherited_title": "F1-F4 learned and actual empirical consumption",
+      "decision": "REVISE_WITH_REUSE",
+      "functional_owner": "analytical/learned owner",
+      "named_maintainer": "UNAPPOINTED__SEAL_BY_COMPETENT_AUTHORITY",
+      "packages": [
+        "R05.LEARNED_PRODUCT_AND_CANONICAL_READ"
+      ],
+      "dependencies": {
+        "node_completion": [
+          "R03",
+          "R08"
+        ],
+        "work_packages": {
+          "R05.LEARNED_PRODUCT_AND_CANONICAL_READ": [
+            "R03",
+            "R08"
+          ]
+        }
+      },
+      "inherited_code_allowlist_from_U53A08": [
+        "rawlsing_next/pre553_analytical_composition.py",
+        "rawlsing_next/pre553_learned_world_composition.py",
+        "rawlsing_next/pre553_empirical_possibility_provider.py",
+        "rawlsing_next/tests/test_universal_learned_consumer.py",
+        "rawlsing_next/pre553_universal_empirical_extension.py"
+      ],
+      "allowed_only_after_explicit_grant": true,
+      "required_scope_amendments": [
+        "Inherit optional rawlsing_next/pre553_universal_empirical_extension.py scope from U53A08; archived E41 extension is recovery input, not current installed module.",
+        "Any different validator/family rule or scientific estimand needs competent separate semantic issuance; no fallback evaluator."
+      ],
+      "source_recovery_refs": [
+        {
+          "id": "c1",
+          "commit": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+          "path": "rawlsing_next/pre553_analytical_composition.py",
+          "blob": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b"
+        },
+        {
+          "id": "i4",
+          "commit": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+          "path": "rawlsing_next/pre553_learned_world_composition.py",
+          "blob": "4a8e27a226a9c06606f5ba493d2cc7356d491a7b"
+        },
+        {
+          "id": "empirical",
+          "commit": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+          "path": "rawlsing_next/pre553_empirical_possibility_provider.py",
+          "blob": "23167aa25291fb148b1e3cf210ac33fe7769b783"
+        },
+        {
+          "id": "e41",
+          "commit": "6e123bafe749d6997c764ae117fb5e68e0139ed7",
+          "path": "WORKER_RETURNS/PYAT-R41-E41-FULL-EMPIRICAL-F1F4-COMPUTED-POSSIBILITY-R1/e41_provider_extension.py",
+          "blob": "e0511027c47a8af9426856b62151cbb4cdc929b1"
+        },
+        {
+          "id": "recursive",
+          "commit": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+          "path": "rawlsing_next/pre553_recursive_handoff.py",
+          "blob": "868f43bf9869af5501fd67c3de7a2703ba4cb1b4"
+        }
+      ],
+      "reference_base_not_launch": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+      "candidate_branch": "UNSEALED__FUTURE_COMPETENT_LAUNCH_REQUIRED",
+      "candidate_startup": "UNSEALED__FUTURE_COMPETENT_LAUNCH_REQUIRED",
+      "inputs": "R03 executed exact facts/discovery, R08 K/status; qualified sourcefront custody; current C1/recursive/M1/M2/B5/I4/N10E",
+      "outputs": "Distinct direct empirical, supported/valid-empty discovery, adjudicated learned, published/current/historical selection, actual N10E read receipts",
+      "qualification": {
+        "native_positive": "frozen prospectively issued supported joint/dependence form plus valid-empty/null control; exact M1/M2/B5 lifecycle and same-request N10E value-read where claimed",
+        "native_hostile": "renamed A1-vs-ALL empty as learned XOR, malformed lifecycle, stale release, unsupported/zero turned positive, disconnected dummy E04 fails",
+        "native_cold_replay": "cold reload selected version/current-as-of and same consumer values-read + sever/recover",
+        "independent_reviewer": "Independent learned-family scientific validator plus independent N10E end consumer reviewer",
+        "author_native_receipt_is_independent": false
+      },
+      "routing": {
+        "TASK_ID": "P1",
+        "REQUIRED_INTELLIGENCE": "I2-I3_BOUNDED_IMPLEMENTATION",
+        "EXECUTION_REQUIREMENT": "S3_ISOLATED_NATIVE_PYTHON_GIT_AND_COLD_PROCESS",
+        "MODEL": "BROWSER_IF_FULL_NATIVE_QUALIFIED_ELSE_DEEPSEEK_V4_1_FLASH_MAX_USER_SELECTED",
+        "REASONING_EFFORT": "MAX_IF_DEEPSEEK; OTHERWISE_RECORD_SELECTED",
+        "WHY_THIS_MODEL": "Actual bounded repair and test execution, not high-level re-adjudication",
+        "CHEAPER_ALTERNATIVE": "Browser native if fully qualified",
+        "AUTHORITY": "UNSENT__EXPLICIT_USER_HQ_SCOPED_IMPLEMENTATION_GRANT_REQUIRED",
+        "STOP_CONDITION": "One exact owner-bounded implementation plus independent positive/hostile/cold evidence, else typed HOLD",
+        "EXPECTED_TERMINAL_DELTA": "Locally repaired prospective/source/evidence/world function with real consumer proof; not N11"
+      },
+      "terminal_persona_contribution": "Actual learned empirical possibilities at declared grade, not just carrier-neutral receipt",
+      "exact_grant_required": "BOUNDED_CODE_IMPLEMENTATION_AND_INDEPENDENT_ACCEPTANCE",
+      "stop_condition": "Stop exact unsupported semantic/permission edge; preserve complete remaining frontier; do not substitute easier fixture",
+      "critical_extra_holds": [
+        "N10E_NOT_REACHED_IN_URB",
+        "I05_VALID_EMPTY_NOT_LEARNED_XOR"
+      ]
+    },
+    {
+      "node": "R06",
+      "priority": "P0",
+      "proposed_only": true,
+      "implementation_state": "NOT_COMMISSIONED_NOT_GRANTED_NOT_RUN",
+      "inherited_title": "World and progressive consumer integration",
+      "decision": "REVISE_WITH_REUSE",
+      "functional_owner": "N9/N10W integration owner",
+      "named_maintainer": "UNAPPOINTED__SEAL_BY_COMPETENT_AUTHORITY",
+      "packages": [
+        "R06.SOURCE_SEPARATED_WORLD"
+      ],
+      "dependencies": {
+        "node_completion": [
+          "R05"
+        ],
+        "work_packages": {
+          "R06.SOURCE_SEPARATED_WORLD": [
+            "R05"
+          ]
+        }
+      },
+      "inherited_code_allowlist_from_U53A08": [
+        "rawlsing_next/pre553_universal_world_binding.py",
+        "rawlsing_next/tests/test_universal_world_binding.py"
+      ],
+      "allowed_only_after_explicit_grant": true,
+      "required_scope_amendments": [
+        "Do not edit existing FF/temporal/F6 modules beyond R06 inherited allowlist without explicit maintainer and scientific scope amendment.",
+        "A relation/transport grant does not make the unlinked-unit query executable; prove actual indexed use or preserve UNAVAILABLE."
+      ],
+      "source_recovery_refs": [
+        {
+          "id": "w41",
+          "commit": "b0a68e4ff5d5e2ca62b080376fda6b5f5431a6c2",
+          "path": "WORKER_RETURNS/PYAT-R41-W41-OBJECTIVE-WORLD-R1/objective_world.py",
+          "blob": "79a91fc027d4be5428e19ef7a14cac0c19e96e4d"
+        },
+        {
+          "id": "f43",
+          "commit": "100ae7832ddc2c5edb7abdbd7e2cb94b5f9e8733",
+          "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/f43_product.py",
+          "blob": "aa7860ae62dc774e212d376f6daed81553cd7477"
+        },
+        {
+          "id": "ff",
+          "commit": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+          "path": "rawlsing_next/field_forge_conditional_support.py",
+          "blob": "a70decb20747d84cbcbe27d1280babc6de88ef33"
+        },
+        {
+          "id": "ff_ingress",
+          "commit": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+          "path": "rawlsing_next/m1_admitted_field_forge_relation_v554_ingress.py",
+          "blob": "0aeacd9e66c7e4340b36e1b622bb5c9bf2865fd5"
+        },
+        {
+          "id": "temporal",
+          "commit": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+          "path": "rawlsing_next/m1_temporal_v554_admission_dedup.py",
+          "blob": "e8bd6376720a2de132b384e7771d71d8d39cf261"
+        },
+        {
+          "id": "j42",
+          "commit": "f53cb0d2bce52640268c844c398bbd8007d28edc",
+          "path": "WORKER_RETURNS/PYAT-R42-J42-COMPLETE-E41-W41-P41-ACTUAL-JOINT-PREV3-CONSUMER-R1/runtime/j42_join.py",
+          "blob": "40f1e9f69fafff37f6bc44474b0189543d4997b3"
+        },
+        {
+          "id": "p41",
+          "commit": "f27d1101048638bba395143a48efb7ef00bfcda4",
+          "path": "WORKER_RETURNS/PYAT-R41-P41-GENERIC-PROGRESSIVE-N10E-N10W-SERVING-R1/runtime/p41_service.py",
+          "blob": "7d428106c79bcc56973f7c0044fc273a2b354554"
+        }
+      ],
+      "reference_base_not_launch": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+      "candidate_branch": "UNSEALED__FUTURE_COMPETENT_LAUNCH_REQUIRED",
+      "candidate_startup": "UNSEALED__FUTURE_COMPETENT_LAUNCH_REQUIRED",
+      "inputs": "R05 admitted products; separate FF F5, F6 relation/transport, F7 clock/comparability authorities; N9/N10W/E04 candidate capital",
+      "outputs": "Typed governed multi-field/source-indexed/world possibility; selected version/as-of and actual unchanged permissible consumer output",
+      "qualification": {
+        "native_positive": "two distinct authorized fields change same N9/N10W/E04 selected view; real temporal pair mutation changes permitted view",
+        "native_hostile": "unlinked household/person falsely pooled, contextual-as-structural, unobserved temporal pair, unauthorized transport must refuse",
+        "native_cold_replay": "valid current/as-of selection across replay and revocation; retained unavailable carried into F8",
+        "independent_reviewer": "Independent F5/FF, F6 and temporal scientific issuers plus unchanged-E04 end consumer reviewer",
+        "author_native_receipt_is_independent": false
+      },
+      "routing": {
+        "TASK_ID": "P1",
+        "REQUIRED_INTELLIGENCE": "I2-I3_BOUNDED_IMPLEMENTATION",
+        "EXECUTION_REQUIREMENT": "S3_ISOLATED_NATIVE_PYTHON_GIT_AND_COLD_PROCESS",
+        "MODEL": "BROWSER_IF_FULL_NATIVE_QUALIFIED_ELSE_DEEPSEEK_V4_1_FLASH_MAX_USER_SELECTED",
+        "REASONING_EFFORT": "MAX_IF_DEEPSEEK; OTHERWISE_RECORD_SELECTED",
+        "WHY_THIS_MODEL": "Actual bounded repair and test execution, not high-level re-adjudication",
+        "CHEAPER_ALTERNATIVE": "Browser native if fully qualified",
+        "AUTHORITY": "UNSENT__EXPLICIT_USER_HQ_SCOPED_IMPLEMENTATION_GRANT_REQUIRED",
+        "STOP_CONDITION": "One exact owner-bounded implementation plus independent positive/hostile/cold evidence, else typed HOLD",
+        "EXPECTED_TERMINAL_DELTA": "Locally repaired prospective/source/evidence/world function with real consumer proof; not N11"
+      },
+      "terminal_persona_contribution": "Lawful source-separated world constraints actually influence selected possibilities",
+      "exact_grant_required": "BOUNDED_CODE_IMPLEMENTATION_AND_INDEPENDENT_ACCEPTANCE",
+      "stop_condition": "Stop exact unsupported semantic/permission edge; preserve complete remaining frontier; do not substitute easier fixture",
+      "critical_extra_holds": [
+        "CROSS_UNIT_UNAVAILABLE_NO_POOLING"
+      ]
+    },
+    {
+      "node": "R07",
+      "priority": "P0",
+      "proposed_only": true,
+      "implementation_state": "NOT_COMMISSIONED_NOT_GRANTED_NOT_RUN",
+      "inherited_title": "Original tranche and N11 adjudication",
+      "decision": "REVISE_WITH_REUSE",
+      "functional_owner": "source/method owners then independent N11 assessor",
+      "named_maintainer": "UNAPPOINTED__SEAL_BY_COMPETENT_AUTHORITY",
+      "packages": [
+        "R07.AUTHORIZED_TRANCHE_N11"
+      ],
+      "dependencies": {
+        "node_completion": [
+          "R03",
+          "R04",
+          "R05",
+          "R06",
+          "R09"
+        ],
+        "work_packages": {
+          "R07.AUTHORIZED_TRANCHE_N11": [
+            "R03",
+            "R04",
+            "R05",
+            "R06",
+            "R09"
+          ]
+        }
+      },
+      "inherited_code_allowlist_from_U53A08": [
+        "WORKER_RETURNS/PROPOSED-ORIGINAL35-TRANCHE-QUALIFICATION/"
+      ],
+      "allowed_only_after_explicit_grant": true,
+      "required_scope_amendments": [
+        "Separate original access/measurement/rights grant mandatory before R07; current root is proposed return path, not permission."
+      ],
+      "source_recovery_refs": [
+        {
+          "id": "estate",
+          "commit": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+          "path": "PYAT_CONTROL_ROOM/WHOLE_MACHINE_COMPLETION_R1/ESTATE_35X_REQUIREMENTS_MATRIX.json",
+          "blob": "2ad9a001aefef4889d8ac48a2a81cd806dec50d6"
+        },
+        {
+          "id": "stop",
+          "commit": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+          "path": "PYAT_CONTROL_ROOM/R53_USER_STOP_J52_W52_AND_UNIVERSAL_MACHINE_FORENSIC_FREEZE_20261020.md",
+          "blob": "e2a04d6fc82bea95d0f88a14c7ebf38af6dd4f63"
+        }
+      ],
+      "reference_base_not_launch": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+      "candidate_branch": "UNSEALED__FUTURE_COMPETENT_LAUNCH_REQUIRED",
+      "candidate_startup": "UNSEALED__FUTURE_COMPETENT_LAUNCH_REQUIRED",
+      "inputs": "R03/R04/R05/R06/R09 independent passes; competent current source rights/method U/Epre grants for each tranche; frozen estate",
+      "outputs": "Per-wave 30+16+8 obligation evidence and global F6/F7/F8 witness, independent N11 acceptance disposition",
+      "qualification": {
+        "native_positive": "actual original provenance, permissions, native work, products, clocks and consumer reads against independent expected cells",
+        "native_hostile": "synthetic35 names or newly relabelled canary, UNKNOWN→NA, unissued U/Epre falsely claimed PASS must fail",
+        "native_cold_replay": "versioned evidence, permission revocation/currentness and resume recheck against original sourced custody",
+        "independent_reviewer": "Independent original-source assessor + competent methodological issuers (not implementation actor)",
+        "author_native_receipt_is_independent": false
+      },
+      "routing": {
+        "TASK_ID": "S1_ORIGINAL",
+        "REQUIRED_INTELLIGENCE": "COMPETENT_ORIGINAL_SOURCE_SCIENCE_AND_INDEPENDENT_N11",
+        "EXECUTION_REQUIREMENT": "AUTHORIZED_ORIGINAL_HOST_ONLY",
+        "MODEL": "COMPETENT_OWNER_SELECTED",
+        "REASONING_EFFORT": "UNKNOWN",
+        "WHY_THIS_MODEL": "Scientific source rights/estimands not model-created",
+        "CHEAPER_ALTERNATIVE": "NONE_FOR_ORIGINAL_AUTHORITY",
+        "AUTHORITY": "SEPARATE_ORIGINAL_SOURCE_METHODOLOGY_N11_GRANTS",
+        "STOP_CONDITION": "Typed HOLD for any unissued wave/class/permission",
+        "EXPECTED_TERMINAL_DELTA": "Independently judged original35 tranche, not N12"
+      },
+      "terminal_persona_contribution": "Real authorized original35 occupancy assessed independently; no automatic N12",
+      "exact_grant_required": "ORIGINAL_RIGHTS_METHOD_EXECUTION_AND_INDEPENDENT_N11",
+      "stop_condition": "Stop exact unsupported semantic/permission edge; preserve complete remaining frontier; do not substitute easier fixture",
+      "critical_extra_holds": [
+        "U_item_U_unit_U_app_E_pre_NULL",
+        "N11_NOT_READY",
+        "J52_W52_USER_STOPPED"
+      ]
+    },
+    {
+      "node": "R08",
+      "priority": "P0",
+      "proposed_only": true,
+      "implementation_state": "NOT_COMMISSIONED_NOT_GRANTED_NOT_RUN",
+      "inherited_title": "Evidence identity and status repair",
+      "decision": "REVISE_WITH_REUSE",
+      "functional_owner": "N10E/N10W adapter owner; independent consumer reviewer",
+      "named_maintainer": "UNAPPOINTED__SEAL_BY_COMPETENT_AUTHORITY",
+      "packages": [
+        "R08.EXACT_K_AND_CONSUMER"
+      ],
+      "dependencies": {
+        "node_completion": [
+          "R00"
+        ],
+        "work_packages": {
+          "R08.EXACT_K_AND_CONSUMER": [
+            "R00"
+          ]
+        }
+      },
+      "inherited_code_allowlist_from_U53A08": [
+        "rawlsing_next/pre553_universal_evidence_binding.py",
+        "rawlsing_next/tests/test_universal_evidence_binding.py"
+      ],
+      "allowed_only_after_explicit_grant": true,
+      "required_scope_amendments": [
+        "Any J42/P41/E04 or A42 file edit outside inherited binding modules requires explicit named module maintainer and scoped authorization; correct canonical evaluator need not be edited to print self-trace.",
+        "Do not reclassify Z UNRESOLVED/16 into ZERO_SUPPORT without scientific issuer."
+      ],
+      "source_recovery_refs": [
+        {
+          "id": "j42",
+          "commit": "f53cb0d2bce52640268c844c398bbd8007d28edc",
+          "path": "WORKER_RETURNS/PYAT-R42-J42-COMPLETE-E41-W41-P41-ACTUAL-JOINT-PREV3-CONSUMER-R1/runtime/j42_join.py",
+          "blob": "40f1e9f69fafff37f6bc44474b0189543d4997b3"
+        },
+        {
+          "id": "p41",
+          "commit": "f27d1101048638bba395143a48efb7ef00bfcda4",
+          "path": "WORKER_RETURNS/PYAT-R41-P41-GENERIC-PROGRESSIVE-N10E-N10W-SERVING-R1/runtime/p41_service.py",
+          "blob": "7d428106c79bcc56973f7c0044fc273a2b354554"
+        },
+        {
+          "id": "empirical",
+          "commit": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+          "path": "rawlsing_next/pre553_empirical_possibility_provider.py",
+          "blob": "23167aa25291fb148b1e3cf210ac33fe7769b783"
+        },
+        {
+          "id": "e04",
+          "commit": "f53cb0d2bce52640268c844c398bbd8007d28edc",
+          "path": "WORKER_RETURNS/PYAT-R42-J42-COMPLETE-E41-W41-P41-ACTUAL-JOINT-PREV3-CONSUMER-R1/vendor/p41/runtime/vendor/product/nonparent.py",
+          "blob": "2181b832d3c4376d4b9428e13f4354f273be8f32"
+        }
+      ],
+      "reference_base_not_launch": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+      "candidate_branch": "UNSEALED__FUTURE_COMPETENT_LAUNCH_REQUIRED",
+      "candidate_startup": "UNSEALED__FUTURE_COMPETENT_LAUNCH_REQUIRED",
+      "inputs": "R00 plus request K, source/candidate exact refs, canonical evaluator / E04 and provenance; J42/P41 counterexample",
+      "outputs": "K-matched authorized EvidenceResult and support summary with supervised real invocation or authenticated cached provenance",
+      "qualification": {
+        "native_positive": "identical exact request and conditions/values actually invoke/read intended producer or authenticated cached object; ZERO_SUPPORT and NULL statuses preserved",
+        "native_hostile": "wrong same-depth condition, source edition, risk, role, design or as-of; fake LIVE_TRACE label; missing state and stale cache fail same request",
+        "native_cold_replay": "cache invalidated upon source/currentness/permission change; restore correct same-K read only",
+        "independent_reviewer": "Independent empirical consumer/identity reviewer with R09 trusted supervisor witness",
+        "author_native_receipt_is_independent": false
+      },
+      "routing": {
+        "TASK_ID": "P1",
+        "REQUIRED_INTELLIGENCE": "I2-I3_BOUNDED_IMPLEMENTATION",
+        "EXECUTION_REQUIREMENT": "S3_ISOLATED_NATIVE_PYTHON_GIT_AND_COLD_PROCESS",
+        "MODEL": "BROWSER_IF_FULL_NATIVE_QUALIFIED_ELSE_DEEPSEEK_V4_1_FLASH_MAX_USER_SELECTED",
+        "REASONING_EFFORT": "MAX_IF_DEEPSEEK; OTHERWISE_RECORD_SELECTED",
+        "WHY_THIS_MODEL": "Actual bounded repair and test execution, not high-level re-adjudication",
+        "CHEAPER_ALTERNATIVE": "Browser native if fully qualified",
+        "AUTHORITY": "UNSENT__EXPLICIT_USER_HQ_SCOPED_IMPLEMENTATION_GRANT_REQUIRED",
+        "STOP_CONDITION": "One exact owner-bounded implementation plus independent positive/hostile/cold evidence, else typed HOLD",
+        "EXPECTED_TERMINAL_DELTA": "Locally repaired prospective/source/evidence/world function with real consumer proof; not N11"
+      },
+      "terminal_persona_contribution": "Exact request evidence changes same actual permitted F8 consumer",
+      "exact_grant_required": "BOUNDED_CODE_IMPLEMENTATION_AND_INDEPENDENT_ACCEPTANCE",
+      "stop_condition": "No source/science/consumer-use permission expansion",
+      "critical_extra_holds": [
+        "Z_UNRESOLVED_DENOMINATOR16",
+        "J42_LABEL_NOT_INVOCATION"
+      ]
+    },
+    {
+      "node": "R09",
+      "priority": "P0",
+      "proposed_only": true,
+      "implementation_state": "NOT_COMMISSIONED_NOT_GRANTED_NOT_RUN",
+      "inherited_title": "Authenticated native runner and required promotion checks",
+      "decision": "REVISE_WITH_REUSE",
+      "functional_owner": "Independent CI engineer plus repository administrator",
+      "named_maintainer": "UNAPPOINTED__SEAL_BY_COMPETENT_AUTHORITY",
+      "packages": [
+        "R09.TRUSTED_RUNNER_AND_ADMIN"
+      ],
+      "dependencies": {
+        "node_completion": [
+          "R00"
+        ],
+        "work_packages": {
+          "R09.TRUSTED_RUNNER_AND_ADMIN": [
+            "R00"
+          ]
+        }
+      },
+      "inherited_code_allowlist_from_U53A08": [
+        ".github/workflows/universal-execution-qualification.yml",
+        "CROSS_HQ_CONTROL_ROOM/universal_runner_verify.py",
+        "tests/universal_runner/"
+      ],
+      "allowed_only_after_explicit_grant": true,
+      "required_scope_amendments": [
+        "Admin-only protected CI/ruleset configuration requires separate admin grant; cannot infer deployment from tests, 403 or empty check listing.",
+        "A42 proof intake outside inherited R09 scope requires named A42 maintainer and explicit amendment."
+      ],
+      "source_recovery_refs": [
+        {
+          "id": "ci",
+          "commit": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+          "path": ".github/workflows/rabochii-governed-bounded-court.yml",
+          "blob": "3e045885c9593392836871cbe5f4a210bee8eb79"
+        },
+        {
+          "id": "Hcode",
+          "commit": "026a6ba3075817b7f0370619843ee7227967bc8e",
+          "path": "WORKER_RETURNS/PYAT-R53-B53H-HISTORICAL-RECURRENCE-AND-ACCEPTANCE-FAILURE-COURT-R1/09_trusted_oracle_prefilter.py",
+          "blob": "c7eea07999752a5101cacd8c3ede68fb24f061e7"
+        },
+        {
+          "id": "Htest10",
+          "commit": "026a6ba3075817b7f0370619843ee7227967bc8e",
+          "path": "WORKER_RETURNS/PYAT-R53-B53H-HISTORICAL-RECURRENCE-AND-ACCEPTANCE-FAILURE-COURT-R1/10_test_trusted_oracle_prefilter.py",
+          "blob": "df073d1a3ac01e3009699c14022d60f70dae790f"
+        }
+      ],
+      "reference_base_not_launch": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+      "candidate_branch": "UNSEALED__FUTURE_COMPETENT_LAUNCH_REQUIRED",
+      "candidate_startup": "UNSEALED__FUTURE_COMPETENT_LAUNCH_REQUIRED",
+      "inputs": "Independent R00 policy/expected set; exact candidate/policy/tree/workflow/runner refs; administrator rulesets",
+      "outputs": "Authentic supervisor events, verifier-produced exact-commit required status and protected merge gate",
+      "qualification": {
+        "native_positive": "real candidate imports and native facts supervised; authorized signed/fresh nonce status blocks merge when absent",
+        "native_hostile": "forged/stale/self-pin/wrong commit/replay/check spoof, changed runtime/checker, fake native boolean all refused",
+        "native_cold_replay": "fresh repeated CI run cannot reuse old nonce/run evidence; merge result recheck",
+        "independent_reviewer": "Independent trusted CI/proof engineer plus repository admin (separate from code author)",
+        "author_native_receipt_is_independent": false
+      },
+      "routing": {
+        "TASK_ID": "P1_CI",
+        "REQUIRED_INTELLIGENCE": "I2_CI_ENGINEERING_PLUS_INDEPENDENT_ADMIN",
+        "EXECUTION_REQUIREMENT": "S3_TRUSTED_RUNNER_PLUS_ADMIN_PROTECTED_CONFIG",
+        "MODEL": "BROWSER_SPEC__QUALIFIED_NATIVE_CI_IMPLEMENTER",
+        "REASONING_EFFORT": "REPORT_ACTUAL",
+        "WHY_THIS_MODEL": "Protected attestation cannot be fabricated by report",
+        "CHEAPER_ALTERNATIVE": "Light policy paperwork only",
+        "AUTHORITY": "SEPARATE_ADMIN_AND_IMPLEMENTATION_GRANTS",
+        "STOP_CONDITION": "DEPLOYMENT_HOLD if protected required checks unavailable",
+        "EXPECTED_TERMINAL_DELTA": "Authenticated exact commit promotion enforcement"
+      },
+      "terminal_persona_contribution": "Prevent false sourcefree/global promotion; authentic evidence boundary before N11",
+      "exact_grant_required": "BOUNDED_CODE_IMPLEMENTATION_AND_INDEPENDENT_ACCEPTANCE_PLUS_CI_ADMIN",
+      "stop_condition": "If required checks/protection unavailable return DEPLOYMENT_HOLD; never call a local prototype installed",
+      "critical_extra_holds": []
+    }
+  ]
+}

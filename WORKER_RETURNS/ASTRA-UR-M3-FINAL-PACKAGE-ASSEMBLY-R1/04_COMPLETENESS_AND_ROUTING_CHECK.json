@@ -1,0 +1,406 @@
+{
+  "schema": "ASTRA_UR_M3_COMPLETENESS_AND_ROUTING_V1",
+  "status": "STATIC_CROSSCHECK_ONLY__NO_NATIVE_QUALIFICATION",
+  "governing_ref": {
+    "commit": "bc5ca38b41259d493ddf4a163225a163b5d88764",
+    "path": "WORKER_COMMISSIONS/ASTRA-UR-PROGRAM-SOURCEFREE-INVESTIGATIONS-R1/12_BOUNDED_REPAIR_ALLOCATION_DECISION.md",
+    "blob": "4208d989c8fe9a147ce5f2d6b638ce0eae58c549"
+  },
+  "u53a_ref": {
+    "commit": "d7988b3d5d313902d883d2d8c244fd2526058410",
+    "path": "WORKER_RETURNS/PYAT-R53-U53A-ASTRA-UNIVERSAL-EXECUTION-COURT-R1/08_PRIORITY_ORDERED_MINIMAL_REPAIR_DAG.json",
+    "blob": "eb63744064aa72dd867416647fecd0e7c63274e2"
+  },
+  "expected_nodes": [
+    "R00",
+    "R01",
+    "R02",
+    "R03",
+    "R04",
+    "R05",
+    "R06",
+    "R07",
+    "R08",
+    "R09"
+  ],
+  "actual_node_count": 10,
+  "missing_nodes": [],
+  "dependency_check": {
+    "R04_early_byte": [
+      "R00",
+      "CURRENT_COMPATIBLE_DECODER"
+    ],
+    "R04_final_joined": [
+      "R03",
+      "R04.BYTE_EARLY"
+    ],
+    "retained_completion_graph": true,
+    "shared_issued_workload_sequential": [
+      "R03",
+      "R04.JOINED_POST_R03"
+    ],
+    "no_extra_node": true
+  },
+  "P0_cuts": {
+    "P0-W": [
+      "R01",
+      "R02",
+      "R03"
+    ],
+    "P0-E": [
+      "R08"
+    ],
+    "P0-B": [
+      "R04.BYTE_EARLY"
+    ],
+    "P0-G": [
+      "R00",
+      "R09"
+    ]
+  },
+  "original35": {
+    "waves": 35,
+    "formats": {
+      "SAV": 31,
+      "DTA": 4
+    },
+    "per_wave": {
+      "source": 30,
+      "empirical": 16,
+      "F": 8
+    },
+    "cells_per_wave": 54,
+    "total": 1890,
+    "total_arithmetic_pass": true,
+    "global_obligations": [
+      "F6_FIELD_AND_TRANSPORT",
+      "F7_OBSERVED_PAIR_COMPARABILITY",
+      "F8_ACTUAL_SELECTED_WORLD_AND_CONSUMER"
+    ],
+    "owner": "R07 plus competent D1–D9 science/rights issuers",
+    "U_item": null,
+    "U_unit": null,
+    "U_app": null,
+    "E_pre": null,
+    "null_state": "UNISSUED_NOT_NA",
+    "newly_original_measured_in_M3": 0
+  },
+  "functional_obligations": [
+    {
+      "axis": "F1",
+      "retained": "R01/R03/R05",
+      "meaning": "Prospective full authorized distributions, null/zero controls"
+    },
+    {
+      "axis": "F2",
+      "retained": "R01/R03/R05",
+      "meaning": "Conditioned value tuples, ordered directions"
+    },
+    {
+      "axis": "F3",
+      "retained": "R01/R03/R05",
+      "meaning": "Minority/fork/cloud/recursive branches"
+    },
+    {
+      "axis": "F4",
+      "retained": "R03/R05",
+      "meaning": "Joint and bounded discovery / learned lifecycle"
+    },
+    {
+      "axis": "F5",
+      "retained": "R06 + competent FF issuer",
+      "meaning": "Context != structural"
+    },
+    {
+      "axis": "F6",
+      "retained": "R06 + independent F6 relation/transport issuer + global R07",
+      "meaning": "Source separated; no unissued cross-survey joint"
+    },
+    {
+      "axis": "F7",
+      "retained": "R06 + independent temporal issuer + global R07",
+      "meaning": "Actual observed comparable pair/clocks, never generated pseudotime"
+    },
+    {
+      "axis": "F8",
+      "retained": "R05/R06/R08 + global R07",
+      "meaning": "Lawful actual selected-world/empirical consumer values-read"
+    }
+  ],
+  "quality_checks": {
+    "original_oracle_blob_unchanged": "0aaf795c56026bc11cc52210375e22325ae3d4f3",
+    "states_separate_axes": [
+      "eligibility",
+      "execution",
+      "result"
+    ],
+    "nonpromotions": [
+      "UNKNOWN_to_NA_FORBIDDEN",
+      "VALID_EMPTY_to_SUPPORTED_FORBIDDEN",
+      "UNRESOLVED_Z_to_ZERO_SUPPORT_FORBIDDEN",
+      "HISTORICAL_SOURCE_LABEL_to_CURRENT_GRANT_FORBIDDEN",
+      "STATIC_REACHABILITY_to_NATIVE_EXECUTION_FORBIDDEN",
+      "AUTHOR_NATIVE_TO_INDEPENDENT_PASS_FORBIDDEN",
+      "SELF_LABELED_J42_TRACE_to_REAL_CALL_FORBIDDEN",
+      "DIRECT_I03_XOR_to_LEARNED_XOR_FORBIDDEN",
+      "GIT_COMMIT_to_IMPLEMENTATION_LAUNCH_FORBIDDEN"
+    ],
+    "observed_Z": {
+      "state": "UNRESOLVED",
+      "denominator": 16,
+      "substantive_positive": false
+    },
+    "N10E_in_URB": "NOT_REACHED",
+    "S2_cross_unit": "UNAVAILABLE",
+    "URB_suite": "6_OF_6_AUTHOR_EXECUTION_ONLY",
+    "CI": "DESIGN_SPEC_ONLY; PROTECTION_403_UNKNOWN; REQUIRED_CHECK_NOT_VERIFIED",
+    "held": {
+      "J52": "USER_STOPPED",
+      "W52": "USER_STOPPED",
+      "N11": "NOT_READY",
+      "N12": "HOLD",
+      "original_rights": "UNISSUED",
+      "protected_admin": "SEPARATE_GRANT_REQUIRED"
+    },
+    "no_native_execution_in_M3": true,
+    "no_original_files_read": true,
+    "no_implementation_worker_launched": true,
+    "no_architecture_revised": true,
+    "sourcefree_only": true
+  },
+  "grade_register": [
+    {
+      "source": "U53A",
+      "commit": "d7988b3d5d313902d883d2d8c244fd2526058410",
+      "grade": "COMPLETED_BOUNDED_ARCHITECTURE_DESIGN; U53A14 AUTHOR_NATIVE_SCOPE; NOT PRODUCT_PASS"
+    },
+    {
+      "source": "UR-A",
+      "commit": "aaec50f421b73c5508e545bd99e937f21edec8ef",
+      "grade": "STATIC_AUTHENTICATED_RECOVERY/REACHABILITY; NO_NATIVE_RERUN"
+    },
+    {
+      "source": "UR-B",
+      "commit": "66d267cb017951fd41389aa075780838f64b6445",
+      "grade": "AUTHOR_NATIVE_SYNTHETIC_6_OF_6; NOT_INDEPENDENT_RERUN"
+    },
+    {
+      "source": "UR-S1",
+      "commit": "a9fc811ecc2a10e07b5bcc2d5da385369ee59554",
+      "grade": "STATIC_CODE/EVIDENCE_ATTRIBUTION; NO_NATIVE_RERUN"
+    },
+    {
+      "source": "M3",
+      "commit": null,
+      "grade": "DOCUMENTARY_ASSEMBLY; NO_ARCHITECTURAL_ADOPTION; NO_NEW_NATIVE_PROOF"
+    }
+  ],
+  "per_node_coverage": [
+    {
+      "node": "R00",
+      "owner": "HQ acceptance gate owner",
+      "packages": [
+        "R00.POLICY"
+      ],
+      "allowlist_items": 3,
+      "independent_reviewer": "Independent acceptance-policy verifier not candidate author",
+      "terminal": "Authentic global-qualification eligibility without inflating measured N11",
+      "grant": "BOUNDED_CODE_IMPLEMENTATION_AND_INDEPENDENT_ACCEPTANCE",
+      "status": "NOT_COMMISSIONED_NOT_GRANTED_NOT_RUN"
+    },
+    {
+      "node": "R01",
+      "owner": "G50 owner",
+      "packages": [
+        "R01.FRONTIER"
+      ],
+      "allowlist_items": 4,
+      "independent_reviewer": "Independent grammar/semantic-policy qualification reviewer",
+      "terminal": "Makes every authorized prospective F1–F8 operation countable",
+      "grant": "BOUNDED_CODE_IMPLEMENTATION_AND_INDEPENDENT_ACCEPTANCE",
+      "status": "NOT_COMMISSIONED_NOT_GRANTED_NOT_RUN"
+    },
+    {
+      "node": "R02",
+      "owner": "B49 owner",
+      "packages": [
+        "R02.ROW_OCCASION"
+      ],
+      "allowlist_items": 2,
+      "independent_reviewer": "Independent C11/topology reviewer and real I03 consumer verifier",
+      "terminal": "Permitted source-native repeated science reaches query facts without false respondent identities",
+      "grant": "BOUNDED_CODE_IMPLEMENTATION_AND_INDEPENDENT_ACCEPTANCE",
+      "status": "NOT_COMMISSIONED_NOT_GRANTED_NOT_RUN"
+    },
+    {
+      "node": "R03",
+      "owner": "native integration owner",
+      "packages": [
+        "R03.LOWER"
+      ],
+      "allowlist_items": 4,
+      "independent_reviewer": "Independent native integration reviewer with expected-set and real consumer witness",
+      "terminal": "Whole eligible prospective workload genuinely lowered to existing engines",
+      "grant": "BOUNDED_CODE_IMPLEMENTATION_AND_INDEPENDENT_ACCEPTANCE",
+      "status": "NOT_COMMISSIONED_NOT_GRANTED_NOT_RUN"
+    },
+    {
+      "node": "R04",
+      "owner": "Source snapshot/decoder custody owner with Batch owner",
+      "packages": [
+        "R04.BYTE_EARLY",
+        "R04.JOINED_POST_R03"
+      ],
+      "allowlist_items": 4,
+      "independent_reviewer": "Independent snapshot/decoder reviewer for BYTE; separate Batch/cold-replay reviewer for JOINED",
+      "terminal": "Replayable non-equivocating empirical identity before released/persona product",
+      "grant": "BOUNDED_CODE_IMPLEMENTATION_AND_INDEPENDENT_ACCEPTANCE",
+      "status": "NOT_COMMISSIONED_NOT_GRANTED_NOT_RUN"
+    },
+    {
+      "node": "R05",
+      "owner": "analytical/learned owner",
+      "packages": [
+        "R05.LEARNED_PRODUCT_AND_CANONICAL_READ"
+      ],
+      "allowlist_items": 5,
+      "independent_reviewer": "Independent learned-family scientific validator plus independent N10E end consumer reviewer",
+      "terminal": "Actual learned empirical possibilities at declared grade, not just carrier-neutral receipt",
+      "grant": "BOUNDED_CODE_IMPLEMENTATION_AND_INDEPENDENT_ACCEPTANCE",
+      "status": "NOT_COMMISSIONED_NOT_GRANTED_NOT_RUN"
+    },
+    {
+      "node": "R06",
+      "owner": "N9/N10W integration owner",
+      "packages": [
+        "R06.SOURCE_SEPARATED_WORLD"
+      ],
+      "allowlist_items": 2,
+      "independent_reviewer": "Independent F5/FF, F6 and temporal scientific issuers plus unchanged-E04 end consumer reviewer",
+      "terminal": "Lawful source-separated world constraints actually influence selected possibilities",
+      "grant": "BOUNDED_CODE_IMPLEMENTATION_AND_INDEPENDENT_ACCEPTANCE",
+      "status": "NOT_COMMISSIONED_NOT_GRANTED_NOT_RUN"
+    },
+    {
+      "node": "R07",
+      "owner": "source/method owners then independent N11 assessor",
+      "packages": [
+        "R07.AUTHORIZED_TRANCHE_N11"
+      ],
+      "allowlist_items": 1,
+      "independent_reviewer": "Independent original-source assessor + competent methodological issuers (not implementation actor)",
+      "terminal": "Real authorized original35 occupancy assessed independently; no automatic N12",
+      "grant": "ORIGINAL_RIGHTS_METHOD_EXECUTION_AND_INDEPENDENT_N11",
+      "status": "NOT_COMMISSIONED_NOT_GRANTED_NOT_RUN"
+    },
+    {
+      "node": "R08",
+      "owner": "N10E/N10W adapter owner; independent consumer reviewer",
+      "packages": [
+        "R08.EXACT_K_AND_CONSUMER"
+      ],
+      "allowlist_items": 2,
+      "independent_reviewer": "Independent empirical consumer/identity reviewer with R09 trusted supervisor witness",
+      "terminal": "Exact request evidence changes same actual permitted F8 consumer",
+      "grant": "BOUNDED_CODE_IMPLEMENTATION_AND_INDEPENDENT_ACCEPTANCE",
+      "status": "NOT_COMMISSIONED_NOT_GRANTED_NOT_RUN"
+    },
+    {
+      "node": "R09",
+      "owner": "Independent CI engineer plus repository administrator",
+      "packages": [
+        "R09.TRUSTED_RUNNER_AND_ADMIN"
+      ],
+      "allowlist_items": 3,
+      "independent_reviewer": "Independent trusted CI/proof engineer plus repository admin (separate from code author)",
+      "terminal": "Prevent false sourcefree/global promotion; authentic evidence boundary before N11",
+      "grant": "BOUNDED_CODE_IMPLEMENTATION_AND_INDEPENDENT_ACCEPTANCE_PLUS_CI_ADMIN",
+      "status": "NOT_COMMISSIONED_NOT_GRANTED_NOT_RUN"
+    }
+  ],
+  "routing_phases": [
+    {
+      "TASK_ID": "M3_DOCUMENTARY",
+      "REQUIRED_INTELLIGENCE": "I1_I2",
+      "EXECUTION_REQUIREMENT": "S1_S2_AUTHENTICATED_GITHUB_TEXT",
+      "MODEL": "USER_SELECTED_BROWSER_GPT6",
+      "REASONING_EFFORT": "UNKNOWN",
+      "WHY_THIS_MODEL": "Settled decision compilation",
+      "CHEAPER_ALTERNATIVE": "6.1 Light for mechanical checks",
+      "AUTHORITY": "DIRECT_USER_SOURCEFREE_DOCUMENT_ASSEMBLY_ONLY",
+      "STOP_CONDITION": "Seven-file scoped package + exact remote SHA/diff",
+      "EXPECTED_TERMINAL_DELTA": "Implementation-ready proposal, no code"
+    },
+    {
+      "TASK_ID": "R00_AND_GATE",
+      "REQUIRED_INTELLIGENCE": "I2_POLICY; I3PLUS_ONLY_IF_NEW_AUTHORITY_FORK",
+      "EXECUTION_REQUIREMENT": "S1_S2_DESIGN_S3_NATIVE",
+      "MODEL": "BROWSER_DESIGN_PLUS_QUALIFIED_NATIVE_WORKER",
+      "REASONING_EFFORT": "UNKNOWN",
+      "WHY_THIS_MODEL": "Independent policy then actual tests",
+      "CHEAPER_ALTERNATIVE": "Light for documentation",
+      "AUTHORITY": "NOT_GRANTED_INDEPENDENT_POLICY_OWNER",
+      "STOP_CONDITION": "Oracle freeze and hostiles green independent of candidate",
+      "EXPECTED_TERMINAL_DELTA": "Trusted expectation law"
+    },
+    {
+      "TASK_ID": "R01_R02_R04BYTE_R08",
+      "REQUIRED_INTELLIGENCE": "I2_I3_BOUNDED_ENGINEERING",
+      "EXECUTION_REQUIREMENT": "S3_ISOLATED_NATIVE",
+      "MODEL": "BROWSER_IF_QUALIFIED_ELSE_DEEPSEEK_V4_1_FLASH_MAX",
+      "REASONING_EFFORT": "MAX_IF_DEEPSEEK",
+      "WHY_THIS_MODEL": "Real patch/test work",
+      "CHEAPER_ALTERNATIVE": "Browser qualified native",
+      "AUTHORITY": "EXPLICIT_USER_HQ_IMPLEMENTATION_UNPAUSE_REQUIRED",
+      "STOP_CONDITION": "Falsifiable source/identity/byte repair or typed HOLD",
+      "EXPECTED_TERMINAL_DELTA": "Sourcefront actual correctness"
+    },
+    {
+      "TASK_ID": "R03_R04JOINED_R05_R06",
+      "REQUIRED_INTELLIGENCE": "I2_I3_NATIVE_PLUS_I3PLUS_ONLY_MATERIAL_FORK",
+      "EXECUTION_REQUIREMENT": "S3_NATIVE_WITH_ACTUAL_CONSUMER_AND_COLD",
+      "MODEL": "QUALIFIED_DEEPSEEK_V4_1_FLASH_MAX_UNLESS_BROWSER_FULLY_QUALIFIED",
+      "REASONING_EFFORT": "MAX_IF_DEEPSEEK",
+      "WHY_THIS_MODEL": "Bounded native integration",
+      "CHEAPER_ALTERNATIVE": "Browser when full native qualified",
+      "AUTHORITY": "SEPARATE_SCOPED_IMPLEMENTATION_AND_SEMANTIC_GRANTS",
+      "STOP_CONDITION": "Actual consumer/sourcefree release tests or exact owner HOLD",
+      "EXPECTED_TERMINAL_DELTA": "Qualified learned/world composition"
+    },
+    {
+      "TASK_ID": "R09_CI_ADMIN",
+      "REQUIRED_INTELLIGENCE": "I2_TRUSTED_CI_AND_ADMIN",
+      "EXECUTION_REQUIREMENT": "S3_PROTECTED_RUNNER_ADMIN",
+      "MODEL": "BROWSER_SPEC_QUALIFIED_NATIVE_ENGINEER",
+      "REASONING_EFFORT": "REPORT_SELECTED",
+      "WHY_THIS_MODEL": "Actual protected enforcement needs admin host",
+      "CHEAPER_ALTERNATIVE": "Light policy writeup not qualification",
+      "AUTHORITY": "SEPARATE_ADMIN_GRANT_REQUIRED",
+      "STOP_CONDITION": "Required exact-commit check verified else DEPLOYMENT_HOLD",
+      "EXPECTED_TERMINAL_DELTA": "Authentic promotion control"
+    },
+    {
+      "TASK_ID": "R07_ORIGINAL35",
+      "REQUIRED_INTELLIGENCE": "COMPETENT_ORIGINAL_SCIENCE_AND_INDEPENDENT_N11",
+      "EXECUTION_REQUIREMENT": "AUTHORIZED_ORIGINAL_HOST",
+      "MODEL": "COMPETENT_ISSUER_SELECTED",
+      "REASONING_EFFORT": "UNKNOWN",
+      "WHY_THIS_MODEL": "Original rights/meaning cannot be supplied by model",
+      "CHEAPER_ALTERNATIVE": "NONE_FOR_ISSUANCE",
+      "AUTHORITY": "SOURCE_RIGHTS_METHOD_N11_GRANTS_NOT_GRANTED",
+      "STOP_CONDITION": "Actual all35 class/global proof or typed HOLD",
+      "EXPECTED_TERMINAL_DELTA": "Actual independently assessed original N11"
+    }
+  ],
+  "routing_rules": [
+    "BROWSER_FIRST_IF_ENTIRE_TASK_FITS",
+    "DEEPSEEK_V4_1_FLASH_MAX_IN_QUALIFIED_NATIVE_FOR_CODE_AFTER_AUTH",
+    "SOL_HIGH_ONLY_IF_SPECIFIC_DEMONSTRATED_CAPABILITY_NEED",
+    "ASTRA_ONLY_FOR_EXACT_NEW_CONSEQUENTIAL_ARCHITECTURAL_FORK_NOT_PRESENT_NOW",
+    "NO_SILENT_PROVIDER_MODEL_HARNESS_SWITCH"
+  ],
+  "input_conflicts": [],
+  "clerical_resolution": "11/07 pending-Astra wording is historical, Director12 explicit ruling controls. U53A08 inherited R03→R04 node completion retained; Director12 permits early R04.byte local work. U53A11 narrower R03/R05 scope superseded by exact U53A08 final lists; no implied additions. UR-B original ORACLE all-eight-two-each text is wrong under fixture and UR-S1; historical file unchanged and corrected pre-eval independent test oracle required.",
+  "current_architecture_blockers": [],
+  "validity_limit": "No native acceptance, deployment proof, original scientific issuance, global absence census, or new build authorization"
+}

@@ -1,0 +1,36 @@
+# UNSENT authority request — exact separations and terminal owner decisions
+
+**Status: PROPOSED_GRANT_TEXT__UNSENT__NOT_GRANTED.** Do not construe publication/branch as user/HQ assent. R54 `e2ca4bf898f62653d7c1dc15f310cee2afdd62ee` and checkpoint `5335547307c868b1edb8cae273c7a4e8a0a4a58d` preserve J52/W52 `USER_STOPPED`, no implementation adoption, original U/E_pre null, N11 NOT_READY and N12 HOLD. Director12 `bc5ca38b41259d493ddf4a163225a163b5d88764` has already decided *architecture*, not given code authority.
+
+## Proposed distinct bounded user/HQ implementation grant (NOT ISSUED)
+
+> Authorize **only** the specific source-free R00/R01/R02/R03/R04.byte/R04.joined/R05/R06/R08/R09 implementation packets listed in M3 `01_NEXT_IMPLEMENTATION_FLIGHT.json`, **after** competent Pyat HQ seals current adopted code SHA, exact worker branch/startup, named accountable functional maintainer, sole code write scope (plus explicitly approved amendments), frozen independent oracle/policy, real isolated native host/tooling, positive/hostile/cold acceptance and an independent reviewer. Authorize disjoint R02 and R04.byte as first repairs under R00, permit R01/R08/R09 in parallel, require R01+R02→R03, R03→R04.joined and sequential ownership of `pre553_issued_workload.py`. Scope is TEST_ONLY native code/tests, not original respondent access or scientific source/estimand issuance. All unaccepted outputs remain candidate. No automatic dispatch, modification of protected CI controls, production promotion, J52/W52 restart, N11 or N12. Any additional file or conflicting ownership requires a specific amendment before edit.
+
+**Grant status:** UNSENT. **Future code branch/startup:** UNSEALED. **Named maintainers:** UNAPPOINTED. **Current adopted implementation base:** MUST_BE_SEALED_BY_HQ. Historical `f148f9ba34deb0ae2ad3983fe94bbcef8f004b03` is merely a reference recovery cut. **Model/harness:** chosen by user per task after actual qualification, no silent switch. **Use of this draft:** informative only, not a user signature.
+
+## Authority is not fungible: owner-by-owner
+
+| Owner | Separate grant or decision needed | Immediate useful terminal delta when genuinely completed | Present HOLD |
+|---|---|---|---|
+| User + Pyat HQ adoption authority | Explicit source-free code unpause; resolve J52/W52 scope independently; freeze exact branch/current adopted code; appoint maintainers and reviewers; authorize individual amended paths | First R02 true occasion and R04 consumed-byte repairs, credible local release gates | J52/W52 USER_STOPPED; implementation NOT_GRANTED |
+| R00 independent policy owner | Independent oracle/estate/claim-grade and prospective expected-set authority before any candidate runs | No self-promoted local/global/N11 statements | Gate uninstalled; policy acceptance pending |
+| R01 grammar + instrument semantic issuer | Legitimate roles, direction, finite K/J/D/administration and total issued opportunity accounting | Full prospective operations beyond hand-selected fixtures | Original grammar U/E_pre null; source-specific policy held |
+| R02 C11/adapter and source unit/meaning owners | Select existing bridge integration or facade extension, formally authorize each added facade/bridge/RouteB file | Correct 12×2 person-occasion native event semantics | Source-specific units/risk/design not issued |
+| R03 actual engine integrator | Compatible restoration of B49/G50/U43 source-neutral lowering and current compiled native path; exact allowlist | Every eligible supported operation has actual native role/fact and no-drop lineage | Native universal coverage not proven |
+| R04 snapshot/decoder and joined Batch owners | Independent consumed-byte control, then partial/pending replay/dedup/current permission; sequential shared-file owner | P0 identity custody, then joined replay | Byte RED unpatched; whole-R04 requires R03 |
+| R05 analytical/product/currentness + family-rule issuer | Valid issued supported discovery, product adjudication/M1/M2/B5 provenance and N10E actual consumer (or direct supported empirical path separately) | Real eligible learned possibilities, not empty envelope | In UR-B only valid_empty; N10E NOT_REACHED |
+| R06 FF/F5 + F6 relation/transport + F7 time issuers | Separate genuine structural/relation/uncertainty/comparable-pair law | Nonpooled selected world alters actual permitted view | Cross-unit UNAVAILABLE, original global F6/F7/F8 open |
+| R08 provider/consumer association owner | Real canonical invocation or authenticated cache K/producer/permission/clock proof, total status axes | Correct exact consumer and no wrong-condition success | J42 fake-labelled path; Z UNRESOLVED/16 |
+| R09 independent CI engineer and repo administrator | Runner identity/nonce/attestation and **administrator-installed** protected required checks | Authenticated local-to-generic promotion control | Protection 403 UNKNOWN; deployed enforcement not shown |
+| D1 original custodian / access-rights issuer | Current per-wave edition/digest/host/purpose/licence/retention/current-use permission | Lawful eligible original tranche, no inferred right from located bytes | Source-specific current grants UNISSUED |
+| D2–D5/D6–D9 competent method/scientific issuers | Per-wave U_item/U_unit/U_app/E_pre, instrument, risk, weights/design, target/condition, FF/F6/F7 uncertainty | Actual source-qualified scientific estimate with typed limits | Original U/E_pre NULL, no universal default |
+| R07 independent original N11 assessor | Actual 35-wave 1,890-cell and global F6/F7/F8 original evidence, G0–G8, independently authenticated | N11 independently ACCEPT/HOLD per tranche and global dependency | N11 NOT_READY, no newly measured original cells in this packet |
+| Sorok/N12 separate product actor authority | Only after independently accepted N11, competent Sorok actor decision and distinct user grant | Possible later lawful persona production, not automatic | N12 HOLD; NO PERSON WELD |
+
+### Unissued source accounting
+
+Exactly **35** source waves (31 SAV, 4 DTA in documentary register) and **1,890** per-wave requirements remain preserved at their original grade: 30 source,16 empirical,8 F per wave, **plus** global F6/F7/F8. `U_item=null`, `U_unit=null`, `U_app=null`, `E_pre=null` for currently unissued original authority in this court. These are **not** zero-valued observations or scientifically NA. Same-name person/household cannot be linked without explicit relation and execution. F5 context alone cannot be structural; F7 requires observed-pair comparability; F8 use must remain lawful and exact. The full finite frontier remains as adjudicated in U53A18, not reopened.
+
+### Next lawful step
+
+Director mechanically verifies and may publish/adopt this *proposal compilation* on its existing director branch. **Then** user and competent Pyat HQ separately decide explicit unpause, current code/base, scopes, branch sealing, owner appointments, trusted CI administration and original source grants. If no implementation grant: keep all code work STOPPED while preserving exact actionable packets. Do not dispatch a renamed J52/W52 worker to evade the stop. No additional model/HQ approval is needed for **this document assembly itself**; that is distinct from implementation rights.
