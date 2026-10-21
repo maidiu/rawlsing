@@ -1,0 +1,72 @@
+{
+  "all_pass": true,
+  "courts": [
+    {
+      "name": "R29P new integration",
+      "pass": 9,
+      "receipt": "evidence/r29p_tests.xml",
+      "tests": 9
+    },
+    {
+      "name": "R27P stable actor",
+      "pass": 7,
+      "receipt": "evidence/r27p_7.xml",
+      "tests": 7
+    },
+    {
+      "name": "R26V historical producer",
+      "pass": 10,
+      "receipt": "evidence/r26v_10.xml",
+      "tests": 10
+    },
+    {
+      "junit": [
+        "evidence/bp2p4j_33.xml",
+        "evidence/bp2_50.xml",
+        "evidence/bp4_15.xml"
+      ],
+      "name": "BP2P4J joined product",
+      "pass": 98,
+      "receipt": "evidence/bp2p4j_98_rerun.json",
+      "tests": 98
+    },
+    {
+      "name": "R26E qualified C12/N1/live",
+      "pass": 8,
+      "receipt": "evidence/r26e_8.xml",
+      "tests": 8
+    },
+    {
+      "name": "N1 method",
+      "pass": 21,
+      "receipt": "evidence/n1_21.xml",
+      "tests": 21
+    },
+    {
+      "name": "N1 actual BP2 ports",
+      "pass": 2,
+      "receipt": "evidence/n1_ports_2.xml",
+      "tests": 2
+    }
+  ],
+  "double_count_note": "The R26E 129 union includes BP2P4J 33/50/15 and N1 21/2; those receipts are not added again to unique_total.",
+  "model": "opencode-go/deepseek-v4.1-flash",
+  "pytest": "9.1.1",
+  "python": "3.11.3",
+  "r26e_129_union": {
+    "all_pass": true,
+    "parts": [
+      33,
+      50,
+      15,
+      21,
+      2,
+      8
+    ],
+    "total": 129
+  },
+  "reasoning": "MAX as commissioned; metered effort not independently observable",
+  "schema": "R29P_TEST_EXECUTION_SUMMARY@1",
+  "sqlite": "3.40.1",
+  "unique_total": 155
+}

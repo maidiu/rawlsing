@@ -1,0 +1,783 @@
+{
+  "all_proved": true,
+  "baseline": {
+    "a2_clock": 40,
+    "a2_offscreen": [
+      "MOVE",
+      "OFFSCREEN_REPAIR"
+    ],
+    "a2_other_units": 5,
+    "claims": [
+      "ARRIVAL"
+    ],
+    "code": "",
+    "others": [
+      "B"
+    ],
+    "say": "OK",
+    "self_history": "f5406fb8ba26473d9ea7fd1fa1c9d805e9e76078a89283a2b6d51c81bf43d053",
+    "self_source_hash": "e80d247b5afd31c2a488fc89013f25fc240f53e42d0a5596aaad6f9796d14bbb",
+    "status": "OK",
+    "tools": 1
+  },
+  "behavioral_same_observable": true,
+  "schema": "R29P_SEVEN_FAULTS@1",
+  "trials": [
+    {
+      "baseline": {
+        "a2_clock": 40,
+        "a2_offscreen": [
+          "MOVE",
+          "OFFSCREEN_REPAIR"
+        ],
+        "a2_other_units": 5,
+        "c12_verify": {
+          "branch_id": "root",
+          "counts": {
+            "checkpoint": 1,
+            "episode": 0,
+            "perception": 2,
+            "world_event": 1
+          },
+          "errors": [],
+          "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+          "ok": true,
+          "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+        },
+        "claims": [
+          "ARRIVAL"
+        ],
+        "code": "",
+        "native": false,
+        "others": [
+          "B"
+        ],
+        "say": "OK",
+        "self_history": "f5406fb8ba26473d9ea7fd1fa1c9d805e9e76078a89283a2b6d51c81bf43d053",
+        "self_source_hash": "e80d247b5afd31c2a488fc89013f25fc240f53e42d0a5596aaad6f9796d14bbb",
+        "status": "OK",
+        "tools": 1
+      },
+      "baseline_pass": true,
+      "criterion": "A0 self history/source differs",
+      "edge": "A_GENESIS_HISTORY",
+      "expected": "different actor history",
+      "fault": {
+        "a2_clock": 40,
+        "a2_offscreen": [
+          "MOVE",
+          "OFFSCREEN_REPAIR"
+        ],
+        "a2_other_units": 5,
+        "c12_verify": {
+          "branch_id": "root",
+          "counts": {
+            "checkpoint": 1,
+            "episode": 0,
+            "perception": 2,
+            "world_event": 1
+          },
+          "errors": [],
+          "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+          "ok": true,
+          "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+        },
+        "claims": [
+          "ARRIVAL"
+        ],
+        "code": "",
+        "native": false,
+        "others": [
+          "B"
+        ],
+        "say": "OK",
+        "self_history": "0a2cf6f6fc2d6218c8bc7b04d9d5dd25b165cccf4407339201a86f8d4f51ce69",
+        "self_source_hash": "b5d40aee4382ef0af87df509112d6578f455751adb0ab0104ee172caea5cc24f",
+        "status": "OK",
+        "tools": 1
+      },
+      "fault_changed_or_refused": true,
+      "proves": true,
+      "restored": {
+        "a2_clock": 40,
+        "a2_offscreen": [
+          "MOVE",
+          "OFFSCREEN_REPAIR"
+        ],
+        "a2_other_units": 5,
+        "c12_verify": {
+          "branch_id": "root",
+          "counts": {
+            "checkpoint": 1,
+            "episode": 0,
+            "perception": 2,
+            "world_event": 1
+          },
+          "errors": [],
+          "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+          "ok": true,
+          "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+        },
+        "claims": [
+          "ARRIVAL"
+        ],
+        "code": "",
+        "native": false,
+        "others": [
+          "B"
+        ],
+        "say": "OK",
+        "self_history": "f5406fb8ba26473d9ea7fd1fa1c9d805e9e76078a89283a2b6d51c81bf43d053",
+        "self_source_hash": "e80d247b5afd31c2a488fc89013f25fc240f53e42d0a5596aaad6f9796d14bbb",
+        "status": "OK",
+        "tools": 1
+      },
+      "restored_pass": true,
+      "same_observable": "R29P_A0_A2_OBSERVABLE",
+      "stable_restore": true
+    },
+    {
+      "baseline": {
+        "a2_clock": 40,
+        "a2_offscreen": [
+          "MOVE",
+          "OFFSCREEN_REPAIR"
+        ],
+        "a2_other_units": 5,
+        "c12_verify": {
+          "branch_id": "root",
+          "counts": {
+            "checkpoint": 1,
+            "episode": 0,
+            "perception": 2,
+            "world_event": 1
+          },
+          "errors": [],
+          "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+          "ok": true,
+          "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+        },
+        "claims": [
+          "ARRIVAL"
+        ],
+        "code": "",
+        "native": false,
+        "others": [
+          "B"
+        ],
+        "say": "OK",
+        "self_history": "f5406fb8ba26473d9ea7fd1fa1c9d805e9e76078a89283a2b6d51c81bf43d053",
+        "self_source_hash": "e80d247b5afd31c2a488fc89013f25fc240f53e42d0a5596aaad6f9796d14bbb",
+        "status": "OK",
+        "tools": 1
+      },
+      "baseline_pass": true,
+      "criterion": "A0 self history differs",
+      "edge": "A_PERFORMED_OMISSION",
+      "expected": "A omission removed",
+      "fault": {
+        "a2_clock": 40,
+        "a2_offscreen": [
+          "MOVE",
+          "OFFSCREEN_REPAIR"
+        ],
+        "a2_other_units": 5,
+        "c12_verify": {
+          "branch_id": "root",
+          "counts": {
+            "checkpoint": 1,
+            "episode": 0,
+            "perception": 2,
+            "world_event": 1
+          },
+          "errors": [],
+          "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+          "ok": true,
+          "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+        },
+        "claims": [
+          "ARRIVAL"
+        ],
+        "code": "",
+        "native": false,
+        "others": [
+          "B"
+        ],
+        "say": "OK",
+        "self_history": "c9b69bf55780a37f2d6294690563e94c42e517385637b37f064967740fcbd9aa",
+        "self_source_hash": "e80d247b5afd31c2a488fc89013f25fc240f53e42d0a5596aaad6f9796d14bbb",
+        "status": "OK",
+        "tools": 1
+      },
+      "fault_changed_or_refused": true,
+      "proves": true,
+      "restored": {
+        "a2_clock": 40,
+        "a2_offscreen": [
+          "MOVE",
+          "OFFSCREEN_REPAIR"
+        ],
+        "a2_other_units": 5,
+        "c12_verify": {
+          "branch_id": "root",
+          "counts": {
+            "checkpoint": 1,
+            "episode": 0,
+            "perception": 2,
+            "world_event": 1
+          },
+          "errors": [],
+          "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+          "ok": true,
+          "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+        },
+        "claims": [
+          "ARRIVAL"
+        ],
+        "code": "",
+        "native": false,
+        "others": [
+          "B"
+        ],
+        "say": "OK",
+        "self_history": "f5406fb8ba26473d9ea7fd1fa1c9d805e9e76078a89283a2b6d51c81bf43d053",
+        "self_source_hash": "e80d247b5afd31c2a488fc89013f25fc240f53e42d0a5596aaad6f9796d14bbb",
+        "status": "OK",
+        "tools": 1
+      },
+      "restored_pass": true,
+      "same_observable": "R29P_A0_A2_OBSERVABLE",
+      "stable_restore": true
+    },
+    {
+      "baseline": {
+        "a2_clock": 40,
+        "a2_offscreen": [
+          "MOVE",
+          "OFFSCREEN_REPAIR"
+        ],
+        "a2_other_units": 5,
+        "c12_verify": {
+          "branch_id": "root",
+          "counts": {
+            "checkpoint": 1,
+            "episode": 0,
+            "perception": 2,
+            "world_event": 1
+          },
+          "errors": [],
+          "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+          "ok": true,
+          "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+        },
+        "claims": [
+          "ARRIVAL"
+        ],
+        "code": "",
+        "native": false,
+        "others": [
+          "B"
+        ],
+        "say": "OK",
+        "self_history": "f5406fb8ba26473d9ea7fd1fa1c9d805e9e76078a89283a2b6d51c81bf43d053",
+        "self_source_hash": "e80d247b5afd31c2a488fc89013f25fc240f53e42d0a5596aaad6f9796d14bbb",
+        "status": "OK",
+        "tools": 1
+      },
+      "baseline_pass": true,
+      "criterion": "A2 other completed units changes",
+      "edge": "B_INDEPENDENT_ACTION",
+      "expected": "B own action removed",
+      "fault": {
+        "a2_clock": 40,
+        "a2_offscreen": [
+          "MOVE",
+          "OFFSCREEN_REPAIR"
+        ],
+        "a2_other_units": 3,
+        "c12_verify": {
+          "branch_id": "root",
+          "counts": {
+            "checkpoint": 1,
+            "episode": 0,
+            "perception": 2,
+            "world_event": 1
+          },
+          "errors": [],
+          "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+          "ok": true,
+          "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+        },
+        "claims": [
+          "ARRIVAL"
+        ],
+        "code": "",
+        "native": false,
+        "others": [
+          "B"
+        ],
+        "say": "OK",
+        "self_history": "f5406fb8ba26473d9ea7fd1fa1c9d805e9e76078a89283a2b6d51c81bf43d053",
+        "self_source_hash": "e80d247b5afd31c2a488fc89013f25fc240f53e42d0a5596aaad6f9796d14bbb",
+        "status": "OK",
+        "tools": 1
+      },
+      "fault_changed_or_refused": true,
+      "proves": true,
+      "restored": {
+        "a2_clock": 40,
+        "a2_offscreen": [
+          "MOVE",
+          "OFFSCREEN_REPAIR"
+        ],
+        "a2_other_units": 5,
+        "c12_verify": {
+          "branch_id": "root",
+          "counts": {
+            "checkpoint": 1,
+            "episode": 0,
+            "perception": 2,
+            "world_event": 1
+          },
+          "errors": [],
+          "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+          "ok": true,
+          "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+        },
+        "claims": [
+          "ARRIVAL"
+        ],
+        "code": "",
+        "native": false,
+        "others": [
+          "B"
+        ],
+        "say": "OK",
+        "self_history": "f5406fb8ba26473d9ea7fd1fa1c9d805e9e76078a89283a2b6d51c81bf43d053",
+        "self_source_hash": "e80d247b5afd31c2a488fc89013f25fc240f53e42d0a5596aaad6f9796d14bbb",
+        "status": "OK",
+        "tools": 1
+      },
+      "restored_pass": true,
+      "same_observable": "R29P_A0_A2_OBSERVABLE",
+      "stable_restore": true
+    },
+    {
+      "baseline": {
+        "a2_clock": 40,
+        "a2_offscreen": [
+          "MOVE",
+          "OFFSCREEN_REPAIR"
+        ],
+        "a2_other_units": 5,
+        "c12_verify": {
+          "branch_id": "root",
+          "counts": {
+            "checkpoint": 1,
+            "episode": 0,
+            "perception": 2,
+            "world_event": 1
+          },
+          "errors": [],
+          "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+          "ok": true,
+          "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+        },
+        "claims": [
+          "ARRIVAL"
+        ],
+        "code": "",
+        "native": false,
+        "others": [
+          "B"
+        ],
+        "say": "OK",
+        "self_history": "f5406fb8ba26473d9ea7fd1fa1c9d805e9e76078a89283a2b6d51c81bf43d053",
+        "self_source_hash": "e80d247b5afd31c2a488fc89013f25fc240f53e42d0a5596aaad6f9796d14bbb",
+        "status": "OK",
+        "tools": 1
+      },
+      "baseline_pass": true,
+      "criterion": "A0 others-present changes",
+      "edge": "ADP010_ENCOUNTER_CONTACT",
+      "expected": "contact absent",
+      "fault": {
+        "a2_clock": 40,
+        "a2_offscreen": [
+          "OFFSCREEN_REPAIR"
+        ],
+        "a2_other_units": 5,
+        "c12_verify": {
+          "branch_id": "root",
+          "counts": {
+            "checkpoint": 1,
+            "episode": 0,
+            "perception": 2,
+            "world_event": 1
+          },
+          "errors": [],
+          "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+          "ok": true,
+          "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+        },
+        "claims": [
+          "ARRIVAL"
+        ],
+        "code": "",
+        "native": false,
+        "others": [],
+        "say": "OK",
+        "self_history": "f5406fb8ba26473d9ea7fd1fa1c9d805e9e76078a89283a2b6d51c81bf43d053",
+        "self_source_hash": "e80d247b5afd31c2a488fc89013f25fc240f53e42d0a5596aaad6f9796d14bbb",
+        "status": "OK",
+        "tools": 1
+      },
+      "fault_changed_or_refused": true,
+      "proves": true,
+      "restored": {
+        "a2_clock": 40,
+        "a2_offscreen": [
+          "MOVE",
+          "OFFSCREEN_REPAIR"
+        ],
+        "a2_other_units": 5,
+        "c12_verify": {
+          "branch_id": "root",
+          "counts": {
+            "checkpoint": 1,
+            "episode": 0,
+            "perception": 2,
+            "world_event": 1
+          },
+          "errors": [],
+          "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+          "ok": true,
+          "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+        },
+        "claims": [
+          "ARRIVAL"
+        ],
+        "code": "",
+        "native": false,
+        "others": [
+          "B"
+        ],
+        "say": "OK",
+        "self_history": "f5406fb8ba26473d9ea7fd1fa1c9d805e9e76078a89283a2b6d51c81bf43d053",
+        "self_source_hash": "e80d247b5afd31c2a488fc89013f25fc240f53e42d0a5596aaad6f9796d14bbb",
+        "status": "OK",
+        "tools": 1
+      },
+      "restored_pass": true,
+      "same_observable": "R29P_A0_A2_OBSERVABLE",
+      "stable_restore": true
+    },
+    {
+      "baseline": {
+        "a2_clock": 40,
+        "a2_offscreen": [
+          "MOVE",
+          "OFFSCREEN_REPAIR"
+        ],
+        "a2_other_units": 5,
+        "c12_verify": {
+          "branch_id": "root",
+          "counts": {
+            "checkpoint": 1,
+            "episode": 0,
+            "perception": 2,
+            "world_event": 1
+          },
+          "errors": [],
+          "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+          "ok": true,
+          "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+        },
+        "claims": [
+          "ARRIVAL"
+        ],
+        "code": "",
+        "native": false,
+        "others": [
+          "B"
+        ],
+        "say": "OK",
+        "self_history": "f5406fb8ba26473d9ea7fd1fa1c9d805e9e76078a89283a2b6d51c81bf43d053",
+        "self_source_hash": "e80d247b5afd31c2a488fc89013f25fc240f53e42d0a5596aaad6f9796d14bbb",
+        "status": "OK",
+        "tools": 1
+      },
+      "baseline_pass": true,
+      "criterion": "A0 HELD on C8 proof, restore OK",
+      "edge": "C8_E1_PROOF",
+      "expected": "keyed C8/E1 proof severed",
+      "fault": {
+        "c12_verify": {
+          "branch_id": "root",
+          "counts": {
+            "checkpoint": 3,
+            "episode": 4,
+            "perception": 6,
+            "world_event": 4
+          },
+          "errors": [],
+          "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+          "ok": true,
+          "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+        },
+        "code": "BP3_PROOF_INVALID",
+        "native": false,
+        "status": "HELD"
+      },
+      "fault_changed_or_refused": true,
+      "proves": true,
+      "restored": {
+        "a2_clock": 40,
+        "a2_offscreen": [
+          "MOVE",
+          "OFFSCREEN_REPAIR"
+        ],
+        "a2_other_units": 5,
+        "c12_verify": {
+          "branch_id": "root",
+          "counts": {
+            "checkpoint": 1,
+            "episode": 0,
+            "perception": 2,
+            "world_event": 1
+          },
+          "errors": [],
+          "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+          "ok": true,
+          "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+        },
+        "claims": [
+          "ARRIVAL"
+        ],
+        "code": "",
+        "native": false,
+        "others": [
+          "B"
+        ],
+        "say": "OK",
+        "self_history": "f5406fb8ba26473d9ea7fd1fa1c9d805e9e76078a89283a2b6d51c81bf43d053",
+        "self_source_hash": "e80d247b5afd31c2a488fc89013f25fc240f53e42d0a5596aaad6f9796d14bbb",
+        "status": "OK",
+        "tools": 1
+      },
+      "restored_pass": true,
+      "same_observable": "R29P_A0_A2_OBSERVABLE",
+      "stable_restore": true
+    },
+    {
+      "baseline": {
+        "a2_clock": 40,
+        "a2_offscreen": [
+          "MOVE",
+          "OFFSCREEN_REPAIR"
+        ],
+        "a2_other_units": 5,
+        "c12_verify": {
+          "branch_id": "root",
+          "counts": {
+            "checkpoint": 1,
+            "episode": 0,
+            "perception": 2,
+            "world_event": 1
+          },
+          "errors": [],
+          "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+          "ok": true,
+          "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+        },
+        "claims": [
+          "ARRIVAL"
+        ],
+        "code": "",
+        "native": false,
+        "others": [
+          "B"
+        ],
+        "say": "OK",
+        "self_history": "f5406fb8ba26473d9ea7fd1fa1c9d805e9e76078a89283a2b6d51c81bf43d053",
+        "self_source_hash": "e80d247b5afd31c2a488fc89013f25fc240f53e42d0a5596aaad6f9796d14bbb",
+        "status": "OK",
+        "tools": 1
+      },
+      "baseline_pass": true,
+      "criterion": "A0 HELD on C9 target preimage, restore OK",
+      "edge": "CAN008_CAN011_TARGET",
+      "expected": "CAN008/CAN011 target severed",
+      "fault": {
+        "c12_verify": {
+          "branch_id": "root",
+          "counts": {
+            "checkpoint": 3,
+            "episode": 4,
+            "perception": 6,
+            "world_event": 4
+          },
+          "errors": [],
+          "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+          "ok": true,
+          "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+        },
+        "code": "C9_TARGET_PREIMAGE_UNSEALED",
+        "native": false,
+        "status": "HELD"
+      },
+      "fault_changed_or_refused": true,
+      "proves": true,
+      "restored": {
+        "a2_clock": 40,
+        "a2_offscreen": [
+          "MOVE",
+          "OFFSCREEN_REPAIR"
+        ],
+        "a2_other_units": 5,
+        "c12_verify": {
+          "branch_id": "root",
+          "counts": {
+            "checkpoint": 1,
+            "episode": 0,
+            "perception": 2,
+            "world_event": 1
+          },
+          "errors": [],
+          "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+          "ok": true,
+          "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+        },
+        "claims": [
+          "ARRIVAL"
+        ],
+        "code": "",
+        "native": false,
+        "others": [
+          "B"
+        ],
+        "say": "OK",
+        "self_history": "f5406fb8ba26473d9ea7fd1fa1c9d805e9e76078a89283a2b6d51c81bf43d053",
+        "self_source_hash": "e80d247b5afd31c2a488fc89013f25fc240f53e42d0a5596aaad6f9796d14bbb",
+        "status": "OK",
+        "tools": 1
+      },
+      "restored_pass": true,
+      "same_observable": "R29P_A0_A2_OBSERVABLE",
+      "stable_restore": true
+    },
+    {
+      "baseline": {
+        "a2_clock": 40,
+        "a2_offscreen": [
+          "MOVE",
+          "OFFSCREEN_REPAIR"
+        ],
+        "a2_other_units": 5,
+        "c12_verify": {
+          "branch_id": "root",
+          "counts": {
+            "checkpoint": 1,
+            "episode": 0,
+            "perception": 2,
+            "world_event": 1
+          },
+          "errors": [],
+          "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+          "ok": true,
+          "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+        },
+        "claims": [
+          "ARRIVAL"
+        ],
+        "code": "",
+        "native": false,
+        "others": [
+          "B"
+        ],
+        "say": "OK",
+        "self_history": "f5406fb8ba26473d9ea7fd1fa1c9d805e9e76078a89283a2b6d51c81bf43d053",
+        "self_source_hash": "e80d247b5afd31c2a488fc89013f25fc240f53e42d0a5596aaad6f9796d14bbb",
+        "status": "OK",
+        "tools": 1
+      },
+      "baseline_pass": true,
+      "criterion": "A0 tools=0 and A2 no independent repair",
+      "edge": "LATER_E2",
+      "expected": "performed E2 absent",
+      "fault": {
+        "a2_clock": 40,
+        "a2_offscreen": [
+          "MOVE",
+          "OFFSCREEN_NO_CHANGE"
+        ],
+        "a2_other_units": 4,
+        "c12_verify": {
+          "branch_id": "root",
+          "counts": {
+            "checkpoint": 1,
+            "episode": 0,
+            "perception": 2,
+            "world_event": 1
+          },
+          "errors": [],
+          "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+          "ok": true,
+          "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+        },
+        "claims": [
+          "ARRIVAL"
+        ],
+        "code": "",
+        "native": false,
+        "others": [
+          "B"
+        ],
+        "say": "OK",
+        "self_history": "f5406fb8ba26473d9ea7fd1fa1c9d805e9e76078a89283a2b6d51c81bf43d053",
+        "self_source_hash": "e80d247b5afd31c2a488fc89013f25fc240f53e42d0a5596aaad6f9796d14bbb",
+        "status": "OK",
+        "tools": 0
+      },
+      "fault_changed_or_refused": true,
+      "proves": true,
+      "restored": {
+        "a2_clock": 40,
+        "a2_offscreen": [
+          "MOVE",
+          "OFFSCREEN_REPAIR"
+        ],
+        "a2_other_units": 5,
+        "c12_verify": {
+          "branch_id": "root",
+          "counts": {
+            "checkpoint": 1,
+            "episode": 0,
+            "perception": 2,
+            "world_event": 1
+          },
+          "errors": [],
+          "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+          "ok": true,
+          "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+        },
+        "claims": [
+          "ARRIVAL"
+        ],
+        "code": "",
+        "native": false,
+        "others": [
+          "B"
+        ],
+        "say": "OK",
+        "self_history": "f5406fb8ba26473d9ea7fd1fa1c9d805e9e76078a89283a2b6d51c81bf43d053",
+        "self_source_hash": "e80d247b5afd31c2a488fc89013f25fc240f53e42d0a5596aaad6f9796d14bbb",
+        "status": "OK",
+        "tools": 1
+      },
+      "restored_pass": true,
+      "same_observable": "R29P_A0_A2_OBSERVABLE",
+      "stable_restore": true
+    }
+  ]
+}

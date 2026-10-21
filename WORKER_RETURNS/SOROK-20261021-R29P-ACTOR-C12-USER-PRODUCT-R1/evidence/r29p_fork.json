@@ -1,0 +1,209 @@
+{
+  "alt_say": {
+    "admitted": true,
+    "attempted": true,
+    "clock": 40,
+    "event_id": "TEST_ONLY_BP4_WORLD_EVT_80b526326558d5c0ceab90aa45bfa97bccb643f4cf0087bf4731fcd65b89d418",
+    "grade": "TEST_ONLY_SOURCEFREE_PRODUCT_ALPHA_NOT_NATIVE",
+    "native": false,
+    "observable_by": [
+      "A"
+    ],
+    "status": "OK"
+  },
+  "alt_verify": {
+    "branch_id": "alt",
+    "counts": {
+      "checkpoint": 4,
+      "episode": 5,
+      "perception": 7,
+      "world_event": 5
+    },
+    "errors": [],
+    "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+    "ok": true,
+    "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+  },
+  "artifacts": {
+    "anchor_log": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/r29p_evidence_ldd1e1al/fork/bp2/anchor/rows.json",
+    "anchor_watermark": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/r29p_evidence_ldd1e1al/fork/bp2/anchor/watermark.json",
+    "as_of": 247,
+    "c8_canonical_bytes_sha256": "6a442fb07f936ba0d6ebeb0c1ef02e1413d8c2ff894cfb15a23473e479a79a5d",
+    "c8_commit_receipt_id": "8d8443373106ab01aeb39a6e7740cde4ce3492727f77a2db18e964295ad47f63",
+    "c8_content_hash": "4932ecca925c41a1a74a3c6162bca2a98deb9b5f4b25f6741745c2b929a2599f",
+    "c8_identity_digest": "e64c50a6a27269e63cbb2d5da6e74514b11fd8a91d858873f5ca5df0155f4c8e",
+    "c8_ledger_prefix_digest": "ecec20eab7ca6d8302e2ca96f4be3521f9c2b8915b6d3544f9f8c4176605a700",
+    "c8_state_digest": "cd5a12fc5e1965cbba2a2ef65a6a7af62452226f0c276a061c1616366570ac38",
+    "c8_writer_version": 1,
+    "c9_authorization_hash": "75f4d5bb10b7d770a7056c034aa09da2a75b221bf67ca1b35f33d4d38b533714",
+    "c9_commit_receipt_hash": "45eb38ec72d0980954dd3344ff7e99c0e6cefe2227f09f17e3aba336c051feda",
+    "c9_path": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/r29p_evidence_ldd1e1al/fork/bp2/c9.sqlite",
+    "consumed_state_hash": "6466079e94b46268b301b21a553fb62b7076d7fde242051eceab7e267e511d17",
+    "e1_event_hash": "e5c1387a0b48ca223842f0b250b2f3170fc19ee6ec56d4293df166de1daa5afb",
+    "e1_event_id": "TEST_ONLY_BP2_E1_OCC-0001",
+    "e2_receipt_hash": "16eae629e57e62fdd7eed3579c78ad0588d4ea0137a809a50c5384885cf28f56",
+    "emission_order": [
+      "BP2_C8_COMMIT",
+      "BP2_C9_TARGET_COMMIT",
+      "BP2_E2_ADMISSION"
+    ],
+    "event_time": 242,
+    "grant_hash": "23f18ddb6108d80517efb16095ce12732f39328b2031bea441c8151310b6ba10",
+    "journal_path": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/r29p_evidence_ldd1e1al/fork/bp2/journal/journal.json",
+    "key_id": "BP2-TEST-KEY",
+    "key_path": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/r29p_evidence_ldd1e1al/fork/bp2/keys/writer_keys.json",
+    "later_as_of": 257,
+    "mode": "FRESH",
+    "native_grant": "NOT_GRANTED",
+    "occurrence_id": "OCC-0001",
+    "practice_label": "coordinated_material_inspection",
+    "response_hash": "91ca26eae040ad78fadaedd9b87f0f81a3f4dc74f4373e7dfb49c027e8b2dc00",
+    "root": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/r29p_evidence_ldd1e1al/fork/bp2",
+    "rule_a_content_hash": "9e4872abaeedc346fa3ea06575bb6fb5daa324a47d1d00d6015f7b660ea9cf5d",
+    "rule_t_content_hash": "ab8afe1ae0229b2d6143c84f58cc4f2f1b0942d9f680cd14477602143991ec97",
+    "rule_t_dependency_hash": "9e4872abaeedc346fa3ea06575bb6fb5daa324a47d1d00d6015f7b660ea9cf5d",
+    "schema": "BP2P4J_BP2_ARTIFACT_BINDING@1",
+    "target_id": "10c8963ea05cb9b39f31d14e2d93de86b053694fba9b22dcb426343aaaf4bf41",
+    "target_record_hash": "312b15f8bc7a05785d8d841552b4dbc88fed8163613881259a35e4fa8895d127"
+  },
+  "before_claims": [
+    "ARRIVAL"
+  ],
+  "branches": {
+    "branches": [
+      {
+        "actor_ids": [
+          "A",
+          "B"
+        ],
+        "branch_id": "alt",
+        "created_clock": 40,
+        "fork_clock": 40,
+        "parent_branch_id": "root",
+        "root_counts": {
+          "checkpoint": 3,
+          "episode": 4,
+          "perception": 6,
+          "world_event": 4
+        },
+        "root_hash": "b0ef7d2e3e2282711389c8279d246355280aef9986e56124051c26d23eb337f4"
+      },
+      {
+        "actor_ids": [
+          "A",
+          "B"
+        ],
+        "branch_id": "root",
+        "created_clock": 10,
+        "fork_clock": null,
+        "parent_branch_id": null,
+        "root_counts": {},
+        "root_hash": ""
+      }
+    ],
+    "status": "OK"
+  },
+  "fork": {
+    "branch": {
+      "actor_ids": [
+        "A",
+        "B"
+      ],
+      "branch_id": "alt",
+      "created_clock": 40,
+      "fork_clock": 40,
+      "parent_branch_id": "root",
+      "root_counts": {
+        "checkpoint": 3,
+        "episode": 4,
+        "perception": 6,
+        "world_event": 4
+      },
+      "root_hash": "b0ef7d2e3e2282711389c8279d246355280aef9986e56124051c26d23eb337f4"
+    },
+    "shared_root": {
+      "detail": {
+        "checkpoint": {
+          "count": 3,
+          "equal": true
+        },
+        "episode": {
+          "count": 4,
+          "equal": true
+        },
+        "perception": {
+          "count": 6,
+          "equal": true
+        },
+        "world_event": {
+          "count": 4,
+          "equal": true
+        }
+      },
+      "equal": true,
+      "fork_clock": 40,
+      "mode": "parent_child"
+    },
+    "status": "OK"
+  },
+  "root_verify": {
+    "branch_id": "root",
+    "counts": {
+      "checkpoint": 3,
+      "episode": 4,
+      "perception": 6,
+      "world_event": 4
+    },
+    "errors": [],
+    "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+    "ok": true,
+    "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+  },
+  "schema": "R29P_FORK_RUN@1",
+  "shared_after": {
+    "detail": {
+      "checkpoint": {
+        "count": 3,
+        "equal": true
+      },
+      "episode": {
+        "count": 4,
+        "equal": true
+      },
+      "perception": {
+        "count": 6,
+        "equal": true
+      },
+      "world_event": {
+        "count": 4,
+        "equal": true
+      }
+    },
+    "equal": true,
+    "fork_clock": 40,
+    "mode": "parent_child"
+  },
+  "shared_before": {
+    "detail": {
+      "checkpoint": {
+        "count": 3,
+        "equal": true
+      },
+      "episode": {
+        "count": 4,
+        "equal": true
+      },
+      "perception": {
+        "count": 6,
+        "equal": true
+      },
+      "world_event": {
+        "count": 4,
+        "equal": true
+      }
+    },
+    "equal": true,
+    "fork_clock": 40,
+    "mode": "parent_child"
+  }
+}

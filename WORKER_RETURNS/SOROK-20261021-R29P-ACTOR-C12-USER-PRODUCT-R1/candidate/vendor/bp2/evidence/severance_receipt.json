@@ -1,0 +1,326 @@
+{
+  "all_primary_proved": true,
+  "all_supplementary_proved": true,
+  "cut_descriptions": {
+    "BP1_ACTOR_OTHER_HISTORY": "actor ingress carries the OTHER BP1 actor's sealed snapshot and identity",
+    "BP1_OTHER_SELF_OFFER": "the declared other-person offer is replaced by the focal actor's own performed act",
+    "C8_PROOF": "OUT9 ingress called without the BP3 keyed journal proof verifier",
+    "E2_ACTION_BEFORE_COMMIT": "the later action time precedes the target commit time",
+    "PERFORMED_E2": "the later performed-action receipt binds the focal actor as its own actuator",
+    "RULE_A_REGISTRY_EMPTY": "the response registry is the empty production registry",
+    "RULE_A_SOURCE": "no CAN008 RULE_A resource is supplied to the CAN008 port",
+    "RULE_T_GRANT_BINDING": "no CAN011 target grant resource is supplied to the CAN011 port",
+    "RULE_T_SELF_ISSUED": "the CAN011 target request is marked self-issued",
+    "TARGET_COMMIT_READ_HASH": "the committed target_state row is rewritten after commit, before the later read"
+  },
+  "declared_edges": [
+    "C8_PROOF",
+    "BP1_ACTOR_OTHER_HISTORY",
+    "RULE_A_SOURCE",
+    "RULE_T_GRANT_BINDING",
+    "TARGET_COMMIT_READ_HASH",
+    "PERFORMED_E2"
+  ],
+  "declared_supplementary": [
+    "BP1_OTHER_SELF_OFFER",
+    "RULE_A_REGISTRY_EMPTY",
+    "RULE_T_SELF_ISSUED",
+    "E2_ACTION_BEFORE_COMMIT"
+  ],
+  "edge_count": 6,
+  "named_assertion": "bp2_joined.producer.joined_consumer_assertion",
+  "schema": "BP2_SEVERANCE_RECEIPT@1",
+  "supplementary_count": 4,
+  "trials": [
+    {
+      "assertion": "bp2_joined.producer.joined_consumer_assertion",
+      "cut": "OUT9 ingress called without the BP3 keyed journal proof verifier",
+      "edge": "C8_PROOF",
+      "proves": true,
+      "red": {
+        "assertion_message": "JOINED_CONSUMER_POSITIVE: chain refused at stage out9_read with PROOF_VERIFIER_REQUIRED",
+        "failure_code": "PROOF_VERIFIER_REQUIRED",
+        "ok": false,
+        "red": true,
+        "stage": "out9_read"
+      },
+      "restore_basis": "same_root_exact_state_restored",
+      "restored": {
+        "assertion_message": "PASS",
+        "c8_occurrence_id": "OCC-0001",
+        "consumed_state_hash": "2f1de98df0f64bc15cc5361cbbc40cad752ed9f62f5a7f7f779f564a03dd9c22",
+        "e2_receipt_hash": "0e898a6d87083e24819951393ff3b7f0e18b5385abdf222cac5f22855787a898",
+        "failure_code": "",
+        "ok": true,
+        "red": false,
+        "stage": "later_e2",
+        "target_record_hash": "14dc9cacfb2f207172cd48a5d12d39a12eefb3b88d884def1cc074bcf905fd61"
+      },
+      "same_root": true,
+      "same_source_tree": true,
+      "sever": "C8_PROOF_WITHHELD",
+      "supplementary": false
+    },
+    {
+      "assertion": "bp2_joined.producer.joined_consumer_assertion",
+      "cut": "actor ingress carries the OTHER BP1 actor's sealed snapshot and identity",
+      "edge": "BP1_ACTOR_OTHER_HISTORY",
+      "proves": true,
+      "red": {
+        "assertion_message": "JOINED_CONSUMER_POSITIVE: chain refused at stage c9_commit with ACTOR_ROLE_NOT_FOCAL",
+        "failure_code": "ACTOR_ROLE_NOT_FOCAL",
+        "ok": false,
+        "red": true,
+        "stage": "c9_commit"
+      },
+      "restore_basis": "same_root_exact_state_restored",
+      "restored": {
+        "assertion_message": "PASS",
+        "c8_occurrence_id": "OCC-0001",
+        "consumed_state_hash": "429cf3816145718ff2e9110628e82462e6390ef97502a129123d64eab77c7ed4",
+        "e2_receipt_hash": "32dbb69129735fa65f20e7815d54b8100de3d03061c1290ef5d0c372e803b9df",
+        "failure_code": "",
+        "ok": true,
+        "red": false,
+        "stage": "later_e2",
+        "target_record_hash": "293fd5afe23288db94e0af5b25c8b68a1d4cd24875fbe208666295dcf4922d9b"
+      },
+      "same_root": true,
+      "same_source_tree": true,
+      "sever": "BP1_ACTOR_SWAPPED",
+      "supplementary": false
+    },
+    {
+      "assertion": "bp2_joined.producer.joined_consumer_assertion",
+      "cut": "no CAN008 RULE_A resource is supplied to the CAN008 port",
+      "edge": "RULE_A_SOURCE",
+      "proves": true,
+      "red": {
+        "assertion_message": "JOINED_CONSUMER_POSITIVE: chain refused at stage e1_binding with CAN008_RULE_A_UNISSUED",
+        "failure_code": "CAN008_RULE_A_UNISSUED",
+        "ok": false,
+        "red": true,
+        "stage": "e1_binding"
+      },
+      "restore_basis": "same_root_exact_state_restored",
+      "restored": {
+        "assertion_message": "PASS",
+        "c8_occurrence_id": "OCC-0001",
+        "consumed_state_hash": "53da66374adb6e6c6fe5ea9c1d846d62aeeedbe5bed2b8dda36466c2309a9027",
+        "e2_receipt_hash": "efa13806d5ba92d2f3ec4773fbb8af13c52ded95e3487d4c64cef4f3a0b7c72e",
+        "failure_code": "",
+        "ok": true,
+        "red": false,
+        "stage": "later_e2",
+        "target_record_hash": "18d8ff2f5616d472b1fa060d98ebf33fa953b40c18b0a0ae6512f5aa06f86301"
+      },
+      "same_root": true,
+      "same_source_tree": true,
+      "sever": "RULE_A_WITHHELD",
+      "supplementary": false
+    },
+    {
+      "assertion": "bp2_joined.producer.joined_consumer_assertion",
+      "cut": "no CAN011 target grant resource is supplied to the CAN011 port",
+      "edge": "RULE_T_GRANT_BINDING",
+      "proves": true,
+      "red": {
+        "assertion_message": "JOINED_CONSUMER_POSITIVE: chain refused at stage e1_binding with CAN011_TARGET_GRANT_UNISSUED",
+        "failure_code": "CAN011_TARGET_GRANT_UNISSUED",
+        "ok": false,
+        "red": true,
+        "stage": "e1_binding"
+      },
+      "restore_basis": "same_root_exact_state_restored",
+      "restored": {
+        "assertion_message": "PASS",
+        "c8_occurrence_id": "OCC-0001",
+        "consumed_state_hash": "7a7114186107f9ba041f1f1348cfeccd580d98694a5fdbb77cbeee32a7577cfd",
+        "e2_receipt_hash": "2d369e4710022b879edfb85b361b019e363ee071ad029a654c959407771040a0",
+        "failure_code": "",
+        "ok": true,
+        "red": false,
+        "stage": "later_e2",
+        "target_record_hash": "535359dba1c5c26717b10b5bf9f6610e57265dfdcf6ad22a59ae11b64cfbe6c6"
+      },
+      "same_root": true,
+      "same_source_tree": true,
+      "sever": "RULE_T_GRANT_WITHHELD",
+      "supplementary": false
+    },
+    {
+      "assertion": "bp2_joined.producer.joined_consumer_assertion",
+      "cut": "the committed target_state row is rewritten after commit, before the later read",
+      "edge": "TARGET_COMMIT_READ_HASH",
+      "proves": true,
+      "red": {
+        "assertion_message": "JOINED_CONSUMER_POSITIVE: chain refused at stage later_e2 with CONSUMER_READSET_MISMATCH",
+        "failure_code": "CONSUMER_READSET_MISMATCH",
+        "ok": false,
+        "red": true,
+        "stage": "later_e2"
+      },
+      "restore_basis": "same_root_exact_state_restored",
+      "restored": {
+        "assertion_message": "PASS",
+        "c8_occurrence_id": "OCC-0001",
+        "consumed_state_hash": "d96da23abfa75bc1179af51e3521c97245481b5230d6da75cb66b18043ca31b9",
+        "e2_receipt_hash": "1b7bd5eb35a0321351a3ca84801bba30dce13ab134cb8708c65b32da68af9f93",
+        "failure_code": "",
+        "ok": true,
+        "red": false,
+        "stage": "later_e2",
+        "target_record_hash": "01a8284bb67952563d7f47826c5c3a5538690e9949e1a946fe2d4603341dddfa"
+      },
+      "same_root": true,
+      "same_source_tree": true,
+      "sever": "TARGET_RECORD_MUTATED",
+      "supplementary": false
+    },
+    {
+      "assertion": "bp2_joined.producer.joined_consumer_assertion",
+      "cut": "the later performed-action receipt binds the focal actor as its own actuator",
+      "edge": "PERFORMED_E2",
+      "proves": true,
+      "red": {
+        "assertion_message": "JOINED_CONSUMER_POSITIVE: chain refused at stage later_e2 with E2_ACTUATOR_SELF_BOUND",
+        "failure_code": "E2_ACTUATOR_SELF_BOUND",
+        "ok": false,
+        "red": true,
+        "stage": "later_e2"
+      },
+      "restore_basis": "same_root_exact_state_restored",
+      "restored": {
+        "assertion_message": "PASS",
+        "c8_occurrence_id": "OCC-0001",
+        "consumed_state_hash": "695e7223c6f74dea7ddc7d8447e25a82e0d59c7d0fc7a4a21a52003085505503",
+        "e2_receipt_hash": "7b7781e957c7011b5d19a9f73266df947a2b065d3408823b0e49022408ba2887",
+        "failure_code": "",
+        "ok": true,
+        "red": false,
+        "stage": "later_e2",
+        "target_record_hash": "e020314959a6012d12c766b64bb24a7661e3f6da4ee287e5bf4405c36ab3c0b6"
+      },
+      "same_root": true,
+      "same_source_tree": true,
+      "sever": "E2_SELF_ACTUATOR",
+      "supplementary": false
+    },
+    {
+      "assertion": "bp2_joined.producer.joined_consumer_assertion",
+      "cut": "the declared other-person offer is replaced by the focal actor's own performed act",
+      "edge": "BP1_OTHER_SELF_OFFER",
+      "proves": true,
+      "red": {
+        "assertion_message": "JOINED_CONSUMER_POSITIVE: response used a non-other offer",
+        "failure_code": "",
+        "ok": true,
+        "red": true,
+        "stage": "later_e2"
+      },
+      "restore_basis": "identical_fresh_root_uncut",
+      "restored": {
+        "assertion_message": "PASS",
+        "c8_occurrence_id": "OCC-0001",
+        "consumed_state_hash": "c5051e4b893a5cac0b06b92e62843e91272531ee497860864cfcf96de1c1197e",
+        "e2_receipt_hash": "7979ffa15d6d8c27a67cfaab9cfbe2292d8d1884adfc59245411b924dd26661c",
+        "failure_code": "",
+        "ok": true,
+        "red": false,
+        "stage": "later_e2",
+        "target_record_hash": "9897a07595d27528f150da1c110f0b550121958ee8f1c30602a142c8b922dc73"
+      },
+      "same_root": false,
+      "same_source_tree": true,
+      "sever": "BP1_OTHER_SELF_OFFER",
+      "supplementary": true
+    },
+    {
+      "assertion": "bp2_joined.producer.joined_consumer_assertion",
+      "cut": "the response registry is the empty production registry",
+      "edge": "RULE_A_REGISTRY_EMPTY",
+      "proves": true,
+      "red": {
+        "assertion_message": "JOINED_CONSUMER_POSITIVE: chain refused at stage later_e2 with NO_PROPOSAL",
+        "failure_code": "NO_PROPOSAL",
+        "ok": false,
+        "red": true,
+        "stage": "later_e2"
+      },
+      "restore_basis": "identical_fresh_root_uncut",
+      "restored": {
+        "assertion_message": "PASS",
+        "c8_occurrence_id": "OCC-0001",
+        "consumed_state_hash": "b659ea0e8edaa50c7d27817d94770d13dd27fe54e78a12386f8b5a599c72e3de",
+        "e2_receipt_hash": "2f9563a87cdfed10ddb9068f8f8727a3019773e5f0bbf5bb987a2264cb77e594",
+        "failure_code": "",
+        "ok": true,
+        "red": false,
+        "stage": "later_e2",
+        "target_record_hash": "1f0d0cc800485139e0784b2ca00d017f3ac1279b6f5118a2fb7d70c256c973f9"
+      },
+      "same_root": false,
+      "same_source_tree": true,
+      "sever": "RULE_A_REGISTRY_EMPTY",
+      "supplementary": true
+    },
+    {
+      "assertion": "bp2_joined.producer.joined_consumer_assertion",
+      "cut": "the CAN011 target request is marked self-issued",
+      "edge": "RULE_T_SELF_ISSUED",
+      "proves": true,
+      "red": {
+        "assertion_message": "JOINED_CONSUMER_POSITIVE: chain refused at stage later_e2 with PERMISSION_SELF_ISSUED",
+        "failure_code": "PERMISSION_SELF_ISSUED",
+        "ok": false,
+        "red": true,
+        "stage": "later_e2"
+      },
+      "restore_basis": "identical_fresh_root_uncut",
+      "restored": {
+        "assertion_message": "PASS",
+        "c8_occurrence_id": "OCC-0001",
+        "consumed_state_hash": "1efd9362c73427116eaaa5426b2e665f815c1f978f0da947e2dbae26f8c8713d",
+        "e2_receipt_hash": "0904595525d2103662a42d1b851bc1944f9caadf13d16a01acc398e8159e808e",
+        "failure_code": "",
+        "ok": true,
+        "red": false,
+        "stage": "later_e2",
+        "target_record_hash": "5940797c63899e7fa8224d598c59c3afa1646c51e2e4a9fb4cc30566e8375de7"
+      },
+      "same_root": false,
+      "same_source_tree": true,
+      "sever": "RULE_T_SELF_ISSUED",
+      "supplementary": true
+    },
+    {
+      "assertion": "bp2_joined.producer.joined_consumer_assertion",
+      "cut": "the later action time precedes the target commit time",
+      "edge": "E2_ACTION_BEFORE_COMMIT",
+      "proves": true,
+      "red": {
+        "assertion_message": "JOINED_CONSUMER_POSITIVE: chain refused at stage later_e2 with RESOURCE_NOT_YET_EFFECTIVE",
+        "failure_code": "RESOURCE_NOT_YET_EFFECTIVE",
+        "ok": false,
+        "red": true,
+        "stage": "later_e2"
+      },
+      "restore_basis": "identical_fresh_root_uncut",
+      "restored": {
+        "assertion_message": "PASS",
+        "c8_occurrence_id": "OCC-0001",
+        "consumed_state_hash": "8c65af587ca43240f9891a23057798352610da23af6c51ecd45680c79ea56c2d",
+        "e2_receipt_hash": "83ccbd8f87249cb0e9ea373d66d9d8824db81d381b5e1b6de92eccfbca367195",
+        "failure_code": "",
+        "ok": true,
+        "red": false,
+        "stage": "later_e2",
+        "target_record_hash": "71c07626b84c0fea5da84ea9eea8849f7e25cc969c7aec636741301a6fdb9a42"
+      },
+      "same_root": false,
+      "same_source_tree": true,
+      "sever": "E2_ACTION_BEFORE_COMMIT",
+      "supplementary": true
+    }
+  ]
+}
