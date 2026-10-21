@@ -1,16 +1,18 @@
-# UR checkpoint — verified UR-S1, Astra decision boundary
+# UR checkpoint — bounded ruling sealed, downshift required
 
-Current state:MODEL_SWITCH_REQUIRED__ASTRA_I3PLUS.
-User-confirmed current model6.1 Light; selected effort/API slug UNKNOWN. Last quota10%five-hour/46%weekly consumed. No silent switch.
-Existing director branch:agent/astra-ur-program-sourcefree-evidence-direction-r1; pre-update head12ff37b8a30962b3edd62207baec21806b7aa447. Enclosing Git commit is current checkpoint identity; verify direct remote before continuation.
+State: ASTRA_ARCHITECTURAL_DECISION_COMPLETE__MECHANICAL_EXECUTION_NEXT.
+Next transition: MODEL_SWITCH_REQUIRED__LOWER_INTELLIGENCE. Browser I1-I2 preferred for the complete M3 assembly; 6.1 Light sufficient for mechanical return intake.
 
-Read11_UR_S1_INTAKE_AND_ASTRA_SWITCH.md first; ready-to-paste Astra HIGH continuation and exact smallest architectural decision are there. Updated07 and08 contain mechanical register/routing. All UR-A/B/S1 evidence lanes returned; no extra evidence court commissioned.
+Read12_BOUNDED_REPAIR_ALLOCATION_DECISION.md. This is the controlling director ruling; earlier07/11 are preserved intake evidence, not current pending decisions.
+Ten nodes and P0 cuts retained. R04.byte can develop/qualify locally afterR00 against current decoder/caller; R04.joined and fullR04 completion still requireR03. Sequential pre553_issued_workload.py ownership retained. R02 uses existing validated C11 through a qualified governed row-aware adapter or compatible facade extension; choice belongs to authorized implementation owner. No replacement engine. R05 valid-empty/direct XOR/product/lifecycle/N10E distinctions preserved. R08/R09 contracts suffice with explicit real-call/authenticated-cache regressions. No architecture-changing blocker identified.
 
-UR-S1:a9fc811ecc2a10e07b5bcc2d5da385369ee59554; startupc74e3bc5bf2ac0e800d96496fbb7f78e981a83fb; one commit ahead,zero behind,five allowed files. Publication/output blob checks and four independent static source spot-checks done; cached full harness source also inspected. No native rerun.
-Facts:caller S3 respondent map wrong; tested facade static occurrence fan-out; low-level validated row-aware candidate-builder interface exists, not qualified implementation. Direct XOR counts survive; single-atom I05 valid-empty is distinct from nonempty learned product/lifecycle/currentness/N10E. N10E NOT_REACHED,Z UNRESOLVED denominator16.
+Baseline parent393f17a5225a35edfa0a2103dd4175dcadcf21a2. Existing branch agent/astra-ur-program-sourcefree-evidence-direction-r1. Enclosing commit is checkpoint identity; verify remote before writes.
+HQe2ca4bf898f62653d7c1dc15f310cee2afdd62ee, sealedR54 5335547307c868b1edb8cae273c7a4e8a0a4a58d.
+U53Ad7988b3d5d313902d883d2d8c244fd2526058410; UR-Aaaec50f421b73c5508e545bd99e937f21edec8ef; UR-B66d267cb017951fd41389aa075780838f64b6445; UR-S1a9fc811ecc2a10e07b5bcc2d5da385369ee59554.
 
-Next:User select Astra-capable model,HIGH; finite cutset/order/owner ruling, particularly R04 custody scheduling versus gate; no new search or native repair. Save substantive judgment and then proactively downshift for mechanical final A–G and implementation-flight preparation. Do not declare the entire repair program complete at publication.
+Model: runtime reports model change and user continued at requested Astra boundary; exact selected slug/effort unavailable. HIGH was requested; no false selector attestation. Initial live quota20%five-hour/48%weekly consumed; recheck live. Context remaining unavailable. No native tests in this ruling; publication/static/intake evidence and author-native limits preserved.
 
-HQe2ca4bf898f62653d7c1dc15f310cee2afdd62ee; immutableR54handoff5335547307c868b1edb8cae273c7a4e8a0a4a58d. U53Ad7988b3d5d313902d883d2d8c244fd2526058410; UR-Aaaec50f421b73c5508e545bd99e937f21edec8ef; UR-B66d267cb017951fd41389aa075780838f64b6445. No worktree rebuilt; artifact cwd has no Git checkout; guarded GitHub writes used.
+Next bounded job: assemble final A-G director delta, implementation-ready R00-R09 flight/specification overlays, source/science/CI owner holds and exact requested implementation grant from the settled ruling and existing U53A specifications. Browser can do the entire job through GitHub; no native runtime needed. Use a separate M3 worker branch/return root and exact startup provided in the launch packet. Do not silently make new architectural choices or select unsupported current code scopes. Return exact conflict to director if necessary; otherwise finish the assembly. Light then verifies scoped return and publishes the existing director's final package; no mandatory extra ChatGPT review.
 
-No production/source/scientific/CI/N11/N12 grant. J52/W52 USER_STOPPED. No new external worker launched. No local uncommitted work.
+The UR program's A-G package and actual repair campaign are not complete. No implementation commissioned or authorized. J52/W52 USER_STOPPED; originalU/E_pre unissued/null; N11NOT_READY; N12HOLD. Separate explicit user unpause, competent source/science decisions and CI administration remain required. No new external worker launched by this ruling.
+No local worktree mutation or uncommitted work; guarded GitHub object publication only.

@@ -1,3 +1,5 @@
+> **Current status:** bounded architectural decision complete; read12_BOUNDED_REPAIR_ALLOCATION_DECISION.md and RESUME_CHECKPOINT.md. Next is Browser/Light mechanical assembly, with implementation and original-science holds unchanged. Earlier intake/routing text below is historical.
+
 > **Superseded routing status:** UR-S1 has returned and its static evidence was checked. Read 11_UR_S1_INTAKE_AND_ASTRA_SWITCH.md for the current MODEL_SWITCH_REQUIRED__ASTRA_I3PLUS boundary. The text below preserves the earlier intake/necessity framing.
 
 # Current UR position — Light intake, architectural judgment pending
