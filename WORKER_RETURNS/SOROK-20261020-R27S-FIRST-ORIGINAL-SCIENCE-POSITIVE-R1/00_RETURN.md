@@ -111,4 +111,4 @@ Startup `8a71fdab2f46adccb33843824b42ba3d2f9e7a8d`; commission `bc60465bd06b801e
 
 ## PUBLICATION
 
-Substantive commit and verified remote tip: `50944dd1a3b4065e87bb6ca5d0dbb172b5db02c9`. Ordinary non-force push from sealed startup `8a71fdab2f46adccb33843824b42ba3d2f9e7a8d`; `git ls-remote` returned the same SHA on the exact branch. Only this return subtree changed. No self-adoption, no native issuance, no C11/C12 claim.
+Substantive content commit: `50944dd1a3b4065e87bb6ca5d0dbb172b5db02c9`. The publication-banking commit and exact final remote tip are reported in the worker's final response after the ordinary non-force push from sealed startup `8a71fdab2f46adccb33843824b42ba3d2f9e7a8d`; the direct `git ls-remote` readback is the authority for the final tip. Only this return subtree changed. No self-adoption, no native issuance, no C11/C12 claim.
