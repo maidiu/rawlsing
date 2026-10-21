@@ -291,25 +291,28 @@
     {
       "id": "R04",
       "priority": "P1",
-      "title": "Restart and bounded scheduling",
+      "title": "Source byte custody, restart and bounded scheduling",
       "material_refs": [
         "M08",
         "M12",
-        "M13"
+        "M13",
+        "M34"
       ],
       "precondition": "Authenticated existing custody and R03 identities",
       "transformation": "checkpoint/prior artifacts -> resumed exact outputs",
       "consumer": "resumed exact outputs",
-      "owner": "Batch/custody owner",
+      "owner": "Source snapshot/decoder custody owner with Batch owner",
       "write_scope": [
         "rawlsing_next/pre553_issued_workload.py",
-        "rawlsing_next/tests/test_universal_workload_custody.py"
+        "rawlsing_next/tests/test_universal_workload_custody.py",
+        "rawlsing_next/pre553_physical_decoder.py",
+        "rawlsing_next/tests/test_universal_source_byte_custody.py"
       ],
       "predecessors": [
         "R03"
       ],
-      "acceptance": "cold partial resume equals uninterrupted; revoked grant refuses; no duplicated/omitted unit",
-      "negative_oracle": "cold partial resume equals uninterrupted; revoked grant refuses; no duplicated/omitted unit",
+      "acceptance": "cold partial resume equals uninterrupted; revoked grant refuses; no duplicated/omitted unit; bytes actually consumed match pinned identity across lazy reopen/path replacement; immutable snapshot controls and cold replay",
+      "negative_oracle": "cold partial resume equals uninterrupted; revoked grant refuses; no duplicated/omitted unit; synthetic SAV/DTA replaced after decode must refuse or continue reading the original immutable snapshot",
       "original35_effect": "Scales finite frontiers without convenience exclusions",
       "resource_class": "Qualified sourcefree native Python/Git, isolated checkout, real existing owner dependencies; measure finite frontier cardinality/runtime/memory before scale",
       "provider_sufficiency": "Bounded sourcefree coding/tests: competent implementation agent with native Python and cold-process tooling; integration/science/causal adjudication: I3+ independent reviewer. Model label alone is not qualification.",
@@ -333,12 +336,19 @@
           "commit": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
           "path": "rawlsing_next/pre553_discovery_adaptive.py",
           "blob": "58e32770381fa8d901701d6a2c676f28261aa3e3"
+        },
+        {
+          "id": "cx_decoder",
+          "commit": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+          "path": "rawlsing_next/pre553_physical_decoder.py",
+          "blob": "d2a074a41fb556a1cd5928a5fe1421ef3672a4e5"
         }
       ],
       "base_commit": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
       "merge_rule": "Exact listed reference bodies are recovery inputs; do not merge unrelated worker branches. Before implementation reconcile current adopted owner and require independent compatibility review for any differing body.",
       "contract": "07_UNIVERSAL_SOURCE_ENVELOPE_WORKLOAD_CONTRACTS.md",
-      "first_unblock": "resumed exact outputs"
+      "first_unblock": "resumed exact outputs",
+      "new_evidence": "Report17; direct native mutable-path failure. No implementation authorization; reconcile actual snapshot owner before choosing strategy."
     },
     {
       "id": "R05",

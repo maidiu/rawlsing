@@ -46,3 +46,7 @@ Full B49→G50→U43→I05 joined sourcefree run; actual Batch replay/duplicatio
 - Lazy physical decoding: in an isolated synthetic SAV and DTA environment, pin bytes, mutate/replace only the synthetic source between decode and iteration, and inspect whether caller snapshot custody prevents mismatch or native boundary refuses. A positive immutable snapshot control is required; do not infer a bug merely from lazy I/O.
 - A42: use its frozen synthetic/sourcefree bank fixtures and unchanged native helpers to test a sourcefree receipt naming a global relation. Record both row status and conservative terminal verdict; verify issuer authorization outside core before classifying a failure. No original grade or real authority is issued.
 - M1: trace exact registered callable provenance against deployment/authority contract; a caller-supplied fingerprint alone is not independent executable authentication. Test only after identifying the intended trust boundary.
+
+## R04 source-custody amendment — unissued
+
+Report17 banks eight direct native SAV/DTA custody cases; report15 banks six A42 cases. Do not mechanically repeat these witnesses. Future authorized R04 work must prove consumed bytes match the source identity across lazy phases/reopen/replacement/cold replay, using the actual retention/decoder/Batch owners. The direct decoder failure does not prove downstream contamination. All commissions remain unissued.

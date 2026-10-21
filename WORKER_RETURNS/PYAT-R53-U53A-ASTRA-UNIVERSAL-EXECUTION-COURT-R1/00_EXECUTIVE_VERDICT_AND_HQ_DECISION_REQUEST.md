@@ -49,3 +49,7 @@ Report15 supersedes the A42 global-label hypothesis with six isolated synthetic 
 ## CLOSED35 documentary continuation
 
 Report16 and evidence/CLOSED35_DOCUMENTARY_RECONCILIATION.json reconcile35 canonical filenames/digests/sizes,31SAV/4DTA, the historical38-surface denominator and later L2 documentary outcomes. Remaining gaps concern current adoption, exact current operation grants and native/scientific execution; canonical identity metadata and historical authority must no longer be described as wholly unexamined. No source files were opened and no new original measurement or authority was issued.
+
+## Decoder custody continuation
+
+Report17 reproduces mutable-path byte-identity drift in exact SAV and DTA decoder calls, with immutable and stale-hash controls. Eight new cases bring fresh U53A native characterization to14. Current caller immutability and full C11/Batch propagation remain unverified. M34 and the proposed R04 custody scope record the narrow repair need; no implementation or authority was issued.

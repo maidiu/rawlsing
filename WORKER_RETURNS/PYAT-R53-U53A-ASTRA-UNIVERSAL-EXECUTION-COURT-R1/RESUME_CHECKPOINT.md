@@ -1,3 +1,7 @@
+# Latest continuation — report17
+
+Parent557c455c57a941bbd8728e61aef8368faf85d195. Eight qualified direct decoder synthetic cases reproduce SAV/DTA mutable-path identity drift; fresh U53A native total14 (A426 + decoder8), inherited P53T/B53H unchanged. Read17,16,15 then prior handoff. Source index pins exact code/runtime, report-only harness/receipts are banked. No original respondents, production repairs or authority. Next: current immutable retention contract and actual downstream propagation; M1 registered validators/B5 restore; later L2 current adoption/realization; full native joins still unrun. Prior static decoder hypothesis is now a bounded native finding. Latest observed usage81%; user explicitly overrode80%, but retain frequent verified checkpoints.
+
 # Latest continuation — report16
 
 Current parent02f6afe01f9a5c7f525705413604a15287ae30a2. The usage window reset; continuation was permitted. Report16 now reconciles35-source identity/format/alias metadata and later L2 branch documentary outcomes. Read16 then15/14/13. Do not repeat the completed cross-registry join. Native count remains6 isolated A42 cases. Next highest priorities: current L2 adoption/realization; decoder lazy-path custody; M1 registered validators/B5 restore; F6 and complete native joins. All dispositions/holds preserved. Source receipts/raw carriers were not opened. The user override of80% remains in force; bank frequently before capacity exhaustion.

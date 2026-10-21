@@ -100,3 +100,7 @@ Remaining adoption/C11/decoder/validator/A42 questions in12 are pre-launch recon
 ## Sequential shared-file correction
 
 R03 also owns initial recovery of rawlsing_next/pre553_issued_workload.py; R04 custody edits begin only after R03 acceptance. R05 may recover the E41 extension into proposed rawlsing_next/pre553_universal_empirical_extension.py. Both are explicitly included in08's final allowlists; archived originals remain read-only.
+
+## R04 source-custody amendment — unissued
+
+Report17 banks eight direct native SAV/DTA custody cases; report15 banks six A42 cases. Do not mechanically repeat these witnesses. Future authorized R04 work must prove consumed bytes match the source identity across lazy phases/reopen/replacement/cold replay, using the actual retention/decoder/Batch owners. The direct decoder failure does not prove downstream contamination. All commissions remain unissued.

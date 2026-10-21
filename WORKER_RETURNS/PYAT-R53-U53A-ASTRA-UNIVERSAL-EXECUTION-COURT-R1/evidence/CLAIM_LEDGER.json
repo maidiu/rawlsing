@@ -1262,6 +1262,22 @@
         "sha256": "a2dd73b9b0f43a81ba1ad57b8038184319ea6f92f62639e0180ceff39523d00f"
       },
       "uncertainty": "Report16; historical documentary holdings are not new grants or current deployment"
+    },
+    {
+      "id": "M34",
+      "claim": "Mutable path replacement emits new values under old digest in SAV and DTA; caller immutable-snapshot contract and downstream propagation remain unqualified; see17",
+      "classification": "REPAIR_FUNCTIONAL_BUG",
+      "grade": "U53A_NATIVE_SYNTHETIC_DIRECT_DECODER",
+      "source": "cx_decoder",
+      "lines": "108-148,439-519",
+      "original": {
+        "commit": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+        "path": "rawlsing_next/pre553_physical_decoder.py",
+        "blob": "d2a074a41fb556a1cd5928a5fe1421ef3672a4e5",
+        "sha256": "a75a8ff72310949b84adbe682a01375c5dcf5dcee69e94e2a4a8a9b39e17017b"
+      },
+      "execution": "evidence/decoder_synthetic_native/receipt.json",
+      "uncertainty": "Full caller/retention/C11/Batch propagation untested; immutable snapshot contract may prevent scenario"
     }
   ],
   "proposal_notice": "07\u201311 normative designs are recommendations, not observed execution. Their premises map to material M and historical H claims."

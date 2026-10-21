@@ -1,0 +1,78 @@
+{
+  "schema": "U53A_DECODER_NATIVE_SYNTHETIC_CUSTODY@1",
+  "passed": 8,
+  "failed": 0,
+  "cases": [
+    {
+      "case": "sav_immutable_control",
+      "pass": true,
+      "values": [
+        1.0,
+        2.0
+      ],
+      "sha256": "4a29054fd0ef706ab138dee135434f6629fcf2b0dd61d1b58d1d8560d7c3d8da"
+    },
+    {
+      "case": "sav_path_replacement",
+      "pass": true,
+      "engineering_result": "NEW_BYTES_EMITTED_UNDER_OLD_INCIDENCE_DIGEST",
+      "old_source_sha256": "4a29054fd0ef706ab138dee135434f6629fcf2b0dd61d1b58d1d8560d7c3d8da",
+      "actual_source_sha256": "aa78ce4c0640b27f7df164d8d7859cc1008786c4b7f7bb77f9bd83ed52f4e6b4",
+      "reported_source_sha256": "4a29054fd0ef706ab138dee135434f6629fcf2b0dd61d1b58d1d8560d7c3d8da",
+      "metadata_digest_unchanged": true,
+      "observed_values": [
+        91.0,
+        92.0
+      ],
+      "original_row_count": 2
+    },
+    {
+      "case": "sav_stale_expected_hash_rejected_on_new_decode",
+      "pass": true,
+      "refusal": "source sha256 mismatch before governed decode"
+    },
+    {
+      "case": "sav_new_expected_hash_control",
+      "pass": true,
+      "sha256": "aa78ce4c0640b27f7df164d8d7859cc1008786c4b7f7bb77f9bd83ed52f4e6b4"
+    },
+    {
+      "case": "dta_immutable_control",
+      "pass": true,
+      "values": [
+        1.0,
+        2.0
+      ],
+      "sha256": "7190faa503bb2c436a14fc283e10cf43f8accd3a089bf587a6c6bc08295a5343"
+    },
+    {
+      "case": "dta_path_replacement",
+      "pass": true,
+      "engineering_result": "NEW_BYTES_EMITTED_UNDER_OLD_INCIDENCE_DIGEST",
+      "old_source_sha256": "7190faa503bb2c436a14fc283e10cf43f8accd3a089bf587a6c6bc08295a5343",
+      "actual_source_sha256": "920aca5d5ff5392c63851c2bea46e584eb94612af59c248f17261134dfd93d0c",
+      "reported_source_sha256": "7190faa503bb2c436a14fc283e10cf43f8accd3a089bf587a6c6bc08295a5343",
+      "metadata_digest_unchanged": true,
+      "observed_values": [
+        91.0,
+        92.0
+      ],
+      "original_row_count": 2
+    },
+    {
+      "case": "dta_stale_expected_hash_rejected_on_new_decode",
+      "pass": true,
+      "refusal": "source sha256 mismatch before governed decode"
+    },
+    {
+      "case": "dta_new_expected_hash_control",
+      "pass": true,
+      "sha256": "920aca5d5ff5392c63851c2bea46e584eb94612af59c248f17261134dfd93d0c"
+    }
+  ],
+  "source_blob": "d2a074a41fb556a1cd5928a5fe1421ef3672a4e5",
+  "source_sha256": "a75a8ff72310949b84adbe682a01375c5dcf5dcee69e94e2a4a8a9b39e17017b",
+  "original_source_reads": 0,
+  "scope": "Direct exact decoder; two generated numeric formats; unchanged metadata/schema and changed cell values; no C11/backend/Batch propagation tested",
+  "no_semantic_or_authority_issuance": true
+}
