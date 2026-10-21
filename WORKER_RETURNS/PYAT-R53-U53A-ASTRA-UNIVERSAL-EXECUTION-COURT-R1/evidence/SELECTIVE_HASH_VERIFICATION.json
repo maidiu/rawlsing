@@ -1,0 +1,54 @@
+{
+  "algorithm": "SHA256 UTF-8 pure JavaScript in orchestration runtime",
+  "known_vectors_pass": true,
+  "checks": [
+    {
+      "id": "empty",
+      "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "pass": true
+    },
+    {
+      "id": "abc",
+      "actual": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad",
+      "expected": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad",
+      "pass": true
+    },
+    {
+      "id": "00_RETURN.md",
+      "actual": "de4bbb15d44dca384b396fd5f77a4c730b8b51d4024d6c504c8f8c9ad1e4edb9",
+      "expected": "de4bbb15d44dca384b396fd5f77a4c730b8b51d4024d6c504c8f8c9ad1e4edb9",
+      "pass": true
+    },
+    {
+      "id": "04_UNIVERSAL_PRODUCER_CONSUMER_GRAPH.jsonl",
+      "actual": "2e767cc4711b1cf9859d5583c526cc7ee31e4f6ff019832ddf72239a565475cd",
+      "expected": "2e767cc4711b1cf9859d5583c526cc7ee31e4f6ff019832ddf72239a565475cd",
+      "pass": true
+    },
+    {
+      "id": "05_UNRESOLVED_DYNAMIC_AND_MISSING_EDGES.tsv",
+      "actual": "51053b1ceea71a63cd900afdcd948f511f1519b51e9ef0bb79344c35d1d1d689",
+      "expected": "51053b1ceea71a63cd900afdcd948f511f1519b51e9ef0bb79344c35d1d1d689",
+      "pass": true
+    },
+    {
+      "id": "07_HISTORIC_REQUIREMENT_TO_ACCEPTANCE_PROPAGATION.tsv",
+      "actual": "abe9e2e33608b4163a386f1aa5d9735e2a4d37ba29b67af98c4e0353d7f5bada",
+      "expected": "abe9e2e33608b4163a386f1aa5d9735e2a4d37ba29b67af98c4e0353d7f5bada",
+      "pass": true
+    },
+    {
+      "id": "tools/refs_inventory.py",
+      "actual": "31fead175c416172ca8a88ef30472e076299a7e957057060057357a50e0aa94b",
+      "expected": "31fead175c416172ca8a88ef30472e076299a7e957057060057357a50e0aa94b",
+      "pass": true
+    },
+    {
+      "id": "tools/graph_build.py",
+      "actual": "474e5587de6df947511dda43342cd799c045a9a45e2aae18416036393f5264ac",
+      "expected": "474e5587de6df947511dda43342cd799c045a9a45e2aae18416036393f5264ac",
+      "pass": true
+    }
+  ]
+}
