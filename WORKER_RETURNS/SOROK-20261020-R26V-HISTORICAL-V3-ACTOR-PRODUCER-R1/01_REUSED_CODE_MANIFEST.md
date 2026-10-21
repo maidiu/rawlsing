@@ -1,6 +1,6 @@
 # R26V reused-code manifest
 
-- BP2P4J `5b3e6577400ea1d88971ae6b48e41a118b8059ae`: staged `bp2p4/` and 150-file `vendor/`; exact source manifest in `evidence/bp2p4j_vendor_source_manifest.json`.
+- BP2P4J `5b3e6577400ea1d88971ae6b48e41a118b8059ae`: staged `bp2p4/` and vendor **code**; the origin `vendor/source_manifest.json` has 150 files, but upstream `tests/` were excluded from this candidate to keep unproven upstream courts out of the changed-gate scope. Exact origin manifest is in `evidence/bp2p4j_vendor_source_manifest.json`.
 - BP2 `5065e2e6934e9d5bca800cbf88c79e461bcf2393`: `bp2_joined` producer/ports/binding and BP1/G18/C9R/C8 vendor.
 - BP4 `d868e82c7c83def2df18295244d93af9706e647f`: C10/C12/M6/A0–A3 product.
 - BP1 `vendor/bp2/vendor/bp1/bp1/{composer,ledger,source,canon}.py`: actor source/ledger/composer.
