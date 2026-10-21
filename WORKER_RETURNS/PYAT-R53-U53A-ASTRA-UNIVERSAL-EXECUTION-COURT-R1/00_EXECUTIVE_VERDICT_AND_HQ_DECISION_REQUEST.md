@@ -45,3 +45,7 @@ Report14 resolves the inspected excluded C11 facade through exact repair, instal
 ## Later native continuation
 
 Report15 supersedes the A42 global-label hypothesis with six isolated synthetic native characterization cases. Direct intake can emit an ACCEPTED global row from a changed sourcefree label while terminal N11 remains NOT_READY. Actual bank declarations remain conservative; adoption/external reach is unresolved. All dispositions remain unchanged.
+
+## CLOSED35 documentary continuation
+
+Report16 and evidence/CLOSED35_DOCUMENTARY_RECONCILIATION.json reconcile35 canonical filenames/digests/sizes,31SAV/4DTA, the historical38-surface denominator and later L2 documentary outcomes. Remaining gaps concern current adoption, exact current operation grants and native/scientific execution; canonical identity metadata and historical authority must no longer be described as wholly unexamined. No source files were opened and no new original measurement or authority was issued.

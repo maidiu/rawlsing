@@ -1,3 +1,7 @@
+# Latest continuation — report16
+
+Current parent02f6afe01f9a5c7f525705413604a15287ae30a2. The usage window reset; continuation was permitted. Report16 now reconciles35-source identity/format/alias metadata and later L2 branch documentary outcomes. Read16 then15/14/13. Do not repeat the completed cross-registry join. Native count remains6 isolated A42 cases. Next highest priorities: current L2 adoption/realization; decoder lazy-path custody; M1 registered validators/B5 restore; F6 and complete native joins. All dispositions/holds preserved. Source receipts/raw carriers were not opened. The user override of80% remains in force; bank frequently before capacity exhaustion.
+
 # Latest continuation — report15
 
 User explicitly overrode the80% stop; latest usage95%. Six fresh isolated synthetic A42 cases now banked, with native row-label inconsistency reproduced and terminal NOT_READY preserved. Read15 first for the latest result, then14/13 and the remaining steps below. Parent154763bb06a4cd154d32ce3f2d02ea52831ea196; enclosing commit is this publication. No production repairs, original-data reads or authority. Prior zero-native and80%-stop statements below are historical and superseded by this paragraph. Full joins remain unrun.

@@ -31,3 +31,7 @@ Access blocker substantially removed; important direct code/receipt counterexamp
 ## 2026-10-21 cross-machine continuation
 
 Report14 and evidence/CONTINUATION_READBACK.json add exact selected-body reads and the C11 adoption chain. New cx_* source-index entries record commits, blobs, SHA256 and inspected ranges. A full-file content hash is custody, not a claim all its lines were semantically audited. C11 candidate diffs are complete. No sourcefree native suite was executed; environment qualification remains open. Live controls observations are endpoint-scoped. Original35,2214 excluded refs and inherited execution denominators are unchanged.
+
+## CLOSED35 documentary continuation
+
+Report16 and evidence/CLOSED35_DOCUMENTARY_RECONCILIATION.json reconcile35 canonical filenames/digests/sizes,31SAV/4DTA, the historical38-surface denominator and later L2 documentary outcomes. Remaining gaps concern current adoption, exact current operation grants and native/scientific execution; canonical identity metadata and historical authority must no longer be described as wholly unexamined. No source files were opened and no new original measurement or authority was issued.

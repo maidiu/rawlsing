@@ -1,0 +1,1580 @@
+{
+  "schema": "U53A_CLOSED35_DOCUMENTARY_RECONCILIATION@1",
+  "grade": "INDEPENDENT_METADATA_JOIN_AND_DOCUMENTARY_READ__NO_RAW_REHASH_OR_SOURCE_EXECUTION",
+  "source_count": 35,
+  "formats": {
+    "SAV": 31,
+    "DTA": 4
+  },
+  "hash_filename_size_mismatches": [],
+  "source_ids_unique": true,
+  "canonical_hashes_unique": true,
+  "historical_census_counts": {
+    "BLOCKED": 15,
+    "PASS": 20
+  },
+  "historical_38_surfaces": {
+    "registry": 38,
+    "typed_join_rows": 33,
+    "typed_join_absent_locator_gap_surfaces": [
+      "S017",
+      "S018",
+      "S019",
+      "S035",
+      "S036"
+    ],
+    "dispositions": {
+      "AUTHORITY_BLOCKED": 20,
+      "GENERIC_LAW_GAP": 9,
+      "SOURCE_SPECIFIC_REPRESENTATION_GAP": 5,
+      "EXACT_BOUNDED_BRIDGE_PASS": 4
+    }
+  },
+  "documentary_adoption_limit": "Branch HQ fan-in records; selected branch heads not ancestors of startup or observed live integration. This is not proof authority absent under other paths; no current execution/adoption inferred.",
+  "raw_carrier_retrieval_performed": false,
+  "rows": [
+    {
+      "source_id": "SRC01",
+      "documentary_name": "Afrobarometer R1",
+      "canonical_filename": "Afro Barometer Round 1.sav",
+      "canonical_sha256": "6c9869a7cc7321cc74efb708835e21c8b65286a25c76deac45aba84d75697ee2",
+      "size_bytes": 4492565,
+      "format": "SAV",
+      "family": "Afrobarometer",
+      "wave_or_release": "Round 1",
+      "source_identity_rule": "SOURCE_SHA256+ROW_ORDINAL",
+      "accepted_decoder_mode": "SAV_NATIVE_GOVERNED",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_sav",
+        "encoding": null,
+        "generic_decoder_admission": "SUPPORTED"
+      },
+      "compatibility_scope": "NO_COMPATIBILITY_OVERRIDE__NO_SEMANTIC_CLAIM",
+      "historical_acquisition": {
+        "state": "EXACT_ARCHIVE_MEMBER_AVAILABLE",
+        "transport_filename": "surveys.zip",
+        "archive_member_path": "surveys/Afro Barometer Round 1.sav"
+      },
+      "historical_representation": {
+        "census": "BLOCKED",
+        "classification": "REPRESENTATION_AUTHORITY_STILL_BLOCKED",
+        "regimes": "R01_R5_EXACT_TYPED_IDENTITY_NO_COERCION|R02_SAV_PYREADSTAT_NATIVE_PHYSICAL",
+        "debt": "",
+        "exceptions": "",
+        "governed_surfaces": [
+          "S020",
+          "S021"
+        ]
+      },
+      "historical_prep72_launch_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED",
+      "historical_unknowns": "CASENUMB-to-codebook RESPNUMB relation and national-instrument equivalence stay bounded UNKNOWN",
+      "later_l2_disposition": "NO_ADDITIONAL_L2_PACKET_APPLICABLE_IN_THIS_JOIN",
+      "later_packet_selected_fields": {},
+      "current_usage_rights": "NOT_ISSUED_OR_QUALIFIED_BY_THIS_COURT__HISTORICAL_PREPARATION_AND_BRANCH_ADOPTION_NOT_CURRENT_OPERATION_GRANT",
+      "current_original_U_E_pre": "NULL_WITH_CAUSE",
+      "new_original_measured": false
+    },
+    {
+      "source_id": "SRC02",
+      "documentary_name": "Afrobarometer R5",
+      "canonical_filename": "Afro Barometer Round 5.sav",
+      "canonical_sha256": "c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651",
+      "size_bytes": 49689458,
+      "format": "SAV",
+      "family": "Afrobarometer",
+      "wave_or_release": "Round 5",
+      "source_identity_rule": "SOURCE_SHA256+ROW_ORDINAL",
+      "accepted_decoder_mode": "SAV_NATIVE_GOVERNED",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_sav",
+        "encoding": null,
+        "generic_decoder_admission": "SUPPORTED"
+      },
+      "compatibility_scope": "NO_COMPATIBILITY_OVERRIDE__NO_SEMANTIC_CLAIM",
+      "historical_acquisition": {
+        "state": "EXACT_ARCHIVE_MEMBER_AVAILABLE",
+        "transport_filename": "surveys.zip",
+        "archive_member_path": "surveys/Afro Barometer Round 5.sav"
+      },
+      "historical_representation": {
+        "census": "BLOCKED",
+        "classification": "REPRESENTATION_AUTHORITY_STILL_BLOCKED",
+        "regimes": "R01_R5_EXACT_TYPED_IDENTITY_NO_COERCION|R02_SAV_PYREADSTAT_NATIVE_PHYSICAL",
+        "debt": "",
+        "exceptions": "",
+        "governed_surfaces": [
+          "S016"
+        ]
+      },
+      "historical_prep72_launch_class": "L2_DOCUMENTARY_AUTHORITY_REQUIRED_BEFORE_SEMANTIC_CERTIFICATION",
+      "historical_unknowns": "Q10B/Q47C=997 semantics and COUNTRY/codebook carrier binding",
+      "later_l2_disposition": "L2R_NAMED_RESIDUALS_FROZEN__NO_GENERAL_SEMANTIC_UPGRADE",
+      "later_packet_selected_fields": {
+        "irreducible_unknown_set": [
+          {
+            "unknown_id": "AFR5-U02",
+            "surface": "Q47C=997",
+            "state": "DOCUMENTARY_AUTHORITY_UNKNOWN_AFTER_TARGETED_RECOVERY",
+            "evidence_exhausted": [
+              "official final merged R5 codebook",
+              "DataFirst exact merged Q47C variable dictionary",
+              "South Africa country codebook/routing fact",
+              "recognized country archive dictionaries"
+            ],
+            "known_separate_routing_fact": "South Africa Q47C was not asked.",
+            "fail_closed": "Preserve numeric 997 as inherited physical user-missing distinct from system missing; assign no semantic label."
+          },
+          {
+            "unknown_id": "AFR5-U04B",
+            "surface": "EAST.AFR exact raw alias/semantics",
+            "state": "DOCUMENTARY_AUTHORITY_UNKNOWN_AFTER_TARGETED_RECOVERY",
+            "known_archive_analogue": "East.Africa.only = COUNTRY.BY.REGION = 2 (FILTER)",
+            "fail_closed": "Preserve opaque unless exact raw-label/alias identity is separately proved."
+          },
+          {
+            "unknown_id": "AFR5-U04C",
+            "surface": "SOUTHERN exact raw alias/semantics",
+            "state": "DOCUMENTARY_AUTHORITY_UNKNOWN_AFTER_TARGETED_RECOVERY",
+            "known_archive_analogue": "Southern.Africa.only = COUNTRY.BY.REGION = 3 (FILTER)",
+            "fail_closed": "Preserve opaque unless exact raw-label/alias identity is separately proved."
+          },
+          {
+            "unknown_id": "AFR5-U04D",
+            "surface": "NORTH.AF exact raw alias/semantics",
+            "state": "DOCUMENTARY_AUTHORITY_UNKNOWN_AFTER_TARGETED_RECOVERY",
+            "known_archive_analogue": "North.Africa.only = COUNTRY.BY.REGION = 4 (FILTER)",
+            "fail_closed": "Preserve opaque unless exact raw-label/alias identity is separately proved."
+          },
+          {
+            "unknown_id": "AFR5-U04E",
+            "surface": "R1.ONLY",
+            "state": "DOCUMENTARY_AUTHORITY_UNKNOWN_AFTER_TARGETED_RECOVERY",
+            "known_archive_presence": "R1.only exists in merged dictionary with self-label only.",
+            "fail_closed": "No membership, routing, not-asked, or eligibility semantics."
+          },
+          {
+            "unknown_id": "AFR5-U04F",
+            "surface": "R2.ONLY",
+            "state": "DOCUMENTARY_AUTHORITY_UNKNOWN_AFTER_TARGETED_RECOVERY",
+            "known_archive_presence": "R2.only exists in merged dictionary with self-label only.",
+            "fail_closed": "No membership, routing, not-asked, or eligibility semantics."
+          },
+          {
+            "unknown_id": "AFR5-U04G",
+            "surface": "R3.ONLY",
+            "state": "DOCUMENTARY_AUTHORITY_UNKNOWN_AFTER_TARGETED_RECOVERY",
+            "known_archive_presence": "R3.only exists in merged dictionary with self-label only.",
+            "fail_closed": "No membership, routing, not-asked, or eligibility semantics."
+          },
+          {
+            "unknown_id": "AFR5-U04H",
+            "surface": "R4.ONLY",
+            "state": "DOCUMENTARY_AUTHORITY_UNKNOWN_AFTER_TARGETED_RECOVERY",
+            "known_archive_presence": "R4.only exists in merged dictionary with self-label only.",
+            "fail_closed": "No membership, routing, not-asked, or eligibility semantics."
+          }
+        ],
+        "residual_summary": {
+          "original_residual_surfaces": 4,
+          "fully_closed": [
+            "Q10B=997",
+            "raw COUNTRY carrier binding"
+          ],
+          "partially_closed": [
+            "administrative routing carriers"
+          ],
+          "frozen_irreducible": [
+            "Q47C=997",
+            "EAST.AFR exact raw alias/semantics",
+            "SOUTHERN exact raw alias/semantics",
+            "NORTH.AF exact raw alias/semantics",
+            "R1.ONLY",
+            "R2.ONLY",
+            "R3.ONLY",
+            "R4.ONLY"
+          ]
+        },
+        "ready_for_source_specific_realization": false,
+        "terminal": "CLOSED35_L2R_AFROBAROMETER_R5_RESIDUAL_AUTHORITY_FROZEN__IRREDUCIBLE_UNKNOWN_SET_RETURNED"
+      },
+      "current_usage_rights": "NOT_ISSUED_OR_QUALIFIED_BY_THIS_COURT__HISTORICAL_PREPARATION_AND_BRANCH_ADOPTION_NOT_CURRENT_OPERATION_GRANT",
+      "current_original_U_E_pre": "NULL_WITH_CAUSE",
+      "new_original_measured": false
+    },
+    {
+      "source_id": "SRC03",
+      "documentary_name": "Afrobarometer R9",
+      "canonical_filename": "Afro Barometer Round 9.sav",
+      "canonical_sha256": "3afcecd08d2f4b531a926d455a943084d9f71c1276b4f3a58e77a9162e6879d8",
+      "size_bytes": 70621348,
+      "format": "SAV",
+      "family": "Afrobarometer",
+      "wave_or_release": "Round 9",
+      "source_identity_rule": "SOURCE_SHA256+ROW_ORDINAL",
+      "accepted_decoder_mode": "SAV_NATIVE_GOVERNED",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_sav",
+        "encoding": null,
+        "generic_decoder_admission": "SUPPORTED"
+      },
+      "compatibility_scope": "NO_COMPATIBILITY_OVERRIDE__NO_SEMANTIC_CLAIM",
+      "historical_acquisition": {
+        "state": "EXACT_ARCHIVE_MEMBER_AVAILABLE",
+        "transport_filename": "surveys.zip",
+        "archive_member_path": "surveys/Afro Barometer Round 9.sav"
+      },
+      "historical_representation": {
+        "census": "BLOCKED",
+        "classification": "SOURCE_BOUNDED_EXCEPTION_REQUIRED",
+        "regimes": "R01_R5_EXACT_TYPED_IDENTITY_NO_COERCION|R02_SAV_PYREADSTAT_NATIVE_PHYSICAL",
+        "debt": "",
+        "exceptions": "X01_AFR9_GOVERNED_SURFACE_LOCATOR_MISMATCH",
+        "governed_surfaces": [
+          "S017",
+          "S018",
+          "S019"
+        ]
+      },
+      "historical_prep72_launch_class": "L2_DOCUMENTARY_AUTHORITY_REQUIRED_BEFORE_SEMANTIC_CERTIFICATION",
+      "historical_unknowns": "Q78F, Q118_11, Q47C=94, V397_A/V399_A documentary bindings",
+      "later_l2_disposition": "L2R_NAMED_RESIDUALS_FROZEN__NO_GENERAL_SEMANTIC_UPGRADE",
+      "later_packet_selected_fields": {
+        "terminal": "CLOSED35_L2R_AFROBAROMETER_R9_RESIDUAL_AUTHORITY_FROZEN__EXACT_UNKNOWN_SET_RETURNED"
+      },
+      "current_usage_rights": "NOT_ISSUED_OR_QUALIFIED_BY_THIS_COURT__HISTORICAL_PREPARATION_AND_BRANCH_ADOPTION_NOT_CURRENT_OPERATION_GRANT",
+      "current_original_U_E_pre": "NULL_WITH_CAUSE",
+      "new_original_measured": false
+    },
+    {
+      "source_id": "SRC04",
+      "documentary_name": "Arab Barometer W1",
+      "canonical_filename": "Arab Barometer Wave 1.sav",
+      "canonical_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18",
+      "size_bytes": 1531099,
+      "format": "SAV",
+      "family": "Arab Barometer",
+      "wave_or_release": "Wave 1",
+      "source_identity_rule": "SOURCE_SHA256+ROW_ORDINAL",
+      "accepted_decoder_mode": "SAV_NATIVE_GOVERNED",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_sav",
+        "encoding": null,
+        "generic_decoder_admission": "SUPPORTED"
+      },
+      "compatibility_scope": "NO_COMPATIBILITY_OVERRIDE__NO_SEMANTIC_CLAIM",
+      "historical_acquisition": {
+        "state": "EXACT_ARCHIVE_MEMBER_AVAILABLE",
+        "transport_filename": "surveys.zip",
+        "archive_member_path": "surveys/Arab Barometer Wave 1.sav"
+      },
+      "historical_representation": {
+        "census": "BLOCKED",
+        "classification": "REPRESENTATION_AUTHORITY_STILL_BLOCKED",
+        "regimes": "R01_R5_EXACT_TYPED_IDENTITY_NO_COERCION|R02_SAV_PYREADSTAT_NATIVE_PHYSICAL",
+        "debt": "",
+        "exceptions": "",
+        "governed_surfaces": [
+          "S022",
+          "S023"
+        ]
+      },
+      "historical_prep72_launch_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED",
+      "historical_unknowns": "display-text normalization and design/routing details remain bounded UNKNOWN",
+      "later_l2_disposition": "NO_ADDITIONAL_L2_PACKET_APPLICABLE_IN_THIS_JOIN",
+      "later_packet_selected_fields": {},
+      "current_usage_rights": "NOT_ISSUED_OR_QUALIFIED_BY_THIS_COURT__HISTORICAL_PREPARATION_AND_BRANCH_ADOPTION_NOT_CURRENT_OPERATION_GRANT",
+      "current_original_U_E_pre": "NULL_WITH_CAUSE",
+      "new_original_measured": false
+    },
+    {
+      "source_id": "SRC05",
+      "documentary_name": "Arab Barometer W2",
+      "canonical_filename": "Arab Barometer Wave 2.sav",
+      "canonical_sha256": "6529841b97bd56463490d810ad24ceaa4866066d12e4651a7081682d413606a1",
+      "size_bytes": 7192678,
+      "format": "SAV",
+      "family": "Arab Barometer",
+      "wave_or_release": "Wave 2",
+      "source_identity_rule": "SOURCE_SHA256+ROW_ORDINAL",
+      "accepted_decoder_mode": "SAV_NATIVE_GOVERNED",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_sav",
+        "encoding": null,
+        "generic_decoder_admission": "SUPPORTED"
+      },
+      "compatibility_scope": "NO_COMPATIBILITY_OVERRIDE__NO_SEMANTIC_CLAIM",
+      "historical_acquisition": {
+        "state": "EXACT_ARCHIVE_MEMBER_AVAILABLE",
+        "transport_filename": "surveys.zip",
+        "archive_member_path": "surveys/Arab Barometer Wave 2.sav"
+      },
+      "historical_representation": {
+        "census": "BLOCKED",
+        "classification": "SOURCE_BOUNDED_EXCEPTION_REQUIRED",
+        "regimes": "R01_R5_EXACT_TYPED_IDENTITY_NO_COERCION|R02_SAV_PYREADSTAT_NATIVE_PHYSICAL",
+        "debt": "",
+        "exceptions": "X02_ARAB2_GOVERNED_SURFACE_LOCATOR_MISMATCH",
+        "governed_surfaces": [
+          "S035",
+          "S036"
+        ]
+      },
+      "historical_prep72_launch_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED",
+      "historical_unknowns": "ordinary code-0 semantics and WT estimand remain bounded UNKNOWN",
+      "later_l2_disposition": "NO_ADDITIONAL_L2_PACKET_APPLICABLE_IN_THIS_JOIN",
+      "later_packet_selected_fields": {},
+      "current_usage_rights": "NOT_ISSUED_OR_QUALIFIED_BY_THIS_COURT__HISTORICAL_PREPARATION_AND_BRANCH_ADOPTION_NOT_CURRENT_OPERATION_GRANT",
+      "current_original_U_E_pre": "NULL_WITH_CAUSE",
+      "new_original_measured": false
+    },
+    {
+      "source_id": "SRC06",
+      "documentary_name": "Arab Barometer W5",
+      "canonical_filename": "Arab Barometer Wave 5.sav",
+      "canonical_sha256": "6a5cbad637ce1546833a1d4812ba6d1e8d75f85b5b199b0cf3ec5cf456068dbc",
+      "size_bytes": 11637259,
+      "format": "SAV",
+      "family": "Arab Barometer",
+      "wave_or_release": "Wave 5",
+      "source_identity_rule": "SOURCE_SHA256+ROW_ORDINAL",
+      "accepted_decoder_mode": "SAV_NATIVE_GOVERNED",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_sav",
+        "encoding": null,
+        "generic_decoder_admission": "SUPPORTED"
+      },
+      "compatibility_scope": "NO_COMPATIBILITY_OVERRIDE__NO_SEMANTIC_CLAIM",
+      "historical_acquisition": {
+        "state": "EXACT_ARCHIVE_MEMBER_AVAILABLE",
+        "transport_filename": "surveys.zip",
+        "archive_member_path": "surveys/Arab Barometer Wave 5.sav"
+      },
+      "historical_representation": {
+        "census": "BLOCKED",
+        "classification": "REPRESENTATION_AUTHORITY_STILL_BLOCKED",
+        "regimes": "R01_R5_EXACT_TYPED_IDENTITY_NO_COERCION|R02_SAV_PYREADSTAT_NATIVE_PHYSICAL",
+        "debt": "",
+        "exceptions": "",
+        "governed_surfaces": [
+          "S037",
+          "S038"
+        ]
+      },
+      "historical_prep72_launch_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED",
+      "historical_unknowns": "design and extra dictionary-code semantics remain bounded UNKNOWN",
+      "later_l2_disposition": "NO_ADDITIONAL_L2_PACKET_APPLICABLE_IN_THIS_JOIN",
+      "later_packet_selected_fields": {},
+      "current_usage_rights": "NOT_ISSUED_OR_QUALIFIED_BY_THIS_COURT__HISTORICAL_PREPARATION_AND_BRANCH_ADOPTION_NOT_CURRENT_OPERATION_GRANT",
+      "current_original_U_E_pre": "NULL_WITH_CAUSE",
+      "new_original_measured": false
+    },
+    {
+      "source_id": "SRC07",
+      "documentary_name": "Arab Barometer W8",
+      "canonical_filename": "Arab Barometer Wave 8.sav",
+      "canonical_sha256": "a5e83a953f03dd890e076a51da473051f1cfd1ca2e8ab93c2172eeb2517af998",
+      "size_bytes": 12275728,
+      "format": "SAV",
+      "family": "Arab Barometer",
+      "wave_or_release": "Wave 8",
+      "source_identity_rule": "SOURCE_SHA256+ROW_ORDINAL",
+      "accepted_decoder_mode": "SAV_NATIVE_GOVERNED",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_sav",
+        "encoding": null,
+        "generic_decoder_admission": "SUPPORTED"
+      },
+      "compatibility_scope": "NO_COMPATIBILITY_OVERRIDE__NO_SEMANTIC_CLAIM",
+      "historical_acquisition": {
+        "state": "EXACT_ARCHIVE_MEMBER_AVAILABLE",
+        "transport_filename": "surveys.zip",
+        "archive_member_path": "surveys/Arab Barometer Wave 8.sav"
+      },
+      "historical_representation": {
+        "census": "PASS",
+        "classification": "GENERIC_REGIME_FULLY_CLOSED",
+        "regimes": "R01_R5_EXACT_TYPED_IDENTITY_NO_COERCION|R02_SAV_PYREADSTAT_NATIVE_PHYSICAL",
+        "debt": "",
+        "exceptions": "",
+        "governed_surfaces": []
+      },
+      "historical_prep72_launch_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED",
+      "historical_unknowns": "BLOCK_ID and weight/stratum semantics remain bounded UNKNOWN",
+      "later_l2_disposition": "NO_ADDITIONAL_L2_PACKET_APPLICABLE_IN_THIS_JOIN",
+      "later_packet_selected_fields": {},
+      "current_usage_rights": "NOT_ISSUED_OR_QUALIFIED_BY_THIS_COURT__HISTORICAL_PREPARATION_AND_BRANCH_ADOPTION_NOT_CURRENT_OPERATION_GRANT",
+      "current_original_U_E_pre": "NULL_WITH_CAUSE",
+      "new_original_measured": false
+    },
+    {
+      "source_id": "SRC08",
+      "documentary_name": "Asian Barometer W1",
+      "canonical_filename": "Asian Barometer Wave 1.sav",
+      "canonical_sha256": "ac0b8bc1ddb2fa6b952417e35b6379ce6a2cf8596776a43282ba44f48e0ae1a2",
+      "size_bytes": 3451655,
+      "format": "SAV",
+      "family": "Asian Barometer",
+      "wave_or_release": "Wave 1",
+      "source_identity_rule": "SOURCE_SHA256+ROW_ORDINAL",
+      "accepted_decoder_mode": "SAV_SOURCE_DECLARED_BIG5",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_sav",
+        "encoding": "BIG5",
+        "generic_decoder_admission": "GAP",
+        "generic_debt": "GENERIC_SAV_DECLARED_ENCODING_ADMISSION_GAP"
+      },
+      "compatibility_scope": "NO_COMPATIBILITY_OVERRIDE__NO_SEMANTIC_CLAIM",
+      "historical_acquisition": {
+        "state": "EXACT_ARCHIVE_MEMBER_AVAILABLE",
+        "transport_filename": "surveys.zip",
+        "archive_member_path": "surveys/Asian Barometer Wave 1.sav"
+      },
+      "historical_representation": {
+        "census": "BLOCKED",
+        "classification": "REPRESENTATION_AUTHORITY_STILL_BLOCKED",
+        "regimes": "R01_R5_EXACT_TYPED_IDENTITY_NO_COERCION|R02_SAV_PYREADSTAT_NATIVE_PHYSICAL",
+        "debt": "D01_DECLARED_ENCODING_GENERIC_ADMISSION",
+        "exceptions": "",
+        "governed_surfaces": [
+          "S024",
+          "S025"
+        ]
+      },
+      "historical_prep72_launch_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED",
+      "historical_unknowns": "exact W1 questionnaire/codebook/routing/weight authority not recovered; preserve UNKNOWN",
+      "later_l2_disposition": "NO_ADDITIONAL_L2_PACKET_APPLICABLE_IN_THIS_JOIN",
+      "later_packet_selected_fields": {},
+      "current_usage_rights": "NOT_ISSUED_OR_QUALIFIED_BY_THIS_COURT__HISTORICAL_PREPARATION_AND_BRANCH_ADOPTION_NOT_CURRENT_OPERATION_GRANT",
+      "current_original_U_E_pre": "NULL_WITH_CAUSE",
+      "new_original_measured": false
+    },
+    {
+      "source_id": "SRC09",
+      "documentary_name": "Asian Barometer W4",
+      "canonical_filename": "Asian Barometer Wave 4.sav",
+      "canonical_sha256": "4d914817509d0e5f3adde49707df148f696992055937f085080a016002a39200",
+      "size_bytes": 7735596,
+      "format": "SAV",
+      "family": "Asian Barometer",
+      "wave_or_release": "Wave 4",
+      "source_identity_rule": "SOURCE_SHA256+ROW_ORDINAL",
+      "accepted_decoder_mode": "SAV_NATIVE_GOVERNED",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_sav",
+        "encoding": null,
+        "generic_decoder_admission": "SUPPORTED"
+      },
+      "compatibility_scope": "NO_COMPATIBILITY_OVERRIDE__NO_SEMANTIC_CLAIM",
+      "historical_acquisition": {
+        "state": "EXACT_ARCHIVE_MEMBER_AVAILABLE",
+        "transport_filename": "surveys.zip",
+        "archive_member_path": "surveys/Asian Barometer Wave 4.sav"
+      },
+      "historical_representation": {
+        "census": "PASS",
+        "classification": "GENERIC_REGIME_FULLY_CLOSED",
+        "regimes": "R01_R5_EXACT_TYPED_IDENTITY_NO_COERCION|R02_SAV_PYREADSTAT_NATIVE_PHYSICAL",
+        "debt": "",
+        "exceptions": "",
+        "governed_surfaces": []
+      },
+      "historical_prep72_launch_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED",
+      "historical_unknowns": "merged geography, -1 semantics, exact routing and weight roles remain bounded UNKNOWN",
+      "later_l2_disposition": "NO_ADDITIONAL_L2_PACKET_APPLICABLE_IN_THIS_JOIN",
+      "later_packet_selected_fields": {},
+      "current_usage_rights": "NOT_ISSUED_OR_QUALIFIED_BY_THIS_COURT__HISTORICAL_PREPARATION_AND_BRANCH_ADOPTION_NOT_CURRENT_OPERATION_GRANT",
+      "current_original_U_E_pre": "NULL_WITH_CAUSE",
+      "new_original_measured": false
+    },
+    {
+      "source_id": "SRC10",
+      "documentary_name": "Asian Barometer W5",
+      "canonical_filename": "Asian Barometer Wave 5.sav",
+      "canonical_sha256": "2576e428ff8de3c8d93a418c9120a1c2955ab7b1f35961d8c18fa562bc4b5e63",
+      "size_bytes": 10688196,
+      "format": "SAV",
+      "family": "Asian Barometer",
+      "wave_or_release": "Wave 5",
+      "source_identity_rule": "SOURCE_SHA256+ROW_ORDINAL",
+      "accepted_decoder_mode": "SAV_NATIVE_GOVERNED",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_sav",
+        "encoding": null,
+        "generic_decoder_admission": "SUPPORTED"
+      },
+      "compatibility_scope": "NO_COMPATIBILITY_OVERRIDE__NO_SEMANTIC_CLAIM",
+      "historical_acquisition": {
+        "state": "EXACT_ARCHIVE_MEMBER_AVAILABLE",
+        "transport_filename": "surveys.zip",
+        "archive_member_path": "surveys/Asian Barometer Wave 5.sav"
+      },
+      "historical_representation": {
+        "census": "PASS",
+        "classification": "GENERIC_REGIME_FULLY_CLOSED",
+        "regimes": "R01_R5_EXACT_TYPED_IDENTITY_NO_COERCION|R02_SAV_PYREADSTAT_NATIVE_PHYSICAL",
+        "debt": "",
+        "exceptions": "",
+        "governed_surfaces": []
+      },
+      "historical_prep72_launch_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED",
+      "historical_unknowns": "Q112 MR semantic alias, India module, geography and weight authority remain bounded UNKNOWN",
+      "later_l2_disposition": "NO_ADDITIONAL_L2_PACKET_APPLICABLE_IN_THIS_JOIN",
+      "later_packet_selected_fields": {},
+      "current_usage_rights": "NOT_ISSUED_OR_QUALIFIED_BY_THIS_COURT__HISTORICAL_PREPARATION_AND_BRANCH_ADOPTION_NOT_CURRENT_OPERATION_GRANT",
+      "current_original_U_E_pre": "NULL_WITH_CAUSE",
+      "new_original_measured": false
+    },
+    {
+      "source_id": "SRC11",
+      "documentary_name": "EVS1981",
+      "canonical_filename": "EVS 1981.sav",
+      "canonical_sha256": "5b703173845c086382fd93252f1cbc91dfef74007755459adfc73785389172f2",
+      "size_bytes": 11815613,
+      "format": "SAV",
+      "family": "EVS",
+      "wave_or_release": "1981",
+      "source_identity_rule": "SOURCE_SHA256+ROW_ORDINAL",
+      "accepted_decoder_mode": "SAV_SOURCE_DECLARED_WINDOWS1252",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_sav",
+        "encoding": "WINDOWS-1252",
+        "generic_decoder_admission": "GAP",
+        "generic_debt": "GENERIC_SAV_DECLARED_ENCODING_ADMISSION_GAP"
+      },
+      "compatibility_scope": "NO_COMPATIBILITY_OVERRIDE__NO_SEMANTIC_CLAIM",
+      "historical_acquisition": {
+        "state": "EXACT_ARCHIVE_MEMBER_AVAILABLE",
+        "transport_filename": "surveys.zip",
+        "archive_member_path": "surveys/EVS 1981.sav"
+      },
+      "historical_representation": {
+        "census": "BLOCKED",
+        "classification": "REPRESENTATION_AUTHORITY_STILL_BLOCKED",
+        "regimes": "R01_R5_EXACT_TYPED_IDENTITY_NO_COERCION|R02_SAV_PYREADSTAT_NATIVE_PHYSICAL",
+        "debt": "D01_DECLARED_ENCODING_GENERIC_ADMISSION",
+        "exceptions": "",
+        "governed_surfaces": [
+          "S026",
+          "S027",
+          "S028",
+          "S029"
+        ]
+      },
+      "historical_prep72_launch_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED",
+      "historical_unknowns": "native-ID scope and weight estimand remain bounded UNKNOWN",
+      "later_l2_disposition": "NO_ADDITIONAL_L2_PACKET_APPLICABLE_IN_THIS_JOIN",
+      "later_packet_selected_fields": {},
+      "current_usage_rights": "NOT_ISSUED_OR_QUALIFIED_BY_THIS_COURT__HISTORICAL_PREPARATION_AND_BRANCH_ADOPTION_NOT_CURRENT_OPERATION_GRANT",
+      "current_original_U_E_pre": "NULL_WITH_CAUSE",
+      "new_original_measured": false
+    },
+    {
+      "source_id": "SRC12",
+      "documentary_name": "EVS1990",
+      "canonical_filename": "EVS 1990.sav",
+      "canonical_sha256": "66252a92c59bf6759b79a6b35b2be658b98a433373212a70c8ec94755d3e02ec",
+      "size_bytes": 24341244,
+      "format": "SAV",
+      "family": "EVS",
+      "wave_or_release": "1990",
+      "source_identity_rule": "SOURCE_SHA256+ROW_ORDINAL",
+      "accepted_decoder_mode": "SAV_SOURCE_DECLARED_WINDOWS1252",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_sav",
+        "encoding": "WINDOWS-1252",
+        "generic_decoder_admission": "GAP",
+        "generic_debt": "GENERIC_SAV_DECLARED_ENCODING_ADMISSION_GAP"
+      },
+      "compatibility_scope": "NO_COMPATIBILITY_OVERRIDE__NO_SEMANTIC_CLAIM",
+      "historical_acquisition": {
+        "state": "EXACT_ARCHIVE_MEMBER_AVAILABLE",
+        "transport_filename": "surveys.zip",
+        "archive_member_path": "surveys/EVS 1990.sav"
+      },
+      "historical_representation": {
+        "census": "BLOCKED",
+        "classification": "GENERIC_REGIME_WITH_NONSEMANTIC_IMPLEMENTATION_DEBT",
+        "regimes": "R01_R5_EXACT_TYPED_IDENTITY_NO_COERCION|R02_SAV_PYREADSTAT_NATIVE_PHYSICAL",
+        "debt": "D01_DECLARED_ENCODING_GENERIC_ADMISSION",
+        "exceptions": "",
+        "governed_surfaces": []
+      },
+      "historical_prep72_launch_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED",
+      "historical_unknowns": "native-ID scope and weight estimand remain bounded UNKNOWN",
+      "later_l2_disposition": "NO_ADDITIONAL_L2_PACKET_APPLICABLE_IN_THIS_JOIN",
+      "later_packet_selected_fields": {},
+      "current_usage_rights": "NOT_ISSUED_OR_QUALIFIED_BY_THIS_COURT__HISTORICAL_PREPARATION_AND_BRANCH_ADOPTION_NOT_CURRENT_OPERATION_GRANT",
+      "current_original_U_E_pre": "NULL_WITH_CAUSE",
+      "new_original_measured": false
+    },
+    {
+      "source_id": "SRC13",
+      "documentary_name": "EVS1999",
+      "canonical_filename": "EVS 1999.sav",
+      "canonical_sha256": "6058644a9308aad574b95fa0afd1b026fedea289c6c95aca043aefb41ae0ab8a",
+      "size_bytes": 31857144,
+      "format": "SAV",
+      "family": "EVS",
+      "wave_or_release": "1999",
+      "source_identity_rule": "SOURCE_SHA256+ROW_ORDINAL",
+      "accepted_decoder_mode": "SAV_LATIN1_COMPAT_PHYSICAL_ONLY__SOURCE_DECLARES_UTF8",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_sav",
+        "encoding": "latin1",
+        "generic_decoder_admission": "SUPPORTED_EXACT_SHA_COMPATIBILITY_ONLY"
+      },
+      "compatibility_scope": "PHYSICAL_EXTRACTION_ONLY__NO_SOURCE_TEXT_OR_SEMANTIC_AUTHORITY",
+      "historical_acquisition": {
+        "state": "EXACT_ARCHIVE_MEMBER_AVAILABLE",
+        "transport_filename": "surveys.zip",
+        "archive_member_path": "surveys/EVS 1999.sav"
+      },
+      "historical_representation": {
+        "census": "PASS",
+        "classification": "GENERIC_REGIME_FULLY_CLOSED",
+        "regimes": "R01_R5_EXACT_TYPED_IDENTITY_NO_COERCION|R02_SAV_PYREADSTAT_NATIVE_PHYSICAL|R04_EXACT_SHA_COMPATIBILITY_DECODING",
+        "debt": "",
+        "exceptions": "",
+        "governed_surfaces": []
+      },
+      "historical_prep72_launch_class": "L2_DOCUMENTARY_AUTHORITY_REQUIRED_BEFORE_SEMANTIC_CERTIFICATION",
+      "historical_unknowns": "producer-authoritative field-level malformed-text repair/alignment rule missing",
+      "later_l2_disposition": "L2_DOCUMENTARY_CLOSED__HQ_REPORTS_REALIZATION_IMPLEMENTED__NATIVE_QUALIFICATION_NOT_PROVED_HERE",
+      "later_packet_selected_fields": {
+        "terminal": "CLOSED35_L2_EVS1999_DOCUMENTARY_AUTHORITY_CLOSED__PHYSICAL_COMPATIBILITY_REMAINS_NONSEMANTIC__READY_FOR_SOURCE_SPECIFIC_REALIZATION",
+        "ready_for_source_specific_realization": true
+      },
+      "current_usage_rights": "NOT_ISSUED_OR_QUALIFIED_BY_THIS_COURT__HISTORICAL_PREPARATION_AND_BRANCH_ADOPTION_NOT_CURRENT_OPERATION_GRANT",
+      "current_original_U_E_pre": "NULL_WITH_CAUSE",
+      "new_original_measured": false
+    },
+    {
+      "source_id": "SRC14",
+      "documentary_name": "EVS2008",
+      "canonical_filename": "EVS 2008.sav",
+      "canonical_sha256": "5469e3b39cbbb6d7230ff9894426cc75fe074541d284633235df4af3442ac379",
+      "size_bytes": 63832833,
+      "format": "SAV",
+      "family": "EVS",
+      "wave_or_release": "2008",
+      "source_identity_rule": "SOURCE_SHA256+ROW_ORDINAL",
+      "accepted_decoder_mode": "SAV_LATIN1_COMPAT_PHYSICAL_ONLY__SOURCE_DECLARES_UTF8",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_sav",
+        "encoding": "latin1",
+        "generic_decoder_admission": "SUPPORTED_EXACT_SHA_COMPATIBILITY_ONLY"
+      },
+      "compatibility_scope": "PHYSICAL_EXTRACTION_ONLY__NO_SOURCE_TEXT_OR_SEMANTIC_AUTHORITY",
+      "historical_acquisition": {
+        "state": "EXACT_ARCHIVE_MEMBER_AVAILABLE",
+        "transport_filename": "surveys.zip",
+        "archive_member_path": "surveys/EVS 2008.sav"
+      },
+      "historical_representation": {
+        "census": "BLOCKED",
+        "classification": "GENERIC_REGIME_WITH_NONSEMANTIC_IMPLEMENTATION_DEBT",
+        "regimes": "R01_R5_EXACT_TYPED_IDENTITY_NO_COERCION|R02_SAV_PYREADSTAT_NATIVE_PHYSICAL|R04_EXACT_SHA_COMPATIBILITY_DECODING",
+        "debt": "D02_OPAQUE_DATETIME_DECODER_VALUE_CARRIER",
+        "exceptions": "",
+        "governed_surfaces": []
+      },
+      "historical_prep72_launch_class": "L2_DOCUMENTARY_AUTHORITY_REQUIRED_BEFORE_SEMANTIC_CERTIFICATION",
+      "historical_unknowns": "producer-authoritative text repair/alignment rule missing; MR label semantics affected",
+      "later_l2_disposition": "L2R_DOCUMENTARY_REALIZATION_ALLOWED__NO_PUBLIC_PRODUCER_CHECKSUM__EXACT_MISSING_SUBREASON_UNKNOWN",
+      "later_packet_selected_fields": {
+        "source_specific_realization_readiness": {
+          "inherited_mr_semantics": true,
+          "inherited_text_alignment": true,
+          "inherited_f201_relation": true,
+          "inherited_routing_authority": true,
+          "v372_missing_state_realization": true,
+          "v372_missing_subreason_exact_numeric_code": false,
+          "documentary_release_identity": true,
+          "byte_exact_producer_checksum_binding": false,
+          "semantic_realization_lawful": true
+        },
+        "residual_open_set": [
+          {
+            "id": "EVS2008_EXACT_RELEASE_HASH_BINDING",
+            "state": "PUBLIC_PRODUCER_CHECKSUM_UNAVAILABLE",
+            "blocking_effect": "DOES_NOT_BLOCK_DOCUMENTARY_SOURCE_SPECIFIC_REALIZATION__BLOCKS_ONLY_BYTE_EXACT_PRODUCER_CHECKSUM_CLAIM"
+          }
+        ],
+        "terminal": "CLOSED35_L2R_EVS2008_RELEASE_HASH_UNAVAILABLE__DOCUMENTARY_REALIZATION_AUTHORITY_OTHERWISE_CLOSED"
+      },
+      "current_usage_rights": "NOT_ISSUED_OR_QUALIFIED_BY_THIS_COURT__HISTORICAL_PREPARATION_AND_BRANCH_ADOPTION_NOT_CURRENT_OPERATION_GRANT",
+      "current_original_U_E_pre": "NULL_WITH_CAUSE",
+      "new_original_measured": false
+    },
+    {
+      "source_id": "SRC15",
+      "documentary_name": "EVS2017",
+      "canonical_filename": "EVS 2017.sav",
+      "canonical_sha256": "95096c2474b81ef12004726e4ed5b0919b1ea7bb672baff676ae40fb1b629bd2",
+      "size_bytes": 53499063,
+      "format": "SAV",
+      "family": "EVS",
+      "wave_or_release": "2017",
+      "source_identity_rule": "SOURCE_SHA256+ROW_ORDINAL",
+      "accepted_decoder_mode": "SAV_NATIVE_GOVERNED",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_sav",
+        "encoding": null,
+        "generic_decoder_admission": "SUPPORTED"
+      },
+      "compatibility_scope": "NO_COMPATIBILITY_OVERRIDE__NO_SEMANTIC_CLAIM",
+      "historical_acquisition": {
+        "state": "EXACT_ARCHIVE_MEMBER_AVAILABLE",
+        "transport_filename": "surveys.zip",
+        "archive_member_path": "surveys/EVS 2017.sav"
+      },
+      "historical_representation": {
+        "census": "PASS",
+        "classification": "GENERIC_REGIME_FULLY_CLOSED",
+        "regimes": "R01_R5_EXACT_TYPED_IDENTITY_NO_COERCION|R02_SAV_PYREADSTAT_NATIVE_PHYSICAL",
+        "debt": "",
+        "exceptions": "",
+        "governed_surfaces": []
+      },
+      "historical_prep72_launch_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED",
+      "historical_unknowns": "exact matrix routing and weight estimand remain bounded UNKNOWN",
+      "later_l2_disposition": "NO_ADDITIONAL_L2_PACKET_APPLICABLE_IN_THIS_JOIN",
+      "later_packet_selected_fields": {},
+      "current_usage_rights": "NOT_ISSUED_OR_QUALIFIED_BY_THIS_COURT__HISTORICAL_PREPARATION_AND_BRANCH_ADOPTION_NOT_CURRENT_OPERATION_GRANT",
+      "current_original_U_E_pre": "NULL_WITH_CAUSE",
+      "new_original_measured": false
+    },
+    {
+      "source_id": "SRC16",
+      "documentary_name": "GSS1972",
+      "canonical_filename": "GSS1972.sav",
+      "canonical_sha256": "e368fc0f1d141b201900185c919c48ab1de1c4c7815bccf83a6e4fb224293204",
+      "size_bytes": 1647241,
+      "format": "SAV",
+      "family": "GSS",
+      "wave_or_release": "1972",
+      "source_identity_rule": "SOURCE_SHA256+ROW_ORDINAL",
+      "accepted_decoder_mode": "SAV_NATIVE_GOVERNED",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_sav",
+        "encoding": null,
+        "generic_decoder_admission": "SUPPORTED"
+      },
+      "compatibility_scope": "NO_COMPATIBILITY_OVERRIDE__NO_SEMANTIC_CLAIM",
+      "historical_acquisition": {
+        "state": "EXACT_ARCHIVE_MEMBER_AVAILABLE",
+        "transport_filename": "surveys.zip",
+        "archive_member_path": "surveys/GSS1972.sav"
+      },
+      "historical_representation": {
+        "census": "PASS",
+        "classification": "GENERIC_REGIME_FULLY_CLOSED",
+        "regimes": "R01_R5_EXACT_TYPED_IDENTITY_NO_COERCION|R02_SAV_PYREADSTAT_NATIVE_PHYSICAL",
+        "debt": "",
+        "exceptions": "",
+        "governed_surfaces": []
+      },
+      "historical_prep72_launch_class": "L2_DOCUMENTARY_AUTHORITY_REQUIRED_BEFORE_SEMANTIC_CERTIFICATION",
+      "historical_unknowns": "exhaustive occurrence/routing and lawful analytical weight/design binding",
+      "later_l2_disposition": "L2_DOCUMENTARY_CLOSED__HQ_REPORTS_REALIZATION_IMPLEMENTED__NATIVE_QUALIFICATION_NOT_PROVED_HERE",
+      "later_packet_selected_fields": {
+        "terminal": "CLOSED35_L2_GSS1972_DOCUMENTARY_ROUTING_WEIGHT_AUTHORITY_CLOSED__READY_FOR_SOURCE_SPECIFIC_REALIZATION",
+        "exact_unknown_set": [],
+        "ready_for_source_specific_realization": true
+      },
+      "current_usage_rights": "NOT_ISSUED_OR_QUALIFIED_BY_THIS_COURT__HISTORICAL_PREPARATION_AND_BRANCH_ADOPTION_NOT_CURRENT_OPERATION_GRANT",
+      "current_original_U_E_pre": "NULL_WITH_CAUSE",
+      "new_original_measured": false
+    },
+    {
+      "source_id": "SRC17",
+      "documentary_name": "GSS1973",
+      "canonical_filename": "GSS1973.sav",
+      "canonical_sha256": "59e65801dc26818bbcf15f9ed985cf8f1faafa65a3eb59e2d3180a7b13a5c1c2",
+      "size_bytes": 1984639,
+      "format": "SAV",
+      "family": "GSS",
+      "wave_or_release": "1973",
+      "source_identity_rule": "SOURCE_SHA256+ROW_ORDINAL",
+      "accepted_decoder_mode": "SAV_NATIVE_GOVERNED",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_sav",
+        "encoding": null,
+        "generic_decoder_admission": "SUPPORTED"
+      },
+      "compatibility_scope": "NO_COMPATIBILITY_OVERRIDE__NO_SEMANTIC_CLAIM",
+      "historical_acquisition": {
+        "state": "EXACT_ARCHIVE_MEMBER_AVAILABLE",
+        "transport_filename": "surveys.zip",
+        "archive_member_path": "surveys/GSS1973.sav"
+      },
+      "historical_representation": {
+        "census": "PASS",
+        "classification": "GENERIC_REGIME_FULLY_CLOSED",
+        "regimes": "R01_R5_EXACT_TYPED_IDENTITY_NO_COERCION|R02_SAV_PYREADSTAT_NATIVE_PHYSICAL",
+        "debt": "",
+        "exceptions": "",
+        "governed_surfaces": []
+      },
+      "historical_prep72_launch_class": "L2_DOCUMENTARY_AUTHORITY_REQUIRED_BEFORE_SEMANTIC_CERTIFICATION",
+      "historical_unknowns": "exhaustive form/routing and lawful weight/design binding",
+      "later_l2_disposition": "L2_DOCUMENTARY_CLOSED__HQ_REPORTS_REALIZATION_IMPLEMENTED__NATIVE_QUALIFICATION_NOT_PROVED_HERE",
+      "later_packet_selected_fields": {
+        "fail_closed_unknowns": [
+          {
+            "id": "REALIZED_FORM_COUNTS",
+            "disposition": "COMPUTE_FROM_EXACT_CANONICAL_CARRIER_DURING_REALIZATION"
+          },
+          {
+            "id": "EXACT_PHYSICAL_MISSING_CODE_PER_SEMANTIC_STATE",
+            "disposition": "BIND_FROM_EXACT_SOURCE_METADATA_PLUS_DOCUMENTARY_AUTHORITY_DURING_REALIZATION"
+          },
+          {
+            "id": "Q105_CARD_XY_TO_FORM_RELATION",
+            "disposition": "PRESERVE_SEPARATE_IDENTITIES__NO_EQUIVALENCE_AUTHORIZED"
+          },
+          {
+            "id": "Q105_EXACT_BIRTH_YEAR_DIGIT_SET",
+            "disposition": "VISUAL_VERIFICATION_REQUIRED_BEFORE_EXECUTABLE_BINDING"
+          },
+          {
+            "id": "INCOME72_TO_INCOME_SEMANTIC_EQUIVALENCE",
+            "disposition": "REJECTED_ABSENT_EXPLICIT_PRODUCER_CROSSWALK"
+          }
+        ],
+        "realization_preconditions": [
+          "VERIFY_EXACT_SOURCE_FILENAME_AND_SHA256",
+          "OBSERVE_FORM_AND_AUTHORIZED_WEIGHT_FIELDS_IN_EXACT_CARRIER",
+          "BIND_USED_VARIABLES_TO_APPENDIX_P_AND_EXACT_QUESTIONNAIRE_ROUTES",
+          "PRESERVE_MISSING_STATE_PRECEDENCE",
+          "FAIL_CLOSED_ON_ANY_SOURCE_DOCUMENT_MISMATCH"
+        ],
+        "terminal": "CLOSED35_L2_GSS1973_SPLIT_FORM_ROUTING_WEIGHT_AUTHORITY_CLOSED__READY_FOR_SOURCE_SPECIFIC_REALIZATION"
+      },
+      "current_usage_rights": "NOT_ISSUED_OR_QUALIFIED_BY_THIS_COURT__HISTORICAL_PREPARATION_AND_BRANCH_ADOPTION_NOT_CURRENT_OPERATION_GRANT",
+      "current_original_U_E_pre": "NULL_WITH_CAUSE",
+      "new_original_measured": false
+    },
+    {
+      "source_id": "SRC18",
+      "documentary_name": "GSS1984",
+      "canonical_filename": "GSS1984.sav",
+      "canonical_sha256": "1da2df0c0e0692817081a46856deeaa6c78891101e53cf0139a971de16f7ac18",
+      "size_bytes": 4309530,
+      "format": "SAV",
+      "family": "GSS",
+      "wave_or_release": "1984",
+      "source_identity_rule": "SOURCE_SHA256+ROW_ORDINAL",
+      "accepted_decoder_mode": "SAV_NATIVE_GOVERNED",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_sav",
+        "encoding": null,
+        "generic_decoder_admission": "SUPPORTED"
+      },
+      "compatibility_scope": "NO_COMPATIBILITY_OVERRIDE__NO_SEMANTIC_CLAIM",
+      "historical_acquisition": {
+        "state": "EXACT_ARCHIVE_MEMBER_AVAILABLE",
+        "transport_filename": "surveys.zip",
+        "archive_member_path": "surveys/GSS1984.sav"
+      },
+      "historical_representation": {
+        "census": "PASS",
+        "classification": "GENERIC_REGIME_FULLY_CLOSED",
+        "regimes": "R01_R5_EXACT_TYPED_IDENTITY_NO_COERCION|R02_SAV_PYREADSTAT_NATIVE_PHYSICAL",
+        "debt": "",
+        "exceptions": "",
+        "governed_surfaces": []
+      },
+      "historical_prep72_launch_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED",
+      "historical_unknowns": "unmapped routing/weight/longitudinal claims remain bounded UNKNOWN",
+      "later_l2_disposition": "NO_ADDITIONAL_L2_PACKET_APPLICABLE_IN_THIS_JOIN",
+      "later_packet_selected_fields": {},
+      "current_usage_rights": "NOT_ISSUED_OR_QUALIFIED_BY_THIS_COURT__HISTORICAL_PREPARATION_AND_BRANCH_ADOPTION_NOT_CURRENT_OPERATION_GRANT",
+      "current_original_U_E_pre": "NULL_WITH_CAUSE",
+      "new_original_measured": false
+    },
+    {
+      "source_id": "SRC19",
+      "documentary_name": "GSS1993",
+      "canonical_filename": "GSS1993.sav",
+      "canonical_sha256": "7fc409cc07172f9a556bf88c5df8d2ea5e539b2a6ff37348711eeb21b4355ae8",
+      "size_bytes": 5506397,
+      "format": "SAV",
+      "family": "GSS",
+      "wave_or_release": "1993",
+      "source_identity_rule": "SOURCE_SHA256+ROW_ORDINAL",
+      "accepted_decoder_mode": "SAV_NATIVE_GOVERNED",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_sav",
+        "encoding": null,
+        "generic_decoder_admission": "SUPPORTED"
+      },
+      "compatibility_scope": "NO_COMPATIBILITY_OVERRIDE__NO_SEMANTIC_CLAIM",
+      "historical_acquisition": {
+        "state": "EXACT_ARCHIVE_MEMBER_AVAILABLE",
+        "transport_filename": "surveys.zip",
+        "archive_member_path": "surveys/GSS1993.sav"
+      },
+      "historical_representation": {
+        "census": "PASS",
+        "classification": "GENERIC_REGIME_FULLY_CLOSED",
+        "regimes": "R01_R5_EXACT_TYPED_IDENTITY_NO_COERCION|R02_SAV_PYREADSTAT_NATIVE_PHYSICAL",
+        "debt": "",
+        "exceptions": "",
+        "governed_surfaces": []
+      },
+      "historical_prep72_launch_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED",
+      "historical_unknowns": "unmapped routing/weight/longitudinal claims remain bounded UNKNOWN",
+      "later_l2_disposition": "NO_ADDITIONAL_L2_PACKET_APPLICABLE_IN_THIS_JOIN",
+      "later_packet_selected_fields": {},
+      "current_usage_rights": "NOT_ISSUED_OR_QUALIFIED_BY_THIS_COURT__HISTORICAL_PREPARATION_AND_BRANCH_ADOPTION_NOT_CURRENT_OPERATION_GRANT",
+      "current_original_U_E_pre": "NULL_WITH_CAUSE",
+      "new_original_measured": false
+    },
+    {
+      "source_id": "SRC20",
+      "documentary_name": "GSS2002",
+      "canonical_filename": "GSS2002.sav",
+      "canonical_sha256": "8ece381105237a1800051eec3617dad9dd05bf137e34fa833653464a58222be1",
+      "size_bytes": 17746227,
+      "format": "SAV",
+      "family": "GSS",
+      "wave_or_release": "2002",
+      "source_identity_rule": "SOURCE_SHA256+ROW_ORDINAL",
+      "accepted_decoder_mode": "SAV_NATIVE_GOVERNED",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_sav",
+        "encoding": null,
+        "generic_decoder_admission": "SUPPORTED"
+      },
+      "compatibility_scope": "NO_COMPATIBILITY_OVERRIDE__NO_SEMANTIC_CLAIM",
+      "historical_acquisition": {
+        "state": "EXACT_ARCHIVE_MEMBER_AVAILABLE",
+        "transport_filename": "surveys.zip",
+        "archive_member_path": "surveys/GSS2002.sav"
+      },
+      "historical_representation": {
+        "census": "PASS",
+        "classification": "GENERIC_REGIME_FULLY_CLOSED",
+        "regimes": "R01_R5_EXACT_TYPED_IDENTITY_NO_COERCION|R02_SAV_PYREADSTAT_NATIVE_PHYSICAL",
+        "debt": "",
+        "exceptions": "",
+        "governed_surfaces": []
+      },
+      "historical_prep72_launch_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED",
+      "historical_unknowns": "unmapped routing/weight/longitudinal claims remain bounded UNKNOWN",
+      "later_l2_disposition": "NO_ADDITIONAL_L2_PACKET_APPLICABLE_IN_THIS_JOIN",
+      "later_packet_selected_fields": {},
+      "current_usage_rights": "NOT_ISSUED_OR_QUALIFIED_BY_THIS_COURT__HISTORICAL_PREPARATION_AND_BRANCH_ADOPTION_NOT_CURRENT_OPERATION_GRANT",
+      "current_original_U_E_pre": "NULL_WITH_CAUSE",
+      "new_original_measured": false
+    },
+    {
+      "source_id": "SRC21",
+      "documentary_name": "GSS2010",
+      "canonical_filename": "GSS2010.sav",
+      "canonical_sha256": "c229aff7430c12f246678f385e0776b089681ae9830bac88423e0964ac34ee05",
+      "size_bytes": 10170184,
+      "format": "SAV",
+      "family": "GSS",
+      "wave_or_release": "2010",
+      "source_identity_rule": "SOURCE_SHA256+ROW_ORDINAL",
+      "accepted_decoder_mode": "SAV_NATIVE_GOVERNED",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_sav",
+        "encoding": null,
+        "generic_decoder_admission": "SUPPORTED"
+      },
+      "compatibility_scope": "NO_COMPATIBILITY_OVERRIDE__NO_SEMANTIC_CLAIM",
+      "historical_acquisition": {
+        "state": "EXACT_ARCHIVE_MEMBER_AVAILABLE",
+        "transport_filename": "surveys.zip",
+        "archive_member_path": "surveys/GSS2010.sav"
+      },
+      "historical_representation": {
+        "census": "BLOCKED",
+        "classification": "REPRESENTATION_AUTHORITY_STILL_BLOCKED",
+        "regimes": "R01_R5_EXACT_TYPED_IDENTITY_NO_COERCION|R02_SAV_PYREADSTAT_NATIVE_PHYSICAL",
+        "debt": "",
+        "exceptions": "",
+        "governed_surfaces": [
+          "S005",
+          "S006",
+          "S007",
+          "S008",
+          "S009",
+          "S010"
+        ]
+      },
+      "historical_prep72_launch_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED",
+      "historical_unknowns": "exact routing/weight/longitudinal claims bounded to release",
+      "later_l2_disposition": "NO_ADDITIONAL_L2_PACKET_APPLICABLE_IN_THIS_JOIN",
+      "later_packet_selected_fields": {},
+      "current_usage_rights": "NOT_ISSUED_OR_QUALIFIED_BY_THIS_COURT__HISTORICAL_PREPARATION_AND_BRANCH_ADOPTION_NOT_CURRENT_OPERATION_GRANT",
+      "current_original_U_E_pre": "NULL_WITH_CAUSE",
+      "new_original_measured": false
+    },
+    {
+      "source_id": "SRC22",
+      "documentary_name": "GSS2016",
+      "canonical_filename": "GSS2016.sav",
+      "canonical_sha256": "a053bdc5661eb2c1dd9a2d3a5d054601c66955a178fb266be9cef1023aea9b07",
+      "size_bytes": 16989724,
+      "format": "SAV",
+      "family": "GSS",
+      "wave_or_release": "2016",
+      "source_identity_rule": "SOURCE_SHA256+ROW_ORDINAL",
+      "accepted_decoder_mode": "SAV_NATIVE_GOVERNED",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_sav",
+        "encoding": null,
+        "generic_decoder_admission": "SUPPORTED"
+      },
+      "compatibility_scope": "NO_COMPATIBILITY_OVERRIDE__NO_SEMANTIC_CLAIM",
+      "historical_acquisition": {
+        "state": "EXACT_ARCHIVE_MEMBER_AVAILABLE",
+        "transport_filename": "surveys.zip",
+        "archive_member_path": "surveys/GSS2016.sav"
+      },
+      "historical_representation": {
+        "census": "PASS",
+        "classification": "GENERIC_REGIME_FULLY_CLOSED",
+        "regimes": "R01_R5_EXACT_TYPED_IDENTITY_NO_COERCION|R02_SAV_PYREADSTAT_NATIVE_PHYSICAL",
+        "debt": "",
+        "exceptions": "",
+        "governed_surfaces": []
+      },
+      "historical_prep72_launch_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED",
+      "historical_unknowns": "exact routing/weight/longitudinal claims bounded to release",
+      "later_l2_disposition": "NO_ADDITIONAL_L2_PACKET_APPLICABLE_IN_THIS_JOIN",
+      "later_packet_selected_fields": {},
+      "current_usage_rights": "NOT_ISSUED_OR_QUALIFIED_BY_THIS_COURT__HISTORICAL_PREPARATION_AND_BRANCH_ADOPTION_NOT_CURRENT_OPERATION_GRANT",
+      "current_original_U_E_pre": "NULL_WITH_CAUSE",
+      "new_original_measured": false
+    },
+    {
+      "source_id": "SRC23",
+      "documentary_name": "GSS2024",
+      "canonical_filename": "GSS2024.sav",
+      "canonical_sha256": "27166a481ba6e240aca68293464a2b1fd9a9171a3ddba89a038038a32b8d1eef",
+      "size_bytes": 20922610,
+      "format": "SAV",
+      "family": "GSS",
+      "wave_or_release": "2024",
+      "source_identity_rule": "SOURCE_SHA256+ROW_ORDINAL",
+      "accepted_decoder_mode": "SAV_NATIVE_GOVERNED",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_sav",
+        "encoding": null,
+        "generic_decoder_admission": "SUPPORTED"
+      },
+      "compatibility_scope": "NO_COMPATIBILITY_OVERRIDE__NO_SEMANTIC_CLAIM",
+      "historical_acquisition": {
+        "state": "EXACT_ARCHIVE_MEMBER_AVAILABLE",
+        "transport_filename": "surveys.zip",
+        "archive_member_path": "surveys/GSS2024.sav"
+      },
+      "historical_representation": {
+        "census": "PASS",
+        "classification": "GENERIC_REGIME_FULLY_CLOSED",
+        "regimes": "R01_R5_EXACT_TYPED_IDENTITY_NO_COERCION|R02_SAV_PYREADSTAT_NATIVE_PHYSICAL",
+        "debt": "",
+        "exceptions": "",
+        "governed_surfaces": []
+      },
+      "historical_prep72_launch_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED",
+      "historical_unknowns": "mode-specific experimental weighting unavailable; other claims bounded UNKNOWN",
+      "later_l2_disposition": "NO_ADDITIONAL_L2_PACKET_APPLICABLE_IN_THIS_JOIN",
+      "later_packet_selected_fields": {},
+      "current_usage_rights": "NOT_ISSUED_OR_QUALIFIED_BY_THIS_COURT__HISTORICAL_PREPARATION_AND_BRANCH_ADOPTION_NOT_CURRENT_OPERATION_GRANT",
+      "current_original_U_E_pre": "NULL_WITH_CAUSE",
+      "new_original_measured": false
+    },
+    {
+      "source_id": "SRC24",
+      "documentary_name": "Latinobar\u00f3metro1995",
+      "canonical_filename": "Latinobarometro 1995.sav",
+      "canonical_sha256": "4b7fc6da17dfddafd6a835717e8dc06981208eb4120fa33bdd16e12ae95926f7",
+      "size_bytes": 2224483,
+      "format": "SAV",
+      "family": "Latinobarometro",
+      "wave_or_release": "1995",
+      "source_identity_rule": "SOURCE_SHA256+ROW_ORDINAL",
+      "accepted_decoder_mode": "SAV_NATIVE_GOVERNED",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_sav",
+        "encoding": null,
+        "generic_decoder_admission": "SUPPORTED"
+      },
+      "compatibility_scope": "NO_COMPATIBILITY_OVERRIDE__NO_SEMANTIC_CLAIM",
+      "historical_acquisition": {
+        "state": "EXACT_ARCHIVE_MEMBER_AVAILABLE",
+        "transport_filename": "surveys.zip",
+        "archive_member_path": "surveys/Latinobarometro 1995.sav"
+      },
+      "historical_representation": {
+        "census": "BLOCKED",
+        "classification": "REPRESENTATION_AUTHORITY_STILL_BLOCKED",
+        "regimes": "R01_R5_EXACT_TYPED_IDENTITY_NO_COERCION|R02_SAV_PYREADSTAT_NATIVE_PHYSICAL",
+        "debt": "",
+        "exceptions": "",
+        "governed_surfaces": [
+          "S011",
+          "S012",
+          "S013"
+        ]
+      },
+      "historical_prep72_launch_class": "L2_DOCUMENTARY_AUTHORITY_REQUIRED_BEFORE_SEMANTIC_CERTIFICATION",
+      "historical_unknowns": "producer/release provenance for 120-row Brazil discrepancy",
+      "later_l2_disposition": "L2R_NAMED_RESIDUALS_FROZEN__NO_GENERAL_SEMANTIC_UPGRADE",
+      "later_packet_selected_fields": {
+        "exact_residual_set": [
+          "BRAZIL_120_ROW_CAUSAL_PROVENANCE__IRREDUCIBLE_DOCUMENTARY_UNKNOWN",
+          "ENC_UNIQUENESS_SCOPE__UNDOCUMENTED",
+          "WT_ESTIMAND_AND_POPULATION_DOMAIN__IRREDUCIBLE_DOCUMENTARY_UNKNOWN",
+          "WT_NORMALIZATION__IRREDUCIBLE_DOCUMENTARY_UNKNOWN",
+          "WT_CONSTRUCTION_CALIBRATION__IRREDUCIBLE_DOCUMENTARY_UNKNOWN",
+          "EXTERNAL_RAW_DEFAULT_WEIGHTED_ESTIMATOR__NO_1995_PRODUCER_AUTHORIZATION_RECOVERED"
+        ],
+        "terminal": "CLOSED35_L2R_LATINOBAROMETRO1995_RESIDUAL_AUTHORITY_FROZEN__IRREDUCIBLE_UNKNOWN_SET_RETURNED"
+      },
+      "current_usage_rights": "NOT_ISSUED_OR_QUALIFIED_BY_THIS_COURT__HISTORICAL_PREPARATION_AND_BRANCH_ADOPTION_NOT_CURRENT_OPERATION_GRANT",
+      "current_original_U_E_pre": "NULL_WITH_CAUSE",
+      "new_original_measured": false
+    },
+    {
+      "source_id": "SRC25",
+      "documentary_name": "Latinobar\u00f3metro2011",
+      "canonical_filename": "Latinobarometro 2011.sav",
+      "canonical_sha256": "a44e89e08e564e4e175199eeeabfa6163f32f4ba0a19a6c3f5b4752de6cca22e",
+      "size_bytes": 9900209,
+      "format": "SAV",
+      "family": "Latinobarometro",
+      "wave_or_release": "2011",
+      "source_identity_rule": "SOURCE_SHA256+ROW_ORDINAL",
+      "accepted_decoder_mode": "SAV_NATIVE_GOVERNED",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_sav",
+        "encoding": null,
+        "generic_decoder_admission": "SUPPORTED"
+      },
+      "compatibility_scope": "NO_COMPATIBILITY_OVERRIDE__NO_SEMANTIC_CLAIM",
+      "historical_acquisition": {
+        "state": "EXACT_ARCHIVE_MEMBER_AVAILABLE",
+        "transport_filename": "surveys.zip",
+        "archive_member_path": "surveys/Latinobarometro 2011.sav"
+      },
+      "historical_representation": {
+        "census": "PASS",
+        "classification": "GENERIC_REGIME_FULLY_CLOSED",
+        "regimes": "R01_R5_EXACT_TYPED_IDENTITY_NO_COERCION|R02_SAV_PYREADSTAT_NATIVE_PHYSICAL",
+        "debt": "",
+        "exceptions": "",
+        "governed_surfaces": []
+      },
+      "historical_prep72_launch_class": "L0_EXECUTION_PACKET_READY__NO_NAMED_DOCUMENTARY_BLOCKER",
+      "historical_unknowns": "none named before source-local launch; no invented aggregate estimand",
+      "later_l2_disposition": "NO_ADDITIONAL_L2_PACKET_APPLICABLE_IN_THIS_JOIN",
+      "later_packet_selected_fields": {},
+      "current_usage_rights": "NOT_ISSUED_OR_QUALIFIED_BY_THIS_COURT__HISTORICAL_PREPARATION_AND_BRANCH_ADOPTION_NOT_CURRENT_OPERATION_GRANT",
+      "current_original_U_E_pre": "NULL_WITH_CAUSE",
+      "new_original_measured": false
+    },
+    {
+      "source_id": "SRC26",
+      "documentary_name": "Latinobar\u00f3metro2024",
+      "canonical_filename": "Latinobarometro 2024.sav",
+      "canonical_sha256": "ff5cef18c87969026e7f993d09f10c38a547bf81d5d398784fb59b960b7b0a40",
+      "size_bytes": 7886834,
+      "format": "SAV",
+      "family": "Latinobarometro",
+      "wave_or_release": "2024",
+      "source_identity_rule": "SOURCE_SHA256+ROW_ORDINAL",
+      "accepted_decoder_mode": "SAV_NATIVE_GOVERNED",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_sav",
+        "encoding": null,
+        "generic_decoder_admission": "SUPPORTED"
+      },
+      "compatibility_scope": "NO_COMPATIBILITY_OVERRIDE__NO_SEMANTIC_CLAIM",
+      "historical_acquisition": {
+        "state": "EXACT_ARCHIVE_MEMBER_AVAILABLE",
+        "transport_filename": "surveys.zip",
+        "archive_member_path": "surveys/Latinobarometro 2024.sav"
+      },
+      "historical_representation": {
+        "census": "PASS",
+        "classification": "GENERIC_REGIME_FULLY_CLOSED",
+        "regimes": "R01_R5_EXACT_TYPED_IDENTITY_NO_COERCION|R02_SAV_PYREADSTAT_NATIVE_PHYSICAL|R05_RAW_HEADER_DICTIONARY_STREAM_DIVERGENCE_PRESERVATION",
+        "debt": "",
+        "exceptions": "",
+        "governed_surfaces": []
+      },
+      "historical_prep72_launch_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED",
+      "historical_unknowns": "WT semantic/domain conflict and full Q-to-P crosswalk remain bounded; raw layout controlled by executable fixture",
+      "later_l2_disposition": "NO_ADDITIONAL_L2_PACKET_APPLICABLE_IN_THIS_JOIN",
+      "later_packet_selected_fields": {},
+      "current_usage_rights": "NOT_ISSUED_OR_QUALIFIED_BY_THIS_COURT__HISTORICAL_PREPARATION_AND_BRANCH_ADOPTION_NOT_CURRENT_OPERATION_GRANT",
+      "current_original_U_E_pre": "NULL_WITH_CAUSE",
+      "new_original_measured": false
+    },
+    {
+      "source_id": "SRC27",
+      "documentary_name": "LiTS I",
+      "canonical_filename": "LiTS_I.dta",
+      "canonical_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+      "size_bytes": 139531180,
+      "format": "DTA",
+      "family": "LiTS",
+      "wave_or_release": "I",
+      "source_identity_rule": "SOURCE_SHA256+ROW_ORDINAL",
+      "accepted_decoder_mode": "DTA_DECODE_LATIN1_COMPAT_PHYSICAL_ONLY",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_dta",
+        "encoding": "latin1",
+        "generic_decoder_admission": "SUPPORTED_EXACT_SHA_COMPATIBILITY_ONLY"
+      },
+      "compatibility_scope": "PHYSICAL_EXTRACTION_ONLY__NO_SOURCE_TEXT_OR_SEMANTIC_AUTHORITY",
+      "historical_acquisition": {
+        "state": "EXACT_ALIAS_AVAILABLE",
+        "transport_filename": "LITS-2006-data.dta",
+        "archive_member_path": ""
+      },
+      "historical_representation": {
+        "census": "BLOCKED",
+        "classification": "REPRESENTATION_AUTHORITY_STILL_BLOCKED",
+        "regimes": "R01_R5_EXACT_TYPED_IDENTITY_NO_COERCION|R03_DTA_PYREADSTAT_NATIVE_PHYSICAL|R04_EXACT_SHA_COMPATIBILITY_DECODING",
+        "debt": "",
+        "exceptions": "",
+        "governed_surfaces": [
+          "S001",
+          "S002",
+          "S030",
+          "S031",
+          "S032"
+        ]
+      },
+      "historical_prep72_launch_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED",
+      "historical_unknowns": "intended text encoding/default weight remain bounded UNKNOWN",
+      "later_l2_disposition": "NO_ADDITIONAL_L2_PACKET_APPLICABLE_IN_THIS_JOIN",
+      "later_packet_selected_fields": {},
+      "current_usage_rights": "NOT_ISSUED_OR_QUALIFIED_BY_THIS_COURT__HISTORICAL_PREPARATION_AND_BRANCH_ADOPTION_NOT_CURRENT_OPERATION_GRANT",
+      "current_original_U_E_pre": "NULL_WITH_CAUSE",
+      "new_original_measured": false
+    },
+    {
+      "source_id": "SRC28",
+      "documentary_name": "LiTS II",
+      "canonical_filename": "LiTS_II.dta",
+      "canonical_sha256": "c43d0e1821c51398817d7dfdfad2c0a4a5bb0d492f6a58096670e623bb6130e9",
+      "size_bytes": 199716969,
+      "format": "DTA",
+      "family": "LiTS",
+      "wave_or_release": "II",
+      "source_identity_rule": "SOURCE_SHA256+ROW_ORDINAL",
+      "accepted_decoder_mode": "DTA_DECODE_LATIN1_COMPAT_PHYSICAL_ONLY",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_dta",
+        "encoding": "latin1",
+        "generic_decoder_admission": "SUPPORTED_EXACT_SHA_COMPATIBILITY_ONLY"
+      },
+      "compatibility_scope": "PHYSICAL_EXTRACTION_ONLY__NO_SOURCE_TEXT_OR_SEMANTIC_AUTHORITY",
+      "historical_acquisition": {
+        "state": "EXACT_ARCHIVE_MEMBER_AVAILABLE",
+        "transport_filename": "surveys.zip",
+        "archive_member_path": "surveys/LiTS_II.dta"
+      },
+      "historical_representation": {
+        "census": "PASS",
+        "classification": "GENERIC_REGIME_FULLY_CLOSED",
+        "regimes": "R01_R5_EXACT_TYPED_IDENTITY_NO_COERCION|R03_DTA_PYREADSTAT_NATIVE_PHYSICAL|R04_EXACT_SHA_COMPATIBILITY_DECODING",
+        "debt": "",
+        "exceptions": "",
+        "governed_surfaces": []
+      },
+      "historical_prep72_launch_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED",
+      "historical_unknowns": "intended text encoding/default estimand remain bounded UNKNOWN",
+      "later_l2_disposition": "NO_ADDITIONAL_L2_PACKET_APPLICABLE_IN_THIS_JOIN",
+      "later_packet_selected_fields": {},
+      "current_usage_rights": "NOT_ISSUED_OR_QUALIFIED_BY_THIS_COURT__HISTORICAL_PREPARATION_AND_BRANCH_ADOPTION_NOT_CURRENT_OPERATION_GRANT",
+      "current_original_U_E_pre": "NULL_WITH_CAUSE",
+      "new_original_measured": false
+    },
+    {
+      "source_id": "SRC29",
+      "documentary_name": "LiTS III",
+      "canonical_filename": "LiTS_III.dta",
+      "canonical_sha256": "368ae5d07a44975a2f0a9ce3b1e564988a966b2632e28075c56a24d60065bcc8",
+      "size_bytes": 170487994,
+      "format": "DTA",
+      "family": "LiTS",
+      "wave_or_release": "III",
+      "source_identity_rule": "SOURCE_SHA256+ROW_ORDINAL",
+      "accepted_decoder_mode": "DTA_DECODE_LATIN1_COMPAT_PHYSICAL_ONLY",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_dta",
+        "encoding": "latin1",
+        "generic_decoder_admission": "SUPPORTED_EXACT_SHA_COMPATIBILITY_ONLY"
+      },
+      "compatibility_scope": "PHYSICAL_EXTRACTION_ONLY__NO_SOURCE_TEXT_OR_SEMANTIC_AUTHORITY",
+      "historical_acquisition": {
+        "state": "EXACT_ARCHIVE_MEMBER_AVAILABLE",
+        "transport_filename": "surveys.zip",
+        "archive_member_path": "surveys/LiTS_III.dta"
+      },
+      "historical_representation": {
+        "census": "PASS",
+        "classification": "GENERIC_REGIME_FULLY_CLOSED",
+        "regimes": "R01_R5_EXACT_TYPED_IDENTITY_NO_COERCION|R03_DTA_PYREADSTAT_NATIVE_PHYSICAL|R04_EXACT_SHA_COMPATIBILITY_DECODING",
+        "debt": "",
+        "exceptions": "",
+        "governed_surfaces": []
+      },
+      "historical_prep72_launch_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED",
+      "historical_unknowns": "per-variable module applicability/text/default weight remain bounded UNKNOWN",
+      "later_l2_disposition": "NO_ADDITIONAL_L2_PACKET_APPLICABLE_IN_THIS_JOIN",
+      "later_packet_selected_fields": {},
+      "current_usage_rights": "NOT_ISSUED_OR_QUALIFIED_BY_THIS_COURT__HISTORICAL_PREPARATION_AND_BRANCH_ADOPTION_NOT_CURRENT_OPERATION_GRANT",
+      "current_original_U_E_pre": "NULL_WITH_CAUSE",
+      "new_original_measured": false
+    },
+    {
+      "source_id": "SRC30",
+      "documentary_name": "LiTS IV",
+      "canonical_filename": "LiTS_IV.dta",
+      "canonical_sha256": "14e1032755c4f42d8d3dc61647097ccd7605ba281551e53953c76d22a223cd1c",
+      "size_bytes": 110465945,
+      "format": "DTA",
+      "family": "LiTS",
+      "wave_or_release": "IV",
+      "source_identity_rule": "SOURCE_SHA256+ROW_ORDINAL",
+      "accepted_decoder_mode": "DTA_DECODE_LATIN1_COMPAT_PHYSICAL_ONLY",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_dta",
+        "encoding": "latin1",
+        "generic_decoder_admission": "SUPPORTED_EXACT_SHA_COMPATIBILITY_ONLY"
+      },
+      "compatibility_scope": "PHYSICAL_EXTRACTION_ONLY__NO_SOURCE_TEXT_OR_SEMANTIC_AUTHORITY",
+      "historical_acquisition": {
+        "state": "EXACT_ARCHIVE_MEMBER_AVAILABLE",
+        "transport_filename": "surveys.zip",
+        "archive_member_path": "surveys/LiTS_IV.dta"
+      },
+      "historical_representation": {
+        "census": "PASS",
+        "classification": "GENERIC_REGIME_FULLY_CLOSED",
+        "regimes": "R01_R5_EXACT_TYPED_IDENTITY_NO_COERCION|R03_DTA_PYREADSTAT_NATIVE_PHYSICAL|R04_EXACT_SHA_COMPATIBILITY_DECODING",
+        "debt": "",
+        "exceptions": "",
+        "governed_surfaces": []
+      },
+      "historical_prep72_launch_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED",
+      "historical_unknowns": "intended text encoding, TR token/top-up scope, exact skip semantics/default weight remain bounded UNKNOWN",
+      "later_l2_disposition": "NO_ADDITIONAL_L2_PACKET_APPLICABLE_IN_THIS_JOIN",
+      "later_packet_selected_fields": {},
+      "current_usage_rights": "NOT_ISSUED_OR_QUALIFIED_BY_THIS_COURT__HISTORICAL_PREPARATION_AND_BRANCH_ADOPTION_NOT_CURRENT_OPERATION_GRANT",
+      "current_original_U_E_pre": "NULL_WITH_CAUSE",
+      "new_original_measured": false
+    },
+    {
+      "source_id": "SRC31",
+      "documentary_name": "South Asia W1",
+      "canonical_filename": "South Asia Wave 1.sav",
+      "canonical_sha256": "de7b51f9abf455b072555a84c5592e3ac46bb32c4f9f61bc055160f7d871e571",
+      "size_bytes": 595974,
+      "format": "SAV",
+      "family": "South Asia",
+      "wave_or_release": "Wave 1",
+      "source_identity_rule": "SOURCE_SHA256+ROW_ORDINAL",
+      "accepted_decoder_mode": "SAV_NATIVE_GOVERNED",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_sav",
+        "encoding": null,
+        "generic_decoder_admission": "SUPPORTED"
+      },
+      "compatibility_scope": "NO_COMPATIBILITY_OVERRIDE__NO_SEMANTIC_CLAIM",
+      "historical_acquisition": {
+        "state": "EXACT_ARCHIVE_MEMBER_AVAILABLE",
+        "transport_filename": "surveys.zip",
+        "archive_member_path": "surveys/South Asia Wave 1.sav"
+      },
+      "historical_representation": {
+        "census": "BLOCKED",
+        "classification": "REPRESENTATION_AUTHORITY_STILL_BLOCKED",
+        "regimes": "R01_R5_EXACT_TYPED_IDENTITY_NO_COERCION|R02_SAV_PYREADSTAT_NATIVE_PHYSICAL",
+        "debt": "",
+        "exceptions": "",
+        "governed_surfaces": [
+          "S014",
+          "S015"
+        ]
+      },
+      "historical_prep72_launch_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED",
+      "historical_unknowns": "W1 instrument/routing/semantic/design docs absent; preserve affected states UNKNOWN",
+      "later_l2_disposition": "NO_ADDITIONAL_L2_PACKET_APPLICABLE_IN_THIS_JOIN",
+      "later_packet_selected_fields": {},
+      "current_usage_rights": "NOT_ISSUED_OR_QUALIFIED_BY_THIS_COURT__HISTORICAL_PREPARATION_AND_BRANCH_ADOPTION_NOT_CURRENT_OPERATION_GRANT",
+      "current_original_U_E_pre": "NULL_WITH_CAUSE",
+      "new_original_measured": false
+    },
+    {
+      "source_id": "SRC32",
+      "documentary_name": "South Asia W2",
+      "canonical_filename": "South Asia Wave 2.sav",
+      "canonical_sha256": "6a5329ea16f4546188167edd691e0e6adbeae0737a015470aa26df0e01206f22",
+      "size_bytes": 894051,
+      "format": "SAV",
+      "family": "South Asia",
+      "wave_or_release": "Wave 2",
+      "source_identity_rule": "SOURCE_SHA256+ROW_ORDINAL",
+      "accepted_decoder_mode": "SAV_NATIVE_GOVERNED",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_sav",
+        "encoding": null,
+        "generic_decoder_admission": "SUPPORTED"
+      },
+      "compatibility_scope": "NO_COMPATIBILITY_OVERRIDE__NO_SEMANTIC_CLAIM",
+      "historical_acquisition": {
+        "state": "EXACT_ARCHIVE_MEMBER_AVAILABLE",
+        "transport_filename": "surveys.zip",
+        "archive_member_path": "surveys/South Asia Wave 2.sav"
+      },
+      "historical_representation": {
+        "census": "PASS",
+        "classification": "GENERIC_REGIME_FULLY_CLOSED",
+        "regimes": "R01_R5_EXACT_TYPED_IDENTITY_NO_COERCION|R02_SAV_PYREADSTAT_NATIVE_PHYSICAL",
+        "debt": "",
+        "exceptions": "",
+        "governed_surfaces": []
+      },
+      "historical_prep72_launch_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED",
+      "historical_unknowns": "country-form/resno/minus1/weight/design semantics remain bounded UNKNOWN",
+      "later_l2_disposition": "NO_ADDITIONAL_L2_PACKET_APPLICABLE_IN_THIS_JOIN",
+      "later_packet_selected_fields": {},
+      "current_usage_rights": "NOT_ISSUED_OR_QUALIFIED_BY_THIS_COURT__HISTORICAL_PREPARATION_AND_BRANCH_ADOPTION_NOT_CURRENT_OPERATION_GRANT",
+      "current_original_U_E_pre": "NULL_WITH_CAUSE",
+      "new_original_measured": false
+    },
+    {
+      "source_id": "SRC33",
+      "documentary_name": "WVS W1",
+      "canonical_filename": "WVS Wave 1.sav",
+      "canonical_sha256": "051bf450568f44181559a5b2bfbe58b4f05b58bc806643d0c63353c937ff0824",
+      "size_bytes": 6358941,
+      "format": "SAV",
+      "family": "WVS",
+      "wave_or_release": "Wave 1",
+      "source_identity_rule": "SOURCE_SHA256+ROW_ORDINAL",
+      "accepted_decoder_mode": "SAV_NATIVE_GOVERNED",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_sav",
+        "encoding": null,
+        "generic_decoder_admission": "SUPPORTED"
+      },
+      "compatibility_scope": "NO_COMPATIBILITY_OVERRIDE__NO_SEMANTIC_CLAIM",
+      "historical_acquisition": {
+        "state": "EXACT_ARCHIVE_MEMBER_AVAILABLE",
+        "transport_filename": "surveys.zip",
+        "archive_member_path": "surveys/WVS Wave 1.sav"
+      },
+      "historical_representation": {
+        "census": "BLOCKED",
+        "classification": "REPRESENTATION_AUTHORITY_STILL_BLOCKED",
+        "regimes": "R01_R5_EXACT_TYPED_IDENTITY_NO_COERCION|R02_SAV_PYREADSTAT_NATIVE_PHYSICAL",
+        "debt": "",
+        "exceptions": "",
+        "governed_surfaces": [
+          "S033",
+          "S034"
+        ]
+      },
+      "historical_prep72_launch_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED",
+      "historical_unknowns": "identity/weight/design/routing semantics remain bounded UNKNOWN; raw magnitude preservation closed",
+      "later_l2_disposition": "NO_ADDITIONAL_L2_PACKET_APPLICABLE_IN_THIS_JOIN",
+      "later_packet_selected_fields": {},
+      "current_usage_rights": "NOT_ISSUED_OR_QUALIFIED_BY_THIS_COURT__HISTORICAL_PREPARATION_AND_BRANCH_ADOPTION_NOT_CURRENT_OPERATION_GRANT",
+      "current_original_U_E_pre": "NULL_WITH_CAUSE",
+      "new_original_measured": false
+    },
+    {
+      "source_id": "SRC34",
+      "documentary_name": "WVS W4",
+      "canonical_filename": "WVS Wave 4.sav",
+      "canonical_sha256": "c6757ed187655c8b9af88ae4c23c00f066696a641af2f316b4343272ea1d4a0a",
+      "size_bytes": 41997221,
+      "format": "SAV",
+      "family": "WVS",
+      "wave_or_release": "Wave 4",
+      "source_identity_rule": "SOURCE_SHA256+ROW_ORDINAL",
+      "accepted_decoder_mode": "SAV_NATIVE_GOVERNED",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_sav",
+        "encoding": null,
+        "generic_decoder_admission": "SUPPORTED"
+      },
+      "compatibility_scope": "NO_COMPATIBILITY_OVERRIDE__NO_SEMANTIC_CLAIM",
+      "historical_acquisition": {
+        "state": "EXACT_ARCHIVE_MEMBER_AVAILABLE",
+        "transport_filename": "surveys.zip",
+        "archive_member_path": "surveys/WVS Wave 4.sav"
+      },
+      "historical_representation": {
+        "census": "PASS",
+        "classification": "GENERIC_REGIME_FULLY_CLOSED",
+        "regimes": "R01_R5_EXACT_TYPED_IDENTITY_NO_COERCION|R02_SAV_PYREADSTAT_NATIVE_PHYSICAL",
+        "debt": "",
+        "exceptions": "",
+        "governed_surfaces": []
+      },
+      "historical_prep72_launch_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED",
+      "historical_unknowns": "label relation/semantic codes/weight-design/scope semantics remain bounded UNKNOWN",
+      "later_l2_disposition": "NO_ADDITIONAL_L2_PACKET_APPLICABLE_IN_THIS_JOIN",
+      "later_packet_selected_fields": {},
+      "current_usage_rights": "NOT_ISSUED_OR_QUALIFIED_BY_THIS_COURT__HISTORICAL_PREPARATION_AND_BRANCH_ADOPTION_NOT_CURRENT_OPERATION_GRANT",
+      "current_original_U_E_pre": "NULL_WITH_CAUSE",
+      "new_original_measured": false
+    },
+    {
+      "source_id": "SRC35",
+      "documentary_name": "WVS W7",
+      "canonical_filename": "WVS Wave 7.sav",
+      "canonical_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+      "size_bytes": 185163494,
+      "format": "SAV",
+      "family": "WVS",
+      "wave_or_release": "Wave 7",
+      "source_identity_rule": "SOURCE_SHA256_PLUS_SOURCE_ROW_ORDINAL",
+      "accepted_decoder_mode": "HB01_WVS7_SAV_SELECTED_DECODER_C__SPSS_BYTECODE__FRESH_RAW_REPLAY",
+      "decoder_lane": {
+        "reader": "pyreadstat.read_sav",
+        "encoding": null,
+        "generic_decoder_admission": "BOUNDED_WVS7_NUMERIC_LANE"
+      },
+      "compatibility_scope": "PHYSICAL_EXTRACTION_ONLY__NO_SOURCE_TEXT_OR_SEMANTIC_AUTHORITY_FROM_DECODER",
+      "historical_acquisition": {
+        "state": "EXACT_ARCHIVE_MEMBER_AVAILABLE",
+        "transport_filename": "WVS Wave 7.sav.zip",
+        "archive_member_path": "WVS Wave 7.sav"
+      },
+      "historical_representation": {
+        "census": "PASS",
+        "classification": "GENERIC_REGIME_WITH_BOUNDED_BRIDGE",
+        "regimes": "R01_R5_EXACT_TYPED_IDENTITY_NO_COERCION|R02_SAV_PYREADSTAT_NATIVE_PHYSICAL",
+        "debt": "",
+        "exceptions": "",
+        "governed_surfaces": [
+          "S003",
+          "S004"
+        ]
+      },
+      "historical_prep72_launch_class": "NOT_IN_AUTHORITY72__WVS7_INTENTIONALLY_EXCLUDED",
+      "historical_unknowns": "HB01 D03 person-position routing remains ROUTING_UNKNOWN; population certification separate; no weight/pooling/harmonization authority implied",
+      "later_l2_disposition": "NO_ADDITIONAL_L2_PACKET_APPLICABLE_IN_THIS_JOIN",
+      "later_packet_selected_fields": {},
+      "current_usage_rights": "NOT_ISSUED_OR_QUALIFIED_BY_THIS_COURT__HISTORICAL_PREPARATION_AND_BRANCH_ADOPTION_NOT_CURRENT_OPERATION_GRANT",
+      "current_original_U_E_pre": "NULL_WITH_CAUSE",
+      "new_original_measured": false
+    }
+  ],
+  "independent_inventory_35_hash_size_format_matches": true
+}
