@@ -1,71 +1,129 @@
 {
-  "schema": "U53A_REPAIR_PROGRAM@proposal1",
-  "status": "PROPOSED_NOT_ISSUED_NOT_EXECUTED",
+  "schema": "U53A_REPAIR_PROGRAM@proposal2",
+  "status": "PROPOSED_NOT_ISSUED__BOUNDED_OWNER_SELECTION",
   "adoption_precondition": "Explicit new user/HQ build authorization; J52/W52 STOP remains",
   "minimal_cutsets": [
     {
-      "goal": "arbitrary-source native empirical execution",
+      "goal": "arbitrary-source empirical composition",
       "repairs": [
-        "R00",
         "R01",
         "R02",
         "R03"
       ],
-      "note": "No replacement C11/I03/I05/Batch required"
+      "qualification": [
+        "R00",
+        "R09"
+      ],
+      "minimality": "qualitative dependency cut in inspected graph; not mathematically proven global minimality"
     },
     {
-      "goal": "productive complete source-to-world consumer",
+      "goal": "identity-correct evidence serving",
+      "repairs": [
+        "R08"
+      ],
+      "qualification": [
+        "R00",
+        "R09"
+      ],
+      "independent_of": "arbitrary-name compiler repair"
+    },
+    {
+      "goal": "full source-to-world native product",
       "repairs": [
         "R04",
         "R05",
         "R06"
       ],
-      "note": "Frontier compiler alone cannot close F1-F8"
+      "requires": "both preceding cuts and lawful F5-F8 decisions"
     },
     {
       "goal": "original35 N11",
       "repairs": [
         "R07"
       ],
-      "note": "Includes independent source/science rights and every prior functional obligation"
+      "requires": "all code qualifications, rights/method issuance and actual 35-wave/global relation evidence"
     }
   ],
   "ranking_method": "Qualitative prerequisite reach; no invented numeric downstream-unblock count",
   "parallel_flights": [
     [
+      "R00"
+    ],
+    [
       "R01",
-      "R02"
+      "R02",
+      "R08",
+      "R09"
     ],
     [
-      "D1-D5 source/method packet preparation",
-      "R00-R06 sourcefree implementation"
+      "R03 after R01+R02",
+      "D1-D9 preparation independent of code"
     ],
     [
-      "F5/F6/F7 competent decisions",
-      "R01-R05"
+      "R04 and R05 after dependencies"
+    ],
+    [
+      "R06"
+    ],
+    [
+      "R07 after all prerequisites"
     ]
   ],
   "nodes": [
     {
       "id": "R00",
       "priority": "P0",
-      "title": "Acceptance gate",
+      "title": "Protected obligation and promotion contract",
       "material_refs": [
         "M23"
       ],
       "precondition": "Independent frozen oracle and estate obligations",
-      "transformation": "commission/claim manifest -> universal gate receipt",
+      "transformation": "protected 01/estate/functional authority -> versioned shape/operation oracle and claim transition checker",
       "consumer": "universal gate receipt",
       "owner": "HQ acceptance gate owner",
-      "write_scope": "CROSS_HQ_CONTROL_ROOM and .github/workflows; tests only after new authorization",
+      "write_scope": [
+        "CROSS_HQ_CONTROL_ROOM/universal_execution_policy/",
+        "CROSS_HQ_CONTROL_ROOM/universal_promotion_gate.py",
+        "tests/universal_execution_oracle/"
+      ],
       "predecessors": [],
-      "acceptance": "two-q301 commission rejected; three relabelled fixtures rejected",
+      "acceptance": "local proof retained as local; universal promotion from q301-only/renamed fixtures rejected; obligation IDs never disappear",
       "negative_oracle": "two-q301 commission rejected; three relabelled fixtures rejected",
       "original35_effect": "All35 remains explicit before dispatch",
-      "resource_class": "qualified S3 sourcefree Git/Python/cold replay",
-      "provider_sufficiency": "User selects qualified provider; independent integrated science review I3+; no model-name guarantee",
+      "resource_class": "Qualified sourcefree native Python/Git, isolated checkout, real existing owner dependencies; measure finite frontier cardinality/runtime/memory before scale",
+      "provider_sufficiency": "Bounded sourcefree coding/tests: competent implementation agent with native Python and cold-process tooling; integration/science/causal adjudication: I3+ independent reviewer. Model label alone is not qualification.",
       "parallel_condition": "Disjoint write scopes and frozen shared contract; no simultaneous owner edits",
-      "stop_hold": "Stop exact unsupported semantic/permission edge; preserve complete remaining frontier; do not substitute easier fixture"
+      "stop_hold": "Stop exact unsupported semantic/permission edge; preserve complete remaining frontier; do not substitute easier fixture",
+      "reference_sources": [
+        {
+          "id": "oracle",
+          "commit": "a79dfcf85c65195c9b6d264fd366b50a71b4b5a2",
+          "path": "WORKER_RETURNS/PYAT-R53-U53A-ASTRA-UNIVERSAL-EXECUTION-COURT-R1/01_INDEPENDENT_UNIVERSAL_DEMAND_ORACLE.md",
+          "blob": "0aaf795c56026bc11cc52210375e22325ae3d4f3"
+        },
+        {
+          "id": "estate",
+          "commit": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+          "path": "PYAT_CONTROL_ROOM/WHOLE_MACHINE_COMPLETION_R1/ESTATE_35X_REQUIREMENTS_MATRIX.json",
+          "blob": "2ad9a001aefef4889d8ac48a2a81cd806dec50d6"
+        },
+        {
+          "id": "ci",
+          "commit": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+          "path": ".github/workflows/rabochii-governed-bounded-court.yml",
+          "blob": "3e045885c9593392836871cbe5f4a210bee8eb79"
+        },
+        {
+          "id": "Hcode",
+          "commit": "026a6ba3075817b7f0370619843ee7227967bc8e",
+          "path": "WORKER_RETURNS/PYAT-R53-B53H-HISTORICAL-RECURRENCE-AND-ACCEPTANCE-FAILURE-COURT-R1/09_trusted_oracle_prefilter.py",
+          "blob": "c7eea07999752a5101cacd8c3ede68fb24f061e7"
+        }
+      ],
+      "base_commit": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+      "merge_rule": "Exact listed reference bodies are recovery inputs; do not merge unrelated worker branches. Before implementation reconcile current adopted owner and require independent compatibility review for any differing body.",
+      "contract": "07_UNIVERSAL_SOURCE_ENVELOPE_WORKLOAD_CONTRACTS.md",
+      "first_unblock": "universal gate receipt"
     },
     {
       "id": "R01",
@@ -80,17 +138,46 @@
       "transformation": "arbitrary item roles -> full symbolic frontier and semantic native mapping",
       "consumer": "full symbolic frontier and semantic native mapping",
       "owner": "G50 owner",
-      "write_scope": "g50/enumerate.py native_map.py; preserve bounded fixtures separately",
+      "write_scope": [
+        "rawlsing_next/universal_grammar/types.py",
+        "rawlsing_next/universal_grammar/enumerate.py",
+        "rawlsing_next/universal_grammar/native_map.py",
+        "rawlsing_next/tests/test_universal_grammar.py"
+      ],
       "predecessors": [
         "R00"
       ],
-      "acceptance": "instrument without ID/Y works; bijective renaming preserves semantic results; fixed-count no-drop fails omissions",
+      "acceptance": "arbitrary names; explicit administration; unique occurrence keys; semantic direction grants; independent whole-frontier operation anti-join",
       "negative_oracle": "instrument without ID/Y works; bijective renaming preserves semantic results; fixed-count no-drop fails omissions",
       "original35_effect": "Any wave may be compiled once lawful semantics supplied",
-      "resource_class": "qualified S3 sourcefree Git/Python/cold replay",
-      "provider_sufficiency": "User selects qualified provider; independent integrated science review I3+; no model-name guarantee",
+      "resource_class": "Qualified sourcefree native Python/Git, isolated checkout, real existing owner dependencies; measure finite frontier cardinality/runtime/memory before scale",
+      "provider_sufficiency": "Bounded sourcefree coding/tests: competent implementation agent with native Python and cold-process tooling; integration/science/causal adjudication: I3+ independent reviewer. Model label alone is not qualification.",
       "parallel_condition": "Disjoint write scopes and frozen shared contract; no simultaneous owner edits",
-      "stop_hold": "Stop exact unsupported semantic/permission edge; preserve complete remaining frontier; do not substitute easier fixture"
+      "stop_hold": "Stop exact unsupported semantic/permission edge; preserve complete remaining frontier; do not substitute easier fixture",
+      "reference_sources": [
+        {
+          "id": "G50enum",
+          "commit": "d379bafe36b8d89da27ea5bf33614d33aca7f2d2",
+          "path": "WORKER_RETURNS/PYAT-R50-G50-GOVERNED-OPERATION-GRAMMAR-R1/g50/enumerate.py",
+          "blob": "f610ef2dea39519a51a5b57fd35bbe245fb9dc9b"
+        },
+        {
+          "id": "G50map",
+          "commit": "d379bafe36b8d89da27ea5bf33614d33aca7f2d2",
+          "path": "WORKER_RETURNS/PYAT-R50-G50-GOVERNED-OPERATION-GRAMMAR-R1/g50/native_map.py",
+          "blob": "b7a0d3193667013b81dae9eeeef07d26da88fcc3"
+        },
+        {
+          "id": "G50native",
+          "commit": "d379bafe36b8d89da27ea5bf33614d33aca7f2d2",
+          "path": "WORKER_RETURNS/PYAT-R50-G50-GOVERNED-OPERATION-GRAMMAR-R1/g50/native_i05.py",
+          "blob": "96bf1778fddd108037be83a3bb5fdafc2259c602"
+        }
+      ],
+      "base_commit": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+      "merge_rule": "Exact listed reference bodies are recovery inputs; do not merge unrelated worker branches. Before implementation reconcile current adopted owner and require independent compatibility review for any differing body.",
+      "contract": "07_UNIVERSAL_SOURCE_ENVELOPE_WORKLOAD_CONTRACTS.md",
+      "first_unblock": "full symbolic frontier and semantic native mapping"
     },
     {
       "id": "R02",
@@ -104,17 +191,38 @@
       "transformation": "instrument/unit/risk/design -> GovernedC11Projection + role inventory",
       "consumer": "GovernedC11Projection + role inventory",
       "owner": "B49 owner",
-      "write_scope": "pre553_source_native_preimage_adapter.py; source-specific adapter modules",
+      "write_scope": [
+        "rawlsing_next/pre553_source_native_preimage_adapter.py",
+        "rawlsing_next/tests/test_universal_source_projection.py"
+      ],
       "predecessors": [
         "R00"
       ],
       "acceptance": "household/adult unlink refuses joint; nonresponse differs from not-administered; no scalar default for MR/rank/repeat",
       "negative_oracle": "household/adult unlink refuses joint; nonresponse differs from not-administered; no scalar default for MR/rank/repeat",
       "original35_effect": "No privileged LiTS source",
-      "resource_class": "qualified S3 sourcefree Git/Python/cold replay",
-      "provider_sufficiency": "User selects qualified provider; independent integrated science review I3+; no model-name guarantee",
+      "resource_class": "Qualified sourcefree native Python/Git, isolated checkout, real existing owner dependencies; measure finite frontier cardinality/runtime/memory before scale",
+      "provider_sufficiency": "Bounded sourcefree coding/tests: competent implementation agent with native Python and cold-process tooling; integration/science/causal adjudication: I3+ independent reviewer. Model label alone is not qualification.",
       "parallel_condition": "Disjoint write scopes and frozen shared contract; no simultaneous owner edits",
-      "stop_hold": "Stop exact unsupported semantic/permission edge; preserve complete remaining frontier; do not substitute easier fixture"
+      "stop_hold": "Stop exact unsupported semantic/permission edge; preserve complete remaining frontier; do not substitute easier fixture",
+      "reference_sources": [
+        {
+          "id": "B49rules",
+          "commit": "b5600da96358f8526471d635a1befa8daa3f098b",
+          "path": "rawlsing_next/pre553_inherited_source_rules.py",
+          "blob": "5f6efaceb18d92a362d065d12fdca4076d53fa16"
+        },
+        {
+          "id": "B49preimage",
+          "commit": "b5600da96358f8526471d635a1befa8daa3f098b",
+          "path": "rawlsing_next/pre553_source_native_preimage_adapter.py",
+          "blob": "e27c116b9a5654a8709aff1042322dc51d3296d3"
+        }
+      ],
+      "base_commit": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+      "merge_rule": "Exact listed reference bodies are recovery inputs; do not merge unrelated worker branches. Before implementation reconcile current adopted owner and require independent compatibility review for any differing body.",
+      "contract": "07_UNIVERSAL_SOURCE_ENVELOPE_WORKLOAD_CONTRACTS.md",
+      "first_unblock": "GovernedC11Projection + role inventory"
     },
     {
       "id": "R03",
@@ -132,7 +240,12 @@
       "transformation": "every supported operation -> native I03/I05/Batch -> fact lineage",
       "consumer": "fact lineage",
       "owner": "native integration owner",
-      "write_scope": "pre553_native_workload_binding.py; issued-workload integration; no second engine",
+      "write_scope": [
+        "rawlsing_next/pre553_native_workload_binding.py",
+        "rawlsing_next/pre553_universal_workload.py",
+        "rawlsing_next/tests/test_universal_workload.py",
+        "rawlsing_next/pre553_issued_workload.py"
+      ],
       "predecessors": [
         "R01",
         "R02"
@@ -140,10 +253,40 @@
       "acceptance": "complete expected identity anti-join; omitted conditional/joint RED; source mutation changes its fact",
       "negative_oracle": "complete expected identity anti-join; omitted conditional/joint RED; source mutation changes its fact",
       "original35_effect": "Reuses one executor across qualified source shapes",
-      "resource_class": "qualified S3 sourcefree Git/Python/cold replay",
-      "provider_sufficiency": "User selects qualified provider; independent integrated science review I3+; no model-name guarantee",
+      "resource_class": "Qualified sourcefree native Python/Git, isolated checkout, real existing owner dependencies; measure finite frontier cardinality/runtime/memory before scale",
+      "provider_sufficiency": "Bounded sourcefree coding/tests: competent implementation agent with native Python and cold-process tooling; integration/science/causal adjudication: I3+ independent reviewer. Model label alone is not qualification.",
       "parallel_condition": "Disjoint write scopes and frozen shared contract; no simultaneous owner edits",
-      "stop_hold": "Stop exact unsupported semantic/permission edge; preserve complete remaining frontier; do not substitute easier fixture"
+      "stop_hold": "Stop exact unsupported semantic/permission edge; preserve complete remaining frontier; do not substitute easier fixture",
+      "reference_sources": [
+        {
+          "id": "B49bind",
+          "commit": "b5600da96358f8526471d635a1befa8daa3f098b",
+          "path": "rawlsing_next/pre553_native_workload_binding.py",
+          "blob": "bc88720c2bbcf52a43b799526c7dade094ccd9f8"
+        },
+        {
+          "id": "issued",
+          "commit": "9bbf9e0509411beb210331d28160324b005a784e",
+          "path": "WORKER_RETURNS/PYAT-R51-I51-B49-G50-JOINED-PRODUCER-R1/candidate/rawlsing_next/pre553_issued_workload.py",
+          "blob": "31e84f49d624f5524906e9e7839d2873106f8249"
+        },
+        {
+          "id": "routeb",
+          "commit": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+          "path": "rawlsing_next/pre553_route_b_production.py",
+          "blob": "2385cd327dced3c5b887b59085aa0d21b04d78c3"
+        },
+        {
+          "id": "exact",
+          "commit": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+          "path": "rawlsing_next/pre553_discovery_exact.py",
+          "blob": "905f24d114419dbdd93879ad2bee5b59dd2f23af"
+        }
+      ],
+      "base_commit": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+      "merge_rule": "Exact listed reference bodies are recovery inputs; do not merge unrelated worker branches. Before implementation reconcile current adopted owner and require independent compatibility review for any differing body. R03 recovers the exact U43 module for initial integration; R04 alone makes subsequent custody changes after R03 completes.",
+      "contract": "07_UNIVERSAL_SOURCE_ENVELOPE_WORKLOAD_CONTRACTS.md",
+      "first_unblock": "fact lineage"
     },
     {
       "id": "R04",
@@ -158,17 +301,44 @@
       "transformation": "checkpoint/prior artifacts -> resumed exact outputs",
       "consumer": "resumed exact outputs",
       "owner": "Batch/custody owner",
-      "write_scope": "issued-workload custody bridge; reuse native Batch/adaptive",
+      "write_scope": [
+        "rawlsing_next/pre553_issued_workload.py",
+        "rawlsing_next/tests/test_universal_workload_custody.py"
+      ],
       "predecessors": [
         "R03"
       ],
       "acceptance": "cold partial resume equals uninterrupted; revoked grant refuses; no duplicated/omitted unit",
       "negative_oracle": "cold partial resume equals uninterrupted; revoked grant refuses; no duplicated/omitted unit",
       "original35_effect": "Scales finite frontiers without convenience exclusions",
-      "resource_class": "qualified S3 sourcefree Git/Python/cold replay",
-      "provider_sufficiency": "User selects qualified provider; independent integrated science review I3+; no model-name guarantee",
+      "resource_class": "Qualified sourcefree native Python/Git, isolated checkout, real existing owner dependencies; measure finite frontier cardinality/runtime/memory before scale",
+      "provider_sufficiency": "Bounded sourcefree coding/tests: competent implementation agent with native Python and cold-process tooling; integration/science/causal adjudication: I3+ independent reviewer. Model label alone is not qualification.",
       "parallel_condition": "Disjoint write scopes and frozen shared contract; no simultaneous owner edits",
-      "stop_hold": "Stop exact unsupported semantic/permission edge; preserve complete remaining frontier; do not substitute easier fixture"
+      "stop_hold": "Stop exact unsupported semantic/permission edge; preserve complete remaining frontier; do not substitute easier fixture",
+      "reference_sources": [
+        {
+          "id": "issued",
+          "commit": "9bbf9e0509411beb210331d28160324b005a784e",
+          "path": "WORKER_RETURNS/PYAT-R51-I51-B49-G50-JOINED-PRODUCER-R1/candidate/rawlsing_next/pre553_issued_workload.py",
+          "blob": "31e84f49d624f5524906e9e7839d2873106f8249"
+        },
+        {
+          "id": "batch",
+          "commit": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+          "path": "rawlsing_next/pre553_batch_runner.py",
+          "blob": "2d291600b9a10c56d9c6f6de7f7d619f6c52e829"
+        },
+        {
+          "id": "adaptive",
+          "commit": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+          "path": "rawlsing_next/pre553_discovery_adaptive.py",
+          "blob": "58e32770381fa8d901701d6a2c676f28261aa3e3"
+        }
+      ],
+      "base_commit": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+      "merge_rule": "Exact listed reference bodies are recovery inputs; do not merge unrelated worker branches. Before implementation reconcile current adopted owner and require independent compatibility review for any differing body.",
+      "contract": "07_UNIVERSAL_SOURCE_ENVELOPE_WORKLOAD_CONTRACTS.md",
+      "first_unblock": "resumed exact outputs"
     },
     {
       "id": "R05",
@@ -183,17 +353,60 @@
       "transformation": "facts/discovery/recursive -> C1/M1/M2/B5/I4/E41 -> N10E",
       "consumer": "N10E",
       "owner": "analytical/learned owner",
-      "write_scope": "existing composition and provider interfaces",
+      "write_scope": [
+        "rawlsing_next/pre553_analytical_composition.py",
+        "rawlsing_next/pre553_learned_world_composition.py",
+        "rawlsing_next/pre553_empirical_possibility_provider.py",
+        "rawlsing_next/tests/test_universal_learned_consumer.py",
+        "rawlsing_next/pre553_universal_empirical_extension.py"
+      ],
       "predecessors": [
-        "R03"
+        "R03",
+        "R08"
       ],
       "acceptance": "minority/XOR/zero/null/recursive products survive; sever upstream changes same actual consumer assertion",
       "negative_oracle": "minority/XOR/zero/null/recursive products survive; sever upstream changes same actual consumer assertion",
       "original35_effect": "Predictors/clouds required, unary counts insufficient",
-      "resource_class": "qualified S3 sourcefree Git/Python/cold replay",
-      "provider_sufficiency": "User selects qualified provider; independent integrated science review I3+; no model-name guarantee",
+      "resource_class": "Qualified sourcefree native Python/Git, isolated checkout, real existing owner dependencies; measure finite frontier cardinality/runtime/memory before scale",
+      "provider_sufficiency": "Bounded sourcefree coding/tests: competent implementation agent with native Python and cold-process tooling; integration/science/causal adjudication: I3+ independent reviewer. Model label alone is not qualification.",
       "parallel_condition": "Disjoint write scopes and frozen shared contract; no simultaneous owner edits",
-      "stop_hold": "Stop exact unsupported semantic/permission edge; preserve complete remaining frontier; do not substitute easier fixture"
+      "stop_hold": "Stop exact unsupported semantic/permission edge; preserve complete remaining frontier; do not substitute easier fixture",
+      "reference_sources": [
+        {
+          "id": "c1",
+          "commit": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+          "path": "rawlsing_next/pre553_analytical_composition.py",
+          "blob": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b"
+        },
+        {
+          "id": "i4",
+          "commit": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+          "path": "rawlsing_next/pre553_learned_world_composition.py",
+          "blob": "4a8e27a226a9c06606f5ba493d2cc7356d491a7b"
+        },
+        {
+          "id": "empirical",
+          "commit": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+          "path": "rawlsing_next/pre553_empirical_possibility_provider.py",
+          "blob": "23167aa25291fb148b1e3cf210ac33fe7769b783"
+        },
+        {
+          "id": "e41",
+          "commit": "6e123bafe749d6997c764ae117fb5e68e0139ed7",
+          "path": "WORKER_RETURNS/PYAT-R41-E41-FULL-EMPIRICAL-F1F4-COMPUTED-POSSIBILITY-R1/e41_provider_extension.py",
+          "blob": "e0511027c47a8af9426856b62151cbb4cdc929b1"
+        },
+        {
+          "id": "recursive",
+          "commit": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+          "path": "rawlsing_next/pre553_recursive_handoff.py",
+          "blob": "868f43bf9869af5501fd67c3de7a2703ba4cb1b4"
+        }
+      ],
+      "base_commit": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+      "merge_rule": "Exact listed reference bodies are recovery inputs; do not merge unrelated worker branches. Before implementation reconcile current adopted owner and require independent compatibility review for any differing body.",
+      "contract": "07_UNIVERSAL_SOURCE_ENVELOPE_WORKLOAD_CONTRACTS.md",
+      "first_unblock": "N10E"
     },
     {
       "id": "R06",
@@ -209,17 +422,68 @@
       "transformation": "distinct fields/comparable operations -> N9 -> N10W -> unchanged E04",
       "consumer": "unchanged E04",
       "owner": "N9/N10W integration owner",
-      "write_scope": "existing world/provider adapters; no actor writes",
+      "write_scope": [
+        "rawlsing_next/pre553_universal_world_binding.py",
+        "rawlsing_next/tests/test_universal_world_binding.py"
+      ],
       "predecessors": [
         "R05"
       ],
       "acceptance": "two fields materially affect selected view; temporal mutation changes permitted view; CONTEXT not structural",
       "negative_oracle": "two fields materially affect selected view; temporal mutation changes permitted view; CONTEXT not structural",
       "original35_effect": "Global F6/F7/F8 proof remains separate",
-      "resource_class": "qualified S3 sourcefree Git/Python/cold replay",
-      "provider_sufficiency": "User selects qualified provider; independent integrated science review I3+; no model-name guarantee",
+      "resource_class": "Qualified sourcefree native Python/Git, isolated checkout, real existing owner dependencies; measure finite frontier cardinality/runtime/memory before scale",
+      "provider_sufficiency": "Bounded sourcefree coding/tests: competent implementation agent with native Python and cold-process tooling; integration/science/causal adjudication: I3+ independent reviewer. Model label alone is not qualification.",
       "parallel_condition": "Disjoint write scopes and frozen shared contract; no simultaneous owner edits",
-      "stop_hold": "Stop exact unsupported semantic/permission edge; preserve complete remaining frontier; do not substitute easier fixture"
+      "stop_hold": "Stop exact unsupported semantic/permission edge; preserve complete remaining frontier; do not substitute easier fixture",
+      "reference_sources": [
+        {
+          "id": "w41",
+          "commit": "b0a68e4ff5d5e2ca62b080376fda6b5f5431a6c2",
+          "path": "WORKER_RETURNS/PYAT-R41-W41-OBJECTIVE-WORLD-R1/objective_world.py",
+          "blob": "79a91fc027d4be5428e19ef7a14cac0c19e96e4d"
+        },
+        {
+          "id": "f43",
+          "commit": "100ae7832ddc2c5edb7abdbd7e2cb94b5f9e8733",
+          "path": "WORKER_RETURNS/PYAT-R43-F43-SOURCE-QUALIFIED-OBJECTIVE-WORLD-R1/f43_product.py",
+          "blob": "aa7860ae62dc774e212d376f6daed81553cd7477"
+        },
+        {
+          "id": "ff",
+          "commit": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+          "path": "rawlsing_next/field_forge_conditional_support.py",
+          "blob": "a70decb20747d84cbcbe27d1280babc6de88ef33"
+        },
+        {
+          "id": "ff_ingress",
+          "commit": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+          "path": "rawlsing_next/m1_admitted_field_forge_relation_v554_ingress.py",
+          "blob": "0aeacd9e66c7e4340b36e1b622bb5c9bf2865fd5"
+        },
+        {
+          "id": "temporal",
+          "commit": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+          "path": "rawlsing_next/m1_temporal_v554_admission_dedup.py",
+          "blob": "e8bd6376720a2de132b384e7771d71d8d39cf261"
+        },
+        {
+          "id": "j42",
+          "commit": "f53cb0d2bce52640268c844c398bbd8007d28edc",
+          "path": "WORKER_RETURNS/PYAT-R42-J42-COMPLETE-E41-W41-P41-ACTUAL-JOINT-PREV3-CONSUMER-R1/runtime/j42_join.py",
+          "blob": "40f1e9f69fafff37f6bc44474b0189543d4997b3"
+        },
+        {
+          "id": "p41",
+          "commit": "f27d1101048638bba395143a48efb7ef00bfcda4",
+          "path": "WORKER_RETURNS/PYAT-R41-P41-GENERIC-PROGRESSIVE-N10E-N10W-SERVING-R1/runtime/p41_service.py",
+          "blob": "7d428106c79bcc56973f7c0044fc273a2b354554"
+        }
+      ],
+      "base_commit": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+      "merge_rule": "Exact listed reference bodies are recovery inputs; do not merge unrelated worker branches. Before implementation reconcile current adopted owner and require independent compatibility review for any differing body.",
+      "contract": "07_UNIVERSAL_SOURCE_ENVELOPE_WORKLOAD_CONTRACTS.md",
+      "first_unblock": "unchanged E04"
     },
     {
       "id": "R07",
@@ -233,20 +497,148 @@
       "transformation": "actual original native output -> existing N11 assessor receipts",
       "consumer": "existing N11 assessor receipts",
       "owner": "source/method owners then independent N11 assessor",
-      "write_scope": "private approved runtime; report-only aggregate receipts",
+      "write_scope": [
+        "WORKER_RETURNS/PROPOSED-ORIGINAL35-TRANCHE-QUALIFICATION/"
+      ],
       "predecessors": [
         "R03",
         "R04",
         "R05",
-        "R06"
+        "R06",
+        "R09"
       ],
       "acceptance": "original identity/permission/operation/consumer chain; 1890 obligations accounted; no UNKNOWN->NA",
       "negative_oracle": "original identity/permission/operation/consumer chain; 1890 obligations accounted; no UNKNOWN->NA",
       "original35_effect": "Incremental tranches allowed; full35 acceptance still requires all obligations",
-      "resource_class": "qualified S3 original-data host only after permission",
-      "provider_sufficiency": "User selects qualified provider; independent integrated science review I3+; no model-name guarantee",
+      "resource_class": "Qualified original-data host AFTER exact rights/method decisions",
+      "provider_sufficiency": "Bounded sourcefree coding/tests: competent implementation agent with native Python and cold-process tooling; integration/science/causal adjudication: I3+ independent reviewer. Model label alone is not qualification.",
       "parallel_condition": "Disjoint write scopes and frozen shared contract; no simultaneous owner edits",
-      "stop_hold": "Stop exact unsupported semantic/permission edge; preserve complete remaining frontier; do not substitute easier fixture"
+      "stop_hold": "Stop exact unsupported semantic/permission edge; preserve complete remaining frontier; do not substitute easier fixture",
+      "reference_sources": [
+        {
+          "id": "estate",
+          "commit": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+          "path": "PYAT_CONTROL_ROOM/WHOLE_MACHINE_COMPLETION_R1/ESTATE_35X_REQUIREMENTS_MATRIX.json",
+          "blob": "2ad9a001aefef4889d8ac48a2a81cd806dec50d6"
+        },
+        {
+          "id": "stop",
+          "commit": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+          "path": "PYAT_CONTROL_ROOM/R53_USER_STOP_J52_W52_AND_UNIVERSAL_MACHINE_FORENSIC_FREEZE_20261020.md",
+          "blob": "e2a04d6fc82bea95d0f88a14c7ebf38af6dd4f63"
+        }
+      ],
+      "base_commit": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+      "merge_rule": "Exact listed reference bodies are recovery inputs; do not merge unrelated worker branches. Before implementation reconcile current adopted owner and require independent compatibility review for any differing body.",
+      "contract": "07_UNIVERSAL_SOURCE_ENVELOPE_WORKLOAD_CONTRACTS.md",
+      "first_unblock": "existing N11 assessor receipts"
+    },
+    {
+      "id": "R08",
+      "priority": "P0",
+      "title": "Evidence identity and status repair",
+      "owner": "N10E/N10W adapter owner; independent consumer reviewer",
+      "predecessors": [
+        "R00"
+      ],
+      "base_commit": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+      "reference_sources": [
+        {
+          "id": "j42",
+          "commit": "f53cb0d2bce52640268c844c398bbd8007d28edc",
+          "path": "WORKER_RETURNS/PYAT-R42-J42-COMPLETE-E41-W41-P41-ACTUAL-JOINT-PREV3-CONSUMER-R1/runtime/j42_join.py",
+          "blob": "40f1e9f69fafff37f6bc44474b0189543d4997b3"
+        },
+        {
+          "id": "p41",
+          "commit": "f27d1101048638bba395143a48efb7ef00bfcda4",
+          "path": "WORKER_RETURNS/PYAT-R41-P41-GENERIC-PROGRESSIVE-N10E-N10W-SERVING-R1/runtime/p41_service.py",
+          "blob": "7d428106c79bcc56973f7c0044fc273a2b354554"
+        },
+        {
+          "id": "empirical",
+          "commit": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+          "path": "rawlsing_next/pre553_empirical_possibility_provider.py",
+          "blob": "23167aa25291fb148b1e3cf210ac33fe7769b783"
+        },
+        {
+          "id": "e04",
+          "commit": "f53cb0d2bce52640268c844c398bbd8007d28edc",
+          "path": "WORKER_RETURNS/PYAT-R42-J42-COMPLETE-E41-W41-P41-ACTUAL-JOINT-PREV3-CONSUMER-R1/vendor/p41/runtime/vendor/product/nonparent.py",
+          "blob": "2181b832d3c4376d4b9428e13f4354f273be8f32"
+        }
+      ],
+      "write_scope": [
+        "rawlsing_next/pre553_universal_evidence_binding.py",
+        "rawlsing_next/tests/test_universal_evidence_binding.py"
+      ],
+      "precondition": "R00 protected semantic identity/status oracle; recover exact J42/P41 bodies into reviewed adapter, keep historical returns immutable",
+      "transformation": "EvidenceRequest exact K -> resolved provider/custody -> identity-checked EvidenceResult and total support summary",
+      "consumer": "P41 progressive values and unchanged E04 terminal",
+      "first_unblock": "Prevent wrong-condition association and unsupported-positive serving independently of universal compiler",
+      "acceptance": "C=1/A=0 cannot resolve A=1; missing structural state and ZERO_SUPPORT fail same E04 success assertion; positive A=1 remains; independent request-to-consumer association checked",
+      "negative_oracle": "Same-depth wrong condition/value; changed edition/risk/clock/design; missing state; stale cache; unknown support; explicit allowed controls",
+      "material_refs": [
+        "M19",
+        "M20",
+        "M27",
+        "M28"
+      ],
+      "contract": "07",
+      "original35_effect": "No source can claim correct consumer support from identity-losing adapters",
+      "resource_class": "Sourcefree native Python; unchanged E04 and fresh E41 fixture; no original data",
+      "provider_sufficiency": "Strong bounded Python repair with independent I3+ contract review",
+      "stop_hold": "No source/science/consumer-use permission expansion"
+    },
+    {
+      "id": "R09",
+      "priority": "P0",
+      "title": "Authenticated native runner and required promotion checks",
+      "owner": "Independent CI engineer plus repository administrator",
+      "predecessors": [
+        "R00"
+      ],
+      "base_commit": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+      "reference_sources": [
+        {
+          "id": "ci",
+          "commit": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+          "path": ".github/workflows/rabochii-governed-bounded-court.yml",
+          "blob": "3e045885c9593392836871cbe5f4a210bee8eb79"
+        },
+        {
+          "id": "Hcode",
+          "commit": "026a6ba3075817b7f0370619843ee7227967bc8e",
+          "path": "WORKER_RETURNS/PYAT-R53-B53H-HISTORICAL-RECURRENCE-AND-ACCEPTANCE-FAILURE-COURT-R1/09_trusted_oracle_prefilter.py",
+          "blob": "c7eea07999752a5101cacd8c3ede68fb24f061e7"
+        },
+        {
+          "id": "Htest10",
+          "commit": "026a6ba3075817b7f0370619843ee7227967bc8e",
+          "path": "WORKER_RETURNS/PYAT-R53-B53H-HISTORICAL-RECURRENCE-AND-ACCEPTANCE-FAILURE-COURT-R1/10_test_trusted_oracle_prefilter.py",
+          "blob": "df073d1a3ac01e3009699c14022d60f70dae790f"
+        }
+      ],
+      "write_scope": [
+        ".github/workflows/universal-execution-qualification.yml",
+        "CROSS_HQ_CONTROL_ROOM/universal_runner_verify.py",
+        "tests/universal_runner/"
+      ],
+      "precondition": "Protected oracle and trusted workflow/runner administration, separate from candidate writer",
+      "transformation": "Exact candidate digest plus externally pinned policy -> sandboxed real owner execution -> authenticated event/value artifacts -> independent verification",
+      "consumer": "HQ promotion required check",
+      "first_unblock": "Stop forged manifests/native booleans from qualifying general capability",
+      "acceptance": "Forged events/self-pin/wrong commit/replayed run/missing owner/shape relabel all rejected; authentic known baseline accepted; required check enforcement verified at exact commit",
+      "negative_oracle": "P53T B53H forgery witnesses and same-name spoofed status; candidate edits policy/workflow; missing trace; changed runtime import",
+      "material_refs": [
+        "M23",
+        "M29"
+      ],
+      "contract": "09 and UNIVERSAL_RELEASE_GATE_SPEC.json",
+      "original35_effect": "All35 accounting separate from original rights/measurement",
+      "resource_class": "Trusted isolated runner, protected policy/workflow, authenticated CI artifact provenance; native Python and deterministic cold runs",
+      "provider_sufficiency": "CI/security implementation competence and repository admin; scientific oracle requires separate owner",
+      "stop_hold": "If required checks/protection unavailable return DEPLOYMENT_HOLD; never call a local prototype installed"
     }
   ]
 }

@@ -1,19 +1,23 @@
 {
-  "startup": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
-  "api": "GET git/trees/<startup>?recursive=1",
-  "truncated": false,
-  "total_entries": 9129,
-  "blob_count": 7615,
-  "python_paths": 730,
-  "agents_files": [],
-  "ledger_blob": "cc89b76a308f9ca73d3502be06ce2babc499152a",
-  "ledger_fetch_file": "empty content returned",
-  "ledger_raw_fetch": "INVALID_ARGUMENT: too large or unsupported",
-  "unverified_large_artifacts": [
-    "02_ALL_PINNED_TREE_FILES.tsv",
-    "03_MATERIAL_BRANCH_DIFF_FILE_BLOBS.part00.tsv",
-    "03_MATERIAL_BRANCH_DIFF_FILE_BLOBS.part01.tsv",
-    "06_SOURCE_SPECIFICITY_AND_FIXTURE_LEAKAGE.tsv"
-  ],
-  "semantic_disposition": "PARTIAL: census independently corroborated; full ledger equivalence and per-branch reachability not independently reproduced"
+  "status": "HISTORICAL_PRE_P53E_ACCESS_RECORD_SUPERSEDED_FOR_TREE_LEDGER",
+  "current_proof": "evidence/FAN_IN_AND_CORPUS_READBACK.json",
+  "historical": {
+    "startup": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+    "api": "GET git/trees/<startup>?recursive=1",
+    "truncated": false,
+    "total_entries": 9129,
+    "blob_count": 7615,
+    "python_paths": 730,
+    "agents_files": [],
+    "ledger_blob": "cc89b76a308f9ca73d3502be06ce2babc499152a",
+    "ledger_fetch_file": "empty content returned",
+    "ledger_raw_fetch": "INVALID_ARGUMENT: too large or unsupported",
+    "unverified_large_artifacts": [
+      "02_ALL_PINNED_TREE_FILES.tsv",
+      "03_MATERIAL_BRANCH_DIFF_FILE_BLOBS.part00.tsv",
+      "03_MATERIAL_BRANCH_DIFF_FILE_BLOBS.part01.tsv",
+      "06_SOURCE_SPECIFICITY_AND_FIXTURE_LEAKAGE.tsv"
+    ],
+    "semantic_disposition": "PARTIAL: census independently corroborated; full ledger equivalence and per-branch reachability not independently reproduced"
+  }
 }

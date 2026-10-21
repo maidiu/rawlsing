@@ -1,25 +1,27 @@
 {
-  "schema": "U53A_UNIVERSAL_GATE@proposal1",
-  "execution_status": "PROPOSED_NOT_EXECUTED",
+  "schema": "U53A_UNIVERSAL_GATE@proposal2",
+  "status": "SPECIFICATION_ONLY_NOT_INSTALLED",
+  "trust_assumptions": [
+    "repository administrator and protected oracle owner independent of candidate writer",
+    "runner, verifier, workflow and evidence transport integrity",
+    "authorized scientific policy validity not proved by signatures"
+  ],
   "oracle": {
+    "frozen_oracle_commit": "a79dfcf85c65195c9b6d264fd366b50a71b4b5a2",
     "estate_blob": "2ad9a001aefef4889d8ac48a2a81cd806dec50d6",
-    "source_count": 35,
-    "obligations_per_source": 54,
-    "expected_cells": 1890,
-    "expected_inputs_independent_of_candidate": true
+    "sources": 35,
+    "sav": 31,
+    "dta": 4,
+    "cells": 1890,
+    "per_source_axes": 54,
+    "original_U": null,
+    "original_E_pre": null
   },
   "claims": {
-    "SCOPED_OPERATOR": "Local proof only; universal milestone stays open",
-    "UNIVERSAL_ENGINE_SHAPE": [
-      "G0",
-      "G1",
-      "G2",
-      "G3",
-      "G4",
-      "G5",
-      "G6"
+    "LOCAL_OPERATOR": [
+      "scope and exact test provenance"
     ],
-    "ORIGINAL35_PRODUCT": [
+    "GENERIC_SOURCEFREE": [
       "G0",
       "G1",
       "G2",
@@ -28,53 +30,144 @@
       "G5",
       "G6",
       "G7"
+    ],
+    "ORIGINAL35_N11": [
+      "G0",
+      "G1",
+      "G2",
+      "G3",
+      "G4",
+      "G5",
+      "G6",
+      "G7",
+      "G8"
     ]
   },
-  "required_states": [
-    "SUPPORTED",
-    "OBSERVED_ZERO",
-    "EMPIRICAL_NULL",
-    "DIFFUSE",
-    "VALID_EMPTY",
-    "PENDING",
-    "UNKNOWN",
-    "HOLD",
-    "UNSUPPORTED_RUNTIME",
-    "PROHIBITED",
-    "INAPPLICABLE_PROVED",
-    "ERROR"
+  "gates": [
+    {
+      "id": "G0",
+      "name": "claim transition",
+      "reject": "mission universal but only local evidence; obligations dropped between commissions",
+      "proof": "protected prior claim/obligations plus independently verified capability delta"
+    },
+    {
+      "id": "G1",
+      "name": "oracle independence",
+      "reject": "candidate supplies expected set or matching self-selected pin",
+      "proof": "policy digest resolved from separately protected immutable ref; policy update independently approved before run"
+    },
+    {
+      "id": "G2",
+      "name": "shape and frontier",
+      "reject": "three renamed fixtures; manual selected operation list; duplicate occurrence; outcome-derived eligibility",
+      "proof": "independent structural edge-class cover and pre-outcome finite operation multiset"
+    },
+    {
+      "id": "G3",
+      "name": "actual native execution",
+      "reject": "native booleans, fabricated trace, fake owner, production imports test fixture",
+      "proof": "trusted runner resolves candidate and imported owner bytes; source-backed C11/I03/I05/Batch actual events and object refs"
+    },
+    {
+      "id": "G4",
+      "name": "identity conservation",
+      "reject": "same-depth condition collision; value/source/edition/risk/design/role/clock mismatch",
+      "proof": "K at request, fact, release and actual consumer values-read matches or explicitly governed transformation"
+    },
+    {
+      "id": "G5",
+      "name": "total state and no drop",
+      "reject": "UNKNOWN->NA; unsupported->positive; count-preserving operation swap; pending->done",
+      "proof": "disjoint scientific and execution partitions; exact identity anti-joins; valid null/zero positive controls"
+    },
+    {
+      "id": "G6",
+      "name": "mutation and cold replay",
+      "reject": "cached positive, import-error masquerading as science refusal, duplicate counted receipt",
+      "proof": "same named consumer assertion baseline PASS -> meaningful mutation FAIL -> cold restore PASS; uninterrupted/resume equality"
+    },
+    {
+      "id": "G7",
+      "name": "trusted promotion enforcement",
+      "reject": "forged/stale run artifact; candidate changes checker; spoofed status context",
+      "proof": "authenticated run provenance bound to repo/candidate/tree/policy/workflow/runtime digest and nonce; required check from authorized verifier only"
+    },
+    {
+      "id": "G8",
+      "name": "original35 and global F1-F8",
+      "reject": "35 synthetic names, source grants without execution, one canary, context as structural, synthetic temporal pair",
+      "proof": "all35 exact source/edition/format/rights and operation measurements plus F6 multi-field/F7 comparable pairs/F8 unchanged permitted consumer; independent N11 adjudication"
+    }
   ],
-  "forbidden_promotions": [
-    "TEST_ONLY->ORIGINAL",
-    "CONTEXT->STRUCTURAL_ROUTE",
-    "UNKNOWN->INAPPLICABLE",
-    "BUDGET_PARTIAL->COMPLETE",
-    "SCOPED_OPERATOR->UNIVERSAL_ENGINE_SHAPE"
-  ],
+  "event_schema": {
+    "required": [
+      "run_nonce",
+      "candidate_commit",
+      "candidate_tree",
+      "policy_commit",
+      "policy_digest",
+      "workflow_digest",
+      "runtime_import_digests",
+      "fixture_digest",
+      "operation_ref",
+      "native_owner",
+      "input_exact_refs",
+      "output_exact_refs",
+      "K_hash",
+      "native_typed_state",
+      "consumer_values_read_refs",
+      "sequence",
+      "predecessor_event_digest"
+    ],
+    "origin": "trusted supervisor or instrumented protected harness; candidate stdout alone never authoritative",
+    "auth": "CI attestation bound to authorized repository/workflow identity or independently authenticated equivalent; verifier checks issuer/audience/digests/freshness/replay"
+  },
   "shape_basis": {
-    "min_independent_shapes": 3,
+    "minimum_shapes": 3,
+    "floor_only": true,
     "formats": [
       "SAV",
       "DTA"
     ],
-    "same_public_entrypoint": true,
-    "identity_only_relabelling": false
+    "families_minimum": 2,
+    "required_edge_classes": [
+      "scalar",
+      "routed applicability",
+      "split form",
+      "household/person lawful link",
+      "unlinked-unit refusal",
+      "weighted design",
+      "multiple response",
+      "rank",
+      "repeat occurrence",
+      "bounded ordered joint",
+      "conditioned value tuples",
+      "recursive/fork minority",
+      "valid null and zero",
+      "permission/clock",
+      "multi-field transport",
+      "temporal comparability"
+    ],
+    "coverage": "independent set-cover over actual exercised edge classes; shape label/hash alone insufficient"
   },
-  "required_negative_controls": [
-    "two_q301_wrapper",
-    "renamed_manual_17_operations",
-    "three_relabelled_shapes",
-    "missing_role_or_native_operation",
-    "fixed_rule_counts_hide_missing_operation",
-    "35_synthetic_names",
-    "source_grant_without_compiler",
-    "compiler_without_source_permission",
-    "consumer_hash_decoration",
-    "wrong_unit_link",
-    "unknown_route",
-    "stale_edition_clock",
-    "revocation",
-    "unvisited_to_na"
+  "publication": {
+    "check_name": "universal-execution-qualification",
+    "exact_commit_required": true,
+    "merge_commit_recheck": true,
+    "missing_check": "FAIL",
+    "unauthorized_check_writer": "FAIL",
+    "protection_status": "UNVERIFIED_NOT_DEPLOYED"
+  },
+  "forbidden": [
+    "candidate-owned signing credentials",
+    "privileged execution of candidate code in policy checkout",
+    "acceptance of expected outputs copied from candidate",
+    "claim of original permission from sourcefree tests"
   ],
-  "enforcement_status": "NOT_INSTALLED_BRANCH_PROTECTION_UNVERIFIED"
+  "limitations": [
+    "No finite fixture set proves arbitrary unseen semantics",
+    "Authenticated events do not prove scientific authority",
+    "Repository admin/root compromise outside stated threat model",
+    "Protected deployment and actual native runner NOT_RUN"
+  ]
 }

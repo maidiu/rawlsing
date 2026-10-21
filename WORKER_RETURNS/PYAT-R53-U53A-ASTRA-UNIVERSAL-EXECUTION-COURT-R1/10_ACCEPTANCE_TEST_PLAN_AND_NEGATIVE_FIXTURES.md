@@ -1,16 +1,42 @@
-# Proposed tests and insertion points
+# Test ledger and proposed acceptance plan
 
-All tests below are PROPOSED_NOT_EXECUTED. Place future sourcefree tests in rawlsing_next/tests/test_universal_execution_contract.py and independent oracle fixtures under tests/universal_execution_oracle/. Do not use production helper fixtures as the expected oracle.
+## Executed by others, inspected here
 
-1. Minimal arbitrary inventory has only `income_attitude` and `tenure_context`, no ID/Y/H/RT/A/B/M fixture names. Call G50 enumerate_frontier with authorized roles. Expect a finite typed frontier without invented items or KeyError. Current static path E:G50enum:193 ->151 is the RED target.
-2. Apply a bijection to every native item identity and all corresponding authorized references. The inverse-renamed output must equal the semantic expected set. Change Y to an arbitrary name to reveal literal reverse-role/native-map restrictions.
-3. Three hand-calculated independent shape fixtures: A scalar individual SAV with user-missing and design weights; B DTA household reporter with separate adult link and routing/forms; C distinct-family SAV with repeat/MR/rank topology and structural missing. Give each different values, topology and expected denominators. Exercise the real decoder and common entrypoint; unsupported topology remains explicit and cannot pass a claimed implemented capability.
-4. Enumerate full tiny authorized frontier independently by straightforward Cartesian reference construction. Omit one non-canary conditional, duplicate another, change ordered joint component, or remove one native candidate. Exact identity/role anti-join must fail even if all native rule counts remain unchanged.
-5. Change source values while keeping prospective instrument/policy fixed; eligible logical operation membership stays invariant and the relevant computed consumer value changes. Rebind changed physical digest honestly. Change policy roles instead; frontier changes with exact typed reason.
-6. Minority/XOR case with no marginal signal must still reach interaction/fork result. Recursive branches retain unvisited siblings. Zero support, zero denominator, missing, not administered and diffuse outcomes remain distinct through release and consumer.
-7. Sever respondent linkage for one joint component; same-respondent joint refuses or changes the correctly expected result. A source family rename alone must not authorize linkage. Remove population weights; sample descriptive output may remain valid, population claim must refuse.
-8. Stop after k native units, persist through authenticated custody, restart cold with current issuer check. Compare exact final facts/receipts to uninterrupted run and verify no duplicate execution side effects. Current U43 prior_receipts refusal must be acknowledged until this route exists.
-9. Remove upstream F5/F6/F7 field at N9; actual unchanged consumer must change/refuse, not merely emit a different receipt hash. Historical CONTEXT must never acquire CURRENT/structural permissions. Cross-source fields preserve separate respondent universes.
-10. Commission negative: title universal, only q301 pair, 35 names and local mutation test. G0/G1/G2 must reject. Replace q301 with 17 manually picked operations and repeat: still RED. Give source permission without compiler: engine RED. Give generic compiler without original permission: implementation may pass but original35 RED.
+P53T pinned head 463be0d340e7ebc7e5e7b0337142c0d63125a179. receipts/pytest_all.xml blob 4ea1521cc4f20f28930594259d4886e157feafbf: 23 tests, zero failures/errors/skips. Published B53H receipt blob d2971dc6f7a383d7f5c24577e464b02ddac738e0: eight tests, zero failures/errors/skips. Some of these same eight are also invoked within the 23-test suite; do not advertise 31 unique independent tests. Bodies and assertions were inspected. No fresh native replay by U53A.
 
-Every witness records baseline, one causal mutation, the same named assertion RED, cold restoration GREEN, immutable code/input/expected-output hashes and execution environment. General exceptions and swallowed failures do not count. Exact test APIs for staged world/assessor owners still require S3 import qualification before executable implementation.
+| Witness | Actual level | Correct interpretation |
+|---|---|---|
+| arbitrary ID, missing Y, administered=False, duplicate432→114, Y/Z | unchanged G50 module | Engineering-red characterization with positive padded/stock controls |
+| C=1/A=0 receives A=1 | fresh E41 + unchanged J42/P41 | Request/evidence mismatch; separate default E04 success associated in receipt, not substituted C evaluation by E04 |
+| ZERO_SUPPORT/missing structural state | unchanged J42→E04 | Same actual consumer top-level success falsely retained |
+| ROUTING_UNKNOWN exact summary | unchanged P41 with mutated typed step | Contradictory support summary; no new native measurement of that state |
+| all-missing administered | G50 fixture mutation | Outcome-independent eligibility alone lawful; explicit admin/hold semantics require separate oracle |
+| U43 discovery surfaces | mocked owner functions | Two call surfaces; real Batch duplicate receipts/corruption NOT_RUN |
+| B53H forged boolean/self-pin | structural helper | Native trust absent; valid structural anti-joins retained |
+
+P53T tests mutate supplied steps for state faults; they do not claim those states were freshly generated from original data. E41 positive fixture is real synthetic computation. Source/science grades remain TEST_ONLY.
+
+## Proposed tests — all NOT_RUN in this court
+
+Every repair return must report baseline/current behavior, repaired positive, targeted negative and cold restore against exact function and consumer assertion. Existing P53T tests asserting vulnerable behavior must become characterization history; the new independent regression oracle asserts lawful repaired behavior.
+
+| ID / owner | Input and required assertion | Native/consumer endpoint |
+|---|---|---|
+| T01 R01 | arbitrary complete inventory with no reserved names; no invented ops or exception | G50 frontier -> total lowering |
+| T02 R01 | bijective ID rename plus rewritten authority refs; logical operation/value parity; explicit authorized/denied reverse roles | same public compiler |
+| T03 R01/R02 | repeated occurrences distinguished; ambiguous duplicate rejected; admin false excluded/held; admin true all-missing frontier conserved | frontier and C11/native typed result |
+| T04 R02/R03 | scalar SAV, linked-household DTA, routed/split MR-rank-repeat shapes; genuine decoder and differing risk/unit/design outcomes | same C11/I03/I05/Batch |
+| T05 R03 | ordered multi-target joint, value-conditioned tuples, fork/XOR/minority, recursive bounds; exact expected-operation anti-join | C1/discovery/learned release |
+| T06 R08 | request C=1 or A=0 cannot reuse A=1; different source/edition/risk/role/design/clock cannot alias | P41 actual requested evidence; fixed E04 semantics tested separately |
+| T07 R08 | ZERO_SUPPORT, unknown, unsupported, absent structural state: no exact/all-support aggregate; explicit supported/null/zero controls | unchanged E04 named state + P41 summaries |
+| T08 R04 | real U43 Route B and Batch instrumentation; distinguish evaluation count from unique receipt and counted result; partial cold resume equals uninterrupted | real Batch receipts and actual downstream read |
+| T09 R05 | actual RouteB object graph -> M1 family validation -> M2/B5 current release -> C1/E41 consumer; sever/change source affects same assertion | unchanged native analytical/learned consumer |
+| T10 R06 | two genuinely distinct fields affect selected view, lawful partial bounds; actual synthetic comparable waves vs invalid pair; context cannot become structural | N9/N10E/N10W -> unchanged E04 |
+| T11 R09 | all forgery attacks in 09 plus legitimate trusted baseline; missing required check blocks promotion | protected CI and HQ transition |
+| T12 R07 | every35 row/54 axes plus global relations: rights/science/actual original operations/artifact/cold currentness/consumer | independent original N11 assessor |
+
+For T04 choose fixtures by independent edge-class coverage, not invented three labels. Compute tiny expected distributions/joints by an independent reference, include missing-vs-zero, unlinked units, zero weights, contradictory routes and valid empty frontier. A pure Python synthetic dictionary does not qualify SAV/DTA decoder paths. Mutations must fail the intended assertion; an unrelated import crash is a test infrastructure failure.
+
+## Exact NOT_RUN boundary
+
+Full B49→G50→U43→I05 joined sourcefree run; actual Batch replay/duplication; complete W41×E41×P41 84-view matrix; all leaf decoder/validator paths; protected CI installation; original35 survey execution; authorized E_pre; N11/N12. 07–09 are contracts and proposed gates, not executed test results. Original35 format-to-source manifests remain individually unverified by U53A even though the required aggregate is 31 SAV/4 DTA.

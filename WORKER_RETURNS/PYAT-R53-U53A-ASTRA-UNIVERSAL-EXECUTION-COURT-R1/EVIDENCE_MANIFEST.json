@@ -1,17 +1,20 @@
 {
-  "schema": "U53A_PARTIAL_COURT_MANIFEST@1",
-  "status": "FAN_IN_CHECKPOINT__07_12_REVISION_PENDING",
+  "schema": "U53A_EVIDENCE_MANIFEST@2",
+  "status": "BOUNDED_RETURN_WITH_MATERIAL_GAPS",
   "startup": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
   "branch": "agent/astra-pyat-r53-u53a-universal-execution-systemic-architecture-court-r1",
-  "u53f_verified_remote_head": "fdc4d03537e649cd56c19a458ebeb3292298ff3f",
-  "prior_verified_court_commit": "b167a3687fa8075ae33f77f1cbc8aec4af4f01c4",
+  "prior_verified_court_commit": "fc8098dc5b7b86771355073620f7d1488f839695",
+  "recovered_commit": "b167a3687fa8075ae33f77f1cbc8aec4af4f01c4",
   "frozen_oracle": {
     "commit": "a79dfcf85c65195c9b6d264fd366b50a71b4b5a2",
+    "path": "WORKER_RETURNS/PYAT-R53-U53A-ASTRA-UNIVERSAL-EXECUTION-COURT-R1/01_INDEPENDENT_UNIVERSAL_DEMAND_ORACLE.md",
     "blob": "0aaf795c56026bc11cc52210375e22325ae3d4f3",
-    "sha256": "2e90927cd841409928b52730c02cb07b6cb2143b0a13515cf93c4c0c8d07eed3"
+    "modified": false
   },
-  "publication_convention": "This manifest cannot contain its own future Git commit hash. Resolve this file's containing commit and compare branch ref; final remote SHA is independently verified and reported in chat. prior_verified_court_commit is not represented as final head.",
+  "publication_convention": "Enclosing Git commit identifies publication; file hashes below exclude manifest self-reference. API ref verified after push.",
   "source_index": "evidence/INDEPENDENT_SOURCE_INDEX.json",
+  "claim_ledger": "evidence/CLAIM_LEDGER.json",
+  "fan_in": "evidence/FAN_IN_AND_CORPUS_READBACK.json",
   "files": [
     {
       "path": "evidence/INDEPENDENT_SOURCE_INDEX.json",
@@ -25,8 +28,8 @@
     },
     {
       "path": "evidence/TREE_CENSUS_AND_ACCESS_LIMITS.json",
-      "sha256": "c3a55475889f1a29fb02c82da0ff380d6f2a483e610d54b99ef8bad101129107",
-      "chars": 787
+      "sha256": "bee29891f57b688f7c11853360c2040527187be7beba7f078ab8eb69ec56c589",
+      "chars": 982
     },
     {
       "path": "00_EXECUTIVE_VERDICT_AND_HQ_DECISION_REQUEST.md",
@@ -65,60 +68,85 @@
     },
     {
       "path": "07_UNIVERSAL_SOURCE_ENVELOPE_WORKLOAD_CONTRACTS.md",
-      "sha256": "8363cdfae316ae7f11cf7c60c40899584d05fdd2545059f3fa5ccbc567b80b4b",
-      "chars": 6304
+      "sha256": "d087df2198506106e629ce07218bbda857b2344212e002c0386d588fbdb0fe19",
+      "chars": 13294
     },
     {
       "path": "08_PRIORITY_ORDERED_MINIMAL_REPAIR_DAG.json",
-      "sha256": "41c86ee50dc0dbedb9863dacbbb7f57c15906511e2f0e85f11c197bf611ccbdb",
-      "chars": 12199
+      "sha256": "edde03fc1a82fd9dae639f973d104c4f4ffffecf60d71ba79f7ad4fbf77ee510",
+      "chars": 32968
     },
     {
       "path": "09_NON_GAMEABLE_UNIVERSAL_RELEASE_GATES.md",
-      "sha256": "d3efa673ba2fbbdbf92ec9e9d950dd8d084d62af83c2be01f25be1cfa6b29d3f",
-      "chars": 3608
+      "sha256": "2b7bd686213b31e4e7d45a130391613aa388bf80ec02daaccdb4d6ceff222155",
+      "chars": 5351
     },
     {
       "path": "UNIVERSAL_RELEASE_GATE_SPEC.json",
-      "sha256": "a551085bbb9a18a575502fd90bf23fc2f0393ba96f7d00b6b59530605941b0bf",
-      "chars": 1826
+      "sha256": "8fc75d808f0fa350b9cd7a2f80186d54a803f68570c5211eecc8dd765d78d082",
+      "chars": 6115
     },
     {
       "path": "10_ACCEPTANCE_TEST_PLAN_AND_NEGATIVE_FIXTURES.md",
-      "sha256": "c027132c8c01be0a91c2a44f7dca301ad01e5ffd080e1f859b40ddcb96bd5113",
-      "chars": 3695
+      "sha256": "8cbc782d8815650f9fbcac3ed8dffdb161e96befe0968290386215b7bb7a0ab7",
+      "chars": 5311
     },
     {
       "path": "11_PROPOSED_HQ_WORKER_COMMISSIONS_NOT_ISSUED.md",
-      "sha256": "d459ee84fae4b6865fea96b85481e1150582359762bc276459731ddbd585313c",
-      "chars": 2770
+      "sha256": "cb8d436547836a95c5b524b725b25d9b084263b52883dbc7e19d247b8b7724f9",
+      "chars": 14680
     },
     {
       "path": "12_ADVERSARIAL_SELF_REVIEW_AND_UNVERIFIED_FRONTIER.md",
-      "sha256": "239a203b8b1543ff9ea6ab0bbae09f546fa8428d544b462e7e2f78b0b3d07ccf",
-      "chars": 3882
+      "sha256": "bd67ca4afe91c922dc7dc676f861710fcb1b4bea4452259f64a1f5870b1f39e3",
+      "chars": 5894
     },
     {
       "path": "evidence/ARTIFACT_VALIDATION.json",
-      "sha256": "e36f169b3bd35133af557d5d5c1d90bb2d32358e5bc0fdaadeac52bbaec968ca",
-      "chars": 1543
+      "sha256": "5dccd755a2d42334e5df05d4491eb1b84e9e1fb419b13631480d1ffe558a3835",
+      "chars": 527
     },
     {
       "path": "RESUME_CHECKPOINT.md",
-      "sha256": "b702dc6fa094c585941dcf795ebdd111329b5c2fa477c2cf8fdf09845e9e102f",
-      "chars": 1087
+      "sha256": "27c90e7e6f9b3e9393bac84c132970d29ee4fa4dd500b7cdaf82e938125f6544",
+      "chars": 2107
     },
     {
       "path": "evidence/FAN_IN_AND_CORPUS_READBACK.json",
       "sha256": "11f2ebb635bece3c6024235573011402e1a6f03559190bf8b537f211b796dfc6",
       "chars": 6285
+    },
+    {
+      "path": "evidence/CLAIM_LEDGER.json",
+      "sha256": "9aea3425af19a1886a25f18b23ab4c55c1a4ebf4e3510b9b9860a62dd418ec3e",
+      "chars": 42973
     }
   ],
-  "runtime_tests": "NOT_EXECUTED",
-  "structural_validation": "evidence/ARTIFACT_VALIDATION.json",
-  "remaining": "12_ADVERSARIAL_SELF_REVIEW_AND_UNVERIFIED_FRONTIER.md",
-  "engineering": "REVISE_UNIVERSAL_IMPLEMENTATION_PRESERVE_BOUNDED_CAPITAL",
-  "scientific": "ORIGINAL_ACCEPTANCE_HOLD",
-  "authority": "J52_W52_STOP_NO_SOURCE_METHOD_FF_N11_N12_ACTOR_GRANT",
-  "new_evidence": "evidence/FAN_IN_AND_CORPUS_READBACK.json"
+  "runtime_tests": {
+    "U53A_native": 0,
+    "P53T_cases": 23,
+    "B53H_published_cases": 8,
+    "overlap": "eight published controls are also called inside one P53T case; not31 unique tests",
+    "grade": "PUBLISHED_NATIVE_SOURCEFREE_AND_MOCKED_HELPER_RECEIPTS_INSPECTED"
+  },
+  "validation": {
+    "schema": "U53A_DOCUMENT_VALIDATION@2",
+    "native_tests_run_by_U53A": 0,
+    "checks": {
+      "parse_errors": [],
+      "dag_acyclic": true,
+      "source_rows": 35,
+      "axis_cells": 1890,
+      "unique_source_ids": 35,
+      "claims_with_exact_original": 56,
+      "total_claims": 56,
+      "frozen01_not_in_write_set": true
+    },
+    "limitations": "Structural checks validate document shape only; no runtime/system/scientific test certification",
+    "publication": "Remote ref and immutable manifest/hash readback checked after commit"
+  },
+  "engineering": "REVISE_WITH_REUSE",
+  "scientific": "ORIGINAL_U_E_PRE_NULL_N11_NOT_READY",
+  "authority": "HOLD_NO_ISSUANCE_NO_PRODUCTION_NO_ACTOR_NO_WORKER_LAUNCH",
+  "remaining": "12_ADVERSARIAL_SELF_REVIEW_AND_UNVERIFIED_FRONTIER.md"
 }

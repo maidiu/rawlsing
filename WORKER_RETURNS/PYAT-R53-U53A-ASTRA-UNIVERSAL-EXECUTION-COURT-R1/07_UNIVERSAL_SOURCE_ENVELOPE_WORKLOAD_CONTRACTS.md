@@ -51,3 +51,52 @@ C1/learned M1/M2/B5/I4 and E41 provide the next integration boundary. F5, F6 and
 ## Invariants
 
 Independent expected operations = executed adequately + pending + held + unsupported + prohibited/inapplicable entries at the appropriate policy universe, with disjoint states, no duplicates and no unaccounted difference. A scoped execution subset may be complete as a subset while the universal product remains incomplete. All 35 SRC obligations remain present irrespective of permission. No 35-name synthetic run satisfies original acceptance.
+
+## Revision 2 — binding contracts and falsification rules
+
+This amendment supersedes any ambiguous state/identity wording above. Proposal only. Core evidence: E:empirical:531-625; E:j42:87-132,182-221,234-250; E:p41:124-185; E:e04:6-24; E:G50enum:44-84,106-246.
+
+### Public boundary and ownership
+
+`compile_universal_workload(envelope, instrument, grammar, capability_catalog) -> WorkloadCompilation` is the proposed single source-independent entrypoint in rawlsing_next/pre553_universal_workload.py. It delegates existing corpus selection, C11 projection, G50 enumeration and native binding. No source-specific operation-list argument. Adapters may supply source-semantic inventories and authorized policies, not choose the easiest emitted operations.
+
+`WorkloadCompilation` contains schema/version, exact input refs, immutable logical frontier root, physical provenance root, complete operation disposition index, lowering coverage multimap, issued-workload preimage, pending schedule and typed unresolved edges. Its construction issues neither source rights nor original E_pre. Issuer remains external; U43 admission consumes an independently authorized issue record.
+
+`resolve_empirical(request: EvidenceRequest, registry) -> EvidenceResult` and `reduce_required_support(results) -> SupportSummary` are separate provider duties. J42/P41 must call or validate these boundaries. A cache lookup by target/depth is forbidden. A stored slice is usable only if the full request key and permission/clock checks pass. Candidate-provided hashes without resolved objects are insufficient.
+
+### Exact identity that must be conserved
+
+EvidenceRequest key K = schema + claim grade + source/dataset/wave/edition/digest + instrument version + occurrence identity (item, option, form, repeat) + sampled/reporting unit and lawful link refs + applicability/risk/predicate identity + ordered target tuple + ordered condition tuples (occurrence, typed value, domain/state version) + operation class/arity + sample/population estimand + weight/design/uncertainty method refs + direction/role/consumer-use authority + grammar/model version + release/custody + observation/reference/as-of/publication clocks.
+
+K is computed with a versioned canonical encoding: tagged scalar types, explicit null versus absent, deterministic object keys, preserved semantic order, no float/string coercion. Sort only sets declared unordered by the owner. Preserve both logical identity and byte provenance; a legitimate bijective label rename changes physical refs but must produce equivalent logical operations and values under the supplied bijection.
+
+For progressive prefix i, actual evidence must bind K(request prefix i), not just i. Verify requested and returned target, conditions AND values, source edition, risk, role, model, design and clock. Any mismatch => IDENTITY_MISMATCH with evidence=null and no exact-support label. Missing object/unresolved refs => UNKNOWN/HELD, not a best-match fallback. Mixed sources require an explicitly governed F6 relation; they never become a same-person joint by hash concatenation.
+
+### Total states and consumer reduction
+
+Separate three axes: eligibility {ELIGIBLE, PROHIBITED, INAPPLICABLE_PROVED, HELD, UNKNOWN}; execution {NOT_STARTED, PENDING, COMPLETED, UNSUPPORTED_RUNTIME, ERROR}; result {SUPPORTED, OBSERVED_ZERO, VALID_NULL, DIFFUSE, VALID_EMPTY, ZERO_SUPPORT, UNSUPPORTED, UNKNOWN}. Preserve exact upstream native states in addition to normalized categories. A single enum that conflates these axes is forbidden.
+
+| Required input | Provider and aggregate consequence |
+|---|---|
+| All exact supported steps; validated structural state | Productive at its declared TEST_ONLY/original grade |
+| Supported distribution with observed zero cell | Keep supported denominator and zero cell; no missingness fabrication |
+| Scientifically valid null/diffuse result | Preserve computed product and uncertainty; not runtime refusal |
+| Zero denominator / ZERO_SUPPORT | Typed no empirical support; no productive all-support aggregate |
+| ROUTING_UNKNOWN, unsupported, missing state | Explicit partial/unknown/refusal; never EXACT_SUPPORT_ON_CONDITIONED_RISK_SET |
+| Identity/permission/clock conflict | Fail closed before value serving; no positive cache replay |
+| No operations with independently valid complete empty frontier | VALID_EMPTY, not invented positive/filler |
+| Budget exhausted or interrupted | PENDING with remaining exact IDs; cannot be INAPPLICABLE or complete |
+
+Aggregate completeness is an AND over required identity and support predicates. Optional channels may remain partial only if the response explicitly scopes its positive claim and lists missing obligations. Repair J42 aggregate and P41 summary at their owners; retain unchanged E04 as the baseline endpoint. Passing a different default E04 call alongside a requested C progressive result is not an end-to-end proof for C. Future integration must supply a consumer-visible request-to-values-read association; where the consumer API has fixed semantics, declare and test those fixed semantics rather than inventing arbitrary-condition coverage.
+
+### Occurrence and prospective inventory
+
+Reject ambiguous duplicate occurrence keys before dictionary construction. Legitimate repeat/form occurrences need distinct qualified keys and distinct accounting. Explicit administered=False cannot yield eligible executed work for that occurrence. Unknown administration must remain unknown. Administered but all-missing response data must not shrink the prospectively frozen eligible frontier; its native result can be typed no-support/missing. Held semantics need a structured owner reason bound to the affected occurrence/operation; free-text held labels do not authorize exclusion.
+
+Direction is an explicit decision over exact target/condition roles and use; literal Y has no scientific meaning. Source-wide permission never substitutes for direction, temporal comparability or structural-use decisions.
+
+### Conservation and capacity
+
+Maintain two independently auditable partitions: considered scientific universe = eligible + prohibited + proven-inapplicable + held/unknown; eligible workload = adequately completed + pending + runtime-unsupported + errored. Preserve operation multiplicity, exact IDs and lineage. Runtime failure cannot rewrite eligibility. Each many-to-one native template must prove adequate target/condition/query-role coverage for every mapped operation.
+
+Enumerate lazily with deterministic partitions from an immutable policy. Report estimates from measured branching/cardinality and pilot runtime; cap concurrency/memory/checkpoint interval explicitly. Resource constraints cannot silently lower J/K/D or skip complex shapes. Admission permission is revalidated on cold replay and before consumer release. Receipt dedup keys bind operation, native owner, version and authorized attempt lineage; repeated computation and duplicate scientific counting are separate quantities.
