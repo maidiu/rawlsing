@@ -108,4 +108,4 @@ Native ADP/CAN/C8/Pyat/C11/C12 and A5, raw original respondent data, production 
 
 ## PUBLICATION
 
-Substantive content commit and final verified remote tip are reported after the ordinary non-force push. No force/reset, no self-adoption, no native issuance, no C11/C12 claim.
+Substantive content commit: `3e2e44460667dd1270e1a26ce77127585ff57676`. The publication-banking commit and exact final remote tip are reported in the worker's final response after the ordinary non-force push; the direct `git ls-remote` readback is the authority for the final tip. No force/reset, no self-adoption, no native issuance, no C11/C12 claim.
