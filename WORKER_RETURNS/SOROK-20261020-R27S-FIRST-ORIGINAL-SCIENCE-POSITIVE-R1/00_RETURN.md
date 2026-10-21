@@ -102,7 +102,8 @@ Not run: real original A/B ingestion, real ADP010 encounter, real ADP019 E1, con
 | `tests/test_native_input_preflight.py` | 22 tests |
 | `fixtures/positive_technical_bundle.json` | explicit TEST_ONLY technical fixture |
 | `tools/run_preflight.py` | CLI |
-| `evidence/` | test XML, positive receipt, negative receipts, N1 rerun, product rerun, production registry, source-absence scan |
+| `evidence/` | test XML, positive receipt, negative receipts, N1 rerun, product rerun, production registry, source-absence scan, remote verification |
+| `PUBLICATION_RECEIPT.json` | branch, substantive commit and remote readback |
 
 ## SOURCE CUSTODY
 
@@ -110,4 +111,4 @@ Startup `8a71fdab2f46adccb33843824b42ba3d2f9e7a8d`; commission `bc60465bd06b801e
 
 ## PUBLICATION
 
-Final pushed commit and direct remote readback are reported after the ordinary non-force push. No self-adoption, no native issuance, no C11/C12 claim.
+Substantive commit and verified remote tip: `50944dd1a3b4065e87bb6ca5d0dbb172b5db02c9`. Ordinary non-force push from sealed startup `8a71fdab2f46adccb33843824b42ba3d2f9e7a8d`; `git ls-remote` returned the same SHA on the exact branch. Only this return subtree changed. No self-adoption, no native issuance, no C11/C12 claim.
