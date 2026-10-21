@@ -1,0 +1,38 @@
+{
+  "bp2_logical_clock": {
+    "domain": "BP2_TEST_ONLY_LOGICAL_CLOCK",
+    "e2_action_time": 257,
+    "event_time": 242,
+    "source": "R29P artifacts",
+    "target_commit_time": 242
+  },
+  "bp4_world_clock": {
+    "domain": "BP4_TEST_ONLY_WORLD_CLOCK",
+    "material_start": 10,
+    "wait_target": 40
+  },
+  "gm01_source_clock": {
+    "domain": "GM01_TEST_ONLY_ACTIVITY_CLOCK",
+    "use": "only status and material_feasible_after boolean were consumed; no numeric time passed to BP2/BP4",
+    "values_observed": [
+      1,
+      5,
+      6,
+      9,
+      10
+    ]
+  },
+  "numeric_ordering_used": false,
+  "process_order": [
+    "GM01_EVALUATE",
+    "R29P_BP2_C8_COMMIT",
+    "R29P_C9_TARGET_COMMIT",
+    "R29P_E2_ADMISSION",
+    "GM01_PRODUCT_ROOT",
+    "GM01_MATERIAL_START_CHECKPOINT",
+    "GM01_A_MATERIAL_INSPECT",
+    "BP4_WAIT_TO_40"
+  ],
+  "rule": "No GM01 clock value is compared numerically with BP2 or BP4 time. The GM01 result contributes a viability boolean and receipt hash; BP2 retains its own logical clock; BP4 retains its own world clock.",
+  "schema": "R30G_CLOCK_MAPPING@1"
+}

@@ -1,0 +1,78 @@
+{
+  "actual_bp2_ports": {
+    "actual_target_mutations": 0,
+    "after_response_rules": 0,
+    "after_target_rules": 0,
+    "grant": null,
+    "native_issuer": null,
+    "production_registry_writes": 0,
+    "production_response_rules": 0,
+    "production_target_rules": 0,
+    "rule_a": {
+      "content_hash": "c0e5f57dfbde767c12327c5f0d32bd13b67a3bd02343ab460d0088953fbaf912",
+      "issuer_ref": "TEST_ONLY_R29M_CAN008_SCIENCE_PROPOSAL_NOT_ISSUER",
+      "native_grant": "NOT_GRANTED",
+      "resource_id": "TEST_ONLY_R29M_A_RESOURCE",
+      "test_only": true
+    },
+    "rule_t": {
+      "content_hash": "aa87f5d5f2fa700d05ea5345fefd0f1982f6342d828ae134bda95815a1b21fc9",
+      "issuer_ref": "TEST_ONLY_R29M_CAN011_SCIENCE_PROPOSAL_NOT_ISSUER",
+      "native_grant": "NOT_GRANTED",
+      "resource_id": "TEST_ONLY_R29M_T_RESOURCE",
+      "test_only": true
+    },
+    "schema": "R30G_BP2_PORT_RECEIPT@1"
+  },
+  "can008_owner_decision_needed": [
+    "exact concrete current E1 receivability/appraisal rule body/version/hash if any",
+    "allowed subjects and conditioning readset",
+    "effective/withdrawal/revocation",
+    "source host/purpose/signature"
+  ],
+  "can011_owner_decision_needed": [
+    "separate durable V3MS_PRACTICE rule T",
+    "explicit NO_CHANGE or CREATE/CONDITIONAL grant with before/read/write sets",
+    "transfer/disconfirmer/contradiction evidence",
+    "effective/withdrawal/revocation",
+    "exact response binding"
+  ],
+  "current_recommendation": "REQUEST_EVIDENCE for durable learned practice; retain NO_CHANGE and no grant. The GM01 material chain does not validate human psychological acquisition.",
+  "native": false,
+  "observed_material_chain": {
+    "a2_offscreen": [
+      "MOVE",
+      "OFFSCREEN_NO_CHANGE"
+    ],
+    "a2_other_units": 4,
+    "c12_verify": {
+      "branch_id": "root",
+      "counts": {
+        "checkpoint": 4,
+        "episode": 4,
+        "perception": 5,
+        "world_event": 4
+      },
+      "errors": [],
+      "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+      "ok": true,
+      "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+    },
+    "c12_world_hash": "a3aa3f60927af8d889e09f63196981cbdb82ad7010a34ac35b94ea5114abfa82",
+    "completed_after": 5,
+    "completed_before": 4,
+    "material_after": 3,
+    "material_before": 4,
+    "tools_after": 0,
+    "tools_before": 1
+  },
+  "r29m_candidate": {
+    "a_rule_hash": null,
+    "resource_hash": "dc764df790a7e8aa70e80a1714d919c5c5259a44f968e08b4098aa7c139da488",
+    "t_operation": null,
+    "t_rule_hash": null
+  },
+  "schema": "R30G_GM01_CAN_OWNER_HANDBACK@1",
+  "self_adoption": false,
+  "status": "TEST_ONLY_MATERIAL_CHAIN_EXECUTED__NO_NATIVE_ISSUANCE__REQUEST_EVIDENCE"
+}
