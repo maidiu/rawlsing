@@ -6,7 +6,7 @@
 **SEALED STARTUP:** `ec7b651052e6e2f0b819b0e59e07d35ced8237f2`.
 **BRANCH:** `agent/rabochii-sorok-20261021-r30a-first-neighbor-binding-first-session-r1`.
 **R29P SOURCE:** `agent/rabochii-sorok-20261021-r29p-actor-history-cold-c12-user-product-r1@001b506fa26ae879ff5b6e57138fc2696e12b538`.
-**REMOTE SHA:** `__REMOTE_SHA__` (replaced after ordinary non-force push; direct `git ls-remote` is the authority).
+**REMOTE SHA:** `638188fe823dde8fd74dde06690a61eeb81a89bd` — substantive publication commit; the later receipt commit is the final branch head, verified by `git ls-remote`.
 
 ## Four-column return
 
@@ -68,6 +68,10 @@ CLI cold-process transcripts: `evidence/cli_available.txt`, `evidence/cli_presse
 - Local C12 custody residual (same-user DB/witness; trailing-row deletion needs external witness).
 - No production code outside this return subtree, no R30G consumption, no raw respondents, no real user data.
 
+## Readback
+
+`evidence/github_api_readback.json`: **PASS 6/6** at `638188fe8…`; returned bytes equal local `00_RETURN.md`, `01_PRODUCT_README.md`, `evidence/c12_available.sqlite`, `evidence/cli_available.txt`, `evidence/faults.json` and `evidence/junit/r30a.xml`.
+
 ## Publication
 
-`__REMOTE_SHA__` — exact ordinary non-force push tip, verified by `git ls-remote` and GitHub API readback after publication.
+`638188fe823dde8fd74dde06690a61eeb81a89bd` — exact ordinary non-force push tip for the substantive return, verified by `git ls-remote` and GitHub API readback (6/6 files byte-equal). The final branch head adds the readback receipt and is reported in the worker response.
