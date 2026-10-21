@@ -1,3 +1,22 @@
+# SOROK CANONICAL PROGRESS REVISION 28 — R29P/R29M RETURNS AND R30 MATERIAL/NEIGHBOR FLIGHT
+
+**Parent:** `fee875733a4ee653908a440dea41243e4688d71c`. **Sorok bounded successor owner:** `ec7b651052e6e2f0b819b0e59e07d35ced8237f2`. **Pyat:** separate rev39 R53 J52/W52 user STOP, N11/N12 HOLD, unmodified. No original source or native CAN/ADP/C8/C11 authority issued.
+
+**R29P RETURNED_AUTHOR:** `001b506fa26ae879ff5b6e57138fc2696e12b538`, report blob `0e657fe42c96df23ad9020af269ce6bb372a8f38`. Reports 155 unique sourcefree tests; newly generated actor histories→BP2 C8/E1/C9/later E2→corrected persisted C12 and real cold reopen/fork, actor-limited M6 A0/A2; seven same-observable faults but **two are provenance/history-hash-only** rather than changes to measured action/material outcomes. ENGINEERING ACCEPT_SCOPED_AUTHOR_L1 with qualification; SCIENCE TEST_ONLY H0 open; AUTHORITY native HOLD.
+
+**R29M RETURNED_SCIENCE:** `523b045abe2d9d249c17e118b2befdd9dfc4c316`, 00_RETURN blob `604be88e33f8a07c396aa61e87c23c80cc1c7276`; GM01 independent B SHARE_TOOL or refusal changes A feasible material options, independent A E2 enact/inaction, durable CAN011 NO_CHANGE, psychology empty. 29/29 source-neutral tests pass. **Actual BP2 receiving-port test NOT_RUN**; no real GM01 C9/C12/A0 consequence, no concrete original A/T issued. SCIENCE material candidate ACCEPT_SCOPED; original learned practice REQUEST_EVIDENCE; AUTHORITY HOLD.
+
+**R30G PHYSICALLY SEALED** `agent/rabochii-sorok-20261021-r30g-gm01-material-life-real-product-r1@ec7b651052e6e2f0b819b0e59e07d35ced8237f2`; full 00 `WORKER_COMMISSIONS/SOROK-20261021-R30G-GM01-ACTUAL-MATERIAL-MECHANISM-TO-LIVING-PRODUCT-R1/00_COMMISSION.md`. Qualified DeepSeek V4.1-Flash MAX I2+ local S2. Run actual GM01 BP2 ports; physically bind B performed material change and A later E2/noact to real R29P C9/C12/M6 A0/A2 with no psyche manufacture, cold source-faults.
+
+**R30A PHYSICALLY SEALED** `agent/rabochii-sorok-20261021-r30a-first-neighbor-binding-first-session-r1@ec7b651052e6e2f0b819b0e59e07d35ced8237f2`; full 00 `WORKER_COMMISSIONS/SOROK-20261021-R30A-FIRST-NEIGHBOR-SESSION-BINDING-SURFACE-AND-RETURN-R1/00_COMMISSION.md`. Qualified DeepSeek V4.1-Flash MAX I2+ local S2. Independent pinned R29P person/product first invitation, already ongoing encounter, SAY/DO/ATTEND, binding actor occurrence, private-safe phenomenal lens, natural exit/offscreen life/possible recontact and cold return, explicit no-coercion. Actual human A5 NOT_RUN.
+
+## DONE / REMAINING / CRITICAL BLOCKERS / LARGEST MOVE / FLIGHT / DELTA
+
+DONE: author L1 cold R29P continuing simulated history and GM01 source-neutral 29-tested conditional material mechanism separately. REMAINING: actual GM01→user material option/act and first real bounded user-contact/reentry product; original CAN008/CAN011/ADP/C8 source and protected trust, Pyat N11/N12, C11/native C12, A5 human study. BLOCKERS: 2 provenance-only R29P faults, GM01 real port NOT_RUN, original-science durable practice not warranted, Pyat rev39 STOP and protected writer KMS absent. LARGEST MOVE: R30G GM01 actual source-consumer and R30A whole first neighbor technical product in independent parallel. FLIGHT: both remote sealed, user-local status UNKNOWN and not automatically launched. DELTA: no native generated persons; sourcefree technical progress only, no C11 weld, A5 human NOT_RUN.
+
+**Detailed four-column HQ intake:** `SOROK_PRODUCT_CONTROL_ROOM/HQ_MOTIONS/20261021_R30_R29P_R29M_RETURN_INTAKE_MATERIAL_MECHANISM_AND_FIRST_NEIGHBOR_SESSION_FLIGHT_R1.md` at `ec7b651052e6e2f0b819b0e59e07d35ced8237f2`. Earlier revisions retained below as history.
+
+---
 # SOROK CANONICAL PROGRESS REVISION 27 — R28S SYNTHETIC SCIENCE RULING; REAL PERSON PRODUCT AND GENERATIVE MECHANISM FLIGHT
 
 **Canonical parent:** b21152852d1518236901733fd3c786a6e8857a0c. **Scoped successor HQ owner seal:** 1024f614ff7fa8e41ccb133229343ecca721d1e6. **Pyat at separate PRE-MAIN cut:** revision 39, R53 J52/W52 USER_STOP, N11_NOT_READY/N12 HOLD, U53A forensic branch to be handled only by Pyat. No Pyat modification, CAN/ADP native issuance, original survey access or C11 permission by this Sorok-only progress pair.
