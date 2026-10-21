@@ -61,7 +61,7 @@ cd WORKER_RETURNS/SOROK-20261021-R30A-FIRST-NEIGHBOR-SESSION-R1
 PYTHONPATH=. PYTHONDONTWRITEBYTECODE=1 python3 -m pytest tests -q
 ```
 
-The executed run is **10/10 passed** (JUnit `evidence/junit/r30a.xml`). A 4-test R29P inherited integration subset is also **4/4 passed** (JUnit `evidence/junit/r29p_subset.xml`); the full 155 inherited suite is **NOT_RUN** here and is not double-counted.
+The executed run is **10/10 passed** (JUnit `evidence/junit/r30a.xml`). A 5-test R29P inherited integration subset is also **5/5 passed** (JUnit `evidence/junit/r29p_subset.xml`); the full 155 inherited suite is **NOT_RUN** here and is not double-counted.
 
 ## Important limits
 

@@ -59,4 +59,4 @@ A quiet `ATTEND` before any A speech can trigger A's own question: `"You're look
 ## Test count
 
 `evidence/junit/r30a.xml`: **10/10 R30A tests passed**.
-`evidence/junit/r29p_subset.xml`: **4/4 selected R29P inherited integration tests passed**. The full inherited 155 suite is **NOT_RUN** and is not counted as R30A proof.
+`evidence/junit/r29p_subset.xml`: **5/5 selected R29P inherited integration tests passed**. The full inherited 155 suite is **NOT_RUN** and is not counted as R30A proof.

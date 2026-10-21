@@ -3,14 +3,14 @@
 ## Executed
 
 - 10/10 R30A product tests (`evidence/junit/r30a.xml`).
-- 4/4 selected inherited R29P integration tests (`evidence/junit/r29p_subset.xml`): baseline/cold, M6, fork, no-global-mutation.
+- 5/5 selected inherited R29P integration tests (`evidence/junit/r29p_subset.xml`): baseline/cold, M6, fork, no-global-mutation, seven same-observable faults.
 - Actual R29P BP2→BP4 C10/C12/M6 construction, world events, C12 persistence, cold reopen, fork, source custody.
 - Two full first-session flows (`available`, `pressed`), early-exit/offscreen/return, message/no-message, contact/no-contact.
 - 8 fault/privacy trials plus attention and branch contrasts.
 
 ## NOT_RUN
 
-- **Full 155 inherited R29P tests**: NOT_RUN; only the 4-test subset above is claimed. No double-counting.
+- **Full 155 inherited R29P tests**: NOT_RUN; only the 5-test subset above is claimed. No double-counting.
 - **External LLM actor realization**: `LIVE_MODEL_NOT_RUN`; zero provider calls, zero credentials, zero external cost known.
 - **Actual two-call DeepSeek/Claude architecture**: NOT_RUN; no provider access assumed. The deterministic local occurrence/compositor baseline is used instead.
 - **Human A4/A5 study**: NOT_RUN; no recruitment, no human data, no psychological or attachment claim.

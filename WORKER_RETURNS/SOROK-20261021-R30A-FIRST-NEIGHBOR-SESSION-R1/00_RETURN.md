@@ -23,7 +23,7 @@
 ## Executed evidence
 
 - **10/10 R30A tests passed** (`evidence/junit/r30a.xml`): available/contact/natural exit/offscreen/return/cold reopen; pressed refusal/no contact/no message; attention occurrence invariance; private-state isolation; ATTEND without access; tampered utterance refusal; B-activity and user-DO removal refusal; retroactive time; fork; actor-initiated question.
-- **4/4 selected R29P inherited integration tests passed** (`evidence/junit/r29p_subset.xml`): baseline/cold, M6, fork, no global builder mutation. **Full 155 inherited suite NOT_RUN**; no double count.
+- **5/5 selected R29P inherited integration tests passed** (`evidence/junit/r29p_subset.xml`): baseline/cold, M6, fork, no global builder mutation, and the seven same-observable source faults. **Full 155 inherited suite NOT_RUN**; no double count.
 - **Available C12:** 21 episodes / 11 world events / 16 checkpoints / 27 perceptions; qualified verifier OK; SHA-256 `e9e05473…`.
 - **Pressed C12:** 19 / 10 / 14 / 24; qualified verifier OK; SHA-256 `59a41d3f…`.
 - **Cold reopen:** same target and consumed-state hash before/after; both verifies OK (`evidence/cold_reopen.json`).
@@ -61,7 +61,7 @@ CLI cold-process transcripts: `evidence/cli_available.txt`, `evidence/cli_presse
 ## NOT_RUN / limits
 
 - External LLM/provider call and two-call live architecture: `LIVE_MODEL_NOT_RUN`.
-- Full 155 inherited R29P tests: NOT_RUN (4-test subset passed).
+- Full 155 inherited R29P tests: NOT_RUN (5-test subset passed).
 - Human A4/A5 study: NOT_RUN, no recruitment; see `05_HUMAN_VALIDATION_PLAN.md`.
 - Real contact/message delivery, production deployment, native C12/C11/C8, ADP/CAN science, Pyat world: HOLD.
 - Deterministic actor utterances, one workshop/market ecology, one B offscreen event, local TEST_ONLY channel.
