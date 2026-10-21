@@ -1,0 +1,63 @@
+{
+  "scope": "Document structure and deterministic metadata only; no production/runtime tests",
+  "checks": [
+    {
+      "path": "evidence/INDEPENDENT_SOURCE_INDEX.json",
+      "check": "JSON_PARSE",
+      "pass": true
+    },
+    {
+      "path": "evidence/SELECTIVE_HASH_VERIFICATION.json",
+      "check": "JSON_PARSE",
+      "pass": true
+    },
+    {
+      "path": "evidence/TREE_CENSUS_AND_ACCESS_LIMITS.json",
+      "check": "JSON_PARSE",
+      "pass": true
+    },
+    {
+      "path": "03_ROOT_CAUSE_CHRONOLOGY_AND_REQUIREMENT_DEFEAT.tsv",
+      "check": "TSV_RECTANGULAR",
+      "pass": true,
+      "rows": 12
+    },
+    {
+      "path": "04_ALL_MATERIAL_FUNCTION_REUSE_AND_DEFECT_COURT.tsv",
+      "check": "TSV_RECTANGULAR",
+      "pass": true,
+      "rows": 25
+    },
+    {
+      "path": "05_SOURCE_TO_WORLD_TO_PERSON_PRODUCT_DEPENDENCY_GRAPH.jsonl",
+      "check": "JSONL_PARSE",
+      "pass": true
+    },
+    {
+      "path": "06_MISSING_FUNCTION_AND_SCIENCE_OWNER_DECISIONS.tsv",
+      "check": "TSV_RECTANGULAR",
+      "pass": true,
+      "rows": 10
+    },
+    {
+      "path": "evidence/ORIGINAL35_ACCEPTANCE_OBLIGATIONS.json",
+      "check": "JSON_PARSE",
+      "pass": true
+    },
+    {
+      "path": "08_PRIORITY_ORDERED_MINIMAL_REPAIR_DAG.json",
+      "check": "JSON_PARSE",
+      "pass": true
+    },
+    {
+      "path": "UNIVERSAL_RELEASE_GATE_SPEC.json",
+      "check": "JSON_PARSE",
+      "pass": true
+    },
+    {
+      "check": "35_UNIQUE_54_OBLIGATIONS",
+      "pass": true
+    }
+  ],
+  "dag_topologically_ordered": true
+}

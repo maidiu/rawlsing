@@ -1,0 +1,80 @@
+{
+  "schema": "U53A_UNIVERSAL_GATE@proposal1",
+  "execution_status": "PROPOSED_NOT_EXECUTED",
+  "oracle": {
+    "estate_blob": "2ad9a001aefef4889d8ac48a2a81cd806dec50d6",
+    "source_count": 35,
+    "obligations_per_source": 54,
+    "expected_cells": 1890,
+    "expected_inputs_independent_of_candidate": true
+  },
+  "claims": {
+    "SCOPED_OPERATOR": "Local proof only; universal milestone stays open",
+    "UNIVERSAL_ENGINE_SHAPE": [
+      "G0",
+      "G1",
+      "G2",
+      "G3",
+      "G4",
+      "G5",
+      "G6"
+    ],
+    "ORIGINAL35_PRODUCT": [
+      "G0",
+      "G1",
+      "G2",
+      "G3",
+      "G4",
+      "G5",
+      "G6",
+      "G7"
+    ]
+  },
+  "required_states": [
+    "SUPPORTED",
+    "OBSERVED_ZERO",
+    "EMPIRICAL_NULL",
+    "DIFFUSE",
+    "VALID_EMPTY",
+    "PENDING",
+    "UNKNOWN",
+    "HOLD",
+    "UNSUPPORTED_RUNTIME",
+    "PROHIBITED",
+    "INAPPLICABLE_PROVED",
+    "ERROR"
+  ],
+  "forbidden_promotions": [
+    "TEST_ONLY->ORIGINAL",
+    "CONTEXT->STRUCTURAL_ROUTE",
+    "UNKNOWN->INAPPLICABLE",
+    "BUDGET_PARTIAL->COMPLETE",
+    "SCOPED_OPERATOR->UNIVERSAL_ENGINE_SHAPE"
+  ],
+  "shape_basis": {
+    "min_independent_shapes": 3,
+    "formats": [
+      "SAV",
+      "DTA"
+    ],
+    "same_public_entrypoint": true,
+    "identity_only_relabelling": false
+  },
+  "required_negative_controls": [
+    "two_q301_wrapper",
+    "renamed_manual_17_operations",
+    "three_relabelled_shapes",
+    "missing_role_or_native_operation",
+    "fixed_rule_counts_hide_missing_operation",
+    "35_synthetic_names",
+    "source_grant_without_compiler",
+    "compiler_without_source_permission",
+    "consumer_hash_decoration",
+    "wrong_unit_link",
+    "unknown_route",
+    "stale_edition_clock",
+    "revocation",
+    "unvisited_to_na"
+  ],
+  "enforcement_status": "NOT_INSTALLED_BRANCH_PROTECTION_UNVERIFIED"
+}
