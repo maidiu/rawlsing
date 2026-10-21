@@ -104,4 +104,4 @@ Native CAN/ADP/C8/Pyat/C11/C12, original respondent data, production cutover and
 
 ## Publication
 
-Substantive content commit and exact final remote tip are reported after the ordinary non-force push. No self-adoption, no production edit, no native grant, no C11/C12 claim.
+Substantive content commit: `5a53d02a597a521b0f079b527eb7909348979e41`. The publication-banking commit and exact final remote tip are reported in the worker's final response after the ordinary non-force push; direct `git ls-remote` readback is the final authority. No self-adoption, no production edit, no native grant, no C11/C12 claim.
