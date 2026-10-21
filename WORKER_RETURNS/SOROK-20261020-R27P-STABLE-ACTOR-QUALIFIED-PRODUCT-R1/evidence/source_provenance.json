@@ -1,0 +1,32 @@
+{
+  "schema": "R27P_SOURCE_PROVENANCE@1",
+  "startup": "8a71fdab2f46adccb33843824b42ba3d2f9e7a8d",
+  "r26v": "fd32e0b28349aa54a01d46a2116c7a401fde0a60",
+  "r26e": "eb0a2b90eb1bfc1f1020cc854ed8ae1243deceb6",
+  "bp2p4j": "5b3e6577400ea1d88971ae6b48e41a118b8059ae",
+  "vendor_origin_files": 150,
+  "vendor_manifest_sha256": "c2319b1de0875b8e11587da6b2a1d17f0d315787958e5168f680702ca820db90",
+  "code": {
+    "stable_actor_binding.py": {
+      "sha256": "b673c1e6cb14b6fd9f2ef14399160d6e08d5d2ebbebd37ef7bc90e7725af1108",
+      "git_blob": "e06acc1792008ba1743d9edcbe929e9ec82e4061"
+    },
+    "test_r27p_stable.py": {
+      "sha256": "ddb24efd3e232da2cb498714c09b77b7240bd35ac8d5cec210b5e06976a6448f",
+      "git_blob": "cc70434bbd6dfa0e3f1207185c1d139e7631f060"
+    },
+    "test_inherited_r26v.py": {
+      "sha256": "b852aca128465c565b5ce58e53170bfb0a0a80397a13abf8341b70a238cf83dd",
+      "git_blob": "4a2a91890a225135f5c287017045667251407681"
+    }
+  },
+  "tests": {
+    "stable": 7,
+    "inherited_r26v": 10,
+    "faults": 7,
+    "native_ports": 10
+  },
+  "global_builder_mutation": false,
+  "native": false,
+  "original_source": false
+}

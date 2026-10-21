@@ -1,0 +1,63 @@
+{
+  "schema": "RAWLSING_ENVIRONMENT_PASSPORT@1",
+  "environment_id": "local-r27p-shared-store-1",
+  "epoch_id": "2026-10-21T04:33:28Z",
+  "surface": "LOCAL_SHARED_STORE",
+  "session_alias": "deepseek-harness-r27p",
+  "machine_alias": "local-macos-shared-store",
+  "status": "LIVE_VERIFIED",
+  "live_probe": {
+    "observed_at_utc": "2026-10-21T04:33:28Z",
+    "marker_checked": "VERIFIED",
+    "marker_digest": "r27p:8a71fdab",
+    "python": "3.11.3",
+    "pytest": "9.1.1",
+    "git": "2.39.1",
+    "sqlite": "VERIFIED",
+    "filesystem": "VERIFIED",
+    "connector": "UNKNOWN",
+    "notes": "local Git/python/pytest/SQLite; stable subclass; cold subprocess"
+  },
+  "branch": "agent/rabochii-sorok-20261020-r27p-stable-historical-actor-c12-a0-product-r1",
+  "checkout_sha": "8a71fdab2f46adccb33843824b42ba3d2f9e7a8d",
+  "shared_store_alias": "rawlsing-shared-store",
+  "worktree_alias": "r27p",
+  "source_closure": "BOUNDED",
+  "sources": [
+    {
+      "commit": "fd32e0b28349aa54a01d46a2116c7a401fde0a60",
+      "path": "WORKER_RETURNS/SOROK-20261020-R26V-HISTORICAL-V3-ACTOR-PRODUCER-R1/candidate/historical_actor_producer.py",
+      "blob_sha1": "e84f6cfd34d8b7811d29bcd91f1c04593065beb3",
+      "module_alias": "historical_actor_producer",
+      "import_verified": true
+    },
+    {
+      "commit": "5b3e6577400ea1d88971ae6b48e41a118b8059ae",
+      "path": "WORKER_RETURNS/SOROK-20261020-BP2P4J-ACTUAL-JOINED-ALPHA-R1/bp2p4/product.py",
+      "blob_sha1": "8f7177a6b4e3ae0cae6316a13cf57adf363e0460",
+      "module_alias": "bp2p4_product",
+      "import_verified": true
+    }
+  ],
+  "assignments_completed": 1,
+  "next_affinity_tags": [
+    "r27p",
+    "stable-actor",
+    "c12",
+    "seven-faults"
+  ],
+  "permissions": {
+    "private_repo_access": "VERIFIED",
+    "raw_respondent": "NOT_GRANTED",
+    "native_actor": "NOT_GRANTED",
+    "c8_can_adp": "NOT_GRANTED",
+    "production": "NOT_GRANTED"
+  },
+  "usage": {
+    "provider_model": "DeepSeek V4.1-Flash MAX",
+    "incremental_cash_usd": null,
+    "quota_state": "UNKNOWN",
+    "usage_observed": "local Git/pytest/SQLite only; no paid API observed",
+    "retry_count": 0
+  }
+}

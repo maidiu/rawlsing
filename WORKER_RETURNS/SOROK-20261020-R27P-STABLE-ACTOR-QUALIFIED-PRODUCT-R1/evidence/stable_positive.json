@@ -1,0 +1,87 @@
+{
+  "schema": "R27P_STABLE_PRODUCT@1",
+  "variant": "A_REPAIR_LONG",
+  "life": {
+    "schema": "R26V_HISTORICAL_ACTOR_LIFE@1",
+    "grade": "TEST_ONLY_SOURCEFREE_HISTORICAL_ACTOR_NOT_NATIVE",
+    "variant": "A_REPAIR_LONG",
+    "actor_ids": [
+      "TEST_ONLY_BP1_R26V_ACTOR_A",
+      "TEST_ONLY_BP1_R26V_ACTOR_B"
+    ],
+    "source_hashes": [
+      "e80d247b5afd31c2a488fc89013f25fc240f53e42d0a5596aaad6f9796d14bbb",
+      "2dee9cfe595e9a94afdf0c2ecb746966211ffa07f9e1c5bf5b962925189f1ce8"
+    ],
+    "snapshot_hashes": [
+      "0cb8243c8887e3b1b65529b1f93bc031e675d889abf60e053f11b37ae5288055",
+      "b78a01dae35deed814298a5ae38f7ffbc424a1a43c0104ee33a3b6aa94f861a5"
+    ],
+    "event_kinds": {
+      "TEST_ONLY_BP1_R26V_ACTOR_A": [
+        "PRIOR_HISTORY",
+        "SHARED_OBJECTIVE",
+        "PERFORMED_ACTION",
+        "OTHER_ACTION",
+        "RELATION_VIEW",
+        "NO_CHANGE"
+      ],
+      "TEST_ONLY_BP1_R26V_ACTOR_B": [
+        "PRIOR_HISTORY",
+        "SHARED_OBJECTIVE",
+        "PERFORMED_ACTION",
+        "OTHER_ACTION",
+        "RELATION_VIEW",
+        "NO_CHANGE"
+      ]
+    },
+    "other_refusal": "OTHER_REFUSES_VOLUNTARY_EXTRA_TASK",
+    "focal_omission": "FOCAL_DECLINES_OPTIONAL_TASK",
+    "native_actor": false,
+    "psychology_claim": false
+  },
+  "actor_source_hash": "e80d247b5afd31c2a488fc89013f25fc240f53e42d0a5596aaad6f9796d14bbb",
+  "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+  "target_id": "f0bc4a08b4918940dd2655460938f88925b3793a142333c32c5c47778de0dcc4",
+  "target_record_hash": "89f1d1cec30cfd68fb275a8778df2f4d814c6364b5acfca3743e7a4b795b6993",
+  "consumed_state_hash": "d5bc1956f404d14473544f5e3b7ea08d1ee96390181f1a7201346184747768e0",
+  "c8_state_digest": "cd5a12fc5e1965cbba2a2ef65a6a7af62452226f0c276a061c1616366570ac38",
+  "e1_event_hash": "e52e9f7d42839504ac1a47fa78ba19732379178f9fe2cebdabf5b1079bb44510",
+  "rule_a_hash": "9e4872abaeedc346fa3ea06575bb6fb5daa324a47d1d00d6015f7b660ea9cf5d",
+  "rule_t_hash": "ab8afe1ae0229b2d6143c84f58cc4f2f1b0942d9f680cd14477602143991ec97",
+  "response_hash": "051e4e9bf7f833207cce65cee54d8231382046b7748d37ab3734a684f952bf6c",
+  "grant_hash": "7ff6332bb62915e6ac329b9df0ab14df72248446a0d3cc532e84ef0850c3ac50",
+  "e2_receipt_hash": "d0a51b5c766616e511a51a35f6469f6dfcd294380681537e3631234f2994b9ac",
+  "a0_claims": [
+    "ARRIVAL"
+  ],
+  "a0_projects": [
+    {
+      "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+      "e2_receipt_hash": "d0a51b5c766616e511a51a35f6469f6dfcd294380681537e3631234f2994b9ac",
+      "effective_from": 242,
+      "grade": "TEST_ONLY_SOURCEFREE_TECHNICAL",
+      "native": false,
+      "performed_act": "inspect_with_tool",
+      "practice_label": "coordinated_material_inspection",
+      "source_target_ref": "89f1d1cec30cfd68fb275a8778df2f4d814c6364b5acfca3743e7a4b795b6993"
+    }
+  ],
+  "a0_tools_remaining": 1,
+  "a2_clock": 40,
+  "a2_offscreen_kinds": [
+    "MOVE",
+    "OFFSCREEN_REPAIR"
+  ],
+  "a2_other_completed_units": 5,
+  "c12_world_hash": "411cbe107267b34b09aef9a7ab96dc072e67931639605d3b3459df8262b13172",
+  "c12_clock": 40,
+  "native_claims": {
+    "actor": false,
+    "rule": false,
+    "c8_trust": false,
+    "world": false,
+    "c12": false,
+    "c11": false
+  }
+}
