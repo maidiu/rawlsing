@@ -1,0 +1,76 @@
+{
+  "chain_digest": "32f0440917985b20e77c07126cc572c7d2471aee2ee88d91a292d184adc61599",
+  "conclusion": "The C12 episode row is intact. BP4's C12Store.verify is self-referential (includes hash), and BP2P4J's independent c12_verify is also wrong for episodes (includes episode_id, which was appended after hashing). The author's clean test has no episode row, so it does not exercise the failing path.",
+  "episode_row": {
+    "body_hash_field": "6d0342e71cf98ee151a1c822c3f2b76a96377b0bb226b821d2a21cca637839b5",
+    "delivered_verifier_preimage_matches": false,
+    "digest_body_minus_hash": "19bd507569272c77396c9269d14353fbe3dbb848d523612f1f3d70b8c50d965e",
+    "digest_body_minus_hash_and_episode_id": "6d0342e71cf98ee151a1c822c3f2b76a96377b0bb226b821d2a21cca637839b5",
+    "has_episode_id": true,
+    "seq": 0,
+    "stored_column_hash": "6d0342e71cf98ee151a1c822c3f2b76a96377b0bb226b821d2a21cca637839b5",
+    "true_preimage_matches": true
+  },
+  "post_episode": {
+    "independent_verify": {
+      "branch_id": "root",
+      "counts": {
+        "checkpoint": 2,
+        "episode": 1,
+        "perception": 4,
+        "world_event": 2
+      },
+      "errors": [
+        "episode:0:body_hash_mismatch"
+      ],
+      "ok": false
+    },
+    "upstream_verify": {
+      "counts": {
+        "checkpoints": 2,
+        "episodes": 1,
+        "perceptions": 4,
+        "world_events": 2
+      },
+      "errors": [
+        "episode:0",
+        "world_event:0",
+        "world_event:1",
+        "checkpoint:0",
+        "checkpoint:1"
+      ],
+      "ok": false
+    }
+  },
+  "pre_episode": {
+    "independent_verify": {
+      "branch_id": "root",
+      "counts": {
+        "checkpoint": 1,
+        "episode": 0,
+        "perception": 2,
+        "world_event": 1
+      },
+      "errors": [],
+      "ok": true
+    },
+    "upstream_verify": {
+      "counts": {
+        "checkpoints": 1,
+        "episodes": 0,
+        "perceptions": 2,
+        "world_events": 1
+      },
+      "errors": [
+        "world_event:0",
+        "checkpoint:0"
+      ],
+      "ok": false
+    }
+  },
+  "repaired_verify": {
+    "errors": [],
+    "ok": true
+  },
+  "schema": "BP2P4JI_C12_DISCREPANCY@1"
+}

@@ -1,0 +1,46 @@
+{
+  "adversarial_edges": "evidence/adversarial_edges.json",
+  "courts": {
+    "new_33": {
+      "command": "python3 -m pytest tests",
+      "counts": {
+        "errors": 0,
+        "failures": 0,
+        "skipped": 0,
+        "tests": 33
+      },
+      "cwd": "runtime/target",
+      "junit": "junit/new_33.xml"
+    },
+    "original_bp2_50": {
+      "command": "python3 -m pytest tests",
+      "counts": {
+        "errors": 0,
+        "failures": 0,
+        "skipped": 0,
+        "tests": 50
+      },
+      "cwd": "runtime/target/vendor/bp2",
+      "junit": "junit/original_bp2_50.xml"
+    },
+    "original_bp4_15": {
+      "command": "python3 -m pytest tests (PYTHONPATH includes reviewer checkout for pinned rawlsing_next)",
+      "counts": {
+        "errors": 0,
+        "failures": 0,
+        "skipped": 0,
+        "tests": 15
+      },
+      "cwd": "runtime/target/vendor/bp4",
+      "junit": "junit/original_bp4_15.xml"
+    }
+  },
+  "literal_origin": "evidence/literal_origin_verified.json",
+  "schema": "BP2P4JI_REPRODUCED_COURTS@1",
+  "source_closure": {
+    "manifest_files": 150,
+    "verified": true
+  },
+  "special_court": "evidence/c12_discrepancy.json",
+  "target": "5b3e6577400ea1d88971ae6b48e41a118b8059ae"
+}

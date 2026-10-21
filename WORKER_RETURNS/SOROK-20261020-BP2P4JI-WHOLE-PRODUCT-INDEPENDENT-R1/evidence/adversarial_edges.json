@@ -1,0 +1,29 @@
+{
+  "clock_without_join_marker": "TIME_COORDINATE_HOLD",
+  "fresh_join": {
+    "consumed": "3e598844f6f0cc9f5bddb31c7dd4f23fc1d5c21adff13dac19e5c8c936a85026",
+    "mode": "FRESH",
+    "target": "cb5c6854724681363345aca7400212622d7552a94c9bb66601b1a6393d4c7919"
+  },
+  "schema": "BP2P4JI_ADVERSARIAL_EDGES@1",
+  "sqlite_trigger_delete": {
+    "chain_digest_after": "f491d4a76d1e2274d297483c94bae08fc0e42b43459a6b21737c7d01c26f2692",
+    "chain_digest_before": "516f9b330c14263080dbec4ab908e289f5036811145562bd067acbcc8844491b",
+    "deleted_rows": 1,
+    "detectable_against_stored_digest": true,
+    "detectable_without_stored_digest": false,
+    "remaining_chain_verify": {
+      "branch_id": "root",
+      "counts": {
+        "checkpoint": 2,
+        "episode": 0,
+        "perception": 4,
+        "world_event": 2
+      },
+      "errors": [],
+      "ok": true
+    },
+    "remaining_episode_count": 0,
+    "trust_boundary": "chain_digest is an unkeyed value. A raw-DB attacker who can also rewrite the application's stored digest defeats it; only an independently custodied signed anchor would close this."
+  }
+}

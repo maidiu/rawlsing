@@ -1,0 +1,62 @@
+{
+  "schema": "BP2P4JI_ENVIRONMENT_AND_EXECUTION_RECEIPT@1",
+  "branch": "agent/reviewer-sorok-20261020-bp2p4ji-whole-product-custody-independent-r1",
+  "sealed_startup": "a413a3ed0cce3d364991ad3c3b48c0201375926c",
+  "target": "5b3e6577400ea1d88971ae6b48e41a118b8059ae",
+  "model": "DeepSeek V4.1-Flash, reasoning MAX, one accountable reviewer; no model/harness switch",
+  "harness": "OpenCode (user-selected)",
+  "runtime": {
+    "python": "3.11.3",
+    "pytest": "9.1.1",
+    "git": "git version 2.39.1",
+    "sqlite": "3.40.1",
+    "platform": "macOS-13.7.8-x86_64-i386-64bit"
+  },
+  "executed": {
+    "courts": {
+      "new_33": {
+        "junit": "junit/new_33.xml",
+        "cwd": "runtime/target",
+        "command": "python3 -m pytest tests",
+        "counts": {
+          "tests": 33,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      },
+      "original_bp2_50": {
+        "junit": "junit/original_bp2_50.xml",
+        "cwd": "runtime/target/vendor/bp2",
+        "command": "python3 -m pytest tests",
+        "counts": {
+          "tests": 50,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      },
+      "original_bp4_15": {
+        "junit": "junit/original_bp4_15.xml",
+        "cwd": "runtime/target/vendor/bp4",
+        "command": "python3 -m pytest tests (PYTHONPATH includes reviewer checkout for pinned rawlsing_next)",
+        "counts": {
+          "tests": 15,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      }
+    },
+    "c12_special": "evidence/c12_discrepancy.json",
+    "adversarial": "evidence/adversarial_edges.json",
+    "literal": "evidence/literal_origin_verified.json"
+  },
+  "write_scope": "WORKER_RETURNS/SOROK-20261020-BP2P4JI-WHOLE-PRODUCT-INDEPENDENT-R1 only",
+  "not_run": [
+    "native CAN/ADP/Pyat/C11/C12 positive",
+    "production installation",
+    "upstream repair"
+  ],
+  "secrets_or_private_data": false
+}
