@@ -37,3 +37,5 @@ The frozen oracle and 35×54 denominator are preserved. No tests are added to P5
 ## Final bounded documentary join
 
 The I51 original35 census and startup estate matrix were joined by all35 declared SRC IDs with no unmatched IDs. Every census row retains null original U/E_pre, E_exec0 and original_measured_occupied=false. evidence/ORIGINAL35_DOCUMENTARY_ID_JOIN.json preserves the estate's documentary names, dossier pointers and historical grades alongside those census states. This is mechanical metadata correspondence, not format/digest/edition/alias reconciliation, source rights or operation-authority qualification. All those deeper checks remain open; no raw file was read.
+
+Later report15 executes the A42 probe. Zero-native-test statements above are historical to this checkpoint; current total is6 tightly scoped synthetic characterization cases.

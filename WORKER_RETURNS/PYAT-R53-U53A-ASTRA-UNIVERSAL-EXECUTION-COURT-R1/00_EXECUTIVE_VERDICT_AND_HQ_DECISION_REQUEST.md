@@ -41,3 +41,7 @@ The package is reviewable and implementation-specific, but leaf/adoption coverag
 ## Cross-machine continuation
 
 Report14 resolves the inspected excluded C11 facade through exact repair, installation and historical HQ adoption. Selected decoder, recursive, M1/M2/B5, F6 and A42 bodies add reusable counterevidence and bounded custody/intake hypotheses; no new native test or original measurement is claimed. Live branch protection remains unknown after an integration-scope403. Status and all three dispositions remain unchanged.
+
+## Later native continuation
+
+Report15 supersedes the A42 global-label hypothesis with six isolated synthetic native characterization cases. Direct intake can emit an ACCEPTED global row from a changed sourcefree label while terminal N11 remains NOT_READY. Actual bank declarations remain conservative; adoption/external reach is unresolved. All dispositions remain unchanged.

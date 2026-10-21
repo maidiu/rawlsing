@@ -40,3 +40,7 @@ No amount of sourcefree checking authorizes original data use or actor behavior.
 ## Continuation falsifiers
 
 Do not turn the lazy-decoder custody hypothesis or A42 global-label intake question in report14 into reproduced defects. An enforced immutable snapshot or authenticated receipt issuer could discharge them. Do not infer callable authentication from M1 metadata fingerprint alone. Installed C11 code and historical source-local adoption are positive counterevidence; later codec qualification remains a separate question.
+
+## Later native continuation
+
+Report15 supersedes the A42 global-label hypothesis with six isolated synthetic native characterization cases. Direct intake can emit an ACCEPTED global row from a changed sourcefree label while terminal N11 remains NOT_READY. Actual bank declarations remain conservative; adoption/external reach is unresolved. All dispositions remain unchanged.

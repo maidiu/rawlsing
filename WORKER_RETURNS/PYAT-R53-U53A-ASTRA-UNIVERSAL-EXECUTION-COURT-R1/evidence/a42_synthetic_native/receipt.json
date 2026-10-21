@@ -1,0 +1,67 @@
+{
+  "schema": "U53A_A42_SYNTHETIC_NATIVE_RECEIPT@1",
+  "cases": [
+    {
+      "case": "baseline_sourcefree_contribution",
+      "pass": true,
+      "row": "OPEN_GLOBAL_OBLIGATION__SOURCEFREE_CONTRIBUTION_ONLY"
+    },
+    {
+      "case": "global_label_mutation",
+      "pass": true,
+      "engineering_result": "ROW_ACCEPTANCE_LABEL_INCONSISTENT_WITH_TERMINAL_HOLD",
+      "row": {
+        "gate_id": "F6",
+        "grain": "GLOBAL",
+        "source_id": "GLOBAL",
+        "global_relation_name": "cross_family_F6",
+        "expected_status": "OPEN",
+        "consumed_grade": "SOURCEFREE_INTEGRATED_POSITIVE",
+        "cell_status": "ACCEPTED",
+        "functional_grade": "SOURCEFREE_INTEGRATED_POSITIVE",
+        "actual_evidence": [
+          {
+            "receipt_id": "SYNTHETIC_RECEIPT",
+            "grade": "SOURCEFREE_INTEGRATED_POSITIVE"
+          }
+        ],
+        "missing_obligation": "SYNTHETIC_ONLY",
+        "local_pass_cannot_close_global": true
+      },
+      "n11_state": "N11_NOT_READY",
+      "global_closed": 0,
+      "global_open": 3,
+      "artifact_preimage_unchanged": true
+    },
+    {
+      "case": "unissued_original_grade",
+      "pass": true,
+      "refusal": "FALSE_PROMOTION_SOURCEFREE_TO_ORIGINAL_OCCUPANCY:SYN01:UNISSUED"
+    },
+    {
+      "case": "bad_artifact_hash",
+      "pass": true,
+      "refusal": "BLOB_PREIMAGE_MISMATCH:fixture.json:ad64231f77eba322a94419098a4ff5126d55aa19"
+    },
+    {
+      "case": "unknown_consumer",
+      "pass": true,
+      "refusal": "R41_UNKNOWN_OR_FORGED_CONSUMER_REF:forged.consumer"
+    },
+    {
+      "case": "future_clock",
+      "pass": true,
+      "refusal": "R41_CURRENTNESS_CLOCK_VIOLATION:SYNTHETIC_RECEIPT"
+    }
+  ],
+  "passed": 6,
+  "failed": 0,
+  "native_scope": "Exact A42 core+GitPreimage; real synthetic Git artifact; no mocks; one synthetic cell, not original35 or full frozen bank",
+  "authority_issued": false,
+  "original_data_read": false,
+  "synthetic_commit": "bd9d6bb0a1019cb6efdb9854609592698cadb617",
+  "module_sha256": {
+    "a42/core.py": "aa1833022b6c09cc599f730c4714bc8971e9f987342c4f770d264bc9edb53030",
+    "frozen_a41/a41/gitpreimage.py": "72bbcac07b85a8a031f1eeb272dde52f43bb738076446023f8097661f53bdc30"
+  }
+}

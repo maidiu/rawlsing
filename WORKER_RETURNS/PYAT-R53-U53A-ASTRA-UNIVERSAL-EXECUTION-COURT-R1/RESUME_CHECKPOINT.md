@@ -1,3 +1,7 @@
+# Latest continuation — report15
+
+User explicitly overrode the80% stop; latest usage95%. Six fresh isolated synthetic A42 cases now banked, with native row-label inconsistency reproduced and terminal NOT_READY preserved. Read15 first for the latest result, then14/13 and the remaining steps below. Parent154763bb06a4cd154d32ce3f2d02ea52831ea196; enclosing commit is this publication. No production repairs, original-data reads or authority. Prior zero-native and80%-stop statements below are historical and superseded by this paragraph. Full joins remain unrun.
+
 # U53A exact cross-machine continuation checkpoint — 2026-10-21
 
 Status BOUNDED_RETURN_WITH_MATERIAL_GAPS; ENGINEERING_REVISE; ORIGINAL_SCIENCE_HOLD; AUTHORITY_HOLD. N11 newly original-measured0/1890 NOT_READY; N12 HOLD; J52/W52 stopped. No authority, worker, production edit or original respondent read. Native tests by this continuation:0. Frozen01 unchanged. Enclosing Git commit is the publication identity; first continuation parent e144c88daf82815f2e7346214368d8dc69980ed6; final bank parent47c04e73e82395ce73b92562154147b9ac6224c6. Keep this branch and history.

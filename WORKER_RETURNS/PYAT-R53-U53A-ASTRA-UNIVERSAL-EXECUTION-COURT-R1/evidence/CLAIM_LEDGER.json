@@ -1201,6 +1201,22 @@
           ]
         ]
       }
+    },
+    {
+      "id": "CX09",
+      "claim": "Direct native A42 sourcefree global-label mutation yields ACCEPTED row while terminal N11 remains NOT_READY; actual reviewed bank has no such labels",
+      "classification": "CONDITIONAL_REPAIR_FUNCTIONAL_BUG_AT_DIRECT_INTAKE",
+      "grade": "U53A_NATIVE_SYNTHETIC_INTERFACE_CHARACTERIZATION",
+      "source": "cx_a42",
+      "lines": "134-173,258-272,317-346",
+      "original": {
+        "commit": "843175b0587b54db3df1f461ad9f7f1314894372",
+        "path": "WORKER_RETURNS/PYAT-R42-A42-WHOLE-ESTATE-RETURN-FANIN-AND-N11-CANDIDATE-R1/a42/core.py",
+        "blob": "72e746cf4e6cff2e7a5328e9d39a0c776132c1d9",
+        "sha256": "aa1833022b6c09cc599f730c4714bc8971e9f987342c4f770d264bc9edb53030"
+      },
+      "execution": "evidence/a42_synthetic_native/receipt.json",
+      "uncertainty": "Adoption/external reach not established; no false terminal acceptance or source authority"
     }
   ],
   "proposal_notice": "07\u201311 normative designs are recommendations, not observed execution. Their premises map to material M and historical H claims."
