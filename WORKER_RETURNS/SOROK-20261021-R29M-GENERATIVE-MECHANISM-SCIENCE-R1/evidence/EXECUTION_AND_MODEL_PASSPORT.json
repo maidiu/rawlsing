@@ -1,0 +1,45 @@
+{
+  "schema": "R29M_EXECUTION_AND_MODEL_PASSPORT@1",
+  "branch": "agent/scientist-sorok-20261021-r29m-generative-mechanism-conditional-rule-r1",
+  "immutable_startup": "1024f614ff7fa8e41ccb133229343ecca721d1e6",
+  "role": "Independent I3 science/resource candidate, no issuing powers",
+  "model": "GPT-6",
+  "requested_effort": "HIGH",
+  "actual_effort_independent_attestation": "NOT_AVAILABLE",
+  "host": "ChatGPT Browser with connected private GitHub; isolated container for Python",
+  "host_account_identity": "UNKNOWN",
+  "cost": "UNKNOWN",
+  "quota": "UNKNOWN",
+  "execution": {
+    "python": "3.13.5",
+    "pytest": "9.0.2",
+    "unit_command": "PYTHONPATH=source python -m pytest -q tests/test_generative_resource.py",
+    "unit_result": "29 passed 0 failed 0 skipped",
+    "unit_rerun_seconds": 0.06,
+    "unit_source_blob": "d8aac69144610e1a546bbeb02f239e10682ca857",
+    "unit_test_blob": "1e57772b4c0e85f3a6a335a473d2b731de67326b",
+    "bp2_vendor_integration": "NOT_RUN__MISSING_PRIVATE_VENDOR_PACKAGE",
+    "bp2_vendor_test_blob": "65873440e596b323431c12083c207a078882c6c8",
+    "c9c12a0_same_consumer": "NOT_RUN",
+    "original_human_experiment": "NOT_RUN"
+  },
+  "science": {
+    "selected": "GM01 independently B-modified feasible opportunity, A own enacted activity, no automatic psyche",
+    "resource_schema": "GENERATIVE_SCIENCE_RESOURCE_CANDIDATE@1",
+    "content_hash": "dc764df790a7e8aa70e80a1714d919c5c5259a44f968e08b4098aa7c139da488",
+    "H0": "NOT_EXCLUDED",
+    "native_Rule_A_issued": false,
+    "native_Rule_T_issued": false,
+    "native_C11_weld": false,
+    "native_C12_person": false,
+    "original_rows_read": false,
+    "original_source_rights": false
+  },
+  "integrity": {
+    "write_scope": "WORKER_RETURNS/SOROK-20261021-R29M-GENERATIVE-MECHANISM-SCIENCE-R1/**",
+    "autonomous_worker_dispatch": false,
+    "model_switch": false,
+    "production_edits": false,
+    "publication_verification": "REMOTE_COMPARE_AND_FINAL_HEAD_TO_BE_READ_AFTER_COMMIT"
+  }
+}
