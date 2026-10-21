@@ -1,0 +1,17 @@
+# R28S — First generated-person receiving positive
+
+Status: SCIENTIFIC_DESIGN_ONLY, NOT_RUN; no authority issued.
+
+The verified TEST_ONLY receiver chain is BP2P4J (98 reported green at 5b3e6577400ea1d88971ae6b48e41a118b8059ae), with R26E separate C12 integrity derivative (129 reported green), R26V independent sourcefree A/B histories, and R27P stable product adapter (ENGINEERING REVISE). R27P's four construction/refusal faults are not same-node A0/A2 causal integration proof. Actual C9R function candidate.pipeline.run_candidate_path and later_action.read_target_for_later_action consume actor, generated/admitted event, two separately scoped rules, target and later performed event. Production rule registries remain empty; actor generation is not yet native.
+
+PROPOSED INPUT: qualified objective world opportunity; separately initialized simulated A and B, each with own event and project history; independently performed in-simulation B offer/refusal and A action/no-action; actor-specific E1; conditionally issued CAN008 RULE_A; separately accepted CAN011 RULE_T; later E2 material opportunity; legitimate authority/clock/source scopes. TEST_ONLY substitutes may be used only at labeled laboratory grade.
+
+PROPOSED FUNCTION: enact A/B histories, source-bind E1, evaluate immediate actor response, separately accept and commit durable CAN011 state or NO_CHANGE, then actually read that record when generating a later performed E2. Persist C10/C12 state and emit M6-approved A0/A2 observable consequences, never let narration write the causal ledger.
+
+PROPOSED OUTPUT: two actor genesis refs, two separately evolving histories, E1 owner receipt, immediate response, CAN011 durable target or NO_CHANGE with pre/post hash, E2 consumed-state and performed-action receipt, C12 checkpoint and actor-safe observable.
+
+TEST NAME R28S-SYN-P01-INDEPENDENT-LIVES-E2-A0: actual earlier enacted A practice predicts a specifically warranted difference in later performed simulated action under otherwise fixed E2 options and world, with B acting independently. NO_CHANGE when there was no actual enactment, E1 not received, B refused or scientific target rule denies change. Mutation must cut the exact prior action or CAN011 committed-record read while preserving E2 and B; SAME named A0/A2 assertion must fail at the behavioral outcome, not constructor error; restoration passes. Sourcefree test NOT_RUN. Native actor, A/T, Pyat N11/N12 and C11 remain unissued.
+
+Largest constructive step, NOT commissioned here: combine existing R26V/R27P actor-genesis adapters, R26E corrected C12 verifier and BP2P4J/C9R real consumer, repair four wrong-level severances and cold C12 reopens, retain historically frozen tests and all native holds. In parallel, actual competent CAN008 and independently CAN011 science owners decide one context-limited mechanism from qualified general evidence and H1/H2/H3/H0 rivalry, with uncertain/no-effect alternatives and exact rule bodies if warranted. Do not require newly generated A/B to be original research subjects. Sorok HQ owns engineering disposition and intake, CAN/ADP science owners issue semantic permissions, Pyat retains original source and N11/N12 sovereignty.
+
+ENGINEERING: first true native consumer NOT_RUN; bounded reused code real. SCIENTIFIC: conditional generation scientifically possible, concrete psyche transfer not issued, H0 remains. AUTHORITY: HOLD actual rule, actor, event, writer, original source, weld.
