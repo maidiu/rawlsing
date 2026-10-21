@@ -5,7 +5,7 @@
 **MODEL / EXECUTION:** DeepSeek V4.1-Flash, reasoning MAX, user-selected OpenCode session on mainMac; native Git and Python 3.11 standard library only. One accountable worker; no model/harness switch; no second agent dispatch.
 **SEALED STARTUP:** `f6fd6cdfebe8f0d76a3aa0e2de150065f261709d`.
 **BRANCH:** `agent/rabochii-pyat-r53-p53e-u53f-corpus-browser-access-and-proof-r1`.
-**CORPUS GENERATION COMMIT:** `6818390b637b87f3f6205ec8eb42fbe07a2c6962` (the later readback/receipt commit is the branch head; the exact final remote SHA is returned in the worker message and is verifiable with `git ls-remote`).
+**CORPUS GENERATION COMMIT:** `6818390b637b87f3f6205ec8eb42fbe07a2c6962`. **READBACK RECEIPT COMMIT:** `991625f3efb5f1f3e563c65197c6de10e7d0f880`. The final publication commit adds this return and is the branch head; the exact final remote SHA is returned in the worker message and is verifiable with `git ls-remote`.
 **ORIGINAL U53F EVIDENCE:** `agent/rabochii-pyat-r53-u53f-universal-execution-codebase-forensics-r1@fdc4d03537e649cd56c19a458ebeb3292298ff3f`.
 **REPOSITORY URL:** `https://github.com/maidiu/rawlsing/tree/agent/rabochii-pyat-r53-p53e-u53f-corpus-browser-access-and-proof-r1/WORKER_RETURNS/PYAT-R53-P53E-LOSSLESS-ASTRA-EVIDENCE-CORPUS-R1`.
 
@@ -40,7 +40,7 @@ The ~1.7 MB tree ledger, ~37 MB diff shards, ~23 MB leakage ledger and the other
 | Source permission / original U/E_pre NULLs preserved | **PASS** 35/35 UNKNOWN/NOT_GRANTED and 35/35 NOT_ISSUED/NULL | `08_…tsv` |
 | Hostile mutation detection | **PASS** 8/8 expected RED; clean controls GREEN; real shard unchanged | `07_NEGATIVE_REASSEMBLY_RESULTS.json` |
 | Local Git readback of all chunks | **PASS** all 331 chunk hashes and blob ids | `receipts/verify_corpus.json` |
-| GitHub REST/API readback of first/middle/last and named G50/J42 shards | **PASS** 33/33 API targets; 0 failures | `receipts/github_api_readback.json` |
+| GitHub REST/API readback of first/middle/last and named G50/J42 shards | **PASS** 33/33 API targets at `991625f3…`; 0 failures | `receipts/github_api_readback.json` |
 | Actual Browser GitHub connector readback | **UNKNOWN / NOT TESTED** — no Browser connector in this OpenCode host | `receipts/github_api_readback.json` |
 | U53F manifest head self-reference | **APPARENT DEFECT** content hashes pass, but `01`/manifest/remote receipt name earlier heads; see below | `receipts/scope_challenge.json` |
 
@@ -83,7 +83,7 @@ The verifier recomputes bytes, SHA-256, Git blob ids, chunk sequence, row interv
 ## Readback status
 
 - **Local Git object readback:** PASS. Every chunk was read from disk, hashed, and reconstructed against the pinned original.
-- **GitHub REST/API readback:** PASS 33/33 targets at `6818390b…`, including first/middle/last of every shard, the named G50 and J42 chunks, and named high-risk-file chunks. Returned base64 decoded content matched local bytes and SHA-256 exactly.
+- **GitHub REST/API readback:** PASS 33/33 targets at `991625f3…`, including first/middle/last of every shard, the named G50 and J42 chunks, and named high-risk-file chunks. Returned base64 decoded content matched local bytes and SHA-256 exactly.
 - **Actual Browser GitHub connector:** **UNKNOWN / NOT TESTED**. This OpenCode host has no Browser connector. API readback proves GitHub can serve the exact bytes; it does **not** prove a Browser UI/connector can render them. Astra/Browser-side readback of the first, middle, last and named shards is still required if Browser evidence is to be claimed.
 
 ## Outstanding limitations
@@ -104,4 +104,4 @@ This return is an **evidence-access and custody artifact only**. It does not ado
 
 `00_RETURN_AND_ASTRA_READ_FIRST.md`, `01_ORIGINAL_MANIFEST_INDEPENDENT_RECHECK.json`, `02_LOSSLESS_ORDERED_SHARD_MANIFEST.json`, `03_REPRODUCIBLE_SHARD_READBACK_AND_REASSEMBLY.md`, `04_TOPIC_TO_SHARD_LOOKUP.tsv`, `05_UNEXAMINED_REF_AND_SCOPE_DENOMINATOR.tsv`, `06_ASTRA_MINIMUM_INDEX.md`, `07_NEGATIVE_REASSEMBLY_RESULTS.json`, `tools/`, `shards/`, `receipts/`.
 
-**Execution log:** `receipts/run.log` — SHA-256 `63d9f68cc4a6c39dcde8e32ba873f9f8c0d5577bd9c13e0c99edb5552da0947a`.
+**Execution log:** `receipts/run.log` — SHA-256 `0585f751d2148f09aec4cd53db1c58f52a338c7048df4ab1eecc3ef179ca75b0`.

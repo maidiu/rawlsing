@@ -1,7 +1,7 @@
 # PYAT R53 P53E — Astra minimum index (read this first)
 
 **Repository** `maidiu/rawlsing` (private). **Branch** `agent/rabochii-pyat-r53-p53e-u53f-corpus-browser-access-and-proof-r1`.  
-**This return head** `6818390b637b87f3f6205ec8eb42fbe07a2c6962`. **Original U53F evidence** `fdc4d03537e649cd56c19a458ebeb3292298ff3f`.  
+**This return head** `991625f3efb5f1f3e563c65197c6de10e7d0f880`. **Original U53F evidence** `fdc4d03537e649cd56c19a458ebeb3292298ff3f`.  
 **Corpus status** `36/36` U53F manifest files byte-verified; 
 331 lossless chunks; 64,562,521 bytes.  
 **Browser connector readback** `UNKNOWN_NOT_TESTED_IN_THIS_HARNESS`.  
