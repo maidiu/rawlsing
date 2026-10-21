@@ -1,0 +1,86 @@
+{
+  "action": "Do not build adapters. Retain S1/S2 current owners; open R02 row/occasion contract repair and R04 custody repair; keep R06 source-relation decision with its owner.",
+  "affected_r_nodes": {
+    "R02": [
+      "S3 row/occasion occurrence binding",
+      "caller-supplied projection remains required for S1/S2"
+    ],
+    "R03": [
+      "S3 total lowering blocked until R02 emits exact occurrence identities",
+      "S1 Batch/I05 pass"
+    ],
+    "R04": [
+      "S1 caller byte custody defect reproduced at consumer boundary"
+    ],
+    "R05": [
+      "N10E analytical/empirical consumer NOT_REACHED in synthetic scope"
+    ],
+    "R06": [
+      "S2 cross-unit composition UNAVAILABLE without source relation authority"
+    ],
+    "R08": [
+      "S1 all-missing Z status is UNRESOLVED, not zero-support; status reduction needs owner review"
+    ]
+  },
+  "authority": "SOURCEFREE_ONLY; no original science/source/N11/N12/C11/production claim",
+  "control": "fee875733a4ee653908a440dea41243e4688d71c",
+  "decision_question": "Does unchanged current composition work across heterogeneous synthetic instruments, or is a missing generic transformation required, and which earliest interface owns it?",
+  "first_failing_interfaces": [
+    {
+      "consequence": "NOT_REACHED, no absence claim",
+      "detail": "I03/I05/Batch/learned empirical receipt reached; N10E provider needs exact condition-value witness/model rule not supplied by this synthetic scope",
+      "first_unsupported": "ANALYTICAL_EMPIRICAL_N10E_CONSUMER",
+      "owner": "R05 analytical/learned owner",
+      "shape": "S1"
+    },
+    {
+      "consequence": "cross-unit composition requires explicit source relation authority",
+      "detail": "person and household each reach I03; SOURCE_INDEXED_MULTI_UNIVERSE returns UNAVAILABLE rather than a pooled person fact",
+      "first_unsupported": "CROSS_UNIT_COMPOSITION",
+      "owner": "R06/F6 source-relation owner",
+      "shape": "S2"
+    },
+    {
+      "consequence": "long-form repeated/MR/rank topology cannot be served as lawful downstream facts without repair",
+      "detail": "24 physical person-occasion rows produce 168 events; SCORE has 48 events instead of 24; repeated query INTEGRITY_FAILURE",
+      "first_unsupported": "ROW_OCCASION_TO_C11_OCCURRENCE_BINDING",
+      "owner": "R02 source-native projection owner, then R03 native lowering",
+      "shape": "S3"
+    },
+    {
+      "consequence": "source identity is not bound to consumed bytes; R04 P0 remains",
+      "detail": "decoder hashes path once; later lazy iter_cells reopened changed bytes and produced changed facts under the old source_sha256",
+      "first_unsupported": "SOURCE_BYTE_CUSTODY_AT_CALLER_BOUNDARY",
+      "owner": "R04 decoder/snapshot custody owner",
+      "shape": "S1"
+    }
+  ],
+  "hypotheses": [
+    {
+      "architecture_delta": "none for S1/S2; reuse current R02/R03 owners",
+      "claim": "installed generic functions compose across instruments with caller-supplied native projection",
+      "discriminator": "S1 rectangular SAV and S2 person/household DTA reach C11/I03/I05/Batch/learned receipt; no new composer is required for these scopes",
+      "id": "H1",
+      "result": "PARTIALLY_SUPPORTED",
+      "work_eliminated": "new rectangular/household composer or fixture grammar compiler"
+    },
+    {
+      "architecture_delta": "R02 source-native projection must carry row/occasion occurrence identity; R03 lowering then composes",
+      "claim": "reusable owners work only with caller-supplied native products; a precise transformation is absent or defective",
+      "discriminator": "S3 long-format repeated/MR/rank shape reaches C11 but emits 168 events; SCORE 48 instead of 24; repeated query INTEGRITY_FAILURE",
+      "id": "H2",
+      "result": "SUPPORTED_FOR_S3",
+      "work_eliminated": "new generic engine or consumer rewrite; local R02 binding repair is the owner"
+    },
+    {
+      "architecture_delta": "R02 contract/representation change before R03; not an R05/R08 patch",
+      "claim": "upstream outputs cannot represent required downstream semantics; contract incompatibility changes owner/order",
+      "discriminator": "Current GovernedC11Projection occurrence rules are static per physical value and cannot bind long-format occasion per row; no lawful S3 Batch path follows",
+      "id": "H3",
+      "result": "SUPPORTED_SCOPED",
+      "work_eliminated": "new downstream consumer or fallback evaluator"
+    }
+  ],
+  "schema": "UR_B_DECISION_MATRIX@1",
+  "startup": "9cf03ccdd2d18bc13d4c047ac1864398351b98f5"
+}
