@@ -1,0 +1,385 @@
+{
+  "actor_a": {
+    "actor_id": "TEST_ONLY_ACTOR_A",
+    "contrary_refs": [
+      "TEST_ONLY_A_CONTRARY"
+    ],
+    "demographic_or_role_derived": [],
+    "history_refs": [
+      "TEST_ONLY_A_EP1",
+      "TEST_ONLY_A_EP2"
+    ],
+    "nonperformance_refs": [
+      "TEST_ONLY_A_NONPERFORMANCE"
+    ],
+    "self_knowledge": "UNKNOWN_WITHOUT_ADP017"
+  },
+  "actor_b": {
+    "actor_id": "TEST_ONLY_ACTOR_B",
+    "performed_refs": [
+      "TEST_ONLY_B_OFFER",
+      "TEST_ONLY_B_REFUSAL"
+    ]
+  },
+  "as_of": 1000,
+  "c8_ref": "TEST_ONLY_C8_PROTECTED",
+  "claim_id": "TEST_ONLY_R27S_COORDINATED_MATERIAL_INSPECTION",
+  "e1_ref": "TEST_ONLY_ADP019_E1",
+  "e2_ref": "TEST_ONLY_E2",
+  "encounter": {
+    "contact_ref": "TEST_ONLY_ADP010_CONTACT",
+    "encounter_ref": "TEST_ONLY_ADP010_ENCOUNTER",
+    "opportunity_ref": "TEST_ONLY_ADP010_OPPORTUNITY"
+  },
+  "grade": "TEST_ONLY_SOURCEFREE_TECHNICAL",
+  "grant_ref": "TEST_ONLY_CAN011_GRANT",
+  "mode": "TEST_ONLY_TECHNICAL",
+  "production": {
+    "grant_written": false,
+    "native_issued": false,
+    "production_registry_entries": 0
+  },
+  "readset": {
+    "content_hashes": {
+      "TEST_ONLY_ADP010_CONTACT": "ecd8806ed3d41da2d0e4491f81ee7e61c2d655293157284252ec22957af546cc",
+      "TEST_ONLY_ADP010_ENCOUNTER": "e2c23df807b5b064f7a18a3528baba2441de75089711a93b0a38b616e77008aa",
+      "TEST_ONLY_ADP010_OPPORTUNITY": "49adcf3a1b3c6994430a5965a1378c8702a72432f342917d325e3671ea40fb84",
+      "TEST_ONLY_ADP019_E1": "de8743e2b9adab016010eaa2d5a0af88c8c9e230f93eb7196c55d83e081c7aab",
+      "TEST_ONLY_A_CONTRARY": "fb8b4576fab6c881e6f337221b620ab7d61a71cd4c40d2cb07d73034113bc81f",
+      "TEST_ONLY_A_EP1": "7dbbfb1caebc66fc8ee17721997df6ff28dbc648143d79127a28bbf1047f4d61",
+      "TEST_ONLY_A_EP2": "54d6ff9491b4f7c10646bae92bc34fea3701f659ca3924c043dfac20fb6c994a",
+      "TEST_ONLY_A_NONPERFORMANCE": "ee180f31f9b12405f8888122c15c07d8433598f534ce5da6ba2a5fd41c150270",
+      "TEST_ONLY_B_OFFER": "b63a3da8a288f6f2ab16075e62dac6ffbd2bbb02162379622b3ca9fdc2a42cf3",
+      "TEST_ONLY_B_REFUSAL": "6f68875994d66827eb0c80921b9ee7405cb81ce7ebea42259518d0e126a220f5",
+      "TEST_ONLY_C8_PROTECTED": "8807fb330c347ed05943bcf1b4fa180226021f94f30320634d98180d3c6177a8",
+      "TEST_ONLY_CAN008_RULE_A": "0e45442798792b0f14c49e61c56488f95375a83349c0b51b669a3e824d721f9a",
+      "TEST_ONLY_CAN011_GRANT": "419875032239a7d1667e3b37c415ac5a6b299055916cd7916f2616585a724b9d",
+      "TEST_ONLY_CAN011_RULE_T": "c671effc4c8c10dd8b72fa4d591cc32848b765ae30b5d04d82c77698b1298a59",
+      "TEST_ONLY_E2": "1cbf209156dff9208ff66eaeb8af23d017e7060222db6e537d947c5bf0ff91b3",
+      "TEST_ONLY_SOURCE_GRANT": "0959a670b56aa74d7df0ccea6bc467d7216dcc4770db6128640a01bbc4c2c996",
+      "TEST_ONLY_TARGET": "d5b4448ff2a2646d34b1df104a7d9980614373bc06f16d078fec117dbb6e9956"
+    },
+    "declared_refs": [
+      "TEST_ONLY_ADP010_CONTACT",
+      "TEST_ONLY_ADP010_ENCOUNTER",
+      "TEST_ONLY_ADP010_OPPORTUNITY",
+      "TEST_ONLY_ADP019_E1",
+      "TEST_ONLY_A_CONTRARY",
+      "TEST_ONLY_A_EP1",
+      "TEST_ONLY_A_EP2",
+      "TEST_ONLY_A_NONPERFORMANCE",
+      "TEST_ONLY_B_OFFER",
+      "TEST_ONLY_B_REFUSAL",
+      "TEST_ONLY_C8_PROTECTED",
+      "TEST_ONLY_CAN008_RULE_A",
+      "TEST_ONLY_CAN011_GRANT",
+      "TEST_ONLY_CAN011_RULE_T",
+      "TEST_ONLY_E2",
+      "TEST_ONLY_SOURCE_GRANT",
+      "TEST_ONLY_TARGET"
+    ]
+  },
+  "rule_a_ref": "TEST_ONLY_CAN008_RULE_A",
+  "rule_t_ref": "TEST_ONLY_CAN011_RULE_T",
+  "schema": "R27S_NATIVE_INPUT_BUNDLE@1",
+  "source_artifacts": {
+    "TEST_ONLY_ADP010_CONTACT": {
+      "content": {
+        "co_location_only": false,
+        "kind": "CONTACT_OCCURRENCE",
+        "owner_ref": "TEST_ONLY_CONTACT_OWNER",
+        "participants": [
+          "TEST_ONLY_ACTOR_A",
+          "TEST_ONLY_ACTOR_B"
+        ],
+        "time": 500
+      },
+      "content_hash": "ecd8806ed3d41da2d0e4491f81ee7e61c2d655293157284252ec22957af546cc",
+      "grade": "TEST_ONLY_SOURCEFREE_TECHNICAL",
+      "owner_ref": "TEST_ONLY_CONTACT_OWNER"
+    },
+    "TEST_ONLY_ADP010_ENCOUNTER": {
+      "content": {
+        "contact_ref": "TEST_ONLY_ADP010_CONTACT",
+        "kind": "ADP010_ENCOUNTER",
+        "owner_ref": "TEST_ONLY_ADP010_OWNER",
+        "parent_ref": "TEST_ONLY_ADP010_OPPORTUNITY",
+        "state": "ENCOUNTER",
+        "subject": "TEST_ONLY_ACTOR_A",
+        "time": 500
+      },
+      "content_hash": "e2c23df807b5b064f7a18a3528baba2441de75089711a93b0a38b616e77008aa",
+      "grade": "TEST_ONLY_SOURCEFREE_TECHNICAL",
+      "owner_ref": "TEST_ONLY_ADP010_OWNER"
+    },
+    "TEST_ONLY_ADP010_OPPORTUNITY": {
+      "content": {
+        "kind": "ADP010_OPPORTUNITY",
+        "owner_ref": "TEST_ONLY_ADP010_OWNER",
+        "parent": "AVAILABLE",
+        "state": "OPPORTUNITY",
+        "subject": "TEST_ONLY_ACTOR_A",
+        "time": 400,
+        "world_ref": "TEST_ONLY_WORLD"
+      },
+      "content_hash": "49adcf3a1b3c6994430a5965a1378c8702a72432f342917d325e3671ea40fb84",
+      "grade": "TEST_ONLY_SOURCEFREE_TECHNICAL",
+      "owner_ref": "TEST_ONLY_ADP010_OWNER"
+    },
+    "TEST_ONLY_ADP019_E1": {
+      "content": {
+        "admission_status": "ADMIT",
+        "c8_ref": "TEST_ONLY_C8_PROTECTED",
+        "event_hash": "f2d8ff8b8b910fab20dc33fff7c638872455112569187bb79da06e6f5a6262c7",
+        "event_id": "TEST_ONLY_E1_EVENT",
+        "kind": "ADP019_ADMISSION",
+        "parent_ref": "TEST_ONLY_ADP010_ENCOUNTER",
+        "receipt_id": "TEST_ONLY_ADP019_RECEIPT",
+        "source_owner_ref": "TEST_ONLY_ADP019_OWNER",
+        "subject": "TEST_ONLY_ACTOR_A",
+        "time": 600
+      },
+      "content_hash": "de8743e2b9adab016010eaa2d5a0af88c8c9e230f93eb7196c55d83e081c7aab",
+      "grade": "TEST_ONLY_SOURCEFREE_TECHNICAL",
+      "owner_ref": "TEST_ONLY_ADP019_OWNER"
+    },
+    "TEST_ONLY_A_CONTRARY": {
+      "content": {
+        "independent": true,
+        "kind": "CONTRARY_ACTION",
+        "occurred": true,
+        "operation": "solo_material_inspection",
+        "owner_ref": "TEST_ONLY_OBSERVER_3",
+        "subject": "TEST_ONLY_ACTOR_A",
+        "time": 250
+      },
+      "content_hash": "fb8b4576fab6c881e6f337221b620ab7d61a71cd4c40d2cb07d73034113bc81f",
+      "grade": "TEST_ONLY_SOURCEFREE_TECHNICAL",
+      "owner_ref": "TEST_ONLY_OBSERVER_3"
+    },
+    "TEST_ONLY_A_EP1": {
+      "content": {
+        "independent": true,
+        "kind": "ACTOR_ENACTED",
+        "occurred": true,
+        "operation": "c9p:coordinated_material_inspection",
+        "owner_ref": "TEST_ONLY_OBSERVER_1",
+        "subject": "TEST_ONLY_ACTOR_A",
+        "time": 100
+      },
+      "content_hash": "7dbbfb1caebc66fc8ee17721997df6ff28dbc648143d79127a28bbf1047f4d61",
+      "grade": "TEST_ONLY_SOURCEFREE_TECHNICAL",
+      "owner_ref": "TEST_ONLY_OBSERVER_1"
+    },
+    "TEST_ONLY_A_EP2": {
+      "content": {
+        "independent": true,
+        "kind": "ACTOR_ENACTED",
+        "occurred": true,
+        "operation": "c9p:coordinated_material_inspection",
+        "owner_ref": "TEST_ONLY_OBSERVER_2",
+        "subject": "TEST_ONLY_ACTOR_A",
+        "time": 200
+      },
+      "content_hash": "54d6ff9491b4f7c10646bae92bc34fea3701f659ca3924c043dfac20fb6c994a",
+      "grade": "TEST_ONLY_SOURCEFREE_TECHNICAL",
+      "owner_ref": "TEST_ONLY_OBSERVER_2"
+    },
+    "TEST_ONLY_A_NONPERFORMANCE": {
+      "content": {
+        "independent": true,
+        "kind": "ACTOR_NONPERFORMANCE",
+        "matched_opportunity_ref": "TEST_ONLY_ADP010_OPPORTUNITY",
+        "occurred": false,
+        "operation": "c9p:coordinated_material_inspection",
+        "owner_ref": "TEST_ONLY_OBSERVER_3",
+        "subject": "TEST_ONLY_ACTOR_A",
+        "time": 300
+      },
+      "content_hash": "ee180f31f9b12405f8888122c15c07d8433598f534ce5da6ba2a5fd41c150270",
+      "grade": "TEST_ONLY_SOURCEFREE_TECHNICAL",
+      "owner_ref": "TEST_ONLY_OBSERVER_3"
+    },
+    "TEST_ONLY_B_OFFER": {
+      "content": {
+        "independent": true,
+        "kind": "OTHER_OFFER",
+        "occurred": true,
+        "operation": "c9p:coordinated_material_inspection",
+        "owner_ref": "TEST_ONLY_OBSERVER_4",
+        "subject": "TEST_ONLY_ACTOR_B",
+        "time": 350
+      },
+      "content_hash": "b63a3da8a288f6f2ab16075e62dac6ffbd2bbb02162379622b3ca9fdc2a42cf3",
+      "grade": "TEST_ONLY_SOURCEFREE_TECHNICAL",
+      "owner_ref": "TEST_ONLY_OBSERVER_4"
+    },
+    "TEST_ONLY_B_REFUSAL": {
+      "content": {
+        "independent": true,
+        "kind": "OTHER_REFUSAL",
+        "occurred": true,
+        "operation": "extra_voluntary_task",
+        "owner_ref": "TEST_ONLY_OBSERVER_4",
+        "subject": "TEST_ONLY_ACTOR_B",
+        "time": 360
+      },
+      "content_hash": "6f68875994d66827eb0c80921b9ee7405cb81ce7ebea42259518d0e126a220f5",
+      "grade": "TEST_ONLY_SOURCEFREE_TECHNICAL",
+      "owner_ref": "TEST_ONLY_OBSERVER_4"
+    },
+    "TEST_ONLY_C8_PROTECTED": {
+      "content": {
+        "anchor_ref": "TEST_ONLY_C8_ANCHOR",
+        "key_custody": "TEST_ONLY_EXTERNAL_KEY_FILE",
+        "kind": "C8_PROTECTED_WRITER",
+        "monotonic_anchor": true,
+        "proof_verified": true,
+        "protected_writer": true,
+        "writer_ref": "TEST_ONLY_C8_WRITER"
+      },
+      "content_hash": "8807fb330c347ed05943bcf1b4fa180226021f94f30320634d98180d3c6177a8",
+      "grade": "TEST_ONLY_SOURCEFREE_TECHNICAL",
+      "owner_ref": "TEST_ONLY_C8_OWNER"
+    },
+    "TEST_ONLY_CAN008_RULE_A": {
+      "content": {
+        "authority_id": "CAN008_R2",
+        "effective_from": 550,
+        "expires_at": 1200,
+        "issuer_ref": "TEST_ONLY_CAN008_ISSUER",
+        "kind": "CAN008_RULE_A",
+        "readset_classes": [
+          "ACTOR_HISTORY",
+          "ADP010_ENCOUNTER",
+          "ADP019_E1"
+        ],
+        "revoked": false,
+        "rule_body": {
+          "responses": [
+            "undertake",
+            "decline",
+            "valid_empty"
+          ]
+        },
+        "rule_id": "TEST_ONLY_CAN008_RULE_A",
+        "semantic_object": "c9p:coordinated_material_inspection",
+        "source_owner_ref": "TEST_ONLY_CAN008_OWNER",
+        "subject_refs": [
+          "TEST_ONLY_ACTOR_A"
+        ],
+        "version": "1"
+      },
+      "content_hash": "0e45442798792b0f14c49e61c56488f95375a83349c0b51b669a3e824d721f9a",
+      "grade": "TEST_ONLY_SOURCEFREE_TECHNICAL",
+      "owner_ref": "TEST_ONLY_CAN008_OWNER"
+    },
+    "TEST_ONLY_CAN011_GRANT": {
+      "content": {
+        "actor_id": "TEST_ONLY_ACTOR_A",
+        "before_state_hash": "b3db9344ac626b97f608ec09bf46022f10026d23051e741fe901cbb812a17924",
+        "decision": "CREATE",
+        "effective_from": 600,
+        "expires_at": 1200,
+        "grant_id": "TEST_ONLY_CAN011_GRANT",
+        "issuer_ref": "TEST_ONLY_CAN011_GRANT_ISSUER",
+        "kind": "CAN011_GRANT",
+        "readset_refs": [
+          "TEST_ONLY_CAN008_RULE_A",
+          "TEST_ONLY_CAN011_RULE_T"
+        ],
+        "response_ref": "TEST_ONLY_CAN008_RULE_A",
+        "revoked": false,
+        "rule_a_ref": "TEST_ONLY_CAN008_RULE_A",
+        "rule_t_ref": "TEST_ONLY_CAN011_RULE_T",
+        "source_owner_ref": "TEST_ONLY_CAN011_GRANT_OWNER"
+      },
+      "content_hash": "419875032239a7d1667e3b37c415ac5a6b299055916cd7916f2616585a724b9d",
+      "grade": "TEST_ONLY_SOURCEFREE_TECHNICAL",
+      "owner_ref": "TEST_ONLY_CAN011_GRANT_OWNER"
+    },
+    "TEST_ONLY_CAN011_RULE_T": {
+      "content": {
+        "authority_id": "CAN011",
+        "effective_from": 600,
+        "expires_at": 1200,
+        "issuer_ref": "TEST_ONLY_CAN011_ISSUER",
+        "kind": "CAN011_RULE_T",
+        "response_rule_ref": "TEST_ONLY_CAN008_RULE_A",
+        "revoked": false,
+        "rule_body": {
+          "op": "CREATE",
+          "target": "c9p:coordinated_material_inspection"
+        },
+        "rule_id": "TEST_ONLY_CAN011_RULE_T",
+        "semantic_object": "c9p:coordinated_material_inspection",
+        "source_owner_ref": "TEST_ONLY_CAN011_OWNER",
+        "target_kind": "V3MS_PRACTICE",
+        "version": "1"
+      },
+      "content_hash": "c671effc4c8c10dd8b72fa4d591cc32848b765ae30b5d04d82c77698b1298a59",
+      "grade": "TEST_ONLY_SOURCEFREE_TECHNICAL",
+      "owner_ref": "TEST_ONLY_CAN011_OWNER"
+    },
+    "TEST_ONLY_E2": {
+      "content": {
+        "act": "inspect_with_tool",
+        "action_time": 800,
+        "actor_id": "TEST_ONLY_ACTOR_A",
+        "actuator_ref": "TEST_ONLY_TOOL",
+        "consumed_state_hash": "7251909d68e32984fa70207e617fef70366fbcdbd038dde22157311b313083e0",
+        "kind": "E2_PERFORMED",
+        "occurrence_ref": "TEST_ONLY_E2_OCCURRENCE",
+        "performed": true,
+        "receipt_id": "TEST_ONLY_E2_RECEIPT",
+        "source_owner_ref": "TEST_ONLY_E2_OWNER"
+      },
+      "content_hash": "1cbf209156dff9208ff66eaeb8af23d017e7060222db6e537d947c5bf0ff91b3",
+      "grade": "TEST_ONLY_SOURCEFREE_TECHNICAL",
+      "owner_ref": "TEST_ONLY_E2_OWNER"
+    },
+    "TEST_ONLY_SOURCE_GRANT": {
+      "content": {
+        "edition": "TEST_ONLY_EDITION_1",
+        "effective_from": 10,
+        "expires_at": 1200,
+        "grade": "TEST_ONLY_SOURCEFREE_TECHNICAL",
+        "host_ref": "TEST_ONLY_SOURCE_HOST",
+        "kind": "SOURCE_GRANT",
+        "owner_ref": "TEST_ONLY_SOURCE_OWNER",
+        "permission_ref": "TEST_ONLY_SOURCE_PERMISSION",
+        "purpose_ref": "TEST_ONLY_SOURCE_PURPOSE",
+        "revoked": false,
+        "source_content_hash": "e8ff87ee9ca4879e547ab8fb7457d564a414fed91566c12782818d4fe6617283",
+        "source_id": "TEST_ONLY_SOURCE_ALPHA"
+      },
+      "content_hash": "0959a670b56aa74d7df0ccea6bc467d7216dcc4770db6128640a01bbc4c2c996",
+      "grade": "TEST_ONLY_SOURCEFREE_TECHNICAL",
+      "owner_ref": "TEST_ONLY_SOURCE_OWNER"
+    },
+    "TEST_ONLY_TARGET": {
+      "content": {
+        "commit_time": 700,
+        "committed": true,
+        "e1_ref": "TEST_ONLY_ADP019_E1",
+        "grant_ref": "TEST_ONLY_CAN011_GRANT",
+        "kind": "TARGET_COMMIT",
+        "readset_refs": [
+          "TEST_ONLY_ADP019_E1",
+          "TEST_ONLY_CAN008_RULE_A",
+          "TEST_ONLY_CAN011_RULE_T",
+          "TEST_ONLY_CAN011_GRANT"
+        ],
+        "rule_a_ref": "TEST_ONLY_CAN008_RULE_A",
+        "rule_t_ref": "TEST_ONLY_CAN011_RULE_T",
+        "state_hash": "7251909d68e32984fa70207e617fef70366fbcdbd038dde22157311b313083e0",
+        "target_id": "TEST_ONLY_TARGET"
+      },
+      "content_hash": "d5b4448ff2a2646d34b1df104a7d9980614373bc06f16d078fec117dbb6e9956",
+      "grade": "TEST_ONLY_SOURCEFREE_TECHNICAL",
+      "owner_ref": "TEST_ONLY_TARGET_OWNER"
+    }
+  },
+  "source_grant_ref": "TEST_ONLY_SOURCE_GRANT",
+  "target_ref": "TEST_ONLY_TARGET"
+}

@@ -1,0 +1,113 @@
+{
+  "all_expected_reason_present": true,
+  "all_refused": true,
+  "cases": [
+    {
+      "case": "forged_source_hash",
+      "expected_reason_present": true,
+      "native": false,
+      "reasons": [
+        "SOURCE_CONTENT_HASH_INVALID:TEST_ONLY_A_EP1",
+        "READSET_CONTENT_HASH_MISMATCH:TEST_ONLY_A_EP1"
+      ],
+      "status": "REFUSED"
+    },
+    {
+      "case": "self_signed_rule_a",
+      "expected_reason_present": true,
+      "native": false,
+      "reasons": [
+        "CAN008_RULE_A_SELF_ISSUED"
+      ],
+      "status": "REFUSED"
+    },
+    {
+      "case": "unissued_rule",
+      "expected_reason_present": true,
+      "native": false,
+      "reasons": [
+        "SOURCE_ARTIFACT_ABSENT:TEST_ONLY_MISSING_RULE_A",
+        "CAN008_RULE_A_KIND_INVALID",
+        "CAN008_RULE_A_AUTHORITY_INVALID",
+        "CAN008_RULE_A_OBJECT_INVALID",
+        "CAN008_RULE_A_SUBJECT_MISSING",
+        "CAN008_RULE_A_SELF_ISSUED",
+        "CAN008_RULE_A_ACTOR_OWNED",
+        "CAN008_RULE_A_READSET_INCOMPLETE",
+        "CAN008_RULE_A_NOT_CURRENT_AT_E1",
+        "CAN008_RULE_A_STALE_OR_REVOKED",
+        "CAN011_RULE_T_RESPONSE_DEPENDENCY_MISMATCH",
+        "CAN011_GRANT_RULE_A_MISMATCH",
+        "CAN011_GRANT_RESPONSE_MISMATCH",
+        "TARGET_RULE_BINDING_MISMATCH",
+        "READSET_DECLARED_REFS_MISMATCH"
+      ],
+      "status": "REFUSED"
+    },
+    {
+      "case": "absent_adp019_e1",
+      "expected_reason_present": true,
+      "native": false,
+      "reasons": [
+        "ADP019_E1_NOT_ADMITTED"
+      ],
+      "status": "REFUSED"
+    },
+    {
+      "case": "stale_source_permission",
+      "expected_reason_present": true,
+      "native": false,
+      "reasons": [
+        "SOURCE_GRANT_STALE"
+      ],
+      "status": "REFUSED"
+    },
+    {
+      "case": "malicious_readset_refs",
+      "expected_reason_present": true,
+      "native": false,
+      "reasons": [
+        "READSET_DECLARED_REFS_MISMATCH"
+      ],
+      "status": "REFUSED"
+    },
+    {
+      "case": "backwards_clock",
+      "expected_reason_present": true,
+      "native": false,
+      "reasons": [
+        "E2_ACTION_BEFORE_TARGET_COMMIT"
+      ],
+      "status": "REFUSED"
+    },
+    {
+      "case": "e2_self_actuator",
+      "expected_reason_present": true,
+      "native": false,
+      "reasons": [
+        "E2_SELF_ACTUATOR"
+      ],
+      "status": "REFUSED"
+    },
+    {
+      "case": "native_without_verifier",
+      "expected_reason_present": true,
+      "native": false,
+      "reasons": [
+        "C8_PROTECTED_KEY_CUSTODY_REQUIRED",
+        "NATIVE_SIGNATURE_VERIFIER_UNAVAILABLE"
+      ],
+      "status": "REFUSED"
+    },
+    {
+      "case": "production_nonempty",
+      "expected_reason_present": true,
+      "native": false,
+      "reasons": [
+        "PRODUCTION_REGISTRY_NOT_EMPTY"
+      ],
+      "status": "REFUSED"
+    }
+  ],
+  "schema": "R27S_NEGATIVE_PREFLIGHT_RECEIPTS@1"
+}

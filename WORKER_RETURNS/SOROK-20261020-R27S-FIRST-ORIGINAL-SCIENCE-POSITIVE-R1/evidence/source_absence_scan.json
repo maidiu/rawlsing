@@ -1,0 +1,87 @@
+{
+  "conclusion": "No currently authorized original A/B longitudinal source, ADP010 contact, ADP019 E1 admission, concrete CAN008 RULE_A, separate CAN011 RULE_T/grant or production C8 trust is present. The source-positive path cannot be executed without new competent source and issuer actions.",
+  "did_not_read": [
+    "raw LiTS respondent rows",
+    "any private original respondent data",
+    "any protected KMS key or production C12 store"
+  ],
+  "repository": "maidiu/rawlsing",
+  "scanned_at_commit": "8a71fdab2f46adccb33843824b42ba3d2f9e7a8d",
+  "scans": [
+    {
+      "claim": "No original source record for the bounded target practice exists in the repository outside the commission/control-room prose.",
+      "command": "git grep -n 'coordinated_material_inspection' HEAD -- ':!WORKER_COMMISSIONS' ':!SOROK_PRODUCT_CONTROL_ROOM'",
+      "match_count": 0,
+      "result": "NO_MATCH"
+    },
+    {
+      "claim": "The only joined A/B actors in the technical carrier are TEST_ONLY identities.",
+      "command": "git grep -n 'TEST_ONLY_BP1_ACTOR_A' 5b3e657 -- WORKER_RETURNS/SOROK-20261020-BP2P4J-ACTUAL-JOINED-ALPHA-R1/vendor/bp2",
+      "result": [
+        "TEST_ONLY_BP1_ACTOR_A in vendor/bp2/00_RETURN.md",
+        "TEST_ONLY_BP1_ACTOR_A in vendor/bp2/bp2_joined/scientific.py",
+        "TEST_ONLY_BP1_ACTOR_A in vendor/bp2/evidence/alternatives_receipt.json",
+        "TEST_ONLY_BP1_ACTOR_A in vendor/bp2/evidence/joined_custody_ledger.json"
+      ]
+    },
+    {
+      "claim": "The native grade is a declared receiving constant, not an issued resource.",
+      "command": "git grep -n 'NATIVE_OWNER_ISSUED' 5b3e657 -- WORKER_RETURNS/SOROK-20261020-BP2P4J-ACTUAL-JOINED-ALPHA-R1",
+      "issued_resource_count": 0,
+      "result": [
+        "vendor/bp2/bp2_joined/ports.py:31 NATIVE_GRADE = \"NATIVE_OWNER_ISSUED\""
+      ]
+    },
+    {
+      "claim": "The joined producer emits native_grant NOT_GRANTED.",
+      "command": "git grep -n 'NATIVE_GRANT_NOT_GRANTED' 5b3e657 -- WORKER_RETURNS/SOROK-20261020-BP2P4J-ACTUAL-JOINED-ALPHA-R1/vendor/bp2/bp2_joined",
+      "result": [
+        "ports.py:33 definition",
+        "ports.py:325 producer emits NOT_GRANTED"
+      ]
+    },
+    {
+      "claim": "Both production rule registries are empty at runtime.",
+      "command": "ports.production_registries() in a fresh BP2P4J worktree",
+      "result": {
+        "response_rule_count": 0,
+        "status": "PRODUCTION_RULE_REGISTRIES_EMPTY_AWAITING_COMPETENT_ISSUER",
+        "target_rule_count": 0
+      }
+    },
+    {
+      "claim": "The strongest original-source historical positive in Pyat is a cross-sectional survey certification, not A/B longitudinal histories.",
+      "command": "git show cde76f61:.../s44_single_owner_decision.json",
+      "result": {
+        "grant_present": false,
+        "original_measured": "0/1890",
+        "respondents": 29002,
+        "selected_source": "LiTS-I",
+        "source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09"
+      }
+    },
+    {
+      "claim": "Pyat currently holds source/N11/N12 and R53 stops J52/W52.",
+      "command": "git show origin/integration/pre-main-reconciliation-r1:PYAT_CONTROL_ROOM/CURRENT_PROGRESS.md and R53...",
+      "result": [
+        "original measured 0/1890",
+        "N11_NOT_READY",
+        "N12 HOLD",
+        "R53 user STOP on J52/W52"
+      ]
+    },
+    {
+      "claim": "C8 production trust is still D1/D2/D3 HOLD.",
+      "command": "C8OI independent return f4200eb09",
+      "result": {
+        "D1": "UNISSUED",
+        "D2": "UNISSUED",
+        "D3": "UNISSUED",
+        "verdict": "AUTHORITY HOLD"
+      }
+    }
+  ],
+  "schema": "R27S_SOURCE_ABSENCE_SCAN@1",
+  "sealed_startup": "8a71fdab2f46adccb33843824b42ba3d2f9e7a8d",
+  "technical_product_commit": "5b3e6577400ea1d88971ae6b48e41a118b8059ae"
+}
