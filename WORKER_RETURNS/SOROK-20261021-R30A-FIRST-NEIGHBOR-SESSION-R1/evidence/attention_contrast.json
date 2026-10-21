@@ -1,0 +1,46 @@
+{
+  "distracted_surface": [
+    "You say: \"Hello. I just moved in.\"",
+    "the repair worker says: \"Which side of the landing?\"",
+    "The workshop noises continue around you.",
+    "the repair worker says: \"Hold the near edge. I'll check the seam.\""
+  ],
+  "focused_surface": [
+    "You say: \"Hello. I just moved in.\"",
+    "the repair worker says: \"Which side of the landing?\" A glances toward the doorway.",
+    "A material repair is performed in the workshop.",
+    "the repair worker says: \"Hold the near edge. I'll check the seam.\" A sets the tool beside your hand."
+  ],
+  "same_event_hashes": true,
+  "same_event_ids": true,
+  "schema": "R30A_ATTENTION_CONTRAST@1",
+  "surface_differs": true,
+  "verify": {
+    "distracted": {
+      "branch_id": "first_session",
+      "counts": {
+        "checkpoint": 7,
+        "episode": 6,
+        "perception": 18,
+        "world_event": 6
+      },
+      "errors": [],
+      "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+      "ok": true,
+      "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+    },
+    "focused": {
+      "branch_id": "first_session",
+      "counts": {
+        "checkpoint": 7,
+        "episode": 6,
+        "perception": 18,
+        "world_event": 6
+      },
+      "errors": [],
+      "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+      "ok": true,
+      "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+    }
+  }
+}

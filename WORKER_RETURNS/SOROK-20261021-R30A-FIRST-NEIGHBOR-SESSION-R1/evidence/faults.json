@@ -1,0 +1,106 @@
+{
+  "all_pass": true,
+  "schema": "R30A_FAULTS@1",
+  "trials": [
+    {
+      "detail": {
+        "actual": "REFUSED",
+        "error": "SessionRefusal: C12_VERIFY_FAILED: [\"world_event:3:body_hash_mismatch\"]",
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_cf924b5182c7d0cd2313d772183e6e7e631414c89ff23dfe78459c332b7d937b",
+        "expected": "REFUSED",
+        "original_hash": "f1d86dbb4d8d16159a61bb21e8912cc8b109ab7fe3df627b1f3fde253588e7f0"
+      },
+      "name": "tampered_committed_utterance_refused",
+      "pass": true
+    },
+    {
+      "detail": {
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_cf924b5182c7d0cd2313d772183e6e7e631414c89ff23dfe78459c332b7d937b",
+        "new_hash": "3e9b1b420324cf288b5b8dae54cc95820e24931bf0b1462886eb9d283e75a6f2",
+        "original_hash": "f1d86dbb4d8d16159a61bb21e8912cc8b109ab7fe3df627b1f3fde253588e7f0",
+        "recomputed": true
+      },
+      "name": "recomputed_utterance_identity_differs",
+      "pass": true
+    },
+    {
+      "detail": {
+        "actual": "REFUSED",
+        "error": "SessionRefusal: C12_VERIFY_FAILED: [\"episode:seq_not_contiguous\", \"world_event:seq_not_contiguous\", \"perception:seq_not_contiguous\"]",
+        "expected": "REFUSED",
+        "removed": {
+          "episodes": [
+            "TEST_ONLY_BP4_EP_abc9f947b4f416c2112a3d40e24f9dfc8f59efca809c18b3000093c83e8edeb1",
+            "TEST_ONLY_BP4_EP_05d6b4a3614f83304e93eb6116477ccb5944bce3e9b8b1e1e007a9a51842b91b"
+          ],
+          "events": [
+            "TEST_ONLY_BP4_WORLD_EVT_9ba315fc9e458c2abd4e9c2b97a90109269f8e33a9d4d3fe2d6a6ba20d7ebefc"
+          ]
+        }
+      },
+      "name": "removed_b_offscreen_refused",
+      "pass": true
+    },
+    {
+      "detail": {
+        "actual": "REFUSED",
+        "error": "SessionRefusal: C12_VERIFY_FAILED: [\"episode:seq_not_contiguous\"]",
+        "expected": "REFUSED",
+        "removed": [
+          "TEST_ONLY_BP4_EP_d7efb5cc519dc39431f97f3f332bef0aeb15ccae4874e632f3c01df9aa53c89b",
+          "TEST_ONLY_BP4_EP_64b3951623da8d579f8d2975a9f83ece6318a352e884d811d0c81443a7012612",
+          "TEST_ONLY_BP4_EP_8f223879ab72065db359b58956a54925ba36e258cb38b7918f3b01d9eda85d19"
+        ]
+      },
+      "name": "removed_user_do_refused",
+      "pass": true
+    },
+    {
+      "detail": {
+        "actual": "REFUSED",
+        "code": "RETROACTIVE_EPISODE",
+        "expected": "REFUSED"
+      },
+      "name": "retroactive_time_refused",
+      "pass": true
+    },
+    {
+      "detail": {
+        "expected": "none",
+        "leaked": []
+      },
+      "name": "hidden_actor_state_not_leaked",
+      "pass": true
+    },
+    {
+      "detail": {
+        "actor_events": [],
+        "attend_status": "NO_CHANGE",
+        "verify": {
+          "branch_id": "first_session",
+          "counts": {
+            "checkpoint": 6,
+            "episode": 4,
+            "perception": 8,
+            "world_event": 4
+          },
+          "errors": [],
+          "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+          "ok": true,
+          "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+        }
+      },
+      "name": "attend_without_access",
+      "pass": true
+    },
+    {
+      "detail": {
+        "actual": "REFUSED",
+        "code": "NO_CONTACT_CHANNEL",
+        "expected": "REFUSED"
+      },
+      "name": "message_without_channel_refused",
+      "pass": true
+    }
+  ]
+}

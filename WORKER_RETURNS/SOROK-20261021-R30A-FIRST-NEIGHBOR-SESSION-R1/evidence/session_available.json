@@ -1,0 +1,882 @@
+{
+  "actions": [
+    {
+      "action": "SAY",
+      "result": {
+        "status": "OK",
+        "surface": [
+          "You say: \"Hello. I just moved in.\"",
+          "the repair worker says: \"Which side of the landing?\" A glances toward the doorway."
+        ]
+      }
+    },
+    {
+      "action": "DO_HELP",
+      "result": {
+        "accepted": true,
+        "status": "OK",
+        "surface": [
+          "A material repair is performed in the workshop.",
+          "the repair worker says: \"Hold the near edge. I'll check the seam.\" A sets the tool beside your hand."
+        ]
+      }
+    },
+    {
+      "action": "ATTEND",
+      "result": {
+        "new_knowledge": [],
+        "status": "NO_CHANGE",
+        "surface": []
+      }
+    },
+    {
+      "action": "ASK_CONTACT",
+      "result": {
+        "contact": true,
+        "status": "OK",
+        "surface": [
+          "the repair worker says: \"All right. The landing line is enough.\" A wipes their hands and gives the number."
+        ]
+      }
+    },
+    {
+      "action": "WAIT",
+      "result": {
+        "clock": 40,
+        "scene_open": false,
+        "status": "OK",
+        "surface": [
+          "the repair worker says: \"I need to get this to the market before the light goes.\" A begins packing the bench."
+        ]
+      }
+    },
+    {
+      "action": "OFFSCREEN",
+      "result": {
+        "clock": 70,
+        "message": "The seam held. I'm at the market until six.",
+        "offscreen_events": [],
+        "status": "OK"
+      }
+    },
+    {
+      "action": "MESSAGES",
+      "result": {
+        "contact": true,
+        "messages": [
+          {
+            "clock": 70,
+            "episode_id": "TEST_ONLY_BP4_EP_bb781706bcda27332f632ec2aaf0bb5b12232eefa0ed825665b312c392f7bf8e",
+            "sender": "neighbor",
+            "seq": 70,
+            "text": "The seam held. I'm at the market until six."
+          }
+        ],
+        "status": "OK"
+      }
+    },
+    {
+      "action": "RETURN",
+      "result": {
+        "scene_open": true,
+        "status": "OK",
+        "surface": [
+          "the repair worker says: \"The seam held. You came back.\" A lifts the finished piece an inch off the bench."
+        ]
+      }
+    }
+  ],
+  "b_public_after_return": {
+    "completed_units": 5,
+    "position": "market",
+    "public_work_events": [
+      "TEST_ONLY_BP4_WORLD_EVT_9ba315fc9e458c2abd4e9c2b97a90109269f8e33a9d4d3fe2d6a6ba20d7ebefc"
+    ],
+    "role": "finishing"
+  },
+  "c12_persisted_copy": {
+    "path": "evidence/c12_available.sqlite",
+    "sha256": "e9e054739f19dd50f4511b12d3968bbfa7dd512872ac4b02d4bc606b4e290e23"
+  },
+  "custody": {
+    "branch_id": "first_session",
+    "c12_counts": {
+      "checkpoint": 16,
+      "episode": 21,
+      "perception": 27,
+      "world_event": 11
+    },
+    "c12_path": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/r30a-evidence-iuibewxh/available/product/c12.sqlite",
+    "c12_verify": {
+      "branch_id": "first_session",
+      "counts": {
+        "checkpoint": 16,
+        "episode": 21,
+        "perception": 27,
+        "world_event": 11
+      },
+      "errors": [],
+      "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+      "ok": true,
+      "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+    },
+    "episodes": 21,
+    "events": 11,
+    "grade": "TEST_ONLY_SOURCEFREE_R30A_FIRST_NEIGHBOR_PRODUCT_NOT_NATIVE",
+    "r29p_source_ref": "001b506fa26ae879ff5b6e57138fc2696e12b538",
+    "schema": "R30A_CUSTODY@1",
+    "source": {
+      "artifacts": {
+        "anchor_log": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/r30a-evidence-iuibewxh/available/bp2/anchor/rows.json",
+        "anchor_watermark": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/r30a-evidence-iuibewxh/available/bp2/anchor/watermark.json",
+        "as_of": 247,
+        "c8_canonical_bytes_sha256": "881d1c9e6032b05043562426d3d04412d1a9d5eb6bdabd79f8b874300d74bc1e",
+        "c8_commit_receipt_id": "ffc871f3b37ddee9cb3df21badd43b772b7edbaff0620f72b94b2522507e661f",
+        "c8_content_hash": "4932ecca925c41a1a74a3c6162bca2a98deb9b5f4b25f6741745c2b929a2599f",
+        "c8_identity_digest": "e64c50a6a27269e63cbb2d5da6e74514b11fd8a91d858873f5ca5df0155f4c8e",
+        "c8_ledger_prefix_digest": "ecec20eab7ca6d8302e2ca96f4be3521f9c2b8915b6d3544f9f8c4176605a700",
+        "c8_state_digest": "cd5a12fc5e1965cbba2a2ef65a6a7af62452226f0c276a061c1616366570ac38",
+        "c8_writer_version": 1,
+        "c9_authorization_hash": "c25f8839bcbfcf435ec423829be3af1b7006dfb9ed9cf6cfae2b3c2794b75c6b",
+        "c9_commit_receipt_hash": "61bb17c617c6ea5655176e56b3dec8f06ead96b1a1e0e7f02e70978b6cde4acc",
+        "c9_path": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/r30a-evidence-iuibewxh/available/bp2/c9.sqlite",
+        "consumed_state_hash": "62b0ce7da0aa6049f96171176372c2bb693b07b84cf2f6e84b14ed8abdb7bb76",
+        "e1_event_hash": "0ee7cd8f47c148ba0b30b66ac602600a19d594c8c376faa029195fe4e0304434",
+        "e1_event_id": "TEST_ONLY_BP2_E1_OCC-0001",
+        "e2_receipt_hash": "5565402dbdfcea253eb3b8be09e1fe73f8eb8227b62bacd819a10b7673aede23",
+        "emission_order": [
+          "BP2_C8_COMMIT",
+          "BP2_C9_TARGET_COMMIT",
+          "BP2_E2_ADMISSION"
+        ],
+        "event_time": 242,
+        "grant_hash": "c56e5a3af9251af2bef1803d2cf8254b2ae21cc326c221aed90209f59569b0ad",
+        "journal_path": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/r30a-evidence-iuibewxh/available/bp2/journal/journal.json",
+        "key_id": "BP2-TEST-KEY",
+        "key_path": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/r30a-evidence-iuibewxh/available/bp2/keys/writer_keys.json",
+        "later_as_of": 257,
+        "mode": "FRESH",
+        "native_grant": "NOT_GRANTED",
+        "occurrence_id": "OCC-0001",
+        "practice_label": "coordinated_material_inspection",
+        "response_hash": "43c99be982a02dcb9ef02b232af2f0dd0bd4fbb9df45b267f04ee105d3b9703d",
+        "root": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/r30a-evidence-iuibewxh/available/bp2",
+        "rule_a_content_hash": "9e4872abaeedc346fa3ea06575bb6fb5daa324a47d1d00d6015f7b660ea9cf5d",
+        "rule_t_content_hash": "ab8afe1ae0229b2d6143c84f58cc4f2f1b0942d9f680cd14477602143991ec97",
+        "rule_t_dependency_hash": "9e4872abaeedc346fa3ea06575bb6fb5daa324a47d1d00d6015f7b660ea9cf5d",
+        "schema": "BP2P4J_BP2_ARTIFACT_BINDING@1",
+        "target_id": "2ee30a34c285cf794771b8a67bb0b8f26341e2114d0de4d64f2e6d68e64da348",
+        "target_record_hash": "7ab91bf77e9ed8212e122c80f4ac1848b467ccee697c02b273a71065b4cbf7bc"
+      },
+      "c12": {
+        "branch_id": "first_session",
+        "last_clock": 70
+      },
+      "clock": {
+        "basis": "The BP4 world root is created in the same process only after the BP2 C8 keyed commit, the C9 target commit and the independent E2 admission have been physically verified. The two logical clock domains are never compared numerically; no BP2 time is treated as a BP4 world time or vice versa.",
+        "bp2_domain": "BP2_TEST_ONLY_LOGICAL_CLOCK",
+        "bp2_e2_action_time": 257,
+        "bp2_event_time": 242,
+        "bp2_target_commit_time": 242,
+        "bp4_domain": "BP4_TEST_ONLY_WORLD_CLOCK",
+        "bp4_world_origin_clock": 10,
+        "hold_code": "",
+        "numeric_ordering_used": false,
+        "process_order": [
+          "BP2_C8_COMMIT",
+          "BP2_C9_TARGET_COMMIT",
+          "BP2_E2_ADMISSION",
+          "BP4_SEED_BIND",
+          "BP4_WORLD_ROOT_CREATE"
+        ],
+        "relation": "DECLARED_PROCESS_ORDER_NOT_NUMERIC_COMPARISON"
+      },
+      "custody": {
+        "adp019_admission_receipt": "ADP019_ADMISSION_RECEIPT_ABSENT",
+        "c8_commit_receipt_id": "ffc871f3b37ddee9cb3df21badd43b772b7edbaff0620f72b94b2522507e661f",
+        "c8_occurrence_id": "OCC-0001",
+        "c8_state_digest": "cd5a12fc5e1965cbba2a2ef65a6a7af62452226f0c276a061c1616366570ac38",
+        "c8_writer_version": 1,
+        "c9_authorization_hash": "c25f8839bcbfcf435ec423829be3af1b7006dfb9ed9cf6cfae2b3c2794b75c6b",
+        "c9_commit_receipt_hash": "61bb17c617c6ea5655176e56b3dec8f06ead96b1a1e0e7f02e70978b6cde4acc",
+        "clock": {
+          "basis": "The BP4 world root is created in the same process only after the BP2 C8 keyed commit, the C9 target commit and the independent E2 admission have been physically verified. The two logical clock domains are never compared numerically; no BP2 time is treated as a BP4 world time or vice versa.",
+          "bp2_domain": "BP2_TEST_ONLY_LOGICAL_CLOCK",
+          "bp2_e2_action_time": 257,
+          "bp2_event_time": 242,
+          "bp2_target_commit_time": 242,
+          "bp4_domain": "BP4_TEST_ONLY_WORLD_CLOCK",
+          "bp4_world_origin_clock": 10,
+          "hold_code": "",
+          "numeric_ordering_used": false,
+          "process_order": [
+            "BP2_C8_COMMIT",
+            "BP2_C9_TARGET_COMMIT",
+            "BP2_E2_ADMISSION",
+            "BP4_SEED_BIND",
+            "BP4_WORLD_ROOT_CREATE"
+          ],
+          "relation": "DECLARED_PROCESS_ORDER_NOT_NUMERIC_COMPARISON"
+        },
+        "commit_receipt_present": true,
+        "consumed_state_hash": "62b0ce7da0aa6049f96171176372c2bb693b07b84cf2f6e84b14ed8abdb7bb76",
+        "e1_event_hash": "0ee7cd8f47c148ba0b30b66ac602600a19d594c8c376faa029195fe4e0304434",
+        "e1_event_id": "TEST_ONLY_BP2_E1_OCC-0001",
+        "e2_admitted": true,
+        "e2_receipt_hash": "5565402dbdfcea253eb3b8be09e1fe73f8eb8227b62bacd819a10b7673aede23",
+        "envelope_validation": {
+          "bp4_contract_status": "AWAITING_ACTUAL_BP2_PRODUCER__COMPAT_CONTRACT_NOT_EMITTED",
+          "e2_receipt_bound": true,
+          "fields_checked": 17,
+          "mode": "FRESH",
+          "ok": true,
+          "recomputed_from_artifacts": true,
+          "schema": "BP2_JOINED_EVENT_HISTORY_TARGET_E2_ENVELOPE@1",
+          "target_digest_equal_consumed": true
+        },
+        "grade": "TEST_ONLY_SOURCEFREE_BP2P4J_SEED_NOT_NATIVE",
+        "grant_hash": "c56e5a3af9251af2bef1803d2cf8254b2ae21cc326c221aed90209f59569b0ad",
+        "mode": "FRESH",
+        "native": false,
+        "native_grants": {
+          "actor": false,
+          "adp019": false,
+          "c11": false,
+          "c12": false,
+          "c8_trust": false,
+          "e2": false,
+          "rule": false,
+          "world": false
+        },
+        "practice": {
+          "e2_receipt_hash": "5565402dbdfcea253eb3b8be09e1fe73f8eb8227b62bacd819a10b7673aede23",
+          "effective_from": 242,
+          "established": true,
+          "grade": "TEST_ONLY_SOURCEFREE_TECHNICAL",
+          "native": false,
+          "performed_act": "inspect_with_tool",
+          "practice_label": "coordinated_material_inspection",
+          "source_target_ref": "7ab91bf77e9ed8212e122c80f4ac1848b467ccee697c02b273a71065b4cbf7bc"
+        },
+        "response_hash": "43c99be982a02dcb9ef02b232af2f0dd0bd4fbb9df45b267f04ee105d3b9703d",
+        "response_row_present": true,
+        "rule_a_content_hash": "9e4872abaeedc346fa3ea06575bb6fb5daa324a47d1d00d6015f7b660ea9cf5d",
+        "rule_t_content_hash": "ab8afe1ae0229b2d6143c84f58cc4f2f1b0942d9f680cd14477602143991ec97",
+        "rule_t_dependency_hash": "9e4872abaeedc346fa3ea06575bb6fb5daa324a47d1d00d6015f7b660ea9cf5d",
+        "schema": "BP2P4J_JOINED_SEED@1",
+        "target_id": "2ee30a34c285cf794771b8a67bb0b8f26341e2114d0de4d64f2e6d68e64da348",
+        "target_journal_present": true,
+        "target_record_hash": "7ab91bf77e9ed8212e122c80f4ac1848b467ccee697c02b273a71065b4cbf7bc"
+      },
+      "envelope": {
+        "hash": "2469fc0595cfbca07e0db193b6933eaa2e56a98c648fcb34f1371a5932243775",
+        "producer": {
+          "mode": "FRESH",
+          "module": "bp2_joined.producer.JoinedProducer",
+          "name": "BP2_JOINED_PRODUCER",
+          "named_assertion": "bp2_joined.producer.joined_consumer_assertion",
+          "return_commit": "5065e2e6934e9d5bca800cbf88c79e461bcf2393"
+        },
+        "schema": "BP2_JOINED_EVENT_HISTORY_TARGET_E2_ENVELOPE@1",
+        "validation": {
+          "bp4_contract_status": "AWAITING_ACTUAL_BP2_PRODUCER__COMPAT_CONTRACT_NOT_EMITTED",
+          "e2_receipt_bound": true,
+          "fields_checked": 17,
+          "mode": "FRESH",
+          "ok": true,
+          "recomputed_from_artifacts": true,
+          "schema": "BP2_JOINED_EVENT_HISTORY_TARGET_E2_ENVELOPE@1",
+          "target_digest_equal_consumed": true
+        }
+      },
+      "grade": "TEST_ONLY_SOURCEFREE_JOINED_PRODUCT_ALPHA_NOT_NATIVE",
+      "native": false,
+      "native_grants": {
+        "actor": false,
+        "adp019": false,
+        "c11": false,
+        "c12": false,
+        "c8_trust": false,
+        "e2": false,
+        "rule": false,
+        "world": false
+      },
+      "practice": {
+        "e2_receipt_hash": "5565402dbdfcea253eb3b8be09e1fe73f8eb8227b62bacd819a10b7673aede23",
+        "effective_from": 242,
+        "established": true,
+        "grade": "TEST_ONLY_SOURCEFREE_TECHNICAL",
+        "native": false,
+        "performed_act": "inspect_with_tool",
+        "practice_label": "coordinated_material_inspection",
+        "source_target_ref": "7ab91bf77e9ed8212e122c80f4ac1848b467ccee697c02b273a71065b4cbf7bc"
+      },
+      "schema": "BP2P4J_JOINED_SOURCE@1",
+      "world": {
+        "clock": 70,
+        "hash": "11280674d9703fcd47f1558e0959d5a34bcfb60de0f7621fe1045535b80a575f",
+        "tool_available": true
+      }
+    },
+    "world_clock": 70
+  },
+  "episodes": [
+    {
+      "actor_id": "U",
+      "body": {
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_0c94bfa52ff8055ae9bac7eb25ee7f9a4b68d242c23fdbfef982f31b7b78e854",
+        "location": "workshop"
+      },
+      "branch_id": "first_session",
+      "clock": 10,
+      "episode_id": "TEST_ONLY_BP4_EP_8246a1f3e905ba63f66d38d3a4c08665dc3b78a2181107091e3f9ab9fe28cef0",
+      "grade": "TEST_ONLY_SOURCEFREE_C12_TECHNICAL_NOT_NATIVE",
+      "hash": "8246a1f3e905ba63f66d38d3a4c08665dc3b78a2181107091e3f9ab9fe28cef0",
+      "kind": "ARRIVE",
+      "native": false,
+      "schema": "BP4_C12_EPISODE@1"
+    },
+    {
+      "actor_id": "U",
+      "body": {
+        "action_seq": 2,
+        "admitted": true,
+        "attempted": true,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_9d4f15b399c96cb1afe30a4153bce49ac0d3cbb32d47e26cb86a5bd999366c72"
+      },
+      "branch_id": "first_session",
+      "clock": 10,
+      "episode_id": "TEST_ONLY_BP4_EP_14b010e84b6fd78fd335d315fb6eabe5b049314b78a36e9258a958b1eb606407",
+      "grade": "TEST_ONLY_SOURCEFREE_C12_TECHNICAL_NOT_NATIVE",
+      "hash": "14b010e84b6fd78fd335d315fb6eabe5b049314b78a36e9258a958b1eb606407",
+      "kind": "SAY",
+      "native": false,
+      "schema": "BP4_C12_EPISODE@1"
+    },
+    {
+      "actor_id": "A",
+      "body": {
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_cf924b5182c7d0cd2313d772183e6e7e631414c89ff23dfe78459c332b7d937b",
+        "gesture": "A glances toward the doorway.",
+        "text": "Which side of the landing?",
+        "tone": "ordinary"
+      },
+      "branch_id": "first_session",
+      "clock": 10,
+      "episode_id": "TEST_ONLY_BP4_EP_12fccd637d5dfebe24c54fac53c1de229b2591b180e38d9daccb61dcf8ebe5d6",
+      "grade": "TEST_ONLY_SOURCEFREE_C12_TECHNICAL_NOT_NATIVE",
+      "hash": "12fccd637d5dfebe24c54fac53c1de229b2591b180e38d9daccb61dcf8ebe5d6",
+      "kind": "SAY",
+      "native": false,
+      "schema": "BP4_C12_EPISODE@1"
+    },
+    {
+      "actor_id": "U",
+      "body": {
+        "action": "offer_help",
+        "action_seq": 4,
+        "admitted": null,
+        "attempted": true
+      },
+      "branch_id": "first_session",
+      "clock": 10,
+      "episode_id": "TEST_ONLY_BP4_EP_d7efb5cc519dc39431f97f3f332bef0aeb15ccae4874e632f3c01df9aa53c89b",
+      "grade": "TEST_ONLY_SOURCEFREE_C12_TECHNICAL_NOT_NATIVE",
+      "hash": "d7efb5cc519dc39431f97f3f332bef0aeb15ccae4874e632f3c01df9aa53c89b",
+      "kind": "DO",
+      "native": false,
+      "schema": "BP4_C12_EPISODE@1"
+    },
+    {
+      "actor_id": "A",
+      "body": {
+        "action": "repair",
+        "action_seq": 5,
+        "admitted": true,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_76ea57d3533747e90b0ec4a469b9ea66661126ff69ea3aa204e9e581a63dfadd",
+        "user_proposal": true
+      },
+      "branch_id": "first_session",
+      "clock": 10,
+      "episode_id": "TEST_ONLY_BP4_EP_64b3951623da8d579f8d2975a9f83ece6318a352e884d811d0c81443a7012612",
+      "grade": "TEST_ONLY_SOURCEFREE_C12_TECHNICAL_NOT_NATIVE",
+      "hash": "64b3951623da8d579f8d2975a9f83ece6318a352e884d811d0c81443a7012612",
+      "kind": "DO",
+      "native": false,
+      "schema": "BP4_C12_EPISODE@1"
+    },
+    {
+      "actor_id": "A",
+      "body": {
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_0a967ced075d149e7341437872d2246fc9642ef39a8846b848a98ac2fc4421a8",
+        "gesture": "A sets the tool beside your hand.",
+        "text": "Hold the near edge. I'll check the seam.",
+        "tone": "practical"
+      },
+      "branch_id": "first_session",
+      "clock": 10,
+      "episode_id": "TEST_ONLY_BP4_EP_24ab495f9ae1c56976d8ec89fe9e66f04a15d6ddce5e57d10cc2538b8fb34491",
+      "grade": "TEST_ONLY_SOURCEFREE_C12_TECHNICAL_NOT_NATIVE",
+      "hash": "24ab495f9ae1c56976d8ec89fe9e66f04a15d6ddce5e57d10cc2538b8fb34491",
+      "kind": "SAY",
+      "native": false,
+      "schema": "BP4_C12_EPISODE@1"
+    },
+    {
+      "actor_id": "U",
+      "body": {
+        "action_seq": 7,
+        "admitted": true,
+        "attempted": true,
+        "changed": false,
+        "new_knowledge": []
+      },
+      "branch_id": "first_session",
+      "clock": 10,
+      "episode_id": "TEST_ONLY_BP4_EP_25911dff71586c9f18a1dd2e2d36b4ad312f2b6852e14471cd652b733d0a3cda",
+      "grade": "TEST_ONLY_SOURCEFREE_C12_TECHNICAL_NOT_NATIVE",
+      "hash": "25911dff71586c9f18a1dd2e2d36b4ad312f2b6852e14471cd652b733d0a3cda",
+      "kind": "ATTEND",
+      "native": false,
+      "schema": "BP4_C12_EPISODE@1"
+    },
+    {
+      "actor_id": "U",
+      "body": {
+        "action": "ask_contact",
+        "action_seq": 8,
+        "admitted": null,
+        "attempted": true
+      },
+      "branch_id": "first_session",
+      "clock": 10,
+      "episode_id": "TEST_ONLY_BP4_EP_8f223879ab72065db359b58956a54925ba36e258cb38b7918f3b01d9eda85d19",
+      "grade": "TEST_ONLY_SOURCEFREE_C12_TECHNICAL_NOT_NATIVE",
+      "hash": "8f223879ab72065db359b58956a54925ba36e258cb38b7918f3b01d9eda85d19",
+      "kind": "DO",
+      "native": false,
+      "schema": "BP4_C12_EPISODE@1"
+    },
+    {
+      "actor_id": "A",
+      "body": {
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_d3970c000429160632cd08e01b1c49624d3857e8fb020af7ea46ac7a6dfa54dc",
+        "gesture": "A wipes their hands and gives the number.",
+        "text": "All right. The landing line is enough.",
+        "tone": "ordinary"
+      },
+      "branch_id": "first_session",
+      "clock": 10,
+      "episode_id": "TEST_ONLY_BP4_EP_1b75b0d2504529997c677c4dc1e65fde7e328a06c3996d57a8d5c7a6c8a83587",
+      "grade": "TEST_ONLY_SOURCEFREE_C12_TECHNICAL_NOT_NATIVE",
+      "hash": "1b75b0d2504529997c677c4dc1e65fde7e328a06c3996d57a8d5c7a6c8a83587",
+      "kind": "SAY",
+      "native": false,
+      "schema": "BP4_C12_EPISODE@1"
+    },
+    {
+      "actor_id": "A",
+      "body": {
+        "action_seq": 10,
+        "channel": "landing_line",
+        "established": true,
+        "speech_event_id": "TEST_ONLY_BP4_WORLD_EVT_d3970c000429160632cd08e01b1c49624d3857e8fb020af7ea46ac7a6dfa54dc",
+        "user_proposal": true
+      },
+      "branch_id": "first_session",
+      "clock": 10,
+      "episode_id": "TEST_ONLY_BP4_EP_cf9d94223a062547985a78b1d56aa40495bbfb672e4dc43eb08faf9a38a176a8",
+      "grade": "TEST_ONLY_SOURCEFREE_C12_TECHNICAL_NOT_NATIVE",
+      "hash": "cf9d94223a062547985a78b1d56aa40495bbfb672e4dc43eb08faf9a38a176a8",
+      "kind": "CONTACT",
+      "native": false,
+      "schema": "BP4_C12_EPISODE@1"
+    },
+    {
+      "actor_id": "U",
+      "body": {
+        "action_seq": 11,
+        "channel": "landing_line",
+        "established": true
+      },
+      "branch_id": "first_session",
+      "clock": 10,
+      "episode_id": "TEST_ONLY_BP4_EP_1ce7d1ec1e55e89011c7b911ee3f40e6614513619169b5f00c9589c7a462c077",
+      "grade": "TEST_ONLY_SOURCEFREE_C12_TECHNICAL_NOT_NATIVE",
+      "hash": "1ce7d1ec1e55e89011c7b911ee3f40e6614513619169b5f00c9589c7a462c077",
+      "kind": "CONTACT",
+      "native": false,
+      "schema": "BP4_C12_EPISODE@1"
+    },
+    {
+      "actor_id": "B",
+      "body": {
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_9a54e18254708bd71116b961d590d7d5597b5eb42f06ff1ff941169d53cf1a16",
+        "source_owned": false
+      },
+      "branch_id": "first_session",
+      "clock": 40,
+      "episode_id": "TEST_ONLY_BP4_EP_abc9f947b4f416c2112a3d40e24f9dfc8f59efca809c18b3000093c83e8edeb1",
+      "grade": "TEST_ONLY_SOURCEFREE_C12_TECHNICAL_NOT_NATIVE",
+      "hash": "abc9f947b4f416c2112a3d40e24f9dfc8f59efca809c18b3000093c83e8edeb1",
+      "kind": "OFFSCREEN",
+      "native": false,
+      "schema": "BP4_C12_EPISODE@1"
+    },
+    {
+      "actor_id": "B",
+      "body": {
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_9ba315fc9e458c2abd4e9c2b97a90109269f8e33a9d4d3fe2d6a6ba20d7ebefc",
+        "source_owned": true
+      },
+      "branch_id": "first_session",
+      "clock": 40,
+      "episode_id": "TEST_ONLY_BP4_EP_05d6b4a3614f83304e93eb6116477ccb5944bce3e9b8b1e1e007a9a51842b91b",
+      "grade": "TEST_ONLY_SOURCEFREE_C12_TECHNICAL_NOT_NATIVE",
+      "hash": "05d6b4a3614f83304e93eb6116477ccb5944bce3e9b8b1e1e007a9a51842b91b",
+      "kind": "OFFSCREEN",
+      "native": false,
+      "schema": "BP4_C12_EPISODE@1"
+    },
+    {
+      "actor_id": "U",
+      "body": {
+        "action_seq": 14,
+        "admitted": true,
+        "attempted": true,
+        "changed": true,
+        "hours": 30
+      },
+      "branch_id": "first_session",
+      "clock": 40,
+      "episode_id": "TEST_ONLY_BP4_EP_2d2bb7bd8d65774668c4de748870d00face7838bde72ceb99e1c364705668317",
+      "grade": "TEST_ONLY_SOURCEFREE_C12_TECHNICAL_NOT_NATIVE",
+      "hash": "2d2bb7bd8d65774668c4de748870d00face7838bde72ceb99e1c364705668317",
+      "kind": "WAIT",
+      "native": false,
+      "schema": "BP4_C12_EPISODE@1"
+    },
+    {
+      "actor_id": "A",
+      "body": {
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_8c12629466c7d833ef8649f9565bfbb5ecf50bf6d127553ba61b69945620cacf",
+        "gesture": "A begins packing the bench.",
+        "text": "I need to get this to the market before the light goes.",
+        "tone": "ordinary"
+      },
+      "branch_id": "first_session",
+      "clock": 40,
+      "episode_id": "TEST_ONLY_BP4_EP_7cfdc27cdd3edb53f4224b80345d23941f12fb915dbd8b8e7199e22e716dadcc",
+      "grade": "TEST_ONLY_SOURCEFREE_C12_TECHNICAL_NOT_NATIVE",
+      "hash": "7cfdc27cdd3edb53f4224b80345d23941f12fb915dbd8b8e7199e22e716dadcc",
+      "kind": "SAY",
+      "native": false,
+      "schema": "BP4_C12_EPISODE@1"
+    },
+    {
+      "actor_id": "U",
+      "body": {
+        "reason": "ACTOR_HAS_TO_LEAVE"
+      },
+      "branch_id": "first_session",
+      "clock": 40,
+      "episode_id": "TEST_ONLY_BP4_EP_652a7a5507518a682a56c6fa261bbb81f822ccde3efce9c8e13e3a7c1c38e6be",
+      "grade": "TEST_ONLY_SOURCEFREE_C12_TECHNICAL_NOT_NATIVE",
+      "hash": "652a7a5507518a682a56c6fa261bbb81f822ccde3efce9c8e13e3a7c1c38e6be",
+      "kind": "SCENE_END",
+      "native": false,
+      "schema": "BP4_C12_EPISODE@1"
+    },
+    {
+      "actor_id": "U",
+      "body": {
+        "action_seq": 17,
+        "hours": 30,
+        "outside_portal": true
+      },
+      "branch_id": "first_session",
+      "clock": 70,
+      "episode_id": "TEST_ONLY_BP4_EP_9986dd07a3e7de7cc8cbb925e569bb84c4f63f41c998c23cfcb6a9b2b4e1b980",
+      "grade": "TEST_ONLY_SOURCEFREE_C12_TECHNICAL_NOT_NATIVE",
+      "hash": "9986dd07a3e7de7cc8cbb925e569bb84c4f63f41c998c23cfcb6a9b2b4e1b980",
+      "kind": "OFFSCREEN",
+      "native": false,
+      "schema": "BP4_C12_EPISODE@1"
+    },
+    {
+      "actor_id": "A",
+      "body": {
+        "action_seq": 18,
+        "channel": "landing_line",
+        "direction": "to_user",
+        "text": "The seam held. I'm at the market until six."
+      },
+      "branch_id": "first_session",
+      "clock": 70,
+      "episode_id": "TEST_ONLY_BP4_EP_bb781706bcda27332f632ec2aaf0bb5b12232eefa0ed825665b312c392f7bf8e",
+      "grade": "TEST_ONLY_SOURCEFREE_C12_TECHNICAL_NOT_NATIVE",
+      "hash": "bb781706bcda27332f632ec2aaf0bb5b12232eefa0ed825665b312c392f7bf8e",
+      "kind": "MESSAGE",
+      "native": false,
+      "schema": "BP4_C12_EPISODE@1"
+    },
+    {
+      "actor_id": "U",
+      "body": {
+        "action_seq": 19,
+        "location": "workshop"
+      },
+      "branch_id": "first_session",
+      "clock": 70,
+      "episode_id": "TEST_ONLY_BP4_EP_12bdb4a059adbc8a95a5f0e6badd22f37ce55f2688b12b7bffd22ad946a667e5",
+      "grade": "TEST_ONLY_SOURCEFREE_C12_TECHNICAL_NOT_NATIVE",
+      "hash": "12bdb4a059adbc8a95a5f0e6badd22f37ce55f2688b12b7bffd22ad946a667e5",
+      "kind": "RETURN",
+      "native": false,
+      "schema": "BP4_C12_EPISODE@1"
+    },
+    {
+      "actor_id": "U",
+      "body": {
+        "admitted": true,
+        "attempted": true,
+        "changed": false,
+        "new_knowledge": []
+      },
+      "branch_id": "first_session",
+      "clock": 70,
+      "episode_id": "TEST_ONLY_BP4_EP_ffaa4c7e73c5ec07037df5cbc0b5596ea11aba05b1ba2355e3e5640535bbfd89",
+      "grade": "TEST_ONLY_SOURCEFREE_C12_TECHNICAL_NOT_NATIVE",
+      "hash": "ffaa4c7e73c5ec07037df5cbc0b5596ea11aba05b1ba2355e3e5640535bbfd89",
+      "kind": "ATTEND",
+      "native": false,
+      "schema": "BP4_C12_EPISODE@1"
+    },
+    {
+      "actor_id": "A",
+      "body": {
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_8fa300278e3ca78863b73b0a6f978632593625a1c3d32d9106f89699149ab5b3",
+        "gesture": "A lifts the finished piece an inch off the bench.",
+        "text": "The seam held. You came back.",
+        "tone": "ordinary"
+      },
+      "branch_id": "first_session",
+      "clock": 70,
+      "episode_id": "TEST_ONLY_BP4_EP_362dbb79eea7f52661a880d3a221c50e7da46b2ce23fa0d84319db2de2ed670b",
+      "grade": "TEST_ONLY_SOURCEFREE_C12_TECHNICAL_NOT_NATIVE",
+      "hash": "362dbb79eea7f52661a880d3a221c50e7da46b2ce23fa0d84319db2de2ed670b",
+      "kind": "SAY",
+      "native": false,
+      "schema": "BP4_C12_EPISODE@1"
+    }
+  ],
+  "events": [
+    {
+      "actor_id": "B",
+      "body": {
+        "present_with": [
+          "A"
+        ],
+        "public_role": "finishing"
+      },
+      "clock": 10,
+      "event_id": "TEST_ONLY_BP4_WORLD_EVT_e8ef27fc37b15575b8b2da8e65b49f456d020d220175b29445994c4aee64d787",
+      "hash": "35c32f999f3bd1fc0155727790653999a831c274baca45dd9aa7ac1c05af6fe8",
+      "kind": "ARRIVAL",
+      "location": "workshop",
+      "summary": "The finishing worker is already at the workshop bench."
+    },
+    {
+      "actor_id": "U",
+      "body": {
+        "present_with": [
+          "A",
+          "B"
+        ],
+        "public_role": "visitor"
+      },
+      "clock": 10,
+      "event_id": "TEST_ONLY_BP4_WORLD_EVT_0c94bfa52ff8055ae9bac7eb25ee7f9a4b68d242c23fdbfef982f31b7b78e854",
+      "hash": "c2c4705d4f5179085e35d57edce16be148fdc85d76533d211d9391fd71622e2c",
+      "kind": "ARRIVAL",
+      "location": "workshop",
+      "summary": "You come up the stairs and stop at the open workshop door."
+    },
+    {
+      "actor_id": "U",
+      "body": {
+        "observable": true,
+        "text": "Hello. I just moved in."
+      },
+      "clock": 10,
+      "event_id": "TEST_ONLY_BP4_WORLD_EVT_9d4f15b399c96cb1afe30a4153bce49ac0d3cbb32d47e26cb86a5bd999366c72",
+      "hash": "166d04800f55ad981cb72f794faa376fbdf6f08cd1d1a2ed8932cafbff77cdbb",
+      "kind": "SPEECH",
+      "location": "workshop",
+      "summary": "U says: Hello. I just moved in."
+    },
+    {
+      "actor_id": "A",
+      "body": {
+        "gesture": "A glances toward the doorway.",
+        "public_role": "repair",
+        "text": "Which side of the landing?",
+        "tone": "ordinary"
+      },
+      "clock": 10,
+      "event_id": "TEST_ONLY_BP4_WORLD_EVT_cf924b5182c7d0cd2313d772183e6e7e631414c89ff23dfe78459c332b7d937b",
+      "hash": "f1d86dbb4d8d16159a61bb21e8912cc8b109ab7fe3df627b1f3fde253588e7f0",
+      "kind": "SPEECH",
+      "location": "workshop",
+      "summary": "A says: Which side of the landing?"
+    },
+    {
+      "actor_id": "A",
+      "body": {
+        "cash_delta": 2,
+        "completed_delta": 1,
+        "hours_delta": -1,
+        "material_delta": -1,
+        "source_owned": true
+      },
+      "clock": 10,
+      "event_id": "TEST_ONLY_BP4_WORLD_EVT_76ea57d3533747e90b0ec4a469b9ea66661126ff69ea3aa204e9e581a63dfadd",
+      "hash": "f97ba815532f11332350029558d5d03e7b03896e602281fcb298564b0bd1d855",
+      "kind": "REPAIR",
+      "location": "workshop",
+      "summary": "A material repair is performed in the workshop."
+    },
+    {
+      "actor_id": "A",
+      "body": {
+        "gesture": "A sets the tool beside your hand.",
+        "public_role": "repair",
+        "text": "Hold the near edge. I'll check the seam.",
+        "tone": "practical"
+      },
+      "clock": 10,
+      "event_id": "TEST_ONLY_BP4_WORLD_EVT_0a967ced075d149e7341437872d2246fc9642ef39a8846b848a98ac2fc4421a8",
+      "hash": "3e801ac75bceda5dbe880b1314be7c3b1cd8b3813ebb399455b4d58e230ff3c2",
+      "kind": "SPEECH",
+      "location": "workshop",
+      "summary": "A says: Hold the near edge. I'll check the seam."
+    },
+    {
+      "actor_id": "A",
+      "body": {
+        "gesture": "A wipes their hands and gives the number.",
+        "public_role": "repair",
+        "text": "All right. The landing line is enough.",
+        "tone": "ordinary"
+      },
+      "clock": 10,
+      "event_id": "TEST_ONLY_BP4_WORLD_EVT_d3970c000429160632cd08e01b1c49624d3857e8fb020af7ea46ac7a6dfa54dc",
+      "hash": "03e2881a4dd6bec040de72224904457c953f5560da5eb5bbba9ae858e849c84e",
+      "kind": "SPEECH",
+      "location": "workshop",
+      "summary": "A says: All right. The landing line is enough."
+    },
+    {
+      "actor_id": "B",
+      "body": {
+        "to": "market"
+      },
+      "clock": 40,
+      "event_id": "TEST_ONLY_BP4_WORLD_EVT_9a54e18254708bd71116b961d590d7d5597b5eb42f06ff1ff941169d53cf1a16",
+      "hash": "d37ab2367b2f28b500db7d2d128de40cf61d714b3104773b5dd301d2ccba83e0",
+      "kind": "MOVE",
+      "location": "market",
+      "summary": "The finishing worker takes the completed pieces to the market."
+    },
+    {
+      "actor_id": "B",
+      "body": {
+        "cash_delta": 2,
+        "completed_delta": 1,
+        "material_delta": -1,
+        "source_owned": true,
+        "tool_used": true
+      },
+      "clock": 40,
+      "event_id": "TEST_ONLY_BP4_WORLD_EVT_9ba315fc9e458c2abd4e9c2b97a90109269f8e33a9d4d3fe2d6a6ba20d7ebefc",
+      "hash": "70324346423cc876774f59916fc02c4a3a4c287d99ab5e4637b47b8590522637",
+      "kind": "OFFSCREEN_REPAIR",
+      "location": "market",
+      "summary": "A market stall is refurbished while the user is away."
+    },
+    {
+      "actor_id": "A",
+      "body": {
+        "gesture": "A begins packing the bench.",
+        "public_role": "repair",
+        "text": "I need to get this to the market before the light goes.",
+        "tone": "ordinary"
+      },
+      "clock": 40,
+      "event_id": "TEST_ONLY_BP4_WORLD_EVT_8c12629466c7d833ef8649f9565bfbb5ecf50bf6d127553ba61b69945620cacf",
+      "hash": "5e4ae285f7e4bb205199500cbde41e80b8c49e3af7dd1d5e75a0d4e3d4103048",
+      "kind": "SPEECH",
+      "location": "workshop",
+      "summary": "A says: I need to get this to the market before the light goes."
+    },
+    {
+      "actor_id": "A",
+      "body": {
+        "gesture": "A lifts the finished piece an inch off the bench.",
+        "public_role": "repair",
+        "text": "The seam held. You came back.",
+        "tone": "ordinary"
+      },
+      "clock": 70,
+      "event_id": "TEST_ONLY_BP4_WORLD_EVT_8fa300278e3ca78863b73b0a6f978632593625a1c3d32d9106f89699149ab5b3",
+      "hash": "a4cd0422bf3a261260ad7ad134b72aa3c5af68146d0f88bf4e22b5a818eb2c8e",
+      "kind": "SPEECH",
+      "location": "workshop",
+      "summary": "A says: The seam held. You came back."
+    }
+  ],
+  "messages": [
+    {
+      "clock": 70,
+      "episode_id": "TEST_ONLY_BP4_EP_bb781706bcda27332f632ec2aaf0bb5b12232eefa0ed825665b312c392f7bf8e",
+      "sender": "neighbor",
+      "seq": 70,
+      "text": "The seam held. I'm at the market until six."
+    }
+  ],
+  "r29p_source_ref": "001b506fa26ae879ff5b6e57138fc2696e12b538",
+  "scenario": "available",
+  "schema": "R30A_SESSION_RECEIPT@1",
+  "status_after_return": {
+    "attention": "focused",
+    "branch_id": "first_session",
+    "clock": 70,
+    "contact": true,
+    "grade": "TEST_ONLY_SOURCEFREE_R30A_FIRST_NEIGHBOR_PRODUCT_NOT_NATIVE",
+    "location": "workshop",
+    "messages": 1,
+    "native": false,
+    "present": [
+      {
+        "actor": "A",
+        "public_role": "repair"
+      }
+    ],
+    "scenario": "available",
+    "scene_open": true,
+    "schema": "R30A_FIRST_NEIGHBOR_SESSION@1"
+  },
+  "verify": {
+    "branch_id": "first_session",
+    "counts": {
+      "checkpoint": 16,
+      "episode": 21,
+      "perception": 27,
+      "world_event": 11
+    },
+    "errors": [],
+    "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+    "ok": true,
+    "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+  }
+}

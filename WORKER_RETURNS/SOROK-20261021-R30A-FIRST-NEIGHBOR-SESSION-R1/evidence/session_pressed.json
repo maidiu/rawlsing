@@ -1,0 +1,777 @@
+{
+  "actions": [
+    {
+      "action": "SAY",
+      "result": {
+        "status": "OK",
+        "surface": [
+          "You say: \"Hello. Do you need a hand?\"",
+          "the repair worker says: \"I can't take that on now. I have to finish.\" A keeps both hands on the piece."
+        ]
+      }
+    },
+    {
+      "action": "DO_HELP",
+      "result": {
+        "accepted": false,
+        "status": "OK",
+        "surface": [
+          "the repair worker says: \"I can't take that on now. I have to finish.\" A keeps both hands on the piece."
+        ]
+      }
+    },
+    {
+      "action": "ASK_CONTACT",
+      "result": {
+        "contact": false,
+        "status": "OK",
+        "surface": [
+          "the repair worker says: \"Not yet. I don't know you.\" A keeps working."
+        ]
+      }
+    },
+    {
+      "action": "WAIT",
+      "result": {
+        "clock": 40,
+        "scene_open": false,
+        "status": "OK",
+        "surface": [
+          "the repair worker says: \"I have to go. The market closes.\" A takes the tool and steps toward the door."
+        ]
+      }
+    },
+    {
+      "action": "OFFSCREEN",
+      "result": {
+        "clock": 70,
+        "message": null,
+        "offscreen_events": [],
+        "status": "OK"
+      }
+    },
+    {
+      "action": "MESSAGES",
+      "result": {
+        "contact": false,
+        "messages": [],
+        "status": "NO_CHANNEL"
+      }
+    },
+    {
+      "action": "RETURN",
+      "result": {
+        "scene_open": true,
+        "status": "OK",
+        "surface": [
+          "the repair worker says: \"You came back.\" A looks up from the bench."
+        ]
+      }
+    }
+  ],
+  "c12_persisted_copy": {
+    "path": "evidence/c12_pressed.sqlite",
+    "sha256": "59a41d3f0416a14a51091c7e0c8bb7bbdb16dd652e70e1eaa100b7bb259ffdc8"
+  },
+  "custody": {
+    "branch_id": "first_session",
+    "c12_counts": {
+      "checkpoint": 14,
+      "episode": 19,
+      "perception": 24,
+      "world_event": 10
+    },
+    "c12_path": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/r30a-evidence-iuibewxh/pressed/product/c12.sqlite",
+    "c12_verify": {
+      "branch_id": "first_session",
+      "counts": {
+        "checkpoint": 14,
+        "episode": 19,
+        "perception": 24,
+        "world_event": 10
+      },
+      "errors": [],
+      "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+      "ok": true,
+      "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+    },
+    "episodes": 19,
+    "events": 10,
+    "grade": "TEST_ONLY_SOURCEFREE_R30A_FIRST_NEIGHBOR_PRODUCT_NOT_NATIVE",
+    "r29p_source_ref": "001b506fa26ae879ff5b6e57138fc2696e12b538",
+    "schema": "R30A_CUSTODY@1",
+    "source": {
+      "artifacts": {
+        "anchor_log": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/r30a-evidence-iuibewxh/pressed/bp2/anchor/rows.json",
+        "anchor_watermark": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/r30a-evidence-iuibewxh/pressed/bp2/anchor/watermark.json",
+        "as_of": 247,
+        "c8_canonical_bytes_sha256": "9f92c95df698c33d763d8d52cc528264dc5a00f92f07df88dfcf7f92a74df023",
+        "c8_commit_receipt_id": "061de31a1250a1e82b451d20f296e6ed5d753a34af7dda9e989b579e62ae3cb8",
+        "c8_content_hash": "4932ecca925c41a1a74a3c6162bca2a98deb9b5f4b25f6741745c2b929a2599f",
+        "c8_identity_digest": "e64c50a6a27269e63cbb2d5da6e74514b11fd8a91d858873f5ca5df0155f4c8e",
+        "c8_ledger_prefix_digest": "ecec20eab7ca6d8302e2ca96f4be3521f9c2b8915b6d3544f9f8c4176605a700",
+        "c8_state_digest": "cd5a12fc5e1965cbba2a2ef65a6a7af62452226f0c276a061c1616366570ac38",
+        "c8_writer_version": 1,
+        "c9_authorization_hash": "0130f65aa385e11f2bfc82a0f42da6c5ebb7694a911ec5579119d536c06eaad5",
+        "c9_commit_receipt_hash": "a4242dded29b1c58712fa0787b8ce7de9df0af4b20c47dcd1f7908c43a8a9046",
+        "c9_path": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/r30a-evidence-iuibewxh/pressed/bp2/c9.sqlite",
+        "consumed_state_hash": "172c7654ad714bd8dd5e84fbe44d8d666b3ca8dc7b9401721d751cc1b4ebc024",
+        "e1_event_hash": "a9eb02c9f2720a35e59c612e8c6362da5252631f333f915e9c3d97e3c0644477",
+        "e1_event_id": "TEST_ONLY_BP2_E1_OCC-0001",
+        "e2_receipt_hash": "d9ef2c5d15fa87dcb1cfb9a5cb0406791e125a4c7f995507c53d734d75141a85",
+        "emission_order": [
+          "BP2_C8_COMMIT",
+          "BP2_C9_TARGET_COMMIT",
+          "BP2_E2_ADMISSION"
+        ],
+        "event_time": 242,
+        "grant_hash": "db9d4f1a98a6a1875b65db8fde7bb4cebb7d25bc0f70bbe8b8eb8faf30d48d92",
+        "journal_path": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/r30a-evidence-iuibewxh/pressed/bp2/journal/journal.json",
+        "key_id": "BP2-TEST-KEY",
+        "key_path": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/r30a-evidence-iuibewxh/pressed/bp2/keys/writer_keys.json",
+        "later_as_of": 257,
+        "mode": "FRESH",
+        "native_grant": "NOT_GRANTED",
+        "occurrence_id": "OCC-0001",
+        "practice_label": "coordinated_material_inspection",
+        "response_hash": "5a031d5c673b8e6ce87990e2695f6fed42d1a4e351ebebe33147b10b9860db6c",
+        "root": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/r30a-evidence-iuibewxh/pressed/bp2",
+        "rule_a_content_hash": "9e4872abaeedc346fa3ea06575bb6fb5daa324a47d1d00d6015f7b660ea9cf5d",
+        "rule_t_content_hash": "ab8afe1ae0229b2d6143c84f58cc4f2f1b0942d9f680cd14477602143991ec97",
+        "rule_t_dependency_hash": "9e4872abaeedc346fa3ea06575bb6fb5daa324a47d1d00d6015f7b660ea9cf5d",
+        "schema": "BP2P4J_BP2_ARTIFACT_BINDING@1",
+        "target_id": "441dfe552a9f10b5913fade6a38797fb33081e3475304f757a7c9deeb47bcf15",
+        "target_record_hash": "efd737ba9705e392521f87fd08d06dc34a1d756d112617697d646a7888bd163f"
+      },
+      "c12": {
+        "branch_id": "first_session",
+        "last_clock": 70
+      },
+      "clock": {
+        "basis": "The BP4 world root is created in the same process only after the BP2 C8 keyed commit, the C9 target commit and the independent E2 admission have been physically verified. The two logical clock domains are never compared numerically; no BP2 time is treated as a BP4 world time or vice versa.",
+        "bp2_domain": "BP2_TEST_ONLY_LOGICAL_CLOCK",
+        "bp2_e2_action_time": 257,
+        "bp2_event_time": 242,
+        "bp2_target_commit_time": 242,
+        "bp4_domain": "BP4_TEST_ONLY_WORLD_CLOCK",
+        "bp4_world_origin_clock": 10,
+        "hold_code": "",
+        "numeric_ordering_used": false,
+        "process_order": [
+          "BP2_C8_COMMIT",
+          "BP2_C9_TARGET_COMMIT",
+          "BP2_E2_ADMISSION",
+          "BP4_SEED_BIND",
+          "BP4_WORLD_ROOT_CREATE"
+        ],
+        "relation": "DECLARED_PROCESS_ORDER_NOT_NUMERIC_COMPARISON"
+      },
+      "custody": {
+        "adp019_admission_receipt": "ADP019_ADMISSION_RECEIPT_ABSENT",
+        "c8_commit_receipt_id": "061de31a1250a1e82b451d20f296e6ed5d753a34af7dda9e989b579e62ae3cb8",
+        "c8_occurrence_id": "OCC-0001",
+        "c8_state_digest": "cd5a12fc5e1965cbba2a2ef65a6a7af62452226f0c276a061c1616366570ac38",
+        "c8_writer_version": 1,
+        "c9_authorization_hash": "0130f65aa385e11f2bfc82a0f42da6c5ebb7694a911ec5579119d536c06eaad5",
+        "c9_commit_receipt_hash": "a4242dded29b1c58712fa0787b8ce7de9df0af4b20c47dcd1f7908c43a8a9046",
+        "clock": {
+          "basis": "The BP4 world root is created in the same process only after the BP2 C8 keyed commit, the C9 target commit and the independent E2 admission have been physically verified. The two logical clock domains are never compared numerically; no BP2 time is treated as a BP4 world time or vice versa.",
+          "bp2_domain": "BP2_TEST_ONLY_LOGICAL_CLOCK",
+          "bp2_e2_action_time": 257,
+          "bp2_event_time": 242,
+          "bp2_target_commit_time": 242,
+          "bp4_domain": "BP4_TEST_ONLY_WORLD_CLOCK",
+          "bp4_world_origin_clock": 10,
+          "hold_code": "",
+          "numeric_ordering_used": false,
+          "process_order": [
+            "BP2_C8_COMMIT",
+            "BP2_C9_TARGET_COMMIT",
+            "BP2_E2_ADMISSION",
+            "BP4_SEED_BIND",
+            "BP4_WORLD_ROOT_CREATE"
+          ],
+          "relation": "DECLARED_PROCESS_ORDER_NOT_NUMERIC_COMPARISON"
+        },
+        "commit_receipt_present": true,
+        "consumed_state_hash": "172c7654ad714bd8dd5e84fbe44d8d666b3ca8dc7b9401721d751cc1b4ebc024",
+        "e1_event_hash": "a9eb02c9f2720a35e59c612e8c6362da5252631f333f915e9c3d97e3c0644477",
+        "e1_event_id": "TEST_ONLY_BP2_E1_OCC-0001",
+        "e2_admitted": true,
+        "e2_receipt_hash": "d9ef2c5d15fa87dcb1cfb9a5cb0406791e125a4c7f995507c53d734d75141a85",
+        "envelope_validation": {
+          "bp4_contract_status": "AWAITING_ACTUAL_BP2_PRODUCER__COMPAT_CONTRACT_NOT_EMITTED",
+          "e2_receipt_bound": true,
+          "fields_checked": 17,
+          "mode": "FRESH",
+          "ok": true,
+          "recomputed_from_artifacts": true,
+          "schema": "BP2_JOINED_EVENT_HISTORY_TARGET_E2_ENVELOPE@1",
+          "target_digest_equal_consumed": true
+        },
+        "grade": "TEST_ONLY_SOURCEFREE_BP2P4J_SEED_NOT_NATIVE",
+        "grant_hash": "db9d4f1a98a6a1875b65db8fde7bb4cebb7d25bc0f70bbe8b8eb8faf30d48d92",
+        "mode": "FRESH",
+        "native": false,
+        "native_grants": {
+          "actor": false,
+          "adp019": false,
+          "c11": false,
+          "c12": false,
+          "c8_trust": false,
+          "e2": false,
+          "rule": false,
+          "world": false
+        },
+        "practice": {
+          "e2_receipt_hash": "d9ef2c5d15fa87dcb1cfb9a5cb0406791e125a4c7f995507c53d734d75141a85",
+          "effective_from": 242,
+          "established": true,
+          "grade": "TEST_ONLY_SOURCEFREE_TECHNICAL",
+          "native": false,
+          "performed_act": "inspect_with_tool",
+          "practice_label": "coordinated_material_inspection",
+          "source_target_ref": "efd737ba9705e392521f87fd08d06dc34a1d756d112617697d646a7888bd163f"
+        },
+        "response_hash": "5a031d5c673b8e6ce87990e2695f6fed42d1a4e351ebebe33147b10b9860db6c",
+        "response_row_present": true,
+        "rule_a_content_hash": "9e4872abaeedc346fa3ea06575bb6fb5daa324a47d1d00d6015f7b660ea9cf5d",
+        "rule_t_content_hash": "ab8afe1ae0229b2d6143c84f58cc4f2f1b0942d9f680cd14477602143991ec97",
+        "rule_t_dependency_hash": "9e4872abaeedc346fa3ea06575bb6fb5daa324a47d1d00d6015f7b660ea9cf5d",
+        "schema": "BP2P4J_JOINED_SEED@1",
+        "target_id": "441dfe552a9f10b5913fade6a38797fb33081e3475304f757a7c9deeb47bcf15",
+        "target_journal_present": true,
+        "target_record_hash": "efd737ba9705e392521f87fd08d06dc34a1d756d112617697d646a7888bd163f"
+      },
+      "envelope": {
+        "hash": "e065a59b32b22629e35aa383a335a9031fc2deaf8a6cf10401df9af44fdada07",
+        "producer": {
+          "mode": "FRESH",
+          "module": "bp2_joined.producer.JoinedProducer",
+          "name": "BP2_JOINED_PRODUCER",
+          "named_assertion": "bp2_joined.producer.joined_consumer_assertion",
+          "return_commit": "5065e2e6934e9d5bca800cbf88c79e461bcf2393"
+        },
+        "schema": "BP2_JOINED_EVENT_HISTORY_TARGET_E2_ENVELOPE@1",
+        "validation": {
+          "bp4_contract_status": "AWAITING_ACTUAL_BP2_PRODUCER__COMPAT_CONTRACT_NOT_EMITTED",
+          "e2_receipt_bound": true,
+          "fields_checked": 17,
+          "mode": "FRESH",
+          "ok": true,
+          "recomputed_from_artifacts": true,
+          "schema": "BP2_JOINED_EVENT_HISTORY_TARGET_E2_ENVELOPE@1",
+          "target_digest_equal_consumed": true
+        }
+      },
+      "grade": "TEST_ONLY_SOURCEFREE_JOINED_PRODUCT_ALPHA_NOT_NATIVE",
+      "native": false,
+      "native_grants": {
+        "actor": false,
+        "adp019": false,
+        "c11": false,
+        "c12": false,
+        "c8_trust": false,
+        "e2": false,
+        "rule": false,
+        "world": false
+      },
+      "practice": {
+        "e2_receipt_hash": "d9ef2c5d15fa87dcb1cfb9a5cb0406791e125a4c7f995507c53d734d75141a85",
+        "effective_from": 242,
+        "established": true,
+        "grade": "TEST_ONLY_SOURCEFREE_TECHNICAL",
+        "native": false,
+        "performed_act": "inspect_with_tool",
+        "practice_label": "coordinated_material_inspection",
+        "source_target_ref": "efd737ba9705e392521f87fd08d06dc34a1d756d112617697d646a7888bd163f"
+      },
+      "schema": "BP2P4J_JOINED_SOURCE@1",
+      "world": {
+        "clock": 70,
+        "hash": "237b39eeb8a47973bc1496c916b2bbd11a41a8daff4eaaa121c403226ffdfd8f",
+        "tool_available": true
+      }
+    },
+    "world_clock": 70
+  },
+  "episodes": [
+    {
+      "actor_id": "U",
+      "body": {
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_0c94bfa52ff8055ae9bac7eb25ee7f9a4b68d242c23fdbfef982f31b7b78e854",
+        "location": "workshop"
+      },
+      "branch_id": "first_session",
+      "clock": 10,
+      "episode_id": "TEST_ONLY_BP4_EP_8246a1f3e905ba63f66d38d3a4c08665dc3b78a2181107091e3f9ab9fe28cef0",
+      "grade": "TEST_ONLY_SOURCEFREE_C12_TECHNICAL_NOT_NATIVE",
+      "hash": "8246a1f3e905ba63f66d38d3a4c08665dc3b78a2181107091e3f9ab9fe28cef0",
+      "kind": "ARRIVE",
+      "native": false,
+      "schema": "BP4_C12_EPISODE@1"
+    },
+    {
+      "actor_id": "U",
+      "body": {
+        "action_seq": 2,
+        "admitted": true,
+        "attempted": true,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_f15c2df6d9c7ab108a6b05f98e07807e228b447c8abdd2dbcdfec9cacc7afadc"
+      },
+      "branch_id": "first_session",
+      "clock": 10,
+      "episode_id": "TEST_ONLY_BP4_EP_aff3085aa10bf1724442ccd0bbbc5e7dfb273e9bab7248142425298526526d83",
+      "grade": "TEST_ONLY_SOURCEFREE_C12_TECHNICAL_NOT_NATIVE",
+      "hash": "aff3085aa10bf1724442ccd0bbbc5e7dfb273e9bab7248142425298526526d83",
+      "kind": "SAY",
+      "native": false,
+      "schema": "BP4_C12_EPISODE@1"
+    },
+    {
+      "actor_id": "A",
+      "body": {
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_7e8644b126c3561fed28faff948b5f4840a5e3ca15f5b3d26a31a4870af72291",
+        "gesture": "A keeps both hands on the piece.",
+        "text": "I can't take that on now. I have to finish.",
+        "tone": "firm"
+      },
+      "branch_id": "first_session",
+      "clock": 10,
+      "episode_id": "TEST_ONLY_BP4_EP_f589dec09107f0256550747590feccab3ee3c6ac6101113d08398a7735619974",
+      "grade": "TEST_ONLY_SOURCEFREE_C12_TECHNICAL_NOT_NATIVE",
+      "hash": "f589dec09107f0256550747590feccab3ee3c6ac6101113d08398a7735619974",
+      "kind": "SAY",
+      "native": false,
+      "schema": "BP4_C12_EPISODE@1"
+    },
+    {
+      "actor_id": "U",
+      "body": {
+        "action": "offer_help",
+        "action_seq": 4,
+        "admitted": null,
+        "attempted": true
+      },
+      "branch_id": "first_session",
+      "clock": 10,
+      "episode_id": "TEST_ONLY_BP4_EP_d7efb5cc519dc39431f97f3f332bef0aeb15ccae4874e632f3c01df9aa53c89b",
+      "grade": "TEST_ONLY_SOURCEFREE_C12_TECHNICAL_NOT_NATIVE",
+      "hash": "d7efb5cc519dc39431f97f3f332bef0aeb15ccae4874e632f3c01df9aa53c89b",
+      "kind": "DO",
+      "native": false,
+      "schema": "BP4_C12_EPISODE@1"
+    },
+    {
+      "actor_id": "A",
+      "body": {
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_4d5b61551d4ed90645fa43402dc4cf2977442dbe265b593e71ddcd4803f18755",
+        "gesture": "A keeps both hands on the piece.",
+        "text": "I can't take that on now. I have to finish.",
+        "tone": "firm"
+      },
+      "branch_id": "first_session",
+      "clock": 10,
+      "episode_id": "TEST_ONLY_BP4_EP_ebcb894aced40ccee40d3477b7c203fc18e8ac96ddabd3c2d11cef4d729d0668",
+      "grade": "TEST_ONLY_SOURCEFREE_C12_TECHNICAL_NOT_NATIVE",
+      "hash": "ebcb894aced40ccee40d3477b7c203fc18e8ac96ddabd3c2d11cef4d729d0668",
+      "kind": "SAY",
+      "native": false,
+      "schema": "BP4_C12_EPISODE@1"
+    },
+    {
+      "actor_id": "A",
+      "body": {
+        "action": "refuse_help",
+        "action_seq": 6,
+        "reason": "NO_CAPACITY",
+        "user_proposal": true
+      },
+      "branch_id": "first_session",
+      "clock": 10,
+      "episode_id": "TEST_ONLY_BP4_EP_ff2952523c26ad6b8c73e04f3fa1d51858460015c4517666e9e428db8b9475b5",
+      "grade": "TEST_ONLY_SOURCEFREE_C12_TECHNICAL_NOT_NATIVE",
+      "hash": "ff2952523c26ad6b8c73e04f3fa1d51858460015c4517666e9e428db8b9475b5",
+      "kind": "REFUSAL",
+      "native": false,
+      "schema": "BP4_C12_EPISODE@1"
+    },
+    {
+      "actor_id": "U",
+      "body": {
+        "action": "ask_contact",
+        "action_seq": 7,
+        "admitted": null,
+        "attempted": true
+      },
+      "branch_id": "first_session",
+      "clock": 10,
+      "episode_id": "TEST_ONLY_BP4_EP_a9dcd88723d261b05ce4bfa4efc159b0198140e542cb922be2388a9de8d5bc1e",
+      "grade": "TEST_ONLY_SOURCEFREE_C12_TECHNICAL_NOT_NATIVE",
+      "hash": "a9dcd88723d261b05ce4bfa4efc159b0198140e542cb922be2388a9de8d5bc1e",
+      "kind": "DO",
+      "native": false,
+      "schema": "BP4_C12_EPISODE@1"
+    },
+    {
+      "actor_id": "A",
+      "body": {
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_0efc55b5bd42078d76ab6d30c7b9c34f73f6c91bd321f67d58e2e500dc6d7664",
+        "gesture": "A keeps working.",
+        "text": "Not yet. I don't know you.",
+        "tone": "guarded"
+      },
+      "branch_id": "first_session",
+      "clock": 10,
+      "episode_id": "TEST_ONLY_BP4_EP_65c05f9b820a881e972caef1683d777054cf46938846dc1c828a92285d26ab82",
+      "grade": "TEST_ONLY_SOURCEFREE_C12_TECHNICAL_NOT_NATIVE",
+      "hash": "65c05f9b820a881e972caef1683d777054cf46938846dc1c828a92285d26ab82",
+      "kind": "SAY",
+      "native": false,
+      "schema": "BP4_C12_EPISODE@1"
+    },
+    {
+      "actor_id": "A",
+      "body": {
+        "action_seq": 9,
+        "channel": "",
+        "established": false,
+        "speech_event_id": "TEST_ONLY_BP4_WORLD_EVT_0efc55b5bd42078d76ab6d30c7b9c34f73f6c91bd321f67d58e2e500dc6d7664",
+        "user_proposal": true
+      },
+      "branch_id": "first_session",
+      "clock": 10,
+      "episode_id": "TEST_ONLY_BP4_EP_c4dcc52cd9a1c0d99b54e6853376016c2346af994b54924820a33631aca5670a",
+      "grade": "TEST_ONLY_SOURCEFREE_C12_TECHNICAL_NOT_NATIVE",
+      "hash": "c4dcc52cd9a1c0d99b54e6853376016c2346af994b54924820a33631aca5670a",
+      "kind": "CONTACT",
+      "native": false,
+      "schema": "BP4_C12_EPISODE@1"
+    },
+    {
+      "actor_id": "U",
+      "body": {
+        "action_seq": 10,
+        "channel": "",
+        "established": false
+      },
+      "branch_id": "first_session",
+      "clock": 10,
+      "episode_id": "TEST_ONLY_BP4_EP_f1c9f221bcb0c18f043985d95ce2a95ca5d5f48b98cb0cfa273920d94e632bf8",
+      "grade": "TEST_ONLY_SOURCEFREE_C12_TECHNICAL_NOT_NATIVE",
+      "hash": "f1c9f221bcb0c18f043985d95ce2a95ca5d5f48b98cb0cfa273920d94e632bf8",
+      "kind": "CONTACT",
+      "native": false,
+      "schema": "BP4_C12_EPISODE@1"
+    },
+    {
+      "actor_id": "B",
+      "body": {
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_9a54e18254708bd71116b961d590d7d5597b5eb42f06ff1ff941169d53cf1a16",
+        "source_owned": false
+      },
+      "branch_id": "first_session",
+      "clock": 40,
+      "episode_id": "TEST_ONLY_BP4_EP_abc9f947b4f416c2112a3d40e24f9dfc8f59efca809c18b3000093c83e8edeb1",
+      "grade": "TEST_ONLY_SOURCEFREE_C12_TECHNICAL_NOT_NATIVE",
+      "hash": "abc9f947b4f416c2112a3d40e24f9dfc8f59efca809c18b3000093c83e8edeb1",
+      "kind": "OFFSCREEN",
+      "native": false,
+      "schema": "BP4_C12_EPISODE@1"
+    },
+    {
+      "actor_id": "B",
+      "body": {
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_9ba315fc9e458c2abd4e9c2b97a90109269f8e33a9d4d3fe2d6a6ba20d7ebefc",
+        "source_owned": true
+      },
+      "branch_id": "first_session",
+      "clock": 40,
+      "episode_id": "TEST_ONLY_BP4_EP_05d6b4a3614f83304e93eb6116477ccb5944bce3e9b8b1e1e007a9a51842b91b",
+      "grade": "TEST_ONLY_SOURCEFREE_C12_TECHNICAL_NOT_NATIVE",
+      "hash": "05d6b4a3614f83304e93eb6116477ccb5944bce3e9b8b1e1e007a9a51842b91b",
+      "kind": "OFFSCREEN",
+      "native": false,
+      "schema": "BP4_C12_EPISODE@1"
+    },
+    {
+      "actor_id": "U",
+      "body": {
+        "action_seq": 13,
+        "admitted": true,
+        "attempted": true,
+        "changed": true,
+        "hours": 30
+      },
+      "branch_id": "first_session",
+      "clock": 40,
+      "episode_id": "TEST_ONLY_BP4_EP_e6e3ca7bd00946452da3bdaa2cddd502ffba9bae17e33ce18dd1e8b5e27f097e",
+      "grade": "TEST_ONLY_SOURCEFREE_C12_TECHNICAL_NOT_NATIVE",
+      "hash": "e6e3ca7bd00946452da3bdaa2cddd502ffba9bae17e33ce18dd1e8b5e27f097e",
+      "kind": "WAIT",
+      "native": false,
+      "schema": "BP4_C12_EPISODE@1"
+    },
+    {
+      "actor_id": "A",
+      "body": {
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_bf1baf745da50f383b386e83d4a8c486726356ad07d4aae7faccfae48df43890",
+        "gesture": "A takes the tool and steps toward the door.",
+        "text": "I have to go. The market closes.",
+        "tone": "brisk"
+      },
+      "branch_id": "first_session",
+      "clock": 40,
+      "episode_id": "TEST_ONLY_BP4_EP_7dfb79389fed0dd66287293ad1559ac88f1ba1f1199088b0cfe94bc2bb0ddbf5",
+      "grade": "TEST_ONLY_SOURCEFREE_C12_TECHNICAL_NOT_NATIVE",
+      "hash": "7dfb79389fed0dd66287293ad1559ac88f1ba1f1199088b0cfe94bc2bb0ddbf5",
+      "kind": "SAY",
+      "native": false,
+      "schema": "BP4_C12_EPISODE@1"
+    },
+    {
+      "actor_id": "U",
+      "body": {
+        "reason": "ACTOR_HAS_TO_LEAVE"
+      },
+      "branch_id": "first_session",
+      "clock": 40,
+      "episode_id": "TEST_ONLY_BP4_EP_652a7a5507518a682a56c6fa261bbb81f822ccde3efce9c8e13e3a7c1c38e6be",
+      "grade": "TEST_ONLY_SOURCEFREE_C12_TECHNICAL_NOT_NATIVE",
+      "hash": "652a7a5507518a682a56c6fa261bbb81f822ccde3efce9c8e13e3a7c1c38e6be",
+      "kind": "SCENE_END",
+      "native": false,
+      "schema": "BP4_C12_EPISODE@1"
+    },
+    {
+      "actor_id": "U",
+      "body": {
+        "action_seq": 16,
+        "hours": 30,
+        "outside_portal": true
+      },
+      "branch_id": "first_session",
+      "clock": 70,
+      "episode_id": "TEST_ONLY_BP4_EP_8d7adf205b0cc8bf29485bebfb6cc500d76e9ac7f4d4fb08c2aef4ebce24bddb",
+      "grade": "TEST_ONLY_SOURCEFREE_C12_TECHNICAL_NOT_NATIVE",
+      "hash": "8d7adf205b0cc8bf29485bebfb6cc500d76e9ac7f4d4fb08c2aef4ebce24bddb",
+      "kind": "OFFSCREEN",
+      "native": false,
+      "schema": "BP4_C12_EPISODE@1"
+    },
+    {
+      "actor_id": "U",
+      "body": {
+        "action_seq": 17,
+        "location": "workshop"
+      },
+      "branch_id": "first_session",
+      "clock": 70,
+      "episode_id": "TEST_ONLY_BP4_EP_3e19948e36edbe36d748faacd59af3d774757f6d5ce93ffd0b968385242bd849",
+      "grade": "TEST_ONLY_SOURCEFREE_C12_TECHNICAL_NOT_NATIVE",
+      "hash": "3e19948e36edbe36d748faacd59af3d774757f6d5ce93ffd0b968385242bd849",
+      "kind": "RETURN",
+      "native": false,
+      "schema": "BP4_C12_EPISODE@1"
+    },
+    {
+      "actor_id": "U",
+      "body": {
+        "admitted": true,
+        "attempted": true,
+        "changed": false,
+        "new_knowledge": []
+      },
+      "branch_id": "first_session",
+      "clock": 70,
+      "episode_id": "TEST_ONLY_BP4_EP_ffaa4c7e73c5ec07037df5cbc0b5596ea11aba05b1ba2355e3e5640535bbfd89",
+      "grade": "TEST_ONLY_SOURCEFREE_C12_TECHNICAL_NOT_NATIVE",
+      "hash": "ffaa4c7e73c5ec07037df5cbc0b5596ea11aba05b1ba2355e3e5640535bbfd89",
+      "kind": "ATTEND",
+      "native": false,
+      "schema": "BP4_C12_EPISODE@1"
+    },
+    {
+      "actor_id": "A",
+      "body": {
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_77e92572f9649896f4242965872752fc8b6f50d12eb68076e9cb2044f299cbac",
+        "gesture": "A looks up from the bench.",
+        "text": "You came back.",
+        "tone": "ordinary"
+      },
+      "branch_id": "first_session",
+      "clock": 70,
+      "episode_id": "TEST_ONLY_BP4_EP_68a2bbce77e56df5500864c35bad2f5af40eac63296a5d22b26beb6f319a53fe",
+      "grade": "TEST_ONLY_SOURCEFREE_C12_TECHNICAL_NOT_NATIVE",
+      "hash": "68a2bbce77e56df5500864c35bad2f5af40eac63296a5d22b26beb6f319a53fe",
+      "kind": "SAY",
+      "native": false,
+      "schema": "BP4_C12_EPISODE@1"
+    }
+  ],
+  "events": [
+    {
+      "actor_id": "B",
+      "body": {
+        "present_with": [
+          "A"
+        ],
+        "public_role": "finishing"
+      },
+      "clock": 10,
+      "event_id": "TEST_ONLY_BP4_WORLD_EVT_e8ef27fc37b15575b8b2da8e65b49f456d020d220175b29445994c4aee64d787",
+      "hash": "35c32f999f3bd1fc0155727790653999a831c274baca45dd9aa7ac1c05af6fe8",
+      "kind": "ARRIVAL",
+      "location": "workshop",
+      "summary": "The finishing worker is already at the workshop bench."
+    },
+    {
+      "actor_id": "U",
+      "body": {
+        "present_with": [
+          "A",
+          "B"
+        ],
+        "public_role": "visitor"
+      },
+      "clock": 10,
+      "event_id": "TEST_ONLY_BP4_WORLD_EVT_0c94bfa52ff8055ae9bac7eb25ee7f9a4b68d242c23fdbfef982f31b7b78e854",
+      "hash": "c2c4705d4f5179085e35d57edce16be148fdc85d76533d211d9391fd71622e2c",
+      "kind": "ARRIVAL",
+      "location": "workshop",
+      "summary": "You come up the stairs and stop at the open workshop door."
+    },
+    {
+      "actor_id": "U",
+      "body": {
+        "observable": true,
+        "text": "Hello. Do you need a hand?"
+      },
+      "clock": 10,
+      "event_id": "TEST_ONLY_BP4_WORLD_EVT_f15c2df6d9c7ab108a6b05f98e07807e228b447c8abdd2dbcdfec9cacc7afadc",
+      "hash": "516d0a49f3a515456df71ba17f12c218e3456d7c8e6f7ee6229620b74d8c21b9",
+      "kind": "SPEECH",
+      "location": "workshop",
+      "summary": "U says: Hello. Do you need a hand?"
+    },
+    {
+      "actor_id": "A",
+      "body": {
+        "gesture": "A keeps both hands on the piece.",
+        "public_role": "repair",
+        "text": "I can't take that on now. I have to finish.",
+        "tone": "firm"
+      },
+      "clock": 10,
+      "event_id": "TEST_ONLY_BP4_WORLD_EVT_7e8644b126c3561fed28faff948b5f4840a5e3ca15f5b3d26a31a4870af72291",
+      "hash": "10c482a276bdfdb1e1692106f9c4207a83413c97c60c64ee24e3b60f89603922",
+      "kind": "SPEECH",
+      "location": "workshop",
+      "summary": "A says: I can't take that on now. I have to finish."
+    },
+    {
+      "actor_id": "A",
+      "body": {
+        "gesture": "A keeps both hands on the piece.",
+        "public_role": "repair",
+        "text": "I can't take that on now. I have to finish.",
+        "tone": "firm"
+      },
+      "clock": 10,
+      "event_id": "TEST_ONLY_BP4_WORLD_EVT_4d5b61551d4ed90645fa43402dc4cf2977442dbe265b593e71ddcd4803f18755",
+      "hash": "f569cc381e1387cc390f96e03671465443d4471933345471da9db59ae5df5a88",
+      "kind": "SPEECH",
+      "location": "workshop",
+      "summary": "A says: I can't take that on now. I have to finish."
+    },
+    {
+      "actor_id": "A",
+      "body": {
+        "gesture": "A keeps working.",
+        "public_role": "repair",
+        "text": "Not yet. I don't know you.",
+        "tone": "guarded"
+      },
+      "clock": 10,
+      "event_id": "TEST_ONLY_BP4_WORLD_EVT_0efc55b5bd42078d76ab6d30c7b9c34f73f6c91bd321f67d58e2e500dc6d7664",
+      "hash": "337275134e5dd8c57a23fcd6308983a3bb52b04fe585cdb24a303353b46ce9e2",
+      "kind": "SPEECH",
+      "location": "workshop",
+      "summary": "A says: Not yet. I don't know you."
+    },
+    {
+      "actor_id": "B",
+      "body": {
+        "to": "market"
+      },
+      "clock": 40,
+      "event_id": "TEST_ONLY_BP4_WORLD_EVT_9a54e18254708bd71116b961d590d7d5597b5eb42f06ff1ff941169d53cf1a16",
+      "hash": "d37ab2367b2f28b500db7d2d128de40cf61d714b3104773b5dd301d2ccba83e0",
+      "kind": "MOVE",
+      "location": "market",
+      "summary": "The finishing worker takes the completed pieces to the market."
+    },
+    {
+      "actor_id": "B",
+      "body": {
+        "cash_delta": 2,
+        "completed_delta": 1,
+        "material_delta": -1,
+        "source_owned": true,
+        "tool_used": true
+      },
+      "clock": 40,
+      "event_id": "TEST_ONLY_BP4_WORLD_EVT_9ba315fc9e458c2abd4e9c2b97a90109269f8e33a9d4d3fe2d6a6ba20d7ebefc",
+      "hash": "70324346423cc876774f59916fc02c4a3a4c287d99ab5e4637b47b8590522637",
+      "kind": "OFFSCREEN_REPAIR",
+      "location": "market",
+      "summary": "A market stall is refurbished while the user is away."
+    },
+    {
+      "actor_id": "A",
+      "body": {
+        "gesture": "A takes the tool and steps toward the door.",
+        "public_role": "repair",
+        "text": "I have to go. The market closes.",
+        "tone": "brisk"
+      },
+      "clock": 40,
+      "event_id": "TEST_ONLY_BP4_WORLD_EVT_bf1baf745da50f383b386e83d4a8c486726356ad07d4aae7faccfae48df43890",
+      "hash": "35320a6a24ac0a78003ebf5864f0921f35d37553b2a1c4dff6695967c4ca3028",
+      "kind": "SPEECH",
+      "location": "workshop",
+      "summary": "A says: I have to go. The market closes."
+    },
+    {
+      "actor_id": "A",
+      "body": {
+        "gesture": "A looks up from the bench.",
+        "public_role": "repair",
+        "text": "You came back.",
+        "tone": "ordinary"
+      },
+      "clock": 70,
+      "event_id": "TEST_ONLY_BP4_WORLD_EVT_77e92572f9649896f4242965872752fc8b6f50d12eb68076e9cb2044f299cbac",
+      "hash": "4c31597db38de03ca08bf119ccde7d32155afa3f834b933b60765fb965b893ea",
+      "kind": "SPEECH",
+      "location": "workshop",
+      "summary": "A says: You came back."
+    }
+  ],
+  "r29p_source_ref": "001b506fa26ae879ff5b6e57138fc2696e12b538",
+  "scenario": "pressed",
+  "schema": "R30A_SESSION_RECEIPT@1",
+  "verify": {
+    "branch_id": "first_session",
+    "counts": {
+      "checkpoint": 14,
+      "episode": 19,
+      "perception": 24,
+      "world_event": 10
+    },
+    "errors": [],
+    "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+    "ok": true,
+    "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+  }
+}

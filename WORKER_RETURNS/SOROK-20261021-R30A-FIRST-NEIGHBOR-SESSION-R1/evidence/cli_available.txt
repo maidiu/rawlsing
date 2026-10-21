@@ -1,0 +1,377 @@
+### R30A available CLI cold-process transcript
+R30A // FIRST NEIGHBOR
+
+A life is already in motion here. You did not choose it; you are only visiting.
+You may SAY, DO, ATTEND, WAIT, or LEAVE. What you attempt is a proposal; the
+world decides what actually happens. The person at the bench is not a quest and
+not yours to command.
+
+ENTER
+
+Clock 10. Your position: workshop.
+The repair worker is at the bench. The finisher is folding pieces near the door.
+The scene has already started.
+
+{
+  "attention": "focused",
+  "branch_id": "first_session",
+  "clock": 10,
+  "contact": false,
+  "grade": "TEST_ONLY_SOURCEFREE_R30A_FIRST_NEIGHBOR_PRODUCT_NOT_NATIVE",
+  "location": "workshop",
+  "messages": 0,
+  "native": false,
+  "present": [
+    {
+      "actor": "A",
+      "public_role": "repair"
+    },
+    {
+      "actor": "B",
+      "public_role": "finishing"
+    }
+  ],
+  "scenario": "available",
+  "scene_open": true,
+  "schema": "R30A_FIRST_NEIGHBOR_SESSION@1"
+}
+### say
+You say: "Hello. I just moved in."
+the repair worker says: "Which side of the landing?" A glances toward the doorway.
+{
+  "meta": {
+    "actor_events": [
+      {
+        "actor_id": "A",
+        "clock": 10,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_cf924b5182c7d0cd2313d772183e6e7e631414c89ff23dfe78459c332b7d937b",
+        "hash": "f1d86dbb4d8d16159a61bb21e8912cc8b109ab7fe3df627b1f3fde253588e7f0",
+        "kind": "SPEECH"
+      }
+    ],
+    "status": "OK",
+    "user_event": {
+      "actor_id": "U",
+      "clock": 10,
+      "event_id": "TEST_ONLY_BP4_WORLD_EVT_9d4f15b399c96cb1afe30a4153bce49ac0d3cbb32d47e26cb86a5bd999366c72",
+      "hash": "166d04800f55ad981cb72f794faa376fbdf6f08cd1d1a2ed8932cafbff77cdbb",
+      "kind": "SPEECH"
+    }
+  }
+}
+### do help
+A material repair is performed in the workshop.
+the repair worker says: "Hold the near edge. I'll check the seam." A sets the tool beside your hand.
+{
+  "meta": {
+    "accepted": true,
+    "actor_events": [
+      {
+        "actor_id": "A",
+        "clock": 10,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_76ea57d3533747e90b0ec4a469b9ea66661126ff69ea3aa204e9e581a63dfadd",
+        "hash": "f97ba815532f11332350029558d5d03e7b03896e602281fcb298564b0bd1d855",
+        "kind": "REPAIR"
+      },
+      {
+        "actor_id": "A",
+        "clock": 10,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_0a967ced075d149e7341437872d2246fc9642ef39a8846b848a98ac2fc4421a8",
+        "hash": "3e801ac75bceda5dbe880b1314be7c3b1cd8b3813ebb399455b4d58e230ff3c2",
+        "kind": "SPEECH"
+      }
+    ],
+    "status": "OK"
+  }
+}
+### attend
+{
+  "meta": {
+    "new_knowledge": [],
+    "status": "NO_CHANGE"
+  }
+}
+### ask-contact
+the repair worker says: "All right. The landing line is enough." A wipes their hands and gives the number.
+{
+  "meta": {
+    "contact": true,
+    "status": "OK"
+  }
+}
+### wait
+the repair worker says: "I need to get this to the market before the light goes." A begins packing the bench.
+{
+  "meta": {
+    "clock": 40,
+    "scene_open": false,
+    "status": "OK"
+  }
+}
+### offscreen
+{
+  "clock": 70,
+  "message": "The seam held. I'm at the market until six.",
+  "offscreen_events": [],
+  "status": "OK"
+}
+### messages
+{
+  "contact": true,
+  "messages": [
+    {
+      "clock": 70,
+      "episode_id": "TEST_ONLY_BP4_EP_bb781706bcda27332f632ec2aaf0bb5b12232eefa0ed825665b312c392f7bf8e",
+      "sender": "neighbor",
+      "seq": 70,
+      "text": "The seam held. I'm at the market until six."
+    }
+  ],
+  "status": "OK"
+}
+### return
+the repair worker says: "The seam held. You came back." A lifts the finished piece an inch off the bench.
+{
+  "meta": {
+    "scene_open": true,
+    "status": "OK"
+  }
+}
+### verify
+{
+  "custody": {
+    "branch_id": "first_session",
+    "c12_counts": {
+      "checkpoint": 16,
+      "episode": 21,
+      "perception": 27,
+      "world_event": 11
+    },
+    "c12_path": "/tmp/r30a-cli-available/product/c12.sqlite",
+    "c12_verify": {
+      "branch_id": "first_session",
+      "counts": {
+        "checkpoint": 16,
+        "episode": 21,
+        "perception": 27,
+        "world_event": 11
+      },
+      "errors": [],
+      "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+      "ok": true,
+      "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+    },
+    "episodes": 21,
+    "events": 11,
+    "grade": "TEST_ONLY_SOURCEFREE_R30A_FIRST_NEIGHBOR_PRODUCT_NOT_NATIVE",
+    "r29p_source_ref": "001b506fa26ae879ff5b6e57138fc2696e12b538",
+    "schema": "R30A_CUSTODY@1",
+    "source": {
+      "artifacts": {
+        "anchor_log": "/tmp/r30a-cli-available/bp2/anchor/rows.json",
+        "anchor_watermark": "/tmp/r30a-cli-available/bp2/anchor/watermark.json",
+        "as_of": 247,
+        "c8_canonical_bytes_sha256": "e9b85e970580330167e96d2582281a365b36c4dc008da9ca05436b347fcfde4b",
+        "c8_commit_receipt_id": "18b46f20e1994a355d5992adf391c41c6915c1f11043e69276299f1073b5f68b",
+        "c8_content_hash": "4932ecca925c41a1a74a3c6162bca2a98deb9b5f4b25f6741745c2b929a2599f",
+        "c8_identity_digest": "e64c50a6a27269e63cbb2d5da6e74514b11fd8a91d858873f5ca5df0155f4c8e",
+        "c8_ledger_prefix_digest": "ecec20eab7ca6d8302e2ca96f4be3521f9c2b8915b6d3544f9f8c4176605a700",
+        "c8_state_digest": "cd5a12fc5e1965cbba2a2ef65a6a7af62452226f0c276a061c1616366570ac38",
+        "c8_writer_version": 1,
+        "c9_authorization_hash": "a3be40fe9e27c340869959c2c3e9d5ad47ce263a2caa18322a6d89e760bf2673",
+        "c9_commit_receipt_hash": "bf92da36d54c9ff079f25a74b6608d09f5cf8a71a45196ec9256b4095202be33",
+        "c9_path": "/tmp/r30a-cli-available/bp2/c9.sqlite",
+        "consumed_state_hash": "13b0331e3283f0ec2276b80ff68e1e0e2c5cb52960c8624fbc90c5e6712f3253",
+        "e1_event_hash": "a8ac0294eddcfb156dbfcc2df4d0fcc9dfa8d30818a7157243b6f7f9bd318df0",
+        "e1_event_id": "TEST_ONLY_BP2_E1_OCC-0001",
+        "e2_receipt_hash": "c5301eab1c3a37889489925cb02c7cb4cea2c581b9c52539a87b4f7b2b3fc8e2",
+        "emission_order": [
+          "BP2_C8_COMMIT",
+          "BP2_C9_TARGET_COMMIT",
+          "BP2_E2_ADMISSION"
+        ],
+        "event_time": 242,
+        "grant_hash": "c8c2d502a46bfacc99647edd2a59c0324bc1bb7097c336e1438432702ad4e335",
+        "journal_path": "/tmp/r30a-cli-available/bp2/journal/journal.json",
+        "key_id": "BP2-TEST-KEY",
+        "key_path": "/tmp/r30a-cli-available/bp2/keys/writer_keys.json",
+        "later_as_of": 257,
+        "mode": "RECOVERED",
+        "native_grant": "NOT_GRANTED",
+        "occurrence_id": "OCC-0001",
+        "practice_label": "coordinated_material_inspection",
+        "response_hash": "b4647b13ce2260c9decb2fea60610787f0a88edfb8047d41466ad0551adc7785",
+        "root": "/tmp/r30a-cli-available/bp2",
+        "rule_a_content_hash": "9e4872abaeedc346fa3ea06575bb6fb5daa324a47d1d00d6015f7b660ea9cf5d",
+        "rule_t_content_hash": "ab8afe1ae0229b2d6143c84f58cc4f2f1b0942d9f680cd14477602143991ec97",
+        "rule_t_dependency_hash": "9e4872abaeedc346fa3ea06575bb6fb5daa324a47d1d00d6015f7b660ea9cf5d",
+        "schema": "BP2P4J_BP2_ARTIFACT_BINDING@1",
+        "target_id": "c9f72da713beaadde9a9b238b5bfad425f8cadab67161b7fb8d053d07f318485",
+        "target_record_hash": "6f07593b61f8541175f26cd1cdfb443e5ea14b7c8f04bc09f29d7abfae4a3561"
+      },
+      "c12": {
+        "branch_id": "first_session",
+        "last_clock": 70
+      },
+      "clock": {
+        "basis": "The BP4 world root is created in the same process only after the BP2 C8 keyed commit, the C9 target commit and the independent E2 admission have been physically verified. The two logical clock domains are never compared numerically; no BP2 time is treated as a BP4 world time or vice versa.",
+        "bp2_domain": "BP2_TEST_ONLY_LOGICAL_CLOCK",
+        "bp2_e2_action_time": 257,
+        "bp2_event_time": 242,
+        "bp2_target_commit_time": 242,
+        "bp4_domain": "BP4_TEST_ONLY_WORLD_CLOCK",
+        "bp4_world_origin_clock": 10,
+        "hold_code": "",
+        "numeric_ordering_used": false,
+        "process_order": [
+          "BP2_C8_COMMIT",
+          "BP2_C9_TARGET_COMMIT",
+          "BP2_E2_ADMISSION",
+          "BP4_SEED_BIND",
+          "BP4_WORLD_ROOT_CREATE"
+        ],
+        "relation": "DECLARED_PROCESS_ORDER_NOT_NUMERIC_COMPARISON"
+      },
+      "custody": {
+        "adp019_admission_receipt": "ADP019_ADMISSION_RECEIPT_ABSENT",
+        "c8_commit_receipt_id": "18b46f20e1994a355d5992adf391c41c6915c1f11043e69276299f1073b5f68b",
+        "c8_occurrence_id": "OCC-0001",
+        "c8_state_digest": "cd5a12fc5e1965cbba2a2ef65a6a7af62452226f0c276a061c1616366570ac38",
+        "c8_writer_version": 1,
+        "c9_authorization_hash": "a3be40fe9e27c340869959c2c3e9d5ad47ce263a2caa18322a6d89e760bf2673",
+        "c9_commit_receipt_hash": "bf92da36d54c9ff079f25a74b6608d09f5cf8a71a45196ec9256b4095202be33",
+        "clock": {
+          "basis": "The BP4 world root is created in the same process only after the BP2 C8 keyed commit, the C9 target commit and the independent E2 admission have been physically verified. The two logical clock domains are never compared numerically; no BP2 time is treated as a BP4 world time or vice versa.",
+          "bp2_domain": "BP2_TEST_ONLY_LOGICAL_CLOCK",
+          "bp2_e2_action_time": 257,
+          "bp2_event_time": 242,
+          "bp2_target_commit_time": 242,
+          "bp4_domain": "BP4_TEST_ONLY_WORLD_CLOCK",
+          "bp4_world_origin_clock": 10,
+          "hold_code": "",
+          "numeric_ordering_used": false,
+          "process_order": [
+            "BP2_C8_COMMIT",
+            "BP2_C9_TARGET_COMMIT",
+            "BP2_E2_ADMISSION",
+            "BP4_SEED_BIND",
+            "BP4_WORLD_ROOT_CREATE"
+          ],
+          "relation": "DECLARED_PROCESS_ORDER_NOT_NUMERIC_COMPARISON"
+        },
+        "commit_receipt_present": true,
+        "consumed_state_hash": "13b0331e3283f0ec2276b80ff68e1e0e2c5cb52960c8624fbc90c5e6712f3253",
+        "e1_event_hash": "a8ac0294eddcfb156dbfcc2df4d0fcc9dfa8d30818a7157243b6f7f9bd318df0",
+        "e1_event_id": "TEST_ONLY_BP2_E1_OCC-0001",
+        "e2_admitted": true,
+        "e2_receipt_hash": "c5301eab1c3a37889489925cb02c7cb4cea2c581b9c52539a87b4f7b2b3fc8e2",
+        "envelope_validation": {
+          "bp4_contract_status": "AWAITING_ACTUAL_BP2_PRODUCER__COMPAT_CONTRACT_NOT_EMITTED",
+          "e2_receipt_bound": true,
+          "fields_checked": 17,
+          "mode": "RECOVERED",
+          "ok": true,
+          "recomputed_from_artifacts": true,
+          "schema": "BP2_JOINED_EVENT_HISTORY_TARGET_E2_ENVELOPE@1",
+          "target_digest_equal_consumed": true
+        },
+        "grade": "TEST_ONLY_SOURCEFREE_BP2P4J_SEED_NOT_NATIVE",
+        "grant_hash": "c8c2d502a46bfacc99647edd2a59c0324bc1bb7097c336e1438432702ad4e335",
+        "mode": "RECOVERED",
+        "native": false,
+        "native_grants": {
+          "actor": false,
+          "adp019": false,
+          "c11": false,
+          "c12": false,
+          "c8_trust": false,
+          "e2": false,
+          "rule": false,
+          "world": false
+        },
+        "practice": {
+          "e2_receipt_hash": "c5301eab1c3a37889489925cb02c7cb4cea2c581b9c52539a87b4f7b2b3fc8e2",
+          "effective_from": 242,
+          "established": true,
+          "grade": "TEST_ONLY_SOURCEFREE_TECHNICAL",
+          "native": false,
+          "performed_act": "inspect_with_tool",
+          "practice_label": "coordinated_material_inspection",
+          "source_target_ref": "6f07593b61f8541175f26cd1cdfb443e5ea14b7c8f04bc09f29d7abfae4a3561"
+        },
+        "response_hash": "b4647b13ce2260c9decb2fea60610787f0a88edfb8047d41466ad0551adc7785",
+        "response_row_present": true,
+        "rule_a_content_hash": "9e4872abaeedc346fa3ea06575bb6fb5daa324a47d1d00d6015f7b660ea9cf5d",
+        "rule_t_content_hash": "ab8afe1ae0229b2d6143c84f58cc4f2f1b0942d9f680cd14477602143991ec97",
+        "rule_t_dependency_hash": "9e4872abaeedc346fa3ea06575bb6fb5daa324a47d1d00d6015f7b660ea9cf5d",
+        "schema": "BP2P4J_JOINED_SEED@1",
+        "target_id": "c9f72da713beaadde9a9b238b5bfad425f8cadab67161b7fb8d053d07f318485",
+        "target_journal_present": true,
+        "target_record_hash": "6f07593b61f8541175f26cd1cdfb443e5ea14b7c8f04bc09f29d7abfae4a3561"
+      },
+      "envelope": {
+        "hash": "fda854c641b29beedae0da9a4840008fe1bb4349b3e9d1f144741bcbdf60fb7a",
+        "producer": {
+          "mode": "RECOVERED",
+          "module": "bp2_joined.producer.JoinedProducer",
+          "name": "BP2_JOINED_PRODUCER",
+          "named_assertion": "bp2_joined.producer.joined_consumer_assertion",
+          "return_commit": "5065e2e6934e9d5bca800cbf88c79e461bcf2393"
+        },
+        "schema": "BP2_JOINED_EVENT_HISTORY_TARGET_E2_ENVELOPE@1",
+        "validation": {
+          "bp4_contract_status": "AWAITING_ACTUAL_BP2_PRODUCER__COMPAT_CONTRACT_NOT_EMITTED",
+          "e2_receipt_bound": true,
+          "fields_checked": 17,
+          "mode": "RECOVERED",
+          "ok": true,
+          "recomputed_from_artifacts": true,
+          "schema": "BP2_JOINED_EVENT_HISTORY_TARGET_E2_ENVELOPE@1",
+          "target_digest_equal_consumed": true
+        }
+      },
+      "grade": "TEST_ONLY_SOURCEFREE_JOINED_PRODUCT_ALPHA_NOT_NATIVE",
+      "native": false,
+      "native_grants": {
+        "actor": false,
+        "adp019": false,
+        "c11": false,
+        "c12": false,
+        "c8_trust": false,
+        "e2": false,
+        "rule": false,
+        "world": false
+      },
+      "practice": {
+        "e2_receipt_hash": "c5301eab1c3a37889489925cb02c7cb4cea2c581b9c52539a87b4f7b2b3fc8e2",
+        "effective_from": 242,
+        "established": true,
+        "grade": "TEST_ONLY_SOURCEFREE_TECHNICAL",
+        "native": false,
+        "performed_act": "inspect_with_tool",
+        "practice_label": "coordinated_material_inspection",
+        "source_target_ref": "6f07593b61f8541175f26cd1cdfb443e5ea14b7c8f04bc09f29d7abfae4a3561"
+      },
+      "schema": "BP2P4J_JOINED_SOURCE@1",
+      "world": {
+        "clock": 70,
+        "hash": "89cc308a15d6d1b0c25b5952fe39ba7bbd6aa9158b48d12b5367684a87579738",
+        "tool_available": true
+      }
+    },
+    "world_clock": 70
+  },
+  "verify": {
+    "branch_id": "first_session",
+    "counts": {
+      "checkpoint": 16,
+      "episode": 21,
+      "perception": 27,
+      "world_event": 11
+    },
+    "errors": [],
+    "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+    "ok": true,
+    "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+  }
+}

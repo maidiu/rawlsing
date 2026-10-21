@@ -1,0 +1,54 @@
+{
+  "rows": [
+    {
+      "dimension": "source",
+      "gap_owner": "Pyat HQ + ADP019 + source custodian",
+      "native": "Pyat/C0 source-qualified world and ADP019 event source",
+      "status": "HOLD",
+      "test_only": "BP1 TEST_ONLY fixture actor sources; G18 sourcefree material receipt"
+    },
+    {
+      "dimension": "actor",
+      "gap_owner": "ADP007/ADP015",
+      "native": "ADP007 actor genesis + ADP015 independent other",
+      "status": "HOLD",
+      "test_only": "two TEST_ONLY_BP1_ACTOR_A/B histories with distinct material budgets"
+    },
+    {
+      "dimension": "performer",
+      "gap_owner": "native action owner",
+      "native": "native performed-action actuator and occurrence owner",
+      "status": "HOLD",
+      "test_only": "TEST_ONLY_ACTUATOR_BP2_INDEPENDENT + TEST_ONLY_OCCURRENCE_BP2_E2"
+    },
+    {
+      "dimension": "writer",
+      "gap_owner": "C8 D1/D2 owners",
+      "native": "C8 D1 exclusive writer cutover + D2 production KMS/anchor",
+      "status": "HOLD",
+      "test_only": "BP3 keyed exclusive writer with TEST_ONLY key file + keyed anchor"
+    },
+    {
+      "dimension": "event",
+      "gap_owner": "ADP019 owner",
+      "native": "ADP019 admitted occurrence (D3)",
+      "status": "HOLD",
+      "test_only": "C8 occurrence at SOURCEFREE_LEGACY_FIXTURE_NO_OWNER_AUTHORITY"
+    },
+    {
+      "dimension": "rule",
+      "gap_owner": "CAN008/CAN011 owners",
+      "native": "concrete CAN008/CAN011 issued rules + grant",
+      "status": "HOLD",
+      "test_only": "TEST_ONLY_BP2 CAN008 RULE_A and CAN011 RULE_T"
+    },
+    {
+      "dimension": "person",
+      "gap_owner": "C11/C12",
+      "native": "C12 pipeline-generated person",
+      "status": "HOLD",
+      "test_only": "one finite sourcefree practice target"
+    }
+  ],
+  "schema": "BP2_SOURCE_ACTOR_PERFORMER_GAP_TABLE@1"
+}

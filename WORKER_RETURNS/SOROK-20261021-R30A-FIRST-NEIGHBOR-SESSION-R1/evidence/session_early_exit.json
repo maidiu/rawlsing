@@ -1,0 +1,276 @@
+{
+  "actions": [
+    {
+      "action": "SAY",
+      "result": {
+        "status": "OK",
+        "surface": [
+          "You say: \"Hello.\"",
+          "the repair worker says: \"You're new on this landing.\" A looks up briefly."
+        ]
+      }
+    },
+    {
+      "action": "DO_HELP",
+      "result": {
+        "accepted": true,
+        "status": "OK",
+        "surface": [
+          "A material repair is performed in the workshop.",
+          "the repair worker says: \"Hold the near edge. I'll check the seam.\" A sets the tool beside your hand."
+        ]
+      }
+    },
+    {
+      "action": "ASK_CONTACT",
+      "result": {
+        "contact": true,
+        "status": "OK",
+        "surface": [
+          "the repair worker says: \"All right. The landing line is enough.\" A wipes their hands and gives the number."
+        ]
+      }
+    },
+    {
+      "action": "LEAVE",
+      "result": {
+        "scene_open": false,
+        "status": "OK",
+        "surface": [
+          "You step back through the portal. The workshop continues without you."
+        ]
+      }
+    },
+    {
+      "action": "OFFSCREEN",
+      "result": {
+        "clock": 40,
+        "message": "The seam held. I'm at the market until six.",
+        "offscreen_events": [
+          "TEST_ONLY_BP4_WORLD_EVT_9a54e18254708bd71116b961d590d7d5597b5eb42f06ff1ff941169d53cf1a16",
+          "TEST_ONLY_BP4_WORLD_EVT_9ba315fc9e458c2abd4e9c2b97a90109269f8e33a9d4d3fe2d6a6ba20d7ebefc"
+        ],
+        "status": "OK"
+      }
+    },
+    {
+      "action": "MESSAGES",
+      "result": {
+        "contact": true,
+        "messages": [
+          {
+            "clock": 40,
+            "episode_id": "TEST_ONLY_BP4_EP_226262709510270cd667adc571698e1e15d3d894e15fce3961dde12c5eea2678",
+            "sender": "neighbor",
+            "seq": 40,
+            "text": "The seam held. I'm at the market until six."
+          }
+        ],
+        "status": "OK"
+      }
+    },
+    {
+      "action": "RETURN",
+      "result": {
+        "scene_open": true,
+        "status": "OK",
+        "surface": [
+          "the repair worker says: \"The seam held. You came back.\" A lifts the finished piece an inch off the bench."
+        ]
+      }
+    }
+  ],
+  "b_public_after_return": {
+    "completed_units": 5,
+    "position": "market",
+    "public_work_events": [
+      "TEST_ONLY_BP4_WORLD_EVT_9ba315fc9e458c2abd4e9c2b97a90109269f8e33a9d4d3fe2d6a6ba20d7ebefc"
+    ],
+    "role": "finishing"
+  },
+  "events": [
+    {
+      "actor_id": "B",
+      "body": {
+        "present_with": [
+          "A"
+        ],
+        "public_role": "finishing"
+      },
+      "clock": 10,
+      "event_id": "TEST_ONLY_BP4_WORLD_EVT_e8ef27fc37b15575b8b2da8e65b49f456d020d220175b29445994c4aee64d787",
+      "hash": "35c32f999f3bd1fc0155727790653999a831c274baca45dd9aa7ac1c05af6fe8",
+      "kind": "ARRIVAL",
+      "location": "workshop",
+      "summary": "The finishing worker is already at the workshop bench."
+    },
+    {
+      "actor_id": "U",
+      "body": {
+        "present_with": [
+          "A",
+          "B"
+        ],
+        "public_role": "visitor"
+      },
+      "clock": 10,
+      "event_id": "TEST_ONLY_BP4_WORLD_EVT_0c94bfa52ff8055ae9bac7eb25ee7f9a4b68d242c23fdbfef982f31b7b78e854",
+      "hash": "c2c4705d4f5179085e35d57edce16be148fdc85d76533d211d9391fd71622e2c",
+      "kind": "ARRIVAL",
+      "location": "workshop",
+      "summary": "You come up the stairs and stop at the open workshop door."
+    },
+    {
+      "actor_id": "U",
+      "body": {
+        "observable": true,
+        "text": "Hello."
+      },
+      "clock": 10,
+      "event_id": "TEST_ONLY_BP4_WORLD_EVT_5e107e25f2cb7f2c35a2f4b7939a3d2006fc1af4dfca7e8303564c13c249c645",
+      "hash": "5b0ab079882ea122d1c1b33bf25ce82fd7685851507a965de30bca3ab469900e",
+      "kind": "SPEECH",
+      "location": "workshop",
+      "summary": "U says: Hello."
+    },
+    {
+      "actor_id": "A",
+      "body": {
+        "gesture": "A looks up briefly.",
+        "public_role": "repair",
+        "text": "You're new on this landing.",
+        "tone": "neutral"
+      },
+      "clock": 10,
+      "event_id": "TEST_ONLY_BP4_WORLD_EVT_5cca6861bb390828e7b22ac2d994e28720d2665f65cd658422ac4bf7b1c8dc4b",
+      "hash": "48011b1faece4e9eede5637960eb2b478c9656642bba5d8c5e14b590d07a2c84",
+      "kind": "SPEECH",
+      "location": "workshop",
+      "summary": "A says: You're new on this landing."
+    },
+    {
+      "actor_id": "A",
+      "body": {
+        "cash_delta": 2,
+        "completed_delta": 1,
+        "hours_delta": -1,
+        "material_delta": -1,
+        "source_owned": true
+      },
+      "clock": 10,
+      "event_id": "TEST_ONLY_BP4_WORLD_EVT_76ea57d3533747e90b0ec4a469b9ea66661126ff69ea3aa204e9e581a63dfadd",
+      "hash": "f97ba815532f11332350029558d5d03e7b03896e602281fcb298564b0bd1d855",
+      "kind": "REPAIR",
+      "location": "workshop",
+      "summary": "A material repair is performed in the workshop."
+    },
+    {
+      "actor_id": "A",
+      "body": {
+        "gesture": "A sets the tool beside your hand.",
+        "public_role": "repair",
+        "text": "Hold the near edge. I'll check the seam.",
+        "tone": "practical"
+      },
+      "clock": 10,
+      "event_id": "TEST_ONLY_BP4_WORLD_EVT_0a967ced075d149e7341437872d2246fc9642ef39a8846b848a98ac2fc4421a8",
+      "hash": "3e801ac75bceda5dbe880b1314be7c3b1cd8b3813ebb399455b4d58e230ff3c2",
+      "kind": "SPEECH",
+      "location": "workshop",
+      "summary": "A says: Hold the near edge. I'll check the seam."
+    },
+    {
+      "actor_id": "A",
+      "body": {
+        "gesture": "A wipes their hands and gives the number.",
+        "public_role": "repair",
+        "text": "All right. The landing line is enough.",
+        "tone": "ordinary"
+      },
+      "clock": 10,
+      "event_id": "TEST_ONLY_BP4_WORLD_EVT_d3970c000429160632cd08e01b1c49624d3857e8fb020af7ea46ac7a6dfa54dc",
+      "hash": "03e2881a4dd6bec040de72224904457c953f5560da5eb5bbba9ae858e849c84e",
+      "kind": "SPEECH",
+      "location": "workshop",
+      "summary": "A says: All right. The landing line is enough."
+    },
+    {
+      "actor_id": "B",
+      "body": {
+        "to": "market"
+      },
+      "clock": 40,
+      "event_id": "TEST_ONLY_BP4_WORLD_EVT_9a54e18254708bd71116b961d590d7d5597b5eb42f06ff1ff941169d53cf1a16",
+      "hash": "d37ab2367b2f28b500db7d2d128de40cf61d714b3104773b5dd301d2ccba83e0",
+      "kind": "MOVE",
+      "location": "market",
+      "summary": "The finishing worker takes the completed pieces to the market."
+    },
+    {
+      "actor_id": "B",
+      "body": {
+        "cash_delta": 2,
+        "completed_delta": 1,
+        "material_delta": -1,
+        "source_owned": true,
+        "tool_used": true
+      },
+      "clock": 40,
+      "event_id": "TEST_ONLY_BP4_WORLD_EVT_9ba315fc9e458c2abd4e9c2b97a90109269f8e33a9d4d3fe2d6a6ba20d7ebefc",
+      "hash": "70324346423cc876774f59916fc02c4a3a4c287d99ab5e4637b47b8590522637",
+      "kind": "OFFSCREEN_REPAIR",
+      "location": "market",
+      "summary": "A market stall is refurbished while the user is away."
+    },
+    {
+      "actor_id": "A",
+      "body": {
+        "gesture": "A lifts the finished piece an inch off the bench.",
+        "public_role": "repair",
+        "text": "The seam held. You came back.",
+        "tone": "ordinary"
+      },
+      "clock": 40,
+      "event_id": "TEST_ONLY_BP4_WORLD_EVT_e1b9bd6906a1f92a730cb8f682676e0546a1188d7cc6651c13226c0b1a87c02a",
+      "hash": "5dc700fbba1c850a132096840e5ba268852ccf224f7b3aa3731f3dc49b5a918c",
+      "kind": "SPEECH",
+      "location": "workshop",
+      "summary": "A says: The seam held. You came back."
+    }
+  ],
+  "r29p_source_ref": "001b506fa26ae879ff5b6e57138fc2696e12b538",
+  "scenario": "available_early_exit",
+  "schema": "R30A_SESSION_RECEIPT@1",
+  "status_after_return": {
+    "attention": "focused",
+    "branch_id": "first_session",
+    "clock": 40,
+    "contact": true,
+    "grade": "TEST_ONLY_SOURCEFREE_R30A_FIRST_NEIGHBOR_PRODUCT_NOT_NATIVE",
+    "location": "workshop",
+    "messages": 1,
+    "native": false,
+    "present": [
+      {
+        "actor": "A",
+        "public_role": "repair"
+      }
+    ],
+    "scenario": "available",
+    "scene_open": true,
+    "schema": "R30A_FIRST_NEIGHBOR_SESSION@1"
+  },
+  "verify": {
+    "branch_id": "first_session",
+    "counts": {
+      "checkpoint": 14,
+      "episode": 18,
+      "perception": 25,
+      "world_event": 10
+    },
+    "errors": [],
+    "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+    "ok": true,
+    "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+  }
+}
