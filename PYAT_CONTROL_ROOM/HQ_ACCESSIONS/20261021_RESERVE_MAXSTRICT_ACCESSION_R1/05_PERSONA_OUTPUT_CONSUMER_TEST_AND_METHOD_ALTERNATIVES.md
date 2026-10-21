@@ -1,0 +1,28 @@
+# Full terminal persona output and scientific-method counterfactual court
+
+**The terminal object is an historically plausible, contingent social person**, not an assigned survey typology or country-level Enneagram score. This test is a proposed future authorized contract. No original U/Epre, Sorok V3 person or end-to-end nonfixture world run was executed by this accession.
+
+## Specific demanding scenario
+
+A prospective caregiver or parent in a particular source-grounded period inhabits changing housing expense, labor demands, household composition, care obligations, mediated educational access, local institutions and class-defined opportunities. Empirical sources may bound available population-level configurations and material context. To become a historical person, world/situational exposure must causally meet Sorok-issued V3 event dynamics, attachments, constraints, conflicts, agency and contingency; V2 speaks after lived memory forms. Static preferences, political ideology, parents, Enneagram health, belief and voice cannot be assigned from a source country's average.
+
+**Normal control:** freeze exact source/edition, U_item/U_unit/U_app, approved E_pre, sampling/weight/estimand, as-of clock and actor history; qualified immutable native execution reproduces same I03/I05/Batch/learned/world request and uncertainty with cold replay.
+
+**Counterfactual:** introduce an independently authorized shift in rent burden, employment exposure or childcare availability to a correctly matched time/field/position source condition, holding unrelated source/actor randomness stable. Source fact mutation must change the **same actual N9/N10E/N10W/E04 world consumer** when it is permitted and genuinely supported. A change only to fake trace, authored JSON or fixture hash is not enough. A later V3 event can change developmental outcomes only after explicit Sorok N12/weld/actor permission; no guaranteed personality flip or rewritten past.
+
+**Scientific precision:** distinguish descriptive respondent co-travel, design-weighted target population inference, selected finite source query, original-source null, sampling uncertainty, posterior/model uncertainty, F5 separately admitted institution, F6 nonpooled partial-bound transport, F7 observed-comparable wave changes vs model interpolation and F8 merely conditional possibility. Hold unsupported cells rather than generate psychometric certainties.
+
+## Eight comparisons inherited and adjudicated
+
+| Scientific/mechanical function | Valid historical capital | Current alternative and judgment | Productive test |
+|---|---|---|---|
+| Crosswave semantic atlas | Dva/Trii + HARVEST original source labels, old allwave V550/J | RECOVER source labels but don't equate item meanings; original issuer decides common estimand/scale | mismatch refusal for country/edition and valid same-item positive |
+| 22 drivers / facet / Enneagram | Historical design representation, cross-cultural model and v3.4 narrative | IMPROVE: these are modeling assumptions, not source-scientific individual traits; preserve uncertainty and chance | no direct aggregate→one actor assignment; position-conditioned alternatives remain |
+| Original response/routing/design | V550 plus current C11/Route B/I03, HARVEST identity | R02 repair only mixed repeated/occasion; UR-B S1/S2 already genuinely native | S3 24 physical→24 SCORE events rather than 48; independent risk/route, weighted controls |
+| F6 cross-source inference | Source-indexed partial bounds existing F6M/F6P test-only | Prefer identifiable bounds; hierarchical transport only validated measurement/target/design comparability | leave-one-source-out falsification; refuse direct DTA person/household pooling |
+| Recursive/XOR and minority discovery | V550J higher-order concepts and exact modern I05 | Reuse I05/Batch; R01 scientifically proper prospective grammar rather than outcome-significance selection | UR-B S1 eight XOR joint cells; a distinct valid minority/recursive controlled case |
+| V553 harmonization | Historical temporal code and metadata | Retain exact equivalence rules, but issue observed F7 only at original comparable wave/cohort/target/variance | invalid wave pair must refuse; observed wave counterfactual changes real clock |
+| Temporal world | N8E observed vs N8S structural pressure, objective selected serving | Mark projection/model-grade vs measured, honor as-of and no future leak | earlier time request not altered by later publication; no false observed event |
+| N9/N10E/N10W to Sorok V3/V2 | Current C1/M1/M2/B5/I4/N10E and E04 actual test-only reads; Sorok separate | Restore true source→learned→world connected consumer; UR-A faux J42 evaluator trace requires R08/R09; no fake actor | real named evaluator instrumented vs trace string, source condition mutation changes actual client; later authorized actor event affects V2 only via V3 |
+
+**Native evidence grade:** UR-B real S1 and S2 independent synthetic source shapes, 6/6 tests, S3 RED, R04 RED, all-missing Z UNRESOLVED; direct learned receipt only, N10E NOT_REACHED. UR-A static adopted reachability and genuine J42 unchanged E04 nonparent versus unauthenticated progressive trace. The hypothetical person/world chain is **NOT_RUN**. First end-product test owner is R05/R06 native consumer, separate original scientific/FF issuers, and Sorok actor director after lawful N11/N12—not a new story-generation fixture.
