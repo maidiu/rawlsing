@@ -40,3 +40,13 @@ STATIC independently checked exact pinned source modules and selected worker-ret
 ## Handoff verdict
 
 **No production edits; no worker restarts or dispatch; only independent bounded report publication.** Pyat HQ may adjudicate the precisely demonstrated scope-limited defects and propose a separate user-authorized finite universal implementation program; neither this reviewer nor U53A has issued such authorization. This return is not U53A and cannot be counted as completion of Astra's separate court.
+
+## Subsequent substantive R2 code-and-consumer investigation
+
+After the final R1 return and the user clarification, the investigator performed **another pass through the actual source and consumer code**, not merely a review of this report. It is separately published in **03_SECOND_SUBSTANTIVE_CODE_CONSUMER_PASS_R2.md**; the original 01 pre-U53A freeze remains byte-identical.
+
+**New static findings R2-D8–D14**: (D8) G50 can call an explicitly unadministered item ELIGIBLE; (D9) reverse-direction permission is keyed to literal Y, using a nonexistent policy field; (D10) duplicate item-occurrence IDs silently overwrite in candidate lookup; (D11) J42/P41 binds conditioned E41 evidence by target+depth without checking requested conditioner identity/value; (D12) J42's productive envelope can remain positive with unsupported E41 steps and pass that status to unchanged E04; (D13) P41 reports exact conditioned evidence for typed non-zero unsupported steps; (D14) J42 defaults an absent structural source state to SUPPORTED_TEST_ONLY, potentially supplying a false-positive modeled route to unchanged E04. Every finding has exact Git blob, lines, input, mechanism, affected downstream class, scope and minimal repair, with proposed same-consumer tests. These are **conditional static code proofs, not runtime reproductions**; candidate-specific defects must not be attributed to accepted canonical C1/Route B.
+
+**New directly verified learned bridge**: canonical pre553_learned_world_composition.py already accepts exact RouteBProductionResult and selected discovery receipts through M1 adjudication→M2/B5 lifecycle, with competent family rule/validator and explicit publication/current selection; sourcefree I51 unary fact is not an accepted substitute. The remaining gap is *joined source-authorized operation and actual learned/consumer lineage*, not a missing learned engine.
+
+**R2 grade** remains ENGINEERING REVISE / SCIENCE HOLD / AUTHORITY HOLD, J52/W52 USER_STOPPED, and all native proposed tests NOT_RUN. Any HQ acceptance must consider **both** the first pre-U53A report and R2 new source discoveries.
