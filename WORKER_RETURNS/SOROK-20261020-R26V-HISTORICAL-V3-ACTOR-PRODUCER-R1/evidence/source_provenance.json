@@ -1,0 +1,44 @@
+{
+  "schema": "R26V_SOURCE_PROVENANCE@1",
+  "startup": "dba95216d5627513ea36323f459cf97413b504d1",
+  "bp2p4j_commit": "5b3e6577400ea1d88971ae6b48e41a118b8059ae",
+  "bp2_commit": "5065e2e6934e9d5bca800cbf88c79e461bcf2393",
+  "bp4_commit": "d868e82c7c83def2df18295244d93af9706e647f",
+  "vendor_manifest": {
+    "sha256": "c2319b1de0875b8e11587da6b2a1d17f0d315787958e5168f680702ca820db90",
+    "files": 150
+  },
+  "r26v": {
+    "historical_actor_producer.py": {
+      "sha256": "3da4ff8d20069074714491286f74883424d4d5728a9d0ed606d5b24a7b218423",
+      "git_blob": "e84f6cfd34d8b7811d29bcd91f1c04593065beb3"
+    },
+    "native_ports.py": {
+      "sha256": "b154aee190ac5dc3cd79c55af3578d3d5c981e78a448860f733debb77daee459",
+      "git_blob": "435b4a6d808610a0d7cc3cbfe0ec972d99a629b8"
+    },
+    "test_r26v_historical_actor.py": {
+      "sha256": "b852aca128465c565b5ce58e53170bfb0a0a80397a13abf8341b70a238cf83dd",
+      "git_blob": "4a2a91890a225135f5c287017045667251407681"
+    },
+    "test_r26v_historical_actor.py.proof.json": {
+      "sha256": "8abd831056ad28ebf79ab26d94643befe45036505fa5bf507773b21548b23abd",
+      "git_blob": "6d3f118aab0251edd54a02975a8ddbbb72076524"
+    }
+  },
+  "tests": {
+    "r26v": {
+      "junit": "evidence/r26v_native.xml",
+      "count": 10
+    },
+    "proof_claims": 5,
+    "cold": 10
+  },
+  "native_ports": {
+    "count": 10,
+    "status": "NATIVE_AUTHORITY_UNISSUED"
+  },
+  "no_raw_source": true,
+  "native_actor": false,
+  "original_u_epre": null
+}

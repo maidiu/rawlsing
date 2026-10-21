@@ -1,0 +1,302 @@
+{
+  "result": {
+    "actor": "A",
+    "branch_id": "root",
+    "c10_receipt": {
+      "actor_as_of": 201,
+      "actor_id": "A",
+      "actor_source_grade": "SOURCEFREE_FIXTURE_ACTOR_NOT_NATIVE",
+      "branch_id": "root",
+      "c8_occurrence_count": 1,
+      "c8_state_digest": "d5d3c3199985e79cf7350a9913f1d1f256de4ec415c79d4b3c330d9b8a8efd29",
+      "c8_writer_version": 1,
+      "c9_e2_admitted": true,
+      "c9_target_commit_time": 207,
+      "c9_target_id": "08a8d89a2fca443c668288880a3c889cf3c06c40f12771a10050993ff16a62a6",
+      "grade": "TEST_ONLY_SOURCEFREE_C10_NOT_NATIVE",
+      "native": false,
+      "objective_world_clock": 10,
+      "receipt_hash": "3028cace9f0dbfa203a84373f5a32224e941f653436165938dca490c19d59cb7",
+      "schema": "BP4_C10_COUPLED_RECEIVER@1",
+      "v2_claim_count": 1,
+      "world_grade": "TEST_ONLY_SOURCEFREE_WORLD_NOT_NATIVE"
+    },
+    "c8": {
+      "occurrence_count": 1,
+      "state_digest": "d5d3c3199985e79cf7350a9913f1d1f256de4ec415c79d4b3c330d9b8a8efd29",
+      "writer_version": 1
+    },
+    "c9": {
+      "e2_admitted": true,
+      "state_hash": "680508467d46a673036b1db1737a0c648b7c7be68f2a394f080ed36a25f21aba",
+      "target_commit_time": 207,
+      "target_id": "08a8d89a2fca443c668288880a3c889cf3c06c40f12771a10050993ff16a62a6"
+    },
+    "claims": [
+      {
+        "claim_hash": "afc33ad31b1fc95827f7c4ab14e77bccd11e954071338b473edbeccb0d7e1d34",
+        "clock": 10,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_e8ef27fc37b15575b8b2da8e65b49f456d020d220175b29445994c4aee64d787",
+        "kind": "ARRIVAL",
+        "m6_permission": "PERMIT_FIRST_PERSON_KNOWLEDGE",
+        "m6_receiver_state": "READY_FULL_CLAIM_SCOPE",
+        "summary": "The finishing worker is already at the workshop bench."
+      }
+    ],
+    "clock": 10,
+    "grade": "TEST_ONLY_SOURCEFREE_PRODUCT_ALPHA_NOT_NATIVE",
+    "native": false,
+    "native_claims": {
+      "actor": false,
+      "c11": false,
+      "c12": false,
+      "c8_trust": false,
+      "rule": false,
+      "world": false
+    },
+    "note": "TEST_ONLY sourcefree technical alpha; not a native generated person.",
+    "others_present": [
+      {
+        "actor": "B",
+        "public_role": "finishing"
+      }
+    ],
+    "schema": "BP4_A0_A3_PRODUCT@1",
+    "self": {
+      "history_hash": "dd7234edf12a069d69d1a4d940f59bf723aa15db7f35c40d801461cd6ab5e0ee",
+      "position": "workshop",
+      "state": {
+        "cash": 55,
+        "completed_units": 4,
+        "debt_units": 2,
+        "free_hours": 12,
+        "material_remaining": 2,
+        "projects": [
+          "communal_irrigation_pump_repair"
+        ],
+        "role": "repair",
+        "skill": 6,
+        "tools_remaining": 1
+      }
+    },
+    "status": "OK",
+    "v2_state": "READY"
+  },
+  "step": "A0"
+}
+{
+  "result": {
+    "admitted": true,
+    "attempted": true,
+    "clock": 10,
+    "event_id": "TEST_ONLY_BP4_WORLD_EVT_7daed8f0b474efe49d7813877807fa6cfc521ae972187858587ac3879ea7fe0a",
+    "grade": "TEST_ONLY_SOURCEFREE_PRODUCT_ALPHA_NOT_NATIVE",
+    "native": false,
+    "observable_by": [
+      "A",
+      "B"
+    ],
+    "status": "OK"
+  },
+  "step": "A1_SAY"
+}
+{
+  "result": {
+    "changed": false,
+    "clock": 10,
+    "event_id": "TEST_ONLY_BP4_WORLD_EVT_3b6d9ac232f8cd8d30583be2910bb1dc70794fc26c21b39f8f758af88474524f",
+    "status": "NO_CHANGE"
+  },
+  "step": "A1_DO_INSPECT"
+}
+{
+  "result": {
+    "changed": true,
+    "clock": 40,
+    "offscreen_events": [
+      "TEST_ONLY_BP4_WORLD_EVT_5cdf3a5cbddb18d8ebbb51d0f4bf0759bd79f356de64e27ef2b822482f09269d",
+      "TEST_ONLY_BP4_WORLD_EVT_324b154fd7cc0e3e5c8c662e535300bf9311c1e39f146b23e31f7a0d979929cd"
+    ],
+    "status": "OK"
+  },
+  "step": "A2_WAIT"
+}
+{
+  "result": {
+    "branch_id": "root",
+    "clock": 40,
+    "grade": "TEST_ONLY_SOURCEFREE_PRODUCT_ALPHA_NOT_NATIVE",
+    "native": false,
+    "other_actor": "B",
+    "private_fields_hidden": [
+      "cash",
+      "material_remaining",
+      "free_hours",
+      "debt_units"
+    ],
+    "public": {
+      "completed_units": 4,
+      "position": "market",
+      "public_work_events": [
+        "TEST_ONLY_BP4_WORLD_EVT_324b154fd7cc0e3e5c8c662e535300bf9311c1e39f146b23e31f7a0d979929cd"
+      ],
+      "role": "finishing"
+    },
+    "schema": "BP4_A0_A3_PRODUCT@1",
+    "status": "OK"
+  },
+  "step": "A3_OTHER"
+}
+{
+  "result": {
+    "admitted": true,
+    "clock": 40,
+    "event_id": "TEST_ONLY_BP4_WORLD_EVT_67c543d3fd3f6194679660dd3ab2403484d82fb93dbb3d4adbf98c5e4b8f9f89",
+    "position": "market",
+    "status": "OK"
+  },
+  "step": "A2_TRAVEL"
+}
+{
+  "result": {
+    "changed": false,
+    "clock": 40,
+    "new_knowledge": [
+      "TEST_ONLY_BP4_WORLD_EVT_5cdf3a5cbddb18d8ebbb51d0f4bf0759bd79f356de64e27ef2b822482f09269d",
+      "TEST_ONLY_BP4_WORLD_EVT_324b154fd7cc0e3e5c8c662e535300bf9311c1e39f146b23e31f7a0d979929cd"
+    ],
+    "status": "NO_CHANGE"
+  },
+  "step": "A2_ATTEND"
+}
+{
+  "result": {
+    "actor": "A",
+    "branch_id": "root",
+    "c10_receipt": {
+      "actor_as_of": 201,
+      "actor_id": "A",
+      "actor_source_grade": "SOURCEFREE_FIXTURE_ACTOR_NOT_NATIVE",
+      "branch_id": "root",
+      "c8_occurrence_count": 1,
+      "c8_state_digest": "d5d3c3199985e79cf7350a9913f1d1f256de4ec415c79d4b3c330d9b8a8efd29",
+      "c8_writer_version": 1,
+      "c9_e2_admitted": true,
+      "c9_target_commit_time": 207,
+      "c9_target_id": "08a8d89a2fca443c668288880a3c889cf3c06c40f12771a10050993ff16a62a6",
+      "grade": "TEST_ONLY_SOURCEFREE_C10_NOT_NATIVE",
+      "native": false,
+      "objective_world_clock": 40,
+      "receipt_hash": "8a9ef96af075e8fae7d222c4cec8c83ede3aa7c2d22be91a8588f64e619eb233",
+      "schema": "BP4_C10_COUPLED_RECEIVER@1",
+      "v2_claim_count": 6,
+      "world_grade": "TEST_ONLY_SOURCEFREE_WORLD_NOT_NATIVE"
+    },
+    "c8": {
+      "occurrence_count": 1,
+      "state_digest": "d5d3c3199985e79cf7350a9913f1d1f256de4ec415c79d4b3c330d9b8a8efd29",
+      "writer_version": 1
+    },
+    "c9": {
+      "e2_admitted": true,
+      "state_hash": "680508467d46a673036b1db1737a0c648b7c7be68f2a394f080ed36a25f21aba",
+      "target_commit_time": 207,
+      "target_id": "08a8d89a2fca443c668288880a3c889cf3c06c40f12771a10050993ff16a62a6"
+    },
+    "claims": [
+      {
+        "claim_hash": "afc33ad31b1fc95827f7c4ab14e77bccd11e954071338b473edbeccb0d7e1d34",
+        "clock": 10,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_e8ef27fc37b15575b8b2da8e65b49f456d020d220175b29445994c4aee64d787",
+        "kind": "ARRIVAL",
+        "m6_permission": "PERMIT_FIRST_PERSON_KNOWLEDGE",
+        "m6_receiver_state": "READY_FULL_CLAIM_SCOPE",
+        "summary": "The finishing worker is already at the workshop bench."
+      },
+      {
+        "claim_hash": "36e2cc817e3254f5a616cee176d1db6335fc71f96aa4855e7e9a575418727378",
+        "clock": 10,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_7daed8f0b474efe49d7813877807fa6cfc521ae972187858587ac3879ea7fe0a",
+        "kind": "SPEECH",
+        "m6_permission": "PERMIT_FIRST_PERSON_KNOWLEDGE",
+        "m6_receiver_state": "READY_FULL_CLAIM_SCOPE",
+        "summary": "A says: I am here about the bench."
+      },
+      {
+        "claim_hash": "5c5c274501074e1848dee9b01d74e222d37a26686b57edbdbad2c748ce664db1",
+        "clock": 10,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_3b6d9ac232f8cd8d30583be2910bb1dc70794fc26c21b39f8f758af88474524f",
+        "kind": "INSPECT",
+        "m6_permission": "PERMIT_FIRST_PERSON_KNOWLEDGE",
+        "m6_receiver_state": "READY_FULL_CLAIM_SCOPE",
+        "summary": "The actor inspects the present material but changes nothing."
+      },
+      {
+        "claim_hash": "6d4aaa34b2555ecd4b6f53e06afcccf1c261038cbd925d4b21a680c0cd9e265d",
+        "clock": 40,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_5cdf3a5cbddb18d8ebbb51d0f4bf0759bd79f356de64e27ef2b822482f09269d",
+        "kind": "MOVE",
+        "m6_permission": "PERMIT_FIRST_PERSON_KNOWLEDGE",
+        "m6_receiver_state": "READY_FULL_CLAIM_SCOPE",
+        "summary": "The finishing worker takes the completed pieces to the market."
+      },
+      {
+        "claim_hash": "897b83fd70fff86ba8e9a3d0dca6df0a6c8bdff82e3dd8c1fd94bf3c4725f8de",
+        "clock": 40,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_324b154fd7cc0e3e5c8c662e535300bf9311c1e39f146b23e31f7a0d979929cd",
+        "kind": "OFFSCREEN_REPAIR",
+        "m6_permission": "PERMIT_FIRST_PERSON_KNOWLEDGE",
+        "m6_receiver_state": "READY_FULL_CLAIM_SCOPE",
+        "summary": "A market stall is refurbished while the user is away."
+      },
+      {
+        "claim_hash": "45da3ce73235d37332eb5acaa9c474b102c306be7732d40f318562f3f4d5cf5c",
+        "clock": 40,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_67c543d3fd3f6194679660dd3ab2403484d82fb93dbb3d4adbf98c5e4b8f9f89",
+        "kind": "MOVE",
+        "m6_permission": "PERMIT_FIRST_PERSON_KNOWLEDGE",
+        "m6_receiver_state": "READY_FULL_CLAIM_SCOPE",
+        "summary": "A moves to market."
+      }
+    ],
+    "clock": 40,
+    "grade": "TEST_ONLY_SOURCEFREE_PRODUCT_ALPHA_NOT_NATIVE",
+    "native": false,
+    "native_claims": {
+      "actor": false,
+      "c11": false,
+      "c12": false,
+      "c8_trust": false,
+      "rule": false,
+      "world": false
+    },
+    "note": "TEST_ONLY sourcefree technical alpha; not a native generated person.",
+    "others_present": [
+      {
+        "actor": "B",
+        "public_role": "finishing"
+      }
+    ],
+    "schema": "BP4_A0_A3_PRODUCT@1",
+    "self": {
+      "history_hash": "dd7234edf12a069d69d1a4d940f59bf723aa15db7f35c40d801461cd6ab5e0ee",
+      "position": "market",
+      "state": {
+        "cash": 55,
+        "completed_units": 4,
+        "debt_units": 2,
+        "free_hours": 12,
+        "material_remaining": 2,
+        "projects": [
+          "communal_irrigation_pump_repair"
+        ],
+        "role": "repair",
+        "skill": 6,
+        "tools_remaining": 1
+      }
+    },
+    "status": "OK",
+    "v2_state": "READY"
+  },
+  "step": "A2_REENTRY"
+}

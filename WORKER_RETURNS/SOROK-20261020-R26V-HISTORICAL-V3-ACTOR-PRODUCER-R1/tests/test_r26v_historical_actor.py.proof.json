@@ -1,0 +1,60 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "claims": [
+    {
+      "claim_id": "R26V_OTHER_REFUSAL_TO_TARGET",
+      "actual_consumer": "historical_actor_producer.run_joined",
+      "claimed_dependency": "removing B's independent refusal changes the same BP2/BP4 target",
+      "positive_node": "WORKER_RETURNS/SOROK-20261020-R26V-HISTORICAL-V3-ACTOR-PRODUCER-R1/tests/test_r26v_historical_actor.py::test_b_refusal_and_a_omission_are_real_independent_ledger_events",
+      "fault": {
+        "path": "WORKER_RETURNS/SOROK-20261020-R26V-HISTORICAL-V3-ACTOR-PRODUCER-R1/candidate/historical_actor_producer.py",
+        "old": "    if g.b_refuses_extra:",
+        "new": "    if False:"
+      }
+    },
+    {
+      "claim_id": "R26V_FOCAL_OMISSION_TO_TARGET",
+      "actual_consumer": "historical_actor_producer.run_joined",
+      "claimed_dependency": "removing A's independent omission changes the same BP2/BP4 target",
+      "positive_node": "WORKER_RETURNS/SOROK-20261020-R26V-HISTORICAL-V3-ACTOR-PRODUCER-R1/tests/test_r26v_historical_actor.py::test_b_refusal_and_a_omission_are_real_independent_ledger_events",
+      "fault": {
+        "path": "WORKER_RETURNS/SOROK-20261020-R26V-HISTORICAL-V3-ACTOR-PRODUCER-R1/candidate/historical_actor_producer.py",
+        "old": "    if g.a_declines_optional:",
+        "new": "    if False:"
+      }
+    },
+    {
+      "claim_id": "R26V_A0_A2_JOINED_CLAIMS",
+      "actual_consumer": "bp2p4.product.JoinedProduct",
+      "claimed_dependency": "the joined A0/A2 consumer publishes the actual ARRIVAL claim set",
+      "positive_node": "WORKER_RETURNS/SOROK-20261020-R26V-HISTORICAL-V3-ACTOR-PRODUCER-R1/tests/test_r26v_historical_actor.py::test_new_histories_feed_real_bp2_bp4_a0_a2",
+      "fault": {
+        "path": "WORKER_RETURNS/SOROK-20261020-R26V-HISTORICAL-V3-ACTOR-PRODUCER-R1/candidate/historical_actor_producer.py",
+        "old": "            \"a0_claims\": [c[\"kind\"] for c in observed[\"claims\"]],",
+        "new": "            \"a0_claims\": [],"
+      }
+    },
+    {
+      "claim_id": "R26V_H0_NO_DEVELOPMENT",
+      "actual_consumer": "historical_actor_producer.build_no_development_record",
+      "claimed_dependency": "H0 remains a lawful no-development outcome, not a fabricated practice",
+      "positive_node": "WORKER_RETURNS/SOROK-20261020-R26V-HISTORICAL-V3-ACTOR-PRODUCER-R1/tests/test_r26v_historical_actor.py::test_h0_no_development_remains_possible",
+      "fault": {
+        "path": "WORKER_RETURNS/SOROK-20261020-R26V-HISTORICAL-V3-ACTOR-PRODUCER-R1/candidate/historical_actor_producer.py",
+        "old": "        \"practice_established\": False,",
+        "new": "        \"practice_established\": True,"
+      }
+    },
+    {
+      "claim_id": "R26V_ACTOR_MATERIAL_REFUSAL",
+      "actual_consumer": "historical_actor_producer.build_life",
+      "claimed_dependency": "an actor genesis with no material history cannot perform the joint action",
+      "positive_node": "WORKER_RETURNS/SOROK-20261020-R26V-HISTORICAL-V3-ACTOR-PRODUCER-R1/tests/test_r26v_historical_actor.py::test_actor_performed_history_without_material_refuses_and_restores",
+      "fault": {
+        "path": "WORKER_RETURNS/SOROK-20261020-R26V-HISTORICAL-V3-ACTOR-PRODUCER-R1/candidate/historical_actor_producer.py",
+        "old": "VARIANTS[\"A_REPAIR_LONG\"], variant=\"A_NO_MATERIAL\", a_material=0,\n    a_cash=0, a_hours=0)",
+        "new": "VARIANTS[\"A_REPAIR_LONG\"], variant=\"A_NO_MATERIAL\", a_material=7,\n    a_cash=34, a_hours=26)"
+      }
+    }
+  ]
+}

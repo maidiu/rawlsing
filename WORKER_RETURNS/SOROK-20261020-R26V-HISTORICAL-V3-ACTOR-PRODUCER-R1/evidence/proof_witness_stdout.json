@@ -1,0 +1,46 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "status": "MECHANICAL_WITNESS_PASS_NOT_SEMANTIC_ADOPTION",
+  "claims": [
+    {
+      "claim_id": "R26V_OTHER_REFUSAL_TO_TARGET",
+      "positive_node": "WORKER_RETURNS/SOROK-20261020-R26V-HISTORICAL-V3-ACTOR-PRODUCER-R1/tests/test_r26v_historical_actor.py::test_b_refusal_and_a_omission_are_real_independent_ledger_events",
+      "fault_path": "WORKER_RETURNS/SOROK-20261020-R26V-HISTORICAL-V3-ACTOR-PRODUCER-R1/candidate/historical_actor_producer.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    },
+    {
+      "claim_id": "R26V_FOCAL_OMISSION_TO_TARGET",
+      "positive_node": "WORKER_RETURNS/SOROK-20261020-R26V-HISTORICAL-V3-ACTOR-PRODUCER-R1/tests/test_r26v_historical_actor.py::test_b_refusal_and_a_omission_are_real_independent_ledger_events",
+      "fault_path": "WORKER_RETURNS/SOROK-20261020-R26V-HISTORICAL-V3-ACTOR-PRODUCER-R1/candidate/historical_actor_producer.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    },
+    {
+      "claim_id": "R26V_A0_A2_JOINED_CLAIMS",
+      "positive_node": "WORKER_RETURNS/SOROK-20261020-R26V-HISTORICAL-V3-ACTOR-PRODUCER-R1/tests/test_r26v_historical_actor.py::test_new_histories_feed_real_bp2_bp4_a0_a2",
+      "fault_path": "WORKER_RETURNS/SOROK-20261020-R26V-HISTORICAL-V3-ACTOR-PRODUCER-R1/candidate/historical_actor_producer.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    },
+    {
+      "claim_id": "R26V_H0_NO_DEVELOPMENT",
+      "positive_node": "WORKER_RETURNS/SOROK-20261020-R26V-HISTORICAL-V3-ACTOR-PRODUCER-R1/tests/test_r26v_historical_actor.py::test_h0_no_development_remains_possible",
+      "fault_path": "WORKER_RETURNS/SOROK-20261020-R26V-HISTORICAL-V3-ACTOR-PRODUCER-R1/candidate/historical_actor_producer.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    },
+    {
+      "claim_id": "R26V_ACTOR_MATERIAL_REFUSAL",
+      "positive_node": "WORKER_RETURNS/SOROK-20261020-R26V-HISTORICAL-V3-ACTOR-PRODUCER-R1/tests/test_r26v_historical_actor.py::test_actor_performed_history_without_material_refuses_and_restores",
+      "fault_path": "WORKER_RETURNS/SOROK-20261020-R26V-HISTORICAL-V3-ACTOR-PRODUCER-R1/candidate/historical_actor_producer.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    }
+  ]
+}

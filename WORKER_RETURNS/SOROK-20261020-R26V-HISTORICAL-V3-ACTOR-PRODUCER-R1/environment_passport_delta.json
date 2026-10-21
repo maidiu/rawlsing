@@ -1,0 +1,70 @@
+{
+  "schema": "RAWLSING_ENVIRONMENT_PASSPORT@1",
+  "environment_id": "local-r26v-shared-store-1",
+  "epoch_id": "2026-10-21T02:42:24Z",
+  "surface": "LOCAL_SHARED_STORE",
+  "session_alias": "deepseek-harness-r26v",
+  "machine_alias": "local-macos-shared-store",
+  "status": "LIVE_VERIFIED",
+  "live_probe": {
+    "observed_at_utc": "2026-10-21T02:42:24Z",
+    "marker_checked": "VERIFIED",
+    "marker_digest": "r26v:dba95216d",
+    "python": "3.11.3",
+    "pytest": "9.1.1",
+    "git": "2.39.1",
+    "sqlite": "VERIFIED",
+    "filesystem": "VERIFIED",
+    "connector": "UNKNOWN",
+    "notes": "local Git/python/pytest/SQLite, real BP2\u2192BP4 chain, cold subprocess"
+  },
+  "branch": "agent/rabochii-sorok-20261020-r26v-historical-v3-actor-activity-producer-r1",
+  "checkout_sha": "dba95216d5627513ea36323f459cf97413b504d1",
+  "shared_store_alias": "rawlsing-shared-store",
+  "worktree_alias": "r26v",
+  "source_closure": "BOUNDED",
+  "sources": [
+    {
+      "commit": "5b3e6577400ea1d88971ae6b48e41a118b8059ae",
+      "path": "WORKER_RETURNS/SOROK-20261020-BP2P4J-ACTUAL-JOINED-ALPHA-R1/vendor/bp2/vendor/bp1/bp1/composer.py",
+      "blob_sha1": "a04ea4970e218a8be94bd53df00b4690eae3f307",
+      "module_alias": "bp1_composer",
+      "import_verified": true
+    },
+    {
+      "commit": "5b3e6577400ea1d88971ae6b48e41a118b8059ae",
+      "path": "WORKER_RETURNS/SOROK-20261020-BP2P4J-ACTUAL-JOINED-ALPHA-R1/bp2p4/reunion.py",
+      "blob_sha1": "b89eba9bdc451f433a570d35909bde6b02b4ae40",
+      "module_alias": "bp2p4_reunion",
+      "import_verified": true
+    },
+    {
+      "commit": "5b3e6577400ea1d88971ae6b48e41a118b8059ae",
+      "path": "WORKER_RETURNS/SOROK-20261020-BP2P4J-ACTUAL-JOINED-ALPHA-R1/bp2p4/product.py",
+      "blob_sha1": "8f7177a6b4e3ae0cae6316a13cf57adf363e0460",
+      "module_alias": "bp2p4_product",
+      "import_verified": true
+    }
+  ],
+  "assignments_completed": 1,
+  "next_affinity_tags": [
+    "r26v",
+    "historical-actor",
+    "bp2p4j",
+    "a0-a2"
+  ],
+  "permissions": {
+    "private_repo_access": "VERIFIED",
+    "raw_respondent": "NOT_GRANTED",
+    "native_actor": "NOT_GRANTED",
+    "adp_can_c8_pyat": "NOT_GRANTED",
+    "production": "NOT_GRANTED"
+  },
+  "usage": {
+    "provider_model": "DeepSeek V4.1-Flash MAX",
+    "incremental_cash_usd": null,
+    "quota_state": "UNKNOWN",
+    "usage_observed": "local Git/pytest/SQLite only; no paid API observed",
+    "retry_count": 0
+  }
+}

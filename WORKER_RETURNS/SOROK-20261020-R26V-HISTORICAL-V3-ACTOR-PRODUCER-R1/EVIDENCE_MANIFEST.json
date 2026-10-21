@@ -1,0 +1,128 @@
+{
+  "schema": "R26V_EVIDENCE_MANIFEST@1",
+  "files": {
+    "00_RETURN.md": {
+      "sha256": "195750cd1c8c1a01331e819f4a9ff1269c6e028b5c17d0d4940d165181ff4a5d",
+      "bytes": 6976
+    },
+    "01_REUSED_CODE_MANIFEST.md": {
+      "sha256": "eccabd7edb44bb3b4ab86a4c08fdb52e2f19e446de07a8e65130da75ae7b7b25",
+      "bytes": 1032
+    },
+    "02_HISTORICAL_ACTOR_ENGINE.md": {
+      "sha256": "350f361757745e4c089a53af014ab8c96dda1ac9c26803f794f68a5004db9210",
+      "bytes": 1454
+    },
+    "03_DOWNSTREAM_JOIN_AND_SEVERANCE.md": {
+      "sha256": "657b87d060b1a1e822ae6c31cb135eff228aa25a3811e20d2ea76234c86f7044",
+      "bytes": 1576
+    },
+    "04_NATIVE_AUTHORITY_PACKET.md": {
+      "sha256": "597f73cea2b5e3fe5093b803d32697b59419a9dbda0c6a92abe8df5177f1f5ce",
+      "bytes": 1450
+    },
+    "05_NOT_RUN_AND_RED.md": {
+      "sha256": "1561fa605772798c4b36493e9f07ea21bf016ad1bdcb7e2cd9b53a04cd83d02d",
+      "bytes": 782
+    },
+    "candidate/historical_actor_producer.py": {
+      "sha256": "3da4ff8d20069074714491286f74883424d4d5728a9d0ed606d5b24a7b218423",
+      "bytes": 12988
+    },
+    "candidate/native_ports.py": {
+      "sha256": "b154aee190ac5dc3cd79c55af3578d3d5c981e78a448860f733debb77daee459",
+      "bytes": 2560
+    },
+    "tests/test_r26v_historical_actor.py": {
+      "sha256": "b852aca128465c565b5ce58e53170bfb0a0a80397a13abf8341b70a238cf83dd",
+      "bytes": 6574
+    },
+    "tests/test_r26v_historical_actor.py.proof.json": {
+      "sha256": "8abd831056ad28ebf79ab26d94643befe45036505fa5bf507773b21548b23abd",
+      "bytes": 3514
+    },
+    "evidence/r26v_native.xml": {
+      "sha256": "b5a1bdb978229987450d9224132bdbc7f12c3e06594b87305e169b3e38a3ac3b",
+      "bytes": 1574
+    },
+    "evidence/r26v_post_witness.xml": {
+      "sha256": "dd9d5b653bf71018323033a2a77982a61c7a2f8fdbc278ca209dc4fe24cbafd5",
+      "bytes": 1574
+    },
+    "evidence/r26v_cold_0.xml": {
+      "sha256": "cc1f2eeee32e917b9d19b5b0d1cad5be2e8ac8a82ab802d239371356d78ed38a",
+      "bytes": 1574
+    },
+    "evidence/r26v_cold_1.xml": {
+      "sha256": "c2d28100eb05751215687654570c23e825a439245a4722f15c95b5b0ddd134da",
+      "bytes": 1574
+    },
+    "evidence/proof_witness_receipt.json": {
+      "sha256": "c25565d1d96a57cc7800edce00b72f13e6089fa732572740fb3af75ade332236",
+      "bytes": 2590
+    },
+    "evidence/source_provenance.json": {
+      "sha256": "c74f3495db6128fc88731c521397b40de5352233cd3a1ed2995aec32c7d6d06a",
+      "bytes": 1485
+    },
+    "evidence/bp2p4j_vendor_source_manifest.json": {
+      "sha256": "c2319b1de0875b8e11587da6b2a1d17f0d315787958e5168f680702ca820db90",
+      "bytes": 64095
+    },
+    "environment_passport_delta.json": {
+      "sha256": "1cf3517f2843f6e5f036b18a129b4c71902afdb6a1e6312482ee791d87db89fe",
+      "bytes": 2428
+    }
+  },
+  "source": {
+    "schema": "R26V_SOURCE_PROVENANCE@1",
+    "startup": "dba95216d5627513ea36323f459cf97413b504d1",
+    "bp2p4j_commit": "5b3e6577400ea1d88971ae6b48e41a118b8059ae",
+    "bp2_commit": "5065e2e6934e9d5bca800cbf88c79e461bcf2393",
+    "bp4_commit": "d868e82c7c83def2df18295244d93af9706e647f",
+    "vendor_manifest": {
+      "sha256": "c2319b1de0875b8e11587da6b2a1d17f0d315787958e5168f680702ca820db90",
+      "files": 150
+    },
+    "r26v": {
+      "historical_actor_producer.py": {
+        "sha256": "3da4ff8d20069074714491286f74883424d4d5728a9d0ed606d5b24a7b218423",
+        "git_blob": "e84f6cfd34d8b7811d29bcd91f1c04593065beb3"
+      },
+      "native_ports.py": {
+        "sha256": "b154aee190ac5dc3cd79c55af3578d3d5c981e78a448860f733debb77daee459",
+        "git_blob": "435b4a6d808610a0d7cc3cbfe0ec972d99a629b8"
+      },
+      "test_r26v_historical_actor.py": {
+        "sha256": "b852aca128465c565b5ce58e53170bfb0a0a80397a13abf8341b70a238cf83dd",
+        "git_blob": "4a2a91890a225135f5c287017045667251407681"
+      },
+      "test_r26v_historical_actor.py.proof.json": {
+        "sha256": "8abd831056ad28ebf79ab26d94643befe45036505fa5bf507773b21548b23abd",
+        "git_blob": "6d3f118aab0251edd54a02975a8ddbbb72076524"
+      }
+    },
+    "tests": {
+      "r26v": {
+        "junit": "evidence/r26v_native.xml",
+        "count": 10
+      },
+      "proof_claims": 5,
+      "cold": 10
+    },
+    "native_ports": {
+      "count": 10,
+      "status": "NATIVE_AUTHORITY_UNISSUED"
+    },
+    "no_raw_source": true,
+    "native_actor": false,
+    "original_u_epre": null
+  },
+  "test_counts": {
+    "r26v": 10,
+    "proof_claims": 5,
+    "cold": 10
+  },
+  "native_ports": 10,
+  "no_raw_source": true
+}
