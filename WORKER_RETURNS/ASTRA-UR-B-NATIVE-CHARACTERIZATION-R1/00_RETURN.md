@@ -78,4 +78,4 @@ No original respondent bytes, production edits, new adapters, N11 adoption, N12 
 
 ## Publication
 
-Substantive commit and exact final remote tip are reported after the ordinary non-force push. No self-adoption, no production edit, no original source access, no N11/N12/C11 claim.
+Substantive content commit: `7e07f32ac6652177ce61310649ad52fafe239477`. The publication-banking commit and exact final remote tip are reported in the worker's final response after the ordinary non-force push; the direct `git ls-remote` readback is the authority for the final tip. No self-adoption, no production edit, no original source access, no N11/N12/C11 claim.
