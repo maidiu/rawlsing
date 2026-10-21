@@ -656,35 +656,51 @@ def main():
     }
     for label, regex in named_patterns.items():
         found = None
-        for topic, regex2, _ in TOPICS:
-            if not regex2.search(label):
+        # Prefer a high-signal 06 row whose source path names the lane.
+        for source_path, source_blob, container_path, row, chunk, line, fields in high_signal_rows:
+            if not regex.search(source_path):
                 continue
-        for path, record in by_path.items():
-            if record["storage"] != "sharded":
-                continue
-            if record["shard_id"] in ("S01_01_REPOSITORY_SCOPE", "S07_EVIDENCE_REF_INVENTORY", "S08_NESTED_01_REPOSITORY_SCOPE"):
-                continue
-            for chunk in record["chunks"]:
-                data = (C.P53E_ROOT / chunk["path"]).read_bytes()
-                for offset, raw_line in enumerate(data.split(b"\n")):
-                    line = raw_line.decode("utf-8", "replace")
-                    if regex.search(line):
-                        found = {
-                            "label": f"NAMED_{label}",
-                            "original_path": path,
-                            "shard_id": record["shard_id"],
-                            "shard_path": chunk["path"],
-                            "part": chunk["part"],
-                            "bytes": chunk["bytes"],
-                            "sha256": chunk["sha256"],
-                            "sample_row": chunk["row_start"] + offset,
-                            "sample_text": clean(line, 240),
-                        }
+            record = by_path[container_path]
+            found = {
+                "label": f"NAMED_{label}",
+                "original_path": source_path,
+                "shard_id": record["shard_id"],
+                "shard_path": chunk["path"],
+                "part": chunk["part"],
+                "bytes": chunk["bytes"],
+                "sha256": chunk["sha256"],
+                "sample_row": row,
+                "sample_text": clean(line, 240),
+            }
+            break
+        # Fallback: the first occurrence anywhere in a sharded evidence file.
+        if not found:
+            for path, record in by_path.items():
+                if record["storage"] != "sharded":
+                    continue
+                if record["shard_id"] in ("S01_01_REPOSITORY_SCOPE", "S07_EVIDENCE_REF_INVENTORY", "S08_NESTED_01_REPOSITORY_SCOPE"):
+                    continue
+                for chunk in record["chunks"]:
+                    data = (C.P53E_ROOT / chunk["path"]).read_bytes()
+                    for offset, raw_line in enumerate(data.split(b"\n")):
+                        line = raw_line.decode("utf-8", "replace")
+                        if regex.search(line):
+                            found = {
+                                "label": f"NAMED_{label}",
+                                "original_path": path,
+                                "shard_id": record["shard_id"],
+                                "shard_path": chunk["path"],
+                                "part": chunk["part"],
+                                "bytes": chunk["bytes"],
+                                "sha256": chunk["sha256"],
+                                "sample_row": chunk["row_start"] + offset,
+                                "sample_text": clean(line, 240),
+                            }
+                            break
+                    if found:
                         break
                 if found:
                     break
-            if found:
-                break
         if found:
             targets.append(found)
     # high-signal named files: use the already-built T7 pointers into 06 rows.

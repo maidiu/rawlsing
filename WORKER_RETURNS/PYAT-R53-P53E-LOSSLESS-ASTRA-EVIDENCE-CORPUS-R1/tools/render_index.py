@@ -39,11 +39,14 @@ def main():
                 if row["record_type"] == "TOPIC_CHUNK":
                     lookup_counts[row["topic"]] += 1
 
+    def full_path(path):
+        return path if path.startswith("WORKER_RETURNS/") else f"{C.P53E_RETURN}/{path}"
+
     def url(path):
-        return f"{REPO}/blob/{BRANCH}/{path}"
+        return f"{REPO}/blob/{BRANCH}/{full_path(path)}"
 
     def raw(path):
-        return f"https://raw.githubusercontent.com/maidiu/rawlsing/{BRANCH}/{path}"
+        return f"https://raw.githubusercontent.com/maidiu/rawlsing/{BRANCH}/{full_path(path)}"
 
     lines = []
     lines.append("# PYAT R53 P53E — Astra minimum index (read this first)\n")

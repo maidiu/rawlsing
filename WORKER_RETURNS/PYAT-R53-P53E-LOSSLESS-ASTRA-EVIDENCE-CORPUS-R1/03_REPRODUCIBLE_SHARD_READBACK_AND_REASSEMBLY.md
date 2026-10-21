@@ -94,7 +94,7 @@ Order: environment receipt → shard build → corpus verification → scope cha
 ## Readback status
 
 - **Local Git object readback:** PASS for all 36 originals and all 331 chunks.
-- **GitHub REST/API readback:** see `receipts/github_api_readback.json` and `00_RETURN_AND_ASTRA_READ_FIRST.md`.
+- **GitHub REST/API readback:** **PASS 33/33** targeted chunks at `6818390b…`, including first/middle/last of every shard and named G50/J42/high-risk chunks; returned bytes and SHA-256 matched exactly. Receipt: `receipts/github_api_readback.json`.
 - **Actual Browser GitHub connector readback:** **UNKNOWN / NOT TESTED** in this harness. A Browser-side worker must test the exact shard URLs; this return does not claim Browser readability from local Git or API evidence.
 
 ## Bounds
