@@ -1,0 +1,67 @@
+{
+  "schema": "ASTRA_UR_S1_DIRECTOR_INTAKE_CUSTODY_R1",
+  "parent": "12ff37b8a30962b3edd62207baec21806b7aa447",
+  "worker_return": "a9fc811ecc2a10e07b5bcc2d5da385369ee59554",
+  "worker_startup": "c74e3bc5bf2ac0e800d96496fbb7f78e981a83fb",
+  "native_reruns": 0,
+  "new_workers_launched": 0,
+  "model": "6.1 Light user-confirmed",
+  "effort": "UNKNOWN",
+  "publication_verification": {
+    "ahead": 1,
+    "behind": 0,
+    "files": 5,
+    "outside_allowlist": 0,
+    "output_blob_matches": 4
+  },
+  "primary_spot_checks": [
+    "fixtures.py:63-85",
+    "facade.py:498-552",
+    "physical_c11_bridge.py:1-58",
+    "discovery_exact.py:1194-1225"
+  ],
+  "prior_cached_full_harness_checks": [
+    "s3.py",
+    "s1_route_b.py",
+    "tests/test_ur_b.py"
+  ],
+  "next_model_boundary": "MODEL_SWITCH_REQUIRED__ASTRA_I3PLUS",
+  "files": [
+    {
+      "path": "WORKER_COMMISSIONS/ASTRA-UR-PROGRAM-SOURCEFREE-INVESTIGATIONS-R1/07_RETURN_DIFFERENCE_REGISTER.json",
+      "sha256": "dcf79ca75724a35e3d662e1f13eda1cc9136384e352f5e7f02d947a51fcddc34",
+      "bytes": 12406
+    },
+    {
+      "path": "WORKER_COMMISSIONS/ASTRA-UR-PROGRAM-SOURCEFREE-INVESTIGATIONS-R1/03_DECISION_FLIGHT_AND_RETURN_LEDGER.json",
+      "sha256": "2791585c280e04b62ca931a53398191d550334e908f5a11687900115fe02a423",
+      "bytes": 5858
+    },
+    {
+      "path": "WORKER_COMMISSIONS/ASTRA-UR-PROGRAM-SOURCEFREE-INVESTIGATIONS-R1/08_ROUTING_AND_NEXT_DECISION_QUEUE.json",
+      "sha256": "a71b2f6d0597ebf87dc7615fb500d54be46c0422f40d07d1c1375d43b6143874",
+      "bytes": 7439
+    },
+    {
+      "path": "WORKER_COMMISSIONS/ASTRA-UR-PROGRAM-SOURCEFREE-INVESTIGATIONS-R1/11_UR_S1_INTAKE_AND_ASTRA_SWITCH.md",
+      "sha256": "ab3a64e636273371f192cd70c64ea9c0122f8fd31f16746262ebd56d9362cfe3",
+      "bytes": 7203
+    },
+    {
+      "path": "WORKER_COMMISSIONS/ASTRA-UR-PROGRAM-SOURCEFREE-INVESTIGATIONS-R1/RESUME_CHECKPOINT.md",
+      "sha256": "93011fd066188d225aca42a62265a40303056ac44e0963326865642a31db1051",
+      "bytes": 2194
+    },
+    {
+      "path": "WORKER_COMMISSIONS/ASTRA-UR-PROGRAM-SOURCEFREE-INVESTIGATIONS-R1/06_CURRENT_PROGRAM_POSITION.md",
+      "sha256": "155f64e0c35e597dbe04f963a373d07f9d725dbb3b2e461f6fb5f140a5538672",
+      "bytes": 5512
+    },
+    {
+      "path": "WORKER_COMMISSIONS/ASTRA-UR-PROGRAM-SOURCEFREE-INVESTIGATIONS-R1/09_CANDIDATE_ASTRA_NECESSITY_CARDS.md",
+      "sha256": "b9e2596669f2d3921f9db8794cee23ece1e01e66c25ac1dddbba624191ab3785",
+      "bytes": 4187
+    }
+  ],
+  "self_hash_excluded": true
+}

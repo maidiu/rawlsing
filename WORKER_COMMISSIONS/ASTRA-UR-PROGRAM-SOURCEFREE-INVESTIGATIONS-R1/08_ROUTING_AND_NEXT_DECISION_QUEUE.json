@@ -1,7 +1,7 @@
 {
   "schema": "ASTRA_UR_ACTIVE_INTELLIGENCE_ROUTING_R1",
   "user_correction": "Assess each significant task; user effects model/harness switches; pause and inform before crossing",
-  "current_model": "6.1 Light user-confirmed",
+  "current_model": "6.1 Light user-confirmed; no silent model switch",
   "exact_slug": "UNKNOWN",
   "reasoning_effort": "UNKNOWN",
   "tasks": [
@@ -114,8 +114,26 @@
       "EXPECTED_TERMINAL_DELTA": "Wave/class source-qualified N11 progress"
     }
   ],
-  "first_boundary": "B1_BROWSER_DELEGATION__NOT_YET_ASTRA",
+  "first_boundary": "MODEL_SWITCH_REQUIRED__ASTRA_I3PLUS",
   "no_silent_switch": true,
   "no_new_native_worker_launched": true,
-  "production_authority": false
+  "production_authority": false,
+  "completed_task_ids": [
+    "M0",
+    "M1",
+    "B1",
+    "M2"
+  ],
+  "next_task": {
+    "TASK_ID": "A1_TERMINAL_REPAIR_ALLOCATION",
+    "REQUIRED_INTELLIGENCE": "I3+",
+    "EXECUTION_REQUIREMENT": "S1-S2 bounded synthesis of existing evidence; no new native experiments",
+    "MODEL": "USER_SELECTED_ASTRA_CAPABLE_CODEX",
+    "REASONING_EFFORT": "HIGH",
+    "WHY_THIS_MODEL": "Independent cross-node minimal-cutset and dependency ruling after concrete recovery/proof-scope evidence; current Light must not silently perform the reserved architectural judgment",
+    "CHEAPER_ALTERNATIVE": "Mechanical evidence/source comparisons finished; local facade implementation alternative comparison belongs to future economical authorized worker, not Astra clerical work",
+    "AUTHORITY": "Report-only architectural/scientific boundary judgment; no original issuance or implementation unpause",
+    "STOP_CONDITION": "One evidence-bounded ruling, exact DAG/owner deltas or explicit no-change/HOLD; then save and downshift",
+    "EXPECTED_TERMINAL_DELTA": "Settled productive repair allocation enabling complete implementation-ready HQ/user decision"
+  }
 }

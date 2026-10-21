@@ -1,3 +1,5 @@
+> **Superseded routing status:** UR-S1 has returned and its static evidence was checked. Read 11_UR_S1_INTAKE_AND_ASTRA_SWITCH.md for the current MODEL_SWITCH_REQUIRED__ASTRA_I3PLUS boundary. The text below preserves the earlier intake/necessity framing.
+
 # Candidate necessity cards — no Light architecture verdict
 
 Do not upgrade automatically. First consume the finite Browser clarification, then decide whether a material fork remains. If a question reduces to code reachability, missing witness or an already specified implementation proof, route it to that owner. The cards below identify the smallest possible I3+ decisions.

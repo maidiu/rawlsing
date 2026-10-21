@@ -1,3 +1,5 @@
+> **Superseded routing status:** UR-S1 has returned and its static evidence was checked. Read 11_UR_S1_INTAKE_AND_ASTRA_SWITCH.md for the current MODEL_SWITCH_REQUIRED__ASTRA_I3PLUS boundary. The text below preserves the earlier intake/necessity framing.
+
 # Current UR position — Light intake, architectural judgment pending
 
 Date:2026-10-21. Director branch:agent/astra-ur-program-sourcefree-evidence-direction-r1. Remote baseline:8c0d764336186eaf321e94f13078b942bc9c51a7.

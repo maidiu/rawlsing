@@ -1,15 +1,16 @@
-# Current checkpoint — user-confirmed6.1 Light, active routing boundary
+# UR checkpoint — verified UR-S1, Astra decision boundary
 
-Read06_CURRENT_PROGRAM_POSITION.md,07_RETURN_DIFFERENCE_REGISTER.json,08_ROUTING_AND_NEXT_DECISION_QUEUE.json and09_CANDIDATE_ASTRA_NECESSITY_CARDS.md. These supersede older pending-return/no-HQ-intake instructions in00/04; original records remain historical.
+Current state:MODEL_SWITCH_REQUIRED__ASTRA_I3PLUS.
+User-confirmed current model6.1 Light; selected effort/API slug UNKNOWN. Last quota10%five-hour/46%weekly consumed. No silent switch.
+Existing director branch:agent/astra-ur-program-sourcefree-evidence-direction-r1; pre-update head12ff37b8a30962b3edd62207baec21806b7aa447. Enclosing Git commit is current checkpoint identity; verify direct remote before continuation.
 
-Current model:6.1 Light by direct user confirmation; exact API slug/selected effort UNKNOWN. Session01a15c1e-5446-7ef3-80bb-9ff5c2cb27da. Host MacBook-Pro.lan. Artifact cwd has no Git checkout; GitHub publication used. No worker or native model launched. Latest quota6%five-hour/45%weekly used, check live on resume.
+Read11_UR_S1_INTAKE_AND_ASTRA_SWITCH.md first; ready-to-paste Astra HIGH continuation and exact smallest architectural decision are there. Updated07 and08 contain mechanical register/routing. All UR-A/B/S1 evidence lanes returned; no extra evidence court commissioned.
 
-HQ R54 current e2ca4bf898f62653d7c1dc15f310cee2afdd62ee, handoff5335547307c868b1edb8cae273c7a4e8a0a4a58d. U53A d7988b3d5d313902d883d2d8c244fd2526058410; UR-A aaec50f421b73c5508e545bd99e937f21edec8ef; UR-B66d267cb017951fd41389aa075780838f64b6445. Existing director branch continued, no duplicate court.
+UR-S1:a9fc811ecc2a10e07b5bcc2d5da385369ee59554; startupc74e3bc5bf2ac0e800d96496fbb7f78e981a83fb; one commit ahead,zero behind,five allowed files. Publication/output blob checks and four independent static source spot-checks done; cached full harness source also inspected. No native rerun.
+Facts:caller S3 respondent map wrong; tested facade static occurrence fan-out; low-level validated row-aware candidate-builder interface exists, not qualified implementation. Direct XOR counts survive; single-atom I05 valid-empty is distinct from nonempty learned product/lifecycle/currentness/N10E. N10E NOT_REACHED,Z UNRESOLVED denominator16.
 
-Completed Light phase: direct refs/startup ancestry/return allowlists verified; full return/decision/manifest/evidence/import/selected-code artifacts read;12 fetched UR-B manifest entries hash/byte checked; author6/6JUnit inspected without independent native rerun; ten-node mechanical difference register created; R54 scope respected.
+Next:User select Astra-capable model,HIGH; finite cutset/order/owner ruling, particularly R04 custody scheduling versus gate; no new search or native repair. Save substantive judgment and then proactively downshift for mechanical final A–G and implementation-flight preparation. Do not declare the entire repair program complete at publication.
 
-Next boundary:DELEGATED_WORKER_LAUNCH_READY__BROWSER_I2. Read UR-S1/00_COMMISSION.md and exact published launch prompt. The user launches Browser; no routine extra AI approval required. Exact task: S3 supplied mapping versus API responsibility; S1 actual discovery/learned/consumer proof scope. No new native experiments. One finite return only.
+HQe2ca4bf898f62653d7c1dc15f310cee2afdd62ee; immutableR54handoff5335547307c868b1edb8cae273c7a4e8a0a4a58d. U53Ad7988b3d5d313902d883d2d8c244fd2526058410; UR-Aaaec50f421b73c5508e545bd99e937f21edec8ef; UR-B66d267cb017951fd41389aa075780838f64b6445. No worktree rebuilt; artifact cwd has no Git checkout; guarded GitHub writes used.
 
-After UR-S1 returns, Light mechanically verifies/integrates. Determine if necessity cards actually require Astra HIGH. Pause MODEL_SWITCH_REQUIRED__ASTRA_I3PLUS before any such ruling; otherwise assign local implementation/scientific proof without upgrading. When Astra has completed substantive thought, save and downshift for clerical A-G/flight assembly. No silent model/harness switches.
-
-Whole UR campaign is not finished. Final A–G delta and NEXT_IMPLEMENTATION_FLIGHT remain to be prepared after bounded decisions. Production still requires exact explicit user/competent unpause; J52/W52 USER_STOPPED, original U/E_pre null/unissued, N11 NOT_READY,N12HOLD. No source/scientific/CI/wake authority granted by this continuation.
+No production/source/scientific/CI/N11/N12 grant. J52/W52 USER_STOPPED. No new external worker launched. No local uncommitted work.
