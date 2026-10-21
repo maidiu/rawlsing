@@ -1,0 +1,19 @@
+# U53A continuation checkpoint — IN PROGRESS
+
+This is a resumable audit checkpoint, not completed court or repair authorization. Preserve the pre-analysis oracle committed at a79dfcf85c65195c9b6d264fd366b50a71b4b5a2. User explicitly resumed this audit in the current Codex desktop chat; repository examination and report publication use GitHub connector only. Actual Browser GPT-6 harness identity is not claimed. No repository/source runtime or other agent has been used for this audit continuation.
+
+## Verified intake
+- Sealed startup f148f9ba34deb0ae2ad3983fe94bbcef8f004b03. GitHub recursive tree returned truncated=false, 9,129 entries / 7,615 blobs, independently corroborating U53F tracked-file count.
+- U53F remote head verified fdc4d03537e649cd56c19a458ebeb3292298ff3f. Manifest observed_head 872aaee746e12ee933af94e58d069b2506b270e7 is earlier payload state. Its scope admits remote refs were not refreshed and only name/subject-selected refs were diff-scanned.
+- Referenced R53 seal absent at startup; startup was supplied explicitly by user. Live integration HQ_HANDOFF/LATEST.json points to R53 checkpoint 13a75d7c0979ea0f7d7cf58afad4cb3d5d1f7c8e, progress 37. R53 STOP supersedes R52 J52/W52 launch language.
+- Fetch_file on 1.7MB U53F tree ledger returned empty content with blob cc89b76a308f9ca73d3502be06ce2babc499152a. Full ledger comparison still pending; no false completeness claim.
+
+## Independent code findings, static and not runtime-tested
+1. G50 g50/enumerate.py at d379bafe36b8d89da27ea5bf33614d33aca7f2d2, blob f610ef2dea39519a51a5b57fd35bbe245fb9dc9b: lines 192–207 unconditionally add ID/Y/H/RT/X1/X2/SET/RANK/REP/A fixture operations. add() line 151 indexes items[targets[0]] even after role_disposition marks a missing target prohibited. An arbitrary instrument lacking ID therefore encounters an apparent KeyError; genericity is contradicted by static control flow, runtime replay pending. Line 78 hardcodes Y as the reverse-direction role.
+2. I51 candidate/r51_joined_source_producer.py at 9bbf9e0509411beb210331d28160324b005a784e, blob 31eb9d6a17788b577b7aab46a290d68f12a59288: lines 132–134 add the reserved G50 fixture identifiers to the selected q301 pair; lines 186–198 only lower unconditioned unary operations with selected response values. Lines 201–215 execute one selected operation, not the full eligible frontier. This is bounded useful evidence and a failed universal interface.
+3. G50 native_i05.py blob 96bf1778fddd108037be83a3bb5fdafc2259c602: lines 13–19 import test builders; lines 306–336 compare a fixed native rule-count set with a projection of eligible operation identities. This does not independently establish operation-level no-drop.
+4. B49 pre553_native_workload_binding.py at b5600da96358f8526471d635a1befa8daa3f098b, blob bc88720c2bbcf52a43b799526c7dade094ccd9f8: OperationFixture is explicitly unary (68–84); build_test_only_workload has discoveries=() (348), one expected QUERY job (365), explicit TEST_ONLY scope (367). Preserve its contract at its actual grain; extend native lowering rather than invent another C11/I03/I05/Batch.
+5. U53F tools/graph_build.py uses a manually curated 22-node set; inventory completeness is not semantic reachability completeness. The node named i05 is pre553_empirical_possibility_provider (N10E); exact I05 discovery is the node called compiler. Correct this distinction in Astra graph.
+
+## Next work
+Read exact primary history and acceptance clauses; inspect canonical Route B, discovery, Batch, issued workload and downstream learned/F5/F6/F7/N9/P41/E04 owners; verify U53F hashes and ledger where connector permits. Produce required 00–12 court files, explicit bounded evidence manifest, repair DAG, machine-readable gate specification, all35 accounting and proposed commissions NOT ISSUED. Keep all unresolved coverage and runtime checks explicit. No production edits, original source reads, scientific issuance, J52/W52 restart or N11/N12 adoption.
