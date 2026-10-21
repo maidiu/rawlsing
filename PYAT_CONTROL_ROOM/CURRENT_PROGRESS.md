@@ -1,4 +1,19 @@
-# Pyat HQ — current whole-machine state and scientific trajectory (revision 38)
+# Pyat HQ — current whole-machine state and scientific trajectory (revision 39)
+
+## R53 U53A Astra READY TO RESUME — both sourcefree groundwork flights returned (2026-10-21)
+
+**Verified remote worker heads:** P53E lossless evidence `c54e0883af03394ab4df06159d205f6cfb775bb7`; P53T pinned synthetic native falsification `463be0d340e7ebc7e5e7b0337142c0d63125a179`; B53H R2 historical/structural CI `026a6ba3075817b7f0370619843ee7227967bc8e`; B53R R2 code reviewer `39a06929f8ecc58f9854e156dcd04c32bc9a5ce3`; original U53F `fdc4d03537e649cd56c19a458ebeb3292298ff3f`. Existing Astra U53A author branch remains `9df2c40e51cefbff1f68dedf85556c9b0e326d3f`, PARTIAL, NO AUTO LAUNCH.
+
+P53E independently rechecked 36 original files and 331 lossless text shards, 7,615 pinned tree entries, 79,487 diff rows, 45,431 scan hits; 8/8 hostile mutation controls and 36/36 reassembly reported PASS with SHA receipts. Count 11,305 source Python blobs is U53F-authored and NOT independently rescanned. Its 2,214 unexamined ref denominator is a LIMIT, not exhaustive semantic graph. GitHub HQ connected file reader independently successfully fetched five representative full text shards including ~196 KB tree, branch-diff and E41/J42/P41 source-specific samples; no claim all 331 connector tested. P53E source manifest self-head mismatch documented rather than corrected, no original U53F modification.
+
+P53T actual sourcefree pinned tests report 23/23 PASS (defect reproductions + positives), 8 B53H published controls passed: G50 KeyError on arbitrary item IDs; unadministered item eligible and duplicate occurrence silent overwrite; literal Y-specific reverse; J42/P41 wrong requested-conditional evidence binding with E04 top-level false success; unsupported/missing/unknown state still called success; structural CI self-attested forged booleans accepted. U43 only mocked owner helper: no real Batch replay/corruption proved. Neither flight grants original35 source semantics or acceptance.
+
+**ASTRA CONTINUATION:** `PYAT_CONTROL_ROOM/R53_U53A_POST_PREPARATION_RESUME_INSTRUCTION_20261021.md`. User reports model allowance reset and selected mainMac; select ACTUAL Astra model, not silent GPT-6 Sol, verify real local S3 Git/Python before claiming. Resume SAME existing U53A branch/worktree after session preflight and read full original commission, preserved frozen independent pre-analysis oracle and `RESUME_CHECKPOINT.md`. Independently challenge all new receipts, finish complete missing 00–12 + manifest, original35 F1–F8 causal/technical/source graph, non-gameable CI and minimal repair DAG; publish proposed commissions ONLY, NO production repairs. P53E's authenticated REST receipt embeds token-bearing URL metadata; do not copy signed URL query strings into outputs, use immutable plain GitHub blob URLs.
+
+**STOP STILL BINDING:** J52/W52 USER_STOPPED, no restart or replacement production write; original35 U_item/U_unit/U_app/E_pre unissued/NULL, source permissions not inferred from names, N11 NOT_READY, N12 HOLD; Sorok actor separate. Original 35 expected wave identities and 1,890 N11 accounting cells remain not measured, no scientific/source/FF/actor grants.
+
+## Previous progress revision 38 retained below
+
 
 ## R53 — pre-Astra sourcefree evidence work, after real U53F/B53R/B53H returns (2026-10-20)
 
