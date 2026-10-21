@@ -1,0 +1,175 @@
+{
+  "schema": "PYAT_R53_P53T_PINNED_SOURCE_AND_RUNTIME_CUSTODY@1",
+  "branch": "agent/rabochii-pyat-r53-p53t-native-sourcefree-defect-reproduction-r1",
+  "startup_sha": "f6fd6cdfebe8f0d76a3aa0e2de150065f261709d",
+  "worktree": "/Users/matthewsmith/Desktop/Rawlsing/R53-P53T-native-sourcefree-wt",
+  "repo": "maidiu/rawlsing",
+  "python": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]",
+  "pytest": "9.0.2",
+  "platform": "macOS-13.2.1-x86_64-i386-64bit",
+  "sourcefree_boundary": {
+    "original_microdata_read": false,
+    "sav_dta_read": false,
+    "network_source_access": false,
+    "production_code_modified": false,
+    "worker_branch_checked_out": false,
+    "synthetic_inline_fixtures_only": true,
+    "original35_acceptance_touched": false
+  },
+  "modules": [
+    {
+      "id": "G50_ENUMERATE",
+      "commit": "d379bafe36b8d89da27ea5bf33614d33aca7f2d2",
+      "git_path": "WORKER_RETURNS/PYAT-R50-G50-GOVERNED-OPERATION-GRAMMAR-R1/g50/enumerate.py",
+      "git_blob": "f610ef2dea39519a51a5b57fd35bbe245fb9dc9b",
+      "materialized_path": "tests/_pinned/g50/enumerate.py",
+      "sha256": "9f2ba07633f3d9f4b656ba5d33b7b9695c290e09cfb6f789e8347d643543ec55",
+      "executed": true
+    },
+    {
+      "id": "G50_TYPES",
+      "commit": "d379bafe36b8d89da27ea5bf33614d33aca7f2d2",
+      "git_path": "WORKER_RETURNS/PYAT-R50-G50-GOVERNED-OPERATION-GRAMMAR-R1/g50/types.py",
+      "git_blob": "a376edad00a3b40f69fc3a87c83658b4406bc67b",
+      "materialized_path": "tests/_pinned/g50/types.py",
+      "sha256": "e5d91ca5aa00df46818c9a076bf162667c66ae43fbd92cbe6090e706f80da427",
+      "executed": true
+    },
+    {
+      "id": "G50_NATIVE_MAP",
+      "commit": "d379bafe36b8d89da27ea5bf33614d33aca7f2d2",
+      "git_path": "WORKER_RETURNS/PYAT-R50-G50-GOVERNED-OPERATION-GRAMMAR-R1/g50/native_map.py",
+      "git_blob": "b7a0d3193667013b81dae9eeeef07d26da88fcc3",
+      "materialized_path": "tests/_pinned/g50/native_map.py",
+      "sha256": "71d79dc57077b83557696a2a8c6d980213192098778c5ab58dd7a163d7d7ca4e",
+      "executed": true
+    },
+    {
+      "id": "G50_FIXTURE",
+      "commit": "d379bafe36b8d89da27ea5bf33614d33aca7f2d2",
+      "git_path": "WORKER_RETURNS/PYAT-R50-G50-GOVERNED-OPERATION-GRAMMAR-R1/g50/fixture.py",
+      "git_blob": "41b6191cdd62a387800fd76f36ceb6b6f5a2fdcf",
+      "materialized_path": "tests/_pinned/g50/fixture.py",
+      "sha256": "faaa29a2e7123e3e7978c99432ebb4d60e0af4a877d53c7632beea04f93bc0e6",
+      "executed": true
+    },
+    {
+      "id": "J42_JOIN",
+      "commit": "f53cb0d2bce52640268c844c398bbd8007d28edc",
+      "git_path": "WORKER_RETURNS/PYAT-R42-J42-COMPLETE-E41-W41-P41-ACTUAL-JOINT-PREV3-CONSUMER-R1/runtime/j42_join.py",
+      "git_blob": "40f1e9f69fafff37f6bc44474b0189543d4997b3",
+      "materialized_path": "tests/_pinned/j42/runtime/j42_join.py",
+      "sha256": "4bab407129b1b385585f287b948bcde4d5ffaa4affe53b78cefdf6c6c981b399",
+      "executed": true
+    },
+    {
+      "id": "P41_SERVICE",
+      "commit": "f53cb0d2bce52640268c844c398bbd8007d28edc",
+      "git_path": "WORKER_RETURNS/PYAT-R42-J42-COMPLETE-E41-W41-P41-ACTUAL-JOINT-PREV3-CONSUMER-R1/vendor/p41/runtime/p41_service.py",
+      "git_blob": "7d428106c79bcc56973f7c0044fc273a2b354554",
+      "materialized_path": "tests/_pinned/j42/vendor/p41/runtime/p41_service.py",
+      "sha256": "03fa97b37661b66728d1c4cbeabc277794dadc8d4511c145acce6e904b6a10d6",
+      "executed": true
+    },
+    {
+      "id": "E04_NONPARENT_CONSUME",
+      "commit": "f53cb0d2bce52640268c844c398bbd8007d28edc",
+      "git_path": "WORKER_RETURNS/PYAT-R42-J42-COMPLETE-E41-W41-P41-ACTUAL-JOINT-PREV3-CONSUMER-R1/vendor/p41/runtime/vendor/product/nonparent.py",
+      "git_blob": "2181b832d3c4376d4b9428e13f4354f273be8f32",
+      "materialized_path": "tests/_pinned/j42/vendor/p41/runtime/vendor/product/nonparent.py",
+      "sha256": "3635f0f6ad4891718c26c99f0f9860263d5e054517059f3dfe0409ec66d6287e",
+      "executed": true
+    },
+    {
+      "id": "E41_FRESH_DRIVER",
+      "commit": "f53cb0d2bce52640268c844c398bbd8007d28edc",
+      "git_path": "WORKER_RETURNS/PYAT-R42-J42-COMPLETE-E41-W41-P41-ACTUAL-JOINT-PREV3-CONSUMER-R1/runtime/e41_driver.py",
+      "git_blob": "3b739d79e54d904af76b1c34482e215bad9eeb77",
+      "materialized_path": "tests/_pinned/j42/runtime/e41_driver.py",
+      "sha256": "4434c5abb1dc79fda9300f9323cb805da66139f06eeda6bf8a56d7b241c0da76",
+      "executed": true,
+      "execution": "subprocess, PYTHONHASHSEED=0, synthetic_world_rows only"
+    },
+    {
+      "id": "U43_ISSUED_WORKLOAD",
+      "commit": "31e84f49d624f5524906e9e7839d2873106f8249",
+      "git_path": "WORKER_RETURNS/PYAT-R51-I51-B49-G50-JOINED-PRODUCER-R1/candidate/rawlsing_next/pre553_issued_workload.py",
+      "git_blob": "31e84f49d624f5524906e9e7839d2873106f8249",
+      "materialized_path": "tests/_pinned/u43/pre553_issued_workload.py",
+      "sha256": "8a420647ec32e1e6935e2b359c0c6e3cab1f802be59c3861a8ba2393b3351ac6",
+      "executed": "isolated_helper_only"
+    },
+    {
+      "id": "B53H_R2_PREFILTER",
+      "commit": "026a6ba3075817b7f0370619843ee7227967bc8e",
+      "git_path": "WORKER_RETURNS/PYAT-R53-B53H-HISTORICAL-RECURRENCE-AND-ACCEPTANCE-FAILURE-COURT-R1/09_trusted_oracle_prefilter.py",
+      "git_blob": "c7eea07999752a5101cacd8c3ede68fb24f061e7",
+      "materialized_path": "tests/_pinned/b53h/09_trusted_oracle_prefilter.py",
+      "sha256": "eae631bb3b34861f95d5065d19591e1bd4e3dd75b7b54d95cfd2192100014a2f",
+      "executed": true
+    },
+    {
+      "id": "B53H_R2_PUBLISHED_TESTS",
+      "commit": "026a6ba3075817b7f0370619843ee7227967bc8e",
+      "git_path": "WORKER_RETURNS/PYAT-R53-B53H-HISTORICAL-RECURRENCE-AND-ACCEPTANCE-FAILURE-COURT-R1/10_test_trusted_oracle_prefilter.py",
+      "git_blob": "df073d1a3ac01e3009699c14022d60f70dae790f",
+      "materialized_path": "tests/_pinned/b53h/10_test_trusted_oracle_prefilter.py",
+      "sha256": "8d56b2dad40db0972d05177a63f5324e20c69da4d8b5bd733aa7422220831607",
+      "executed": true
+    },
+    {
+      "id": "PRE553_EMPIRICAL_OBJECTS_DEPENDENCY",
+      "commit": "f6fd6cdfebe8f0d76a3aa0e2de150065f261709d",
+      "git_path": "rawlsing_next/pre553_empirical_objects.py",
+      "git_blob": "a61365b994e5c3c50de0f598fcf40e90abf757b6",
+      "sha256": "9cd1d71440a7e8c1861dda73274529e07211edc14335583e93ad91c0833e9ab4",
+      "note": "same git blob at d379bafe36b8d89da27ea5bf33614d33aca7f2d2"
+    }
+  ],
+  "commands": [
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 python3 -m pytest WORKER_RETURNS/PYAT-R53-P53T-NATIVE-FALSIFICATION-EVIDENCE-R1/tests -q -rA --junitxml=receipts/pytest_all.xml",
+      "tests": 23,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "receipt": "receipts/pytest_all.log"
+    },
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 python3 -m pytest tests/_pinned/b53h/10_test_trusted_oracle_prefilter.py -q -o python_files='10_test_*.py'",
+      "tests": 8,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "receipt": "receipts/pytest_b53h_published.log"
+    },
+    {
+      "command": "python3 tests/_pinned/j42/runtime/e41_driver.py --out <tmp>/e41_fresh_run.json",
+      "exit": 0,
+      "receipt": "receipts/e41_fresh_run.json"
+    }
+  ],
+  "isolation": {
+    "separate_worktree": true,
+    "g50_j42_p41_e04_source_unchanged": true,
+    "u43_owner_functions_replaced_by_spies_for_control_flow_only": true,
+    "e41_executed_in_subprocess": true,
+    "p41_prepare_uses_sourcefree_synthetic_world": true
+  },
+  "ran": [
+    "G50 frontier stock, arbitrary-ID, padded, unadministered, missing-held, duplicate, direction cases",
+    "fresh E41 synthetic driver",
+    "J42 adapter, J42P41Service progressive, JoinedService possibilities, unchanged E04 consume",
+    "P41 unknown/ZERO_SUPPORT state assembly",
+    "B53H R2 published 8 controls and 4 adversarial prefilter probes",
+    "U43 isolated control-flow spy and prior-receipt refusal"
+  ],
+  "not_run": [
+    "full B49 to G50 to U43 to I05 native join",
+    "actual BatchExecutionRunner for U43 duplicate path",
+    "full W41 x E41 x P41 84-view join",
+    "original35 SAV/DTA measurement, E_pre acceptance, N11/N12",
+    "B53H protected CI, authenticated runner result, signature or attestation root",
+    "J52/W52 restart, repair, adoption, production installation"
+  ]
+}

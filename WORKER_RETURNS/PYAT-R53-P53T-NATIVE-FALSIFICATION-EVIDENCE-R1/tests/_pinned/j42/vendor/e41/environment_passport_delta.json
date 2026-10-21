@@ -1,0 +1,54 @@
+{
+  "schema": "PYAT_00D_ENVIRONMENT_PASSPORT_DELTA@1",
+  "environment_id": "opencode-main-mac-r41-e41",
+  "epoch_id": "20261019-r41-e41-a1",
+  "session_alias": "user-main-mac-opencode",
+  "surface": "OpenCode",
+  "machine_alias": "user-main-mac",
+  "status": "LIVE_VERIFIED",
+  "last_live_probe_at": "2026-10-19T03:15:00Z",
+  "interpreter": {"command": "python3", "version": "3.11.3", "status": "OK"},
+  "pytest": {"command": "python3 -m pytest", "version": "9.0.2", "status": "OK"},
+  "git": {"command": "git", "status": "OK"},
+  "writable_marker": "OK (return directory written and read back)",
+  "worktree": {
+    "alias": "R41-E41-wt",
+    "branch": "agent/rabochii-pyat-r41-e41-full-f1f4-n10e-empirical-r1",
+    "startup_head": "c4934fd71120d37a4d06f7c830891e6e97fe4ecf",
+    "sparse": true
+  },
+  "pinned_imports": [
+    {"path": "rawlsing_next/pre553_empirical_possibility_provider.py", "git_blob_sha1": "23167aa25291fb148b1e3cf210ac33fe7769b783", "grade": "ACCEPTED_OWNER_UNCHANGED"},
+    {"path": "rawlsing_next/pre553_analytical_composition.py", "git_blob_sha1": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b", "grade": "ACCEPTED_OWNER_UNCHANGED"},
+    {"path": "rawlsing_next/source_backed_positioned_subject_possibility.py", "git_blob_sha1": "62e5eced47b64512f47b004e3e13a6ef3fe21de7", "grade": "ACCEPTED_OWNER_UNCHANGED"},
+    {"path": "rawlsing_next/pre553_empirical_objects.py", "git_blob_sha1": "a61365b994e5c3c50de0f598fcf40e90abf757b6", "grade": "ACCEPTED_OWNER_UNCHANGED"},
+    {"path": "rawlsing_next/pre553_empirical_query.py", "git_blob_sha1": "03facecf70890bfd13b80418620d274cbcd69d02", "grade": "ACCEPTED_OWNER_UNCHANGED"},
+    {"path": "rawlsing_next/pre553_discovery_exact.py", "git_blob_sha1": "905f24d114419dbdd93879ad2bee5b59dd2f23af", "grade": "ACCEPTED_OWNER_UNCHANGED"},
+    {"path": "rawlsing_next/pre553_recursive_handoff.py", "git_blob_sha1": "868f43bf9869af5501fd67c3de7a2703ba4cb1b4", "grade": "ACCEPTED_OWNER_UNCHANGED"},
+    {"path": "rawlsing_next/pre553_learned_world_composition.py", "git_blob_sha1": "4a8e27a226a9c06606f5ba493d2cc7356d491a7b", "grade": "ACCEPTED_OWNER_UNCHANGED"},
+    {"path": "rawlsing_next/pre553_source_backed_c11_facade.py", "git_blob_sha1": "8a761119e4a8d68eb291fc4edfadb52e027f8284", "grade": "ACCEPTED_OWNER_UNCHANGED"},
+    {"path": "rawlsing_next/tests/n10e_empirical_slice_fixture.py", "git_blob_sha1": "0e384f72fa615dc72a0dcb08a36472a64b7b1e4a", "grade": "ACCEPTED_FIXTURE_UNCHANGED"},
+    {"path": "rawlsing_next/tests/c1_at08_at13_fixture.py", "git_blob_sha1": "0393cc8c17a313b7944b2a5287d0406d6cbe3849", "grade": "ACCEPTED_FIXTURE_UNCHANGED"},
+    {"path": "rawlsing_next/tests/c1_at14_at16_fixture.py", "git_blob_sha1": "0d754328ef3ae8478e6d354e979b788c89465148", "grade": "ACCEPTED_FIXTURE_UNCHANGED"},
+    {"path": "rawlsing_next/tests/c1_at18_at19_fixture.py", "git_blob_sha1": "cc0015ce9c7e05224ec499f66e893a7ffda1bbe3", "grade": "ACCEPTED_FIXTURE_UNCHANGED"},
+    {"path": "rawlsing_next/tests/c1_03_join_fixture.py", "git_blob_sha1": "819a918cb50344596580ba2c1fd06769a061559a", "grade": "ACCEPTED_FIXTURE_UNCHANGED"}
+  ],
+  "dependency_closure": "FULL (stdlib + repo-local imports only; no third-party runtime beyond pytest)",
+  "vendored": [
+    {"path": "WORKER_RETURNS/PYAT-R39-E04L-RELEASE-READTHROUGH-CONSUMER-R1/vendor/product (commit daf0d085e930696708c755e687879b155653c215)", "grade": "BYTE_IDENTICAL_COPY_ORIGINAL_E04_CONSUMER"},
+    {"path": "WORKER_RETURNS/PYAT-R39-E04L-RELEASE-READTHROUGH-CONSUMER-R1/vendor/aux/pre553_n9_n10w_progressive_candidate.py (commit daf0d085e930696708c755e687879b155653c215)", "grade": "BYTE_IDENTICAL_COPY_RETAINED_E03_MODULE"}
+  ],
+  "tests_executed": {
+    "e41_return_courts": {"command": "python3 -m pytest test_e41_tranche.py -q", "result": "16 passed", "junit": "evidence/e41_junit.xml"},
+    "accepted_baseline_c1_n10e_sweep": {"command": "PYTHONPATH=rawlsing_next/tests python3 -m pytest <accepted C1/empirical/positioned suites> -q", "result": "43 + 161 + 567 passed"},
+    "proof_witness": {"command": "proof_integrity_gate_r1.py witness ...", "result": "3/3 claims BASELINE PASS / TARGET_ASSERTION_FAILED"}
+  },
+  "provider_model_effort": {"provider": "OpenCode", "model": "DeepSeek V4.1 Flash", "effort": "standard/default"},
+  "account_quota_tier": "UNKNOWN (user session)",
+  "incremental_money_observed": "UNKNOWN (no billing telemetry in-session)",
+  "installed_packages": "pytest 9.0.2",
+  "assignments_completed": ["PYAT-R41-E41-FULL-EMPIRICAL-F1F4-COMPUTED-POSSIBILITY-R1"],
+  "eligibility_for_continuation": "YES for related sourcefree E41/P41 handback tasks; NO for source/authority issuance",
+  "review_conflicts": "None; this worker is not the independent acceptor of its own work",
+  "privacy_gate": "No passwords, tokens, personal filesystem paths, respondents or secret data in return"
+}
