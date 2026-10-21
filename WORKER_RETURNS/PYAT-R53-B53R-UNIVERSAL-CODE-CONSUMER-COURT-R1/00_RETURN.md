@@ -5,7 +5,7 @@
 **Role:** independent reviewer / adversarial technical investigator, NOT U53A Astra, Pyat HQ, U53F source indexer, original-source/semantic/FF issuer or production editor.
 **Execution:** S1–S2 GitHub/sourcefree code and exact blob inspection only. Model invoked as GPT-6 via current ChatGPT/GitHub surface; independently verifiable model effort/account telemetry is unavailable. No local S3 Python, pytest, Mac, respondent SAV/DTA, source licence or S3 code process. **NOT_RUN is not PASS.**
 **Branch:** agent/reviewer-pyat-r53-b53r-universal-code-consumer-court-r1. Exact sealed historical base: f148f9ba34deb0ae2ad3983fe94bbcef8f004b03. GitHub search returned no existing remote B53R branch before creation. **Local other-machine process state unavailable**, not guessed absent. Branch created from precise SHA and contains only this court's report subtree.
-**Read order:** R53 user STOP, 00 whole-machine, R52/HQD125 F1–F8 doctrine and earlier Astra atlas Q, U53F exact fd c4d03537e649cd56c19a458ebeb3292298ff3f, independently fetched original code/candidate blobs; **frozen independent pre-U53A file committed 5c178328dd4f64b64c78b8228e8bf2ab0fc06614 BEFORE U53A read**; then U53A exact 9df2c40e51cefbff1f68dedf85556c9b0e326d3f adversarial comparison.
+**Read order:** R53 user STOP, 00 whole-machine, R52/HQD125 F1–F8 doctrine and earlier Astra atlas Q, U53F exact fdc4d03537e649cd56c19a458ebeb3292298ff3f, independently fetched original code/candidate blobs; **frozen independent pre-U53A file committed 5c178328dd4f64b64c78b8228e8bf2ab0fc06614 BEFORE U53A read**; then U53A exact 9df2c40e51cefbff1f68dedf85556c9b0e326d3f adversarial comparison.
 
 ## Complete deliverables
 
