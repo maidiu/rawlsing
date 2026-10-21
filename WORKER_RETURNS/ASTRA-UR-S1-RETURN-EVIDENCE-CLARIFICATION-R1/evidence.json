@@ -1,0 +1,501 @@
+{
+  "schema": "ASTRA_UR_S1_STATIC_EVIDENCE_V1",
+  "startup": "c74e3bc5bf2ac0e800d96496fbb7f78e981a83fb",
+  "UR_B_RETURN": "66d267cb017951fd41389aa075780838f64b6445",
+  "CURRENT_CODE": "e2ca4bf898f62653d7c1dc15f310cee2afdd62ee",
+  "scope": "SOURCEFREE_READ_ONLY_STATIC; NO_RERUN; NO_SCIENTIFIC_ISSUANCE",
+  "q1": {
+    "disposition": "ACCEPT_SCOPED_WITH_LOCAL_FACADE_LIMIT_AND_CALLER_PROJECTION_ERROR",
+    "physical_rows": [
+      {
+        "row": 1,
+        "physical_pid": 0,
+        "physical_occasion": 0,
+        "physical_score": 0,
+        "correct_declared_person": "P1",
+        "actual_declared_person": "P1",
+        "correct_occurrence": "0",
+        "actual_emitted_occurrences": [
+          "0",
+          "1"
+        ],
+        "actual_query_group": "SCORE / declared P1 / REPEATED_EVENT / multiplicity 0 and 1"
+      },
+      {
+        "row": 2,
+        "physical_pid": 0,
+        "physical_occasion": 1,
+        "physical_score": 1,
+        "correct_declared_person": "P1",
+        "actual_declared_person": "P2",
+        "correct_occurrence": "1",
+        "actual_emitted_occurrences": [
+          "0",
+          "1"
+        ],
+        "actual_query_group": "SCORE / declared P2 / REPEATED_EVENT / multiplicity 0 and 1"
+      },
+      {
+        "row": 3,
+        "physical_pid": 1,
+        "physical_occasion": 0,
+        "physical_score": 1,
+        "correct_declared_person": "P2",
+        "actual_declared_person": "P3",
+        "correct_occurrence": "0",
+        "actual_emitted_occurrences": [
+          "0",
+          "1"
+        ],
+        "actual_query_group": "SCORE / declared P3 / REPEATED_EVENT / multiplicity 0 and 1"
+      }
+    ],
+    "key_warning": "Descriptions of query grouping are derived from source code. No concrete hashed event ID is asserted; _event derives SHA identities using row, respondent ref, question, slot, physical-value key, and occ.key.",
+    "counts": {
+      "physical_rows": 24,
+      "expected_SCORE": 24,
+      "actual_SCORE": 48,
+      "other_question_events": 120,
+      "actual_total_events": 168,
+      "route_query_status": "INTEGRITY_FAILURE",
+      "route_query_denominator": 0
+    },
+    "causal_attribution": {
+      "caller_respondent_projection": "s3.py binds row k to respondents[(k-1)%12] whereas fixture physical row k corresponds to r=floor((k-1)/2). Correct identity requires respondent index floor((k-1)/2).",
+      "caller_occurrence": "Each observed SCORE value maps to the same two OccurrenceRule objects ('0','1') for every physical row, notwithstanding actual OCCASION.",
+      "inspected_facade_limitation": "_cell_key uses raw value, missingness, source missing declaration; response slot values are keyed by physical_key and fan out value.occurrences. Neither physical row ordinal nor OCCASION coordinate participates in response rule lookup. RowRespondentBinding IS row-specific for respondent only. A repeated physical key cannot select occasion-specific occurrence in this inspected facade.",
+      "indexed_existing_interface": "pre553_physical_c11_bridge.PhysicalSourceAuthorityProjection(candidate_builder) accepts the complete physical incidence and iterated cells, returns a caller-built C11SourceReleaseCandidate validated through existing C11. This can express row-aware mapping if supplied by qualified caller code; not a tested turnkey facade rule and not used by the actual Route-B call path.",
+      "negative_boundary": "NO claim of global interface impossibility. No compliant row-aware builder was implemented or natively run."
+    },
+    "anchors": [
+      {
+        "source_path": "WORKER_RETURNS/ASTRA-UR-B-NATIVE-CHARACTERIZATION-R1/ur_b/fixtures.py",
+        "commit": "66d267cb017951fd41389aa075780838f64b6445",
+        "blob_sha1": "4554dfb8e8f3979c6cc1eee999f2ddb88012eab9",
+        "line_start": 63,
+        "line_end": 84,
+        "url": "https://github.com/maidiu/rawlsing/blob/66d267cb017951fd41389aa075780838f64b6445/WORKER_RETURNS/ASTRA-UR-B-NATIVE-CHARACTERIZATION-R1/ur_b/fixtures.py#L63-L84",
+        "observation": "Rows are r outer, t inner, source PID=r and OCCASION=t.",
+        "grade": "OBSERVED_SOURCE"
+      },
+      {
+        "source_path": "WORKER_RETURNS/ASTRA-UR-B-NATIVE-CHARACTERIZATION-R1/ur_b/s3.py",
+        "commit": "66d267cb017951fd41389aa075780838f64b6445",
+        "blob_sha1": "0abe0a8b9ae3e86e1af330fb460bd64f12873f56",
+        "line_start": 59,
+        "line_end": 65,
+        "url": "https://github.com/maidiu/rawlsing/blob/66d267cb017951fd41389aa075780838f64b6445/WORKER_RETURNS/ASTRA-UR-B-NATIVE-CHARACTERIZATION-R1/ur_b/s3.py#L59-L65",
+        "observation": "Declared respondents named P1..P12.",
+        "grade": "OBSERVED_SOURCE"
+      },
+      {
+        "source_path": "WORKER_RETURNS/ASTRA-UR-B-NATIVE-CHARACTERIZATION-R1/ur_b/s3.py",
+        "commit": "66d267cb017951fd41389aa075780838f64b6445",
+        "blob_sha1": "0abe0a8b9ae3e86e1af330fb460bd64f12873f56",
+        "line_start": 87,
+        "line_end": 102,
+        "url": "https://github.com/maidiu/rawlsing/blob/66d267cb017951fd41389aa075780838f64b6445/WORKER_RETURNS/ASTRA-UR-B-NATIVE-CHARACTERIZATION-R1/ur_b/s3.py#L87-L102",
+        "observation": "ResponseValueRule selects raw-value / missing-state mapping; occurrences passed invariant per value.",
+        "grade": "OBSERVED_SOURCE"
+      },
+      {
+        "source_path": "WORKER_RETURNS/ASTRA-UR-B-NATIVE-CHARACTERIZATION-R1/ur_b/s3.py",
+        "commit": "66d267cb017951fd41389aa075780838f64b6445",
+        "blob_sha1": "0abe0a8b9ae3e86e1af330fb460bd64f12873f56",
+        "line_start": 104,
+        "line_end": 130,
+        "url": "https://github.com/maidiu/rawlsing/blob/66d267cb017951fd41389aa075780838f64b6445/WORKER_RETURNS/ASTRA-UR-B-NATIVE-CHARACTERIZATION-R1/ur_b/s3.py#L104-L130",
+        "observation": "Static dual SCORE occurrences and modulo-12 row binding.",
+        "grade": "OBSERVED_SOURCE"
+      },
+      {
+        "source_path": "WORKER_RETURNS/ASTRA-UR-B-NATIVE-CHARACTERIZATION-R1/ur_b/s3.py",
+        "commit": "66d267cb017951fd41389aa075780838f64b6445",
+        "blob_sha1": "0abe0a8b9ae3e86e1af330fb460bd64f12873f56",
+        "line_start": 142,
+        "line_end": 177,
+        "url": "https://github.com/maidiu/rawlsing/blob/66d267cb017951fd41389aa075780838f64b6445/WORKER_RETURNS/ASTRA-UR-B-NATIVE-CHARACTERIZATION-R1/ur_b/s3.py#L142-L177",
+        "observation": "OCCASION only exposed as coordinate and current validated facade release call.",
+        "grade": "OBSERVED_SOURCE"
+      },
+      {
+        "source_path": "WORKER_RETURNS/ASTRA-UR-B-NATIVE-CHARACTERIZATION-R1/ur_b/s3_repeated_query.py",
+        "commit": "66d267cb017951fd41389aa075780838f64b6445",
+        "blob_sha1": "92bdc3869fac0f9136174e65f06c13ecc0c43017",
+        "line_start": 13,
+        "line_end": 31,
+        "url": "https://github.com/maidiu/rawlsing/blob/66d267cb017951fd41389aa075780838f64b6445/WORKER_RETURNS/ASTRA-UR-B-NATIVE-CHARACTERIZATION-R1/ur_b/s3_repeated_query.py#L13-L31",
+        "observation": "Repeated topology sequence query uses two multiplicity indices.",
+        "grade": "OBSERVED_SOURCE"
+      },
+      {
+        "source_path": "WORKER_RETURNS/ASTRA-UR-B-NATIVE-CHARACTERIZATION-R1/tests/test_ur_b.py",
+        "commit": "66d267cb017951fd41389aa075780838f64b6445",
+        "blob_sha1": "e1694090dcfdabbec3f304731980cd752800deec",
+        "line_start": 126,
+        "line_end": 149,
+        "url": "https://github.com/maidiu/rawlsing/blob/66d267cb017951fd41389aa075780838f64b6445/WORKER_RETURNS/ASTRA-UR-B-NATIVE-CHARACTERIZATION-R1/tests/test_ur_b.py#L126-L149",
+        "observation": "Test asserts 48 SCORE / 168 events / repeated query INTEGRITY_FAILURE.",
+        "grade": "OBSERVED_SOURCE"
+      },
+      {
+        "source_path": "WORKER_RETURNS/ASTRA-UR-B-NATIVE-CHARACTERIZATION-R1/evidence/native_chain.json",
+        "commit": "66d267cb017951fd41389aa075780838f64b6445",
+        "blob_sha1": "550cdd4c4de68f955ec25dee99c9c50b06258d4b",
+        "line_start": 505,
+        "line_end": 524,
+        "url": "https://github.com/maidiu/rawlsing/blob/66d267cb017951fd41389aa075780838f64b6445/WORKER_RETURNS/ASTRA-UR-B-NATIVE-CHARACTERIZATION-R1/evidence/native_chain.json#L505-L524",
+        "observation": "Native return contains 24 physical rows, 48 SCORE, 168 events, INTEGRITY_FAILURE.",
+        "grade": "OBSERVED_SOURCE"
+      },
+      {
+        "source_path": "rawlsing_next/pre553_source_backed_c11_facade.py",
+        "commit": "e2ca4bf898f62653d7c1dc15f310cee2afdd62ee",
+        "blob_sha1": "8a761119e4a8d68eb291fc4edfadb52e027f8284",
+        "line_start": 98,
+        "line_end": 114,
+        "url": "https://github.com/maidiu/rawlsing/blob/e2ca4bf898f62653d7c1dc15f310cee2afdd62ee/rawlsing_next/pre553_source_backed_c11_facade.py#L98-L114",
+        "observation": "physical key excludes row ordinal and separate OCCASION.",
+        "grade": "OBSERVED_SOURCE"
+      },
+      {
+        "source_path": "rawlsing_next/pre553_source_backed_c11_facade.py",
+        "commit": "e2ca4bf898f62653d7c1dc15f310cee2afdd62ee",
+        "blob_sha1": "8a761119e4a8d68eb291fc4edfadb52e027f8284",
+        "line_start": 174,
+        "line_end": 203,
+        "url": "https://github.com/maidiu/rawlsing/blob/e2ca4bf898f62653d7c1dc15f310cee2afdd62ee/rawlsing_next/pre553_source_backed_c11_facade.py#L174-L203",
+        "observation": "RowRespondentBinding and physical-keyed ResponseValueRule definitions.",
+        "grade": "OBSERVED_SOURCE"
+      },
+      {
+        "source_path": "rawlsing_next/pre553_source_backed_c11_facade.py",
+        "commit": "e2ca4bf898f62653d7c1dc15f310cee2afdd62ee",
+        "blob_sha1": "8a761119e4a8d68eb291fc4edfadb52e027f8284",
+        "line_start": 382,
+        "line_end": 410,
+        "url": "https://github.com/maidiu/rawlsing/blob/e2ca4bf898f62653d7c1dc15f310cee2afdd62ee/rawlsing_next/pre553_source_backed_c11_facade.py#L382-L410",
+        "observation": "Event id and topology based on passed occ, row and respondent.",
+        "grade": "OBSERVED_SOURCE"
+      },
+      {
+        "source_path": "rawlsing_next/pre553_source_backed_c11_facade.py",
+        "commit": "e2ca4bf898f62653d7c1dc15f310cee2afdd62ee",
+        "blob_sha1": "8a761119e4a8d68eb291fc4edfadb52e027f8284",
+        "line_start": 498,
+        "line_end": 550,
+        "url": "https://github.com/maidiu/rawlsing/blob/e2ca4bf898f62653d7c1dc15f310cee2afdd62ee/rawlsing_next/pre553_source_backed_c11_facade.py#L498-L550",
+        "observation": "Row-to-respondent mapping independent; by physical key selects one value then emits each listed occurrence.",
+        "grade": "OBSERVED_SOURCE"
+      },
+      {
+        "source_path": "rawlsing_next/pre553_route_b_production.py",
+        "commit": "e2ca4bf898f62653d7c1dc15f310cee2afdd62ee",
+        "blob_sha1": "2385cd327dced3c5b887b59085aa0d21b04d78c3",
+        "line_start": 494,
+        "line_end": 590,
+        "url": "https://github.com/maidiu/rawlsing/blob/e2ca4bf898f62653d7c1dc15f310cee2afdd62ee/rawlsing_next/pre553_route_b_production.py#L494-L590",
+        "observation": "Route-B binds existing facade; cannot introduce row-aware occurrence logic.",
+        "grade": "OBSERVED_SOURCE"
+      },
+      {
+        "source_path": "rawlsing_next/pre553_physical_c11_bridge.py",
+        "commit": "e2ca4bf898f62653d7c1dc15f310cee2afdd62ee",
+        "blob_sha1": "3e3497a6eb730524be33bb3d453f6cc63565052c",
+        "line_start": 17,
+        "line_end": 48,
+        "url": "https://github.com/maidiu/rawlsing/blob/e2ca4bf898f62653d7c1dc15f310cee2afdd62ee/rawlsing_next/pre553_physical_c11_bridge.py#L17-L48",
+        "observation": "Existing caller-owned candidate_builder interface consumes physical incidence/cells then C11 validates.",
+        "grade": "OBSERVED_SOURCE"
+      }
+    ]
+  },
+  "q2": {
+    "disposition": "ACCEPT_SCOPED_EXECUTED_I03_AND_I05; RED_ANY_CLAIM_OF_LEARNED_XOR_PRODUCT_OR_CURRENT_CONSUMER",
+    "oracle_conflict": {
+      "oracle_claim": "8 joint cells, 2 rows each",
+      "observed": "8 enumerated combinations; 4 supported cells raw=4 each and 4 supported-risk-set zeros",
+      "reason": "A=i%2, B=floor(i/2)%2, Y=A XOR B. Only four (A,B,Y) triples can occur. Each (A,B) repeats four times across 16 rows. 4*4 + 4*0=16.",
+      "fix_class": "ORACLE_TEXT_CORRECTION_REQUIRED; NO_SOURCE_SCIENCE_REISSUANCE"
+    },
+    "independent_I03": {
+      "query": "JOINT_A_B_Y",
+      "target": [
+        "A",
+        "B",
+        "Y"
+      ],
+      "predicate": "ALL",
+      "supported": [
+        [
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "1",
+          "1"
+        ],
+        [
+          "1",
+          "0",
+          "1"
+        ],
+        [
+          "1",
+          "1",
+          "0"
+        ]
+      ],
+      "each_supported_count": 4,
+      "other_four_count": 0,
+      "denominator": 16,
+      "scope": "Synthetic direct exact empirical fact only; not a discovered I05 product."
+    },
+    "actual_I05": {
+      "atoms": [
+        "ALL=branch predicate",
+        "A1=response predicate"
+      ],
+      "grammar_rule": "PAIR_RESPONSE_COTRAVEL; SINGLE_ATOM; atom A1; baseline ALL; Y marginal template; DISTRIBUTION_DIFFERS_FROM_BASELINE",
+      "candidate_count": 1,
+      "covered_candidate_count": 1,
+      "condition": "Y | A=1 has raw counts 4,4 (n=8)",
+      "baseline": "Y | ALL has raw counts 8,8 (n=16)",
+      "comparison": "both normalized marginal Y distributions 1/2,1/2; no difference",
+      "receipt_semantics": "Code sets valid_empty iff no receipts or all receipt typed_state==VALID_EMPTY. One receipt plus valid_empty=true entails that one receipt was VALID_EMPTY under this source implementation. Its exact per-object JSON preimage was not separately downloaded.",
+      "result": "EVALUATED_VALID_EMPTY / VALID_EMPTY inferred from exact producer branches and receipt flag; not a nonempty learned XOR result."
+    },
+    "learned_wrapper": {
+      "claim_kind": "LEARNED_EMPIRICAL_EXECUTION_ONLY",
+      "coverage": "COMPLETE_FOR_EXACT_DECLARED_FRONTIER",
+      "valid_empty": true,
+      "adjudication": false,
+      "publication": false,
+      "current_selection": false,
+      "structural_truth": false,
+      "causal_truth": false,
+      "actor_v3": false,
+      "canonical_N10E": "NOT_REACHED",
+      "M1_M2_B5": "NO_RELEASE_OR_CURRENTNESS_DEMONSTRATED"
+    },
+    "tests_proof_scope": "Test asserts ten I03 results, existence of I05 receipts, wrapper claim kind, joint denominator and 8 cell identities, but does NOT assert a nonempty learned XOR product, rule selection/release/currentness, or N10E consumer call.",
+    "anchors": [
+      {
+        "source_path": "WORKER_RETURNS/ASTRA-UR-B-NATIVE-CHARACTERIZATION-R1/ur_b/fixtures.py",
+        "commit": "66d267cb017951fd41389aa075780838f64b6445",
+        "blob_sha1": "4554dfb8e8f3979c6cc1eee999f2ddb88012eab9",
+        "line_start": 10,
+        "line_end": 28,
+        "url": "https://github.com/maidiu/rawlsing/blob/66d267cb017951fd41389aa075780838f64b6445/WORKER_RETURNS/ASTRA-UR-B-NATIVE-CHARACTERIZATION-R1/ur_b/fixtures.py#L10-L28",
+        "observation": "Sixteen synthetic rows implement A,B,Y XOR exactly.",
+        "grade": "OBSERVED_SOURCE"
+      },
+      {
+        "source_path": "WORKER_RETURNS/ASTRA-UR-B-NATIVE-CHARACTERIZATION-R1/oracle/ORACLE.md",
+        "commit": "66d267cb017951fd41389aa075780838f64b6445",
+        "blob_sha1": "665bec7609d4344939a89789343768a6550bb86d",
+        "line_start": 5,
+        "line_end": 23,
+        "url": "https://github.com/maidiu/rawlsing/blob/66d267cb017951fd41389aa075780838f64b6445/WORKER_RETURNS/ASTRA-UR-B-NATIVE-CHARACTERIZATION-R1/oracle/ORACLE.md#L5-L23",
+        "observation": "Oracle prints erroneous 8-joint-cells-two-each claim.",
+        "grade": "OBSERVED_SOURCE"
+      },
+      {
+        "source_path": "WORKER_RETURNS/ASTRA-UR-B-NATIVE-CHARACTERIZATION-R1/ur_b/s1_queries.py",
+        "commit": "66d267cb017951fd41389aa075780838f64b6445",
+        "blob_sha1": "eb30a9250ea83c811310c2ffc5a72b0b99c23125",
+        "line_start": 14,
+        "line_end": 33,
+        "url": "https://github.com/maidiu/rawlsing/blob/66d267cb017951fd41389aa075780838f64b6445/WORKER_RETURNS/ASTRA-UR-B-NATIVE-CHARACTERIZATION-R1/ur_b/s1_queries.py#L14-L33",
+        "observation": "Direct I03 joint and marginal queries, separate from I05.",
+        "grade": "OBSERVED_SOURCE"
+      },
+      {
+        "source_path": "WORKER_RETURNS/ASTRA-UR-B-NATIVE-CHARACTERIZATION-R1/ur_b/s1_route_b.py",
+        "commit": "66d267cb017951fd41389aa075780838f64b6445",
+        "blob_sha1": "85eaca60b7e2d86dbe4ff7846ab3d6365e476125",
+        "line_start": 12,
+        "line_end": 46,
+        "url": "https://github.com/maidiu/rawlsing/blob/66d267cb017951fd41389aa075780838f64b6445/WORKER_RETURNS/ASTRA-UR-B-NATIVE-CHARACTERIZATION-R1/ur_b/s1_route_b.py#L12-L46",
+        "observation": "Only single atom A1 v ALL on Y marginal is submitted to I05 Route-B.",
+        "grade": "OBSERVED_SOURCE"
+      },
+      {
+        "source_path": "WORKER_RETURNS/ASTRA-UR-B-NATIVE-CHARACTERIZATION-R1/tests/test_ur_b.py",
+        "commit": "66d267cb017951fd41389aa075780838f64b6445",
+        "blob_sha1": "e1694090dcfdabbec3f304731980cd752800deec",
+        "line_start": 36,
+        "line_end": 64,
+        "url": "https://github.com/maidiu/rawlsing/blob/66d267cb017951fd41389aa075780838f64b6445/WORKER_RETURNS/ASTRA-UR-B-NATIVE-CHARACTERIZATION-R1/tests/test_ur_b.py#L36-L64",
+        "observation": "Narrow test assertions: receipts exist, claim kind, 8 joint topology cells, no learned product.",
+        "grade": "OBSERVED_SOURCE"
+      },
+      {
+        "source_path": "WORKER_RETURNS/ASTRA-UR-B-NATIVE-CHARACTERIZATION-R1/evidence/native_chain.json",
+        "commit": "66d267cb017951fd41389aa075780838f64b6445",
+        "blob_sha1": "550cdd4c4de68f955ec25dee99c9c50b06258d4b",
+        "line_start": 199,
+        "line_end": 305,
+        "url": "https://github.com/maidiu/rawlsing/blob/66d267cb017951fd41389aa075780838f64b6445/WORKER_RETURNS/ASTRA-UR-B-NATIVE-CHARACTERIZATION-R1/evidence/native_chain.json#L199-L305",
+        "observation": "Four XOR-supported cells raw4, four zeros, denominator16; Z unresolved.",
+        "grade": "OBSERVED_SOURCE"
+      },
+      {
+        "source_path": "WORKER_RETURNS/ASTRA-UR-B-NATIVE-CHARACTERIZATION-R1/evidence/native_chain.json",
+        "commit": "66d267cb017951fd41389aa075780838f64b6445",
+        "blob_sha1": "550cdd4c4de68f955ec25dee99c9c50b06258d4b",
+        "line_start": 306,
+        "line_end": 358,
+        "url": "https://github.com/maidiu/rawlsing/blob/66d267cb017951fd41389aa075780838f64b6445/WORKER_RETURNS/ASTRA-UR-B-NATIVE-CHARACTERIZATION-R1/evidence/native_chain.json#L306-L358",
+        "observation": "One candidate / one receipt / valid_empty true / no truth or actor effects.",
+        "grade": "OBSERVED_SOURCE"
+      },
+      {
+        "source_path": "rawlsing_next/pre553_discovery_exact.py",
+        "commit": "e2ca4bf898f62653d7c1dc15f310cee2afdd62ee",
+        "blob_sha1": "905f24d114419dbdd93879ad2bee5b59dd2f23af",
+        "line_start": 44,
+        "line_end": 70,
+        "url": "https://github.com/maidiu/rawlsing/blob/e2ca4bf898f62653d7c1dc15f310cee2afdd62ee/rawlsing_next/pre553_discovery_exact.py#L44-L70",
+        "observation": "SINGLE_ATOM, XOR, JOINT_DEPENDENCE distinct grammar forms/validators.",
+        "grade": "OBSERVED_SOURCE"
+      },
+      {
+        "source_path": "rawlsing_next/pre553_discovery_exact.py",
+        "commit": "e2ca4bf898f62653d7c1dc15f310cee2afdd62ee",
+        "blob_sha1": "905f24d114419dbdd93879ad2bee5b59dd2f23af",
+        "line_start": 598,
+        "line_end": 714,
+        "url": "https://github.com/maidiu/rawlsing/blob/e2ca4bf898f62653d7c1dc15f310cee2afdd62ee/rawlsing_next/pre553_discovery_exact.py#L598-L714",
+        "observation": "Normal candidate condition/baseline Y query roles; SINGLE_ATOM compiler applies exact A1 condition.",
+        "grade": "OBSERVED_SOURCE"
+      },
+      {
+        "source_path": "rawlsing_next/pre553_discovery_exact.py",
+        "commit": "e2ca4bf898f62653d7c1dc15f310cee2afdd62ee",
+        "blob_sha1": "905f24d114419dbdd93879ad2bee5b59dd2f23af",
+        "line_start": 875,
+        "line_end": 895,
+        "url": "https://github.com/maidiu/rawlsing/blob/e2ca4bf898f62653d7c1dc15f310cee2afdd62ee/rawlsing_next/pre553_discovery_exact.py#L875-L895",
+        "observation": "Exact distribution-difference arithmetic for condition vs baseline.",
+        "grade": "OBSERVED_SOURCE"
+      },
+      {
+        "source_path": "rawlsing_next/pre553_discovery_exact.py",
+        "commit": "e2ca4bf898f62653d7c1dc15f310cee2afdd62ee",
+        "blob_sha1": "905f24d114419dbdd93879ad2bee5b59dd2f23af",
+        "line_start": 994,
+        "line_end": 1047,
+        "url": "https://github.com/maidiu/rawlsing/blob/e2ca4bf898f62653d7c1dc15f310cee2afdd62ee/rawlsing_next/pre553_discovery_exact.py#L994-L1047",
+        "observation": "Candidate evaluation; true difference gives discovered support, else VALID_EMPTY.",
+        "grade": "OBSERVED_SOURCE"
+      },
+      {
+        "source_path": "rawlsing_next/pre553_discovery_exact.py",
+        "commit": "e2ca4bf898f62653d7c1dc15f310cee2afdd62ee",
+        "blob_sha1": "905f24d114419dbdd93879ad2bee5b59dd2f23af",
+        "line_start": 1099,
+        "line_end": 1163,
+        "url": "https://github.com/maidiu/rawlsing/blob/e2ca4bf898f62653d7c1dc15f310cee2afdd62ee/rawlsing_next/pre553_discovery_exact.py#L1099-L1163",
+        "observation": "I05 executes predeclared candidates and emits typed receipt; no consumer publication.",
+        "grade": "OBSERVED_SOURCE"
+      },
+      {
+        "source_path": "rawlsing_next/pre553_discovery_exact.py",
+        "commit": "e2ca4bf898f62653d7c1dc15f310cee2afdd62ee",
+        "blob_sha1": "905f24d114419dbdd93879ad2bee5b59dd2f23af",
+        "line_start": 1194,
+        "line_end": 1224,
+        "url": "https://github.com/maidiu/rawlsing/blob/e2ca4bf898f62653d7c1dc15f310cee2afdd62ee/rawlsing_next/pre553_discovery_exact.py#L1194-L1224",
+        "observation": "valid_empty aggregate definition.",
+        "grade": "OBSERVED_SOURCE"
+      },
+      {
+        "source_path": "rawlsing_next/pre553_carrier_execution.py",
+        "commit": "e2ca4bf898f62653d7c1dc15f310cee2afdd62ee",
+        "blob_sha1": "e7cda773e6a2426bfa12b22790fd8e005fe75153",
+        "line_start": 448,
+        "line_end": 463,
+        "url": "https://github.com/maidiu/rawlsing/blob/e2ca4bf898f62653d7c1dc15f310cee2afdd62ee/rawlsing_next/pre553_carrier_execution.py#L448-L463",
+        "observation": "Executor delegates to exact I05.",
+        "grade": "OBSERVED_SOURCE"
+      },
+      {
+        "source_path": "rawlsing_next/pre553_carrier_execution.py",
+        "commit": "e2ca4bf898f62653d7c1dc15f310cee2afdd62ee",
+        "blob_sha1": "e7cda773e6a2426bfa12b22790fd8e005fe75153",
+        "line_start": 479,
+        "line_end": 509,
+        "url": "https://github.com/maidiu/rawlsing/blob/e2ca4bf898f62653d7c1dc15f310cee2afdd62ee/rawlsing_next/pre553_carrier_execution.py#L479-L509",
+        "observation": "Wrapper carries refs/counters and false truth effects; no product packaging.",
+        "grade": "OBSERVED_SOURCE"
+      },
+      {
+        "source_path": "rawlsing_next/pre553_route_b_production.py",
+        "commit": "e2ca4bf898f62653d7c1dc15f310cee2afdd62ee",
+        "blob_sha1": "2385cd327dced3c5b887b59085aa0d21b04d78c3",
+        "line_start": 1,
+        "line_end": 15,
+        "url": "https://github.com/maidiu/rawlsing/blob/e2ca4bf898f62653d7c1dc15f310cee2afdd62ee/rawlsing_next/pre553_route_b_production.py#L1-L15",
+        "observation": "Route-B explicitly disclaims product/current selection.",
+        "grade": "OBSERVED_SOURCE"
+      },
+      {
+        "source_path": "rawlsing_next/pre553_route_b_production.py",
+        "commit": "e2ca4bf898f62653d7c1dc15f310cee2afdd62ee",
+        "blob_sha1": "2385cd327dced3c5b887b59085aa0d21b04d78c3",
+        "line_start": 91,
+        "line_end": 98,
+        "url": "https://github.com/maidiu/rawlsing/blob/e2ca4bf898f62653d7c1dc15f310cee2afdd62ee/rawlsing_next/pre553_route_b_production.py#L91-L98",
+        "observation": "All lifecycle and truth effects declared false.",
+        "grade": "OBSERVED_SOURCE"
+      },
+      {
+        "source_path": "rawlsing_next/pre553_route_b_production.py",
+        "commit": "e2ca4bf898f62653d7c1dc15f310cee2afdd62ee",
+        "blob_sha1": "2385cd327dced3c5b887b59085aa0d21b04d78c3",
+        "line_start": 577,
+        "line_end": 629,
+        "url": "https://github.com/maidiu/rawlsing/blob/e2ca4bf898f62653d7c1dc15f310cee2afdd62ee/rawlsing_next/pre553_route_b_production.py#L577-L629",
+        "observation": "Actual I03 → I05 → wrapper path.",
+        "grade": "OBSERVED_SOURCE"
+      },
+      {
+        "source_path": "rawlsing_next/pre553_route_b_production.py",
+        "commit": "e2ca4bf898f62653d7c1dc15f310cee2afdd62ee",
+        "blob_sha1": "2385cd327dced3c5b887b59085aa0d21b04d78c3",
+        "line_start": 656,
+        "line_end": 657,
+        "url": "https://github.com/maidiu/rawlsing/blob/e2ca4bf898f62653d7c1dc15f310cee2afdd62ee/rawlsing_next/pre553_route_b_production.py#L656-L657",
+        "observation": "Verifier refuses semantic promotion.",
+        "grade": "OBSERVED_SOURCE"
+      }
+    ],
+    "falsifier_assessment": "No nonempty learned XOR candidate/product/consumer occurs in inspected returned path. A different existing consumer elsewhere is not denied. Per-object discovery receipt content is inferred from code and aggregate result rather than independently opened."
+  },
+  "decisions": [
+    {
+      "node": "R02",
+      "action": "REPAIR_FINITE_CALLER_PROJECTION; RETAIN_C11",
+      "owner": "Source-native projection owner",
+      "reason": "Wrong row-person mapping plus missing row-conditioned occurrence selector in current facade call.",
+      "architecture_decision": "ASTRA_ONLY_IF_COMPETING_CONTRACT_ALLOCATIONS_REMAIN"
+    },
+    {
+      "node": "R03",
+      "action": "NO_CHANGE_TO_EXISTING_ROUTE_B_AND_I03_I05_EXECUTOR",
+      "owner": "Native integration owner",
+      "reason": "Exact bounded positives survive; do not infer global universal completion.",
+      "architecture_decision": "NO_NEW_COMPOSITOR_FROM_THIS_RECEIPT"
+    },
+    {
+      "node": "R05",
+      "action": "REUSE_EXECUTION; NONEMPTY_LEARNED_AND_CONSUMER_PROOF_NOT_PRODUCED",
+      "owner": "Learned/analytical/product-currentness and canonical consumer owners",
+      "reason": "valid_empty one candidate; no released learned XOR or N10E read.",
+      "architecture_decision": "PRESERVE_CONSUMER_GATE; ASTRA_DECIDES_ONLY_IF_OWNER_FORK"
+    }
+  ]
+}

@@ -1,0 +1,189 @@
+{
+  "schema": "ASTRA_UR_S1_STATIC_RETURN_MANIFEST_V1",
+  "repo": "maidiu/rawlsing",
+  "branch": "agent/browser-astra-ur-s1-return-evidence-clarification-r1",
+  "startup": "c74e3bc5bf2ac0e800d96496fbb7f78e981a83fb",
+  "write_root": "WORKER_RETURNS/ASTRA-UR-S1-RETURN-EVIDENCE-CLARIFICATION-R1/",
+  "context": {
+    "agent": "Independent Browser I2 evidence worker",
+    "execution": "S1-S2 AUTHENTICATED_GITHUB_ONLY",
+    "harness": "Browser ChatGPT",
+    "model_family": "GPT-6 per system",
+    "exact_displayed_model": "UNKNOWN (UI not exposed)",
+    "reasoning_effort": "UNKNOWN",
+    "account": "UNKNOWN",
+    "cost": "UNKNOWN",
+    "session": "UNKNOWN",
+    "native_execution": "NOT_RUN",
+    "tool_surface": "Authenticated GitHub connector",
+    "permission": "DIRECT_USER_DELEGATED_SOURCEFREE_INVESTIGATION_ONLY"
+  },
+  "governing_files": {
+    "commission": {
+      "path": "WORKER_COMMISSIONS/ASTRA-UR-PROGRAM-SOURCEFREE-INVESTIGATIONS-R1/UR-S1/00_COMMISSION.md",
+      "blob": "165f291b07f1d7f82bec9a92013cb32b48e468ff"
+    },
+    "director_shared": "5757b2b632206753e4114e4045b40495631c8fd6",
+    "director_06": "89245b9d5616bd1368365c7384291de3fdcda400",
+    "director_07": "c0bd9c0fbcf6d9917fdb1e6b6275c05d73515610",
+    "director_08": "6e6d6c12cae6f68ffaebd986b730e3feff6ee604",
+    "director_09": "90848e3d5c3774d252f36876a4cda410611b6aa6"
+  },
+  "read_universe": {
+    "named_files": 12,
+    "direct_indexed_helper_bodies": 2,
+    "read_files": [
+      {
+        "scope": "URB",
+        "path": "WORKER_RETURNS/ASTRA-UR-B-NATIVE-CHARACTERIZATION-R1/ur_b/fixtures.py",
+        "commit": "66d267cb017951fd41389aa075780838f64b6445",
+        "git_blob_sha1": "4554dfb8e8f3979c6cc1eee999f2ddb88012eab9",
+        "sha256": "906f8e1851d147ffeba02d43fe2363212e0ccaaa80f5e5b43c6a9c67d6da69a8",
+        "url": "https://github.com/maidiu/rawlsing/blob/66d267cb017951fd41389aa075780838f64b6445/WORKER_RETURNS/ASTRA-UR-B-NATIVE-CHARACTERIZATION-R1/ur_b/fixtures.py"
+      },
+      {
+        "scope": "URB",
+        "path": "WORKER_RETURNS/ASTRA-UR-B-NATIVE-CHARACTERIZATION-R1/ur_b/s3.py",
+        "commit": "66d267cb017951fd41389aa075780838f64b6445",
+        "git_blob_sha1": "0abe0a8b9ae3e86e1af330fb460bd64f12873f56",
+        "sha256": "aa76321782c1abd05ebb0492539ebee79b322abb437a6be54e6266350dd74dd2",
+        "url": "https://github.com/maidiu/rawlsing/blob/66d267cb017951fd41389aa075780838f64b6445/WORKER_RETURNS/ASTRA-UR-B-NATIVE-CHARACTERIZATION-R1/ur_b/s3.py"
+      },
+      {
+        "scope": "URB",
+        "path": "WORKER_RETURNS/ASTRA-UR-B-NATIVE-CHARACTERIZATION-R1/ur_b/s3_repeated_query.py",
+        "commit": "66d267cb017951fd41389aa075780838f64b6445",
+        "git_blob_sha1": "92bdc3869fac0f9136174e65f06c13ecc0c43017",
+        "sha256": "8bf5173d75d4b2c1361503d18cc42c90fd0d8aa516bc0e83a99a5278cf7209d5",
+        "url": "https://github.com/maidiu/rawlsing/blob/66d267cb017951fd41389aa075780838f64b6445/WORKER_RETURNS/ASTRA-UR-B-NATIVE-CHARACTERIZATION-R1/ur_b/s3_repeated_query.py"
+      },
+      {
+        "scope": "URB",
+        "path": "WORKER_RETURNS/ASTRA-UR-B-NATIVE-CHARACTERIZATION-R1/ur_b/s1_route_b.py",
+        "commit": "66d267cb017951fd41389aa075780838f64b6445",
+        "git_blob_sha1": "85eaca60b7e2d86dbe4ff7846ab3d6365e476125",
+        "sha256": "1ece7baf0e41889dc5708bf9d562c1cb8fab00b0021147c9d55e8144002aacc1",
+        "url": "https://github.com/maidiu/rawlsing/blob/66d267cb017951fd41389aa075780838f64b6445/WORKER_RETURNS/ASTRA-UR-B-NATIVE-CHARACTERIZATION-R1/ur_b/s1_route_b.py"
+      },
+      {
+        "scope": "URB",
+        "path": "WORKER_RETURNS/ASTRA-UR-B-NATIVE-CHARACTERIZATION-R1/ur_b/s1_queries.py",
+        "commit": "66d267cb017951fd41389aa075780838f64b6445",
+        "git_blob_sha1": "eb30a9250ea83c811310c2ffc5a72b0b99c23125",
+        "sha256": "26706023c797dd48e2fa163d006e8daef3a30a44161701cd1f1babc76c639ec5",
+        "url": "https://github.com/maidiu/rawlsing/blob/66d267cb017951fd41389aa075780838f64b6445/WORKER_RETURNS/ASTRA-UR-B-NATIVE-CHARACTERIZATION-R1/ur_b/s1_queries.py"
+      },
+      {
+        "scope": "URB",
+        "path": "WORKER_RETURNS/ASTRA-UR-B-NATIVE-CHARACTERIZATION-R1/tests/test_ur_b.py",
+        "commit": "66d267cb017951fd41389aa075780838f64b6445",
+        "git_blob_sha1": "e1694090dcfdabbec3f304731980cd752800deec",
+        "sha256": "78ea7ba9b248568434c9e5b3199fa72dc65364eefc4ea7ff486a13d1d45ecd00",
+        "url": "https://github.com/maidiu/rawlsing/blob/66d267cb017951fd41389aa075780838f64b6445/WORKER_RETURNS/ASTRA-UR-B-NATIVE-CHARACTERIZATION-R1/tests/test_ur_b.py"
+      },
+      {
+        "scope": "URB",
+        "path": "WORKER_RETURNS/ASTRA-UR-B-NATIVE-CHARACTERIZATION-R1/oracle/ORACLE.md",
+        "commit": "66d267cb017951fd41389aa075780838f64b6445",
+        "git_blob_sha1": "665bec7609d4344939a89789343768a6550bb86d",
+        "sha256": "9c170608c16ae25a1c60e5fe34ade11f0489486227c96362d1c490538216f540",
+        "url": "https://github.com/maidiu/rawlsing/blob/66d267cb017951fd41389aa075780838f64b6445/WORKER_RETURNS/ASTRA-UR-B-NATIVE-CHARACTERIZATION-R1/oracle/ORACLE.md"
+      },
+      {
+        "scope": "URB",
+        "path": "WORKER_RETURNS/ASTRA-UR-B-NATIVE-CHARACTERIZATION-R1/evidence/native_chain.json",
+        "commit": "66d267cb017951fd41389aa075780838f64b6445",
+        "git_blob_sha1": "550cdd4c4de68f955ec25dee99c9c50b06258d4b",
+        "sha256": "4b7f5f5fd74b624750edb2bba5d5fedb9aecf07bcad2ede03cdb64ac4dd9c197",
+        "url": "https://github.com/maidiu/rawlsing/blob/66d267cb017951fd41389aa075780838f64b6445/WORKER_RETURNS/ASTRA-UR-B-NATIVE-CHARACTERIZATION-R1/evidence/native_chain.json"
+      },
+      {
+        "scope": "CONTROL",
+        "path": "rawlsing_next/pre553_source_backed_c11_facade.py",
+        "commit": "e2ca4bf898f62653d7c1dc15f310cee2afdd62ee",
+        "git_blob_sha1": "8a761119e4a8d68eb291fc4edfadb52e027f8284",
+        "sha256": "NOT_INDEPENDENTLY_COMPUTED",
+        "url": "https://github.com/maidiu/rawlsing/blob/e2ca4bf898f62653d7c1dc15f310cee2afdd62ee/rawlsing_next/pre553_source_backed_c11_facade.py"
+      },
+      {
+        "scope": "CONTROL",
+        "path": "rawlsing_next/pre553_route_b_production.py",
+        "commit": "e2ca4bf898f62653d7c1dc15f310cee2afdd62ee",
+        "git_blob_sha1": "2385cd327dced3c5b887b59085aa0d21b04d78c3",
+        "sha256": "NOT_INDEPENDENTLY_COMPUTED",
+        "url": "https://github.com/maidiu/rawlsing/blob/e2ca4bf898f62653d7c1dc15f310cee2afdd62ee/rawlsing_next/pre553_route_b_production.py"
+      },
+      {
+        "scope": "CONTROL",
+        "path": "rawlsing_next/pre553_discovery_exact.py",
+        "commit": "e2ca4bf898f62653d7c1dc15f310cee2afdd62ee",
+        "git_blob_sha1": "905f24d114419dbdd93879ad2bee5b59dd2f23af",
+        "sha256": "NOT_INDEPENDENTLY_COMPUTED",
+        "url": "https://github.com/maidiu/rawlsing/blob/e2ca4bf898f62653d7c1dc15f310cee2afdd62ee/rawlsing_next/pre553_discovery_exact.py"
+      },
+      {
+        "scope": "URB",
+        "path": "WORKER_RETURNS/ASTRA-UR-B-NATIVE-CHARACTERIZATION-R1/manifest.json",
+        "commit": "66d267cb017951fd41389aa075780838f64b6445",
+        "git_blob_sha1": "0f3fb1feb418b61e88233328e248c23144393c30",
+        "sha256": "NOT_INDEPENDENTLY_COMPUTED",
+        "url": "https://github.com/maidiu/rawlsing/blob/66d267cb017951fd41389aa075780838f64b6445/WORKER_RETURNS/ASTRA-UR-B-NATIVE-CHARACTERIZATION-R1/manifest.json"
+      },
+      {
+        "scope": "HELPER",
+        "path": "rawlsing_next/pre553_physical_c11_bridge.py",
+        "commit": "e2ca4bf898f62653d7c1dc15f310cee2afdd62ee",
+        "git_blob_sha1": "3e3497a6eb730524be33bb3d453f6cc63565052c",
+        "sha256": "NOT_INDEPENDENTLY_COMPUTED",
+        "url": "https://github.com/maidiu/rawlsing/blob/e2ca4bf898f62653d7c1dc15f310cee2afdd62ee/rawlsing_next/pre553_physical_c11_bridge.py"
+      },
+      {
+        "scope": "HELPER",
+        "path": "rawlsing_next/pre553_carrier_execution.py",
+        "commit": "e2ca4bf898f62653d7c1dc15f310cee2afdd62ee",
+        "git_blob_sha1": "e7cda773e6a2426bfa12b22790fd8e005fe75153",
+        "sha256": "NOT_INDEPENDENTLY_COMPUTED",
+        "url": "https://github.com/maidiu/rawlsing/blob/e2ca4bf898f62653d7c1dc15f310cee2afdd62ee/rawlsing_next/pre553_carrier_execution.py"
+      }
+    ],
+    "all_named_qualify": "FULL_CONTENT_FETCH; discovery_exact relevant ranges separately reopened for untruncated code inspection",
+    "sha256_scope": "UR-B SHA256 values copied from original UR-B manifest and director previously verified exact subset; no new independent SHA256 digest computed; current files authenticated by exact full Git blob SHA1"
+  },
+  "outcome": {
+    "q1": "CALLER_ROW_ID_ERROR_PLUS_FACADE_VALUE_ONLY_OCCURRENCE_LIMIT; LOW_LEVEL_CANDIDATE_BUILDER_AVAILABLE",
+    "q2": "JOINT_XOR_VALID_DIRECT_I03; ORACLE_TWO_EACH_FALSE; I05_ONE_VALID_EMPTY; N10E_NOT_REACHED",
+    "reruns": 0
+  },
+  "output_files": [
+    {
+      "path": "WORKER_RETURNS/ASTRA-UR-S1-RETURN-EVIDENCE-CLARIFICATION-R1/00_RETURN.md",
+      "git_blob_sha1": "014b8ae2772e324a53e4e085ef2392826ee5fa0e"
+    },
+    {
+      "path": "WORKER_RETURNS/ASTRA-UR-S1-RETURN-EVIDENCE-CLARIFICATION-R1/evidence.json",
+      "git_blob_sha1": "f2a318688d5c474fb70b2a426b04c6258fdc417e"
+    },
+    {
+      "path": "WORKER_RETURNS/ASTRA-UR-S1-RETURN-EVIDENCE-CLARIFICATION-R1/decision_matrix.json",
+      "git_blob_sha1": "25ead41229bad751db5fa2303a97028d07439cdc"
+    },
+    {
+      "path": "WORKER_RETURNS/ASTRA-UR-S1-RETURN-EVIDENCE-CLARIFICATION-R1/resume.md",
+      "git_blob_sha1": "240a09a938dacd81464ea58c566f28d0f901a44f"
+    }
+  ],
+  "omitted": [
+    "original respondent data",
+    "binary fixture redownload/rehash",
+    "new native runs",
+    "production edits",
+    "N11/N12 release/issuance",
+    "full repo/2214 ref sweep",
+    "unbounded global negative proof",
+    "R04/R08/R09 architecture ruling",
+    "manual hashes invented",
+    "other worker dispatch"
+  ],
+  "self_hash_exclusion": "manifest.json excludes its own hash; enclosing published Git commit authenticates it",
+  "return_commit": "ENCLOSING_GIT_COMMIT_ON_PUBLISHED_BRANCH"
+}

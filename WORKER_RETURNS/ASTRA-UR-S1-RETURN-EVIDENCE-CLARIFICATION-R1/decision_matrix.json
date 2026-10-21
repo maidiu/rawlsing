@@ -1,0 +1,72 @@
+{
+  "schema": "ASTRA_UR_S1_DECISION_MATRIX_V1",
+  "scope": "Static engineering/evidence distinctions; product/scientific acceptance excluded.",
+  "rows": [
+    {
+      "id": "Q1_H_CALLER_ONLY",
+      "hypothesis": "Only caller projection error; correcting PID map resolves entire issue",
+      "discriminator": "Source rows vs modulo-12 map; examine SCORE rule fan-out after corrected identity",
+      "result": "PARTIAL_ONLY: wrong map observed, but VALUE_RULE still duplicates each SCORE physical row",
+      "disposition": "RED_FOR_CALLER_ONLY",
+      "R_node": "R02",
+      "owner": "Source projection",
+      "decision_effect": "Caller row-identity correction necessary but not sufficient",
+      "work_eliminated": "No need to blame C11 validation for caller row map"
+    },
+    {
+      "id": "Q1_H_FACADE_GLOBAL_ABSENCE",
+      "hypothesis": "Installed stack has no possible row-dependent C11 emission mechanism",
+      "discriminator": "Find indexed generic callback passing original PhysicalCell rows into governed C11 candidate builder",
+      "result": "FALSIFIED AS GLOBAL CLAIM: PhysicalSourceAuthorityProjection.candidate_builder exists and can be caller-authored; no row-sensitive lookup in inspected facade ResponseValueRule",
+      "disposition": "RED_FOR_GLOBAL_ABSENCE; ACCEPT_SCOPED_FACADE_LIMIT",
+      "R_node": "R02",
+      "owner": "Projection / C11 carrier owner",
+      "decision_effect": "Reuse low-level C11 bridge or assign bounded facade repair; architecture choice not made",
+      "work_eliminated": "No entire new C11 engine justified"
+    },
+    {
+      "id": "Q1_H_NO_CHANGE",
+      "hypothesis": "Current S3 invocation already proves correct repeated-occasion event semantics",
+      "discriminator": "24 expected SCORE vs48 observed and failing query",
+      "result": "FALSIFIED for tested invocation",
+      "disposition": "RED",
+      "R_node": "R02/R03",
+      "owner": "Source projection / native integrator",
+      "decision_effect": "Retain genuine S3 remediation and regression proof",
+      "work_eliminated": "Do not reopen broader discovery or native suite"
+    },
+    {
+      "id": "Q2_H_I03_EQUALS_LEARNED_XOR",
+      "hypothesis": "Direct joint XOR count implies learned XOR product",
+      "discriminator": "Read I05 grammar, candidate validator and selected query roles, check receipt",
+      "result": "FALSIFIED: I03 joint is direct; I05 only SINGLE_ATOM A1 vs ALL Y; valid_empty",
+      "disposition": "RED_FOR_INFERENCE",
+      "R_node": "R05",
+      "owner": "Learned/product owner",
+      "decision_effect": "Existing learned-to-consumer obligation unchanged",
+      "work_eliminated": "Do not invent missing discovery engine from empty one-candidate result"
+    },
+    {
+      "id": "Q2_H_ORACLE_TWO_EACH",
+      "hypothesis": "Each of eight (A,B,Y) cells has count2",
+      "discriminator": "Algebra Y=A XOR B and raw native cell counts",
+      "result": "FALSIFIED: four count4 and four zero; n16",
+      "disposition": "RED_ORACLE_TEXT",
+      "R_node": "R03",
+      "owner": "Fixture/oracle documentation owner",
+      "decision_effect": "Correct synthetic oracle wording separately; no alteration to observed I03 science",
+      "work_eliminated": "No production math repair from this discrepancy"
+    },
+    {
+      "id": "Q2_H_PRODUCT_CURRENT_N10E",
+      "hypothesis": "Learned execution receipt demonstrates M1/M2/B5 release/currentness and canonical N10E read",
+      "discriminator": "Producer effect flags and actual returned call chain",
+      "result": "NOT_DEMONSTRATED: wrapper only, publication/current-selection false, no canonical N10E call",
+      "disposition": "HOLD_PRODUCT_CONSUMER_PROOF",
+      "R_node": "R05",
+      "owner": "Learned lifecycle + canonical consumer",
+      "decision_effect": "N10E NOT_REACHED, keep existing release and serving gate",
+      "work_eliminated": "No claim that no external lifecycle modules exist"
+    }
+  ]
+}
