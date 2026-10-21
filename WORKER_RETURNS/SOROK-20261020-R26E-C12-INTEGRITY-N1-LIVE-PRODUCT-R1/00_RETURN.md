@@ -165,4 +165,4 @@ JUnit: `junit/`. Receipts: `evidence/r26e_receipts.json`. Environment: `ENVIRONM
 
 ## EXACT PUSHED REF
 
-Return commit: `<filled after commit>`. Remote verification: `<filled after push>` (`git ls-remote` must match). Ordinary non-force push; only this return subtree changed.
+Return commit: `f0554682c6672da06dc9939b0bc05963482e4f72`. Remote verification: `git ls-remote` returned the same SHA (`evidence/remote_verification.json`). Ordinary non-force push; only this return subtree changed.
