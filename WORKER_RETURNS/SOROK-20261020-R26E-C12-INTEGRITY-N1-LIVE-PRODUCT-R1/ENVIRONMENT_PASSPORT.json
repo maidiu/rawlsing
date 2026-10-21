@@ -1,0 +1,104 @@
+{
+  "schema": "R26E_ENVIRONMENT_AND_EXECUTION_RECEIPT@1",
+  "branch": "agent/rabochii-sorok-20261020-r26e-c12-integrity-science-live-product-r1",
+  "sealed_startup": "dba95216d5627513ea36323f459cf97413b504d1",
+  "model": "DeepSeek V4.1-Flash, reasoning MAX, one agent; no switch",
+  "harness": "OpenCode (user-selected)",
+  "runtime": {
+    "python": "3.11.3",
+    "pytest": "9.1.1",
+    "git": "git version 2.39.1",
+    "sqlite": "3.40.1",
+    "platform": "macOS-13.7.8-x86_64-i386-64bit"
+  },
+  "courts": {
+    "bp2p4j_33": {
+      "tests": 33,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "bp2_50": {
+      "tests": 50,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "bp4_15": {
+      "tests": 15,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "n1_21": {
+      "tests": 21,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "n1_bp2_ports": {
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "r26e_new": {
+      "tests": 8,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "total_tests": 129,
+  "source_rows": [
+    {
+      "path": "r26e/c12_integrity.py",
+      "git_blob": "0c51c9d13f1065c41b16813f9827a21338e2d6cf",
+      "sha256": "534780fe4631caadacac73e457afbb86bcc207686b1ebb433087ad6270abf710"
+    },
+    {
+      "path": "r26e/__init__.py",
+      "git_blob": "0be51e3077a2809c04908f7159974b8fb72f9bc2",
+      "sha256": "3029f4670d4dae8ec73de975cc452204af109391afdf6fef96914c55e7b21062"
+    },
+    {
+      "path": "r26e/live_product.py",
+      "git_blob": "84a3a443b4f7d53593a21a66b7f465f0b934d8d3",
+      "sha256": "f90d4921c2f51d26f0660445ada8b05312035b77511f844c021367f8bab44339"
+    },
+    {
+      "path": "tests/conftest.py",
+      "git_blob": "482fae50e908ddcb878dcd15e67ea9016744f049",
+      "sha256": "4f6f1e4290fadc0af7f9dbc66fbbf0d4ebf42f0265bd606393ed5d6cc789270d"
+    },
+    {
+      "path": "tests/test_r26e.py",
+      "git_blob": "3802b53d1f893ce48ecdbf5c01e251d7991af2ee",
+      "sha256": "29d0ec34d7380738d1a07f45fb7010099e7dd4cb9da11efa2b5b2cc716b12d2f"
+    },
+    {
+      "path": "repro/evidence_driver.py",
+      "git_blob": "7b51499d35976fdc77cf5dc10f1f48120db9a98a",
+      "sha256": "d2e866ab4a59fdcd99902748416477ff35974692ee38acea00e218bb1213ea79"
+    },
+    {
+      "path": "repro/stage_sources.py",
+      "git_blob": "cbc1ca86ef9fe41beb17d74b7c9d7644d807a61b",
+      "sha256": "3d056c62363734c5a8d6bf89ed4ca7fe6577e7c4af2c1c2f2e92403726963f9e"
+    }
+  ],
+  "pins": {
+    "bp2p4j": "5b3e6577400ea1d88971ae6b48e41a118b8059ae",
+    "bp2p4ji": "3212d716ce66586527c258632ef10c3ff4489803",
+    "n1": "cd6b0fb9358c5f7d3c344c84a148d3fee48d2e16",
+    "bp2": "5065e2e6934e9d5bca800cbf88c79e461bcf2393",
+    "bp4": "d868e82c7c83def2df18295244d93af9706e647f"
+  },
+  "not_run": [
+    "native CAN/ADP/Pyat/C8-D1-D2-D3/C11/C12",
+    "production KMS",
+    "upstream edits"
+  ],
+  "write_scope": "WORKER_RETURNS/SOROK-20261020-R26E-C12-INTEGRITY-N1-LIVE-PRODUCT-R1 only",
+  "secrets_or_private_data": false
+}
