@@ -24,11 +24,11 @@ Old 07 negative-results filename is absent at P53E head; actual receipts/adversa
 ## Exact remaining work and why it matters
 
 - **Coverage:** 2,214-ref frozen exclusion denominator not exhaustively adjudicated; 394 flagged candidates not all read. 11,305 scanner coverage not independently rerun; complete diff/hit ledgers not semantically reviewed. Two excluded probes found one recursive body already at startup and one differing C11 body. No NO-MISSING or generic-absence certificate.
-- **Adoption:** source-index entries prove code presence, not CURRENT_ADOPTED/CURRENT_COMPOSED_NATIVE. Reconcile C11 multi-owner blob4f64b3ab… at4eacc5a… against startup8a761119… and actual current authority. Preserve current PRE-MAIN and permitted source-specific paths. Exact current adopter/maintainer identities unresolved.
-- **Leaf coverage:** physical SAV/DTA readers, all recursive continuations, M1/M2/B5 validator leaves, F6 synthesis/transport implementation and A42/N11 assessor body/adoption remain insufficiently inspected. M33 is recovered, not fully audited. F5/temporal seams inspected selectively, not all transitive callees.
+- **Adoption:** source-index entries prove code presence, not CURRENT_ADOPTED/CURRENT_COMPOSED_NATIVE. Report14 reconciles the excluded C11 facade through installed repair and historical adoption; latest codec/dependency qualification and current composed path still require confirmation. Preserve current PRE-MAIN and permitted source-specific paths. Exact current adopter/maintainer identities unresolved.
+- **Leaf coverage:** Report14 adds selected physical decoder/bridge, recursive, M1/M2/B5, F6 producer/consumer and full A42 core reads. Transitive helpers, registered validators, deployment/adoption and native qualification remain insufficiently inspected. M33 is recovered, not fully audited. F5/temporal seams inspected selectively, not all transitive callees.
 - **Execution:** full sourcefree B49→G50→U43→I05, actual Batch/cold custody, full84-view W41/E41/P41 and complete learned/world path remain NOT_RUN. User authorized sourcefree local execution only with qualification; no qualifying checkout was established at workspace root. Retain inherited P53T grades; no harness switch or duplicate test campaign.
 - **Original35:** all1,890 requirements conserved, but per-source format/digest/edition aliases, rights and original operation policies not independently reconciled here. Aggregate31SAV/4DTA is a requirement, not newly measured decoder coverage. No original U/E_pre issued, N11 remains NOT_READY.
-- **Enforcement:** proposed gate/runner not implemented or deployed; actual required-check protection/admin permissions unverified. Candidate-only prototypes cannot close it.
+- **Enforcement:** proposed gate/runner not implemented or deployed; rulesets list and exact-head checks were empty, but protection read returned403; actual required-check protection remains unknown. Candidate-only prototypes cannot close it.
 - **Historical breadth:** strongest modern transition established; earlier global origin and every historic HQ/AT/EE dossier not exhausted. New valid primary evidence may change recovery vs build or causal timing.
 
 ## Falsifiers and residual risk
@@ -36,3 +36,7 @@ Old 07 negative-results filename is absent at P53E head; actual receipts/adversa
 A genuinely adopted arbitrary-shape compiler on an omitted ref would change BUILD to RECOVER_WIRE; exact prior blocking horizontal promotion receipts would narrow the acceptance diagnosis to bypass/enforcement failure. A valid source-scientific exception can lawfully reduce eligibility; it must have independent scoped authority. A perfect finite fixture suite still cannot prove arbitrary unseen scientific semantics.
 
 No amount of sourcefree checking authorizes original data use or actor behavior. No original run was performed, no production code edited, no commission issued. Stop conditions and typed unknowns are results to preserve, not reasons to replace the requested full machine with an easy local example.
+
+## Continuation falsifiers
+
+Do not turn the lazy-decoder custody hypothesis or A42 global-label intake question in report14 into reproduced defects. An enforced immutable snapshot or authenticated receipt issuer could discharge them. Do not infer callable authentication from M1 metadata fingerprint alone. Installed C11 code and historical source-local adoption are positive counterevidence; later codec qualification remains a separate question.

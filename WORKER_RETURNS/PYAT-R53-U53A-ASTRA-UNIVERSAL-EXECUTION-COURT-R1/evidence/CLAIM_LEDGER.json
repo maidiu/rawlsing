@@ -147,7 +147,7 @@
     },
     {
       "id": "M09",
-      "claim": "source-backed C11 facade: Reuse contract, no fresh runtime correctness certification; no source semantics inferred",
+      "claim": "source-backed C11 facade: Excluded multi-owner candidate reconciled to installed family-scoped repair and historical adoption; startup/live facade equal; later codec/transitive qualification still bounded; see14",
       "classification": "REUSE_AS_IS",
       "grade": "SEALED_IMPLEMENTATION_STATIC_READ",
       "source": "c11",
@@ -243,7 +243,7 @@
     },
     {
       "id": "M15",
-      "claim": "M1/M2/B5/I4 composition: I4 orchestration inspected; all validator/lifecycle leaf bodies not independently audited",
+      "claim": "M1/M2/B5/I4 composition: Selected M1 exact dispatch/result, M2 closure/resolve and B5 stage/current/as-of bodies inspected; full validators, checkpoint/adoption still open; see14",
       "classification": "RECOVER_WIRE",
       "grade": "SEALED_IMPLEMENTATION_STATIC_READ",
       "source": "i4",
@@ -419,18 +419,18 @@
     },
     {
       "id": "M25",
-      "claim": "N11 assessment: Reuse A42 assessor only after pin/readback; its body not inspected in this continuation",
+      "claim": "N11 assessment: A42 core pinned/read at843175b; preimage/anti-promotion and fixed NOT_READY preserved; global-label intake hypothesis and downstream issuer/adoption unresolved; see14",
       "classification": "RECOVER_WIRE",
-      "grade": "DOCUMENTARY_SCOPE_ONLY",
-      "source": "estate",
-      "lines": "1-EOF",
+      "grade": "CANDIDATE_ASSESSOR_STATIC_READ_NO_RUNTIME",
+      "source": "cx_a42",
+      "lines": "1-534",
       "uncertainty": "See scope/grade and reports02/10/12",
       "original": {
-        "commit": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
-        "path": "PYAT_CONTROL_ROOM/WHOLE_MACHINE_COMPLETION_R1/ESTATE_35X_REQUIREMENTS_MATRIX.json",
-        "blob": "2ad9a001aefef4889d8ac48a2a81cd806dec50d6",
-        "sha256": "ca865cdcf66c2f1ac768f79c01faf031bbdd8be9a2b4bd69af542681a0e59c83",
-        "lines": "1-EOF"
+        "commit": "843175b0587b54db3df1f461ad9f7f1314894372",
+        "path": "WORKER_RETURNS/PYAT-R42-A42-WHOLE-ESTATE-RETURN-FANIN-AND-N11-CANDIDATE-R1/a42/core.py",
+        "blob": "72e746cf4e6cff2e7a5328e9d39a0c776132c1d9",
+        "sha256": "aa1833022b6c09cc599f730c4714bc8971e9f987342c4f770d264bc9edb53030",
+        "lines": "1-534"
       }
     },
     {
@@ -929,7 +929,279 @@
         "sha256": "eae631bb3b34861f95d5065d19591e1bd4e3dd75b7b54d95cfd2192100014a2f",
         "lines": "24-100"
       }
+    },
+    {
+      "id": "CX01",
+      "claim": "Excluded C11 facade recovered through family-scoped repair, installation and historical HQ adoption; no candidate-only generic gap in inspected facade",
+      "classification": "RECOVERED_ADOPTION_COUNTEREVIDENCE",
+      "grade": "INDEPENDENT_STATIC_DOCUMENTARY_READ_NO_NATIVE_REPLAY",
+      "source": "cx_c11_adoption",
+      "lines": [
+        [
+          1,
+          30
+        ]
+      ],
+      "uncertainty": "Report14 and RESUME_CHECKPOINT; no authority promotion",
+      "original": {
+        "commit": "b21152852d1518236901733fd3c786a6e8857a0c",
+        "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/WVS7_HB01_SOURCE_LOCAL_HQ_ADOPTION_R2/08_HQ_C05_R2A_MULTI_OWNER_REQUALIFICATION_R2_ADOPTION_R1.md",
+        "blob": "89c0d3c0bb0494bf9ad97a83cb494d5dba36e8c6",
+        "sha256": "72afc4776ec67dad5a6f4c84f6febc11037d105e55f29120fa98be80a8eba65d",
+        "lines": [
+          [
+            1,
+            30
+          ]
+        ]
+      }
+    },
+    {
+      "id": "CX02",
+      "claim": "Lazy decoder path reopens after initial digest; caller custody and changing-file hypothesis remain unqualified",
+      "classification": "UNTESTED_CUSTODY_HYPOTHESIS",
+      "grade": "INDEPENDENT_STATIC_DOCUMENTARY_READ_NO_NATIVE_REPLAY",
+      "source": "cx_decoder",
+      "lines": [
+        [
+          1,
+          158
+        ],
+        [
+          264,
+          566
+        ]
+      ],
+      "uncertainty": "Report14 and RESUME_CHECKPOINT; no authority promotion",
+      "original": {
+        "commit": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+        "path": "rawlsing_next/pre553_physical_decoder.py",
+        "blob": "d2a074a41fb556a1cd5928a5fe1421ef3672a4e5",
+        "sha256": "a75a8ff72310949b84adbe682a01375c5dcf5dcee69e94e2a4a8a9b39e17017b",
+        "lines": [
+          [
+            1,
+            158
+          ],
+          [
+            264,
+            566
+          ]
+        ]
+      }
+    },
+    {
+      "id": "CX03",
+      "claim": "M1 has exact dispatch/result ceiling checks; callable provenance is separate",
+      "classification": "REUSE_WITH_TRUST_BOUNDARY",
+      "grade": "INDEPENDENT_STATIC_DOCUMENTARY_READ_NO_NATIVE_REPLAY",
+      "source": "cx_m1",
+      "lines": [
+        [
+          1032,
+          1140
+        ],
+        [
+          1679,
+          1704
+        ],
+        [
+          2103,
+          2225
+        ]
+      ],
+      "uncertainty": "Report14 and RESUME_CHECKPOINT; no authority promotion",
+      "original": {
+        "commit": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+        "path": "rawlsing_next/pre553_learned_empirical_adjudication.py",
+        "blob": "761db5924639eacf1c7c8b78a209326c1c51e2c5",
+        "sha256": "40ce648ebb60e87eaab02f526f7c5fd9095d6a9d1e1e3712f0cdb4c2b17ea6a7",
+        "lines": [
+          [
+            1032,
+            1140
+          ],
+          [
+            1679,
+            1704
+          ],
+          [
+            2103,
+            2225
+          ]
+        ]
+      }
+    },
+    {
+      "id": "CX04",
+      "claim": "M2 release closure and exact binding checks are present",
+      "classification": "RECOVER_WIRE",
+      "grade": "INDEPENDENT_STATIC_DOCUMENTARY_READ_NO_NATIVE_REPLAY",
+      "source": "cx_m2",
+      "lines": [
+        [
+          646,
+          740
+        ],
+        [
+          879,
+          947
+        ]
+      ],
+      "uncertainty": "Report14 and RESUME_CHECKPOINT; no authority promotion",
+      "original": {
+        "commit": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+        "path": "rawlsing_next/pre553_learned_product_release.py",
+        "blob": "f76c390665f06ef126968ccf1a6b2d816f43ae92",
+        "sha256": "9683bfd6cbc93763d52253dea019c4d031c47d55c8ac9854901f10df1c04b8e6",
+        "lines": [
+          [
+            646,
+            740
+          ],
+          [
+            879,
+            947
+          ]
+        ]
+      }
+    },
+    {
+      "id": "CX05",
+      "claim": "B5 exact stage and current/as-of semantics are present in selected bodies",
+      "classification": "RECOVER_WIRE",
+      "grade": "INDEPENDENT_STATIC_DOCUMENTARY_READ_NO_NATIVE_REPLAY",
+      "source": "cx_b5",
+      "lines": [
+        [
+          1468,
+          1494
+        ],
+        [
+          1760,
+          1809
+        ],
+        [
+          2574,
+          2626
+        ]
+      ],
+      "uncertainty": "Report14 and RESUME_CHECKPOINT; no authority promotion",
+      "original": {
+        "commit": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+        "path": "rawlsing_next/pre553_learned_product_lifecycle.py",
+        "blob": "a11c9eb73abab9be118ef4f0b6e325e676059f27",
+        "sha256": "706bd074b1f1318fc503cbea080c2761b79b73f6f1088addec2e6fdf79c29833",
+        "lines": [
+          [
+            1468,
+            1494
+          ],
+          [
+            1760,
+            1809
+          ],
+          [
+            2574,
+            2626
+          ]
+        ]
+      }
+    },
+    {
+      "id": "CX06",
+      "claim": "F6P preserves sourcefree partial/refusal states over pinned producer",
+      "classification": "SCOPED_REUSE",
+      "grade": "INDEPENDENT_STATIC_DOCUMENTARY_READ_NO_NATIVE_REPLAY",
+      "source": "cx_f6p",
+      "lines": [
+        [
+          1,
+          59
+        ],
+        [
+          104,
+          293
+        ]
+      ],
+      "uncertainty": "Report14 and RESUME_CHECKPOINT; no authority promotion",
+      "original": {
+        "commit": "912467aaacb715fd6e80ebc8c2bdd7285c26120b",
+        "path": "WORKER_RETURNS/PYAT-R39-F6P-PARTIAL-BOUND-EVIDENCE-CONSUMER-R1/f6p_partial_bound_evidence_consumer.py",
+        "blob": "8fa992899293f454d7abded36831a4b4a362df8e",
+        "sha256": "0bf56dd2f073691575a03f57b02c4a3784400174ace72bddfdfb92b883b82c87",
+        "lines": [
+          [
+            1,
+            59
+          ],
+          [
+            104,
+            293
+          ]
+        ]
+      }
+    },
+    {
+      "id": "CX07",
+      "claim": "A42 core conserves original-grade anti-promotion and NOT_READY; global-label intake requires qualification",
+      "classification": "RECOVER_WIRE_WITH_UNTESTED_INTAKE_HYPOTHESIS",
+      "grade": "INDEPENDENT_STATIC_DOCUMENTARY_READ_NO_NATIVE_REPLAY",
+      "source": "cx_a42",
+      "lines": [
+        [
+          1,
+          534
+        ],
+        [
+          235,
+          347
+        ]
+      ],
+      "uncertainty": "Report14 and RESUME_CHECKPOINT; no authority promotion",
+      "original": {
+        "commit": "843175b0587b54db3df1f461ad9f7f1314894372",
+        "path": "WORKER_RETURNS/PYAT-R42-A42-WHOLE-ESTATE-RETURN-FANIN-AND-N11-CANDIDATE-R1/a42/core.py",
+        "blob": "72e746cf4e6cff2e7a5328e9d39a0c776132c1d9",
+        "sha256": "aa1833022b6c09cc599f730c4714bc8971e9f987342c4f770d264bc9edb53030",
+        "lines": [
+          [
+            1,
+            534
+          ],
+          [
+            235,
+            347
+          ]
+        ]
+      }
+    },
+    {
+      "id": "CX08",
+      "claim": "Historical HB01 source-local measurements exist and do not fill new original35 cells",
+      "classification": "HISTORICAL_DOCUMENTARY_COUNTEREVIDENCE",
+      "grade": "INDEPENDENT_STATIC_DOCUMENTARY_READ_NO_NATIVE_REPLAY",
+      "source": "cx_hb01",
+      "lines": [
+        [
+          1,
+          38
+        ]
+      ],
+      "uncertainty": "Report14 and RESUME_CHECKPOINT; no authority promotion",
+      "original": {
+        "commit": "b21152852d1518236901733fd3c786a6e8857a0c",
+        "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/WVS7_HB01_SOURCE_LOCAL_HQ_ADOPTION_R2/08_HQ_HB01_CLOSURE_R1.md",
+        "blob": "fd7c0b364a59d78454a510abacd4a5d0b6d4ce55",
+        "sha256": "660e85c1807d6a1824e4b9f92f1a0bc2fd7ac48655876a22765a92853c92e9df",
+        "lines": [
+          [
+            1,
+            38
+          ]
+        ]
+      }
     }
   ],
-  "proposal_notice": "07–11 normative designs are recommendations, not observed execution. Their premises map to material M and historical H claims."
+  "proposal_notice": "07\u201311 normative designs are recommendations, not observed execution. Their premises map to material M and historical H claims."
 }

@@ -27,3 +27,7 @@ U53F's stale 872aaee head self-reference remains a provenance defect despite con
 ## Completeness verdict
 
 Access blocker substantially removed; important direct code/receipt counterexamples corroborated; entire all35 obligations retained. Complete semantic reachability/adoption, every excluded ref, all leaf validators/decoders, actual full joined execution and deployed trusted gates remain open. Court status BOUNDED_RETURN_WITH_MATERIAL_GAPS.
+
+## 2026-10-21 cross-machine continuation
+
+Report14 and evidence/CONTINUATION_READBACK.json add exact selected-body reads and the C11 adoption chain. New cx_* source-index entries record commits, blobs, SHA256 and inspected ranges. A full-file content hash is custody, not a claim all its lines were semantically audited. C11 candidate diffs are complete. No sourcefree native suite was executed; environment qualification remains open. Live controls observations are endpoint-scoped. Original35,2214 excluded refs and inherited execution denominators are unchanged.

@@ -40,3 +40,9 @@ For T04 choose fixtures by independent edge-class coverage, not invented three l
 ## Exact NOT_RUN boundary
 
 Full B49→G50→U43→I05 joined sourcefree run; actual Batch replay/duplication; complete W41×E41×P41 84-view matrix; all leaf decoder/validator paths; protected CI installation; original35 survey execution; authorized E_pre; N11/N12. 07–09 are contracts and proposed gates, not executed test results. Original35 format-to-source manifests remain individually unverified by U53A even though the required aggregate is 31 SAV/4 DTA.
+
+## Additional continuation probes — not executed
+
+- Lazy physical decoding: in an isolated synthetic SAV and DTA environment, pin bytes, mutate/replace only the synthetic source between decode and iteration, and inspect whether caller snapshot custody prevents mismatch or native boundary refuses. A positive immutable snapshot control is required; do not infer a bug merely from lazy I/O.
+- A42: use its frozen synthetic/sourcefree bank fixtures and unchanged native helpers to test a sourcefree receipt naming a global relation. Record both row status and conservative terminal verdict; verify issuer authorization outside core before classifying a failure. No original grade or real authority is issued.
+- M1: trace exact registered callable provenance against deployment/authority contract; a caller-supplied fingerprint alone is not independent executable authentication. Test only after identifying the intended trust boundary.

@@ -36,4 +36,8 @@ No production edits, source-data reads, source/scientific issuance, FF structura
 
 ## Residual and decision requested
 
-The package is reviewable and implementation-specific, but leaf/adoption coverage, relevant excluded C11 history, full native join/cold replay, full 84-view join and protected required-check deployment remain unverified. Read 12 before authorizing any build. HQ may separately adjudicate the proposed engineering program and owner allocation; this court does not perform that authorization.
+The package is reviewable and implementation-specific, but leaf/adoption coverage, remaining C11 dependency/codec adoption, full native join/cold replay, full 84-view join and protected required-check deployment remain unverified. Read 12 before authorizing any build. HQ may separately adjudicate the proposed engineering program and owner allocation; this court does not perform that authorization.
+
+## Cross-machine continuation
+
+Report14 resolves the inspected excluded C11 facade through exact repair, installation and historical HQ adoption. Selected decoder, recursive, M1/M2/B5, F6 and A42 bodies add reusable counterevidence and bounded custody/intake hypotheses; no new native test or original measurement is claimed. Live branch protection remains unknown after an integration-scope403. Status and all three dispositions remain unchanged.

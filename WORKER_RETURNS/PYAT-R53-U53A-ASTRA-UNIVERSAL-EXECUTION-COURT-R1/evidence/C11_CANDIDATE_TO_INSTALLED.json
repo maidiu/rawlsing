@@ -1,0 +1,5 @@
+{
+  "schema": "U53A_EXACT_GIT_DIFF@1",
+  "raw_diff_sha256": "04bfef9aa66f9fb8e87d76296cab191b246fbcdd69dd5e7196594eea29075394",
+  "unified_diff": "diff --git a/rawlsing_next/pre553_source_backed_c11_facade.py b/rawlsing_next/pre553_source_backed_c11_facade.py\nindex 4f64b3ab0..c3647800f 100644\n--- a/rawlsing_next/pre553_source_backed_c11_facade.py\n+++ b/rawlsing_next/pre553_source_backed_c11_facade.py\n@@ -314,6 +314,11 @@ class GovernedC11Projection:\n             raise SourceBackedC11FacadeError(\"physical-slot owner authority must be explicitly required\")\n         if not owner_authorities.issubset(packaged):\n             raise SourceBackedC11FacadeError(\"physical-slot owner authority absent from projection closure\")\n+        owner_registry = AuthorityRegistry(self.authority_snapshots)\n+        for owner_set in owner_sets.values():\n+            for owner in owner_set.owners:\n+                for ref in owner.authority_refs:\n+                    owner_registry.require(ref, object_family=owner.owner_family)\n \n     @property\n     def cache_identity(self) -> str:\n"
+}
