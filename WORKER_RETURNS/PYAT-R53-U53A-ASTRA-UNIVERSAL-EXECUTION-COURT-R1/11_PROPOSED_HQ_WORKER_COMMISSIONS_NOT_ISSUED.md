@@ -1,3 +1,5 @@
+> **Terminal status (2026-10-21): FINISHED_BOUNDED_ARCHITECTURAL_COURT__READY_FOR_INDEPENDENT_HQ_ADJUDICATION.** See [18 — final HQ decision memorandum](18_TERMINAL_HQ_ARCHITECTURE_DECISION_MEMORANDUM.md). No architecture-changing blockers remain identified in the indexed evidence. Remaining implementation, scientific, adoption and CI proofs have named future owners. Earlier continuation instructions below are historical and do not direct further forensic expansion. Engineering remains REVISE_WITH_REUSE; original science and authority remain HOLD.
+
 # Proposed implementation commissions — NOT ISSUED
 
 No workers launched; J52/W52 stay stopped. These are concrete scopes and acceptance obligations for an explicitly authorized future program. Normative machine-readable owner, source commit/path/blob, write allowlist, dependency and test details are in 08. All source recovery is by exact blob; historical returns remain immutable. Suggested new integration modules are marked proposed, not falsely described as existing.

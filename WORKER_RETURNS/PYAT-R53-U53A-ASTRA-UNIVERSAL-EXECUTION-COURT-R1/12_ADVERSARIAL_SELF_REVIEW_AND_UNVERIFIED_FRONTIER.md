@@ -1,3 +1,5 @@
+> **Terminal status (2026-10-21): FINISHED_BOUNDED_ARCHITECTURAL_COURT__READY_FOR_INDEPENDENT_HQ_ADJUDICATION.** See [18 — final HQ decision memorandum](18_TERMINAL_HQ_ARCHITECTURE_DECISION_MEMORANDUM.md). No architecture-changing blockers remain identified in the indexed evidence. Remaining implementation, scientific, adoption and CI proofs have named future owners. Earlier continuation instructions below are historical and do not direct further forensic expansion. Engineering remains REVISE_WITH_REUSE; original science and authority remain HOLD.
+
 # Hostile self-review and material frontier — revision 2
 
 ## Verdict ceiling

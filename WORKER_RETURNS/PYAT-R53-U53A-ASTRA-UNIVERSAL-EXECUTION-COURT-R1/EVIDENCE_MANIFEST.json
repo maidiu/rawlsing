@@ -1,9 +1,9 @@
 {
   "schema": "U53A_EVIDENCE_MANIFEST@2",
-  "status": "BOUNDED_RETURN_WITH_MATERIAL_GAPS",
+  "status": "FINISHED_BOUNDED_ARCHITECTURAL_COURT__READY_FOR_INDEPENDENT_HQ_ADJUDICATION",
   "startup": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
   "branch": "agent/astra-pyat-r53-u53a-universal-execution-systemic-architecture-court-r1",
-  "prior_verified_court_commit": "557c455c57a941bbd8728e61aef8368faf85d195",
+  "prior_verified_court_commit": "3ad594fa85fd87cd5029679b19322bdbe3cf278b",
   "recovered_commit": "b167a3687fa8075ae33f77f1cbc8aec4af4f01c4",
   "frozen_oracle": {
     "commit": "a79dfcf85c65195c9b6d264fd366b50a71b4b5a2",
@@ -18,8 +18,8 @@
   "files": [
     {
       "path": "00_EXECUTIVE_VERDICT_AND_HQ_DECISION_REQUEST.md",
-      "sha256": "a554423b214d31017075f93ce51d3c3a138666370421225f5c26e63a9d123390",
-      "bytes": 8353
+      "sha256": "5aee2b422f5261e1e07367827c632504f3fe522549e2365fc04b23e5f43b059d",
+      "bytes": 8910
     },
     {
       "path": "01_INDEPENDENT_UNIVERSAL_DEMAND_ORACLE.md",
@@ -58,8 +58,8 @@
     },
     {
       "path": "08_PRIORITY_ORDERED_MINIMAL_REPAIR_DAG.json",
-      "sha256": "a9dc95ea282e807d6ba5a37824748ac6ed9dcbd15205a029ab91ead434200864",
-      "bytes": 33793
+      "sha256": "5e2a12f72c6534e1ba8bcb780cd112c5ac706994ed47aa9c6479105a9ec64577",
+      "bytes": 35848
     },
     {
       "path": "09_NON_GAMEABLE_UNIVERSAL_RELEASE_GATES.md",
@@ -73,13 +73,13 @@
     },
     {
       "path": "11_PROPOSED_HQ_WORKER_COMMISSIONS_NOT_ISSUED.md",
-      "sha256": "370941cfe9b36b59cf4c75926f30101c254cfdb52c0c0308d237ea119ad08ca6",
-      "bytes": 15145
+      "sha256": "e7e7b32da9e6222888dd425f77ea5d9ef4c263313987d45261f49ed3d602d9a8",
+      "bytes": 15702
     },
     {
       "path": "12_ADVERSARIAL_SELF_REVIEW_AND_UNVERIFIED_FRONTIER.md",
-      "sha256": "432354aa198d7be3efd133a4e52a45770770e161ad347bedae04649fb1b53388",
-      "bytes": 7879
+      "sha256": "303d3284988f447407b25062d8ca6e9a432ad8e3c4be6f086230359857396239",
+      "bytes": 8436
     },
     {
       "path": "13_CROSS_ACCOUNT_MACHINE_HANDOFF.md",
@@ -108,8 +108,8 @@
     },
     {
       "path": "RESUME_CHECKPOINT.md",
-      "sha256": "9ae93cab42bf49e8c91a0f8e23eb8a938a663acb1b7409d488c9c62b5b4918f8",
-      "bytes": 9004
+      "sha256": "77c57b5edbdd94c577822ae0d8b939f8714c871256d7e35737ffebe583027f21",
+      "bytes": 10949
     },
     {
       "path": "UNIVERSAL_RELEASE_GATE_SPEC.json",
@@ -230,6 +230,11 @@
       "path": "evidence/decoder_synthetic_native/stdout.txt",
       "sha256": "4c7bb8b93498011a26d21c3014bfe2c7f947e32e472ece1a26a971cca526325a",
       "bytes": 224
+    },
+    {
+      "path": "18_TERMINAL_HQ_ARCHITECTURE_DECISION_MEMORANDUM.md",
+      "sha256": "9f28c49672a312f74dac43a23471ce5b851813c97ff4518dcd4dc32e48b38f11",
+      "bytes": 32426
     }
   ],
   "runtime_tests": {
@@ -261,18 +266,85 @@
       "documentary_registry_hash_size_format_match35": true
     },
     "limitations": "Document checks plus separately qualified A42 and decoder synthetic native cases; no full system/scientific acceptance",
-    "publication": "Remote verification is performed after publishing; enclosing commit identifies this artifact"
+    "publication": "Remote verification is performed after publishing; enclosing commit identifies this artifact",
+    "terminal_checks": {
+      "parent_content_hashes_verified": true,
+      "ten_nodes_preserved": true,
+      "implementation_predecessors_unchanged": true,
+      "frozen_oracle_excluded_from_write_set": true,
+      "outstanding_items_disposed": 24,
+      "architecture_blockers": 0,
+      "native_tests_added": 0
+    }
   },
   "engineering": "REVISE_WITH_REUSE",
   "scientific": "ORIGINAL_U_E_PRE_NULL_N11_NOT_READY",
   "authority": "HOLD_NO_ISSUANCE_NO_PRODUCTION_NO_ACTOR_NO_WORKER_LAUNCH",
-  "remaining": "12_ADVERSARIAL_SELF_REVIEW_AND_UNVERIFIED_FRONTIER.md",
+  "remaining": "18_TERMINAL_HQ_ARCHITECTURE_DECISION_MEMORANDUM.md#4-exhaustive-disposition-of-significant-open-items-in-the-read-set",
   "handoff": {
     "path": "13_CROSS_ACCOUNT_MACHINE_HANDOFF.md",
     "court_baseline": "8681bcae7fd0292be4328093f8cc1c5928ee4956",
     "purpose": "Receiving account/machine continuation; no new substantive court evidence or authority",
-    "continuation": "Read14 and RESUME_CHECKPOINT after preserved13"
+    "continuation": "Historical handoff13 retained. Terminal memorandum18 supersedes open-ended continuation instructions."
   },
   "continuation_report": "14_CROSS_MACHINE_ADOPTION_AND_LEAF_CONTINUATION.md",
-  "latest_report": "17_DECODER_SYNTHETIC_NATIVE_BYTE_CUSTODY.md"
+  "latest_report": "18_TERMINAL_HQ_ARCHITECTURE_DECISION_MEMORANDUM.md",
+  "terminal_decision": {
+    "architectural_investigation": "FINISHED_BOUNDED",
+    "ready_for": "INDEPENDENT_HQ_ADJUDICATION",
+    "architecture_blockers": [],
+    "outstanding_item_count": 24,
+    "new_native_tests": 0,
+    "production_changes": 0,
+    "authority_issued": false,
+    "workers_launched": false,
+    "implementation_graph_unchanged": true,
+    "priority_clarification": "R04 byte-custody correctness P0; optional scheduling lower priority",
+    "engineering": "REVISE_WITH_REUSE",
+    "scientific": "HOLD",
+    "authority": "HOLD",
+    "read_set": [
+      {
+        "file": "00_EXECUTIVE_VERDICT_AND_HQ_DECISION_REQUEST.md",
+        "hash_matches": true,
+        "bytes_match": true
+      },
+      {
+        "file": "08_PRIORITY_ORDERED_MINIMAL_REPAIR_DAG.json",
+        "hash_matches": true,
+        "bytes_match": true
+      },
+      {
+        "file": "11_PROPOSED_HQ_WORKER_COMMISSIONS_NOT_ISSUED.md",
+        "hash_matches": true,
+        "bytes_match": true
+      },
+      {
+        "file": "12_ADVERSARIAL_SELF_REVIEW_AND_UNVERIFIED_FRONTIER.md",
+        "hash_matches": true,
+        "bytes_match": true
+      },
+      {
+        "file": "15_A42_SYNTHETIC_NATIVE_INTAKE_CHARACTERIZATION.md",
+        "hash_matches": true,
+        "bytes_match": true
+      },
+      {
+        "file": "16_CLOSED35_DOCUMENTARY_IDENTITY_AND_AUTHORITY_RECONCILIATION.md",
+        "hash_matches": true,
+        "bytes_match": true
+      },
+      {
+        "file": "17_DECODER_SYNTHETIC_NATIVE_BYTE_CUSTODY.md",
+        "hash_matches": true,
+        "bytes_match": true
+      },
+      {
+        "file": "RESUME_CHECKPOINT.md",
+        "hash_matches": true,
+        "bytes_match": true
+      }
+    ],
+    "memorandum": "18_TERMINAL_HQ_ARCHITECTURE_DECISION_MEMORANDUM.md"
+  }
 }

@@ -1,6 +1,6 @@
 {
   "schema": "U53A_REPAIR_PROGRAM@proposal2",
-  "status": "PROPOSED_NOT_ISSUED__BOUNDED_OWNER_SELECTION",
+  "status": "PROPOSED_NOT_ISSUED__READY_FOR_INDEPENDENT_HQ_ADJUDICATION",
   "adoption_precondition": "Explicit new user/HQ build authorization; J52/W52 STOP remains",
   "minimal_cutsets": [
     {
@@ -290,7 +290,7 @@
     },
     {
       "id": "R04",
-      "priority": "P1",
+      "priority": "P0",
       "title": "Source byte custody, restart and bounded scheduling",
       "material_refs": [
         "M08",
@@ -348,7 +348,8 @@
       "merge_rule": "Exact listed reference bodies are recovery inputs; do not merge unrelated worker branches. Before implementation reconcile current adopted owner and require independent compatibility review for any differing body.",
       "contract": "07_UNIVERSAL_SOURCE_ENVELOPE_WORKLOAD_CONTRACTS.md",
       "first_unblock": "resumed exact outputs",
-      "new_evidence": "Report17; direct native mutable-path failure. No implementation authorization; reconcile actual snapshot owner before choosing strategy."
+      "new_evidence": "Report17; direct native mutable-path failure. No implementation authorization; reconcile actual snapshot owner before choosing strategy.",
+      "priority_scope": "Consumed-byte/source custody is mandatory P0 release correctness per report17. Optional scheduling/performance optimization retains lower operational priority. Implementation predecessor R03 unchanged."
     },
     {
       "id": "R05",
@@ -650,5 +651,54 @@
       "provider_sufficiency": "CI/security implementation competence and repository admin; scientific oracle requires separate owner",
       "stop_hold": "If required checks/protection unavailable return DEPLOYMENT_HOLD; never call a local prototype installed"
     }
-  ]
+  ],
+  "terminal_adjudication": {
+    "status": "FINISHED_BOUNDED_ARCHITECTURAL_COURT",
+    "memorandum": "18_TERMINAL_HQ_ARCHITECTURE_DECISION_MEMORANDUM.md",
+    "evidence_baseline": "3ad594fa85fd87cd5029679b19322bdbe3cf278b",
+    "architecture_blockers": [],
+    "all_designs_adjudicable_now": true,
+    "implementation_prerequisites_preserved": true,
+    "p0_cuts": [
+      {
+        "id": "P0-W",
+        "nodes": [
+          "R01",
+          "R02",
+          "R03"
+        ],
+        "scope": "complete source-to-native workload"
+      },
+      {
+        "id": "P0-E",
+        "nodes": [
+          "R08"
+        ],
+        "scope": "evidence/request/state identity"
+      },
+      {
+        "id": "P0-B",
+        "nodes": [
+          "R04"
+        ],
+        "scope": "consumed-byte custody; recover enforced immutable ownership or repair boundary"
+      },
+      {
+        "id": "P0-G",
+        "nodes": [
+          "R00",
+          "R09"
+        ],
+        "scope": "independent policy and authenticated promotion"
+      }
+    ],
+    "full_product_additions": [
+      "R05",
+      "R06"
+    ],
+    "original35_addition": "R07 plus actual applicable source/science authority and evidence",
+    "a42_assignment": "R00 acceptance semantics; HQ-authorized A42 maintainer for any retained-intake repair with explicit code allowlist; R09 provenance; independent R07 assessor. No automatic expansion of existing write permissions.",
+    "minimality_limit": "Inclusion-minimal obligations for named observed failure planes in inspected architecture; not global proof over unseen implementations",
+    "future_work_rule": "Assigned implementation/issuance/adoption qualification; reopen architectural court only on concrete primary evidence of a materially different contract, recovery decision or prerequisite."
+  }
 }

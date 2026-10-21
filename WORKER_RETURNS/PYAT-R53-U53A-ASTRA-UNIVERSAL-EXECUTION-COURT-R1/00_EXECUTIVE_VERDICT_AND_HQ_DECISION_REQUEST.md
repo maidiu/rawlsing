@@ -1,3 +1,5 @@
+> **Terminal status (2026-10-21): FINISHED_BOUNDED_ARCHITECTURAL_COURT__READY_FOR_INDEPENDENT_HQ_ADJUDICATION.** See [18 — final HQ decision memorandum](18_TERMINAL_HQ_ARCHITECTURE_DECISION_MEMORANDUM.md). No architecture-changing blockers remain identified in the indexed evidence. Remaining implementation, scientific, adoption and CI proofs have named future owners. Earlier continuation instructions below are historical and do not direct further forensic expansion. Engineering remains REVISE_WITH_REUSE; original science and authority remain HOLD.
+
 # U53A integrated court — BOUNDED RETURN / MATERIAL FRONTIER OPEN
 
 Recovery tree 9c0b32bef36f78b8cf7436e448c1735a23a0f41b was committed as b167a3687fa8075ae33f77f1cbc8aec4af4f01c4 and the same branch ref verified. This revision integrates independently inspected primary code, P53E corpus access, B53R/B53H adversarial courts and P53T published native receipts. It is not an exhaustive COMPLETE certificate. The frozen pre-analysis oracle 01 at a79dfcf85c65195c9b6d264fd366b50a71b4b5a2 remains unchanged.

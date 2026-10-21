@@ -1,3 +1,17 @@
+# TERMINAL — bounded architecture court finished; handback to HQ
+
+2026-10-21. Parent 3ad594fa85fd87cd5029679b19322bdbe3cf278b. Read [18 — terminal HQ decision memorandum](18_TERMINAL_HQ_ARCHITECTURE_DECISION_MEMORANDUM.md) first. Status FINISHED_BOUNDED_ARCHITECTURAL_COURT__READY_FOR_INDEPENDENT_HQ_ADJUDICATION. Architecture-changing blockers identified: 0. No further open-ended forensic continuation is requested.
+
+All ten design commissions can be independently adjudicated by HQ now; implementation and scientific acceptance await their named prerequisites. Exact P0 cuts: R01+R02+R03 workload; R08 evidence identity/status; R04 consumed-byte custody; R00+R09 independent policy/authenticated enforcement. R05/R06 remain necessary for full learned/world qualification, R07 for original-source/N11 assessment after authority and actual execution. Node identities and implementation predecessor graph are preserved. R04 consumed-byte correctness is clarified as P0; optional scheduling work is not made a new architectural blocker.
+
+Memorandum18 gives 24 finite outstanding-item dispositions, named owners and exit proofs. No new native tests, production edits, authority or worker launches occurred in the terminal pass. Existing U53A native count remains14 (6 A42 + 8 decoder); inherited P53T/B53H counts and overlap remain. Original U/E_pre null; N11 NOT_READY with0/1890 newly original-measured cells; N12 HOLD; J52/W52 USER_STOPPED. Frozen01 is preserved.
+
+Publication: enclosing commit identifies this terminal handback; remote ref, manifest, memorandum and frozen01 are verified after commit. Remaining engineering, science, CI and adoption work belongs to the future owners in18. Reopening requires a concrete primary-evidence challenge naming the architecture decision it could reverse, not the existence of an unknown.
+
+---
+
+# Historical checkpoints retained verbatim below — superseded as work instructions by memorandum18
+
 # Latest continuation — report17
 
 Parent557c455c57a941bbd8728e61aef8368faf85d195. Eight qualified direct decoder synthetic cases reproduce SAV/DTA mutable-path identity drift; fresh U53A native total14 (A426 + decoder8), inherited P53T/B53H unchanged. Read17,16,15 then prior handoff. Source index pins exact code/runtime, report-only harness/receipts are banked. No original respondents, production repairs or authority. Next: current immutable retention contract and actual downstream propagation; M1 registered validators/B5 restore; later L2 current adoption/realization; full native joins still unrun. Prior static decoder hypothesis is now a bounded native finding. Latest observed usage81%; user explicitly overrode80%, but retain frequent verified checkpoints.
