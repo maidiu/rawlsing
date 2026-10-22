@@ -68,3 +68,15 @@ J and E each vendor the same BP2 `tests/test_joined_severance.py` blob `38022a85
 ## Next finite work
 
 Complete required primary read scopes and current MD/JSON consistency, direct ADP and remaining R2 owner clauses, then a prospective full 00C §9 join draft with current duplicate/routing checks. Review remains independent. No scientific question presently requires architecture-changing Astra judgment.
+
+## Subsequent primary-read and draft completion amendment
+
+Sorok 03 was subsequently read through line 1281, completing the full machine map. Sorok 00_READ was completed through line 596, and the previously truncated 00C task-classification/routing/ledger sections and 101 §§16–19 gaps were read directly. Scope-sensitive PRE-MAIN canonical entrypoint, knowledge read order and decision-agent grounding protocol were read in full. This application remains `FORENSIC_READ_ONLY` and does not issue a project-grounding PASS or decision authority.
+
+The active heads of the MD/JSON report pairs were compared at the same immutable P cut: Sorok MD blob `3cc53784868fe9a85310f3a9b4236ce57020146a`, JSON `f87890e0853a22935feef030904435ea4d89a217`, both rev29; Pyat MD `ebbc5a70b3647a6679644fead61ab8ea6fb08726`, JSON `1580b629b678ff42d6b7a87dd51859bede65f7be`, both rev42/R56. Their operative sections agree on their recorded state. Sorok's records remain stale against the verified worker returns and latest Pyat revision. No claim of a full historical-field equivalence check is made.
+
+Direct primary ADP007 initialization holding/dependencies, ADP015 genealogy holding/dependencies, ADP016 memory holding/jurisdiction, ADP017 access holding/dependencies, and ADP019 occurrence holding/jurisdiction were inspected at P. They confirm the existing owner distinctions used in 02 and the draft; no new authority or implementation is inferred. CAN008 R2 body §§4–8 were inspected directly in addition to its exact adoption and earlier clauses.
+
+Central state rows were inspected at P, including N004/N028/S040 and OBL061/062. N004 closes historical Dva roadmap/disposition obligations, not every future Dva function. N028 closes active local Field Forge post-R2 mission while preserving dormant claim-conditional OBL006. Older S040/OBL062 text still describes pre-R2 reconciliation as unadopted. The later exact CAN008 R2 adoption and Sorok owner map govern that adopted semantic grain; the candidate will not reopen the old reconciliation merely because its central row lags. OBL061 authority contracts do not create actual runtime actor/contact/acceptance facts. T004 preserves the structural-to-person firewall. AR01–20 were inspected, with AR18's older exploratory blanket interpreted through the later exact Field Forge R2 adoption rather than used to revoke it.
+
+`07_PROSPECTIVE_00C_JOIN_COMMISSION_DRAFT.md` now supplies the complete prospective mission, header, routing, knowledge bands, permissions, work, three courts, proof and return requirements. It is explicitly NOT_ISSUED/NOT_LAUNCHED and has no actual startup seal. This completes the prospective draft requirement as candidate planning; it grants no commissioning power.
