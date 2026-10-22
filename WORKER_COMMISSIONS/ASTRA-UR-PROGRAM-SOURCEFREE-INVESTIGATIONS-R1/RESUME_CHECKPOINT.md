@@ -1,20 +1,24 @@
-# R56 checkpoint — R00V requires repair
-Date: 2026-10-22. State: DELEGATED_WORKER_LAUNCH_READY__SAME_R00E_REPAIR.
+# R56 checkpoint — targeted recheck and two same-owner repairs ready
+Date: 2026-10-22. State: DELEGATED_WORKER_LAUNCH_READY.
 Director branch: agent/astra-ur-program-sourcefree-evidence-direction-r1.
-Verified parent: 485f31e52ca82905dcfbbc79c5f8c8294fb55f49. This checkpoint's enclosing commit is its successor; resolve the exact remote head before writing.
+Verified parent: 9a6b2d814a738b61da70c57b71ccc26817d3fbaf. This checkpoint's enclosing commit is successor; resolve direct remote head before any next write.
+HQ live43db9d0a29f8cd7b915f6b778b08583b9a6c31d8; operative LATEST still R57 at953eb07ad29cc424b2fc43cfeb13ef83355f3a50.
 
-R00V verified return: 140c41d6a10a595ff5d80de4eb855bcd65e7a8f6, two commits ahead of candidate efd12b1d46f1ccf90de14b292f600078f11ec7e0, zero behind. Changes are confined to reviewer tests and return. R00E branch still equals candidate.
-Reviewer reports 19 tests: 11 passing and 8 known-defect xfails. Those xfails are defects, not acceptance. All 36 frozen cases reproduce, but claim/status/identity combinations bypass enforcement. Director statically confirmed semantic comparison suppression when a status/disposition edit names the operation; no director native rerun. R00 remains NOT ACCEPTED.
+Actual returns:
+- R00E repaired candidate3d4d77e9b667a1cddac07c3bfdda7d8795de458d, author24tests/36cases/8defects reported fixed; author JUnit inspected. Not independently accepted. R00V branch remains140c41d6a10a595ff5d80de4eb855bcd65e7a8f6; no repaired-candidate recheck yet.
+- R02V a287674b97a2bbde4bf9acf3b6badf19b5ce72f5 requires REVISE. Normalization merges distinct respondents and overwrites ambiguous source keys. Actual I03 false denominator1 inspected. Positive independent prospective domains/S1/S2/MR/rank path coverage retained. Envelope remains bounded to tested adapter/facade/C11/I03 route, not general raw PhysicalCell compatibility.
+- R04BYTEV afbe6dd5f630f7e75a3fa004aad3467e113e0977 requires REVISE. fd verification vs mutable reader path permits old digest/new facts; metadata/batch alterations share root. SAV+DTA actual probe JSON inspected.10older failures independently baseline-identical; DTA extended-missing writer gap remains unqualified.
 
-Read 16_R00V_INTAKE_AND_SAME_OWNER_REPAIR.md and R00E/R2_REPAIR_PROMPT.md under WORKER_COMMISSIONS/PYAT-R56-FIRST-REPAIR-FLIGHT-R1/.
-Next: send repair prompt to SAME R00E author on SAME branch from exact candidate efd12b1d46f1ccf90de14b292f600078f11ec7e0. Fix general validation and precedence, preserve oracle and legitimate policy-only positives. Eight regressions must become ordinary passing assertions, not xfails. D7 remains bounded handle consistency under the trusted-supervisor assumption. Prompt supplies exact external shared-contract URLs. New manifest/sums/mechanical receipts go in own revisions/r2 return; preserve old evidence.
-After repaired return, SAME R00V performs affected requalification and necessary regression checks. No new investigator or general review court.
+All return direct refs, ancestry and allowed diffs checked. No director native rerun/full hash audit. No merge/adoption or worker launched.
+Read17_REMAINING_REVIEWS_INTAKE_AND_NEXT_PRODUCTIVE_STEPS.md and these3prompts:
+R00V/R2_REQUALIFICATION_PROMPT.md → SAME reviewer, exact candidate3d4d77e9; new successor reviewer branch, old review preserved.
+R02/R2_REPAIR_PROMPT.md → SAME author/branch from236fd4d1064f7c14113616db300c955294a474ac.
+R04BYTE/R2_REPAIR_PROMPT.md → SAME author/branch fromc1b0abec563a91940ae2f505b53a4c7e16f8685a.
+All under WORKER_COMMISSIONS/PYAT-R56-FIRST-REPAIR-FLIGHT-R1/. Execute in parallel via user-selected native facility; startup checks record-and-proceed, no new sealing/approval round.
+After2repairs SAME reviewers do affected requalification; no new general courts. Combined-candidate interaction test only after individual evidence permits it.
 
-R02V and R04BYTEV are still running per user; not polled, interrupted or duplicated. Their local reviews continue independently. Combined gate-qualified functioning waits for repaired and independently requalified R00.
-R56 grant and R57 delegation at 953eb07ad29cc424b2fc43cfeb13ef83355f3a50 apply. No additional HQ approval or static-seal round. No worker messages or processes launched by director.
+Intelligence: director intake I2/S1-S2; economical Codex sufficient. R00 recheck/R02repair I2-I3/S3, same qualified DeepSeek MAX/OpenCode. R04repair I3/S3, same qualified DeepSeek MAX/OpenCode for concrete mechanism fix; escalate Sol High only demonstrated reader/OS/interface engineering need. Astra only a specific architecture/science-changing fork with necessity card BEFORE judgment. None identified here. Exact current selected model/effort unexposed.
+Initial quota51%five-hour/65%weekly consumed; contextUNKNOWN. All meaningful work preserved remotely; no local candidate edits.
 
-Intelligence: current intake/coordination I2/S1–S2, economical model sufficient. Exact current model/effort unexposed. Repair I2–I3/S3, same qualified user-selected DeepSeek MAX/OpenCode author. No new Astra necessity; a precise architecture/science-changing conflict requires a necessity card and pause before judgment.
-Initial quota: 46% five-hour, 64% weekly consumed; context remaining UNKNOWN. No local candidate changes; director documents published remotely.
-Continuation: "Continue R56 from the exact remote director head. Read 16 and the same-owner repair prompt. Intake repaired R00E and the other two reviews when returned. Preserve author/reviewer separation, require targeted requalification, and avoid a new architecture/policy court."
-
-J52/W52 USER_STOPPED. Original35, all 1890 accounting cells and global F6/F7/F8 retained; zero new original measurements. N11 NOT_READY, N12 HOLD. Original source/science, protected CI, production promotion and adoption remain held.
+Continuation: "Continue R56 from exact remote director head. Read17and the3prompts. Intake targeted R00V requalification and same-owner R02/R04 repairs. Keep invariants generic, demand actual C11/I03 custody/population conservation, preserve scope and authority. No architecture reopening or extra static-seal loop. Route any genuine intelligence boundary explicitly."
+J52/W52 USER_STOPPED. All35/1890/globalF6F7F8 retained;0new original measurements. N11NOT_READY/N12HOLD. Original source/science, protected CI, production promotion/adoption, R03/R04.joined and other Rnodes separately held.
