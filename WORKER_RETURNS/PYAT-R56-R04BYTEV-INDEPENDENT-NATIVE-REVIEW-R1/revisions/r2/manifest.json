@@ -1,0 +1,178 @@
+{
+  "schema": "PYAT_R56_R04BYTEV_R2_REQUALIFICATION_MANIFEST_R1",
+  "job": "R56-R04BYTEV",
+  "revision": "r2",
+  "role": "same independent native reviewer (fresh context, not the repair author)",
+  "verdict": "REVISE",
+  "candidate": "ea0d6f0f9840db0e33645b40ceda54456612709e",
+  "repair_parent": "c1b0abec563a91940ae2f505b53a4c7e16f8685a",
+  "startup": "6d95a78bf6b7bcf70022e303a151255e65edc38a",
+  "original_review_ref": "afbe6dd5f630f7e75a3fa004aad3467e113e0977",
+  "author_branch": "agent/rabochii-pyat-r56-r04byte-consumed-byte-custody-r1",
+  "reviewer_branch": "agent/rabochii-pyat-r56-r04bytev-r2-custody-requalification-r1",
+  "authority_refs": {
+    "director_commission": "485f31e52",
+    "r57": "953eb07ad29cc424b2fc43cfeb13ef83355f3a50",
+    "shared_contract": "eb28fdcc311e2534b66def445e745cb25cb8a9bd",
+    "r00p_r2_startup": "6d95a78bf6b7bcf70022e303a151255e65edc38a"
+  },
+  "reviewer_session": {
+    "harness": "OpenCode",
+    "model": "opencode-go/deepseek-v4.1-flash",
+    "effort": "UNKNOWN_NOT_EXPOSED",
+    "session_id": "UNKNOWN_NOT_EXPOSED",
+    "provider": "UNKNOWN_NOT_EXPOSED",
+    "host": "MacBook-Pro.lan",
+    "os": "macOS 13.2.1 (22D68) x86_64",
+    "python": "3.11.3",
+    "pytest": "9.0.2",
+    "pyreadstat": "1.3.2",
+    "pandas": "2.3.1"
+  },
+  "actual_import_hashes": {
+    "rawlsing_next/pre553_physical_decoder.py": "a767b653dc119f85d11e050bc42b01dbc90ede9de28fbddbce8be0d6c6e7ce46",
+    "rawlsing_next/pre553_source_backed_c11_facade.py": "03b88d258d21c403542756db7316923aa392871442d99294de904b1744da1d01",
+    "rawlsing_next/pre553_empirical_query.py": "d45ad313bc57e94c8c3652b4123c7cb03b0fc18d38d577aaaae94435664ef4cb",
+    "rawlsing_next/pre553_c11_repository.py": "84a71fe43307cca30f9eeaaedb269d8390468a4744a0fac251aebc2cda7b498e",
+    "candidate_side_test_file_sha256": "379cca5ce1b8c62f457505d6bca6bef526fd4eac0d36e5d4dfd9928a6cba95fd",
+    "candidate_side_proof_sidecar_sha256": "f4ff0cd8bf509c106f14d03812401fd2edc8581cf5e971dc1f17041d74363f51"
+  },
+  "qualification": {
+    "focused_module_reproduced": "24 passed (counterexample deselected)",
+    "core_reproduced": "88 passed, 1 skipped (counterexample deselected)",
+    "full_module_with_counterexample": "24 passed, 1 failed",
+    "full_core_with_counterexample": "88 passed, 1 failed, 1 skipped",
+    "skipped_capability": "rawlsing_next/tests/test_pre553_sr06_decoder_carrier.py:268 - installed pyreadstat writer/readback does not expose missing_user_values in metadata",
+    "proof_witness": "3/3 claims baseline PASS, 3/3 TARGET_ASSERTION_FAILED, decoder restored a767b653...",
+    "proof_lint": "AST_LINT_PASS",
+    "inherited_r1e_r1i_r1j": "author repaired-code receipt: same 10 nodes/messages as r1 baseline; no new regression; no new sweep",
+    "dta_chunk_limitation": "ReadstatError: This version of the file format is not supported on /dev/fd DTA; full-frame read_dta per value pass",
+    "read_shape": "DTA O(rows) full frame (0.78/1.9/12.5 MB maxrss delta at 1k/10k/50k rows); SAV chunked (~0.7-1.2 MB delta)",
+    "posix_refusal": "DecoderError: content-bound reader path requires POSIX /dev/fd",
+    "compatibility_full_read": "SAV+DTA pass via synthetic monkeypatched allowlist; TEST_ONLY, not installed encoding authority"
+  },
+  "defect": {
+    "summary": "mmap in-place write between SAV lazy batches does not change fstat signature on APFS; altered C11/I03 facts released under old source identity",
+    "counterexample_test": "test_r2_mmap_between_batch_change_cannot_release_altered_c11_i03_under_old_identity",
+    "observed": "baseline i03_y_cells {'0':1,'1':1} -> {'0':0,'1':2}; source_artifact_ref.content_hash unchanged; signature_changed_by_mmap=false",
+    "affected_path": "rawlsing_next/pre553_physical_decoder.py",
+    "affected_behavior": "iter_batches SAV branch: check_stable() per batch uses only fstat signature; no full digest after the SAV pass; snapshot fd is O_RDWR so mmap(PROT_WRITE) is possible"
+  },
+  "files": [
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTEV-INDEPENDENT-NATIVE-REVIEW-R1/revisions/r2/00_RETURN.md",
+      "sha256": "f2caf3f28354daf7ce944a1db20f3104b950ae75e45c427017a92cd7d0aaf555",
+      "bytes": 8959
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTEV-INDEPENDENT-NATIVE-REVIEW-R1/revisions/r2/00_STARTUP_SESSION_RECORD.md",
+      "sha256": "3be5f78d8420a614c5b892a3678185c7e20d3113514c3ca0c2dce0f044151aa5",
+      "bytes": 3590
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTEV-INDEPENDENT-NATIVE-REVIEW-R1/revisions/r2/01_FROZEN_REQUALIFICATION_EXPECTATIONS.md",
+      "sha256": "e37bcd27428f2e8163ecb2ca588a398f51f85e27ced488015b2e1bf11b3d2c95",
+      "bytes": 3860
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTEV-INDEPENDENT-NATIVE-REVIEW-R1/revisions/r2/RESUME_CHECKPOINT.md",
+      "sha256": "989c1eff094848a96a608d2c5e43e27dba42ff2d4063d50276627fbfdb02b5f3",
+      "bytes": 1487
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTEV-INDEPENDENT-NATIVE-REVIEW-R1/revisions/r2/evidence/COMMANDS_AND_RESULTS.md",
+      "sha256": "c432b6295c656711cad06081512664ab79df09c0e66ff94592080163c1c6ca3f",
+      "bytes": 5596
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTEV-INDEPENDENT-NATIVE-REVIEW-R1/revisions/r2/evidence/core_with_independent_receipt.txt",
+      "sha256": "b87a12c59f123fbd45f36be6e0fb4df008e6df6f0e5524c45699772efad6b5d8",
+      "bytes": 467
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTEV-INDEPENDENT-NATIVE-REVIEW-R1/revisions/r2/evidence/fresh_positive_after_witness.txt",
+      "sha256": "d470f4b6c5447e65dd213833ea1c937fd0da3af8c050a74db02fe0bf62942220",
+      "bytes": 98
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTEV-INDEPENDENT-NATIVE-REVIEW-R1/revisions/r2/evidence/probe_r2_attack_windows.json",
+      "sha256": "9dc25fd0ffd57e477b98aea229d6d07a990a6082b27dc3d988f6fd3a922aa0c5",
+      "bytes": 6224
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTEV-INDEPENDENT-NATIVE-REVIEW-R1/revisions/r2/evidence/probe_r2_attack_windows.py",
+      "sha256": "d90145a69bac0589258925b9d3587534836615dbae87d817ef0130a592bb6446",
+      "bytes": 18312
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTEV-INDEPENDENT-NATIVE-REVIEW-R1/revisions/r2/evidence/probe_r2_mmap_fact_bypass.json",
+      "sha256": "d2b55900ab67fc7485f11842cbb03c6781195a71b699441feab7d0dff25ff7f3",
+      "bytes": 989
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTEV-INDEPENDENT-NATIVE-REVIEW-R1/revisions/r2/evidence/probe_r2_mmap_fact_bypass.py",
+      "sha256": "9fe43a2c599a0c3687bb236692c0557e96f467651c3b6124b6b2791ff14d2ed0",
+      "bytes": 4850
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTEV-INDEPENDENT-NATIVE-REVIEW-R1/revisions/r2/evidence/probe_r2_read_shape.json",
+      "sha256": "3ed227ce84da6509019f879339a6d1d4048b935d73ef80f3772a5ae1106c14bd",
+      "bytes": 3924
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTEV-INDEPENDENT-NATIVE-REVIEW-R1/revisions/r2/evidence/probe_r2_read_shape.py",
+      "sha256": "0c3362a7b633c075f8b32b1c434cc5cce607bd57c7314004f4ffbfd9204f8e8b",
+      "bytes": 2279
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTEV-INDEPENDENT-NATIVE-REVIEW-R1/revisions/r2/evidence/proof_witness.json",
+      "sha256": "5f624e306f58ade69f7bc2044d6b2746c2650750dfe1cbd964f8eb01eb277be4",
+      "bytes": 1421
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTEV-INDEPENDENT-NATIVE-REVIEW-R1/revisions/r2/evidence/r1_negative_baseline_metadata_and_batch.json",
+      "sha256": "b8a9613f11d89fae655235baffb12431a23a3959e29e6c7a7a28ad4928ba1fb5",
+      "bytes": 2622
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTEV-INDEPENDENT-NATIVE-REVIEW-R1/revisions/r2/evidence/r1_negative_baseline_toctou_sav.json",
+      "sha256": "bca3f549ae0b16fa05b2a412bf9140881084af2e4615a114b134e965adb4a970",
+      "bytes": 1020
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTEV-INDEPENDENT-NATIVE-REVIEW-R1/revisions/r2/evidence/r1_probe_cold_replay.py",
+      "sha256": "fac0df816ed2c31f9f55ad47d4b866011581e5f237152d17b6abfd4e3d458810",
+      "bytes": 2898
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTEV-INDEPENDENT-NATIVE-REVIEW-R1/revisions/r2/evidence/r1_probe_metadata_and_batch_windows.py",
+      "sha256": "8396f694628d32ac36c42f849356ec5efd9018faf953fe00126fbc0625af030f",
+      "bytes": 4190
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTEV-INDEPENDENT-NATIVE-REVIEW-R1/revisions/r2/evidence/r1_probe_snapshot_path_toctou.py",
+      "sha256": "a520e37b083e85aff501eb908cb0772772f9e20e52987793258a49b4d3ebc6dc",
+      "bytes": 2785
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTEV-INDEPENDENT-NATIVE-REVIEW-R1/revisions/r2/evidence/repaired_core88_receipt.txt",
+      "sha256": "c0d1ccd86fcf6e7ea8de6999f6e8d5a545e56909e114f81ecae6e55fcb249ce0",
+      "bytes": 364
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTEV-INDEPENDENT-NATIVE-REVIEW-R1/revisions/r2/evidence/repaired_module24_receipt.txt",
+      "sha256": "806c7a3da827556875a292e16cd4a66102460f2708e5138ccf395d433a332b13",
+      "bytes": 113
+    },
+    {
+      "path": "rawlsing_next/tests/test_universal_source_byte_custody.py",
+      "sha256": "694dd2f88d17c45fe18d68e57174bc93d6601c8f76a5b011f2811f604323f398",
+      "bytes": 27411
+    },
+    {
+      "path": "rawlsing_next/tests/test_universal_source_byte_custody.py.proof.json",
+      "sha256": "f4ff0cd8bf509c106f14d03812401fd2edc8581cf5e971dc1f17041d74363f51",
+      "bytes": 2638
+    }
+  ]
+}

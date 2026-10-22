@@ -1,0 +1,211 @@
+{
+  "between_batch_external_pwrite": {
+    "baseline_cells": 21,
+    "error": "DecoderError: source snapshot changed after identity acquisition",
+    "typed_refusal": true,
+    "yielded_cells": 7,
+    "yielded_is_prefix_of_baseline": true
+  },
+  "binding_dta": {
+    "baseline_i03_y_cells": {
+      "0": 1,
+      "1": 1
+    },
+    "custody": {
+      "content_bound": true,
+      "contract": "PRE553_CONTENT_BOUND_SOURCE_SNAPSHOT@1.0.0",
+      "reader_binding": "OPEN_FD_VIA_POSIX_DEV_FD",
+      "snapshot_path_unlinked": false,
+      "snapshot_sha256": "f7fa22c5f83b90c738c7e02abf608fde2a7a2e40a3515cdc3203e36919b5b4d3",
+      "snapshot_size": 5146,
+      "source_sha256": "f7fa22c5f83b90c738c7e02abf608fde2a7a2e40a3515cdc3203e36919b5b4d3"
+    },
+    "expected_source_sha256": "f7fa22c5f83b90c738c7e02abf608fde2a7a2e40a3515cdc3203e36919b5b4d3",
+    "format": "dta",
+    "observed_equals_baseline": true,
+    "observed_i03_y_cells": {
+      "0": 1,
+      "1": 1
+    },
+    "observed_source_sha256": "f7fa22c5f83b90c738c7e02abf608fde2a7a2e40a3515cdc3203e36919b5b4d3",
+    "reader_path_is_dev_fd": true,
+    "reader_sources": [
+      "/dev/fd/4",
+      "/dev/fd/4",
+      "/dev/fd/4",
+      "/dev/fd/4",
+      "/dev/fd/4",
+      "/dev/fd/4",
+      "/dev/fd/4"
+    ],
+    "replacement_path_exists_after_attack": true,
+    "replacement_survives_close": true,
+    "snapshot_pathname_exists_before_replacement": false,
+    "verify_source_identity_after_attack": "f7fa22c5f83b90c738c7e02abf608fde2a7a2e40a3515cdc3203e36919b5b4d3"
+  },
+  "binding_sav": {
+    "baseline_i03_y_cells": {
+      "0": 1,
+      "1": 1
+    },
+    "custody": {
+      "content_bound": true,
+      "contract": "PRE553_CONTENT_BOUND_SOURCE_SNAPSHOT@1.0.0",
+      "reader_binding": "OPEN_FD_VIA_POSIX_DEV_FD",
+      "snapshot_path_unlinked": false,
+      "snapshot_sha256": "ef85de718ad16594de17b6bcccee24019cfc2ff97285eb455b7af4ca0fdca86b",
+      "snapshot_size": 839,
+      "source_sha256": "ef85de718ad16594de17b6bcccee24019cfc2ff97285eb455b7af4ca0fdca86b"
+    },
+    "expected_source_sha256": "ef85de718ad16594de17b6bcccee24019cfc2ff97285eb455b7af4ca0fdca86b",
+    "format": "sav",
+    "observed_equals_baseline": true,
+    "observed_i03_y_cells": {
+      "0": 1,
+      "1": 1
+    },
+    "observed_source_sha256": "ef85de718ad16594de17b6bcccee24019cfc2ff97285eb455b7af4ca0fdca86b",
+    "reader_path_is_dev_fd": true,
+    "reader_sources": [
+      "/dev/fd/4",
+      "/dev/fd/4",
+      "/dev/fd/4",
+      "/dev/fd/4",
+      "/dev/fd/4",
+      "/dev/fd/4",
+      "/dev/fd/4",
+      "/dev/fd/4",
+      "/dev/fd/4",
+      "/dev/fd/4",
+      "/dev/fd/4",
+      "/dev/fd/4",
+      "/dev/fd/4",
+      "/dev/fd/4",
+      "/dev/fd/4",
+      "/dev/fd/4",
+      "/dev/fd/4",
+      "/dev/fd/4",
+      "/dev/fd/4",
+      "/dev/fd/4",
+      "/dev/fd/4",
+      "/dev/fd/4",
+      "/dev/fd/4",
+      "/dev/fd/4",
+      "/dev/fd/4",
+      "/dev/fd/4",
+      "/dev/fd/4"
+    ],
+    "replacement_path_exists_after_attack": true,
+    "replacement_survives_close": true,
+    "snapshot_pathname_exists_before_replacement": false,
+    "verify_source_identity_after_attack": "ef85de718ad16594de17b6bcccee24019cfc2ff97285eb455b7af4ca0fdca86b"
+  },
+  "cold_replay_dta": {
+    "baseline_rc": 0,
+    "fault_error_tail": "rawlsing_next.pre553_physical_decoder.DecoderError: source sha256 mismatch before governed decode",
+    "fault_rc": 1,
+    "fault_stdout_empty": true,
+    "format": "dta",
+    "restored_equals_baseline": true,
+    "restored_rc": 0
+  },
+  "cold_replay_sav": {
+    "baseline_rc": 0,
+    "fault_error_tail": "rawlsing_next.pre553_physical_decoder.DecoderError: source sha256 mismatch before governed decode",
+    "fault_rc": 1,
+    "fault_stdout_empty": true,
+    "format": "sav",
+    "restored_equals_baseline": true,
+    "restored_rc": 0
+  },
+  "dta_chunk_limitation_and_shape": {
+    "dev_fd_direct_chunk_error": "ReadstatError: This version of the file format is not supported",
+    "dta_full_frame_per_pass": true,
+    "value_pass_reader_calls": {
+      "chunks": 0,
+      "read_dta": 1
+    }
+  },
+  "in_place_before_lazy_dta": {
+    "error": "DecoderError: source snapshot changed after identity acquisition",
+    "format": "dta",
+    "typed_refusal": true
+  },
+  "in_place_before_lazy_sav": {
+    "error": "DecoderError: source snapshot changed after identity acquisition",
+    "format": "sav",
+    "typed_refusal": true
+  },
+  "mmap_before_metadata_verify": {
+    "error": "DecoderError: source snapshot bytes changed after identity acquisition",
+    "typed_refusal": true
+  },
+  "mmap_between_batch": {
+    "cells_after_first_batch_differ": true,
+    "error": "DecoderError: source snapshot bytes changed after identity acquisition",
+    "mmap_captured": true,
+    "observed_y_cells": null,
+    "signature_after": [
+      16777220,
+      299527523,
+      839,
+      1792653025268883911,
+      1792653025302632992
+    ],
+    "signature_before": [
+      16777220,
+      299527523,
+      839,
+      1792653025268883911,
+      1792653025302632992
+    ],
+    "signature_changed": false,
+    "yielded_cells": 21
+  },
+  "mmap_residual": {
+    "baseline_y_cells": {
+      "0": 1,
+      "1": 1
+    },
+    "error": "DecoderError: source snapshot bytes changed after identity acquisition",
+    "mmap_captured": true,
+    "observed_y_cells": null,
+    "signature_after_mmap_write": [
+      16777220,
+      299527516,
+      839,
+      1792653025180760999,
+      1792653025207151972
+    ],
+    "signature_before": [
+      16777220,
+      299527516,
+      839,
+      1792653025180760999,
+      1792653025207151972
+    ],
+    "signature_changed": false
+  },
+  "posix_refusal": {
+    "error": "DecoderError: content-bound reader path requires POSIX /dev/fd",
+    "typed_refusal": true
+  },
+  "repeated_reads": {
+    "cells": 21,
+    "first_equals_second": true,
+    "first_equals_third": true
+  },
+  "sav_chunk_shape": {
+    "sav_uses_chunks": true,
+    "value_pass_reader_calls": {
+      "chunks": 1,
+      "read_sav": 4
+    }
+  },
+  "truncate_and_close": {
+    "closed_read_error": "DecoderError: source snapshot is closed",
+    "closed_typed": true,
+    "truncate_error": "DecoderError: source snapshot changed after identity acquisition",
+    "truncate_typed": true
+  }
+}
