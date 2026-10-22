@@ -16,23 +16,23 @@
     },
     {
       "lane_id": "R00E",
-      "parallel_status": "AUTHOR_CANDIDATE_RETURNED__INDEPENDENT_NATIVE_REVIEW_READY",
+      "parallel_status": "INDEPENDENT_REVIEW_REVISE__SAME_OWNER_REPAIR_READY",
       "terminal_persona_effect": "Native gate implementation",
       "review_independence": "Cannot alter P's policy",
       "dependency_refs": "Verified independent P freeze; competent HQ seal or exact bounded delegation",
       "branch_startup_return_refs": "efd12b1d46f1ccf90de14b292f600078f11ec7e0",
       "route": "DeepSeek V4.1-Flash MAX; S3; availability UNKNOWN",
-      "dispatch_decision_and_reason": "Actual author candidate exists; distinct native reviewer now commissioned, not launched.",
+      "dispatch_decision_and_reason": "Send R00E/R2_REPAIR_PROMPT.md to SAME author. No new investigator; generic gate not accepted.",
       "source_and_claim_grade": "TEST_ONLY_SOURCEFREE_NOT_ORIGINAL_N11",
       "incremental_cash_quota_or_unknown": "UNKNOWN"
     },
     {
       "lane_id": "R00V",
-      "parallel_status": "DEPENDENCY_HELD",
+      "parallel_status": "RETURNED_REVISE__FOLLOWUP_AFTER_REPAIRED_CANDIDATE",
       "terminal_persona_effect": "Independent native gate qualification",
       "review_independence": "Distinct E author/session; candidate read-only",
       "dependency_refs": "Exact E return",
-      "branch_startup_return_refs": "Future exact E return",
+      "branch_startup_return_refs": "140c41d6a10a595ff5d80de4eb855bcd65e7a8f6",
       "route": "Qualified economical native; S3",
       "dispatch_decision_and_reason": "Required independent review, not extra blanket court",
       "source_and_claim_grade": "TEST_ONLY_SOURCEFREE_NOT_ORIGINAL_N11",
@@ -92,9 +92,9 @@
     "current_codex_used_percent_at_intake": 0,
     "current_codex_weekly_used_percent_at_intake": 57,
     "latest_observed_usage": {
-      "five_hour_used_percent": 41,
-      "weekly_used_percent": 63,
-      "phase": "first candidate intake start",
+      "five_hour_used_percent": 46,
+      "weekly_used_percent": 64,
+      "phase": "R00V intake start",
       "actual_model_slug": "UNKNOWN",
       "actual_effort": "UNKNOWN"
     }
@@ -106,16 +106,19 @@
   "no_duplicate_evidence": "Current-project OpenCode sessions empty; four unrelated/unmapped processes preserved; no R56/UR match in inspected store; global unknown",
   "protocol_verdict": "05_HQ_PROTOCOL_READINESS_VERDICT.md",
   "pending_HQ_request": "RESOLVED_R57_NO_FURTHER_ROUTINE_HQ_ROUND",
-  "latest_intake": "14_FIRST_CANDIDATE_INTAKE_AND_NATIVE_REVIEW_DISPATCH.md",
+  "latest_intake": "16_R00V_INTAKE_AND_SAME_OWNER_REPAIR.md",
   "HQ_ref": "954995540077435366ebe98639b392b86b01d940",
   "direction_ruling": "11_BOUNDED_FLIGHT_DIRECTION_DECISION.md",
-  "next_product_milestone": "Independent native qualification of three candidates, same-owner repair if needed, then bounded combined-candidate interaction check before integration claim.",
+  "next_product_milestone": "General gate validation repairs pass actual adversarial reproductions; same R00V requalifies. Other2independent reviews continue.",
   "policy_loop_stop": "Finish existing bounded R00P correction once; no new policy audit.",
   "prepared_prompts": [
-    "R00V/00_COMMISSION.md",
-    "R02V/00_COMMISSION.md",
-    "R04BYTEV/00_COMMISSION.md"
+    "R00E/R2_REPAIR_PROMPT.md"
   ],
   "policy_content_status": "CLOSED_ACCEPT_SCOPED_R2_STATIC_CORRECTION__HQ_ADMISSION_PENDING",
-  "HQ_authority": "953eb07ad29cc424b2fc43cfeb13ef83355f3a50"
+  "HQ_authority": "953eb07ad29cc424b2fc43cfeb13ef83355f3a50",
+  "independent_review_state": {
+    "R00V": "RETURNED_REVISE_140c41d6",
+    "R02V": "RUNNING_USER_REPORTED_NOT_POLLED",
+    "R04BYTEV": "RUNNING_USER_REPORTED_NOT_POLLED"
+  }
 }
