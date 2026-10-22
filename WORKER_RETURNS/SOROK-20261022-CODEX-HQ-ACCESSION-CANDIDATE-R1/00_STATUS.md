@@ -4,6 +4,8 @@ Status: `CANDIDATE_READ_ONLY_HQ_GROK__NOT_COMMAND`.
 
 This isolated application is incomplete and is not submitted for acceptance. No category PASS, accession, native grant, worker launch, or canonical progress change is issued.
 
+Latest amendment: see `06_CURRENTNESS_AND_PRIMARY_AUTHORITY_AMENDMENT.md` and the 27-branch sweep in `05_LIVE_COMMISSION_INVENTORY.json`. Earlier read-status text below is historical where that amendment records completed reads.
+
 ## Verified source cut
 
 Direct `git ls-remote` confirmed:
