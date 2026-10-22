@@ -1,16 +1,39 @@
-# Same-person join interim checkpoint
+# Same-person join — JOIN-E checkpoint
 
-Authority: independent ruling3de081023406a52ec23e1ae43ade77aea485a3f8 plus explicit user HQ appointment. Effective owner receipt6456fc57cbe05cdf69e63ef51fa6ca6198401c60. Sorok progress rev30 at PRE-MAIN1abd6c6a613a5aaf78fe535b22c82e0ff10a1816; Pyat rev43/R57 preserved.
+**Branch:** `codex/sorok-join-e-20261022`
+**Exact startup:** `3fe8444b4a0374d95fa9f7e60dd295049a5d3172`
+**Authority:** independent ruling `3de081023406a52ec23e1ae43ade77aea485a3f8`; human HQ appointment; effective owner `6456fc57cbe05cdf69e63ef51fa6ca6198401c60`.
+**Grade:** `TEST_ONLY_SOURCEFREE__NOT_NATIVE`.
 
-Branch codex/sorok-same-person-join-20261022, allowed subtree only this return. Candidate dossier unchanged. No worker/subagent launched, provider/human/native grants unchanged.
+## Implemented
 
-Implemented: explicit J product construction followed by real E session attachment on its first_session branch; explicit J cold reopen. No inherited pressed resource patch, no second R29P startup. Vendored original closures are byte-identical per SOURCE_MANIFEST. Import-origin/mixed-closure audit still required, not settled by tests.
+- Explicit J-first/E-second closure with `joined/closure.py`: 444 vendored files checked against `SOURCE_MANIFEST.json` Git blobs; actual `__file__` paths checked for `r31j`/`bp4`/`r29p` (J), `r30a`/`r31e` (E), and live `rawlsing_next`.
+- `joined/readonly.py`: cold reopen suppresses the pinned product's constructor writes; root files remain byte-identical after `JoinedSession.open`.
+- `joined/session.py`: one root, explicit source/target/C8/E1 metadata, root and branch C12 verification, source-identity check, typed no-target refusal probe, fork/branch switch, CLI-compatible status.
+- `joined/assertion.py`: frozen positive/refusal assertions and cold positive.
+- `joined/cli.py`: runnable start/say/help/contact/attend/wait/leave/offscreen/return/status/verify/messages/fork.
+- `DEMO_AND_VERIFICATION.md`: exact commands.
+- `tests/test_join.py.proof.json`: proof-integrity witness for material state → E help admission.
 
-Executed: python3 -B -m pytest -q WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/tests/test_join.py -p no:cacheprovider — 2 PASS. Actual enacted material inspection exhausts tool and E refuses help; omission preserves tool and E admits help. Fresh child process reopens identical persisted product/source, admits help and C12 verify passes. No inherited suite rerun, no distinct-test denominator promotion.
+## Executed
 
-Next coherent work: source-origin audit, same named behavioral source-edge severance RED/restored PASS and proof receipts; refusal/no-target interface investigation without manufacturing target; attention objective invariance, private ignorance, SAY/DO/ATTEND, leave/offscreen/contact/no-contact/fork/cold regressions. R31J/E inherited tests run in separate processes to avoid module identity contamination. No self-acceptance; independent final engineering review remains.
+- New join tests: **10 passed** (`evidence/junit/join_new.xml`).
+- J frozen R31J: **8 passed** (`evidence/junit/j_r31j.xml`).
+- E frozen expression: **15 passed** (`evidence/junit/e_expression.xml`).
+- R30A frozen session: **10 passed** (`evidence/junit/e_r30a.xml`).
+- Proof checker: baseline PASS; `TARGET_ASSERTION_FAILED`; `BOUNDED_MUTATION_DETECTED` (`evidence/proof_witness.json`).
+- Cold reopen: source/target/root preserved; root file hashes unchanged.
+- B refusal: `NO_CHANGE`, `NO_PROPOSAL`, no target, `RESPONSE_EFFECTS_VALID_EMPTY`; typed owner contract returned (`evidence/refusal_owner_contract.json`).
 
-CURRENT_MODEL exact selector UNKNOWN | REASONING UNKNOWN | SESSION current local Codex | USAGE last API observation45% five-hour and55% weekly used, shared account | CONTEXT_WARNING UNKNOWN | publication commit supplied externally after push, avoiding selfhash. NEXT_SAFE_STOP complete source-fault/restore proof unit then push. I2/S2, minimum qualified intermediate; no demonstrated Astra necessity. User controls model.
+## Remaining / NOT_RUN
 
-## Superseding user procedure correction
-HQ MUST NOT implement further. Human dispatches Browser/OpenCode workers; HQ commissions, coordinates, fans in and adjudicates. Existing candidate retained. Next work belongs to JOIN-E; independent JOIN-V begins frozen-source adversarial work in parallel, final candidate test follows exact E SHA. DEV-R independent recovery proceeds concurrently. Commissions: WORKER_COMMISSIONS/SOROK-20261022-PARALLEL-PERSON-FLIGHT-R1/. No worker launched. Prior direct-coding next-step text is historical and superseded.
+- Independent JOIN-V review of exact final SHA.
+- No-target C10/C12 representation remains an owner-contract HOLD; no target was minted.
+- External actor LLM/two-call, native CAN/ADP/C8/Pyat/C11/C12, production, human A5: `NOT_RUN`/`HOLD`.
+- Historical 202/30 inherited counts were not rerun; the local counts above are executed entries, not a clean union.
+
+## Next safe stop
+
+Commit coherent units, push ordinary non-force, read back exact remote HEAD, then prepare the final return. No self-adoption.
+
+**Model selector:** OpenCode implementation worker, `DeepSeek V4.1-Flash` requested at `MAX`; actual metered effort/quota `UNKNOWN`. No model switch, provider call or subagent.

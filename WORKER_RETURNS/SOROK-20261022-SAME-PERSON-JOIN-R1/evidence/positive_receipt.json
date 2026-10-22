@@ -1,0 +1,195 @@
+{
+  "assertion": {
+    "checks": {
+      "actor_tool_state_visible": true,
+      "branch_c12_ok": true,
+      "material_action_is_e2_or_omit": true,
+      "not_native": true,
+      "root_branch_present": true,
+      "root_c12_ok": true,
+      "source_is_share": true,
+      "source_matches_meta": true,
+      "target_present": true
+    },
+    "observed": {
+      "assertion": "SOROK_JOIN_E_POSITIVE_P01",
+      "b_event_hash": "16f11d2e849cbb3abcbfd8c76d32a509a38e74e3b503361dddeb2adf9403a486",
+      "branch_id": "first_session",
+      "c8_state_digest": "b33f575956a180874af7e0b02bc29b6210f45eac95bf1aba3720998d515555c8",
+      "e1_event_hash": "b3f4cc33ce1c19f5ea59ae1c378d0379fd5f1e1032719cd04c384d6b2f2a51ee",
+      "source_ref": "64fec28c374d8f77fb0b412d0c934d798ede03e8",
+      "target_id": "05c2eb4c195493abaebaa76a2b3dfe86322c7a80f315b3f3a5f140d5ce7608e8",
+      "tools_remaining": 1
+    },
+    "ok": true
+  },
+  "cold": {
+    "checks": {
+      "actor_tool_state_visible": true,
+      "branch_c12_ok": true,
+      "material_action_is_e2_or_omit": true,
+      "not_native": true,
+      "root_branch_present": true,
+      "root_c12_ok": true,
+      "source_is_share": true,
+      "source_matches_meta": true,
+      "target_present": true
+    },
+    "observed": {
+      "assertion": "SOROK_JOIN_E_POSITIVE_P01",
+      "b_event_hash": "16f11d2e849cbb3abcbfd8c76d32a509a38e74e3b503361dddeb2adf9403a486",
+      "branch_id": "first_session",
+      "c8_state_digest": "b33f575956a180874af7e0b02bc29b6210f45eac95bf1aba3720998d515555c8",
+      "e1_event_hash": "b3f4cc33ce1c19f5ea59ae1c378d0379fd5f1e1032719cd04c384d6b2f2a51ee",
+      "source_ref": "64fec28c374d8f77fb0b412d0c934d798ede03e8",
+      "target_id": "05c2eb4c195493abaebaa76a2b3dfe86322c7a80f315b3f3a5f140d5ce7608e8",
+      "tools_remaining": 1
+    },
+    "ok": true,
+    "verify": true
+  },
+  "help": {
+    "accepted": true,
+    "admission": {
+      "action_event_id": "TEST_ONLY_BP4_WORLD_EVT_510eef5493c41459b59f4466d75e514c834e97df33f01ed564af2f5cd1d5cbb6",
+      "admission_id": "c5d02ab8527f8dc78f1940397b6ff3f4af4a287a312d73d270d92b1db7737e50",
+      "attention_excluded": true,
+      "clock": 10,
+      "consumed_state_hash": "70b3e7bdba6d21fd14e0757d3339d77aeb3e9cccde014f70bf7c3a24e958ef65",
+      "contact_outcome": "",
+      "contract_hash": "9d5cae0e669cc70d340c4a91f10988388805703f00c468c6302748e5702dee31",
+      "fact_count": 1,
+      "grade": "TEST_ONLY_SOURCEFREE_R31E_ACTOR_EXPRESSION_NOT_NATIVE",
+      "knowledge_ref_count": 0,
+      "message_episode_id": "",
+      "motive_status": "MOTIVE_UNDERDETERMINED",
+      "native": false,
+      "schema": "R31E_EXPRESSION_ADMISSION@1",
+      "source_ref": "001b506fa26ae879ff5b6e57138fc2696e12b538",
+      "speech_event_id": "TEST_ONLY_BP4_WORLD_EVT_a21896c4e44ebb758a1fecd37f4bd26a191649e562c26ed095d5d06936cb1ed5",
+      "strategy": "HELP_ACCEPT",
+      "target_id": "05c2eb4c195493abaebaa76a2b3dfe86322c7a80f315b3f3a5f140d5ce7608e8",
+      "template_id": "help_accept_2",
+      "validation": {
+        "checks": {
+          "a_at_workshop": true,
+          "action_allowed": true,
+          "actor_present_or_message": true,
+          "contract_hash_current": true,
+          "facts_supported": true,
+          "knowledge_refs": true,
+          "no_private_tokens": true,
+          "no_private_values": true,
+          "not_stale_clock": true,
+          "repair_capacity": true,
+          "scene_open_or_message": true,
+          "speech_length": true,
+          "speech_nonempty": true,
+          "speech_single_line": true,
+          "template_known": true,
+          "template_rerender_exact": true
+        },
+        "ok": true
+      }
+    },
+    "strategy": "HELP_ACCEPT"
+  },
+  "root_verify": {
+    "branch_id": "root",
+    "counts": {
+      "checkpoint": 4,
+      "episode": 2,
+      "perception": 2,
+      "world_event": 1
+    },
+    "errors": [],
+    "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+    "ok": true,
+    "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+  },
+  "schema": "SOROK_JOIN_E_POSITIVE_RECEIPT@1",
+  "source": {
+    "a_e1_clock": 6,
+    "a_e1_hash": "dac4aeb08c26ab86abda560435c41a6f2ecf58b1d589c72ff1c1bd629d5c6a79",
+    "a_e1_ref": "TEST_ONLY_EVENT_e1",
+    "a_e2_hash": "",
+    "a_e2_performed": false,
+    "a_e2_ref": "",
+    "b_actor": "TEST_ONLY_R31J_B",
+    "b_clock": 5,
+    "b_event_hash": "16f11d2e849cbb3abcbfd8c76d32a509a38e74e3b503361dddeb2adf9403a486",
+    "b_event_ref": "TEST_ONLY_EVENT_share",
+    "b_operation": "SHARE_TOOL",
+    "b_owner": "TEST_ONLY_OWNER_share",
+    "b_performed": true,
+    "b_quantity": 1,
+    "b_to_actor": "TEST_ONLY_R31J_A",
+    "gm01_readset": [
+      "TEST_ONLY_EVENT_e1",
+      "TEST_ONLY_EVENT_share",
+      "TEST_ONLY_EVENT_world"
+    ],
+    "gm01_result_hash": "815d53f3df6730004d422e750a90ec2a82176e048495c9c12d3db6c91403aa66",
+    "grade": "TEST_ONLY_SOURCEFREE_PRE_C9_MATERIAL",
+    "material_feasible_after": true,
+    "native": false,
+    "psychology_claim": false,
+    "schema": "R31J_GM01_PRE_C9_SOURCE@1"
+  },
+  "status": {
+    "actor_model": "LIVE_ACTOR_MODEL_NOT_RUN",
+    "attention": "focused",
+    "branch_id": "first_session",
+    "clock": 10,
+    "contact": false,
+    "e_source_ref": "a2760d3687b063513fe0a5b9589c56c998d4ccb5",
+    "expression_port": "R31E_EXPRESSION_PORT@1",
+    "grade": "TEST_ONLY_SOURCEFREE_R31E_ACTOR_EXPRESSION_NOT_NATIVE",
+    "j_source_ref": "64fec28c374d8f77fb0b412d0c934d798ede03e8",
+    "j_target_id": "05c2eb4c195493abaebaa76a2b3dfe86322c7a80f315b3f3a5f140d5ce7608e8",
+    "location": "workshop",
+    "material_performance": "omit",
+    "messages": 0,
+    "native": false,
+    "present": [
+      {
+        "actor": "A",
+        "public_role": "repair"
+      },
+      {
+        "actor": "B",
+        "public_role": "finishing"
+      }
+    ],
+    "root_branch_id": "root",
+    "scenario": "available",
+    "scene_open": true,
+    "schema": "R31E_FIRST_NEIGHBOR_SESSION@1"
+  },
+  "verify": {
+    "branch_id": "first_session",
+    "counts": {
+      "checkpoint": 8,
+      "episode": 7,
+      "perception": 12,
+      "world_event": 4
+    },
+    "errors": [],
+    "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+    "ok": true,
+    "root": {
+      "branch_id": "root",
+      "counts": {
+        "checkpoint": 4,
+        "episode": 2,
+        "perception": 2,
+        "world_event": 1
+      },
+      "errors": [],
+      "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+      "ok": true,
+      "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+    },
+    "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+  }
+}

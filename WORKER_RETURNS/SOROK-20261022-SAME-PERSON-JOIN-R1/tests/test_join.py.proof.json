@@ -1,0 +1,16 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "claims": [
+    {
+      "claim_id": "SOROK_JOIN_E_MATERIAL_STATE_TO_EXPRESSION",
+      "actual_consumer": "JoinedSession.do_help -> R31E expression admission on the persisted C12/M6 branch",
+      "claimed_dependency": "J E2/omission material action changes the persisted actor tool state, which changes the E help admission from HELP_ACCEPT to HELP_REFUSE",
+      "positive_node": "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/tests/test_join.py::test_material_omission_vs_e2_changes_help_without_patch",
+      "fault": {
+        "path": "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/joined/session.py",
+        "old": "            if perform == 'e2':\n                product.material_inspect()\n            else:\n                product.record_omission()",
+        "new": "            if perform == 'e2':\n                product.material_inspect()\n            else:\n                product.material_inspect()"
+      }
+    }
+  ]
+}
