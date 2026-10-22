@@ -1,0 +1,69 @@
+{
+  "epistemic_rule": "input -> authenticating decision -> receipt -> consumer -> scientific effect",
+  "gaps": [
+    {
+      "consumer": "C9R event witness ingress",
+      "current": "ADP019_ADMISSION_RECEIPT_ABSENT",
+      "decision": "ADP019 external admission court",
+      "function": "E1 external admission",
+      "input": "committed C8 occurrence",
+      "receipt": "V3_EXTERNAL_ADMISSION_RECEIPT",
+      "scientific_effect": "admitted precipitating event"
+    },
+    {
+      "consumer": "conditioning material eligibility",
+      "current": "OPPORTUNITY_AND_ENCOUNTER_UNISSUED",
+      "decision": "ADP010 opportunity/encounter owner",
+      "function": "encounter binding",
+      "input": "world availability",
+      "receipt": "encounter receipt",
+      "scientific_effect": "actual actor encounter"
+    },
+    {
+      "consumer": "C9R RULE_A lookup",
+      "current": "RULE_A_UNISSUED",
+      "decision": "CAN008 R2 concrete issuer",
+      "function": "response rule",
+      "input": "event + actor + conditioning",
+      "receipt": "signed rule body/version/hash",
+      "scientific_effect": "bounded actor response"
+    },
+    {
+      "consumer": "C9R RULE_T evaluation + commit",
+      "current": "RULE_T_AND_GRANT_UNISSUED",
+      "decision": "separate CAN011 owner",
+      "function": "target update",
+      "input": "response + before-state",
+      "receipt": "RULE_T + grant",
+      "scientific_effect": "durable target state"
+    },
+    {
+      "consumer": "C9R E2 admission",
+      "current": "TEST_ONLY_ONLY",
+      "decision": "native action owner",
+      "function": "performed later action",
+      "input": "committed target state",
+      "receipt": "performed-action owner receipt",
+      "scientific_effect": "actual later act"
+    },
+    {
+      "consumer": "C9R actor ingress",
+      "current": "TEST_ONLY_FIXTURE_ACTOR_NOT_NATIVE",
+      "decision": "ADP007 owner",
+      "function": "actor genesis",
+      "input": "source-qualified subject",
+      "receipt": "actor genesis/activation",
+      "scientific_effect": "native actor"
+    },
+    {
+      "consumer": "BP1 other ledger",
+      "current": "TEST_ONLY_FIXTURE_OTHER_NOT_NATIVE",
+      "decision": "ADP015 owner",
+      "function": "independent other",
+      "input": "ADP015/source-qualified other",
+      "receipt": "other/parent relation",
+      "scientific_effect": "genuine other person"
+    }
+  ],
+  "schema": "BP2_NATIVE_FUNCTIONAL_GAP@1"
+}
