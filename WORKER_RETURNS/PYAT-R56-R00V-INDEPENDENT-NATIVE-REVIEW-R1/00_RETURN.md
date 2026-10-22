@@ -5,7 +5,7 @@
 **SESSION:** DeepSeek V4.1-Flash, MAX, OpenCode local, mainMac; new independent review worktree/branch. No subagents, zero external model calls.
 **STARTUP / CANDIDATE:** `efd12b1d46f1ccf90de14b292f600078f11ec7e0`.
 **BRANCH:** `agent/rabochii-pyat-r56-r00v-independent-gate-review-r1`.
-**REMOTE SHA:** `__REMOTE_SHA__` (replaced after non-force push and readback).
+**REMOTE SHA:** `02f6a6cdc6118121c382feffe0f0087a0f109ae1` — substantive review publication commit; the final receipt commit is the branch head, verified by `git ls-remote`.
 
 ## Four-column return
 
@@ -57,6 +57,10 @@ The same-process handle defect is bounded by the stated trusted-operator assumpt
 - Shared execution contract unavailable; exact external ref missing.
 - Author manifest absent; author SHA256SUMS stale for `00_RETURN.md`.
 - Same-process `PinnedPolicyHandle` trust is an explicit boundary assumption, not resistance to arbitrary supervisor-process control.
+
+## Readback
+
+`evidence/github_api_readback.json`: **PASS 6/6** at `02f6a6cd…`; reviewer return, replay, defect probes, JUnit, reviewer tests and read-only candidate gate returned byte-identical.
 
 ## Handoff
 
