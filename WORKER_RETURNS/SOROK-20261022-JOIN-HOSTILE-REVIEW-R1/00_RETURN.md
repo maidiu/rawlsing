@@ -1,17 +1,37 @@
 # SOROK JOIN-V — independent hostile causal and persistence return
 
-**STATUS:** `TARGETLESS_FINAL_REVISE__75a134e__BRANCH_LINEAGE_RECEIPT_AND_PARENT_SWITCH_NOT_BOUND__AWAIT_NEXT_REPAIR_SHA`
+**STATUS:** `LINEAGE_FINAL_REVISE__49022f6__INVALID_FORK_PARTIAL_BRANCH_LEAK__AWAIT_NEXT_REPAIR_SHA`
 **ROLE:** independent hostile engineering reviewer; not JOIN-E, J, E, Sorok HQ, native C12/CAN/ADP/Pyat/C11 or human A5 authority.
 **BRANCH:** `codex/sorok-join-v-20261022`
 **STARTUP:** `3fe8444b4a0374d95fa9f7e60dd295049a5d3172`
 **PRELIMINARY CANDIDATE:** `13dfd6bad54ec19b4bdf31159e54fb6052d5440d`
 **PRIOR FINAL CUT:** `c367777f83367240352c267a2d3750abb7f09397`
 **PRIOR REPAIRED CUT:** `cc0ff7d0305340b806ba94b020017c3d8d0585dc`
-**REVIEWED TARGETLESS CUT:** `75a134ed733acaed2c62ea3421b54fcb09c5442f` (read-only detached worktree)
+**PRIOR TARGETLESS CUT:** `75a134ed733acaed2c62ea3421b54fcb09c5442f`
+**REVIEWED SHARED-LINEAGE CUT:** `49022f693c99b6cb58226513f8bad71c26bdac3c` (read-only detached worktree)
 **AUTHORITY:** independent accession `3de081023406a52ec23e1ae43ade77aea485a3f8`; HQ appointment; effective owner `6456fc57cbe05cdf69e63ef51fa6ca6198401c60`. No native grants.
 **WRITE ONLY:** `WORKER_RETURNS/SOROK-20261022-JOIN-HOSTILE-REVIEW-R1/**`. No candidate/J/E edit.
 
-## Targetless-repair adjudication of 75a134e
+## Shared-lineage adjudication of 49022f6
+
+See `LINEAGE_FINAL_ADJUDICATION.md`. Frozen hashes were checked first and unchanged.
+
+| Suite against 49022f6 | Result |
+|---|---|
+| Preserved reviewer positives + hostiles + repaired + targetless | **30/30 passed** |
+| Targeted c367 | 5/6; one historical E-first-refusal expectation |
+| New lineage-contract tests | **4/5 passed; 1 failed** |
+| JOIN-E own suite | **17/17 passed** |
+| Inherited J / E / R30A | **8/8, 15/15, 10/10 passed** |
+| Source manifest | **444/444 verified** |
+
+**PASS:** shared `joined/lineage.py` in both sessions; fork receipts match actual branch rows with non-null clock/root/created fields; nested `first_session -> alt -> alt2` persists and cold-reopens; parent/sibling/root metadata switches are refused without product mutation; missing/tampered receipts and duplicate forks are refused without mutation; parent isolation, nonmutating targetless cold reopen, no target/grant, source/C12/C8, privacy/attention, joined encounter and B-source scope remain intact.
+
+**FAIL:** `fork_alt("")` is refused (`FORK_REFUSED`) but leaves an empty `''` branch in the C12 store in both `JoinedSession` and `RefusalSession`; session metadata remains unchanged. This violates the requested invalid-request/partial-failure consistency.
+
+**Verdict: REVISE.** One atomicity repair: validate the branch name before `product.fork`, or remove the created branch if lineage construction fails. Preserve the passing 30/30 and shared-lineage behavior.
+
+## Prior targetless-repair adjudication of 75a134e
 
 See `TARGETLESS_FINAL_ADJUDICATION.md`. Frozen hashes were checked first and unchanged.
 
@@ -90,36 +110,36 @@ Final-cut engineering verdict: **REVISE**. Await the next repair SHA; keep the f
 
 ## DONE / REMAINING / CRITICAL BLOCKER / LARGEST MOVE / FLIGHT / DELTA
 
-- **DONE:** adjudicated targetless cut `75a134e`; independently reproduced all 26 preserved reviewer tests; ran the old targeted c367 suite, candidate 16-test suite and inherited suites; added branch-parent/receipt and parent-integrity attacks; verified frozen hashes, source manifest, nonmutating reopen, no-target and B-source behavior.
-- **REMAINING:** next repair SHA for branch lineage only; rerun frozen, targeted c367, repaired-cut and targetless-final tests; final verdict. No polling and no second worker.
-- **CRITICAL BLOCKER:** 75a134e still accepts metadata-only parent `first_session` selection after a lawful fork in both paths, and fork receipts record `fork_clock=null`/`root_hash=null`.
-- **LARGEST MOVE:** source the receipt from the actual created branch row and reject any `branch_lineage.current_branch != meta.branch_id` (including the parent); apply to targetless and joined fork guards.
-- **FLIGHT:** one reviewer on `codex/sorok-join-v-20261022`; targetless cut 75a134e read-only; no candidate/J/E edits; no subagents/provider/native operations.
-- **DELTA:** targetless source/C12 tamper and no-target behavior are repaired; fork parent is not corrupted and cold alt reopens; only branch receipt/parent-selection binding remains.
+- **DONE:** adjudicated shared-lineage cut `49022f6`; independently reproduced 30/30 preserved reviewer tests; ran targeted c367, candidate 17-test suite and inherited suites; added nested-fork, parent/sibling/root switch, missing/tampered receipt, duplicate/invalid fork and atomicity attacks.
+- **REMAINING:** next repair SHA for invalid-fork atomicity; rerun preserved 30, targeted c367 and lineage tests; final verdict. No polling and no second worker.
+- **CRITICAL BLOCKER:** `fork_alt("")` is refused but leaves an empty `''` branch in the C12 store in both joined and targetless paths; all other requested shared-lineage transitions pass.
+- **LARGEST MOVE:** validate the requested branch name before `product.fork`, or remove the created branch if lineage construction fails; preserve all passing lineage behavior.
+- **FLIGHT:** one reviewer on `codex/sorok-join-v-20261022`; shared-lineage cut 49022f6 read-only; no candidate/J/E edits; no subagents/provider/native operations.
+- **DELTA:** shared lineage, nested forks, parent/sibling/root rejection, receipt tamper/duplicate handling, parent isolation, targetless no-target and 30/30 preserved tests pass; only empty-branch partial-failure atomicity remains.
 
 ## Exact commands and results
 
-Targetless cut `75a134e` (read-only worktree; frozen tests unchanged; hashes checked first):
+Shared-lineage cut `49022f6` (read-only worktree; frozen tests unchanged; hashes checked first):
 
 ```text
 cd WORKER_RETURNS/SOROK-20261022-JOIN-HOSTILE-REVIEW-R1
-SOROK_JOIN_CANDIDATE_ROOT=<75a134e worktree>/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1 \
-  PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest -q tests/test_join_v_positive.py tests/test_join_v_hostile.py tests/test_join_v_repaired_cut.py -p no:cacheprovider
-26 passed (author-reported 26/26 independently reproduced)
+SOROK_JOIN_CANDIDATE_ROOT=<49022f6 worktree>/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1 \
+  PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest -q tests/test_join_v_positive.py tests/test_join_v_hostile.py tests/test_join_v_repaired_cut.py tests/test_join_v_targetless_final.py -p no:cacheprovider
+30 passed (author-reported 30/30 independently reproduced)
 
 SOROK_JOIN_CANDIDATE_ROOT=... PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest -q tests/test_join_v_final_cut.py -p no:cacheprovider --tb=short
-5 passed, 1 failed (historical E-first-refusal expectation; J closure adaptation)
+5 passed, 1 failed (historical E-first-refusal expectation)
 
-SOROK_JOIN_CANDIDATE_ROOT=... PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest -q tests/test_join_v_targetless_final.py -p no:cacheprovider --tb=short
-1 passed, 3 failed (fork receipt null fields, targetless parent switch, joined parent switch)
+SOROK_JOIN_CANDIDATE_ROOT=... PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest -q tests/test_join_v_lineage_contract.py -p no:cacheprovider --tb=short
+4 passed, 1 failed (invalid empty fork leaves '' branch)
 
-SOROK_JOIN_CANDIDATE_ROOT=... PYTHONDONTWRITEBYTECODE=1 python3 -B tools/collect_targetless_final.py
-candidate own 16/16; inherited 8/8, 15/15, 10/10; manifest 444/444
+SOROK_JOIN_CANDIDATE_ROOT=... PYTHONDONTWRITEBYTECODE=1 python3 -B tools/collect_lineage_final.py
+candidate own 17/17; inherited 8/8, 15/15, 10/10; manifest 444/444
 ```
 
-Frozen test hashes all match `FROZEN_ORACLES.json`; no frozen test file was edited. Full JUnit/JSON: `evidence/targetless_final/results.json`, `evidence/targetless_final/source.json`, and `evidence/targetless_final/*.xml`; prior c367, preliminary and repaired-cut evidence remain in their directories.
+Frozen test hashes all match `FROZEN_ORACLES.json`; no frozen test file was edited. Full JUnit/JSON: `evidence/lineage_final/results.json`, `evidence/lineage_final/source.json`, and `evidence/lineage_final/*.xml`.
 
-Passed on `75a134e`: coordinated targetless meta/sidecar source tampering rejected against C12/C8; targetless cold reopen nonmutating; no target/native grant; actual B refusal no-tool/no-target; joined encounter/fork/attention/privacy/contact/cold; E-first J closure adaptation. Remaining: fork receipt `fork_clock`/`root_hash` null; metadata-only parent `first_session` substitution accepted in targetless and joined paths.
+Passed on `49022f6`: shared lineage in both sessions; actual fork receipts/nested forks/cold; parent/sibling/root switch rejection; missing/tampered receipt and duplicate fork refusal; parent isolation; nonmutating targetless cold; no target/grant; source/C12/C8; privacy/attention; joined encounter; B-source bounded. Remaining: invalid empty fork partially mutates state by leaving an empty `''` branch.
 
 ## Frozen source hashes
 
@@ -173,6 +193,20 @@ Targetless cut 75a134e hashes (full list in `evidence/targetless_final/source.js
 | `tests/test_join_v_targetless_final.py` | `f5411af4191188f0391dda2019225ab2856c798b2b5d101f2f66f4308473da66` |
 | `tools/collect_targetless_final.py` | `ad0a8516a2899f37b396622df9260740743591bc9136e03f33e257b2ba8a7293` |
 
+Shared-lineage cut 49022f6 hashes (full list in `evidence/lineage_final/source.json`):
+
+| Artifact | SHA-256 |
+|---|---|
+| `joined/lineage.py` | `1c91852f934be58eb6c0250debbc615471469e4bf23a9c80b6d60deaa9308823` |
+| `joined/session.py` | `f11e872dbe482b4e99fe93f2df6d86ca8f1803978c6ff1087a9cd00ff991361b` |
+| `joined/refusal.py` | `0056dc54020044356f2fd572ebe7cc239c3d9ce029ddd219ca7726d7aff2a1e5` |
+| `joined/imports.py` | `2b49f6ebbbff2d5ca008d350306da229a4798f0f7c075312519d4209c6957cfd` |
+| `joined/provenance.py` | `3618beca7997c5674ce6b7490ab600a891fbadbc38e49e4644928d6712c65c1b` |
+| `tests/test_join.py` | `08badee030b46b41d3cc2cf0cfe06686975f2937465102d359155bc31fb781f0` |
+| `tests/test_join.py.proof.json` | `332f1c23d14e0511b181bf9529f9f630ba7e17b87fcae281478a69be170fe282` |
+| `tests/test_join_v_lineage_contract.py` | `79fc117a21243e0f3d0c6316d95365244158d07787f8308eafa82741651e8751` |
+| `tools/collect_lineage_final.py` | `fae35daace49228255fc62eaf9fda2f3518f842f97274f0cdead3f3a7b7c63cd` |
+
 ## Changed-path allowlist
 
 Only:
@@ -183,6 +217,7 @@ WORKER_RETURNS/SOROK-20261022-JOIN-HOSTILE-REVIEW-R1/PRELIMINARY_FINDINGS.md
 WORKER_RETURNS/SOROK-20261022-JOIN-HOSTILE-REVIEW-R1/FINAL_CUT_ADJUDICATION.md
 WORKER_RETURNS/SOROK-20261022-JOIN-HOSTILE-REVIEW-R1/REPAIRED_CUT_ADJUDICATION.md
 WORKER_RETURNS/SOROK-20261022-JOIN-HOSTILE-REVIEW-R1/TARGETLESS_FINAL_ADJUDICATION.md
+WORKER_RETURNS/SOROK-20261022-JOIN-HOSTILE-REVIEW-R1/LINEAGE_FINAL_ADJUDICATION.md
 WORKER_RETURNS/SOROK-20261022-JOIN-HOSTILE-REVIEW-R1/RESUME_CHECKPOINT.md
 WORKER_RETURNS/SOROK-20261022-JOIN-HOSTILE-REVIEW-R1/FROZEN_ORACLES.json
 WORKER_RETURNS/SOROK-20261022-JOIN-HOSTILE-REVIEW-R1/tests/**
@@ -194,8 +229,8 @@ No candidate, J, E, R30A, R29P, BP2P4J, C8, C12, C9, PRE-MAIN or HQ-control file
 
 ## NOT_RUN
 
-- Next repair SHA after 75a134e: `PENDING`; final verdict waits for that immutable cut.
-- Full inherited R31J/R31E/R29P 155–202 denominators: not promoted; only 8 + 15 + 10 affected suites rerun on the targetless cut.
+- Next repair SHA after 49022f6: `PENDING`; final verdict waits for that immutable cut.
+- Full inherited R31J/R31E/R29P 155–202 denominators: not promoted; only 8 + 15 + 10 affected suites rerun on the shared-lineage cut.
 - Process-kill crash injection between `_attach_new` and join-meta write: inferred, not injected.
 - Protected C12/KMS custody, native CAN/ADP/C8/C9/C11/Pyat, external provider calls, human A5, production/deployment: `NOT_RUN`; no authority.
 - Cross-root canonical identity and all J variants/scenarios: not imposed; HQ intake explicitly says distinct roots need not have identical target IDs/histories/variants. No cross-root determinism failure is claimed.
@@ -203,9 +238,9 @@ No candidate, J, E, R30A, R29P, BP2P4J, C8, C12, C9, PRE-MAIN or HQ-control file
 
 ## Courts
 
-| Court | Targetless cut 75a134e | Ceiling |
+| Court | Shared-lineage cut 49022f6 | Ceiling |
 |---|---|---|
-| **ENGINEERING** | `REVISE` | Coordinated source/C12 tampering, nonmutating targetless reopen, no target/grant, parent noncorruption and 26/26 preserved tests pass; parent metadata selection is still accepted and fork receipt clock/root are null. |
+| **ENGINEERING** | `REVISE` | Shared lineage, nested forks, switch rejection, receipt tamper/duplicate handling and 30/30 preserved tests pass; invalid empty `fork_alt("")` leaves an orphan `''` branch. |
 | **SCIENTIFIC** | `HOLD__NO_ISSUANCE` | TEST_ONLY sourcefree material/expression only; actual B refusal is lawful no-tool/no-target; receiving-edge evidence, not end-to-end B pre-C8; no psychology, acquired practice, personhood or A5. |
 | **AUTHORITY** | `HOLD` | No native C12/CAN/ADP/C8/C11/Pyat, protected keys, external provider or human A5 grant. |
 

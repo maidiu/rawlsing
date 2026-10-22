@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="6" time="6.885" timestamp="2026-10-22T13:25:48.288908-04:00" hostname="Matthews-MBP.lan"><testcase classname="tests.test_join_v_final_cut" name="test_lawful_fork_alt_continuation_is_supported" time="0.827" /><testcase classname="tests.test_join_v_final_cut" name="test_metadata_only_branch_substitution_to_root_is_refused" time="0.530" /><testcase classname="tests.test_join_v_final_cut" name="test_foreign_product_root_with_same_source_is_refused" time="0.335" /><testcase classname="tests.test_join_v_final_cut" name="test_double_sidecar_and_meta_source_tamper_is_refused_or_c12_bound" time="0.501" /><testcase classname="tests.test_join_v_final_cut" name="test_b_refusal_and_b_share_with_same_a_omission" time="1.196" /><testcase classname="tests.test_join_v_final_cut" name="test_import_closure_refuses_e_first_and_accepts_j_first" time="2.633"><failure message="assert 0 != 0&#10; +  where 0 = CompletedProcess(args=['/usr/local/bin/python3', '-B', '-c', '\nimport json, sys\nsys.path.insert(0, sys.argv[1])\nsys...1513/test_import_closure_refuses_e_0/e_first'], returncode=0, stdout='{&quot;accepted&quot;: true, &quot;verify&quot;: true}\n', stderr='').returncode">tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-1513/test_import_closure_refuses_e_0')
+
+    def test_import_closure_refuses_e_first_and_accepts_j_first(tmp_path):
+        normal = """
+    import json, sys
+    sys.path.insert(0, sys.argv[1])
+    from joined.session import JoinedSession
+    s = JoinedSession.start(sys.argv[2], perform="omit")
+    try:
+        print(json.dumps({"accepted": s.do_help()["accepted"], "verify": s.verify()["ok"]}))
+    finally:
+        s.close()
+    """
+        e_first = """
+    import json, sys
+    sys.path.insert(0, sys.argv[1])
+    sys.path.insert(0, sys.argv[1] + "/vendor/e")
+    from r31e.session import R31ESession
+    from joined.session import JoinedSession
+    s = JoinedSession.start(sys.argv[2], perform="omit")
+    print(json.dumps({"accepted": s.do_help()["accepted"], "verify": s.verify()["ok"]}))
+    """
+        env = {
+            **os.environ,
+            "PYTHONPATH": str(CANDIDATE_ROOT),
+            "PYTHONDONTWRITEBYTECODE": "1",
+        }
+        accepted = subprocess.run(
+            [sys.executable, "-B", "-c", normal, str(CANDIDATE_ROOT), str(tmp_path / "normal")],
+            env=env, text=True, capture_output=True, timeout=120,
+        )
+        assert accepted.returncode == 0, accepted.stderr
+        result = json.loads(accepted.stdout)
+        assert result == {"accepted": True, "verify": True}
+    
+        refused = subprocess.run(
+            [sys.executable, "-B", "-c", e_first, str(CANDIDATE_ROOT), str(tmp_path / "e_first")],
+            env=env, text=True, capture_output=True, timeout=120,
+        )
+&gt;       assert refused.returncode != 0
+E       assert 0 != 0
+E        +  where 0 = CompletedProcess(args=['/usr/local/bin/python3', '-B', '-c', '\nimport json, sys\nsys.path.insert(0, sys.argv[1])\nsys...1513/test_import_closure_refuses_e_0/e_first'], returncode=0, stdout='{"accepted": true, "verify": true}\n', stderr='').returncode
+
+tests/test_join_v_final_cut.py:229: AssertionError</failure></testcase></testsuite></testsuites>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="5" time="5.035" timestamp="2026-10-22T13:26:06.778147-04:00" hostname="Matthews-MBP.lan"><testcase classname="tests.test_join_v_lineage_contract" name="test_nested_forks_receipts_and_cold_parent_isolation" time="0.798" /><testcase classname="tests.test_join_v_lineage_contract" name="test_parent_sibling_and_root_metadata_switches_refused_without_mutation" time="1.107" /><testcase classname="tests.test_join_v_lineage_contract" name="test_missing_and_tampered_receipts_refused_without_mutation" time="1.890" /><testcase classname="tests.test_join_v_lineage_contract" name="test_duplicate_fork_refused_without_mutation" time="0.511" /><testcase classname="tests.test_join_v_lineage_contract" name="test_invalid_empty_fork_is_atomic" time="0.246"><failure message="AssertionError: joined: invalid fork left branch(es) ['']&#10;assert ['', 'first_session', 'root'] == ['first_session', 'root']&#10;  &#10;  At index 0 diff: '' != 'first_session'&#10;  Left contains one more item: 'root'&#10;  Use -v to get more diff">tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-1516/test_invalid_empty_fork_is_ato0')
+
+    def test_invalid_empty_fork_is_atomic(tmp_path):
+        for name, start_session, open_session in CASES:
+            state = tmp_path / f"{name}_invalid"
+            session = start_session(state)
+            try:
+                branches = _branch_ids(session)
+                meta = json.dumps(session.meta.get("branch_lineage"), sort_keys=True)
+                with pytest.raises(SessionRefusal) as exc:
+                    session.fork_alt("")
+                assert exc.value.code == "FORK_REFUSED"
+&gt;               assert _branch_ids(session) == branches, (
+                    f"{name}: invalid fork left branch(es) "
+                    f"{sorted(set(_branch_ids(session)) - set(branches))}"
+                )
+E               AssertionError: joined: invalid fork left branch(es) ['']
+E               assert ['', 'first_session', 'root'] == ['first_session', 'root']
+E                 
+E                 At index 0 diff: '' != 'first_session'
+E                 Left contains one more item: 'root'
+E                 Use -v to get more diff
+
+tests/test_join_v_lineage_contract.py:157: AssertionError</failure></testcase></testsuite></testsuites>

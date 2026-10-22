@@ -1,48 +1,47 @@
-# JOIN-V resume checkpoint — targetless cut 75a134e
+# JOIN-V resume checkpoint — shared-lineage cut 49022f6
 
-**STATUS:** `TARGETLESS_FINAL_REVISE__75a134e__BRANCH_LINEAGE_RECEIPT_AND_PARENT_SWITCH_NOT_BOUND__AWAIT_NEXT_REPAIR_SHA`
+**STATUS:** `LINEAGE_FINAL_REVISE__49022f6__INVALID_FORK_PARTIAL_BRANCH_LEAK__AWAIT_NEXT_REPAIR_SHA`
 **BRANCH:** `codex/sorok-join-v-20261022`
-**TARGETLESS CUT:** `75a134ed733acaed2c62ea3421b54fcb09c5442f` (read-only detached worktree)
-**PRIOR CUTS:** cc0ff7d (REVISE), c367777 (REVISE), 13dfd6bad (preliminary)
+**REVIEWED CUT:** `49022f693c99b6cb58226513f8bad71c26bdac3c` (read-only detached worktree)
+**PRIOR CUTS:** 75a134e (REVISE), cc0ff7d (REVISE), c367777 (REVISE), 13dfd6bad (preliminary)
 **WRITE SCOPE:** own return only; no candidate/J/E edit.
 
-## Results against 75a134e
+## Results against 49022f6
 
 | Suite | Result |
 |---|---|
-| Preserved reviewer positives + hostiles + repaired-cut | **26/26 passed** (author-reported 26/26 independently reproduced) |
-| Targeted c367 | 5/6; one historical E-first-refusal expectation |
-| New targetless-final tests | 1/4 passed; 3 failed |
-| JOIN-E own suite | 16/16 passed |
+| Preserved 30 reviewer executions | **30/30 passed** (author-reported 30/30 independently reproduced) |
+| Targeted c367 | 5/6; historical E-first-refusal expectation |
+| New lineage-contract tests | 4/5; one failure |
+| JOIN-E own suite | 17/17 passed |
 | Inherited J / E / R30A | 8/8, 15/15, 10/10 passed |
 | Source manifest | 444/444 verified |
 
-Frozen hashes match `FROZEN_ORACLES.json`; no frozen test edited. Full evidence: `REPAIRED_CUT_ADJUDICATION.md` (historical), `TARGETLESS_FINAL_ADJUDICATION.md`, `evidence/targetless_final/`.
+Frozen hashes match `FROZEN_ORACLES.json`; no frozen test edited. Full evidence: `LINEAGE_FINAL_ADJUDICATION.md`, `evidence/lineage_final/`.
 
-## Passed targetless repairs
+## Passed shared-lineage coverage
 
-- Coordinated `session.json`/`refusal.json` source tampering is rejected against C12 `GM01_REFUSAL` and C8 (`J_PROVENANCE_MISMATCH`).
-- Root metadata branch substitution is rejected.
-- Targetless cold reopen is nonmutating; no fabricated target/native grant.
-- `fork_alt` switches to `alt`, cold-reopens `alt`, and does not corrupt the parent branch.
-- Actual B refusal source: zero tools, no inspection, `GM01_REFUSAL`, `HELP_REFUSE`; share source `HELP_ACCEPT`; no refusal=>help-accept.
-- B-source remains bounded receiving-edge, not original pre-C8 severance.
+- `joined/lineage.py` used by both `JoinedSession` and `RefusalSession`.
+- Fork receipts match actual created branch rows, including non-null clock/root/created fields.
+- Nested `first_session -> alt -> alt2` forks persist, cold-reopen, and leave parent untouched.
+- Metadata-only parent/sibling/root switches are refused without product mutation.
+- Missing/tampered receipt chains and duplicate fork requests are refused without mutation.
+- Parent/donor state remains stable on rejected metadata operations.
+- Nonmutating targetless cold reopen, no target/native grant, source/C12/C8, privacy, attention, joined encounter and B-source bounded scope remain intact.
+- Old E-first-refusal expectation remains historical/superseded by J closure.
 
-## Remaining exact failures
+## Remaining exact failure
 
-1. `fork_alt` records `fork_clock=null` and `root_hash=null`; the created branch has `fork_clock=10` and a real `root_hash`. Same construction in both targetless and joined `fork_alt`.
-2. After a lawful fork to `alt`, metadata-only rewrite to parent `first_session` opens with `verify=true` in both targetless and joined paths, while `branch_lineage.current_branch` remains `alt`.
+`fork_alt("")` raises `SessionRefusal('FORK_REFUSED')` but leaves an empty `''` branch in the C12 store in both joined and targetless paths:
 
-Positive `test_refusal_fork_parent_not_corrupted_positive` passes, so the parent itself is not corrupted; the guard/receipt is incomplete.
+```text
+before: ['first_session', 'root']
+after:  ['', 'first_session', 'root']
+session metadata: unchanged on first_session
+```
+
+This violates invalid-request/partial-failure consistency. New test: `test_invalid_empty_fork_is_atomic`.
 
 ## Next safe move
 
-Await next repair SHA. Re-run unchanged frozen tests, targeted c367, repaired-cut and targetless-final tests. The remaining repair should:
-
-1. read `fork_clock`/`root_hash` from the created branch (`fork["branch"]` or branch row) in both `fork_alt` methods;
-2. reject any `branch_lineage.current_branch != meta["branch_id"]`, including parent `first_session`, in both open guards;
-3. preserve 26/26 positives/hostiles/repaired, nonmutating cold, no-target/no-grant, source/C12 provenance and B-source scope.
-
-## Flight / model
-
-One accountable reviewer on this branch; local OpenCode, user-selected harness; no subagents, provider calls, native operations or model swaps. Remote head is reported after ordinary non-force push and `git ls-remote` readback.
+Await next repair SHA. Re-run 30 preserved tests, targeted c367, lineage-contract tests, candidate/inherited suites. The remaining repair should validate the requested branch name before `product.fork`, or remove the created branch if lineage construction fails; preserve all other lineage behavior.
