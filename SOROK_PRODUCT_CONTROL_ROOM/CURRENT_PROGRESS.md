@@ -1,3 +1,16 @@
+# Sorok current canonical progress revision 30 — appointed Codex HQ, returned J/E, direct same-person join
+
+PRE-MAIN exact parent: `954995540077435366ebe98639b392b86b01d940`. Effective owner receipt: `6456fc57cbe05cdf69e63ef51fa6ca6198401c60` at `SOROK_PRODUCT_CONTROL_ROOM/HQ_MOTIONS/20261022_CODEX_HQ_EFFECTIVE_APPOINTMENT_AND_SAME_PERSON_EXECUTION_R1.md`. Independent ruling `3de081023406a52ec23e1ae43ade77aea485a3f8` accepts exact candidate `778c69d1a520a2be9901961f5aaeeffda8de8261`; human has now explicitly appointed it. Existing bounded Sorok scope only, no native grants. Pyat revision43/R57 read independently; J52/W52 STOP and original N11/N12 holds preserved. Pyat files unchanged.
+
+FINDING | INTERPRETATION | HQ ACTION | OWNER: R31J returned `64fec28c374d8f77fb0b412d0c934d798ede03e8`, source inserted before C8/C9 in an owned TEST_ONLY adapter; R31E returned `a2760d3687b063513fe0a5b9589c56c998d4ccb5`, actor-conditioned admitted expression but inherited startup/reopen selects R29P. Separate roots do not prove a single encounter. Reuse both in one isolated direct integration; current Codex Sorok HQ owns delivery, independent scoped review precedes adoption. Author receipt entries202+30 with five cross-worker overlaps and three internal J repeated identities; 227 is arithmetic, not independently distinct executed coverage. Runtime NOT_RERUN.
+
+DONE: independent review and human HQ appointment, source-level integration diagnosis. REMAINING: actual joined source→C8/C9/E2→C12→expression→user and cold replay, then independent engineering/science/authority review; native original science/actor/security/Pyat/world/weld/human gates. CRITICAL BLOCKERS: missing same-root adapter; native permissions remain separate and do not block lawful sourcefree integration. LARGEST MOVE: one coherent directly executed sourcefree join. FLIGHT: no new worker or subagent, no duplicated J/E; other-host sessions UNKNOWN. DELTA: operative bounded command and corrected returned statuses, no claimed runtime advance. Native C12=0, C11=0; human A5 NOT_RUN.
+
+MISSING_FUNCTION_CHECK: recover existing J/E producers and add explicit startup/reopen adapter; no new psyche theory or grants. I2/S2; user-selected local Codex, minimum qualified intermediate effort, no Astra need demonstrated. Candidate07 remains unissued. Full existing independent science/actor/custody/Pyat/product flight preserved; older entries below are historical where superseded.
+
+---
+## Historical revision29 and earlier, retained verbatim
+
 # SOROK CURRENT CANONICAL PROGRESS REVISION 29 — R30G/R30A RETURNS AND R31 TRUE PRE-C9 + EXPRESSIVE NEIGHBOR FLIGHT
 
 **PRE-MAIN exact CAS parent:** e2ca4bf898f62653d7c1dc15f310cee2afdd62ee. **Sorok bounded HQ owner seal:** 9a9b8a61daf4bf78e2885436924e5235f26f5772. **Independent Pyat:** rev40 at current read cut, R53 user STOP J52/W52 remains, N11/N12 native world not issued. This is Sorok progress pair only; no Pyat edits/native CAN/ADP/C8/C11 authority.
