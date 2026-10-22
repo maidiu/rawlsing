@@ -1,0 +1,157 @@
+{
+  "schema": "R56_R00P_INDEPENDENT_TEST_ONLY_FREEZE@1.0.0",
+  "freeze_id": "R56-R00P-TESTONLY-INDEPENDENT-EXPECTED-OPS-FREEZE-V1",
+  "contract_id": "R56-R00P-CLAIM-TRANSITION-GATE@1.0.0",
+  "status": "POLICY_OWNER_FROZEN_TEST_ONLY__READY_FOR_DIRECTOR_MECHANICAL_CUSTODY_AND_R00E",
+  "independent_owner": "R00P_SOURCEFREE_POLICY_OWNER__NOT_R00E_GATE_IMPLEMENTER__NOT_R00V_NATIVE_REVIEWER",
+  "owner_approval": {
+    "scope": "TEST_ONLY_POLICY_AND_EXPECTED_OPERATIONS_ONLY",
+    "resolution": "R00P_AUTHOR_ACCEPT_SCOPED_DEFINITION",
+    "does_not_include": [
+      "R00E_IMPLEMENTATION_PASS",
+      "R00V_INDEPENDENT_NATIVE_PASS",
+      "R09_PROTECTED_CI_ORIGIN",
+      "ORIGINAL35_SOURCE_PERMISSION",
+      "N11_ADOPTION",
+      "N12_ACTOR_AUTHORITY"
+    ]
+  },
+  "start_commit": "fcbb2ee1d7a6eae040e0964bb8474e8d04d47989",
+  "branch": "agent/browser-pyat-r56-r00-independent-policy-r1",
+  "worker_policy_root": "CROSS_HQ_CONTROL_ROOM/universal_execution_policy/r56_sourcefree_v1/",
+  "content_blobs": [
+    {
+      "path": "CROSS_HQ_CONTROL_ROOM/universal_execution_policy/r56_sourcefree_v1/CONTRACT.md",
+      "git_blob_sha1": "ca09458c12ef8e6ebd6a73d8d21a40e0389517fb",
+      "hash_kind": "GIT_BLOB_SHA1_NOT_SHA256"
+    },
+    {
+      "path": "CROSS_HQ_CONTROL_ROOM/universal_execution_policy/r56_sourcefree_v1/policy.json",
+      "git_blob_sha1": "552c2d97d28b360d48caf629f058751034aa94a5",
+      "hash_kind": "GIT_BLOB_SHA1_NOT_SHA256"
+    },
+    {
+      "path": "CROSS_HQ_CONTROL_ROOM/universal_execution_policy/r56_sourcefree_v1/synthetic_universes.json",
+      "git_blob_sha1": "9914d9b6ec4f329719fa4ecd6eafb525701f213c",
+      "hash_kind": "GIT_BLOB_SHA1_NOT_SHA256"
+    },
+    {
+      "path": "CROSS_HQ_CONTROL_ROOM/universal_execution_policy/r56_sourcefree_v1/decision_cases.json",
+      "git_blob_sha1": "f9caa24b10d7502620ab5ebea26877aedafb22d9",
+      "hash_kind": "GIT_BLOB_SHA1_NOT_SHA256"
+    }
+  ],
+  "expected_operation_contract": {
+    "universe_count": 3,
+    "families": 3,
+    "explicit_operations": 18,
+    "eligibility_counts": {
+      "ELIGIBLE": 13,
+      "PROHIBITED": 1,
+      "HELD": 2,
+      "INAPPLICABLE_PROVED": 1,
+      "UNKNOWN": 1
+    },
+    "rules": [
+      "P00_INDEPENDENT_PIN",
+      "P01_OCCURRENCE_ROLE_AND_MEASURE",
+      "P02_NO_ADMIN_AS_CONDITION",
+      "P03_NO_UNLINKED_CROSS_UNIT",
+      "P04_NOT_ADMINISTERED",
+      "P05_HELD_ROLE",
+      "P06_NO_DROP_MULTISETS",
+      "P07_SEPARATE_STATES",
+      "P08_CLAIM_GRADE_CEILING",
+      "P09_RUNTIME_PROVENANCE_HOLD",
+      "P10_EXACT_K_AND_CURRENTNESS",
+      "P11_REPLAY_AND_DEDUP",
+      "P12_EMPTY_NULL_ZERO_DISTINCT",
+      "P13_ORIGINAL_ROSTER_CONSERVATION",
+      "P14_FAIL_CLOSED_TRUST",
+      "P15_ACTUAL_CONSUMER"
+    ],
+    "case_ids": [
+      "C00",
+      "C01",
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07",
+      "C08",
+      "C09",
+      "C10",
+      "C11",
+      "C12",
+      "C13",
+      "C14",
+      "C15",
+      "C16",
+      "C17",
+      "C18",
+      "C19",
+      "C20",
+      "C21",
+      "C22",
+      "C23",
+      "C24",
+      "C25",
+      "C26",
+      "C27",
+      "C28",
+      "C29",
+      "C30",
+      "C31"
+    ]
+  },
+  "original35": {
+    "frozen_requirements_path": "WORKER_RETURNS/PYAT-R53-U53A-ASTRA-UNIVERSAL-EXECUTION-COURT-R1/evidence/ORIGINAL35_ACCEPTANCE_OBLIGATIONS.json",
+    "frozen_requirements_commit": "d7988b3d5d313902d883d2d8c244fd2526058410",
+    "frozen_requirements_blob": "f5a3621e83d475e51fff4d3aba3eceb37dbaf9e4",
+    "source_ids_total": 35,
+    "source_axes_per_wave": 30,
+    "ee_axes_per_wave": 16,
+    "f_axes_per_wave": 8,
+    "expected_cells": 1890,
+    "global": [
+      "F6",
+      "F7",
+      "F8"
+    ],
+    "issued_U_item": null,
+    "issued_U_unit": null,
+    "issued_U_app": null,
+    "issued_E_pre": null
+  },
+  "source_inheritance": {
+    "U53A_original_oracle_blob": "0aaf795c56026bc11cc52210375e22325ae3d4f3",
+    "U53A_universal_gate_spec_blob": "de1417ad83194b929732e19ec5c87885d33eb0f8",
+    "R56_grant_blob": "5cf690c7ff5aed40c64194e0dc138cadc2db431e"
+  },
+  "downstream": {
+    "owner": "R00E",
+    "independent_review": "R00V",
+    "required_policy_pin": "DIRECTOR_TO_RECORD_THIS_RETURN_COMMIT_OUT_OF_CANDIDATE_BAND",
+    "R02_R04_byte": "CONDITIONAL_AFTER_POLICY_FREEZE_DIRECTOR_CUSTODY_AND_ADMISSIBILITY",
+    "R00_engineering": "NOT_YET_QUALIFIED"
+  },
+  "self_hash_exclusion": "freeze.json intentionally excludes its own Git blob; immutable enclosing Git return commit pins freeze and all four input blobs",
+  "remaining_holds": [
+    "R00E_GATE_NOT_IMPLEMENTED",
+    "R00V_NATIVE_NOT_RUN",
+    "R09_PROTECTION_NOT_INSTALLED",
+    "ORIGINAL_U_Epre_UNISSUED",
+    "J52_W52_USER_STOPPED",
+    "N11_NOT_READY",
+    "N12_HOLD"
+  ],
+  "runtime": {
+    "model_family": "GPT-6",
+    "exact_selected_browser_model": "UNKNOWN",
+    "thinking_effort": "UNKNOWN",
+    "harness": "Browser ChatGPT",
+    "native_python": "NOT_RUN",
+    "account_cost_quota": "UNKNOWN"
+  }
+}
