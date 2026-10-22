@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="3" skipped="0" tests="9" time="4.091" timestamp="2026-10-22T04:03:24.936363-04:00" hostname="Matthews-MBP.lan"><testcase classname="tests.test_join_v_repaired_cut" name="test_e_first_import_adaptation_uses_j_closure" time="0.869" /><testcase classname="tests.test_join_v_repaired_cut" name="test_refusal_actual_b_source_no_target_and_same_consumer" time="0.434" /><testcase classname="tests.test_join_v_repaired_cut" name="test_refusal_cold_open_targetless_nonmutating" time="0.789" /><testcase classname="tests.test_join_v_repaired_cut" name="test_refusal_coordinated_meta_sidecar_source_tamper_refused_or_c12_bound" time="0.198"><failure message="Failed: {&quot;case&quot;: &quot;refusal_coordinated_source_tamper&quot;, &quot;episode_b_actor&quot;: &quot;TEST_ONLY_R31J_B&quot;, &quot;episode_b_event_hash&quot;: &quot;3e00199d533b793897cd8b9bdc0639830252c60588de732b46dfcec3cc3b9421&quot;, &quot;episode_b_to_actor&quot;: &quot;TEST_ONLY_R31J_A&quot;, &quot;loaded_b_actor&quot;: &quot;FOREIGN_B&quot;, &quot;loaded_b_event_hash&quot;: &quot;FOREIGN_HASH&quot;, &quot;loaded_b_to_actor&quot;: &quot;FOREIGN_A&quot;, &quot;meta_matches_sidecar&quot;: true, &quot;opened&quot;: true, &quot;targetless&quot;: true, &quot;verify&quot;: true}">tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-1449/test_refusal_coordinated_meta_0')
+
+    def test_refusal_coordinated_meta_sidecar_source_tamper_refused_or_c12_bound(tmp_path):
+        state = tmp_path / "refusal_tamper"
+        session = RefusalSession.start(state)
+        session.close()
+        copy = tmp_path / "copy"
+        meta = _copy_refusal(state, copy)
+        sidecar_path = copy / "product" / "refusal.json"
+        sidecar = json.loads(sidecar_path.read_text())
+        foreign = dict(meta["j_source"])
+        foreign["b_actor"] = "FOREIGN_B"
+        foreign["b_to_actor"] = "FOREIGN_A"
+        foreign["b_event_hash"] = "FOREIGN_HASH"
+        meta["j_source"] = foreign
+        meta["j_c8_state_digest"] = "FOREIGN_C8"
+        meta["j_e1_event_hash"] = "FOREIGN_E1"
+        sidecar["j_source"] = foreign
+        (copy / "session.json").write_text(
+            json.dumps(meta, indent=2, sort_keys=True) + "\n"
+        )
+        sidecar_path.write_text(json.dumps(sidecar, indent=2, sort_keys=True) + "\n")
+    
+        opened = _open_refusal_or_error(copy)
+        if isinstance(opened, SessionRefusal):
+            return
+        try:
+            episode = _refusal_episode_source(opened)
+            if opened.product.source == episode:
+                return
+&gt;           pytest.fail(json.dumps({
+                "case": "refusal_coordinated_source_tamper",
+                "opened": True,
+                "meta_matches_sidecar": opened.product.source == opened.meta.get("j_source"),
+                "loaded_b_actor": opened.product.source.get("b_actor"),
+                "loaded_b_to_actor": opened.product.source.get("b_to_actor"),
+                "loaded_b_event_hash": opened.product.source.get("b_event_hash"),
+                "episode_b_actor": episode.get("b_actor"),
+                "episode_b_to_actor": episode.get("b_to_actor"),
+                "episode_b_event_hash": episode.get("b_event_hash"),
+                "verify": opened.verify().get("ok"),
+                "targetless": opened.status().get("targetless"),
+            }, sort_keys=True))
+E           Failed: {"case": "refusal_coordinated_source_tamper", "episode_b_actor": "TEST_ONLY_R31J_B", "episode_b_event_hash": "3e00199d533b793897cd8b9bdc0639830252c60588de732b46dfcec3cc3b9421", "episode_b_to_actor": "TEST_ONLY_R31J_A", "loaded_b_actor": "FOREIGN_B", "loaded_b_event_hash": "FOREIGN_HASH", "loaded_b_to_actor": "FOREIGN_A", "meta_matches_sidecar": true, "opened": true, "targetless": true, "verify": true}
+
+tests/test_join_v_repaired_cut.py:246: Failed</failure></testcase><testcase classname="tests.test_join_v_repaired_cut" name="test_refusal_metadata_only_branch_substitution_refused" time="0.202"><failure message="Failed: {&quot;branch_id&quot;: &quot;root&quot;, &quot;case&quot;: &quot;refusal_metadata_branch&quot;, &quot;opened&quot;: true, &quot;recorded_branch_id&quot;: &quot;first_session&quot;, &quot;verify&quot;: true}">tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-1449/test_refusal_metadata_only_bra0')
+
+    def test_refusal_metadata_only_branch_substitution_refused(tmp_path):
+        state = tmp_path / "refusal_branch"
+        session = RefusalSession.start(state)
+        session.close()
+        copy = tmp_path / "copy"
+        meta = _copy_refusal(state, copy)
+        meta["branch_id"] = "root"
+        (copy / "session.json").write_text(
+            json.dumps(meta, indent=2, sort_keys=True) + "\n"
+        )
+        opened = _open_refusal_or_error(copy)
+        if isinstance(opened, SessionRefusal):
+            return
+        try:
+&gt;           pytest.fail(json.dumps({
+                "case": "refusal_metadata_branch",
+                "opened": True,
+                "branch_id": opened.branch_id,
+                "recorded_branch_id": "first_session",
+                "verify": opened.verify().get("ok"),
+            }, sort_keys=True))
+E           Failed: {"branch_id": "root", "case": "refusal_metadata_branch", "opened": true, "recorded_branch_id": "first_session", "verify": true}
+
+tests/test_join_v_repaired_cut.py:277: Failed</failure></testcase><testcase classname="tests.test_join_v_repaired_cut" name="test_refusal_fork_continuation_or_typed_refusal" time="0.146"><failure message="AssertionError: assert 'first_session' == 'alt'&#10;  &#10;  - alt&#10;  + first_session">tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-1449/test_refusal_fork_continuation0')
+
+    def test_refusal_fork_continuation_or_typed_refusal(tmp_path):
+        state = tmp_path / "refusal_fork"
+        session = RefusalSession.start(state)
+        try:
+            try:
+                forked = session.fork_alt()
+            except SessionRefusal:
+                return
+            if forked.get("status") != "OK":
+                pytest.fail(f"refusal fork returned non-OK result: {forked!r}")
+&gt;           assert session.branch_id == "alt"
+E           AssertionError: assert 'first_session' == 'alt'
+E             
+E             - alt
+E             + first_session
+
+tests/test_join_v_repaired_cut.py:298: AssertionError</failure></testcase><testcase classname="tests.test_join_v_repaired_cut" name="test_refusal_receiving_edge_fault_restore_is_bounded" time="0.322" /><testcase classname="tests.test_join_v_repaired_cut" name="test_refusal_attention_private_and_actor_ignorance" time="0.313" /><testcase classname="tests.test_join_v_repaired_cut" name="test_refusal_typed_missing_orphan_moved_and_donor" time="0.393" /></testsuite></testsuites>

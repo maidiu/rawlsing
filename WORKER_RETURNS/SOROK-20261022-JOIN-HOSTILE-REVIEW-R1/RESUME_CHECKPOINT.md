@@ -1,64 +1,49 @@
-# JOIN-V resume checkpoint — final cut c367777
+# JOIN-V resume checkpoint — repaired cut cc0ff7d
 
-**STATUS:** `FINAL_CUT_REVISE__c367777__PERSISTENCE_ROOT_BRANCH_C12_SOURCE_NOT_PROVEN__AWAIT_NEXT_REPAIR_SHA`
+**STATUS:** `REPAIRED_CUT_REVISE__cc0ff7d__TARGETLESS_REFUSAL_PERSISTENCE_LINEAGE_AND_FORK_NOT_BOUND__AWAIT_NEXT_REPAIR_SHA`
 **BRANCH:** `codex/sorok-join-v-20261022`
-**FINAL CUT:** `c367777f83367240352c267a2d3750abb7f09397` (read-only detached worktree)
-**PRELIMINARY CUT:** `13dfd6bad54ec19b4bdf31159e54fb6052d5440d`
-**STARTUP:** `3fe8444b4a0374d95fa9f7e60dd295049a5d3172`
-**CONTINUATION:** `141b5fe1e393621862791281e980c450715bbb9a:.../continuations/02_JOIN_V_FINAL_CUT.md`; HQ intake `00_HQ_INTAKE.md`
+**REPAIRED CUT:** `cc0ff7d0305340b806ba94b020017c3d8d0585dc` (read-only detached worktree)
+**PRIOR CUTS:** c367777 (targetless A/B; superseded), 13dfd6bad (preliminary)
+**CONTINUATION:** `0445059a81d0882bc6d1488150697d00f044bd39:.../continuations/04_JOIN_V_REPAIRED_EXACT_CUT.md`
 **WRITE SCOPE:** own return only; no candidate/J/E edit.
 
-## Results against c367777
+## Results against cc0ff7d
 
 | Suite | Result |
 |---|---|
-| Frozen independent positives | 9 passed, 1 intentional E-first import-closure refusal |
-| Frozen independent hostiles | 4 passed, 3 failed |
-| Targeted final-cut tests | 3 passed, 3 failed |
-| JOIN-E own suite | 10/10 passed |
+| Frozen independent positives | 10/10 passed |
+| Frozen independent hostiles | 7/7 passed |
+| Targeted c367 tests | 5/6; one superseded E-first-refusal expectation |
+| New repaired-cut tests | 6/9; 3 failed |
+| JOIN-E own suite | 15/15 passed |
 | Inherited J / E / R30A | 8/8, 15/15, 10/10 passed |
 | Source manifest | 444/444 verified |
 
-Frozen test hashes were checked first and match `FROZEN_ORACLES.json`; no frozen test was edited. `FINAL_CUT_ADJUDICATION.md` has full details; `evidence/final_cut/` has JUnit and JSON.
+Frozen test hashes were checked first and match `FROZEN_ORACLES.json`; no frozen test was edited. `REPAIRED_CUT_ADJUDICATION.md` has full detail; `evidence/repaired_cut/` has JUnit/JSON.
 
-## Repaired
+## Repaired / preserved
 
-- Different-source foreign product root is refused.
-- Plain R29P donor root is refused and no longer mutated (`ReadOnlyR31JProduct`).
-- Single-sidecar `r31j_source` tamper is refused.
-- Moved session root is a typed `COLD_REOPEN_REFUSED`.
-- Lawful `fork_alt` continuation works and cold-reopens.
-- J-first closure is enforced; E-first is intentionally refused with `IMPORT_CLOSURE_INVALID`.
-- B refusal/share with the same A omission is a source-derived consumer contrast; B refusal remains a lawful no-tool/no-target boundary, not a help-accept expectation.
+- All prior joined-path root/source/C12/branch/typed-root findings pass.
+- Joined positive encounter, lawful fork, attention, privacy, contact, B ignorance and cold reopen pass.
+- E-first import now adapts to the J-first closure; the old targeted test expecting an E-first refusal is historical/superseded, not a candidate defect.
+- Actual B refusal source gives zero tools, no performed inspection, `GM01_REFUSAL`, `target_id=""`, and E `HELP_REFUSE`; share source gives `HELP_ACCEPT`; no refusal=>help-accept claim.
+- Bounded receiving-edge fault/restore: force tool 1 under `REFUSE_TOOL` flips E to `HELP_ACCEPT`; fresh refusal restores `HELP_REFUSE`. This is not end-to-end B pre-C8 severance.
 
 ## Still failing / new counterexamples
 
-1. Same-source foreign product root is accepted; source equality is not root identity.
-2. Metadata-only branch selection (`root`, frozen `alt`) is accepted; no branch/fork receipt.
-3. Double sidecar+meta source tampering is accepted with `verify=true` while C12 `GM01_SOURCE` says `SHARE_TOOL`; meta-to-sidecar equality is insufficient.
-4. Missing `session.json` still raises raw `FileNotFoundError`.
-5. Orphan product root after session loss still raises raw `RuntimeError: R31J_PREC9_REFUSED...`.
+1. Coordinated `session.json` + `refusal.json` source tampering opens with `verify=true` while C12 `GM01_REFUSAL` retains the original source.
+2. Metadata-only branch `branch_id="root"` opens with `verify=true`.
+3. `RefusalSession.fork_alt()` returns OK but leaves `branch_id=first_session`, no lineage; cold reopen ignores `alt`.
+4. `c9.grant_id=TEST_ONLY_BP2_TARGET_GRANT` remains in the targetless receipt; it is inherited, not a newly fabricated native grant, but should be documented by the owner contract.
 
 ## Next safe move
 
-When human/HQ supplies the next repair SHA:
+Await the next repair SHA; run the unchanged frozen tests, targeted c367 and repaired-cut tests, then `tools/collect_repaired_cut.py`. The remaining repair should:
 
-1. Use an immutable read-only worktree of that cut; do not edit the candidate.
-2. Verify frozen test hashes against `FROZEN_ORACLES.json` before running.
-3. Run the unchanged frozen positives/hostiles and `tests/test_join_v_final_cut.py` with `SOROK_JOIN_CANDIDATE_ROOT` set to the cut.
-4. Run `tools/collect_final_cut.py` for candidate/inherited counts and source manifest.
-5. Publish the next adjudication; preserve lawful fork/cold/B-source positives; do not impose cross-root target determinism; no polling, extra worker, or native grant.
-
-## Exact commands
-
-```text
-cd WORKER_RETURNS/SOROK-20261022-JOIN-HOSTILE-REVIEW-R1
-SOROK_JOIN_CANDIDATE_ROOT=<cut>/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1 \
-  PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest -q tests/test_join_v_positive.py -p no:cacheprovider
-SOROK_JOIN_CANDIDATE_ROOT=... PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest -q tests/test_join_v_hostile.py -p no:cacheprovider --tb=short
-SOROK_JOIN_CANDIDATE_ROOT=... PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest -q tests/test_join_v_final_cut.py -p no:cacheprovider --tb=short
-SOROK_JOIN_CANDIDATE_ROOT=... PYTHONDONTWRITEBYTECODE=1 python3 -B tools/collect_final_cut.py
-```
+1. make `joined/refusal.py` read-only and C12/C8-provenance-bound, with no meta/sidecar-only source acceptance;
+2. enforce canonical targetless root and sealed branch/fork lineage; reject metadata-only branch selection;
+3. implement a real targetless fork or a typed `FORK_UNSUPPORTED` refusal; never return success on a no-op;
+4. preserve no-tool/no-target and no refusal=>help-accept; document the inherited C9 grant field.
 
 ## Flight / model
 
