@@ -4,23 +4,23 @@
   "lanes": [
     {
       "lane_id": "R00P",
-      "parallel_status": "RETURNED_VERIFIED__BOUNDED_CONTENT_CORRECTION_REQUEST_READY",
+      "parallel_status": "RETURNED_VERIFIED_CONTENT_LANE_CLOSED",
       "terminal_persona_effect": "Independent Browser TEST_ONLY contract freeze",
       "review_independence": "No candidate exists; independent from E/V",
       "dependency_refs": "Policy/expected-operation contract first",
-      "branch_startup_return_refs": "57b10c0355af6df78d6a42d918a838bba3eaf5bc",
+      "branch_startup_return_refs": "agent/browser-pyat-r56-r00-independent-policy-r1@6d95a78bf6b7bcf70022e303a151255e65edc38a",
       "route": "Browser I2 S1-S2",
-      "dispatch_decision_and_reason": "Same-owner P1/P2 successor content correction permitted; no new investigator; request not submitted by tools",
+      "dispatch_decision_and_reason": "No further policy work commissioned. HQ final admission pending.",
       "source_and_claim_grade": "TEST_ONLY_SOURCEFREE_NOT_ORIGINAL_N11",
       "incremental_cash_quota_or_unknown": "UNKNOWN"
     },
     {
       "lane_id": "R00E",
-      "parallel_status": "DEPENDENCY_HELD",
+      "parallel_status": "COMMISSION_PREPARED_NOT_LAUNCHED",
       "terminal_persona_effect": "Native gate implementation",
       "review_independence": "Cannot alter P's policy",
       "dependency_refs": "Verified independent P freeze; competent HQ seal or exact bounded delegation",
-      "branch_startup_return_refs": "Future exact P return",
+      "branch_startup_return_refs": "Nominated exact startup6d95a78bf6b7bcf70022e303a151255e65edc38a; final technical seal/facility pending",
       "route": "DeepSeek V4.1-Flash MAX; S3; availability UNKNOWN",
       "dispatch_decision_and_reason": "Seal and launch after P; no silent harness selection",
       "source_and_claim_grade": "TEST_ONLY_SOURCEFREE_NOT_ORIGINAL_N11",
@@ -40,11 +40,11 @@
     },
     {
       "lane_id": "R02",
-      "parallel_status": "DEPENDENCY_HELD",
+      "parallel_status": "COMMISSION_PREPARED_NOT_LAUNCHED",
       "terminal_persona_effect": "Actual repeated-occurrence C11/I03 repair",
       "review_independence": "Disjoint R04 decoder; existing C11 retained",
       "dependency_refs": "Independent corrected/admitted frozen R00 contract; competent owner/startup seal; qualified facility. R00E/R00V completion NOT a development prerequisite.",
-      "branch_startup_return_refs": "Future sealed R00 derivative",
+      "branch_startup_return_refs": "Nominated exact startup6d95a78bf6b7bcf70022e303a151255e65edc38a; final technical seal/facility pending",
       "route": "I2-I3 S3; Browser if full native else DeepSeek MAX",
       "dispatch_decision_and_reason": "After contract admission, implement alongside R00E on disjoint branches. Qualify actual gate integration when available; independent native review required for own candidate.",
       "source_and_claim_grade": "TEST_ONLY_SOURCEFREE_NOT_ORIGINAL_N11",
@@ -52,11 +52,11 @@
     },
     {
       "lane_id": "R04.byte",
-      "parallel_status": "DEPENDENCY_HELD",
+      "parallel_status": "COMMISSION_PREPARED_NOT_LAUNCHED",
       "terminal_persona_effect": "Consumed-byte identity in decoder/C11/I03",
       "review_independence": "Own decoder only; no issued_workload writer",
       "dependency_refs": "Independent corrected/admitted frozen R00 contract; competent owner/startup seal; qualified facility. R00E/R00V completion NOT a development prerequisite.",
-      "branch_startup_return_refs": "Future sealed R00 derivative",
+      "branch_startup_return_refs": "Nominated exact startup6d95a78bf6b7bcf70022e303a151255e65edc38a; final technical seal/facility pending",
       "route": "I2-I3 S3; Browser if full native else DeepSeek MAX",
       "dispatch_decision_and_reason": "After contract admission, implement alongside R00E on disjoint branches. Qualify actual gate integration when available; independent native review required for own candidate.",
       "source_and_claim_grade": "TEST_ONLY_SOURCEFREE_NOT_ORIGINAL_N11",
@@ -92,10 +92,10 @@
     "current_codex_used_percent_at_intake": 0,
     "current_codex_weekly_used_percent_at_intake": 57,
     "latest_observed_usage": {
-      "five_hour_used_percent": 16,
-      "weekly_used_percent": 59,
-      "phase": "bounded direction review start",
-      "actual_model_slug": "UNKNOWN",
+      "five_hour_used_percent": 33,
+      "weekly_used_percent": 62,
+      "phase": "R2 intake/prompt preparation start",
+      "actual_model_slug": "UNKNOWN_AFTER_RUNTIME_SWITCH",
       "actual_effort": "UNKNOWN"
     }
   },
@@ -106,9 +106,16 @@
   "no_duplicate_evidence": "Current-project OpenCode sessions empty; four unrelated/unmapped processes preserved; no R56/UR match in inspected store; global unknown",
   "protocol_verdict": "05_HQ_PROTOCOL_READINESS_VERDICT.md",
   "pending_HQ_request": "06_HQ_SEAL_RECONCILIATION_REQUEST.md",
-  "latest_intake": "08_R00P_RETURN_INTAKE.md",
+  "latest_intake": "12_R00P_R2_INTAKE_AND_PROMPT_INDEX.md",
   "HQ_ref": "fcbb2ee1d7a6eae040e0964bb8474e8d04d47989",
   "direction_ruling": "11_BOUNDED_FLIGHT_DIRECTION_DECISION.md",
   "next_product_milestone": "Working generic gate; governed row/occasion projection reaching unchanged C11/I03; consumed-byte custody demonstrated under replacement and cold faults.",
-  "policy_loop_stop": "Finish existing bounded R00P correction once; no new policy audit."
+  "policy_loop_stop": "Finish existing bounded R00P correction once; no new policy audit.",
+  "prepared_prompts": [
+    "HQ_SEAL/LAUNCH_PROMPT.md",
+    "R00E/00_COMMISSION.md",
+    "R02/00_COMMISSION.md",
+    "R04BYTE/00_COMMISSION.md"
+  ],
+  "policy_content_status": "CLOSED_ACCEPT_SCOPED_R2_STATIC_CORRECTION__HQ_ADMISSION_PENDING"
 }

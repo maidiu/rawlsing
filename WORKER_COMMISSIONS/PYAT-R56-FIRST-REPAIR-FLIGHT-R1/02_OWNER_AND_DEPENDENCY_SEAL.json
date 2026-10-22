@@ -15,22 +15,22 @@
       "CROSS_HQ_CONTROL_ROOM/universal_execution_policy/r56_sourcefree_v1/",
       "WORKER_RETURNS/PYAT-R56-R00P-INDEPENDENT-POLICY-R1/"
     ],
-    "status": "RETURNED_VERIFIED__CONTENT_REVISE__COMPETENT_HQ_ADMISSION_PENDING",
+    "status": "DIRECTOR_VERIFIED_R2_CONTENT_CLOSED__HQ_ADMISSION_PENDING",
     "native_pass": false,
-    "observed_remote": "57b10c0355af6df78d6a42d918a838bba3eaf5bc",
+    "observed_remote": "6d95a78bf6b7bcf70022e303a151255e65edc38a",
     "project_authority": "REQUIRES_EXACT_HQ_RATIFICATION_OR_BOUNDED_DELEGATION",
-    "return_sha": "57b10c0355af6df78d6a42d918a838bba3eaf5bc",
-    "content_revision_request": "09_R00P_CONTENT_CORRECTION_REQUEST.md"
+    "return_sha": "6d95a78bf6b7bcf70022e303a151255e65edc38a",
+    "content_revision_request": "COMPLETED_R2_NO_FURTHER_POLICY_WORK"
   },
   "implementation_owner": {
     "id": "R56-R00E",
-    "status": "DEPENDENCY_HELD_CORRECTED_POLICY_AND_COMPETENT_HQ_SEAL",
+    "status": "PREPARED_PENDING_HQ_SEAL_ADMISSION_AND_NATIVE_FACILITY",
     "recommended_model": "DeepSeek V4.1-Flash",
     "effort": "MAX",
     "harness": "USER_SELECTED",
     "MAX_available": "UNKNOWN",
-    "startup": "SEAL_EXACT_POLICY_RETURN_AFTER_VERIFICATION",
-    "branch": "UNSEALED_NOT_CREATED",
+    "startup": "NOMINATED_6d95a78bf6b7bcf70022e303a151255e65edc38a_PENDING_FINAL_SEAL",
+    "branch": "NOMINATED_agent/rabochii-pyat-r56-r00e-generic-claim-gate-r1_NOT_CREATED",
     "scope": [
       "CROSS_HQ_CONTROL_ROOM/universal_promotion_gate.py",
       "tests/universal_execution_oracle/",
@@ -80,5 +80,23 @@
     "Combined-candidate compatibility check before reporting combined functioning"
   ],
   "direction_ruling": "11_BOUNDED_FLIGHT_DIRECTION_DECISION.md",
-  "removed_extra_dependency": "Completed R00E/R00V acceptance before R02/R04.byte development"
+  "removed_extra_dependency": "Completed R00E/R00V acceptance before R02/R04.byte development",
+  "proposed_parallel_jobs": [
+    {
+      "id": "R02",
+      "commission": "R02/00_COMMISSION.md",
+      "branch": "agent/rabochii-pyat-r56-r02-occurrence-projection-repair-r1",
+      "startup": "6d95a78bf6b7bcf70022e303a151255e65edc38a",
+      "status": "NOMINATED_NOT_CREATED_NOT_LAUNCHED",
+      "reviewer": "DISTINCT_NATIVE_SESSION_OWNER_TO_BIND_AT_SEAL"
+    },
+    {
+      "id": "R04.byte",
+      "commission": "R04BYTE/00_COMMISSION.md",
+      "branch": "agent/rabochii-pyat-r56-r04byte-consumed-byte-custody-r1",
+      "startup": "6d95a78bf6b7bcf70022e303a151255e65edc38a",
+      "status": "NOMINATED_NOT_CREATED_NOT_LAUNCHED",
+      "reviewer": "DISTINCT_NATIVE_SESSION_OWNER_TO_BIND_AT_SEAL"
+    }
+  ]
 }

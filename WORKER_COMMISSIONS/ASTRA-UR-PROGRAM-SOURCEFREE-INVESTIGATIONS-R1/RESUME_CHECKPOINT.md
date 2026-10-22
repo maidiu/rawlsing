@@ -1,19 +1,21 @@
-# R56 continuation — bounded direction decision complete
-Date: 2026-10-22. State: ASTRA_ARCHITECTURAL_DECISION_COMPLETE__MECHANICAL_EXECUTION_NEXT.
-Read11_BOUNDED_FLIGHT_DIRECTION_DECISION.md in WORKER_COMMISSIONS/PYAT-R56-FIRST-REPAIR-FLIGHT-R1/; it controls scheduling over older notes.
-Director branch: agent/astra-ur-program-sourcefree-evidence-direction-r1.
-Verified parent: 0ae00d56cfe746e6cefa3c6369c9ee1110b532d6. This checkpoint's enclosing commit is the successor; resolve the remote ref before writing. Do not treat the parent as current after publication.
-HQ branch integration/pre-main-reconciliation-r1 verified at fcbb2ee1d7a6eae040e0964bb8474e8d04d47989; immutable R56 a51155558ae73b246dfd72e5bf6fabebd6965081.
-R00P branch agent/browser-pyat-r56-r00-independent-policy-r1 verified at57b10c0355af6df78d6a42d918a838bba3eaf5bc. No corrected successor observed; user-mediated correction's live execution status UNKNOWN.
+# R56 continuation — R2 content lane closed; execution prompts prepared
+Date:2026-10-22. State: DELEGATED_WORKER_LAUNCH_READY__HQ_ADMINISTRATIVE_PROMPT_ONLY; native implementation prompts conditional, not launched.
+Director branch agent/astra-ur-program-sourcefree-evidence-direction-r1.
+Remote-verified parent6cdde972249f5897d23c10aeccadfb56f76933f7; this record's enclosing commit is the successor. Resolve exact remote head before next mutation.
+HQ live verifiedfcbb2ee1d7a6eae040e0964bb8474e8d04d47989; immutable R56a51155558ae73b246dfd72e5bf6fabebd6965081.
+R00P live verified6d95a78bf6b7bcf70022e303a151255e65edc38a on existing policy branch. Direct ancestry/diff,8 successor files and8 preserved predecessor blobs verified. Static complete-operation bijection,36cases, prior32 meanings, deferred positive link and original35 obligations verified. No native run.
+Policy-content lane CLOSED; competent HQ admission remains pending. Do not reopen a policy audit.
 
-Completed: one bounded direction ruling, corrected flight board/seal dependency, narrowed existing unsent HQ request. No architecture reopening, native run, candidate edit, worker launch or HQ message. Original oracle/evidence preserved.
-Decision: finish existing bounded policy correction once; admit independent frozen contract; then R00E/R02/R04.byte may implement in parallel with disjoint owners. Completed R00E/R00V is not a prerequisite for R02/R04.byte development. Each candidate still needs independent native review, and combined functioning needs an exact combined-candidate compatibility check.
-Remaining actual prerequisites: corrected policy return/admission; one competent HQ operational seal/appointment or bounded technical-sealing delegation; actual native owner/reviewer/facility binding. Resolve later two proof sidecars administratively. No new code authorization or architecture review requested.
-Next visible deliverable: working generic claim evaluator, real governed occurrence projection to C11/I03, and actual consumed-byte custody.
+Read11_BOUNDED_FLIGHT_DIRECTION_DECISION.md and12_R00P_R2_INTAKE_AND_PROMPT_INDEX.md under WORKER_COMMISSIONS/PYAT-R56-FIRST-REPAIR-FLIGHT-R1/.
+Prepared prompts: HQ_SEAL/LAUNCH_PROMPT.md for EXISTING competent HQ Browser session now; R00E/00_COMMISSION.md, R02/00_COMMISSION.md, R04BYTE/00_COMMISSION.md for qualified native workers only after competent seal/admission and actual facility binding. Shared native contract binding. Exact nominated starts all6d95a78b; branches nominated/not created. Reviewer protocol prepared; final exact candidate startup unavailable until author returns. No tool messages or agent/process launches.
+After frozen admitted policy + qualified starts, implementations can run in parallel; completed R00V is NOT a development prerequisite. Each own independent review required.
 
-Next model: user-selected economical Sol Light/Middle for I1-I2 coordination, Browser for complete documentary assignments. Native I2-I3/S3 jobs to qualified user-selected DeepSeek V4.1-Flash MAX/OpenCode if Browser cannot perform the whole job. Exact current model/effort unexposed; runtime model-transition signal observed. Initial quota16% five-hour/59% weekly used; recheck live.
-Continuation prompt:
-"Continue existing R56 from its remote-verified director head and read11_BOUNDED_FLIGHT_DIRECTION_DECISION.md. Perform economical execution coordination only. Verify the existing R00P successor when returned; finish that lane without another policy audit. Resolve the single existing HQ technical-seal request and bind actual native owners/facilities. Prepare exact disjoint R00E, R02 and R04.byte commissions from the frozen contract; do not impose completed R00V as a development prerequisite. Preserve one independent native reviewer per candidate and exact code scopes. Launch only through a verified user-selected facility or supply complete user-executable prompts. Stop for Astra only on a concrete architecture/science-changing conflict."
+Current model: runtime switch signalled, exact selected model/effort UNKNOWN. Current task I1-I2/S1-S2 coordination; economical Sol Light/Middle/Browser sufficient. Native jobs I2-I3/S3, prefer whole-job Browser if qualified, otherwise user-selected DeepSeek V4.1-Flash MAX/OpenCode. No fresh Astra necessity identified.
+User's central intelligence-routing/quota instruction read and preserved; memory update note written at user's explicit remember request. Initial live quota33%five-hour/62%weekly used; context remaining UNKNOWN. Recheck at next phase.
+No local source/code/worktree edits; no uncommitted candidate work. Publication is scoped director documents only.
 
-Authority holds: seven R56 code paths only; R04.joined/R03 and other R nodes separately gated; J52/W52 USER_STOPPED; no original source/science, protected CI, production promotion, N11 adoption or N12 wake. N11 NOT_READY, N12 HOLD;0 new original cells.
-No local candidate work or important uncommitted local artifacts created. Remote-only documentary publication; final ref verification is reported after commit.
+NEXT: User gives HQ administrative prompt to existing competent Pyat HQ. Verify returned exact HQ seal/delegation/admission and two-sidecar decision; then economically bind actual owners/facility and finalize exact technical seals. Send native prompts or launch only through genuinely verified selected facility. No routine new code grant needed.
+Continuation:
+"Continue existing R56 from this remote head. Read11 and12. Policy R2 is content-verified and its lane closed. Intake the one existing HQ seal/delegation and admission return when available. Bind qualified native owners/facility and finalize the three proposed commissions without architectural rework. After admitted independent policy and exact starts, R00E/R02/R04.byte may implement in parallel. Publish exact review prompts only from actual candidate returns. Observe per-task model routing; pause before a genuine new Astra decision."
+
+Remaining holds: R56 seven paths only; proof-sidecar decision pending; other Rnodes/R04.joined separately gated; J52/W52 USER_STOPPED. No original source/science, protectedCI, production promotion, N11 adoption or N12 wake.0 new original measured cells; N11NOT_READY/N12HOLD.
