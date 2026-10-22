@@ -47,6 +47,11 @@
       "sha256": "5f3b9291dee41f4318d076dc5116066826973d2b1b64f18f57ac0d0600a6557e"
     },
     {
+      "bytes": 1432,
+      "path": "WORKER_RETURNS/PYAT-R56-R02-OCCURRENCE-PROJECTION-REPAIR-R1/revisions/r2/03_REMOTE_READBACK.md",
+      "sha256": "0b32923faa206b5b531673fd6bf400491f460273b86b8aec27a765f93cfd6bba"
+    },
+    {
       "bytes": 2113,
       "path": "WORKER_RETURNS/PYAT-R56-R02-OCCURRENCE-PROJECTION-REPAIR-R1/revisions/r2/RESUME_CHECKPOINT.md",
       "sha256": "8f9345c95e35f9b26218b1ce0185faf708a61235a4772dfdc4a03afaf8b91ff3"
@@ -151,7 +156,18 @@
   "r02v_source": "a287674b97a2bbde4bf9acf3b6badf19b5ce72f5",
   "r57_source": "953eb07ad29cc424b2fc43cfeb13ef83355f3a50",
   "remote_parent_at_start": "236fd4d1064f7c14113616db300c955294a474ac",
-  "remote_readback": "SEE 03_REMOTE_READBACK.md after publication",
+  "remote_readback": {
+    "ancestry_ok": true,
+    "changed_file_allowlist": [
+      "rawlsing_next/pre553_source_native_preimage_adapter.py",
+      "rawlsing_next/tests/test_universal_source_projection.py",
+      "rawlsing_next/tests/test_universal_source_projection.py.proof.json",
+      "WORKER_RETURNS/PYAT-R56-R02-OCCURRENCE-PROJECTION-REPAIR-R1/revisions/r2/"
+    ],
+    "parent": "236fd4d1064f7c14113616db300c955294a474ac",
+    "remote_sha": "453a951307bbf9112f576907f48f88524247261f",
+    "successor_commit": "453a951307bbf9112f576907f48f88524247261f"
+  },
   "repo_files": [
     {
       "after_bytes": 41514,
@@ -196,6 +212,7 @@
     "variant": "max"
   },
   "shared_contract_source": "eb28fdcc311e2534b66def445e745cb25cb8a9bd",
+  "successor_commit": "453a951307bbf9112f576907f48f88524247261f",
   "test_counters": {
     "author": {
       "failed": 0,
