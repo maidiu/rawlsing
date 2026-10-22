@@ -1,0 +1,30 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "status": "MECHANICAL_WITNESS_PASS_NOT_SEMANTIC_ADOPTION",
+  "claims": [
+    {
+      "claim_id": "R56_R04BYTE_CONSUMED_BYTE_LAZY_READSET",
+      "positive_node": "rawlsing_next/tests/test_universal_source_byte_custody.py::test_lazy_value_phase_uses_only_the_content_bound_snapshot",
+      "fault_path": "rawlsing_next/pre553_physical_decoder.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    },
+    {
+      "claim_id": "R04BYTEV_INDEPENDENT_ORIGINAL_PATH_REPLACEMENT_SNAPSHOT_BINDING",
+      "positive_node": "rawlsing_next/tests/test_universal_source_byte_custody.py::test_independent_snapshot_bound_c11_i03_facts_survive_original_path_replacement",
+      "fault_path": "rawlsing_next/pre553_physical_decoder.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    },
+    {
+      "claim_id": "R04BYTEV_INDEPENDENT_SNAPSHOT_PATH_REPLACEMENT_READER_BINDING",
+      "positive_node": "rawlsing_next/tests/test_universal_source_byte_custody.py::test_private_snapshot_path_replacement_after_verify_cannot_rebind_old_identity_to_new_bytes",
+      "fault_path": "rawlsing_next/pre553_physical_decoder.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    }
+  ]
+}

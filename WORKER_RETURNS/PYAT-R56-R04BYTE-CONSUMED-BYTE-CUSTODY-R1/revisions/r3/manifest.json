@@ -1,0 +1,149 @@
+{
+  "schema": "PYAT_R56_R04BYTE_R3_RETURN_MANIFEST_R1",
+  "job": "R56-R04BYTE",
+  "revision": "r3",
+  "status": "REPAIRED_CANDIDATE__AUTHOR_ENGINEERING_QUALIFIED__SAME_R04BYTEV_AFFECTED_REQUALIFICATION_REQUIRED",
+  "branch": "agent/rabochii-pyat-r56-r04byte-consumed-byte-custody-r1",
+  "repair_parent": "ea0d6f0f9840db0e33645b40ceda54456612709e",
+  "startup": "6d95a78bf6b7bcf70022e303a151255e65edc38a",
+  "decision_baseline": "1c89cdaa6a13b44aef8144bdf49a9caa4e66a82f",
+  "review_baseline": "228387c59b42590338636cd176feee3ccc9a6abc",
+  "author": {
+    "role": "R04BYTEE implementation author",
+    "model": "opencode-go/deepseek-v4.1-flash",
+    "effort": "UNKNOWN_NOT_EXPOSED",
+    "harness": "OpenCode",
+    "host": "MacBook-Pro.lan",
+    "python": "3.11.3",
+    "pytest": "9.0.2",
+    "pyreadstat": "1.3.2"
+  },
+  "mechanism": {
+    "construction": "private O_RDWR writer for copy/hash/0400 only",
+    "handoff": "distinct O_RDONLY reader fd, O_CLOEXEC/O_NOFOLLOW; construction writer closed",
+    "identity": "device/inode/size compare; pathname identity check; unlink; nlink==0; reader digest recompute",
+    "reader_binding": "OPEN_FD_VIA_POSIX_DEV_FD; methods fail closed on non-read-only/closed/non-regular fd",
+    "sav_lazy": "read_file_in_chunks on bound fd; fstat signature diagnostics before each batch",
+    "dta_value": "full read_dta frame on bound fd; post-read full digest",
+    "cleanup": "close reader/construction fds; remove only acquisition inode, never foreign replacement"
+  },
+  "qualification": {
+    "module": "26 passed",
+    "focused_prior": "24 passed",
+    "author16": "16 passed",
+    "other_core": "64 passed, 1 skipped",
+    "author_baseline_reconstructed": "80 passed, 1 skipped",
+    "current_full_core": "90 passed, 1 skipped",
+    "readonly_attack_subset": "6 passed",
+    "proof_witness": "3/3 baseline PASS, 3/3 TARGET_ASSERTION_FAILED, decoder restored",
+    "mmap_counterexample": "denied; same C11/I03 baseline facts",
+    "skip": "rawlsing_next/tests/test_pre553_sr06_decoder_carrier.py:268 installed pyreadstat writer/readback does not expose missing_user_values in metadata",
+    "older_r1e_r1i_r1j": "not rerun in r3; r2 reviewer established baseline-identical; no concrete regression indicated"
+  },
+  "read_shape": {
+    "sav_chunked_maxrss_delta_bytes": [
+      577536,
+      1011712,
+      937984
+    ],
+    "dta_full_frame_maxrss_delta_bytes": [
+      106496,
+      1503232,
+      11972608
+    ],
+    "counts": [
+      1000,
+      10000,
+      50000
+    ],
+    "limit": "DTA full-frame O(rows x cols); no original35-scale or unchanged-DTA-chunking claim"
+  },
+  "limits": [
+    "POSIX /dev/fd required; typed refusal otherwise",
+    "DTA full-frame value pass O(rows x cols)",
+    "SAV per-batch fstat signature is diagnostic; read-only fd capability is primary",
+    "trusted operator/process can manufacture privileges/private-state substitution; not hostile same-UID supervisor isolation",
+    "synthetic compatibility allowlist TEST_ONLY, no installed encoding authority",
+    "local byte custody only; no R03/R04.joined, joined workload, partial Batch/revocation/dedup, original science, R09, production, N11/N12"
+  ],
+  "files": [
+    {
+      "path": "rawlsing_next/pre553_physical_decoder.py",
+      "sha256": "1ed8a8ae01f90bba297d708a0926fe9911d9b186eb858d99aec616e23991d320",
+      "bytes": 32298,
+      "git_blob": "8732e34d0ea3f4cfffd7d33ee00f258dbc2d65dd"
+    },
+    {
+      "path": "rawlsing_next/tests/test_universal_source_byte_custody.py",
+      "sha256": "8a4efe40b939379c3b28e7455214370baec459d9a1f410e2548ffb6d0964848b",
+      "bytes": 27072,
+      "git_blob": "76a2a17a41be1b762d2434c57dcc733799fd3d99"
+    },
+    {
+      "path": "rawlsing_next/tests/test_universal_source_byte_custody.py.proof.json",
+      "sha256": "f4ff0cd8bf509c106f14d03812401fd2edc8581cf5e971dc1f17041d74363f51",
+      "bytes": 2638,
+      "git_blob": "1f910530aea8af7d489190ea9117644f5ad4da65"
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTE-CONSUMED-BYTE-CUSTODY-R1/revisions/r3/00_RETURN.md",
+      "sha256": "ed5bb1da1c8ce8431a23c35022000458e1f2bef9f7bc9acfa6711c9521d4ed46",
+      "bytes": 6283,
+      "git_blob": "7f45fadf3d1c78400e59ffb67bfe3ae3c483ca6e"
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTE-CONSUMED-BYTE-CUSTODY-R1/revisions/r3/RESUME_CHECKPOINT.md",
+      "sha256": "028cb86860f4f874e81dc65b0cadf1c660e4cc70cf566f0d8a8146cf5fbca577",
+      "bytes": 957,
+      "git_blob": "6ea7b8c1885850935bf425ea5b9331aac8ee5be1"
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTE-CONSUMED-BYTE-CUSTODY-R1/revisions/r3/evidence/author16_receipt.txt",
+      "sha256": "28fef7547e9b0374a69be7c176c408c28d57c13bd772cad6e24bcc3f84b53831",
+      "bytes": 114,
+      "git_blob": "499828249a8212d30e6a4bc2d99bb01c1b3da488"
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTE-CONSUMED-BYTE-CUSTODY-R1/revisions/r3/evidence/core90_receipt.txt",
+      "sha256": "567132781c5d0356e3424e0565a7917f5f4c7a2999e576905901a782c667f755",
+      "bytes": 430,
+      "git_blob": "72249c543fbc0ded45e5bd3537287f407fb2c6b5"
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTE-CONSUMED-BYTE-CUSTODY-R1/revisions/r3/evidence/core_other64_receipt.txt",
+      "sha256": "d274b2d025a4f79afb4e66c91c9e3d0113698e29ad6ecf70d607906cdbb609fd",
+      "bytes": 350,
+      "git_blob": "d8ab0424517b124526cee3f5b0582bc2e470777d"
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTE-CONSUMED-BYTE-CUSTODY-R1/revisions/r3/evidence/module24_focused_receipt.txt",
+      "sha256": "1f2a1637ea240b0c781664b9c2fdccc263b3b0e61b7b1ea4bb53d04ab82547be",
+      "bytes": 113,
+      "git_blob": "9069e132cbba3510a26250a2d7bb728caff6541c"
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTE-CONSUMED-BYTE-CUSTODY-R1/revisions/r3/evidence/module26_receipt.txt",
+      "sha256": "2e4c2f2a1b6a8f85528e65b25b878ba9e0bb92d1cebfaf35b971510f43c401be",
+      "bytes": 99,
+      "git_blob": "17f64ed65245de943cf3987bc292345285f9af7d"
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTE-CONSUMED-BYTE-CUSTODY-R1/revisions/r3/evidence/proof_witness.json",
+      "sha256": "5f624e306f58ade69f7bc2044d6b2746c2650750dfe1cbd964f8eb01eb277be4",
+      "bytes": 1421,
+      "git_blob": "fff7c884e8fc5475dc8d9d36e7de4438f7d09daa"
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTE-CONSUMED-BYTE-CUSTODY-R1/revisions/r3/evidence/read_shape_r3.json",
+      "sha256": "f4b995065085069c55a8a9b250ff0c82d1df44ed015df63682835172d1d20547",
+      "bytes": 4176,
+      "git_blob": "5d0a48f412a6fadc756a129d381f26c660f60e4d"
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTE-CONSUMED-BYTE-CUSTODY-R1/revisions/r3/evidence/readonly_attack_receipt.txt",
+      "sha256": "dd7e9ba933ce65e5025cfdfb1e013b11a3547e02e198693cadae2d13609d7106",
+      "bytes": 113,
+      "git_blob": "dd0e4b9bf523b26dd18741aaee58ffddb54acd2e"
+    }
+  ]
+}

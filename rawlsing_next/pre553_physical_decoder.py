@@ -13,6 +13,10 @@ from __future__ import annotations
 from dataclasses import dataclass
 from enum import Enum
 import hashlib
+try:
+    import fcntl
+except ImportError:
+    fcntl = None
 import json
 import math
 import os
@@ -95,6 +99,7 @@ class PhysicalSourceIncidence:
             "snapshot_size": self._source_snapshot.size,
             "snapshot_path_unlinked": not self._source_snapshot.path.exists(),
             "reader_binding": "OPEN_FD_VIA_POSIX_DEV_FD",
+            "reader_access_mode": self._source_snapshot.access_mode,
             "content_bound": True,
         }
 
@@ -211,20 +216,41 @@ class _SourceSnapshot:
     stat_signature: tuple[int, int, int, int, int]
     _closed: bool = False
 
-    @property
-    def reader_path(self) -> str:
+    def _ensure_read_only(self) -> None:
         if self._closed:
             raise DecoderError("source snapshot is closed")
+        if fcntl is None:
+            raise DecoderError("read-only descriptor capability requires POSIX fcntl")
+        flags = fcntl.fcntl(self.fd, fcntl.F_GETFL)
+        if flags & os.O_ACCMODE != os.O_RDONLY:
+            raise DecoderError("source snapshot reader is not read-only")
+        if not stat.S_ISREG(os.fstat(self.fd).st_mode):
+            raise DecoderError("source snapshot reader is not a regular file")
+
+    @property
+    def access_mode(self) -> str:
+        if self._closed:
+            return "CLOSED"
+        if fcntl is None:
+            return "UNKNOWN"
+        flags = fcntl.fcntl(self.fd, fcntl.F_GETFL)
+        return {
+            os.O_RDONLY: "O_RDONLY",
+            os.O_WRONLY: "O_WRONLY",
+            os.O_RDWR: "O_RDWR",
+        }.get(flags & os.O_ACCMODE, "UNKNOWN")
+
+    @property
+    def reader_path(self) -> str:
+        self._ensure_read_only()
         return f"/dev/fd/{self.fd}"
 
     def read_prefix(self, size: int) -> bytes:
-        if self._closed:
-            raise DecoderError("source snapshot is closed")
+        self._ensure_read_only()
         return os.pread(self.fd, size, 0)
 
     def rewind(self) -> None:
-        if self._closed:
-            raise DecoderError("source snapshot is closed")
+        self._ensure_read_only()
         os.lseek(self.fd, 0, os.SEEK_SET)
 
     def _current_signature(self) -> tuple[int, int, int, int, int]:
@@ -232,14 +258,12 @@ class _SourceSnapshot:
         return (st.st_dev, st.st_ino, st.st_size, st.st_mtime_ns, st.st_ctime_ns)
 
     def check_stable(self) -> None:
-        if self._closed:
-            raise DecoderError("source snapshot is closed")
+        self._ensure_read_only()
         if self._current_signature() != self.stat_signature:
             raise DecoderError("source snapshot changed after identity acquisition")
 
     def verify(self) -> None:
-        if self._closed:
-            raise DecoderError("source snapshot is closed")
+        self._ensure_read_only()
         self.check_stable()
         if _sha_fd(self.fd) != self.sha256:
             raise DecoderError("source snapshot bytes changed after identity acquisition")
@@ -287,13 +311,19 @@ def _acquire_source_snapshot(source: Path, expected_source_sha256: str | None = 
     except OSError as exc:
         raise DecoderError(f"source bytes unavailable: {source}") from exc
     directory: Path | None = None
-    snapshot_fd: int | None = None
+    construction_fd: int | None = None
+    reader_fd: int | None = None
+    snapshot_identity: tuple[int, int] | None = None
     try:
         if not stat.S_ISREG(os.fstat(source_fd).st_mode):
             raise DecoderError(f"source bytes unavailable: {source}")
+        if os.name != "posix" or not Path("/dev/fd").is_dir():
+            raise DecoderError("content-bound reader path requires POSIX /dev/fd")
         directory = Path(tempfile.mkdtemp(prefix="rawlsing-source-custody-"))
         snapshot_path = directory / "source.bin"
-        snapshot_fd = os.open(snapshot_path, os.O_RDWR | os.O_CREAT | os.O_EXCL, 0o600)
+        construction_fd = os.open(snapshot_path, os.O_RDWR | os.O_CREAT | os.O_EXCL, 0o600)
+        construction_stat = os.fstat(construction_fd)
+        snapshot_identity = (construction_stat.st_dev, construction_stat.st_ino)
         digest = hashlib.sha256()
         size = 0
         while True:
@@ -304,28 +334,58 @@ def _acquire_source_snapshot(source: Path, expected_source_sha256: str | None = 
             size += len(block)
             view = memoryview(block)
             while view:
-                view = view[os.write(snapshot_fd, view):]
-        os.fchmod(snapshot_fd, 0o400)
+                view = view[os.write(construction_fd, view):]
+        os.fchmod(construction_fd, 0o400)
         actual = digest.hexdigest()
         if expected_source_sha256 is not None and actual != expected_source_sha256:
             raise DecoderError("source sha256 mismatch before governed decode")
-        if os.name != "posix" or not Path("/dev/fd").is_dir():
-            raise DecoderError("content-bound reader path requires POSIX /dev/fd")
+        reader_flags = os.O_RDONLY | getattr(os, "O_CLOEXEC", 0) | getattr(os, "O_NOFOLLOW", 0)
+        reader_fd = os.open(snapshot_path, reader_flags)
+        reader_stat = os.fstat(reader_fd)
+        construction_stat = os.fstat(construction_fd)
+        if (
+            (reader_stat.st_dev, reader_stat.st_ino) != (construction_stat.st_dev, construction_stat.st_ino)
+            or reader_stat.st_size != size
+            or construction_stat.st_size != size
+        ):
+            raise DecoderError("source snapshot reader does not match the construction inode")
+        if fcntl is None:
+            raise DecoderError("read-only descriptor capability requires POSIX fcntl")
+        if fcntl.fcntl(reader_fd, fcntl.F_GETFL) & os.O_ACCMODE != os.O_RDONLY:
+            raise DecoderError("source snapshot reader is not read-only")
+        os.close(construction_fd)
+        construction_fd = None
+        path_stat = os.stat(snapshot_path)
+        if (path_stat.st_dev, path_stat.st_ino) != (reader_stat.st_dev, reader_stat.st_ino):
+            raise DecoderError("source snapshot pathname was replaced before unlink")
         os.unlink(snapshot_path)
-        st = os.fstat(snapshot_fd)
+        if os.fstat(reader_fd).st_nlink != 0:
+            raise DecoderError("source snapshot inode retains an acquisition link")
+        if _sha_fd(reader_fd) != actual:
+            raise DecoderError("source snapshot bytes changed before read-only handoff")
+        st = os.fstat(reader_fd)
         signature = (st.st_dev, st.st_ino, st.st_size, st.st_mtime_ns, st.st_ctime_ns)
-        return _SourceSnapshot(actual, snapshot_path, directory, snapshot_fd, size, signature)
+        return _SourceSnapshot(actual, snapshot_path, directory, reader_fd, size, signature)
     except Exception:
-        if snapshot_fd is not None:
+        if reader_fd is not None:
             try:
-                os.close(snapshot_fd)
+                os.close(reader_fd)
+            except OSError:
+                pass
+        if construction_fd is not None:
+            try:
+                os.close(construction_fd)
             except OSError:
                 pass
         if directory is not None:
-            try:
-                os.unlink(directory / "source.bin")
-            except OSError:
-                pass
+            path = directory / "source.bin"
+            if snapshot_identity is not None:
+                try:
+                    st = os.stat(path)
+                    if (st.st_dev, st.st_ino) == snapshot_identity:
+                        os.unlink(path)
+                except OSError:
+                    pass
             try:
                 os.rmdir(directory)
             except OSError:

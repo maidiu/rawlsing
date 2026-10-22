@@ -1,5 +1,6 @@
 import hashlib
 import json
+import mmap
 import os
 from dataclasses import replace
 from pathlib import Path
@@ -323,18 +324,28 @@ def test_replacement_between_hash_gate_and_snapshot_acquisition_is_refused(
 
 
 @pytest.mark.parametrize("source_format", ("sav", "dta"))
-def test_altered_snapshot_is_refused_before_lazy_native_facts(tmp_path, source_format):
+def test_supplied_read_only_fd_denies_in_place_write_and_preserves_facts(
+    tmp_path, source_format
+):
     path = _write_source(tmp_path / f"altered.{source_format}", source_format)
     alternate = _write_source(tmp_path / f"altered-alt.{source_format}", source_format, _ALTERNATE_ROWS)
-    incidence = _decode(path, source_format, _sha(path))
+    expected_sha = _sha(path)
+    incidence = _decode(path, source_format, expected_sha)
     snapshot = incidence._source_snapshot
     alternate_bytes = alternate.read_bytes()
-    os.pwrite(snapshot.fd, alternate_bytes, 0)
-    os.ftruncate(snapshot.fd, len(alternate_bytes))
-    with pytest.raises(DecoderError, match="source snapshot.*changed"):
-        list(incidence.iter_cells())
-    with pytest.raises(DecoderError, match="source snapshot.*changed"):
-        incidence.verify_source_identity()
+    baseline = _facts_from_incidence(incidence, source_format)
+    with pytest.raises(OSError):
+        os.write(snapshot.fd, b"x")
+    with pytest.raises(OSError):
+        os.pwrite(snapshot.fd, alternate_bytes, 0)
+    with pytest.raises(OSError):
+        os.ftruncate(snapshot.fd, len(alternate_bytes))
+    with pytest.raises(OSError):
+        os.open(f"/dev/fd/{snapshot.fd}", os.O_RDWR)
+    assert snapshot.access_mode == "O_RDONLY"
+    assert incidence.source_custody["reader_access_mode"] == "O_RDONLY"
+    assert incidence.verify_source_identity() == expected_sha
+    assert _facts_from_incidence(incidence, source_format) == baseline
     incidence.close()
 
 
@@ -402,6 +413,9 @@ def test_snapshot_close_releases_private_source_bytes(tmp_path):
     incidence.close()
     assert not snapshot_path.exists()
     assert not snapshot_directory.exists()
+    assert snapshot.access_mode == "CLOSED"
+    with pytest.raises(OSError):
+        os.fstat(snapshot.fd)
     with pytest.raises(DecoderError, match="source snapshot is closed"):
         list(incidence.iter_cells())
 
@@ -557,7 +571,9 @@ def test_metadata_phase_reads_bound_fd_not_replaced_private_path(
             pass
 
 
-def test_between_lazy_batch_fd_change_is_refused_before_altered_facts(tmp_path, monkeypatch):
+def test_between_lazy_batch_writable_fd_capability_is_denied_and_facts_unchanged(
+    tmp_path, monkeypatch
+):
     path = _write_source(tmp_path / "indep-between-batch.sav", "sav")
     alternate = _write_source(tmp_path / "indep-between-batch-alt.sav", "sav", _ALTERNATE_ROWS)
     expected_sha = _sha(path)
@@ -572,39 +588,39 @@ def test_between_lazy_batch_fd_change_is_refused_before_altered_facts(tmp_path, 
 
     def hostile_chunks(reader, source, *args, **kwargs):
         iterator = original_chunks(reader, source, *args, **kwargs)
-        yield next(iterator)
-        os.pwrite(snapshot.fd, alternate_bytes, 0)
-        os.ftruncate(snapshot.fd, len(alternate_bytes))
+        first = next(iterator)
+        with pytest.raises(OSError):
+            os.pwrite(snapshot.fd, alternate_bytes, 0)
+        with pytest.raises(OSError):
+            os.ftruncate(snapshot.fd, len(alternate_bytes))
+        yield first
         yield from iterator
 
     monkeypatch.setattr(pyreadstat, "read_file_in_chunks", hostile_chunks)
-    yielded = []
-    with pytest.raises(DecoderError, match="source snapshot.*changed"):
-        for batch in incidence.iter_batches(4):
-            yielded.extend(batch)
-    assert yielded
-    assert _cell_signature(yielded) == baseline_cells[:len(yielded)]
+    assert _cell_signature(incidence.iter_cells(4)) == baseline_cells
     incidence.close()
 
 
-def test_dta_in_place_change_after_metadata_is_refused_before_facts(tmp_path, monkeypatch):
+def test_dta_writable_fd_capability_is_denied_and_facts_unchanged(tmp_path, monkeypatch):
     path = _write_source(tmp_path / "indep-dta-window.dta", "dta")
     alternate = _write_source(tmp_path / "indep-dta-window-alt.dta", "dta", _ALTERNATE_ROWS)
     expected_sha = _sha(path)
     incidence = _decode(path, "dta", expected_sha)
     snapshot = incidence._source_snapshot
     alternate_bytes = alternate.read_bytes()
+    baseline = _facts_from_incidence(incidence, "dta")
     original_read = pyreadstat.read_dta
 
     def hostile_read(source, *args, **kwargs):
         if not kwargs.get("metadataonly", False):
-            os.pwrite(snapshot.fd, alternate_bytes, 0)
-            os.ftruncate(snapshot.fd, len(alternate_bytes))
+            with pytest.raises(OSError):
+                os.pwrite(snapshot.fd, alternate_bytes, 0)
+            with pytest.raises(OSError):
+                os.ftruncate(snapshot.fd, len(alternate_bytes))
         return original_read(source, *args, **kwargs)
 
     monkeypatch.setattr(pyreadstat, "read_dta", hostile_read)
-    with pytest.raises(DecoderError, match="source snapshot.*changed"):
-        list(incidence.iter_cells())
+    assert _facts_from_incidence(incidence, "dta") == baseline
     incidence.close()
 
 
@@ -625,3 +641,55 @@ def test_compatibility_full_read_uses_bound_fd(tmp_path, source_format, monkeypa
         assert facts["i03_y_cells"] == {"0": 1, "1": 1}
     finally:
         incidence.close()
+
+
+def test_r2_mmap_between_batch_change_cannot_release_altered_c11_i03_under_old_identity(
+    tmp_path, monkeypatch
+):
+    path = _write_source(tmp_path / "r2-mmap.sav", "sav")
+    alternate = _write_source(tmp_path / "r2-mmap-alt.sav", "sav", _ALTERNATE_ROWS)
+    expected_sha = _sha(path)
+    baseline = _observe(path, "sav", expected_sha)
+    assert baseline["ok"] is True
+    baseline_facts = baseline["facts"]
+    assert baseline_facts["i03_y_cells"] == {"0": 1, "1": 1}
+
+    incidence = _decode(path, "sav", expected_sha)
+    snapshot = incidence._source_snapshot
+    alternate_bytes = alternate.read_bytes()
+    original_chunks = pyreadstat.read_file_in_chunks
+
+    def hostile_chunks(reader, source, *args, **kwargs):
+        iterator = original_chunks(reader, source, *args, **kwargs)
+        first = next(iterator)
+        with pytest.raises(OSError):
+            mmap.mmap(snapshot.fd, 0, access=mmap.ACCESS_WRITE)
+        with pytest.raises(OSError):
+            os.pwrite(snapshot.fd, alternate_bytes, 0)
+        yield first
+        yield from iterator
+
+    monkeypatch.setattr(pyreadstat, "read_file_in_chunks", hostile_chunks)
+    observed = _facts_from_incidence(incidence, "sav")
+    assert observed["source_sha256"] == expected_sha
+    assert observed["snapshot_sha256"] == expected_sha
+    assert observed == baseline_facts
+    assert snapshot.access_mode == "O_RDONLY"
+    incidence.close()
+
+
+def test_posix_dev_fd_unavailable_is_typed_refusal(tmp_path, monkeypatch):
+    import types
+    import rawlsing_next.pre553_physical_decoder as decoder
+
+    path = _write_source(tmp_path / "no-dev-fd.sav", "sav")
+    real_path = decoder.Path
+
+    def fake_path(value):
+        if str(value) == "/dev/fd":
+            return types.SimpleNamespace(is_dir=lambda: False)
+        return real_path(value)
+
+    monkeypatch.setattr(decoder, "Path", fake_path)
+    with pytest.raises(DecoderError, match="POSIX /dev/fd"):
+        decoder.decode_sav(path)
