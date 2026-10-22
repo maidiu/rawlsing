@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="3" skipped="0" tests="6" time="12.433" timestamp="2026-10-22T03:25:56.068227-04:00" hostname="Matthews-MBP.lan"><testcase classname="tests.test_join_v_final_cut" name="test_lawful_fork_alt_continuation_is_supported" time="1.075" /><testcase classname="tests.test_join_v_final_cut" name="test_metadata_only_branch_substitution_to_root_is_refused" time="1.234"><failure message="Failed: {&quot;branch_id&quot;: &quot;root&quot;, &quot;case&quot;: &quot;metadata_only_branch_root&quot;, &quot;opened&quot;: true, &quot;root_branch_id&quot;: &quot;root&quot;, &quot;verify&quot;: true}">tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-1418/test_metadata_only_branch_subs0')
+
+    def test_metadata_only_branch_substitution_to_root_is_refused(tmp_path):
+        state = tmp_path / "branch_root"
+        session = start(state, perform="omit")
+        session.fork_alt("alt")
+        session.close()
+    
+        meta = read_meta(state)
+        assert meta["branch_id"] == "alt"
+        meta["branch_id"] = "root"
+        write_meta(state, meta)
+    
+        opened = _open_or_refusal(state)
+        if isinstance(opened, (SessionRefusal, ValueError)):
+            return
+        try:
+&gt;           pytest.fail(json.dumps({
+                "case": "metadata_only_branch_root",
+                "opened": True,
+                "branch_id": opened.branch_id,
+                "verify": opened.verify().get("ok"),
+                "root_branch_id": opened.meta.get("root_branch_id"),
+            }, sort_keys=True))
+E           Failed: {"branch_id": "root", "case": "metadata_only_branch_root", "opened": true, "root_branch_id": "root", "verify": true}
+
+tests/test_join_v_final_cut.py:78: Failed</failure></testcase><testcase classname="tests.test_join_v_final_cut" name="test_foreign_product_root_with_same_source_is_refused" time="0.909"><failure message="Failed: {&quot;canonical_product_root&quot;: &quot;/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-1418/test_foreign_product_root_with0/root_source/product&quot;, &quot;case&quot;: &quot;same_source_foreign_root&quot;, &quot;opened&quot;: true, &quot;product_root&quot;: &quot;/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-1418/test_foreign_product_root_with0/donor/product&quot;, &quot;source_equal&quot;: true, &quot;state_root&quot;: &quot;/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-1418/test_foreign_product_root_with0/root_source&quot;, &quot;verify&quot;: true}">tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-1418/test_foreign_product_root_with0')
+
+    def test_foreign_product_root_with_same_source_is_refused(tmp_path):
+        state = tmp_path / "root_source"
+        session = start(state, perform="omit")
+        session.close()
+    
+        donor = tmp_path / "donor"
+        donor.mkdir()
+        shutil.copytree(state / "product", donor / "product")
+        meta = read_meta(state)
+        meta["product_root"] = str((donor / "product").resolve())
+        write_meta(state, meta)
+    
+        opened = _open_or_refusal(state)
+        if isinstance(opened, (SessionRefusal, ValueError)):
+            return
+        try:
+&gt;           pytest.fail(json.dumps({
+                "case": "same_source_foreign_root",
+                "opened": True,
+                "product_root": str(opened.product.root),
+                "state_root": str(state.resolve()),
+                "canonical_product_root": str((state / "product").resolve()),
+                "source_equal": opened.product.source == opened.meta.get("j_source"),
+                "verify": opened.verify().get("ok"),
+            }, sort_keys=True))
+E           Failed: {"canonical_product_root": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-1418/test_foreign_product_root_with0/root_source/product", "case": "same_source_foreign_root", "opened": true, "product_root": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-1418/test_foreign_product_root_with0/donor/product", "source_equal": true, "state_root": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-1418/test_foreign_product_root_with0/root_source", "verify": true}
+
+tests/test_join_v_final_cut.py:105: Failed</failure></testcase><testcase classname="tests.test_join_v_final_cut" name="test_double_sidecar_and_meta_source_tamper_is_refused_or_c12_bound" time="1.238"><failure message="Failed: {&quot;accepted&quot;: true, &quot;case&quot;: &quot;double_source_tamper&quot;, &quot;episode_b_operation&quot;: &quot;SHARE_TOOL&quot;, &quot;episode_b_quantity&quot;: 1, &quot;loaded_b_operation&quot;: &quot;REFUSE_TOOL&quot;, &quot;loaded_b_quantity&quot;: 0, &quot;meta_equal_sidecar&quot;: true, &quot;opened&quot;: true, &quot;verify&quot;: true}">tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-1418/test_double_sidecar_and_meta_s0')
+
+    def test_double_sidecar_and_meta_source_tamper_is_refused_or_c12_bound(tmp_path):
+        state = tmp_path / "double_source"
+        session = start(state, perform="omit")
+        session.close()
+    
+        meta = read_meta(state)
+        binding_path = state / "product" / "bp2_join.json"
+        binding = json.loads(binding_path.read_text())
+        foreign = dict(meta["j_source"])
+        foreign["b_operation"] = "REFUSE_TOOL"
+        foreign["b_quantity"] = 0
+        foreign["b_to_actor"] = "TEST_ONLY_FOREIGN_ACTOR_A"
+        foreign["b_actor"] = "TEST_ONLY_FOREIGN_ACTOR_B"
+        meta["j_source"] = foreign
+        binding["r31j_source"] = foreign
+        write_meta(state, meta)
+        binding_path.write_text(json.dumps(binding, indent=2, sort_keys=True) + "\n")
+    
+        opened = _open_or_refusal(state)
+        if isinstance(opened, (SessionRefusal, ValueError)):
+            return
+        try:
+            episode = gm01_episode_source(opened)
+            if opened.product.source == episode:
+                return
+&gt;           pytest.fail(json.dumps({
+                "case": "double_source_tamper",
+                "opened": True,
+                "meta_equal_sidecar": opened.product.source == opened.meta.get("j_source"),
+                "loaded_b_operation": opened.product.source.get("b_operation"),
+                "loaded_b_quantity": opened.product.source.get("b_quantity"),
+                "episode_b_operation": episode.get("b_operation"),
+                "episode_b_quantity": episode.get("b_quantity"),
+                "verify": opened.verify().get("ok"),
+                "accepted": opened.do_help().get("accepted"),
+            }, sort_keys=True))
+E           Failed: {"accepted": true, "case": "double_source_tamper", "episode_b_operation": "SHARE_TOOL", "episode_b_quantity": 1, "loaded_b_operation": "REFUSE_TOOL", "loaded_b_quantity": 0, "meta_equal_sidecar": true, "opened": true, "verify": true}
+
+tests/test_join_v_final_cut.py:143: Failed</failure></testcase><testcase classname="tests.test_join_v_final_cut" name="test_b_refusal_and_b_share_with_same_a_omission" time="2.286" /><testcase classname="tests.test_join_v_final_cut" name="test_import_closure_refuses_e_first_and_accepts_j_first" time="4.474" /></testsuite></testsuites>

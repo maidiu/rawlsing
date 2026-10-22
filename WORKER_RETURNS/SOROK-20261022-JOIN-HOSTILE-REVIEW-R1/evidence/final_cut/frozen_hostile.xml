@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="3" skipped="0" tests="7" time="8.518" timestamp="2026-10-22T03:25:45.897531-04:00" hostname="Matthews-MBP.lan"><testcase classname="tests.test_join_v_hostile" name="test_different_product_root_is_refused" time="1.971" /><testcase classname="tests.test_join_v_hostile" name="test_r29p_product_root_is_refused_without_mutating_donor" time="1.615" /><testcase classname="tests.test_join_v_hostile" name="test_tampered_branch_id_is_refused" time="1.245"><failure message="Failed: {&quot;accepted&quot;: true, &quot;branch_id&quot;: &quot;alt&quot;, &quot;case&quot;: &quot;tampered_branch_id&quot;, &quot;opened&quot;: true, &quot;recorded_branch_id&quot;: &quot;first_session&quot;, &quot;verify&quot;: true}">tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-1417/test_tampered_branch_id_is_ref0')
+
+    def test_tampered_branch_id_is_refused(tmp_path):
+        root = tmp_path / "branch"
+        session = start(root, perform="omit")
+        fork = session.product.fork("alt")
+        assert fork["status"] == "OK"
+        session.close()
+    
+        meta = read_meta(root)
+        meta["branch_id"] = "alt"
+        write_meta(root, meta)
+    
+        opened = _open_or_fail(root, expected="refusal of a non-recorded branch")
+        if opened is None:
+            return
+        try:
+&gt;           pytest.fail(json.dumps({
+                "case": "tampered_branch_id",
+                "opened": True,
+                "branch_id": opened.branch_id,
+                "recorded_branch_id": "first_session",
+                "verify": opened.verify().get("ok"),
+                "accepted": opened.do_help().get("accepted"),
+            }, sort_keys=True))
+E           Failed: {"accepted": true, "branch_id": "alt", "case": "tampered_branch_id", "opened": true, "recorded_branch_id": "first_session", "verify": true}
+
+tests/test_join_v_hostile.py:121: Failed</failure></testcase><testcase classname="tests.test_join_v_hostile" name="test_tampered_r31j_source_is_refused_or_bound_to_c12_episode" time="0.795" /><testcase classname="tests.test_join_v_hostile" name="test_missing_session_is_typed_refusal" time="0.007"><failure message="Failed: expected SessionRefusal(SESSION_NOT_FOUND), got raw FileNotFoundError: [Errno 2] No such file or directory: '/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-1417/test_missing_session_is_typed_0/missing/session.json'">tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-1417/test_missing_session_is_typed_0')
+
+    def test_missing_session_is_typed_refusal(tmp_path):
+        root = tmp_path / "missing"
+        try:
+&gt;           JoinedSession.open(root)
+
+tests/test_join_v_hostile.py:176: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../../../join-v-final-wt/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/joined/session.py:90: in open
+    meta = json.loads((state_root/'session.json').read_text())
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1058: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-1417/test_missing_session_is_typed_0/missing/session.json')
+mode = 'r', buffering = -1, encoding = 'locale', errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+&gt;       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-1417/test_missing_session_is_typed_0/missing/session.json'
+
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1044: FileNotFoundError
+
+During handling of the above exception, another exception occurred:
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-1417/test_missing_session_is_typed_0')
+
+    def test_missing_session_is_typed_refusal(tmp_path):
+        root = tmp_path / "missing"
+        try:
+            JoinedSession.open(root)
+        except SessionRefusal as exc:
+            assert exc.code == "SESSION_NOT_FOUND"
+            return
+        except Exception as exc:
+&gt;           pytest.fail(
+                f"expected SessionRefusal(SESSION_NOT_FOUND), got raw "
+                f"{type(exc).__name__}: {exc}"
+            )
+E           Failed: expected SessionRefusal(SESSION_NOT_FOUND), got raw FileNotFoundError: [Errno 2] No such file or directory: '/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-1417/test_missing_session_is_typed_0/missing/session.json'
+
+tests/test_join_v_hostile.py:181: Failed</failure></testcase><testcase classname="tests.test_join_v_hostile" name="test_orphan_product_root_start_is_typed_refusal" time="0.731"><failure message="Failed: expected typed SESSION/ORPHAN refusal, got raw RuntimeError: R31J_PREC9_REFUSED:c8_exclusive_append:C8_OCCURRENCE_NOT_ADMITTED">tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-1417/test_orphan_product_root_start0')
+
+    def test_orphan_product_root_start_is_typed_refusal(tmp_path):
+        root = tmp_path / "orphan"
+        session = start(root, perform="omit")
+        session.close()
+        (root / "session.json").unlink()
+    
+        try:
+&gt;           retried = JoinedSession.start(root, perform="omit")
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_join_v_hostile.py:195: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../../../join-v-final-wt/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/joined/session.py:36: in start
+    product, built, producer = build_product(
+../../../join-v-final-wt/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/j/r31j/build.py:56: in product
+    built = produce(root, gm01=gm01, case=case, variant=variant, need_e2=need_e2)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-1417/test_orphan_product_root_start0/orphan')
+gm01 = {'schema': 'R29M_CONDITIONAL_MECHANISM_RESULT@1', 'grade': 'TEST_ONLY_SOURCE_NEUTRAL_CANDIDATE', 'case_id': 'TEST_ONLY_R31J_PREC9', 'actor': 'TEST_ONLY_R31J_A', ...}
+case = {'schema': 'R29M_CONDITIONAL_ACTIVITY_INPUT@1', 'case_id': 'TEST_ONLY_R31J_PREC9', 'actor': 'TEST_ONLY_R31J_A', 'other': 'TEST_ONLY_R31J_B', ...}
+variant = 'A_REPAIR_LONG', need_e2 = True
+
+    def produce(root, *, gm01, case, variant="A_REPAIR_LONG", need_e2=True):
+        root = Path(root)
+        root.mkdir(parents=True, exist_ok=True)
+        producer = PreC9Producer(root / "bp2", gm01=gm01, case=case, variant=variant)
+        try:
+            if need_e2:
+                outcome = producer.run()
+                if not outcome.ok:
+&gt;                   raise RuntimeError("R31J_PREC9_REFUSED:" + outcome.stage_reached + ":" + outcome.failure_code)
+E                   RuntimeError: R31J_PREC9_REFUSED:c8_exclusive_append:C8_OCCURRENCE_NOT_ADMITTED
+
+../../../join-v-final-wt/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/j/r31j/build.py:19: RuntimeError
+
+During handling of the above exception, another exception occurred:
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-1417/test_orphan_product_root_start0')
+
+    def test_orphan_product_root_start_is_typed_refusal(tmp_path):
+        root = tmp_path / "orphan"
+        session = start(root, perform="omit")
+        session.close()
+        (root / "session.json").unlink()
+    
+        try:
+            retried = JoinedSession.start(root, perform="omit")
+        except SessionRefusal as exc:
+            assert exc.code in {
+                "SESSION_EXISTS__NO_AUTOMATIC_REROLL",
+                "ORPHAN_PRODUCT_ROOT",
+            }
+            return
+        except Exception as exc:
+&gt;           pytest.fail(
+                f"expected typed SESSION/ORPHAN refusal, got raw "
+                f"{type(exc).__name__}: {exc}"
+            )
+E           Failed: expected typed SESSION/ORPHAN refusal, got raw RuntimeError: R31J_PREC9_REFUSED:c8_exclusive_append:C8_OCCURRENCE_NOT_ADMITTED
+
+tests/test_join_v_hostile.py:203: Failed</failure></testcase><testcase classname="tests.test_join_v_hostile" name="test_relocated_session_root_is_refused_or_rebound" time="0.731" /></testsuite></testsuites>

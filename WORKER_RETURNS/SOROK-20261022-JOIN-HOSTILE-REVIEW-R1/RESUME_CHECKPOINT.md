@@ -1,49 +1,65 @@
-# JOIN-V resume checkpoint
+# JOIN-V resume checkpoint — final cut c367777
 
-**STATUS:** `PRELIMINARY_REVISE__ROOT_LINEAGE_AND_SOURCE_BINDING_NOT_PROVEN__AWAIT_JOIN_E_EXACT_SHA`
+**STATUS:** `FINAL_CUT_REVISE__c367777__PERSISTENCE_ROOT_BRANCH_C12_SOURCE_NOT_PROVEN__AWAIT_NEXT_REPAIR_SHA`
 **BRANCH:** `codex/sorok-join-v-20261022`
-**CANDIDATE:** `13dfd6bad54ec19b4bdf31159e54fb6052d5440d`
+**FINAL CUT:** `c367777f83367240352c267a2d3750abb7f09397` (read-only detached worktree)
+**PRELIMINARY CUT:** `13dfd6bad54ec19b4bdf31159e54fb6052d5440d`
 **STARTUP:** `3fe8444b4a0374d95fa9f7e60dd295049a5d3172`
-**AUTHORITY:** independent accession `3de081023406a52ec23e1ae43ade77aea485a3f8`; HQ appointment; effective owner `6456fc57cbe05cdf69e63ef51fa6ca6198401c60`.
+**CONTINUATION:** `141b5fe1e393621862791281e980c450715bbb9a:.../continuations/02_JOIN_V_FINAL_CUT.md`; HQ intake `00_HQ_INTAKE.md`
 **WRITE SCOPE:** own return only; no candidate/J/E edit.
 
-## Current state
+## Results against c367777
 
-- Candidate author suite: 2/2 PASS.
-- Independent positives: 10/10 PASS.
-- Independent hostile: 7/7 RED on the frozen candidate.
-- Inherited: R31J 8/8, R31E 15/15, R30A 10/10 PASS in separate processes.
-- Source manifest: 444/444 vendored files match recorded Git blobs.
-- Frozen candidate/test hashes: `FROZEN_ORACLES.json`.
-- Evidence: `evidence/test_results.json`, `evidence/positive.xml`, `evidence/hostile.xml`, `evidence/import_audit.json`.
+| Suite | Result |
+|---|---|
+| Frozen independent positives | 9 passed, 1 intentional E-first import-closure refusal |
+| Frozen independent hostiles | 4 passed, 3 failed |
+| Targeted final-cut tests | 3 passed, 3 failed |
+| JOIN-E own suite | 10/10 passed |
+| Inherited J / E / R30A | 8/8, 15/15, 10/10 passed |
+| Source manifest | 444/444 verified |
 
-## Findings
+Frozen test hashes were checked first and match `FROZEN_ORACLES.json`; no frozen test was edited. `FINAL_CUT_ADJUDICATION.md` has full details; `evidence/final_cut/` has JUnit and JSON.
 
-1. `open()` trusts `session.json` `product_root`/`branch_id`; a foreign product root, a plain R29P root, or a forked branch opens with `verify=true`. The R29P path accepts help with empty J source and mutates the donor `bp2_join.json` with `r31j_*` keys.
-2. `R31JProduct.reopen()` loads `r31j_source` from mutable `bp2_join.json`; tampering operation/quantity/actor is accepted with `verify=true` while the C12 `GM01_SOURCE` episode disagrees.
-3. Missing/orphan/moved roots raise raw `FileNotFoundError`, raw `RuntimeError: R31J_PREC9_REFUSED...`, or raw `ValueError: R31J_TIME_COORDINATE_HOLD`, not typed session refusals.
-4. The author's two-test oracle checks only `b_performed`, which is true for B's `REFUSE_TOOL` too; it does not establish `SHARE_TOOL`/quantity/feasibility, source-to-episode equality, root/branch identity, or sidecar tamper.
-5. The untampered positive path is real: E2/omit, B refusal/share, source-to-episode, repeated reopen without duplicate GM01/checkpoints, cold child reopen, attention invariance, private/B ignorance, contact/no-contact, and normal/E-first import order all pass.
-6. Cross-root builds are not canonical: same B/E1/C8 source hashes but different C9 target/consumed hashes and possibly different template variants; in-place reopen preserves the root.
+## Repaired
+
+- Different-source foreign product root is refused.
+- Plain R29P donor root is refused and no longer mutated (`ReadOnlyR31JProduct`).
+- Single-sidecar `r31j_source` tamper is refused.
+- Moved session root is a typed `COLD_REOPEN_REFUSED`.
+- Lawful `fork_alt` continuation works and cold-reopens.
+- J-first closure is enforced; E-first is intentionally refused with `IMPORT_CLOSURE_INVALID`.
+- B refusal/share with the same A omission is a source-derived consumer contrast; B refusal remains a lawful no-tool/no-target boundary, not a help-accept expectation.
+
+## Still failing / new counterexamples
+
+1. Same-source foreign product root is accepted; source equality is not root identity.
+2. Metadata-only branch selection (`root`, frozen `alt`) is accepted; no branch/fork receipt.
+3. Double sidecar+meta source tampering is accepted with `verify=true` while C12 `GM01_SOURCE` says `SHARE_TOOL`; meta-to-sidecar equality is insufficient.
+4. Missing `session.json` still raises raw `FileNotFoundError`.
+5. Orphan product root after session loss still raises raw `RuntimeError: R31J_PREC9_REFUSED...`.
 
 ## Next safe move
 
-1. When HQ/human supplies the exact JOIN-E return SHA, set `SOROK_JOIN_CANDIDATE_ROOT` to an immutable checkout/worktree of that cut.
-2. Run the frozen `tests/test_join_v_positive.py` and `tests/test_join_v_hostile.py` without editing the frozen test files; verify `FROZEN_ORACLES.json` hashes first.
-3. Record the exact JOIN-E SHA, command results, source hashes and final engineering/science/authority courts in an update to `00_RETURN.md`.
-4. Final verdict only after the exact JOIN-E cut is tested. Do not poll, spawn another worker, edit the candidate, or self-adopt.
+When human/HQ supplies the next repair SHA:
 
-## Commands
+1. Use an immutable read-only worktree of that cut; do not edit the candidate.
+2. Verify frozen test hashes against `FROZEN_ORACLES.json` before running.
+3. Run the unchanged frozen positives/hostiles and `tests/test_join_v_final_cut.py` with `SOROK_JOIN_CANDIDATE_ROOT` set to the cut.
+4. Run `tools/collect_final_cut.py` for candidate/inherited counts and source manifest.
+5. Publish the next adjudication; preserve lawful fork/cold/B-source positives; do not impose cross-root target determinism; no polling, extra worker, or native grant.
+
+## Exact commands
 
 ```text
 cd WORKER_RETURNS/SOROK-20261022-JOIN-HOSTILE-REVIEW-R1
-PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest -q tests/test_join_v_positive.py -p no:cacheprovider
-PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest -q tests/test_join_v_hostile.py -p no:cacheprovider --tb=short
-PYTHONDONTWRITEBYTECODE=1 python3 -B tools/collect_results.py
-PYTHONDONTWRITEBYTECODE=1 python3 -B tools/freeze.py
-PYTHONDONTWRITEBYTECODE=1 python3 -B tools/import_audit.py
+SOROK_JOIN_CANDIDATE_ROOT=<cut>/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1 \
+  PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest -q tests/test_join_v_positive.py -p no:cacheprovider
+SOROK_JOIN_CANDIDATE_ROOT=... PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest -q tests/test_join_v_hostile.py -p no:cacheprovider --tb=short
+SOROK_JOIN_CANDIDATE_ROOT=... PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest -q tests/test_join_v_final_cut.py -p no:cacheprovider --tb=short
+SOROK_JOIN_CANDIDATE_ROOT=... PYTHONDONTWRITEBYTECODE=1 python3 -B tools/collect_final_cut.py
 ```
 
 ## Flight / model
 
-One accountable reviewer on this branch; local OpenCode, user-selected harness; no subagents, provider calls, native operations or model swaps. Usage/cost unknown. Final remote head is reported after the ordinary non-force push and `git ls-remote` readback.
+One accountable reviewer on this branch; local OpenCode, user-selected harness; no subagents, provider calls, native operations or model swaps. Remote head is reported after the ordinary non-force push and `git ls-remote` readback.

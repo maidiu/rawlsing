@@ -1,0 +1,511 @@
+{
+  "candidate": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/join-v-final-wt/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1",
+  "candidate_commit": "c367777f83367240352c267a2d3750abb7f09397",
+  "candidate_own_suite": {
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "..........                                                               [100%]\n10 passed in 17.26s\n",
+    "summary": {
+      "cases": [
+        {
+          "classname": "tests.test_join",
+          "message": "",
+          "name": "test_import_closure_is_explicit_and_matches_source_manifest",
+          "outcome": "passed"
+        },
+        {
+          "classname": "tests.test_join",
+          "message": "",
+          "name": "test_material_omission_vs_e2_changes_help_without_patch",
+          "outcome": "passed"
+        },
+        {
+          "classname": "tests.test_join",
+          "message": "",
+          "name": "test_full_encounter_positive_and_cold_reentry",
+          "outcome": "passed"
+        },
+        {
+          "classname": "tests.test_join",
+          "message": "",
+          "name": "test_b_refusal_is_typed_no_target_and_does_not_manufacture_target",
+          "outcome": "passed"
+        },
+        {
+          "classname": "tests.test_join",
+          "message": "",
+          "name": "test_attention_excludes_actor_decision_and_preserves_occurrence",
+          "outcome": "passed"
+        },
+        {
+          "classname": "tests.test_join",
+          "message": "",
+          "name": "test_private_state_and_actor_ignorance_do_not_cross_surface",
+          "outcome": "passed"
+        },
+        {
+          "classname": "tests.test_join",
+          "message": "",
+          "name": "test_refusal_disagreement_departure_and_no_contact",
+          "outcome": "passed"
+        },
+        {
+          "classname": "tests.test_join",
+          "message": "",
+          "name": "test_cold_reopen_is_nonmutating_and_fork_diverges",
+          "outcome": "passed"
+        },
+        {
+          "classname": "tests.test_join",
+          "message": "",
+          "name": "test_c9_target_consumer_severance_cold_red_restore",
+          "outcome": "passed"
+        },
+        {
+          "classname": "tests.test_join",
+          "message": "",
+          "name": "test_cli_start_status_help_verify",
+          "outcome": "passed"
+        }
+      ],
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "tests": "10"
+    }
+  },
+  "frozen_hostile": {
+    "command": "/usr/local/bin/python3 -B -m pytest -q tests/test_join_v_hostile.py -p no:cacheprovider --junitxml=/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/join-v-wt/WORKER_RETURNS/SOROK-20261022-JOIN-HOSTILE-REVIEW-R1/evidence/final_cut/frozen_hostile.xml",
+    "cwd": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/join-v-wt/WORKER_RETURNS/SOROK-20261022-JOIN-HOSTILE-REVIEW-R1",
+    "returncode": 1,
+    "stderr": "",
+    "stdout": "..F.FF.                                                                  [100%]\n=================================== FAILURES ===================================\n______________________ test_tampered_branch_id_is_refused ______________________\n\ntmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-1417/test_tampered_branch_id_is_ref0')\n\n    def test_tampered_branch_id_is_refused(tmp_path):\n        root = tmp_path / \"branch\"\n        session = start(root, perform=\"omit\")\n        fork = session.product.fork(\"alt\")\n        assert fork[\"status\"] == \"OK\"\n        session.close()\n    \n        meta = read_meta(root)\n        meta[\"branch_id\"] = \"alt\"\n        write_meta(root, meta)\n    \n        opened = _open_or_fail(root, expected=\"refusal of a non-recorded branch\")\n        if opened is None:\n            return\n        try:\n>           pytest.fail(json.dumps({\n                \"case\": \"tampered_branch_id\",\n                \"opened\": True,\n                \"branch_id\": opened.branch_id,\n                \"recorded_branch_id\": \"first_session\",\n                \"verify\": opened.verify().get(\"ok\"),\n                \"accepted\": opened.do_help().get(\"accepted\"),\n            }, sort_keys=True))\nE           Failed: {\"accepted\": true, \"branch_id\": \"alt\", \"case\": \"tampered_branch_id\", \"opened\": true, \"recorded_branch_id\": \"first_session\", \"verify\": true}\n\ntests/test_join_v_hostile.py:121: Failed\n____________________ test_missing_session_is_typed_refusal _____________________\n\ntmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-1417/test_missing_session_is_typed_0')\n\n    def test_missing_session_is_typed_refusal(tmp_path):\n        root = tmp_path / \"missing\"\n        try:\n>           JoinedSession.open(root)\n\ntests/test_join_v_hostile.py:176: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n../../../join-v-final-wt/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/joined/session.py:90: in open\n    meta = json.loads((state_root/'session.json').read_text())\n                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1058: in read_text\n    with self.open(mode='r', encoding=encoding, errors=errors) as f:\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-1417/test_missing_session_is_typed_0/missing/session.json')\nmode = 'r', buffering = -1, encoding = 'locale', errors = None, newline = None\n\n    def open(self, mode='r', buffering=-1, encoding=None,\n             errors=None, newline=None):\n        \"\"\"\n        Open the file pointed by this path and return a file object, as\n        the built-in open() function does.\n        \"\"\"\n        if \"b\" not in mode:\n            encoding = io.text_encoding(encoding)\n>       return io.open(self, mode, buffering, encoding, errors, newline)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE       FileNotFoundError: [Errno 2] No such file or directory: '/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-1417/test_missing_session_is_typed_0/missing/session.json'\n\n/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1044: FileNotFoundError\n\nDuring handling of the above exception, another exception occurred:\n\ntmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-1417/test_missing_session_is_typed_0')\n\n    def test_missing_session_is_typed_refusal(tmp_path):\n        root = tmp_path / \"missing\"\n        try:\n            JoinedSession.open(root)\n        except SessionRefusal as exc:\n            assert exc.code == \"SESSION_NOT_FOUND\"\n            return\n        except Exception as exc:\n>           pytest.fail(\n                f\"expected SessionRefusal(SESSION_NOT_FOUND), got raw \"\n                f\"{type(exc).__name__}: {exc}\"\n            )\nE           Failed: expected SessionRefusal(SESSION_NOT_FOUND), got raw FileNotFoundError: [Errno 2] No such file or directory: '/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-1417/test_missing_session_is_typed_0/missing/session.json'\n\ntests/test_join_v_hostile.py:181: Failed\n_______________ test_orphan_product_root_start_is_typed_refusal ________________\n\ntmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-1417/test_orphan_product_root_start0')\n\n    def test_orphan_product_root_start_is_typed_refusal(tmp_path):\n        root = tmp_path / \"orphan\"\n        session = start(root, perform=\"omit\")\n        session.close()\n        (root / \"session.json\").unlink()\n    \n        try:\n>           retried = JoinedSession.start(root, perform=\"omit\")\n                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\ntests/test_join_v_hostile.py:195: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n../../../join-v-final-wt/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/joined/session.py:36: in start\n    product, built, producer = build_product(\n../../../join-v-final-wt/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/j/r31j/build.py:56: in product\n    built = produce(root, gm01=gm01, case=case, variant=variant, need_e2=need_e2)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nroot = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-1417/test_orphan_product_root_start0/orphan')\ngm01 = {'schema': 'R29M_CONDITIONAL_MECHANISM_RESULT@1', 'grade': 'TEST_ONLY_SOURCE_NEUTRAL_CANDIDATE', 'case_id': 'TEST_ONLY_R31J_PREC9', 'actor': 'TEST_ONLY_R31J_A', ...}\ncase = {'schema': 'R29M_CONDITIONAL_ACTIVITY_INPUT@1', 'case_id': 'TEST_ONLY_R31J_PREC9', 'actor': 'TEST_ONLY_R31J_A', 'other': 'TEST_ONLY_R31J_B', ...}\nvariant = 'A_REPAIR_LONG', need_e2 = True\n\n    def produce(root, *, gm01, case, variant=\"A_REPAIR_LONG\", need_e2=True):\n        root = Path(root)\n        root.mkdir(parents=True, exist_ok=True)\n        producer = PreC9Producer(root / \"bp2\", gm01=gm01, case=case, variant=variant)\n        try:\n            if need_e2:\n                outcome = producer.run()\n                if not outcome.ok:\n>                   raise RuntimeError(\"R31J_PREC9_REFUSED:\" + outcome.stage_reached + \":\" + outcome.failure_code)\nE                   RuntimeError: R31J_PREC9_REFUSED:c8_exclusive_append:C8_OCCURRENCE_NOT_ADMITTED\n\n../../../join-v-final-wt/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/j/r31j/build.py:19: RuntimeError\n\nDuring handling of the above exception, another exception occurred:\n\ntmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-1417/test_orphan_product_root_start0')\n\n    def test_orphan_product_root_start_is_typed_refusal(tmp_path):\n        root = tmp_path / \"orphan\"\n        session = start(root, perform=\"omit\")\n        session.close()\n        (root / \"session.json\").unlink()\n    \n        try:\n            retried = JoinedSession.start(root, perform=\"omit\")\n        except SessionRefusal as exc:\n            assert exc.code in {\n                \"SESSION_EXISTS__NO_AUTOMATIC_REROLL\",\n                \"ORPHAN_PRODUCT_ROOT\",\n            }\n            return\n        except Exception as exc:\n>           pytest.fail(\n                f\"expected typed SESSION/ORPHAN refusal, got raw \"\n                f\"{type(exc).__name__}: {exc}\"\n            )\nE           Failed: expected typed SESSION/ORPHAN refusal, got raw RuntimeError: R31J_PREC9_REFUSED:c8_exclusive_append:C8_OCCURRENCE_NOT_ADMITTED\n\ntests/test_join_v_hostile.py:203: Failed\n=========================== short test summary info ============================\nFAILED tests/test_join_v_hostile.py::test_tampered_branch_id_is_refused - Fai...\nFAILED tests/test_join_v_hostile.py::test_missing_session_is_typed_refusal - ...\nFAILED tests/test_join_v_hostile.py::test_orphan_product_root_start_is_typed_refusal\n3 failed, 4 passed in 8.65s\n",
+    "summary": {
+      "cases": [
+        {
+          "classname": "tests.test_join_v_hostile",
+          "message": "",
+          "name": "test_different_product_root_is_refused",
+          "outcome": "passed"
+        },
+        {
+          "classname": "tests.test_join_v_hostile",
+          "message": "",
+          "name": "test_r29p_product_root_is_refused_without_mutating_donor",
+          "outcome": "passed"
+        },
+        {
+          "classname": "tests.test_join_v_hostile",
+          "message": "Failed: {\"accepted\": true, \"branch_id\": \"alt\", \"case\": \"tampered_branch_id\", \"opened\": true, \"recorded_branch_id\": \"first_session\", \"verify\": true}",
+          "name": "test_tampered_branch_id_is_refused",
+          "outcome": "failed"
+        },
+        {
+          "classname": "tests.test_join_v_hostile",
+          "message": "",
+          "name": "test_tampered_r31j_source_is_refused_or_bound_to_c12_episode",
+          "outcome": "passed"
+        },
+        {
+          "classname": "tests.test_join_v_hostile",
+          "message": "Failed: expected SessionRefusal(SESSION_NOT_FOUND), got raw FileNotFoundError: [Errno 2] No such file or directory: '/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-1417/test_missing_session_is_typed_0/missing/session.json'",
+          "name": "test_missing_session_is_typed_refusal",
+          "outcome": "failed"
+        },
+        {
+          "classname": "tests.test_join_v_hostile",
+          "message": "Failed: expected typed SESSION/ORPHAN refusal, got raw RuntimeError: R31J_PREC9_REFUSED:c8_exclusive_append:C8_OCCURRENCE_NOT_ADMITTED",
+          "name": "test_orphan_product_root_start_is_typed_refusal",
+          "outcome": "failed"
+        },
+        {
+          "classname": "tests.test_join_v_hostile",
+          "message": "",
+          "name": "test_relocated_session_root_is_refused_or_rebound",
+          "outcome": "passed"
+        }
+      ],
+      "errors": "0",
+      "failures": "3",
+      "skipped": "0",
+      "tests": "7"
+    }
+  },
+  "frozen_positive": {
+    "command": "/usr/local/bin/python3 -B -m pytest -q tests/test_join_v_positive.py -p no:cacheprovider --junitxml=/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/join-v-wt/WORKER_RETURNS/SOROK-20261022-JOIN-HOSTILE-REVIEW-R1/evidence/final_cut/frozen_positive.xml",
+    "cwd": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/join-v-wt/WORKER_RETURNS/SOROK-20261022-JOIN-HOSTILE-REVIEW-R1",
+    "returncode": 1,
+    "stderr": "",
+    "stdout": ".........F                                                               [100%]\n=================================== FAILURES ===================================\n_______________ test_warm_and_cold_import_order_preserve_result ________________\n\ntmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-1416/test_warm_and_cold_import_orde0')\n\n    def test_warm_and_cold_import_order_preserve_result(tmp_path):\n        candidate_root = CANDIDATE_ROOT\n        normal = \"\"\"\n    import json, sys\n    sys.path.insert(0, sys.argv[1])\n    from joined.session import JoinedSession\n    s = JoinedSession.start(sys.argv[2], perform=\"omit\")\n    try:\n        print(json.dumps({\"accepted\": s.do_help()[\"accepted\"], \"verify\": s.verify()[\"ok\"],\n                          \"source\": s.product.source}, sort_keys=True))\n    finally:\n        s.close()\n    \"\"\"\n        e_first = \"\"\"\n    import json, sys\n    sys.path.insert(0, sys.argv[1])\n    sys.path.insert(0, sys.argv[1] + \"/vendor/e\")\n    from r31e.session import R31ESession\n    from joined.session import JoinedSession\n    s = JoinedSession.start(sys.argv[2], perform=\"omit\")\n    try:\n        print(json.dumps({\"accepted\": s.do_help()[\"accepted\"], \"verify\": s.verify()[\"ok\"],\n                          \"source\": s.product.source}, sort_keys=True))\n    finally:\n        s.close()\n    \"\"\"\n        env = {\n            **os.environ,\n            \"PYTHONPATH\": str(candidate_root),\n            \"PYTHONDONTWRITEBYTECODE\": \"1\",\n        }\n        observed = {}\n        for name, code in ((\"normal\", normal), (\"e_first\", e_first)):\n            run = subprocess.run(\n                [sys.executable, \"-B\", \"-c\", code, str(candidate_root), str(tmp_path / name)],\n                env=env,\n                text=True,\n                capture_output=True,\n                timeout=120,\n            )\n>           assert run.returncode == 0, run.stderr\nE           AssertionError: Traceback (most recent call last):\nE               File \"<string>\", line 7, in <module>\nE               File \"/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/join-v-final-wt/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/joined/session.py\", line 72, in start\nE                 raise SessionRefusal('IMPORT_CLOSURE_INVALID',\nE             r30a.first_session.SessionRefusal: IMPORT_CLOSURE_INVALID: WRONG_CLOSURE:historical_actor_producer:expected=J:actual=E:/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/join-v-final-wt/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/historical_actor_producer.py;WRONG_CLOSURE:bp2p4:expected=J:actual=E:/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/join-v-final-wt/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/bp2p4/__init__.py;WRONG_CLOSURE:bp2p4.bootstrap:expected=J:actual=E:/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/join-v-final-wt/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/bp2p4/bootstrap.py;WRONG_CLOSURE:bp2p4.product:expected=J:actual=E:/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/join-v-final-wt/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/bp2p4/product.py;WRONG_CLOSURE:bp2_joined:expected=J:actual=E:/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/join-v-final-wt/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/bp2_joined/__init__.py;WRONG_CLOSURE:bp2_joined.producer:expected=J:actual=E:/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/join-v-final-wt/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/bp2_joined/producer.py;WRONG_CLOSURE:bp2_joined.binding:expected=J:actual=E:/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/join-v-final-wt/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/bp2_joined/binding.py;WRONG_CLOSURE:bp2_joined.ports:expected=J:actual=E:/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/join-v-final-wt/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/bp2_joined/ports.py;WRONG_CLOSURE:bp4:expected=J:actual=E:/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/join-v-final-wt/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp4/bp4/__init__.py;WRONG_CLOSURE:bp4.product:expected=J:actual=E:/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/join-v-final-wt/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp4/bp4/product.py;WRONG_CLOSURE:bp4.world:expected=J:actual=E:/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/join-v-final-wt/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp4/bp4/world.py;WRONG_CLOSURE:bp4.perception:expected=J:actual=E:/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/join-v-final-wt/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp4/bp4/perception.py;WRONG_CLOSURE:bp4.store:expected=J:actual=E:/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/join-v-final-wt/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp4/bp4/store.py;WRONG_CLOSURE:r29p.product:expected=J:actual=E:/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/join-v-final-wt/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/r29p/product.py;WRONG_CLOSURE:r26e.c12_integrity:expected=J:actual=E:/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/join-v-final-wt/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/r26e/c12_integrity.py\nE             \nE           assert 1 == 0\nE            +  where 1 = CompletedProcess(args=['/usr/local/bin/python3', '-B', '-c', '\\nimport json, sys\\nsys.path.insert(0, sys.argv[1])\\nsys...v-final-wt/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/r26e/c12_integrity.py\\n').returncode\n\ntests/test_join_v_positive.py:296: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_join_v_positive.py::test_warm_and_cold_import_order_preserve_result\n1 failed, 9 passed in 19.21s\n",
+    "summary": {
+      "cases": [
+        {
+          "classname": "tests.test_join_v_positive",
+          "message": "",
+          "name": "test_enacted_material_source_and_omission",
+          "outcome": "passed"
+        },
+        {
+          "classname": "tests.test_join_v_positive",
+          "message": "",
+          "name": "test_performed_material_action_severs_and_new_omission_restores",
+          "outcome": "passed"
+        },
+        {
+          "classname": "tests.test_join_v_positive",
+          "message": "",
+          "name": "test_refusal_source_is_red_and_share_source_green",
+          "outcome": "passed"
+        },
+        {
+          "classname": "tests.test_join_v_positive",
+          "message": "",
+          "name": "test_same_root_source_identity_and_c12_episode",
+          "outcome": "passed"
+        },
+        {
+          "classname": "tests.test_join_v_positive",
+          "message": "",
+          "name": "test_repeated_reopen_does_not_duplicate_gm01_or_checkpoints",
+          "outcome": "passed"
+        },
+        {
+          "classname": "tests.test_join_v_positive",
+          "message": "",
+          "name": "test_cold_child_process_reopens_same_source_and_attention",
+          "outcome": "passed"
+        },
+        {
+          "classname": "tests.test_join_v_positive",
+          "message": "",
+          "name": "test_attention_invariant_objective_speech",
+          "outcome": "passed"
+        },
+        {
+          "classname": "tests.test_join_v_positive",
+          "message": "",
+          "name": "test_private_ignorance_and_b_offscreen",
+          "outcome": "passed"
+        },
+        {
+          "classname": "tests.test_join_v_positive",
+          "message": "",
+          "name": "test_lawful_contact_and_no_contact",
+          "outcome": "passed"
+        },
+        {
+          "classname": "tests.test_join_v_positive",
+          "message": "AssertionError: Traceback (most recent call last):\n    File \"<string>\", line 7, in <module>\n    File \"/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/join-v-final-wt/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/joined/session.py\", line 72, in start\n      raise SessionRefusal('IMPORT_CLOSURE_INVALID',\n  r30a.first_session.SessionRefusal: IMPORT_CLOSURE_INVALID: WRONG_CLOSURE:historical_actor_producer:expected=J:actual=E:/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/join-v-final-wt/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/historical_actor_producer.py;WRONG_CLOSURE:bp2p4:expected=J:actual=E:/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/join-v-final-wt/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/bp2p4/__init__.py;WRONG_CLOSURE:bp2p4.bootstrap:expected=J:actual=E:/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/join-v-final-wt/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/bp2p4/bootstrap.py;WRONG_CLOSURE:bp2p4.product:expected=J:actual=E:/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/join-v-final-wt/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/bp2p4/product.py;WRONG_CLOSURE:bp2_joined:expected=J:actual=E:/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/join-v-final-wt/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/bp2_joined/__init__.py;WRONG_CLOSURE:bp2_joined.producer:expected=J:actual=E:/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/join-v-final-wt/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/bp2_joined/producer.py;WRONG_CLOSURE:bp2_joined.binding:expected=J:actual=E:/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/join-v-final-wt/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/bp2_joined/binding.py;WRONG_CLOSURE:bp2_joined.ports:expected=J:actual=E:/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/join-v-final-wt/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/bp2_joined/ports.py;WRONG_CLOSURE:bp4:expected=J:actual=E:/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/join-v-final-wt/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp4/bp4/__init__.py;WRONG_CLOSURE:bp4.product:expected=J:actual=E:/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/join-v-final-wt/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp4/bp4/product.py;WRONG_CLOSURE:bp4.world:expected=J:actual=E:/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/join-v-final-wt/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp4/bp4/world.py;WRONG_CLOSURE:bp4.perception:expected=J:actual=E:/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/join-v-final-wt/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp4/bp4/perception.py;WRONG_CLOSURE:bp4.store:expected=J:actual=E:/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/join-v-final-wt/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp4/bp4/store.py;WRONG_CLOSURE:r29p.product:expected=J:actual=E:/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/join-v-final-wt/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/r29p/product.py;WRONG_CLOSURE:r26e.c12_integrity:expected=J:actual=E:/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/join-v-final-wt/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/r26e/c12_integrity.py\n  \nassert 1 == 0\n +  where 1 = CompletedProcess(args=['/usr/local/bin/python3', '-B', '-c', '\\nimport json, sys\\nsys.path.insert(0, sys.argv[1])\\nsys...v-final-wt/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/r26e/c12_integrity.py\\n').returncode",
+          "name": "test_warm_and_cold_import_order_preserve_result",
+          "outcome": "failed"
+        }
+      ],
+      "errors": "0",
+      "failures": "1",
+      "skipped": "0",
+      "tests": "10"
+    }
+  },
+  "frozen_test_hashes": {
+    "tests/conftest.py": "fbe854b8428f34350c2e913117c3084b27289e91a38b267fb4f3e628b8ab7c1f",
+    "tests/support.py": "c72fcf595fe3965e132b9333053e694c3329fd14c7a9d252d649c5b237fec6fb",
+    "tests/test_join_v_hostile.py": "c57b57a442ffae915d0c0f8e06b3ac8543eee98a79be6dfe97e4c4ebf42464e3",
+    "tests/test_join_v_positive.py": "d2216223a02058b549857b632bf818d1814ccaa5b8e1191f4f312abeddb18b9b"
+  },
+  "frozen_test_hashes_match": {
+    "tests/conftest.py": true,
+    "tests/support.py": true,
+    "tests/test_join_v_hostile.py": true,
+    "tests/test_join_v_positive.py": true
+  },
+  "inherited": {
+    "r30a": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "..........                                                               [100%]\n10 passed in 5.99s\n",
+      "summary": {
+        "cases": [
+          {
+            "classname": "tests.test_r30a_first_session",
+            "message": "",
+            "name": "test_available_session_help_contact_exit_offscreen_return_and_cold_reopen",
+            "outcome": "passed"
+          },
+          {
+            "classname": "tests.test_r30a_first_session",
+            "message": "",
+            "name": "test_pressed_session_refuses_help_contact_and_message",
+            "outcome": "passed"
+          },
+          {
+            "classname": "tests.test_r30a_first_session",
+            "message": "",
+            "name": "test_attention_changes_surface_not_occurrence",
+            "outcome": "passed"
+          },
+          {
+            "classname": "tests.test_r30a_first_session",
+            "message": "",
+            "name": "test_private_state_does_not_cross_surface",
+            "outcome": "passed"
+          },
+          {
+            "classname": "tests.test_r30a_first_session",
+            "message": "",
+            "name": "test_attend_before_access_does_not_see_other_room",
+            "outcome": "passed"
+          },
+          {
+            "classname": "tests.test_r30a_first_session",
+            "message": "",
+            "name": "test_tampered_committed_speech_is_refused_on_reopen",
+            "outcome": "passed"
+          },
+          {
+            "classname": "tests.test_r30a_first_session",
+            "message": "",
+            "name": "test_removed_b_activity_and_removed_user_do_break_c12",
+            "outcome": "passed"
+          },
+          {
+            "classname": "tests.test_r30a_first_session",
+            "message": "",
+            "name": "test_retroactive_event_is_refused",
+            "outcome": "passed"
+          },
+          {
+            "classname": "tests.test_r30a_first_session",
+            "message": "",
+            "name": "test_fork_shares_past_and_verifies_both_branches",
+            "outcome": "passed"
+          },
+          {
+            "classname": "tests.test_r30a_first_session",
+            "message": "",
+            "name": "test_quiet_attend_can_trigger_actor_owned_question",
+            "outcome": "passed"
+          }
+        ],
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "tests": "10"
+      }
+    },
+    "r31e": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "...............                                                          [100%]\n15 passed in 8.05s\n",
+      "summary": {
+        "cases": [
+          {
+            "classname": "tests.test_r31e_expression",
+            "message": "",
+            "name": "test_same_work_question_differs_by_actor_time_state",
+            "outcome": "passed"
+          },
+          {
+            "classname": "tests.test_r31e_expression",
+            "message": "",
+            "name": "test_prior_help_changes_later_work_answer",
+            "outcome": "passed"
+          },
+          {
+            "classname": "tests.test_r31e_expression",
+            "message": "",
+            "name": "test_reciprocity_private_boundary_and_no_forced_intimacy",
+            "outcome": "passed"
+          },
+          {
+            "classname": "tests.test_r31e_expression",
+            "message": "",
+            "name": "test_unsupported_memory_and_unknown_topic",
+            "outcome": "passed"
+          },
+          {
+            "classname": "tests.test_r31e_expression",
+            "message": "",
+            "name": "test_actor_does_not_know_unobserved_b_activity",
+            "outcome": "passed"
+          },
+          {
+            "classname": "tests.test_r31e_expression",
+            "message": "",
+            "name": "test_actor_can_mention_b_only_after_actual_observation",
+            "outcome": "passed"
+          },
+          {
+            "classname": "tests.test_r31e_expression",
+            "message": "",
+            "name": "test_attention_changes_surface_not_admitted_occurrence",
+            "outcome": "passed"
+          },
+          {
+            "classname": "tests.test_r31e_expression",
+            "message": "",
+            "name": "test_admission_exact_text_and_tamper_refusal",
+            "outcome": "passed"
+          },
+          {
+            "classname": "tests.test_r31e_expression",
+            "message": "",
+            "name": "test_cold_reopen_preserves_exact_expression_and_admission",
+            "outcome": "passed"
+          },
+          {
+            "classname": "tests.test_r31e_expression",
+            "message": "",
+            "name": "test_contact_later_message_and_return_are_actor_conditioned",
+            "outcome": "passed"
+          },
+          {
+            "classname": "tests.test_r31e_expression",
+            "message": "",
+            "name": "test_pressed_no_contact_no_message_and_help_refused",
+            "outcome": "passed"
+          },
+          {
+            "classname": "tests.test_r31e_expression",
+            "message": "",
+            "name": "test_quiet_attend_uses_actor_initiation_candidate",
+            "outcome": "passed"
+          },
+          {
+            "classname": "tests.test_r31e_expression",
+            "message": "",
+            "name": "test_contract_excludes_user_attention_and_marks_motive_status",
+            "outcome": "passed"
+          },
+          {
+            "classname": "tests.test_r31e_expression",
+            "message": "",
+            "name": "test_coercion_and_sycophancy_are_bounded",
+            "outcome": "passed"
+          },
+          {
+            "classname": "tests.test_r31e_expression",
+            "message": "",
+            "name": "test_chronological_rewrite_refused",
+            "outcome": "passed"
+          }
+        ],
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "tests": "15"
+      }
+    },
+    "r31j": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "........                                                                 [100%]\n8 passed in 5.24s\n",
+      "summary": {
+        "cases": [
+          {
+            "classname": "tests.test_r31j",
+            "message": "",
+            "name": "test_share_e2_pre_c9_source_reaches_product",
+            "outcome": "passed"
+          },
+          {
+            "classname": "tests.test_r31j",
+            "message": "",
+            "name": "test_b_refusal_changes_c9_source_decision",
+            "outcome": "passed"
+          },
+          {
+            "classname": "tests.test_r31j",
+            "message": "",
+            "name": "test_share_omit_leaves_option_without_enacted_action",
+            "outcome": "passed"
+          },
+          {
+            "classname": "tests.test_r31j",
+            "message": "",
+            "name": "test_source_fault_and_restore_same_product",
+            "outcome": "passed"
+          },
+          {
+            "classname": "tests.test_r31j",
+            "message": "",
+            "name": "test_cold_reopen_preserves_pre_c9_source_and_material",
+            "outcome": "passed"
+          },
+          {
+            "classname": "tests.test_r31j",
+            "message": "",
+            "name": "test_real_bp2_ports_are_test_only_and_no_grant",
+            "outcome": "passed"
+          },
+          {
+            "classname": "tests.test_r31j",
+            "message": "",
+            "name": "test_label_only_and_e1_missing_fail_closed",
+            "outcome": "passed"
+          },
+          {
+            "classname": "tests.test_r31j",
+            "message": "",
+            "name": "test_fork_preserves_pre_c9_source_and_diverges",
+            "outcome": "passed"
+          }
+        ],
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "tests": "8"
+      }
+    }
+  },
+  "targeted_final_cut": {
+    "command": "/usr/local/bin/python3 -B -m pytest -q tests/test_join_v_final_cut.py -p no:cacheprovider --junitxml=/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/join-v-wt/WORKER_RETURNS/SOROK-20261022-JOIN-HOSTILE-REVIEW-R1/evidence/final_cut/targeted_final_cut.xml",
+    "cwd": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/join-v-wt/WORKER_RETURNS/SOROK-20261022-JOIN-HOSTILE-REVIEW-R1",
+    "returncode": 1,
+    "stderr": "",
+    "stdout": ".FFF..                                                                   [100%]\n=================================== FAILURES ===================================\n__________ test_metadata_only_branch_substitution_to_root_is_refused ___________\n\ntmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-1418/test_metadata_only_branch_subs0')\n\n    def test_metadata_only_branch_substitution_to_root_is_refused(tmp_path):\n        state = tmp_path / \"branch_root\"\n        session = start(state, perform=\"omit\")\n        session.fork_alt(\"alt\")\n        session.close()\n    \n        meta = read_meta(state)\n        assert meta[\"branch_id\"] == \"alt\"\n        meta[\"branch_id\"] = \"root\"\n        write_meta(state, meta)\n    \n        opened = _open_or_refusal(state)\n        if isinstance(opened, (SessionRefusal, ValueError)):\n            return\n        try:\n>           pytest.fail(json.dumps({\n                \"case\": \"metadata_only_branch_root\",\n                \"opened\": True,\n                \"branch_id\": opened.branch_id,\n                \"verify\": opened.verify().get(\"ok\"),\n                \"root_branch_id\": opened.meta.get(\"root_branch_id\"),\n            }, sort_keys=True))\nE           Failed: {\"branch_id\": \"root\", \"case\": \"metadata_only_branch_root\", \"opened\": true, \"root_branch_id\": \"root\", \"verify\": true}\n\ntests/test_join_v_final_cut.py:78: Failed\n____________ test_foreign_product_root_with_same_source_is_refused _____________\n\ntmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-1418/test_foreign_product_root_with0')\n\n    def test_foreign_product_root_with_same_source_is_refused(tmp_path):\n        state = tmp_path / \"root_source\"\n        session = start(state, perform=\"omit\")\n        session.close()\n    \n        donor = tmp_path / \"donor\"\n        donor.mkdir()\n        shutil.copytree(state / \"product\", donor / \"product\")\n        meta = read_meta(state)\n        meta[\"product_root\"] = str((donor / \"product\").resolve())\n        write_meta(state, meta)\n    \n        opened = _open_or_refusal(state)\n        if isinstance(opened, (SessionRefusal, ValueError)):\n            return\n        try:\n>           pytest.fail(json.dumps({\n                \"case\": \"same_source_foreign_root\",\n                \"opened\": True,\n                \"product_root\": str(opened.product.root),\n                \"state_root\": str(state.resolve()),\n                \"canonical_product_root\": str((state / \"product\").resolve()),\n                \"source_equal\": opened.product.source == opened.meta.get(\"j_source\"),\n                \"verify\": opened.verify().get(\"ok\"),\n            }, sort_keys=True))\nE           Failed: {\"canonical_product_root\": \"/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-1418/test_foreign_product_root_with0/root_source/product\", \"case\": \"same_source_foreign_root\", \"opened\": true, \"product_root\": \"/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-1418/test_foreign_product_root_with0/donor/product\", \"source_equal\": true, \"state_root\": \"/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-1418/test_foreign_product_root_with0/root_source\", \"verify\": true}\n\ntests/test_join_v_final_cut.py:105: Failed\n______ test_double_sidecar_and_meta_source_tamper_is_refused_or_c12_bound ______\n\ntmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-1418/test_double_sidecar_and_meta_s0')\n\n    def test_double_sidecar_and_meta_source_tamper_is_refused_or_c12_bound(tmp_path):\n        state = tmp_path / \"double_source\"\n        session = start(state, perform=\"omit\")\n        session.close()\n    \n        meta = read_meta(state)\n        binding_path = state / \"product\" / \"bp2_join.json\"\n        binding = json.loads(binding_path.read_text())\n        foreign = dict(meta[\"j_source\"])\n        foreign[\"b_operation\"] = \"REFUSE_TOOL\"\n        foreign[\"b_quantity\"] = 0\n        foreign[\"b_to_actor\"] = \"TEST_ONLY_FOREIGN_ACTOR_A\"\n        foreign[\"b_actor\"] = \"TEST_ONLY_FOREIGN_ACTOR_B\"\n        meta[\"j_source\"] = foreign\n        binding[\"r31j_source\"] = foreign\n        write_meta(state, meta)\n        binding_path.write_text(json.dumps(binding, indent=2, sort_keys=True) + \"\\n\")\n    \n        opened = _open_or_refusal(state)\n        if isinstance(opened, (SessionRefusal, ValueError)):\n            return\n        try:\n            episode = gm01_episode_source(opened)\n            if opened.product.source == episode:\n                return\n>           pytest.fail(json.dumps({\n                \"case\": \"double_source_tamper\",\n                \"opened\": True,\n                \"meta_equal_sidecar\": opened.product.source == opened.meta.get(\"j_source\"),\n                \"loaded_b_operation\": opened.product.source.get(\"b_operation\"),\n                \"loaded_b_quantity\": opened.product.source.get(\"b_quantity\"),\n                \"episode_b_operation\": episode.get(\"b_operation\"),\n                \"episode_b_quantity\": episode.get(\"b_quantity\"),\n                \"verify\": opened.verify().get(\"ok\"),\n                \"accepted\": opened.do_help().get(\"accepted\"),\n            }, sort_keys=True))\nE           Failed: {\"accepted\": true, \"case\": \"double_source_tamper\", \"episode_b_operation\": \"SHARE_TOOL\", \"episode_b_quantity\": 1, \"loaded_b_operation\": \"REFUSE_TOOL\", \"loaded_b_quantity\": 0, \"meta_equal_sidecar\": true, \"opened\": true, \"verify\": true}\n\ntests/test_join_v_final_cut.py:143: Failed\n=========================== short test summary info ============================\nFAILED tests/test_join_v_final_cut.py::test_metadata_only_branch_substitution_to_root_is_refused\nFAILED tests/test_join_v_final_cut.py::test_foreign_product_root_with_same_source_is_refused\nFAILED tests/test_join_v_final_cut.py::test_double_sidecar_and_meta_source_tamper_is_refused_or_c12_bound\n3 failed, 3 passed in 12.49s\n",
+    "summary": {
+      "cases": [
+        {
+          "classname": "tests.test_join_v_final_cut",
+          "message": "",
+          "name": "test_lawful_fork_alt_continuation_is_supported",
+          "outcome": "passed"
+        },
+        {
+          "classname": "tests.test_join_v_final_cut",
+          "message": "Failed: {\"branch_id\": \"root\", \"case\": \"metadata_only_branch_root\", \"opened\": true, \"root_branch_id\": \"root\", \"verify\": true}",
+          "name": "test_metadata_only_branch_substitution_to_root_is_refused",
+          "outcome": "failed"
+        },
+        {
+          "classname": "tests.test_join_v_final_cut",
+          "message": "Failed: {\"canonical_product_root\": \"/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-1418/test_foreign_product_root_with0/root_source/product\", \"case\": \"same_source_foreign_root\", \"opened\": true, \"product_root\": \"/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-1418/test_foreign_product_root_with0/donor/product\", \"source_equal\": true, \"state_root\": \"/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-1418/test_foreign_product_root_with0/root_source\", \"verify\": true}",
+          "name": "test_foreign_product_root_with_same_source_is_refused",
+          "outcome": "failed"
+        },
+        {
+          "classname": "tests.test_join_v_final_cut",
+          "message": "Failed: {\"accepted\": true, \"case\": \"double_source_tamper\", \"episode_b_operation\": \"SHARE_TOOL\", \"episode_b_quantity\": 1, \"loaded_b_operation\": \"REFUSE_TOOL\", \"loaded_b_quantity\": 0, \"meta_equal_sidecar\": true, \"opened\": true, \"verify\": true}",
+          "name": "test_double_sidecar_and_meta_source_tamper_is_refused_or_c12_bound",
+          "outcome": "failed"
+        },
+        {
+          "classname": "tests.test_join_v_final_cut",
+          "message": "",
+          "name": "test_b_refusal_and_b_share_with_same_a_omission",
+          "outcome": "passed"
+        },
+        {
+          "classname": "tests.test_join_v_final_cut",
+          "message": "",
+          "name": "test_import_closure_refuses_e_first_and_accepts_j_first",
+          "outcome": "passed"
+        }
+      ],
+      "errors": "0",
+      "failures": "3",
+      "skipped": "0",
+      "tests": "6"
+    }
+  }
+}

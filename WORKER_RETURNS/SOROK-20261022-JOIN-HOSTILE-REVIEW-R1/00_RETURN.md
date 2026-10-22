@@ -1,13 +1,34 @@
 # SOROK JOIN-V — independent hostile causal and persistence return
 
-**STATUS:** `PRELIMINARY_REVISE__ROOT_LINEAGE_AND_SOURCE_BINDING_NOT_PROVEN__FINAL_VERDICT_PENDING_JOIN_E_EXACT_SHA`
+**STATUS:** `FINAL_CUT_REVISE__c367777__PERSISTENCE_ROOT_BRANCH_C12_SOURCE_NOT_PROVEN__AWAIT_NEXT_REPAIR_SHA`
 **ROLE:** independent hostile engineering reviewer; not JOIN-E, J, E, Sorok HQ, native C12/CAN/ADP/Pyat/C11 or human A5 authority.
 **BRANCH:** `codex/sorok-join-v-20261022`
-**STARTUP / CANDIDATE:** startup `3fe8444b4a0374d95fa9f7e60dd295049a5d3172`; candidate `13dfd6bad54ec19b4bdf31159e54fb6052d5440d`
+**STARTUP:** `3fe8444b4a0374d95fa9f7e60dd295049a5d3172`
+**PRELIMINARY CANDIDATE:** `13dfd6bad54ec19b4bdf31159e54fb6052d5440d`
+**FINAL CUT:** `c367777f83367240352c267a2d3750abb7f09397` (read-only detached worktree)
 **AUTHORITY:** independent accession `3de081023406a52ec23e1ae43ade77aea485a3f8`; HQ appointment; effective owner `6456fc57cbe05cdf69e63ef51fa6ca6198401c60`. No native grants.
 **WRITE ONLY:** `WORKER_RETURNS/SOROK-20261022-JOIN-HOSTILE-REVIEW-R1/**`. No candidate/J/E edit.
 
-## Four-column return
+## Final-cut adjudication of c367777
+
+See `FINAL_CUT_ADJUDICATION.md` for the full table and evidence. Frozen test hashes were checked first and were unchanged.
+
+| Suite against c367777 | Result |
+|---|---|
+| Frozen independent positives | **9 passed, 1 intentional import-contract refusal** |
+| Frozen independent hostiles | **4 passed, 3 failed** |
+| New targeted final-cut tests | **3 passed, 3 failed** |
+| JOIN-E own suite | **10/10 passed** |
+| Inherited J / E / R30A | **8/8, 15/15, 10/10 passed** |
+| Source manifest | **444/444 verified** |
+
+**Repaired:** different-source product root, plain R29P fallback/donor mutation, single-sidecar source tamper, moved-root refusal, lawful `fork_alt`, J-first import guard, and an independent B-source refusal/share witness.
+
+**Still/new failures:** a same-source foreign product root is accepted; metadata-only branch selection (`root` and frozen `alt`) is accepted; double sidecar+meta source tampering is accepted while C12 `GM01_SOURCE` disagrees; missing session and orphan-root start still raise raw errors. The E-first frozen positive is now intentionally refused by the final import-closure contract; the frozen test is preserved unchanged and a new targeted J-first/E-first guard passes.
+
+Final-cut engineering verdict: **REVISE**. Await the next repair SHA; keep the frozen tests unchanged and continue this lane.
+
+## Four-column return (preliminary 13dfd6bad; final-cut deltas above)
 
 | FINDING | INTERPRETATION AND RIVALS | HQ ACTION REQUESTED | COMPETENT OWNER |
 |---|---|---|---|
@@ -21,59 +42,36 @@
 
 ## DONE / REMAINING / CRITICAL BLOCKER / LARGEST MOVE / FLIGHT / DELTA
 
-- **DONE:** froze the candidate, built independent positive and hostile tests, froze test/source hashes, ran candidate/inherited suites, audited import closure and 444-file source manifest, and published preliminary findings.
-- **REMAINING:** exact JOIN-E return SHA; rerun the same frozen tests on that immutable cut; final verdict. No polling and no second worker.
-- **CRITICAL BLOCKER:** final candidate SHA does not yet exist in this review; this blocks only the final verdict, not the preliminary source/oracle work.
-- **LARGEST MOVE:** bind `open()`/`reopen()` to the canonical root, branch and C12 source; then rerun the frozen suite.
-- **FLIGHT:** one reviewer on `codex/sorok-join-v-20261022`; candidate `13dfd6bad`; no candidate/J/E edits; no subagents/provider/native operations.
-- **DELTA:** preliminary engineering verdict changed from the author's 2/2 green to `PRELIMINARY_REVISE` on lineage/source persistence, while preserving the real single-root material/encounter positives.
+- **DONE:** froze the preliminary candidate and oracles, adjudicated the final E cut `c367777`, reran all frozen positives/hostiles and new targeted tests, verified unchanged frozen hashes, audited the 444-file source manifest and J-first import closure, ran candidate/inherited suites, and inspected E's mutation witness.
+- **REMAINING:** next repair SHA from human/HQ; rerun the same frozen tests plus the targeted final-cut tests; final verdict. No polling and no second worker.
+- **CRITICAL BLOCKER:** c367777 still accepts a same-source foreign product root, metadata-only branch selection, and double sidecar+meta source tampering that disagrees with persisted C12; missing/orphan roots remain raw failures.
+- **LARGEST MOVE:** bind `open()` to canonical root/branch receipts and C12 `GM01_SOURCE` lineage, then add typed missing/orphan refusals and rerun the same suite.
+- **FLIGHT:** one reviewer on `codex/sorok-join-v-20261022`; final cut c367777 read-only; no candidate/J/E edits; no subagents/provider/native operations.
+- **DELTA:** final-cut engineering verdict is `REVISE`; four preliminary hostile failures are repaired, three frozen and three targeted final-cut counterexamples remain, while the author's 10/10 positives, lawful fork, B-source witness and inherited suites are preserved.
 
 ## Exact commands and results
 
-Candidate author suite:
+Final cut `c367777` (read-only worktree; frozen tests unchanged; hashes checked first):
 
 ```text
-python3 -B -m pytest -q WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/tests/test_join.py -p no:cacheprovider
-2 passed
+cd WORKER_RETURNS/SOROK-20261022-JOIN-HOSTILE-REVIEW-R1
+SOROK_JOIN_CANDIDATE_ROOT=<c367777 worktree>/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1 \
+  PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest -q tests/test_join_v_positive.py -p no:cacheprovider
+9 passed, 1 failed (E-first IMPORT_CLOSURE_INVALID; superseded by targeted closure guard)
+
+SOROK_JOIN_CANDIDATE_ROOT=... PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest -q tests/test_join_v_hostile.py -p no:cacheprovider --tb=short
+4 passed, 3 failed (metadata-only alt branch, missing session, orphan root)
+
+SOROK_JOIN_CANDIDATE_ROOT=... PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest -q tests/test_join_v_final_cut.py -p no:cacheprovider --tb=short
+3 passed, 3 failed (root branch metadata, same-source foreign root, double sidecar+meta source)
+
+SOROK_JOIN_CANDIDATE_ROOT=... PYTHONDONTWRITEBYTECODE=1 python3 -B tools/collect_final_cut.py
+candidate own 10/10; inherited 8/8, 15/15, 10/10; manifest 444/444
 ```
 
-Independent positives (cwd own return):
+Frozen test hashes all match `FROZEN_ORACLES.json`; no frozen test file was edited. Full JUnit/JSON: `evidence/final_cut/results.json`, `evidence/final_cut/source.json`, and `evidence/final_cut/*.xml`. The original preliminary evidence remains in `evidence/test_results.json` and `evidence/hostile.xml`.
 
-```text
-python3 -B -m pytest -q tests/test_join_v_positive.py -p no:cacheprovider
-10 passed
-```
-
-Independent hostile (cwd own return):
-
-```text
-python3 -B -m pytest -q tests/test_join_v_hostile.py -p no:cacheprovider --tb=short
-7 failed
-```
-
-Failures are the intended lineage/persistence counterexamples, not construction failures: `different_product_root`, `r29p_product_root`, `tampered_branch_id`, `tampered_r31j_source`, `missing_session`, `orphan_product_root_start`, `relocated_session_root`. Full JSON and failure text: `evidence/test_results.json`, `evidence/hostile.xml`.
-
-Inherited provenance (separate processes, candidate worktree):
-
-```text
-(cd .../vendor/j && python3 -B -m pytest -q tests/test_r31j.py -p no:cacheprovider)
-8 passed
-(cd .../vendor/e && python3 -B -m pytest -q tests/test_r31e_expression.py -p no:cacheprovider)
-15 passed
-(cd .../vendor/e/vendor/r30a && python3 -B -m pytest -q tests/test_r30a_first_session.py -p no:cacheprovider)
-10 passed
-```
-
-Freeze and evidence:
-
-```text
-python3 -B tools/freeze.py
-444/444 source-manifest rows verified; 0 missing; 0 mismatched
-python3 -B tools/collect_results.py
-candidate 2/2; positive 10/10; hostile 0/7; inherited 8/8, 15/15, 10/10
-python3 -B tools/import_audit.py
-normal and E-first common closures byte-identical; behaviour identical
-```
+Repaired on the final cut: different-source product root, R29P donor fallback/mutation, single-sidecar source tamper, moved-root refusal, lawful `fork_alt`, J-first import guard, and an independent B-source refusal/share witness. Still failing/new: same-source foreign product root, metadata-only branch selection, double sidecar+meta source tampering not bound to C12, missing session, orphan root.
 
 ## Frozen source hashes
 
@@ -90,6 +88,18 @@ normal and E-first common closures byte-identical; behaviour identical
 
 `FROZEN_ORACLES.json` contains the full frozen test and candidate file hashes. Candidate source manifest `444/444`; J source ref `64fec28c374d8f77fb0b412d0c934d798ede03e8`; E source ref `a2760d3687b063513fe0a5b9589c56c998d4ccb5`.
 
+Final-cut c367777 hashes (full list in `evidence/final_cut/source.json`):
+
+| Artifact | SHA-256 |
+|---|---|
+| `joined/session.py` | `1c1276a047d116a6787824bdb48e2f9d24b28947fdb84778990639203dbf480a` |
+| `joined/readonly.py` | `93e1885e35d078879228b38c716ac5ed0b14b91367433b19d19bf7d4535d2371` |
+| `joined/closure.py` | `d4c5e46d64e03201c5379eba4a1f2aaa2ec53744ceb22e78395fef05f6e74ff4` |
+| `joined/assertion.py` | `ec9a313b271cafc089eeb6353b11a2c74b4b3bac33431b53c830410ae98b9878` |
+| `tests/test_join.py` | `87cc0ae9378be0375de1a6b35bd200a0cf158b425557ba8a7703927fc110ef7b` |
+| `tests/test_join_v_final_cut.py` | `6e2f87d773090235a4a5f3567430737f30f16698397c852f799585ff73280de1` |
+| `tools/collect_final_cut.py` | `fc9d3bed87c6eeade8292e90d6470128816cf27e9b6ee1a0886af2eaa3b41ac8` |
+
 ## Changed-path allowlist
 
 Only:
@@ -97,6 +107,7 @@ Only:
 ```text
 WORKER_RETURNS/SOROK-20261022-JOIN-HOSTILE-REVIEW-R1/00_RETURN.md
 WORKER_RETURNS/SOROK-20261022-JOIN-HOSTILE-REVIEW-R1/PRELIMINARY_FINDINGS.md
+WORKER_RETURNS/SOROK-20261022-JOIN-HOSTILE-REVIEW-R1/FINAL_CUT_ADJUDICATION.md
 WORKER_RETURNS/SOROK-20261022-JOIN-HOSTILE-REVIEW-R1/RESUME_CHECKPOINT.md
 WORKER_RETURNS/SOROK-20261022-JOIN-HOSTILE-REVIEW-R1/FROZEN_ORACLES.json
 WORKER_RETURNS/SOROK-20261022-JOIN-HOSTILE-REVIEW-R1/tests/**
@@ -108,18 +119,18 @@ No candidate, J, E, R30A, R29P, BP2P4J, C8, C12, C9, PRE-MAIN or HQ-control file
 
 ## NOT_RUN
 
-- Final JOIN-E candidate and exact return SHA: `PENDING`.
-- Full inherited R31J/R31E/R29P 155–202 denominators: not promoted; only 8 + 15 + 10 affected suites rerun.
+- Next repair SHA after c367777: `PENDING`; final verdict waits for that immutable cut.
+- Full inherited R31J/R31E/R29P 155–202 denominators: not promoted; only 8 + 15 + 10 affected suites rerun on the final cut.
 - Process-kill crash injection between `_attach_new` and join-meta write: inferred, not injected.
 - Protected C12/KMS custody, native CAN/ADP/C8/C9/C11/Pyat, external provider calls, human A5, production/deployment: `NOT_RUN`; no authority.
-- Cross-root canonical identity and all J variants/scenarios: not exhaustive; partial observation only.
+- Cross-root canonical identity and all J variants/scenarios: not imposed; HQ intake explicitly says distinct roots need not have identical target IDs/histories/variants. No cross-root determinism failure is claimed.
 
 ## Courts
 
-| Court | Preliminary | Ceiling |
+| Court | Final cut c367777 | Ceiling |
 |---|---|---|
-| **ENGINEERING** | `PRELIMINARY_REVISE` | The real single-root material/encounter path works, but lineage, branch and sidecar source binding are not proven; foreign root/R29P acceptance and donor mutation are concrete counterexamples. |
-| **SCIENTIFIC** | `HOLD__NO_ISSUANCE` | TEST_ONLY sourcefree material feasibility and structured expression only; no psychology, acquired practice, personhood or A5 claim. |
+| **ENGINEERING** | `REVISE` | c367777 repairs four preliminary failures and preserves the positive encounter/fork/attention/import/closure and B-source witness, but same-source foreign roots, metadata-only branch selection, double sidecar+meta source disagreement with C12, and missing/orphan raw failures remain. |
+| **SCIENTIFIC** | `HOLD__NO_ISSUANCE` | TEST_ONLY sourcefree material feasibility and structured expression only; B refusal is a lawful no-tool/no-target boundary, not a help-accept claim; no psychology, acquired practice, personhood or A5. |
 | **AUTHORITY** | `HOLD` | No native C12/CAN/ADP/C8/C11/Pyat, protected keys, external provider or human A5 grant. |
 
 ## Publication
