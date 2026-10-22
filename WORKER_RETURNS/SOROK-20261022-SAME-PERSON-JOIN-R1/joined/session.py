@@ -5,19 +5,71 @@ import json
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
-J = ROOT / 'vendor' / 'j'
-E = ROOT / 'vendor' / 'e'
-for path in reversed((J, J/'r29m/source', J/'candidate', J/'candidate/vendor/bp2',
-                      J/'candidate/vendor/bp4', J/'r29p', J/'r26e', J/'n1')):
-    sys.path.insert(0, str(path))
+from .imports import install
+install()
 from r31j.build import c9_only, product as build_product
 from r31j.scenarios import evaluated
-sys.path.insert(0, str(E))
 from r31e.session import R31ESession
 from r30a.first_session import SessionRefusal
 from .closure import audit_loaded, source_manifest_sha256
+from .provenance import validate_join
 from .readonly import ReadOnlyR31JProduct
+
+ROOT_BRANCH = 'first_session'
+
+
+def _load_meta(state_root: Path) -> dict:
+    if not state_root.exists() or not state_root.is_dir():
+        raise SessionRefusal('SESSION_NOT_FOUND', str(state_root))
+    path = state_root / 'session.json'
+    if not path.is_file():
+        raise SessionRefusal('SESSION_NOT_FOUND', str(path))
+    return json.loads(path.read_text(encoding='utf8'))
+
+
+def _canonical_product_root(state_root: Path, meta: dict) -> Path:
+    recorded_state = meta.get('state_root')
+    if recorded_state and Path(recorded_state).resolve() != state_root:
+        raise SessionRefusal('SESSION_ROOT_MOVED',
+                             f'{recorded_state} != {state_root}')
+    product_root = Path(meta.get('product_root', '')).resolve()
+    expected = (state_root / 'product').resolve()
+    if product_root != expected:
+        raise SessionRefusal('FOREIGN_PRODUCT_ROOT',
+                             f'{product_root} != {expected}')
+    return product_root
+
+
+def _guard_binding(product_root: Path) -> dict:
+    path = product_root / 'bp2_join.json'
+    if not path.is_file():
+        raise SessionRefusal('J_BINDING_MISSING', str(path))
+    document = json.loads(path.read_text(encoding='utf8'))
+    if not document.get('r31j_source') or not document.get('r31j_actor_snapshot'):
+        raise SessionRefusal('J_BINDING_MISSING', 'r31j source/actor snapshot absent')
+    return document
+
+
+def _guard_branch(meta: dict, product_root: Path) -> str:
+    branch = meta.get('branch_id')
+    if branch == ROOT_BRANCH:
+        return branch
+    lineage = meta.get('branch_lineage') or {}
+    receipt = lineage.get('fork_receipt') or {}
+    if (lineage.get('root_branch') != ROOT_BRANCH
+            or lineage.get('current_branch') != branch
+            or receipt.get('parent_branch') != ROOT_BRANCH
+            or receipt.get('new_branch') != branch):
+        raise SessionRefusal('UNAUTHORIZED_BRANCH', str(branch))
+    # The branch row itself must retain the recorded parent and fork clock.
+    store = ReadOnlyR31JProduct.reopen(product_root, branch_id=ROOT_BRANCH).store
+    try:
+        row = store.branch(branch)
+    finally:
+        store.close()
+    if row.get('parent_branch_id') != ROOT_BRANCH:
+        raise SessionRefusal('UNAUTHORIZED_BRANCH', 'parent lineage mismatch')
+    return branch
 
 
 class JoinedSession(R31ESession):
@@ -30,6 +82,8 @@ class JoinedSession(R31ESession):
         state_root.mkdir(parents=True, exist_ok=True)
         if (state_root/'session.json').exists():
             raise SessionRefusal('SESSION_EXISTS__NO_AUTOMATIC_REROLL')
+        if (state_root/'product').exists() or (state_root/'bp2').exists():
+            raise SessionRefusal('ORPHAN_PRODUCT_ROOT')
         if perform not in ('e2', 'omit'):
             raise SessionRefusal('UNKNOWN_PERFORMANCE')
         scenario = evaluated(share=True, e2=perform == 'e2')
@@ -51,17 +105,23 @@ class JoinedSession(R31ESession):
                 raise SessionRefusal('J_SOURCE_NOT_POSITIVE', json.dumps(source, sort_keys=True))
             session = cls._attach_new(product, state_root, scenario='available',
                                       attention=attention, variant=variant)
+            seed = product.seed.public()
             session.meta.update(
                 schema='SOROK_SAME_PERSON_JOIN@1',
                 grade='TEST_ONLY_SOURCEFREE_NOT_NATIVE',
                 material_performance=perform,
                 root_branch_id='root',
+                branch_lineage=None,
                 j_source_ref='64fec28c374d8f77fb0b412d0c934d798ede03e8',
                 e_source_ref='a2760d3687b063513fe0a5b9589c56c998d4ccb5',
                 j_source=source,
                 j_c8_state_digest=built['c8_state_digest'],
                 j_e1_event_hash=built['e1_event_hash'],
                 j_target_id=built['target_id'],
+                source_actor_map={
+                    'TEST_ONLY_R31J_A': seed['actor_a'],
+                    'TEST_ONLY_R31J_B': seed['actor_b'],
+                },
                 source_manifest_sha256=source_manifest_sha256(),
                 expression_port='R31E_EXPRESSION_PORT@1',
                 actor_model='LIVE_ACTOR_MODEL_NOT_RUN',
@@ -71,6 +131,10 @@ class JoinedSession(R31ESession):
             if not closure.get('ok'):
                 raise SessionRefusal('IMPORT_CLOSURE_INVALID',
                                      ';'.join(closure.get('problems', [])))
+            provenance = validate_join(product, session.meta, session.branch_id)
+            if not provenance.get('ok'):
+                raise SessionRefusal('J_PROVENANCE_MISMATCH',
+                                     json.dumps(provenance.get('checks', {}), sort_keys=True))
             verification = session.verify()
             if not verification.get('ok'):
                 raise SessionRefusal('C12_VERIFY_FAILED', str(verification))
@@ -87,14 +151,16 @@ class JoinedSession(R31ESession):
     @classmethod
     def open(cls, state_root, *, attention=None):
         state_root = Path(state_root).resolve()
-        meta = json.loads((state_root/'session.json').read_text())
+        meta = _load_meta(state_root)
         if meta.get('schema') != 'SOROK_SAME_PERSON_JOIN@1':
             raise SessionRefusal('WRONG_PRODUCT_LINEAGE')
         if 'j_source' not in meta:
             raise SessionRefusal('JOIN_META_INCOMPLETE__J_SOURCE_MISSING')
+        product_root = _canonical_product_root(state_root, meta)
+        _guard_binding(product_root)
+        branch = _guard_branch(meta, product_root)
         try:
-            product = ReadOnlyR31JProduct.reopen(
-                Path(meta['product_root']), branch_id=meta['branch_id'])
+            product = ReadOnlyR31JProduct.reopen(product_root, branch_id=branch)
         except Exception as exc:
             raise SessionRefusal('COLD_REOPEN_REFUSED',
                                  type(exc).__name__ + ':' + str(exc)) from exc
@@ -105,10 +171,14 @@ class JoinedSession(R31ESession):
             if not root_verify.get('ok'):
                 raise SessionRefusal('ROOT_C12_VERIFY_FAILED',
                                      json.dumps(root_verify.get('errors', [])))
-            branch_verify = product.c12_verify(meta['branch_id'])
+            branch_verify = product.c12_verify(branch)
             if not branch_verify.get('ok'):
                 raise SessionRefusal('BRANCH_C12_VERIFY_FAILED',
                                      json.dumps(branch_verify.get('errors', [])))
+            provenance = validate_join(product, meta, branch)
+            if not provenance.get('ok'):
+                raise SessionRefusal('J_PROVENANCE_MISMATCH',
+                                     json.dumps(provenance.get('checks', {}), sort_keys=True))
             session = cls(product, state_root, meta)
             if attention and attention != session.meta.get('attention'):
                 session.meta['attention'] = attention
@@ -147,7 +217,9 @@ class JoinedSession(R31ESession):
             'owner_contract': {
                 'request': ('The original BP2P4 consumer requires a committed C9 '
                             'CREATE target before it can assemble a product; the '
-                            'E first-neighbor session requires a product root.'),
+                            'E first-neighbor session requires a product root. A '
+                            'derived targetless C12 representation is available '
+                            'in joined.refusal for the refusal path.'),
                 'required_decision': ('Provide a lawful no-target C10/C12 '
                                       'representation, or accept this typed HOLD.'),
                 'owner': 'BP2P4/C9 consumer owner with C12/C10 owner',
@@ -164,12 +236,23 @@ class JoinedSession(R31ESession):
         return result
 
     def fork_alt(self, new_branch_id='alt'):
-        result = self.product.fork(new_branch_id)
+        parent = self.branch_id
+        fork = self.product.fork(new_branch_id)
         self.branch_id = new_branch_id
         self.meta['branch_id'] = new_branch_id
+        self.meta['branch_lineage'] = {
+            'root_branch': ROOT_BRANCH,
+            'current_branch': new_branch_id,
+            'fork_receipt': {
+                'parent_branch': parent,
+                'new_branch': new_branch_id,
+                'fork_clock': fork.get('fork_clock'),
+                'root_hash': fork.get('root_hash'),
+            },
+        }
         self.product.use(new_branch_id)
         self._save_join_meta()
-        return result
+        return fork
 
     def status(self) -> dict:
         result = super().status()
@@ -178,4 +261,5 @@ class JoinedSession(R31ESession):
         result['j_target_id'] = self.meta.get('j_target_id')
         result['root_branch_id'] = self.meta.get('root_branch_id')
         result['material_performance'] = self.meta.get('material_performance')
+        result['branch_lineage'] = self.meta.get('branch_lineage')
         return result

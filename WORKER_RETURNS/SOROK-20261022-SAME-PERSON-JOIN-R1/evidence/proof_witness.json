@@ -9,6 +9,14 @@
       "baseline": "PASS",
       "fault_probe": "TARGET_ASSERTION_FAILED",
       "grade": "BOUNDED_MUTATION_DETECTED"
+    },
+    {
+      "claim_id": "SOROK_JOIN_E_B_SOURCE_REFUSAL_TO_TARGETLESS_SESSION",
+      "positive_node": "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/tests/test_join.py::test_b_source_edge_help_observable_and_targetless_no_target",
+      "fault_path": "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/joined/refusal.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
     }
   ]
 }

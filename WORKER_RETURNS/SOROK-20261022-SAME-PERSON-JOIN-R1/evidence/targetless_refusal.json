@@ -1,0 +1,213 @@
+{
+  "help": {
+    "accepted": false,
+    "admission": {
+      "action_event_id": "",
+      "admission_id": "c1ad9f34494e35e1e4395e8790b9eb46922a3ef76c15840acced4d06a5582c1b",
+      "attention_excluded": true,
+      "clock": 10,
+      "consumed_state_hash": "",
+      "contact_outcome": "",
+      "contract_hash": "9f5656ef8ba12e1feb5293f56627ff7a7e7555bf4225fce9909787fcbd06ce35",
+      "fact_count": 1,
+      "grade": "TEST_ONLY_SOURCEFREE_R31E_ACTOR_EXPRESSION_NOT_NATIVE",
+      "knowledge_ref_count": 0,
+      "message_episode_id": "",
+      "motive_status": "MATERIAL_TIME_CONSTRAINT_ONLY",
+      "native": false,
+      "schema": "R31E_EXPRESSION_ADMISSION@1",
+      "source_ref": "001b506fa26ae879ff5b6e57138fc2696e12b538",
+      "speech_event_id": "TEST_ONLY_BP4_WORLD_EVT_6c88efe713cfb922698b7b9830a4e84c42a251b56c22f9c8eac1b87acdbeb057",
+      "strategy": "HELP_REFUSE",
+      "target_id": "",
+      "template_id": "help_refuse_material_2",
+      "validation": {
+        "checks": {
+          "action_allowed": true,
+          "actor_present_or_message": true,
+          "contract_hash_current": true,
+          "facts_supported": true,
+          "knowledge_refs": true,
+          "no_private_tokens": true,
+          "no_private_values": true,
+          "not_stale_clock": true,
+          "scene_open_or_message": true,
+          "speech_length": true,
+          "speech_nonempty": true,
+          "speech_single_line": true,
+          "template_known": true,
+          "template_rerender_exact": true
+        },
+        "ok": true
+      }
+    },
+    "candidate": {
+      "action": "NONE",
+      "contact": "",
+      "facts": [
+        {
+          "kind": "MATERIAL_PRESSURE"
+        }
+      ],
+      "gesture": "A looks at the empty tool space.",
+      "knowledge_refs": [],
+      "schema": "R31E_EXPRESSION_CANDIDATE@1",
+      "slots": {},
+      "speech": "The tool's gone. I can't do it today.",
+      "strategy": "HELP_REFUSE",
+      "template_id": "help_refuse_material_2",
+      "tone": "flat",
+      "variant": 1
+    },
+    "contract_hash": "9f5656ef8ba12e1feb5293f56627ff7a7e7555bf4225fce9909787fcbd06ce35",
+    "status": "OK",
+    "strategy": "HELP_REFUSE",
+    "surface": [
+      "the repair worker says: \"The tool's gone. I can't do it today.\" A looks at the empty tool space."
+    ]
+  },
+  "schema": "SOROK_JOIN_E_TARGETLESS_RECEIPT@1",
+  "status": {
+    "actor_model": "LIVE_ACTOR_MODEL_NOT_RUN",
+    "attention": "focused",
+    "branch_id": "first_session",
+    "c9": {
+      "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+      "actor_readset": [
+        "TEST_ONLY_BP1_SOURCE_R26V_ACTOR_A"
+      ],
+      "actor_source_grade": "TEST_ONLY_SOURCEFREE_TECHNICAL",
+      "adp019_admission_receipt": "ADP019_ADMISSION_RECEIPT_ABSENT",
+      "c8_commit_receipt_id": "bce994c8fe71a23ae4184ee465ef16aa82b8a05fc9fcdfe41ba4f8ba0fdeeeb1",
+      "c8_occurrence_id": "OCC-0001",
+      "c8_state_digest": "661e95196385d60fe896d00ba7c783e6ba09aefbf19182fd87df4db127c4723b",
+      "committed": true,
+      "conditioning_readset": [
+        "TEST_ONLY_BP2_MATERIAL_A"
+      ],
+      "declared_offer_ref": "TEST_ONLY_BP1_EVT_cbf3eb19d9adcf7ffafa3b6622be51565002179060f3f2f6cd09095d9e8534f6",
+      "e1_adp019": {
+        "admission_status": "TEST_ONLY_E1_BOUND_ADP019_NOT_ISSUED",
+        "adp019_admission_receipt": "ADP019_ADMISSION_RECEIPT_ABSENT",
+        "commit_receipt_id": "bce994c8fe71a23ae4184ee465ef16aa82b8a05fc9fcdfe41ba4f8ba0fdeeeb1",
+        "event_time": 242,
+        "identity_digest": "a8c41faf24bd366c30fac5f374f47c77e9f3f93b3653092624826aa82b62541f",
+        "native_grant": "NOT_GRANTED",
+        "occurrence_id": "OCC-0001",
+        "state_digest": "661e95196385d60fe896d00ba7c783e6ba09aefbf19182fd87df4db127c4723b",
+        "writer_version": 1
+      },
+      "event_hash": "9c450cea2fc3000769606d96057d0a7bb0c82fcca915df01be1408676c889f6c",
+      "event_id": "TEST_ONLY_BP2_E1_OCC-0001",
+      "event_reason": "OK",
+      "grant_hash": "b257beddde3a91f8595b0aa40043fda942e72e8f62fa635f0e51cceee6b8dffe",
+      "grant_id": "TEST_ONLY_BP2_TARGET_GRANT",
+      "later_read_state_hash": "",
+      "later_read_status": "STATE_ABSENT",
+      "material_eligible": false,
+      "material_reason": "NO_ELIGIBLE_MATERIAL_SOURCE",
+      "no_ghost": true,
+      "proposal_hash": "",
+      "record_hash": "",
+      "response_hash": "",
+      "response_reason": "NO_ELIGIBLE_MATERIAL_SOURCE",
+      "response_receipt_hash": "",
+      "response_status": "RESPONSE_EFFECTS_VALID_EMPTY",
+      "rule_a_content_hash": "9e4872abaeedc346fa3ea06575bb6fb5daa324a47d1d00d6015f7b660ea9cf5d",
+      "rule_lookup": "FOUND",
+      "rule_t_content_hash": "ab8afe1ae0229b2d6143c84f58cc4f2f1b0942d9f680cd14477602143991ec97",
+      "rule_t_dependency_hash": "9e4872abaeedc346fa3ea06575bb6fb5daa324a47d1d00d6015f7b660ea9cf5d",
+      "stages": [
+        {
+          "ok": true,
+          "reason": "OK",
+          "stage": "actor_ingress"
+        },
+        {
+          "ok": true,
+          "reason": "OK",
+          "stage": "event_witness_ingress"
+        },
+        {
+          "ok": true,
+          "reason": "OK",
+          "stage": "conditioning_read_only"
+        },
+        {
+          "ok": false,
+          "reason": "NO_ELIGIBLE_MATERIAL_SOURCE",
+          "stage": "material_eligibility"
+        },
+        {
+          "ok": true,
+          "reason": "NO_ELIGIBLE_MATERIAL_SOURCE",
+          "stage": "can008_response_rule_lookup"
+        },
+        {
+          "ok": true,
+          "reason": "OK",
+          "stage": "occurrence_admission"
+        },
+        {
+          "ok": true,
+          "reason": "NO_PROPOSAL",
+          "stage": "can011_target_evaluation"
+        },
+        {
+          "ok": true,
+          "reason": "COMMITTED",
+          "stage": "atomic_commit"
+        },
+        {
+          "ok": false,
+          "reason": "COMMITTED_TARGET_STATE_ABSENT",
+          "stage": "later_action_target_read"
+        },
+        {
+          "ok": false,
+          "reason": "OWNER_RECEIPT_MISSING",
+          "stage": "performed_action_admission"
+        }
+      ],
+      "target_branch": "NO_CHANGE",
+      "target_id": "",
+      "target_reason": "NO_PROPOSAL"
+    },
+    "clock": 10,
+    "contact": false,
+    "expression_port": "R31E_EXPRESSION_PORT@1",
+    "grade": "TEST_ONLY_SOURCEFREE_R31E_ACTOR_EXPRESSION_NOT_NATIVE",
+    "location": "workshop",
+    "messages": 0,
+    "native": false,
+    "present": [
+      {
+        "actor": "A",
+        "public_role": "repair"
+      },
+      {
+        "actor": "B",
+        "public_role": "finishing"
+      }
+    ],
+    "scenario": "available",
+    "scene_open": true,
+    "schema": "R31E_FIRST_NEIGHBOR_SESSION@1",
+    "target_id": "",
+    "targetless": true
+  },
+  "verify": {
+    "branch_id": "first_session",
+    "counts": {
+      "checkpoint": 4,
+      "episode": 2,
+      "perception": 6,
+      "world_event": 2
+    },
+    "errors": [],
+    "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+    "ok": true,
+    "targetless": true,
+    "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+  }
+}

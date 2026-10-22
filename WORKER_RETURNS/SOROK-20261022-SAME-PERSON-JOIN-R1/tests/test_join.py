@@ -13,6 +13,7 @@ import pytest
 
 from joined.assertion import cold_positive, positive, refusal_no_target
 from joined.closure import audit_loaded, audit_manifest
+from joined.refusal import RefusalSession
 from joined.session import JoinedSession
 from r30a.first_session import SessionRefusal
 
@@ -335,3 +336,143 @@ def test_cli_start_status_help_verify(tmp_path):
     assert verified["root"]["ok"] is True
     assert verified["closure"]["ok"] is True
     assert verified["manifest"]["ok"] is True
+
+
+def _help_observable(session):
+    result = session.do_help()
+    return {
+        "accepted": result["accepted"],
+        "tools": session.world().actor_state["A"]["tools_remaining"],
+        "operation": session.product.source["b_operation"],
+    }
+
+
+def test_b_source_edge_help_observable_and_targetless_no_target(tmp_path):
+    share = JoinedSession.start(tmp_path / "share", perform="omit")
+    refusal = RefusalSession.start(tmp_path / "refusal")
+    try:
+        assert _help_observable(share) == {
+            "accepted": True, "tools": 1, "operation": "SHARE_TOOL"}
+        assert _help_observable(refusal) == {
+            "accepted": False, "tools": 0, "operation": "REFUSE_TOOL"}
+        assert refusal.meta["target_id"] == ""
+        assert refusal.status()["targetless"] is True
+        assert refusal.verify()["targetless"] is True
+        assert any(row["kind"] == "GM01_REFUSAL" for row in refusal.episodes())
+        assert refusal.verify()["ok"] is True
+        assert share.verify()["ok"] is True
+    finally:
+        share.close()
+        refusal.close()
+
+    restored = RefusalSession.open(tmp_path / "refusal")
+    try:
+        assert _help_observable(restored)["accepted"] is False
+        assert restored.meta["target_id"] == ""
+        assert restored.verify()["ok"] is True
+    finally:
+        restored.close()
+
+
+def test_foreign_and_r29p_roots_are_refused_without_donor_mutation(tmp_path):
+    from r30a.first_session import FirstSession
+
+    left = JoinedSession.start(tmp_path / "left", perform="omit")
+    right = JoinedSession.start(tmp_path / "right", perform="e2")
+    left.close()
+    right.close()
+    meta = json.loads((tmp_path / "left" / "session.json").read_text())
+    meta["product_root"] = str((tmp_path / "right" / "product").resolve())
+    (tmp_path / "left" / "session.json").write_text(
+        json.dumps(meta, indent=2, sort_keys=True) + "\n")
+    with pytest.raises(SessionRefusal) as exc:
+        JoinedSession.open(tmp_path / "left")
+    assert exc.value.code == "FOREIGN_PRODUCT_ROOT"
+
+    donor = FirstSession.start(tmp_path / "donor", scenario="available",
+                               attention="focused")
+    donor_root = Path(donor.product.root)
+    donor.close()
+    binding = donor_root / "bp2_join.json"
+    before = binding.read_bytes()
+    meta = json.loads((tmp_path / "left" / "session.json").read_text())
+    meta["product_root"] = str(donor_root.resolve())
+    (tmp_path / "left" / "session.json").write_text(
+        json.dumps(meta, indent=2, sort_keys=True) + "\n")
+    with pytest.raises(SessionRefusal) as exc:
+        JoinedSession.open(tmp_path / "left")
+    assert exc.value.code == "FOREIGN_PRODUCT_ROOT"
+    assert binding.read_bytes() == before
+
+
+def test_coordinated_sidecar_and_meta_source_substitution_rejected(tmp_path):
+    root = tmp_path / "source"
+    session = JoinedSession.start(root, perform="omit")
+    session.close()
+    binding_path = root / "product" / "bp2_join.json"
+    binding = json.loads(binding_path.read_text())
+    tampered = dict(binding["r31j_source"])
+    tampered["b_operation"] = "REFUSE_TOOL"
+    tampered["b_quantity"] = 0
+    tampered["b_to_actor"] = "TEST_ONLY_FOREIGN_A"
+    tampered["b_actor"] = "TEST_ONLY_FOREIGN_B"
+    binding["r31j_source"] = tampered
+    binding_path.write_text(json.dumps(binding, indent=2, sort_keys=True) + "\n")
+    meta = json.loads((root / "session.json").read_text())
+    meta["j_source"] = tampered
+    (root / "session.json").write_text(
+        json.dumps(meta, indent=2, sort_keys=True) + "\n")
+
+    with pytest.raises(SessionRefusal) as exc:
+        JoinedSession.open(root)
+    assert exc.value.code == "J_PROVENANCE_MISMATCH"
+
+
+def test_branch_lineage_required_and_legitimate_fork_reopens(tmp_path):
+    root = tmp_path / "branch"
+    session = JoinedSession.start(root, perform="omit")
+    try:
+        session.fork_alt("alt")
+        assert session.branch_id == "alt"
+        assert session.meta["branch_lineage"]["current_branch"] == "alt"
+        assert session.verify()["ok"] is True
+    finally:
+        session.close()
+
+    reopened = JoinedSession.open(root)
+    try:
+        assert reopened.branch_id == "alt"
+        assert reopened.verify()["ok"] is True
+    finally:
+        reopened.close()
+
+    meta = json.loads((root / "session.json").read_text())
+    meta["branch_id"] = "alt2"
+    (root / "session.json").write_text(
+        json.dumps(meta, indent=2, sort_keys=True) + "\n")
+    with pytest.raises(SessionRefusal) as exc:
+        JoinedSession.open(root)
+    assert exc.value.code == "UNAUTHORIZED_BRANCH"
+
+
+def test_missing_orphan_and_relocated_roots_are_typed(tmp_path):
+    with pytest.raises(SessionRefusal) as exc:
+        JoinedSession.open(tmp_path / "absent")
+    assert exc.value.code == "SESSION_NOT_FOUND"
+
+    orphan = tmp_path / "orphan"
+    session = JoinedSession.start(orphan, perform="omit")
+    session.close()
+    (orphan / "session.json").unlink()
+    with pytest.raises(SessionRefusal) as exc:
+        JoinedSession.start(orphan, perform="omit")
+    assert exc.value.code == "ORPHAN_PRODUCT_ROOT"
+
+    moved = tmp_path / "moved"
+    session = JoinedSession.start(moved, perform="omit")
+    session.close()
+    relocated = tmp_path / "relocated"
+    moved.rename(relocated)
+    with pytest.raises(SessionRefusal) as exc:
+        JoinedSession.open(relocated)
+    assert exc.value.code == "SESSION_ROOT_MOVED"

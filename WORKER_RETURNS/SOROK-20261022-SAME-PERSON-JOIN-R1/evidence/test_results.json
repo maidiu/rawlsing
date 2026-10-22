@@ -1,5 +1,7 @@
 {
-  "note": "Counts are executed test entries, not a claim of unique coverage across inherited sources.",
+  "independent_v_entries": 17,
+  "note": "Counts are executed entries. Own suites are 15 join + 8 J + 15 E + 10 R30A; V suites are 10 positive + 7 hostile. No clean unique inherited union is claimed.",
+  "own_entries": 48,
   "schema": "SOROK_JOIN_E_TEST_RESULTS@1",
   "status": "PASS",
   "suites": [
@@ -31,6 +33,22 @@
       "errors": 0,
       "failures": 0,
       "file": "join_new.xml",
+      "ok": true,
+      "skipped": 0,
+      "tests": 15
+    },
+    {
+      "errors": 0,
+      "failures": 0,
+      "file": "v_hostile.xml",
+      "ok": true,
+      "skipped": 0,
+      "tests": 7
+    },
+    {
+      "errors": 0,
+      "failures": 0,
+      "file": "v_positive.xml",
       "ok": true,
       "skipped": 0,
       "tests": 10

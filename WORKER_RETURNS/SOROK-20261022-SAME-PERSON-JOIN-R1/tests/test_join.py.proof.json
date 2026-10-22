@@ -1,16 +1,27 @@
 {
-  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
   "claims": [
     {
-      "claim_id": "SOROK_JOIN_E_MATERIAL_STATE_TO_EXPRESSION",
       "actual_consumer": "JoinedSession.do_help -> R31E expression admission on the persisted C12/M6 branch",
+      "claim_id": "SOROK_JOIN_E_MATERIAL_STATE_TO_EXPRESSION",
       "claimed_dependency": "J E2/omission material action changes the persisted actor tool state, which changes the E help admission from HELP_ACCEPT to HELP_REFUSE",
-      "positive_node": "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/tests/test_join.py::test_material_omission_vs_e2_changes_help_without_patch",
       "fault": {
-        "path": "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/joined/session.py",
+        "new": "            if perform == 'e2':\n                product.material_inspect()\n            else:\n                product.material_inspect()",
         "old": "            if perform == 'e2':\n                product.material_inspect()\n            else:\n                product.record_omission()",
-        "new": "            if perform == 'e2':\n                product.material_inspect()\n            else:\n                product.material_inspect()"
-      }
+        "path": "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/joined/session.py"
+      },
+      "positive_node": "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/tests/test_join.py::test_material_omission_vs_e2_changes_help_without_patch"
+    },
+    {
+      "actual_consumer": "RefusalSession.do_help -> R31E expression admission over the derived targetless C12",
+      "claim_id": "SOROK_JOIN_E_B_SOURCE_REFUSAL_TO_TARGETLESS_SESSION",
+      "claimed_dependency": "B REFUSE_TOOL before C8 leaves no material/tool and the actual E session must refuse help; a share source leaves the tool and accepts it",
+      "fault": {
+        "new": "        self.world.actor_state['A']['tools_remaining'] = (\n            1 if source.get('material_feasible_after') else 1)\n",
+        "old": "        self.world.actor_state['A']['tools_remaining'] = (\n            1 if source.get('material_feasible_after') else 0)\n",
+        "path": "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/joined/refusal.py"
+      },
+      "positive_node": "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/tests/test_join.py::test_b_source_edge_help_observable_and_targetless_no_target"
     }
-  ]
+  ],
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1"
 }

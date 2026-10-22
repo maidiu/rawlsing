@@ -43,7 +43,7 @@ PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest -q \
   --junitxml=WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/evidence/junit/join_new.xml
 ```
 
-Expected: `10 passed`.
+Expected: `15 passed`.
 
 Frozen J test in its own process:
 
@@ -76,9 +76,9 @@ PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest -q tests/test_r30a_first_session.
   -p no:cacheprovider --junitxml=../../../../evidence/junit/e_r30a.xml
 ```
 
-Expected: `10 passed`.
+Expected: `15 passed`.
 
-These counts are executed test entries. They do not establish a clean union with the historical 202/30 claims, and the full inherited suites were not rerun by this join.
+These are 48 owned executed entries (15 join + 8 J + 15 E + 10 R30A). They do not establish a clean union with the historical 202/30 claims, and the full inherited suites were not rerun by this join.
 
 ## 3. Proof-integrity witness
 
@@ -100,3 +100,16 @@ The mutation changes the join implementation's `omit` path to perform E2 anyway;
 ## 4. Expected result
 
 A sourcefree first encounter that is materially conditioned by J's persisted C8/C9/E2 state and admitted through E before the user lens. Native C12/C11 and human A5 remain `NOT_RUN` / `HOLD`.
+
+
+## 5. Independent JOIN-V frozen suite
+
+The repaired candidate was tested against JOIN-V's frozen tests without editing them:
+
+```sh
+cd /path/to/JOIN-V-return
+SOROK_JOIN_CANDIDATE_ROOT=/path/to/SOROK-20261022-SAME-PERSON-JOIN-R1 PYTHONPATH="$PWD/tests" PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest -q tests/test_join_v_positive.py tests/test_join_v_hostile.py   -p no:cacheprovider
+```
+
+Actual: `17 passed` (10 positive + 7 hostile). Receipts: `evidence/junit/v_positive.xml`, `evidence/junit/v_hostile.xml`.
+The independent reviewer still owns the final verdict; this is a frozen-suite execution result, not self-adoption.
