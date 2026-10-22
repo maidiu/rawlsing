@@ -1,5 +1,8 @@
 # RAWLSING PRE-MAIN CANONICAL ENTRYPOINT R1
 
+**Documentary Codex-HQ orchestration implementation program (NOT OPERATIVE AUTHORITY):** [PRE-MAIN coordination record](CODEX_HQ_CONTINUOUS_ORCHESTRATION_PREMAIN_COORDINATION_20261022_R1.md) and [shared cross-HQ program](../../../../../../CROSS_HQ_CONTROL_ROOM/CODEX_HQ_OPENCODE_CONTINUOUS_ORCHESTRATION_IMPLEMENTATION_PROGRAM_20261022_R1.md). The program preserves incumbent Sorok and Pyat Codex roles and does not automatically launch workers or change PRE-MAIN scientific/actor/source permissions.
+
+
 **Status:** `PREMAIN_PROJECT_HOME_CURRENT__POSTPREMAIN_RECONCILED__CANONICAL_PREMAIN_REANCHORED__NOT_GLOBAL_MAIN_ADOPTED`
 
 ## POST-PRE-MAIN LIVE BUILD OVERLAY — 2026-09-06
