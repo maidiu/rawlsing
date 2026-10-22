@@ -1,3 +1,16 @@
+# Sorok current canonical progress revision31 — HQ-only procedure, parallel E/V/R flight
+
+Exact PRE-MAIN parent `1abd6c6a613a5aaf78fe535b22c82e0ff10a1816`; owner correction `a0d9f9c4292377aad4eeb0947eeb8efeb6b5f798` at `SOROK_PRODUCT_CONTROL_ROOM/HQ_MOTIONS/20261022_USER_HQ_ONLY_PARALLEL_FLIGHT_AND_HOSTILE_REVIEW_R1.md`. User explicitly directs Codex HQ to commission/fan-in/strategize, prohibits further product coding, dispatches workers personally on Browser/OpenCode and preserves good existing code. This supersedes direct implementation scheduling in revision30, not accession or authority limits.
+
+READY FOR USER DISPATCH, all sealed `3fe8444b4a0374d95fa9f7e60dd295049a5d3172`: JOIN-E complete coherent same-person sourcefree product; JOIN-V independent hostile original-source/oracle attacks in parallel, final exact candidate review after E returns; DEV-R independent recovery of existing developmental mechanisms and executable next path. Branches codex/sorok-join-e-20261022, codex/sorok-join-v-20261022, codex/sorok-dev-r-20261022. Full commissions WORKER_COMMISSIONS/SOROK-20261022-PARALLEL-PERSON-FLIGHT-R1/01_JOIN_E.md,02_JOIN_V.md,03_DEV_R.md. None launched by HQ; local/other-host execution UNKNOWN. No automatic messages or subagents.
+
+DONE: independently accredited human-appointed HQ, two provisional candidate tests, complete three-lane seals and launch prompts. REMAINING: implementation whole encounter/fault/cold/regressions, distinct hostile review and actual scientific developmental producer path, then separate native gates. CRITICAL BLOCKERS: no confirmed worker execution yet; native source/science/security/Pyat/human permissions remain distinct. LARGEST MOVE: three genuinely independent workstreams concurrently, not per-step commissions. FLIGHT: E and V preliminary and DEV-R can start together; only V final verdict depends on E final SHA. DELTA: parallel dispatch-ready campaign and explicit HQ-only procedure; no new runtime acceptance. Existing13dfd6bad retained as unaccepted candidate, not discarded or imposed. Hostile review needed for causal/import/persistent identity claims, not routine clerical checks.
+
+MISSING_FUNCTION_CHECK: same-root integration adapter and actual warranted developmental transformation are concrete producer/consumer questions, recovered code/resources reused first. Ordinary HQ I1 economical setting; implementation I2/S2; scientific recovery I3/S1. No current Astra necessity established. User chooses model/effort and launches. Native C12=0,C11=0,A5 NOT_RUN. Pyat rev43/R57 untouched.
+
+---
+## Historical revision30 and earlier retained
+
 # Sorok current canonical progress revision 30 — appointed Codex HQ, returned J/E, direct same-person join
 
 PRE-MAIN exact parent: `954995540077435366ebe98639b392b86b01d940`. Effective owner receipt: `6456fc57cbe05cdf69e63ef51fa6ca6198401c60` at `SOROK_PRODUCT_CONTROL_ROOM/HQ_MOTIONS/20261022_CODEX_HQ_EFFECTIVE_APPOINTMENT_AND_SAME_PERSON_EXECUTION_R1.md`. Independent ruling `3de081023406a52ec23e1ae43ade77aea485a3f8` accepts exact candidate `778c69d1a520a2be9901961f5aaeeffda8de8261`; human has now explicitly appointed it. Existing bounded Sorok scope only, no native grants. Pyat revision43/R57 read independently; J52/W52 STOP and original N11/N12 holds preserved. Pyat files unchanged.
