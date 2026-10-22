@@ -1,3 +1,14 @@
+# Sorok current progress revision32 — three returned lanes and coherent repair
+
+Exact PRE-MAIN parent43db9d0a29f8cd7b915f6b778b08583b9a6c31d8; owner intake2971d1deb7c9de4678e26202720d7ecd996977f0, `SOROK_PRODUCT_CONTROL_ROOM/HQ_MOTIONS/20261022_THREE_RETURN_FANIN_AND_EXISTING_LANE_CONTINUATIONS_R1.md`; continuations sealed141b5fe1e393621862791281e980c450715bbb9a. E c367777f83367240352c267a2d3750abb7f09397 reports broader sourcefree encounter and43 test entries; V8fe8940023672ee5005397ee80280b5c6b0aed31 independently preserves10 positives and exposes7 hostile failures on old13dfd6bad, NOT final E; DEV-Ra08f8056250b3edde3bd9dbfa776df7ae20de03c recovers actual rule/target transport and material H2 with H0 and original A/T unissued. Changed terrain25/15/4 all permitted. HQ source/report intake, no runtime rerun or product code.
+
+DONE: three material returns and integrated counterexample judgment. REMAINING: exact final E hostile review and provenance/no-target/source-specific consumer repair, finite original-science docket, all native gates. CRITICAL BLOCKERS: mutable root/branch/source binding and incomplete B source-edge proof; no native original science/security/world/human rights. LARGEST MOVE: SAME E repairs coherent product while SAME V attacks current exact cut; SAME DEV-R corrects oracle and returns finite source-science docket. FLIGHT: three continuations human-dispatch-ready; no additional workers launched. DELTA: candidate retained, real hostile defects surfaced, no full engineering adoption. Native C12=0,C11=0,A5 NOT_RUN; Pyat rev43/R57 untouched.
+
+HQ decisions: legitimate forks allowed, arbitrary metadata substitution denied; distinct fresh roots need not identical targets; B refusal may lack tool and thus does not imply help acceptance; E's mutation proves A-action dependence only, not upstream B source. Sourcefree derived no-target adapter permitted within current worker terrain, never mint target/grant. Detailed four-column intake and courts in owner motion. HQ commissions/fans-in only, user dispatches Browser/OpenCode and selects intelligence. Current bounded I2 judgment complete; economical I1 HQ next, no Astra necessity demonstrated.
+
+---
+## Historical revision31 and earlier retained
+
 # Sorok current canonical progress revision31 — HQ-only procedure, parallel E/V/R flight
 
 Exact PRE-MAIN parent `1abd6c6a613a5aaf78fe535b22c82e0ff10a1816`; owner correction `a0d9f9c4292377aad4eeb0947eeb8efeb6b5f798` at `SOROK_PRODUCT_CONTROL_ROOM/HQ_MOTIONS/20261022_USER_HQ_ONLY_PARALLEL_FLIGHT_AND_HOSTILE_REVIEW_R1.md`. User explicitly directs Codex HQ to commission/fan-in/strategize, prohibits further product coding, dispatches workers personally on Browser/OpenCode and preserves good existing code. This supersedes direct implementation scheduling in revision30, not accession or authority limits.
