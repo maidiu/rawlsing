@@ -1,0 +1,2295 @@
+{
+  "all_pass": true,
+  "case_count": 36,
+  "gate_contract": "R56-R00P-CLAIM-TRANSITION-GATE@1.1.0",
+  "passed": 36,
+  "policy_commit": "6d95a78bf6b7bcf70022e303a151255e65edc38a",
+  "policy_root": "CROSS_HQ_CONTROL_ROOM/universal_execution_policy/r56_sourcefree_v1/revisions/r2",
+  "results": [
+    {
+      "actual": {
+        "considered_expected_ids": [
+          "OP.TEST.ARC1.COND.LUMEN_AZUR_ALPHA1",
+          "OP.TEST.ARC1.COND.LUMEN_AZUR_BETA1",
+          "OP.TEST.ARC1.CONDITION.UNADMINISTERED",
+          "OP.TEST.ARC1.MARG.LUMEN_RAW",
+          "OP.TEST.ARC1.MARG.LUMEN_W1",
+          "OP.TEST.DUO2.COND.PERSON_POSITION",
+          "OP.TEST.DUO2.JOINT.SWAPPED",
+          "OP.TEST.DUO2.JOINT.UNLINKED",
+          "OP.TEST.DUO2.MARG.HOUSEHOLD",
+          "OP.TEST.DUO2.MARG.PERSON",
+          "OP.TEST.REP3.FRONTIER.HELD_DIRECTION",
+          "OP.TEST.REP3.MARG.SCORE_T0",
+          "OP.TEST.REP3.MARG.SCORE_T1",
+          "OP.TEST.REP3.MR.SLOT0",
+          "OP.TEST.REP3.MR.SLOT1",
+          "OP.TEST.REP3.PAIR.SCORE_ORDERED",
+          "OP.TEST.REP3.RANK.ONE_TWO",
+          "OP.TEST.REP3.ROUTE.FORMZ"
+        ],
+        "consumer_evidence": null,
+        "decision": "ALLOW_LOCAL_POLICY_CONSISTENT",
+        "eligibility_partition": {
+          "ELIGIBLE": 13,
+          "HELD": 2,
+          "INAPPLICABLE_PROVED": 1,
+          "PROHIBITED": 1,
+          "UNKNOWN": 1
+        },
+        "grade_ceiling": "LOCAL_ONLY_POLICY_CONSISTENT",
+        "materialized_variant_ref": null,
+        "reason_rule_ids": [
+          "P00_INDEPENDENT_PIN",
+          "P06_NO_DROP_MULTISETS",
+          "P08_CLAIM_GRADE_CEILING"
+        ],
+        "submitted_id_diff": {
+          "duplicate": [],
+          "extra": [],
+          "missing": [],
+          "semantic_mismatch": []
+        }
+      },
+      "case_id": "C00",
+      "expected": {
+        "decision": "ALLOW_LOCAL_POLICY_CONSISTENT",
+        "expected_ELIGIBLE": 13,
+        "expected_HELD": 2,
+        "expected_INAPPLICABLE_PROVED": 1,
+        "expected_PROHIBITED": 1,
+        "expected_UNKNOWN": 1,
+        "expected_count": 18,
+        "grade_ceiling": "LOCAL_ONLY_POLICY_CONSISTENT",
+        "reason_rule_ids": [
+          "P00_INDEPENDENT_PIN",
+          "P06_NO_DROP_MULTISETS",
+          "P08_CLAIM_GRADE_CEILING"
+        ]
+      },
+      "mock_only": false,
+      "pass": true,
+      "problems": [],
+      "title": "Full independently selected 18-operation TEST_ONLY policy is internally consistent",
+      "variant_id": "CANONICAL_V1"
+    },
+    {
+      "actual": {
+        "considered_expected_ids": [
+          "OP.TEST.ARC1.COND.LUMEN_AZUR_ALPHA1",
+          "OP.TEST.ARC1.COND.LUMEN_AZUR_BETA1",
+          "OP.TEST.ARC1.CONDITION.UNADMINISTERED",
+          "OP.TEST.ARC1.MARG.LUMEN_RAW",
+          "OP.TEST.ARC1.MARG.LUMEN_W1",
+          "OP.TEST.DUO2.COND.PERSON_POSITION",
+          "OP.TEST.DUO2.JOINT.SWAPPED",
+          "OP.TEST.DUO2.JOINT.UNLINKED",
+          "OP.TEST.DUO2.MARG.HOUSEHOLD",
+          "OP.TEST.DUO2.MARG.PERSON",
+          "OP.TEST.REP3.FRONTIER.HELD_DIRECTION",
+          "OP.TEST.REP3.MARG.SCORE_T0",
+          "OP.TEST.REP3.MARG.SCORE_T1",
+          "OP.TEST.REP3.MR.SLOT0",
+          "OP.TEST.REP3.MR.SLOT1",
+          "OP.TEST.REP3.PAIR.SCORE_ORDERED",
+          "OP.TEST.REP3.RANK.ONE_TWO",
+          "OP.TEST.REP3.ROUTE.FORMZ"
+        ],
+        "consumer_evidence": null,
+        "decision": "ALLOW_LOCAL_POLICY_CONSISTENT",
+        "eligibility_partition": {
+          "ELIGIBLE": 4,
+          "HELD": 0,
+          "INAPPLICABLE_PROVED": 0,
+          "PROHIBITED": 1,
+          "UNKNOWN": 0
+        },
+        "grade_ceiling": "LOCAL_ONLY_POLICY_CONSISTENT",
+        "materialized_variant_ref": null,
+        "reason_rule_ids": [
+          "P00_INDEPENDENT_PIN",
+          "P06_NO_DROP_MULTISETS",
+          "P08_CLAIM_GRADE_CEILING"
+        ],
+        "submitted_id_diff": {
+          "duplicate": [],
+          "extra": [],
+          "missing": [
+            "OP.TEST.DUO2.COND.PERSON_POSITION",
+            "OP.TEST.DUO2.JOINT.SWAPPED",
+            "OP.TEST.DUO2.JOINT.UNLINKED",
+            "OP.TEST.DUO2.MARG.HOUSEHOLD",
+            "OP.TEST.DUO2.MARG.PERSON",
+            "OP.TEST.REP3.FRONTIER.HELD_DIRECTION",
+            "OP.TEST.REP3.MARG.SCORE_T0",
+            "OP.TEST.REP3.MARG.SCORE_T1",
+            "OP.TEST.REP3.MR.SLOT0",
+            "OP.TEST.REP3.MR.SLOT1",
+            "OP.TEST.REP3.PAIR.SCORE_ORDERED",
+            "OP.TEST.REP3.RANK.ONE_TWO",
+            "OP.TEST.REP3.ROUTE.FORMZ"
+          ],
+          "semantic_mismatch": []
+        }
+      },
+      "case_id": "C01",
+      "expected": {
+        "decision": "ALLOW_LOCAL_POLICY_CONSISTENT",
+        "grade_ceiling": "LOCAL_ONLY_POLICY_CONSISTENT",
+        "reason_rule_ids": [
+          "P00_INDEPENDENT_PIN",
+          "P06_NO_DROP_MULTISETS",
+          "P08_CLAIM_GRADE_CEILING"
+        ],
+        "remaining_pinned_operations_explicit": "OTHER_13_NOT_CLAIMED"
+      },
+      "mock_only": false,
+      "pass": true,
+      "problems": [],
+      "title": "Valid bounded local subset stays strictly local",
+      "variant_id": "CANONICAL_V1"
+    },
+    {
+      "actual": {
+        "considered_expected_ids": [
+          "OP.TEST.ARC1.COND.LUMEN_AZUR_ALPHA1",
+          "OP.TEST.ARC1.COND.LUMEN_AZUR_BETA1",
+          "OP.TEST.ARC1.CONDITION.UNADMINISTERED",
+          "OP.TEST.ARC1.MARG.LUMEN_RAW",
+          "OP.TEST.ARC1.MARG.LUMEN_W1",
+          "OP.TEST.DUO2.COND.PERSON_POSITION",
+          "OP.TEST.DUO2.JOINT.SWAPPED",
+          "OP.TEST.DUO2.JOINT.UNLINKED",
+          "OP.TEST.DUO2.MARG.HOUSEHOLD",
+          "OP.TEST.DUO2.MARG.PERSON",
+          "OP.TEST.REP3.FRONTIER.HELD_DIRECTION",
+          "OP.TEST.REP3.MARG.SCORE_T0",
+          "OP.TEST.REP3.MARG.SCORE_T1",
+          "OP.TEST.REP3.MR.SLOT0",
+          "OP.TEST.REP3.MR.SLOT1",
+          "OP.TEST.REP3.PAIR.SCORE_ORDERED",
+          "OP.TEST.REP3.RANK.ONE_TWO",
+          "OP.TEST.REP3.ROUTE.FORMZ"
+        ],
+        "consumer_evidence": null,
+        "decision": "HOLD_GENERIC_R09",
+        "eligibility_partition": {
+          "ELIGIBLE": 13,
+          "HELD": 2,
+          "INAPPLICABLE_PROVED": 1,
+          "PROHIBITED": 1,
+          "UNKNOWN": 1
+        },
+        "grade_ceiling": "LOCAL_ONLY_POLICY_CONSISTENT",
+        "materialized_variant_ref": "CANONICAL_V1",
+        "reason_rule_ids": [
+          "P08_CLAIM_GRADE_CEILING",
+          "P09_RUNTIME_PROVENANCE_HOLD"
+        ],
+        "submitted_id_diff": {
+          "duplicate": [],
+          "extra": [],
+          "missing": [],
+          "semantic_mismatch": []
+        }
+      },
+      "case_id": "C02",
+      "expected": {
+        "decision": "HOLD_GENERIC_R09",
+        "grade_ceiling": "LOCAL_ONLY_POLICY_CONSISTENT",
+        "reason_rule_ids": [
+          "P08_CLAIM_GRADE_CEILING",
+          "P09_RUNTIME_PROVENANCE_HOLD"
+        ]
+      },
+      "mock_only": false,
+      "pass": true,
+      "problems": [],
+      "title": "Correct local packet requesting generic qualification remains held without R09",
+      "variant_id": "CANONICAL_V1"
+    },
+    {
+      "actual": {
+        "considered_expected_ids": [
+          "OP.TEST.ARC1.COND.LUMEN_AZUR_ALPHA1",
+          "OP.TEST.ARC1.COND.LUMEN_AZUR_BETA1",
+          "OP.TEST.ARC1.CONDITION.UNADMINISTERED",
+          "OP.TEST.ARC1.MARG.LUMEN_RAW",
+          "OP.TEST.ARC1.MARG.LUMEN_W1",
+          "OP.TEST.DUO2.COND.PERSON_POSITION",
+          "OP.TEST.DUO2.JOINT.SWAPPED",
+          "OP.TEST.DUO2.JOINT.UNLINKED",
+          "OP.TEST.DUO2.MARG.HOUSEHOLD",
+          "OP.TEST.DUO2.MARG.PERSON",
+          "OP.TEST.REP3.FRONTIER.HELD_DIRECTION",
+          "OP.TEST.REP3.MARG.SCORE_T0",
+          "OP.TEST.REP3.MARG.SCORE_T1",
+          "OP.TEST.REP3.MR.SLOT0",
+          "OP.TEST.REP3.MR.SLOT1",
+          "OP.TEST.REP3.PAIR.SCORE_ORDERED",
+          "OP.TEST.REP3.RANK.ONE_TWO",
+          "OP.TEST.REP3.ROUTE.FORMZ"
+        ],
+        "consumer_evidence": null,
+        "decision": "REFUSE_FRONTIER",
+        "eligibility_partition": {
+          "ELIGIBLE": 0,
+          "HELD": 0,
+          "INAPPLICABLE_PROVED": 0,
+          "PROHIBITED": 0,
+          "UNKNOWN": 2
+        },
+        "grade_ceiling": "NONE",
+        "materialized_variant_ref": null,
+        "reason_rule_ids": [
+          "P06_NO_DROP_MULTISETS",
+          "P08_CLAIM_GRADE_CEILING"
+        ],
+        "submitted_id_diff": {
+          "duplicate": [],
+          "extra": [
+            "OP.TEST.Q301_2.DIST",
+            "OP.TEST.Q301_7.DIST"
+          ],
+          "missing": [
+            "OP.TEST.ARC1.COND.LUMEN_AZUR_ALPHA1",
+            "OP.TEST.ARC1.COND.LUMEN_AZUR_BETA1",
+            "OP.TEST.ARC1.CONDITION.UNADMINISTERED",
+            "OP.TEST.ARC1.MARG.LUMEN_RAW",
+            "OP.TEST.ARC1.MARG.LUMEN_W1",
+            "OP.TEST.DUO2.COND.PERSON_POSITION",
+            "OP.TEST.DUO2.JOINT.SWAPPED",
+            "OP.TEST.DUO2.JOINT.UNLINKED",
+            "OP.TEST.DUO2.MARG.HOUSEHOLD",
+            "OP.TEST.DUO2.MARG.PERSON",
+            "OP.TEST.REP3.FRONTIER.HELD_DIRECTION",
+            "OP.TEST.REP3.MARG.SCORE_T0",
+            "OP.TEST.REP3.MARG.SCORE_T1",
+            "OP.TEST.REP3.MR.SLOT0",
+            "OP.TEST.REP3.MR.SLOT1",
+            "OP.TEST.REP3.PAIR.SCORE_ORDERED",
+            "OP.TEST.REP3.RANK.ONE_TWO",
+            "OP.TEST.REP3.ROUTE.FORMZ"
+          ],
+          "semantic_mismatch": []
+        }
+      },
+      "case_id": "C03",
+      "expected": {
+        "decision": "REFUSE_FRONTIER",
+        "expected_extra_count": 2,
+        "expected_missing_count": 18,
+        "grade_ceiling": "NONE",
+        "reason_rule_ids": [
+          "P06_NO_DROP_MULTISETS",
+          "P08_CLAIM_GRADE_CEILING"
+        ]
+      },
+      "mock_only": false,
+      "pass": true,
+      "problems": [],
+      "title": "Two selected q301-labelled operations cannot become full/generic frontier regardless of lawful literal names",
+      "variant_id": "CANONICAL_V1"
+    },
+    {
+      "actual": {
+        "considered_expected_ids": [
+          "OP.TEST.ARC1.COND.LUMEN_AZUR_ALPHA1",
+          "OP.TEST.ARC1.COND.LUMEN_AZUR_BETA1",
+          "OP.TEST.ARC1.CONDITION.UNADMINISTERED",
+          "OP.TEST.ARC1.MARG.LUMEN_RAW",
+          "OP.TEST.ARC1.MARG.LUMEN_W1",
+          "OP.TEST.DUO2.COND.PERSON_POSITION",
+          "OP.TEST.DUO2.JOINT.SWAPPED",
+          "OP.TEST.DUO2.JOINT.UNLINKED",
+          "OP.TEST.DUO2.MARG.HOUSEHOLD",
+          "OP.TEST.DUO2.MARG.PERSON",
+          "OP.TEST.REP3.FRONTIER.HELD_DIRECTION",
+          "OP.TEST.REP3.MARG.SCORE_T0",
+          "OP.TEST.REP3.MARG.SCORE_T1",
+          "OP.TEST.REP3.MR.SLOT0",
+          "OP.TEST.REP3.MR.SLOT1",
+          "OP.TEST.REP3.PAIR.SCORE_ORDERED",
+          "OP.TEST.REP3.RANK.ONE_TWO",
+          "OP.TEST.REP3.ROUTE.FORMZ"
+        ],
+        "consumer_evidence": null,
+        "decision": "REFUSE_FRONTIER",
+        "eligibility_partition": {
+          "ELIGIBLE": 13,
+          "HELD": 2,
+          "INAPPLICABLE_PROVED": 1,
+          "PROHIBITED": 1,
+          "UNKNOWN": 1
+        },
+        "grade_ceiling": "NONE",
+        "materialized_variant_ref": null,
+        "reason_rule_ids": [
+          "P06_NO_DROP_MULTISETS",
+          "P08_CLAIM_GRADE_CEILING"
+        ],
+        "submitted_id_diff": {
+          "duplicate": [],
+          "extra": [],
+          "missing": [],
+          "semantic_mismatch": []
+        }
+      },
+      "case_id": "C04",
+      "expected": {
+        "decision": "REFUSE_FRONTIER",
+        "grade_ceiling": "NONE",
+        "reason_rule_ids": [
+          "P06_NO_DROP_MULTISETS",
+          "P08_CLAIM_GRADE_CEILING"
+        ]
+      },
+      "mock_only": false,
+      "pass": true,
+      "problems": [],
+      "title": "Three relabelled clones do not cover distinct edge classes",
+      "variant_id": "CANONICAL_V1"
+    },
+    {
+      "actual": {
+        "considered_expected_ids": [
+          "OP.TEST.ARC1.COND.LUMEN_AZUR_ALPHA1",
+          "OP.TEST.ARC1.COND.LUMEN_AZUR_BETA1",
+          "OP.TEST.ARC1.CONDITION.UNADMINISTERED",
+          "OP.TEST.ARC1.MARG.LUMEN_RAW",
+          "OP.TEST.ARC1.MARG.LUMEN_W1",
+          "OP.TEST.DUO2.COND.PERSON_POSITION",
+          "OP.TEST.DUO2.JOINT.SWAPPED",
+          "OP.TEST.DUO2.JOINT.UNLINKED",
+          "OP.TEST.DUO2.MARG.HOUSEHOLD",
+          "OP.TEST.DUO2.MARG.PERSON",
+          "OP.TEST.REP3.FRONTIER.HELD_DIRECTION",
+          "OP.TEST.REP3.MARG.SCORE_T0",
+          "OP.TEST.REP3.MARG.SCORE_T1",
+          "OP.TEST.REP3.MR.SLOT0",
+          "OP.TEST.REP3.MR.SLOT1",
+          "OP.TEST.REP3.PAIR.SCORE_ORDERED",
+          "OP.TEST.REP3.RANK.ONE_TWO",
+          "OP.TEST.REP3.ROUTE.FORMZ"
+        ],
+        "consumer_evidence": null,
+        "decision": "REFUSE_PIN",
+        "eligibility_partition": {
+          "ELIGIBLE": 13,
+          "HELD": 2,
+          "INAPPLICABLE_PROVED": 1,
+          "PROHIBITED": 1,
+          "UNKNOWN": 1
+        },
+        "grade_ceiling": "NONE",
+        "materialized_variant_ref": null,
+        "reason_rule_ids": [
+          "P00_INDEPENDENT_PIN"
+        ],
+        "submitted_id_diff": {
+          "duplicate": [],
+          "extra": [],
+          "missing": [],
+          "semantic_mismatch": []
+        }
+      },
+      "case_id": "C05",
+      "expected": {
+        "decision": "REFUSE_PIN",
+        "grade_ceiling": "NONE",
+        "reason_rule_ids": [
+          "P00_INDEPENDENT_PIN"
+        ]
+      },
+      "mock_only": false,
+      "pass": true,
+      "problems": [],
+      "title": "Candidate names its own matching policy/digest pair",
+      "variant_id": "CANONICAL_V1"
+    },
+    {
+      "actual": {
+        "considered_expected_ids": [
+          "OP.TEST.ARC1.COND.LUMEN_AZUR_ALPHA1",
+          "OP.TEST.ARC1.COND.LUMEN_AZUR_BETA1",
+          "OP.TEST.ARC1.CONDITION.UNADMINISTERED",
+          "OP.TEST.ARC1.MARG.LUMEN_RAW",
+          "OP.TEST.ARC1.MARG.LUMEN_W1",
+          "OP.TEST.DUO2.COND.PERSON_POSITION",
+          "OP.TEST.DUO2.JOINT.SWAPPED",
+          "OP.TEST.DUO2.JOINT.UNLINKED",
+          "OP.TEST.DUO2.MARG.HOUSEHOLD",
+          "OP.TEST.DUO2.MARG.PERSON",
+          "OP.TEST.REP3.FRONTIER.HELD_DIRECTION",
+          "OP.TEST.REP3.MARG.SCORE_T0",
+          "OP.TEST.REP3.MARG.SCORE_T1",
+          "OP.TEST.REP3.MR.SLOT0",
+          "OP.TEST.REP3.MR.SLOT1",
+          "OP.TEST.REP3.PAIR.SCORE_ORDERED",
+          "OP.TEST.REP3.RANK.ONE_TWO",
+          "OP.TEST.REP3.ROUTE.FORMZ"
+        ],
+        "consumer_evidence": null,
+        "decision": "REFUSE_FORGED_EVIDENCE",
+        "eligibility_partition": {
+          "ELIGIBLE": 13,
+          "HELD": 2,
+          "INAPPLICABLE_PROVED": 1,
+          "PROHIBITED": 1,
+          "UNKNOWN": 1
+        },
+        "grade_ceiling": "NONE",
+        "materialized_variant_ref": null,
+        "reason_rule_ids": [
+          "P09_RUNTIME_PROVENANCE_HOLD"
+        ],
+        "submitted_id_diff": {
+          "duplicate": [],
+          "extra": [],
+          "missing": [],
+          "semantic_mismatch": []
+        }
+      },
+      "case_id": "C06",
+      "expected": {
+        "decision": "REFUSE_FORGED_EVIDENCE",
+        "grade_ceiling": "NONE",
+        "reason_rule_ids": [
+          "P09_RUNTIME_PROVENANCE_HOLD"
+        ]
+      },
+      "mock_only": false,
+      "pass": true,
+      "problems": [],
+      "title": "Fabricated native=true Boolean cannot attest execution",
+      "variant_id": "CANONICAL_V1"
+    },
+    {
+      "actual": {
+        "considered_expected_ids": [
+          "OP.TEST.ARC1.COND.LUMEN_AZUR_ALPHA1",
+          "OP.TEST.ARC1.COND.LUMEN_AZUR_BETA1",
+          "OP.TEST.ARC1.CONDITION.UNADMINISTERED",
+          "OP.TEST.ARC1.MARG.LUMEN_RAW",
+          "OP.TEST.ARC1.MARG.LUMEN_W1",
+          "OP.TEST.DUO2.COND.PERSON_POSITION",
+          "OP.TEST.DUO2.JOINT.SWAPPED",
+          "OP.TEST.DUO2.JOINT.UNLINKED",
+          "OP.TEST.DUO2.MARG.HOUSEHOLD",
+          "OP.TEST.DUO2.MARG.PERSON",
+          "OP.TEST.REP3.FRONTIER.HELD_DIRECTION",
+          "OP.TEST.REP3.MARG.SCORE_T0",
+          "OP.TEST.REP3.MARG.SCORE_T1",
+          "OP.TEST.REP3.MR.SLOT0",
+          "OP.TEST.REP3.MR.SLOT1",
+          "OP.TEST.REP3.PAIR.SCORE_ORDERED",
+          "OP.TEST.REP3.RANK.ONE_TWO",
+          "OP.TEST.REP3.ROUTE.FORMZ"
+        ],
+        "consumer_evidence": null,
+        "decision": "REFUSE_FORGED_EVIDENCE",
+        "eligibility_partition": {
+          "ELIGIBLE": 13,
+          "HELD": 2,
+          "INAPPLICABLE_PROVED": 1,
+          "PROHIBITED": 1,
+          "UNKNOWN": 1
+        },
+        "grade_ceiling": "NONE",
+        "materialized_variant_ref": null,
+        "reason_rule_ids": [
+          "P09_RUNTIME_PROVENANCE_HOLD",
+          "P15_ACTUAL_CONSUMER"
+        ],
+        "submitted_id_diff": {
+          "duplicate": [],
+          "extra": [],
+          "missing": [],
+          "semantic_mismatch": []
+        }
+      },
+      "case_id": "C07",
+      "expected": {
+        "decision": "REFUSE_FORGED_EVIDENCE",
+        "grade_ceiling": "NONE",
+        "reason_rule_ids": [
+          "P09_RUNTIME_PROVENANCE_HOLD",
+          "P15_ACTUAL_CONSUMER"
+        ]
+      },
+      "mock_only": false,
+      "pass": true,
+      "problems": [],
+      "title": "Labelled evaluator trace without actual call",
+      "variant_id": "CANONICAL_V1"
+    },
+    {
+      "actual": {
+        "considered_expected_ids": [
+          "OP.TEST.ARC1.COND.LUMEN_AZUR_ALPHA1",
+          "OP.TEST.ARC1.COND.LUMEN_AZUR_BETA1",
+          "OP.TEST.ARC1.CONDITION.UNADMINISTERED",
+          "OP.TEST.ARC1.MARG.LUMEN_RAW",
+          "OP.TEST.ARC1.MARG.LUMEN_W1",
+          "OP.TEST.DUO2.COND.PERSON_POSITION",
+          "OP.TEST.DUO2.JOINT.SWAPPED",
+          "OP.TEST.DUO2.JOINT.UNLINKED",
+          "OP.TEST.DUO2.MARG.HOUSEHOLD",
+          "OP.TEST.DUO2.MARG.PERSON",
+          "OP.TEST.REP3.FRONTIER.HELD_DIRECTION",
+          "OP.TEST.REP3.MARG.SCORE_T0",
+          "OP.TEST.REP3.MARG.SCORE_T1",
+          "OP.TEST.REP3.MR.SLOT0",
+          "OP.TEST.REP3.MR.SLOT1",
+          "OP.TEST.REP3.PAIR.SCORE_ORDERED",
+          "OP.TEST.REP3.RANK.ONE_TWO",
+          "OP.TEST.REP3.ROUTE.FORMZ"
+        ],
+        "consumer_evidence": null,
+        "decision": "REFUSE_FRONTIER",
+        "eligibility_partition": {
+          "ELIGIBLE": 12,
+          "HELD": 2,
+          "INAPPLICABLE_PROVED": 1,
+          "PROHIBITED": 1,
+          "UNKNOWN": 3
+        },
+        "grade_ceiling": "NONE",
+        "materialized_variant_ref": null,
+        "reason_rule_ids": [
+          "P06_NO_DROP_MULTISETS"
+        ],
+        "submitted_id_diff": {
+          "duplicate": [
+            "OP.TEST.REP3.PAIR.FORGED"
+          ],
+          "extra": [
+            "OP.TEST.REP3.PAIR.FORGED"
+          ],
+          "missing": [
+            "OP.TEST.REP3.PAIR.SCORE_ORDERED"
+          ],
+          "semantic_mismatch": []
+        }
+      },
+      "case_id": "C08",
+      "expected": {
+        "decision": "REFUSE_FRONTIER",
+        "exact_diff": {
+          "extra": [
+            "OP.TEST.REP3.PAIR.FORGED"
+          ],
+          "missing": [
+            "OP.TEST.REP3.PAIR.SCORE_ORDERED"
+          ]
+        },
+        "grade_ceiling": "NONE",
+        "reason_rule_ids": [
+          "P06_NO_DROP_MULTISETS"
+        ],
+        "submitted_count_unchanged": true
+      },
+      "mock_only": false,
+      "pass": true,
+      "problems": [],
+      "title": "Count-preserving swap missing expected operation and adding alien one",
+      "variant_id": "CANONICAL_V1"
+    },
+    {
+      "actual": {
+        "considered_expected_ids": [
+          "OP.TEST.ARC1.COND.LUMEN_AZUR_ALPHA1",
+          "OP.TEST.ARC1.COND.LUMEN_AZUR_BETA1",
+          "OP.TEST.ARC1.CONDITION.UNADMINISTERED",
+          "OP.TEST.ARC1.MARG.LUMEN_RAW",
+          "OP.TEST.ARC1.MARG.LUMEN_W1",
+          "OP.TEST.DUO2.COND.PERSON_POSITION",
+          "OP.TEST.DUO2.JOINT.SWAPPED",
+          "OP.TEST.DUO2.JOINT.UNLINKED",
+          "OP.TEST.DUO2.MARG.HOUSEHOLD",
+          "OP.TEST.DUO2.MARG.PERSON",
+          "OP.TEST.REP3.FRONTIER.HELD_DIRECTION",
+          "OP.TEST.REP3.MARG.SCORE_T0",
+          "OP.TEST.REP3.MARG.SCORE_T1",
+          "OP.TEST.REP3.MR.SLOT0",
+          "OP.TEST.REP3.MR.SLOT1",
+          "OP.TEST.REP3.PAIR.SCORE_ORDERED",
+          "OP.TEST.REP3.RANK.ONE_TWO",
+          "OP.TEST.REP3.ROUTE.FORMZ"
+        ],
+        "consumer_evidence": null,
+        "decision": "REFUSE_FRONTIER",
+        "eligibility_partition": {
+          "ELIGIBLE": 13,
+          "HELD": 2,
+          "INAPPLICABLE_PROVED": 1,
+          "PROHIBITED": 1,
+          "UNKNOWN": 1
+        },
+        "grade_ceiling": "NONE",
+        "materialized_variant_ref": null,
+        "reason_rule_ids": [
+          "P01_OCCURRENCE_ROLE_AND_MEASURE",
+          "P06_NO_DROP_MULTISETS"
+        ],
+        "submitted_id_diff": {
+          "duplicate": [],
+          "extra": [],
+          "missing": [],
+          "semantic_mismatch": []
+        }
+      },
+      "case_id": "C09",
+      "expected": {
+        "decision": "REFUSE_FRONTIER",
+        "grade_ceiling": "NONE",
+        "reason_rule_ids": [
+          "P01_OCCURRENCE_ROLE_AND_MEASURE",
+          "P06_NO_DROP_MULTISETS"
+        ]
+      },
+      "mock_only": false,
+      "pass": true,
+      "problems": [],
+      "title": "Duplicate item/form/repeat occurrence preimage",
+      "variant_id": "CANONICAL_V1"
+    },
+    {
+      "actual": {
+        "considered_expected_ids": [
+          "OP.TEST.ARC1.COND.LUMEN_AZUR_ALPHA1",
+          "OP.TEST.ARC1.COND.LUMEN_AZUR_BETA1",
+          "OP.TEST.ARC1.CONDITION.UNADMINISTERED",
+          "OP.TEST.ARC1.MARG.LUMEN_RAW",
+          "OP.TEST.ARC1.MARG.LUMEN_W1",
+          "OP.TEST.DUO2.COND.PERSON_POSITION",
+          "OP.TEST.DUO2.JOINT.SWAPPED",
+          "OP.TEST.DUO2.JOINT.UNLINKED",
+          "OP.TEST.DUO2.MARG.HOUSEHOLD",
+          "OP.TEST.DUO2.MARG.PERSON",
+          "OP.TEST.REP3.FRONTIER.HELD_DIRECTION",
+          "OP.TEST.REP3.MARG.SCORE_T0",
+          "OP.TEST.REP3.MARG.SCORE_T1",
+          "OP.TEST.REP3.MR.SLOT0",
+          "OP.TEST.REP3.MR.SLOT1",
+          "OP.TEST.REP3.PAIR.SCORE_ORDERED",
+          "OP.TEST.REP3.RANK.ONE_TWO",
+          "OP.TEST.REP3.ROUTE.FORMZ"
+        ],
+        "consumer_evidence": null,
+        "decision": "REFUSE_STATUS",
+        "eligibility_partition": {
+          "ELIGIBLE": 15,
+          "HELD": 2,
+          "INAPPLICABLE_PROVED": 0,
+          "PROHIBITED": 0,
+          "UNKNOWN": 1
+        },
+        "grade_ceiling": "NONE",
+        "materialized_variant_ref": null,
+        "reason_rule_ids": [
+          "P02_NO_ADMIN_AS_CONDITION",
+          "P04_NOT_ADMINISTERED",
+          "P07_SEPARATE_STATES"
+        ],
+        "submitted_id_diff": {
+          "duplicate": [],
+          "extra": [],
+          "missing": [],
+          "semantic_mismatch": []
+        }
+      },
+      "case_id": "C10",
+      "expected": {
+        "decision": "REFUSE_STATUS",
+        "grade_ceiling": "NONE",
+        "reason_rule_ids": [
+          "P02_NO_ADMIN_AS_CONDITION",
+          "P04_NOT_ADMINISTERED",
+          "P07_SEPARATE_STATES"
+        ]
+      },
+      "mock_only": false,
+      "pass": true,
+      "problems": [],
+      "title": "Promoting administration-only/unadministered operation to eligible",
+      "variant_id": "CANONICAL_V1"
+    },
+    {
+      "actual": {
+        "considered_expected_ids": [
+          "OP.TEST.ARC1.COND.LUMEN_AZUR_ALPHA1",
+          "OP.TEST.ARC1.COND.LUMEN_AZUR_BETA1",
+          "OP.TEST.ARC1.CONDITION.UNADMINISTERED",
+          "OP.TEST.ARC1.MARG.LUMEN_RAW",
+          "OP.TEST.ARC1.MARG.LUMEN_W1",
+          "OP.TEST.DUO2.COND.PERSON_POSITION",
+          "OP.TEST.DUO2.JOINT.SWAPPED",
+          "OP.TEST.DUO2.JOINT.UNLINKED",
+          "OP.TEST.DUO2.MARG.HOUSEHOLD",
+          "OP.TEST.DUO2.MARG.PERSON",
+          "OP.TEST.REP3.FRONTIER.HELD_DIRECTION",
+          "OP.TEST.REP3.MARG.SCORE_T0",
+          "OP.TEST.REP3.MARG.SCORE_T1",
+          "OP.TEST.REP3.MR.SLOT0",
+          "OP.TEST.REP3.MR.SLOT1",
+          "OP.TEST.REP3.PAIR.SCORE_ORDERED",
+          "OP.TEST.REP3.RANK.ONE_TWO",
+          "OP.TEST.REP3.ROUTE.FORMZ"
+        ],
+        "consumer_evidence": null,
+        "decision": "REFUSE_STATUS",
+        "eligibility_partition": {
+          "ELIGIBLE": 13,
+          "HELD": 2,
+          "INAPPLICABLE_PROVED": 1,
+          "PROHIBITED": 1,
+          "UNKNOWN": 1
+        },
+        "grade_ceiling": "NONE",
+        "materialized_variant_ref": null,
+        "reason_rule_ids": [
+          "P07_SEPARATE_STATES",
+          "P06_NO_DROP_MULTISETS"
+        ],
+        "submitted_id_diff": {
+          "duplicate": [],
+          "extra": [],
+          "missing": [],
+          "semantic_mismatch": []
+        }
+      },
+      "case_id": "C11",
+      "expected": {
+        "decision": "REFUSE_STATUS",
+        "grade_ceiling": "NONE",
+        "reason_rule_ids": [
+          "P07_SEPARATE_STATES",
+          "P06_NO_DROP_MULTISETS"
+        ]
+      },
+      "mock_only": false,
+      "pass": true,
+      "problems": [],
+      "title": "PENDING operation falsely marked completed",
+      "variant_id": "CANONICAL_V1"
+    },
+    {
+      "actual": {
+        "considered_expected_ids": [
+          "OP.TEST.ARC1.COND.LUMEN_AZUR_ALPHA1",
+          "OP.TEST.ARC1.COND.LUMEN_AZUR_BETA1",
+          "OP.TEST.ARC1.CONDITION.UNADMINISTERED",
+          "OP.TEST.ARC1.MARG.LUMEN_RAW",
+          "OP.TEST.ARC1.MARG.LUMEN_W1",
+          "OP.TEST.DUO2.COND.PERSON_POSITION",
+          "OP.TEST.DUO2.JOINT.SWAPPED",
+          "OP.TEST.DUO2.JOINT.UNLINKED",
+          "OP.TEST.DUO2.MARG.HOUSEHOLD",
+          "OP.TEST.DUO2.MARG.PERSON",
+          "OP.TEST.REP3.FRONTIER.HELD_DIRECTION",
+          "OP.TEST.REP3.MARG.SCORE_T0",
+          "OP.TEST.REP3.MARG.SCORE_T1",
+          "OP.TEST.REP3.MR.SLOT0",
+          "OP.TEST.REP3.MR.SLOT1",
+          "OP.TEST.REP3.PAIR.SCORE_ORDERED",
+          "OP.TEST.REP3.RANK.ONE_TWO",
+          "OP.TEST.REP3.ROUTE.FORMZ"
+        ],
+        "consumer_evidence": null,
+        "decision": "REFUSE_STATUS",
+        "eligibility_partition": {
+          "ELIGIBLE": 13,
+          "HELD": 2,
+          "INAPPLICABLE_PROVED": 2,
+          "PROHIBITED": 1,
+          "UNKNOWN": 0
+        },
+        "grade_ceiling": "NONE",
+        "materialized_variant_ref": null,
+        "reason_rule_ids": [
+          "P05_HELD_ROLE",
+          "P07_SEPARATE_STATES"
+        ],
+        "submitted_id_diff": {
+          "duplicate": [],
+          "extra": [],
+          "missing": [],
+          "semantic_mismatch": []
+        }
+      },
+      "case_id": "C12",
+      "expected": {
+        "decision": "REFUSE_STATUS",
+        "grade_ceiling": "NONE",
+        "reason_rule_ids": [
+          "P05_HELD_ROLE",
+          "P07_SEPARATE_STATES"
+        ]
+      },
+      "mock_only": false,
+      "pass": true,
+      "problems": [],
+      "title": "UNKNOWN semantic eligibility mapped to NA or positive",
+      "variant_id": "CANONICAL_V1"
+    },
+    {
+      "actual": {
+        "considered_expected_ids": [
+          "OP.TEST.ARC1.COND.LUMEN_AZUR_ALPHA1",
+          "OP.TEST.ARC1.COND.LUMEN_AZUR_BETA1",
+          "OP.TEST.ARC1.CONDITION.UNADMINISTERED",
+          "OP.TEST.ARC1.MARG.LUMEN_RAW",
+          "OP.TEST.ARC1.MARG.LUMEN_W1",
+          "OP.TEST.DUO2.COND.PERSON_POSITION",
+          "OP.TEST.DUO2.JOINT.SWAPPED",
+          "OP.TEST.DUO2.JOINT.UNLINKED",
+          "OP.TEST.DUO2.MARG.HOUSEHOLD",
+          "OP.TEST.DUO2.MARG.PERSON",
+          "OP.TEST.REP3.FRONTIER.HELD_DIRECTION",
+          "OP.TEST.REP3.MARG.SCORE_T0",
+          "OP.TEST.REP3.MARG.SCORE_T1",
+          "OP.TEST.REP3.MR.SLOT0",
+          "OP.TEST.REP3.MR.SLOT1",
+          "OP.TEST.REP3.PAIR.SCORE_ORDERED",
+          "OP.TEST.REP3.RANK.ONE_TWO",
+          "OP.TEST.REP3.ROUTE.FORMZ"
+        ],
+        "consumer_evidence": null,
+        "decision": "REFUSE_IDENTITY",
+        "eligibility_partition": {
+          "ELIGIBLE": 13,
+          "HELD": 2,
+          "INAPPLICABLE_PROVED": 1,
+          "PROHIBITED": 1,
+          "UNKNOWN": 1
+        },
+        "grade_ceiling": "NONE",
+        "materialized_variant_ref": null,
+        "reason_rule_ids": [
+          "P10_EXACT_K_AND_CURRENTNESS"
+        ],
+        "submitted_id_diff": {
+          "duplicate": [],
+          "extra": [],
+          "missing": [],
+          "semantic_mismatch": []
+        }
+      },
+      "case_id": "C13",
+      "expected": {
+        "consumer_evidence": null,
+        "decision": "REFUSE_IDENTITY",
+        "grade_ceiling": "NONE",
+        "reason_rule_ids": [
+          "P10_EXACT_K_AND_CURRENTNESS"
+        ]
+      },
+      "mock_only": false,
+      "pass": true,
+      "problems": [],
+      "title": "Old release/edition used for newer request",
+      "variant_id": "CANONICAL_V1"
+    },
+    {
+      "actual": {
+        "considered_expected_ids": [
+          "OP.TEST.ARC1.COND.LUMEN_AZUR_ALPHA1",
+          "OP.TEST.ARC1.COND.LUMEN_AZUR_BETA1",
+          "OP.TEST.ARC1.CONDITION.UNADMINISTERED",
+          "OP.TEST.ARC1.MARG.LUMEN_RAW",
+          "OP.TEST.ARC1.MARG.LUMEN_W1",
+          "OP.TEST.DUO2.COND.PERSON_POSITION",
+          "OP.TEST.DUO2.JOINT.SWAPPED",
+          "OP.TEST.DUO2.JOINT.UNLINKED",
+          "OP.TEST.DUO2.MARG.HOUSEHOLD",
+          "OP.TEST.DUO2.MARG.PERSON",
+          "OP.TEST.REP3.FRONTIER.HELD_DIRECTION",
+          "OP.TEST.REP3.MARG.SCORE_T0",
+          "OP.TEST.REP3.MARG.SCORE_T1",
+          "OP.TEST.REP3.MR.SLOT0",
+          "OP.TEST.REP3.MR.SLOT1",
+          "OP.TEST.REP3.PAIR.SCORE_ORDERED",
+          "OP.TEST.REP3.RANK.ONE_TWO",
+          "OP.TEST.REP3.ROUTE.FORMZ"
+        ],
+        "consumer_evidence": null,
+        "decision": "REFUSE_IDENTITY",
+        "eligibility_partition": {
+          "ELIGIBLE": 13,
+          "HELD": 2,
+          "INAPPLICABLE_PROVED": 1,
+          "PROHIBITED": 1,
+          "UNKNOWN": 1
+        },
+        "grade_ceiling": "NONE",
+        "materialized_variant_ref": null,
+        "reason_rule_ids": [
+          "P10_EXACT_K_AND_CURRENTNESS",
+          "P15_ACTUAL_CONSUMER"
+        ],
+        "submitted_id_diff": {
+          "duplicate": [],
+          "extra": [],
+          "missing": [],
+          "semantic_mismatch": []
+        }
+      },
+      "case_id": "C14",
+      "expected": {
+        "consumer_evidence": null,
+        "decision": "REFUSE_IDENTITY",
+        "grade_ceiling": "NONE",
+        "reason_rule_ids": [
+          "P10_EXACT_K_AND_CURRENTNESS",
+          "P15_ACTUAL_CONSUMER"
+        ]
+      },
+      "mock_only": false,
+      "pass": true,
+      "problems": [],
+      "title": "Same-condition depth but different typed value",
+      "variant_id": "CANONICAL_V1"
+    },
+    {
+      "actual": {
+        "considered_expected_ids": [
+          "OP.TEST.ARC1.COND.LUMEN_AZUR_ALPHA1",
+          "OP.TEST.ARC1.COND.LUMEN_AZUR_BETA1",
+          "OP.TEST.ARC1.CONDITION.UNADMINISTERED",
+          "OP.TEST.ARC1.MARG.LUMEN_RAW",
+          "OP.TEST.ARC1.MARG.LUMEN_W1",
+          "OP.TEST.DUO2.COND.PERSON_POSITION",
+          "OP.TEST.DUO2.JOINT.SWAPPED",
+          "OP.TEST.DUO2.JOINT.UNLINKED",
+          "OP.TEST.DUO2.MARG.HOUSEHOLD",
+          "OP.TEST.DUO2.MARG.PERSON",
+          "OP.TEST.REP3.FRONTIER.HELD_DIRECTION",
+          "OP.TEST.REP3.MARG.SCORE_T0",
+          "OP.TEST.REP3.MARG.SCORE_T1",
+          "OP.TEST.REP3.MR.SLOT0",
+          "OP.TEST.REP3.MR.SLOT1",
+          "OP.TEST.REP3.PAIR.SCORE_ORDERED",
+          "OP.TEST.REP3.RANK.ONE_TWO",
+          "OP.TEST.REP3.ROUTE.FORMZ"
+        ],
+        "consumer_evidence": null,
+        "decision": "REFUSE_AUTHORITY",
+        "eligibility_partition": {
+          "ELIGIBLE": 13,
+          "HELD": 2,
+          "INAPPLICABLE_PROVED": 1,
+          "PROHIBITED": 1,
+          "UNKNOWN": 1
+        },
+        "grade_ceiling": "NONE",
+        "materialized_variant_ref": null,
+        "reason_rule_ids": [
+          "P10_EXACT_K_AND_CURRENTNESS",
+          "P14_FAIL_CLOSED_TRUST"
+        ],
+        "submitted_id_diff": {
+          "duplicate": [],
+          "extra": [],
+          "missing": [],
+          "semantic_mismatch": []
+        }
+      },
+      "case_id": "C15",
+      "expected": {
+        "decision": "REFUSE_AUTHORITY",
+        "grade_ceiling": "NONE",
+        "reason_rule_ids": [
+          "P10_EXACT_K_AND_CURRENTNESS",
+          "P14_FAIL_CLOSED_TRUST"
+        ]
+      },
+      "mock_only": false,
+      "pass": true,
+      "problems": [],
+      "title": "Revoked permission replayed from old cached result",
+      "variant_id": "CANONICAL_V1"
+    },
+    {
+      "actual": {
+        "considered_expected_ids": [
+          "OP.TEST.ARC1.COND.LUMEN_AZUR_ALPHA1",
+          "OP.TEST.ARC1.COND.LUMEN_AZUR_BETA1",
+          "OP.TEST.ARC1.CONDITION.UNADMINISTERED",
+          "OP.TEST.ARC1.MARG.LUMEN_RAW",
+          "OP.TEST.ARC1.MARG.LUMEN_W1",
+          "OP.TEST.DUO2.COND.PERSON_POSITION",
+          "OP.TEST.DUO2.JOINT.SWAPPED",
+          "OP.TEST.DUO2.JOINT.UNLINKED",
+          "OP.TEST.DUO2.MARG.HOUSEHOLD",
+          "OP.TEST.DUO2.MARG.PERSON",
+          "OP.TEST.REP3.FRONTIER.HELD_DIRECTION",
+          "OP.TEST.REP3.MARG.SCORE_T0",
+          "OP.TEST.REP3.MARG.SCORE_T1",
+          "OP.TEST.REP3.MR.SLOT0",
+          "OP.TEST.REP3.MR.SLOT1",
+          "OP.TEST.REP3.PAIR.SCORE_ORDERED",
+          "OP.TEST.REP3.RANK.ONE_TWO",
+          "OP.TEST.REP3.ROUTE.FORMZ"
+        ],
+        "consumer_evidence": null,
+        "decision": "HOLD_ORIGINAL_G8",
+        "eligibility_partition": {
+          "ELIGIBLE": 13,
+          "HELD": 2,
+          "INAPPLICABLE_PROVED": 1,
+          "PROHIBITED": 1,
+          "UNKNOWN": 1
+        },
+        "grade_ceiling": "NONE",
+        "materialized_variant_ref": null,
+        "reason_rule_ids": [
+          "P13_ORIGINAL_ROSTER_CONSERVATION",
+          "P08_CLAIM_GRADE_CEILING"
+        ],
+        "submitted_id_diff": {
+          "duplicate": [],
+          "extra": [],
+          "missing": [],
+          "semantic_mismatch": []
+        }
+      },
+      "case_id": "C16",
+      "expected": {
+        "decision": "HOLD_ORIGINAL_G8",
+        "grade_ceiling": "NONE",
+        "reason_rule_ids": [
+          "P13_ORIGINAL_ROSTER_CONSERVATION",
+          "P08_CLAIM_GRADE_CEILING"
+        ]
+      },
+      "mock_only": false,
+      "pass": true,
+      "problems": [],
+      "title": "Synthetic 35 aliases cannot count as original measured work",
+      "variant_id": "CANONICAL_V1"
+    },
+    {
+      "actual": {
+        "considered_expected_ids": [
+          "OP.TEST.ARC1.COND.LUMEN_AZUR_ALPHA1",
+          "OP.TEST.ARC1.COND.LUMEN_AZUR_BETA1",
+          "OP.TEST.ARC1.CONDITION.UNADMINISTERED",
+          "OP.TEST.ARC1.MARG.LUMEN_RAW",
+          "OP.TEST.ARC1.MARG.LUMEN_W1",
+          "OP.TEST.DUO2.COND.PERSON_POSITION",
+          "OP.TEST.DUO2.JOINT.SWAPPED",
+          "OP.TEST.DUO2.JOINT.UNLINKED",
+          "OP.TEST.DUO2.MARG.HOUSEHOLD",
+          "OP.TEST.DUO2.MARG.PERSON",
+          "OP.TEST.REP3.FRONTIER.HELD_DIRECTION",
+          "OP.TEST.REP3.MARG.SCORE_T0",
+          "OP.TEST.REP3.MARG.SCORE_T1",
+          "OP.TEST.REP3.MR.SLOT0",
+          "OP.TEST.REP3.MR.SLOT1",
+          "OP.TEST.REP3.PAIR.SCORE_ORDERED",
+          "OP.TEST.REP3.RANK.ONE_TWO",
+          "OP.TEST.REP3.ROUTE.FORMZ"
+        ],
+        "consumer_evidence": null,
+        "decision": "HOLD_ORIGINAL_G8",
+        "eligibility_partition": {
+          "ELIGIBLE": 13,
+          "HELD": 2,
+          "INAPPLICABLE_PROVED": 1,
+          "PROHIBITED": 1,
+          "UNKNOWN": 1
+        },
+        "grade_ceiling": "NONE",
+        "materialized_variant_ref": null,
+        "reason_rule_ids": [
+          "P13_ORIGINAL_ROSTER_CONSERVATION",
+          "P08_CLAIM_GRADE_CEILING"
+        ],
+        "submitted_id_diff": {
+          "duplicate": [],
+          "extra": [],
+          "missing": [],
+          "semantic_mismatch": []
+        }
+      },
+      "case_id": "C17",
+      "expected": {
+        "decision": "HOLD_ORIGINAL_G8",
+        "grade_ceiling": "NONE",
+        "reason_rule_ids": [
+          "P13_ORIGINAL_ROSTER_CONSERVATION",
+          "P08_CLAIM_GRADE_CEILING"
+        ]
+      },
+      "mock_only": false,
+      "pass": true,
+      "problems": [],
+      "title": "Exact original roster names but U/Epre null",
+      "variant_id": "CANONICAL_V1"
+    },
+    {
+      "actual": {
+        "considered_expected_ids": [
+          "OP.TEST.ARC1.COND.LUMEN_AZUR_ALPHA1",
+          "OP.TEST.ARC1.COND.LUMEN_AZUR_BETA1",
+          "OP.TEST.ARC1.CONDITION.UNADMINISTERED",
+          "OP.TEST.ARC1.MARG.LUMEN_RAW",
+          "OP.TEST.ARC1.MARG.LUMEN_W1",
+          "OP.TEST.DUO2.COND.PERSON_POSITION",
+          "OP.TEST.DUO2.JOINT.SWAPPED",
+          "OP.TEST.DUO2.JOINT.UNLINKED",
+          "OP.TEST.DUO2.MARG.HOUSEHOLD",
+          "OP.TEST.DUO2.MARG.PERSON",
+          "OP.TEST.REP3.FRONTIER.HELD_DIRECTION",
+          "OP.TEST.REP3.MARG.SCORE_T0",
+          "OP.TEST.REP3.MARG.SCORE_T1",
+          "OP.TEST.REP3.MR.SLOT0",
+          "OP.TEST.REP3.MR.SLOT1",
+          "OP.TEST.REP3.PAIR.SCORE_ORDERED",
+          "OP.TEST.REP3.RANK.ONE_TWO",
+          "OP.TEST.REP3.ROUTE.FORMZ"
+        ],
+        "consumer_evidence": null,
+        "decision": "ALLOW_LOCAL_POLICY_CONSISTENT",
+        "eligibility_partition": {
+          "ELIGIBLE": 13,
+          "HELD": 2,
+          "INAPPLICABLE_PROVED": 1,
+          "PROHIBITED": 1,
+          "UNKNOWN": 1
+        },
+        "grade_ceiling": "LOCAL_ONLY_POLICY_CONSISTENT",
+        "materialized_variant_ref": null,
+        "reason_rule_ids": [
+          "P00_INDEPENDENT_PIN",
+          "P06_NO_DROP_MULTISETS",
+          "P08_CLAIM_GRADE_CEILING"
+        ],
+        "submitted_id_diff": {
+          "duplicate": [],
+          "extra": [],
+          "missing": [],
+          "semantic_mismatch": []
+        }
+      },
+      "case_id": "C18",
+      "expected": {
+        "decision": "ALLOW_LOCAL_POLICY_CONSISTENT",
+        "grade_ceiling": "LOCAL_ONLY_POLICY_CONSISTENT",
+        "reason_rule_ids": [
+          "P00_INDEPENDENT_PIN",
+          "P06_NO_DROP_MULTISETS",
+          "P08_CLAIM_GRADE_CEILING"
+        ]
+      },
+      "mock_only": false,
+      "pass": true,
+      "problems": [],
+      "title": "Restored exact local material after omitted-operation hostile",
+      "variant_id": "CANONICAL_V1"
+    },
+    {
+      "actual": {
+        "considered_expected_ids": [
+          "OP.TEST.ARC1.COND.LUMEN_AZUR_ALPHA1",
+          "OP.TEST.ARC1.COND.LUMEN_AZUR_BETA1",
+          "OP.TEST.ARC1.CONDITION.UNADMINISTERED",
+          "OP.TEST.ARC1.MARG.LUMEN_RAW",
+          "OP.TEST.ARC1.MARG.LUMEN_W1",
+          "OP.TEST.DUO2.COND.PERSON_POSITION",
+          "OP.TEST.DUO2.JOINT.SWAPPED",
+          "OP.TEST.DUO2.JOINT.UNLINKED",
+          "OP.TEST.DUO2.MARG.HOUSEHOLD",
+          "OP.TEST.DUO2.MARG.PERSON",
+          "OP.TEST.REP3.FRONTIER.HELD_DIRECTION",
+          "OP.TEST.REP3.MARG.SCORE_T0",
+          "OP.TEST.REP3.MARG.SCORE_T1",
+          "OP.TEST.REP3.MR.SLOT0",
+          "OP.TEST.REP3.MR.SLOT1",
+          "OP.TEST.REP3.PAIR.SCORE_ORDERED",
+          "OP.TEST.REP3.RANK.ONE_TWO",
+          "OP.TEST.REP3.ROUTE.FORMZ"
+        ],
+        "consumer_evidence": null,
+        "decision": "ALLOW_LOCAL_POLICY_CONSISTENT",
+        "eligibility_partition": {
+          "ELIGIBLE": 13,
+          "HELD": 2,
+          "INAPPLICABLE_PROVED": 1,
+          "PROHIBITED": 1,
+          "UNKNOWN": 1
+        },
+        "grade_ceiling": "LOCAL_ONLY_POLICY_CONSISTENT",
+        "materialized_variant_ref": null,
+        "reason_rule_ids": [
+          "P07_SEPARATE_STATES",
+          "P12_EMPTY_NULL_ZERO_DISTINCT"
+        ],
+        "submitted_id_diff": {
+          "duplicate": [],
+          "extra": [],
+          "missing": [],
+          "semantic_mismatch": []
+        }
+      },
+      "case_id": "C19",
+      "expected": {
+        "decision": "ALLOW_LOCAL_POLICY_CONSISTENT",
+        "grade_ceiling": "LOCAL_ONLY_POLICY_CONSISTENT",
+        "reason_rule_ids": [
+          "P07_SEPARATE_STATES",
+          "P12_EMPTY_NULL_ZERO_DISTINCT"
+        ]
+      },
+      "mock_only": false,
+      "pass": true,
+      "problems": [],
+      "title": "Observed-zero cell preserved with actual denominator",
+      "variant_id": "CANONICAL_V1"
+    },
+    {
+      "actual": {
+        "considered_expected_ids": [
+          "OP.TEST.ARC1.COND.LUMEN_AZUR_ALPHA1",
+          "OP.TEST.ARC1.COND.LUMEN_AZUR_BETA1",
+          "OP.TEST.ARC1.CONDITION.UNADMINISTERED",
+          "OP.TEST.ARC1.MARG.LUMEN_RAW",
+          "OP.TEST.ARC1.MARG.LUMEN_W1",
+          "OP.TEST.DUO2.COND.PERSON_POSITION",
+          "OP.TEST.DUO2.JOINT.SWAPPED",
+          "OP.TEST.DUO2.JOINT.UNLINKED",
+          "OP.TEST.DUO2.MARG.HOUSEHOLD",
+          "OP.TEST.DUO2.MARG.PERSON",
+          "OP.TEST.REP3.FRONTIER.HELD_DIRECTION",
+          "OP.TEST.REP3.MARG.SCORE_T0",
+          "OP.TEST.REP3.MARG.SCORE_T1",
+          "OP.TEST.REP3.MR.SLOT0",
+          "OP.TEST.REP3.MR.SLOT1",
+          "OP.TEST.REP3.PAIR.SCORE_ORDERED",
+          "OP.TEST.REP3.RANK.ONE_TWO",
+          "OP.TEST.REP3.ROUTE.FORMZ"
+        ],
+        "consumer_evidence": null,
+        "decision": "ALLOW_LOCAL_POLICY_CONSISTENT",
+        "eligibility_partition": {
+          "ELIGIBLE": 13,
+          "HELD": 2,
+          "INAPPLICABLE_PROVED": 1,
+          "PROHIBITED": 1,
+          "UNKNOWN": 1
+        },
+        "grade_ceiling": "LOCAL_ONLY_POLICY_CONSISTENT",
+        "materialized_variant_ref": null,
+        "reason_rule_ids": [
+          "P12_EMPTY_NULL_ZERO_DISTINCT"
+        ],
+        "submitted_id_diff": {
+          "duplicate": [],
+          "extra": [],
+          "missing": [],
+          "semantic_mismatch": []
+        }
+      },
+      "case_id": "C20",
+      "expected": {
+        "decision": "ALLOW_LOCAL_POLICY_CONSISTENT",
+        "grade_ceiling": "LOCAL_ONLY_POLICY_CONSISTENT",
+        "reason_rule_ids": [
+          "P12_EMPTY_NULL_ZERO_DISTINCT"
+        ]
+      },
+      "mock_only": false,
+      "pass": true,
+      "problems": [],
+      "title": "Valid null not recast as runtime error",
+      "variant_id": "CANONICAL_V1"
+    },
+    {
+      "actual": {
+        "considered_expected_ids": [
+          "OP.TEST.ARC1.COND.LUMEN_AZUR_ALPHA1",
+          "OP.TEST.ARC1.COND.LUMEN_AZUR_BETA1",
+          "OP.TEST.ARC1.CONDITION.UNADMINISTERED",
+          "OP.TEST.ARC1.MARG.LUMEN_RAW",
+          "OP.TEST.ARC1.MARG.LUMEN_W1",
+          "OP.TEST.DUO2.COND.PERSON_POSITION",
+          "OP.TEST.DUO2.JOINT.SWAPPED",
+          "OP.TEST.DUO2.JOINT.UNLINKED",
+          "OP.TEST.DUO2.MARG.HOUSEHOLD",
+          "OP.TEST.DUO2.MARG.PERSON",
+          "OP.TEST.REP3.FRONTIER.HELD_DIRECTION",
+          "OP.TEST.REP3.MARG.SCORE_T0",
+          "OP.TEST.REP3.MARG.SCORE_T1",
+          "OP.TEST.REP3.MR.SLOT0",
+          "OP.TEST.REP3.MR.SLOT1",
+          "OP.TEST.REP3.PAIR.SCORE_ORDERED",
+          "OP.TEST.REP3.RANK.ONE_TWO",
+          "OP.TEST.REP3.ROUTE.FORMZ"
+        ],
+        "consumer_evidence": null,
+        "decision": "ALLOW_LOCAL_POLICY_CONSISTENT",
+        "eligibility_partition": {
+          "ELIGIBLE": 13,
+          "HELD": 2,
+          "INAPPLICABLE_PROVED": 1,
+          "PROHIBITED": 1,
+          "UNKNOWN": 1
+        },
+        "grade_ceiling": "LOCAL_ONLY_POLICY_CONSISTENT",
+        "materialized_variant_ref": null,
+        "reason_rule_ids": [
+          "P12_EMPTY_NULL_ZERO_DISTINCT"
+        ],
+        "submitted_id_diff": {
+          "duplicate": [],
+          "extra": [],
+          "missing": [],
+          "semantic_mismatch": []
+        }
+      },
+      "case_id": "C21",
+      "expected": {
+        "decision": "ALLOW_LOCAL_POLICY_CONSISTENT",
+        "grade_ceiling": "LOCAL_ONLY_POLICY_CONSISTENT",
+        "reason_rule_ids": [
+          "P12_EMPTY_NULL_ZERO_DISTINCT"
+        ]
+      },
+      "mock_only": false,
+      "pass": true,
+      "problems": [],
+      "title": "Valid-empty discovery remains valid-empty",
+      "variant_id": "CANONICAL_V1"
+    },
+    {
+      "actual": {
+        "considered_expected_ids": [
+          "OP.TEST.ARC1.COND.LUMEN_AZUR_ALPHA1",
+          "OP.TEST.ARC1.COND.LUMEN_AZUR_BETA1",
+          "OP.TEST.ARC1.CONDITION.UNADMINISTERED",
+          "OP.TEST.ARC1.MARG.LUMEN_RAW",
+          "OP.TEST.ARC1.MARG.LUMEN_W1",
+          "OP.TEST.DUO2.COND.PERSON_POSITION",
+          "OP.TEST.DUO2.JOINT.SWAPPED",
+          "OP.TEST.DUO2.JOINT.UNLINKED",
+          "OP.TEST.DUO2.MARG.HOUSEHOLD",
+          "OP.TEST.DUO2.MARG.PERSON",
+          "OP.TEST.REP3.FRONTIER.HELD_DIRECTION",
+          "OP.TEST.REP3.MARG.SCORE_T0",
+          "OP.TEST.REP3.MARG.SCORE_T1",
+          "OP.TEST.REP3.MR.SLOT0",
+          "OP.TEST.REP3.MR.SLOT1",
+          "OP.TEST.REP3.PAIR.SCORE_ORDERED",
+          "OP.TEST.REP3.RANK.ONE_TWO",
+          "OP.TEST.REP3.ROUTE.FORMZ"
+        ],
+        "consumer_evidence": null,
+        "decision": "ALLOW_LOCAL_POLICY_CONSISTENT",
+        "eligibility_partition": {
+          "ELIGIBLE": 13,
+          "HELD": 2,
+          "INAPPLICABLE_PROVED": 1,
+          "PROHIBITED": 1,
+          "UNKNOWN": 1
+        },
+        "grade_ceiling": "LOCAL_ONLY_POLICY_CONSISTENT",
+        "materialized_variant_ref": null,
+        "reason_rule_ids": [
+          "P11_REPLAY_AND_DEDUP"
+        ],
+        "submitted_id_diff": {
+          "duplicate": [],
+          "extra": [],
+          "missing": [],
+          "semantic_mismatch": []
+        }
+      },
+      "case_id": "C22",
+      "expected": {
+        "decision": "ALLOW_LOCAL_POLICY_CONSISTENT",
+        "grade_ceiling": "LOCAL_ONLY_POLICY_CONSISTENT",
+        "reason_rule_ids": [
+          "P11_REPLAY_AND_DEDUP"
+        ]
+      },
+      "mock_only": false,
+      "pass": true,
+      "problems": [],
+      "title": "Recomputation retry with one scientific contribution",
+      "variant_id": "CANONICAL_V1"
+    },
+    {
+      "actual": {
+        "considered_expected_ids": [
+          "OP.TEST.ARC1.COND.LUMEN_AZUR_ALPHA1",
+          "OP.TEST.ARC1.COND.LUMEN_AZUR_BETA1",
+          "OP.TEST.ARC1.CONDITION.UNADMINISTERED",
+          "OP.TEST.ARC1.MARG.LUMEN_RAW",
+          "OP.TEST.ARC1.MARG.LUMEN_W1",
+          "OP.TEST.DUO2.COND.PERSON_POSITION",
+          "OP.TEST.DUO2.JOINT.SWAPPED",
+          "OP.TEST.DUO2.JOINT.UNLINKED",
+          "OP.TEST.DUO2.MARG.HOUSEHOLD",
+          "OP.TEST.DUO2.MARG.PERSON",
+          "OP.TEST.REP3.FRONTIER.HELD_DIRECTION",
+          "OP.TEST.REP3.MARG.SCORE_T0",
+          "OP.TEST.REP3.MARG.SCORE_T1",
+          "OP.TEST.REP3.MR.SLOT0",
+          "OP.TEST.REP3.MR.SLOT1",
+          "OP.TEST.REP3.PAIR.SCORE_ORDERED",
+          "OP.TEST.REP3.RANK.ONE_TWO",
+          "OP.TEST.REP3.ROUTE.FORMZ"
+        ],
+        "consumer_evidence": null,
+        "decision": "REFUSE_DUPLICATE_COUNT",
+        "eligibility_partition": {
+          "ELIGIBLE": 13,
+          "HELD": 2,
+          "INAPPLICABLE_PROVED": 1,
+          "PROHIBITED": 1,
+          "UNKNOWN": 1
+        },
+        "grade_ceiling": "NONE",
+        "materialized_variant_ref": null,
+        "reason_rule_ids": [
+          "P11_REPLAY_AND_DEDUP"
+        ],
+        "submitted_id_diff": {
+          "duplicate": [],
+          "extra": [],
+          "missing": [],
+          "semantic_mismatch": []
+        }
+      },
+      "case_id": "C23",
+      "expected": {
+        "decision": "REFUSE_DUPLICATE_COUNT",
+        "grade_ceiling": "NONE",
+        "reason_rule_ids": [
+          "P11_REPLAY_AND_DEDUP"
+        ]
+      },
+      "mock_only": false,
+      "pass": true,
+      "problems": [],
+      "title": "Scientific duplicate-count from repeated attempt rejected",
+      "variant_id": "CANONICAL_V1"
+    },
+    {
+      "actual": {
+        "considered_expected_ids": [
+          "OP.TEST.ARC1.COND.LUMEN_AZUR_ALPHA1",
+          "OP.TEST.ARC1.COND.LUMEN_AZUR_BETA1",
+          "OP.TEST.ARC1.CONDITION.UNADMINISTERED",
+          "OP.TEST.ARC1.MARG.LUMEN_RAW",
+          "OP.TEST.ARC1.MARG.LUMEN_W1",
+          "OP.TEST.DUO2.COND.PERSON_POSITION",
+          "OP.TEST.DUO2.JOINT.SWAPPED",
+          "OP.TEST.DUO2.JOINT.UNLINKED",
+          "OP.TEST.DUO2.MARG.HOUSEHOLD",
+          "OP.TEST.DUO2.MARG.PERSON",
+          "OP.TEST.REP3.FRONTIER.HELD_DIRECTION",
+          "OP.TEST.REP3.MARG.SCORE_T0",
+          "OP.TEST.REP3.MARG.SCORE_T1",
+          "OP.TEST.REP3.MR.SLOT0",
+          "OP.TEST.REP3.MR.SLOT1",
+          "OP.TEST.REP3.PAIR.SCORE_ORDERED",
+          "OP.TEST.REP3.RANK.ONE_TWO",
+          "OP.TEST.REP3.ROUTE.FORMZ"
+        ],
+        "consumer_evidence": null,
+        "decision": "HOLD_UNIMPLEMENTED_RELATION",
+        "eligibility_partition": {
+          "ELIGIBLE": 14,
+          "HELD": 1,
+          "INAPPLICABLE_PROVED": 1,
+          "PROHIBITED": 1,
+          "UNKNOWN": 1
+        },
+        "grade_ceiling": "NONE",
+        "materialized_variant_ref": null,
+        "reason_rule_ids": [
+          "P03_NO_UNLINKED_CROSS_UNIT"
+        ],
+        "submitted_id_diff": {
+          "duplicate": [],
+          "extra": [],
+          "missing": [],
+          "semantic_mismatch": []
+        }
+      },
+      "case_id": "C24",
+      "expected": {
+        "decision": "HOLD_UNIMPLEMENTED_RELATION",
+        "grade_ceiling": "NONE",
+        "reason_rule_ids": [
+          "P03_NO_UNLINKED_CROSS_UNIT"
+        ]
+      },
+      "mock_only": false,
+      "pass": true,
+      "problems": [],
+      "title": "Unlinked person/household cannot be joined",
+      "variant_id": "CANONICAL_V1"
+    },
+    {
+      "actual": {
+        "considered_expected_ids": [
+          "OP.TEST.ARC1.COND.LUMEN_AZUR_ALPHA1",
+          "OP.TEST.ARC1.COND.LUMEN_AZUR_BETA1",
+          "OP.TEST.ARC1.CONDITION.UNADMINISTERED",
+          "OP.TEST.ARC1.MARG.LUMEN_RAW",
+          "OP.TEST.ARC1.MARG.LUMEN_W1",
+          "OP.TEST.DUO2.COND.PERSON_POSITION",
+          "OP.TEST.DUO2.JOINT.SWAPPED",
+          "OP.TEST.DUO2.JOINT.UNLINKED",
+          "OP.TEST.DUO2.MARG.HOUSEHOLD",
+          "OP.TEST.DUO2.MARG.PERSON",
+          "OP.TEST.REP3.FRONTIER.HELD_DIRECTION",
+          "OP.TEST.REP3.MARG.SCORE_T0",
+          "OP.TEST.REP3.MARG.SCORE_T1",
+          "OP.TEST.REP3.MR.SLOT0",
+          "OP.TEST.REP3.MR.SLOT1",
+          "OP.TEST.REP3.PAIR.SCORE_ORDERED",
+          "OP.TEST.REP3.RANK.ONE_TWO",
+          "OP.TEST.REP3.ROUTE.FORMZ"
+        ],
+        "consumer_evidence": null,
+        "decision": "ALLOW_LOCAL_POLICY_CONSISTENT",
+        "eligibility_partition": {
+          "ELIGIBLE": 3,
+          "HELD": 2,
+          "INAPPLICABLE_PROVED": 0,
+          "PROHIBITED": 0,
+          "UNKNOWN": 0
+        },
+        "grade_ceiling": "LOCAL_ONLY_POLICY_CONSISTENT",
+        "materialized_variant_ref": null,
+        "reason_rule_ids": [
+          "P00_INDEPENDENT_PIN",
+          "P06_NO_DROP_MULTISETS",
+          "P08_CLAIM_GRADE_CEILING"
+        ],
+        "submitted_id_diff": {
+          "duplicate": [],
+          "extra": [],
+          "missing": [
+            "OP.TEST.ARC1.COND.LUMEN_AZUR_ALPHA1",
+            "OP.TEST.ARC1.COND.LUMEN_AZUR_BETA1",
+            "OP.TEST.ARC1.CONDITION.UNADMINISTERED",
+            "OP.TEST.ARC1.MARG.LUMEN_RAW",
+            "OP.TEST.ARC1.MARG.LUMEN_W1",
+            "OP.TEST.REP3.FRONTIER.HELD_DIRECTION",
+            "OP.TEST.REP3.MARG.SCORE_T0",
+            "OP.TEST.REP3.MARG.SCORE_T1",
+            "OP.TEST.REP3.MR.SLOT0",
+            "OP.TEST.REP3.MR.SLOT1",
+            "OP.TEST.REP3.PAIR.SCORE_ORDERED",
+            "OP.TEST.REP3.RANK.ONE_TWO",
+            "OP.TEST.REP3.ROUTE.FORMZ"
+          ],
+          "semantic_mismatch": []
+        }
+      },
+      "case_id": "C25",
+      "expected": {
+        "decision": "ALLOW_LOCAL_POLICY_CONSISTENT",
+        "grade_ceiling": "LOCAL_ONLY_POLICY_CONSISTENT",
+        "reason_rule_ids": [
+          "P00_INDEPENDENT_PIN",
+          "P06_NO_DROP_MULTISETS",
+          "P08_CLAIM_GRADE_CEILING"
+        ]
+      },
+      "mock_only": false,
+      "pass": true,
+      "problems": [],
+      "title": "Separate household and person scalar operations remain policy-coherent",
+      "variant_id": "CANONICAL_V1"
+    },
+    {
+      "actual": {
+        "considered_expected_ids": [
+          "OP.TEST.ARC1.COND.LUMEN_AZUR_ALPHA1",
+          "OP.TEST.ARC1.COND.LUMEN_AZUR_BETA1",
+          "OP.TEST.ARC1.CONDITION.UNADMINISTERED",
+          "OP.TEST.ARC1.MARG.LUMEN_RAW",
+          "OP.TEST.ARC1.MARG.LUMEN_W1",
+          "OP.TEST.DUO2.COND.PERSON_POSITION",
+          "OP.TEST.DUO2.JOINT.SWAPPED",
+          "OP.TEST.DUO2.JOINT.UNLINKED",
+          "OP.TEST.DUO2.MARG.HOUSEHOLD",
+          "OP.TEST.DUO2.MARG.PERSON",
+          "OP.TEST.REP3.FRONTIER.HELD_DIRECTION",
+          "OP.TEST.REP3.MARG.SCORE_T0",
+          "OP.TEST.REP3.MARG.SCORE_T1",
+          "OP.TEST.REP3.MR.SLOT0",
+          "OP.TEST.REP3.MR.SLOT1",
+          "OP.TEST.REP3.PAIR.SCORE_ORDERED",
+          "OP.TEST.REP3.RANK.ONE_TWO",
+          "OP.TEST.REP3.ROUTE.FORMZ"
+        ],
+        "consumer_evidence": null,
+        "decision": "HOLD_GENERIC_R09",
+        "eligibility_partition": {
+          "ELIGIBLE": 13,
+          "HELD": 2,
+          "INAPPLICABLE_PROVED": 1,
+          "PROHIBITED": 1,
+          "UNKNOWN": 1
+        },
+        "grade_ceiling": "LOCAL_ONLY_POLICY_CONSISTENT",
+        "materialized_variant_ref": null,
+        "reason_rule_ids": [
+          "P09_RUNTIME_PROVENANCE_HOLD",
+          "P14_FAIL_CLOSED_TRUST"
+        ],
+        "submitted_id_diff": {
+          "duplicate": [],
+          "extra": [],
+          "missing": [],
+          "semantic_mismatch": []
+        }
+      },
+      "case_id": "C26",
+      "expected": {
+        "decision": "HOLD_GENERIC_R09",
+        "grade_ceiling": "LOCAL_ONLY_POLICY_CONSISTENT",
+        "reason_rule_ids": [
+          "P09_RUNTIME_PROVENANCE_HOLD",
+          "P14_FAIL_CLOSED_TRUST"
+        ]
+      },
+      "mock_only": true,
+      "pass": true,
+      "problems": [],
+      "title": "Test-only mocked trusted transport does not authorize generic grade",
+      "variant_id": "CANONICAL_V1"
+    },
+    {
+      "actual": {
+        "considered_expected_ids": [
+          "OP.TEST.ARC1.COND.LUMEN_AZUR_ALPHA1",
+          "OP.TEST.ARC1.COND.LUMEN_AZUR_BETA1",
+          "OP.TEST.ARC1.CONDITION.UNADMINISTERED",
+          "OP.TEST.ARC1.MARG.LUMEN_RAW",
+          "OP.TEST.ARC1.MARG.LUMEN_W1",
+          "OP.TEST.DUO2.COND.PERSON_POSITION",
+          "OP.TEST.DUO2.JOINT.SWAPPED",
+          "OP.TEST.DUO2.JOINT.UNLINKED",
+          "OP.TEST.DUO2.MARG.HOUSEHOLD",
+          "OP.TEST.DUO2.MARG.PERSON",
+          "OP.TEST.REP3.FRONTIER.HELD_DIRECTION",
+          "OP.TEST.REP3.MARG.SCORE_T0",
+          "OP.TEST.REP3.MARG.SCORE_T1",
+          "OP.TEST.REP3.MR.SLOT0",
+          "OP.TEST.REP3.MR.SLOT1",
+          "OP.TEST.REP3.PAIR.SCORE_ORDERED",
+          "OP.TEST.REP3.RANK.ONE_TWO",
+          "OP.TEST.REP3.ROUTE.FORMZ"
+        ],
+        "consumer_evidence": null,
+        "decision": "REFUSE_FORGED_EVIDENCE",
+        "eligibility_partition": {
+          "ELIGIBLE": 13,
+          "HELD": 2,
+          "INAPPLICABLE_PROVED": 1,
+          "PROHIBITED": 1,
+          "UNKNOWN": 1
+        },
+        "grade_ceiling": "NONE",
+        "materialized_variant_ref": null,
+        "reason_rule_ids": [
+          "P09_RUNTIME_PROVENANCE_HOLD",
+          "P14_FAIL_CLOSED_TRUST"
+        ],
+        "submitted_id_diff": {
+          "duplicate": [],
+          "extra": [],
+          "missing": [],
+          "semantic_mismatch": []
+        }
+      },
+      "case_id": "C27",
+      "expected": {
+        "decision": "REFUSE_FORGED_EVIDENCE",
+        "grade_ceiling": "NONE",
+        "reason_rule_ids": [
+          "P09_RUNTIME_PROVENANCE_HOLD",
+          "P14_FAIL_CLOSED_TRUST"
+        ]
+      },
+      "mock_only": false,
+      "pass": true,
+      "problems": [],
+      "title": "Stale run nonce or wrong commit cannot be trusted",
+      "variant_id": "CANONICAL_V1"
+    },
+    {
+      "actual": {
+        "considered_expected_ids": [
+          "OP.TEST.ARC1.COND.LUMEN_AZUR_ALPHA1",
+          "OP.TEST.ARC1.COND.LUMEN_AZUR_BETA1",
+          "OP.TEST.ARC1.CONDITION.UNADMINISTERED",
+          "OP.TEST.ARC1.MARG.LUMEN_RAW",
+          "OP.TEST.ARC1.MARG.LUMEN_W1",
+          "OP.TEST.DUO2.COND.PERSON_POSITION",
+          "OP.TEST.DUO2.JOINT.SWAPPED",
+          "OP.TEST.DUO2.JOINT.UNLINKED",
+          "OP.TEST.DUO2.MARG.HOUSEHOLD",
+          "OP.TEST.DUO2.MARG.PERSON",
+          "OP.TEST.REP3.FRONTIER.HELD_DIRECTION",
+          "OP.TEST.REP3.MARG.SCORE_T0",
+          "OP.TEST.REP3.MARG.SCORE_T1",
+          "OP.TEST.REP3.MR.SLOT0",
+          "OP.TEST.REP3.MR.SLOT1",
+          "OP.TEST.REP3.PAIR.SCORE_ORDERED",
+          "OP.TEST.REP3.RANK.ONE_TWO",
+          "OP.TEST.REP3.ROUTE.FORMZ"
+        ],
+        "consumer_evidence": null,
+        "decision": "REFUSE_AUTHORITY",
+        "eligibility_partition": {
+          "ELIGIBLE": 13,
+          "HELD": 2,
+          "INAPPLICABLE_PROVED": 1,
+          "PROHIBITED": 1,
+          "UNKNOWN": 1
+        },
+        "grade_ceiling": "NONE",
+        "materialized_variant_ref": null,
+        "reason_rule_ids": [
+          "P10_EXACT_K_AND_CURRENTNESS",
+          "P13_ORIGINAL_ROSTER_CONSERVATION"
+        ],
+        "submitted_id_diff": {
+          "duplicate": [],
+          "extra": [],
+          "missing": [],
+          "semantic_mismatch": []
+        }
+      },
+      "case_id": "C28",
+      "expected": {
+        "decision": "REFUSE_AUTHORITY",
+        "grade_ceiling": "NONE",
+        "reason_rule_ids": [
+          "P10_EXACT_K_AND_CURRENTNESS",
+          "P13_ORIGINAL_ROSTER_CONSERVATION"
+        ]
+      },
+      "mock_only": false,
+      "pass": true,
+      "problems": [],
+      "title": "Original as-of and purpose mismatch blocks source use",
+      "variant_id": "CANONICAL_V1"
+    },
+    {
+      "actual": {
+        "considered_expected_ids": [
+          "OP.TEST.ARC1.COND.LUMEN_AZUR_ALPHA1",
+          "OP.TEST.ARC1.COND.LUMEN_AZUR_BETA1",
+          "OP.TEST.ARC1.CONDITION.UNADMINISTERED",
+          "OP.TEST.ARC1.MARG.LUMEN_RAW",
+          "OP.TEST.ARC1.MARG.LUMEN_W1",
+          "OP.TEST.DUO2.COND.PERSON_POSITION",
+          "OP.TEST.DUO2.JOINT.SWAPPED",
+          "OP.TEST.DUO2.JOINT.UNLINKED",
+          "OP.TEST.DUO2.MARG.HOUSEHOLD",
+          "OP.TEST.DUO2.MARG.PERSON",
+          "OP.TEST.REP3.FRONTIER.HELD_DIRECTION",
+          "OP.TEST.REP3.MARG.SCORE_T0",
+          "OP.TEST.REP3.MARG.SCORE_T1",
+          "OP.TEST.REP3.MR.SLOT0",
+          "OP.TEST.REP3.MR.SLOT1",
+          "OP.TEST.REP3.PAIR.SCORE_ORDERED",
+          "OP.TEST.REP3.RANK.ONE_TWO",
+          "OP.TEST.REP3.ROUTE.FORMZ"
+        ],
+        "consumer_evidence": null,
+        "decision": "REFUSE_FRONTIER",
+        "eligibility_partition": {
+          "ELIGIBLE": 13,
+          "HELD": 1,
+          "INAPPLICABLE_PROVED": 1,
+          "PROHIBITED": 1,
+          "UNKNOWN": 0
+        },
+        "grade_ceiling": "NONE",
+        "materialized_variant_ref": null,
+        "reason_rule_ids": [
+          "P06_NO_DROP_MULTISETS",
+          "P13_ORIGINAL_ROSTER_CONSERVATION"
+        ],
+        "submitted_id_diff": {
+          "duplicate": [],
+          "extra": [],
+          "missing": [
+            "OP.TEST.DUO2.JOINT.UNLINKED",
+            "OP.TEST.REP3.FRONTIER.HELD_DIRECTION"
+          ],
+          "semantic_mismatch": []
+        }
+      },
+      "case_id": "C29",
+      "expected": {
+        "decision": "REFUSE_FRONTIER",
+        "expected_missing_ids": [
+          "OP.TEST.DUO2.JOINT.UNLINKED",
+          "OP.TEST.REP3.FRONTIER.HELD_DIRECTION"
+        ],
+        "grade_ceiling": "NONE",
+        "reason_rule_ids": [
+          "P06_NO_DROP_MULTISETS",
+          "P13_ORIGINAL_ROSTER_CONSERVATION"
+        ]
+      },
+      "mock_only": false,
+      "pass": true,
+      "problems": [],
+      "title": "Held and unsupported obligations are conserved, not dropped",
+      "variant_id": "CANONICAL_V1"
+    },
+    {
+      "actual": {
+        "considered_expected_ids": [
+          "OP.TEST.ARC1.COND.LUMEN_AZUR_ALPHA1",
+          "OP.TEST.ARC1.COND.LUMEN_AZUR_BETA1",
+          "OP.TEST.ARC1.CONDITION.UNADMINISTERED",
+          "OP.TEST.ARC1.MARG.LUMEN_RAW",
+          "OP.TEST.ARC1.MARG.LUMEN_W1",
+          "OP.TEST.DUO2.COND.PERSON_POSITION",
+          "OP.TEST.DUO2.JOINT.SWAPPED",
+          "OP.TEST.DUO2.JOINT.UNLINKED",
+          "OP.TEST.DUO2.MARG.HOUSEHOLD",
+          "OP.TEST.DUO2.MARG.PERSON",
+          "OP.TEST.REP3.FRONTIER.HELD_DIRECTION",
+          "OP.TEST.REP3.MARG.SCORE_T0",
+          "OP.TEST.REP3.MARG.SCORE_T1",
+          "OP.TEST.REP3.MR.SLOT0",
+          "OP.TEST.REP3.MR.SLOT1",
+          "OP.TEST.REP3.PAIR.SCORE_ORDERED",
+          "OP.TEST.REP3.RANK.ONE_TWO",
+          "OP.TEST.REP3.ROUTE.FORMZ"
+        ],
+        "consumer_evidence": null,
+        "decision": "HOLD_TRUSTED_NATIVE",
+        "eligibility_partition": {
+          "ELIGIBLE": 13,
+          "HELD": 2,
+          "INAPPLICABLE_PROVED": 1,
+          "PROHIBITED": 1,
+          "UNKNOWN": 1
+        },
+        "grade_ceiling": "LOCAL_ONLY_POLICY_CONSISTENT",
+        "materialized_variant_ref": null,
+        "reason_rule_ids": [
+          "P09_RUNTIME_PROVENANCE_HOLD",
+          "P14_FAIL_CLOSED_TRUST"
+        ],
+        "submitted_id_diff": {
+          "duplicate": [],
+          "extra": [],
+          "missing": [],
+          "semantic_mismatch": []
+        }
+      },
+      "case_id": "C30",
+      "expected": {
+        "decision": "HOLD_TRUSTED_NATIVE",
+        "grade_ceiling": "LOCAL_ONLY_POLICY_CONSISTENT",
+        "reason_rule_ids": [
+          "P09_RUNTIME_PROVENANCE_HOLD",
+          "P14_FAIL_CLOSED_TRUST"
+        ]
+      },
+      "mock_only": false,
+      "pass": true,
+      "problems": [],
+      "title": "An honest native execution assertion without authenticated runtime is HOLD",
+      "variant_id": "CANONICAL_V1"
+    },
+    {
+      "actual": {
+        "considered_expected_ids": [
+          "OP.TEST.ARC1.COND.LUMEN_AZUR_ALPHA1",
+          "OP.TEST.ARC1.COND.LUMEN_AZUR_BETA1",
+          "OP.TEST.ARC1.CONDITION.UNADMINISTERED",
+          "OP.TEST.ARC1.MARG.LUMEN_RAW",
+          "OP.TEST.ARC1.MARG.LUMEN_W1",
+          "OP.TEST.DUO2.COND.PERSON_POSITION",
+          "OP.TEST.DUO2.JOINT.SWAPPED",
+          "OP.TEST.DUO2.JOINT.UNLINKED",
+          "OP.TEST.DUO2.MARG.HOUSEHOLD",
+          "OP.TEST.DUO2.MARG.PERSON",
+          "OP.TEST.REP3.FRONTIER.HELD_DIRECTION",
+          "OP.TEST.REP3.MARG.SCORE_T0",
+          "OP.TEST.REP3.MARG.SCORE_T1",
+          "OP.TEST.REP3.MR.SLOT0",
+          "OP.TEST.REP3.MR.SLOT1",
+          "OP.TEST.REP3.PAIR.SCORE_ORDERED",
+          "OP.TEST.REP3.RANK.ONE_TWO",
+          "OP.TEST.REP3.ROUTE.FORMZ"
+        ],
+        "consumer_evidence": null,
+        "decision": "ALLOW_LOCAL_POLICY_CONSISTENT",
+        "eligibility_partition": {
+          "ELIGIBLE": 13,
+          "HELD": 2,
+          "INAPPLICABLE_PROVED": 1,
+          "PROHIBITED": 1,
+          "UNKNOWN": 1
+        },
+        "grade_ceiling": "LOCAL_ONLY_POLICY_CONSISTENT",
+        "materialized_variant_ref": null,
+        "reason_rule_ids": [
+          "P07_SEPARATE_STATES",
+          "P12_EMPTY_NULL_ZERO_DISTINCT"
+        ],
+        "submitted_id_diff": {
+          "duplicate": [],
+          "extra": [],
+          "missing": [],
+          "semantic_mismatch": []
+        }
+      },
+      "case_id": "C31",
+      "expected": {
+        "decision": "ALLOW_LOCAL_POLICY_CONSISTENT",
+        "grade_ceiling": "LOCAL_ONLY_POLICY_CONSISTENT",
+        "reason_rule_ids": [
+          "P07_SEPARATE_STATES",
+          "P12_EMPTY_NULL_ZERO_DISTINCT"
+        ]
+      },
+      "mock_only": false,
+      "pass": true,
+      "problems": [],
+      "title": "An administered all-missing column retains prospective operation",
+      "variant_id": "CANONICAL_V1"
+    },
+    {
+      "actual": {
+        "considered_expected_ids": [
+          "OP.TEST.ARC1.COND.Q301_2_Q301_7_ALPHA1",
+          "OP.TEST.ARC1.COND.Q301_2_Q301_7_BETA1",
+          "OP.TEST.ARC1.CONDITION.UNADMINISTERED",
+          "OP.TEST.ARC1.MARG.Q301_2_RAW",
+          "OP.TEST.ARC1.MARG.Q301_2_W1",
+          "OP.TEST.DUO2.COND.PERSON_POSITION",
+          "OP.TEST.DUO2.JOINT.SWAPPED",
+          "OP.TEST.DUO2.JOINT.UNLINKED",
+          "OP.TEST.DUO2.MARG.HOUSEHOLD",
+          "OP.TEST.DUO2.MARG.PERSON",
+          "OP.TEST.REP3.FRONTIER.HELD_DIRECTION",
+          "OP.TEST.REP3.MARG.SCORE_T0",
+          "OP.TEST.REP3.MARG.SCORE_T1",
+          "OP.TEST.REP3.MR.SLOT0",
+          "OP.TEST.REP3.MR.SLOT1",
+          "OP.TEST.REP3.PAIR.SCORE_ORDERED",
+          "OP.TEST.REP3.RANK.ONE_TWO",
+          "OP.TEST.REP3.ROUTE.FORMZ"
+        ],
+        "consumer_evidence": null,
+        "decision": "ALLOW_LOCAL_POLICY_CONSISTENT",
+        "eligibility_partition": {
+          "ELIGIBLE": 13,
+          "HELD": 2,
+          "INAPPLICABLE_PROVED": 1,
+          "PROHIBITED": 1,
+          "UNKNOWN": 1
+        },
+        "grade_ceiling": "LOCAL_ONLY_POLICY_CONSISTENT",
+        "materialized_variant_ref": "ARC1_BIJECTIVE_Q301_LOCAL",
+        "reason_rule_ids": [
+          "P00_INDEPENDENT_PIN",
+          "P06_NO_DROP_MULTISETS",
+          "P08_CLAIM_GRADE_CEILING",
+          "P16_BIJECTIVE_LABEL_RENAME"
+        ],
+        "submitted_id_diff": {
+          "duplicate": [],
+          "extra": [],
+          "missing": [],
+          "semantic_mismatch": []
+        }
+      },
+      "case_id": "C32",
+      "expected": {
+        "considered_expected_ids": [
+          "OP.TEST.ARC1.COND.Q301_2_Q301_7_ALPHA1",
+          "OP.TEST.ARC1.COND.Q301_2_Q301_7_BETA1",
+          "OP.TEST.ARC1.CONDITION.UNADMINISTERED",
+          "OP.TEST.ARC1.MARG.Q301_2_RAW",
+          "OP.TEST.ARC1.MARG.Q301_2_W1",
+          "OP.TEST.DUO2.COND.PERSON_POSITION",
+          "OP.TEST.DUO2.JOINT.SWAPPED",
+          "OP.TEST.DUO2.JOINT.UNLINKED",
+          "OP.TEST.DUO2.MARG.HOUSEHOLD",
+          "OP.TEST.DUO2.MARG.PERSON",
+          "OP.TEST.REP3.FRONTIER.HELD_DIRECTION",
+          "OP.TEST.REP3.MARG.SCORE_T0",
+          "OP.TEST.REP3.MARG.SCORE_T1",
+          "OP.TEST.REP3.MR.SLOT0",
+          "OP.TEST.REP3.MR.SLOT1",
+          "OP.TEST.REP3.PAIR.SCORE_ORDERED",
+          "OP.TEST.REP3.RANK.ONE_TWO",
+          "OP.TEST.REP3.ROUTE.FORMZ"
+        ],
+        "decision": "ALLOW_LOCAL_POLICY_CONSISTENT",
+        "expected_count": 18,
+        "expected_disposition_counts": {
+          "ELIGIBLE": 13,
+          "HELD": 2,
+          "INAPPLICABLE_PROVED": 1,
+          "PROHIBITED": 1,
+          "UNKNOWN": 1
+        },
+        "expected_extra_ids": [],
+        "expected_missing_ids": [],
+        "grade_ceiling": "LOCAL_ONLY_POLICY_CONSISTENT",
+        "materialized_variant_ref": "ARC1_BIJECTIVE_Q301_LOCAL",
+        "reason_rule_ids": [
+          "P00_INDEPENDENT_PIN",
+          "P06_NO_DROP_MULTISETS",
+          "P08_CLAIM_GRADE_CEILING",
+          "P16_BIJECTIVE_LABEL_RENAME"
+        ]
+      },
+      "mock_only": false,
+      "pass": true,
+      "problems": [],
+      "title": "Entire local universe bijectively renamed to q301_2/q301_7 remains lawful LOCAL_ONLY",
+      "variant_id": "ARC1_BIJECTIVE_Q301_LOCAL"
+    },
+    {
+      "actual": {
+        "considered_expected_ids": [
+          "OP.TEST.ARC1.COND.Q301_2_Q301_7_ALPHA1",
+          "OP.TEST.ARC1.COND.Q301_2_Q301_7_BETA1",
+          "OP.TEST.ARC1.CONDITION.UNADMINISTERED",
+          "OP.TEST.ARC1.MARG.Q301_2_RAW",
+          "OP.TEST.ARC1.MARG.Q301_2_W1",
+          "OP.TEST.DUO2.COND.PERSON_POSITION",
+          "OP.TEST.DUO2.JOINT.SWAPPED",
+          "OP.TEST.DUO2.JOINT.UNLINKED",
+          "OP.TEST.DUO2.MARG.HOUSEHOLD",
+          "OP.TEST.DUO2.MARG.PERSON",
+          "OP.TEST.REP3.FRONTIER.HELD_DIRECTION",
+          "OP.TEST.REP3.MARG.SCORE_T0",
+          "OP.TEST.REP3.MARG.SCORE_T1",
+          "OP.TEST.REP3.MR.SLOT0",
+          "OP.TEST.REP3.MR.SLOT1",
+          "OP.TEST.REP3.PAIR.SCORE_ORDERED",
+          "OP.TEST.REP3.RANK.ONE_TWO",
+          "OP.TEST.REP3.ROUTE.FORMZ"
+        ],
+        "consumer_evidence": null,
+        "decision": "REFUSE_FRONTIER",
+        "eligibility_partition": {
+          "ELIGIBLE": 2,
+          "HELD": 0,
+          "INAPPLICABLE_PROVED": 0,
+          "PROHIBITED": 0,
+          "UNKNOWN": 0
+        },
+        "grade_ceiling": "NONE",
+        "materialized_variant_ref": "ARC1_BIJECTIVE_Q301_LOCAL",
+        "reason_rule_ids": [
+          "P06_NO_DROP_MULTISETS",
+          "P08_CLAIM_GRADE_CEILING",
+          "P16_BIJECTIVE_LABEL_RENAME"
+        ],
+        "submitted_id_diff": {
+          "duplicate": [],
+          "extra": [],
+          "missing": [
+            "OP.TEST.ARC1.COND.Q301_2_Q301_7_BETA1",
+            "OP.TEST.ARC1.CONDITION.UNADMINISTERED",
+            "OP.TEST.ARC1.MARG.Q301_2_W1",
+            "OP.TEST.DUO2.COND.PERSON_POSITION",
+            "OP.TEST.DUO2.JOINT.SWAPPED",
+            "OP.TEST.DUO2.JOINT.UNLINKED",
+            "OP.TEST.DUO2.MARG.HOUSEHOLD",
+            "OP.TEST.DUO2.MARG.PERSON",
+            "OP.TEST.REP3.FRONTIER.HELD_DIRECTION",
+            "OP.TEST.REP3.MARG.SCORE_T0",
+            "OP.TEST.REP3.MARG.SCORE_T1",
+            "OP.TEST.REP3.MR.SLOT0",
+            "OP.TEST.REP3.MR.SLOT1",
+            "OP.TEST.REP3.PAIR.SCORE_ORDERED",
+            "OP.TEST.REP3.RANK.ONE_TWO",
+            "OP.TEST.REP3.ROUTE.FORMZ"
+          ],
+          "semantic_mismatch": []
+        }
+      },
+      "case_id": "C33",
+      "expected": {
+        "decision": "REFUSE_FRONTIER",
+        "expected_extra_count": 0,
+        "expected_missing_count": 16,
+        "expected_missing_ids": [
+          "OP.TEST.ARC1.COND.Q301_2_Q301_7_BETA1",
+          "OP.TEST.ARC1.CONDITION.UNADMINISTERED",
+          "OP.TEST.ARC1.MARG.Q301_2_W1",
+          "OP.TEST.DUO2.COND.PERSON_POSITION",
+          "OP.TEST.DUO2.JOINT.SWAPPED",
+          "OP.TEST.DUO2.JOINT.UNLINKED",
+          "OP.TEST.DUO2.MARG.HOUSEHOLD",
+          "OP.TEST.DUO2.MARG.PERSON",
+          "OP.TEST.REP3.FRONTIER.HELD_DIRECTION",
+          "OP.TEST.REP3.MARG.SCORE_T0",
+          "OP.TEST.REP3.MARG.SCORE_T1",
+          "OP.TEST.REP3.MR.SLOT0",
+          "OP.TEST.REP3.MR.SLOT1",
+          "OP.TEST.REP3.PAIR.SCORE_ORDERED",
+          "OP.TEST.REP3.RANK.ONE_TWO",
+          "OP.TEST.REP3.ROUTE.FORMZ"
+        ],
+        "grade_ceiling": "NONE",
+        "materialized_variant_ref": "ARC1_BIJECTIVE_Q301_LOCAL",
+        "reason_rule_ids": [
+          "P06_NO_DROP_MULTISETS",
+          "P08_CLAIM_GRADE_CEILING",
+          "P16_BIJECTIVE_LABEL_RENAME"
+        ]
+      },
+      "mock_only": false,
+      "pass": true,
+      "problems": [],
+      "title": "Only two locally lawful renamed operations cannot prove full/generic scope",
+      "variant_id": "ARC1_BIJECTIVE_Q301_LOCAL"
+    },
+    {
+      "actual": {
+        "considered_expected_ids": [
+          "OP.TEST.ARC1.COND.Q301_2_Q301_7_ALPHA1",
+          "OP.TEST.ARC1.COND.Q301_2_Q301_7_BETA1",
+          "OP.TEST.ARC1.CONDITION.UNADMINISTERED",
+          "OP.TEST.ARC1.MARG.Q301_2_RAW",
+          "OP.TEST.ARC1.MARG.Q301_2_W1",
+          "OP.TEST.DUO2.COND.PERSON_POSITION",
+          "OP.TEST.DUO2.JOINT.SWAPPED",
+          "OP.TEST.DUO2.JOINT.UNLINKED",
+          "OP.TEST.DUO2.MARG.HOUSEHOLD",
+          "OP.TEST.DUO2.MARG.PERSON",
+          "OP.TEST.REP3.FRONTIER.HELD_DIRECTION",
+          "OP.TEST.REP3.MARG.SCORE_T0",
+          "OP.TEST.REP3.MARG.SCORE_T1",
+          "OP.TEST.REP3.MR.SLOT0",
+          "OP.TEST.REP3.MR.SLOT1",
+          "OP.TEST.REP3.PAIR.SCORE_ORDERED",
+          "OP.TEST.REP3.RANK.ONE_TWO",
+          "OP.TEST.REP3.ROUTE.FORMZ"
+        ],
+        "consumer_evidence": null,
+        "decision": "HOLD_GENERIC_R09",
+        "eligibility_partition": {
+          "ELIGIBLE": 13,
+          "HELD": 2,
+          "INAPPLICABLE_PROVED": 1,
+          "PROHIBITED": 1,
+          "UNKNOWN": 1
+        },
+        "grade_ceiling": "LOCAL_ONLY_POLICY_CONSISTENT",
+        "materialized_variant_ref": "ARC1_BIJECTIVE_Q301_LOCAL",
+        "reason_rule_ids": [
+          "P08_CLAIM_GRADE_CEILING",
+          "P09_RUNTIME_PROVENANCE_HOLD",
+          "P16_BIJECTIVE_LABEL_RENAME"
+        ],
+        "submitted_id_diff": {
+          "duplicate": [],
+          "extra": [],
+          "missing": [],
+          "semantic_mismatch": []
+        }
+      },
+      "case_id": "C34",
+      "expected": {
+        "decision": "HOLD_GENERIC_R09",
+        "expected_count": 18,
+        "expected_extra_ids": [],
+        "expected_missing_ids": [],
+        "grade_ceiling": "LOCAL_ONLY_POLICY_CONSISTENT",
+        "materialized_variant_ref": "ARC1_BIJECTIVE_Q301_LOCAL",
+        "reason_rule_ids": [
+          "P08_CLAIM_GRADE_CEILING",
+          "P09_RUNTIME_PROVENANCE_HOLD",
+          "P16_BIJECTIVE_LABEL_RENAME"
+        ]
+      },
+      "mock_only": false,
+      "pass": true,
+      "problems": [],
+      "title": "Full correct renamed local 18 still cannot pass generic without R09",
+      "variant_id": "ARC1_BIJECTIVE_Q301_LOCAL"
+    },
+    {
+      "actual": {
+        "considered_expected_ids": [
+          "OP.TEST.ARC1.COND.LUMEN_AZUR_ALPHA1",
+          "OP.TEST.ARC1.COND.LUMEN_AZUR_BETA1",
+          "OP.TEST.ARC1.CONDITION.UNADMINISTERED",
+          "OP.TEST.ARC1.MARG.LUMEN_RAW",
+          "OP.TEST.ARC1.MARG.LUMEN_W1",
+          "OP.TEST.DUO2.COND.PERSON_POSITION",
+          "OP.TEST.DUO2.JOINT.SWAPPED",
+          "OP.TEST.DUO2.JOINT.UNLINKED",
+          "OP.TEST.DUO2.MARG.HOUSEHOLD",
+          "OP.TEST.DUO2.MARG.PERSON",
+          "OP.TEST.REP3.FRONTIER.HELD_DIRECTION",
+          "OP.TEST.REP3.MARG.SCORE_T0",
+          "OP.TEST.REP3.MARG.SCORE_T1",
+          "OP.TEST.REP3.MR.SLOT0",
+          "OP.TEST.REP3.MR.SLOT1",
+          "OP.TEST.REP3.PAIR.SCORE_ORDERED",
+          "OP.TEST.REP3.RANK.ONE_TWO",
+          "OP.TEST.REP3.ROUTE.FORMZ"
+        ],
+        "consumer_evidence": null,
+        "decision": "REFUSE_FRONTIER",
+        "eligibility_partition": {
+          "ELIGIBLE": 13,
+          "HELD": 2,
+          "INAPPLICABLE_PROVED": 1,
+          "PROHIBITED": 1,
+          "UNKNOWN": 1
+        },
+        "grade_ceiling": "NONE",
+        "materialized_variant_ref": null,
+        "reason_rule_ids": [
+          "P00_INDEPENDENT_PIN",
+          "P06_NO_DROP_MULTISETS",
+          "P16_BIJECTIVE_LABEL_RENAME"
+        ],
+        "submitted_id_diff": {
+          "duplicate": [],
+          "extra": [],
+          "missing": [],
+          "semantic_mismatch": []
+        }
+      },
+      "case_id": "C35",
+      "expected": {
+        "decision": "REFUSE_FRONTIER",
+        "duplicate_destination_label": "q301_2",
+        "grade_ceiling": "NONE",
+        "invalid_rename": "NON_INJECTIVE",
+        "reason_rule_ids": [
+          "P00_INDEPENDENT_PIN",
+          "P06_NO_DROP_MULTISETS",
+          "P16_BIJECTIVE_LABEL_RENAME"
+        ]
+      },
+      "mock_only": false,
+      "pass": true,
+      "problems": [],
+      "title": "Non-bijective candidate rename collapsing two distinct items is refused",
+      "variant_id": "CANONICAL_V1"
+    }
+  ],
+  "schema": "R56_R00E_REPLAY@1"
+}
