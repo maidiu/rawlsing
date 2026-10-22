@@ -6,7 +6,7 @@
 **STARTUP:** `6d95a78bf6b7bcf70022e303a151255e65edc38a`.
 **BRANCH:** `agent/rabochii-pyat-r56-r00e-generic-claim-gate-r1`.
 **WRITE SCOPE:** `CROSS_HQ_CONTROL_ROOM/universal_promotion_gate.py`, `tests/universal_execution_oracle/`, `WORKER_RETURNS/PYAT-R56-R00E-GATE-IMPLEMENTATION-R1/`.
-**REMOTE SHA:** `__REMOTE_SHA__` (replaced after non-force push and readback).
+**REMOTE SHA:** `087487a9610fb255af25a6e1fc56c1d270dcf6ae` — substantive publication commit; the final receipt commit is the branch head, verified by `git ls-remote`.
 
 ## Authorization and seal caveat
 
@@ -76,6 +76,10 @@ Expected: `36` cases, `36` passed, `all_pass=true`.
 - No R02/R04.byte implementation; separate owners remain required.
 - Git blob custody is not protected attestation; a same-process fake handle is outside the JSON/candidate boundary.
 - 36 cases are policy fixtures, not survey/decoder qualification.
+
+## Readback
+
+`evidence/github_api_readback.json`: **PASS 5/5** at `087487a9…`; gate source, tests, 36-case replay, JUnit and `00_RETURN.md` returned byte-identical.
 
 ## Author verdict / stop
 
