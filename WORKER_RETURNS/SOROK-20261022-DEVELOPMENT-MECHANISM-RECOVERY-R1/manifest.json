@@ -43,29 +43,42 @@
     "historical_R29M_test_count": "29 PASS REPORTED_AUTHOR",
     "historical_R31J_tests": "202 CUMULATIVE DISTINCT REPORTED_AUTHOR",
     "historical_same_person_join": "2 PASS REPORTED_AT_INTERIM_CHECKPOINT",
-    "direct_new_B_source_fault": "FROZEN_DESIGNED_NOT_RUN",
+    "direct_new_B_source_fault": "CORRECTED_FUTURE_DESIGN_NOT_RUN__TARGETLESS_E_CONSUMER_UNAVAILABLE",
     "source_rights": "NONE_CREATED",
     "actor_rules": "NONE_ISSUED",
-    "production_edit_count": 0
+    "production_edit_count": 0,
+    "continuation_test_count_this_lane": 0
   },
   "files": [
     {
       "path": "WORKER_RETURNS/SOROK-20261022-DEVELOPMENT-MECHANISM-RECOVERY-R1/00_RETURN.md",
-      "git_blob_sha1": "2da2c7e1c7b46e70484b03c889d8333e7c2e68cb",
-      "utf8_bytes": 25262,
-      "sha256": "NOT_COMPUTED__GIT_BLOB_SHA1_FULL_IDENTITY_VERIFIED"
+      "git_blob_sha1": "c785971c01b1fee7438386fd358507652ed427dd",
+      "utf8_bytes": 26680,
+      "grade": "DIRECT_GITHUB_REMOTE_READBACK"
+    },
+    {
+      "path": "WORKER_RETURNS/SOROK-20261022-DEVELOPMENT-MECHANISM-RECOVERY-R1/01_FINITE_CORRECTION_AND_A_T_DOCKET.md",
+      "git_blob_sha1": "83dcc77e492740d84d934cba5c72c20fb4dfaf17",
+      "utf8_bytes": 19856,
+      "grade": "DIRECT_GITHUB_REMOTE_READBACK"
+    },
+    {
+      "path": "WORKER_RETURNS/SOROK-20261022-DEVELOPMENT-MECHANISM-RECOVERY-R1/02_FINITE_ORIGINAL_A_T_SCIENCE_DOCKET.json",
+      "git_blob_sha1": "a09c6e1b308ba250a80740ce7644045db6ff6661",
+      "utf8_bytes": 9043,
+      "grade": "DIRECT_GITHUB_REMOTE_READBACK"
     },
     {
       "path": "WORKER_RETURNS/SOROK-20261022-DEVELOPMENT-MECHANISM-RECOVERY-R1/evidence.json",
-      "git_blob_sha1": "2f1b0b38f18336f73fa1a5458efb8e328bf667ef",
-      "utf8_bytes": 17823,
-      "sha256": "NOT_COMPUTED__GIT_BLOB_SHA1_FULL_IDENTITY_VERIFIED"
+      "git_blob_sha1": "5e7902e7f6a66cdab66bb4b10908a47f1cc8bd03",
+      "utf8_bytes": 26198,
+      "grade": "DIRECT_GITHUB_REMOTE_READBACK"
     },
     {
       "path": "WORKER_RETURNS/SOROK-20261022-DEVELOPMENT-MECHANISM-RECOVERY-R1/RESUME_CHECKPOINT.md",
-      "git_blob_sha1": "d466aa7bff6c5754fefc564725a40788d8d67665",
-      "utf8_bytes": 4200,
-      "sha256": "NOT_COMPUTED__GIT_BLOB_SHA1_FULL_IDENTITY_VERIFIED"
+      "git_blob_sha1": "5bdc8322d3471a885ba2a9ca7cb8b09111923fa7",
+      "utf8_bytes": 6531,
+      "grade": "DIRECT_GITHUB_REMOTE_READBACK"
     }
   ],
   "manifest_self_hash": "EXCLUDED_TO_AVOID_SELF_REFERENCE",
@@ -83,5 +96,19 @@
     "Astra escalation",
     "J52/W52 worker restart"
   ],
-  "write_allowlist": "WORKER_RETURNS/SOROK-20261022-DEVELOPMENT-MECHANISM-RECOVERY-R1/"
+  "write_allowlist": "WORKER_RETURNS/SOROK-20261022-DEVELOPMENT-MECHANISM-RECOVERY-R1/",
+  "continuation": {
+    "exact_hq_seal_commit": "141b5fe1e393621862791281e980c450715bbb9a",
+    "continuation_commission_blob": "ec216e8e4392a019e82e2c49cd66c85989f0a3e0",
+    "hq_intake_blob": "a3c790e29fd676700fd4a8fb74cac343eee5ca36",
+    "prior_UR_DEV_R_head": "a08f8056250b3edde3bd9dbfa776df7ae20de03c",
+    "E_final_cut": "c367777f83367240352c267a2d3750abb7f09397",
+    "V_preliminary_cut": "8fe8940023672ee5005397ee80280b5c6b0aed31",
+    "V_target_cut": "13dfd6bad54ec19b4bdf31159e54fb6052d5440d",
+    "oracle_disposition": "WITHDRAW_B_REFUSAL_TO_E_HELP; B_REFUSAL_TO_FINAL_E_SESSION_UNDERDETERMINED_TARGET_ABSENT",
+    "original_science": "CAN008_CONCRETE_A_RULE_ISSUER_UNVERIFIED__CAN011_T_NO_CHANGE_GRANT_NULL__REQUEST_EVIDENCE",
+    "test_grade": "43_REPORT_AUTHOR_ENTRIES_NOT_RERUN__DEV_R_NATIVE_0",
+    "new_adopted_semantic_or_source_authority": false,
+    "architecture_altered": false
+  }
 }
