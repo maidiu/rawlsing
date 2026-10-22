@@ -1,9 +1,9 @@
 {
   "schema": "ASTRA_UR_ACTIVE_INTELLIGENCE_ROUTING_R1",
   "user_correction": "Assess each significant task; user effects model/harness switches; pause and inform before crossing",
-  "current_model": "User continued after model-switch boundary; runtime indicates model change; exact selected slug unexposed",
+  "current_model": "Model changed after requested downshift; exact selected slug unexposed",
   "exact_slug": "UNKNOWN",
-  "reasoning_effort": "HIGH requested; actual selector unexposed",
+  "reasoning_effort": "UNKNOWN",
   "tasks": [
     {
       "TASK_ID": "M0",
@@ -114,7 +114,7 @@
       "EXPECTED_TERMINAL_DELTA": "Wave/class source-qualified N11 progress"
     }
   ],
-  "first_boundary": "MODEL_SWITCH_REQUIRED__LOWER_INTELLIGENCE",
+  "first_boundary": "AUTHORITY_STOP__EXACT_GRANT_REQUIRED",
   "no_silent_switch": true,
   "no_new_native_worker_launched": true,
   "production_authority": false,
@@ -123,19 +123,23 @@
     "M1",
     "B1",
     "M2",
-    "A1_TERMINAL_REPAIR_ALLOCATION"
+    "A1_TERMINAL_REPAIR_ALLOCATION",
+    "M3_FINAL_PACKAGE_ASSEMBLY",
+    "M3_DIRECTOR_MECHANICAL_INTAKE"
   ],
   "next_task": {
-    "TASK_ID": "M3_FINAL_PACKAGE_ASSEMBLY",
-    "REQUIRED_INTELLIGENCE": "I1-I2",
-    "EXECUTION_REQUIREMENT": "S1-S2 Browser/GitHub text work",
-    "MODEL": "User-selected Browser agent; 6.1 Light sufficient for return intake",
-    "REASONING_EFFORT": "Appropriate user-selected; report actual",
-    "WHY_THIS_MODEL": "Settled architectural ruling and existing specifications need bounded compilation, no new synthesis",
-    "CHEAPER_ALTERNATIVE": "6.1 Light if Browser unavailable",
-    "AUTHORITY": "Report-only assembly on separate scoped worker branch; no implementation",
-    "STOP_CONDITION": "A-G delta, complete proposed flight, exact authority request and manifest returned; no new audit",
-    "EXPECTED_TERMINAL_DELTA": "Concrete reviewable implementation decision for HQ/user"
+    "TASK_ID": "AUTH_1",
+    "REQUIRED_INTELLIGENCE": "Human competent grant, not model capability",
+    "EXECUTION_REQUIREMENT": "S0",
+    "MODEL": "User and competent Pyat HQ",
+    "REASONING_EFFORT": "N/A",
+    "WHY_THIS_MODEL": "Existing explicit implementation stop requires its competent amendment",
+    "CHEAPER_ALTERNATIVE": "No model substitutes for authorization",
+    "AUTHORITY": "NOT_GRANTED",
+    "STOP_CONDITION": "Exact grant or retained stop",
+    "EXPECTED_TERMINAL_DELTA": "Lawful candidate engineering flight"
   },
-  "architectural_decision": "12_BOUNDED_REPAIR_ALLOCATION_DECISION.md"
+  "architectural_decision": "12_BOUNDED_REPAIR_ALLOCATION_DECISION.md",
+  "current_queue": "14_NEXT_IMPLEMENTATION_DECISION_QUEUE.json",
+  "final_director_disposition": "13_M3_INTAKE_AND_FINAL_DIRECTOR_DISPOSITION.md"
 }
