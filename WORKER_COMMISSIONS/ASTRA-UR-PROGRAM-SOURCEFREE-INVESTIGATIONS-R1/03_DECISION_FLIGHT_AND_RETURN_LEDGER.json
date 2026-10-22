@@ -3,7 +3,7 @@
   "director_branch": "agent/astra-ur-program-sourcefree-evidence-direction-r1",
   "control": "fee875733a4ee653908a440dea41243e4688d71c",
   "u53a": "d7988b3d5d313902d883d2d8c244fd2526058410",
-  "program_phase": "UR_PROGRAM_CLOSED_SCOPED__IMPLEMENTATION_FLIGHT_PREPARED",
+  "program_phase": "R56_AUTHORIZED_FIRST_REPAIR_FLIGHT__R00P_LAUNCH_READY",
   "authority": "DIRECT_USER_DELEGATED_SOURCEFREE_INVESTIGATION_ONLY",
   "issued": [
     {
@@ -60,6 +60,15 @@
       "return_sha": "fb20c987947791f1606faca460bd194b2e9b017e",
       "verification": "13_M3_VERIFICATION_RECEIPT.json",
       "adoption": "13_M3_INTAKE_AND_FINAL_DIRECTOR_DISPOSITION.md"
+    },
+    {
+      "id": "R56-R00P",
+      "branch": "agent/browser-pyat-r56-r00-independent-policy-r1",
+      "startup": "fcbb2ee1d7a6eae040e0964bb8474e8d04d47989",
+      "status": "PUBLISHED_NOT_LAUNCHED",
+      "role": "Independent TEST_ONLY policy owner, not gate author/reviewer",
+      "commission": "WORKER_COMMISSIONS/PYAT-R56-FIRST-REPAIR-FLIGHT-R1/R00P/00_COMMISSION.md",
+      "route": "BROWSER_I2_S1_S2"
     }
   ],
   "not_issued": [
@@ -111,10 +120,9 @@
     "w52": "USER_STOPPED"
   },
   "current_hq": {
-    "head": "4fb23900d721a718a31e0760fd3d20ab0157f81c",
-    "sealed_handoff": "5335547307c868b1edb8cae273c7a4e8a0a4a58d",
-    "scope": "DESIGN_EVIDENCE_ONLY__NO_IMPLEMENTATION_UNPAUSE",
-    "delta": "Sorok progress pair only"
+    "head": "fcbb2ee1d7a6eae040e0964bb8474e8d04d47989",
+    "sealed_handoff": "a51155558ae73b246dfd72e5bf6fabebd6965081",
+    "scope": "NARROW_R00_THEN_CONDITIONAL_R02_R04_BYTE_IMPLEMENTATION_AND_INDEPENDENT_REVIEW_GRANTED"
   },
   "new_native_runs_in_current_intake": 0,
   "routing_update": "08_ROUTING_AND_NEXT_DECISION_QUEUE.json",
@@ -125,7 +133,7 @@
     "return_sha": "a9fc811ecc2a10e07b5bcc2d5da385369ee59554",
     "reruns": 0
   },
-  "next_action": "AUTHORITY_STOP__EXACT_GRANT_REQUIRED: explicit narrow R00/R02/R04.byte stop amendment proposed; no implementation or further forensic worker launched.",
+  "next_action": "User submit sealed R00P Browser launch; then verify policy freeze and seal distinct native R00E/R00V; no new approval of granted first-flight scope.",
   "architectural_blockers": [],
   "current_ruling": "12_BOUNDED_REPAIR_ALLOCATION_DECISION.md",
   "final_package": {

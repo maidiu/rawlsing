@@ -1,3 +1,5 @@
+> R56 supersedes prior narrow implementation-stop status. Read15_R56_ACTIVATION.md and the active R56 packet. R00P issued/branch created, not launched; native E/V and R02/R04 staged. All other holds persist.
+
 # Current UR program position
 
 As of this publication the bounded source-free evidence-direction, architectural ruling and final A–G compilation are complete. Read13_M3_INTAKE_AND_FINAL_DIRECTOR_DISPOSITION.md for acceptance and the exact proposed next permission. Full implementation flight is incorporated from M3 fb20c987947791f1606faca460bd194b2e9b017e by immutable reference.

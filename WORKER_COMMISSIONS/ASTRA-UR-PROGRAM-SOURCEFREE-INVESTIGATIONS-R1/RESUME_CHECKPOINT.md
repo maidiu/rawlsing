@@ -1,18 +1,21 @@
-# UR continuation — documentary direction closed, implementation decision ready
+> Current R56 engineering operation active; prior authority-stop is historical. Read15_R56_ACTIVATION.md and ../PYAT-R56-FIRST-REPAIR-FLIGHT-R1/RESUME_CHECKPOINT.md. R00/R02/R04.byte narrow grant is already issued. Architecture remains closed; worker launch status is not implied.
 
-State: UR_PROGRAM_CLOSED_SCOPED__IMPLEMENTATION_FLIGHT_PREPARED.
-Next state: AUTHORITY_STOP__EXACT_GRANT_REQUIRED.
+# R56 operational checkpoint — R00P launch ready
 
-Existing director branch: agent/astra-ur-program-sourcefree-evidence-direction-r1.
-Publication parent: aaeb5acd76be471390a0c38e3808fadf6a4e82ca. Enclosing commit is checkpoint identity; verify direct remote before writes.
-Read13_M3_INTAKE_AND_FINAL_DIRECTOR_DISPOSITION.md,13_M3_VERIFICATION_RECEIPT.json and14_NEXT_IMPLEMENTATION_DECISION_QUEUE.json. Director12 remains the architecture ruling.
+State: DELEGATED_WORKER_LAUNCH_READY.
+R56 narrow implementation authorization verified, not a pending proposal. Canonical fcbb2ee1d7a6eae040e0964bb8474e8d04d47989; sealed HQa51155558ae73b246dfd72e5bf6fabebd6965081, progress42. Direct pointer, motion and sealed CURRENT pair verified. No second routine HQ approval requested.
 
-M3 return fb20c987947791f1606faca460bd194b2e9b017e is accepted by immutable reference, with explicit fidelity clarifications in13. One ahead/zero behind startupbc5ca38b41259d493ddf4a163225a163b5d88764, seven allowed files; six listed output blobs/character counts and20 fetched input blobs match. Frozen oracle reference preserved, not reopened. Ten-node dependencies, allowlists and recovery arrays match U53A08. No native runs or source reads.
+Existing director branch agent/astra-ur-program-sourcefree-evidence-direction-r1. Parent40511175ca7c2dd6b858e4bc3d4c4bd874d93f16. Enclosing commit identifies this packet; verify direct remote before writes.
+Read00_OPERATION_AND_AUTHORITY.md,01_FLIGHT_BOARD.json,02_OWNER_AND_DEPENDENCY_SEAL.json,03_NATIVE_AND_PARALLEL_PREPARATION.md andR00P/00_COMMISSION.md in this directory.
 
-Current HQ4fb23900d721a718a31e0760fd3d20ab0157f81c differs frome2ca4bf... only in Sorok progress pair. LATEST still sealsR54 at5335547307c868b1edb8cae273c7a4e8a0a4a58d. No new implementation/source/science/CI/N11/N12 authority.
+R00P policy branch agent/browser-pyat-r56-r00-independent-policy-r1 is created and directly verified atfcbb2ee1d7a6eae040e0964bb8474e8d04d47989. Worker status PUBLISHED_NOT_LAUNCHED. Browser whole job sufficient; user submit pinned R00P/LAUNCH_PROMPT.md. No automated Browser-agent facility established. Gate implementation R00E follows exact frozen policy return; reviewerR00V follows exact candidate, distinct sessions/branches. Native DeepSeek V4.1-Flash MAX recommended if Browser full native not qualified; current MAX/provider/account pairUNKNOWN and must be user-selected/qualified. Never invent a launch or route into an unrelated process.
 
-Next productive step: user/competent HQ decide the exact narrow R00/R02/R04.byte implementation-stop amendment in13, or broader M3 proposal. This request is NOT_GRANTED. If granted, Browser I1-I2 seals actual current compatible startup, functional owners, disjoint branches, exact allowlists and independent reviewers. Native candidate code/tests prefer qualified DeepSeek V4.1-Flash MAX unless Browser can execute the whole native task. No Astra necessary for mechanical sealing or bounded code; stop for Astra only a concrete new consequential interpretation.
+R02/R04.byte conditional parallel specifications prepared in03, not launched. R00 independent policy freeze and native qualification acceptance precede their launch. Their grant is already active subject to dependencies; do not re-request it. Native actual C11/I03 proof within exact seven paths; shared-engine edits need a specific new amendment. R04.joined remains gated byR03 and is not authorized.
 
-No new general forensic work. No third minor audit. All implementation remains unissued, including J52/W52 USER_STOPPED. N11NOT_READY,N12HOLD; originalU/E_pre unissued/null;35waves/1890cells plus globalF6/F7/F8 conserved. Later R01/R03/R04.joined/R05/R06/R08/R09 and originalR07 still require their exact grants if only narrow first flight is approved.
+Observed host MacBook-Pro.lan. Cwd artifact notGit, no managed worktree attached. Legacy metadata checkout clean/detached8e35e9b0d41c6a404a84ea511761d5123323af35; no reuse/reset. Nine store worktrees, noR56/UR name match; other stores not exhaustively checked. Four OpenCode processes unmapped; current-project sessionlist[]; no activeR56session verified. Python3.11.3,pytest9.0.2,pyreadstat1.3.2,pandas2.3.1,numpy2.3.2 available. Native worker will create isolated lawful worktree after exact startup seal; no original reads.
 
-Model/effort exact selectors unexposed. This intake I1-I2,S1-S2. Latest observed quota59%five-hour/54%weekly consumed; recheck live. Context remaining unexposed. No uncommitted local work, production changes or external worker launched. GitHub guarded writes only. Future implementation launch remains blocked on the exact competent grant, not on another model review.
+Model/effort exact selectors UNKNOWN. Setup I1-I2,S1-S2; Astra unnecessary. Initial usage63%five-hour/54%weekly, later67%/55%; live recheck on resume. No uncommitted local work, production edits or workers launched. Direct GitHub guard/nonforce publication; preserve before75/80%thresholds.
+
+Full inherited U53A/M3 architecture closed; do not reopen. R56 reopens permitted engineering only. Keep35waves/1890cells/globalF6/F7/F8. OriginalU/E_pre null,N11NOT_READY,N12HOLD,J52/W52USER_STOPPED,otherRnodes held. Next return: verifyR00P exact startup/diff/freeze blobs; bind independent policy and seal R00E native commission without another general audit. If user-selected model is unexpectedly Astra, downshift before prolonged mechanical work.
+
+User confirmed current coordinator model: 6.1 Sol Light. Selected reasoning effort remains unexposed. This setup/commission sealing is sufficient at I1-I2; no higher-model task attempted. Stop and bank evidence before any demonstrated model-capability boundary.

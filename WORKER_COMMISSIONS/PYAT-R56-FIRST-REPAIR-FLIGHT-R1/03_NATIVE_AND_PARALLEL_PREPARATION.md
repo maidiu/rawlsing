@@ -1,0 +1,35 @@
+# Native execution and conditional parallel preparation
+
+This is a staged continuation of issued R56 work, not a launch or new authority request. All exact test obligations inherit M3 01/02 atfb20c987947791f1606faca460bd194b2e9b017e and director12/13 at40511175ca7c2dd6b858e4bc3d4c4bd874d93f16.
+
+## R00E — seal after independent policy return
+
+Read and verify P freeze commit, allowed diff and contract file blobs before inspecting/creating E. Reconcile code baseline against R56 and current compatible native owners; do not transplant historical f148... as current startup. Create E's independent branch from exact verified P candidate baseline; freeze policy tree untouched. Code writes only universal_promotion_gate.py and tests/universal_execution_oracle/. Return root listed in02. Preserve policy as independent external input selected by sealed harness/config, not candidate's own selected expected set. Use the frozen P interface and hand-derived cases. Do not invent an installed trusted runner, signature or public scientific authority. Genuine generic/original qualification without requisite R09/source authority must HOLD/REJECT as specified.
+
+Positive: valid limited claim stays at local/TEST_ONLY policy-check grade; complete expected-vs-actual partition and typed statuses agree under separate policy pin.
+Hostile: q301 relabel, candidate-supplied expected set/pin, fake native boolean/trace/receipt, omitted-ID swap with same count, unknown/pending promotion, policy substitution and synthetic-original grant all fail at their named contract boundary. Native actual Python gate calls and returned objects, not authored JSON assertions alone.
+Cold: separately invoked process reloads frozen policy and prior evidence, rejects substituted/stale policy/evidence and restores correct local counterpart. Keep scientific counting distinct from lawful retry. Full R00 scope is policy/claim-gate qualification only; do not claim C11/data execution under this gate unless actually executed.
+
+R00V gets exact candidate and frozen policy, new separate reviewer branch/session/worktree. Reproduce author suite and independent hostile controls through actual public API/subprocess. No edits to candidate policy/gate. Reviewer tests may use authorized tests directory under a separate test file. Classify meaningful assertion failures versus import/setup errors; absent native context is HOLD not a scientific refusal/pass. Commit exact receipts/import/runtime manifest, return own judgment engineering/science/authority; preserve author evidence untouched. Director independently adjudicates consequential disagreement within settled contract, escalating to Astra only a concrete incompatible cross-node interpretation.
+
+Browser full-job test first: must genuinely run local imports, separate processes and Git under authorized isolated runtime. Current Browser native runtime is not verified. DeepSeek V4.1-Flash MAX is next recommended whole-job executor: UR-B gives bounded positive precedent, mainMac Python prerequisites are now observed, but configured provider/MAX/account pairing must be recorded at launch. No High model necessity shown. No reuse of unrelated OpenCode session; no guessed model#variant or silent provider change. The actual user-selected harness qualifies and launches only on its exact facility; otherwise publish a complete user-executable prompt. Model-name/installed packages alone are not task qualification.
+
+## R02 — conditional independent owner
+
+After R00 acceptance, startup exact current qualified policy/code derivative, disjoint branch. Only rawlsing_next/pre553_source_native_preimage_adapter.py and rawlsing_next/tests/test_universal_source_projection.py plus own archival return. Reuse working scalar/S1 and separated S2 paths and validated C11. Compare low-level governed row-aware builder integration and compatible facade route within allowlist. Both caller respondent map and value-only occurrence fanout require correction. Generic mapping must use governed PID/occasion/row semantics, not fixture modulo/floor as universal law.
+
+Actual proof: native synthetic SAV/DTA fixtures with repeated equal values across distinct occasions, row permutation, admin/missing and MR/rank/form boundaries. Verify exact12 persons×2 correct occasions and24 SCORE with exactvalues/identity; actual unchanged receiving C11/I03 repeated query must consume them; targeted upstream occurrence/value severance flips that same evidence and cold restore restores it. Counts alone fail. Preserve S1/S2 positives. If actual caller integration cannot be achieved with these two paths, return the exact additional facade/bridge/Route B function/path requested; do not make disconnected success or edit ungranted shared code.
+
+## R04.byte — conditional owner parallel with R02
+
+Same frozen R00, separate exact branch. Only rawlsing_next/pre553_physical_decoder.py and rawlsing_next/tests/test_universal_source_byte_custody.py plus own return. Enforce consumed-byte identity via real retained/snapshot handle or equivalent, across metadata/value/lazy phases and cold replay. Same old digest may not accompany changed facts after path replacement. Positive immutable consumption, hostile atomic replacement before/after relevant acquisition/read phases, partial lazy iteration and cold reload, and correct restored positive must reach actual unchanged C11/I03. Refusal or consumption of the correctly retained original is acceptable; false stale digest output is RED. Test SAV and DTA within finite measured resources. Existing native tests preserved.
+
+No pre553_issued_workload.py edits, Batch scheduler replacement or R04.joined qualification. A missing caller-boundary scope cannot be bypassed; return exact narrow amendment. Existing eight U53A decoder and UR-B characterization are inherited design inputs, not a reason to rerun their whole courts unchanged. New regression/consumer qualification must decide the repair.
+
+Each R02/R04 candidate gets a genuinely independent native reviewer using exact candidate/frozen policy and actual same consumer faults/cold checks. Author and reviewer separate, no extra automatic science court. These reviews are already authorized by R56.
+
+## Shared resource precautions and terminal return
+
+Leave legacy worktrees and unrelated processes untouched. Inspect applicable Git/worktree law before materialization; use verified existing shared objects and a new isolated sparse checkout, exact remote repository identity and startup. Avoid raw source paths; synthetic fixture artifacts only. Capture actual Python/package/import bodies and physical hashes. Different environment versions from UR-B require honest compatibility qualification, not automatic failure or false identical-environment claim.
+
+At every model boundary: exact branch/remote/startup, quota orUNKNOWN, uncommitted work, active worker/session orNOT_LAUNCHED and ready prompt. Commit/push non-force and read back scope/remote. Original35/F1-F8/N11 obligations persist. Three separate dispositions are mandatory; no original meaning/source/actor/CI/prod/N11/N12 grant from technical success.
