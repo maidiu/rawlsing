@@ -1,0 +1,27 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "claims": [
+    {
+      "claim_id": "C1_COMBINED_DECODER_ADAPTER_C11_I03_TUPLES",
+      "actual_consumer": "R04 decoder -> R02 materialize_native_preimages -> unchanged facade/C11 -> unchanged I03 execute_empirical_query",
+      "claimed_dependency": "actual generated source bytes and the governed respondent/occasion mapping determine the C11 event tuples and the I03 fact",
+      "positive_node": "tests/universal_execution_oracle/test_c1_combined_sourcefree.py::test_c1_combined_sav_and_dta_exact_source_tuples_domain_and_fact",
+      "fault": {
+        "path": "rawlsing_next/pre553_source_native_preimage_adapter.py",
+        "old": "                    canonical = rule.value_aliases.get(raw_token, raw_token)",
+        "new": "                    canonical = \"0\""
+      }
+    },
+    {
+      "claim_id": "C1_COMBINED_NORMALIZED_SOURCE_KEY_REFUSAL",
+      "actual_consumer": "R02 materialize_native_preimages governed normalized mapping admission before C11 construction",
+      "claimed_dependency": "duplicate normalized source keys refuse before any C11 release or I03 fact",
+      "positive_node": "tests/universal_execution_oracle/test_c1_combined_sourcefree.py::test_c1_combined_collision_and_value_fault_same_assertion_restore",
+      "fault": {
+        "path": "rawlsing_next/pre553_source_native_preimage_adapter.py",
+        "old": "        if len(source_tokens) != len(set(source_tokens)):",
+        "new": "        if False:"
+      }
+    }
+  ]
+}

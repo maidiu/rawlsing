@@ -1,0 +1,22 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "status": "MECHANICAL_WITNESS_PASS_NOT_SEMANTIC_ADOPTION",
+  "claims": [
+    {
+      "claim_id": "C1_COMBINED_DECODER_ADAPTER_C11_I03_TUPLES",
+      "positive_node": "tests/universal_execution_oracle/test_c1_combined_sourcefree.py::test_c1_combined_sav_and_dta_exact_source_tuples_domain_and_fact",
+      "fault_path": "rawlsing_next/pre553_source_native_preimage_adapter.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    },
+    {
+      "claim_id": "C1_COMBINED_NORMALIZED_SOURCE_KEY_REFUSAL",
+      "positive_node": "tests/universal_execution_oracle/test_c1_combined_sourcefree.py::test_c1_combined_collision_and_value_fault_same_assertion_restore",
+      "fault_path": "rawlsing_next/pre553_source_native_preimage_adapter.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    }
+  ]
+}

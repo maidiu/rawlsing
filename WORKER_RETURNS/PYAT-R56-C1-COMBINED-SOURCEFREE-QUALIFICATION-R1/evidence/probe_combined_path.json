@@ -1,0 +1,381 @@
+{
+  "custody_and_faults": {
+    "baseline_fact_ref": "90bbf0714a11cefe185916f73ff0fe53404234a15aaac005a49efd4a1c0972bc",
+    "baseline_tuples": [
+      [
+        "R56R02:P0",
+        0,
+        "SUBSTANTIVE_RESPONSE",
+        "0"
+      ],
+      [
+        "R56R02:P0",
+        1,
+        "SUBSTANTIVE_RESPONSE",
+        "1"
+      ],
+      [
+        "R56R02:P1",
+        0,
+        "SUBSTANTIVE_RESPONSE",
+        "2"
+      ],
+      [
+        "R56R02:P1",
+        1,
+        "SUBSTANTIVE_RESPONSE",
+        "3"
+      ],
+      [
+        "R56R02:P2",
+        0,
+        "SUBSTANTIVE_RESPONSE",
+        "0"
+      ],
+      [
+        "R56R02:P2",
+        1,
+        "SUBSTANTIVE_RESPONSE",
+        "1"
+      ],
+      [
+        "R56R02:P3",
+        0,
+        "SUBSTANTIVE_RESPONSE",
+        "2"
+      ],
+      [
+        "R56R02:P3",
+        1,
+        "SUBSTANTIVE_RESPONSE",
+        "3"
+      ]
+    ],
+    "collision_refusal": "DUPLICATE_NORMALIZED_SOURCE_KEY",
+    "digest_after_denials": true,
+    "fact_after_denials_same": true,
+    "fd_denials": {
+      "ftruncate": "denied errno=22",
+      "mmap_write": "denied errno=13",
+      "pwrite": "denied errno=9",
+      "reopen_O_RDWR": "denied errno=13",
+      "write": "denied errno=9"
+    },
+    "foreign_survives_close": true,
+    "foreign_survives_read": true,
+    "original_path_replacement_same_fact": true,
+    "private_path_replacement_same_fact": true,
+    "reader_access_mode": "O_RDONLY",
+    "restore_same_fact": true,
+    "value_fault_changes_same_query": true
+  },
+  "positive": {
+    "components": {
+      "dta": {
+        "cells": [
+          "{'cell': [mappingproxy({'event_id': 'urn:rawlsing:pre553:c05r2a:event:sha256:005cd1572c3323c0287970a098c7e3922f74598b59da3dfab1eb1ef5c98f2225', 'multiplicity_order_rank_fields': mappingproxy({'kind': 'REPEATED_EVENT', 'multiplicity_index': 0}), 'value': '2'}), mappingproxy({'event_id': 'urn:rawlsing:pre553:c05r2a:event:sha256:8985457e919ef1661f4a3824158bf4a19817b0dfc97b3c2ceb7dfa82ea5f0f3b', 'multiplicity_order_rank_fields': mappingproxy({'kind': 'REPEATED_EVENT', 'multiplicity_index': 1}), 'value': '3'})], 'cell_state': 'OBSERVED_POSITIVE', 'raw_numerator_support': 1, 'weighted_numerator_support_if_authorized': None}",
+          "{'cell': [mappingproxy({'event_id': 'urn:rawlsing:pre553:c05r2a:event:sha256:4304f43f499bd2f51903b8485eb718ea9e10f45ca7a7017a44e9b82c62e22bfe', 'multiplicity_order_rank_fields': mappingproxy({'kind': 'REPEATED_EVENT', 'multiplicity_index': 0}), 'value': '2'}), mappingproxy({'event_id': 'urn:rawlsing:pre553:c05r2a:event:sha256:d47433c42d3e9eb625e46fc5afc5850c6ef10d28a1c87932a5d857a901b6009f', 'multiplicity_order_rank_fields': mappingproxy({'kind': 'REPEATED_EVENT', 'multiplicity_index': 1}), 'value': '3'})], 'cell_state': 'OBSERVED_POSITIVE', 'raw_numerator_support': 1, 'weighted_numerator_support_if_authorized': None}",
+          "{'cell': [mappingproxy({'event_id': 'urn:rawlsing:pre553:c05r2a:event:sha256:60fa0b7aa1f2e5a5dcf1753cbc7f77f7145b48690a8b9b1f69e0c9ca9104fb28', 'multiplicity_order_rank_fields': mappingproxy({'kind': 'REPEATED_EVENT', 'multiplicity_index': 0}), 'value': '0'}), mappingproxy({'event_id': 'urn:rawlsing:pre553:c05r2a:event:sha256:35f8b7449fb40a803d6ffb5f227bf460373fe901b52c10c31e3b25f7cac88df5', 'multiplicity_order_rank_fields': mappingproxy({'kind': 'REPEATED_EVENT', 'multiplicity_index': 1}), 'value': '1'})], 'cell_state': 'OBSERVED_POSITIVE', 'raw_numerator_support': 1, 'weighted_numerator_support_if_authorized': None}",
+          "{'cell': [mappingproxy({'event_id': 'urn:rawlsing:pre553:c05r2a:event:sha256:e46e966c4129712ab8ab7542e72c1990aa416420718a5a75cef133ad881f392f', 'multiplicity_order_rank_fields': mappingproxy({'kind': 'REPEATED_EVENT', 'multiplicity_index': 0}), 'value': '0'}), mappingproxy({'event_id': 'urn:rawlsing:pre553:c05r2a:event:sha256:dbb10ee79f80acf4076c8b5c9d1f4c464b1d5d675896a17fcd790a459efe28ba', 'multiplicity_order_rank_fields': mappingproxy({'kind': 'REPEATED_EVENT', 'multiplicity_index': 1}), 'value': '1'})], 'cell_state': 'OBSERVED_POSITIVE', 'raw_numerator_support': 1, 'weighted_numerator_support_if_authorized': None}"
+        ],
+        "custody": {
+          "content_bound": true,
+          "contract": "PRE553_CONTENT_BOUND_SOURCE_SNAPSHOT@1.0.0",
+          "reader_access_mode": "O_RDONLY",
+          "reader_binding": "OPEN_FD_VIA_POSIX_DEV_FD",
+          "snapshot_path_unlinked": true,
+          "snapshot_sha256": "3439a489213c81170a91720be0cbf778239af1c880387a3a2dcbaa51406c3952",
+          "snapshot_size": 2677,
+          "source_sha256": "3439a489213c81170a91720be0cbf778239af1c880387a3a2dcbaa51406c3952"
+        },
+        "denominator": 4,
+        "domain": [
+          [
+            {
+              "event_id": "urn:rawlsing:pre553:c05r2a:event:sha256:60fa0b7aa1f2e5a5dcf1753cbc7f77f7145b48690a8b9b1f69e0c9ca9104fb28",
+              "multiplicity_order_rank_fields": {
+                "kind": "REPEATED_EVENT",
+                "multiplicity_index": 0
+              },
+              "value": "0"
+            },
+            {
+              "event_id": "urn:rawlsing:pre553:c05r2a:event:sha256:35f8b7449fb40a803d6ffb5f227bf460373fe901b52c10c31e3b25f7cac88df5",
+              "multiplicity_order_rank_fields": {
+                "kind": "REPEATED_EVENT",
+                "multiplicity_index": 1
+              },
+              "value": "1"
+            }
+          ],
+          [
+            {
+              "event_id": "urn:rawlsing:pre553:c05r2a:event:sha256:005cd1572c3323c0287970a098c7e3922f74598b59da3dfab1eb1ef5c98f2225",
+              "multiplicity_order_rank_fields": {
+                "kind": "REPEATED_EVENT",
+                "multiplicity_index": 0
+              },
+              "value": "2"
+            },
+            {
+              "event_id": "urn:rawlsing:pre553:c05r2a:event:sha256:8985457e919ef1661f4a3824158bf4a19817b0dfc97b3c2ceb7dfa82ea5f0f3b",
+              "multiplicity_order_rank_fields": {
+                "kind": "REPEATED_EVENT",
+                "multiplicity_index": 1
+              },
+              "value": "3"
+            }
+          ],
+          [
+            {
+              "event_id": "urn:rawlsing:pre553:c05r2a:event:sha256:e46e966c4129712ab8ab7542e72c1990aa416420718a5a75cef133ad881f392f",
+              "multiplicity_order_rank_fields": {
+                "kind": "REPEATED_EVENT",
+                "multiplicity_index": 0
+              },
+              "value": "0"
+            },
+            {
+              "event_id": "urn:rawlsing:pre553:c05r2a:event:sha256:dbb10ee79f80acf4076c8b5c9d1f4c464b1d5d675896a17fcd790a459efe28ba",
+              "multiplicity_order_rank_fields": {
+                "kind": "REPEATED_EVENT",
+                "multiplicity_index": 1
+              },
+              "value": "1"
+            }
+          ],
+          [
+            {
+              "event_id": "urn:rawlsing:pre553:c05r2a:event:sha256:4304f43f499bd2f51903b8485eb718ea9e10f45ca7a7017a44e9b82c62e22bfe",
+              "multiplicity_order_rank_fields": {
+                "kind": "REPEATED_EVENT",
+                "multiplicity_index": 0
+              },
+              "value": "2"
+            },
+            {
+              "event_id": "urn:rawlsing:pre553:c05r2a:event:sha256:d47433c42d3e9eb625e46fc5afc5850c6ef10d28a1c87932a5d857a901b6009f",
+              "multiplicity_order_rank_fields": {
+                "kind": "REPEATED_EVENT",
+                "multiplicity_index": 1
+              },
+              "value": "3"
+            }
+          ]
+        ],
+        "fact_ref": "2c1aa47c381f93915ce8e1c193f981378407689cad53501d3bcd106b00aafa30",
+        "loaded_source_sha256": "3439a489213c81170a91720be0cbf778239af1c880387a3a2dcbaa51406c3952",
+        "numerator": 4,
+        "release_content_hash": "a8f23c1d6e94e15291810520c7060a6681a73186263c883fb48881c30bf362f7",
+        "source_artifact_hash": "3439a489213c81170a91720be0cbf778239af1c880387a3a2dcbaa51406c3952",
+        "source_bytes": 2677,
+        "source_format": "DTA",
+        "source_sha256": "3439a489213c81170a91720be0cbf778239af1c880387a3a2dcbaa51406c3952",
+        "tuples": [
+          [
+            "R56R02:P0",
+            0,
+            "SUBSTANTIVE_RESPONSE",
+            "0"
+          ],
+          [
+            "R56R02:P0",
+            1,
+            "SUBSTANTIVE_RESPONSE",
+            "1"
+          ],
+          [
+            "R56R02:P1",
+            0,
+            "SUBSTANTIVE_RESPONSE",
+            "2"
+          ],
+          [
+            "R56R02:P1",
+            1,
+            "SUBSTANTIVE_RESPONSE",
+            "3"
+          ],
+          [
+            "R56R02:P2",
+            0,
+            "SUBSTANTIVE_RESPONSE",
+            "0"
+          ],
+          [
+            "R56R02:P2",
+            1,
+            "SUBSTANTIVE_RESPONSE",
+            "1"
+          ],
+          [
+            "R56R02:P3",
+            0,
+            "SUBSTANTIVE_RESPONSE",
+            "2"
+          ],
+          [
+            "R56R02:P3",
+            1,
+            "SUBSTANTIVE_RESPONSE",
+            "3"
+          ]
+        ],
+        "typed_state": "SUPPORTED"
+      },
+      "sav": {
+        "cells": [
+          "{'cell': [mappingproxy({'event_id': 'urn:rawlsing:pre553:c05r2a:event:sha256:74c142cb9a3c54e99fd630cebf6c70ef1b3cad6ff195e50a3f694da37b3f55bf', 'multiplicity_order_rank_fields': mappingproxy({'kind': 'REPEATED_EVENT', 'multiplicity_index': 0}), 'value': '2'}), mappingproxy({'event_id': 'urn:rawlsing:pre553:c05r2a:event:sha256:4807be695a12c8f056d9652e0090d1a2def3f27918ca8c272f45ada4f7997f43', 'multiplicity_order_rank_fields': mappingproxy({'kind': 'REPEATED_EVENT', 'multiplicity_index': 1}), 'value': '3'})], 'cell_state': 'OBSERVED_POSITIVE', 'raw_numerator_support': 1, 'weighted_numerator_support_if_authorized': None}",
+          "{'cell': [mappingproxy({'event_id': 'urn:rawlsing:pre553:c05r2a:event:sha256:8cfbda10528edc241f17a5780d5c4fd4aabc77e493179753a94168413ec3bebe', 'multiplicity_order_rank_fields': mappingproxy({'kind': 'REPEATED_EVENT', 'multiplicity_index': 0}), 'value': '2'}), mappingproxy({'event_id': 'urn:rawlsing:pre553:c05r2a:event:sha256:f0d66acecf45fe56a5fc74070522a1c17139138642707bd178e0896427fd4ff0', 'multiplicity_order_rank_fields': mappingproxy({'kind': 'REPEATED_EVENT', 'multiplicity_index': 1}), 'value': '3'})], 'cell_state': 'OBSERVED_POSITIVE', 'raw_numerator_support': 1, 'weighted_numerator_support_if_authorized': None}",
+          "{'cell': [mappingproxy({'event_id': 'urn:rawlsing:pre553:c05r2a:event:sha256:a30752bcf6072558f4d4175aea52e6b52331e0b30b2e458783df4bbd22f2ba81', 'multiplicity_order_rank_fields': mappingproxy({'kind': 'REPEATED_EVENT', 'multiplicity_index': 0}), 'value': '0'}), mappingproxy({'event_id': 'urn:rawlsing:pre553:c05r2a:event:sha256:87ed007ac59df147c46aca340c8d5b6828088d150111a619271c9668aa66d303', 'multiplicity_order_rank_fields': mappingproxy({'kind': 'REPEATED_EVENT', 'multiplicity_index': 1}), 'value': '1'})], 'cell_state': 'OBSERVED_POSITIVE', 'raw_numerator_support': 1, 'weighted_numerator_support_if_authorized': None}",
+          "{'cell': [mappingproxy({'event_id': 'urn:rawlsing:pre553:c05r2a:event:sha256:c65f2ea1651ea0f43932035a34876ea691ac27cedba749802231b44fd1cc2d0f', 'multiplicity_order_rank_fields': mappingproxy({'kind': 'REPEATED_EVENT', 'multiplicity_index': 0}), 'value': '0'}), mappingproxy({'event_id': 'urn:rawlsing:pre553:c05r2a:event:sha256:87c1dcba1f42b80d30dd237dbf77cf474482d2b1c5cf106a85c0c0fd1463b083', 'multiplicity_order_rank_fields': mappingproxy({'kind': 'REPEATED_EVENT', 'multiplicity_index': 1}), 'value': '1'})], 'cell_state': 'OBSERVED_POSITIVE', 'raw_numerator_support': 1, 'weighted_numerator_support_if_authorized': None}"
+        ],
+        "custody": {
+          "content_bound": true,
+          "contract": "PRE553_CONTENT_BOUND_SOURCE_SNAPSHOT@1.0.0",
+          "reader_access_mode": "O_RDONLY",
+          "reader_binding": "OPEN_FD_VIA_POSIX_DEV_FD",
+          "snapshot_path_unlinked": true,
+          "snapshot_sha256": "73501d2debaa73555d3291d058d1d845d583f909ee3424621c97e4a8f8545b7e",
+          "snapshot_size": 697,
+          "source_sha256": "73501d2debaa73555d3291d058d1d845d583f909ee3424621c97e4a8f8545b7e"
+        },
+        "denominator": 4,
+        "domain": [
+          [
+            {
+              "event_id": "urn:rawlsing:pre553:c05r2a:event:sha256:a30752bcf6072558f4d4175aea52e6b52331e0b30b2e458783df4bbd22f2ba81",
+              "multiplicity_order_rank_fields": {
+                "kind": "REPEATED_EVENT",
+                "multiplicity_index": 0
+              },
+              "value": "0"
+            },
+            {
+              "event_id": "urn:rawlsing:pre553:c05r2a:event:sha256:87ed007ac59df147c46aca340c8d5b6828088d150111a619271c9668aa66d303",
+              "multiplicity_order_rank_fields": {
+                "kind": "REPEATED_EVENT",
+                "multiplicity_index": 1
+              },
+              "value": "1"
+            }
+          ],
+          [
+            {
+              "event_id": "urn:rawlsing:pre553:c05r2a:event:sha256:74c142cb9a3c54e99fd630cebf6c70ef1b3cad6ff195e50a3f694da37b3f55bf",
+              "multiplicity_order_rank_fields": {
+                "kind": "REPEATED_EVENT",
+                "multiplicity_index": 0
+              },
+              "value": "2"
+            },
+            {
+              "event_id": "urn:rawlsing:pre553:c05r2a:event:sha256:4807be695a12c8f056d9652e0090d1a2def3f27918ca8c272f45ada4f7997f43",
+              "multiplicity_order_rank_fields": {
+                "kind": "REPEATED_EVENT",
+                "multiplicity_index": 1
+              },
+              "value": "3"
+            }
+          ],
+          [
+            {
+              "event_id": "urn:rawlsing:pre553:c05r2a:event:sha256:c65f2ea1651ea0f43932035a34876ea691ac27cedba749802231b44fd1cc2d0f",
+              "multiplicity_order_rank_fields": {
+                "kind": "REPEATED_EVENT",
+                "multiplicity_index": 0
+              },
+              "value": "0"
+            },
+            {
+              "event_id": "urn:rawlsing:pre553:c05r2a:event:sha256:87c1dcba1f42b80d30dd237dbf77cf474482d2b1c5cf106a85c0c0fd1463b083",
+              "multiplicity_order_rank_fields": {
+                "kind": "REPEATED_EVENT",
+                "multiplicity_index": 1
+              },
+              "value": "1"
+            }
+          ],
+          [
+            {
+              "event_id": "urn:rawlsing:pre553:c05r2a:event:sha256:8cfbda10528edc241f17a5780d5c4fd4aabc77e493179753a94168413ec3bebe",
+              "multiplicity_order_rank_fields": {
+                "kind": "REPEATED_EVENT",
+                "multiplicity_index": 0
+              },
+              "value": "2"
+            },
+            {
+              "event_id": "urn:rawlsing:pre553:c05r2a:event:sha256:f0d66acecf45fe56a5fc74070522a1c17139138642707bd178e0896427fd4ff0",
+              "multiplicity_order_rank_fields": {
+                "kind": "REPEATED_EVENT",
+                "multiplicity_index": 1
+              },
+              "value": "3"
+            }
+          ]
+        ],
+        "fact_ref": "a695125c0d70e582afddaa85e4188f41955399b635860a95e1ca604e16ea1a91",
+        "loaded_source_sha256": "73501d2debaa73555d3291d058d1d845d583f909ee3424621c97e4a8f8545b7e",
+        "numerator": 4,
+        "release_content_hash": "e3871fa3848f8268cd8d1d0730929f126b0ef3518417bbc0372cd6019c180fe1",
+        "source_artifact_hash": "73501d2debaa73555d3291d058d1d845d583f909ee3424621c97e4a8f8545b7e",
+        "source_bytes": 697,
+        "source_format": "SAV",
+        "source_sha256": "73501d2debaa73555d3291d058d1d845d583f909ee3424621c97e4a8f8545b7e",
+        "tuples": [
+          [
+            "R56R02:P0",
+            0,
+            "SUBSTANTIVE_RESPONSE",
+            "0"
+          ],
+          [
+            "R56R02:P0",
+            1,
+            "SUBSTANTIVE_RESPONSE",
+            "1"
+          ],
+          [
+            "R56R02:P1",
+            0,
+            "SUBSTANTIVE_RESPONSE",
+            "2"
+          ],
+          [
+            "R56R02:P1",
+            1,
+            "SUBSTANTIVE_RESPONSE",
+            "3"
+          ],
+          [
+            "R56R02:P2",
+            0,
+            "SUBSTANTIVE_RESPONSE",
+            "0"
+          ],
+          [
+            "R56R02:P2",
+            1,
+            "SUBSTANTIVE_RESPONSE",
+            "1"
+          ],
+          [
+            "R56R02:P3",
+            0,
+            "SUBSTANTIVE_RESPONSE",
+            "2"
+          ],
+          [
+            "R56R02:P3",
+            1,
+            "SUBSTANTIVE_RESPONSE",
+            "3"
+          ]
+        ],
+        "typed_state": "SUPPORTED"
+      }
+    },
+    "composite_sha": "a2aeb53b0a1e6abb93d4bb3d173007002fd7cf44"
+  }
+}

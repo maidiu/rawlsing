@@ -1,0 +1,111 @@
+{
+  "altered_frontier": {
+    "decision": "REFUSE_FRONTIER",
+    "extra": [
+      "OP.TEST.SUBSTITUTED"
+    ],
+    "grade_ceiling": "NONE",
+    "missing": [
+      "OP.TEST.ARC1.MARG.LUMEN_RAW"
+    ],
+    "reason_rule_ids": [
+      "P06_NO_DROP_MULTISETS"
+    ]
+  },
+  "executed_native_without_r09": {
+    "decision": "HOLD_TRUSTED_NATIVE",
+    "extra": [],
+    "grade_ceiling": "LOCAL_ONLY_POLICY_CONSISTENT",
+    "missing": [],
+    "reason_rule_ids": [
+      "P09_RUNTIME_PROVENANCE_HOLD",
+      "P14_FAIL_CLOSED_TRUST"
+    ]
+  },
+  "generic_sourcefree": {
+    "decision": "HOLD_GENERIC_R09",
+    "extra": [],
+    "grade_ceiling": "LOCAL_ONLY_POLICY_CONSISTENT",
+    "missing": [],
+    "reason_rule_ids": [
+      "P08_CLAIM_GRADE_CEILING",
+      "P09_RUNTIME_PROVENANCE_HOLD"
+    ]
+  },
+  "k_mutation_marker": {
+    "decision": "REFUSE_IDENTITY",
+    "extra": [],
+    "grade_ceiling": "NONE",
+    "missing": [],
+    "reason_rule_ids": [
+      "P10_EXACT_K_AND_CURRENTNESS",
+      "P15_ACTUAL_CONSUMER"
+    ]
+  },
+  "k_mutation_note": "Policy conflict marker refusal; NOT native producer-consumer association verification. R08/R09 authenticated binding is NOT_IMPLEMENTED/NOT_REACHED.",
+  "missing_frontier": {
+    "decision": "REFUSE_FRONTIER",
+    "extra": [],
+    "grade_ceiling": "NONE",
+    "missing": [
+      "OP.TEST.REP3.FRONTIER.HELD_DIRECTION"
+    ],
+    "reason_rule_ids": [
+      "P06_NO_DROP_MULTISETS"
+    ]
+  },
+  "native_positive_gate_verdict_issued": false,
+  "policy_blobs": {
+    "CONTRACT.md": "01ccb46475ba09fe868a59c8810a12de1190dc22",
+    "decision_cases.json": "5608e9c3435042e92d846644aad5404b47d6b2f0",
+    "freeze.json": "dfc1c375b4a4a7b962156c1ddb46b56b9cb8ee10",
+    "policy.json": "5f5d0253cfc8e1eef2e452e54bae631c23da378f",
+    "synthetic_universes.json": "66fdf81f3cb440c36df4cd03dcff8613d1b4928d"
+  },
+  "policy_commit": "6d95a78bf6b7bcf70022e303a151255e65edc38a",
+  "policy_restore": {
+    "decision": "ALLOW_LOCAL_POLICY_CONSISTENT",
+    "extra": [],
+    "grade_ceiling": "LOCAL_ONLY_POLICY_CONSISTENT",
+    "missing": [],
+    "reason_rule_ids": [
+      "P00_INDEPENDENT_PIN",
+      "P06_NO_DROP_MULTISETS",
+      "P08_CLAIM_GRADE_CEILING"
+    ]
+  },
+  "policy_root": "CROSS_HQ_CONTROL_ROOM/universal_execution_policy/r56_sourcefree_v1/revisions/r2",
+  "policy_substitution": {
+    "decision": "REFUSE_FRONTIER",
+    "extra": [],
+    "grade_ceiling": "NONE",
+    "missing": [],
+    "reason_rule_ids": [
+      "P06_NO_DROP_MULTISETS"
+    ]
+  },
+  "positive_policy_only": {
+    "decision": "ALLOW_LOCAL_POLICY_CONSISTENT",
+    "extra": [],
+    "grade_ceiling": "LOCAL_ONLY_POLICY_CONSISTENT",
+    "missing": [],
+    "reason_rule_ids": [
+      "P00_INDEPENDENT_PIN",
+      "P06_NO_DROP_MULTISETS",
+      "P08_CLAIM_GRADE_CEILING"
+    ]
+  },
+  "supported_state_without_native_evidence": {
+    "decision": "HOLD_TRUSTED_NATIVE",
+    "extra": [],
+    "grade_ceiling": "NONE",
+    "missing": [],
+    "reason_rule_ids": [
+      "P09_RUNTIME_PROVENANCE_HOLD",
+      "P14_FAIL_CLOSED_TRUST"
+    ]
+  },
+  "variant_id": "CANONICAL_V1",
+  "verified": true,
+  "verified_evidence_handle_used": false
+}

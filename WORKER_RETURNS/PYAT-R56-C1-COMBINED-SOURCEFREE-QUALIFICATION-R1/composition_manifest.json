@@ -1,0 +1,64 @@
+{
+  "schema": "R56_C1_COMPOSITION_MANIFEST_R1",
+  "job": "R56-C1",
+  "startup": "625f24a28ed8c567ca3d7bb330ddb91d6c7b2ce7",
+  "composite_candidate_sha": "a2aeb53b0a1e6abb93d4bb3d173007002fd7cf44",
+  "decision_baseline": "2dc47d60c81dbcba51338b2d4fd670643fbe35ec",
+  "policy_commit": "6d95a78bf6b7bcf70022e303a151255e65edc38a",
+  "policy_root": "CROSS_HQ_CONTROL_ROOM/universal_execution_policy/r56_sourcefree_v1/revisions/r2",
+  "production_assembly": [
+    {
+      "id": "R00",
+      "path": "CROSS_HQ_CONTROL_ROOM/universal_promotion_gate.py",
+      "source_ref": "3d4d77e9b667a1cddac07c3bfdda7d8795de458d",
+      "review_ref": "d02ef32214c38af59ffb272a29ff4ffd7b30d394",
+      "git_blob_sha1": "e31ed7565b3dd59fcd65e2c865f55d48ae786dfa"
+    },
+    {
+      "id": "R02",
+      "path": "rawlsing_next/pre553_source_native_preimage_adapter.py",
+      "source_ref": "6f4be33854c0437a52e1c49b977104db111ac327",
+      "review_ref": "e1f0aeb65b0a9710b0e2bcf0bf3524f1a3d6ac6b",
+      "git_blob_sha1": "a6299c1a6e8b26bd055ced1f49e5b757f20ccd8c"
+    },
+    {
+      "id": "R04",
+      "path": "rawlsing_next/pre553_physical_decoder.py",
+      "source_ref": "31a39c50cb5e8487968ab7b00386912fc5f1d6ca",
+      "review_ref": "625f24a28ed8c567ca3d7bb330ddb91d6c7b2ce7",
+      "git_blob_sha1": "8732e34d0ea3f4cfffd7d33ee00f258dbc2d65dd"
+    }
+  ],
+  "production_diff_vs_startup": [
+    "A CROSS_HQ_CONTROL_ROOM/universal_promotion_gate.py",
+    "A rawlsing_next/pre553_source_native_preimage_adapter.py"
+  ],
+  "test_sources": {
+    "R00_review_d02ef322": {
+      "tests/universal_execution_oracle/conftest.py": "662d3b3fd63dd0458c573ad67c64b61959f80dc9",
+      "tests/universal_execution_oracle/dependency_probe.py": "be536964be64b636c0e9fddf928f47c55e4f6dbe",
+      "tests/universal_execution_oracle/r00v_r2_dependency_probe.py": "ecff8bd1f9c3d09e2d8159ef33d1cbf064b33c23",
+      "tests/universal_execution_oracle/test_r00e_r2_reviewer_regressions.py": "54f44f2e1e1a7ef082eab64554d1d497d1c7a817",
+      "tests/universal_execution_oracle/test_r00v_r2_requalification.py": "98dbd60bc1b4e83236b6bbba786781fb43e74ec4",
+      "tests/universal_execution_oracle/test_r56_gate.py": "5d433783c708522436eca69db849c3927d315123",
+      "tests/universal_execution_oracle/.gitignore": "7a60b85e148f80966a550e5ab6a762a907c69ca6"
+    },
+    "R02_review_e1f0aeb6": {
+      "rawlsing_next/tests/test_universal_source_projection.py": "ff9aea0fb8137925539c001f238d3a5098e95d24",
+      "rawlsing_next/tests/test_universal_source_projection.py.proof.json": "7e4294d47eeef3e8a985582c460a07c272e77159"
+    },
+    "R04_startup_preserved": {
+      "rawlsing_next/tests/test_universal_source_byte_custody.py": "76a2a17a41be1b762d2434c57dcc733799fd3d99",
+      "rawlsing_next/tests/test_universal_source_byte_custody.py.proof.json": "f4ff0cd8bf509c106f14d03812401fd2edc8581cf5e971dc1f17041d74363f51"
+    },
+    "C1_focused": {
+      "tests/universal_execution_oracle/test_c1_combined_sourcefree.py": "6f59bb38131c0ffc2c0d163b3b421953429719b5",
+      "tests/universal_execution_oracle/test_c1_combined_sourcefree.py.proof.json": "886ceae0898e40c10847b4f93d29e05ad9f5492c"
+    }
+  },
+  "maximum_claim": "SCOPED_LOCAL_COMPOSITION_COMPATIBILITY_AND_CLAIM_CEILINGS",
+  "native_promotion": "HOLD_WITHOUT_R09",
+  "r08_r09": "NOT_IMPLEMENTED_NOT_REACHED",
+  "original35": "NOT_RUN",
+  "workers_launched": 0
+}

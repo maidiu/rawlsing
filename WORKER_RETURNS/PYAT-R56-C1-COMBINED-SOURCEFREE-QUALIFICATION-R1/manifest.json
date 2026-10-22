@@ -1,0 +1,181 @@
+{
+  "schema": "PYAT_R56_C1_COMBINED_QUALIFICATION_MANIFEST_R1",
+  "job": "R56-C1",
+  "role": "same independent R04BYTEV reviewer; assembly only, no implementation",
+  "disposition": "ACCEPT_SCOPED_LOCAL_COMPOSITION_COMPATIBILITY__NATIVE_PROMOTION_HOLD",
+  "startup": "625f24a28ed8c567ca3d7bb330ddb91d6c7b2ce7",
+  "composite_candidate_sha": "a2aeb53b0a1e6abb93d4bb3d173007002fd7cf44",
+  "final_test_tree_sha": "RECORDED_IN_FINAL_REMOTE_READBACK",
+  "decision_baseline": "2dc47d60c81dbcba51338b2d4fd670643fbe35ec",
+  "reviewer_branch": "agent/rabochii-pyat-r56-c1-combined-sourcefree-qualification-r1",
+  "reviewer_session": {
+    "harness": "OpenCode",
+    "model": "opencode-go/deepseek-v4.1-flash",
+    "effort": "UNKNOWN_NOT_EXPOSED",
+    "session_id": "UNKNOWN_NOT_EXPOSED",
+    "provider": "UNKNOWN_NOT_EXPOSED",
+    "host": "MacBook-Pro.lan",
+    "os": "macOS 13.2.1 (22D68) x86_64",
+    "python": "3.11.3",
+    "pytest": "9.0.2",
+    "pyreadstat": "1.3.2",
+    "pandas": "2.3.1"
+  },
+  "qualification": {
+    "combined_suites": "169 passed, 1 skipped",
+    "c1_focused": "7 passed",
+    "skip": "rawlsing_next/tests/test_pre553_sr06_decoder_carrier.py:268 installed pyreadstat writer/readback does not expose missing_user_values in metadata",
+    "proof_witness": "2/2 baseline PASS, 2/2 TARGET_ASSERTION_FAILED; adapter restored a6299c1a...",
+    "native_path": "exact SAV/DTA tuples/domains/facts through decoder->adapter->facade/C11->I03",
+    "custody": "path replacement/fd denial/collision/value-fault/restore pass",
+    "r00_gate": "POLICY_ONLY ALLOW_LOCAL; frontier REFUSE; EXECUTED_NATIVE HOLD_TRUSTED_NATIVE; GENERIC HOLD_GENERIC_R09; K_mutation REFUSE_IDENTITY (marker only)",
+    "r08_r09": "NOT_IMPLEMENTED_NOT_REACHED"
+  },
+  "imports": {
+    "rawlsing_next/pre553_physical_decoder.py": "8732e34d0ea3f4cfffd7d33ee00f258dbc2d65dd",
+    "rawlsing_next/pre553_source_native_preimage_adapter.py": "a6299c1a6e8b26bd055ced1f49e5b757f20ccd8c",
+    "CROSS_HQ_CONTROL_ROOM/universal_promotion_gate.py": "e31ed7565b3dd59fcd65e2c865f55d48ae786dfa"
+  },
+  "files": [
+    {
+      "path": "CROSS_HQ_CONTROL_ROOM/universal_promotion_gate.py",
+      "sha256": "6352975135b99f9135e6ad333c571d6c09e17823a3e4bfc2d0806d1fd935ce4f",
+      "bytes": 34752
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-C1-COMBINED-SOURCEFREE-QUALIFICATION-R1/00_RETURN.md",
+      "sha256": "5e9aec73b13ac321bf955342b43075e1b28c8a847aa424ca51b69cababc3895e",
+      "bytes": 8513
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-C1-COMBINED-SOURCEFREE-QUALIFICATION-R1/00_STARTUP_SESSION_RECORD.md",
+      "sha256": "dbfd81d6c8b58e393ca07f60f360775d9a8cf145de21f3c4fd0ef37b121588b0",
+      "bytes": 4263
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-C1-COMBINED-SOURCEFREE-QUALIFICATION-R1/01_FROZEN_COMPOSITION_EXPECTATIONS.md",
+      "sha256": "0903cfe4ac3d377ec27ae21b0d0d20e23142d1c1a92600bdc4603d4077d036e4",
+      "bytes": 4644
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-C1-COMBINED-SOURCEFREE-QUALIFICATION-R1/RESUME_CHECKPOINT.md",
+      "sha256": "fe474dea87553b72af47a7c89d7e878b33c79450b6ae7f54616814b94f221e38",
+      "bytes": 1431
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-C1-COMBINED-SOURCEFREE-QUALIFICATION-R1/composition_manifest.json",
+      "sha256": "3a7b18b4a69eaf7b3eee4b076ab1446768a41624cf2305c76cf587ff0b0f9c7e",
+      "bytes": 3360
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-C1-COMBINED-SOURCEFREE-QUALIFICATION-R1/evidence/c1_proof_witness.json",
+      "sha256": "4813c3f67c3fad0d748d58e282b7160f5e2527064357a8d9ac21141beb867584",
+      "bytes": 981
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-C1-COMBINED-SOURCEFREE-QUALIFICATION-R1/evidence/combined_suites_receipt.txt",
+      "sha256": "c716e987c5da5176bbf71fb5ae2dee62021518dd6e7088618b5eef89687e52e2",
+      "bytes": 521
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-C1-COMBINED-SOURCEFREE-QUALIFICATION-R1/evidence/commands_and_results.md",
+      "sha256": "245c56f24ed9cbe215917c1853358c9a8fc2915b2e87ae6d1efce8231bbfeb0b",
+      "bytes": 3739
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-C1-COMBINED-SOURCEFREE-QUALIFICATION-R1/evidence/fresh_positive_after_witness.txt",
+      "sha256": "487cbe3a413e6a81e9aaab6f0de2c290bdd9341a96d5f4a4ab29b95dd71f8a24",
+      "bytes": 98
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-C1-COMBINED-SOURCEFREE-QUALIFICATION-R1/evidence/probe_combined_path.json",
+      "sha256": "d6975072db1d06f3413d5084805bb8626afa7207efa3d15ebdc04ddd53f51a72",
+      "bytes": 16714
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-C1-COMBINED-SOURCEFREE-QUALIFICATION-R1/evidence/probe_combined_path.py",
+      "sha256": "5e3ddcd86a88019ab2c9aec34ea0d1248f737d423318ef870c5be9203a1a7f33",
+      "bytes": 9096
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-C1-COMBINED-SOURCEFREE-QUALIFICATION-R1/evidence/probe_r00_gate.json",
+      "sha256": "17034ded664542fc3592fec6868ec21463a6e0098c423739fffe620aee892f24",
+      "bytes": 3122
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-C1-COMBINED-SOURCEFREE-QUALIFICATION-R1/evidence/probe_r00_gate.py",
+      "sha256": "9e7a2134aa7141cfb3420f96a2b8082ce3bbfbb32c531880635bbde086ba8d0d",
+      "bytes": 4651
+    },
+    {
+      "path": "rawlsing_next/pre553_physical_decoder.py",
+      "sha256": "1ed8a8ae01f90bba297d708a0926fe9911d9b186eb858d99aec616e23991d320",
+      "bytes": 32298
+    },
+    {
+      "path": "rawlsing_next/pre553_source_native_preimage_adapter.py",
+      "sha256": "c9ea22ada390babf7b3a977352b784bcfeb498e738dcb0024fc7f4d793b90b95",
+      "bytes": 41514
+    },
+    {
+      "path": "rawlsing_next/tests/test_universal_source_byte_custody.py",
+      "sha256": "8a4efe40b939379c3b28e7455214370baec459d9a1f410e2548ffb6d0964848b",
+      "bytes": 27072
+    },
+    {
+      "path": "rawlsing_next/tests/test_universal_source_byte_custody.py.proof.json",
+      "sha256": "f4ff0cd8bf509c106f14d03812401fd2edc8581cf5e971dc1f17041d74363f51",
+      "bytes": 2638
+    },
+    {
+      "path": "rawlsing_next/tests/test_universal_source_projection.py",
+      "sha256": "6144bf6d210efa4e0c4c7cfda00469158d46dd79e828ff8e7dddfa8be30d61c0",
+      "bytes": 85517
+    },
+    {
+      "path": "rawlsing_next/tests/test_universal_source_projection.py.proof.json",
+      "sha256": "8f1c59bade355f795dedd150e169e0fe058fdbb7999a0092e6a3953934f13598",
+      "bytes": 6242
+    },
+    {
+      "path": "tests/universal_execution_oracle/conftest.py",
+      "sha256": "171f754db47d7bca021fb33351e081c03a5bcc7751aca5415cf726c53b43c481",
+      "bytes": 144
+    },
+    {
+      "path": "tests/universal_execution_oracle/dependency_probe.py",
+      "sha256": "c7d6404ec3804fcb654fc3d484b05662f2319d1a4a9c337c975427e98525f612",
+      "bytes": 1460
+    },
+    {
+      "path": "tests/universal_execution_oracle/r00v_r2_dependency_probe.py",
+      "sha256": "df7fadb4fb4bba423b81a7ae1c25a17ea972672d1cc7ab9e867797b5166fa6b3",
+      "bytes": 1468
+    },
+    {
+      "path": "tests/universal_execution_oracle/test_c1_combined_sourcefree.py",
+      "sha256": "c952c051d90b617290f03668c4300b7917b83b2d9785e4e5161df47ef33c8d02",
+      "bytes": 17824
+    },
+    {
+      "path": "tests/universal_execution_oracle/test_c1_combined_sourcefree.py.proof.json",
+      "sha256": "7093e07fbecd7d78c924359bda7b8cb2f20afd3578ea6b01a310aa65cd3a6290",
+      "bytes": 1513
+    },
+    {
+      "path": "tests/universal_execution_oracle/test_r00e_r2_reviewer_regressions.py",
+      "sha256": "677afd5e91cc9930cd937896edaffc495e8f554230465339d1dccd05b383d449",
+      "bytes": 18233
+    },
+    {
+      "path": "tests/universal_execution_oracle/test_r00v_r2_requalification.py",
+      "sha256": "c082824705d9185703d8e0a44f928385420e4a1241d338ee8b662449dff64a80",
+      "bytes": 15127
+    },
+    {
+      "path": "tests/universal_execution_oracle/test_r56_gate.py",
+      "sha256": "c0f20d6fd631efd799197d2756fef5d6fb8352a98b67b3783e2e139f6ffb7fdb",
+      "bytes": 9403
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "claims": [
+    {
+      "claim_id": "R56-R02-OCCURRENCE-TUPLES",
+      "actual_consumer": "rawlsing_next.pre553_empirical_query.execute_empirical_query repeated-query consumer over actual C11",
+      "claimed_dependency": "the adapter binds governed source respondent and occasion identity into occurrence-specific C11 events and canonical values",
+      "positive_node": "rawlsing_next/tests/test_universal_source_projection.py::test_s3_exact_respondent_occasion_value_tuples_and_repeated_consumer",
+      "fault": {
+        "path": "rawlsing_next/pre553_source_native_preimage_adapter.py",
+        "old": "canonical = rule.value_aliases.get(raw_token, raw_token)",
+        "new": "canonical = \"0\""
+      }
+    },
+    {
+      "claim_id": "R02V-INDEPENDENT-SOURCE-DOMAIN",
+      "actual_consumer": "rawlsing_next.pre553_empirical_query.execute_empirical_query REPEATED_EVENT consumer over the actual C11 release built by the adapter",
+      "claimed_dependency": "the governed source respondent/occasion mapping determines the exact C11 event identities and I03 cell values",
+      "positive_node": "rawlsing_next/tests/test_universal_source_projection.py::test_r02v_prospective_domain_exact_tuples_permuted_and_alternative_labels",
+      "fault": {
+        "path": "rawlsing_next/pre553_source_native_preimage_adapter.py",
+        "old": "respondent_token_by_row[row_ordinal] = mapping[respondent_token]",
+        "new": "respondent_token_by_row[row_ordinal] = next(iter(mapping.values()))"
+      }
+    },
+    {
+      "claim_id": "R02-NORMALIZED-DESTINATION-REFUSAL",
+      "actual_consumer": "rawlsing_next.pre553_source_native_preimage_adapter.materialize_native_preimages governed mapping admission before C11 construction",
+      "claimed_dependency": "duplicate values at the admitted normalized destination representation refuse before any C11 release or I03 fact",
+      "positive_node": "rawlsing_next/tests/test_universal_source_projection.py::test_r02v_normalized_duplicate_respondent_key_is_refused",
+      "fault": {
+        "path": "rawlsing_next/pre553_source_native_preimage_adapter.py",
+        "old": "if len(respondent_keys) != len(set(respondent_keys)):",
+        "new": "if False:"
+      }
+    },
+    {
+      "claim_id": "R02-NORMALIZED-SOURCE-KEY-REFUSAL",
+      "actual_consumer": "rawlsing_next.pre553_source_native_preimage_adapter.materialize_native_preimages governed mapping admission before C11 construction",
+      "claimed_dependency": "duplicate normalized source keys refuse before a last-wins mapping dictionary or any C11 release/fact",
+      "positive_node": "rawlsing_next/tests/test_universal_source_projection.py::test_r02v_ambiguous_normalized_source_key_is_refused",
+      "fault": {
+        "path": "rawlsing_next/pre553_source_native_preimage_adapter.py",
+        "old": "if len(source_tokens) != len(set(source_tokens)):",
+        "new": "if False:"
+      }
+    },
+    {
+      "claim_id": "R2V-R2-ORIGINAL-DESTINATION-COLLISION-REFUSAL",
+      "actual_consumer": "rawlsing_next.pre553_source_native_preimage_adapter.materialize_native_preimages public governed mapping admission before the unchanged facade/C11 release builder",
+      "claimed_dependency": "the original reviewer mapping {0: \"1\", 1: 1} refuses on normalized destination uniqueness after the repaired adapter admits both destination representations, before any C11 release or I03 fact",
+      "positive_node": "rawlsing_next/tests/test_universal_source_projection.py::test_r2v_r2_original_collision_mappings_refuse_before_c11",
+      "fault": {
+        "path": "rawlsing_next/pre553_source_native_preimage_adapter.py",
+        "old": "if len(respondent_keys) != len(set(respondent_keys)):",
+        "new": "if False:"
+      }
+    },
+    {
+      "claim_id": "R2V-R2-ORIGINAL-SOURCE-KEY-COLLISION-REFUSAL",
+      "actual_consumer": "rawlsing_next.pre553_source_native_preimage_adapter.materialize_native_preimages public governed mapping admission before the unchanged facade/C11 release builder",
+      "claimed_dependency": "the original reviewer mapping {0: \"P0\", \"0\": \"P1\", 1: \"P2\"} refuses on normalized source-token uniqueness instead of silently selecting one label",
+      "positive_node": "rawlsing_next/tests/test_universal_source_projection.py::test_r2v_r2_original_collision_mappings_refuse_before_c11",
+      "fault": {
+        "path": "rawlsing_next/pre553_source_native_preimage_adapter.py",
+        "old": "if len(source_tokens) != len(set(source_tokens)):",
+        "new": "if False:"
+      }
+    },
+    {
+      "claim_id": "R2V-R2-SOURCE-DERIVED-TUPLES-AND-DOMAIN",
+      "actual_consumer": "rawlsing_next.pre553_empirical_query.execute_empirical_query REPEATED_EVENT consumer over the actual C11 release built from mixed numeric/string respondent identities",
+      "claimed_dependency": "the repaired normalized mapping still preserves exact respondent/occasion/value tuples and the source-derived prospective I03 domain for legitimate mixed identities",
+      "positive_node": "rawlsing_next/tests/test_universal_source_projection.py::test_r2v_r2_mixed_numeric_string_identities_conserve_tuples_and_domain",
+      "fault": {
+        "path": "rawlsing_next/pre553_source_native_preimage_adapter.py",
+        "old": "canonical = rule.value_aliases.get(raw_token, raw_token)",
+        "new": "canonical = \"0\""
+      }
+    },
+    {
+      "claim_id": "R2V-R2-SAME-DOMAIN-RESPONDENT-ASSIGNMENT-FAULT",
+      "actual_consumer": "rawlsing_next.pre553_empirical_query.execute_empirical_query over the same frozen source-derived domain used by the baseline assertion",
+      "claimed_dependency": "the same frozen query assertion detects an injected respondent-assignment remap and a fresh process restores the baseline fingerprint",
+      "positive_node": "rawlsing_next/tests/test_universal_source_projection.py::test_r2v_r2_source_domain_faults_same_assertion_and_fresh_restore",
+      "fault": {
+        "path": "rawlsing_next/pre553_source_native_preimage_adapter.py",
+        "old": "respondent_token_by_row[row_ordinal] = mapping[respondent_token]",
+        "new": "respondent_token_by_row[row_ordinal] = next(iter(mapping.values()))"
+      }
+    }
+  ]
+}
