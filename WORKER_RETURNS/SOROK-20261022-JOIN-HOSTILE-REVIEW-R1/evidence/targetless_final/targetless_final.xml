@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="3" skipped="0" tests="4" time="2.072" timestamp="2026-10-22T12:32:18.101109-04:00" hostname="Matthews-MBP.lan"><testcase classname="tests.test_join_v_targetless_final" name="test_refusal_fork_receipt_and_parent_integrity" time="0.219"><failure message="assert None == 10">tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-1481/test_refusal_fork_receipt_and_0')
+
+    def test_refusal_fork_receipt_and_parent_integrity(tmp_path):
+        state = tmp_path / "fork"
+        session = RefusalSession.start(state)
+        try:
+            parent_episodes = _branch_rows(session, "first_session")
+            parent_counts = session.product.store.verify("first_session")["counts"]
+            forked = session.fork_alt("alt")
+            branch = session.product.store.branch("alt")
+            receipt = session.meta["branch_lineage"]["fork_receipt"]
+            assert forked["status"] == "OK"
+            assert session.branch_id == "alt"
+            assert session.meta["branch_id"] == "alt"
+            assert receipt["parent_branch"] == "first_session"
+            assert receipt["new_branch"] == "alt"
+&gt;           assert receipt["fork_clock"] == branch["fork_clock"]
+E           assert None == 10
+
+tests/test_join_v_targetless_final.py:31: AssertionError</failure></testcase><testcase classname="tests.test_join_v_targetless_final" name="test_refusal_fork_parent_not_corrupted_positive" time="0.366" /><testcase classname="tests.test_join_v_targetless_final" name="test_refusal_parent_metadata_switch_refused" time="0.311"><failure message="Failed: {&quot;branch_id&quot;: &quot;first_session&quot;, &quot;branch_lineage&quot;: {&quot;current_branch&quot;: &quot;alt&quot;, &quot;fork_receipt&quot;: {&quot;fork_clock&quot;: null, &quot;new_branch&quot;: &quot;alt&quot;, &quot;parent_branch&quot;: &quot;first_session&quot;, &quot;root_hash&quot;: null}, &quot;root_branch&quot;: &quot;first_session&quot;}, &quot;case&quot;: &quot;refusal_parent_metadata_switch&quot;, &quot;opened&quot;: true, &quot;verify&quot;: true}">tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-1481/test_refusal_parent_metadata_s0')
+
+    def test_refusal_parent_metadata_switch_refused(tmp_path):
+        state = tmp_path / "parent_switch"
+        session = RefusalSession.start(state)
+        session.fork_alt("alt")
+        session.close()
+        meta = read_meta(state)
+        meta["branch_id"] = "first_session"
+        write_meta(state, meta)
+        try:
+            opened = RefusalSession.open(state)
+        except SessionRefusal as exc:
+            assert exc.code in {"UNAUTHORIZED_BRANCH", "BRANCH_LINEAGE_MISMATCH"}
+            return
+        try:
+&gt;           pytest.fail(json.dumps({
+                "case": "refusal_parent_metadata_switch",
+                "opened": True,
+                "branch_id": opened.branch_id,
+                "branch_lineage": opened.meta.get("branch_lineage"),
+                "verify": opened.verify().get("ok"),
+            }, sort_keys=True))
+E           Failed: {"branch_id": "first_session", "branch_lineage": {"current_branch": "alt", "fork_receipt": {"fork_clock": null, "new_branch": "alt", "parent_branch": "first_session", "root_hash": null}, "root_branch": "first_session"}, "case": "refusal_parent_metadata_switch", "opened": true, "verify": true}
+
+tests/test_join_v_targetless_final.py:90: Failed</failure></testcase><testcase classname="tests.test_join_v_targetless_final" name="test_joined_parent_metadata_switch_refused" time="0.527"><failure message="Failed: {&quot;branch_id&quot;: &quot;first_session&quot;, &quot;branch_lineage&quot;: {&quot;current_branch&quot;: &quot;alt&quot;, &quot;fork_receipt&quot;: {&quot;fork_clock&quot;: null, &quot;new_branch&quot;: &quot;alt&quot;, &quot;parent_branch&quot;: &quot;first_session&quot;, &quot;root_hash&quot;: null}, &quot;root_branch&quot;: &quot;first_session&quot;}, &quot;case&quot;: &quot;joined_parent_metadata_switch&quot;, &quot;opened&quot;: true, &quot;verify&quot;: true}">tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-1481/test_joined_parent_metadata_sw0')
+
+    def test_joined_parent_metadata_switch_refused(tmp_path):
+        state = tmp_path / "joined_parent_switch"
+        session = start(state, perform="omit")
+        session.fork_alt("alt")
+        session.close()
+        meta = read_meta(state)
+        meta["branch_id"] = "first_session"
+        write_meta(state, meta)
+        try:
+            opened = JoinedSession.open(state)
+        except SessionRefusal as exc:
+            assert exc.code in {"UNAUTHORIZED_BRANCH", "BRANCH_LINEAGE_MISMATCH"}
+            return
+        try:
+&gt;           pytest.fail(json.dumps({
+                "case": "joined_parent_metadata_switch",
+                "opened": True,
+                "branch_id": opened.branch_id,
+                "branch_lineage": opened.meta.get("branch_lineage"),
+                "verify": opened.verify().get("ok"),
+            }, sort_keys=True))
+E           Failed: {"branch_id": "first_session", "branch_lineage": {"current_branch": "alt", "fork_receipt": {"fork_clock": null, "new_branch": "alt", "parent_branch": "first_session", "root_hash": null}, "root_branch": "first_session"}, "case": "joined_parent_metadata_switch", "opened": true, "verify": true}
+
+tests/test_join_v_targetless_final.py:115: Failed</failure></testcase></testsuite></testsuites>

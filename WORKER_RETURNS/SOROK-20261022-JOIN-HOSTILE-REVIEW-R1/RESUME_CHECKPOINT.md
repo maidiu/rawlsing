@@ -1,50 +1,48 @@
-# JOIN-V resume checkpoint — repaired cut cc0ff7d
+# JOIN-V resume checkpoint — targetless cut 75a134e
 
-**STATUS:** `REPAIRED_CUT_REVISE__cc0ff7d__TARGETLESS_REFUSAL_PERSISTENCE_LINEAGE_AND_FORK_NOT_BOUND__AWAIT_NEXT_REPAIR_SHA`
+**STATUS:** `TARGETLESS_FINAL_REVISE__75a134e__BRANCH_LINEAGE_RECEIPT_AND_PARENT_SWITCH_NOT_BOUND__AWAIT_NEXT_REPAIR_SHA`
 **BRANCH:** `codex/sorok-join-v-20261022`
-**REPAIRED CUT:** `cc0ff7d0305340b806ba94b020017c3d8d0585dc` (read-only detached worktree)
-**PRIOR CUTS:** c367777 (targetless A/B; superseded), 13dfd6bad (preliminary)
-**CONTINUATION:** `0445059a81d0882bc6d1488150697d00f044bd39:.../continuations/04_JOIN_V_REPAIRED_EXACT_CUT.md`
+**TARGETLESS CUT:** `75a134ed733acaed2c62ea3421b54fcb09c5442f` (read-only detached worktree)
+**PRIOR CUTS:** cc0ff7d (REVISE), c367777 (REVISE), 13dfd6bad (preliminary)
 **WRITE SCOPE:** own return only; no candidate/J/E edit.
 
-## Results against cc0ff7d
+## Results against 75a134e
 
 | Suite | Result |
 |---|---|
-| Frozen independent positives | 10/10 passed |
-| Frozen independent hostiles | 7/7 passed |
-| Targeted c367 tests | 5/6; one superseded E-first-refusal expectation |
-| New repaired-cut tests | 6/9; 3 failed |
-| JOIN-E own suite | 15/15 passed |
+| Preserved reviewer positives + hostiles + repaired-cut | **26/26 passed** (author-reported 26/26 independently reproduced) |
+| Targeted c367 | 5/6; one historical E-first-refusal expectation |
+| New targetless-final tests | 1/4 passed; 3 failed |
+| JOIN-E own suite | 16/16 passed |
 | Inherited J / E / R30A | 8/8, 15/15, 10/10 passed |
 | Source manifest | 444/444 verified |
 
-Frozen test hashes were checked first and match `FROZEN_ORACLES.json`; no frozen test was edited. `REPAIRED_CUT_ADJUDICATION.md` has full detail; `evidence/repaired_cut/` has JUnit/JSON.
+Frozen hashes match `FROZEN_ORACLES.json`; no frozen test edited. Full evidence: `REPAIRED_CUT_ADJUDICATION.md` (historical), `TARGETLESS_FINAL_ADJUDICATION.md`, `evidence/targetless_final/`.
 
-## Repaired / preserved
+## Passed targetless repairs
 
-- All prior joined-path root/source/C12/branch/typed-root findings pass.
-- Joined positive encounter, lawful fork, attention, privacy, contact, B ignorance and cold reopen pass.
-- E-first import now adapts to the J-first closure; the old targeted test expecting an E-first refusal is historical/superseded, not a candidate defect.
-- Actual B refusal source gives zero tools, no performed inspection, `GM01_REFUSAL`, `target_id=""`, and E `HELP_REFUSE`; share source gives `HELP_ACCEPT`; no refusal=>help-accept claim.
-- Bounded receiving-edge fault/restore: force tool 1 under `REFUSE_TOOL` flips E to `HELP_ACCEPT`; fresh refusal restores `HELP_REFUSE`. This is not end-to-end B pre-C8 severance.
+- Coordinated `session.json`/`refusal.json` source tampering is rejected against C12 `GM01_REFUSAL` and C8 (`J_PROVENANCE_MISMATCH`).
+- Root metadata branch substitution is rejected.
+- Targetless cold reopen is nonmutating; no fabricated target/native grant.
+- `fork_alt` switches to `alt`, cold-reopens `alt`, and does not corrupt the parent branch.
+- Actual B refusal source: zero tools, no inspection, `GM01_REFUSAL`, `HELP_REFUSE`; share source `HELP_ACCEPT`; no refusal=>help-accept.
+- B-source remains bounded receiving-edge, not original pre-C8 severance.
 
-## Still failing / new counterexamples
+## Remaining exact failures
 
-1. Coordinated `session.json` + `refusal.json` source tampering opens with `verify=true` while C12 `GM01_REFUSAL` retains the original source.
-2. Metadata-only branch `branch_id="root"` opens with `verify=true`.
-3. `RefusalSession.fork_alt()` returns OK but leaves `branch_id=first_session`, no lineage; cold reopen ignores `alt`.
-4. `c9.grant_id=TEST_ONLY_BP2_TARGET_GRANT` remains in the targetless receipt; it is inherited, not a newly fabricated native grant, but should be documented by the owner contract.
+1. `fork_alt` records `fork_clock=null` and `root_hash=null`; the created branch has `fork_clock=10` and a real `root_hash`. Same construction in both targetless and joined `fork_alt`.
+2. After a lawful fork to `alt`, metadata-only rewrite to parent `first_session` opens with `verify=true` in both targetless and joined paths, while `branch_lineage.current_branch` remains `alt`.
+
+Positive `test_refusal_fork_parent_not_corrupted_positive` passes, so the parent itself is not corrupted; the guard/receipt is incomplete.
 
 ## Next safe move
 
-Await the next repair SHA; run the unchanged frozen tests, targeted c367 and repaired-cut tests, then `tools/collect_repaired_cut.py`. The remaining repair should:
+Await next repair SHA. Re-run unchanged frozen tests, targeted c367, repaired-cut and targetless-final tests. The remaining repair should:
 
-1. make `joined/refusal.py` read-only and C12/C8-provenance-bound, with no meta/sidecar-only source acceptance;
-2. enforce canonical targetless root and sealed branch/fork lineage; reject metadata-only branch selection;
-3. implement a real targetless fork or a typed `FORK_UNSUPPORTED` refusal; never return success on a no-op;
-4. preserve no-tool/no-target and no refusal=>help-accept; document the inherited C9 grant field.
+1. read `fork_clock`/`root_hash` from the created branch (`fork["branch"]` or branch row) in both `fork_alt` methods;
+2. reject any `branch_lineage.current_branch != meta["branch_id"]`, including parent `first_session`, in both open guards;
+3. preserve 26/26 positives/hostiles/repaired, nonmutating cold, no-target/no-grant, source/C12 provenance and B-source scope.
 
 ## Flight / model
 
-One accountable reviewer on this branch; local OpenCode, user-selected harness; no subagents, provider calls, native operations or model swaps. Remote head is reported after the ordinary non-force push and `git ls-remote` readback.
+One accountable reviewer on this branch; local OpenCode, user-selected harness; no subagents, provider calls, native operations or model swaps. Remote head is reported after ordinary non-force push and `git ls-remote` readback.
