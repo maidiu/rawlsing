@@ -72,7 +72,7 @@ python3 /tmp/proof_integrity_gate_r1.py witness \
 baseline PASS; fault_probe TARGET_ASSERTION_FAILED; grade BOUNDED_MUTATION_DETECTED
 ```
 
-Closure audit: `evidence/import_closure.json` — 444 files, `problems=[]`, loaded J/E/LIVE origins all correct.
+Closure audit: `evidence/import_closure.json` and fresh-process `evidence/fresh_closure.json` — 444 files, `problems=[]`, loaded J/E/LIVE origins all correct.
 
 CLI: `evidence/cli_demo.json` and `DEMO_AND_VERIFICATION.md`.
 
