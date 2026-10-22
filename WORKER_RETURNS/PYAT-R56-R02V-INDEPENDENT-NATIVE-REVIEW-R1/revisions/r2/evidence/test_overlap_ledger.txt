@@ -1,0 +1,14 @@
+author15 unique: 15
+reviewer9 unique: 9
+full31 unique: 31
+retained42 unique: 42
+reviewer9 subset_of full31: True
+author15 subset_of full31: True
+new_r2v_r2 tests: 5
+new_r2v_r2 names:
+  test_r2v_r2_mixed_numeric_string_identities_conserve_tuples_and_domain
+  test_r2v_r2_normalized_admission_uniqueness_matrix
+  test_r2v_r2_original_collision_mappings_refuse_before_c11
+  test_r2v_r2_scalar_and_separate_unit_positives_retained
+  test_r2v_r2_source_domain_faults_same_assertion_and_fresh_restore
+distinct focused(31) + retained(42): 73

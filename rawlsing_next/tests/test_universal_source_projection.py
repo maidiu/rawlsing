@@ -1361,3 +1361,609 @@ def test_r02v_normalized_near_positive_controls(tmp_path):
         (f"{SOURCE_ID}:P{respondent}", occasion,
          "SUBSTANTIVE_RESPONSE", str(respondent % 3))
         for respondent in range(3) for occasion in range(2)))
+
+
+def _r2_hash(value):
+    return hashlib.sha256(
+        json.dumps(value, sort_keys=True, separators=(",", ":"),
+                   ensure_ascii=True).encode()
+    ).hexdigest()
+
+
+def _r2_ref(kind, tag, material=None):
+    return ExactRef(
+        kind, f"urn:rawlsing:r56:{kind.lower()}:{tag}",
+        _r2_hash({"kind": kind, "tag": tag, "material": material}))
+
+
+def _r2_destination(value):
+    if isinstance(value, str):
+        return value
+    if isinstance(value, (bool, int, float)):
+        return str(value)
+    raise AssertionError(f"test oracle received non-scalar destination {value!r}")
+
+
+def _r2_plan(respondents, occasions, variable="SCORE"):
+    return occurrence_plan(
+        ((variable, "REPEATED_EVENT", tuple(
+            (str(occasion), f"occ-{occasion}",
+             {"kind": "REPEATED_EVENT", "multiplicity_index": occasion})
+            for occasion in range(occasions))),),
+        {str(respondent): f"P{respondent}" for respondent in range(respondents)})
+
+
+def _r2_order_value(fields):
+    for name in ("multiplicity_index", "semantic_ordinal", "semantic_order",
+                 "semantic_order_key", "ordinal", "order", "rank", "index"):
+        if name in fields:
+            return fields[name]
+    return None
+
+
+def _r2_order_sort_key(fields):
+    value = _r2_order_value(fields)
+    if isinstance(value, bool) or value is None:
+        return (2, str(value))
+    if isinstance(value, int):
+        return (0, value)
+    return (1, str(value))
+
+
+def _r2_expected_domain_and_tuples(package_, incidence, plan, variable="SCORE"):
+    authorities = build_authority_set(source=package_.source, as_of=package_.as_of)
+    source_auth = authorities[0]
+    universe = EmpiricalUniverse(
+        typed_state="UNIVERSE_IDENTIFIED",
+        authority_snapshot_refs=(source_auth.authority_ref,),
+        dependency_refs=(),
+        producer_replay_locator_or_reference_root=_r2_ref(
+            "REPLAY_ROOT", f"universe-{package_.source.source_id}"),
+        raw_source_identity=f"RAW-{package_.source.family}-{package_.source.wave}",
+        source_family=package_.source.family,
+        study_product_release=f"{package_.study_product_id}/{package_.release_id}",
+        instrument_release=package_.instrument_release_id,
+        country_geography="ZZ",
+        sampling_geography="ZZ-SYNTHETIC",
+        raw_wave=package_.source.wave,
+        canonical_wave_if_governed=None,
+        field_or_reference_time=package_.as_of,
+        target_population_and_sample_frame="SYNTHETIC_SOURCEFREE",
+        sampling_design_regime="TEST_ONLY",
+        respondent_namespace=f"NS-{package_.source.source_id}",
+        source_artifact_import_lineage=f"LINEAGE-{package_.source.source_id}",
+        harmonization_authority_ref=None,
+        source_relation_refs=(),
+    )
+    mapping = {token(source_value): _r2_destination(respondent_key)
+               for source_value, respondent_key
+               in plan.respondent_key_by_source_value.items()}
+    rows = {}
+    for cell in incidence.iter_cells():
+        rows.setdefault(cell.row_ordinal, {})[cell.variable_name] = cell
+    source_tokens_by_respondent = {}
+    for row in rows.values():
+        source_token = token(
+            row[plan.respondent_variable].raw_value)
+        source_tokens_by_respondent.setdefault(
+            mapping[source_token], set()).add(source_token)
+    respondents = {}
+    for respondent_key in sorted(source_tokens_by_respondent):
+        source_ref = _r2_ref(
+            "SOURCE_RESPONDENT",
+            f"{package_.source.source_id}-{respondent_key}",
+            {"source_tokens": sorted(
+                source_tokens_by_respondent[respondent_key])})
+        respondents[respondent_key] = RespondentIdentity(
+            empirical_universe_ref=universe.ref,
+            respondent_key=f"{package_.source.source_id}:{respondent_key}",
+            source_native_respondent_key_ref_or_typed_absence=source_ref,
+            identity_map_authority_ref_or_typed_absence=TypedAbsence(
+                "NOT_APPLICABLE"),
+        )
+    native_question_ref = _r2_ref(
+        "QUESTION_NATIVE", f"{package_.source.source_id}-{variable}",
+        {"wave": package_.source.wave, "variable": variable})
+    question = QuestionVariableBinding(
+        empirical_universe_ref=universe.ref,
+        native_question_ref=native_question_ref,
+        instrument_question_version=package_.source.wave,
+        canonical_question_ref_or_typed_absence=TypedAbsence("NOT_AUTHORIZED"),
+        component_subitem_ref_or_typed_absence=TypedAbsence("NOT_APPLICABLE"),
+        semantic_authority_ref=source_auth.authority_ref,
+        topology_authority_ref=source_auth.authority_ref,
+    )
+    projection_ref = _r2_ref(
+        "C11_SEMANTIC_PROJECTION",
+        f"{package_.source.source_id}-{package_.source.wave}")
+    rule = next(item for item in package_.selected
+                if item.source_variable_code == variable)
+    variable_plan = plan.plan_by_variable[variable]
+    grouped = {}
+    expected_tuples = []
+    for row_ordinal in sorted(rows):
+        row = rows[row_ordinal]
+        source_token = token(row[plan.respondent_variable].raw_value)
+        respondent_key = mapping[source_token]
+        occasion_token = token(row[plan.occasion_variable].raw_value)
+        binding = variable_plan.by_source_value[occasion_token]
+        cell = row[variable]
+        fields = dict(binding.fields)
+        fields.setdefault("kind", variable_plan.topology_kind)
+        envelope = {
+            "schema": OCCURRENCE_BINDING_SCHEMA,
+            "source_declaration": cell.source_missing_declaration,
+            "occurrence_key": binding.occurrence_key,
+            "source_value": binding.source_value,
+            "fields": fields,
+        }
+        physical_key = physical_value_binding_key(
+            cell.raw_value, cell.missing_state, envelope)
+        material = {
+            "contract": CONTRACT_ID,
+            "projection": projection_ref.as_dict(),
+            "source_sha": package_.source.declared_sha256,
+            "row": row_ordinal,
+            "respondent": respondents[respondent_key].ref.as_dict(),
+            "question": question.ref.as_dict(),
+            "slot": (cell.variable_ordinal, cell.variable_name),
+            "physical_value_key": physical_key,
+            "occurrence": binding.occurrence_key,
+        }
+        event_id = (
+            "urn:rawlsing:pre553:c05r2a:event:sha256:"
+            + semantic_hash({**material, "role": "EVENT"}))
+        order = _r2_order_value(fields)
+        if cell.missing_state is PhysicalMissingState.OBSERVED_STORAGE_VALUE:
+            raw_token = token(cell.raw_value)
+            canonical = rule.value_aliases.get(raw_token, raw_token)
+            state = "SUBSTANTIVE_RESPONSE"
+            cell_value = canonical
+        else:
+            canonical = None
+            state = "MISSING"
+            cell_value = {"typed_response_state": "MISSING"}
+        grouped.setdefault(respondent_key, []).append({
+            "event_id": event_id,
+            "multiplicity_order_rank_fields": fields,
+            "value": cell_value,
+        })
+        expected_tuples.append((
+            respondents[respondent_key].respondent_key, order, state, canonical))
+    domain = [
+        sorted(grouped[respondent_key],
+               key=lambda event: _r2_order_sort_key(
+                   event["multiplicity_order_rank_fields"]))
+        for respondent_key in sorted(grouped)
+    ]
+    return domain, tuple(sorted(expected_tuples))
+
+
+def _r2_run_query(bundle, domain, variable, topology, included_states, tag):
+    source = {
+        "qrefs": bundle.question_refs,
+        "source_auth": bundle.projection.authority_snapshots[0],
+        "risk_refs": {"R": bundle.risk_set_ref},
+        "universe": bundle.projection.universes[0],
+        "respondents": {respondent.respondent_key: respondent
+                        for respondent in bundle.projection.respondents},
+        "authorities": bundle.projection.authority_snapshots,
+    }
+    query_authority = _query_authority(tag)
+    predicate = _branch_predicate(source, query_authority, tag=tag)
+    query = _custom_query(
+        source, query_authority, predicate, variable, topology=topology,
+        domain=domain, included_states=included_states, tag=tag)
+    repository, release = build_source_backed_c11_repository(
+        bundle.physical_stream, bundle.projection)
+    registry = AuthorityRegistry(
+        tuple((*bundle.projection.authority_snapshots, query_authority)))
+    return execute_empirical_query(
+        repository=repository, query=query, predicate=predicate,
+        authority_registry=registry, release_refs=(release.release_ref,)).facts[0]
+
+
+def _r2_cell_set(fact):
+    return {
+        canonical_json(cell["cell"])
+        for cell in fact.target_topology.get(
+            "complete_cell_semantic_projection", [])
+    }
+
+
+def _r2_baseline_fingerprint(path):
+    incidence = decode_sav(path)
+    package_ = package(
+        path, incidence.row_count,
+        (NativeSourceRule("impl.score", "SCORE"),))
+    plan = _r2_plan(3, 2)
+    domain, tuples = _r2_expected_domain_and_tuples(
+        package_, incidence, plan)
+    bundle = materialize_native_preimages(
+        package=package_, incidence=incidence, row_occurrence_plan=plan)
+    assert event_tuples(bundle) == tuples
+    fact = _r2_run_query(
+        bundle, domain, "SCORE", "REPEATED_EVENT",
+        ("SUBSTANTIVE_RESPONSE",), "r2v-r2-restore")
+    assert fact.typed_state == "SUPPORTED"
+    return {
+        "state": fact.typed_state,
+        "ref": fact.ref.key,
+        "denominator": fact.raw_denominator_support,
+        "numerator": fact.raw_numerator_support,
+        "cells": sorted(_r2_cell_set(fact)),
+    }
+
+
+def test_r2v_r2_original_collision_mappings_refuse_before_c11(tmp_path, monkeypatch):
+    path = tmp_path / "r2v_r2_original_collisions.sav"
+    rows = [
+        {"PID": 0.0, "OCCASION": 0.0, "SCORE": 7.0},
+        {"PID": 1.0, "OCCASION": 1.0, "SCORE": 9.0},
+    ]
+    write_rows(path, rows)
+    incidence = decode_sav(path)
+    package_ = package(
+        path, incidence.row_count,
+        (NativeSourceRule("impl.score", "SCORE"),))
+
+    def plan_with(mapping):
+        return occurrence_plan(
+            (("SCORE", "REPEATED_EVENT", (
+                ("0", "zero", {"kind": "REPEATED_EVENT",
+                               "multiplicity_index": 0}),
+                ("1", "one", {"kind": "REPEATED_EVENT",
+                              "multiplicity_index": 1}),
+            )),),
+            mapping)
+
+    cases = (
+        ({0: "1", 1: 1}, "DUPLICATE_RESPONDENT_KEY_MAPPING", "1"),
+        ({0: "P0", "0": "P1", 1: "P2"},
+         "DUPLICATE_NORMALIZED_SOURCE_KEY", "0"),
+    )
+    for mapping, code, detail in cases:
+        with pytest.raises(NativePreimageRefusal) as caught:
+            materialize_native_preimages(
+                package=package_, incidence=incidence,
+                row_occurrence_plan=plan_with(mapping))
+        assert caught.value.code == code
+        assert caught.value.detail == detail
+
+    import rawlsing_next.pre553_source_native_preimage_adapter as adapter_module
+    reached = []
+
+    def refuse_to_reach(*args, **kwargs):
+        reached.append((args, kwargs))
+        raise AssertionError("C11 release construction was reached")
+
+    monkeypatch.setattr(
+        adapter_module, "build_validated_source_backed_c11_release_from_stream",
+        refuse_to_reach)
+    with pytest.raises(NativePreimageRefusal) as caught:
+        materialize_native_preimages(
+            package=package_, incidence=incidence,
+            row_occurrence_plan=plan_with({0: "1", 1: 1}))
+    assert caught.value.code == "DUPLICATE_RESPONDENT_KEY_MAPPING"
+    assert reached == []
+
+
+def test_r2v_r2_normalized_admission_uniqueness_matrix(tmp_path):
+    path = tmp_path / "r2v_r2_admission.sav"
+    rows = [
+        {"PID": 0.0, "OCCASION": 0.0, "SCORE": 7.0},
+        {"PID": 1.0, "OCCASION": 1.0, "SCORE": 9.0},
+    ]
+    write_rows(path, rows)
+    incidence = decode_sav(path)
+    package_ = package(
+        path, incidence.row_count,
+        (NativeSourceRule("impl.score", "SCORE"),))
+
+    def plan_with(mapping):
+        return occurrence_plan(
+            (("SCORE", "REPEATED_EVENT", (
+                ("0", "zero", {"kind": "REPEATED_EVENT",
+                               "multiplicity_index": 0}),
+                ("1", "one", {"kind": "REPEATED_EVENT",
+                              "multiplicity_index": 1}),
+            )),),
+            mapping)
+
+    cases = (
+        ({10: 20, 11: "20"}, "DUPLICATE_RESPONDENT_KEY_MAPPING"),
+        ({0: True, 1: "True"}, "DUPLICATE_RESPONDENT_KEY_MAPPING"),
+        ({0: float("nan"), 1: "P1"}, "NON_FINITE_RESPONDENT_KEY"),
+        ({0: float("inf"), 1: "P1"}, "NON_FINITE_RESPONDENT_KEY"),
+        ({0: "", 1: "P1"}, "EMPTY_RESPONDENT_KEY"),
+        ({0: "   ", 1: "P1"}, "EMPTY_RESPONDENT_KEY"),
+        ({0: None, 1: "P1"}, "NON_ADMITTED_RESPONDENT_KEY_TYPE"),
+        ({0: b"P0", 1: "P1"}, "NON_ADMITTED_RESPONDENT_KEY_TYPE"),
+        ({0: ("P0",), 1: "P1"}, "NON_ADMITTED_RESPONDENT_KEY_TYPE"),
+        ({0: ["P0"], 1: "P1"}, "NON_ADMITTED_RESPONDENT_KEY_TYPE"),
+        ({0: {"key": "P0"}, 1: "P1"}, "NON_ADMITTED_RESPONDENT_KEY_TYPE"),
+        ({20: "A", "20": "B", 21: "C"},
+         "DUPLICATE_NORMALIZED_SOURCE_KEY"),
+        ({0.0: "P0", "0": "P1", 1: "P2"},
+         "DUPLICATE_NORMALIZED_SOURCE_KEY"),
+        ({True: "P0", "true": "P1", 1: "P2"},
+         "DUPLICATE_NORMALIZED_SOURCE_KEY"),
+        ({None: "P0", 1: "P1"}, "NON_ADMITTED_SOURCE_IDENTITY_TYPE"),
+        ({b"0": "P0", 1: "P1"}, "NON_ADMITTED_SOURCE_IDENTITY_TYPE"),
+        ({(1, 2): "P0", 1: "P1"}, "NON_ADMITTED_SOURCE_IDENTITY_TYPE"),
+        ({float("nan"): "P0", 1: "P1"}, "NON_FINITE_SOURCE_IDENTITY"),
+        ({float("inf"): "P0", 1: "P1"}, "NON_FINITE_SOURCE_IDENTITY"),
+    )
+    for mapping, code in cases:
+        with pytest.raises(NativePreimageRefusal) as caught:
+            materialize_native_preimages(
+                package=package_, incidence=incidence,
+                row_occurrence_plan=plan_with(mapping))
+        assert caught.value.code == code
+
+
+def test_r2v_r2_mixed_numeric_string_identities_conserve_tuples_and_domain(tmp_path):
+    base_rows = [
+        {"PID": float(respondent), "OCCASION": float(occasion),
+         "SCORE": float(1 + (respondent * 3 + occasion) % 7)}
+        for respondent in range(4) for occasion in range(3)
+    ]
+    mapping = {0: "P0", "1": "one", 2: 2, 3.0: "three"}
+    for index, rows in enumerate((base_rows, base_rows[1::2] + base_rows[0::2])):
+        path = tmp_path / f"r2v_r2_mixed_{index}.sav"
+        write_rows(path, rows)
+        incidence = decode_sav(path)
+        package_ = package(
+            path, incidence.row_count,
+            (NativeSourceRule("impl.score", "SCORE"),))
+        plan = occurrence_plan(
+            (("SCORE", "REPEATED_EVENT", (
+                ("0", "occ-0", {"kind": "REPEATED_EVENT",
+                                "multiplicity_index": 0}),
+                ("1", "occ-1", {"kind": "REPEATED_EVENT",
+                                "multiplicity_index": 1}),
+                ("2", "occ-2", {"kind": "REPEATED_EVENT",
+                                "multiplicity_index": 2}),
+            )),),
+            mapping)
+        domain, tuples = _r2_expected_domain_and_tuples(
+            package_, incidence, plan)
+        assert len(tuples) == 12
+        bundle = materialize_native_preimages(
+            package=package_, incidence=incidence, row_occurrence_plan=plan)
+        assert event_tuples(bundle) == tuples
+        fact = _r2_run_query(
+            bundle, domain, "SCORE", "REPEATED_EVENT",
+            ("SUBSTANTIVE_RESPONSE",), f"r2v-r2-mixed-{index}")
+        assert fact.typed_state == "SUPPORTED"
+        assert fact.raw_denominator_support == 4
+        assert fact.raw_numerator_support == 4
+        assert _r2_cell_set(fact) == {
+            canonical_json(cell) for cell in domain}
+
+    numeric_path = tmp_path / "r2v_r2_numeric_destinations.sav"
+    numeric_rows = [
+        {"PID": float(respondent), "OCCASION": float(occasion),
+         "SCORE": float(3 + respondent + occasion)}
+        for respondent in range(3) for occasion in range(2)
+    ]
+    write_rows(numeric_path, numeric_rows)
+    numeric_incidence = decode_sav(numeric_path)
+    numeric_package = package(
+        numeric_path, numeric_incidence.row_count,
+        (NativeSourceRule("impl.score", "SCORE"),))
+    numeric_plan = occurrence_plan(
+        (("SCORE", "REPEATED_EVENT", (
+            ("0", "occ-0", {"kind": "REPEATED_EVENT",
+                            "multiplicity_index": 0}),
+            ("1", "occ-1", {"kind": "REPEATED_EVENT",
+                            "multiplicity_index": 1}),
+        )),),
+        {0: 7, 1: 8, 2: 9})
+    numeric_domain, numeric_tuples = _r2_expected_domain_and_tuples(
+        numeric_package, numeric_incidence, numeric_plan)
+    assert {item[0] for item in numeric_tuples} == {
+        f"{SOURCE_ID}:7", f"{SOURCE_ID}:8", f"{SOURCE_ID}:9"}
+    numeric_bundle = materialize_native_preimages(
+        package=numeric_package, incidence=numeric_incidence,
+        row_occurrence_plan=numeric_plan)
+    assert event_tuples(numeric_bundle) == numeric_tuples
+    numeric_fact = _r2_run_query(
+        numeric_bundle, numeric_domain, "SCORE", "REPEATED_EVENT",
+        ("SUBSTANTIVE_RESPONSE",), "r2v-r2-numeric")
+    assert numeric_fact.typed_state == "SUPPORTED"
+    assert numeric_fact.raw_denominator_support == 3
+
+    nonliteral_path = tmp_path / "r2v_r2_nonliteral_keys.sav"
+    nonliteral_rows = [
+        {"PID": float(respondent), "OCCASION": float(occasion),
+         "SCORE": float(5 + respondent + occasion)}
+        for respondent in (10, 11) for occasion in range(2)
+    ]
+    write_rows(nonliteral_path, nonliteral_rows)
+    nonliteral_incidence = decode_sav(nonliteral_path)
+    nonliteral_package = package(
+        nonliteral_path, nonliteral_incidence.row_count,
+        (NativeSourceRule("impl.score", "SCORE"),))
+    nonliteral_plan = occurrence_plan(
+        (("SCORE", "REPEATED_EVENT", (
+            ("0", "occ-0", {"kind": "REPEATED_EVENT",
+                            "multiplicity_index": 0}),
+            ("1", "occ-1", {"kind": "REPEATED_EVENT",
+                            "multiplicity_index": 1}),
+        )),),
+        {10: "P10", 11: "P11"})
+    nonliteral_domain, nonliteral_tuples = _r2_expected_domain_and_tuples(
+        nonliteral_package, nonliteral_incidence, nonliteral_plan)
+    assert {item[0] for item in nonliteral_tuples} == {
+        f"{SOURCE_ID}:P10", f"{SOURCE_ID}:P11"}
+    nonliteral_bundle = materialize_native_preimages(
+        package=nonliteral_package, incidence=nonliteral_incidence,
+        row_occurrence_plan=nonliteral_plan)
+    assert event_tuples(nonliteral_bundle) == nonliteral_tuples
+    nonliteral_fact = _r2_run_query(
+        nonliteral_bundle, nonliteral_domain, "SCORE", "REPEATED_EVENT",
+        ("SUBSTANTIVE_RESPONSE",), "r2v-r2-nonliteral")
+    assert nonliteral_fact.typed_state == "SUPPORTED"
+    assert nonliteral_fact.raw_denominator_support == 2
+
+
+def test_r2v_r2_source_domain_faults_same_assertion_and_fresh_restore(tmp_path):
+    path = tmp_path / "r2v_r2_fault.sav"
+    rows = [
+        {"PID": float(respondent), "OCCASION": float(occasion),
+         "SCORE": float(2 + (respondent * 2 + occasion) % 5)}
+        for respondent in range(3) for occasion in range(2)
+    ]
+    write_rows(path, rows)
+    incidence = decode_sav(path)
+    package_ = package(
+        path, incidence.row_count,
+        (NativeSourceRule("impl.score", "SCORE"),))
+    plan = _r2_plan(3, 2)
+    domain, tuples = _r2_expected_domain_and_tuples(
+        package_, incidence, plan)
+    baseline = materialize_native_preimages(
+        package=package_, incidence=incidence, row_occurrence_plan=plan)
+    assert event_tuples(baseline) == tuples
+    baseline_fact = _r2_run_query(
+        baseline, domain, "SCORE", "REPEATED_EVENT",
+        ("SUBSTANTIVE_RESPONSE",), "r2v-r2-fault-baseline")
+    assert baseline_fact.typed_state == "SUPPORTED"
+    assert baseline_fact.raw_denominator_support == 3
+
+    baseline_cells = tuple(incidence.iter_cells())
+    omitted = tuple(
+        cell for cell in baseline_cells
+        if not (cell.row_ordinal == 1 and cell.variable_name == "SCORE"))
+    omitted_stream = ExactPhysicalCellStream(
+        source_sha256=incidence.source_sha256,
+        row_count=incidence.row_count,
+        cell_iter_factory=lambda: omitted)
+    with pytest.raises(NativePreimageRefusal) as refusal:
+        materialize_native_preimages(
+            package=package_, incidence=omitted_stream,
+            row_occurrence_plan=plan)
+    assert refusal.value.code == "SELECTED_VARIABLE_CELL_ABSENT"
+
+    remap_plan = occurrence_plan(
+        (("SCORE", "REPEATED_EVENT", (
+            ("0", "occ-0", {"kind": "REPEATED_EVENT",
+                            "multiplicity_index": 1}),
+            ("1", "occ-1", {"kind": "REPEATED_EVENT",
+                            "multiplicity_index": 0}),
+        )),),
+        {str(respondent): f"P{respondent}" for respondent in range(3)})
+    remapped = materialize_native_preimages(
+        package=package_, incidence=incidence, row_occurrence_plan=remap_plan)
+    assert event_tuples(remapped) != tuples
+    remapped_fact = _r2_run_query(
+        remapped, domain, "SCORE", "REPEATED_EVENT",
+        ("SUBSTANTIVE_RESPONSE",), "r2v-r2-fault-remap")
+    assert remapped_fact.typed_state != "SUPPORTED"
+    assert remapped_fact.ref.key != baseline_fact.ref.key
+
+    value_cells = tuple(
+        replace(cell, raw_value=float(cell.raw_value) + 1.0)
+        if cell.row_ordinal == 2 and cell.variable_name == "SCORE"
+        else cell
+        for cell in baseline_cells)
+    value_stream = ExactPhysicalCellStream(
+        source_sha256=incidence.source_sha256,
+        row_count=incidence.row_count,
+        cell_iter_factory=lambda: value_cells)
+    value_bundle = materialize_native_preimages(
+        package=package_, incidence=value_stream, row_occurrence_plan=plan)
+    value_fact = _r2_run_query(
+        value_bundle, domain, "SCORE", "REPEATED_EVENT",
+        ("SUBSTANTIVE_RESPONSE",), "r2v-r2-fault-value")
+    assert value_fact.typed_state != "SUPPORTED"
+    assert value_fact.ref.key != baseline_fact.ref.key
+
+    restored = _r2_baseline_fingerprint(path)
+    script = (
+        "import importlib.util,json,sys;"
+        "p=sys.argv[1];f=sys.argv[2];"
+        "s=importlib.util.spec_from_file_location('r2vtest',p);"
+        "m=importlib.util.module_from_spec(s);s.loader.exec_module(m);"
+        "print(json.dumps(m._r2_baseline_fingerprint("
+        "__import__('pathlib').Path(f))))"
+    )
+    env = dict(os.environ, PYTHONPATH=str(REPO), PYTHONDONTWRITEBYTECODE="1")
+    completed = subprocess.run(
+        [sys.executable, "-B", "-c", script, str(Path(__file__)), str(path)],
+        cwd=str(REPO), env=env, capture_output=True, text=True, timeout=120)
+    assert completed.returncode == 0, completed.stderr[-3000:]
+    fresh = json.loads(completed.stdout.strip().splitlines()[-1])
+    assert fresh == restored
+
+
+def test_r2v_r2_scalar_and_separate_unit_positives_retained(tmp_path):
+    scalar_path = tmp_path / "r2v_r2_s1.sav"
+    scalar_rows = [
+        {"A": float(index % 2), "B": float((index // 2) % 2),
+         "Y": float(index % 2), "G": float(index % 2)}
+        for index in range(7)
+    ]
+    write_rows(scalar_path, scalar_rows)
+    scalar_package = package(
+        scalar_path, len(scalar_rows),
+        (NativeSourceRule("impl.y", "Y"),), coordinate="G")
+    scalar_bundle = materialize_native_preimages(
+        package=scalar_package, incidence=decode_sav(scalar_path))
+    scalar_expected = tuple(sorted(
+        (f"{SOURCE_ID}:ROW-{row:04d}", 0, "SUBSTANTIVE_RESPONSE",
+         str((row - 1) % 2)) for row in range(1, 8)))
+    assert event_tuples(scalar_bundle, "Y") == scalar_expected
+    scalar_fact = run_scalar(scalar_bundle, "Y")
+    assert scalar_fact.typed_state == "SUPPORTED"
+    assert scalar_fact.raw_denominator_support == 7
+    assert scalar_fact.raw_numerator_support == 7
+    assert {cell["raw_numerator_support"] for cell in
+            scalar_fact.target_topology["complete_cell_semantic_projection"]} == {
+        3, 4}
+
+    person_path = tmp_path / "r2v_r2_s2_person.sav"
+    person_rows = [{"PID": float(index), "OUTCOME": float(index % 2)}
+                   for index in range(1, 4)]
+    write_rows(person_path, person_rows)
+    person_package = package(
+        person_path, len(person_rows),
+        (NativeSourceRule("impl.outcome", "OUTCOME", unit="person"),),
+        coordinate="PID")
+    person_bundle = materialize_native_preimages(
+        package=person_package, incidence=decode_sav(person_path))
+    assert event_tuples(person_bundle, "OUTCOME") == tuple(sorted(
+        (f"{SOURCE_ID}:ROW-{row:04d}", 0, "SUBSTANTIVE_RESPONSE",
+         str(row % 2)) for row in range(1, 4)))
+    person_fact = run_scalar(person_bundle, "OUTCOME")
+    assert person_fact.typed_state == "SUPPORTED"
+    assert person_fact.raw_denominator_support == 3
+
+    household_path = tmp_path / "r2v_r2_s2_household.sav"
+    household_rows = [{"HID": float(10 * index), "HMEAS": float(index % 2)}
+                      for index in range(1, 4)]
+    write_rows(household_path, household_rows)
+    household_package = package(
+        household_path, len(household_rows),
+        (NativeSourceRule("impl.h", "HMEAS", unit="household"),),
+        coordinate="HID")
+    household_bundle = materialize_native_preimages(
+        package=household_package, incidence=decode_sav(household_path))
+    assert event_tuples(household_bundle, "HMEAS") == tuple(sorted(
+        (f"{SOURCE_ID}:ROW-{row:04d}", 0, "SUBSTANTIVE_RESPONSE",
+         str(row % 2)) for row in range(1, 4)))
+    household_fact = run_scalar(household_bundle, "HMEAS")
+    assert household_fact.typed_state == "SUPPORTED"
+    assert household_fact.raw_denominator_support == 3
+    assert (person_bundle.release.release_ref
+            != household_bundle.release.release_ref)
+
+    with pytest.raises(NativePreimageRefusal) as caught:
+        package(
+            household_path, len(household_rows),
+            (NativeSourceRule("impl.h", "HMEAS", unit="household"),
+             NativeSourceRule("impl.p", "OUTCOME", unit="person")),
+            coordinate="HID",
+            units={"HMEAS": "household", "OUTCOME": "person"})
+    assert caught.value.code == "CROSS_UNIT_POOLING_UNAUTHORIZED"
