@@ -5,6 +5,7 @@
 **MODEL / HARNESS:** DeepSeek V4.1-Flash, reasoning MAX, I2-I3, OpenCode local, mainMac. One agent; no subagents; external model calls 0; usage/cost UNKNOWN.
 **CANDIDATE / STARTUP:** `3d4d77e9b667a1cddac07c3bfdda7d8795de458d`.
 **SUCCESSOR BRANCH:** `agent/rabochii-pyat-r56-r00v-r2-gate-requalification-r1`.
+**EVIDENCE COMMIT:** `d768c675661f0d3026a468aa92ab4bcd65b25837`.
 **REMOTE SHA:** `__REMOTE_SHA__` (replaced after non-force push/readback).
 
 ## Four-column return
@@ -39,6 +40,7 @@ Additional independent checks: valid full occurrence transport ALLOW; semantic o
 - `evidence/junit/r00v_r2.xml` — **41 tests, 0 failures/errors/skips** (24 candidate + 17 reviewer).
 - `evidence/dependency_fault.json` — ALLOW → REFUSE_FRONTIER → ALLOW in separate processes.
 - `evidence/candidate_changed_test_gate.json` — candidate tests pass mechanical proof gate.
+- `evidence/reviewer_changed_test_gate.json` — reviewer tests pass mechanical proof gate.
 - `evidence/candidate_custody_recheck.json` — **2 manifest stale entries, 2 sums path failures**.
 - `evidence/proof_witness.json` — reviewer test/replay/defect/JUnit/dependency hashes.
 - `evidence/session.json`, `evidence/passport.json` — actual reviewer session/host/model/usage.
