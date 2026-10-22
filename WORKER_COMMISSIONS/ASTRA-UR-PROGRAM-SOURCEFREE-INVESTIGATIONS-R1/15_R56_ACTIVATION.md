@@ -1,3 +1,5 @@
+> **Protocol correction controls:** WORKER_COMMISSIONS/PYAT-R56-FIRST-REPAIR-FLIGHT-R1/05_HQ_PROTOCOL_READINESS_VERDICT.md qualifies final HQ sealing/appointment claims. Candidate scope remains granted; native dispatch awaits exact HQ seal or bounded delegation; active policy content preserved.
+
 # R56 activation — prior implementation stop amended at exact narrow scope
 
 R56 explicit user grant is verified at canonicalfcbb2ee1d7a6eae040e0964bb8474e8d04d47989, immutable HQa51155558ae73b246dfd72e5bf6fabebd6965081, progress42. Earlier13/14 stop language is superseded only for authorized R00 then conditional R02/R04.byte candidate code/tests and independent native review. Existing architectural conclusion remains closed.

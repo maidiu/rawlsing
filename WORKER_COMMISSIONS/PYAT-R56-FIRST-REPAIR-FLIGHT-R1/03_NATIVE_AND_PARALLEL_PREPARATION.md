@@ -1,3 +1,5 @@
+> **Before native dispatch:** apply05 protocol verdict and obtain exact competent HQ seal/delegation. Changed integration tests must include sibling proof specs and run the existing AST/fault witness in their ordinary pass; R00 directory scope permits its sidecars, later R02/R04 exact-file scope requires classification/amendment first. Include sanitized environment passport and actual author/reviewer independence. No new scientific review round.
+
 # Native execution and conditional parallel preparation
 
 This is a staged continuation of issued R56 work, not a launch or new authority request. All exact test obligations inherit M3 01/02 atfb20c987947791f1606faca460bd194b2e9b017e and director12/13 at40511175ca7c2dd6b858e4bc3d4c4bd874d93f16.

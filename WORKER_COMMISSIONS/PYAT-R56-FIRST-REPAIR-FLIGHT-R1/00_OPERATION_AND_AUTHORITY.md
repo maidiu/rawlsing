@@ -1,3 +1,5 @@
+> **Controlling protocol correction:** read05_HQ_PROTOCOL_READINESS_VERDICT.md. This packet is operational preparation, not proof of final competent HQ sealing or appointment. R56 grant remains active; policy content continues; competent HQ role/seal reconciliation precedes native dispatch. Prior appointment wording below is qualified by that verdict.
+
 # R56 first repair flight — active operational packet
 
 Authority verified: canonical fcbb2ee1d7a6eae040e0964bb8474e8d04d47989; R56 immutable HQ packet a51155558ae73b246dfd72e5bf6fabebd6965081, progress42. Motion blob5cf690c7ff5aed40c64194e0dc138cadc2db431e. LATEST blob6927fe1dedd03ca4f8109b39b587c7e4cd970454 points to that packet. Motion and CURRENT.md/CURRENT.json blobs match sealed manifest. Full six-entry manifest re-verification is not claimed.
