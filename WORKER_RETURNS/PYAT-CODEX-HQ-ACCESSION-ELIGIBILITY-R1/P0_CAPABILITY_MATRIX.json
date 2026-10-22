@@ -5,20 +5,25 @@
   "host": "MacBook-Pro.lan",
   "cwd": "/Users/matthewsmith/Desktop/Rawlsing",
   "candidate_model": "gpt-6.1-sol",
-  "effort": "low",
+  "effort": "high",
   "identity_basis": "Both matching retained session rollout latest turn_context; CODEX_THREAD_ID matches app-server thread/read",
   "codex_cli": "0.162.0-alpha.2",
   "opencode_entrypoint": "/Users/matthewsmith/.opencode/bin/opencode v2.0.22 observed during first preflight",
   "worker_observed_opencode": "/Users/matthewsmith/.bun/bin/opencode 1.18.34; exact executing subprocess reports same pid55640",
   "models": "opencode-go/deepseek-v4.1-flash supports max in provider catalog; worker's persisted session model includes variant max (author report inspected, independent infrastructure review pending)",
   "active_worker": {
-    "session": "ses_e9b2bd4bdffeEHQ2JQHOOI7OET",
-    "exec_session": 75963,
-    "model_requested": "opencode-go/deepseek-v4.1-flash",
-    "variant_requested": "max",
-    "workspace": "/Users/matthewsmith/Desktop/Rawlsing_Controller",
-    "startup": "d4d95c13eaa72827c1a4bd34d861ee041a775d8e",
-    "grade": "ACTUAL_PROCESS_AND_TOOL_EVENTS_OBSERVED__AUTHOR_MAX_RECEIPT_AVAILABLE__IMPLEMENTATION_IN_PROGRESS"
+    "author_session": "ses_e9b2bd4bdffeEHQ2JQHOOI7OET",
+    "author_status": "RETURNED_CLEAN_COMMITTED",
+    "author_candidate": "c14d51abf524fb713ea0260db5d2560bb2865a8b",
+    "MAX": "Actual invocation/catalog/persistedvariant authorreceipt verified; independentreviewpending",
+    "independent_review": {
+      "exec_session": 86566,
+      "start": "1e1156b0a6d432a324af43d5c686789546f398cf",
+      "branch": "infra/r59-p1-independent-review-r1",
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Controller/.reviews/r59-p1-independent-review",
+      "status": "ACTUALLY_LAUNCHED_PENDING_RETURN"
+    },
+    "native_limits": "Networkprobepermissiondenied; not retried; P2NOTRUN; P3permittedshadowNOTRUN; P4NO; privatecontrollerremoteNOTCONFIGURED"
   },
   "sleep": {
     "battery_minutes": 7,
@@ -26,8 +31,8 @@
     "changed": false
   },
   "usage": {
-    "five_hour_used_percent": 4,
-    "weekly_used_percent": 1,
+    "five_hour_used_percent": 38,
+    "weekly_used_percent": 6,
     "account_binding": "Current Codex tool account observed; no credentials persisted",
     "context_remaining": "UNKNOWN"
   },

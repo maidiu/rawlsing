@@ -1,18 +1,147 @@
-# R59 candidate dossier — PREFLIGHT CHECKPOINT, NOT COMPLETED ACCESSION
-State: MODEL_SWITCH_REQUIRED__SOL_HIGH. Candidate not operative full HQ. Existing R57 technical-director role persists.
-Exact R59 startup3f001c80940d8d38071bcfa2d2042c9631619f67; canonical read9df86bc4376e3bc054609963c0ccd0a8803c1fbe. Candidate branchagent/codex-pyat-r59-full-hq-accession-eligibility-r1; same incumbent01a15c1e-5446-7ef3-80bb-9ff5c2cb27da. No replacement thread.
-All5R59 commissions, immutable checkpoint/motion, R1/R2 controller programs, Pyat00/validity/13 and actual verifier/template read. Nineteen checkpoint manifest blobs matched exact GitHub contents metadata; no operative HQ edits. Sorok progress rev34 read at R59; its independent appointment/manual dispatch remain.
-This is a factual intake and model-boundary checkpoint, not a finished proof-of-understanding report. The 15-category matrix deliberately leaves fourteen substantive ratings NOT_RUN. Do not present the structural negative as121 discovered defects in inherited science: these are missing fields/ratings in this intentionally incomplete current dossier. It is not a fresh court and no prior evidence is revoked.
+# R59 — Existing mainMac Codex: full Pyat HQ eligibility candidate
 
-## Reused primary evidence, no repeated courts
-U53A d7988b3d5d313902d883d2d8c244fd2526058410; UR-A aaec50f421b73c5508e545bd99e937f21edec8ef; UR-B66d267cb017951fd41389aa075780838f64b6445; UR-S1a9fc811ecc2a10e07b5bcc2d5da385369ee59554; M3fb20c987947791f1606faca460bd194b2e9b017e; directorf910b067e8413d27c176cc83ddf71e6e83f6e56c; C1a54893657ba65e44c1049f763208b0b4b6ed5eb9; R58facf870d2482972c50925e7dbf9b9e04da408b71.
-These exact refs identify evidence to consume, not claims that every historical code/function was rechecked this preflight. R00/R02/R04.byte and C1 remain locally qualified; no reopened C1 job.
-The substantive dossier must demonstrate all15 categories/eight inherited function adjudications plus actual scientific terminal discriminators, not merely cite this list. Fresh F6/EE12/proxy/sourceconditioning comparison and four product campaigns need supported present judgment, not fill-in-the-template prose. Original35 remains0new/1890 demandcells; no originalU/Epreissued; N11NOT_READY/N12HOLD.
+**Date:** 22 October 2026  
+**Incumbent:** `01a15c1e-5446-7ef3-80bb-9ff5c2cb27da`  
+**Disposition:** `PREPARED_FOR_INDEPENDENT_REVIEW_WITH_DECLARED_PARTIAL_EVIDENCE`
 
-## Actual engineering activity
-Approved local private controller workspace created and Git baseline committed. Separate DeepSeekMAX-requested infrastructure process genuinely started; actual effort proof and return pending. Read P0_CAPABILITY_MATRIX.json and INFRA_EXECUTABLE_COMMISSION.md. No approved controller remote yet. No new user Rawlsing code rights. P1/P2 are not PASS merely because worker started.
-P0.5 same-ID read succeeded; resume refused existing active writer; wrong-ID read refused. No turn/start, no nonce reply, no replacement thread. Need an idle-window actual reply/verified return-envelope wake before continuity PASS.
+This is the existing R57 technical director's candidate dossier. It does not appoint a full HQ, issue science, or change an operative handoff.
 
-## Finite accession completion boundary
-Finish actual source-evidence crosswalk using inherited documents; assess each required category at its exact grain. Demonstrate difficult R04fd choice and R00/R08/R09 distinction with alternatives/reversal evidence, plus source-to-learned/world-to-Sorok authority witness. Run exact checker on finished candidate and retain genuine lack of independent review as FAIL/expectedpre-review. Checker requires ACCEPTED before full structural success: never forge review to green it.
-Freeze candidate then conditional separate04reviewer; explicit user appointment and outgoing competent handoff remain. No self-certification.
+## 1. Finding and finite limits
+
+My candidate assessment is **13 PASS and 2 PARTIAL** across the required fifteen categories. These are self-assessments for an independent reviewer to challenge.
+
+The two partial categories have precise limits:
+
+- **L1 — Long Memory succession:** the exact current living ledger for all 44 inherited obligations and LMQ debts, or its competent retained acceptance, has not been reconciled at a current identity.
+- **L2 — Semantic succession:** the portable, competent authority for concept, driver, facet, polarity and manual-override mappings has not been verified. Local metadata tools exist; some visibly generate provisional keyword and polarity candidates.
+
+Neither finding establishes that a function is absent. Neither reopens U53A or revokes R56's scoped proof. A reviewer should close each limit using exact retained evidence or name the smallest missing proof. This dossier does not commission a new history sweep.
+
+The actual structural checker ran on the completed candidate and returned **exit 1, nine findings**: the two PARTIAL ratings, six absent independent-review fields, and the exact accepted-readiness enum that a candidate cannot truthfully assert before review. The complete receipt is retained. The earlier 121-finding preflight receipt remains historical evidence of an incomplete draft, not 121 scientific defects.
+
+## 2. Whole-machine command
+
+The present spine is:
+
+```text
+Governed source and source-semantic authority
+  -> selected Route B / source-backed logical C11
+  -> I03 queries and I05 / exact / adaptive / recursive discovery
+  -> applicable adjudication, release, lifecycle and learned composition
+  -> F5 structural fields; F6 source-separated composition; F7 temporal fields
+  -> N9 world resolution + N10E computed slices + N10W progressive possibility
+  -> N11 independent estate and functional acceptance
+  -> explicit N12 seam decision
+  -> separately governed Sorok interface, development, person continuity and expression
+```
+
+This is a producer DAG. Historical V553–V558 stages are not mandatory physical nodes. Earlier authoritative objects remain directly reusable.
+
+F1 governs source meaning, population, risk, design and exact empirical support. F2 requires predictors and conditional possibilities. F3 requires majority, minority, outlier and recursive branches. F4 requires same-respondent co-travel and joint configurations. Special structural-relation authority cannot erase otherwise lawful empirical co-travel. F5–F7 add competent structural, multi-source and temporal content. F8 must expose useful possibilities with uncertainty rather than assign a personality.
+
+All 35 sources, the historical 1,890 demand cells, global F6/F7/F8, the 151-to-101 workclass mapping and AT01–AT35 remain visible. Demand cells are not issued operations or measured outcomes. No new original U/E_pre or original measurements are claimed. N11 remains NOT_READY; N12 remains HOLD; J52/W52 remain USER_STOPPED.
+
+## 3. What inherited and current evidence establishes
+
+U53A and the UR/M3 program settled the repair architecture. They are reused, not repeated.
+
+R56 implemented and independently qualified local R00 claim controls, R02 respondent/occasion projection and R04.byte custody. C1 at `a54893657ba65e44c1049f763208b0b4b6ed5eb9` assembled the accepted components and exercised the actual decoder → adapter → unchanged C11 → unchanged I03 path. R58 accepted its scoped local result. This does not establish production integration, authenticated native promotion, learned XOR discovery or original35 completion.
+
+At canonical `9df86bc4…`, the seven inspected facade, query, adaptive, recursive, source-relation and possibility implementations match their inherited H125 identities. They are executable capital to preserve. Their existence does not prove full estate occupancy.
+
+UR-S1 corrected the XOR evidence: the fixture has real XOR counts, while the executed single-atom I05 discovery is valid-empty. That route did not reach N10E. Separately, the installed empirical possibility provider really calls analytical composition and its consumer. Its public single-binding boundary is narrower than richer lower machinery. R05 must prove the intended released-product path rather than build a duplicate engine.
+
+## 4. Difficult decision witness: R04.byte
+
+The R2 decoder preserved descriptor, inode, size and digest identities and unlinked the snapshot, but handed out a writable descriptor. An independent mmap attack changed later SAV facts under the old source identity before the metadata-signature check detected the modification. Metadata checking therefore failed the actual consumed-byte claim.
+
+The bounded repair hands off an O_RDONLY reader, closes the construction writer and aliases, binds the retained inode, size, digest and zero-link state, and unlinks the snapshot before reading. Independent R3 review reproduced denied writes and shared writable mappings while actual C11/I03 facts remained unchanged. C1 demonstrated composition.
+
+An alternative was a full digest before every chunk, or full buffering. Those approaches introduce repeated file work or full SAV memory and still require an atomicity argument. The read-only capability preserved streaming within the declared trusted-runtime boundary.
+
+I would reverse this choice if a writable capability were reachable through the supplied reader, if an authorized target lacked equivalent read-only semantics, or if the threat model expanded to deliberate privilege or private-state substitution. R3 did not prove hostile-root or ptrace isolation. DTA full-frame memory, the extended-missing skip and fail-closed raw OS exceptions remain explicit limits.
+
+## 5. Difficult proof witness: R00, R08 and R09
+
+R00 checks an independently frozen policy/frontier and limits claims. R00V found eight genuine bypasses despite all 36 frozen cases passing, including semantic mutation concealed by a status edit. The repairs were independently requalified. A documentary custody supplement reconciled exact Git objects without another native test loop.
+
+R08 must bind exact source, release and request K to a real producer invocation or authenticated cached output actually read by the consumer. A recorded J42 call trace can exist without that invocation. The separate unchanged E04 TEST_ONLY nonparent call was real at its scope; both facts must survive.
+
+R09 must establish trustworthy execution evidence: independent roots, exact commit and runtime, freshness and actual enforcement where authorized. R00's submitted K_mutation marker is not native association verification. Author logs are not R09 attestation.
+
+I reject treating policy consistency as native execution, or trusting a trace label or caller-owned “verified” boolean. C1 correctly held EXECUTED_NATIVE and GENERIC_SOURCEFREE. Only actual supervisor/consumer evidence with independent hostile proof can lift those ceilings.
+
+## 6. Fresh evaluation of inherited methods
+
+`FUNCTION_ADJUDICATIONS.json` evaluates all eight mandatory function families, with historical and current identities, proof, alternatives, consumer, missing edge and positive/fault tests.
+
+The decisions preserve useful machinery while exposing necessary improvement:
+
+- **Conditioning:** retain native units, routing, risk sets, survey design and minority branches. Exact empirical conditionals are the baseline. Existing specificity walkback can provide an explicit proxy while the exact lane stays unresolved.
+- **Cross-source synthesis:** compose separate lawful fields first. Shared labels do not identify a joint distribution. Statistical fusion or partial pooling would require a distinct model/use contract, explicit bridge assumptions, transfer/calibration tests and sensitivity analysis.
+- **Time:** recover the existing canonical-surface, anchor, gap and authority machinery. Its fixed confidence penalty is not a validated error bar, and an audit table populated with false violation flags is not an independent proof of absence. Compare authorized interpolation against anchor-only or piecewise baselines with blocked-time holdouts and rupture controls.
+- **Mappings:** preserve metadata and scale tools as recovery capital. Keyword matches and inferred polarity are candidates, not semantic issuance.
+- **Serving:** expose and bind existing analytical capacity to actual consumers; do not replace the generic possibility core or introduce parent-specific ontology.
+
+These are comparative development judgments and test specifications. They do not issue a new estimand, assert a model's empirical superiority or adopt an unvalidated scientific method. No new architectural conflict justifies reopening Astra's court.
+
+## 7. Four substantive product campaigns
+
+The flight board ranks four full-product campaigns:
+
+| Campaign | Parent outcome | Real dependency |
+|---|---|---|
+| Universal sourcefront | Complete prospective operations and native workload execution for declared source classes | R01 + accepted R02 → R03; R04.joined follows |
+| Learned product to actual consumer | Released conditional/recursive products genuinely consumed by N10E/F8 | R08; then R05 after R03 + R08 |
+| Structural, multi-field and temporal world | Positive source-separated context usable by later development | R06 after R05, with competent F5/F6/F7 inputs |
+| Trust and currentness | Authentic qualification, lifecycle, replay and promotion controls | R09 local work plus separately governed protected deployment |
+
+The frontier, evidence-binding and local-verifier implementations can have disjoint owners after exact grants. Scientific contract preparation can proceed independently where authorized. Shared issued-workload writes and author/reviewer conflicts require real serialization; unrelated lanes do not.
+
+R59 **does not grant** R01/R08/local R09 or conditional R03 implementation. Current lawful execution is candidate preparation and the approved private infrastructure work. Sorok remains an independently appointed HQ with its own C0–C12/A0–A5 trajectory, revision 34 manual dispatch and scoped joined-positive/targetless-lineage findings. I do not invent its local worker state.
+
+## 8. End-product discriminator
+
+The proof matrix specifies a generic situated-adult interface test, with a nonparent control. Exact empirical conditions and relevant world context must reach the actual N9/N10E/N10W receiver.
+
+A competent material, temporal or conditioning counterfactual must change or refuse the same receiver's relevant possibility. Severing the alleged upstream release must fail that same consumer assertion even if copied traces remain. Fresh restoration must reproduce the positive result. Irrelevant labels or desired-personality metadata must not create a psyche.
+
+Only separately authorized Sorok rules may then turn a permitted encounter into developmental history. Source evidence, structural prior, generated history, actor access, memory and expression remain separate.
+
+Astra R3 amendment 16's conception-conditioned genealogy is a proposed extension, not adopted Pyat or Sorok law. Software construction dependencies must not become represented causal history. Generic possibility remains useful independently of that particular consumer.
+
+## 9. Fidelity, resources and finite corrections
+
+Git is the authority bus. Library is evidence storage, with NO, EXACT_ONLY or ESCALATION_ONLY permission per commission. This candidate read no original respondents.
+
+The R59 packet explicitly separates R04_BYTE and R04_JOINED but retains a stale generic R04 “custody RED” alias. The explicit split and R58 acceptance control the interpretation. This merits an owner clarification, not another custody review.
+
+The structural checker tests completeness, not truth. Its accepted-state requirement cannot be satisfied by fabricating review fields. Prior checkpoints remain immutable; only the competent outgoing HQ and explicit user appointment can effect succession.
+
+MainMac and the current Codex/OpenCode sessions are observed. Second-machine/account capacity remains UNKNOWN. Sleep settings do not support an always-on claim. Current Sol High is used for this incumbent's judgment; publication and routine review intake should downshift after the dossier is frozen.
+
+Forbidden actions still include original-source reads without grants, other repair-node code under the controller commission, J52/W52 restart, protected CI or P4 activation, N11/N12 adoption, Sorok actor issuance, and claiming full HQ from R57.
+
+## 10. Infrastructure: actual result and limits
+
+The separate DeepSeek MAX owner committed a runnable TypeScript/SQLite kernel at:
+
+`c14d51abf524fb713ea0260db5d2560bb2865a8b`
+
+I independently checked all 32 manifest file hashes and lengths: zero mismatches. The author's result is 24 PASS, one PARTIAL, one HOLD and one NOT_AUTHORIZED, with typecheck PASS. Independent hostile review remains necessary; these are not real P2 loop results.
+
+P0 is partial. P0.5 verified this exact incumbent's readability, but resume refused an active writer; no nonce reply or return-envelope wake was executed. P1 is author-qualified. P2 remains held. P3 is **NOT_RUN**: R59 permits documentary shadow work, so the author's NOT_AUTHORIZED label overstates that restriction. P4 remains NO.
+
+The denied network-listener probe was not retried or substituted. Network isolation remains unproved. R59 already authorizes a sourcefree test worker and independent reviewer; the remaining questions are exact test-HQ model/account/effort, containment and actual transport, not another generic permission round.
+
+A fresh P1 reviewer has been commissioned on the exact candidate in a separate worktree, from review startup `1e1156b0a6d432a324af43d5c686789546f398cf`. It cannot author fixes or claim deployed trust.
+
+The local workspace is approved. Its remote destination is still unapproved/unconfigured. Local code is committed and recoverable; no controller push is claimed.
+
+## 11. Handback
+
+- **Engineering:** R56/C1 remains closed at scoped local grade. A real private P1 kernel exists; independent review is pending. P2 and incumbent automation are not proved.
+- **Scientific:** the inherited repair architecture remains intact. The candidate's comparative judgments and test contracts are presented for review; no source or method authority is issued.
+- **Authority:** this is a completed candidate presentation with two declared evidence limits, not a full maximum-strict PASS. R57 continues until independent review, explicit appointment and competent outgoing handoff.
+
+Stop candidate forensic expansion. Resolve L1/L2 through exact retained evidence or a bounded review disposition. The next intellectual act is independent eligibility review. The next routine operational phase belongs to economical execution.

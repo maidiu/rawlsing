@@ -1,0 +1,8 @@
+{
+  "checker_blob": "648f706cb17c791148075bc4234ac4990d08c152",
+  "input": "Frozen R59 MAXIMUM_STRICT_PROOF_MATRIX.json;13PASS2PARTIALselfassessment;reviewpending",
+  "command": "python3 exact_verify_incoming_hq_grok_r1.py MAXIMUM_STRICT_PROOF_MATRIX.json",
+  "exit": 1,
+  "stdout": "HQ_GROK_STRUCTURAL_CHECK_FAIL (9 findings)\n- proof crosswave_semantic_driver_facet: not PASS\n- proof long_memory_current_succession: not PASS\n- independent acceptance not recorded\n- independent acceptance: reviewer type invalid\n- independent acceptance: missing reviewer_identity_or_user_ack\n- independent acceptance: missing review_artifact_ref\n- independent acceptance: missing review_sha\n- independent acceptance: missing reviewed_candidate_sha\n- final readiness did not preserve original authority hierarchy\n",
+  "stderr": ""
+}
