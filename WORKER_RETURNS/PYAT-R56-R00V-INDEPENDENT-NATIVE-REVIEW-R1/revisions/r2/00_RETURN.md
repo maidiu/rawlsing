@@ -6,7 +6,7 @@
 **CANDIDATE / STARTUP:** `3d4d77e9b667a1cddac07c3bfdda7d8795de458d`.
 **SUCCESSOR BRANCH:** `agent/rabochii-pyat-r56-r00v-r2-gate-requalification-r1`.
 **EVIDENCE COMMIT:** `d768c675661f0d3026a468aa92ab4bcd65b25837`.
-**REMOTE SHA:** `__REMOTE_SHA__` (replaced after non-force push/readback).
+**REMOTE SHA:** branch HEAD read back after the final non-force push; exact value in the handoff/git readback (not embedded, to avoid a self-referential commit).
 
 ## Four-column return
 
