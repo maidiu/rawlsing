@@ -56,6 +56,11 @@
       "sha256": "93db609204bc4b25bf64eeec9a7f0f08ca5a08f300768e2e772cf59d2ca86ab8"
     },
     {
+      "bytes": 1491,
+      "path": "WORKER_RETURNS/PYAT-R56-R02V-INDEPENDENT-NATIVE-REVIEW-R1/04_REMOTE_READBACK.md",
+      "sha256": "ffa37654e959c01ed2a4a2c1b28e4e84f2aecb68d368472e113191d760fbdebf"
+    },
+    {
       "bytes": 3109,
       "path": "WORKER_RETURNS/PYAT-R56-R02V-INDEPENDENT-NATIVE-REVIEW-R1/RESUME_CHECKPOINT.md",
       "sha256": "317ba6c2132ecb6a8731518818dcba438cf64398af8862d10dfbc89ad482c7d0"
@@ -193,7 +198,18 @@
     "witness": "MECHANICAL_WITNESS_PASS_NOT_SEMANTIC_ADOPTION"
   },
   "r57_commit": "953eb07ad29cc424b2fc43cfeb13ef83355f3a50",
-  "remote_readback": "SEE 04_REMOTE_READBACK.md after publication",
+  "remote_readback": {
+    "adapter_sha256": "2cf5e98bc29081678c364d3ff591c71f11ce7ebf3564419af8a26f5f04113b64",
+    "ancestry_ok": true,
+    "changed_file_allowlist": [
+      "rawlsing_next/tests/test_universal_source_projection.py",
+      "rawlsing_next/tests/test_universal_source_projection.py.proof.json",
+      "WORKER_RETURNS/PYAT-R56-R02V-INDEPENDENT-NATIVE-REVIEW-R1/"
+    ],
+    "first_publication_commit": "f56216646859a691ddfc53b2249a319da606c43b",
+    "parent": "236fd4d1064f7c14113616db300c955294a474ac",
+    "remote_sha_at_first_readback": "f56216646859a691ddfc53b2249a319da606c43b"
+  },
   "repo_files": [
     {
       "bytes": 54830,
@@ -215,6 +231,7 @@
     }
   ],
   "reviewer_branch": "agent/rabochii-pyat-r56-r02v-independent-projection-review-r1",
+  "reviewer_publication_commit": "f56216646859a691ddfc53b2249a319da606c43b",
   "schema": "PYAT_R56_R02V_RETURN_MANIFEST@1",
   "science": "TEST_ONLY synthetic sourcefree only; no original respondent data or original science claim",
   "session": {
