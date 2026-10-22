@@ -1,0 +1,34 @@
+# R56-C1 — one bounded combined-candidate native compatibility proof
+Repository maidiu/rawlsing PRIVATE. Task I2-I3/S3. Prefer SAME still-independent R04BYTEV reviewer, qualified user-selected DeepSeek V4.1-Flash MAX/OpenCode; Browser only if entire native job possible. No new High/Astra decision indicated.
+This is the previously specified combined interaction check, not a new general review or broad implementation grant.
+
+Exact startup:625f24a28ed8c567ca3d7bb330ddb91d6c7b2ce7.
+Independent branch:agent/rabochii-pyat-r56-c1-combined-sourcefree-qualification-r1.
+Return root:WORKER_RETURNS/PYAT-R56-C1-COMBINED-SOURCEFREE-QUALIFICATION-R1/.
+Read25_R04_ACCEPTANCE_AND_FIRST_FLIGHT_POSITION.md and26_COMBINED_COMPONENT_PINS.json at exact enclosing director commit supplied by launch URL. Read R56/R57 and shared native/review contracts at pinned refs documented in earlier review commission.
+Record actual independent session/model/effort/host/usage, isolated worktree and no duplicate job; proceed on match. No return-for-seal round. Reuse authorized existing Git store/worktree facility, preserve all existing branches.
+
+## Exact candidate assembly and terrain
+From startup, preserve accepted R04 decoder blob8732e34d0ea3f4cfffd7d33ee00f258dbc2d65dd.
+Install ONLY these exact accepted production blobs:
+- CROSS_HQ_CONTROL_ROOM/universal_promotion_gate.py from3d4d77e9b667a1cddac07c3bfdda7d8795de458d, blobe31ed7565b3dd59fcd65e2c865f55d48ae786dfa; reviewed atd02ef32214c38af59ffb272a29ff4ffd7b30d394.
+- rawlsing_next/pre553_source_native_preimage_adapter.py from6f4be33854c0437a52e1c49b977104db111ac327, bloba6299c1a6e8b26bd055ced1f49e5b757f20ccd8c; reviewed ate1f0aeb65b0a9710b0e2bcf0bf3524f1a3d6ac6b.
+Byte decoder production remains byte-identical; no other production changes. Compare relevant imports/native-owner compatibility against exact accepted baselines. A real dependency mismatch is a precise owner repair/amendment, not permission to substitute an engine.
+Test writes allowed: tests/universal_execution_oracle/, rawlsing_next/tests/test_universal_source_projection.py and its R57 documentary witness, rawlsing_next/tests/test_universal_source_byte_custody.py and its R57 witness. Own return root allowed. Frozen policy and foreign returns read-only.
+Import/copy accepted relevant tests from R00reviewd02ef322 and R02reviewe1f0aeb6 within those test paths; preserve byte tests at startup. Exact archived test-helper dependencies may be read/materialized as pinned references or copied into OWN return root with hashes; adapt test-helper paths only. Do not commit foreign-return alterations, conceal imports from other working trees, or add unauthorized source modules.
+Commit/freeze assembled composite tree BEFORE qualification, recording every source blob/ref and bounded diff. This creates an actual exact combined candidate SHA; never invent one in advance. Qualification tests/receipts then bind that SHA and final test tree. No canonical/HQ merge or deployment.
+
+## Frozen positive and hostile checks
+1. Independently freeze a small synthetic SAV repeated-row fixture and DTA separate-unit fixtures with governed mappings, expected exact source/respondent/occasion/value tuples and prospective I03 domains. Reuse accepted fixture capital and vary order/cardinality where it probes composition. No original data, new scientific method or new policy universe.
+2. Execute the actual combined decoder→materialize_native_preimages→unchanged facade/C11→unchanged I03 consumer. Assert exact bytes/source identity, tuples, denominator/cells/fact refs as applicable. Both repaired modules MUST be in the actual path and imported from the frozen combined candidate.
+3. On the same path, original/private path replacement and supplied-fd write/mmap denial preserve bound facts or refuse before affected output; normalized respondent/source-key collision refuses before false population; a permitted source value/occasion fault changes/refuses the SAME expected downstream fact, then fresh restore reproduces it.
+4. Invoke the actual accepted R00 evaluator on complete independently pinned policy objects and honestly scoped claims from this run. Preserve positive POLICY_ONLY consistency and refusal/HOLD for missing/altered frontier, unsupported state/identity or unverified EXECUTED_NATIVE/GENERIC_SOURCEFREE. Do not manufacture a verified-evidence handle, mark local logs as R09 attestation or issue a native-positive gate verdict.
+5. Keep two claims distinct in the return: actual native projection/custody compatibility; R00 policy/claim-ceiling enforcement on the combined tree. The existing gate's K_mutation flag is not native association verification. Merely setting a mismatch flag, adding ignored native-fact fields, or running separate suites does NOT prove actual producer-consumer identity binding. Record that R08/R09 capability as NOT_IMPLEMENTED/NOT_REACHED at its actual boundary; do not build it or claim it passed. If even the declared existing local interfaces cannot compose, report exact missing function/owner instead of a fake combined success.
+6. At least one source→fact assertion must fail by assertion-level RED when a required producer dependency is severed/substituted, and restore in a fresh process. Gate policy substitution must affect its actual GateDecision assertion separately. No setup/import error or unrelated positive fixture substituted for same-claim proof. Use repository proof-integrity witnesses.
+7. Run the relevant accepted suites ONCE on the same combined commit/imports plus focused interaction cases. Do not rerun broad historical archaeology. Preserve known DTA extended-missing skip, POSIX/read-only trusted-runtime assumptions, DTA full-frame memory ceiling, transformed R02 stream limit and fail-closed raw OS exception limits. No all35 scale claim.
+
+## Return and finite closure
+Return00_RETURN.md, composition_manifest.json, manifest.json, RESUME_CHECKPOINT.md, exact tests/scripts/commands/imports/hashes, positive/fault/fresh-restore receipts, and a concise missing-capability/next-owner list. Generate manifests after final receipts with declared root-relative paths/self-exclusion.
+Disposition may be ACCEPT_SCOPED_LOCAL_COMPOSITION_COMPATIBILITY__NATIVE_PROMOTION_HOLD, or exact REVISE/HOLD/NOT_REACHED. No universal-machine, original35/N11 or authenticated native-promotion claim.
+After this one finite job stop. Director prepares first-flight engineering/HQ handback and next already-specified authorization flight; do not launch R01/R03/R08/R09 or renamed J52/W52. No new scientist/CI/actor/source permissions.
+Checkpoint after coherent work;75%preserve/80%stop expansion. Commit/push non-force, verify final remote SHA/ancestry/terrain/readback. Publishing a return is not HQ adoption. No additional reviewer-of-reviewer court is requested.
