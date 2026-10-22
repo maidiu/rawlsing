@@ -109,6 +109,8 @@ def main():
         "defect_matrix_sha256": sha(EVID / "defect_matrix.json"),
         "junit_sha256": sha(EVID / "junit/r00e_r2.xml"),
         "dependency_fault_sha256": sha(EVID / "dependency_fault.json"),
+        "changed_test_gate_sha256": sha(EVID / "changed_test_gate.json")
+        if (EVID / "changed_test_gate.json").exists() else "",
         "commands": {
             "tests": "PYTHONPATH=. PYTHONDONTWRITEBYTECODE=1 python3 -m pytest tests/universal_execution_oracle -q --junitxml=WORKER_RETURNS/PYAT-R56-R00E-GATE-IMPLEMENTATION-R1/revisions/r2/evidence/junit/r00e_r2.xml",
             "replay": "PYTHONPATH=. python3 WORKER_RETURNS/PYAT-R56-R00E-GATE-IMPLEMENTATION-R1/revisions/r2/tools/run_replay.py",
