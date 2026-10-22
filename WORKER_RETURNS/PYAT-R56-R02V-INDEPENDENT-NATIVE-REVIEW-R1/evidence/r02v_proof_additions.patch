@@ -1,0 +1,22 @@
+diff --git a/rawlsing_next/tests/test_universal_source_projection.py.proof.json b/rawlsing_next/tests/test_universal_source_projection.py.proof.json
+index 8a9b7c9ff..5f2b3fba5 100644
+--- a/rawlsing_next/tests/test_universal_source_projection.py.proof.json
++++ b/rawlsing_next/tests/test_universal_source_projection.py.proof.json
+@@ -11,6 +11,17 @@
+         "old": "canonical = rule.value_aliases.get(raw_token, raw_token)",
+         "new": "canonical = \"0\""
+       }
++    },
++    {
++      "claim_id": "R02V-INDEPENDENT-SOURCE-DOMAIN",
++      "actual_consumer": "rawlsing_next.pre553_empirical_query.execute_empirical_query REPEATED_EVENT consumer over the actual C11 release built by the adapter",
++      "claimed_dependency": "the governed source respondent/occasion mapping determines the exact C11 event identities and I03 cell values",
++      "positive_node": "rawlsing_next/tests/test_universal_source_projection.py::test_r02v_prospective_domain_exact_tuples_permuted_and_alternative_labels",
++      "fault": {
++        "path": "rawlsing_next/pre553_source_native_preimage_adapter.py",
++        "old": "respondent_token_by_row[row_ordinal] = mapping[respondent_token]",
++        "new": "respondent_token_by_row[row_ordinal] = next(iter(mapping.values()))"
++      }
+     }
+   ]
+ }

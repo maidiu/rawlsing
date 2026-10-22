@@ -1,0 +1,53 @@
+{
+  "actual": "ACCEPTED",
+  "event_tuples": [
+    [
+      "R56R02:P1",
+      0,
+      "SUBSTANTIVE_RESPONSE",
+      "7"
+    ],
+    [
+      "R56R02:P2",
+      1,
+      "SUBSTANTIVE_RESPONSE",
+      "9"
+    ]
+  ],
+  "expected": "REFUSE_AMBIGUOUS_SOURCE_KEY_MAPPING",
+  "governed_mapping_keys": [
+    "0 (int)",
+    "0 (str)",
+    "1 (int)"
+  ],
+  "governed_mapping_values": [
+    "P0",
+    "P1",
+    "P2"
+  ],
+  "row_evidence": [
+    {
+      "projected_respondent_ref": {
+        "content_hash": "adea7553f30be01a83aaeb46ce144e1bcd482f25ce96b8a316d1362852693f39",
+        "kind": "C11Internal:RespondentIdentity",
+        "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:adea7553f30be01a83aaeb46ce144e1bcd482f25ce96b8a316d1362852693f39"
+      },
+      "respondent_key": "P1",
+      "row": 1,
+      "source_occasion": "0",
+      "source_respondent": "0"
+    },
+    {
+      "projected_respondent_ref": {
+        "content_hash": "f8990175e7beffb514459f8d707e03b4900a94e3c5245ce11829560f9d956dd3",
+        "kind": "C11Internal:RespondentIdentity",
+        "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:f8990175e7beffb514459f8d707e03b4900a94e3c5245ce11829560f9d956dd3"
+      },
+      "respondent_key": "P2",
+      "row": 2,
+      "source_occasion": "1",
+      "source_respondent": "1"
+    }
+  ],
+  "source_sha256": "204b652954080a4acd3f8d87a56734bca6d2fa54375fb6676d43e2f87af0ea8a"
+}

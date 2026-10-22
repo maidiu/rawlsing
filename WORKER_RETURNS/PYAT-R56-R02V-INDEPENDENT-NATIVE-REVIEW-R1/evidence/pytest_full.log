@@ -1,0 +1,79 @@
+.....................FF.                                                 [100%]
+=================================== FAILURES ===================================
+___________ test_r02v_normalized_duplicate_respondent_key_is_refused ___________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-158/test_r02v_normalized_duplicate0')
+
+    def test_r02v_normalized_duplicate_respondent_key_is_refused(tmp_path):
+        path = tmp_path / "r02v_normalized_key.sav"
+        rows = [{"PID": 0.0, "OCCASION": 0.0, "SCORE": 7.0},
+                {"PID": 1.0, "OCCASION": 1.0, "SCORE": 9.0}]
+        write_rows(path, rows)
+        incidence = decode_sav(path)
+        package_ = package(
+            path, incidence.row_count,
+            (NativeSourceRule("impl.score", "SCORE"),))
+        plan = occurrence_plan(
+            (("SCORE", "REPEATED_EVENT", (
+                ("0", "zero", {"kind": "REPEATED_EVENT",
+                               "multiplicity_index": 0}),
+                ("1", "one", {"kind": "REPEATED_EVENT",
+                              "multiplicity_index": 1}),
+            )),),
+            {0: "1", 1: 1})
+>       with pytest.raises(NativePreimageRefusal) as caught:
+E       Failed: DID NOT RAISE <class 'rawlsing_next.pre553_source_native_preimage_adapter.NativePreimageRefusal'>
+
+rawlsing_next/tests/test_universal_source_projection.py:1176: Failed
+_____________ test_r02v_ambiguous_normalized_source_key_is_refused _____________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-158/test_r02v_ambiguous_normalized0')
+
+    def test_r02v_ambiguous_normalized_source_key_is_refused(tmp_path):
+        path = tmp_path / "r02v_ambiguous_key.sav"
+        rows = [{"PID": 0.0, "OCCASION": 0.0, "SCORE": 7.0},
+                {"PID": 1.0, "OCCASION": 1.0, "SCORE": 9.0}]
+        write_rows(path, rows)
+        incidence = decode_sav(path)
+        package_ = package(
+            path, incidence.row_count,
+            (NativeSourceRule("impl.score", "SCORE"),))
+        plan = occurrence_plan(
+            (("SCORE", "REPEATED_EVENT", (
+                ("0", "zero", {"kind": "REPEATED_EVENT",
+                               "multiplicity_index": 0}),
+                ("1", "one", {"kind": "REPEATED_EVENT",
+                              "multiplicity_index": 1}),
+            )),),
+            {0: "P0", "0": "P1", 1: "P2"})
+>       with pytest.raises(NativePreimageRefusal):
+E       Failed: DID NOT RAISE <class 'rawlsing_next.pre553_source_native_preimage_adapter.NativePreimageRefusal'>
+
+rawlsing_next/tests/test_universal_source_projection.py:1199: Failed
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED rawlsing_next/tests/test_universal_source_projection.py::test_s3_exact_respondent_occasion_value_tuples_and_repeated_consumer
+PASSED rawlsing_next/tests/test_universal_source_projection.py::test_s3_varied_respondent_and_occasion_counts
+PASSED rawlsing_next/tests/test_universal_source_projection.py::test_s3_row_permutation_conserves_tuples_with_matching_mapping
+PASSED rawlsing_next/tests/test_universal_source_projection.py::test_s3_missingness_preserves_state_and_does_not_invent_support
+PASSED rawlsing_next/tests/test_universal_source_projection.py::test_s3_equal_values_at_different_occasions_are_distinct
+PASSED rawlsing_next/tests/test_universal_source_projection.py::test_s3_different_column_labels_do_not_change_tuples
+PASSED rawlsing_next/tests/test_universal_source_projection.py::test_s1_rectangular_scalar_remains_supported
+PASSED rawlsing_next/tests/test_universal_source_projection.py::test_s2_separate_units_are_refused_not_pooled
+PASSED rawlsing_next/tests/test_universal_source_projection.py::test_mr_rank_and_form_topology_fields_are_preserved
+PASSED rawlsing_next/tests/test_universal_source_projection.py::test_unadministered_rule_is_held_not_projected
+PASSED rawlsing_next/tests/test_universal_source_projection.py::test_wrong_duplicate_and_ambiguous_maps_refuse_before_c11
+PASSED rawlsing_next/tests/test_universal_source_projection.py::test_mutation_flips_same_repeated_assertion_and_fresh_process_restores
+PASSED rawlsing_next/tests/test_universal_source_projection.py::test_scalar_form_across_multiple_occasions_is_refused_not_collapsed
+PASSED rawlsing_next/tests/test_universal_source_projection.py::test_duplicate_and_unmapped_occurrence_maps_fail_closed
+PASSED rawlsing_next/tests/test_universal_source_projection.py::test_duplicate_respondent_key_mapping_fails_closed
+PASSED rawlsing_next/tests/test_universal_source_projection.py::test_r02v_prospective_domain_exact_tuples_permuted_and_alternative_labels
+PASSED rawlsing_next/tests/test_universal_source_projection.py::test_r02v_prospective_domain_catches_omission_remap_and_value_fault
+PASSED rawlsing_next/tests/test_universal_source_projection.py::test_r02v_missingness_is_typed_and_resolvable
+PASSED rawlsing_next/tests/test_universal_source_projection.py::test_r02v_envelope_preserves_raw_declaration_and_binds_occurrence
+PASSED rawlsing_next/tests/test_universal_source_projection.py::test_r02v_s1_scalar_and_s2_separate_unit_positives
+PASSED rawlsing_next/tests/test_universal_source_projection.py::test_r02v_incomplete_order_fields_do_not_fabricate_support
+PASSED rawlsing_next/tests/test_universal_source_projection.py::test_r02v_mr_rank_admin_are_consumed_at_their_topology
+FAILED rawlsing_next/tests/test_universal_source_projection.py::test_r02v_normalized_duplicate_respondent_key_is_refused
+FAILED rawlsing_next/tests/test_universal_source_projection.py::test_r02v_ambiguous_normalized_source_key_is_refused
+2 failed, 22 passed in 4.95s

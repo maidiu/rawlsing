@@ -1,0 +1,265 @@
+{
+  "authority": "R57 delegated technical review; no production/science/N11/N12 acceptance; R03/compiler/original science holds unchanged",
+  "candidate_branch": "agent/rabochii-pyat-r56-r02-occurrence-projection-repair-r1",
+  "candidate_commit": "236fd4d1064f7c14113616db300c955294a474ac",
+  "commands": [
+    "PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 python3 -m pytest rawlsing_next/tests/test_universal_source_projection.py -q -rA",
+    "PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 python3 -m pytest rawlsing_next/tests/test_pre553_source_backed_c11_facade.py rawlsing_next/tests/test_pre553_empirical_query.py -q -rA",
+    "python3 CROSS_HQ_CONTROL_ROOM/proof_integrity_gate_r1.py lint rawlsing_next/tests/test_universal_source_projection.py",
+    "python3 CROSS_HQ_CONTROL_ROOM/proof_integrity_gate_r1.py witness rawlsing_next/tests/test_universal_source_projection.py.proof.json --root .",
+    "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=. python3 WORKER_RETURNS/PYAT-R56-R02V-INDEPENDENT-NATIVE-REVIEW-R1/evidence/build_r02v_receipt.py",
+    "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=. python3 WORKER_RETURNS/PYAT-R56-R02V-INDEPENDENT-NATIVE-REVIEW-R1/evidence/defect_normalized_respondent_key.py",
+    "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=. python3 WORKER_RETURNS/PYAT-R56-R02V-INDEPENDENT-NATIVE-REVIEW-R1/evidence/defect_ambiguous_source_key.py"
+  ],
+  "commissions": {
+    "native_shared_contract_blob": "53ce4ba7cb338d367dd1985a283448c1771d3f64",
+    "r00p_contract_blob": "01ccb46475ba09fe868a59c8810a12de1190dc22",
+    "r02v": "WORKER_COMMISSIONS/PYAT-R56-FIRST-REPAIR-FLIGHT-R1/R02V/00_COMMISSION.md",
+    "r02v_blob": "14dad45102ce84b48c649699503b39307f84d679",
+    "review_shared_blob": "83bb2e0a8e91e10b56f76209e5f07d2a7543bd36"
+  },
+  "defects": [
+    {
+      "id": "D1",
+      "owner": "R02 adapter author",
+      "reproducer": "WORKER_RETURNS/PYAT-R56-R02V-INDEPENDENT-NATIVE-REVIEW-R1/evidence/defect_normalized_respondent_key.py",
+      "summary": "normalized duplicate respondent key collapses two source respondents into one C11 respondent; I03 SUPPORTED denominator 1"
+    },
+    {
+      "id": "D2",
+      "owner": "R02 adapter author",
+      "reproducer": "WORKER_RETURNS/PYAT-R56-R02V-INDEPENDENT-NATIVE-REVIEW-R1/evidence/defect_ambiguous_source_key.py",
+      "summary": "normalized source-key collision silently selects the last mapping label"
+    }
+  ],
+  "director_commit": "485f31e52ca82905dcfbbc79c5f8c8294fb55f49",
+  "disposition": "REVISE__SCOPED_ENGINEERING_DEFECT_REPRODUCED__NO_GATE_OR_SCIENCE_ACCEPTANCE",
+  "files": [
+    {
+      "bytes": 9604,
+      "path": "WORKER_RETURNS/PYAT-R56-R02V-INDEPENDENT-NATIVE-REVIEW-R1/00_RETURN.md",
+      "sha256": "0b32ec33b2c083600089117be669bac9f9120a17ed787f2ae639715d5cf33265"
+    },
+    {
+      "bytes": 3658,
+      "path": "WORKER_RETURNS/PYAT-R56-R02V-INDEPENDENT-NATIVE-REVIEW-R1/01_SESSION_AND_STARTUP_PROVENANCE.md",
+      "sha256": "444042e2ad084181db7daff20fc8037034140656cf72cc6b16edd8a07dbd3334"
+    },
+    {
+      "bytes": 7349,
+      "path": "WORKER_RETURNS/PYAT-R56-R02V-INDEPENDENT-NATIVE-REVIEW-R1/02_EVIDENCE_INDEX.md",
+      "sha256": "e916e6e4463a788f9072db1eab8aad9f7b3489604720bd5b5b931c8f2aae2b04"
+    },
+    {
+      "bytes": 11243,
+      "path": "WORKER_RETURNS/PYAT-R56-R02V-INDEPENDENT-NATIVE-REVIEW-R1/03_R02V_OPEN_CHALLENGE_ADJUDICATION.md",
+      "sha256": "93db609204bc4b25bf64eeec9a7f0f08ca5a08f300768e2e772cf59d2ca86ab8"
+    },
+    {
+      "bytes": 3109,
+      "path": "WORKER_RETURNS/PYAT-R56-R02V-INDEPENDENT-NATIVE-REVIEW-R1/RESUME_CHECKPOINT.md",
+      "sha256": "317ba6c2132ecb6a8731518818dcba438cf64398af8862d10dfbc89ad482c7d0"
+    },
+    {
+      "bytes": 3056,
+      "path": "WORKER_RETURNS/PYAT-R56-R02V-INDEPENDENT-NATIVE-REVIEW-R1/evidence/build_r02v_receipt.py",
+      "sha256": "744b5cb1f324712579b234242d9d574c7bbc2141b2982bfb1d29ed4ddbe7533b"
+    },
+    {
+      "bytes": 1410,
+      "path": "WORKER_RETURNS/PYAT-R56-R02V-INDEPENDENT-NATIVE-REVIEW-R1/evidence/defect_ambiguous_source_key.out.json",
+      "sha256": "d357963231e95f57a8ad43e7f799210634bad2ff27d2f3fc367af55332905b40"
+    },
+    {
+      "bytes": 2155,
+      "path": "WORKER_RETURNS/PYAT-R56-R02V-INDEPENDENT-NATIVE-REVIEW-R1/evidence/defect_ambiguous_source_key.py",
+      "sha256": "0549e5dff6c9d6cdcadad926c3bcf6809e45f86cb892fb2250ae6f5ae663239b"
+    },
+    {
+      "bytes": 1499,
+      "path": "WORKER_RETURNS/PYAT-R56-R02V-INDEPENDENT-NATIVE-REVIEW-R1/evidence/defect_normalized_respondent_key.out.json",
+      "sha256": "2777495f024b5912545a5a51c11c6410a948ccc91c9e4cb096ec39f60acafa0e"
+    },
+    {
+      "bytes": 2595,
+      "path": "WORKER_RETURNS/PYAT-R56-R02V-INDEPENDENT-NATIVE-REVIEW-R1/evidence/defect_normalized_respondent_key.py",
+      "sha256": "177d68636b34a6323b160af86467a62b4e8857fec7020175d898b818cd9c7ec4"
+    },
+    {
+      "bytes": 76,
+      "path": "WORKER_RETURNS/PYAT-R56-R02V-INDEPENDENT-NATIVE-REVIEW-R1/evidence/envelope_strict_receiver_probe.out.txt",
+      "sha256": "dcee2769c3c9c902666652740d312a38daa362137861b5bcad8f9e5c8842b4e6"
+    },
+    {
+      "bytes": 100,
+      "path": "WORKER_RETURNS/PYAT-R56-R02V-INDEPENDENT-NATIVE-REVIEW-R1/evidence/proof_lint.json",
+      "sha256": "a477dd4d5965979cf2973cef236a1ddd2435f214148c8dcac5f1a35954bf6ce9"
+    },
+    {
+      "bytes": 949,
+      "path": "WORKER_RETURNS/PYAT-R56-R02V-INDEPENDENT-NATIVE-REVIEW-R1/evidence/proof_witness.json",
+      "sha256": "cb00fb1dd08d2835611f3a2475e2843303c0df292fcea7eab1fc361fe534c4d6"
+    },
+    {
+      "bytes": 2067,
+      "path": "WORKER_RETURNS/PYAT-R56-R02V-INDEPENDENT-NATIVE-REVIEW-R1/evidence/pytest_author15.log",
+      "sha256": "6bb9ffa5032566cfda3b3ea6767c0ee11be0fbc5df15d3e8ea3954e061837c02"
+    },
+    {
+      "bytes": 3183,
+      "path": "WORKER_RETURNS/PYAT-R56-R02V-INDEPENDENT-NATIVE-REVIEW-R1/evidence/pytest_author15.xml",
+      "sha256": "adf626cbdfa53e34c5f5061b79e7fc3438f9b01daec3e201b0ad30db50d134d9"
+    },
+    {
+      "bytes": 3028,
+      "path": "WORKER_RETURNS/PYAT-R56-R02V-INDEPENDENT-NATIVE-REVIEW-R1/evidence/pytest_defects.log",
+      "sha256": "912abda5723bc165659493bdf16cf6130d2f90aaa47a518870f0f624c68da1f4"
+    },
+    {
+      "bytes": 3321,
+      "path": "WORKER_RETURNS/PYAT-R56-R02V-INDEPENDENT-NATIVE-REVIEW-R1/evidence/pytest_defects.xml",
+      "sha256": "bb824d8180deb9edc85fbef79c10c5c4926e0a30aef932da3ccd79479d39345c"
+    },
+    {
+      "bytes": 5793,
+      "path": "WORKER_RETURNS/PYAT-R56-R02V-INDEPENDENT-NATIVE-REVIEW-R1/evidence/pytest_full.log",
+      "sha256": "ef789c77e105d1ad3aa256c3e840ea332c2ab697fac0df187d31cb29d1b050b4"
+    },
+    {
+      "bytes": 7645,
+      "path": "WORKER_RETURNS/PYAT-R56-R02V-INDEPENDENT-NATIVE-REVIEW-R1/evidence/pytest_full.xml",
+      "sha256": "d91bf744a2c5ff48b4426289d1660f1e6c5808a394e48b390104beab5a061086"
+    },
+    {
+      "bytes": 1127,
+      "path": "WORKER_RETURNS/PYAT-R56-R02V-INDEPENDENT-NATIVE-REVIEW-R1/evidence/pytest_r02v_positive.log",
+      "sha256": "81d6a75461fb2ee1b2f4a831460fbf5a25210075e300eed98c4fb4d501590161"
+    },
+    {
+      "bytes": 1643,
+      "path": "WORKER_RETURNS/PYAT-R56-R02V-INDEPENDENT-NATIVE-REVIEW-R1/evidence/pytest_r02v_positive.xml",
+      "sha256": "21dce440a56d34fb2bb4e40104f93e117c1e55535d52b267616787185a98174e"
+    },
+    {
+      "bytes": 5771,
+      "path": "WORKER_RETURNS/PYAT-R56-R02V-INDEPENDENT-NATIVE-REVIEW-R1/evidence/pytest_retained.log",
+      "sha256": "2cea8f43749121e57de44747c44a8573a8b86e100d5fd901c2cd720313295e7d"
+    },
+    {
+      "bytes": 8912,
+      "path": "WORKER_RETURNS/PYAT-R56-R02V-INDEPENDENT-NATIVE-REVIEW-R1/evidence/pytest_retained.xml",
+      "sha256": "101488af74ff8b99b64b6e4667bd6afedb3e1f71f6153dbd5698b2ce42b117ec"
+    },
+    {
+      "bytes": 9611,
+      "path": "WORKER_RETURNS/PYAT-R56-R02V-INDEPENDENT-NATIVE-REVIEW-R1/evidence/r02v_independent_receipt.json",
+      "sha256": "46315fa0d1f8bad7425ebc5beb1ac2437059705c7059d7cbbf08e1be8ff37a13"
+    },
+    {
+      "bytes": 1287,
+      "path": "WORKER_RETURNS/PYAT-R56-R02V-INDEPENDENT-NATIVE-REVIEW-R1/evidence/r02v_proof_additions.patch",
+      "sha256": "225d8ce7ea4d88b150bde81c0ad92e7d4d4f85f6d4f7173bc2711ed226897404"
+    },
+    {
+      "bytes": 32759,
+      "path": "WORKER_RETURNS/PYAT-R56-R02V-INDEPENDENT-NATIVE-REVIEW-R1/evidence/r02v_test_additions.patch",
+      "sha256": "022ae1762b3b3a976eb09f52c2a68f3c917f53637d7beda4a5ff9afa5e4dc44e"
+    }
+  ],
+  "not_run": [
+    "R00E/R00V gate implementation",
+    "R03/compiler/lowering",
+    "R04.byte/R04.joined",
+    "R05/R06",
+    "original35/N11/N12",
+    "protected CI",
+    "production adoption"
+  ],
+  "notes": [
+    "Author tests preserved unchanged; only additions appended plus import expansion.",
+    "The two failing tests are the independent defect reproducers, not author regressions.",
+    "The adapter was restored after the proof witness and its hash equals the candidate hash.",
+    "Per-run source/release/fact hashes are in evidence/r02v_independent_receipt.json."
+  ],
+  "owner_role": "R56_R02V_INDEPENDENT_NATIVE_REVIEWER__NOT_AUTHOR",
+  "policy_startup": "6d95a78bf6b7bcf70022e303a151255e65edc38a",
+  "proof_integrity": {
+    "adapter_restored_sha256": "2cf5e98bc29081678c364d3ff591c71f11ce7ebf3564419af8a26f5f04113b64",
+    "claims": [
+      "R56-R02-OCCURRENCE-TUPLES",
+      "R02V-INDEPENDENT-SOURCE-DOMAIN"
+    ],
+    "lint": "AST_LINT_PASS",
+    "witness": "MECHANICAL_WITNESS_PASS_NOT_SEMANTIC_ADOPTION"
+  },
+  "r57_commit": "953eb07ad29cc424b2fc43cfeb13ef83355f3a50",
+  "remote_readback": "SEE 04_REMOTE_READBACK.md after publication",
+  "repo_files": [
+    {
+      "bytes": 54830,
+      "path": "rawlsing_next/tests/test_universal_source_projection.py",
+      "role": "reviewer-edited-test",
+      "sha256": "615985874ca0752142b30354cf51aaef08145e301d86275b01d199513a9eb046"
+    },
+    {
+      "bytes": 1561,
+      "path": "rawlsing_next/tests/test_universal_source_projection.py.proof.json",
+      "role": "reviewer-edited-proof-sidecar",
+      "sha256": "7008b2f7a4fe54a0a114e753541d3c8c05304b737b256e3d52a130e1c0fa2caf"
+    },
+    {
+      "bytes": 38214,
+      "path": "rawlsing_next/pre553_source_native_preimage_adapter.py",
+      "role": "candidate-unchanged",
+      "sha256": "2cf5e98bc29081678c364d3ff591c71f11ce7ebf3564419af8a26f5f04113b64"
+    }
+  ],
+  "reviewer_branch": "agent/rabochii-pyat-r56-r02v-independent-projection-review-r1",
+  "schema": "PYAT_R56_R02V_RETURN_MANIFEST@1",
+  "science": "TEST_ONLY synthetic sourcefree only; no original respondent data or original science claim",
+  "session": {
+    "harness": "OpenCode",
+    "host": "MacBook-Pro.lan",
+    "id": "ses_e9dea5a24ffeBtsLScgC81lfet",
+    "model": "deepseek-v4.1-flash",
+    "os": "macOS 13.2.1 (22D68) x86_64",
+    "provider": "opencode-go",
+    "pyreadstat": "1.3.2",
+    "pytest": "9.0.2",
+    "python": "3.11.3",
+    "variant": "max"
+  },
+  "test_counters": {
+    "author_focused": {
+      "errors": 0,
+      "failed": 0,
+      "passed": 15,
+      "skipped": 0
+    },
+    "focused_full": {
+      "errors": 0,
+      "failed": 2,
+      "passed": 22,
+      "skipped": 0
+    },
+    "independent_defect": {
+      "errors": 0,
+      "failed": 2,
+      "passed": 0,
+      "skipped": 0
+    },
+    "independent_positive": {
+      "errors": 0,
+      "failed": 0,
+      "passed": 7,
+      "skipped": 0
+    },
+    "retained": {
+      "errors": 0,
+      "failed": 0,
+      "passed": 42,
+      "skipped": 0
+    }
+  },
+  "worktree": "/Users/matthewsmith/Desktop/Rawlsing/R56-R02V-independent-projection-review-wt"
+}

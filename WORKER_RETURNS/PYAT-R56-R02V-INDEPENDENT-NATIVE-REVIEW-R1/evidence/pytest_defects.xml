@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="2" time="1.348" timestamp="2026-10-22T01:51:06.723591-04:00" hostname="MacBook-Pro.lan"><testcase classname="R56-R02V-independent-projection-review-wt.rawlsing_next.tests.test_universal_source_projection" name="test_r02v_normalized_duplicate_respondent_key_is_refused" time="0.039"><failure message="Failed: DID NOT RAISE &lt;class 'rawlsing_next.pre553_source_native_preimage_adapter.NativePreimageRefusal'&gt;">tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-150/test_r02v_normalized_duplicate0')
+
+    def test_r02v_normalized_duplicate_respondent_key_is_refused(tmp_path):
+        path = tmp_path / "r02v_normalized_key.sav"
+        rows = [{"PID": 0.0, "OCCASION": 0.0, "SCORE": 7.0},
+                {"PID": 1.0, "OCCASION": 1.0, "SCORE": 9.0}]
+        write_rows(path, rows)
+        incidence = decode_sav(path)
+        package_ = package(
+            path, incidence.row_count,
+            (NativeSourceRule("impl.score", "SCORE"),))
+        plan = occurrence_plan(
+            (("SCORE", "REPEATED_EVENT", (
+                ("0", "zero", {"kind": "REPEATED_EVENT",
+                               "multiplicity_index": 0}),
+                ("1", "one", {"kind": "REPEATED_EVENT",
+                              "multiplicity_index": 1}),
+            )),),
+            {0: "1", 1: 1})
+&gt;       with pytest.raises(NativePreimageRefusal) as caught:
+E       Failed: DID NOT RAISE &lt;class 'rawlsing_next.pre553_source_native_preimage_adapter.NativePreimageRefusal'&gt;
+
+rawlsing_next/tests/test_universal_source_projection.py:1176: Failed</failure></testcase><testcase classname="R56-R02V-independent-projection-review-wt.rawlsing_next.tests.test_universal_source_projection" name="test_r02v_ambiguous_normalized_source_key_is_refused" time="0.016"><failure message="Failed: DID NOT RAISE &lt;class 'rawlsing_next.pre553_source_native_preimage_adapter.NativePreimageRefusal'&gt;">tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-150/test_r02v_ambiguous_normalized0')
+
+    def test_r02v_ambiguous_normalized_source_key_is_refused(tmp_path):
+        path = tmp_path / "r02v_ambiguous_key.sav"
+        rows = [{"PID": 0.0, "OCCASION": 0.0, "SCORE": 7.0},
+                {"PID": 1.0, "OCCASION": 1.0, "SCORE": 9.0}]
+        write_rows(path, rows)
+        incidence = decode_sav(path)
+        package_ = package(
+            path, incidence.row_count,
+            (NativeSourceRule("impl.score", "SCORE"),))
+        plan = occurrence_plan(
+            (("SCORE", "REPEATED_EVENT", (
+                ("0", "zero", {"kind": "REPEATED_EVENT",
+                               "multiplicity_index": 0}),
+                ("1", "one", {"kind": "REPEATED_EVENT",
+                              "multiplicity_index": 1}),
+            )),),
+            {0: "P0", "0": "P1", 1: "P2"})
+&gt;       with pytest.raises(NativePreimageRefusal):
+E       Failed: DID NOT RAISE &lt;class 'rawlsing_next.pre553_source_native_preimage_adapter.NativePreimageRefusal'&gt;
+
+rawlsing_next/tests/test_universal_source_projection.py:1199: Failed</failure></testcase></testsuite></testsuites>
