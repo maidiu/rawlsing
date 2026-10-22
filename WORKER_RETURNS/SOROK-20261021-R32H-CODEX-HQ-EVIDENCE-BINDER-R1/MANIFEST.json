@@ -52,7 +52,12 @@
   "manifest_self_hash": "EXCLUDED__SELF_REFERENCE_NOT_MEANINGFUL",
   "no_copied_raw_source": true,
   "no_hidden_repo_cache": true,
-  "planned_publication_receipt": "PUBLICATION_RECEIPT.json (created after the substantive binder commit; not included in this pre-publication hash list)",
+  "publication_receipt": {
+    "note": "The final branch head is the receipt commit; exact 40-hex is read back by git ls-remote after push.",
+    "path": "PUBLICATION_RECEIPT.json",
+    "sha256": "b978486f087c6035a723881dc4baa8fd0022b22b8335c86cdada364eb49b37c2",
+    "substantive_commit": "3b4d83392c32d556d2174f34488ee89fd90497ac"
+  },
   "read_cut": {
     "pre_main": "fcbb2ee1d7a6eae040e0964bb8474e8d04d47989",
     "pyat_owner_observed": "fec52be042508c613dd2c7dec0676281232e0c48",
