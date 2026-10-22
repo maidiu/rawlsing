@@ -1,0 +1,48 @@
+{
+  "schema": "R56_C1_FINAL_REMOTE_READBACK_R1",
+  "startup": "625f24a28ed8c567ca3d7bb330ddb91d6c7b2ce7",
+  "composite_candidate_sha": "a2aeb53b0a1e6abb93d4bb3d173007002fd7cf44",
+  "final_test_tree_sha": "11e8c05714741fbce167120e8f9bc9ed6890761e",
+  "reviewer_branch": "agent/rabochii-pyat-r56-c1-combined-sourcefree-qualification-r1",
+  "remote_sha_at_readback": "11e8c05714741fbce167120e8f9bc9ed6890761e",
+  "remote_matches_test_tree": true,
+  "composite_is_ancestor": true,
+  "changed_files_composite_to_test_tree": [
+    "WORKER_RETURNS/PYAT-R56-C1-COMBINED-SOURCEFREE-QUALIFICATION-R1/00_RETURN.md",
+    "WORKER_RETURNS/PYAT-R56-C1-COMBINED-SOURCEFREE-QUALIFICATION-R1/00_STARTUP_SESSION_RECORD.md",
+    "WORKER_RETURNS/PYAT-R56-C1-COMBINED-SOURCEFREE-QUALIFICATION-R1/01_FROZEN_COMPOSITION_EXPECTATIONS.md",
+    "WORKER_RETURNS/PYAT-R56-C1-COMBINED-SOURCEFREE-QUALIFICATION-R1/RESUME_CHECKPOINT.md",
+    "WORKER_RETURNS/PYAT-R56-C1-COMBINED-SOURCEFREE-QUALIFICATION-R1/composition_manifest.json",
+    "WORKER_RETURNS/PYAT-R56-C1-COMBINED-SOURCEFREE-QUALIFICATION-R1/evidence/c1_proof_witness.json",
+    "WORKER_RETURNS/PYAT-R56-C1-COMBINED-SOURCEFREE-QUALIFICATION-R1/evidence/combined_suites_receipt.txt",
+    "WORKER_RETURNS/PYAT-R56-C1-COMBINED-SOURCEFREE-QUALIFICATION-R1/evidence/commands_and_results.md",
+    "WORKER_RETURNS/PYAT-R56-C1-COMBINED-SOURCEFREE-QUALIFICATION-R1/evidence/fresh_positive_after_witness.txt",
+    "WORKER_RETURNS/PYAT-R56-C1-COMBINED-SOURCEFREE-QUALIFICATION-R1/evidence/probe_combined_path.json",
+    "WORKER_RETURNS/PYAT-R56-C1-COMBINED-SOURCEFREE-QUALIFICATION-R1/evidence/probe_combined_path.py",
+    "WORKER_RETURNS/PYAT-R56-C1-COMBINED-SOURCEFREE-QUALIFICATION-R1/evidence/probe_r00_gate.json",
+    "WORKER_RETURNS/PYAT-R56-C1-COMBINED-SOURCEFREE-QUALIFICATION-R1/evidence/probe_r00_gate.py",
+    "WORKER_RETURNS/PYAT-R56-C1-COMBINED-SOURCEFREE-QUALIFICATION-R1/manifest.json",
+    "rawlsing_next/tests/test_universal_source_projection.py",
+    "rawlsing_next/tests/test_universal_source_projection.py.proof.json",
+    "tests/universal_execution_oracle/.gitignore",
+    "tests/universal_execution_oracle/conftest.py",
+    "tests/universal_execution_oracle/dependency_probe.py",
+    "tests/universal_execution_oracle/r00v_r2_dependency_probe.py",
+    "tests/universal_execution_oracle/test_c1_combined_sourcefree.py",
+    "tests/universal_execution_oracle/test_c1_combined_sourcefree.py.proof.json",
+    "tests/universal_execution_oracle/test_r00e_r2_reviewer_regressions.py",
+    "tests/universal_execution_oracle/test_r00v_r2_requalification.py",
+    "tests/universal_execution_oracle/test_r56_gate.py"
+  ],
+  "changed_file_allowlist_ok": true,
+  "production_identity_at_test_tree": {
+    "CROSS_HQ_CONTROL_ROOM/universal_promotion_gate.py": "e31ed7565b3dd59fcd65e2c865f55d48ae786dfa",
+    "rawlsing_next/pre553_source_native_preimage_adapter.py": "a6299c1a6e8b26bd055ced1f49e5b757f20ccd8c",
+    "rawlsing_next/pre553_physical_decoder.py": "8732e34d0ea3f4cfffd7d33ee00f258dbc2d65dd"
+  },
+  "readback_return_head": [
+    "# R56-C1 \u2014 combined-candidate source-free compatibility return",
+    "",
+    "Disposition: **ACCEPT_SCOPED_LOCAL_COMPOSITION_COMPATIBILITY__NATIVE_PROMOTION_HOLD**."
+  ]
+}
