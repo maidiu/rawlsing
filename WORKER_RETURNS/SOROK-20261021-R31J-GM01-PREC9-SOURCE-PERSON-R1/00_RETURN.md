@@ -93,4 +93,4 @@ Native CAN/ADP/C8/Pyat/C11/C12 and A5 are `NOT_RUN`. Original respondent data is
 
 ## Publication
 
-Substantive content commit and exact final remote tip are reported after the ordinary non-force push. No self-adoption, no production edit, no native grant, no C11/C12 claim.
+Substantive content commit: `b186105367089cfde03c5e6ee6600e42f3c40279`. The publication-banking commit and exact final remote tip are reported in the worker's final response after the ordinary non-force push; direct `git ls-remote` readback is the final authority. No self-adoption, no production edit, no native grant, no C11/C12 claim.
