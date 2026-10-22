@@ -1,12 +1,12 @@
 {
   "schema": "RAWLSING_HQ_HANDOFF_POINTER@1.1.0",
-  "checkpoint_id": "20261022-PYAT-HQ-R57-R00P-R2-ADMISSION-CODEX-TECHNICAL-DELEGATION-R1",
-  "handoff_commit": "953eb07ad29cc424b2fc43cfeb13ef83355f3a50",
+  "checkpoint_id": "20261022-PYAT-HQ-R58-C1-SCOPED-COMPOSITION-ACCEPTANCE-AND-NEXT-GRANT-HOLD-R1",
+  "handoff_commit": "facf870d2482972c50925e7dbf9b9e04da408b71",
   "semantic_pre_main_tip": "1f47063c3205a45888b3c55e81e7485943ed1390",
   "control_branch": "integration/pre-main-reconciliation-r1",
-  "current_md_path": "HQ_HANDOFF/checkpoints/20261022-PYAT-HQ-R57-R00P-R2-ADMISSION-CODEX-TECHNICAL-DELEGATION-R1/CURRENT.md",
-  "current_json_path": "HQ_HANDOFF/checkpoints/20261022-PYAT-HQ-R57-R00P-R2-ADMISSION-CODEX-TECHNICAL-DELEGATION-R1/CURRENT.json",
-  "manifest_path": "HQ_HANDOFF/checkpoints/20261022-PYAT-HQ-R57-R00P-R2-ADMISSION-CODEX-TECHNICAL-DELEGATION-R1/MANIFEST.json",
+  "current_md_path": "HQ_HANDOFF/checkpoints/20261022-PYAT-HQ-R58-C1-SCOPED-COMPOSITION-ACCEPTANCE-AND-NEXT-GRANT-HOLD-R1/CURRENT.md",
+  "current_json_path": "HQ_HANDOFF/checkpoints/20261022-PYAT-HQ-R58-C1-SCOPED-COMPOSITION-ACCEPTANCE-AND-NEXT-GRANT-HOLD-R1/CURRENT.json",
+  "manifest_path": "HQ_HANDOFF/checkpoints/20261022-PYAT-HQ-R58-C1-SCOPED-COMPOSITION-ACCEPTANCE-AND-NEXT-GRANT-HOLD-R1/MANIFEST.json",
   "decision_ledger_path": "HQ_HANDOFF/DECISION_LEDGER.jsonl",
   "protocol_path": "HQ_HANDOFF/PROTOCOL.md",
   "start_here_path": "HQ_HANDOFF/START_HERE.md",
@@ -14,28 +14,28 @@
   "pointer_law": "LATEST_IS_MUTABLE_POINTER_ONLY__CHECKPOINT_AT_HANDOFF_COMMIT_IS_IMMUTABLE_SEALED_HQ_AUTHORITY",
   "temporal_reconciliation_law": "SEALED_CHECKPOINT_AUTHORITY_NE_POST_CHECKPOINT_PENDING_RETURN_NE_UNAUTHORIZED_POST_CHECKPOINT_MOVEMENT",
   "maintenance_law": "AFTER_EVERY_MATERIAL_HQ_STATE_CHANGE__CREATE_NEW_IMMUTABLE_CHECKPOINT__ADVANCE_AND_VERIFY_LATEST_BEFORE_TRANSITION_IS_SEALED",
-  "canonical_control_base": "953eb07ad29cc424b2fc43cfeb13ef83355f3a50",
+  "canonical_control_base": "facf870d2482972c50925e7dbf9b9e04da408b71",
   "qualified_working_hq_branch": "integration/pre-main-reconciliation-r1",
-  "qualified_working_hq_commit": "953eb07ad29cc424b2fc43cfeb13ef83355f3a50",
-  "primary_succession_handoff_path": "HQ_HANDOFF/checkpoints/20261022-PYAT-HQ-R57-R00P-R2-ADMISSION-CODEX-TECHNICAL-DELEGATION-R1/CURRENT.md",
-  "pyat_current_handoff": "HQ_HANDOFF/checkpoints/20261022-PYAT-HQ-R57-R00P-R2-ADMISSION-CODEX-TECHNICAL-DELEGATION-R1/CURRENT.md",
+  "qualified_working_hq_commit": "facf870d2482972c50925e7dbf9b9e04da408b71",
+  "primary_succession_handoff_path": "HQ_HANDOFF/checkpoints/20261022-PYAT-HQ-R58-C1-SCOPED-COMPOSITION-ACCEPTANCE-AND-NEXT-GRANT-HOLD-R1/CURRENT.md",
+  "pyat_current_handoff": "HQ_HANDOFF/checkpoints/20261022-PYAT-HQ-R58-C1-SCOPED-COMPOSITION-ACCEPTANCE-AND-NEXT-GRANT-HOLD-R1/CURRENT.md",
   "current_progress": {
     "owner": "Pyat",
-    "revision": 43,
-    "canonical_report_commit": "953eb07ad29cc424b2fc43cfeb13ef83355f3a50",
-    "counterpart": "Sorok rev29 independent; no new actor/source rights"
+    "revision": 44,
+    "canonical_report_commit": "facf870d2482972c50925e7dbf9b9e04da408b71",
+    "counterpart": "Sorok rev34 independent; no new actor rights"
   },
   "previous_handoff": {
-    "checkpoint_id": "20261021-PYAT-HQ-R56-USER-AUTHORIZED-NARROW-R00-R02-R04BYTE-CODEX-LED-FIRST-FLIGHT-R1",
-    "handoff_commit": "a51155558ae73b246dfd72e5bf6fabebd6965081"
+    "checkpoint_id": "20261022-PYAT-HQ-R57-R00P-R2-ADMISSION-CODEX-TECHNICAL-DELEGATION-R1",
+    "handoff_commit": "953eb07ad29cc424b2fc43cfeb13ef83355f3a50"
   },
   "full_legacy_pointer_archived": {
     "git_cut": "e1182c32cc40b7908304cecc5964193590bbb1cc",
     "blob_sha": "10f6ae095290cd5081c64af4de89acc45e6933db",
     "description": "Prior 135251-byte pointer and nested historical state preserved exactly at this immutable Git cut, not copied into new pointer; dereference previous_handoff as needed"
   },
-  "next_action": "R57 R00P TEST_ONLY corrected policy admitted at 6d95a78; Codex delegated routine final technical R56 seals for R00E/R02/R04.byte after actual owner/startup/facility check; implementations may develop in parallel. Their distinct independent native reviews remain, other grants held.",
-  "worker_state_truth": "R57 HQ policy-static admission and routine Codex technical sealing delegation; R00P R2 returned at 6d95a78; no native author/reviewer worker launched by R57, local sessions UNKNOWN.",
+  "next_action": "R58 C1 local sourcefree composition accepted scoped; no merge/native promotion. Codex Pyat HQ full accession eligibility via independent review and human appointment, and safe controller P0-P2; separately request new R01/R08/local R09 grant. Sorok HQ independent.",
+  "worker_state_truth": "C1 reviewer returned a54893657ba65e44c1049f763208b0b4b6ed5eb9, HQ accepted sourcefree local grain. No active work inferred from branch. Model/session exact unknown; no auto workers launched.",
   "measured_execution_authorized": false,
   "measured_execution_authorized_via_warrant": false,
   "new_operative_grants": false,
@@ -231,6 +231,19 @@
     "code_grant": "ONLY_R56_SEVEN_PATHS",
     "J52_W52": "USER_STOPPED",
     "original_U_Epre": "NULL",
+    "n11": "NOT_READY",
+    "n12": "HOLD"
+  },
+  "r58": {
+    "status": "HQ_ACCEPT_SCOPED_LOCAL_COMPOSITION__NATIVE_PROMOTION_HOLD",
+    "packet_commit": "facf870d2482972c50925e7dbf9b9e04da408b71",
+    "c1": "a54893657ba65e44c1049f763208b0b4b6ed5eb9",
+    "assembly": "a2aeb53b0a1e6abb93d4bb3d173007002fd7cf44",
+    "code_merged": false,
+    "next_grant": "NOT_GRANTED",
+    "codex_full_hq": "ELIGIBILITY_NOT_APPOINTED",
+    "automation": "PROGRAM_ONLY_NOT_ACTIVE",
+    "j52_w52": "USER_STOPPED",
     "n11": "NOT_READY",
     "n12": "HOLD"
   }
