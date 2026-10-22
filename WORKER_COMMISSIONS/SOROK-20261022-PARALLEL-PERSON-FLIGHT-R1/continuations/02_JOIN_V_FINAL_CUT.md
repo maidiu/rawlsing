@@ -1,0 +1,9 @@
+# Resume existing JOIN-V — final candidate now exists
+
+Same independent worker and branch codex/sorok-join-v-20261022 at8fe8940023672ee5005397ee80280b5c6b0aed31. Final E candidate now c367777f83367240352c267a2d3750abb7f09397, read-only. Original02_JOIN_V.md, write scope, separate-role/model/harness/sourcefree constraints remain. Preferred OpenCode DeepSeek V4.1-Flash MAX, I2/S2; no silent model or account changes. User dispatches continuation. No candidate edits or HQ implementation.
+
+Read00_HQ_INTAKE.md. Run frozen positives and hostile tests against exact E final cut; publish independent final-cut verdict, distinguishing repaired/still-failing/new counterexamples. Keep frozen hashes. Do not silently rebaseline. If tests require adapting import setup or legitimate API, preserve original and publish exact reason/diff before results. E implemented legitimate fork_alt: test lawful fork continuation and unauthorized metadata-only branch substitution separately. Do not impose cross-root target determinism absent contract. Still reject donor/root/source substitution and material source not bound to persisted C12.
+
+Independently inspect E mutation witness: it tests A action/omission, not upstream B source. Challenge actual B-source→same consumer positive/fault/restore, no crash-only proof. Do not accept DEV-R's ungrounded refusal=>help-accept expectation; no-tool may lawfully refuse. Require genuinely discriminating source-derived behavioral/action/expressive witness, exact source and no-target semantics.
+
+E repairs in parallel on same branch; do not race/edit it. First return final-cut adjudication of c367777. When human/HQ supplies subsequent repair SHA, continue SAME review lane and frozen oracles, including targeted new attacks warranted by the repair, with preserved legitimate positives. No extra review worker, indefinite polling or generic global court. Original three courts and exact evidence/return contract remain.
