@@ -1,3 +1,10 @@
+# Pyat HQ — revision 42 — user-authorized narrow R00→R02/R04.byte sourcefree coding, Codex-led first flight (2026-10-21)
+
+**USER EXPLICIT GRANT:** narrow exact R53/R54 code stop amendment for R00 first; only after independent R00 contract frozen, separate R02 and R04.byte sourcefree candidates in parallel plus independent native qualification. Exact seven source/test code scopes, no-go boundaries and Codex-led user preference: `PYAT_CONTROL_ROOM/R56_USER_EXPLICIT_NARROW_IMPLEMENTATION_STOP_AMENDMENT_AND_CODEX_DIRECTED_FLIGHT_20261021.md`. **J52/W52 USER_STOPPED.** No original sources, production promotion, R09 CI installation, N11/N12 wake or other R00–R09 code authorized. Workers are NOT launched by the authorization/checkpoint. MainMac Codex is user-selected coordination surface; no automatic model/harness switch. Git seal and current branch capacity verification required before coding. Original science/actor/source rights remain held.
+
+---
+## Prior revision 41 retained verbatim below
+
 # Pyat HQ — revision 41 — Astra UR final director fan-in, explicit repair grant pending (2026-10-21)
 
 # Pyat R55 — final Astra UR director intake and first bounded implementation decision
