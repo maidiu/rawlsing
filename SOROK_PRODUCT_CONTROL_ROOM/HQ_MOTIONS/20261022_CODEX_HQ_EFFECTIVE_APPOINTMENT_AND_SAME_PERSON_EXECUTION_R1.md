@@ -1,0 +1,15 @@
+# Effective bounded Sorok HQ appointment
+
+Status: SOROK_HQ_ACCREDITED_AT_EXISTING_BOUNDED_COMMAND_SCOPE__NO_NATIVE_GRANTS.
+
+Independent ruling: 3de081023406a52ec23e1ae43ade77aea485a3f8, exact accession application 778c69d1a520a2be9901961f5aaeeffda8de8261. Human appointment in the current Codex chat: “good news buddy, you're HQ” followed by “now let's hit it and hit it hard go go go go go”. Recorded at 2026-10-22T05:16:15.014610+00:00. This explicitly supplies the ruling's outstanding human operative confirmation; no second review is required.
+
+Effective read cut: PRE-MAIN 954995540077435366ebe98639b392b86b01d940, Sorok rev29 and Pyat rev43/R57; owner 3de081023406a52ec23e1ae43ade77aea485a3f8; J 64fec28c374d8f77fb0b412d0c934d798ede03e8 and E a2760d3687b063513fe0a5b9589c56c998d4ccb5 returned unchanged. Original candidate dossier remains immutable. Existing owner branch continues as bounded Sorok control publication, not a competing HQ. No automatic retirement or rewriting of historical authority.
+
+Scope: existing bounded Sorok whole-product planning, sourcefree engineering/scientific return intake, lawful sourcefree integration and commissioning, own control/reporting, economical orchestration with manual user model choice. No original CAN/ADP, protected C8/C12, Pyat N11/N12, C11, provider/deployment or human A5 grant. Native C12=0, C11=0; A5 NOT_RUN.
+
+First productive operation: one coherent runnable R31J/R31E same-product integration in this user-selected local Codex session, isolated codex/sorok-same-person-join-20261022 branch and WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/ subtree only. Source branches remain immutable. No worker or subagent launched. No additional preparatory commission. Reuse exact J pre-C8 producer and E admission; startup/cold reopen must not fall back to R29P. Freeze consumer behavior before implementation, prove actual material/omission/refusal and exact admitted occurrence, same named assertion source severance RED/restored PASS and cold continuation, then affected regressions. Separate independent review before engineering adoption.
+
+Routing: I2/S2 bounded engineering. Qualified Browser full local process closure unverified. DeepSeek V4.1-Flash MAX has relevant returned implementation evidence; current account/harness availability UNKNOWN. Codex High necessity not established. User explicitly selected continuing this Codex HQ; retain current manually selected setting, recommend minimum qualified intermediate effort, no Astra escalation. No autonomous model/harness switch. Stop on exact out-of-scope owner contract or material architecture conflict; ordinary import/test failures are repaired within the single campaign.
+
+MISSING_FUNCTION_CHECK: the identified missing adapter is same-root J startup and cold reopen through E's actual expression/admission consumer. Existing J/E code recovered; no new person compiler or psychological theory is authorized or needed to begin. Candidate 07 remains historical/unissued; this operative record authorizes direct bounded integration, not dispatch of that draft.
