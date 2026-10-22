@@ -13,7 +13,7 @@ from pathlib import Path
 
 from .imports import install
 install()
-from .lineage import ROOT_BRANCH, new_lineage, validate as validate_lineage
+from .lineage import ROOT_BRANCH, create_fork, validate as validate_lineage
 from bp4.product import BP4Product
 from bp4.world import initial_world
 from c8_readonly_consumer import C8ReadOnlyConsumer
@@ -373,13 +373,12 @@ class RefusalSession(R31ESession):
                 json.dumps(lineage_result.get('checks', {}), sort_keys=True))
         parent = self.branch_id
         try:
-            fork = self.product.fork(new_branch_id)
-            created = fork.get('branch')
-            if not created:
-                raise ValueError('FORK_BRANCH_RECORD_MISSING')
-            lineage = new_lineage(parent, self.meta.get('branch_lineage'), created)
+            fork, lineage = create_fork(
+                self.product, parent, new_branch_id,
+                self.meta.get('branch_lineage'))
         except Exception as exc:
-            raise SessionRefusal('FORK_REFUSED', type(exc).__name__ + ':' + str(exc)) from exc
+            code = getattr(exc, 'code', type(exc).__name__)
+            raise SessionRefusal('FORK_REFUSED', code + ':' + str(exc)) from exc
         self.branch_id = new_branch_id
         self.meta['branch_id'] = new_branch_id
         self.meta['branch_lineage'] = lineage

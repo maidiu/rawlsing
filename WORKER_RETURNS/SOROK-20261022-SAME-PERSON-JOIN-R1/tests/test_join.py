@@ -608,3 +608,32 @@ def test_nested_forks_receipts_parent_isolation_and_tamper(tmp_path):
         with pytest.raises(SessionRefusal) as exc:
             open_session(parent_copy)
         assert exc.value.code in {"UNAUTHORIZED_BRANCH", "BRANCH_LINEAGE_MISMATCH"}
+
+
+def test_fork_post_create_receipt_failure_rolls_back(tmp_path, monkeypatch):
+    import joined.lineage as lineage
+
+    cases = (
+        ("joined", lambda p: JoinedSession.start(p, perform="omit")),
+        ("refusal", RefusalSession.start),
+    )
+
+    def fail_receipt(*args, **kwargs):
+        raise ValueError("SIMULATED_RECEIPT_FAILURE")
+
+    monkeypatch.setattr(lineage, "new_lineage", fail_receipt)
+    for name, start in cases:
+        session = start(tmp_path / name)
+        try:
+            before = sorted(row["branch_id"] for row in session.product.store.branches())
+            before_meta = json.dumps(session.meta.get("branch_lineage"), sort_keys=True)
+            before_branch = session.branch_id
+            with pytest.raises(SessionRefusal) as exc:
+                session.fork_alt("alt")
+            assert exc.value.code == "FORK_REFUSED"
+            assert sorted(row["branch_id"] for row in session.product.store.branches()) == before
+            assert json.dumps(session.meta.get("branch_lineage"), sort_keys=True) == before_meta
+            assert session.branch_id == before_branch
+            assert session.verify()["ok"] is True
+        finally:
+            session.close()

@@ -19,8 +19,8 @@
 
 ## Executed
 
-- Owned suites: **17 join + 8 J + 15 E + 10 R30A = 50 entries**, all pass.
-- JOIN-V preserved suite on this candidate: **10 positive + 7 hostile + 9 repaired-cut + 4 targetless-final = 30 pass**. Older targeted final-cut suite: **5 pass / 1 superseded E-first-refusal expectation**.
+- Owned suites: **18 join + 8 J + 15 E + 10 R30A = 51 entries**, all pass.
+- JOIN-V preserved suite on this candidate: **10 positive + 7 hostile + 9 repaired-cut + 4 targetless-final = 30 pass**, plus **lineage-contract 5 pass**. Older targeted final-cut suite: **5 pass / 1 superseded E-first-refusal expectation**.
 - Proof witness: two claims (`A omission→inspection` and `B source→targetless tool-read receiving edge`), both `TARGET_ASSERTION_FAILED`, `BOUNDED_MUTATION_DETECTED`; the B scope is bounded receiving-edge, not upstream pre-C8 severance.
 - Closure: 444/444 source-manifest blobs verified; fresh-process loaded origins all J/E/LIVE correct.
 - Cold root hashes unchanged; targetless refusal C12 verifies.

@@ -1,12 +1,11 @@
 {
-  "independent_v_entries": 36,
+  "independent_v_entries": 41,
   "notes": [
-    "Owned suites: 17 join + 8 J + 15 E + 10 R30A = 50 entries.",
-    "V preserved suite: 10 positive + 7 hostile + 9 repaired-cut + 4 targetless-final = 30 entries, all pass.",
-    "V final-cut suite: 5 pass / 1 historical failure, test_import_closure_refuses_e_first_and_accepts_j_first; E-first J closure is now a legitimate adaptation.",
-    "Counts are executed entries, not a clean unique inherited union."
+    "Owned suites: 18 join + 8 J + 15 E + 10 R30A = 51 entries.",
+    "V preserved suite: 30 entries; lineage-contract: 5 entries; final-cut: 5 pass / 1 historical failure (E-first expectation superseded).",
+    "Counts are executed entries, not a clean unique union."
   ],
-  "owned_entries": 50,
+  "owned_entries": 51,
   "schema": "SOROK_JOIN_E_TEST_RESULTS@1",
   "status": "PASS_EXCEPT_SUPERSEDED_E_FIRST_EXPECTATION",
   "suites": [
@@ -40,7 +39,7 @@
       "file": "join_new.xml",
       "ok": true,
       "skipped": 0,
-      "tests": 17
+      "tests": 18
     },
     {
       "errors": 0,
@@ -57,6 +56,14 @@
       "ok": false,
       "skipped": 0,
       "tests": 6
+    },
+    {
+      "errors": 0,
+      "failures": 0,
+      "file": "v_lineage_contract.xml",
+      "ok": true,
+      "skipped": 0,
+      "tests": 5
     }
   ]
 }

@@ -12,7 +12,7 @@ from r31j.scenarios import evaluated
 from r31e.session import R31ESession
 from r30a.first_session import SessionRefusal
 from .closure import audit_loaded, source_manifest_sha256
-from .lineage import ROOT_BRANCH, new_lineage, validate as validate_lineage
+from .lineage import ROOT_BRANCH, create_fork, validate as validate_lineage
 from .provenance import validate_join
 from .readonly import ReadOnlyR31JProduct
 
@@ -232,13 +232,12 @@ class JoinedSession(R31ESession):
                 json.dumps(lineage_result.get('checks', {}), sort_keys=True))
         parent = self.branch_id
         try:
-            fork = self.product.fork(new_branch_id)
-            created = fork.get('branch')
-            if not created:
-                raise ValueError('FORK_BRANCH_RECORD_MISSING')
-            lineage = new_lineage(parent, self.meta.get('branch_lineage'), created)
+            fork, lineage = create_fork(
+                self.product, parent, new_branch_id,
+                self.meta.get('branch_lineage'))
         except Exception as exc:
-            raise SessionRefusal('FORK_REFUSED', type(exc).__name__ + ':' + str(exc)) from exc
+            code = getattr(exc, 'code', type(exc).__name__)
+            raise SessionRefusal('FORK_REFUSED', code + ':' + str(exc)) from exc
         self.branch_id = new_branch_id
         self.meta['branch_id'] = new_branch_id
         self.meta['branch_lineage'] = lineage

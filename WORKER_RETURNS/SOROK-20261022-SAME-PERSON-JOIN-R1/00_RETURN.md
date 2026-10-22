@@ -1,6 +1,6 @@
 # SOROK JOIN-E — coherent same-person sourcefree completion
 
-**STATUS:** `REPAIRED_SOURCEFREE_CANDIDATE__SHARED_BRANCH_LINEAGE_BOUND__FINAL_JOIN_V_PENDING__NOT_NATIVE__NOT_SELF_ADOPTED`
+**STATUS:** `REPAIRED_SOURCEFREE_CANDIDATE__SHARED_BRANCH_LINEAGE_AND_FORK_ATOMICITY_BOUND__FINAL_JOIN_V_PENDING__NOT_NATIVE__NOT_SELF_ADOPTED`
 **BRANCH:** `codex/sorok-join-e-20261022`
 **EXACT STARTUP:** `3fe8444b4a0374d95fa9f7e60dd295049a5d3172`
 **ROLE:** OpenCode implementation worker; not Sorok HQ, not JOIN-V, not a native CAN/ADP/C8/C12/Pyat/C11 issuer, not a human A5 evaluator.
@@ -19,20 +19,20 @@
 | **F4. B refusal now has a lawful derived targetless C12 representation.** `REFUSE_TOOL` yields C8 `661e95...`, `NO_CHANGE`/`NO_PROPOSAL`, `RESPONSE_EFFECTS_VALID_EMPTY`, and no C9 target. `joined.refusal` carries that real source and C8/E1 into a C12/world session with `target_id=""`, no C10 target read, and E refuses help because the tool is absent. | The BP2P4 target consumer still cannot assemble a normal product; the rival — mint a target to keep the UI green — remains forbidden. The targetless C12 is a derived adapter, not a native target. | Accept the targetless refusal path at sourcefree grade; retain the owner contract for native C10 target semantics. Do not require help acceptance under refusal. | JOIN-E + BP2P4/C9 owner + C12/C10 owner |
 | **F5. Attention is excluded from actor choice; only user perception changes.** Same-session contract hashes are identical under focused/distracted attention; admitted event IDs are unchanged; the surface differs. Private actor fields do not cross the surface; unobserved B yields `UNKNOWN_B`. | The rival — attention retroactively changes the actor's occurrence — is falsified by the identical contract and event identities. | Retain; do not claim native V2 or human phenomenology. | JOIN-E + JOIN-V |
 | **F6. Fork, lineage and cold reopen now use one shared contract.** `fork_alt` records the actual created branch record (`parent_branch_id`, `branch_id`, non-null `fork_clock`, `root_hash`, `created_clock`). The lineage validates the full parent-child chain, so nested forks work, metadata-only switches to parent/sibling/root are refused, and cold reopen preserves the selected branch and parent isolation. | The rival — null receipt values, a metadata-only branch switch, or a silent no-op fork — is rejected against the actual C12 branch rows. Legitimate `first_session` and nested `alt`/`alt2` sessions remain supported. | Accept the shared contract at scoped engineering grade. | JOIN-E + JOIN-V |
-| **F7. V's preliminary, repaired-cut and targetless-final counterexamples are repaired on this cut.** Foreign/R29P roots, coordinated sidecar+meta substitutions, missing/orphan/moved roots, parent/sibling/root branch switches, and incomplete receipts are typed refusals; targetless source is C12/C8-bound; targetless fork persists and cold reopens. | V preserved suite passes 30/30 (10 positive + 7 hostile + 9 repaired-cut + 4 targetless-final). Its older final-cut suite is 5/6: the sole failure is the superseded E-first-refusal expectation, now adjudicated as legitimate J-closure adaptation. This is execution evidence, not the reviewer's final verdict. | JOIN-V final review of the exact final SHA remains the independent gate. | JOIN-V + HQ |
-| **F8. The branch contract is shared, not patched per session type.** Both `JoinedSession` and `RefusalSession` call the same `joined/lineage.py` validator before open/verify/status/fork; both record the same actual created receipt. Invalid duplicate/nonexistent branch requests are typed `FORK_REFUSED`/lineage refusals. | A local guard only on the named targetless cases would leave the joined path divergent. The shared validator checks the persisted branch rows, chain, receipt fields, current selection and root/parent isolation. | Retain this as the common contract; no production-security claim is made. | JOIN-E + JOIN-V |
+| **F7. V's preliminary, repaired-cut and targetless-final counterexamples are repaired on this cut.** Foreign/R29P roots, coordinated sidecar+meta substitutions, missing/orphan/moved roots, parent/sibling/root branch switches, and incomplete receipts are typed refusals; targetless source is C12/C8-bound; targetless fork persists and cold reopens. | V preserved suite passes 30/30 (10 positive + 7 hostile + 9 repaired-cut + 4 targetless-final) and the lineage-contract suite 5/5. Its older final-cut suite is 5/6: the sole failure is the superseded E-first-refusal expectation, now adjudicated as legitimate J-closure adaptation. This is execution evidence, not the reviewer's final verdict. | JOIN-V final review of the exact final SHA remains the independent gate. | JOIN-V + HQ |
+| **F8. The branch contract is shared, not patched per session type.** Both `JoinedSession` and `RefusalSession` call the same `joined/lineage.py` validator before open/verify/status/fork; both record the same actual created receipt. Invalid empty/duplicate requests are preflighted; a savepoint rolls back any post-create receipt/lineage failure, so store, branch selection and metadata stay consistent. | A local guard only on the named targetless cases would leave the joined path divergent. The shared validator checks the persisted branch rows, chain, receipt fields, current selection and root/parent isolation; fork creation uses one savepoint boundary. | Retain this as the common contract; no production-security claim is made. | JOIN-E + JOIN-V |
 
 ## 2. ENGINEERING / SCIENTIFIC / AUTHORITY COURTS
 
 | Court | Verdict requested | Basis |
 |---|---|---|
-| **ENGINEERING** | `ACCEPT_SCOPED_CANDIDATE__FINAL_JOIN_V_PENDING` | Canonical root, J-first/E-second closure, C12/C8-bound provenance, shared branch-lineage contract with actual fork receipts and nested forks, typed branch/root refusals, nonmutating cold open, targetless refusal C12, full encounter, and two bounded mutation witnesses. No vendor edits. Preserved V suite 30/30 passes. |
+| **ENGINEERING** | `ACCEPT_SCOPED_CANDIDATE__FINAL_JOIN_V_PENDING` | Canonical root, J-first/E-second closure, C12/C8-bound provenance, shared branch-lineage contract with actual fork receipts and nested forks, typed branch/root refusals, nonmutating cold open, targetless refusal C12, full encounter, and two bounded mutation witnesses. No vendor edits. Preserved V suite 30/30 and lineage-contract 5/5 pass; invalid fork is atomic. |
 | **SCIENTIFIC** | `TEST_ONLY_SOURCEFREE_MATERIAL_ACTION_EXPRESSION__H0_LIVE` | Material aid affects the simulated actor's next admission; B remains an independent source; no psychogenesis, acquired practice, demographic inference or human claim. |
 | **AUTHORITY** | `HOLD` | No native CAN008/CAN011/ADP/C8/Pyat/C11/C12, external model, production or human A5 grant is issued or implied. |
 
 ## 3. DONE / REMAINING / CRITICAL BLOCKER / LARGEST MOVE / FLIGHT / DELTA
 
-**DONE:** one explicit sourcefree J→C8/C9/E2→persistent C12→E expression/admission→user encounter; J-first/E-second closure audit; C12/C8-bound provenance; canonical root and fork lineage; typed missing/orphan/moved refusals; nonmutating cold reopen; targetless B-refusal C12 and E refusal; attention/privacy/actor-ignorance tests; fork/cold; two proof witnesses; runnable CLI.
+**DONE:** one explicit sourcefree J→C8/C9/E2→persistent C12→E expression/admission→user encounter; J-first/E-second closure audit; C12/C8-bound provenance; canonical root and shared fork lineage; atomic invalid-fork/failed-receipt rollback; typed missing/orphan/moved refusals; nonmutating cold reopen; targetless B-refusal C12 and E refusal; attention/privacy/actor-ignorance tests; fork/cold; two proof witnesses; runnable CLI.
 
 **REMAINING:** JOIN-V independent final verdict on the exact final SHA; native C10 target semantics for the refusal path; external model/two-call only if separately authorized; native CAN/ADP/C8/Pyat/C11/C12; human A5.
 
@@ -48,7 +48,7 @@
 
 ```text
 python3 -B -m pytest -q WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/tests -p no:cacheprovider
-17 passed
+18 passed
 
 # isolated J frozen test
 cd vendor/j; PYTHONPATH=... python3 -B -m pytest -q tests/test_r31j.py -p no:cacheprovider
@@ -63,9 +63,9 @@ cd vendor/e/vendor/r30a; PYTHONPATH=... python3 -B -m pytest -q tests/test_r30a_
 10 passed
 ```
 
-Owned entries: 17 join + 8 J + 15 E + 10 R30A = **50**. JUnit receipts: `evidence/junit/join_new.xml`, `j_r31j.xml`, `e_expression.xml`, `e_r30a.xml`.
+Owned entries: 18 join + 8 J + 15 E + 10 R30A = **51**. JUnit receipts: `evidence/junit/join_new.xml`, `j_r31j.xml`, `e_expression.xml`, `e_r30a.xml`.
 
-JOIN-V preserved tests against this exact candidate (read-only reviewer tests): `10 positive + 7 hostile + 9 repaired-cut + 4 targetless-final = 30 passed`; receipt `evidence/junit/v_all_30.xml`. The older targeted final-cut suite is `5 passed / 1 historical failure` (`test_import_closure_refuses_e_first_and_accepts_j_first`), superseded by the reviewer's E-first J-closure adjudication; receipt `evidence/junit/v_final_cut.xml`. This is execution evidence, not the reviewer's final verdict.
+JOIN-V preserved tests against this exact candidate (read-only reviewer tests): `10 positive + 7 hostile + 9 repaired-cut + 4 targetless-final = 30 passed` plus `lineage-contract 5 passed`; receipts `evidence/junit/v_all_30.xml`, `v_lineage_contract.xml`. The older targeted final-cut suite is `5 passed / 1 historical failure` (`test_import_closure_refuses_e_first_and_accepts_j_first`), superseded by the reviewer's E-first J-closure adjudication; receipt `evidence/junit/v_final_cut.xml`. This is execution evidence, not the reviewer's final verdict.
 
 Proof integrity:
 
@@ -112,7 +112,7 @@ CLI: `evidence/cli_demo.json` and `DEMO_AND_VERIFICATION.md`.
 - External actor LLM / two-call rendering: `NOT_RUN`; zero provider calls.
 - Native CAN008/CAN011/ADP019/C8/C11/C12/Pyat N11/N12: `NOT_RUN`/`HOLD`.
 - Human A5: `NOT_RUN`; no recruitment or real contact channel.
-- Historical 202/30 inherited test claims: not rerun; owned local counts are 50 executed entries (17+8+15+10), plus 30 preserved V entries and 6 targeted final-cut entries; not a clean unique union.
+- Historical 202/30 inherited test claims: not rerun; owned local counts are 51 executed entries (18+8+15+10), plus 35 preserved V entries and 6 targeted final-cut entries; not a clean unique union.
 - Targetless refusal E session: derived C12 path works; native C10 target semantics `HOLD`; no target was minted.
 - Broader original upstream B pre-C8/C8/C9 severance: `NOT_PROVED`; only the bounded receiving-edge tool-read witness was executed.
 - Full inherited R29P 155: `NOT_RUN`.

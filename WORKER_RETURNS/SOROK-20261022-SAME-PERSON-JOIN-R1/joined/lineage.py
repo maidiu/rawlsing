@@ -105,3 +105,49 @@ def validate(meta: dict, branch_id: str, store) -> dict:
         observed['error'] = type(exc).__name__ + ':' + str(exc)
     checks.setdefault('lineage_readable', True)
     return {'ok': all(checks.values()), 'checks': checks, 'observed': observed}
+
+class ForkContractError(ValueError):
+    """Typed invalid-fork or fork-transaction refusal."""
+
+    def __init__(self, code: str, detail: str = "") -> None:
+        super().__init__(code if not detail else f"{code}:{detail}")
+        self.code = code
+
+
+def validate_fork_request(store, parent: str, new_branch_id: str) -> None:
+    """Validate identity against the actual store before any mutation."""
+    if not isinstance(new_branch_id, str) or not new_branch_id.strip():
+        raise ForkContractError('FORK_BRANCH_EMPTY')
+    if new_branch_id == parent:
+        raise ForkContractError('FORK_BRANCH_IS_CURRENT')
+    if store._branch(parent) is None:
+        raise ForkContractError('FORK_PARENT_ABSENT')
+    if store._branch(new_branch_id) is not None:
+        raise ForkContractError('FORK_BRANCH_EXISTS')
+
+
+def create_fork(product, parent: str, new_branch_id: str,
+                previous: dict | None) -> tuple[dict, dict]:
+    """Create and record one fork atomically; rollback on receipt failure.
+
+    ``C12Store`` uses autocommit, so an explicit SQLite savepoint is required
+    for the branch insert, copied rows, root update and receipt validation.
+    """
+    store = product.store
+    validate_fork_request(store, parent, new_branch_id)
+    store.db.execute('SAVEPOINT join_fork')
+    try:
+        fork = product.fork(new_branch_id)
+        created = fork.get('branch')
+        if not created:
+            raise ForkContractError('FORK_BRANCH_RECORD_MISSING')
+        lineage = new_lineage(parent, previous, created)
+        store.db.execute('RELEASE join_fork')
+        return fork, lineage
+    except Exception:
+        try:
+            store.db.execute('ROLLBACK TO join_fork')
+            store.db.execute('RELEASE join_fork')
+        except Exception:  # noqa: BLE001 - preserve original fork failure
+            pass
+        raise
