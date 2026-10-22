@@ -1,0 +1,36 @@
+{
+  "distracted": [
+    "You say: \"What are you working on?\"",
+    "the repair worker says: \"It's the repair I said I'd finish. The tool's still on the bench.\"",
+    "the repair worker says: \"Hold the near edge. I'll check the seam.\"",
+    "The workshop noises continue around you."
+  ],
+  "event_ids": [
+    "TEST_ONLY_BP4_WORLD_EVT_756ef7e7409b8e6d569ab70f831e8fd0d42c6488795f10e6e312a9665d41e577",
+    "TEST_ONLY_BP4_WORLD_EVT_a920ff9d4b23b46088c45f8629287486682544eb330322025a5de7967db1e6d9",
+    "TEST_ONLY_BP4_WORLD_EVT_fff4dba364b0b8dbc856d1761c107f4343fb333ef91a5d4d66462aa8012bd0fd",
+    "TEST_ONLY_BP4_WORLD_EVT_8fc00bb01ff48007bfd181440f6c3747c2ec6b1549484d1bc2dc6da2d133b3c6"
+  ],
+  "focused": [
+    "You say: \"What are you working on?\"",
+    "the repair worker says: \"It's the repair I said I'd finish. The tool's still on the bench.\" A taps the bench once.",
+    "the repair worker says: \"Hold the near edge. I'll check the seam.\" A sets the tool beside your hand.",
+    "A material repair is performed in the workshop."
+  ],
+  "same_event_hashes": true,
+  "schema": "R31E_ATTENTION_CONTRAST@1",
+  "surface_differs": true,
+  "verify": {
+    "branch_id": "first_session",
+    "counts": {
+      "checkpoint": 8,
+      "episode": 8,
+      "perception": 18,
+      "world_event": 6
+    },
+    "errors": [],
+    "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+    "ok": true,
+    "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+  }
+}

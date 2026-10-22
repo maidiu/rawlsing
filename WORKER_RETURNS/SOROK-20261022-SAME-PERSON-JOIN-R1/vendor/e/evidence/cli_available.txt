@@ -1,0 +1,425 @@
+### R31E available CLI cold-process transcript
+R31E // FIRST NEIGHBOR
+
+A life is already in motion. You are a visitor, not the author.
+SAY, DO help, DO inspect, TRAVEL, ATTEND, WAIT, LEAVE, RETURN.
+What you attempt is a proposal. The person decides what they can say or do.
+
+ENTER
+
+Clock 10. Your position: workshop.
+The repair worker is at the bench. The finisher is folding pieces near the door.
+The scene has already started.
+
+{
+  "actor_model": "LIVE_ACTOR_MODEL_NOT_RUN",
+  "attention": "focused",
+  "branch_id": "first_session",
+  "clock": 10,
+  "contact": false,
+  "expression_port": "R31E_EXPRESSION_PORT@1",
+  "grade": "TEST_ONLY_SOURCEFREE_R31E_ACTOR_EXPRESSION_NOT_NATIVE",
+  "location": "workshop",
+  "messages": 0,
+  "native": false,
+  "present": [
+    {
+      "actor": "A",
+      "public_role": "repair"
+    },
+    {
+      "actor": "B",
+      "public_role": "finishing"
+    }
+  ],
+  "scenario": "available",
+  "scene_open": true,
+  "schema": "R31E_FIRST_NEIGHBOR_SESSION@1"
+}
+### say work
+You say: "What are you working on?"
+the repair worker says: "Same repair as this morning. I'm not finished." A keeps their eyes on the seam.
+{
+  "meta": {
+    "action_event_id": "",
+    "admission_id": "b1f13d8d94030a8b5d98ebda700597fc0997e77547d406c8c661ace258a3966e",
+    "contract_hash": "bc0ca12e441a1a9ead270f8316db981f74bf0ca3372a0fce7e28b26df3213503",
+    "motive_status": "MOTIVE_UNDERDETERMINED",
+    "speech_event_id": "TEST_ONLY_BP4_WORLD_EVT_f8adb4cee26adafe3f5c899ded1d3b3cd6e6700da602e06e010320c45a7da56b",
+    "status": "OK",
+    "strategy": "EXPLAIN_WORK"
+  }
+}
+### do help
+A material repair is performed in the workshop.
+the repair worker says: "Hold the near edge. I'll check the seam." A sets the tool beside your hand.
+{
+  "meta": {
+    "accepted": true,
+    "action_event_id": "TEST_ONLY_BP4_WORLD_EVT_8fc00bb01ff48007bfd181440f6c3747c2ec6b1549484d1bc2dc6da2d133b3c6",
+    "admission_id": "4c56bea18838a80c70fe112717807b5a28c1a472afe5b37106321ade7b6dd7e9",
+    "contract_hash": "fb10d10bf9cf61ac200d8480f7ea5cfcc81a429ffe7b948de6c5134b8a49b18f",
+    "motive_status": "MOTIVE_UNDERDETERMINED",
+    "speech_event_id": "TEST_ONLY_BP4_WORLD_EVT_a18cc1d210b8d0f8e66672a1a347e79f440df9287a4aab2199fe2ba9c67043a9",
+    "status": "OK",
+    "strategy": "HELP_ACCEPT"
+  }
+}
+### say after help
+You say: "What are you working on?"
+the repair worker says: "The seam held after you gave me a hand." A nods at the bench.
+{
+  "meta": {
+    "action_event_id": "",
+    "admission_id": "68453fb7e9d4799f74ce64e9fb403ca5baa96921816efb36f25e850e526ef391",
+    "contract_hash": "e3e609c88c8cf7bd8398afd79854511f6c6bd66e00553065b32355f9e0a5ccdf",
+    "motive_status": "MOTIVE_UNDERDETERMINED",
+    "speech_event_id": "TEST_ONLY_BP4_WORLD_EVT_4db177c5808753c843f7c19352000c94b684d8dfcf327c4ed81bfd3c3c3ed989",
+    "status": "OK",
+    "strategy": "RECALL_WORK"
+  }
+}
+### ask-contact
+the repair worker says: "Write it down before I change my mind." A recites the landing line.
+{
+  "meta": {
+    "action_event_id": "",
+    "admission_id": "3608b28ee608795ec166f2ddfef65caa8017ca3baaaf1cd77bec5a33aaa2f8b0",
+    "contact": true,
+    "contract_hash": "71293572be424d2dd0dec43103e97fdea651faebd217d758e6fdebc80d1db164",
+    "motive_status": "MOTIVE_UNDERDETERMINED",
+    "outcome": "GRANT",
+    "speech_event_id": "TEST_ONLY_BP4_WORLD_EVT_f18f5007601c9ab8c4ca432caa6444312a2fba2efc195532fba8bd3939888715",
+    "status": "OK",
+    "strategy": "CONTACT_GRANT"
+  }
+}
+### wait
+the repair worker says: "The seam held. I need to get it to the market." A lifts the finished piece.
+{
+  "meta": {
+    "clock": 40,
+    "scene_open": false,
+    "status": "OK"
+  }
+}
+### offscreen
+{
+  "clock": 70,
+  "message": "The seam held. I'm at the market until six.",
+  "message_admission": {
+    "action_event_id": "",
+    "admission_id": "4373d481bbd91aedb54064f187484a7be45cb587c30c8e20e1dc9fc64687da04",
+    "attention_excluded": true,
+    "clock": 70,
+    "consumed_state_hash": "4a73a2496bdc267c69514cfb3700b6cd712856f6e7f7f9f2c6d1fbb2610bb60c",
+    "contact_outcome": "",
+    "contract_hash": "bbd0056ac791e80fc44ddd872dd03b5ce909519a86a43f7336dddffe2b328556",
+    "fact_count": 1,
+    "grade": "TEST_ONLY_SOURCEFREE_R31E_ACTOR_EXPRESSION_NOT_NATIVE",
+    "knowledge_ref_count": 0,
+    "message_episode_id": "TEST_ONLY_BP4_EP_9bb56016b7ba9a583a3f41e680bdead1e2af7b05c550f3fe153555eb7ca39d2f",
+    "motive_status": "MOTIVE_UNDERDETERMINED",
+    "native": false,
+    "schema": "R31E_EXPRESSION_ADMISSION@1",
+    "source_ref": "001b506fa26ae879ff5b6e57138fc2696e12b538",
+    "speech_event_id": "",
+    "strategy": "MESSAGE",
+    "target_id": "401e4e543661e948210bb3989da7689c58e54b1cf5a54d7283679a9fcd6e4365",
+    "template_id": "message_help_1",
+    "validation": {
+      "checks": {
+        "action_allowed": true,
+        "actor_present_or_message": true,
+        "contract_hash_current": true,
+        "facts_supported": true,
+        "knowledge_refs": true,
+        "message_has_contact": true,
+        "no_private_tokens": true,
+        "no_private_values": true,
+        "not_stale_clock": true,
+        "scene_open_or_message": true,
+        "speech_length": true,
+        "speech_nonempty": true,
+        "speech_single_line": true,
+        "template_known": true,
+        "template_rerender_exact": true
+      },
+      "ok": true
+    }
+  },
+  "offscreen_events": [],
+  "status": "OK"
+}
+### messages
+{
+  "contact": true,
+  "messages": [
+    {
+      "clock": 70,
+      "episode_id": "TEST_ONLY_BP4_EP_9bb56016b7ba9a583a3f41e680bdead1e2af7b05c550f3fe153555eb7ca39d2f",
+      "sender": "neighbor",
+      "seq": 70,
+      "text": "The seam held. I'm at the market until six."
+    }
+  ],
+  "status": "OK"
+}
+### return
+the repair worker says: "The seam held. You came back." A lifts the finished piece an inch off the bench.
+{
+  "meta": {
+    "action_event_id": "",
+    "admission_id": "00835e9d3cc919e98febfe959490ac1001f359d25278f09b89e6408dbe5dd063",
+    "motive_status": "MOTIVE_UNDERDETERMINED",
+    "scene_open": true,
+    "speech_event_id": "TEST_ONLY_BP4_WORLD_EVT_987a96013222148c52b36335ee611c8a74b21dbf8fd87c9acdcfe88cab801b80",
+    "status": "OK",
+    "strategy": "RETURN"
+  }
+}
+### verify
+{
+  "custody": {
+    "branch_id": "first_session",
+    "c12_counts": {
+      "checkpoint": 23,
+      "episode": 29,
+      "perception": 33,
+      "world_event": 13
+    },
+    "c12_path": "/tmp/r31e-cli-available/product/c12.sqlite",
+    "c12_verify": {
+      "branch_id": "first_session",
+      "counts": {
+        "checkpoint": 23,
+        "episode": 29,
+        "perception": 33,
+        "world_event": 13
+      },
+      "errors": [],
+      "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+      "ok": true,
+      "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+    },
+    "episodes": 29,
+    "events": 13,
+    "expression_port": {
+      "admission_schema": "R31E_EXPRESSION_ADMISSION@1",
+      "contract_schema": "R31E_ACTOR_REALIZATION_CONTRACT@1",
+      "live_actor_model": "LIVE_ACTOR_MODEL_NOT_RUN",
+      "schema": "R31E_EXPRESSION_PORT@1",
+      "version": 1
+    },
+    "grade": "TEST_ONLY_SOURCEFREE_R31E_ACTOR_EXPRESSION_NOT_NATIVE",
+    "r29p_source_ref": "001b506fa26ae879ff5b6e57138fc2696e12b538",
+    "schema": "R31E_CUSTODY@1",
+    "source": {
+      "artifacts": {
+        "anchor_log": "/tmp/r31e-cli-available/bp2/anchor/rows.json",
+        "anchor_watermark": "/tmp/r31e-cli-available/bp2/anchor/watermark.json",
+        "as_of": 247,
+        "c8_canonical_bytes_sha256": "97476a482572cc0a34eee0c61cc86fe14734d3a52cf39ba07f846bdb603cdbe0",
+        "c8_commit_receipt_id": "96050e7c2f0a6f3f53eec2c0183f6e6b0e929708ab9f46d630d5bcf30401fe20",
+        "c8_content_hash": "4932ecca925c41a1a74a3c6162bca2a98deb9b5f4b25f6741745c2b929a2599f",
+        "c8_identity_digest": "e64c50a6a27269e63cbb2d5da6e74514b11fd8a91d858873f5ca5df0155f4c8e",
+        "c8_ledger_prefix_digest": "ecec20eab7ca6d8302e2ca96f4be3521f9c2b8915b6d3544f9f8c4176605a700",
+        "c8_state_digest": "cd5a12fc5e1965cbba2a2ef65a6a7af62452226f0c276a061c1616366570ac38",
+        "c8_writer_version": 1,
+        "c9_authorization_hash": "0630f84d0a8add9c8b6e985184f0ad7a0cfbc116133743c73e36def921ce4770",
+        "c9_commit_receipt_hash": "86c4b6cc80b002b6c1efd39ad07e1f275c27ee908bbe132475781eebb992c9cb",
+        "c9_path": "/tmp/r31e-cli-available/bp2/c9.sqlite",
+        "consumed_state_hash": "4a73a2496bdc267c69514cfb3700b6cd712856f6e7f7f9f2c6d1fbb2610bb60c",
+        "e1_event_hash": "fd08e4ea62511cd8fa4991207176c33e3692144a76f1647024b11300a949d393",
+        "e1_event_id": "TEST_ONLY_BP2_E1_OCC-0001",
+        "e2_receipt_hash": "8b8085509c3afdea2bc789e0334ae05b5295559dc0dc951e94a7c0c0cd93c3b7",
+        "emission_order": [
+          "BP2_C8_COMMIT",
+          "BP2_C9_TARGET_COMMIT",
+          "BP2_E2_ADMISSION"
+        ],
+        "event_time": 242,
+        "grant_hash": "377a0e99dcf8132e682a0cc071ad136ce532d8aacd9a5176adb478380acf9284",
+        "journal_path": "/tmp/r31e-cli-available/bp2/journal/journal.json",
+        "key_id": "BP2-TEST-KEY",
+        "key_path": "/tmp/r31e-cli-available/bp2/keys/writer_keys.json",
+        "later_as_of": 257,
+        "mode": "RECOVERED",
+        "native_grant": "NOT_GRANTED",
+        "occurrence_id": "OCC-0001",
+        "practice_label": "coordinated_material_inspection",
+        "response_hash": "1ca1a636594faf6e9a135d3a0841175466931a6f6a4252c6cc5bcdcddb7b2845",
+        "root": "/tmp/r31e-cli-available/bp2",
+        "rule_a_content_hash": "9e4872abaeedc346fa3ea06575bb6fb5daa324a47d1d00d6015f7b660ea9cf5d",
+        "rule_t_content_hash": "ab8afe1ae0229b2d6143c84f58cc4f2f1b0942d9f680cd14477602143991ec97",
+        "rule_t_dependency_hash": "9e4872abaeedc346fa3ea06575bb6fb5daa324a47d1d00d6015f7b660ea9cf5d",
+        "schema": "BP2P4J_BP2_ARTIFACT_BINDING@1",
+        "target_id": "401e4e543661e948210bb3989da7689c58e54b1cf5a54d7283679a9fcd6e4365",
+        "target_record_hash": "45e211ab74aa00c0a5eaecdc85828d5a7e0eaf8dbb95f5bc812a1f45176157e7"
+      },
+      "c12": {
+        "branch_id": "first_session",
+        "last_clock": 70
+      },
+      "clock": {
+        "basis": "The BP4 world root is created in the same process only after the BP2 C8 keyed commit, the C9 target commit and the independent E2 admission have been physically verified. The two logical clock domains are never compared numerically; no BP2 time is treated as a BP4 world time or vice versa.",
+        "bp2_domain": "BP2_TEST_ONLY_LOGICAL_CLOCK",
+        "bp2_e2_action_time": 257,
+        "bp2_event_time": 242,
+        "bp2_target_commit_time": 242,
+        "bp4_domain": "BP4_TEST_ONLY_WORLD_CLOCK",
+        "bp4_world_origin_clock": 10,
+        "hold_code": "",
+        "numeric_ordering_used": false,
+        "process_order": [
+          "BP2_C8_COMMIT",
+          "BP2_C9_TARGET_COMMIT",
+          "BP2_E2_ADMISSION",
+          "BP4_SEED_BIND",
+          "BP4_WORLD_ROOT_CREATE"
+        ],
+        "relation": "DECLARED_PROCESS_ORDER_NOT_NUMERIC_COMPARISON"
+      },
+      "custody": {
+        "adp019_admission_receipt": "ADP019_ADMISSION_RECEIPT_ABSENT",
+        "c8_commit_receipt_id": "96050e7c2f0a6f3f53eec2c0183f6e6b0e929708ab9f46d630d5bcf30401fe20",
+        "c8_occurrence_id": "OCC-0001",
+        "c8_state_digest": "cd5a12fc5e1965cbba2a2ef65a6a7af62452226f0c276a061c1616366570ac38",
+        "c8_writer_version": 1,
+        "c9_authorization_hash": "0630f84d0a8add9c8b6e985184f0ad7a0cfbc116133743c73e36def921ce4770",
+        "c9_commit_receipt_hash": "86c4b6cc80b002b6c1efd39ad07e1f275c27ee908bbe132475781eebb992c9cb",
+        "clock": {
+          "basis": "The BP4 world root is created in the same process only after the BP2 C8 keyed commit, the C9 target commit and the independent E2 admission have been physically verified. The two logical clock domains are never compared numerically; no BP2 time is treated as a BP4 world time or vice versa.",
+          "bp2_domain": "BP2_TEST_ONLY_LOGICAL_CLOCK",
+          "bp2_e2_action_time": 257,
+          "bp2_event_time": 242,
+          "bp2_target_commit_time": 242,
+          "bp4_domain": "BP4_TEST_ONLY_WORLD_CLOCK",
+          "bp4_world_origin_clock": 10,
+          "hold_code": "",
+          "numeric_ordering_used": false,
+          "process_order": [
+            "BP2_C8_COMMIT",
+            "BP2_C9_TARGET_COMMIT",
+            "BP2_E2_ADMISSION",
+            "BP4_SEED_BIND",
+            "BP4_WORLD_ROOT_CREATE"
+          ],
+          "relation": "DECLARED_PROCESS_ORDER_NOT_NUMERIC_COMPARISON"
+        },
+        "commit_receipt_present": true,
+        "consumed_state_hash": "4a73a2496bdc267c69514cfb3700b6cd712856f6e7f7f9f2c6d1fbb2610bb60c",
+        "e1_event_hash": "fd08e4ea62511cd8fa4991207176c33e3692144a76f1647024b11300a949d393",
+        "e1_event_id": "TEST_ONLY_BP2_E1_OCC-0001",
+        "e2_admitted": true,
+        "e2_receipt_hash": "8b8085509c3afdea2bc789e0334ae05b5295559dc0dc951e94a7c0c0cd93c3b7",
+        "envelope_validation": {
+          "bp4_contract_status": "AWAITING_ACTUAL_BP2_PRODUCER__COMPAT_CONTRACT_NOT_EMITTED",
+          "e2_receipt_bound": true,
+          "fields_checked": 17,
+          "mode": "RECOVERED",
+          "ok": true,
+          "recomputed_from_artifacts": true,
+          "schema": "BP2_JOINED_EVENT_HISTORY_TARGET_E2_ENVELOPE@1",
+          "target_digest_equal_consumed": true
+        },
+        "grade": "TEST_ONLY_SOURCEFREE_BP2P4J_SEED_NOT_NATIVE",
+        "grant_hash": "377a0e99dcf8132e682a0cc071ad136ce532d8aacd9a5176adb478380acf9284",
+        "mode": "RECOVERED",
+        "native": false,
+        "native_grants": {
+          "actor": false,
+          "adp019": false,
+          "c11": false,
+          "c12": false,
+          "c8_trust": false,
+          "e2": false,
+          "rule": false,
+          "world": false
+        },
+        "practice": {
+          "e2_receipt_hash": "8b8085509c3afdea2bc789e0334ae05b5295559dc0dc951e94a7c0c0cd93c3b7",
+          "effective_from": 242,
+          "established": true,
+          "grade": "TEST_ONLY_SOURCEFREE_TECHNICAL",
+          "native": false,
+          "performed_act": "inspect_with_tool",
+          "practice_label": "coordinated_material_inspection",
+          "source_target_ref": "45e211ab74aa00c0a5eaecdc85828d5a7e0eaf8dbb95f5bc812a1f45176157e7"
+        },
+        "response_hash": "1ca1a636594faf6e9a135d3a0841175466931a6f6a4252c6cc5bcdcddb7b2845",
+        "response_row_present": true,
+        "rule_a_content_hash": "9e4872abaeedc346fa3ea06575bb6fb5daa324a47d1d00d6015f7b660ea9cf5d",
+        "rule_t_content_hash": "ab8afe1ae0229b2d6143c84f58cc4f2f1b0942d9f680cd14477602143991ec97",
+        "rule_t_dependency_hash": "9e4872abaeedc346fa3ea06575bb6fb5daa324a47d1d00d6015f7b660ea9cf5d",
+        "schema": "BP2P4J_JOINED_SEED@1",
+        "target_id": "401e4e543661e948210bb3989da7689c58e54b1cf5a54d7283679a9fcd6e4365",
+        "target_journal_present": true,
+        "target_record_hash": "45e211ab74aa00c0a5eaecdc85828d5a7e0eaf8dbb95f5bc812a1f45176157e7"
+      },
+      "envelope": {
+        "hash": "188b4cd778ee6cfa59318b8155b05b50aac50917d2877097242bd64fcc9e111c",
+        "producer": {
+          "mode": "RECOVERED",
+          "module": "bp2_joined.producer.JoinedProducer",
+          "name": "BP2_JOINED_PRODUCER",
+          "named_assertion": "bp2_joined.producer.joined_consumer_assertion",
+          "return_commit": "5065e2e6934e9d5bca800cbf88c79e461bcf2393"
+        },
+        "schema": "BP2_JOINED_EVENT_HISTORY_TARGET_E2_ENVELOPE@1",
+        "validation": {
+          "bp4_contract_status": "AWAITING_ACTUAL_BP2_PRODUCER__COMPAT_CONTRACT_NOT_EMITTED",
+          "e2_receipt_bound": true,
+          "fields_checked": 17,
+          "mode": "RECOVERED",
+          "ok": true,
+          "recomputed_from_artifacts": true,
+          "schema": "BP2_JOINED_EVENT_HISTORY_TARGET_E2_ENVELOPE@1",
+          "target_digest_equal_consumed": true
+        }
+      },
+      "grade": "TEST_ONLY_SOURCEFREE_JOINED_PRODUCT_ALPHA_NOT_NATIVE",
+      "native": false,
+      "native_grants": {
+        "actor": false,
+        "adp019": false,
+        "c11": false,
+        "c12": false,
+        "c8_trust": false,
+        "e2": false,
+        "rule": false,
+        "world": false
+      },
+      "practice": {
+        "e2_receipt_hash": "8b8085509c3afdea2bc789e0334ae05b5295559dc0dc951e94a7c0c0cd93c3b7",
+        "effective_from": 242,
+        "established": true,
+        "grade": "TEST_ONLY_SOURCEFREE_TECHNICAL",
+        "native": false,
+        "performed_act": "inspect_with_tool",
+        "practice_label": "coordinated_material_inspection",
+        "source_target_ref": "45e211ab74aa00c0a5eaecdc85828d5a7e0eaf8dbb95f5bc812a1f45176157e7"
+      },
+      "schema": "BP2P4J_JOINED_SOURCE@1",
+      "world": {
+        "clock": 70,
+        "hash": "9f7f9d2b65cfcd859212d9799cf74985bda0a99c7cff33fb19a04da3f08e9bc3",
+        "tool_available": true
+      }
+    },
+    "world_clock": 70
+  },
+  "verify": {
+    "branch_id": "first_session",
+    "counts": {
+      "checkpoint": 23,
+      "episode": 29,
+      "perception": 33,
+      "world_event": 13
+    },
+    "errors": [],
+    "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+    "ok": true,
+    "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+  }
+}

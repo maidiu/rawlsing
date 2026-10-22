@@ -1,0 +1,21 @@
+{
+  "actual_consumer": "BP2 stage_c8/stage_out9/stage_c9/stage_e2 and R31JProduct/R29P C12/M6 A0/A2",
+  "current_adapter_scope": "TEST_ONLY sourcefree; original BP2 bytes unchanged",
+  "current_insertion": "r31j/pre_c9.py::PreC9Producer.stage_world (pre-C8, no original edit)",
+  "emitted_artifact": "C8 occurrence payload with gm01_pre_c9_source; E1 hash bound to C8 content/state digest; C9 target causal parent E1; C12 GM01_SOURCE episode",
+  "missing_upstream_owner": "BP2 semantic owner with C9R consumer owner",
+  "native": false,
+  "necessary_transformation": "first-class typed GM01 material-source envelope carried from WorldOccurrence into C8 payload, E1 content and C9 conditioning source without an owned post-hoc payload mutation",
+  "predecessor_inputs": [
+    "GM01 B performed SHARE_TOOL/REFUSE_TOOL event with owner, quantity, clock and source hash",
+    "A E1/E2 source refs and material feasibility",
+    "R26V A/B historical sources and BP4 initial actor snapshot"
+  ],
+  "required_owner_decision": "accept a typed material-source field or reject the adapter as an unsupported source surface",
+  "schema": "R31J_BP2_OWNER_HOOK_REQUEST@1",
+  "source_files": [
+    "candidate/vendor/bp2/bp2_joined/binding.py",
+    "candidate/vendor/bp2/bp2_joined/producer.py"
+  ],
+  "status": "TYPED_UPSTREAM_HOOK_REQUEST__OWNED_ADAPTER_WORKING"
+}
