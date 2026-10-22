@@ -1,0 +1,140 @@
+{
+  "schema": "PYAT_R56_R04BYTEV_R3_ACCEPTANCE_MANIFEST_R1",
+  "job": "R56-R04BYTEV",
+  "revision": "r3",
+  "role": "same independent native reviewer (fresh context, not the R3 author)",
+  "verdict": "ACCEPT_SCOPED_LOCAL",
+  "candidate": "31a39c50cb5e8487968ab7b00386912fc5f1d6ca",
+  "repair_parent": "ea0d6f0f9840db0e33645b40ceda54456612709e",
+  "startup": "6d95a78bf6b7bcf70022e303a151255e65edc38a",
+  "negative_baseline": "228387c59b42590338636cd176feee3ccc9a6abc",
+  "author_branch": "agent/rabochii-pyat-r56-r04byte-consumed-byte-custody-r1",
+  "reviewer_branch": "agent/rabochii-pyat-r56-r04bytev-r3-custody-requalification-r1",
+  "authority_refs": {
+    "decision_contract": "1ac432d95ad9b6ca9da94828cc5f2aed8d10b5d7",
+    "shared_review_contract": "485f31e52",
+    "native_shared_contract": "eb28fdcc3",
+    "r57": "953eb07ad29cc424b2fc43cfeb13ef83355f3a50",
+    "r00p_r2_startup": "6d95a78bf6b7bcf70022e303a151255e65edc38a"
+  },
+  "reviewer_session": {
+    "harness": "OpenCode",
+    "model": "opencode-go/deepseek-v4.1-flash",
+    "effort": "UNKNOWN_NOT_EXPOSED",
+    "session_id": "UNKNOWN_NOT_EXPOSED",
+    "provider": "UNKNOWN_NOT_EXPOSED",
+    "host": "MacBook-Pro.lan",
+    "os": "macOS 13.2.1 (22D68) x86_64",
+    "python": "3.11.3",
+    "pytest": "9.0.2",
+    "pyreadstat": "1.3.2",
+    "pandas": "2.3.1"
+  },
+  "candidate_read_only_identities": {
+    "rawlsing_next/pre553_physical_decoder.py": "1ed8a8ae01f90bba297d708a0926fe9911d9b186eb858d99aec616e23991d320",
+    "rawlsing_next/tests/test_universal_source_byte_custody.py": "8a4efe40b939379c3b28e7455214370baec459d9a1f410e2548ffb6d0964848b",
+    "rawlsing_next/tests/test_universal_source_byte_custody.py.proof.json": "f4ff0cd8bf509c106f14d03812401fd2edc8581cf5e971dc1f17041d74363f51",
+    "rawlsing_next/pre553_source_backed_c11_facade.py": "03b88d258d21c403542756db7316923aa392871442d99294de904b1744da1d01",
+    "rawlsing_next/pre553_empirical_query.py": "d45ad313bc57e94c8c3652b4123c7cb03b0fc18d38d577aaaae94435664ef4cb",
+    "rawlsing_next/pre553_c11_repository.py": "84a71fe43307cca30f9eeaaedb269d8390468a4744a0fac251aebc2cda7b498e"
+  },
+  "qualification": {
+    "focused_module": "26 passed",
+    "core": "90 passed, 1 skipped",
+    "skip": "rawlsing_next/tests/test_pre553_sr06_decoder_carrier.py:268 installed pyreadstat writer/readback does not expose missing_user_values in metadata",
+    "read_only_handoff": "retained fd O_RDONLY; construction writer closed; no writable aliases/maps; nlink 0; path unlinked; reader digest/size/identity bound",
+    "denials": "write/pwrite EBADF 9; ftruncate EINVAL 22; mmap and mmap(dup) EACCES 13; /dev/fd reopen O_RDWR/O_WRONLY EACCES 13; F_SETFL does not change access mode; facts frozen baseline after every attempt",
+    "windows_lifetime_cold": "original/private path windows frozen; repeated facts equal; new acquisition new identity; old digest refused; cold fail/restore identical",
+    "sav_streaming": "chunked; 1 full-digest call per pass; no per-chunk rehash",
+    "dta_limit": "full-frame O(rows x cols); direct /dev/fd chunking ReadstatError; maxrss ~0.24/1.58/12.53 MB at 1k/10k/50k",
+    "proof_witness": "3/3 baseline PASS, 3/3 TARGET_ASSERTION_FAILED; decoder restored 1ed8a8ae...",
+    "failure_path_typing_limit": "externally OS-closed/invalid fd and environmental reader-open failure fail closed with OSError/PermissionError rather than DecoderError; no facts or writable capability; supported close/wrong-mode/non-regular are DecoderError"
+  },
+  "files": [
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTEV-INDEPENDENT-NATIVE-REVIEW-R1/revisions/r3/00_RETURN.md",
+      "sha256": "60c3dfec7487997634b17880638ab0421cb6951bf765d59a299480af4f554a2e",
+      "bytes": 10273
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTEV-INDEPENDENT-NATIVE-REVIEW-R1/revisions/r3/00_STARTUP_SESSION_RECORD.md",
+      "sha256": "49d9868b6e3aa73155d50f07d008801d147d3ac5622ce80dcdb43bf3bd9ca4cc",
+      "bytes": 3316
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTEV-INDEPENDENT-NATIVE-REVIEW-R1/revisions/r3/01_FROZEN_ACCEPTANCE_EXPECTATIONS.md",
+      "sha256": "de311ca30d153a66e9316ac93f9e6fdd677944fbf9653d1fd94db95d27815487",
+      "bytes": 4960
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTEV-INDEPENDENT-NATIVE-REVIEW-R1/revisions/r3/RESUME_CHECKPOINT.md",
+      "sha256": "9d864bcb4602cb7d4001ddc0469d0222129676e5c208c95cf8b422b39b374028",
+      "bytes": 1473
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTEV-INDEPENDENT-NATIVE-REVIEW-R1/revisions/r3/evidence/COMMANDS_AND_RESULTS.md",
+      "sha256": "f498c109e8691d528e7d60bb36d1d29dbdf84058aab8cdce7224c4d571acd577",
+      "bytes": 3845
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTEV-INDEPENDENT-NATIVE-REVIEW-R1/revisions/r3/evidence/probe_r3_dta_chunk_and_reader_calls.json",
+      "sha256": "3607fc71c40e69e473f46b03fe718bcd868644bd6e77e7467158b1ef6c6be4ef",
+      "bytes": 457
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTEV-INDEPENDENT-NATIVE-REVIEW-R1/revisions/r3/evidence/probe_r3_handoff.json",
+      "sha256": "b3c464873dcba838d8b0c7a3ea9734534269b9bc815fc47cde795c9cf2b234d7",
+      "bytes": 8404
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTEV-INDEPENDENT-NATIVE-REVIEW-R1/revisions/r3/evidence/probe_r3_handoff.py",
+      "sha256": "fe77e340f65a3a21f38f2f483043dd11e8ce46d0162657387daf13c9af47a403",
+      "bytes": 17151
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTEV-INDEPENDENT-NATIVE-REVIEW-R1/revisions/r3/evidence/probe_r3_read_shape.json",
+      "sha256": "833acda9e9e3ee852bafa4ed0a50b27d275151e8a78eb2d6225eef690d109352",
+      "bytes": 4176
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTEV-INDEPENDENT-NATIVE-REVIEW-R1/revisions/r3/evidence/probe_r3_read_shape.py",
+      "sha256": "0c3362a7b633c075f8b32b1c434cc5cce607bd57c7314004f4ffbfd9204f8e8b",
+      "bytes": 2279
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTEV-INDEPENDENT-NATIVE-REVIEW-R1/revisions/r3/evidence/proof_witness.json",
+      "sha256": "5f624e306f58ade69f7bc2044d6b2746c2650750dfe1cbd964f8eb01eb277be4",
+      "bytes": 1421
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTEV-INDEPENDENT-NATIVE-REVIEW-R1/revisions/r3/evidence/r2_negative_baseline_00_RETURN.md",
+      "sha256": "f2caf3f28354daf7ce944a1db20f3104b950ae75e45c427017a92cd7d0aaf555",
+      "bytes": 8959
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTEV-INDEPENDENT-NATIVE-REVIEW-R1/revisions/r3/evidence/r2_negative_baseline_mmap_test_excerpt.py",
+      "sha256": "876f7c691027e0f4135e9dff20d051883b6e88892a6e18570f4a4049618737df",
+      "bytes": 2802
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTEV-INDEPENDENT-NATIVE-REVIEW-R1/revisions/r3/evidence/r2_negative_baseline_probe_mmap_fact_bypass.json",
+      "sha256": "d2b55900ab67fc7485f11842cbb03c6781195a71b699441feab7d0dff25ff7f3",
+      "bytes": 989
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTEV-INDEPENDENT-NATIVE-REVIEW-R1/revisions/r3/evidence/r2_negative_baseline_probe_mmap_fact_bypass.py",
+      "sha256": "9fe43a2c599a0c3687bb236692c0557e96f467651c3b6124b6b2791ff14d2ed0",
+      "bytes": 4850
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTEV-INDEPENDENT-NATIVE-REVIEW-R1/revisions/r3/evidence/reviewer_core90_receipt.txt",
+      "sha256": "aa8ba3cfaf38c5e535adbff33b028b5f88b4a41167ba39f5473a366656309420",
+      "bytes": 350
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTEV-INDEPENDENT-NATIVE-REVIEW-R1/revisions/r3/evidence/reviewer_module26_receipt.txt",
+      "sha256": "ca927a3a1018ea544e52420507fba4e662832f714cc1142d107adbefcad5d8b8",
+      "bytes": 99
+    }
+  ]
+}

@@ -1,0 +1,289 @@
+{
+  "handoff_dta": {
+    "access_mode": "O_RDONLY",
+    "access_mode_after_fcntl": "O_RDONLY",
+    "attempts": {
+      "fcntl_F_SETFL_O_RDWR": {
+        "denied": false,
+        "result": "0"
+      },
+      "ftruncate": {
+        "denied": true,
+        "errno": 22,
+        "message": "[Errno 22] Invalid argument",
+        "type": "OSError"
+      },
+      "mmap_write": {
+        "denied": true,
+        "errno": 13,
+        "message": "[Errno 13] Permission denied",
+        "type": "PermissionError"
+      },
+      "mmap_write_dup": {
+        "denied": true,
+        "errno": 13,
+        "message": "[Errno 13] Permission denied",
+        "type": "PermissionError"
+      },
+      "pwrite": {
+        "denied": true,
+        "errno": 9,
+        "message": "[Errno 9] Bad file descriptor",
+        "type": "OSError"
+      },
+      "reopen_devfd_O_RDONLY": {
+        "denied": false,
+        "opened": true
+      },
+      "reopen_devfd_O_RDWR": {
+        "denied": true,
+        "errno": 13,
+        "message": "[Errno 13] Permission denied: '/dev/fd/5'",
+        "type": "PermissionError"
+      },
+      "reopen_devfd_O_WRONLY": {
+        "denied": true,
+        "errno": 13,
+        "message": "[Errno 13] Permission denied: '/dev/fd/5'",
+        "type": "PermissionError"
+      },
+      "write": {
+        "denied": true,
+        "errno": 9,
+        "message": "[Errno 9] Bad file descriptor",
+        "type": "OSError"
+      }
+    },
+    "construction_fd": 4,
+    "construction_fd_closed": true,
+    "construction_fd_not_in_dev_fd": true,
+    "custody": {
+      "content_bound": true,
+      "contract": "PRE553_CONTENT_BOUND_SOURCE_SNAPSHOT@1.0.0",
+      "reader_access_mode": "O_RDONLY",
+      "reader_binding": "OPEN_FD_VIA_POSIX_DEV_FD",
+      "snapshot_path_unlinked": true,
+      "snapshot_sha256": "9b8097cc8bea379f612b8bbfd6fea5bbeffa0fc506e019b9d49ee77d5f8208d5",
+      "snapshot_size": 5146,
+      "source_sha256": "9b8097cc8bea379f612b8bbfd6fea5bbeffa0fc506e019b9d49ee77d5f8208d5"
+    },
+    "digest_equal_after_denials": true,
+    "expected_source_sha256": "9b8097cc8bea379f612b8bbfd6fea5bbeffa0fc506e019b9d49ee77d5f8208d5",
+    "facts_equal_baseline": true,
+    "format": "dta",
+    "reader_fd_in_dev_fd": true,
+    "retained_fd_matches_reader_open": true,
+    "snapshot_nlink": 0,
+    "snapshot_path_exists": false
+  },
+  "handoff_failure_paths": {
+    "inode_mismatch_failure": {
+      "leftover_dirs": [],
+      "message": "source snapshot reader does not match the construction inode",
+      "raised": "DecoderError"
+    },
+    "path_replacement_failure": {
+      "foreign_original_name_absent_after_move": true,
+      "foreign_preserved_at_leftover_path": true,
+      "leftover_contents": {
+        "source.bin": "foreign-replacement"
+      },
+      "leftover_dirs": [
+        "rawlsing-source-custody-gg12h5_3"
+      ],
+      "message": "source snapshot pathname was replaced before unlink",
+      "raised": "DecoderError"
+    },
+    "reader_open_failure": {
+      "construction_fds": [
+        4
+      ],
+      "construction_fds_closed": true,
+      "leftover_dirs": [],
+      "message": "[Errno 13] reader open denied",
+      "raised": "PermissionError"
+    }
+  },
+  "handoff_sav": {
+    "access_mode": "O_RDONLY",
+    "access_mode_after_fcntl": "O_RDONLY",
+    "attempts": {
+      "fcntl_F_SETFL_O_RDWR": {
+        "denied": false,
+        "result": "0"
+      },
+      "ftruncate": {
+        "denied": true,
+        "errno": 22,
+        "message": "[Errno 22] Invalid argument",
+        "type": "OSError"
+      },
+      "mmap_write": {
+        "denied": true,
+        "errno": 13,
+        "message": "[Errno 13] Permission denied",
+        "type": "PermissionError"
+      },
+      "mmap_write_dup": {
+        "denied": true,
+        "errno": 13,
+        "message": "[Errno 13] Permission denied",
+        "type": "PermissionError"
+      },
+      "pwrite": {
+        "denied": true,
+        "errno": 9,
+        "message": "[Errno 9] Bad file descriptor",
+        "type": "OSError"
+      },
+      "reopen_devfd_O_RDONLY": {
+        "denied": false,
+        "opened": true
+      },
+      "reopen_devfd_O_RDWR": {
+        "denied": true,
+        "errno": 13,
+        "message": "[Errno 13] Permission denied: '/dev/fd/5'",
+        "type": "PermissionError"
+      },
+      "reopen_devfd_O_WRONLY": {
+        "denied": true,
+        "errno": 13,
+        "message": "[Errno 13] Permission denied: '/dev/fd/5'",
+        "type": "PermissionError"
+      },
+      "write": {
+        "denied": true,
+        "errno": 9,
+        "message": "[Errno 9] Bad file descriptor",
+        "type": "OSError"
+      }
+    },
+    "construction_fd": 4,
+    "construction_fd_closed": true,
+    "construction_fd_not_in_dev_fd": true,
+    "custody": {
+      "content_bound": true,
+      "contract": "PRE553_CONTENT_BOUND_SOURCE_SNAPSHOT@1.0.0",
+      "reader_access_mode": "O_RDONLY",
+      "reader_binding": "OPEN_FD_VIA_POSIX_DEV_FD",
+      "snapshot_path_unlinked": true,
+      "snapshot_sha256": "b8e09d1c8cb6baa4ad86d5b1eedccc50082429b4c09923d8fcebbbfbbf7ab40f",
+      "snapshot_size": 839,
+      "source_sha256": "b8e09d1c8cb6baa4ad86d5b1eedccc50082429b4c09923d8fcebbbfbbf7ab40f"
+    },
+    "digest_equal_after_denials": true,
+    "expected_source_sha256": "b8e09d1c8cb6baa4ad86d5b1eedccc50082429b4c09923d8fcebbbfbbf7ab40f",
+    "facts_equal_baseline": true,
+    "format": "sav",
+    "reader_fd_in_dev_fd": true,
+    "retained_fd_matches_reader_open": true,
+    "snapshot_nlink": 0,
+    "snapshot_path_exists": false
+  },
+  "identity_dta": {
+    "cold_fault_rc": 1,
+    "cold_fault_stdout_empty": true,
+    "cold_restored_equals_baseline": true,
+    "cold_restored_rc": 0,
+    "cold_true_baseline_rc": 0,
+    "format": "dta",
+    "new_digest_differs": true,
+    "new_facts_differ": true,
+    "old_digest_on_changed_path_refused": true,
+    "old_digest_refusal": "DecoderError",
+    "old_incidence_keeps_old_facts": true,
+    "repeated_facts_equal": true
+  },
+  "identity_sav": {
+    "cold_fault_rc": 1,
+    "cold_fault_stdout_empty": true,
+    "cold_restored_equals_baseline": true,
+    "cold_restored_rc": 0,
+    "cold_true_baseline_rc": 0,
+    "format": "sav",
+    "new_digest_differs": true,
+    "new_facts_differ": true,
+    "old_digest_on_changed_path_refused": true,
+    "old_digest_refusal": "DecoderError",
+    "old_incidence_keeps_old_facts": true,
+    "repeated_facts_equal": true
+  },
+  "sav_shape": {
+    "cells": 21,
+    "chunk_generator_calls": 1,
+    "sha_fd_calls_in_one_pass": 1,
+    "streaming_not_per_chunk_hash": true
+  },
+  "windows_dta": {
+    "baseline_y": {
+      "0": 1,
+      "1": 1
+    },
+    "foreign_path_exists": true,
+    "foreign_survives_close": true,
+    "format": "dta",
+    "original_path_replacement_facts_equal": true,
+    "private_path_replacement_facts_equal": true
+  },
+  "windows_sav": {
+    "baseline_y": {
+      "0": 1,
+      "1": 1
+    },
+    "foreign_path_exists": true,
+    "foreign_survives_close": true,
+    "format": "sav",
+    "original_path_replacement_facts_equal": true,
+    "private_path_replacement_facts_equal": true
+  },
+  "wrong_and_closed_fd": {
+    "after_close_access_mode": "CLOSED",
+    "after_close_iter": {
+      "denied": true,
+      "errno": null,
+      "message": "source snapshot is closed",
+      "type": "DecoderError"
+    },
+    "os_closed_access_mode": {
+      "denied": true,
+      "errno": 9,
+      "message": "[Errno 9] Bad file descriptor",
+      "type": "OSError"
+    },
+    "os_closed_close": {
+      "message": "[Errno 9] Bad file descriptor",
+      "raised": "OSError"
+    },
+    "os_closed_verify": {
+      "denied": true,
+      "errno": 9,
+      "message": "[Errno 9] Bad file descriptor",
+      "type": "OSError"
+    },
+    "substituted_O_RDONLY_nonregular": {
+      "denied": true,
+      "errno": null,
+      "message": "source snapshot reader is not a regular file",
+      "type": "DecoderError"
+    },
+    "substituted_O_RDWR_prefix": {
+      "denied": true,
+      "errno": null,
+      "message": "source snapshot reader is not read-only",
+      "type": "DecoderError"
+    },
+    "substituted_O_RDWR_reader_path": {
+      "denied": true,
+      "errno": null,
+      "message": "source snapshot reader is not read-only",
+      "type": "DecoderError"
+    },
+    "substituted_invalid_fd": {
+      "denied": true,
+      "errno": 9,
+      "message": "[Errno 9] Bad file descriptor",
+      "type": "OSError"
+    }
+  }
+}
