@@ -3,7 +3,8 @@
   "authority": {
     "canonical": "fcbb2ee1d7a6eae040e0964bb8474e8d04d47989",
     "HQ_packet": "a51155558ae73b246dfd72e5bf6fabebd6965081",
-    "motion": "PYAT_CONTROL_ROOM/R56_USER_EXPLICIT_NARROW_IMPLEMENTATION_STOP_AMENDMENT_AND_CODEX_DIRECTED_FLIGHT_20261021.md"
+    "motion": "PYAT_CONTROL_ROOM/R56_USER_EXPLICIT_NARROW_IMPLEMENTATION_STOP_AMENDMENT_AND_CODEX_DIRECTED_FLIGHT_20261021.md",
+    "R57": "953eb07ad29cc424b2fc43cfeb13ef83355f3a50"
   },
   "director_branch": "agent/astra-ur-program-sourcefree-evidence-direction-r1",
   "policy_owner": {
@@ -15,16 +16,16 @@
       "CROSS_HQ_CONTROL_ROOM/universal_execution_policy/r56_sourcefree_v1/",
       "WORKER_RETURNS/PYAT-R56-R00P-INDEPENDENT-POLICY-R1/"
     ],
-    "status": "DIRECTOR_VERIFIED_R2_CONTENT_CLOSED__HQ_ADMISSION_PENDING",
+    "status": "R2_CONTENT_CLOSED_AND_HQ_ADMITTED_TEST_ONLY",
     "native_pass": false,
     "observed_remote": "6d95a78bf6b7bcf70022e303a151255e65edc38a",
-    "project_authority": "REQUIRES_EXACT_HQ_RATIFICATION_OR_BOUNDED_DELEGATION",
+    "project_authority": "R57_RATIFIED",
     "return_sha": "6d95a78bf6b7bcf70022e303a151255e65edc38a",
     "content_revision_request": "COMPLETED_R2_NO_FURTHER_POLICY_WORK"
   },
   "implementation_owner": {
     "id": "R56-R00E",
-    "status": "PREPARED_PENDING_HQ_SEAL_ADMISSION_AND_NATIVE_FACILITY",
+    "status": "CANDIDATE_RETURNED_REVIEW_REQUIRED",
     "recommended_model": "DeepSeek V4.1-Flash",
     "effort": "MAX",
     "harness": "USER_SELECTED",
@@ -36,21 +37,21 @@
       "tests/universal_execution_oracle/",
       "WORKER_RETURNS/PYAT-R56-R00E-GATE-IMPLEMENTATION-R1/"
     ],
-    "cannot_edit_policy": true
+    "cannot_edit_policy": true,
+    "return_sha": "efd12b1d46f1ccf90de14b292f600078f11ec7e0"
   },
   "reviewer": {
     "id": "R56-R00V",
-    "status": "DEPENDENCY_HELD_EXACT_CANDIDATE",
-    "model": "Cheapest qualified independent native agent; DeepSeek MAX considered before Codex High",
-    "startup": "EXACT_VERIFIED_R00E_RETURN",
-    "branch": "UNSEALED_NOT_CREATED",
+    "status": "COMMISSIONED_NOT_LAUNCHED",
+    "startup": "efd12b1d46f1ccf90de14b292f600078f11ec7e0",
+    "branch": "agent/rabochii-pyat-r56-r00v-independent-gate-review-r1",
     "scope": [
       "tests/universal_execution_oracle/",
       "WORKER_RETURNS/PYAT-R56-R00V-INDEPENDENT-NATIVE-REVIEW-R1/"
     ],
     "candidate_code": "READ_ONLY",
     "policy": "READ_ONLY",
-    "author_session_reuse": false
+    "actual_session": "RECORD_AND_VERIFY_WITHIN_STARTUP_NOT_YET_LAUNCHED"
   },
   "authorized_paths": [
     "CROSS_HQ_CONTROL_ROOM/universal_execution_policy/",
@@ -72,7 +73,7 @@
   "no_production_promotion": true,
   "no_original_source": true,
   "workers_actually_started": 0,
-  "seal_grain": "OPERATIONAL_PREPARATION_NOT_FINAL_COMPETENT_HQ_SEAL",
+  "seal_grain": "R57_DELEGATED_ROUTINE_TECHNICAL_APPOINTMENT__ACTUAL_SESSION_BOUND_WITHIN_STARTUP_NO_EXTRA_APPROVAL_ROUND",
   "R02_R04_acceptance_requires": [
     "Actual candidate downstream proof at exact commit",
     "Distinct independent native qualification for each candidate",
@@ -98,5 +99,29 @@
       "status": "NOMINATED_NOT_CREATED_NOT_LAUNCHED",
       "reviewer": "DISTINCT_NATIVE_SESSION_OWNER_TO_BIND_AT_SEAL"
     }
-  ]
+  ],
+  "independent_reviews": [
+    {
+      "id": "R00V",
+      "candidate": "efd12b1d46f1ccf90de14b292f600078f11ec7e0",
+      "commission": "R00V/00_COMMISSION.md",
+      "status": "COMMISSIONED_NOT_LAUNCHED",
+      "actual_session": "MUST_BE_FRESH_DISTINCT_AND_RECORDED_AT_STARTUP"
+    },
+    {
+      "id": "R02V",
+      "candidate": "236fd4d1064f7c14113616db300c955294a474ac",
+      "commission": "R02V/00_COMMISSION.md",
+      "status": "COMMISSIONED_NOT_LAUNCHED",
+      "actual_session": "MUST_BE_FRESH_DISTINCT_AND_RECORDED_AT_STARTUP"
+    },
+    {
+      "id": "R04BYTEV",
+      "candidate": "c1b0abec563a91940ae2f505b53a4c7e16f8685a",
+      "commission": "R04BYTEV/00_COMMISSION.md",
+      "status": "COMMISSIONED_NOT_LAUNCHED",
+      "actual_session": "MUST_BE_FRESH_DISTINCT_AND_RECORDED_AT_STARTUP"
+    }
+  ],
+  "startup_policy": "Verify independently at execution start, record exact session/branch/host, proceed on match; only concrete mismatch stops. No return-to-director approval loop."
 }

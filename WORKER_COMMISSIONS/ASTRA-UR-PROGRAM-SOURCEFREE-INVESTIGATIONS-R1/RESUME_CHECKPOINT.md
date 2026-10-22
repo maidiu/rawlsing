@@ -1,21 +1,20 @@
-# R56 continuation — R2 content lane closed; execution prompts prepared
-Date:2026-10-22. State: DELEGATED_WORKER_LAUNCH_READY__HQ_ADMINISTRATIVE_PROMPT_ONLY; native implementation prompts conditional, not launched.
+# R56 continuation — three author candidates returned; required native reviews ready
+Date:2026-10-22. State: DELEGATED_WORKER_LAUNCH_READY.
 Director branch agent/astra-ur-program-sourcefree-evidence-direction-r1.
-Remote-verified parent6cdde972249f5897d23c10aeccadfb56f76933f7; this record's enclosing commit is the successor. Resolve exact remote head before next mutation.
-HQ live verifiedfcbb2ee1d7a6eae040e0964bb8474e8d04d47989; immutable R56a51155558ae73b246dfd72e5bf6fabebd6965081.
-R00P live verified6d95a78bf6b7bcf70022e303a151255e65edc38a on existing policy branch. Direct ancestry/diff,8 successor files and8 preserved predecessor blobs verified. Static complete-operation bijection,36cases, prior32 meanings, deferred positive link and original35 obligations verified. No native run.
-Policy-content lane CLOSED; competent HQ admission remains pending. Do not reopen a policy audit.
+Verified parenteb28fdcc311e2534b66def445e745cb25cb8a9bd. This checkpoint's enclosing commit is the successor; resolve remote exact head before next write.
+HQ live954995540077435366ebe98639b392b86b01d940; operative R57953eb07ad29cc424b2fc43cfeb13ef83355f3a50 admits R2, delegates technical roles/seals and permits both witness sidecars. No pending general HQ permission.
+Candidates:
+R00E efd12b1d46f1ccf90de14b292f600078f11ec7e0
+R02 236fd4d1064f7c14113616db300c955294a474ac
+R04BYTE c1b0abec563a91940ae2f505b53a4c7e16f8685a
+Direct refs and startup ancestry/scoped diffs checked; author returns and selected consequential receipts read. No director native rerun/full code review. Grade AUTHOR_CANDIDATES_NOT_ACCEPTED.
+Read14_FIRST_CANDIDATE_INTAKE_AND_NATIVE_REVIEW_DISPATCH.md. Author-reported results: R00E36case/6pytest pass; R02 15focused+42retained; R04byte16new/80corepass1skip,10olderfailures attribution unverified.
+R00E lacked shared contract/top-level manifest; independent reviewer now receives exact shared contract and checks obligations/custody. R02 binding/event-domain/S2-positive checks explicit. R04 reviewer checks actual read faults and baseline attribution. No new investigation created.
 
-Read11_BOUNDED_FLIGHT_DIRECTION_DECISION.md and12_R00P_R2_INTAKE_AND_PROMPT_INDEX.md under WORKER_COMMISSIONS/PYAT-R56-FIRST-REPAIR-FLIGHT-R1/.
-Prepared prompts: HQ_SEAL/LAUNCH_PROMPT.md for EXISTING competent HQ Browser session now; R00E/00_COMMISSION.md, R02/00_COMMISSION.md, R04BYTE/00_COMMISSION.md for qualified native workers only after competent seal/admission and actual facility binding. Shared native contract binding. Exact nominated starts all6d95a78b; branches nominated/not created. Reviewer protocol prepared; final exact candidate startup unavailable until author returns. No tool messages or agent/process launches.
-After frozen admitted policy + qualified starts, implementations can run in parallel; completed R00V is NOT a development prerequisite. Each own independent review required.
+Next: user launches R00V/00_COMMISSION.md, R02V/00_COMMISSION.md and R04BYTEV/00_COMMISSION.md with REVIEW_SHARED_START_AND_RETURN.md in3fresh native sessions. Model route I2-I3/S3: full-native Browser only if qualified, otherwise user-selected DeepSeek V4.1-Flash MAX/OpenCode. Routine coordination I1-I2; no new Astra need.
+Startup identity/host/branch checks are executable conditions: record and proceed on match, stop only concrete mismatch. No send-preflight-back-for-static-seal round. No workers launched by this director publication. Production code/frozen policy read-only for reviewers; required tests/witnesses and own returns allowed. Reviewer starts exact candidateSHA.
+Defects return to same implementer. Distinct independent review required once; later compatible combined-candidate interaction check by one appointed reviewer before claiming integrated functioning. No blanket new review court.
+Exact current model/effort unexposed; initial quota41%five-hour/63%weekly used; context UNKNOWN. Recheck at next phase. No important local candidate work or native processes created.
 
-Current model: runtime switch signalled, exact selected model/effort UNKNOWN. Current task I1-I2/S1-S2 coordination; economical Sol Light/Middle/Browser sufficient. Native jobs I2-I3/S3, prefer whole-job Browser if qualified, otherwise user-selected DeepSeek V4.1-Flash MAX/OpenCode. No fresh Astra necessity identified.
-User's central intelligence-routing/quota instruction read and preserved; memory update note written at user's explicit remember request. Initial live quota33%five-hour/62%weekly used; context remaining UNKNOWN. Recheck at next phase.
-No local source/code/worktree edits; no uncommitted candidate work. Publication is scoped director documents only.
-
-NEXT: User gives HQ administrative prompt to existing competent Pyat HQ. Verify returned exact HQ seal/delegation/admission and two-sidecar decision; then economically bind actual owners/facility and finalize exact technical seals. Send native prompts or launch only through genuinely verified selected facility. No routine new code grant needed.
-Continuation:
-"Continue existing R56 from this remote head. Read11 and12. Policy R2 is content-verified and its lane closed. Intake the one existing HQ seal/delegation and admission return when available. Bind qualified native owners/facility and finalize the three proposed commissions without architectural rework. After admitted independent policy and exact starts, R00E/R02/R04.byte may implement in parallel. Publish exact review prompts only from actual candidate returns. Observe per-task model routing; pause before a genuine new Astra decision."
-
-Remaining holds: R56 seven paths only; proof-sidecar decision pending; other Rnodes/R04.joined separately gated; J52/W52 USER_STOPPED. No original source/science, protectedCI, production promotion, N11 adoption or N12 wake.0 new original measured cells; N11NOT_READY/N12HOLD.
+Continuation: "Continue R56 from remote exact director head. Read14 and the3review commissions. Receive actual independent native returns; verify hashes/scope and distinguish author from reviewer evidence. Route defects to same authors, then bounded combined-candidate check when eligible. No architecture reopening, no static-seal back-and-forth. Escalate Astra only a concrete architecture/science-changing fork."
+J52/W52USER_STOPPED; original35/all1890/globalF6/F7/F8 retained;0new original measurements, N11NOT_READY/N12HOLD. Other Rnodes/R04.joined, source/science/protectedCI/production held. No merge/adoption performed.
