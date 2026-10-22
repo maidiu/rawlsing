@@ -9,9 +9,9 @@
   "commission_commit": "eb28fdcc3",
   "files": [
     {
-      "bytes": 6438,
+      "bytes": 6657,
       "path": "00_RETURN.md",
-      "sha256": "3a13eccc866177bb8f592f067a5687283f1f310fed11e6382ffa6d8c8d7d29c0"
+      "sha256": "0e4427c6d833d1ea53af332ddf84a5eb7694d4d2b0cf9474804bbcb40ed74925"
     },
     {
       "bytes": 2621,
@@ -44,9 +44,9 @@
       "sha256": "a955eb0a057b9addff31209394de1f411b89780a454afbf0b3e29c316689f53b"
     },
     {
-      "bytes": 205,
+      "bytes": 796,
       "path": "receipts/proof_gate_changed.json",
-      "sha256": "262701b2d4e85ddb1d071ac46033f06bdf79f6d6ee67d5b389264afd7356baf8"
+      "sha256": "425fb188d66b0d81cf80df77b9dd8b96aa864ce2dea992c4acc58e2a03ec861c"
     },
     {
       "bytes": 532,
@@ -119,6 +119,29 @@
   },
   "owner_role": "R56-R02_AUTHOR__NOT_R02V",
   "policy_contract": "R56-R00P-CLAIM-TRANSITION-GATE@1.1.0 admitted at r2",
+  "proof_gate_changed": {
+    "examined_tests": [
+      "rawlsing_next/tests/test_universal_source_projection.py"
+    ],
+    "receipts": [
+      {
+        "claims": [
+          {
+            "baseline": "PASS",
+            "claim_id": "R56-R02-OCCURRENCE-TUPLES",
+            "fault_path": "rawlsing_next/pre553_source_native_preimage_adapter.py",
+            "fault_probe": "TARGET_ASSERTION_FAILED",
+            "grade": "BOUNDED_MUTATION_DETECTED",
+            "positive_node": "rawlsing_next/tests/test_universal_source_projection.py::test_s3_exact_respondent_occasion_value_tuples_and_repeated_consumer"
+          }
+        ],
+        "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+        "status": "MECHANICAL_WITNESS_PASS_NOT_SEMANTIC_ADOPTION"
+      }
+    ],
+    "state": "MECHANICAL_PROOF_GATE_PASS_NOT_SCIENTIFIC_ADOPTION",
+    "witness_contracts_run": 1
+  },
   "proof_integrity": {
     "claims": [
       {

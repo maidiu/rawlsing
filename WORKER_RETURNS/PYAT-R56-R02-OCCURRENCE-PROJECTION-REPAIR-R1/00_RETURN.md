@@ -27,7 +27,7 @@ PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 python3 -m pytest \
   -q -rA --junitxml=WORKER_RETURNS/PYAT-R56-R02-OCCURRENCE-PROJECTION-REPAIR-R1/receipts/pytest.xml
 ```
 
-Result: **15 passed, 0 failed, 0 errors, 0 skipped**. The proof-integrity witness also passed: baseline PASS, exact implementation mutation produced `TARGET_ASSERTION_FAILED`, source restored.
+Result: **15 passed, 0 failed, 0 errors, 0 skipped**. The proof-integrity witness also passed: baseline PASS, exact implementation mutation produced `TARGET_ASSERTION_FAILED`, source restored. The changed-test gate detected the integration-claim test, ran the sidecar witness, and returned `MECHANICAL_PROOF_GATE_PASS_NOT_SCIENTIFIC_ADOPTION` with `witness_contracts_run=1` (`receipts/proof_gate_changed.json`).
 
 The 12×2 synthetic repeated case (`24` physical SCORE cells):
 
