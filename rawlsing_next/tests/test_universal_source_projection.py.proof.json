@@ -1,0 +1,16 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "claims": [
+    {
+      "claim_id": "R56-R02-OCCURRENCE-TUPLES",
+      "actual_consumer": "rawlsing_next.pre553_empirical_query.execute_empirical_query repeated-query consumer over actual C11",
+      "claimed_dependency": "the adapter binds governed source respondent and occasion identity into occurrence-specific C11 events and canonical values",
+      "positive_node": "rawlsing_next/tests/test_universal_source_projection.py::test_s3_exact_respondent_occasion_value_tuples_and_repeated_i03",
+      "fault": {
+        "path": "rawlsing_next/pre553_source_native_preimage_adapter.py",
+        "old": "canonical = rule.value_aliases.get(raw_token, raw_token)",
+        "new": "canonical = \"0\""
+      }
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+case_id	input	expected	observed	grade
+S3-12x2	24 physical SCORE cells, 12 source PIDs, 2 governed occasions	24 C11 events, exact respondent/occasion/value tuples, I03 SUPPORTED denominator 12	24 events; tuples exact; I03 SUPPORTED denominator 12 numerator 12; 12 sequence cells	PASS_AUTHOR_NATIVE_SOURCEFREE
+S3-EQUAL	3 respondents × 2 occasions, all SCORE=1	6 distinct events; occasion identities preserved	6 exact tuples with both occasions; I03 SUPPORTED denominator 3	PASS_AUTHOR_NATIVE_SOURCEFREE
+S3-5x3	5 respondents × 3 governed occasions	15 events, SUPPORTED denominator 5	15 events; SUPPORTED denominator 5	PASS_AUTHOR_NATIVE_SOURCEFREE
+S3-PERM	4 respondents × 2 rows, physical row order reversed	exact tuple set unchanged	event tuple sets equal; both SUPPORTED denominator 4	PASS_AUTHOR_NATIVE_SOURCEFREE
+S3-MISSING	one SCORE occasion missing	MISSING event state; no fabricated support	state MISSING; repeated query not SUPPORTED	PASS_FAIL_CLOSED
+S3-LABELS	same values, different column labels	exact tuple set unchanged	tuple sets equal	PASS_AUTHOR_NATIVE_SOURCEFREE
+S1-SCALAR	6 rectangular rows, one row per respondent	existing scalar path remains supported	6 events; SUPPORTED denominator 6; cells 3/3	PASS_PRESERVATION
+S2-UNITS	two selected rules with household and person units	explicit refusal, no pooling	CROSS_UNIT_POOLING_UNAUTHORIZED	PASS_FAIL_CLOSED
+MR-RANK	MR1/RANK1 occurrence fields	MULTISELECT and ORDERED_SEQUENCE preserved	12 events with both topology kinds	PASS_AUTHOR_NATIVE_SOURCEFREE
+ADMIN	selected unadministered rule	held, not projected	HELD_NOT_ADMINISTERED; no question ref	PASS_FAIL_CLOSED
+BAD-MAPS	duplicate occurrence key/value, unmapped respondent/occasion, duplicate row, duplicate respondent key, scalar repeated form	typed refusal before C11 facts	corresponding NativePreimageRefusal codes	PASS_FAIL_CLOSED
+MUTATION	one SCORE value changed; same frozen repeated domain	named downstream fact/assertion changes; restored baseline recovers	SUPPORTED baseline replaced by non-SUPPORTED/different fact; fresh process fingerprint equals baseline	PASS_MUTATION_AND_RESTORE

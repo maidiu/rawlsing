@@ -1,0 +1,155 @@
+{
+  "branch": "agent/rabochii-pyat-r56-r02-occurrence-projection-repair-r1",
+  "commands": [
+    "PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 python3 -m pytest rawlsing_next/tests/test_universal_source_projection.py -q -rA --junitxml=receipts/pytest.xml",
+    "python3 /tmp/proof_integrity_gate_r1.py lint rawlsing_next/tests/test_universal_source_projection.py",
+    "python3 /tmp/proof_integrity_gate_r1.py witness rawlsing_next/tests/test_universal_source_projection.py.proof.json --root .",
+    "python3 -m pytest rawlsing_next/tests/test_pre553_source_backed_c11_facade.py rawlsing_next/tests/test_pre553_empirical_query.py -q"
+  ],
+  "commission_commit": "eb28fdcc3",
+  "files": [
+    {
+      "bytes": 6438,
+      "path": "00_RETURN.md",
+      "sha256": "3a13eccc866177bb8f592f067a5687283f1f310fed11e6382ffa6d8c8d7d29c0"
+    },
+    {
+      "bytes": 2621,
+      "path": "01_TECHNICAL_SEAL_AND_EXECUTION_CUSTODY.md",
+      "sha256": "ea7640020163d0c9940dea29570b0e2462bc5bd7aa3ab59e85bcfa9453d7acd5"
+    },
+    {
+      "bytes": 2109,
+      "path": "02_OCCURRENCE_CASE_MATRIX.tsv",
+      "sha256": "f5301bc97d376c38eebe56eccc051357b6bb54e35f593b12dc011f10a05d78ab"
+    },
+    {
+      "bytes": 3724,
+      "path": "03_R02V_HANDOFF_AND_OPEN_CHALLENGES.md",
+      "sha256": "65917b9c7a425133b21c32a0727319cec98c7af624a6cacc015fc72246d91be3"
+    },
+    {
+      "bytes": 1363,
+      "path": "RESUME_CHECKPOINT.md",
+      "sha256": "af6cac298cc9e4391acae2748dfdd837217c9430b3b0e2cbc9c72c6368c495a0"
+    },
+    {
+      "bytes": 1629,
+      "path": "evidence/build_occurrence_receipt.py",
+      "sha256": "930deed535d9e4c5a30455bf8d324dbb889a876644fa1b26abb40f93eb03e3d4"
+    },
+    {
+      "bytes": 13791,
+      "path": "evidence/occurrence_receipt.json",
+      "sha256": "a955eb0a057b9addff31209394de1f411b89780a454afbf0b3e29c316689f53b"
+    },
+    {
+      "bytes": 527,
+      "path": "receipts/proof_integrity_receipt.json",
+      "sha256": "624512a86138c9709ba5afb3d48327d93c64a3f96313b3911ea0d178f724b2b5"
+    },
+    {
+      "bytes": 2062,
+      "path": "receipts/pytest.log",
+      "sha256": "c709cf1ebb6023ff19f90b00fbb66a51c5385ce1a96f4e9c69f6e18af0a7bd9e"
+    },
+    {
+      "bytes": 3043,
+      "path": "receipts/pytest.xml",
+      "sha256": "5e4c2de67184454648c7d67fa09c78cdae91975624e8437a30e7cdc6b1acd68b"
+    },
+    {
+      "bytes": 38214,
+      "path": "rawlsing_next/pre553_source_native_preimage_adapter.py",
+      "role": "candidate",
+      "sha256": "2cf5e98bc29081678c364d3ff591c71f11ce7ebf3564419af8a26f5f04113b64"
+    },
+    {
+      "bytes": 24424,
+      "path": "rawlsing_next/tests/test_universal_source_projection.py",
+      "role": "candidate",
+      "sha256": "d4b0e3c9776b7c69ef20f594359c0a1fc117c52aec29ebc0093dfc45d351c894"
+    },
+    {
+      "bytes": 764,
+      "path": "rawlsing_next/tests/test_universal_source_projection.py.proof.json",
+      "role": "candidate",
+      "sha256": "891216afa9e6150041e2db45679844b6428c3c245015d355aead804d62e2049f"
+    }
+  ],
+  "not_run": [
+    "R02V independent review",
+    "R00E/R00V gate implementation",
+    "R01/R03 lowering",
+    "R04.byte/R04.joined",
+    "R05/R06",
+    "original35/N11/N12",
+    "protected CI",
+    "production adoption"
+  ],
+  "notes": [
+    "All fixtures are synthetic TEST_ONLY sourcefree SAV/DTA.",
+    "No original respondent data or source rights were used.",
+    "The synthetic SAV writer metadata makes the per-run source byte hash generation-specific; the receipt records the exact run used for the identity values.",
+    "Passing author tests are not independent acceptance."
+  ],
+  "occurrence_receipt": {
+    "event_count": 24,
+    "i03_cell_count": 12,
+    "i03_fact_ref": {
+      "content_hash": "1a950b1bcf74446facd2b44fc462a5266b2240b2f83ba919de207d13a0a4010b",
+      "kind": "EmpiricalFact@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:1a950b1bcf74446facd2b44fc462a5266b2240b2f83ba919de207d13a0a4010b"
+    },
+    "i03_raw_denominator": 12,
+    "i03_raw_numerator": 12,
+    "i03_state": "SUPPORTED",
+    "package_hash": "769ba2a48054fcd9ff5c69716e018deb1122f1c3e3e72a8d5971b9f146423b24",
+    "release_ref": {
+      "content_hash": "09580841a5896052ace6835f5b57d78f31644250508a779e30976456a4060296",
+      "kind": "C11LogicalRelease",
+      "object_id": "R56-SYNTHETIC-RELEASE"
+    },
+    "source_sha256": "91df04cfb1bd6b3cccfe7360cef96a5823d7fc5ffec4c6c1417ff6c5d07b6f3c"
+  },
+  "owner_role": "R56-R02_AUTHOR__NOT_R02V",
+  "policy_contract": "R56-R00P-CLAIM-TRANSITION-GATE@1.1.0 admitted at r2",
+  "proof_integrity": {
+    "claims": [
+      {
+        "baseline": "PASS",
+        "claim_id": "R56-R02-OCCURRENCE-TUPLES",
+        "fault_path": "rawlsing_next/pre553_source_native_preimage_adapter.py",
+        "fault_probe": "TARGET_ASSERTION_FAILED",
+        "grade": "BOUNDED_MUTATION_DETECTED",
+        "positive_node": "rawlsing_next/tests/test_universal_source_projection.py::test_s3_exact_respondent_occasion_value_tuples_and_repeated_i03"
+      }
+    ],
+    "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+    "status": "MECHANICAL_WITNESS_PASS_NOT_SEMANTIC_ADOPTION"
+  },
+  "reviewer": "R56-R02V_NOT_RUN",
+  "runtime": {
+    "host": "mainMac",
+    "pyreadstat": "1.3.2",
+    "pytest": "9.0.2",
+    "python": "3.11.3"
+  },
+  "schema": "PYAT_R56_R02_RETURN_MANIFEST@1",
+  "shared_contract_blob": "53ce4ba7cb338d367dd1985a283448c1771d3f64",
+  "startup": "6d95a78bf6b7bcf70022e303a151255e65edc38a",
+  "test_counters": {
+    "focused": {
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0,
+      "tests": 15
+    },
+    "retained": {
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0,
+      "tests": 42
+    }
+  }
+}
