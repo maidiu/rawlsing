@@ -6,7 +6,7 @@
 **REPAIR PARENT:** `efd12b1d46f1ccf90de14b292f600078f11ec7e0`.
 **POLICY PIN:** `6d95a78bf6b7bcf70022e303a151255e65edc38a` (unchanged R2).
 **BRANCH:** `agent/rabochii-pyat-r56-r00e-generic-claim-gate-r1`.
-**REMOTE SHA:** `__REMOTE_SHA__` (replaced after non-force push/readback).
+**REMOTE SHA:** `0555bbaafd812b448f3fa0678fad0646ed1c5e06` — substantive repaired publication commit; the final receipt commit is the branch head, verified by `git ls-remote`.
 
 ## Four-column return
 
@@ -65,6 +65,10 @@ python3 CROSS_HQ_CONTROL_ROOM/proof_integrity_gate_r1.py changed \
 | **ENGINEERING** | `REPAIRED_CANDIDATE__ACCEPT_SCOPED_PENDING_R00V` | Public gate behavior; no native execution. |
 | **SCIENTIFIC** | `NO_SCIENTIFIC_CLAIM` | Policy fixtures only. |
 | **AUTHORITY** | `HOLD` | R09, native/original, N11/N12, production remain unissued. |
+
+## Readback
+
+`evidence/github_api_readback.json`: **PASS 6/6** at `0555bbaaf…`; gate, reviewer regression tests, replay, defect matrix, JUnit and `00_RETURN.md` returned byte-identical.
 
 ## Unresolved limitations
 
