@@ -3,13 +3,13 @@
     "accepted": true,
     "admission": {
       "action_event_id": "TEST_ONLY_BP4_WORLD_EVT_8fc00bb01ff48007bfd181440f6c3747c2ec6b1549484d1bc2dc6da2d133b3c6",
-      "admission_id": "72310b909183cb75b1c8c5851a5bd3227d50acb62d3a36323d34c15a9c2ab0db",
+      "admission_id": "ffd83e21bdb3adc0198716d62e1bbdae1cbf27611670cb0c44fec5fbe5d79016",
       "attention_excluded": true,
       "clock": 10,
-      "consumed_state_hash": "6735a2cfb4b0f17fbb1f2299fe3c8de3046ae101980044ba902ec83c0922fe03",
+      "consumed_state_hash": "58653dced8ea88c5604593d6de40ef66c87fd185af5c8ce5a42983db133357a2",
       "contact_outcome": "",
-      "contract_hash": "80f2e7ea5e0e367028e83975b4578d461b3d96fbe524707132e850fa448dc519",
-      "fact_count": 1,
+      "contract_hash": "e9d216e91d5e27522a6a9aec961402938f380e357356e100191db19505762f84",
+      "fact_count": 2,
       "grade": "TEST_ONLY_SOURCEFREE_R31E_ACTOR_EXPRESSION_NOT_NATIVE",
       "knowledge_ref_count": 0,
       "message_episode_id": "",
@@ -17,10 +17,10 @@
       "native": false,
       "schema": "R31E_EXPRESSION_ADMISSION@1",
       "source_ref": "001b506fa26ae879ff5b6e57138fc2696e12b538",
-      "speech_event_id": "TEST_ONLY_BP4_WORLD_EVT_1d43175c707bf30fc126002b41bb119dadf2deae90f71242f3f3760b30e1af3e",
+      "speech_event_id": "TEST_ONLY_BP4_WORLD_EVT_8212354416c9d19d6b9f06669c235ef75a5fb25647cdb673ff08474ad3d96b87",
       "strategy": "HELP_ACCEPT",
-      "target_id": "c9cb994eaca7bef80417d2c6be363e8a4dce8ec07e915c119dce5b1452462a04",
-      "template_id": "help_accept_2",
+      "target_id": "0148d50532cc2af1bbba5811696f7065518296c88985bace74bcf3baf5f1a962",
+      "template_id": "help_accept_1",
       "validation": {
         "checks": {
           "a_at_workshop": true,
@@ -51,35 +51,41 @@
           "field": "tools_remaining",
           "kind": "ACTOR_FIELD",
           "value": 1
+        },
+        {
+          "field": "tool_available",
+          "kind": "WORLD_RESOURCE",
+          "scope": "workshop",
+          "value": true
         }
       ],
-      "gesture": "A clears a space at the bench.",
+      "gesture": "A sets the tool beside your hand.",
       "knowledge_refs": [],
       "schema": "R31E_EXPRESSION_CANDIDATE@1",
       "slots": {},
-      "speech": "Put your hand on the near edge. I'll take the slack.",
+      "speech": "Hold the near edge. I'll check the seam.",
       "strategy": "HELP_ACCEPT",
-      "template_id": "help_accept_2",
+      "template_id": "help_accept_1",
       "tone": "practical",
-      "variant": 1
+      "variant": 0
     },
-    "contract_hash": "80f2e7ea5e0e367028e83975b4578d461b3d96fbe524707132e850fa448dc519",
+    "contract_hash": "e9d216e91d5e27522a6a9aec961402938f380e357356e100191db19505762f84",
     "status": "OK",
     "strategy": "HELP_ACCEPT",
     "surface": [
       "A material repair is performed in the workshop.",
-      "the repair worker says: \"Put your hand on the near edge. I'll take the slack.\" A clears a space at the bench."
+      "the repair worker says: \"Hold the near edge. I'll check the seam.\" A sets the tool beside your hand."
     ]
   },
   "say": {
     "admission": {
       "action_event_id": "",
-      "admission_id": "a84285789d6641ad3f465f45be30ed6305ab00590373306c3a97da0c73aa372b",
+      "admission_id": "7f001be0e94c189cf34d5ff658b82241ab88fb092ecb8182cb06ec52546d9a67",
       "attention_excluded": true,
       "clock": 10,
-      "consumed_state_hash": "6735a2cfb4b0f17fbb1f2299fe3c8de3046ae101980044ba902ec83c0922fe03",
+      "consumed_state_hash": "58653dced8ea88c5604593d6de40ef66c87fd185af5c8ce5a42983db133357a2",
       "contact_outcome": "",
-      "contract_hash": "7ff4b35c6fb57aede8b8b28a1c274655e7b74e565d0ecdb485c54112df67b43d",
+      "contract_hash": "934b0be72273c5412c6c2eb5fb381ac6156aed3cd0d41200a9f7f710c6bac5a9",
       "fact_count": 1,
       "grade": "TEST_ONLY_SOURCEFREE_R31E_ACTOR_EXPRESSION_NOT_NATIVE",
       "knowledge_ref_count": 0,
@@ -88,9 +94,9 @@
       "native": false,
       "schema": "R31E_EXPRESSION_ADMISSION@1",
       "source_ref": "001b506fa26ae879ff5b6e57138fc2696e12b538",
-      "speech_event_id": "TEST_ONLY_BP4_WORLD_EVT_afc316b9d062b5cfdd43d9a03a61c28432d887932753785d4f4c56717bb4cd9b",
+      "speech_event_id": "TEST_ONLY_BP4_WORLD_EVT_cf0edc96970dfed6695649c7dea4b23c9f18d3dac736c08b82b1d11a89be8003",
       "strategy": "RECIPROCATE",
-      "target_id": "c9cb994eaca7bef80417d2c6be363e8a4dce8ec07e915c119dce5b1452462a04",
+      "target_id": "0148d50532cc2af1bbba5811696f7065518296c88985bace74bcf3baf5f1a962",
       "template_id": "recip_move_1",
       "validation": {
         "checks": {
@@ -132,7 +138,7 @@
       "tone": "ordinary",
       "variant": 0
     },
-    "contract_hash": "7ff4b35c6fb57aede8b8b28a1c274655e7b74e565d0ecdb485c54112df67b43d",
+    "contract_hash": "934b0be72273c5412c6c2eb5fb381ac6156aed3cd0d41200a9f7f710c6bac5a9",
     "status": "OK",
     "strategy": "RECIPROCATE",
     "surface": [
@@ -171,7 +177,7 @@
       "expression_port": "R31E_EXPRESSION_PORT@1",
       "grade": "TEST_ONLY_SOURCEFREE_R31E_ACTOR_EXPRESSION_NOT_NATIVE",
       "j_source_ref": "64fec28c374d8f77fb0b412d0c934d798ede03e8",
-      "j_target_id": "c9cb994eaca7bef80417d2c6be363e8a4dce8ec07e915c119dce5b1452462a04",
+      "j_target_id": "0148d50532cc2af1bbba5811696f7065518296c88985bace74bcf3baf5f1a962",
       "location": "workshop",
       "material_performance": "omit",
       "messages": 0,
@@ -220,7 +226,7 @@
       "schema": "R31J_GM01_PRE_C9_SOURCE@1"
     },
     "status": "STARTED",
-    "target_id": "c9cb994eaca7bef80417d2c6be363e8a4dce8ec07e915c119dce5b1452462a04"
+    "target_id": "0148d50532cc2af1bbba5811696f7065518296c88985bace74bcf3baf5f1a962"
   },
   "verify": {
     "closure": {

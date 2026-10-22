@@ -1,9 +1,14 @@
 {
-  "independent_v_entries": 17,
-  "note": "Counts are executed entries. Own suites are 15 join + 8 J + 15 E + 10 R30A; V suites are 10 positive + 7 hostile. No clean unique inherited union is claimed.",
-  "own_entries": 48,
+  "independent_v_entries": 32,
+  "notes": [
+    "Owned suites: 16 join + 8 J + 15 E + 10 R30A = 49 entries.",
+    "V repaired suite: 10 positive + 7 hostile + 9 repaired-cut = 26 entries, all pass.",
+    "V final-cut suite: 5 pass / 1 historical failure, test_import_closure_refuses_e_first_and_accepts_j_first; E-first J closure is now a legitimate adaptation, reviewer adjudication supersedes that old expectation.",
+    "Counts are executed entries, not a clean unique inherited union."
+  ],
+  "owned_entries": 49,
   "schema": "SOROK_JOIN_E_TEST_RESULTS@1",
-  "status": "PASS",
+  "status": "PASS_EXCEPT_SUPERSEDED_E_FIRST_EXPECTATION",
   "suites": [
     {
       "errors": 0,
@@ -35,23 +40,23 @@
       "file": "join_new.xml",
       "ok": true,
       "skipped": 0,
-      "tests": 15
+      "tests": 16
+    },
+    {
+      "errors": 0,
+      "failures": 1,
+      "file": "v_final_cut.xml",
+      "ok": false,
+      "skipped": 0,
+      "tests": 6
     },
     {
       "errors": 0,
       "failures": 0,
-      "file": "v_hostile.xml",
+      "file": "v_repaired_all.xml",
       "ok": true,
       "skipped": 0,
-      "tests": 7
-    },
-    {
-      "errors": 0,
-      "failures": 0,
-      "file": "v_positive.xml",
-      "ok": true,
-      "skipped": 0,
-      "tests": 10
+      "tests": 26
     }
   ]
 }

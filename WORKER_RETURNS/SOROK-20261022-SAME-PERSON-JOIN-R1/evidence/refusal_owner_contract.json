@@ -17,6 +17,58 @@
       "errors": [],
       "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
       "ok": true,
+      "provenance": {
+        "checks": {
+          "c12_c8_matches_sidecar": true,
+          "c12_e1_matches_sidecar": true,
+          "c8_actor_is_seed_a": true,
+          "c8_other_is_seed_b": true,
+          "meta_c8_matches_sidecar": true,
+          "meta_e1_matches_sidecar": true,
+          "meta_matches_c12": true,
+          "meta_matches_c8": true,
+          "native_grants_false": true,
+          "no_native_sidecar": true,
+          "provenance_readable": true,
+          "sidecar_matches_c12": true,
+          "sidecar_matches_c8": true,
+          "sidecar_matches_meta": true,
+          "source_actor_map": true,
+          "source_b_is_seed_b": true,
+          "source_b_to_is_seed_a": true,
+          "target_is_absent": true
+        },
+        "observed": {
+          "b_actor": "TEST_ONLY_R31J_B",
+          "b_event_hash": "3e00199d533b793897cd8b9bdc0639830252c60588de732b46dfcec3cc3b9421",
+          "b_operation": "REFUSE_TOOL",
+          "b_to_actor": "TEST_ONLY_R31J_A",
+          "c8_state_digest": "661e95196385d60fe896d00ba7c783e6ba09aefbf19182fd87df4db127c4723b",
+          "e1_event_hash": "db9407d8b6cfef1bb2062826c76543247ff448efa67001033389c6dadf8e3f8f",
+          "seed_actors": {
+            "a": "TEST_ONLY_BP1_R26V_ACTOR_A",
+            "b": "TEST_ONLY_BP1_R26V_ACTOR_B"
+          },
+          "source_actor_map": {
+            "TEST_ONLY_R31J_A": "TEST_ONLY_BP1_R26V_ACTOR_A",
+            "TEST_ONLY_R31J_B": "TEST_ONLY_BP1_R26V_ACTOR_B"
+          }
+        },
+        "ok": true
+      },
+      "root": {
+        "branch_id": "root",
+        "counts": {
+          "checkpoint": 2,
+          "episode": 1,
+          "perception": 2,
+          "world_event": 1
+        },
+        "errors": [],
+        "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+        "ok": true,
+        "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+      },
       "targetless": true,
       "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
     },
@@ -28,7 +80,7 @@
       ],
       "actor_source_grade": "TEST_ONLY_SOURCEFREE_TECHNICAL",
       "adp019_admission_receipt": "ADP019_ADMISSION_RECEIPT_ABSENT",
-      "c8_commit_receipt_id": "fab7a3fd850403ab579785f00d1b85364a899374d07623da2d1cd09bd500bcf0",
+      "c8_commit_receipt_id": "421d71bf5fe4a6397be955cb67bbd8338e26abceea0b6921dd6e95249ead747d",
       "c8_occurrence_id": "OCC-0001",
       "c8_state_digest": "661e95196385d60fe896d00ba7c783e6ba09aefbf19182fd87df4db127c4723b",
       "committed": true,
@@ -39,7 +91,7 @@
       "e1_adp019": {
         "admission_status": "TEST_ONLY_E1_BOUND_ADP019_NOT_ISSUED",
         "adp019_admission_receipt": "ADP019_ADMISSION_RECEIPT_ABSENT",
-        "commit_receipt_id": "fab7a3fd850403ab579785f00d1b85364a899374d07623da2d1cd09bd500bcf0",
+        "commit_receipt_id": "421d71bf5fe4a6397be955cb67bbd8338e26abceea0b6921dd6e95249ead747d",
         "event_time": 242,
         "identity_digest": "a8c41faf24bd366c30fac5f374f47c77e9f3f93b3653092624826aa82b62541f",
         "native_grant": "NOT_GRANTED",
@@ -47,7 +99,7 @@
         "state_digest": "661e95196385d60fe896d00ba7c783e6ba09aefbf19182fd87df4db127c4723b",
         "writer_version": 1
       },
-      "event_hash": "b372a29bc6cf82609c38ecaf34a06b708c067a77486880eb5792c7fc6c283de0",
+      "event_hash": "f74590be7d47fc17bd7e6fa6dbbf89e4fb5afecc1fdf776bd505226eb646d0b4",
       "event_id": "TEST_ONLY_BP2_E1_OCC-0001",
       "event_reason": "OK",
       "grant_hash": "b257beddde3a91f8595b0aa40043fda942e72e8f62fa635f0e51cceee6b8dffe",
@@ -124,7 +176,7 @@
       "target_reason": "NO_PROPOSAL"
     },
     "code": "JOIN_REFUSAL_NO_TARGET__TARGETLESS_C12_DERIVED",
-    "e1_event_hash": "b372a29bc6cf82609c38ecaf34a06b708c067a77486880eb5792c7fc6c283de0",
+    "e1_event_hash": "f74590be7d47fc17bd7e6fa6dbbf89e4fb5afecc1fdf776bd505226eb646d0b4",
     "owner_contract": {
       "owner": "BP2P4/C9 consumer owner with C12/C10 owner",
       "request": "The original BP2P4 consumer requires a committed C9 CREATE target. A targetless C12 representation now carries the real REFUSE/NO_CHANGE source without a fabricated target; C10 target semantics remain absent.",
@@ -136,6 +188,7 @@
       "actor_model": "LIVE_ACTOR_MODEL_NOT_RUN",
       "attention": "focused",
       "branch_id": "first_session",
+      "branch_lineage": null,
       "c9": {
         "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
         "actor_readset": [
@@ -143,7 +196,7 @@
         ],
         "actor_source_grade": "TEST_ONLY_SOURCEFREE_TECHNICAL",
         "adp019_admission_receipt": "ADP019_ADMISSION_RECEIPT_ABSENT",
-        "c8_commit_receipt_id": "3b1fc469137c5f48fec77ba1760e65b3858dbcbd6dd59cbb6a93de67e41a9a90",
+        "c8_commit_receipt_id": "b93e8d121cf3a1ccfe3c90f8ff2e549f9ff8a99df569b99a92467f206687c3a8",
         "c8_occurrence_id": "OCC-0001",
         "c8_state_digest": "661e95196385d60fe896d00ba7c783e6ba09aefbf19182fd87df4db127c4723b",
         "committed": true,
@@ -154,7 +207,7 @@
         "e1_adp019": {
           "admission_status": "TEST_ONLY_E1_BOUND_ADP019_NOT_ISSUED",
           "adp019_admission_receipt": "ADP019_ADMISSION_RECEIPT_ABSENT",
-          "commit_receipt_id": "3b1fc469137c5f48fec77ba1760e65b3858dbcbd6dd59cbb6a93de67e41a9a90",
+          "commit_receipt_id": "b93e8d121cf3a1ccfe3c90f8ff2e549f9ff8a99df569b99a92467f206687c3a8",
           "event_time": 242,
           "identity_digest": "a8c41faf24bd366c30fac5f374f47c77e9f3f93b3653092624826aa82b62541f",
           "native_grant": "NOT_GRANTED",
@@ -162,7 +215,7 @@
           "state_digest": "661e95196385d60fe896d00ba7c783e6ba09aefbf19182fd87df4db127c4723b",
           "writer_version": 1
         },
-        "event_hash": "58868341854fc6a8fe816622d48022e545c06fad6418b9c3b849b4998889b182",
+        "event_hash": "db9407d8b6cfef1bb2062826c76543247ff448efa67001033389c6dadf8e3f8f",
         "event_id": "TEST_ONLY_BP2_E1_OCC-0001",
         "event_reason": "OK",
         "grant_hash": "b257beddde3a91f8595b0aa40043fda942e72e8f62fa635f0e51cceee6b8dffe",

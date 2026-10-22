@@ -4,6 +4,7 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import shutil
 import sqlite3
 import subprocess
 import sys
@@ -476,3 +477,70 @@ def test_missing_orphan_and_relocated_roots_are_typed(tmp_path):
     with pytest.raises(SessionRefusal) as exc:
         JoinedSession.open(relocated)
     assert exc.value.code == "SESSION_ROOT_MOVED"
+
+
+def test_targetless_provenance_lineage_and_fork(tmp_path):
+    state = tmp_path / "targetless"
+    session = RefusalSession.start(state)
+    try:
+        assert session.verify()["ok"] is True
+        assert session.verify()["provenance"]["ok"] is True
+        assert session.status()["targetless"] is True
+    finally:
+        session.close()
+
+    before = _product_hashes(state / "product")
+    cold = RefusalSession.open(state)
+    try:
+        assert _product_hashes(state / "product") == before
+        assert cold.verify()["ok"] is True
+        assert cold.do_help()["accepted"] is False
+    finally:
+        cold.close()
+
+    copy = tmp_path / "copy"
+    shutil.copytree(state, copy)
+    meta = json.loads((copy / "session.json").read_text())
+    meta["product_root"] = str((copy / "product").resolve())
+    meta["state_root"] = str(copy.resolve())
+    foreign = dict(meta["j_source"])
+    foreign["b_actor"] = "FOREIGN_B"
+    foreign["b_to_actor"] = "FOREIGN_A"
+    foreign["b_event_hash"] = "FOREIGN_HASH"
+    meta["j_source"] = foreign
+    (copy / "session.json").write_text(
+        json.dumps(meta, indent=2, sort_keys=True) + "\n")
+    sidecar_path = copy / "product" / "refusal.json"
+    sidecar = json.loads(sidecar_path.read_text())
+    sidecar["j_source"] = foreign
+    sidecar_path.write_text(json.dumps(sidecar, indent=2, sort_keys=True) + "\n")
+    with pytest.raises(SessionRefusal) as exc:
+        RefusalSession.open(copy)
+    assert exc.value.code == "J_PROVENANCE_MISMATCH"
+
+    branch_copy = tmp_path / "branch_copy"
+    shutil.copytree(state, branch_copy)
+    meta = json.loads((branch_copy / "session.json").read_text())
+    meta["product_root"] = str((branch_copy / "product").resolve())
+    meta["state_root"] = str(branch_copy.resolve())
+    meta["branch_id"] = "root"
+    (branch_copy / "session.json").write_text(
+        json.dumps(meta, indent=2, sort_keys=True) + "\n")
+    with pytest.raises(SessionRefusal) as exc:
+        RefusalSession.open(branch_copy)
+    assert exc.value.code == "UNAUTHORIZED_BRANCH"
+
+    fork = RefusalSession.start(tmp_path / "fork")
+    try:
+        fork.fork_alt("alt")
+        assert fork.branch_id == "alt"
+        assert fork.meta["branch_lineage"]["current_branch"] == "alt"
+        assert fork.verify()["ok"] is True
+    finally:
+        fork.close()
+    reopened = RefusalSession.open(tmp_path / "fork")
+    try:
+        assert reopened.branch_id == "alt"
+        assert reopened.verify()["ok"] is True
+    finally:
+        reopened.close()
