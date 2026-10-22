@@ -1,0 +1,114 @@
+{
+  "all_secure": false,
+  "defect_count": 8,
+  "probes": [
+    {
+      "actual": "ALLOW_LOCAL_POLICY_CONSISTENT",
+      "defect": true,
+      "expected_secure": [
+        "HOLD_TRUSTED_NATIVE",
+        "REFUSE_AUTHORITY",
+        "REFUSE_FORGED_EVIDENCE"
+      ],
+      "name": "executed_native_without_evidence",
+      "reasons": [
+        "P00_INDEPENDENT_PIN",
+        "P06_NO_DROP_MULTISETS",
+        "P08_CLAIM_GRADE_CEILING"
+      ]
+    },
+    {
+      "actual": "ALLOW_LOCAL_POLICY_CONSISTENT",
+      "defect": true,
+      "expected_secure": [
+        "HOLD_TRUSTED_NATIVE",
+        "REFUSE_FORGED_EVIDENCE",
+        "REFUSE_STATUS"
+      ],
+      "name": "supported_status_without_native_evidence",
+      "reasons": [
+        "P07_SEPARATE_STATES"
+      ]
+    },
+    {
+      "actual": "ALLOW_LOCAL_POLICY_CONSISTENT",
+      "defect": true,
+      "expected_secure": [
+        "REFUSE_STATUS"
+      ],
+      "name": "prohibited_completed_observed_zero",
+      "reasons": [
+        "P07_SEPARATE_STATES",
+        "P12_EMPTY_NULL_ZERO_DISTINCT"
+      ]
+    },
+    {
+      "actual": "ALLOW_LOCAL_POLICY_CONSISTENT",
+      "defect": true,
+      "expected_secure": [
+        "REFUSE_FRONTIER"
+      ],
+      "name": "semantic_mutation_masked_by_status_edit",
+      "reasons": [
+        "P07_SEPARATE_STATES",
+        "P12_EMPTY_NULL_ZERO_DISTINCT"
+      ]
+    },
+    {
+      "actual": "ALLOW_LOCAL_POLICY_CONSISTENT",
+      "defect": true,
+      "expected_secure": [
+        "REFUSE_AUTHORITY",
+        "REFUSE_PIN",
+        "REFUSE_STATUS"
+      ],
+      "name": "unknown_claim_grade",
+      "reasons": [
+        "P00_INDEPENDENT_PIN",
+        "P06_NO_DROP_MULTISETS",
+        "P08_CLAIM_GRADE_CEILING"
+      ]
+    },
+    {
+      "actual": "ALLOW_LOCAL_POLICY_CONSISTENT",
+      "defect": true,
+      "expected_secure": [
+        "REFUSE_FRONTIER"
+      ],
+      "name": "duplicate_occurrence_objects",
+      "reasons": [
+        "P00_INDEPENDENT_PIN",
+        "P06_NO_DROP_MULTISETS",
+        "P08_CLAIM_GRADE_CEILING"
+      ]
+    },
+    {
+      "actual": "ALLOW_LOCAL_POLICY_CONSISTENT",
+      "defect": true,
+      "expected_secure": [
+        "REFUSE_PIN",
+        "REFUSE_IDENTITY"
+      ],
+      "name": "policy_contract_mismatch",
+      "reasons": [
+        "P00_INDEPENDENT_PIN",
+        "P06_NO_DROP_MULTISETS",
+        "P08_CLAIM_GRADE_CEILING"
+      ]
+    },
+    {
+      "actual": "ALLOW_LOCAL_POLICY_CONSISTENT",
+      "defect": true,
+      "expected_secure": [
+        "REFUSE_STATUS"
+      ],
+      "name": "eligible_to_held_disposition",
+      "reasons": [
+        "P00_INDEPENDENT_PIN",
+        "P06_NO_DROP_MULTISETS",
+        "P08_CLAIM_GRADE_CEILING"
+      ]
+    }
+  ],
+  "schema": "R56_R00V_DEFECT_PROBES@1"
+}

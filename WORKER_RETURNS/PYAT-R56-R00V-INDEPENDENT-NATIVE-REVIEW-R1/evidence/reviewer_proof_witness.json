@@ -1,0 +1,25 @@
+{
+  "actual_consumer_values_read": null,
+  "author_proof_witness_kind": "POLICY_IDENTITY_RECORD_NOT_MECHANICAL_RUN_PROOF",
+  "defect_count": 8,
+  "native_provenance": "NOT_PRESENT",
+  "original_grant": "UNISSUED",
+  "policy_blobs": {
+    "CONTRACT.md": "01ccb46475ba09fe868a59c8810a12de1190dc22",
+    "decision_cases.json": "5608e9c3435042e92d846644aad5404b47d6b2f0",
+    "freeze.json": "dfc1c375b4a4a7b962156c1ddb46b56b9cb8ee10",
+    "policy.json": "5f5d0253cfc8e1eef2e452e54bae631c23da378f",
+    "synthetic_universes.json": "66fdf81f3cb440c36df4cd03dcff8613d1b4928d"
+  },
+  "policy_commit": "6d95a78bf6b7bcf70022e303a151255e65edc38a",
+  "replay_cases": 36,
+  "replay_passed": 36,
+  "reviewer_mechanical_witness": {
+    "candidate_gate_sha256": "54c2c1e8e0d39a3d51ba5ad68560a7c1c251c10020ed50e769ab589f50d2a22c",
+    "junit_sha256": "f8d47c9496940d178b3a8ad3ad68c79c4fc52ffe015b43f275631a251d78dad8",
+    "replay_command": "PYTHONPATH=. python3 WORKER_RETURNS/PYAT-R56-R00V-INDEPENDENT-NATIVE-REVIEW-R1/tools/reviewer_replay.py",
+    "reviewer_replay_sha256": "1b687693c9930e4a9d8a7b00034e5a2fc58c3d8d13013388767c8695c283c5c6",
+    "test_command": "PYTHONPATH=. python3 -m pytest tests/universal_execution_oracle -q --junitxml=WORKER_RETURNS/PYAT-R56-R00V-INDEPENDENT-NATIVE-REVIEW-R1/evidence/junit/r00v.xml"
+  },
+  "schema": "R56_R00V_PROOF_INTEGRITY_WITNESS@1"
+}
