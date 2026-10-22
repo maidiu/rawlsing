@@ -2,7 +2,7 @@
 
 **Reviewer branch:** `agent/rabochii-pyat-r56-r02v-independent-projection-review-r1`
 **First publication commit:** `f56216646859a691ddfc53b2249a319da606c43b`
-**Remote readback at publication:** `f56216646859a691ddfc53b2249a319da606c43b`
+**Final documentary commit:** `31d46d462` (recorded here; the next verification readback confirms the remote head after this file's own update)
 **Parent:** `236fd4d1064f7c14113616db300c955294a474ac` (exact candidate)
 **Ancestry:** `236fd4d1...` is an ancestor of the reviewer commit; verified with
 `git merge-base --is-ancestor`.
