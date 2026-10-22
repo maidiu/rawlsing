@@ -12,10 +12,10 @@ from r31j.scenarios import evaluated
 from r31e.session import R31ESession
 from r30a.first_session import SessionRefusal
 from .closure import audit_loaded, source_manifest_sha256
+from .lineage import ROOT_BRANCH, new_lineage, validate as validate_lineage
 from .provenance import validate_join
 from .readonly import ReadOnlyR31JProduct
 
-ROOT_BRANCH = 'first_session'
 
 
 def _load_meta(state_root: Path) -> dict:
@@ -48,28 +48,6 @@ def _guard_binding(product_root: Path) -> dict:
     if not document.get('r31j_source') or not document.get('r31j_actor_snapshot'):
         raise SessionRefusal('J_BINDING_MISSING', 'r31j source/actor snapshot absent')
     return document
-
-
-def _guard_branch(meta: dict, product_root: Path) -> str:
-    branch = meta.get('branch_id')
-    if branch == ROOT_BRANCH:
-        return branch
-    lineage = meta.get('branch_lineage') or {}
-    receipt = lineage.get('fork_receipt') or {}
-    if (lineage.get('root_branch') != ROOT_BRANCH
-            or lineage.get('current_branch') != branch
-            or receipt.get('parent_branch') != ROOT_BRANCH
-            or receipt.get('new_branch') != branch):
-        raise SessionRefusal('UNAUTHORIZED_BRANCH', str(branch))
-    # The branch row itself must retain the recorded parent and fork clock.
-    store = ReadOnlyR31JProduct.reopen(product_root, branch_id=ROOT_BRANCH).store
-    try:
-        row = store.branch(branch)
-    finally:
-        store.close()
-    if row.get('parent_branch_id') != ROOT_BRANCH:
-        raise SessionRefusal('UNAUTHORIZED_BRANCH', 'parent lineage mismatch')
-    return branch
 
 
 class JoinedSession(R31ESession):
@@ -158,7 +136,7 @@ class JoinedSession(R31ESession):
             raise SessionRefusal('JOIN_META_INCOMPLETE__J_SOURCE_MISSING')
         product_root = _canonical_product_root(state_root, meta)
         _guard_binding(product_root)
-        branch = _guard_branch(meta, product_root)
+        branch = meta.get('branch_id')
         try:
             product = ReadOnlyR31JProduct.reopen(product_root, branch_id=branch)
         except Exception as exc:
@@ -167,6 +145,11 @@ class JoinedSession(R31ESession):
         try:
             if product.source != meta.get('j_source'):
                 raise SessionRefusal('J_SOURCE_IDENTITY_CHANGED')
+            lineage_result = validate_lineage(meta, branch, product.store)
+            if not lineage_result.get('ok'):
+                raise SessionRefusal(
+                    'BRANCH_LINEAGE_MISMATCH',
+                    json.dumps(lineage_result.get('checks', {}), sort_keys=True))
             root_verify = product.c12_verify('root')
             if not root_verify.get('ok'):
                 raise SessionRefusal('ROOT_C12_VERIFY_FAILED',
@@ -228,33 +211,47 @@ class JoinedSession(R31ESession):
             },
         }
 
+    def _lineage_result(self):
+        return validate_lineage(self.meta, self.branch_id, self.product.store)
+
     def verify(self) -> dict:
         result = super().verify()
         root = self.product.c12_verify('root')
+        lineage_result = self._lineage_result()
         result['root'] = root
-        result['ok'] = bool(result.get('ok')) and bool(root.get('ok'))
+        result['lineage'] = lineage_result
+        result['ok'] = (bool(result.get('ok')) and bool(root.get('ok'))
+                        and bool(lineage_result.get('ok')))
         return result
 
     def fork_alt(self, new_branch_id='alt'):
+        lineage_result = self._lineage_result()
+        if not lineage_result.get('ok'):
+            raise SessionRefusal(
+                'BRANCH_LINEAGE_MISMATCH',
+                json.dumps(lineage_result.get('checks', {}), sort_keys=True))
         parent = self.branch_id
-        fork = self.product.fork(new_branch_id)
+        try:
+            fork = self.product.fork(new_branch_id)
+            created = fork.get('branch')
+            if not created:
+                raise ValueError('FORK_BRANCH_RECORD_MISSING')
+            lineage = new_lineage(parent, self.meta.get('branch_lineage'), created)
+        except Exception as exc:
+            raise SessionRefusal('FORK_REFUSED', type(exc).__name__ + ':' + str(exc)) from exc
         self.branch_id = new_branch_id
         self.meta['branch_id'] = new_branch_id
-        self.meta['branch_lineage'] = {
-            'root_branch': ROOT_BRANCH,
-            'current_branch': new_branch_id,
-            'fork_receipt': {
-                'parent_branch': parent,
-                'new_branch': new_branch_id,
-                'fork_clock': fork.get('fork_clock'),
-                'root_hash': fork.get('root_hash'),
-            },
-        }
+        self.meta['branch_lineage'] = lineage
         self.product.use(new_branch_id)
         self._save_join_meta()
         return fork
 
     def status(self) -> dict:
+        lineage_result = self._lineage_result()
+        if not lineage_result.get('ok'):
+            raise SessionRefusal(
+                'BRANCH_LINEAGE_MISMATCH',
+                json.dumps(lineage_result.get('checks', {}), sort_keys=True))
         result = super().status()
         result['j_source_ref'] = self.meta.get('j_source_ref')
         result['e_source_ref'] = self.meta.get('e_source_ref')

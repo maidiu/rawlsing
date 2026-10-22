@@ -43,7 +43,7 @@ PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest -q \
   --junitxml=WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/evidence/junit/join_new.xml
 ```
 
-Expected: `16 passed`.
+Expected: `17 passed`.
 
 Frozen J test in its own process:
 
@@ -65,7 +65,7 @@ PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest -q tests/test_r31e_expression.py 
   -p no:cacheprovider --junitxml=../../evidence/junit/e_expression.xml
 ```
 
-Expected: `16 passed`.
+Expected: `17 passed`.
 
 Frozen R30A baseline in its own process:
 
@@ -76,9 +76,9 @@ PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest -q tests/test_r30a_first_session.
   -p no:cacheprovider --junitxml=../../../../evidence/junit/e_r30a.xml
 ```
 
-Expected: `16 passed`.
+Expected: `17 passed`.
 
-These are 49 owned executed entries (16 join + 8 J + 15 E + 10 R30A). They do not establish a clean union with the historical 202/30 claims, and the full inherited suites were not rerun by this join.
+These are 50 owned executed entries (17 join + 8 J + 15 E + 10 R30A). They do not establish a clean union with the historical 202/30 claims, and the full inherited suites were not rerun by this join.
 
 ## 3. Proof-integrity witness
 
@@ -111,5 +111,5 @@ cd /path/to/JOIN-V-return
 SOROK_JOIN_CANDIDATE_ROOT=/path/to/SOROK-20261022-SAME-PERSON-JOIN-R1 PYTHONPATH="$PWD/tests" PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest -q tests/test_join_v_positive.py tests/test_join_v_hostile.py   -p no:cacheprovider
 ```
 
-Actual: `26 passed` (10 positive + 7 hostile + 9 repaired-cut). Receipt: `evidence/junit/v_repaired_all.xml`. The older targeted final-cut suite is 5 pass / 1 superseded E-first-refusal expectation (`evidence/junit/v_final_cut.xml`).
+Actual: `30 passed` (10 positive + 7 hostile + 9 repaired-cut + 4 targetless-final). Receipt: `evidence/junit/v_all_30.xml`. The older targeted final-cut suite is 5 pass / 1 superseded E-first-refusal expectation (`evidence/junit/v_final_cut.xml`).
 The independent reviewer still owns the final verdict; this is a frozen-suite execution result, not self-adoption.

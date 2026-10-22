@@ -453,7 +453,7 @@ def test_branch_lineage_required_and_legitimate_fork_reopens(tmp_path):
         json.dumps(meta, indent=2, sort_keys=True) + "\n")
     with pytest.raises(SessionRefusal) as exc:
         JoinedSession.open(root)
-    assert exc.value.code == "UNAUTHORIZED_BRANCH"
+    assert exc.value.code in {"UNAUTHORIZED_BRANCH", "BRANCH_LINEAGE_MISMATCH"}
 
 
 def test_missing_orphan_and_relocated_roots_are_typed(tmp_path):
@@ -528,7 +528,7 @@ def test_targetless_provenance_lineage_and_fork(tmp_path):
         json.dumps(meta, indent=2, sort_keys=True) + "\n")
     with pytest.raises(SessionRefusal) as exc:
         RefusalSession.open(branch_copy)
-    assert exc.value.code == "UNAUTHORIZED_BRANCH"
+    assert exc.value.code in {"UNAUTHORIZED_BRANCH", "BRANCH_LINEAGE_MISMATCH"}
 
     fork = RefusalSession.start(tmp_path / "fork")
     try:
@@ -544,3 +544,67 @@ def test_targetless_provenance_lineage_and_fork(tmp_path):
         assert reopened.verify()["ok"] is True
     finally:
         reopened.close()
+
+
+def _copy_state_root(source, target):
+    shutil.copytree(source, target)
+    meta = json.loads((target / "session.json").read_text())
+    meta["product_root"] = str((target / "product").resolve())
+    meta["state_root"] = str(target.resolve())
+    (target / "session.json").write_text(
+        json.dumps(meta, indent=2, sort_keys=True) + "\n")
+    return meta
+
+
+def test_nested_forks_receipts_parent_isolation_and_tamper(tmp_path):
+    cases = (
+        ("joined", lambda p: JoinedSession.start(p, perform="omit"), JoinedSession.open),
+        ("refusal", RefusalSession.start, RefusalSession.open),
+    )
+    for name, start, open_session in cases:
+        state = tmp_path / name
+        session = start(state)
+        parent_counts = session.product.store.verify("first_session")["counts"]
+        try:
+            session.fork_alt("alt")
+            session.fork_alt("alt2")
+            assert session.branch_id == "alt2"
+            receipts = session.meta["branch_lineage"]["fork_receipts"]
+            assert [row["new_branch"] for row in receipts] == ["alt", "alt2"]
+            for receipt in receipts:
+                row = session.product.store.branch(receipt["new_branch"])
+                assert receipt["fork_clock"] == row["fork_clock"]
+                assert receipt["root_hash"] == row["root_hash"]
+            assert session.product.store.verify("first_session")["counts"] == parent_counts
+            assert session.verify()["ok"] is True
+        finally:
+            session.close()
+
+        cold = open_session(state)
+        try:
+            assert cold.branch_id == "alt2"
+            assert cold.verify()["ok"] is True
+            assert cold.product.store.verify("first_session")["counts"] == parent_counts
+            with pytest.raises(SessionRefusal) as exc:
+                cold.fork_alt("alt2")
+            assert exc.value.code == "FORK_REFUSED"
+        finally:
+            cold.close()
+
+        copy = tmp_path / f"{name}_tamper"
+        meta = _copy_state_root(state, copy)
+        meta["branch_lineage"]["fork_receipts"][0]["fork_clock"] += 1
+        (copy / "session.json").write_text(
+            json.dumps(meta, indent=2, sort_keys=True) + "\n")
+        with pytest.raises(SessionRefusal) as exc:
+            open_session(copy)
+        assert exc.value.code == "BRANCH_LINEAGE_MISMATCH"
+
+        parent_copy = tmp_path / f"{name}_parent"
+        meta = _copy_state_root(state, parent_copy)
+        meta["branch_id"] = "first_session"
+        (parent_copy / "session.json").write_text(
+            json.dumps(meta, indent=2, sort_keys=True) + "\n")
+        with pytest.raises(SessionRefusal) as exc:
+            open_session(parent_copy)
+        assert exc.value.code in {"UNAUTHORIZED_BRANCH", "BRANCH_LINEAGE_MISMATCH"}

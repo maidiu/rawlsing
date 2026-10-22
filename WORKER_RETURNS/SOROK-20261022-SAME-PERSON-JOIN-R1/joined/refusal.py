@@ -13,6 +13,7 @@ from pathlib import Path
 
 from .imports import install
 install()
+from .lineage import ROOT_BRANCH, new_lineage, validate as validate_lineage
 from bp4.product import BP4Product
 from bp4.world import initial_world
 from c8_readonly_consumer import C8ReadOnlyConsumer
@@ -314,14 +315,6 @@ class RefusalSession(R31ESession):
         if not sidecar.get('j_source') or not sidecar.get('c8'):
             raise SessionRefusal('J_BINDING_MISSING', 'refusal source/c8 absent')
         branch = meta.get('branch_id')
-        if branch != ROOT_BRANCH:
-            lineage = meta.get('branch_lineage') or {}
-            receipt = lineage.get('fork_receipt') or {}
-            if (lineage.get('root_branch') != ROOT_BRANCH
-                    or lineage.get('current_branch') != branch
-                    or receipt.get('parent_branch') != ROOT_BRANCH
-                    or receipt.get('new_branch') != branch):
-                raise SessionRefusal('UNAUTHORIZED_BRANCH', str(branch))
         life = build_life(meta.get('variant', 'A_REPAIR_LONG'))
         product = RefusalProduct(
             product_root, life=life, source=meta['j_source'],
@@ -330,10 +323,11 @@ class RefusalSession(R31ESession):
         try:
             if product.source != meta.get('j_source'):
                 raise SessionRefusal('J_SOURCE_IDENTITY_CHANGED')
-            if branch != ROOT_BRANCH:
-                row = product.store.branch(branch)
-                if row.get('parent_branch_id') != ROOT_BRANCH:
-                    raise SessionRefusal('UNAUTHORIZED_BRANCH', 'parent lineage mismatch')
+            lineage_result = validate_lineage(meta, branch, product.store)
+            if not lineage_result.get('ok'):
+                raise SessionRefusal(
+                    'BRANCH_LINEAGE_MISMATCH',
+                    json.dumps(lineage_result.get('checks', {}), sort_keys=True))
             provenance = validate_targetless(product, meta, sidecar, branch)
             if not provenance.get('ok'):
                 raise SessionRefusal(
@@ -353,38 +347,52 @@ class RefusalSession(R31ESession):
             product.close()
             raise
 
+    def _lineage_result(self):
+        return validate_lineage(self.meta, self.branch_id, self.product.store)
+
     def verify(self):
         result = super().verify()
         root = self.product.c12_verify('root')
+        lineage_result = self._lineage_result()
         result['root'] = root
         result['targetless'] = True
+        result['lineage'] = lineage_result
         provenance = validate_targetless(
             self.product, self.meta, self.product.sidecar, self.branch_id)
         result['provenance'] = provenance
         result['ok'] = (bool(result.get('ok')) and bool(root.get('ok'))
+                        and bool(lineage_result.get('ok'))
                         and bool(provenance.get('ok')))
         return result
 
     def fork_alt(self, new_branch_id='alt'):
+        lineage_result = self._lineage_result()
+        if not lineage_result.get('ok'):
+            raise SessionRefusal(
+                'BRANCH_LINEAGE_MISMATCH',
+                json.dumps(lineage_result.get('checks', {}), sort_keys=True))
         parent = self.branch_id
-        fork = self.product.fork(new_branch_id)
+        try:
+            fork = self.product.fork(new_branch_id)
+            created = fork.get('branch')
+            if not created:
+                raise ValueError('FORK_BRANCH_RECORD_MISSING')
+            lineage = new_lineage(parent, self.meta.get('branch_lineage'), created)
+        except Exception as exc:
+            raise SessionRefusal('FORK_REFUSED', type(exc).__name__ + ':' + str(exc)) from exc
         self.branch_id = new_branch_id
         self.meta['branch_id'] = new_branch_id
-        self.meta['branch_lineage'] = {
-            'root_branch': ROOT_BRANCH,
-            'current_branch': new_branch_id,
-            'fork_receipt': {
-                'parent_branch': parent,
-                'new_branch': new_branch_id,
-                'fork_clock': fork.get('fork_clock'),
-                'root_hash': fork.get('root_hash'),
-            },
-        }
+        self.meta['branch_lineage'] = lineage
         self.product.use(new_branch_id)
         self._save_refusal_meta()
         return fork
 
     def status(self):
+        lineage_result = self._lineage_result()
+        if not lineage_result.get('ok'):
+            raise SessionRefusal(
+                'BRANCH_LINEAGE_MISMATCH',
+                json.dumps(lineage_result.get('checks', {}), sort_keys=True))
         result = super().status()
         result['target_id'] = ''
         result['targetless'] = True

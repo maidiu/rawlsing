@@ -16,9 +16,9 @@
       "b_event_hash": "16f11d2e849cbb3abcbfd8c76d32a509a38e74e3b503361dddeb2adf9403a486",
       "branch_id": "first_session",
       "c8_state_digest": "b33f575956a180874af7e0b02bc29b6210f45eac95bf1aba3720998d515555c8",
-      "e1_event_hash": "d9e4510e16224d2a505cdc6df58c65f4db33a411ed9cfdd8b0c1a61f87b77c2f",
+      "e1_event_hash": "de1c194e451f333b58f93d90870db7189840588ec5c4aba748170672ef68a4ed",
       "source_ref": "64fec28c374d8f77fb0b412d0c934d798ede03e8",
-      "target_id": "cdcb9408b3864eec26f19bd224087815fae9830820080eb6bb76d628b2703c85",
+      "target_id": "3aa5b4483bb562363e10474839d8a7504a5c22213952c2d40b6a995339926a71",
       "tools_remaining": 1
     },
     "ok": true
@@ -40,9 +40,9 @@
       "b_event_hash": "16f11d2e849cbb3abcbfd8c76d32a509a38e74e3b503361dddeb2adf9403a486",
       "branch_id": "first_session",
       "c8_state_digest": "b33f575956a180874af7e0b02bc29b6210f45eac95bf1aba3720998d515555c8",
-      "e1_event_hash": "d9e4510e16224d2a505cdc6df58c65f4db33a411ed9cfdd8b0c1a61f87b77c2f",
+      "e1_event_hash": "de1c194e451f333b58f93d90870db7189840588ec5c4aba748170672ef68a4ed",
       "source_ref": "64fec28c374d8f77fb0b412d0c934d798ede03e8",
-      "target_id": "cdcb9408b3864eec26f19bd224087815fae9830820080eb6bb76d628b2703c85",
+      "target_id": "3aa5b4483bb562363e10474839d8a7504a5c22213952c2d40b6a995339926a71",
       "tools_remaining": 1
     },
     "ok": true,
@@ -52,13 +52,13 @@
     "accepted": true,
     "admission": {
       "action_event_id": "TEST_ONLY_BP4_WORLD_EVT_510eef5493c41459b59f4466d75e514c834e97df33f01ed564af2f5cd1d5cbb6",
-      "admission_id": "70d3f41bc7379bbf836a7337a62ed47d637ae5ce6cc9fb6fb3c3aa9f92702351",
+      "admission_id": "1987727cb8c13ddd280b7cec34e991c55c98abe1f14840b12d65050bb649b6e2",
       "attention_excluded": true,
       "clock": 10,
-      "consumed_state_hash": "3a350eba7c9b74bbdb8b1c9300fc2810812f1a9e4495d525390877300a7e1b04",
+      "consumed_state_hash": "d54cd45bf531dba07a0e976a9a37b06bbbbdf5f2f12e658fcbc27aa7466b2d86",
       "contact_outcome": "",
-      "contract_hash": "00b6b5796b4ba1e6cf33b0dc83411f546eec83172a15c2e5bfa9f674d3452fbc",
-      "fact_count": 1,
+      "contract_hash": "fa3e35cbb5ca7a1f344a0c043da08da09e703c2a627cd3feccd828cb47a376b5",
+      "fact_count": 2,
       "grade": "TEST_ONLY_SOURCEFREE_R31E_ACTOR_EXPRESSION_NOT_NATIVE",
       "knowledge_ref_count": 0,
       "message_episode_id": "",
@@ -66,10 +66,10 @@
       "native": false,
       "schema": "R31E_EXPRESSION_ADMISSION@1",
       "source_ref": "001b506fa26ae879ff5b6e57138fc2696e12b538",
-      "speech_event_id": "TEST_ONLY_BP4_WORLD_EVT_ce086a7db697b66bbe37d4edad2e80273a99e9bad0d4acf02f3b74f827415213",
+      "speech_event_id": "TEST_ONLY_BP4_WORLD_EVT_7503ebc33337326980b656f556245e3bde54d61af44ff33781f7a84bb16ae81c",
       "strategy": "HELP_ACCEPT",
-      "target_id": "cdcb9408b3864eec26f19bd224087815fae9830820080eb6bb76d628b2703c85",
-      "template_id": "help_accept_2",
+      "target_id": "3aa5b4483bb562363e10474839d8a7504a5c22213952c2d40b6a995339926a71",
+      "template_id": "help_accept_1",
       "validation": {
         "checks": {
           "a_at_workshop": true,
@@ -147,7 +147,7 @@
     "expression_port": "R31E_EXPRESSION_PORT@1",
     "grade": "TEST_ONLY_SOURCEFREE_R31E_ACTOR_EXPRESSION_NOT_NATIVE",
     "j_source_ref": "64fec28c374d8f77fb0b412d0c934d798ede03e8",
-    "j_target_id": "cdcb9408b3864eec26f19bd224087815fae9830820080eb6bb76d628b2703c85",
+    "j_target_id": "3aa5b4483bb562363e10474839d8a7504a5c22213952c2d40b6a995339926a71",
     "location": "workshop",
     "material_performance": "omit",
     "messages": 0,
@@ -177,6 +177,34 @@
     },
     "errors": [],
     "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+    "lineage": {
+      "checks": {
+        "no_lineage_is_root_session": true,
+        "parent_is_c12_root": true
+      },
+      "observed": {
+        "branch": {
+          "actor_ids": [
+            "A",
+            "B",
+            "U"
+          ],
+          "branch_id": "first_session",
+          "created_clock": 10,
+          "fork_clock": 10,
+          "parent_branch_id": "root",
+          "root_counts": {
+            "checkpoint": 4,
+            "episode": 2,
+            "perception": 2,
+            "world_event": 1
+          },
+          "root_hash": "550eb63d9144dea27d7df2a65f4a94a1c6fe96e86953935aa860a820ad00ec05"
+        },
+        "branch_id": "first_session"
+      },
+      "ok": true
+    },
     "ok": true,
     "root": {
       "branch_id": "root",

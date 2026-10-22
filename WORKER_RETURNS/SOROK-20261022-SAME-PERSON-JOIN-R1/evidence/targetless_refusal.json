@@ -79,7 +79,7 @@
       ],
       "actor_source_grade": "TEST_ONLY_SOURCEFREE_TECHNICAL",
       "adp019_admission_receipt": "ADP019_ADMISSION_RECEIPT_ABSENT",
-      "c8_commit_receipt_id": "7b7215c30671cd7794e42baca595409d8bc46482b521afb5d0eb6978c8c353de",
+      "c8_commit_receipt_id": "17dee0fa6e4c5d783d743f02106185e09e9826dbadd523415055c44adf9e3dea",
       "c8_occurrence_id": "OCC-0001",
       "c8_state_digest": "661e95196385d60fe896d00ba7c783e6ba09aefbf19182fd87df4db127c4723b",
       "committed": true,
@@ -90,7 +90,7 @@
       "e1_adp019": {
         "admission_status": "TEST_ONLY_E1_BOUND_ADP019_NOT_ISSUED",
         "adp019_admission_receipt": "ADP019_ADMISSION_RECEIPT_ABSENT",
-        "commit_receipt_id": "7b7215c30671cd7794e42baca595409d8bc46482b521afb5d0eb6978c8c353de",
+        "commit_receipt_id": "17dee0fa6e4c5d783d743f02106185e09e9826dbadd523415055c44adf9e3dea",
         "event_time": 242,
         "identity_digest": "a8c41faf24bd366c30fac5f374f47c77e9f3f93b3653092624826aa82b62541f",
         "native_grant": "NOT_GRANTED",
@@ -98,7 +98,7 @@
         "state_digest": "661e95196385d60fe896d00ba7c783e6ba09aefbf19182fd87df4db127c4723b",
         "writer_version": 1
       },
-      "event_hash": "a6c0587073b420d865af84ca96932cceb527c7fbad4fe166790ad7d67284ad46",
+      "event_hash": "4561426eb03208d90e8081e858f801606443d3f5f8bfaf734c5a23f6ed3794b2",
       "event_id": "TEST_ONLY_BP2_E1_OCC-0001",
       "event_reason": "OK",
       "grant_hash": "b257beddde3a91f8595b0aa40043fda942e72e8f62fa635f0e51cceee6b8dffe",
@@ -207,6 +207,34 @@
     },
     "errors": [],
     "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+    "lineage": {
+      "checks": {
+        "no_lineage_is_root_session": true,
+        "parent_is_c12_root": true
+      },
+      "observed": {
+        "branch": {
+          "actor_ids": [
+            "A",
+            "B",
+            "U"
+          ],
+          "branch_id": "first_session",
+          "created_clock": 10,
+          "fork_clock": 10,
+          "parent_branch_id": "root",
+          "root_counts": {
+            "checkpoint": 2,
+            "episode": 1,
+            "perception": 2,
+            "world_event": 1
+          },
+          "root_hash": "a596161effe5039cacc28bc596c7c976f09b53fdd5a91f563e2f6fbc2abe2f12"
+        },
+        "branch_id": "first_session"
+      },
+      "ok": true
+    },
     "ok": true,
     "provenance": {
       "checks": {
@@ -235,7 +263,7 @@
         "b_operation": "REFUSE_TOOL",
         "b_to_actor": "TEST_ONLY_R31J_A",
         "c8_state_digest": "661e95196385d60fe896d00ba7c783e6ba09aefbf19182fd87df4db127c4723b",
-        "e1_event_hash": "a6c0587073b420d865af84ca96932cceb527c7fbad4fe166790ad7d67284ad46",
+        "e1_event_hash": "4561426eb03208d90e8081e858f801606443d3f5f8bfaf734c5a23f6ed3794b2",
         "seed_actors": {
           "a": "TEST_ONLY_BP1_R26V_ACTOR_A",
           "b": "TEST_ONLY_BP1_R26V_ACTOR_B"
