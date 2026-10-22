@@ -1,0 +1,22 @@
+{
+  "actual_consumer_values_read": null,
+  "commands": {
+    "dependency": "python3 tests/universal_execution_oracle/dependency_probe.py {baseline,fault,restore}",
+    "replay": "PYTHONPATH=. python3 WORKER_RETURNS/PYAT-R56-R00E-GATE-IMPLEMENTATION-R1/revisions/r2/tools/run_replay.py",
+    "tests": "PYTHONPATH=. PYTHONDONTWRITEBYTECODE=1 python3 -m pytest tests/universal_execution_oracle -q --junitxml=WORKER_RETURNS/PYAT-R56-R00E-GATE-IMPLEMENTATION-R1/revisions/r2/evidence/junit/r00e_r2.xml"
+  },
+  "defect_matrix_sha256": "1ad23ee638e1eb29571e98376b1f078f449890da478bba20e0777c16ddc31299",
+  "defects": 8,
+  "defects_repaired": 8,
+  "dependency_fault_sha256": "f8a2320ffc421bf0687624f1fa0035cd7061c9691165fc86ed411d731f2c1913",
+  "gate_sha256": "6352975135b99f9135e6ad333c571d6c09e17823a3e4bfc2d0806d1fd935ce4f",
+  "junit_sha256": "ac85131846a96a51749a84f87e1646036c90d8e0660e4b90c1311b36ba142131",
+  "native_provenance": "NOT_PRESENT",
+  "original_grant": "UNISSUED",
+  "replay_cases": 36,
+  "replay_passed": 36,
+  "replay_sha256": "7e0b578faf84776e1bc0489b02419787c01e179d7cf24a173bcf4ef8491ee5bc",
+  "schema": "R56_R00E_R2_PROOF_WITNESS@1",
+  "test_sha256": "677afd5e91cc9930cd937896edaffc495e8f554230465339d1dccd05b383d449",
+  "tests_passed": 24
+}

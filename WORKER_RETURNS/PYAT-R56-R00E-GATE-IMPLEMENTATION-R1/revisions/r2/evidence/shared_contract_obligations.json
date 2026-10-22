@@ -1,0 +1,68 @@
+{
+  "external_reads": {
+    "R00P_policy": "6d95a78bf6b7bcf70022e303a151255e65edc38a",
+    "R56_motion": "fcbb2ee1d7a6eae040e0964bb8474e8d04d47989",
+    "R57": "953eb07ad29cc424b2fc43cfeb13ef83355f3a50",
+    "director11": "6cdde972249f5897d23c10aeccadfb56f76933f7",
+    "native_shared": "eb28fdcc311e2534b66def445e745cb25cb8a9bd",
+    "review_shared": "485f31e52ca82905dcfbbc79c5f8c8294fb55f49"
+  },
+  "notes": [
+    "No new science rule.",
+    "No R09/native/original claim.",
+    "Author original return and reviewer return untouched."
+  ],
+  "obligations": [
+    {
+      "evidence": "evidence/policy_pin.json",
+      "id": "exact_startup_and_policy_pin",
+      "status": "PASS"
+    },
+    {
+      "evidence": "this manifest + 00_RETURN",
+      "id": "required_reads",
+      "status": "PASS"
+    },
+    {
+      "evidence": "evidence/replay.json (policy-owned decision_cases)",
+      "id": "freeze_expected_tuples_before_candidate",
+      "status": "PASS"
+    },
+    {
+      "evidence": "evidence/replay.json + evidence/junit/r00e_r2.xml",
+      "id": "actual_public_operations_imports",
+      "status": "PASS"
+    },
+    {
+      "evidence": "evidence/dependency_fault.json",
+      "id": "same_declared_assertion_dependency_fault_fresh_restore",
+      "status": "PASS"
+    },
+    {
+      "evidence": "evidence/imports.json",
+      "id": "no_case_name_count_fixture_branch",
+      "status": "PASS"
+    },
+    {
+      "evidence": "evidence/changed_test_gate.json",
+      "id": "changed_test_proof_integrity",
+      "status": "PENDING_UNTIL_POST_COMMIT_GATE"
+    },
+    {
+      "evidence": "manifest.json + RESUME_CHECKPOINT.md",
+      "id": "return_root_manifest_and_resume",
+      "status": "PASS"
+    },
+    {
+      "evidence": "04_LIMITS_AND_HANDOFF.md",
+      "id": "native_R09_original_survey",
+      "status": "HOLD"
+    },
+    {
+      "evidence": "changed-test gate reports no integration-claim test",
+      "id": "proof_sidecar",
+      "status": "NOT_APPLICABLE_NON_INTEGRATION_TEST"
+    }
+  ],
+  "schema": "R56_R00E_R2_SHARED_CONTRACT_OBLIGATIONS@1"
+}

@@ -170,7 +170,8 @@ def _candidate_operations(submitted: Mapping[str, Any], expected: tuple[Mapping[
             for key in ("eligibility", "execution", "result"):
                 if key in edit:
                     axis[key] = edit[key]
-            for key in ("denominator", "numerator", "proof_source", "native_state"):
+            for key in ("denominator", "numerator", "proof_source",
+                        "native_state", "substantive_cells"):
                 if key in edit:
                     row[key] = edit[key]
             if edit.get("assert_complete"):
@@ -244,6 +245,153 @@ def _decision(*, claim_grade, decision, ceiling, reasons, handle,
     return payload
 
 
+DYNAMIC_OPERATION_KEYS = {
+    "axis_bindings", "eligible_disposition", "native_evidence",
+    "denominator", "numerator", "proof_source", "native_state",
+    "substantive_cells", "asserted_complete",
+}
+ALLOWED_CLAIM_KINDS = {
+    "POLICY_ONLY", "POLICY_STATUS_CHECK_ONLY",
+    "POLICY_ATTEMPT_ACCOUNTING_ONLY", "EXECUTED_NATIVE",
+}
+
+
+def _immutable_operation(operation: Mapping[str, Any]) -> dict:
+    return {key: copy.deepcopy(value) for key, value in operation.items()
+            if key not in DYNAMIC_OPERATION_KEYS}
+
+
+def _expected_occurrences(handle: PinnedPolicyHandle) -> dict:
+    if handle.variant_id == "CANONICAL_V1":
+        universes = handle.synthetic.get("test_universes", [])
+    else:
+        variant = next((row for row in handle.synthetic.get(
+            "independent_materialized_variants", [])
+            if row.get("variant_id") == handle.variant_id), None)
+        universes = variant.get("expected_universes", []) if variant else []
+    out = {}
+    for universe in universes:
+        for occurrence in universe.get("occurrences", []):
+            out[occurrence["occurrence_ref"]] = occurrence
+    return out
+
+
+def _occurrence_problem(submitted: Mapping[str, Any], handle: PinnedPolicyHandle) -> str:
+    if "occurrence_objects" not in submitted:
+        return ""
+    supplied = submitted["occurrence_objects"]
+    if not isinstance(supplied, list):
+        return "UNSUPPORTED_OCCURRENCE_TRANSPORT"
+    if not supplied:
+        return ""
+    expected = _expected_occurrences(handle)
+    refs = []
+    for occurrence in supplied:
+        if not isinstance(occurrence, Mapping) or "occurrence_ref" not in occurrence:
+            return "INVALID_OCCURRENCE_OBJECT"
+        ref = occurrence["occurrence_ref"]
+        refs.append(ref)
+        if ref not in expected:
+            return "UNKNOWN_OCCURRENCE_REF"
+        if operation_identity_digest(occurrence) != operation_identity_digest(expected[ref]):
+            return "OCCURRENCE_SEMANTIC_MISMATCH"
+    if len(refs) != len(set(refs)):
+        return "DUPLICATE_OCCURRENCE_REF"
+    return ""
+
+
+def _status_blocker(expected_by_id, candidate_ops, submitted, claim_kind,
+                    typed_axes):
+    allowed_eligibility = set(typed_axes.get("eligibility", []))
+    allowed_execution = set(typed_axes.get("execution", []))
+    allowed_result = set(typed_axes.get("result", []))
+    for row in candidate_ops:
+        operation_id = row.get("operation_id")
+        original = expected_by_id.get(operation_id)
+        if original is None:
+            continue
+        original_eligibility = original.get(
+            "eligible_disposition",
+            original.get("axis_bindings", {}).get("eligibility"))
+        final_eligibility = row.get(
+            "eligible_disposition",
+            row.get("axis_bindings", {}).get("eligibility"))
+        if final_eligibility not in allowed_eligibility:
+            return ("REFUSE_STATUS", ["P07_SEPARATE_STATES"])
+        if final_eligibility != original_eligibility:
+            if (original.get("topology") == "CROSS_UNIT_REFUSED"
+                    and final_eligibility == "ELIGIBLE"
+                    and not submitted.get("issued_relation_ref")):
+                return ("HOLD_UNIMPLEMENTED_RELATION", ["P03_NO_UNLINKED_CROSS_UNIT"])
+            if original_eligibility == "UNKNOWN":
+                return ("REFUSE_STATUS", ["P05_HELD_ROLE", "P07_SEPARATE_STATES"])
+            if original_eligibility in {"PROHIBITED", "INAPPLICABLE_PROVED"}:
+                return ("REFUSE_STATUS", [
+                    "P02_NO_ADMIN_AS_CONDITION", "P04_NOT_ADMINISTERED",
+                    "P07_SEPARATE_STATES"])
+            return ("REFUSE_STATUS", ["P07_SEPARATE_STATES"])
+        axis = row.get("axis_bindings", {})
+        execution = axis.get("execution", "NOT_STARTED")
+        result = axis.get("result", "UNKNOWN")
+        if execution not in allowed_execution or result not in allowed_result:
+            return ("REFUSE_STATUS", ["P07_SEPARATE_STATES"])
+        if row.get("asserted_complete") and execution == "PENDING":
+            return ("REFUSE_STATUS", ["P07_SEPARATE_STATES", "P06_NO_DROP_MULTISETS"])
+        if original_eligibility != "ELIGIBLE" and (
+                execution != "NOT_STARTED" or result != "UNKNOWN"):
+            return ("REFUSE_STATUS", ["P07_SEPARATE_STATES"])
+        if execution == "COMPLETED":
+            if result == "SUPPORTED":
+                return ("HOLD_TRUSTED_NATIVE",
+                        ["P09_RUNTIME_PROVENANCE_HOLD", "P14_FAIL_CLOSED_TRUST"])
+            if result in {"OBSERVED_ZERO", "VALID_NULL", "VALID_EMPTY"}:
+                if (claim_kind != "POLICY_STATUS_CHECK_ONLY"
+                        or row.get("proof_source") != "TEST_ONLY_HAND_DERIVED"):
+                    return ("REFUSE_STATUS", ["P07_SEPARATE_STATES",
+                                              "P12_EMPTY_NULL_ZERO_DISTINCT"])
+                if result == "OBSERVED_ZERO" and (
+                        "denominator" not in row or "numerator" not in row):
+                    return ("REFUSE_STATUS", ["P07_SEPARATE_STATES",
+                                              "P12_EMPTY_NULL_ZERO_DISTINCT"])
+            elif result == "UNKNOWN":
+                if not (claim_kind == "POLICY_STATUS_CHECK_ONLY"
+                        and row.get("native_state") == "UNRESOLVED"
+                        and row.get("substantive_cells") == []
+                        and "denominator" in row):
+                    return ("REFUSE_STATUS", ["P07_SEPARATE_STATES",
+                                              "P12_EMPTY_NULL_ZERO_DISTINCT"])
+            elif result not in {"OBSERVED_ZERO", "VALID_NULL", "VALID_EMPTY",
+                                "UNKNOWN"}:
+                return ("REFUSE_STATUS", ["P07_SEPARATE_STATES"])
+            elif claim_kind != "POLICY_STATUS_CHECK_ONLY":
+                return ("REFUSE_STATUS", ["P07_SEPARATE_STATES"])
+        elif execution == "PENDING":
+            if result != "UNKNOWN":
+                return ("REFUSE_STATUS", ["P07_SEPARATE_STATES"])
+    return None
+
+
+def _handle_consistency(handle: PinnedPolicyHandle):
+    if handle.commit != DEFAULT_COMMIT or handle.root != DEFAULT_ROOT:
+        return ("REFUSE_PIN", ["P00_INDEPENDENT_PIN"])
+    try:
+        trusted = load_pinned_policy(handle.commit, handle.root, handle.variant_id)
+    except Exception:
+        return ("REFUSE_PIN", ["P00_INDEPENDENT_PIN"])
+    if not handle.verified or not trusted.verified:
+        return ("REFUSE_PIN", ["P00_INDEPENDENT_PIN"])
+    if (dict(handle.blobs) != dict(trusted.blobs)
+            or dict(handle.policy) != dict(trusted.policy)
+            or dict(handle.synthetic) != dict(trusted.synthetic)
+            or dict(handle.freeze) != dict(trusted.freeze)):
+        return ("REFUSE_PIN", ["P00_INDEPENDENT_PIN"])
+    if (tuple(handle.expected_ids) != trusted.expected_ids
+            or [dict(row) for row in handle.expected_operations]
+            != [dict(row) for row in trusted.expected_operations]):
+        return ("REFUSE_FRONTIER", ["P06_NO_DROP_MULTISETS"])
+    return None
+
+
 def evaluate_r56_sourcefree_claim(
     submitted_claim: Mapping[str, Any],
     *,
@@ -252,55 +400,67 @@ def evaluate_r56_sourcefree_claim(
 ) -> dict:
     if not isinstance(submitted_claim, Mapping):
         raise GateRefusal("SUBMISSION_NOT_MAPPING")
-    if not isinstance(externally_pinned_policy, PinnedPolicyHandle):
-        return _decision(
-            claim_grade="UNKNOWN", decision="REFUSE_PIN", ceiling="NONE",
-            reasons=["P00_INDEPENDENT_PIN"], handle=PinnedPolicyHandle(
-                "", "", "", {}, {}, {}, (), (), {}, False),
-            expected_ids=(), diff={"missing": [], "extra": [], "duplicate": [],
-                                   "semantic_mismatch": []}, ops=[])
-    handle = externally_pinned_policy
-    expected_ids = handle.expected_ids
-    expected = handle.expected_operations
     claim = copy.deepcopy(dict(submitted_claim))
     request = claim.get("request", {}) or {}
     submitted = claim.get("submitted", {}) or {}
     claim_grade = request.get("claim_grade", "LOCAL_OPERATOR")
-    claim_kind = request.get("claim_kind", "POLICY_ONLY")
-    if not handle.verified:
+    empty_diff = {"missing": [], "extra": [], "duplicate": [],
+                  "semantic_mismatch": []}
+    requested_kind = request.get("claim_kind", "POLICY_ONLY")
+    submitted_kind = submitted.get("claim_kind")
+    if submitted_kind is not None and submitted_kind not in ALLOWED_CLAIM_KINDS:
+        return _decision(
+            claim_grade=claim_grade, decision="REFUSE_AUTHORITY", ceiling="NONE",
+            reasons=["P08_CLAIM_GRADE_CEILING"], handle=externally_pinned_policy,
+            expected_ids=externally_pinned_policy.expected_ids,
+            diff=empty_diff, ops=[])
+    claim_kind = requested_kind
+    if (requested_kind == "POLICY_ONLY"
+            and submitted_kind in {"POLICY_ONLY", "POLICY_STATUS_CHECK_ONLY",
+                                   "POLICY_ATTEMPT_ACCOUNTING_ONLY"}):
+        claim_kind = submitted_kind
+    elif (requested_kind == "POLICY_ONLY" and submitted_kind == "EXECUTED_NATIVE"):
+        claim_kind = "EXECUTED_NATIVE"
+    if not isinstance(externally_pinned_policy, PinnedPolicyHandle):
         return _decision(
             claim_grade=claim_grade, decision="REFUSE_PIN", ceiling="NONE",
-            reasons=["P00_INDEPENDENT_PIN"], handle=handle,
-            expected_ids=expected_ids, diff={"missing": [], "extra": [],
-                                             "duplicate": [], "semantic_mismatch": []},
-            ops=[], extra={"policy_pin_verified": False})
-    candidate_ops = _candidate_operations(submitted, expected)
-    candidate_ids = _ids(candidate_ops)
-    diff = _diff(expected_ids, candidate_ids)
-    expected_by_id = {row["operation_id"]: row for row in expected}
-    for row in candidate_ops:
-        operation_id = row.get("operation_id")
-        if (operation_id in expected_by_id
-                and operation_identity_digest(row)
-                != operation_identity_digest(expected_by_id[operation_id])):
-            if not any(edit.get("operation_id") == operation_id
-                       for edit in (submitted.get("operation_status_edits", []) or []) +
-                       (submitted.get("operation_disposition_edits", []) or [])):
-                diff["semantic_mismatch"].append(operation_id)
-    diff["semantic_mismatch"] = sorted(set(diff["semantic_mismatch"]))
-
+            reasons=["P00_INDEPENDENT_PIN"],
+            handle=PinnedPolicyHandle("", "", "", {}, {}, {}, (), (), {}, False),
+            expected_ids=(), diff=empty_diff, ops=[])
+    handle = externally_pinned_policy
+    expected_ids = handle.expected_ids
+    expected = handle.expected_operations
+    consistency = _handle_consistency(handle)
+    if consistency:
+        decision, reasons = consistency
+        return _decision(
+            claim_grade=claim_grade, decision=decision, ceiling="NONE",
+            reasons=reasons, handle=handle, expected_ids=expected_ids,
+            diff=empty_diff, ops=[])
+    allowed_grades = set(handle.policy.get("claim_grades", []))
+    if claim_grade not in allowed_grades:
+        return _decision(
+            claim_grade=claim_grade, decision="REFUSE_AUTHORITY", ceiling="NONE",
+            reasons=["P08_CLAIM_GRADE_CEILING"], handle=handle,
+            expected_ids=expected_ids, diff=empty_diff, ops=[])
+    if claim_kind not in ALLOWED_CLAIM_KINDS:
+        return _decision(
+            claim_grade=claim_grade, decision="REFUSE_AUTHORITY", ceiling="NONE",
+            reasons=["P08_CLAIM_GRADE_CEILING"], handle=handle,
+            expected_ids=expected_ids, diff=empty_diff, ops=[])
     claim_variant = (claim.get("external_policy_resolution", {}) or {}).get("variant_id")
     if claim_variant and claim_variant != handle.variant_id:
         return _decision(
             claim_grade=claim_grade, decision="REFUSE_PIN", ceiling="NONE",
             reasons=["P00_INDEPENDENT_PIN"], handle=handle,
-            expected_ids=expected_ids, diff=diff, ops=candidate_ops,
+            expected_ids=expected_ids, diff=empty_diff, ops=[],
             extra={"policy_pin_verified": True, "variant_mismatch": True})
-    if submitted.get("policy_selector_source") == "CANDIDATE" or submitted.get("self_pin") or submitted.get("self_digest"):
+    if (submitted.get("policy_selector_source") == "CANDIDATE"
+            or submitted.get("self_pin") or submitted.get("self_digest")):
         return _decision(
             claim_grade=claim_grade, decision="REFUSE_PIN", ceiling="NONE",
             reasons=["P00_INDEPENDENT_PIN"], handle=handle,
-            expected_ids=expected_ids, diff=diff, ops=candidate_ops,
+            expected_ids=expected_ids, diff=empty_diff, ops=[],
             extra={"policy_pin_verified": True, "candidate_pin": True})
     rename = submitted.get("candidate_supplied_rename")
     if rename:
@@ -310,52 +470,52 @@ def evaluate_r56_sourcefree_claim(
                 claim_grade=claim_grade, decision="REFUSE_FRONTIER", ceiling="NONE",
                 reasons=["P00_INDEPENDENT_PIN", "P06_NO_DROP_MULTISETS",
                          "P16_BIJECTIVE_LABEL_RENAME"],
-                handle=handle, expected_ids=expected_ids, diff=diff,
-                ops=candidate_ops, extra={"invalid_rename": "NON_INJECTIVE",
-                                          "duplicate_destination_label": destinations[0]})
-    if submitted.get("candidate_variant_selection") and not claim.get("external_policy_resolution", {}).get("variant_id"):
+                handle=handle, expected_ids=expected_ids, diff=empty_diff, ops=[],
+                extra={"invalid_rename": "NON_INJECTIVE",
+                       "duplicate_destination_label": destinations[0]})
+    if (submitted.get("candidate_variant_selection")
+            and not claim.get("external_policy_resolution", {}).get("variant_id")):
         return _decision(
             claim_grade=claim_grade, decision="REFUSE_PIN", ceiling="NONE",
             reasons=["P00_INDEPENDENT_PIN"], handle=handle,
-            expected_ids=expected_ids, diff=diff, ops=candidate_ops,
+            expected_ids=expected_ids, diff=empty_diff, ops=[],
             extra={"candidate_variant_selection": True})
-
-    if claim_kind == "EXECUTED_NATIVE" and submitted.get("native") is True:
-        reasons = ["P09_RUNTIME_PROVENANCE_HOLD"]
-        if submitted.get("trace"):
-            reasons.append("P15_ACTUAL_CONSUMER")
-        if submitted.get("attestation"):
-            reasons.append("P14_FAIL_CLOSED_TRUST")
-        return _decision(
-            claim_grade=claim_grade, decision="REFUSE_FORGED_EVIDENCE",
-            ceiling="NONE", reasons=reasons, handle=handle,
-            expected_ids=expected_ids, diff=diff, ops=candidate_ops)
-    if submitted.get("native_event_claim") == "TRACE_STRING_ONLY":
-        return _decision(
-            claim_grade=claim_grade, decision="REFUSE_FORGED_EVIDENCE",
-            ceiling="NONE",
-            reasons=["P09_RUNTIME_PROVENANCE_HOLD", "P15_ACTUAL_CONSUMER"],
-            handle=handle, expected_ids=expected_ids, diff=diff, ops=candidate_ops)
-    if submitted.get("attestation"):
-        return _decision(
-            claim_grade=claim_grade, decision="REFUSE_FORGED_EVIDENCE",
-            ceiling="NONE",
-            reasons=["P09_RUNTIME_PROVENANCE_HOLD", "P14_FAIL_CLOSED_TRUST"],
-            handle=handle, expected_ids=expected_ids, diff=diff, ops=candidate_ops)
-    if submitted.get("native_event_claim") == "REQUIRES_R09":
-        return _decision(
-            claim_grade=claim_grade, decision="HOLD_TRUSTED_NATIVE",
-            ceiling="LOCAL_ONLY_POLICY_CONSISTENT",
-            reasons=["P09_RUNTIME_PROVENANCE_HOLD", "P14_FAIL_CLOSED_TRUST"],
-            handle=handle, expected_ids=expected_ids, diff=diff, ops=candidate_ops)
-    transport = submitted.get("transport") or {}
-    if isinstance(transport, Mapping) and transport.get("type") == "TEST_ONLY_MOCK":
-        if claim_grade == "GENERIC_SOURCEFREE":
+    for edit in (submitted.get("operation_status_edits", []) or []) + (
+            submitted.get("operation_disposition_edits", []) or []):
+        if edit.get("operation_id") not in {row["operation_id"] for row in expected}:
             return _decision(
-                claim_grade=claim_grade, decision="HOLD_GENERIC_R09",
-                ceiling="LOCAL_ONLY_POLICY_CONSISTENT",
-                reasons=["P09_RUNTIME_PROVENANCE_HOLD", "P14_FAIL_CLOSED_TRUST"],
-                handle=handle, expected_ids=expected_ids, diff=diff, ops=candidate_ops)
+                claim_grade=claim_grade, decision="REFUSE_STATUS", ceiling="NONE",
+                reasons=["P07_SEPARATE_STATES"], handle=handle,
+                expected_ids=expected_ids, diff=empty_diff, ops=[])
+    occurrence_problem = _occurrence_problem(submitted, handle)
+    if occurrence_problem:
+        return _decision(
+            claim_grade=claim_grade, decision="REFUSE_FRONTIER", ceiling="NONE",
+            reasons=["P01_OCCURRENCE_ROLE_AND_MEASURE",
+                     "P06_NO_DROP_MULTISETS"],
+            handle=handle, expected_ids=expected_ids, diff=empty_diff, ops=[],
+            extra={"occurrence_problem": occurrence_problem})
+    if any(edit.get("duplicate_same_qualified_key") or edit.get("copy_occurrence_ref")
+           for edit in (submitted.get("occurrence_edits", []) or [])):
+        return _decision(
+            claim_grade=claim_grade, decision="REFUSE_FRONTIER", ceiling="NONE",
+            reasons=["P01_OCCURRENCE_ROLE_AND_MEASURE",
+                     "P06_NO_DROP_MULTISETS"],
+            handle=handle, expected_ids=expected_ids, diff=empty_diff, ops=[])
+
+    candidate_ops = _candidate_operations(submitted, expected)
+    candidate_ids = _ids(candidate_ops)
+    diff = _diff(expected_ids, candidate_ids)
+    expected_by_id = {row["operation_id"]: row for row in expected}
+    for row in candidate_ops:
+        operation_id = row.get("operation_id")
+        if operation_id not in expected_by_id:
+            continue
+        if (operation_identity_digest(_immutable_operation(row))
+                != operation_identity_digest(
+                    _immutable_operation(expected_by_id[operation_id]))):
+            diff["semantic_mismatch"].append(operation_id)
+    diff["semantic_mismatch"] = sorted(set(diff["semantic_mismatch"]))
 
     mutation = submitted.get("K_mutation")
     if mutation:
@@ -366,72 +526,32 @@ def evaluate_r56_sourcefree_claim(
             claim_grade=claim_grade, decision="REFUSE_IDENTITY", ceiling="NONE",
             reasons=reasons, handle=handle, expected_ids=expected_ids,
             diff=diff, ops=candidate_ops, extra={"consumer_evidence": None})
-
     permission = submitted.get("permission") or {}
     if permission.get("current") == "REVOKED":
         return _decision(
             claim_grade=claim_grade, decision="REFUSE_AUTHORITY", ceiling="NONE",
             reasons=["P10_EXACT_K_AND_CURRENTNESS", "P14_FAIL_CLOSED_TRUST"],
             handle=handle, expected_ids=expected_ids, diff=diff, ops=candidate_ops)
-    if (permission.get("returned_host") and permission.get("requested_host")
-            and permission.get("returned_host") != permission.get("requested_host")) or (
-            permission.get("returned_purpose") and permission.get("requested_purpose")
-            and permission.get("returned_purpose") != permission.get("requested_purpose")):
+    if ((permission.get("returned_host") and permission.get("requested_host")
+         and permission.get("returned_host") != permission.get("requested_host"))
+            or (permission.get("returned_purpose")
+                and permission.get("requested_purpose")
+                and permission.get("returned_purpose") != permission.get("requested_purpose"))):
         return _decision(
             claim_grade=claim_grade, decision="REFUSE_AUTHORITY", ceiling="NONE",
-            reasons=["P10_EXACT_K_AND_CURRENTNESS", "P13_ORIGINAL_ROSTER_CONSERVATION"],
+            reasons=["P10_EXACT_K_AND_CURRENTNESS",
+                     "P13_ORIGINAL_ROSTER_CONSERVATION"],
             handle=handle, expected_ids=expected_ids, diff=diff, ops=candidate_ops)
 
-    if claim_grade == "ORIGINAL35_N11":
+    status_blocker = _status_blocker(
+        expected_by_id, candidate_ops, submitted, claim_kind,
+        handle.policy.get("typed_status_axes", {}))
+    if status_blocker:
+        decision, reasons = status_blocker
         return _decision(
-            claim_grade=claim_grade, decision="HOLD_ORIGINAL_G8", ceiling="NONE",
-            reasons=["P13_ORIGINAL_ROSTER_CONSERVATION", "P08_CLAIM_GRADE_CEILING"],
-            handle=handle, expected_ids=expected_ids, diff=diff, ops=candidate_ops,
-            extra={"original_U_item": None, "original_U_unit": None,
-                   "original_U_app": None, "original_E_pre": None})
-
-    disposition_edits = submitted.get("operation_disposition_edits", []) or []
-    for edit in disposition_edits:
-        operation_id = edit.get("operation_id")
-        original = expected_by_id.get(operation_id, {})
-        original_eligibility = original.get("axis_bindings", {}).get("eligibility")
-        if edit.get("to") != original_eligibility and original_eligibility == "UNKNOWN":
-            return _decision(
-                claim_grade=claim_grade, decision="REFUSE_STATUS", ceiling="NONE",
-                reasons=["P05_HELD_ROLE", "P07_SEPARATE_STATES"],
-                handle=handle, expected_ids=expected_ids, diff=diff, ops=candidate_ops)
-        if edit.get("to") == "ELIGIBLE" and original_eligibility != "ELIGIBLE":
-            if original.get("topology") == "CROSS_UNIT_REFUSED" and not submitted.get("issued_relation_ref"):
-                return _decision(
-                    claim_grade=claim_grade, decision="HOLD_UNIMPLEMENTED_RELATION",
-                    ceiling="NONE", reasons=["P03_NO_UNLINKED_CROSS_UNIT"],
-                    handle=handle, expected_ids=expected_ids, diff=diff, ops=candidate_ops)
-            reasons = ["P02_NO_ADMIN_AS_CONDITION", "P04_NOT_ADMINISTERED",
-                       "P07_SEPARATE_STATES"] if original_eligibility in {
-                           "PROHIBITED", "INAPPLICABLE_PROVED"} else [
-                           "P05_HELD_ROLE", "P07_SEPARATE_STATES"]
-            return _decision(
-                claim_grade=claim_grade, decision="REFUSE_STATUS", ceiling="NONE",
-                reasons=reasons, handle=handle, expected_ids=expected_ids,
-                diff=diff, ops=candidate_ops)
-    for edit in submitted.get("operation_status_edits", []) or []:
-        if edit.get("assert_complete") and edit.get("execution") == "PENDING":
-            return _decision(
-                claim_grade=claim_grade, decision="REFUSE_STATUS", ceiling="NONE",
-                reasons=["P07_SEPARATE_STATES", "P06_NO_DROP_MULTISETS"],
-                handle=handle, expected_ids=expected_ids, diff=diff, ops=candidate_ops)
-        if edit.get("execution") == "COMPLETED" and edit.get("result") == "SUPPORTED" and edit.get("native_evidence"):
-            return _decision(
-                claim_grade=claim_grade, decision="REFUSE_FORGED_EVIDENCE",
-                ceiling="NONE", reasons=["P09_RUNTIME_PROVENANCE_HOLD"],
-                handle=handle, expected_ids=expected_ids, diff=diff, ops=candidate_ops)
-
-    if any(edit.get("duplicate_same_qualified_key") or edit.get("copy_occurrence_ref")
-           for edit in (submitted.get("occurrence_edits", []) or [])):
-        return _decision(
-            claim_grade=claim_grade, decision="REFUSE_FRONTIER", ceiling="NONE",
-            reasons=["P01_OCCURRENCE_ROLE_AND_MEASURE", "P06_NO_DROP_MULTISETS"],
-            handle=handle, expected_ids=expected_ids, diff=diff, ops=candidate_ops)
+            claim_grade=claim_grade, decision=decision, ceiling="NONE",
+            reasons=reasons, handle=handle, expected_ids=expected_ids,
+            diff=diff, ops=candidate_ops)
 
     if submitted.get("claim_of_independent_heterogeneity"):
         witnesses = submitted.get("edge_class_witnesses", []) or []
@@ -439,7 +559,8 @@ def evaluate_r56_sourcefree_claim(
             return _decision(
                 claim_grade=claim_grade, decision="REFUSE_FRONTIER", ceiling="NONE",
                 reasons=["P06_NO_DROP_MULTISETS", "P08_CLAIM_GRADE_CEILING"],
-                handle=handle, expected_ids=expected_ids, diff=diff, ops=candidate_ops)
+                handle=handle, expected_ids=expected_ids, diff=diff,
+                ops=candidate_ops)
 
     counted = submitted.get("scientific_counted_operation_ids", []) or []
     if len(counted) != len(set(counted)):
@@ -447,14 +568,6 @@ def evaluate_r56_sourcefree_claim(
             claim_grade=claim_grade, decision="REFUSE_DUPLICATE_COUNT",
             ceiling="NONE", reasons=["P11_REPLAY_AND_DEDUP"], handle=handle,
             expected_ids=expected_ids, diff=diff, ops=candidate_ops)
-    for edit in submitted.get("operation_disposition_edits", []) or []:
-        if edit.get("to") == "ELIGIBLE" and edit.get("operation_id") in expected_by_id:
-            original = expected_by_id[edit["operation_id"]]
-            if original.get("axis_bindings", {}).get("eligibility") == "UNKNOWN":
-                return _decision(
-                    claim_grade=claim_grade, decision="REFUSE_STATUS", ceiling="NONE",
-                    reasons=["P05_HELD_ROLE", "P07_SEPARATE_STATES"],
-                    handle=handle, expected_ids=expected_ids, diff=diff, ops=candidate_ops)
 
     full_claim = bool(
         submitted.get("claim_of_universal_complete")
@@ -464,9 +577,11 @@ def evaluate_r56_sourcefree_claim(
     if (diff["missing"] or diff["extra"] or diff["duplicate"]
             or diff["semantic_mismatch"]) and full_claim:
         if (submitted.get("hold_does_not_waive") is False
-                and any(expected_by_id.get(operation_id, {}).get("axis_bindings", {}).get("eligibility") == "HELD"
-                        for operation_id in diff["missing"])):
-            reasons = ["P06_NO_DROP_MULTISETS", "P13_ORIGINAL_ROSTER_CONSERVATION"]
+                and any(expected_by_id.get(operation_id, {}).get(
+                    "axis_bindings", {}).get("eligibility") == "HELD"
+                    for operation_id in diff["missing"])):
+            reasons = ["P06_NO_DROP_MULTISETS",
+                       "P13_ORIGINAL_ROSTER_CONSERVATION"]
         elif handle.variant_id != "CANONICAL_V1" and claim_grade == "GENERIC_SOURCEFREE":
             reasons = ["P06_NO_DROP_MULTISETS", "P08_CLAIM_GRADE_CEILING",
                        "P16_BIJECTIVE_LABEL_RENAME"]
@@ -484,6 +599,67 @@ def evaluate_r56_sourcefree_claim(
             reasons=reasons, handle=handle, expected_ids=expected_ids,
             diff=diff, ops=candidate_ops, extra=extra)
 
+    if submitted.get("native") is True:
+        reasons = ["P09_RUNTIME_PROVENANCE_HOLD"]
+        if submitted.get("trace"):
+            reasons.append("P15_ACTUAL_CONSUMER")
+        if submitted.get("attestation"):
+            reasons.append("P14_FAIL_CLOSED_TRUST")
+        return _decision(
+            claim_grade=claim_grade, decision="REFUSE_FORGED_EVIDENCE",
+            ceiling="NONE", reasons=reasons, handle=handle,
+            expected_ids=expected_ids, diff=diff, ops=candidate_ops)
+    if submitted.get("native_event_claim") not in {
+            None, "", "NOT_ASSERTED", "TRACE_STRING_ONLY", "REQUIRES_R09"}:
+        return _decision(
+            claim_grade=claim_grade, decision="REFUSE_FORGED_EVIDENCE",
+            ceiling="NONE", reasons=["P09_RUNTIME_PROVENANCE_HOLD"],
+            handle=handle, expected_ids=expected_ids, diff=diff,
+            ops=candidate_ops)
+    if submitted.get("native_event_claim") == "TRACE_STRING_ONLY" or submitted.get("trace"):
+        return _decision(
+            claim_grade=claim_grade, decision="REFUSE_FORGED_EVIDENCE",
+            ceiling="NONE",
+            reasons=["P09_RUNTIME_PROVENANCE_HOLD", "P15_ACTUAL_CONSUMER"],
+            handle=handle, expected_ids=expected_ids, diff=diff, ops=candidate_ops)
+    if submitted.get("attestation"):
+        return _decision(
+            claim_grade=claim_grade, decision="REFUSE_FORGED_EVIDENCE",
+            ceiling="NONE",
+            reasons=["P09_RUNTIME_PROVENANCE_HOLD", "P14_FAIL_CLOSED_TRUST"],
+            handle=handle, expected_ids=expected_ids, diff=diff, ops=candidate_ops)
+    transport = submitted.get("transport") or {}
+    if isinstance(transport, Mapping) and transport.get("type") == "TEST_ONLY_MOCK":
+        if claim_grade == "GENERIC_SOURCEFREE":
+            return _decision(
+                claim_grade=claim_grade, decision="HOLD_GENERIC_R09",
+                ceiling="LOCAL_ONLY_POLICY_CONSISTENT",
+                reasons=["P09_RUNTIME_PROVENANCE_HOLD", "P14_FAIL_CLOSED_TRUST"],
+                handle=handle, expected_ids=expected_ids, diff=diff,
+                ops=candidate_ops)
+        return _decision(
+            claim_grade=claim_grade, decision="HOLD_TRUSTED_NATIVE",
+            ceiling="LOCAL_ONLY_POLICY_CONSISTENT",
+            reasons=["P09_RUNTIME_PROVENANCE_HOLD", "P14_FAIL_CLOSED_TRUST"],
+            handle=handle, expected_ids=expected_ids, diff=diff,
+            ops=candidate_ops)
+
+    if claim_grade == "ORIGINAL35_N11":
+        return _decision(
+            claim_grade=claim_grade, decision="HOLD_ORIGINAL_G8", ceiling="NONE",
+            reasons=["P13_ORIGINAL_ROSTER_CONSERVATION",
+                     "P08_CLAIM_GRADE_CEILING"],
+            handle=handle, expected_ids=expected_ids, diff=diff,
+            ops=candidate_ops,
+            extra={"original_U_item": None, "original_U_unit": None,
+                   "original_U_app": None, "original_E_pre": None})
+    if submitted.get("native_event_claim") == "REQUIRES_R09":
+        return _decision(
+            claim_grade=claim_grade, decision="HOLD_TRUSTED_NATIVE",
+            ceiling="LOCAL_ONLY_POLICY_CONSISTENT",
+            reasons=["P09_RUNTIME_PROVENANCE_HOLD", "P14_FAIL_CLOSED_TRUST"],
+            handle=handle, expected_ids=expected_ids, diff=diff,
+            ops=candidate_ops)
     if claim_grade == "GENERIC_SOURCEFREE":
         reasons = ["P08_CLAIM_GRADE_CEILING", "P09_RUNTIME_PROVENANCE_HOLD"]
         if handle.variant_id != "CANONICAL_V1":
@@ -491,10 +667,18 @@ def evaluate_r56_sourcefree_claim(
         return _decision(
             claim_grade=claim_grade, decision="HOLD_GENERIC_R09",
             ceiling="LOCAL_ONLY_POLICY_CONSISTENT", reasons=reasons,
-            handle=handle, expected_ids=expected_ids, diff=diff, ops=candidate_ops,
+            handle=handle, expected_ids=expected_ids, diff=diff,
+            ops=candidate_ops,
             extra={"materialized_variant_ref": handle.variant_id,
                    "expected_missing_ids": diff["missing"],
                    "expected_extra_ids": diff["extra"]})
+    if claim_kind == "EXECUTED_NATIVE":
+        return _decision(
+            claim_grade=claim_grade, decision="HOLD_TRUSTED_NATIVE",
+            ceiling="LOCAL_ONLY_POLICY_CONSISTENT",
+            reasons=["P09_RUNTIME_PROVENANCE_HOLD", "P14_FAIL_CLOSED_TRUST"],
+            handle=handle, expected_ids=expected_ids, diff=diff,
+            ops=candidate_ops)
 
     status_edits = submitted.get("operation_status_edits", []) or []
     if status_edits:
@@ -510,7 +694,8 @@ def evaluate_r56_sourcefree_claim(
         return _decision(
             claim_grade=claim_grade, decision="ALLOW_LOCAL_POLICY_CONSISTENT",
             ceiling="LOCAL_ONLY_POLICY_CONSISTENT", reasons=reasons,
-            handle=handle, expected_ids=expected_ids, diff=diff, ops=candidate_ops)
+            handle=handle, expected_ids=expected_ids, diff=diff,
+            ops=candidate_ops)
     if counted and len(counted) == len(set(counted)) and submitted.get("attempts"):
         return _decision(
             claim_grade=claim_grade, decision="ALLOW_LOCAL_POLICY_CONSISTENT",
@@ -529,8 +714,8 @@ def evaluate_r56_sourcefree_claim(
     return _decision(
         claim_grade=claim_grade, decision="ALLOW_LOCAL_POLICY_CONSISTENT",
         ceiling="LOCAL_ONLY_POLICY_CONSISTENT", reasons=reasons,
-        handle=handle, expected_ids=expected_ids, diff=diff, ops=candidate_ops,
-        extra=extra)
+        handle=handle, expected_ids=expected_ids, diff=diff,
+        ops=candidate_ops, extra=extra)
 
 
 __all__ = [
