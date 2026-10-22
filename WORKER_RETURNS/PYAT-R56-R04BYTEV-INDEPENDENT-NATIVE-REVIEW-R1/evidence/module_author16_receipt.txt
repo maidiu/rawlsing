@@ -1,0 +1,19 @@
+# Receipt: author test module at exact candidate file state (BEFORE independent additions)
+
+File under test: rawlsing_next/tests/test_universal_source_byte_custody.py at
+candidate c1b0abec (git blob c5e1091a0058c1c54324c46d83c2ca903c42001c,
+sha256 d398ec88694057795041e0f78aeac4c538afa9c588a6a4c03db31f907d8daffb).
+Run in reviewer worktree /Users/matthewsmith/Desktop/Rawlsing/R56-R04BYTEV-independent-custody-review-wt.
+
+Command:
+python3 -m pytest rawlsing_next/tests/test_universal_source_byte_custody.py -q -rs
+
+Observed output:
+................                                                         [100%]
+16 passed in 9.39s
+
+exit code: 0
+
+(After this run the reviewer appended independent tests; the same command then
+reports 2 failed, 17 passed, where the 2 failures are the independent defect
+demonstration tests. See module_with_independent_receipt.txt.)

@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="10" skipped="0" tests="34" time="588.336" timestamp="2026-10-22T01:37:35.991241-04:00" hostname="MacBook-Pro.lan"><testcase classname="rawlsing_next.tests.test_fiabc_lm2_r1e_bounded_mapping_recovery" name="test_r01_authority_ceiling_is_distinct_and_source_authority_is_not_relabeled" time="0.002" /><testcase classname="rawlsing_next.tests.test_fiabc_lm2_r1e_bounded_mapping_recovery" name="test_r02_and_r18_source_semantics_alone_cannot_authorize_canonical_response" time="0.025" /><testcase classname="rawlsing_next.tests.test_fiabc_lm2_r1e_bounded_mapping_recovery" name="test_r03_exact_derived_mapping_authority_is_accepted_by_source_free_r6s_binding" time="0.005"><failure message="ValueError: representation authority variable identity/ordinal mismatch">def test_r03_exact_derived_mapping_authority_is_accepted_by_source_free_r6s_binding():
+&gt;       fields = fields3()
+                 ^^^^^^^^^
+
+rawlsing_next/tests/test_fiabc_lm2_r1e_bounded_mapping_recovery.py:105: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/tests/test_fiabc_lm2_r1e_bounded_mapping_recovery.py:65: in fields3
+    return dict(m.build_projection_fields(
+WORKER_RETURNS/EE-P2R6S/05_WVS7_PROJECTION_MATERIALIZER.py:867: in build_projection_fields
+    response_slots = tuple(
+WORKER_RETURNS/EE-P2R6S/05_WVS7_PROJECTION_MATERIALIZER.py:871: in &lt;genexpr&gt;
+    _response_value_rules(_variable_by_name(variables, name)),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+WORKER_RETURNS/EE-P2R6S/05_WVS7_PROJECTION_MATERIALIZER.py:676: in _response_value_rules
+    physical_value = authorized_decoder_physical_value(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def authorized_decoder_physical_value(
+        *,
+        source_sha256: str,
+        variable_name: str,
+        ordinal: int,
+        native_code: Any,
+    ) -&gt; float:
+        """Return only the exact decoder material explicitly authorized by R1J."""
+        if source_sha256 != SOURCE_SHA256:
+            raise ValueError("representation authority source SHA mismatch")
+        if Q291_VARIABLES.get(variable_name) != ordinal:
+&gt;           raise ValueError("representation authority variable identity/ordinal mismatch")
+E           ValueError: representation authority variable identity/ordinal mismatch
+
+rawlsing_next/fiabc_lm2_r1j_wvs7_representation_authority.py:176: ValueError</failure></testcase><testcase classname="rawlsing_next.tests.test_fiabc_lm2_r1e_bounded_mapping_recovery" name="test_r04_relabel_counterfeit_is_rejected_by_exact_snapshot_binding" time="0.005"><failure message="ValueError: representation authority variable identity/ordinal mismatch">def test_r04_relabel_counterfeit_is_rejected_by_exact_snapshot_binding():
+&gt;       fields = fields3()
+                 ^^^^^^^^^
+
+rawlsing_next/tests/test_fiabc_lm2_r1e_bounded_mapping_recovery.py:116: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/tests/test_fiabc_lm2_r1e_bounded_mapping_recovery.py:65: in fields3
+    return dict(m.build_projection_fields(
+WORKER_RETURNS/EE-P2R6S/05_WVS7_PROJECTION_MATERIALIZER.py:867: in build_projection_fields
+    response_slots = tuple(
+WORKER_RETURNS/EE-P2R6S/05_WVS7_PROJECTION_MATERIALIZER.py:871: in &lt;genexpr&gt;
+    _response_value_rules(_variable_by_name(variables, name)),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+WORKER_RETURNS/EE-P2R6S/05_WVS7_PROJECTION_MATERIALIZER.py:676: in _response_value_rules
+    physical_value = authorized_decoder_physical_value(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def authorized_decoder_physical_value(
+        *,
+        source_sha256: str,
+        variable_name: str,
+        ordinal: int,
+        native_code: Any,
+    ) -&gt; float:
+        """Return only the exact decoder material explicitly authorized by R1J."""
+        if source_sha256 != SOURCE_SHA256:
+            raise ValueError("representation authority source SHA mismatch")
+        if Q291_VARIABLES.get(variable_name) != ordinal:
+&gt;           raise ValueError("representation authority variable identity/ordinal mismatch")
+E           ValueError: representation authority variable identity/ordinal mismatch
+
+rawlsing_next/fiabc_lm2_r1j_wvs7_representation_authority.py:176: ValueError</failure></testcase><testcase classname="rawlsing_next.tests.test_fiabc_lm2_r1e_bounded_mapping_recovery" name="test_r05_canonical_question_mapping_remains_absent" time="0.007"><failure message="ValueError: representation authority variable identity/ordinal mismatch">def test_r05_canonical_question_mapping_remains_absent():
+&gt;       fields = fields3()
+                 ^^^^^^^^^
+
+rawlsing_next/tests/test_fiabc_lm2_r1e_bounded_mapping_recovery.py:127: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/tests/test_fiabc_lm2_r1e_bounded_mapping_recovery.py:65: in fields3
+    return dict(m.build_projection_fields(
+WORKER_RETURNS/EE-P2R6S/05_WVS7_PROJECTION_MATERIALIZER.py:867: in build_projection_fields
+    response_slots = tuple(
+WORKER_RETURNS/EE-P2R6S/05_WVS7_PROJECTION_MATERIALIZER.py:871: in &lt;genexpr&gt;
+    _response_value_rules(_variable_by_name(variables, name)),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+WORKER_RETURNS/EE-P2R6S/05_WVS7_PROJECTION_MATERIALIZER.py:676: in _response_value_rules
+    physical_value = authorized_decoder_physical_value(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def authorized_decoder_physical_value(
+        *,
+        source_sha256: str,
+        variable_name: str,
+        ordinal: int,
+        native_code: Any,
+    ) -&gt; float:
+        """Return only the exact decoder material explicitly authorized by R1J."""
+        if source_sha256 != SOURCE_SHA256:
+            raise ValueError("representation authority source SHA mismatch")
+        if Q291_VARIABLES.get(variable_name) != ordinal:
+&gt;           raise ValueError("representation authority variable identity/ordinal mismatch")
+E           ValueError: representation authority variable identity/ordinal mismatch
+
+rawlsing_next/fiabc_lm2_r1j_wvs7_representation_authority.py:176: ValueError</failure></testcase><testcase classname="rawlsing_next.tests.test_fiabc_lm2_r1e_bounded_mapping_recovery" name="test_r06_special_states_remain_noncanonical" time="0.007"><failure message="ValueError: representation authority variable identity/ordinal mismatch">def test_r06_special_states_remain_noncanonical():
+&gt;       fields = fields3()
+                 ^^^^^^^^^
+
+rawlsing_next/tests/test_fiabc_lm2_r1e_bounded_mapping_recovery.py:132: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/tests/test_fiabc_lm2_r1e_bounded_mapping_recovery.py:65: in fields3
+    return dict(m.build_projection_fields(
+WORKER_RETURNS/EE-P2R6S/05_WVS7_PROJECTION_MATERIALIZER.py:867: in build_projection_fields
+    response_slots = tuple(
+WORKER_RETURNS/EE-P2R6S/05_WVS7_PROJECTION_MATERIALIZER.py:871: in &lt;genexpr&gt;
+    _response_value_rules(_variable_by_name(variables, name)),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+WORKER_RETURNS/EE-P2R6S/05_WVS7_PROJECTION_MATERIALIZER.py:676: in _response_value_rules
+    physical_value = authorized_decoder_physical_value(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def authorized_decoder_physical_value(
+        *,
+        source_sha256: str,
+        variable_name: str,
+        ordinal: int,
+        native_code: Any,
+    ) -&gt; float:
+        """Return only the exact decoder material explicitly authorized by R1J."""
+        if source_sha256 != SOURCE_SHA256:
+            raise ValueError("representation authority source SHA mismatch")
+        if Q291_VARIABLES.get(variable_name) != ordinal:
+&gt;           raise ValueError("representation authority variable identity/ordinal mismatch")
+E           ValueError: representation authority variable identity/ordinal mismatch
+
+rawlsing_next/fiabc_lm2_r1j_wvs7_representation_authority.py:176: ValueError</failure></testcase><testcase classname="rawlsing_next.tests.test_fiabc_lm2_r1e_bounded_mapping_recovery" name="test_r07_lexical_token_similarity_mutation_is_rejected" time="0.006"><failure message="ValueError: representation authority variable identity/ordinal mismatch">def test_r07_lexical_token_similarity_mutation_is_rejected():
+&gt;       fields = fields3()
+                 ^^^^^^^^^
+
+rawlsing_next/tests/test_fiabc_lm2_r1e_bounded_mapping_recovery.py:139: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/tests/test_fiabc_lm2_r1e_bounded_mapping_recovery.py:65: in fields3
+    return dict(m.build_projection_fields(
+WORKER_RETURNS/EE-P2R6S/05_WVS7_PROJECTION_MATERIALIZER.py:867: in build_projection_fields
+    response_slots = tuple(
+WORKER_RETURNS/EE-P2R6S/05_WVS7_PROJECTION_MATERIALIZER.py:871: in &lt;genexpr&gt;
+    _response_value_rules(_variable_by_name(variables, name)),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+WORKER_RETURNS/EE-P2R6S/05_WVS7_PROJECTION_MATERIALIZER.py:676: in _response_value_rules
+    physical_value = authorized_decoder_physical_value(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def authorized_decoder_physical_value(
+        *,
+        source_sha256: str,
+        variable_name: str,
+        ordinal: int,
+        native_code: Any,
+    ) -&gt; float:
+        """Return only the exact decoder material explicitly authorized by R1J."""
+        if source_sha256 != SOURCE_SHA256:
+            raise ValueError("representation authority source SHA mismatch")
+        if Q291_VARIABLES.get(variable_name) != ordinal:
+&gt;           raise ValueError("representation authority variable identity/ordinal mismatch")
+E           ValueError: representation authority variable identity/ordinal mismatch
+
+rawlsing_next/fiabc_lm2_r1j_wvs7_representation_authority.py:176: ValueError</failure></testcase><testcase classname="rawlsing_next.tests.test_fiabc_lm2_r1e_bounded_mapping_recovery" name="test_r08_cross_source_equivalence_is_explicitly_absent" time="0.000" /><testcase classname="rawlsing_next.tests.test_fiabc_lm2_r1e_bounded_mapping_recovery" name="test_r09_exact_parent_and_provenance_mutation_is_rejected" time="0.005"><failure message="ValueError: representation authority variable identity/ordinal mismatch">def test_r09_exact_parent_and_provenance_mutation_is_rejected():
+&gt;       fields = fields3()
+                 ^^^^^^^^^
+
+rawlsing_next/tests/test_fiabc_lm2_r1e_bounded_mapping_recovery.py:154: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/tests/test_fiabc_lm2_r1e_bounded_mapping_recovery.py:65: in fields3
+    return dict(m.build_projection_fields(
+WORKER_RETURNS/EE-P2R6S/05_WVS7_PROJECTION_MATERIALIZER.py:867: in build_projection_fields
+    response_slots = tuple(
+WORKER_RETURNS/EE-P2R6S/05_WVS7_PROJECTION_MATERIALIZER.py:871: in &lt;genexpr&gt;
+    _response_value_rules(_variable_by_name(variables, name)),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+WORKER_RETURNS/EE-P2R6S/05_WVS7_PROJECTION_MATERIALIZER.py:676: in _response_value_rules
+    physical_value = authorized_decoder_physical_value(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def authorized_decoder_physical_value(
+        *,
+        source_sha256: str,
+        variable_name: str,
+        ordinal: int,
+        native_code: Any,
+    ) -&gt; float:
+        """Return only the exact decoder material explicitly authorized by R1J."""
+        if source_sha256 != SOURCE_SHA256:
+            raise ValueError("representation authority source SHA mismatch")
+        if Q291_VARIABLES.get(variable_name) != ordinal:
+&gt;           raise ValueError("representation authority variable identity/ordinal mismatch")
+E           ValueError: representation authority variable identity/ordinal mismatch
+
+rawlsing_next/fiabc_lm2_r1j_wvs7_representation_authority.py:176: ValueError</failure></testcase><testcase classname="rawlsing_next.tests.test_fiabc_lm2_r1e_bounded_mapping_recovery" name="test_r10_target_use_scope_escape_is_rejected" time="0.003" /><testcase classname="rawlsing_next.tests.test_fiabc_lm2_r1e_bounded_mapping_recovery" name="test_r11_lock2_and_complete_46_candidate_frontier_are_conserved" time="0.001"><failure message="AssertionError: assert '8e5842eb0110...5c307024c6188' == '5e2a53f0e5f3...dfdaa96283139'&#10;  &#10;  - 5e2a53f0e5f3b6ddd8db53b724b352ca41fe1a49408483fbf83dfdaa96283139&#10;  + 8e5842eb01100e0b23c3fa0fe85736fee081d759ec5458fc0f95c307024c6188">def test_r11_lock2_and_complete_46_candidate_frontier_are_conserved():
+&gt;       assert m.LOCK2 == LOCK2 == WVS7_LOCK2_IDENTITY
+E       AssertionError: assert '8e5842eb0110...5c307024c6188' == '5e2a53f0e5f3...dfdaa96283139'
+E         
+E         - 5e2a53f0e5f3b6ddd8db53b724b352ca41fe1a49408483fbf83dfdaa96283139
+E         + 8e5842eb01100e0b23c3fa0fe85736fee081d759ec5458fc0f95c307024c6188
+
+rawlsing_next/tests/test_fiabc_lm2_r1e_bounded_mapping_recovery.py:183: AssertionError</failure></testcase><testcase classname="rawlsing_next.tests.test_fiabc_lm2_r1e_bounded_mapping_recovery" name="test_r12_physical_expectation_conserved" time="0.001" /><testcase classname="rawlsing_next.tests.test_fiabc_lm2_r1e_bounded_mapping_recovery" name="test_r13_structural_preimage_and_parentage_conserved" time="0.001" /><testcase classname="rawlsing_next.tests.test_fiabc_lm2_r1e_bounded_mapping_recovery" name="test_r14_semantic_identity_changes_only_downstream_of_mapping_ref" time="0.000" /><testcase classname="rawlsing_next.tests.test_fiabc_lm2_r1e_bounded_mapping_recovery" name="test_r17_native_only_mutation_cannot_preserve_frozen_string_workload" time="0.005"><failure message="ValueError: representation authority variable identity/ordinal mismatch">def test_r17_native_only_mutation_cannot_preserve_frozen_string_workload():
+&gt;       fields = fields3()
+                 ^^^^^^^^^
+
+rawlsing_next/tests/test_fiabc_lm2_r1e_bounded_mapping_recovery.py:208: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/tests/test_fiabc_lm2_r1e_bounded_mapping_recovery.py:65: in fields3
+    return dict(m.build_projection_fields(
+WORKER_RETURNS/EE-P2R6S/05_WVS7_PROJECTION_MATERIALIZER.py:867: in build_projection_fields
+    response_slots = tuple(
+WORKER_RETURNS/EE-P2R6S/05_WVS7_PROJECTION_MATERIALIZER.py:871: in &lt;genexpr&gt;
+    _response_value_rules(_variable_by_name(variables, name)),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+WORKER_RETURNS/EE-P2R6S/05_WVS7_PROJECTION_MATERIALIZER.py:676: in _response_value_rules
+    physical_value = authorized_decoder_physical_value(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def authorized_decoder_physical_value(
+        *,
+        source_sha256: str,
+        variable_name: str,
+        ordinal: int,
+        native_code: Any,
+    ) -&gt; float:
+        """Return only the exact decoder material explicitly authorized by R1J."""
+        if source_sha256 != SOURCE_SHA256:
+            raise ValueError("representation authority source SHA mismatch")
+        if Q291_VARIABLES.get(variable_name) != ordinal:
+&gt;           raise ValueError("representation authority variable identity/ordinal mismatch")
+E           ValueError: representation authority variable identity/ordinal mismatch
+
+rawlsing_next/fiabc_lm2_r1j_wvs7_representation_authority.py:176: ValueError</failure></testcase><testcase classname="rawlsing_next.tests.test_fiabc_lm2_r1e_bounded_mapping_recovery" name="test_mapping_rows_are_exact_ten_pair_graph_and_no_special_code_is_present" time="0.000" /><testcase classname="rawlsing_next.tests.test_fiabc_lm2_r1i_physical_native_hostile" name="test_global_exact_type_law_remains_int_float_distinct" time="0.001" /><testcase classname="rawlsing_next.tests.test_fiabc_lm2_r1i_physical_native_hostile" name="test_current_wvs_structural_projection_has_no_storage_type_representation_premise" time="62.928" /><testcase classname="rawlsing_next.tests.test_fiabc_lm2_r1i_physical_native_hostile" name="test_native_to_canonical_mapping_authority_does_not_bridge_physical_representation" time="66.510"><failure message="AssertionError: assert '47f141e43fb2...9761731ace7bd' == 'b9b720335f37...c77cc283bf6e8'&#10;  &#10;  - b9b720335f373dc4f7874f32acd003732ba7947b22b9d3dbb6bc77cc283bf6e8&#10;  + 47f141e43fb2a330ebd2286a0bb658eaa6320768d1bb75a0b969761731ace7bd">def test_native_to_canonical_mapping_authority_does_not_bridge_physical_representation():
+        module, projection, variables = _projection_and_variables()
+        slots = {slot.slot.name: slot for slot in projection.response_slots}
+        for q in QUESTIONS:
+            variable = variables[q]
+            rule = next(x for x in slots[q].values if x.canonical_value == "1")
+            state, declaration = classify_physical_value(1, variable.missing_declarations)
+&gt;           assert rule.physical_key == physical_value_binding_key(1, state, declaration)
+E           AssertionError: assert '47f141e43fb2...9761731ace7bd' == 'b9b720335f37...c77cc283bf6e8'
+E             
+E             - b9b720335f373dc4f7874f32acd003732ba7947b22b9d3dbb6bc77cc283bf6e8
+E             + 47f141e43fb2a330ebd2286a0bb658eaa6320768d1bb75a0b969761731ace7bd
+
+rawlsing_next/tests/test_fiabc_lm2_r1i_physical_native_hostile.py:46: AssertionError</failure></testcase><testcase classname="rawlsing_next.tests.test_fiabc_lm2_r1i_physical_native_hostile" name="test_nearby_unapproved_physical_representations_remain_distinct" time="0.001" /><testcase classname="rawlsing_next.tests.test_fiabc_lm2_r1i_physical_native_hostile" name="test_special_states_remain_noncanonical_and_mapping_authority_does_not_leak" time="65.049"><failure message="StopIteration">def test_special_states_remain_noncanonical_and_mapping_authority_does_not_leak():
+        module, projection, variables = _projection_and_variables()
+        slots = {slot.slot.name: slot for slot in projection.response_slots}
+        for q in QUESTIONS:
+            variable = variables[q]
+            for code in SPECIALS:
+                state, declaration = classify_physical_value(code, variable.missing_declarations)
+                int_key = physical_value_binding_key(code, state, declaration)
+&gt;               rule = next(x for x in slots[q].values if x.physical_key == int_key)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E               StopIteration
+
+rawlsing_next/tests/test_fiabc_lm2_r1i_physical_native_hostile.py:67: StopIteration</failure></testcase><testcase classname="rawlsing_next.tests.test_fiabc_lm2_r1i_physical_native_hostile" name="test_system_missing_remains_separate_from_user_missing_codes" time="67.198" /><testcase classname="rawlsing_next.tests.test_fiabc_lm2_r1i_physical_native_hostile" name="test_canonical_question_mapping_remains_absent" time="87.717" /><testcase classname="rawlsing_next.tests.test_fiabc_lm2_r1i_physical_native_hostile" name="test_common_authority_gate_does_not_treat_source_semantics_as_mapping" time="79.147" /><testcase classname="rawlsing_next.tests.test_fiabc_lm2_r1i_physical_native_inventory" name="test_r1i_exact_keyspace_inventory_and_difference" time="84.958" /><testcase classname="rawlsing_next.tests.test_fiabc_lm2_r1j_sav_representation_authority" name="test_global_int_float_physical_identity_remains_distinct" time="0.002" /><testcase classname="rawlsing_next.tests.test_fiabc_lm2_r1j_sav_representation_authority" name="test_representation_helper_is_exact_source_variable_code_and_type_bounded" time="0.002" /><testcase classname="rawlsing_next.tests.test_fiabc_lm2_r1j_sav_representation_authority" name="test_exact_r1i_float_carrier_keyspace_now_matches_governed_numeric_rules" time="72.352" /><testcase classname="rawlsing_next.tests.test_fiabc_lm2_r1j_sav_representation_authority" name="test_no_generic_numeric_coercion_was_added_to_c11_key_law" time="0.001" /><testcase classname="rawlsing_next.tests.test_fiabc_lm2_r1j_sav_representation_authority" name="test_special_codes_remain_noncanonical_and_system_missing_remains_separate" time="0.002" /><testcase classname="rawlsing_next.tests.test_fiabc_lm2_r1j_sav_representation_authority" name="test_substantive_mapping_ceiling_and_question_mapping_are_unchanged" time="0.003" /><testcase classname="rawlsing_next.tests.test_fiabc_lm2_r1j_sav_representation_authority" name="test_representation_authority_kind_is_distinct_and_narrow" time="0.001" /><testcase classname="rawlsing_next.tests.test_fiabc_lm2_r1j_sav_representation_authority" name="test_projection_and_response_binding_reissued_but_lock2_preserved" time="0.001" /><testcase classname="rawlsing_next.tests.test_fiabc_lm2_r1j_sav_representation_authority" name="test_non_wvs_behavior_and_candidate_boundary_remain_closed" time="0.001" /></testsuite></testsuites>

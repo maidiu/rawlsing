@@ -11,6 +11,17 @@
         "old": "            reader, self._source_snapshot.reader_path, chunksize=rows_per_chunk, encoding=self._encoding,",
         "new": "            reader, self._source_path, chunksize=rows_per_chunk, encoding=self._encoding,"
       }
+    },
+    {
+      "claim_id": "R04BYTEV_INDEPENDENT_ORIGINAL_PATH_REPLACEMENT_SNAPSHOT_BINDING",
+      "actual_consumer": "rawlsing_next.pre553_source_backed_c11_facade -> validated C11 RespondentEvent facts -> unchanged PRE553 I03 execute_empirical_query",
+      "claimed_dependency": "identity acquisition -> content-bound snapshot -> lazy SAV/DTA value read bound to the snapshot -> named C11/I03 fact payload unchanged after original-path replacement",
+      "positive_node": "rawlsing_next/tests/test_universal_source_byte_custody.py::test_independent_snapshot_bound_c11_i03_facts_survive_original_path_replacement",
+      "fault": {
+        "path": "rawlsing_next/pre553_physical_decoder.py",
+        "old": "            reader, self._source_snapshot.reader_path, chunksize=rows_per_chunk, encoding=self._encoding,",
+        "new": "            reader, self._source_path, chunksize=rows_per_chunk, encoding=self._encoding,"
+      }
     }
   ]
 }

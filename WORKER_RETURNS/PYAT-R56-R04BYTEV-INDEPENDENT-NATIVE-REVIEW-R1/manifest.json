@@ -1,0 +1,156 @@
+{
+  "schema": "PYAT_R56_R04BYTEV_INDEPENDENT_REVIEW_MANIFEST_R1",
+  "job": "R56-R04BYTEV",
+  "role": "independent native reviewer",
+  "verdict": "REVISE",
+  "candidate": "c1b0abec563a91940ae2f505b53a4c7e16f8685a",
+  "startup": "6d95a78bf6b7bcf70022e303a151255e65edc38a",
+  "author_branch": "agent/rabochii-pyat-r56-r04byte-consumed-byte-custody-r1",
+  "reviewer_branch": "agent/rabochii-pyat-r56-r04bytev-independent-custody-review-r1",
+  "authority_refs": {
+    "director_commission": "485f31e52",
+    "r57": "953eb07ad29cc424b2fc43cfeb13ef83355f3a50",
+    "direction": "6cdde972249f5897d23c10aeccadfb56f76933f7",
+    "shared_contract": "eb28fdcc311e2534b66def445e745cb25cb8a9bd",
+    "r00p_r2_startup": "6d95a78bf6b7bcf70022e303a151255e65edc38a"
+  },
+  "reviewer_session": {
+    "harness": "OpenCode",
+    "model": "opencode-go/deepseek-v4.1-flash",
+    "effort": "UNKNOWN_NOT_EXPOSED",
+    "session_id": "UNKNOWN_NOT_EXPOSED",
+    "host": "MacBook-Pro.lan",
+    "os": "macOS 13.2.1 (22D68) x86_64",
+    "python": "3.11.3",
+    "pytest": "9.0.2",
+    "pyreadstat": "1.3.2",
+    "pandas": "2.3.1"
+  },
+  "candidate_decoder_sha256": "d51f23e362afe93993d81718380bf95782d2a10f8121e42263386f7dcea6a796",
+  "candidate_decoder_git_blob": "b04c5e6397eb85ef81c7059da269569455e57e2f",
+  "qualification": {
+    "author_state_module": "16 passed",
+    "author_state_core": "80 passed, 1 skipped",
+    "skipped_capability": "rawlsing_next/tests/test_pre553_sr06_decoder_carrier.py:268 - installed pyreadstat writer/readback does not expose missing_user_values in metadata",
+    "post_addition_module": "2 failed, 17 passed",
+    "post_addition_core": "2 failed, 81 passed, 1 skipped",
+    "proof_lint": "AST_LINT_PASS",
+    "proof_witness": "baseline PASS / TARGET_ASSERTION_FAILED / BOUNDED_MUTATION_DETECTED (author + independent claims); decoder restored d51f23e3...",
+    "inherited_r1e_r1i_r1j": "candidate 10 failed / 24 passed; startup 10 failed / 24 passed; identical messages -> baseline-identical"
+  },
+  "defect": {
+    "summary": "private snapshot path is verified by fd but consumed by mutable path; replacement between verify and reader open rebinds old source identity to replacement-byte C11/I03 facts",
+    "reproduced_formats": [
+      "sav",
+      "dta"
+    ],
+    "affected_path": "rawlsing_next/pre553_physical_decoder.py",
+    "affected_lines": "171-178 (lazy), 607-619 (metadata/full read), 192-236 (_SourceSnapshot)",
+    "residual_same_root_cause": [
+      "metadata-phase snapshot path replacement",
+      "between-batch in-place same-size snapshot alteration"
+    ]
+  },
+  "files": [
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTEV-INDEPENDENT-NATIVE-REVIEW-R1/00_RETURN.md",
+      "sha256": "ebebb027c1d0a0a56dab3d2a6961a921e9eaa0a77f47eb932fcfe3e6f22c444a",
+      "bytes": 11920
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTEV-INDEPENDENT-NATIVE-REVIEW-R1/00_STARTUP_SESSION_RECORD.md",
+      "sha256": "beb736b086ec4b24afd196568f82dc81b01d7625f66fa5cf98dc7c6fa08bc3a6",
+      "bytes": 3850
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTEV-INDEPENDENT-NATIVE-REVIEW-R1/01_FROZEN_INDEPENDENT_EXPECTATIONS.md",
+      "sha256": "e701da9ecfe75c145cbd867753a02d61e1be637061d344efc175b9b77b3ddc44",
+      "bytes": 5163
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTEV-INDEPENDENT-NATIVE-REVIEW-R1/RESUME_CHECKPOINT.md",
+      "sha256": "fd7f6f1f0152f40f3fef00416e12f968a6551d9e30c6559950f871a91b687ac4",
+      "bytes": 1010
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTEV-INDEPENDENT-NATIVE-REVIEW-R1/evidence/author_state_reproduction_receipt.md",
+      "sha256": "a57a917232e35979fbb6f305978109c79bf315180ee8c81cb9465c40fdf0b00e",
+      "bytes": 1614
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTEV-INDEPENDENT-NATIVE-REVIEW-R1/evidence/baseline_r1e_r1i_r1j.xml",
+      "sha256": "0e7692d2f7728faf7b867a80ce4b7db4bf71043a75dd14da58fdf97b4f80f212",
+      "bytes": 21245
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTEV-INDEPENDENT-NATIVE-REVIEW-R1/evidence/candidate_r1e_r1i_r1j.xml",
+      "sha256": "807c45f07576b5ab932f299aefc8174f520fc04c2771608f3cf891ddea313c5a",
+      "bytes": 22707
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTEV-INDEPENDENT-NATIVE-REVIEW-R1/evidence/core_with_independent_receipt.txt",
+      "sha256": "bf98455c94fb9976bf0394944a9ed4dce2e76e8067bf9e68555359868ffdb7e1",
+      "bytes": 526
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTEV-INDEPENDENT-NATIVE-REVIEW-R1/evidence/independent_proof_witness.json",
+      "sha256": "4c4fdb58b8b7eab76ef4e6e47cdd4d284442dbf4463153a14b00d8223475e6bc",
+      "bytes": 967
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTEV-INDEPENDENT-NATIVE-REVIEW-R1/evidence/module_author16_receipt.txt",
+      "sha256": "d38ffdc1657d22a9f82f0dbbeefc6887d6885f3636a117283cd270d457525742",
+      "bytes": 865
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTEV-INDEPENDENT-NATIVE-REVIEW-R1/evidence/module_with_independent_receipt.txt",
+      "sha256": "b744e24ee38ed7f66ba73d2cb61bbd797b39bcabb3cae93ad4fb1b1619e6e395",
+      "bytes": 514
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTEV-INDEPENDENT-NATIVE-REVIEW-R1/evidence/probe_cold_replay.json",
+      "sha256": "0934bc4da5daf7723c3917b764b3540d6acfc53028b7049252a4e897918280e0",
+      "bytes": 1589
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTEV-INDEPENDENT-NATIVE-REVIEW-R1/evidence/probe_cold_replay.py",
+      "sha256": "fac0df816ed2c31f9f55ad47d4b866011581e5f237152d17b6abfd4e3d458810",
+      "bytes": 2898
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTEV-INDEPENDENT-NATIVE-REVIEW-R1/evidence/probe_metadata_and_batch_windows.json",
+      "sha256": "b8a9613f11d89fae655235baffb12431a23a3959e29e6c7a7a28ad4928ba1fb5",
+      "bytes": 2622
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTEV-INDEPENDENT-NATIVE-REVIEW-R1/evidence/probe_metadata_and_batch_windows.py",
+      "sha256": "8396f694628d32ac36c42f849356ec5efd9018faf953fe00126fbc0625af030f",
+      "bytes": 4190
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTEV-INDEPENDENT-NATIVE-REVIEW-R1/evidence/probe_snapshot_path_toctou.py",
+      "sha256": "a520e37b083e85aff501eb908cb0772772f9e20e52987793258a49b4d3ebc6dc",
+      "bytes": 2785
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTEV-INDEPENDENT-NATIVE-REVIEW-R1/evidence/probe_toctou_dta.json",
+      "sha256": "1ab281839be05c2520715e005420ea11f2cb0c46acc75f2d208a54525b17048e",
+      "bytes": 1020
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTEV-INDEPENDENT-NATIVE-REVIEW-R1/evidence/probe_toctou_sav.json",
+      "sha256": "bca3f549ae0b16fa05b2a412bf9140881084af2e4615a114b134e965adb4a970",
+      "bytes": 1020
+    },
+    {
+      "path": "rawlsing_next/tests/test_universal_source_byte_custody.py",
+      "sha256": "444f57cbd6fa95e2adb1ef7abae934c35607e5b84c3a519030140ad78caf3ed1",
+      "bytes": 18361
+    },
+    {
+      "path": "rawlsing_next/tests/test_universal_source_byte_custody.py.proof.json",
+      "sha256": "851939049199d9e1fd2d2942e5e25cff9997239a7cfd04dab5d4dccca8136b0c",
+      "bytes": 1868
+    }
+  ]
+}

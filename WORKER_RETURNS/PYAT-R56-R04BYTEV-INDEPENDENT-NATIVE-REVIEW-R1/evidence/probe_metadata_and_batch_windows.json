@@ -1,0 +1,170 @@
+{
+  "between_batch_window": {
+    "alternate_row_y": [
+      1,
+      1,
+      0
+    ],
+    "expected_source_sha256": "588ecd81e12ad70fe17d1170bf5e3938be0988e3159e0daae05871afc67c59f2",
+    "observed_batches": [
+      [
+        [
+          1,
+          "X",
+          1.0
+        ],
+        [
+          1,
+          "Y",
+          1.0
+        ],
+        [
+          1,
+          "M",
+          "AB"
+        ],
+        [
+          1,
+          "O",
+          "AB"
+        ]
+      ],
+      [
+        [
+          1,
+          "R",
+          "XY"
+        ],
+        [
+          1,
+          "G",
+          "A"
+        ],
+        [
+          1,
+          "W",
+          2.0
+        ]
+      ],
+      [
+        [
+          2,
+          "X",
+          1.0
+        ],
+        [
+          2,
+          "Y",
+          1.0
+        ],
+        [
+          2,
+          "M",
+          "AB"
+        ],
+        [
+          2,
+          "O",
+          "AB"
+        ]
+      ],
+      [
+        [
+          2,
+          "R",
+          "XY"
+        ],
+        [
+          2,
+          "G",
+          "A"
+        ],
+        [
+          2,
+          "W",
+          2.0
+        ]
+      ],
+      [
+        [
+          3,
+          "X",
+          null
+        ],
+        [
+          3,
+          "Y",
+          0.0
+        ],
+        [
+          3,
+          "M",
+          ""
+        ],
+        [
+          3,
+          "O",
+          "BA"
+        ]
+      ],
+      [
+        [
+          3,
+          "R",
+          "XZ"
+        ],
+        [
+          3,
+          "G",
+          "B"
+        ],
+        [
+          3,
+          "W",
+          3.0
+        ]
+      ]
+    ],
+    "row1_y": [
+      [
+        1,
+        "Y",
+        1.0
+      ]
+    ],
+    "row2_y": [],
+    "row3_y": [
+      [
+        2,
+        "Y",
+        1.0
+      ]
+    ],
+    "verify_after": "DecoderError: source snapshot bytes changed after identity acquisition"
+  },
+  "metadata_window": {
+    "attacked_snapshot_sha256": "588ecd81e12ad70fe17d1170bf5e3938be0988e3159e0daae05871afc67c59f2",
+    "attacked_source_sha256": "588ecd81e12ad70fe17d1170bf5e3938be0988e3159e0daae05871afc67c59f2",
+    "attacked_variable_names": [
+      "X",
+      "Y",
+      "M",
+      "O",
+      "R",
+      "G",
+      "Z"
+    ],
+    "expected_source_sha256": "588ecd81e12ad70fe17d1170bf5e3938be0988e3159e0daae05871afc67c59f2",
+    "metadata_consumed_replacement": true,
+    "original_variable_names": [
+      "X",
+      "Y",
+      "M",
+      "O",
+      "R",
+      "G",
+      "W"
+    ],
+    "raw_header_from_original_snapshot_fd": "abaf3429030fc032892755ef8a2ef77aad501ac217c1fbe1c78050e89d3db091"
+  }
+}
