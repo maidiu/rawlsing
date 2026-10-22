@@ -44,6 +44,11 @@
       "sha256": "dcd54564eec0fa8dd7c92e2a4cbaee5ef9a33f050b9c6a0ed868a916f0cc0e11"
     },
     {
+      "bytes": 2263,
+      "path": "WORKER_RETURNS/PYAT-R56-R02V-INDEPENDENT-NATIVE-REVIEW-R1/revisions/r2/04_REMOTE_READBACK.md",
+      "sha256": "4965df510479b3b49941c857d55229c3f97e2afa342d12c1a700746d970834ce"
+    },
+    {
       "bytes": 1526,
       "path": "WORKER_RETURNS/PYAT-R56-R02V-INDEPENDENT-NATIVE-REVIEW-R1/revisions/r2/RESUME_CHECKPOINT.md",
       "sha256": "ee80e66fd040025783ba62e2f041b2666636fb7fbf4fcd88d0f45e0ba7b95d6e"
@@ -52,6 +57,11 @@
       "bytes": 1701,
       "path": "WORKER_RETURNS/PYAT-R56-R02V-INDEPENDENT-NATIVE-REVIEW-R1/revisions/r2/evidence/author15_nodeids.txt",
       "sha256": "6862f734c9f94a056ea43f392b9a63d1b48dcd1360c1232c95db3c1fee15cb56"
+    },
+    {
+      "bytes": 3919,
+      "path": "WORKER_RETURNS/PYAT-R56-R02V-INDEPENDENT-NATIVE-REVIEW-R1/revisions/r2/evidence/changed_gate.json",
+      "sha256": "08f791abebe03e709a4dd98542669de57b7033ec1deee14702d518cb89a0aa65"
     },
     {
       "bytes": 275,
@@ -184,7 +194,13 @@
     "witness": "MECHANICAL_WITNESS_PASS_NOT_SEMANTIC_ADOPTION"
   },
   "remote_readback": {
-    "status": "PENDING_UNTIL_PUSH"
+    "ancestry_ok": true,
+    "changed_gate": "evidence/changed_gate.json",
+    "documentary_commit_note": "this manifest and 04_REMOTE_READBACK.md are pushed in a separate documentary commit whose head is read back in the completion message",
+    "remote_sha_at_readback": "da9a8c4e0ce66baf5a55a6b44a9c0e0139a47cec",
+    "scope": "test/proof/own-return only; production diff empty",
+    "status": "TECHNICAL_COMMIT_PUSHED_AND_VERIFIED",
+    "technical_commit": "da9a8c4e0ce66baf5a55a6b44a9c0e0139a47cec"
   },
   "return_root": "WORKER_RETURNS/PYAT-R56-R02V-INDEPENDENT-NATIVE-REVIEW-R1/revisions/r2",
   "review_shared_rules": "485f31e52ca82905dcfbbc79c5f8c8294fb55f49",
