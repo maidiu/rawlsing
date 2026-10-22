@@ -1,0 +1,97 @@
+{
+  "schema": "PYAT_R56_R04BYTE_RETURN_MANIFEST_R1",
+  "job": "R56-R04BYTE",
+  "status": "PREPARED_CANDIDATE__AUTHOR_ENGINEERING_QUALIFIED__R04BYTEV_REVIEW_REQUIRED",
+  "branch": "agent/rabochii-pyat-r56-r04byte-consumed-byte-custody-r1",
+  "startup": "6d95a78bf6b7bcf70022e303a151255e65edc38a",
+  "policy_admission": {
+    "r56_motion": "fcbb2ee1d7a6eae040e0964bb8474e8d04d47989",
+    "r57_admission": "953eb07ad",
+    "r00p_r2_commit": "6d95a78bf6b7bcf70022e303a151255e65edc38a",
+    "r00p_r2_contract_blob": "01ccb46475ba09fe868a59c8810a12de1190dc22",
+    "r00p_r2_policy_blob": "5f5d0253cfc8e1eef2e452e54bae631c23da378f"
+  },
+  "author": {
+    "role": "R04BYTEE implementation author",
+    "model": "opencode-go/deepseek-v4.1-flash",
+    "harness": "OpenCode",
+    "effort": "UNKNOWN_NOT_EXPOSED",
+    "host": "mainMac",
+    "python": "3.11.3",
+    "pytest": "9.0.2",
+    "pyreadstat": "1.3.2"
+  },
+  "separation": {
+    "r00p_policy_owner": "distinct Browser R00P author; not this session",
+    "r02_author": "distinct branch/session; not this session",
+    "native_reviewer": "R56-R04BYTEV NOT_RUN; must be distinct from this author"
+  },
+  "mechanism": {
+    "contract": "PRE553_CONTENT_BOUND_SOURCE_SNAPSHOT@1.0.0",
+    "acquisition": "private hashed source snapshot before reader; expected-digest gate",
+    "identity_reads": "metadataonly, compatibility full read, raw prefix and lazy read_file_in_chunks consume the snapshot",
+    "refusal": "typed DecoderError for absent, closed or altered snapshot and old-digest changed source",
+    "cleanup": "PhysicalSourceIncidence.close removes snapshot and private directory"
+  },
+  "qualification": {
+    "core_command": "python3 -m pytest rawlsing_next/tests/test_universal_source_byte_custody.py rawlsing_next/tests/test_pre553_sr06_decoder_carrier.py rawlsing_next/tests/test_r35_i01_physical_metadata.py rawlsing_next/tests/test_pre553_source_backed_c11_facade.py rawlsing_next/tests/test_pre553_source_backed_c11_facade_multi_owner_r1.py rawlsing_next/tests/test_pre553_route_b_production.py rawlsing_next/tests/test_fiabc_lits_i_representation_authority.py rawlsing_next/tests/test_fiabc_lm1_r1e_n1_physical_boundary.py -q",
+    "core_result": "80 passed, 1 skipped",
+    "new_test_result": "16 passed",
+    "proof_witness": "MECHANICAL_WITNESS_PASS_NOT_SEMANTIC_ADOPTION",
+    "proof_fault": "TARGET_ASSERTION_FAILED",
+    "inherited_reds": "Additional R1E/R1I/R1J suites: 24 passed, 10 failed on pre-existing frozen-authority/artifact mismatches; not attributed to this candidate and not claimed as qualification."
+  },
+  "files": [
+    {
+      "path": "rawlsing_next/pre553_physical_decoder.py",
+      "git_blob": "b04c5e6397eb85ef81c7059da269569455e57e2f",
+      "sha256": "d51f23e362afe93993d81718380bf95782d2a10f8121e42263386f7dcea6a796",
+      "bytes": 27689
+    },
+    {
+      "path": "rawlsing_next/tests/test_universal_source_byte_custody.py",
+      "git_blob": "c5e1091a0058c1c54324c46d83c2ca903c42001c",
+      "sha256": "d398ec88694057795041e0f78aeac4c538afa9c588a6a4c03db31f907d8daffb",
+      "bytes": 15804
+    },
+    {
+      "path": "rawlsing_next/tests/test_universal_source_byte_custody.py.proof.json",
+      "git_blob": "e9e8121bbc8a18721d24dcedb1e23d415e68e02b",
+      "sha256": "1019fd934c63a222c4691f17d5f09a655038a01c7d28f2204c9730940017a5bc",
+      "bytes": 929
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTE-CONSUMED-BYTE-CUSTODY-R1/00_RETURN.md",
+      "sha256": "e1cc241d8a975c5a43abe45145541f040d22b7272b64bb052b78cf614a42ab2a",
+      "bytes": 7224
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTE-CONSUMED-BYTE-CUSTODY-R1/RESUME_CHECKPOINT.md",
+      "sha256": "36727f07a6dc679e66416b542dde1629b2078477492d7dcceb8d01a6cfe39995",
+      "bytes": 879
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTE-CONSUMED-BYTE-CUSTODY-R1/evidence/byte_identity_probe.json",
+      "sha256": "3c4e118b2c199ee359f09b5a24fb595e6cfb66bc017e652d479d2c44eac2871c",
+      "bytes": 1888
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTE-CONSUMED-BYTE-CUSTODY-R1/evidence/core_test_receipt.txt",
+      "sha256": "e2bb460b1f513a7196247660605ca0cbaa996f1d5fc4c6e5e63e3003c683de1a",
+      "bytes": 191
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R56-R04BYTE-CONSUMED-BYTE-CUSTODY-R1/evidence/proof_witness.json",
+      "sha256": "137fc24eb28475eaec2117dfe79b1b281637784ff671c575cde82f58da4b968a",
+      "bytes": 523
+    }
+  ],
+  "claims_not_made": [
+    "R04.joined",
+    "joined issued workload",
+    "partial interrupted Batch/revocation/dedup lifecycle",
+    "original source or original35/N11 measurement",
+    "protected R09 CI or production promotion",
+    "independent native acceptance"
+  ]
+}
