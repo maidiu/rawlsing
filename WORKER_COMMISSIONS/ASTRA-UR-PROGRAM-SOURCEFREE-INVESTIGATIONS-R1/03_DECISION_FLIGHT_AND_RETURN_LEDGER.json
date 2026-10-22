@@ -3,7 +3,7 @@
   "director_branch": "agent/astra-ur-program-sourcefree-evidence-direction-r1",
   "control": "fee875733a4ee653908a440dea41243e4688d71c",
   "u53a": "d7988b3d5d313902d883d2d8c244fd2526058410",
-  "program_phase": "R56_PROTOCOL_SYNCHRONIZED__POLICY_CONTENT_ACTIVE__HQ_SEAL_RECONCILIATION_PENDING",
+  "program_phase": "R56_R00P_RETURN_INTAKE__BOUNDED_CONTENT_REVISION_AND_HQ_SEAL_PENDING",
   "authority": "DIRECT_USER_DELEGATED_SOURCEFREE_INVESTIGATION_ONLY",
   "issued": [
     {
@@ -65,10 +65,14 @@
       "id": "R56-R00P",
       "branch": "agent/browser-pyat-r56-r00-independent-policy-r1",
       "startup": "fcbb2ee1d7a6eae040e0964bb8474e8d04d47989",
-      "status": "USER_REPORTED_RUNNING_EXTERNAL__POLICY_CONTENT_ALLOWED__HQ_ADMISSION_PENDING",
+      "status": "RETURNED_CUSTODY_VERIFIED__CONTENT_REVISE_P1_P2__HQ_ADMISSION_PENDING",
       "role": "Independent TEST_ONLY policy owner, not gate author/reviewer",
       "commission": "WORKER_COMMISSIONS/PYAT-R56-FIRST-REPAIR-FLIGHT-R1/R00P/00_COMMISSION.md",
-      "route": "BROWSER_I2_S1_S2"
+      "route": "BROWSER_I2_S1_S2",
+      "return_sha": "57b10c0355af6df78d6a42d918a838bba3eaf5bc",
+      "intake": "WORKER_COMMISSIONS/PYAT-R56-FIRST-REPAIR-FLIGHT-R1/08_R00P_RETURN_INTAKE.md",
+      "correction": "WORKER_COMMISSIONS/PYAT-R56-FIRST-REPAIR-FLIGHT-R1/09_R00P_CONTENT_CORRECTION_REQUEST.md",
+      "new_correction_worker_launched": false
     }
   ],
   "not_issued": [
@@ -133,7 +137,7 @@
     "return_sha": "a9fc811ecc2a10e07b5bcc2d5da385369ee59554",
     "reruns": 0
   },
-  "next_action": "Preserve active policy draft; exact HQ seal/appointment or bounded delegation per R56 packet06 before native dispatch; grant itself remains active",
+  "next_action": "Same policy owner bounded successor P1/P2; existing competent HQ seal/delegation still required; nativeR00E not launched",
   "architectural_blockers": [],
   "current_ruling": "12_BOUNDED_REPAIR_ALLOCATION_DECISION.md",
   "final_package": {

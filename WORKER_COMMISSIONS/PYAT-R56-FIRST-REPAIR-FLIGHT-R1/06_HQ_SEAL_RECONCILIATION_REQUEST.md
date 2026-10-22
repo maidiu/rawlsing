@@ -14,3 +14,6 @@ No policy directory/protectedCI/engine scope expansion is implied.
 4. Publish this decision through the existing progress and immutable handoff mechanism, with exact remote verification.
 
 No new architecture, general audit, extra scientific review, new code grant or routine approval of every in-scope repair requested. Existing R56 authorization remains. J52/W52, other Rnodes, R04.joined/R03, original source/science, protectedCI, production/N11/N12/Sorok holds persist. Do not launch/relaunch workers as a side effect of adjudicating this request. Exact native E/V startups will be sealed from actual returns; no fictional future SHA.
+
+## Actual return now available —2026-10-22
+R00P57b10c0355af6df78d6a42d918a838bba3eaf5bc is custody-verified; read08 for scoped contentREVISE P1/P2 and09 same-owner correction. Do not admit the original freeze as corrected or native-qualified. Apply the requested role/seal decision against exact returned content and successor when available. This update does not demand a second architecture/science review or reauthorize the existing codegrant.
