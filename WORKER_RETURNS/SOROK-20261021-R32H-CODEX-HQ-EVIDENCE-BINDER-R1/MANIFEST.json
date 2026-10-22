@@ -1,0 +1,94 @@
+{
+  "contradictions_and_stale_files": [
+    "SOROK_PRODUCT_CONTROL_ROOM/CURRENT_PROGRESS.md rev29 at fcbb2ee still labels R31J/R31E as physically sealed; direct return branches are newer.",
+    "PYAT_CONTROL_ROOM/CURRENT_PROGRESS.md rev42/R56 is newer than the rev29 cross-reference; R56 is a narrow sourcefree code unpause, not N11/N12/C11.",
+    "R31J GM01 source is an owned pre-C9 adapter, not a first-class BP2 cutover.",
+    "R31E is deterministic 60-template expression; full inherited 155 and live external model are NOT_RUN.",
+    "R31J and R31E have different C12 targets and no joint consumer test."
+  ],
+  "deliverables": [
+    {
+      "bytes": 10787,
+      "path": "00_RETURN.md",
+      "sha256": "e81d60419120eae02563d5218d9caf23c845afec4b2c168f984d3fb1d831fd6c"
+    },
+    {
+      "bytes": 14515,
+      "path": "01_READ_THIS_FIRST.md",
+      "sha256": "22ae500a9136268502fe2cfe96ad4a8130c4250bbb88567cf7e1bf5dd4be0889"
+    },
+    {
+      "bytes": 16491,
+      "path": "02_LIVE_SOURCE_AND_RETURN_INDEX.json",
+      "sha256": "173287d95d62f5dd6846fdab4422e1e907a73501347fd5c84396048ec113d24b"
+    },
+    {
+      "bytes": 39910,
+      "path": "03_SOROK_08_FIFTEEN_GATES_EVIDENCE_MATRIX.md",
+      "sha256": "282a6bc8ab5da3074aad02d9e37622083e10f9ccc61d623bf1ab6ed1e05963c7"
+    },
+    {
+      "bytes": 26173,
+      "path": "04_C12_BACKWARD_BUILD_REUSE_FUNCTION_ATLAS.md",
+      "sha256": "2f2883d65b8e2a154ede989f00829e8bb038f3fef33221849517a07b641fab46"
+    },
+    {
+      "bytes": 14260,
+      "path": "05_WORKER_EVIDENCE_AND_HQ_DECISION_DOCKET.md",
+      "sha256": "a7736c70648bef87a835bf3e882b46ccce3cf79e7dfe73fab57d26dcbc65c694"
+    },
+    {
+      "bytes": 10884,
+      "path": "06_CODEX_DYNAMIC_REASONING_AND_CURRENT_FLIGHT.md",
+      "sha256": "89e23b654bcafc8f5fa3a8117866390be0bfe88c1ae3434c10ae0f55bf2ec733"
+    },
+    {
+      "bytes": 13000,
+      "path": "07_EXACT_GROK_AND_ACCREDITATION_CHECKLIST.md",
+      "sha256": "f4ddbeeff4507835ecd28ab707fd58c5ccd0ae95dc03306ccbf4688981f2d2c2"
+    }
+  ],
+  "generated_at_utc": "2026-10-22T01:40:00Z",
+  "manifest_self_hash": "EXCLUDED__SELF_REFERENCE_NOT_MEANINGFUL",
+  "no_copied_raw_source": true,
+  "no_hidden_repo_cache": true,
+  "planned_publication_receipt": "PUBLICATION_RECEIPT.json (created after the substantive binder commit; not included in this pre-publication hash list)",
+  "read_cut": {
+    "pre_main": "fcbb2ee1d7a6eae040e0964bb8474e8d04d47989",
+    "pyat_owner_observed": "fec52be042508c613dd2c7dec0676281232e0c48",
+    "r31e": "a2760d3687b063513fe0a5b9589c56c998d4ccb5",
+    "r31j": "64fec28c374d8f77fb0b412d0c934d798ede03e8",
+    "sorok_owner": "ecaf3e5aac6f0d95db2145e70377adfa1fb0be9e"
+  },
+  "repository": "maidiu/rawlsing",
+  "schema": "SOROK_R32H_EVIDENCE_BINDER_MANIFEST@1",
+  "status": "READY_FOR_CANDIDATE_INDEPENDENT_GROK__NOT_CANDIDATE_PASS",
+  "task": "SOROK-20261021-R32H-CODEX-HQ-ACCESSION-EVIDENCE-AND-RETURN-INTEGRATION-BINDER-R1",
+  "tests_not_run": [
+    "R31J 202 author tests were not rerun by R32H.",
+    "R31E 15+10+5 author tests were not rerun by R32H.",
+    "R31E full inherited 155 were not run.",
+    "No native CAN/ADP/C8/Pyat/C11/C12 test was run.",
+    "No human A5 study was run."
+  ],
+  "verification_commands": [
+    "python3 -m json.tool 02_LIVE_SOURCE_AND_RETURN_INDEX.json",
+    "python3 -m json.tool MANIFEST.json",
+    "shasum -a 256 <file>  # compare with deliverables[].sha256",
+    "git ls-remote origin refs/heads/integration/pre-main-reconciliation-r1 refs/heads/agent/vozhd-sorok-20261020-accepted-successor-hq-r1 refs/heads/agent/rabochii-sorok-20261021-r31j-gm01-pre-c9-owner-source-first-person-r1 refs/heads/agent/rabochii-sorok-20261021-r31e-actor-expression-binding-first-neighbor-r1",
+    "git fetch --no-tags origin 64fec28c374d8f77fb0b412d0c934d798ede03e8 a2760d3687b063513fe0a5b9589c56c998d4ccb5",
+    "git cat-file blob 64fec28c374d8f77fb0b412d0c934d798ede03e8:WORKER_RETURNS/SOROK-20261021-R31J-GM01-PREC9-SOURCE-PERSON-R1/00_RETURN.md | shasum -a 256",
+    "git cat-file blob a2760d3687b063513fe0a5b9589c56c998d4ccb5:WORKER_RETURNS/SOROK-20261021-R31E-ACTOR-EXPRESSION-FIRST-NEIGHBOR-R1/00_RETURN.md | shasum -a 256"
+  ],
+  "worker": {
+    "accession_performed": false,
+    "branch": "agent/rabochii-sorok-20261021-r32h-codex-hq-accession-evidence-binder-r1",
+    "editor_harness": "OpenCode",
+    "exact_startup": "ecaf3e5aac6f0d95db2145e70377adfa1fb0be9e",
+    "execution_surface": "S2_LOCAL_GIT_AND_FILESYSTEM",
+    "model_observed": "DeepSeek V4.1-Flash",
+    "reasoning_requested": "MAX",
+    "role": "INDEPENDENT_SOURCEFREE_I2_DOCUMENTARY_AND_EVIDENCE_PACKAGING_WORKER__NOT_HQ__NOT_REVIEWER",
+    "single_agent": true
+  }
+}

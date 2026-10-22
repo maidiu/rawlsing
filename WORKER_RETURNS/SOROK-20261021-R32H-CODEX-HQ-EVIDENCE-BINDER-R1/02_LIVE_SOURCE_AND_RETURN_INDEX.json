@@ -1,0 +1,318 @@
+{
+  "schema": "SOROK_R32H_LIVE_SOURCE_AND_RETURN_INDEX@1",
+  "generated_at_utc": "2026-10-22T01:27:03Z",
+  "repository": "maidiu/rawlsing",
+  "repository_private": true,
+  "worker": {
+    "commission": "WORKER_COMMISSIONS/SOROK-20261021-R32H-CODEX-HQ-ACCESSION-EVIDENCE-AND-RETURN-INTEGRATION-BINDER-R1/00_COMMISSION.md",
+    "branch": "agent/rabochii-sorok-20261021-r32h-codex-hq-accession-evidence-binder-r1",
+    "exact_startup": "ecaf3e5aac6f0d95db2145e70377adfa1fb0be9e",
+    "role": "INDEPENDENT_SOURCEFREE_I2_DOCUMENTARY_AND_EVIDENCE_PACKAGING_WORKER__NOT_HQ__NOT_REVIEWER",
+    "model_observed_by_worker": "DeepSeek V4.1-Flash",
+    "reasoning_requested": "MAX",
+    "provider_editor_harness": "OpenCode",
+    "execution_surface": "S2_LOCAL_GIT_AND_FILESYSTEM",
+    "single_agent": true,
+    "subagents": "NONE",
+    "model_switch": "NONE",
+    "accession_performed": false,
+    "accession_verdict": "NONE"
+  },
+  "read_cut": {
+    "canonical_pre_main": {
+      "ref": "refs/heads/integration/pre-main-reconciliation-r1",
+      "commit": "fcbb2ee1d7a6eae040e0964bb8474e8d04d47989",
+      "commit_date": "2026-10-21",
+      "subject": "Pyat R56: advance canonical pointer to user narrow code unpause",
+      "sorok_progress_revision": 29,
+      "pyat_progress_revision": 42,
+      "source": "git ls-remote + exact fetch + git show"
+    },
+    "sorok_owner": {
+      "ref": "refs/heads/agent/vozhd-sorok-20261020-accepted-successor-hq-r1",
+      "commit": "ecaf3e5aac6f0d95db2145e70377adfa1fb0be9e",
+      "commit_date": "2026-10-21",
+      "subject": "Sorok R32H: one source-pinned Codex HQ succession preparation binder, 15-gate evidence and R31 joined-return docket",
+      "note": "This is both the R32H exact startup and the observed Sorok owner head at the cut."
+    },
+    "pyat_owner": {
+      "ref": "refs/heads/agent/vozhd-pyat-20261021-standby-full-accession-r1",
+      "commit": "fec52be042508c613dd2c7dec0676281232e0c48",
+      "observed": "DIRECT_GIT_LS_REMOTE",
+      "object_fetched": false,
+      "note": "Pyat owner branch is not Pyat canonical progress. Pyat progress revision 42 is on PRE-MAIN."
+    },
+    "r31j": {
+      "ref": "refs/heads/agent/rabochii-sorok-20261021-r31j-gm01-pre-c9-owner-source-first-person-r1",
+      "commit": "64fec28c374d8f77fb0b412d0c934d798ede03e8",
+      "observed": "DIRECT_GIT_LS_REMOTE_AND_EXACT_FETCH",
+      "local_object": true
+    },
+    "r31e": {
+      "ref": "refs/heads/agent/rabochii-sorok-20261021-r31e-actor-expression-binding-first-neighbor-r1",
+      "commit": "a2760d3687b063513fe0a5b9589c56c998d4ccb5",
+      "observed": "DIRECT_GIT_LS_REMOTE_AND_EXACT_FETCH",
+      "local_object": true
+    },
+    "other_worker_heads": {
+      "r30g": "024e77f07b74a333c6d65aca3ee2d7cb9154d584",
+      "r30a": "ce0dfc67ef5058338f4d7161d32a8cb5bdf733a6",
+      "r29p": "001b506fa26ae879ff5b6e57138fc2696e12b538"
+    }
+  },
+  "return_index": {
+    "r31j": {
+      "branch": "agent/rabochii-sorok-20261021-r31j-gm01-pre-c9-owner-source-first-person-r1",
+      "remote_final_head": "64fec28c374d8f77fb0b412d0c934d798ede03e8",
+      "substantive_commit": "b186105367089cfde03c5e6ee6600e42f3c40279",
+      "substantive_parent": "9a9b8a61daf4bf78e2885436924e5235f26f5772",
+      "publication_receipt_commit": "64fec28c374d8f77fb0b412d0c934d798ede03e8",
+      "return_path": "WORKER_RETURNS/SOROK-20261021-R31J-GM01-PREC9-SOURCE-PERSON-R1/00_RETURN.md",
+      "return_blob_oid": "b65f28098d4eea4beaaeceb7c6d7c22c034d0afc",
+      "return_sha256": "22429ad446fbedaec8f4791bca4976be999001309b0072a5e4732cbf76522fa7",
+      "status": "RETURNED_AUTHOR_REMOTE_VERIFIED",
+      "human_local_process": "UNKNOWN",
+      "author_scope": "TEST_ONLY sourcefree GM01 pre-C9 source bound inside C8; C9 target/NO_CHANGE; later E2; C12/A0/A2",
+      "not_native": true
+    },
+    "r31e": {
+      "branch": "agent/rabochii-sorok-20261021-r31e-actor-expression-binding-first-neighbor-r1",
+      "remote_final_head": "a2760d3687b063513fe0a5b9589c56c998d4ccb5",
+      "substantive_commit": "cdc0825600cebc99c8acb1f54ea1b0ee0cbae7a8",
+      "substantive_parent": "9a9b8a61daf4bf78e2885436924e5235f26f5772",
+      "publication_receipt_commit": "a2760d3687b063513fe0a5b9589c56c998d4ccb5",
+      "return_path": "WORKER_RETURNS/SOROK-20261021-R31E-ACTOR-EXPRESSION-FIRST-NEIGHBOR-R1/00_RETURN.md",
+      "return_blob_oid": "5a6f7ac41e8da25ef7d685a35a4436af2307ec0b",
+      "return_sha256": "189529e54dc491f06c8137afc9595c0d6967dd6fb962bd307296e0a5e0e8e764",
+      "status": "RETURNED_AUTHOR_REMOTE_VERIFIED",
+      "human_local_process": "UNKNOWN",
+      "author_scope": "TEST_ONLY sourcefree actor-conditioned expression/admission over R30A/R29P C12/M6; deterministic 60-template grammar; no live external model",
+      "not_native": true
+    }
+  },
+  "canonical_progress": {
+    "sorok": {
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/CURRENT_PROGRESS.md",
+      "commit": "fcbb2ee1d7a6eae040e0964bb8474e8d04d47989",
+      "revision": 29,
+      "blob_oid": "3cc53784868fe9a85310f3a9b4236ce57020146a",
+      "sha256": "8c419cc015cece3d1156d84fa12a5065526b7dbfc76d80d353abf27397d6439f",
+      "stale_contradiction": "Revision 29 labels R31J/R31E as PHYSICALLY SEALED even though both exact branches have direct remote returns at later commits. The pair is documentary evidence of return, not adopted current law."
+    },
+    "pyat": {
+      "path": "PYAT_CONTROL_ROOM/CURRENT_PROGRESS.md",
+      "commit": "fcbb2ee1d7a6eae040e0964bb8474e8d04d47989",
+      "revision": 42,
+      "blob_oid": "ebbc5a70b3647a6679644fead61ab8ea6fb08726",
+      "sha256": "0c10c4a402a42606b56bacbf4944bc9a2f2215aadb430258adeebc6653bba598",
+      "scope": "R56 narrow sourcefree R00/R02/R04.byte unpause; J52/W52 stopped; N11/N12 not granted"
+    }
+  },
+  "controlling_sources": [
+    {
+      "id": "SOROK_08",
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/08_PERENNIAL_FRESH_HQ_FULL_ACCESSION_AND_GROK_PROTOCOL_R1.md",
+      "commit": "ecaf3e5aac6f0d95db2145e70377adfa1fb0be9e",
+      "blob_oid": "f1afe1e20d6a0a7100f4c0867e3de8ea4c22c01f",
+      "sha256": "e75fe0d804b1714d21d6ef2c2fcbc26957003627460f1ae9742ed1dd9b79f1aa",
+      "use": "15 accession categories, no self-adoption, three realities, independent review"
+    },
+    {
+      "id": "SOROK_00E",
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/00E_NEEDS_FIRST_PERSON_PRODUCTION_HQ_GROK_QUALIFICATION_R1.md",
+      "commit": "ecaf3e5aac6f0d95db2145e70377adfa1fb0be9e",
+      "blob_oid": "c82c00af983b400b8710809ae45eb509eb5f66c7",
+      "sha256": "cac55eced1c51f86380996de01b60f28193c9677c883d5c50d559be01ac36490",
+      "use": "C12-backward function and build/reuse/authority discipline"
+    },
+    {
+      "id": "SOROK_00C",
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/00C_HQ_PROMPT_DISPENSATION_AGENT_ROUTING_AND_ORCHESTRATION_CONSTITUTION_R1.md",
+      "commit": "ecaf3e5aac6f0d95db2145e70377adfa1fb0be9e",
+      "blob_oid": "0419261f09c79bb5d605ea9670e59fcdd87b2360",
+      "sha256": "f2472dc7382a21a673f2220723c7c71c9302d85c7f75f9fefd8e667d96fb6558",
+      "use": "section 9 mandatory commission format and model/execution/authority separation"
+    },
+    {
+      "id": "SOROK_00_FULL",
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/00_FULL_RAWLSING_VOZHD_GROUNDING_GATE_R1.md",
+      "commit": "ecaf3e5aac6f0d95db2145e70377adfa1fb0be9e",
+      "blob_oid": "ac6f4033a147ca8d2fe9a969c0e178b8a7ff3276",
+      "sha256": "0dbeb0f040088301919502fb82f73b95cc2035e4e29ae83fd2ca30590c015d75",
+      "use": "general Rawlsing grounding and noncollapse gates"
+    },
+    {
+      "id": "SOROK_00A",
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/00A_VOZHD_TAKEOVER_RELATIONAL_PSYCHIC_GATE_R1.md",
+      "commit": "ecaf3e5aac6f0d95db2145e70377adfa1fb0be9e",
+      "blob_oid": "41a874e803d7288c183780514605eb64fccd749e",
+      "sha256": "792139be685fd62bb2ac54b07dc9ccf0aa3c7ad80039385aff967cb7c5afedf5",
+      "use": "PFF/V3/CAN008/CAN011/V2 owner reduction and relationalization"
+    },
+    {
+      "id": "SOROK_100",
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/100_MINIMAL_WHITE_WHALE_ALPHA_AND_FIDELITY_ESCALATION_CONSTITUTION_R1.md",
+      "commit": "ecaf3e5aac6f0d95db2145e70377adfa1fb0be9e",
+      "blob_oid": "bd08a138ebf82522d7c90bb7e702d79697b3c240",
+      "sha256": "8183c0ab653380505c736894f9d794c3e428fa9743819d55c93a976220b34583",
+      "use": "constitutive alpha core, fidelity frontier, A0-A5 gates"
+    },
+    {
+      "id": "SOROK_101",
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/101_BINDING_SURFACE_ACTOR_PHENOMENOLOGY_SEGREGATION_AND_TWO_CALL_RENDERING_R1.md",
+      "commit": "ecaf3e5aac6f0d95db2145e70377adfa1fb0be9e",
+      "blob_oid": "51f0fd1fa95da641d40ec5fb94e879fcbf0ae7a1",
+      "sha256": "877b186abd7b683330d58f9b8e414469003f7126ab963f7f3691867a222ef8e4",
+      "use": "actor/world occurrence before user phenomenal projection; exact emitted surface binding"
+    },
+    {
+      "id": "CAN008_AUTHORITY",
+      "path": "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/release/W1_CRITICAL_AUTHORITY_EXPANSION/CAN_008_V3_PRESSURE_FLOW_RESPONSE/AUTHORITY.md",
+      "commit": "fcbb2ee1d7a6eae040e0964bb8474e8d04d47989",
+      "blob_oid": "976c59086b938992114f68621f149687670e306d",
+      "sha256": "e0d40620ed55936d12bc6fe84f8daad4add284bb85891d907a1c562bb31280eb",
+      "use": "CAN008 jurisdiction; no raw structure-to-psyche; exact rule/target separation"
+    },
+    {
+      "id": "CAN011_AUTHORITY",
+      "path": "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/release/W1_CRITICAL_AUTHORITY_EXPANSION/CAN_011_V3_MIDDLE_STATE/AUTHORITY.md",
+      "commit": "fcbb2ee1d7a6eae040e0964bb8474e8d04d47989",
+      "blob_oid": "1ed04e62a363493bc7032a99139454a3126e6ea0",
+      "sha256": "b09eb1fb10630dcd6abfbd1062b8e5d5f6d01f70166b04d8b2a0c5d01f34e611",
+      "use": "CAN011 three middle-state kinds; not CAN008 target authority"
+    },
+    {
+      "id": "ADP019_AUTHORITY",
+      "path": "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/release/W0_AUTHORITY_FOUNDATION/ADP_019_V3_EXTERNAL_ADMISSION/AUTHORITY.md",
+      "commit": "fcbb2ee1d7a6eae040e0964bb8474e8d04d47989",
+      "blob_oid": "5c38772ea193e5a3f20da23c16df086a153ab2f2",
+      "sha256": "14735f17865643a53f8bc819aa268cb3025653a13ab15a2488aba4a20383a3bc",
+      "use": "external event admission; proposal/event/artifact identity"
+    },
+    {
+      "id": "ADP015_AUTHORITY",
+      "path": "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/release/W2_AUTHORITY_CONTRACT_COMPLETION/ADP_015_V3_RELATIONSHIP_GENEALOGY/AUTHORITY.md",
+      "commit": "fcbb2ee1d7a6eae040e0964bb8474e8d04d47989",
+      "blob_oid": "a4dab0a12102aaa0b584ef6ff4fdc9206a28d456",
+      "sha256": "c93f67451adf0c3fe1d6d1f2fafb08e5fa2aec81d60903125fab67697e59af19",
+      "use": "relationship/household/genealogy separation; child not parent-type mixture"
+    },
+    {
+      "id": "PREMAIN_GROUND",
+      "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/00_RAWLSING_GROUND.md",
+      "commit": "fcbb2ee1d7a6eae040e0964bb8474e8d04d47989",
+      "use": "authority/runtime/concept/reintegration noncollapse; source-to-world machine"
+    },
+    {
+      "id": "PREMAIN_STATE_NOW",
+      "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/CENTRAL_PROJECT_STATE_R1/00_STATE_NOW.md",
+      "commit": "fcbb2ee1d7a6eae040e0964bb8474e8d04d47989",
+      "use": "current positive V3 authority and OBL frontier"
+    }
+  ],
+  "issued_authority_status": {
+    "original35_source": "NOT_READ__NO_PERMISSION_CLAIMED",
+    "pyat_n11": "NOT_READY",
+    "pyat_n12": "HOLD",
+    "pyat_j52_w52": "USER_STOPPED",
+    "pyat_r56_sourcefree_unpause": "NARROW_SEVEN_PATHS__NOT_N11_N12__NOT_C11",
+    "can008_concrete_native_rule": "NOT_ISSUED",
+    "can011_native_rule_or_grant": "NOT_ISSUED",
+    "adp019_native_event": "NOT_ISSUED",
+    "adp007_actor_initialization": "NOT_ISSUED",
+    "adp015_native_genealogy": "NOT_ISSUED",
+    "c8_d1_d2_d3_protected_trust": "HOLD",
+    "c11_native_weld": "ZERO",
+    "native_c12_person": "ZERO",
+    "human_a5": "NOT_RUN"
+  },
+  "source_rights_currentness": {
+    "basis": "DOCUMENTARY_REPOSITORY_ONLY",
+    "original35_respondent_data": "NOT_READ__NO_CURRENT_USE_RIGHT_CLAIMED",
+    "production_source": "NOT_ACCESSED",
+    "protected_c8_c12_material": "NOT_ACCESSED",
+    "human_a5_data": "NOT_ACCESSED",
+    "pyat_original_world": "N11_NOT_READY__N12_HOLD",
+    "current_native_rights": "NONE_CLAIMED",
+    "note": "A citation pointer or a repository file is not a current use-right. No native source/permission is granted by this index."
+  },
+  "tests_reported_by_authors": {
+    "r31j": {
+      "total_executed_reported": 202,
+      "receipts": {
+        "r31j_8": 8,
+        "r30g_8": 8,
+        "r29m_29": 29,
+        "r29m_ports_2": 2,
+        "r29p_9": 9,
+        "r27p_7": 7,
+        "r26v_10": 10,
+        "r26e_bp2p4j_33": 33,
+        "r26e_bp2_50": 50,
+        "r26e_bp4_15": 15,
+        "r26e_n1_21": 21,
+        "r26e_n1_ports_2": 2,
+        "r26e_8": 8
+      },
+      "independent_rerun_by_r32h": "NOT_RUN",
+      "scope": "author reports distinct tests at their declared suites; not a single 202-test joined consumer"
+    },
+    "r31e": {
+      "new_reported": 15,
+      "r30a_baseline_reported": 10,
+      "r29p_subset_reported": 5,
+      "faults_reported": 6,
+      "contrasts_reported": 12,
+      "full_inherited_r29p_155": "NOT_RUN",
+      "independent_rerun_by_r32h": "NOT_RUN",
+      "overlap_with_r31j": {
+        "count": 5,
+        "names": [
+          "test_baseline_reaches_persisted_cold_c12_and_a0_a2",
+          "test_m6_actor_only_knowledge_after_independent_b_offscreen",
+          "test_fork_retains_shared_past_and_independent_post_fork_history",
+          "test_seven_same_observable_faults_prove_and_restore",
+          "test_no_global_builder_mutation_and_two_isolates"
+        ],
+        "source": "R31J r29p_9.xml and R31E r29p_subset.xml exact testcase names"
+      },
+      "max_distinct_union_implied": 227,
+      "union_note": "202 R31J receipt tests + 15 R31E + 10 R30A; 5 R29P tests are shared, so 227 distinct identities are implied by receipts. This is not an independently rerun union and R31J/R31E never execute in one consumer test."
+    }
+  },
+  "c12_roots": {
+    "r31j_target_id": "59ff0a4e59f57bfb3ba132657fe3f9a62eb90abd764f74a62eec1f15045e7278",
+    "r31e_target_id": "8f1614f592ffb2075401ffd4b249bd6e7f5b41d752dec028a3448df63d4c5dbb",
+    "same_target": false,
+    "r31e_c12_available_sha256": "1c859cad7a3460e34fc6f648ff48ce70eb9e7218a1eac05d44555ed1d6d92112",
+    "r31e_c12_pressed_sha256": "3a2710a4b781c9ccac5e38f19ddec377e296a6d227fbcfb20ed92a71ec8d9b72"
+  },
+  "direct_remote_method": {
+    "commands": [
+      "git ls-remote origin <refs>",
+      "git fetch --no-tags origin <exact-40-hex>",
+      "git cat-file -t <commit>",
+      "git show -s --format='%H %P %cs %s' <commit>",
+      "git rev-parse <commit>:<path>",
+      "git cat-file blob <commit>:<path> | shasum -a 256"
+    ],
+    "github_blob_urls_constructed_from": "https://github.com/maidiu/rawlsing/blob/<commit>/<path>",
+    "github_api_used_by_r32h": false,
+    "author_github_api_readbacks": {
+      "r31e": "evidence/github_api_readback.json at a2760d3687b063513fe0a5b9589c56c998d4ccb5",
+      "r31j": "evidence/remote_verification.json and PUBLICATION_RECEIPT.json at 64fec28c374d8f77fb0b412d0c934d798ede03e8"
+    },
+    "note": "The worker used direct Git smart-HTTP readback. It did not claim an independent GitHub API readback."
+  },
+  "limitations": [
+    "Sorok canonical revision 29 is stale on R31J/R31E return status.",
+    "Pyat revision 42/R56 is a narrow sourcefree code unpause and is not an N11/N12/C11 grant.",
+    "R31J and R31E are not a unified first encounter and have different C12 roots.",
+    "R31J's GM01 pre-C9 source is an owned adapter; the upstream BP2 producer has no first-class GM01 source constructor.",
+    "R31E is deterministic 60-template expression; live external actor model and human A5 are NOT_RUN.",
+    "No original35 respondent data, production system, native C8/C11/C12, or CAN/ADP issuer was accessed.",
+    "No inherited test suite was rerun by R32H; test counts are parsed from author receipts and return text.",
+    "Exact refs may advance after 2026-10-22T01:27:03Z. Refresh before accession."
+  ],
+  "status": "READY_FOR_CANDIDATE_INDEPENDENT_GROK__NOT_CANDIDATE_PASS"
+}
