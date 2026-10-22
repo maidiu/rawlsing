@@ -225,7 +225,7 @@ def load_s3(path: Path, variable="SCORE", rules=None):
         package=pkg, incidence=incidence, row_occurrence_plan=plan)
 
 
-def test_s3_exact_respondent_occasion_value_tuples_and_repeated_i03(tmp_path):
+def test_s3_exact_respondent_occasion_value_tuples_and_repeated_consumer(tmp_path):
     path = tmp_path / "s3.sav"
     rows = s3_rows()
     bundle = build_s3(path, rows)
