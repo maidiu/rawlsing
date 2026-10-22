@@ -1,5 +1,8 @@
 # PRE-MAIN — Codex-HQ continuous orchestration implementation coordination R1
 
+**R2 PRE-MAIN GOVERNANCE/IMPLEMENTATION UPDATE (planning only):** [cross-HQ R2 amendment](../../../../../../CROSS_HQ_CONTROL_ROOM/CODEX_HQ_OPENCODE_CONTINUOUS_ORCHESTRATION_R2_SUCCESSION_RESUME_GRANT_ENFORCEMENT_AMENDMENT_20261022.md) adds independent Pyat Codex-HQ succession-eligibility path (not appointment), early P0.5 actual incumbent-thread resume proof, typed external authority-grant enforcement and sandbox/crash gates. One controller serves two independent HQs; controller has no science/actor/source authority. R58 C1 local sourcefree accepted; new R01/R08/local-R09 conditional R03 code authorization not issued. Sorok manual dispatch unchanged. R1 remains historic original program.
+
+
 **Date:** 2026-10-22. **Status:** DOCUMENTARY PROGRAM / IMPLEMENTATION COORDINATION; not independent operative legal authority, not an actual service, worker launch, code licence, checkpoint or HQ appointment.
 
 ## Purpose

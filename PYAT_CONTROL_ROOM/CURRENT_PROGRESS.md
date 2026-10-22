@@ -1,3 +1,40 @@
+# Pyat progress revision45 — R59 Codex-HQ candidacy and single orchestration program (2026-10-22)
+
+# PYAT R59 — User-directed Codex full-HQ accession eligibility and single cross-HQ controller program
+
+**Date:** 2026-10-22. **Read cut:** `1ba63b67922e601f1b1aaaf098aa4d7faf9e5335`. Prior sealed R58 HQ C1 accepted scoped sourcefree composition at `facf870d2482972c50925e7dbf9b9e04da408b71` with NATIVE_PROMOTION_HOLD and no new R01/R08/R09 code grant. **Owner:** continuing current competent Pyat HQ at accepted prior scope. **This motion creates and coordinates prospective program/commission documentation only; it neither appoints a new Pyat HQ nor launches a worker or creates a service.**
+
+## Why the new direction
+
+User requests potential move of full Pyat HQ responsibilities to the **same** established mainMac Codex director and implementation of previously drafted Codex HQ→OpenCode→independent hostile reviewer→HQ continuous service, coordinated with separately appointed Sorok Codex HQ. Last 18-hour documentary audit shows existing director completed U53A/UR architecture, R56 independent sourcefree R00P/E/V, R02 and R04.byte, real hostile failure corrections, correct I3 engineering escalation, and C1 closed `a54893657ba65e44c1049f763208b0b4b6ed5eb9`. This is **strong admissible candidate evidence**, not full accreditation by self-congratulation.
+
+## Adopted prospective implementation design / authority boundaries
+
+R2 cross-owner amendment `CROSS_HQ_CONTROL_ROOM/CODEX_HQ_OPENCODE_CONTINUOUS_ORCHESTRATION_R2_SUCCESSION_RESUME_GRANT_ENFORCEMENT_AMENDMENT_20261022.md` updates the existing R1 program and PRE-MAIN/Pyat/Sorok synchronization planning records. Add P0.5 incumbent-thread-continuity actual smoke proof before controller P2 makes same-HQ wake claims, machine-verifiable external explicit human/HQ grants (no authority from model-parsed prose), OS/file/network/credential isolation, crash idempotency and expanded A17–A27 acceptance. One controller, two independent HQ role identities; no SDK replacement thread impersonation. Distinct R56 technical-grant, Sorok current USER_MANUAL override and original source/actor science controls. Sourcefree P0–P3 is implementation preparation/testing, **not** P4 live Rawlsing dispatch. Any private infra repo/workspace, host, selected provider/effort/account and actual executable permissions must be qualified rather than guessed. Sorok current canonical rev34 is read-only here; only Sorok competent HQ changes its adopted state.
+
+## Issued paper commissions — NOT LAUNCHED
+
+Read `WORKER_COMMISSIONS/CODEX_HQ_ORCHESTRATION_R2_20261022/00_PROGRAM_FLIGHT_AND_OWNERS.md`. Three separate coherent flights:
+1. `01_PYAT_EXISTING_CODEX_HQ_ACCESSION_ELIGIBILITY.md`: same existing Codex conversation produces full incoming-HQ candidate dossier and prescribed 15 proof categories, persona-first whole-35 scientific/grok, live Pyat R58 terminal flight board, exact verifier where qualified; **independent reviewer** `04_PYAT_INDEPENDENT_FULL_HQ_ACCESSION_REVIEW_CONDITIONAL.md` acts after frozen candidate. User explicit human appointment + competent outgoing HQ accession/sealed checkpoint are still mandatory for operative full HQ; previous 11 PARTIAL / checker NOT_RUN is not auto-upgraded.
+2. `02_PYAT_SHARED_CONTROLLER_P0_P2_IMPLEMENTATION.md`: qualified infrastructure owner builds *one* private isolated durable sourcefree service P0/P0.5/P1/P2 with P3 shadow replay and native fake-HQ→OpenCode worker→hostile reviewer→same test HQ closed loop; actual incumbent session continuity separately required for real HQ.
+3. `03_SOROK_EXISTING_CODEX_HQ_SHARED_CONTROLLER_ADAPTER_P0_P3.md`: appointed Sorok HQ owns its own P0.5, human manual rule, actor/source firewall, historical rev34 shadow fixtures, independent reviewer logic, schema seam; no duplicate daemon, no HQ product coding.
+
+The common infrastructure owner and Sorok adapter owner must coordinate non-overlapping private workspace paths, and independent controller review is required for real-loop claims. User has not launched these merely by asking for prompts; local model/harness/host availability UNKNOWN. Any future program-grant authorization for actual cloud/private provider/credentials/source must be explicitly obtained. No new Codex HQ appointment now. Pyat current R57 technical sealing remains valid within user-granted R56.
+
+## Required progression and results
+
+**A.** Existing Codex Pyat full HQ accession candidate collects exact comprehensive evidence and reports PREPARED_FOR_INDEPENDENT_REVIEW or bounded deficits, without superseding current Pyat HQ.
+**B.** Qualified separate independent reviewer reproduces prescribed evidence and passes/revises candidate with exact findings; current accepted HQ acts on review, and user appoints this actual incumbent if approved. After that appointment, old HQ prepares immutable successor checkpoint/semantic proof and CAS move. No role transfer from controller inference.
+**C.** Common P0/P0.5/P1/P2 fixtures provide runnable service and real OpenCode worker+reviewer+HQ loop on disposable sourcefree repo, plus a separate incumbent thread smoke probe. If actual same-thread resume impossible, report a finite API/harness blocker, preserve manual sessions, and continue other lawful infra work.
+**D.** Sorok HQ adapter and P3 dual governance shadow enforce exact manual launch, no unissued science/actor/source rights, sourcefree local vs original grades, J52/W52 STOP and no cross-HQ impersonation. P4 actual Rawlsing autopilot only with separate user activation naming exact lanes and accounts/providers, source/data rights, P4 stop/recovery.
+
+**Future Pyat science/engineering:** R58 C1 accepted limited sourcefree. Next R01 prospective grammar, R08 serving association, local R09 verifier, then conditional R03: separate explicit user implementation grant still **NOT RECEIVED**. No code workers may be issued under that future scope by this motion; preserve R04.joined after R03 and source→F1–F8→N11 / Sorok N12 terminal. Do not re-open settled R56 C1. No original35 respondents or original scientific U/E_pre, no protected CI, no release, no Sorok actor/weld rights.
+
+**Terminal of this HQ motion:** `PYAT_R59_CODEX_FULL_HQ_ELIGIBILITY_ISSUED_FOR_CANDIDATE_PREPARATION__USER_APPOINTMENT_NOT_YET__ONE_CONTROLLER_R2_IMPLEMENTATION_PROGRAM_PUBLISHED__AUTO_WORKERS_NONE__LIVE_ACTIVATION_NO`.
+
+---
+## Previous revision44 retained verbatim
+
 # PYAT CURRENT PROGRESS revision 44 — R58 C1 scoped first-flight HQ intake (2026-10-22)
 
 # PYAT R58 — competent HQ C1 sourcefree composition adjudication and next-grant boundary

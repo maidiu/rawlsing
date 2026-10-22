@@ -1,5 +1,8 @@
 # Rawlsing — Codex-HQ / OpenCode continuous orchestration implementation program R1
 
+**R2 PROSPECTIVE IMPLEMENTATION UPDATE (2026-10-22; no new authority):** The [binding program requirements amendment](CODEX_HQ_OPENCODE_CONTINUOUS_ORCHESTRATION_R2_SUCCESSION_RESUME_GRANT_ENFORCEMENT_AMENDMENT_20261022.md) adds full Pyat Codex-HQ *accession eligibility* (not appointment), P0.5 exact incumbent-thread-continuity proof before relying on resumed HQ, machine-enforceable verified external grants rather than model interpretation, OS-level isolation acceptance and A17–A27 tests. Read R1 together with R2; where future program sequencing differs, R2 controls *implementation design only*. R58 C1 sourcefree scoped HQ acceptance is recorded separately. Controller not built, auto dispatch not activated.
+
+
 **Date:** 2026-10-22. **State:** USER-REQUESTED IMPLEMENTATION PROGRAM; DOCUMENTARY PROPOSAL, NOT A RUNNING ORCHESTRATOR, NOT A LAUNCH SEAL, NOT AN ADOPTED SCIENTIFIC OR OWNER GRANT.
 **Repository:** private `maidiu/rawlsing`; governing integration ref `integration/pre-main-reconciliation-r1`.
 **Cross-references:** PRE-MAIN `data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/CODEX_HQ_CONTINUOUS_ORCHESTRATION_PREMAIN_COORDINATION_20261022_R1.md`; Pyat `PYAT_CONTROL_ROOM/CODEX_HQ_CONTINUOUS_ORCHESTRATION_SYNCHRONIZATION_20261022_R1.md`; Sorok `SOROK_PRODUCT_CONTROL_ROOM/CODEX_HQ_CONTINUOUS_ORCHESTRATION_SYNCHRONIZATION_20261022_R1.md`.

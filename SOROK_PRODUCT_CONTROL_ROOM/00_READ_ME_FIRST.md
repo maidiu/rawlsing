@@ -1,5 +1,8 @@
 # Sorok PRE-MAIN grounding and reciprocal progress front door
 
+**CURRENT R2 SHARED CONTROLLER ROUTE (2026-10-22; planning not authority):** Read [R2 cross-HQ amendment](../CROSS_HQ_CONTROL_ROOM/CODEX_HQ_OPENCODE_CONTINUOUS_ORCHESTRATION_R2_SUCCESSION_RESUME_GRANT_ENFORCEMENT_AMENDMENT_20261022.md) before the R1 controller proposal. Already appointed Sorok Codex HQ remains independent and HQ-only; USER_MANUAL worker launch preserved until named activation. Do not duplicate the controller. P0.5 incumbent thread resume and actor/source firewall need proofs.
+
+
 **Codex/OpenCode orchestration implementation (DOCUMENTARY, NOT ACTIVE):** See [shared cross-HQ continuous-orchestration program](../CROSS_HQ_CONTROL_ROOM/CODEX_HQ_OPENCODE_CONTINUOUS_ORCHESTRATION_IMPLEMENTATION_PROGRAM_20261022_R1.md) and [Sorok accredited Codex HQ synchronization](CODEX_HQ_CONTINUOUS_ORCHESTRATION_SYNCHRONIZATION_20261022_R1.md). The current HQ-only/no-HQ-product-coding and user-manual-worker-dispatch instructions remain binding until a separately authorized activation; this planning record confers no new actor/scientific or launch permission.
 
 

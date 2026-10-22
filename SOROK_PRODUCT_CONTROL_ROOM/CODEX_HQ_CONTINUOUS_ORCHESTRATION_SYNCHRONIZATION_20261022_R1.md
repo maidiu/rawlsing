@@ -1,5 +1,8 @@
 # Sorok — synchronized incumbent Codex HQ / OpenCode continuous orchestration implementation R1
 
+**R2 SOROK CODEX-HQ CONTINUITY UPDATE (planning only):** [cross-HQ R2 amendment](../CROSS_HQ_CONTROL_ROOM/CODEX_HQ_OPENCODE_CONTINUOUS_ORCHESTRATION_R2_SUCCESSION_RESUME_GRANT_ENFORCEMENT_AMENDMENT_20261022.md) retains the *already appointed* Sorok Codex HQ and its HQ-only/no-direct-product-code, USER_MANUAL worker-launch law. Prove actual incumbent session continuity through P0.5, keep typed externally granted machine authority, actor/source firewall and no self-review. Participate in *one shared* controller, not a competing Sorok daemon. Historical referenced motion commit that cannot be fetched must not automatically authenticate launch permission. No auto dispatch until exact user activation.
+
+
 **Date:** 2026-10-22. **Status:** prospective auto-dispatch transport program; preserves current existing Sorok Codex HQ and its operative HQ-only manual worker-launch rule until a separately specified user activation.
 
 **Shared program:** `CROSS_HQ_CONTROL_ROOM/CODEX_HQ_OPENCODE_CONTINUOUS_ORCHESTRATION_IMPLEMENTATION_PROGRAM_20261022_R1.md`.

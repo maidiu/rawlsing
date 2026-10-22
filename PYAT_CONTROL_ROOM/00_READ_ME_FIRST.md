@@ -1,5 +1,8 @@
 # NEW PYAT HQ: INVALID UNTIL FULL PERSONA-FIRST + INHERITED-METHOD ACCESSION
 
+**CURRENT R2 CODEX HQ INFRA / ACCESSION ROUTE (2026-10-22; planning not authority):** Read [R2 cross-HQ successor program](../CROSS_HQ_CONTROL_ROOM/CODEX_HQ_OPENCODE_CONTINUOUS_ORCHESTRATION_R2_SUCCESSION_RESUME_GRANT_ENFORCEMENT_AMENDMENT_20261022.md) before the R1 transport program. Current mainMac Codex R57 director is a proposed **full Pyat HQ accession candidate**, not yet appointed; independent 00/13/full proof and human appointment required, R58 C1 first local sourcefree composition qualified. P0.5 actual thread resume, typed grant enforcement and sourcefree infrastructure may be prepared without auto-dispatch or expanding R56.
+
+
 **Codex/OpenCode orchestration implementation (DOCUMENTARY, NOT ACTIVE):** See [shared cross-HQ continuous-orchestration program](../CROSS_HQ_CONTROL_ROOM/CODEX_HQ_OPENCODE_CONTINUOUS_ORCHESTRATION_IMPLEMENTATION_PROGRAM_20261022_R1.md) and [Pyat incumbent Codex technical-delegation synchronization](CODEX_HQ_CONTINUOUS_ORCHESTRATION_SYNCHRONIZATION_20261022_R1.md). These are implementation planning records, **not** a worker launch, R56/R57 scope expansion, new HQ appointment or scientific/source authority; current laws and stops remain operative.
 
 

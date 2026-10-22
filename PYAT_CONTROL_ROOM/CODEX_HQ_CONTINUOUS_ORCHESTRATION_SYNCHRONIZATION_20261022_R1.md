@@ -1,5 +1,8 @@
 # Pyat — synchronized Codex technical-director / OpenCode orchestration implementation R1
 
+**R2 PYAT CODEx-HQ TARGET (planning only; no appointment or new code grant):** See [cross-HQ R2 succession and controller amendment](../CROSS_HQ_CONTROL_ROOM/CODEX_HQ_OPENCODE_CONTINUOUS_ORCHESTRATION_R2_SUCCESSION_RESUME_GRANT_ENFORCEMENT_AMENDMENT_20261022.md). The existing mainMac Codex is a full Pyat-HQ **accession-eligibility candidate** based on demonstrated R56/C1 scientific direction; it is *still only R57 technical-seal delegate*. Required independent PRE-MAIN/Pyat accession review, actual human appointment and immutable new HQ handoff precede full command. P0.5 must prove actual incumbent local thread resume. R58 accepted C1 TEST_ONLY composition locally; R01/R08/local R09 R03 code paths NOT granted. No live controller/auto launches.
+
+
 **Date:** 2026-10-22. **Status:** prospective transport infrastructure alignment; not new R56 path/code permission, HQ succession, worker seal, scientific adoption, automation activation or source grant.
 
 **Shared program:** `CROSS_HQ_CONTROL_ROOM/CODEX_HQ_OPENCODE_CONTINUOUS_ORCHESTRATION_IMPLEMENTATION_PROGRAM_20261022_R1.md`.

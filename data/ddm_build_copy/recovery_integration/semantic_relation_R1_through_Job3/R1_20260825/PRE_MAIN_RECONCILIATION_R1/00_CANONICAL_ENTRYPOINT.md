@@ -1,5 +1,8 @@
 # RAWLSING PRE-MAIN CANONICAL ENTRYPOINT R1
 
+**R2 CROSS-HQ ORCHESTRATION CURRENTNESS NOTICE (2026-10-22; documentation only):** In addition to existing R1 cross-HQ program, read [R2 succession/continuity/grant amendment](../../../../../../CROSS_HQ_CONTROL_ROOM/CODEX_HQ_OPENCODE_CONTINUOUS_ORCHESTRATION_R2_SUCCESSION_RESUME_GRANT_ENFORCEMENT_AMENDMENT_20261022.md). Full Pyat Codex HQ is an accession *candidate* pending independent review and human appointment; Sorok Codex HQ remains its already appointed separate owner. Controller P0.5 actual incumbent resume and verified typed grants precede live claim. Neither program installs automation nor changes PRE-MAIN scientific authority.
+
+
 **Documentary Codex-HQ orchestration implementation program (NOT OPERATIVE AUTHORITY):** [PRE-MAIN coordination record](CODEX_HQ_CONTINUOUS_ORCHESTRATION_PREMAIN_COORDINATION_20261022_R1.md) and [shared cross-HQ program](../../../../../../CROSS_HQ_CONTROL_ROOM/CODEX_HQ_OPENCODE_CONTINUOUS_ORCHESTRATION_IMPLEMENTATION_PROGRAM_20261022_R1.md). The program preserves incumbent Sorok and Pyat Codex roles and does not automatically launch workers or change PRE-MAIN scientific/actor/source permissions.
 
 

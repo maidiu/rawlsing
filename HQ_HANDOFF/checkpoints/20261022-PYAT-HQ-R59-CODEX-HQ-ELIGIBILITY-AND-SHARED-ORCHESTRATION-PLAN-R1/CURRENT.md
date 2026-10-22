@@ -1,0 +1,11 @@
+# Pyat R59 — candidate Codex full-HQ accession eligibility + dual-HQ shared infrastructure program
+
+**Date 2026-10-22; progress revision45.** Previous verified R58 C1 HQ local composition acceptance `facf870d2482972c50925e7dbf9b9e04da408b71`; PRE-MAIN semantic `1f47063c3205a45888b3c55e81e7485943ed1390` unchanged. See operative administrative future-plan motion `PYAT_CONTROL_ROOM/R59_CODEX_HQ_SUCCESSION_ELIGIBILITY_AND_COMMON_CONTROLLER_PROGRAM_FLIGHT_20261022.md`.
+
+**Candidate judgment:** existing mainMac Codex demonstrated substantive I3+ architecture/engineering leadership, R00/R02/R04.byte independent reviewer closure and C1 bounded local positive. **NOT FULL HQ APPOINTED:** R57 technical delegation remains, 15-category maximum strict previously 11 PARTIAL/checker NOT_RUN; independent exact accession review and human appointment required, then current Pyat HQ seals succession and yields. Candidate can prepare dossier only. No new original science/source/N11/N12 authority.
+
+**Program R2:** amended cross-HQ R1 and PRE-MAIN/Pyat/Sorok planning synchronize common one controller, two separate HQs, early P0.5 **actual incumbent thread resume** (not fabricated new SDK thread), machine-readable externally anchored grant engine, OS isolation and reviews, A17–A27. Three paper commissions at `WORKER_COMMISSIONS/CODEX_HQ_ORCHESTRATION_R2_20261022/`: Pyat accession candidate; qualified shared infrastructure build P0–P3; Sorok incumbent HQ adapter P0–P3. Independent conditional candidate eligibility reviewer separate. **None launched.** Real code/service unbuilt, P4 auto dispatch NOT GRANTED, Sorok rev34 USER_MANUAL unchanged, account/host/session/effort UNKNOWN.
+
+**C1 retained:** R58 `a54893657ba65e44c1049f763208b0b4b6ed5eb9` local PASS qualification with 169pass/1skip sourcefree; unmerged/no native promotion. R01/R08/local R09 conditional R03 proposed next code user grant **NOT RECEIVED**, no implied auto wake. J52/W52 USER_STOPPED, source/original/FF/actor/CI/production held, original35=0 new of historical 1890 accounting, N11 NOT_READY, N12 HOLD, Sorok independently governed.
+
+**Next:** after readback-verified R59 seal, user may paste exact two Pyat prompts and one Sorok prompt into current existing HQ/operator sessions; they must verify local host/permissions/startups. No workers start as a Git side effect.
