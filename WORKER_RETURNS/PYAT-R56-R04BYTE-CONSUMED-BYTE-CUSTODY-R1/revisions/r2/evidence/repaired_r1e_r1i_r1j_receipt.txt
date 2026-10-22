@@ -1,0 +1,293 @@
+..FFFFF.F.F...F...F.F............                                        [100%]
+=================================== FAILURES ===================================
+_ test_r03_exact_derived_mapping_authority_is_accepted_by_source_free_r6s_binding _
+
+    def test_r03_exact_derived_mapping_authority_is_accepted_by_source_free_r6s_binding():
+>       fields = fields3()
+                 ^^^^^^^^^
+
+rawlsing_next/tests/test_fiabc_lm2_r1e_bounded_mapping_recovery.py:105: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/tests/test_fiabc_lm2_r1e_bounded_mapping_recovery.py:65: in fields3
+    return dict(m.build_projection_fields(
+WORKER_RETURNS/EE-P2R6S/05_WVS7_PROJECTION_MATERIALIZER.py:867: in build_projection_fields
+    response_slots = tuple(
+WORKER_RETURNS/EE-P2R6S/05_WVS7_PROJECTION_MATERIALIZER.py:871: in <genexpr>
+    _response_value_rules(_variable_by_name(variables, name)),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+WORKER_RETURNS/EE-P2R6S/05_WVS7_PROJECTION_MATERIALIZER.py:676: in _response_value_rules
+    physical_value = authorized_decoder_physical_value(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def authorized_decoder_physical_value(
+        *,
+        source_sha256: str,
+        variable_name: str,
+        ordinal: int,
+        native_code: Any,
+    ) -> float:
+        """Return only the exact decoder material explicitly authorized by R1J."""
+        if source_sha256 != SOURCE_SHA256:
+            raise ValueError("representation authority source SHA mismatch")
+        if Q291_VARIABLES.get(variable_name) != ordinal:
+>           raise ValueError("representation authority variable identity/ordinal mismatch")
+E           ValueError: representation authority variable identity/ordinal mismatch
+
+rawlsing_next/fiabc_lm2_r1j_wvs7_representation_authority.py:176: ValueError
+______ test_r04_relabel_counterfeit_is_rejected_by_exact_snapshot_binding ______
+
+    def test_r04_relabel_counterfeit_is_rejected_by_exact_snapshot_binding():
+>       fields = fields3()
+                 ^^^^^^^^^
+
+rawlsing_next/tests/test_fiabc_lm2_r1e_bounded_mapping_recovery.py:116: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/tests/test_fiabc_lm2_r1e_bounded_mapping_recovery.py:65: in fields3
+    return dict(m.build_projection_fields(
+WORKER_RETURNS/EE-P2R6S/05_WVS7_PROJECTION_MATERIALIZER.py:867: in build_projection_fields
+    response_slots = tuple(
+WORKER_RETURNS/EE-P2R6S/05_WVS7_PROJECTION_MATERIALIZER.py:871: in <genexpr>
+    _response_value_rules(_variable_by_name(variables, name)),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+WORKER_RETURNS/EE-P2R6S/05_WVS7_PROJECTION_MATERIALIZER.py:676: in _response_value_rules
+    physical_value = authorized_decoder_physical_value(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def authorized_decoder_physical_value(
+        *,
+        source_sha256: str,
+        variable_name: str,
+        ordinal: int,
+        native_code: Any,
+    ) -> float:
+        """Return only the exact decoder material explicitly authorized by R1J."""
+        if source_sha256 != SOURCE_SHA256:
+            raise ValueError("representation authority source SHA mismatch")
+        if Q291_VARIABLES.get(variable_name) != ordinal:
+>           raise ValueError("representation authority variable identity/ordinal mismatch")
+E           ValueError: representation authority variable identity/ordinal mismatch
+
+rawlsing_next/fiabc_lm2_r1j_wvs7_representation_authority.py:176: ValueError
+______________ test_r05_canonical_question_mapping_remains_absent ______________
+
+    def test_r05_canonical_question_mapping_remains_absent():
+>       fields = fields3()
+                 ^^^^^^^^^
+
+rawlsing_next/tests/test_fiabc_lm2_r1e_bounded_mapping_recovery.py:127: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/tests/test_fiabc_lm2_r1e_bounded_mapping_recovery.py:65: in fields3
+    return dict(m.build_projection_fields(
+WORKER_RETURNS/EE-P2R6S/05_WVS7_PROJECTION_MATERIALIZER.py:867: in build_projection_fields
+    response_slots = tuple(
+WORKER_RETURNS/EE-P2R6S/05_WVS7_PROJECTION_MATERIALIZER.py:871: in <genexpr>
+    _response_value_rules(_variable_by_name(variables, name)),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+WORKER_RETURNS/EE-P2R6S/05_WVS7_PROJECTION_MATERIALIZER.py:676: in _response_value_rules
+    physical_value = authorized_decoder_physical_value(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def authorized_decoder_physical_value(
+        *,
+        source_sha256: str,
+        variable_name: str,
+        ordinal: int,
+        native_code: Any,
+    ) -> float:
+        """Return only the exact decoder material explicitly authorized by R1J."""
+        if source_sha256 != SOURCE_SHA256:
+            raise ValueError("representation authority source SHA mismatch")
+        if Q291_VARIABLES.get(variable_name) != ordinal:
+>           raise ValueError("representation authority variable identity/ordinal mismatch")
+E           ValueError: representation authority variable identity/ordinal mismatch
+
+rawlsing_next/fiabc_lm2_r1j_wvs7_representation_authority.py:176: ValueError
+_________________ test_r06_special_states_remain_noncanonical __________________
+
+    def test_r06_special_states_remain_noncanonical():
+>       fields = fields3()
+                 ^^^^^^^^^
+
+rawlsing_next/tests/test_fiabc_lm2_r1e_bounded_mapping_recovery.py:132: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/tests/test_fiabc_lm2_r1e_bounded_mapping_recovery.py:65: in fields3
+    return dict(m.build_projection_fields(
+WORKER_RETURNS/EE-P2R6S/05_WVS7_PROJECTION_MATERIALIZER.py:867: in build_projection_fields
+    response_slots = tuple(
+WORKER_RETURNS/EE-P2R6S/05_WVS7_PROJECTION_MATERIALIZER.py:871: in <genexpr>
+    _response_value_rules(_variable_by_name(variables, name)),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+WORKER_RETURNS/EE-P2R6S/05_WVS7_PROJECTION_MATERIALIZER.py:676: in _response_value_rules
+    physical_value = authorized_decoder_physical_value(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def authorized_decoder_physical_value(
+        *,
+        source_sha256: str,
+        variable_name: str,
+        ordinal: int,
+        native_code: Any,
+    ) -> float:
+        """Return only the exact decoder material explicitly authorized by R1J."""
+        if source_sha256 != SOURCE_SHA256:
+            raise ValueError("representation authority source SHA mismatch")
+        if Q291_VARIABLES.get(variable_name) != ordinal:
+>           raise ValueError("representation authority variable identity/ordinal mismatch")
+E           ValueError: representation authority variable identity/ordinal mismatch
+
+rawlsing_next/fiabc_lm2_r1j_wvs7_representation_authority.py:176: ValueError
+____________ test_r07_lexical_token_similarity_mutation_is_rejected ____________
+
+    def test_r07_lexical_token_similarity_mutation_is_rejected():
+>       fields = fields3()
+                 ^^^^^^^^^
+
+rawlsing_next/tests/test_fiabc_lm2_r1e_bounded_mapping_recovery.py:139: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/tests/test_fiabc_lm2_r1e_bounded_mapping_recovery.py:65: in fields3
+    return dict(m.build_projection_fields(
+WORKER_RETURNS/EE-P2R6S/05_WVS7_PROJECTION_MATERIALIZER.py:867: in build_projection_fields
+    response_slots = tuple(
+WORKER_RETURNS/EE-P2R6S/05_WVS7_PROJECTION_MATERIALIZER.py:871: in <genexpr>
+    _response_value_rules(_variable_by_name(variables, name)),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+WORKER_RETURNS/EE-P2R6S/05_WVS7_PROJECTION_MATERIALIZER.py:676: in _response_value_rules
+    physical_value = authorized_decoder_physical_value(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def authorized_decoder_physical_value(
+        *,
+        source_sha256: str,
+        variable_name: str,
+        ordinal: int,
+        native_code: Any,
+    ) -> float:
+        """Return only the exact decoder material explicitly authorized by R1J."""
+        if source_sha256 != SOURCE_SHA256:
+            raise ValueError("representation authority source SHA mismatch")
+        if Q291_VARIABLES.get(variable_name) != ordinal:
+>           raise ValueError("representation authority variable identity/ordinal mismatch")
+E           ValueError: representation authority variable identity/ordinal mismatch
+
+rawlsing_next/fiabc_lm2_r1j_wvs7_representation_authority.py:176: ValueError
+__________ test_r09_exact_parent_and_provenance_mutation_is_rejected ___________
+
+    def test_r09_exact_parent_and_provenance_mutation_is_rejected():
+>       fields = fields3()
+                 ^^^^^^^^^
+
+rawlsing_next/tests/test_fiabc_lm2_r1e_bounded_mapping_recovery.py:154: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/tests/test_fiabc_lm2_r1e_bounded_mapping_recovery.py:65: in fields3
+    return dict(m.build_projection_fields(
+WORKER_RETURNS/EE-P2R6S/05_WVS7_PROJECTION_MATERIALIZER.py:867: in build_projection_fields
+    response_slots = tuple(
+WORKER_RETURNS/EE-P2R6S/05_WVS7_PROJECTION_MATERIALIZER.py:871: in <genexpr>
+    _response_value_rules(_variable_by_name(variables, name)),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+WORKER_RETURNS/EE-P2R6S/05_WVS7_PROJECTION_MATERIALIZER.py:676: in _response_value_rules
+    physical_value = authorized_decoder_physical_value(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def authorized_decoder_physical_value(
+        *,
+        source_sha256: str,
+        variable_name: str,
+        ordinal: int,
+        native_code: Any,
+    ) -> float:
+        """Return only the exact decoder material explicitly authorized by R1J."""
+        if source_sha256 != SOURCE_SHA256:
+            raise ValueError("representation authority source SHA mismatch")
+        if Q291_VARIABLES.get(variable_name) != ordinal:
+>           raise ValueError("representation authority variable identity/ordinal mismatch")
+E           ValueError: representation authority variable identity/ordinal mismatch
+
+rawlsing_next/fiabc_lm2_r1j_wvs7_representation_authority.py:176: ValueError
+_______ test_r11_lock2_and_complete_46_candidate_frontier_are_conserved ________
+
+    def test_r11_lock2_and_complete_46_candidate_frontier_are_conserved():
+>       assert m.LOCK2 == LOCK2 == WVS7_LOCK2_IDENTITY
+E       AssertionError: assert '8e5842eb0110...5c307024c6188' == '5e2a53f0e5f3...dfdaa96283139'
+E         
+E         - 5e2a53f0e5f3b6ddd8db53b724b352ca41fe1a49408483fbf83dfdaa96283139
+E         + 8e5842eb01100e0b23c3fa0fe85736fee081d759ec5458fc0f95c307024c6188
+
+rawlsing_next/tests/test_fiabc_lm2_r1e_bounded_mapping_recovery.py:183: AssertionError
+_____ test_r17_native_only_mutation_cannot_preserve_frozen_string_workload _____
+
+    def test_r17_native_only_mutation_cannot_preserve_frozen_string_workload():
+>       fields = fields3()
+                 ^^^^^^^^^
+
+rawlsing_next/tests/test_fiabc_lm2_r1e_bounded_mapping_recovery.py:208: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/tests/test_fiabc_lm2_r1e_bounded_mapping_recovery.py:65: in fields3
+    return dict(m.build_projection_fields(
+WORKER_RETURNS/EE-P2R6S/05_WVS7_PROJECTION_MATERIALIZER.py:867: in build_projection_fields
+    response_slots = tuple(
+WORKER_RETURNS/EE-P2R6S/05_WVS7_PROJECTION_MATERIALIZER.py:871: in <genexpr>
+    _response_value_rules(_variable_by_name(variables, name)),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+WORKER_RETURNS/EE-P2R6S/05_WVS7_PROJECTION_MATERIALIZER.py:676: in _response_value_rules
+    physical_value = authorized_decoder_physical_value(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def authorized_decoder_physical_value(
+        *,
+        source_sha256: str,
+        variable_name: str,
+        ordinal: int,
+        native_code: Any,
+    ) -> float:
+        """Return only the exact decoder material explicitly authorized by R1J."""
+        if source_sha256 != SOURCE_SHA256:
+            raise ValueError("representation authority source SHA mismatch")
+        if Q291_VARIABLES.get(variable_name) != ordinal:
+>           raise ValueError("representation authority variable identity/ordinal mismatch")
+E           ValueError: representation authority variable identity/ordinal mismatch
+
+rawlsing_next/fiabc_lm2_r1j_wvs7_representation_authority.py:176: ValueError
+_ test_native_to_canonical_mapping_authority_does_not_bridge_physical_representation _
+
+    def test_native_to_canonical_mapping_authority_does_not_bridge_physical_representation():
+        module, projection, variables = _projection_and_variables()
+        slots = {slot.slot.name: slot for slot in projection.response_slots}
+        for q in QUESTIONS:
+            variable = variables[q]
+            rule = next(x for x in slots[q].values if x.canonical_value == "1")
+            state, declaration = classify_physical_value(1, variable.missing_declarations)
+>           assert rule.physical_key == physical_value_binding_key(1, state, declaration)
+E           AssertionError: assert '47f141e43fb2...9761731ace7bd' == 'b9b720335f37...c77cc283bf6e8'
+E             
+E             - b9b720335f373dc4f7874f32acd003732ba7947b22b9d3dbb6bc77cc283bf6e8
+E             + 47f141e43fb2a330ebd2286a0bb658eaa6320768d1bb75a0b969761731ace7bd
+
+rawlsing_next/tests/test_fiabc_lm2_r1i_physical_native_hostile.py:46: AssertionError
+_ test_special_states_remain_noncanonical_and_mapping_authority_does_not_leak __
+
+    def test_special_states_remain_noncanonical_and_mapping_authority_does_not_leak():
+        module, projection, variables = _projection_and_variables()
+        slots = {slot.slot.name: slot for slot in projection.response_slots}
+        for q in QUESTIONS:
+            variable = variables[q]
+            for code in SPECIALS:
+                state, declaration = classify_physical_value(code, variable.missing_declarations)
+                int_key = physical_value_binding_key(code, state, declaration)
+>               rule = next(x for x in slots[q].values if x.physical_key == int_key)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E               StopIteration
+
+rawlsing_next/tests/test_fiabc_lm2_r1i_physical_native_hostile.py:67: StopIteration
+=========================== short test summary info ============================
+FAILED rawlsing_next/tests/test_fiabc_lm2_r1e_bounded_mapping_recovery.py::test_r03_exact_derived_mapping_authority_is_accepted_by_source_free_r6s_binding
+FAILED rawlsing_next/tests/test_fiabc_lm2_r1e_bounded_mapping_recovery.py::test_r04_relabel_counterfeit_is_rejected_by_exact_snapshot_binding
+FAILED rawlsing_next/tests/test_fiabc_lm2_r1e_bounded_mapping_recovery.py::test_r05_canonical_question_mapping_remains_absent
+FAILED rawlsing_next/tests/test_fiabc_lm2_r1e_bounded_mapping_recovery.py::test_r06_special_states_remain_noncanonical
+FAILED rawlsing_next/tests/test_fiabc_lm2_r1e_bounded_mapping_recovery.py::test_r07_lexical_token_similarity_mutation_is_rejected
+FAILED rawlsing_next/tests/test_fiabc_lm2_r1e_bounded_mapping_recovery.py::test_r09_exact_parent_and_provenance_mutation_is_rejected
+FAILED rawlsing_next/tests/test_fiabc_lm2_r1e_bounded_mapping_recovery.py::test_r11_lock2_and_complete_46_candidate_frontier_are_conserved
+FAILED rawlsing_next/tests/test_fiabc_lm2_r1e_bounded_mapping_recovery.py::test_r17_native_only_mutation_cannot_preserve_frozen_string_workload
+FAILED rawlsing_next/tests/test_fiabc_lm2_r1i_physical_native_hostile.py::test_native_to_canonical_mapping_authority_does_not_bridge_physical_representation
+FAILED rawlsing_next/tests/test_fiabc_lm2_r1i_physical_native_hostile.py::test_special_states_remain_noncanonical_and_mapping_authority_does_not_leak
+10 failed, 23 passed in 338.96s (0:05:38)

@@ -93,6 +93,8 @@ class PhysicalSourceIncidence:
             "source_sha256": self.source_sha256,
             "snapshot_sha256": self._source_snapshot.sha256,
             "snapshot_size": self._source_snapshot.size,
+            "snapshot_path_unlinked": not self._source_snapshot.path.exists(),
+            "reader_binding": "OPEN_FD_VIA_POSIX_DEV_FD",
             "content_bound": True,
         }
 
@@ -170,15 +172,25 @@ class PhysicalSourceIncidence:
             raise DecoderError("physical source has no content-bound snapshot for lazy byte reads")
         self.verify_source_identity()
         import pyreadstat
+        snapshot = self._source_snapshot
         reader = pyreadstat.read_sav if self._reader_kind == "SAV" else pyreadstat.read_dta
-        row_offset = 0
-        chunks = pyreadstat.read_file_in_chunks(
-            reader, self._source_snapshot.reader_path, chunksize=rows_per_chunk, encoding=self._encoding,
-            apply_value_formats=False, user_missing=True,
+        snapshot.rewind()
+        if self._reader_kind == "SAV":
+            row_offset = 0
+            chunks = pyreadstat.read_file_in_chunks(
+                reader, snapshot.reader_path, chunksize=rows_per_chunk, encoding=self._encoding,
+                apply_value_formats=False, user_missing=True,
+            )
+            for frame, _metadata in chunks:
+                snapshot.check_stable()
+                yield from emit(frame, row_offset)
+                row_offset += len(frame)
+            return
+        frame, _metadata = reader(
+            snapshot.reader_path, apply_value_formats=False, user_missing=True, encoding=self._encoding
         )
-        for frame, _metadata in chunks:
-            yield from emit(frame, row_offset)
-            row_offset += len(frame)
+        snapshot.verify()
+        yield from emit(frame, 0)
 
     def iter_cells(self, batch_size: int = 10_000) -> Iterator[PhysicalCell]:
         for batch in self.iter_batches(batch_size):
@@ -196,20 +208,39 @@ class _SourceSnapshot:
     directory: Path
     fd: int
     size: int
+    stat_signature: tuple[int, int, int, int, int]
     _closed: bool = False
 
     @property
     def reader_path(self) -> str:
-        return str(self.path)
+        if self._closed:
+            raise DecoderError("source snapshot is closed")
+        return f"/dev/fd/{self.fd}"
 
     def read_prefix(self, size: int) -> bytes:
         if self._closed:
             raise DecoderError("source snapshot is closed")
         return os.pread(self.fd, size, 0)
 
+    def rewind(self) -> None:
+        if self._closed:
+            raise DecoderError("source snapshot is closed")
+        os.lseek(self.fd, 0, os.SEEK_SET)
+
+    def _current_signature(self) -> tuple[int, int, int, int, int]:
+        st = os.fstat(self.fd)
+        return (st.st_dev, st.st_ino, st.st_size, st.st_mtime_ns, st.st_ctime_ns)
+
+    def check_stable(self) -> None:
+        if self._closed:
+            raise DecoderError("source snapshot is closed")
+        if self._current_signature() != self.stat_signature:
+            raise DecoderError("source snapshot changed after identity acquisition")
+
     def verify(self) -> None:
         if self._closed:
             raise DecoderError("source snapshot is closed")
+        self.check_stable()
         if _sha_fd(self.fd) != self.sha256:
             raise DecoderError("source snapshot bytes changed after identity acquisition")
 
@@ -218,12 +249,15 @@ class _SourceSnapshot:
             return
         self._closed = True
         try:
+            st = os.stat(self.path)
+            fst = os.fstat(self.fd)
+            if (st.st_dev, st.st_ino) == (fst.st_dev, fst.st_ino):
+                os.unlink(self.path)
+        except OSError:
+            pass
+        try:
             os.close(self.fd)
         finally:
-            try:
-                os.unlink(self.path)
-            except OSError:
-                pass
             try:
                 os.rmdir(self.directory)
             except OSError:
@@ -275,7 +309,12 @@ def _acquire_source_snapshot(source: Path, expected_source_sha256: str | None = 
         actual = digest.hexdigest()
         if expected_source_sha256 is not None and actual != expected_source_sha256:
             raise DecoderError("source sha256 mismatch before governed decode")
-        return _SourceSnapshot(actual, snapshot_path, directory, snapshot_fd, size)
+        if os.name != "posix" or not Path("/dev/fd").is_dir():
+            raise DecoderError("content-bound reader path requires POSIX /dev/fd")
+        os.unlink(snapshot_path)
+        st = os.fstat(snapshot_fd)
+        signature = (st.st_dev, st.st_ino, st.st_size, st.st_mtime_ns, st.st_ctime_ns)
+        return _SourceSnapshot(actual, snapshot_path, directory, snapshot_fd, size, signature)
     except Exception:
         if snapshot_fd is not None:
             try:
@@ -609,14 +648,17 @@ def _decode(
         compatibility = _compatibility_config(source_sha, encoding)
         reader = pyreadstat.read_sav if expected_format == "sav" else pyreadstat.read_dta
         reader_source = snapshot.reader_path
+        snapshot.rewind()
         _metadata_frame, metadata = reader(reader_source, metadataonly=True, apply_value_formats=False,
                                            user_missing=True, encoding=encoding)
+        snapshot.verify()
         source_format = expected_format.upper()
         compatibility_full_read = encoding is not None
         frame = None
         if compatibility_full_read:
-            snapshot.verify()
+            snapshot.rewind()
             frame, metadata = reader(reader_source, apply_value_formats=False, user_missing=True, encoding=encoding)
+            snapshot.verify()
         names = list(metadata.column_names)
         variables: list[PhysicalVariable] = []
         declarations: dict[str, tuple[Mapping[str, Any], ...]] = {}
@@ -647,6 +689,7 @@ def _decode(
             row_count=row_count,
             prefix=snapshot.read_prefix(176 if source_format == "SAV" else 512),
         )
+        snapshot.verify()
         reader_config = {
             "reader": "pyreadstat",
             "reader_version": getattr(pyreadstat, "__version__", None),

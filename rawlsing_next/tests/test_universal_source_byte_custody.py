@@ -265,14 +265,25 @@ def test_lazy_value_phase_reopens_only_the_identity_bound_snapshot(
     _write_source(path, source_format, _ALTERNATE_ROWS)
 
     seen_paths = []
-    original_chunks = pyreadstat.read_file_in_chunks
+    if source_format == "sav":
+        original_chunks = pyreadstat.read_file_in_chunks
 
-    def hostile_chunks(reader, source, *args, **kwargs):
-        seen_paths.append(Path(source))
-        _write_source(path, source_format, _ALTERNATE_ROWS)
-        return original_chunks(reader, source, *args, **kwargs)
+        def hostile_chunks(reader, source, *args, **kwargs):
+            seen_paths.append(Path(source))
+            _write_source(path, source_format, _ALTERNATE_ROWS)
+            return original_chunks(reader, source, *args, **kwargs)
 
-    monkeypatch.setattr(pyreadstat, "read_file_in_chunks", hostile_chunks)
+        monkeypatch.setattr(pyreadstat, "read_file_in_chunks", hostile_chunks)
+    else:
+        original_read = pyreadstat.read_dta
+
+        def hostile_read(source, *args, **kwargs):
+            if not kwargs.get("metadataonly", False):
+                seen_paths.append(Path(source))
+                _write_source(path, source_format, _ALTERNATE_ROWS)
+            return original_read(source, *args, **kwargs)
+
+        monkeypatch.setattr(pyreadstat, "read_dta", hostile_read)
     observed_cells = _cell_signature(incidence.iter_cells(4))
     assert seen_paths == [snapshot_path]
     assert snapshot_path != path
@@ -318,13 +329,11 @@ def test_altered_snapshot_is_refused_before_lazy_native_facts(tmp_path, source_f
     incidence = _decode(path, source_format, _sha(path))
     snapshot = incidence._source_snapshot
     alternate_bytes = alternate.read_bytes()
-    os.chmod(snapshot.path, 0o600)
-    with snapshot.path.open("r+b") as handle:
-        handle.write(alternate_bytes)
-        handle.truncate()
-    with pytest.raises(DecoderError, match="source snapshot bytes changed"):
+    os.pwrite(snapshot.fd, alternate_bytes, 0)
+    os.ftruncate(snapshot.fd, len(alternate_bytes))
+    with pytest.raises(DecoderError, match="source snapshot.*changed"):
         list(incidence.iter_cells())
-    with pytest.raises(DecoderError, match="source snapshot bytes changed"):
+    with pytest.raises(DecoderError, match="source snapshot.*changed"):
         incidence.verify_source_identity()
     incidence.close()
 
@@ -387,7 +396,9 @@ def test_snapshot_close_releases_private_source_bytes(tmp_path):
     snapshot = incidence._source_snapshot
     snapshot_path = snapshot.path
     snapshot_directory = snapshot.directory
-    assert snapshot_path.exists()
+    assert not snapshot_path.exists()
+    assert snapshot_directory.exists()
+    assert Path(snapshot.reader_path).as_posix().startswith("/dev/fd/")
     incidence.close()
     assert not snapshot_path.exists()
     assert not snapshot_directory.exists()
@@ -419,3 +430,198 @@ def test_lazy_value_phase_uses_only_the_content_bound_snapshot(tmp_path, monkeyp
     assert snapshot_path != path
     assert observed_cells == baseline_cells
     incidence.close()
+
+
+def test_independent_snapshot_bound_c11_i03_facts_survive_original_path_replacement(tmp_path):
+    for source_format in ("sav", "dta"):
+        path = _write_source(tmp_path / f"indep-positive.{source_format}", source_format)
+        expected_sha = _sha(path)
+        incidence = _decode(path, source_format, expected_sha)
+        try:
+            baseline = _facts_from_incidence(incidence, source_format)
+            assert baseline["source_sha256"] == expected_sha
+            assert baseline["snapshot_sha256"] == expected_sha
+            assert baseline["i03_typed_state"] == "SUPPORTED"
+            assert baseline["i03_raw_denominator_support"] == 2
+            assert baseline["i03_raw_numerator_support"] == 2
+            assert baseline["i03_y_cells"] == {"0": 1, "1": 1}
+
+            _write_source(path, source_format, _ALTERNATE_ROWS)
+            assert _sha(path) != expected_sha
+            observed = _facts_from_incidence(incidence, source_format)
+            assert observed == baseline
+            assert incidence.verify_source_identity() == expected_sha
+        finally:
+            incidence.close()
+
+
+def test_private_snapshot_path_replacement_after_verify_cannot_rebind_old_identity_to_new_bytes(
+    tmp_path, monkeypatch
+):
+    for source_format in ("sav", "dta"):
+        path = _write_source(tmp_path / f"indep-toctou.{source_format}", source_format)
+        alternate = _write_source(
+            tmp_path / f"indep-toctou-alt.{source_format}", source_format, _ALTERNATE_ROWS
+        )
+        expected_sha = _sha(path)
+        incidence = _decode(path, source_format, expected_sha)
+        snapshot = incidence._source_snapshot
+        snapshot_path = snapshot.path
+        try:
+            baseline = _facts_from_incidence(incidence, source_format)
+            assert baseline["source_sha256"] == expected_sha
+            assert baseline["i03_y_cells"] == {"0": 1, "1": 1}
+            assert not snapshot_path.exists()
+            assert Path(snapshot.reader_path).as_posix().startswith("/dev/fd/")
+            with monkeypatch.context() as patch:
+                calls = {"n": 0}
+
+                def replace_once():
+                    if calls["n"] == 0:
+                        os.replace(alternate, snapshot_path)
+                    calls["n"] += 1
+
+                if source_format == "sav":
+                    original_chunks = pyreadstat.read_file_in_chunks
+
+                    def hostile_chunks(reader, source, *args, **kwargs):
+                        replace_once()
+                        return original_chunks(reader, source, *args, **kwargs)
+
+                    patch.setattr(pyreadstat, "read_file_in_chunks", hostile_chunks)
+                else:
+                    original_read = pyreadstat.read_dta
+
+                    def hostile_read(source, *args, **kwargs):
+                        if not kwargs.get("metadataonly", False):
+                            replace_once()
+                        return original_read(source, *args, **kwargs)
+
+                    patch.setattr(pyreadstat, "read_dta", hostile_read)
+                observed = _facts_from_incidence(incidence, source_format)
+            assert observed["source_sha256"] == expected_sha
+            assert observed == baseline
+            assert snapshot_path.exists()
+        finally:
+            incidence.close()
+            try:
+                snapshot_path.unlink()
+            except OSError:
+                pass
+            try:
+                snapshot.directory.rmdir()
+            except OSError:
+                pass
+
+
+@pytest.mark.parametrize("source_format", ("sav", "dta"))
+def test_metadata_phase_reads_bound_fd_not_replaced_private_path(
+    tmp_path, source_format, monkeypatch
+):
+    path = _write_source(tmp_path / f"indep-metadata.{source_format}", source_format)
+    metadata_rows = dict(_ROWS)
+    metadata_rows["Z"] = metadata_rows.pop("W")
+    alternate = _write_source(
+        tmp_path / f"indep-metadata-alt.{source_format}", source_format, metadata_rows
+    )
+    expected_sha = _sha(path)
+
+    import rawlsing_next.pre553_physical_decoder as decoder
+
+    original_acquire = decoder._acquire_source_snapshot
+
+    def acquire_then_replace(source, expected_source_sha256=None):
+        snapshot = original_acquire(source, expected_source_sha256)
+        os.replace(alternate, snapshot.path)
+        return snapshot
+
+    monkeypatch.setattr(decoder, "_acquire_source_snapshot", acquire_then_replace)
+    incidence = _decode(path, source_format, expected_sha)
+    snapshot = incidence._source_snapshot
+    try:
+        assert [variable.name for variable in incidence.variables] == list(_ROWS)
+        assert incidence.source_sha256 == expected_sha
+        facts = _facts_from_incidence(incidence, source_format)
+        assert facts["source_sha256"] == expected_sha
+        assert facts["snapshot_sha256"] == expected_sha
+        assert facts["i03_y_cells"] == {"0": 1, "1": 1}
+    finally:
+        incidence.close()
+        try:
+            snapshot.path.unlink()
+        except OSError:
+            pass
+        try:
+            snapshot.directory.rmdir()
+        except OSError:
+            pass
+
+
+def test_between_lazy_batch_fd_change_is_refused_before_altered_facts(tmp_path, monkeypatch):
+    path = _write_source(tmp_path / "indep-between-batch.sav", "sav")
+    alternate = _write_source(tmp_path / "indep-between-batch-alt.sav", "sav", _ALTERNATE_ROWS)
+    expected_sha = _sha(path)
+    baseline = _decode(path, "sav", expected_sha)
+    baseline_cells = _cell_signature(baseline.iter_cells(4))
+    baseline.close()
+
+    incidence = _decode(path, "sav", expected_sha)
+    snapshot = incidence._source_snapshot
+    alternate_bytes = alternate.read_bytes()
+    original_chunks = pyreadstat.read_file_in_chunks
+
+    def hostile_chunks(reader, source, *args, **kwargs):
+        iterator = original_chunks(reader, source, *args, **kwargs)
+        yield next(iterator)
+        os.pwrite(snapshot.fd, alternate_bytes, 0)
+        os.ftruncate(snapshot.fd, len(alternate_bytes))
+        yield from iterator
+
+    monkeypatch.setattr(pyreadstat, "read_file_in_chunks", hostile_chunks)
+    yielded = []
+    with pytest.raises(DecoderError, match="source snapshot.*changed"):
+        for batch in incidence.iter_batches(4):
+            yielded.extend(batch)
+    assert yielded
+    assert _cell_signature(yielded) == baseline_cells[:len(yielded)]
+    incidence.close()
+
+
+def test_dta_in_place_change_after_metadata_is_refused_before_facts(tmp_path, monkeypatch):
+    path = _write_source(tmp_path / "indep-dta-window.dta", "dta")
+    alternate = _write_source(tmp_path / "indep-dta-window-alt.dta", "dta", _ALTERNATE_ROWS)
+    expected_sha = _sha(path)
+    incidence = _decode(path, "dta", expected_sha)
+    snapshot = incidence._source_snapshot
+    alternate_bytes = alternate.read_bytes()
+    original_read = pyreadstat.read_dta
+
+    def hostile_read(source, *args, **kwargs):
+        if not kwargs.get("metadataonly", False):
+            os.pwrite(snapshot.fd, alternate_bytes, 0)
+            os.ftruncate(snapshot.fd, len(alternate_bytes))
+        return original_read(source, *args, **kwargs)
+
+    monkeypatch.setattr(pyreadstat, "read_dta", hostile_read)
+    with pytest.raises(DecoderError, match="source snapshot.*changed"):
+        list(incidence.iter_cells())
+    incidence.close()
+
+
+@pytest.mark.parametrize("source_format", ("sav", "dta"))
+def test_compatibility_full_read_uses_bound_fd(tmp_path, source_format, monkeypatch):
+    import rawlsing_next.pre553_physical_decoder as decoder
+
+    path = _write_source(tmp_path / f"indep-compat.{source_format}", source_format)
+    expected_sha = _sha(path)
+    monkeypatch.setitem(decoder.COMPATIBILITY_ALLOWLIST, expected_sha, "latin1")
+    decode = decoder.decode_sav if source_format == "sav" else decoder.decode_dta
+    incidence = decode(path, encoding="latin1", expected_source_sha256=expected_sha)
+    try:
+        assert incidence.reader_configuration["authority_status"] == decoder.COMPATIBILITY_ONLY
+        facts = _facts_from_incidence(incidence, source_format)
+        assert facts["source_sha256"] == expected_sha
+        assert facts["snapshot_sha256"] == expected_sha
+        assert facts["i03_y_cells"] == {"0": 1, "1": 1}
+    finally:
+        incidence.close()
