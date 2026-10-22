@@ -98,6 +98,46 @@ def token(value: Any) -> str:
     return json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=True)
 
 
+def _normalized_source_identity(value: Any) -> str:
+    """Return the admitted exact token for a source identity value.
+
+    Mapping keys are validated on the same representation used for source-cell
+    lookup. Unsupported types and non-finite floats are refused before any
+    mapping dictionary is constructed.
+    """
+    if isinstance(value, (bool, int, str)):
+        return token(value)
+    if isinstance(value, float):
+        if not math.isfinite(value):
+            raise NativePreimageRefusal(
+                "NON_FINITE_SOURCE_IDENTITY", repr(value))
+        return token(value)
+    raise NativePreimageRefusal(
+        "NON_ADMITTED_SOURCE_IDENTITY_TYPE", type(value).__name__)
+
+
+def _normalized_respondent_identity(value: Any) -> str:
+    """Return the admitted string respondent key for a governed mapping value.
+
+    Scalar numerics/bools retain the adapter's historical string form; empty
+    strings and non-scalar/None values are refused rather than silently
+    stringified into an ambiguous respondent identity.
+    """
+    if isinstance(value, str):
+        if not value.strip():
+            raise NativePreimageRefusal("EMPTY_RESPONDENT_KEY")
+        return value
+    if isinstance(value, (bool, int)):
+        return str(value)
+    if isinstance(value, float):
+        if not math.isfinite(value):
+            raise NativePreimageRefusal(
+                "NON_FINITE_RESPONDENT_KEY", repr(value))
+        return str(value)
+    raise NativePreimageRefusal(
+        "NON_ADMITTED_RESPONDENT_KEY_TYPE", type(value).__name__)
+
+
 def _observed(cell: PhysicalCell | None) -> bool:
     return cell is not None and cell.missing_state is PhysicalMissingState.OBSERVED_STORAGE_VALUE
 
@@ -288,13 +328,50 @@ class GovernedRowOccurrencePlan:
             raise NativePreimageRefusal("DUPLICATE_OCCURRENCE_VARIABLE_PLAN")
         if not isinstance(self.respondent_key_by_source_value, Mapping):
             raise NativePreimageRefusal("RESPONDENT_KEY_MAPPING_REQUIRED")
-        keys = list(self.respondent_key_by_source_value.values())
-        if len(keys) != len(set(keys)):
+        values = list(self.respondent_key_by_source_value.values())
+        try:
+            raw_duplicate = len(values) != len(set(values))
+        except TypeError:
+            raw_duplicate = False
+        if raw_duplicate:
             raise NativePreimageRefusal("DUPLICATE_RESPONDENT_KEY_MAPPING")
 
     @property
     def plan_by_variable(self) -> Mapping[str, VariableOccurrencePlan]:
         return {p.source_variable_code: p for p in self.variable_plans}
+
+    def normalized_respondent_mapping(self) -> Mapping[str, str]:
+        """Return the admitted source-token -> respondent-key bijection.
+
+        All admission, normalization and uniqueness checks run before the
+        lookup dictionary is constructed. A duplicate normalized source key or
+        destination key therefore refuses instead of being collapsed by a
+        last-wins dictionary comprehension.
+        """
+        normalized: list[tuple[str, str]] = []
+        for source_value, respondent_key in self.respondent_key_by_source_value.items():
+            normalized.append((
+                _normalized_source_identity(source_value),
+                _normalized_respondent_identity(respondent_key),
+            ))
+        source_tokens = [source_token for source_token, _ in normalized]
+        respondent_keys = [respondent_key for _, respondent_key in normalized]
+        if len(source_tokens) != len(set(source_tokens)):
+            duplicates = sorted(
+                source_token for source_token in set(source_tokens)
+                if source_tokens.count(source_token) > 1)
+            raise NativePreimageRefusal(
+                "DUPLICATE_NORMALIZED_SOURCE_KEY", ",".join(duplicates))
+        if len(respondent_keys) != len(set(respondent_keys)):
+            duplicates = sorted(
+                respondent_key for respondent_key in set(respondent_keys)
+                if respondent_keys.count(respondent_key) > 1)
+            raise NativePreimageRefusal(
+                "DUPLICATE_RESPONDENT_KEY_MAPPING", ",".join(duplicates))
+        return {
+            source_token: respondent_key
+            for source_token, respondent_key in normalized
+        }
 
 
 @dataclass(frozen=True)
@@ -500,8 +577,7 @@ def materialize_native_preimages(
         for row_ordinal in sorted(rows):
             respondent_token_by_row[row_ordinal] = f"ROW-{row_ordinal:04d}"
     else:
-        mapping = {token(k): str(v) for k, v in
-                   row_occurrence_plan.respondent_key_by_source_value.items()}
+        mapping = row_occurrence_plan.normalized_respondent_mapping()
         allowed = set(mapping)
         for row_ordinal, row in rows.items():
             respondent_cell = _require_observed_cell(

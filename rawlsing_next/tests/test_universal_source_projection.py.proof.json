@@ -11,6 +11,39 @@
         "old": "canonical = rule.value_aliases.get(raw_token, raw_token)",
         "new": "canonical = \"0\""
       }
+    },
+    {
+      "claim_id": "R02V-INDEPENDENT-SOURCE-DOMAIN",
+      "actual_consumer": "rawlsing_next.pre553_empirical_query.execute_empirical_query REPEATED_EVENT consumer over the actual C11 release built by the adapter",
+      "claimed_dependency": "the governed source respondent/occasion mapping determines the exact C11 event identities and I03 cell values",
+      "positive_node": "rawlsing_next/tests/test_universal_source_projection.py::test_r02v_prospective_domain_exact_tuples_permuted_and_alternative_labels",
+      "fault": {
+        "path": "rawlsing_next/pre553_source_native_preimage_adapter.py",
+        "old": "respondent_token_by_row[row_ordinal] = mapping[respondent_token]",
+        "new": "respondent_token_by_row[row_ordinal] = next(iter(mapping.values()))"
+      }
+    },
+    {
+      "claim_id": "R02-NORMALIZED-DESTINATION-REFUSAL",
+      "actual_consumer": "rawlsing_next.pre553_source_native_preimage_adapter.materialize_native_preimages governed mapping admission before C11 construction",
+      "claimed_dependency": "duplicate values at the admitted normalized destination representation refuse before any C11 release or I03 fact",
+      "positive_node": "rawlsing_next/tests/test_universal_source_projection.py::test_r02v_normalized_duplicate_respondent_key_is_refused",
+      "fault": {
+        "path": "rawlsing_next/pre553_source_native_preimage_adapter.py",
+        "old": "if len(respondent_keys) != len(set(respondent_keys)):",
+        "new": "if False:"
+      }
+    },
+    {
+      "claim_id": "R02-NORMALIZED-SOURCE-KEY-REFUSAL",
+      "actual_consumer": "rawlsing_next.pre553_source_native_preimage_adapter.materialize_native_preimages governed mapping admission before C11 construction",
+      "claimed_dependency": "duplicate normalized source keys refuse before a last-wins mapping dictionary or any C11 release/fact",
+      "positive_node": "rawlsing_next/tests/test_universal_source_projection.py::test_r02v_ambiguous_normalized_source_key_is_refused",
+      "fault": {
+        "path": "rawlsing_next/pre553_source_native_preimage_adapter.py",
+        "old": "if len(source_tokens) != len(set(source_tokens)):",
+        "new": "if False:"
+      }
     }
   ]
 }

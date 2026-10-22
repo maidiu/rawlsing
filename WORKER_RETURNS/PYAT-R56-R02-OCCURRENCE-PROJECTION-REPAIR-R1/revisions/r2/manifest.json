@@ -1,0 +1,218 @@
+{
+  "authority": "R56 narrow grant and R57 delegated technical seal; no production/science/N11/N12 acceptance; R03/compiler/original science holds unchanged",
+  "binding_envelope_limitation": "transformed adapter physical_stream is compatible with tested facade/C11/I03 route only; not a raw PhysicalCell replacement for strict receiver APIs; no facade/strict receiver change",
+  "branch": "agent/rabochii-pyat-r56-r02-occurrence-projection-repair-r1",
+  "commands": [
+    "PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 python3 -m pytest rawlsing_next/tests/test_universal_source_projection.py -q -rA",
+    "PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 python3 -m pytest rawlsing_next/tests/test_pre553_source_backed_c11_facade.py rawlsing_next/tests/test_pre553_empirical_query.py -q -rA",
+    "python3 <tracked-checker>/proof_integrity_gate_r1.py lint rawlsing_next/tests/test_universal_source_projection.py",
+    "python3 <tracked-checker>/proof_integrity_gate_r1.py witness rawlsing_next/tests/test_universal_source_projection.py.proof.json --root .",
+    "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=. python3 WORKER_RETURNS/PYAT-R56-R02-OCCURRENCE-PROJECTION-REPAIR-R1/revisions/r2/evidence/build_r2_defect_resolution_receipt.py"
+  ],
+  "defect_matrix": [
+    {
+      "before": "two source respondents collapsed to one C11 respondent; I03 SUPPORTED denominator 1",
+      "id": "D1",
+      "input": "{0:\"1\",1:1}",
+      "refusal": "DUPLICATE_RESPONDENT_KEY_MAPPING",
+      "regression": "test_r02v_normalized_duplicate_respondent_key_is_refused",
+      "repair": "normalized destination uniqueness before lossy map/C11",
+      "result": "PASS"
+    },
+    {
+      "before": "normalized source-key collision silently last-wins; source 0 became P1",
+      "id": "D2",
+      "input": "{0:\"P0\",\"0\":\"P1\",1:\"P2\"}",
+      "refusal": "DUPLICATE_NORMALIZED_SOURCE_KEY",
+      "regression": "test_r02v_ambiguous_normalized_source_key_is_refused",
+      "repair": "normalized source-token uniqueness before lossy map/C11",
+      "result": "PASS"
+    }
+  ],
+  "disposition": "ENGINEERING_REPAIR_COMPLETE__AUTHOR_NATIVE_PASS__R02V_AFFECTED_REQUALIFICATION_REQUIRED",
+  "files": [
+    {
+      "bytes": 6525,
+      "path": "WORKER_RETURNS/PYAT-R56-R02-OCCURRENCE-PROJECTION-REPAIR-R1/revisions/r2/00_RETURN.md",
+      "sha256": "a02c09431ac5cadecf99e387523b6aba4eac5523d80642201269a4dfeb15ee8c"
+    },
+    {
+      "bytes": 5526,
+      "path": "WORKER_RETURNS/PYAT-R56-R02-OCCURRENCE-PROJECTION-REPAIR-R1/revisions/r2/01_DEFECT_REGRESSION_MATRIX.md",
+      "sha256": "f5cc02b4ca3b596b03dbc8e0e78f65ef7561e1d5184b40ccb204865500fbb1f8"
+    },
+    {
+      "bytes": 3466,
+      "path": "WORKER_RETURNS/PYAT-R56-R02-OCCURRENCE-PROJECTION-REPAIR-R1/revisions/r2/02_QUALIFICATION_AND_HASHES.md",
+      "sha256": "5f3b9291dee41f4318d076dc5116066826973d2b1b64f18f57ac0d0600a6557e"
+    },
+    {
+      "bytes": 2113,
+      "path": "WORKER_RETURNS/PYAT-R56-R02-OCCURRENCE-PROJECTION-REPAIR-R1/revisions/r2/RESUME_CHECKPOINT.md",
+      "sha256": "8f9345c95e35f9b26218b1ce0185faf708a61235a4772dfdc4a03afaf8b91ff3"
+    },
+    {
+      "bytes": 1877,
+      "path": "WORKER_RETURNS/PYAT-R56-R02-OCCURRENCE-PROJECTION-REPAIR-R1/revisions/r2/evidence/SOURCE_REFS.md",
+      "sha256": "ed967239af0c3e6c47a10aa95ebd16f96b617360d4362d6b9c8ce3cb72eb9257"
+    },
+    {
+      "bytes": 4016,
+      "path": "WORKER_RETURNS/PYAT-R56-R02-OCCURRENCE-PROJECTION-REPAIR-R1/revisions/r2/evidence/build_r2_defect_resolution_receipt.py",
+      "sha256": "14dfc5cef2061e67e69d7e7c815d25777d1d4c87d87007caf4e9e020c03efb80"
+    },
+    {
+      "bytes": 100,
+      "path": "WORKER_RETURNS/PYAT-R56-R02-OCCURRENCE-PROJECTION-REPAIR-R1/revisions/r2/evidence/proof_lint.json",
+      "sha256": "a477dd4d5965979cf2973cef236a1ddd2435f214148c8dcac5f1a35954bf6ce9"
+    },
+    {
+      "bytes": 1752,
+      "path": "WORKER_RETURNS/PYAT-R56-R02-OCCURRENCE-PROJECTION-REPAIR-R1/revisions/r2/evidence/proof_witness.json",
+      "sha256": "0f6ef7ddd212a40afc0ac68d05dbf29ca75e704828714d5f4f003b7bd2780f78"
+    },
+    {
+      "bytes": 2067,
+      "path": "WORKER_RETURNS/PYAT-R56-R02-OCCURRENCE-PROJECTION-REPAIR-R1/revisions/r2/evidence/pytest_author15.log",
+      "sha256": "fecac3dc7c059c153d3f37ddf6745446581dcbee6ef7b23d2406d02e7002acaf"
+    },
+    {
+      "bytes": 3048,
+      "path": "WORKER_RETURNS/PYAT-R56-R02-OCCURRENCE-PROJECTION-REPAIR-R1/revisions/r2/evidence/pytest_author15.xml",
+      "sha256": "6a030e0c8297d546b21632b182cfa3975ce19a9f5496281737ab7725abcd5c30"
+    },
+    {
+      "bytes": 3394,
+      "path": "WORKER_RETURNS/PYAT-R56-R02-OCCURRENCE-PROJECTION-REPAIR-R1/revisions/r2/evidence/pytest_full.log",
+      "sha256": "a42433b6aaed49e81d8a2847c896e62e4b700ef94cf41108cdb2391ea2c90602"
+    },
+    {
+      "bytes": 5101,
+      "path": "WORKER_RETURNS/PYAT-R56-R02-OCCURRENCE-PROJECTION-REPAIR-R1/revisions/r2/evidence/pytest_full.xml",
+      "sha256": "268efa60727c2951d688764deef77e40b9a77a8bd7009ff5fe76b45b72d5445d"
+    },
+    {
+      "bytes": 5771,
+      "path": "WORKER_RETURNS/PYAT-R56-R02-OCCURRENCE-PROJECTION-REPAIR-R1/revisions/r2/evidence/pytest_retained.log",
+      "sha256": "5bd9000724e2113586239ec4ea4415e1c4e96177ad0dee86ef3bd241c89ab1ed"
+    },
+    {
+      "bytes": 8534,
+      "path": "WORKER_RETURNS/PYAT-R56-R02-OCCURRENCE-PROJECTION-REPAIR-R1/revisions/r2/evidence/pytest_retained.xml",
+      "sha256": "c9564879656276e03ef6105864385bcdc84eef48727cb70a89b61e537e28aac4"
+    },
+    {
+      "bytes": 1365,
+      "path": "WORKER_RETURNS/PYAT-R56-R02-OCCURRENCE-PROJECTION-REPAIR-R1/revisions/r2/evidence/pytest_reviewer9.log",
+      "sha256": "a9c34b95a21c1438a57f9a73ced3a5be325fb9d5742ba92c6411c9d010f61498"
+    },
+    {
+      "bytes": 1950,
+      "path": "WORKER_RETURNS/PYAT-R56-R02-OCCURRENCE-PROJECTION-REPAIR-R1/revisions/r2/evidence/pytest_reviewer9.xml",
+      "sha256": "4dbaf8fe0f43ce6341855d60e3a49d5704374ada7b18f2e069ada95ccb01fd37"
+    },
+    {
+      "bytes": 4438,
+      "path": "WORKER_RETURNS/PYAT-R56-R02-OCCURRENCE-PROJECTION-REPAIR-R1/revisions/r2/evidence/r2_defect_resolution_receipt.json",
+      "sha256": "2b961c8f76b49f42f76d684c02d88dce348e27819e45ee940c4deb0d98018cd3"
+    }
+  ],
+  "frozen_policy": "6d95a78bf6b7bcf70022e303a151255e65edc38a",
+  "near_positive_controls": [
+    "int source keys",
+    "float source keys",
+    "string source keys",
+    "numeric destination scalars",
+    "row permutation"
+  ],
+  "not_run": [
+    "R02V affected requalification (fresh session required)",
+    "R00E/R00V gate implementation",
+    "R03/compiler/lowering",
+    "R04.byte/R04.joined",
+    "R05/R06",
+    "original35/N11/N12",
+    "protected CI",
+    "production adoption"
+  ],
+  "owner_role": "R56_R02_AUTHOR_REPAIR__NOT_R02V_ACCEPTANCE",
+  "parent": "236fd4d1064f7c14113616db300c955294a474ac",
+  "proof_integrity": {
+    "adapter_restored_sha256": "c9ea22ada390babf7b3a977352b784bcfeb498e738dcb0024fc7f4d793b90b95",
+    "claims": [
+      "R56-R02-OCCURRENCE-TUPLES",
+      "R02V-INDEPENDENT-SOURCE-DOMAIN",
+      "R02-NORMALIZED-DESTINATION-REFUSAL",
+      "R02-NORMALIZED-SOURCE-KEY-REFUSAL"
+    ],
+    "lint": "AST_LINT_PASS",
+    "witness": "MECHANICAL_WITNESS_PASS_NOT_SEMANTIC_ADOPTION"
+  },
+  "r02v_source": "a287674b97a2bbde4bf9acf3b6badf19b5ce72f5",
+  "r57_source": "953eb07ad29cc424b2fc43cfeb13ef83355f3a50",
+  "remote_parent_at_start": "236fd4d1064f7c14113616db300c955294a474ac",
+  "remote_readback": "SEE 03_REMOTE_READBACK.md after publication",
+  "repo_files": [
+    {
+      "after_bytes": 41514,
+      "after_sha256": "c9ea22ada390babf7b3a977352b784bcfeb498e738dcb0024fc7f4d793b90b95",
+      "after_sha256_actual": "c9ea22ada390babf7b3a977352b784bcfeb498e738dcb0024fc7f4d793b90b95",
+      "before_sha256": "2cf5e98bc29081678c364d3ff591c71f11ce7ebf3564419af8a26f5f04113b64",
+      "path": "rawlsing_next/pre553_source_native_preimage_adapter.py",
+      "role": "repair-candidate"
+    },
+    {
+      "after_bytes": 59005,
+      "after_sha256": "3673908c02b6066a10b985bd26106686dfbb0eba463551a3e6d3e21db5327b63",
+      "after_sha256_actual": "3673908c02b6066a10b985bd26106686dfbb0eba463551a3e6d3e21db5327b63",
+      "before_sha256": "9b3cf0e23d9c675e3666bc52756cd7ade5770cef093773dbebf0e9e249d189a7",
+      "path": "rawlsing_next/tests/test_universal_source_projection.py",
+      "role": "reviewer-tests-ported"
+    },
+    {
+      "after_bytes": 2963,
+      "after_sha256": "39ba9ef15d0628d4a56877022d46db18a7403a9ab4a07a734c2743c2a0af72dd",
+      "after_sha256_actual": "39ba9ef15d0628d4a56877022d46db18a7403a9ab4a07a734c2743c2a0af72dd",
+      "before_sha256": "c8ee73c30f74d12fd44bb88710e4903bc3c04a1c89b76481378a712ce6e4c11c",
+      "path": "rawlsing_next/tests/test_universal_source_projection.py.proof.json",
+      "role": "proof-sidecar"
+    }
+  ],
+  "schema": "PYAT_R56_R02_R2_REPAIR_RETURN_MANIFEST@1",
+  "science": "TEST_ONLY synthetic sourcefree only; no original source/respondent science claim",
+  "session": {
+    "harness": "OpenCode",
+    "host": "MacBook-Pro.lan",
+    "id": "ses_e9dea5a24ffeBtsLScgC81lfet",
+    "model": "deepseek-v4.1-flash",
+    "os": "macOS 13.2.1 (22D68) x86_64",
+    "pandas": "2.3.1",
+    "provenance_limitation": "same native session previously produced the R02V return; R02V requalification must use a fresh session",
+    "provider": "opencode-go",
+    "pyreadstat": "1.3.2",
+    "pytest": "9.0.2",
+    "python": "3.11.3",
+    "usage": "UNKNOWN_NOT_EXPOSED",
+    "variant": "max"
+  },
+  "shared_contract_source": "eb28fdcc311e2534b66def445e745cb25cb8a9bd",
+  "test_counters": {
+    "author": {
+      "failed": 0,
+      "passed": 15
+    },
+    "full_focused": {
+      "failed": 0,
+      "passed": 26
+    },
+    "retained": {
+      "failed": 0,
+      "passed": 42
+    },
+    "reviewer_ported": {
+      "failed": 0,
+      "passed": 9
+    }
+  },
+  "worktree": "/Users/matthewsmith/Desktop/Rawlsing/R56-R02-occurrence-projection-wt"
+}
