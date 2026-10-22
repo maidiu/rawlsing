@@ -1,0 +1,23 @@
+{
+  "schema": "R04_READONLY_HANDOFF_DISCRIMINATOR_R1",
+  "source": "Temporary arbitrary bytes; no candidate modules executed",
+  "same_inode": true,
+  "access_mode": 0,
+  "O_RDONLY": 0,
+  "dev_fd_read": "original-content",
+  "pwrite": {
+    "refused": true,
+    "errno": 9
+  },
+  "shared_writable_mmap": {
+    "refused": true,
+    "errno": 13
+  },
+  "dev_fd_reopen_O_RDWR": {
+    "refused": true,
+    "errno": 13
+  },
+  "scope": "OS primitive on current mainMac only, not pyreadstat or repaired native acceptance",
+  "candidate_edited": false,
+  "source_data_accessed": false
+}
