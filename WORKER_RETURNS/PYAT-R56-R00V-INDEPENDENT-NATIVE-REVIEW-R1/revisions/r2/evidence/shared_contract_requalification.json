@@ -1,0 +1,56 @@
+{
+  "external_reads": {
+    "R2_policy": "6d95a78bf6b7bcf70022e303a151255e65edc38a",
+    "R57": "953eb07ad29cc424b2fc43cfeb13ef83355f3a50",
+    "native_shared": "eb28fdcc311e2534b66def445e745cb25cb8a9bd",
+    "review_shared": "485f31e52ca82905dcfbbc79c5f8c8294fb55f49"
+  },
+  "obligations": [
+    {
+      "evidence": "evidence/session.json",
+      "id": "fresh_reviewer_session_and_identity",
+      "status": "PASS"
+    },
+    {
+      "evidence": "evidence/reviewer_replay.json",
+      "id": "exact_policy_pin_and_blob_recompute",
+      "status": "PASS"
+    },
+    {
+      "evidence": "evidence/reviewer_replay.json",
+      "id": "36_case_independent_reproduction",
+      "status": "PASS"
+    },
+    {
+      "evidence": "evidence/defect_requalification.json",
+      "id": "8_defect_secure_requalification",
+      "status": "PASS"
+    },
+    {
+      "evidence": "evidence/dependency_fault.json",
+      "id": "same_gate_decision_dependency_fault_fresh_restore",
+      "status": "PASS"
+    },
+    {
+      "evidence": "evidence/candidate_changed_test_gate.json",
+      "id": "candidate_changed_test_proof_gate",
+      "status": "PASS"
+    },
+    {
+      "evidence": "evidence/candidate_custody_recheck.json",
+      "id": "candidate_manifest_and_sums",
+      "status": "FAIL_CUSTODY"
+    },
+    {
+      "evidence": "evidence/reviewer_changed_test_gate.json",
+      "id": "reviewer_changed_test_proof_gate",
+      "status": "PENDING_POST_COMMIT"
+    },
+    {
+      "evidence": "04_VERDICT_AND_HANDOFF.md",
+      "id": "native_R09_original_survey",
+      "status": "HOLD"
+    }
+  ],
+  "schema": "R56_R00V_R2_SHARED_CONTRACT_REQUALIFICATION@1"
+}

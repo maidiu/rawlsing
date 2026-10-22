@@ -1,0 +1,108 @@
+{
+  "all_repaired": true,
+  "candidate": "3d4d77e9b667a1cddac07c3bfdda7d8795de458d",
+  "defect_count": 8,
+  "passed": 8,
+  "probes": [
+    {
+      "actual": "HOLD_TRUSTED_NATIVE",
+      "expected_secure": [
+        "HOLD_TRUSTED_NATIVE",
+        "REFUSE_AUTHORITY",
+        "REFUSE_FORGED_EVIDENCE"
+      ],
+      "name": "executed_native_without_evidence",
+      "pass": true,
+      "reasons": [
+        "P09_RUNTIME_PROVENANCE_HOLD",
+        "P14_FAIL_CLOSED_TRUST"
+      ]
+    },
+    {
+      "actual": "HOLD_TRUSTED_NATIVE",
+      "expected_secure": [
+        "HOLD_TRUSTED_NATIVE",
+        "REFUSE_FORGED_EVIDENCE",
+        "REFUSE_STATUS"
+      ],
+      "name": "supported_status_without_native_evidence",
+      "pass": true,
+      "reasons": [
+        "P09_RUNTIME_PROVENANCE_HOLD",
+        "P14_FAIL_CLOSED_TRUST"
+      ]
+    },
+    {
+      "actual": "REFUSE_STATUS",
+      "expected_secure": [
+        "REFUSE_STATUS"
+      ],
+      "name": "prohibited_completed_observed_zero",
+      "pass": true,
+      "reasons": [
+        "P07_SEPARATE_STATES"
+      ]
+    },
+    {
+      "actual": "REFUSE_FRONTIER",
+      "expected_secure": [
+        "REFUSE_FRONTIER"
+      ],
+      "name": "semantic_mutation_masked_by_status_edit",
+      "pass": true,
+      "reasons": [
+        "P06_NO_DROP_MULTISETS"
+      ]
+    },
+    {
+      "actual": "REFUSE_AUTHORITY",
+      "expected_secure": [
+        "REFUSE_AUTHORITY",
+        "REFUSE_PIN",
+        "REFUSE_STATUS"
+      ],
+      "name": "unknown_claim_grade",
+      "pass": true,
+      "reasons": [
+        "P08_CLAIM_GRADE_CEILING"
+      ]
+    },
+    {
+      "actual": "REFUSE_FRONTIER",
+      "expected_secure": [
+        "REFUSE_FRONTIER"
+      ],
+      "name": "duplicate_occurrence_objects",
+      "pass": true,
+      "reasons": [
+        "P01_OCCURRENCE_ROLE_AND_MEASURE",
+        "P06_NO_DROP_MULTISETS"
+      ]
+    },
+    {
+      "actual": "REFUSE_PIN",
+      "expected_secure": [
+        "REFUSE_IDENTITY",
+        "REFUSE_PIN"
+      ],
+      "name": "policy_contract_mismatch",
+      "pass": true,
+      "reasons": [
+        "P00_INDEPENDENT_PIN"
+      ]
+    },
+    {
+      "actual": "REFUSE_STATUS",
+      "expected_secure": [
+        "REFUSE_STATUS"
+      ],
+      "name": "eligible_to_held_disposition",
+      "pass": true,
+      "reasons": [
+        "P07_SEPARATE_STATES"
+      ]
+    }
+  ],
+  "schema": "R56_R00V_R2_DEFECT_REQUALIFICATION@1",
+  "source_review": "140c41d6a10a595ff5d80de4eb855bcd65e7a8f6"
+}

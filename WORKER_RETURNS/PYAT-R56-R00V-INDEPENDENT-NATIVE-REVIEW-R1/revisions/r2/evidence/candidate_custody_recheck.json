@@ -1,0 +1,36 @@
+{
+  "manifest_all_hashes_match": false,
+  "manifest_bad": [
+    {
+      "actual": "70177f0fd11a3178c0bb9839d7f993a686924082dcea093b8b9ab502bfe99092",
+      "path": "WORKER_RETURNS/PYAT-R56-R00E-GATE-IMPLEMENTATION-R1/revisions/r2/evidence/manifest_supersession.json",
+      "recorded": "da2d80724048dcad9f4895930972235fd00f70f2430a01617c7bf2ab66bf87eb"
+    },
+    {
+      "actual": "fac1dc32f5d4e298494a83914391dc5271f21c2f0530ecf95f2da055055ddb8b",
+      "path": "WORKER_RETURNS/PYAT-R56-R00E-GATE-IMPLEMENTATION-R1/revisions/r2/evidence/passport.json",
+      "recorded": "e1663d7e4c23c32d5b995ce01bdb0cfb55928c875ca527646b2997eef85da076"
+    }
+  ],
+  "manifest_files": 27,
+  "note": "Candidate manifest self-excludes itself and sums; checks are against actual candidate files.",
+  "schema": "R56_R00V_R2_CANDIDATE_CUSTODY@1",
+  "sums_all_resolve": false,
+  "sums_bad": [
+    {
+      "actual": "",
+      "pass": false,
+      "path": "../../CROSS_HQ_CONTROL_ROOM/universal_promotion_gate.py",
+      "recorded": "6352975135b99f9135e6ad333c571d6c09e17823a3e4bfc2d0806d1fd935ce4f",
+      "resolved": ""
+    },
+    {
+      "actual": "",
+      "pass": false,
+      "path": "../../tests/universal_execution_oracle/test_r00e_r2_reviewer_regressions.py",
+      "recorded": "677afd5e91cc9930cd937896edaffc495e8f554230465339d1dccd05b383d449",
+      "resolved": ""
+    }
+  ],
+  "sums_entries": 25
+}

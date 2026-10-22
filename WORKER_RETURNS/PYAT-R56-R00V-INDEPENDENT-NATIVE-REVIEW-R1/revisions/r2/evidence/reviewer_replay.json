@@ -1,0 +1,452 @@
+{
+  "all_pass": true,
+  "candidate": "3d4d77e9b667a1cddac07c3bfdda7d8795de458d",
+  "case_count": 36,
+  "expected_count": 18,
+  "passed": 36,
+  "policy_blobs_independently_recomputed": {
+    "CONTRACT.md": "01ccb46475ba09fe868a59c8810a12de1190dc22",
+    "decision_cases.json": "5608e9c3435042e92d846644aad5404b47d6b2f0",
+    "freeze.json": "dfc1c375b4a4a7b962156c1ddb46b56b9cb8ee10",
+    "policy.json": "5f5d0253cfc8e1eef2e452e54bae631c23da378f",
+    "synthetic_universes.json": "66fdf81f3cb440c36df4cd03dcff8613d1b4928d"
+  },
+  "policy_commit": "6d95a78bf6b7bcf70022e303a151255e65edc38a",
+  "policy_root": "CROSS_HQ_CONTROL_ROOM/universal_execution_policy/r56_sourcefree_v1/revisions/r2",
+  "results": [
+    {
+      "case_id": "C00",
+      "ceiling": "LOCAL_ONLY_POLICY_CONSISTENT",
+      "decision": "ALLOW_LOCAL_POLICY_CONSISTENT",
+      "pass": true,
+      "problems": [],
+      "reasons": [
+        "P00_INDEPENDENT_PIN",
+        "P06_NO_DROP_MULTISETS",
+        "P08_CLAIM_GRADE_CEILING"
+      ],
+      "variant": "CANONICAL_V1"
+    },
+    {
+      "case_id": "C01",
+      "ceiling": "LOCAL_ONLY_POLICY_CONSISTENT",
+      "decision": "ALLOW_LOCAL_POLICY_CONSISTENT",
+      "pass": true,
+      "problems": [],
+      "reasons": [
+        "P00_INDEPENDENT_PIN",
+        "P06_NO_DROP_MULTISETS",
+        "P08_CLAIM_GRADE_CEILING"
+      ],
+      "variant": "CANONICAL_V1"
+    },
+    {
+      "case_id": "C02",
+      "ceiling": "LOCAL_ONLY_POLICY_CONSISTENT",
+      "decision": "HOLD_GENERIC_R09",
+      "pass": true,
+      "problems": [],
+      "reasons": [
+        "P08_CLAIM_GRADE_CEILING",
+        "P09_RUNTIME_PROVENANCE_HOLD"
+      ],
+      "variant": "CANONICAL_V1"
+    },
+    {
+      "case_id": "C03",
+      "ceiling": "NONE",
+      "decision": "REFUSE_FRONTIER",
+      "pass": true,
+      "problems": [],
+      "reasons": [
+        "P06_NO_DROP_MULTISETS",
+        "P08_CLAIM_GRADE_CEILING"
+      ],
+      "variant": "CANONICAL_V1"
+    },
+    {
+      "case_id": "C04",
+      "ceiling": "NONE",
+      "decision": "REFUSE_FRONTIER",
+      "pass": true,
+      "problems": [],
+      "reasons": [
+        "P06_NO_DROP_MULTISETS",
+        "P08_CLAIM_GRADE_CEILING"
+      ],
+      "variant": "CANONICAL_V1"
+    },
+    {
+      "case_id": "C05",
+      "ceiling": "NONE",
+      "decision": "REFUSE_PIN",
+      "pass": true,
+      "problems": [],
+      "reasons": [
+        "P00_INDEPENDENT_PIN"
+      ],
+      "variant": "CANONICAL_V1"
+    },
+    {
+      "case_id": "C06",
+      "ceiling": "NONE",
+      "decision": "REFUSE_FORGED_EVIDENCE",
+      "pass": true,
+      "problems": [],
+      "reasons": [
+        "P09_RUNTIME_PROVENANCE_HOLD"
+      ],
+      "variant": "CANONICAL_V1"
+    },
+    {
+      "case_id": "C07",
+      "ceiling": "NONE",
+      "decision": "REFUSE_FORGED_EVIDENCE",
+      "pass": true,
+      "problems": [],
+      "reasons": [
+        "P09_RUNTIME_PROVENANCE_HOLD",
+        "P15_ACTUAL_CONSUMER"
+      ],
+      "variant": "CANONICAL_V1"
+    },
+    {
+      "case_id": "C08",
+      "ceiling": "NONE",
+      "decision": "REFUSE_FRONTIER",
+      "pass": true,
+      "problems": [],
+      "reasons": [
+        "P06_NO_DROP_MULTISETS"
+      ],
+      "variant": "CANONICAL_V1"
+    },
+    {
+      "case_id": "C09",
+      "ceiling": "NONE",
+      "decision": "REFUSE_FRONTIER",
+      "pass": true,
+      "problems": [],
+      "reasons": [
+        "P01_OCCURRENCE_ROLE_AND_MEASURE",
+        "P06_NO_DROP_MULTISETS"
+      ],
+      "variant": "CANONICAL_V1"
+    },
+    {
+      "case_id": "C10",
+      "ceiling": "NONE",
+      "decision": "REFUSE_STATUS",
+      "pass": true,
+      "problems": [],
+      "reasons": [
+        "P02_NO_ADMIN_AS_CONDITION",
+        "P04_NOT_ADMINISTERED",
+        "P07_SEPARATE_STATES"
+      ],
+      "variant": "CANONICAL_V1"
+    },
+    {
+      "case_id": "C11",
+      "ceiling": "NONE",
+      "decision": "REFUSE_STATUS",
+      "pass": true,
+      "problems": [],
+      "reasons": [
+        "P07_SEPARATE_STATES",
+        "P06_NO_DROP_MULTISETS"
+      ],
+      "variant": "CANONICAL_V1"
+    },
+    {
+      "case_id": "C12",
+      "ceiling": "NONE",
+      "decision": "REFUSE_STATUS",
+      "pass": true,
+      "problems": [],
+      "reasons": [
+        "P05_HELD_ROLE",
+        "P07_SEPARATE_STATES"
+      ],
+      "variant": "CANONICAL_V1"
+    },
+    {
+      "case_id": "C13",
+      "ceiling": "NONE",
+      "decision": "REFUSE_IDENTITY",
+      "pass": true,
+      "problems": [],
+      "reasons": [
+        "P10_EXACT_K_AND_CURRENTNESS"
+      ],
+      "variant": "CANONICAL_V1"
+    },
+    {
+      "case_id": "C14",
+      "ceiling": "NONE",
+      "decision": "REFUSE_IDENTITY",
+      "pass": true,
+      "problems": [],
+      "reasons": [
+        "P10_EXACT_K_AND_CURRENTNESS",
+        "P15_ACTUAL_CONSUMER"
+      ],
+      "variant": "CANONICAL_V1"
+    },
+    {
+      "case_id": "C15",
+      "ceiling": "NONE",
+      "decision": "REFUSE_AUTHORITY",
+      "pass": true,
+      "problems": [],
+      "reasons": [
+        "P10_EXACT_K_AND_CURRENTNESS",
+        "P14_FAIL_CLOSED_TRUST"
+      ],
+      "variant": "CANONICAL_V1"
+    },
+    {
+      "case_id": "C16",
+      "ceiling": "NONE",
+      "decision": "HOLD_ORIGINAL_G8",
+      "pass": true,
+      "problems": [],
+      "reasons": [
+        "P13_ORIGINAL_ROSTER_CONSERVATION",
+        "P08_CLAIM_GRADE_CEILING"
+      ],
+      "variant": "CANONICAL_V1"
+    },
+    {
+      "case_id": "C17",
+      "ceiling": "NONE",
+      "decision": "HOLD_ORIGINAL_G8",
+      "pass": true,
+      "problems": [],
+      "reasons": [
+        "P13_ORIGINAL_ROSTER_CONSERVATION",
+        "P08_CLAIM_GRADE_CEILING"
+      ],
+      "variant": "CANONICAL_V1"
+    },
+    {
+      "case_id": "C18",
+      "ceiling": "LOCAL_ONLY_POLICY_CONSISTENT",
+      "decision": "ALLOW_LOCAL_POLICY_CONSISTENT",
+      "pass": true,
+      "problems": [],
+      "reasons": [
+        "P00_INDEPENDENT_PIN",
+        "P06_NO_DROP_MULTISETS",
+        "P08_CLAIM_GRADE_CEILING"
+      ],
+      "variant": "CANONICAL_V1"
+    },
+    {
+      "case_id": "C19",
+      "ceiling": "LOCAL_ONLY_POLICY_CONSISTENT",
+      "decision": "ALLOW_LOCAL_POLICY_CONSISTENT",
+      "pass": true,
+      "problems": [],
+      "reasons": [
+        "P07_SEPARATE_STATES",
+        "P12_EMPTY_NULL_ZERO_DISTINCT"
+      ],
+      "variant": "CANONICAL_V1"
+    },
+    {
+      "case_id": "C20",
+      "ceiling": "LOCAL_ONLY_POLICY_CONSISTENT",
+      "decision": "ALLOW_LOCAL_POLICY_CONSISTENT",
+      "pass": true,
+      "problems": [],
+      "reasons": [
+        "P12_EMPTY_NULL_ZERO_DISTINCT"
+      ],
+      "variant": "CANONICAL_V1"
+    },
+    {
+      "case_id": "C21",
+      "ceiling": "LOCAL_ONLY_POLICY_CONSISTENT",
+      "decision": "ALLOW_LOCAL_POLICY_CONSISTENT",
+      "pass": true,
+      "problems": [],
+      "reasons": [
+        "P12_EMPTY_NULL_ZERO_DISTINCT"
+      ],
+      "variant": "CANONICAL_V1"
+    },
+    {
+      "case_id": "C22",
+      "ceiling": "LOCAL_ONLY_POLICY_CONSISTENT",
+      "decision": "ALLOW_LOCAL_POLICY_CONSISTENT",
+      "pass": true,
+      "problems": [],
+      "reasons": [
+        "P11_REPLAY_AND_DEDUP"
+      ],
+      "variant": "CANONICAL_V1"
+    },
+    {
+      "case_id": "C23",
+      "ceiling": "NONE",
+      "decision": "REFUSE_DUPLICATE_COUNT",
+      "pass": true,
+      "problems": [],
+      "reasons": [
+        "P11_REPLAY_AND_DEDUP"
+      ],
+      "variant": "CANONICAL_V1"
+    },
+    {
+      "case_id": "C24",
+      "ceiling": "NONE",
+      "decision": "HOLD_UNIMPLEMENTED_RELATION",
+      "pass": true,
+      "problems": [],
+      "reasons": [
+        "P03_NO_UNLINKED_CROSS_UNIT"
+      ],
+      "variant": "CANONICAL_V1"
+    },
+    {
+      "case_id": "C25",
+      "ceiling": "LOCAL_ONLY_POLICY_CONSISTENT",
+      "decision": "ALLOW_LOCAL_POLICY_CONSISTENT",
+      "pass": true,
+      "problems": [],
+      "reasons": [
+        "P00_INDEPENDENT_PIN",
+        "P06_NO_DROP_MULTISETS",
+        "P08_CLAIM_GRADE_CEILING"
+      ],
+      "variant": "CANONICAL_V1"
+    },
+    {
+      "case_id": "C26",
+      "ceiling": "LOCAL_ONLY_POLICY_CONSISTENT",
+      "decision": "HOLD_GENERIC_R09",
+      "pass": true,
+      "problems": [],
+      "reasons": [
+        "P09_RUNTIME_PROVENANCE_HOLD",
+        "P14_FAIL_CLOSED_TRUST"
+      ],
+      "variant": "CANONICAL_V1"
+    },
+    {
+      "case_id": "C27",
+      "ceiling": "NONE",
+      "decision": "REFUSE_FORGED_EVIDENCE",
+      "pass": true,
+      "problems": [],
+      "reasons": [
+        "P09_RUNTIME_PROVENANCE_HOLD",
+        "P14_FAIL_CLOSED_TRUST"
+      ],
+      "variant": "CANONICAL_V1"
+    },
+    {
+      "case_id": "C28",
+      "ceiling": "NONE",
+      "decision": "REFUSE_AUTHORITY",
+      "pass": true,
+      "problems": [],
+      "reasons": [
+        "P10_EXACT_K_AND_CURRENTNESS",
+        "P13_ORIGINAL_ROSTER_CONSERVATION"
+      ],
+      "variant": "CANONICAL_V1"
+    },
+    {
+      "case_id": "C29",
+      "ceiling": "NONE",
+      "decision": "REFUSE_FRONTIER",
+      "pass": true,
+      "problems": [],
+      "reasons": [
+        "P06_NO_DROP_MULTISETS",
+        "P13_ORIGINAL_ROSTER_CONSERVATION"
+      ],
+      "variant": "CANONICAL_V1"
+    },
+    {
+      "case_id": "C30",
+      "ceiling": "LOCAL_ONLY_POLICY_CONSISTENT",
+      "decision": "HOLD_TRUSTED_NATIVE",
+      "pass": true,
+      "problems": [],
+      "reasons": [
+        "P09_RUNTIME_PROVENANCE_HOLD",
+        "P14_FAIL_CLOSED_TRUST"
+      ],
+      "variant": "CANONICAL_V1"
+    },
+    {
+      "case_id": "C31",
+      "ceiling": "LOCAL_ONLY_POLICY_CONSISTENT",
+      "decision": "ALLOW_LOCAL_POLICY_CONSISTENT",
+      "pass": true,
+      "problems": [],
+      "reasons": [
+        "P07_SEPARATE_STATES",
+        "P12_EMPTY_NULL_ZERO_DISTINCT"
+      ],
+      "variant": "CANONICAL_V1"
+    },
+    {
+      "case_id": "C32",
+      "ceiling": "LOCAL_ONLY_POLICY_CONSISTENT",
+      "decision": "ALLOW_LOCAL_POLICY_CONSISTENT",
+      "pass": true,
+      "problems": [],
+      "reasons": [
+        "P00_INDEPENDENT_PIN",
+        "P06_NO_DROP_MULTISETS",
+        "P08_CLAIM_GRADE_CEILING",
+        "P16_BIJECTIVE_LABEL_RENAME"
+      ],
+      "variant": "ARC1_BIJECTIVE_Q301_LOCAL"
+    },
+    {
+      "case_id": "C33",
+      "ceiling": "NONE",
+      "decision": "REFUSE_FRONTIER",
+      "pass": true,
+      "problems": [],
+      "reasons": [
+        "P06_NO_DROP_MULTISETS",
+        "P08_CLAIM_GRADE_CEILING",
+        "P16_BIJECTIVE_LABEL_RENAME"
+      ],
+      "variant": "ARC1_BIJECTIVE_Q301_LOCAL"
+    },
+    {
+      "case_id": "C34",
+      "ceiling": "LOCAL_ONLY_POLICY_CONSISTENT",
+      "decision": "HOLD_GENERIC_R09",
+      "pass": true,
+      "problems": [],
+      "reasons": [
+        "P08_CLAIM_GRADE_CEILING",
+        "P09_RUNTIME_PROVENANCE_HOLD",
+        "P16_BIJECTIVE_LABEL_RENAME"
+      ],
+      "variant": "ARC1_BIJECTIVE_Q301_LOCAL"
+    },
+    {
+      "case_id": "C35",
+      "ceiling": "NONE",
+      "decision": "REFUSE_FRONTIER",
+      "pass": true,
+      "problems": [],
+      "reasons": [
+        "P00_INDEPENDENT_PIN",
+        "P06_NO_DROP_MULTISETS",
+        "P16_BIJECTIVE_LABEL_RENAME"
+      ],
+      "variant": "CANONICAL_V1"
+    }
+  ],
+  "schema": "R56_R00V_R2_REPLAY@1"
+}

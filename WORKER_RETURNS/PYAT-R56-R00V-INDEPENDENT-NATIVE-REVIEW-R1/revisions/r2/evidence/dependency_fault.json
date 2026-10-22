@@ -1,0 +1,31 @@
+{
+  "baseline": "ALLOW_LOCAL_POLICY_CONSISTENT",
+  "fault": "REFUSE_FRONTIER",
+  "pass": true,
+  "restore": "ALLOW_LOCAL_POLICY_CONSISTENT",
+  "runs": [
+    {
+      "decision": "ALLOW_LOCAL_POLICY_CONSISTENT",
+      "exit_code": 0,
+      "mode": "baseline",
+      "stderr": "",
+      "stdout": "{\"decision\": \"ALLOW_LOCAL_POLICY_CONSISTENT\", \"mode\": \"baseline\", \"reasons\": [\"P00_INDEPENDENT_PIN\", \"P06_NO_DROP_MULTISETS\", \"P08_CLAIM_GRADE_CEILING\"]}"
+    },
+    {
+      "decision": "REFUSE_FRONTIER",
+      "exit_code": 0,
+      "mode": "fault",
+      "stderr": "",
+      "stdout": "{\"decision\": \"REFUSE_FRONTIER\", \"mode\": \"fault\", \"reasons\": [\"P06_NO_DROP_MULTISETS\"]}"
+    },
+    {
+      "decision": "ALLOW_LOCAL_POLICY_CONSISTENT",
+      "exit_code": 0,
+      "mode": "restore",
+      "stderr": "",
+      "stdout": "{\"decision\": \"ALLOW_LOCAL_POLICY_CONSISTENT\", \"mode\": \"restore\", \"reasons\": [\"P00_INDEPENDENT_PIN\", \"P06_NO_DROP_MULTISETS\", \"P08_CLAIM_GRADE_CEILING\"]}"
+    }
+  ],
+  "same_assertion": true,
+  "schema": "R56_R00V_R2_DEPENDENCY_FAULT@1"
+}
