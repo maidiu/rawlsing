@@ -1,0 +1,1638 @@
+{
+  "schema": "R56_R00P_INDEPENDENT_SYNTHETIC_UNIVERSES@1.1.0",
+  "status": "FROZEN_TEST_ONLY_SUCCESSOR_R2__NO_NATIVE_OR_HQ_ADOPTION",
+  "authorship": "INDEPENDENT_R00P_POLICY_OWNER__NOT_R00E_CANDIDATE_OUTPUT",
+  "not_original": true,
+  "creation_rule": "Explicit pre-outcome test grammar; operation IDs are stable literal independent expected-set keys, not candidate-derived hashes. Full semantic material comparison required; IDs alone insufficient.",
+  "selection": "This is a finite mechanical edge-class subset. All authorized operations in each declared TEST grammar have explicitly enumerated entries; non-exercised global edge classes stay HELD, never NA.",
+  "source_shape_count": 3,
+  "family_count": 3,
+  "native_file_execution": "NOT_RUN; SAV/DTA format labels describe planned fixture shape only",
+  "test_universes": [
+    {
+      "universe_id": "TEST:ARC1",
+      "family": "SYN_A",
+      "declared_file_format": "SAV_METADATA_ONLY_NOT_EXECUTED",
+      "source_release": "TEST:ARC1:REL1",
+      "population": "TEST:ARC1:PERSON_SAMPLE",
+      "sampling_unit": "PERSON",
+      "respondent_unit": "PERSON",
+      "risk_sets": [
+        {
+          "id": "TEST:ARC1:RISK1",
+          "eligible_rows": "ROUTED_FORM_ALPHA"
+        },
+        {
+          "id": "TEST:ARC1:RISK_ALL",
+          "eligible_rows": "ALL_FIELDABLE"
+        }
+      ],
+      "measures": [
+        {
+          "id": "TEST:ARC1:RAW",
+          "kind": "RAW"
+        },
+        {
+          "id": "TEST:ARC1:W1",
+          "kind": "WEIGHTED",
+          "design_ref": "TEST:ARC1:DESIGN_STRATA_S1"
+        }
+      ],
+      "occurrences": [
+        {
+          "occurrence_ref": "a:q-lumen:main",
+          "item": "lumen",
+          "option": null,
+          "form": null,
+          "repeat": null,
+          "role": "TARGET",
+          "administration": "ADMINISTERED"
+        },
+        {
+          "occurrence_ref": "a:q-azur:main",
+          "item": "azur",
+          "option": null,
+          "form": "FORM_ALPHA",
+          "repeat": null,
+          "role": "CONDITIONER",
+          "administration": "ADMINISTERED",
+          "risk_set_ref": "TEST:ARC1:RISK1"
+        },
+        {
+          "occurrence_ref": "a:q-azur:alt",
+          "item": "azur",
+          "option": null,
+          "form": "FORM_BETA",
+          "repeat": null,
+          "role": "CONDITIONER",
+          "administration": "ADMINISTERED",
+          "risk_set_ref": "TEST:ARC1:RISK_ALL"
+        },
+        {
+          "occurrence_ref": "a:route:alpha",
+          "item": "route_alpha",
+          "option": null,
+          "form": null,
+          "repeat": null,
+          "role": "ADMINISTRATIVE",
+          "administration": "ADMINISTERED"
+        }
+      ],
+      "grammar": {
+        "bound_J": 2,
+        "bound_K": 1,
+        "bound_D": 0,
+        "allowed_classes": [
+          "MARGINAL",
+          "CONDITIONAL"
+        ],
+        "operation_universe_source": "INDEPENDENT_TEST_RULES_NOT_OUTCOMES"
+      },
+      "edge_classes": [
+        "scalar",
+        "weighted design",
+        "routed applicability",
+        "split form",
+        "conditioned value tuples",
+        "permission/clock"
+      ]
+    },
+    {
+      "universe_id": "TEST:DUO2",
+      "family": "SYN_B",
+      "declared_file_format": "DTA_METADATA_ONLY_NOT_EXECUTED",
+      "source_release": "TEST:DUO2:REL1",
+      "population": "TEST:DUO2:TWO_DISTINCT_RISK_SETS",
+      "sampling_unit": "PERSON_AND_HOUSEHOLD_SEPARATE",
+      "respondent_unit": "PERSON_AND_HOUSEHOLD_SEPARATE",
+      "risk_sets": [
+        {
+          "id": "TEST:DUO2:PRISK",
+          "unit": "PERSON"
+        },
+        {
+          "id": "TEST:DUO2:HRISK",
+          "unit": "HOUSEHOLD"
+        }
+      ],
+      "link_authority": {
+        "state": "UNISSUED",
+        "ref": null
+      },
+      "measures": [
+        {
+          "id": "TEST:DUO2:RAW",
+          "kind": "RAW"
+        }
+      ],
+      "occurrences": [
+        {
+          "occurrence_ref": "b:p:sentinel",
+          "item": "sentinel",
+          "option": null,
+          "form": null,
+          "repeat": null,
+          "role": "TARGET",
+          "administration": "ADMINISTERED",
+          "unit": "PERSON",
+          "risk_set_ref": "TEST:DUO2:PRISK"
+        },
+        {
+          "occurrence_ref": "b:p:position",
+          "item": "position",
+          "option": null,
+          "form": null,
+          "repeat": null,
+          "role": "CONDITIONER",
+          "administration": "ADMINISTERED",
+          "unit": "PERSON",
+          "risk_set_ref": "TEST:DUO2:PRISK"
+        },
+        {
+          "occurrence_ref": "b:h:harbor",
+          "item": "harbor",
+          "option": null,
+          "form": null,
+          "repeat": null,
+          "role": "TARGET",
+          "administration": "ADMINISTERED",
+          "unit": "HOUSEHOLD",
+          "risk_set_ref": "TEST:DUO2:HRISK"
+        }
+      ],
+      "grammar": {
+        "bound_J": 2,
+        "bound_K": 1,
+        "bound_D": 0,
+        "allowed_classes": [
+          "MARGINAL",
+          "JOINT",
+          "CONDITIONAL"
+        ],
+        "operation_universe_source": "INDEPENDENT_TEST_RULES_NOT_OUTCOMES"
+      },
+      "edge_classes": [
+        "household/person lawful link",
+        "unlinked-unit refusal",
+        "bounded ordered joint",
+        "conditioned value tuples"
+      ]
+    },
+    {
+      "universe_id": "TEST:REP3",
+      "family": "SYN_C",
+      "declared_file_format": "SAV_METADATA_ONLY_NOT_EXECUTED",
+      "source_release": "TEST:REP3:REL1",
+      "population": "TEST:REP3:PERSON_OCCASION",
+      "sampling_unit": "PERSON_OCCASION",
+      "respondent_unit": "PERSON",
+      "risk_sets": [
+        {
+          "id": "TEST:REP3:RISK1",
+          "unit": "PERSON_OCCASION"
+        }
+      ],
+      "measures": [
+        {
+          "id": "TEST:REP3:RAW",
+          "kind": "RAW"
+        }
+      ],
+      "occurrences": [
+        {
+          "occurrence_ref": "c:score:t0",
+          "item": "score",
+          "option": null,
+          "form": null,
+          "repeat": 0,
+          "role": "TARGET",
+          "administration": "ADMINISTERED",
+          "topology": "REPEATED_EVENT"
+        },
+        {
+          "occurrence_ref": "c:score:t1",
+          "item": "score",
+          "option": null,
+          "form": null,
+          "repeat": 1,
+          "role": "TARGET",
+          "administration": "ADMINISTERED",
+          "topology": "REPEATED_EVENT"
+        },
+        {
+          "occurrence_ref": "c:mr:slot0",
+          "item": "choice",
+          "option": "slot0",
+          "form": null,
+          "repeat": null,
+          "role": "TARGET",
+          "administration": "ADMINISTERED",
+          "topology": "MULTIPLE_RESPONSE"
+        },
+        {
+          "occurrence_ref": "c:mr:slot1",
+          "item": "choice",
+          "option": "slot1",
+          "form": null,
+          "repeat": null,
+          "role": "TARGET",
+          "administration": "ADMINISTERED",
+          "topology": "MULTIPLE_RESPONSE"
+        },
+        {
+          "occurrence_ref": "c:rank:one",
+          "item": "preference",
+          "option": null,
+          "form": null,
+          "repeat": null,
+          "role": "TARGET",
+          "administration": "ADMINISTERED",
+          "rank": 1,
+          "topology": "ORDERED_RANK"
+        },
+        {
+          "occurrence_ref": "c:rank:two",
+          "item": "preference",
+          "option": null,
+          "form": null,
+          "repeat": null,
+          "role": "TARGET",
+          "administration": "ADMINISTERED",
+          "rank": 2,
+          "topology": "ORDERED_RANK"
+        },
+        {
+          "occurrence_ref": "c:form:z",
+          "item": "form_z",
+          "option": null,
+          "form": "Z",
+          "repeat": null,
+          "role": "ADMINISTRATIVE",
+          "administration": "NOT_ADMINISTERED"
+        }
+      ],
+      "grammar": {
+        "bound_J": 2,
+        "bound_K": 1,
+        "bound_D": 0,
+        "allowed_classes": [
+          "MARGINAL",
+          "REPEATED_PAIR",
+          "MULTI_RESPONSE",
+          "ORDERED_RANK"
+        ],
+        "operation_universe_source": "INDEPENDENT_TEST_RULES_NOT_OUTCOMES"
+      },
+      "edge_classes": [
+        "repeat occurrence",
+        "multiple response",
+        "rank",
+        "routed applicability",
+        "bounded ordered joint"
+      ]
+    }
+  ],
+  "expected_operations": [
+    {
+      "operation_id": "OP.TEST.ARC1.MARG.LUMEN_RAW",
+      "universe": "TEST:ARC1",
+      "operation_class": "MARGINAL",
+      "target_occurrences": [
+        "a:q-lumen:main"
+      ],
+      "condition_tuple": [],
+      "eligible_disposition": "ELIGIBLE",
+      "disposition_reason_rule": "P01_ROLE_ADMIN_RISK_PERMIT",
+      "axis_bindings": {
+        "eligibility": "ELIGIBLE",
+        "execution": "NOT_STARTED",
+        "result": "UNKNOWN"
+      },
+      "source_grain": "PERSON",
+      "risk_set_ref": "TEST:ARC1:RISK_ALL",
+      "measure_ref": "TEST:ARC1:RAW",
+      "topology": "SCALAR",
+      "direction_ref": "TEST:ARC1:DIRECTION_ISSUED_TEST"
+    },
+    {
+      "operation_id": "OP.TEST.ARC1.MARG.LUMEN_W1",
+      "universe": "TEST:ARC1",
+      "operation_class": "MARGINAL",
+      "target_occurrences": [
+        "a:q-lumen:main"
+      ],
+      "condition_tuple": [],
+      "eligible_disposition": "ELIGIBLE",
+      "disposition_reason_rule": "P01_WEIGHTED_DESIGN_ISSUED_TEST",
+      "axis_bindings": {
+        "eligibility": "ELIGIBLE",
+        "execution": "NOT_STARTED",
+        "result": "UNKNOWN"
+      },
+      "source_grain": "PERSON",
+      "risk_set_ref": "TEST:ARC1:RISK_ALL",
+      "measure_ref": "TEST:ARC1:W1",
+      "topology": "SCALAR",
+      "direction_ref": "TEST:ARC1:DIRECTION_ISSUED_TEST"
+    },
+    {
+      "operation_id": "OP.TEST.ARC1.COND.LUMEN_AZUR_ALPHA1",
+      "universe": "TEST:ARC1",
+      "operation_class": "CONDITIONAL",
+      "target_occurrences": [
+        "a:q-lumen:main"
+      ],
+      "condition_tuple": [
+        {
+          "occurrence_ref": "a:q-azur:main",
+          "value": {
+            "t": "integer",
+            "v": "1"
+          },
+          "domain_version": "TEST:ARC1:AZUR_V1"
+        }
+      ],
+      "eligible_disposition": "ELIGIBLE",
+      "disposition_reason_rule": "P01_ROUTED_FORM_ALPHA",
+      "axis_bindings": {
+        "eligibility": "ELIGIBLE",
+        "execution": "NOT_STARTED",
+        "result": "UNKNOWN"
+      },
+      "source_grain": "PERSON",
+      "risk_set_ref": "TEST:ARC1:RISK1",
+      "measure_ref": "TEST:ARC1:RAW",
+      "topology": "SCALAR",
+      "direction_ref": "TEST:ARC1:DIRECTION_ISSUED_TEST"
+    },
+    {
+      "operation_id": "OP.TEST.ARC1.COND.LUMEN_AZUR_BETA1",
+      "universe": "TEST:ARC1",
+      "operation_class": "CONDITIONAL",
+      "target_occurrences": [
+        "a:q-lumen:main"
+      ],
+      "condition_tuple": [
+        {
+          "occurrence_ref": "a:q-azur:alt",
+          "value": {
+            "t": "integer",
+            "v": "1"
+          },
+          "domain_version": "TEST:ARC1:AZUR_V1"
+        }
+      ],
+      "eligible_disposition": "ELIGIBLE",
+      "disposition_reason_rule": "P01_DISTINCT_FORM_NOT_ALIAS",
+      "axis_bindings": {
+        "eligibility": "ELIGIBLE",
+        "execution": "NOT_STARTED",
+        "result": "UNKNOWN"
+      },
+      "source_grain": "PERSON",
+      "risk_set_ref": "TEST:ARC1:RISK_ALL",
+      "measure_ref": "TEST:ARC1:RAW",
+      "topology": "SCALAR",
+      "direction_ref": "TEST:ARC1:DIRECTION_ISSUED_TEST"
+    },
+    {
+      "operation_id": "OP.TEST.ARC1.CONDITION.UNADMINISTERED",
+      "universe": "TEST:ARC1",
+      "operation_class": "CONDITIONAL",
+      "target_occurrences": [
+        "a:q-lumen:main"
+      ],
+      "condition_tuple": [
+        {
+          "occurrence_ref": "a:route:alpha",
+          "value": {
+            "t": "bool",
+            "v": true
+          },
+          "domain_version": "TEST:ARC1:ROUTE_V1"
+        }
+      ],
+      "eligible_disposition": "PROHIBITED",
+      "disposition_reason_rule": "P02_ADMINISTRATIVE_NOT_SEMANTIC_CONDITION",
+      "axis_bindings": {
+        "eligibility": "PROHIBITED",
+        "execution": "NOT_STARTED",
+        "result": "UNKNOWN"
+      },
+      "source_grain": "PERSON",
+      "risk_set_ref": "TEST:ARC1:RISK_ALL",
+      "measure_ref": "TEST:ARC1:RAW",
+      "topology": "SCALAR",
+      "direction_ref": "TEST:ARC1:DIRECTION_ISSUED_TEST"
+    },
+    {
+      "operation_id": "OP.TEST.DUO2.MARG.PERSON",
+      "universe": "TEST:DUO2",
+      "operation_class": "MARGINAL",
+      "target_occurrences": [
+        "b:p:sentinel"
+      ],
+      "condition_tuple": [],
+      "eligible_disposition": "ELIGIBLE",
+      "disposition_reason_rule": "P01_SAME_UNIT",
+      "axis_bindings": {
+        "eligibility": "ELIGIBLE",
+        "execution": "NOT_STARTED",
+        "result": "UNKNOWN"
+      },
+      "source_grain": "PERSON",
+      "risk_set_ref": "TEST:DUO2:PRISK",
+      "measure_ref": "TEST:DUO2:RAW",
+      "topology": "SCALAR",
+      "direction_ref": "TEST:DUO2:DIRECTION_ISSUED_TEST"
+    },
+    {
+      "operation_id": "OP.TEST.DUO2.MARG.HOUSEHOLD",
+      "universe": "TEST:DUO2",
+      "operation_class": "MARGINAL",
+      "target_occurrences": [
+        "b:h:harbor"
+      ],
+      "condition_tuple": [],
+      "eligible_disposition": "ELIGIBLE",
+      "disposition_reason_rule": "P01_SEPARATE_UNIT",
+      "axis_bindings": {
+        "eligibility": "ELIGIBLE",
+        "execution": "NOT_STARTED",
+        "result": "UNKNOWN"
+      },
+      "source_grain": "HOUSEHOLD",
+      "risk_set_ref": "TEST:DUO2:HRISK",
+      "measure_ref": "TEST:DUO2:RAW",
+      "topology": "SCALAR",
+      "direction_ref": "TEST:DUO2:DIRECTION_ISSUED_TEST"
+    },
+    {
+      "operation_id": "OP.TEST.DUO2.COND.PERSON_POSITION",
+      "universe": "TEST:DUO2",
+      "operation_class": "CONDITIONAL",
+      "target_occurrences": [
+        "b:p:sentinel"
+      ],
+      "condition_tuple": [
+        {
+          "occurrence_ref": "b:p:position",
+          "value": {
+            "t": "string",
+            "v": "high"
+          },
+          "domain_version": "TEST:DUO2:POSITION_V1"
+        }
+      ],
+      "eligible_disposition": "ELIGIBLE",
+      "disposition_reason_rule": "P01_SAME_RISK_PERSON",
+      "axis_bindings": {
+        "eligibility": "ELIGIBLE",
+        "execution": "NOT_STARTED",
+        "result": "UNKNOWN"
+      },
+      "source_grain": "PERSON",
+      "risk_set_ref": "TEST:DUO2:PRISK",
+      "measure_ref": "TEST:DUO2:RAW",
+      "topology": "SCALAR",
+      "direction_ref": "TEST:DUO2:DIRECTION_ISSUED_TEST"
+    },
+    {
+      "operation_id": "OP.TEST.DUO2.JOINT.UNLINKED",
+      "universe": "TEST:DUO2",
+      "operation_class": "JOINT",
+      "target_occurrences": [
+        "b:p:sentinel",
+        "b:h:harbor"
+      ],
+      "condition_tuple": [],
+      "eligible_disposition": "HELD",
+      "disposition_reason_rule": "P03_NO_AUTHENTICATED_PERSON_HOUSEHOLD_LINK",
+      "axis_bindings": {
+        "eligibility": "HELD",
+        "execution": "NOT_STARTED",
+        "result": "UNKNOWN"
+      },
+      "source_grain": "MIXED_UNLINKED",
+      "risk_set_ref": "TEST:DUO2:UNLINKED",
+      "measure_ref": "TEST:DUO2:RAW",
+      "topology": "CROSS_UNIT_REFUSED",
+      "direction_ref": "TEST:DUO2:DIRECTION_ISSUED_TEST",
+      "relation_authority": null
+    },
+    {
+      "operation_id": "OP.TEST.DUO2.JOINT.SWAPPED",
+      "universe": "TEST:DUO2",
+      "operation_class": "JOINT",
+      "target_occurrences": [
+        "b:h:harbor",
+        "b:p:sentinel"
+      ],
+      "condition_tuple": [],
+      "eligible_disposition": "HELD",
+      "disposition_reason_rule": "P03_ORDERED_MIXED_UNLINKED_STILL_HELD",
+      "axis_bindings": {
+        "eligibility": "HELD",
+        "execution": "NOT_STARTED",
+        "result": "UNKNOWN"
+      },
+      "source_grain": "MIXED_UNLINKED",
+      "risk_set_ref": "TEST:DUO2:UNLINKED",
+      "measure_ref": "TEST:DUO2:RAW",
+      "topology": "CROSS_UNIT_REFUSED",
+      "direction_ref": "TEST:DUO2:DIRECTION_ISSUED_TEST",
+      "relation_authority": null
+    },
+    {
+      "operation_id": "OP.TEST.REP3.MARG.SCORE_T0",
+      "universe": "TEST:REP3",
+      "operation_class": "MARGINAL",
+      "target_occurrences": [
+        "c:score:t0"
+      ],
+      "condition_tuple": [],
+      "eligible_disposition": "ELIGIBLE",
+      "disposition_reason_rule": "P01_REPEAT_0_DISTINCT",
+      "axis_bindings": {
+        "eligibility": "ELIGIBLE",
+        "execution": "NOT_STARTED",
+        "result": "UNKNOWN"
+      },
+      "source_grain": "PERSON",
+      "risk_set_ref": "TEST:REP3:RISK1",
+      "measure_ref": "TEST:REP3:RAW",
+      "topology": "REPEATED_EVENT",
+      "direction_ref": "TEST:REP3:DIRECTION_ISSUED_TEST"
+    },
+    {
+      "operation_id": "OP.TEST.REP3.MARG.SCORE_T1",
+      "universe": "TEST:REP3",
+      "operation_class": "MARGINAL",
+      "target_occurrences": [
+        "c:score:t1"
+      ],
+      "condition_tuple": [],
+      "eligible_disposition": "ELIGIBLE",
+      "disposition_reason_rule": "P01_REPEAT_1_DISTINCT",
+      "axis_bindings": {
+        "eligibility": "ELIGIBLE",
+        "execution": "NOT_STARTED",
+        "result": "UNKNOWN"
+      },
+      "source_grain": "PERSON",
+      "risk_set_ref": "TEST:REP3:RISK1",
+      "measure_ref": "TEST:REP3:RAW",
+      "topology": "REPEATED_EVENT",
+      "direction_ref": "TEST:REP3:DIRECTION_ISSUED_TEST"
+    },
+    {
+      "operation_id": "OP.TEST.REP3.PAIR.SCORE_ORDERED",
+      "universe": "TEST:REP3",
+      "operation_class": "REPEATED_PAIR",
+      "target_occurrences": [
+        "c:score:t0",
+        "c:score:t1"
+      ],
+      "condition_tuple": [],
+      "eligible_disposition": "ELIGIBLE",
+      "disposition_reason_rule": "P01_EXACT_ORDERED_SAME_PERSON_OCCASIONS",
+      "axis_bindings": {
+        "eligibility": "ELIGIBLE",
+        "execution": "NOT_STARTED",
+        "result": "UNKNOWN"
+      },
+      "source_grain": "PERSON_ACROSS_TWO_OCCASIONS",
+      "risk_set_ref": "TEST:REP3:RISK1",
+      "measure_ref": "TEST:REP3:RAW",
+      "topology": "REPEATED_EVENT",
+      "direction_ref": "TEST:REP3:DIRECTION_ISSUED_TEST"
+    },
+    {
+      "operation_id": "OP.TEST.REP3.MR.SLOT0",
+      "universe": "TEST:REP3",
+      "operation_class": "MULTI_RESPONSE",
+      "target_occurrences": [
+        "c:mr:slot0"
+      ],
+      "condition_tuple": [],
+      "eligible_disposition": "ELIGIBLE",
+      "disposition_reason_rule": "P01_MR_SLOT_UNIQUE",
+      "axis_bindings": {
+        "eligibility": "ELIGIBLE",
+        "execution": "NOT_STARTED",
+        "result": "UNKNOWN"
+      },
+      "source_grain": "PERSON",
+      "risk_set_ref": "TEST:REP3:RISK1",
+      "measure_ref": "TEST:REP3:RAW",
+      "topology": "MULTIPLE_RESPONSE",
+      "direction_ref": "TEST:REP3:DIRECTION_ISSUED_TEST"
+    },
+    {
+      "operation_id": "OP.TEST.REP3.MR.SLOT1",
+      "universe": "TEST:REP3",
+      "operation_class": "MULTI_RESPONSE",
+      "target_occurrences": [
+        "c:mr:slot1"
+      ],
+      "condition_tuple": [],
+      "eligible_disposition": "ELIGIBLE",
+      "disposition_reason_rule": "P01_MR_SLOT_UNIQUE",
+      "axis_bindings": {
+        "eligibility": "ELIGIBLE",
+        "execution": "NOT_STARTED",
+        "result": "UNKNOWN"
+      },
+      "source_grain": "PERSON",
+      "risk_set_ref": "TEST:REP3:RISK1",
+      "measure_ref": "TEST:REP3:RAW",
+      "topology": "MULTIPLE_RESPONSE",
+      "direction_ref": "TEST:REP3:DIRECTION_ISSUED_TEST"
+    },
+    {
+      "operation_id": "OP.TEST.REP3.RANK.ONE_TWO",
+      "universe": "TEST:REP3",
+      "operation_class": "ORDERED_RANK",
+      "target_occurrences": [
+        "c:rank:one",
+        "c:rank:two"
+      ],
+      "condition_tuple": [],
+      "eligible_disposition": "ELIGIBLE",
+      "disposition_reason_rule": "P01_RANK_ORDER_PRESERVED",
+      "axis_bindings": {
+        "eligibility": "ELIGIBLE",
+        "execution": "NOT_STARTED",
+        "result": "UNKNOWN"
+      },
+      "source_grain": "PERSON",
+      "risk_set_ref": "TEST:REP3:RISK1",
+      "measure_ref": "TEST:REP3:RAW",
+      "topology": "ORDERED_RANK",
+      "direction_ref": "TEST:REP3:DIRECTION_ISSUED_TEST"
+    },
+    {
+      "operation_id": "OP.TEST.REP3.ROUTE.FORMZ",
+      "universe": "TEST:REP3",
+      "operation_class": "MARGINAL",
+      "target_occurrences": [
+        "c:form:z"
+      ],
+      "condition_tuple": [],
+      "eligible_disposition": "INAPPLICABLE_PROVED",
+      "disposition_reason_rule": "P04_EXPLICIT_NOT_ADMINISTERED",
+      "axis_bindings": {
+        "eligibility": "INAPPLICABLE_PROVED",
+        "execution": "NOT_STARTED",
+        "result": "UNKNOWN"
+      },
+      "source_grain": "PERSON",
+      "risk_set_ref": "TEST:REP3:RISK1",
+      "measure_ref": "TEST:REP3:RAW",
+      "topology": "ADMINISTRATIVE",
+      "direction_ref": "TEST:REP3:DIRECTION_ISSUED_TEST"
+    },
+    {
+      "operation_id": "OP.TEST.REP3.FRONTIER.HELD_DIRECTION",
+      "universe": "TEST:REP3",
+      "operation_class": "CONDITIONAL",
+      "target_occurrences": [
+        "c:score:t1"
+      ],
+      "condition_tuple": [
+        {
+          "occurrence_ref": "c:rank:one",
+          "value": {
+            "t": "integer",
+            "v": "1"
+          },
+          "domain_version": "TEST:REP3:RANK_V1"
+        }
+      ],
+      "eligible_disposition": "UNKNOWN",
+      "disposition_reason_rule": "P05_CONDITION_ROLE_NOT_ISSUED",
+      "axis_bindings": {
+        "eligibility": "UNKNOWN",
+        "execution": "NOT_STARTED",
+        "result": "UNKNOWN"
+      },
+      "source_grain": "PERSON",
+      "risk_set_ref": "TEST:REP3:RISK1",
+      "measure_ref": "TEST:REP3:RAW",
+      "topology": "CONDITIONED_REPEATED",
+      "direction_ref": "TEST:REP3:DIRECTION_ISSUED_TEST"
+    }
+  ],
+  "expected_operation_id_multiset": [
+    "OP.TEST.ARC1.COND.LUMEN_AZUR_ALPHA1",
+    "OP.TEST.ARC1.COND.LUMEN_AZUR_BETA1",
+    "OP.TEST.ARC1.CONDITION.UNADMINISTERED",
+    "OP.TEST.ARC1.MARG.LUMEN_RAW",
+    "OP.TEST.ARC1.MARG.LUMEN_W1",
+    "OP.TEST.DUO2.COND.PERSON_POSITION",
+    "OP.TEST.DUO2.JOINT.SWAPPED",
+    "OP.TEST.DUO2.JOINT.UNLINKED",
+    "OP.TEST.DUO2.MARG.HOUSEHOLD",
+    "OP.TEST.DUO2.MARG.PERSON",
+    "OP.TEST.REP3.FRONTIER.HELD_DIRECTION",
+    "OP.TEST.REP3.MARG.SCORE_T0",
+    "OP.TEST.REP3.MARG.SCORE_T1",
+    "OP.TEST.REP3.MR.SLOT0",
+    "OP.TEST.REP3.MR.SLOT1",
+    "OP.TEST.REP3.PAIR.SCORE_ORDERED",
+    "OP.TEST.REP3.RANK.ONE_TWO",
+    "OP.TEST.REP3.ROUTE.FORMZ"
+  ],
+  "expected_disposition_counts": {
+    "ELIGIBLE": 13,
+    "PROHIBITED": 1,
+    "HELD": 2,
+    "INAPPLICABLE_PROVED": 1,
+    "UNKNOWN": 1
+  },
+  "expected_count": 18,
+  "required_no_drop_rule": {
+    "considered_partition": [
+      "ELIGIBLE",
+      "PROHIBITED",
+      "INAPPLICABLE_PROVED",
+      "HELD",
+      "UNKNOWN"
+    ],
+    "eligible_execution_partition": [
+      "NOT_STARTED",
+      "PENDING",
+      "COMPLETED",
+      "UNSUPPORTED_RUNTIME",
+      "ERROR"
+    ],
+    "exact_multiset_equality": true,
+    "count_equality_alone_insufficient": true,
+    "duplicate_ids_error": true,
+    "extra_candidate_ids_error": true,
+    "deferred_and_held_not_deleted": true
+  },
+  "edge_class_coverage": {
+    "catalog": [
+      "scalar",
+      "routed applicability",
+      "split form",
+      "household/person lawful link",
+      "unlinked-unit refusal",
+      "weighted design",
+      "multiple response",
+      "rank",
+      "repeat occurrence",
+      "bounded ordered joint",
+      "conditioned value tuples",
+      "recursive/fork minority",
+      "valid null and zero",
+      "permission/clock",
+      "multi-field transport",
+      "temporal comparability"
+    ],
+    "claimed_structural_classes": [
+      "scalar",
+      "routed applicability",
+      "split form",
+      "unlinked-unit refusal",
+      "weighted design",
+      "multiple response",
+      "rank",
+      "repeat occurrence",
+      "bounded ordered joint",
+      "conditioned value tuples",
+      "permission/clock"
+    ],
+    "deferred_test_not_in_first_flight": [
+      "recursive/fork minority",
+      "valid null and zero",
+      "multi-field transport",
+      "temporal comparability",
+      "household/person lawful link"
+    ],
+    "simulation_is_not_native_coverage": true,
+    "linked_household_person_positive": {
+      "status": "DEFERRED_NOT_EXERCISED",
+      "actual_scope": "PERSON_AND_HOUSEHOLD_SEPARATE_RISK_SETS_PLUS_UNLINKED_JOINT_HELD",
+      "actual_native_link_execution": "NONE",
+      "link_authority": "UNISSUED",
+      "no_new_relation": true
+    }
+  },
+  "label_renaming_requirement": "Policy-pinned bijection preserving item/occurrence/operation identity and all unchanged semantic fields must be admitted at LOCAL_ONLY grain; neither q301 labels nor other labels authorize hand-picked subset or GENERIC_SOURCEFREE promotion. Candidate may not independently elect a variant.",
+  "original35_reference": {
+    "commit": "d7988b3d5d313902d883d2d8c244fd2526058410",
+    "path": "WORKER_RETURNS/PYAT-R53-U53A-ASTRA-UNIVERSAL-EXECUTION-COURT-R1/evidence/ORIGINAL35_ACCEPTANCE_OBLIGATIONS.json",
+    "blob": "f5a3621e83d475e51fff4d3aba3eceb37dbaf9e4",
+    "source_count": 35,
+    "axes_per_source": 54,
+    "cells": 1890,
+    "unissued_original_U_item": null,
+    "unissued_original_U_unit": null,
+    "unissued_original_U_app": null,
+    "unissued_original_E_pre": null,
+    "global_edges": [
+      "F6",
+      "F7",
+      "F8"
+    ]
+  },
+  "supersedes_literal_label_ban": {
+    "field": "source_ids_banned",
+    "predecessor_value": [
+      "q301_2",
+      "q301_7"
+    ],
+    "new_law": "LITERAL_LABELS_ARE_NOT_BANNED__SCOPE_COMPLETENESS_AND_PROOF_GRADE_CONTROL_PROMOTION",
+    "predecessor_commit": "57b10c0355af6df78d6a42d918a838bba3eaf5bc"
+  },
+  "independent_materialized_variants": [
+    {
+      "variant_id": "ARC1_BIJECTIVE_Q301_LOCAL",
+      "grade_ceiling": "LOCAL_ONLY_POLICY_CONSISTENT",
+      "admission": "SELECTED_ONLY_BY_EXTERNALLY_PINNED_TEST_POLICY__NOT_CANDIDATE_INPUT",
+      "source_variant": "TEST:ARC1",
+      "predecessor_variant": "CANONICAL_V1",
+      "source_label_bijection": {
+        "lumen": "q301_2",
+        "azur": "q301_7"
+      },
+      "occurrence_ref_bijection": {
+        "a:q-lumen:main": "a:q-q301_2:main",
+        "a:q-azur:main": "a:q-q301_7:main",
+        "a:q-azur:alt": "a:q-q301_7:alt"
+      },
+      "operation_id_bijection": {
+        "OP.TEST.ARC1.MARG.LUMEN_RAW": "OP.TEST.ARC1.MARG.Q301_2_RAW",
+        "OP.TEST.ARC1.MARG.LUMEN_W1": "OP.TEST.ARC1.MARG.Q301_2_W1",
+        "OP.TEST.ARC1.COND.LUMEN_AZUR_ALPHA1": "OP.TEST.ARC1.COND.Q301_2_Q301_7_ALPHA1",
+        "OP.TEST.ARC1.COND.LUMEN_AZUR_BETA1": "OP.TEST.ARC1.COND.Q301_2_Q301_7_BETA1"
+      },
+      "preservation": "Same original 3 semantic universes, 18 considered operations and their original eligibility/measure/risk/direction/condition typed values; exactly 4 operation identifiers and 3 occurrence identifiers rewritten. All other IDs unchanged. Full expected materialized objects are frozen below, independently of R00E output.",
+      "expected_universes": [
+        {
+          "universe_id": "TEST:ARC1",
+          "family": "SYN_A",
+          "declared_file_format": "SAV_METADATA_ONLY_NOT_EXECUTED",
+          "source_release": "TEST:ARC1:REL1",
+          "population": "TEST:ARC1:PERSON_SAMPLE",
+          "sampling_unit": "PERSON",
+          "respondent_unit": "PERSON",
+          "risk_sets": [
+            {
+              "id": "TEST:ARC1:RISK1",
+              "eligible_rows": "ROUTED_FORM_ALPHA"
+            },
+            {
+              "id": "TEST:ARC1:RISK_ALL",
+              "eligible_rows": "ALL_FIELDABLE"
+            }
+          ],
+          "measures": [
+            {
+              "id": "TEST:ARC1:RAW",
+              "kind": "RAW"
+            },
+            {
+              "id": "TEST:ARC1:W1",
+              "kind": "WEIGHTED",
+              "design_ref": "TEST:ARC1:DESIGN_STRATA_S1"
+            }
+          ],
+          "occurrences": [
+            {
+              "occurrence_ref": "a:q-q301_2:main",
+              "item": "q301_2",
+              "option": null,
+              "form": null,
+              "repeat": null,
+              "role": "TARGET",
+              "administration": "ADMINISTERED"
+            },
+            {
+              "occurrence_ref": "a:q-q301_7:main",
+              "item": "q301_7",
+              "option": null,
+              "form": "FORM_ALPHA",
+              "repeat": null,
+              "role": "CONDITIONER",
+              "administration": "ADMINISTERED",
+              "risk_set_ref": "TEST:ARC1:RISK1"
+            },
+            {
+              "occurrence_ref": "a:q-q301_7:alt",
+              "item": "q301_7",
+              "option": null,
+              "form": "FORM_BETA",
+              "repeat": null,
+              "role": "CONDITIONER",
+              "administration": "ADMINISTERED",
+              "risk_set_ref": "TEST:ARC1:RISK_ALL"
+            },
+            {
+              "occurrence_ref": "a:route:alpha",
+              "item": "route_alpha",
+              "option": null,
+              "form": null,
+              "repeat": null,
+              "role": "ADMINISTRATIVE",
+              "administration": "ADMINISTERED"
+            }
+          ],
+          "grammar": {
+            "bound_J": 2,
+            "bound_K": 1,
+            "bound_D": 0,
+            "allowed_classes": [
+              "MARGINAL",
+              "CONDITIONAL"
+            ],
+            "operation_universe_source": "INDEPENDENT_TEST_RULES_NOT_OUTCOMES"
+          },
+          "edge_classes": [
+            "scalar",
+            "weighted design",
+            "routed applicability",
+            "split form",
+            "conditioned value tuples",
+            "permission/clock"
+          ]
+        },
+        {
+          "universe_id": "TEST:DUO2",
+          "family": "SYN_B",
+          "declared_file_format": "DTA_METADATA_ONLY_NOT_EXECUTED",
+          "source_release": "TEST:DUO2:REL1",
+          "population": "TEST:DUO2:TWO_DISTINCT_RISK_SETS",
+          "sampling_unit": "PERSON_AND_HOUSEHOLD_SEPARATE",
+          "respondent_unit": "PERSON_AND_HOUSEHOLD_SEPARATE",
+          "risk_sets": [
+            {
+              "id": "TEST:DUO2:PRISK",
+              "unit": "PERSON"
+            },
+            {
+              "id": "TEST:DUO2:HRISK",
+              "unit": "HOUSEHOLD"
+            }
+          ],
+          "link_authority": {
+            "state": "UNISSUED",
+            "ref": null
+          },
+          "measures": [
+            {
+              "id": "TEST:DUO2:RAW",
+              "kind": "RAW"
+            }
+          ],
+          "occurrences": [
+            {
+              "occurrence_ref": "b:p:sentinel",
+              "item": "sentinel",
+              "option": null,
+              "form": null,
+              "repeat": null,
+              "role": "TARGET",
+              "administration": "ADMINISTERED",
+              "unit": "PERSON",
+              "risk_set_ref": "TEST:DUO2:PRISK"
+            },
+            {
+              "occurrence_ref": "b:p:position",
+              "item": "position",
+              "option": null,
+              "form": null,
+              "repeat": null,
+              "role": "CONDITIONER",
+              "administration": "ADMINISTERED",
+              "unit": "PERSON",
+              "risk_set_ref": "TEST:DUO2:PRISK"
+            },
+            {
+              "occurrence_ref": "b:h:harbor",
+              "item": "harbor",
+              "option": null,
+              "form": null,
+              "repeat": null,
+              "role": "TARGET",
+              "administration": "ADMINISTERED",
+              "unit": "HOUSEHOLD",
+              "risk_set_ref": "TEST:DUO2:HRISK"
+            }
+          ],
+          "grammar": {
+            "bound_J": 2,
+            "bound_K": 1,
+            "bound_D": 0,
+            "allowed_classes": [
+              "MARGINAL",
+              "JOINT",
+              "CONDITIONAL"
+            ],
+            "operation_universe_source": "INDEPENDENT_TEST_RULES_NOT_OUTCOMES"
+          },
+          "edge_classes": [
+            "household/person lawful link",
+            "unlinked-unit refusal",
+            "bounded ordered joint",
+            "conditioned value tuples"
+          ]
+        },
+        {
+          "universe_id": "TEST:REP3",
+          "family": "SYN_C",
+          "declared_file_format": "SAV_METADATA_ONLY_NOT_EXECUTED",
+          "source_release": "TEST:REP3:REL1",
+          "population": "TEST:REP3:PERSON_OCCASION",
+          "sampling_unit": "PERSON_OCCASION",
+          "respondent_unit": "PERSON",
+          "risk_sets": [
+            {
+              "id": "TEST:REP3:RISK1",
+              "unit": "PERSON_OCCASION"
+            }
+          ],
+          "measures": [
+            {
+              "id": "TEST:REP3:RAW",
+              "kind": "RAW"
+            }
+          ],
+          "occurrences": [
+            {
+              "occurrence_ref": "c:score:t0",
+              "item": "score",
+              "option": null,
+              "form": null,
+              "repeat": 0,
+              "role": "TARGET",
+              "administration": "ADMINISTERED",
+              "topology": "REPEATED_EVENT"
+            },
+            {
+              "occurrence_ref": "c:score:t1",
+              "item": "score",
+              "option": null,
+              "form": null,
+              "repeat": 1,
+              "role": "TARGET",
+              "administration": "ADMINISTERED",
+              "topology": "REPEATED_EVENT"
+            },
+            {
+              "occurrence_ref": "c:mr:slot0",
+              "item": "choice",
+              "option": "slot0",
+              "form": null,
+              "repeat": null,
+              "role": "TARGET",
+              "administration": "ADMINISTERED",
+              "topology": "MULTIPLE_RESPONSE"
+            },
+            {
+              "occurrence_ref": "c:mr:slot1",
+              "item": "choice",
+              "option": "slot1",
+              "form": null,
+              "repeat": null,
+              "role": "TARGET",
+              "administration": "ADMINISTERED",
+              "topology": "MULTIPLE_RESPONSE"
+            },
+            {
+              "occurrence_ref": "c:rank:one",
+              "item": "preference",
+              "option": null,
+              "form": null,
+              "repeat": null,
+              "role": "TARGET",
+              "administration": "ADMINISTERED",
+              "rank": 1,
+              "topology": "ORDERED_RANK"
+            },
+            {
+              "occurrence_ref": "c:rank:two",
+              "item": "preference",
+              "option": null,
+              "form": null,
+              "repeat": null,
+              "role": "TARGET",
+              "administration": "ADMINISTERED",
+              "rank": 2,
+              "topology": "ORDERED_RANK"
+            },
+            {
+              "occurrence_ref": "c:form:z",
+              "item": "form_z",
+              "option": null,
+              "form": "Z",
+              "repeat": null,
+              "role": "ADMINISTRATIVE",
+              "administration": "NOT_ADMINISTERED"
+            }
+          ],
+          "grammar": {
+            "bound_J": 2,
+            "bound_K": 1,
+            "bound_D": 0,
+            "allowed_classes": [
+              "MARGINAL",
+              "REPEATED_PAIR",
+              "MULTI_RESPONSE",
+              "ORDERED_RANK"
+            ],
+            "operation_universe_source": "INDEPENDENT_TEST_RULES_NOT_OUTCOMES"
+          },
+          "edge_classes": [
+            "repeat occurrence",
+            "multiple response",
+            "rank",
+            "routed applicability",
+            "bounded ordered joint"
+          ]
+        }
+      ],
+      "expected_operations": [
+        {
+          "operation_id": "OP.TEST.ARC1.MARG.Q301_2_RAW",
+          "universe": "TEST:ARC1",
+          "operation_class": "MARGINAL",
+          "target_occurrences": [
+            "a:q-q301_2:main"
+          ],
+          "condition_tuple": [],
+          "eligible_disposition": "ELIGIBLE",
+          "disposition_reason_rule": "P01_ROLE_ADMIN_RISK_PERMIT",
+          "axis_bindings": {
+            "eligibility": "ELIGIBLE",
+            "execution": "NOT_STARTED",
+            "result": "UNKNOWN"
+          },
+          "source_grain": "PERSON",
+          "risk_set_ref": "TEST:ARC1:RISK_ALL",
+          "measure_ref": "TEST:ARC1:RAW",
+          "topology": "SCALAR",
+          "direction_ref": "TEST:ARC1:DIRECTION_ISSUED_TEST"
+        },
+        {
+          "operation_id": "OP.TEST.ARC1.MARG.Q301_2_W1",
+          "universe": "TEST:ARC1",
+          "operation_class": "MARGINAL",
+          "target_occurrences": [
+            "a:q-q301_2:main"
+          ],
+          "condition_tuple": [],
+          "eligible_disposition": "ELIGIBLE",
+          "disposition_reason_rule": "P01_WEIGHTED_DESIGN_ISSUED_TEST",
+          "axis_bindings": {
+            "eligibility": "ELIGIBLE",
+            "execution": "NOT_STARTED",
+            "result": "UNKNOWN"
+          },
+          "source_grain": "PERSON",
+          "risk_set_ref": "TEST:ARC1:RISK_ALL",
+          "measure_ref": "TEST:ARC1:W1",
+          "topology": "SCALAR",
+          "direction_ref": "TEST:ARC1:DIRECTION_ISSUED_TEST"
+        },
+        {
+          "operation_id": "OP.TEST.ARC1.COND.Q301_2_Q301_7_ALPHA1",
+          "universe": "TEST:ARC1",
+          "operation_class": "CONDITIONAL",
+          "target_occurrences": [
+            "a:q-q301_2:main"
+          ],
+          "condition_tuple": [
+            {
+              "occurrence_ref": "a:q-q301_7:main",
+              "value": {
+                "t": "integer",
+                "v": "1"
+              },
+              "domain_version": "TEST:ARC1:AZUR_V1"
+            }
+          ],
+          "eligible_disposition": "ELIGIBLE",
+          "disposition_reason_rule": "P01_ROUTED_FORM_ALPHA",
+          "axis_bindings": {
+            "eligibility": "ELIGIBLE",
+            "execution": "NOT_STARTED",
+            "result": "UNKNOWN"
+          },
+          "source_grain": "PERSON",
+          "risk_set_ref": "TEST:ARC1:RISK1",
+          "measure_ref": "TEST:ARC1:RAW",
+          "topology": "SCALAR",
+          "direction_ref": "TEST:ARC1:DIRECTION_ISSUED_TEST"
+        },
+        {
+          "operation_id": "OP.TEST.ARC1.COND.Q301_2_Q301_7_BETA1",
+          "universe": "TEST:ARC1",
+          "operation_class": "CONDITIONAL",
+          "target_occurrences": [
+            "a:q-q301_2:main"
+          ],
+          "condition_tuple": [
+            {
+              "occurrence_ref": "a:q-q301_7:alt",
+              "value": {
+                "t": "integer",
+                "v": "1"
+              },
+              "domain_version": "TEST:ARC1:AZUR_V1"
+            }
+          ],
+          "eligible_disposition": "ELIGIBLE",
+          "disposition_reason_rule": "P01_DISTINCT_FORM_NOT_ALIAS",
+          "axis_bindings": {
+            "eligibility": "ELIGIBLE",
+            "execution": "NOT_STARTED",
+            "result": "UNKNOWN"
+          },
+          "source_grain": "PERSON",
+          "risk_set_ref": "TEST:ARC1:RISK_ALL",
+          "measure_ref": "TEST:ARC1:RAW",
+          "topology": "SCALAR",
+          "direction_ref": "TEST:ARC1:DIRECTION_ISSUED_TEST"
+        },
+        {
+          "operation_id": "OP.TEST.ARC1.CONDITION.UNADMINISTERED",
+          "universe": "TEST:ARC1",
+          "operation_class": "CONDITIONAL",
+          "target_occurrences": [
+            "a:q-q301_2:main"
+          ],
+          "condition_tuple": [
+            {
+              "occurrence_ref": "a:route:alpha",
+              "value": {
+                "t": "bool",
+                "v": true
+              },
+              "domain_version": "TEST:ARC1:ROUTE_V1"
+            }
+          ],
+          "eligible_disposition": "PROHIBITED",
+          "disposition_reason_rule": "P02_ADMINISTRATIVE_NOT_SEMANTIC_CONDITION",
+          "axis_bindings": {
+            "eligibility": "PROHIBITED",
+            "execution": "NOT_STARTED",
+            "result": "UNKNOWN"
+          },
+          "source_grain": "PERSON",
+          "risk_set_ref": "TEST:ARC1:RISK_ALL",
+          "measure_ref": "TEST:ARC1:RAW",
+          "topology": "SCALAR",
+          "direction_ref": "TEST:ARC1:DIRECTION_ISSUED_TEST"
+        },
+        {
+          "operation_id": "OP.TEST.DUO2.MARG.PERSON",
+          "universe": "TEST:DUO2",
+          "operation_class": "MARGINAL",
+          "target_occurrences": [
+            "b:p:sentinel"
+          ],
+          "condition_tuple": [],
+          "eligible_disposition": "ELIGIBLE",
+          "disposition_reason_rule": "P01_SAME_UNIT",
+          "axis_bindings": {
+            "eligibility": "ELIGIBLE",
+            "execution": "NOT_STARTED",
+            "result": "UNKNOWN"
+          },
+          "source_grain": "PERSON",
+          "risk_set_ref": "TEST:DUO2:PRISK",
+          "measure_ref": "TEST:DUO2:RAW",
+          "topology": "SCALAR",
+          "direction_ref": "TEST:DUO2:DIRECTION_ISSUED_TEST"
+        },
+        {
+          "operation_id": "OP.TEST.DUO2.MARG.HOUSEHOLD",
+          "universe": "TEST:DUO2",
+          "operation_class": "MARGINAL",
+          "target_occurrences": [
+            "b:h:harbor"
+          ],
+          "condition_tuple": [],
+          "eligible_disposition": "ELIGIBLE",
+          "disposition_reason_rule": "P01_SEPARATE_UNIT",
+          "axis_bindings": {
+            "eligibility": "ELIGIBLE",
+            "execution": "NOT_STARTED",
+            "result": "UNKNOWN"
+          },
+          "source_grain": "HOUSEHOLD",
+          "risk_set_ref": "TEST:DUO2:HRISK",
+          "measure_ref": "TEST:DUO2:RAW",
+          "topology": "SCALAR",
+          "direction_ref": "TEST:DUO2:DIRECTION_ISSUED_TEST"
+        },
+        {
+          "operation_id": "OP.TEST.DUO2.COND.PERSON_POSITION",
+          "universe": "TEST:DUO2",
+          "operation_class": "CONDITIONAL",
+          "target_occurrences": [
+            "b:p:sentinel"
+          ],
+          "condition_tuple": [
+            {
+              "occurrence_ref": "b:p:position",
+              "value": {
+                "t": "string",
+                "v": "high"
+              },
+              "domain_version": "TEST:DUO2:POSITION_V1"
+            }
+          ],
+          "eligible_disposition": "ELIGIBLE",
+          "disposition_reason_rule": "P01_SAME_RISK_PERSON",
+          "axis_bindings": {
+            "eligibility": "ELIGIBLE",
+            "execution": "NOT_STARTED",
+            "result": "UNKNOWN"
+          },
+          "source_grain": "PERSON",
+          "risk_set_ref": "TEST:DUO2:PRISK",
+          "measure_ref": "TEST:DUO2:RAW",
+          "topology": "SCALAR",
+          "direction_ref": "TEST:DUO2:DIRECTION_ISSUED_TEST"
+        },
+        {
+          "operation_id": "OP.TEST.DUO2.JOINT.UNLINKED",
+          "universe": "TEST:DUO2",
+          "operation_class": "JOINT",
+          "target_occurrences": [
+            "b:p:sentinel",
+            "b:h:harbor"
+          ],
+          "condition_tuple": [],
+          "eligible_disposition": "HELD",
+          "disposition_reason_rule": "P03_NO_AUTHENTICATED_PERSON_HOUSEHOLD_LINK",
+          "axis_bindings": {
+            "eligibility": "HELD",
+            "execution": "NOT_STARTED",
+            "result": "UNKNOWN"
+          },
+          "source_grain": "MIXED_UNLINKED",
+          "risk_set_ref": "TEST:DUO2:UNLINKED",
+          "measure_ref": "TEST:DUO2:RAW",
+          "topology": "CROSS_UNIT_REFUSED",
+          "direction_ref": "TEST:DUO2:DIRECTION_ISSUED_TEST",
+          "relation_authority": null
+        },
+        {
+          "operation_id": "OP.TEST.DUO2.JOINT.SWAPPED",
+          "universe": "TEST:DUO2",
+          "operation_class": "JOINT",
+          "target_occurrences": [
+            "b:h:harbor",
+            "b:p:sentinel"
+          ],
+          "condition_tuple": [],
+          "eligible_disposition": "HELD",
+          "disposition_reason_rule": "P03_ORDERED_MIXED_UNLINKED_STILL_HELD",
+          "axis_bindings": {
+            "eligibility": "HELD",
+            "execution": "NOT_STARTED",
+            "result": "UNKNOWN"
+          },
+          "source_grain": "MIXED_UNLINKED",
+          "risk_set_ref": "TEST:DUO2:UNLINKED",
+          "measure_ref": "TEST:DUO2:RAW",
+          "topology": "CROSS_UNIT_REFUSED",
+          "direction_ref": "TEST:DUO2:DIRECTION_ISSUED_TEST",
+          "relation_authority": null
+        },
+        {
+          "operation_id": "OP.TEST.REP3.MARG.SCORE_T0",
+          "universe": "TEST:REP3",
+          "operation_class": "MARGINAL",
+          "target_occurrences": [
+            "c:score:t0"
+          ],
+          "condition_tuple": [],
+          "eligible_disposition": "ELIGIBLE",
+          "disposition_reason_rule": "P01_REPEAT_0_DISTINCT",
+          "axis_bindings": {
+            "eligibility": "ELIGIBLE",
+            "execution": "NOT_STARTED",
+            "result": "UNKNOWN"
+          },
+          "source_grain": "PERSON",
+          "risk_set_ref": "TEST:REP3:RISK1",
+          "measure_ref": "TEST:REP3:RAW",
+          "topology": "REPEATED_EVENT",
+          "direction_ref": "TEST:REP3:DIRECTION_ISSUED_TEST"
+        },
+        {
+          "operation_id": "OP.TEST.REP3.MARG.SCORE_T1",
+          "universe": "TEST:REP3",
+          "operation_class": "MARGINAL",
+          "target_occurrences": [
+            "c:score:t1"
+          ],
+          "condition_tuple": [],
+          "eligible_disposition": "ELIGIBLE",
+          "disposition_reason_rule": "P01_REPEAT_1_DISTINCT",
+          "axis_bindings": {
+            "eligibility": "ELIGIBLE",
+            "execution": "NOT_STARTED",
+            "result": "UNKNOWN"
+          },
+          "source_grain": "PERSON",
+          "risk_set_ref": "TEST:REP3:RISK1",
+          "measure_ref": "TEST:REP3:RAW",
+          "topology": "REPEATED_EVENT",
+          "direction_ref": "TEST:REP3:DIRECTION_ISSUED_TEST"
+        },
+        {
+          "operation_id": "OP.TEST.REP3.PAIR.SCORE_ORDERED",
+          "universe": "TEST:REP3",
+          "operation_class": "REPEATED_PAIR",
+          "target_occurrences": [
+            "c:score:t0",
+            "c:score:t1"
+          ],
+          "condition_tuple": [],
+          "eligible_disposition": "ELIGIBLE",
+          "disposition_reason_rule": "P01_EXACT_ORDERED_SAME_PERSON_OCCASIONS",
+          "axis_bindings": {
+            "eligibility": "ELIGIBLE",
+            "execution": "NOT_STARTED",
+            "result": "UNKNOWN"
+          },
+          "source_grain": "PERSON_ACROSS_TWO_OCCASIONS",
+          "risk_set_ref": "TEST:REP3:RISK1",
+          "measure_ref": "TEST:REP3:RAW",
+          "topology": "REPEATED_EVENT",
+          "direction_ref": "TEST:REP3:DIRECTION_ISSUED_TEST"
+        },
+        {
+          "operation_id": "OP.TEST.REP3.MR.SLOT0",
+          "universe": "TEST:REP3",
+          "operation_class": "MULTI_RESPONSE",
+          "target_occurrences": [
+            "c:mr:slot0"
+          ],
+          "condition_tuple": [],
+          "eligible_disposition": "ELIGIBLE",
+          "disposition_reason_rule": "P01_MR_SLOT_UNIQUE",
+          "axis_bindings": {
+            "eligibility": "ELIGIBLE",
+            "execution": "NOT_STARTED",
+            "result": "UNKNOWN"
+          },
+          "source_grain": "PERSON",
+          "risk_set_ref": "TEST:REP3:RISK1",
+          "measure_ref": "TEST:REP3:RAW",
+          "topology": "MULTIPLE_RESPONSE",
+          "direction_ref": "TEST:REP3:DIRECTION_ISSUED_TEST"
+        },
+        {
+          "operation_id": "OP.TEST.REP3.MR.SLOT1",
+          "universe": "TEST:REP3",
+          "operation_class": "MULTI_RESPONSE",
+          "target_occurrences": [
+            "c:mr:slot1"
+          ],
+          "condition_tuple": [],
+          "eligible_disposition": "ELIGIBLE",
+          "disposition_reason_rule": "P01_MR_SLOT_UNIQUE",
+          "axis_bindings": {
+            "eligibility": "ELIGIBLE",
+            "execution": "NOT_STARTED",
+            "result": "UNKNOWN"
+          },
+          "source_grain": "PERSON",
+          "risk_set_ref": "TEST:REP3:RISK1",
+          "measure_ref": "TEST:REP3:RAW",
+          "topology": "MULTIPLE_RESPONSE",
+          "direction_ref": "TEST:REP3:DIRECTION_ISSUED_TEST"
+        },
+        {
+          "operation_id": "OP.TEST.REP3.RANK.ONE_TWO",
+          "universe": "TEST:REP3",
+          "operation_class": "ORDERED_RANK",
+          "target_occurrences": [
+            "c:rank:one",
+            "c:rank:two"
+          ],
+          "condition_tuple": [],
+          "eligible_disposition": "ELIGIBLE",
+          "disposition_reason_rule": "P01_RANK_ORDER_PRESERVED",
+          "axis_bindings": {
+            "eligibility": "ELIGIBLE",
+            "execution": "NOT_STARTED",
+            "result": "UNKNOWN"
+          },
+          "source_grain": "PERSON",
+          "risk_set_ref": "TEST:REP3:RISK1",
+          "measure_ref": "TEST:REP3:RAW",
+          "topology": "ORDERED_RANK",
+          "direction_ref": "TEST:REP3:DIRECTION_ISSUED_TEST"
+        },
+        {
+          "operation_id": "OP.TEST.REP3.ROUTE.FORMZ",
+          "universe": "TEST:REP3",
+          "operation_class": "MARGINAL",
+          "target_occurrences": [
+            "c:form:z"
+          ],
+          "condition_tuple": [],
+          "eligible_disposition": "INAPPLICABLE_PROVED",
+          "disposition_reason_rule": "P04_EXPLICIT_NOT_ADMINISTERED",
+          "axis_bindings": {
+            "eligibility": "INAPPLICABLE_PROVED",
+            "execution": "NOT_STARTED",
+            "result": "UNKNOWN"
+          },
+          "source_grain": "PERSON",
+          "risk_set_ref": "TEST:REP3:RISK1",
+          "measure_ref": "TEST:REP3:RAW",
+          "topology": "ADMINISTRATIVE",
+          "direction_ref": "TEST:REP3:DIRECTION_ISSUED_TEST"
+        },
+        {
+          "operation_id": "OP.TEST.REP3.FRONTIER.HELD_DIRECTION",
+          "universe": "TEST:REP3",
+          "operation_class": "CONDITIONAL",
+          "target_occurrences": [
+            "c:score:t1"
+          ],
+          "condition_tuple": [
+            {
+              "occurrence_ref": "c:rank:one",
+              "value": {
+                "t": "integer",
+                "v": "1"
+              },
+              "domain_version": "TEST:REP3:RANK_V1"
+            }
+          ],
+          "eligible_disposition": "UNKNOWN",
+          "disposition_reason_rule": "P05_CONDITION_ROLE_NOT_ISSUED",
+          "axis_bindings": {
+            "eligibility": "UNKNOWN",
+            "execution": "NOT_STARTED",
+            "result": "UNKNOWN"
+          },
+          "source_grain": "PERSON",
+          "risk_set_ref": "TEST:REP3:RISK1",
+          "measure_ref": "TEST:REP3:RAW",
+          "topology": "CONDITIONED_REPEATED",
+          "direction_ref": "TEST:REP3:DIRECTION_ISSUED_TEST"
+        }
+      ],
+      "expected_operation_id_multiset": [
+        "OP.TEST.ARC1.COND.Q301_2_Q301_7_ALPHA1",
+        "OP.TEST.ARC1.COND.Q301_2_Q301_7_BETA1",
+        "OP.TEST.ARC1.CONDITION.UNADMINISTERED",
+        "OP.TEST.ARC1.MARG.Q301_2_RAW",
+        "OP.TEST.ARC1.MARG.Q301_2_W1",
+        "OP.TEST.DUO2.COND.PERSON_POSITION",
+        "OP.TEST.DUO2.JOINT.SWAPPED",
+        "OP.TEST.DUO2.JOINT.UNLINKED",
+        "OP.TEST.DUO2.MARG.HOUSEHOLD",
+        "OP.TEST.DUO2.MARG.PERSON",
+        "OP.TEST.REP3.FRONTIER.HELD_DIRECTION",
+        "OP.TEST.REP3.MARG.SCORE_T0",
+        "OP.TEST.REP3.MARG.SCORE_T1",
+        "OP.TEST.REP3.MR.SLOT0",
+        "OP.TEST.REP3.MR.SLOT1",
+        "OP.TEST.REP3.PAIR.SCORE_ORDERED",
+        "OP.TEST.REP3.RANK.ONE_TWO",
+        "OP.TEST.REP3.ROUTE.FORMZ"
+      ],
+      "expected_disposition_counts": {
+        "ELIGIBLE": 13,
+        "PROHIBITED": 1,
+        "HELD": 2,
+        "INAPPLICABLE_PROVED": 1,
+        "UNKNOWN": 1
+      },
+      "expected_count": 18,
+      "semantic_invariants": [
+        "operation_class",
+        "ordered_target_occurrences_under_mapping",
+        "ordered_condition_tuple_refs_under_mapping",
+        "typed_condition_values_unchanged",
+        "domain_version_unchanged",
+        "risk_set_ref_unchanged",
+        "source_grain_unchanged",
+        "measure_ref_unchanged",
+        "direction_ref_unchanged",
+        "axis_bindings_unchanged",
+        "admin_and_held_obligations_unchanged"
+      ],
+      "proof_scope": "POLICY_CONTENT_ONLY_NO_NATIVE_RECEIPT"
+    }
+  ],
+  "r2_predecessor": {
+    "commit": "57b10c0355af6df78d6a42d918a838bba3eaf5bc",
+    "blob": "9914d9b6ec4f329719fa4ecd6eafb525701f213c",
+    "unchanged_operations": 18,
+    "unchanged_original35": true
+  }
+}

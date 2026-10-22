@@ -1,0 +1,1308 @@
+{
+  "schema": "R56_R00P_INDEPENDENT_DECISION_CASES@1.1.0",
+  "status": "FROZEN_R2_EXPECTATIONS__NATIVE_NOT_EXECUTED__HQ_ADMISSION_PENDING",
+  "semantics": {
+    "merge": "Recursive map-merge of input_overlay into baseline_input; arrays replaced atomically; null overrides rather than deletes. Edits with remove/add applied explicitly; fully independent fixture preimages resolved from pinned synthetic_universes.json before comparing.",
+    "expected_vs_actual": "Case expected is policy-owner oracle, not derived from implementation; implementation must independently interpret actual submitted objects and external pinned policy.",
+    "runtime_qualifier": "NONE_NATIVE_EXECUTED_BY_R00P; MOCK_ONLY_FOR_STRUCTURE",
+    "adversarial_claims": "All claim values untrusted; no positive generic/original from these fixtures.",
+    "rename_materialization": "Only independent policy-root materialized full variant selected by externally pinned fixture/policy input; case overlay variant_id changes external trusted fixture context (NOT candidate authority). Its full instrument occurrence keys and 18 operation preimages/IDs are explicitly frozen in synthetic_universes.json independent_materialized_variants[0]. A candidate must submit the complete corresponding objects and lineage; policy gate must compare under the fixed bijection rather than by case_id, label, or caller pin."
+  },
+  "baseline_input": {
+    "contract_id": "R56-R00P-CLAIM-TRANSITION-GATE@1.1.0",
+    "request": {
+      "claim_grade": "LOCAL_OPERATOR",
+      "claim_kind": "POLICY_ONLY",
+      "consumer": "TEST_ONLY_GATE_POLICY"
+    },
+    "external_policy_resolution": {
+      "source": "DIRECTOR_SEALED_IMMUTABLE_GIT_OBJECT",
+      "branch": "agent/browser-pyat-r56-r00-independent-policy-r1",
+      "commit": "SUCCESSOR_R2_EXTERNAL_SEAL_PENDING",
+      "variant_id": "CANONICAL_V1"
+    },
+    "submitted": {
+      "scope": "TEST_ONLY:ALL_THREE",
+      "operation_ids_override": [
+        "OP.TEST.ARC1.MARG.LUMEN_RAW",
+        "OP.TEST.ARC1.MARG.LUMEN_W1",
+        "OP.TEST.ARC1.COND.LUMEN_AZUR_ALPHA1",
+        "OP.TEST.ARC1.COND.LUMEN_AZUR_BETA1",
+        "OP.TEST.ARC1.CONDITION.UNADMINISTERED",
+        "OP.TEST.DUO2.MARG.PERSON",
+        "OP.TEST.DUO2.MARG.HOUSEHOLD",
+        "OP.TEST.DUO2.COND.PERSON_POSITION",
+        "OP.TEST.DUO2.JOINT.UNLINKED",
+        "OP.TEST.DUO2.JOINT.SWAPPED",
+        "OP.TEST.REP3.MARG.SCORE_T0",
+        "OP.TEST.REP3.MARG.SCORE_T1",
+        "OP.TEST.REP3.PAIR.SCORE_ORDERED",
+        "OP.TEST.REP3.MR.SLOT0",
+        "OP.TEST.REP3.MR.SLOT1",
+        "OP.TEST.REP3.RANK.ONE_TWO",
+        "OP.TEST.REP3.ROUTE.FORMZ",
+        "OP.TEST.REP3.FRONTIER.HELD_DIRECTION"
+      ],
+      "operation_preimages_source": "INDEPENDENT_PINNED_SYNTHETIC_FIXTURE_MATERIAL",
+      "native_event_claim": "NOT_ASSERTED",
+      "permission": {
+        "current": "TEST_ONLY_ISSUED_SCOPE"
+      },
+      "attempts": [],
+      "scientific_counted_operation_ids": []
+    },
+    "verified_evidence_transport": null
+  },
+  "independent_expected_operation_ids": [
+    "OP.TEST.ARC1.MARG.LUMEN_RAW",
+    "OP.TEST.ARC1.MARG.LUMEN_W1",
+    "OP.TEST.ARC1.COND.LUMEN_AZUR_ALPHA1",
+    "OP.TEST.ARC1.COND.LUMEN_AZUR_BETA1",
+    "OP.TEST.ARC1.CONDITION.UNADMINISTERED",
+    "OP.TEST.DUO2.MARG.PERSON",
+    "OP.TEST.DUO2.MARG.HOUSEHOLD",
+    "OP.TEST.DUO2.COND.PERSON_POSITION",
+    "OP.TEST.DUO2.JOINT.UNLINKED",
+    "OP.TEST.DUO2.JOINT.SWAPPED",
+    "OP.TEST.REP3.MARG.SCORE_T0",
+    "OP.TEST.REP3.MARG.SCORE_T1",
+    "OP.TEST.REP3.PAIR.SCORE_ORDERED",
+    "OP.TEST.REP3.MR.SLOT0",
+    "OP.TEST.REP3.MR.SLOT1",
+    "OP.TEST.REP3.RANK.ONE_TWO",
+    "OP.TEST.REP3.ROUTE.FORMZ",
+    "OP.TEST.REP3.FRONTIER.HELD_DIRECTION"
+  ],
+  "case_count": 36,
+  "cases": [
+    {
+      "case_id": "C00",
+      "title": "Full independently selected 18-operation TEST_ONLY policy is internally consistent",
+      "kind": "INDEPENDENT_TEST_ONLY_SPECIFICATION__NOT_EXECUTION",
+      "input_overlay": {},
+      "expected": {
+        "decision": "ALLOW_LOCAL_POLICY_CONSISTENT",
+        "reason_rule_ids": [
+          "P00_INDEPENDENT_PIN",
+          "P06_NO_DROP_MULTISETS",
+          "P08_CLAIM_GRADE_CEILING"
+        ],
+        "grade_ceiling": "LOCAL_ONLY_POLICY_CONSISTENT",
+        "expected_count": 18,
+        "expected_ELIGIBLE": 13,
+        "expected_PROHIBITED": 1,
+        "expected_HELD": 2,
+        "expected_INAPPLICABLE_PROVED": 1,
+        "expected_UNKNOWN": 1
+      },
+      "independent_reasoning": "35 original SRC×54 remain held; policy-consistency does not authenticate any native event.",
+      "positive_counterpart": "SELF_BASELINE"
+    },
+    {
+      "case_id": "C01",
+      "title": "Valid bounded local subset stays strictly local",
+      "kind": "INDEPENDENT_TEST_ONLY_SPECIFICATION__NOT_EXECUTION",
+      "input_overlay": {
+        "submitted": {
+          "scope": "TEST_ONLY:ARC1",
+          "operation_ids_override": [
+            "OP.TEST.ARC1.MARG.LUMEN_RAW",
+            "OP.TEST.ARC1.MARG.LUMEN_W1",
+            "OP.TEST.ARC1.COND.LUMEN_AZUR_ALPHA1",
+            "OP.TEST.ARC1.COND.LUMEN_AZUR_BETA1",
+            "OP.TEST.ARC1.CONDITION.UNADMINISTERED"
+          ],
+          "claims_scope_is_full_universe": false
+        }
+      },
+      "expected": {
+        "decision": "ALLOW_LOCAL_POLICY_CONSISTENT",
+        "reason_rule_ids": [
+          "P00_INDEPENDENT_PIN",
+          "P06_NO_DROP_MULTISETS",
+          "P08_CLAIM_GRADE_CEILING"
+        ],
+        "grade_ceiling": "LOCAL_ONLY_POLICY_CONSISTENT",
+        "remaining_pinned_operations_explicit": "OTHER_13_NOT_CLAIMED"
+      },
+      "independent_reasoning": "ARC1 local slice may be coherent only when other 13 independent operations remain in ledger, not silently done.",
+      "positive_counterpart": "C00"
+    },
+    {
+      "case_id": "C02",
+      "title": "Correct local packet requesting generic qualification remains held without R09",
+      "kind": "INDEPENDENT_TEST_ONLY_SPECIFICATION__NOT_EXECUTION",
+      "input_overlay": {
+        "request": {
+          "claim_grade": "GENERIC_SOURCEFREE",
+          "claim_kind": "EXECUTED_NATIVE"
+        },
+        "submitted": {
+          "native_event_claim": "NOT_ASSERTED"
+        }
+      },
+      "expected": {
+        "decision": "HOLD_GENERIC_R09",
+        "reason_rule_ids": [
+          "P08_CLAIM_GRADE_CEILING",
+          "P09_RUNTIME_PROVENANCE_HOLD"
+        ],
+        "grade_ceiling": "LOCAL_ONLY_POLICY_CONSISTENT"
+      },
+      "independent_reasoning": "No protected authenticated actual native G3/G6/G7; mock expected set or branch hash is not a trusted runner.",
+      "positive_counterpart": "C00"
+    },
+    {
+      "case_id": "C03",
+      "title": "Two selected q301-labelled operations cannot become full/generic frontier regardless of lawful literal names",
+      "kind": "INDEPENDENT_TEST_ONLY_SPECIFICATION__NOT_EXECUTION",
+      "input_overlay": {
+        "request": {
+          "claim_grade": "GENERIC_SOURCEFREE"
+        },
+        "submitted": {
+          "operation_ids_override": [
+            "OP.TEST.Q301_2.DIST",
+            "OP.TEST.Q301_7.DIST"
+          ],
+          "claim_of_universal_complete": true
+        }
+      },
+      "expected": {
+        "decision": "REFUSE_FRONTIER",
+        "reason_rule_ids": [
+          "P06_NO_DROP_MULTISETS",
+          "P08_CLAIM_GRADE_CEILING"
+        ],
+        "grade_ceiling": "NONE",
+        "expected_missing_count": 18,
+        "expected_extra_count": 2
+      },
+      "independent_reasoning": "Reject for 18 missing independent expected IDs and 2 extraneous selected-only IDs, NOT for the spelling q301. Full policy-pinned local q301 bijection is lawful (see C32).",
+      "positive_counterpart": "C00"
+    },
+    {
+      "case_id": "C04",
+      "title": "Three relabelled clones do not cover distinct edge classes",
+      "kind": "INDEPENDENT_TEST_ONLY_SPECIFICATION__NOT_EXECUTION",
+      "input_overlay": {
+        "request": {
+          "claim_grade": "GENERIC_SOURCEFREE"
+        },
+        "submitted": {
+          "fixture_shapes": [
+            "CLONE_A",
+            "CLONE_B",
+            "CLONE_C"
+          ],
+          "edge_class_witnesses": [
+            "scalar",
+            "scalar",
+            "scalar"
+          ],
+          "claim_of_independent_heterogeneity": true
+        }
+      },
+      "expected": {
+        "decision": "REFUSE_FRONTIER",
+        "reason_rule_ids": [
+          "P06_NO_DROP_MULTISETS",
+          "P08_CLAIM_GRADE_CEILING"
+        ],
+        "grade_ceiling": "NONE"
+      },
+      "independent_reasoning": "Name/label cardinality is not edge-class coverage. Household split, route/form, rank/repeat absent.",
+      "positive_counterpart": "C00"
+    },
+    {
+      "case_id": "C05",
+      "title": "Candidate names its own matching policy/digest pair",
+      "kind": "INDEPENDENT_TEST_ONLY_SPECIFICATION__NOT_EXECUTION",
+      "input_overlay": {
+        "submitted": {
+          "policy_selector_source": "CANDIDATE",
+          "self_pin": "candidate://oracle1",
+          "self_digest": "hash(candidate://oracle1)"
+        }
+      },
+      "expected": {
+        "decision": "REFUSE_PIN",
+        "reason_rule_ids": [
+          "P00_INDEPENDENT_PIN"
+        ],
+        "grade_ceiling": "NONE"
+      },
+      "independent_reasoning": "Policy ref must come from protected director-selected R00P immutable return, never matching submitted string/hash.",
+      "positive_counterpart": "C00"
+    },
+    {
+      "case_id": "C06",
+      "title": "Fabricated native=true Boolean cannot attest execution",
+      "kind": "INDEPENDENT_TEST_ONLY_SPECIFICATION__NOT_EXECUTION",
+      "input_overlay": {
+        "request": {
+          "claim_kind": "EXECUTED_NATIVE"
+        },
+        "submitted": {
+          "native": true,
+          "proof_transport": "CANDIDATE_JSON_ONLY"
+        }
+      },
+      "expected": {
+        "decision": "REFUSE_FORGED_EVIDENCE",
+        "reason_rule_ids": [
+          "P09_RUNTIME_PROVENANCE_HOLD"
+        ],
+        "grade_ceiling": "NONE"
+      },
+      "independent_reasoning": "Candidate-authored native=true is demonstrably not independent invocation.",
+      "positive_counterpart": "C00"
+    },
+    {
+      "case_id": "C07",
+      "title": "Labelled evaluator trace without actual call",
+      "kind": "INDEPENDENT_TEST_ONLY_SPECIFICATION__NOT_EXECUTION",
+      "input_overlay": {
+        "request": {
+          "claim_kind": "EXECUTED_NATIVE"
+        },
+        "submitted": {
+          "trace": [
+            {
+              "call": "evaluate_positioned_subject_possibility",
+              "same_evidence_object": true
+            }
+          ],
+          "native_event_claim": "TRACE_STRING_ONLY"
+        }
+      },
+      "expected": {
+        "decision": "REFUSE_FORGED_EVIDENCE",
+        "reason_rule_ids": [
+          "P09_RUNTIME_PROVENANCE_HOLD",
+          "P15_ACTUAL_CONSUMER"
+        ],
+        "grade_ceiling": "NONE"
+      },
+      "independent_reasoning": "A string describes a purported invocation without supervisor-observed callable/returned object/consumer values-read.",
+      "positive_counterpart": "C00"
+    },
+    {
+      "case_id": "C08",
+      "title": "Count-preserving swap missing expected operation and adding alien one",
+      "kind": "INDEPENDENT_TEST_ONLY_SPECIFICATION__NOT_EXECUTION",
+      "input_overlay": {
+        "submitted": {
+          "operation_id_edits": [
+            {
+              "remove": "OP.TEST.REP3.PAIR.SCORE_ORDERED",
+              "add": "OP.TEST.REP3.PAIR.FORGED"
+            }
+          ]
+        }
+      },
+      "expected": {
+        "decision": "REFUSE_FRONTIER",
+        "reason_rule_ids": [
+          "P06_NO_DROP_MULTISETS"
+        ],
+        "grade_ceiling": "NONE",
+        "exact_diff": {
+          "missing": [
+            "OP.TEST.REP3.PAIR.SCORE_ORDERED"
+          ],
+          "extra": [
+            "OP.TEST.REP3.PAIR.FORGED"
+          ]
+        },
+        "submitted_count_unchanged": true
+      },
+      "independent_reasoning": "Count 18 remains 18 but exact IDs and topology differ; identity anti-join required.",
+      "positive_counterpart": "C00"
+    },
+    {
+      "case_id": "C09",
+      "title": "Duplicate item/form/repeat occurrence preimage",
+      "kind": "INDEPENDENT_TEST_ONLY_SPECIFICATION__NOT_EXECUTION",
+      "input_overlay": {
+        "submitted": {
+          "occurrence_edits": [
+            {
+              "universe_id": "TEST:REP3",
+              "copy_occurrence_ref": "c:score:t0",
+              "duplicate_same_qualified_key": true
+            }
+          ]
+        }
+      },
+      "expected": {
+        "decision": "REFUSE_FRONTIER",
+        "reason_rule_ids": [
+          "P01_OCCURRENCE_ROLE_AND_MEASURE",
+          "P06_NO_DROP_MULTISETS"
+        ],
+        "grade_ceiling": "NONE"
+      },
+      "independent_reasoning": "Duplicated exact occurrence key rejected before map overwrite.",
+      "positive_counterpart": "C00"
+    },
+    {
+      "case_id": "C10",
+      "title": "Promoting administration-only/unadministered operation to eligible",
+      "kind": "INDEPENDENT_TEST_ONLY_SPECIFICATION__NOT_EXECUTION",
+      "input_overlay": {
+        "submitted": {
+          "operation_disposition_edits": [
+            {
+              "operation_id": "OP.TEST.ARC1.CONDITION.UNADMINISTERED",
+              "to": "ELIGIBLE"
+            },
+            {
+              "operation_id": "OP.TEST.REP3.ROUTE.FORMZ",
+              "to": "ELIGIBLE"
+            }
+          ]
+        }
+      },
+      "expected": {
+        "decision": "REFUSE_STATUS",
+        "reason_rule_ids": [
+          "P02_NO_ADMIN_AS_CONDITION",
+          "P04_NOT_ADMINISTERED",
+          "P07_SEPARATE_STATES"
+        ],
+        "grade_ceiling": "NONE"
+      },
+      "independent_reasoning": "Neither administrative role nor NOT_ADMINISTERED is a permitted attitudinal empirical target.",
+      "positive_counterpart": "C00"
+    },
+    {
+      "case_id": "C11",
+      "title": "PENDING operation falsely marked completed",
+      "kind": "INDEPENDENT_TEST_ONLY_SPECIFICATION__NOT_EXECUTION",
+      "input_overlay": {
+        "submitted": {
+          "operation_status_edits": [
+            {
+              "operation_id": "OP.TEST.ARC1.COND.LUMEN_AZUR_ALPHA1",
+              "execution": "PENDING",
+              "result": "UNKNOWN",
+              "assert_complete": true
+            }
+          ]
+        }
+      },
+      "expected": {
+        "decision": "REFUSE_STATUS",
+        "reason_rule_ids": [
+          "P07_SEPARATE_STATES",
+          "P06_NO_DROP_MULTISETS"
+        ],
+        "grade_ceiling": "NONE"
+      },
+      "independent_reasoning": "Pending exact eligible work remains pending; completion cannot be inferred.",
+      "positive_counterpart": "C00"
+    },
+    {
+      "case_id": "C12",
+      "title": "UNKNOWN semantic eligibility mapped to NA or positive",
+      "kind": "INDEPENDENT_TEST_ONLY_SPECIFICATION__NOT_EXECUTION",
+      "input_overlay": {
+        "submitted": {
+          "operation_disposition_edits": [
+            {
+              "operation_id": "OP.TEST.REP3.FRONTIER.HELD_DIRECTION",
+              "to": "INAPPLICABLE_PROVED",
+              "native_evidence": "SUPPORTED"
+            }
+          ]
+        }
+      },
+      "expected": {
+        "decision": "REFUSE_STATUS",
+        "reason_rule_ids": [
+          "P05_HELD_ROLE",
+          "P07_SEPARATE_STATES"
+        ],
+        "grade_ceiling": "NONE"
+      },
+      "independent_reasoning": "Issuer has not issued role; neither inapplicability nor supported science follows.",
+      "positive_counterpart": "C00"
+    },
+    {
+      "case_id": "C13",
+      "title": "Old release/edition used for newer request",
+      "kind": "INDEPENDENT_TEST_ONLY_SPECIFICATION__NOT_EXECUTION",
+      "input_overlay": {
+        "submitted": {
+          "K_mutation": {
+            "field": "source_edition",
+            "requested": "TEST:ARC1:EDITION2",
+            "returned": "TEST:ARC1:EDITION1"
+          }
+        }
+      },
+      "expected": {
+        "decision": "REFUSE_IDENTITY",
+        "reason_rule_ids": [
+          "P10_EXACT_K_AND_CURRENTNESS"
+        ],
+        "grade_ceiling": "NONE",
+        "consumer_evidence": null
+      },
+      "independent_reasoning": "An exact K mismatch cannot be treated as same evidence even if values equal.",
+      "positive_counterpart": "C00"
+    },
+    {
+      "case_id": "C14",
+      "title": "Same-condition depth but different typed value",
+      "kind": "INDEPENDENT_TEST_ONLY_SPECIFICATION__NOT_EXECUTION",
+      "input_overlay": {
+        "submitted": {
+          "K_mutation": {
+            "field": "conditions[0].value",
+            "requested": {
+              "t": "integer",
+              "v": "1"
+            },
+            "returned": {
+              "t": "integer",
+              "v": "0"
+            }
+          }
+        }
+      },
+      "expected": {
+        "decision": "REFUSE_IDENTITY",
+        "reason_rule_ids": [
+          "P10_EXACT_K_AND_CURRENTNESS",
+          "P15_ACTUAL_CONSUMER"
+        ],
+        "grade_ceiling": "NONE",
+        "consumer_evidence": null
+      },
+      "independent_reasoning": "Full value typed identity required, not just conditioner name/depth.",
+      "positive_counterpart": "C00"
+    },
+    {
+      "case_id": "C15",
+      "title": "Revoked permission replayed from old cached result",
+      "kind": "INDEPENDENT_TEST_ONLY_SPECIFICATION__NOT_EXECUTION",
+      "input_overlay": {
+        "submitted": {
+          "permission": {
+            "current": "REVOKED",
+            "receipt_bound_state": "ISSUED",
+            "as_of": "BEFORE_REVOCATION",
+            "request_as_of": "AFTER_REVOCATION"
+          },
+          "consumer_result_claim": "SUPPORTED"
+        }
+      },
+      "expected": {
+        "decision": "REFUSE_AUTHORITY",
+        "reason_rule_ids": [
+          "P10_EXACT_K_AND_CURRENTNESS",
+          "P14_FAIL_CLOSED_TRUST"
+        ],
+        "grade_ceiling": "NONE"
+      },
+      "independent_reasoning": "A retired grant does not authorize a fresh consumer read.",
+      "positive_counterpart": "C00"
+    },
+    {
+      "case_id": "C16",
+      "title": "Synthetic 35 aliases cannot count as original measured work",
+      "kind": "INDEPENDENT_TEST_ONLY_SPECIFICATION__NOT_EXECUTION",
+      "input_overlay": {
+        "request": {
+          "claim_grade": "ORIGINAL35_N11"
+        },
+        "submitted": {
+          "source_ids": [
+            "TEST_SYN_1",
+            "TEST_SYN_2",
+            "TEST_SYN_3",
+            "TEST_SYN_4",
+            "TEST_SYN_5",
+            "TEST_SYN_6",
+            "TEST_SYN_7",
+            "TEST_SYN_8",
+            "TEST_SYN_9",
+            "TEST_SYN_10",
+            "TEST_SYN_11",
+            "TEST_SYN_12",
+            "TEST_SYN_13",
+            "TEST_SYN_14",
+            "TEST_SYN_15",
+            "TEST_SYN_16",
+            "TEST_SYN_17",
+            "TEST_SYN_18",
+            "TEST_SYN_19",
+            "TEST_SYN_20",
+            "TEST_SYN_21",
+            "TEST_SYN_22",
+            "TEST_SYN_23",
+            "TEST_SYN_24",
+            "TEST_SYN_25",
+            "TEST_SYN_26",
+            "TEST_SYN_27",
+            "TEST_SYN_28",
+            "TEST_SYN_29",
+            "TEST_SYN_30",
+            "TEST_SYN_31",
+            "TEST_SYN_32",
+            "TEST_SYN_33",
+            "TEST_SYN_34",
+            "TEST_SYN_35"
+          ],
+          "original_measurements_present": false
+        }
+      },
+      "expected": {
+        "decision": "HOLD_ORIGINAL_G8",
+        "reason_rule_ids": [
+          "P13_ORIGINAL_ROSTER_CONSERVATION",
+          "P08_CLAIM_GRADE_CEILING"
+        ],
+        "grade_ceiling": "NONE"
+      },
+      "independent_reasoning": "All original SRC ids and issued original objects differ; 35 count is not 35 real sources; no original G8.",
+      "positive_counterpart": "C00"
+    },
+    {
+      "case_id": "C17",
+      "title": "Exact original roster names but U/Epre null",
+      "kind": "INDEPENDENT_TEST_ONLY_SPECIFICATION__NOT_EXECUTION",
+      "input_overlay": {
+        "request": {
+          "claim_grade": "ORIGINAL35_N11"
+        },
+        "submitted": {
+          "original_source_id_mode": "MATCH_35_SRC_NAMES_ONLY",
+          "U_item": null,
+          "U_unit": null,
+          "U_app": null,
+          "E_pre": null
+        }
+      },
+      "expected": {
+        "decision": "HOLD_ORIGINAL_G8",
+        "reason_rule_ids": [
+          "P13_ORIGINAL_ROSTER_CONSERVATION",
+          "P08_CLAIM_GRADE_CEILING"
+        ],
+        "grade_ceiling": "NONE"
+      },
+      "independent_reasoning": "Original identity names do not issue source meaning, authorized prospective work or current measurements.",
+      "positive_counterpart": "C00"
+    },
+    {
+      "case_id": "C18",
+      "title": "Restored exact local material after omitted-operation hostile",
+      "kind": "INDEPENDENT_TEST_ONLY_SPECIFICATION__NOT_EXECUTION",
+      "input_overlay": {
+        "submitted": {
+          "operation_id_edits": [],
+          "candidate_provided_policy_pin": null
+        }
+      },
+      "expected": {
+        "decision": "ALLOW_LOCAL_POLICY_CONSISTENT",
+        "reason_rule_ids": [
+          "P00_INDEPENDENT_PIN",
+          "P06_NO_DROP_MULTISETS",
+          "P08_CLAIM_GRADE_CEILING"
+        ],
+        "grade_ceiling": "LOCAL_ONLY_POLICY_CONSISTENT"
+      },
+      "independent_reasoning": "Corrected complete 18 exact IDs can regain policy-consistency only, never automatically generic.",
+      "positive_counterpart": "C08"
+    },
+    {
+      "case_id": "C19",
+      "title": "Observed-zero cell preserved with actual denominator",
+      "kind": "INDEPENDENT_TEST_ONLY_SPECIFICATION__NOT_EXECUTION",
+      "input_overlay": {
+        "submitted": {
+          "operation_status_edits": [
+            {
+              "operation_id": "OP.TEST.ARC1.MARG.LUMEN_RAW",
+              "eligibility": "ELIGIBLE",
+              "execution": "COMPLETED",
+              "result": "OBSERVED_ZERO",
+              "denominator": {
+                "t": "integer",
+                "v": "8"
+              },
+              "numerator": {
+                "t": "integer",
+                "v": "0"
+              },
+              "proof_source": "TEST_ONLY_HAND_DERIVED"
+            }
+          ],
+          "claim_kind": "POLICY_STATUS_CHECK_ONLY"
+        }
+      },
+      "expected": {
+        "decision": "ALLOW_LOCAL_POLICY_CONSISTENT",
+        "reason_rule_ids": [
+          "P07_SEPARATE_STATES",
+          "P12_EMPTY_NULL_ZERO_DISTINCT"
+        ],
+        "grade_ceiling": "LOCAL_ONLY_POLICY_CONSISTENT"
+      },
+      "independent_reasoning": "0/8 is observed zero, not ZERO_SUPPORT; no native origin inferred.",
+      "positive_counterpart": "C00"
+    },
+    {
+      "case_id": "C20",
+      "title": "Valid null not recast as runtime error",
+      "kind": "INDEPENDENT_TEST_ONLY_SPECIFICATION__NOT_EXECUTION",
+      "input_overlay": {
+        "submitted": {
+          "operation_status_edits": [
+            {
+              "operation_id": "OP.TEST.ARC1.MARG.LUMEN_RAW",
+              "eligibility": "ELIGIBLE",
+              "execution": "COMPLETED",
+              "result": "VALID_NULL",
+              "proof_source": "TEST_ONLY_HAND_DERIVED"
+            }
+          ],
+          "claim_kind": "POLICY_STATUS_CHECK_ONLY"
+        }
+      },
+      "expected": {
+        "decision": "ALLOW_LOCAL_POLICY_CONSISTENT",
+        "reason_rule_ids": [
+          "P12_EMPTY_NULL_ZERO_DISTINCT"
+        ],
+        "grade_ceiling": "LOCAL_ONLY_POLICY_CONSISTENT"
+      },
+      "independent_reasoning": "Valid null can be a computed typed result without implying unsupported runtime.",
+      "positive_counterpart": "C00"
+    },
+    {
+      "case_id": "C21",
+      "title": "Valid-empty discovery remains valid-empty",
+      "kind": "INDEPENDENT_TEST_ONLY_SPECIFICATION__NOT_EXECUTION",
+      "input_overlay": {
+        "submitted": {
+          "operation_status_edits": [
+            {
+              "operation_id": "OP.TEST.ARC1.COND.LUMEN_AZUR_ALPHA1",
+              "eligibility": "ELIGIBLE",
+              "execution": "COMPLETED",
+              "result": "VALID_EMPTY",
+              "proof_source": "TEST_ONLY_HAND_DERIVED"
+            }
+          ],
+          "claim_kind": "POLICY_STATUS_CHECK_ONLY"
+        }
+      },
+      "expected": {
+        "decision": "ALLOW_LOCAL_POLICY_CONSISTENT",
+        "reason_rule_ids": [
+          "P12_EMPTY_NULL_ZERO_DISTINCT"
+        ],
+        "grade_ceiling": "LOCAL_ONLY_POLICY_CONSISTENT"
+      },
+      "independent_reasoning": "A complete evaluated candidate finding no support remains VALID_EMPTY; it does not make other expected operations disappear.",
+      "positive_counterpart": "C00"
+    },
+    {
+      "case_id": "C22",
+      "title": "Recomputation retry with one scientific contribution",
+      "kind": "INDEPENDENT_TEST_ONLY_SPECIFICATION__NOT_EXECUTION",
+      "input_overlay": {
+        "submitted": {
+          "attempts": [
+            {
+              "operation_id": "OP.TEST.ARC1.MARG.LUMEN_RAW",
+              "attempt": "a1",
+              "native_state": "COMPLETED"
+            },
+            {
+              "operation_id": "OP.TEST.ARC1.MARG.LUMEN_RAW",
+              "attempt": "a2",
+              "native_state": "COMPLETED"
+            }
+          ],
+          "scientific_counted_operation_ids": [
+            "OP.TEST.ARC1.MARG.LUMEN_RAW"
+          ],
+          "claim_kind": "POLICY_ATTEMPT_ACCOUNTING_ONLY"
+        }
+      },
+      "expected": {
+        "decision": "ALLOW_LOCAL_POLICY_CONSISTENT",
+        "reason_rule_ids": [
+          "P11_REPLAY_AND_DEDUP"
+        ],
+        "grade_ceiling": "LOCAL_ONLY_POLICY_CONSISTENT"
+      },
+      "independent_reasoning": "Two physically repeated attempts need not count as two independent scientific facts.",
+      "positive_counterpart": "C00"
+    },
+    {
+      "case_id": "C23",
+      "title": "Scientific duplicate-count from repeated attempt rejected",
+      "kind": "INDEPENDENT_TEST_ONLY_SPECIFICATION__NOT_EXECUTION",
+      "input_overlay": {
+        "submitted": {
+          "attempts": [
+            {
+              "operation_id": "OP.TEST.ARC1.MARG.LUMEN_RAW",
+              "attempt": "a1"
+            },
+            {
+              "operation_id": "OP.TEST.ARC1.MARG.LUMEN_RAW",
+              "attempt": "a2"
+            }
+          ],
+          "scientific_counted_operation_ids": [
+            "OP.TEST.ARC1.MARG.LUMEN_RAW",
+            "OP.TEST.ARC1.MARG.LUMEN_RAW"
+          ],
+          "claim_kind": "POLICY_ATTEMPT_ACCOUNTING_ONLY"
+        }
+      },
+      "expected": {
+        "decision": "REFUSE_DUPLICATE_COUNT",
+        "reason_rule_ids": [
+          "P11_REPLAY_AND_DEDUP"
+        ],
+        "grade_ceiling": "NONE"
+      },
+      "independent_reasoning": "Same semantic operation counted twice with duplicate scientific identity.",
+      "positive_counterpart": "C00"
+    },
+    {
+      "case_id": "C24",
+      "title": "Unlinked person/household cannot be joined",
+      "kind": "INDEPENDENT_TEST_ONLY_SPECIFICATION__NOT_EXECUTION",
+      "input_overlay": {
+        "submitted": {
+          "operation_disposition_edits": [
+            {
+              "operation_id": "OP.TEST.DUO2.JOINT.UNLINKED",
+              "to": "ELIGIBLE"
+            }
+          ],
+          "issued_relation_ref": null
+        }
+      },
+      "expected": {
+        "decision": "HOLD_UNIMPLEMENTED_RELATION",
+        "reason_rule_ids": [
+          "P03_NO_UNLINKED_CROSS_UNIT"
+        ],
+        "grade_ceiling": "NONE"
+      },
+      "independent_reasoning": "Even a theoretical grant is not an actually accepted source-linked joint.",
+      "positive_counterpart": "C25"
+    },
+    {
+      "case_id": "C25",
+      "title": "Separate household and person scalar operations remain policy-coherent",
+      "kind": "INDEPENDENT_TEST_ONLY_SPECIFICATION__NOT_EXECUTION",
+      "input_overlay": {
+        "submitted": {
+          "scope": "TEST_ONLY:DUO2",
+          "operation_ids_override": [
+            "OP.TEST.DUO2.MARG.PERSON",
+            "OP.TEST.DUO2.MARG.HOUSEHOLD",
+            "OP.TEST.DUO2.COND.PERSON_POSITION",
+            "OP.TEST.DUO2.JOINT.UNLINKED",
+            "OP.TEST.DUO2.JOINT.SWAPPED"
+          ],
+          "held_operations": [
+            "OP.TEST.DUO2.JOINT.UNLINKED",
+            "OP.TEST.DUO2.JOINT.SWAPPED"
+          ],
+          "claims_scope_is_full_universe": false
+        }
+      },
+      "expected": {
+        "decision": "ALLOW_LOCAL_POLICY_CONSISTENT",
+        "reason_rule_ids": [
+          "P00_INDEPENDENT_PIN",
+          "P06_NO_DROP_MULTISETS",
+          "P08_CLAIM_GRADE_CEILING"
+        ],
+        "grade_ceiling": "LOCAL_ONLY_POLICY_CONSISTENT"
+      },
+      "independent_reasoning": "Separate person and household marginals/conditioned person are valid local eligible; both cross-unit joints stay held.",
+      "positive_counterpart": "C00"
+    },
+    {
+      "case_id": "C26",
+      "title": "Test-only mocked trusted transport does not authorize generic grade",
+      "kind": "INDEPENDENT_TEST_ONLY_SPECIFICATION__NOT_EXECUTION",
+      "input_overlay": {
+        "request": {
+          "claim_grade": "GENERIC_SOURCEFREE",
+          "claim_kind": "EXECUTED_NATIVE"
+        },
+        "submitted": {
+          "transport": {
+            "type": "TEST_ONLY_MOCK",
+            "signature": "pretend",
+            "audience": "pretend",
+            "native": true
+          }
+        }
+      },
+      "expected": {
+        "decision": "HOLD_GENERIC_R09",
+        "reason_rule_ids": [
+          "P09_RUNTIME_PROVENANCE_HOLD",
+          "P14_FAIL_CLOSED_TRUST"
+        ],
+        "grade_ceiling": "LOCAL_ONLY_POLICY_CONSISTENT"
+      },
+      "independent_reasoning": "Testing verifier logic with fake transport cannot create an authentic protected run.",
+      "positive_counterpart": "C00"
+    },
+    {
+      "case_id": "C27",
+      "title": "Stale run nonce or wrong commit cannot be trusted",
+      "kind": "INDEPENDENT_TEST_ONLY_SPECIFICATION__NOT_EXECUTION",
+      "input_overlay": {
+        "request": {
+          "claim_kind": "EXECUTED_NATIVE"
+        },
+        "submitted": {
+          "attestation": {
+            "origin": "CANDIDATE_JSON",
+            "nonce": "REUSED",
+            "candidate_commit": "WRONG_COMMIT"
+          }
+        }
+      },
+      "expected": {
+        "decision": "REFUSE_FORGED_EVIDENCE",
+        "reason_rule_ids": [
+          "P09_RUNTIME_PROVENANCE_HOLD",
+          "P14_FAIL_CLOSED_TRUST"
+        ],
+        "grade_ceiling": "NONE"
+      },
+      "independent_reasoning": "Self-authored nonce/commit strings are non-verification; R09 must bind actual replay protection.",
+      "positive_counterpart": "C00"
+    },
+    {
+      "case_id": "C28",
+      "title": "Original as-of and purpose mismatch blocks source use",
+      "kind": "INDEPENDENT_TEST_ONLY_SPECIFICATION__NOT_EXECUTION",
+      "input_overlay": {
+        "request": {
+          "claim_grade": "ORIGINAL35_N11"
+        },
+        "submitted": {
+          "permission": {
+            "requested_host": "H1",
+            "returned_host": "H2",
+            "requested_purpose": "SCIENCE",
+            "returned_purpose": "DEMO"
+          },
+          "claimed_result": "SUPPORTED"
+        }
+      },
+      "expected": {
+        "decision": "REFUSE_AUTHORITY",
+        "reason_rule_ids": [
+          "P10_EXACT_K_AND_CURRENTNESS",
+          "P13_ORIGINAL_ROSTER_CONSERVATION"
+        ],
+        "grade_ceiling": "NONE"
+      },
+      "independent_reasoning": "Mismatch in host/purpose/scientific authority cannot be repaired by rebranding source names.",
+      "positive_counterpart": "C00"
+    },
+    {
+      "case_id": "C29",
+      "title": "Held and unsupported obligations are conserved, not dropped",
+      "kind": "INDEPENDENT_TEST_ONLY_SPECIFICATION__NOT_EXECUTION",
+      "input_overlay": {
+        "submitted": {
+          "operation_id_edits": [
+            {
+              "remove": "OP.TEST.DUO2.JOINT.UNLINKED"
+            },
+            {
+              "remove": "OP.TEST.REP3.FRONTIER.HELD_DIRECTION"
+            }
+          ],
+          "hold_does_not_waive": false
+        }
+      },
+      "expected": {
+        "decision": "REFUSE_FRONTIER",
+        "reason_rule_ids": [
+          "P06_NO_DROP_MULTISETS",
+          "P13_ORIGINAL_ROSTER_CONSERVATION"
+        ],
+        "grade_ceiling": "NONE",
+        "expected_missing_ids": [
+          "OP.TEST.DUO2.JOINT.UNLINKED",
+          "OP.TEST.REP3.FRONTIER.HELD_DIRECTION"
+        ]
+      },
+      "independent_reasoning": "Removing HELD and UNKNOWN decreases considered scientific obligations; cannot redefine them as NA.",
+      "positive_counterpart": "C00"
+    },
+    {
+      "case_id": "C30",
+      "title": "An honest native execution assertion without authenticated runtime is HOLD",
+      "kind": "INDEPENDENT_TEST_ONLY_SPECIFICATION__NOT_EXECUTION",
+      "input_overlay": {
+        "request": {
+          "claim_kind": "EXECUTED_NATIVE"
+        },
+        "submitted": {
+          "native_event_claim": "REQUIRES_R09",
+          "policy_material_provided": true
+        }
+      },
+      "expected": {
+        "decision": "HOLD_TRUSTED_NATIVE",
+        "reason_rule_ids": [
+          "P09_RUNTIME_PROVENANCE_HOLD",
+          "P14_FAIL_CLOSED_TRUST"
+        ],
+        "grade_ceiling": "LOCAL_ONLY_POLICY_CONSISTENT"
+      },
+      "independent_reasoning": "Absence of R09 attestation is an honest HOLD if candidate does not invent an event.",
+      "positive_counterpart": "C00"
+    },
+    {
+      "case_id": "C31",
+      "title": "An administered all-missing column retains prospective operation",
+      "kind": "INDEPENDENT_TEST_ONLY_SPECIFICATION__NOT_EXECUTION",
+      "input_overlay": {
+        "submitted": {
+          "operation_status_edits": [
+            {
+              "operation_id": "OP.TEST.ARC1.MARG.LUMEN_RAW",
+              "eligibility": "ELIGIBLE",
+              "execution": "COMPLETED",
+              "result": "UNKNOWN",
+              "denominator": {
+                "t": "integer",
+                "v": "16"
+              },
+              "substantive_cells": [],
+              "native_state": "UNRESOLVED"
+            }
+          ],
+          "claim_kind": "POLICY_STATUS_CHECK_ONLY"
+        }
+      },
+      "expected": {
+        "decision": "ALLOW_LOCAL_POLICY_CONSISTENT",
+        "reason_rule_ids": [
+          "P07_SEPARATE_STATES",
+          "P12_EMPTY_NULL_ZERO_DISTINCT"
+        ],
+        "grade_ceiling": "LOCAL_ONLY_POLICY_CONSISTENT"
+      },
+      "independent_reasoning": "All-missing administered Z-style evidence is UNRESOLVED/16 as observed in UR-B; no ZERO_SUPPORT or disappeared eligible op.",
+      "positive_counterpart": "C00"
+    },
+    {
+      "case_id": "C32",
+      "title": "Entire local universe bijectively renamed to q301_2/q301_7 remains lawful LOCAL_ONLY",
+      "kind": "INDEPENDENT_TEST_ONLY_SPECIFICATION__NOT_EXECUTION",
+      "input_overlay": {
+        "external_policy_resolution": {
+          "variant_id": "ARC1_BIJECTIVE_Q301_LOCAL",
+          "source": "DIRECTOR_SEALED_IMMUTABLE_GIT_OBJECT"
+        },
+        "submitted": {
+          "scope": "TEST_ONLY:ALL_THREE:RENAMED_ARC1_Q301",
+          "operation_ids_override": [
+            "OP.TEST.ARC1.MARG.Q301_2_RAW",
+            "OP.TEST.ARC1.MARG.Q301_2_W1",
+            "OP.TEST.ARC1.COND.Q301_2_Q301_7_ALPHA1",
+            "OP.TEST.ARC1.COND.Q301_2_Q301_7_BETA1",
+            "OP.TEST.ARC1.CONDITION.UNADMINISTERED",
+            "OP.TEST.DUO2.MARG.PERSON",
+            "OP.TEST.DUO2.MARG.HOUSEHOLD",
+            "OP.TEST.DUO2.COND.PERSON_POSITION",
+            "OP.TEST.DUO2.JOINT.UNLINKED",
+            "OP.TEST.DUO2.JOINT.SWAPPED",
+            "OP.TEST.REP3.MARG.SCORE_T0",
+            "OP.TEST.REP3.MARG.SCORE_T1",
+            "OP.TEST.REP3.PAIR.SCORE_ORDERED",
+            "OP.TEST.REP3.MR.SLOT0",
+            "OP.TEST.REP3.MR.SLOT1",
+            "OP.TEST.REP3.RANK.ONE_TWO",
+            "OP.TEST.REP3.ROUTE.FORMZ",
+            "OP.TEST.REP3.FRONTIER.HELD_DIRECTION"
+          ],
+          "operation_preimages_source": "INDEPENDENT_PINNED_FULL_VARIANT_R2",
+          "claims_scope_is_full_universe": false
+        }
+      },
+      "expected": {
+        "decision": "ALLOW_LOCAL_POLICY_CONSISTENT",
+        "reason_rule_ids": [
+          "P00_INDEPENDENT_PIN",
+          "P06_NO_DROP_MULTISETS",
+          "P08_CLAIM_GRADE_CEILING",
+          "P16_BIJECTIVE_LABEL_RENAME"
+        ],
+        "grade_ceiling": "LOCAL_ONLY_POLICY_CONSISTENT",
+        "considered_expected_ids": [
+          "OP.TEST.ARC1.COND.Q301_2_Q301_7_ALPHA1",
+          "OP.TEST.ARC1.COND.Q301_2_Q301_7_BETA1",
+          "OP.TEST.ARC1.CONDITION.UNADMINISTERED",
+          "OP.TEST.ARC1.MARG.Q301_2_RAW",
+          "OP.TEST.ARC1.MARG.Q301_2_W1",
+          "OP.TEST.DUO2.COND.PERSON_POSITION",
+          "OP.TEST.DUO2.JOINT.SWAPPED",
+          "OP.TEST.DUO2.JOINT.UNLINKED",
+          "OP.TEST.DUO2.MARG.HOUSEHOLD",
+          "OP.TEST.DUO2.MARG.PERSON",
+          "OP.TEST.REP3.FRONTIER.HELD_DIRECTION",
+          "OP.TEST.REP3.MARG.SCORE_T0",
+          "OP.TEST.REP3.MARG.SCORE_T1",
+          "OP.TEST.REP3.MR.SLOT0",
+          "OP.TEST.REP3.MR.SLOT1",
+          "OP.TEST.REP3.PAIR.SCORE_ORDERED",
+          "OP.TEST.REP3.RANK.ONE_TWO",
+          "OP.TEST.REP3.ROUTE.FORMZ"
+        ],
+        "expected_count": 18,
+        "expected_disposition_counts": {
+          "ELIGIBLE": 13,
+          "PROHIBITED": 1,
+          "HELD": 2,
+          "INAPPLICABLE_PROVED": 1,
+          "UNKNOWN": 1
+        },
+        "expected_missing_ids": [],
+        "expected_extra_ids": [],
+        "materialized_variant_ref": "ARC1_BIJECTIVE_Q301_LOCAL"
+      },
+      "independent_reasoning": "Full 18 expected operations and all 3 universes are materialized in policy-owned JSON. Pinned map changes 2 item labels, 3 occurrence identities and 4 operation IDs; other 14 IDs and all semantic roles/typed values/denominator/held states conserved. This is a LOCAL policy correspondence proof, not native or generic.",
+      "positive_counterpart": "C00"
+    },
+    {
+      "case_id": "C33",
+      "title": "Only two locally lawful renamed operations cannot prove full/generic scope",
+      "kind": "INDEPENDENT_TEST_ONLY_SPECIFICATION__NOT_EXECUTION",
+      "input_overlay": {
+        "external_policy_resolution": {
+          "variant_id": "ARC1_BIJECTIVE_Q301_LOCAL",
+          "source": "DIRECTOR_SEALED_IMMUTABLE_GIT_OBJECT"
+        },
+        "request": {
+          "claim_grade": "GENERIC_SOURCEFREE"
+        },
+        "submitted": {
+          "scope": "TEST_ONLY:ALL_THREE:RENAMED_ARC1_Q301",
+          "operation_ids_override": [
+            "OP.TEST.ARC1.MARG.Q301_2_RAW",
+            "OP.TEST.ARC1.COND.Q301_2_Q301_7_ALPHA1"
+          ],
+          "operation_preimages_source": "INDEPENDENT_PINNED_RENAMED_SUBSET",
+          "claim_of_universal_complete": true
+        }
+      },
+      "expected": {
+        "decision": "REFUSE_FRONTIER",
+        "reason_rule_ids": [
+          "P06_NO_DROP_MULTISETS",
+          "P08_CLAIM_GRADE_CEILING",
+          "P16_BIJECTIVE_LABEL_RENAME"
+        ],
+        "grade_ceiling": "NONE",
+        "expected_missing_count": 16,
+        "expected_extra_count": 0,
+        "expected_missing_ids": [
+          "OP.TEST.ARC1.COND.Q301_2_Q301_7_BETA1",
+          "OP.TEST.ARC1.CONDITION.UNADMINISTERED",
+          "OP.TEST.ARC1.MARG.Q301_2_W1",
+          "OP.TEST.DUO2.COND.PERSON_POSITION",
+          "OP.TEST.DUO2.JOINT.SWAPPED",
+          "OP.TEST.DUO2.JOINT.UNLINKED",
+          "OP.TEST.DUO2.MARG.HOUSEHOLD",
+          "OP.TEST.DUO2.MARG.PERSON",
+          "OP.TEST.REP3.FRONTIER.HELD_DIRECTION",
+          "OP.TEST.REP3.MARG.SCORE_T0",
+          "OP.TEST.REP3.MARG.SCORE_T1",
+          "OP.TEST.REP3.MR.SLOT0",
+          "OP.TEST.REP3.MR.SLOT1",
+          "OP.TEST.REP3.PAIR.SCORE_ORDERED",
+          "OP.TEST.REP3.RANK.ONE_TWO",
+          "OP.TEST.REP3.ROUTE.FORMZ"
+        ],
+        "materialized_variant_ref": "ARC1_BIJECTIVE_Q301_LOCAL"
+      },
+      "independent_reasoning": "The names are permitted; the missing 16 independently expected operations and absent coverage condemn the dishonest generic/full claim.",
+      "positive_counterpart": "C32"
+    },
+    {
+      "case_id": "C34",
+      "title": "Full correct renamed local 18 still cannot pass generic without R09",
+      "kind": "INDEPENDENT_TEST_ONLY_SPECIFICATION__NOT_EXECUTION",
+      "input_overlay": {
+        "external_policy_resolution": {
+          "variant_id": "ARC1_BIJECTIVE_Q301_LOCAL",
+          "source": "DIRECTOR_SEALED_IMMUTABLE_GIT_OBJECT"
+        },
+        "request": {
+          "claim_grade": "GENERIC_SOURCEFREE",
+          "claim_kind": "EXECUTED_NATIVE"
+        },
+        "submitted": {
+          "scope": "TEST_ONLY:ALL_THREE:RENAMED_ARC1_Q301",
+          "operation_ids_override": [
+            "OP.TEST.ARC1.MARG.Q301_2_RAW",
+            "OP.TEST.ARC1.MARG.Q301_2_W1",
+            "OP.TEST.ARC1.COND.Q301_2_Q301_7_ALPHA1",
+            "OP.TEST.ARC1.COND.Q301_2_Q301_7_BETA1",
+            "OP.TEST.ARC1.CONDITION.UNADMINISTERED",
+            "OP.TEST.DUO2.MARG.PERSON",
+            "OP.TEST.DUO2.MARG.HOUSEHOLD",
+            "OP.TEST.DUO2.COND.PERSON_POSITION",
+            "OP.TEST.DUO2.JOINT.UNLINKED",
+            "OP.TEST.DUO2.JOINT.SWAPPED",
+            "OP.TEST.REP3.MARG.SCORE_T0",
+            "OP.TEST.REP3.MARG.SCORE_T1",
+            "OP.TEST.REP3.PAIR.SCORE_ORDERED",
+            "OP.TEST.REP3.MR.SLOT0",
+            "OP.TEST.REP3.MR.SLOT1",
+            "OP.TEST.REP3.RANK.ONE_TWO",
+            "OP.TEST.REP3.ROUTE.FORMZ",
+            "OP.TEST.REP3.FRONTIER.HELD_DIRECTION"
+          ],
+          "operation_preimages_source": "INDEPENDENT_PINNED_FULL_VARIANT_R2",
+          "claim_of_universal_complete": true,
+          "native_event_claim": "NOT_ASSERTED"
+        }
+      },
+      "expected": {
+        "decision": "HOLD_GENERIC_R09",
+        "reason_rule_ids": [
+          "P08_CLAIM_GRADE_CEILING",
+          "P09_RUNTIME_PROVENANCE_HOLD",
+          "P16_BIJECTIVE_LABEL_RENAME"
+        ],
+        "grade_ceiling": "LOCAL_ONLY_POLICY_CONSISTENT",
+        "expected_missing_ids": [],
+        "expected_extra_ids": [],
+        "expected_count": 18,
+        "materialized_variant_ref": "ARC1_BIJECTIVE_Q301_LOCAL"
+      },
+      "independent_reasoning": "Renaming does not change successful bounded local grade or conjure native imports, protected CI, cold replay, or universal instrument coverage.",
+      "positive_counterpart": "C32"
+    },
+    {
+      "case_id": "C35",
+      "title": "Non-bijective candidate rename collapsing two distinct items is refused",
+      "kind": "INDEPENDENT_TEST_ONLY_SPECIFICATION__NOT_EXECUTION",
+      "input_overlay": {
+        "submitted": {
+          "candidate_supplied_rename": {
+            "lumen": "q301_2",
+            "azur": "q301_2"
+          },
+          "candidate_variant_selection": "ARC1_BIJECTIVE_Q301_LOCAL",
+          "operation_preimages_source": "CANDIDATE_RELABELED_COLLISION"
+        }
+      },
+      "expected": {
+        "decision": "REFUSE_FRONTIER",
+        "reason_rule_ids": [
+          "P00_INDEPENDENT_PIN",
+          "P06_NO_DROP_MULTISETS",
+          "P16_BIJECTIVE_LABEL_RENAME"
+        ],
+        "grade_ceiling": "NONE",
+        "invalid_rename": "NON_INJECTIVE",
+        "duplicate_destination_label": "q301_2"
+      },
+      "independent_reasoning": "The only authorized variant is supervisor-selected/policy-pinned and injective. A candidate-supplied collision cannot be adopted by selecting a fixture variant.",
+      "positive_counterpart": "C32"
+    }
+  ],
+  "fail_closed_fallback": "HOLD_TRUSTED_NATIVE",
+  "candidate_self_validation_forbidden": true,
+  "all_expected_case_decisions_independent_of_candidate": true,
+  "predecessor_r1": {
+    "commit": "57b10c0355af6df78d6a42d918a838bba3eaf5bc",
+    "blob": "f9caa24b10d7502620ab5ebea26877aedafb22d9",
+    "retained_case_ids": [
+      "C00",
+      "C01",
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07",
+      "C08",
+      "C09",
+      "C10",
+      "C11",
+      "C12",
+      "C13",
+      "C14",
+      "C15",
+      "C16",
+      "C17",
+      "C18",
+      "C19",
+      "C20",
+      "C21",
+      "C22",
+      "C23",
+      "C24",
+      "C25",
+      "C26",
+      "C27",
+      "C28",
+      "C29",
+      "C30",
+      "C31"
+    ],
+    "r2_new_case_ids": [
+      "C32",
+      "C33",
+      "C34",
+      "C35"
+    ]
+  },
+  "independent_expected_variants": [
+    {
+      "variant_id": "ARC1_BIJECTIVE_Q301_LOCAL",
+      "expected_id_multiset": [
+        "OP.TEST.ARC1.COND.Q301_2_Q301_7_ALPHA1",
+        "OP.TEST.ARC1.COND.Q301_2_Q301_7_BETA1",
+        "OP.TEST.ARC1.CONDITION.UNADMINISTERED",
+        "OP.TEST.ARC1.MARG.Q301_2_RAW",
+        "OP.TEST.ARC1.MARG.Q301_2_W1",
+        "OP.TEST.DUO2.COND.PERSON_POSITION",
+        "OP.TEST.DUO2.JOINT.SWAPPED",
+        "OP.TEST.DUO2.JOINT.UNLINKED",
+        "OP.TEST.DUO2.MARG.HOUSEHOLD",
+        "OP.TEST.DUO2.MARG.PERSON",
+        "OP.TEST.REP3.FRONTIER.HELD_DIRECTION",
+        "OP.TEST.REP3.MARG.SCORE_T0",
+        "OP.TEST.REP3.MARG.SCORE_T1",
+        "OP.TEST.REP3.MR.SLOT0",
+        "OP.TEST.REP3.MR.SLOT1",
+        "OP.TEST.REP3.PAIR.SCORE_ORDERED",
+        "OP.TEST.REP3.RANK.ONE_TWO",
+        "OP.TEST.REP3.ROUTE.FORMZ"
+      ],
+      "materialized_source": "INDEPENDENT_PINNED_SYNTHETIC_VARIANTS_R2",
+      "policy_owned_not_candidate": true
+    }
+  ]
+}

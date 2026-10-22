@@ -1,0 +1,107 @@
+{
+  "schema": "R56_R00P_INDEPENDENT_TEST_ONLY_FREEZE@1.1.0",
+  "freeze_id": "R56-R00P-TESTONLY-INDEPENDENT-EXPECTED-OPS-FREEZE-R2",
+  "contract_id": "R56-R00P-CLAIM-TRANSITION-GATE@1.1.0",
+  "status": "R00P_AUTHOR_FROZEN_R2_CONTENT__COMPETENT_HQ_ADMISSION_AND_FINAL_COMMISSION_SEAL_PENDING",
+  "purpose": "One bounded correction of anti-canary literal-label ambiguity and household/person positive-link evidence overclaim",
+  "branch": "agent/browser-pyat-r56-r00-independent-policy-r1",
+  "predecessor": {
+    "return_commit": "57b10c0355af6df78d6a42d918a838bba3eaf5bc",
+    "predecessor_policy_root": "CROSS_HQ_CONTROL_ROOM/universal_execution_policy/r56_sourcefree_v1/",
+    "predecessor_freeze_blob": "f529642cd5b715e77ca1c0d071ec1c7866e1afdc",
+    "preserve_v1": "ALL_5_POLICY_PLUS_3_RETURN_ARTIFACTS_IMMUTABLE_NO_OVERWRITE",
+    "predecessor_contract_id": "R56-R00P-CLAIM-TRANSITION-GATE@1.0.0"
+  },
+  "successor_policy_root": "CROSS_HQ_CONTROL_ROOM/universal_execution_policy/r56_sourcefree_v1/revisions/r2/",
+  "successor_content_blobs": [
+    {
+      "path": "CROSS_HQ_CONTROL_ROOM/universal_execution_policy/r56_sourcefree_v1/revisions/r2/CONTRACT.md",
+      "git_blob_sha1": "01ccb46475ba09fe868a59c8810a12de1190dc22",
+      "kind": "GIT_BLOB_SHA1_NOT_SHA256"
+    },
+    {
+      "path": "CROSS_HQ_CONTROL_ROOM/universal_execution_policy/r56_sourcefree_v1/revisions/r2/policy.json",
+      "git_blob_sha1": "5f5d0253cfc8e1eef2e452e54bae631c23da378f",
+      "kind": "GIT_BLOB_SHA1_NOT_SHA256"
+    },
+    {
+      "path": "CROSS_HQ_CONTROL_ROOM/universal_execution_policy/r56_sourcefree_v1/revisions/r2/synthetic_universes.json",
+      "git_blob_sha1": "66fdf81f3cb440c36df4cd03dcff8613d1b4928d",
+      "kind": "GIT_BLOB_SHA1_NOT_SHA256"
+    },
+    {
+      "path": "CROSS_HQ_CONTROL_ROOM/universal_execution_policy/r56_sourcefree_v1/revisions/r2/decision_cases.json",
+      "git_blob_sha1": "5608e9c3435042e92d846644aad5404b47d6b2f0",
+      "kind": "GIT_BLOB_SHA1_NOT_SHA256"
+    }
+  ],
+  "author_content_approval": {
+    "owner": "SAME_R00P_BROWSER_CONTENT_AUTHOR",
+    "grain": "TEST_ONLY_POLICY_CONTENT_FREEZE_ONLY",
+    "status": "AUTHOR_CONTENT_APPROVED_PUBLISH_PENDING_REMOTE_CUSTODY",
+    "authority_lacks": [
+      "COMPETENT_HQ_POLICY_ADMISSION",
+      "FINAL_HQ_APPOINTMENT",
+      "FINAL_TECHNICAL_COMMISSION_SEAL",
+      "R00E_EXECUTION_OR_DISPATCH",
+      "R00V_INDEPENDENT_NATIVE_REVIEW",
+      "R09_PROTECTED_RUNNER",
+      "ORIGINAL_35_SCIENCE",
+      "N11_N12"
+    ]
+  },
+  "corrected_invariants": {
+    "label_rule": "NO_LITERAL_LABEL_BAN__SCOPE_COVERAGE_AND_EVIDENCE_GRADE_DETERMINE_PROMOTION",
+    "policy_pinned_variant": "ARC1_BIJECTIVE_Q301_LOCAL",
+    "materialized_renamed_full_operations": 18,
+    "base_operations": 18,
+    "base_eligibility": {
+      "ELIGIBLE": 13,
+      "PROHIBITED": 1,
+      "INAPPLICABLE_PROVED": 1,
+      "HELD": 2,
+      "UNKNOWN": 1
+    },
+    "cases_total": 36,
+    "cases_preserved": [
+      "C00",
+      "C31"
+    ],
+    "cases_added": [
+      "C32",
+      "C33",
+      "C34",
+      "C35"
+    ],
+    "positive_link": "HOUSEHOLD_PERSON_LAWFUL_LINK_DEFERRED_NOT_EXERCISED",
+    "preserved_distinct_unit_and_unlinked_joint": "TEST_ONLY_HELD_VALID",
+    "original_wave_count": 35,
+    "per_wave_source": 30,
+    "per_wave_empirical": 16,
+    "per_wave_F": 8,
+    "original_cells": 1890,
+    "global_F": [
+      "F6",
+      "F7",
+      "F8"
+    ],
+    "original_U_item": null,
+    "original_U_unit": null,
+    "original_U_app": null,
+    "original_E_pre": null
+  },
+  "review_and_downstream": {
+    "director": "VERIFY_R2_CUSTODY_AND_SEMANTIC_CORRECTION_ONLY",
+    "HQ": "COMPETENT_R56_05_06_APPOINTMENT_ADMISSION_OR_EXPLICIT_BOUNDED_DELEGATION_STILL_REQUIRED",
+    "R00E": "DO_NOT_BIND_OR_DISPATCH_UNTIL_HQ_SEAL_AND_INDEPENDENT_POLICY_PIN",
+    "R00V": "SEPARATE_NATIVE_REVIEW_NOT_RUN",
+    "R02_R04BYTE": "NOT_LAUNCHED; FOLLOW_SEALED_R00",
+    "J52_W52": "USER_STOPPED",
+    "N11": "NOT_READY",
+    "N12": "HOLD"
+  },
+  "self_hash_exclusion": "freeze.json does not include its own Git SHA or successor commit; enclosing immutable successor Git commit authenticates it alongside predecessor",
+  "native_tests": "NOT_RUN",
+  "original_source_data": "NOT_READ",
+  "CI": "NOT_CHANGED"
+}
