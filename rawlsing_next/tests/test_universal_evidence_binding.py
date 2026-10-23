@@ -39,6 +39,7 @@ from rawlsing_next.pre553_universal_evidence_binding import (
     ELIGIBILITY_STATES,
     PROVENANCE_CACHE,
     PROVENANCE_CANONICAL,
+    R61_TEST_ONLY_OWNER_ADMISSION_AUTHORITY,
     REFUSAL_NO_EXACT_BINDING,
     RESULT_STATES,
     AdmittedEvidenceContext,
@@ -53,6 +54,7 @@ from rawlsing_next.pre553_universal_evidence_binding import (
     OccurrenceKey,
     TrustedCacheIssuer,
     TypedCondition,
+    _evidence_material,
     TypedValue,
     reduce_required_support,
     request_from_empirical_case,
@@ -184,6 +186,7 @@ def _request(
 
 
 def _binding(request, case, *, producer=None) -> EmpiricalProducerBinding:
+    canonical_context = _make_context(case)
     kwargs = dict(
         request=request,
         repository=case["source"]["repo"],
@@ -194,11 +197,17 @@ def _binding(request, case, *, producer=None) -> EmpiricalProducerBinding:
         consumer_query=case["consumer_query"],
         model_rule=case["model_rule"],
         condition_binding_witness=case["condition_binding_witness"],
-        context=case.get("_r61_context") or _make_context(case),
+        context=case.get("_r61_context") or canonical_context,
     )
     if producer is not None:
         kwargs["producer"] = producer
-    return EmpiricalProducerBinding(**kwargs)
+    binding = EmpiricalProducerBinding(**kwargs)
+    canonical_owner = replace(binding, context=canonical_context, admission=None)
+    admission = R61_TEST_ONLY_OWNER_ADMISSION_AUTHORITY.issue_producer(
+        context_ref=canonical_context.context_ref,
+        owner_identity_material=canonical_owner.owner_identity_material(),
+    )
+    return replace(binding, admission=admission)
 
 
 def _zero_case(case):
@@ -885,3 +894,123 @@ def test_actual_observed_zero_cell_remains_supported_product():
     summary = reduce_required_support([result])
     assert summary.exact_all_support is True
     assert summary.support_state == "EXACT_SUPPORT"
+
+
+def _forged_admitted_context(case):
+    return replace(
+        _make_context(case),
+        source_id="FORGED_SOURCE",
+        dataset_id="FORGED_DATASET",
+        wave_id="FORGED_WAVE",
+        edition="1999-01",
+        byte_digest=semantic_hash({"forged": "source-bytes"}),
+        instrument_version="FORGED_INSTRUMENT@9",
+        sampled_unit="FORGED_SAMPLED_UNIT",
+        reporting_unit="FORGED_REPORTING_UNIT",
+        estimand="FORGED_ESTIMAND",
+        weight_method="FORGED_WEIGHT_METHOD",
+        design_ref=_ref("R61_DESIGN", "forged-design", {"design": "FORGED"}),
+        uncertainty_method="FORGED_UNCERTAINTY_METHOD",
+        direction="ANSWER_YES_TO_POSITION",
+        role="REVERSE_AUTHORIZED",
+        consumer_use="FORGED_CONSUMER_USE",
+        grammar_version="FORGED_GRAMMAR@9",
+        custody_ref=_ref("R61_CUSTODY", "forged-custody", {"custody": "FORGED"}),
+        observation_clock="1999-01",
+        reference_clock="1999-01",
+        as_of_clock="1999-01-31",
+        publication_clock="1999-02-01",
+        permission_ref=_ref("R61_PERMISSION", "forged-permission", {"scope": "FORGED"}),
+    )
+
+
+def test_forged_caller_context_cannot_mint_owner_admission():
+    case = build_provider_case("forward")
+    forged = _forged_admitted_context(case)
+    case["_r61_context"] = forged
+    request = _request(
+        case,
+        request_id="r61-r3-forged-context",
+        source_id=forged.source_id,
+        dataset_id=forged.dataset_id,
+        wave_id=forged.wave_id,
+        edition=forged.edition,
+        byte_digest=forged.byte_digest,
+        instrument_version=forged.instrument_version,
+        sampled_unit=forged.sampled_unit,
+        reporting_unit=forged.reporting_unit,
+        estimand=forged.estimand,
+        weight_method=forged.weight_method,
+        design_ref=forged.design_ref,
+        uncertainty_method=forged.uncertainty_method,
+        direction=forged.direction,
+        role=forged.role,
+        consumer_use=forged.consumer_use,
+        grammar_version=forged.grammar_version,
+        custody_ref=forged.custody_ref,
+        observation_clock=forged.observation_clock,
+        reference_clock=forged.reference_clock,
+        as_of_clock=forged.as_of_clock,
+        publication_clock=forged.publication_clock,
+        permission_ref=forged.permission_ref,
+    )
+    resolver = EvidenceResolver()
+    resolver.bind(_binding(request, case))
+    result = resolver.resolve(request)
+    assert result.result_state == "UNKNOWN"
+    assert result.typed_refusal == "OWNER_ADMISSION_UNRESOLVED"
+    with pytest.raises(EvidenceAssociationError):
+        EvidenceConsumerReader(request, result).read()
+
+
+def test_default_cache_rejects_missing_admission_and_forged_same_source_evidence():
+    case = build_provider_case("forward")
+    request = _request(case, request_id="r61-r3-cache-admission")
+    resolver = EvidenceResolver()
+    resolver.bind(_binding(request, case))
+    produced = resolver.resolve(request)
+    assert produced.result_state == "SUPPORTED"
+    base = resolver.export_cache()["entries"][0]
+
+    no_admission = {
+        key: canonicalize(value)
+        for key, value in base.items()
+        if key not in {"seal", "issuer_seal", "issuer_grade", "producer_admission"}
+    }
+    no_admission["seal"] = semantic_hash(no_admission)
+    with pytest.raises(EvidenceCacheIntegrityError):
+        EvidenceResolver().import_authenticated_cache(
+            {"schema": CACHE_SCHEMA, "entries": [no_admission]}
+        )
+
+    forged = {
+        key: canonicalize(value)
+        for key, value in base.items()
+        if key not in {"seal", "issuer_seal", "issuer_grade"}
+    }
+    evidence_material = dict(canonicalize(_evidence_material(produced.evidence_object)))
+    evidence_material["raw_support"] = 999
+    geometry = dict(evidence_material["geometry"])
+    geometry["cells"] = [
+        {
+            **canonicalize(cell),
+            "raw_numerator_support": 999 if cell.get("cell") == "yes" else 0,
+        }
+        for cell in geometry["cells"]
+    ]
+    evidence_material["geometry"] = geometry
+    forged["evidence"] = canonicalize(evidence_material)
+    result_material = dict(canonicalize(forged["result"]))
+    result_material["denominator"] = 999
+    result_material["cells"] = [
+        canonicalize({k: cell.get(k) for k in ("cell", "cell_state", "raw_numerator_support", "raw_probability_exact_fraction")})
+        for cell in geometry["cells"]
+    ]
+    forged["result"] = canonicalize(result_material)
+    forged["seal"] = semantic_hash(
+        {key: value for key, value in forged.items() if key != "seal"}
+    )
+    with pytest.raises(EvidenceCacheIntegrityError):
+        EvidenceResolver().import_authenticated_cache(
+            {"schema": CACHE_SCHEMA, "entries": [forged]}
+        )

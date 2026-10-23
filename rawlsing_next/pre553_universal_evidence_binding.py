@@ -65,6 +65,7 @@ CACHE_SCHEMA = "R61_AUTHENTICATED_EVIDENCE_CACHE@2"
 CACHE_SEAL_ALGORITHM = "SHA256_CANONICAL_FULLK_PRODUCER_CONSUMER_PREIMAGE"
 CACHE_TRUST_ASSOCIATION = "FULL_K_PRODUCER_ASSOCIATION_SHA256"
 CACHE_TRUST_ISSUER = "EPHEMERAL_ISSUER_HMAC_SHA256"
+CACHE_TRUST_ADMISSION = "TRUSTED_OWNER_EVIDENCE_ADMISSION_HMAC_SHA256"
 K_ENCODING_VERSION = "K_TAGGED_CANONICAL@2"
 
 ELIGIBILITY_STATES = frozenset(
@@ -929,6 +930,7 @@ class EmpiricalProducerBinding:
     model_rule: PositionedSubjectPossibilityModelRule
     condition_binding_witness: ConditionValueBindingWitness
     context: AdmittedEvidenceContext
+    admission: TrustedOwnerAdmission | None = None
     producer: Callable[..., EmpiricalPossibilitySliceProviderResult] = field(
         default=provide_empirical_possibility_slice, repr=False, compare=False
     )
@@ -1009,13 +1011,11 @@ class EmpiricalProducerBinding:
                 return f"condition {index} item does not match actual producer question"
         return None
 
-    def identity_material(self) -> Mapping[str, Any]:
+    def owner_identity_material(self) -> Mapping[str, Any]:
         return {
-            "request_key": self.request.key,
             "context_ref": self.context.context_ref.as_dict(),
             "context": canonicalize(self.context.material()),
             "actual_conditions": [canonicalize(x) for x in _actual_condition_identities(self)],
-            "validated_conditions": [condition.material() for condition in self.request.ordered_conditions],
             "producer_query_ref": self.empirical_query.ref.as_dict(),
             "predicate_ref": self.predicate.ref.as_dict(),
             "predicate_hash": self.predicate.predicate_hash,
@@ -1025,6 +1025,27 @@ class EmpiricalProducerBinding:
                 self.consumer_query, self.condition_binding_witness
             ),
             "model_rule_hash": self.model_rule.rule_hash,
+            "source_universe_ref": exact_ref(
+                self.empirical_query.empirical_universe_refs[0], "source_universe_ref"
+            ).as_dict(),
+            "risk_set_ref": exact_ref(
+                self.empirical_query.risk_set_ref, "risk_set_ref"
+            ).as_dict(),
+            "target_ref": self.consumer_query.target_ref.as_dict(),
+        }
+
+    @property
+    def owner_identity_hash(self) -> str:
+        return semantic_hash(self.owner_identity_material())
+
+    def identity_material(self) -> Mapping[str, Any]:
+        return {
+            "request_key": self.request.key,
+            **self.owner_identity_material(),
+            "validated_conditions": [condition.material() for condition in self.request.ordered_conditions],
+            "admission": None
+            if self.admission is None
+            else self.admission.material(),
         }
 
     @property
@@ -1321,6 +1342,196 @@ def _context_material_matches_request(
     )
 
 
+R61_TEST_ONLY_OWNER_ADMISSION_KEY = (
+    b"r61-r08-r3-test-only-owner-admission-key-v1"
+)
+R61_TEST_ONLY_OWNER_ADMISSION_AUTHORITY_ID = (
+    "R61_TEST_ONLY_PINNED_OWNER_ADMISSION_V1"
+)
+
+
+@dataclass(frozen=True)
+class TrustedOwnerAdmission:
+    authority_id: str
+    scope: str
+    context_ref: ExactRef
+    producer_identity_hash: str
+    evidence_ref: ExactRef | None
+    evidence_content_hash: str | None
+    token: str
+
+    def __post_init__(self) -> None:
+        object.__setattr__(self, "authority_id", _text(self.authority_id, "admission.authority_id"))
+        if self.scope not in {"PRODUCER", "EVIDENCE"}:
+            raise EvidenceBindingError("admission scope must be PRODUCER or EVIDENCE")
+        if not isinstance(self.context_ref, ExactRef):
+            raise EvidenceBindingError("admission context_ref must be ExactRef")
+        object.__setattr__(
+            self, "producer_identity_hash", _sha(self.producer_identity_hash, "admission.producer_identity_hash")
+        )
+        object.__setattr__(self, "token", _sha(self.token, "admission.token"))
+        if self.evidence_ref is not None and not isinstance(self.evidence_ref, ExactRef):
+            raise EvidenceBindingError("admission evidence_ref must be ExactRef or null")
+        if self.evidence_content_hash is not None:
+            object.__setattr__(
+                self,
+                "evidence_content_hash",
+                _sha(self.evidence_content_hash, "admission.evidence_content_hash"),
+            )
+        if self.scope == "EVIDENCE" and (
+            self.evidence_ref is None or self.evidence_content_hash is None
+        ):
+            raise EvidenceBindingError("evidence admission requires evidence ref/content digest")
+
+    def material(self, *, include_token: bool = True) -> Mapping[str, Any]:
+        out = {
+            "schema": "R61_TRUSTED_OWNER_ADMISSION@1",
+            "authority_id": self.authority_id,
+            "scope": self.scope,
+            "context_ref": self.context_ref.as_dict(),
+            "producer_identity_hash": self.producer_identity_hash,
+            "evidence_ref": None if self.evidence_ref is None else self.evidence_ref.as_dict(),
+            "evidence_content_hash": self.evidence_content_hash,
+        }
+        if include_token:
+            out["token"] = self.token
+        return out
+
+    @classmethod
+    def from_material(cls, material: Mapping[str, Any]) -> "TrustedOwnerAdmission":
+        try:
+            return cls(
+                authority_id=material["authority_id"],
+                scope=material["scope"],
+                context_ref=ExactRef(**material["context_ref"]),
+                producer_identity_hash=material["producer_identity_hash"],
+                evidence_ref=None
+                if material["evidence_ref"] is None
+                else ExactRef(**material["evidence_ref"]),
+                evidence_content_hash=material["evidence_content_hash"],
+                token=material["token"],
+            )
+        except (KeyError, TypeError) as exc:
+            raise EvidenceCacheIntegrityError("malformed trusted owner admission") from exc
+
+
+class TrustedAdmissionAuthority:
+    """Pinned TEST_ONLY owner/evidence admission authority.
+
+    The key and admitted producer/evidence digests are trusted configuration.
+    They are never accepted from a request, context or cache entry.  This is not
+    a production secret, source/science issuer or protected service, and it does
+    not claim to protect against a hostile same-UID host.
+    """
+
+    def __init__(self, key: bytes | None = None, *, authority_id: str | None = None) -> None:
+        self._key = key if key is not None else R61_TEST_ONLY_OWNER_ADMISSION_KEY
+        if len(self._key) < 32:
+            raise EvidenceBindingError("admission authority key must be at least 32 bytes")
+        self.authority_id = authority_id or R61_TEST_ONLY_OWNER_ADMISSION_AUTHORITY_ID
+
+    def _seal(self, material: Mapping[str, Any]) -> str:
+        body = json.dumps(
+            canonicalize(material), sort_keys=True, separators=(",", ":"), ensure_ascii=True
+        ).encode("utf-8")
+        return hmac.new(self._key, body, hashlib.sha256).hexdigest()
+
+    def issue_producer(
+        self,
+        *,
+        context_ref: ExactRef,
+        owner_identity_material: Mapping[str, Any],
+    ) -> TrustedOwnerAdmission:
+        base = {
+            "schema": "R61_TRUSTED_OWNER_ADMISSION@1",
+            "authority_id": self.authority_id,
+            "scope": "PRODUCER",
+            "context_ref": context_ref.as_dict(),
+            "producer_identity_hash": semantic_hash(owner_identity_material),
+            "evidence_ref": None,
+            "evidence_content_hash": None,
+        }
+        return TrustedOwnerAdmission(
+            authority_id=self.authority_id,
+            scope="PRODUCER",
+            context_ref=context_ref,
+            producer_identity_hash=base["producer_identity_hash"],
+            evidence_ref=None,
+            evidence_content_hash=None,
+            token=self._seal(base),
+        )
+
+    def issue_evidence(
+        self,
+        *,
+        producer_admission: TrustedOwnerAdmission,
+        evidence: PossibilitySliceEvidence,
+    ) -> TrustedOwnerAdmission:
+        if producer_admission.authority_id != self.authority_id:
+            raise EvidenceBindingError("producer admission authority mismatch")
+        evidence_material = _evidence_material(evidence)
+        base = {
+            "schema": "R61_TRUSTED_OWNER_ADMISSION@1",
+            "authority_id": self.authority_id,
+            "scope": "EVIDENCE",
+            "context_ref": producer_admission.context_ref.as_dict(),
+            "producer_identity_hash": producer_admission.producer_identity_hash,
+            "evidence_ref": evidence.evidence_ref.as_dict(),
+            "evidence_content_hash": semantic_hash(evidence_material),
+        }
+        return TrustedOwnerAdmission(
+            authority_id=self.authority_id,
+            scope="EVIDENCE",
+            context_ref=producer_admission.context_ref,
+            producer_identity_hash=producer_admission.producer_identity_hash,
+            evidence_ref=evidence.evidence_ref,
+            evidence_content_hash=base["evidence_content_hash"],
+            token=self._seal(base),
+        )
+
+    def verify_producer(
+        self,
+        admission: TrustedOwnerAdmission,
+        *,
+        context_ref: ExactRef,
+        owner_identity_material: Mapping[str, Any],
+    ) -> bool:
+        if admission.authority_id != self.authority_id or admission.scope != "PRODUCER":
+            return False
+        if admission.context_ref != context_ref:
+            return False
+        if admission.producer_identity_hash != semantic_hash(owner_identity_material):
+            return False
+        expected = self._seal(admission.material(include_token=False))
+        return hmac.compare_digest(expected, admission.token)
+
+    def verify_evidence(
+        self,
+        admission: TrustedOwnerAdmission,
+        *,
+        producer_admission: TrustedOwnerAdmission,
+        evidence: PossibilitySliceEvidence,
+    ) -> bool:
+        if admission.authority_id != self.authority_id or admission.scope != "EVIDENCE":
+            return False
+        if (
+            admission.context_ref != producer_admission.context_ref
+            or admission.producer_identity_hash != producer_admission.producer_identity_hash
+        ):
+            return False
+        material = _evidence_material(evidence)
+        if (
+            admission.evidence_ref != evidence.evidence_ref
+            or admission.evidence_content_hash != semantic_hash(material)
+        ):
+            return False
+        expected = self._seal(admission.material(include_token=False))
+        return hmac.compare_digest(expected, admission.token)
+
+
+R61_TEST_ONLY_OWNER_ADMISSION_AUTHORITY = TrustedAdmissionAuthority()
+
+
 class TrustedCacheIssuer:
     """Test-only ephemeral issuer boundary for cold cache records.
 
@@ -1356,13 +1567,20 @@ class EvidenceResolver:
         *,
         cache_issuer: TrustedCacheIssuer | None = None,
         trusted_binding_hashes: Iterable[str] = (),
+        admission_authority: TrustedAdmissionAuthority | None = None,
     ) -> None:
         self._bindings: dict[str, EmpiricalProducerBinding] = {}
         self._cache: dict[str, EvidenceResult] = {}
         self._requests: dict[str, EvidenceRequest] = {}
         self._binding_materials: dict[str, Mapping[str, Any]] = {}
+        self._admitted: dict[str, bool] = {}
         self._issuer = cache_issuer
         self._trusted_binding_hashes = frozenset(trusted_binding_hashes)
+        self._admission_authority = (
+            admission_authority
+            if admission_authority is not None
+            else R61_TEST_ONLY_OWNER_ADMISSION_AUTHORITY
+        )
 
     def bind(self, binding: EmpiricalProducerBinding) -> str:
         if not isinstance(binding, EmpiricalProducerBinding):
@@ -1380,6 +1598,14 @@ class EvidenceResolver:
         self._bindings[key] = binding
         self._requests[key] = binding.request
         self._binding_materials[key] = binding.identity_material()
+        self._admitted[key] = bool(
+            binding.admission is not None
+            and self._admission_authority.verify_producer(
+                binding.admission,
+                context_ref=binding.context.context_ref,
+                owner_identity_material=binding.owner_identity_material(),
+            )
+        )
         return key
 
     def resolve(self, request: EvidenceRequest) -> EvidenceResult:
@@ -1393,6 +1619,13 @@ class EvidenceResolver:
             return _result_refusal(
                 request,
                 REFUSAL_NO_EXACT_BINDING,
+                eligibility="UNKNOWN",
+                execution="NOT_STARTED",
+            )
+        if not self._admitted.get(request.key, False):
+            return _result_refusal(
+                request,
+                "OWNER_ADMISSION_UNRESOLVED",
                 eligibility="UNKNOWN",
                 execution="NOT_STARTED",
             )
@@ -1598,6 +1831,7 @@ class EvidenceResolver:
         values["cache_trust_grade"] = (
             CACHE_TRUST_ISSUER if self._issuer is not None else CACHE_TRUST_ASSOCIATION
         )
+        values["admission_grade"] = CACHE_TRUST_ADMISSION
         return EvidenceResult(
             request_key=request.key,
             eligibility_state=cached.eligibility_state,
@@ -1631,14 +1865,41 @@ class EvidenceResolver:
                 raise EvidenceCacheIntegrityError(
                     "cache entry lacks its exact request/producer preimage"
                 )
+            binding = self._bindings.get(key)
+            if binding is None:
+                raise EvidenceCacheIntegrityError(
+                    "cache entry lacks its admitted owner binding"
+                )
+            owner_material = binding.owner_identity_material()
+            owner_hash = semantic_hash(owner_material)
+            producer_admission = self._admission_authority.issue_producer(
+                context_ref=binding.context.context_ref,
+                owner_identity_material=owner_material,
+            )
+            evidence_admission = (
+                None
+                if result.evidence_object is None
+                else self._admission_authority.issue_evidence(
+                    producer_admission=producer_admission,
+                    evidence=result.evidence_object,
+                )
+            )
             binding_payload = canonicalize(binding_material)
-            binding_payload["binding_hash"] = semantic_hash(binding_payload)
+            binding_payload["owner_identity_material"] = canonicalize(owner_material)
+            binding_payload["owner_identity_hash"] = owner_hash
+            binding_payload["binding_hash"] = semantic_hash(
+                {key: value for key, value in binding_payload.items() if key != "binding_hash"}
+            )
             payload = {
                 "schema": CACHE_SCHEMA,
                 "seal_algorithm": CACHE_SEAL_ALGORITHM,
                 "request_key": key,
                 "request_material": canonicalize(request.material()),
                 "producer_binding": binding_payload,
+                "producer_admission": producer_admission.material(),
+                "evidence_admission": None
+                if evidence_admission is None
+                else evidence_admission.material(),
                 "result": canonicalize(result.material()),
                 "evidence": None
                 if result.evidence_object is None
@@ -1716,6 +1977,39 @@ class EvidenceResolver:
                 raise EvidenceCacheIntegrityError(
                     "producer binding is not in the trusted binding set"
                 )
+            owner_material = producer_binding.get("owner_identity_material")
+            owner_hash = producer_binding.get("owner_identity_hash")
+            if not isinstance(owner_material, Mapping):
+                raise EvidenceCacheIntegrityError("cache owner identity material required")
+            if owner_hash != semantic_hash(owner_material):
+                raise EvidenceCacheIntegrityError("cache owner identity hash mismatch")
+            producer_admission_material = raw.get("producer_admission")
+            if not isinstance(producer_admission_material, Mapping):
+                raise EvidenceCacheIntegrityError(
+                    "cache requires a trusted producer admission"
+                )
+            producer_admission = TrustedOwnerAdmission.from_material(
+                producer_admission_material
+            )
+            context_ref = _optional_ref(producer_binding.get("context_ref"))
+            if context_ref is None or producer_admission.context_ref != context_ref:
+                raise EvidenceCacheIntegrityError(
+                    "producer admission context does not match binding"
+                )
+            if not self._admission_authority.verify_producer(
+                producer_admission,
+                context_ref=context_ref,
+                owner_identity_material=owner_material,
+            ):
+                raise EvidenceCacheIntegrityError(
+                    "producer admission is not trusted at default ingress"
+                )
+            evidence_admission = None
+            evidence_admission_material = raw.get("evidence_admission")
+            if evidence_admission_material is not None:
+                evidence_admission = TrustedOwnerAdmission.from_material(
+                    evidence_admission_material
+                )
             context_material = producer_binding.get("context")
             if not isinstance(context_material, Mapping) or not _context_material_matches_request(
                 context_material, request
@@ -1772,6 +2066,14 @@ class EvidenceResolver:
                     raise EvidenceCacheIntegrityError(
                         "supported cache entry requires evidence/query/rule"
                     )
+                if evidence_admission is None or not self._admission_authority.verify_evidence(
+                    evidence_admission,
+                    producer_admission=producer_admission,
+                    evidence=evidence,
+                ):
+                    raise EvidenceCacheIntegrityError(
+                        "supported cache entry lacks a trusted evidence admission"
+                    )
                 if (
                     evidence.source_universe_ref != request.source_universe_ref
                     or evidence.release_ref != request.release_ref
@@ -1818,6 +2120,7 @@ class EvidenceResolver:
                     if self._issuer is not None
                     else CACHE_TRUST_ASSOCIATION
                 )
+                values["admission_grade"] = CACHE_TRUST_ADMISSION
                 result = EvidenceResult(
                     request_key=request_key,
                     eligibility_state=result_material["eligibility_state"],
@@ -2187,6 +2490,9 @@ __all__ = [
     "RESULT_CONTRACT_ID",
     "SUMMARY_CONTRACT_ID",
     "CACHE_SCHEMA",
+    "CACHE_TRUST_ASSOCIATION",
+    "CACHE_TRUST_ISSUER",
+    "CACHE_TRUST_ADMISSION",
     "K_ENCODING_VERSION",
     "ELIGIBILITY_STATES",
     "EXECUTION_STATES",
@@ -2208,6 +2514,10 @@ __all__ = [
     "EvidenceCacheIntegrityError",
     "EvidenceAssociationError",
     "TypedValue",
+    "AdmittedEvidenceContext",
+    "TrustedOwnerAdmission",
+    "TrustedAdmissionAuthority",
+    "R61_TEST_ONLY_OWNER_ADMISSION_AUTHORITY",
     "OccurrenceKey",
     "TypedCondition",
     "EvidenceRequest",
