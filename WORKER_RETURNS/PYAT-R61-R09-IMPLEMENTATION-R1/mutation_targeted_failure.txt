@@ -1,0 +1,49 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+__________ test_same_name_status_spoof_from_actual_process_is_refused __________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-329/test_same_name_status_spoof_fr0')
+
+    def test_same_name_status_spoof_from_actual_process_is_refused(tmp_path):
+        support = (
+            "def add(a, b):\n"
+            "    return a + b\n"
+            "\n"
+            "def double(value):\n"
+            "    raise RuntimeError('forced status mutation')\n"
+        )
+        entry = (
+            "from native_fixture import add, double\n"
+            "\n"
+            "try:\n"
+            "    double(add(20, 1))\n"
+            "except RuntimeError:\n"
+            "    pass\n"
+            "RESULT = {\"label\": \"baseline\", \"value\": 42}\n"
+        )
+        harness = Harness(tmp_path, support_source=support, entry_source=entry)
+        observation = harness.observe()
+        decision = verify.verify_observation(
+            observation=observation, expectation=harness.expectation,
+            nonce_ledger=verify.NonceLedger())
+    
+>       assert_refused(decision, "NATIVE_EVENT_STATUS_MISMATCH")
+
+tests/universal_runner/test_universal_runner_verify.py:248: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+decision = {'bindings': {'candidate_commit': '2cc6ce35112a9b98178556cd07ffd46f6ec815fb', 'candidate_tree': '4f7102cd42c710b3d2b6e...': 'LOCAL_NATIVE_TEST_ONLY', 'contract_id': 'R61-R09-NATIVE-RUNNER-VERIFY@1', 'decision': 'LOCAL_NATIVE_VERIFIED', ...}
+reason = 'NATIVE_EVENT_STATUS_MISMATCH'
+
+    def assert_refused(decision: dict, reason: str) -> None:
+>       assert decision["decision"] == verify.REFUSE
+E       AssertionError: assert 'LOCAL_NATIVE_VERIFIED' == 'REFUSE_NATIVE_QUALIFICATION'
+E         
+E         - REFUSE_NATIVE_QUALIFICATION
+E         + LOCAL_NATIVE_VERIFIED
+
+tests/universal_runner/test_universal_runner_verify.py:92: AssertionError
+=========================== short test summary info ============================
+FAILED tests/universal_runner/test_universal_runner_verify.py::test_same_name_status_spoof_from_actual_process_is_refused
+1 failed in 0.21s
+EXIT=1

@@ -1,0 +1,55 @@
+{
+  "schema": "R61_R09_RETURN_MANIFEST@1",
+  "contract_id": "R61-R09-NATIVE-RUNNER-VERIFY@1",
+  "candidate_commit": "2cc6ce35112a9b98178556cd07ffd46f6ec815fb",
+  "candidate_tree": "4f7102cd42c710b3d2b6ed227eb267b08de15e52",
+  "algorithm": "sha256",
+  "artifacts": [
+    {
+      "path": "00_RETURN.md",
+      "sha256": "04e9fad4d6d676f3fbe5996a8acb99b2351557178b8c764b5ca750750ac41eb1",
+      "size": 8778
+    },
+    {
+      "path": "RESUME.md",
+      "sha256": "1896befa7f62b656e0b3ee1d35aa72d9fd6b61a182cb06c92cd9c3227dd976f4",
+      "size": 2542
+    },
+    {
+      "path": "existing_oracle_junit.xml",
+      "sha256": "42b0d58a82774f1b8ef3570ed61296426a01f4dee6a1303ca32c1e14ff205112",
+      "size": 7650
+    },
+    {
+      "path": "junit.xml",
+      "sha256": "ecb95d71dc87346d5387e3b11b3b9dea0b88a4539f80f1931c7b9312f2b6c052",
+      "size": 2567
+    },
+    {
+      "path": "mutation_restored_pass.txt",
+      "sha256": "397fe0129aead7edc9030f26d26103ad211fcb967695bb48f066fa468604f341",
+      "size": 105
+    },
+    {
+      "path": "mutation_targeted_failure.txt",
+      "sha256": "99ee67af4532b082d8db8ced69ccc30f0f6ec3ede2a4d41d695592a78f1029d8",
+      "size": 2348
+    },
+    {
+      "path": "proof_witness.json",
+      "sha256": "dfe93fcba634df979ef8f20ab0bc4c718557961df79ce4e8f47e9b3767767d3a",
+      "size": 5723
+    }
+  ],
+  "excluded": [
+    {
+      "path": "manifest.json",
+      "reason": "Self-exclusion: a manifest cannot contain a stable hash of itself before it is written."
+    }
+  ],
+  "notes": [
+    "No hash is claimed for any future self or future artifact.",
+    "These are author-validation artifacts, not independent acceptance.",
+    "Production remains DEPLOYMENT_HOLD."
+  ]
+}
