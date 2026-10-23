@@ -1,0 +1,104 @@
+{
+  "schema": "PYAT_R61_R01_R2_PROOF_WITNESS@1",
+  "node": "R01",
+  "revision": "R2",
+  "disposition": "CANDIDATE_FOR_INDEPENDENT_REVIEW",
+  "branch": "agent/opencode-pyat-r61-r01-generic-grammar-r1",
+  "startup_commit": "fcf9fe9f8662c9e98801e670d0d4357072d8d453",
+  "candidate_code_commit": "d56e53301aaa0203e83fc1b60a0bcafb86b17892",
+  "hq_review_commit": "b310c5469bb628a583d6e106946cddd08025ddc1",
+  "repair_commission_commit": "0ad99eadaf7aa2edd96e5a50f7b61f84c893ff70",
+  "grade": "SOURCEFREE_SYNTHETIC_TEST_ONLY_NOT_ORIGINAL_SCIENCE",
+  "environment": {
+    "python": "3.11.3",
+    "python_path": "/usr/local/bin/python3",
+    "pytest": "9.0.2",
+    "pyreadstat": "1.3.2",
+    "platform": "darwin",
+    "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01"
+  },
+  "commands": [
+    {
+      "purpose": "author R2 suite",
+      "command": "/usr/local/bin/python3 -m pytest rawlsing_next/tests/test_universal_grammar.py -q --junitxml=WORKER_RETURNS/PYAT-R61-R01-IMPLEMENTATION-R1/revisions/r2/junit.xml -o addopts=''",
+      "exit_code": 0,
+      "result": "18 passed",
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "walltime_seconds": 9.19,
+      "junit": "junit.xml",
+      "log": "pytest.log"
+    },
+    {
+      "purpose": "replay reviewer blocking defect probes D1-D8 against R2",
+      "command": "PYTHONPATH=\"$PWD:$PWD/.r61/tmp\" PYTHONDONTWRITEBYTECODE=1 /usr/local/bin/python3 -m pytest .r61/tmp/test_r01v_independent.py -q -o addopts='' -k 'DEFECT and not topology'",
+      "exit_code": 0,
+      "result": "9 passed, 11 deselected",
+      "walltime_seconds": 0.49,
+      "log": "reviewer_d1_d8_replay.log"
+    },
+    {
+      "purpose": "full old reviewer probe suite, retained as honest supersession evidence",
+      "command": "PYTHONPATH=\"$PWD:$PWD/.r61/tmp\" PYTHONDONTWRITEBYTECODE=1 /usr/local/bin/python3 -m pytest .r61/tmp/test_r01v_independent.py -q -o addopts=''",
+      "exit_code": 1,
+      "result": "16 passed, 4 failed",
+      "failures_explained": [
+        "cold probe copy has a path-derived module import artifact (original reviewer path computes REPO_ROOT differently); committed cold recomputation test passes",
+        "old test_form_repeat_and_topology_are_distinct_ledger_entries expects frontier UNSUPPORTED_RUNTIME, superseded by D9 capability-at-lowering repair",
+        "old test_observation_lowerer_trusts_operation_disposition_and_direction expects forged direction SUPPORTED, superseded by D10 refusal",
+        "old test_DEFECT_catalog_supported_topology_can_promote_operation asserts the old frontier pre-classification, superseded by the repaired catalog-first behavior"
+      ]
+    },
+    {
+      "purpose": "capacity measurements",
+      "command": "/usr/bin/time -l /usr/local/bin/python3 - <<'PY' ... enumerate tiny/main fixtures ... PY",
+      "exit_code": 0,
+      "observed": {
+        "tiny": {"operations": 22, "eligible": 8, "partitions": 1, "seconds": 0.0195},
+        "main": {"operations": 1852, "eligible": 536, "partitions": 29, "seconds": 0.9929, "peak_rss_mb_approx": 36}
+      }
+    }
+  ],
+  "defects_addressed": {
+    "D1": {"status": "PASS", "evidence": "bool/int/string/null/ABSENT typed domains and distinct identities"},
+    "D2": {"status": "PASS", "evidence": "source wave/edition/digest/dataset/instrument bind op_id"},
+    "D3": {"status": "PASS", "evidence": "estimand/weight/design/variance bind op_id"},
+    "D4": {"status": "PASS", "evidence": "observation/reference/as-of/publication/current selection fields and identity"},
+    "D5": {"status": "PASS", "evidence": "ELIGIBILITY_STATES/EXECUTION_STATES/RESULT_STATES; DISPOSITIONS restated to eligibility only"},
+    "D6": {"status": "PASS", "evidence": "actual I05 condition-atom mutation refused by exact candidate/query-role anti-join; restoration passes"},
+    "D7": {"status": "PASS", "evidence": "LoweringRecord version/DiscoveryAuthority/Batch/grade/typed refusal/predicate/query/query-role/candidate keys"},
+    "D8": {"status": "PASS", "evidence": "typed target cells preserved [1,'1']; explicit injective codec; non-injective refusal"},
+    "D9": {"status": "PASS", "evidence": "frontier keeps MR operation eligible; catalog-declared topology lowers SUPPORTED"},
+    "D10": {"status": "PASS", "evidence": "forged direction/roles/risk/unit/form/topology/scope/administration revalidation refusal"},
+    "D11": {"status": "PASS", "evidence": "risk_set_policy UNKNOWN default vs explicit UNCONSTRAINED"},
+    "D12": {"status": "PASS", "evidence": "structured HeldRecord with owner reason/authority; free text is not exclusion authority"},
+    "D13": {"status": "PASS", "evidence": "explicit recursion_depth/baseline_ref/recursion_relation_ref and D bound"},
+    "D14": {"status": "NOT_REACHED", "evidence": "deterministic cold recomputation proved; serialized custody restore belongs to R04 and is not claimed"},
+    "D15": {"status": "PASS", "evidence": "zero supported rules declares allow_empty_frontier=True with complete-empty E_pre root"},
+    "D16": {"status": "PARTIAL_NARROWED", "evidence": "vacuous test removed; current synthetic I03 all-missing value is a typed integrity refusal before I05; frontier conserved; positive all-missing native result NOT_REACHED"}
+  },
+  "mutations_and_restoration": [
+    {"mutation": "drop one supported I05 rule", "expected": "anti-join missing_rule_ids exact failure", "restored": "original receipts no_drop_ok=true"},
+    {"mutation": "change condition atom predicate value with same rule_id", "expected": "exact candidate identity anti-join failure", "restored": "original receipts no_drop_ok=true"},
+    {"mutation": "forge direction_ref on eligible operation", "expected": "typed FORGED_OR_UNAUTHORIZED_DIRECTION_REF refusal", "restored": "original direction lowers SUPPORTED"},
+    {"mutation": "non-injective native cell codec int 1 / string '1' -> same label", "expected": "typed NATIVE_CELL_CODEC_NOT_INJECTIVE refusal", "restored": "typed cells preserved or injective codec lowers"},
+    {"mutation": "catalog declares MULTI_SELECT_SET support", "expected": "operation remains eligible and lowers SUPPORTED", "restored": "scalar behavior unchanged"},
+    {"mutation": "budget=3", "expected": "eligible IDs PENDING, full operation set/E_pre retained", "restored": "unbudgeted frontier identical"},
+    {"mutation": "free-text held legend", "expected": "UNKNOWN unstructured claim, not held authorization", "restored": "structured HeldRecord gives HELD"},
+    {"mutation": "empty occurrence risk refs", "expected": "UNKNOWN under default policy", "restored": "explicit UNCONSTRAINED policy gives ELIGIBLE"}
+  ],
+  "imported_owner_blobs": {
+    "rawlsing_next/pre553_empirical_objects.py": "a61365b994e5c3c50de0f598fcf40e90abf757b6",
+    "rawlsing_next/pre553_discovery_exact.py": "905f24d114419dbdd93879ad2bee5b59dd2f23af",
+    "rawlsing_next/tests/test_pre553_discovery_exact.py": "b53039aeb95e012993c5233a7575c1dad5a14929",
+    "rawlsing_next/tests/test_pre553_empirical_query.py": "cc7d93db1f87d9c311170c229dbe3506937b404a"
+  },
+  "limits": [
+    "Synthetic TEST_ONLY source and Python helpers; no original survey bytes or respondent values.",
+    "No R03 issued workload/U43/Batch proof; R03 remains NOT_STARTED.",
+    "No serialized cold restore (R04 owner), original U/E_pre, empirical support, F6/F7/F8, N11/N12, actor, production/CI or source permission.",
+    "The old reviewer suite's four failures are retained and explained rather than rewritten; D1-D8 replay is green.",
+    "No self-adoption; a fresh distinct reviewer must qualify the exact pushed candidate."
+  ]
+}
