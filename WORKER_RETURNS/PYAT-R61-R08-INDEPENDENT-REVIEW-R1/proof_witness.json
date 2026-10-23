@@ -1,0 +1,191 @@
+{
+  "schema": "PYAT_R61_R08V_INDEPENDENT_REVIEW_WITNESS_V1",
+  "node": "R08V",
+  "candidate": {
+    "commit": "ad9c3088096ce291d61dfdd292141073b515fbca",
+    "code_commit": "f93cf87948ce092a9b8623b60c00722ae048bda2",
+    "branch": "agent/opencode-pyat-r61-r08v-independent-review-r1",
+    "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r08v",
+    "module": {
+      "path": "rawlsing_next/pre553_universal_evidence_binding.py",
+      "blob": "464a2190a811816c52e9d9c244ab126dc950c564"
+    },
+    "test": {
+      "path": "rawlsing_next/tests/test_universal_evidence_binding.py",
+      "blob": "2512c29e7fa1b780e24a82d111e7c336fae506de"
+    }
+  },
+  "author_manifest_check": {
+    "00_RETURN.md": "1b21bb58c103f7aba3cfd2ec7118309cafb805e4c06222c5628295714139c35a OK",
+    "RESUME.md": "1a4cc459056769f2c04ce1a11c0c10bc8655c77ea39e07df8a816f55467efe52 OK",
+    "junit.xml": "3887934578e43bdf8e73729ac55272d354de3ebf6139bf255ada5d4b763b28ff OK",
+    "proof_witness.json": "af0fed74e3d6c5a006411161d5f9aa92ab52199c377ec4ed9506aa63e2847d5b OK",
+    "manifest_self_exclusion": "manifest.json hashes only the four artifacts above; no self-hash is claimed"
+  },
+  "environment": {
+    "python": "3.11.3",
+    "python_executable": "/usr/local/bin/python3",
+    "pytest": "9.0.2",
+    "pyreadstat": "1.3.2 installed but not used",
+    "model": "opencode-go/deepseek-v4.1-flash",
+    "variant": "max",
+    "account": "existing user-selected Global account",
+    "reviewer_harness_process": "OPENCODE_PID=52345",
+    "reviewer_harness_session_id": "01a15c1e-5446-7ef3-80bb-9ff5c2cb27da",
+    "author_session_excluded": "ses_e98c8dfe6ffewNYOqJpvqK21a6",
+    "separation": "distinct reviewer worktree/branch; same provider account is not institutional scientific independence"
+  },
+  "commands": [
+    {
+      "command": "/usr/local/bin/python3 -m pytest -q rawlsing_next/tests/test_universal_evidence_binding.py rawlsing_next/tests/test_pre553_analytical_composition.py --junitxml=WORKER_RETURNS/PYAT-R61-R08-INDEPENDENT-REVIEW-R1/junit/author_replay.xml",
+      "exit_code": 0,
+      "tests": 21,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "time_seconds": 6.314,
+      "note": "author tests replayed, not independent qualification"
+    },
+    {
+      "command": "/usr/local/bin/python3 -m pytest -q WORKER_RETURNS/PYAT-R61-R08-INDEPENDENT-REVIEW-R1/probes/test_r08v_baseline.py --junitxml=WORKER_RETURNS/PYAT-R61-R08-INDEPENDENT-REVIEW-R1/junit/reviewer_baseline.xml",
+      "exit_code": 0,
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "time_seconds": 2.775
+    },
+    {
+      "command": "/usr/local/bin/python3 -m pytest -q WORKER_RETURNS/PYAT-R61-R08-INDEPENDENT-REVIEW-R1/probes/test_r08v_hostile.py --junitxml=WORKER_RETURNS/PYAT-R61-R08-INDEPENDENT-REVIEW-R1/junit/reviewer_hostile.xml",
+      "exit_code": 1,
+      "tests": 8,
+      "failures": 7,
+      "errors": 0,
+      "skipped": 0,
+      "time_seconds": 3.047,
+      "note": "seven failures are the intended D1/D2 security assertions; one observed-zero control passed"
+    },
+    {
+      "command": "/usr/local/bin/python3 -m pytest -q WORKER_RETURNS/PYAT-R61-R08-INDEPENDENT-REVIEW-R1/probes/test_r08v_e04_fixed_semantics.py --junitxml=WORKER_RETURNS/PYAT-R61-R08-INDEPENDENT-REVIEW-R1/junit/reviewer_e04.xml",
+      "exit_code": 0,
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "time_seconds": 0.054
+    },
+    {
+      "command": "/usr/local/bin/python3 -m pytest -q WORKER_RETURNS/PYAT-R61-R08-INDEPENDENT-REVIEW-R1/probes/test_r08v_reach.py --junitxml=WORKER_RETURNS/PYAT-R61-R08-INDEPENDENT-REVIEW-R1/junit/reviewer_reach.xml",
+      "exit_code": 0,
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "time_seconds": 0.121
+    }
+  ],
+  "assertions": [
+    {
+      "id": "positive-independent-arithmetic",
+      "outcome": "PASS",
+      "evidence": "at07_rows() independently counted 60 POSITION=P1 rows: yes=54, no=6; provider result denominator 60, cells no=6/yes=54, consumer EXACT_SUPPORTED."
+    },
+    {
+      "id": "actual-unchanged-evaluator-call",
+      "outcome": "PASS",
+      "evidence": "reviewer spy delegated to rawlsing_next.source_backed_positioned_subject_possibility.evaluate_positioned_subject_possibility; call count > 0; returned PositionedSubjectPossibilityResult material reproduced."
+    },
+    {
+      "id": "cold-process-cache-baseline",
+      "outcome": "PASS",
+      "evidence": "fresh subprocess import/resolve/read returned AUTHENTICATED_CACHE, SUPPORTED, denominator 60, same consumer hash."
+    },
+    {
+      "id": "severance-refuses-same-assertion",
+      "outcome": "PASS",
+      "evidence": "changed-source evidence object substituted into the positive result; EvidenceConsumerReader.read raised EvidenceAssociationError."
+    },
+    {
+      "id": "request-clock-and-permission-change",
+      "outcome": "PASS",
+      "evidence": "changed as_of/edition/permission requests did not hit the cold cache and resolved UNKNOWN at request level."
+    },
+    {
+      "id": "absent-condition-shape",
+      "outcome": "PASS",
+      "evidence": "EvidenceRequest with an empty ordered_conditions tuple raises EvidenceRequestShapeError."
+    },
+    {
+      "id": "actual-zero-support-control",
+      "outcome": "PASS",
+      "evidence": "actual POSITION=P3 provider path returned ZERO_SUPPORT denominator 0, no evidence/values; consumer reader refused; summary exact_all_support=false, productive_all_required=false."
+    },
+    {
+      "id": "observed-zero-cell-control",
+      "outcome": "PASS",
+      "evidence": "custom AT07 law with 60 P1-yes and 40 P2-no retained denominator 60 and a no=0 OBSERVED_ZERO_IN_SUPPORTED_RISK_SET cell; result SUPPORTED."
+    },
+    {
+      "id": "D1-wrong-condition-rebind",
+      "outcome": "DEFECT",
+      "evidence": "request K occurrence POSITION/P2 typed STRING P2 rebound to actual P1 producer; result SUPPORTED denominator 60; consumer values-read carried P2."
+    },
+    {
+      "id": "D1-wrong-typed-values-rebind",
+      "outcome": "DEFECT",
+      "evidence": "request K typed BOOLEAN true, NULL, and INTEGER 1 rebound to actual string P1 producer; all resolved SUPPORTED denominator 60."
+    },
+    {
+      "id": "D1-extra-and-reordered-conditions",
+      "outcome": "DEFECT",
+      "evidence": "requests with POSITION=P1 plus an extra ANSWER=yes condition, in both orders, were bound to the single-conditioner forward P1 producer and resolved SUPPORTED denominator 60; values-read carried both conditions."
+    },
+    {
+      "id": "D1-wrong-label-rebind",
+      "outcome": "DEFECT",
+      "evidence": "request K changed edition 2025-12, byte digest, as_of 2026-02-28, direction reverse, role reverse, design, weight, source id; same forward P1 producer resolved SUPPORTED denominator 60."
+    },
+    {
+      "id": "D2-self-sealed-cross-source-cache",
+      "outcome": "DEFECT",
+      "evidence": "resealed cache entry bound victim request key to CHANGED_SOURCE_LAW evidence/query/rule; import accepted; resolve SUPPORTED denominator 999; consumer reader returned denominator 999; victim universe ca5ee132... differs from forged universe 1d17ba2f...."
+    },
+    {
+      "id": "D2-cache-no-full-K-preimage",
+      "outcome": "DEFECT",
+      "evidence": "exported cache entry keys are consumer_query, evidence, model_rule, request_key, result, schema, seal, seal_algorithm; no request/K preimage."
+    },
+    {
+      "id": "D3-valid-products-summary",
+      "outcome": "DEFECT",
+      "evidence": "single VALID_NULL/DIFFUSE/VALID_EMPTY/OBSERVED_ZERO results each produce support_state NO_SUPPORT while productive_all_required=true and result_counts retains the state."
+    },
+    {
+      "id": "E04-actual-fixed-semantics",
+      "outcome": "OBSERVED",
+      "evidence": "unchanged archived nonparent.consume with a ZERO_SUPPORT step and denominator 0 returned top-level state OPTIONS_AND_SOURCE_SUPPORT_PRODUCED; actual blob 2181b832... copied with matching git hash."
+    },
+    {
+      "id": "J42-synthetic-trace",
+      "outcome": "OBSERVED",
+      "evidence": "J42 blob 40f1e9f6... lines 215-219 append call=evaluate_positioned_subject_possibility with same_evidence_object=True and contain no actual evaluator call."
+    },
+    {
+      "id": "P41-trace-index-fallback",
+      "outcome": "OBSERVED",
+      "evidence": "P41 blob 7d428106... lines 132-148 index trace consumptions and fall back to CACHED_PRODUCTION_CONSUMPTION with same_evidence_object=True."
+    },
+    {
+      "id": "candidate-no-live-caller",
+      "outcome": "OBSERVED",
+      "evidence": "git grep at candidate commit finds pre553_universal_evidence_binding only in the module and its test."
+    }
+  ],
+  "observed_limits": [
+    "Full J42/P41 progressive adoption and a repaired E04 terminal are NOT_REACHED; the historical bodies are archived recovery targets outside the R08 allowlist and are not live adopted production.",
+    "The candidate cache is a canonical SHA-256 self-seal, not secret-key issuer authentication; the author acknowledges this in limits, but encapsulation still accepts a self-sealed forged cross-source preimage.",
+    "All fixtures are TEST_ONLY source-free. No original-source read, scientific/source issuance, production/CI, N11/N12, F6/F7/F8 or actor state.",
+    "No candidate file was modified; reviewer writes are only under WORKER_RETURNS/PYAT-R61-R08-INDEPENDENT-REVIEW-R1/.",
+    "No author repair, self-adoption, extra session, subagent, model/provider change or broad court was performed."
+  ]
+}

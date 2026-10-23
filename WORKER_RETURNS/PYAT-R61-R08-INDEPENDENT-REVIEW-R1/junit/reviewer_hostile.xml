@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="7" skipped="0" tests="8" time="3.047" timestamp="2026-10-23T01:52:55.195397-04:00" hostname="MacBook-Pro.lan"><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.probes.test_r08v_hostile" name="test_wrong_condition_rebind_must_not_authenticate_p1_producer" time="0.377"><failure message="AssertionError: request K names POSITION occurrence/value P2 but the bound actual producer is P1; got SUPPORTED, denominator 60, values={'schema': 'R61_EVIDENCE_CONSUMER_VALUES_READ@1', 'request_key': '7cae5510957e4d869d0a31afcffb16f5e3d210c4a1f98a4076016283ff260536', 'target_ref': {'kind': 'QUESTION_NATIVE', 'object_id': 'urn:test:i03:question_native:c1-at07-ANSWER', 'content_hash': 'e6f8992046c0941a5192585cbe9c2ec86e03963e68207c1f05988df2c9105513'}, 'ordered_conditions': [{'occurrence': {'item': 'POSITION', 'option': 'P2', 'form': 'FORM_1', 'repeat': '0'}, 'typed_value': {'tag': 'STRING', 'value': 'P2'}, 'domain_state_version': 'AT07_DOMAIN@1', 'conditioner_binding_id': 'position'}], 'direction': 'POSITION_P1_TO_ANSWER', 'role': 'FORWARD_AUTHORIZED', 'consumer_query_ref': {'kind': 'POSITIONED_SUBJECT_EMPIRICAL_POSSIBILITY_QUERY@1', 'object_id': 'urn:rawlsing:learned-world:positioned-subject-query:sha256:0e966cca9805e4fedce532812cfd6587cd7f7cf6cd858ac982c531abd6f61330', 'content_hash': '0e966cca9805e4fedce532812cfd6587cd7f7cf6cd858ac982c531abd6f61330'}, 'evidence_ref': {'kind': 'C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1', 'object_id': 'urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:b2407eeb3d22cc0d71e5d13308b0149338761efc4ef40921ab363c3cd9c78307', 'content_hash': 'b2407eeb3d22cc0d71e5d13308b0149338761efc4ef40921ab363c3cd9c78307'}, 'result_state': 'EXACT_SUPPORTED', 'result_hash': '47b51a3b6df4ec051b5b9fb04a92760c791f4ac761f20a157966cbe1b481a4be', 'retained_conditioner_ids': ['position'], 'denominator': 60, 'cells': [{'cell': 'no', 'cell_state': 'OBSERVED_POSITIVE', 'raw_numerator_support': 6, 'raw_probability_exact_fraction': {'$exact_fraction': [1, 10]}}, {'cell': 'yes', 'cell_state': 'OBSERVED_POSITIVE', 'raw_numerator_support': 54, 'raw_probability_exact_fraction': {'$exact_fraction': [9, 10]}}], 'model_rule_hash': 'ef346a3f0884ef1b4c8d7f1c99b1f9dbc689af128ad09285b4343c91e96cab6e'}&#10;assert 'SUPPORTED' != 'SUPPORTED'&#10; +  where 'SUPPORTED' = EvidenceResult(request_key='7cae5510957e4d869d0a31afcffb16f5e3d210c4a1f98a4076016283ff260536', eligibility_state='ELIG...1b4c8d7f1c99b1f9dbc689af128ad09285b4343c91e96cab6e'}, uncertainty_state='UNCERTAINTY_UNQUANTIFIED', typed_refusal=None).result_state">def test_wrong_condition_rebind_must_not_authenticate_p1_producer():
+        case = build_provider_case("forward")
+        request = _request(
+            case,
+            conditions=(_condition("POSITION", "P2", "P2", "position"),),
+            request_id="r08v-hostile-wrong-condition",
+        )
+        result = _rebind(case, request)
+&gt;       assert result.result_state != "SUPPORTED", (
+            "request K names POSITION occurrence/value P2 but the bound actual "
+            f"producer is P1; got {result.result_state}, denominator {result.denominator}, "
+            f"values={result.consumer_values_read}"
+        )
+E       AssertionError: request K names POSITION occurrence/value P2 but the bound actual producer is P1; got SUPPORTED, denominator 60, values={'schema': 'R61_EVIDENCE_CONSUMER_VALUES_READ@1', 'request_key': '7cae5510957e4d869d0a31afcffb16f5e3d210c4a1f98a4076016283ff260536', 'target_ref': {'kind': 'QUESTION_NATIVE', 'object_id': 'urn:test:i03:question_native:c1-at07-ANSWER', 'content_hash': 'e6f8992046c0941a5192585cbe9c2ec86e03963e68207c1f05988df2c9105513'}, 'ordered_conditions': [{'occurrence': {'item': 'POSITION', 'option': 'P2', 'form': 'FORM_1', 'repeat': '0'}, 'typed_value': {'tag': 'STRING', 'value': 'P2'}, 'domain_state_version': 'AT07_DOMAIN@1', 'conditioner_binding_id': 'position'}], 'direction': 'POSITION_P1_TO_ANSWER', 'role': 'FORWARD_AUTHORIZED', 'consumer_query_ref': {'kind': 'POSITIONED_SUBJECT_EMPIRICAL_POSSIBILITY_QUERY@1', 'object_id': 'urn:rawlsing:learned-world:positioned-subject-query:sha256:0e966cca9805e4fedce532812cfd6587cd7f7cf6cd858ac982c531abd6f61330', 'content_hash': '0e966cca9805e4fedce532812cfd6587cd7f7cf6cd858ac982c531abd6f61330'}, 'evidence_ref': {'kind': 'C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1', 'object_id': 'urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:b2407eeb3d22cc0d71e5d13308b0149338761efc4ef40921ab363c3cd9c78307', 'content_hash': 'b2407eeb3d22cc0d71e5d13308b0149338761efc4ef40921ab363c3cd9c78307'}, 'result_state': 'EXACT_SUPPORTED', 'result_hash': '47b51a3b6df4ec051b5b9fb04a92760c791f4ac761f20a157966cbe1b481a4be', 'retained_conditioner_ids': ['position'], 'denominator': 60, 'cells': [{'cell': 'no', 'cell_state': 'OBSERVED_POSITIVE', 'raw_numerator_support': 6, 'raw_probability_exact_fraction': {'$exact_fraction': [1, 10]}}, {'cell': 'yes', 'cell_state': 'OBSERVED_POSITIVE', 'raw_numerator_support': 54, 'raw_probability_exact_fraction': {'$exact_fraction': [9, 10]}}], 'model_rule_hash': 'ef346a3f0884ef1b4c8d7f1c99b1f9dbc689af128ad09285b4343c91e96cab6e'}
+E       assert 'SUPPORTED' != 'SUPPORTED'
+E        +  where 'SUPPORTED' = EvidenceResult(request_key='7cae5510957e4d869d0a31afcffb16f5e3d210c4a1f98a4076016283ff260536', eligibility_state='ELIG...1b4c8d7f1c99b1f9dbc689af128ad09285b4343c91e96cab6e'}, uncertainty_state='UNCERTAINTY_UNQUANTIFIED', typed_refusal=None).result_state
+
+WORKER_RETURNS/PYAT-R61-R08-INDEPENDENT-REVIEW-R1/probes/test_r08v_hostile.py:46: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.probes.test_r08v_hostile" name="test_wrong_typed_value_rebind_must_not_authenticate_p1_producer" time="0.337"><failure message="AssertionError: request K names a BOOLEAN True condition value but the bound actual producer conditions on string P1; got SUPPORTED, denominator 60&#10;assert 'SUPPORTED' != 'SUPPORTED'&#10; +  where 'SUPPORTED' = EvidenceResult(request_key='0d5d14f9f7ec62413293634cadf19ece6cb42cfc6503bbe6e65f986b16674e51', eligibility_state='ELIG...1b4c8d7f1c99b1f9dbc689af128ad09285b4343c91e96cab6e'}, uncertainty_state='UNCERTAINTY_UNQUANTIFIED', typed_refusal=None).result_state">def test_wrong_typed_value_rebind_must_not_authenticate_p1_producer():
+        case = build_provider_case("forward")
+        request = _request(
+            case,
+            conditions=(_condition("POSITION", "P1", True, "position"),),
+            request_id="r08v-hostile-wrong-typed-value",
+        )
+        result = _rebind(case, request)
+&gt;       assert result.result_state != "SUPPORTED", (
+            "request K names a BOOLEAN True condition value but the bound actual "
+            f"producer conditions on string P1; got {result.result_state}, "
+            f"denominator {result.denominator}"
+        )
+E       AssertionError: request K names a BOOLEAN True condition value but the bound actual producer conditions on string P1; got SUPPORTED, denominator 60
+E       assert 'SUPPORTED' != 'SUPPORTED'
+E        +  where 'SUPPORTED' = EvidenceResult(request_key='0d5d14f9f7ec62413293634cadf19ece6cb42cfc6503bbe6e65f986b16674e51', eligibility_state='ELIG...1b4c8d7f1c99b1f9dbc689af128ad09285b4343c91e96cab6e'}, uncertainty_state='UNCERTAINTY_UNQUANTIFIED', typed_refusal=None).result_state
+
+WORKER_RETURNS/PYAT-R61-R08-INDEPENDENT-REVIEW-R1/probes/test_r08v_hostile.py:61: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.probes.test_r08v_hostile" name="test_null_and_integer_value_rebind_must_not_authenticate_p1_producer" time="0.334"><failure message="AssertionError: request K names typed value None but the bound actual producer conditions on string P1; got SUPPORTED&#10;assert 'SUPPORTED' != 'SUPPORTED'&#10; +  where 'SUPPORTED' = EvidenceResult(request_key='877f2aea16fc0d95b83d9a2ee52182a39899d78e4ca64a0a01056922f9a6d1d4', eligibility_state='ELIG...1b4c8d7f1c99b1f9dbc689af128ad09285b4343c91e96cab6e'}, uncertainty_state='UNCERTAINTY_UNQUANTIFIED', typed_refusal=None).result_state">def test_null_and_integer_value_rebind_must_not_authenticate_p1_producer():
+        case = build_provider_case("forward")
+        for index, value in enumerate((None, 1)):
+            request = _request(
+                case,
+                conditions=(_condition("POSITION", "P1", value, "position"),),
+                request_id=f"r08v-hostile-wrong-scalar-{index}",
+            )
+            result = _rebind(case, request)
+&gt;           assert result.result_state != "SUPPORTED", (
+                f"request K names typed value {value!r} but the bound actual "
+                f"producer conditions on string P1; got {result.result_state}"
+            )
+E           AssertionError: request K names typed value None but the bound actual producer conditions on string P1; got SUPPORTED
+E           assert 'SUPPORTED' != 'SUPPORTED'
+E            +  where 'SUPPORTED' = EvidenceResult(request_key='877f2aea16fc0d95b83d9a2ee52182a39899d78e4ca64a0a01056922f9a6d1d4', eligibility_state='ELIG...1b4c8d7f1c99b1f9dbc689af128ad09285b4343c91e96cab6e'}, uncertainty_state='UNCERTAINTY_UNQUANTIFIED', typed_refusal=None).result_state
+
+WORKER_RETURNS/PYAT-R61-R08-INDEPENDENT-REVIEW-R1/probes/test_r08v_hostile.py:77: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.probes.test_r08v_hostile" name="test_wrong_edition_direction_role_design_clock_rebind_must_refuse" time="0.299"><failure message="AssertionError: request K changed edition/digest/as-of/direction/role/design/weight/source but the same forward P1 actual producer was accepted; got SUPPORTED, denominator 60&#10;assert 'SUPPORTED' != 'SUPPORTED'&#10; +  where 'SUPPORTED' = EvidenceResult(request_key='78296a72ec9e7dee5a3a348863f64363b391735a9c44451f194d3a9ee8ea6dc1', eligibility_state='ELIG...1b4c8d7f1c99b1f9dbc689af128ad09285b4343c91e96cab6e'}, uncertainty_state='UNCERTAINTY_UNQUANTIFIED', typed_refusal=None).result_state">def test_wrong_edition_direction_role_design_clock_rebind_must_refuse():
+        case = build_provider_case("forward")
+        request = _request(
+            case,
+            edition="2025-12",
+            byte_digest=semantic_hash({"fixture": "r08v-other-edition"}),
+            as_of_clock="2026-02-28",
+            direction="ANSWER_YES_TO_POSITION",
+            role="REVERSE_AUTHORIZED",
+            design_ref=_ref("R61_DESIGN", "r08v-other-design", {"design": "OTHER"}),
+            weight_method="GOVERNED_WEIGHTED",
+            source_id="R08V_OTHER_SOURCE",
+            request_id="r08v-hostile-labels",
+        )
+        result = _rebind(case, request)
+&gt;       assert result.result_state != "SUPPORTED", (
+            "request K changed edition/digest/as-of/direction/role/design/weight/"
+            "source but the same forward P1 actual producer was accepted; "
+            f"got {result.result_state}, denominator {result.denominator}"
+        )
+E       AssertionError: request K changed edition/digest/as-of/direction/role/design/weight/source but the same forward P1 actual producer was accepted; got SUPPORTED, denominator 60
+E       assert 'SUPPORTED' != 'SUPPORTED'
+E        +  where 'SUPPORTED' = EvidenceResult(request_key='78296a72ec9e7dee5a3a348863f64363b391735a9c44451f194d3a9ee8ea6dc1', eligibility_state='ELIG...1b4c8d7f1c99b1f9dbc689af128ad09285b4343c91e96cab6e'}, uncertainty_state='UNCERTAINTY_UNQUANTIFIED', typed_refusal=None).result_state
+
+WORKER_RETURNS/PYAT-R61-R08-INDEPENDENT-REVIEW-R1/probes/test_r08v_hostile.py:98: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.probes.test_r08v_hostile" name="test_extra_and_reordered_conditions_must_refuse" time="0.289"><failure message="AssertionError: a request with an extra/reordered condition tuple was bound to the single-conditioner P1 producer; got SUPPORTED, values={'schema': 'R61_EVIDENCE_CONSUMER_VALUES_READ@1', 'request_key': '8063cc35f7db1c10e35ff7e15b598e861f3258c8dbbbc3f4455a0822ab2f0f80', 'target_ref': {'kind': 'QUESTION_NATIVE', 'object_id': 'urn:test:i03:question_native:c1-at07-ANSWER', 'content_hash': 'e6f8992046c0941a5192585cbe9c2ec86e03963e68207c1f05988df2c9105513'}, 'ordered_conditions': [{'occurrence': {'item': 'POSITION', 'option': 'P1', 'form': 'FORM_1', 'repeat': '0'}, 'typed_value': {'tag': 'STRING', 'value': 'P1'}, 'domain_state_version': 'AT07_DOMAIN@1', 'conditioner_binding_id': 'position'}, {'occurrence': {'item': 'ANSWER', 'option': 'yes', 'form': 'FORM_1', 'repeat': '0'}, 'typed_value': {'tag': 'STRING', 'value': 'yes'}, 'domain_state_version': 'AT07_DOMAIN@1', 'conditioner_binding_id': 'answer'}], 'direction': 'POSITION_P1_TO_ANSWER', 'role': 'FORWARD_AUTHORIZED', 'consumer_query_ref': {'kind': 'POSITIONED_SUBJECT_EMPIRICAL_POSSIBILITY_QUERY@1', 'object_id': 'urn:rawlsing:learned-world:positioned-subject-query:sha256:0e966cca9805e4fedce532812cfd6587cd7f7cf6cd858ac982c531abd6f61330', 'content_hash': '0e966cca9805e4fedce532812cfd6587cd7f7cf6cd858ac982c531abd6f61330'}, 'evidence_ref': {'kind': 'C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1', 'object_id': 'urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:b2407eeb3d22cc0d71e5d13308b0149338761efc4ef40921ab363c3cd9c78307', 'content_hash': 'b2407eeb3d22cc0d71e5d13308b0149338761efc4ef40921ab363c3cd9c78307'}, 'result_state': 'EXACT_SUPPORTED', 'result_hash': '47b51a3b6df4ec051b5b9fb04a92760c791f4ac761f20a157966cbe1b481a4be', 'retained_conditioner_ids': ['position'], 'denominator': 60, 'cells': [{'cell': 'no', 'cell_state': 'OBSERVED_POSITIVE', 'raw_numerator_support': 6, 'raw_probability_exact_fraction': {'$exact_fraction': [1, 10]}}, {'cell': 'yes', 'cell_state': 'OBSERVED_POSITIVE', 'raw_numerator_support': 54, 'raw_probability_exact_fraction': {'$exact_fraction': [9, 10]}}], 'model_rule_hash': 'ef346a3f0884ef1b4c8d7f1c99b1f9dbc689af128ad09285b4343c91e96cab6e'}&#10;assert 'SUPPORTED' != 'SUPPORTED'&#10; +  where 'SUPPORTED' = EvidenceResult(request_key='8063cc35f7db1c10e35ff7e15b598e861f3258c8dbbbc3f4455a0822ab2f0f80', eligibility_state='ELIG...1b4c8d7f1c99b1f9dbc689af128ad09285b4343c91e96cab6e'}, uncertainty_state='UNCERTAINTY_UNQUANTIFIED', typed_refusal=None).result_state">def test_extra_and_reordered_conditions_must_refuse():
+        case = build_provider_case("forward")
+        first = _condition("POSITION", "P1", "P1", "position")
+        second = _condition("ANSWER", "yes", "yes", "answer")
+        for index, conditions in enumerate(((first, second), (second, first))):
+            request = _request(
+                case,
+                conditions=conditions,
+                request_id=f"r08v-hostile-ordered-{index}",
+            )
+            result = _rebind(case, request)
+&gt;           assert result.result_state != "SUPPORTED", (
+                "a request with an extra/reordered condition tuple was bound to the "
+                f"single-conditioner P1 producer; got {result.result_state}, "
+                f"values={result.consumer_values_read}"
+            )
+E           AssertionError: a request with an extra/reordered condition tuple was bound to the single-conditioner P1 producer; got SUPPORTED, values={'schema': 'R61_EVIDENCE_CONSUMER_VALUES_READ@1', 'request_key': '8063cc35f7db1c10e35ff7e15b598e861f3258c8dbbbc3f4455a0822ab2f0f80', 'target_ref': {'kind': 'QUESTION_NATIVE', 'object_id': 'urn:test:i03:question_native:c1-at07-ANSWER', 'content_hash': 'e6f8992046c0941a5192585cbe9c2ec86e03963e68207c1f05988df2c9105513'}, 'ordered_conditions': [{'occurrence': {'item': 'POSITION', 'option': 'P1', 'form': 'FORM_1', 'repeat': '0'}, 'typed_value': {'tag': 'STRING', 'value': 'P1'}, 'domain_state_version': 'AT07_DOMAIN@1', 'conditioner_binding_id': 'position'}, {'occurrence': {'item': 'ANSWER', 'option': 'yes', 'form': 'FORM_1', 'repeat': '0'}, 'typed_value': {'tag': 'STRING', 'value': 'yes'}, 'domain_state_version': 'AT07_DOMAIN@1', 'conditioner_binding_id': 'answer'}], 'direction': 'POSITION_P1_TO_ANSWER', 'role': 'FORWARD_AUTHORIZED', 'consumer_query_ref': {'kind': 'POSITIONED_SUBJECT_EMPIRICAL_POSSIBILITY_QUERY@1', 'object_id': 'urn:rawlsing:learned-world:positioned-subject-query:sha256:0e966cca9805e4fedce532812cfd6587cd7f7cf6cd858ac982c531abd6f61330', 'content_hash': '0e966cca9805e4fedce532812cfd6587cd7f7cf6cd858ac982c531abd6f61330'}, 'evidence_ref': {'kind': 'C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1', 'object_id': 'urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:b2407eeb3d22cc0d71e5d13308b0149338761efc4ef40921ab363c3cd9c78307', 'content_hash': 'b2407eeb3d22cc0d71e5d13308b0149338761efc4ef40921ab363c3cd9c78307'}, 'result_state': 'EXACT_SUPPORTED', 'result_hash': '47b51a3b6df4ec051b5b9fb04a92760c791f4ac761f20a157966cbe1b481a4be', 'retained_conditioner_ids': ['position'], 'denominator': 60, 'cells': [{'cell': 'no', 'cell_state': 'OBSERVED_POSITIVE', 'raw_numerator_support': 6, 'raw_probability_exact_fraction': {'$exact_fraction': [1, 10]}}, {'cell': 'yes', 'cell_state': 'OBSERVED_POSITIVE', 'raw_numerator_support': 54, 'raw_probability_exact_fraction': {'$exact_fraction': [9, 10]}}], 'model_rule_hash': 'ef346a3f0884ef1b4c8d7f1c99b1f9dbc689af128ad09285b4343c91e96cab6e'}
+E           assert 'SUPPORTED' != 'SUPPORTED'
+E            +  where 'SUPPORTED' = EvidenceResult(request_key='8063cc35f7db1c10e35ff7e15b598e861f3258c8dbbbc3f4455a0822ab2f0f80', eligibility_state='ELIG...1b4c8d7f1c99b1f9dbc689af128ad09285b4343c91e96cab6e'}, uncertainty_state='UNCERTAINTY_UNQUANTIFIED', typed_refusal=None).result_state
+
+WORKER_RETURNS/PYAT-R61-R08-INDEPENDENT-REVIEW-R1/probes/test_r08v_hostile.py:116: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.probes.test_r08v_hostile" name="test_self_sealed_cross_source_cache_forgery_must_refuse" time="0.638"><failure message="AssertionError: self-sealed cache bound the victim K to the changed-source producer/evidence and resolved SUPPORTED&#10;assert 'SUPPORTED' != 'SUPPORTED'&#10; +  where 'SUPPORTED' = EvidenceResult(request_key='8a0b464b8ae900af79ae77f95e6fa55bd71f310c445d78df926d30ded63aa8d2', eligibility_state='ELIG...5472748963e3e06d6b0ba3fde19c737da11b79bce4f1176e1f'}, uncertainty_state='UNCERTAINTY_UNQUANTIFIED', typed_refusal=None).result_state">def test_self_sealed_cross_source_cache_forgery_must_refuse():
+        case = build_provider_case("forward")
+        victim_request = _request(case, request_id="r08v-hostile-cache-victim")
+        victim_resolver = EvidenceResolver()
+        victim_resolver.bind(_binding(victim_request, case))
+        assert victim_resolver.resolve(victim_request).result_state == "SUPPORTED"
+    
+        other_case = build_provider_case("forward", variant="CHANGED_SOURCE_LAW")
+        other_request = _request(other_case, request_id="r08v-hostile-cache-other")
+        other_resolver = EvidenceResolver()
+        other_resolver.bind(_binding(other_request, other_case))
+        other_result = other_resolver.resolve(other_request)
+        assert other_result.result_state == "SUPPORTED"
+        assert other_result.denominator == 70
+    
+        forged = _forge_cross_source_cache(victim_request, other_result)
+        cold = EvidenceResolver()
+        try:
+            cold.import_authenticated_cache(forged)
+        except EvidenceCacheIntegrityError:
+            return
+        restored = cold.resolve(victim_request)
+&gt;       assert restored.result_state != "SUPPORTED", (
+            "self-sealed cache bound the victim K to the changed-source producer/"
+            "evidence and resolved SUPPORTED"
+        )
+E       AssertionError: self-sealed cache bound the victim K to the changed-source producer/evidence and resolved SUPPORTED
+E       assert 'SUPPORTED' != 'SUPPORTED'
+E        +  where 'SUPPORTED' = EvidenceResult(request_key='8a0b464b8ae900af79ae77f95e6fa55bd71f310c445d78df926d30ded63aa8d2', eligibility_state='ELIG...5472748963e3e06d6b0ba3fde19c737da11b79bce4f1176e1f'}, uncertainty_state='UNCERTAINTY_UNQUANTIFIED', typed_refusal=None).result_state
+
+WORKER_RETURNS/PYAT-R61-R08-INDEPENDENT-REVIEW-R1/probes/test_r08v_hostile.py:207: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.probes.test_r08v_hostile" name="test_cache_entry_must_carry_full_k_not_only_hash" time="0.285"><failure message="AssertionError: cache entry carries only request_key plus result/evidence/query/rule; it has no full K preimage to verify the producer association&#10;assert False&#10; +  where False = any(&lt;generator object test_cache_entry_must_carry_full_k_not_only_hash.&lt;locals&gt;.&lt;genexpr&gt; at 0x103274120&gt;)">def test_cache_entry_must_carry_full_k_not_only_hash():
+        case = build_provider_case("forward")
+        request = _request(case, request_id="r08v-hostile-cache-preimage")
+        resolver = EvidenceResolver()
+        resolver.bind(_binding(request, case))
+        resolver.resolve(request)
+        entry = resolver.export_cache()["entries"][0]
+&gt;       assert any(
+            key in entry for key in ("request", "request_material", "request_preimage")
+        ), (
+            "cache entry carries only request_key plus result/evidence/query/rule; "
+            "it has no full K preimage to verify the producer association"
+        )
+E       AssertionError: cache entry carries only request_key plus result/evidence/query/rule; it has no full K preimage to verify the producer association
+E       assert False
+E        +  where False = any(&lt;generator object test_cache_entry_must_carry_full_k_not_only_hash.&lt;locals&gt;.&lt;genexpr&gt; at 0x103274120&gt;)
+
+WORKER_RETURNS/PYAT-R61-R08-INDEPENDENT-REVIEW-R1/probes/test_r08v_hostile.py:226: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.probes.test_r08v_hostile" name="test_observed_zero_with_positive_denominator_is_typed_not_crash_or_zero_support" time="0.303" /></testsuite></testsuites>
