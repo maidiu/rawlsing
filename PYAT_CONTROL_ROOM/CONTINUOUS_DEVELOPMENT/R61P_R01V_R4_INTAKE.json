@@ -1,0 +1,33 @@
+{
+  "schema": "PYAT_R61P_R01V_R4_INTAKE@1",
+  "observed_utc": "2026-10-23T16:42:25.213899+00:00",
+  "candidate": "5c77413365b9d45375b25dbaa29cb3da497bcb10",
+  "review": "634ee0dac4ef87347d6f334f6c8c1abc97b24d01",
+  "direct_remote_verified": true,
+  "artifact_hashes_verified": 20,
+  "changed_own_root_paths_verified": 21,
+  "engineering": "REVISE_A4_RECEIPT_LINEAGE_GENERATION_AND_ACCOUNTING",
+  "preserved_positive": [
+    "24 author tests independently replayed",
+    "10 R3 independent controls",
+    "real three-generation I05 execution and nonwinning exploration"
+  ],
+  "defects": [
+    "parent receipt/replay/handoff/source binding not validated by N+1 consumer",
+    "generation labels do not enforce actual predecessor relation",
+    "cumulative cap accepts unbound caller count; exhaustion lacks explicit pending record"
+  ],
+  "own_probe_tests": 7,
+  "own_probe_interpretation": "passing defect demonstrations are not acceptance",
+  "remaining_independent_proof": [
+    "correct comparator values, not only distinct predicate refs",
+    "independent changed-data hidden-minority oracle",
+    "wrong-source/edition/replay negatives at new interface"
+  ],
+  "native_rerun_by_HQ": false,
+  "A4_qualified": false,
+  "R03_wake": false,
+  "decision_class": "Faithful engineering against R61L E1-E3; no new product/science choice",
+  "next": "Same-author whole-function lineage/accounting repair then distinct native review",
+  "authority_holds_unchanged": true
+}
