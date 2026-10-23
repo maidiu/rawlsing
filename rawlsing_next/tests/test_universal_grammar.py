@@ -16,7 +16,7 @@ from rawlsing_next.pre553_discovery_exact import (
     ExactBoundedCoverageError,
     execute_exact_bounded_discovery,
 )
-from rawlsing_next.pre553_empirical_objects import ExactRef, exact_ref
+from rawlsing_next.pre553_empirical_objects import ExactRef, canonicalize, exact_ref
 from rawlsing_next.pre553_recursive_handoff import (
     load_recursive_handoff_bundle,
     write_recursive_handoff_bundle,
@@ -58,6 +58,8 @@ from rawlsing_next.universal_grammar.native_map import (
     lower_frontier,
     lower_operation,
     RecurrenceRefusal,
+    RetainedRecurrenceCampaign,
+    create_campaign,
     make_recurrence_parent_resolver,
     make_root_parent,
     native_receipt_anti_join,
@@ -1352,8 +1354,8 @@ def test_bounded_adaptive_recurrence_three_generations_actual_native():
     # D controls actual generations independently; K constrains ancestor count.
     short_policy = _recurrence_policy(d=2)
     stopped = activate_next_generation(
-        policy=short_policy, generation=generation, parents=parents,
-        root_parent=root_parent, next_generation=3, condition_predicates=s3,
+        policy=short_policy, generation=generations[-1], parents=parents,
+        root_parent=root_parent, next_generation=4, condition_predicates=s3,
     )
     assert stopped.stopped and stopped.stopped[0]["reason"] == "D_REACHED"
 
@@ -1666,6 +1668,18 @@ def test_r5_receipt_lineage_generation_and_budget_refusals():
         build_recurrence_issue_plan(**{**common, "total_issued_before": 4})
     with pytest.raises(RecurrenceRefusal, match="DUPLICATE_PARENT_IDENTITY"):
         build_recurrence_issue_plan(**{**common, "parents": (parent, parent)})
+    stripped = replace(parent, ancestry_conditions=(), ancestry_predicates=())
+    with pytest.raises(RecurrenceRefusal, match="PARENT_CANONICAL_ID_MISMATCH"):
+        build_recurrence_issue_plan(**{**common, "parents": (stripped,)})
+    wrong_root = make_root_parent(
+        predicate=s1[0][2], source_release_refs=(source["release_ref"],)
+    )
+    with pytest.raises(RecurrenceRefusal, match="ROOT_PARENT_PREDICATE_MISMATCH"):
+        build_recurrence_issue_plan(
+            policy=policy, generation=1, parents=(wrong_root,),
+            root_predicate=root_predicate, target_label="t", query_ref=query,
+            condition_predicates=s1, release_refs=(source["release_ref"],),
+        )
     other_release = ExactRef("C11_SOURCE_RELEASE@1", "urn:test:other-release", "c" * 64)
     with pytest.raises(RecurrenceRefusal, match="PARENT_SOURCE_RELEASE_EXECUTION_MISMATCH"):
         build_recurrence_issue_plan(**{**common, "release_refs": (other_release,)})
@@ -1744,3 +1758,204 @@ def test_r5_comparator_arithmetic_is_independently_expected():
             if operation.comparator == COMPARATOR_ROOT and operation.condition_values[-1] == s2_value:
                 state = g2.receipt_by_rule[operation.rule_id].typed_state
                 assert state == ("DISCOVERED_RESULT_SUPPORTED" if root_diff else "VALID_EMPTY")
+
+
+def _campaign_fixture(*, policy=None):
+    source, qauth, root, query = _recurrence_source()
+    policy = policy or _recurrence_policy()
+    s1 = _condition_predicates(source, qauth, "s1")
+    s2 = _condition_predicates(source, qauth, "s2")
+    s3 = _condition_predicates(source, qauth, "s3")
+    dauths = {tag: _d_auth(tag) for tag in ("R61-R4-G1", "R61-R4-G2", "R61-R4-G3")}
+    registry = _i05_registry(source, qauth, *dauths.values())
+
+    def authority_factory(grammar):
+        tag = grammar["discovery_operation"].removeprefix("I03-OP-")
+        return _discovery_authority(
+            source, grammar, dauths[tag], tag=f"r61-r6-{tag}"
+        )
+
+    campaign = create_campaign(
+        policy=policy, root_predicate=root,
+        source_release_refs=(source["release_ref"],),
+        target_label="t", query_object=query,
+        condition_catalog=s1 + s2 + s3,
+        repository=source["repo"], authority_registry=registry,
+        authority_factory=authority_factory,
+        owner_refs=("R61-R6-TEST",),
+    )
+    return source, qauth, root, query, policy, s1, s2, s3, campaign
+
+
+def _campaign_active_refs(campaign, activation_ref):
+    activation = next(
+        record for record in campaign.inspect()["activations"]
+        if record["activation_ref"] == activation_ref
+    )
+    return tuple(activation["active_lineage_refs"])
+
+
+def test_r6_retained_campaign_owner_d3_lineage_and_restore(tmp_path):
+    source, qauth, root, query, policy, s1, s2, s3, campaign = _campaign_fixture()
+    root_ref = campaign.root_lineage_ref
+    i1 = campaign.issue(
+        parent_lineage_refs=(root_ref,),
+        condition_refs=tuple((key, value) for key, value, _ in s1),
+    )
+    e1 = campaign.execute(i1)
+    a1 = campaign.activate(e1)
+    assert campaign.execute(i1) == e1
+    p1 = next(
+        record for record in campaign.inspect()["issuances"]
+        if record["issuance_ref"] == i1
+    )
+    assert p1["cumulative_issued_count"] == 4
+    active1 = _campaign_active_refs(campaign, a1)
+    i2 = campaign.issue(
+        parent_lineage_refs=active1,
+        condition_refs=tuple((key, value) for key, value, _ in s2),
+    )
+    e2 = campaign.execute(i2)
+    a2 = campaign.activate(e2)
+    active2 = _campaign_active_refs(campaign, a2)
+    snapshot = campaign.snapshot()
+    pin = snapshot["checkpoint_ref"]
+    restored = RetainedRecurrenceCampaign.restore(
+        snapshot=snapshot, expected_checkpoint_ref=pin,
+        repository=source["repo"], authority_registry=campaign._registry,
+        authority_factory=campaign._authority_factory,
+        condition_catalog=campaign._condition_catalog, query_object=query,
+    )
+    restored_active = [
+        record["lineage_ref"] for record in restored.inspect()["lineage"]
+        if record["producer_generation"] == 2
+    ]
+    i3 = restored.issue(
+        parent_lineage_refs=tuple(restored_active),
+        condition_refs=tuple((key, value) for key, value, _ in s3),
+    )
+    e3 = restored.execute(i3)
+    inspect = restored.inspect()
+    assert inspect["campaign_ref"] == campaign.campaign_ref
+    assert len(inspect["issuances"]) == 3
+    assert len(inspect["executions"]) == 3
+    assert len(inspect["lineage"]) >= 3
+    assert all(
+        record["cumulative_issued_count"] <= policy.total_issued_cap
+        for record in inspect["issuances"]
+    )
+
+    # H1/H2/H4/H7-style public attacks cannot register caller lineage/history.
+    with pytest.raises(RecurrenceRefusal, match="LINEAGE_REFERENCE_NOT_RETAINED"):
+        campaign.issue(
+            parent_lineage_refs=("forged-lineage",),
+            condition_refs=tuple((key, value) for key, value, _ in s2),
+        )
+    with pytest.raises(RecurrenceRefusal, match="REQUESTED_GENERATION_MISMATCH"):
+        campaign.issue(
+            parent_lineage_refs=(active1[0],),
+            condition_refs=tuple((key, value) for key, value, _ in s2),
+            requested_generation=4,
+        )
+    with pytest.raises(RecurrenceRefusal, match="PREDECESSOR_ISSUANCE_NOT_RETAINED_HEAD"):
+        campaign.issue(
+            parent_lineage_refs=active2,
+            condition_refs=tuple((key, value) for key, value, _ in s3),
+            predecessor_issuance_ref="forged-predecessor",
+        )
+    with pytest.raises(RecurrenceRefusal, match="ACTIVATION_NEXT_GENERATION_MISMATCH"):
+        campaign.activate(e2, requested_next_generation=1)
+    copied = campaign.inspect()
+    copied["lineage"][0]["parent_id"] = "mutated"
+    assert campaign.inspect()["lineage"][0]["parent_id"] != "mutated"
+
+    # Zero-cap owner is explicit stopped budget, no native work.
+    zero_source, zero_qauth, zero_root, zero_query, _, zero_s1, _, _, zero_campaign = (
+        _campaign_fixture(policy=_recurrence_policy(per_generation=0))
+    )
+    zero_issue = zero_campaign.issue(
+        parent_lineage_refs=(zero_campaign.root_lineage_ref,),
+        condition_refs=tuple((key, value) for key, value, _ in zero_s1),
+    )
+    zero_record = next(
+        record for record in zero_campaign.inspect()["issuances"]
+        if record["issuance_ref"] == zero_issue
+    )
+    assert zero_record["state"] == "STOPPED_BUDGET"
+    assert zero_record["plan"]["expected_operations"] == []
+    with pytest.raises(RecurrenceRefusal, match="HAS_NO_ISSUED_WORK"):
+        zero_campaign.execute(zero_issue)
+
+    # Rewritten bytes with recomputed hashes fail against the unchanged pin.
+    altered = deepcopy(snapshot)
+    altered["payload"]["lineage"][1]["parent_id"] = "tampered"
+    altered["checkpoint_ref"] = __import__("rawlsing_next.pre553_empirical_objects", fromlist=["semantic_hash"]).semantic_hash(altered["payload"])
+    with pytest.raises(RecurrenceRefusal, match="CHECKPOINT_PIN_MISMATCH"):
+        RetainedRecurrenceCampaign.restore(
+            snapshot=altered, expected_checkpoint_ref=pin,
+            repository=source["repo"], authority_registry=campaign._registry,
+            authority_factory=campaign._authority_factory,
+            condition_catalog=campaign._condition_catalog, query_object=query,
+        )
+
+
+def test_r6_campaign_snapshot_fresh_process_n1(tmp_path):
+    source, qauth, root, query, policy, s1, s2, s3, campaign = _campaign_fixture()
+    i1 = campaign.issue(
+        parent_lineage_refs=(campaign.root_lineage_ref,),
+        condition_refs=tuple((key, value) for key, value, _ in s1),
+    )
+    e1 = campaign.execute(i1)
+    a1 = campaign.activate(e1)
+    snapshot = campaign.snapshot()
+    pin = snapshot["checkpoint_ref"]
+    snapshot_path = tmp_path / "campaign_snapshot.json"
+    snapshot_path.write_text(json.dumps(canonicalize(snapshot), sort_keys=True))
+
+    code = """
+import json, sys
+from rawlsing_next.tests.test_universal_grammar import (
+    _condition_predicates, _recurrence_policy, _recurrence_source,
+    _d_auth, _discovery_authority, _i05_registry,
+)
+from rawlsing_next.universal_grammar.native_map import RetainedRecurrenceCampaign
+snapshot_path, pin = sys.argv[1], sys.argv[2]
+snapshot = json.loads(open(snapshot_path, encoding="utf-8").read())
+source, qauth, root, query = _recurrence_source()
+policy = _recurrence_policy()
+s1 = _condition_predicates(source, qauth, "s1")
+s2 = _condition_predicates(source, qauth, "s2")
+s3 = _condition_predicates(source, qauth, "s3")
+dauths = {tag: _d_auth(tag) for tag in ("R61-R4-G1", "R61-R4-G2", "R61-R4-G3")}
+registry = _i05_registry(source, qauth, *dauths.values())
+def factory(grammar):
+    tag = grammar["discovery_operation"].removeprefix("I03-OP-")
+    return _discovery_authority(source, grammar, dauths[tag], tag="r61-r6-fresh-" + tag)
+restored = RetainedRecurrenceCampaign.restore(
+    snapshot=snapshot, expected_checkpoint_ref=pin,
+    repository=source["repo"], authority_registry=registry,
+    authority_factory=factory,
+    condition_catalog={(k.key, __import__("json").dumps(v)): p for k, v, p in s1 + s2 + s3},
+    query_object=query,
+)
+active = [
+    record["lineage_ref"] for record in restored.inspect()["lineage"]
+    if record["producer_generation"] == 1
+]
+issue = restored.issue(
+    parent_lineage_refs=tuple(active),
+    condition_refs=tuple((key, value) for key, value, _ in s2),
+)
+execution = restored.execute(issue)
+print(json.dumps({"execution": execution, "no_drop": True}))
+"""
+    env = dict(os.environ)
+    env["PYTHONPATH"] = str(REPO_ROOT) + os.pathsep + env.get("PYTHONPATH", "")
+    proc = subprocess.run(
+        [sys.executable, "-c", code, str(snapshot_path), pin],
+        cwd=str(REPO_ROOT), env=env, capture_output=True, text=True, timeout=180,
+    )
+    assert proc.returncode == 0, proc.stderr[-2000:]
+    child = json.loads(proc.stdout)
+    assert child["execution"]
+    assert child["no_drop"] is True
