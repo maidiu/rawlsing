@@ -1,0 +1,92 @@
+{
+  "H1_target_label_mismatch": {
+    "create_accepted": true,
+    "execute_accepted": true,
+    "expected_query_target_label": "t",
+    "issue_accepted": true,
+    "plan_query_ref": {
+      "content_hash": "a85ef95e6c15e82083cd0587e66892e68f081490d02cf543bfc2feb13265064b",
+      "kind": "EmpiricalQuerySpec@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:a85ef95e6c15e82083cd0587e66892e68f081490d02cf543bfc2feb13265064b"
+    },
+    "plan_target_label": "wrong-label"
+  },
+  "H2_query_target_mismatch": {
+    "create_accepted": true,
+    "execute_accepted": true,
+    "issue_accepted": true,
+    "plan_query_ref": {
+      "content_hash": "16e50cdb298c0774c30ff4cce823e349194393758fa71a2418cd452a587eff71",
+      "kind": "EmpiricalQuerySpec@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:16e50cdb298c0774c30ff4cce823e349194393758fa71a2418cd452a587eff71"
+    },
+    "plan_target_label": "t",
+    "query_target": "s3"
+  },
+  "H3_catalog_key_predicate_mismatch": {
+    "bound_is_wrong_predicate": true,
+    "bound_predicate_ref": {
+      "content_hash": "fbf4f5196496fefe676781d1f257f178b716b7bf3980a1e6c697bca494088b7a",
+      "kind": "EmpiricalPredicate@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:fbf4f5196496fefe676781d1f257f178b716b7bf3980a1e6c697bca494088b7a"
+    },
+    "create_accepted": true,
+    "execute_accepted": true,
+    "issue_accepted": true,
+    "plan_condition_key": {
+      "form_id": null,
+      "item_id": "s1",
+      "option_id": null,
+      "repeat_id": null
+    },
+    "plan_condition_value": 0,
+    "semantically_expected_predicate_ref": {
+      "content_hash": "0a08380c68912d6239e3c3b4d6cbefa542d896bb189b211c1305601b6c9037a2",
+      "kind": "EmpiricalPredicate@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:0a08380c68912d6239e3c3b4d6cbefa542d896bb189b211c1305601b6c9037a2"
+    }
+  },
+  "H4_malformed_condition_key": {
+    "accepted": false,
+    "message": "'str' object has no attribute 'key'",
+    "type": "AttributeError"
+  },
+  "H5_duplicate_condition_refs": {
+    "accepted": false,
+    "message": "RECURRENCE_DUPLICATE_CONDITION_PREDICATE",
+    "type": "ValueError"
+  },
+  "HOST_TRUST_forged_snapshot_and_pin": {
+    "message": "RESTORE_FULL_RECORD_CLOSURE_MISMATCH",
+    "note": "R61AF: forged snapshot plus forged trusted pin is host-trust replacement, not an in-scope product-refusal gate; recorded only as a demonstration.",
+    "original_pin_rejects_altered_snapshot": true,
+    "restore_accepted": false,
+    "type": "RecurrenceRefusal"
+  },
+  "chronology_multibatch": {
+    "counts": [
+      0,
+      4
+    ],
+    "cumulative": [
+      4,
+      8
+    ],
+    "predecessors": [
+      null,
+      "80f33cba897b853c40db06fa702564eeb7e8b7c93b4f46b221da843ffe43c86a"
+    ]
+  },
+  "internal_closure_checks": {
+    "altered_cumulative": "RecurrenceRefusal: RESTORE_ISSUANCE_HISTORY_MISMATCH",
+    "altered_lineage_ancestry": "RecurrenceRefusal: RESTORE_FULL_RECORD_CLOSURE_MISMATCH",
+    "duplicate_execution": "RecurrenceRefusal: RESTORE_DUPLICATE_RECORD",
+    "missing_handoff": "RecurrenceRefusal: EXECUTION_HANDOFF_SET_MISMATCH",
+    "missing_receipt": "RecurrenceRefusal: EXECUTION_RECEIPT_SET_MISMATCH"
+  },
+  "pre_activation_restore": {
+    "activation_1": true,
+    "activation_2": true,
+    "execution_count_after": 2
+  }
+}

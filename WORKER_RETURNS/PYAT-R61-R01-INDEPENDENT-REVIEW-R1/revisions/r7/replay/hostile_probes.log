@@ -1,0 +1,207 @@
+FFFFF....                                                                [100%]
+=================================== FAILURES ===================================
+_______________ test_H1_target_label_must_match_the_query_target _______________
+
+    def test_H1_target_label_must_match_the_query_target():
+        source, qauth, root, query, policy, s1, s2, s3, campaign = _fixture()
+>       with pytest.raises(RecurrenceRefusal):
+E       Failed: DID NOT RAISE <class 'rawlsing_next.universal_grammar.native_map.RecurrenceRefusal'>
+
+WORKER_RETURNS/PYAT-R61-R01-INDEPENDENT-REVIEW-R1/revisions/r7/independent_probes/test_r01v_r7_hostile.py:48: Failed
+__________ test_H2_query_target_must_match_the_declared_target_label ___________
+
+    def test_H2_query_target_must_match_the_declared_target_label():
+        source, qauth, root, query, policy, s1, s2, s3, campaign = _fixture()
+        wrong_query = _query(source, qauth, root, ("s3",), tag="r61-r7-hostile-target-s3")
+>       with pytest.raises(RecurrenceRefusal):
+E       Failed: DID NOT RAISE <class 'rawlsing_next.universal_grammar.native_map.RecurrenceRefusal'>
+
+WORKER_RETURNS/PYAT-R61-R01-INDEPENDENT-REVIEW-R1/revisions/r7/independent_probes/test_r01v_r7_hostile.py:62: Failed
+_______ test_H3_condition_catalog_key_must_match_its_predicate_semantics _______
+
+    def test_H3_condition_catalog_key_must_match_its_predicate_semantics():
+        source, qauth, root, query, policy, s1, s2, s3, campaign = _fixture()
+        wrong_predicate = next(
+            predicate for key, value, predicate in s1
+            if key.item_id == "s1" and value == 1
+        )
+>       with pytest.raises(RecurrenceRefusal):
+E       Failed: DID NOT RAISE <class 'rawlsing_next.universal_grammar.native_map.RecurrenceRefusal'>
+
+WORKER_RETURNS/PYAT-R61-R01-INDEPENDENT-REVIEW-R1/revisions/r7/independent_probes/test_r01v_r7_hostile.py:79: Failed
+____________ test_H4_issue_malformed_condition_key_is_typed_refusal ____________
+
+    def test_H4_issue_malformed_condition_key_is_typed_refusal():
+        source, qauth, root, query, policy, s1, s2, s3, campaign = _fixture()
+        with pytest.raises(RecurrenceRefusal):
+>           campaign.issue(
+                parent_lineage_refs=(campaign.root_lineage_ref,),
+                condition_refs=(("s1", 0),),
+            )
+
+WORKER_RETURNS/PYAT-R61-R01-INDEPENDENT-REVIEW-R1/revisions/r7/independent_probes/test_r01v_r7_hostile.py:93: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/universal_grammar/native_map.py:2159: in issue
+    conditions = tuple(
+rawlsing_next/universal_grammar/native_map.py:2160: in <genexpr>
+    (key, value, self._condition_predicate(key, value))
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <rawlsing_next.universal_grammar.native_map.RetainedRecurrenceCampaign object at 0x10f38a350>
+key = 's1', value = 0
+
+    def _condition_predicate(self, key: OccurrenceKey, value: Any) -> Any:
+        predicate = self._condition_catalog.get(
+>           (key.key, typed_value_key(value))
+             ^^^^^^^
+        )
+E       AttributeError: 'str' object has no attribute 'key'
+
+rawlsing_next/universal_grammar/native_map.py:2119: AttributeError
+___________ test_H5_issue_duplicate_condition_refs_is_typed_refusal ____________
+
+    def test_H5_issue_duplicate_condition_refs_is_typed_refusal():
+        source, qauth, root, query, policy, s1, s2, s3, campaign = _fixture()
+        first = (s1[0][0], s1[0][1])
+        with pytest.raises(RecurrenceRefusal):
+>           campaign.issue(
+                parent_lineage_refs=(campaign.root_lineage_ref,),
+                condition_refs=(first, first),
+            )
+
+WORKER_RETURNS/PYAT-R61-R01-INDEPENDENT-REVIEW-R1/revisions/r7/independent_probes/test_r01v_r7_hostile.py:103: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/universal_grammar/native_map.py:2165: in issue
+    plan = build_recurrence_issue_plan(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def build_recurrence_issue_plan(
+        *,
+        policy: RecurrencePolicy,
+        generation: int,
+        parents: Sequence[RecurrenceParent],
+        root_predicate: Any,
+        target_label: str,
+        query_ref: Any,
+        condition_predicates: Sequence[tuple[OccurrenceKey, Any, Any]],
+        previous_plan: RecurrenceIssuePlan | None = None,
+        parent_resolver: RecurrenceParentResolver | None = None,
+        release_refs: Sequence[Any] | None = None,
+        total_issued_before: int | None = None,
+    ) -> RecurrenceIssuePlan:
+        """Freeze one finite generation's exact grammar and expected operation IDs."""
+    
+        if generation < 1 or generation > int(policy.bounds["D"]):
+            raise RecurrenceRefusal("RECURRENCE_GENERATION_OUTSIDE_ISSUED_D")
+        if total_issued_before is not None:
+            raise RecurrenceRefusal("UNBOUND_TOTAL_ISSUED_BEFORE_REFUSED")
+        if not parents:
+            raise RecurrenceRefusal("RECURRENCE_REQUIRES_ACTIVE_PARENT")
+        if not condition_predicates:
+            raise RecurrenceRefusal("RECURRENCE_REQUIRES_NEXT_CONDITION")
+        parent_ids = [parent.parent_id for parent in parents]
+        if len(set(parent_ids)) != len(parent_ids):
+            raise RecurrenceRefusal("DUPLICATE_PARENT_IDENTITY")
+        if generation == 1:
+            if len(parents) != 1 or parents[0].kind != PARENT_ROOT or parents[0].generation != 0:
+                raise RecurrenceRefusal("GENERATION_ONE_REQUIRES_SINGLE_ROOT_PARENT")
+            if parents[0].predicate.ref != root_predicate.ref:
+                raise RecurrenceRefusal("ROOT_PARENT_PREDICATE_MISMATCH")
+            if release_refs is not None and tuple(sorted(
+                (exact_ref(ref, "root release") for ref in parents[0].source_release_refs),
+                key=lambda ref: ref.key,
+            )) != tuple(sorted(
+                (exact_ref(ref, "root release") for ref in release_refs),
+                key=lambda ref: ref.key,
+            )):
+                raise RecurrenceRefusal("ROOT_PARENT_SOURCE_RELEASE_MISMATCH")
+        else:
+            if any(parent.kind == PARENT_ROOT for parent in parents):
+                raise RecurrenceRefusal("ROOT_PARENT_NOT_ALLOWED_AFTER_GENERATION_ONE")
+            if any(parent.generation != generation - 1 for parent in parents):
+                raise RecurrenceRefusal("PARENT_GENERATION_CONTINUITY_VIOLATION")
+            if previous_plan is None:
+                raise RecurrenceRefusal("PREDECESSOR_PLAN_REQUIRED")
+        # Chronological predecessor and discovery ancestry are independent.
+        issued_before = 0
+        predecessor_ref = None
+        if previous_plan is not None:
+            if previous_plan.policy.content_hash != policy.content_hash:
+                raise RecurrenceRefusal("PREDECESSOR_PLAN_POLICY_MISMATCH")
+            root_ref = exact_ref(root_predicate.ref, "root predicate").as_dict()
+            if previous_plan.root_predicate_ref != root_ref:
+                raise RecurrenceRefusal("PREDECESSOR_PLAN_ROOT_MISMATCH")
+            if previous_plan.state not in {RECURRENCE_ISSUED, RECURRENCE_STOPPED_BUDGET}:
+                raise RecurrenceRefusal("PREDECESSOR_PLAN_NOT_ISSUED")
+            if previous_plan.cumulative_issued_count != (
+                previous_plan.predecessor_issued_count + len(previous_plan.expected_operations)
+            ):
+                raise RecurrenceRefusal("PREDECESSOR_PLAN_ISSUED_COUNT_INCONSISTENT")
+            issued_before = previous_plan.cumulative_issued_count
+            predecessor_ref = previous_plan.content_hash
+        canonical_parents = tuple(
+            _validate_parent_resolution(
+                parent, parent_resolver, release_refs or ()
+            )
+            for parent in parents
+        )
+        remaining_total = max(0, policy.total_issued_cap - issued_before)
+        if remaining_total == 0 or policy.per_generation_issued_cap == 0:
+            return RecurrenceIssuePlan(
+                generation=generation, policy=policy,
+                grammar={"schema": CANDIDATE_GRAMMAR_SCHEMA, "atoms": (),
+                         "query_templates": (), "rules": (),
+                         "limits": {"maximum_conditioner_arity_K": int(policy.bounds["K"]),
+                                    "maximum_target_arity_J": int(policy.bounds["J"])},
+                         "allow_empty_frontier": False},
+                expected_operations=(), parents=canonical_parents,
+                condition_predicates=tuple(condition_predicates),
+                target_label=target_label,
+                query_ref=_ref_material(getattr(query_ref, "ref", query_ref)),
+                unissued=tuple({
+                    "parent_id": parent.parent_id,
+                    "reason": ("TOTAL_ISSUED_CAP" if remaining_total == 0 else "PER_GENERATION_ISSUED_CAP"),
+                    "state": RECURRENCE_STOPPED_BUDGET,
+                } for parent in canonical_parents),
+                query_object=query_ref if hasattr(query_ref, "ref") else None,
+                predecessor_plan_ref=predecessor_ref,
+                predecessor_issued_count=issued_before,
+                cumulative_issued_count=issued_before,
+                root_predicate_ref=exact_ref(root_predicate.ref, "root predicate").as_dict(),
+                state=RECURRENCE_STOPPED_BUDGET,
+            )
+        issued_cap = min(policy.per_generation_issued_cap, remaining_total)
+        query_ref_object = getattr(query_ref, "ref", query_ref)
+        query_material = _ref_material(query_ref_object)
+        atoms: dict[str, Any] = {}
+        templates: dict[str, Any] = {}
+        rules: list[dict[str, Any]] = []
+        expected: list[RecurrenceExpectedOperation] = []
+        unissued: list[Mapping[str, Any]] = []
+    
+        def atom_for(predicate: Any, kind: str, ancestry: Sequence[Any] = ()) -> str:
+            atom_id = _atom_id(predicate.ref)
+            atoms[atom_id] = {
+                "atom_id": atom_id, "predicate_ref": predicate.ref,
+                "kind": kind, "ancestry_refs": tuple(ancestry),
+            }
+            return atom_id
+    
+        root_atom = atom_for(root_predicate, "BRANCH", ())
+        template_id = _template_id(query_ref_object)
+        templates[template_id] = {"template_id": template_id, "query_ref": query_ref_object}
+        seen_condition_refs: set[str] = set()
+        for key, value, predicate in condition_predicates:
+            if predicate.ref.key in seen_condition_refs:
+>               raise ValueError("RECURRENCE_DUPLICATE_CONDITION_PREDICATE")
+E               ValueError: RECURRENCE_DUPLICATE_CONDITION_PREDICATE
+
+rawlsing_next/universal_grammar/native_map.py:1323: ValueError
+=========================== short test summary info ============================
+FAILED WORKER_RETURNS/PYAT-R61-R01-INDEPENDENT-REVIEW-R1/revisions/r7/independent_probes/test_r01v_r7_hostile.py::test_H1_target_label_must_match_the_query_target
+FAILED WORKER_RETURNS/PYAT-R61-R01-INDEPENDENT-REVIEW-R1/revisions/r7/independent_probes/test_r01v_r7_hostile.py::test_H2_query_target_must_match_the_declared_target_label
+FAILED WORKER_RETURNS/PYAT-R61-R01-INDEPENDENT-REVIEW-R1/revisions/r7/independent_probes/test_r01v_r7_hostile.py::test_H3_condition_catalog_key_must_match_its_predicate_semantics
+FAILED WORKER_RETURNS/PYAT-R61-R01-INDEPENDENT-REVIEW-R1/revisions/r7/independent_probes/test_r01v_r7_hostile.py::test_H4_issue_malformed_condition_key_is_typed_refusal
+FAILED WORKER_RETURNS/PYAT-R61-R01-INDEPENDENT-REVIEW-R1/revisions/r7/independent_probes/test_r01v_r7_hostile.py::test_H5_issue_duplicate_condition_refs_is_typed_refusal
+5 failed, 4 passed in 5.06s

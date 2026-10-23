@@ -1,0 +1,77 @@
+{
+  "author_report_manifest_verification": {
+    "entries_checked": 8,
+    "entries_matched": 8,
+    "preserved_partial_artifacts": 6,
+    "self_exclusion_verified": true,
+    "source_commit": "9c0f81ecb76ffe35d0190e31492ea1e9b568f01b"
+  },
+  "candidate_code": "0271a7e37a3ccccce5ff69db99f56f7745a62875",
+  "candidate_code_blobs": {
+    "rawlsing_next/tests/test_universal_grammar.py": "f5360894a8271cf8492e2ee39d9f7ab91ccbb5e5",
+    "rawlsing_next/universal_grammar/enumerate.py": "fd9203a0b272f98771c24070d01a9e5287c9b099",
+    "rawlsing_next/universal_grammar/native_map.py": "fd3dc6138ade59a2f7b2ffd7a4514604e916d25f",
+    "rawlsing_next/universal_grammar/types.py": "e7b196efe5b1f86134c27a80bfdd8f472be76e5d"
+  },
+  "candidate_startup": "9c0f81ecb76ffe35d0190e31492ea1e9b568f01b",
+  "excluded_from_manifest": [
+    "manifest.json"
+  ],
+  "excludes": [
+    "candidate production files (read-only identities above)",
+    "historical evidence, author returns, native owners, director/HQ checkout",
+    "manifest.json itself"
+  ],
+  "expectations_freeze_commit": "615a79058",
+  "f1_f6_matrix": {
+    "F1_positive": "PASS",
+    "F2_successor_attacks": "PASS for retained live injection/chronology/cold paths; target/query and catalog-key semantics incomplete",
+    "F3_owner_boundary": "PASS for view/record boundary and closure; malformed proposal typing incomplete",
+    "F4_accounting": "PASS",
+    "F5_restore": "PASS for fixed-pin/pre-post activation/closure; forged-both-inputs host-trust not used as gate",
+    "F6_same_consumer": "PASS for fault/restoration/cold/native-call conservation; create semantic validation gaps remain"
+  },
+  "files_sha256": {
+    "00_RETURN.md": "a8c9964eec67561d9f97d6230d451e8f88120a023ad6cb4614f988f34409dbe4",
+    "EXPECTATIONS.md": "f6981b4a7467807d81fa79c71eb3b7edde846d8cd22b0e5d22fd05b2873d3451",
+    "RESUME.md": "ce93bec39f697df54bacd09036bf0126f098d30c1274057084531e10487fde39",
+    "defects_and_limits.md": "7062b4ce54ed047f329362f14b9d467f3a52292486e5f397ffbb4aca7cc09fad",
+    "evidence/closure_exploration.log": "675742ec6ec2921ec034c9d2fcddeebf41ef1407d14d7ed74fd57be128311dee",
+    "evidence/defect_demonstration.log": "257059b87aef7463184d708e12cc4b3936f0b75c480553d0c81cfa53e7c3bd9c",
+    "evidence/defect_demonstrations.json": "257059b87aef7463184d708e12cc4b3936f0b75c480553d0c81cfa53e7c3bd9c",
+    "evidence/exploration.log": "0331d0b695157f086df6f4047e76c495f4f484ec5cba2e78d810926c57e448f6",
+    "evidence/independent_oracle_results.json": "20f1c2f2a0c667ad2f3491bb001e19b2159c7934ae44faf3016709fc657787d8",
+    "evidence/startup_and_identity.txt": "1f89b18e6a0ca47d0677cd6a62d16cd9934df12576229491ddb6695784289a58",
+    "independent_probes/defect_demonstration.py": "6699471a2f995db76a56909a895aa41370e4087b5247d65ae0200f1681b5ba1b",
+    "independent_probes/prior_test_r01v_independent.py": "de317bee207271f9d4b967bd436a67d92263e37f183da418f890f5433ff27ff8",
+    "independent_probes/test_r01v_r3_reviewer.py": "a3c843b81013ee4355b419d6bad7f517dd9f84122545d6adf186d8b0804aa47e",
+    "independent_probes/test_r01v_r7_controls.py": "59618cbc986ed91e393775a7ab8e4d6bdfae1dbeebb722d33c82f9307f667d42",
+    "independent_probes/test_r01v_r7_hostile.py": "d8d0b0e043d6ee75b1a7e1ba5d5b040b4239567a0cbdaac6856c6760e5355407",
+    "independent_probes/test_r01v_r7_positive.py": "9b6fde63c983a7c8539bc30be9ddcca3140a2f8a66a9fd2f95b23723e8931cd3",
+    "proof_witness.json": "364371c791e3fbb6141e797b4f946453e3991cd17081056c1f75bd93a7820eec",
+    "replay/author_suite.log": "6d92106a1306f40ad3f9b4ea583ea1bbd0433e06dc63ed6ecca59fa0f916c881",
+    "replay/author_suite_junit.xml": "fd978b9a7ee6486d6ca1c99c9c573754296952c94306c62026a5018be0064759",
+    "replay/controls.log": "72ea0543a2ac064b3f0d8788d56402dc308d015111488f3688ef95cf85f499b6",
+    "replay/controls_junit.xml": "c224e57ec58048fd1530b3bc7f42a34894321e89f8c78c8754567d0d9ed0389f",
+    "replay/hostile_probes.log": "1b486a78ea20688af360d66506067974401e9430fdf5147d7c0e129006a2ed70",
+    "replay/hostile_probes_junit.xml": "60e71c94934ce5b9cf49a140b420378f95caaa611b1df5089487fcfc8f7eeb4f",
+    "replay/positive_probe.log": "30b1aecc8b2f171af2d323681e17a09f62ca97b3ba76f416c95c37dd59a62092",
+    "replay/positive_probe_junit.xml": "a15fea17ca1fb4e74dde85ce8975d754f26415318e44bb7f00a6462ec0d03f7a",
+    "replay/r3_controls.log": "2f3f4e6f0ddf8832970f5f07b163f97391e0cafe24400a69cc216f9085ca4fd8",
+    "replay/r3_controls_junit.xml": "bf7a4d54c29368aadb29b849f9475b1cf878002d89c3ff5a6b4e1d83c2a58f99"
+  },
+  "review_branch": "agent/opencode-pyat-r61-r01v-r7-independent-review-r1",
+  "reviewer_imports": [
+    "rawlsing_next.pre553_empirical_objects",
+    "rawlsing_next.pre553_recursive_handoff",
+    "rawlsing_next.pre553_discovery_exact",
+    "rawlsing_next.tests.test_pre553_discovery_exact",
+    "rawlsing_next.tests.test_pre553_empirical_query",
+    "rawlsing_next.tests.test_universal_grammar",
+    "rawlsing_next.universal_grammar.native_map",
+    "rawlsing_next.universal_grammar.types"
+  ],
+  "schema": "PYAT_R61_R01V_R7_INDEPENDENT_REVIEW_MANIFEST@1",
+  "verdict": "REVISE",
+  "write_scope": "WORKER_RETURNS/PYAT-R61-R01-INDEPENDENT-REVIEW-R1/revisions/r7/"
+}

@@ -1,0 +1,18 @@
+wrong target label ACCEPTED urn:r61:campaign:1a8
+wrong target label execute ACCEPTED 991e9e955dbe
+duplicate issue conditions ValueError RECURRENCE_DUPLICATE_CONDITION_PREDICATE
+mixed generation parents RecurrenceRefusal PARENT_GENERATION_CONTINUITY_VIOLATION
+target_label t with query s3 ACCEPTED urn:r61:campaign:d6a
+execute accepted 3ba50187d9ea plan target t query target a935b63605f4
+Traceback (most recent call last):
+  File "<stdin>", line 6, in <module>
+StopIteration
+mismatched catalog key/predicate ACCEPTED
+mismatched catalog execute ACCEPTED 3cd9d109c67d
+malformed condition key AttributeError 'str' object has no attribute 'key'
+malformed condition value RecurrenceRefusal CONDITION_NOT_IN_CAMPAIGN_CATALOG
+duplicate condition refs ValueError RECURRENCE_DUPLICATE_CONDITION_PREDICATE
+first execute RuntimeError synthetic ambiguous native failure
+inflight in snapshot ['80f33cba897b853c40db06fa702564eeb7e8b7c93b4f46b221da843ffe43c86a']
+restore inflight ACCEPTED
+restored execute RecurrenceRefusal HOLD_AMBIGUOUS_NATIVE_EXECUTION

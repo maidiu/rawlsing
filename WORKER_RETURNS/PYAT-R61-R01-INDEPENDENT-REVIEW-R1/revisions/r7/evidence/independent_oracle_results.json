@@ -1,0 +1,110 @@
+{
+  "schema": "PYAT_R61_R01V_R7_INDEPENDENT_ORACLE_RESULTS@1",
+  "candidate": "9c0f81ecb76ffe35d0190e31492ea1e9b568f01b",
+  "candidate_code": "0271a7e37a3ccccce5ff69db99f56f7745a62875",
+  "review_branch": "agent/opencode-pyat-r61-r01v-r7-independent-review-r1",
+  "verdict": "REVISE",
+  "author_suite_replay": {
+    "command": "/usr/local/bin/python3 -m pytest rawlsing_next/tests/test_universal_grammar.py -q --junitxml=.../replay/author_suite_junit.xml -o addopts=''",
+    "exit": 0,
+    "passed": 31,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "log": "replay/author_suite.log",
+    "junit": "replay/author_suite_junit.xml"
+  },
+  "r3_controls_replay": {
+    "command": "/usr/local/bin/python3 -m pytest .../independent_probes/test_r01v_r3_reviewer.py -q --junitxml=.../replay/r3_controls_junit.xml -o addopts=''",
+    "exit": 0,
+    "passed": 10,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "log": "replay/r3_controls.log",
+    "junit": "replay/r3_controls_junit.xml",
+    "covers": "R3 A1 conditioned JOINT/CO_TRAVEL, A2 canonical operation identity, A3 empty/unsupported/pending distinctions"
+  },
+  "reviewer_positive_changed_data_d3": {
+    "command": "/usr/local/bin/python3 -m pytest .../independent_probes/test_r01v_r7_positive.py -q --junitxml=.../replay/positive_probe_junit.xml -o addopts=''",
+    "exit": 0,
+    "passed": 2,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "log": "replay/positive_probe.log",
+    "junit": "replay/positive_probe_junit.xml",
+    "evidence": [
+      "retained-owner D=3 changed-data chain with actual native execution",
+      "independently constructed expected operation sets matched content and multiplicity",
+      "independently recomputed root-relative and parent-relative typed states matched",
+      "neutral-aggregate exploratory parent with 75%/25% opposite hidden subgroups",
+      "nonwinning exploratory lineage and distinct root/parent baselines",
+      "in-process restore followed by a real next-batch execution",
+      "fresh-process persisted snapshot restore with separately supplied checkpoint pin followed by a real next-batch execution"
+    ]
+  },
+  "reviewer_controls": {
+    "command": "/usr/local/bin/python3 -m pytest .../independent_probes/test_r01v_r7_controls.py -q --junitxml=.../replay/controls_junit.xml -o addopts=''",
+    "exit": 0,
+    "passed": 15,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "log": "replay/controls.log",
+    "junit": "replay/controls_junit.xml",
+    "covers": [
+      "completed-issue retry with no second native call",
+      "zero per-generation and zero total caps stop with no native call",
+      "chronological predecessor advances through stopped/no-work records with unchanged counts",
+      "multiple generation-1 batches counted exactly (4 then 8) with chronological predecessor",
+      "pre-activation restore -> activation -> real N+1 without rerunning the original execution",
+      "post-activation restore returns the existing activation with no new execution",
+      "forged lineage/requested-generation/predecessor-rollback/activation-label/unknown-ref refusals",
+      "cross-campaign lineage refusal",
+      "deep-detached inspect cannot register history",
+      "fixed original pin rejects altered/rehashed snapshot and missing pin; genuine snapshot restores",
+      "restore rejects wrong query and incomplete condition context",
+      "duplicate catalog keys and missing release refs refuse typed",
+      "typed receipt states retained in execution preimage",
+      "run-local concurrent execute serializes to one native call",
+      "ambiguous inflight execution restores and remains typed HOLD"
+    ]
+  },
+  "reviewer_hostile_suite": {
+    "command": "/usr/local/bin/python3 -m pytest .../independent_probes/test_r01v_r7_hostile.py -q --junitxml=.../replay/hostile_probes_junit.xml -o addopts=''",
+    "exit": 1,
+    "passed": 4,
+    "failed": 5,
+    "errors": 0,
+    "skipped": 0,
+    "log": "replay/hostile_probes.log",
+    "junit": "replay/hostile_probes_junit.xml",
+    "meaning": "Five expected-refusal probes failed because the candidate accepted or crashed on them; the passing four are missing-receipt, missing-handoff, altered-ancestry and altered-cumulative closure refusals.",
+    "failures": [
+      "H1 target_label is not tied to the query target; wrong label accepted and executed",
+      "H2 query target can differ from the declared target label; accepted and executed",
+      "H3 condition catalog key (s1,0) can be bound to the s1=1 predicate; accepted and executed",
+      "H4 malformed public condition key raises raw AttributeError instead of typed refusal",
+      "H5 duplicate public condition refs raise raw ValueError (RECURRENCE_DUPLICATE_CONDITION_PREDICATE) rather than RecurrenceRefusal"
+    ]
+  },
+  "defect_demonstrations": "evidence/defect_demonstrations.json",
+  "defect_demonstration_log": "evidence/defect_demonstration.log",
+  "closure_exploration": "evidence/closure_exploration.log",
+  "f1_f6_matrix": {
+    "F1_positive": "PASS (changed-data D3, arithmetic, hidden 75/25, nonwinning exploration, A1-A3)",
+    "F2_successor_harness_attacks": "PASS for retained live injection/chronology/cold paths; create target/query and catalog-key semantics incomplete",
+    "F3_owner_boundary": "PASS for detached views, forged lineage/predecessor/activation, closure and legacy non-admission; malformed proposal typing incomplete",
+    "F4_accounting": "PASS for multiple gen1/later batches, stopped/no-work head, exact counts, retry/concurrency, no refund",
+    "F5_restore": "PASS for fixed original pin, pre/post activation, missing receipt/handoff/ancestry/cumulative closure, wrong query/catalog; forged-both-inputs host-trust not used as a gate",
+    "F6_same_consumer": "PASS for baseline/mutation/refusal/restoration, native call conservation and cold N+1; create target/catalog validation gaps remain"
+  },
+  "unknowns_and_boundaries": [
+    "No protected issuer/signing service/global durable uniqueness/R09 isolation; local trusted runtime only.",
+    "R04/R09 durable custody and fork prevention NOT_REACHED.",
+    "Reference caps/rows are TEST_ONLY synthetic engineering, not original 35/1890 science.",
+    "No R03 activation, self-adoption, source/science/CI/prod/N11/N12/Sorok/J52/W52.",
+    "R08/R61Q is a separate lane and was not reviewed, repaired or certified here."
+  ]
+}

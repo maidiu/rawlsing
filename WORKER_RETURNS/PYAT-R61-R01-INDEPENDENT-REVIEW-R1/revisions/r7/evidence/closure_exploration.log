@@ -1,0 +1,22 @@
+remove_receipt REFUSED RecurrenceRefusal EXECUTION_RECEIPT_SET_MISMATCH
+remove_handoff REFUSED RecurrenceRefusal EXECUTION_HANDOFF_SET_MISMATCH
+alter_receipt_state ACCEPTED
+alter_cumulative REFUSED RecurrenceRefusal RESTORE_ISSUANCE_HISTORY_MISMATCH
+alter_expected_ops REFUSED RecurrenceRefusal RESTORE_ISSUANCE_HISTORY_MISMATCH
+alter_lineage_ancestry REFUSED RecurrenceRefusal RESTORE_FULL_RECORD_CLOSURE_MISMATCH
+alter_activation_next REFUSED RecurrenceRefusal ACTIVATION_NEXT_GENERATION_MISMATCH
+alter_parent_lineage_refs REFUSED RecurrenceRefusal LINEAGE_REFERENCE_NOT_RETAINED
+alter_root_query REFUSED RecurrenceRefusal RESTORE_FROZEN_NATIVE_CONTEXT_MISMATCH
+alter_source_release REFUSED RecurrenceRefusal CAMPAIGN_NATIVE_CONTEXT_REFUSED:EmpiricalQueryResolutionError
+remove_authority REFUSED RecurrenceRefusal EXECUTION_PREIMAGE_REFUSED:KeyError
+remove_handoffs_key REFUSED RecurrenceRefusal RESTORE_RECORD_CLOSURE_REFUSED:KeyError
+duplicate_execution REFUSED RecurrenceRefusal RESTORE_DUPLICATE_RECORD
+duplicate_activation REFUSED RecurrenceRefusal RESTORE_DUPLICATE_RECORD
+alter_execution_ref REFUSED RecurrenceRefusal EXECUTION_RECORD_HASH_MISMATCH
+0 DISCOVERED_RESULT_SUPPORTED None ['authority_snapshot_refs', 'content_hash', 'dependency_refs', 'object_id', 'producer_replay_locator_or_reference_root', 'schema_id', 'schema_version', 'semantic_fields'] ['actor_v3_effect', 'branch_or_parent_ancestry_refs', 'candidate_identity', 'coverage_state', 'diagnostic_score_is_empirical_fact', 'discovery_authority_ref', 'empirical_fact_refs', 'evaluated_frontier_ref']
+1 DISCOVERED_RESULT_SUPPORTED None ['authority_snapshot_refs', 'content_hash', 'dependency_refs', 'object_id', 'producer_replay_locator_or_reference_root', 'schema_id', 'schema_version', 'semantic_fields'] ['actor_v3_effect', 'branch_or_parent_ancestry_refs', 'candidate_identity', 'coverage_state', 'diagnostic_score_is_empirical_fact', 'discovery_authority_ref', 'empirical_fact_refs', 'evaluated_frontier_ref']
+2 DISCOVERED_RESULT_SUPPORTED None ['authority_snapshot_refs', 'content_hash', 'dependency_refs', 'object_id', 'producer_replay_locator_or_reference_root', 'schema_id', 'schema_version', 'semantic_fields'] ['actor_v3_effect', 'branch_or_parent_ancestry_refs', 'candidate_identity', 'coverage_state', 'diagnostic_score_is_empirical_fact', 'discovery_authority_ref', 'empirical_fact_refs', 'evaluated_frontier_ref']
+3 DISCOVERED_RESULT_SUPPORTED None ['authority_snapshot_refs', 'content_hash', 'dependency_refs', 'object_id', 'producer_replay_locator_or_reference_root', 'schema_id', 'schema_version', 'semantic_fields'] ['actor_v3_effect', 'branch_or_parent_ancestry_refs', 'candidate_identity', 'coverage_state', 'diagnostic_score_is_empirical_fact', 'discovery_authority_ref', 'empirical_fact_refs', 'evaluated_frontier_ref']
+Traceback (most recent call last):
+  File "<stdin>", line 13, in <module>
+StopIteration
