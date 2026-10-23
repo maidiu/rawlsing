@@ -1,3 +1,14 @@
+# Pyat HQ R61O — actual recurrence candidate / independent native review
+
+R01R4author5c77413365b9d45375b25dbaa29cb3da497bcb10, code009dc5119ae21cd1bc943eeb49019cd25e22eaa6. Verified8reporthashes/4listedcodeblobs/11scopedpaths/directremote; correctedprofilefrozenbeforecodeandunchanged. Author24passes/3nativegenerations claimsnotindependentqualification. A4notclosed/R03NOT_STARTED.
+
+DistinctR01VR4actuallyrunning fromexactcandidate undercommission2cae526625b41b59e590c025370c9214ae6cba00. Actualhandle/session/scope/remote inCURRENT.json. Reviewerwilltestrealparent/comparator/nativeexecution,genericadaptivecoverage,cumulativebudgetandidentityboundaries,notacceptselectedfixturealone. No newrepo copy: terminalR3sparsereviewcheckoutmoved/reused, oldlogsarchivedandGitbranchretained.
+
+Director evidencee64756ced7a1af73130bc2d62168e13188a4981b. CurrentSolLightadequateforcoordination; separateR08SolHighmissing-functioncardpending, no4thcheapcanarypatch. R09hostgrantpending. Approvedfiniteadaptiveuserintent preserved; fulloriginal35/1890/globalF6F7F8/source/science/CI/prod/N11/N12/Sorok/J52W52holdsunchanged. No R03wake/codeadoption/productionmerge.
+
+
+## Earlier progress history retained
+
 # Pyat HQ R61N — actual approved A4 implementation / separate R08 escalation
 
 UserS1/S2approvalR61Mfullybanked before modelchange. CurrentSolLight coordinator launched sameR01authorR4 at exact9fbf1ec3bbd569b5fd83cfd9e20cb931523a42c5, commission6214ad14d11b40e4b35c7a45b16fa14e702e8132. ActualPID26447/session/remote/scope inCURRENT.json; no newcheckout/session/model/provider, attendedOpenCodeDeepSeekMAX, not fictitiouscontrollerdispatch. ConcreteTEST_ONLYprofilefirstcommit then actualboundednativeA4repair underoriginalfourpaths; independentreview reserved afterward. R03stillNOT_STARTED.
