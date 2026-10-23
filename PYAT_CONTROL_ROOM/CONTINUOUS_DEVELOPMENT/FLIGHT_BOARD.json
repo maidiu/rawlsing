@@ -1,6 +1,6 @@
 {
   "schema": "PYAT_CONTINUOUS_DEVELOPMENT_FLIGHT_BOARD_R1",
-  "observed_utc": "2026-10-23T17:18:34.229171+00:00",
+  "observed_utc": "2026-10-23T17:32:27.435526+00:00",
   "goal_sha256": "c4cf4af2eefd290baa89cac22afef37d18b83b16b8564e33cf28205f75ab23d9",
   "canonical_pointer": "HQ_HANDOFF/LATEST.json",
   "authority_cut": "dec71cf5fdf9d65bbc0e6ec58da6318594769eb9",
@@ -419,71 +419,106 @@
   "live_flight": [
     {
       "id": "R01V_R5",
-      "pid": 48303,
+      "pid": 53524,
       "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01v-r5",
       "branch": "agent/opencode-pyat-r61-r01v-r5-independent-review-r1",
       "startup": "4b5fd7a240a6e2d007ba1df2424780e6b5612ea9",
       "commission_tip": "9307abc2a9a4177fc8964496334e74694f8ba711",
       "commission_path": "WORKER_COMMISSIONS/PYAT-R61-GENERIC-REPAIR-FLIGHT-R1/R01V/revisions/r5/00_COMMISSION.md",
       "write_scope": "WORKER_RETURNS/PYAT-R61-R01-INDEPENDENT-REVIEW-R1/revisions/r5/",
-      "started_utc": "2026-10-23T17:17:22.118283+00:00",
-      "state": "ACTUALLY_LAUNCHED_ATTENDED_OPENCODE_NOT_CONTROLLER",
+      "started_utc": "2026-10-23T17:29:42.791887+00:00",
+      "state": "ACTUALLY_LAUNCHED_BOUNDED_REPLACEMENT_AFTER_CONFIRMED_DIRECTORY_BINDING_FAILURE",
       "model": "opencode-go/deepseek-v4.1-flash",
       "variant_requested": "max",
       "account": "existing Global",
       "author_session_forbidden": "ses_e98c905cbffekusoHURfKyEUKG",
-      "reviewer_session": "ses_e963b8f69ffeP1AvmCps3aYigs",
+      "reviewer_session": "ses_e96304356ffeC8HSvwFluWOjG1",
       "os_isolation": "NOT_PROVEN",
       "new_repository_copies": 0,
       "reused_terminal_review_worktree_from": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01v-r4",
       "prior_review_branch_and_logs_retained": true,
       "own_return_sparse_scope_preflight_passed": true,
       "sessions": [
-        "ses_e963b8f69ffeP1AvmCps3aYigs"
+        "ses_e96304356ffeC8HSvwFluWOjG1"
       ],
       "process_live_observed": true,
       "errors": [],
-      "observed_utc": "2026-10-23T17:18:34.229171+00:00",
+      "previous_launch_pid": 48303,
+      "resumed_utc": "2026-10-23T17:22:42.550400+00:00",
+      "actual_directory_preflight": "PASS_TOOL_ROOT_BRANCH_AND_OWN_SCOPE",
+      "explicit_cli_dir": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01v-r5",
+      "env_PWD": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01v-r5",
+      "current_stdout": "stdout-replacement1.jsonl",
+      "current_stderr": "stderr-replacement1.log",
+      "no_new_reviewer_session": false,
+      "incident_preserved": true,
+      "retired_failed_session": "ses_e963b8f69ffeP1AvmCps3aYigs",
+      "retired_failed_pid": 51612,
+      "correction_commit": "3249eb333e1288362af649242d17f5ae9e689817",
+      "fresh_creation_explicit_dir_and_PWD": true,
+      "same_logical_review_job": true,
+      "preflight_evidence": {
+        "pwd": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01v-r5",
+        "git rev-parse --show-toplevel": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01v-r5",
+        "git branch --show-current": "agent/opencode-pyat-r61-r01v-r5-independent-review-r1"
+      },
+      "observed_utc": "2026-10-23T17:32:27.435526+00:00",
       "observed_head_at_checkpoint": "4b5fd7a240a6e2d007ba1df2424780e6b5612ea9",
-      "grain": "SOURCEFREE_TEST_ONLY_INDEPENDENT_NATIVE_QUALIFICATION",
-      "library_access": "NO",
-      "pass_wake": "HQ scoped intake only; reviewer cannot wake R03/adopt production",
-      "blocker_effect": "Own node only; unrelated authorized lanes continue",
-      "hard_forbidden": "NO_SCOPE_EXPANSION_SOURCE_SCIENCE_CI_PROD_N11_N12_J52_W52"
+      "observed_local_working_head": "e9cb6af5edb160bd235f41505529ca8f73966f83",
+      "reviewer_session_independent_from_author": true,
+      "grade": "NATIVE_REVIEW_RUNNING_NO_VERDICT"
     },
     {
       "id": "R08V_R4",
-      "pid": 48370,
+      "pid": 53883,
       "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r08v-r4",
       "branch": "agent/opencode-pyat-r61-r08v-r4-independent-review-r1",
       "startup": "48a2eaf6d3c653e2efe40643c427f28c47cd744b",
       "commission_tip": "9307abc2a9a4177fc8964496334e74694f8ba711",
       "commission_path": "WORKER_COMMISSIONS/PYAT-R61-GENERIC-REPAIR-FLIGHT-R1/R08V/revisions/r4/00_COMMISSION.md",
       "write_scope": "WORKER_RETURNS/PYAT-R61-R08-INDEPENDENT-REVIEW-R1/revisions/r4/",
-      "started_utc": "2026-10-23T17:17:25.848822+00:00",
-      "state": "ACTUALLY_LAUNCHED_ATTENDED_OPENCODE_NOT_CONTROLLER",
+      "started_utc": "2026-10-23T17:30:33.649362+00:00",
+      "state": "ACTUALLY_LAUNCHED_BOUNDED_REPLACEMENT_AFTER_CONFIRMED_DIRECTORY_BINDING_FAILURE",
       "model": "opencode-go/deepseek-v4.1-flash",
       "variant_requested": "max",
       "account": "existing Global",
       "author_session_forbidden": "ses_e98c8dfe6ffewNYOqJpvqK21a6",
-      "reviewer_session": "ses_e963b802affeDF1y8OQX2SKdTK",
+      "reviewer_session": "ses_e962f7b5effeIc4B6gtfbZNHvh",
       "os_isolation": "NOT_PROVEN",
       "new_repository_copies": 0,
       "reused_terminal_review_worktree_from": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r08v-r3",
       "prior_review_branch_and_logs_retained": true,
       "own_return_sparse_scope_preflight_passed": true,
       "sessions": [
-        "ses_e963b802affeDF1y8OQX2SKdTK"
+        "ses_e962f7b5effeIc4B6gtfbZNHvh"
       ],
       "process_live_observed": true,
       "errors": [],
-      "observed_utc": "2026-10-23T17:18:34.229171+00:00",
+      "previous_launch_pid": 48370,
+      "resumed_utc": "2026-10-23T17:22:42.576167+00:00",
+      "actual_directory_preflight": "PASS_TOOL_ROOT_BRANCH_AND_OWN_SCOPE",
+      "explicit_cli_dir": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r08v-r4",
+      "env_PWD": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r08v-r4",
+      "current_stdout": "stdout-replacement1.jsonl",
+      "current_stderr": "stderr-replacement1.log",
+      "no_new_reviewer_session": false,
+      "incident_preserved": true,
+      "retired_failed_session": "ses_e963b802affeDF1y8OQX2SKdTK",
+      "retired_failed_pid": 51614,
+      "correction_commit": "3249eb333e1288362af649242d17f5ae9e689817",
+      "fresh_creation_explicit_dir_and_PWD": true,
+      "same_logical_review_job": true,
+      "preflight_evidence": {
+        "pwd": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r08v-r4",
+        "git rev-parse --show-toplevel": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r08v-r4",
+        "git branch --show-current": "agent/opencode-pyat-r61-r08v-r4-independent-review-r1",
+        "git status": "On branch agent/opencode-pyat-r61-r08v-r4-independent-review-r1\nYou are in a sparse checkout with 6% of tracked files present.\n\nnothing to commit, working tree clean"
+      },
+      "observed_utc": "2026-10-23T17:32:27.435526+00:00",
       "observed_head_at_checkpoint": "48a2eaf6d3c653e2efe40643c427f28c47cd744b",
-      "grain": "SOURCEFREE_TEST_ONLY_INDEPENDENT_NATIVE_QUALIFICATION",
-      "library_access": "NO",
-      "pass_wake": "HQ scoped intake only; reviewer cannot wake R03/adopt production",
-      "blocker_effect": "Own node only; unrelated authorized lanes continue",
-      "hard_forbidden": "NO_SCOPE_EXPANSION_SOURCE_SCIENCE_CI_PROD_N11_N12_J52_W52"
+      "observed_local_working_head": "4cf30eee34891f269bed95294e3f31ef80c0b2d5",
+      "reviewer_session_independent_from_author": true,
+      "grade": "NATIVE_REVIEW_RUNNING_NO_VERDICT"
     }
   ],
   "prior_review_returns": {
@@ -556,11 +591,11 @@
     "R03_wake": false
   },
   "next_model_boundary": {
-    "current_model": "gpt-6.1-sol low lastverified",
-    "active_task": "I1-I2 exact custody intake and independent native reviewer coordination",
+    "current_model": "Sol Light",
+    "task": "I1-I2 coordination and custody; I2 bounded native harness correction completed",
     "High_needed_now": false,
     "Astra_required": false,
-    "rule": "Stop before genuinely new consequential unresolved engineering/substantive decision; not ordinary evidence intake"
+    "next": "Actual independent verdict intake; conditional R03 only after qualified R01"
   },
   "recurrence_decision_route": {
     "branch": "agent/browser-pyat-r61-recurrence-substantive-contract-adjudication-r1",
@@ -775,5 +810,16 @@
       ],
       "grade": "CUSTODY_VERIFIED_AUTHOR_CANDIDATE__NOT_INDEPENDENT_QUALIFICATION"
     }
+  },
+  "reviewer_directory_incident_R61T": {
+    "evidence": "3249eb333e1288362af649242d17f5ae9e689817",
+    "scope": "One misdirected reviewer EXPECTATIONS commit; no candidate production code or remote director mutation",
+    "director_restored": true,
+    "old_review_turns_terminal": "FACILITY_CWD_MISMATCH from supported session export",
+    "same_session_dir_override": "FAILED_PERSISTENT_SESSION_DIRECTORY_RETAINED",
+    "bounded_replacement_execution_preflights": "BOTH_PASS_TOOL_ROOT_BRANCH",
+    "frozen_oracles_preserved": true,
+    "no_duplicate_running_reviewers": true,
+    "High_required": false
   }
 }

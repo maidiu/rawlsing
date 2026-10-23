@@ -1,7 +1,7 @@
 {
   "schema": "RAWLSING_CROSS_HQ_PROGRESS@1",
   "owner": "Pyat",
-  "revision": 66,
+  "revision": 67,
   "r39_return_intake": {
     "status": "WORKER_AUTHOR_EVIDENCE_RECEIVED__NO_INDEPENDENT_ADOPTION",
     "startup": "2e6c189fd54b818556a44419b19691938ea76d5a",
@@ -2953,7 +2953,7 @@
     ],
     "acceptance": "Author result is candidate; distinct reviewer independently qualifies exact candidate, then HQ scoped disposition. R09 local is not deployed enforcement."
   },
-  "next_action": "Receive actual R01VR5/R08VR4 verdicts; exact independent intake then scoped HQ decision; no new High/Astra requirement now",
+  "next_action": "Receive actual correct-directory independent R01VR5/R08VR4 returns; keep R03 stopped until qualification; no High needed now",
   "active_r61_native_workers": [
     {
       "node": "R01",
@@ -9025,6 +9025,369 @@
         }
       },
       "next_action": "Receive actual R01VR5/R08VR4 verdicts; exact independent intake then scoped HQ decision; no new High/Astra requirement now"
+    }
+  },
+  "r61t": {
+    "checkpoint_id": "20261023-PYAT-HQ-R61T-CORRECTED-REVIEWER-DIRECTORY-AND-CUSTODY-R1",
+    "summary": "# Pyat HQ R61T \u2014 bounded reviewer directory correction\n\nInitial R61Sreviewer sessions were createdwith director as persistentdirectory. R01detached directorandcommittedONLY reviewerEXPECTATIONS1738231a9ede56ada79861dac83130aa55285520; remote directorbranchpreserved, restoredwithoutlosttrackedwork. No candidateproductioncodemutation. Incident/raworacle/patch and failedresumption findings preserved3249eb333e1288362af649242d17f5ae9e689817.\n\nSame-session --dir/PWDcorrectiveresumes retainedwrongdirectory and returnedterminalFACILITY_CWD_MISMATCH; supportedexportprovedturnterminal beforeCLIobservercleanup. No blindtimeoutrestart. Boundedreplacementexecutions of SAMElogicalreviews nowpassactualTOOL pwd/top-level/branchchecks. R01VR5PID53524/sessionses_e96304356ffeC8HSvwFluWOjG1; R08VR4PID53883/sessionses_e962f7b5effeIc4B6gtfbZNHvh. Oldoracles/sessions/logsretained, sameDeepSeekMAX/Global, no newrepo copies/concurrentduplicates. Neither review has a productverdict yet.\n\nDirector evidence51fa15898beb012c6f747c690d19cc3ee9adf0a4; mandatory directorypreflight added. SolLightadequate, no High/Astra needed for settled executioncorrection. R03NOT_STARTED/R09hostgrantpending/fulloriginal35/1890/globalF6F7F8/source/science/CI/prod/N11/N12/Sorok/J52W52holdsunchanged. No codeadoption.\n",
+    "updates": {
+      "active_workers": [
+        {
+          "id": "R01V_R5",
+          "pid": 53524,
+          "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01v-r5",
+          "branch": "agent/opencode-pyat-r61-r01v-r5-independent-review-r1",
+          "startup": "4b5fd7a240a6e2d007ba1df2424780e6b5612ea9",
+          "commission_tip": "9307abc2a9a4177fc8964496334e74694f8ba711",
+          "commission_path": "WORKER_COMMISSIONS/PYAT-R61-GENERIC-REPAIR-FLIGHT-R1/R01V/revisions/r5/00_COMMISSION.md",
+          "write_scope": "WORKER_RETURNS/PYAT-R61-R01-INDEPENDENT-REVIEW-R1/revisions/r5/",
+          "started_utc": "2026-10-23T17:29:42.791887+00:00",
+          "state": "ACTUALLY_LAUNCHED_BOUNDED_REPLACEMENT_AFTER_CONFIRMED_DIRECTORY_BINDING_FAILURE",
+          "model": "opencode-go/deepseek-v4.1-flash",
+          "variant_requested": "max",
+          "account": "existing Global",
+          "author_session_forbidden": "ses_e98c905cbffekusoHURfKyEUKG",
+          "reviewer_session": "ses_e96304356ffeC8HSvwFluWOjG1",
+          "os_isolation": "NOT_PROVEN",
+          "new_repository_copies": 0,
+          "reused_terminal_review_worktree_from": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01v-r4",
+          "prior_review_branch_and_logs_retained": true,
+          "own_return_sparse_scope_preflight_passed": true,
+          "sessions": [
+            "ses_e96304356ffeC8HSvwFluWOjG1"
+          ],
+          "process_live_observed": true,
+          "errors": [],
+          "previous_launch_pid": 48303,
+          "resumed_utc": "2026-10-23T17:22:42.550400+00:00",
+          "actual_directory_preflight": "PASS_TOOL_ROOT_BRANCH_AND_OWN_SCOPE",
+          "explicit_cli_dir": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01v-r5",
+          "env_PWD": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01v-r5",
+          "current_stdout": "stdout-replacement1.jsonl",
+          "current_stderr": "stderr-replacement1.log",
+          "no_new_reviewer_session": false,
+          "incident_preserved": true,
+          "retired_failed_session": "ses_e963b8f69ffeP1AvmCps3aYigs",
+          "retired_failed_pid": 51612,
+          "correction_commit": "3249eb333e1288362af649242d17f5ae9e689817",
+          "fresh_creation_explicit_dir_and_PWD": true,
+          "same_logical_review_job": true,
+          "preflight_evidence": {
+            "pwd": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01v-r5",
+            "git rev-parse --show-toplevel": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01v-r5",
+            "git branch --show-current": "agent/opencode-pyat-r61-r01v-r5-independent-review-r1"
+          },
+          "observed_utc": "2026-10-23T17:32:27.435526+00:00",
+          "observed_head_at_checkpoint": "4b5fd7a240a6e2d007ba1df2424780e6b5612ea9",
+          "observed_local_working_head": "e9cb6af5edb160bd235f41505529ca8f73966f83",
+          "reviewer_session_independent_from_author": true,
+          "grade": "NATIVE_REVIEW_RUNNING_NO_VERDICT"
+        },
+        {
+          "id": "R08V_R4",
+          "pid": 53883,
+          "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r08v-r4",
+          "branch": "agent/opencode-pyat-r61-r08v-r4-independent-review-r1",
+          "startup": "48a2eaf6d3c653e2efe40643c427f28c47cd744b",
+          "commission_tip": "9307abc2a9a4177fc8964496334e74694f8ba711",
+          "commission_path": "WORKER_COMMISSIONS/PYAT-R61-GENERIC-REPAIR-FLIGHT-R1/R08V/revisions/r4/00_COMMISSION.md",
+          "write_scope": "WORKER_RETURNS/PYAT-R61-R08-INDEPENDENT-REVIEW-R1/revisions/r4/",
+          "started_utc": "2026-10-23T17:30:33.649362+00:00",
+          "state": "ACTUALLY_LAUNCHED_BOUNDED_REPLACEMENT_AFTER_CONFIRMED_DIRECTORY_BINDING_FAILURE",
+          "model": "opencode-go/deepseek-v4.1-flash",
+          "variant_requested": "max",
+          "account": "existing Global",
+          "author_session_forbidden": "ses_e98c8dfe6ffewNYOqJpvqK21a6",
+          "reviewer_session": "ses_e962f7b5effeIc4B6gtfbZNHvh",
+          "os_isolation": "NOT_PROVEN",
+          "new_repository_copies": 0,
+          "reused_terminal_review_worktree_from": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r08v-r3",
+          "prior_review_branch_and_logs_retained": true,
+          "own_return_sparse_scope_preflight_passed": true,
+          "sessions": [
+            "ses_e962f7b5effeIc4B6gtfbZNHvh"
+          ],
+          "process_live_observed": true,
+          "errors": [],
+          "previous_launch_pid": 48370,
+          "resumed_utc": "2026-10-23T17:22:42.576167+00:00",
+          "actual_directory_preflight": "PASS_TOOL_ROOT_BRANCH_AND_OWN_SCOPE",
+          "explicit_cli_dir": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r08v-r4",
+          "env_PWD": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r08v-r4",
+          "current_stdout": "stdout-replacement1.jsonl",
+          "current_stderr": "stderr-replacement1.log",
+          "no_new_reviewer_session": false,
+          "incident_preserved": true,
+          "retired_failed_session": "ses_e963b802affeDF1y8OQX2SKdTK",
+          "retired_failed_pid": 51614,
+          "correction_commit": "3249eb333e1288362af649242d17f5ae9e689817",
+          "fresh_creation_explicit_dir_and_PWD": true,
+          "same_logical_review_job": true,
+          "preflight_evidence": {
+            "pwd": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r08v-r4",
+            "git rev-parse --show-toplevel": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r08v-r4",
+            "git branch --show-current": "agent/opencode-pyat-r61-r08v-r4-independent-review-r1",
+            "git status": "On branch agent/opencode-pyat-r61-r08v-r4-independent-review-r1\nYou are in a sparse checkout with 6% of tracked files present.\n\nnothing to commit, working tree clean"
+          },
+          "observed_utc": "2026-10-23T17:32:27.435526+00:00",
+          "observed_head_at_checkpoint": "48a2eaf6d3c653e2efe40643c427f28c47cd744b",
+          "observed_local_working_head": "4cf30eee34891f269bed95294e3f31ef80c0b2d5",
+          "reviewer_session_independent_from_author": true,
+          "grade": "NATIVE_REVIEW_RUNNING_NO_VERDICT"
+        }
+      ],
+      "dependency_graph": {
+        "R00": {
+          "status": "ACCEPTED_SCOPED_LOCAL_C1__NO_GENERIC_NATIVE_PROMOTION",
+          "prerequisites": [],
+          "authority": "R56/R57 grant",
+          "wake_effect": "Prevents local fixture proof being promoted to universal/original claims",
+          "prohibited_early_actions": [
+            "NO_AUTHOR_SELF_ADOPTION",
+            "NO_SCOPE_EXPANSION",
+            "NO_ORIGINAL_SCIENCE_OR_N11_N12_FROM_LOCAL_PROOF"
+          ]
+        },
+        "R02": {
+          "status": "ACCEPTED_SCOPED_LOCAL_C1",
+          "prerequisites": [
+            "R00"
+          ],
+          "authority": "R56 grant",
+          "wake_effect": "Preserves distinct respondents/occasions and actual native facts",
+          "prohibited_early_actions": [
+            "NO_AUTHOR_SELF_ADOPTION",
+            "NO_SCOPE_EXPANSION",
+            "NO_ORIGINAL_SCIENCE_OR_N11_N12_FROM_LOCAL_PROOF"
+          ]
+        },
+        "R04": {
+          "status": "JOINED_NOT_QUALIFIED__R04_BYTE_SCOPED_C1_ACCEPTED",
+          "prerequisites": [
+            "R03_WHEN_JOINED",
+            "EXPLICIT_USER_UNPAUSE"
+          ],
+          "wake_effect": "ACTUAL_CONSUMED_BYTES_AUTHENTICATED",
+          "prohibited_early_actions": [
+            "NO_ORIGINAL_FILE_READ"
+          ]
+        },
+        "R06": {
+          "status": "NOT_STARTED",
+          "prerequisites": [
+            "R05",
+            "applicable F5/F6/F7 decisions"
+          ],
+          "authority": "ADDITIONAL_CODE_AND_SEPARATE_APPLICABLE_SCIENCE_GRANTS_REQUIRED",
+          "wake_effect": "Lawful world/possibility machinery from distinct fields and genuinely comparable observed pairs",
+          "prohibited_early_actions": [
+            "NO_AUTHOR_SELF_ADOPTION",
+            "NO_SCOPE_EXPANSION",
+            "NO_ORIGINAL_SCIENCE_OR_N11_N12_FROM_LOCAL_PROOF"
+          ]
+        },
+        "N11": {
+          "status": "NOT_READY",
+          "prerequisites": [
+            "SOURCE_ALL35_ISSUED_U_EPRE",
+            "ACTUAL_F1_F8",
+            "INDEPENDENT_ACCEPTANCE"
+          ],
+          "wake_effect": "ELIGIBLE_FOR_SEPARATE_N12_DECISION",
+          "prohibited_early_actions": [
+            "NO_ORIGINAL_COMPLETION_CERTIFICATE"
+          ]
+        },
+        "N12": {
+          "status": "HOLD",
+          "prerequisites": [
+            "N11_ACCEPTED",
+            "USER_ACTOR_GRANT",
+            "SOROK_COMPETENT_AUTHORITY"
+          ],
+          "wake_effect": "NONE_AUTOMATIC",
+          "prohibited_early_actions": [
+            "NO_PERSON_WELD"
+          ]
+        },
+        "R04_BYTE": {
+          "status": "INDEPENDENT_R04BYTE_NATIVE_SCOPED_LOCAL_QUALIFIED__COMBINED_C1_SCOPED_ACCEPT",
+          "prerequisites": [
+            "ADMITTED_R00P_R2_POLICY",
+            "EXACT_R04BYTE_OWNER_STARTUP_FACILITY_SEAL"
+          ],
+          "wake_effect": "LOCAL_BYTE_SNAPSHOT_PROOF_ONLY_NOT_JOINED_R04",
+          "prohibited_early_actions": [
+            "NO_ORIGINAL_SOURCE_READ",
+            "NO_CODE_OUTSIDE_TWO_R04BYTE_PATHS",
+            "NO_JOINED_R04_ACCEPTANCE"
+          ]
+        },
+        "R04_JOINED": {
+          "status": "NOT_AUTHORIZED_R03_DEPENDENCY_UNSATISFIED",
+          "prerequisites": [
+            "R03_TOTAL_NATIVE_JOIN",
+            "SUBSEQUENT_AUTHORIZATION"
+          ],
+          "wake_effect": "JOINED_LIFECYCLE_CUSTODY",
+          "prohibited_early_actions": [
+            "NO_OVERCLAIM_R04_BYTE"
+          ]
+        },
+        "R04.byte": {
+          "status": "ACCEPTED_SCOPED_LOCAL_C1__NOT_JOINED_R04",
+          "prerequisites": [
+            "R00"
+          ],
+          "authority": "R56 grant",
+          "wake_effect": "Prevents source identity surviving changed consumed bytes",
+          "prohibited_early_actions": [
+            "NO_AUTHOR_SELF_ADOPTION",
+            "NO_SCOPE_EXPANSION",
+            "NO_ORIGINAL_SCIENCE_OR_N11_N12_FROM_LOCAL_PROOF"
+          ]
+        },
+        "R01": {
+          "status": "R5_DISTINCT_NATIVE_REVIEW_RUNNING__CORRECTED_TOOL_DIRECTORY_VERIFIED",
+          "prerequisites": [
+            "R00"
+          ],
+          "authority": "R61 exact four code/test paths",
+          "wake_effect": "Unblocks generic R03 workload instead of selected fixtures",
+          "prohibited_early_actions": [
+            "NO_AUTHOR_SELF_ADOPTION",
+            "NO_SCOPE_EXPANSION",
+            "NO_ORIGINAL_SCIENCE_OR_N11_N12_FROM_LOCAL_PROOF"
+          ]
+        },
+        "R08": {
+          "status": "R4_DISTINCT_NATIVE_REVIEW_RUNNING__CORRECTED_TOOL_DIRECTORY_VERIFIED",
+          "prerequisites": [
+            "R00"
+          ],
+          "authority": "R61 exact two code/test paths",
+          "wake_effect": "Prevents wrong-condition or unsupported-positive world/possibility serving",
+          "prohibited_early_actions": [
+            "NO_AUTHOR_SELF_ADOPTION",
+            "NO_SCOPE_EXPANSION",
+            "NO_ORIGINAL_SCIENCE_OR_N11_N12_FROM_LOCAL_PROOF"
+          ]
+        },
+        "R09.local": {
+          "status": "CAPTURE_HOLD__FACILITY_GAP__EXACT_HOST_DECISION_REQUIRED",
+          "prerequisites": [
+            "R00"
+          ],
+          "authority": "R61 local verifier/test paths only",
+          "wake_effect": "Reliable bounded qualification; forged native proof cannot stand in for real execution",
+          "prohibited_early_actions": [
+            "NO_AUTHOR_SELF_ADOPTION",
+            "NO_SCOPE_EXPANSION",
+            "NO_ORIGINAL_SCIENCE_OR_N11_N12_FROM_LOCAL_PROOF"
+          ]
+        },
+        "R03": {
+          "status": "NOT_STARTED__R01_INDEPENDENT_A4_QUALIFICATION_PENDING",
+          "prerequisites": [
+            "independently qualified R01",
+            "accepted R02"
+          ],
+          "authority": "R61 conditional exact four paths",
+          "wake_effect": "Full sourcefront -> real empirical operations with exact no-drop lineage",
+          "prohibited_early_actions": [
+            "NO_AUTHOR_SELF_ADOPTION",
+            "NO_SCOPE_EXPANSION",
+            "NO_ORIGINAL_SCIENCE_OR_N11_N12_FROM_LOCAL_PROOF"
+          ]
+        },
+        "R04.joined": {
+          "status": "NOT_STARTED",
+          "prerequisites": [
+            "accepted R03",
+            "accepted R04.byte"
+          ],
+          "authority": "ADDITIONAL_EXACT_GRANT_REQUIRED",
+          "wake_effect": "Restartable full workload without omission or duplicate scientific counting",
+          "prohibited_early_actions": [
+            "NO_AUTHOR_SELF_ADOPTION",
+            "NO_SCOPE_EXPANSION",
+            "NO_ORIGINAL_SCIENCE_OR_N11_N12_FROM_LOCAL_PROOF"
+          ]
+        },
+        "R05": {
+          "status": "NOT_STARTED",
+          "prerequisites": [
+            "R03",
+            "R08"
+          ],
+          "authority": "ADDITIONAL_EXACT_GRANT_REQUIRED",
+          "wake_effect": "Computed evidence and lawful current/as-of products actually reach empirical possibility consumer",
+          "prohibited_early_actions": [
+            "NO_AUTHOR_SELF_ADOPTION",
+            "NO_SCOPE_EXPANSION",
+            "NO_ORIGINAL_SCIENCE_OR_N11_N12_FROM_LOCAL_PROOF"
+          ]
+        },
+        "R09.protected": {
+          "status": "NOT_DEPLOYED",
+          "prerequisites": [
+            "qualified local R09",
+            "independent policy",
+            "competent administrator"
+          ],
+          "authority": "CI_ADMINISTRATION_AND_DEPLOYMENT_HELD",
+          "wake_effect": "Non-gameable accepted promotion at exact commit",
+          "prohibited_early_actions": [
+            "NO_AUTHOR_SELF_ADOPTION",
+            "NO_SCOPE_EXPANSION",
+            "NO_ORIGINAL_SCIENCE_OR_N11_N12_FROM_LOCAL_PROOF"
+          ]
+        },
+        "R07": {
+          "status": "NOT_READY",
+          "prerequisites": [
+            "qualified R03",
+            "qualified joined R04",
+            "qualified R05",
+            "qualified R06",
+            "qualified R09",
+            "current source/scientific grants"
+          ],
+          "authority": "ORIGINAL_EXECUTION_AND_N11_ADOPTION_HELD",
+          "wake_effect": "Actual independently assessed original35 N11 evidence",
+          "prohibited_early_actions": [
+            "NO_AUTHOR_SELF_ADOPTION",
+            "NO_SCOPE_EXPANSION",
+            "NO_ORIGINAL_SCIENCE_OR_N11_N12_FROM_LOCAL_PROOF"
+          ]
+        },
+        "SOROK_INTERFACE": {
+          "status": "INTERFACE_QUALIFICATION_REMAINS",
+          "prerequisites": [
+            "qualified Pyat product",
+            "separate competent Sorok coordination"
+          ],
+          "authority": "SOROK_INDEPENDENT__N12_ACTOR_WAKE_HELD",
+          "wake_effect": "Ready separately governed downstream person interface",
+          "prohibited_early_actions": [
+            "NO_AUTHOR_SELF_ADOPTION",
+            "NO_SCOPE_EXPANSION",
+            "NO_ORIGINAL_SCIENCE_OR_N11_N12_FROM_LOCAL_PROOF"
+          ]
+        }
+      },
+      "reviewer_directory_incident_R61T": {
+        "evidence": "3249eb333e1288362af649242d17f5ae9e689817",
+        "scope": "One misdirected reviewer EXPECTATIONS commit; no candidate production code or remote director mutation",
+        "director_restored": true,
+        "old_review_turns_terminal": "FACILITY_CWD_MISMATCH from supported session export",
+        "same_session_dir_override": "FAILED_PERSISTENT_SESSION_DIRECTORY_RETAINED",
+        "bounded_replacement_execution_preflights": "BOTH_PASS_TOOL_ROOT_BRANCH",
+        "frozen_oracles_preserved": true,
+        "no_duplicate_running_reviewers": true,
+        "High_required": false
+      },
+      "next_action": "Receive actual correct-directory independent R01VR5/R08VR4 returns; keep R03 stopped until qualification; no High needed now"
     }
   }
 }
