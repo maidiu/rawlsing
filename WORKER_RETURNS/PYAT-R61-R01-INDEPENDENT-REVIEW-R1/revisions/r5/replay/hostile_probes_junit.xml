@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="7" skipped="0" tests="7" time="1.546" timestamp="2026-10-23T13:37:03.029423-04:00" hostname="MacBook-Pro.lan"><testcase classname="WORKER_RETURNS.PYAT-R61-R01-INDEPENDENT-REVIEW-R1.revisions.r5.independent_probes.test_r01v_r5_reviewer" name="test_H1_receipt_bound_ancestry_is_bound_to_parent_identity" time="0.163"><failure message="Failed: DID NOT RAISE &lt;class 'rawlsing_next.universal_grammar.native_map.RecurrenceRefusal'&gt;">def test_H1_receipt_bound_ancestry_is_bound_to_parent_identity():
+        source, qauth, root, query, policy, root_parent, s1, catalog, p1, g1 = _gen1()
+        s2 = _condition_predicates(source, qauth, "s2")
+        activation1 = activate_next_generation(
+            policy=policy, generation=g1, parents=(root_parent,),
+            root_parent=root_parent, next_generation=2, condition_predicates=s2,
+        )
+        parent = next(
+            candidate for candidate in activation1.active_parents
+            if candidate.kind == PARENT_RECEIPT_BOUND
+        )
+        assert parent.ancestry_conditions
+        stripped = replace(parent, ancestry_conditions=(), ancestry_predicates=())
+        assert stripped.parent_id == parent.parent_id
+&gt;       with pytest.raises(RecurrenceRefusal):
+E       Failed: DID NOT RAISE &lt;class 'rawlsing_next.universal_grammar.native_map.RecurrenceRefusal'&gt;
+
+WORKER_RETURNS/PYAT-R61-R01-INDEPENDENT-REVIEW-R1/revisions/r5/independent_probes/test_r01v_r5_reviewer.py:97: Failed</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R61-R01-INDEPENDENT-REVIEW-R1.revisions.r5.independent_probes.test_r01v_r5_reviewer" name="test_H2_receipt_bound_generation_relabel_cannot_skip_a_generation" time="0.275"><failure message="Failed: DID NOT RAISE &lt;class 'rawlsing_next.universal_grammar.native_map.RecurrenceRefusal'&gt;">def test_H2_receipt_bound_generation_relabel_cannot_skip_a_generation():
+        (source, qauth, root, query, policy, root_parent, s1, catalog, p1, g1,
+         s2, activation1, resolver, p2, g2) = _gen2()
+        source_parent = activation1.active_parents[0]
+        assert source_parent.generation == 1
+        relabelled = replace(
+            source_parent,
+            generation=2,
+            parent_id=_parent_id(
+                PARENT_RECEIPT_BOUND, source_parent.predicate, 2,
+                (source_parent.receipt_ref, source_parent.replay_binding_ref),
+            ),
+        )
+        assert relabelled.parent_id != source_parent.parent_id
+        s3 = _condition_predicates(source, qauth, "s3")
+&gt;       with pytest.raises(RecurrenceRefusal):
+E       Failed: DID NOT RAISE &lt;class 'rawlsing_next.universal_grammar.native_map.RecurrenceRefusal'&gt;
+
+WORKER_RETURNS/PYAT-R61-R01-INDEPENDENT-REVIEW-R1/revisions/r5/independent_probes/test_r01v_r5_reviewer.py:122: Failed</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R61-R01-INDEPENDENT-REVIEW-R1.revisions.r5.independent_probes.test_r01v_r5_reviewer" name="test_H3_execution_revalidates_embedded_parent_binding" time="0.388"><failure message="Failed: DID NOT RAISE &lt;class 'rawlsing_next.universal_grammar.native_map.RecurrenceRefusal'&gt;">def test_H3_execution_revalidates_embedded_parent_binding():
+        (source, qauth, root, query, policy, root_parent, s1, catalog, p1, g1,
+         s2, activation1, resolver, p2, g2) = _gen2()
+        parent = next(
+            candidate for candidate in p2.parents
+            if candidate.kind == PARENT_RECEIPT_BOUND
+        )
+        other = next(
+            handoff for handoff in g1.execution.handoffs + g2.execution.handoffs
+            if handoff.ref != parent.replay_binding_ref
+        )
+        tampered = replace(parent, handoff=other)
+        assert tampered.receipt_ref == parent.receipt_ref
+        assert tampered.replay_binding_ref == parent.replay_binding_ref
+        assert other.receipt_ref != tampered.receipt_ref
+        tampered_plan = replace(p2, parents=(tampered,))
+&gt;       with pytest.raises(RecurrenceRefusal):
+E       Failed: DID NOT RAISE &lt;class 'rawlsing_next.universal_grammar.native_map.RecurrenceRefusal'&gt;
+
+WORKER_RETURNS/PYAT-R61-R01-INDEPENDENT-REVIEW-R1/revisions/r5/independent_probes/test_r01v_r5_reviewer.py:150: Failed</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R61-R01-INDEPENDENT-REVIEW-R1.revisions.r5.independent_probes.test_r01v_r5_reviewer" name="test_H4_replaced_predecessor_plan_cannot_undercount_issued_work" time="0.150"><failure message="Failed: DID NOT RAISE &lt;class 'rawlsing_next.universal_grammar.native_map.RecurrenceRefusal'&gt;">def test_H4_replaced_predecessor_plan_cannot_undercount_issued_work():
+        policy = _recurrence_policy(total=5, per_generation=4)
+        (source, qauth, root, query, policy, root_parent, s1, catalog, p1, g1) = _gen1(policy)
+        assert len(p1.expected_operations) == 4
+        assert p1.cumulative_issued_count == 4
+        fake_p1 = replace(
+            p1,
+            expected_operations=p1.expected_operations[:2],
+            cumulative_issued_count=2,
+        )
+        assert fake_p1.cumulative_issued_count == (
+            fake_p1.predecessor_issued_count + len(fake_p1.expected_operations)
+        )
+        s2 = _condition_predicates(source, qauth, "s2")
+        activation1 = activate_next_generation(
+            policy=policy, generation=g1, parents=(root_parent,),
+            root_parent=root_parent, next_generation=2, condition_predicates=s2,
+        )
+        common = dict(
+            policy=policy, generation=2, parents=activation1.active_parents,
+            root_predicate=root, target_label="t", query_ref=query,
+            condition_predicates=s2,
+            parent_resolver=make_recurrence_parent_resolver(g1.execution.handoffs),
+            release_refs=(source["release_ref"],),
+        )
+        honest = build_recurrence_issue_plan(**common, previous_plan=p1)
+        assert len(honest.expected_operations) == 1
+&gt;       with pytest.raises(RecurrenceRefusal):
+E       Failed: DID NOT RAISE &lt;class 'rawlsing_next.universal_grammar.native_map.RecurrenceRefusal'&gt;
+
+WORKER_RETURNS/PYAT-R61-R01-INDEPENDENT-REVIEW-R1/revisions/r5/independent_probes/test_r01v_r5_reviewer.py:185: Failed</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R61-R01-INDEPENDENT-REVIEW-R1.revisions.r5.independent_probes.test_r01v_r5_reviewer" name="test_H5_zero_per_generation_cap_is_stopped_budget_not_a_crash" time="0.056"><failure message="rawlsing_next.universal_grammar.native_map.RecurrenceRefusal: RECURRENCE_GENERATION_ISSUED_NO_OPERATIONS">def test_H5_zero_per_generation_cap_is_stopped_budget_not_a_crash():
+        policy = _recurrence_policy(per_generation=0)
+        source, qauth, root, query = _recurrence_source()
+        root_parent = make_root_parent(
+            predicate=root, source_release_refs=(source["release_ref"],)
+        )
+        s1 = _condition_predicates(source, qauth, "s1")
+&gt;       plan = build_recurrence_issue_plan(
+            policy=policy, generation=1, parents=(root_parent,),
+            root_predicate=root, target_label="t", query_ref=query,
+            condition_predicates=s1, release_refs=(source["release_ref"],),
+        )
+
+WORKER_RETURNS/PYAT-R61-R01-INDEPENDENT-REVIEW-R1/revisions/r5/independent_probes/test_r01v_r5_reviewer.py:196: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def build_recurrence_issue_plan(
+        *,
+        policy: RecurrencePolicy,
+        generation: int,
+        parents: Sequence[RecurrenceParent],
+        root_predicate: Any,
+        target_label: str,
+        query_ref: Any,
+        condition_predicates: Sequence[tuple[OccurrenceKey, Any, Any]],
+        previous_plan: RecurrenceIssuePlan | None = None,
+        parent_resolver: RecurrenceParentResolver | None = None,
+        release_refs: Sequence[Any] | None = None,
+        total_issued_before: int | None = None,
+    ) -&gt; RecurrenceIssuePlan:
+        """Freeze one finite generation's exact grammar and expected operation IDs."""
+    
+        if generation &lt; 1 or generation &gt; int(policy.bounds["D"]):
+            raise RecurrenceRefusal("RECURRENCE_GENERATION_OUTSIDE_ISSUED_D")
+        if total_issued_before is not None:
+            raise RecurrenceRefusal("UNBOUND_TOTAL_ISSUED_BEFORE_REFUSED")
+        if not parents:
+            raise RecurrenceRefusal("RECURRENCE_REQUIRES_ACTIVE_PARENT")
+        if not condition_predicates:
+            raise RecurrenceRefusal("RECURRENCE_REQUIRES_NEXT_CONDITION")
+        parent_ids = [parent.parent_id for parent in parents]
+        if len(set(parent_ids)) != len(parent_ids):
+            raise RecurrenceRefusal("DUPLICATE_PARENT_IDENTITY")
+        if generation == 1:
+            if len(parents) != 1 or parents[0].kind != PARENT_ROOT or parents[0].generation != 0:
+                raise RecurrenceRefusal("GENERATION_ONE_REQUIRES_SINGLE_ROOT_PARENT")
+            if previous_plan is not None:
+                raise RecurrenceRefusal("ROOT_GENERATION_MUST_NOT_HAVE_PREDECESSOR")
+            issued_before = 0
+            predecessor_ref = None
+        else:
+            if any(parent.kind == PARENT_ROOT for parent in parents):
+                raise RecurrenceRefusal("ROOT_PARENT_NOT_ALLOWED_AFTER_GENERATION_ONE")
+            if any(parent.generation != generation - 1 for parent in parents):
+                raise RecurrenceRefusal("PARENT_GENERATION_CONTINUITY_VIOLATION")
+            if previous_plan is None:
+                raise RecurrenceRefusal("PREDECESSOR_PLAN_REQUIRED")
+            if previous_plan.generation != generation - 1:
+                raise RecurrenceRefusal("PREDECESSOR_PLAN_GENERATION_MISMATCH")
+            if previous_plan.policy.content_hash != policy.content_hash:
+                raise RecurrenceRefusal("PREDECESSOR_PLAN_POLICY_MISMATCH")
+            root_ref = exact_ref(root_predicate.ref, "root predicate").as_dict()
+            if previous_plan.root_predicate_ref != root_ref:
+                raise RecurrenceRefusal("PREDECESSOR_PLAN_ROOT_MISMATCH")
+            if previous_plan.state != RECURRENCE_ISSUED:
+                raise RecurrenceRefusal("PREDECESSOR_PLAN_NOT_ISSUED")
+            if previous_plan.cumulative_issued_count != (
+                previous_plan.predecessor_issued_count + len(previous_plan.expected_operations)
+            ):
+                raise RecurrenceRefusal("PREDECESSOR_PLAN_ISSUED_COUNT_INCONSISTENT")
+            issued_before = previous_plan.cumulative_issued_count
+            predecessor_ref = previous_plan.content_hash
+        canonical_parents = tuple(
+            _validate_parent_resolution(
+                parent, parent_resolver, release_refs or ()
+            )
+            for parent in parents
+        )
+        remaining_total = max(0, policy.total_issued_cap - issued_before)
+        if remaining_total == 0:
+            return RecurrenceIssuePlan(
+                generation=generation, policy=policy,
+                grammar={"schema": CANDIDATE_GRAMMAR_SCHEMA, "atoms": (),
+                         "query_templates": (), "rules": (),
+                         "limits": {"maximum_conditioner_arity_K": int(policy.bounds["K"]),
+                                    "maximum_target_arity_J": int(policy.bounds["J"])},
+                         "allow_empty_frontier": False},
+                expected_operations=(), parents=canonical_parents,
+                condition_predicates=tuple(condition_predicates),
+                target_label=target_label,
+                query_ref=_ref_material(getattr(query_ref, "ref", query_ref)),
+                unissued=tuple({
+                    "parent_id": parent.parent_id,
+                    "reason": "TOTAL_ISSUED_CAP",
+                    "state": RECURRENCE_STOPPED_BUDGET,
+                } for parent in canonical_parents),
+                query_object=query_ref if hasattr(query_ref, "ref") else None,
+                predecessor_plan_ref=predecessor_ref,
+                predecessor_issued_count=issued_before,
+                cumulative_issued_count=issued_before,
+                root_predicate_ref=exact_ref(root_predicate.ref, "root predicate").as_dict(),
+                state=RECURRENCE_STOPPED_BUDGET,
+            )
+        issued_cap = min(policy.per_generation_issued_cap, remaining_total)
+        query_ref_object = getattr(query_ref, "ref", query_ref)
+        query_material = _ref_material(query_ref_object)
+        atoms: dict[str, Any] = {}
+        templates: dict[str, Any] = {}
+        rules: list[dict[str, Any]] = []
+        expected: list[RecurrenceExpectedOperation] = []
+        unissued: list[Mapping[str, Any]] = []
+    
+        def atom_for(predicate: Any, kind: str, ancestry: Sequence[Any] = ()) -&gt; str:
+            atom_id = _atom_id(predicate.ref)
+            atoms[atom_id] = {
+                "atom_id": atom_id, "predicate_ref": predicate.ref,
+                "kind": kind, "ancestry_refs": tuple(ancestry),
+            }
+            return atom_id
+    
+        root_atom = atom_for(root_predicate, "BRANCH", ())
+        template_id = _template_id(query_ref_object)
+        templates[template_id] = {"template_id": template_id, "query_ref": query_ref_object}
+        seen_condition_refs: set[str] = set()
+        for key, value, predicate in condition_predicates:
+            if predicate.ref.key in seen_condition_refs:
+                raise ValueError("RECURRENCE_DUPLICATE_CONDITION_PREDICATE")
+            seen_condition_refs.add(predicate.ref.key)
+            atom_for(predicate, "RESPONSE")
+        issued_so_far = 0
+        for parent in canonical_parents:
+            for condition_key, condition_value, condition_predicate in condition_predicates:
+                all_conditions = parent.ancestry_conditions + ((condition_key, condition_value),)
+                if len({key.item_id for key, _ in all_conditions}) != len(all_conditions):
+                    raise ValueError("RECURRENCE_ANCESTOR_CONDITIONS_EXCEED_OR_REPEAT_K")
+                if len(all_conditions) &gt; int(policy.bounds["K"]):
+                    raise ValueError("RECURRENCE_ANCESTOR_CONDITIONS_EXCEED_K")
+                parent_atom = atom_for(parent.predicate, "BRANCH", (parent.predicate_ref,))
+                for comparator in policy.comparators:
+                    if issued_so_far &gt;= issued_cap:
+                        unissued.append({
+                            "parent_id": parent.parent_id, "comparator": comparator,
+                            "reason": ("TOTAL_ISSUED_CAP"
+                                       if issued_cap &lt; policy.per_generation_issued_cap
+                                       else "PER_GENERATION_ISSUED_CAP"),
+                            "condition_key": condition_key.material(),
+                            "condition_value": value_material(condition_value),
+                        })
+                        continue
+                    if comparator == COMPARATOR_PARENT:
+                        baseline_atom = parent_atom
+                        selected = ((condition_key, condition_value, condition_predicate),)
+                    else:
+                        baseline_atom = root_atom
+                        selected = tuple(
+                            (key, value, parent.ancestry_predicates[index])
+                            for index, (key, value) in enumerate(parent.ancestry_conditions)
+                        ) + ((condition_key, condition_value, condition_predicate),)
+                    atom_ids = [atom_for(predicate, "RESPONSE") for _, _, predicate in selected]
+                    rule_material = {
+                        "generation": generation, "policy": policy.content_hash,
+                        "parent": parent.parent_id, "parent_predicate": parent.predicate_ref,
+                        "comparator": comparator, "baseline": baseline_atom,
+                        "condition_refs": [predicate.ref for _, _, predicate in selected],
+                        "condition_values": [value_material(value) for _, value, _ in selected],
+                        "target": target_label, "query_ref": query_material,
+                    }
+                    operation_id = "urn:r61:recurrence:op:" + semantic_hash(canonicalize(rule_material))
+                    rule_id = _recurrence_rule_id(rule_material)
+                    form = "SINGLE_ATOM" if len(atom_ids) == 1 else "AND_CARTESIAN_GROUPS"
+                    rule = {
+                        "rule_id": rule_id,
+                        "family": "RECURSIVE_SUBGROUP_FORK",
+                        "form": form,
+                        "baseline_atom_id": baseline_atom,
+                        "query_template_id": template_id,
+                        "validation": _DIFF_VALIDATION,
+                    }
+                    if form == "SINGLE_ATOM":
+                        rule["atom_ids"] = atom_ids
+                    else:
+                        rule["atom_groups"] = [[atom_id] for atom_id in atom_ids]
+                    rules.append(rule)
+                    expected.append(RecurrenceExpectedOperation(
+                        operation_id=operation_id, generation=generation,
+                        parent_id=parent.parent_id, comparator=comparator, rule_id=rule_id,
+                        condition_keys=tuple(key for key, _, _ in selected),
+                        condition_values=tuple(value for _, value, _ in selected),
+                        baseline_predicate_ref=exact_ref(
+                            atoms[baseline_atom]["predicate_ref"], "baseline"
+                        ).as_dict(),
+                    ))
+                    issued_so_far += 1
+        if not rules:
+&gt;           raise RecurrenceRefusal("RECURRENCE_GENERATION_ISSUED_NO_OPERATIONS")
+E           rawlsing_next.universal_grammar.native_map.RecurrenceRefusal: RECURRENCE_GENERATION_ISSUED_NO_OPERATIONS
+
+rawlsing_next/universal_grammar/native_map.py:1351: RecurrenceRefusal</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R61-R01-INDEPENDENT-REVIEW-R1.revisions.r5.independent_probes.test_r01v_r5_reviewer" name="test_H6_root_parent_must_be_the_declared_source_root" time="0.054"><failure message="Failed: DID NOT RAISE &lt;class 'rawlsing_next.universal_grammar.native_map.RecurrenceRefusal'&gt;">def test_H6_root_parent_must_be_the_declared_source_root():
+        source, qauth, root, query = _recurrence_source()
+        policy = _recurrence_policy()
+        s1 = _condition_predicates(source, qauth, "s1")
+        wrong_root_parent = make_root_parent(
+            predicate=s1[0][2], source_release_refs=(source["release_ref"],)
+        )
+&gt;       with pytest.raises(RecurrenceRefusal):
+E       Failed: DID NOT RAISE &lt;class 'rawlsing_next.universal_grammar.native_map.RecurrenceRefusal'&gt;
+
+WORKER_RETURNS/PYAT-R61-R01-INDEPENDENT-REVIEW-R1/revisions/r5/independent_probes/test_r01v_r5_reviewer.py:213: Failed</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R61-R01-INDEPENDENT-REVIEW-R1.revisions.r5.independent_probes.test_r01v_r5_reviewer" name="test_H7_activation_requires_the_actual_next_generation_label" time="0.148"><failure message="Failed: DID NOT RAISE &lt;class 'rawlsing_next.universal_grammar.native_map.RecurrenceRefusal'&gt;">def test_H7_activation_requires_the_actual_next_generation_label():
+        source, qauth, root, query, policy, root_parent, s1, catalog, p1, g1 = _gen1()
+        s2 = _condition_predicates(source, qauth, "s2")
+&gt;       with pytest.raises(RecurrenceRefusal):
+E       Failed: DID NOT RAISE &lt;class 'rawlsing_next.universal_grammar.native_map.RecurrenceRefusal'&gt;
+
+WORKER_RETURNS/PYAT-R61-R01-INDEPENDENT-REVIEW-R1/revisions/r5/independent_probes/test_r01v_r5_reviewer.py:224: Failed</failure></testcase></testsuite></testsuites>

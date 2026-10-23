@@ -1,0 +1,62 @@
+{
+  "author_report_manifest_verification": {
+    "entries_checked": 7,
+    "entries_matched": 7,
+    "self_exclusion_verified": true,
+    "source_commit": "4b5fd7a240a6e2d007ba1df2424780e6b5612ea9"
+  },
+  "candidate_code": "c9cd59536e9323e6f48f1818bd41204cc6ae6095",
+  "candidate_code_blobs": {
+    "rawlsing_next/tests/test_universal_grammar.py": "49cc9ad92367c90a0f6a0a08a1077d89234eabaa",
+    "rawlsing_next/universal_grammar/enumerate.py": "fd9203a0b272f98771c24070d01a9e5287c9b099",
+    "rawlsing_next/universal_grammar/native_map.py": "017c925fdb339894e682c8a5a9f2f1cabc5255e9",
+    "rawlsing_next/universal_grammar/types.py": "e7b196efe5b1f86134c27a80bfdd8f472be76e5d"
+  },
+  "candidate_startup": "4b5fd7a240a6e2d007ba1df2424780e6b5612ea9",
+  "custody_commit": "e9cb6af5edb160bd235f41505529ca8f73966f83",
+  "excluded_from_manifest": [
+    "manifest.json"
+  ],
+  "excludes": [
+    "candidate production files (read-only identities above)",
+    "historical evidence, author returns, director/HQ checkout",
+    "manifest.json itself"
+  ],
+  "files_sha256": {
+    "00_RETURN.md": "e7203dd3df8f393c32cd7557df8708dca775711b28db80de045b86345fe83855",
+    "EXPECTATIONS.md": "394238be34b98431f819020997061df7fd96817913d7ad696ed7be4e94cca39b",
+    "OPERATIONAL_CUSTODY_CORRECTION.md": "a31b76d868c9c8f3554c8888042d954922828f94472a13c830be21146526f1af",
+    "RESUME.md": "5b1b03d33213757f5e7301f0fd66449594467f828dea10a801eb77b910f794ed",
+    "defects_and_limits.md": "04a65edbb3c9773bfe6312ef580acb9466b1014999a634a3230f917eb1b8f9db",
+    "evidence/defect_demonstration.log": "1395b6cfdfa477d1508c0e02e70c1aa4c1f0a1a0de341f66e2cc1ffa5deaa01f",
+    "evidence/defect_demonstrations.json": "1395b6cfdfa477d1508c0e02e70c1aa4c1f0a1a0de341f66e2cc1ffa5deaa01f",
+    "evidence/independent_oracle_results.json": "35c6ef7ae1e7319e31fb6e75746a8b2d149da751b064c744746643b133a9e05d",
+    "evidence/startup_and_identity.txt": "d330d4e09e745dfe66a296372a92645381d1a1d064ceb7bd92a4d5df93436b62",
+    "independent_probes/defect_demonstration.py": "36092b6b22f1c4f424fbfcc980154d37586e50f3a76e7e2cba2251df207f9ecd",
+    "independent_probes/prior_test_r01v_independent.py": "de317bee207271f9d4b967bd436a67d92263e37f183da418f890f5433ff27ff8",
+    "independent_probes/test_r01v_r3_reviewer.py": "a3c843b81013ee4355b419d6bad7f517dd9f84122545d6adf186d8b0804aa47e",
+    "independent_probes/test_r01v_r5_positive.py": "8d04a5e4b589de5e210d7640d2a2b9d123bec34f6efb2b4e98ca60783d65bdcc",
+    "independent_probes/test_r01v_r5_reviewer.py": "505941ff58fdd87eed73976a4d5902ab4c654f5f2b33fd380bd36b47095ecf0f",
+    "proof_witness.json": "30598fbef7217687a30a5dd5e9ba61415b6737ef65bd5ce3fa6f12b072cbecdf",
+    "replay/author_suite.log": "f5261581899f129d442a6a89e874cd93d0f938d442c433bad481efcaa5cc6ae5",
+    "replay/author_suite_junit.xml": "edcd7434352e14eebbb6c85b39613a83fe05f2ac59a977254686fc7b9a4b4fd3",
+    "replay/hostile_probes.log": "7ade0f7f672569a886b75141c1d0d0717791ec2c42a71bd85d9bf29e3f342b46",
+    "replay/hostile_probes_junit.xml": "c66114ca2023d15a751fd3cde2d23321e195e97cf5d89ae2b085e9820e4c58c7",
+    "replay/positive_probe.log": "3d5d4adb74b114a61c91f32c4f7e9b71d1c684729712ae18c89dd9966ddabceb",
+    "replay/positive_probe_junit.xml": "1399a8fb227e2a4c2377dc2ffe8d2f7bd6acb09101feb6fd04a1a6dc6223f5f9",
+    "replay/r3_controls.log": "e47816b0faca587aafbfaaf23d62baf73ba32574d8f9509b7c27314b344d17c6",
+    "replay/r3_controls_junit.xml": "ab919022280caa5267d74c7bc647928044c92ffb6af2a895346cecb4af7fa7da"
+  },
+  "review_branch": "agent/opencode-pyat-r61-r01v-r5-independent-review-r1",
+  "reviewer_imports": [
+    "rawlsing_next.pre553_empirical_objects",
+    "rawlsing_next.pre553_recursive_handoff",
+    "rawlsing_next.tests.test_pre553_empirical_query",
+    "rawlsing_next.tests.test_universal_grammar",
+    "rawlsing_next.universal_grammar.native_map",
+    "rawlsing_next.universal_grammar.types"
+  ],
+  "schema": "PYAT_R61_R01V_R5_INDEPENDENT_REVIEW_MANIFEST@1",
+  "verdict": "REVISE",
+  "write_scope": "WORKER_RETURNS/PYAT-R61-R01-INDEPENDENT-REVIEW-R1/revisions/r5/"
+}

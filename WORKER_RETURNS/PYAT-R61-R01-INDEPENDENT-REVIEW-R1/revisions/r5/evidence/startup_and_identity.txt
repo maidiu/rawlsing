@@ -1,0 +1,58 @@
+R61-R01V R5 independent review — startup and identity evidence
+================================================================
+
+Mandatory first-tool preflight (before any mutation):
+  pwd                          = /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01v-r5
+  git rev-parse --show-toplevel = /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01v-r5
+  git branch --show-current      = agent/opencode-pyat-r61-r01v-r5-independent-review-r1
+  git status                     = only untracked __pycache__; no tracked changes
+
+Coordinate identities:
+  correction            3249eb333e1288362af649242d17f5ae9e689817
+  original commission   9307abc2a9a4177fc8964496334e74694f8ba711
+  EXPECTATIONS recovery 1738231a9ede56ada79861dac83130aa55285520
+  candidate/startup     4b5fd7a240a6e2d007ba1df2424780e6b5612ea9
+  candidate code        c9cd59536e9323e6f48f1818bd41204cc6ae6095
+  R61L E1-E6            3cb1d659bc9efb10b307e66db5cf26af3256f1f5
+  R61M S1/S2 approval   37dba2837c94ddb71287ffbc18260d051fc9765a
+  R5 author commission  df2fdd12a55e1c153e2b60377c903a764ff59f26
+  R5 amendment freeze   63fe9ebf110e76326a07b9d0badf0ab7b208af6f
+  R4 independent review 634ee0dac4ef87347d6f334f6c8c1abc97b24d01
+
+Reviewer branch at review start: agent/opencode-pyat-r61-r01v-r5-independent-review-r1
+Initial HEAD before reviewer custody commit: 4b5fd7a240a6e2d007ba1df2424780e6b5612ea9
+Reviewer custody commit (EXPECTATIONS + separate correction note):
+  e9cb6af5edb160bd235f41505529ca8f73966f83
+
+Direct remote readback at review start (git ls-remote origin):
+  4b5fd7a240a6e2d007ba1df2424780e6b5612ea9 refs/heads/agent/opencode-pyat-r61-r01-generic-grammar-r1
+  4b5fd7a240a6e2d007ba1df2424780e6b5612ea9 refs/heads/agent/opencode-pyat-r61-r01v-r5-independent-review-r1
+
+Candidate code blobs independently read from candidate/startup:
+  rawlsing_next/universal_grammar/types.py            e7b196efe5b1f86134c27a80bfdd8f472be76e5d
+  rawlsing_next/universal_grammar/enumerate.py        fd9203a0b272f98771c24070d01a9e5287c9b099
+  rawlsing_next/universal_grammar/native_map.py       017c925fdb339894e682c8a5a9f2f1cabc5255e9
+  rawlsing_next/tests/test_universal_grammar.py       49cc9ad92367c90a0f6a0a08a1077d89234eabaa
+
+Author report artifacts independently hashed from 4b5fd7a and compared with
+revisions/r5/manifest.json: all 7 non-manifest entries matched exactly, and
+manifest.json explicitly excludes itself. The manifest's four code blob claims
+also match the candidate tree above.
+
+Reviewer EXPECTATIONS bytes recovered unchanged from 1738231a:
+  SHA-256 394238be34b98431f819020997061df7fd96817913d7ad696ed7be4e94cca39b
+  The original wrong-worktree freeze is acknowledged in the separate
+  OPERATIONAL_CUSTODY_CORRECTION.md; it is not authorized or adopted.
+
+Environment:
+  Python /usr/local/bin/python3 3.11.3
+  pytest 9.0.2
+  pyreadstat 1.3.2
+  Existing opencode-go/deepseek-v4.1-flash MAX/Global harness.
+  Same-account role/session/worktree separation only; not institutional
+  independence and not proven OS isolation.
+
+Scope:
+  Writes only WORKER_RETURNS/PYAT-R61-R01-INDEPENDENT-REVIEW-R1/revisions/r5/.
+  Candidate production and historical evidence untouched. No R03 wake,
+  self-adoption, source/science/CI/prod/N11/N12/Sorok/J52/W52 activity.

@@ -1,0 +1,73 @@
+{
+  "schema": "PYAT_R61_R01V_R5_INDEPENDENT_ORACLE_RESULTS@1",
+  "candidate": "4b5fd7a240a6e2d007ba1df2424780e6b5612ea9",
+  "candidate_code": "c9cd59536e9323e6f48f1818bd41204cc6ae6095",
+  "verdict": "REVISE",
+  "author_suite_replay": {
+    "command": "/usr/local/bin/python3 -m pytest rawlsing_next/tests/test_universal_grammar.py -q --junitxml=.../replay/author_suite_junit.xml -o addopts=''",
+    "exit": 0,
+    "passed": 26,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "log": "replay/author_suite.log",
+    "junit": "replay/author_suite_junit.xml"
+  },
+  "r3_controls_replay": {
+    "command": "/usr/local/bin/python3 -m pytest .../independent_probes/test_r01v_r3_reviewer.py -q --junitxml=.../replay/r3_controls_junit.xml -o addopts=''",
+    "exit": 0,
+    "passed": 10,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "log": "replay/r3_controls.log",
+    "junit": "replay/r3_controls_junit.xml",
+    "covers": "R3 A1 conditioned JOINT/CO_TRAVEL, A2 canonical operation identity, A3 empty/unsupported/pending distinctions"
+  },
+  "reviewer_positive_changed_data_d3": {
+    "command": "/usr/local/bin/python3 -m pytest .../independent_probes/test_r01v_r5_positive.py -q --junitxml=.../replay/positive_probe_junit.xml -o addopts=''",
+    "exit": 0,
+    "passed": 2,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "log": "replay/positive_probe.log",
+    "junit": "replay/positive_probe_junit.xml",
+    "evidence": [
+      "generations 1, 2, 3 executed through execute_recurrence_generation with anti_join no_drop_ok",
+      "reviewer-constructed expected operation set (parent, comparator, condition keys/values, baseline hash) matched content and multiplicity for all three generations",
+      "parent-relative and root-relative typed states independently recomputed from changed raw rows matched every gen2/gen3 receipt",
+      "neutral-aggregate exploratory parent q1=0 (50% root, 50% parent) contained q2 subgroups at 75% and 25% in opposite directions",
+      "exploration was issued as EXPLORATORY_PREDICATE, not a fabricated winner receipt",
+      "fresh-process persisted-handoff bundle replay reconstructed generation 2 with the exact predecessor plan ref and no_drop_ok"
+    ]
+  },
+  "reviewer_hostile_refusal_suite": {
+    "command": "/usr/local/bin/python3 -m pytest .../independent_probes/test_r01v_r5_reviewer.py -q --junitxml=.../replay/hostile_probes_junit.xml -o addopts=''",
+    "exit": 1,
+    "passed": 0,
+    "failed": 7,
+    "errors": 0,
+    "skipped": 0,
+    "log": "replay/hostile_probes.log",
+    "junit": "replay/hostile_probes_junit.xml",
+    "meaning": "Each failure is a reviewer-owned expected-refusal probe that the candidate did not refuse; these are defect demonstrations, not setup/import/signature crashes.",
+    "failures": [
+      "H1 receipt-bound ancestry can be stripped without changing parent_id; issue and execution accept",
+      "H2 a generation-1 receipt-bound parent can be relabelled generation 2 and used for generation 3 (skipped generation)",
+      "H3 execution accepts a plan whose embedded handoff is not the declared receipt/replay binding",
+      "H4 replacing the predecessor plan with a self-consistent undercount issues more work (1 honest vs 3 forged)",
+      "H5 per_generation_issued_cap=0 raises RECURRENCE_GENERATION_ISSUED_NO_OPERATIONS instead of STOPPED_BUDGET/unissued",
+      "H6 a root parent whose predicate is not the declared source root is accepted and executed",
+      "H7 activation accepts next_generation=1 for a generation-1 result and its children remain usable for generation 2"
+    ]
+  },
+  "defect_demonstrations": "evidence/defect_demonstrations.json",
+  "defect_demonstration_log": "evidence/defect_demonstration.log",
+  "unknowns_and_boundaries": [
+    "No protected issuer/signing service/global durable uniqueness/R09 isolation: declared trusted resolver seam only.",
+    "Service-wide fork prevention and durable uniqueness are NOT_REACHED (R04/R09).",
+    "Reference caps and rows are TEST_ONLY synthetic engineering, not original 35/1890 science.",
+    "No R03 activation, self-adoption, source/science/CI/prod/N11/N12/Sorok/J52/W52."
+  ]
+}

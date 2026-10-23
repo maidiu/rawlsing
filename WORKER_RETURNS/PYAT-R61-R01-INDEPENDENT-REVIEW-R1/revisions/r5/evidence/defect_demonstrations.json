@@ -1,0 +1,51 @@
+{
+  "H1_ancestry_strip": {
+    "execution_anti_join_no_drop_ok": true,
+    "expected_operations": 4,
+    "issue_accepted": true,
+    "original_ancestry_conditions": 1,
+    "parent_id_preserved": true,
+    "stripped_ancestry_conditions": 0
+  },
+  "H2_generation_relabel": {
+    "actual_producer_generation": 1,
+    "canonical_parent_id_changed": true,
+    "execution_anti_join_no_drop_ok": true,
+    "expected_operations": 4,
+    "issue_accepted_for_generation_3": true,
+    "relabelled_generation": 2
+  },
+  "H3_execution_binding": {
+    "declared_receipt_matches_embedded_handoff": false,
+    "declared_replay_binding_matches_embedded_handoff": false,
+    "execution_accepted": true,
+    "execution_anti_join_no_drop_ok": true
+  },
+  "H4_predecessor_undercount": {
+    "forged_gen1_declared_cumulative": 2,
+    "forged_gen2_issued_operations": 3,
+    "forged_gen2_predecessor_issued_count": 2,
+    "forged_predecessor_accepted": true,
+    "honest_gen2_issued_operations": 1,
+    "real_gen1_cumulative": 4,
+    "real_gen1_issued_operations": 4
+  },
+  "H5_zero_per_generation_cap": {
+    "message": "RECURRENCE_GENERATION_ISSUED_NO_OPERATIONS",
+    "returned": "RecurrenceRefusal"
+  },
+  "H6_root_parent_mismatch": {
+    "execution_anti_join_no_drop_ok": true,
+    "expected_operations": 4,
+    "issue_accepted": true,
+    "root_parent_predicate_matches_declared_root": false
+  },
+  "H7_activation_label": {
+    "activation_generation_returned": 1,
+    "children_labeled_generation": [
+      1
+    ],
+    "children_usable_for_generation_2": true,
+    "requested_next_generation": 1
+  }
+}
