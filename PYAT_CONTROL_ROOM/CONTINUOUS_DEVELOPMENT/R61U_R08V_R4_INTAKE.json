@@ -1,0 +1,43 @@
+{
+  "schema": "PYAT_R61U_R08V_R4_INTAKE@1",
+  "observed_utc": "2026-10-23T17:45:53.326369+00:00",
+  "review": "d1baa92cb457c30bf6dffb91f23f8cee351de4f6",
+  "candidate": "48a2eaf6d3c653e2efe40643c427f28c47cd744b",
+  "manifest_hashes_verified": 12,
+  "changed_ownroot_paths_verified": 13,
+  "direct_remote_verified": true,
+  "junit": {
+    "junit/author_suite_replay.xml": [
+      {
+        "name": "pytest",
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "tests": "31",
+        "time": "7.693",
+        "timestamp": "2026-10-23T13:36:46.592340-04:00",
+        "hostname": "MacBook-Pro.lan"
+      }
+    ],
+    "junit/reviewer_probes.xml": [
+      {
+        "name": "pytest",
+        "errors": "0",
+        "failures": "3",
+        "skipped": "0",
+        "tests": "9",
+        "time": "3.356",
+        "timestamp": "2026-10-23T13:36:45.919112-04:00",
+        "hostname": "MacBook-Pro.lan"
+      }
+    ]
+  },
+  "engineering": "REVISE_UNAUTHENTICATED_SERVED_FIELDS_AND_OPTIONAL_LIVE_PRODUCER_PIN",
+  "independent_positive": "Native54/6/60, changed54/16/70, cold samehash, no-config/wrongroot/attackerroot/cacheforgeryrefusals preserved",
+  "missing_function": "Complete authenticated-envelope-to-served-result projection/validation on every consumer path; missing live producer configuration denies execution",
+  "decision": "Faithful implementation remand under existing R61Q D1-D6, no changed trust/scientific contract",
+  "next_intelligence": "I2-I3_S3_DeepSeek_MAX_WHOLE_FUNCTION_REPAIR",
+  "new_High_decision_needed_for_R08": false,
+  "full_live_progressive_integration": "NOT_REACHED",
+  "native_rerun_by_HQ": false
+}
