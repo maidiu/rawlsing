@@ -2,7 +2,7 @@
   "schema": "PYAT_R61_R08_PROOF_WITNESS_V1",
   "node": "R08",
   "startup_commit": "c84842e20e1d00d0b036977c9f5006aad5328ae9",
-  "candidate_commit": "f93cf87948ce092a9b8623b60c00722ae048bda2",
+  "candidate_commit": "7930fdecbd217e8ccf28a0928eace224fe316ad4",
   "branch": "agent/opencode-pyat-r61-r08-evidence-binding-r1",
   "remote_readback_branch": "refs/heads/agent/opencode-pyat-r61-r08-evidence-binding-r1",
   "remote_readback_sha": "f93cf87948ce092a9b8623b60c00722ae048bda2",
@@ -17,20 +17,26 @@
   "exit_code": 0,
   "junit": {
     "path": "WORKER_RETURNS/PYAT-R61-R08-IMPLEMENTATION-R1/junit.xml",
-    "tests": 21,
+    "tests": 22,
     "failures": 0,
     "errors": 0,
     "skipped": 0,
-    "time_seconds": 4.976,
-    "r08_new_tests": 8,
+    "time_seconds": 7.261,
+    "r08_new_tests": 9,
     "unchanged_c1_regression_tests": 13
   },
   "actual_execution": {
     "positive_provider": "provide_empirical_possibility_slice over fixture AT07_BIDIRECTIONAL_100",
     "positive_expected_independent_arithmetic": {
       "denominator": 60,
-      "cells": {"yes": 54, "no": 6},
-      "exact_fraction": [9, 10]
+      "cells": {
+        "yes": 54,
+        "no": 6
+      },
+      "exact_fraction": [
+        9,
+        10
+      ]
     },
     "positive_observed": {
       "result_state": "SUPPORTED",
@@ -57,16 +63,59 @@
     }
   },
   "tests": [
-    {"nodeid": "test_positive_actual_producer_consumer_values_read", "outcome": "passed", "seconds": 0.317},
-    {"nodeid": "test_actual_zero_support_does_not_become_positive_and_breaks_consumer", "outcome": "passed", "seconds": 0.291},
-    {"nodeid": "test_changed_typed_values_and_identity_axes_refuse_same_consumer", "outcome": "passed", "seconds": 0.339},
-    {"nodeid": "test_typed_encoding_is_tagged_and_duplicate_occurrence_rejected", "outcome": "passed", "seconds": 0.267},
-    {"nodeid": "test_cache_cold_replay_and_authenticated_tamper", "outcome": "passed", "seconds": 0.311},
-    {"nodeid": "test_missing_state_controls_and_total_support_summary", "outcome": "passed", "seconds": 0.195},
-    {"nodeid": "test_consumer_assertion_mutation_and_restoration", "outcome": "passed", "seconds": 0.268},
-    {"nodeid": "test_cold_process_cache_replay_preserves_same_consumer_values", "outcome": "passed", "seconds": 0.725}
+    {
+      "nodeid": "test_condition_a0_result_cannot_resolve_a1_request",
+      "outcome": "passed",
+      "seconds": 0.036
+    },
+    {
+      "nodeid": "test_positive_actual_producer_consumer_values_read",
+      "outcome": "passed",
+      "seconds": 0.308
+    },
+    {
+      "nodeid": "test_actual_zero_support_does_not_become_positive_and_breaks_consumer",
+      "outcome": "passed",
+      "seconds": 0.338
+    },
+    {
+      "nodeid": "test_changed_typed_values_and_identity_axes_refuse_same_consumer",
+      "outcome": "passed",
+      "seconds": 0.413
+    },
+    {
+      "nodeid": "test_typed_encoding_is_tagged_and_duplicate_occurrence_rejected",
+      "outcome": "passed",
+      "seconds": 0.252
+    },
+    {
+      "nodeid": "test_cache_cold_replay_and_authenticated_tamper",
+      "outcome": "passed",
+      "seconds": 0.311
+    },
+    {
+      "nodeid": "test_missing_state_controls_and_total_support_summary",
+      "outcome": "passed",
+      "seconds": 0.2
+    },
+    {
+      "nodeid": "test_consumer_assertion_mutation_and_restoration",
+      "outcome": "passed",
+      "seconds": 0.323
+    },
+    {
+      "nodeid": "test_cold_process_cache_replay_preserves_same_consumer_values",
+      "outcome": "passed",
+      "seconds": 0.846
+    }
   ],
   "assertion_mutants": [
+    {
+      "test": "test_condition_a0_result_cannot_resolve_a1_request",
+      "mutation": "actual XOR provider condition A=0 (target C) then exact request changes A typed value 0 -> 1",
+      "assertion": "request keys differ; A=1 request resolves UNKNOWN with NO_EXACT_PRODUCER_BINDING and EvidenceConsumerReader(A=1 request, A=0 result) raises EvidenceAssociationError",
+      "restoration": "unmutated A=0 request/result reads EXACT_SUPPORTED with denominator 2 and C cells 0:1,1:1"
+    },
     {
       "test": "test_changed_typed_values_and_identity_axes_refuse_same_consumer",
       "mutations": [

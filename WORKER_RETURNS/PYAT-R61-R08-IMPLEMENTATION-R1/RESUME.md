@@ -1,12 +1,12 @@
 # R08 resume
 
 - Startup: `c84842e20e1d00d0b036977c9f5006aad5328ae9`
-- Candidate: `f93cf87948ce092a9b8623b60c00722ae048bda2`
+- Code candidate: `7930fdecbd217e8ccf28a0928eace224fe316ad4`
 - Branch: `agent/opencode-pyat-r61-r08-evidence-binding-r1`
 - Implemented exact `EvidenceRequest` K -> actual provider/authenticated cache
   -> `EvidenceResult` / `SupportSummary`, with actual evaluator values-read.
-- Tests: 8 new R08 + 13 unchanged C1 composition = 21 passed, 0 failed/skipped,
-  4.976 s; JUnit in this directory.
+- Tests: 9 new R08 + 13 unchanged C1 composition = 22 passed, 0 failed/skipped,
+  7.261 s; JUnit in this directory.
 - Next bounded owner action: wire `EvidenceResolver` + `EvidenceConsumerReader`
   into historical J42 `E41ProviderAdapter.step` and P41 `progressive` under a
   separately granted allowlist, then run the unchanged E04 terminal court.

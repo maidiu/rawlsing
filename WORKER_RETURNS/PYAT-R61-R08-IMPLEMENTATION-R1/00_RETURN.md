@@ -10,7 +10,7 @@ the read-only trace/fallback defect. The exact external amendment is listed belo
 - Sealed startup HEAD verified before work:
   `c84842e20e1d00d0b036977c9f5006aad5328ae9`
 - Branch: `agent/opencode-pyat-r61-r08-evidence-binding-r1`
-- Candidate commit: `f93cf87948ce092a9b8623b60c00722ae048bda2`
+- Code candidate commit: `7930fdecbd217e8ccf28a0928eace224fe316ad4`
 - Remote branch readback after first push matched that commit.
 - Write allowlist only:
   - `rawlsing_next/pre553_universal_evidence_binding.py`
@@ -73,7 +73,7 @@ and the same consumer result hash.
 |---|---|---|
 | Positive actual permitted provider call | `test_positive_actual_producer_consumer_values_read` | PASS |
 | Actual consumer values-read, not trace | same test, `EvidenceConsumerReader.read` re-invokes evaluator and compares hash | PASS |
-| `C=1/A=0` cannot reuse `A=1` / changed condition or typed value | `test_changed_typed_values_and_identity_axes_refuse_same_consumer`, `test_typed_encoding...` | PASS |
+| `C=1/A=0` cannot reuse `A=1` / changed condition or typed value | `test_condition_a0_result_cannot_resolve_a1_request`, `test_changed_typed_values_and_identity_axes_refuse_same_consumer`, `test_typed_encoding...` | PASS |
 | Wrong source edition/digest, risk, direction/role, design, as-of clock, target | same test; each new K resolves `UNKNOWN` and reader refuses | PASS |
 | ZERO_SUPPORT / missing structural state cannot become exact positive | `test_actual_zero_support...`, `test_missing_state_controls...` | PASS |
 | Positive remains positive | positive test | PASS |
@@ -96,16 +96,16 @@ Command (exit 0):
 
 - Python 3.11.3 (`/usr/local/bin/python3`), pytest 9.0.2, pyreadstat 1.3.2
   verified installed (not used by these source-free tests).
-- Result: **21 passed, 0 failed, 0 errors, 0 skipped, 4.976 s** in the frozen
-  JUnit receipt (8 new R08 tests + 13 unchanged C1 composition regressions).
+- Result: **22 passed, 0 failed, 0 errors, 0 skipped, 7.261 s** in the frozen
+  JUnit receipt (9 new R08 tests + 13 unchanged C1 composition regressions).
 - JUnit: `WORKER_RETURNS/PYAT-R61-R08-IMPLEMENTATION-R1/junit.xml`.
 
 ## Exact changed paths and blob refs
 
 | Path | Git blob |
 |---|---|
-| `rawlsing_next/pre553_universal_evidence_binding.py` | `464a2190a811816c52e9d9c244ab126dc950c564` |
-| `rawlsing_next/tests/test_universal_evidence_binding.py` | `2512c29e7fa1b780e24a82d111e7c336fae506de` |
+| `rawlsing_next/pre553_universal_evidence_binding.py` | `cd95f672d922e09fd4d1fa6114f26d800aee4027` |
+| `rawlsing_next/tests/test_universal_evidence_binding.py` | `af9059142905059ebde64548067d9e56a4b7015f` |
 
 Key imported/native owners used unchanged:
 
