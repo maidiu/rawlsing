@@ -1,0 +1,3 @@
+# R61A — actual repair engineering in progress
+
+Three distinct actual OpenCode/DeepSeek V4.1-Flash MAX author sessions on isolated R01/R08/localR09 branches, exact starts c84842e20e1d00d0b036977c9f5006aad5328ae9, existing configured account. Receipt evidence ae63a8c2da620d850cc974eb43c3e396abec30cb. Full identities in CURRENT.json. Attended launch, not controller automation; OS isolation not proven. No author return/reviewer/acceptance claimed yet. R03 remains conditional. Grant3189a0db1433095c95bfe0294af53a40355fa1dd unchanged. No original source/science/CI/production/N11/N12/J52/W52 expansion.

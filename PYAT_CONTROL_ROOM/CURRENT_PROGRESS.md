@@ -618,3 +618,7 @@ Explicit user approval grants the exact paths in PYAT_CONTROL_ROOM/R61_USER_AUTH
 No new architectural court, policy-author round or accession campaign. Incomplete R60 controller attachment must not block productive repair. Attended OpenCode launches are recorded honestly; autonomous delivery is not claimed.
 
 Current HQ gpt-6.1-sol low; actual usage33% five-hour/36% weekly. Native jobs: existing opencode-go/deepseek-v4.1-flash MAX. No new source/science/actor/CI/production/N11/N12 grant. J52/W52 remain USER_STOPPED. Scope, quote and prerequisites in CURRENT.json.
+
+# R61A — actual repair engineering in progress
+
+Three distinct actual OpenCode/DeepSeek V4.1-Flash MAX author sessions on isolated R01/R08/localR09 branches, exact starts c84842e20e1d00d0b036977c9f5006aad5328ae9, existing configured account. Receipt evidence ae63a8c2da620d850cc974eb43c3e396abec30cb. Full identities in CURRENT.json. Attended launch, not controller automation; OS isolation not proven. No author return/reviewer/acceptance claimed yet. R03 remains conditional. Grant3189a0db1433095c95bfe0294af53a40355fa1dd unchanged. No original source/science/CI/production/N11/N12/J52/W52 expansion.

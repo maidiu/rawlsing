@@ -1,7 +1,7 @@
 {
   "schema": "RAWLSING_CROSS_HQ_PROGRESS@1",
   "owner": "Pyat",
-  "revision": 47,
+  "revision": 48,
   "r39_return_intake": {
     "status": "WORKER_AUTHOR_EVIDENCE_RECEIVED__NO_INDEPENDENT_ADOPTION",
     "startup": "2e6c189fd54b818556a44419b19691938ea76d5a",
@@ -2953,5 +2953,60 @@
     ],
     "acceptance": "Author result is candidate; distinct reviewer independently qualifies exact candidate, then HQ scoped disposition. R09 local is not deployed enforcement."
   },
-  "next_action": "Launch distinct R01/R08/local R09 native authors and independent candidate reviewers; R03 only after independently qualified R01. Attachment is not prerequisite."
+  "next_action": "Intake R01/R08/localR09 author returns and dispatch distinct native reviewers; conditional R03 after qualified R01. No new code acceptance claimed.",
+  "active_r61_native_workers": [
+    {
+      "node": "R01",
+      "state": "ACTUALLY_LAUNCHED_ATTENDED_OPENCODE_NOT_CONTROLLER",
+      "pid": 32101,
+      "started_utc": "2026-10-23T05:23:36.140730+00:00",
+      "startup": "c84842e20e1d00d0b036977c9f5006aad5328ae9",
+      "branch": "agent/opencode-pyat-r61-r01-generic-grammar-r1",
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01",
+      "model": "opencode-go/deepseek-v4.1-flash",
+      "variant_requested": "max",
+      "account": "existing user-selected Global",
+      "quota": "UNKNOWN",
+      "os_isolation": "NOT_PROVEN",
+      "reviewer": "DISTINCT_SESSION_RESERVED_NOT_LAUNCHED",
+      "observed_session": "ses_e98c905cbffekusoHURfKyEUKG"
+    },
+    {
+      "node": "R08",
+      "state": "ACTUALLY_LAUNCHED_ATTENDED_OPENCODE_NOT_CONTROLLER",
+      "pid": 32572,
+      "started_utc": "2026-10-23T05:23:46.012752+00:00",
+      "startup": "c84842e20e1d00d0b036977c9f5006aad5328ae9",
+      "branch": "agent/opencode-pyat-r61-r08-evidence-binding-r1",
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r08",
+      "model": "opencode-go/deepseek-v4.1-flash",
+      "variant_requested": "max",
+      "account": "existing user-selected Global",
+      "quota": "UNKNOWN",
+      "os_isolation": "NOT_PROVEN",
+      "reviewer": "DISTINCT_SESSION_RESERVED_NOT_LAUNCHED",
+      "observed_session": "ses_e98c8dfe6ffewNYOqJpvqK21a6"
+    },
+    {
+      "node": "R09",
+      "state": "ACTUALLY_LAUNCHED_ATTENDED_OPENCODE_NOT_CONTROLLER",
+      "pid": 32740,
+      "started_utc": "2026-10-23T05:23:56.479959+00:00",
+      "startup": "c84842e20e1d00d0b036977c9f5006aad5328ae9",
+      "branch": "agent/opencode-pyat-r61-r09-local-runner-r1",
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r09",
+      "model": "opencode-go/deepseek-v4.1-flash",
+      "variant_requested": "max",
+      "account": "existing user-selected Global",
+      "quota": "UNKNOWN",
+      "os_isolation": "NOT_PROVEN",
+      "reviewer": "DISTINCT_SESSION_RESERVED_NOT_LAUNCHED",
+      "observed_session": "ses_e98c8b6c7ffeXtAnuGL58sAeCp"
+    }
+  ],
+  "r61_flight_board": {
+    "commit": "ae63a8c2da620d850cc974eb43c3e396abec30cb",
+    "path": "WORKER_COMMISSIONS/PYAT-R61-GENERIC-REPAIR-FLIGHT-R1/ACTUAL_LAUNCH_RECEIPTS.json",
+    "grade": "LAUNCH_VERIFIED__NO_AUTHOR_RETURN_OR_REVIEW_YET"
+  }
 }
