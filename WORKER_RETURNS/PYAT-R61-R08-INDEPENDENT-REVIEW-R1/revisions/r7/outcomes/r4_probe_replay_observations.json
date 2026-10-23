@@ -1,0 +1,62 @@
+{
+  "probes": [
+    {
+      "consumer_result_hash": "47b51a3b6df4ec051b5b9fb04a92760c791f4ac761f20a157966cbe1b481a4be",
+      "fixture_counts": {
+        "P1_no": 6,
+        "P1_yes": 54,
+        "denominator": 60
+      },
+      "observed": "SUPPORTED 60",
+      "probe": "independent_positive_54_6_60",
+      "provider_cells": {
+        "no": 6,
+        "yes": 54
+      },
+      "provider_denominator": 60
+    },
+    {
+      "fixture_counts": {
+        "P1_no": 16,
+        "P1_yes": 54,
+        "denominator": 70
+      },
+      "observed_cells": {
+        "no": 16,
+        "yes": 54
+      },
+      "observed_denominator": 70,
+      "probe": "changed_native_case"
+    },
+    {
+      "probe": "no_config_refusal",
+      "refusal": "NO_CONFIGURED_TRUST_ROOT",
+      "result_state": "UNKNOWN"
+    },
+    {
+      "attacker_signature_refused": true,
+      "probe": "wrong_root_and_attacker_issuer",
+      "restored_denominator": 60,
+      "wrong_verifier_refused": true
+    },
+    {
+      "calls": 0,
+      "probe": "substituted_producer_without_pin",
+      "returned_state": "UNKNOWN"
+    },
+    {
+      "forged_evidence_999_refused": true,
+      "missing_envelope_refused": true,
+      "probe": "cache_forgery_refusal"
+    },
+    {
+      "consumer_denominator": 60,
+      "consumer_hash": "47b51a3b6df4ec051b5b9fb04a92760c791f4ac761f20a157966cbe1b481a4be",
+      "denominator": 60,
+      "probe": "cold_process_positive",
+      "provenance": "AUTHENTICATED_CACHE",
+      "state": "SUPPORTED"
+    }
+  ],
+  "schema": "R61_R08V_R4_INDEPENDENT_OBSERVATIONS@1"
+}

@@ -1,0 +1,167 @@
+{
+  "schema": "PYAT_R61_R08V_R7_INDEPENDENT_PROOF_WITNESS@1",
+  "logical_job": "R61-R08-INDEPENDENT-REVIEW-R1/revisions/r7",
+  "verdict": "REVISE",
+  "candidate": "ea39bd324d297a93bb9e87ede9b9da75dfa8750a",
+  "code_commit": "992236d245e165dcf5842411ad0a4733433fd7de",
+  "frozen_expectations_commit": "17484296abb50e2f24775db53d7765cdbe10dab1",
+  "prior_r6_review": "c42b4abee4e54340659ec6b1f8f6760dfbef9411",
+  "prior_r5_review": "4a5d9a9f8d700cbc5e692401220623df1122e22b",
+  "prior_r4_review": "d1baa92cb457c30bf6dffb91f23f8cee351de4f6",
+  "branch": "agent/opencode-pyat-r61-r08v-r7-independent-review-r1",
+  "environment": {
+    "python": "3.11.3",
+    "python_executable": "/usr/local/bin/python3",
+    "pytest": "9.0.2"
+  },
+  "custody": {
+    "exact_root": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r08v-r4",
+    "candidate_module_blob": "00312f84afa5677c94193cefd94cdfd951f05222",
+    "candidate_test_blob": "0dae12308157735f188bc11163a224229563d8a4",
+    "r7_contract_blob": "92e2f2d226a2676c9d110ccc379504242f337008",
+    "r7_commission_blob": "04e03acc63fdd6a270c11acfb1873f7be2b5b007",
+    "r61af_blob": "0efd5777ed6cc81374b741d15a91a8551ad08f39",
+    "fixture_identities_blob": "ae96c7a37051d8715e1e93cedac889243c300c8a",
+    "harness_blob": "4a90fc79230232a59443902ee92b3668626dda99",
+    "native_owner_blobs": {
+      "provider": "23167aa25291fb148b1e3cf210ac33fe7769b783",
+      "composition": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b",
+      "positioned_evaluator": "62e5eced47b64512f47b004e3e13a6ef3fe21de7",
+      "empirical_objects": "a61365b994e5c3c50de0f598fcf40e90abf757b6",
+      "at07_n10e_fixture": "0e384f72fa615dc72a0dcb08a36472a64b7b1e4a"
+    },
+    "candidate_delta": [
+      "rawlsing_next/pre553_universal_evidence_binding.py",
+      "rawlsing_next/tests/test_universal_evidence_binding.py"
+    ],
+    "author_r7_manifest": {"artifacts": 14, "all_match": true, "self_excluded": "manifest.json"},
+    "fixture_identities": {"all_five_match_sha256_bytes_git_blob_and_original": true, "harness_path_redirect_only": true},
+    "remote_branch_at_start": "ea39bd324d297a93bb9e87ede9b9da75dfa8750a"
+  },
+  "commands": [
+    {
+      "command": "pwd; git rev-parse --show-toplevel; git branch --show-current; git status",
+      "exit": 0,
+      "observation": "exact root/branch, clean tree; no facility mismatch"
+    },
+    {
+      "command": "git -C /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-flight-director show 747656...:R08V/revisions/r7/00_COMMISSION.md",
+      "exit": 0,
+      "observation": "sealed R7 commission read in full"
+    },
+    {
+      "command": "git show e349da0d R61AF; git show 99222514 R61Q; git show c42b4abee R6 review; git show d1baa92 R4 review",
+      "exit": 0,
+      "observation": "R61AF normal form, R61Q D1-D6 and prior reviews read before freeze"
+    },
+    {
+      "command": "git commit -m 'R61-R08V-R7: freeze independent review expectations'",
+      "exit": 0,
+      "observation": "EXPECTATIONS committed at 17484296 before R7 candidate code/conclusions"
+    },
+    {
+      "command": "fixture identity check: five extracted fixtures vs startup/original blobs/SHA256/bytes",
+      "exit": 0,
+      "observation": "all five match; harness only redirects fixture path constants"
+    },
+    {
+      "command": "PYTHONPATH=<author r7 harness> pytest rawlsing_next/tests/test_universal_evidence_binding.py rawlsing_next/tests/test_pre553_analytical_composition.py --junitxml=<ownroot>/junit/author_suite_replay.xml",
+      "exit": 0,
+      "observation": "126 passed, 0 failed/errors/skipped"
+    },
+    {
+      "command": "pytest <ownroot>/probes/test_r08v_r7_independent_boundary.py --junitxml=<ownroot>/junit/reviewer_probes.xml",
+      "exit": 1,
+      "observation": "75 passed, 1 failed: legacy binding-pin cache replay returns STALE instead of explicit LEGACY_BINDING_PINS_REQUIRE_MIGRATION"
+    },
+    {
+      "command": "pytest <ownroot>/probes/test_r08v_r7_semantic_adapters.py --junitxml=<ownroot>/junit/semantic_adapters.xml",
+      "exit": 0,
+      "observation": "3 passed: R6/R5 removed-transport/local-label invariants preserved under canonical descriptor"
+    }
+  ],
+  "independent_positive": {
+    "at07": {"yes": 54, "no": 6, "denominator": 60},
+    "changed": {"yes": 54, "no": 16, "denominator": 70},
+    "observed_zero": {"denominator": 60, "cells": {"no": 0, "yes": 60}},
+    "zero_support": 0,
+    "typed_bool_int_string_null_distinct": true,
+    "z_unresolved_denominator": 16,
+    "cold_chain": {"first": 60, "second": 60, "provenance": "CANONICAL_PRODUCER", "local_label_present": false}
+  },
+  "r61af": {
+    "cache_schema": "R61_AUTHENTICATED_EVIDENCE_CACHE@5",
+    "descriptor_schema": "R61_CACHE_OWNER_DESCRIPTOR@1",
+    "descriptor_fields": 6,
+    "owner_classes": 13,
+    "no_admission_transport": true,
+    "no_producer_binding_transport": true,
+    "descriptor_hash_distinct_from_binding_hash": true,
+    "all_13_public_mutation_remove_duplicate_type_alias_refused": true,
+    "all_13_signed_owner_envelope_disagreement_refused": true,
+    "unknown_admission_legacy_refused": true,
+    "trusted_descriptor_hashes_enforced": true,
+    "live_pin_counter_zero": true,
+    "replay_no_producer": true,
+    "verifier_only_reexport_signature_preserved": true
+  },
+  "defects": [
+    {
+      "id": "R7-AF-01",
+      "class": "legacy configured binding-pin cache replay loses explicit migration code",
+      "public_route": "EvidenceResolver(trusted_binding_hashes=...); live resolve cache-hit",
+      "observed": "UNKNOWN / STALE_OR_UNAUTHENTICATED_CACHE",
+      "expected": "UNKNOWN / LEGACY_BINDING_PINS_REQUIRE_MIGRATION",
+      "impact": "no support or ownership bypass; diagnostic migration/configuration limit lost on primary resolve path",
+      "missing_function": "preserve explicit legacy migration refusal through _replay_cache; add resolve-path assertion"
+    }
+  ],
+  "probe_results": [
+    {"probe": "independent positive/changed/zero/status/currentness", "outcome": "PASS"},
+    {"probe": "descriptor normal form/no admission", "outcome": "PASS"},
+    {"probe": "13 owner classes public mutation/removal/duplicate/type alias", "outcome": "PASS (52/52)"},
+    {"probe": "13 signed owner/envelope disagreements", "outcome": "PASS (13/13)"},
+    {"probe": "unknown/admission/descriptor shape/legacy schema", "outcome": "PASS"},
+    {"probe": "descriptor pins/live pin counter0/replay no producer", "outcome": "PASS"},
+    {"probe": "evidence/query/rule isolated restore original cell 6", "outcome": "PASS"},
+    {"probe": "cold process verifier-only chain", "outcome": "PASS 60/signature/original provenance"},
+    {"probe": "legacy binding-pin cache replay explicit code", "outcome": "FAIL_DEFECT"}
+  ],
+  "prior_replay": {
+    "r6": {"tests": 11, "passed": 9, "failed": 2, "failures": ["local_delivery_context_unsigned removed", "producer_binding transport removed"], "adapters": "3/3 pass"},
+    "r5": {"tests": 8, "passed": 6, "failed": 2, "failures": ["old cache_trust_grade expectation", "old downstream import assertion after export refusal"], "accounted": true},
+    "r4": {"tests": 9, "passed": 7, "failed": 2, "failure_types": ["EvidenceAssociationError", "EvidenceAssociationError"], "lawful": true}
+  },
+  "junit": {
+    "author_suite_replay": {"tests": 126, "failures": 0, "errors": 0, "skipped": 0},
+    "reviewer_probes": {"tests": 76, "failures": 1, "errors": 0, "skipped": 0},
+    "semantic_adapters": {"tests": 3, "failures": 0, "errors": 0, "skipped": 0},
+    "r4_immutable_probe_replay": {"tests": 9, "failures": 2, "errors": 0, "skipped": 0},
+    "r5_immutable_probe_replay": {"tests": 8, "failures": 2, "errors": 0, "skipped": 0},
+    "r6_immutable_probe_replay": {"tests": 11, "failures": 2, "errors": 0, "skipped": 0}
+  },
+  "artifacts": [
+    "EXPECTATIONS.md", "00_RETURN.md", "defects.md", "limits.md", "RESUME.md",
+    "FACILITY_HISTORY.md", "proof_witness.json", "SHA256manifest.json",
+    "outcomes/r7_observations.json", "outcomes/r7_semantic_adapters.json",
+    "outcomes/r4_probe_replay_observations.json",
+    "outcomes/r5_probe_replay_observations.json",
+    "outcomes/r6_probe_replay_observations.json",
+    "probes/test_r08v_r7_independent_boundary.py",
+    "probes/test_r08v_r7_semantic_adapters.py",
+    "probes/r4_immutable_probe.py", "probes/r5_immutable_probe.py",
+    "probes/r6_immutable_probe.py",
+    "junit/author_suite_replay.xml", "junit/reviewer_probes.xml",
+    "junit/semantic_adapters.xml", "junit/r4_immutable_probe_replay.xml",
+    "junit/r5_immutable_probe_replay.xml", "junit/r6_immutable_probe_replay.xml",
+    "logs/stdout.jsonl"
+  ],
+  "scope_limits": {
+    "not_reached": ["live J42 E41ProviderAdapter.step", "live P41 progressive", "repaired live E04 terminal"],
+    "unchanged_holds": ["original35", "1890", "global F6F7F8", "source/science/CI/prod", "N11/N12/Sorok", "J52/W52", "R03", "R09"],
+    "no_candidate_repair": true,
+    "no_self_adoption": true,
+    "no_author_wake": true,
+    "no_extra_sessions_subagents_provider_model_account": true
+  }
+}

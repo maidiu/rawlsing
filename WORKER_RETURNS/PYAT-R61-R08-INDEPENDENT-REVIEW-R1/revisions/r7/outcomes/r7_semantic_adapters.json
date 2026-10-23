@@ -1,0 +1,27 @@
+{
+  "probes": [
+    {
+      "cache_trust_grade_present": false,
+      "local_label_present": false,
+      "probe": "r6_r5_provenance_adapter",
+      "restored_denominator": 60,
+      "signed_mode": "LIVE_TRUSTED_EXECUTION",
+      "signed_original": "CANONICAL_PRODUCER"
+    },
+    {
+      "admission_absent": true,
+      "altered_owner_descriptor_refused": true,
+      "original_chain_denominator": 60,
+      "parallel_producer_binding_absent": true,
+      "probe": "r6_producer_binding_adapter"
+    },
+    {
+      "mutated_export_refused": true,
+      "mutated_reader_refused": true,
+      "probe": "r5_export_evidence_adapter",
+      "restored_cell": 6,
+      "restored_denominator": 60
+    }
+  ],
+  "schema": "R61_R08V_R7_SEMANTIC_ADAPTERS@1"
+}

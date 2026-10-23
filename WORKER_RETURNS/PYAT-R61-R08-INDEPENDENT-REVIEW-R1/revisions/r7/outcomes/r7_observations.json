@@ -1,0 +1,489 @@
+{
+  "probes": [
+    {
+      "at07": {
+        "denominator": 60,
+        "no": 6,
+        "yes": 54
+      },
+      "changed": {
+        "denominator": 70,
+        "no": 16,
+        "yes": 54
+      },
+      "probe": "independent_positive"
+    },
+    {
+      "descriptor_fields": [
+        "descriptor_hash",
+        "owner_identity_hash",
+        "owner_identity_material",
+        "request_key",
+        "schema",
+        "validated_conditions"
+      ],
+      "entry_keys": [
+        "cache_owner_descriptor",
+        "consumer_query",
+        "envelope_signature",
+        "evidence",
+        "execution_envelope",
+        "model_rule",
+        "request_key",
+        "request_material",
+        "result",
+        "schema",
+        "seal",
+        "seal_algorithm"
+      ],
+      "owner_classes": 13,
+      "probe": "descriptor_normal_form"
+    },
+    {
+      "attack": "mutate",
+      "owner_class": "context_ref",
+      "probe": "owner_class_public_mutation",
+      "refused": true
+    },
+    {
+      "attack": "mutate",
+      "owner_class": "context",
+      "probe": "owner_class_public_mutation",
+      "refused": true
+    },
+    {
+      "attack": "mutate",
+      "owner_class": "actual_conditions",
+      "probe": "owner_class_public_mutation",
+      "refused": true
+    },
+    {
+      "attack": "mutate",
+      "owner_class": "producer_query_ref",
+      "probe": "owner_class_public_mutation",
+      "refused": true
+    },
+    {
+      "attack": "mutate",
+      "owner_class": "predicate_ref",
+      "probe": "owner_class_public_mutation",
+      "refused": true
+    },
+    {
+      "attack": "mutate",
+      "owner_class": "predicate_hash",
+      "probe": "owner_class_public_mutation",
+      "refused": true
+    },
+    {
+      "attack": "mutate",
+      "owner_class": "release_refs",
+      "probe": "owner_class_public_mutation",
+      "refused": true
+    },
+    {
+      "attack": "mutate",
+      "owner_class": "consumer_query_ref",
+      "probe": "owner_class_public_mutation",
+      "refused": true
+    },
+    {
+      "attack": "mutate",
+      "owner_class": "consumer_binding_fingerprint",
+      "probe": "owner_class_public_mutation",
+      "refused": true
+    },
+    {
+      "attack": "mutate",
+      "owner_class": "model_rule_hash",
+      "probe": "owner_class_public_mutation",
+      "refused": true
+    },
+    {
+      "attack": "mutate",
+      "owner_class": "source_universe_ref",
+      "probe": "owner_class_public_mutation",
+      "refused": true
+    },
+    {
+      "attack": "mutate",
+      "owner_class": "risk_set_ref",
+      "probe": "owner_class_public_mutation",
+      "refused": true
+    },
+    {
+      "attack": "mutate",
+      "owner_class": "target_ref",
+      "probe": "owner_class_public_mutation",
+      "refused": true
+    },
+    {
+      "attack": "remove",
+      "owner_class": "context_ref",
+      "probe": "owner_class_public_mutation",
+      "refused": true
+    },
+    {
+      "attack": "remove",
+      "owner_class": "context",
+      "probe": "owner_class_public_mutation",
+      "refused": true
+    },
+    {
+      "attack": "remove",
+      "owner_class": "actual_conditions",
+      "probe": "owner_class_public_mutation",
+      "refused": true
+    },
+    {
+      "attack": "remove",
+      "owner_class": "producer_query_ref",
+      "probe": "owner_class_public_mutation",
+      "refused": true
+    },
+    {
+      "attack": "remove",
+      "owner_class": "predicate_ref",
+      "probe": "owner_class_public_mutation",
+      "refused": true
+    },
+    {
+      "attack": "remove",
+      "owner_class": "predicate_hash",
+      "probe": "owner_class_public_mutation",
+      "refused": true
+    },
+    {
+      "attack": "remove",
+      "owner_class": "release_refs",
+      "probe": "owner_class_public_mutation",
+      "refused": true
+    },
+    {
+      "attack": "remove",
+      "owner_class": "consumer_query_ref",
+      "probe": "owner_class_public_mutation",
+      "refused": true
+    },
+    {
+      "attack": "remove",
+      "owner_class": "consumer_binding_fingerprint",
+      "probe": "owner_class_public_mutation",
+      "refused": true
+    },
+    {
+      "attack": "remove",
+      "owner_class": "model_rule_hash",
+      "probe": "owner_class_public_mutation",
+      "refused": true
+    },
+    {
+      "attack": "remove",
+      "owner_class": "source_universe_ref",
+      "probe": "owner_class_public_mutation",
+      "refused": true
+    },
+    {
+      "attack": "remove",
+      "owner_class": "risk_set_ref",
+      "probe": "owner_class_public_mutation",
+      "refused": true
+    },
+    {
+      "attack": "remove",
+      "owner_class": "target_ref",
+      "probe": "owner_class_public_mutation",
+      "refused": true
+    },
+    {
+      "attack": "duplicate",
+      "owner_class": "context_ref",
+      "probe": "owner_class_public_mutation",
+      "refused": true
+    },
+    {
+      "attack": "duplicate",
+      "owner_class": "context",
+      "probe": "owner_class_public_mutation",
+      "refused": true
+    },
+    {
+      "attack": "duplicate",
+      "owner_class": "actual_conditions",
+      "probe": "owner_class_public_mutation",
+      "refused": true
+    },
+    {
+      "attack": "duplicate",
+      "owner_class": "producer_query_ref",
+      "probe": "owner_class_public_mutation",
+      "refused": true
+    },
+    {
+      "attack": "duplicate",
+      "owner_class": "predicate_ref",
+      "probe": "owner_class_public_mutation",
+      "refused": true
+    },
+    {
+      "attack": "duplicate",
+      "owner_class": "predicate_hash",
+      "probe": "owner_class_public_mutation",
+      "refused": true
+    },
+    {
+      "attack": "duplicate",
+      "owner_class": "release_refs",
+      "probe": "owner_class_public_mutation",
+      "refused": true
+    },
+    {
+      "attack": "duplicate",
+      "owner_class": "consumer_query_ref",
+      "probe": "owner_class_public_mutation",
+      "refused": true
+    },
+    {
+      "attack": "duplicate",
+      "owner_class": "consumer_binding_fingerprint",
+      "probe": "owner_class_public_mutation",
+      "refused": true
+    },
+    {
+      "attack": "duplicate",
+      "owner_class": "model_rule_hash",
+      "probe": "owner_class_public_mutation",
+      "refused": true
+    },
+    {
+      "attack": "duplicate",
+      "owner_class": "source_universe_ref",
+      "probe": "owner_class_public_mutation",
+      "refused": true
+    },
+    {
+      "attack": "duplicate",
+      "owner_class": "risk_set_ref",
+      "probe": "owner_class_public_mutation",
+      "refused": true
+    },
+    {
+      "attack": "duplicate",
+      "owner_class": "target_ref",
+      "probe": "owner_class_public_mutation",
+      "refused": true
+    },
+    {
+      "attack": "type_alias",
+      "owner_class": "context_ref",
+      "probe": "owner_class_public_mutation",
+      "refused": true
+    },
+    {
+      "attack": "type_alias",
+      "owner_class": "context",
+      "probe": "owner_class_public_mutation",
+      "refused": true
+    },
+    {
+      "attack": "type_alias",
+      "owner_class": "actual_conditions",
+      "probe": "owner_class_public_mutation",
+      "refused": true
+    },
+    {
+      "attack": "type_alias",
+      "owner_class": "producer_query_ref",
+      "probe": "owner_class_public_mutation",
+      "refused": true
+    },
+    {
+      "attack": "type_alias",
+      "owner_class": "predicate_ref",
+      "probe": "owner_class_public_mutation",
+      "refused": true
+    },
+    {
+      "attack": "type_alias",
+      "owner_class": "predicate_hash",
+      "probe": "owner_class_public_mutation",
+      "refused": true
+    },
+    {
+      "attack": "type_alias",
+      "owner_class": "release_refs",
+      "probe": "owner_class_public_mutation",
+      "refused": true
+    },
+    {
+      "attack": "type_alias",
+      "owner_class": "consumer_query_ref",
+      "probe": "owner_class_public_mutation",
+      "refused": true
+    },
+    {
+      "attack": "type_alias",
+      "owner_class": "consumer_binding_fingerprint",
+      "probe": "owner_class_public_mutation",
+      "refused": true
+    },
+    {
+      "attack": "type_alias",
+      "owner_class": "model_rule_hash",
+      "probe": "owner_class_public_mutation",
+      "refused": true
+    },
+    {
+      "attack": "type_alias",
+      "owner_class": "source_universe_ref",
+      "probe": "owner_class_public_mutation",
+      "refused": true
+    },
+    {
+      "attack": "type_alias",
+      "owner_class": "risk_set_ref",
+      "probe": "owner_class_public_mutation",
+      "refused": true
+    },
+    {
+      "attack": "type_alias",
+      "owner_class": "target_ref",
+      "probe": "owner_class_public_mutation",
+      "refused": true
+    },
+    {
+      "import_refused": true,
+      "owner_class": "context_ref",
+      "probe": "signed_inconsistent_owner_class",
+      "reader_refused": true
+    },
+    {
+      "import_refused": true,
+      "owner_class": "context",
+      "probe": "signed_inconsistent_owner_class",
+      "reader_refused": true
+    },
+    {
+      "import_refused": true,
+      "owner_class": "actual_conditions",
+      "probe": "signed_inconsistent_owner_class",
+      "reader_refused": true
+    },
+    {
+      "import_refused": true,
+      "owner_class": "producer_query_ref",
+      "probe": "signed_inconsistent_owner_class",
+      "reader_refused": true
+    },
+    {
+      "import_refused": true,
+      "owner_class": "predicate_ref",
+      "probe": "signed_inconsistent_owner_class",
+      "reader_refused": true
+    },
+    {
+      "import_refused": true,
+      "owner_class": "predicate_hash",
+      "probe": "signed_inconsistent_owner_class",
+      "reader_refused": true
+    },
+    {
+      "import_refused": true,
+      "owner_class": "release_refs",
+      "probe": "signed_inconsistent_owner_class",
+      "reader_refused": true
+    },
+    {
+      "import_refused": true,
+      "owner_class": "consumer_query_ref",
+      "probe": "signed_inconsistent_owner_class",
+      "reader_refused": true
+    },
+    {
+      "import_refused": true,
+      "owner_class": "consumer_binding_fingerprint",
+      "probe": "signed_inconsistent_owner_class",
+      "reader_refused": true
+    },
+    {
+      "import_refused": true,
+      "owner_class": "model_rule_hash",
+      "probe": "signed_inconsistent_owner_class",
+      "reader_refused": true
+    },
+    {
+      "import_refused": true,
+      "owner_class": "source_universe_ref",
+      "probe": "signed_inconsistent_owner_class",
+      "reader_refused": true
+    },
+    {
+      "import_refused": true,
+      "owner_class": "risk_set_ref",
+      "probe": "signed_inconsistent_owner_class",
+      "reader_refused": true
+    },
+    {
+      "import_refused": true,
+      "owner_class": "target_ref",
+      "probe": "signed_inconsistent_owner_class",
+      "reader_refused": true
+    },
+    {
+      "all_refused": true,
+      "probe": "admission_unknown_shape"
+    },
+    {
+      "descriptor_pin_refused": true,
+      "legacy_binding_pin_refused": true,
+      "legacy_schema_refused": true,
+      "probe": "legacy_and_pins"
+    },
+    {
+      "expected": "LEGACY_BINDING_PINS_REQUIRE_MIGRATION",
+      "first_state": "SUPPORTED",
+      "probe": "legacy_pin_cache_replay",
+      "second_state": "UNKNOWN",
+      "second_typed_refusal": "STALE_OR_UNAUTHENTICATED_CACHE"
+    },
+    {
+      "missing_pin_refusal": "OWNER_ADMISSION_UNRESOLVED",
+      "probe": "live_pin_and_replay",
+      "substituted_calls": 0
+    },
+    {
+      "original_cell": 6,
+      "probe": "evidence_query_rule_isolated",
+      "restored_denominator": 60
+    },
+    {
+      "consumer": 60,
+      "hash_match": true,
+      "local_label": false,
+      "one": 60,
+      "probe": "cold_chain",
+      "provenance": "CANONICAL_PRODUCER",
+      "two": 60
+    },
+    {
+      "changed_key": true,
+      "probe": "currentness_identity",
+      "restored": 60
+    },
+    {
+      "observed_cells": {
+        "no": 0,
+        "yes": 60
+      },
+      "observed_zero_denominator": 60,
+      "probe": "actual_zero_controls",
+      "zero_support": 0
+    },
+    {
+      "probe": "typed_status_z",
+      "typed_tags_distinct": 4,
+      "z_denominator": 16
+    }
+  ],
+  "schema": "R61_R08V_R7_INDEPENDENT_OBSERVATIONS@1"
+}

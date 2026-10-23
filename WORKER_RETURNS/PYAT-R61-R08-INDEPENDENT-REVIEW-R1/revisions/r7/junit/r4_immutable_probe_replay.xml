@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="9" time="3.511" timestamp="2026-10-23T18:33:44.775270-04:00" hostname="MacBook-Pro.lan"><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r7.probes.r4_immutable_probe" name="test_independent_fixture_positive_54_6_60_and_actual_provider" time="0.331" /><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r7.probes.r4_immutable_probe" name="test_changed_native_case_serves_own_values_not_canonical" time="0.300" /><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r7.probes.r4_immutable_probe" name="test_no_config_default_resolver_and_reader_refuse" time="0.188" /><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r7.probes.r4_immutable_probe" name="test_wrong_root_and_attacker_issuer_are_refused_by_real_reader" time="0.274" /><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r7.probes.r4_immutable_probe" name="test_forged_consumer_values_read_must_refuse_or_serve_signed_values" time="0.273"><failure message="rawlsing_next.pre553_universal_evidence_binding.EvidenceAssociationError: signed execution/owner/object association invalid">self = &lt;rawlsing_next.pre553_universal_evidence_binding.EvidenceConsumerReader object at 0x104c578d0&gt;
+
+    def _assert_association(self) -&gt; None:
+        if self.request.key != self.result.request_key:
+            raise EvidenceAssociationError(
+                "request/result K mismatch: refusing target/depth reuse"
+            )
+        if self.result.result_state != "SUPPORTED":
+            raise EvidenceAssociationError(
+                f"result is not exact support: {self.result.result_state}"
+            )
+        if self.verifier is None:
+            raise EvidenceAssociationError("NO_CONFIGURED_TRUST_ROOT: reader is not pinned")
+        try:
+&gt;           _checked_cache_owner_descriptor(self.request, self.result, self.verifier)
+
+rawlsing_next/pre553_universal_evidence_binding.py:2508: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+request = EvidenceRequest(request_id='r4-independent-values', schema_version='R61_EVIDENCE_SCHEMA@1', claim_grade='TEST_ONLY_SOU...:i03:question_native:c1-at07-ANSWER', content_hash='e6f8992046c0941a5192585cbe9c2ec86e03963e68207c1f05988df2c9105513'))
+result = EvidenceResult(request_key='e7fd4132f29f4a914998393b6e1c5de7f9d19a70eecb6adb764a71b8a0f8a3c8', eligibility_state='ELIG...NLY_SCOPED_LOCAL_TRUSTED_HOST'), envelope_signature='9db809c5418eab0abd93e67a0b4460bbda57da765d4436f9fe79475041be7ae5')
+verifier = &lt;rawlsing_next.pre553_universal_evidence_binding.TrustedAdmissionVerifier object at 0x103f6efd0&gt;
+
+    def _checked_cache_owner_descriptor(
+        request: EvidenceRequest,
+        result: EvidenceResult,
+        verifier: TrustedAdmissionVerifier | None,
+        *,
+        descriptor: Mapping[str, Any] | None = None,
+    ) -&gt; Mapping[str, Any]:
+        """One authenticated read-only owner projection for every productive API.
+    
+        Descriptor hashes are public integrity aids. Only the configured verifier's
+        original executed-envelope signature authenticates this projection.
+        """
+        envelope = result.execution_envelope
+        if verifier is None or envelope is None or not verifier.verify_envelope(envelope, result.envelope_signature):
+            raise EvidenceCacheIntegrityError("signed execution envelope absent/untrusted")
+        if not _envelope_matches_request(envelope, request):
+            raise EvidenceCacheIntegrityError("execution envelope does not match K")
+        owner = envelope.owner_identity_material
+        if not isinstance(owner, Mapping) or set(owner) != CACHE_OWNER_FIELDS:
+            raise EvidenceCacheIntegrityError("unknown/missing canonical owner fields")
+        if envelope.owner_identity_hash != semantic_hash(owner):
+            raise EvidenceCacheIntegrityError("signed owner hash/material disagreement")
+        context = owner["context"]
+        if not isinstance(context, Mapping) or not _same_material(context, envelope.context_material):
+            raise EvidenceCacheIntegrityError("signed owner/envelope context disagreement")
+        context_hash = semantic_hash(context)
+        context_ref = ExactRef(
+            "R61_ADMITTED_EVIDENCE_CONTEXT@1",
+            f"urn:rawlsing:r61:admitted-evidence-context:sha256:{context_hash}", context_hash,
+        )
+        if envelope.context_ref != context_ref or not _same_material(owner["context_ref"], context_ref.as_dict()):
+            raise EvidenceCacheIntegrityError("canonical owner context ref/content disagreement")
+        if not _context_material_matches_request(context, request):
+            raise EvidenceCacheIntegrityError("canonical owner context does not match K")
+        expected = {
+            "producer_query_ref": request.producer_query_ref.as_dict(),
+            "predicate_ref": request.predicate_ref.as_dict(),
+            "predicate_hash": request.predicate_hash,
+            "release_refs": [request.release_ref.as_dict()],
+            "consumer_query_ref": request.consumer_query_ref.as_dict(),
+            "consumer_binding_fingerprint": request.consumer_binding_fingerprint,
+            "model_rule_hash": request.model_rule_hash,
+            "source_universe_ref": request.source_universe_ref.as_dict(),
+            "risk_set_ref": request.risk_set_ref.as_dict(),
+            "target_ref": request.target_ref.as_dict(),
+        }
+        for name, value in expected.items():
+            if not _same_material(owner[name], value):
+                raise EvidenceCacheIntegrityError(f"canonical owner {name} does not match K")
+        actual_conditions = owner["actual_conditions"]
+        if not isinstance(actual_conditions, (list, tuple)) or len(actual_conditions) != len(request.ordered_conditions):
+            raise EvidenceCacheIntegrityError("canonical owner condition arity mismatch")
+        for actual, condition in zip(actual_conditions, request.ordered_conditions):
+            if not isinstance(actual, Mapping) or set(actual) != {
+                "conditioner_binding_id", "occurrence", "leaf_semantic_ref", "typed_value", "domain_state_version"
+            }:
+                raise EvidenceCacheIntegrityError("canonical actual condition fields invalid")
+            leaf_ref = actual["leaf_semantic_ref"]
+            if not isinstance(leaf_ref, Mapping) or not _item_matches_leaf(condition.occurrence.item, leaf_ref):
+                raise EvidenceCacheIntegrityError("canonical condition leaf/item mismatch")
+            exact_ref(leaf_ref, "canonical condition leaf ref")
+            native_value = _typed_from_material(condition.value.material())
+            expected_condition = {
+                "conditioner_binding_id": condition.conditioner_binding_id,
+                "occurrence": {
+                    "item": native_value, "option": str(native_value),
+                    "form": condition.occurrence.form, "repeat": condition.occurrence.repeat,
+                },
+                "leaf_semantic_ref": leaf_ref,
+                "typed_value": condition.value.material(),
+                "domain_state_version": condition.domain_state_version,
+            }
+            if not _same_material(actual, expected_condition) or context["domain_state_version"] != condition.domain_state_version:
+                raise EvidenceCacheIntegrityError("canonical actual/typed condition mismatch")
+        evidence, query, rule = result.evidence_object, result.consumer_query_object, result.model_rule_object
+        if not _objects_match_envelope(evidence, query, rule, envelope):
+            raise EvidenceCacheIntegrityError("signed evidence/query/rule association mismatch")
+        if (
+            query.ref != request.consumer_query_ref
+            or query.source_universe_ref != request.source_universe_ref
+            or query.release_ref != request.release_ref
+            or query.target_ref != request.target_ref
+            or evidence.source_universe_ref != request.source_universe_ref
+            or evidence.release_ref != request.release_ref
+            or evidence.target_ref != request.target_ref
+            or evidence.raw_support != envelope.denominator
+            or [b.binding_id for b in query.conditioner_bindings] != [c.conditioner_binding_id for c in request.ordered_conditions]
+        ):
+            raise EvidenceCacheIntegrityError("native consumer/source/typed conditions do not match K")
+        fingerprints = {semantic_hash([b.material() for b in query.conditioner_bindings])}
+        if len(query.conditioner_bindings) == 1:
+            fingerprints.add(semantic_hash(query.conditioner_bindings[0].material()))
+        if request.consumer_binding_fingerprint not in fingerprints:
+            raise EvidenceCacheIntegrityError("native consumer binding fingerprint mismatch")
+        actual = evaluate_positioned_subject_possibility(query=query, rule=rule, evidence=(evidence,))
+        cells = _evidence_cells(evidence)
+        if (
+            actual.result_state != "EXACT_SUPPORTED"
+            or actual.result_state != envelope.evaluator_result_state
+            or actual.result_hash != envelope.evaluator_result_hash
+            or envelope.result_state != "SUPPORTED"
+            or envelope.eligibility_state != "ELIGIBLE"
+            or envelope.execution_state != "COMPLETED"
+            or not _same_material(cells, envelope.cells)
+            or not _same_material(envelope.consumer_values_read, _consumer_values(request, evidence, actual, envelope.denominator, cells))
+            or not _result_matches_envelope(result, envelope)
+        ):
+&gt;           raise EvidenceCacheIntegrityError("signed evaluator/result/value/status disagreement")
+E           rawlsing_next.pre553_universal_evidence_binding.EvidenceCacheIntegrityError: signed evaluator/result/value/status disagreement
+
+rawlsing_next/pre553_universal_evidence_binding.py:1770: EvidenceCacheIntegrityError
+
+The above exception was the direct cause of the following exception:
+
+    def test_forged_consumer_values_read_must_refuse_or_serve_signed_values():
+        case, request, resolver, produced = _resolve_canonical("r4-independent-values")
+        values = dict(produced.consumer_values_read)
+        forged_cells = [
+            {
+                "cell": "yes",
+                "cell_state": "EXACT",
+                "raw_numerator_support": 999,
+                "raw_probability_exact_fraction": "1",
+            }
+        ]
+        forged_ref = {
+            "kind": "FORGED_EVIDENCE",
+            "object_id": "urn:forged:evidence",
+            "content_hash": semantic_hash({"forged": "evidence"}),
+        }
+        values["denominator"] = 999
+        values["cells"] = forged_cells
+        values["evidence_ref"] = forged_ref
+        values["result_state"] = "ZERO_SUPPORT"
+        mutated = replace(produced, consumer_values_read=values)
+&gt;       read = _reader(request, mutated).read()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+WORKER_RETURNS/PYAT-R61-R08-INDEPENDENT-REVIEW-R1/revisions/r7/probes/r4_immutable_probe.py:234: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/pre553_universal_evidence_binding.py:2513: in read
+    self._assert_association()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;rawlsing_next.pre553_universal_evidence_binding.EvidenceConsumerReader object at 0x104c578d0&gt;
+
+    def _assert_association(self) -&gt; None:
+        if self.request.key != self.result.request_key:
+            raise EvidenceAssociationError(
+                "request/result K mismatch: refusing target/depth reuse"
+            )
+        if self.result.result_state != "SUPPORTED":
+            raise EvidenceAssociationError(
+                f"result is not exact support: {self.result.result_state}"
+            )
+        if self.verifier is None:
+            raise EvidenceAssociationError("NO_CONFIGURED_TRUST_ROOT: reader is not pinned")
+        try:
+            _checked_cache_owner_descriptor(self.request, self.result, self.verifier)
+        except (Pre553IntegrityError, KeyError, TypeError, ValueError, AttributeError) as exc:
+&gt;           raise EvidenceAssociationError("signed execution/owner/object association invalid") from exc
+E           rawlsing_next.pre553_universal_evidence_binding.EvidenceAssociationError: signed execution/owner/object association invalid
+
+rawlsing_next/pre553_universal_evidence_binding.py:2510: EvidenceAssociationError</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r7.probes.r4_immutable_probe" name="test_mutated_result_metadata_must_refuse" time="0.274"><failure message="rawlsing_next.pre553_universal_evidence_binding.EvidenceAssociationError: signed execution/owner/object association invalid">self = &lt;rawlsing_next.pre553_universal_evidence_binding.EvidenceConsumerReader object at 0x1024f62d0&gt;
+
+    def _assert_association(self) -&gt; None:
+        if self.request.key != self.result.request_key:
+            raise EvidenceAssociationError(
+                "request/result K mismatch: refusing target/depth reuse"
+            )
+        if self.result.result_state != "SUPPORTED":
+            raise EvidenceAssociationError(
+                f"result is not exact support: {self.result.result_state}"
+            )
+        if self.verifier is None:
+            raise EvidenceAssociationError("NO_CONFIGURED_TRUST_ROOT: reader is not pinned")
+        try:
+&gt;           _checked_cache_owner_descriptor(self.request, self.result, self.verifier)
+
+rawlsing_next/pre553_universal_evidence_binding.py:2508: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+request = EvidenceRequest(request_id='r4-independent-meta', schema_version='R61_EVIDENCE_SCHEMA@1', claim_grade='TEST_ONLY_SOURC...:i03:question_native:c1-at07-ANSWER', content_hash='e6f8992046c0941a5192585cbe9c2ec86e03963e68207c1f05988df2c9105513'))
+result = EvidenceResult(request_key='203655dde2f2b6d7cbd734a93013de305220c1a452d7c4d3604c3b4497a2e5c2', eligibility_state='ELIG...NLY_SCOPED_LOCAL_TRUSTED_HOST'), envelope_signature='4ee18861d3f6ac990c8b78e3f7640d2965ae41f043c2be0889e6734d36a3a5bb')
+verifier = &lt;rawlsing_next.pre553_universal_evidence_binding.TrustedAdmissionVerifier object at 0x103f6efd0&gt;
+
+    def _checked_cache_owner_descriptor(
+        request: EvidenceRequest,
+        result: EvidenceResult,
+        verifier: TrustedAdmissionVerifier | None,
+        *,
+        descriptor: Mapping[str, Any] | None = None,
+    ) -&gt; Mapping[str, Any]:
+        """One authenticated read-only owner projection for every productive API.
+    
+        Descriptor hashes are public integrity aids. Only the configured verifier's
+        original executed-envelope signature authenticates this projection.
+        """
+        envelope = result.execution_envelope
+        if verifier is None or envelope is None or not verifier.verify_envelope(envelope, result.envelope_signature):
+            raise EvidenceCacheIntegrityError("signed execution envelope absent/untrusted")
+        if not _envelope_matches_request(envelope, request):
+            raise EvidenceCacheIntegrityError("execution envelope does not match K")
+        owner = envelope.owner_identity_material
+        if not isinstance(owner, Mapping) or set(owner) != CACHE_OWNER_FIELDS:
+            raise EvidenceCacheIntegrityError("unknown/missing canonical owner fields")
+        if envelope.owner_identity_hash != semantic_hash(owner):
+            raise EvidenceCacheIntegrityError("signed owner hash/material disagreement")
+        context = owner["context"]
+        if not isinstance(context, Mapping) or not _same_material(context, envelope.context_material):
+            raise EvidenceCacheIntegrityError("signed owner/envelope context disagreement")
+        context_hash = semantic_hash(context)
+        context_ref = ExactRef(
+            "R61_ADMITTED_EVIDENCE_CONTEXT@1",
+            f"urn:rawlsing:r61:admitted-evidence-context:sha256:{context_hash}", context_hash,
+        )
+        if envelope.context_ref != context_ref or not _same_material(owner["context_ref"], context_ref.as_dict()):
+            raise EvidenceCacheIntegrityError("canonical owner context ref/content disagreement")
+        if not _context_material_matches_request(context, request):
+            raise EvidenceCacheIntegrityError("canonical owner context does not match K")
+        expected = {
+            "producer_query_ref": request.producer_query_ref.as_dict(),
+            "predicate_ref": request.predicate_ref.as_dict(),
+            "predicate_hash": request.predicate_hash,
+            "release_refs": [request.release_ref.as_dict()],
+            "consumer_query_ref": request.consumer_query_ref.as_dict(),
+            "consumer_binding_fingerprint": request.consumer_binding_fingerprint,
+            "model_rule_hash": request.model_rule_hash,
+            "source_universe_ref": request.source_universe_ref.as_dict(),
+            "risk_set_ref": request.risk_set_ref.as_dict(),
+            "target_ref": request.target_ref.as_dict(),
+        }
+        for name, value in expected.items():
+            if not _same_material(owner[name], value):
+                raise EvidenceCacheIntegrityError(f"canonical owner {name} does not match K")
+        actual_conditions = owner["actual_conditions"]
+        if not isinstance(actual_conditions, (list, tuple)) or len(actual_conditions) != len(request.ordered_conditions):
+            raise EvidenceCacheIntegrityError("canonical owner condition arity mismatch")
+        for actual, condition in zip(actual_conditions, request.ordered_conditions):
+            if not isinstance(actual, Mapping) or set(actual) != {
+                "conditioner_binding_id", "occurrence", "leaf_semantic_ref", "typed_value", "domain_state_version"
+            }:
+                raise EvidenceCacheIntegrityError("canonical actual condition fields invalid")
+            leaf_ref = actual["leaf_semantic_ref"]
+            if not isinstance(leaf_ref, Mapping) or not _item_matches_leaf(condition.occurrence.item, leaf_ref):
+                raise EvidenceCacheIntegrityError("canonical condition leaf/item mismatch")
+            exact_ref(leaf_ref, "canonical condition leaf ref")
+            native_value = _typed_from_material(condition.value.material())
+            expected_condition = {
+                "conditioner_binding_id": condition.conditioner_binding_id,
+                "occurrence": {
+                    "item": native_value, "option": str(native_value),
+                    "form": condition.occurrence.form, "repeat": condition.occurrence.repeat,
+                },
+                "leaf_semantic_ref": leaf_ref,
+                "typed_value": condition.value.material(),
+                "domain_state_version": condition.domain_state_version,
+            }
+            if not _same_material(actual, expected_condition) or context["domain_state_version"] != condition.domain_state_version:
+                raise EvidenceCacheIntegrityError("canonical actual/typed condition mismatch")
+        evidence, query, rule = result.evidence_object, result.consumer_query_object, result.model_rule_object
+        if not _objects_match_envelope(evidence, query, rule, envelope):
+            raise EvidenceCacheIntegrityError("signed evidence/query/rule association mismatch")
+        if (
+            query.ref != request.consumer_query_ref
+            or query.source_universe_ref != request.source_universe_ref
+            or query.release_ref != request.release_ref
+            or query.target_ref != request.target_ref
+            or evidence.source_universe_ref != request.source_universe_ref
+            or evidence.release_ref != request.release_ref
+            or evidence.target_ref != request.target_ref
+            or evidence.raw_support != envelope.denominator
+            or [b.binding_id for b in query.conditioner_bindings] != [c.conditioner_binding_id for c in request.ordered_conditions]
+        ):
+            raise EvidenceCacheIntegrityError("native consumer/source/typed conditions do not match K")
+        fingerprints = {semantic_hash([b.material() for b in query.conditioner_bindings])}
+        if len(query.conditioner_bindings) == 1:
+            fingerprints.add(semantic_hash(query.conditioner_bindings[0].material()))
+        if request.consumer_binding_fingerprint not in fingerprints:
+            raise EvidenceCacheIntegrityError("native consumer binding fingerprint mismatch")
+        actual = evaluate_positioned_subject_possibility(query=query, rule=rule, evidence=(evidence,))
+        cells = _evidence_cells(evidence)
+        if (
+            actual.result_state != "EXACT_SUPPORTED"
+            or actual.result_state != envelope.evaluator_result_state
+            or actual.result_hash != envelope.evaluator_result_hash
+            or envelope.result_state != "SUPPORTED"
+            or envelope.eligibility_state != "ELIGIBLE"
+            or envelope.execution_state != "COMPLETED"
+            or not _same_material(cells, envelope.cells)
+            or not _same_material(envelope.consumer_values_read, _consumer_values(request, evidence, actual, envelope.denominator, cells))
+            or not _result_matches_envelope(result, envelope)
+        ):
+&gt;           raise EvidenceCacheIntegrityError("signed evaluator/result/value/status disagreement")
+E           rawlsing_next.pre553_universal_evidence_binding.EvidenceCacheIntegrityError: signed evaluator/result/value/status disagreement
+
+rawlsing_next/pre553_universal_evidence_binding.py:1770: EvidenceCacheIntegrityError
+
+The above exception was the direct cause of the following exception:
+
+    def test_mutated_result_metadata_must_refuse():
+        case, request, resolver, produced = _resolve_canonical("r4-independent-meta")
+        mutated = replace(
+            produced,
+            producer_fact_state="FORGED_FACT_STATE",
+            uncertainty_state="FORGED_UNCERTAINTY",
+            producer_receipt_ref=None,
+            producer_fact_ref=None,
+        )
+&gt;       read = _reader(request, mutated).read()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+WORKER_RETURNS/PYAT-R61-R08-INDEPENDENT-REVIEW-R1/revisions/r7/probes/r4_immutable_probe.py:265: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/pre553_universal_evidence_binding.py:2513: in read
+    self._assert_association()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;rawlsing_next.pre553_universal_evidence_binding.EvidenceConsumerReader object at 0x1024f62d0&gt;
+
+    def _assert_association(self) -&gt; None:
+        if self.request.key != self.result.request_key:
+            raise EvidenceAssociationError(
+                "request/result K mismatch: refusing target/depth reuse"
+            )
+        if self.result.result_state != "SUPPORTED":
+            raise EvidenceAssociationError(
+                f"result is not exact support: {self.result.result_state}"
+            )
+        if self.verifier is None:
+            raise EvidenceAssociationError("NO_CONFIGURED_TRUST_ROOT: reader is not pinned")
+        try:
+            _checked_cache_owner_descriptor(self.request, self.result, self.verifier)
+        except (Pre553IntegrityError, KeyError, TypeError, ValueError, AttributeError) as exc:
+&gt;           raise EvidenceAssociationError("signed execution/owner/object association invalid") from exc
+E           rawlsing_next.pre553_universal_evidence_binding.EvidenceAssociationError: signed execution/owner/object association invalid
+
+rawlsing_next/pre553_universal_evidence_binding.py:2510: EvidenceAssociationError</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r7.probes.r4_immutable_probe" name="test_substituted_producer_without_optional_pin_must_not_execute" time="0.210" /><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r7.probes.r4_immutable_probe" name="test_cache_forged_evidence_and_missing_envelope_refuse" time="0.288" /><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r7.probes.r4_immutable_probe" name="test_cold_process_positive_same_consumer_hash" time="0.844" /></testsuite></testsuites>
