@@ -1,3 +1,16 @@
+# Pyat HQ R61I — scoped R01 qualification / exact engineering boundary
+
+R01VR3review97e7e39e3dbf03acd193bfd52293cd74a32726af verified22reporthashes/23ownrootpaths/directremote. ACCEPT_SCOPED_LOCAL at genericR03-facinglowering; actualI05A1-A3qualified. ExplicitA4recurrence/baselineEXACT_CONTRACT_GAP remains; not fullwholeR01 or R03wake.
+
+OneboundedSolHigh/HIGHengineeringdecision needed: interpretR03developmentprerequisite againstscopequalifiedinterface and define minimumgenericrecurrencecontract ifrequired. Exactprimaryevidence/card at director55fe29bef8ed4cc2a706ef32814368f503c6c8c5:PYAT_CONTROL_ROOM/CONTINUOUS_DEVELOPMENT/SOL_HIGH_R01_RECURRENCE_AND_R03_START_DECISION.md. No Astra/scientificcourt, no repeatedforensics, no narrowedfullgoal. Downshiftimmediatelyafterdecision.
+
+R08R3author84704f4a775d0419ad4a08c8c687bc815df47adc verified5hashes/8scopedpaths. DistinctR08VR3actuallyrunning at exactcandidate undercommission706e7857842cdd08a82e09f33937ade89778e86c. No selfadoption. R09hostrequest pendinguser, otherlanesremainindependent.
+
+All original35/1890/globalF6F7F8/source/science/CI/prod/N11/N12/Sorokholds/J52W52stops preserved. No codeadoption/canonicalproductionmerge or R03launch. Exact handles/session/remotestates inCURRENT.json.
+
+
+## Earlier progress history retained
+
 # Pyat HQ R61H — actual successor review, admission repair and finite host hold
 
 R01R3 author9fbf1ec3bbd569b5fd83cfd9e20cb931523a42c5 passed documentary custody6hashes/fourcodeblobs/11scopedpaths. New independent R01V_R3 actually running from that exact candidate; fullR01 and R03 not qualified. A4 remains explicit contractgap pending independent finding.
