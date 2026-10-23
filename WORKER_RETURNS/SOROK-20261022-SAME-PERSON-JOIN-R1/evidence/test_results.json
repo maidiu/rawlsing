@@ -1,0 +1,69 @@
+{
+  "independent_v_entries": 41,
+  "notes": [
+    "Owned suites: 18 join + 8 J + 15 E + 10 R30A = 51 entries.",
+    "V preserved suite: 30 entries; lineage-contract: 5 entries; final-cut: 5 pass / 1 historical failure (E-first expectation superseded).",
+    "Counts are executed entries, not a clean unique union."
+  ],
+  "owned_entries": 51,
+  "schema": "SOROK_JOIN_E_TEST_RESULTS@1",
+  "status": "PASS_EXCEPT_SUPERSEDED_E_FIRST_EXPECTATION",
+  "suites": [
+    {
+      "errors": 0,
+      "failures": 0,
+      "file": "e_expression.xml",
+      "ok": true,
+      "skipped": 0,
+      "tests": 15
+    },
+    {
+      "errors": 0,
+      "failures": 0,
+      "file": "e_r30a.xml",
+      "ok": true,
+      "skipped": 0,
+      "tests": 10
+    },
+    {
+      "errors": 0,
+      "failures": 0,
+      "file": "j_r31j.xml",
+      "ok": true,
+      "skipped": 0,
+      "tests": 8
+    },
+    {
+      "errors": 0,
+      "failures": 0,
+      "file": "join_new.xml",
+      "ok": true,
+      "skipped": 0,
+      "tests": 18
+    },
+    {
+      "errors": 0,
+      "failures": 0,
+      "file": "v_all_30.xml",
+      "ok": true,
+      "skipped": 0,
+      "tests": 30
+    },
+    {
+      "errors": 0,
+      "failures": 1,
+      "file": "v_final_cut.xml",
+      "ok": false,
+      "skipped": 0,
+      "tests": 6
+    },
+    {
+      "errors": 0,
+      "failures": 0,
+      "file": "v_lineage_contract.xml",
+      "ok": true,
+      "skipped": 0,
+      "tests": 5
+    }
+  ]
+}

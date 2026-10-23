@@ -1,0 +1,97 @@
+{
+  "actual_bp2_ports": {
+    "actual_target_mutations": 0,
+    "after_response_rules": 0,
+    "after_target_rules": 0,
+    "grant": null,
+    "native_issuer": null,
+    "production_registry_writes": 0,
+    "production_response_rules": 0,
+    "production_target_rules": 0,
+    "rule_a": {
+      "content_hash": "de457b2eb69f270c0ed0599edac409d7550d4f278efd7296b6c636d169a8beb0",
+      "issuer_ref": "TEST_ONLY_R29M_CAN008_SCIENCE_PROPOSAL_NOT_ISSUER",
+      "native_grant": "NOT_GRANTED",
+      "resource_id": "TEST_ONLY_R29M_A_RESOURCE",
+      "test_only": true
+    },
+    "rule_t": {
+      "content_hash": "0cb47c23a27da95fead9942c549bec92c5e391a57a15a702c38976e8934b643a",
+      "issuer_ref": "TEST_ONLY_R29M_CAN011_SCIENCE_PROPOSAL_NOT_ISSUER",
+      "native_grant": "NOT_GRANTED",
+      "resource_id": "TEST_ONLY_R29M_T_RESOURCE",
+      "test_only": true
+    },
+    "schema": "R31J_BP2_PORT_RECEIPT@1"
+  },
+  "can008_decision_needed": [
+    "exact concrete E1 receivability/appraisal rule if any",
+    "allowed subjects/conditioning readset/currentness/revocation/source host purpose"
+  ],
+  "can011_decision_needed": [
+    "separate durable V3MS_PRACTICE RULE_T",
+    "explicit NO_CHANGE/CREATE/conditional grant with before/read/write sets",
+    "transfer/disconfirmer/contradiction evidence",
+    "exact response binding and revocation"
+  ],
+  "current_recommendation": "REQUEST_EVIDENCE for durable acquired practice; retain NO_CHANGE and no grant. The GM01 material chain does not validate human learning.",
+  "native": false,
+  "pre_c9_source": {
+    "b_event": {
+      "a_e1_clock": 6,
+      "a_e1_hash": "dac4aeb08c26ab86abda560435c41a6f2ecf58b1d589c72ff1c1bd629d5c6a79",
+      "a_e1_ref": "TEST_ONLY_EVENT_e1",
+      "a_e2_hash": "309c3180c09b60d01da267bbfc9ebec3f97f597ddd4b3f93a77369b97b3ae344",
+      "a_e2_performed": true,
+      "a_e2_ref": "TEST_ONLY_EVENT_e2",
+      "b_actor": "TEST_ONLY_R31J_B",
+      "b_clock": 5,
+      "b_event_hash": "16f11d2e849cbb3abcbfd8c76d32a509a38e74e3b503361dddeb2adf9403a486",
+      "b_event_ref": "TEST_ONLY_EVENT_share",
+      "b_operation": "SHARE_TOOL",
+      "b_owner": "TEST_ONLY_OWNER_share",
+      "b_performed": true,
+      "b_quantity": 1,
+      "b_to_actor": "TEST_ONLY_R31J_A",
+      "gm01_readset": [
+        "TEST_ONLY_EVENT_e1",
+        "TEST_ONLY_EVENT_e2",
+        "TEST_ONLY_EVENT_share",
+        "TEST_ONLY_EVENT_world"
+      ],
+      "gm01_result_hash": "54c8c09122d632f25473388cbe1842f84856495225b8199e3b4c9ff056a82212",
+      "grade": "TEST_ONLY_SOURCEFREE_PRE_C9_MATERIAL",
+      "material_feasible_after": true,
+      "native": false,
+      "psychology_claim": false,
+      "schema": "R31J_GM01_PRE_C9_SOURCE@1"
+    },
+    "c8_digest": "545922ea49edaa7b8b337c4121f8bb5e84014d57338bddf6cc6e79dd262bdbbb",
+    "c9_target": {
+      "causal_parent_refs": [
+        "630d971d16d5ab865d6e68d171628d3803e33d67ff32cee9be83b659f6b5b793",
+        "TEST_ONLY_BP1_EVT_bfe2e1443cc38d4202079b11312f1cad2ae1254ac52ded65e221bff6a067b8e2",
+        "TEST_ONLY_BP1_EVT_41c2ff1665bc38b190a70d015016cc9279895e1367bea528f64b98b7f4ba6249"
+      ],
+      "grant_hash": "b9f20dc75f66c81939bf94489dccfa115c9b5f0726e103df68b57f3282d14cd2",
+      "record_hash": "3c2a7b0382f626ff5d54a9e2b98721ce92ecde92d777d27fbc346806baf1267b",
+      "response_hash": "3c6e2760c1a2750c965b93b207c78d833f906753f46fafa07949f3af13ac4ee0",
+      "rule_a_hash": "9e4872abaeedc346fa3ea06575bb6fb5daa324a47d1d00d6015f7b660ea9cf5d",
+      "rule_t_hash": "ab8afe1ae0229b2d6143c84f58cc4f2f1b0942d9f680cd14477602143991ec97",
+      "target_branch": "CREATE",
+      "target_id": "59ff0a4e59f57bfb3ba132657fe3f9a62eb90abd764f74a62eec1f15045e7278",
+      "target_reason": "OK"
+    },
+    "e1_hash": "630d971d16d5ab865d6e68d171628d3803e33d67ff32cee9be83b659f6b5b793"
+  },
+  "r29m_candidate": {
+    "a_rule_hash": null,
+    "resource_hash": "dc764df790a7e8aa70e80a1714d919c5c5259a44f968e08b4098aa7c139da488",
+    "result_hash": "54c8c09122d632f25473388cbe1842f84856495225b8199e3b4c9ff056a82212",
+    "t_operation": null,
+    "t_rule_hash": null
+  },
+  "schema": "R31J_CAN_OWNER_HANDBACK@1",
+  "self_adoption": false,
+  "status": "SOURCEFREE_PRE_C9_MATERIAL_CHAIN_EXECUTED__NO_NATIVE_ISSUANCE__REQUEST_EVIDENCE"
+}

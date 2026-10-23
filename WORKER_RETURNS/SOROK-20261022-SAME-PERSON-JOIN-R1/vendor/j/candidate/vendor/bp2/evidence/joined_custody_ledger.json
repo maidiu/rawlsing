@@ -1,0 +1,173 @@
+{
+  "note": "One causal custody chain. Each link is verified by code, not by adjacency: the C8 occurrence id/state digest binds into the C9 E1 content hash, the response hash binds into the CAN011 grant, the grant and rule bind into the sealed target record, and the later E2 receipt binds the exact consumed record digest.",
+  "receipt_summary": {
+    "actor_id": "TEST_ONLY_BP1_ACTOR_A",
+    "c8_occurrence_id": "OCC-0001",
+    "c8_state_digest": "058d006c1ce79d2783b02a3bb4e2f92d0672aec9b406b5f3312453f9c5608b4b",
+    "consumed_state_hash": "4907a662d2494d9f7949d1f809195264e001f90d39021feb73e5a75cc31c656d",
+    "e2_receipt_hash": "19349fd6fded91f222d50ef5774deab1203619c390fb554e2bd4970e9c7f05aa",
+    "other_actor_id": "TEST_ONLY_BP1_ACTOR_B",
+    "target_id": "950a4c7903cbe832c72d234a0095946720910c23c8235a28c3118afd8fc1b9f8",
+    "target_record_hash": "8d784d48096f4d32d0df3d7c659a23b501681877a948580e0c0150ac60efcd3e"
+  },
+  "schema": "BP2_EVENT_ACTOR_RULE_TARGET_E2_CUSTODY@1",
+  "steps": [
+    {
+      "actor_id": "TEST_ONLY_BP1_ACTOR_A",
+      "causal_parents": [],
+      "hash": "ccef17a3360c20e9bb1834d8ea4f6ec88cf7ad74784c50de87e571338313a303",
+      "ref": "TEST_ONLY_BP1_EVT_ccef17a3360c20e9bb1834d8ea4f6ec88cf7ad74784c50de87e571338313a303",
+      "stage": "BP1_PRIOR_HISTORY"
+    },
+    {
+      "actor_id": "TEST_ONLY_BP1_ACTOR_A",
+      "causal_parents": [
+        "TEST_ONLY_BP1_EVT_ccef17a3360c20e9bb1834d8ea4f6ec88cf7ad74784c50de87e571338313a303"
+      ],
+      "hash": "e1808747e9e3fcdf70c27cb6e8f8c3b72471ba099faa1a15801f97f3140c560d",
+      "ref": "TEST_ONLY_BP1_EVT_e1808747e9e3fcdf70c27cb6e8f8c3b72471ba099faa1a15801f97f3140c560d",
+      "stage": "BP1_SHARED_OBJECTIVE"
+    },
+    {
+      "actor_id": "TEST_ONLY_BP1_ACTOR_A",
+      "causal_parents": [
+        "TEST_ONLY_BP1_EVT_ccef17a3360c20e9bb1834d8ea4f6ec88cf7ad74784c50de87e571338313a303",
+        "TEST_ONLY_BP1_EVT_e1808747e9e3fcdf70c27cb6e8f8c3b72471ba099faa1a15801f97f3140c560d"
+      ],
+      "hash": "da03a5bfcc30ad8f258e091036a18c0e908127a22a8173e0a153644a3ba44fe3",
+      "ref": "TEST_ONLY_BP1_EVT_da03a5bfcc30ad8f258e091036a18c0e908127a22a8173e0a153644a3ba44fe3",
+      "stage": "BP1_PERFORMED_ACTION"
+    },
+    {
+      "actor_id": "TEST_ONLY_BP1_ACTOR_A",
+      "causal_parents": [
+        "TEST_ONLY_BP1_EVT_e1808747e9e3fcdf70c27cb6e8f8c3b72471ba099faa1a15801f97f3140c560d"
+      ],
+      "hash": "1054a5d2d15415a9228a18718abe078c2b4fcb5955f84258fc975152e49c8bbe",
+      "ref": "TEST_ONLY_BP1_EVT_1054a5d2d15415a9228a18718abe078c2b4fcb5955f84258fc975152e49c8bbe",
+      "stage": "BP1_OTHER_ACTION"
+    },
+    {
+      "actor_id": "TEST_ONLY_BP1_ACTOR_A",
+      "causal_parents": [
+        "TEST_ONLY_BP1_EVT_1054a5d2d15415a9228a18718abe078c2b4fcb5955f84258fc975152e49c8bbe"
+      ],
+      "hash": "049a1e0a6c3735da361fae2be37ba5842d25ec18c6cfe7d29e9533565a440d4a",
+      "ref": "TEST_ONLY_BP1_EVT_049a1e0a6c3735da361fae2be37ba5842d25ec18c6cfe7d29e9533565a440d4a",
+      "stage": "BP1_RELATION_VIEW"
+    },
+    {
+      "admission_grade": "SOURCEFREE_LEGACY_FIXTURE_NO_OWNER_AUTHORITY",
+      "anchor_seq": 0,
+      "commit_receipt_id": "95ac61ff1bbb8af04278d2e7ce321f56189e1f526f167b079de55c0194306e93",
+      "occurrence_id": "OCC-0001",
+      "stage": "BP3_C8_EXCLUSIVE_APPEND",
+      "state_digest": "058d006c1ce79d2783b02a3bb4e2f92d0672aec9b406b5f3312453f9c5608b4b",
+      "writer_version": 1
+    },
+    {
+      "canonical_bytes_sha256": "3a0d583cd03f004936a94d72961cf8f6715f19a062cab2e1ca66bcc2f709177a",
+      "occurrence_id": "OCC-0001",
+      "proof_verified": true,
+      "stage": "OUT9_READ_ONLY",
+      "state_digest": "058d006c1ce79d2783b02a3bb4e2f92d0672aec9b406b5f3312453f9c5608b4b"
+    },
+    {
+      "actor_id": "TEST_ONLY_BP1_ACTOR_A",
+      "readset": [
+        "TEST_ONLY_BP1_SOURCE_ACTOR_A"
+      ],
+      "source_hash": "bf80ce4a1cddafa2eadab57fdda43942c70cca999bd49c864a34e9c1e33f82e2",
+      "stage": "C9_ACTOR_INGRESS",
+      "standing_state": "b5fa11db55d46e2a59d5b32788a952c10939960d9fa1a3be5fe8b63ad69e2bfb"
+    },
+    {
+      "adp019_admission_receipt": "ADP019_ADMISSION_RECEIPT_ABSENT",
+      "bp1_causal_parent_event_ids": [
+        "TEST_ONLY_BP1_EVT_ccef17a3360c20e9bb1834d8ea4f6ec88cf7ad74784c50de87e571338313a303",
+        "TEST_ONLY_BP1_EVT_e1808747e9e3fcdf70c27cb6e8f8c3b72471ba099faa1a15801f97f3140c560d"
+      ],
+      "c8_occurrence_id": "OCC-0001",
+      "event_hash": "f043e3b3d264e93abb0a7abeafe971ca5d524bab2c6101b63af29649995f6197",
+      "event_id": "TEST_ONLY_BP2_E1_OCC-0001",
+      "stage": "C9_E1_EVENT_WITNESS"
+    },
+    {
+      "response_hash": "757eecb20ad793d556daa08e2cb31cf2a59406901dfe6de888da98d32990fda0",
+      "rule_a_content_hash": "aa5033ca2b5f6321203652bf32537618fefbde4836ada572404702bef1869574",
+      "rule_lookup": "FOUND",
+      "stage": "C9_CAN008_RULE_A"
+    },
+    {
+      "grant_hash": "3236a56072294efecd81b7817b6b54ec4afa31be33ec5886ad8852a9172bd970",
+      "grant_id": "TEST_ONLY_BP2_TARGET_GRANT",
+      "rule_t_content_hash": "457894cf45902c8a4db1077bb1d043feef1b9c7bba67ad1e231e19978d1da3cb",
+      "rule_t_dependency_hash": "aa5033ca2b5f6321203652bf32537618fefbde4836ada572404702bef1869574",
+      "stage": "C9_CAN011_RULE_T"
+    },
+    {
+      "creation_rule_ref": "aa5033ca2b5f6321203652bf32537618fefbde4836ada572404702bef1869574",
+      "stage": "C9_DURABLE_TARGET_COMMIT",
+      "target_branch": "CREATE",
+      "target_id": "950a4c7903cbe832c72d234a0095946720910c23c8235a28c3118afd8fc1b9f8",
+      "target_record_hash": "8d784d48096f4d32d0df3d7c659a23b501681877a948580e0c0150ac60efcd3e"
+    },
+    {
+      "consumed_state_hash": "4907a662d2494d9f7949d1f809195264e001f90d39021feb73e5a75cc31c656d",
+      "consumer_id": "TEST_ONLY_BP2_LATER_E2_READER",
+      "read_receipt_hash": "4a54ff73632ae3d3841839def53e71f29eede3a29b6b2a12ed85fef11cf3eb3b",
+      "stage": "C9_LATER_COMMITTED_READ"
+    },
+    {
+      "action_time": 217,
+      "actuator_ref": "TEST_ONLY_ACTUATOR_BP2_INDEPENDENT",
+      "consumed_state_hash": "4907a662d2494d9f7949d1f809195264e001f90d39021feb73e5a75cc31c656d",
+      "occurrence_ref": "TEST_ONLY_OCCURRENCE_BP2_E2",
+      "receipt_hash": "19349fd6fded91f222d50ef5774deab1203619c390fb554e2bd4970e9c7f05aa",
+      "stage": "TEST_ONLY_INDEPENDENT_E2",
+      "target_commit_time": 202
+    }
+  ],
+  "verified_links": [
+    {
+      "check": "payload actor/other history hashes and causal parents",
+      "from": "BP1_PRIOR_HISTORY/PERFORMED_ACTION",
+      "to": "BP3_C8_EXCLUSIVE_APPEND"
+    },
+    {
+      "check": "verify_journal proof + state_digest + occurrence set + byte readset",
+      "from": "BP3_C8_EXCLUSIVE_APPEND",
+      "to": "OUT9_READ_ONLY"
+    },
+    {
+      "check": "content hash carries occurrence id, state digest and commit receipt id",
+      "from": "OUT9_READ_ONLY",
+      "to": "C9_E1_EVENT_WITNESS"
+    },
+    {
+      "check": "response receipt hash over event hash + rule + readset",
+      "from": "C9_E1_EVENT_WITNESS",
+      "to": "C9_CAN008_RULE_A"
+    },
+    {
+      "check": "target dependency hash equals response rule content hash",
+      "from": "C9_CAN008_RULE_A",
+      "to": "C9_CAN011_RULE_T"
+    },
+    {
+      "check": "grant bound to response hash + before-target hash + actor",
+      "from": "C9_CAN011_RULE_T",
+      "to": "C9_DURABLE_TARGET_COMMIT"
+    },
+    {
+      "check": "sealed record preimage digest equals committed record hash",
+      "from": "C9_DURABLE_TARGET_COMMIT",
+      "to": "C9_LATER_COMMITTED_READ"
+    },
+    {
+      "check": "E2 receipt consumed_state_hash equals the independent read digest",
+      "from": "C9_LATER_COMMITTED_READ",
+      "to": "TEST_ONLY_INDEPENDENT_E2"
+    }
+  ]
+}

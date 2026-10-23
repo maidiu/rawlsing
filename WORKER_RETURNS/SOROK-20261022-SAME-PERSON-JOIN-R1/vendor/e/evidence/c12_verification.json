@@ -1,0 +1,126 @@
+{
+  "available": {
+    "branches": [
+      {
+        "actor_ids": [
+          "A",
+          "B",
+          "U"
+        ],
+        "branch_id": "first_session",
+        "created_clock": 10,
+        "fork_clock": 10,
+        "parent_branch_id": "root",
+        "root_counts": {
+          "checkpoint": 1,
+          "episode": 0,
+          "perception": 2,
+          "world_event": 1
+        },
+        "root_hash": "6d82b4532feee09e5cf224c4aa823fe4d53e71f7bf3193994f55582ffecf48e5"
+      },
+      {
+        "actor_ids": [
+          "A",
+          "B"
+        ],
+        "branch_id": "root",
+        "created_clock": 10,
+        "fork_clock": null,
+        "parent_branch_id": null,
+        "root_counts": {},
+        "root_hash": ""
+      }
+    ],
+    "path": "evidence/c12_available.sqlite",
+    "sha256": "1c859cad7a3460e34fc6f648ff48ce70eb9e7218a1eac05d44555ed1d6d92112",
+    "verify_first_session": {
+      "branch_id": "first_session",
+      "counts": {
+        "checkpoint": 20,
+        "episode": 26,
+        "perception": 27,
+        "world_event": 11
+      },
+      "errors": [],
+      "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+      "ok": true,
+      "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+    },
+    "verify_root": {
+      "branch_id": "root",
+      "counts": {
+        "checkpoint": 1,
+        "episode": 0,
+        "perception": 2,
+        "world_event": 1
+      },
+      "errors": [],
+      "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+      "ok": true,
+      "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+    }
+  },
+  "pressed": {
+    "branches": [
+      {
+        "actor_ids": [
+          "A",
+          "B",
+          "U"
+        ],
+        "branch_id": "first_session",
+        "created_clock": 10,
+        "fork_clock": 10,
+        "parent_branch_id": "root",
+        "root_counts": {
+          "checkpoint": 1,
+          "episode": 0,
+          "perception": 2,
+          "world_event": 1
+        },
+        "root_hash": "b840e8f80cbc4a10777e9b14f42d67aca147c7ee11cc8d90d11faaeece92e08e"
+      },
+      {
+        "actor_ids": [
+          "A",
+          "B"
+        ],
+        "branch_id": "root",
+        "created_clock": 10,
+        "fork_clock": null,
+        "parent_branch_id": null,
+        "root_counts": {},
+        "root_hash": ""
+      }
+    ],
+    "path": "evidence/c12_pressed.sqlite",
+    "sha256": "3a2710a4b781c9ccac5e38f19ddec377e296a6d227fbcfb20ed92a71ec8d9b72",
+    "verify_first_session": {
+      "branch_id": "first_session",
+      "counts": {
+        "checkpoint": 19,
+        "episode": 23,
+        "perception": 24,
+        "world_event": 10
+      },
+      "errors": [],
+      "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+      "ok": true,
+      "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+    },
+    "verify_root": {
+      "branch_id": "root",
+      "counts": {
+        "checkpoint": 1,
+        "episode": 0,
+        "perception": 2,
+        "world_event": 1
+      },
+      "errors": [],
+      "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+      "ok": true,
+      "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+    }
+  }
+}

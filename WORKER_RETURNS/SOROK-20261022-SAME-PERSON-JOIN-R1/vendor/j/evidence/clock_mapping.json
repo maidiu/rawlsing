@@ -1,0 +1,40 @@
+{
+  "bp2_logical_clock": {
+    "domain": "BP2_TEST_ONLY_LOGICAL_CLOCK",
+    "e2_action_time": 257,
+    "event_time": 242,
+    "target_commit_time": 242
+  },
+  "bp4_world_clock": {
+    "domain": "BP4_TEST_ONLY_WORLD_CLOCK",
+    "material_start": 10,
+    "wait": 40
+  },
+  "gm01_source_clock": {
+    "domain": "GM01_TEST_ONLY_SOURCE_CLOCK",
+    "events": {
+      "a_e2": 9,
+      "as_of": 10,
+      "b_share": 5,
+      "e1": 6,
+      "world": 1
+    },
+    "use": "B/E1/E2 source refs and feasibility; no numeric comparison with BP2/BP4"
+  },
+  "numeric_ordering_used": false,
+  "process_order": [
+    "GM01_EVALUATE",
+    "PRE_C9_STAGE_WORLD_SOURCE_BIND",
+    "BP2_C8_COMMIT",
+    "BP2_OUT9_READ",
+    "BP2_E1_BIND",
+    "BP2_C9_COMMIT",
+    "BP2_E2_ADMISSION",
+    "R31J_PRODUCT_ROOT",
+    "GM01_SOURCE_EPISODE",
+    "A_MATERIAL_INSPECT_OR_OMIT",
+    "BP4_WAIT_40"
+  ],
+  "rule": "No GM01 source clock value is compared numerically with BP2 or BP4 time. GM01 contributes source event refs/hashes and a material feasibility result; BP2 and BP4 retain separate clocks.",
+  "schema": "R31J_CLOCK_MAPPING@1"
+}
