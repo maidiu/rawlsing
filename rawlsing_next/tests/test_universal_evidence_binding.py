@@ -746,12 +746,24 @@ resolver = EvidenceResolver(admission_verifier=verifier)
 resolver.import_authenticated_cache(cache)
 result = resolver.resolve(request)
 values = EvidenceConsumerReader(request, result, verifier=verifier).read()
+reexported = resolver.export_cache()
+again = EvidenceResolver(admission_verifier=verifier)
+again.import_authenticated_cache(reexported)
+rewritten = again.resolve(request)
+rewritten_values = EvidenceConsumerReader(
+    request, rewritten, verifier=verifier
+).read()
 print(json.dumps({{
     "provenance": result.provenance,
     "state": result.result_state,
     "denominator": result.denominator,
     "consumer_denominator": values["denominator"],
     "consumer_hash": result.consumer_result_hash,
+    "reexport_denominator": rewritten.denominator,
+    "reexport_consumer_denominator": rewritten_values["denominator"],
+    "original_execution_provenance": rewritten_values[
+        "original_execution_provenance"
+    ],
 }}, sort_keys=True))
 """
         completed = subprocess.run(
@@ -770,6 +782,9 @@ print(json.dumps({{
         "denominator": 60,
         "consumer_denominator": 60,
         "consumer_hash": produced.consumer_result_hash,
+        "reexport_denominator": 60,
+        "reexport_consumer_denominator": 60,
+        "original_execution_provenance": "CANONICAL_PRODUCER",
     }
 
 
@@ -1237,3 +1252,118 @@ def test_export_refuses_unsigned_result_mutation_and_cache_projection_is_signed(
     assert projection["consumer_values_read"] == canonicalize(
         produced.execution_envelope.consumer_values_read
     )
+
+
+def test_provenance_mutation_cannot_change_signed_original_execution_or_grade():
+    case = build_provider_case("forward")
+    request = _request(case, request_id="r61-r6-provenance")
+    resolver = _resolver()
+    resolver.bind(_binding(request, case))
+    produced = resolver.resolve(request)
+    read = _reader(request, produced).read()
+    assert read["original_execution_provenance"] == PROVENANCE_CANONICAL
+    assert read["original_execution_mode"] == "LIVE_TRUSTED_EXECUTION"
+    assert "cache_trust_grade" not in read
+
+    mutated = replace(produced, provenance=PROVENANCE_CACHE)
+    mutated_read = _reader(request, mutated).read()
+    assert mutated_read["original_execution_provenance"] == PROVENANCE_CANONICAL
+    assert mutated_read["local_delivery_context_unsigned"] == "VERIFIED_REPLAY"
+    assert "cache_trust_grade" not in mutated_read
+
+    cache = resolver.export_cache()
+    cold = _resolver()
+    cold.import_authenticated_cache(cache)
+    restored = cold.resolve(request)
+    cold_read = _reader(request, restored).read()
+    assert cold_read["original_execution_provenance"] == PROVENANCE_CANONICAL
+    assert cold_read["local_delivery_context_unsigned"] == "VERIFIED_REPLAY"
+    assert "cache_trust_grade" not in cold_read
+
+    mislabeled = replace(restored, provenance=PROVENANCE_CANONICAL)
+    mislabeled_read = _reader(request, mislabeled).read()
+    assert mislabeled_read["original_execution_provenance"] == PROVENANCE_CANONICAL
+    assert "cache_trust_grade" not in mislabeled_read
+
+
+def test_export_refuses_mutated_evidence_query_and_rule_objects():
+    case = build_provider_case("forward")
+    request = _request(case, request_id="r61-r6-export-objects")
+    resolver = _resolver()
+    resolver.bind(_binding(request, case))
+    produced = resolver.resolve(request)
+
+    produced.evidence_object.geometry["cells"][0]["raw_numerator_support"] = 999
+    with pytest.raises(EvidenceCacheIntegrityError):
+        resolver.export_cache()
+
+    produced.evidence_object.geometry["cells"][0]["raw_numerator_support"] = 60
+    original_query_material = canonicalize(produced.consumer_query_object.material())
+    produced.consumer_query_object.requested_projection["kind"] = "FORGED"
+    with pytest.raises(EvidenceCacheIntegrityError):
+        resolver.export_cache()
+    produced.consumer_query_object.requested_projection["kind"] = (
+        original_query_material["requested_projection"]["kind"]
+    )
+
+    forged_rule = replace(
+        produced.model_rule_object,
+        source_universe_refs=(
+            _ref("R61_SOURCE", "forged-rule-source", {"source": "FORGED"}),
+        ),
+    )
+    forged_rule_result = replace(produced, model_rule_object=forged_rule)
+    tampered = _resolver()
+    tampered.bind(_binding(request, case))
+    tampered.resolve(request)
+    tampered._cache[request.key] = forged_rule_result
+    with pytest.raises(EvidenceCacheIntegrityError):
+        tampered.export_cache()
+
+
+def test_verifier_only_re_export_preserves_signed_execution_projection():
+    case = build_provider_case("forward")
+    request = _request(case, request_id="r61-r6-reexport")
+    resolver = _resolver()
+    resolver.bind(_binding(request, case))
+    produced = resolver.resolve(request)
+    cache = resolver.export_cache()
+
+    verifier_only = EvidenceResolver(admission_verifier=_R4_VERIFIER)
+    verifier_only.import_authenticated_cache(cache)
+    restored = verifier_only.resolve(request)
+    assert restored.denominator == 60
+    assert _reader(request, restored).read()["original_execution_provenance"] == PROVENANCE_CANONICAL
+
+    reexported = verifier_only.export_cache()
+    entry = reexported["entries"][0]
+    assert entry["envelope_signature"] == cache["entries"][0]["envelope_signature"]
+    assert entry["result"]["denominator"] == 60
+    assert entry["result"]["consumer_values_read"] == canonicalize(
+        produced.execution_envelope.consumer_values_read
+    )
+
+    third = EvidenceResolver(admission_verifier=_R4_VERIFIER)
+    third.import_authenticated_cache(reexported)
+    again = third.resolve(request)
+    assert again.denominator == 60
+    assert _reader(request, again).read()["denominator"] == 60
+
+
+def test_swapped_signed_envelope_from_other_request_refuses():
+    case = build_provider_case("forward")
+    request_a = _request(case, request_id="r61-r6-envelope-a")
+    request_b = _request(case, request_id="r61-r6-envelope-b")
+    resolver = _resolver()
+    resolver.bind(_binding(request_a, case))
+    produced_a = resolver.resolve(request_a)
+    resolver_b = _resolver()
+    resolver_b.bind(_binding(request_b, case))
+    produced_b = resolver_b.resolve(request_b)
+    swapped = replace(
+        produced_a,
+        execution_envelope=produced_b.execution_envelope,
+        envelope_signature=produced_b.envelope_signature,
+    )
+    with pytest.raises(EvidenceAssociationError):
+        _reader(request_a, swapped).read()

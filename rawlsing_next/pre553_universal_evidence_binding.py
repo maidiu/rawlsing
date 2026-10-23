@@ -59,9 +59,9 @@ from rawlsing_next.source_backed_positioned_subject_possibility import (
 )
 
 REQUEST_CONTRACT_ID = "R61_UNIVERSAL_EVIDENCE_REQUEST@2"
-RESULT_CONTRACT_ID = "R61_UNIVERSAL_EVIDENCE_RESULT@3"
+RESULT_CONTRACT_ID = "R61_UNIVERSAL_EVIDENCE_RESULT@4"
 SUMMARY_CONTRACT_ID = "R61_UNIVERSAL_SUPPORT_SUMMARY@2"
-CACHE_SCHEMA = "R61_AUTHENTICATED_EVIDENCE_CACHE@3"
+CACHE_SCHEMA = "R61_AUTHENTICATED_EVIDENCE_CACHE@4"
 CACHE_SEAL_ALGORITHM = "SHA256_CANONICAL_FULLK_PRODUCER_CONSUMER_PREIMAGE"
 CACHE_TRUST_ASSOCIATION = "FULL_K_PRODUCER_ASSOCIATION_SHA256"
 CACHE_TRUST_ISSUER = "EPHEMERAL_ISSUER_HMAC_SHA256"
@@ -1448,6 +1448,8 @@ class ExecutedEvidenceEnvelope:
     denominator: int
     cells: tuple[Mapping[str, Any], ...]
     consumer_values_read: Mapping[str, Any]
+    execution_provenance: str = PROVENANCE_CANONICAL
+    execution_mode: str = "LIVE_TRUSTED_EXECUTION"
     trust_domain: str = R61_TRUST_DOMAIN
     trust_domain_version: str = R61_TRUST_DOMAIN_VERSION
     trust_grade: str = R61_TRUST_GRADE
@@ -1464,13 +1466,19 @@ class ExecutedEvidenceEnvelope:
             raise EvidenceBindingError("untrusted execution envelope domain/version")
         if self.trust_grade != R61_TRUST_GRADE:
             raise EvidenceBindingError("untrusted execution envelope grade")
+        if self.execution_provenance != PROVENANCE_CANONICAL:
+            raise EvidenceBindingError("envelope execution provenance must be canonical")
+        if self.execution_mode != "LIVE_TRUSTED_EXECUTION":
+            raise EvidenceBindingError("envelope execution mode must be live trusted execution")
         if type(self.denominator) is not int or self.denominator <= 0:
             raise EvidenceBindingError("executed envelope requires a positive denominator")
         object.__setattr__(self, "cells", tuple(canonicalize(cell) for cell in self.cells))
 
     def material(self) -> Mapping[str, Any]:
         return {
-            "schema": "R61_EXECUTED_EVIDENCE_ENVELOPE@1",
+            "schema": "R61_EXECUTED_EVIDENCE_ENVELOPE@2",
+            "execution_provenance": self.execution_provenance,
+            "execution_mode": self.execution_mode,
             "trust_domain": self.trust_domain,
             "trust_domain_version": self.trust_domain_version,
             "trust_grade": self.trust_grade,
@@ -1512,7 +1520,7 @@ class ExecutedEvidenceEnvelope:
     def ref(self) -> ExactRef:
         h = self.envelope_hash
         return ExactRef(
-            "R61_EXECUTED_EVIDENCE_ENVELOPE@1",
+            "R61_EXECUTED_EVIDENCE_ENVELOPE@2",
             f"urn:rawlsing:r61:executed-evidence-envelope:sha256:{h}",
             h,
         )
@@ -1650,6 +1658,7 @@ class EvidenceResolver:
         self._cache: dict[str, EvidenceResult] = {}
         self._requests: dict[str, EvidenceRequest] = {}
         self._binding_materials: dict[str, Mapping[str, Any]] = {}
+        self._owner_materials: dict[str, Mapping[str, Any]] = {}
         self._admitted: dict[str, bool] = {}
         self._issuer = cache_issuer
         self._trusted_binding_hashes = frozenset(trusted_binding_hashes)
@@ -1673,6 +1682,7 @@ class EvidenceResolver:
         self._bindings[key] = binding
         self._requests[key] = binding.request
         self._binding_materials[key] = binding.identity_material()
+        self._owner_materials[key] = binding.owner_identity_material()
         self._admitted[key] = bool(
             self._admission_verifier is not None
             and binding.admission is not None
@@ -2001,12 +2011,20 @@ class EvidenceResolver:
                 raise EvidenceCacheIntegrityError(
                     "cache export refuses unsigned result/value substitution"
                 )
-            binding = self._bindings.get(key)
-            if binding is None:
+            if not _objects_match_envelope(
+                result.evidence_object,
+                result.consumer_query_object,
+                result.model_rule_object,
+                result.execution_envelope,
+            ):
                 raise EvidenceCacheIntegrityError(
-                    "cache entry lacks its admitted owner binding"
+                    "cache export refuses unsigned evidence/query/rule content"
                 )
-            owner_material = binding.owner_identity_material()
+            owner_material = self._owner_materials.get(key)
+            if owner_material is None:
+                raise EvidenceCacheIntegrityError(
+                    "cache entry lacks its retained owner material"
+                )
             binding_payload = canonicalize(binding_material)
             binding_payload["owner_identity_material"] = canonicalize(owner_material)
             binding_payload["owner_identity_hash"] = semantic_hash(owner_material)
@@ -2046,6 +2064,7 @@ class EvidenceResolver:
         imported: dict[str, EvidenceResult] = {}
         imported_requests: dict[str, EvidenceRequest] = {}
         imported_bindings: dict[str, Mapping[str, Any]] = {}
+        imported_owners: dict[str, Mapping[str, Any]] = {}
         for raw in entries:
             if not isinstance(raw, Mapping):
                 raise EvidenceCacheIntegrityError("cache entry must be a mapping")
@@ -2186,11 +2205,13 @@ class EvidenceResolver:
             imported[request_key] = result
             imported_requests[request_key] = request
             imported_bindings[request_key] = producer_binding
+            imported_owners[request_key] = owner_material
         if set(imported) & set(self._bindings):
             raise EvidenceCacheIntegrityError("cache/import conflicts with a registered binding")
         self._cache.update(imported)
         self._requests.update(imported_requests)
         self._binding_materials.update(imported_bindings)
+        self._owner_materials.update(imported_owners)
 
 
 def _envelope_from_material(material: Mapping[str, Any]) -> ExecutedEvidenceEnvelope:
@@ -2224,6 +2245,8 @@ def _envelope_from_material(material: Mapping[str, Any]) -> ExecutedEvidenceEnve
             denominator=material["denominator"],
             cells=tuple(material["cells"]),
             consumer_values_read=material["consumer_values_read"],
+            execution_provenance=material["execution_provenance"],
+            execution_mode=material["execution_mode"],
             trust_domain=material["trust_domain"],
             trust_domain_version=material["trust_domain_version"],
             trust_grade=material["trust_grade"],
@@ -2267,6 +2290,8 @@ def _envelope_result_projection(envelope: ExecutedEvidenceEnvelope) -> Mapping[s
         "consumer_result_hash": envelope.evaluator_result_hash,
         "consumer_values_read": canonicalize(envelope.consumer_values_read),
         "uncertainty_state": envelope.uncertainty_state,
+        "original_execution_provenance": envelope.execution_provenance,
+        "original_execution_mode": envelope.execution_mode,
     }
 
 
@@ -2317,6 +2342,23 @@ def _assert_result_matches_envelope(
         raise EvidenceAssociationError(
             "result fields/values do not equal the complete signed execution envelope"
         )
+
+
+def _objects_match_envelope(
+    evidence: PossibilitySliceEvidence | None,
+    query: PositionedSubjectPossibilityQuery | None,
+    rule: PositionedSubjectPossibilityModelRule | None,
+    envelope: ExecutedEvidenceEnvelope,
+) -> bool:
+    if evidence is None or query is None or rule is None:
+        return False
+    return (
+        evidence.evidence_ref == envelope.evidence_ref
+        and semantic_hash(_evidence_material(evidence)) == envelope.evidence_content_hash
+        and query.ref == envelope.consumer_query_ref
+        and semantic_hash(query.material()) == envelope.consumer_query_material_hash
+        and rule.rule_hash == envelope.model_rule_hash
+    )
 
 
 def _optional_ref(value: Any) -> ExactRef | None:
@@ -2484,13 +2526,7 @@ class EvidenceConsumerReader:
         evidence = self.result.evidence_object
         query = self.result.consumer_query_object
         rule = self.result.model_rule_object
-        if (
-            evidence.evidence_ref != envelope.evidence_ref
-            or semantic_hash(_evidence_material(evidence)) != envelope.evidence_content_hash
-            or query.ref != envelope.consumer_query_ref
-            or semantic_hash(query.material()) != envelope.consumer_query_material_hash
-            or rule.rule_hash != envelope.model_rule_hash
-        ):
+        if not _objects_match_envelope(evidence, query, rule, envelope):
             raise EvidenceAssociationError(
                 "evidence/query/rule objects do not match the signed envelope"
             )
@@ -2534,9 +2570,13 @@ class EvidenceConsumerReader:
         values["consumer_result_hash"] = actual.result_hash
         values["consumer_result_state"] = actual.result_state
         values["consumer_result_material"] = canonicalize(actual.material())
-        values["admission_grade"] = CACHE_TRUST_ADMISSION
-        if self.result.provenance == PROVENANCE_CACHE:
-            values["cache_trust_grade"] = CACHE_TRUST_ASSOCIATION
+        values["original_execution_provenance"] = envelope.execution_provenance
+        values["original_execution_mode"] = envelope.execution_mode
+        values["local_delivery_context_unsigned"] = (
+            "VERIFIED_REPLAY"
+            if self.result.provenance == PROVENANCE_CACHE
+            else "LIVE_TRUSTED_EXECUTION"
+        )
         return values
 
     def e04_step(self) -> Mapping[str, Any]:
