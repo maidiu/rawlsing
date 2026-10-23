@@ -191,9 +191,9 @@ def test_existing_c11_native_owner_and_repository_are_executed(tmp_path):
 
     assert decision["decision"] == verify.ACCEPT, decision
     assert decision["observed"]["result"] == C11_RESULT
-    assert observation.imports["native_c11_case"]["tree_bound"] is True
-    assert observation.imports["rawlsing_next.pre553_c11_ingest"]["tree_bound"] is True
-    assert "rawlsing_next.pre553_c11_ingest" in observation.import_events
+    assert observation["imports"]["native_c11_case"]["tree_bound"] is True
+    assert observation["imports"]["rawlsing_next.pre553_c11_ingest"]["tree_bound"] is True
+    assert "rawlsing_next.pre553_c11_ingest" in observation["import_events"]
 
 
 def test_unsealed_mapping_and_mutated_seal_are_refused(tmp_path):
@@ -437,3 +437,33 @@ def test_cli_requires_durable_ledger_and_trust_root(tmp_path):
     no_root = subprocess.run(base[:-2], capture_output=True, text=True)
     assert no_root.returncode == 2
     assert "TRUST_ROOT_REQUIRED" in json.loads(no_root.stdout)["reasons"]
+
+    ledger_path = tmp_path / "cli-ledger.jsonl"
+    with_ledger = base + ["--nonce-ledger", str(ledger_path)]
+    first = subprocess.run(with_ledger, capture_output=True, text=True)
+    second = subprocess.run(with_ledger, capture_output=True, text=True)
+    assert first.returncode == 0
+    assert json.loads(first.stdout)["decision"] == verify.ACCEPT
+    assert second.returncode == 2
+    assert "NONCE_REPLAYED" in json.loads(second.stdout)["reasons"]
+
+
+def test_cross_process_nonce_claim_is_atomic(tmp_path):
+    ledger_path = tmp_path / "atomic-ledger.jsonl"
+    code = (
+        "import importlib.util, sys\n"
+        "spec = importlib.util.spec_from_file_location('r09v', sys.argv[1])\n"
+        "module = importlib.util.module_from_spec(spec)\n"
+        "sys.modules['r09v'] = module\n"
+        "spec.loader.exec_module(module)\n"
+        "print(module.NonceLedger(sys.argv[2]).claim('issuer', 'run', 'nonce'))\n"
+    )
+    processes = [
+        subprocess.Popen(["/usr/local/bin/python3", "-c", code,
+                          str(MODULE_PATH), str(ledger_path)],
+                         stdout=subprocess.PIPE, text=True)
+        for _ in range(2)
+    ]
+    outcomes = sorted(proc.communicate(timeout=60)[0].strip()
+                      for proc in processes)
+    assert outcomes == ["CLAIMED", "REPLAYED"]
