@@ -1,0 +1,42 @@
+{
+  "schema": "SOROK_HQ_CONTINUATION_HOST_OBSERVATION_V1",
+  "observed_at": "2026-10-23T14:09:55.429669+00:00",
+  "app_activity_observation": {
+    "schema": "SOROK_HQ_APP_ACTIVITY_OBSERVATION_V1",
+    "observed_at": "2026-10-23T14:05:53.959069+00:00",
+    "source_tool": "mcp__codex_app.read_thread",
+    "thread_id": "01a161c5-a44a-7b13-ad50-49e10112874d",
+    "app_thread_status": "active",
+    "latest_turn_id": "01a16914-120b-7922-b633-78df274f1960",
+    "latest_turn_status": "inProgress",
+    "scope": "HQ tool observation of current desktop thread; not a controller-native idle attestation"
+  },
+  "separate_native_appserver_busy": {
+    "state": "APP_VISIBLE_UNPROVEN",
+    "storage_state": "IDLE",
+    "source": "SEPARATE_APP_SERVER_THREAD_READ_STATUS_ONLY",
+    "active_turn_id": null,
+    "app_visible_same_chat": "NOT_OBSERVED",
+    "app_visible_idle_proved": false,
+    "generation_policy": "DEFERRED_HQ_BY_DEFAULT_OR_EXACT_RESUME_REFUSAL"
+  },
+  "goal_state_observed": {
+    "source": "get_goal",
+    "thread_id": "01a161c5-a44a-7b13-ad50-49e10112874d",
+    "status": "active"
+  },
+  "serial_turns_observed": {
+    "source": "mcp__codex_app.read_thread",
+    "previous_turn_id": "01a16914-120b-7922-b633-78df274f1960",
+    "previous_status": "completed",
+    "previous_completed_at": 1792764470,
+    "current_turn_id": "01a16916-e65f-7e31-a937-fdeb191274b3",
+    "current_status": "inProgress",
+    "current_started_at": 1792764470,
+    "same_hq_thread": true,
+    "source_of_current_continuation": "active goal continuation context",
+    "controller_initiated": false
+  },
+  "finding": "HOST_GOAL_SAME_INCUMBENT_SERIAL_CONTINUATION_OBSERVED; NATIVE_CONTROLLER_IDLE_QUALIFICATION_UNPROVEN",
+  "scope_limit": "Observed current active-goal route, not arbitrary idle hours/app-closed delivery or controller-triggered native turn start"
+}
