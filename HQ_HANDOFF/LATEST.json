@@ -1,12 +1,12 @@
 {
   "schema": "RAWLSING_HQ_HANDOFF_POINTER@1.1.0",
-  "checkpoint_id": "20261023-PYAT-HQ-R61-USER-AUTHORIZED-GENERIC-REPAIR-FLIGHT-R1",
-  "handoff_commit": "3189a0db1433095c95bfe0294af53a40355fa1dd",
+  "checkpoint_id": "20261023-PYAT-HQ-R61A-ACTUAL-GENERIC-REPAIR-WORKERS-LAUNCHED-R1",
+  "handoff_commit": "4775e0afc5f93326197bf149b33fb1af0ae482f2",
   "semantic_pre_main_tip": "1f47063c3205a45888b3c55e81e7485943ed1390",
   "control_branch": "integration/pre-main-reconciliation-r1",
-  "current_md_path": "HQ_HANDOFF/checkpoints/20261023-PYAT-HQ-R61-USER-AUTHORIZED-GENERIC-REPAIR-FLIGHT-R1/CURRENT.md",
-  "current_json_path": "HQ_HANDOFF/checkpoints/20261023-PYAT-HQ-R61-USER-AUTHORIZED-GENERIC-REPAIR-FLIGHT-R1/CURRENT.json",
-  "manifest_path": "HQ_HANDOFF/checkpoints/20261023-PYAT-HQ-R61-USER-AUTHORIZED-GENERIC-REPAIR-FLIGHT-R1/MANIFEST.json",
+  "current_md_path": "HQ_HANDOFF/checkpoints/20261023-PYAT-HQ-R61A-ACTUAL-GENERIC-REPAIR-WORKERS-LAUNCHED-R1/CURRENT.md",
+  "current_json_path": "HQ_HANDOFF/checkpoints/20261023-PYAT-HQ-R61A-ACTUAL-GENERIC-REPAIR-WORKERS-LAUNCHED-R1/CURRENT.json",
+  "manifest_path": "HQ_HANDOFF/checkpoints/20261023-PYAT-HQ-R61A-ACTUAL-GENERIC-REPAIR-WORKERS-LAUNCHED-R1/MANIFEST.json",
   "decision_ledger_path": "HQ_HANDOFF/DECISION_LEDGER.jsonl",
   "protocol_path": "HQ_HANDOFF/PROTOCOL.md",
   "start_here_path": "HQ_HANDOFF/START_HERE.md",
@@ -14,28 +14,28 @@
   "pointer_law": "LATEST_IS_MUTABLE_POINTER_ONLY__CHECKPOINT_AT_HANDOFF_COMMIT_IS_IMMUTABLE_SEALED_HQ_AUTHORITY",
   "temporal_reconciliation_law": "SEALED_CHECKPOINT_AUTHORITY_NE_POST_CHECKPOINT_PENDING_RETURN_NE_UNAUTHORIZED_POST_CHECKPOINT_MOVEMENT",
   "maintenance_law": "AFTER_EVERY_MATERIAL_HQ_STATE_CHANGE__CREATE_NEW_IMMUTABLE_CHECKPOINT__ADVANCE_AND_VERIFY_LATEST_BEFORE_TRANSITION_IS_SEALED",
-  "canonical_control_base": "3189a0db1433095c95bfe0294af53a40355fa1dd",
+  "canonical_control_base": "4775e0afc5f93326197bf149b33fb1af0ae482f2",
   "qualified_working_hq_branch": "integration/pre-main-reconciliation-r1",
-  "qualified_working_hq_commit": "3189a0db1433095c95bfe0294af53a40355fa1dd",
-  "primary_succession_handoff_path": "HQ_HANDOFF/checkpoints/20261023-PYAT-HQ-R61-USER-AUTHORIZED-GENERIC-REPAIR-FLIGHT-R1/CURRENT.md",
-  "pyat_current_handoff": "HQ_HANDOFF/checkpoints/20261023-PYAT-HQ-R61-USER-AUTHORIZED-GENERIC-REPAIR-FLIGHT-R1/CURRENT.md",
+  "qualified_working_hq_commit": "4775e0afc5f93326197bf149b33fb1af0ae482f2",
+  "primary_succession_handoff_path": "HQ_HANDOFF/checkpoints/20261023-PYAT-HQ-R61A-ACTUAL-GENERIC-REPAIR-WORKERS-LAUNCHED-R1/CURRENT.md",
+  "pyat_current_handoff": "HQ_HANDOFF/checkpoints/20261023-PYAT-HQ-R61A-ACTUAL-GENERIC-REPAIR-WORKERS-LAUNCHED-R1/CURRENT.md",
   "current_progress": {
     "owner": "Pyat",
-    "revision": 47,
-    "canonical_report_commit": "3189a0db1433095c95bfe0294af53a40355fa1dd",
+    "revision": 48,
+    "canonical_report_commit": "4775e0afc5f93326197bf149b33fb1af0ae482f2",
     "counterpart": "Sorok rev34 independent; attachment86a7b382 unaccepted and state untouched"
   },
   "previous_handoff": {
-    "checkpoint_id": "20261023-PYAT-HQ-R60-EXPLICIT-CODEX-APPOINTMENT-AND-BOUNDED-CONTROLLER-CLIENT-R1",
-    "handoff_commit": "94c6174826432ff0156d3392bd733d5f3872c96f"
+    "checkpoint_id": "20261023-PYAT-HQ-R61-USER-AUTHORIZED-GENERIC-REPAIR-FLIGHT-R1",
+    "handoff_commit": "3189a0db1433095c95bfe0294af53a40355fa1dd"
   },
   "full_legacy_pointer_archived": {
     "git_cut": "e1182c32cc40b7908304cecc5964193590bbb1cc",
     "blob_sha": "10f6ae095290cd5081c64af4de89acc45e6933db",
     "description": "Prior 135251-byte pointer and nested historical state preserved exactly at this immutable Git cut, not copied into new pointer; dereference previous_handoff as needed"
   },
-  "next_action": "Launch distinct R01/R08/local R09 native authors and independent candidate reviewers; R03 only after independently qualified R01. Attachment is not prerequisite.",
-  "worker_state_truth": "R61 commissions preparing; not yet launched. R60 infra owner timed out with partial retained client, no delivery pass.",
+  "next_action": "Intake R01/R08/localR09 author returns and dispatch distinct native reviewers; conditional R03 after qualified R01. No new code acceptance claimed.",
+  "worker_state_truth": "THREE_ACTUALLY_LAUNCHED_NATIVE_AUTHORS__NO_RETURNS_OR_REVIEWS_YET",
   "measured_execution_authorized": false,
   "measured_execution_authorized_via_warrant": false,
   "new_operative_grants": true,
@@ -353,5 +353,56 @@
       "N11 NOT_READY; N12 HOLD; Sorok independent"
     ],
     "acceptance": "Author result is candidate; distinct reviewer independently qualifies exact candidate, then HQ scoped disposition. R09 local is not deployed enforcement."
-  }
+  },
+  "r61_actual_workers": [
+    {
+      "node": "R01",
+      "state": "ACTUALLY_LAUNCHED_ATTENDED_OPENCODE_NOT_CONTROLLER",
+      "pid": 32101,
+      "started_utc": "2026-10-23T05:23:36.140730+00:00",
+      "startup": "c84842e20e1d00d0b036977c9f5006aad5328ae9",
+      "branch": "agent/opencode-pyat-r61-r01-generic-grammar-r1",
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01",
+      "model": "opencode-go/deepseek-v4.1-flash",
+      "variant_requested": "max",
+      "account": "existing user-selected Global",
+      "quota": "UNKNOWN",
+      "os_isolation": "NOT_PROVEN",
+      "reviewer": "DISTINCT_SESSION_RESERVED_NOT_LAUNCHED",
+      "observed_session": "ses_e98c905cbffekusoHURfKyEUKG"
+    },
+    {
+      "node": "R08",
+      "state": "ACTUALLY_LAUNCHED_ATTENDED_OPENCODE_NOT_CONTROLLER",
+      "pid": 32572,
+      "started_utc": "2026-10-23T05:23:46.012752+00:00",
+      "startup": "c84842e20e1d00d0b036977c9f5006aad5328ae9",
+      "branch": "agent/opencode-pyat-r61-r08-evidence-binding-r1",
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r08",
+      "model": "opencode-go/deepseek-v4.1-flash",
+      "variant_requested": "max",
+      "account": "existing user-selected Global",
+      "quota": "UNKNOWN",
+      "os_isolation": "NOT_PROVEN",
+      "reviewer": "DISTINCT_SESSION_RESERVED_NOT_LAUNCHED",
+      "observed_session": "ses_e98c8dfe6ffewNYOqJpvqK21a6"
+    },
+    {
+      "node": "R09",
+      "state": "ACTUALLY_LAUNCHED_ATTENDED_OPENCODE_NOT_CONTROLLER",
+      "pid": 32740,
+      "started_utc": "2026-10-23T05:23:56.479959+00:00",
+      "startup": "c84842e20e1d00d0b036977c9f5006aad5328ae9",
+      "branch": "agent/opencode-pyat-r61-r09-local-runner-r1",
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r09",
+      "model": "opencode-go/deepseek-v4.1-flash",
+      "variant_requested": "max",
+      "account": "existing user-selected Global",
+      "quota": "UNKNOWN",
+      "os_isolation": "NOT_PROVEN",
+      "reviewer": "DISTINCT_SESSION_RESERVED_NOT_LAUNCHED",
+      "observed_session": "ses_e98c8b6c7ffeXtAnuGL58sAeCp"
+    }
+  ],
+  "r61_launch_evidence": "ae63a8c2da620d850cc974eb43c3e396abec30cb"
 }
