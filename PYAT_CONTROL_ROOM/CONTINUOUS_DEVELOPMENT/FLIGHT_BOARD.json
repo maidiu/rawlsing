@@ -84,7 +84,7 @@
       "next_action": "Light exact intake6abd49ffd9bb61925084036f2f1275841b3b5c83 then distinct native review",
       "terminal_consequence": "Prevents wrong-condition or unsupported-positive world/possibility serving",
       "acceptance": "Independent exact-identity positive/hostile/actual-consumer/cold proof; HQ scoped disposition; no author self-adoption",
-      "status": "R7_NATIVE_CODEX_HIGH_AUTHOR_RUNNING"
+      "status": "R7_AUTHOR_CUSTODY_VERIFIED__DISTINCT_R7_NATIVE_REVIEW_RUNNING"
     },
     {
       "id": "R09.local",
@@ -624,25 +624,6 @@
       "started_utc": "2026-10-23T21:57:41.001529+00:00"
     },
     {
-      "id": "R08_R7_OPENCODE",
-      "pid": 42181,
-      "sessions": [
-        "ses_e98c8dfe6ffewNYOqJpvqK21a6"
-      ],
-      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r08",
-      "branch": "agent/codex-pyat-r61-r08-r7-canonical-cache-repair-r1",
-      "startup": "d4053ff4359578d78caa0a0953245a827864d832",
-      "commission_tip": "7e05980717b8bf28b1c386b0293b467b7fc15856",
-      "commission_path": "WORKER_COMMISSIONS/PYAT-R61-GENERIC-REPAIR-FLIGHT-R1/R08/revisions/r7/OPENCODE_SUCCESSOR.md",
-      "model": "opencode-go/deepseek-v4.1-flash",
-      "effort": "max",
-      "account": "existing Global",
-      "state": "ACTUALLY_LAUNCHED_ATTENDED_OPENCODE",
-      "actual_tool_preflight": "PASS_TOOL_ROOT_BRANCH_OBSERVED_HEARTBEAT_20261023T220747Z",
-      "started_utc": "2026-10-23T22:05:44.672238+00:00",
-      "os_isolation": "NOT_PROVEN"
-    },
-    {
       "id": "R01V_R7",
       "pid": 47395,
       "sessions": [
@@ -660,6 +641,25 @@
       "actual_tool_preflight": "PENDING",
       "os_isolation": "NOT_PROVEN",
       "started_utc": "2026-10-23T22:18:57.747972+00:00"
+    },
+    {
+      "id": "R08V_R7",
+      "pid": 58946,
+      "sessions": [
+        "ses_e962f7b5effeIc4B6gtfbZNHvh"
+      ],
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r08v-r4",
+      "branch": "agent/opencode-pyat-r61-r08v-r7-independent-review-r1",
+      "startup": "ea39bd324d297a93bb9e87ede9b9da75dfa8750a",
+      "commission_tip": "747656253811b1915b994a1fb316dff214655ef5",
+      "commission_path": "WORKER_COMMISSIONS/PYAT-R61-GENERIC-REPAIR-FLIGHT-R1/R08V/revisions/r7/00_COMMISSION.md",
+      "model": "opencode-go/deepseek-v4.1-flash",
+      "effort": "max",
+      "account": "existing Global",
+      "state": "ACTUALLY_LAUNCHED_ATTENDED_OPENCODE_NOT_CONTROLLER",
+      "actual_tool_preflight": "PENDING",
+      "os_isolation": "NOT_PROVEN",
+      "started_utc": "2026-10-23T22:28:15.695522+00:00"
     }
   ],
   "prior_review_returns": {
@@ -1321,5 +1321,19 @@
     "executor_history": "Codex partial interrupted and preserved; same OpenCode author completed",
     "author_tests": 31,
     "grade": "AUTHOR_CUSTODY_VERIFIED_NOT_INDEPENDENT_ACCEPTANCE"
+  },
+  "R61AK_R08_R7_intake": {
+    "candidate": "ea39bd324d297a93bb9e87ede9b9da75dfa8750a",
+    "code": "992236d245e165dcf5842411ad0a4733433fd7de",
+    "artifact_hashes_verified": 14,
+    "authorized_changed_paths": 17,
+    "code_blobs": {
+      "rawlsing_next/pre553_universal_evidence_binding.py": "00312f84afa5677c94193cefd94cdfd951f05222",
+      "rawlsing_next/tests/test_universal_evidence_binding.py": "0dae12308157735f188bc11163a224229563d8a4"
+    },
+    "direct_remote_verified": true,
+    "author_tests": 126,
+    "grade": "AUTHOR_CUSTODY_VERIFIED_NOT_INDEPENDENT_ACCEPTANCE",
+    "native_rerun_by_HQ": false
   }
 }
