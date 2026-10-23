@@ -1,7 +1,9 @@
 # Continuous Pyat development checkpoint
 
-Read GOAL.md and FLIGHT_BOARD.json, then current HQ_HANDOFF/LATEST.json and exact immutable checkpoint. Actual processes/sessions must be rechecked before assuming live or restarting. R09 author c8dbdd017b216e01dc43e0e15d4e044f3ec6d6e8 returned; fresh R09V actually launched at that startup with commission3fd3cba5a42caa3853c5bd5b5a881feddf1a4ae2. R01/R08 authors still live when this board was written. Do not duplicate them.
+Active user goal is GOAL.md; authoritative current state in FLIGHT_BOARD.json and HQ_HANDOFF/LATEST.json immutable checkpoint.
 
-Next: intake author returns, dispatch separate native reviewers, adjudicate scoped evidence. R03 conditional on independently qualified R01 + accepted R02. Existing granted scope remains exact; remaining R-nodes/CI/original science require their competent grants. No new broad court/controller work. Never call sourcefree local qualification original35/N11 completion.
+All three authors have returned at exact hashes in board; all three distinct native reviewers were actually launched. Recheck PIDs/session logs and own branches before any restart. Do not duplicate author/reviewer sessions or infer terminal state from an observation timeout. R01/R08/R09 remain candidates, not HQ accepted.
 
-Current worktree: /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-flight-director; branch agent/codex-pyat-r61-native-flight-director-r1; remote readback determines publication SHA. Preserve model/quota boundary before consequential judgment.
+Next: intake native reviewer returns; use bounded ordinary repairs where evidence settles defect. For genuinely consequential unsettled architecture/science, preserve exact competing evidence and stop for user model switch. R03 authorized conditional on independently qualified R01+accepted R02; do not start early. Remaining code/science/CI/original35/Sorok permissions unchanged. Controller partial/time-limited, not repair prerequisite.
+
+This turn achieved progress: exact author intake/custody checks, three independent hostile native reviewer launches and durable whole-program board. No original measurement, production merge, deployed CI, N11/N12 or J52/W52 wake. Current HQ user-selected gpt-6.1-sol low; quota last observed44%fivehour/38%weekly, recheck at next major boundary.

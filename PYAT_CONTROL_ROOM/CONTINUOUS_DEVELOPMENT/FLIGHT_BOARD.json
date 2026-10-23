@@ -1,6 +1,6 @@
 {
   "schema": "PYAT_CONTINUOUS_DEVELOPMENT_FLIGHT_BOARD_R1",
-  "observed_utc": "2026-10-23T05:36:03.968093+00:00",
+  "observed_utc": "2026-10-23T05:41:07.234154+00:00",
   "goal_sha256": "c4cf4af2eefd290baa89cac22afef37d18b83b16b8564e33cf28205f75ab23d9",
   "canonical_pointer": "HQ_HANDOFF/LATEST.json",
   "authority_cut": "dec71cf5fdf9d65bbc0e6ec58da6318594769eb9",
@@ -61,11 +61,11 @@
         "R00"
       ],
       "authority": "R61 exact four code/test paths",
-      "state": "AUTHOR_RUNNING_RETURN_PENDING",
+      "state": "AUTHOR_RETURNED__DISTINCT_NATIVE_REVIEW_LIVE",
       "owner": "OpenCode author then distinct R01V",
       "required_intelligence": "I2-I3/S3 native engineering and qualification; I3+ only concrete unsettled architecture/science",
       "route": "Browser if qualified whole job; otherwise existing DeepSeek V4.1-Flash MAX/OpenCode",
-      "next_action": "Verify exact returned candidate, commission hostile native reviewer; qualify without fixed-label/shape assumptions",
+      "next_action": "Intake exact independent native review, resolve concrete defects/holds, then HQ scoped disposition; no candidate adoption yet",
       "terminal_consequence": "Unblocks generic R03 workload instead of selected fixtures",
       "acceptance": "Independent exact-identity positive/hostile/actual-consumer/cold proof; HQ scoped disposition; no author self-adoption"
     },
@@ -76,11 +76,11 @@
         "R00"
       ],
       "authority": "R61 exact two code/test paths",
-      "state": "AUTHOR_RUNNING",
+      "state": "AUTHOR_RETURNED__DISTINCT_NATIVE_REVIEW_LIVE",
       "owner": "OpenCode author then distinct R08V",
       "required_intelligence": "I2-I3/S3 native engineering and qualification; I3+ only concrete unsettled architecture/science",
       "route": "Browser if qualified whole job; otherwise existing DeepSeek V4.1-Flash MAX/OpenCode",
-      "next_action": "Receive candidate and challenge actual canonical call, typed full K and same-consumer severance",
+      "next_action": "Intake exact independent native review, resolve concrete defects/holds, then HQ scoped disposition; no candidate adoption yet",
       "terminal_consequence": "Prevents wrong-condition or unsupported-positive world/possibility serving",
       "acceptance": "Independent exact-identity positive/hostile/actual-consumer/cold proof; HQ scoped disposition; no author self-adoption"
     },
@@ -91,11 +91,11 @@
         "R00"
       ],
       "authority": "R61 local verifier/test paths only",
-      "state": "AUTHOR_RETURNED__INDEPENDENT_REVIEW_LIVE",
+      "state": "AUTHOR_RETURNED__DISTINCT_NATIVE_REVIEW_LIVE",
       "owner": "R09V fresh OpenCode session",
       "required_intelligence": "I2-I3/S3 native engineering and qualification; I3+ only concrete unsettled architecture/science",
       "route": "Browser if qualified whole job; otherwise existing DeepSeek V4.1-Flash MAX/OpenCode",
-      "next_action": "Review exact c8dbdd017b216e01dc43e0e15d4e044f3ec6d6e8; no deployed enforcement claim",
+      "next_action": "Intake exact independent native review, resolve concrete defects/holds, then HQ scoped disposition; no candidate adoption yet",
       "terminal_consequence": "Reliable bounded qualification; forged native proof cannot stand in for real execution",
       "acceptance": "Independent exact-identity positive/hostile/actual-consumer/cold proof; HQ scoped disposition; no author self-adoption"
     },
@@ -252,8 +252,8 @@
       "quota": "UNKNOWN",
       "os_isolation": "NOT_PROVEN",
       "reviewer": "DISTINCT_SESSION_RESERVED_NOT_LAUNCHED",
-      "process_live_observed": true,
-      "observed_local_head": "f93cf87948ce092a9b8623b60c00722ae048bda2",
+      "process_live_observed": false,
+      "observed_local_head": "7beffc6d86bcd5585a63ea2c1afa6262bc9ca208",
       "observed_sessions": [
         "ses_e98c8dfe6ffewNYOqJpvqK21a6"
       ]
@@ -276,6 +276,46 @@
       "observed_local_head": "c8dbdd017b216e01dc43e0e15d4e044f3ec6d6e8",
       "observed_sessions": [
         "ses_e98c8b6c7ffeXtAnuGL58sAeCp"
+      ]
+    },
+    {
+      "node": "R01V",
+      "state": "ACTUALLY_LAUNCHED_ATTENDED_NOT_CONTROLLER",
+      "pid": 49621,
+      "started_utc": "2026-10-23T05:38:31.891347+00:00",
+      "startup": "fcf9fe9f8662c9e98801e670d0d4357072d8d453",
+      "branch": "agent/opencode-pyat-r61-r01v-independent-review-r1",
+      "commission": "48ab66e49c1696474a34a56d04e2a5d48ec498e7:WORKER_COMMISSIONS/PYAT-R61-GENERIC-REPAIR-FLIGHT-R1/R01V/00_COMMISSION.md",
+      "model": "opencode-go/deepseek-v4.1-flash",
+      "variant_requested": "max",
+      "account": "existing user-selected Global",
+      "author_session": "ses_e98c905cbffekusoHURfKyEUKG",
+      "reviewer_session": "PENDING_OBSERVATION",
+      "os_isolation": "NOT_PROVEN",
+      "process_live_observed": true,
+      "observed_local_head": "acdf5fa66c03e75e3d25212063736370d2c1067d",
+      "observed_sessions": [
+        "ses_e98bb5cf6ffeH6wy6AmNbkovao"
+      ]
+    },
+    {
+      "node": "R08V",
+      "state": "ACTUALLY_LAUNCHED_ATTENDED_NOT_CONTROLLER",
+      "pid": 52345,
+      "started_utc": "2026-10-23T05:40:28.433791+00:00",
+      "startup": "ad9c3088096ce291d61dfdd292141073b515fbca",
+      "branch": "agent/opencode-pyat-r61-r08v-independent-review-r1",
+      "commission": "9f8786417d4389d4f344396775aa473d243de71b:WORKER_COMMISSIONS/PYAT-R61-GENERIC-REPAIR-FLIGHT-R1/R08V/00_COMMISSION.md",
+      "model": "opencode-go/deepseek-v4.1-flash",
+      "variant_requested": "max",
+      "account": "existing user-selected Global",
+      "author_session": "ses_e98c8dfe6ffewNYOqJpvqK21a6",
+      "reviewer_session": "PENDING_OBSERVATION",
+      "os_isolation": "NOT_PROVEN",
+      "process_live_observed": true,
+      "observed_local_head": "ad9c3088096ce291d61dfdd292141073b515fbca",
+      "observed_sessions": [
+        "ses_e98b99616ffeCGbzyujUX5A1h6"
       ]
     },
     {
@@ -331,5 +371,24 @@
     "previous_goal_turn": "Goal text preparation alone was not implementation progress; current turn launches independent exact-candidate reviewer",
     "no_progress_rule": "After two no-delta issue returns diagnose missing function; no third microaudit",
     "completion": "Full user-set goal requirements, not first-flight documents or local tests"
+  },
+  "author_returns": {
+    "R01": {
+      "remote_sha": "fcf9fe9f8662c9e98801e670d0d4357072d8d453",
+      "author_tests": "11 passed; selected real I05 mapping; all native R03 not claimed",
+      "manifest_verified": "6/6 report SHA256 match; four code paths plus own return only"
+    },
+    "R08": {
+      "remote_sha": "ad9c3088096ce291d61dfdd292141073b515fbca",
+      "author_tests": "21 passed;8 new+13 unchanged composition",
+      "author_disposition": "BOUNDED_REVISE: full progressive J42/P41 caller integration outside scope; cache seal not issuer authentication",
+      "manifest_verified": "4/4 report SHA256 match; two code paths plus own return only"
+    },
+    "R09": {
+      "remote_sha": "c8dbdd017b216e01dc43e0e15d4e044f3ec6d6e8",
+      "author_tests": "13 focused+48 existing oracle passed",
+      "manifest_verified": "7/7 report SHA256 match; two code paths plus own return only",
+      "production": "DEPLOYMENT_HOLD"
+    }
   }
 }
