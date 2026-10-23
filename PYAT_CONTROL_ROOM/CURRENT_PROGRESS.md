@@ -1,3 +1,12 @@
+# Pyat HQ R61W — productive repairs and review running
+
+R01 R6 retained campaign-owner implementation and distinct R08V R5 hostile review actually launched on existing DeepSeek MAX/Global sessions. Both actual tool directory/branch preflights passed. Exact launch receipts and R08 author custody intake pinned in director 5a3dcac513ee5fa08e19413502c34de136e58faa. R08 author return6abd49ffd9bb61925084036f2f1275841b3b5c83 is custody verified, not independently accepted. R01 full R61V contract and R08 R61Q contract remain unchanged.
+
+Sol Light sufficient for coordination. Attended CLI, not autonomous controller dispatch; OS isolation NOT_PROVEN. R03 NOT_STARTED; R09 host facility decision pending. Original35/1890/globalF6F7F8 and all science/source/protectedCI/production/N11/N12/Sorok/J52W52 holds unchanged. No code adoption.
+
+
+## Earlier progress history retained
+
 # Pyat HQ R61V — bounded retained recurrence owner decision complete
 
 SolHigh verified. ExactR01R5review537bd3985d8a3825186e41cab9308d8150cac848 reverified25hashes/26ownrootpaths/directremote. Nativepositivespreserved, codeREVISE. Decision: one localtrustedcampaignowner retains canonical root/policy, issuance/expectedsets/counts, actualnativeexecutions and fullparentgeneration/ancestry; issue+execute+activate consume retainedrecords. Coldrestore requires separatelytrustedcheckpointpin, not self-authoredsnapshot. ExistingC11/I05/handoffengines reused. FullAPI/record/trust/qualificationcontract in director8c03f95ca77a4c874449fff67a4032f83d9d0a02:PYAT_CONTROL_ROOM/CONTINUOUS_DEVELOPMENT/R61V_R01_RETAINED_CAMPAIGN_OWNER_DECISION.md.
