@@ -92,7 +92,8 @@ self-excludes.
 `EXPECTATIONS.md`, `00_RETURN.md`, `defects_and_limits.md`,
 `independent_probes/`, `replay/` JUnit/logs, `evidence/` (startup identity,
 targeted proof, oracle results), `proof_witness.json`, `manifest.json`,
-`RESUME.md`. The reviewer branch is pushed non-force; direct remote readback of
-the evidence commit and final tip is recorded in `evidence/remote_readback.txt`
-and reported to the coordinator. The candidate branch is expected to remain at
-`813775c07f0831605b6484a1d82afada30d85968`.
+`RESUME.md`. The reviewer branch is pushed non-force. Evidence commit
+`36a4e3593609aa348514c5a75562398930dc645f` was directly read back at the
+remote, as recorded in `evidence/remote_readback.txt`; the final branch tip is
+also verified by direct remote readback and reported to the coordinator. The
+candidate branch remained at `813775c07f0831605b6484a1d82afada30d85968`.
