@@ -1,12 +1,12 @@
 {
   "schema": "RAWLSING_HQ_HANDOFF_POINTER@1.1.0",
-  "checkpoint_id": "20261023-PYAT-HQ-R61P-LINEAGE-REPAIR-ACTUAL-NATIVE-LAUNCH-R1",
-  "handoff_commit": "8476e02eccebc193c0418eed58db609a580a9ad1",
+  "checkpoint_id": "20261023-PYAT-HQ-R61Q-R08-ADMISSION-DECISION-AND-DOWNSHIFT-R1",
+  "handoff_commit": "e643077aa0a8fc1a859dc35da6d4591cb10820cb",
   "semantic_pre_main_tip": "1f47063c3205a45888b3c55e81e7485943ed1390",
   "control_branch": "integration/pre-main-reconciliation-r1",
-  "current_md_path": "HQ_HANDOFF/checkpoints/20261023-PYAT-HQ-R61P-LINEAGE-REPAIR-ACTUAL-NATIVE-LAUNCH-R1/CURRENT.md",
-  "current_json_path": "HQ_HANDOFF/checkpoints/20261023-PYAT-HQ-R61P-LINEAGE-REPAIR-ACTUAL-NATIVE-LAUNCH-R1/CURRENT.json",
-  "manifest_path": "HQ_HANDOFF/checkpoints/20261023-PYAT-HQ-R61P-LINEAGE-REPAIR-ACTUAL-NATIVE-LAUNCH-R1/MANIFEST.json",
+  "current_md_path": "HQ_HANDOFF/checkpoints/20261023-PYAT-HQ-R61Q-R08-ADMISSION-DECISION-AND-DOWNSHIFT-R1/CURRENT.md",
+  "current_json_path": "HQ_HANDOFF/checkpoints/20261023-PYAT-HQ-R61Q-R08-ADMISSION-DECISION-AND-DOWNSHIFT-R1/CURRENT.json",
+  "manifest_path": "HQ_HANDOFF/checkpoints/20261023-PYAT-HQ-R61Q-R08-ADMISSION-DECISION-AND-DOWNSHIFT-R1/MANIFEST.json",
   "decision_ledger_path": "HQ_HANDOFF/DECISION_LEDGER.jsonl",
   "protocol_path": "HQ_HANDOFF/PROTOCOL.md",
   "start_here_path": "HQ_HANDOFF/START_HERE.md",
@@ -14,28 +14,28 @@
   "pointer_law": "LATEST_IS_MUTABLE_POINTER_ONLY__CHECKPOINT_AT_HANDOFF_COMMIT_IS_IMMUTABLE_SEALED_HQ_AUTHORITY",
   "temporal_reconciliation_law": "SEALED_CHECKPOINT_AUTHORITY_NE_POST_CHECKPOINT_PENDING_RETURN_NE_UNAUTHORIZED_POST_CHECKPOINT_MOVEMENT",
   "maintenance_law": "AFTER_EVERY_MATERIAL_HQ_STATE_CHANGE__CREATE_NEW_IMMUTABLE_CHECKPOINT__ADVANCE_AND_VERIFY_LATEST_BEFORE_TRANSITION_IS_SEALED",
-  "canonical_control_base": "8476e02eccebc193c0418eed58db609a580a9ad1",
+  "canonical_control_base": "e643077aa0a8fc1a859dc35da6d4591cb10820cb",
   "qualified_working_hq_branch": "integration/pre-main-reconciliation-r1",
-  "qualified_working_hq_commit": "8476e02eccebc193c0418eed58db609a580a9ad1",
-  "primary_succession_handoff_path": "HQ_HANDOFF/checkpoints/20261023-PYAT-HQ-R61P-LINEAGE-REPAIR-ACTUAL-NATIVE-LAUNCH-R1/CURRENT.md",
-  "pyat_current_handoff": "HQ_HANDOFF/checkpoints/20261023-PYAT-HQ-R61P-LINEAGE-REPAIR-ACTUAL-NATIVE-LAUNCH-R1/CURRENT.md",
+  "qualified_working_hq_commit": "e643077aa0a8fc1a859dc35da6d4591cb10820cb",
+  "primary_succession_handoff_path": "HQ_HANDOFF/checkpoints/20261023-PYAT-HQ-R61Q-R08-ADMISSION-DECISION-AND-DOWNSHIFT-R1/CURRENT.md",
+  "pyat_current_handoff": "HQ_HANDOFF/checkpoints/20261023-PYAT-HQ-R61Q-R08-ADMISSION-DECISION-AND-DOWNSHIFT-R1/CURRENT.md",
   "current_progress": {
     "owner": "Pyat",
-    "revision": 63,
-    "canonical_report_commit": "8476e02eccebc193c0418eed58db609a580a9ad1",
+    "revision": 64,
+    "canonical_report_commit": "e643077aa0a8fc1a859dc35da6d4591cb10820cb",
     "counterpart": "Sorok rev34 independent; attachment86a7b382 unaccepted and state untouched"
   },
   "previous_handoff": {
-    "checkpoint_id": "20261023-PYAT-HQ-R61O-RECURRENCE-CANDIDATE-AND-INDEPENDENT-NATIVE-REVIEW-R1",
-    "handoff_commit": "ba03e3e281411223ef238e7aa25c26deccf4d37c"
+    "checkpoint_id": "20261023-PYAT-HQ-R61P-LINEAGE-REPAIR-ACTUAL-NATIVE-LAUNCH-R1",
+    "handoff_commit": "8476e02eccebc193c0418eed58db609a580a9ad1"
   },
   "full_legacy_pointer_archived": {
     "git_cut": "e1182c32cc40b7908304cecc5964193590bbb1cc",
     "blob_sha": "10f6ae095290cd5081c64af4de89acc45e6933db",
     "description": "Prior 135251-byte pointer and nested historical state preserved exactly at this immutable Git cut, not copied into new pointer; dereference previous_handoff as needed"
   },
-  "next_action": "Receive actualR01R5return; distinct native review required; R08boundedHighdecision/R09hostgrant pending",
-  "worker_state_truth": "R01V_R4 terminal verified; R01_R5 actual PID live; attended existing OpenCode, no controller claim",
+  "next_action": "STOP for SolLight; then same-authorR08whole-functionrepair/distinctreview; retainR01R5; R09hostgrantpending",
+  "worker_state_truth": "R01R5 existing process observed; noR08R4worker launched; no controller autonomy claimed",
   "measured_execution_authorized": false,
   "measured_execution_authorized_via_warrant": false,
   "new_operative_grants": true,
@@ -387,7 +387,8 @@
       "library_access": "NO",
       "pass_wake": "Distinct native review then HQ prerequisite adjudication; no author R03 wake",
       "blocker_effect": "Own node only; independent R08/R09 decisions remain separate",
-      "hard_forbidden": "NO_SCOPE_EXPANSION_SOURCE_SCIENCE_CI_PROD_N11_N12_J52_W52"
+      "hard_forbidden": "NO_SCOPE_EXPANSION_SOURCE_SCIENCE_CI_PROD_N11_N12_J52_W52",
+      "observed_utc": "2026-10-23T16:49:50.555515+00:00"
     }
   ],
   "r61_launch_evidence": "ae63a8c2da620d850cc974eb43c3e396abec30cb",
@@ -399,5 +400,5 @@
     "goal_file_sha256": "009846489ad1a6b57d6ac6d90c223448657dda2bc2c45d45967874308687e921"
   },
   "r61b_director_evidence": "bd1dc9314443e858cef8a1f5bb0c0fb7c5f87966",
-  "current_development_evidence": "b1fa5c177f091f065e38f32a4e9d9e474990cc5f"
+  "current_development_evidence": "99222514afbac4fc1671dbc90f02b210e6c1f6ce"
 }
