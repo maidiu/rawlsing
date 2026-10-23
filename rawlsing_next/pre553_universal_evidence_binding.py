@@ -1681,10 +1681,8 @@ class EvidenceResolver:
                 context_ref=binding.context.context_ref,
                 owner_identity_material=binding.owner_identity_material(),
             )
-            and (
-                self._admitted_producer is None
-                or binding.producer is self._admitted_producer
-            )
+            and self._admitted_producer is not None
+            and binding.producer is self._admitted_producer
         )
         return key
 
@@ -1952,11 +1950,6 @@ class EvidenceResolver:
             return _result_refusal(request, REFUSAL_STALE_CACHE)
         cells = _evidence_cells(evidence)
         values = dict(envelope.consumer_values_read)
-        values["request_key"] = request.key
-        values["cache_trust_grade"] = (
-            CACHE_TRUST_ISSUER if self._issuer is not None else CACHE_TRUST_ASSOCIATION
-        )
-        values["admission_grade"] = CACHE_TRUST_ADMISSION
         return EvidenceResult(
             request_key=request.key,
             eligibility_state=envelope.eligibility_state,
@@ -2004,6 +1997,10 @@ class EvidenceResolver:
                 raise EvidenceCacheIntegrityError(
                     "cache export requires the original signed execution envelope"
                 )
+            if not _result_matches_envelope(result, result.execution_envelope):
+                raise EvidenceCacheIntegrityError(
+                    "cache export refuses unsigned result/value substitution"
+                )
             binding = self._bindings.get(key)
             if binding is None:
                 raise EvidenceCacheIntegrityError(
@@ -2024,7 +2021,7 @@ class EvidenceResolver:
                 "producer_binding": binding_payload,
                 "execution_envelope": canonicalize(result.execution_envelope.material()),
                 "envelope_signature": result.envelope_signature,
-                "result": canonicalize(result.material()),
+                "result": canonicalize(_envelope_result_projection(result.execution_envelope)),
                 "evidence": _evidence_material(result.evidence_object),
                 "consumer_query": canonicalize(result.consumer_query_object.material()),
                 "model_rule": canonicalize(result.model_rule_object.material()),
@@ -2153,24 +2150,13 @@ class EvidenceResolver:
             result_material = raw.get("result")
             if not isinstance(result_material, Mapping):
                 raise EvidenceCacheIntegrityError("cache result material required")
-            if (
-                result_material.get("request_key") != request_key
-                or result_material.get("denominator") != envelope.denominator
-                or result_material.get("consumer_result_hash") != envelope.evaluator_result_hash
-                or result_material.get("result_state") != envelope.result_state
-                or result_material.get("eligibility_state") != envelope.eligibility_state
-                or result_material.get("execution_state") != envelope.execution_state
-                or result_material.get("uncertainty_state") != envelope.uncertainty_state
-                or [canonicalize(x) for x in result_material.get("cells", ())]
-                != [canonicalize(x) for x in envelope.cells]
+            if canonicalize(result_material) != canonicalize(
+                _envelope_result_projection(envelope)
             ):
-                raise EvidenceCacheIntegrityError("cache result disagrees with signed envelope")
+                raise EvidenceCacheIntegrityError(
+                    "cache result/public values disagree with signed envelope"
+                )
             values = dict(envelope.consumer_values_read)
-            values["request_key"] = request_key
-            values["cache_trust_grade"] = (
-                CACHE_TRUST_ISSUER if self._issuer is not None else CACHE_TRUST_ASSOCIATION
-            )
-            values["admission_grade"] = CACHE_TRUST_ADMISSION
             result = EvidenceResult(
                 request_key=request_key,
                 eligibility_state=envelope.eligibility_state,
@@ -2261,6 +2247,76 @@ def _envelope_matches_request(
         and envelope.model_rule_hash == request.model_rule_hash
         and _context_material_matches_request(envelope.context_material, request)
     )
+
+
+def _envelope_result_projection(envelope: ExecutedEvidenceEnvelope) -> Mapping[str, Any]:
+    """The only result material authorized by the signed execution envelope."""
+    return {
+        "request_key": envelope.request_key,
+        "eligibility_state": envelope.eligibility_state,
+        "execution_state": envelope.execution_state,
+        "result_state": envelope.result_state,
+        "denominator": envelope.denominator,
+        "cells": [canonicalize(cell) for cell in envelope.cells],
+        "evidence_ref": envelope.evidence_ref.as_dict(),
+        "producer_receipt_ref": envelope.producer_receipt_ref.as_dict(),
+        "producer_fact_ref": envelope.producer_fact_ref.as_dict(),
+        "producer_fact_state": envelope.producer_fact_state,
+        "consumer_query_ref": envelope.consumer_query_ref.as_dict(),
+        "consumer_result_state": envelope.evaluator_result_state,
+        "consumer_result_hash": envelope.evaluator_result_hash,
+        "consumer_values_read": canonicalize(envelope.consumer_values_read),
+        "uncertainty_state": envelope.uncertainty_state,
+    }
+
+
+def _result_matches_envelope(
+    result: EvidenceResult, envelope: ExecutedEvidenceEnvelope
+) -> bool:
+    if result.request_key != envelope.request_key:
+        return False
+    if result.eligibility_state != envelope.eligibility_state:
+        return False
+    if result.execution_state != envelope.execution_state:
+        return False
+    if result.result_state != envelope.result_state:
+        return False
+    if result.denominator != envelope.denominator:
+        return False
+    if [canonicalize(x) for x in result.cells] != [
+        canonicalize(x) for x in envelope.cells
+    ]:
+        return False
+    if result.evidence_ref != envelope.evidence_ref:
+        return False
+    if result.producer_receipt_ref != envelope.producer_receipt_ref:
+        return False
+    if result.producer_fact_ref != envelope.producer_fact_ref:
+        return False
+    if result.producer_fact_state != envelope.producer_fact_state:
+        return False
+    if result.consumer_query_ref != envelope.consumer_query_ref:
+        return False
+    if result.consumer_result_state != envelope.evaluator_result_state:
+        return False
+    if result.consumer_result_hash != envelope.evaluator_result_hash:
+        return False
+    if result.uncertainty_state != envelope.uncertainty_state:
+        return False
+    if result.consumer_values_read is None:
+        return False
+    return canonicalize(result.consumer_values_read) == canonicalize(
+        envelope.consumer_values_read
+    )
+
+
+def _assert_result_matches_envelope(
+    result: EvidenceResult, envelope: ExecutedEvidenceEnvelope
+) -> None:
+    if not _result_matches_envelope(result, envelope):
+        raise EvidenceAssociationError(
+            "result fields/values do not equal the complete signed execution envelope"
+        )
 
 
 def _optional_ref(value: Any) -> ExactRef | None:
@@ -2418,17 +2474,27 @@ class EvidenceConsumerReader:
             )
         if not _envelope_matches_request(envelope, self.request):
             raise EvidenceAssociationError("signed envelope does not match request K")
+        _assert_result_matches_envelope(self.result, envelope)
         if (
-            envelope.evaluator_result_hash != self.result.consumer_result_hash
-            or envelope.denominator != self.result.denominator
-            or [canonicalize(x) for x in envelope.cells]
-            != [canonicalize(x) for x in self.result.cells]
-            or envelope.result_state != self.result.result_state
-            or envelope.eligibility_state != self.result.eligibility_state
-            or envelope.execution_state != self.result.execution_state
+            self.result.evidence_object is None
+            or self.result.consumer_query_object is None
+            or self.result.model_rule_object is None
         ):
-            raise EvidenceAssociationError("signed envelope does not match result material")
-        values = self.result.consumer_values_read
+            raise EvidenceAssociationError("no actual evidence/query/rule object to consume")
+        evidence = self.result.evidence_object
+        query = self.result.consumer_query_object
+        rule = self.result.model_rule_object
+        if (
+            evidence.evidence_ref != envelope.evidence_ref
+            or semantic_hash(_evidence_material(evidence)) != envelope.evidence_content_hash
+            or query.ref != envelope.consumer_query_ref
+            or semantic_hash(query.material()) != envelope.consumer_query_material_hash
+            or rule.rule_hash != envelope.model_rule_hash
+        ):
+            raise EvidenceAssociationError(
+                "evidence/query/rule objects do not match the signed envelope"
+            )
+        values = envelope.consumer_values_read
         if not isinstance(values, Mapping):
             raise EvidenceAssociationError("actual consumer values-read is absent")
         if values.get("request_key") != self.request.key:
@@ -2463,10 +2529,14 @@ class EvidenceConsumerReader:
             raise EvidenceAssociationError(
                 "consumer replay hash differs from signed envelope/result"
             )
-        values = dict(self.result.consumer_values_read or {})
+        envelope = self.result.execution_envelope
+        values = dict(envelope.consumer_values_read)
         values["consumer_result_hash"] = actual.result_hash
         values["consumer_result_state"] = actual.result_state
         values["consumer_result_material"] = canonicalize(actual.material())
+        values["admission_grade"] = CACHE_TRUST_ADMISSION
+        if self.result.provenance == PROVENANCE_CACHE:
+            values["cache_trust_grade"] = CACHE_TRUST_ASSOCIATION
         return values
 
     def e04_step(self) -> Mapping[str, Any]:

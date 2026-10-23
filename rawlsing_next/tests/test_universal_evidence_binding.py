@@ -47,6 +47,7 @@ from rawlsing_next.pre553_universal_evidence_binding import (
     AdmittedEvidenceContext,
     EmpiricalProducerBinding,
     EvidenceAssociationError,
+    EvidenceBindingError,
     EvidenceCacheIntegrityError,
     EvidenceConsumerReader,
     EvidenceRequest,
@@ -1120,3 +1121,119 @@ def test_callable_substitution_and_signed_envelope_metadata_mutation_refuse():
         _resolver().import_authenticated_cache(
             {"schema": CACHE_SCHEMA, "entries": [altered]}
         )
+
+
+def test_reader_serves_only_signed_projection_for_all_mutated_fields():
+    case = build_provider_case("forward")
+    request = _request(case, request_id="r61-r5-signed-projection")
+    resolver = _resolver()
+    resolver.bind(_binding(request, case))
+    produced = resolver.resolve(request)
+    assert _reader(request, produced).read()["denominator"] == 60
+
+    values = dict(produced.consumer_values_read)
+    values["denominator"] = 999
+    values["result_state"] = "ZERO_SUPPORT"
+    values["evidence_ref"] = {
+        "kind": "FORGED_EVIDENCE",
+        "object_id": "urn:forged:evidence",
+        "content_hash": semantic_hash({"forged": "evidence"}),
+    }
+    values["cells"] = [
+        {
+            "cell": "yes",
+            "cell_state": "FORGED",
+            "raw_numerator_support": 999,
+            "raw_probability_exact_fraction": {"$exact_fraction": [1, 1]},
+        }
+    ]
+    mutated_values = replace(produced, consumer_values_read=values)
+    with pytest.raises(EvidenceAssociationError):
+        _reader(request, mutated_values).read()
+    with pytest.raises(EvidenceAssociationError):
+        _reader(request, mutated_values).e04_step()
+
+    metadata_mutations = (
+        {"producer_fact_state": "FORGED_FACT_STATE"},
+        {"uncertainty_state": "FORGED_UNCERTAINTY"},
+        {"producer_receipt_ref": None},
+        {"producer_fact_ref": None},
+        {"consumer_query_ref": _ref("R61_QUERY", "forged-query", {"q": "FORGED"})},
+        {
+            "evidence_ref": _ref(
+                "R61_EVIDENCE", "forged-evidence", {"e": "FORGED"}
+            )
+        },
+        {"consumer_result_hash": semantic_hash({"forged": "consumer"})},
+        {"eligibility_state": "HELD"},
+        {"execution_state": "ERROR"},
+        {"result_state": "ZERO_SUPPORT"},
+        {"denominator": 999},
+        {"cells": ()},
+    )
+    for changes in metadata_mutations:
+        try:
+            mutated = replace(produced, **changes)
+        except EvidenceBindingError:
+            continue
+        with pytest.raises(EvidenceAssociationError):
+            _reader(request, mutated).read()
+
+    assert _reader(request, produced).read()["denominator"] == 60
+
+
+def test_missing_live_producer_pin_is_fail_closed_before_execution():
+    case = build_provider_case("forward")
+    request = _request(case, request_id="r61-r5-missing-pin")
+    calls = []
+
+    def substituted_producer(**kwargs):
+        calls.append("called")
+        raise RuntimeError("SUBSTITUTED_PRODUCER_EXECUTED")
+
+    resolver = EvidenceResolver(
+        admission_verifier=_R4_VERIFIER,
+        executor=_R4_ISSUER,
+    )
+    binding = _binding(request, case, producer=substituted_producer)
+    resolver.bind(binding)
+    result = resolver.resolve(request)
+    assert calls == []
+    assert result.result_state == "UNKNOWN"
+    assert result.typed_refusal == "OWNER_ADMISSION_UNRESOLVED"
+
+    legitimate_without_pin = EvidenceResolver(
+        admission_verifier=_R4_VERIFIER,
+        executor=_R4_ISSUER,
+    )
+    legitimate_without_pin.bind(_binding(request, case))
+    refused = legitimate_without_pin.resolve(request)
+    assert refused.result_state == "UNKNOWN"
+    assert refused.typed_refusal == "OWNER_ADMISSION_UNRESOLVED"
+
+
+def test_export_refuses_unsigned_result_mutation_and_cache_projection_is_signed():
+    case = build_provider_case("forward")
+    request = _request(case, request_id="r61-r5-export-projection")
+    resolver = _resolver()
+    resolver.bind(_binding(request, case))
+    produced = resolver.resolve(request)
+    mutated_values = dict(produced.consumer_values_read)
+    mutated_values["denominator"] = 999
+    mutated = replace(produced, consumer_values_read=mutated_values)
+
+    tampered_resolver = _resolver()
+    tampered_resolver.bind(_binding(request, case))
+    tampered_resolver.resolve(request)
+    tampered_resolver._cache[request.key] = mutated
+    with pytest.raises(EvidenceCacheIntegrityError):
+        tampered_resolver.export_cache()
+
+    cache = resolver.export_cache()
+    entry = cache["entries"][0]
+    projection = entry["result"]
+    assert projection["denominator"] == 60
+    assert projection["evidence_ref"] == produced.execution_envelope.evidence_ref.as_dict()
+    assert projection["consumer_values_read"] == canonicalize(
+        produced.execution_envelope.consumer_values_read
+    )
